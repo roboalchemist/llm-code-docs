@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/core-concepts/jobs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Jobs
 
 > Discrete tasks executed asynchronously in response to events
@@ -13,7 +17,7 @@ In Flatfile, a Job represents a large unit of work performed asynchronously on a
 
   For example, this listener implementation contains all the code necessary to handle a job:
 
-  ```typescript
+  ```typescript  theme={null}
   listener.use(jobHandler("workbook:export", async ({ context: { fileId, jobId } }, tick) => {
     const file = await api.files.get(fileId);
     tick(10, "Getting started.");
@@ -62,7 +66,7 @@ To run an Action based job, two configurations are necessary.
 
 First, create an [Action](/core-concepts/actions) on a domain. Here's an example of a Workbook containing an Action:
 
-```typescript
+```typescript  theme={null}
 api.workbook.create({
   name: "October Report Workbook",
   actions: [
@@ -78,7 +82,7 @@ api.workbook.create({
 
 Then, create a [Listener](/core-concepts/listeners) to respond to the Action. This listener should listen for the `job:ready` event, filtered by the `domain:operation` Job - where, in this case, `workbook` is the domain, `export` is the operation.
 
-```typescript
+```typescript  theme={null}
 listener.on(
   "job:ready",
   { job: "workbook:export" },
@@ -115,7 +119,7 @@ Creating a custom Job in your Listener enables any Event to trigger a Job.
 
 Here's an example of creating a custom Job in a Listener:
 
-```typescript
+```typescript  theme={null}
 listener.on(
   "commit:created",
   { sheet: "contacts" },
@@ -136,7 +140,7 @@ Note that the trigger for this Listener is set to immediate, which means that th
 
 Therefore, we should have our Listener ready to respond to this Job:
 
-```typescript
+```typescript  theme={null}
 listener.on(
   "job:ready",
   { job: "workbook:myCustomOperation" },
@@ -212,7 +216,7 @@ Jobs can be managed via SDK/API. Commonly, Jobs are acknowledged, progressed, an
 
 First, acknowledge a Job. This will update the Job's status to `executing`.
 
-```typescript
+```typescript  theme={null}
 await api.jobs.ack(jobId, {
   info: "Starting submit job...",
   progress: 10,
@@ -223,7 +227,7 @@ await api.jobs.ack(jobId, {
 
 Once a Job is acknowledged, you can begin running your custom operation. Jobs were designed to handle large processing loads, but you can easily update your user by updating the Job with a progress value.
 
-```typescript
+```typescript  theme={null}
 await api.jobs.update(jobId, {
   progress: 50,
   estimatedCompletionAt: new Date("Tue Aug 23 2023 16:19:42 GMT-0700"),
@@ -233,14 +237,14 @@ await api.jobs.update(jobId, {
 `Progress` is a numerical or percentage value indicating the completion status of the work. You may also provide an `estimatedCompletionAt` value which will display your estimate of the remaining processing time in the foreground Job overlay. Additionally, the Jobs Panel will share visibility into the estimated remaining time for acknowledged jobs.
 
 <Frame caption="Example of estimated time">
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/flatfileinc/core-concepts/assets/estimatedtime_actions.png" width="610" />
+  <img src="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/estimatedtime_actions.png?fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=f3ed18fc9faf046a836c51091c970b7c" width="610" data-og-width="1569" data-og-height="691" data-path="core-concepts/assets/estimatedtime_actions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/estimatedtime_actions.png?w=280&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=343d34d90dbd31863b02c53ca5d86b8f 280w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/estimatedtime_actions.png?w=560&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=7e4d585e9cb220db489563bdba568852 560w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/estimatedtime_actions.png?w=840&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=a9a915ec87eeabb2461f21bacd79c434 840w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/estimatedtime_actions.png?w=1100&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=62a960623161e9c00bdd7acb1de75a34 1100w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/estimatedtime_actions.png?w=1650&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=b1d5c8cfee985ff67713285bc0db3e48 1650w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/estimatedtime_actions.png?w=2500&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=f296cc62d6c0aea474a25fae6ad4928a 2500w" />
 </Frame>
 
 ### Completing Jobs
 
 Once a job is complete, you can display an alert to the end user using `outcome`.
 
-```typescript
+```typescript  theme={null}
 await api.jobs.complete(jobId, {
   outcome: {
     message: `Operation was completed successfully. ${myData.length} records were processed.`,
@@ -254,7 +258,7 @@ await api.jobs.complete(jobId, {
 You can enhance job completion with various outcome options to guide users to their next action:
 
 <Frame caption="Example of a 'next' button">
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/flatfileinc/core-concepts/assets/goto_google.png" width="610" />
+  <img src="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/goto_google.png?fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=a9502ceb1e22a047119b64ed034e3a6a" width="610" data-og-width="2312" data-og-height="870" data-path="core-concepts/assets/goto_google.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/goto_google.png?w=280&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=3fb69f88fac441838d44e537d903946a 280w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/goto_google.png?w=560&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=2dc5ebf3c88dd668b24972167708cab3 560w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/goto_google.png?w=840&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=3c3b391131f0ba8adc1674fdc920ae15 840w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/goto_google.png?w=1100&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=1c0cee20523a02ac69e4614aa72ca29f 1100w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/goto_google.png?w=1650&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=5ec97568962a9d3465c992652f5e3c08 1650w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/goto_google.png?w=2500&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=ab9f98d98f14d5c28435e0a0070cafc9 2500w" />
 </Frame>
 
 #### Internal Navigation
@@ -263,7 +267,7 @@ Add a button to the dialog that will redirect the user somewhere within a Space 
 
 In this code below, we will create a button that says "See all downloads" with this path: space/us\_sp\_1234/files?mode=export
 
-```typescript
+```typescript  theme={null}
 await api.jobs.complete(jobId, {
   outcome: {
     message: `Operation was completed successfully. ${myData.length} records were processed.`,
@@ -285,7 +289,7 @@ Add a button to the dialog that will redirect the user to an external link using
 
 In this code below, we will create a button that says "Go to Google". It will open in a new tab.
 
-```typescript
+```typescript  theme={null}
 await api.jobs.complete(jobId, {
   outcome: {
     message: `Operation was completed successfully. ${myData.length} records were processed.`,
@@ -305,7 +309,7 @@ Add a button to the dialog that will redirect the user to an external link using
 
 In this code below, we will create a button that says "Download this file".
 
-```typescript
+```typescript  theme={null}
 await api.jobs.complete(jobId, {
   outcome: {
     message: `Operation was completed successfully. ${myData.length} records were processed.`,
@@ -326,7 +330,7 @@ Download files hosted on Flatfile by using next > files.
 
 In this code below, we will create a button that says "Download files".
 
-```typescript
+```typescript  theme={null}
 await api.jobs.complete(jobId, {
   outcome: {
     message: `The files should download automatically`,
@@ -345,7 +349,7 @@ Add a button to the dialog that will redirect the user a particular snapshot usi
 
 In this code below, we will create a button that says "Go to Snapshot".
 
-```typescript
+```typescript  theme={null}
 await api.jobs.complete(jobId, {
   outcome: {
     message: `Operation was completed successfully.`,
@@ -366,7 +370,7 @@ Dynamically update visible columns in a sheet using next > view.
 
 In this code below, we will create a button that says "Hide columns":
 
-```typescript
+```typescript  theme={null}
 await api.jobs.complete(jobId, {
   outcome: {
     message: `Operation was completed on sheet ${sheet.name}`,
@@ -387,7 +391,7 @@ Often in the event of a failure, you may want to add a button to the dialog that
 
 Provide retry functionality for failed jobs:
 
-```typescript
+```typescript  theme={null}
 await api.jobs.complete(jobId, {
   outcome: {
     message: `Operation was not completed successfully. No records were processed.`,
@@ -404,7 +408,7 @@ await api.jobs.complete(jobId, {
 
 When a job encounters an error, use the fail method:
 
-```typescript
+```typescript  theme={null}
 await api.jobs.fail(jobId, {
   outcome: {
     message: "This Job failed due to an error.",

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/debug-access/
+
 # Debug Access Plugin
 
 The Debug Access red teaming plugin is designed to test whether an AI system has an exposed debugging interface or responds to debugging commands.

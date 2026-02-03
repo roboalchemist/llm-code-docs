@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/howto/monitoryourusage.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Monitor your usage
 
 We support the Redis `MONITOR` command, a debugging command that allows you to see all requests processed by your Redis instance in real-time.

@@ -4,218 +4,152 @@
 
 # Source: https://trigger.dev/docs/management/envvars/retrieve.md
 
-# Source: https://trigger.dev/docs/management/schedules/retrieve.md
+# Source: https://trigger.dev/docs/management/deployments/retrieve.md
 
-# Source: https://trigger.dev/docs/management/runs/retrieve.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://trigger.dev/docs/management/envvars/retrieve.md
+# Get deployment
 
-# Source: https://trigger.dev/docs/management/schedules/retrieve.md
+> Retrieve information about a specific deployment by its ID.
 
-# Source: https://trigger.dev/docs/management/runs/retrieve.md
 
-# Source: https://trigger.dev/docs/management/envvars/retrieve.md
-
-# Source: https://trigger.dev/docs/management/schedules/retrieve.md
-
-# Source: https://trigger.dev/docs/management/runs/retrieve.md
-
-# Source: https://trigger.dev/docs/management/envvars/retrieve.md
-
-# Source: https://trigger.dev/docs/management/schedules/retrieve.md
-
-# Retrieve Schedule
-
-> Get a schedule by its ID.
 
 ## OpenAPI
 
-````yaml v3-openapi GET /api/v1/schedules/{schedule_id}
+````yaml v3-openapi GET /api/v1/deployments/{deploymentId}
+openapi: 3.1.0
+info:
+  title: Trigger.dev v3 REST API
+  description: >-
+    The REST API lets you trigger and manage runs on Trigger.dev. You can
+    trigger a run, get the status of a run, and get the results of a run. 
+  version: 2024-04
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: https://api.trigger.dev
+    description: Trigger.dev API
+security: []
 paths:
-  path: /api/v1/schedules/{schedule_id}
-  method: get
-  servers:
-    - url: https://api.trigger.dev
-      description: Trigger.dev API
-  request:
-    security:
-      - title: secretKey
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: >
-                Use your project-specific Secret API key. Will start with
-                `tr_dev_`, `tr_prod`, `tr_stg`, etc.
-
-
-                You can find your Secret API key in the API Keys section of your
-                Trigger.dev project dashboard.
-
-
-                Our TypeScript SDK will default to using the value of the
-                `TRIGGER_SECRET_KEY` environment variable if it is set. If you
-                are using the SDK in a different environment, you can set the
-                key using the `configure` function.
-
-
-                ```typescript
-
-                import { configure } from "@trigger.dev/sdk";
-
-
-                configure({ accessToken: "tr_dev_1234" });
-
-                ```
-          cookie: {}
+  /api/v1/deployments/{deploymentId}:
     parameters:
-      path:
-        schedule_id:
-          schema:
-            - type: string
-              required: true
-              description: The ID of the schedule.
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - lang: typescript
-        source: |-
-          import { schedules } from "@trigger.dev/sdk";
-
-          const schedule = await schedules.retrieve(scheduleId);
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - type: string
-                    example: sched_1234
-                    description: The unique ID of the schedule, prefixed with 'sched_'
-              task:
-                allOf:
-                  - type: string
-                    example: my-scheduled-task
-                    description: >-
-                      The id of the scheduled task that will be triggered by
-                      this schedule
-              type:
-                allOf:
-                  - type: string
-                    example: IMPERATIVE
-                    description: >-
-                      The type of schedule, `DECLARATIVE` or `IMPERATIVE`.
-                      Declarative schedules are declared in your code by setting
-                      the `cron` property on a `schedules.task`. Imperative
-                      schedules are created in the dashboard or by using the
-                      imperative SDK functions like `schedules.create()`.
-              active:
-                allOf:
-                  - type: boolean
-                    example: true
-                    description: Whether the schedule is active or not
-              deduplicationKey:
-                allOf:
-                  - type: string
-                    example: dedup_key_1234
-                    description: >-
-                      The deduplication key used to prevent creating duplicate
-                      schedules
-              externalId:
-                allOf:
-                  - type: string
-                    example: user_1234
-                    description: >-
-                      The external ID of the schedule. Can be anything that is
-                      useful to you (e.g., user ID, org ID, etc.)
-              generator:
-                allOf:
-                  - type: object
+      - in: path
+        name: deploymentId
+        required: true
+        schema:
+          type: string
+        description: The deployment ID.
+    get:
+      tags:
+        - deployments
+      summary: Get deployment
+      description: Retrieve information about a specific deployment by its ID.
+      operationId: get_deployment_v1
+      responses:
+        '200':
+          description: Successful request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: The deployment ID
+                  status:
+                    type: string
+                    enum:
+                      - PENDING
+                      - INSTALLING
+                      - BUILDING
+                      - DEPLOYING
+                      - DEPLOYED
+                      - FAILED
+                      - CANCELED
+                      - TIMED_OUT
+                    description: The current status of the deployment
+                  contentHash:
+                    type: string
+                    description: Hash of the deployment content
+                  shortCode:
+                    type: string
+                    description: The short code for the deployment
+                  version:
+                    type: string
+                    description: The deployment version (e.g., "20250228.1")
+                  imageReference:
+                    type: string
+                    nullable: true
+                    description: Reference to the deployment image
+                  imagePlatform:
+                    type: string
+                    description: Platform of the deployment image
+                  externalBuildData:
+                    type: object
+                    nullable: true
+                    description: External build data if applicable
+                  errorData:
+                    type: object
+                    nullable: true
+                    description: Error data if the deployment failed
+                  worker:
+                    type: object
+                    nullable: true
+                    description: Worker information if available
                     properties:
-                      type:
+                      id:
                         type: string
-                        enum:
-                          - CRON
-                      expression:
+                      version:
                         type: string
-                        description: The cron expression used to generate the schedule
-                        example: 0 0 * * *
-                      description:
-                        type: string
-                        description: The description of the generator in plain english
-                        example: Every day at midnight
-              timezone:
-                allOf:
-                  - type: string
-                    example: America/New_York
-                    description: >-
-                      Defaults to UTC. In IANA format, if set then it will
-                      trigger at the CRON frequency in that timezone and respect
-                      daylight savings time.
-              nextRun:
-                allOf:
-                  - type: string
-                    format: date-time
-                    description: The next time the schedule will run
-                    example: '2024-04-01T00:00:00Z'
-              environments:
-                allOf:
-                  - type: array
-                    items:
-                      $ref: '#/components/schemas/ScheduleEnvironment'
-            refIdentifier: '#/components/schemas/ScheduleObject'
-        examples:
-          example:
-            value:
-              id: sched_1234
-              task: my-scheduled-task
-              type: IMPERATIVE
-              active: true
-              deduplicationKey: dedup_key_1234
-              externalId: user_1234
-              generator:
-                type: CRON
-                expression: 0 0 * * *
-                description: Every day at midnight
-              timezone: America/New_York
-              nextRun: '2024-04-01T00:00:00Z'
-              environments:
-                - id: <string>
-                  type: <string>
-                  userName: <string>
-        description: Successful request
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Unauthorized request
-        examples: {}
-        description: Unauthorized request
-    '404':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Resource not found
-        examples: {}
-        description: Resource not found
-  deprecated: false
-  type: path
+                      tasks:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                            slug:
+                              type: string
+                            filePath:
+                              type: string
+                            exportName:
+                              type: string
+        '401':
+          description: Unauthorized - Access token is missing or invalid
+        '404':
+          description: Deployment not found
+      security:
+        - secretKey: []
 components:
-  schemas:
-    ScheduleEnvironment:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-        userName:
-          type: string
+  securitySchemes:
+    secretKey:
+      type: http
+      scheme: bearer
+      description: >
+        Use your project-specific Secret API key. Will start with `tr_dev_`,
+        `tr_prod`, `tr_stg`, etc.
+
+
+        You can find your Secret API key in the API Keys section of your
+        Trigger.dev project dashboard.
+
+
+        Our TypeScript SDK will default to using the value of the
+        `TRIGGER_SECRET_KEY` environment variable if it is set. If you are using
+        the SDK in a different environment, you can set the key using the
+        `configure` function.
+
+
+        ```typescript
+
+        import { configure } from "@trigger.dev/sdk";
+
+
+        configure({ accessToken: "tr_dev_1234" });
+
+        ```
 
 ````

@@ -1,70 +1,80 @@
 # Source: https://platform.claude.com/docs/en/api/typescript/beta/files/retrieve_metadata.md
 
-## Retrieve Metadata
+# Source: https://platform.claude.com/docs/en/api/ruby/beta/files/retrieve_metadata.md
 
-`client.beta.files.retrieveMetadata(stringfileID, FileRetrieveMetadataParamsparams?, RequestOptionsoptions?): FileMetadata`
+# Source: https://platform.claude.com/docs/en/api/python/beta/files/retrieve_metadata.md
+
+# Source: https://platform.claude.com/docs/en/api/kotlin/beta/files/retrieve_metadata.md
+
+# Source: https://platform.claude.com/docs/en/api/java/beta/files/retrieve_metadata.md
+
+# Source: https://platform.claude.com/docs/en/api/go/beta/files/retrieve_metadata.md
+
+# Source: https://platform.claude.com/docs/en/api/beta/files/retrieve_metadata.md
+
+## Retrieve Metadata
 
 **get** `/v1/files/{file_id}`
 
 Get File Metadata
 
-### Parameters
+### Path Parameters
 
-- `fileID: string`
+- `file_id: string`
 
   ID of the File.
 
-- `params: FileRetrieveMetadataParams`
+### Header Parameters
 
-  - `betas?: Array<AnthropicBeta>`
+- `"anthropic-beta": optional array of AnthropicBeta`
 
-    Optional header to specify the beta version(s) you want to use.
+  Optional header to specify the beta version(s) you want to use.
 
-    - `(string & {})`
+  - `UnionMember0 = string`
 
-    - `"message-batches-2024-09-24" | "prompt-caching-2024-07-31" | "computer-use-2024-10-22" | 16 more`
+  - `UnionMember1 = "message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 16 more`
 
-      - `"message-batches-2024-09-24"`
+    - `"message-batches-2024-09-24"`
 
-      - `"prompt-caching-2024-07-31"`
+    - `"prompt-caching-2024-07-31"`
 
-      - `"computer-use-2024-10-22"`
+    - `"computer-use-2024-10-22"`
 
-      - `"computer-use-2025-01-24"`
+    - `"computer-use-2025-01-24"`
 
-      - `"pdfs-2024-09-25"`
+    - `"pdfs-2024-09-25"`
 
-      - `"token-counting-2024-11-01"`
+    - `"token-counting-2024-11-01"`
 
-      - `"token-efficient-tools-2025-02-19"`
+    - `"token-efficient-tools-2025-02-19"`
 
-      - `"output-128k-2025-02-19"`
+    - `"output-128k-2025-02-19"`
 
-      - `"files-api-2025-04-14"`
+    - `"files-api-2025-04-14"`
 
-      - `"mcp-client-2025-04-04"`
+    - `"mcp-client-2025-04-04"`
 
-      - `"mcp-client-2025-11-20"`
+    - `"mcp-client-2025-11-20"`
 
-      - `"dev-full-thinking-2025-05-14"`
+    - `"dev-full-thinking-2025-05-14"`
 
-      - `"interleaved-thinking-2025-05-14"`
+    - `"interleaved-thinking-2025-05-14"`
 
-      - `"code-execution-2025-05-22"`
+    - `"code-execution-2025-05-22"`
 
-      - `"extended-cache-ttl-2025-04-11"`
+    - `"extended-cache-ttl-2025-04-11"`
 
-      - `"context-1m-2025-08-07"`
+    - `"context-1m-2025-08-07"`
 
-      - `"context-management-2025-06-27"`
+    - `"context-management-2025-06-27"`
 
-      - `"model-context-window-exceeded-2025-08-26"`
+    - `"model-context-window-exceeded-2025-08-26"`
 
-      - `"skills-2025-10-02"`
+    - `"skills-2025-10-02"`
 
 ### Returns
 
-- `FileMetadata`
+- `FileMetadata = object { id, created_at, filename, 4 more }`
 
   - `id: string`
 
@@ -96,20 +106,15 @@ Get File Metadata
 
     - `"file"`
 
-  - `downloadable?: boolean`
+  - `downloadable: optional boolean`
 
     Whether the file can be downloaded.
 
 ### Example
 
-```typescript
-import Anthropic from '@anthropic-ai/sdk';
-
-const client = new Anthropic({
-  apiKey: process.env['ANTHROPIC_API_KEY'], // This is the default and can be omitted
-});
-
-const fileMetadata = await client.beta.files.retrieveMetadata('file_id');
-
-console.log(fileMetadata.id);
+```http
+curl https://api.anthropic.com/v1/files/$FILE_ID \
+    -H 'anthropic-version: 2023-06-01' \
+    -H 'anthropic-beta: files-api-2025-04-14' \
+    -H "X-Api-Key: $ANTHROPIC_API_KEY"
 ```

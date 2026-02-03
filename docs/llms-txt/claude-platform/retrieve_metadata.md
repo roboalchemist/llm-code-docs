@@ -12,34 +12,6 @@
 
 # Source: https://platform.claude.com/docs/en/api/beta/files/retrieve_metadata.md
 
-# Source: https://platform.claude.com/docs/en/api/typescript/beta/files/retrieve_metadata.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/beta/files/retrieve_metadata.md
-
-# Source: https://platform.claude.com/docs/en/api/python/beta/files/retrieve_metadata.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/beta/files/retrieve_metadata.md
-
-# Source: https://platform.claude.com/docs/en/api/java/beta/files/retrieve_metadata.md
-
-# Source: https://platform.claude.com/docs/en/api/go/beta/files/retrieve_metadata.md
-
-# Source: https://platform.claude.com/docs/en/api/beta/files/retrieve_metadata.md
-
-# Source: https://platform.claude.com/docs/en/api/typescript/beta/files/retrieve_metadata.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/beta/files/retrieve_metadata.md
-
-# Source: https://platform.claude.com/docs/en/api/python/beta/files/retrieve_metadata.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/beta/files/retrieve_metadata.md
-
-# Source: https://platform.claude.com/docs/en/api/java/beta/files/retrieve_metadata.md
-
-# Source: https://platform.claude.com/docs/en/api/go/beta/files/retrieve_metadata.md
-
-# Source: https://platform.claude.com/docs/en/api/beta/files/retrieve_metadata.md
-
 ## Retrieve Metadata
 
 **get** `/v1/files/{file_id}`
@@ -142,5 +114,7 @@ Get File Metadata
 
 ```http
 curl https://api.anthropic.com/v1/files/$FILE_ID \
+    -H 'anthropic-version: 2023-06-01' \
+    -H 'anthropic-beta: files-api-2025-04-14' \
     -H "X-Api-Key: $ANTHROPIC_API_KEY"
 ```

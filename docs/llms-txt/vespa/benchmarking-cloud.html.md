@@ -203,7 +203,7 @@ Rules of thumb:
 - The user running benchmarks must have read access to the endpoint - if you already have, you can skip this section. Refer to the [Vespa security guide](../security/guide). 
 - [Monitoring](../operations/monitoring.html) is useful to track metrics when benchmarking.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

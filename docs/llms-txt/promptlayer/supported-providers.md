@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/features/supported-providers.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Supported Providers
 
 Below is the list of LLM providers supported in PromptLayer along with key capability notes. For providers not listed or advanced deployments, see [Custom Providers](/features/custom-providers).
@@ -95,8 +99,3 @@ Capabilities:
 * [Tool Calling](/features/prompt-registry/tool-calling)
 * [Template Variables](/features/prompt-registry/template-variables)
 * [FAQ](/features/faq)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

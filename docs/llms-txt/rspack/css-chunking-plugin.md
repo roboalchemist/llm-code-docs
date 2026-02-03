@@ -1,13 +1,8 @@
 # Source: https://rspack.dev/plugins/rspack/css-chunking-plugin.md
 
-import { Table } from '@builtIns';
-import WebpackLicense from '@components/WebpackLicense';
-import { ApiMeta } from '@components/ApiMeta.tsx';
-
 # CssChunkingPlugin
 
-<ApiMeta specific={['Rspack']} addedVersion="1.4.0" />
-
+[Added in v1.4.0](https://github.com/web-infra-dev/rspack/releases/tag/v1.4.0)Rspack only
 `CssChunkingPlugin` is a plugin specifically designed for CSS code splitting. It ensures that the loading order of styles matches the import order in your source code, avoiding UI issues caused by incorrect CSS order.
 
 > This plugin is inspired by Next.js's [CSS Chunking](https://nextjs.org/docs/app/api-reference/config/next-config-js/cssChunking) feature, thanks to the Next.js team for their innovation.
@@ -33,8 +28,8 @@ This means that options like `optimization.splitChunks` will no longer handle CS
 
 ### strict
 
-* **Type:** `boolean`
-* **Default:** `false`
+- **Type:** `boolean`
+- **Default:** `false`
 
 Whether to strictly preserve the import order of CSS modules.
 
@@ -56,8 +51,8 @@ new rspack.experiments.CssChunkingPlugin({
 });
 ```
 
-* If CSS modules are imported in different orders throughout the project, they are considered to have no dependencies between them.
-* Allow merging independent CSS modules into the same chunk to reduce the number of chunks.
+- If CSS modules are imported in different orders throughout the project, they are considered to have no dependencies between them.
+- Allow merging independent CSS modules into the same chunk to reduce the number of chunks.
 
 ### Strict mode (strict: true)
 
@@ -67,7 +62,7 @@ new rspack.experiments.CssChunkingPlugin({
 });
 ```
 
-* Strictly ensures that the execution order of CSS modules matches the import order in the source code.
+- Strictly ensures that the execution order of CSS modules matches the import order in the source code.
 
 ### Example
 

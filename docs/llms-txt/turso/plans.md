@@ -1,64 +1,65 @@
 # Source: https://docs.turso.tech/api-reference/organizations/plans.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Plans
 
 > Returns a list of available plans and their quotas.
 
+<RequestExample>
+  ```bash cURL theme={null}
+  curl -L https://api.turso.tech/v1/organizations/{organizationSlug}/plans \
+    -H 'Authorization: Bearer TOKEN'
+  ```
+</RequestExample>
+
+
 ## OpenAPI
 
 ````yaml GET /v1/organizations/{organizationSlug}/plans
+openapi: 3.0.1
+info:
+  title: Turso Platform API
+  description: API description here
+  license:
+    name: MIT
+  version: 0.1.0
+servers:
+  - url: https://api.turso.tech
+    description: Turso's Platform API
+security: []
 paths:
-  path: /v1/organizations/{organizationSlug}/plans
-  method: get
-  servers:
-    - url: https://api.turso.tech
-      description: Turso's Platform API
-  request:
-    security: []
-    parameters:
-      path:
-        organizationSlug:
-          schema:
-            - type: string
-              required: true
-              description: The slug of the organization or user account.
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              plans:
-                allOf:
-                  - type: array
+  /v1/organizations/{organizationSlug}/plans:
+    get:
+      summary: List Plans
+      description: Returns a list of available plans and their quotas.
+      operationId: listOrganizationPlans
+      parameters:
+        - $ref: '#/components/parameters/organizationSlug'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  plans:
+                    type: array
                     description: List of available plans.
                     items:
                       $ref: '#/components/schemas/OrganizationPlan'
-        examples:
-          example:
-            value:
-              plans:
-                - name: starter
-                  price: '0'
-                  prices:
-                    - value: '29'
-                      timeline: monthly
-                  quotas:
-                    rowsRead: 1000000000
-                    rowsWritten: 25000000
-                    databases: 500
-                    locations: 3
-                    storage: 9000000000
-                    groups: 1
-                    bytesSynced: 3000000000
-        description: Successful response
-  deprecated: false
-  type: path
 components:
+  parameters:
+    organizationSlug:
+      in: path
+      name: organizationSlug
+      required: true
+      schema:
+        type: string
+      description: The slug of the organization or user account.
   schemas:
     OrganizationPlan:
       type: object

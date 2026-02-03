@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/errors/api-errors/resource-not-found-errors.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Resource Not Found
 
 > Thrown when the incorrect API version is used or when the endpoint URL is incorrect.

@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/built-in-nodes/partner-node/video/kwai_vgi/kling-text-to-video.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Kling Text to Video - ComfyUI Built-in Node
 
 > A node that converts text descriptions into videos using Kling's AI technology

@@ -1,242 +1,49 @@
-# Source: https://mintlify.com/docs/optimize/seo.md
+# Source: https://www.mintlify.com/docs/optimize/seo.md
 
-# Source: https://mintlify.com/docs/guides/seo.md
+# Source: https://www.mintlify.com/docs/guides/seo.md
 
-# Source: https://mintlify.com/docs/optimize/seo.md
-
-# Source: https://mintlify.com/docs/guides/seo.md
-
-# Source: https://mintlify.com/docs/optimize/seo.md
-
-# Source: https://mintlify.com/docs/guides/seo.md
-
-# Source: https://mintlify.com/docs/optimize/seo.md
-
-# Source: https://mintlify.com/docs/guides/seo.md
-
-# Source: https://mintlify.com/docs/optimize/seo.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # SEO
 
-> Optimize SEO with meta tag configuration for better search visibility.
+> Improve SEO to increase documentation discoverability.
 
-Mintlify automatically handles many SEO best practices, including:
+<Tip>
+  This page explains fundamental strategies to optimize your documentation SEO.
+</Tip>
 
-* Meta tag generation
-* Sitemap and `robots.txt` file generation
-* Semantic HTML structure
-* Mobile optimization
+## Content basics
 
-You can fully customize your site's meta tags by adding the `metatags` field to your `docs.json` or a page's frontmatter.
+Make your writing and structure easy for search engines to scan.
 
-## Global meta tags
+* **Headings and subheadings:** Use sequential, meaningful headers to structure your content. Each page has an H1 created from the `title:` property in the frontmatter.
+* **Short paragraphs and bullet points:** Break down large chunks of text into easily readable sections. Use bullet points and numbered lists where appropriate.
+* **Internal linking:** Link to related content using descriptive anchor text. For example, "Learn more about rate limiting" instead of "Click here."
 
-To set default meta tags for all pages, add the `metatags` field to your `docs.json`.
+## Technical SEO basics
 
-```json  theme={null}
-"seo": {
-    "metatags": {
-        "og:image": "link to your default meta tag image"
-    }
-}
-```
+Once your content is optimized, ensure your documentation performs well from a technical standpoint.
 
-### Set a canonical URL
+These basic technical SEO practices help make your docs more discoverable:
 
-If you're using a custom domain, set the `canonical` meta tag to ensure search engines index your preferred domain. A canonical URL tells search engines which version of your documentation is the primary one. This improves SEO when your documentation is accessible from multiple URLs and prevents issues with duplicate content.
+* **Meta tags and descriptions:** Craft SEO-friendly titles (50-60 characters) and descriptions (150-160 characters) for each page. Most [meta tags](/optimize/seo) are automatically generated.
+* **Alt text for images:** Provide descriptive alt text for images with relevant keywords. For example, "OAuth 2.0 API authentication flow" instead of just "diagram". This enhances SEO and accessibility.
+* **Sitemaps:** Ensure your sitemap is up-to-date. Mintlify automatically generates a sitemap. However, you can manually create a sitemap if you prefer a custom format. Once created, search engines index site maps over time, but you can submit your sitemap directly to Google Search Console to speed up the process.
 
-```json  theme={null}
-"seo": {
-    "metatags": {
-        "canonical": "https://www.your-custom-domain-here.com"
-    }
-}
-```
+## Page performance
 
-## Page-specific meta tags
+Use tools like [Google PageSpeed Insights](https://pagespeed.web.dev) to identify areas for technical SEO improvement.
 
-To set page-specific meta tags, add them to a page's frontmatter.
+Examples of more advanced optimizations:
 
-```mdx  theme={null}
----
-title: "Your example page title"
-"og:image": "link to your meta tag image"
----
-```
+* **Optimize media for speed:** Compress images using formats like WebP or AVIF and ensure your pages load quickly (ideally under 3 seconds).
+* **Structured data (schema markup):** Add schema markup (like HowTo, FAQ) to your pages to help search engines better understand and rank your content.
 
-<Note>
-  Meta tags with colons must be wrapped in quotes.
-</Note>
+## Keyword research
 
-## Common meta tags reference
+To increase organic traffic, invest time into understanding which keywords help users land on your documentation.
 
-Below is a comprehensive list of meta tags you can add to your `docs.json`. These meta tags help improve your site's SEO, social sharing, and browser compatibility.
-
-<Note>
-  The `og:image` adds a background image that Mintlify automatically overlays with your logo, page title, and description when generating social media previews.
-</Note>
-
-You can preview how your meta tags will appear on different platforms using [metatags.io](https://metatags.io/).
-
-```json expandable theme={null}
-"seo": {
-    "metatags": {
-      "robots": "noindex",
-      "charset": "UTF-8",
-      "viewport": "width=device-width, initial-scale=1.0",
-      "description": "Page description",
-      "keywords": "keyword1, keyword2, keyword3",
-      "author": "Author Name",
-      "robots": "index, follow",
-      "googlebot": "index, follow",
-      "google": "notranslate",
-      "google-site-verification": "verification_token",
-      "generator": "Mintlify",
-      "theme-color": "#000000",
-      "color-scheme": "light dark",
-      "canonical": "https://your-custom-domain-here.com",
-      "format-detection": "telephone=no",
-      "referrer": "origin",
-      "refresh": "30",
-      "rating": "general",
-      "revisit-after": "7 days",
-      "language": "en",
-      "copyright": "Copyright 2024",
-      "reply-to": "email@example.com",
-      "distribution": "global",
-      "coverage": "Worldwide",
-      "category": "Technology",
-      "target": "all",
-      "HandheldFriendly": "True",
-      "MobileOptimized": "320",
-      "apple-mobile-web-app-capable": "yes",
-      "apple-mobile-web-app-status-bar-style": "black",
-      "apple-mobile-web-app-title": "App Title",
-      "application-name": "App Name",
-      "msapplication-TileColor": "#000000",
-      "msapplication-TileImage": "path/to/tile.png",
-      "msapplication-config": "path/to/browserconfig.xml",
-      "og:title": "Open Graph Title",
-      "og:type": "website",
-      "og:url": "https://example.com",
-      "og:image": "https://example.com/image.jpg",
-      "og:description": "Open Graph Description",
-      "og:site_name": "Site Name",
-      "og:locale": "en_US",
-      "og:video": "https://example.com/video.mp4",
-      "og:audio": "https://example.com/audio.mp3",
-      "twitter:card": "summary",
-      "twitter:site": "@username",
-      "twitter:creator": "@username",
-      "twitter:title": "Twitter Title",
-      "twitter:description": "Twitter Description",
-      "twitter:image": "https://example.com/image.jpg",
-      "twitter:image:alt": "Image Description",
-      "twitter:player": "https://example.com/player",
-      "twitter:player:width": "480",
-      "twitter:player:height": "480",
-      "twitter:app:name:iphone": "App Name",
-      "twitter:app:id:iphone": "12345",
-      "twitter:app:url:iphone": "app://",
-      "article:published_time": "2024-01-01T00:00:00+00:00",
-      "article:modified_time": "2024-01-02T00:00:00+00:00",
-      "article:expiration_time": "2024-12-31T00:00:00+00:00",
-      "article:author": "Author Name",
-      "article:section": "Technology",
-      "article:tag": "tag1, tag2, tag3",
-      "book:author": "Author Name",
-      "book:isbn": "1234567890",
-      "book:release_date": "2024-01-01",
-      "book:tag": "tag1, tag2, tag3",
-      "profile:first_name": "John",
-      "profile:last_name": "Doe",
-      "profile:username": "johndoe",
-      "profile:gender": "male",
-      "music:duration": "205",
-      "music:album": "Album Name",
-      "music:album:disc": "1",
-      "music:album:track": "1",
-      "music:musician": "Artist Name",
-      "music:song": "Song Name",
-      "music:song:disc": "1",
-      "music:song:track": "1",
-      "video:actor": "Actor Name",
-      "video:actor:role": "Role Name",
-      "video:director": "Director Name",
-      "video:writer": "Writer Name",
-      "video:duration": "120",
-      "video:release_date": "2024-01-01",
-      "video:tag": "tag1, tag2, tag3",
-      "video:series": "Series Name"
-  }
-}
-```
-
-## Sitemaps and robots.txt files
-
-Mintlify automatically generates a `sitemap.xml` file and a `robots.txt` file. You can view your sitemap by appending `/sitemap.xml` to your documentation site's URL.
-
-Only pages included in your `docs.json` are included by default. To include hidden links, add `seo.indexing` to your `docs.json`:
-
-```json  theme={null}
-"seo": {
-    "indexing": "all"
-}
-```
-
-### Custom sitemaps and robots.txt files
-
-To add a custom `sitemap.xml` or `robots.txt` file, create a `sitemap.xml` or `robots.txt` file at the root of your project. Adding a custom file will override the automatically generated file of the same name. If you delete a custom file, the default file will be used again.
-
-## Disabling indexing
-
-If you want to stop a page from being indexed by search engines, you can include the following in the [frontmatter](/organize/pages) of your page:
-
-```
----
-noindex: true
----
-```
-
-You can also specify `noindex` for all pages in your docs by setting the `metatags.robots` field to `"noindex"` in your `docs.json`:
-
-```json  theme={null}
-"seo": {
-    "metatags": {
-      "robots": "noindex"
-    }
-  }
-```
-
-## SEO best practices
-
-<AccordionGroup>
-  <Accordion title="Write descriptive titles and descriptions">
-    * Use clear, descriptive page titles (50-60 characters)
-    * Write compelling descriptions (150-160 characters)
-    * Include relevant keywords
-    * Make each page title and description unique
-  </Accordion>
-
-  <Accordion title="Optimize your content structure">
-    * Use proper heading hierarchy (H1 → H2 → H3)
-    * Write for humans first, search engines second
-    * Include relevant keywords in headings and content
-    * Keep URLs short, descriptive, and organized hierarchically
-    * Break up long content with subheadings and lists
-  </Accordion>
-
-  <Accordion title="Internal linking strategy">
-    * Link to related pages within your documentation
-    * Use descriptive anchor text instead of "click here"
-    * Create topic clusters by linking related concepts
-    * Use the automatic cross-referencing features
-  </Accordion>
-
-  <Accordion title="Image SEO">
-    * Use descriptive file names for images
-    * Always include alt text for accessibility and SEO
-    * Optimize image file sizes for faster loading
-    * Use relevant images that support your content
-  </Accordion>
-</AccordionGroup>
+* **Keyword research:** Use free tools like [Google Keyword Planner](https://ads.google.com/intl/en_us/home/tools/keyword-planner/) or [Keywords Everywhere](https://keywordseverywhere.com) to identify common phrases or long-tail keywords.
+* **Integrate keywords naturally:** Add keywords naturally into headings, subheadings, and throughout the body text. Don't overstuff keywords. Your documentation should be written for your users, not search engines.

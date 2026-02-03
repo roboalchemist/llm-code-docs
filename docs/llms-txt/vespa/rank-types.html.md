@@ -161,7 +161,7 @@ This is used for fields where you do not want matches to have any impact on rele
 
 The empty rank type is also supported by nativeRank.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

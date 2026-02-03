@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/quickstart/build-integration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Build your integration on Zapier
 
 > This guide will walk you through what steps you need to take to build an integration from start to finish. There are no fees to build an integration with Zapier.

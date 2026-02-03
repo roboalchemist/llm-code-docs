@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/jest/no-export.md
 ---
-# jest/no-export&#x20;
 
 ### What it does
 

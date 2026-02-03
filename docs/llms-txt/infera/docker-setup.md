@@ -1,5 +1,9 @@
 # Source: https://docs.infera.org/node/docker-setup.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.infera.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Docker Setup
 
 > How to setup up and run an Infera Node inside of a Docker container.

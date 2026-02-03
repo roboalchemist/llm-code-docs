@@ -2,53 +2,118 @@
 
 # Source: https://upstash.com/docs/search/features/algorithm.md
 
-# Source: https://upstash.com/docs/vector/features/algorithm.md
-
-# Source: https://upstash.com/docs/search/features/algorithm.md
-
-# Source: https://upstash.com/docs/vector/features/algorithm.md
-
-# Source: https://upstash.com/docs/search/features/algorithm.md
-
-# Source: https://upstash.com/docs/vector/features/algorithm.md
-
-# Source: https://upstash.com/docs/search/features/algorithm.md
-
-# Source: https://upstash.com/docs/vector/features/algorithm.md
-
-# Source: https://upstash.com/docs/search/features/algorithm.md
-
-# Source: https://upstash.com/docs/vector/features/algorithm.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Algorithm
 
-## Approximate Nearest Neighbor Search
+Our algorithm combines AI-powered query enhancement, hybrid search techniques, and intelligent reranking to understand user intent (also known as [search intent](https://backlinko.com/hub/seo/search-intent)) and return the most accurate results.
 
-The primary functionality of the vector store is straightforward: identifying the most similar vectors to a given vector.
-While the concept is simple, translating it into a practical product poses significant challenges.
+Upstash Search processes every query through three key stages:
 
-A simple and basic approach to searching in a vector database is to perform an exhaustive search by comparing a query vector to every other vector stored in the database one by one. However, this consumes too many resources and results in very high latencies, making it not very practical. To address this problem, Approximate Nearest Neighbor (`ANN`) algorithms are used. `ANN` search approximates the true nearest neighbor, which means it might not find the absolute closest point, but it will find one that's close enough, with a **low-latency** and by consuming **fewer resources**.
-In the literature, the comparison of the results of `ANNS` with exhaustive search is called the recall rate.
-The higher the recall rate the better the results.
+1. **Input Enrichment**: Enhances the search query using AI to better understand user intent.
+2. **Hybrid Vector Search**: Combines semantic search and full-text search to find relevant documents.
+3. **Reranking**: Uses AI models to reorder results based on relevance.
 
-Several `ANNS` algorithms, such as `HNSW`\[1], `NSG`\[2], and `DiskANN`\[3], are available for use,
-each with its distinct characteristics. One of the difficult problems in ANN algorithms is that indexing and querying vectors may require storing the whole data in memory. When the dataset is huge, then memory requirements for indexing may exceed available memory. `DiskANN` algorithm tries to solve this problem by using disk as the main storage for indexes and for performing queries directly on disk.`DiskANN` paper acknowledges that, if you try to store your vectors
-in disk and use `HNSW` or `NSG`, you may end up with again very high latencies. `DiskANN` is focused
-on serving queries from disk with **low-latency** and **good recall rate**.
-And this helps Upstash Vector to be **cost-effective**, therefore cheaper compared to alternatives.
+### 1. Input Enrichment
 
-Even though `DiskANN` has its advantages, it also requires more work to be practical.
-Main problem is that, you can't insert/update existing index without reindexing all the vectors.
-For this problem, there is another improved paper `FreshDiskANN`\[4]. `FreshDiskANN` improves `DiskANN` via introducing
-a temporary index for up-to-date data in memory. Queries are served from both the temporary (up-to-date) index
-and also from the disk. And these temporary indexes are merged to the disk from time-to-time behind the scene.
+The first stage enhances your search query using a Large Language Model (LLM). This process:
 
-Upstash Vector is based on `DiskANN` and `FreshDiskANN` with more improvements based on our
-tests and observations.
+* Expands the original query with related terms and context
+* Improves understanding of user intent
+* Handles typos and alternative phrasings
+* Adds semantic context that might be missing from the original query
 
-### References
+While input enrichment introduces some latency, it significantly improves search quality.
 
-1. Malkov, Y. A., Yashunin, D. A. (2016). *Efficient and Robust Approximate Nearest Neighbor Search Using Hierarchical Navigable Small World Graphs*. CoRR, abs/1603.09320 (2016). \[[https://arxiv.org/abs/1603.09320](https://arxiv.org/abs/1603.09320)]
-2. Fu, C., Xiang, C., Wang, C., Cai, D. (2019). *Fast Approximate Nearest Neighbor Search with Navigating Spreading-Out Graphs*. Proceedings of the VLDB, 12(5), 461–474. doi: 10.14778/3303753.3303754. \[[https://www.vldb.org/pvldb/vol12/p461-fu.pdf](https://www.vldb.org/pvldb/vol12/p461-fu.pdf)]
-3. Subramanya, S. J., Devvrit, Kadekodi, R., Krishaswamy, R., Simhadri, H. V. (2019). *DiskANN: Fast Accurate Billion-Point Nearest Neighbor Search on a Single Node*. In Proceedings of the 33rd International Conference on Neural Information Processing Systems (NeurIPS '19), Article No.: 1233, Pages 13766–13776. \[[https://dl.acm.org/doi/abs/10.5555/3454287.3455520](https://dl.acm.org/doi/abs/10.5555/3454287.3455520)]
-4. Singh, A., Subramanya, S. J., Krishnaswamy, R., Simhadri, H. V. (2021). *FreshDiskANN: A Fast and Accurate Graph-Based ANN Index for Streaming Similarity Search*. CoRR abs/2105.09613 (2021). \[[https://arxiv.org/abs/2105.09613](https://arxiv.org/abs/2105.09613)]
+Input enrichment is enabled by default. You can disable this feature if you want to preserve the user query for full text-search or if you want to reduce latency.
+
+<CodeGroup>
+  ```typescript TypeScript theme={"system"}
+  const results = await index.search({
+    query: "space opera",
+    inputEnrichment: false // faster but less enhanced results
+  });
+  ```
+
+  ```python Python theme={"system"}
+  results = index.search(
+      query="space opera",
+      input_enrichment=False  # faster but less enhanced results
+  )
+  ```
+</CodeGroup>
+
+### 2. Hybrid Vector Search
+
+The second stage performs hybrid search by combining semantic search and full-text search:
+
+* **Semantic Search**: Uses vector embeddings to understand meaning and context
+* **Full-Text Search**: Performs traditional keyword matching
+* **Result Combination**: Merges results using configurable weights
+
+By default, Upstash Search uses a 75% semantic weight and 25% full-text weight. You can adjust this balance based on your use case:
+
+* Higher semantic weight: Better for conceptual searches and finding related content
+* Lower semantic weight: Better for exact keyword matching and technical queries
+
+<CodeGroup>
+  ```typescript TypeScript theme={"system"}
+  const results = await index.search({
+    query: "artificial intelligence concepts",
+    semanticWeight: 0.9 // 90% semantic, 10% full-text
+  });
+  ```
+
+  ```python Python theme={"system"}
+  results = index.search(
+      query="artificial intelligence concepts",
+      semantic_weight=0.9  # 90% semantic, 10% full-text
+  )
+  ```
+</CodeGroup>
+
+### 3. Reranking
+
+The final stage reranks the hybrid search results using AI models. Upstash Search offers two reranking options:
+
+**Advanced Reranking (`reranking: true`)**
+
+* Uses a powerful, state-of-the-art reranking model
+* Provides the highest quality results
+* Costs \$1 per 1K reranking operations
+* Recommended for applications where search quality is critical
+
+**Standard Reranking (`reranking: false`, default)**
+
+* Uses a simpler, faster reranking model
+* Still provides significant improvements over raw hybrid results
+* No additional cost
+
+<CodeGroup>
+  ```typescript TypeScript theme={"system"}
+  const results = await index.search({
+    query: "complex technical documentation",
+    reranking: true // uses premium reranking model
+  });
+  ```
+
+  ```python Python theme={"system"}
+  results = index.search(
+      query="complex technical documentation",
+      reranking=True  # uses premium reranking model
+  )
+  ```
+</CodeGroup>
+
+## Conclusion
+
+This three-stage approach ensures that Upstash Search:
+
+* **Understands Intent**: Input enrichment helps the system understand what users are really looking for
+* **Finds Relevant Content**: Hybrid search captures both semantic meaning and exact keyword matches
+* **Prioritizes Quality**: Reranking ensures the most relevant results appear first
+* **Stays Flexible**: Each stage can be configured based on your specific needs
+
+The result is a search system that works well across all kinds of content and domains, handling everything from precise technical queries to broad conceptual searches.

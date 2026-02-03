@@ -109,7 +109,7 @@ As buckets are split and joined, it is possible for replicas of a bucket to be s
 - [content nodes](content-nodes.html)
 - [proton](proton.html) - see _ready_ state
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

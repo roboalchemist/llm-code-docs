@@ -55,6 +55,10 @@ Use the `headline` prop to display a headline in the header.
 Use the `links` prop to display a list of [Button](/docs/components/button) in the header.
 
 ```vue
+<script setup lang="ts">
+import type { ButtonProps } from '@nuxt/ui'
+</script>
+
 <template>
   <UPageHeader title="PageHeader" description="A responsive page header with title, description and actions." headline="Components" />
 </template>
@@ -62,11 +66,8 @@ Use the `links` prop to display a list of [Button](/docs/components/button) in t
 
 ## Examples
 
-<note>
-
-While these examples use [Nuxt Content](https://content.nuxt.com), the components can be integrated with any content management system.
-
-</note>
+> [!NOTE]
+> While these examples use [Nuxt Content](https://content.nuxt.com), the components can be integrated with any content management system.
 
 ### Within a page
 
@@ -182,8 +183,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

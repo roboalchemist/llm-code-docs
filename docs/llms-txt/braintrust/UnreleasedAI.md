@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/UnreleasedAI.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Unreleased AI: A full stack Next.js app for generating changelogs
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/UnreleasedAI/UnreleasedAI.mdx) by [Ornella Altunyan](https://twitter.com/ornelladotcom) on 2024-08-28</div>
@@ -53,7 +57,7 @@ Navigate to Braintrust in your browser, and select the project named **Unrelease
 
 <img src="https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/cookbook/assets/UnreleasedAI/prompt.png?fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=bee130575e4074d84dea6b3840addbce" alt="Prompt" data-og-width="1518" width="1518" data-og-height="1326" height="1326" data-path="cookbook/assets/UnreleasedAI/prompt.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/cookbook/assets/UnreleasedAI/prompt.png?w=280&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=183aaa78e381426b64e884f24ea845e6 280w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/cookbook/assets/UnreleasedAI/prompt.png?w=560&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=3ccb8fdef4a5f9ca4e29b86e2a955769 560w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/cookbook/assets/UnreleasedAI/prompt.png?w=840&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=d3d27d4ef2f9c3cccbd9d894479e5766 840w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/cookbook/assets/UnreleasedAI/prompt.png?w=1100&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=043ab1c597fa3faa01122f4c134281a8 1100w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/cookbook/assets/UnreleasedAI/prompt.png?w=1650&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=198b3c5e4fb389d3d138477d48a5547d 1650w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/cookbook/assets/UnreleasedAI/prompt.png?w=2500&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=cbf08bd41f032bf49b49b62f94c2aebb 2500w" />
 
-A [prompt](https://www.braintrust.dev/docs/guides/prompts) is the set of instructions sent to the model, which can be user input or variables set within your code. For example:
+A [prompt](/evaluate/write-prompts) is the set of instructions sent to the model, which can be user input or variables set within your code. For example:
 
 * `url`: the URL of the public GitHub repository provided by the user
 * `since`: the date of the last release of this repository, fetched by the GitHub API in [app/generate/route.ts](https://github.com/braintrustdata/unreleased-ai/blob/b611052e8a4705a098cbccbb71cdaa6cc18f2d35/app/generate/route.ts#L59)
@@ -89,11 +93,11 @@ return await invoke({
 
 To set up streaming and make sure the results are easy to parse, just set `stream` to `true`. The result of the function call is then shown to the user in the frontend of the application.
 
-Running a prompt as an AI function is also a powerful way to automatically set up other Braintrust capabilities. Behind the scenes, Braintrust automatically caches and optimizes the prompt through the [AI proxy](https://www.braintrust.dev/docs/guides/proxy) and logs it to your project, so you can dig into the responses and understand if you need to make any changes. This also makes it easy to change the model in the Braintrust UI, and automatically deploy it to any environment which invokes it.
+Running a prompt as an AI function is also a powerful way to automatically set up other Braintrust capabilities. Behind the scenes, Braintrust automatically caches and optimizes the prompt through the [AI proxy](/deploy/ai-proxy) and logs it to your project, so you can dig into the responses and understand if you need to make any changes. This also makes it easy to change the model in the Braintrust UI, and automatically deploy it to any environment which invokes it.
 
 ### Observability
 
-Traditional observability tools monitor performance and pipeline issues, but generative AI projects require deeper insights to ensure your application works as intended. As you continue using the application to generate changelogs for various GitHub repositories, you’ll notice every function call is [logged](https://www.braintrust.dev/docs/guides/logging), so you can examine the input and output of each call.
+Traditional observability tools monitor performance and pipeline issues, but generative AI projects require deeper insights to ensure your application works as intended. As you continue using the application to generate changelogs for various GitHub repositories, you’ll notice every function call is [logged](/instrument/custom-tracing), so you can examine the input and output of each call.
 
 <img src="https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/cookbook/assets/UnreleasedAI/logs.png?fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=5b595759c1817d36962e8e30a0d02ee8" alt="Logs" data-og-width="3730" width="3730" data-og-height="2160" height="2160" data-path="cookbook/assets/UnreleasedAI/logs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/cookbook/assets/UnreleasedAI/logs.png?w=280&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=eb9e0f6a6e340b3a8e53b6854194fffe 280w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/cookbook/assets/UnreleasedAI/logs.png?w=560&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=4fae2ffc62960373c19b5bcbad6a2abe 560w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/cookbook/assets/UnreleasedAI/logs.png?w=840&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=123ce88eaef6c16cbd4a91572ebaf2ce 840w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/cookbook/assets/UnreleasedAI/logs.png?w=1100&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=4d2c7a0a5394b2766b9508d7ef6c2f7d 1100w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/cookbook/assets/UnreleasedAI/logs.png?w=1650&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=de4ddd0adb5a1f1a8ddc81633bebae14 1650w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/cookbook/assets/UnreleasedAI/logs.png?w=2500&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=723c2e37d88f8ea904e4a29fd6b95f6d 2500w" />
 You may notice that some outputs are better than others– so how can we optimize our application to have a great response every time? And how can we classify which outputs are good or bad?
@@ -124,7 +128,7 @@ Writing a prompt to use for these types of evaluations is difficult. In fact, it
 
 ### Evals
 
-Now, let’s use the comprehensiveness scorer to create a feedback loop that allows us to iterate on our prompt and make sure we’re shipping a reliable, high quality product. In Braintrust, you can run evaluations, or [Evals](https://www.braintrust.dev/docs/guides/evals/run), if you have a Task, Scores, and Dataset. We have a task, which is the `invoke` function we’re calling in our app. We have scores, the comprehensiveness function we just defined to assess the quality of our function outputs. The final piece we need to run evaluations is a [dataset](https://www.braintrust.dev/docs/guides/datasets).
+Now, let’s use the comprehensiveness scorer to create a feedback loop that allows us to iterate on our prompt and make sure we’re shipping a reliable, high quality product. In Braintrust, you can run evaluations, or [Evals](/evaluate/run-evaluations), if you have a Task, Scores, and Dataset. We have a task, which is the `invoke` function we’re calling in our app. We have scores, the comprehensiveness function we just defined to assess the quality of our function outputs. The final piece we need to run evaluations is a [dataset](/annotate/datasets).
 
 #### Datasets
 
@@ -160,7 +164,7 @@ Running `pnpm eval` will execute the evaluations defined in [changelog.eval.ts](
 
 <img src="https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/cookbook/assets/UnreleasedAI/developer-workflow.png?fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=7afed416a4dd4adcdccc52be54539acd" alt="Developer workflow" data-og-width="2298" width="2298" data-og-height="1212" height="1212" data-path="cookbook/assets/UnreleasedAI/developer-workflow.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/cookbook/assets/UnreleasedAI/developer-workflow.png?w=280&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=05c3398068b79f73ebc0f977c8248423 280w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/cookbook/assets/UnreleasedAI/developer-workflow.png?w=560&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=45e990dd8288d7f324248ffbebc667b1 560w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/cookbook/assets/UnreleasedAI/developer-workflow.png?w=840&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=4bf0ee828a280e20c7f6ec5f2393aef8 840w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/cookbook/assets/UnreleasedAI/developer-workflow.png?w=1100&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=d5533a191984deb795ab98a73b4231f6 1100w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/cookbook/assets/UnreleasedAI/developer-workflow.png?w=1650&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=f4784025b40fa9b7101ca9ec64b2ae33 1650w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/cookbook/assets/UnreleasedAI/developer-workflow.png?w=2500&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=dfe6c913ef1aa9d1207ff91e7801abd1 2500w" />
 
-It’s time to [interpret your results](https://www.braintrust.dev/docs/guides/evals/interpret). Examine the comprehensiveness scores and other feedback generated by your evals.
+It’s time to [interpret your results](/evaluate/interpret-results). Examine the comprehensiveness scores and other feedback generated by your evals.
 
 <img src="https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/cookbook/assets/UnreleasedAI/evals.png?fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=d6b131d737f83287756627ac1ab0c917" alt="Evals" data-og-width="4393" width="4393" data-og-height="2160" height="2160" data-path="cookbook/assets/UnreleasedAI/evals.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/cookbook/assets/UnreleasedAI/evals.png?w=280&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=59648a521832a9a523bc4a313657ed34 280w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/cookbook/assets/UnreleasedAI/evals.png?w=560&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=0ce92b420b3099675ed282b888cca646 560w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/cookbook/assets/UnreleasedAI/evals.png?w=840&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=18124e7fb1d20c06538902f7c3e2d3b4 840w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/cookbook/assets/UnreleasedAI/evals.png?w=1100&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=7b96eaf1b8903dc3e7c4c49171f627ac 1100w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/cookbook/assets/UnreleasedAI/evals.png?w=1650&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=b78aa42e6e0408449f5a24f6635f8fe5 1650w, https://mintcdn.com/braintrust/F-xMKk7Z5-KPa9n1/cookbook/assets/UnreleasedAI/evals.png?w=2500&fit=max&auto=format&n=F-xMKk7Z5-KPa9n1&q=85&s=4553244c3a7f2ee09e746e048f154c9f 2500w" />
 
@@ -170,11 +174,6 @@ Based on these insights, you can make informed decisions on how to improve your 
 
 As you build more complex AI products, you’ll want to customize Braintrust even more for your use case. You might consider:
 
-* [Writing more specific evals](/core/experiments/write) or learning about [different scoring functions](/core/experiments/write#scorers)
+* [Writing more specific evals](/evaluate/run-evaluations) or learning about [different scoring functions](/evaluate/run-evaluations#scorers)
 * Walking through other examples of best practices for building high-quality AI products in the [Braintrust cookbook](/cookbook)
-* Changing how you [log data](/core/logs), including [incorporating user feedback](/core/logs#user-feedback)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt
+* Changing how you [log data](/observe/view-logs), including [incorporating user feedback](/observe/view-logs#user-feedback)

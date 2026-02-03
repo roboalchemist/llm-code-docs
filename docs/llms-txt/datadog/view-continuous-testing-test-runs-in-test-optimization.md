@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Continuous Testing > Continuous Testing Guides > View Continuous
   Testing Test Runs in Test Optimization
-source_url: >-
-  https://docs.datadoghq.com/guide/view-continuous-testing-test-runs-in-test-optimization/index.html
 ---
 
 # View Continuous Testing Test Runs in Test Optimization

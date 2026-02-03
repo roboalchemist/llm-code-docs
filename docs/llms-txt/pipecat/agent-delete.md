@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/agent-delete.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete an Agent
 
 > Permanently delete an agent and its associated resources.
@@ -91,7 +95,3 @@ components:
         Authorization header.
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

@@ -4,13 +4,14 @@
 
 # Source: https://docs.datadoghq.com/tracing/metrics.md
 
+# Source: https://docs.datadoghq.com/api/latest/metrics.md
+
 # Source: https://docs.datadoghq.com/metrics.md
 
 ---
 title: Metrics
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Metrics
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Metrics

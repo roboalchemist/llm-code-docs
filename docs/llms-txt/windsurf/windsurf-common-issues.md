@@ -1,6 +1,12 @@
 # Source: https://docs.windsurf.com/troubleshooting/windsurf-common-issues.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Common Windsurf Issues
+
+> Troubleshoot common Windsurf Editor issues including rate limiting, MacOS security warnings, Windows updates, Linux crashes, and terminal problems.
 
 ### General FAQ
 
@@ -115,3 +121,53 @@ We cannot auto-update Windsurf when it is run as Administrator. Please re-run Wi
 ### My Cascade panel goes blank
 
 Please reach out to us if this happens! A screen recording would be much appreciated. This can often be solved by clearing your chat history (`~/.codeium/windsurf/cascade`).
+
+### Terminal session appears stuck in Cascade
+
+If a terminal command has finished running in the terminal but Cascade still shows the session as in progress or stuck, this can be caused by several issues:
+
+**Default terminal profile not set**
+
+This may be caused by the default terminal profile not being explicitly set. To resolve this, you can set the default terminal profile in your Editor settings.
+
+Open the Settings UI (Cmd/Ctrl + ,), search for "terminal default profile", and set the appropriate value for your operating system. Alternatively, you can add the following to your `settings.json`:
+
+For macOS:
+
+```json  theme={null}
+"terminal.integrated.defaultProfile.osx": "zsh"
+```
+
+For Windows:
+
+```json  theme={null}
+"terminal.integrated.defaultProfile.windows": "PowerShell"
+```
+
+For Linux:
+
+```json  theme={null}
+"terminal.integrated.defaultProfile.linux": "bash"
+```
+
+Replace the value with your preferred shell (e.g., `bash`, `zsh`, `PowerShell`, `Command Prompt`, etc.).
+
+**Customized zsh themes**
+
+In some cases, a heavily customized zsh theme (for example, themes from Oh My Zsh, Powerlevel10k, or other prompt frameworks) can also cause Cascade to think a command is still running even after it finishes. To check if this is the issue:
+
+1. Open your `~/.zshrc` file in a text editor.
+2. Temporarily disable your theme by commenting out lines that set or load it, such as `ZSH_THEME="..."`, `source ~/.p10k.zsh`, or `eval "$(oh-my-posh init zsh)"`.
+3. Save the file, restart Windsurf (or open a new terminal in Windsurf), and run a command again.
+
+If the terminal session no longer appears stuck in Cascade, you can either keep a simpler theme in `~/.zshrc`, or create a separate, minimal zsh configuration used only by the Windsurf terminal so your other terminals can continue using the more complex theme.
+
+**Systemd terminal context tracking (Linux)**
+
+On some newer Linux distributions (reported on Fedora 43 and later), the shell startup chain (`~/.bashrc` → `/etc/bashrc` → `/etc/profile.d/80-systemd-osc-context.sh`) can enable systemd "terminal context tracking," which emits OSC 3008 escape sequences via `PS0` or `PROMPT_COMMAND`. These extra control sequences can interfere with Cascade's output parsing, causing a command to appear stuck or resulting in captured output that looks missing or truncated—even though the terminal displays it correctly.
+
+To work around this issue, prevent the OSC context sequences from being emitted in the Cascade terminal by not sourcing `/etc/bashrc` from your `~/.bashrc`, or by creating a minimal shell configuration file used only for Windsurf/Cascade.
+
+### Docker Container Not Visible in Remote Explorer When Using WSL
+
+When connecting to Docker containers inside WSL, the remote explorer window may not display available containers to connect to, requiring users to use the command palette workaround. Use Cmd+P (macOS) or Ctrl+P (Windows) → "Dev Containers: Attach to Running Container" to see the full list of running containers.

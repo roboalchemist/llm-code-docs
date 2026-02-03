@@ -31,6 +31,9 @@ This API enables you to better monitor, analyze, and optimize your Claude implem
 Leading observability platforms offer ready-to-use integrations for monitoring your Claude API usage and cost, without writing custom code. These integrations provide dashboards, alerting, and analytics to help you manage your API usage effectively.
 
 <CardGroup cols={3}>
+  <Card title="CloudZero" icon="chart" href="https://docs.cloudzero.com/docs/connections-anthropic">
+    Cloud intelligence platform for tracking and forecasting costs
+  </Card>
   <Card title="Datadog" icon="chart" href="https://docs.datadoghq.com/integrations/anthropic/">
     LLM Observability with automatic tracing and monitoring
   </Card>
@@ -39,6 +42,9 @@ Leading observability platforms offer ready-to-use integrations for monitoring y
   </Card>
   <Card title="Honeycomb" icon="polygon" href="https://docs.honeycomb.io/integrations/anthropic-usage-monitoring/">
     Advanced querying and visualization through OpenTelemetry
+  </Card>
+  <Card title="Vantage" icon="chart" href="https://docs.vantage.sh/connecting_anthropic">
+    FinOps platform for LLM cost & usage observability
   </Card>
 </CardGroup>
 
@@ -194,7 +200,7 @@ page=page_xyz..." \
 
 ## Common use cases
 
-Explore detailed implementations in [anthropic-cookbook](https://github.com/anthropics/anthropic-cookbook):
+Explore detailed implementations in [Claude Cookbook](https://platform.claude.com/cookbooks):
 
 - **Daily usage reports**: Track token consumption trends
 - **Cost attribution**: Allocate expenses by workspace for chargebacks

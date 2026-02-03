@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/install/npm-alias.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Install a package under a different name
 
 To install an npm package under an alias:
@@ -20,4 +24,4 @@ z.string();
 
 ***
 
-See [Docs > Package manager](https://bun.com/docs/cli/install) for complete documentation of Bun's package manager.
+See [Docs > Package manager](/pm/cli/install) for complete documentation of Bun's package manager.

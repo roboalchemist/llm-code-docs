@@ -6,7 +6,6 @@ description: >-
   Understand Datadog pricing models and billing calculations for various
   products including Infrastructure Monitoring, APM, Logs, and Synthetic Tests.
 breadcrumbs: Docs > Account Management > Billing > Pricing
-source_url: https://docs.datadoghq.com/billing/pricing/index.html
 ---
 
 # Pricing

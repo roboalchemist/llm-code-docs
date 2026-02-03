@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/tutorials/laravel_caching.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Caching in Laravel with Redis
 
 ## Project Setup

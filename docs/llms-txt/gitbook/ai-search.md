@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/ai-search.md
-
-# Source: https://gitbook.com/docs/documentation/fr/publishing-documentation/ai-search.md
-
-# Source: https://gitbook.com/docs/publishing-documentation/ai-search.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/publishing-documentation/ai-search.md
 
 # Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/ai-search.md
 
@@ -24,7 +20,7 @@ GitBook sites offer different search experiences depending on what you want for 
 
 To choose your site’s search experience, open your site’s dashboard, navigate to the **Settings** page and choose **AI & MCP** from the menu on the left. Here you can choose your preferred experience.
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FZLKjSnbd8AfcHZEDkQIJ%2F29_07_25_search_ai.svg?alt=media&#x26;token=82ca3fbb-0dee-407a-9bf7-b2473b774e06" alt=""><figcaption><p>Choose the search experience you want in your published docs</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F5cY9RzSSxcpFm2oSNNk8%2F26_01_06_search_ai%402x.png?alt=media&#x26;token=a98ba8a4-3179-4cb7-984b-882a8f87f057" alt=""><figcaption><p>Choose the search experience you want in your published docs</p></figcaption></figure>
 
 {% hint style="warning" %}
 When GitBook Assistant is enabled, AI search is disabled. Standard keyword searches will always provide the results in the search bar no matter which experience you choose.
@@ -61,9 +57,9 @@ Multi-space search is only available when viewing published spaces that live as 
 {% endhint %}
 
 * Press <kbd>⌘</kbd> + <kbd>I</kbd> on Mac or <kbd>Ctrl</kbd> + <kbd>I</kbd> on PC
-* Click the **GitBook Assistant**&#x20;
+* Click the **GitBook Assistant**
 
   <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FFdcFnImj64xwVYVPFZZp%2Fgitbook-assistant-dark.svg?alt=media&#x26;token=6d5690e2-8587-4646-886a-dfd49caee6d5" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FRPCVZqnhQlwvRJbvEgM9%2Fgitbook-assistant.svg?alt=media&#x26;token=0506ce84-b363-481b-aefb-e0fa47357226" alt=""></picture>
 
-  &#x20;button next to the **Ask or search…** bar
+  button next to the **Ask or search…** bar
 * Type a question into the **Ask or search…** bar and choose the ‘Ask…’ option at the top of the menu.

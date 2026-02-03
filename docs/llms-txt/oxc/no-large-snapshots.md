@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/jest/no-large-snapshots.md
 ---
-# jest/no-large-snapshots&#x20;
 
 ### What it does
 
@@ -17,7 +16,7 @@ size in order to be more manageable and reviewable. A stored snapshot is only as
 good as its review and as such keeping it short, sweet, and readable is
 important to allow for thorough reviews.
 
-### Example
+### Examples
 
 Examples of **incorrect** code for this rule:
 

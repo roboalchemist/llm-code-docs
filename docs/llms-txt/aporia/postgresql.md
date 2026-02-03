@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/data-sources/postgresql.md
 
-# Source: https://docs.aporia.com/data-sources/postgresql.md
-
-# Source: https://docs.aporia.com/v1/data-sources/postgresql.md
-
 # PostgreSQL
 
 This guide describes how to connect Aporia to an PostgreSQL data source in order to monitor a new ML Model in production.&#x20;

@@ -1,3 +1,5 @@
+# Source: https://embednotionpages.com/blog/notion-feature-iframe-embed
+
 # The New Notion Embed & iFrame Feature
 
 In February 2025, Notion launched a new feature: you can now embed Notion pages and forms into websites using iframes.

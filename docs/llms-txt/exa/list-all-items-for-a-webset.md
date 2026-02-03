@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/websets/api/websets/items/list-all-items-for-a-webset.md
+# Source: https://exa.ai/docs/websets/api/websets/items/list-all-items-for-a-webset.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # List all Items for a Webset
 
@@ -6,160 +10,191 @@
 
 You can paginate through the Items using the `cursor` parameter.
 
+
+
 ## OpenAPI
 
 ````yaml get /v0/websets/{webset}/items
+openapi: 3.1.0
+info:
+  title: Websets
+  description: ''
+  version: '0'
+  contact: {}
+servers:
+  - url: https://api.exa.ai/websets/
+    description: Production
+security: []
+tags: []
 paths:
-  path: /v0/websets/{webset}/items
-  method: get
-  servers:
-    - url: https://api.exa.ai/websets/
-      description: Production
-  request:
-    security:
-      - title: api key
-        parameters:
-          query: {}
-          header:
-            x-api-key:
-              type: apiKey
-              description: Your Exa API key
-          cookie: {}
-    parameters:
-      path:
-        webset:
+  /v0/websets/{webset}/items:
+    get:
+      tags:
+        - Items
+      summary: List all Items for a Webset
+      description: |-
+        Returns a list of Webset Items.
+
+        You can paginate through the Items using the `cursor` parameter.
+      operationId: websets-items-list
+      parameters:
+        - name: webset
+          required: true
+          in: path
+          description: The id or externalId of the Webset
           schema:
-            - type: string
+            type: string
+        - name: cursor
+          required: false
+          in: query
+          description: The cursor to paginate through the results
+          schema:
+            minLength: 1
+            type: string
+        - name: limit
+          required: false
+          in: query
+          description: The number of results to return
+          schema:
+            minimum: 1
+            maximum: 100
+            default: 20
+            type: number
+        - name: sourceId
+          required: false
+          in: query
+          description: The id of the source
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Webset Items
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListWebsetItemResponse'
+          headers:
+            X-Request-Id:
+              schema:
+                type: string
+              description: Unique identifier for the request.
+              example: req_N6SsgoiaOQOPqsYKKiw5
               required: true
-              description: The id or externalId of the Webset
-      query:
-        cursor:
-          schema:
-            - type: string
-              required: false
-              description: The cursor to paginate through the results
-              minLength: 1
-        limit:
-          schema:
-            - type: number
-              required: false
-              description: The number of results to return
-              maximum: 100
-              minimum: 1
-              default: 20
-        sourceId:
-          schema:
-            - type: string
-              required: false
-              description: The id of the source
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: JavaScript
-        lang: javascript
-        source: |-
-          // npm install exa-js
-          import Exa from 'exa-js';
-          const exa = new Exa('YOUR_EXA_API_KEY');
-
-          const items = await exa.websets.items.list('webset_id', {
-            limit: 20
-          });
-
-          console.log(`Found ${items.data.length} items`);
-          items.data.forEach(item => {
-            console.log(`- ${item.id}: ${item.properties.name}`);
-          });
-      - label: Python
-        lang: python
-        source: |-
-          # pip install exa-py
-          from exa_py import Exa
-          exa = Exa('YOUR_EXA_API_KEY')
-
-          items = exa.websets.items.list('webset_id', limit=20)
-
-          print(f'Found {len(items.data)} items')
-          for item in items.data:
-              print(f'- {item.id}: {item.properties.name}')
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type:
-                      - array
-                    items:
-                      type:
-                        - object
-                      $ref: '#/components/schemas/WebsetItem'
-                    description: The list of webset items
-              hasMore:
-                allOf:
-                  - type:
-                      - boolean
-                    description: Whether there are more Items to paginate through
-              nextCursor:
-                allOf:
-                  - type: string
-                    description: The cursor to paginate through the next set of Items
-                    nullable: true
-            refIdentifier: '#/components/schemas/ListWebsetItemResponse'
-            requiredProperties:
-              - data
-              - hasMore
-              - nextCursor
-        examples:
-          example:
-            value:
-              data:
-                - id: <string>
-                  object: webset_item
-                  source: search
-                  sourceId: <string>
-                  websetId: <string>
-                  properties:
-                    type: person
-                    url: <string>
-                    description: <string>
-                    person:
-                      name: <string>
-                      location: <string>
-                      position: <string>
-                      company:
-                        name: <string>
-                        location: <string>
-                      pictureUrl: <string>
-                  evaluations:
-                    - criterion: <string>
-                      reasoning: <string>
-                      satisfied: 'yes'
-                      references: []
-                  enrichments:
-                    - object: enrichment_result
-                      status: pending
-                      format: text
-                      result:
-                        - <string>
-                      reasoning: <string>
-                      references:
-                        - title: <string>
-                          snippet: <string>
-                          url: <string>
-                      enrichmentId: <string>
-                  createdAt: '2023-11-07T05:31:56Z'
-                  updatedAt: '2023-11-07T05:31:56Z'
-              hasMore: true
-              nextCursor: <string>
-        description: Webset Items
-  deprecated: false
-  type: path
+      security:
+        - api_key: []
 components:
   schemas:
+    ListWebsetItemResponse:
+      type:
+        - object
+      properties:
+        data:
+          type:
+            - array
+          items:
+            $ref: '#/components/schemas/WebsetItem'
+            type:
+              - object
+          description: The list of webset items
+        hasMore:
+          type:
+            - boolean
+          description: Whether there are more Items to paginate through
+        nextCursor:
+          type: string
+          description: The cursor to paginate through the next set of Items
+          nullable: true
+      required:
+        - data
+        - hasMore
+        - nextCursor
+    WebsetItem:
+      type:
+        - object
+      properties:
+        id:
+          type:
+            - string
+          description: The unique identifier for the Webset Item
+        object:
+          type: string
+          const: webset_item
+          default: webset_item
+        source:
+          type:
+            - string
+          enum:
+            - search
+            - import
+          description: The source of the Item
+        sourceId:
+          type:
+            - string
+          description: The unique identifier for the source
+        websetId:
+          type:
+            - string
+          description: The unique identifier for the Webset this Item belongs to.
+        properties:
+          oneOf:
+            - $ref: '#/components/schemas/WebsetItemPersonProperties'
+              type:
+                - object
+              title: Person
+            - $ref: '#/components/schemas/WebsetItemCompanyProperties'
+              type:
+                - object
+              title: Company
+            - $ref: '#/components/schemas/WebsetItemArticleProperties'
+              type:
+                - object
+              title: Article
+            - $ref: '#/components/schemas/WebsetItemResearchPaperProperties'
+              type:
+                - object
+              title: Research Paper
+            - $ref: '#/components/schemas/WebsetItemCustomProperties'
+              type:
+                - object
+              title: Custom
+          description: The properties of the Item
+        evaluations:
+          type:
+            - array
+          items:
+            $ref: '#/components/schemas/WebsetItemEvaluation'
+            type:
+              - object
+          description: The criteria evaluations of the item
+        enrichments:
+          type: array
+          items:
+            $ref: '#/components/schemas/EnrichmentResult'
+            type:
+              - object
+          description: The enrichments results of the Webset item
+          nullable: true
+        createdAt:
+          type:
+            - string
+          format: date-time
+          description: The date and time the item was created
+        updatedAt:
+          type:
+            - string
+          format: date-time
+          description: The date and time the item was last updated
+      required:
+        - id
+        - object
+        - source
+        - sourceId
+        - websetId
+        - properties
+        - evaluations
+        - enrichments
+        - createdAt
+        - updatedAt
     WebsetItemPersonProperties:
       type:
         - object
@@ -501,9 +536,9 @@ components:
             - canceled
           description: The status of the enrichment result.
         format:
+          $ref: '#/components/schemas/WebsetEnrichmentFormat'
           type:
             - string
-          $ref: '#/components/schemas/WebsetEnrichmentFormat'
         result:
           type: array
           items:
@@ -552,93 +587,6 @@ components:
         - reasoning
         - references
         - enrichmentId
-    WebsetItem:
-      type:
-        - object
-      properties:
-        id:
-          type:
-            - string
-          description: The unique identifier for the Webset Item
-        object:
-          type: string
-          const: webset_item
-          default: webset_item
-        source:
-          type:
-            - string
-          enum:
-            - search
-            - import
-          description: The source of the Item
-        sourceId:
-          type:
-            - string
-          description: The unique identifier for the source
-        websetId:
-          type:
-            - string
-          description: The unique identifier for the Webset this Item belongs to.
-        properties:
-          oneOf:
-            - type:
-                - object
-              $ref: '#/components/schemas/WebsetItemPersonProperties'
-              title: Person
-            - type:
-                - object
-              $ref: '#/components/schemas/WebsetItemCompanyProperties'
-              title: Company
-            - type:
-                - object
-              $ref: '#/components/schemas/WebsetItemArticleProperties'
-              title: Article
-            - type:
-                - object
-              $ref: '#/components/schemas/WebsetItemResearchPaperProperties'
-              title: Research Paper
-            - type:
-                - object
-              $ref: '#/components/schemas/WebsetItemCustomProperties'
-              title: Custom
-          description: The properties of the Item
-        evaluations:
-          type:
-            - array
-          items:
-            type:
-              - object
-            $ref: '#/components/schemas/WebsetItemEvaluation'
-          description: The criteria evaluations of the item
-        enrichments:
-          type: array
-          items:
-            type:
-              - object
-            $ref: '#/components/schemas/EnrichmentResult'
-          description: The enrichments results of the Webset item
-          nullable: true
-        createdAt:
-          type:
-            - string
-          format: date-time
-          description: The date and time the item was created
-        updatedAt:
-          type:
-            - string
-          format: date-time
-          description: The date and time the item was last updated
-      required:
-        - id
-        - object
-        - source
-        - sourceId
-        - websetId
-        - properties
-        - evaluations
-        - enrichments
-        - createdAt
-        - updatedAt
     WebsetEnrichmentFormat:
       type: string
       enum:
@@ -649,9 +597,11 @@ components:
         - email
         - phone
         - url
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Your Exa API key
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

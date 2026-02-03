@@ -8,7 +8,7 @@
 
 ## Understand Actor builds
 
-Before an Actor can be run, it needs to be built. The build process creates a snapshot of a specific version of the Actor's settings, including its https://docs.apify.com/platform/actors/development/actor-definition/source-code.md and https://docs.apify.com/platform/actors/development/programming-interface/environment-variables.md. This snapshot is then used to create a Docker image containing everything the Actor needs for its run, such as `npm` packages, web browsers, etc.
+Before an Actor can be run, it needs to be built. The build process creates a snapshot of a specific version of the Actor's settings, including its [source code](https://docs.apify.com/platform/actors/development/actor-definition/source-code.md) and [environment variables](https://docs.apify.com/platform/actors/development/programming-interface/environment-variables.md). This snapshot is then used to create a Docker image containing everything the Actor needs for its run, such as `npm` packages, web browsers, etc.
 
 ### Build numbers
 
@@ -24,11 +24,11 @@ By default, builds have the following resource allocations:
 * Timeout: *1800* seconds
 * Memory: `4096 MB`
 
-Check out the https://docs.apify.com/platform/actors/running.md section for more details.
+Check out the [Resource limits](https://docs.apify.com/platform/actors/running.md) section for more details.
 
 ## Versioning
 
-To support active development, Actors can have multiple versions of source code and associated settings, such as the base image and environment. Each version is denoted by a version number of the form *MAJOR.MINOR*, following https://semver.org/ principles.
+To support active development, Actors can have multiple versions of source code and associated settings, such as the base image and environment. Each version is denoted by a version number of the form *MAJOR.MINOR*, following [Semantic Versioning](https://semver.org/) principles.
 
 For example, an Actor might have:
 

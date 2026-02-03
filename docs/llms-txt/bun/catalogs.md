@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/pm/catalogs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Catalogs
 
 > Share common dependency versions across multiple packages in a monorepo

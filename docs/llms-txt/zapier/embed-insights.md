@@ -2,21 +2,9 @@
 
 # Source: https://docs.zapier.com/platform/manage/embed-insights.md
 
-# Source: https://docs.zapier.com/powered-by-zapier/embedding-zapier/embed-insights.md
-
-# Source: https://docs.zapier.com/platform/manage/embed-insights.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/embedding-zapier/embed-insights.md
-
-# Source: https://docs.zapier.com/platform/manage/embed-insights.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/embedding-zapier/embed-insights.md
-
-# Source: https://docs.zapier.com/platform/manage/embed-insights.md
-
-# Source: https://docs.zapier.com/powered-by-zapier/embedding-zapier/embed-insights.md
-
-# Source: https://docs.zapier.com/platform/manage/embed-insights.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Embed insights definitions
 

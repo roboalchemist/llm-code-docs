@@ -6,22 +6,6 @@
 
 # Source: https://platform.claude.com/docs/en/api/admin/api_keys/update.md
 
-# Source: https://platform.claude.com/docs/en/api/admin/workspaces/members/update.md
-
-# Source: https://platform.claude.com/docs/en/api/admin/workspaces/update.md
-
-# Source: https://platform.claude.com/docs/en/api/admin/users/update.md
-
-# Source: https://platform.claude.com/docs/en/api/admin/api_keys/update.md
-
-# Source: https://platform.claude.com/docs/en/api/admin/workspaces/members/update.md
-
-# Source: https://platform.claude.com/docs/en/api/admin/workspaces/update.md
-
-# Source: https://platform.claude.com/docs/en/api/admin/users/update.md
-
-# Source: https://platform.claude.com/docs/en/api/admin/api_keys/update.md
-
 ## Update
 
 **post** `/v1/organizations/api_keys/{api_key_id}`

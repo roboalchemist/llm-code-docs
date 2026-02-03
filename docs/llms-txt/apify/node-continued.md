@@ -1,14 +1,16 @@
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction/node-continued.md
 
-# Source: https://docs.apify.com/academy/web-scraping-for-beginners/data-extraction/node-continued.md
-
 # Extracting data with Node.js
 
 **Continue learning how to create a web scraper with Node.js and Cheerio. Learn how to parse HTML and print the results of the data your scraper has collected.**
 
+Archived course
+
+This is an archive of our old course. Check out our new [Web scraping basics for JavaScript devs](https://docs.apify.com/academy/scraping-basics-javascript.md) course instead! We plan to completely retire this old course in a few months.
+
 ***
 
-In the first part of the Node.js tutorial we downloaded the HTML of our https://warehouse-theme-metal.myshopify.com/collections/sales and parsed it with Cheerio. Now, we will replicate the extraction logic from the https://docs.apify.com/academy/web-scraping-for-beginners/data-extraction/using-devtools.md lessons and finish our scraper.
+In the first part of the Node.js tutorial we downloaded the HTML of our [Warehouse store](https://warehouse-theme-metal.myshopify.com/collections/sales) and parsed it with Cheerio. Now, we will replicate the extraction logic from the [Extracting Data with DevTools](https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction/using-devtools.md) lessons and finish our scraper.
 
 ## Querying data with Cheerio
 
@@ -110,7 +112,7 @@ for (const product of products) {
 ```
 
 
-The main difference is that we used the https://cheerio.js.org/classes/Cheerio.html#find function to select the title and price elements and also the `.contents()` function instead of the `childNodes` attribute. If you find the differences confusing, don't worry about it. It will begin to feel very natural after a bit of practice.
+The main difference is that we used the [.find()](https://cheerio.js.org/classes/Cheerio.html#find) function to select the title and price elements and also the `.contents()` function instead of the `childNodes` attribute. If you find the differences confusing, don't worry about it. It will begin to feel very natural after a bit of practice.
 
 The final scraper code looks like this. Replace the code in your **main.js** file with this code and run it using `node main.js` in your terminal.
 
@@ -186,4 +188,4 @@ Congratulations! You completed the **Basics of data extraction** section of the 
 
 Great job! 👏🎉
 
-What's next? While we were able to extract the data, it's not super useful to have it printed to the terminal. In the https://docs.apify.com/academy/web-scraping-for-beginners/data-extraction/save-to-csv.md, we will learn how to convert the data to a CSV and save it to a file.
+What's next? While we were able to extract the data, it's not super useful to have it printed to the terminal. In the [next, bonus lesson](https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction/save-to-csv.md), we will learn how to convert the data to a CSV and save it to a file.

@@ -1,3 +1,7 @@
+# Source: https://www.promptfoo.dev/docs/providers/helicone/
+
+# Source: https://www.promptfoo.dev/docs/integrations/helicone/
+
 # helicone
 
 Helicone integration

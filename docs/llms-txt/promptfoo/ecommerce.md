@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/ecommerce/
+
 # E-commerce Red Teaming Plugins
 
 The e-commerce red teaming plugins are designed to test AI systems deployed in online retail contexts for critical vulnerabilities that could result in financial loss, regulatory violations, or fraud. These plugins target the unique risks that arise when AI handles payment data, pricing, compliance restrictions, and order management.

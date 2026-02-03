@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/sql-injection/
+
 # SQL Injection Plugin
 
 The SQL Injection red teaming plugin is designed to test an AI system's vulnerability to attacks that attempt to execute unauthorized database queries.

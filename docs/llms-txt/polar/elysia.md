@@ -1,18 +1,52 @@
 # Source: https://polar.sh/docs/integrate/sdk/adapters/elysia.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Elysia
 
 > Payments and Checkouts made dead simple with Elysia
 
-```bash  theme={null}
-pnpm install @polar-sh/elysia zod
-```
+## Examples
+
+* [With Elysia](https://github.com/polarsource/examples/tree/main/with-elysia)
+
+## Installation
+
+Install the required Polar packages using the following command:
+
+<Tabs>
+  <Tab title="npm">
+    ```bash Terminal theme={null}
+    npm install zod @polar-sh/elysia
+    ```
+  </Tab>
+
+  <Tab title="yarn">
+    ```bash Terminal theme={null}
+    yarn add zod @polar-sh/elysia
+    ```
+  </Tab>
+
+  <Tab title="pnpm">
+    ```bash Terminal theme={null}
+    pnpm add zod @polar-sh/elysia
+    ```
+  </Tab>
+
+  <Tab title="bun">
+    ```bash Terminal theme={null}
+    bun add zod @polar-sh/elysia
+    ```
+  </Tab>
+</Tabs>
 
 ### Checkout
 
 Create a Checkout handler which takes care of redirections.
 
-```typescript  theme={null}
+```typescript icon="square-js"  theme={null}
 import { Elysia } from "elysia";
 import { Checkout } from "@polar-sh/elysia";
 
@@ -45,7 +79,7 @@ Pass query params to this route.
 
 Create a customer portal where your customer can view orders and subscriptions.
 
-```typescript  theme={null}
+```typescript icon="square-js"  theme={null}
 import { Elysia } from "elysia";
 import { CustomerPortal } from "@polar-sh/elysia";
 
@@ -66,7 +100,7 @@ app.get(
 
 A simple utility which resolves incoming webhook payloads by signing the webhook secret properly.
 
-```typescript  theme={null}
+```typescript icon="square-js"  theme={null}
 import { Elysia } from 'elysia'
 import { Webhooks } from "@polar-sh/elysia";
 

@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/plans/charges/arrears-vs-advance.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Arrears vs Advance
 
 > Usage-based charges can be either charged in advance or in arrears

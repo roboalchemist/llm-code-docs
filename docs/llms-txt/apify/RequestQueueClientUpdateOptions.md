@@ -2,6 +2,8 @@
 
 # RequestQueueClientUpdateOptions<!-- -->
 
+Options for updating a Request Queue.
+
 ## Index[**](#Index)
 
 ### Properties
@@ -12,7 +14,7 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#generalAccess)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L586)optionalgeneralAccess
+### [**](#generalAccess)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L843)optionalgeneralAccess
 
 **generalAccess?
 
@@ -20,7 +22,7 @@
 
 : null | STORAGE\_GENERAL\_ACCESS
 
-### [**](#name)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L584)optionalname
+### [**](#name)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L841)optionalname
 
 **name?
 
@@ -28,7 +30,7 @@
 
 : null | string
 
-### [**](#title)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L585)optionaltitle
+### [**](#title)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L842)optionaltitle
 
 **title?
 

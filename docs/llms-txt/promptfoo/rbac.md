@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/rbac/
+
 # Role-Based Access Control (RBAC) Plugin
 
 The RBAC (Role-Based Access Control) red teaming plugin is designed to test an AI system's ability to maintain proper authorization controls for different user roles.

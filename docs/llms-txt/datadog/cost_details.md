@@ -6,7 +6,6 @@ description: >-
   Track Datadog costs with cost summaries and chargebacks, including projected
   monthly costs, historical data, and multi-organization cost allocation.
 breadcrumbs: Docs > Account Management > Plan and Usage Settings > Cost Details
-source_url: https://docs.datadoghq.com/plan_and_usage/cost_details/index.html
 ---
 
 # Cost Details

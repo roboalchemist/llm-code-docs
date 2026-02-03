@@ -2,17 +2,9 @@
 
 # Source: https://bun.com/docs/guides/install/workspaces.md
 
-# Source: https://bun.com/docs/pm/workspaces.md
-
-# Source: https://bun.com/docs/guides/install/workspaces.md
-
-# Source: https://bun.com/docs/pm/workspaces.md
-
-# Source: https://bun.com/docs/guides/install/workspaces.md
-
-# Source: https://bun.com/docs/pm/workspaces.md
-
-# Source: https://bun.com/docs/guides/install/workspaces.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Configuring a monorepo using workspaces
 
@@ -79,4 +71,4 @@ bun add zod
 
 ***
 
-See [Docs > Package manager](https://bun.com/docs/cli/install) for complete documentation of Bun's package manager.
+See [Docs > Package manager](/pm/cli/install) for complete documentation of Bun's package manager.

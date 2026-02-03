@@ -2,108 +2,172 @@
 
 # Source: https://trigger.dev/docs/management/envvars/delete.md
 
-# Source: https://trigger.dev/docs/management/schedules/delete.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://trigger.dev/docs/management/envvars/delete.md
+# Delete Env Var
 
-# Source: https://trigger.dev/docs/management/schedules/delete.md
+> Delete a specific environment variable for a specific project and environment.
 
-# Source: https://trigger.dev/docs/management/envvars/delete.md
 
-# Source: https://trigger.dev/docs/management/schedules/delete.md
-
-# Source: https://trigger.dev/docs/management/envvars/delete.md
-
-# Source: https://trigger.dev/docs/management/schedules/delete.md
-
-# Delete Schedule
-
-> Delete a schedule by its ID. This will only work on `IMPERATIVE` schedules that were created in the dashboard or using the imperative SDK functions like `schedules.create()`.
 
 ## OpenAPI
 
-````yaml v3-openapi DELETE /api/v1/schedules/{schedule_id}
+````yaml v3-openapi DELETE /api/v1/projects/{projectRef}/envvars/{env}/{name}
+openapi: 3.1.0
+info:
+  title: Trigger.dev v3 REST API
+  description: >-
+    The REST API lets you trigger and manage runs on Trigger.dev. You can
+    trigger a run, get the status of a run, and get the results of a run. 
+  version: 2024-04
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: https://api.trigger.dev
+    description: Trigger.dev API
+security: []
 paths:
-  path: /api/v1/schedules/{schedule_id}
-  method: delete
-  servers:
-    - url: https://api.trigger.dev
-      description: Trigger.dev API
-  request:
-    security:
-      - title: secretKey
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: >
-                Use your project-specific Secret API key. Will start with
-                `tr_dev_`, `tr_prod`, `tr_stg`, etc.
-
-
-                You can find your Secret API key in the API Keys section of your
-                Trigger.dev project dashboard.
-
-
-                Our TypeScript SDK will default to using the value of the
-                `TRIGGER_SECRET_KEY` environment variable if it is set. If you
-                are using the SDK in a different environment, you can set the
-                key using the `configure` function.
-
-
-                ```typescript
-
-                import { configure } from "@trigger.dev/sdk";
-
-
-                configure({ accessToken: "tr_dev_1234" });
-
-                ```
-          cookie: {}
+  /api/v1/projects/{projectRef}/envvars/{env}/{name}:
     parameters:
-      path:
-        schedule_id:
-          schema:
-            - type: string
-              required: true
-              description: The ID of the schedule.
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - lang: typescript
-        source: |-
-          import { schedules } from "@trigger.dev/sdk";
-
-          await schedules.del(scheduleId);
-  response:
-    '200':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Schedule deleted successfully
-        examples: {}
-        description: Schedule deleted successfully
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Unauthorized request
-        examples: {}
-        description: Unauthorized request
-    '404':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Resource not found
-        examples: {}
-        description: Resource not found
-  deprecated: false
-  type: path
+      - $ref: '#/components/parameters/projectRef'
+      - $ref: '#/components/parameters/env'
+      - $ref: '#/components/parameters/envvarName'
+    delete:
+      tags:
+        - envvars
+      summary: Delete environment variable
+      description: >-
+        Delete a specific environment variable for a specific project and
+        environment.
+      operationId: delete_project_envvar_v1
+      responses:
+        '200':
+          description: Environment variable deleted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SucceedResponse'
+        '400':
+          description: Invalid request parameters or body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - secretKey: []
+        - personalAccessToken: []
 components:
-  schemas: {}
+  parameters:
+    projectRef:
+      in: path
+      name: projectRef
+      required: true
+      schema:
+        type: string
+      description: >-
+        The external ref of the project. You can find this in the project
+        settings. Starts with `proj_`.
+      example: proj_yubjwjsfkxnylobaqvqz
+    env:
+      in: path
+      name: env
+      required: true
+      schema:
+        type: string
+        enum:
+          - dev
+          - staging
+          - prod
+      description: The environment of the project to list variables for.
+      example: dev
+    envvarName:
+      in: path
+      name: name
+      required: true
+      schema:
+        type: string
+      description: The name of the environment variable.
+      example: SLACK_API_KEY
+  schemas:
+    SucceedResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+      required:
+        - success
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Something went wrong
+      required:
+        - error
+  securitySchemes:
+    secretKey:
+      type: http
+      scheme: bearer
+      description: >
+        Use your project-specific Secret API key. Will start with `tr_dev_`,
+        `tr_prod`, `tr_stg`, etc.
+
+
+        You can find your Secret API key in the API Keys section of your
+        Trigger.dev project dashboard.
+
+
+        Our TypeScript SDK will default to using the value of the
+        `TRIGGER_SECRET_KEY` environment variable if it is set. If you are using
+        the SDK in a different environment, you can set the key using the
+        `configure` function.
+
+
+        ```typescript
+
+        import { configure } from "@trigger.dev/sdk";
+
+
+        configure({ accessToken: "tr_dev_1234" });
+
+        ```
+    personalAccessToken:
+      type: http
+      scheme: bearer
+      description: >
+        Use your user-specific Personal Access Token, which you can generate
+        from the Trigger.dev dashboard in your account settings. (It will start
+        with `tr_pat_`.)
+
+
+        Our TypeScript SDK will default to using the value of the
+        `TRIGGER_ACCESS_TOKEN` environment variable if it is set. If you are
+        using the SDK in a different environment, you can set the key using the
+        `configure` function.
+
+
+        ```typescript
+
+        import { configure } from "@trigger.dev/sdk";
+
+
+        configure({ accessToken: "tr_pat_1234" });
+
+        ```
 
 ````

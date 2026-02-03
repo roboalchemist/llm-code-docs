@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/cli/integrations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Integrations and MCP
 
 > Expand Augment's capabilities with external tools and data sources through native integrations and Model Context Protocol (MCP) servers.

@@ -1,10 +1,12 @@
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/challenge/modularity.md
 
-# Source: https://docs.apify.com/academy/web-scraping-for-beginners/challenge/modularity.md
-
 # Modularity
 
 **Before you build your first web scraper with Crawlee, it is important to understand the concept of modularity in programming.**
+
+Archived course
+
+This is an archive of our old course. Check out our new [Web scraping basics for JavaScript devs](https://docs.apify.com/academy/scraping-basics-javascript.md) course instead! We plan to completely retire this old course in a few months.
 
 ***
 
@@ -107,7 +109,7 @@ log.info('Crawl finished.');
 
 One of the main reasons we **modularize** our code is to prevent massive and difficult to read files by separating concerns into separate files. In our **main.js** file, we're handling the initialization, configuration, and running of our crawler. In **routes.js**, we determine how the crawler should handle different routes, and in **constants.js** we define non-changing values that will be used throughout the project.
 
-Organized code makes everyone happy, including you - the one developing the scraper! Spaghetti is super awesome, https://www.urbandictionary.com/define.php?term=spaghetti+code 🍝
+Organized code makes everyone happy, including you - the one developing the scraper! Spaghetti is super awesome, [but not when it comes to programming](https://www.urbandictionary.com/define.php?term=spaghetti+code) 🍝
 
 This can even be optimized further by putting our `label` items into **constants.js**, like so:
 
@@ -128,8 +130,8 @@ Then, the labels can be used by importing `labels` and accessing `labels.START`,
 
 This is not necessary, but it is best practice, as it can prevent dumb typos that can cause nasty bugs 🐞 For the rest of this lesson, all of the examples using labels will be using the imported versions.
 
-> If you haven't already read the **Best practices** lesson in the **Web scraping basics for JavaScript devs** course, please https://docs.apify.com/academy/web-scraping-for-beginners/best-practices.md.
+> If you haven't already read the **Best practices** lesson in the **Web scraping basics for JavaScript devs** course, please [give it a read](https://docs.apify.com/academy/scraping-basics-javascript/legacy/best-practices.md).
 
 ## Next up
 
-Now that we've gotten that out of the way, we can finally continue with our Amazon scraper. https://docs.apify.com/academy/web-scraping-for-beginners/challenge/scraping-amazon.md!
+Now that we've gotten that out of the way, we can finally continue with our Amazon scraper. [Let's do it](https://docs.apify.com/academy/scraping-basics-javascript/legacy/challenge/scraping-amazon.md)!

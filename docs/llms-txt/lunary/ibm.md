@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/integrations/ibm.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # IBM WatsonX Integration
 
 Lunary has partnered with IBM to provide a seamless integration for monitoring WatsonX calls in your Python app.
@@ -57,8 +61,3 @@ Our Python SDK includes automatic integration with IBM WatsonX's foundation mode
     ```
   </Step>
 </Steps>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

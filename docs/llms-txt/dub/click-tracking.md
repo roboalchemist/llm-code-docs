@@ -1,5 +1,9 @@
 # Source: https://dub.co/docs/sdks/client-side/features/click-tracking.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dub.co/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Client-side click tracking
 
 > Track clicks on the client-side using query parameters

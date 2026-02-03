@@ -24,23 +24,8 @@ Use it inside the default slot of the [DashboardGroup](/docs/components/dashboar
 </template>
 ```
 
-<tip>
-
-You can open the CommandPalette by pressing <kbd value="meta">
-
-
-
-</kbd>
-
- <kbd value="K">
-
-
-
-</kbd>
-
-, by using the [DashboardSearchButton](/docs/components/dashboard-search-button) component or by using a `v-model:open` directive.
-
-</tip>
+> [!TIP]
+> You can open the CommandPalette by pressing  , by using the [DashboardSearchButton](/docs/components/dashboard-search-button) component or by using a `v-model:open` directive.
 
 ### Shortcut
 
@@ -103,10 +88,11 @@ You can disable this behavior by setting the `color-mode` prop to `false`:
  * Props for the DashboardSearch component
  */
 interface DashboardSearchProps {
+  size?: "sm" | "md" | "xs" | "lg" | "xl" | undefined;
   /**
    * The icon displayed in the input.
    */
-  icon?: string | object | undefined;
+  icon?: any;
   /**
    * The placeholder text for the input.
    */
@@ -122,17 +108,17 @@ interface DashboardSearchProps {
   /**
    * The icon when the `loading` prop is `true`.
    */
-  loadingIcon?: string | object | undefined;
+  loadingIcon?: any;
   /**
    * Display a close button in the input (useful when inside a Modal for example).
    * `{ size: 'md', color: 'neutral', variant: 'ghost' }`{lang="ts-type"}
    * @default "true"
    */
-  close?: boolean | Partial<ButtonProps> | undefined;
+  close?: boolean | Omit<ButtonProps, LinkPropsKeys> | undefined;
   /**
    * The icon displayed in the close button.
    */
-  closeIcon?: string | object | undefined;
+  closeIcon?: any;
   /**
    * Keyboard shortcut to open the search (used by [`defineShortcuts`](https://ui.nuxt.com/docs/composables/define-shortcuts))
    * @default "\"meta_k\""
@@ -142,7 +128,7 @@ interface DashboardSearchProps {
   /**
    * Options for [useFuse](https://vueuse.org/integrations/useFuse) passed to the [CommandPalette](https://ui.nuxt.com/docs/components/command-palette).
    */
-  fuse?: UseFuseOptions<CommandPaletteItem> | undefined;
+  fuse?: n<CommandPaletteItem> | undefined;
   /**
    * When `true`, the theme command will be added to the groups.
    * @default "true"
@@ -302,14 +288,34 @@ export default defineAppConfig({
     dashboardSearch: {
       slots: {
         modal: '',
-        input: '[&>input]:text-base/5'
+        input: ''
       },
       variants: {
         fullscreen: {
           false: {
-            modal: 'sm:max-w-3xl sm:h-[28rem]'
+            modal: 'sm:max-w-3xl h-full sm:h-[28rem]'
+          }
+        },
+        size: {
+          xs: {
+            input: '[&>input]:text-sm'
+          },
+          sm: {
+            input: '[&>input]:text-sm'
+          },
+          md: {
+            input: '[&>input]:text-base/5'
+          },
+          lg: {
+            input: '[&>input]:text-base/5'
+          },
+          xl: {
+            input: '[&>input]:text-lg'
           }
         }
+      },
+      defaultVariants: {
+        size: 'md'
       }
     }
   }
@@ -318,8 +324,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

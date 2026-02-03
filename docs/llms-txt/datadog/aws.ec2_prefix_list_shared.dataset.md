@@ -4,8 +4,6 @@
 title: EC2 Prefix List Shared
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > EC2 Prefix List Shared
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.ec2_prefix_list_shared.dataset/index.html
 ---
 
 # EC2 Prefix List Shared

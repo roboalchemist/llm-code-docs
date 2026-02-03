@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/knowledge-base/squarespace.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Squarespace
 
 > Verify your domain on Squarespace with Resend.
@@ -13,9 +17,9 @@ First, log in to your [Resend Account](https://resend.com/login) and [add a doma
 <Tip>
   It is [best practice to use a
   subdomain](/knowledge-base/is-it-better-to-send-emails-from-a-subdomain-or-the-root-domain)
-  (updates.example.com) instead of the root domain (example.com). This allows
-  for proper reputation segmentation based on topics or purpose (e.g.
-  transactional and marketing).
+  (updates.example.com) instead of the root domain (example.com). Using a
+  subdomain allows for proper reputation segmentation based on topics or purpose
+  (e.g. marketing) and is especially important if receiving emails with Resend.
 </Tip>
 
 ## Log in to Squarespace
@@ -45,7 +49,7 @@ Below is a mapping of the record fields from Resend to Squarespace:
 | ----------- | -------- | --------------------------------------- |
 | Type        | Type     | `MX`                                    |
 | Host        | Name     | `send`                                  |
-| TTL         | -        | `4 hrs` (default)                       |
+| TTL         | TTL      | `4 hrs` (default)                       |
 | Mail Server | Value    | `feedback-smtp.us-east-1.amazonses.com` |
 | Priority    | Priority | `10`                                    |
 
@@ -57,7 +61,7 @@ Below is a mapping of the record fields from Resend to Squarespace:
 
 <Info>
   Do not use the same priority for multiple records. If Priority `10` is already
-  in use, try a number slightly higher like `11` or `12`.
+  in use, try a higher value `20` or `30`.
 </Info>
 
 ## Add TXT SPF Record
@@ -84,7 +88,7 @@ Below is a mapping of the record fields from Resend to Squarespace:
 | ----------- | ------ | ------------------------------------- |
 | Type        | Type   | `TXT`                                 |
 | Host        | Name   | `send`                                |
-| TTL         | -      | `4 hrs` (default)                     |
+| TTL         | TTL    | `4 hrs` (default)                     |
 | Text        | Value  | `"v=spf1 include:amazonses.com ~all"` |
 
 <Info>
@@ -113,7 +117,7 @@ Below is a mapping of the record fields from Resend to Squarespace:
 | ----------- | ------ | ---------------------------- |
 | Type        | Type   | `TXT`                        |
 | Host        | Name   | `resend._domainkey`          |
-| TTL         | -      | `4 hrs` (default)            |
+| TTL         | TTL    | `4 hrs` (default)            |
 | Text        | Value  | `p=example_demain_key_value` |
 
 <Info>
@@ -121,6 +125,42 @@ Below is a mapping of the record fields from Resend to Squarespace:
   `resend._domainkey.example.com`, paste only `resend._domainkey` (or
   `resend._domainkey.subdomain` if you're using a subdomain).
 </Info>
+
+## Receiving Emails
+
+If you want to receive emails at your domain, toggle the "Receiving" switch on the domain details page.
+
+<img alt="Enable Receiving Emails for a verified domain" src="https://mintcdn.com/resend/B7wTVm7aKL5pNT-6/images/inbound-domain-toggle.png?fit=max&auto=format&n=B7wTVm7aKL5pNT-6&q=85&s=46f6b4c142fb90e04b57861e338ed2d0" data-og-width="1980" width="1980" data-og-height="1244" height="1244" data-path="images/inbound-domain-toggle.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/resend/B7wTVm7aKL5pNT-6/images/inbound-domain-toggle.png?w=280&fit=max&auto=format&n=B7wTVm7aKL5pNT-6&q=85&s=9ffcfe01f091c84e949e307e8524c98e 280w, https://mintcdn.com/resend/B7wTVm7aKL5pNT-6/images/inbound-domain-toggle.png?w=560&fit=max&auto=format&n=B7wTVm7aKL5pNT-6&q=85&s=040a52053e2b2e66924ee2d82a7f60b6 560w, https://mintcdn.com/resend/B7wTVm7aKL5pNT-6/images/inbound-domain-toggle.png?w=840&fit=max&auto=format&n=B7wTVm7aKL5pNT-6&q=85&s=0477716dc557a951ada6d6ccfe452feb 840w, https://mintcdn.com/resend/B7wTVm7aKL5pNT-6/images/inbound-domain-toggle.png?w=1100&fit=max&auto=format&n=B7wTVm7aKL5pNT-6&q=85&s=8a4c306e667be6092577793c18da1483 1100w, https://mintcdn.com/resend/B7wTVm7aKL5pNT-6/images/inbound-domain-toggle.png?w=1650&fit=max&auto=format&n=B7wTVm7aKL5pNT-6&q=85&s=33481622e755b8f0b54c3066b8e1a724 1650w, https://mintcdn.com/resend/B7wTVm7aKL5pNT-6/images/inbound-domain-toggle.png?w=2500&fit=max&auto=format&n=B7wTVm7aKL5pNT-6&q=85&s=590982f9cd50e9e277f1b82928d25fdb 2500w" />
+
+<Warning>
+  When you enable Inbound on a domain, Resend receives *all emails* sent to that
+  specific domain depending on the priority of the MX record. For this reason,
+  we strongly recommend verifying a subdomain (`subdomain.example.com`) instead
+  of the root domain (`example.com`). Learn more about [avoiding conflicts with
+  your existing MX
+  records](/knowledge-base/how-do-i-avoid-conflicting-with-my-mx-records).
+</Warning>
+
+Scroll down to the **Custom records** section and select `Add record` on Squarespace:
+
+1. Type `inbound` (or whatever your subdomain is) for the `Host` of the record.
+2. Set the `Type` to `MX`.
+3. Set the `Priority` to `10`.
+4. Use the Default 4 hours for `TTL`.
+5. Copy the MX Value from Resend into the `Mail Server` field.
+6. Select `Save`.
+
+Below is a mapping of the record fields from Resend to Squarespace:
+
+| Squarespace | Resend   | Example Value                          |
+| ----------- | -------- | -------------------------------------- |
+| Type        | Type     | `MX`                                   |
+| Host        | Name     | `inbound`                              |
+| TTL         | TTL      | `4 hrs` (default)                      |
+| Mail Server | Content  | `inbound-smtp.us-east-1.amazonaws.com` |
+| Priority    | Priority | `10`                                   |
+
+After verifying your domain, create a webhook to process incoming emails. For help setting up a webhook, how to access email data and attachments, forward emails, and more, see [our guide on receiving emails with Resend](/dashboard/receiving/introduction).
 
 ## Complete Verification
 

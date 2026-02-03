@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/sort-vars.md
 ---
-# eslint/sort-vars&#x20;
 
 ### What it does
 

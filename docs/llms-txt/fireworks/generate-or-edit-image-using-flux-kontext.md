@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/api-reference/generate-or-edit-image-using-flux-kontext.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Generate or edit an image with FLUX.1 Kontext
 
 💡 Note that this API is async and will return the **request\_id** instead of the image. Call the [get\_result](/api-reference/get-generated-image-from-flux-kontex) API to obtain the generated image.

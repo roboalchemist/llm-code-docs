@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/getting-started/concepts/platform-iam.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Platform Identity and Access Management
 
 > Understand how users, machine identities, roles, and permissions are managed.

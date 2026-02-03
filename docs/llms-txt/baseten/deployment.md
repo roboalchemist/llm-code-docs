@@ -1,12 +1,20 @@
 # Source: https://docs.baseten.co/training/deployment.md
 
-# Serving Your Trained Model
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Serving your trained model
 
 > How to deploy checkpoints from Baseten Training jobs as usable models.
 
 Baseten Training seamlessly integrates with Baseten's model deployment capabilities. Once your `TrainingJob` has produced model checkpoints, you can deploy them as fully operational model endpoints.
 
 **This feature works with HuggingFace compatible LLMs**, allowing you to easily deploy fine-tuned language models directly from your training checkpoints with a single command.
+
+<Note>
+  For optimized inference performance with TensorRT-LLM, BEI and Baseten Inference Stack, see [Deploy checkpoints with Engine Builder](/engines/performance-concepts/deployment-from-training-and-s3).
+</Note>
 
 To leverage deploying checkpoints, first ensure you have a `TrainingJob` that's running with a `checkpointing_config` enabled.
 
@@ -21,7 +29,7 @@ runtime = definitions.Runtime(
 )
 ```
 
-In your training code or configuration, ensure that your checkpoints are being written to the checkpointing directory, which can be referenced in via [`$BT_CHECKPOINT_DIR`](/reference/sdk/training#baseten-provided-environment-variables).
+In your training code or configuration, ensure that your checkpoints are being written to the checkpointing directory, which can be referenced via [`$BT_CHECKPOINT_DIR`](/reference/sdk/training#baseten-provided-environment-variables).
 The contents of this directory are uploaded to Baseten's storage and made immediately available for deployment.
 *(You can optionally specify a `checkpoint_path` in your `checkpointing_config` if you prefer to write to a specific directory).* The default location is "/tmp/training\_checkpoints".
 
@@ -109,7 +117,7 @@ The JSON file contains the following structure:
 ## Complex and Custom Use Cases
 
 * Custom Model Architectures
-* Weights Sharded Across Nodes (Contact Baseten for help implementating this)
+* Weights Sharded Across Nodes (Contact Baseten for help implementing this)
 
 Examine the structure of your files with `truss train get_checkpoint_urls --job-id=<your-training-job-id>`. If a file looks like this:
 
@@ -121,7 +129,7 @@ Examine the structure of your files with `truss train get_checkpoint_urls --job-
 }
 ```
 
-In your Truss configuration, add a section like this: Wilcards `*` match to to an arbitrary number of chars while `?` matches to one.
+In your Truss configuration, add a section like this: Wildcards `*` match to an arbitrary number of chars while `?` matches to one.
 
 ```yaml  theme={"system"}
 training_checkpoints:

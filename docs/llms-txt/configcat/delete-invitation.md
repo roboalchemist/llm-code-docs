@@ -2,10 +2,7 @@
 
 # Delete Invitation
 
-```
-DELETE 
-/v1/invitations/:invitationId
-```
+Copy page
 
 This endpoint removes an Invitation identified by the `invitationId` parameter.
 

@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/examples/deepgram-transcribe-audio.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Transcribe audio using Deepgram
 
 > This example will show you how to transcribe audio using Deepgram's speech recognition API with Trigger.dev.
@@ -15,7 +19,7 @@ Transcribe audio using [Deepgram's](https://developers.deepgram.com/docs/introdu
 
 ## Task code
 
-```ts trigger/deepgramTranscription.ts theme={null}
+```ts trigger/deepgramTranscription.ts theme={"theme":"css-variables"}
 import { createClient } from "@deepgram/sdk";
 import { logger, task } from "@trigger.dev/sdk";
 
@@ -64,7 +68,7 @@ export const deepgramTranscription = task({
 
 To test this task in the dashboard, you can use the following payload:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "audioUrl": "https://dpgr.am/spacewalk.wav"
 }

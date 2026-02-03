@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/connections/st.connections.snowflakeconnection
+
 # st.connections.SnowflakeConnection
 
 A connection to Snowflake using the Snowflake Connector for Python.

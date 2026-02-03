@@ -1,11 +1,13 @@
 # Source: https://rspack.dev/api/javascript-api/logger.md
 
-import WebpackLicense from '@components/WebpackLicense';
-import { Collapse, CollapsePanel } from '@components/Collapse';
+CC 4.0 License> The content of this section is derived from the content of the following links and is subject to the CC BY 4.0 license.
+> 
+> - [https://webpack.js.org/api/logging/](https://webpack.js.org/api/logging/)
+> 
+> The following contents can be assumed to be the result of modifications and deletions based on the original contents if not specifically stated.
+> 
+> 
 
-import Columns from '@components/Columns';
-
-<WebpackLicense from="https://webpack.js.org/api/logging/" />
 
 # Logger
 
@@ -15,13 +17,13 @@ Rspack logger is available to [loaders](/guide/features/loader.md) and [plugins]
 
 Benefits of custom logging API in Rspack:
 
-* Common place to configure the logging display level
-* Logging output exportable as part of the `stats.json`
-* Stats presets affect logging output
-* Plugins can affect logging capturing and display level
-* When using multiple plugins and loaders they use a common logging solution
-* CLI, UI tools for Rspack may choose different ways to display logging
-* Rspack core can emit logging output, e.g. timing data
+- Common place to configure the logging display level
+- Logging output exportable as part of the `stats.json`
+- Stats presets affect logging output
+- Plugins can affect logging capturing and display level
+- When using multiple plugins and loaders they use a common logging solution
+- CLI, UI tools for Rspack may choose different ways to display logging
+- Rspack core can emit logging output, e.g. timing data
 
 By introducing Rspack logging API we hope to unify the way Rspack plugins and loaders emit logs and allow better ways to inspect build problems. Integrated logging solution supports plugins and loaders developers by improving their development experience. Paves the way for non-CLI Rspack solutions like dashboards or other UIs.
 
@@ -80,254 +82,227 @@ module.exports = function (source) {
 
 Methods are in turn from high to low according to the log level:
 
-* `error`: for error messages.
-* `warn`: for warnings.
-* `info`: for important information messages. These messages are displayed by default. Only use this for messages that the user really needs to see.
-* `log`: for unimportant information messages. These messages are displayed only when user had opted-in to see them.
-* `debug`: for debugging information. These messages are displayed only when user had opted-in to see debug logging for specific modules.
+- `error`: for error messages.
+- `warn`: for warnings.
+- `info`: for important information messages. These messages are displayed by default. Only use this for messages that the user really needs to see.
+- `log`: for unimportant information messages. These messages are displayed only when user had opted-in to see them.
+- `debug`: for debugging information. These messages are displayed only when user had opted-in to see debug logging for specific modules.
 
 While using `compilation.getLogger`, the output level can be controlled by `stats.logging` and `stats.loggingDebug`:
 
-<Columns>
-  ```js title="rspack.config.mjs"
-  export default {
-    plugins: [{
-      apply(compiler) {
-        compiler.hooks.thisCompilation.tap("test plugin", compilation => {
-          const logger = compilation.getLogger("TEST");
-          logger.error("I am an error");
-          logger.warn("I am a warning");
-          logger.info("I am an information");
-          logger.log("I am a log");
-          logger.debug("I am a debug log");
-        });
-      }
-    }],
-    stats: {
-      logging: "verbose",
-      loggingDebug: true
-    },
-  };
-  ```
+```js title="rspack.config.mjs"
+export default {
+  plugins: [{
+    apply(compiler) {
+      compiler.hooks.thisCompilation.tap("test plugin", compilation => {
+        const logger = compilation.getLogger("TEST");
+        logger.error("I am an error");
+        logger.warn("I am a warning");
+        logger.info("I am an information");
+        logger.log("I am a log");
+        logger.debug("I am a debug log");
+      });
+    }
+  }],
+  stats: {
+    logging: "verbose",
+    loggingDebug: true
+  },
+};
+```
+```js title=Output
+asset main.js 264 bytes [emitted] (name: main)
+runtime modules 124 bytes 2 modules
+./index.js 15 bytes [built] [code generated]
 
-  ```js title=Output
-  asset main.js 264 bytes [emitted] (name: main)
-  runtime modules 124 bytes 2 modules
-  ./index.js 15 bytes [built] [code generated]
-
-  DEBUG LOG from TEST
-  <e> I am an error
-  <w> I am a warning
-  <i> I am an information
-      I am a log
-      I am a debug log
-  ```
-</Columns>
+DEBUG LOG from TEST
+<e> I am an error
+<w> I am a warning
+<i> I am an information
+    I am a log
+    I am a debug log
+```
 
 While using `compiler.getInfrastructureLogger`, the output level can be controlled by `infrastructureLogging.level` and `infrastructureLogging.debug`:
 
-<Columns>
-  ```js title="rspack.config.mjs"
-  export default {
-    plugins: [{
-      apply(compiler) {
-        compiler.hooks.thisCompilation.tap("test plugin", compilation => {
-          const logger = compiler.getInfrastructureLogger("TEST");
-          logger.error("I am an error");
-          logger.warn("I am a warning");
-          logger.info("I am an information");
-          logger.log("I am a log");
-          logger.debug("I am a debug log");
-        });
-      }
-    }],
-    infrastructureLogging: {
-      level: "verbose",
-      debug: true
-    },
-  };
-  ```
-
-  ```js title=Output
-  <e> [TEST] I am an error
-  <w> [TEST] I am a warning
-  <i> [TEST] I am an information
-      [TEST] I am a log
-      [TEST] I am a debug log
-  Rspack compiled successfully in 49 ms
-  ```
-</Columns>
+```js title="rspack.config.mjs"
+export default {
+  plugins: [{
+    apply(compiler) {
+      compiler.hooks.thisCompilation.tap("test plugin", compilation => {
+        const logger = compiler.getInfrastructureLogger("TEST");
+        logger.error("I am an error");
+        logger.warn("I am a warning");
+        logger.info("I am an information");
+        logger.log("I am a log");
+        logger.debug("I am a debug log");
+      });
+    }
+  }],
+  infrastructureLogging: {
+    level: "verbose",
+    debug: true
+  },
+};
+```
+```js title=Output
+<e> [TEST] I am an error
+<w> [TEST] I am a warning
+<i> [TEST] I am an information
+    [TEST] I am a log
+    [TEST] I am a debug log
+Rspack compiled successfully in 49 ms
+```
 
 ### assert
 
 Display errors when assertion is false.
 
-* **Level:** `error`
-* **Type:**: `assert(assertion: any, ...args: any[]): void;`
+- **Level:** `error`
+- **Type:**: `assert(assertion: any, ...args: any[]): void;`
 
-<Columns>
-  ```js
-  logger.assert(false, "I am an assert error");
-  logger.assert(true, "Never displayed");
-  ```
-
-  ```js title=Output
-  LOG from TEST
-  <e> I am an assert error
-  ```
-</Columns>
+```js
+logger.assert(false, "I am an assert error");
+logger.assert(true, "Never displayed");
+```
+```js title=Output
+LOG from TEST
+<e> I am an assert error
+```
 
 ### status
 
 Display progress status information, use `console.status` if exists, otherwise fallback to \`console.info.
 
-* **Level:** `info`
-* **Type:** `status(...args: any[]): void`
+- **Level:** `info`
+- **Type:** `status(...args: any[]): void`
 
-<Columns>
-  ```js
-  logger.status("status info");
-  ```
-
-  ```js title=Output
-  [TEST] status info
-  ```
-</Columns>
+```js
+logger.status("status info");
+```
+```js title=Output
+[TEST] status info
+```
 
 ### trace
 
 Display a stack trace, only available while using compilation logger and also need to enable the `stats.loggingTrace`.
 
-* **Level:** `debug`
-* **Type:** `trace(): void`
+- **Level:** `debug`
+- **Type:** `trace(): void`
 
-<Columns>
-  ```js
-  logger.trace();
-  ```
-
-  ```js title=Output
-  DEBUG LOG from TEST
-      Trace
-  |     at Object.fn
-  |     at SyncHook.callAsyncStageRange
-  ```
-</Columns>
+```js
+logger.trace();
+```
+```js title=Output
+DEBUG LOG from TEST
+    Trace
+|     at Object.fn
+|     at SyncHook.callAsyncStageRange
+```
 
 ### clear
 
 Clean all logs, just like `console.clear()`.
 
-* **Level:** `log`
-* **Type:** `clear(): void;`
+- **Level:** `log`
+- **Type:** `clear(): void;`
 
-<Columns>
-  ```js
-  logger.debug("not displayed");
-  logger.clear();
-  logger.debug("will displayed");
-  ```
-
-  ```js title=Output
-  [TEST] will displayed
-  ```
-</Columns>
+```js
+logger.debug("not displayed");
+logger.clear();
+logger.debug("will displayed");
+```
+```js title=Output
+[TEST] will displayed
+```
 
 ### Group API
 
 Includes these methods:
 
-* `group(...args: any[]): void`: to group messages. Displayed collapsed like `logger.log`.
-* `groupEnd(...args: any[]): void`: to end a logging group.
-* `groupCollapsed(...args: any[]): void`: to group messages together. Displayed collapsed like `logger.log`. Displayed expanded when logging level is set to `'verbose'` or `'debug'`.
+- `group(...args: any[]): void`: to group messages. Displayed collapsed like `logger.log`.
+- `groupEnd(...args: any[]): void`: to end a logging group.
+- `groupCollapsed(...args: any[]): void`: to group messages together. Displayed collapsed like `logger.log`. Displayed expanded when logging level is set to `'verbose'` or `'debug'`.
 
-<Columns>
-  ```js
-  logger.group("Group");
-  logger.info("Info");
-  logger.log("Log");
-  logger.debug("Debug");
-  logger.groupCollapsed("Collapsed group");
-  logger.log("Log inside collapsed group");
-  logger.group("Inner group");
-  logger.log("Inner inner message");
-  logger.groupEnd();
-  logger.groupEnd();
-  logger.log("Log");
-  logger.groupEnd();
-  logger.log("End");
-  ```
-
-  ```js title=Output
-  <-> [TEST] Group
-    <i> [TEST] Info
-        [TEST] Log
-        [TEST] Debug
-    <-> [TEST] Collapsed group
-          [TEST] Log inside collapsed group
-      <-> [TEST] Inner group
-            [TEST] Inner inner message
-        [TEST] Log
-      [TEST] End
-  ```
-</Columns>
+```js
+logger.group("Group");
+logger.info("Info");
+logger.log("Log");
+logger.debug("Debug");
+logger.groupCollapsed("Collapsed group");
+logger.log("Log inside collapsed group");
+logger.group("Inner group");
+logger.log("Inner inner message");
+logger.groupEnd();
+logger.groupEnd();
+logger.log("Log");
+logger.groupEnd();
+logger.log("End");
+```
+```js title=Output
+<-> [TEST] Group
+  <i> [TEST] Info
+      [TEST] Log
+      [TEST] Debug
+  <-> [TEST] Collapsed group
+        [TEST] Log inside collapsed group
+    <-> [TEST] Inner group
+          [TEST] Inner inner message
+      [TEST] Log
+    [TEST] End
+```
 
 ### Time API
 
 Includes these methods:
 
-* `time(label: any): void`: to start a timer.
-* `timeLog(label: any): void`: record time difference without ending the timer.
-* `timeEnd(label: any): void`: to end the timer and record the time difference.
-* `timeAggregate(label: any): void`: to aggregate capture the time difference.
-* `timeAggregateEnd(label: any): void`: to end the aggregate capturing and record the total difference.
+- `time(label: any): void`: to start a timer.
+- `timeLog(label: any): void`: record time difference without ending the timer.
+- `timeEnd(label: any): void`: to end the timer and record the time difference.
+- `timeAggregate(label: any): void`: to aggregate capture the time difference.
+- `timeAggregateEnd(label: any): void`: to end the aggregate capturing and record the total difference.
 
-<Columns>
-  ```js
-  const wait = time => new Promise(resolve => setTimeout(resolve, time))
-  logger.time("normal");
-  await wait(100);
-  logger.timeLog("normal");
-  await wait(100);
-  logger.timeEnd("normal");
+```js
+const wait = time => new Promise(resolve => setTimeout(resolve, time))
+logger.time("normal");
+await wait(100);
+logger.timeLog("normal");
+await wait(100);
+logger.timeEnd("normal");
 
-  for (let i = 10;i--;) {
-  logger.time("aggregate")
-  await wait(i \* 10);
-  logger.timeAggregate("aggregate")
-  }
-  logger.timeAggregateEnd("aggregate")
+for (let i = 10;i--;) {
+logger.time("aggregate")
+await wait(i \* 10);
+logger.timeAggregate("aggregate")
+}
+logger.timeAggregateEnd("aggregate")
 
-  ```
-
-  ```js title=Output
-  <t> [TEST] normal: 101.091167 ms
-  <t> [TEST] normal: 202.565 ms
-  <t> [TEST] aggregate: 460.416124 ms
-  ```
-</Columns>
+```
+```js title=Output
+<t> [TEST] normal: 101.091167 ms
+<t> [TEST] normal: 202.565 ms
+<t> [TEST] aggregate: 460.416124 ms
+```
 
 ### Profile API
 
 Includes these methods:
 
-* `profile(label: any): void`: to start capturing a profile. Delegated to `console.profile` when supported.
-* `profileEnd(label: any): void`: to end capturing a profile. Delegated to `console.profileEnd` when supported.
+- `profile(label: any): void`: to start capturing a profile. Delegated to `console.profile` when supported.
+- `profileEnd(label: any): void`: to end capturing a profile. Delegated to `console.profileEnd` when supported.
 
 ### Child logger
 
 You can also create a child logger with `logger.getChildLogger()`. Child logger has same methods.
 
-<Columns>
-  ```js
-  const logger = compiler.getInfrastructureLogger("TEST");
-  logger.info("logger info");
-  const childLogger = logger.getChildLogger("CHILD");
-  childLogger.info("child logger info");
-  ```
-
-  ```js title=Output
-  <i> [TEST] logger info
-  <i> [TEST/CHILD] child logger info
-  ```
-</Columns>
+```js
+const logger = compiler.getInfrastructureLogger("TEST");
+logger.info("logger info");
+const childLogger = logger.getChildLogger("CHILD");
+childLogger.info("child logger info");
+```
+```js title=Output
+<i> [TEST] logger info
+<i> [TEST/CHILD] child logger info
+```

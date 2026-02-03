@@ -5,8 +5,7 @@ title: DatadogDashboard CRD
 description: >-
   Deploy and manage Datadog dashboards using the DatadogDashboard custom
   resource definition with the Datadog Operator
-breadcrumbs: Docs > Container Monitoring > Datadog Operator > DatadogDashboard CRD
-source_url: https://docs.datadoghq.com/datadog_operator/crd_dashboard/index.html
+breadcrumbs: Docs > Containers > Datadog Operator > DatadogDashboard CRD
 ---
 
 # DatadogDashboard CRD

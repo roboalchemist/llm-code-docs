@@ -4,7 +4,6 @@
 title: Roles and Permissions
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > Account Management > Roles and Permissions
-source_url: https://docs.datadoghq.com/account-management/roles-and-permissions/index.html
 ---
 
 # Roles and Permissions

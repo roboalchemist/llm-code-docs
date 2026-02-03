@@ -26,62 +26,6 @@
 
 # Source: https://platform.claude.com/docs/en/api/messages/batches/cancel.md
 
-# Source: https://platform.claude.com/docs/en/api/typescript/messages/batches/cancel.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/messages/batches/cancel.md
-
-# Source: https://platform.claude.com/docs/en/api/python/messages/batches/cancel.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/messages/batches/cancel.md
-
-# Source: https://platform.claude.com/docs/en/api/java/messages/batches/cancel.md
-
-# Source: https://platform.claude.com/docs/en/api/go/messages/batches/cancel.md
-
-# Source: https://platform.claude.com/docs/en/api/typescript/beta/messages/batches/cancel.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/beta/messages/batches/cancel.md
-
-# Source: https://platform.claude.com/docs/en/api/python/beta/messages/batches/cancel.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/beta/messages/batches/cancel.md
-
-# Source: https://platform.claude.com/docs/en/api/java/beta/messages/batches/cancel.md
-
-# Source: https://platform.claude.com/docs/en/api/go/beta/messages/batches/cancel.md
-
-# Source: https://platform.claude.com/docs/en/api/beta/messages/batches/cancel.md
-
-# Source: https://platform.claude.com/docs/en/api/messages/batches/cancel.md
-
-# Source: https://platform.claude.com/docs/en/api/typescript/messages/batches/cancel.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/messages/batches/cancel.md
-
-# Source: https://platform.claude.com/docs/en/api/python/messages/batches/cancel.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/messages/batches/cancel.md
-
-# Source: https://platform.claude.com/docs/en/api/java/messages/batches/cancel.md
-
-# Source: https://platform.claude.com/docs/en/api/go/messages/batches/cancel.md
-
-# Source: https://platform.claude.com/docs/en/api/typescript/beta/messages/batches/cancel.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/beta/messages/batches/cancel.md
-
-# Source: https://platform.claude.com/docs/en/api/python/beta/messages/batches/cancel.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/beta/messages/batches/cancel.md
-
-# Source: https://platform.claude.com/docs/en/api/java/beta/messages/batches/cancel.md
-
-# Source: https://platform.claude.com/docs/en/api/go/beta/messages/batches/cancel.md
-
-# Source: https://platform.claude.com/docs/en/api/beta/messages/batches/cancel.md
-
-# Source: https://platform.claude.com/docs/en/api/messages/batches/cancel.md
-
 ## Cancel
 
 **post** `/v1/messages/batches/{message_batch_id}/cancel`
@@ -193,5 +137,6 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 ```http
 curl https://api.anthropic.com/v1/messages/batches/$MESSAGE_BATCH_ID/cancel \
     -X POST \
+    -H 'anthropic-version: 2023-06-01' \
     -H "X-Api-Key: $ANTHROPIC_API_KEY"
 ```

@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/how-to/logging-and-comparing-against-your-expected-answers.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Logging and Comparing against your Expected Answers
 
 > Expected outputs are a key element for evaluating LLM applications. They provide benchmarks to measure model accuracy, identify errors, and ensure consistent assessments.
@@ -23,7 +27,7 @@ you can set the expected output using the `ground_truth` parameter in the workfl
 
 To log your runs with Galileo, you'd start with the same typical flow of logging into Galileo:
 
-```py
+```py  theme={null}
 import promptquality as pq
 
 pq.login()
@@ -31,7 +35,7 @@ pq.login()
 
 Next you can construct your [EvaluateRun](https://promptquality.docs.rungalileo.io/#promptquality.EvaluateRun) object:
 
-```py
+```py  theme={null}
 from promptquality import EvaluateRun
 
 metrics = [pq.Scorers.context_adherence_plus, pq.Scorers.prompt_injection]
@@ -41,7 +45,7 @@ evaluate_run = EvaluateRun(run_name="my_run", project_name="my_project", scorers
 
 Now you can integrate this logging into your existing application and include the expected output in your evaluation set.
 
-```py
+```py  theme={null}
 def my_llm_app(input, ground_truth, evaluate_run):
     context = "You're a helpful AI assistant."
     template = "Given the following context answer the question. \n Context: {context} \n Question: {question}"
@@ -75,7 +79,7 @@ for row in eval_set:
 
 If you're using a Langchain Callback, add your expected output by calling `add_expected_outputs` on your callback handler.
 
-```py
+```py  theme={null}
 
 my_chain = ... # your langchain chain
 
@@ -98,7 +102,7 @@ galileo_handler.finish()
 
 If you're logging Evaluation runs via the [REST endpoint](/galileo/clients/log-evaluate-runs-via-rest-apis), set the *target* field in the root node of each workflow.
 
-```py
+```py  theme={null}
 
 ...
     {
@@ -122,7 +126,7 @@ If you're logging Evaluation runs via the [REST endpoint](/galileo/clients/log-e
 
 When Expected Output gets logged, it'll appear next to your Output wherever your output is shown.
 
-![Comparing Output and Expected Output](https://mintlify.s3.us-west-1.amazonaws.com/galileo/galileo/gen-ai-studio-products/galileo-evaluate/how-to/images/exp-output.png)
+<img src="https://mintlify.s3.us-west-1.amazonaws.com/galileo/galileo/gen-ai-studio-products/galileo-evaluate/how-to/images/exp-output.png" alt="Comparing Output and Expected Output" />
 
 ## Metrics
 

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/guides/multimodal-red-team/
+
 # Multi-Modal Red Teaming
 
 Large language models with multi-modal capabilities (vision, audio, etc.) present unique security challenges compared to text-only models. This guide demonstrates how to use promptfoo to test multi-modal models against adversarial inputs using different approaches for vision and audio content.

@@ -6,7 +6,6 @@ description: >-
   Manage multiple child organizations from a parent account with separate
   billing, usage tracking, and access control for managed service providers.
 breadcrumbs: Docs > Account Management > Managing Multiple-Organization Accounts
-source_url: https://docs.datadoghq.com/multi_organization/index.html
 ---
 
 # Managing Multiple-Organization Accounts

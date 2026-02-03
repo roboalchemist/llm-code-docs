@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/line-items.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add line item group field to actions
 
 > Input fields in Zapier add one item each time the Zap runs. But, if you want users to be able to add multiple items in a single Zap run, then this can be achieved by using a line item group. This group takes line items, which are comma-separated values, and adds each instance of the values to the app in a single Zap run.
@@ -49,6 +53,14 @@ Users will need to map line item values from earlier steps in their Zap into the
 <Frame>
   <img src="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a7bad08984545eb39e96ed2782660737.webp?fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=c55426420b374b83be9c550631815943" data-og-width="356" width="356" data-og-height="149" height="149" data-path="images/a7bad08984545eb39e96ed2782660737.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a7bad08984545eb39e96ed2782660737.webp?w=280&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=ab0cfdb124597fcb5c778fe1d9aa462f 280w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a7bad08984545eb39e96ed2782660737.webp?w=560&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=a9769bd18599214aec8bedefc0598e59 560w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a7bad08984545eb39e96ed2782660737.webp?w=840&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=473ec41d9bdba15f1a507ad6280144ec 840w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a7bad08984545eb39e96ed2782660737.webp?w=1100&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=d4de9e21d8d32a2ea9b571f6cbbe4671 1100w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a7bad08984545eb39e96ed2782660737.webp?w=1650&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=e4f9f382443c128a7f95c121587641bd 1650w, https://mintcdn.com/zapier-82f0e938/ziHY4Q2Lym35bUQM/images/a7bad08984545eb39e96ed2782660737.webp?w=2500&fit=max&auto=format&n=ziHY4Q2Lym35bUQM&q=85&s=0b87bf389239980d036a4f04ad062fe5 2500w" />
 </Frame>
+
+## Testing the Line Item Group
+
+Once you've added a line item group to your action, you can test how it works in a Zap. To do this, send line items from a previous step in the Zap into the line item fields in your integration.
+
+If you don’t have an app that outputs line items, you can use the Formatter by Zapier integration to [create line items](https://help.zapier.com/hc/en-us/articles/8496275165709-Create-line-items-in-Zaps#h_01JAFJE6KV6AKW36BQ63YJ40W3). Then, map the output fields from the Formatter step into the line item group fields in your action.
+
+You can use the [Monitoring](https://docs.zapier.com/platform/build/test-monitoring#monitoring) page on the Platform UI to view the API request. This helps you verify that values are passed as expected in the API request.
 
 ***
 

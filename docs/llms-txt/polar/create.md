@@ -24,87 +24,9 @@
 
 # Source: https://polar.sh/docs/api-reference/benefits/create.md
 
-# Source: https://polar.sh/docs/api-reference/webhooks/endpoints/create.md
-
-# Source: https://polar.sh/docs/api-reference/subscriptions/create.md
-
-# Source: https://polar.sh/docs/api-reference/refunds/create.md
-
-# Source: https://polar.sh/docs/api-reference/products/create.md
-
-# Source: https://polar.sh/docs/api-reference/organizations/create.md
-
-# Source: https://polar.sh/docs/api-reference/meters/create.md
-
-# Source: https://polar.sh/docs/api-reference/files/create.md
-
-# Source: https://polar.sh/docs/api-reference/discounts/create.md
-
-# Source: https://polar.sh/docs/api-reference/customers/create.md
-
-# Source: https://polar.sh/docs/api-reference/customer-portal/sessions/create.md
-
-# Source: https://polar.sh/docs/api-reference/custom-fields/create.md
-
-# Source: https://polar.sh/docs/api-reference/checkout-links/create.md
-
-# Source: https://polar.sh/docs/api-reference/benefits/create.md
-
-# Source: https://polar.sh/docs/api-reference/webhooks/endpoints/create.md
-
-# Source: https://polar.sh/docs/api-reference/subscriptions/create.md
-
-# Source: https://polar.sh/docs/api-reference/refunds/create.md
-
-# Source: https://polar.sh/docs/api-reference/products/create.md
-
-# Source: https://polar.sh/docs/api-reference/organizations/create.md
-
-# Source: https://polar.sh/docs/api-reference/meters/create.md
-
-# Source: https://polar.sh/docs/api-reference/files/create.md
-
-# Source: https://polar.sh/docs/api-reference/discounts/create.md
-
-# Source: https://polar.sh/docs/api-reference/customers/create.md
-
-# Source: https://polar.sh/docs/api-reference/customer-portal/sessions/create.md
-
-# Source: https://polar.sh/docs/api-reference/custom-fields/create.md
-
-# Source: https://polar.sh/docs/api-reference/checkout-links/create.md
-
-# Source: https://polar.sh/docs/api-reference/benefits/create.md
-
-# Source: https://polar.sh/docs/api-reference/checkout-links/create.md
-
-# Source: https://polar.sh/docs/api-reference/benefits/create.md
-
-# Source: https://polar.sh/docs/api-reference/webhooks/endpoints/create.md
-
-# Source: https://polar.sh/docs/api-reference/subscriptions/create.md
-
-# Source: https://polar.sh/docs/api-reference/refunds/create.md
-
-# Source: https://polar.sh/docs/api-reference/products/create.md
-
-# Source: https://polar.sh/docs/api-reference/organizations/create.md
-
-# Source: https://polar.sh/docs/api-reference/meters/create.md
-
-# Source: https://polar.sh/docs/api-reference/files/create.md
-
-# Source: https://polar.sh/docs/api-reference/discounts/create.md
-
-# Source: https://polar.sh/docs/api-reference/customers/create.md
-
-# Source: https://polar.sh/docs/api-reference/customer-portal/sessions/create.md
-
-# Source: https://polar.sh/docs/api-reference/custom-fields/create.md
-
-# Source: https://polar.sh/docs/api-reference/checkout-links/create.md
-
-# Source: https://polar.sh/docs/api-reference/benefits/create.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Create Benefit
 
@@ -112,1109 +34,878 @@
 
 **Scopes**: `benefits:write`
 
+
+
 ## OpenAPI
 
 ````yaml post /v1/benefits/
+openapi: 3.1.0
+info:
+  title: Polar API
+  summary: Polar HTTP and Webhooks API
+  description: Read the docs at https://polar.sh/docs/api-reference
+  version: 0.1.0
+servers:
+  - url: https://api.polar.sh
+    description: Production environment
+    x-speakeasy-server-id: production
+  - url: https://sandbox-api.polar.sh
+    description: Sandbox environment
+    x-speakeasy-server-id: sandbox
+security:
+  - access_token: []
+tags:
+  - name: public
+    description: >-
+      Endpoints shown and documented in the Polar API documentation and
+      available in our SDKs.
+  - name: private
+    description: >-
+      Endpoints that should appear in the schema only in development to generate
+      our internal JS SDK.
+  - name: mcp
+    description: Endpoints enabled in the MCP server.
 paths:
-  path: /v1/benefits/
-  method: post
-  servers:
-    - url: https://api.polar.sh
-      description: Production environment
-    - url: https://sandbox-api.polar.sh
-      description: Sandbox environment
-  request:
-    security:
-      - title: access token
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: >-
-                You can generate an **Organization Access Token** from your
-                organization's settings.
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              metadata:
-                allOf:
-                  - additionalProperties:
-                      anyOf:
-                        - type: string
-                          maxLength: 500
-                          minLength: 1
-                        - type: integer
-                        - type: number
-                        - type: boolean
-                    propertyNames:
-                      maxLength: 40
-                      minLength: 1
-                    type: object
-                    maxProperties: 50
-                    title: Metadata
-                    description: >-
-                      Key-value object allowing you to store additional
-                      information.
-
-
-                      The key must be a string with a maximum length of **40
-                      characters**.
-
-                      The value must be either:
-
-
-                      * A string with a maximum length of **500 characters**
-
-                      * An integer
-
-                      * A floating-point number
-
-                      * A boolean
-
-
-                      You can store up to **50 key-value pairs**.
-              type:
-                allOf:
-                  - type: string
-                    const: custom
-                    title: Type
-              description:
-                allOf:
-                  - type: string
-                    maxLength: 42
-                    minLength: 3
-                    title: Description
-                    description: >-
-                      The description of the benefit. Will be displayed on
-                      products having this benefit.
-              organization_id:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: uuid4
-                        description: The organization ID.
-                        examples:
-                          - 1dbfc517-0bbf-4301-9ba8-555ca42b9737
-                        x-polar-selector-widget:
-                          displayProperty: name
-                          resourceName: Organization
-                          resourceRoot: /v1/organizations
-                      - type: 'null'
-                    title: Organization Id
-                    description: >-
-                      The ID of the organization owning the benefit. **Required
-                      unless you use an organization token.**
-              properties:
-                allOf:
-                  - $ref: '#/components/schemas/BenefitCustomCreateProperties'
-            required: true
-            title: BenefitCustomCreate
-            description: Schema to create a benefit of type `custom`.
-            refIdentifier: '#/components/schemas/BenefitCustomCreate'
-            requiredProperties:
-              - type
-              - description
-              - properties
-          - type: object
-            properties:
-              metadata:
-                allOf:
-                  - additionalProperties:
-                      anyOf:
-                        - type: string
-                          maxLength: 500
-                          minLength: 1
-                        - type: integer
-                        - type: number
-                        - type: boolean
-                    propertyNames:
-                      maxLength: 40
-                      minLength: 1
-                    type: object
-                    maxProperties: 50
-                    title: Metadata
-                    description: >-
-                      Key-value object allowing you to store additional
-                      information.
-
-
-                      The key must be a string with a maximum length of **40
-                      characters**.
-
-                      The value must be either:
-
-
-                      * A string with a maximum length of **500 characters**
-
-                      * An integer
-
-                      * A floating-point number
-
-                      * A boolean
-
-
-                      You can store up to **50 key-value pairs**.
-              type:
-                allOf:
-                  - type: string
-                    const: discord
-                    title: Type
-              description:
-                allOf:
-                  - type: string
-                    maxLength: 42
-                    minLength: 3
-                    title: Description
-                    description: >-
-                      The description of the benefit. Will be displayed on
-                      products having this benefit.
-              organization_id:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: uuid4
-                        description: The organization ID.
-                        examples:
-                          - 1dbfc517-0bbf-4301-9ba8-555ca42b9737
-                        x-polar-selector-widget:
-                          displayProperty: name
-                          resourceName: Organization
-                          resourceRoot: /v1/organizations
-                      - type: 'null'
-                    title: Organization Id
-                    description: >-
-                      The ID of the organization owning the benefit. **Required
-                      unless you use an organization token.**
-              properties:
-                allOf:
-                  - $ref: '#/components/schemas/BenefitDiscordCreateProperties'
-            required: true
-            title: BenefitDiscordCreate
-            refIdentifier: '#/components/schemas/BenefitDiscordCreate'
-            requiredProperties:
-              - type
-              - description
-              - properties
-          - type: object
-            properties:
-              metadata:
-                allOf:
-                  - additionalProperties:
-                      anyOf:
-                        - type: string
-                          maxLength: 500
-                          minLength: 1
-                        - type: integer
-                        - type: number
-                        - type: boolean
-                    propertyNames:
-                      maxLength: 40
-                      minLength: 1
-                    type: object
-                    maxProperties: 50
-                    title: Metadata
-                    description: >-
-                      Key-value object allowing you to store additional
-                      information.
-
-
-                      The key must be a string with a maximum length of **40
-                      characters**.
-
-                      The value must be either:
-
-
-                      * A string with a maximum length of **500 characters**
-
-                      * An integer
-
-                      * A floating-point number
-
-                      * A boolean
-
-
-                      You can store up to **50 key-value pairs**.
-              type:
-                allOf:
-                  - type: string
-                    const: github_repository
-                    title: Type
-              description:
-                allOf:
-                  - type: string
-                    maxLength: 42
-                    minLength: 3
-                    title: Description
-                    description: >-
-                      The description of the benefit. Will be displayed on
-                      products having this benefit.
-              organization_id:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: uuid4
-                        description: The organization ID.
-                        examples:
-                          - 1dbfc517-0bbf-4301-9ba8-555ca42b9737
-                        x-polar-selector-widget:
-                          displayProperty: name
-                          resourceName: Organization
-                          resourceRoot: /v1/organizations
-                      - type: 'null'
-                    title: Organization Id
-                    description: >-
-                      The ID of the organization owning the benefit. **Required
-                      unless you use an organization token.**
-              properties:
-                allOf:
-                  - $ref: >-
-                      #/components/schemas/BenefitGitHubRepositoryCreateProperties
-            required: true
-            title: BenefitGitHubRepositoryCreate
-            refIdentifier: '#/components/schemas/BenefitGitHubRepositoryCreate'
-            requiredProperties:
-              - type
-              - description
-              - properties
-          - type: object
-            properties:
-              metadata:
-                allOf:
-                  - additionalProperties:
-                      anyOf:
-                        - type: string
-                          maxLength: 500
-                          minLength: 1
-                        - type: integer
-                        - type: number
-                        - type: boolean
-                    propertyNames:
-                      maxLength: 40
-                      minLength: 1
-                    type: object
-                    maxProperties: 50
-                    title: Metadata
-                    description: >-
-                      Key-value object allowing you to store additional
-                      information.
-
-
-                      The key must be a string with a maximum length of **40
-                      characters**.
-
-                      The value must be either:
-
-
-                      * A string with a maximum length of **500 characters**
-
-                      * An integer
-
-                      * A floating-point number
-
-                      * A boolean
-
-
-                      You can store up to **50 key-value pairs**.
-              type:
-                allOf:
-                  - type: string
-                    const: downloadables
-                    title: Type
-              description:
-                allOf:
-                  - type: string
-                    maxLength: 42
-                    minLength: 3
-                    title: Description
-                    description: >-
-                      The description of the benefit. Will be displayed on
-                      products having this benefit.
-              organization_id:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: uuid4
-                        description: The organization ID.
-                        examples:
-                          - 1dbfc517-0bbf-4301-9ba8-555ca42b9737
-                        x-polar-selector-widget:
-                          displayProperty: name
-                          resourceName: Organization
-                          resourceRoot: /v1/organizations
-                      - type: 'null'
-                    title: Organization Id
-                    description: >-
-                      The ID of the organization owning the benefit. **Required
-                      unless you use an organization token.**
-              properties:
-                allOf:
-                  - $ref: '#/components/schemas/BenefitDownloadablesCreateProperties'
-            required: true
-            title: BenefitDownloadablesCreate
-            refIdentifier: '#/components/schemas/BenefitDownloadablesCreate'
-            requiredProperties:
-              - type
-              - description
-              - properties
-          - type: object
-            properties:
-              metadata:
-                allOf:
-                  - additionalProperties:
-                      anyOf:
-                        - type: string
-                          maxLength: 500
-                          minLength: 1
-                        - type: integer
-                        - type: number
-                        - type: boolean
-                    propertyNames:
-                      maxLength: 40
-                      minLength: 1
-                    type: object
-                    maxProperties: 50
-                    title: Metadata
-                    description: >-
-                      Key-value object allowing you to store additional
-                      information.
-
-
-                      The key must be a string with a maximum length of **40
-                      characters**.
-
-                      The value must be either:
-
-
-                      * A string with a maximum length of **500 characters**
-
-                      * An integer
-
-                      * A floating-point number
-
-                      * A boolean
-
-
-                      You can store up to **50 key-value pairs**.
-              type:
-                allOf:
-                  - type: string
-                    const: license_keys
-                    title: Type
-              description:
-                allOf:
-                  - type: string
-                    maxLength: 42
-                    minLength: 3
-                    title: Description
-                    description: >-
-                      The description of the benefit. Will be displayed on
-                      products having this benefit.
-              organization_id:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: uuid4
-                        description: The organization ID.
-                        examples:
-                          - 1dbfc517-0bbf-4301-9ba8-555ca42b9737
-                        x-polar-selector-widget:
-                          displayProperty: name
-                          resourceName: Organization
-                          resourceRoot: /v1/organizations
-                      - type: 'null'
-                    title: Organization Id
-                    description: >-
-                      The ID of the organization owning the benefit. **Required
-                      unless you use an organization token.**
-              properties:
-                allOf:
-                  - $ref: '#/components/schemas/BenefitLicenseKeysCreateProperties'
-            required: true
-            title: BenefitLicenseKeysCreate
-            refIdentifier: '#/components/schemas/BenefitLicenseKeysCreate'
-            requiredProperties:
-              - type
-              - description
-              - properties
-          - type: object
-            properties:
-              metadata:
-                allOf:
-                  - additionalProperties:
-                      anyOf:
-                        - type: string
-                          maxLength: 500
-                          minLength: 1
-                        - type: integer
-                        - type: number
-                        - type: boolean
-                    propertyNames:
-                      maxLength: 40
-                      minLength: 1
-                    type: object
-                    maxProperties: 50
-                    title: Metadata
-                    description: >-
-                      Key-value object allowing you to store additional
-                      information.
-
-
-                      The key must be a string with a maximum length of **40
-                      characters**.
-
-                      The value must be either:
-
-
-                      * A string with a maximum length of **500 characters**
-
-                      * An integer
-
-                      * A floating-point number
-
-                      * A boolean
-
-
-                      You can store up to **50 key-value pairs**.
-              type:
-                allOf:
-                  - type: string
-                    const: meter_credit
-                    title: Type
-              description:
-                allOf:
-                  - type: string
-                    maxLength: 42
-                    minLength: 3
-                    title: Description
-                    description: >-
-                      The description of the benefit. Will be displayed on
-                      products having this benefit.
-              organization_id:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: uuid4
-                        description: The organization ID.
-                        examples:
-                          - 1dbfc517-0bbf-4301-9ba8-555ca42b9737
-                        x-polar-selector-widget:
-                          displayProperty: name
-                          resourceName: Organization
-                          resourceRoot: /v1/organizations
-                      - type: 'null'
-                    title: Organization Id
-                    description: >-
-                      The ID of the organization owning the benefit. **Required
-                      unless you use an organization token.**
-              properties:
-                allOf:
-                  - $ref: '#/components/schemas/BenefitMeterCreditCreateProperties'
-            required: true
-            title: BenefitMeterCreditCreate
-            description: Schema to create a benefit of type `meter_unit`.
-            refIdentifier: '#/components/schemas/BenefitMeterCreditCreate'
-            requiredProperties:
-              - type
-              - description
-              - properties
-        examples:
-          example:
-            value:
-              metadata: {}
-              type: <string>
-              description: <string>
-              organization_id: 1dbfc517-0bbf-4301-9ba8-555ca42b9737
-              properties:
-                note: <string>
-    codeSamples:
-      - label: Go (SDK)
-        lang: go
-        source: "package main\n\nimport(\n\t\"context\"\n\t\"os\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"github.com/polarsource/polar-go/models/components\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New(\n        polargo.WithSecurity(os.Getenv(\"POLAR_ACCESS_TOKEN\")),\n    )\n\n    res, err := s.Benefits.Create(ctx, components.CreateBenefitCreateLicenseKeys(\n        components.BenefitLicenseKeysCreate{\n            Description: \"mature emergent at outside arrogantly gadzooks zealous equatorial notwithstanding\",\n            Properties: components.BenefitLicenseKeysCreateProperties{},\n        },\n    ))\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Benefit != nil {\n        // handle response\n    }\n}"
-      - label: Python (SDK)
-        lang: python
-        source: |-
-          from polar_sdk import Polar
-
-
-          with Polar(
-              access_token="<YOUR_BEARER_TOKEN_HERE>",
-          ) as polar:
-
-              res = polar.benefits.create(request={
-                  "type": "license_keys",
-                  "description": "mature emergent at outside arrogantly gadzooks zealous equatorial notwithstanding",
-                  "properties": {},
-              })
-
-              # Handle response
-              print(res)
-      - label: Typescript (SDK)
-        lang: typescript
-        source: |-
-          import { Polar } from "@polar-sh/sdk";
-
-          const polar = new Polar({
-            accessToken: process.env["POLAR_ACCESS_TOKEN"] ?? "",
-          });
-
-          async function run() {
-            const result = await polar.benefits.create({
-              type: "license_keys",
-              description: "mature emergent at outside arrogantly gadzooks zealous equatorial notwithstanding",
-              properties: {},
-            });
-
-            console.log(result);
-          }
-
-          run();
-      - label: PHP (SDK)
-        lang: php
-        source: |-
-          declare(strict_types=1);
-
-          require 'vendor/autoload.php';
-
-          use Polar;
-          use Polar\Models\Components;
-
-          $sdk = Polar\Polar::builder()
-              ->setSecurity(
-                  '<YOUR_BEARER_TOKEN_HERE>'
-              )
-              ->build();
-
-          $request = new Components\BenefitLicenseKeysCreate(
-              description: 'mature emergent at outside arrogantly gadzooks zealous equatorial notwithstanding',
-              properties: new Components\BenefitLicenseKeysCreateProperties(),
-          );
-
-          $response = $sdk->benefits->create(
-              request: $request
-          );
-
-          if ($response->benefit !== null) {
-              // handle response
-          }
-  response:
-    '201':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - type: string
-                    format: uuid4
-                    title: Id
-                    description: The ID of the benefit.
-              created_at:
-                allOf:
-                  - type: string
-                    format: date-time
-                    title: Created At
-                    description: Creation timestamp of the object.
-              modified_at:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: date-time
-                      - type: 'null'
-                    title: Modified At
-                    description: Last modification timestamp of the object.
-              type:
-                allOf:
-                  - type: string
-                    const: custom
-                    title: Type
-              description:
-                allOf:
-                  - type: string
-                    title: Description
-                    description: The description of the benefit.
-              selectable:
-                allOf:
-                  - type: boolean
-                    title: Selectable
-                    description: Whether the benefit is selectable when creating a product.
-              deletable:
-                allOf:
-                  - type: boolean
-                    title: Deletable
-                    description: Whether the benefit is deletable.
-              organization_id:
-                allOf:
-                  - type: string
-                    format: uuid4
-                    title: Organization Id
-                    description: The ID of the organization owning the benefit.
-              metadata:
-                allOf:
-                  - additionalProperties:
-                      anyOf:
-                        - type: string
-                        - type: integer
-                        - type: number
-                        - type: boolean
-                    type: object
-                    title: Metadata
-              properties:
-                allOf:
-                  - $ref: '#/components/schemas/BenefitCustomProperties'
-            title: BenefitCustom
-            description: >-
-              A benefit of type `custom`.
-
-
-              Use it to grant any kind of benefit that doesn't fit in the other
-              types.
-            refIdentifier: '#/components/schemas/BenefitCustom'
-            requiredProperties:
-              - id
-              - created_at
-              - modified_at
-              - type
-              - description
-              - selectable
-              - deletable
-              - organization_id
-              - metadata
-              - properties
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - type: string
-                    format: uuid4
-                    title: Id
-                    description: The ID of the benefit.
-              created_at:
-                allOf:
-                  - type: string
-                    format: date-time
-                    title: Created At
-                    description: Creation timestamp of the object.
-              modified_at:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: date-time
-                      - type: 'null'
-                    title: Modified At
-                    description: Last modification timestamp of the object.
-              type:
-                allOf:
-                  - type: string
-                    const: discord
-                    title: Type
-              description:
-                allOf:
-                  - type: string
-                    title: Description
-                    description: The description of the benefit.
-              selectable:
-                allOf:
-                  - type: boolean
-                    title: Selectable
-                    description: Whether the benefit is selectable when creating a product.
-              deletable:
-                allOf:
-                  - type: boolean
-                    title: Deletable
-                    description: Whether the benefit is deletable.
-              organization_id:
-                allOf:
-                  - type: string
-                    format: uuid4
-                    title: Organization Id
-                    description: The ID of the organization owning the benefit.
-              metadata:
-                allOf:
-                  - additionalProperties:
-                      anyOf:
-                        - type: string
-                        - type: integer
-                        - type: number
-                        - type: boolean
-                    type: object
-                    title: Metadata
-              properties:
-                allOf:
-                  - $ref: '#/components/schemas/BenefitDiscordProperties'
-            title: BenefitDiscord
-            description: |-
-              A benefit of type `discord`.
-
-              Use it to automatically invite your backers to a Discord server.
-            refIdentifier: '#/components/schemas/BenefitDiscord'
-            requiredProperties:
-              - id
-              - created_at
-              - modified_at
-              - type
-              - description
-              - selectable
-              - deletable
-              - organization_id
-              - metadata
-              - properties
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - type: string
-                    format: uuid4
-                    title: Id
-                    description: The ID of the benefit.
-              created_at:
-                allOf:
-                  - type: string
-                    format: date-time
-                    title: Created At
-                    description: Creation timestamp of the object.
-              modified_at:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: date-time
-                      - type: 'null'
-                    title: Modified At
-                    description: Last modification timestamp of the object.
-              type:
-                allOf:
-                  - type: string
-                    const: github_repository
-                    title: Type
-              description:
-                allOf:
-                  - type: string
-                    title: Description
-                    description: The description of the benefit.
-              selectable:
-                allOf:
-                  - type: boolean
-                    title: Selectable
-                    description: Whether the benefit is selectable when creating a product.
-              deletable:
-                allOf:
-                  - type: boolean
-                    title: Deletable
-                    description: Whether the benefit is deletable.
-              organization_id:
-                allOf:
-                  - type: string
-                    format: uuid4
-                    title: Organization Id
-                    description: The ID of the organization owning the benefit.
-              metadata:
-                allOf:
-                  - additionalProperties:
-                      anyOf:
-                        - type: string
-                        - type: integer
-                        - type: number
-                        - type: boolean
-                    type: object
-                    title: Metadata
-              properties:
-                allOf:
-                  - $ref: '#/components/schemas/BenefitGitHubRepositoryProperties'
-            title: BenefitGitHubRepository
-            description: >-
-              A benefit of type `github_repository`.
-
-
-              Use it to automatically invite your backers to a private GitHub
-              repository.
-            refIdentifier: '#/components/schemas/BenefitGitHubRepository'
-            requiredProperties:
-              - id
-              - created_at
-              - modified_at
-              - type
-              - description
-              - selectable
-              - deletable
-              - organization_id
-              - metadata
-              - properties
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - type: string
-                    format: uuid4
-                    title: Id
-                    description: The ID of the benefit.
-              created_at:
-                allOf:
-                  - type: string
-                    format: date-time
-                    title: Created At
-                    description: Creation timestamp of the object.
-              modified_at:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: date-time
-                      - type: 'null'
-                    title: Modified At
-                    description: Last modification timestamp of the object.
-              type:
-                allOf:
-                  - type: string
-                    const: downloadables
-                    title: Type
-              description:
-                allOf:
-                  - type: string
-                    title: Description
-                    description: The description of the benefit.
-              selectable:
-                allOf:
-                  - type: boolean
-                    title: Selectable
-                    description: Whether the benefit is selectable when creating a product.
-              deletable:
-                allOf:
-                  - type: boolean
-                    title: Deletable
-                    description: Whether the benefit is deletable.
-              organization_id:
-                allOf:
-                  - type: string
-                    format: uuid4
-                    title: Organization Id
-                    description: The ID of the organization owning the benefit.
-              metadata:
-                allOf:
-                  - additionalProperties:
-                      anyOf:
-                        - type: string
-                        - type: integer
-                        - type: number
-                        - type: boolean
-                    type: object
-                    title: Metadata
-              properties:
-                allOf:
-                  - $ref: '#/components/schemas/BenefitDownloadablesProperties'
-            title: BenefitDownloadables
-            refIdentifier: '#/components/schemas/BenefitDownloadables'
-            requiredProperties:
-              - id
-              - created_at
-              - modified_at
-              - type
-              - description
-              - selectable
-              - deletable
-              - organization_id
-              - metadata
-              - properties
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - type: string
-                    format: uuid4
-                    title: Id
-                    description: The ID of the benefit.
-              created_at:
-                allOf:
-                  - type: string
-                    format: date-time
-                    title: Created At
-                    description: Creation timestamp of the object.
-              modified_at:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: date-time
-                      - type: 'null'
-                    title: Modified At
-                    description: Last modification timestamp of the object.
-              type:
-                allOf:
-                  - type: string
-                    const: license_keys
-                    title: Type
-              description:
-                allOf:
-                  - type: string
-                    title: Description
-                    description: The description of the benefit.
-              selectable:
-                allOf:
-                  - type: boolean
-                    title: Selectable
-                    description: Whether the benefit is selectable when creating a product.
-              deletable:
-                allOf:
-                  - type: boolean
-                    title: Deletable
-                    description: Whether the benefit is deletable.
-              organization_id:
-                allOf:
-                  - type: string
-                    format: uuid4
-                    title: Organization Id
-                    description: The ID of the organization owning the benefit.
-              metadata:
-                allOf:
-                  - additionalProperties:
-                      anyOf:
-                        - type: string
-                        - type: integer
-                        - type: number
-                        - type: boolean
-                    type: object
-                    title: Metadata
-              properties:
-                allOf:
-                  - $ref: '#/components/schemas/BenefitLicenseKeysProperties'
-            title: BenefitLicenseKeys
-            refIdentifier: '#/components/schemas/BenefitLicenseKeys'
-            requiredProperties:
-              - id
-              - created_at
-              - modified_at
-              - type
-              - description
-              - selectable
-              - deletable
-              - organization_id
-              - metadata
-              - properties
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - type: string
-                    format: uuid4
-                    title: Id
-                    description: The ID of the benefit.
-              created_at:
-                allOf:
-                  - type: string
-                    format: date-time
-                    title: Created At
-                    description: Creation timestamp of the object.
-              modified_at:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        format: date-time
-                      - type: 'null'
-                    title: Modified At
-                    description: Last modification timestamp of the object.
-              type:
-                allOf:
-                  - type: string
-                    const: meter_credit
-                    title: Type
-              description:
-                allOf:
-                  - type: string
-                    title: Description
-                    description: The description of the benefit.
-              selectable:
-                allOf:
-                  - type: boolean
-                    title: Selectable
-                    description: Whether the benefit is selectable when creating a product.
-              deletable:
-                allOf:
-                  - type: boolean
-                    title: Deletable
-                    description: Whether the benefit is deletable.
-              organization_id:
-                allOf:
-                  - type: string
-                    format: uuid4
-                    title: Organization Id
-                    description: The ID of the organization owning the benefit.
-              metadata:
-                allOf:
-                  - additionalProperties:
-                      anyOf:
-                        - type: string
-                        - type: integer
-                        - type: number
-                        - type: boolean
-                    type: object
-                    title: Metadata
-              properties:
-                allOf:
-                  - $ref: '#/components/schemas/BenefitMeterCreditProperties'
-            title: BenefitMeterCredit
-            description: |-
-              A benefit of type `meter_unit`.
-
-              Use it to grant a number of units on a specific meter.
-            refIdentifier: '#/components/schemas/BenefitMeterCredit'
-            requiredProperties:
-              - id
-              - created_at
-              - modified_at
-              - type
-              - description
-              - selectable
-              - deletable
-              - organization_id
-              - metadata
-              - properties
-        examples:
-          example:
-            value:
-              id: <string>
-              created_at: '2023-11-07T05:31:56Z'
-              modified_at: '2023-11-07T05:31:56Z'
-              type: <string>
-              description: <string>
-              selectable: true
-              deletable: true
-              organization_id: <string>
-              metadata: {}
-              properties:
-                note: <string>
-        description: Benefit created.
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    type: array
-                    title: Detail
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+  /v1/benefits/:
+    post:
+      tags:
+        - benefits
+        - public
+      summary: Create Benefit
+      description: |-
+        Create a benefit.
+
+        **Scopes**: `benefits:write`
+      operationId: benefits:create
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BenefitCreate'
+      responses:
+        '201':
+          description: Benefit created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Benefit'
+                title: Benefit
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    BenefitCreate:
+      oneOf:
+        - $ref: '#/components/schemas/BenefitCustomCreate'
+        - $ref: '#/components/schemas/BenefitDiscordCreate'
+        - $ref: '#/components/schemas/BenefitGitHubRepositoryCreate'
+        - $ref: '#/components/schemas/BenefitDownloadablesCreate'
+        - $ref: '#/components/schemas/BenefitLicenseKeysCreate'
+        - $ref: '#/components/schemas/BenefitMeterCreditCreate'
+      discriminator:
+        propertyName: type
+        mapping:
+          custom: '#/components/schemas/BenefitCustomCreate'
+          discord: '#/components/schemas/BenefitDiscordCreate'
+          downloadables: '#/components/schemas/BenefitDownloadablesCreate'
+          github_repository: '#/components/schemas/BenefitGitHubRepositoryCreate'
+          license_keys: '#/components/schemas/BenefitLicenseKeysCreate'
+          meter_credit: '#/components/schemas/BenefitMeterCreditCreate'
+    Benefit:
+      anyOf:
+        - $ref: '#/components/schemas/BenefitCustom'
+        - $ref: '#/components/schemas/BenefitDiscord'
+        - $ref: '#/components/schemas/BenefitGitHubRepository'
+        - $ref: '#/components/schemas/BenefitDownloadables'
+        - $ref: '#/components/schemas/BenefitLicenseKeys'
+        - $ref: '#/components/schemas/BenefitMeterCredit'
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
+    BenefitCustomCreate:
+      properties:
+        metadata:
+          additionalProperties:
+            anyOf:
+              - type: string
+                maxLength: 500
+                minLength: 1
+              - type: integer
+              - type: number
+              - type: boolean
+          propertyNames:
+            maxLength: 40
+            minLength: 1
+          type: object
+          maxProperties: 50
+          title: Metadata
+          description: |-
+            Key-value object allowing you to store additional information.
+
+            The key must be a string with a maximum length of **40 characters**.
+            The value must be either:
+
+            * A string with a maximum length of **500 characters**
+            * An integer
+            * A floating-point number
+            * A boolean
+
+            You can store up to **50 key-value pairs**.
+        type:
+          type: string
+          const: custom
+          title: Type
+        description:
+          type: string
+          maxLength: 42
+          minLength: 3
+          title: Description
+          description: >-
+            The description of the benefit. Will be displayed on products having
+            this benefit.
+        organization_id:
+          anyOf:
+            - type: string
+              format: uuid4
+              description: The organization ID.
+              examples:
+                - 1dbfc517-0bbf-4301-9ba8-555ca42b9737
+              x-polar-selector-widget:
+                displayProperty: name
+                resourceName: Organization
+                resourceRoot: /v1/organizations
+            - type: 'null'
+          title: Organization Id
+          description: >-
+            The ID of the organization owning the benefit. **Required unless you
+            use an organization token.**
+        properties:
+          $ref: '#/components/schemas/BenefitCustomCreateProperties'
+      type: object
+      required:
+        - type
+        - description
+        - properties
+      title: BenefitCustomCreate
+      description: Schema to create a benefit of type `custom`.
+    BenefitDiscordCreate:
+      properties:
+        metadata:
+          additionalProperties:
+            anyOf:
+              - type: string
+                maxLength: 500
+                minLength: 1
+              - type: integer
+              - type: number
+              - type: boolean
+          propertyNames:
+            maxLength: 40
+            minLength: 1
+          type: object
+          maxProperties: 50
+          title: Metadata
+          description: |-
+            Key-value object allowing you to store additional information.
+
+            The key must be a string with a maximum length of **40 characters**.
+            The value must be either:
+
+            * A string with a maximum length of **500 characters**
+            * An integer
+            * A floating-point number
+            * A boolean
+
+            You can store up to **50 key-value pairs**.
+        type:
+          type: string
+          const: discord
+          title: Type
+        description:
+          type: string
+          maxLength: 42
+          minLength: 3
+          title: Description
+          description: >-
+            The description of the benefit. Will be displayed on products having
+            this benefit.
+        organization_id:
+          anyOf:
+            - type: string
+              format: uuid4
+              description: The organization ID.
+              examples:
+                - 1dbfc517-0bbf-4301-9ba8-555ca42b9737
+              x-polar-selector-widget:
+                displayProperty: name
+                resourceName: Organization
+                resourceRoot: /v1/organizations
+            - type: 'null'
+          title: Organization Id
+          description: >-
+            The ID of the organization owning the benefit. **Required unless you
+            use an organization token.**
+        properties:
+          $ref: '#/components/schemas/BenefitDiscordCreateProperties'
+      type: object
+      required:
+        - type
+        - description
+        - properties
+      title: BenefitDiscordCreate
+    BenefitGitHubRepositoryCreate:
+      properties:
+        metadata:
+          additionalProperties:
+            anyOf:
+              - type: string
+                maxLength: 500
+                minLength: 1
+              - type: integer
+              - type: number
+              - type: boolean
+          propertyNames:
+            maxLength: 40
+            minLength: 1
+          type: object
+          maxProperties: 50
+          title: Metadata
+          description: |-
+            Key-value object allowing you to store additional information.
+
+            The key must be a string with a maximum length of **40 characters**.
+            The value must be either:
+
+            * A string with a maximum length of **500 characters**
+            * An integer
+            * A floating-point number
+            * A boolean
+
+            You can store up to **50 key-value pairs**.
+        type:
+          type: string
+          const: github_repository
+          title: Type
+        description:
+          type: string
+          maxLength: 42
+          minLength: 3
+          title: Description
+          description: >-
+            The description of the benefit. Will be displayed on products having
+            this benefit.
+        organization_id:
+          anyOf:
+            - type: string
+              format: uuid4
+              description: The organization ID.
+              examples:
+                - 1dbfc517-0bbf-4301-9ba8-555ca42b9737
+              x-polar-selector-widget:
+                displayProperty: name
+                resourceName: Organization
+                resourceRoot: /v1/organizations
+            - type: 'null'
+          title: Organization Id
+          description: >-
+            The ID of the organization owning the benefit. **Required unless you
+            use an organization token.**
+        properties:
+          $ref: '#/components/schemas/BenefitGitHubRepositoryCreateProperties'
+      type: object
+      required:
+        - type
+        - description
+        - properties
+      title: BenefitGitHubRepositoryCreate
+    BenefitDownloadablesCreate:
+      properties:
+        metadata:
+          additionalProperties:
+            anyOf:
+              - type: string
+                maxLength: 500
+                minLength: 1
+              - type: integer
+              - type: number
+              - type: boolean
+          propertyNames:
+            maxLength: 40
+            minLength: 1
+          type: object
+          maxProperties: 50
+          title: Metadata
+          description: |-
+            Key-value object allowing you to store additional information.
+
+            The key must be a string with a maximum length of **40 characters**.
+            The value must be either:
+
+            * A string with a maximum length of **500 characters**
+            * An integer
+            * A floating-point number
+            * A boolean
+
+            You can store up to **50 key-value pairs**.
+        type:
+          type: string
+          const: downloadables
+          title: Type
+        description:
+          type: string
+          maxLength: 42
+          minLength: 3
+          title: Description
+          description: >-
+            The description of the benefit. Will be displayed on products having
+            this benefit.
+        organization_id:
+          anyOf:
+            - type: string
+              format: uuid4
+              description: The organization ID.
+              examples:
+                - 1dbfc517-0bbf-4301-9ba8-555ca42b9737
+              x-polar-selector-widget:
+                displayProperty: name
+                resourceName: Organization
+                resourceRoot: /v1/organizations
+            - type: 'null'
+          title: Organization Id
+          description: >-
+            The ID of the organization owning the benefit. **Required unless you
+            use an organization token.**
+        properties:
+          $ref: '#/components/schemas/BenefitDownloadablesCreateProperties'
+      type: object
+      required:
+        - type
+        - description
+        - properties
+      title: BenefitDownloadablesCreate
+    BenefitLicenseKeysCreate:
+      properties:
+        metadata:
+          additionalProperties:
+            anyOf:
+              - type: string
+                maxLength: 500
+                minLength: 1
+              - type: integer
+              - type: number
+              - type: boolean
+          propertyNames:
+            maxLength: 40
+            minLength: 1
+          type: object
+          maxProperties: 50
+          title: Metadata
+          description: |-
+            Key-value object allowing you to store additional information.
+
+            The key must be a string with a maximum length of **40 characters**.
+            The value must be either:
+
+            * A string with a maximum length of **500 characters**
+            * An integer
+            * A floating-point number
+            * A boolean
+
+            You can store up to **50 key-value pairs**.
+        type:
+          type: string
+          const: license_keys
+          title: Type
+        description:
+          type: string
+          maxLength: 42
+          minLength: 3
+          title: Description
+          description: >-
+            The description of the benefit. Will be displayed on products having
+            this benefit.
+        organization_id:
+          anyOf:
+            - type: string
+              format: uuid4
+              description: The organization ID.
+              examples:
+                - 1dbfc517-0bbf-4301-9ba8-555ca42b9737
+              x-polar-selector-widget:
+                displayProperty: name
+                resourceName: Organization
+                resourceRoot: /v1/organizations
+            - type: 'null'
+          title: Organization Id
+          description: >-
+            The ID of the organization owning the benefit. **Required unless you
+            use an organization token.**
+        properties:
+          $ref: '#/components/schemas/BenefitLicenseKeysCreateProperties'
+      type: object
+      required:
+        - type
+        - description
+        - properties
+      title: BenefitLicenseKeysCreate
+    BenefitMeterCreditCreate:
+      properties:
+        metadata:
+          additionalProperties:
+            anyOf:
+              - type: string
+                maxLength: 500
+                minLength: 1
+              - type: integer
+              - type: number
+              - type: boolean
+          propertyNames:
+            maxLength: 40
+            minLength: 1
+          type: object
+          maxProperties: 50
+          title: Metadata
+          description: |-
+            Key-value object allowing you to store additional information.
+
+            The key must be a string with a maximum length of **40 characters**.
+            The value must be either:
+
+            * A string with a maximum length of **500 characters**
+            * An integer
+            * A floating-point number
+            * A boolean
+
+            You can store up to **50 key-value pairs**.
+        type:
+          type: string
+          const: meter_credit
+          title: Type
+        description:
+          type: string
+          maxLength: 42
+          minLength: 3
+          title: Description
+          description: >-
+            The description of the benefit. Will be displayed on products having
+            this benefit.
+        organization_id:
+          anyOf:
+            - type: string
+              format: uuid4
+              description: The organization ID.
+              examples:
+                - 1dbfc517-0bbf-4301-9ba8-555ca42b9737
+              x-polar-selector-widget:
+                displayProperty: name
+                resourceName: Organization
+                resourceRoot: /v1/organizations
+            - type: 'null'
+          title: Organization Id
+          description: >-
+            The ID of the organization owning the benefit. **Required unless you
+            use an organization token.**
+        properties:
+          $ref: '#/components/schemas/BenefitMeterCreditCreateProperties'
+      type: object
+      required:
+        - type
+        - description
+        - properties
+      title: BenefitMeterCreditCreate
+      description: Schema to create a benefit of type `meter_unit`.
+    BenefitCustom:
+      properties:
+        id:
+          type: string
+          format: uuid4
+          title: Id
+          description: The ID of the benefit.
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: Creation timestamp of the object.
+        modified_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Modified At
+          description: Last modification timestamp of the object.
+        type:
+          type: string
+          const: custom
+          title: Type
+        description:
+          type: string
+          title: Description
+          description: The description of the benefit.
+        selectable:
+          type: boolean
+          title: Selectable
+          description: Whether the benefit is selectable when creating a product.
+        deletable:
+          type: boolean
+          title: Deletable
+          description: Whether the benefit is deletable.
+        organization_id:
+          type: string
+          format: uuid4
+          title: Organization Id
+          description: The ID of the organization owning the benefit.
+        metadata:
+          $ref: '#/components/schemas/MetadataOutputType'
+        properties:
+          $ref: '#/components/schemas/BenefitCustomProperties'
+      type: object
+      required:
+        - id
+        - created_at
+        - modified_at
+        - type
+        - description
+        - selectable
+        - deletable
+        - organization_id
+        - metadata
+        - properties
+      title: BenefitCustom
+      description: |-
+        A benefit of type `custom`.
+
+        Use it to grant any kind of benefit that doesn't fit in the other types.
+    BenefitDiscord:
+      properties:
+        id:
+          type: string
+          format: uuid4
+          title: Id
+          description: The ID of the benefit.
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: Creation timestamp of the object.
+        modified_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Modified At
+          description: Last modification timestamp of the object.
+        type:
+          type: string
+          const: discord
+          title: Type
+        description:
+          type: string
+          title: Description
+          description: The description of the benefit.
+        selectable:
+          type: boolean
+          title: Selectable
+          description: Whether the benefit is selectable when creating a product.
+        deletable:
+          type: boolean
+          title: Deletable
+          description: Whether the benefit is deletable.
+        organization_id:
+          type: string
+          format: uuid4
+          title: Organization Id
+          description: The ID of the organization owning the benefit.
+        metadata:
+          $ref: '#/components/schemas/MetadataOutputType'
+        properties:
+          $ref: '#/components/schemas/BenefitDiscordProperties'
+      type: object
+      required:
+        - id
+        - created_at
+        - modified_at
+        - type
+        - description
+        - selectable
+        - deletable
+        - organization_id
+        - metadata
+        - properties
+      title: BenefitDiscord
+      description: |-
+        A benefit of type `discord`.
+
+        Use it to automatically invite your backers to a Discord server.
+    BenefitGitHubRepository:
+      properties:
+        id:
+          type: string
+          format: uuid4
+          title: Id
+          description: The ID of the benefit.
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: Creation timestamp of the object.
+        modified_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Modified At
+          description: Last modification timestamp of the object.
+        type:
+          type: string
+          const: github_repository
+          title: Type
+        description:
+          type: string
+          title: Description
+          description: The description of the benefit.
+        selectable:
+          type: boolean
+          title: Selectable
+          description: Whether the benefit is selectable when creating a product.
+        deletable:
+          type: boolean
+          title: Deletable
+          description: Whether the benefit is deletable.
+        organization_id:
+          type: string
+          format: uuid4
+          title: Organization Id
+          description: The ID of the organization owning the benefit.
+        metadata:
+          $ref: '#/components/schemas/MetadataOutputType'
+        properties:
+          $ref: '#/components/schemas/BenefitGitHubRepositoryProperties'
+      type: object
+      required:
+        - id
+        - created_at
+        - modified_at
+        - type
+        - description
+        - selectable
+        - deletable
+        - organization_id
+        - metadata
+        - properties
+      title: BenefitGitHubRepository
+      description: >-
+        A benefit of type `github_repository`.
+
+
+        Use it to automatically invite your backers to a private GitHub
+        repository.
+    BenefitDownloadables:
+      properties:
+        id:
+          type: string
+          format: uuid4
+          title: Id
+          description: The ID of the benefit.
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: Creation timestamp of the object.
+        modified_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Modified At
+          description: Last modification timestamp of the object.
+        type:
+          type: string
+          const: downloadables
+          title: Type
+        description:
+          type: string
+          title: Description
+          description: The description of the benefit.
+        selectable:
+          type: boolean
+          title: Selectable
+          description: Whether the benefit is selectable when creating a product.
+        deletable:
+          type: boolean
+          title: Deletable
+          description: Whether the benefit is deletable.
+        organization_id:
+          type: string
+          format: uuid4
+          title: Organization Id
+          description: The ID of the organization owning the benefit.
+        metadata:
+          $ref: '#/components/schemas/MetadataOutputType'
+        properties:
+          $ref: '#/components/schemas/BenefitDownloadablesProperties'
+      type: object
+      required:
+        - id
+        - created_at
+        - modified_at
+        - type
+        - description
+        - selectable
+        - deletable
+        - organization_id
+        - metadata
+        - properties
+      title: BenefitDownloadables
+    BenefitLicenseKeys:
+      properties:
+        id:
+          type: string
+          format: uuid4
+          title: Id
+          description: The ID of the benefit.
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: Creation timestamp of the object.
+        modified_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Modified At
+          description: Last modification timestamp of the object.
+        type:
+          type: string
+          const: license_keys
+          title: Type
+        description:
+          type: string
+          title: Description
+          description: The description of the benefit.
+        selectable:
+          type: boolean
+          title: Selectable
+          description: Whether the benefit is selectable when creating a product.
+        deletable:
+          type: boolean
+          title: Deletable
+          description: Whether the benefit is deletable.
+        organization_id:
+          type: string
+          format: uuid4
+          title: Organization Id
+          description: The ID of the organization owning the benefit.
+        metadata:
+          $ref: '#/components/schemas/MetadataOutputType'
+        properties:
+          $ref: '#/components/schemas/BenefitLicenseKeysProperties'
+      type: object
+      required:
+        - id
+        - created_at
+        - modified_at
+        - type
+        - description
+        - selectable
+        - deletable
+        - organization_id
+        - metadata
+        - properties
+      title: BenefitLicenseKeys
+    BenefitMeterCredit:
+      properties:
+        id:
+          type: string
+          format: uuid4
+          title: Id
+          description: The ID of the benefit.
+        created_at:
+          type: string
+          format: date-time
+          title: Created At
+          description: Creation timestamp of the object.
+        modified_at:
+          anyOf:
+            - type: string
+              format: date-time
+            - type: 'null'
+          title: Modified At
+          description: Last modification timestamp of the object.
+        type:
+          type: string
+          const: meter_credit
+          title: Type
+        description:
+          type: string
+          title: Description
+          description: The description of the benefit.
+        selectable:
+          type: boolean
+          title: Selectable
+          description: Whether the benefit is selectable when creating a product.
+        deletable:
+          type: boolean
+          title: Deletable
+          description: Whether the benefit is deletable.
+        organization_id:
+          type: string
+          format: uuid4
+          title: Organization Id
+          description: The ID of the organization owning the benefit.
+        metadata:
+          $ref: '#/components/schemas/MetadataOutputType'
+        properties:
+          $ref: '#/components/schemas/BenefitMeterCreditProperties'
+      type: object
+      required:
+        - id
+        - created_at
+        - modified_at
+        - type
+        - description
+        - selectable
+        - deletable
+        - organization_id
+        - metadata
+        - properties
+      title: BenefitMeterCredit
+      description: |-
+        A benefit of type `meter_unit`.
+
+        Use it to grant a number of units on a specific meter.
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+              - type: string
+              - type: integer
+          type: array
+          title: Location
+        msg:
+          type: string
+          title: Message
+        type:
+          type: string
+          title: Error Type
+      type: object
+      required:
+        - loc
+        - msg
+        - type
+      title: ValidationError
     BenefitCustomCreateProperties:
       properties:
         note:
@@ -1230,23 +921,6 @@ components:
       type: object
       title: BenefitCustomCreateProperties
       description: Properties for creating a benefit of type `custom`.
-    BenefitCustomProperties:
-      properties:
-        note:
-          anyOf:
-            - anyOf:
-                - type: string
-                - type: 'null'
-              description: >-
-                Private note to be shared with customers who have this benefit
-                granted.
-            - type: 'null'
-          title: Note
-      type: object
-      required:
-        - note
-      title: BenefitCustomProperties
-      description: Properties for a benefit of type `custom`.
     BenefitDiscordCreateProperties:
       properties:
         guild_token:
@@ -1267,72 +941,6 @@ components:
         - kick_member
       title: BenefitDiscordCreateProperties
       description: Properties to create a benefit of type `discord`.
-    BenefitDiscordProperties:
-      properties:
-        guild_id:
-          type: string
-          title: Guild Id
-          description: The ID of the Discord server.
-        role_id:
-          type: string
-          title: Role Id
-          description: The ID of the Discord role to grant.
-        kick_member:
-          type: boolean
-          title: Kick Member
-          description: Whether to kick the member from the Discord server on revocation.
-        guild_token:
-          type: string
-          title: Guild Token
-      type: object
-      required:
-        - guild_id
-        - role_id
-        - kick_member
-        - guild_token
-      title: BenefitDiscordProperties
-      description: Properties for a benefit of type `discord`.
-    BenefitDownloadablesCreateProperties:
-      properties:
-        archived:
-          additionalProperties:
-            type: boolean
-          propertyNames:
-            format: uuid4
-          type: object
-          title: Archived
-          default: {}
-        files:
-          items:
-            type: string
-            format: uuid4
-          type: array
-          minItems: 1
-          title: Files
-      type: object
-      required:
-        - files
-      title: BenefitDownloadablesCreateProperties
-    BenefitDownloadablesProperties:
-      properties:
-        archived:
-          additionalProperties:
-            type: boolean
-          propertyNames:
-            format: uuid4
-          type: object
-          title: Archived
-        files:
-          items:
-            type: string
-            format: uuid4
-          type: array
-          title: Files
-      type: object
-      required:
-        - archived
-        - files
-      title: BenefitDownloadablesProperties
     BenefitGitHubRepositoryCreateProperties:
       properties:
         repository_owner:
@@ -1367,6 +975,121 @@ components:
         - permission
       title: BenefitGitHubRepositoryCreateProperties
       description: Properties to create a benefit of type `github_repository`.
+    BenefitDownloadablesCreateProperties:
+      properties:
+        archived:
+          additionalProperties:
+            type: boolean
+          propertyNames:
+            format: uuid4
+          type: object
+          title: Archived
+          default: {}
+        files:
+          items:
+            type: string
+            format: uuid4
+          type: array
+          minItems: 1
+          title: Files
+      type: object
+      required:
+        - files
+      title: BenefitDownloadablesCreateProperties
+    BenefitLicenseKeysCreateProperties:
+      properties:
+        prefix:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Prefix
+        expires:
+          anyOf:
+            - $ref: '#/components/schemas/BenefitLicenseKeyExpirationProperties'
+            - type: 'null'
+        activations:
+          anyOf:
+            - $ref: '#/components/schemas/BenefitLicenseKeyActivationCreateProperties'
+            - type: 'null'
+        limit_usage:
+          anyOf:
+            - type: integer
+              exclusiveMinimum: 0
+            - type: 'null'
+          title: Limit Usage
+      type: object
+      title: BenefitLicenseKeysCreateProperties
+    BenefitMeterCreditCreateProperties:
+      properties:
+        units:
+          type: integer
+          maximum: 2147483647
+          exclusiveMinimum: 0
+          title: Units
+        rollover:
+          type: boolean
+          title: Rollover
+        meter_id:
+          type: string
+          format: uuid4
+          title: Meter Id
+      type: object
+      required:
+        - units
+        - rollover
+        - meter_id
+      title: BenefitMeterCreditCreateProperties
+      description: Properties for creating a benefit of type `meter_unit`.
+    MetadataOutputType:
+      additionalProperties:
+        anyOf:
+          - type: string
+          - type: integer
+          - type: number
+          - type: boolean
+      type: object
+    BenefitCustomProperties:
+      properties:
+        note:
+          anyOf:
+            - anyOf:
+                - type: string
+                - type: 'null'
+              description: >-
+                Private note to be shared with customers who have this benefit
+                granted.
+            - type: 'null'
+          title: Note
+      type: object
+      required:
+        - note
+      title: BenefitCustomProperties
+      description: Properties for a benefit of type `custom`.
+    BenefitDiscordProperties:
+      properties:
+        guild_id:
+          type: string
+          title: Guild Id
+          description: The ID of the Discord server.
+        role_id:
+          type: string
+          title: Role Id
+          description: The ID of the Discord role to grant.
+        kick_member:
+          type: boolean
+          title: Kick Member
+          description: Whether to kick the member from the Discord server on revocation.
+        guild_token:
+          type: string
+          title: Guild Token
+      type: object
+      required:
+        - guild_id
+        - role_id
+        - kick_member
+        - guild_token
+      title: BenefitDiscordProperties
+      description: Properties for a benefit of type `discord`.
     BenefitGitHubRepositoryProperties:
       properties:
         repository_owner:
@@ -1401,6 +1124,90 @@ components:
         - permission
       title: BenefitGitHubRepositoryProperties
       description: Properties for a benefit of type `github_repository`.
+    BenefitDownloadablesProperties:
+      properties:
+        archived:
+          additionalProperties:
+            type: boolean
+          propertyNames:
+            format: uuid4
+          type: object
+          title: Archived
+        files:
+          items:
+            type: string
+            format: uuid4
+          type: array
+          title: Files
+      type: object
+      required:
+        - archived
+        - files
+      title: BenefitDownloadablesProperties
+    BenefitLicenseKeysProperties:
+      properties:
+        prefix:
+          anyOf:
+            - type: string
+            - type: 'null'
+          title: Prefix
+        expires:
+          anyOf:
+            - $ref: '#/components/schemas/BenefitLicenseKeyExpirationProperties'
+            - type: 'null'
+        activations:
+          anyOf:
+            - $ref: '#/components/schemas/BenefitLicenseKeyActivationProperties'
+            - type: 'null'
+        limit_usage:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          title: Limit Usage
+      type: object
+      required:
+        - prefix
+        - expires
+        - activations
+        - limit_usage
+      title: BenefitLicenseKeysProperties
+    BenefitMeterCreditProperties:
+      properties:
+        units:
+          type: integer
+          title: Units
+        rollover:
+          type: boolean
+          title: Rollover
+        meter_id:
+          type: string
+          format: uuid4
+          title: Meter Id
+      type: object
+      required:
+        - units
+        - rollover
+        - meter_id
+      title: BenefitMeterCreditProperties
+      description: Properties for a benefit of type `meter_unit`.
+    BenefitLicenseKeyExpirationProperties:
+      properties:
+        ttl:
+          type: integer
+          exclusiveMinimum: 0
+          title: Ttl
+        timeframe:
+          type: string
+          enum:
+            - year
+            - month
+            - day
+          title: Timeframe
+      type: object
+      required:
+        - ttl
+        - timeframe
+      title: BenefitLicenseKeyExpirationProperties
     BenefitLicenseKeyActivationCreateProperties:
       properties:
         limit:
@@ -1429,134 +1236,12 @@ components:
         - limit
         - enable_customer_admin
       title: BenefitLicenseKeyActivationProperties
-    BenefitLicenseKeyExpirationProperties:
-      properties:
-        ttl:
-          type: integer
-          exclusiveMinimum: 0
-          title: Ttl
-        timeframe:
-          type: string
-          enum:
-            - year
-            - month
-            - day
-          title: Timeframe
-      type: object
-      required:
-        - ttl
-        - timeframe
-      title: BenefitLicenseKeyExpirationProperties
-    BenefitLicenseKeysCreateProperties:
-      properties:
-        prefix:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Prefix
-        expires:
-          anyOf:
-            - $ref: '#/components/schemas/BenefitLicenseKeyExpirationProperties'
-            - type: 'null'
-        activations:
-          anyOf:
-            - $ref: '#/components/schemas/BenefitLicenseKeyActivationCreateProperties'
-            - type: 'null'
-        limit_usage:
-          anyOf:
-            - type: integer
-              exclusiveMinimum: 0
-            - type: 'null'
-          title: Limit Usage
-      type: object
-      title: BenefitLicenseKeysCreateProperties
-    BenefitLicenseKeysProperties:
-      properties:
-        prefix:
-          anyOf:
-            - type: string
-            - type: 'null'
-          title: Prefix
-        expires:
-          anyOf:
-            - $ref: '#/components/schemas/BenefitLicenseKeyExpirationProperties'
-            - type: 'null'
-        activations:
-          anyOf:
-            - $ref: '#/components/schemas/BenefitLicenseKeyActivationProperties'
-            - type: 'null'
-        limit_usage:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          title: Limit Usage
-      type: object
-      required:
-        - prefix
-        - expires
-        - activations
-        - limit_usage
-      title: BenefitLicenseKeysProperties
-    BenefitMeterCreditCreateProperties:
-      properties:
-        units:
-          type: integer
-          maximum: 2147483647
-          exclusiveMinimum: 0
-          title: Units
-        rollover:
-          type: boolean
-          title: Rollover
-        meter_id:
-          type: string
-          format: uuid4
-          title: Meter Id
-      type: object
-      required:
-        - units
-        - rollover
-        - meter_id
-      title: BenefitMeterCreditCreateProperties
-      description: Properties for creating a benefit of type `meter_unit`.
-    BenefitMeterCreditProperties:
-      properties:
-        units:
-          type: integer
-          title: Units
-        rollover:
-          type: boolean
-          title: Rollover
-        meter_id:
-          type: string
-          format: uuid4
-          title: Meter Id
-      type: object
-      required:
-        - units
-        - rollover
-        - meter_id
-      title: BenefitMeterCreditProperties
-      description: Properties for a benefit of type `meter_unit`.
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-              - type: string
-              - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-        - loc
-        - msg
-        - type
-      title: ValidationError
+  securitySchemes:
+    access_token:
+      type: http
+      scheme: bearer
+      description: >-
+        You can generate an **Organization Access Token** from your
+        organization's settings.
 
 ````

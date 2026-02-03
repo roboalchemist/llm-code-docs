@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/beavertails/
+
 # BeaverTails Dataset for LLM Safety Testing
 
 ## Overview

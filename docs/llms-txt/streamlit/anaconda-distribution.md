@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/get-started/installation/anaconda-distribution
+
 # Install Streamlit using Anaconda Distribution
 
 This page walks you through installing Streamlit locally using Anaconda Distribution. At the end, you'll build a simple "Hello world" app and run it. You can read more about [Getting started with Anaconda Distribution](https://docs.anaconda.com/free/anaconda/getting-started/) in Anaconda's docs. If you prefer to manage your Python environments via command line, check out how to [Install Streamlit using command line](/get-started/installation/command-line).

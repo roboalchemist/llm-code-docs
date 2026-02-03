@@ -21,7 +21,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### urlquote
 
->  urlquote (url)
+``` python
+
+def urlquote(
+    url
+):
+
+```
 
 *Update url’s path with `urllib.parse.quote`*
 
@@ -45,7 +51,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### urlwrap
 
->  urlwrap (url, data=None, headers=None)
+``` python
+
+def urlwrap(
+    url, data:NoneType=None, headers:NoneType=None
+):
+
+```
 
 *Wrap `url` in a urllib `Request` with
 [`urlquote`](https://fastcore.fast.ai/net.html#urlquote)*
@@ -58,7 +70,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 #### HTTP4xxClientError
 
->  HTTP4xxClientError (url, code, msg, hdrs, fp)
+``` python
+
+def HTTP4xxClientError(
+    url, code, msg, hdrs, fp
+):
+
+```
 
 *Base class for client exceptions (code 4xx) from `url*` functions*
 
@@ -70,7 +88,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 #### HTTP5xxServerError
 
->  HTTP5xxServerError (url, code, msg, hdrs, fp)
+``` python
+
+def HTTP5xxServerError(
+    url, code, msg, hdrs, fp
+):
+
+```
 
 *Base class for server exceptions (code 5xx) from `url*` functions*
 
@@ -82,7 +106,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### urlopener
 
->  urlopener ()
+``` python
+
+def urlopener(
+    
+):
+
+```
 
 ------------------------------------------------------------------------
 
@@ -92,7 +122,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### urlopen
 
->  urlopen (url, data=None, headers=None, timeout=None, **kwargs)
+``` python
+
+def urlopen(
+    url, data:NoneType=None, headers:NoneType=None, timeout:NoneType=None, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Like `urllib.request.urlopen`, but first
 [`urlwrap`](https://fastcore.fast.ai/net.html#urlwrap) the `url`, and
@@ -125,8 +161,14 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### urlread
 
->  urlread (url, data=None, headers=None, decode=True, return_json=False,
->               return_headers=False, timeout=None, **kwargs)
+``` python
+
+def urlread(
+    url, data:NoneType=None, headers:NoneType=None, decode:bool=True, return_json:bool=False,
+    return_headers:bool=False, timeout:NoneType=None, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Retrieve `url`, using `data` dict or `kwargs` to `POST` if present*
 
@@ -138,7 +180,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### urljson
 
->  urljson (url, data=None, headers=None, timeout=None)
+``` python
+
+def urljson(
+    url, data:NoneType=None, headers:NoneType=None, timeout:NoneType=None
+):
+
+```
 
 *Retrieve `url` and decode json*
 
@@ -154,7 +202,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### urlcheck
 
->  urlcheck (url, headers=None, timeout=10)
+``` python
+
+def urlcheck(
+    url, headers:NoneType=None, timeout:int=10
+):
+
+```
 
 ------------------------------------------------------------------------
 
@@ -164,7 +218,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### urlclean
 
->  urlclean (url)
+``` python
+
+def urlclean(
+    url
+):
+
+```
 
 *Remove fragment, params, and querystring from `url` if present*
 
@@ -180,8 +240,14 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### urlretrieve
 
->  urlretrieve (url, filename=None, reporthook=None, data=None,
->                   headers=None, timeout=None)
+``` python
+
+def urlretrieve(
+    url, filename:NoneType=None, reporthook:NoneType=None, data:NoneType=None, headers:NoneType=None,
+    timeout:NoneType=None
+):
+
+```
 
 *Same as `urllib.request.urlretrieve` but also works with `Request`
 objects*
@@ -194,7 +260,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### urldest
 
->  urldest (url, dest=None)
+``` python
+
+def urldest(
+    url, dest:NoneType=None
+):
+
+```
 
 ------------------------------------------------------------------------
 
@@ -204,7 +276,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### urlsave
 
->  urlsave (url, dest=None, reporthook=None, headers=None, timeout=None)
+``` python
+
+def urlsave(
+    url, dest:NoneType=None, reporthook:NoneType=None, headers:NoneType=None, timeout:NoneType=None
+):
+
+```
 
 *Retrieve `url` and save based on its name*
 
@@ -221,7 +299,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### urlvalid
 
->  urlvalid (x)
+``` python
+
+def urlvalid(
+    x
+):
+
+```
 
 *Test if `x` is a valid URL*
 
@@ -239,8 +323,14 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### urlrequest
 
->  urlrequest (url, verb, headers=None, route=None, query=None, data=None,
->                  json_data=True)
+``` python
+
+def urlrequest(
+    url, verb, headers:NoneType=None, route:NoneType=None, query:NoneType=None, data:NoneType=None,
+    json_data:bool=True
+):
+
+```
 
 *`Request` for `url` with optional route params replaced by `route`,
 plus `query` string, and post `data`*
@@ -269,7 +359,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### Request.summary
 
->  Request.summary (skip=None)
+``` python
+
+def summary(
+    skip:NoneType=None
+)->dict:
+
+```
 
 *Summary containing full_url, headers, method, and data, removing `skip`
 from headers*
@@ -291,9 +387,15 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### urlsend
 
->  urlsend (url, verb, headers=None, decode=True, route=None, query=None,
->               data=None, json_data=True, return_json=True,
->               return_headers=False, debug=None, timeout=None)
+``` python
+
+def urlsend(
+    url, verb, headers:NoneType=None, decode:bool=True, route:NoneType=None, query:NoneType=None, data:NoneType=None,
+    json_data:bool=True, return_json:bool=True, return_headers:bool=False, debug:NoneType=None,
+    timeout:NoneType=None
+):
+
+```
 
 *Send request with
 [`urlrequest`](https://fastcore.fast.ai/net.html#urlrequest), converting
@@ -307,7 +409,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### do_request
 
->  do_request (url, post=False, headers=None, **data)
+``` python
+
+def do_request(
+    url, post:bool=False, headers:NoneType=None, data:VAR_KEYWORD
+):
+
+```
 
 *Call GET or json-encoded POST on `url`, depending on `post`*
 
@@ -321,8 +429,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### start_server
 
->  start_server (port, host=None, dgram=False, reuse_addr=True,
->                    n_queue=None)
+``` python
+
+def start_server(
+    port, host:NoneType=None, dgram:bool=False, reuse_addr:bool=True, n_queue:NoneType=None
+):
+
+```
 
 *Create a `socket` server on `port`, with optional `host`, of type
 `dgram`*
@@ -342,7 +455,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### start_client
 
->  start_client (port, host=None, dgram=False)
+``` python
+
+def start_client(
+    port, host:NoneType=None, dgram:bool=False
+):
+
+```
 
 *Create a `socket` client on `port`, with optional `host`, of type
 `dgram`*
@@ -355,7 +474,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### tobytes
 
->  tobytes (s:str)
+``` python
+
+def tobytes(
+    s:str
+)->bytes:
+
+```
 
 *Convert `s` into HTTP-ready bytes format*
 
@@ -371,7 +496,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### http_response
 
->  http_response (body=None, status=200, hdrs=None, **kwargs)
+``` python
+
+def http_response(
+    body:NoneType=None, status:int=200, hdrs:NoneType=None, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Create an HTTP-ready response, adding `kwargs` to `hdrs`*
 
@@ -388,6 +519,12 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### recv_once
 
->  recv_once (host:str='localhost', port:int=8000)
+``` python
+
+def recv_once(
+    host:str='localhost', port:int=8000
+):
+
+```
 
 *Spawn a thread to receive a single HTTP request and store in `d['r']`*

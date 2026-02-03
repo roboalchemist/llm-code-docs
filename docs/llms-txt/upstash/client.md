@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/basics/client.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Overview
 
 The Workflow Client lets you programmatically interact with your workflow runs.

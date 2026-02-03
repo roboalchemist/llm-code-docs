@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/zi-yuan/gitbook-ui.md
-
-# Source: https://gitbook.com/docs/documentation/fr/ressources/gitbook-ui.md
-
-# Source: https://gitbook.com/docs/resources/gitbook-ui.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/rissu/gitbook-ui.md
 
 # Source: https://gitbook.com/docs/documentation/zh/zi-yuan/gitbook-ui.md
 
@@ -56,18 +52,19 @@ From the **Pages** tab in the table of contents you can:
 * Add [external links](#external-links)
 * Access [the Actions menu](#the-actions-menu) <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FQ4IsWwmEEi5QM7PSXNsN%2Factions%20-%20dark.svg?alt=media&#x26;token=ebff54f4-9825-4ab0-99bc-633e1c449371" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F89MTSo5XRpPMVr1T0rxS%2Factions.svg?alt=media&#x26;token=2b5d001e-560a-4f29-8d22-de8163725ca1" alt=""></picture> for individual pages.
 
-In the **Reusable content** tab, you can:
+In the **Library** tab, you can:
 
-* View and search through the reusable content in the space
-* Create new reusable content
-* Drag and drop reusable content onto the page
-* Rename and delete reusable content
+* View and search for reusable content, variables, images and files in the space
+* View and insert reusable content from other spaces
+* Create or import new items in the Library
+* Drag and drop Library items onto the page
+* Double-click to rename any Library item
+* Preview images
+* Manage and download images and files
 
-In the **Files** tab, you can:
+Here’s a short video showing what you can do with the table of contents, particularly the Library tab:
 
-* View, search and reorder the files in your space
-* Drag and drop more files into your space
-* Manage individual files
+{% embed url="<https://youtu.be/gg-VZP2wl-I>" %}
 
 If you want to give more focus to the content of your page, you can temporarily hide the table of contents by hovering your cursor next to it and clicking the **Hide** button <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FgXIVpUPXn7bJ2SWzgFzd%2Fpanel%20left%20-%20dark.svg?alt=media&#x26;token=424e246d-05bd-4d49-a287-bfc6fb38174b" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F0goJ97jfVBvH656kUK0d%2Fpanel%20left.svg?alt=media&#x26;token=cb31d43b-804c-4c4f-b5bb-e71db0d03860" alt="The Hide button icon in GitBook"></picture> that appears. To make it appear again, hover your cursor near the edge of the page and click the **Show** button <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FNWbU09fwPj4NJK1clKmm%2Fpanel%20right%20-%20dark.svg?alt=media&#x26;token=35d1e4d0-bc5d-406f-a1e8-c3808acc4d30" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FwOFmEqy96fMvDPjqjAED%2Fpanel%20right.svg?alt=media&#x26;token=2f39279a-cd05-48a3-8985-d07ec08663ba" alt="The Show button icon in GitBook"></picture>.
 
@@ -80,7 +77,7 @@ The space header contains information about the space you’re currently viewing
 {% hint style="info" %}
 **The space header is adaptable**, and changes depending on the space and mode you’re currently in.
 
-For example, if you’re editing a [change request](https://gitbook.com/docs/collaboration/change-requests), you will see an overview of the change request, alongside options to open the editor, view changes and merge your change request.&#x20;
+For example, if you’re editing a [change request](https://gitbook.com/docs/collaboration/change-requests), you will see an overview of the change request, alongside options to open the editor, view changes and merge your change request.
 
 If you’re viewing a read-only space, you will need to open a new change request to edit the content of the page as live edits are locked.
 {% endhint %}
@@ -95,7 +92,8 @@ The space header includes:
   The name of the space that will appear in the sidebar, and your documentation if and when you choose to publish it.
 * **The space’s breadcrumbs**\
   A full, linear list of the collections or docs sites the space lives in.
-* **Actions menu** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fpn5vEw7bYFrMPpdyvpSu%2Factions-horizontal%20-%20dark.svg?alt=media&#x26;token=ec39eefe-a391-4fe2-828a-082b79f2847d" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FPnnI41SqLSaKBNwT98fW%2Factions-horizontal.svg?alt=media&#x26;token=99754200-a354-4ffe-931e-aa6322ea7395" alt="The Actions menu icon in GitBook"></picture>\
+* **Actions menu** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fpn5vEw7bYFrMPpdyvpSu%2Factions-horizontal%20-%20dark.svg?alt=media&#x26;token=ec39eefe-a391-4fe2-828a-082b79f2847d" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FPnnI41SqLSaKBNwT98fW%2Factions-horizontal.svg?alt=media&#x26;token=99754200-a354-4ffe-931e-aa6322ea7395" alt="The Actions menu icon in GitBook"></picture>
+
   Offers a list of actions for your space. Similar to [page actions](#the-actions-menu), the available actions for a space will differ depending on the mode you’re currently in.
 * **Overview**\
   When viewing a change request, this tab shows the title and description of the change request, along with the participants and reviewers. It also shows all the changes and comments.
@@ -112,7 +110,7 @@ The space header includes:
 * **The Share menu**\
   Allows you to publish and share your space. You can also invite others to [collaborate](https://github.com/GitbookIO/public-docs/blob/main/content-editor/editor/broken-reference/README.md) through this menu.
 * **Variables**\
-  [Create and add reusable variables](https://gitbook.com/docs/creating-content/variables-and-expressions) to use in a space.&#x20;
+  [Create and add reusable variables](https://gitbook.com/docs/creating-content/variables-and-expressions) to use in a space.
 * **GitBook Agent**\
   Collaborate on changes in a space with [GitBook Agent](https://gitbook.com/docs/gitbook-agent).
 * **Comments**\

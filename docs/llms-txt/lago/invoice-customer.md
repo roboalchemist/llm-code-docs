@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/customers/invoice-customer.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Invoice a customer
 
 If a customer has an active subscription, Lago will automatically generate an [invoice](/guide/invoicing/overview) for them at the end of the billing period.

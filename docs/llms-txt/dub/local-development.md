@@ -1,5 +1,9 @@
 # Source: https://dub.co/docs/local-development.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dub.co/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Local development
 
 > A guide on how to run Dub's codebase locally.
@@ -139,7 +143,7 @@ Next, you'll need to set up the [Tinybird](https://tinybird.co) Clickhouse datab
 
     If you have `brew`, install `pipx` by running `brew install pipx`. If not, you can check [installation guide](https://pipx.pypa.io/stable/installation/) for other options. After that, install the Tinybird CLI with `pipx install tinybird-cli` (requires Python >= 3.8).
 
-    Run `tb login --interactive` and paste your `admin` Auth Token.
+    Run `tb auth --interactive` and paste your `admin` Auth Token.
   </Step>
 
   <Step title="Publish Tinybird datasource and endpoints">

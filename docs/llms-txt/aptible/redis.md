@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/managed-databases/supported-databases/redis.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Redis
 
 > Learn about running secure, Managed Redis Databases on Aptible
@@ -18,7 +22,7 @@ The following versions of [Redis](https://redis.io/) are currently available:
 
 <Info>Redis typically releases new major versions annually with a minor version release 6 months after. The latest major version is fully maintained and supported by Redis, while the previous major version and minor version receive security fixes only. All other versions are considered end-of-life.</Info>
 
-<Note>For databases on EOL versions, Aptible will prevent new databases from being provisioned and mark existing database as `DEPRECATED` on the deprecation date listed above. While existing databases will not be affected, we recommend end-of-life databases to be [upgraded](https://www.aptible.com/docs/core-concepts/managed-databases/managing-databases/database-upgrade-methods#database-upgrades). Follow [this guide](https://www.aptible.com/docs/how-to-guides/database-guides/upgrade-redis) to upgrade your redis databases. The latest version offered on Aptible will always be available for provisioning, regardless of end-of-life date.</Note>
+<Note>For databases on EOL versions, Aptible will prevent new databases from being provisioned and mark existing database as `DEPRECATED` on the deprecation date listed above. While existing databases will not be affected, we recommend end-of-life databases to be [upgraded](https://www.aptible.com/docs/core-concepts/managed-databases/managing-databases/database-upgrade-methods#database-upgrades). Restoring a database from a backup will provision a new database that matches the version associated with the backup, even if that version is EOL or Deprecated. The latest version offered on Aptible will always be available for provisioning, regardless of end-of-life date.</Note>
 
 # Connecting to Redis
 

@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/manage-cost/monitor-usage-and-costs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Monitor usage and costs
 
 > Monitor usage and costs for your Pinecone organization and indexes.
@@ -42,6 +46,10 @@ You can monitor index-level usage directly in the Pinecone console, or you can p
 
   For precise read unit reporting, see [index-level metrics](/guides/production/monitoring) or the organization-wide [Usage dashboard](/guides/manage-cost/monitor-usage-and-costs#monitor-organization-level-usage-and-costs).
 </Warning>
+
+<Note>
+  Indexes built on [Dedicated Read Nodes](/guides/index-data/dedicated-read-nodes) are not subject to read unit limits for query, fetch, and list operations. For sizing and capacity planning guidance, see the [Dedicated Read Nodes](/guides/index-data/dedicated-read-nodes) guide.
+</Note>
 
 Example query request:
 
@@ -584,7 +592,7 @@ For example, the following request to use the `multilingual-e5-large` model to g
   curl https://api.pinecone.io/embed \
     -H "Api-Key: $PINECONE_API_KEY" \
     -H "Content-Type: application/json" \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
         "model": "llama-text-embed-v2",
         "parameters": {

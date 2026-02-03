@@ -20,7 +20,7 @@ For any link to a Markdown file within a block, you can open the file in Warp by
 {% endtab %}
 {% endtabs %}
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-838cc78bfe78ea51475f75bfdb58e8ac59893755%2Fopen-markdown-viewer.gif?alt=media" alt="Clicking a Markdown file link in the output of ls to open it in Warp"><figcaption><p>Opening a Markdown file in Warp using the link tooltip</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-838cc78bfe78ea51475f75bfdb58e8ac59893755%2Fopen-markdown-viewer.gif?alt=media" alt="Clicking a Markdown file link in the output of ls to open it in Warp"><figcaption><p>Opening a Markdown file in Warp using the link tooltip</p></figcaption></figure>
 
 ### Markdown-viewing commands
 
@@ -40,7 +40,7 @@ From Finder, you can open a Markdown file in Warp from the “Open With” menu 
 
 You can toggle between the Markdown editor and viewer via the pane overflow menu.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-27a4d58bd65e92e65b65913c77a92b2381effc14%2Fmarkdown-raw-rendered-toggle.gif?alt=media" alt="Clicking a Markdown file link in the output of ls to open it in Warp"><figcaption><p>Toggling between editor and viewer</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-27a4d58bd65e92e65b65913c77a92b2381effc14%2Fmarkdown-raw-rendered-toggle.gif?alt=media" alt="Clicking a Markdown file link in the output of ls to open it in Warp"><figcaption><p>Toggling between editor and viewer</p></figcaption></figure>
 
 ## Shell commands in Markdown files
 
@@ -80,7 +80,7 @@ Once a shell block is selected, press `CTRL-ENTER` to insert it into the termina
 
 If the command contains any arguments using the curly brace `{{param}}` syntax, they will be treated as Workflow arguments. Learn more about [Workflows](https://docs.warp.dev/knowledge-and-collaboration/warp-drive/workflows).
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-b8c067eeb9cd819702a18393daf9ac863140d279%2Frun-markdown-file-command.gif?alt=media&#x26;token=5f339436-e7a8-4e5e-9470-e66b380ed629" alt="Demo of running two commands from a Markdown file in Warp"><figcaption><p>Navigating between and running commands in a Markdown file</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-b8c067eeb9cd819702a18393daf9ac863140d279%2Frun-markdown-file-command.gif?alt=media" alt="Demo of running two commands from a Markdown file in Warp"><figcaption><p>Navigating between and running commands in a Markdown file</p></figcaption></figure>
 
 In addition, all shell and code blocks have a copy button to quickly copy the block’s text to the clipboard.
 

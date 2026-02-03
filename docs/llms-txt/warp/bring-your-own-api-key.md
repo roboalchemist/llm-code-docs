@@ -1,12 +1,12 @@
-# Source: https://docs.warp.dev/support-and-billing/plans-and-pricing/bring-your-own-api-key.md
+# Source: https://docs.warp.dev/support-and-community/plans-and-billing/bring-your-own-api-key.md
 
 # Bring Your Own API Key
 
 Warp supports **Bring Your Own Key (BYOK)** for users who want to connect Warp’s agent to their own Anthropic, OpenAI, or Google API accounts.
 
-This lets you use your own API keys to access models directly, giving you full control over model selection, billing, and data routing. See [model-choice](https://docs.warp.dev/agents/using-agents/model-choice "mention") for a list of supported models.
+This lets you use your own API keys to access models directly, giving you full control over model selection, billing, and data routing. See [Model Choice](https://docs.warp.dev/agent-platform/agent/using-agents/model-choice) for a list of supported models.
 
-BYOK provides greater flexibility in model access and ensures Warp **never consumes your** [ai-credits](https://docs.warp.dev/support-and-billing/plans-and-pricing/ai-credits "mention") for requests routed through your own keys.
+BYOK provides greater flexibility in model access and ensures Warp **never consumes your** [AI Credits](https://docs.warp.dev/support-and-community/plans-and-billing/ai-credits) for requests routed through your own keys.
 
 {% hint style="info" %}
 BYOK is currently only available on Warp's paid plans, starting with Build. Learn more about plans and pricing [warp.dev/pricing](https://www.warp.dev/pricing).
@@ -20,11 +20,11 @@ Warp uses these API keys to directly route your agent requests to the model prov
 
 When a model is selected using your own key:
 
-* Warp **does not consume** any of your [ai-credits](https://docs.warp.dev/support-and-billing/plans-and-pricing/ai-credits "mention").
+* Warp **does not consume** any of your [AI Credits](https://docs.warp.dev/support-and-community/plans-and-billing/ai-credits).
 * Costs are billed directly through your model provider account.
 * Warp does not retain or store your API key on any of its servers.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-c28ac6679feca6f227dae2acd6fbe060e1f394d0%2FPricing-Blog-BYOK.png?alt=media" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2974137108-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FD4dBaHbuMVNs0iB2iqZ1%2Fuploads%2Fgit-blob-c28ac6679feca6f227dae2acd6fbe060e1f394d0%2FPricing-Blog-BYOK.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ## Enabling BYOK
 
@@ -32,9 +32,9 @@ To enable and configure your API keys:
 
 1. Open `Settings > AI > Model API keys`
 2. Add your API key(s) for Anthropic, OpenAI, or Google.
-3. Once added, you'll see a **key icon** next to supported models in the model picker in the [universal-input](https://docs.warp.dev/terminal/universal-input "mention").
+3. Once added, you'll see a **key icon** next to supported models in the model picker in the [Universal Input](https://docs.warp.dev/terminal/universal-input/).
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-7120565cc8181e34497622cf16f3a741ee7af24a%2Fbyok-keys.png?alt=media" alt="" width="304"><figcaption></figcaption></figure>
+<figure><img src="https://2974137108-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FD4dBaHbuMVNs0iB2iqZ1%2Fuploads%2Fgit-blob-7120565cc8181e34497622cf16f3a741ee7af24a%2Fbyok-keys.png?alt=media" alt="" width="304"><figcaption></figcaption></figure>
 
 When you explicitly select a model with a key icon, Warp routes requests through your own API key instead of consuming Warp's credits.
 
@@ -62,7 +62,10 @@ The credit transparency footer will show “0 credits used”, and the `Billing 
 
 Some AI-powered features are not affected by BYOK and are included as part of Warp’s paid plans.
 
-<table><thead><tr><th width="194.06533813476562">Feature</th><th width="191.20095825195312">Uses Warp's AI Credits</th><th>Description</th></tr></thead><tbody><tr><td><a data-mention href="../../agents/active-ai">active-ai</a></td><td>No</td><td>Always included with Build and higher plans.</td></tr><tr><td><a data-mention href="../../code/codebase-context">codebase-context</a></td><td>Yes</td><td>Uses Warp's AI infrastructure and consumes credits.</td></tr></tbody></table>
+| Feature                                                           | Uses Warp's AI Credits | Description                                         |
+| ----------------------------------------------------------------- | ---------------------- | --------------------------------------------------- |
+| [Active AI](https://docs.warp.dev/agent-platform/agent/active-ai) | No                     | Always included with Build and higher plans.        |
+| [Codebase Context](https://docs.warp.dev/code/codebase-context)   | Yes                    | Uses Warp's AI infrastructure and consumes credits. |
 
 These features will continue to function normally regardless of whether you’ve configured BYOK.
 
@@ -82,7 +85,7 @@ By default, Warp does not fall back to your Warp Credits when a BYOK (Bring Your
 
 You can choose to enable **Warp credit fallback**. When enabled, if an agent request fails with your BYOK model (for example, due to an API error or quota limit), Warp will automatically route the request to one of Warp’s provided models. Warp always prioritizes your API keys first and only uses Warp credits when necessary.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-39201d8cd677a438ee79599c5693a65f3300c6f5%2Ffallback.png?alt=media" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2974137108-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FD4dBaHbuMVNs0iB2iqZ1%2Fuploads%2Fgit-blob-39201d8cd677a438ee79599c5693a65f3300c6f5%2Ffallback.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ### Zero Data Retention (ZDR) and BYOK
 

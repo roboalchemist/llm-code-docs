@@ -1,95 +1,132 @@
 # Source: https://www.quo.com/docs/mdx/api-reference/contacts/list-contacts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.quo.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List contacts
 
 > Retrieve a paginated list of contacts. You can optionally filter the results by providing external IDs and sources. When no external IDs are provided, all contacts for the organization are returned.
 
+
+
 ## OpenAPI
 
 ````yaml https://openphone-public-api-prod.s3.us-west-2.amazonaws.com/public/openphone-public-api-v1-prod.json get /v1/contacts
+openapi: 3.1.0
+info:
+  title: OpenPhone Public API
+  version: 1.0.0
+  description: API for connecting with OpenPhone.
+  contact:
+    name: OpenPhone Support
+    email: support@openphone.com
+    url: https://support.openphone.com/hc/en-us
+  termsOfService: https://www.openphone.com/terms
+servers:
+  - description: Production server
+    url: https://api.openphone.com
+security:
+  - apiKey: []
+tags:
+  - description: Operations related to calls
+    name: Calls
+  - description: >-
+      Operations related to call summaries, including AI-generated summaries and
+      Sona voice assistant summaries
+    name: Call Summaries
+  - description: >-
+      Operations related to call transcripts, including AI-generated transcripts
+      and Sona voice assistant transcripts
+    name: Call Transcripts
+  - description: Operations related to contacts
+    name: Contacts
+  - description: Operations related to conversations
+    name: Conversations
+  - description: Operations related to text messages
+    name: Messages
+  - description: Operations related to phone numbers
+    name: Phone Numbers
+  - description: Operations related to users
+    name: Users
+  - description: Operations related to webhooks
+    name: Webhooks
 paths:
-  path: /v1/contacts
-  method: get
-  servers:
-    - url: https://api.openphone.com
-      description: Production server
-  request:
-    security:
-      - title: apiKey
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: apiKey
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        externalIds:
+  /v1/contacts:
+    get:
+      tags:
+        - Contacts
+      summary: List contacts
+      description: >-
+        Retrieve a paginated list of contacts. You can optionally filter the
+        results by providing external IDs and sources. When no external IDs are
+        provided, all contacts for the organization are returned.
+      operationId: listContacts_v1
+      parameters:
+        - in: query
+          name: externalIds
+          required: false
           schema:
-            - type: array
-              items:
-                allOf:
-                  - description: >-
-                      A unique identifier from an external system that can
-                      optionally be supplied when creating a contact. This ID is
-                      used to associate the contact with records in other
-                      systems and is required for retrieving the contact later
-                      via the "List Contacts" endpoint. Ensure the `externalId`
-                      is unique and consistent across systems for accurate
-                      cross-referencing.
-                    examples:
-                      - 664d0db69fcac7cf2e6ec
-                    minLength: 1
-                    maxLength: 75
-                    type: string
-              required: false
+            description: >-
+              Optional list of unique identifiers from an external system used
+              to retrieve specific contacts. When provided, the result set is
+              limited to contacts associated with the provided `externalIds`.
+              These IDs must match those supplied during contact creation via
+              the "Create Contacts" endpoint. When omitted, returns all contacts
+              for the organization. Use this parameter to cross-reference and
+              fetch contacts linked to external systems.
+            type: array
+            items:
               description: >-
-                Optional list of unique identifiers from an external system used
-                to retrieve specific contacts. When provided, the result set is
-                limited to contacts associated with the provided `externalIds`.
-                These IDs must match those supplied during contact creation via
-                the "Create Contacts" endpoint. When omitted, returns all
-                contacts for the organization. Use this parameter to
-                cross-reference and fetch contacts linked to external systems.
-        sources:
+                A unique identifier from an external system that can optionally
+                be supplied when creating a contact. This ID is used to
+                associate the contact with records in other systems and is
+                required for retrieving the contact later via the "List
+                Contacts" endpoint. Ensure the `externalId` is unique and
+                consistent across systems for accurate cross-referencing.
+              examples:
+                - 664d0db69fcac7cf2e6ec
+              minLength: 1
+              maxLength: 75
+              type: string
+        - in: query
+          name: sources
+          required: false
           schema:
-            - type: array
-              items:
-                allOf:
-                  - description: >-
-                      Indicates how the contact was created or where it
-                      originated from.
-                    examples:
-                      - public-api
-                    minLength: 1
-                    maxLength: 75
-                    type: string
-              required: false
-        maxResults:
+            type: array
+            items:
+              description: >-
+                Indicates how the contact was created or where it originated
+                from.
+              examples:
+                - public-api
+              minLength: 1
+              maxLength: 75
+              type: string
+        - in: query
+          name: maxResults
+          required: true
           schema:
-            - type: integer
-              required: true
-              description: Maximum number of results to return per page.
-              maximum: 50
-              minimum: 1
-              default: 10
-        pageToken:
+            description: Maximum number of results to return per page.
+            default: 10
+            maximum: 50
+            minimum: 1
+            type: integer
+        - in: query
+          name: pageToken
+          required: false
           schema:
-            - type: string
-              required: false
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: array
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -361,86 +398,45 @@ paths:
                         - createdAt
                         - updatedAt
                         - createdByUserId
-              totalItems:
-                allOf:
-                  - description: >-
+                  totalItems:
+                    description: >-
                       Total number of items available. ⚠️ Note: `totalItems` is
                       not accurately returning the total number of items that
                       can be paginated. We are working on fixing this issue.
                     type: integer
-              nextPageToken:
-                allOf:
-                  - anyOf:
+                  nextPageToken:
+                    anyOf:
                       - type: string
                       - type: 'null'
-            requiredProperties:
-              - data
-              - totalItems
-              - nextPageToken
-        examples:
-          example:
-            value:
-              data:
-                - id: 664d0db69fcac7cf2e6ec
-                  externalId: 664d0db69fcac7cf2e6ec
-                  source: public-api
-                  sourceUrl: https://openphone.co/contacts/664d0db69fcac7cf2e6ec
-                  defaultFields:
-                    company: OpenPhone
-                    emails:
-                      - name: company email
-                        value: abc@example.com
-                        id: acb123
-                    firstName: John
-                    lastName: Doe
-                    phoneNumbers:
-                      - name: company phone
-                        value: '+12345678901'
-                        id: acb123
-                    role: Sales
-                  customFields:
-                    - name: Inbound Lead
-                      key: inbound-lead
-                      id: 66d0d87d534de8fd1c433cec3
-                      type: multi-select
-                      value:
-                        - <string>
-                  createdAt: '2022-01-01T00:00:00Z'
-                  updatedAt: '2022-01-01T00:00:00Z'
-                  createdByUserId: US123abc
-              totalItems: 123
-              nextPageToken: <string>
-        description: Success
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              message:
-                allOf:
-                  - type: string
-              code:
-                allOf:
-                  - const: '0801400'
+                required:
+                  - data
+                  - totalItems
+                  - nextPageToken
+        '400':
+          description: Invalid Custom Field Item
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
                     type: string
-              status:
-                allOf:
-                  - const: 400
+                  code:
+                    const: '0801400'
+                    type: string
+                  status:
+                    const: 400
                     type: number
-              docs:
-                allOf:
-                  - const: https://openphone.com/docs
+                  docs:
+                    const: https://openphone.com/docs
                     type: string
-              title:
-                allOf:
-                  - const: Invalid Custom Field Item
+                  title:
+                    const: Invalid Custom Field Item
                     type: string
-              trace:
-                allOf:
-                  - type: string
-              errors:
-                allOf:
-                  - type: array
+                  trace:
+                    type: string
+                  errors:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -460,64 +456,41 @@ paths:
                         - path
                         - message
                         - schema
-              description:
-                allOf:
-                  - const: Invalid Custom Field Item
+                  description:
+                    const: Invalid Custom Field Item
                     type: string
-            requiredProperties:
-              - message
-              - code
-              - status
-              - docs
-              - title
-              - description
-        examples:
-          example:
-            value:
-              message: <string>
-              code: <string>
-              status: 123
-              docs: <string>
-              title: <string>
-              trace: <string>
-              errors:
-                - path: <string>
-                  message: <string>
-                  value: <any>
-                  schema:
-                    type: <string>
-              description: <string>
-        description: Invalid Custom Field Item
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              message:
-                allOf:
-                  - type: string
-              code:
-                allOf:
-                  - const: '0800401'
+                required:
+                  - message
+                  - code
+                  - status
+                  - docs
+                  - title
+                  - description
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
                     type: string
-              status:
-                allOf:
-                  - const: 401
+                  code:
+                    const: '0800401'
+                    type: string
+                  status:
+                    const: 401
                     type: number
-              docs:
-                allOf:
-                  - const: https://openphone.com/docs
+                  docs:
+                    const: https://openphone.com/docs
                     type: string
-              title:
-                allOf:
-                  - const: Unauthorized
+                  title:
+                    const: Unauthorized
                     type: string
-              trace:
-                allOf:
-                  - type: string
-              errors:
-                allOf:
-                  - type: array
+                  trace:
+                    type: string
+                  errors:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -537,58 +510,37 @@ paths:
                         - path
                         - message
                         - schema
-            requiredProperties:
-              - message
-              - code
-              - status
-              - docs
-              - title
-        examples:
-          example:
-            value:
-              message: <string>
-              code: <string>
-              status: 123
-              docs: <string>
-              title: <string>
-              trace: <string>
-              errors:
-                - path: <string>
-                  message: <string>
-                  value: <any>
-                  schema:
-                    type: <string>
-        description: Unauthorized
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              message:
-                allOf:
-                  - type: string
-              code:
-                allOf:
-                  - const: '0801403'
+                required:
+                  - message
+                  - code
+                  - status
+                  - docs
+                  - title
+        '403':
+          description: Not Phone Number User
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
                     type: string
-              status:
-                allOf:
-                  - const: 403
+                  code:
+                    const: '0801403'
+                    type: string
+                  status:
+                    const: 403
                     type: number
-              docs:
-                allOf:
-                  - const: https://openphone.com/docs
+                  docs:
+                    const: https://openphone.com/docs
                     type: string
-              title:
-                allOf:
-                  - const: Not Phone Number User
+                  title:
+                    const: Not Phone Number User
                     type: string
-              trace:
-                allOf:
-                  - type: string
-              errors:
-                allOf:
-                  - type: array
+                  trace:
+                    type: string
+                  errors:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -608,64 +560,41 @@ paths:
                         - path
                         - message
                         - schema
-              description:
-                allOf:
-                  - const: Not Phone Number User
+                  description:
+                    const: Not Phone Number User
                     type: string
-            requiredProperties:
-              - message
-              - code
-              - status
-              - docs
-              - title
-              - description
-        examples:
-          example:
-            value:
-              message: <string>
-              code: <string>
-              status: 123
-              docs: <string>
-              title: <string>
-              trace: <string>
-              errors:
-                - path: <string>
-                  message: <string>
-                  value: <any>
-                  schema:
-                    type: <string>
-              description: <string>
-        description: Not Phone Number User
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              message:
-                allOf:
-                  - type: string
-              code:
-                allOf:
-                  - const: '0800404'
+                required:
+                  - message
+                  - code
+                  - status
+                  - docs
+                  - title
+                  - description
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
                     type: string
-              status:
-                allOf:
-                  - const: 404
+                  code:
+                    const: '0800404'
+                    type: string
+                  status:
+                    const: 404
                     type: number
-              docs:
-                allOf:
-                  - const: https://openphone.com/docs
+                  docs:
+                    const: https://openphone.com/docs
                     type: string
-              title:
-                allOf:
-                  - const: Not Found
+                  title:
+                    const: Not Found
                     type: string
-              trace:
-                allOf:
-                  - type: string
-              errors:
-                allOf:
-                  - type: array
+                  trace:
+                    type: string
+                  errors:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -685,58 +614,37 @@ paths:
                         - path
                         - message
                         - schema
-            requiredProperties:
-              - message
-              - code
-              - status
-              - docs
-              - title
-        examples:
-          example:
-            value:
-              message: <string>
-              code: <string>
-              status: 123
-              docs: <string>
-              title: <string>
-              trace: <string>
-              errors:
-                - path: <string>
-                  message: <string>
-                  value: <any>
-                  schema:
-                    type: <string>
-        description: Not Found
-    '409':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              message:
-                allOf:
-                  - type: string
-              code:
-                allOf:
-                  - const: '0800409'
+                required:
+                  - message
+                  - code
+                  - status
+                  - docs
+                  - title
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
                     type: string
-              status:
-                allOf:
-                  - const: 409
+                  code:
+                    const: '0800409'
+                    type: string
+                  status:
+                    const: 409
                     type: number
-              docs:
-                allOf:
-                  - const: https://openphone.com/docs
+                  docs:
+                    const: https://openphone.com/docs
                     type: string
-              title:
-                allOf:
-                  - const: Conflict
+                  title:
+                    const: Conflict
                     type: string
-              trace:
-                allOf:
-                  - type: string
-              errors:
-                allOf:
-                  - type: array
+                  trace:
+                    type: string
+                  errors:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -756,58 +664,37 @@ paths:
                         - path
                         - message
                         - schema
-            requiredProperties:
-              - message
-              - code
-              - status
-              - docs
-              - title
-        examples:
-          example:
-            value:
-              message: <string>
-              code: <string>
-              status: 123
-              docs: <string>
-              title: <string>
-              trace: <string>
-              errors:
-                - path: <string>
-                  message: <string>
-                  value: <any>
-                  schema:
-                    type: <string>
-        description: Conflict
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              message:
-                allOf:
-                  - type: string
-              code:
-                allOf:
-                  - const: '0801500'
+                required:
+                  - message
+                  - code
+                  - status
+                  - docs
+                  - title
+        '500':
+          description: Unknown Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
                     type: string
-              status:
-                allOf:
-                  - const: 500
+                  code:
+                    const: '0801500'
+                    type: string
+                  status:
+                    const: 500
                     type: number
-              docs:
-                allOf:
-                  - const: https://openphone.com/docs
+                  docs:
+                    const: https://openphone.com/docs
                     type: string
-              title:
-                allOf:
-                  - const: Unknown
+                  title:
+                    const: Unknown
                     type: string
-              trace:
-                allOf:
-                  - type: string
-              errors:
-                allOf:
-                  - type: array
+                  trace:
+                    type: string
+                  errors:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -827,31 +714,19 @@ paths:
                         - path
                         - message
                         - schema
-            requiredProperties:
-              - message
-              - code
-              - status
-              - docs
-              - title
-        examples:
-          example:
-            value:
-              message: <string>
-              code: <string>
-              status: 123
-              docs: <string>
-              title: <string>
-              trace: <string>
-              errors:
-                - path: <string>
-                  message: <string>
-                  value: <any>
-                  schema:
-                    type: <string>
-        description: Unknown Error
-  deprecated: false
-  type: path
+                required:
+                  - message
+                  - code
+                  - status
+                  - docs
+                  - title
+      security:
+        - apiKey: []
 components:
-  schemas: {}
+  securitySchemes:
+    apiKey:
+      in: header
+      name: Authorization
+      type: apiKey
 
 ````

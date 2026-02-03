@@ -1,17 +1,5 @@
 # Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/vue/install.md
 
-# Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/https://react.servicestack.net/gallery/install.md
-
-# Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/vue/install.md
-
-# Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/https://react.servicestack.net/gallery/install.md
-
-# Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/vue/install.md
-
-# Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/https://react.servicestack.net/gallery/install.md
-
-# Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/vue/install.md
-
 ---
 title: Installation
 ---
@@ -102,7 +90,7 @@ app.use(ServiceStackVue)
 app.mount('#app')
 ```
 
-The **client** instance is used by API-enabled components to call your APIs using the [/api predefined route](/routing#json-api-pre-defined-route). ServiceStack Apps not running on .NET 8+ or have the **/api** route disabled should use
+The **client** instance is used by API-enabled components to call your APIs using the [/api predefined route](/routing#json-api-pre-defined-route). ServiceStack Apps not running on .NET 10+ or have the **/api** route disabled should use
 `JsonServiceClient` instead:
 
 ```js

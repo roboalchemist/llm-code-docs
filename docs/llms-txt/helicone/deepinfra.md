@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/getting-started/integration-method/deepinfra.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deepinfra Integration
 
 > Connect Helicone with OpenAI-compatible models on Deepinfra. Simple setup process using a custom base_url for seamless integration with your Deepinfra-based AI applications.

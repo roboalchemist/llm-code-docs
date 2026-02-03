@@ -2,7 +2,7 @@
 
 # Command Palette
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-4c11592c5193014fb17df1dbdbd8670a118234f3%2FCleanShot%202024-05-15%20at%2015.36.39.png?alt=media" alt=""><figcaption><p>Command Palette Panel</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-4c11592c5193014fb17df1dbdbd8670a118234f3%2Fcommand-palette-panel.png?alt=media" alt=""><figcaption><p>Command Palette Panel</p></figcaption></figure>
 
 ## How to access it
 

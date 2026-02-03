@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/guides/governance-models.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Centralized vs. Self-Service Governance
 
 > Learn how to structure Infisical for centralized platform administration or team self-service autonomy
@@ -488,8 +492,3 @@ Here's a quick reference for how key Infisical features map to each governance m
 | [Audit Logs](/documentation/platform/audit-logs)                                   | Centralized monitoring                          | Project-level visibility               |
 
 Most organizations land somewhere in between—central control over identity, policies, and infrastructure with team ownership of secrets and integrations. You can start at either end of the spectrum and adjust as your needs change.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://infisical.com/docs/llms.txt

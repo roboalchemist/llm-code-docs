@@ -4,7 +4,6 @@
 title: Service Map
 description: The Service Map visualizes data that is being collected by Datadog APM.
 breadcrumbs: Docs > APM > Service Observability > Service Map
-source_url: https://docs.datadoghq.com/services/services_map/index.html
 ---
 
 # Service Map

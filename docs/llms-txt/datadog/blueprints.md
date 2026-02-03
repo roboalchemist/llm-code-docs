@@ -4,20 +4,26 @@
 title: Blueprints
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > Cloudcraft API Reference > Blueprints
-source_url: https://docs.datadoghq.com/api/blueprints/index.html
 ---
 
 # Blueprints
-.openapi-spec-content img{max-width:100%}.openapi-spec-content h1 a:hover,.openapi-spec-content h2 a:hover{color:#000;border-bottom:1px solid #000}List blueprintsGET&nbsp; /blueprintOverview
+.openapi-spec-content img{max-width:100%}.openapi-spec-content h1 a:hover,.openapi-spec-content h2 a:hover{color:#000;border-bottom:1px solid #000}List blueprintsGET  /blueprintOverview
 List all of your saved blueprints.
 
 Each entry includes the blueprint ID and name, access control, and user information.
 
 The provided blueprint IDs are required to access the other blueprint-related APIs.
-Response200401OKModelExampleExpand AllFieldTypeDescriptionblueprints
+Response200401
+{% tab title="200" %}
+OKModelExample
+{% tab title="Model" %}
+Expand AllFieldTypeDescriptionblueprints
 array
 
 An array of blueprint metadata.
+{% /tab %}
+
+{% tab title="Example" %}
 
 ```json
 {
@@ -33,7 +39,15 @@ An array of blueprint metadata.
   ]
 }
 ```
-UnauthorizedCode Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="401" %}
+Unauthorized
+{% /tab %}
+Code Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
 ```bash
 curl --location 'https://api.cloudcraft.co/blueprint'
 ```
@@ -124,11 +138,15 @@ fetch("https://api.cloudcraft.co/blueprint", requestOptions)
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
 ```
-Create a blueprintPOST&nbsp; /blueprintOverview
+Create a blueprintPOST  /blueprintOverview
 Create a new blueprint.
 
 The body of the request should contain the blueprint document in JSON format. The response contains the created blueprint, including the newly assigned ID.
-Response201401403OKModelExampleExpand AllFieldTypeDescriptionCreatorId
+Response201401403
+{% tab title="201" %}
+OKModelExample
+{% tab title="Model" %}
+Expand AllFieldTypeDescriptionCreatorId
 string
 
 The user ID of the creator of the blueprint.
@@ -152,6 +170,9 @@ updatedAt
 string
 
 The date and time the blueprint was last updated.
+{% /tab %}
+
+{% tab title="Example" %}
 
 ```json
 {
@@ -167,7 +188,19 @@ The date and time the blueprint was last updated.
   "updatedAt": "2022-01-01T20:59:57.340Z"
 }
 ```
-UnauthorizedForbidden, insufficient privilegesCode Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="401" %}
+Unauthorized
+{% /tab %}
+
+{% tab title="403" %}
+Forbidden, insufficient privileges
+{% /tab %}
+Code Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
 ```bash
 curl --location 'https://api.cloudcraft.co/blueprint' \
 --header 'Content-Type: application/json' \
@@ -289,7 +322,7 @@ fetch("https://api.cloudcraft.co/blueprint", requestOptions)
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
 ```
-Delete a blueprintDELETE&nbsp; /blueprint/{blueprint_id}Overview
+Delete a blueprintDELETE  /blueprint/{blueprint_id}Overview
 Delete a blueprint.
 
 When the deletion succeeds, *204 No Content* is returned.
@@ -297,7 +330,23 @@ When the deletion succeeds, *204 No Content* is returned.
 ### Path Parameters{% #path-parameters %}
 
 - **blueprint\_id**: *UUID*. Blueprint ID. Required.
-Response204401403404OKUnauthorizedForbidden, insufficient privilegesBlueprint not foundCode Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
+Response204401403404
+{% tab title="204" %}
+OK
+{% /tab %}
+
+{% tab title="401" %}
+Unauthorized
+{% /tab %}
+
+{% tab title="403" %}
+Forbidden, insufficient privileges
+{% /tab %}
+
+{% tab title="404" %}
+Blueprint not found
+{% /tab %}
+Code Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
 ```bash
 curl --location --request DELETE 'https://api.cloudcraft.co/blueprint/{blueprint_id}'
 ```
@@ -392,13 +441,29 @@ fetch("https://api.cloudcraft.co/blueprint/{blueprint_id}", requestOptions)
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
 ```
-Retrieve a blueprintGET&nbsp; /blueprint/{blueprint_id}Overview
+Retrieve a blueprintGET  /blueprint/{blueprint_id}Overview
 Retrieve a blueprint in JSON format.
 
 ### Path Parameters{% #path-parameters %}
 
 - **blueprint\_id**: *UUID*. Blueprint ID. Required.
-Response200401403404Retrieve blueprintUnauthorizedForbidden, insufficient privilegesBlueprint not foundCode Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
+Response200401403404
+{% tab title="200" %}
+Retrieve blueprint
+{% /tab %}
+
+{% tab title="401" %}
+Unauthorized
+{% /tab %}
+
+{% tab title="403" %}
+Forbidden, insufficient privileges
+{% /tab %}
+
+{% tab title="404" %}
+Blueprint not found
+{% /tab %}
+Code Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
 ```bash
 curl --location 'https://api.cloudcraft.co/blueprint/{blueprint_id}'
 ```
@@ -496,13 +561,33 @@ fetch("https://api.cloudcraft.co/blueprint/{blueprint_id}", requestOptions)
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
 ```
-Update a blueprintPUT&nbsp; /blueprint/{blueprint_id}Overview
+Update a blueprintPUT  /blueprint/{blueprint_id}Overview
 Update an existing blueprint.
 
 The body of the request should contain the updated blueprint document in JSON format.
 
 Optionally, a conditional update of the blueprint can be perfomed by including the *If-Match* HTTP header with the same ETag value as provided by the "Retrieve blueprint" API. If the blueprint has been modified since the retrieval, the update is rejected with a *412 Resource out of date* response. If the update succeeds, the new ETag is returned.
-Response204401403404412OKUnauthorizedForbidden, insufficient privilegesBlueprint not foundResource out of dateCode Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
+Response204401403404412
+{% tab title="204" %}
+OK
+{% /tab %}
+
+{% tab title="401" %}
+Unauthorized
+{% /tab %}
+
+{% tab title="403" %}
+Forbidden, insufficient privileges
+{% /tab %}
+
+{% tab title="404" %}
+Blueprint not found
+{% /tab %}
+
+{% tab title="412" %}
+Resource out of date
+{% /tab %}
+Code Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
 ```bash
 curl --location --request PUT 'https://api.cloudcraft.co/blueprint/{blueprint_id}' \
 --data '{"data": "%!s(<nil>)",
@@ -637,7 +722,7 @@ fetch("https://api.cloudcraft.co/blueprint/{blueprint_id}", requestOptions)
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
 ```
-Export a blueprint as an imageGET&nbsp; /blueprint/{blueprint_id}/{format}Overview
+Export a blueprint as an imageGET  /blueprint/{blueprint_id}/{format}Overview
 Render blueprint for export in SVG, PNG, PDF, or MxGraph format.
 
 ### Path Parameters{% #path-parameters %}
@@ -654,7 +739,23 @@ Render blueprint for export in SVG, PNG, PDF, or MxGraph format.
 - **transparent**: *Boolean*. Enable or disable transparent background rendering.
 - **landscape**: *Boolean*. Enable or disable landscape paper format (PDF).
 - **paperSize**: *String*. One of "Letter", "Legal", "Tabloid", "Ledger", "A0", "A1", "A2", "A3", "A4", "A5".
-Response200401403404OKUnauthorizedForbidden, insufficient privilegesBlueprint not foundCode Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
+Response200401403404
+{% tab title="200" %}
+OK
+{% /tab %}
+
+{% tab title="401" %}
+Unauthorized
+{% /tab %}
+
+{% tab title="403" %}
+Forbidden, insufficient privileges
+{% /tab %}
+
+{% tab title="404" %}
+Blueprint not found
+{% /tab %}
+Code Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
 ```bash
 curl --location 'https://api.cloudcraft.co/blueprint/{blueprint_id}/{format}'
 ```

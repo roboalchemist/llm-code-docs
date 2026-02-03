@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/troubleshooting/custom-node-issues.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to Troubleshoot and Solve ComfyUI Issues
 
 > Troubleshoot and fix problems caused by custom nodes and extensions

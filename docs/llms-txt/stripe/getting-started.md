@@ -4,7 +4,7 @@
 
 Determine which integration option to use when you set up Stripe Capital.
 
-> Capital for platforms is available in [public preview](https://docs.stripe.com/release-phases.md). [Sign up to join](https://docs.stripe.com/capital/how-capital-for-platforms-works.md#sign-up).
+> Capital for platforms is available in [public preview](https://docs.stripe.com/release-phases.md).
 
 Use Stripe Capital to set up a Capital program, and provide access to financing offers to your eligible connected accounts. Use the quickstart below to launch your program with a no-code integration. After launch, you can customize your integration with embedded components or Stripe APIs.
 

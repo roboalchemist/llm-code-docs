@@ -4,17 +4,24 @@
 title: Azure Accounts
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > Cloudcraft API Reference > Azure Accounts
-source_url: https://docs.datadoghq.com/api/azure-accounts/index.html
 ---
 
 # Azure Accounts
-.openapi-spec-content img{max-width:100%}.openapi-spec-content h1 a:hover,.openapi-spec-content h2 a:hover{color:#000;border-bottom:1px solid #000}List Azure accountsGET&nbsp; /azure/accountOverview
+.openapi-spec-content img{max-width:100%}.openapi-spec-content h1 a:hover,.openapi-spec-content h2 a:hover{color:#000;border-bottom:1px solid #000}List Azure accountsGET  /azure/accountOverview
 List all Azure accounts linked to your Cloudcraft account.
 
 The response is an array of Azure accounts. Each entry includes the account ID and name, access control, and user information.
 
 The provided account IDs are required to access the other Azure-related APIs.
-Response200401OKUnauthorizedCode Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
+Response200401
+{% tab title="200" %}
+OK
+{% /tab %}
+
+{% tab title="401" %}
+Unauthorized
+{% /tab %}
+Code Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
 ```bash
 curl --location 'https://api.cloudcraft.co/azure/account'
 ```
@@ -109,7 +116,7 @@ fetch("https://api.cloudcraft.co/azure/account", requestOptions)
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
 ```
-Add an Azure accountPOST&nbsp; /azure/accountOverview
+Add an Azure accountPOST  /azure/accountOverview
 Register a new Azure account with Cloudcraft.
 
 The body of the request should contain the account properties in JSON format. The response contains the created account object, including the newly assigned ID for use with other API endpoints.
@@ -121,7 +128,11 @@ The body of the request should contain the account properties in JSON format. Th
 - **directoryId**: Azure Tenant or Directory ID.
 - **applicationId**: Identifier of the application registered with Azure
 - **clientSecret**: Client secret associated with the registered application.
-Response201401403OKModelExampleExpand AllFieldTypeDescriptionCreatorId
+Response201401403
+{% tab title="201" %}
+OKModelExample
+{% tab title="Model" %}
+Expand AllFieldTypeDescriptionCreatorId
 string
 
 The user ID of the creator of the Azure account.
@@ -153,6 +164,9 @@ updatedAt
 string
 
 The date and time the Azure account was last updated.
+{% /tab %}
+
+{% tab title="Example" %}
 
 ```json
 {
@@ -166,7 +180,19 @@ The date and time the Azure account was last updated.
   "updatedAt": "2022-01-01T21:19:03.487Z"
 }
 ```
-UnauthorizedForbidden, insufficient privilegesCode Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="401" %}
+Unauthorized
+{% /tab %}
+
+{% tab title="403" %}
+Forbidden, insufficient privileges
+{% /tab %}
+Code Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
 ```bash
 curl --location 'https://api.cloudcraft.co/azure/account' \
 --header 'Content-Type: application/json' \
@@ -315,13 +341,29 @@ fetch("https://api.cloudcraft.co/azure/account", requestOptions)
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
 ```
-Delete an Azure accountDELETE&nbsp; /azure/account/{account_id}Overview
+Delete an Azure accountDELETE  /azure/account/{account_id}Overview
 Delete a registered Azure account.
 
 ### Path Parameters{% #path-parameters %}
 
 - **account\_id**: *UUID*. Azure account ID. Required.
-Response204401403404No ContentUnauthorizedForbidden, insufficient privilegesAzure account not foundCode Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
+Response204401403404
+{% tab title="204" %}
+No Content
+{% /tab %}
+
+{% tab title="401" %}
+Unauthorized
+{% /tab %}
+
+{% tab title="403" %}
+Forbidden, insufficient privileges
+{% /tab %}
+
+{% tab title="404" %}
+Azure account not found
+{% /tab %}
+Code Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
 ```bash
 curl --location --request DELETE 'https://api.cloudcraft.co/azure/account/{account_id}'
 ```
@@ -419,7 +461,7 @@ fetch("https://api.cloudcraft.co/azure/account/{account_id}", requestOptions)
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
 ```
-Update an Azure accountPUT&nbsp; /azure/account/{account_id}Overview
+Update an Azure accountPUT  /azure/account/{account_id}Overview
 Update an Azure account registered in Cloudcraft.
 
 The body of the request should contain the account properties in JSON format. The response contains the updated account object.
@@ -435,7 +477,19 @@ The body of the request should contain the account properties in JSON format. Th
 - **directoryId**: Azure Tenant or Directory ID.
 - **applicationId**: Identifier of the application registered with Azure.
 - **clientSecret**: Client secret associated with the registered application.
-Response200401403OKUnauthorizedForbidden, insufficient privilegesCode Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
+Response200401403
+{% tab title="200" %}
+OK
+{% /tab %}
+
+{% tab title="401" %}
+Unauthorized
+{% /tab %}
+
+{% tab title="403" %}
+Forbidden, insufficient privileges
+{% /tab %}
+Code Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
 ```bash
 curl --location --request PUT 'https://api.cloudcraft.co/azure/account/{account_id}' \
 --data '{"applicationId": "azapp737-4763-4fc4-9d2b-c5f4d07d22df",
@@ -548,7 +602,7 @@ fetch("https://api.cloudcraft.co/azure/account/{account_id}", requestOptions)
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
 ```
-Snapshot an Azure accountGET&nbsp; /azure/account/{account_id}/{region}/{format}Overview
+Snapshot an Azure accountGET  /azure/account/{account_id}/{region}/{format}Overview
 Scan and render one region of an Azure account into a blueprint in JSON, SVG, PNG, PDF, or MxGraph format.
 
 The time required to generate the snapshot depends on the number of resources in the Azure region.
@@ -576,18 +630,29 @@ The API behaves as a long poll, with a wait time of up to 120 seconds for the re
 - **paperSize**: *String*. Applies when the format is PDF. One of "Letter", "Legal", "Tabloid", "Ledger", "A0", "A1", "A2", "A3", "A4", "A5".
 - **projection**: *String*. The visual style of the diagram. One of "isometric" or "2d".
 - **theme**: *String*. The color theme of the diagram. One of "light" or "dark".
-Response200202401403404OKWait time exceededModelExampleExpand AllFieldTypeDescriptioncode
+Response200202401403404
+{% tab title="200" %}
+OK
+{% /tab %}
+
+{% tab title="202" %}
+Wait time exceededModelExample
+{% tab title="Model" %}
+Expand AllFieldTypeDescriptioncode
 string
 
-&nbsp;
+ 
 message
 string
 
-&nbsp;
+ 
 retry
 boolean
 
-&nbsp;
+ 
+{% /tab %}
+
+{% tab title="Example" %}
 
 ```json
 {
@@ -596,7 +661,23 @@ boolean
   "retry": true
 }
 ```
-UnauthorizedForbidden, insufficient privilegesAzure account not foundCode Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="401" %}
+Unauthorized
+{% /tab %}
+
+{% tab title="403" %}
+Forbidden, insufficient privileges
+{% /tab %}
+
+{% tab title="404" %}
+Azure account not found
+{% /tab %}
+Code Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
 ```bash
 curl --location 'https://api.cloudcraft.co/azure/account/{account_id}/{region}/{format}'
 ```

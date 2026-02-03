@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/integrations/data/duckdb.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # DuckDB
 
 export const PyPlatformsDuckdbQueryTable = "import duckdb\n\narrow_table = table.to_lance()\n\nduckdb.query(\"SELECT * FROM arrow_table\")\n";
@@ -69,8 +73,3 @@ You can very easily run any other DuckDB SQL queries on your data.
 │        15.0 │
 └─────────────┘
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

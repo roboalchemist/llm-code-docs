@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/custom-nodes/js/javascript_settings.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Settings
 
 You can provide a settings object to ComfyUI that will show up when the user

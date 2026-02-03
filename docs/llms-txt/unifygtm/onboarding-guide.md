@@ -1,5 +1,9 @@
 # Source: https://docs.unifygtm.com/getting-started/onboarding-guide.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Onboarding Guide
 
 > Complete a few key steps to fully activate on Unify.
@@ -207,25 +211,7 @@ export const ClearbitLogo = () => <svg width="24" height="24" viewBox="0 0 24 24
       <Card title="Gmail" href="/reference/integrations/gmail" icon={<GoogleWorkspaceLogo />} horizontal>
         Connect Gmail mailboxes.
       </Card>
-
-      <Card
-        title="Unify Managed"
-        href="/reference/deliverability/overview"
-        icon={
-        <>
-          <UnifyLogoDark />
-          <UnifyLogoLight />
-        </>
-      }
-        horizontal
-      >
-        Unify will create mailboxes for you.
-      </Card>
     </CardGroup>
-
-    If you plan on using Unify-managed mailboxes with, you'll need to add domain
-    names and create new email addresses. See the [Deliverability](/reference/deliverability/overview)
-    guide for setup instructions.
   </Step>
 
   <Step title="Browse tutorials">

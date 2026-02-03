@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/essentials/authentication-and-identity.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Browser Profiles (Authenticated sessions)
 
 Anchor allows you to save an existing browser state as "profiles" for use in future browser sessions. This feature enables users to:

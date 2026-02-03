@@ -6,7 +6,6 @@ description: >-
   Control access to individual Datadog resources like dashboards, monitors, and
   notebooks by teams, roles, or users for fine-grained permission management.
 breadcrumbs: Docs > Account Management > Access Control > Granular Access Control
-source_url: https://docs.datadoghq.com/rbac/granular_access/index.html
 ---
 
 # Granular Access Control

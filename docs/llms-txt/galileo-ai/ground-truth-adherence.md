@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-guardrail-metrics/ground-truth-adherence.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Ground Truth Adherence
 
 > Measure ground truth adherence in generative AI models with Galileo's Guardrail Metrics, ensuring accurate and aligned outputs with dataset benchmarks.

@@ -1,16 +1,18 @@
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/crawling/pro-scraping.md
 
-# Source: https://docs.apify.com/academy/web-scraping-for-beginners/crawling/pro-scraping.md
-
 # Professional scraping
 
 **Learn how to build scrapers quicker and get better and more robust results by using Crawlee, an open-source library for scraping in Node.js.**
+
+Archived course
+
+This is an archive of our old course. Check out our new [Web scraping basics for JavaScript devs](https://docs.apify.com/academy/scraping-basics-javascript.md) course instead! We plan to completely retire this old course in a few months.
 
 ***
 
 While it's definitely an interesting exercise to do all the programming manually, and we hope you enjoyed it, it's neither the most effective, nor the most efficient way of scraping websites. Because we scrape for a living at Apify, we've built a library that we use to scrape tens of millions of pages every day.
 
-It's called https://crawlee.dev/, and it is, and **always will be**, completely **open-source** and **free** to use. You don't need to sign up for an Apify account or use the Apify platform. You can use it on your personal computer, on any server, or in any cloud environment you want.
+It's called [Crawlee](https://crawlee.dev/), and it is, and **always will be**, completely **open-source** and **free** to use. You don't need to sign up for an Apify account or use the Apify platform. You can use it on your personal computer, on any server, or in any cloud environment you want.
 
 We mentioned the benefits of developing using a dedicated scraping library in the previous lessons, but to recap:
 
@@ -18,11 +20,11 @@ We mentioned the benefits of developing using a dedicated scraping library in th
 2. **Fewer bugs**. Crawlee is fully unit-tested and battle-tested on millions of scraper runs.
 3. **Faster and cheaper scrapers** because Crawlee automatically scales based on system resources, and we optimize its performance regularly.
 4. **More robust scrapers**. Annoying details like retries, proxy management, error handling, and result storage are all handled out-of-the-box by Crawlee.
-5. **Helpful community**. You can https://discord.gg/qkMS6pU4cF or talk to us https://github.com/apify/crawlee/discussions. We're almost always there to talk about scraping and programming in general.
+5. **Helpful community**. You can [join our Discord](https://discord.gg/qkMS6pU4cF) or talk to us [on GitHub](https://github.com/apify/crawlee/discussions). We're almost always there to talk about scraping and programming in general.
 
 tip
 
-If you're still not convinced, https://apify.com/success-stories/daltix-analytics-scrapy-python-to-apify about how a data analytics company saved 90% of scraping costs by switching from Scrapy (a scraping library for Python) to Crawlee. We were pretty surprised ourselves, to be honest.
+If you're still not convinced, [read this story](https://apify.com/success-stories/daltix-analytics-scrapy-python-to-apify) about how a data analytics company saved 90% of scraping costs by switching from Scrapy (a scraping library for Python) to Crawlee. We were pretty surprised ourselves, to be honest.
 
 Crawlee factors away and manages the dull and repetitive parts of web scraper development under the hood, such as:
 
@@ -30,15 +32,15 @@ Crawlee factors away and manages the dull and repetitive parts of web scraper de
 * Request concurrency
 * Queueing requests
 * Data storage
-* Using and rotating https://docs.apify.com/academy/anti-scraping/mitigation/proxies.md
+* Using and rotating [proxies](https://docs.apify.com/academy/anti-scraping/mitigation/proxies.md)
 * Puppeteer/Playwright setup overhead
-* https://crawlee.dev/docs/introduction
+* [See all the features](https://crawlee.dev/docs/introduction)
 
 Crawlee and its resources can be found in various different places:
 
-1. https://crawlee.dev/
-2. https://github.com/apify/crawlee
-3. https://www.npmjs.com/package/crawlee
+1. [Official Crawlee documentation](https://crawlee.dev/)
+2. [Crawlee GitHub repository (source code, issues)](https://github.com/apify/crawlee)
+3. [Crawlee on npm](https://www.npmjs.com/package/crawlee)
 
 ## Install Crawlee
 
@@ -60,7 +62,7 @@ console.log('Crawlee works!');
 ```
 
 
-We are using the new ESM `import` syntax here (see https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#enabling). To be able to use it, we need to turn our project to `module` in the `package.json` file:
+We are using the new ESM `import` syntax here (see [Node.js docs](https://nodejs.org/dist/latest-v16.x/docs/api/esm.html#enabling)). To be able to use it, we need to turn our project to `module` in the `package.json` file:
 
 
 ```
@@ -84,7 +86,7 @@ node crawlee.js
 
 You'll see "**Crawlee works!**" printed to the console. If it doesn't work, it means Crawlee didn't install correctly. If that's the case, try deleting the `node_modules` directory and `package-lock.json` file in your project and install Crawlee again.
 
-> You don't need to `import` any other libraries like Cheerio or Got-Scraping. That's because they're both included in Crawlee's https://crawlee.dev/docs/guides/cheerio-crawler-guide.
+> You don't need to `import` any other libraries like Cheerio or Got-Scraping. That's because they're both included in Crawlee's [CheerioCrawler](https://crawlee.dev/docs/guides/cheerio-crawler-guide).
 
 ## Prepare the scraper
 
@@ -140,17 +142,17 @@ Title: Sales
 ```
 
 
-> `crawler.addRequests` uses the https://crawlee.dev/docs/guides/request-storage#request-queue under the hood. It's a persistent storage, which means that if your crawler crashes, it doesn't have to start over, but it can continue from where it left off.
+> `crawler.addRequests` uses the [RequestQueue](https://crawlee.dev/docs/guides/request-storage#request-queue) under the hood. It's a persistent storage, which means that if your crawler crashes, it doesn't have to start over, but it can continue from where it left off.
 
 ### Summary
 
 1. We added the first URL to the crawler using the `addRequests` function.
 2. `CheerioCrawler` will automatically take the URL from the queue, download its HTML using Got Scraping, and parse it using Cheerio.
-3. The crawler executes the https://crawlee.dev/api/cheerio-crawler/interface/CheerioCrawlerOptions#requestHandler, where we extract the page's data using the https://crawlee.dev/api/cheerio-crawler/interface/CheerioCrawlingContext variable. You can also access the request itself using the https://crawlee.dev/api/cheerio-crawler/interface/CheerioCrawlingContext#request variable.
+3. The crawler executes the [requestHandler](https://crawlee.dev/api/cheerio-crawler/interface/CheerioCrawlerOptions#requestHandler), where we extract the page's data using the [$](https://crawlee.dev/api/cheerio-crawler/interface/CheerioCrawlingContext) variable. You can also access the request itself using the [request](https://crawlee.dev/api/cheerio-crawler/interface/CheerioCrawlingContext#request) variable.
 
 ## Crawling links
 
-The current scraper only visits the Sales category page, but we want detailed data for all the products. We can use the https://crawlee.dev/api/cheerio-crawler/interface/CheerioCrawlingContext#enqueueLinks function to add more URLs to the queue. The function automatically extracts URLs from the current page based on a provided CSS selector and adds them to the queue. Once added, the crawler will automatically crawl them.
+The current scraper only visits the Sales category page, but we want detailed data for all the products. We can use the [enqueueLinks()](https://crawlee.dev/api/cheerio-crawler/interface/CheerioCrawlingContext#enqueueLinks) function to add more URLs to the queue. The function automatically extracts URLs from the current page based on a provided CSS selector and adds them to the queue. Once added, the crawler will automatically crawl them.
 
 
 ```
@@ -242,7 +244,7 @@ await crawler.run();
 ```
 
 
-When you run the code as usual, you'll see the product URLs printed to the terminal and you'll find the scraped data saved to your disk. Thanks to using the https://crawlee.dev/docs/introduction/saving-data#whats-datasetpushdata function, Crawlee automatically created a `storage` directory in your project's location and saved the results there. Each product has its data stored as a separate JSON file.
+When you run the code as usual, you'll see the product URLs printed to the terminal and you'll find the scraped data saved to your disk. Thanks to using the [Dataset.pushData()](https://crawlee.dev/docs/introduction/saving-data#whats-datasetpushdata) function, Crawlee automatically created a `storage` directory in your project's location and saved the results there. Each product has its data stored as a separate JSON file.
 
 
 ```
@@ -254,4 +256,4 @@ Thanks to **Crawlee**, we were able to create a **faster and more robust scraper
 
 ## Next up
 
-In the https://docs.apify.com/academy/web-scraping-for-beginners/crawling/headless-browser.md we'll show you how to turn this plain HTTP crawler into a **headless browser** scraper in only a few lines of code.
+In the [next lesson](https://docs.apify.com/academy/scraping-basics-javascript/legacy/crawling/headless-browser.md) we'll show you how to turn this plain HTTP crawler into a **headless browser** scraper in only a few lines of code.

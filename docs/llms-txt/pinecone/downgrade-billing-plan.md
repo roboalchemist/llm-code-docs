@@ -2,21 +2,9 @@
 
 # Source: https://docs.pinecone.io/guides/assistant/admin/downgrade-billing-plan.md
 
-# Source: https://docs.pinecone.io/guides/organizations/manage-billing/downgrade-billing-plan.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/downgrade-billing-plan.md
-
-# Source: https://docs.pinecone.io/guides/organizations/manage-billing/downgrade-billing-plan.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/downgrade-billing-plan.md
-
-# Source: https://docs.pinecone.io/guides/organizations/manage-billing/downgrade-billing-plan.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/downgrade-billing-plan.md
-
-# Source: https://docs.pinecone.io/guides/organizations/manage-billing/downgrade-billing-plan.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/downgrade-billing-plan.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Downgrade your plan
 
@@ -33,7 +21,7 @@ Before you can downgrade, your organization must be under the [Starter plan quot
 * No more than 5 indexes, all serverless and in the `us-east-1` region of AWS
   * If you have serverless indexes in a region other than `us-east-1`, [create a new serverless index](/guides/index-data/create-an-index#create-a-serverless-index) in `us-east-1`, [re-upsert your data](/guides/index-data/upsert-data) into the new index, and [delete the old index](/guides/manage-data/manage-indexes#delete-an-index).
   * If you have more than 5 serverless indexes, [delete indexes](/guides/manage-data/manage-indexes#delete-an-index) until you have 5 or fewer.
-  * If you have pod-based indexes, [save them as collections](/guides/manage-data/back-up-an-index#create-a-backup-using-a-collection) and then [delete them](/guides/manage-data/manage-indexes#delete-an-index).
+  * If you have pod-based indexes, [delete them](/guides/manage-data/manage-indexes#delete-an-index).
 * No more than 1 project
   * If you have more than 1 project, [delete all but 1 project](/guides/projects/manage-projects#delete-a-project).
   * Before you can delete a project, you must [delete all indexes](/guides/manage-data/manage-indexes#delete-an-index) and [delete all collections](/guides/manage-data/back-up-an-index#delete-a-collection) in the project.
@@ -47,6 +35,8 @@ Before you can downgrade, your organization must be under the [Starter plan quot
   * If you have more than 10 files uploaded to an assistant, [delete files](/guides/assistant/manage-files#delete-a-file) until the assistant has 10 or fewer.
 * No more than 1 GB of assistant storage
   * If you have more than 1 GB of assistant storage, [delete files](https://docs.pinecone.io/guides/assistant/manage-files#delete-a-file) until you're storing less than 1 GB.
+* No more than 2 users
+* No collections or backups (these are automatically deleted as part of the downgrade process)
 
 ## Downgrade to the Starter plan
 

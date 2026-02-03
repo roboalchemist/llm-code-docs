@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/platform-guides/scim-entra-guide.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Provisioning with Entra Identity (SCIM)
 
 > Aptible supports SCIM 2.0 provisioning through Entra Identity using the Aptible SCIM integration. This setup enables you to automate user provisioning and de-provisioning for your organization.

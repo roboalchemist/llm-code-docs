@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/languages/integrations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Integrations
 
 PromptLayer works seamlessly with many popular LLM frameworks and abstractions.
@@ -111,8 +115,3 @@ To use custom models:
 6. Configure any model-specific parameters
 
 Custom Vertex AI models are fully integrated with all platform features including Prompt Registry, Evaluations, and request tracking.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

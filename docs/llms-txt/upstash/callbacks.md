@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/qstash/features/callbacks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Callbacks
 
 All serverless function providers have a maximum execution time for each
@@ -10,8 +14,14 @@ limited. QStash provides a way to go around this problem by using callbacks.
 
 A callback allows you to call a long running function without having to wait for
 its response. Instead of waiting for the request to finish, you can add a
-callback url to your published message and when the request finishes, we will
-call your callback URL with the response.
+callback url to your published message and we will call your callback URL with the response.
+
+<Note>
+  Note that the callback might be called multiple times for each retry until the endpoint
+  returns success(status code 2XX) or retries are exhausted. You can assert that retries
+  are exhausted via `callbackBody.retried == callbackBody.maxRteries`. See the complete
+  callback body json below.
+</Note>
 
 <img className="block h-32 dark:hidden" src="https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/callbacks.png?fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=9f0250ec6be5fab7f0725ca9414f3625" data-og-width="1952" width="1952" data-og-height="472" height="472" data-path="img/qstash/callbacks.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/callbacks.png?w=280&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=a32bb193cbff8a0990c757242ee8697d 280w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/callbacks.png?w=560&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=79f97f7832a197bbd6ca1658b67ce2fb 560w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/callbacks.png?w=840&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=d520b1a4e7778180056e5b5582b563b2 840w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/callbacks.png?w=1100&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=fad37f01afe4c1541754d060b9f9ece4 1100w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/callbacks.png?w=1650&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=fd84f5d263fb7b41d7806694dc740f41 1650w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash/callbacks.png?w=2500&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=aee3cf71eb58efd7bbc0e21f2df41b03 2500w" />
 

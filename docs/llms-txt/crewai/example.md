@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/examples/example.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # CrewAI Examples
 
 > Explore curated examples organized by Crews, Flows, Integrations, and Notebooks.

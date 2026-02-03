@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/geneva/jobs/startup.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Job and Session Startup Optimizations
 
 > Learn how to optimize Geneva job and session startup times for faster interactive development and production workflows.
@@ -72,8 +76,3 @@ Here are some steps you can take to pre-warming worker nodes and pods so that ex
 **Make a warmup call:**  Making an initial request to ray will load the pod and zips content to the worker node so that subsequent startups will be fast.
 
 **Prevent nodes from auto-scaling down:** During cluster creation, you can specifiy `idle_timeout_seconds` option  -- this is the amount of time before an node needs to be idle before it is considered for de-provisioning.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

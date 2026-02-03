@@ -1,7 +1,5 @@
 # Source: https://rspack.dev/api/plugin-api/runtime-plugin-hooks.md
 
-import { Collapse, CollapsePanel } from '@components/Collapse';
-
 # RuntimePlugin hooks
 
 `RuntimePlugin` is used to generate the code for the Rspack startup. It provides the following hooks that can be used to modify these runtime codes.
@@ -42,38 +40,7 @@ hooks.createScript.tap('MyPlugin', (code, chunk) => {
 });
 ```
 
-<Collapse>
-  <CollapsePanel className="collapse-code-panel" header="CreateScript.ts" key="CreateScript">
-    <>
-      ```ts
-      type Chunk = {
-        auxiliaryFiles: ReadonlySet<string>;
-        canBeInitial(): boolean;
-        chunkReason?: Readonly<string>;
-        contentHash: Readonly<Record<string, string>>;
-        cssFilenameTemplate?: Readonly<string>;
-        filenameTemplate?: Readonly<string>;
-        files: ReadonlySet<string>;
-        getAllAsyncChunks(): Iterable<Chunk>;
-        getAllInitialChunks(): Iterable<Chunk>;
-        getAllReferencedChunks(): Iterable<Chunk>;
-        getEntryOptions(): EntryOptions | undefined;
-        get groupsIterable(): Iterable<ChunkGroup>;
-        hash?: Readonly<string>;
-        hasRuntime(): boolean;
-        id?: Readonly<string>;
-        idNameHints: ReadonlyArray<string>;
-        ids: ReadonlyArray<string>;
-        isOnlyInitial(): boolean;
-        name?: Readonly<string>;
-        renderedHash?: Readonly<string>;
-        runtime: ReadonlySet<string>;
-      };
-      ```
-    </>
-  </CollapsePanel>
-</Collapse>
-
+CreateScript.ts
 ## `linkPrefetch`
 
 `SyncWaterallHook<[string, chunk]>`
@@ -91,38 +58,7 @@ hooks.linkPrefetch.tap('MyPlugin', (code, chunk) => {
 });
 ```
 
-<Collapse>
-  <CollapsePanel className="collapse-code-panel" header="CreateScript.ts" key="CreateScript">
-    <>
-      ```ts
-      type Chunk = {
-        auxiliaryFiles: ReadonlySet<string>;
-        canBeInitial(): boolean;
-        chunkReason?: Readonly<string>;
-        contentHash: Readonly<Record<string, string>>;
-        cssFilenameTemplate?: Readonly<string>;
-        filenameTemplate?: Readonly<string>;
-        files: ReadonlySet<string>;
-        getAllAsyncChunks(): Iterable<Chunk>;
-        getAllInitialChunks(): Iterable<Chunk>;
-        getAllReferencedChunks(): Iterable<Chunk>;
-        getEntryOptions(): EntryOptions | undefined;
-        get groupsIterable(): Iterable<ChunkGroup>;
-        hash?: Readonly<string>;
-        hasRuntime(): boolean;
-        id?: Readonly<string>;
-        idNameHints: ReadonlyArray<string>;
-        ids: ReadonlyArray<string>;
-        isOnlyInitial(): boolean;
-        name?: Readonly<string>;
-        renderedHash?: Readonly<string>;
-        runtime: ReadonlySet<string>;
-      };
-      ```
-    </>
-  </CollapsePanel>
-</Collapse>
-
+CreateScript.ts
 ## `linkPreload`
 
 `SyncWaterallHook<[string, chunk]>`
@@ -140,34 +76,4 @@ hooks.linkPreload.tap('MyPlugin', (code, chunk) => {
 });
 ```
 
-<Collapse>
-  <CollapsePanel className="collapse-code-panel" header="CreateScript.ts" key="CreateScript">
-    <>
-      ```ts
-      type Chunk = {
-        auxiliaryFiles: ReadonlySet<string>;
-        canBeInitial(): boolean;
-        chunkReason?: Readonly<string>;
-        contentHash: Readonly<Record<string, string>>;
-        cssFilenameTemplate?: Readonly<string>;
-        filenameTemplate?: Readonly<string>;
-        files: ReadonlySet<string>;
-        getAllAsyncChunks(): Iterable<Chunk>;
-        getAllInitialChunks(): Iterable<Chunk>;
-        getAllReferencedChunks(): Iterable<Chunk>;
-        getEntryOptions(): EntryOptions | undefined;
-        get groupsIterable(): Iterable<ChunkGroup>;
-        hash?: Readonly<string>;
-        hasRuntime(): boolean;
-        id?: Readonly<string>;
-        idNameHints: ReadonlyArray<string>;
-        ids: ReadonlyArray<string>;
-        isOnlyInitial(): boolean;
-        name?: Readonly<string>;
-        renderedHash?: Readonly<string>;
-        runtime: ReadonlySet<string>;
-      };
-      ```
-    </>
-  </CollapsePanel>
-</Collapse>
+CreateScript.ts

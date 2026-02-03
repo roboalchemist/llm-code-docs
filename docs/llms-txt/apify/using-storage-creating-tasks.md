@@ -1,6 +1,6 @@
 # Source: https://docs.apify.com/academy/expert-scraping-with-apify/solutions/using-storage-creating-tasks.md
 
-# III - Using storage & creating tasks
+# Using storage & creating tasks
 
 ## Quiz answers 📝
 

@@ -12,61 +12,25 @@
 
 # Source: https://docs.livekit.io/agents/models/llm/plugins/azure-openai.md
 
-# Source: https://docs.livekit.io/agents/models/stt/plugins/azure-openai.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/azure-openai.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/azure-openai.md
-
-# Source: https://docs.livekit.io/agents/models/realtime/plugins/azure-openai.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/azure-openai.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/azure-openai.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/azure-openai.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/azure-openai.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/azure-openai.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/azure-openai.md
-
-# Source: https://docs.livekit.io/agents/models/realtime/plugins/azure-openai.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/azure-openai.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/azure-openai.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/azure-openai.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/azure-openai.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/azure-openai.md
-
-# Source: https://docs.livekit.io/agents/models/realtime/plugins/azure-openai.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/azure-openai.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/azure-openai.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/azure-openai.md
-
-LiveKit docs › Partner spotlight › Azure › Azure OpenAI STT Plugin
+LiveKit docs › Models › LLM › Plugins › Azure OpenAI
 
 ---
 
-# Azure OpenAI STT plugin guide
+# Azure OpenAI LLM plugin guide
 
-> How to use the Azure OpenAI STT plugin for LiveKit Agents.
+> How to use the Azure OpenAI LLM plugin for LiveKit Agents.
 
 Available in:
-- [ ] Node.js
+- [x] Node.js
 - [x] Python
 
 ## Overview
 
-This plugin allows you to use [Azure OpenAI](https://azure.microsoft.com/en-us/products/ai-services/openai-service/) as an STT provider for your voice agents.
+This plugin allows you to use [Azure OpenAI](https://azure.microsoft.com/en-us/products/ai-services/openai-service) as a LLM provider for your voice agents.
+
+> 💡 **LiveKit Inference**
+> 
+> Azure OpenAI is also available in LiveKit Inference, with billing and integration handled automatically. See [the docs](https://docs.livekit.io/agents/models/llm/inference/openai.md) for more information.
 
 ## Quick reference
 
@@ -74,87 +38,103 @@ This section includes a basic usage example and some reference material. For lin
 
 ### Installation
 
-Support for Azure OpenAI STT is available in the `openai` plugin.
+Install the plugin:
 
-Install the plugin from PyPI:
+**Python**:
 
 ```shell
-uv add "livekit-agents[openai]~=1.2"
+uv add "livekit-agents[openai]~=1.3"
+
+```
+
+---
+
+**Node.js**:
+
+```shell
+pnpm add @livekit/agents-plugin-openai@1.x
 
 ```
 
 ### Authentication
 
-The Azure OpenAI TTS requires [authentication](https://learn.microsoft.com/en-us/azure/api-management/api-management-authenticate-authorize-azure-openai) using an API key or a managed identity.
+The Azure OpenAI plugin requires either an [Azure OpenAI API key](https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/create-resource) or a Microsoft Entra ID token.
 
 Set the following environment variables in your `.env` file:
 
-```shell
-AZURE_OPENAI_API_KEY=<azure-openai-api-key>
-AZURE_OPENAI_AD_TOKEN=<azure-openai-ad-token>
-AZURE_OPENAI_ENDPOINT=<azure-openai-endpoint>
-
-```
+- `AZURE_OPENAI_API_KEY` or `AZURE_OPENAI_ENTRA_TOKEN`
+- `AZURE_OPENAI_ENDPOINT`
+- `OPENAI_API_VERSION`
 
 ### Usage
 
-Use Azure OpenAI STT within an `AgentSession` or as a standalone transcription service. For example, you can use this STT in the [Voice AI quickstart](https://docs.livekit.io/agents/start/voice-ai.md).
+Use Azure OpenAI within an `AgentSession` or as a standalone LLM service. For example, you can use this LLM in the [Voice AI quickstart](https://docs.livekit.io/agents/start/voice-ai.md).
+
+**Python**:
 
 ```python
 from livekit.plugins import openai
 
 session = AgentSession(
-  stt = openai.STT.with_azure(
-    model="gpt-4o-transcribe",
-  ),
-  # ... llm, tts, etc.
+    llm=openai.LLM.with_azure(
+        azure_deployment="<model-deployment>",
+        azure_endpoint="https://<endpoint>.openai.azure.com/", # or AZURE_OPENAI_ENDPOINT
+        api_key="<api-key>", # or AZURE_OPENAI_API_KEY
+        api_version="2024-10-01-preview", # or OPENAI_API_VERSION
+    ),
+    # ... tts, stt, vad, turn_detection, etc.
 )
+
+```
+
+---
+
+**Node.js**:
+
+```typescript
+import * as openai from '@livekit/agents-plugin-openai';
+
+const session = new voice.AgentSession({
+    llm: openai.LLM.withAzure({
+        azureDeployment: "<model-deployment>",
+        azureEndpoint: "https://<endpoint>.openai.azure.com/", // or AZURE_OPENAI_ENDPOINT
+        apiKey: "<api-key>", // or AZURE_OPENAI_API_KEY
+        apiVersion: "2024-10-01-preview", // or OPENAI_API_VERSION
+    }),
+    // ... tts, stt, vad, turn_detection, etc.
+});
 
 ```
 
 ### Parameters
 
-This section describes some of the available parameters. For a complete reference of all available parameters, see the [plugin reference](https://docs.livekit.io/reference/python/livekit/plugins/openai/index.html.md#livekit.plugins.openai.STT.with_azure).
+This section describes the Azure-specific parameters. For a complete list of all available parameters, see the plugin reference links in the [Additional resources](#additional-resources) section.
 
-- **`language`** _(string)_ (optional) - Default: `en`: Language code for the transcription.
+- **`azure_deployment`** _(string)_: Name of your model deployment.
 
-- **`model`** _(STTModels | string)_ (optional) - Default: `gpt-4o-mini-transcribe`: ID of the model to use for speech-to-text.
+- **`entra_token`** _(string)_ (optional): Microsoft Entra ID authentication token. Required if not using API key authentication. To learn more see Azure's [Authentication](https://learn.microsoft.com/en-us/azure/ai-services/openai/realtime-audio-reference#authentication) documentation.
 
-- **`prompt`** _(string)_ (optional): Initial prompt to guide the transcription.
+- **`temperature`** _(float)_ (optional) - Default: `0.1`: Controls the randomness of the model's output. Higher values, for example 0.8, make the output more random, while lower values, for example 0.2, make it more focused and deterministic.
 
-- **`azure_endpoint`** _(string)_ (optional) - Environment: `AZURE_OPENAI_ENDPOINT`: Azure OpenAI endpoint in the following format: `https://{your-resource-name}.openai.azure.com`.
+Valid values are between `0` and `2`.
 
-- **`azure_deployment`** _(string)_ (optional): Name of your model deployment.
+- **`parallel_tool_calls`** _(bool)_ (optional): Controls whether the model can make multiple tool calls in parallel. When enabled, the model can make multiple tool calls simultaneously, which can improve performance for complex tasks.
 
-- **`api_version`** _(string)_ (optional) - Environment: `OPENAI_API_VERSION`: OpenAI REST API version used for the request.
-
-- **`api_key`** _(string)_ (optional) - Environment: `AZURE_OPENAI_API_KEY`: Azure OpenAI API key.
-
-- **`azure_ad_token`** _(string)_ (optional) - Environment: `AZURE_OPENAI_AD_TOKEN`: Azure Active Directory token.
-
-- **`organization`** _(string)_ (optional) - Environment: `OPENAI_ORG_ID`: OpenAI organization ID.
-
-- **`project`** _(string)_ (optional) - Environment: `OPENAI_PROJECT_ID`: OpenAI project ID.
+- **`tool_choice`** _(ToolChoice | Literal['auto', 'required', 'none'])_ (optional) - Default: `auto`: Controls how the model uses tools. Set to 'auto' to let the model decide, 'required' to force tool usage, or 'none' to disable tool usage.
 
 ## Additional resources
 
-The following resources provide more information about using Azure OpenAI with LiveKit Agents.
+The following links provide more information about the Azure OpenAI LLM plugin.
 
-- **[Python package](https://pypi.org/project/livekit-plugins-openai/)**: The `livekit-plugins-openai` package on PyPI.
-
-- **[Plugin reference](https://docs.livekit.io/reference/python/v1/livekit/plugins/openai/index.html.md#livekit.plugins.openai.STT.with_azure)**: Reference for the Azure OpenAI STT plugin.
-
-- **[GitHub repo](https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-openai)**: View the source or contribute to the LiveKit Azure OpenAI plugin.
-
-- **[Azure OpenAI](https://learn.microsoft.com/en-us/azure/ai-services/openai/)**: Azure OpenAI documentation.
+- **[Azure OpenAI docs](https://learn.microsoft.com/en-us/azure/ai-services/openai/)**: Azure OpenAI service documentation.
 
 - **[Voice AI quickstart](https://docs.livekit.io/agents/start/voice-ai.md)**: Get started with LiveKit Agents and Azure OpenAI.
 
-- **[Azure ecosystem guide](https://docs.livekit.io/agents/integrations/azure.md)**: Overview of the entire Azure AI and LiveKit Agents integration.
+- **[Azure ecosystem overview](https://docs.livekit.io/agents/integrations/azure.md)**: Overview of the entire Azure AI ecosystem and LiveKit Agents integration.
 
 ---
 
-This document was rendered at 2025-11-18T23:55:07.365Z.
-For the latest version of this document, see [https://docs.livekit.io/agents/models/stt/plugins/azure-openai.md](https://docs.livekit.io/agents/models/stt/plugins/azure-openai.md).
+This document was rendered at 2026-02-03T03:24:59.752Z.
+For the latest version of this document, see [https://docs.livekit.io/agents/models/llm/plugins/azure-openai.md](https://docs.livekit.io/agents/models/llm/plugins/azure-openai.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

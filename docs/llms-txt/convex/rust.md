@@ -2,10 +2,6 @@
 
 # Source: https://docs.convex.dev/quickstart/rust.md
 
-# Source: https://docs.convex.dev/client/rust.md
-
-# Source: https://docs.convex.dev/quickstart/rust.md
-
 # Rust Quickstart
 
 Learn how to query data from Convex in a Rust app with Tokio.

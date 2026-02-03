@@ -70,14 +70,14 @@ If you haven’t already, [create a Stripe account](https://dashboard.stripe.com
 
 [How to earn revenue by issuing cards](https://stripe.com/guides/earn-revenue-by-issuing-cards): Learn the basics of interchange revenue, how it’s calculated, and how Stripe can help you earn revenue.
 
-[Introduction to BaaS for SaaS platforms](https://stripe.com/guides/introduction-to-banking-as-a-service): Learn why you should embed financial services in your product, how to evaluate BaaS solutions, and how Stripe can help.
+[Introduction to embedded finance for SaaS platforms](https://stripe.com/guides/introduction-to-embedded-finance): Learn why you should embed financial services in your product, how to evaluate embedded finance solutions, and how Stripe can help.
 
 [Charge card 101](https://stripe.com/guides/charge-cards-101): Learn the ins-and-outs of building a charge card program and how Stripe can help.
 
 [Best practices for building a fintech company](https://stripe.com/guides/building-a-fintech-company): Learn from four startups on how to design, build, and grow a successful fintech company.
 
-[Compliance fundamentals for fintechs in the US](https://stripe.com/guides/overview-of-compliance-fundamentals-for-fintechs-in-us): Learn about the basics of BaaS compliance for fintechs in the US.
+[Compliance fundamentals for fintechs in the US](https://stripe.com/guides/overview-of-compliance-fundamentals-for-fintechs-in-us): Learn about the basics of embedded finance compliance for fintechs in the US.
 
-[Bank partnerships for Stripe BaaS](https://stripe.com/guides/gillian-wee-on-bank-partnership-for-stripe-baas): Learn from Gillian Wee about what the Financial Partnerships team looks for in bank partners at Stripe.
+[Bank partnerships for Stripe embedded finance](https://stripe.com/guides/gillian-wee-on-bank-partnership-for-stripe-baas): Learn from Gillian Wee about what the Financial Partnerships team looks for in bank partners at Stripe.
 
 [Merchant category codes (MCCs)](https://stripe.com/guides/merchant-category-codes): Learn what they are and how you can use them to enhance your card program.

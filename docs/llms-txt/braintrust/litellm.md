@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/integrations/sdk-integrations/litellm.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LiteLLM
 
 [LiteLLM](https://www.litellm.ai/) is a unified interface for calling 100+ LLM APIs using the OpenAI format. Braintrust automatically traces LiteLLM calls across all providers including OpenAI, Azure, Anthropic, Cohere, Replicate, and more.
@@ -54,8 +58,3 @@ This will automatically send all LiteLLM interactions to Braintrust, including:
 * [LiteLLM documentation](https://docs.litellm.ai/)
 * [DSPy integration](/integrations/sdk-integrations/dspy) - Combines LiteLLM tracing with DSPy-specific callbacks
 * [Supported providers](https://docs.litellm.ai/docs/providers)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

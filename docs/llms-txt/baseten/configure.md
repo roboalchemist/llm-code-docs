@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/reference/cli/truss/configure.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # truss configure
 
 > Configure Truss settings.
@@ -26,8 +30,3 @@ remote_provider = baseten
 api_key = YOUR_API_KEY
 remote_url = https://app.baseten.co
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.baseten.co/llms.txt

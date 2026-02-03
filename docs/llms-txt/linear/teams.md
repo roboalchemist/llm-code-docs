@@ -11,9 +11,9 @@ Create teams in your workspace to organize different types of work functions.
 
 ## Overview
 
-A workspace is composed of one or many teams. Teams typically represent groups of people who work together frequently, though in some cases you may choose to structure teams as parts of a product. Teams contain issues, and can have team-specific projects (though projects can also be shared between teams).
+A workspace is composed of one or several teams. Teams typically represent groups of people who work together frequently. Teams contain issues and can be assigned to a project.
 
- By default, when you create a workspace we'll generate a team for you with the same name. It's up to you how to split up teams and users can be part of one or many teams. 
+By default, when you create a workspace we'll generate a team for you with the same name. It's up to you how to split up teams and users can be part of one or many teams. 
 
 Consider grouping teams by:
 
@@ -22,7 +22,7 @@ Consider grouping teams by:
 * Keeping everyone on one team is the simplest approach (best for small teams).
 
 > [!NOTE]
-> If you aren't sure how to split up your teams, start with one or two. It's easy to add more teams in the future, copy settings from existing teams, and move issues from one team to another.
+> If you are unsure how to structure your teams, start with one or two. It is easy to add more teams in the future.
 
 ## Your teams
 
@@ -41,20 +41,13 @@ Each team has the following pages to organize your work:
 
 ### Team settings
 
-Team settings allow you to configure each team differently to support different workflows. 
+Team settings allow you to configure each team differently to support different workflows. To access your team's settings, hover over the team name in your sidebar, click the three dots `···` menu, and select **Team settings**.
 
-To access your team's settings:
-
-* From the app sidebar, hover over the team name, click the three dots `···` menu, and select "Team settings." 
-* From Settings, find the team you want to update from Your teams and select it. It'll take you to the team's unique settings page.
-
-From the team's settings page, you can update the name, icon, and identifier for the team. Changing the issue identifier is a safe action to take -- old URLs containing the original identifier will automatically redirect to the new issue URL. 
-
-You can also configure the following settings:
+Available team settings can be configured depending on your role.
 
 Team settings page | Configure
 --- | ---
-General | Set timezone. estimates, create issues by email
+General | Customize team name and team identifier, set timezone, enable and manage estimates, set up issue creation by email, toggle detailed issue history.
 Members | Manage team members
 Issue labels | Manage team-level labels and label groups
 Templates | Manage team-level issue, project, and document templates
@@ -68,7 +61,7 @@ Cycles | Enable and configure cycles, set cycle automations
 
 ### View other teams
 
-Teams you navigate that you are not a member of will show up in your sidebar under a temporary _Exploring_ section. 
+Teams you navigate to that you are not a member of will show up in your sidebar under a temporary _Exploring_ section.
 
 You can search for and view issues, projects, and documents from other teams, too, as long as those teams are not private.
 
@@ -78,13 +71,18 @@ All members of a workspace can view and join teams as long as the team is not pr
 
 Anyone in the workspace can create issues for other teams or be assigned issues in other teams, too. You don't have to join teams to collaborate with others unless you use them frequently and want them to show up in your sidebar. 
 
-## Create teams
+## Create or join teams
 
-To join other teams or create a new one, navigate to settings and select "Join or create a team" from the bottom of the settings sidebar.
+Depending on your workspace permissions, team creation may be restricted.
 
-* In [Settings](https://linear.app/settings) below the list of your existing Teams, click the + "Add team"
-* From command bar `Cmd/Ctrl` + `K`, select "Create new team"
-* Admins can create teams from their [Teams page](https://linear.app/settings/teams) in settings
+To create or join a team:
+
+* Navigate to your Settings
+* Scroll down to “Your teams” section
+* Click the “+” symbol for "Join or create a team"
+
+> [!NOTE]
+> Admins can create teams from their [Teams page](https://linear.app/settings/teams) in settings.
 
 ### Team limits
 
@@ -124,13 +122,13 @@ Business and Enterprise support [private teams](https://linear.app/docs/private-
 
 ### Join / leave / invite teams
 
-Admins can add users to a team in [**Settings > Administration > Members**](https://linear.app/settings/members). 
+Admins can add users to a team in [Settings > Administration > Members](https://linear.app/settings/members). 
 
 Members can join and leave teams on their own, by hovering over the team name, then clicking the `···` and selecting to **Join team** or **Leave team...** To join a private team, members must be invited by the team owner. 
 
 ### Sub-teams
 
-On Business and Enterprise plans, you can organize teams in a hierarchy (for instance, Mobile might be the parent team of iOS and Android). Learn more about sub-teams [here](https://linear.app/docs/sub-teams).
+Refer to documentation on sub-teams [here](https://linear.app/docs/sub-teams).
 
 ### Delete a team
 
@@ -142,4 +140,11 @@ You will have **30 day grace period** to restore the team under _Recently delete
 
 If you may need the data in the future, consider making the team private, exporting the team's issues as a CSV before deleting, or moving the issues to a different team. 
 
-###
+### Restore a team
+
+You can restore a retired team at any time, or a deleted team before it is permanently deleted.
+
+To restore a retired or deleted team:
+
+1. Find the retired team in team settings.
+2. Select **Restore team**.

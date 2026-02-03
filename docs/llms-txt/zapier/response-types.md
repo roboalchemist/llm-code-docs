@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/response-types.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Response types Zapier expects
 
 > With every API call, Zapier expects the response data to be returned in a specific response type. This can vary depending on what part of your integration you're working on. Use the table below to identify the correct response type to use

@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/security-compliance/security-compliance-dashboard/shareable-compliance-report.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Shareable Compliance Posture Report
 
 You can generate a shareable PDF of your overall security and compliance posture based on the controls implemented. This shareable report lets you quickly provide various internal stakeholders, external auditors, and customers with an in-depth understanding of your infrastructure security and compliance posture, thereby building trust in your organization’s security.

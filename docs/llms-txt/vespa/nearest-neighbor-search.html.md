@@ -6,7 +6,7 @@
 
 Nearest neighbor search, or vector search, is a technique used to find the closest data points to a given query point in a high-dimensional vector space. This is supported in Vespa using the[nearestNeighbor](../reference/querying/yql.html#nearestneighbor) query operator. This operator can be combined with other filters or query terms using the[Vespa query language](query-language.html), making it easy to create hybrid solutions that combine modern vector based techniques with[traditional information retrieval](text-matching.html).
 
-Also see the [pyvespa examples](https://pyvespa.readthedocs.io/en/latest/examples/pyvespa-examples.html#Neighbors).
+Also see the [pyvespa examples](https://vespa-engine.github.io/pyvespa/examples/pyvespa-examples.html#Neighbors).
 
 ## Minimal example
 
@@ -346,7 +346,7 @@ Hamming distance search over binary vectors is implemented with xor and pop coun
 
 See the [Billion Scale Vector Search with Vespa](https://blog.vespa.ai/billion-scale-knn-part-two/)blog post for a detailed introduction to using binary vectors with hamming distance.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

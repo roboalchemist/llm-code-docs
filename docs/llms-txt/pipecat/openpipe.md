@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/services/llm/openpipe.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # OpenPipe
 
 > LLM service implementation using OpenPipe for LLM request logging and fine-tuning
@@ -48,8 +52,3 @@ Before using OpenPipe LLM services, you need:
 
 * `OPENPIPE_API_KEY`: Your OpenPipe API key for logging and fine-tuning
 * `OPENAI_API_KEY`: Your OpenAI API key for underlying model access
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

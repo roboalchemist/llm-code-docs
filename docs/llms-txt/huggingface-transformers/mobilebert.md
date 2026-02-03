@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/mobilebert.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/mobilebert.md
 
 # MobileBERT
 
@@ -8,7 +8,7 @@ You can find the original MobileBERT checkpoint under the [Google](https://huggi
 > [!TIP]
 > Click on the MobileBERT models in the right sidebar for more examples of how to apply MobileBERT to different language tasks.
 
-The example below demonstrates how to predict the `[MASK]` token with [Pipeline](/docs/transformers/v5.0.0rc1/en/main_classes/pipelines#transformers.Pipeline), [AutoModel](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoModel), and from the command line.
+The example below demonstrates how to predict the `[MASK]` token with [Pipeline](/docs/transformers/v5.0.0/en/main_classes/pipelines#transformers.Pipeline), [AutoModel](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoModel), and from the command line.
 
 ```py
 import torch
@@ -60,15 +60,15 @@ echo -e "The capital of France is [MASK]." | transformers run --task fill-mask -
 
 #### transformers.MobileBertConfig[[transformers.MobileBertConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/mobilebert/configuration_mobilebert.py#L24)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/mobilebert/configuration_mobilebert.py#L23)
 
-This is the configuration class to store the configuration of a [MobileBertModel](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertModel). It
+This is the configuration class to store the configuration of a [MobileBertModel](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertModel). It
 is used to instantiate a MobileBERT model according to the specified arguments, defining the model architecture.
 Instantiating a configuration with the defaults will yield a similar configuration to that of the MobileBERT
 [google/mobilebert-uncased](https://huggingface.co/google/mobilebert-uncased) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Examples:
 
@@ -87,7 +87,7 @@ Examples:
 
 **Parameters:**
 
-vocab_size (`int`, *optional*, defaults to 30522) : Vocabulary size of the MobileBERT model. Defines the number of different tokens that can be represented by the `inputs_ids` passed when calling [MobileBertModel](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertModel).
+vocab_size (`int`, *optional*, defaults to 30522) : Vocabulary size of the MobileBERT model. Defines the number of different tokens that can be represented by the `inputs_ids` passed when calling [MobileBertModel](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertModel).
 
 hidden_size (`int`, *optional*, defaults to 512) : Dimensionality of the encoder layers and the pooler layer.
 
@@ -105,7 +105,7 @@ attention_probs_dropout_prob (`float`, *optional*, defaults to 0.1) : The dropou
 
 max_position_embeddings (`int`, *optional*, defaults to 512) : The maximum sequence length that this model might ever be used with. Typically set this to something large just in case (e.g., 512 or 1024 or 2048).
 
-type_vocab_size (`int`, *optional*, defaults to 2) : The vocabulary size of the `token_type_ids` passed when calling [MobileBertModel](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertModel).
+type_vocab_size (`int`, *optional*, defaults to 2) : The vocabulary size of the `token_type_ids` passed when calling [MobileBertModel](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertModel).
 
 initializer_range (`float`, *optional*, defaults to 0.02) : The standard deviation of the truncated_normal_initializer for initializing all weight matrices.
 
@@ -135,11 +135,11 @@ classifier_dropout (`float`, *optional*) : The dropout ratio for the classificat
 
 #### transformers.BertTokenizer[[transformers.BertTokenizer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/bert/tokenization_bert.py#L43)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/bert/tokenization_bert.py#L41)
 
 Construct a BERT tokenizer (backed by HuggingFace's tokenizers library). Based on WordPiece.
 
-This tokenizer inherits from [TokenizersBackend](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should refer to
+This tokenizer inherits from [TokenizersBackend](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should refer to
 this superclass for more information regarding those methods.
 
 **Parameters:**
@@ -166,11 +166,11 @@ strip_accents (`bool`, *optional*) : Whether or not to strip all accents. If thi
 
 #### transformers.BertTokenizer[[transformers.BertTokenizer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/bert/tokenization_bert.py#L43)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/bert/tokenization_bert.py#L41)
 
 Construct a BERT tokenizer (backed by HuggingFace's tokenizers library). Based on WordPiece.
 
-This tokenizer inherits from [TokenizersBackend](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should refer to
+This tokenizer inherits from [TokenizersBackend](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should refer to
 this superclass for more information regarding those methods.
 
 **Parameters:**
@@ -197,9 +197,9 @@ strip_accents (`bool`, *optional*) : Whether or not to strip all accents. If thi
 
 #### transformers.models.mobilebert.modeling_mobilebert.MobileBertForPreTrainingOutput[[transformers.models.mobilebert.modeling_mobilebert.MobileBertForPreTrainingOutput]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/mobilebert/modeling_mobilebert.py#L567)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/mobilebert/modeling_mobilebert.py#L567)
 
-Output type of [MobileBertForPreTraining](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertForPreTraining).
+Output type of [MobileBertForPreTraining](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertForPreTraining).
 
 **Parameters:**
 
@@ -209,19 +209,19 @@ prediction_logits (`torch.FloatTensor` of shape `(batch_size, sequence_length, c
 
 seq_relationship_logits (`torch.FloatTensor` of shape `(batch_size, 2)`) : Prediction scores of the next sequence prediction (classification) head (scores of True/False continuation before SoftMax).
 
-hidden_states (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) : Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, + one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+hidden_states (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) : Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, + one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
 
-attentions (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention heads.
+attentions (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention heads.
 
 ## MobileBertModel[[transformers.MobileBertModel]]
 
 #### transformers.MobileBertModel[[transformers.MobileBertModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/mobilebert/modeling_mobilebert.py#L587)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/mobilebert/modeling_mobilebert.py#L587)
 
 The bare Mobilebert Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -229,11 +229,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.MobileBertModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/mobilebert/modeling_mobilebert.py#L615[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "token_type_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.MobileBertModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/mobilebert/modeling_mobilebert.py#L615[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.FloatTensor | None = None"}, {"name": "token_type_ids", "val": ": torch.LongTensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -257,9 +257,9 @@ forwardtransformers.MobileBertModel.forwardhttps://github.com/huggingface/transf
 - **inputs_embeds** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) --
   Optionally, instead of passing `input_ids` you can choose to directly pass an embedded representation. This
   is useful if you want more control over how to convert `input_ids` indices into associated vectors than the
-  model's internal embedding lookup matrix.0[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+  model's internal embedding lookup matrix.0[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
+elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
@@ -275,7 +275,7 @@ elements depending on the configuration ([MobileBertConfig](/docs/transformers/v
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [MobileBertModel](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertModel) forward method, overrides the `__call__` special method.
+The [MobileBertModel](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -283,17 +283,17 @@ the latter silently ignores them.
 
 **Parameters:**
 
-config ([MobileBertModel](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertModel)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([MobileBertModel](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertModel)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 add_pooling_layer (`bool`, *optional*, defaults to `True`) : Whether to add a pooling layer
 
 **Returns:**
 
-`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
+elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
@@ -314,12 +314,12 @@ elements depending on the configuration ([MobileBertConfig](/docs/transformers/v
 
 #### transformers.MobileBertForPreTraining[[transformers.MobileBertForPreTraining]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/mobilebert/modeling_mobilebert.py#L662)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/mobilebert/modeling_mobilebert.py#L662)
 
 MobileBert Model with two heads on top as done during the pretraining: a `masked language modeling` head and a
 `next sentence prediction (classification)` head.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -327,11 +327,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.MobileBertForPreTraining.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/mobilebert/modeling_mobilebert.py#L691[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "token_type_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "next_sentence_label", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.MobileBertForPreTraining.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/mobilebert/modeling_mobilebert.py#L691[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.FloatTensor | None = None"}, {"name": "token_type_ids", "val": ": torch.LongTensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "next_sentence_label", "val": ": torch.LongTensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -365,25 +365,25 @@ forwardtransformers.MobileBertForPreTraining.forwardhttps://github.com/huggingfa
   (see `input_ids` docstring) Indices should be in `[0, 1]`:
 
   - 0 indicates sequence B is a continuation of sequence A,
-  - 1 indicates sequence B is a random sequence.0[transformers.models.mobilebert.modeling_mobilebert.MobileBertForPreTrainingOutput](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.models.mobilebert.modeling_mobilebert.MobileBertForPreTrainingOutput) or `tuple(torch.FloatTensor)`A [transformers.models.mobilebert.modeling_mobilebert.MobileBertForPreTrainingOutput](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.models.mobilebert.modeling_mobilebert.MobileBertForPreTrainingOutput) or a tuple of
+  - 1 indicates sequence B is a random sequence.0[transformers.models.mobilebert.modeling_mobilebert.MobileBertForPreTrainingOutput](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.models.mobilebert.modeling_mobilebert.MobileBertForPreTrainingOutput) or `tuple(torch.FloatTensor)`A [transformers.models.mobilebert.modeling_mobilebert.MobileBertForPreTrainingOutput](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.models.mobilebert.modeling_mobilebert.MobileBertForPreTrainingOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
+elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
 
 - **loss** (`*optional*`, returned when `labels` is provided, `torch.FloatTensor` of shape `(1,)`) -- Total loss as the sum of the masked language modeling loss and the next sequence prediction
   (classification) loss.
 - **prediction_logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
 - **seq_relationship_logits** (`torch.FloatTensor` of shape `(batch_size, 2)`) -- Prediction scores of the next sequence prediction (classification) head (scores of True/False continuation
   before SoftMax).
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [MobileBertForPreTraining](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertForPreTraining) forward method, overrides the `__call__` special method.
+The [MobileBertForPreTraining](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertForPreTraining) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -408,26 +408,26 @@ Examples:
 
 **Parameters:**
 
-config ([MobileBertForPreTraining](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertForPreTraining)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([MobileBertForPreTraining](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertForPreTraining)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.models.mobilebert.modeling_mobilebert.MobileBertForPreTrainingOutput](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.models.mobilebert.modeling_mobilebert.MobileBertForPreTrainingOutput) or `tuple(torch.FloatTensor)``
+`[transformers.models.mobilebert.modeling_mobilebert.MobileBertForPreTrainingOutput](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.models.mobilebert.modeling_mobilebert.MobileBertForPreTrainingOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.models.mobilebert.modeling_mobilebert.MobileBertForPreTrainingOutput](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.models.mobilebert.modeling_mobilebert.MobileBertForPreTrainingOutput) or a tuple of
+A [transformers.models.mobilebert.modeling_mobilebert.MobileBertForPreTrainingOutput](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.models.mobilebert.modeling_mobilebert.MobileBertForPreTrainingOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
+elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
 
 - **loss** (`*optional*`, returned when `labels` is provided, `torch.FloatTensor` of shape `(1,)`) -- Total loss as the sum of the masked language modeling loss and the next sequence prediction
   (classification) loss.
 - **prediction_logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
 - **seq_relationship_logits** (`torch.FloatTensor` of shape `(batch_size, 2)`) -- Prediction scores of the next sequence prediction (classification) head (scores of True/False continuation
   before SoftMax).
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
@@ -437,11 +437,11 @@ elements depending on the configuration ([MobileBertConfig](/docs/transformers/v
 
 #### transformers.MobileBertForMaskedLM[[transformers.MobileBertForMaskedLM]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/mobilebert/modeling_mobilebert.py#L761)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/mobilebert/modeling_mobilebert.py#L761)
 
 The Mobilebert Model with a `language modeling` head on top."
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -449,11 +449,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.MobileBertForMaskedLM.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/mobilebert/modeling_mobilebert.py#L790[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "token_type_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.MobileBertForMaskedLM.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/mobilebert/modeling_mobilebert.py#L790[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.FloatTensor | None = None"}, {"name": "token_type_ids", "val": ": torch.LongTensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -481,9 +481,9 @@ forwardtransformers.MobileBertForMaskedLM.forwardhttps://github.com/huggingface/
 - **labels** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Labels for computing the masked language modeling loss. Indices should be in `[-100, 0, ...,
   config.vocab_size]` (see `input_ids` docstring) Tokens with indices set to `-100` are ignored (masked), the
-  loss is only computed for the tokens with labels in `[0, ..., config.vocab_size]`0[transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or a tuple of
+  loss is only computed for the tokens with labels in `[0, ..., config.vocab_size]`0[transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
+elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Masked language modeling (MLM) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
@@ -496,7 +496,7 @@ elements depending on the configuration ([MobileBertConfig](/docs/transformers/v
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [MobileBertForMaskedLM](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertForMaskedLM) forward method, overrides the `__call__` special method.
+The [MobileBertForMaskedLM](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertForMaskedLM) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -534,15 +534,15 @@ Example:
 
 **Parameters:**
 
-config ([MobileBertForMaskedLM](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertForMaskedLM)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([MobileBertForMaskedLM](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertForMaskedLM)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or a tuple of
+A [transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
+elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Masked language modeling (MLM) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
@@ -560,11 +560,11 @@ elements depending on the configuration ([MobileBertConfig](/docs/transformers/v
 
 #### transformers.MobileBertForNextSentencePrediction[[transformers.MobileBertForNextSentencePrediction]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/mobilebert/modeling_mobilebert.py#L849)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/mobilebert/modeling_mobilebert.py#L849)
 
 MobileBert Model with a `next sentence prediction (classification)` head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -572,11 +572,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.MobileBertForNextSentencePrediction.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/mobilebert/modeling_mobilebert.py#L859[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "token_type_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.MobileBertForNextSentencePrediction.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/mobilebert/modeling_mobilebert.py#L859[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.FloatTensor | None = None"}, {"name": "token_type_ids", "val": ": torch.LongTensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -606,9 +606,9 @@ forwardtransformers.MobileBertForNextSentencePrediction.forwardhttps://github.co
   (see `input_ids` docstring) Indices should be in `[0, 1]`.
 
   - 0 indicates sequence B is a continuation of sequence A,
-  - 1 indicates sequence B is a random sequence.0[transformers.modeling_outputs.NextSentencePredictorOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.NextSentencePredictorOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.NextSentencePredictorOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.NextSentencePredictorOutput) or a tuple of
+  - 1 indicates sequence B is a random sequence.0[transformers.modeling_outputs.NextSentencePredictorOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.NextSentencePredictorOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.NextSentencePredictorOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.NextSentencePredictorOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
+elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `next_sentence_label` is provided) -- Next sequence prediction (classification) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, 2)`) -- Prediction scores of the next sequence prediction (classification) head (scores of True/False continuation
@@ -622,7 +622,7 @@ elements depending on the configuration ([MobileBertConfig](/docs/transformers/v
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [MobileBertForNextSentencePrediction](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertForNextSentencePrediction) forward method, overrides the `__call__` special method.
+The [MobileBertForNextSentencePrediction](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertForNextSentencePrediction) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -648,15 +648,15 @@ Examples:
 
 **Parameters:**
 
-config ([MobileBertForNextSentencePrediction](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertForNextSentencePrediction)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([MobileBertForNextSentencePrediction](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertForNextSentencePrediction)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.NextSentencePredictorOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.NextSentencePredictorOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.NextSentencePredictorOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.NextSentencePredictorOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.NextSentencePredictorOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.NextSentencePredictorOutput) or a tuple of
+A [transformers.modeling_outputs.NextSentencePredictorOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.NextSentencePredictorOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
+elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `next_sentence_label` is provided) -- Next sequence prediction (classification) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, 2)`) -- Prediction scores of the next sequence prediction (classification) head (scores of True/False continuation
@@ -675,12 +675,12 @@ elements depending on the configuration ([MobileBertConfig](/docs/transformers/v
 
 #### transformers.MobileBertForSequenceClassification[[transformers.MobileBertForSequenceClassification]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/mobilebert/modeling_mobilebert.py#L938)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/mobilebert/modeling_mobilebert.py#L930)
 
 MobileBert Model transformer with a sequence classification/regression head on top (a linear layer on top of the
 pooled output) e.g. for GLUE tasks.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -688,11 +688,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.MobileBertForSequenceClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/mobilebert/modeling_mobilebert.py#L954[{"name": "input_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "token_type_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.MobileBertForSequenceClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/mobilebert/modeling_mobilebert.py#L946[{"name": "input_ids", "val": ": torch.Tensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "token_type_ids", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.Tensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.Tensor | None = None"}, {"name": "labels", "val": ": torch.Tensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -720,9 +720,9 @@ forwardtransformers.MobileBertForSequenceClassification.forwardhttps://github.co
 - **labels** (`torch.LongTensor` of shape `(batch_size,)`, *optional*) --
   Labels for computing the sequence classification/regression loss. Indices should be in `[0, ...,
   config.num_labels - 1]`. If `config.num_labels == 1` a regression loss is computed (Mean-Square loss), If
-  `config.num_labels > 1` a classification loss is computed (Cross-Entropy).0[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
+  `config.num_labels > 1` a classification loss is computed (Cross-Entropy).0[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
+elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).
@@ -735,7 +735,7 @@ elements depending on the configuration ([MobileBertConfig](/docs/transformers/v
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [MobileBertForSequenceClassification](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertForSequenceClassification) forward method, overrides the `__call__` special method.
+The [MobileBertForSequenceClassification](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertForSequenceClassification) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -799,15 +799,15 @@ Example of multi-label classification:
 
 **Parameters:**
 
-config ([MobileBertForSequenceClassification](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertForSequenceClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([MobileBertForSequenceClassification](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertForSequenceClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
+A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
+elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).
@@ -825,12 +825,12 @@ elements depending on the configuration ([MobileBertConfig](/docs/transformers/v
 
 #### transformers.MobileBertForMultipleChoice[[transformers.MobileBertForMultipleChoice]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/mobilebert/modeling_mobilebert.py#L1089)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/mobilebert/modeling_mobilebert.py#L1081)
 
 The Mobilebert Model with a multiple choice classification head on top (a linear layer on top of the pooled output and a
 softmax) e.g. for RocStories/SWAG tasks.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -838,11 +838,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.MobileBertForMultipleChoice.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/mobilebert/modeling_mobilebert.py#L1103[{"name": "input_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "token_type_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, num_choices, sequence_length)`) --
+forwardtransformers.MobileBertForMultipleChoice.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/mobilebert/modeling_mobilebert.py#L1095[{"name": "input_ids", "val": ": torch.Tensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "token_type_ids", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.Tensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.Tensor | None = None"}, {"name": "labels", "val": ": torch.Tensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, num_choices, sequence_length)`) --
   Indices of input sequence tokens in the vocabulary.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -872,9 +872,9 @@ forwardtransformers.MobileBertForMultipleChoice.forwardhttps://github.com/huggin
 - **labels** (`torch.LongTensor` of shape `(batch_size,)`, *optional*) --
   Labels for computing the multiple choice classification loss. Indices should be in `[0, ...,
   num_choices-1]` where `num_choices` is the size of the second dimension of the input tensors. (See
-  `input_ids` above)0[transformers.modeling_outputs.MultipleChoiceModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MultipleChoiceModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.MultipleChoiceModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MultipleChoiceModelOutput) or a tuple of
+  `input_ids` above)0[transformers.modeling_outputs.MultipleChoiceModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MultipleChoiceModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.MultipleChoiceModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MultipleChoiceModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
+elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape *(1,)*, *optional*, returned when `labels` is provided) -- Classification loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, num_choices)`) -- *num_choices* is the second dimension of the input tensors. (see *input_ids* above).
@@ -889,7 +889,7 @@ elements depending on the configuration ([MobileBertConfig](/docs/transformers/v
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [MobileBertForMultipleChoice](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertForMultipleChoice) forward method, overrides the `__call__` special method.
+The [MobileBertForMultipleChoice](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertForMultipleChoice) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -919,15 +919,15 @@ Example:
 
 **Parameters:**
 
-config ([MobileBertForMultipleChoice](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertForMultipleChoice)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([MobileBertForMultipleChoice](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertForMultipleChoice)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.MultipleChoiceModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MultipleChoiceModelOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.MultipleChoiceModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MultipleChoiceModelOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.MultipleChoiceModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MultipleChoiceModelOutput) or a tuple of
+A [transformers.modeling_outputs.MultipleChoiceModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MultipleChoiceModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
+elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape *(1,)*, *optional*, returned when `labels` is provided) -- Classification loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, num_choices)`) -- *num_choices* is the second dimension of the input tensors. (see *input_ids* above).
@@ -947,12 +947,12 @@ elements depending on the configuration ([MobileBertConfig](/docs/transformers/v
 
 #### transformers.MobileBertForTokenClassification[[transformers.MobileBertForTokenClassification]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/mobilebert/modeling_mobilebert.py#L1188)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/mobilebert/modeling_mobilebert.py#L1180)
 
 The Mobilebert transformer with a token classification head on top (a linear layer on top of the hidden-states
 output) e.g. for Named-Entity-Recognition (NER) tasks.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -960,11 +960,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.MobileBertForTokenClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/mobilebert/modeling_mobilebert.py#L1203[{"name": "input_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "token_type_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.MobileBertForTokenClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/mobilebert/modeling_mobilebert.py#L1195[{"name": "input_ids", "val": ": torch.Tensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "token_type_ids", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.Tensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.Tensor | None = None"}, {"name": "labels", "val": ": torch.Tensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -990,9 +990,9 @@ forwardtransformers.MobileBertForTokenClassification.forwardhttps://github.com/h
   is useful if you want more control over how to convert `input_ids` indices into associated vectors than the
   model's internal embedding lookup matrix.
 - **labels** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
-  Labels for computing the token classification loss. Indices should be in `[0, ..., config.num_labels - 1]`.0[transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or a tuple of
+  Labels for computing the token classification loss. Indices should be in `[0, ..., config.num_labels - 1]`.0[transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
+elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided)  -- Classification loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.num_labels)`) -- Classification scores (before SoftMax).
@@ -1005,7 +1005,7 @@ elements depending on the configuration ([MobileBertConfig](/docs/transformers/v
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [MobileBertForTokenClassification](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertForTokenClassification) forward method, overrides the `__call__` special method.
+The [MobileBertForTokenClassification](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertForTokenClassification) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -1044,15 +1044,15 @@ Example:
 
 **Parameters:**
 
-config ([MobileBertForTokenClassification](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertForTokenClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([MobileBertForTokenClassification](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertForTokenClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or a tuple of
+A [transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
+elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided)  -- Classification loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.num_labels)`) -- Classification scores (before SoftMax).
@@ -1070,12 +1070,12 @@ elements depending on the configuration ([MobileBertConfig](/docs/transformers/v
 
 #### transformers.MobileBertForQuestionAnswering[[transformers.MobileBertForQuestionAnswering]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/mobilebert/modeling_mobilebert.py#L1020)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/mobilebert/modeling_mobilebert.py#L1012)
 
 The Mobilebert transformer with a span classification head on top for extractive question-answering tasks like
 SQuAD (a linear layer on top of the hidden-states output to compute `span start logits` and `span end logits`).
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -1083,11 +1083,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.MobileBertForQuestionAnswering.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/mobilebert/modeling_mobilebert.py#L1031[{"name": "input_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "token_type_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "start_positions", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "end_positions", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.MobileBertForQuestionAnswering.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/mobilebert/modeling_mobilebert.py#L1023[{"name": "input_ids", "val": ": torch.Tensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "token_type_ids", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.Tensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.Tensor | None = None"}, {"name": "start_positions", "val": ": torch.Tensor | None = None"}, {"name": "end_positions", "val": ": torch.Tensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -1119,9 +1119,9 @@ forwardtransformers.MobileBertForQuestionAnswering.forwardhttps://github.com/hug
 - **end_positions** (`torch.Tensor` of shape `(batch_size,)`, *optional*) --
   Labels for position (index) of the end of the labelled span for computing the token classification loss.
   Positions are clamped to the length of the sequence (`sequence_length`). Position outside of the sequence
-  are not taken into account for computing the loss.0[transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or a tuple of
+  are not taken into account for computing the loss.0[transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
+elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Total span extraction loss is the sum of a Cross-Entropy for the start and end positions.
 - **start_logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`) -- Span-start scores (before SoftMax).
@@ -1135,7 +1135,7 @@ elements depending on the configuration ([MobileBertConfig](/docs/transformers/v
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [MobileBertForQuestionAnswering](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertForQuestionAnswering) forward method, overrides the `__call__` special method.
+The [MobileBertForQuestionAnswering](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertForQuestionAnswering) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -1175,15 +1175,15 @@ Example:
 
 **Parameters:**
 
-config ([MobileBertForQuestionAnswering](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertForQuestionAnswering)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([MobileBertForQuestionAnswering](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertForQuestionAnswering)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or a tuple of
+A [transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
+elements depending on the configuration ([MobileBertConfig](/docs/transformers/v5.0.0/en/model_doc/mobilebert#transformers.MobileBertConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Total span extraction loss is the sum of a Cross-Entropy for the start and end positions.
 - **start_logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`) -- Span-start scores (before SoftMax).

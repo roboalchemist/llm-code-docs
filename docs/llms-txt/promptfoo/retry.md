@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/strategies/retry/
+
 # Retry Strategy
 
 The retry strategy automatically incorporates previously failed test cases into your test suite, creating a regression testing system for target LLM systems. Each red team scan learns from past failures, making promptfoo increasingly effective at finding vulnerabilities in your target. The retry strategy runs first in your pipeline, allowing other strategies to build upon these historical test cases.

@@ -26,7 +26,7 @@ For example, here's a video showing how ChatGPT behaves:
 
 If, instead, you stream tokens into a store and then subscribe to that store, you can build non-fragile, resilient apps where the data isn't lost when a connection drops.
 
-For example, here's our [Electric AI chat app](https://github.com/electric-sql/electric-ai-chat), streaming tokens via a store (in this case [a Postgres database](https://electric-sql.com/docs/guides/deployment#_1-running-postgres)). It handles offline, patchy connectivity and page refreshes without a problem:
+For example, here's our [Electric AI chat app](https://github.com/electric-sql/electric-ai-chat), streaming tokens via a store (in this case [a Postgres database](/docs/guides/deployment#_1-running-postgres)). It handles offline, patchy connectivity and page refreshes without a problem:
 
 The key to this behaviour is *resumability*: the ability to resume streaming from a known position in the stream. To do this, the app keeps track of the last position its seen. Then when re-connecting, it requests the stream from that position.
 

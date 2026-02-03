@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/database-guides/test-upgrade-incompatibiltiies.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Use mysqldump to test for upgrade incompatibilities
 
 The goal of this guide is to use `mysqldump` to test the table definitions of an existing Database against another Database version in order to see if it's compatible with the desired version. The primary reason to do this is to ensure a Database is compatible with a higher version before upgrading without waiting for lengthy data-loading operations.

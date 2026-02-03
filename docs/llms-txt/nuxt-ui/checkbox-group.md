@@ -77,11 +77,8 @@ const items = ref<CheckboxGroupItem[]>([
 </template>
 ```
 
-<caution>
-
-When using objects, you need to reference the `value` property of the object in the `v-model` directive or the `default-value` prop.
-
-</caution>
+> [!CAUTION]
+> When using objects, you need to reference the `value` property of the object in the `v-model` directive or the `default-value` prop.
 
 ### Value Key
 
@@ -259,33 +256,33 @@ interface CheckboxGroupProps {
    * When `items` is an array of objects, select the field to use as the value.
    * @default "\"value\" as never"
    */
-  valueKey?: GetItemKeys<CheckboxGroupItem[]> | undefined;
+  valueKey?: VK | undefined;
   /**
    * When `items` is an array of objects, select the field to use as the label.
    * @default "\"label\""
    */
-  labelKey?: GetItemKeys<CheckboxGroupItem[]> | undefined;
+  labelKey?: GetItemKeys<T> | undefined;
   /**
    * When `items` is an array of objects, select the field to use as the description.
    * @default "\"description\""
    */
-  descriptionKey?: GetItemKeys<CheckboxGroupItem[]> | undefined;
-  items?: CheckboxGroupItem[] | undefined;
+  descriptionKey?: GetItemKeys<T> | undefined;
+  items?: T | undefined;
   /**
    * The controlled value of the CheckboxGroup. Can be bind as `v-model`.
    */
-  modelValue?: any[] | undefined;
+  modelValue?: GetItemValue<T, VK, NestedItem<T>>[] | undefined;
   /**
    * The value of the CheckboxGroup when initially rendered. Use when you do not need to control the state of the CheckboxGroup.
    */
-  defaultValue?: any[] | undefined;
+  defaultValue?: GetItemValue<T, VK, NestedItem<T>>[] | undefined;
   size?: "xs" | "sm" | "md" | "lg" | "xl" | undefined;
   variant?: "table" | "list" | "card" | undefined;
   /**
    * The orientation the checkbox buttons are laid out.
    * @default "\"vertical\""
    */
-  orientation?: Orientation$1 | undefined;
+  orientation?: "horizontal" | "vertical" | undefined;
   ui?: ({ root?: ClassNameValue; fieldset?: ClassNameValue; legend?: ClassNameValue; item?: ClassNameValue; } & { root?: ClassNameValue; container?: ClassNameValue; base?: ClassNameValue; indicator?: ClassNameValue; icon?: ClassNameValue; wrapper?: ClassNameValue; label?: ClassNameValue; description?: ClassNameValue; }) | undefined;
   /**
    * When `true`, prevents the user from interacting with the checkboxes
@@ -311,7 +308,7 @@ interface CheckboxGroupProps {
   /**
    * The icon displayed when checked.
    */
-  icon?: string | object | undefined;
+  icon?: any;
 }
 ```
 
@@ -335,7 +332,7 @@ interface CheckboxGroupSlots {
  * Emitted events for the CheckboxGroup component
  */
 interface CheckboxGroupEmits {
-  update:modelValue: (payload: [value: CheckboxGroupItem[]]) => void;
+  update:modelValue: (payload: [value: GetItemValue<T, VK, NestedItem<T>>[]]) => void;
   change: (payload: [event: Event]) => void;
 }
 ```
@@ -403,6 +400,9 @@ export default defineAppConfig({
           true: {
             legend: "after:content-['*'] after:ms-0.5 after:text-error"
           }
+        },
+        disabled: {
+          true: {}
         }
       },
       compoundVariants: [
@@ -510,7 +510,7 @@ export default defineAppConfig({
           variant: 'table',
           disabled: true,
           class: {
-            item: 'cursor-not-allowed opacity-75'
+            item: 'cursor-not-allowed'
           }
         }
       ],
@@ -526,8 +526,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

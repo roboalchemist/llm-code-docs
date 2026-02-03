@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/use-cases/question-answering.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ❓ Question Answering
 
 Utilizing large language models (LLMs) for question answering is a transformative application, bringing significant benefits to various real-world situations. Embedchain extensively supports tasks related to question answering, including summarization, content creation, language translation, and data analysis. The versatility of question answering with LLMs enables solutions for numerous practical applications such as:
@@ -23,7 +27,7 @@ Quickly create a RAG pipeline to answer queries about the [Next.JS Framework](ht
 
 First, let's create your RAG pipeline. Open your Python environment and enter:
 
-```python Create pipeline
+```python Create pipeline theme={null}
 from embedchain import App
 app = App()
 ```
@@ -34,7 +38,7 @@ This initializes your application.
 
 Now, let's add data to your pipeline. We'll include the Next.JS website and its documentation:
 
-```python Ingest data sources
+```python Ingest data sources theme={null}
 # Add Next.JS Website and docs
 app.add("https://nextjs.org/sitemap.xml", data_type="sitemap")
 
@@ -48,7 +52,7 @@ This step incorporates over **15K pages** from the Next.JS website and forum int
 
 Test the pipeline on your local machine:
 
-```python Query App
+```python Query App theme={null}
 app.query("Summarize the features of Next.js 14?")
 ```
 

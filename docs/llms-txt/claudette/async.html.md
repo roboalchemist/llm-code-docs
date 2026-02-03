@@ -8,6 +8,14 @@
 ## Setup
 
 ``` python
+from cachy import enable_cachy
+```
+
+``` python
+enable_cachy()
+```
+
+``` python
 from IPython.display import display,Image
 ```
 
@@ -29,7 +37,7 @@ Hello Jeremy! Nice to meet you. How can I help you today?
 
 <details>
 
-- id: `msg_01WSoScnCMw2HpwQuNEkGpaw`
+- id: `msg_0197EaNqjqZtco5uSw6rYu34`
 - content:
   `[{'citations': None, 'text': 'Hello Jeremy! Nice to meet you. How can I help you today?', 'type': 'text'}]`
 - model: `claude-sonnet-4-5-20250929`
@@ -60,7 +68,7 @@ Of course! Your name is Jeremy.
 
 <details>
 
-- id: `msg_01M6s6n5jPHq8fe4zkopaisc`
+- id: `msg_01UkN7e1xbcLnvW3ir6nLKAb`
 - content:
   `[{'citations': None, 'text': 'Of course! Your name is Jeremy.', 'type': 'text'}]`
 - model: `claude-sonnet-4-5-20250929`
@@ -81,7 +89,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### AsyncClient
 
->  AsyncClient (model, cli=None, log=False, cache=False)
+``` python
+
+def AsyncClient(
+    model, cli:NoneType=None, log:bool=False, cache:bool=False
+):
+
+```
 
 *Async Anthropic messages client.*
 
@@ -117,116 +131,26 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### AsyncClient.\_\_call\_\_
 
->  AsyncClient.__call__ (msgs:list, sp='', temp=0, maxtok=4096,
->                            maxthinktok=0, prefill='', stream:bool=False,
->                            stop=None, tools:Optional[list]=None,
->                            tool_choice:Optional[dict]=None, cb=None, cli=None,
->                            log=False, cache=False)
+``` python
+
+def __call__(
+    msgs:list, # List of messages in the dialog
+    sp:str='', # The system prompt
+    temp:int=0, # Temperature
+    maxtok:int=4096, # Maximum tokens
+    maxthinktok:int=0, # Maximum thinking tokens
+    prefill:str='', # Optional prefill to pass to Claude as start of its response
+    stream:bool=False, # Stream response?
+    stop:NoneType=None, # Stop sequence
+    tools:Optional=None, # List of tools to make available to Claude
+    tool_choice:Optional=None, # Optionally force use of some tool
+    cb:NoneType=None, # Callback to pass result to when complete
+    cli:NoneType=None, log:bool=False, cache:bool=False
+):
+
+```
 
 *Make an async call to Claude.*
-
-<table>
-<colgroup>
-<col style="width: 6%" />
-<col style="width: 25%" />
-<col style="width: 34%" />
-<col style="width: 34%" />
-</colgroup>
-<thead>
-<tr>
-<th></th>
-<th><strong>Type</strong></th>
-<th><strong>Default</strong></th>
-<th><strong>Details</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>msgs</td>
-<td>list</td>
-<td></td>
-<td>List of messages in the dialog</td>
-</tr>
-<tr>
-<td>sp</td>
-<td>str</td>
-<td></td>
-<td>The system prompt</td>
-</tr>
-<tr>
-<td>temp</td>
-<td>int</td>
-<td>0</td>
-<td>Temperature</td>
-</tr>
-<tr>
-<td>maxtok</td>
-<td>int</td>
-<td>4096</td>
-<td>Maximum tokens</td>
-</tr>
-<tr>
-<td>maxthinktok</td>
-<td>int</td>
-<td>0</td>
-<td>Maximum thinking tokens</td>
-</tr>
-<tr>
-<td>prefill</td>
-<td>str</td>
-<td></td>
-<td>Optional prefill to pass to Claude as start of its response</td>
-</tr>
-<tr>
-<td>stream</td>
-<td>bool</td>
-<td>False</td>
-<td>Stream response?</td>
-</tr>
-<tr>
-<td>stop</td>
-<td>NoneType</td>
-<td>None</td>
-<td>Stop sequence</td>
-</tr>
-<tr>
-<td>tools</td>
-<td>Optional</td>
-<td>None</td>
-<td>List of tools to make available to Claude</td>
-</tr>
-<tr>
-<td>tool_choice</td>
-<td>Optional</td>
-<td>None</td>
-<td>Optionally force use of some tool</td>
-</tr>
-<tr>
-<td>cb</td>
-<td>NoneType</td>
-<td>None</td>
-<td>Callback to pass result to when complete</td>
-</tr>
-<tr>
-<td>cli</td>
-<td>NoneType</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>log</td>
-<td>bool</td>
-<td>False</td>
-<td></td>
-</tr>
-<tr>
-<td>cache</td>
-<td>bool</td>
-<td>False</td>
-<td></td>
-</tr>
-</tbody>
-</table>
 
 <details open class="code-fold">
 <summary>Exported source</summary>
@@ -295,7 +219,7 @@ Hello! How can I help you today?
 
 <details>
 
-- id: `msg_01QrsbLFyNfSdHD5u3m8T8qE`
+- id: `msg_01QXCxYb2yRGsP7sia4UF71w`
 - content:
   `[{'citations': None, 'text': 'Hello! How can I help you today?', 'type': 'text'}]`
 - model: `claude-sonnet-4-5-20250929`
@@ -327,7 +251,7 @@ contribution to something beyond yourself.
 
 <details>
 
-- id: `msg_01XaJGwfM8wwKn3GvByAMa6Y`
+- id: `msg_01AyipEe57GjCpju56iQtqRr`
 - content:
   `[{'citations': None, 'text': "According to Douglas Adams,  it's 42.\n\nMore seriously: Create meaning through connections, growth, and contribution to something beyond yourself.", 'type': 'text'}]`
 - model: `claude-sonnet-4-5-20250929`
@@ -363,7 +287,7 @@ contribution to something beyond yourself.
 
 <details>
 
-- id: `msg_01Svm4SGJ9dUBVFxHuKrTzev`
+- id: `msg_01HwpyRuSLFi66AuuCuGSwLU`
 - content:
   `[{'citations': None, 'text': "According to Douglas Adams,  it's 42.\n\nMore seriously: Create meaning through connections, growth, and contribution to something beyond yourself.", 'type': 'text'}]`
 - model: `claude-sonnet-4-5-20250929`
@@ -412,14 +336,14 @@ r = await c(msgs, sp=sp, tools=tools, tool_choice=choice)
 r
 ```
 
-ToolUseBlock(id=‘toolu_01TKnF1t9kRoGDwTPUYUnwpS’, input={‘a’: 604542,
-‘b’: 6458932}, name=‘sums’, type=‘tool_use’)
+\[ToolUseBlock(id=‘toolu_019n1R5kwrbTSmGZ1TcrU8b4’, input={‘a’: 604542,
+‘b’: 6458932}, name=‘sums’, type=‘tool_use’)\]
 
 <details>
 
-- id: `msg_01UtME5uDv4RamrTZr8HB7Vv`
+- id: `msg_01GuiEDm9UCKoZGhW9vqBAc9`
 - content:
-  `[{'id': 'toolu_01TKnF1t9kRoGDwTPUYUnwpS', 'input': {'a': 604542, 'b': 6458932}, 'name': 'sums', 'type': 'tool_use'}]`
+  `[{'id': 'toolu_019n1R5kwrbTSmGZ1TcrU8b4', 'input': {'a': 604542, 'b': 6458932}, 'name': 'sums', 'type': 'tool_use'}]`
 - model: `claude-sonnet-4-5-20250929`
 - role: `assistant`
 - stop_reason: `tool_use`
@@ -438,7 +362,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### mk_funcres_async
 
->  mk_funcres_async (fc, ns)
+``` python
+
+def mk_funcres_async(
+    fc, ns
+):
+
+```
 
 *Given tool use block `fc`, get tool result, and create a tool_result
 response.*
@@ -446,40 +376,21 @@ response.*
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/claudette/blob/main/claudette/asink.py#L71"
+href="https://github.com/AnswerDotAI/claudette/blob/main/claudette/asink.py#L72"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### mk_toolres_async
 
->  mk_toolres_async (r:collections.abc.Mapping,
->                        ns:Optional[collections.abc.Mapping]=None)
+``` python
+
+def mk_toolres_async(
+    r:Mapping, # Tool use request response from Claude
+    ns:Optional=None, # Namespace to search for tools
+):
+
+```
 
 *Create a `tool_result` message from response `r`.*
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th><strong>Type</strong></th>
-<th><strong>Default</strong></th>
-<th><strong>Details</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>r</td>
-<td>Mapping</td>
-<td></td>
-<td>Tool use request response from Claude</td>
-</tr>
-<tr>
-<td>ns</td>
-<td>Optional</td>
-<td>None</td>
-<td>Namespace to search for tools</td>
-</tr>
-</tbody>
-</table>
 
 ``` python
 tr = await mk_toolres_async(r, ns=globals())
@@ -489,13 +400,13 @@ tr
     Finding the sum of 604542 and 6458932
 
     [{'role': 'assistant',
-      'content': [{'id': 'toolu_01TKnF1t9kRoGDwTPUYUnwpS',
+      'content': [{'id': 'toolu_019n1R5kwrbTSmGZ1TcrU8b4',
         'input': {'a': 604542, 'b': 6458932},
         'name': 'sums',
         'type': 'tool_use'}]},
      {'role': 'user',
       'content': [{'type': 'tool_result',
-        'tool_use_id': 'toolu_01TKnF1t9kRoGDwTPUYUnwpS',
+        'tool_use_id': 'toolu_019n1R5kwrbTSmGZ1TcrU8b4',
         'content': '7063474'}]}]
 
 ``` python
@@ -511,204 +422,44 @@ r
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/claudette/blob/main/claudette/asink.py#L86"
+href="https://github.com/AnswerDotAI/claudette/blob/main/claudette/asink.py#L87"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### AsyncClient.structured
 
->  AsyncClient.structured (msgs:list, tools:Optional[list]=None,
->                              ns:Optional[collections.abc.Mapping]=None, sp='',
->                              temp=0, maxtok=4096, maxthinktok=0, prefill='',
->                              stream:bool=False, stop=None,
->                              tool_choice:Optional[dict]=None, cb=None,
->                              metadata:MetadataParam|Omit=<anthropic.Omit
->                              object at 0x7fba80610b50>, service_tier:"Literal[
->                              'auto','standard_only']|Omit"=<anthropic.Omit
->                              object at 0x7fba80610b50>, stop_sequences:Sequenc
->                              eNotStr[str]|Omit=<anthropic.Omit object at
->                              0x7fba80610b50>, system:Union[str,Iterable[TextBl
->                              ockParam]]|Omit=<anthropic.Omit object at
->                              0x7fba80610b50>,
->                              temperature:float|Omit=<anthropic.Omit object at
->                              0x7fba80610b50>,
->                              thinking:ThinkingConfigParam|Omit=<anthropic.Omit
->                              object at 0x7fba80610b50>,
->                              top_k:int|Omit=<anthropic.Omit object at
->                              0x7fba80610b50>, top_p:float|Omit=<anthropic.Omit
->                              object at 0x7fba80610b50>,
->                              extra_headers:Headers|None=None,
->                              extra_query:Query|None=None,
->                              extra_body:Body|None=None, timeout:float|httpx.Ti
->                              meout|None|NotGiven=NOT_GIVEN)
+``` python
+
+def structured(
+    msgs:list, # List of messages in the dialog
+    tools:Optional=None, # List of tools to make available to Claude
+    ns:Optional=None, # Namespace to search for tools
+    sp:str='', # The system prompt
+    temp:int=0, # Temperature
+    maxtok:int=4096, # Maximum tokens
+    maxthinktok:int=0, # Maximum thinking tokens
+    prefill:str='', # Optional prefill to pass to Claude as start of its response
+    stream:bool=False, # Stream response?
+    stop:NoneType=None, # Stop sequence
+    tool_choice:Optional=None, # Optionally force use of some tool
+    cb:NoneType=None, # Callback to pass result to when complete
+    metadata:MetadataParam | Omit=<anthropic.Omit object at 0x7fa9b854b650>,
+    service_tier:Literal['auto', 'standard_only'] | Omit=<anthropic.Omit object at 0x7fa9b854b650>,
+    stop_sequences:SequenceNotStr[str] | Omit=<anthropic.Omit object at 0x7fa9b854b650>,
+    system:Union[str, Iterable[TextBlockParam]] | Omit=<anthropic.Omit object at 0x7fa9b854b650>,
+    temperature:float | Omit=<anthropic.Omit object at 0x7fa9b854b650>,
+    thinking:ThinkingConfigParam | Omit=<anthropic.Omit object at 0x7fa9b854b650>,
+    top_k:int | Omit=<anthropic.Omit object at 0x7fa9b854b650>,
+    top_p:float | Omit=<anthropic.Omit object at 0x7fa9b854b650>,
+    extra_headers:Headers | None=None, # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_query:Query | None=None, extra_body:Body | None=None,
+    timeout:float | httpx.Timeout | None | NotGiven=NOT_GIVEN
+):
+
+```
 
 *Return the value of all tool calls (generally used for structured
 outputs)*
-
-<table>
-<colgroup>
-<col style="width: 6%" />
-<col style="width: 25%" />
-<col style="width: 34%" />
-<col style="width: 34%" />
-</colgroup>
-<thead>
-<tr>
-<th></th>
-<th><strong>Type</strong></th>
-<th><strong>Default</strong></th>
-<th><strong>Details</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>msgs</td>
-<td>list</td>
-<td></td>
-<td>List of messages in the dialog</td>
-</tr>
-<tr>
-<td>tools</td>
-<td>Optional</td>
-<td>None</td>
-<td>List of tools to make available to Claude</td>
-</tr>
-<tr>
-<td>ns</td>
-<td>Optional</td>
-<td>None</td>
-<td>Namespace to search for tools</td>
-</tr>
-<tr>
-<td>sp</td>
-<td>str</td>
-<td></td>
-<td>The system prompt</td>
-</tr>
-<tr>
-<td>temp</td>
-<td>int</td>
-<td>0</td>
-<td>Temperature</td>
-</tr>
-<tr>
-<td>maxtok</td>
-<td>int</td>
-<td>4096</td>
-<td>Maximum tokens</td>
-</tr>
-<tr>
-<td>maxthinktok</td>
-<td>int</td>
-<td>0</td>
-<td>Maximum thinking tokens</td>
-</tr>
-<tr>
-<td>prefill</td>
-<td>str</td>
-<td></td>
-<td>Optional prefill to pass to Claude as start of its response</td>
-</tr>
-<tr>
-<td>stream</td>
-<td>bool</td>
-<td>False</td>
-<td>Stream response?</td>
-</tr>
-<tr>
-<td>stop</td>
-<td>NoneType</td>
-<td>None</td>
-<td>Stop sequence</td>
-</tr>
-<tr>
-<td>tool_choice</td>
-<td>Optional</td>
-<td>None</td>
-<td>Optionally force use of some tool</td>
-</tr>
-<tr>
-<td>cb</td>
-<td>NoneType</td>
-<td>None</td>
-<td>Callback to pass result to when complete</td>
-</tr>
-<tr>
-<td>metadata</td>
-<td>MetadataParam | Omit</td>
-<td>&lt;anthropic.Omit object at 0x7fba80610b50&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>service_tier</td>
-<td>Literal[‘auto’, ‘standard_only’] | Omit</td>
-<td>&lt;anthropic.Omit object at 0x7fba80610b50&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>stop_sequences</td>
-<td>SequenceNotStr[str] | Omit</td>
-<td>&lt;anthropic.Omit object at 0x7fba80610b50&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>system</td>
-<td>Union[str, Iterable[TextBlockParam]] | Omit</td>
-<td>&lt;anthropic.Omit object at 0x7fba80610b50&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>temperature</td>
-<td>float | Omit</td>
-<td>&lt;anthropic.Omit object at 0x7fba80610b50&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>thinking</td>
-<td>ThinkingConfigParam | Omit</td>
-<td>&lt;anthropic.Omit object at 0x7fba80610b50&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>top_k</td>
-<td>int | Omit</td>
-<td>&lt;anthropic.Omit object at 0x7fba80610b50&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>top_p</td>
-<td>float | Omit</td>
-<td>&lt;anthropic.Omit object at 0x7fba80610b50&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>extra_headers</td>
-<td>Optional</td>
-<td>None</td>
-<td>Use the following arguments if you need to pass additional
-parameters to the API that aren’t available via kwargs.<br>The extra
-values given here take precedence over values defined on the client or
-passed to this method.</td>
-</tr>
-<tr>
-<td>extra_query</td>
-<td>Query | None</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>extra_body</td>
-<td>Body | None</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>timeout</td>
-<td>float | httpx.Timeout | None | NotGiven</td>
-<td>NOT_GIVEN</td>
-<td></td>
-</tr>
-</tbody>
-</table>
 
 ``` python
 await c.structured(pr, sums)
@@ -722,8 +473,8 @@ await c.structured(pr, sums)
 c
 ```
 
-ToolUseBlock(id=‘toolu_01HfWqUFm529AfFNnNx3U7FD’, input={‘a’: 604542,
-‘b’: 6458932}, name=‘sums’, type=‘tool_use’)
+\[ToolUseBlock(id=‘toolu_01WRUTfxTaXDbxfar32GqnMP’, input={‘a’: 604542,
+‘b’: 6458932}, name=‘sums’, type=‘tool_use’)\]
 
 <table>
 <thead>
@@ -736,13 +487,13 @@ ToolUseBlock(id=‘toolu_01HfWqUFm529AfFNnNx3U7FD’, input={‘a’: 604542,
 <tbody>
 <tr>
 <td>Input tokens</td>
-<td style="text-align: right;">2,180</td>
-<td style="text-align: right;">0.006540</td>
+<td style="text-align: right;">4,304</td>
+<td style="text-align: right;">0.012912</td>
 </tr>
 <tr>
 <td>Output tokens</td>
-<td style="text-align: right;">204</td>
-<td style="text-align: right;">0.003060</td>
+<td style="text-align: right;">342</td>
+<td style="text-align: right;">0.005130</td>
 </tr>
 <tr>
 <td>Cache tokens</td>
@@ -756,8 +507,8 @@ ToolUseBlock(id=‘toolu_01HfWqUFm529AfFNnNx3U7FD’, input={‘a’: 604542,
 </tr>
 <tr>
 <td><strong>Total</strong></td>
-<td style="text-align: right;"><strong>2,384</strong></td>
-<td style="text-align: right;"><strong>$0.009600</strong></td>
+<td style="text-align: right;"><strong>4,646</strong></td>
+<td style="text-align: right;"><strong>$0.018042</strong></td>
 </tr>
 </tbody>
 </table>
@@ -767,91 +518,28 @@ ToolUseBlock(id=‘toolu_01HfWqUFm529AfFNnNx3U7FD’, input={‘a’: 604542,
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/claudette/blob/main/claudette/asink.py#L101"
+href="https://github.com/AnswerDotAI/claudette/blob/main/claudette/asink.py#L102"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### AsyncChat
 
->  AsyncChat (model:Optional[str]=None,
->                 cli:Optional[claudette.core.Client]=None, sp='',
->                 tools:Optional[list]=None, temp=0, cont_pr:Optional[str]=None,
->                 cache:bool=False, hist:list=None,
->                 ns:Optional[collections.abc.Mapping]=None)
+``` python
+
+def AsyncChat(
+    model:Optional=None, # Model to use (leave empty if passing `cli`)
+    cli:Optional=None, # Client to use (leave empty if passing `model`)
+    sp:str='', # Optional system prompt
+    tools:Optional=None, # List of tools to make available to Claude
+    temp:int=0, # Temperature
+    cont_pr:Optional=None, # User prompt to continue an assistant response
+    cache:bool=False, # Use Claude cache?
+    hist:list=None, # Initialize history
+    ns:Optional=None, # Namespace to search for tools
+):
+
+```
 
 *Anthropic async chat client.*
-
-<table>
-<colgroup>
-<col style="width: 6%" />
-<col style="width: 25%" />
-<col style="width: 34%" />
-<col style="width: 34%" />
-</colgroup>
-<thead>
-<tr>
-<th></th>
-<th><strong>Type</strong></th>
-<th><strong>Default</strong></th>
-<th><strong>Details</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>model</td>
-<td>Optional</td>
-<td>None</td>
-<td>Model to use (leave empty if passing <code>cli</code>)</td>
-</tr>
-<tr>
-<td>cli</td>
-<td>Optional</td>
-<td>None</td>
-<td>Client to use (leave empty if passing <code>model</code>)</td>
-</tr>
-<tr>
-<td>sp</td>
-<td>str</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>tools</td>
-<td>Optional</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>temp</td>
-<td>int</td>
-<td>0</td>
-<td></td>
-</tr>
-<tr>
-<td>cont_pr</td>
-<td>Optional</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>cache</td>
-<td>bool</td>
-<td>False</td>
-<td></td>
-</tr>
-<tr>
-<td>hist</td>
-<td>list</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>ns</td>
-<td>Optional</td>
-<td>None</td>
-<td></td>
-</tr>
-</tbody>
-</table>
 
 <details open class="code-fold">
 <summary>Exported source</summary>
@@ -881,83 +569,27 @@ chat.c.use, chat.h
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/claudette/blob/main/claudette/asink.py#L119"
+href="https://github.com/AnswerDotAI/claudette/blob/main/claudette/asink.py#L120"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### AsyncChat.\_\_call\_\_
 
->  AsyncChat.__call__ (pr=None, temp=None, maxtok=4096, maxthinktok=0,
->                          stream=False, prefill='',
->                          tool_choice:Union[str,bool,dict,NoneType]=None, **kw)
+``` python
+
+def __call__(
+    pr:NoneType=None, # Prompt / message
+    temp:NoneType=None, # Temperature
+    maxtok:int=4096, # Maximum tokens
+    maxthinktok:int=0, # Maximum thinking tokens
+    stream:bool=False, # Stream response?
+    prefill:str='', # Optional prefill to pass to Claude as start of its response
+    tool_choice:Union=None, # Optionally force use of some tool
+    kw:VAR_KEYWORD
+):
+
+```
 
 *Call self as a function.*
-
-<table>
-<colgroup>
-<col style="width: 6%" />
-<col style="width: 25%" />
-<col style="width: 34%" />
-<col style="width: 34%" />
-</colgroup>
-<thead>
-<tr>
-<th></th>
-<th><strong>Type</strong></th>
-<th><strong>Default</strong></th>
-<th><strong>Details</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>pr</td>
-<td>NoneType</td>
-<td>None</td>
-<td>Prompt / message</td>
-</tr>
-<tr>
-<td>temp</td>
-<td>NoneType</td>
-<td>None</td>
-<td>Temperature</td>
-</tr>
-<tr>
-<td>maxtok</td>
-<td>int</td>
-<td>4096</td>
-<td>Maximum tokens</td>
-</tr>
-<tr>
-<td>maxthinktok</td>
-<td>int</td>
-<td>0</td>
-<td>Maximum thinking tokens</td>
-</tr>
-<tr>
-<td>stream</td>
-<td>bool</td>
-<td>False</td>
-<td>Stream response?</td>
-</tr>
-<tr>
-<td>prefill</td>
-<td>str</td>
-<td></td>
-<td>Optional prefill to pass to Claude as start of its response</td>
-</tr>
-<tr>
-<td>tool_choice</td>
-<td>Union</td>
-<td>None</td>
-<td>Optionally force use of some tool</td>
-</tr>
-<tr>
-<td>kw</td>
-<td>VAR_KEYWORD</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
 
 <details open class="code-fold">
 <summary>Exported source</summary>
@@ -989,7 +621,7 @@ async def __call__(self:AsyncChat,
     if temp is None: temp=self.temp
     await self._append_pr(pr)
     async def _cb(v):
-        self.last = await mk_toolres_async(v, ns=self.ns)
+        self.last = await mk_toolres_async(v, ns=limit_ns(self.ns, self.tools, tool_choice))
         self.h += self.last
     return await self.c(self.h, stream=stream, prefill=prefill, sp=self.sp, temp=temp, maxtok=maxtok, maxthinktok=maxthinktok, tools=self.tools, tool_choice=tool_choice, cb=_cb, **kw)
 ```
@@ -1005,7 +637,7 @@ Your name is Jeremy! You told me that at the start of our conversation.
 
 <details>
 
-- id: `msg_01V997mDpucmU87zhnF5dydS`
+- id: `msg_011gVfJUTyqUBreT3u9ej2xM`
 - content:
   `[{'citations': None, 'text': 'Your name is Jeremy! You told me that at the start of our conversation.', 'type': 'text'}]`
 - model: `claude-sonnet-4-5-20250929`
@@ -1031,7 +663,7 @@ contributing something meaningful to others.
 
 <details>
 
-- id: `msg_01HLoW2YqZkemPeqQGgrTqxN`
+- id: `msg_01PEtrNFwjv7daER26fdzatn`
 - content:
   `[{'citations': None, 'text': "According to Douglas Adams,  it's 42. \n\nMore seriously: to find purpose through connection, growth, and contributing something meaningful to others.", 'type': 'text'}]`
 - model: `claude-sonnet-4-5-20250929`
@@ -1057,7 +689,7 @@ Hello Jeremy! Nice to meet you. How can I help you today?
 
 <details>
 
-- id: `msg_01AggZKp4AKoGg7dzBE2qREi`
+- id: `msg_01C3ZDw8mwZioFsp4Xm8qPSx`
 - content:
   `[{'citations': None, 'text': 'Hello Jeremy! Nice to meet you. How can I help you today?', 'type': 'text'}]`
 - model: `claude-sonnet-4-5-20250929`
@@ -1079,14 +711,14 @@ r
 
     Finding the sum of 604542 and 6458932
 
-ToolUseBlock(id=‘toolu_01JqWJBzKkm78XjarRXvCy9W’, input={‘a’: 604542,
-‘b’: 6458932}, name=‘sums’, type=‘tool_use’)
+\[ToolUseBlock(id=‘toolu_012wP54FgYSiSiQ2Sy6ivNtD’, input={‘a’: 604542,
+‘b’: 6458932}, name=‘sums’, type=‘tool_use’)\]
 
 <details>
 
-- id: `msg_01MokGeSj7HcFxZMsmDPk674`
+- id: `msg_01CsTZMd2xg82kqTz6N6Ui4t`
 - content:
-  `[{'id': 'toolu_01JqWJBzKkm78XjarRXvCy9W', 'input': {'a': 604542, 'b': 6458932}, 'name': 'sums', 'type': 'tool_use'}]`
+  `[{'id': 'toolu_012wP54FgYSiSiQ2Sy6ivNtD', 'input': {'a': 604542, 'b': 6458932}, 'name': 'sums', 'type': 'tool_use'}]`
 - model: `claude-sonnet-4-5-20250929`
 - role: `assistant`
 - stop_reason: `tool_use`
@@ -1105,7 +737,7 @@ The sum of 604542 + 6458932 = **7,063,474**
 
 <details>
 
-- id: `msg_015ZSkMnf9gBRUf2u6mQz1VZ`
+- id: `msg_01HGhwCoQN4sbWZimSbky4ck`
 - content:
   `[{'citations': None, 'text': 'The sum of 604542 + 6458932 = **7,063,474**', 'type': 'text'}]`
 - model: `claude-sonnet-4-5-20250929`
@@ -1118,13 +750,66 @@ The sum of 604542 + 6458932 = **7,063,474**
 
 </details>
 
+AsyncChat handles missing tools gracefully. When a tool is called but
+not found in the namespace, it returns an error message rather than
+crashing.
+
+In this test, we intentionally empty the namespace (`chat.ns={}`) to
+simulate what would happen if Claude hallucinated a tool or if a tool
+was missing. The
+[`limit_ns`](https://claudette.answer.ai/core.html#limit_ns) function
+(used in the `_cb` callback) would normally filter out hallucinated
+tools, but here we’re testing the fallback behavior when tools aren’t
+available.
+
+``` python
+pr = f"What is {a}+{b}?"
+chat = AsyncChat(model, sp=sp, tools=[sums])
+chat.ns={}
+r = await chat(pr)
+r
+```
+
+\[ToolUseBlock(id=‘toolu_012wP54FgYSiSiQ2Sy6ivNtD’, input={‘a’: 604542,
+‘b’: 6458932}, name=‘sums’, type=‘tool_use’)\]
+
+<details>
+
+- id: `msg_01CsTZMd2xg82kqTz6N6Ui4t`
+- content:
+  `[{'id': 'toolu_012wP54FgYSiSiQ2Sy6ivNtD', 'input': {'a': 604542, 'b': 6458932}, 'name': 'sums', 'type': 'tool_use'}]`
+- model: `claude-sonnet-4-5-20250929`
+- role: `assistant`
+- stop_reason: `tool_use`
+- stop_sequence: `None`
+- type: `message`
+- usage:
+  `{'cache_creation': {'ephemeral_1h_input_tokens': 0, 'ephemeral_5m_input_tokens': 0}, 'cache_creation_input_tokens': 0, 'cache_read_input_tokens': 0, 'input_tokens': 624, 'output_tokens': 72, 'server_tool_use': None, 'service_tier': 'standard'}`
+
+</details>
+
+``` python
+chat.h
+```
+
+    [{'role': 'user', 'content': 'What is 604542+6458932?'},
+     {'role': 'assistant',
+      'content': [{'id': 'toolu_012wP54FgYSiSiQ2Sy6ivNtD',
+        'input': {'a': 604542, 'b': 6458932},
+        'name': 'sums',
+        'type': 'tool_use'}]},
+     {'role': 'user',
+      'content': [{'type': 'tool_result',
+        'tool_use_id': 'toolu_012wP54FgYSiSiQ2Sy6ivNtD',
+        'content': 'Error - tool not defined in the tool_schemas: sums'}]}]
+
 ``` python
 fn = Path('samples/puppy.jpg')
 img = fn.read_bytes()
 Image(img)
 ```
 
-![](02_async_files/figure-commonmark/cell-43-output-1.jpeg)
+![](02_async_files/figure-commonmark/cell-47-output-1.jpeg)
 
 ``` python
 q = "In brief, what color flowers are in this image?"
@@ -1136,7 +821,7 @@ The flowers in this image are **purple**.
 
 <details>
 
-- id: `msg_01JN8RWq8Mhwkukqg9pwFxpa`
+- id: `msg_01JPnMvi1UmuspTeQYG8RQiC`
 - content:
   `[{'citations': None, 'text': 'The flowers in this image are **purple**.', 'type': 'text'}]`
 - model: `claude-sonnet-4-5-20250929`
@@ -1170,7 +855,7 @@ know what you need!
 
 <details>
 
-- id: `msg_01NyGkjEfKDhBEjDVjYALzXX`
+- id: `msg_015it5oCQhxJAYuZzSqag6DC`
 - content:
   `[{'citations': None, 'text': 'I notice you\'ve sent me the phrase "Lorem ipsum dolor sit amet" repeated many times. "Lorem ipsum" is placeholder text commonly used in design and publishing to demonstrate visual form without meaningful content.\n\nIs there something specific I can help you with? For example:\n- Do you have a question or task you\'d like assistance with?\n- Were you testing something?\n- Did you mean to send different content?\n\nI\'m here to help with a wide range of tasks including answering questions, analysis, writing, problem-solving, and more. Please let me know what you need!', 'type': 'text'}]`
 - model: `claude-sonnet-4-5-20250929`
@@ -1203,7 +888,7 @@ what you’re working on!
 
 <details>
 
-- id: `msg_01HQnPcituHpsSC5fsN6Qugq`
+- id: `msg_01GmADYrSiU3m84ACDf3Wvr6`
 - content:
   `[{'citations': None, 'text': "No problem at all! These things happen. 😊\n\nHow can I help you today? Feel free to ask me anything or let me know what you're working on!", 'type': 'text'}]`
 - model: `claude-sonnet-4-5-20250929`
@@ -1212,7 +897,7 @@ what you’re working on!
 - stop_sequence: `None`
 - type: `message`
 - usage:
-  `{'cache_creation': {'ephemeral_1h_input_tokens': 0, 'ephemeral_5m_input_tokens': 136}, 'cache_creation_input_tokens': 136, 'cache_read_input_tokens': 1063, 'input_tokens': 3, 'output_tokens': 39, 'server_tool_use': None, 'service_tier': 'standard'}`
+  `{'cache_creation': {'ephemeral_1h_input_tokens': 0, 'ephemeral_5m_input_tokens': 1199}, 'cache_creation_input_tokens': 1199, 'cache_read_input_tokens': 0, 'input_tokens': 3, 'output_tokens': 39, 'server_tool_use': None, 'service_tier': 'standard'}`
 
 </details>
 
@@ -1220,7 +905,7 @@ what you’re working on!
 chat.use
 ```
 
-    In: 6; Out: 164; Cache create: 1199; Cache read: 1063; Total Tokens: 2432; Search: 0
+    In: 6; Out: 164; Cache create: 2262; Cache read: 0; Total Tokens: 2432; Search: 0
 
 ## Extended Thinking
 
@@ -1237,7 +922,7 @@ development to data science and machine learning.
 
 <details>
 
-- id: `msg_01VrHou5ydkh9c3ypukvNoCA`
+- id: `msg_013GJfKGhDZwj9n9cNEoYRW5`
 - content:
   `[{'citations': None, 'text': 'Python is a versatile, high-level programming language known for its clean syntax and readability, making it popular for everything from web development to data science and machine learning.', 'type': 'text'}]`
 - model: `claude-sonnet-4-5-20250929`
@@ -1258,8 +943,8 @@ r
 ```
 
 Python’s extensive standard library and vast ecosystem of third-party
-packages make it an excellent choice for beginners and experienced
-developers alike.
+packages make it an excellent choice for rapidly developing applications
+across diverse domains.
 
 <details>
 
@@ -1268,22 +953,23 @@ developers alike.
 Thinking
 </summary>
 
-The user is asking me to write another sentence about Python. I’ll
-provide a different sentence this time to give them varied information.
+The user is asking me to write another sentence about Python. I should
+provide a different sentence than before to keep it interesting and
+informative.
 </details>
 
 <details>
 
-- id: `msg_01BzPZRU8hp3x4Rrv5gQiRVQ`
+- id: `msg_01Y4N6eR7socsGLeVJs6oapd`
 - content:
-  `[{'signature': 'ErMCCkYICRgCKkDkES/w96cekkCn0ELoX3z+fFhvFUpSKOz4rtski52b6YaZbiUX6VXwW10/l/ZWtAWBXX6fNJ1sS2fCG1iP4KKiEgy0cpkiDex1h/6N/cAaDLtJ/s8siMsHfZ+2kiIwF6B33yCXMmE9Io1fGIpq3GKUQ/7wJuL/6OWumsarW6Fk50cjQRiKi9b4+bkdYNf9KpoBlHSDyEd4IEFTqvz+3k+YmmZFD0cz/7CnZQvYC4FuLzLflDa+afAWOLQTxOTJEiCNXEthPEwBBkkFm/wjeITw5V4QUVbH8fAVOguFQlLh03vEUFeTcsJ5ZEhRBR11tcBXuRaKB55PEawKIMoS0tYRkIt0jcKOkwIgDXfFUl+w/K9PipK+m/uxTn6w91NWXSvvinycMiHN0KREFhgB', 'thinking': "The user is asking me to write another sentence about Python. I'll provide a different sentence this time to give them varied information.", 'type': 'thinking'}, {'citations': None, 'text': "Python's extensive standard library and vast ecosystem of third-party packages make it an excellent choice for beginners and experienced developers alike.", 'type': 'text'}]`
+  `[{'signature': 'EsACCkYIChgCKkC+YytasVsIu50+vbFqeiRvPJF8hAUKM6cBDM1n6UwzdeHo6ueIax7YzrcBwYyQeyaxRYBA9oGmIB7Om5+cQNQIEgzUO2dJLD+Q4RfuICwaDLed+ZrwJ+ghnB9lpCIw8LzGix1ZyAUUBgu7Z7IBBsrAHi9JLu8IazIGFQ7dlaNg0xCx1TruTDOtO/ne4BkMKqcBeC/gMvJu56gzQqnlyJmhAOU4YWKjoI6APmdNhe9lTLBMKlWcwGBqoyFSJqLdk5UTQQTrz94JQddkHAYCuYW8XfPcu75puFzn2xi/ulu37N8FuZk4gDzFImVNteeMz9FST29vsVywdM85Pt1H3n7EMS0EhkT5XZOhbrkZmKjsA4a9FdmOJAIEBbD6IxFuE5FV+gMcvO5aoY3X8bteAM6KHEyyzYfje8UYAQ==', 'thinking': 'The user is asking me to write another sentence about Python. I should provide a different sentence than before to keep it interesting and informative.', 'type': 'thinking'}, {'citations': None, 'text': "Python's extensive standard library and vast ecosystem of third-party packages make it an excellent choice for rapidly developing applications across diverse domains.", 'type': 'text'}]`
 - model: `claude-sonnet-4-5-20250929`
 - role: `assistant`
 - stop_reason: `end_turn`
 - stop_sequence: `None`
 - type: `message`
 - usage:
-  `{'cache_creation': {'ephemeral_1h_input_tokens': 0, 'ephemeral_5m_input_tokens': 0}, 'cache_creation_input_tokens': 0, 'cache_read_input_tokens': 0, 'input_tokens': 88, 'output_tokens': 64, 'server_tool_use': None, 'service_tier': 'standard'}`
+  `{'cache_creation': {'ephemeral_1h_input_tokens': 0, 'ephemeral_5m_input_tokens': 0}, 'cache_creation_input_tokens': 0, 'cache_read_input_tokens': 0, 'input_tokens': 89, 'output_tokens': 65, 'server_tool_use': None, 'service_tier': 'standard'}`
 
 </details>
 
@@ -1291,5 +977,5 @@ provide a different sentence this time to give them varied information.
 r.content
 ```
 
-    [ThinkingBlock(signature='ErMCCkYICRgCKkDkES/w96cekkCn0ELoX3z+fFhvFUpSKOz4rtski52b6YaZbiUX6VXwW10/l/ZWtAWBXX6fNJ1sS2fCG1iP4KKiEgy0cpkiDex1h/6N/cAaDLtJ/s8siMsHfZ+2kiIwF6B33yCXMmE9Io1fGIpq3GKUQ/7wJuL/6OWumsarW6Fk50cjQRiKi9b4+bkdYNf9KpoBlHSDyEd4IEFTqvz+3k+YmmZFD0cz/7CnZQvYC4FuLzLflDa+afAWOLQTxOTJEiCNXEthPEwBBkkFm/wjeITw5V4QUVbH8fAVOguFQlLh03vEUFeTcsJ5ZEhRBR11tcBXuRaKB55PEawKIMoS0tYRkIt0jcKOkwIgDXfFUl+w/K9PipK+m/uxTn6w91NWXSvvinycMiHN0KREFhgB', thinking="The user is asking me to write another sentence about Python. I'll provide a different sentence this time to give them varied information.", type='thinking'),
-     TextBlock(citations=None, text="Python's extensive standard library and vast ecosystem of third-party packages make it an excellent choice for beginners and experienced developers alike.", type='text')]
+    [ThinkingBlock(signature='EsACCkYIChgCKkC+YytasVsIu50+vbFqeiRvPJF8hAUKM6cBDM1n6UwzdeHo6ueIax7YzrcBwYyQeyaxRYBA9oGmIB7Om5+cQNQIEgzUO2dJLD+Q4RfuICwaDLed+ZrwJ+ghnB9lpCIw8LzGix1ZyAUUBgu7Z7IBBsrAHi9JLu8IazIGFQ7dlaNg0xCx1TruTDOtO/ne4BkMKqcBeC/gMvJu56gzQqnlyJmhAOU4YWKjoI6APmdNhe9lTLBMKlWcwGBqoyFSJqLdk5UTQQTrz94JQddkHAYCuYW8XfPcu75puFzn2xi/ulu37N8FuZk4gDzFImVNteeMz9FST29vsVywdM85Pt1H3n7EMS0EhkT5XZOhbrkZmKjsA4a9FdmOJAIEBbD6IxFuE5FV+gMcvO5aoY3X8bteAM6KHEyyzYfje8UYAQ==', thinking='The user is asking me to write another sentence about Python. I should provide a different sentence than before to keep it interesting and informative.', type='thinking'),
+     TextBlock(citations=None, text="Python's extensive standard library and vast ecosystem of third-party packages make it an excellent choice for rapidly developing applications across diverse domains.", type='text')]

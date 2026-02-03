@@ -1,86 +1,75 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/webhooks/get-a-webhook.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get a webhook
 
 > Get a webhook
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v1/webhooks/{id}
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v1/webhooks/{id}
-  method: get
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path:
-        id:
+  /v1/webhooks/{id}:
+    get:
+      tags:
+        - webhooks
+      summary: Get a webhook
+      description: Get a webhook
+      operationId: getWebhook
+      parameters:
+        - name: id
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-      query:
-        teamId:
+            type: string
+        - description: The Team identifier to perform the request on behalf of.
+          in: query
+          name: teamId
           schema:
-            - type: string
-              description: The Team identifier to perform the request on behalf of.
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-        slug:
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        - description: The Team slug to perform the request on behalf of.
+          in: query
+          name: slug
           schema:
-            - type: string
-              description: The Team slug to perform the request on behalf of.
-              example: my-team-url-slug
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: getWebhook
-        lang: go
-        source: "package main\n\nimport(\n\t\"os\"\n\t\"github.com/vercel/vercel\"\n\t\"context\"\n\t\"log\"\n)\n\nfunc main() {\n    s := vercel.New(\n        vercel.WithSecurity(os.Getenv(\"VERCEL_BEARER_TOKEN\")),\n    )\n\n    ctx := context.Background()\n    res, err := s.Webhooks.GetWebhook(ctx, \"<id>\", nil, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Object != nil {\n        // handle response\n    }\n}"
-      - label: getWebhook
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.webhooks.getWebhook({
-              id: "<id>",
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-              slug: "my-team-url-slug",
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              events:
-                allOf:
-                  - items:
+            type: string
+            example: my-team-url-slug
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                properties:
+                  events:
+                    items:
                       type: string
                       enum:
                         - budget.reached
-                        - budget.reset
                         - domain.created
                         - domain.dns.records.changed
                         - domain.transfer-in.started
@@ -111,13 +100,18 @@ paths:
                         - edge-config.deleted
                         - edge-config.items.updated
                         - firewall.attack
+                        - firewall.system-rule-anomaly
+                        - firewall.custom-rule-anomaly
+                        - alerts.triggered
                         - integration-configuration.permission-upgraded
                         - integration-configuration.removed
                         - integration-configuration.scope-change-confirmed
+                        - integration-configuration.transferred
                         - integration-resource.project-connected
                         - integration-resource.project-disconnected
                         - project.created
                         - project.removed
+                        - project.renamed
                         - project.domain.created
                         - project.domain.updated
                         - project.domain.deleted
@@ -148,17 +142,18 @@ paths:
                         - marketplace.invoice.paid
                         - marketplace.invoice.notpaid
                         - marketplace.invoice.refunded
+                        - ai-gateway.balance-depleted
+                        - ai-gateway.auto-reload.limit-reached
                         - observability.anomaly
                         - observability.anomaly-error
                         - observability.usage-anomaly
                         - observability.error-anomaly
-                        - observability.anomaly-botId
+                        - botid.anomaly
                         - test-webhook
-                      description: The webhooks events
                       example: deployment.created
+                      description: The webhooks events
                       x-speakeasy-enums:
                         budget.reached: BudgetReached
-                        budget.reset: BudgetReset
                         domain.created: DomainCreated
                         domain.dns.records.changed: DomainDnsRecordsChanged
                         domain.transfer-in.started: DomainTransferInStarted
@@ -231,86 +226,58 @@ paths:
                     type: array
                     description: The webhooks events
                     example: deployment.created
-              id:
-                allOf:
-                  - type: string
+                  id:
+                    type: string
                     description: The webhook id
                     example: account_hook_GflD6EYyo7F4ViYS
-              url:
-                allOf:
-                  - type: string
+                  url:
+                    type: string
                     description: A string with the URL of the webhook
                     example: https://my-webhook.com
-              ownerId:
-                allOf:
-                  - type: string
+                  ownerId:
+                    type: string
                     description: The unique ID of the team the webhook belongs to
                     example: ZspSRT4ljIEEmMHgoDwKWDei
-              createdAt:
-                allOf:
-                  - type: number
+                  createdAt:
+                    type: number
                     description: >-
                       A number containing the date when the webhook was created
                       in in milliseconds
                     example: 1567024758130
-              updatedAt:
-                allOf:
-                  - type: number
+                  updatedAt:
+                    type: number
                     description: >-
                       A number containing the date when the webhook was updated
                       in in milliseconds
                     example: 1567024758130
-              projectIds:
-                allOf:
-                  - items:
+                  projectIds:
+                    items:
                       type: string
                     type: array
                     description: The ID of the projects the webhook is associated with
                     example:
                       - prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB
-            requiredProperties:
-              - events
-              - id
-              - url
-              - ownerId
-              - createdAt
-              - updatedAt
-        examples:
-          example:
-            value:
-              events: deployment.created
-              id: account_hook_GflD6EYyo7F4ViYS
-              url: https://my-webhook.com
-              ownerId: ZspSRT4ljIEEmMHgoDwKWDei
-              createdAt: 1567024758130
-              updatedAt: 1567024758130
-              projectIds:
-                - prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB
-        description: ''
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: One of the provided values in the request query is invalid.
-        examples: {}
-        description: One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-  deprecated: false
-  type: path
+                required:
+                  - createdAt
+                  - events
+                  - id
+                  - ownerId
+                  - updatedAt
+                  - url
+                type: object
+        '400':
+          description: One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+      security:
+        - bearerToken: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

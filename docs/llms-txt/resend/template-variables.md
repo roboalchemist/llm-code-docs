@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/dashboard/templates/template-variables.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Working with Variables
 
 > How to work with custom variables in Templates.
@@ -8,7 +12,7 @@ Custom Template variables provide your team flexibility when sending emails. Def
 
 ## Create custom variables
 
-Each Template may contain up to 20 variables.
+Each Template may contain up to 50 variables.
 
 To add a custom variable, select **Variable** in the commands palette or type `{{` in the editor. Define the `name`, `type`, and `fallback_value` (optional).
 
@@ -20,7 +24,7 @@ To add a custom variable, select **Variable** in the commands palette or type `{
 </p>
 
 <CodeGroup>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -43,7 +47,7 @@ To add a custom variable, select **Variable** in the commands palette or type `{
   });
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->templates->create([
@@ -64,7 +68,7 @@ To add a custom variable, select **Variable** in the commands palette or type `{
   ]);
   ```
 
-  ```py Python theme={null}
+  ```py Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
@@ -87,7 +91,7 @@ To add a custom variable, select **Variable** in the commands palette or type `{
   })
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -110,7 +114,7 @@ To add a custom variable, select **Variable** in the commands palette or type `{
   )
   ```
 
-  ```go Go theme={null}
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   import (
   	"context"
 
@@ -139,7 +143,7 @@ To add a custom variable, select **Variable** in the commands palette or type `{
   }
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{
     types::{CreateTemplateOptions, Variable, VariableType},
     Resend, Result,
@@ -166,7 +170,7 @@ To add a custom variable, select **Variable** in the commands palette or type `{
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -185,7 +189,7 @@ To add a custom variable, select **Variable** in the commands palette or type `{
   }
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create("re_xxxxxxxxx");
@@ -216,7 +220,7 @@ To add a custom variable, select **Variable** in the commands palette or type `{
   Console.WriteLine($"Template Id={resp.Content}");
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X POST 'https://api.resend.com/templates' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json' \
@@ -258,7 +262,7 @@ When you define a variable, you can optionally define a fallback value. This val
 
 <video src="https://mintcdn.com/resend/8sUIFX1U2gAd2pqE/images/templates-variable-creation.mp4?fit=max&auto=format&n=8sUIFX1U2gAd2pqE&q=85&s=2b3d3cabff27e9b21d8c0525e7322ee8" autoPlay muted loop width="1512" height="926" data-path="images/templates-variable-creation.mp4" />
 
-In the editor, if you fail to provide a fallback value, a warning sign will show for the variable, which you can remove by providing a value.
+In the editor, if you fail to provide a fallback value, a warning sign will show for the variable. To edit a variable's fallback value, click on the variable chip in your template and use the Inspector sidebar on the right to update the fallback value.
 
 [As shown above](#create-template-with-variables), you can also include fallback values when creating a Template via the API.
 
@@ -278,7 +282,7 @@ When sending a transactional email, you can reference your Template and include 
 Both the `/emails` and `/emails/batch` endpoints support Templates.
 
 <CodeGroup>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -296,7 +300,7 @@ Both the `/emails` and `/emails/batch` endpoints support Templates.
   });
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->emails->send([
@@ -312,7 +316,7 @@ Both the `/emails` and `/emails/batch` endpoints support Templates.
   ]);
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
@@ -332,7 +336,7 @@ Both the `/emails` and `/emails/batch` endpoints support Templates.
   email = resend.Emails.send(params)
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   require 'resend'
 
   Resend.api_key = 're_xxxxxxxxx'
@@ -352,7 +356,7 @@ Both the `/emails` and `/emails/batch` endpoints support Templates.
   email = Resend::Emails.send(params)
   ```
 
-  ```go Go theme={null}
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   import (
   	"context"
 
@@ -378,7 +382,7 @@ Both the `/emails` and `/emails/batch` endpoints support Templates.
   }
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{types::CreateEmailBaseOptions, Resend, Result};
   use std::collections::HashMap;
 
@@ -402,7 +406,7 @@ Both the `/emails` and `/emails/batch` endpoints support Templates.
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
   import java.util.HashMap;
   import java.util.Map;
@@ -426,7 +430,7 @@ Both the `/emails` and `/emails/batch` endpoints support Templates.
   }
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -448,7 +452,7 @@ Both the `/emails` and `/emails/batch` endpoints support Templates.
   Console.WriteLine( "Email Id={0}", resp.Content );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X POST 'https://api.resend.com/emails' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json' \

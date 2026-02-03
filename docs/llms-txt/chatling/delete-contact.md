@@ -2,30 +2,36 @@
 
 # Source: https://docs.chatling.ai/api-reference/v2/contacts/delete-contact.md
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/action/delete-contact.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.chatling.ai/api-reference/v2/contacts/delete-contact.md
+# Delete contact
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/action/delete-contact.md
+> Delete a contact by its ID.
 
-# Source: https://docs.chatling.ai/api-reference/v2/contacts/delete-contact.md
+## Request parameters
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/action/delete-contact.md
+### Path
 
-# Source: https://docs.chatling.ai/api-reference/v2/contacts/delete-contact.md
+<ParamField path="chatbotId" type="string" required>
+  The chatbot ID.
+</ParamField>
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/action/delete-contact.md
+<ParamField path="contactId" type="string" required>
+  The contact ID.
+</ParamField>
 
-# Source: https://docs.chatling.ai/api-reference/v2/contacts/delete-contact.md
+## Response
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/action/delete-contact.md
+<ResponseField name="status" type="string">
+  The status of the request. Will be `success` if the request was successful, otherwise `error`.
+</ResponseField>
 
-# Delete Contact Block
-
-> Learn about the Delete Contact block and how to set it up in the Builder.
-
-The `Delete Contact` block can be used to delete a contact and dissociate it from the user.
-
-The block consists of the following components:
-
-* **Search**: Specify the field and value to use to look up the contact. You can enter a variable to search dynamically.
+<ResponseExample>
+  ```json  theme={null}
+  {
+      "status": "success"
+  }
+  ```
+</ResponseExample>

@@ -1,5 +1,9 @@
 # Source: https://docs.meshconnect.com/testing/sandbox.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.meshconnect.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Sandbox
 
 > Learn about the Sandbox environment, its features, limitations, and how to use it for API testing.
@@ -14,6 +18,22 @@ The Sandbox is a dedicated testing environment that allows you to integrate and 
 * **Mocked Exchange Data:** Simulates responses from centralized exchanges for testing API calls and transfer flows.
 * **On-Chain Wallet Testing:** Supports the **Sepolia testnet** for validating real on-chain transactions with self-custody wallets.
 * **Dedicated API Endpoint:** Access the Sandbox API at: `https://sandbox-integration-api.meshconnect.com`.
+
+***
+
+Mesh Sandbox now supports Defi Wallet **transfers using browser extension wallets** for applicable testnet scenarios. This allows developers to test end-to-end flows involving DeFi wallets directly within the Sandbox environment.
+
+### **Supported Browser Extension Wallets & Networks**
+
+* **MetaMask → Sepolia (Ethereum Testnet)**
+
+  Use MetaMask on Sepolia network to test SEPOLIAETH/PYUSD/USDG transfers on Sandbox Environment
+
+* **Phantom → Solana Devnet**
+
+  Use Phantom on SolanaDevnet network to test DEVNETSOL/PYUSD/USDG transfers on Sandbox Environment
+
+These capabilities enable comprehensive testing of token movement and wallet behavior without interacting with mainnet environments.
 
 ***
 

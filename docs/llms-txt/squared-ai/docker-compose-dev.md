@@ -1,5 +1,9 @@
 # Source: https://docs.squared.ai/deployment-and-security/setup/docker-compose-dev.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Docker
 
 <Warning>**WARNING** The following guide is intended for developers to set-up Multiwoven locally. If you are a user, please refer to the [Self-Hosted](/guides/setup/docker-compose) guide.</Warning>

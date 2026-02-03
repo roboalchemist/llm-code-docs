@@ -6,8 +6,6 @@ description: Upgrade your Go tracer from v1 to v2.
 breadcrumbs: >-
   Docs > APM > Application Instrumentation > Code-Based Custom Instrumentation >
   Go > Migrate to Go Tracer v2
-source_url: >-
-  https://docs.datadoghq.com/trace_collection/custom_instrumentation/go/migration/index.html
 ---
 
 # Migrate to Go Tracer v2

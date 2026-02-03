@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/cloud-services/deployments/static-deployments-advanced.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Static Deployment Configuration
 
 > Static deployments let you control the HTTP headers, routing rules, and URL rewrites for your static website.

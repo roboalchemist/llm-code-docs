@@ -4,23 +4,9 @@
 
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/faq/context-adherence-vs-instruction-adherence.md
 
-# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-observe/faq/context-adherence-vs-instruction-adherence.md
-
-# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-guardrail-metrics/faq/context-adherence-vs-instruction-adherence.md
-
-# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/faq/context-adherence-vs-instruction-adherence.md
-
-# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-observe/faq/context-adherence-vs-instruction-adherence.md
-
-# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-guardrail-metrics/faq/context-adherence-vs-instruction-adherence.md
-
-# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/faq/context-adherence-vs-instruction-adherence.md
-
-# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-observe/faq/context-adherence-vs-instruction-adherence.md
-
-# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-guardrail-metrics/faq/context-adherence-vs-instruction-adherence.md
-
-# Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/faq/context-adherence-vs-instruction-adherence.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Context vs. Instruction Adherence | Galileo Evaluate FAQ
 

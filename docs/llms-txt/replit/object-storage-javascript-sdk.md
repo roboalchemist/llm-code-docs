@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/reference/object-storage-javascript-sdk.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # App Storage JavaScript SDK
 
 > The Replit App Storage Client is the official JavaScript SDK for managing interactions with Replit App Storage. This lets you programmatically copy, delete, upload, and download files within Replit App Storage buckets.

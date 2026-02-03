@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/granitemoehybrid.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/granitemoehybrid.md
 
 # GraniteMoeHybrid
 
@@ -46,7 +46,7 @@ This HF implementation is contributed by [Sukriti Sharma](https://huggingface.co
     - `max_length_q: int`: the longest query length in the batch.
     - `max_length_k: int`: the longest key length in the batch.
 
-  The `attention_mask` inputs should not be provided. The [DataCollatorWithFlattening](/docs/transformers/v5.0.0rc1/en/main_classes/data_collator#transformers.DataCollatorWithFlattening) programmatically generates the set of additional arguments above using `return_seq_idx=True` and `return_flash_attn_kwargs=True`. See the [Improving Hugging Face Training Efficiency Through Packing with Flash Attention](https://huggingface.co/blog/packing-with-FA2) blog post for additional information.
+  The `attention_mask` inputs should not be provided. The [DataCollatorWithFlattening](/docs/transformers/v5.0.0/en/main_classes/data_collator#transformers.DataCollatorWithFlattening) programmatically generates the set of additional arguments above using `return_seq_idx=True` and `return_flash_attn_kwargs=True`. See the [Improving Hugging Face Training Efficiency Through Packing with Flash Attention](https://huggingface.co/blog/packing-with-FA2) blog post for additional information.
 
   ```python
   from transformers import DataCollatorWithFlattening
@@ -63,13 +63,13 @@ This HF implementation is contributed by [Sukriti Sharma](https://huggingface.co
 
 #### transformers.GraniteMoeHybridConfig[[transformers.GraniteMoeHybridConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/granitemoehybrid/configuration_granitemoehybrid.py#L28)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/granitemoehybrid/configuration_granitemoehybrid.py#L25)
 
-This is the configuration class to store the configuration of a [GraniteMoeHybridConfig](/docs/transformers/v5.0.0rc1/en/model_doc/granitemoehybrid#transformers.GraniteMoeHybridConfig). It is used to
+This is the configuration class to store the configuration of a [GraniteMoeHybridConfig](/docs/transformers/v5.0.0/en/model_doc/granitemoehybrid#transformers.GraniteMoeHybridConfig). It is used to
 instantiate an GraniteMoeHybrid model according to the specified arguments, defining the model architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 ```python
 >>> from transformers import GraniteMoeHybridModel, GraniteMoeHybridConfig
@@ -83,7 +83,7 @@ documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_class
 
 **Parameters:**
 
-vocab_size (`int`, *optional*, defaults to 32000) : Vocabulary size of the GraniteMoeHybrid model. Defines the number of different tokens that can be represented by the `inputs_ids` passed when calling [GraniteMoeHybridModel](/docs/transformers/v5.0.0rc1/en/model_doc/granitemoehybrid#transformers.GraniteMoeHybridModel)
+vocab_size (`int`, *optional*, defaults to 32000) : Vocabulary size of the GraniteMoeHybrid model. Defines the number of different tokens that can be represented by the `inputs_ids` passed when calling [GraniteMoeHybridModel](/docs/transformers/v5.0.0/en/model_doc/granitemoehybrid#transformers.GraniteMoeHybridModel)
 
 hidden_size (`int`, *optional*, defaults to 4096) : Dimension of the hidden representations.
 
@@ -137,6 +137,8 @@ router_aux_loss_coef (`float`, *optional*, defaults to 0.001) : router auxiliary
 
 shared_intermediate_size (`int`, *optional*, defaults to 1024) : intermediate size for shared experts.
 
+position_embedding_type (`str`, *optional*) : Positional embedding type to be used; defaults to None. Allowed options: `[None, "rope"]`
+
 layer_types (`List`, *optional*) : list of strings to be used as layer types. Allowed choices: "mamba", "attention".
 
 mamba_n_heads (`int`, *optional*, defaults to 128) : The number of mamba heads used.
@@ -161,11 +163,11 @@ mamba_proj_bias (`bool`, *optional*, defaults to `False`) : Flag indicating whet
 
 #### transformers.GraniteMoeHybridModel[[transformers.GraniteMoeHybridModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/granitemoehybrid/modeling_granitemoehybrid.py#L1257)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/granitemoehybrid/modeling_granitemoehybrid.py#L1260)
 
 The bare Granitemoehybrid Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -173,11 +175,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.GraniteMoeHybridModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/granitemoehybrid/modeling_granitemoehybrid.py#L1275[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.models.granitemoehybrid.modeling_granitemoehybrid.GraniteFlashAttentionKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.GraniteMoeHybridModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/granitemoehybrid/modeling_granitemoehybrid.py#L1278[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.models.granitemoehybrid.modeling_granitemoehybrid.GraniteFlashAttentionKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -196,8 +198,8 @@ forwardtransformers.GraniteMoeHybridModel.forwardhttps://github.com/huggingface/
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -214,7 +216,7 @@ forwardtransformers.GraniteMoeHybridModel.forwardhttps://github.com/huggingface/
 - **cache_position** (`torch.LongTensor` of shape `(sequence_length)`, *optional*) --
   Indices depicting the position of the input sequence tokens in the sequence. Contrarily to `position_ids`,
   this tensor is not affected by padding. It is used to update the cache in the correct position and to infer
-  the complete sequence length.0[transformers.modeling_outputs.BaseModelOutputWithPast](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPast) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutputWithPast](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPast) or a tuple of
+  the complete sequence length.0[transformers.modeling_outputs.BaseModelOutputWithPast](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPast) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutputWithPast](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPast) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
 elements depending on the configuration (`None`) and inputs.
 
@@ -222,7 +224,7 @@ elements depending on the configuration (`None`) and inputs.
 
   If `past_key_values` is used only the last hidden-state of the sequences of shape `(batch_size, 1,
   hidden_size)` is output.
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and optionally if
   `config.is_encoder_decoder=True` in the cross-attention blocks) that can be used (see `past_key_values`
@@ -236,7 +238,7 @@ elements depending on the configuration (`None`) and inputs.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [GraniteMoeHybridModel](/docs/transformers/v5.0.0rc1/en/model_doc/granitemoehybrid#transformers.GraniteMoeHybridModel) forward method, overrides the `__call__` special method.
+The [GraniteMoeHybridModel](/docs/transformers/v5.0.0/en/model_doc/granitemoehybrid#transformers.GraniteMoeHybridModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -244,13 +246,13 @@ the latter silently ignores them.
 
 **Parameters:**
 
-config ([GraniteMoeHybridConfig](/docs/transformers/v5.0.0rc1/en/model_doc/granitemoehybrid#transformers.GraniteMoeHybridConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([GraniteMoeHybridConfig](/docs/transformers/v5.0.0/en/model_doc/granitemoehybrid#transformers.GraniteMoeHybridConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.BaseModelOutputWithPast](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPast) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.BaseModelOutputWithPast](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPast) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.BaseModelOutputWithPast](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPast) or a tuple of
+A [transformers.modeling_outputs.BaseModelOutputWithPast](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPast) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
 elements depending on the configuration (`None`) and inputs.
 
@@ -258,7 +260,7 @@ elements depending on the configuration (`None`) and inputs.
 
   If `past_key_values` is used only the last hidden-state of the sequences of shape `(batch_size, 1,
   hidden_size)` is output.
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and optionally if
   `config.is_encoder_decoder=True` in the cross-attention blocks) that can be used (see `past_key_values`
@@ -277,11 +279,11 @@ elements depending on the configuration (`None`) and inputs.
 
 #### transformers.GraniteMoeHybridForCausalLM[[transformers.GraniteMoeHybridForCausalLM]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/granitemoehybrid/modeling_granitemoehybrid.py#L1436)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/granitemoehybrid/modeling_granitemoehybrid.py#L1441)
 
 The Granitemoehybrid Model for causal language modeling.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -289,11 +291,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.GraniteMoeHybridForCausalLM.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/granitemoehybrid/modeling_granitemoehybrid.py#L1454[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "output_router_logits", "val": ": typing.Optional[bool] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "logits_to_keep", "val": ": typing.Union[int, torch.Tensor] = 0"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.GraniteMoeHybridForCausalLM.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/granitemoehybrid/modeling_granitemoehybrid.py#L1459[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "output_router_logits", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "logits_to_keep", "val": ": int | torch.Tensor = 0"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -312,8 +314,8 @@ forwardtransformers.GraniteMoeHybridForCausalLM.forwardhttps://github.com/huggin
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -335,7 +337,7 @@ forwardtransformers.GraniteMoeHybridForCausalLM.forwardhttps://github.com/huggin
   Indices depicting the position of the input sequence tokens in the sequence. Contrarily to `position_ids`,
   this tensor is not affected by padding. It is used to update the cache in the correct position and to infer
   the complete sequence length.
-- **logits_to_keep** (`Union[int, torch.Tensor]`, defaults to `0`) --
+- **logits_to_keep** (`Union[int, torch.Tensor]`, *optional*, defaults to `0`) --
   If an `int`, compute logits for the last `logits_to_keep` tokens. If `0`, calculate logits for all
   `input_ids` (special case). Only last token logits are needed for generation, and calculating them only for that
   token can save memory, which becomes pretty significant for long sequences or large vocabulary size.
@@ -355,7 +357,7 @@ elements depending on the configuration (`None`) and inputs.
   Raw router logtis (post-softmax) that are computed by MoE routers, these terms are used to compute the auxiliary
   loss for Mixture of Experts models.
 
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.
@@ -368,7 +370,7 @@ elements depending on the configuration (`None`) and inputs.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [GraniteMoeHybridForCausalLM](/docs/transformers/v5.0.0rc1/en/model_doc/granitemoehybrid#transformers.GraniteMoeHybridForCausalLM) forward method, overrides the `__call__` special method.
+The [GraniteMoeHybridForCausalLM](/docs/transformers/v5.0.0/en/model_doc/granitemoehybrid#transformers.GraniteMoeHybridForCausalLM) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -379,8 +381,8 @@ Example:
 ```python
 >>> from transformers import AutoTokenizer, GraniteMoeHybridForCausalLM
 
->>> model = GraniteMoeHybridForCausalLM.from_pretrained("ibm/PowerMoE-3b")
->>> tokenizer = AutoTokenizer.from_pretrained("ibm/PowerMoE-3b")
+>>> model = GraniteMoeHybridForCausalLM.from_pretrained("ibm-granite/granite-4.0-h-tiny")
+>>> tokenizer = AutoTokenizer.from_pretrained("ibm-granite/granite-4.0-h-tiny")
 
 >>> prompt = "Hey, are you conscious? Can you talk to me?"
 >>> inputs = tokenizer(prompt, return_tensors="pt")
@@ -393,7 +395,7 @@ Example:
 
 **Parameters:**
 
-config ([GraniteMoeHybridConfig](/docs/transformers/v5.0.0rc1/en/model_doc/granitemoehybrid#transformers.GraniteMoeHybridConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([GraniteMoeHybridConfig](/docs/transformers/v5.0.0/en/model_doc/granitemoehybrid#transformers.GraniteMoeHybridConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
@@ -414,7 +416,7 @@ elements depending on the configuration (`None`) and inputs.
   Raw router logtis (post-softmax) that are computed by MoE routers, these terms are used to compute the auxiliary
   loss for Mixture of Experts models.
 
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.

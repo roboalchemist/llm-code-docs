@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/vector/api/endpoints/query-data.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Query Data
 
 > Queries the approximate nearest neighbors of a raw text data after embedding it.

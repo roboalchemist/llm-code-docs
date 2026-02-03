@@ -1,5 +1,9 @@
 # Source: https://docs.unifygtm.com/reference/signals/lookalike-companies.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Lookalike Companies
 
 > Find companies similar to your most successful customers.

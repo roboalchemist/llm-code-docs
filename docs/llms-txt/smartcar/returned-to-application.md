@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/errors/connect-errors/returned-to-application.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # User returned to application
 
 > This error occurs when a user leaves the Connect flow after hitting **Back to application** before granting your application access to their vehicle.

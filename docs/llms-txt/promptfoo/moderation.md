@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/configuration/expected-outputs/moderation/
+
 # Moderation
 
 Use the `moderation` assert type to ensure that LLM outputs are safe.

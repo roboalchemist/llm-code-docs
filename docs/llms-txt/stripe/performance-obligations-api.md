@@ -39,14 +39,14 @@ To defer the revenue upon invoicing, you’ll need to create a [revenue recognit
 
 You can record usages through the API.
 
-If you were to create an invoice on June 1, 2022, and 10 units are used on July 29, 2022, you would send the below API request:
+If you were to create an invoice on June 1, 2025, and 10 units are used on July 29, 2025, you would send the below API request:
 
 ```curl
 curl https://api.stripe.com/v1/revenue_recognition/performance_obligations \
   -u "<<YOUR_SECRET_KEY>>:" \
   -d "target[type]"=invoice_line_item \
   -d "target[invoice_line_item]"=il_AAA \
-  -d "period[start]"=1659078000 \
+  -d "period[start]"=1753747200 \
   -d amount=1000 \
   -d currency=usd
 ```
@@ -55,9 +55,9 @@ curl https://api.stripe.com/v1/revenue_recognition/performance_obligations \
 
 ### Before fulfillment 
 
-If you download the debits and credits reports in June 2022, the following is what you would see. Because no usage is recorded yet, the whole invoice line item will be deferred and recognized 12 months later.
+If you download the debits and credits reports in June 2025, the following is what you would see. Because no usage is recorded yet, the whole invoice line item will be deferred and recognized 12 months later.
 
-| Account            | Jun 2022 | Jun 2023 |
+| Account            | Jun 2025 | Jun 2026 |
 | ------------------ | -------- | -------- |
 | AccountsReceivable | +100     |          |
 | DeferredRevenue    | +100     | -100     |
@@ -65,9 +65,9 @@ If you download the debits and credits reports in June 2022, the following is wh
 
 ### Partial fulfillment 
 
-With the usage recorded in the section above, the reports would look like the following in July 2022:
+With the usage recorded in the section above, the reports would look like the following in July 2025:
 
-| Account            | Jun 2022 | Jul 2022 | Jun 2023 |
+| Account            | Jun 2025 | Jul 2025 | Jun 2026 |
 | ------------------ | -------- | -------- | -------- |
 | AccountsReceivable | +100     |          |          |
 | DeferredRevenue    | +100     | -10      | -90      |
@@ -75,9 +75,9 @@ With the usage recorded in the section above, the reports would look like the fo
 
 ### Full fulfillment 
 
-Suppose another usage is recorded on Aug 10, 2022 with the remaining amount (90 USD). The deferred revenue will be converted to revenue completely in Aug 2022:
+Suppose another usage is recorded on Aug 10, 2025 with the remaining amount (90 USD). The deferred revenue will be converted to revenue completely in Aug 2025:
 
-| Account            | Jun 2022 | Jul 2022 | Aug 2022 |
+| Account            | Jun 2025 | Jul 2025 | Aug 2025 |
 | ------------------ | -------- | -------- | -------- |
 | AccountsReceivable | +100     |          |          |
 | DeferredRevenue    | +100     | -10      | -90      |

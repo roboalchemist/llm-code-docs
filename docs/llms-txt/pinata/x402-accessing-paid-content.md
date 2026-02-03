@@ -1,6 +1,8 @@
 # Source: https://docs.pinata.cloud/files/x402/x402-accessing-paid-content.md
 
-# Source: https://docs.pinata.cloud/files/x402-accessing-paid-content.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Accessing Paid Content
 
@@ -120,10 +122,10 @@ const account = await wallet.getDefaultAddress();
 
 Once you have your wallet set up, use the x402 libraries to access paid content:
 
-### x402-fetch
+### @x402/fetch
 
 ```typescript  theme={null}
-import { wrapFetchWithPayment } from "x402-fetch";
+import { wrapFetchWithPayment } from "@x402/fetch";
 import { privateKeyToAccount } from "viem/accounts";
 
 // Set up your wallet
@@ -139,10 +141,10 @@ const content = await response.json();
 console.log(content);
 ```
 
-### x402-axios
+### @x402/axios
 
 ```typescript  theme={null}
-import { wrapAxiosWithPayment } from "x402-axios";
+import { wrapAxiosWithPayment } from "@x402/axios";
 import axios from "axios";
 import { privateKeyToAccount } from "viem/accounts";
 
@@ -197,6 +199,8 @@ Gateway or facilitator error. Contact the content creator.
 
 ## Network Support
 
+**USDC is currently the only supported token.**
+
 | Network                | Status      | Token                                               | Use Case   |
 | ---------------------- | ----------- | --------------------------------------------------- | ---------- |
 | Base (Mainnet)         | ✅ Available | USDC (`0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`) | Production |
@@ -213,7 +217,7 @@ Gateway or facilitator error. Contact the content creator.
 ## Example: Complete Integration
 
 ```typescript  theme={null}
-import { wrapFetchWithPayment } from "x402-fetch";
+import { wrapFetchWithPayment } from "@x402/fetch";
 import { privateKeyToAccount } from "viem/accounts";
 
 // Set up your wallet
@@ -247,8 +251,8 @@ accessPaidContent("bafkreih5aznjvttude6c3wbvqeebb6rlx5wkbzyppv7garjiubll2ceym4")
 
 ## Resources
 
-* [x402-fetch NPM Package](https://www.npmjs.com/package/x402-fetch)
-* [x402-axios NPM Package](https://www.npmjs.com/package/x402-axios)
+* [@x402/fetch NPM Package](https://www.npmjs.com/package/@x402/fetch)
+* [@x402/axios NPM Package](https://www.npmjs.com/package/@x402/axios)
 * [Viem Documentation](https://viem.sh)
 * [Coinbase Developer Platform](https://docs.cdp.coinbase.com/)
 

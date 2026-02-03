@@ -34,6 +34,10 @@ The notification banner renders and collects the currently due requirements. The
 
 The activity hub displays notifications about activity such as upcoming payouts, account setting changes, refunds, and dispute payments.
 
+### Account settings
+
+You can view and update your connected account’s settings in your Account settings. Connected accounts can view and edit personal or business information, public information, and the bank accounts used for payouts. If the Close account feature is enabled, connected accounts can also close their own account in the Express Dashboard.
+
 ## Accessing the Express Dashboard
 
 There are two ways to access the Express Dashboard, login links and self-service. We recommend using login links.

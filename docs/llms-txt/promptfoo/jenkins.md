@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/integrations/jenkins/
+
 # Setting up Promptfoo with Jenkins
 
 This guide demonstrates how to integrate Promptfoo's LLM evaluation into your Jenkins pipeline. This setup enables automatic testing of your prompts and models whenever changes are made to your repository.

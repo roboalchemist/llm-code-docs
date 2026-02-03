@@ -4,8 +4,6 @@
 title: Live vs Snapshot Diagrams
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > Getting started > Live vs Snapshot Diagrams
-source_url: >-
-  https://docs.datadoghq.com/getting-started/live-vs-snapshot-diagrams/index.html
 ---
 
 # Live vs Snapshot Diagrams

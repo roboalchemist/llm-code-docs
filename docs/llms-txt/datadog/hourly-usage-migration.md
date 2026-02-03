@@ -9,7 +9,6 @@ description: >-
 breadcrumbs: >-
   Docs > Account Management > Account Management Guides > Migrating from the V1
   Hourly Usage APIs to V2
-source_url: https://docs.datadoghq.com/guide/hourly-usage-migration/index.html
 ---
 
 # Migrating from the V1 Hourly Usage APIs to V2

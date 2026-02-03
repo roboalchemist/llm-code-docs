@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/cloud/get-started.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get started with LanceDB Cloud
 
 > Learn how to ingest data into LanceDB Cloud and run search, in just a few minutes.
@@ -376,8 +380,3 @@ Add filter to your vector search query. Your can use SQL statements, like `where
 It's time to use LanceDB Cloud/Enterprise in your own projects!
 We've prepared more [tutorials](/tutorials/) for you to continue learning. If you
 have any questions, reach out via [Discord](https://discord.gg/AUEWnJ7Txb).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/app-guides/serve-static-assets.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to serve static assets
 
 > 📘 This article is about static assets served by your app such as CSS or JavaScript files. If you're looking for strategies for storing files uploaded by or generated for your customers, see [How do I accept file uploads when using Aptible?](/how-to-guides/app-guides/use-s3-to-accept-file-uploads) instead.

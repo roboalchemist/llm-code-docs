@@ -104,10 +104,10 @@ Be both as specific and as generic as possible at the same time.
 
 ### DOM element selectors
 
-Make sure your https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors have the best chance to remain valid after a website is updated.
+Make sure your [CSS selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors) have the best chance to remain valid after a website is updated.
 
-* Prefer https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity selectors over lower specificity ones (**#id** over **.class**).
-* Use https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors to search parts of attributes (prefix, suffix, etc.).
+* Prefer [higher-specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) selectors over lower specificity ones (**#id** over **.class**).
+* Use [attribute selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors) to search parts of attributes (prefix, suffix, etc.).
 * Use element attributes with the **lowest probability of a future change**.
 * Completely **avoid or strip** selectors of values that are clearly **random**.
 * Completely **avoid or strip** selectors of values that are clearly **flexible**.
@@ -123,9 +123,9 @@ If you are reasonably confident a page layout will remain without any dramatic f
 
 ### Content pattern matching
 
-Matching elements by content is already natively supported by https://playwright.dev/. Playwright is a https://nodejs.org/en/ library that allows you to automate Chromium, Firefox and WebKit with a single API.
+Matching elements by content is already natively supported by [Playwright](https://playwright.dev/). Playwright is a [Node.js](https://nodejs.org/en/) library that allows you to automate Chromium, Firefox and WebKit with a single API.
 
-In https://pptr.dev/, you can use custom utility functions to https://developer.mozilla.org/en-US/docs/Glossary/Polyfill this functionality.
+In [Puppeteer](https://pptr.dev/), you can use custom utility functions to [polyfill](https://developer.mozilla.org/en-US/docs/Glossary/Polyfill) this functionality.
 
 ## Event-bound flows
 

@@ -4,11 +4,7 @@
 
 Notion provider setup and usage.
 
-***
 
-title: Notion
-description: Notion provider setup and usage.
----------------------------------------------
 
 <Steps>
   <Step>

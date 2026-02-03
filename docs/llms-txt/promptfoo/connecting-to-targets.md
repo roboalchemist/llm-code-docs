@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/troubleshooting/connecting-to-targets/
+
 # Connecting to Targets
 
 When setting up your target, use these best practices:

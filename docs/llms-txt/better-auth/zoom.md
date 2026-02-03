@@ -4,11 +4,7 @@
 
 Zoom provider setup and usage.
 
-***
 
-title: Zoom
-description: Zoom provider setup and usage.
--------------------------------------------
 
 <Steps>
   <Step>

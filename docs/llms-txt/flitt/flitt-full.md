@@ -3060,6 +3060,124 @@ See the Pen [Flitt - Apple, Google Pay buttons](https://codepen.io/flitt/pen/Por
 
 Please follow [Google Pay direct](/api/googlepay-direct/) instructions.
 
+Installment payment is executed in 2 steps (only TBC bank is supported as for now)
+
+## Step 1: Create payment
+
+Refer to [Create order](/api/create-order/) page to create test order with a simple code.
+
+First, you need to create payment token from your backend.
+
+To do this in a proper way, choose your integration type: Redirect/Iframe or Embedded
+
+Send request from backend to /api/checkout/url endpoint:
+
+```
+curl -L 'https://sandbox.pay.flitt.dev/api/checkout/url' \
+-H 'Content-Type: application/json' \
+-d '{
+  "request": {
+    "server_callback_url": "https://testapi.com/api/callback/",
+    "order_id": "test_installment_1",
+    "currency": "GEL",
+    "merchant_id": 1549901,
+    "payment_systems": "installments",
+    "payment_method": "x",
+    "order_desc": "Test installment payment",
+    "amount": 10000,
+    "response_url": "https://example.com",
+    "signature": "1570574166888217a8d5fb78227ff17c1488be72"
+  }
+}'
+
+```
+
+The response will contain the checkout URL. Redirect customer to this URL or load it in Iframe.
+
+```
+{
+   "response": {
+       "checkout_url": "https://sandbox.pay.flitt.dev/merchants/7ee242403e07af2d3fe9f208b66faec8bae2fe96/default/index.html?token=93dfba14daaa2cb01916606b54d0f3e935786cf7",
+       "payment_id": "150009301",
+       "response_status": "success"
+   }
+}
+
+```
+
+Send request from backend to /api/checkout/token endpoint:
+
+```
+curl -L 'https://sandbox.pay.flitt.dev/api/checkout/token' \
+-H 'Content-Type: application/json' \
+-d '{
+  "request": {
+    "server_callback_url": "https://testapi.com/api/callback/",
+    "order_id": "test_installment_1",
+    "currency": "GEL",
+    "merchant_id": 1549901,
+    "payment_systems": "installments",
+    "payment_method": "x",
+    "order_desc": "Test installment payment",
+    "amount": 10000,
+    "response_url": "https://example.com",
+    "signature": "1570574166888217a8d5fb78227ff17c1488be72"
+  }
+}'
+
+```
+
+The response will contain the payment token.
+
+```
+{
+    "response": {
+        "token": "3bd24c7be3bb750d60c2188df3e392bf9c2d3646",
+        "response_status": "success"
+    }
+}
+
+```
+
+Follow instructions on [Embedded](api/embedded-custom/#example-with-order-created-on-backend) checkout page to complete integration.
+
+Pay attention
+
+To create installment payment, the mandatory parameters
+
+`payment_systems = installments`
+
+`payment_method = tbc|x`
+
+must be sent during create order request.
+
+Supported values for `payment_method` are:
+
+| Value | Description                                                          |
+| ----- | -------------------------------------------------------------------- |
+| `tbc` | TBC Bank                                                             |
+| `x`   | Demo Bank for testing purpose only. See [Testing](/api/testing) page |
+
+Order can be created only within [Redirect](/getting-started/redirect/) or [Embedded](api/embedded-custom/#example-with-order-created-on-backend) flow and yet not supported for [Direct](/getting-started/direct/).
+
+Refer to [create order](/api/create-order/) and [parameters](/api/order-parameters/) specifications to get details on how to create order.
+
+## Step 2: Strong Customer Authentication (SCA)
+
+After the order is created, in case of [Redirect](/getting-started/redirect/) flow customer need to be redirected to `checkout_url` URL for Strong Customer Authentication within TBC bank.
+
+Buy Now, Pay Later (BNPL) and installment payments allow customers to split the cost of a purchase into multiple payments.
+
+Customers may choose to pay in 4 equal installments with 0% fees or extend the repayment period beyond 4 months with applicable interest.
+
+The repayment period is selected by the customer during the checkout process.
+
+The minimum transaction amount for this payment method is 50 GEL.
+
+The pre-approved customer limit for BNPL and installment payments typically ranges from 50 GEL to 5,000 GEL.
+
+BNPL and installments are only supported for TBC bank customers. Other Georgian banks will be implemented soon.
+
 # API Reference
 
 Flitt API provides powerful tools for implementation of online payments scenarios. You can develope your own payment flow of any type of complexity in a simple way with Flitt API: card payments, 3DSecure, subscriptions, splits, mobile wallets (Apple, Google Pay), online banking (Open Banking), electronic fiscalisation, etc.
@@ -3345,7 +3463,7 @@ The response will contain the checkout URL. Redirect customer to this URL or loa
 Send request from backend to /api/checkout/token endpoint:
 
 ```
-curl -L 'https://pay.flitt.com/api/checkout/token \
+curl -L 'https://pay.flitt.com/api/checkout/token' \
 -H 'Content-Type: application/json' \
 -d '{
   "request": {
@@ -4292,12 +4410,12 @@ filter is applied as id in (10,20,30)
 
 Parameters of request of obtaining report data
 
-| Report ID | Fields                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Mandatory filter fields                                            | Filter example                                                                                                                                                                                                                 | Description                 |
-| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------- |
-| 500       | `chargeback_createtime` - datetime(YYYY-MM-DD HH24:MI:SS) `tran_id` - integer(12) `sender_email` - string(1000) `status` - string(1000) `tran_timestart` - datetime(YYYY-MM-DD HH24:MI:SS) `tran_timeend` - datetime(YYYY-MM-DD HH24:MI:SS) `tran_type` - string(1000) `protocol` - string(1000) `currency` - string(3) `amount` - decimal(19,2) `payout_date` - datetime(YYYY-MM-DD HH24:MI:SS) `payout_amoun` - datetime(YYYY-MM-DD HH24:MI:SS)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | `tran_id` OR `chargeback_createtime`                               | \[ { "on_page": 5, "page": 1, "filters": [ { "s": "chargeback_createtime", "m": "from", "v": "2019-12-11" }, { "s": "chargeback_createtime", "m": "to", "v": "2019-12-13" } ], "merchant_id": 1549901, "report_id": "500" } \] | Chargebacks report          |
-| 528       | `tran_id` - integer(12) `parent_tran_id` - integer(12) `sender_email` - string(1000) `status` - string(1000) `tran_timestart` - datetime(YYYY-MM-DD HH24:MI:SS) `tran_timeend` - datetime(YYYY-MM-DD HH24:MI:SS) `tran_type` - string(1000) `currency` - string(3) `actual_amount` - decimal(19,2) `payout_date` - datetime(YYYY-MM-DD HH24:MI:SS) `payout_amoun` - decimal(19,2) `order_desc` - string(1000) `checkout_url` - string(1000)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | `tran_id` OR `tran_timestart`                                      | \[ { "on_page": 5, "page": 1, "filters": [ { "s": "tran_timestart", "m": "from", "v": "2019-12-11" }, { "s": "tran_timeend", "m": "to", "v": "2019-12-13" } ], "merchant_id": 1549901, "report_id": "528" } \]                 | Success transactions report |
-| 745       | `payment_id` - integer(12) `order_timestart` - datetime(YYYY-MM-DD HH24:MI:SS) `order_timeend` - datetime(YYYY-MM-DD HH24:MI:SS) `order_status` - string(1000) `amount` - decimal(19,2) `actual_amount` - decimal(19,2) `currency` - string(3) `actual_currency` - string(3) `order_type` - string(1000) `approval_code` - string(6) `card_bin` - string(6) `eci` - string(2) `fee` - decimal(19,2) `masked_card` - string(19) `order_id` - string(1000) `payment_system` - string(1000) `response_code` - integer(4) `response_description` - string(1000) `reversal_amount` - decimal(19,2) `rrn` - string(1000) `sender_email` - string(1000) `settlement_amount` - decimal(19,2) `settlement_currency` - string(3) `settlement_date` - datetime(YYYY-MM-DD HH24:MI:SS) `merchant_data` - string(1000) `order_desc` - string(1000) `payer_country` - string(1000) `bank_name` - string(1000) `card_expire_date` - datetime(MM/YYYY) `card_brand` - string(1000) `fee_name` - string(1000) `fee_type` - string(1000) `fee_percent_value` - decimal(19,3) `fee_fix_value` - decimal(19,3) | `order_timestart` OR `order_timeend` OR `payment_id` OR `order_id` | \[ { "on_page": 5, "page": 1, "filters": [ { "s": "order_timestart", "m": "from", "v": "2019-12-11" }, { "s": "order_timestart", "m": "to", "v": "2019-12-13" } ], "merchant_id": 1549901, "report_id": "745" } \]             | All transactions report     |
-| 969       | `payment_id` - integer(12) `tran_id` - integer(12) `order_id` - string(1000) `tran_timeend` - datetime(YYYY-MM-DD HH24:MI:SS) `actual_amount` - decimal(19,2) `settlement_currency` - string(3) `fee` - decimal(19,2) `settlement_amount` - decimal(19,2) `settlement_date` - datetime(YYYY-MM-DD HH24:MI:SS) `batch_id` - integer(12) `order_type` - string(1000) `order_status` - string(1000) `card_brand` - string(1000) `payment_system` - string(1000) `masked_card` - string(19) `rrn` - integer(12) `approval_code` - string(6) `order_desc` - string(1000) `merchant_data` - string(1000) `payer_country` - string(1000) `bank_name` - string(1000) `card_expire_date` - datetime(MM/YYYY) `card_brand` - string(1000) `fee_name` - string(1000) `fee_type` - string(1000) `fee_percent_value` - decimal(19,3) `fee_fix_value` - decimal(19,3)                                                                                                                                                                                                                                    | `settlement_date` OR `tran_timeend` OR `payment_id` OR `order_id`  | \[ { "on_page": 5, "page": 1, "filters": [ { "s": "settlement_date", "m": "from", "v": "2025-03-11" }, { "s": "settlement_date", "m": "to", "v": "2025-03-12" } ], "merchant_id": 1549901, "report_id": "969" } \]             | Reimbursement report        |
+| Report ID | Fields                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | Mandatory filter fields                                            | Filter example                                                                                                                                                                                                                 | Description                 |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------- |
+| 500       | `chargeback_createtime` - datetime(YYYY-MM-DD HH24:MI:SS) `tran_id` - integer(12) `sender_email` - string(1000) `status` - string(1000) `tran_timestart` - datetime(YYYY-MM-DD HH24:MI:SS) `tran_timeend` - datetime(YYYY-MM-DD HH24:MI:SS) `tran_type` - string(1000) `protocol` - string(1000) `currency` - string(3) `amount` - decimal(19,2) `payout_date` - datetime(YYYY-MM-DD HH24:MI:SS) `payout_amoun` - datetime(YYYY-MM-DD HH24:MI:SS)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | `tran_id` OR `chargeback_createtime`                               | \[ { "on_page": 5, "page": 1, "filters": [ { "s": "chargeback_createtime", "m": "from", "v": "2019-12-11" }, { "s": "chargeback_createtime", "m": "to", "v": "2019-12-13" } ], "merchant_id": 1549901, "report_id": "500" } \] | Chargebacks report          |
+| 528       | `tran_id` - integer(12) `parent_tran_id` - integer(12) `sender_email` - string(1000) `status` - string(1000) `tran_timestart` - datetime(YYYY-MM-DD HH24:MI:SS) `tran_timeend` - datetime(YYYY-MM-DD HH24:MI:SS) `tran_type` - string(1000) `currency` - string(3) `actual_amount` - decimal(19,2) `payout_date` - datetime(YYYY-MM-DD HH24:MI:SS) `payout_amoun` - decimal(19,2) `order_desc` - string(1000) `checkout_url` - string(1000)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | `tran_id` OR `tran_timestart`                                      | \[ { "on_page": 5, "page": 1, "filters": [ { "s": "tran_timestart", "m": "from", "v": "2019-12-11" }, { "s": "tran_timeend", "m": "to", "v": "2019-12-13" } ], "merchant_id": 1549901, "report_id": "528" } \]                 | Success transactions report |
+| 745       | `payment_id` - integer(12) `order_timestart` - datetime(YYYY-MM-DD HH24:MI:SS) `order_timeend` - datetime(YYYY-MM-DD HH24:MI:SS) `order_status` - string(1000) `amount` - decimal(19,2) `actual_amount` - decimal(19,2) `transaction_id` - integer(19) `currency` - string(3) `actual_currency` - string(3) `order_type` - string(1000) `approval_code` - string(6) `card_bin` - string(6) `eci` - string(2) `fee` - decimal(19,2) `masked_card` - string(19) `order_id` - string(1000) `payment_system` - string(1000) `response_code` - integer(4) `response_description` - string(1000) `reversal_amount` - decimal(19,2) `rrn` - string(1000) `sender_email` - string(1000) `settlement_amount` - decimal(19,2) `settlement_currency` - string(3) `settlement_date` - datetime(YYYY-MM-DD HH24:MI:SS) `merchant_data` - string(1000) `order_desc` - string(1000) `payer_country` - string(1000) `bank_name` - string(1000) `bank_country` - string(3) `card_expire_date` - datetime(MM/YYYY) `card_brand` - string(1000) `fee_name` - string(1000) `fee_type` - string(1000) `fee_percent_value` - decimal(19,3) `fee_fix_value` - decimal(19,3) | `order_timestart` OR `order_timeend` OR `payment_id` OR `order_id` | \[ { "on_page": 5, "page": 1, "filters": [ { "s": "order_timestart", "m": "from", "v": "2019-12-11" }, { "s": "order_timestart", "m": "to", "v": "2019-12-13" } ], "merchant_id": 1549901, "report_id": "745" } \]             | All transactions report     |
+| 969       | `payment_id` - integer(12) `tran_id` - integer(12) `order_id` - string(1000) `tran_timeend` - datetime(YYYY-MM-DD HH24:MI:SS) `actual_amount` - decimal(19,2) `settlement_currency` - string(3) `fee` - decimal(19,2) `settlement_amount` - decimal(19,2) `settlement_date` - datetime(YYYY-MM-DD HH24:MI:SS) `batch_id` - integer(12) `order_type` - string(1000) `order_status` - string(1000) `card_brand` - string(1000) `payment_system` - string(1000) `masked_card` - string(19) `rrn` - integer(12) `approval_code` - string(6) `order_desc` - string(1000) `merchant_data` - string(1000) `payer_country` - string(1000) `bank_name` - string(1000) `card_expire_date` - datetime(MM/YYYY) `card_brand` - string(1000) `fee_name` - string(1000) `fee_type` - string(1000) `fee_percent_value` - decimal(19,3) `fee_fix_value` - decimal(19,3)                                                                                                                                                                                                                                                                                              | `settlement_date` OR `tran_timeend` OR `payment_id` OR `order_id`  | \[ { "on_page": 5, "page": 1, "filters": [ { "s": "settlement_date", "m": "from", "v": "2025-03-11" }, { "s": "settlement_date", "m": "to", "v": "2025-03-12" } ], "merchant_id": 1549901, "report_id": "969" } \]             | Reimbursement report        |
 
 Any request to API must contain root element `request`
 
@@ -5355,7 +5473,7 @@ Add dependencies to your project in app/build.gradle. This implementation requir
 ```
 implementation 'com.google.android.gms:play-services-base:17.0.0'
 implementation 'com.google.android.gms:play-services-wallet:19.4.0'
-implementation 'com.cloudipsp:android:+'
+implementation 'com.flitt:flitt-android:1.2.0'
 
 ```
 
@@ -5445,7 +5563,7 @@ Add dependencies to your project in app/build.gradle.This implementation require
 ```
 implementation("com.google.android.gms:play-services-base:17.0.0")
 implementation("com.google.android.gms:play-services-wallet:19.4.0")
-implementation("com.cloudipsp:android:+")
+implementation("com.flitt:flitt-android:1.2.0")
 
 ```
 
@@ -5527,7 +5645,7 @@ pod install
 
 ```
 
-Cloudipsp SDK is also available through CocoaPods. To install it, simply add the following line to your Podfile:
+iOS SDK is also available through CocoaPods. To install it, simply add the following line to your Podfile:
 
 ```
 pod 'Flitt'
@@ -5566,7 +5684,7 @@ pod install
 
 ```
 
-Cloudipsp SDK is also available through CocoaPods. To install it, simply add the following line to your Podfile:
+iOS SDK is also available through CocoaPods. To install it, simply add the following line to your Podfile:
 
 ```
 pod 'Flitt'
@@ -5682,12 +5800,7 @@ The latest version of Android SDK you can always find in our public repository
 
 In the [demo directory](https://github.com/flittpayments/android-sdk/tree/main/app/src/main/java/com/flitt/android/demo) you can find an example of an application which implements Google Pay functionality
 
-Also, you can refer the central Maven repository: <https://search.maven.org/search?q=g:com.cloudipsp> and use SDK as maven dependency as:
-
-```
-compile 'com.cloudipsp:android:+'
-
-```
+Also, you can refer the central Maven repository: <https://central.sonatype.com/artifact/com.flitt/flitt-android> and use SDK as maven dependency.
 
 **1 Setup your application**
 
@@ -5696,7 +5809,7 @@ Add dependencies to your project in app/build.gradle. This implementation requir
 ```
 implementation 'com.google.android.gms:play-services-base:17.0.0'
 implementation 'com.google.android.gms:play-services-wallet:19.4.0'
-implementation 'com.cloudipsp:android:+'
+implementation 'com.flitt:flitt-android:1.2.0'
 
 ```
 
@@ -5738,7 +5851,7 @@ cloudipsp = new Cloudipsp(<your merchant_id>, webView);
 And add CloudIpspdWebView Component
 
 ```
-<com.cloudipsp.android.CloudipspWebView
+<com.flittpayments.android.CloudipspWebView
     android:id="@+id/webView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -5750,7 +5863,7 @@ And add CloudIpspdWebView Component
 **5 Implement the Activity.java file as follows:**
 
 ```
-import com.cloudipsp.android.Cloudipsp
+import com.flittpayments.android.Cloudipsp
 
 Public class MainActivity extends AppCompatActivity implements
         View.OnClickListener, // Implementing OnClickListener for handling button clicks
@@ -6014,11 +6127,11 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.cloudipsp.android.Cloudipsp;
-import com.cloudipsp.android.CloudipspWebView;
-import com.cloudipsp.android.GooglePayCall;
-import com.cloudipsp.android.Order;
-import com.cloudipsp.android.Receipt;
+import com.flittpayments.android.Cloudipsp;
+import com.flittpayments.android.CloudipspWebView;
+import com.flittpayments.android.GooglePayCall;
+import com.flittpayments.android.Order;
+import com.flittpayments.android.Receipt;
 
 public class MainActivity extends AppCompatActivity implements
         View.OnClickListener, // Implementing OnClickListener for handling button clicks
@@ -6134,7 +6247,7 @@ Add dependencies to your project in app/build.gradle.This implementation require
 ```
 implementation("com.google.android.gms:play-services-base:17.0.0")
 implementation("com.google.android.gms:play-services-wallet:19.4.0")
-implementation("com.cloudipsp:android:+")
+implementation("com.flittpayments:android:+")
 
 ```
 
@@ -6172,7 +6285,7 @@ cloudipsp = new Cloudipsp(<your merchant_id>, webView);
 And add CloudIpspdWebView Component
 
 ```
-<com.cloudipsp.android.CloudipspWebView
+<com.flittpayments.android.CloudipspWebView
     android:id="@+id/webView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6184,7 +6297,7 @@ And add CloudIpspdWebView Component
 **5 Implement the Activity.kt file as follows**
 
 ```
-import com.cloudipsp.android.Cloudipsp
+import com.flittpayments.android.Cloudipsp
 class MainActivity : AppCompatActivity(), View.OnClickListener, Cloudipsp.PayCallback, Cloudipsp.GooglePayCallback {
 }
 
@@ -6417,11 +6530,11 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.cloudipsp.android.Cloudipsp
-import com.cloudipsp.android.CloudipspWebView
-import com.cloudipsp.android.GooglePayCall
-import com.cloudipsp.android.Order
-import com.cloudipsp.android.Receipt
+import com.flittpayments.android.Cloudipsp
+import com.flittpayments.android.CloudipspWebView
+import com.flittpayments.android.GooglePayCall
+import com.flittpayments.android.Order
+import com.flittpayments.android.Receipt
 
 class MainActivity : AppCompatActivity(), View.OnClickListener, Cloudipsp.PayCallback, Cloudipsp.GooglePayCallback {
 
@@ -6595,32 +6708,24 @@ See example how to process Google Pay in [Flitt Github repo](https://github.com/
 **1 Installation**
 
 ```
-yarn add  react-native-cloudipsp 
-npm i react-native-cloudipsp
-
-```
-
-If your React Native version is lower than 0.60, you need to link the package manually using the following command:
-
-```
-react-native link react-native-cloudipsp
+npm install @flittpayments/react-native-flitt --save
+# or
+yarn add @flittpayments/react-native-flitt
 
 ```
 
 **2 Add lines to** android/settings.gradle\*\*:\*\*
 
 ```
-  include ':react-native-cloudipsp'
-  project(':react-native-cloudipsp').projectDir = new   File(rootProject.projectDir,  '../node_modules/react-native-cloudipsp/android')
+include ':flittpayments_react-native-flitt'
+project(':flittpayments_react-native-flitt').projectDir = new File(rootProject.projectDir, '../node_modules/@flittpayments/react-native-flitt/android')
 
 ```
-
-where [react-native-cloudipsp](https://github.com/flittpayments/react-native) â Flitt SDK
 
 **3 Add dependencies to** android/app/build.gradle\*\*\*\*
 
 ```
-implementation project(':react-native-cloudipsp')
+implementation project(':flittpayments_react-native-flitt')
 implementation 'com.google.android.gms:play-services-base:16.0.1'
 implementation 'com.google.android.gms:play-services-wallet:16.0.1'
 
@@ -6650,7 +6755,7 @@ Required permission
 **5 Make sure that Google Pay is supported on the device and user account**
 
 ```
-import { Cloudipsp } from 'react-native-cloudipsp';
+import { Cloudipsp } from '@flittpayments/react-native-flitt';
 const supportsGooglePay = await Cloudipsp.supportsGooglePay();
 
 ```
@@ -6732,7 +6837,7 @@ Receive payment token:
 **7 Payment process**
 
 ```
-import { CloudipspWebView } from 'react-native-cloudipsp';
+import { CloudipspWebView } from '@flittpayments/react-native-flitt';
 
        // State to manage the visibility of the WebView
 const [webView, setWebView] = useState(0);
@@ -6866,7 +6971,7 @@ pod install
 
 ```
 
-Cloudipsp SDK is also available through CocoaPods. To install it, simply add the following line to your Podfile:
+iOS SDK is also available through CocoaPods. To install it, simply add the following line to your Podfile:
 
 ```
 pod 'Flitt'
@@ -7206,7 +7311,7 @@ Add dependencies to your project in app/build.gradle. This implementation requir
 ```
 implementation 'com.google.android.gms:play-services-base:17.0.0'
 implementation 'com.google.android.gms:play-services-wallet:19.4.0'
-implementation 'com.cloudipsp:android:+'
+implementation 'com.flitt:flitt-android:1.2.0'
 
 ```
 
@@ -7296,7 +7401,7 @@ Add dependencies to your project in app/build.gradle.This implementation require
 ```
 implementation("com.google.android.gms:play-services-base:17.0.0")
 implementation("com.google.android.gms:play-services-wallet:19.4.0")
-implementation("com.cloudipsp:android:+")
+implementation("com.flitt:flitt-android:1.2.0")
 
 ```
 
@@ -7378,7 +7483,7 @@ pod install
 
 ```
 
-Cloudipsp SDK is also available through CocoaPods. To install it, simply add the following line to your Podfile:
+iOS SDK is also available through CocoaPods. To install it, simply add the following line to your Podfile:
 
 ```
 pod 'Flitt'
@@ -7417,7 +7522,7 @@ pod install
 
 ```
 
-Cloudipsp SDK is also available through CocoaPods. To install it, simply add the following line to your Podfile:
+iOS SDK is also available through CocoaPods. To install it, simply add the following line to your Podfile:
 
 ```
 pod 'Flitt'
@@ -7533,12 +7638,7 @@ The latest version of Android SDK you can always find in our public repository
 
 In the [demo directory](https://github.com/flittpayments/android-sdk/tree/main/app/src/main/java/com/flitt/android/demo) you can find an example of an application which implements Google Pay functionality
 
-Also, you can refer the central Maven repository: <https://search.maven.org/search?q=g:com.cloudipsp> and use SDK as maven dependency as:
-
-```
-compile 'com.cloudipsp:android:+'
-
-```
+Also, you can refer the central Maven repository: <https://central.sonatype.com/artifact/com.flitt/flitt-android> and use SDK as maven dependency.
 
 **1 Setup your application**
 
@@ -7547,7 +7647,7 @@ Add dependencies to your project in app/build.gradle. This implementation requir
 ```
 implementation 'com.google.android.gms:play-services-base:17.0.0'
 implementation 'com.google.android.gms:play-services-wallet:19.4.0'
-implementation 'com.cloudipsp:android:+'
+implementation 'com.flitt:flitt-android:1.2.0'
 
 ```
 
@@ -7589,7 +7689,7 @@ cloudipsp = new Cloudipsp(<your merchant_id>, webView);
 And add CloudIpspdWebView Component
 
 ```
-<com.cloudipsp.android.CloudipspWebView
+<com.flittpayments.android.CloudipspWebView
     android:id="@+id/webView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7601,7 +7701,7 @@ And add CloudIpspdWebView Component
 **5 Implement the Activity.java file as follows:**
 
 ```
-import com.cloudipsp.android.Cloudipsp
+import com.flittpayments.android.Cloudipsp
 
 Public class MainActivity extends AppCompatActivity implements
         View.OnClickListener, // Implementing OnClickListener for handling button clicks
@@ -7865,11 +7965,11 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.cloudipsp.android.Cloudipsp;
-import com.cloudipsp.android.CloudipspWebView;
-import com.cloudipsp.android.GooglePayCall;
-import com.cloudipsp.android.Order;
-import com.cloudipsp.android.Receipt;
+import com.flittpayments.android.Cloudipsp;
+import com.flittpayments.android.CloudipspWebView;
+import com.flittpayments.android.GooglePayCall;
+import com.flittpayments.android.Order;
+import com.flittpayments.android.Receipt;
 
 public class MainActivity extends AppCompatActivity implements
         View.OnClickListener, // Implementing OnClickListener for handling button clicks
@@ -7985,7 +8085,7 @@ Add dependencies to your project in app/build.gradle.This implementation require
 ```
 implementation("com.google.android.gms:play-services-base:17.0.0")
 implementation("com.google.android.gms:play-services-wallet:19.4.0")
-implementation("com.cloudipsp:android:+")
+implementation("com.flittpayments:android:+")
 
 ```
 
@@ -8023,7 +8123,7 @@ cloudipsp = new Cloudipsp(<your merchant_id>, webView);
 And add CloudIpspdWebView Component
 
 ```
-<com.cloudipsp.android.CloudipspWebView
+<com.flittpayments.android.CloudipspWebView
     android:id="@+id/webView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8035,7 +8135,7 @@ And add CloudIpspdWebView Component
 **5 Implement the Activity.kt file as follows**
 
 ```
-import com.cloudipsp.android.Cloudipsp
+import com.flittpayments.android.Cloudipsp
 class MainActivity : AppCompatActivity(), View.OnClickListener, Cloudipsp.PayCallback, Cloudipsp.GooglePayCallback {
 }
 
@@ -8268,11 +8368,11 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.cloudipsp.android.Cloudipsp
-import com.cloudipsp.android.CloudipspWebView
-import com.cloudipsp.android.GooglePayCall
-import com.cloudipsp.android.Order
-import com.cloudipsp.android.Receipt
+import com.flittpayments.android.Cloudipsp
+import com.flittpayments.android.CloudipspWebView
+import com.flittpayments.android.GooglePayCall
+import com.flittpayments.android.Order
+import com.flittpayments.android.Receipt
 
 class MainActivity : AppCompatActivity(), View.OnClickListener, Cloudipsp.PayCallback, Cloudipsp.GooglePayCallback {
 
@@ -8446,32 +8546,24 @@ See example how to process Google Pay in [Flitt Github repo](https://github.com/
 **1 Installation**
 
 ```
-yarn add  react-native-cloudipsp 
-npm i react-native-cloudipsp
-
-```
-
-If your React Native version is lower than 0.60, you need to link the package manually using the following command:
-
-```
-react-native link react-native-cloudipsp
+npm install @flittpayments/react-native-flitt --save
+# or
+yarn add @flittpayments/react-native-flitt
 
 ```
 
 **2 Add lines to** android/settings.gradle\*\*:\*\*
 
 ```
-  include ':react-native-cloudipsp'
-  project(':react-native-cloudipsp').projectDir = new   File(rootProject.projectDir,  '../node_modules/react-native-cloudipsp/android')
+include ':flittpayments_react-native-flitt'
+project(':flittpayments_react-native-flitt').projectDir = new File(rootProject.projectDir, '../node_modules/@flittpayments/react-native-flitt/android')
 
 ```
-
-where [react-native-cloudipsp](https://github.com/flittpayments/react-native) â Flitt SDK
 
 **3 Add dependencies to** android/app/build.gradle\*\*\*\*
 
 ```
-implementation project(':react-native-cloudipsp')
+implementation project(':flittpayments_react-native-flitt')
 implementation 'com.google.android.gms:play-services-base:16.0.1'
 implementation 'com.google.android.gms:play-services-wallet:16.0.1'
 
@@ -8501,7 +8593,7 @@ Required permission
 **5 Make sure that Google Pay is supported on the device and user account**
 
 ```
-import { Cloudipsp } from 'react-native-cloudipsp';
+import { Cloudipsp } from '@flittpayments/react-native-flitt';
 const supportsGooglePay = await Cloudipsp.supportsGooglePay();
 
 ```
@@ -8583,7 +8675,7 @@ Receive payment token:
 **7 Payment process**
 
 ```
-import { CloudipspWebView } from 'react-native-cloudipsp';
+import { CloudipspWebView } from '@flittpayments/react-native-flitt';
 
        // State to manage the visibility of the WebView
 const [webView, setWebView] = useState(0);
@@ -8717,7 +8809,7 @@ pod install
 
 ```
 
-Cloudipsp SDK is also available through CocoaPods. To install it, simply add the following line to your Podfile:
+iOS SDK is also available through CocoaPods. To install it, simply add the following line to your Podfile:
 
 ```
 pod 'Flitt'
@@ -10242,15 +10334,33 @@ Expect us to eliminate the vulnerability within a reasonable time.
 
 Avoid compromising data of other users and accounts, try to use only your personal or dummy data to search for vulnerabilities.
 
-We do not reward vulnerabilities related to:
+When reporting potential vulnerabilities, please consider realistic attack scenarios and the security impact of the behavior. The following issues will be rejected, except in rare circumstances demonstrating clear security impact.
 
-- denial of service (DDOS)
-- spam or social engineering
-- vulnerabilities in third-party applications and services used in Flitt
-- software version disclosure
-- self-xss
-- missing security flags on non-sensitive cookies
-- caused a change or damage to the data of real Flitt users
+1. Theoretical vulnerabilities that require unlikely user interaction or circumstances. For example:
+   - Vulnerabilities only affecting users of unsupported or end-of-life browsers or operating systems
+   - Broken link hijacking
+   - Tabnabbing
+   - Content spoofing and text injection issues
+   - Self-exploitation, such as self-XSS or self-DoS (unless it can be used to attack a different account)
+1. Theoretical vulnerabilities that do not demonstrate real-world security impact. For example:
+   - Clickjacking on pages with no sensitive actions
+   - Cross-Site Request Forgery (CSRF) on forms with no sensitive actions (e.g., Logout)
+   - Permissive CORS configurations without demonstrated security impact
+   - Software version disclosure / Banner identification issues / Descriptive error messages or headers (e.g., stack traces, application or server errors)
+   - Open redirects (unless you can demonstrate additional security impact)
+   - Wordpress user disclosure using REST API
+1. Optional security hardening steps / Missing best practices. For example:
+   - SSL/TLS Configurations
+   - Lack of SSL Pinning
+   - Cookie handling (e.g., missing HttpOnly/Secure flags)
+   - Content-Security-Policy configuration opinions
+   - Optional email security features (e.g., SPF/DKIM/DMARC configurations)
+   - Most issues related to rate limiting
+1. Vulnerabilities that may require hazardous testing. This type of testing must never be attempted unless explicitly authorized:
+   - Issues relating to excessive traffic/requests (e.g., DoS, DDoS)
+   - Any other issues where testing may affect the availability of systems
+   - Social engineering attacks (e.g., phishing, opening support requests)
+   - Attacks that are noisy to users or admins (e.g., spamming notifications or forms)
 
 ## Testing Requirements
 

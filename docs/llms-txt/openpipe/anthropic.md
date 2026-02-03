@@ -1,5 +1,9 @@
 # Source: https://docs.openpipe.ai/features/chat-completions/anthropic.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.openpipe.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Anthropic Proxy
 
 If you'd like to make chat completion requests to Anthropic models without modifying your prompt schema, you can proxy OpenAI-compatible requests through OpenPipe, and we'll handle
@@ -10,7 +14,7 @@ wish to query, prepended with the string `anthropic:`. For example, to make a re
 
 <Tabs>
   <Tab title="Python">
-    ```python
+    ```python  theme={null}
     from openpipe import OpenAI
 
     # Find the config values in "Installing the SDK"
@@ -25,7 +29,7 @@ wish to query, prepended with the string `anthropic:`. For example, to make a re
   </Tab>
 
   <Tab title="NodeJS">
-    ```typescript
+    ```typescript  theme={null}
     import OpenAI from "openpipe/openai";
 
     // Find the config values in "Installing the SDK"

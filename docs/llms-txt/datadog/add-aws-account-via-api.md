@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Cloudcraft (Standalone) > Advanced > Add AWS accounts via the
   Cloudcraft API
-source_url: https://docs.datadoghq.com/advanced/add-aws-account-via-api/index.html
 ---
 
 # Add AWS accounts via the Cloudcraft API

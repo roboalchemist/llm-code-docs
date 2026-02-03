@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/documentation/integrations/openai.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # OpenAI
 
 > Integrate Tavily with OpenAI to enhance your AI applications with real-time web search capabilities.
@@ -546,7 +550,7 @@ print(response.output_text)
                     "auto_parameters": {
                         "type": "boolean",
                         "default": False,
-                        "description": "Auto-tune parameters based on the query (beta). Explicit values you pass still win."
+                        "description": "Auto-tune parameters based on the query. Explicit values you pass still win."
                     },
                     "topic": {
                         "type": "string",
@@ -620,6 +624,11 @@ print(response.output_text)
                         "default": False,
                         "description": "Whether to include the favicon URL for each result"
                     },
+                    "include_usage": {
+                        "type": "boolean",
+                        "default": False,
+                        "description": "Whether to include credit usage information in the response"
+                    },
                     "include_domains": {
                         "type": "array",
                         "items": {"type": "string"},
@@ -672,6 +681,11 @@ print(response.output_text)
                       "type": "boolean",
                       "default": False,
                       "description": "Whether to include the favicon URL for each result"
+                  },
+                  "include_usage": {
+                      "type": "boolean",
+                      "default": False,
+                      "description": "Whether to include credit usage information in the response"
                   },
                   "extract_depth": {
                       "type": "string",
@@ -767,6 +781,11 @@ print(response.output_text)
                       "type": "boolean",
                       "default": True,
                       "description": "Whether to allow following links that go to external domains"
+                  },
+                  "include_usage": {
+                      "type": "boolean",
+                      "default": False,
+                      "description": "Whether to include credit usage information in the response"
                   }
               }
           }
@@ -862,6 +881,11 @@ print(response.output_text)
                       "type": "boolean",
                       "default": False,
                       "description": "Whether to include the favicon URL for each result"
+                  },
+                  "include_usage": {
+                      "type": "boolean",
+                      "default": False,
+                      "description": "Whether to include credit usage information in the response"
                   }
               }
           }
@@ -873,8 +897,3 @@ print(response.output_text)
 </Accordion>
 
 For more information about Tavily's capabilities, check out our [API documentation](/documentation/api-reference/introduction) and [best practices](/documentation/best-practices/best-practices-search).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

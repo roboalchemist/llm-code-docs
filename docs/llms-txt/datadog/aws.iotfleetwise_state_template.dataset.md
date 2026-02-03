@@ -4,8 +4,6 @@
 title: IoT FleetWise State Template
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > IoT FleetWise State Template
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.iotfleetwise_state_template.dataset/index.html
 ---
 
 # IoT FleetWise State Template
@@ -32,4 +30,4 @@ aws.iotfleetwise_state_template
 | name                      | core | string        | The name of the state template.                                                                                                                      |
 | signal_catalog_arn        | core | string        | The ARN of the signal catalog associated with the state template.                                                                                    |
 | state_template_properties | core | array<string> | A list of signals from which data is collected. The state template properties contain the fully qualified names of the signals.                      |
-| tags                      | core | hstore        |
+| tags                      | core | hstore_csv    |

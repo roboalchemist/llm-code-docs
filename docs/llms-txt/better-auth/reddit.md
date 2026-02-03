@@ -4,11 +4,7 @@
 
 Reddit provider setup and usage.
 
-***
 
-title: Reddit
-description: Reddit provider setup and usage.
----------------------------------------------
 
 <Steps>
   <Step>

@@ -1,5 +1,9 @@
 # Source: https://docs.unifygtm.com/reference/agents/response-types.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Agent Response Types
 
 > Control how Unify Agents respond to your questions.

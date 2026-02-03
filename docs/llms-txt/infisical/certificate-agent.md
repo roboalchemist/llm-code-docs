@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/integrations/platforms/certificate-agent.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Infisical Agent
 
 > Learn how to use Infisical CLI Agent to manage certificates automatically.
@@ -552,8 +556,3 @@ certificates:
         command: "systemctl reload nginx && logger 'Certificate renewed'"
         timeout: 30
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://infisical.com/docs/llms.txt

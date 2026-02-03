@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/runtime/environment-variables.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Environment Variables
 
 > Read and configure environment variables in Bun, including automatic .env file support
@@ -14,7 +18,7 @@ Bun reads the following files automatically (listed in order of increasing prece
 * `.env.production`, `.env.development`, `.env.test` (depending on value of `NODE_ENV`)
 * `.env.local`
 
-```txt .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ini .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 FOO=hello
 BAR=world
 ```
@@ -44,7 +48,7 @@ Variables can also be set via the command line.
 
   On Windows, `package.json` scripts called with `bun run` will automatically use the **bun shell**, making the following also cross-platform.
 
-  ```json package.json theme={"theme":{"light":"github-light","dark":"dracula"}}
+  ```json package.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
   "scripts": {
     "dev": "NODE_ENV=development bun --watch app.ts",
   },
@@ -69,13 +73,30 @@ bun --env-file=.env.1 src/index.ts
 bun --env-file=.env.abc --env-file=.env.def run build
 ```
 
+## Disabling automatic `.env` loading
+
+Use `--no-env-file` to disable Bun's automatic `.env` file loading. This is useful in production environments or CI/CD pipelines where you want to rely solely on system environment variables.
+
+```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun run --no-env-file index.ts
+```
+
+This can also be configured in `bunfig.toml`:
+
+```toml bunfig.toml icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+# Disable loading .env files
+env = false
+```
+
+Explicitly provided environment files via `--env-file` will still be loaded even when default loading is disabled.
+
 ***
 
 ## Quotation marks
 
 Bun supports double quotes, single quotes, and template literal backticks:
 
-```txt .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ini .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 FOO='hello'
 FOO="hello"
 FOO=`hello`
@@ -85,7 +106,7 @@ FOO=`hello`
 
 Environment variables are automatically *expanded*. This means you can reference previously-defined variables in your environment variables.
 
-```txt .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ini .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 FOO=world
 BAR=hello$FOO
 ```
@@ -96,7 +117,7 @@ process.env.BAR; // => "helloworld"
 
 This is useful for constructing connection strings or other compound values.
 
-```txt .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ini .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 DB_USER=postgres
 DB_PASSWORD=secret
 DB_HOST=localhost
@@ -106,7 +127,7 @@ DB_URL=postgres://$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT/$DB_NAME
 
 This can be disabled by escaping the `$` with a backslash.
 
-```txt .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ini .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 FOO=world
 BAR=hello\$FOO
 ```

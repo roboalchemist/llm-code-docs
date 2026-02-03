@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/basics/client/trigger.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # client.trigger
 
 The `trigger` method starts a new workflow run and returns its `workflowRunId`.
@@ -10,12 +14,6 @@ You can also trigger multiple workflow runs in a single call by passing an array
 
 <ParamField body="url" type="string" required>
   The public URL of the workflow endpoint.
-</ParamField>
-
-<ParamField body="keepTriggerConfig" type="bool" default="false" optional>
-  If true, the trigger configuration (e.g. retries, flow-control) will be used for each step.
-
-  If false, the trigger configuration will only be used in the initial request (initial step). Rest of the steps will use the configurations in the serve options.
 </ParamField>
 
 <ParamField body="workflowRunId" type="string" optional>
@@ -39,11 +37,11 @@ You can also trigger multiple workflow runs in a single call by passing an array
 </ParamField>
 
 <ParamField body="retries" type="string">
-  retry to use in the initial request. in the rest of the workflow, `retries` option of the `serve` will be used.
+  Number of retry attempts for workflow steps. Default is 3.
 </ParamField>
 
 <ParamField body="retryDelay" type="string">
-  delay between retries.
+  Delay between retries. Can use expressions like "1000 \* (1 + retried)".
 </ParamField>
 
 <ParamField body="flowControl" type="object" optional>
@@ -82,10 +80,6 @@ You can also trigger multiple workflow runs in a single call by passing an array
   Unix timestamp in seconds.
 </ParamField>
 
-<ParamField body="useFailureFunction" type="bool">
-  If both `failureUrl` and `useFailureFunction` are provided, `useFailureFunction` takes precedence and the value of the `url` parameter is used as `failureUrl`.
-</ParamField>
-
 <ParamField body="label" type="string">
   An optional label to assign to the workflow run.
   This can be useful for identifying and filtering runs in the dashboard or logs.
@@ -107,16 +101,14 @@ You can also trigger multiple workflow runs in a single call by passing an array
   const client = new Client({ token: "<QSTASH_TOKEN>" })
 
   const { workflowRunId } = await client.trigger({
-    keepTriggerConfig: true,
     url: "https://<YOUR_WORKFLOW_ENDPOINT>/<YOUR-WORKFLOW-ROUTE>",
     body: "hello there!",         // optional body
     headers: { ... },             // optional headers
     workflowRunId: "my-workflow", // optional workflow run id
-    retries: 3,                   // optional retries in the initial request
+    retries: 3,                   // optional retries
     retryDelay: "1000 * (1 + retried)", // optional delay between retries
     delay: "10s"                  // optional delay value
     failureUrl: "https://<YOUR_FAILURE_URL>", // optional failure url
-    useFailureFunction: true,     // whether a failure function is defined in the endpoint
     flowControl: {                // optional flow control
       key: "USER_GIVEN_KEY",
       rate: 10,

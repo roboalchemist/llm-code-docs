@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/utilities/audio/soundfile-mixer.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SoundfileMixer
 
 > Audio mixer for combining real-time audio with sound files
@@ -100,8 +104,3 @@ await task.queue_frame(MixerEnableFrame(True))   # Enable mixing
 * Can dynamically switch between multiple sound files
 * Volume can be adjusted in real-time
 * Mixing can be enabled/disabled on demand
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

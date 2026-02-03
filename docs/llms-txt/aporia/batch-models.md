@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/storing-your-predictions/batch-models.md
 
-# Source: https://docs.aporia.com/storing-your-predictions/batch-models.md
-
-# Source: https://docs.aporia.com/v1/storing-your-predictions/batch-models.md
-
 # Batch Models
 
 If your model runs periodically every X days, we refer to it as a **batch model** (as opposed to a real-time model).

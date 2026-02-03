@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/examples/chat-with-PDF.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # null
 
 ### Embedchain Chat with PDF App
@@ -16,13 +20,13 @@ Here are few simple steps for you to create and deploy your app:
 
 2. Navigate to `chat-pdf` example app from your forked repo:
 
-```bash
+```bash  theme={null}
 cd <your_fork_repo>/examples/chat-pdf
 ```
 
 3. Run your app in development environment with simple commands
 
-```bash
+```bash  theme={null}
 pip install -r requirements.txt
 ec dev
 ```

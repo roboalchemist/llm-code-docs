@@ -4,7 +4,6 @@
 title: Ansible
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Agent > Supported Platforms > Ansible
-source_url: https://docs.datadoghq.com/supported_platforms/ansible/index.html
 ---
 
 # Ansible

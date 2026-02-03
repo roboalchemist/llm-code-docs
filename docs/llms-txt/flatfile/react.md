@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/embedding/react.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # React Embedding
 
 > Embed Flatfile in React applications
@@ -8,7 +12,7 @@ Embed Flatfile in your React application using our React SDK. This provides Reac
 
 ## Installation
 
-```bash
+```bash  theme={null}
 npm install @flatfile/react
 ```
 
@@ -18,7 +22,7 @@ npm install @flatfile/react
 
 Wrap your application with the `FlatfileProvider`:
 
-```jsx
+```jsx  theme={null}
 import { FlatfileProvider } from "@flatfile/react";
 
 function App() {
@@ -34,7 +38,7 @@ function App() {
 
 Use the `useFlatfile` hook to open Flatfile:
 
-```jsx
+```jsx  theme={null}
 import { useFlatfile } from "@flatfile/react";
 
 function YourComponent() {
@@ -67,7 +71,7 @@ For authentication guidance including JWT tokens and user management, see [Advan
   page.
 </Note>
 
-```jsx
+```jsx  theme={null}
 import React from "react";
 import { FlatfileProvider, useFlatfile } from "@flatfile/react";
 
@@ -95,6 +99,50 @@ function App() {
 export default App;
 ```
 
+## Making API Requests
+
+<Info>
+  The `publishableKey` is designed exclusively for initializing `FlatfileProvider`. To make API requests, use the `accessToken` from the `useFlatfileInternal` hook.
+</Info>
+
+Use `useFlatfileInternal` to access the `accessToken` for making authenticated API calls:
+
+```jsx  theme={null}
+import { useEffect, useState } from "react";
+import { useFlatfileInternal } from "@flatfile/react";
+import { FlatfileClient } from "@flatfile/api";
+
+function MyComponent() {
+  const { accessToken, sessionSpace } = useFlatfileInternal();
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    // Wait for the space to be created and token to be available
+    if (!accessToken || !sessionSpace?.id) return;
+
+    // Initialize the API client with the accessToken
+    const api = new FlatfileClient({ token: accessToken });
+
+    const fetchData = async () => {
+      try {
+        const workbooks = await api.workbooks.list({ 
+          spaceId: sessionSpace.id 
+        });
+        setData(workbooks.data);
+      } catch (error) {
+        console.error("API Error:", error);
+      }
+    };
+
+    fetchData();
+  }, [accessToken, sessionSpace?.id]);
+
+  return <div>{data.length} workbooks found</div>;
+}
+```
+
+For a complete guide on authentication and making API requests, see the [React Authentication Guide](/sdks/react/authentication).
+
 ## Configuration Options
 
 For all configuration options including authentication, theming, and advanced settings, see [Advanced Configuration](./advanced-configuration).
@@ -103,7 +151,7 @@ For all configuration options including authentication, theming, and advanced se
 
 For more control, you can use the `Space` component directly:
 
-```jsx
+```jsx  theme={null}
 import { FlatfileProvider, Space } from "@flatfile/react";
 
 function App() {
@@ -125,7 +173,7 @@ To create a new Space each time:
 1. Add a `workbook` configuration object. Read more about workbooks [here](../core-concepts/workbooks).
 2. Optionally [deploy](../core-concepts/listeners) a `listener` for custom data processing. Your listener will contain your validations and transformations
 
-```jsx
+```jsx  theme={null}
 import { FlatfileProvider, Workbook } from "@flatfile/react";
 
 const workbookConfig = {
@@ -159,7 +207,7 @@ For production applications, you should create Spaces on your server and pass th
 
 ### Server-side (Node.js/Express)
 
-```javascript
+```javascript  theme={null}
 // Create Space on your server
 const space = await api.spaces.create({
   name: "User Import",
@@ -172,7 +220,7 @@ res.json({ spaceId: space.data.id, token: space.data.accessToken });
 
 ### Client-side (React)
 
-```jsx
+```jsx  theme={null}
 import { FlatfileProvider, useFlatfile } from "@flatfile/react";
 
 function ImportComponent() {
@@ -213,7 +261,7 @@ For complete server setup examples, see [Server Setup](/embedding/server-setup).
 
 The React SDK includes full TypeScript support:
 
-```tsx
+```tsx  theme={null}
 import { FlatfileProvider, useFlatfile } from "@flatfile/react";
 
 interface Props {
@@ -233,6 +281,7 @@ function ImportComponent({ onDataImported }: Props) {
 
 ## Next Steps
 
+* **React Authentication**: [Complete guide to using accessToken for API requests](/sdks/react/authentication)
 * **Advanced Configuration**: [Authentication, theming, and advanced options](./advanced-configuration)
 * **Server Setup**: [Backend integration and event handling](./server-setup)
 * **API Integration**: Use [Flatfile API](https://reference.flatfile.com) to retrieve processed data
@@ -241,6 +290,10 @@ function ImportComponent({ onDataImported }: Props) {
 ## Quick Links
 
 <CardGroup cols={2}>
+  <Card title="React Authentication" icon="key" href="/sdks/react/authentication">
+    Using accessToken for secure API requests
+  </Card>
+
   <Card title="Advanced Configuration" icon="gear" href="/embedding/advanced-configuration">
     Authentication, theming, and advanced options
   </Card>

@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zrem.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zrem.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zrem.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zrem.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zrem.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zrem.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zrem.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zrem.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zrem.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zrem.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # ZREM
 
@@ -26,11 +12,11 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the sorted set
 </ParamField>
 
-<ParamField body="members" type="...TMember[]" required>
+<ParamField body="members" type="*List[str]" required>
   One or more members to remove
 </ParamField>
 
@@ -41,11 +27,9 @@
 </ResponseField>
 
 <RequestExample>
-  ```ts Single theme={"system"}
-  await redis.zrem("key", "member");
-  ```
+  ```py Single theme={"system"}
+  redis.zadd("myset", {"one": 1, "two": 2, "three": 3})
 
-  ```ts Multiple theme={"system"}
-  await redis.zrem("key", "member1", "member2");
+  assert redis.zrem("myset", "one", "four") == 1
   ```
 </RequestExample>

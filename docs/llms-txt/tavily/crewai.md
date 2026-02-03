@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/documentation/integrations/crewai.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # CrewAI
 
 > Integrate Tavily with CrewAI to build powerful AI agents that can search the web.
@@ -277,8 +281,3 @@ You can customize the extract tool by passing parameters to configure its behavi
 </Accordion>
 
 For more information about Tavily's capabilities, check out our [API documentation](/documentation/api-reference/introduction) and [best practices](/documentation/best-practices/best-practices-search).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

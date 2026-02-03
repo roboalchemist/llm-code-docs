@@ -1,5 +1,9 @@
 # Source: https://docs.giselles.ai/en/cookbooks/web-research-assistant.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.giselles.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Web Research Assistant
 
 > Learn how to combine the Webpage node with LLM Web Search. Ask a question, and the AI will research using both the reference documentation and real-time web search.
@@ -91,8 +95,3 @@ Requirements:
 - Key findings as bullet points
 - Conclusion and recommendations
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.giselles.ai/llms.txt

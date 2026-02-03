@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/data-sources/athena.md
 
-# Source: https://docs.aporia.com/data-sources/athena.md
-
-# Source: https://docs.aporia.com/v1/data-sources/athena.md
-
 # Athena
 
 This guide describes how to connect Aporia to an Athena data source in order to monitor a new ML Model in production.&#x20;

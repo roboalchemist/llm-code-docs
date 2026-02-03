@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/integrations/signoz.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LLM Observability with SigNoz and OpenLLMetry
 
 <Frame>
@@ -35,8 +39,3 @@ Once you have an up and running instance of SigNoz, use the following environmen
 ```bash  theme={null}
 TRACELOOP_BASE_URL="http://localhost:4318"
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

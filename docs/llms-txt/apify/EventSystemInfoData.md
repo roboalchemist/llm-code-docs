@@ -14,14 +14,14 @@ Data for the system info event.
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#cpu_info)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/events/_types.py#L54)cpu\_info
+### [**](#cpu_info)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/events/_types.py#L54)cpu\_info
 
 **cpu\_info: [CpuInfo](https://crawlee.dev/python/api/class/CpuInfo)
 
-### [**](#memory_info)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/events/_types.py#L55)memory\_info
+### [**](#memory_info)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/events/_types.py#L55)memory\_info
 
 **memory\_info: [MemoryUsageInfo](https://crawlee.dev/python/api/class/MemoryUsageInfo)
 
-### [**](#model_config)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/events/_types.py#L52)model\_config
+### [**](#model_config)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/events/_types.py#L52)model\_config
 
 **model\_config: Undefined

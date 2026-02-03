@@ -49,7 +49,7 @@ Warp parses relative and absolute file paths. Warp also tries to capture line an
 
 #### List of supported editors
 
-Non exhaustive list of editors, please submit new ones on our GitHub, see [Sending Feedback](https://docs.warp.dev/support-and-billing/sending-us-feedback#sending-warp-feedback).
+Non exhaustive list of editors, please submit new ones on our GitHub, see [Sending Feedback](https://docs.warp.dev/support-and-community/troubleshooting-and-support/sending-us-feedback#sending-warp-feedback).
 
 1. `$EDITOR`
 2. Visual Studio Code
@@ -68,7 +68,7 @@ Non exhaustive list of editors, please submit new ones on our GitHub, see [Sendi
 7. Sublime Text
 8. Android Studio
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-4b35a52c9e42ce96877811f1ce788c85411727f5%2Ffiles-links-demo.gif?alt=media" alt=""><figcaption><p>Files &#x26; Links Demo</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-4b35a52c9e42ce96877811f1ce788c85411727f5%2Ffiles-links-demo.gif?alt=media" alt=""><figcaption><p>Files &#x26; Links Demo</p></figcaption></figure>
 
 ## Scripts
 
@@ -81,4 +81,4 @@ Warp can open `.command` and Unix Executable files from the finder directly.
 Make sure the file has the appropriate executable permissions before you can run it in Warp. (e.g. `chmod +x script.command`)
 {% endhint %}
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-f7a1e04f36dc80e8840fd8b556d1e2ab92d933be%2Fscript-demo.gif?alt=media" alt=""><figcaption><p>Scripts Demo</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-f7a1e04f36dc80e8840fd8b556d1e2ab92d933be%2Fscript-demo.gif?alt=media" alt=""><figcaption><p>Scripts Demo</p></figcaption></figure>

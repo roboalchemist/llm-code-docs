@@ -96,7 +96,7 @@ An error message with "hostname detection failed" is emitted if the `VESPA_HOSTN
 | VESPA\_CONFIGPROXY\_JVMARGS | JVM arguments for the config proxy - see [tuning](../../performance/container-tuning.html#config-server-and-config-proxy). |
 | VESPA\_LOG\_LEVEL | Tuning of log output from tools, see [controlling log levels](../../reference/operations/log-files.html#controlling-log-levels). |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

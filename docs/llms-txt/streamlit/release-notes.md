@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/quick-reference/release-notes
+
 # Release notes
 
 This page lists highlights, bug fixes, and known issues for the latest release of Streamlit. If you're looking for information about nightly releases or experimental features, see [Pre-release features](https://docs.streamlit.io/develop/quick-reference/prerelease).

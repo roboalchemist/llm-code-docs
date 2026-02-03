@@ -1,5 +1,9 @@
 # Source: https://www.quo.com/docs/mdx/api-reference/partner-directory.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.quo.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Partner directory
 
 > Connect with experts to achieve your customer communications goals.

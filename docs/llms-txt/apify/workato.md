@@ -6,14 +6,14 @@
 
 ***
 
-https://www.workato.com/ is an automation platform where you can build recipes, automated workflows that connect your apps with no-code connectors. With the https://apify.com, you can run *Apify Actors* inside your recipes to launch web scraping and automation jobs, watch for run events, and further work with the results.
+[Workato](https://www.workato.com/) is an automation platform where you can build recipes, automated workflows that connect your apps with no-code connectors. With the [Apify Connector](https://apify.com), you can run *Apify Actors* inside your recipes to launch web scraping and automation jobs, watch for run events, and further work with the results.
 
 ## Get started
 
 To use the Apify integration with Workato, you will need:
 
-* An https://console.apify.com/
-* A https://www.workato.com/
+* An [Apify account](https://console.apify.com/)
+* A [Workato account](https://www.workato.com/)
 
 ## Install the Apify Connector
 
@@ -60,7 +60,7 @@ You can authenticate the connection using either:
 #### Authenticate with API token
 
 1. In the Apify connection dialog, select **Apify API token** as the authentication type.
-2. Enter your **API Token**. In Apify Console, go to https://console.apify.com/account#/integrations and copy your API token.
+2. Enter your **API Token**. In Apify Console, go to [Settings > Integrations](https://console.apify.com/account#/integrations) and copy your API token.
 3. Click **Connect**. Workato will test the connection by making an authenticated call to verify your credentials.
 
 ![Screenshot of the Workato API Key authentication form](/assets/images/create-connection-api-key-b6a8df7af65192d1eaae4ebbc67949ba.png) ![Screenshot showing successful API Key authentication in Workato](/assets/images/create-connection-api-success-6af3b796f545f349b9318aa5789ed137.png)
@@ -112,32 +112,32 @@ Open the Actor or Task Input page in Apify Console, switch format to JSON, and c
 
 When using manual input instead of pick lists, you'll need to provide the correct resource IDs. Here's how to find them in Apify Console:
 
-* **Actor ID**: https://console.apify.com/actors > API panel or URL.
+* **Actor ID**: [Actor detail page](https://console.apify.com/actors) > API panel or URL.
 
   <!-- -->
 
   * Example URL: `https://console.apify.com/actors/<actorId>`
   * Actor name format: owner\~name (for example, `apify~website-scraper`)
 
-* **Task ID**: https://console.apify.com/actors/tasks > API panel or URL.
+* **Task ID**: [Task detail page](https://console.apify.com/actors/tasks) > API panel or URL.
   <!-- -->
   * Example URL: `https://console.apify.com/actors/tasks/<taskId>`
 
-* **Dataset ID**: https://console.apify.com/storage/datasets > Dataset detail > API panel or URL.
+* **Dataset ID**: [Storage > Datasets](https://console.apify.com/storage/datasets) > Dataset detail > API panel or URL.
 
   <!-- -->
 
   * Example URL: `https://console.apify.com/storage/datasets/<datasetId>`
   * Also available in the table on the `Storage > Datasets` page
 
-* **Key-value store ID**: https://console.apify.com/storage/Key-value-stores > Store detail > API panel or URL.
+* **Key-value store ID**: [Storage > Key-value stores](https://console.apify.com/storage/Key-value-stores) > Store detail > API panel or URL.
 
   <!-- -->
 
   * Example URL: `https://console.apify.com/storage/Key-value-stores/<storeId>`
   * Also available in the table on the `Storage > Key-value stores` page
 
-* **Webhook ID**: https://console.apify.com/actors > Actor > Integrations.
+* **Webhook ID**: [Actors](https://console.apify.com/actors) > Actor > Integrations.
   <!-- -->
   * Example URL: `https://console.apify.com/actors/<actor_id>/integrations/<webhook_id>`
 
@@ -314,4 +314,4 @@ Workato's visual interface makes it easy to connect Apify data with other busine
 * *Resource not found errors:* Check that IDs are correct and case-sensitive
 * *Dataset field mapping issues:* If you experience incorrect data types or missing fields in the Get Dataset Items action data pill, this may be caused by non-homogeneous data in your dataset. The connector samples only the first 25 items to determine field types, so inconsistent data structures can lead to mapping problems. Try to ensure your dataset has consistent field names and data types across all items.
 
-If you have any questions or need help, feel free to reach out to us on our https://discord.com/invite/jyEM2PRvMU.
+If you have any questions or need help, feel free to reach out to us on our [Discord channel](https://discord.com/invite/jyEM2PRvMU).

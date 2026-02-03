@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/guides/claude-vs-gpt/
+
 # Claude 3.7 vs GPT-4.1: Benchmark on Your Own Data
 
 When evaluating the performance of LLMs, generic benchmarks will only get you so far. This is especially the case for Claude vs GPT, as there are many split evaluations (subjective and objective) on their efficacy.

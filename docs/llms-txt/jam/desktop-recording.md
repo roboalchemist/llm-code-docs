@@ -2,19 +2,19 @@
 
 # Desktop Recording
 
-![](https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FuuzHPpnseVP0Y70twd9j%2FCleanShot%202023-07-07%20at%2020.54.28%402x.png?alt=media\&token=13849922-3d3a-4b8d-b07d-60df58559fd2)
-
 With Jam, you can record a single tab, an entire window, or your full desktop.&#x20;
 
-When recording a window or your entire desktop, Jam captures console logs and network requests from every tab you interact with during the recording (as long as Jam is installed in that browser window). See steps here to enable Jam on incognito windows:
-
-{% content-ref url="../incognito-sessions" %}
-[incognito-sessions](https://jam.dev/docs/record-a-jam/incognito-sessions)
-{% endcontent-ref %}
+When recording a window or your entire desktop, Jam captures console logs and network requests from every tab you interact with during the recording (as long as Jam is installed in that browser window).&#x20;
 
 That means, if you're trying to demonstrate a bug that spans across multiple tabs or windows (like something updating in one place but not in another), Jam can record that in real-time. It simultaneously captures console logs and network requests from both tabs, giving engineers a holistic view of the bug even if it's not contained within a single tab.
 
 That way engineers can track a bug through multiple sites, tabs and windows.
+
+See steps here to enable Jam on incognito windows:
+
+{% content-ref url="../incognito-sessions" %}
+[incognito-sessions](https://jam.dev/docs/record-a-jam/incognito-sessions)
+{% endcontent-ref %}
 
 ## Troubleshooting permissions on Mac
 

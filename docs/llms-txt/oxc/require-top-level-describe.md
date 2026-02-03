@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/jest/require-top-level-describe.md
 ---
-# jest/require-top-level-describe&#x20;
 
 ### What it does
 

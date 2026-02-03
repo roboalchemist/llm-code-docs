@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/pm/global-cache.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Global cache
 
 > How Bun stores and manages packages in its global cache

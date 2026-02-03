@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/sessionauth.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add authentication with Session Authentication
 
 > Session authentication has elements of Basic authentication — where Zapier requests a username and password, and OAuth v2 — where Zapier redirects users to the app's site to allow access. User credentials are exchanged for a token used to authenticate subsequent API calls.

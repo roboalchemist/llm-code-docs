@@ -1,5 +1,33 @@
 # Source: https://platform.claude.com/docs/en/api/typescript/messages/count_tokens.md
 
+# Source: https://platform.claude.com/docs/en/api/ruby/messages/count_tokens.md
+
+# Source: https://platform.claude.com/docs/en/api/python/messages/count_tokens.md
+
+# Source: https://platform.claude.com/docs/en/api/kotlin/messages/count_tokens.md
+
+# Source: https://platform.claude.com/docs/en/api/java/messages/count_tokens.md
+
+# Source: https://platform.claude.com/docs/en/api/go/messages/count_tokens.md
+
+# Source: https://platform.claude.com/docs/en/api/typescript/beta/messages/count_tokens.md
+
+# Source: https://platform.claude.com/docs/en/api/ruby/beta/messages/count_tokens.md
+
+# Source: https://platform.claude.com/docs/en/api/python/beta/messages/count_tokens.md
+
+# Source: https://platform.claude.com/docs/en/api/kotlin/beta/messages/count_tokens.md
+
+# Source: https://platform.claude.com/docs/en/api/java/beta/messages/count_tokens.md
+
+# Source: https://platform.claude.com/docs/en/api/go/beta/messages/count_tokens.md
+
+# Source: https://platform.claude.com/docs/en/api/beta/messages/count_tokens.md
+
+# Source: https://platform.claude.com/docs/en/api/messages/count_tokens.md
+
+# Source: https://platform.claude.com/docs/en/api/typescript/messages/count_tokens.md
+
 ## Count Tokens
 
 `client.messages.countTokens(MessageCountTokensParamsbody, RequestOptionsoptions?): MessageTokensCount`

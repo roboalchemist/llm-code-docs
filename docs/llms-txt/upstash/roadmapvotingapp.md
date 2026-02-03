@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/tutorials/roadmapvotingapp.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Roadmap Voting App with Serverless Redis
 
 > This is a single page application powered by upstash and next.js.

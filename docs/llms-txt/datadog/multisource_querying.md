@@ -6,7 +6,6 @@ description: >-
   Learn how to use Multisource Querying to query costs across multiple providers
   in Cloud Cost Management.
 breadcrumbs: Docs > Cloud Cost Management > Tags > Multisource Querying
-source_url: https://docs.datadoghq.com/tags/multisource_querying/index.html
 ---
 
 # Multisource Querying

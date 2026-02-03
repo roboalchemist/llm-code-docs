@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/features/prompts-legacy/generate.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Generate API
 
 > Deploy your [Editor](/features/prompts/editor) prompts effortlessly with a light and modern package.

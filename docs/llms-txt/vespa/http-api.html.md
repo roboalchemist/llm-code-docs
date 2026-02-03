@@ -92,7 +92,7 @@ http://localhost:8080/demo?terms=1%202%203%204
 Rendering finished work: 1369733374902
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

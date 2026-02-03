@@ -7,7 +7,6 @@ description: >-
   diagrams in Datadog for troubleshooting, security analysis, and cost
   optimization.
 breadcrumbs: Docs > Cloudcraft in Datadog
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Cloudcraft in Datadog

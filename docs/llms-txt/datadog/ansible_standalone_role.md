@@ -4,7 +4,6 @@
 title: Set up Ansible Using a Standalone Datadog Role
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Agent > Agent Guides > Set up Ansible Using a Standalone Datadog Role
-source_url: https://docs.datadoghq.com/guide/ansible_standalone_role/index.html
 ---
 
 # Set up Ansible Using a Standalone Datadog Role

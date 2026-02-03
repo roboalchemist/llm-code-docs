@@ -2,6 +2,8 @@
 
 # ActorTaggedBuild<!-- -->
 
+Information about a specific tagged build.
+
 ## Index[**](#Index)
 
 ### Properties
@@ -12,7 +14,7 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#buildId)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L332)optionalbuildId
+### [**](#buildId)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L545)optionalbuildId
 
 **buildId?
 
@@ -20,7 +22,7 @@
 
 : string
 
-### [**](#buildNumber)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L333)optionalbuildNumber
+### [**](#buildNumber)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L546)optionalbuildNumber
 
 **buildNumber?
 
@@ -28,7 +30,7 @@
 
 : string
 
-### [**](#finishedAt)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L334)optionalfinishedAt
+### [**](#finishedAt)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L547)optionalfinishedAt
 
 **finishedAt?
 

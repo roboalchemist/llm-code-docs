@@ -1,12 +1,8 @@
 # Source: https://rspack.dev/plugins/rspack/html-rspack-plugin.md
 
-import { Table } from '@builtIns';
-import { ApiMeta } from '@components/ApiMeta.tsx';
-
 # HtmlRspackPlugin
 
-<ApiMeta specific={['Rspack']} />
-
+Rspack only
 `rspack.HtmlRspackPlugin` is a high-performance HTML plugin implemented in Rust. You can use it to generate HTML files for Rspack projects.
 
 ```js
@@ -113,7 +109,7 @@ export default {
 };
 ```
 
-This will generate a file "*dist/index.html*" containing the following:
+This will generate a file "_dist/index.html_" containing the following:
 
 ```html
 <!doctype html>
@@ -135,7 +131,7 @@ If you have some CSS assets in the build outputs, they will be included with `<l
 
 You can pass some configuration options to `rspack.HtmlRspackPlugin`. Allowed options are as follows:
 
-* **Type:**
+- **Type:**
 
 ```ts
 type HtmlRspackPluginOptions = {
@@ -163,7 +159,6 @@ type HtmlRspackPluginOptions = {
   chunks?: string[];
   excludeChunks?: string[];
   chunksSortMode?: 'auto' | 'manual';
-  sri?: 'sha256' | 'sha384' | 'sha512';
   minify?: boolean;
   favicon?: string;
   meta?: Record<string, string | Record<string, string>>;
@@ -171,142 +166,27 @@ type HtmlRspackPluginOptions = {
 };
 ```
 
-* **Default:** `{}`
+- **Default:** `{}`
 
-<Table
-  header={[
-  {
-    name: 'Name',
-    key: 'name',
-  },
-  {
-    name: 'Type',
-    key: 'type',
-  },
-  {
-    name: 'Default',
-    key: 'default',
-  },
-  {
-    name: 'Description',
-    key: 'description',
-  },
-]}
-  body={[
-  {
-    name: '`title`',
-    type: '`string | undefined`',
-    default: '`undefined`',
-    description: 'The title to use for the generated HTML document.',
-  },
-  {
-    name: '`filename`',
-    type: '`string | undefined | ((entry: string) => string)`',
-    default: '`"index.html"`',
-    description:
-      'The file to write the HTML to. You can specify a subdirectory here too (e.g.: `"pages/index.html"`).',
-  },
-  {
-    name: '`template`',
-    type: '`string | undefined`',
-    default: '`undefined`',
-    description: 'The template file path.',
-  },
-  {
-    name: '`templateContent`',
-    type: '`string | undefined | ((params: Record<string, any>) => string | Promise<string>)`',
-    default: '`undefined`',
-    description:
-      'The template file content, priority is greater than `template` option. When using a function, pass in the template parameters and use the returned string as the template content.',
-  },
-  {
-    name: '`templateParameters`',
-    type: '`Record<string, string> | undefined | boolean | ((params: Record<string, any>) => Record<string, any> | Promise<Record<string, any>>)`',
-    default: '`undefined`',
-    description:
-      'Allows to overwrite the parameters used in the template. When using a function, pass in the original template parameters and use the returned object as the final template parameters.',
-  },
-  {
-    name: '`inject`',
-    type: '`boolean | undefined | "head" | "body"`',
-    default: '`true`',
-    description:
-      'The script and link tag inject position in template. Use `false` to not inject. If not specified, it will be automatically determined based on `scriptLoading` value.',
-  },
-  {
-    name: '`publicPath`',
-    type: '`string | undefined`',
-    default: '`undefined`',
-    description: 'The public path used for script and link tags.',
-  },
-  {
-    name: '`base`',
-    type: '`string | undefined | { href?: string; target?: "_self" | "_blank" | "_parent" | "_top" }`',
-    default: '`undefined`',
-    description:
-      'Inject a [`base`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base) tag.',
-  },
-  {
-    name: '`scriptLoading`',
-    type: '`"blocking" | "defer" | "module" | "systemjs-module" | undefined`',
-    default: '`"defer"`',
-    description:
-      'Modern browsers support non-blocking JavaScript loading ([`defer` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#defer)) to improve the page startup performance. Setting this option to `"module"` adds attribute `type="module"` to the `script`. This also implies `defer` attribute on the `script`, since modules are automatically deferred.',
-  },
-  {
-    name: '`chunks`',
-    type: '`string[] | undefined`',
-    default: '`undefined`',
-    description: 'Allows you to add only some chunks.',
-  },
-  {
-    name: '`excludeChunks`',
-    type: '`string[] | undefined`',
-    default: '`undefined`',
-    description: 'Allows you to skip some chunks.',
-  },
-  {
-    name: '`chunksSortMode`',
-    type: '`"auto" | "manual"`',
-    default: '`"auto"`',
-    description:
-      'Allows to control how chunks should be sorted before they are included to the HTML.',
-  },
-  {
-    name: '`sri`',
-    type: '`"sha256"" | "sha384"" | "sha512"" | undefined`',
-    default: '`undefined`',
-    description:
-      '<p>**Deprecated**: use [`SubresourceIntegrityPlugin`](./subresource-integrity-plugin) instead.</p><p>Configure the SRI hash algorithm, which is disabled by default.</p>',
-  },
-  {
-    name: '`minify`',
-    type: '`boolean`',
-    default: '`undefined`',
-    description:
-      'Controls whether to minify the output, disabled by default.',
-  },
-  {
-    name: '`favicon`',
-    type: '`string | undefined`',
-    default: '`undefined`',
-    description: 'Adds the given favicon path to the output HTML.',
-  },
-  {
-    name: '`meta`',
-    type: '`Record<string, string | Record<string, string>>`',
-    default: '`{}`',
-    description: 'Allows to inject meta-tags.',
-  },
-  {
-    name: '`hash`',
-    type: '`boolean`',
-    default: '`undefined`',
-    description:
-      'If `true` then append a unique Rspack compilation hash to all included scripts and CSS files. This is useful for cache busting.',
-  },
-]}
-/>
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `title` | `string | undefined` | `undefined` | The title to use for the generated HTML document. |
+| `filename` | `string | undefined | ((entry: string) => string)` | `"index.html"` | The file to write the HTML to. You can specify a subdirectory here too (e.g.: `"pages/index.html"`). |
+| `template` | `string | undefined` | `undefined` | The template file path. |
+| `templateContent` | `string | undefined | ((params: Record<string, any>) => string | Promise<string>)` | `undefined` | The template file content, priority is greater than `template` option. When using a function, pass in the template parameters and use the returned string as the template content. |
+| `templateParameters` | `Record<string, string> | undefined | boolean | ((params: Record<string, any>) => Record<string, any> | Promise<Record<string, any>>)` | `undefined` | Allows to overwrite the parameters used in the template. When using a function, pass in the original template parameters and use the returned object as the final template parameters. |
+| `inject` | `boolean | undefined | "head" | "body"` | `true` | The script and link tag inject position in template. Use `false` to not inject. If not specified, it will be automatically determined based on `scriptLoading` value. |
+| `publicPath` | `string | undefined` | `undefined` | The public path used for script and link tags. |
+| `base` | `string | undefined | { href?: string; target?: "_self" | "_blank" | "_parent" | "_top" }` | `undefined` | Inject a [`base`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base) tag. |
+| `scriptLoading` | `"blocking" | "defer" | "module" | "systemjs-module" | undefined` | `"defer"` | Modern browsers support non-blocking JavaScript loading ([`defer` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#defer)) to improve the page startup performance. Setting this option to `"module"` adds attribute `type="module"` to the `script`. This also implies `defer` attribute on the `script`, since modules are automatically deferred. |
+| `chunks` | `string[] | undefined` | `undefined` | Allows you to add only some chunks. |
+| `excludeChunks` | `string[] | undefined` | `undefined` | Allows you to skip some chunks. |
+| `chunksSortMode` | `"auto" | "manual"` | `"auto"` | Allows to control how chunks should be sorted before they are included to the HTML. |
+| `minify` | `boolean` | `undefined` | Controls whether to minify the output, disabled by default. |
+| `favicon` | `string | undefined` | `undefined` | Adds the given favicon path to the output HTML. |
+| `meta` | `Record<string, string | Record<string, string>>` | `{}` | Allows to inject meta-tags. |
+| `hash` | `boolean` | `undefined` | If `true` then append a unique Rspack compilation hash to all included scripts and CSS files. This is useful for cache busting. |
+
 
 ## Example
 
@@ -372,7 +252,7 @@ export default {
 
 Use a function to generate the HTML template content:
 
-* Pass the function in `templateContent`
+- Pass the function in `templateContent`
 
 ```js title="rspack.config.mjs"
 import { rspack } from '@rspack/core';
@@ -395,7 +275,7 @@ export default {
 };
 ```
 
-* Or pass a file path ending with `.js` or `.cjs` in `template`
+- Or pass a file path ending with `.js` or `.cjs` in `template`
 
 ```js title="template.js"
 module.exports = ({ htmlRspackPlugin }) => `
@@ -426,18 +306,18 @@ export default {
 
 The HTML template rendering parameters can be extended through `templateParameters`. The following variables are available by default:
 
-* `htmlRspackPlugin`: Data of the plugin
-  * `htmlRspackPlugin.options`: Configuration object of the plugin
-  * `htmlRspackPlugin.tags`: Prepared tag information for injection in the template
-    * `htmlRspackPlugin.tags.headTags`: List of `<base>`, `<meta>`, `<link>`, `<script>` tags for injection in `<head>`
-    * `htmlRspackPlugin.tags.bodyTags`: List of `<script>` tags for injection in `<body>`
-  * `htmlRspackPlugin.files`: Asset files generated in this compilation
-    * `htmlRspackPlugin.files.js`: List of paths of JS assets generated in this compilation
-    * `htmlRspackPlugin.files.css`: List of paths of CSS assets generated in this compilation
-    * `htmlRspackPlugin.files.favicon`: If `favicon` is configured, here is the calculated final favicon asset path
-    * `htmlRspackPlugin.files.publicPath`: The `publicPath` of the asset files
-* `rspackConfig`: Rspack configuration object used in this compilation
-* `compilation`: Compilation object of this compilation
+- `htmlRspackPlugin`: Data of the plugin
+  - `htmlRspackPlugin.options`: Configuration object of the plugin
+  - `htmlRspackPlugin.tags`: Prepared tag information for injection in the template
+    - `htmlRspackPlugin.tags.headTags`: List of `<base>`, `<meta>`, `<link>`, `<script>` tags for injection in `<head>`
+    - `htmlRspackPlugin.tags.bodyTags`: List of `<script>` tags for injection in `<body>`
+  - `htmlRspackPlugin.files`: Asset files generated in this compilation
+    - `htmlRspackPlugin.files.js`: List of paths of JS assets generated in this compilation
+    - `htmlRspackPlugin.files.css`: List of paths of CSS assets generated in this compilation
+    - `htmlRspackPlugin.files.favicon`: If `favicon` is configured, here is the calculated final favicon asset path
+    - `htmlRspackPlugin.files.publicPath`: The `publicPath` of the asset files
+- `rspackConfig`: Rspack configuration object used in this compilation
+- `compilation`: Compilation object of this compilation
 
 :::warning
 If `htmlRspackPlugin.tags` is used to insert tags during template rendering, please configure `inject` as `false`, otherwise the tags will be injected twice.
@@ -446,10 +326,10 @@ If `htmlRspackPlugin.tags` is used to insert tags during template rendering, ple
 :::info Differences
 There are some differences with HtmlWebpackPlugin:
 
-* Does not support using `!` to add loader to process the template file
-* The `rspackConfig` object currently only supports `mode`, `output.publicPath` and `output.crossOriginLoading`
-* The `compilation` object is currently only supported when [using the template function](#use-template-function)
-* When rendering the tag list (such as `htmlRspackPlugin.tags.headTags`) or a single tag (such as `htmlRspackPlugin.tags.headTags[0]`) in the template, the `toHtml()` function is required to generate the HTML code
+- Does not support using `!` to add loader to process the template file
+- The `rspackConfig` object currently only supports `mode`, `output.publicPath` and `output.crossOriginLoading`
+- The `compilation` object is currently only supported when [using the template function](#use-template-function)
+- When rendering the tag list (such as `htmlRspackPlugin.tags.headTags`) or a single tag (such as `htmlRspackPlugin.tags.headTags[0]`) in the template, the `toHtml()` function is required to generate the HTML code
 
 :::
 
@@ -540,8 +420,8 @@ new HtmlWebpackPlugin({
 
 If you have multiple entry points and want to generate an HTML file for each entry, you can register multiple `rspack.HtmlRspackPlugin`:
 
-* Use `filename` to specify the name for each HTML file.
-* Use `chunks` to specify the JS bundles to include in each HTML file.
+- Use `filename` to specify the name for each HTML file.
+- Use `chunks` to specify the JS bundles to include in each HTML file.
 
 For example, the following configuration will generate foo.html and bar.html, where foo.html contains only the JS bundles generated by foo.js.
 
@@ -597,8 +477,8 @@ This hook will be called after collecting the assets from the compilation and ge
 
 The `assets` can be modified here to add custom JS and CSS asset files.
 
-* **Type**: `AsyncSeriesWaterfallHook<[BeforeAssetTagGenerationData]>`
-* **Parameters**:
+- **Type**: `AsyncSeriesWaterfallHook<[BeforeAssetTagGenerationData]>`
+- **Parameters**:
   ```ts
   type BeforeAssetTagGenerationData = {
     assets: {
@@ -647,8 +527,8 @@ This hook will be called after generating the asset tags based on the asset file
 
 The tags can be adjusted here.
 
-* **Type**: `AsyncSeriesWaterfallHook<[AlterAssetTagsData]>`
-* **Parameters**:
+- **Type**: `AsyncSeriesWaterfallHook<[AlterAssetTagsData]>`
+- **Parameters**:
 
   ```ts
   type HtmlTag = {
@@ -676,9 +556,9 @@ The tags can be adjusted here.
 Only `assetTags` can be modified. Modifications to other items will not take effect.
 :::
 
-* When set the attribute value to `true`, a valueless attribute will be added, and `<script defer specialattribute src="main.js"></script>` will be generated.
-* When set the attribute value to a `string`, a valued attribute will be added, and `<script defer specialattribute="some value" src="main.js"></script>` will be generated.
-* When set the attribute value to `false`, the attribute will be removed.
+- When set the attribute value to `true`, a valueless attribute will be added, and `<script defer specialattribute src="main.js"></script>` will be generated.
+- When set the attribute value to a `string`, a valued attribute will be added, and `<script defer specialattribute="some value" src="main.js"></script>` will be generated.
+- When set the attribute value to `false`, the attribute will be removed.
 
 The following code adds the `specialAttribute` property to all `script` type tags:
 
@@ -711,8 +591,8 @@ This hook will be called after generating the tag groups of `head` and `body`, b
 
 The insertion position of the tags can be adjusted here.
 
-* **Type**: `AsyncSeriesWaterfallHook<[AlterAssetTagGroupsData]>`
-* **Parameters**:
+- **Type**: `AsyncSeriesWaterfallHook<[AlterAssetTagGroupsData]>`
+- **Parameters**:
   ```ts
   type AlterAssetTagGroupsData = {
     headTags: Array<HtmlTag>;
@@ -760,13 +640,13 @@ This hook will be called after the template rendering is completed, but before t
 
 The HTML content and the tags to be injected can be modified here.
 
-* When using the function `templateContent` or the `template` ending with `.js/.cjs`, and using this function to render the template, here `html` is the result returned by the function.
+- When using the function `templateContent` or the `template` ending with `.js/.cjs`, and using this function to render the template, here `html` is the result returned by the function.
 
-* In other scenarios, the HTML template will be compiled through a template engine inside, and here `html` is the compiled result.
+- In other scenarios, the HTML template will be compiled through a template engine inside, and here `html` is the compiled result.
 
-* **Type**: `AsyncSeriesWaterfallHook<[AfterTemplateExecutionData]>`
+- **Type**: `AsyncSeriesWaterfallHook<[AfterTemplateExecutionData]>`
 
-* **Parameters**:
+- **Parameters**:
   ```ts
   type AfterTemplateExecutionData = {
     html: string;
@@ -814,8 +694,8 @@ export default {
 
 This hook will be called before generating the HTML asset file, and it is the final chance to modify the HTML content.
 
-* **Type**: `SyncHook<[BeforeEmitData]>`
-* **Parameters**:
+- **Type**: `SyncHook<[BeforeEmitData]>`
+- **Parameters**:
   ```ts
   type BeforeEmitData = {
     html: string;
@@ -859,8 +739,8 @@ export default {
 
 This hook will be called after generating the HTML asset file and is only used for notification.
 
-* **Type**: `SyncHook<[AfterEmitData]>`
-* **Parameters**:
+- **Type**: `SyncHook<[AfterEmitData]>`
+- **Parameters**:
   ```ts
   type AfterEmitData = {
     outputName: string;

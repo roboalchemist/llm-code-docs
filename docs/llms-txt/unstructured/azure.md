@@ -4,17 +4,9 @@
 
 # Source: https://docs.unstructured.io/api-reference/legacy-api/azure.md
 
-# Source: https://docs.unstructured.io/open-source/ingestion/source-connectors/azure.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/destination-connectors/azure.md
-
-# Source: https://docs.unstructured.io/api-reference/legacy-api/azure.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/source-connectors/azure.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/destination-connectors/azure.md
-
-# Source: https://docs.unstructured.io/api-reference/legacy-api/azure.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Unstructured API on Azure
 

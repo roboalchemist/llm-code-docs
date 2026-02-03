@@ -4,8 +4,6 @@
 title: API Gateway V2 VPC Link
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > API Gateway V2 VPC Link
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.apigatewayv2_vpclink.dataset/index.html
 ---
 
 # API Gateway V2 VPC Link
@@ -26,7 +24,7 @@ aws.apigatewayv2_vpclink
 | name                    | core | string        | The name of the VPC link.                                      |
 | security_group_ids      | core | array<string> | A list of security group IDs for the VPC link.                 |
 | subnet_ids              | core | array<string> | A list of subnet IDs to include in the VPC link.               |
-| tags                    | core | hstore        |
+| tags                    | core | hstore_csv    |
 | vpc_link_id             | core | string        | The ID of the VPC link.                                        |
 | vpc_link_status         | core | string        | The status of the VPC link.                                    |
 | vpc_link_status_message | core | string        | A message summarizing the cause of the status of the VPC link. |

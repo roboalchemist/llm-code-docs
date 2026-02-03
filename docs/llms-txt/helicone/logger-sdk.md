@@ -4,23 +4,9 @@
 
 # Source: https://docs.helicone.ai/integrations/data/logger-sdk.md
 
-# Source: https://docs.helicone.ai/integrations/vectordb/logger-sdk.md
-
-# Source: https://docs.helicone.ai/integrations/tools/logger-sdk.md
-
-# Source: https://docs.helicone.ai/integrations/data/logger-sdk.md
-
-# Source: https://docs.helicone.ai/integrations/vectordb/logger-sdk.md
-
-# Source: https://docs.helicone.ai/integrations/tools/logger-sdk.md
-
-# Source: https://docs.helicone.ai/integrations/data/logger-sdk.md
-
-# Source: https://docs.helicone.ai/integrations/vectordb/logger-sdk.md
-
-# Source: https://docs.helicone.ai/integrations/tools/logger-sdk.md
-
-# Source: https://docs.helicone.ai/integrations/data/logger-sdk.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Custom Logs with the Logger SDK
 
@@ -52,7 +38,8 @@ export const strings = {
   installRequiredDependencies: "Install required dependencies",
   installSDK: tool => `Install ${tool}`,
   logYourRequest: "Log your request",
-  modifyBasePath: "Modify the base URL path and set up authentication",
+  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>.",
+  modifyBasePath: "Modify the base URL path",
   optional: "Optional",
   relatedGuides: "Related Guides",
   replayLlmSessionsCookbookDescription: "Learn how to replay and modify LLM sessions using Helicone to optimize your AI agents and improve their performance.",
@@ -64,10 +51,9 @@ export const strings = {
   useTheSDK: tool => `Use the ${tool} SDK`,
   verifyInHelicone: "Verify your requests in Helicone",
   verifyInHeliconeDesciption: tool => `With the above setup, any calls to ${tool} will automatically be logged and monitored by Helicone. Review them in your <a href="https://www.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
-  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently.",
   viewRequestsInDashboard: "View requests in the Helicone dashboard",
-  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>`,
-  modelRegistryDescription: "You can find all 100+ supported models at <a href=\"https://helicone.ai/models\" target=\"_blank\">helicone.ai/models</a>."
+  viewRequestsInDashboardDescription: product => `All your ${product} requests are now visible in your <a href="https://us.helicone.ai/dashboard" target="_blank">Helicone dashboard</a>.`,
+  whyUseSessions: "By including the session headers in each request, you have more granular control over session tracking. This approach is especially useful if you want to handle sessions dynamically or manage multiple sessions concurrently."
 };
 
 The Logger SDK allows you to log any custom operation to Helicone - database queries, API calls, ML inference, file processing, or any other operation you want to track.

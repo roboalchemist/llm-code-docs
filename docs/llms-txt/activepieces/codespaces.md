@@ -1,6 +1,8 @@
 # Source: https://www.activepieces.com/docs/build-pieces/misc/codespaces.md
 
-# Source: https://www.activepieces.com/docs/developers/development-setup/codespaces.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # GitHub Codespaces
 
@@ -12,14 +14,14 @@ GitHub Codespaces is a cloud development platform that enables developers to wri
 
 2. Click Code `<>`, then under codespaces click create codespace on main.
 
-<img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/development-setup_codespaces.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=2228948ff3bf64691d9ff82072da37b2" alt="Create Codespace" data-og-width="1383" width="1383" data-og-height="713" height="713" data-path="resources/screenshots/development-setup_codespaces.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/development-setup_codespaces.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=a4ad0df90c9bae41b9dc1037c74098b8 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/development-setup_codespaces.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=e538e737312e98184bdd9d0c1ee76a41 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/development-setup_codespaces.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=189866428f49bd5cf73b93e6355e1d1c 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/development-setup_codespaces.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=0e1257933c43de7b1837306618a7f275 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/development-setup_codespaces.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=863628159653952542cf694a26f9cd25 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/development-setup_codespaces.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=8e09af5ec8413cc2e059eaa425bedebd 2500w" />
+<img src="https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/screenshots/development-setup_codespaces.png?fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=94470febd82b0491474e2481124eb562" alt="Create Codespace" data-og-width="1383" width="1383" data-og-height="713" height="713" data-path="resources/screenshots/development-setup_codespaces.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/screenshots/development-setup_codespaces.png?w=280&fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=cf33e942541fe257384bffa8377fee1b 280w, https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/screenshots/development-setup_codespaces.png?w=560&fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=30bc1ed998e1bab3390af5dc8f54306e 560w, https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/screenshots/development-setup_codespaces.png?w=840&fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=da78115808fa2ff1ea5d2131ba47c668 840w, https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/screenshots/development-setup_codespaces.png?w=1100&fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=99b94406446bb4a1147d765f5777baf5 1100w, https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/screenshots/development-setup_codespaces.png?w=1650&fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=eff55aa6bc1a1d34943e9a2c3723d95b 1650w, https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/screenshots/development-setup_codespaces.png?w=2500&fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=092a5f882369bd1b2ce25b92487d179d 2500w" />
 
 <Note>
   By default, the development setup only builds specific pieces.Open the file
   `packages/server/api/.env` and add comma-separated list of pieces to make
   available.
 
-  For more details, check out the [Piece Development](/developers/development-setup/getting-started) section.
+  For more details, check out the [Piece Development](/build-pieces/building-pieces/development-setup#pieces-development) section.
 </Note>
 
 3. Open the terminal and run `npm start`

@@ -8,9 +8,9 @@ Python packages that are operating system-specific and not supported by Linux ma
 
 To scan your Projects, you must ensure your repository contains the supported manifest files.
 
-## Set the Python version in Git Projects
+## Set the Python version in SCM Projects
 
-When scanning Pip Projects imported from Git, Snyk uses the version of Python specified in Organization settings or `.snyk` files.
+When scanning Pip Projects imported from an SCM integration, Snyk uses the version of Python specified in Organization settings or `.snyk` files.
 
 {% hint style="info" %}
 It is important to specify the correct Python version for your Organization, as it can affect the version of dependencies used in scanning your Projects.
@@ -27,7 +27,7 @@ The behavior of imports, re-tests, and PR checks for Projects with dependencies 
 * Python 2.7 or 3.7: scans will succeed, but the incompatible dependencies are omitted from the results.
   {% endhint %}
 
-To define which Python minor version Snyk uses to test your Git-imported Pip Projects, you can use Organization settings and [`.snyk` policy file](https://docs.snyk.io/manage-risk/policies/the-.snyk-file).
+To define which Python minor version Snyk uses to test your Pip Projects imported using SCM integrations, you can use Organization settings and [`.snyk` policy file](https://docs.snyk.io/manage-risk/policies/the-.snyk-file).
 
 To define the Python version for all Projects in an Organization:
 
@@ -66,10 +66,6 @@ The following dependencies are not supported and are removed before the file is 
 * Relying on a version constraints file with `--constraint`, `-c`
 * Including another requirement file with `--requirement`, `-r`
 * Specific packages: `virtualenv` and `pip` for Python 2.7 and 3.7
-
-{% hint style="warning" %}
-Projects with downloaded dependencies totalling more than 10GB are not supported.
-{% endhint %}
 
 To scan Pip Projects, Snyk analyzes your `requirements.txt` files using native `pip` tooling in an isolated Linux environment.
 

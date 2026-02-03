@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/api-reference/intro.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Introduction
 
 > Lago API allows your application to push customer information and metrics (events) from your application to the billing application.

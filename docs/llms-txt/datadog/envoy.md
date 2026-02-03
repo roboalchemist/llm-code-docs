@@ -1,3 +1,7 @@
+# Source: https://docs.datadoghq.com/security/application_security/setup/compatibility/envoy.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/envoy.md
+
 # Source: https://docs.datadoghq.com/tracing/trace_collection/proxy_setup/envoy.md
 
 ---
@@ -6,7 +10,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > APM > Application Instrumentation > Tracing a Proxy > Instrumenting
   Envoy
-source_url: https://docs.datadoghq.com/trace_collection/proxy_setup/envoy/index.html
 ---
 
 # Instrumenting Envoy

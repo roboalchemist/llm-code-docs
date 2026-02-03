@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/getting-started/tutorials/webhook-receiver-recipe.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Webhook Receiver Recipe
 
 > Deploy a production-ready AWS serverless webhook receiver in minutes using our complete TypeScript template with built-in validation, error handling, and scalability.
@@ -12,7 +16,7 @@
 
 The Webhook Receiver Recipe is a production-ready, AWS-based webhook receiver template that helps developers quickly implement robust webhook handling for Smartcar integrations. This TypeScript recipe provides a deployable starting point that makes adding custom business logic easy, eliminating much of the complexity of building webhook infrastructure from scratch.
 
-* **Repository**: [smartcar/typescript-webhook-recipe](https://github.com/smartcar/typescript-webhook-recipe)
+* **Repository**: [`smartcar/typescript-webhook-recipe`](https://github.com/smartcar/typescript-webhook-recipe)
 * **Deployment Target**: AWS (Lambda + API Gateway + SQS)
 * **Language**: TypeScript/Node.js v22+
 * **Infrastructure**: AWS CDK (Infrastructure as Code)
@@ -39,7 +43,7 @@ The Webhook Receiver Recipe is a production-ready, AWS-based webhook receiver te
 ### Infrastructure as Code
 
 * Complete AWS CDK setup for repeatable deployments
-* Environment-specific configurations (dev, staging, production)
+* Environment-specific configurations (development, staging, production)
 * Easy customization and extension
 
 ## When to Use This Recipe
@@ -329,7 +333,7 @@ After deploying your webhook receiver:
     View the complete source code and documentation
   </Card>
 
-  <Card title="Webhook Responses" icon="webhook" href="/integrations/webhooks/responses">
+  <Card title="Webhook Responses" icon="webhook" href="/integrations/webhooks/receiving-webhooks">
     Understand webhook payload structures
   </Card>
 </CardGroup>

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/usage/web-ui/
+
 # Using the web viewer
 
 After [running an eval](/docs/getting-started/), view results in your browser:

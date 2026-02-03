@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/generativeagent/integrate/handling-events.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Handling GenerativeAgent Events
 
 While analyzing a conversation, GenerativeAgent communicates back to you via events. These events are sent via a [Server-Sent-Event](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events) stream.
@@ -317,7 +321,7 @@ After handling Events from GenerativeAgents, you have control over what is happe
 You may find one of the following sections helpful in advancing your integration:
 
 <CardGroup>
-  <Card title="AutoTranscribe Websocket" href="/generativeagent/integrate/autotranscribe-websocket" />
+  <Card title="AI Transcribe Websocket" href="/generativeagent/integrate/autotranscribe-websocket" />
 
   <Card title="Example Interactions" href="/generativeagent/integrate/example-interactions" />
 

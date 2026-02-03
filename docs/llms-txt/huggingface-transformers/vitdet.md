@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/vitdet.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/vitdet.md
 
 # ViTDet
 
@@ -22,15 +22,15 @@ Tips:
 
 #### transformers.VitDetConfig[[transformers.VitDetConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/vitdet/configuration_vitdet.py#L25)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/vitdet/configuration_vitdet.py#L24)
 
-This is the configuration class to store the configuration of a [VitDetModel](/docs/transformers/v5.0.0rc1/en/model_doc/vitdet#transformers.VitDetModel). It is used to instantiate an
+This is the configuration class to store the configuration of a [VitDetModel](/docs/transformers/v5.0.0/en/model_doc/vitdet#transformers.VitDetModel). It is used to instantiate an
 VitDet model according to the specified arguments, defining the model architecture. Instantiating a configuration
 with the defaults will yield a similar configuration to that of the VitDet
 [google/vitdet-base-patch16-224](https://huggingface.co/google/vitdet-base-patch16-224) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -95,11 +95,11 @@ out_indices (`list[int]`, *optional*) : If used as backbone, list of indices of 
 
 #### transformers.VitDetModel[[transformers.VitDetModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/vitdet/modeling_vitdet.py#L612)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/vitdet/modeling_vitdet.py#L610)
 
 The bare Vitdet Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -107,7 +107,7 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.VitDetModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/vitdet/modeling_vitdet.py#L626[{"name": "pixel_values", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
+forwardtransformers.VitDetModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/vitdet/modeling_vitdet.py#L624[{"name": "pixel_values", "val": ": torch.Tensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
   `image_processor_class`. See `image_processor_class.__call__` for details (`processor_class` uses
   `image_processor_class` for processing images).
@@ -118,9 +118,9 @@ forwardtransformers.VitDetModel.forwardhttps://github.com/huggingface/transforme
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([VitDetConfig](/docs/transformers/v5.0.0rc1/en/model_doc/vitdet#transformers.VitDetConfig)) and inputs.
+elements depending on the configuration ([VitDetConfig](/docs/transformers/v5.0.0/en/model_doc/vitdet#transformers.VitDetConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
@@ -132,7 +132,7 @@ elements depending on the configuration ([VitDetConfig](/docs/transformers/v5.0.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [VitDetModel](/docs/transformers/v5.0.0rc1/en/model_doc/vitdet#transformers.VitDetModel) forward method, overrides the `__call__` special method.
+The [VitDetModel](/docs/transformers/v5.0.0/en/model_doc/vitdet#transformers.VitDetModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -159,15 +159,15 @@ Examples:
 
 **Parameters:**
 
-config ([VitDetConfig](/docs/transformers/v5.0.0rc1/en/model_doc/vitdet#transformers.VitDetConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([VitDetConfig](/docs/transformers/v5.0.0/en/model_doc/vitdet#transformers.VitDetConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or a tuple of
+A [transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([VitDetConfig](/docs/transformers/v5.0.0rc1/en/model_doc/vitdet#transformers.VitDetConfig)) and inputs.
+elements depending on the configuration ([VitDetConfig](/docs/transformers/v5.0.0/en/model_doc/vitdet#transformers.VitDetConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +

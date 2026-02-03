@@ -2,18 +2,6 @@
 
 # Source: https://docs.near.org/protocol/network/token-loss.md
 
-# Source: https://docs.near.org/integrations/errors/token-loss.md
-
-# Source: https://docs.near.org/protocol/network/token-loss.md
-
-# Source: https://docs.near.org/integrations/errors/token-loss.md
-
-# Source: https://docs.near.org/protocol/network/token-loss.md
-
-# Source: https://docs.near.org/integrations/errors/token-loss.md
-
-# Source: https://docs.near.org/protocol/network/token-loss.md
-
 ---
 id: token-loss
 title: Avoiding Token Loss

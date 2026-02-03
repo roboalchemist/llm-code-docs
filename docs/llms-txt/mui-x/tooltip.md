@@ -535,6 +535,232 @@ With composition, you can use your component inside the `ChartDataProvider`.
 </ChartDataProvider>
 ```
 
+## Controlling item tooltip
+
+You can control the item tooltip with `tooltipItem` and `onTooltipItemChange`.
+
+When the item tooltip is controlled, the `anchor` is set to `'node'` if the pointer is outside of the chart.
+
+:::warning
+Make sure the tooltip `trigger` is set to `"item"`.
+Otherwise no tooltip will be shown.
+:::
+
+```tsx
+import * as React from 'react';
+import Stack from '@mui/material/Stack';
+import Box from '@mui/material/Box';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import ToggleButton from '@mui/material/ToggleButton';
+import { BarChart, BarChartProps } from '@mui/x-charts/BarChart';
+import FormControl from '@mui/material/FormControl';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormLabel from '@mui/material/FormLabel';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import { BarItemIdentifier } from '@mui/x-charts/models';
+
+export default function ControlledTooltip() {
+  const [tooltipItem, setTooltipItem] = React.useState<BarItemIdentifier | null>({
+    type: 'bar',
+    seriesId: 'A',
+    dataIndex: 0,
+  });
+
+  const handleTooltipSeries = (event: any, newTooltipSeries: string) => {
+    if (newTooltipSeries !== null) {
+      setTooltipItem((prev) => ({
+        type: 'bar',
+        dataIndex: 0,
+        ...prev,
+        seriesId: newTooltipSeries,
+      }));
+    }
+  };
+
+  const handleTooltipItem = (event: any) => {
+    setTooltipItem((prev) => ({
+      type: 'bar',
+      seriesId: 'A',
+      ...prev,
+      dataIndex: Number(event.target.value),
+    }));
+  };
+
+  return (
+    <Stack
+      direction={{ xs: 'column', xl: 'row' }}
+      spacing={1}
+      sx={{ width: '100%' }}
+    >
+      <Box sx={{ flexGrow: 1 }}>
+        <Stack spacing={2} alignItems={'center'}>
+          <ToggleButtonGroup
+            value={tooltipItem?.seriesId ?? null}
+            exclusive
+            onChange={handleTooltipSeries}
+            aria-label="highlighted series"
+            fullWidth
+          >
+            {['A', 'B'].map((type) => (
+              <ToggleButton key={type} value={type}>
+                Series {type}
+              </ToggleButton>
+            ))}
+          </ToggleButtonGroup>
+          <FormControl>
+            <FormLabel id="item-id-radio-group">Item ID</FormLabel>
+            <RadioGroup
+              aria-labelledby="item-id-radio-group"
+              name="radio-buttons-group"
+              value={tooltipItem?.dataIndex ?? null}
+              onChange={handleTooltipItem}
+              row
+            >
+              <FormControlLabel value="0" control={<Radio />} label="0" />
+              <FormControlLabel value="1" control={<Radio />} label="1" />
+              <FormControlLabel value="2" control={<Radio />} label="2" />
+              <FormControlLabel value="3" control={<Radio />} label="3" />
+              <FormControlLabel value="4" control={<Radio />} label="4" />
+            </RadioGroup>
+          </FormControl>
+        </Stack>
+        <BarChart
+          {...barChartsProps}
+          slotProps={{ tooltip: { trigger: 'item' } }}
+          tooltipItem={tooltipItem}
+          onTooltipItemChange={setTooltipItem}
+        />
+      </Box>
+    </Stack>
+  );
+}
+
+const barChartsProps: BarChartProps = {
+  series: [
+    {
+      data: [3, 4, 1, 6, 5],
+      label: 'A',
+      id: 'A',
+      highlightScope: { highlight: 'item', fade: 'global' },
+    },
+    {
+      data: [4, 3, 1, 5, 8],
+      label: 'B',
+      id: 'B',
+      highlightScope: { highlight: 'item', fade: 'global' },
+    },
+  ],
+  height: 400,
+};
+
+```
+
+### Synchronizing item tooltip
+
+The item tooltip control can be used to sync tooltip between multiple charts.
+
+```tsx
+import * as React from 'react';
+import Stack from '@mui/material/Stack';
+import { styled } from '@mui/material/styles';
+import { BarChart, BarChartProps } from '@mui/x-charts/BarChart';
+import { PieChart, PieChartProps } from '@mui/x-charts/PieChart';
+import { BarItemIdentifier, PieItemIdentifier } from '@mui/x-charts/models';
+
+const CodeBlock = styled('pre')({
+  minHeight: 125,
+});
+export default function SyncTooltip() {
+  const [pieTooltipItem, setPieTooltipItem] =
+    React.useState<PieItemIdentifier | null>(null);
+  const [barTooltipItem, setBarTooltipItem] =
+    React.useState<BarItemIdentifier | null>(null);
+
+  return (
+    <Stack
+      direction={{ xs: 'column', md: 'row' }}
+      spacing={1}
+      sx={{ width: '100%' }}
+    >
+      <Stack direction="column" spacing={1}>
+        <BarChart
+          {...barChartsProps}
+          slotProps={{ tooltip: { trigger: 'item' } }}
+          tooltipItem={barTooltipItem}
+          onTooltipItemChange={(newItem) => {
+            setBarTooltipItem(newItem);
+            setPieTooltipItem(
+              newItem === null
+                ? null
+                : ({
+                    ...newItem,
+                    type: 'pie',
+                  } as PieItemIdentifier | null),
+            );
+          }}
+        />
+        <CodeBlock>
+          Tooltip Item: {JSON.stringify(barTooltipItem, null, 2)}
+        </CodeBlock>
+      </Stack>
+      <Stack direction="column" spacing={1}>
+        <PieChart
+          {...pieChartProps}
+          tooltipItem={pieTooltipItem}
+          onTooltipItemChange={(newItem) => {
+            setPieTooltipItem(newItem);
+            setBarTooltipItem(
+              newItem === null
+                ? null
+                : ({
+                    ...newItem,
+                    type: 'bar',
+                  } as BarItemIdentifier | null),
+            );
+          }}
+        />
+        <CodeBlock>
+          Tooltip Item: {JSON.stringify(pieTooltipItem, null, 2)}
+        </CodeBlock>
+      </Stack>
+    </Stack>
+  );
+}
+
+const barChartsProps: BarChartProps = {
+  series: [
+    {
+      data: [3, 4, 1, 6, 5],
+      id: 'sync',
+      highlightScope: { highlight: 'item', fade: 'global' },
+    },
+  ],
+  xAxis: [{ data: ['A', 'B', 'C', 'D', 'E'] }],
+  height: 200,
+  hideLegend: true,
+};
+
+const pieChartProps: PieChartProps = {
+  series: [
+    {
+      id: 'sync',
+      data: [
+        { value: 3, label: 'A', id: 'A' },
+        { value: 4, label: 'B', id: 'B' },
+        { value: 1, label: 'C', id: 'C' },
+        { value: 6, label: 'D', id: 'D' },
+        { value: 5, label: 'E', id: 'E' },
+      ],
+      highlightScope: { highlight: 'item', fade: 'global' },
+    },
+  ],
+  height: 150,
+  hideLegend: true,
+};
+
+```
+
 ## Creating a tooltip
 
 To create your custom tooltip, the library exports some helpers which are explained in the following sections:

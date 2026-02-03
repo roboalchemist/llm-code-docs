@@ -1,26 +1,59 @@
 # Source: https://docs.meshconnect.com/advanced/sub-client-branding.md
 
-# Sub-Client Branding
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.meshconnect.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-### What are Sub-Clients, and why would you register them with Mesh?
+# Managing Sub-Clients
 
-If your product is used directly by end-users, this is likely not relevant to you. However, if your product is usually embedded in other products, then this is important. A sub-client is the product that yours is embedded in.
+## **What are Sub-Clients?**
 
-For example, if Mesh’s client is Retailer A, they might embed Mesh Pay directly into their checkout experience, and there is no sub-client involved. In this scenario, the Mesh Link modal would have Retailer A branding everywhere to create a seamlessly embedded experience. However, some of our clients are also embedded products. For example, if our client is Payment Processor A, they might have a whole portfolio of clients that they power payments for (eg. Retailer A, Retailer B, etc.). In this scenario, they may want the Mesh Link branding experience to be all about their sub-client (eg. Retailer A or Retailer B) so the end-user still feels embedded in their shopping experience.
+If your product is used directly by end-users, this section is likely not relevant to you. However, if your product is embedded within other platforms (e.g., you are a Payment Service Provider powering payments for multiple retailers), then Sub-Clients are critical.
 
-Registering a sub-client with Mesh allows you to ensure that the branding in Mesh Link is consistent with that of the client whose product it is being rendered in.
+A **Sub-Client** represents the specific merchant or platform where your product is embedded. Registering them allows you to:
 
-> Important: this isn’t just about branding. This is also for compliance. Mesh needs to know where our product is being used. So even if the branding will show your company’s name & logo (not your client’s), **all resellers must register subclients**. You can add your own name for display name and your own icon for branding. But we must know the legal business name for your subclients, and we must know which subclient each transaction pertains to.
+* **Ensure Consistent Branding:** Display the specific retailer's name and logo in the Mesh Link modal, creating a seamless experience for the end-user.
+* **Maintain Compliance:** Mesh requires visibility into the legal entity associated with each transaction for compliance purposes.
 
-### How do you register a subClient?
+### **How to Register a Sub-Client**
 
-* Notify your Mesh representative that you need this functionality and an Admin will turn it on for your account.
-* In the Mesh Dashboard, [in Account —> Link configuration you will see a new “Clients” tab](https://dashboard.meshconnect.com/company/link/clients).
-* Click “Add a client”
-* Add the Business legal name, Display name, Callback URL(s), and icon relevant for that client.
-* Click Save.
+You can register and manage sub-clients in two ways: via the Mesh Dashboard or programmatically via the Account Management API.
 
-### How can you ensure the appropriate branding is used when you call Link?
+### **Option 1: Via the Mesh Dashboard**
 
-* You will then see a Client ID for that client. You can pass this value in the `subClientId` field in a /api/v1/linktoken request. This will ensure that Link takes on the branding of that sub-client.
-* You can also test this out in our interactive demos. For example in the [Mesh Portfolio demo](https://dashboard.meshconnect.com/demos/mesh-portfolio), you can select a registered client from the “Sub-client” drop-down before clicking on “Connect your account.”
+1. Notify your Mesh representative to enable this functionality for your account.
+2. Navigate to **Account** > **Link Configuration** > **Clients** tab.
+3. Click **"Add a client"**.
+4. Enter the Business Legal Name, Display Name, Callback URL(s), and upload the relevant icon.
+5. Click **Save**.
+
+### **Option 2: Via the Account Management API**
+
+For high-volume or automated setups, you can use our **Account Management API** to create, update, and delete sub-clients programmatically.
+
+To use this API, you must first generate a dedicated API key and configure security settings.
+
+1. **Generate an API Key:**
+   * Go to **Account** > **API Keys**.
+   * In the new **Account Management API Keys** section, click to generate a new key.
+   * Use this key to authenticate your requests to the `https://admin-api.meshconnect.com` endpoints.
+2. **Configure IP Whitelisting (Security Requirement):**
+   * To enhance security, access to the Account Management API is restricted to pre-approved IP addresses.
+   * Go to the **Account Management API Whitelisted IPs** section in your dashboard.
+   * Add the specific IP address ranges from which your servers will make API calls.
+   * **Note:** Initially, you can configure these IPs without enforcement. Once your configuration is tested and ready, we will enable the filtering to strictly enforce these rules.
+
+### **Using a Sub-Client in a Transaction**
+
+Once a sub-client is registered (via Dashboard or API), you will receive a unique `subClientId`.
+
+To apply the sub-client's branding and settings to a transaction, simply pass this ID in your `linkToken` request:
+
+JSON
+
+`{
+  "subClientId": "your_sub_client_id_here",
+  "transferOptions": { ... }
+}`
+
+This ensures the Link modal automatically renders with the correct branding for that specific merchant. You can test this flow in our interactive demos by selecting a registered client from the "Sub-client" dropdown.

@@ -2,13 +2,9 @@
 
 # Source: https://docs.pipecat.ai/guides/features/pipecat-flows.md
 
-# Source: https://docs.pipecat.ai/server/frameworks/flows/pipecat-flows.md
-
-# Source: https://docs.pipecat.ai/guides/features/pipecat-flows.md
-
-# Source: https://docs.pipecat.ai/server/frameworks/flows/pipecat-flows.md
-
-# Source: https://docs.pipecat.ai/guides/features/pipecat-flows.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Pipecat Flows
 
@@ -508,8 +504,3 @@ Now that you understand the basics of Pipecat Flows, explore the reference docs 
     Explore more complex examples and use cases
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

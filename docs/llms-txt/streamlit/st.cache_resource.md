@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/caching-and-state/st.cache_resource
+
 # st.cache_resource
 
 Decorator to cache functions that return global resources (e.g. database connections, ML models).

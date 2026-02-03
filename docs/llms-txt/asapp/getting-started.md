@@ -2,13 +2,9 @@
 
 # Source: https://docs.asapp.com/ai-productivity/ai-summary/getting-started.md
 
-# Source: https://docs.asapp.com/generativeagent/getting-started.md
-
-# Source: https://docs.asapp.com/ai-productivity/ai-summary/getting-started.md
-
-# Source: https://docs.asapp.com/generativeagent/getting-started.md
-
-# Source: https://docs.asapp.com/ai-productivity/ai-summary/getting-started.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Getting Started
 
@@ -19,7 +15,7 @@ To start using AI Summary, choose your integration method:
 <AccordionGroup>
   <Accordion title="API (Real Time)">
     * Upload transcripts or use a conversation from AI Transcribe and receive the insights instantly.
-    * Ideal for real-time experiences like conversation routing and form pre-filling.
+    * You can use this approach for real-time experiences like conversation routing and form pre-filling.
     * For digital channels: Provide the chat messages directly.
     * For voice channels: Use AI Transcribe or your own transcription service.
 
@@ -27,7 +23,7 @@ To start using AI Summary, choose your integration method:
   </Accordion>
 
   <Accordion title="Salesforce plugin">
-    * Only supports Salesforce Chat.
+    * Supports only Salesforce Chat.
     * Inserts free-text summaries into conversation objects.
 
     <Card horizontal={true} title="Salesforce Plugin" href="/ai-productivity/ai-summary/salesforce-plugin">Learn how to use the Salesforce Plugin</Card>
@@ -46,7 +42,7 @@ To use AI Summary via API:
 Before you start integrating AI Summary, you need to:
 
 * Get your API Key Id and Secret
-* Ensure your account and API key have been configured to access AI Summary. Reach out to your ASAPP team if you are unsure.
+* Ensure your account and API key can access AI Summary. Reach out to your ASAPP team if you are unsure.
 
 ## Step 1: Provide transcripts
 
@@ -63,12 +59,12 @@ How you provide transcripts depends on the conversation channel.
 
 <Tabs>
   <Tab title="Use Conversation API">
-    To send transcripts via Conversation API, you need to
+    To send transcripts via the Conversation API, you need to:
 
     1. Create a `conversation`.
     2. Add `messages` to the `conversation`.
 
-    To create a `conversation`. Provide your Ids for the conversation and customer.
+    To create a `conversation`, provide your IDs for the conversation and customer.
 
     ```bash  theme={null}
     curl -X POST 'https://api.sandbox.asapp.com/conversation/v1/conversations' \
@@ -85,15 +81,15 @@ How you provide transcripts depends on the conversation channel.
     }'
     ```
 
-    This conversation represents a thread of messages between an end user and one or more agents. A successfully created conversation returns a status code of 200 and the `id` of the conversation.
+    This conversation represents a thread of messages between an end user and one or more agents. A successfully created conversation returns a status code of 200 and provides the `id` of the conversation.
 
     ```json  theme={null}
     {"id":"01HNE48VMKNZ0B0SG3CEFV24WM"}
     ```
 
-    Each time your end user or an agent sends a message, you need to add the messages of the conversation by creating a `message` on the `conversation`. This may either be the chat messages in digital channels, or the audio transcript from your transcription service.
+    Each time your end user or an agent sends a message, you need to add the messages to the conversation by creating a `message` on the `conversation`. This may be either the chat messages in digital channels or the audio transcript from your transcription service.
 
-    You have the choice to add a **single message** for each turn of the conversation, or can upload a **batch of messages** a conversation.
+    You have the choice to add a **single message** for each turn of the conversation, or you can upload a **batch of messages** for a conversation.
 
     <Tabs>
       <Tab title="Single message">
@@ -114,7 +110,7 @@ How you provide transcripts depends on the conversation channel.
 
         A successfully created message returns a status code of 200 and the id of the message.
 
-        <Warning>We only show one message as an example, though you would create many messages over the source of the conversation.</Warning>
+        <Warning>We only show one message as an example, though you would create many messages over the course of the conversation.</Warning>
       </Tab>
 
       <Tab title="Batched messages">
@@ -204,23 +200,23 @@ How you provide transcripts depends on the conversation channel.
     </Tabs>
   </Tab>
 
-  <Tab title="Use Autotranscribe">
+  <Tab title="Use AI Transcribe">
     AI Transcribe converts audio streams into real-time transcripts. Regardless of the platform you use:
 
     1. AI Transcribe generates a `conversation` object for each transcribed interaction.
-    2. You'll receive a unique `conversation` id.
-    3. Use this `conversation` id to extract insights via the AI Summary API.
+    2. You'll receive a unique `conversation` ID.
+    3. Use this `conversation` ID to extract insights via the AI Summary API.
 
     Platform-specific integration steps vary. Refer to the AI Transcribe documentation for detailed instructions for your chosen platform.
   </Tab>
 </Tabs>
 
-## Step 2: Extract Insight
+## Step 2: Extract Insights
 
 AI Summary offers three types of insights, each with its own API endpoint:
 
 * **Free text summary**
-* **Insight**
+* **Intent**
 * **Structured Data**
 
 All APIs require the conversation ID to extract the relevant insight.
@@ -235,7 +231,7 @@ curl -X GET 'https://api.sandbox.asapp.com/autosummary/v1/free-text-summaries/[c
 --header 'asapp-api-secret: <API TOKEN>'
 ```
 
-A successful free text summary generation returns 200 and the summary
+A successful free text summary generation returns 200 and the summary:
 
 ```javascript  theme={null}
 {
@@ -247,7 +243,7 @@ A successful free text summary generation returns 200 and the summary
 
 ## Next Steps
 
-Now that you understand the fundamentals of using AI Summary, explore further
+Now that you understand the fundamentals of using AI Summary, explore further:
 
 <CardGroup>
   <Card title="Example Use Cases" href="/ai-productivity/ai-summary/example-use-cases" />

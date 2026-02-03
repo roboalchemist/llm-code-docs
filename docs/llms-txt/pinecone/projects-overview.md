@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/assistant/admin/projects-overview.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Projects overview
 
 > Learn about projects, roles, and collaboration.
@@ -53,7 +57,7 @@ Specific to pod-based indexes:
 
 ## API keys
 
-Each Pinecone [project](/guides/assistant/admin/projects-overview) has one or more API keys. In order to [make calls to the Pinecone API](/guides/assistant/quickstart), you must provide a valid API key for the relevant Pinecone project.
+Each Pinecone [project](/guides/assistant/admin/projects-overview) has one or more API keys. In order to [make calls to the Pinecone API](/guides/assistant/quickstart/sdk-quickstart), you must provide a valid API key for the relevant Pinecone project.
 
 For more information, see [Manage API keys](/guides/assistant/admin/manage-api-keys).
 

@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/webhooks/available-webhooks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Available Webhooks
 
 > Complete reference of all webhook events available in Ultravox.
@@ -170,8 +174,3 @@ During development, consider using tools like:
 * **Postman**: Mock webhook endpoints for testing
 
 Remember that webhook events reflect real activity in your Ultravox account, so test carefully to avoid processing duplicate or test data in production systems.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

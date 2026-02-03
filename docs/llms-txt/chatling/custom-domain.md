@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/general-settings/custom-domain.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Custom domain
 
 > Learn how to add a custom domain to your chatbot.

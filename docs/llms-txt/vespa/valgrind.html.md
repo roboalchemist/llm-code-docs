@@ -59,5 +59,5 @@ $ VESPA_USE_VALGRIND="vespa-proton" VESPA_VALGRIND_OPT="--tool=callgrind --simul
 
 Remember to stop Vespa - the callgrind.\* files are not generated until the program stops.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

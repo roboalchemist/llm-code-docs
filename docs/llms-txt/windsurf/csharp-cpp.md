@@ -1,8 +1,12 @@
 # Source: https://docs.windsurf.com/windsurf/csharp-cpp.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # C#, .NET, and CPP
 
-> C# / C++ Development Setup for Windsurf
+> Setup guide for C#, .NET Core, .NET Framework (Mono), and C++ development in Windsurf using open-source tooling like OmniSharp, clangd, and LLDB.
 
 # Windsurf Development Environment Setup Guide
 

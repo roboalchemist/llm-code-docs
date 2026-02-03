@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/vector/integrations/langflow.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Langflow with Upstash Vector
 
 Langflow provides an intuitive, visual interface to design LLM workflows. You can seamlessly integrate Upstash Vector into your Langflow projects to enable vector-based semantic search and context retrieval.

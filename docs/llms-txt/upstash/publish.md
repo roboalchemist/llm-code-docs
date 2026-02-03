@@ -6,68 +6,143 @@
 
 # Source: https://upstash.com/docs/qstash/sdks/py/examples/publish.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/pubsub/publish.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://upstash.com/docs/redis/sdks/py/commands/pubsub/publish.md
+# Publish
 
-# Source: https://upstash.com/docs/qstash/sdks/ts/examples/publish.md
+<Info>
+  You can run the async code by importing `AsyncQStash` from `qstash`
+  and awaiting the methods.
+</Info>
 
-# Source: https://upstash.com/docs/qstash/sdks/py/examples/publish.md
+#### Publish to a URL with a 3 second delay and headers/body
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/pubsub/publish.md
+```python  theme={"system"}
+from qstash import QStash
 
-# Source: https://upstash.com/docs/redis/sdks/py/commands/pubsub/publish.md
+client = QStash("<QSTASH-TOKEN>")
+res = client.message.publish_json(
+    url="https://my-api...",
+    body={
+        "hello": "world",
+    },
+    headers={
+        "test-header": "test-value",
+    },
+    delay="3s",
+)
 
-# Source: https://upstash.com/docs/qstash/sdks/ts/examples/publish.md
+print(res.message_id)
+```
 
-# Source: https://upstash.com/docs/qstash/sdks/py/examples/publish.md
+#### Publish to a URL group with a 3 second delay and headers/body
 
-# Source: https://upstash.com/docs/qstash/api/publish.md
+You can make a URL group on the QStash console or using the [URL group API](/qstash/sdks/py/examples/url-groups)
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/pubsub/publish.md
+```python  theme={"system"}
+from qstash import QStash
 
-# Source: https://upstash.com/docs/redis/sdks/py/commands/pubsub/publish.md
+client = QStash("<QSTASH-TOKEN>")
+res = client.message.publish_json(
+    url_group="my-url-group",
+    body={
+        "hello": "world",
+    },
+    headers={
+        "test-header": "test-value",
+    },
+    delay="3s",
+)
 
-# Source: https://upstash.com/docs/qstash/sdks/ts/examples/publish.md
+# When publishing to a URL group, the response is an array of messages for each URL in the group
+print(res[0].message_id)
+```
 
-# Source: https://upstash.com/docs/qstash/sdks/py/examples/publish.md
+#### Publish a method with a callback URL
 
-# Source: https://upstash.com/docs/qstash/api/publish.md
+[Callbacks](/qstash/features/callbacks) are useful for long running functions. Here, QStash will return the response
+of the publish request to the callback URL.
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/pubsub/publish.md
+We also change the `method` to `GET` in this use case so QStash will make a `GET` request to the `url`. The default
+is `POST`.
 
-# Source: https://upstash.com/docs/redis/sdks/py/commands/pubsub/publish.md
+```python  theme={"system"}
+from qstash import QStash
 
-# Source: https://upstash.com/docs/qstash/sdks/ts/examples/publish.md
+client = QStash("<QSTASH-TOKEN>")
+client.message.publish_json(
+    url="https://my-api...",
+    body={
+        "hello": "world",
+    },
+    callback="https://my-callback...",
+    failure_callback="https://my-failure-callback...",
+    method="GET",
+)
+```
 
-# Source: https://upstash.com/docs/qstash/sdks/py/examples/publish.md
+#### Configure the number of retries
 
-# Source: https://upstash.com/docs/qstash/api/publish.md
+The max number of retries is based on your [QStash plan](https://upstash.com/pricing/qstash)
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/pubsub/publish.md
+```python  theme={"system"}
+from qstash import QStash
 
-# PUBLISH
+client = QStash("<QSTASH-TOKEN>")
+client.message.publish_json(
+    url="https://my-api...",
+    body={
+        "hello": "world",
+    },
+    retries=1,
+)
+```
 
-> Publish a message to a channel
+By default, the delay between retries is calculated using an exponential backoff algorithm. You can customize this using the `retryDelay` parameter. Check out [the retries page to learn more about custom retry delay values](/qstash/features/retry#custom-retry-delay).
 
-## Arguments
+#### Publish HTML content instead of JSON
 
-<ParamField body="channel" type="string" required>
-  The channel to publish to.
-</ParamField>
+```python  theme={"system"}
+from qstash import QStash
 
-<ParamField body="message" type="TMessage">
-  The message to publish.
-</ParamField>
+client = QStash("<QSTASH-TOKEN>")
+client.message.publish(
+    url="https://my-api...",
+    body="<html><body><h1>Hello World</h1></body></html>",
+    content_type="text/html",
+)
+```
 
-## Response
+#### Publish a message with [content-based-deduplication](/qstash/features/deduplication)
 
-<ResponseField type="integer" required>
-  The number of clients who received the message.
-</ResponseField>
+```python  theme={"system"}
+from qstash import QStash
 
-<RequestExample>
-  ```ts Example theme={"system"}
-  const listeners = await redis.publish("my-channel", "my-message");
-  ```
-</RequestExample>
+client = QStash("<QSTASH-TOKEN>")
+client.message.publish_json(
+    url="https://my-api...",
+    body={
+        "hello": "world",
+    },
+    content_based_deduplication=True,
+)
+```
+
+#### Publish a message with timeout
+
+Timeout value to use when calling a url ([See `Upstash-Timeout` in Publish Message page](/qstash/api/publish#request))
+
+```python  theme={"system"}
+from qstash import QStash
+
+client = QStash("<QSTASH-TOKEN>")
+client.message.publish_json(
+    url="https://my-api...",
+    body={
+        "hello": "world",
+    },
+    timeout="30s",
+)
+```

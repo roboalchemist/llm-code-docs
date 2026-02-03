@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/assistant/admin/manage-organization-service-accounts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Manage service accounts at the organization-level
 
 > Create service accounts for organization-level API access.
@@ -44,7 +48,7 @@ You can retrieve an access token for a service account from the `https://login.p
 
 ```bash curl theme={null}
 curl "https://login.pinecone.io/oauth/token" \ # Note: Base URL is login.pinecone.io
-	-H "X-Pinecone-Api-Version: 2025-04" \
+	-H "X-Pinecone-Api-Version: 2025-10" \
 	-H "Content-Type: application/json" \
 	-d '{
 		"grant_type": "client_credentials",

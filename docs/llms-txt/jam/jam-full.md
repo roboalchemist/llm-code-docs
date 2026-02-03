@@ -16,7 +16,7 @@ Jam helps customer support, product and engineering teams capture and debug issu
 
 <table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>Getting Started</strong></td><td>Learn how to use Jam</td><td><a href="getting-started">getting-started</a></td><td><a href="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FBs5vNMvHrK3pHyKzgqJ2%2FGet%20started.png?alt=media&#x26;token=cb7023d3-dac8-49e6-9ab0-d22f6aec2316">Get started.png</a></td></tr><tr><td><strong>Creating a Recording Link</strong></td><td>Collect issues from others</td><td><a href="creating-a-recording-link">creating-a-recording-link</a></td><td><a href="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FkpN22EG2QPRJJIcsNYvc%2FCreate%20recording%20links.png?alt=media&#x26;token=2af9e1b8-608c-41c6-a1e6-7557bf024db6">Create recording links.png</a></td></tr><tr><td><strong>Creating a Jam</strong></td><td>Capture issues by yourself</td><td><a href="creating-a-jam">creating-a-jam</a></td><td><a href="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FOtlVZHmrDgghfoybYJJ5%2FCreate%20Jam.png?alt=media&#x26;token=45238c18-623c-475e-9632-1bf8e7d3206c">Create Jam.png</a></td></tr><tr><td><strong>Team Setup and Integrations</strong></td><td>Connect your team and tools</td><td><a href="team-setup-and-integrations">team-setup-and-integrations</a></td><td><a href="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2F0d5f4JxJXpFaAT66VyKu%2FTeam%20setup%20and%20integrations.png?alt=media&#x26;token=fafe3f00-a635-48ad-ab14-f6c63107c527">Team setup and integrations.png</a></td></tr></tbody></table>
 
-\\
+<br>
 
 
 # Getting started
@@ -89,7 +89,7 @@ When you create a recording link, you can associate the recording link with what
 1. Copy the link to your issue tracker ticket:
 
    <figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FHPDeeCwEbKTg9oJnhgy8%2FScreenshot%202025-09-05%20at%2012.20.18%E2%80%AFPM.png?alt=media&#x26;token=7c9dee3c-b071-434c-935e-964302094eeb" alt=""><figcaption></figcaption></figure>
-2. Create a recording link. In the “reference name or link”, paste your link. You'll see that we identify your issue tracker and ticket number:\\
+2. Create a recording link. In the “reference name or link”, paste your link. You'll see that we identify your issue tracker and ticket number:<br>
 
    <figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2F8NYTMzz7sK5LhS9geLyK%2FScreenshot%202025-09-05%20at%2012.22.46%E2%80%AFPM.png?alt=media&#x26;token=de3b1fa8-51ec-4956-90ed-9e9aa77cc5c0" alt=""><figcaption><p>You can also enter any web URL or email address!</p></figcaption></figure>
 3. Send your recording link to your customer.
@@ -195,7 +195,7 @@ Jam is currently available for iOS only.
 {% stepper %}
 {% step %}
 **Install the iOS App**\
-[Download](https://apps.apple.com/de/app/jam-fix-bugs-faster/id6469037234?l=en-GB) Jam from the App Store or scan the QR code below:\\
+[Download](https://apps.apple.com/de/app/jam-fix-bugs-faster/id6469037234?l=en-GB) Jam from the App Store or scan the QR code below:<br>
 
 <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FSQhU75M3j09SDi2x1sUJ%2Fimage.png?alt=media&#x26;token=03c9a67d-9dc4-4b91-9f99-39824f6a6636" alt="" width="125"><figcaption><p>Scan to download</p></figcaption></figure></div>
 {% endstep %}
@@ -299,6 +299,1290 @@ You can send previously created Jams to integrated tools:
 ***
 
 
+# Jam AI
+
+{% hint style="info" %}
+Jam AI is available on all [paid plans](https://jam.dev/pricing). &#x20;
+
+With Jam's free plan, you can create 5 AI tickets per month.  Try unlimited Jam AI for free, by starting a 14 day trial of Jam for Teams.
+{% endhint %}
+
+***
+
+{% embed url="<https://www.youtube.com/watch?v=VtQ6kO8Ye1U>" %}
+
+### Overview
+
+Jam AI transforms your bug captures into complete, actionable reports. Engineers get the context they need to debug faster, while you spend less time writing tickets.
+
+### Key Benefits
+
+* **Complete bug reports in one click:** no more incomplete tickets
+* **Faster debugging:** engineers get structured repro steps and potential fixes
+* **Consistent quality:** every ticket includes the details that matter
+
+### How it works
+
+* **AI Auto-Title:** AI generates a short summary of the captured video, screenshot, or instant replay
+* **AI Repro Steps:** AI generates a list of steps to reproduce the captured bug
+
+{% hint style="warning" %}
+AI Repro Steps are not available for screenshot Jams.
+{% endhint %}
+
+### Managing AI Features
+
+You can control Jam AI at two levels: team-wide settings and individual captures.
+
+{% tabs %}
+{% tab title="Team Settings" %}
+
+<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FWj6zBK4n7VYv2pRF4qIy%2FSetting_%20AI%20Team%20Workspace.png?alt=media&#x26;token=ce1ec658-76af-47a8-aaa0-c3e481e4935b" alt=""><figcaption></figcaption></figure>
+
+**Team-Level Control**
+
+1. Control Jam AI for your entire team through admin settings.
+2. Go to Team Settings
+3. In general scroll down to the data section
+4. Toggle Jam AI on or off
+5. This setting applies to all team members and overrides individual preferences in a team workspace.
+   {% endtab %}
+
+{% tab title="Individual Captures" %}
+
+<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FkWolCZ4IF4jcv10jt7B9%2FSettings_%20AI%20Capture.png?alt=media&#x26;token=d75e57ee-368d-413a-8f65-dbc8a668be61" alt=""><figcaption></figcaption></figure>
+
+**Per-Capture Control**
+
+1. Toggle AI features while creating any Jam.
+2. Start creating a new Jam
+3. Look for the AI toggle in the capture interface
+4. Turn it on or off based on your needs
+5. Your choice saves automatically for future captures.
+   {% endtab %}
+   {% endtabs %}
+
+### FAQs
+
+<details>
+
+<summary>Are Jam's AI features free?</summary>
+
+You can try our Team plan for free for 14 days which includes Jam AI.\
+\
+Users on the free plan get 5 trial uses of Jam AI. Pro and Team plans have 200 uses per month per user. Our enterprise plans include unlimited AI usage.\
+\
+Working on an open-source project? Jam will always remain free for open-source projects. [Apply here](https://jam.dev/oss) for Team plan access.
+
+</details>
+
+<details>
+
+<summary>How is my data used?</summary>
+
+The data is shared with Google's Gemini AI model for the purpose of providing you with Jam AI functionality. We explicitly opt out of LLMs using Jam customer data for any training. We take steps to de-identify data and protect your privacy. For more details, visit our [AI policies](https://jam.dev/docs/welcome/company/ai-policy) page.
+
+<br>
+
+</details>
+
+<details>
+
+<summary>Where can I learn more about Jam's AI policies?</summary>
+
+To learn more about Jam's AI approach, including data usage and privacy, visit our [AI policies](https://jam.dev/docs/welcome/company/ai-policy) page.
+
+</details>
+
+
+# Jam for iOS
+
+The fastest way to capture dev-ready bug reports from iOS and send them to your issue tracker.
+
+{% hint style="info" %}
+Visit the App Store to [download](https://apps.apple.com/app/id6469037234) Jam for iOS for your iPad or iPhone. 🤳
+{% endhint %}
+
+{% embed url="<https://www.youtube.com/watch?v=Xuk7cO50Z9M>" %}
+
+### **What can you do with Jam for iOS?**
+
+Meet Jam for iOS - the fastest way to capture dev-ready bug reports from mobile and send them to your issue tracker. Every ticket automatically includes technical details (OS, device, battery levels, etc.), so you don’t have to. This gives devs all the context they need to fix issues faster.<br>
+
+* **Record your screen** to capture and share mobile bugs with ease.
+* **AI-generated title & summary**: When you use voice-over during the screen recording, Jam will automatically transcribe and summarize the content, and generate a title and description for your Jam. No more typing required.
+* **Auto-captioning**: When you're narrating your recording, Jam automatically generates captions that make it easier for others to understand what's happening in Jam, even without audio.
+* **Trim, annotate, and add comments** to clarify the issue you want to share.
+* **Create** a shareable link or send straight to your favorite issue tracker in seconds.
+* **Watch** existing Jams in your workspace.
+
+### AI-assisted Title, Description, and Captions
+
+If you are using the microphone to voice-over a Jam, the AI will automatically transcribe and summarize the content and fill in the Jam's title and description. In addition, the video will get automatic captions.
+
+Here is the list of supported languages (if a region isn’t supported, it will use the nearest equivalent - favouring a model that is already installed):<br>
+
+* English, French, German, Italian, Portuguese, Spanish, Japanese, Korean, Chinese (Simplified and Traditional)
+
+### How to record a Jam on iOS?
+
+1. Open Jam, click the big strawberry 🍓
+2. Click "Start Broadcast" to Jam.
+3. Navigate to your target app/website to record the issue and provide a voice-over of the details needed to understand what's going on.
+4. When you're done, stop broadcasting directly or by navigating back to the Jam app.
+5. Trim the video, add description,  and click "Create Link".
+6. Wait a few seconds until your Jam is ready to share. We will automatically copy the link to your clipboard if Jam is in focus.
+
+<div><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2Fk4c83hZTRQF81hL2yrSg%2FIMG_2818.PNG?alt=media&#x26;token=ade99466-2505-47e1-ad72-a24df1030358" alt=""><figcaption></figcaption></figure> <figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FpERnUDzslYuVMltAdUJ0%2FIMG_2819.PNG?alt=media&#x26;token=c4da3dd2-f915-4ac3-9a73-1cbf3256c680" alt=""><figcaption></figcaption></figure> <figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FylLSWGr93Dp87XcyJLEl%2FIMG_2820.PNG?alt=media&#x26;token=1e3a366e-c963-4571-b002-025dcbca8336" alt=""><figcaption></figcaption></figure> <figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2Fe8g4BHTGkiK9qGggdzLZ%2FIMG_2822.PNG?alt=media&#x26;token=b30ecdfb-c6ab-4c20-8b54-72d01d1f69d2" alt=""><figcaption></figcaption></figure> <figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FKytWNSZ0N84txgKeQZV3%2FIMG_2823.PNG?alt=media&#x26;token=a2809f3c-5d72-4f63-b94a-a174d74607f1" alt=""><figcaption></figcaption></figure> <figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2F6rvoe60BtAXyOvg3oPxQ%2FIMG_2825.PNG?alt=media&#x26;token=02cbb93d-a5de-41d3-9e3d-509560f9f195" alt=""><figcaption></figcaption></figure></div>
+
+
+# iOS Shortcuts for Jam
+
+Set up Shortcuts on iOS to create Jams even faster
+
+### Add Jam Widget to Control Center
+
+<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FeN23X52ZTEoh23YMyo4D%2Fimage.png?alt=media&#x26;token=cb09bfa1-80e7-4795-8469-6918dd084c6b" alt=""><figcaption></figcaption></figure>
+
+**What it does:** Adds a strawberry button to your Control Center that immediately starts a Jam recording.
+
+**Why it's useful:** Control Center is accessible from anywhere on iOS. Perfect for capturing critical moments without switching contexts.
+
+**Setup steps:**
+
+1. Swipe down from top-right corner (or up from bottom on older devices) to open **Control Center**
+2. **Long-press** on any space in Control Center
+3. Tap **Add a Control** (plus button)
+4. Find **Jam** and tap the **+** button
+5. The strawberry icon now appears in your Control Center
+
+**To use:** Swipe down from top-right corner (or up from bottom on older devices) → tap the strawberry button → tap **Start Broadcast** to begin recording.
+
+***
+
+### Hey Siri, Record a Jam
+
+<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FkR0see89JSPLZtay7kwf%2Fimage.png?alt=media&#x26;token=4d2166cb-5519-4a19-962c-1e5d1093972e" alt=""><figcaption></figcaption></figure>
+
+**What it does:** Voice-activated shortcut that opens Jam's recording screen.
+
+**Why it's useful:** Hands-free activation when you're mid-workflow or demonstrating an issue to someone else.
+
+**Setup steps:**
+
+1. Say **"Hey Siri, Record a Jam"**
+2. First time: iOS will ask for permission—tap **Allow**
+3. Jam opens to the recording screen
+4. Tap **Start Broadcast** to begin recording
+
+**To use:** Just say "Hey Siri, Record a Jam" anytime. Works even when your phone is locked.
+
+***
+
+### Add Jam Widget to Homescreen
+
+<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FRixHRKTT0YIHRRXQC0Qc%2Fimage.png?alt=media&#x26;token=8640aadd-38d6-49eb-90bb-7c204b64b14f" alt=""><figcaption></figcaption></figure>
+
+**What it does:** Places a widget on your homescreen to start and stop recordings without opening the app.
+
+**Why it's useful:** Essential for dedicated test devices where you're constantly switching between recording and testing. Keeps Jam controls visible and accessible.
+
+**Setup steps:**
+
+1. Long-press any empty area on your homescreen
+2. Tap the **+** button (top-left corner)
+3. Search for **Jam** and select it
+4. Choose **Small** or **Medium** widget size
+5. Tap **Add Widget**
+6. Position where convenient
+
+**To use:** Just tap the widget and tap **Start Broadcast** to begin recording.
+
+***
+
+### Record a Jam with your Action Button
+
+<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FXoFYsoMw8H41aV9vbhAW%2Fimage.png?alt=media&#x26;token=a87d0793-580f-48c8-92bc-30c0b57d0537" alt=""><figcaption></figcaption></figure>
+
+**What it does:** Associate the "Record a Jam" shortcut with your Action Button
+
+**Why it's useful:** Record a Jam with one button press, from any screen.
+
+**Setup steps:**
+
+1. Go to Settings
+2. Search for action button
+3. Associate the action button with "Record a Jam" Shortcut
+
+**To use:** Just press the Action Button and tap **Start Broadcast** to begin recording.
+
+
+# Setting up logging in iOS
+
+The [JamLog](https://github.com/jamdotdev/jam-ios-log) framework lets you send log events to [Jam for iOS](https://apps.apple.com/us/app/jam-fix-bugs-faster/id6469037234) so that they can be associated with your [Jam](https://jam.dev).
+
+### Supported Platforms
+
+* iOS 15.0+
+
+### Quick Start
+
+Add the following to your `Package.swift`:
+
+```swift
+dependencies: [
+  .package(url: "https://github.com/jamdotdev/jam-ios-log.git", from: "1.0.0")
+]
+```
+
+Alternatively, you can add the package [directly via Xcode](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app).
+
+### Usage
+
+```swift
+import Jam
+
+Jam.debug("Hello world!")
+```
+
+Also supports `info`, `warn`, and `error`.
+
+### SwiftLog
+
+You can integrate with [SwiftLog](https://github.com/apple/swift-log) by importing `JamSwiftLog` and bootstraping the logging system:
+
+```swift
+import JamSwiftLog
+import Logging
+
+LoggingSystem.bootstrap { label in
+  JamLogHandler(label: label)
+}
+```
+
+Alternatively, you can add JamLog to your existing logging system by using the `MultiplexLogHandler`. Assuming you are already using the `StreamLogHandler`:
+
+```swift
+import JamSwiftLog
+import Logging
+
+LoggingSystem.bootstrap { label in
+  MultiplexLogHandler([
+    StreamLogHandler.standardOutput(label: label),
+    JamLogHandler(label: label)
+  ])
+}
+```
+
+### React Native
+
+JamLog is also available as a [React Native Expo module](https://github.com/jamdotdev/expo-jam-log).
+
+
+# Enabling Taps and Gestures on iOS Screen Recording
+
+By following these steps, you can visually represent taps and gestures in your iOS screen recordings using AssistiveTouch.<br>
+
+### **Step 1: Enable AssistiveTouch**
+
+1. Open the **Settings** app on your Apple device.
+2. Tap **Accessibility** (found under **General** in older iOS versions).
+3. Under **Physical and Motor**, tap **Touch**.
+4. On the **Touch** screen, tap **AssistiveTouch**.
+5. Switch the **AssistiveTouch** toggle to the on position.
+
+### Step 2: Create a Custom Tap Gesture (Optional)
+
+1. From the **AssistiveTouch** screen, tap **Create New Gesture**.
+2. Record a tap gesture by tapping the screen once, then tap **Save**.
+3. Name the gesture (e.g., "Tap") and tap **Save** again.
+
+### Step 3: Use AssistiveTouch During Recording
+
+1. Start your screen recording.
+2. Tap the **AssistiveTouch** shortcut.
+3. From the menu, tap **Custom**.
+4. Select the gesture you created (e.g., "Tap").
+
+
+# Keyboard shortcuts
+
+### Overview
+
+Control the Jam extension faster with keyboard shortcuts. Skip the clicks and capture bugs, record sessions, or take screenshots directly from your keyboard. Perfect for streamlining your debugging workflow.<br>
+
+![](https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FtZuIb4die417pd1wiT6B%2Fkeyboard-shortcuts.gif?alt=media\&token=f0fa07d6-0881-4562-a760-6bfbbf6d5e44)
+
+### Key Benefits
+
+* **Faster bug capture:** Skip mouse clicks and capture issues instantly
+* **Workflow efficiency:** Keep your hands on the keyboard while testing
+* **Customizable controls:** Set shortcuts that match your preferred workflow
+* **Quick discovery:** Hover over extension buttons to see default shortcuts
+
+### Default Shortcuts
+
+{% hint style="info" %}
+Chrome limits extensions to 3 default keyboard shortcuts. That's why Desktop Recording doesn't have a default shortcut . We prioritized the most commonly used features by default.
+{% endhint %}
+
+| Action             | Default shortcut                                   |
+| ------------------ | -------------------------------------------------- |
+| Capture screenshot | <kbd>Shift</kbd> <kbd>⌘</kbd> <kbd>S</kbd>         |
+| Record tab         | <kbd>Shift</kbd> <kbd>⌘</kbd> <kbd>Space bar</kbd> |
+| Instant replay     | <kbd>Shift</kbd> <kbd>⌘</kbd> <kbd>X</kbd>         |
+
+You can find the current keyboard shortcuts by hovering over each button in the Jam extension. The shortcut will appear in a tooltip.
+
+### Customizing Shortcuts
+
+You can modify keyboard shortcuts to match your workflow preferences through your browser's extension settings.
+
+**Edit Chrome Extension Shortcuts**
+
+![](https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FUe2TDriWWvlylRd2XlWc%2Fedit-keyboard-shortcuts.gif?alt=media\&token=4304fffc-0fe5-431e-8153-b0dcdeaedffc)
+
+1. Go to <chrome://extensions/shortcuts> in your address bar
+2. Find the Jam extension in the list
+3. Click in the shortcut field next to the action you want to change
+4. Press your preferred key combination
+5. The new shortcut saves automatically
+
+You should now see your custom shortcuts when hovering over extension buttons.
+
+### FAQs
+
+<details>
+
+<summary>Why doesn't Desktop Recording have a default keyboard shortcut?</summary>
+
+Chrome limits extensions to 3 default shortcuts per extension. We chose to assign defaults to the most frequently used features: Instant Replay, Screenshot, and Record tab.
+
+</details>
+
+<details>
+
+<summary>Can I assign a shortcut to Desktop Recording?</summary>
+
+Yes. Go to your browser's extension shortcuts settings and create a custom shortcut for Desktop Recording.
+
+</details>
+
+<details>
+
+<summary>What happens if my shortcut conflicts with another extension?</summary>
+
+The browser will typically warn you about conflicts. You'll need to choose a different key combination that doesn't conflict with existing shortcuts.
+
+</details>
+
+
+# Mobile inspector
+
+You can use Jam to review responsive styles by using Jam alongside your browser's mobile inspector tools.
+
+<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FBfSSWI8EXJbXm53bqGNm%2Funnamed.gif?alt=media&#x26;token=252d9a8a-64f3-42b7-8b94-b20cd4947da0" alt=""><figcaption></figcaption></figure>
+
+To preview your website using your browser's mobile inspection:
+
+1. Right click on the website and select "Inspect"
+2. In the top left corner of dev tools, click the mobile inspector tool:
+
+![](https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FNbu74f8hOsvMjCdFScqf%2FScreenshot%202023-07-07%20at%209.53.53%20PM.png?alt=media\&token=334f4a02-4a00-43a5-a839-5447cb5f990c)
+
+3. Then, you can use Jam as usual to log any responsive bugs you see. The updated viewport and device information you have in the mobile inspector will automatically be included in the Jam for your engineers.&#x20;
+
+
+# Video Screen Recording
+
+You can use Jam to quickly record a video of your screen – along with all the technical details engineers need to troubleshoot and fix bugs.
+
+Unlike other screen recording tools, Jam's video recorder is purpose-built for product, engineering, support, and QA teams to aid in capturing bugs while automatically including all the technical details engineers require to address and fix them.
+
+<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FO1048cQEYtyOSjBDB48o%2FTab-recording.gif?alt=media&#x26;token=38c17188-c178-497d-9a69-c729a6fa687e" alt=""><figcaption></figcaption></figure>
+
+When you record a video of your screen with Jam, Jam captures the following technical diagnostics and auto-includes them to help your engineers debug faster:
+
+* Console logs
+* Fully inspectable network requests
+* URL
+* Timestamp & country
+* Device, OS, Browser
+* Viewport size
+* Network speed
+
+And packages it all into one easy link to be shared with an engineer or pasted into a ticket.
+
+## Voiceover Recording
+
+When you record a video with Jam, you can optionally choose to record a voiceover for your videos. This helps in providing real-time explanations and context for the activities happening on the screen.
+
+Then you can mute and un-mute your microphone and choose which microphone Jam should use to record your audio.
+
+<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FSNWQvm5BdQppM30UP2rq%2FMic-controls.gif?alt=media&#x26;token=44ab7be5-9b36-49c9-ad34-e56c6d82e76a" alt=""><figcaption></figcaption></figure>
+
+### Microphone permission
+
+To use the microphone, you will need to have the correct permissions in your browser. You will be prompted to grant access the first time you try to use microphone.
+
+If you have previously denied microphone access, you can modify it in the browser extension settings:
+
+1. Go to extension site settings - copy and paste this URL in your search bar: <kbd>chrome://settings/content/siteDetails?site=chrome-extension://iohjgamcilhbgmhbnllfolmkmmekfmci</kbd>
+2. In the permission list, select “Allow” for microphone permission
+
+## Tab vs Desktop Recording
+
+With Jam, you can record a single tab, an entire window, or your full desktop.&#x20;
+
+<div align="left" data-full-width="false"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FoQuHkqZfbdP2yknXFr1a%2FTabvsDesktop.gif?alt=media&#x26;token=0f385753-e91d-4bf1-91d6-a3dfe28fdfdf" alt=""><figcaption><p>Switching between tab and desktop recording</p></figcaption></figure></div>
+
+When you record a single tab, Jam only captures what's literally in that tab. That means Jam does not capture the browser URL bar, or any new windows (e.g. for login flows) that pop up external to the tab.
+
+When you record a window or your entire desktop with the "Record desktop" option, Jam records the full scope of that window/monitor – including the browser URL bar.
+
+Because Jam is purpose-built to help engineers understand bug reports at a glance, when you choose the "Record desktop" option, Jam will auto-include console logs and network requests from every tab you interact with during the recording (as long as Jam is installed in that browser window).&#x20;
+
+That means, if you're trying to demonstrate a bug that spans across multiple tabs or windows (like something updating in one place but not in another), Jam can record that in real-time, and give engineers a holistic view of the bug even if it's not contained within a single tab. That way engineers can track a bug through multiple sites, tabs and windows.&#x20;
+
+### Recording incognito tabs
+
+Jam offers full support for incognito. See steps here to enable Jam on incognito windows:
+
+{% content-ref url="incognito-sessions" %}
+[incognito-sessions](https://jam.dev/docs/welcome/record-a-jam/incognito-sessions)
+{% endcontent-ref %}
+
+
+# Desktop Recording
+
+With Jam, you can record a single tab, an entire window, or your full desktop.&#x20;
+
+When recording a window or your entire desktop, Jam captures console logs and network requests from every tab you interact with during the recording (as long as Jam is installed in that browser window).&#x20;
+
+That means, if you're trying to demonstrate a bug that spans across multiple tabs or windows (like something updating in one place but not in another), Jam can record that in real-time. It simultaneously captures console logs and network requests from both tabs, giving engineers a holistic view of the bug even if it's not contained within a single tab.
+
+That way engineers can track a bug through multiple sites, tabs and windows.
+
+See steps here to enable Jam on incognito windows:
+
+{% content-ref url="../incognito-sessions" %}
+[incognito-sessions](https://jam.dev/docs/welcome/record-a-jam/incognito-sessions)
+{% endcontent-ref %}
+
+## Troubleshooting permissions on Mac
+
+If you are using a Mac and are unable to record your desktop using Jam, follow these steps to fix it:
+
+Step 1: Open your "System Preferences".
+
+Step 2: Open your "Security & Privacy" settings.
+
+Step 3: Click on the "Privacy" tab.
+
+<figure><img src="https://jam.dev/docs/content/images/2023/03/Screen-Shot-2023-03-30-at-9.05.13-PM.png" alt=""><figcaption></figcaption></figure>
+
+Step 4: Select "Screen Recording" from the list.
+
+![](https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FN8j1zBucNGP2kgSHdG6d%2Fimage.png?alt=media\&token=ae109a07-109d-41ef-8609-1554234d1176)
+
+Step 5: If you don't see "Google Chrome" on the list, skip to Step 6. If you see "Google Chrome" on the list, carefully follow the next steps. Remove "Google Chrome" completely from the list. It's important that you completely remove it (not just uncheck the box next to "Google Chrome") using the minus icon.
+
+Step 6: Add "Google Chrome" to the list by using the plus icon.
+
+![](https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FC3MWmvDAiL11Npb46aH9%2Fimage.png?alt=media\&token=1611bfa1-0f7f-46af-9e5c-45d1b1185c20)
+
+
+# Video blur
+
+With blur you can easily hide sensitive information in your video recording, and share your Jams knowing that private details are secure.
+
+Here's how to use blur in your video recording:
+
+1. Select tab or desktop recording from Jam extension
+2. You can use blur before the recording starts by selecting the blur tool during countdown \
+   \&#xNAN;*Note: available for tab recording only*<br>
+
+   <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2F6gLpIPP8VaG6GSN4o21T%2FVideo-blur.gif?alt=media&#x26;token=5250e01d-1822-43ec-a355-352e012d38e9" alt="" width="375"><figcaption></figcaption></figure></div>
+3. You can also use blur during recording. Clicking the blur tool will pause the recording, and you can start selecting elements you want to hide. To remove the blur, you can click again on the blurred element. Once you’re done, you can click “Done” button, and continue recording your video.\
+   \&#xNAN;*Note: Elements cannot be blurred after the recording, only before or during the recording.*<br>
+
+   <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FDzg7K7N0iAdohIlyIDzs%2Fvideo-annotations-unblur.gif?alt=media&#x26;token=4dcb5d45-7ddc-4339-9a0c-63b77b04ffe8" alt="" width="375"><figcaption></figcaption></figure></div>
+4. During window recording you can blur elements across multiple tabs
+
+{% hint style="info" %}
+The blur feature is available on all [paid plans](https://jam.dev/pricing). You can also try the feature for free 3 times.&#x20;
+{% endhint %}
+
+{% hint style="info" %}
+Blurring certain page elements like `iframe` and `canvas` is not supported.
+{% endhint %}
+
+
+# Video annotations
+
+Easily highlight key details in your video recordings using annotations, and help engineers quickly understand the issue you're reporting.&#x20;
+
+{% hint style="info" %}
+The draw feature is available on all [paid plans](https://jam.dev/pricing). You can also try the feature for free 3 times.&#x20;
+{% endhint %}
+
+Here's how to draw on your video recording:
+
+1. Select tab or desktop recording from Jam extension
+2. While recording is in progress you can select the draw tool and start drawing. \
+   Note: Added shapes will automatically fade away after 3 seconds.
+
+<div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FyVd5SBPlfpwgSZwduPZT%2FVideo-annotation.gif?alt=media&#x26;token=b7abe0c6-2594-4249-8264-f23b573eaadb" alt="" width="375"><figcaption></figcaption></figure></div>
+
+{% hint style="info" %}
+Video cannot be annotated *after* recording, only during the recording.
+{% endhint %}
+
+
+# Screenshot
+
+You can use Jam to quickly capture a screenshot of a bug – along with all the technical details engineers need to troubleshoot and fix bugs.
+
+Unlike other screenshot tools, Jam's screenshot tool is purpose-built for product, engineering, support, and QA teams to aid in capturing bugs while automatically including all the technical details engineers require to address and fix them.
+
+<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2F9dEkzINSonblJTgOmYlN%2Fscreenshot.gif?alt=media&#x26;token=f9b153d1-e219-45de-a747-2822775c61df" alt=""><figcaption></figcaption></figure>
+
+## Automated technical diagnostic collection
+
+When you capture a screenshot with Jam, Jam captures the following technical diagnostics and auto-includes them to help your engineers debug faster:
+
+* Console logs
+* Fully inspectable network requests
+* URL
+* Timestamp and country
+* Device, OS, Browser
+* Viewport size
+* Network speed
+* Full page context of your cropped screenshot
+
+And packages it all into one easy link to be shared with an engineer or pasted into a ticket.
+
+## Click to capture a full screenshot.&#x20;
+
+Click once on the page to take a full screen screenshot of the viewport.
+
+Here's an example of taking a full screenshot by clicking once on the page:
+
+![](https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FHokiGW797SrR276uJIyY%2Ffullscreenshot.gif?alt=media\&token=6bfed798-d34d-4046-ba0d-05f13deaf50d)
+
+## Drag to crop a screenshot.
+
+Drag an area of the screen to take a cropped screenshot of that area.
+
+![](https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FonwF7kfz7QM5JVghzwcG%2Fcropped-screenshot.gif?alt=media\&token=64735efa-17cf-4699-82f9-6f6f63361776)
+
+When you take a cropped screenshot with Jam, it also captures a full screen shot. This full screenshot will be side by side with the cropped screenshot in the Jam shared with engineers. This helps engineers see where the cropped image came from.&#x20;
+
+If you don't want the full screenshot included, you can deselect this option in the Jam draft window before you hit 'Create'.
+
+## Screenshot annotations
+
+Once a screenshot is captured, you can annotate your screenshots, using various annotation tools such as drawing, shapes, arrows, and text.
+
+
+# Full screen screenshot
+
+Here's how to take a full screen screenshot with Jam:
+
+1. Choose the screenshot tool in Jam
+2. Instead of dragging the cursor to choose an area, click once on the page to capture the full page screenshot
+
+<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FTclTYwQrPgQXnG9Wy0M6%2Ffullscreenshot.gif?alt=media&#x26;token=51323fc6-45ba-4849-953e-82f6bf701373" alt=""><figcaption></figcaption></figure>
+
+
+# Screenshot hover states
+
+Here’s how to quickly screenshot a hover state with Jam’s screenshot tool:
+
+1. Open up the Jam browser extension. Find the arrow next to the Capture screenshot option, and click on it. This will reveal additional screenshot options.
+2. Choose either a 3-second or 6-second delay. This delay allows you time to set up your hover state before Jam captures the screenshot.
+3. Drag an area of the screen to take a cropped screenshot or click to take a full page screenshot. Once you let go of the mouse, the delay timer will start counting down.
+4. During the countdown, hover over the element. Position your cursor over the desired UI element and maintain the hover state during the countdown.
+5. Once the delay countdown ends, Jam automatically captures the screenshot including the hover state.
+6. After the screenshot has been captured, you can use Jam's suite of annotation tools to add drawings, shapes, arrows, or text to the image.
+7. Click "Create" to generate a shareable link. Jam will automatically package the screenshot along with relevant diagnostic data into a well-structured bug report and copy the link to your clipboard.
+
+<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FH236ds96VJ3xWACJljib%2Fhover.gif?alt=media&#x26;token=c0e72b83-7a90-4c0e-a7e1-68d1537828e9" alt=""><figcaption></figcaption></figure>
+
+
+# Browser support
+
+## Browser support
+
+Jam is supported on all Chromium browsers:
+
+* Chrome
+* Edge
+* Arc
+* Brave
+* Opera
+
+More browser support is coming soon.
+
+Jam supports both logged in and incognito browser sessions.
+
+## Feature Support
+
+<table><thead><tr><th width="123">Browser</th><th>Console Logs</th><th>Network Requests</th><th>WebSockets</th></tr></thead><tbody><tr><td>Chrome</td><td><span data-gb-custom-inline data-tag="emoji" data-code="2705">✅</span></td><td><span data-gb-custom-inline data-tag="emoji" data-code="2705">✅</span></td><td><span data-gb-custom-inline data-tag="emoji" data-code="2705">✅</span></td></tr><tr><td>Edge</td><td><span data-gb-custom-inline data-tag="emoji" data-code="2705">✅</span></td><td><span data-gb-custom-inline data-tag="emoji" data-code="2705">✅</span></td><td><span data-gb-custom-inline data-tag="emoji" data-code="2705">✅</span></td></tr><tr><td>Arc</td><td><span data-gb-custom-inline data-tag="emoji" data-code="2705">✅</span></td><td><span data-gb-custom-inline data-tag="emoji" data-code="2705">✅</span></td><td><span data-gb-custom-inline data-tag="emoji" data-code="2705">✅</span></td></tr><tr><td>Brave</td><td><span data-gb-custom-inline data-tag="emoji" data-code="2705">✅</span></td><td><span data-gb-custom-inline data-tag="emoji" data-code="2705">✅</span></td><td></td></tr><tr><td>Opera</td><td><span data-gb-custom-inline data-tag="emoji" data-code="2705">✅</span></td><td><span data-gb-custom-inline data-tag="emoji" data-code="2705">✅</span></td><td><span data-gb-custom-inline data-tag="emoji" data-code="2705">✅</span></td></tr></tbody></table>
+
+## Download
+
+Download the Jam extension for Chromium browsers:&#x20;
+
+{% embed url="<https://chrome.google.com/webstore/detail/jam/iohjgamcilhbgmhbnllfolmkmmekfmci>" %}
+
+
+# Incognito Sessions
+
+### Overview
+
+Jam works seamlessly in incognito mode, giving you complete debugging capabilities while maintaining privacy. Perfect for internal testing, sensitive environments, or when you need to capture bugs without leaving traces in your regular browsing session.
+
+### Key Benefits
+
+**Full feature access:** All Jam tools work in private browsing mode\
+**Complete bug context:** Capture instant replay, network logs, console data, and device info\
+**Privacy-first testing:** Test and debug without affecting your main browser session\
+**Clean environment:** Isolate testing from extensions, cookies, and cached data
+
+### How It Works
+
+When enabled for incognito mode, Jam provides the same comprehensive debugging toolkit you get in regular browsing:
+
+* **Instant replay** captures the last 30 seconds of user actions
+* **Screen recording** documents the full bug reproduction
+* **Network logs** show API calls, failed requests, and performance data
+* **Console logs** capture JavaScript errors and warnings
+* **Device information** includes browser, OS, and viewport details
+
+### Getting Started
+
+{% tabs %}
+{% tab title="Chrome" %}
+![](https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FPOddjUP3LyAG1j72QTfO%2Fa91f85b5-124d-4374-8da5-f53095acdc1b_796x540.gif?alt=media\&token=e0e2c080-ed0f-4bfe-93a5-b5eb20a8684b)\
+\
+**Enable Incognito Access in Chrome**
+
+1. Go to [chrome://extensions](chrome://extensions/) in your address bar
+2. Find the Jam extension
+3. Click Details
+4. Toggle on Allow in incognito
+
+You should now see the Jam extension icon in incognito windows.
+{% endtab %}
+
+{% tab title="Firefox" %}
+**Enable Incognito Access in Firefox**
+
+1. Go to <about:addons> in your address bar
+2. Find the Jam extension
+3. Click on the extension name
+4. Under Run in Private Windows, select Allow
+
+You should now see the Jam extension icon in private windows.
+{% endtab %}
+
+{% tab title="Edge" %}
+**Enable Incognito Access in Edge**
+
+1. Go to <edge://extensions> in your address bar
+2. Find the Jam extension
+3. Click Details
+4. Toggle on Allow in InPrivate
+
+You should now see the Jam extension icon in InPrivate windows.
+{% endtab %}
+{% endtabs %}
+
+### FAQs
+
+<details>
+
+<summary>Does incognito mode affect the quality of bug reports?</summary>
+
+No. You get the same comprehensive data collection in incognito mode, including full network logs, console output, and device information.
+
+</details>
+
+<details>
+
+<summary>Can I use Jam in incognito mode without enabling this setting?</summary>
+
+No. Browser security policies require explicit permission for extensions to run in private browsing modes.
+
+</details>
+
+<details>
+
+<summary>Will my incognito browsing data be saved in Jam reports?</summary>
+
+Jam only captures the specific page and interactions you choose to record. Your broader incognito browsing session remains private.
+
+</details>
+
+
+# Instant Replay
+
+<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FZDFlIjSNIg59J2kzOtU6%2Finstantreplay.gif?alt=media&#x26;token=bcc33065-eb09-4746-8f36-eed62d2fcc81" alt=""><figcaption></figcaption></figure>
+
+### Overview
+
+Instant Replay captures bugs the moment they happen, with complete technical context, and packages everything into a shareable link. No need to stop your workflow or recreate issues. In just two clicks you'll be able to send engineers everything they need to debug.<br>
+
+### Key Benefits
+
+* **Complete technical context:** Automatically captures DOM replay, console logs, network requests, and device information
+* **Zero workflow disruption:** Capture bugs instantly without stopping to recreate or re-record
+* **Engineer-ready format:** All diagnostics packaged into one shareable link for tickets or direct communication
+* **Privacy controls:** Crop video content before sharing to protect sensitive information<br>
+
+### How It Works
+
+When you create an Instant Replay, Jam automatically captures and includes:
+
+* **Up to 2 minutes** of DOM session replay
+* **Console logs** with errors and warnings
+* **Network requests** with full inspection capabilities
+* **Environment details:** URL, timestamp, country, device, OS, browser
+* **Technical specs:** Viewport size and network speed
+
+Everything gets packaged into a single link that integrates seamlessly with your existing bug tracking workflow.
+
+#### Capture Behavior
+
+{% hint style="info" %}
+Instant Replay captures up to 2 minutes of session activity. For newly opened tabs or data-heavy websites, the capture duration may be shorter.
+{% endhint %}
+
+#### Privacy Controls
+
+Before sharing your Instant Replay, you can crop the video to remove any sections you don't want to include. This gives you complete control over what technical context gets shared with your team.
+
+#### Technical Limitations
+
+<table><thead><tr><th>Scenario</th><th>Capture Duration</th><th data-hidden></th></tr></thead><tbody><tr><td>Standard browsing</td><td>Up to 2 minutes</td><td></td></tr><tr><td>Newly opened tabs</td><td>May be less than 2 minutes</td><td></td></tr><tr><td>Data-heavy websites</td><td>May be less than 2 minutes</td><td></td></tr></tbody></table>
+
+<details>
+
+<summary>How far back can Instant Replay capture?</summary>
+
+Up to 2 minutes of session activity, though this may be shorter for newly opened tabs or websites with heavy data loads.
+
+</details>
+
+<details>
+
+<summary>Can I control what gets shared in my Instant Replay?</summary>
+
+Yes. You can crop the video portion of your Instant Replay before sharing to remove any content you don't want included.
+
+</details>
+
+<details>
+
+<summary>What technical information is automatically included?</summary>
+
+Every Instant Replay includes DOM session replay, console logs, network requests, URL, timestamp, device information, browser details, and viewport size.
+
+</details>
+
+
+# Performance
+
+Instant Replay works by taking periodic HTML snapshots of the DOM (Document Object Model). These snapshots are then stored in your browser's local storage until you create a Jam, at which point they can be used to generate a video demonstrating the bug in question.
+
+While the Instant Replay feature is incredibly useful, if used on heavier websites, could eat up browser memory storing the HTML snapshots and have a noticeable impact on browser performance. That's why we've spent a lot of time putting safeguards in place so that it has no impact on your browser performance.
+
+Jam automatically disables Instant Replay on particularly heavy websites, such as those with numerous animations or those that re-render large volumes of data at high frequencies (e.g., crypto price websites or spreadsheet applications). This precautionary measure prevents potential performance degradation caused by frequent DOM snapshotting.
+
+## How to override Jam's auto-disabling of Instant Replay on your website
+
+As described above, Jam automatically disables the Instant Replay feature on particularly heavy websites as a precautionary measure to ensure no impact on browser performance.
+
+However, users have the option to override this disabling on any website. For example, if you are using a powerful device with robust processing capabilities, you may not experience any performance issues and may wish to enable Instant Replay for capturing bugs on heavy websites.
+
+To override Jam's cautious disabling of Instant Replay, simply adjust the settings within the Jam extension. If you later decide to revert this decision, you can remove the website from the override list in the extension settings.
+
+![](https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2F5XtZA2WmBjDzvnLeojKp%2Fenable-ir.gif?alt=media\&token=7c71805e-2083-4941-b7ed-dbcb4ea316c9)
+
+
+# Privacy
+
+## How does Instant Replay work?
+
+Instant Replay keeps track of HTML changes in the website you are on, by periodically snapshotting the DOM.
+
+The snapshots are stored locally on your computer until you create a Jam. At that point, Jam stitches together the DOM snapshots to look like a video (but if you inspect it, you'll find it's just replaying HTML inside an iframe).
+
+It's actually not a video recording - just HTML. That way, Jam Instant Replay is not recording a video of your screen, just keeping track of the HTML changes of webpages and then re-rendering the HTML to create a "video". This is just like how the browser saves a snapshot of web pages you visit in local storage so they are faster to open if you visit them again. So there's no video recording even locally on your computer.
+
+## How does Instant Replay preserve my privacy?
+
+Instant Replay is built for privacy first - everything is done locally on your computer, nothing leaves unless you explicitly share it, and the local buffer is permanently deleted every 120 seconds.&#x20;
+
+The snapshots are stored on your computer in your browser's local storage until you create a Jam. Only once you explicitly click "Create" and create a Jam, the snapshots are uploaded to our infrastructure so that you can share your rewind as a link or ticket. All of the snapshots and computing is done offline, locally in your computer browser’s local storage, until you explicitly choose to share.
+
+## How to disable Instant Replay
+
+You can remove Instant Replay from Jam anytime from the extension settings:
+
+![](https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2Fw8K5HLo7JSXdLcx8BRqW%2Fdisable-ir.gif?alt=media\&token=0336e48d-d8da-4a1c-9b42-8a9b0d681de6)
+
+You can also turn off Instant Replay for specific websites:
+
+![](https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FNRdIPObyTR4MMrb81a23%2Fdisable-ir-site.gif?alt=media\&token=c46198f9-e13a-473c-a84e-f0c816bf4f44)
+
+
+# iFrame & canvas support
+
+Instant Replay is designed to keep website performance fast and lightweight, while still capturing bugs on the go, which means that Instant Replay ignores the heaviest HTML elements: iframe & canvas.&#x20;
+
+That means if you capture an Instant Replay of a bug on a page that has iframe or canvas elements, you’ll see a black box in the resulting Instant Replay where those elements are.
+
+Internally at Jam, we’ve gone back and forth on what is the best way to handle these heavier HTML elements, and what we’ve found time and time again is that our users prefer not to have them captured, than to have a more laggy experience. Having said that, we’re open to feedback and curious what you think. If you’d like to share any feedback, please reach out to us at <hello@jam.dev>.
+
+
+# Send Recording Links from your own domain and collect console logs
+
+Send a link to auto-capture console logs, network requests and more. Just connect your website to Jam. Here's how.
+
+{% hint style="info" %}
+You'll need write permissions to your website to complete these three steps:
+
+1. **Register one or more Recording URLs** with Jam\
+   \&#xNAN;*(so we can generate links to your site)*
+2. **Set up Jam's Recorder & Capture Scripts** on your site\
+   \&#xNAN;*(so your users can start recording & capturing page context)*
+3. **Modify your Content-Security-Policy** if necessary\
+   \&#xNAN;*(so Jam assets can execute on your page)*
+   {% endhint %}
+
+## 1. Register one or more Recording URLs
+
+{% hint style="info" %}
+Hosted Recording Links bring users directly to your pages. You may show them content before and after the recording begins. Each base Recording URL must be registered before use.
+{% endhint %}
+
+Navigate to your Jam team's settings page, and click the "Recording Links" tab. [Here's a quick link to get there.](https://jam.dev/s/settings/recording-links)
+
+<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FPNIrkNM5bnWEGwcyHy4p%2FRecording_Links_Settings_Setup_GIF.gif?alt=media&#x26;token=9145afd7-ff60-4008-89f9-e6c0417edf6b" alt=""><figcaption></figcaption></figure>
+
+Under Recording URLs: add, install, and verify the installation of one or more valid URLs. These will later be available to select when creating a Recording Link.
+
+If your application redirects users from your Recording URL—for example, redirecting unauthorized users to a login page—you will need to persist Jam's querystring parameters through the redirect. Most important is `jam-recording=...`, but all `jam-` parameters should be persisted.
+
+{% hint style="warning" %}
+You will need at least one Recording URL for each domain you wish to record on. Recordings have access only to debug data from capture scripts on pages on the same domain that initiated the recording.\
+\
+In most cases, a recoder installed on the root domain will also be able to capture events from subdomains. The exception is Safari, where events will only be captured if recorder and capture script are on the same subdomain.&#x20;
+
+**For example:** a recorder installed on `example.com/recorder` can see events from pages on `sub.example.com` (and vice-versa) except on Safari.
+{% endhint %}
+
+## 2. Set up Jam's Recorder & Capture Scripts
+
+{% hint style="info" %}
+To properly associate your users' recordings with the logs we collect, Jam's Recorder and Capture scripts need to be served under the *same origin* \[[MDN](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)] as your site or application.
+{% endhint %}
+
+<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FRHAmQjgqe5mSJuuwhjjs%2FRecording_Links_Team_ID_GIF.gif?alt=media&#x26;token=03634380-f754-45c4-ae58-92301040064b" alt=""><figcaption></figcaption></figure>
+
+Use Jam.js' Recorder and Capture scripts to initialize a recorder on your page and associate captured events.
+
+```html
+<html>
+  <head>
+    <!-- Lets users record their screen from your site -->
+    <meta name="jam:team" content="my-team-id-from-dashboard" />
+    <script type="module" src="https://js.jam.dev/recorder.js"></script>
+
+    <!-- Captures user events and developer logs -->
+    <script type="module" src="https://js.jam.dev/capture.js"></script>
+  </head>
+</html>
+```
+
+The Recorder script will cause our Recorder UX to pop up over your page when users open your Recording Links. If the user dismisses the Recorder UX before starting a recording, they must re-click your Recording Link to try again.
+
+The Capture script will capture events—such as console logs, network events, clicks, and keypresses—on your pages when recordings are in progress. These will be associated and saved with your users' recordings, and otherwise ignored.
+
+Once the recording is complete, Jam will confirm that the user would like to discard their recording if they try to close the Recorder UX before the Jam has been submitted.
+
+Once the Jam has been submitted, the Recorder UX will close automatically, restoring control to your page.
+
+{% hint style="success" %}
+To verify this is working: create a Recording Link, then navigate to it. Does the Recorder UX pop up?\
+\&#xNAN;*(For not-yet-deployed sites, you must replace the Recording Link URL's host with your localhost equivalent)*
+{% endhint %}
+
+We aggressively cache Jam.js assets to minimize load time—especially the Capture script!—prioritizing only critical code and deferring the rest to ensure your page continues to load and run rapidly.
+
+{% hint style="warning" %}
+Note: Jam.js' Capture script can only capture console and network requests made after it initializes.
+
+The `<script>` tag should be placed as early as possible on the page, and should only use a lazy-loaded `import` when explicitly trading accuracy for un-cached load performance (e.g. on SEO-optimized pages).
+{% endhint %}
+
+## 3. Modify your Content-Security-Policy
+
+*(If your site does not specify CSP directives, you can skip this step.)*
+
+Some sites specify Content-Security-Policy \[[MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)] directives via either a header or meta tag. A `frame-src` or `script-src` directive that doesn't include `*.jam.dev` will block Jam.js from including console logs with your user's Jams.
+
+To fix this, modify your CSP header or meta tag to allow `*.jam.dev` as both. For example:
+
+```
+<meta
+  http-equiv="Content-Security-Policy"
+  content="frame-src 'self' *.jam.dev; script-src 'self' *.jam.dev;"
+/>
+```
+
+## Verify logs are captured
+
+Congratulations! You should now be able to capture logs on your domain. To verify your install is working correctly, simply click the Verify link in your Recording URL settings:
+
+<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FSeOf4D2aZ7kkvA6ulQru%2FRecording_Links_Verify_GIF.gif?alt=media&#x26;token=bc802795-d5db-4d3a-8d7d-7cc15cec8b6a" alt=""><figcaption></figcaption></figure>
+
+This will open your Recording URL to a special "verify" UI. If you see this, it means you've successfully installed the Recorder script. If you have a tab open with the Capture tab successfully installed on it, the test will succeed; otherwise you'll have to open a tab to such a page or revisit that installation step.
+
+{% hint style="warning" %}
+If you are testing not-yet-deployed code, try replacing the URL we open with your localhost equivalent
+{% endhint %}
+
+{% hint style="info" %}
+If your code calls `window.jam.recorder.open(...)` manually, simply provide "verify" as the `recordingId`.
+{% endhint %}
+
+## **Jam.Metadata**
+
+With one additional function call, `jam.metadata()`, you can ensure that every Jam submitted from your website includes the metadata you need to debug the bug. You can log anything in Jam.Metadata: simple static values like User ID, to any data like redux or react state. Whatever you need to debug, just send it to Jam.Metadata so it's always there for you in any ticket. More information can be found [here](https://jam.dev/docs/welcome/debug-a-jam/devtools/jam.metadata).
+
+<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2F9Fd2qIxw5wGWUoaevn85%2Fimage.png?alt=media&#x26;token=67f16468-3c13-4485-a5f5-62bc1bb8f0bc" alt=""><figcaption></figcaption></figure>
+
+## FAQs
+
+* **Q: Can I put the Recorder and Capture scripts on different pages?**\
+  A: Yes! There is no danger in doing so. If you do, the `<meta name="jam:team" ...>` element must be included on pages with the recorder script, and may be omitted from ones with only the capture script.
+* **Q: Can I programmatically create Recording Links directly on my page?**\
+  A: Not at this time; an upcoming release will expose an API you can use to create Recording Links from anywhere—Slack, Zendesk, or directly on your site (or app).
+* **Q: Can I customize the Recorder UI?**\
+  A: Not at this time—but we'd like to make this more customizable. Please let us know what you'd like to do!
+* **Q: Can I associate Jam data with recordings we manage?**\
+  A: No; due to browser storage + message partitioning controls, Jam's Recording Links scripts only work when used together.
+
+## **Current limitations**
+
+* Log capture is fully-supported in Chrome (including Incognito Windows) and Firefox (including Private Windows), and supported in most Safari windows. Log capture from Safari Private Windows is not currently supported.
+* If the Capture script is installed within an iframe, the top level logs will not get captured, e.g. capturing logs in embedded Shopify apps.
+* When using the `async` and `defer` script attributes or lazy-loaded `import(...)` calls with Jam's Capture script, we cannot guarantee it will run early enough to capture *every* console log, network request, or other capturable event.
+
+
+# Capture logs, network requests from Customer Jams
+
+Install Jam.js to get console logs, network requests, and more, in every customer support ticket.
+
+{% hint style="info" %}
+Note: This version of Jam.js is for our Intercom Integration. For installing Jam.JS with Recording Links, see [recording-links](https://jam.dev/docs/welcome/jam-for-customer-support/recording-links "mention").
+{% endhint %}
+
+Here’s a preview of what you’ll get with every support ticket:
+
+<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2F6ol6fzRyWZkoCCYedqZP%2FJam-for-csup-example.gif?alt=media&#x26;token=c99ee82d-bf61-4537-8270-0e91872d15c1" alt="" width="563"><figcaption></figcaption></figure>
+
+## How to set up Jam.js?
+
+> *Installing Jam.js takes under 5 min guaranteed, and if it takes you a second longer, we'll buy you a pizza. 🍕*
+
+#### **1. Go to** [**jam.dev**](http://jam.dev) **and select the team where you want your Jams from Intercom to appear.**
+
+#### 2. Copy the team ID from the URL
+
+<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2Fh1lCn3GssusL2ZyXMZqS%2Fjam-for-csup-team-id.gif?alt=media&#x26;token=a186aeb7-1113-4722-966f-a9c35b48d049" alt="" width="563"><figcaption></figcaption></figure>
+
+#### 3. Add the team ID to this code snippet
+
+```javascript
+<script async defer src="https://js.jam.dev/support/<team ID here>.js"></script>
+```
+
+#### 4. Paste the snippet into your web app's codebase
+
+In order to guarantee jam.js can properly capture console and network requests, it should be the first `<script>` tag on the page.
+
+For example, here’s where the jam.js script would go in an example template HTML file for a Single Page App:
+
+{% code overflow="wrap" %}
+
+```html
+<html>
+    <head>
+        <!-- PASTE JAM.JS SCRIPT TAG HERE -->
+    </head>
+    <body>
+        <div id="root"></div>
+        <script src="/app.js"></script>
+    </body>
+</html>
+```
+
+{% endcode %}
+
+Because we include the `async` and `defer` tags within the script snippet, fetching the jam.js script will not impact page load times.
+
+#### 5. Modify CSP (if your site has this enabled)
+
+*(If your site does not specify CSP directives, you can skip this step.)*
+
+Some sites specify [Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) directives via either a header or meta tag.
+
+A frame-src or script-src directive that doesn't include `*.jam.dev` will block Jam.js from including console logs with your user's Jams.
+
+To fix this, modify your CSP header or meta tag to allow `*.jam.dev` as both:
+
+* `frame-src`&#x20;
+* `script-src`
+
+## How to test jam.js?
+
+Once jam.js is installed, every Jam your users create will have console logs and network requests attached.
+
+To test this out, issue a screen recording request, and begin recording your web app.
+
+Open devtools for your web app, and run the following test commands in console:
+
+```javascript
+console.log('test'); // this creates a console log
+fetch('/test'); // this creates a network request
+```
+
+<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2F6UR24Py01fEg9iQQEzm4%2Fimage.png?alt=media&#x26;token=c4c9f803-4ac3-429a-ab8c-08dee90384ea" alt="" width="563"><figcaption><p>Run these commands like so</p></figcaption></figure>
+
+Now, you should have console and network events generated and captured for your recorded Jam.
+
+To confirm, submit the Jam, then open its link and click on the **Console** and **Network** tabs. Your Jam should include at least 1 console and network event, each.
+
+Here’s how this might look:
+
+<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FkoVBhbxiXFxAc8upMzWU%2Fimage.png?alt=media&#x26;token=623ccb8c-ec64-453e-ada6-6f97820ef712" alt="" width="563"><figcaption></figcaption></figure>
+
+## **Jam.Metadata**
+
+With one additional function call, `jam.metadata()`, you can ensure that every Jam submitted from your website includes the metadata you need to debug the bug. You can log anything in Jam.Metadata: simple static values like User ID, to any data like redux or react state. Whatever you need to debug, just send it to Jam.Metadata so it's always there for you in any ticket. More information can be found [here](https://jam.dev/docs/welcome/debug-a-jam/devtools/jam.metadata).
+
+<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FGPfHwMV2EMFr1CMP7cWD%2Fimage.png?alt=media&#x26;token=b1ffff5f-93a2-45d5-965d-31694dc7ab7d" alt=""><figcaption></figcaption></figure>
+
+## **Current limitations**
+
+* If Jam.js is installed within an iframe, the top level logs will not get captured, e.g. using Jam.js on embedded Shopify apps.
+* Console and network event capture is currently unavailable for Jams created in Firefox, Safari, or incognito mode. Support for these browsers is coming soon.
+* Because we include the `async` and `defer` tags, the first page load (or any page load, when cache is disabled) will not guarantee Jam.js runs early enough to capture console and network requests. This is a tradeoff we’ve made to make sure we do not impact your app’s load times.
+
+
+# Advanced Data Protection for  Customer Support Jams (Auto-blur)
+
+Automatically protect sensitive information in customer recordings with smart content blurring.
+
+<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FVRlbi4cluvMUjt9I0Yxb%2F2025-10-29_15-16-03.gif?alt=media&#x26;token=11240334-eb29-404f-9d33-0021d81764a4" alt=""><figcaption></figcaption></figure>
+
+## How it works
+
+The Jam.js snippet automatically detects and blurs sensitive content during recording sessions. When a customer records their issue:
+
+1. Sensitive elements are blurred in real time as they are recorded, and sensitive information is redacted from the console logs.
+2. Only the blurred version is captured—sensitive data never reaches Jam's servers.
+3. The final Jam shows blurred content exactly as the customer saw it during recording; the console logs will show \<redacted> instead of the sensitive data.
+
+**What gets blurred:** only the elements you want
+
+**Applies to:** Jams you request from your customers via Intercom or Recording Link
+
+{% hint style="info" %}
+By default, Jam recognizes the same privacy selectors used by popular tools like FullStory, Hotjar, LogRocket, Sentry, and others. If you're already using these tools, your existing privacy setup works automatically with Jam; if not, it's as easy as adding our selector, or providing us with your own.
+{% endhint %}
+
+***
+
+## Setup
+
+**Note:** Blurring is enabled by default once the snippet is installed.
+
+{% hint style="warning" %}
+**Blurred content is only supported on sites with verified Jam.js installations.**
+
+Follow the [Recording Links setup guide](https://jam.dev/docs/welcome/jam-for-customer-support/send-recording-links-from-your-own-domain-and-collect-console-logs) \[5 mins] before proceeding.
+{% endhint %}
+
+### Quickstart
+
+#### - Want to blur something?
+
+Use Jam.js data attributes to opt in:
+
+```
+<span data-jam-blur>{ccNumber}</span>
+```
+
+Or tell Jam.js about your privacy selectors:
+
+```
+<meta name="jam:blur" content=".secret-stuff" />
+```
+
+Or if you're using the SDK:
+
+```
+jam.initialize({ blurSelectors: ".secret-stuff" });
+```
+
+#### - Want to unblur something?
+
+Use Jam.js data attributes to opt out:
+
+```
+<span class="cc-number" data-jam-blur="no">{ccNumber}</span>
+```
+
+***
+
+### What gets blurred automatically
+
+Jam recognizes privacy selectors from popular session replay and analytics tools. If you already use any of these tools with privacy controls in place, those same elements will be automatically blurred in Jam recordings:
+
+#### Standard selectors
+
+* **Jam**: `[data-jam-blur]`
+* **rrweb**: `.rr-block`, `.rr-mask`, `.rr-ignore`&#x20;
+* **Additional selectors:**<br>
+
+  > **Standard HTML autocomplete attributes**
+  >
+  > * `autocomplete="cc-number"` - credit card numbers
+  > * `autocomplete="cc-exp"` - credit card expiration
+  > * `autocomplete="cc-csc"` - credit card security code
+  > * `autocomplete="tel"` - phone numbers
+  > * `autocomplete="email"` - email addresses
+  >
+  > **Common name/id patterns for sensitive fields:**
+  >
+  > **Social Security Numbers:**
+  >
+  > * `ssn`, `social-security`, `social_security_number`, `tax-id`
+  >
+  > **Bank Account:**
+  >
+  > * `account-number`, `account_number`, `routing-number`, `iban`, `swift`
+  >
+  > **Credit Cards:**
+  >
+  > * `card-number`, `cardnumber`, `cc-number`, `creditcard`
+  > * `cvv`, `cvc`, `security-code`, `card-code`
+  >
+  > **Photo IDs/Passports:**
+  >
+  > * `passport`, `passport-number`, `drivers-license`, `id-number`, `national-id`
+  >
+  > **Driver's License:**
+  >
+  > * `license-number`, `drivers-license`, `dl-number`
+
+#### Session replay tools
+
+* **FullStory**: `.fs-exclude`, `.fs-mask`, `.fs-block`, `.fs-unmask` (unblur)
+* **Hotjar**: `.data-hj-suppress`, `.data-hj-masked`, `[data-hj-suppress]`, `[data-hj-masked]`
+* **LogRocket**: `[data-private]`
+* **Microsoft Clarity**: `[data-clarity-mask]`, `[data-clarity-unmask]` (unblur)
+* **Sentry**: `.sentry-block`, `.sentry-mask`, `[data-sentry-block]`, `[data-sentry-mask]`
+* **OpenReplay**: `[data-openreplay-obscured]`, `[data-openreplay-hidden]`
+* **Highlight.io**: `.highlight-block`, `.highlight-mask`, `.highlight-ignore`
+* **ContentSquare**: `[data-cs-mask]`, `[data-cs-encrypt]`, `[data-cs-capture]` (unblur)
+* **Matomo**: `[data-matomo-mask]`
+
+#### Analytics tools
+
+* **Heap**: `[data-heap-redact-text]`, `[data-heap-redact-attributes]`, `[data-heap-ignore]`, `.heap-ignore`
+* **Amplitude**: `[data-amp-mask]`, `[data-amp-unmask]`(unblur)
+
+***
+
+### Add custom selectors for your product
+
+If you are using `@jam.dev/recording-links/sdk`: pass your custom selectors into `initialize(...)` using the `blurSelectors` key:
+
+```
+import * as jam from "@jam.dev/recording-links/sdk";
+
+// `blurSelectors` can be a static string:
+jam.initialize({ blurSelectors: ".my-custom-blur-class" });
+
+// or an array of static strings
+jam.initialize({ blurSelectors: [".blur-class-1", ".blur-class-2"] });
+
+// or a runtime function that evaluates to either of the above
+jam.initialize({
+  blurSelectors: () => `.my-${Math.ceil(Math.random() * 100)-blur-class`,
+});
+```
+
+If you are using `<script type="module" ...>` to embed `recorder.js` and `capture.js`: use `<meta>` tags to provide your selectors to Jam.js:
+
+```
+<html>
+  <head>
+    ...
+    <meta name="jam:blur" content=".my-custom-blur-class" />
+    <meta name="jam:blur" content=".blur-class-1,.blur-class-2" />
+  </head>
+  <body>
+    ...
+  </body>
+</html>
+```
+
+***
+
+### Opt out of blurring for specific elements
+
+If Jam.js is blurring an element it oughtn't, you can use `[data-jam-blur="no"]` to disable blurring:
+
+```
+<div class=".rr-block" data-jam-blur="no">
+  Blurred in rrweb, but not in Jam
+</div>
+```
+
+**Selector priority:** Manual opt-out overrides all blurrable matches, whether from a default or custom selector.
+
+***
+
+### Test your setup
+
+Before sharing Recording Links with customers, verify that blurring works correctly:
+
+1. Create a Recording Link with your verified recording URL selected
+2. Click your own link and start a recording session
+3. Navigate to pages with sensitive content
+
+**What to look for:**
+
+* If sensitive content is blurred during the recording session, it won't appear in the final Jam ✓
+* If you can see sensitive content clearly while recording, it will appear in the Jam
+
+This real-time preview shows you exactly what will be captured.
+
+### Limitations
+
+* Content in iframes must be blurred altogether, or not at all—we cannot selectively blur inside an iframe
+* Flashes of unblurred content may occur during captured pageloads if your UI initializes before Jam.js. If you see flashes of unblurred content when refreshing a page during a recording, try moving Jam.js initialization earlier in your page's execution, or `await`ing it before displaying sensitive data.
+
+<br>
+
+
 # Recording Links
 
 Recording Links eliminate the guesswork in bug reports. Send anyone a link; they click, record their issue, and you get a complete technical reproduction—no installations required.
@@ -394,7 +1678,19 @@ Recording links are reusable by default. Reusable recording links are perfect fo
 
 You can choose the title of the Jam that is created from your link by adding `jam-title` to the query string.&#x20;
 
-For example, if you want the title of the Jam to be "Shopping cart bug": `https://recorder.jam.dev/QrBnf3s?jam-title=Shopping+cart+bug`
+For example, if you want the title of the Jam to be "Shopping cart bug": `https://recorder.jam.dev/QrBnf3s?jam-title=Shopping+cart+bug`&#x20;
+
+Or if it was for a same-domain Recording URL:\
+`https://www.your.com/?jam-id=QrBnf3s&jam-title=Shopping+cart+bug`&#x20;
+
+#### Setting other Jam parameters:
+
+You can also use your Recording Link's URL querystring to adjust or override other Recording Links settings:
+
+* `jam-folder=<FOLDER_ID>` — the folder to route the recorded Jam into. Use the 4-character *ID*, not the *name*—on a folder page, the URL looks like: `https://jam.dev/s/<TEAM-ID>/<FOLDER-ID>`
+* `jam-reference=<URL_OR_EMAIL>` — a user identifier, or URL (e.g. to an issue tracker, helpdesk conversation, etc)
+
+This is a great use case for when you want to customize link behavior with macros, text expanders, or custom link generators you build for your team.
 
 ## Send Recording Links from your own domain and collect console logs
 
@@ -420,17 +1716,16 @@ Guide to make Jam.dev available in the Intercom customer helpdesk
 ## Getting started
 
 {% hint style="info" %}
-You can integrate the Jam for Customer Support app with your helpdesk software.\
-Currently available for Intercom. If you're interested, you can [book a demo for Intercom for Jam](https://jam.dev/intercom-demo). More integrations will follow soon.
+Jam for Intercom supports multiple channels, including **Intercom Messenger**, **email,** and **Slack**.
 {% endhint %}
 
 ### How to use Jam + Intercom
 
-1. From the team dashboard, go to the team settings and select Connected Apps tab. Click on Intercom and go through the authorization flow.\\
+1. From the team dashboard, go to the team settings and select Connected Apps tab. Click on Intercom and go through the authorization flow.<br>
 
    <figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2Fywr9IQOjAnY7PgtuIszS%2FJamCSUP-1.gif?alt=media&#x26;token=f2b5ee76-1314-4190-b338-09483ce65c11" alt="" width="563"><figcaption><p><br></p></figcaption></figure>
 2. Once the integration is connected you can start using Jam in chats with your customers.\
-   Pin Jam in Intercom for easy access: in the Intercom inbox sidebar, scroll to bottom and click on Edit apps. Pin the Jam app, and drag it to the top of the sidebar.\\
+   Pin Jam in Intercom for easy access: in the Intercom inbox sidebar, scroll to bottom and click on Edit apps. Pin the Jam app, and drag it to the top of the sidebar.<br>
 
    <figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FtHjogZq7Ng0RBjAKslUw%2FJamCSUP-2.gif?alt=media&#x26;token=7e780985-49b4-400e-a86a-6d2253d840d4" alt="" width="563"><figcaption><p><br></p></figcaption></figure>
 
@@ -439,16 +1734,16 @@ If you're looking to integrate Jam into your Fin workflow please follow this gui
 {% endhint %}
 
 3. Once your users report an issue, an agent can request a screen recording with Jam\
-   \&#xNAN;*Tip: you can also customize the message your users see*\\
+   \&#xNAN;*Tip: you can also customize the message your users see*<br>
 
 <figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2F5ljiFKFtMz1F7lSutcdV%2FCSUP-3.gif?alt=media&#x26;token=f8b748e1-3d21-4040-b90b-73d7e300f842" alt="" width="563"><figcaption><p><br></p></figcaption></figure>
 
-4. Once user submits the recording, an agent receives a note with the Jam\\
+4. Once user submits the recording, an agent receives a note with the Jam<br>
 
 <figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2Fc2Ca7EpKgLVyTV4JBzg9%2FJamCSUP-4.png?alt=media&#x26;token=5793a560-a55f-45dd-b77c-d24a1b298594" alt="" width="563"><figcaption><p><br></p></figcaption></figure>
 
 5. Resulting Jam contains the screen recording + system metadata\
-   Tip: you can also get console and network events in your Jams with [jam.js](https://jam.dev/docs/welcome/jam-for-customer-support/capture-logs-network-requests-from-customer-support-jams)
+   Tip: you can also get console and network events in your Jams with [jam.js](https://jam.dev/docs/welcome/jam-for-customer-support/capture-logs-network-requests-from-customer-jams)
 
 <figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FbO05I3cqBr3g8AJPAM8p%2FJamCSUP-4.gif?alt=media&#x26;token=63dbed39-fc16-46d3-9c36-6a11b2f78768" alt="" width="563"><figcaption></figcaption></figure>
 
@@ -478,7 +1773,7 @@ You can add Jam as a step to prompt customers for screen recordings at the right
 
 #### Step 1: Access Your Fin Workflow
 
-Navigate to your Fin workflow where you want to add Jam integration.\\
+Navigate to your Fin workflow where you want to add Jam integration.<br>
 
 <figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FLqQlXmbxYFhsBcdZ7m3j%2FScreen%20Cast%202025-06-10%20at%2011.23.55%20AM.gif?alt=media&#x26;token=c4de56d5-04dd-43fb-8a68-104b0ff5d922" alt=""><figcaption></figcaption></figure>
 
@@ -683,1245 +1978,27 @@ If you want to capture logs and network requests from your Recording Links, foll
 {% endhint %}
 
 
-# Send Recording Links from your own domain and collect console logs
+# Set up a macOS shortcut to request Customer Jams from anywhere
 
-Send a link to auto-capture console logs, network requests and more. Just connect your website to Jam. Here's how.
+This guide shows you how to create a shortcut to share a Recording Link from anywhere by simply typing "/jam" in any input field on macOS.
 
-{% hint style="info" %}
-You'll need write permissions to your website to complete these three steps:
+1\. Generate a recording link (with the Jam extension or from the dashboard) and name it “General feedback” or whatever you like. Copy the link
 
-1. **Register one or more Recording URLs** with Jam\
-   \&#xNAN;*(so we can generate links to your site)*
-2. **Set up Jam's Recorder & Capture Scripts** on your site\
-   \&#xNAN;*(so your users can start recording & capturing page context)*
-3. **Modify your Content-Security-Policy** if necessary\
-   \&#xNAN;*(so Jam assets can execute on your page)*
-   {% endhint %}
+2\. Go to System Settings -> Keyboard -> Text Replacements.
 
-## 1. Register one or more Recording URLs
+3\. Click the "+" button to add a new replacement.
+
+Enter the text you want to replace “/jam” in the "Replace" field and paste the link in the text in the "With" field.
 
 {% hint style="info" %}
-Hosted Recording Links bring users directly to your pages. You may show them content before and after the recording begins. Each base Recording URL must be registered before use.
-{% endhint %}
+You can choose the title of the Jam that is created from your link by adding `?jam-title=` to the query string that you paste in. When you use your shortcut, you can add the desired title of the resulting Jam.<br>
 
-Navigate to your Jam team's settings page, and click the "Recording Links" tab. [Here's a quick link to get there.](https://jam.dev/s/settings/recording-links)
-
-<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FPNIrkNM5bnWEGwcyHy4p%2FRecording_Links_Settings_Setup_GIF.gif?alt=media&#x26;token=9145afd7-ff60-4008-89f9-e6c0417edf6b" alt=""><figcaption></figcaption></figure>
-
-Under Recording URLs: add, install, and verify the installation of one or more valid URLs. These will later be available to select when creating a Recording Link.
-
-If your application redirects users from your Recording URL—for example, redirecting unauthorized users to a login page—you will need to persist Jam's querystring parameters through the redirect. Most important is `jam-recording=...`, but all `jam-` parameters should be persisted.
-
-{% hint style="warning" %}
-You will need at least one Recording URL for each domain you wish to record on. Recordings only have access to debug data from capture scripts on pages from the same domain (*not subdomain!)* that initiated the recording.
-
-**For example:** a recorder installed on `example.com/recorder` cannot see events from pages on `sub.example.com` (and vice-versa).
-{% endhint %}
-
-## 2. Set up Jam's Recorder & Capture Scripts
-
-{% hint style="info" %}
-To properly associate your users' recordings with the logs we collect, Jam's Recorder and Capture scripts need to be served under the *same origin* \[[MDN](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)] as your site or application.
-{% endhint %}
-
-<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FRHAmQjgqe5mSJuuwhjjs%2FRecording_Links_Team_ID_GIF.gif?alt=media&#x26;token=03634380-f754-45c4-ae58-92301040064b" alt=""><figcaption></figcaption></figure>
-
-Use Jam.js' Recorder and Capture scripts to initialize a recorder on your page and associate captured events.
-
-```html
-<html>
-  <head>
-    <!-- Lets users record their screen from your site -->
-    <meta name="jam:team" content="my-team-id-from-dashboard" />
-    <script type="module" src="https://js.jam.dev/recorder.js"></script>
-
-    <!-- Captures user events and developer logs -->
-    <script type="module" src="https://js.jam.dev/capture.js"></script>
-  </head>
-</html>
-```
-
-The Recorder script will cause our Recorder UX to pop up over your page when users open your Recording Links. If the user dismisses the Recorder UX before starting a recording, they must re-click your Recording Link to try again.
-
-The Capture script will capture events—such as console logs, network events, clicks, and keypresses—on your pages when recordings are in progress. These will be associated and saved with your users' recordings, and otherwise ignored.
-
-Once the recording is complete, Jam will confirm that the user would like to discard their recording if they try to close the Recorder UX before the Jam has been submitted.
-
-Once the Jam has been submitted, the Recorder UX will close automatically, restoring control to your page.
-
-{% hint style="success" %}
-To verify this is working: create a Recording Link, then navigate to it. Does the Recorder UX pop up?\
-\&#xNAN;*(For not-yet-deployed sites, you must replace the Recording Link URL's host with your localhost equivalent)*
-{% endhint %}
-
-We aggressively cache Jam.js assets to minimize load time—especially the Capture script!—prioritizing only critical code and deferring the rest to ensure your page continues to load and run rapidly.
-
-{% hint style="warning" %}
-Note: Jam.js' Capture script can only capture console and network requests made after it initializes.
-
-The `<script>` tag should be placed as early as possible on the page, and should only use a lazy-loaded `import` when explicitly trading accuracy for un-cached load performance (e.g. on SEO-optimized pages).
-{% endhint %}
-
-## 3. Modify your Content-Security-Policy
-
-*(If your site does not specify CSP directives, you can skip this step.)*
-
-Some sites specify Content-Security-Policy \[[MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)] directives via either a header or meta tag. A `frame-src` or `script-src` directive that doesn't include `*.jam.dev` will block Jam.js from including console logs with your user's Jams.
-
-To fix this, modify your CSP header or meta tag to allow `*.jam.dev` as both. For example:
-
-```
-<meta
-  http-equiv="Content-Security-Policy"
-  content="frame-src 'self' *.jam.dev; script-src 'self' *.jam.dev;"
-/>
-```
-
-## Verify logs are captured
-
-Congratulations! You should now be able to capture logs on your domain. To verify your install is working correctly, simply click the Verify link in your Recording URL settings:
-
-<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FSeOf4D2aZ7kkvA6ulQru%2FRecording_Links_Verify_GIF.gif?alt=media&#x26;token=bc802795-d5db-4d3a-8d7d-7cc15cec8b6a" alt=""><figcaption></figcaption></figure>
-
-This will open your Recording URL to a special "verify" UI. If you see this, it means you've successfully installed the Recorder script. If you have a tab open with the Capture tab successfully installed on it, the test will succeed; otherwise you'll have to open a tab to such a page or revisit that installation step.
-
-{% hint style="warning" %}
-If you are testing not-yet-deployed code, try replacing the URL we open with your localhost equivalent
-{% endhint %}
-
-{% hint style="info" %}
-If your code calls `window.jam.recorder.open(...)` manually, simply provide "verify" as the `recordingId`.
-{% endhint %}
-
-## **Jam.Metadata**
-
-With one additional function call, `jam.metadata()`, you can ensure that every Jam submitted from your website includes the metadata you need to debug the bug. You can log anything in Jam.Metadata: simple static values like User ID, to any data like redux or react state. Whatever you need to debug, just send it to Jam.Metadata so it's always there for you in any ticket. More information can be found [here](https://jam.dev/docs/welcome/debug-a-jam/devtools/jam.metadata).
-
-<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2F9Fd2qIxw5wGWUoaevn85%2Fimage.png?alt=media&#x26;token=67f16468-3c13-4485-a5f5-62bc1bb8f0bc" alt=""><figcaption></figcaption></figure>
-
-## FAQs
-
-* **Q: Can I put the Recorder and Capture scripts on different pages?**\
-  A: Yes! There is no danger in doing so. If you do, the `<meta name="jam:team" ...>` element must be included on pages with the recorder script, and may be omitted from ones with only the capture script.
-* **Q: Can I programmatically create Recording Links directly on my page?**\
-  A: Not at this time; an upcoming release will expose an API you can use to create Recording Links from anywhere—Slack, Zendesk, or directly on your site (or app).
-* **Q: Can I customize the Recorder UI?**\
-  A: Not at this time—but we'd like to make this more customizable. Please let us know what you'd like to do!
-* **Q: Can I associate Jam data with recordings we manage?**\
-  A: No; due to browser storage + message partitioning controls, Jam's Recording Links scripts only work when used together.
-
-## **Current limitations**
-
-* Log capture is fully-supported in Chrome (including Incognito Windows) and Firefox (including Private Windows), and supported in most Safari windows. Log capture from Safari Private Windows is not currently supported.
-* If the Capture script is installed within an iframe, the top level logs will not get captured, e.g. capturing logs in embedded Shopify apps.
-* When using the `async` and `defer` script attributes or lazy-loaded `import(...)` calls with Jam's Capture script, we cannot guarantee it will run early enough to capture *every* console log, network request, or other capturable event.
-
-
-# Capture logs, network requests from Customer Support Jams
-
-Install Jam.js to get console logs, network requests, and more, in every customer support ticket.
-
-{% hint style="info" %}
-Note: This version of Jam.js is for our Intercom Integration. For installing Jam.JS with Recording Links, see [recording-links](https://jam.dev/docs/welcome/jam-for-customer-support/recording-links "mention").
-{% endhint %}
-
-Here’s a preview of what you’ll get with every support ticket:
-
-<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2F6ol6fzRyWZkoCCYedqZP%2FJam-for-csup-example.gif?alt=media&#x26;token=c99ee82d-bf61-4537-8270-0e91872d15c1" alt="" width="563"><figcaption></figcaption></figure>
-
-## How to set up Jam.js?
-
-> *Installing Jam.js takes under 5 min guaranteed, and if it takes you a second longer, we'll buy you a pizza. 🍕*
-
-#### **1. Go to** [**jam.dev**](http://jam.dev) **and select the team where you want your Jams from Intercom to appear.**
-
-#### 2. Copy the team ID from the URL
-
-<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2Fh1lCn3GssusL2ZyXMZqS%2Fjam-for-csup-team-id.gif?alt=media&#x26;token=a186aeb7-1113-4722-966f-a9c35b48d049" alt="" width="563"><figcaption></figcaption></figure>
-
-#### 3. Add the team ID to this code snippet
-
-```javascript
-<script async defer src="https://js.jam.dev/support/<team ID here>.js"></script>
-```
-
-#### 4. Paste the snippet into your web app's codebase
-
-In order to guarantee jam.js can properly capture console and network requests, it should be the first `<script>` tag on the page.
-
-For example, here’s where the jam.js script would go in an example template HTML file for a Single Page App:
-
-{% code overflow="wrap" %}
-
-```html
-<html>
-    <head>
-        <!-- PASTE JAM.JS SCRIPT TAG HERE -->
-    </head>
-    <body>
-        <div id="root"></div>
-        <script src="/app.js"></script>
-    </body>
-</html>
-```
-
-{% endcode %}
-
-Because we include the `async` and `defer` tags within the script snippet, fetching the jam.js script will not impact page load times.
-
-#### 5. Modify CSP (if your site has this enabled)
-
-*(If your site does not specify CSP directives, you can skip this step.)*
-
-Some sites specify [Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) directives via either a header or meta tag.
-
-A frame-src or script-src directive that doesn't include `*.jam.dev` will block Jam.js from including console logs with your user's Jams.
-
-To fix this, modify your CSP header or meta tag to allow `*.jam.dev` as both:
-
-* `frame-src`&#x20;
-* `script-src`
-
-## How to test jam.js?
-
-Once jam.js is installed, every Jam your users create will have console logs and network requests attached.
-
-To test this out, issue a screen recording request, and begin recording your web app.
-
-Open devtools for your web app, and run the following test commands in console:
-
-```javascript
-console.log('test'); // this creates a console log
-fetch('/test'); // this creates a network request
-```
-
-<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2F6UR24Py01fEg9iQQEzm4%2Fimage.png?alt=media&#x26;token=c4c9f803-4ac3-429a-ab8c-08dee90384ea" alt="" width="563"><figcaption><p>Run these commands like so</p></figcaption></figure>
-
-Now, you should have console and network events generated and captured for your recorded Jam.
-
-To confirm, submit the Jam, then open its link and click on the **Console** and **Network** tabs. Your Jam should include at least 1 console and network event, each.
-
-Here’s how this might look:
-
-<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FkoVBhbxiXFxAc8upMzWU%2Fimage.png?alt=media&#x26;token=623ccb8c-ec64-453e-ada6-6f97820ef712" alt="" width="563"><figcaption></figcaption></figure>
-
-## **Jam.Metadata**
-
-With one additional function call, `jam.metadata()`, you can ensure that every Jam submitted from your website includes the metadata you need to debug the bug. You can log anything in Jam.Metadata: simple static values like User ID, to any data like redux or react state. Whatever you need to debug, just send it to Jam.Metadata so it's always there for you in any ticket. More information can be found [here](https://jam.dev/docs/welcome/debug-a-jam/devtools/jam.metadata).
-
-<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FGPfHwMV2EMFr1CMP7cWD%2Fimage.png?alt=media&#x26;token=b1ffff5f-93a2-45d5-965d-31694dc7ab7d" alt=""><figcaption></figcaption></figure>
-
-## **Current limitations**
-
-* If Jam.js is installed within an iframe, the top level logs will not get captured, e.g. using Jam.js on embedded Shopify apps.
-* Console and network event capture is currently unavailable for Jams created in Firefox, Safari, or incognito mode. Support for these browsers is coming soon.
-* Because we include the `async` and `defer` tags, the first page load (or any page load, when cache is disabled) will not guarantee Jam.js runs early enough to capture console and network requests. This is a tradeoff we’ve made to make sure we do not impact your app’s load times.
-
-
-# Auto-blur sensitive info in Customer Support Jams
-
-Automatically protect sensitive information in customer recordings with smart content blurring.
-
-<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FVRlbi4cluvMUjt9I0Yxb%2F2025-10-29_15-16-03.gif?alt=media&#x26;token=11240334-eb29-404f-9d33-0021d81764a4" alt=""><figcaption></figcaption></figure>
-
-## How it works
-
-The Jam.js snippet automatically detects and blurs sensitive content during recording sessions. When a customer records their issue:
-
-1. Sensitive elements are blurred in real-time as they record
-2. Only the blurred version is captured—sensitive data never reaches Jam's servers
-3. The final Jam shows blurred content exactly as the customer saw it during recording
-
-**What gets blurred:** only the elements you want!
-
-**Applies to:** Jams you request from your customers via Intercom or Recording Link
-
-{% hint style="info" %}
-By default, Jam recognizes the same privacy selectors used by popular tools like FullStory, Hotjar, LogRocket, Sentry, and others. If you're already using these tools, your existing privacy setup works automatically with Jam; if not, it's as easy as adding our selector, or providing us with your own.
-{% endhint %}
-
-***
-
-## Setup
-
-**Note:** Blurring is enabled by default once the snippet is installed.
-
-{% hint style="warning" %}
-**Blurred content is only supported on sites with verified Jam.js installations.**
-
-Follow the [Recording Links setup guide](https://jam.dev/docs/welcome/jam-for-customer-support/send-recording-links-from-your-own-domain-and-collect-console-logs) \[5 mins] before proceeding.
-{% endhint %}
-
-### Quickstart
-
-#### - Want to blur something?
-
-Use Jam.js data attributes to opt in:
-
-```
-<span data-jam-blur>{ccNumber}</span>
-```
-
-Or tell Jam.js about your privacy selectors:
-
-```
-<meta name="jam:blur" content=".secret-stuff" />
-```
-
-Or if you're using the SDK:
-
-```
-jam.initialize({ blurSelectors: ".secret-stuff" });
-```
-
-#### - Want to unblur something?
-
-Use Jam.js data attributes to opt out:
-
-```
-<span class="cc-number" data-jam-blur="no">{ccNumber}</span>
-```
-
-***
-
-### What gets blurred automatically
-
-Jam recognizes privacy selectors from popular session replay and analytics tools. If you already use any of these tools with privacy controls in place, those same elements will be automatically blurred in Jam recordings:
-
-#### Standard selectors
-
-* **Jam**: `[data-jam-blur]`
-* **rrweb**: `.rr-block`, `.rr-mask`, `.rr-ignore`
-
-#### Session replay tools
-
-* **FullStory**: `.fs-exclude`, `.fs-mask`, `.fs-block`, `.fs-unmask` (unblur)
-* **Hotjar**: `.data-hj-suppress`, `.data-hj-masked`, `[data-hj-suppress]`, `[data-hj-masked]`
-* **LogRocket**: `[data-private]`
-* **Microsoft Clarity**: `[data-clarity-mask]`, `[data-clarity-unmask]` (unblur)
-* **Sentry**: `.sentry-block`, `.sentry-mask`, `[data-sentry-block]`, `[data-sentry-mask]`
-* **OpenReplay**: `[data-openreplay-obscured]`, `[data-openreplay-hidden]`
-* **Highlight.io**: `.highlight-block`, `.highlight-mask`, `.highlight-ignore`
-* **ContentSquare**: `[data-cs-mask]`, `[data-cs-encrypt]`, `[data-cs-capture]` (unblur)
-* **Matomo**: `[data-matomo-mask]`
-
-#### Analytics tools
-
-* **Heap**: `[data-heap-redact-text]`, `[data-heap-redact-attributes]`, `[data-heap-ignore]`, `.heap-ignore`
-* **Amplitude**: `[data-amp-mask]`, `[data-amp-unmask]`(unblur)
-
-***
-
-### Add custom selectors for your product
-
-If you are using `@jam.dev/recording-links/sdk`: pass your custom selectors into `initialize(...)` using the `blurSelectors` key:
-
-```
-import * as jam from "@jam.dev/recording-links/sdk";
-
-// `blurSelectors` can be a static string:
-jam.initialize({ blurSelectors: ".my-custom-blur-class" });
-
-// or an array of static strings
-jam.initialize({ blurSelectors: [".blur-class-1", ".blur-class-2"] });
-
-// or a runtime function that evaluates to either of the above
-jam.initialize({
-  blurSelectors: () => `.my-${Math.ceil(Math.random() * 100)-blur-class`,
-});
-```
-
-If you are using `<script type="module" ...>` to embed `recorder.js` and `capture.js`: use `<meta>` tags to provide your selectors to Jam.js:
-
-```
-<html>
-  <head>
-    ...
-    <meta name="jam:blur" content=".my-custom-blur-class" />
-    <meta name="jam:blur" content=".blur-class-1,.blur-class-2" />
-  </head>
-  <body>
-    ...
-  </body>
-</html>
-```
-
-***
-
-### Opt out of blurring for specific elements
-
-If Jam.js is blurring an element it oughtn't, you can use `[data-jam-blur="no"]` to disable blurring:
-
-```
-<div class=".rr-block" data-jam-blur="no">
-  Blurred in rrweb, but not in Jam
-</div>
-```
-
-**Selector priority:** Manual opt-out overrides all blurrable matches, whether from a default or custom selector.
-
-***
-
-### Test your setup
-
-Before sharing Recording Links with customers, verify that blurring works correctly:
-
-1. Create a Recording Link with your verified recording URL selected
-2. Click your own link and start a recording session
-3. Navigate to pages with sensitive content
-
-**What to look for:**
-
-* If sensitive content is blurred during the recording session, it won't appear in the final Jam ✓
-* If you can see sensitive content clearly while recording, it will appear in the Jam
-
-This real-time preview shows you exactly what will be captured.
-
-### Limitations
-
-* Content in iframes must be blurred altogether, or not at all—we cannot selectively blur inside an iframe
-* Flashes of unblurred content may occur during captured pageloads if your UI initializes before Jam.js. If you see flashes of unblurred content when refreshing a page during a recording, try moving Jam.js initialization earlier in your page's execution, or `await`ing it before displaying sensitive data.
-
-\\
-
-
-# Jam AI
-
-{% hint style="info" %}
-Jam AI is available on all [paid plans](https://jam.dev/pricing). &#x20;
-
-With Jam's free plan, you can create 5 AI tickets per month.  Try unlimited Jam AI for free, by starting a 14 day trial of Jam for Teams.
-{% endhint %}
-
-***
-
-{% embed url="<https://www.youtube.com/watch?v=VtQ6kO8Ye1U>" %}
-
-### Overview
-
-Jam AI transforms your bug captures into complete, actionable reports. Engineers get the context they need to debug faster, while you spend less time writing tickets.
-
-### Key Benefits
-
-* **Complete bug reports in one click:** no more incomplete tickets
-* **Faster debugging:** engineers get structured repro steps and potential fixes
-* **Consistent quality:** every ticket includes the details that matter
-
-### How it works
-
-* **AI Auto-Title:** AI generates a short summary of the captured video, screenshot, or instant replay
-* **AI Repro Steps:** AI generates a list of steps to reproduce the captured bug
-
-{% hint style="warning" %}
-AI Repro Steps are not available for screenshot Jams.
-{% endhint %}
-
-### Managing AI Features
-
-You can control Jam AI at two levels: team-wide settings and individual captures.
-
-{% tabs %}
-{% tab title="Team Settings" %}
-
-<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FWj6zBK4n7VYv2pRF4qIy%2FSetting_%20AI%20Team%20Workspace.png?alt=media&#x26;token=ce1ec658-76af-47a8-aaa0-c3e481e4935b" alt=""><figcaption></figcaption></figure>
-
-**Team-Level Control**
-
-1. Control Jam AI for your entire team through admin settings.
-2. Go to Team Settings
-3. In general scroll down to the data section
-4. Toggle Jam AI on or off
-5. This setting applies to all team members and overrides individual preferences in a team workspace.
-   {% endtab %}
-
-{% tab title="Individual Captures" %}
-
-<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FkWolCZ4IF4jcv10jt7B9%2FSettings_%20AI%20Capture.png?alt=media&#x26;token=d75e57ee-368d-413a-8f65-dbc8a668be61" alt=""><figcaption></figcaption></figure>
-
-**Per-Capture Control**
-
-1. Toggle AI features while creating any Jam.
-2. Start creating a new Jam
-3. Look for the AI toggle in the capture interface
-4. Turn it on or off based on your needs
-5. Your choice saves automatically for future captures.
-   {% endtab %}
-   {% endtabs %}
-
-### FAQs
-
-<details>
-
-<summary>Are Jam's AI features free?</summary>
-
-You can try our Team plan for free for 14 days which includes Jam AI.\
+For example, if you want the title of the Jam to be "Shopping cart bug": \
 \
-Users on the free plan get 5 trial uses of Jam AI. Pro and Team plans have 200 uses per month per user. Our enterprise plans include unlimited AI usage.\
-\
-Working on an open-source project? Jam will always remain free for open-source projects. [Apply here](https://jam.dev/oss) for Team plan access.
-
-</details>
-
-<details>
-
-<summary>How is my data used?</summary>
-
-The data is shared with Google's Gemini AI model for the purpose of providing you with Jam AI functionality. We explicitly opt out of LLMs using Jam customer data for any training. We take steps to de-identify data and protect your privacy. For more details, visit our [AI policies](https://jam.dev/docs/welcome/company/ai-policy) page.
-
-\\
-
-</details>
-
-<details>
-
-<summary>Where can I learn more about Jam's AI policies?</summary>
-
-To learn more about Jam's AI approach, including data usage and privacy, visit our [AI policies](https://jam.dev/docs/welcome/company/ai-policy) page.
-
-</details>
-
-
-# Incognito Sessions
-
-### Overview
-
-Jam works seamlessly in incognito mode, giving you complete debugging capabilities while maintaining privacy. Perfect for internal testing, sensitive environments, or when you need to capture bugs without leaving traces in your regular browsing session.
-
-### Key Benefits
-
-**Full feature access:** All Jam tools work in private browsing mode\
-**Complete bug context:** Capture instant replay, network logs, console data, and device info\
-**Privacy-first testing:** Test and debug without affecting your main browser session\
-**Clean environment:** Isolate testing from extensions, cookies, and cached data
-
-### How It Works
-
-When enabled for incognito mode, Jam provides the same comprehensive debugging toolkit you get in regular browsing:
-
-* **Instant replay** captures the last 30 seconds of user actions
-* **Screen recording** documents the full bug reproduction
-* **Network logs** show API calls, failed requests, and performance data
-* **Console logs** capture JavaScript errors and warnings
-* **Device information** includes browser, OS, and viewport details
-
-### Getting Started
-
-{% tabs %}
-{% tab title="Chrome" %}
-![](https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FPOddjUP3LyAG1j72QTfO%2Fa91f85b5-124d-4374-8da5-f53095acdc1b_796x540.gif?alt=media\&token=e0e2c080-ed0f-4bfe-93a5-b5eb20a8684b)\
-\
-**Enable Incognito Access in Chrome**
-
-1. Go to [chrome://extensions](chrome://extensions/) in your address bar
-2. Find the Jam extension
-3. Click Details
-4. Toggle on Allow in incognito
-
-You should now see the Jam extension icon in incognito windows.
-{% endtab %}
-
-{% tab title="Firefox" %}
-**Enable Incognito Access in Firefox**
-
-1. Go to <about:addons> in your address bar
-2. Find the Jam extension
-3. Click on the extension name
-4. Under Run in Private Windows, select Allow
-
-You should now see the Jam extension icon in private windows.
-{% endtab %}
-
-{% tab title="Edge" %}
-**Enable Incognito Access in Edge**
-
-1. Go to <edge://extensions> in your address bar
-2. Find the Jam extension
-3. Click Details
-4. Toggle on Allow in InPrivate
-
-You should now see the Jam extension icon in InPrivate windows.
-{% endtab %}
-{% endtabs %}
-
-### FAQs
-
-<details>
-
-<summary>Does incognito mode affect the quality of bug reports?</summary>
-
-No. You get the same comprehensive data collection in incognito mode, including full network logs, console output, and device information.
-
-</details>
-
-<details>
-
-<summary>Can I use Jam in incognito mode without enabling this setting?</summary>
-
-No. Browser security policies require explicit permission for extensions to run in private browsing modes.
-
-</details>
-
-<details>
-
-<summary>Will my incognito browsing data be saved in Jam reports?</summary>
-
-Jam only captures the specific page and interactions you choose to record. Your broader incognito browsing session remains private.
-
-</details>
-
-
-# Instant Replay
-
-<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FZDFlIjSNIg59J2kzOtU6%2Finstantreplay.gif?alt=media&#x26;token=bcc33065-eb09-4746-8f36-eed62d2fcc81" alt=""><figcaption></figcaption></figure>
-
-### Overview
-
-Instant Replay captures bugs the moment they happen, with complete technical context, and packages everything into a shareable link. No need to stop your workflow or recreate issues. In just two clicks you'll be able to send engineers everything they need to debug.\\
-
-### Key Benefits
-
-* **Complete technical context:** Automatically captures DOM replay, console logs, network requests, and device information
-* **Zero workflow disruption:** Capture bugs instantly without stopping to recreate or re-record
-* **Engineer-ready format:** All diagnostics packaged into one shareable link for tickets or direct communication
-* **Privacy controls:** Crop video content before sharing to protect sensitive information\\
-
-### How It Works
-
-When you create an Instant Replay, Jam automatically captures and includes:
-
-* **Up to 2 minutes** of DOM session replay
-* **Console logs** with errors and warnings
-* **Network requests** with full inspection capabilities
-* **Environment details:** URL, timestamp, country, device, OS, browser
-* **Technical specs:** Viewport size and network speed
-
-Everything gets packaged into a single link that integrates seamlessly with your existing bug tracking workflow.
-
-#### Capture Behavior
-
-{% hint style="info" %}
-Instant Replay captures up to 2 minutes of session activity. For newly opened tabs or data-heavy websites, the capture duration may be shorter.
+`https://recorder.jam.dev/QrBnf3s?jam-title=Shopping+cart+bug`
 {% endhint %}
 
-#### Privacy Controls
-
-Before sharing your Instant Replay, you can crop the video to remove any sections you don't want to include. This gives you complete control over what technical context gets shared with your team.
-
-#### Technical Limitations
-
-<table><thead><tr><th>Scenario</th><th>Capture Duration</th><th data-hidden></th></tr></thead><tbody><tr><td>Standard browsing</td><td>Up to 2 minutes</td><td></td></tr><tr><td>Newly opened tabs</td><td>May be less than 2 minutes</td><td></td></tr><tr><td>Data-heavy websites</td><td>May be less than 2 minutes</td><td></td></tr></tbody></table>
-
-<details>
-
-<summary>How far back can Instant Replay capture?</summary>
-
-Up to 2 minutes of session activity, though this may be shorter for newly opened tabs or websites with heavy data loads.
-
-</details>
-
-<details>
-
-<summary>Can I control what gets shared in my Instant Replay?</summary>
-
-Yes. You can crop the video portion of your Instant Replay before sharing to remove any content you don't want included.
-
-</details>
-
-<details>
-
-<summary>What technical information is automatically included?</summary>
-
-Every Instant Replay includes DOM session replay, console logs, network requests, URL, timestamp, device information, browser details, and viewport size.
-
-</details>
-
-
-# Performance
-
-Instant Replay works by taking periodic HTML snapshots of the DOM (Document Object Model). These snapshots are then stored in your browser's local storage until you create a Jam, at which point they can be used to generate a video demonstrating the bug in question.
-
-While the Instant Replay feature is incredibly useful, if used on heavier websites, could eat up browser memory storing the HTML snapshots and have a noticeable impact on browser performance. That's why we've spent a lot of time putting safeguards in place so that it has no impact on your browser performance.
-
-Jam automatically disables Instant Replay on particularly heavy websites, such as those with numerous animations or those that re-render large volumes of data at high frequencies (e.g., crypto price websites or spreadsheet applications). This precautionary measure prevents potential performance degradation caused by frequent DOM snapshotting.
-
-## How to override Jam's auto-disabling of Instant Replay on your website
-
-As described above, Jam automatically disables the Instant Replay feature on particularly heavy websites as a precautionary measure to ensure no impact on browser performance.
-
-However, users have the option to override this disabling on any website. For example, if you are using a powerful device with robust processing capabilities, you may not experience any performance issues and may wish to enable Instant Replay for capturing bugs on heavy websites.
-
-To override Jam's cautious disabling of Instant Replay, simply adjust the settings within the Jam extension. If you later decide to revert this decision, you can remove the website from the override list in the extension settings.
-
-![](https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2F5XtZA2WmBjDzvnLeojKp%2Fenable-ir.gif?alt=media\&token=7c71805e-2083-4941-b7ed-dbcb4ea316c9)
-
-
-# Privacy
-
-## How does Instant Replay work?
-
-Instant Replay keeps track of HTML changes in the website you are on, by periodically snapshotting the DOM.
-
-The snapshots are stored locally on your computer until you create a Jam. At that point, Jam stitches together the DOM snapshots to look like a video (but if you inspect it, you'll find it's just replaying HTML inside an iframe).
-
-It's actually not a video recording - just HTML. That way, Jam Instant Replay is not recording a video of your screen, just keeping track of the HTML changes of webpages and then re-rendering the HTML to create a "video". This is just like how the browser saves a snapshot of web pages you visit in local storage so they are faster to open if you visit them again. So there's no video recording even locally on your computer.
-
-## How does Instant Replay preserve my privacy?
-
-Instant Replay is built for privacy first - everything is done locally on your computer, nothing leaves unless you explicitly share it, and the local buffer is permanently deleted every 120 seconds.&#x20;
-
-The snapshots are stored on your computer in your browser's local storage until you create a Jam. Only once you explicitly click "Create" and create a Jam, the snapshots are uploaded to our infrastructure so that you can share your rewind as a link or ticket. All of the snapshots and computing is done offline, locally in your computer browser’s local storage, until you explicitly choose to share.
-
-## How to disable Instant Replay
-
-You can remove Instant Replay from Jam anytime from the extension settings:
-
-![](https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2Fw8K5HLo7JSXdLcx8BRqW%2Fdisable-ir.gif?alt=media\&token=0336e48d-d8da-4a1c-9b42-8a9b0d681de6)
-
-You can also turn off Instant Replay for specific websites:
-
-![](https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FNRdIPObyTR4MMrb81a23%2Fdisable-ir-site.gif?alt=media\&token=c46198f9-e13a-473c-a84e-f0c816bf4f44)
-
-
-# iFrame & canvas support
-
-Instant Replay is designed to keep website performance fast and lightweight, while still capturing bugs on the go, which means that Instant Replay ignores the heaviest HTML elements: iframe & canvas.&#x20;
-
-That means if you capture an Instant Replay of a bug on a page that has iframe or canvas elements, you’ll see a black box in the resulting Instant Replay where those elements are.
-
-Internally at Jam, we’ve gone back and forth on what is the best way to handle these heavier HTML elements, and what we’ve found time and time again is that our users prefer not to have them captured, than to have a more laggy experience. Having said that, we’re open to feedback and curious what you think. If you’d like to share any feedback, please reach out to us at <hello@jam.dev>.
-
-
-# Jam for iOS
-
-The fastest way to capture dev-ready bug reports from iOS and send them to your issue tracker.
-
-{% hint style="info" %}
-Visit the App Store to [download](https://apps.apple.com/app/id6469037234) Jam for iOS for your iPad or iPhone. 🤳
-{% endhint %}
-
-{% embed url="<https://www.youtube.com/watch?v=Xuk7cO50Z9M>" %}
-
-### **What can you do with Jam for iOS?**
-
-Meet Jam for iOS - the fastest way to capture dev-ready bug reports from mobile and send them to your issue tracker. Every ticket automatically includes technical details (OS, device, battery levels, etc.) so you don’t have to. This gives devs all the context they need to fix issues faster.\\
-
-* **Record your screen** to capture and share mobile bugs with ease.
-* **Trim, annotate, and add comments** to clarify the issue you want to share.
-* **Create** a shareable link or send straight to your favorite issue tracker in seconds.
-* **Watch** existing Jams in your workspace.
-
-### How to record a Jam on iOS?
-
-1. Open Jam, click the big strawberry 🍓
-2. Click "Start Broadcast" to Jam.
-3. Navigate to your target app/website to record the issue.
-4. When you're done, stop broadcasting directly or by navigating back to the Jam app.
-5. Trim the video, add description,  and click "Create Link".
-6. Wait a few seconds until your Jam is ready to share, we will automatically copy the link to your clipboard if Jam is in focus!
-
-<div><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2Fk4c83hZTRQF81hL2yrSg%2FIMG_2818.PNG?alt=media&#x26;token=ade99466-2505-47e1-ad72-a24df1030358" alt=""><figcaption></figcaption></figure> <figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FpERnUDzslYuVMltAdUJ0%2FIMG_2819.PNG?alt=media&#x26;token=c4da3dd2-f915-4ac3-9a73-1cbf3256c680" alt=""><figcaption></figcaption></figure> <figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FylLSWGr93Dp87XcyJLEl%2FIMG_2820.PNG?alt=media&#x26;token=1e3a366e-c963-4571-b002-025dcbca8336" alt=""><figcaption></figcaption></figure> <figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2Fe8g4BHTGkiK9qGggdzLZ%2FIMG_2822.PNG?alt=media&#x26;token=b30ecdfb-c6ab-4c20-8b54-72d01d1f69d2" alt=""><figcaption></figcaption></figure> <figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FKytWNSZ0N84txgKeQZV3%2FIMG_2823.PNG?alt=media&#x26;token=a2809f3c-5d72-4f63-b94a-a174d74607f1" alt=""><figcaption></figcaption></figure> <figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2F6rvoe60BtAXyOvg3oPxQ%2FIMG_2825.PNG?alt=media&#x26;token=02cbb93d-a5de-41d3-9e3d-509560f9f195" alt=""><figcaption></figcaption></figure></div>
-
-
-# iOS Shortcuts for Jam
-
-Set up Shortcuts on iOS to create Jams even faster
-
-### Add Jam Widget to Control Center
-
-<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FeN23X52ZTEoh23YMyo4D%2Fimage.png?alt=media&#x26;token=cb09bfa1-80e7-4795-8469-6918dd084c6b" alt=""><figcaption></figcaption></figure>
-
-**What it does:** Adds a strawberry button to your Control Center that immediately starts a Jam recording.
-
-**Why it's useful:** Control Center is accessible from anywhere on iOS. Perfect for capturing critical moments without switching contexts.
-
-**Setup steps:**
-
-1. Swipe down from top-right corner (or up from bottom on older devices) to open **Control Center**
-2. **Long-press** on any space in Control Center
-3. Tap **Add a Control** (plus button)
-4. Find **Jam** and tap the **+** button
-5. The strawberry icon now appears in your Control Center
-
-**To use:** Swipe down from top-right corner (or up from bottom on older devices) → tap the strawberry button → tap **Start Broadcast** to begin recording.
-
-***
-
-### Hey Siri, Record a Jam
-
-<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FkR0see89JSPLZtay7kwf%2Fimage.png?alt=media&#x26;token=4d2166cb-5519-4a19-962c-1e5d1093972e" alt=""><figcaption></figcaption></figure>
-
-**What it does:** Voice-activated shortcut that opens Jam's recording screen.
-
-**Why it's useful:** Hands-free activation when you're mid-workflow or demonstrating an issue to someone else.
-
-**Setup steps:**
-
-1. Say **"Hey Siri, Record a Jam"**
-2. First time: iOS will ask for permission—tap **Allow**
-3. Jam opens to the recording screen
-4. Tap **Start Broadcast** to begin recording
-
-**To use:** Just say "Hey Siri, Record a Jam" anytime. Works even when your phone is locked.
-
-***
-
-### Add Jam Widget to Homescreen
-
-<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FRixHRKTT0YIHRRXQC0Qc%2Fimage.png?alt=media&#x26;token=8640aadd-38d6-49eb-90bb-7c204b64b14f" alt=""><figcaption></figcaption></figure>
-
-**What it does:** Places a widget on your homescreen to start and stop recordings without opening the app.
-
-**Why it's useful:** Essential for dedicated test devices where you're constantly switching between recording and testing. Keeps Jam controls visible and accessible.
-
-**Setup steps:**
-
-1. Long-press any empty area on your homescreen
-2. Tap the **+** button (top-left corner)
-3. Search for **Jam** and select it
-4. Choose **Small** or **Medium** widget size
-5. Tap **Add Widget**
-6. Position where convenient
-
-**To use:** Just tap the widget and tap **Start Broadcast** to begin recording.
-
-***
-
-### Record a Jam with your Action Button
-
-<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FXoFYsoMw8H41aV9vbhAW%2Fimage.png?alt=media&#x26;token=a87d0793-580f-48c8-92bc-30c0b57d0537" alt=""><figcaption></figcaption></figure>
-
-**What it does:** Associate the "Record a Jam" shortcut with your Action Button
-
-**Why it's useful:** Record a Jam with one button press, from any screen.
-
-**Setup steps:**
-
-1. Go to Settings
-2. Search for action button
-3. Associate the action button with "Record a Jam" Shortcut
-
-**To use:** Just press the Action Button and tap **Start Broadcast** to begin recording.
-
-
-# Setting up logging in iOS
-
-The [JamLog](https://github.com/jamdotdev/jam-ios-log) framework lets you send log events to [Jam for iOS](https://apps.apple.com/us/app/jam-fix-bugs-faster/id6469037234) so that they can be associated with your [Jam](https://jam.dev).
-
-### Supported Platforms
-
-* iOS 15.0+
-
-### Quick Start
-
-Add the following to your `Package.swift`:
-
-```swift
-dependencies: [
-  .package(url: "https://github.com/jamdotdev/jam-ios-log.git", from: "1.0.0")
-]
-```
-
-Alternatively, you can add the package [directly via Xcode](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app).
-
-### Usage
-
-```swift
-import Jam
-
-Jam.debug("Hello world!")
-```
-
-Also supports `info`, `warn`, and `error`.
-
-### SwiftLog
-
-You can integrate with [SwiftLog](https://github.com/apple/swift-log) by importing `JamSwiftLog` and bootstraping the logging system:
-
-```swift
-import JamSwiftLog
-import Logging
-
-LoggingSystem.bootstrap { label in
-  JamLogHandler(label: label)
-}
-```
-
-Alternatively, you can add JamLog to your existing logging system by using the `MultiplexLogHandler`. Assuming you are already using the `StreamLogHandler`:
-
-```swift
-import JamSwiftLog
-import Logging
-
-LoggingSystem.bootstrap { label in
-  MultiplexLogHandler([
-    StreamLogHandler.standardOutput(label: label),
-    JamLogHandler(label: label)
-  ])
-}
-```
-
-### React Native
-
-JamLog is also available as a [React Native Expo module](https://github.com/jamdotdev/expo-jam-log).
-
-
-# Enabling Taps and Gestures on iOS Screen Recording
-
-By following these steps, you can visually represent taps and gestures in your iOS screen recordings using AssistiveTouch.\\
-
-### **Step 1: Enable AssistiveTouch**
-
-1. Open the **Settings** app on your Apple device.
-2. Tap **Accessibility** (found under **General** in older iOS versions).
-3. Under **Physical and Motor**, tap **Touch**.
-4. On the **Touch** screen, tap **AssistiveTouch**.
-5. Switch the **AssistiveTouch** toggle to the on position.
-
-### Step 2: Create a Custom Tap Gesture (Optional)
-
-1. From the **AssistiveTouch** screen, tap **Create New Gesture**.
-2. Record a tap gesture by tapping the screen once, then tap **Save**.
-3. Name the gesture (e.g., "Tap") and tap **Save** again.
-
-### Step 3: Use AssistiveTouch During Recording
-
-1. Start your screen recording.
-2. Tap the **AssistiveTouch** shortcut.
-3. From the menu, tap **Custom**.
-4. Select the gesture you created (e.g., "Tap").
-
-
-# Keyboard shortcuts
-
-### Overview
-
-Control the Jam extension faster with keyboard shortcuts. Skip the clicks and capture bugs, record sessions, or take screenshots directly from your keyboard. Perfect for streamlining your debugging workflow.\\
-
-![](https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FtZuIb4die417pd1wiT6B%2Fkeyboard-shortcuts.gif?alt=media\&token=f0fa07d6-0881-4562-a760-6bfbbf6d5e44)
-
-### Key Benefits
-
-* **Faster bug capture:** Skip mouse clicks and capture issues instantly
-* **Workflow efficiency:** Keep your hands on the keyboard while testing
-* **Customizable controls:** Set shortcuts that match your preferred workflow
-* **Quick discovery:** Hover over extension buttons to see default shortcuts
-
-### Default Shortcuts
-
-{% hint style="info" %}
-Chrome limits extensions to 3 default keyboard shortcuts. That's why Desktop Recording doesn't have a default shortcut . We prioritized the most commonly used features by default.
-{% endhint %}
-
-| Action             | Default shortcut                                   |
-| ------------------ | -------------------------------------------------- |
-| Capture screenshot | <kbd>Shift</kbd> <kbd>⌘</kbd> <kbd>S</kbd>         |
-| Record tab         | <kbd>Shift</kbd> <kbd>⌘</kbd> <kbd>Space bar</kbd> |
-| Instant replay     | <kbd>Shift</kbd> <kbd>⌘</kbd> <kbd>X</kbd>         |
-
-You can find the current keyboard shortcuts by hovering over each button in the Jam extension. The shortcut will appear in a tooltip.
-
-### Customizing Shortcuts
-
-You can modify keyboard shortcuts to match your workflow preferences through your browser's extension settings.
-
-**Edit Chrome Extension Shortcuts**
-
-![](https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FUe2TDriWWvlylRd2XlWc%2Fedit-keyboard-shortcuts.gif?alt=media\&token=4304fffc-0fe5-431e-8153-b0dcdeaedffc)
-
-1. Go to <chrome://extensions/shortcuts> in your address bar
-2. Find the Jam extension in the list
-3. Click in the shortcut field next to the action you want to change
-4. Press your preferred key combination
-5. The new shortcut saves automatically
-
-You should now see your custom shortcuts when hovering over extension buttons.
-
-### FAQs
-
-<details>
-
-<summary>Why doesn't Desktop Recording have a default keyboard shortcut?</summary>
-
-Chrome limits extensions to 3 default shortcuts per extension. We chose to assign defaults to the most frequently used features: Instant Replay, Screenshot, and Record tab.
-
-</details>
-
-<details>
-
-<summary>Can I assign a shortcut to Desktop Recording?</summary>
-
-Yes. Go to your browser's extension shortcuts settings and create a custom shortcut for Desktop Recording.
-
-</details>
-
-<details>
-
-<summary>What happens if my shortcut conflicts with another extension?</summary>
-
-The browser will typically warn you about conflicts. You'll need to choose a different key combination that doesn't conflict with existing shortcuts.
-
-</details>
-
-
-# Mobile inspector
-
-You can use Jam to review responsive styles by using Jam alongside your browser's mobile inspector tools.
-
-<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FBfSSWI8EXJbXm53bqGNm%2Funnamed.gif?alt=media&#x26;token=252d9a8a-64f3-42b7-8b94-b20cd4947da0" alt=""><figcaption></figcaption></figure>
-
-To preview your website using your browser's mobile inspection:
-
-1. Right click on the website and select "Inspect"
-2. In the top left corner of dev tools, click the mobile inspector tool:
-
-![](https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FNbu74f8hOsvMjCdFScqf%2FScreenshot%202023-07-07%20at%209.53.53%20PM.png?alt=media\&token=334f4a02-4a00-43a5-a839-5447cb5f990c)
-
-3. Then, you can use Jam as usual to log any responsive bugs you see. The updated viewport and device information you have in the mobile inspector will automatically be included in the Jam for your engineers.&#x20;
-
-
-# Video Screen Recording
-
-You can use Jam to quickly record a video of your screen – along with all the technical details engineers need to troubleshoot and fix bugs.
-
-Unlike other screen recording tools, Jam's video recorder is purpose-built for product, engineering, support, and QA teams to aid in capturing bugs while automatically including all the technical details engineers require to address and fix them.
-
-<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FAwLvnapPbSGFyMg9cZPz%2Fvideo-recrd.gif?alt=media&#x26;token=cd27ee3c-286a-442d-8602-4a4945c70681" alt=""><figcaption></figcaption></figure>
-
-When you record a video of your screen with Jam, Jam captures the following technical diagnostics and auto-includes them to help your engineers debug faster:
-
-* Console logs
-* Fully inspectable network requests
-* URL
-* Timestamp & country
-* Device, OS, Browser
-* Viewport size
-* Network speed
-
-And packages it all into one easy link to be shared with an engineer or pasted into a ticket.
-
-## Voiceover Recording
-
-When you record a video with Jam, you can optionally choose to record a voiceover for your videos. This helps in providing real-time explanations and context for the activities happening on the screen.
-
-To enable the microphone, you will need to have the correct permissions in your browser. You can enable these permissions by:
-
-1. Clicking the Jam extension
-2. Next to the Microphone icon, click the “Grant Permission” button (if it doesn't say "Grant Permission", then you already have the proper settings)
-3. On the browser modal, click “Allow”
-
-Then you can mute and un-mute your microphone and choose which microphone Jam should use to record your audio.
-
-![](https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FoxO0xloc2G6BtcbdxeeZ%2Fmic.gif?alt=media\&token=3704a985-dc14-495a-b4fc-205c5d62dd3c)
-
-## Tab vs Desktop Recording
-
-![](https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FuuzHPpnseVP0Y70twd9j%2FCleanShot%202023-07-07%20at%2020.54.28%402x.png?alt=media\&token=13849922-3d3a-4b8d-b07d-60df58559fd2)
-
-With Jam, you can record a single tab, an entire window, or your full desktop.&#x20;
-
-When you record a single tab, Jam only captures what's literally in that tab. That means Jam does not capture the browser URL bar, or any new windows (e.g. for login flows) that pop up external to the tab.
-
-When you record a window or your entire desktop with the "Record desktop" option, Jam records the full scope of that window/monitor – including the browser URL bar.
-
-Because Jam is purpose-built to help engineers understand bug reports at a glance, when you choose the "Record desktop" option, Jam will auto-include console logs and network requests from every tab you interact with during the recording (as long as Jam is installed in that browser window).&#x20;
-
-That means, if you're trying to demonstrate a bug that spans across multiple tabs or windows (like something updating in one place but not in another), Jam can record that in real-time, and give engineers a holistic view of the bug even if it's not contained within a single tab. That way engineers can track a bug through multiple sites, tabs and windows.&#x20;
-
-### Recording incognito tabs
-
-Jam offers full support for incognito. To capture console logs and network requests occurring on your desktop in incognito tabs, simply enable Jam for incognito in your browser extension settings:
-
-![](https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FBqcVeRTPvm8HrRELfQlx%2Fa91f85b5-124d-4374-8da5-f53095acdc1b_796x540.gif?alt=media\&token=55467ee2-506a-4987-8c81-0cb86a58c5d1)
-
-\\
-
-\\
-
-\\
-
-
-# Desktop Recording
-
-![](https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FuuzHPpnseVP0Y70twd9j%2FCleanShot%202023-07-07%20at%2020.54.28%402x.png?alt=media\&token=13849922-3d3a-4b8d-b07d-60df58559fd2)
-
-With Jam, you can record a single tab, an entire window, or your full desktop.&#x20;
-
-When recording a window or your entire desktop, Jam captures console logs and network requests from every tab you interact with during the recording (as long as Jam is installed in that browser window). See steps here to enable Jam on incognito windows:
-
-{% content-ref url="../incognito-sessions" %}
-[incognito-sessions](https://jam.dev/docs/welcome/record-a-jam/incognito-sessions)
-{% endcontent-ref %}
-
-That means, if you're trying to demonstrate a bug that spans across multiple tabs or windows (like something updating in one place but not in another), Jam can record that in real-time. It simultaneously captures console logs and network requests from both tabs, giving engineers a holistic view of the bug even if it's not contained within a single tab.
-
-That way engineers can track a bug through multiple sites, tabs and windows.
-
-## Troubleshooting permissions on Mac
-
-If you are using a Mac and are unable to record your desktop using Jam, follow these steps to fix it:
-
-Step 1: Open your "System Preferences".
-
-Step 2: Open your "Security & Privacy" settings.
-
-Step 3: Click on the "Privacy" tab.
-
-<figure><img src="https://jam.dev/docs/content/images/2023/03/Screen-Shot-2023-03-30-at-9.05.13-PM.png" alt=""><figcaption></figcaption></figure>
-
-Step 4: Select "Screen Recording" from the list.
-
-![](https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FN8j1zBucNGP2kgSHdG6d%2Fimage.png?alt=media\&token=ae109a07-109d-41ef-8609-1554234d1176)
-
-Step 5: If you don't see "Google Chrome" on the list, skip to Step 6. If you see "Google Chrome" on the list, carefully follow the next steps. Remove "Google Chrome" completely from the list. It's important that you completely remove it (not just uncheck the box next to "Google Chrome") using the minus icon.
-
-Step 6: Add "Google Chrome" to the list by using the plus icon.
-
-![](https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FC3MWmvDAiL11Npb46aH9%2Fimage.png?alt=media\&token=1611bfa1-0f7f-46af-9e5c-45d1b1185c20)
-
-
-# Video blur
-
-With blur you can easily hide sensitive information in your video recording, and share your Jams knowing that private details are secure.
-
-Here's how to use blur in your video recording:
-
-1. Select tab or desktop recording from Jam extension
-2. You can use blur before the recording starts by selecting the blur tool during countdown \
-   \&#xNAN;*Note: available for tab recording only*\\
-
-   <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2F6gLpIPP8VaG6GSN4o21T%2FVideo-blur.gif?alt=media&#x26;token=5250e01d-1822-43ec-a355-352e012d38e9" alt="" width="375"><figcaption></figcaption></figure></div>
-3. You can also use blur during recording. Clicking the blur tool will pause the recording, and you can start selecting elements you want to hide. To remove the blur, you can click again on the blurred element. Once you’re done, you can click “Done” button, and continue recording your video.\
-   \&#xNAN;*Note: Elements cannot be blurred after the recording, only before or during the recording.*\\
-
-   <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FDzg7K7N0iAdohIlyIDzs%2Fvideo-annotations-unblur.gif?alt=media&#x26;token=4dcb5d45-7ddc-4339-9a0c-63b77b04ffe8" alt="" width="375"><figcaption></figcaption></figure></div>
-4. During window recording you can blur elements across multiple tabs
-
-{% hint style="info" %}
-The blur feature is available on all [paid plans](https://jam.dev/pricing). You can also try the feature for free 3 times.&#x20;
-{% endhint %}
-
-{% hint style="info" %}
-Blurring certain page elements like `iframe` and `canvas` is not supported.
-{% endhint %}
-
-
-# Video annotations
-
-Easily highlight key details in your video recordings using annotations, and help engineers quickly understand the issue you're reporting.&#x20;
-
-{% hint style="info" %}
-The draw feature is available on all [paid plans](https://jam.dev/pricing). You can also try the feature for free 3 times.&#x20;
-{% endhint %}
-
-Here's how to draw on your video recording:
-
-1. Select tab or desktop recording from Jam extension
-2. While recording is in progress you can select the draw tool and start drawing. \
-   Note: Added shapes will automatically fade away after 3 seconds.
-
-<div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FyVd5SBPlfpwgSZwduPZT%2FVideo-annotation.gif?alt=media&#x26;token=b7abe0c6-2594-4249-8264-f23b573eaadb" alt="" width="375"><figcaption></figcaption></figure></div>
-
-{% hint style="info" %}
-Video cannot be annotated *after* recording, only during the recording.
-{% endhint %}
-
-
-# Screenshot
-
-You can use Jam to quickly capture a screenshot of a bug – along with all the technical details engineers need to troubleshoot and fix bugs.
-
-Unlike other screenshot tools, Jam's screenshot tool is purpose-built for product, engineering, support, and QA teams to aid in capturing bugs while automatically including all the technical details engineers require to address and fix them.
-
-<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2F9dEkzINSonblJTgOmYlN%2Fscreenshot.gif?alt=media&#x26;token=f9b153d1-e219-45de-a747-2822775c61df" alt=""><figcaption></figcaption></figure>
-
-## Automated technical diagnostic collection
-
-When you capture a screenshot with Jam, Jam captures the following technical diagnostics and auto-includes them to help your engineers debug faster:
-
-* Console logs
-* Fully inspectable network requests
-* URL
-* Timestamp and country
-* Device, OS, Browser
-* Viewport size
-* Network speed
-* Full page context of your cropped screenshot
-
-And packages it all into one easy link to be shared with an engineer or pasted into a ticket.
-
-## Click to capture a full screenshot.&#x20;
-
-Click once on the page to take a full screen screenshot of the viewport.
-
-Here's an example of taking a full screenshot by clicking once on the page:
-
-![](https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FHokiGW797SrR276uJIyY%2Ffullscreenshot.gif?alt=media\&token=6bfed798-d34d-4046-ba0d-05f13deaf50d)
-
-## Drag to crop a screenshot.
-
-Drag an area of the screen to take a cropped screenshot of that area.
-
-![](https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FonwF7kfz7QM5JVghzwcG%2Fcropped-screenshot.gif?alt=media\&token=64735efa-17cf-4699-82f9-6f6f63361776)
-
-When you take a cropped screenshot with Jam, it also captures a full screen shot. This full screenshot will be side by side with the cropped screenshot in the Jam shared with engineers. This helps engineers see where the cropped image came from.&#x20;
-
-If you don't want the full screenshot included, you can deselect this option in the Jam draft window before you hit 'Create'.
-
-## Screenshot annotations
-
-Once a screenshot is captured, you can annotate your screenshots, using various annotation tools such as drawing, shapes, arrows, and text.
-
-
-# Full screen screenshot
-
-Here's how to take a full screen screenshot with Jam:
-
-1. Choose the screenshot tool in Jam
-2. Instead of dragging the cursor to choose an area, click once on the page to capture the full page screenshot
-
-<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FTclTYwQrPgQXnG9Wy0M6%2Ffullscreenshot.gif?alt=media&#x26;token=51323fc6-45ba-4849-953e-82f6bf701373" alt=""><figcaption></figcaption></figure>
-
-
-# Screenshot hover states
-
-Here’s how to quickly screenshot a hover state with Jam’s screenshot tool:
-
-1. Open up the Jam browser extension. Find the arrow next to the Capture screenshot option, and click on it. This will reveal additional screenshot options.
-2. Choose either a 3-second or 6-second delay. This delay allows you time to set up your hover state before Jam captures the screenshot.
-3. Drag an area of the screen to take a cropped screenshot or click to take a full page screenshot. Once you let go of the mouse, the delay timer will start counting down.
-4. During the countdown, hover over the element. Position your cursor over the desired UI element and maintain the hover state during the countdown.
-5. Once the delay countdown ends, Jam automatically captures the screenshot including the hover state.
-6. After the screenshot has been captured, you can use Jam's suite of annotation tools to add drawings, shapes, arrows, or text to the image.
-7. Click "Create" to generate a shareable link. Jam will automatically package the screenshot along with relevant diagnostic data into a well-structured bug report and copy the link to your clipboard.
-
-<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FH236ds96VJ3xWACJljib%2Fhover.gif?alt=media&#x26;token=c0e72b83-7a90-4c0e-a7e1-68d1537828e9" alt=""><figcaption></figcaption></figure>
-
-
-# Browser support
-
-## Browser support
-
-Jam is supported on all Chromium browsers:
-
-* Chrome
-* Edge
-* Arc
-* Brave
-* Opera
-
-More browser support is coming soon.
-
-Jam supports both logged in and incognito browser sessions.
-
-## Feature Support
-
-<table><thead><tr><th width="123">Browser</th><th>Console Logs</th><th>Network Requests</th><th>WebSockets</th></tr></thead><tbody><tr><td>Chrome</td><td><span data-gb-custom-inline data-tag="emoji" data-code="2705">✅</span></td><td><span data-gb-custom-inline data-tag="emoji" data-code="2705">✅</span></td><td><span data-gb-custom-inline data-tag="emoji" data-code="2705">✅</span></td></tr><tr><td>Edge</td><td><span data-gb-custom-inline data-tag="emoji" data-code="2705">✅</span></td><td><span data-gb-custom-inline data-tag="emoji" data-code="2705">✅</span></td><td><span data-gb-custom-inline data-tag="emoji" data-code="2705">✅</span></td></tr><tr><td>Arc</td><td><span data-gb-custom-inline data-tag="emoji" data-code="2705">✅</span></td><td><span data-gb-custom-inline data-tag="emoji" data-code="2705">✅</span></td><td><span data-gb-custom-inline data-tag="emoji" data-code="2705">✅</span></td></tr><tr><td>Brave</td><td><span data-gb-custom-inline data-tag="emoji" data-code="2705">✅</span></td><td><span data-gb-custom-inline data-tag="emoji" data-code="2705">✅</span></td><td></td></tr><tr><td>Opera</td><td><span data-gb-custom-inline data-tag="emoji" data-code="2705">✅</span></td><td><span data-gb-custom-inline data-tag="emoji" data-code="2705">✅</span></td><td><span data-gb-custom-inline data-tag="emoji" data-code="2705">✅</span></td></tr></tbody></table>
-
-## Download
-
-Download the Jam extension for Chromium browsers:&#x20;
-
-{% embed url="<https://chrome.google.com/webstore/detail/jam/iohjgamcilhbgmhbnllfolmkmmekfmci>" %}
+4\. Click "Add" and then "Done".
 
 
 # DevTools
@@ -1930,7 +2007,7 @@ Download the Jam extension for Chromium browsers:&#x20;
 
 ### Overview
 
-Every Jam capture automatically includes comprehensive developer information to help engineers debug faster. Get instant access to console logs, network data, and environment details without switching between tools or losing context.\\
+Every Jam capture automatically includes comprehensive developer information to help engineers debug faster. Get instant access to console logs, network data, and environment details without switching between tools or losing context.<br>
 
 ### Core Features
 
@@ -1967,7 +2044,7 @@ Use familiar Chrome DevTools shortcuts for faster navigation:
 | Open network request details      | <kbd>⏎</kbd> Return                            |
 | Close network request details     | <kbd>Esc</kbd>                                 |
 
-\\
+<br>
 
 ### FAQs
 
@@ -2165,23 +2242,14 @@ Paste an existing Jam link into supported MCP clients like VS Code, Cursor, Wind
 
 <summary>ChatGPT</summary>
 
-<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FgsK8H8HVG7b7asqZbeQM%2Fimage.png?alt=media&#x26;token=54149dd5-9115-4494-9edb-82098d71bf5c" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FkreA2swop1AL4Yd3YW9K%2FJamChatGPT-connector.gif?alt=media&#x26;token=45277eb5-7491-4d9d-9ae4-804ba09e79c6" alt=""><figcaption></figcaption></figure>
 
 **Steps:**
 
 1. From the home page go to **Settings**
-2. Click **Connectors**&#x20;
-3. Click **Create\*** in the browse connectors section.
-4. Create a new connector by entering the following details&#x20;
-   1. Name: **Jam**
-   2. MCP Server URL: **<https://mcp.jam.dev/mcp>**
-   3. Authentication: **OAuth**
-
-<figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FKdCqc6oGeZXGSbnnnumU%2Fimage.png?alt=media&#x26;token=f11627dd-f176-47db-9605-960bfdc832eb" alt=""><figcaption></figcaption></figure>
-
-{% hint style="info" %}
-\*If the **create** button is missing, scroll to **advanced settings** and ensure Developer mode is enabled.
-{% endhint %}
+2. Click **Apps &** **Connectors**&#x20;
+3. Select **Jam** and click the **Connect** button
+4. Sign in to Jam and allow access to your workspace
 
 </details>
 
@@ -2284,6 +2352,28 @@ Once you make the above changes, make sure to restart Cursor to use Jam.
     }
 }
 ```
+
+</details>
+
+<details>
+
+<summary>OpenCode</summary>
+
+1. Edit your `opencode.json`:&#x20;
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "jam": {
+      "type": "remote",
+      "url": "https://mcp.jam.dev/mcp"
+    }
+  }
+}
+```
+
+2. Run `opencode mcp auth jam` to start oauth2 authorization flow
 
 </details>
 
@@ -2488,22 +2578,22 @@ You can configure all the relevant Asana fields right from Jam – like assignee
 
 &#x20;     [getting-started](https://jam.dev/docs/welcome/get-started/getting-started "mention")
 
-2. Next, capture your bug with Jam. \\
+2. Next, capture your bug with Jam. <br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FegyVq2w1jJtmOaeDs8QN%2Fasana-1.gif?alt=media&#x26;token=a34cac33-1e5a-481a-bb64-ec16ca8977b0" alt="" width="375"><figcaption></figcaption></figure></div>
-3. In the Jam extension, you will have the option to choose where Jam sends your screen capture. Click on "Link you can share" and change it to Asana.\\
+3. In the Jam extension, you will have the option to choose where Jam sends your screen capture. Click on "Link you can share" and change it to Asana.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FJRp9GQwpFq1bgbtqq0Uu%2Fasana-2.gif?alt=media&#x26;token=4a3e0634-2dea-4aee-b8f9-557f112b1289" alt="" width="375"><figcaption></figcaption></figure></div>
-4. Jam will guide you through authenticating with Asana.\\
+4. Jam will guide you through authenticating with Asana.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FYsoYDICODFFgSt2sOFdu%2Fasana-3.gif?alt=media&#x26;token=43ddd71c-9767-411d-81f9-8a4d83ddf20f" alt="" width="375"><figcaption></figcaption></figure></div>
-5. Once Jam is connected to Asana, you will be able to setup your Asana task right from Jam. Choose the workspace, project, assignee, tags, etc., right from Jam. \\
+5. Once Jam is connected to Asana, you will be able to setup your Asana task right from Jam. Choose the workspace, project, assignee, tags, etc., right from Jam. <br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FFhfioZ6fT1mOS1m9iphL%2Fasana-4.gif?alt=media&#x26;token=eac14a3b-976c-48f1-bbf6-3ba9e0a5fe34" alt="" width="375"><figcaption></figcaption></figure></div>
-6. Pro tip: you can click "Edit fields"  to manage which fields from Asana are shown in Jam:\\
+6. Pro tip: you can click "Edit fields"  to manage which fields from Asana are shown in Jam:<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FG8az3JI3Y6lem18joybj%2Fasana-5.gif?alt=media&#x26;token=e20bf845-cfac-4587-814f-4f4a6d43cb0a" alt="" width="375"><figcaption></figcaption></figure></div>
-7. Click "Create task" and once Jam creates your Asana task, it will automatically open in a new tab. \\
+7. Click "Create task" and once Jam creates your Asana task, it will automatically open in a new tab. <br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FPFPnuegT5pRAueswri76%2Fasana-6.gif?alt=media&#x26;token=9e908592-24ef-4388-ac6f-b98044346303" alt="" width="375"><figcaption></figcaption></figure></div>
 
@@ -2514,11 +2604,11 @@ You can automatically create Asana tasks from existing Jams – in just 2 clicks
 *Note: You must be logged into Jam to use this feature. Logged out users will not see this option.*
 
 1. Open up the Jam you want to convert to an Asana task.
-2. Click "Send to App" and select Asana.\\
+2. Click "Send to App" and select Asana.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2Fcj6zuLZp3oqHtWVrXwdB%2Fasana-tools-1.gif?alt=media&#x26;token=3976eeec-193f-47d0-87b3-d6317cc91b39" alt="" width="375"><figcaption></figcaption></figure></div>
 3. If you have not used Jam + Asana before, it will first redirect you to log in with Asana.
-4. Enter the details of your Asana task: workspace, project, assignee, tags, etc.\\
+4. Enter the details of your Asana task: workspace, project, assignee, tags, etc.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FaxrPwxadQeuzaLsc5pA6%2Fasana-tools-2.gif?alt=media&#x26;token=1a63317f-6d2b-4b50-b3f2-7855e7ee339c" alt="" width="375"><figcaption></figcaption></figure></div>
 5. Pro tip: you can click "Edit fields"  to manage which fields from Asana are shown in Jam.
@@ -2551,23 +2641,23 @@ Step by step instructions below - or watch this 2 min tutorial to start creating
 
 &#x20;     [getting-started](https://jam.dev/docs/welcome/get-started/getting-started "mention")
 
-2. Next, capture your bug with Jam. \\
+2. Next, capture your bug with Jam. <br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FiFA9UaSdD43TtKmHlQnP%2FAzure-1.gif?alt=media&#x26;token=9ed6d21b-c658-4460-a6d3-4aefb69093e5" alt="" width="375"><figcaption></figcaption></figure></div>
-3. In the Jam extension, you will have the option to choose where Jam sends your screen capture to. Click on "Link you can share" and change it to Azure DevOps.\\
+3. In the Jam extension, you will have the option to choose where Jam sends your screen capture to. Click on "Link you can share" and change it to Azure DevOps.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FSc2EWZuOm6CmmZTKDZos%2FAzure-2.gif?alt=media&#x26;token=2f01e213-b4d5-4eec-8beb-8294fc4404f4" alt="" width="375"><figcaption></figcaption></figure></div>
-4. Jam will guide you through authenticating with Azure DevOps.\\
+4. Jam will guide you through authenticating with Azure DevOps.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FjWnTcp6ddzbHPO6OILcl%2FAzure-3.gif?alt=media&#x26;token=ee335cba-c203-424d-8ba7-76b867ffdbbd" alt="" width="375"><figcaption></figcaption></figure></div>
 5. Once Jam is connected to Azure DevOps, you will be able to setup your Azure DevOps issues right from Jam.\
-   Choose the project, team, priority, assignees, etc., right from Jam. \\
+   Choose the project, team, priority, assignees, etc., right from Jam. <br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FNrIuAHvACsX8PPE7Ck2s%2FAzure-4.gif?alt=media&#x26;token=92773ac8-ce94-4a41-9865-bd4dc32f2299" alt="" width="375"><figcaption></figcaption></figure></div>
-6. Pro tip: you can click "Edit fields"  to manage which fields from Azure DevOps are shown in Jam:\\
+6. Pro tip: you can click "Edit fields"  to manage which fields from Azure DevOps are shown in Jam:<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FBneAOARkKZqDiADWNCsK%2FAzure-5.gif?alt=media&#x26;token=edbae283-9cf8-4148-94dd-5a9efa30513f" alt="" width="375"><figcaption></figcaption></figure></div>
-7. Click "Create issue" and once Jam creates your Azure DevOps issue, it will automatically open in a new tab. \\
+7. Click "Create issue" and once Jam creates your Azure DevOps issue, it will automatically open in a new tab. <br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FN0DP6pLB10FjqqZw8pZC%2FAzure-6.gif?alt=media&#x26;token=bbf4b015-e484-48d8-91b2-c837a4534932" alt="" width="375"><figcaption></figcaption></figure></div>
 
@@ -2578,11 +2668,11 @@ You can automatically create Azure DevOps issues from existing Jams – in just 
 *Note: You must be logged into Jam to use this feature. Logged out users will not see this option.*
 
 1. Open up the Jam you want to convert to an Azure DevOps issue.
-2. Click "Send to App" and select Azure DevOps.\\
+2. Click "Send to App" and select Azure DevOps.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FwQenXKI6ORoi7Ar93clE%2FAzure-7.gif?alt=media&#x26;token=704e1a59-07d5-4046-b769-9fb498212f55" alt="" width="375"><figcaption></figcaption></figure></div>
 3. If you have not used Jam + Azure DevOps before, it will first redirect you to log in with Azure DevOps.
-4. Enter the details of your Azure DevOps issue: project, team, priority, etc\\
+4. Enter the details of your Azure DevOps issue: project, team, priority, etc<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2F4Syen27hX21LOENZtj4o%2FAzure-8.gif?alt=media&#x26;token=6f985e51-140c-4667-b40d-6d1ef9a78853" alt="" width="375"><figcaption></figcaption></figure></div>
 5. Pro tip: you can click "Edit fields"  to manage which fields from Azure DevOps are shown in Jam.
@@ -2612,24 +2702,24 @@ You can configure all the relevant ClickUp fields right from Jam – like worksp
 
 &#x20; [getting-started](https://jam.dev/docs/welcome/get-started/getting-started "mention")
 
-2. Next, capture your bug with Jam.\\
+2. Next, capture your bug with Jam.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2Fw94CmBfns1FnrDb5SBMA%2Fclickup-1.gif?alt=media&#x26;token=41483540-a26b-4613-be2c-ae259a43c87d" alt="" width="375"><figcaption></figcaption></figure></div>
-3. In the Jam extension, you will have the option to choose where Jam sends your screen capture to. Click on "Link you can share" and change it to ClickUp.\\
+3. In the Jam extension, you will have the option to choose where Jam sends your screen capture to. Click on "Link you can share" and change it to ClickUp.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FUugErikNAlBg99b2hTTs%2Fclickup-2.gif?alt=media&#x26;token=6bee9776-757e-44db-8abb-2251cf7f1a6a" alt="" width="375"><figcaption></figcaption></figure></div>
-4. &#x20;Jam will guide you through authenticating with ClickUp.\\
+4. &#x20;Jam will guide you through authenticating with ClickUp.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2F7xbVxHm1ZugQaN2uDKro%2Fclickup-3.gif?alt=media&#x26;token=3385c109-1d74-485b-bf07-8caee544cc39" alt="" width="375"><figcaption></figcaption></figure></div>
-5. Once Jam is connected to ClickUp, you will be able to setup your ClickUp task right from Jam. Choose the workspace, folder, list, assignee, etc., right from Jam.\\
+5. Once Jam is connected to ClickUp, you will be able to setup your ClickUp task right from Jam. Choose the workspace, folder, list, assignee, etc., right from Jam.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FkpfFqoE5Bu315lT3to4l%2Fclickup-4.gif?alt=media&#x26;token=f854263d-4ba5-4cc3-b97d-60f31e8b7c7f" alt="" width="375"><figcaption></figcaption></figure></div>
 
    *Note: ClickUp workspace guests can also create Jams. In their case the Space field will default to the shared place they have access to, while they can continue filling out the rest of the public fields.*
-6. Pro tip: you can click "Edit fields" to manage which fields from ClickUp are shown in Jam:\\
+6. Pro tip: you can click "Edit fields" to manage which fields from ClickUp are shown in Jam:<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FE7P0Ve7aXkANYSu0fW4I%2Fclickup-5.gif?alt=media&#x26;token=6cbdc593-7827-41d0-beae-b8841660b448" alt="" width="375"><figcaption></figcaption></figure></div>
-7. Click "Create task" and once Jam creates your ClickUp task, it will automatically open in a new tab.\\
+7. Click "Create task" and once Jam creates your ClickUp task, it will automatically open in a new tab.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FBhosArCFdKiJE3LXsdWO%2Fclickup-6.gif?alt=media&#x26;token=82e3288e-9893-469a-ad12-19d0ab5e0530" alt="" width="375"><figcaption></figcaption></figure></div>
 
@@ -2640,11 +2730,11 @@ You can automatically create ClickUp tasks from existing Jams – in just 2 clic
 *Note: You must be logged into Jam to use this feature. Logged out users will not see this option.*
 
 1. Open up the Jam you want to convert to a ClickUp task.
-2. Click "Send to App" and select ClickUp .\\
+2. Click "Send to App" and select ClickUp .<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FDCvIb6hgVzpqWMDUASWK%2Fclickup-tools-1.gif?alt=media&#x26;token=9ce74fa4-d1ba-4bc2-b946-912ef6f3ec98" alt="" width="375"><figcaption></figcaption></figure></div>
 3. If you have not used Jam + ClickUp before, it will first redirect you to log in with ClickUp.
-4. Enter the details of your ClickUp task: workspace, folder, list, assignee, etc.\\
+4. Enter the details of your ClickUp task: workspace, folder, list, assignee, etc.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FET7hxCEUb2qAxpHGe0t7%2Fclickup-tools-2.gif?alt=media&#x26;token=0e3dc440-be10-4d84-8128-defc1cc708d1" alt="" width="375"><figcaption></figcaption></figure></div>
 5. Pro tip: you can click "Edit fields" to manage which fields from ClickUp are shown in Jam.
@@ -2656,8 +2746,7 @@ A Jam account or team workspace can connect to multiple ClickUp workspaces.&#x20
 
 Here's how to connect to multiple ClickUp workspaces within one Jam team workspace:
 
-1. Go to your account or team settings. Click on "Connected Apps". Then click on "ClickUp". The ClickUp authentication flow will open in a new tab. \\
-
+1. Go to your account or team settings. Click on "Connected Apps". Then click on "ClickUp". The ClickUp authentication flow will open in a new tab. <br>
 2.
 
 ```
@@ -2666,7 +2755,7 @@ Here's how to connect to multiple ClickUp workspaces within one Jam team workspa
 
 3. You can select/deselect the ClickUp workspaces you want to connect to.
 
-   *Note: Make sure to connect with all the workspaces that you'll need because you'll not be able to view this screen again unless you disconnect + reconnect your ClickUp connection with Jam.*\\
+   *Note: Make sure to connect with all the workspaces that you'll need because you'll not be able to view this screen again unless you disconnect + reconnect your ClickUp connection with Jam.*<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FcdklVVmB2PRbUvzCzGdv%2Fclickup-team-2.gif?alt=media&#x26;token=bd29fa19-10bd-4b83-b00b-3fe9e5984c75" alt="" width="375"><figcaption></figcaption></figure></div>
 4. After you select the workspaces, there will be a blue circle around them to indicate that you selected those workspaces. Click on the 'Connect Workspaces' button.
@@ -2742,22 +2831,22 @@ You can configure all the relevant GitHub Issues fields right from Jam – like 
 
 &#x20;     [getting-started](https://jam.dev/docs/welcome/get-started/getting-started "mention")
 
-2. Next, capture your bug with Jam. \\
+2. Next, capture your bug with Jam. <br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2F1NhyFtpvKZ3y0jZBO7FD%2Fgithub-1.gif?alt=media&#x26;token=db9ef072-3afc-456e-90ea-5b619c222739" alt="" width="375"><figcaption></figcaption></figure></div>
-3. In the Jam extension, you will have the option to choose where Jam sends your screen capture to. Click on "Link you can share" and change it to GitHub.\\
+3. In the Jam extension, you will have the option to choose where Jam sends your screen capture to. Click on "Link you can share" and change it to GitHub.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FdRmvTDrq58kuuPVKjhge%2Fgithub-2.gif?alt=media&#x26;token=c259aaca-4958-4e6f-a2db-96b7e0463528" alt="" width="375"><figcaption></figcaption></figure></div>
-4. Jam will guide you through authenticating with GitHub.\\
+4. Jam will guide you through authenticating with GitHub.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FBZT5wOknOGUd28oFZh1n%2Fgithub-5.gif?alt=media&#x26;token=e7fc94c0-dc17-46a7-94f5-49ac9c144ada" alt="" width="375"><figcaption></figcaption></figure></div>
-5. Once Jam is connected to GitHub, you will be able to setup your GitHub issue right from Jam. Choose the repository, assignees, labels, milestone, etc., right from Jam. \\
+5. Once Jam is connected to GitHub, you will be able to setup your GitHub issue right from Jam. Choose the repository, assignees, labels, milestone, etc., right from Jam. <br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2F9nDzlgwIH7PsfnSS9FBO%2Fgithub-4.gif?alt=media&#x26;token=85ee584e-721a-4216-88d1-bb8124d8c8e9" alt="" width="375"><figcaption></figcaption></figure></div>
-6. Pro tip: you can click "Edit fields"  to manage which fields from GitHub are shown in Jam:\\
+6. Pro tip: you can click "Edit fields"  to manage which fields from GitHub are shown in Jam:<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FvQies3kbl9JYELpBCdJs%2Fgithub-edit.gif?alt=media&#x26;token=b88746cc-0e18-4078-b1e6-b834d14c02ca" alt="" width="375"><figcaption></figcaption></figure></div>
-7. Click "Create issue" and once Jam creates your GitHub issue, it will automatically open in a new tab. \\
+7. Click "Create issue" and once Jam creates your GitHub issue, it will automatically open in a new tab. <br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FKLSl1p9q8LAhmZXZdYFL%2Fgithub-6.gif?alt=media&#x26;token=48d33aeb-3088-462f-8cbc-8b0948adc83d" alt="" width="375"><figcaption></figcaption></figure></div>
 
@@ -2768,11 +2857,11 @@ You can automatically create GitHub issues from existing Jams – in just 2 clic
 *Note: You must be logged into Jam to use this feature. Logged out users will not see this option.*
 
 1. Open up the Jam you want to convert to a GitHub issue.
-2. Click "Send to App" and select GitHub.\\
+2. Click "Send to App" and select GitHub.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FBydB3kR5YHU9bee8Dn0l%2Fgithub-tools-1.gif?alt=media&#x26;token=e4c53f8b-8454-4d78-97ab-c39786dd9ba7" alt="" width="375"><figcaption></figcaption></figure></div>
 3. If you have not used Jam + GitHub before, it will first redirect you to log in with GitHub.
-4. Enter the details of your GitHub issue: repository, assignees, labels, milestone, etc. \\
+4. Enter the details of your GitHub issue: repository, assignees, labels, milestone, etc. <br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FJwOWUY9DzbMVv0DnKMwG%2Fgithub-tools-2.gif?alt=media&#x26;token=f8dbc7c4-bb3c-4fdc-b1b5-0ba7c25c05ee" alt="" width="375"><figcaption></figcaption></figure></div>
 5. Pro tip: you can click "Edit fields"  to manage which fields from GitHub are shown in Jam.
@@ -2800,22 +2889,22 @@ You can configure all the relevant GitLab Issues fields right from Jam – like 
 
 &#x20;       [Get Started](https://jam.dev/docs/get-started)
 
-2. Next, capture your bug with Jam.\\
+2. Next, capture your bug with Jam.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FR8wiXyYTLuDAfYWwxH9W%2Fgitlab-1.gif?alt=media&#x26;token=40208849-6dee-4010-8c0d-620981665671" alt="" width="375"><figcaption></figcaption></figure></div>
-3. In the Jam extension, you will have the option to choose where Jam sends your screen capture to. Click on "Link you can share" and change it to GitLab.\\
+3. In the Jam extension, you will have the option to choose where Jam sends your screen capture to. Click on "Link you can share" and change it to GitLab.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2Fx0ICYUTSzsYWLBnX96DU%2Fgitlab-2.gif?alt=media&#x26;token=0bcf01de-afdf-4378-a3a6-96b6b64103a1" alt="" width="375"><figcaption></figcaption></figure></div>
-4. Jam will guide you through authenticating with GitLab.\\
+4. Jam will guide you through authenticating with GitLab.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FQV3PaZVwArQh1caAC1D6%2Fgitlab-3.gif?alt=media&#x26;token=ebd9e295-5d85-4f71-b006-8f26c5a3dd54" alt="" width="375"><figcaption></figcaption></figure></div>
-5. Once Jam is connected to GitLab, you will be able to setup your GitLab issue right from Jam. Choose the Project, Assignee, Labels, Due Date, Milestones, etc., right from Jam.\\
+5. Once Jam is connected to GitLab, you will be able to setup your GitLab issue right from Jam. Choose the Project, Assignee, Labels, Due Date, Milestones, etc., right from Jam.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2Fr2neRIiWnSUIFeEC57tG%2Fgitlab-4.gif?alt=media&#x26;token=66d47de5-060d-41ae-9897-d92ec8b63bc5" alt="" width="375"><figcaption></figcaption></figure></div>
-6. Pro tip: you can click "Edit fields" to manage which fields from GitLab are shown in Jam:\\
+6. Pro tip: you can click "Edit fields" to manage which fields from GitLab are shown in Jam:<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2Fj6YQXfFwyBaCvHP4hoH8%2Fgitlab-5.gif?alt=media&#x26;token=e7473171-f972-403e-b33d-d9d28e6fe73d" alt="" width="375"><figcaption></figcaption></figure></div>
-7. Click "Create issue" and once Jam creates your GitLab issue, it will automatically open in a new tab.\\
+7. Click "Create issue" and once Jam creates your GitLab issue, it will automatically open in a new tab.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FzFgUedoI4ubEo59wlujh%2Fgitlab-6.gif?alt=media&#x26;token=791a6295-acd9-4228-9f2a-5a85b5ffbb2e" alt="" width="375"><figcaption></figcaption></figure></div>
 
@@ -2826,12 +2915,11 @@ You can automatically create GitLab issues from existing Jams – in just 2 clic
 *Note: You must be logged into Jam to use this feature. Logged out users will not see this option.*
 
 1. Open up the Jam you want to convert to a GitLab issue.
-2. Click "Send to App" and select GitLab.\\
+2. Click "Send to App" and select GitLab.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FJs9tgCTCOMKAiXTYOybt%2Fgitlab-7.gif?alt=media&#x26;token=1fead67b-6907-4b82-a05b-9b964848087e" alt="" width="375"><figcaption></figcaption></figure></div>
 3. If you have not used Jam + GitLab before, it will first redirect you to log in with Gitlab.
-4. Enter the details of your GitLab issue: repository, assignees, labels, milestone, etc. \
-   \\
+4. Enter the details of your GitLab issue: repository, assignees, labels, milestone, etc. \ <br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2Fl78vBuVxyXXxJkPEkP6G%2Fgitlab-8.gif?alt=media&#x26;token=b9f1bc7a-3834-4f9a-a034-9e3556809b13" alt="" width="375"><figcaption></figcaption></figure></div>
 5. Pro tip: you can click "Edit fields"  to manage which fields from GitLab are shown in Jam.
@@ -2871,23 +2959,23 @@ You can configure all the relevant Jira fields right from Jam – like assignee,
 
 &#x20;     [getting-started](https://jam.dev/docs/welcome/get-started/getting-started "mention")
 
-2. Next, capture your bug with Jam. \\
+2. Next, capture your bug with Jam. <br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FKudedVPREisJzX7GrzyP%2Fjira-1.gif?alt=media&#x26;token=75708029-5c79-4411-9bea-f71e76381873" alt="" width="375"><figcaption></figcaption></figure></div>
-3. In the Jam extension, you will have the option to choose where Jam sends your screen capture to. Click on "Link you can share" and change it to Jira.\\
+3. In the Jam extension, you will have the option to choose where Jam sends your screen capture to. Click on "Link you can share" and change it to Jira.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FPfcfW47vuBdY3begN3ny%2Fjira-2.gif?alt=media&#x26;token=880aef86-4992-447c-aa7e-0ab193fafab4" alt="" width="375"><figcaption></figcaption></figure></div>
-4. Jam will guide you through authenticating with Jira.\\
+4. Jam will guide you through authenticating with Jira.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2F6Sa20OJCkeAbXVkz3QKh%2Fjira-3.gif?alt=media&#x26;token=8698b8a2-46fe-4d73-877f-fef0f26dd036" alt="" width="375"><figcaption></figcaption></figure></div>
 5. Once Jam is connected to Jira, you will be able to setup your Jira ticket right from Jam.\
-   Choose the project, issue type, priority, labels, etc., right from Jam. \\
+   Choose the project, issue type, priority, labels, etc., right from Jam. <br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2Fk88R9HqBIDvVEZH2TNGA%2Fjira-4.gif?alt=media&#x26;token=1754ee06-2ddc-4e1f-9407-1956ba7442b6" alt="" width="375"><figcaption></figcaption></figure></div>
-6. Pro tip: you can click "Edit fields"  to manage which fields from Jira are shown in Jam:\\
+6. Pro tip: you can click "Edit fields"  to manage which fields from Jira are shown in Jam:<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FYzhUdew0ORRAp7IGh5PX%2Fjira-5.gif?alt=media&#x26;token=c5452a99-3d1d-4c97-b771-ea228d3f32dc" alt="" width="375"><figcaption></figcaption></figure></div>
-7. Click "Create issue" and once Jam creates your Jira ticket, it will automatically open in a new tab. \\
+7. Click "Create issue" and once Jam creates your Jira ticket, it will automatically open in a new tab. <br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FOJo2Wlq17GBRTJ53atjt%2Fjira-6.gif?alt=media&#x26;token=d86aa14e-bb2b-4f2d-8592-d138b46cbf7c" alt="" width="375"><figcaption></figcaption></figure></div>
 
@@ -2898,11 +2986,11 @@ You can automatically create Jira tickets from existing Jams – in just 2 click
 *Note: You must be logged into Jam to use this feature. Logged out users will not see this option.*
 
 1. Open up the Jam you want to convert to a Jira ticket.
-2. Click "Send to App" and select Jira.\\
+2. Click "Send to App" and select Jira.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FCNC622gdECxbxwUSL8gF%2Fjira-tools-1.gif?alt=media&#x26;token=c03eeded-9ba4-45b8-9c5e-a31e64574844" alt="" width="375"><figcaption></figcaption></figure></div>
 3. If you have not used Jam + Jira before, it will first redirect you to log in with Jira.
-4. Enter the details of your Jira ticket: project, issue type, priority, labels, etc\\
+4. Enter the details of your Jira ticket: project, issue type, priority, labels, etc<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FbjlOhE3XHZYMDTmbHRgs%2Fjira-tools-2.gif?alt=media&#x26;token=0aa1ddc3-293b-4245-ab46-b7f2be3e752e" alt="" width="375"><figcaption></figcaption></figure></div>
 5. Pro tip: you can click "Edit fields"  to manage which fields from Jira are shown in Jam.
@@ -2915,19 +3003,19 @@ Each Jam team workspace can connect to one Jira site. That means if you're worki
 Here's how to create multiple Jam team workspaces and connect them to separate Jira sites:
 
 1. Go to the Jam dashboard: [jam.dev](https://jam.dev)
-2. Click "Invite Teammates" or "Add a Team" \\
+2. Click "Invite Teammates" or "Add a Team" <br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2F1UIMx7obwBDvjUTs8ysJ%2Fteam-1.gif?alt=media&#x26;token=426fb51c-ce7b-43c2-806c-1d878fa3d516" alt="" width="316"><figcaption></figcaption></figure></div>
-3. Jam will walk you through the steps of creating a team.\\
+3. Jam will walk you through the steps of creating a team.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FjUlv1G9GMruXJkn4EBHd%2Fteam-2.gif?alt=media&#x26;token=64c0f45d-d123-488f-b01c-d5a934cd66b2" alt="" width="375"><figcaption></figcaption></figure></div>
-4. Go to your newly created team settings. Click on "Connected Apps". Then click on "Jira". The Jira authentication flow will open in a new tab. \\
+4. Go to your newly created team settings. Click on "Connected Apps". Then click on "Jira". The Jira authentication flow will open in a new tab. <br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FUFFntrOD2oKIdiFO2zCq%2Fjira-team-1.gif?alt=media&#x26;token=6ae34728-43b3-4eb9-9369-0f966f9e3e41" alt="" width="375"><figcaption></figcaption></figure></div>
-5. Select the Jira site you want to connect to.\\
+5. Select the Jira site you want to connect to.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2F9d3mIo2WFkiRWIyPT5P9%2Fjira-team-2.gif?alt=media&#x26;token=4ff40e36-d6df-4832-90f1-7e60b0376d79" alt="" width="375"><figcaption></figcaption></figure></div>
-6. After you are done connecting to Jira, you will be able to see which Jira site is connected to that Jam team workspace.\\
+6. After you are done connecting to Jira, you will be able to see which Jira site is connected to that Jam team workspace.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2F4HvlSNyyqakCoifMpwp6%2Fjira-team-3.gif?alt=media&#x26;token=733d37d6-297b-45f3-a187-1cb2b9a7f240" alt="" width="375"><figcaption></figcaption></figure></div>
 7. Repeat this process of creating a new Jam team workspace + connecting the corresponding Jira site for every Jira site you need to connect to Jam.&#x20;
@@ -2973,22 +3061,22 @@ You can configure all the relevant Linear fields right from Jam – like assigne
 [getting-started](https://jam.dev/docs/welcome/get-started/getting-started)
 {% endcontent-ref %}
 
-2. Next, capture your bug with Jam.\\
+2. Next, capture your bug with Jam.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FJm06A238yDNnQf2cM2eJ%2Flinear-1.gif?alt=media&#x26;token=464ca04d-8032-4b7a-b2f5-fb364ad5690b" alt="" width="375"><figcaption></figcaption></figure></div>
-3. In the Jam extension, you will have the option to choose where Jam sends your screen capture to. Click on "Link you can share" and change it to Linear.\\
+3. In the Jam extension, you will have the option to choose where Jam sends your screen capture to. Click on "Link you can share" and change it to Linear.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FGLfZ18EaCzuDd9loWYsb%2Flinear-2.gif?alt=media&#x26;token=8c8b72f0-b766-4b37-9e78-afeb699290cb" alt="" width="375"><figcaption></figcaption></figure></div>
-4. Jam will guide you through authenticating with Linear.\\
+4. Jam will guide you through authenticating with Linear.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FupYZC3qr30GoNiPXtFP2%2Flinear-3.gif?alt=media&#x26;token=1b3228ea-6ba3-46f2-9512-01a418bd7a9c" alt="" width="375"><figcaption></figcaption></figure></div>
-5. Once Jam is connected to Linear, you will be able to setup your Linear ticket right from Jam. Choose the assignees, labels, priority, project, etc., right from Jam. \\
+5. Once Jam is connected to Linear, you will be able to setup your Linear ticket right from Jam. Choose the assignees, labels, priority, project, etc., right from Jam. <br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FlEX9S9xDhn1ZosiZJJYf%2Flinear-4.gif?alt=media&#x26;token=179104f5-80f8-4c04-b4c2-d94184152019" alt="" width="375"><figcaption></figcaption></figure></div>
-6. Pro tip: you can click "Edit fields" to manage which fields from Linear are shown in Jam:\\
+6. Pro tip: you can click "Edit fields" to manage which fields from Linear are shown in Jam:<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FMPEItdx1qKxGPVB8EqVj%2Fedit-fields.gif?alt=media&#x26;token=7849e5ad-75c6-430f-9f25-dbb461112543" alt="" width="375"><figcaption></figcaption></figure></div>
-7. Click "Create issue" and once Jam creates your Linear ticket, it will automatically open in a new tab.\\
+7. Click "Create issue" and once Jam creates your Linear ticket, it will automatically open in a new tab.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FJkOMrAW8Dbb9nTPqLfeC%2Flinear-5.gif?alt=media&#x26;token=18f06a9b-5a6c-4af2-b733-0588662ba1fc" alt="" width="375"><figcaption></figcaption></figure></div>
 
@@ -2999,11 +3087,11 @@ You can automatically create Linear tickets from existing Jams – in just 2 cli
 *Note: You must be logged into Jam to use this feature. Logged out users will not see this option.*
 
 1. Open up the Jam you want to convert to a Linear ticket.
-2. Click "Send to App" and select Linear.\\
+2. Click "Send to App" and select Linear.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FsdUZtJSy1NRhcThFFWIk%2Fsend-to-linear-1.gif?alt=media&#x26;token=d41804e2-021b-48d0-8af3-5db585199220" alt="" width="375"><figcaption></figcaption></figure></div>
 3. If you have not used Jam + Linear before, it will first redirect you to log in with Linear.
-4. Enter the details of your Linear ticket: title, assignee, priority, labels, etc.\\
+4. Enter the details of your Linear ticket: title, assignee, priority, labels, etc.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FjxNDL4XTXJhM5zJ531KH%2Fsend-to-linear-2.gif?alt=media&#x26;token=397f180c-89a2-45bc-953a-1489a94a69ea" alt="" width="375"><figcaption></figcaption></figure></div>
 5. Pro tip: you can click "Edit fields" to manage which fields from Linear are shown in Jam.
@@ -3016,24 +3104,23 @@ Each Jam team workspace can connect to 1 Linear workspace. That means if you're 
 Here's how to create multiple Jam team workspaces and connect them to separate Linear workspaces:
 
 1. Go to the Jam dashboard: [jam.dev](https://jam.dev)
-2. Click "Invite Teammates" or "Add a Team" \\
+2. Click "Invite Teammates" or "Add a Team" <br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2F1UIMx7obwBDvjUTs8ysJ%2Fteam-1.gif?alt=media&#x26;token=426fb51c-ce7b-43c2-806c-1d878fa3d516" alt="" width="316"><figcaption></figcaption></figure></div>
-3. Jam will walk you through the steps of creating a team.\\
+3. Jam will walk you through the steps of creating a team.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FjUlv1G9GMruXJkn4EBHd%2Fteam-2.gif?alt=media&#x26;token=64c0f45d-d123-488f-b01c-d5a934cd66b2" alt="" width="375"><figcaption></figcaption></figure></div>
-4. Go to your newly created team settings. Click on "Connected Apps". Then click on "Linear". The Linear authentication flow will open in a new tab. Login to the Linear workspace you want to connect that team to.\\
+4. Go to your newly created team settings. Click on "Connected Apps". Then click on "Linear". The Linear authentication flow will open in a new tab. Login to the Linear workspace you want to connect that team to.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FlYO5nsugwsOdcIAUrNy7%2Fteam-linear-3.gif?alt=media&#x26;token=af7fa9f1-9848-4890-a1c8-bcc8deb8f787" alt="" width="375"><figcaption></figcaption></figure></div>
 5. After you are done connecting to Linear, you will be able to see which Linear workspace is connected to that Jam team workspace. If you need to swap which workspace is connected, you can simply disconnect the Linear connection from the Jam connected apps settings, and re-connect to the correct Linear workspace.\
    &#x20;
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2F68kUM2caxEXhttguBSXt%2Fwhich-linear.gif?alt=media&#x26;token=7ac6450e-56d9-48a7-a31a-0712483b278d" alt="" width="375"><figcaption></figcaption></figure></div>
-6. Now, when you create Jams, you can choose which Jam team workspace (and thus, which Linear workspace) to send each Jam to.\\
+6. Now, when you create Jams, you can choose which Jam team workspace (and thus, which Linear workspace) to send each Jam to.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FgWR4EOxP3y2xPFszZRZg%2Fchoose-linear.gif?alt=media&#x26;token=feed2f01-e880-4e40-8274-ed340cf6a405" alt="" width="375"><figcaption></figcaption></figure></div>
-7. Repeat this process of creating a new Jam team workspace + connecting the corresponding Linear workspace for every Linear workspace you need to connect to Jam.\
-   \\
+7. Repeat this process of creating a new Jam team workspace + connecting the corresponding Linear workspace for every Linear workspace you need to connect to Jam.\ <br>
 
 
 # LogRocket
@@ -3074,22 +3161,22 @@ You can configure all your Notion database properties right from Jam. Our goal i
 [getting-started](https://jam.dev/docs/welcome/get-started/getting-started)
 {% endcontent-ref %}
 
-2. Next, capture your bug with Jam.\\
+2. Next, capture your bug with Jam.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2Fuhzzmcmkf2yu09K7zvDq%2FNotion-1.gif?alt=media&#x26;token=60e41583-a578-4cce-b6df-d8e802d8a7f9" alt="" width="375"><figcaption></figcaption></figure></div>
-3. In the Jam extension, you will have the option to choose where Jam sends your screen capture to. Click on "Link you can share" and change it to Notion.\\
+3. In the Jam extension, you will have the option to choose where Jam sends your screen capture to. Click on "Link you can share" and change it to Notion.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FvmbEDNGkd91wtrL8XCgg%2FNotion-2.gif?alt=media&#x26;token=6fc3d8d2-e4ae-4b68-a9b6-568edfefbff3" alt="" width="375"><figcaption></figcaption></figure></div>
-4. Jam will guide you through authenticating with Notion.\\
+4. Jam will guide you through authenticating with Notion.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FaXxXruleGZ4cnbSVF4gl%2FNotion-3.gif?alt=media&#x26;token=7a34fd3e-b289-416d-ad12-ea22876eca52" alt="" width="375"><figcaption></figcaption></figure></div>
-5. Once Jam is connected to Notion, you will be able to setup your Notion task right from Jam. First search for the database you need and populate all the custom properties right from Jam. \\
+5. Once Jam is connected to Notion, you will be able to setup your Notion task right from Jam. First search for the database you need and populate all the custom properties right from Jam. <br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FwCmwYmGMEqBPxHslRQuE%2FNotion-4.gif?alt=media&#x26;token=7686d065-af37-49cb-9409-b0fbe0fa8087" alt="" width="375"><figcaption></figcaption></figure></div>
-6. Pro tip: you can click "Edit fields" to manage which properties from Notion are shown in Jam:\\
+6. Pro tip: you can click "Edit fields" to manage which properties from Notion are shown in Jam:<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FcyMP0HCGb1QGON4v7Zbv%2FNotion-5.gif?alt=media&#x26;token=1c96d108-c69a-47ce-9759-b59cb2d60ea9" alt="" width="375"><figcaption></figcaption></figure></div>
-7. Click "Create page" and once Jam creates your Notion page, it will automatically open in a new tab.\\
+7. Click "Create page" and once Jam creates your Notion page, it will automatically open in a new tab.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FvOZ2PNp70WD4IVU3BPvU%2FNotion-6.gif?alt=media&#x26;token=60f692d1-72be-4d96-84ae-5c8ff18d0175" alt="" width="375"><figcaption></figcaption></figure></div>
 
@@ -3100,15 +3187,15 @@ You can automatically create Notion tasks from existing Jams – in just 2 click
 *Note: You must be logged into Jam to use this feature. Logged out users will not see this option.*
 
 1. Open up the Jam you want to convert to a Notion task.
-2. Click "Send to App" and select Notion.\\
+2. Click "Send to App" and select Notion.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FmyOgrW5JT9L3nZHGA6FZ%2FNotion-7.gif?alt=media&#x26;token=eb54f0c5-c8ec-4e0b-a792-cc550f40dc99" alt="" width="375"><figcaption></figcaption></figure></div>
 3. If you have not used Jam + Notion before, it will first redirect you to log in with Notion.
-4. Enter the properties of your Notion database:\\
+4. Enter the properties of your Notion database:<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FG3s4mLR91Ug4iDz2PWuF%2FNotion-8.gif?alt=media&#x26;token=540d938e-cbe1-42c8-81cb-7b881d927054" alt="" width="375"><figcaption></figcaption></figure></div>
 5. Pro tip: you can click "Edit fields" to manage which properties from Notion are shown in Jam.
-6. Click "Create page" to create your Notion task.\\
+6. Click "Create page" to create your Notion task.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FJzXfMCbeZrqBrSrrrJjr%2FNotion-9.gif?alt=media&#x26;token=20ae202d-4051-4ade-a7b7-4542ce44cf39" alt="" width="375"><figcaption></figcaption></figure></div>
 
@@ -3180,20 +3267,20 @@ That way, it's perfect for engineers to help them debug issues faster – right 
 [getting-started](https://jam.dev/docs/welcome/get-started/getting-started)
 {% endcontent-ref %}
 
-2. Next, capture your bug with Jam. \\
+2. Next, capture your bug with Jam. <br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FnzDivWSL1gDOAQs312vN%2Fslack-1.gif?alt=media&#x26;token=0d76809d-cca1-4768-a43f-6e4a50dfd435" alt="" width="375"><figcaption></figcaption></figure></div>
-3. In the Jam extension, you will have the option to choose where Jam sends your screen capture to. Click on "Link you can share" and change it to Slack.\\
+3. In the Jam extension, you will have the option to choose where Jam sends your screen capture to. Click on "Link you can share" and change it to Slack.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2Ftlb58AEGhxbsfmUhDjiD%2Fslack-select.gif?alt=media&#x26;token=0631b255-c995-424a-82e7-a150a6d0f8f4" alt="" width="375"><figcaption></figcaption></figure></div>
-4. Jam will guide you through authenticating with Slack.\\
+4. Jam will guide you through authenticating with Slack.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FpUscAtlB9h1aehPAZY5A%2Fslack-auth.gif?alt=media&#x26;token=be6e7c56-b7cb-4ff5-9a29-ac4870d5de11" alt="" width="375"><figcaption></figcaption></figure></div>
 5. Once Jam is connected to Slack, you will be able to send Jams to your Slack right from Jam.\
-   Choose which channel (private, public or specific user) to send the Jam to. You can only access conversations that you are part of. \\
+   Choose which channel (private, public or specific user) to send the Jam to. You can only access conversations that you are part of. <br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FOYBGIowwgwRRtixoFYU6%2Fslack-3.gif?alt=media&#x26;token=13e821b8-7ed0-4578-9d2f-b7479359118d" alt="" width="375"><figcaption></figcaption></figure></div>
-6. Click "Send message" and once Jam creates your Slack message, the created Jam will automatically open in a new tab, and will be sent to the Slack channel requested! \\
+6. Click "Send message" and once Jam creates your Slack message, the created Jam will automatically open in a new tab, and will be sent to the Slack channel requested! <br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2F1gUxcdr7sMIi0HPejCEP%2Fslack-4.gif?alt=media&#x26;token=cb87abc1-f7b9-497d-9840-eb6e5da0aec1" alt="" width="375"><figcaption></figcaption></figure></div>
 
@@ -3214,11 +3301,11 @@ You can automatically create Slack messages from existing Jams – in just 2 cli
 *Note: You must be logged into Jam to use this feature. Logged out users will not see this option.*
 
 1. Open up the Jam you want to share as a Slack message.
-2. Click "Send to App" and select Slack.\\
+2. Click "Send to App" and select Slack.<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FgcJULj9OVTlUIJSpPVgT%2Fslack-tools-1.gif?alt=media&#x26;token=275b1e22-bd68-433b-81ab-df2c62593277" alt="" width="375"><figcaption></figcaption></figure></div>
 3. If you have not used Jam + Slack before, it will first redirect you to log in with Slack.
-4. Choose which channel (private, public or specific user) to send the Jam to. \\
+4. Choose which channel (private, public or specific user) to send the Jam to. <br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FyIFGpqlONzuZk39NWtgi%2Fslack-tools-2.gif?alt=media&#x26;token=03fefbfa-8812-4a6d-a448-3e27de1ec800" alt="" width="375"><figcaption></figcaption></figure></div>
 5. Click "Send message" to create your Slack message.&#x20;
@@ -3230,10 +3317,10 @@ Once you've connected your Jam account to Slack, every time you share a Jam in S
 To connect your Jam account to Slack:
 
 1. Open the Jam dashboard
-2. Go to your account settings or to your team settings. Click on "Connected Apps"\\
+2. Go to your account settings or to your team settings. Click on "Connected Apps"<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2F6LfyMoixZC7YTyy6Bif4%2Fslack-connect-1.gif?alt=media&#x26;token=129ea5de-7243-48af-b736-1d79e73d7d49" alt="" width="375"><figcaption></figcaption></figure></div>
-3. Connect Slack\\
+3. Connect Slack<br>
 
    <div align="left"><figure><img src="https://1990502200-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FtAIPUIiSH7MWC0IHLJuD%2Fuploads%2FVfIIQrhwrBb1pYqaeq0Q%2Fslack-connect-2.gif?alt=media&#x26;token=90bc2c72-597e-49c7-b01c-9965a1b81e65" alt="" width="375"><figcaption></figcaption></figure></div>
 
@@ -3726,7 +3813,7 @@ Connect your identity provider to Jam for streamlined authentication and automat
 
 **SSO (Single Sign-On):** Connects your identity provider to Jam for authentication. Team members log in using their corporate credentials instead of separate Jam passwords.
 
-**Directory Sync:** Automatically syncs user changes from your identity provider to Jam. When you add, remove, or modify users in your IdP, those changes reflect in your Jam workspace automatically.\\
+**Directory Sync:** Automatically syncs user changes from your identity provider to Jam. When you add, remove, or modify users in your IdP, those changes reflect in your Jam workspace automatically.<br>
 
 ### Configure
 
@@ -3951,23 +4038,50 @@ Jam was founded in 2020 and is backed by early investors, founders, and executiv
 
 Jam’s data privacy and security practices adhere to rigorous enterprise standards. Our infrastructure, data policies and internal corporate processes have been run through extensive security tests by third-party auditors.&#x20;
 
-Our security policies are supported by quarterly vulnerability tests, and annual exercises as dictated by SOC 2 Type II requirements.
+Our security policies are supported by quarterly vulnerability tests, and annual exercises as dictated by SOC 2 Type 2 requirements.
 
 Read more about Jam's security practices and compliance measures below.
 
-## SOC 2 Type II Compliance
+## Privacy & Data Protection
 
-Jam is SOC 2 Type II compliant. We are happy to share our SOC 2 Type 2 report with qualified customers. You can email <security@jam.dev> to request the report.
+### Where are Jam recordings stored?
 
-## Infrastructure
+Jam stores all recordings with Google Cloud Platform. Today, we are not able to redirect Jams to your chosen storage solution.
+
+### Can we choose when Jam recordings are to be deleted?
+
+Yes, Jam customers can specify a data deletion schedule for their workspace. Please contact us to implement your chosen schedule.
+
+### Who has access to Jam recordings?
+
+Jam provides [Access Controls](https://jam.dev/docs/welcome/administration/access-controls) so that you can control who can view your Jams. You can set global permissions so that only people with verified access to an email address with your company domain can view Jams. You can further narrow access to specific email addresses on a per Jam basis.
+
+### How does Jam gather consent from end customers?
+
+An end customer must proactively choose to begin recording and to submit their recording before any visual and browser data is stored by Jam. Both steps are forms of consent that the end user can decline at their discretion.
+
+### How does Jam minimize the amount of sensitive information it collects?
+
+Jam gathers visual screen recordings and data directly from the user’s browser. We also collect audio if the user opts into recording their voice alongside their screen. Jam has put protective measures in place to ensure users do not share or expose unnecessary sensitive data. Please refer to the following resources for deeper details:
+
+* **Jam obfuscates sensitive data from network requests -** [learn more](https://jam.dev/docs/welcome/debug-a-jam/devtools/secrets)
+* **Jam automatically blurs screen recordings** - [learn more](https://jam.dev/docs/welcome/jam-for-customer-support/advanced-data-protection-for-customer-support-jams-auto-blur)
+
+### Can we tailor the automatic blurring feature to our business?
+
+Yes, Jam gives our customers control over what data elements will be automatically blurred during recordings. [In this guide](https://jam.dev/docs/welcome/jam-for-customer-support/advanced-data-protection-for-customer-support-jams-auto-blur), we outline the data elements that are included in Jam’s default settings. It also includes instructions for how to choose data elements based on your own product context.
+
+## Infrastructure & Data Management
+
+### Infrastructure
 
 Jam uses Google Cloud Platform as the cloud provider to store data. For GCP, we use the Central US region. Jam uses Cloudflare for CDN. The Chrome extension is distributed through Google’s Chrome app store.
 
-## Does Jam backup data?
+### Does Jam backup data?
 
 Yes. Our data retention period depends on the frequency of the snapshots.
 
-## Frequency Retention period
+#### Frequency Retention period
 
 | Frequency | Retention period |
 | --------- | ---------------- |
@@ -3976,31 +4090,41 @@ Yes. Our data retention period depends on the frequency of the snapshots.
 | Weekly    | 4 weeks          |
 | Monthly   | 12 months        |
 
-## Encryption
+## Security Measures
+
+### Encryption
 
 Yes. Data is encrypted at rest (AES-256) and in transit (HTTPS/TLS).
 
-## Securing our cloud environment
+### Securing our cloud environment
 
 Access to our cloud services, source code, third-party tools etc. are secured with 2FA.
 
-## What are Jam’s practices for reacting to security incidents?
+### What are Jam’s practices for reacting to security incidents?
 
 We take security very seriously. We review security issues as soon as we learn about them. We let our users know if they are affected by any security incident.
 
-## Has Jam deployed firewalls and intrusion detection and prevention systems in your environment?
+### Has Jam deployed firewalls and intrusion detection and prevention systems in your environment?
 
 Jam uses Cloudflare as a mechanism to prevent attacks on our environment, as well as have firewalls and controls within our GCP project. However it does not have an IDS or IPS running in our production network because the network is fully operated by GCP.
 
-## How often is Jam performing vulnerability scans and penetration tests on your own infrastructure?
+### How often is Jam performing vulnerability scans and penetration tests on your own infrastructure?
 
 Jam is using GitHub to store our source code. GitHub provides a vulnerability feed of issues that become known in third party software dependencies used by our source code.
 
-## Who should I reach out to if I have a security question about Jam?
+## Compliance & Certifications
+
+### SOC 2 Type 2 Compliance
+
+Jam is SOC 2 Type 2 compliant. We are happy to share our SOC 2 Type 2 report with qualified customers. You can email <security@jam.dev> to request the report.
+
+## Contact
+
+### Who should I reach out to if I have a security question about Jam?
 
 If you notice a security issue or have a question or concern, you can reach out to us at <security@jam.dev> and we'll respond as soon as possible. Currently, Jam does not have a bug bounty program.
 
-\\
+<br>
 
 
 # AI Policy
@@ -4110,7 +4234,7 @@ Prerequisite: make sure you have Google Workspace Admin Access
 1. Navigate to **admin.google.com** and log in with admin credentials.
 2. Go to **Devices > Chrome > Apps & extensions >** **Users & Browsers**&#x20;
 3. Click **+ Add > Add from Chrome Web Store**.
-4. Search for **jam.dev** and select it.\\
+4. Search for **jam.dev** and select it.<br>
 
    <figure><img src="https://1301043760-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2uHTnjhJbqxe3DyUE8c0%2Fuploads%2Fd2hpB5tGt4Cvt207OVNY%2Fimage.png?alt=media&#x26;token=fc712f23-c5b8-4153-80d8-0e3de0288fec" alt="" width="563"><figcaption></figcaption></figure>
 5. Set the installation policy to **Force Install** or **Force install + pin to browser toolbar** to make it easier for all employees to find Jam.
@@ -4147,7 +4271,7 @@ To get started, all you have to do is enable file access from your browser’s e
 1. Enter "chrome://extensions" in your URL bar and hit enter. This will take you to a page that will show you all the chrome extensions that are installed on your browser.
 2. Click on the 'Details' button for the Jam chrome extension.\
    ![](https://1301043760-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2uHTnjhJbqxe3DyUE8c0%2Fuploads%2F9LOTGgKeLI4x5nStqtWc%2Fimage.png?alt=media\&token=730768d2-b381-4cda-a367-a38b8ad806d6)
-3. Under the section 'Allow access to file URLs', click on the toggle to enable the setting\\
+3. Under the section 'Allow access to file URLs', click on the toggle to enable the setting<br>
 
    <div align="left"><figure><img src="https://1301043760-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2uHTnjhJbqxe3DyUE8c0%2Fuploads%2FhdnVrW385oB3nMPcCD2k%2Fimage.png?alt=media&#x26;token=0faa63d1-a4e8-4c87-b1da-d6f146a5745f" alt="" width="540"><figcaption></figcaption></figure></div>
 
@@ -4163,5 +4287,28 @@ What you will need to do is add Jam’s `jam-console-devtools.js` script to your
 Or, watch this video (instead of consolePlugin.ts it should be `jam-extension-console-proxy.js`):
 
 {% embed url="<https://youtube.com/shorts/e-w8UtlG0iQ>" %}
+
+
+# Set up a macOS shortcut to request Customer Jams from anywhere
+
+This guide shows you how to create a shortcut to share a Recording Link from anywhere by simply typing "/jam" in any input field on macOS.
+
+1\. Generate a recording link (with the Jam extension or from the dashboard) and name it “General feedback” or whatever you like. Copy the link
+
+2\. Go to System Settings -> Keyboard -> Text Replacements.
+
+3\. Click the "+" button to add a new replacement.
+
+Enter the text you want to replace “/jam” in the "Replace" field and paste the link in the text in the "With" field.
+
+{% hint style="info" %}
+You can choose the title of the Jam that is created from your link by adding `?jam-title=` to the query string that you paste in. When you use your shortcut, you can add the desired title of the resulting Jam.<br>
+
+For example, if you want the title of the Jam to be "Shopping cart bug": \
+\
+`https://recorder.jam.dev/QrBnf3s?jam-title=Shopping+cart+bug`
+{% endhint %}
+
+4\. Click "Add" and then "Done".
 
 

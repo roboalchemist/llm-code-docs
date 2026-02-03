@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/web-scraping/firecrawlcrawlwebsitetool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Firecrawl Crawl Website
 
 > The `FirecrawlCrawlWebsiteTool` is designed to crawl and convert websites into clean markdown or structured data.

@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/getting-started/concepts/platform-hierarchy.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Platform Hierarchy
 
 > Understand how organizations and projects are structured in Infisical.
@@ -16,13 +20,13 @@ An [organization](/documentation/platform/organization) typically represents a c
 
 ## Projects
 
-A [project](/documentation/platform/project) belongs to an organization and defines a specific scope of work. Each project has a product type such as Secrets Management, SSH, or PKI that determines what features are available in that project.
+A [project](/documentation/platform/project) belongs to an organization and defines a specific scope of work. Each project has a product type such as Secrets Management, PAM, or PKI that determines what features are available in that project.
 
 For example:
 
 * A Secrets Management project manages application secrets across environments.
 
-* An SSH project enables certificate-based access to infrastructure.
+* A PAM project enables access management for infrastructure.
 
 * A PKI project manages certificate authorities and X.509 certificate workflows.
 

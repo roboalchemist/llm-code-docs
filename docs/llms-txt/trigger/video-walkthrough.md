@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/video-walkthrough.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Video walkthrough
 
 > Go from zero to a working task in your Next.js app in 10 minutes.

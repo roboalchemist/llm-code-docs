@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/teams/identity-and-access-management/transfer-app-to-teams.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Transfer App to Teams
 
 > Move personal apps to team workspaces for collaboration

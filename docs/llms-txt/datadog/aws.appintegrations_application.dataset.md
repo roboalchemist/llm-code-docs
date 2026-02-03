@@ -4,8 +4,6 @@
 title: AppIntegrations Application
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > AppIntegrations Application
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.appintegrations_application.dataset/index.html
 ---
 
 # AppIntegrations Application
@@ -33,4 +31,4 @@ aws.appintegrations_application
 | permissions               | core | array<string> | The configuration of events or requests that the application has access to. |
 | publications              | core | json          | The events that the application publishes.                                  |
 | subscriptions             | core | json          | The events that the application subscribes.                                 |
-| tags                      | core | hstore        |
+| tags                      | core | hstore_csv    |

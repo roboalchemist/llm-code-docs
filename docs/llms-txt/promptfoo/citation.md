@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/strategies/citation/
+
 # Authority-based Jailbreaking
 
 The Citation strategy is a red teaming technique that uses academic citations and references to potentially bypass an AI system's safety measures.

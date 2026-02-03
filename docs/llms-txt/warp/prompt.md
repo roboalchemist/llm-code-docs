@@ -80,11 +80,11 @@ The Shell prompt supports multi-line or right-sided prompts in zsh and fish, not
 
 ## How it works
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-79eae94dc5a59ae0085534de4dc77d0c6d43a6d4%2Fclassic-prompt.gif?alt=media" alt=""><figcaption><p>Classic input</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-79eae94dc5a59ae0085534de4dc77d0c6d43a6d4%2Fclassic-prompt.gif?alt=media" alt=""><figcaption><p>Classic input</p></figcaption></figure>
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-8b122e4df5d9c51a70da30de03ee1d10e9ffffb5%2Fwarp-custom-prompt-demo.gif?alt=media&#x26;token=90ec41c0-bd0c-4b75-babf-891ae5af681e" alt="Warp Prompt + Custom Prompt Demo"><figcaption><p>Warp Prompt | Shell Prompt Demo</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-8b122e4df5d9c51a70da30de03ee1d10e9ffffb5%2Fwarp-custom-prompt-demo.gif?alt=media" alt="Warp Prompt + Custom Prompt Demo"><figcaption><p>Warp Prompt | Shell Prompt Demo</p></figcaption></figure>
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-462ef97281a686730bbf123d404ecf7ae1606988%2Fedit-prompt-modal.png?alt=media" alt=""><figcaption><p>Prompt edit modal</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-462ef97281a686730bbf123d404ecf7ae1606988%2Fedit-prompt-modal%20(1).png?alt=media" alt=""><figcaption><p>Prompt edit modal</p></figcaption></figure>
 
 ### Shell Prompt Compatibility Table
 
@@ -109,7 +109,7 @@ The Shell prompt supports multi-line or right-sided prompts in zsh and fish, not
 
 ## Known incompatibilities
 
-If you’re having issues with prompts, please see below or our [Known Issues](https://docs.warp.dev/support-and-billing/known-issues#configuring-and-debugging-your-rc-files) for more troubleshooting steps. Also, although some prompts are not officially supported, they may still work in Warp.
+If you're having issues with prompts, please see below or our [Known Issues](https://docs.warp.dev/support-and-community/troubleshooting-and-support/known-issues#configuring-and-debugging-your-rc-files) for more troubleshooting steps.
 
 ### Starship
 
@@ -149,7 +149,7 @@ When installing the Powerlevel10k (P10k) prompt, we recommend you use the [Meslo
 \
 P10K may display the arrow dividers as grey instead of color. The color for those chars is rendered grey due to Warp's minimum contrast setting. To [workaround](https://github.com/warpdotdev/Warp/issues/2851#issuecomment-1605005256) this issue, go to `Settings > Appearance > Text > Enforce minimum contrast` and set it to "Never".
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-3a6ac0a4154cd83d02dda41e9d1e65f21fdeb7de%2Fp10k-grey-arrow-prompt.png?alt=media" alt="" width="563"><figcaption><p>Example of the grey dividers in p10k</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-3a6ac0a4154cd83d02dda41e9d1e65f21fdeb7de%2Fp10k-grey-arrow-prompt.png?alt=media" alt="" width="563"><figcaption><p>Example of the grey dividers in p10k</p></figcaption></figure>
 
 Warp does support [p10k](https://github.com/romkatv/powerlevel10k#installation) version 1.19.0 and above. Ensure you have the latest version installed and restart Warp after the installation/update of p10k. Then enable the custom prompt as stated [above](#how-to-access-it) and it should work.
 
@@ -171,7 +171,7 @@ This prompt can cause an issue with typeahead in Warp's input editor. To [workar
 
 ### Prezto
 
-Although Warp does have support for prezto's prompt, enabling the [prezto utility module](https://github.com/sorin-ionescu/prezto/blob/master/modules/utility/README.md) in the `.zpreztorc` is not supported as with many other autocompletion [plugins that are incompatible](https://docs.warp.dev/support-and-billing/known-issues#list-of-incompatible-tools).
+Although Warp does have support for prezto's prompt, enabling the [prezto utility module](https://github.com/sorin-ionescu/prezto/blob/master/modules/utility/README.md) in the `.zpreztorc` is not supported as with many other autocompletion [plugins that are incompatible](https://docs.warp.dev/support-and-community/troubleshooting-and-support/known-issues#list-of-incompatible-tools).
 
 ### Disabling unsupported prompts for Warp
 

@@ -1,8 +1,13 @@
 # Source: https://rspack.dev/plugins/webpack/eval-source-map-dev-tool-plugin.md
 
-import WebpackLicense from '@components/WebpackLicense';
+CC 4.0 License> The content of this section is derived from the content of the following links and is subject to the CC BY 4.0 license.
+> 
+> - [https://webpack.js.org/plugins/eval-source-map-dev-tool-plugin/](https://webpack.js.org/plugins/eval-source-map-dev-tool-plugin/)
+> 
+> The following contents can be assumed to be the result of modifications and deletions based on the original contents if not specifically stated.
+> 
+> 
 
-<WebpackLicense from="https://webpack.js.org/plugins/eval-source-map-dev-tool-plugin/" />
 
 # EvalSourceMapDevToolPlugin
 
@@ -16,37 +21,37 @@ new webpack.EvalSourceMapDevToolPlugin(options);
 
 ### test
 
-* **Type:** `string` `RegExp` `[string, RegExp]`
+- **Type:** `string` `RegExp` `[string, RegExp]`
 
 Include source maps for modules based on their extension (defaults to `.js`, `.mjs`, and `.css`).
 
 ### include
 
-* **Type:** `string` `RegExp` `[string, RegExp]`
+- **Type:** `string` `RegExp` `[string, RegExp]`
 
 Include source maps for module paths that match the given value.
 
 ### exclude
 
-* **Type:** `string` `RegExp` `[string, RegExp]`
+- **Type:** `string` `RegExp` `[string, RegExp]`
 
 Exclude modules that match the given value from source map generation.
 
 ### append
 
-* **Type:** `string | function`
+- **Type:** `string | function`
 
 Appends the given value to the original asset. Usually the `#sourceMappingURL` comment. `[url]` is replaced with a URL to the source map file. `false` disables the appending.
 
 ### module
 
-* **Type:** `boolean`
+- **Type:** `boolean`
 
 Indicates whether loaders should generate source maps (defaults to `true`).
 
 ### columns
 
-* **Type:** `boolean`
+- **Type:** `boolean`
 
 Indicates whether column mappings should be used (defaults to `true`).
 

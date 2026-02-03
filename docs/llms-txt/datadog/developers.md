@@ -4,7 +4,6 @@
 title: Developers
 description: Learn how to develop an integration on Datadog.
 breadcrumbs: Docs > Developers
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Developers

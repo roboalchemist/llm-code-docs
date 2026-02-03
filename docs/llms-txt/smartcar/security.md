@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/integrations/webhooks/best-practices/security.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Security
 
 > Protect your webhook endpoint from spoofed and malicious requests
@@ -293,8 +297,3 @@ Smartcar's SDKs provide built-in methods for signature verification:
     Design secure webhook handlers
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://smartcar.com/docs/llms.txt

@@ -1,8 +1,13 @@
 # Source: https://rspack.dev/config/node.md
 
-import WebpackLicense from '@components/WebpackLicense';
+CC 4.0 License> The content of this section is derived from the content of the following links and is subject to the CC BY 4.0 license.
+> 
+> - [https://webpack.js.org/configuration/node/](https://webpack.js.org/configuration/node/)
+> 
+> The following contents can be assumed to be the result of modifications and deletions based on the original contents if not specifically stated.
+> 
+> 
 
-<WebpackLicense from="https://webpack.js.org/configuration/node/" />
 
 # Node
 
@@ -10,8 +15,8 @@ The following Node.js options configure whether to polyfill or mock certain [Nod
 
 ## node.global
 
-* **Type:** `boolean | 'warn'`
-* **Default:** `'warn'`
+- **Type:** `boolean | 'warn'`
+- **Default:** `'warn'`
 
 Controls whether Rspack should provide a polyfill for the Node.js `global` object when bundling for non-Node environments.
 
@@ -19,9 +24,9 @@ See [the Node.js documentation](https://nodejs.org/api/globals.html#globals_glob
 
 ### Available values
 
-* `true`: Rspack injects a polyfill so that `global` is available in the bundle. This ensures compatibility with code that relies on Node.js globals in non-Node runtimes
-* `false`: No polyfill is provided. References to `global` remain untouched. If your target environment does not define `global`, accessing it will throw a `ReferenceError` at runtime
-* `'warn'`: Inject a polyfill like `true`, but also emit a warning when `global` is used
+- `true`: Rspack injects a polyfill so that `global` is available in the bundle. This ensures compatibility with code that relies on Node.js globals in non-Node runtimes
+- `false`: No polyfill is provided. References to `global` remain untouched. If your target environment does not define `global`, accessing it will throw a `ReferenceError` at runtime
+- `'warn'`: Inject a polyfill like `true`, but also emit a warning when `global` is used
 
 ### Examples
 
@@ -37,21 +42,21 @@ export default {
 
 ## node.\_\_filename
 
-* **Type:** `boolean | 'mock' | 'warn-mock' | 'eval-only'`
-* **Default:**
-  * If `target` does not include `node`, defaults to `'warn-mock'`.
-  * If `target` includes `node`, uses `'node-module'` if [output.module](/config/output.md#outputmodule) is enabled, otherwise `'eval-only'`.
+- **Type:** `boolean | 'mock' | 'warn-mock' | 'eval-only'`
+- **Default:**
+  - If `target` does not include `node`, defaults to `'warn-mock'`.
+  - If `target` includes `node`, uses `'node-module'` if [output.module](/config/output.md#outputmodule) is enabled, otherwise `'eval-only'`.
 
 Controls how Rspack handles the Node.js [`__filename`](https://nodejs.org/api/modules.html#__filename) and [`import.meta.filename`](https://nodejs.org/api/esm.html#importmetafilename) variables when bundling for non-Node environments.
 
 ### Available values
 
-* `true`: Replace with the source file path, relative to the [`context`](/config/context.md) option
-* `false`: Do nothing and keep the native behavior
-* `'mock'`: Replace with `/index.js`
-* `'mock'`: Replace with `'/index.js'`
-* `'warn-mock'`: Replace with `'/index.js'`, and emit a warning to indicate a potential Node.js dependency in the code
-* `'node-module'`: Only used when [output.module](/config/output.md#outputmodule) is enabled. Replace `__filename` in CommonJS with an equivalent implementation based on `import.meta.url`, suitable for ESM output
+- `true`: Replace with the source file path, relative to the [`context`](/config/context.md) option
+- `false`: Do nothing and keep the native behavior
+- `'mock'`: Replace with `/index.js`
+- `'mock'`: Replace with `'/index.js'`
+- `'warn-mock'`: Replace with `'/index.js'`, and emit a warning to indicate a potential Node.js dependency in the code
+- `'node-module'`: Only used when [output.module](/config/output.md#outputmodule) is enabled. Replace `__filename` in CommonJS with an equivalent implementation based on `import.meta.url`, suitable for ESM output
 
 ### Examples
 
@@ -81,21 +86,21 @@ export default {
 
 ## node.\_\_dirname
 
-* **Type:** `boolean | 'mock' | 'warn-mock' | 'eval-only'`
-* **Default:**
-  * If `target` does not include `node`, defaults to `'warn-mock'`.
-  * If `target` includes `node`, uses `'node-module'` if [output.module](/config/output.md#outputmodule) is enabled, otherwise `'eval-only'`.
+- **Type:** `boolean | 'mock' | 'warn-mock' | 'eval-only'`
+- **Default:**
+  - If `target` does not include `node`, defaults to `'warn-mock'`.
+  - If `target` includes `node`, uses `'node-module'` if [output.module](/config/output.md#outputmodule) is enabled, otherwise `'eval-only'`.
 
 Controls how Rspack handles the Node.js [`__dirname`](https://nodejs.org/api/modules.html#__dirname) and [`import.meta.dirname`](https://nodejs.org/api/esm.html#importmetadirname) variables when bundling for non-Node environments.
 
 ### Available values
 
-* `true`: Replace with the directory path of the source file, relative to the [`context`](/config/context.md) option
-* `false`: Do nothing and keep the native behavior
-* `'mock'`: Replace with `'/'`
-* `'eval-only'`: Equivalent to `false`
-* `'warn-mock'`: Replace with `'/'`, and emit a warning to indicate a potential Node.js dependency in the code
-* `'node-module'`: Only used when [output.module](/config/output.md#outputmodule) is enabled. Replace `__dirname` in CommonJS with an equivalent implementation based on `import.meta.url`, suitable for ESM output
+- `true`: Replace with the directory path of the source file, relative to the [`context`](/config/context.md) option
+- `false`: Do nothing and keep the native behavior
+- `'mock'`: Replace with `'/'`
+- `'eval-only'`: Equivalent to `false`
+- `'warn-mock'`: Replace with `'/'`, and emit a warning to indicate a potential Node.js dependency in the code
+- `'node-module'`: Only used when [output.module](/config/output.md#outputmodule) is enabled. Replace `__dirname` in CommonJS with an equivalent implementation based on `import.meta.url`, suitable for ESM output
 
 ### Examples
 

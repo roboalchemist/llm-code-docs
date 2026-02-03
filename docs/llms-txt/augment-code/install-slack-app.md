@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/setup-augment/install-slack-app.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Install Augment for Slack
 
 > Ask Augment questions about your codebase right in Slack.

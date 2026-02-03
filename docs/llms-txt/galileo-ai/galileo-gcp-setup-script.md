@@ -1,10 +1,14 @@
 # Source: https://docs.galileo.ai/deployments/deploying-galileo-gke/galileo-gcp-setup-script.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Cluster Setup Script
 
 > Utilize the Galileo GCP setup script for automating Google Cloud Platform (GCP) configuration to deploy Galileo seamlessly on GKE clusters.
 
-```Bash
+```Bash  theme={null}
 #!/bin/sh -e
 #
 #   Usage

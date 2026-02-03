@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/contribution/dev.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 👨‍💻 Development
 
 > Contribute to Embedchain framework development
@@ -10,14 +14,14 @@ Thank you for your interest in contributing to the EmbedChain project! We welcom
 
 2. **Install the required dependencies**: Ensure that you have the necessary dependencies installed in your Python environment. You can do this by running the following command:
 
-```bash
+```bash  theme={null}
 make install
 ```
 
 3. **Make changes in the code**: Create a new branch in your forked repository and make your desired changes in the codebase.
 4. **Format code**: Before creating a pull request, it's important to ensure that your code follows our formatting guidelines. Run the following commands to format the code:
 
-```bash
+```bash  theme={null}
 make lint format
 ```
 

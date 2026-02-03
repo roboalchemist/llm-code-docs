@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/guides/mixtral-vs-gpt/
+
 # Mixtral vs GPT: Run a benchmark with your own data
 
 In this guide, we'll walk through the steps to compare three large language models (LLMs): Mixtral, GPT-4.1-mini, and GPT-4o. We will use `promptfoo`, a command-line interface (CLI) tool, to run evaluations and compare the performance of these models based on a set of prompts and test cases.

@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/string/append.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/append.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/append.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/append.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/append.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/append.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/append.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/append.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/append.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/append.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # APPEND
 
@@ -26,7 +12,7 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key to get.
 </ParamField>
 
@@ -36,13 +22,16 @@
 
 ## Response
 
-<ResponseField type="integer" required>
+<ResponseField type="int" required>
   How many characters were added to the string.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.append(key, "Hello");
-  // returns 5
+  ```py Example theme={"system"}
+  redis.set("key", "Hello")
+
+  assert redis.append("key", " World") == 11
+
+  assert redis.get("key") == "Hello World"
   ```
 </RequestExample>

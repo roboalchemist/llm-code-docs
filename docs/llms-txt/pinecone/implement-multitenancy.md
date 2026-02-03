@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/index-data/implement-multitenancy.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Implement multitenancy
 
 > Use namespaces to isolate tenant data securely.
@@ -7,6 +11,10 @@
 [Multitenancy](https://en.wikipedia.org/wiki/Multitenancy) is a software architecture where a single instance of a system serves multiple customers, or tenants, while ensuring data isolation between them for privacy and security.
 
 This page shows you how to implement multitenancy in Pinecone using a **serverless index with one namespace per tenant**.
+
+<Note>
+  For design guidance on choosing between namespaces, metadata filtering, and other approaches, see [Design for multi-tenancy](/guides/index-data/data-modeling#design-for-multi-tenancy).
+</Note>
 
 <Note>
   While the Standard and Enterprise plans support up to [100,000 namespaces per index](/reference/api/database-limits#namespaces-per-serverless-index), Pinecone can accommodate million-scale namespaces and beyond for specific use cases. If your application requires more than 100,000 namespaces, [contact Support](https://app.pinecone.io/organizations/-/settings/support/ticket).
@@ -31,13 +39,13 @@ In cases where you have different workload patterns (e.g., RAG and semantic sear
 <img className="hidden max-w-full dark:block" noZoom src="https://mintcdn.com/pinecone/r0TaYXrfSrAYZYUj/images/multitenant-saas-indexes-dark.png?fit=max&auto=format&n=r0TaYXrfSrAYZYUj&q=85&s=1c64b2977ebdf57a2bbc8274b91e399e" data-og-width="1560" width="1560" data-og-height="1200" height="1200" data-path="images/multitenant-saas-indexes-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/pinecone/r0TaYXrfSrAYZYUj/images/multitenant-saas-indexes-dark.png?w=280&fit=max&auto=format&n=r0TaYXrfSrAYZYUj&q=85&s=3e38602271765a6cb8e98108b1f0decb 280w, https://mintcdn.com/pinecone/r0TaYXrfSrAYZYUj/images/multitenant-saas-indexes-dark.png?w=560&fit=max&auto=format&n=r0TaYXrfSrAYZYUj&q=85&s=6d6b3925edd6dd5ea1ab0bb3246699d6 560w, https://mintcdn.com/pinecone/r0TaYXrfSrAYZYUj/images/multitenant-saas-indexes-dark.png?w=840&fit=max&auto=format&n=r0TaYXrfSrAYZYUj&q=85&s=93166d83515098bde4f88aa0748feb3f 840w, https://mintcdn.com/pinecone/r0TaYXrfSrAYZYUj/images/multitenant-saas-indexes-dark.png?w=1100&fit=max&auto=format&n=r0TaYXrfSrAYZYUj&q=85&s=7b5a0d541d8b132bd4f7290886dd2372 1100w, https://mintcdn.com/pinecone/r0TaYXrfSrAYZYUj/images/multitenant-saas-indexes-dark.png?w=1650&fit=max&auto=format&n=r0TaYXrfSrAYZYUj&q=85&s=fe477a1edbd28071b43363656d02745f 1650w, https://mintcdn.com/pinecone/r0TaYXrfSrAYZYUj/images/multitenant-saas-indexes-dark.png?w=2500&fit=max&auto=format&n=r0TaYXrfSrAYZYUj&q=85&s=3c49967484298ee8e0675ef7a620eb5b 2500w" />
 
 <Accordion title="Understand the benefits">
-  * **Tenant isolation:** In the [serverless architecture](/guides/get-started/database-architecture), each namespace is stored separately, so using namespaces provides physical isolation of data between tenants/customers.
+  * **Tenant isolation:** In the [serverless architecture](/guides/get-started/database-architecture), each namespace is stored separately, so using namespaces provides physical isolation of data between tenants/customers. This reduces the risk of application bugs that could query the wrong tenant's data.
 
   * **No noisy neighbors:** Reads and writes always target a single namespace, so the behavior of one tenant/customer does not affect other tenants/customers.
 
   * **No maintenance effort:** Serverless indexes scale automatically based on usage; you don't configure or manage any compute or storage resources.
 
-  * **Cost efficiency:** With serverless indexes, you pay only for the amount of data stored and operations performed. For queries in particular, the cost is partly based on the total number of records that must be scanned, so using namespaces can significantly reduce query costs.
+  * **Cost efficiency:** Query cost is based on namespace size (1 RU per 1 GB). With 100 tenants of 1 GB each, querying one tenant's namespace costs 1 RU. Using metadata filtering in a single 100 GB namespace would cost 100 RUs for the same query, because it scans all data regardless of filters.
 
   * **Simple tenant offboarding:** To offboard a tenant/customer, you just [delete the relevant namespace](/guides/manage-data/delete-data#delete-all-records-from-a-namespace). This is a lightweight and almost instant operation.
 </Accordion>
@@ -177,7 +185,7 @@ To [create a serverless index](/guides/index-data/create-an-index#create-a-serve
     -H "Accept: application/json" \
     -H "Content-Type: application/json" \
     -H "Api-Key: $PINECONE_API_KEY" \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
            "name": "multitenant-app",
            "dimension": 8,
@@ -443,7 +451,7 @@ To [create a namespace for a tenant](/guides/index-data/indexing-overview#namesp
   curl "https://$INDEX_HOST/vectors/upsert" \
     -H "Api-Key: $PINECONE_API_KEY" \
     -H 'Content-Type: application/json' \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
       "vectors": [
         {
@@ -469,7 +477,7 @@ To [create a namespace for a tenant](/guides/index-data/indexing-overview#namesp
   curl "https://$INDEX_HOST/vectors/upsert" \
     -H "Api-Key: $PINECONE_API_KEY" \
     -H 'Content-Type: application/json' \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
       "vectors": [
         {
@@ -577,7 +585,7 @@ When upserting additional records for a tenant, or when [updating](/guides/manag
   curl "https://$INDEX_HOST/vectors/update" \
   	-H "Api-Key: $PINECONE_API_KEY" \
   	-H 'Content-Type: application/json' \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
   	-d '{
   			"id": "A",
   			"values": [01., 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8],
@@ -819,7 +827,7 @@ For example, the following code queries only `tenant2` for the 3 vectors that ar
   curl "https://$INDEX_HOST/query" \
     -H "Api-Key: $PINECONE_API_KEY" \
     -H 'Content-Type: application/json' \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
       "namespace": "tenant2",
       "vector": [0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7, 0.7],
@@ -915,7 +923,7 @@ For example, the following code deletes the namespace and all records for `tenan
   curl "https://$INDEX_HOST/vectors/delete" \
     -H "Api-Key: $PINECONE_API_KEY" \
     -H 'Content-Type: application/json' \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
       "deleteAll": true,
       "namespace": "tenant1"
@@ -928,4 +936,16 @@ For example, the following code deletes the namespace and all records for `tenan
 
 When tenant isolation is not a strict requirement, or when you need to query across multiple tenants simultaneously, you can store all records in a single namespace and use metadata fields to assign records to tenants/customers. At query time, you can then [filter by metadata](/guides/index-data/indexing-overview#metadata).
 
-For more guidance on this approach, see [Multitenancy in Vector Databases](https://www.pinecone.io/learn/series/vector-databases-in-production-for-busy-engineers/vector-database-multi-tenancy/).
+<Warning>
+  This approach has significant performance and cost tradeoffs compared to using namespaces:
+
+  * Higher query costs: Queries scan the entire namespace regardless of filters, so you pay for scanning all tenants' data even though results are filtered to one tenant.
+  * Slower performance: Large namespaces increase query latency, and large filters add network overhead on the request side.
+  * Filter size limits: Each `$in` or `$nin` operator is limited to 10,000 values. Exceeding this limit will cause requests to fail. See [Metadata filter limits](/reference/api/database-limits#metadata-filter-limits).
+
+  Anti-pattern: Avoid filtering by large lists of individual user IDs. Instead, use access control groups (organization, project, role), namespaces, or post-filter client-side (for semantic search).
+
+  For detailed guidance on choosing between namespaces and metadata filtering, see [Design for multi-tenancy](/guides/index-data/data-modeling#design-for-multi-tenancy).
+</Warning>
+
+For more background on this approach, see [Multitenancy in Vector Databases](https://www.pinecone.io/learn/series/vector-databases-in-production-for-busy-engineers/vector-database-multi-tenancy/).

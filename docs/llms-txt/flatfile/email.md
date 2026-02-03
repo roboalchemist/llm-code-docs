@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/email.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Email Validation Plugin
 
 > Validate email addresses in Flatfile data imports with format checking, required field validation, and disposable domain blocking
@@ -10,7 +14,7 @@ The Email Validation plugin for Flatfile provides a convenient way to validate e
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-validate-email
 ```
 
@@ -55,7 +59,7 @@ The plugin is configured with a single object passed to the `validateEmail` func
 This example validates the 'email' field in all sheets with default error messages.
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { validateEmail } from '@flatfile/plugin-validate-email';
 
@@ -66,7 +70,7 @@ This example validates the 'email' field in all sheets with default error messag
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { validateEmail } from '@flatfile/plugin-validate-email';
 
@@ -83,7 +87,7 @@ This example validates the 'email' field in all sheets with default error messag
 This example validates two email fields, provides custom error messages, and applies the validation only to the 'contacts' sheet.
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { validateEmail } from '@flatfile/plugin-validate-email';
 
@@ -100,7 +104,7 @@ This example validates two email fields, provides custom error messages, and app
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { validateEmail } from '@flatfile/plugin-validate-email';
 
@@ -123,7 +127,7 @@ This example validates two email fields, provides custom error messages, and app
 This example demonstrates using a custom list of disposable domains to block.
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { validateEmail } from '@flatfile/plugin-validate-email';
 
@@ -140,7 +144,7 @@ This example demonstrates using a custom list of disposable domains to block.
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { validateEmail } from '@flatfile/plugin-validate-email';
 

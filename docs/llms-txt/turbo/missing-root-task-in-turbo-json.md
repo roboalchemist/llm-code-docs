@@ -1,7 +1,6 @@
 # Source: https://turbo.build/messages/missing-root-task-in-turbo-json.md
 
 # Missing root task in turbo.json
-Description: Learn more about errors for missing root tasks in turbo.json in Turborepo.
 
 ## Why this error occurred
 
@@ -48,3 +47,7 @@ This will permit tasks to depend on `//#build`.
 However, if the root task does call `turbo`, this can cause infinite recursion. In this case, we don't recommend depending
 on the root task. Instead, you can determine the tasks that this root task depends on, and depend on those directly.
 For instance, if `//#build` depends on `app#lint` and `docs#lint`, then you can declare those as dependencies.
+
+---
+
+[View full sitemap](/sitemap.md)

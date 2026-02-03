@@ -1,18 +1,10 @@
-# Source: https://docs.exa.ai/websets/dashboard/get-started.md
+# Source: https://exa.ai/docs/websets/dashboard/get-started.md
 
-# Source: https://docs.exa.ai/websets/api/get-started.md
+# Source: https://exa.ai/docs/websets/api/get-started.md
 
-# Source: https://docs.exa.ai/websets/dashboard/get-started.md
-
-# Source: https://docs.exa.ai/websets/api/get-started.md
-
-# Source: https://docs.exa.ai/websets/dashboard/get-started.md
-
-# Source: https://docs.exa.ai/websets/api/get-started.md
-
-# Source: https://docs.exa.ai/websets/dashboard/get-started.md
-
-# Source: https://docs.exa.ai/websets/api/get-started.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Get started
 
@@ -211,8 +203,3 @@ Use our Python or JavaScript SDKs, or call the API directly with cURL.
 * Configure [webhooks](/websets/api/webhooks) to receive real-time updates as items are added into your Websets
 * Learn about [Enrichments](/websets/api/websets/enrichments) to extract specific data points
 * See how to [Manage Items](/websets/api/websets/items) in your Webset
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

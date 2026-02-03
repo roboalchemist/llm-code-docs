@@ -21,6 +21,7 @@ Each agent deployment is isolated to a single region, which you must select duri
 | Region code | Geographic location |
 | `us-east` | Ashburn, Virginia, USA |
 | `eu-central` | Frankfurt, Germany |
+| `ap-south` | Mumbai, India |
 
 Region assignment is immutable, and cannot be changed after agent creation.
 
@@ -50,7 +51,7 @@ To move an existing agent to a new region, you should follow the preceding steps
 
 ---
 
-This document was rendered at 2025-12-31T18:29:39.154Z.
+This document was rendered at 2026-02-03T03:25:23.437Z.
 For the latest version of this document, see [https://docs.livekit.io/deploy/admin/regions/agent-deployment.md](https://docs.livekit.io/deploy/admin/regions/agent-deployment.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

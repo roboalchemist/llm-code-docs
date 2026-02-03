@@ -14,7 +14,7 @@ Run a test suite, or a single test
 
 Runs all JSON test files in the specified directory, or the single JSON test file specified.
 
-See [https://docs.vespa.ai/en/reference/testing.html](https://docs.vespa.ai/en/reference/testing.html) for details.
+See [https://docs.vespa.ai/en/reference/applications/testing.html](https://docs.vespa.ai/en/reference/applications/testing.html) for details.
 
 ```
 vespa test test-directory-or-file [flags]
@@ -50,7 +50,7 @@ $ vespa test src/test/application/tests/system-test/feed-and-query.json
 
 - [vespa](vespa.html) - The command-line tool for Vespa.ai
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

@@ -1,11 +1,15 @@
-# Source: https://mintlify.com/docs/ai/discord.md
+# Source: https://www.mintlify.com/docs/ai/discord.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Discord bot
 
 > Add a bot to your Discord server that answers questions based on your documentation.
 
 <Info>
-  Discord integrations are available on [Pro and Custom plans](https://mintlify.com/pricing?ref=discord) with access to the assistant.
+  Discord integrations are available on [Pro and Enterprise plans](https://mintlify.com/pricing?ref=discord) with access to the assistant.
 </Info>
 
 The Discord bot supports your community with real-time answers from your documentation. The bot uses the Mintlify assistant to search your docs and provide accurate, cited responses, so it is always up-to-date.
@@ -20,12 +24,12 @@ Each message sent by the Discord bot counts toward your assistant message usage.
   You must have the "Manage Server" permission in Discord to add the bot.
 </Note>
 
-1. Navigate to the [Integrations](https://dashboard.mintlify.com/products/assistant/settings/integrations) tab of the **Assistant Configurations** page in your dashboard.
-2. In the Discord card, click **Connect**. This opens Discord.
+1. Navigate to the [Assistant](https://dashboard.mintlify.com/products/assistant) page in your dashboard.
+2. In the Discord card, click **Configure**. This opens Discord.
    <Frame>
-     <img src="https://mintcdn.com/mintlify/SyQazJmuH84Z27gS/images/assistant/discord-connect-light.png?fit=max&auto=format&n=SyQazJmuH84Z27gS&q=85&s=f0a40c8910f8b0fafa0b45d99350c019" alt="The connect button in light mode." className="block dark:hidden" data-og-width="854" width="854" data-og-height="234" height="234" data-path="images/assistant/discord-connect-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/SyQazJmuH84Z27gS/images/assistant/discord-connect-light.png?w=280&fit=max&auto=format&n=SyQazJmuH84Z27gS&q=85&s=e9baa0baeef52c87db15c1f8df0c8c9d 280w, https://mintcdn.com/mintlify/SyQazJmuH84Z27gS/images/assistant/discord-connect-light.png?w=560&fit=max&auto=format&n=SyQazJmuH84Z27gS&q=85&s=5072b9877e4072590f00b3dc12261c5d 560w, https://mintcdn.com/mintlify/SyQazJmuH84Z27gS/images/assistant/discord-connect-light.png?w=840&fit=max&auto=format&n=SyQazJmuH84Z27gS&q=85&s=ce85c584f64ca9f790576e846c7c51a4 840w, https://mintcdn.com/mintlify/SyQazJmuH84Z27gS/images/assistant/discord-connect-light.png?w=1100&fit=max&auto=format&n=SyQazJmuH84Z27gS&q=85&s=c999c92fbbf30024c64d90d2f52e952d 1100w, https://mintcdn.com/mintlify/SyQazJmuH84Z27gS/images/assistant/discord-connect-light.png?w=1650&fit=max&auto=format&n=SyQazJmuH84Z27gS&q=85&s=152d5b4e7376852a0a4432aac61a8330 1650w, https://mintcdn.com/mintlify/SyQazJmuH84Z27gS/images/assistant/discord-connect-light.png?w=2500&fit=max&auto=format&n=SyQazJmuH84Z27gS&q=85&s=7540a16039560e7157708061b6f767c2 2500w" />
+     <img src="https://mintcdn.com/mintlify/iWC1DRgIiF7skzGL/images/assistant/connected-apps-light.png?fit=max&auto=format&n=iWC1DRgIiF7skzGL&q=85&s=647b6ec148afcbb3177e536cba7f858e" alt="The connected apps section of the assistant page." className="block dark:hidden" data-og-width="1854" width="1854" data-og-height="470" height="470" data-path="images/assistant/connected-apps-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/iWC1DRgIiF7skzGL/images/assistant/connected-apps-light.png?w=280&fit=max&auto=format&n=iWC1DRgIiF7skzGL&q=85&s=e9337774ec02cdd6283428e915d417a9 280w, https://mintcdn.com/mintlify/iWC1DRgIiF7skzGL/images/assistant/connected-apps-light.png?w=560&fit=max&auto=format&n=iWC1DRgIiF7skzGL&q=85&s=002e3b6a86986574ce4611a069b896c7 560w, https://mintcdn.com/mintlify/iWC1DRgIiF7skzGL/images/assistant/connected-apps-light.png?w=840&fit=max&auto=format&n=iWC1DRgIiF7skzGL&q=85&s=d054f667a3cb4b1c650728528c367db0 840w, https://mintcdn.com/mintlify/iWC1DRgIiF7skzGL/images/assistant/connected-apps-light.png?w=1100&fit=max&auto=format&n=iWC1DRgIiF7skzGL&q=85&s=6f4cac6d895a64601545887c516f844f 1100w, https://mintcdn.com/mintlify/iWC1DRgIiF7skzGL/images/assistant/connected-apps-light.png?w=1650&fit=max&auto=format&n=iWC1DRgIiF7skzGL&q=85&s=0b00626aa3bc80ec27b30ea90617c440 1650w, https://mintcdn.com/mintlify/iWC1DRgIiF7skzGL/images/assistant/connected-apps-light.png?w=2500&fit=max&auto=format&n=iWC1DRgIiF7skzGL&q=85&s=cb9077db04fd6afce9f657268f4c54bb 2500w" />
 
-     <img src="https://mintcdn.com/mintlify/SyQazJmuH84Z27gS/images/assistant/discord-connect-dark.png?fit=max&auto=format&n=SyQazJmuH84Z27gS&q=85&s=281845b61bbd547f20deea944542ae4c" alt="The connect button in dark mode." className="hidden dark:block" data-og-width="854" width="854" data-og-height="234" height="234" data-path="images/assistant/discord-connect-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/SyQazJmuH84Z27gS/images/assistant/discord-connect-dark.png?w=280&fit=max&auto=format&n=SyQazJmuH84Z27gS&q=85&s=ef6261bc5de49b2ff7286332643a9c86 280w, https://mintcdn.com/mintlify/SyQazJmuH84Z27gS/images/assistant/discord-connect-dark.png?w=560&fit=max&auto=format&n=SyQazJmuH84Z27gS&q=85&s=6a0a172e909b23d9f8b8dac128bb498f 560w, https://mintcdn.com/mintlify/SyQazJmuH84Z27gS/images/assistant/discord-connect-dark.png?w=840&fit=max&auto=format&n=SyQazJmuH84Z27gS&q=85&s=0650463a971a5601457e3c360de2f3b4 840w, https://mintcdn.com/mintlify/SyQazJmuH84Z27gS/images/assistant/discord-connect-dark.png?w=1100&fit=max&auto=format&n=SyQazJmuH84Z27gS&q=85&s=d1180df5c2027ada9d68bf1816ab5f3c 1100w, https://mintcdn.com/mintlify/SyQazJmuH84Z27gS/images/assistant/discord-connect-dark.png?w=1650&fit=max&auto=format&n=SyQazJmuH84Z27gS&q=85&s=428bcec30891b043ba38404fe9bd172b 1650w, https://mintcdn.com/mintlify/SyQazJmuH84Z27gS/images/assistant/discord-connect-dark.png?w=2500&fit=max&auto=format&n=SyQazJmuH84Z27gS&q=85&s=4bd1ce5e6a6cd0d1a1569790d8756b67 2500w" />
+     <img src="https://mintcdn.com/mintlify/iWC1DRgIiF7skzGL/images/assistant/connected-apps-dark.png?fit=max&auto=format&n=iWC1DRgIiF7skzGL&q=85&s=cc2ef191b665b1042d1130d28b9346f2" alt="The connected apps section of the assistant page." className="hidden dark:block" data-og-width="1854" width="1854" data-og-height="470" height="470" data-path="images/assistant/connected-apps-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/iWC1DRgIiF7skzGL/images/assistant/connected-apps-dark.png?w=280&fit=max&auto=format&n=iWC1DRgIiF7skzGL&q=85&s=0e068244afd690277d45d1d7fc3af0f5 280w, https://mintcdn.com/mintlify/iWC1DRgIiF7skzGL/images/assistant/connected-apps-dark.png?w=560&fit=max&auto=format&n=iWC1DRgIiF7skzGL&q=85&s=67289ab57f5dfe6a2f1e497dc3568181 560w, https://mintcdn.com/mintlify/iWC1DRgIiF7skzGL/images/assistant/connected-apps-dark.png?w=840&fit=max&auto=format&n=iWC1DRgIiF7skzGL&q=85&s=d95c2630a73c17a6626fd831704fdbeb 840w, https://mintcdn.com/mintlify/iWC1DRgIiF7skzGL/images/assistant/connected-apps-dark.png?w=1100&fit=max&auto=format&n=iWC1DRgIiF7skzGL&q=85&s=8bddf2a70a68e65ce9650b7196aac94c 1100w, https://mintcdn.com/mintlify/iWC1DRgIiF7skzGL/images/assistant/connected-apps-dark.png?w=1650&fit=max&auto=format&n=iWC1DRgIiF7skzGL&q=85&s=7faabc681aefdb7d0a3f72cdf11fc9cc 1650w, https://mintcdn.com/mintlify/iWC1DRgIiF7skzGL/images/assistant/connected-apps-dark.png?w=2500&fit=max&auto=format&n=iWC1DRgIiF7skzGL&q=85&s=87a21214500ff312ea6d92eb68205cfb 2500w" />
    </Frame>
 3. In Discord, select the server you want to add the bot to.
 4. Authorize the bot to access your server.
@@ -50,8 +54,3 @@ See [Starting Your First Discord Server](https://discord.com/blog/starting-your-
 After you add the Discord bot to your server, you can manage or remove the bot from the [Integrations](https://dashboard.mintlify.com/products/assistant/settings/integrations) tab in your dashboard.
 
 In the Discord bot configuration menu, customize the bot by changing its avatar or name, and choose which channel it automatically replies to all messages in.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://mintlify.com/docs/llms.txt

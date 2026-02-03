@@ -6,7 +6,9 @@
 
 ## Payment method name translations in the checkout
 
-Klarna configures the translations for the Klarna payment method. For each supported language, one translation is available. Read more about it [in the Shopify documentation](https://shopify.dev/apps/payments/creating-a-payments-app/creating-a-payments-app#payments-app-extension-configuration-fields). Note the following rules which govern which translation is displayed in the checkout:
+Klarna configures the translations for the Klarna payment method. For each supported language, one translation is available. Read more about it [in the Shopify documentation](https://shopify.dev/apps/payments/creating-a-payments-app/creating-a-payments-app#payments-app-extension-configuration-fields).
+
+Note the following rules which govern which translation is displayed in the checkout:
 
 - The displayed translation isn't determined by the customer's country or storefront language.
 - The translation used in the store's checkout is determined by the store's single checkout language, which is configured in the store’s Shopify admin under **Settings**\> **Checkout and accounts**\> **Manage checkout language**.
@@ -31,11 +33,17 @@ The following table shows translated payment method name in each language:
 | Spanish      | Klarna - Paga a plazos sin intereses      |
 | Swedish      | Klarna - Betala nu eller senare           |
 
-Currently, payment methods can’t be renamed for Shopify Plus merchants via custom scripts. This is a known constraint and you can [read more about it in this Klarna.Docs article](https://docs.klarna.com/platform-solutions/e-commerce-platforms/shopify/payments/known-constraints.md). Prior to July 2022, the payment method name was *Klarna*.
+Currently, payment methods can’t be renamed for Shopify Plus merchants via custom scripts. This is a known constraint and you can [read more about it in this Klarna.Docs article](https://docs.klarna.com/platform-solutions/e-commerce-platforms/shopify/payments/known-constraints/#4-renaming-the-payment-method-isnt-supported).
+
+Prior to July 2022, the payment method name was *Klarna*.
 
 ## Language and locale
 
-The locale for Klarna payments hosted payment page is set based on the store's language concatenated with the customer's billing address country. For example, the English language selected for a customer with a US billing address entered in Shopify checkout would result in a request locale of `en-US` when Klarna payments is loaded. If the requested locale is supported by Klarna payments, per [Available purchase countries, currencies and locales,](https://docs.klarna.com/klarna-payments/in-depth-knowledge/puchase-countries-currencies-locales) the locale will be honored. If the locale isn't supported, English is used as a fallback. Locale isn't configurable in Klarna. You can configure your store's language in the Shopify admin under **Settings**\> **Languages**. One way to check a store's Shopify language is via the browser’s developer tools, for example, by entering `Shopify.locale` in your browser's developer tools’ **Console**, as shown on the following snippet.
+The locale for Klarna payments hosted payment page is set based on the store's language concatenated with the customer's billing address country. For example, the English language selected for a customer with a US billing address entered in Shopify checkout would result in a request locale of `en-US` when Klarna payments is loaded. If the requested locale is supported by Klarna payments, per [Available purchase countries, currencies and locales,](https://docs.klarna.com/klarna-payments/in-depth-knowledge/puchase-countries-currencies-locales/) the locale will be honored. If the locale isn't supported, English is used as a fallback.
+
+Locale isn't configurable in Klarna. You can configure your store's language in the Shopify admin under **Settings**\> **Languages**.
+
+One way to check a store's Shopify language is via the browser’s developer tools, for example, by entering `Shopify.locale` in your browser's developer tools’ **Console**, as shown on the following snippet.
 
 ``` http
 Shopify.locale

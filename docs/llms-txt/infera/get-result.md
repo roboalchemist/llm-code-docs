@@ -1,72 +1,62 @@
 # Source: https://docs.infera.org/api-reference/endpoint/get-result.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.infera.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Result
+
+
 
 ## OpenAPI
 
 ````yaml get /get_result/{job_id}
+openapi: 3.1.0
+info:
+  title: FastAPI
+  version: 0.1.0
+servers:
+  - url: https://api.infera.org/
+    description: Infera production servers
+security: []
 paths:
-  path: /get_result/{job_id}
-  method: get
-  servers:
-    - url: https://api.infera.org/
-      description: Infera production servers
-  request:
-    security:
-      - title: APIKeyHeader
-        parameters:
-          query: {}
-          header:
-            api_key:
-              type: apiKey
-          cookie: {}
-    parameters:
-      path:
-        job_id:
+  /get_result/{job_id}:
+    get:
+      summary: Get Result
+      operationId: get_result_get_result__job_id__get
+      parameters:
+        - name: job_id
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              title: Job Id
-              format: uuid4
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: any
-        examples:
-          example:
-            value: <any>
-        description: Successful Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    type: array
-                    title: Detail
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+            type: string
+            format: uuid4
+            title: Job Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - APIKeyHeader: []
 components:
   schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     ValidationError:
       properties:
         loc:
@@ -88,5 +78,10 @@ components:
         - msg
         - type
       title: ValidationError
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: api_key
 
 ````

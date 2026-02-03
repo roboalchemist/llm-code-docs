@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/errors-retrying.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Errors & Retrying
 
 > How to deal with errors and write reliable tasks.
@@ -23,7 +27,7 @@ This task will retry 10 times with exponential backoff.
 * `openai.chat.completions.create()` can throw an error.
 * The result can be empty and we want to try again. So we manually throw an error.
 
-```ts /trigger/openai.ts theme={null}
+```ts /trigger/openai.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 import OpenAI from "openai";
 
@@ -62,7 +66,7 @@ export const openaiTask = task({
 
 One way to gain reliability is to break your work into smaller tasks and [trigger](/triggering) them from each other. Each task can have its own retrying behavior:
 
-```ts /trigger/multiple-tasks.ts theme={null}
+```ts /trigger/multiple-tasks.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -101,7 +105,7 @@ We provide some useful functions that you can use to retry smaller parts of a ta
 
 You can retry a block of code that can throw an error, with the same retry settings as a task.
 
-```ts /trigger/retry-on-throw.ts theme={null}
+```ts /trigger/retry-on-throw.ts theme={"theme":"css-variables"}
 import { task, logger, retry } from "@trigger.dev/sdk";
 
 export const retryOnThrow = task({
@@ -137,7 +141,7 @@ You can use `fetch`, `axios`, or any other library in your code.
 
 But we do provide a convenient function to perform HTTP requests with conditional retrying based on the response:
 
-```ts /trigger/retry-fetch.ts theme={null}
+```ts /trigger/retry-fetch.ts theme={"theme":"css-variables"}
 import { task, logger, retry } from "@trigger.dev/sdk";
 
 export const taskWithFetchRetries = task({
@@ -233,7 +237,7 @@ In this complicated example:
 * If we've run out of requests or tokens we retry at the time specified in the headers.
 
 <CodeGroup>
-  ```ts tasks.ts theme={null}
+  ```ts tasks.ts theme={"theme":"css-variables"}
   import { task } from "@trigger.dev/sdk";
   import { calculateISO8601DurationOpenAIVariantResetAt, openai } from "./openai.js";
 
@@ -291,7 +295,7 @@ In this complicated example:
   });
   ```
 
-  ```ts openai.ts theme={null}
+  ```ts openai.ts theme={"theme":"css-variables"}
   import { OpenAI } from "openai";
 
   export const openai = new OpenAI({ apiKey: env.OPENAI_API_KEY });
@@ -338,7 +342,7 @@ In this complicated example:
 
 You can prevent retries by throwing an `AbortTaskRunError`. This will fail the task attempt and disable retrying.
 
-```ts /trigger/myTasks.ts theme={null}
+```ts /trigger/myTasks.ts theme={"theme":"css-variables"}
 import { task, AbortTaskRunError } from "@trigger.dev/sdk";
 
 export const openaiTask = task({
@@ -364,7 +368,7 @@ export const openaiTask = task({
 
 Sometimes you want to catch an error and don't want to retry the task. You can use try/catch as you normally would. In this example we fallback to using Replicate if OpenAI fails.
 
-```ts /trigger/myTasks.ts theme={null}
+```ts /trigger/myTasks.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 export const openaiTask = task({

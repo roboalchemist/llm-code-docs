@@ -6,7 +6,6 @@ description: >-
   Learn how to send traces directly to the Datadog Agent using the tracing API
   for custom integrations and unsupported frameworks.
 breadcrumbs: Docs > APM > Tracing Guides > Send traces to the Agent by API
-source_url: https://docs.datadoghq.com/guide/send_traces_to_agent_by_api/index.html
 ---
 
 # Send traces to the Agent by API

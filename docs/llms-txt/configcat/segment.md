@@ -2,6 +2,8 @@
 
 # Twilio Segment - Monitor your feature flag change events and feature flag analytics
 
+Copy page
+
 ## Overview[​](#overview "Direct link to Overview")
 
 There are two available integration opportunities between [ConfigCat and Twilio Segment](https://segment.com/docs/connections/sources/catalog/cloud-apps/configcat/):
@@ -83,7 +85,7 @@ Code samples:
 * Swift (iOS)
 * Other languages
 
-```
+```js
 const segmentAnalytics = AnalyticsBrowser.load({ writeKey: "#YOUR_SEGMENT_WRITE_KEY#" });
 segmentAnalytics.addSourceMiddleware(({payload, next}) => {
     payload.obj.context.integration = payload.obj.context.integration || {};
@@ -107,9 +109,10 @@ const configCatClient = configcat.getClient("#YOUR_SDK_KEY#", PollingMode.AutoPo
                 });
         }),
 });
-```
 
 ```
+
+```tsx
 const segmentAnalytics = AnalyticsBrowser.load({ writeKey: "#YOUR_SEGMENT_WRITE_KEY#" });
 segmentAnalytics.addSourceMiddleware(({payload, next}) => {
     payload.obj.context.integration = payload.obj.context.integration || {};
@@ -140,9 +143,10 @@ segmentAnalytics.addSourceMiddleware(({payload, next}) => {
   }}
 >
 </ConfigCatProvider>
-```
 
 ```
+
+```python
 import segment.analytics as analytics
 import configcatclient
 from configcatclient.configcatoptions import ConfigCatOptions, Hooks
@@ -188,9 +192,10 @@ client = configcatclient.get('#YOUR_SDK_KEY#',
         hooks=Hooks(on_flag_evaluated=on_flag_evaluated)
     )
 )
-```
 
 ```
+
+```ruby
 require 'configcat'
 require 'segment/analytics'
 require 'securerandom'
@@ -242,9 +247,10 @@ client = ConfigCat.get("#YOUR-SDK-KEY#",
         hooks: ConfigCat::Hooks.new(on_flag_evaluated: method(:on_flag_evaluated))
     )
 )
-```
 
 ```
+
+```go
 import (
 	configcat "github.com/configcat/go-sdk/v9"
 	"github.com/google/uuid"
@@ -292,9 +298,10 @@ configCatClient := configcat.NewCustomClient(configcat.Config{SDKKey: "#YOUR_SDK
             })
         }
     }}})
-```
 
 ```
+
+```java
 import com.configcat.ConfigCatClient;
 import com.configcat.User;
 import com.segment.analytics.Analytics;
@@ -340,9 +347,10 @@ ConfigCatClient client = ConfigCatClient.get("#YOUR-SDK-KEY#", options -> {
         }
     });
 });
-```
 
 ```
+
+```java
 Analytics analytics = new Analytics.Builder(getApplicationContext(), "#YOUR_SEGMENT_WRITE_KEY#").build();
 Analytics.setSingletonInstance(analytics);
 ConfigCatClient client = ConfigCatClient.get("#YOUR-SDK-KEY#", options -> {
@@ -369,9 +377,10 @@ ConfigCatClient client = ConfigCatClient.get("#YOUR-SDK-KEY#", options -> {
         analytics.track("Feature Flag Evaluated", properties, optionsAnalytics);
     });
 });
-```
 
 ```
+
+```swift
 import ConfigCat
 import Segment
 
@@ -400,6 +409,7 @@ let client = ConfigCatClient.get(sdkKey: "#YOUR-SDK-KEY#") { options in
         ])
     }
 }
+
 ```
 
 While our documentation primarily provides code examples for languages that Twilio Segment natively supports and has an official SDK, you can integrate with other languages by sending an event to Twilio Segment with a third-party SDK or with using the [Segment's HTTP API source](https://segment.com/docs/connections/sources/catalog/libraries/server/http-api/).

@@ -4,8 +4,6 @@
 title: API Gateway API Key
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > API Gateway API Key
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.apigateway_apikey.dataset/index.html
 ---
 
 # API Gateway API Key
@@ -30,5 +28,5 @@ aws.apigateway_apikey
 | last_updated_date | core | timestamp     | The timestamp when the API Key was last updated.                                                                        |
 | name              | core | string        | The name of the API Key.                                                                                                |
 | stage_keys        | core | array<string> | A list of Stage resources that are associated with the ApiKey resource.                                                 |
-| tags              | core | hstore        |
+| tags              | core | hstore_csv    |
 | value             | core | string        | The value of the API Key.                                                                                               |

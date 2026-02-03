@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/development/model/model-cache.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Cached weights 🆕
 
 > Accelerate cold starts and availability by prefetching and caching your weights.
@@ -119,8 +123,11 @@ However, if you want to deploy a model from a gated repo like [Llama 2](https://
     ```yaml config.yaml theme={"system"}
     model_cache:
     - repo_id: your-org/your-private-repo
+      revision: main # refs/pr/1
       runtime_secret_name: hf_access_token
     ```
+
+    Note: Once your truss is pushed, we resolve the sha behind your branch (main), and protect the deployment against changes on this branch.
   </Step>
 </Steps>
 
@@ -159,7 +166,10 @@ If you want to deploy a model from a private GCS bucket to Baseten, there are a 
       volume_folder: your-model-weights
       runtime_secret_name: gcs_service_account
       kind: "gcs"
+      ignore_patterns: "*.protobuf"
     ```
+
+    Note: S3/Azure/GCS Buckets are immutable. Once the truss is pushed, you may no longer delete or modify files as they are referenced as required files for a model startup.
   </Step>
 </Steps>
 
@@ -191,12 +201,15 @@ If you want to deploy a model from a private S3 bucket to Baseten, there are a f
 
     ```yaml config.yaml theme={"system"}
     model_cache:
-    - repo_id: s3://your-private-bucket
+    - repo_id: s3://your-bucket-west-2-name/path/to/model/
       use_volume: true
-      volume_folder: your-model-weights
+      volume_folder: your-model-weights # sync of s3 path/to/model/* to /app/model_cache/your-model-weights/*
       runtime_secret_name: aws_secret_json
       kind: "s3"
+      ignore_patterns: "*.protobuf"
     ```
+
+    Note: S3/Azure/GCS Buckets are immutable. Once the truss is pushed, you may no longer delete or modify files as they are referenced as required files for a model startup.
   </Step>
 </Steps>
 
@@ -226,12 +239,15 @@ If you want to deploy a model from a private Azure container to Baseten, there a
 
     ```yaml config.yaml theme={"system"}
     model_cache:
-    - repo_id: az://your-private-container
+    - repo_id: az://your-private-container/path/to/model/
       use_volume: true
       volume_folder: your-model-weights
       runtime_secret_name: azure_secret_json
       kind: "azure"
+      ignore_patterns: "*.protobuf"
     ```
+
+    Note: S3/Azure/GCS Buckets are immutable. Once the truss is pushed, you may no longer delete or modify files as they are referenced as required files for a model startup.
   </Step>
 </Steps>
 

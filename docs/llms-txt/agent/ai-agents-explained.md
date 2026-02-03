@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/ai-agents-explained.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AI Agents Explained
 
 > Understanding the basics of AI agents for beginners

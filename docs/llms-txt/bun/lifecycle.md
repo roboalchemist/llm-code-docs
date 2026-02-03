@@ -2,17 +2,9 @@
 
 # Source: https://bun.com/docs/pm/lifecycle.md
 
-# Source: https://bun.com/docs/test/lifecycle.md
-
-# Source: https://bun.com/docs/pm/lifecycle.md
-
-# Source: https://bun.com/docs/test/lifecycle.md
-
-# Source: https://bun.com/docs/pm/lifecycle.md
-
-# Source: https://bun.com/docs/test/lifecycle.md
-
-# Source: https://bun.com/docs/pm/lifecycle.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Lifecycle scripts
 
@@ -60,6 +52,13 @@ Instead of executing arbitrary scripts, Bun uses a "default-secure" approach. Yo
 Once added to `trustedDependencies`, install/re-install the package. Bun will read this field and run lifecycle scripts for `my-trusted-package`.
 
 The top 500 npm packages with lifecycle scripts are allowed by default. You can see the full list [here](https://github.com/oven-sh/bun/blob/main/src/install/default-trusted-dependencies.txt).
+
+<Note>
+  The default trusted dependencies list only applies to packages installed from npm. For packages from other sources
+  (such as `file:`, `link:`, `git:`, or `github:` dependencies), you must explicitly add them to `trustedDependencies`
+  to run their lifecycle scripts, even if the package name matches an entry in the default list. This prevents malicious
+  packages from spoofing trusted package names through local file paths or git repositories.
+</Note>
 
 ***
 

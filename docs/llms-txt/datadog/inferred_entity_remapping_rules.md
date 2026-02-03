@@ -6,7 +6,6 @@ description: >-
   Create custom names for inferred entities like databases and queues using tags
   and regular expressions.
 breadcrumbs: Docs > APM > Service Observability > Remapping rules for inferred entities
-source_url: https://docs.datadoghq.com/services/inferred_entity_remapping_rules/index.html
 ---
 
 # Remapping rules for inferred entities

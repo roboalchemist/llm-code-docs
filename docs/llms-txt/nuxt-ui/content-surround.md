@@ -4,11 +4,9 @@
 
 > A pair of prev and next links to navigate between pages.
 
-<warning to="/docs/getting-started/integrations/content">
-
-This component is only available when the `@nuxt/content` module is installed.
-
-</warning>
+> [!WARNING]
+> See: /docs/getting-started/integrations/content
+> This component is only available when the `@nuxt/content` module is installed.
 
 ## Usage
 
@@ -35,6 +33,10 @@ const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
 Use the `prev-icon` and `next-icon` props to customize the buttons [Icon](/docs/components/icon).
 
 ```vue
+<script setup lang="ts">
+import type { ContentSurroundLink } from '@nuxt/ui'
+</script>
+
 <template>
   <UContentSurround prev-icon="i-lucide-chevron-left" next-icon="i-lucide-chevron-right" />
 </template>
@@ -91,12 +93,12 @@ interface ContentSurroundProps {
   /**
    * The icon displayed in the prev link.
    */
-  prevIcon?: string | object | undefined;
+  prevIcon?: any;
   /**
    * The icon displayed in the next link.
    */
-  nextIcon?: string | object | undefined;
-  surround?: ContentSurroundLink[] | undefined;
+  nextIcon?: any;
+  surround?: T[] | undefined;
   ui?: { root?: ClassNameValue; link?: ClassNameValue; linkLeading?: ClassNameValue; linkLeadingIcon?: ClassNameValue; linkTitle?: ClassNameValue; linkDescription?: ClassNameValue; } | undefined;
 }
 ```
@@ -160,8 +162,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog prefix="content">
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/quickstart/use-via-api.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # API Quick Start
 
 Our APIs can be used directly (See our [API Reference](/api-reference)) or through integrations to automation platforms. We've created modules for our most commonly used API routes in each of the supported platforms.

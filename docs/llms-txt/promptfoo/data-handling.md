@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/troubleshooting/data-handling/
+
 # Data Handling and Privacy
 
 This page explains what data leaves your machine during red team testing and how to control it.

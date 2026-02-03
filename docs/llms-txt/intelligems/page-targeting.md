@@ -14,6 +14,18 @@ Once a site visitor visits a targeted page, they will be assigned to a test grou
 
 That said, modifications, such as Onsite Edits or Template Redirects, will only execute on the pages specified in your page targeting criteria. Visitors in your test will not see the modifications when they navigate to non-targeted pages.
 
+## Page Targeting with Multiple Domains
+
+If your organization has registered multiple domains in Intelligems Settings, page targeting works consistently across all of them. Since page targeting matches based on the URL path (the content after your domain), the same targeting rules will apply regardless of which registered domain the visitor is on.
+
+For example, a page targeting rule set to match `/collections/sale` will apply to:
+
+* yourbrand.com/collections/sale
+* yourbrand.co.uk/collections/sale
+* shop.yourbrand.com/collections/sale
+
+This makes it easy to run consistent tests across your multi-domain setup without duplicating targeting configurations.
+
 ## What about Query Parameters?
 
 We match targeting based on the content **after your store URL** and **before any query parameters**. Because of this, you should not include the ? or any query parameters in your page targeting criteria. See below for an image further illustrating this:
@@ -30,12 +42,12 @@ will all correctly match the condition:
 
 URL Path equals `/collections`
 
-Because we match targeting based on the content after your store URL, you cannot set up page targeting for different domains simply using the URL. This means:
+Because we match targeting based on the URL path (the content after your domain), page targeting rules apply consistently across all your registered domains. For example, a rule matching `/collections/sale` will apply to:
 
-* `https://ovenspring-cookware.myshopify.com`
-* `https://ovenspring-cookware.myshopify.fr`
+* yourbrand.com/collections/sale
+* yourbrand.co.uk/collections/sale
 
-will both correctly match your homepage. It is possible to target different domains using Custom JavaScript targeting.
+If you need to target a specific domain only, you can use Custom JavaScript targeting to check the hostname.
 
 ## What about URLs with Trailing Slashes?
 
@@ -69,11 +81,19 @@ You can select multiple pages to target in your test using `OR` criteria. When m
 
 <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-1b5970353edc2c4dfe9e4d6f01649a50c2897ee4%2FScreenshot%202025-05-06%20at%2011.11.57.png?alt=media" alt=""><figcaption></figcaption></figure>
 
+{% hint style="info" %}
+You can also use [Product Targeting](https://docs.intelligems.io/general-features/targeting/product-targeting) if you are targeting a large number or products.
+{% endhint %}
+
 ### **Including traffic for pages contained inside certain collections**
 
 You can set more general inclusion rules by setting a broader URL. In this example, all URLs that start with "collection-a" or "collection-b" **will be included,** but URLs that start with a different URL, e.g. "collection-c" **will not be included**.
 
 <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-a4c3cc22c2e1cd1544c76fb73bfa81da6e51175c%2FScreenshot%202025-05-06%20at%2011.15.08.png?alt=media" alt=""><figcaption></figcaption></figure>
+
+{% hint style="info" %}
+You can also use [Product Targeting](https://docs.intelligems.io/general-features/targeting/product-targeting) if you are targeting a colleciton or number of collections.
+{% endhint %}
 
 ### Targeting the homepage
 

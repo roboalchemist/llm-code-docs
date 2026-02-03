@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/reference/create-dataset-version-from-file.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create Dataset Version from File
 
 Create a new dataset version by uploading a CSV or JSON file. The file is processed asynchronously and webhooks are sent when complete. Files are uploaded to AWS S3 for processing.
@@ -143,7 +147,3 @@ components:
       description: Error response format.
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

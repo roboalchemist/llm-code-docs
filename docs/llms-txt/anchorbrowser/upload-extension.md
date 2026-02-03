@@ -1,138 +1,79 @@
 # Source: https://docs.anchorbrowser.io/api-reference/extensions/upload-extension.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Upload Extension
 
 > Upload a new browser extension as a ZIP file. The extension will be validated and stored for use in browser sessions.
 
+
+
 ## OpenAPI
 
 ````yaml openapi-mintlify.yaml post /v1/extensions
+openapi: 3.1.0
+info:
+  title: AnchorBrowser API
+  version: 1.0.0
+  description: APIs to manage all browser-related actions and configuration.
+servers:
+  - url: https://api.anchorbrowser.io
+    description: API server
+security: []
 paths:
-  path: /v1/extensions
-  method: post
-  servers:
-    - url: https://api.anchorbrowser.io
-      description: API server
-  request:
-    security:
-      - title: api key header
-        parameters:
-          query: {}
-          header:
-            anchor-api-key:
-              type: apiKey
-              description: API key passed in the header
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      multipart/form-data:
-        schemaArray:
-          - type: object
-            properties:
-              name:
-                allOf:
-                  - type: string
-                    description: User-friendly name for the extension (1-255 characters)
-              file:
-                allOf:
-                  - type: string
-                    format: binary
-                    description: ZIP file containing the browser extension
-            required: true
-            requiredProperties:
-              - name
-              - file
-        examples:
-          example:
-            value:
-              name: <string>
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - $ref: '#/components/schemas/ExtensionResponseSchema'
-        examples:
-          example:
-            value:
-              data:
-                id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                name: <string>
-                manifest:
-                  name: <string>
-                  version: <string>
-                  manifest_version: 123
-                  description: <string>
-                  permissions:
-                    - <string>
-                createdAt: '2023-11-07T05:31:56Z'
-                updatedAt: '2023-11-07T05:31:56Z'
-        description: Extension uploaded successfully
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - &ref_0
-                    type: object
-                    properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Invalid request or extension validation failed
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Unable to upload extension
-  deprecated: false
-  type: path
+  /v1/extensions:
+    post:
+      tags:
+        - Extensions
+      summary: Upload Extension
+      description: >-
+        Upload a new browser extension as a ZIP file. The extension will be
+        validated and stored for use in browser sessions.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - name
+                - file
+              properties:
+                name:
+                  type: string
+                  description: User-friendly name for the extension (1-255 characters)
+                file:
+                  type: string
+                  format: binary
+                  description: ZIP file containing the browser extension
+      responses:
+        '200':
+          description: Extension uploaded successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/ExtensionResponseSchema'
+        '400':
+          description: Invalid request or extension validation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Unable to upload extension
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - api_key_header: []
 components:
   schemas:
-    ExtensionManifest:
-      type: object
-      properties:
-        name:
-          type: string
-        version:
-          type: string
-        manifest_version:
-          type: integer
-        description:
-          type: string
-        permissions:
-          type: array
-          items:
-            type: string
-      additionalProperties: true
     ExtensionResponseSchema:
       type: object
       properties:
@@ -153,5 +94,37 @@ components:
           type: string
           format: date-time
           description: Timestamp when the extension was last updated
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+    ExtensionManifest:
+      type: object
+      properties:
+        name:
+          type: string
+        version:
+          type: string
+        manifest_version:
+          type: integer
+        description:
+          type: string
+        permissions:
+          type: array
+          items:
+            type: string
+      additionalProperties: true
+  securitySchemes:
+    api_key_header:
+      type: apiKey
+      in: header
+      name: anchor-api-key
+      description: API key passed in the header
 
 ````

@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/billable-metrics/sql-expressions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SQL Expressions
 
 > For more advanced calculations, you can use SQL custom expressions. These expressions are helpful when the aggregation results for a billable metric require complex calculations.
@@ -83,6 +87,7 @@ A variety of SQL custom expressions are available for use. Here are a few exampl
 * **Concatenation:** `CONCAT(event.properties.user_id, '-', event.properties.app_id)`
 * **Math operations:** `(event.properties.cpu_number * 25 * event.properties.duration_msec) + (event.properties.memory_mb * 0.000001 * event.properties.duration_msec)`
 * **Rounding:** `ROUND(event.properties.duration_msec * 1000)`
+* **Least/Greatest:** `LEAST(event.properties.memory_mb, 10.0)`
 
 You can find the full list of supported expressions below:
 
@@ -94,6 +99,8 @@ You can find the full list of supported expressions below:
   * [`ROUND`](#ROUND)
   * [`FLOOR`](#FLOOR)
   * [`CEIL`](#CEIL)
+  * [`LEAST`](#LEAST)
+  * [`GREATEST`](#GREATEST)
 
 If you need a custom expression that isn't supported by default in Lago, **feel free to contact our team** or **consider contributing to the open-source version**.
 
@@ -212,6 +219,46 @@ CEIL(value, precision)
 * `CEIL(14.2345, 0)` returns `15`
 * `CEIL(14.2345, 2)` returns `14.24`
 * `CEIL(14.2345, -1)` returns `20`
+
+#### `LEAST`
+
+The `LEAST` function is used to find minimum of two or more numbers.
+
+```SQL  theme={"dark"}
+LEAST(num1, num2[,nums,...])
+```
+
+**Parameters:**
+
+* `num1`: The first number to check minimum value
+* `num2`: The second number to check minimum value
+* `nums`: (Optional) Additional numbers to check minimum value.
+
+**Returns:** The minimum of the given numbers.
+
+**Examples:**
+
+* `LEAST(event.properties.disk1_usage_mb, event.properties.disk2_usage_mb, 10.0)`
+
+#### `GREATEST`
+
+The `GREATEST` function is used to find maximum of two or more numbers.
+
+```SQL  theme={"dark"}
+GREATEST(num1, num2[,nums,...])
+```
+
+**Parameters:**
+
+* `num1`: The first number to check maximum value
+* `num2`: The second number to check maximum value
+* `nums`: (Optional) Additional numbers to check maximum value.
+
+**Returns:** The maximum of the given numbers.
+
+**Examples:**
+
+* `GREATEST(event.properties.memory_mb, 10.0)`
 
 ## Testing your SQL Custom Expression
 

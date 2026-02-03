@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/test-monitoring.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Test and monitor your integration in your Zapier account
 
 > Testing inside the Platform UI is crucial during the building process. To ensure users can benefit from your integration's features, it is equally crucial to test your integration within the Zap editor. This is the best way to notice details that might have been overlooked while building your integration.

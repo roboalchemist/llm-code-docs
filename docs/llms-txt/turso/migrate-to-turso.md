@@ -1,5 +1,9 @@
 # Source: https://docs.turso.tech/cloud/migrate-to-turso.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Migrate to Turso
 
 > Learn how to import your existing SQLite database to Turso.

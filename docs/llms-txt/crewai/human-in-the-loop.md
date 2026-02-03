@@ -2,31 +2,65 @@
 
 # Source: https://docs.crewai.com/en/enterprise/guides/human-in-the-loop.md
 
-# Source: https://docs.crewai.com/en/learn/human-in-the-loop.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.crewai.com/en/enterprise/guides/human-in-the-loop.md
+# HITL Workflows
 
-# Source: https://docs.crewai.com/en/learn/human-in-the-loop.md
+> Learn how to implement Human-In-The-Loop workflows in CrewAI for enhanced decision-making
 
-# Source: https://docs.crewai.com/en/enterprise/guides/human-in-the-loop.md
+Human-In-The-Loop (HITL) is a powerful approach that combines artificial intelligence with human expertise to enhance decision-making and improve task outcomes. This guide shows you how to implement HITL within CrewAI Enterprise.
 
-# Source: https://docs.crewai.com/en/learn/human-in-the-loop.md
+## HITL Approaches in CrewAI
 
-# Source: https://docs.crewai.com/en/enterprise/guides/human-in-the-loop.md
+CrewAI offers two approaches for implementing human-in-the-loop workflows:
 
-# Source: https://docs.crewai.com/en/learn/human-in-the-loop.md
+| Approach                                     | Best For                                                                     | Version      |
+| -------------------------------------------- | ---------------------------------------------------------------------------- | ------------ |
+| **Flow-based** (`@human_feedback` decorator) | Production with Enterprise UI, email-first workflows, full platform features | **1.8.0+**   |
+| **Webhook-based**                            | Custom integrations, external systems (Slack, Teams, etc.), legacy setups    | All versions |
 
-# Source: https://docs.crewai.com/en/enterprise/guides/human-in-the-loop.md
+## Flow-Based HITL with Enterprise Platform
 
-# Source: https://docs.crewai.com/en/learn/human-in-the-loop.md
+<Note>
+  The `@human_feedback` decorator requires **CrewAI version 1.8.0 or higher**.
+</Note>
 
-# Human-in-the-Loop (HITL) Workflows
+When using the `@human_feedback` decorator in your Flows, CrewAI Enterprise provides an **email-first HITL system** that enables anyone with an email address to respond to review requests:
 
-> Learn how to implement Human-in-the-Loop workflows in CrewAI for enhanced decision-making
+<CardGroup cols={2}>
+  <Card title="Email-First Design" icon="envelope">
+    Responders receive email notifications and can reply directly—no login required.
+  </Card>
 
-Human-in-the-Loop (HITL) is a powerful approach that combines artificial intelligence with human expertise to enhance decision-making and improve task outcomes. This guide shows you how to implement HITL within CrewAI.
+  <Card title="Dashboard Review" icon="desktop">
+    Review and respond to HITL requests in the Enterprise dashboard when preferred.
+  </Card>
 
-## Setting Up HITL Workflows
+  <Card title="Flexible Routing" icon="route">
+    Route requests to specific emails based on method patterns or pull from flow state.
+  </Card>
+
+  <Card title="Auto-Response" icon="clock">
+    Configure automatic fallback responses when no human replies within the timeout.
+  </Card>
+</CardGroup>
+
+### Key Benefits
+
+* **External responders**: Anyone with an email can respond, even non-platform users
+* **Dynamic assignment**: Pull assignee email from flow state (e.g., `account_owner_email`)
+* **Simple configuration**: Email-based routing is easier to set up than user/role management
+* **Deployment creator fallback**: If no routing rule matches, the deployment creator is notified
+
+<Tip>
+  For implementation details on the `@human_feedback` decorator, see the [Human Feedback in Flows](/en/learn/human-feedback-in-flows) guide.
+</Tip>
+
+## Setting Up Webhook-Based HITL Workflows
+
+For custom integrations with external systems like Slack, Microsoft Teams, or your own applications, you can use the webhook-based approach:
 
 <Steps>
   <Step title="Configure Your Task">
@@ -43,55 +77,14 @@ Human-in-the-Loop (HITL) is a powerful approach that combines artificial intelli
     <Frame>
       <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-webhook-url.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=f2d298c0b4c7b3a62e1dee4e2e6f1bb3" alt="Crew Webhook URL" data-og-width="624" width="624" data-og-height="259" height="259" data-path="images/enterprise/crew-webhook-url.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-webhook-url.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=80f52cbe2cd1c6a2a4cd3e2039c22971 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-webhook-url.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=6496d6f5e1fe13fec8be8a406e635b26 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-webhook-url.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=27cfbbf1fecdab2540df4aeb7ddd15b6 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-webhook-url.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=57d3439e96917a0627189bfd188af4a0 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-webhook-url.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=cad1f034d8fd4113f08df6bf1a58f3fa 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-webhook-url.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=fba10cd375c57bcd9b2a216067b5bd44 2500w" />
     </Frame>
-
-    Example with Bearer authentication:
-
-    ```bash  theme={null}
-    curl -X POST {BASE_URL}/kickoff \
-      -H "Authorization: Bearer YOUR_API_TOKEN" \
-      -H "Content-Type: application/json" \
-      -d '{
-        "inputs": {
-          "topic": "AI Research"
-        },
-        "humanInputWebhook": {
-          "url": "https://your-webhook.com/hitl",
-          "authentication": {
-            "strategy": "bearer",
-            "token": "your-webhook-secret-token"
-          }
-        }
-      }'
-    ```
-
-    Or with Basic authentication:
-
-    ```bash  theme={null}
-    curl -X POST {BASE_URL}/kickoff \
-      -H "Authorization: Bearer YOUR_API_TOKEN" \
-      -H "Content-Type: application/json" \
-      -d '{
-        "inputs": {
-          "topic": "AI Research"
-        },
-        "humanInputWebhook": {
-          "url": "https://your-webhook.com/hitl",
-          "authentication": {
-            "strategy": "basic",
-            "username": "your-username",
-            "password": "your-password"
-          }
-        }
-      }'
-    ```
   </Step>
 
   <Step title="Receive Webhook Notification">
     Once the crew completes the task requiring human input, you'll receive a webhook notification containing:
 
-    * Execution ID
-    * Task ID
-    * Task output
+    * **Execution ID**
+    * **Task ID**
+    * **Task output**
   </Step>
 
   <Step title="Review Task Output">
@@ -169,3 +162,15 @@ HITL workflows are particularly valuable for:
 * Sensitive or high-stakes operations
 * Creative tasks requiring human judgment
 * Compliance and regulatory reviews
+
+## Learn More
+
+<CardGroup cols={2}>
+  <Card title="Flow HITL Management" icon="users-gear" href="/en/enterprise/features/flow-hitl-management">
+    Explore the full Enterprise Flow HITL platform capabilities including email notifications, routing rules, auto-response, and analytics.
+  </Card>
+
+  <Card title="Human Feedback in Flows" icon="code" href="/en/learn/human-feedback-in-flows">
+    Implementation guide for the `@human_feedback` decorator in your Flows.
+  </Card>
+</CardGroup>

@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/integrations/secret-syncs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 > Browse and search through all available secret syncs for Infisical.
 
 # null
@@ -111,6 +115,12 @@ export const SecretSyncsBrowser = () => {
     "description": "Learn how to sync secrets from Infisical to Checkly.",
     "category": "Monitoring"
   }, {
+    "name": "CircleCI",
+    "slug": "circleci",
+    "path": "/integrations/secret-syncs/circleci",
+    "description": "Learn how to sync secrets from Infisical to CircleCI.",
+    "category": "CI/CD"
+  }, {
     "name": "GitHub",
     "slug": "github",
     "path": "/integrations/secret-syncs/github",
@@ -206,6 +216,12 @@ export const SecretSyncsBrowser = () => {
     "path": "/integrations/secret-syncs/northflank",
     "description": "Learn how to sync secrets from Infisical to Northflank projects.",
     "category": "Hosting"
+  }, {
+    "name": "Octopus Deploy",
+    "slug": "octopus-deploy",
+    "path": "/integrations/secret-syncs/octopus-deploy",
+    "description": "Learn how to sync secrets from Infisical to Octopus Deploy.",
+    "category": "DevOps Tools"
   }].sort(function (a, b) {
     return a.name.toLowerCase().localeCompare(b.name.toLowerCase());
   });

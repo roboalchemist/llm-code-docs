@@ -1,12 +1,6 @@
 # Source: https://gitbook.com/docs/developers/integrations/development/contentkit/markdown.md
 
-# Source: https://gitbook.com/docs/documentation/zh/creating-content/formatting/markdown.md
-
-# Source: https://gitbook.com/docs/documentation/fr/creating-content/formatting/markdown.md
-
-# Source: https://gitbook.com/docs/creating-content/formatting/markdown.md
-
-# Source: https://gitbook.com/docs/developers/integrations/development/contentkit/markdown.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/creating-content/formatting/markdown.md
 
 # Source: https://gitbook.com/docs/documentation/zh/creating-content/formatting/markdown.md
 
@@ -39,7 +33,7 @@ GitBook supports all the classic inline Markdown formatting:
 
 ### Pasting Markdown
 
-When pasting Markdown content directly into the editor, it’s important to use the **Paste and Match Style** option (typically <kbd>Shift</kbd> + <kbd>Cmd</kbd> + <kbd>V</kbd> on Mac or <kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>V</kbd> on Windows).&#x20;
+When pasting Markdown content directly into the editor, it’s important to use the **Paste and Match Style** option (typically <kbd>Shift</kbd> + <kbd>Cmd</kbd> + <kbd>V</kbd> on Mac or <kbd>Shift</kbd> + <kbd>Ctrl</kbd> + <kbd>V</kbd> on Windows).
 
 If you use the standard Paste option for content copied from another editor or from the web, it may be inserted as a code block instead of formatted text.
 
@@ -68,7 +62,7 @@ GitBook automatically detects and creates ordered and unordered lists as you typ
 * Begin a line with `- [ ]` to start a task list.
 
 {% hint style="info" %}
-When writing any kind of list, hit `Tab` to add a indent, and `Shift+Tab` to outdent.
+When writing any kind of list, hit `Tab` to add a indent, and `Shift+Tab` to outdent.&#x20;
 {% endhint %}
 
 ### Quotes

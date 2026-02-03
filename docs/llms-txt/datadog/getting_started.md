@@ -1,3 +1,5 @@
+# Source: https://docs.datadoghq.com/error_tracking/backend/getting_started.md
+
 # Source: https://docs.datadoghq.com/administrators_guide/getting_started.md
 
 # Source: https://docs.datadoghq.com/getting_started.md
@@ -8,7 +10,6 @@ description: >-
   Introduction to Datadog's observability platform with guides for installation,
   configuration, and getting started with key features.
 breadcrumbs: Docs > Getting Started
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Getting Started

@@ -1,4 +1,4 @@
-# Source: https://docs.intelligems.io/offer-experiences/offers-library/how-to-set-up-a-partner-offer-influencer-ambassador-affiliate-etc..md
+# Source: https://docs.intelligems.io/offer-personalizations/offers-library/how-to-set-up-a-partner-offer-influencer-ambassador-affiliate-etc..md
 
 # How to Set Up a Partner Offer (Influencer, Ambassador, Affiliate etc.)
 
@@ -7,7 +7,7 @@
 You can use **Offers** to power your influencer and partner programs by creating discounts for each partner **combined with a unique onsite experience**. This ensures consistency from exposure to landing on your site to conversion.
 
 {% hint style="info" %}
-Offer Experiences are available on Core, Plus, and Blue Plans. Testing your Offers against each other is only available on Plus and Blue.
+Offer Personalizations are available on Core, Plus, and Blue Plans. Testing your Offers against each other is only available on Plus and Blue.
 {% endhint %}
 
 **Examples:** Influencer discount codes, affiliate discount codes, evergreen partnership discounts
@@ -64,7 +64,7 @@ We recommend setting up an Influencer collection in Shopify and then select that
     2. You can also use the **Link** tab to create a custom link that the partner can share with their audience
 15. **Save** your Offer
 16. **Preview** your Offer on desktop and mobile
-17. When everything looks good, **Schedule Your Offer Experience** or **Activate** to go live
+17. When everything looks good, **Schedule Your Offer Personalization** or **Activate** to go live
     1. You can select a Start time and Stop time when scheduling
 18. Repeat for each influencer or partner campaign
 19. Track the impact in the **Results tab** to measure ROI and performance

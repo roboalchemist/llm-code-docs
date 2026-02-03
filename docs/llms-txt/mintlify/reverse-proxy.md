@@ -1,11 +1,15 @@
-# Source: https://mintlify.com/docs/deploy/reverse-proxy.md
+# Source: https://www.mintlify.com/docs/deploy/reverse-proxy.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Reverse proxy
 
 > Configure a custom reverse proxy to serve your documentation.
 
 <Note>
-  Reverse proxy configurations are only supported for [Custom plans](https://mintlify.com/pricing?ref=reverse-proxy).
+  Reverse proxy configurations are only supported for [Enterprise plans](https://mintlify.com/pricing?ref=reverse-proxy).
 </Note>
 
 To serve your documentation through a custom reverse proxy, you must configure routing rules, caching policies, and header forwarding.
@@ -20,6 +24,8 @@ Proxy these paths to your Mintlify subdomain with the specified caching policies
 | --------------------------------- | ------------------------------- | ------------- |
 | `/.well-known/acme-challenge/*`   | `<your-subdomain>.mintlify.app` | No cache      |
 | `/.well-known/vercel/*`           | `<your-subdomain>.mintlify.app` | No cache      |
+| `/.well-known/skills/*`           | `<your-subdomain>.mintlify.app` | No cache      |
+| `/skill.md`                       | `<your-subdomain>.mintlify.app` | No cache      |
 | `/mintlify-assets/_next/static/*` | `<your-subdomain>.mintlify.app` | Cache enabled |
 | `/_mintlify/*`                    | `<your-subdomain>.mintlify.app` | No cache      |
 | `/*`                              | `<your-subdomain>.mintlify.app` | No cache      |
@@ -69,6 +75,32 @@ server {
         proxy_set_header User-Agent $http_user_agent;
 
         # Disable caching for verification paths
+        add_header Cache-Control "no-cache, no-store, must-revalidate";
+    }
+
+    # AI skills paths
+    location ^~ /.well-known/skills/ {
+        proxy_pass https://<your-subdomain>.mintlify.app;
+        proxy_set_header Origin <your-subdomain>.mintlify.app;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header User-Agent $http_user_agent;
+
+        # Disable caching for verification paths
+        add_header Cache-Control "no-cache, no-store, must-revalidate";
+    }
+
+    # Skill manifest
+    location = /skill.md {
+        proxy_pass https://<your-subdomain>.mintlify.app;
+        proxy_set_header Origin <your-subdomain>.mintlify.app;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header User-Agent $http_user_agent;
+
+        # Disable caching for skill manifest
         add_header Cache-Control "no-cache, no-store, must-revalidate";
     }
 

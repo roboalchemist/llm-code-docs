@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/graphql/tiers/add-members.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add companies and tenants to tiers
 
 You can add multiple tenants and companies to a tier in a single mutation.

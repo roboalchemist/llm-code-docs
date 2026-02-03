@@ -1,5 +1,9 @@
 # Source: https://docs.tavus.io/sections/webhooks-and-callbacks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Webhooks and Callbacks
 
 > Set up a webhook server to generate a callback URL that receives event notifications from Tavus API.

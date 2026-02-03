@@ -64,7 +64,7 @@ Monetizing your Actor on the Apify platform involves several key steps:
 
 Pay-per-event details
 
-If you want more details about PPE pricing, refer to our https://docs.apify.com/platform/actors/publishing/monetize/pay-per-event.md.
+If you want more details about PPE pricing, refer to our [PPE documentation](https://docs.apify.com/platform/actors/publishing/monetize/pay-per-event.md).
 
 ### Pay-per-result pricing model
 
@@ -88,7 +88,7 @@ If you want more details about PPE pricing, refer to our https://docs.apify.com/
 
 Pay-per-result details
 
-If you want more details about PPR pricing, refer to our https://docs.apify.com/platform/actors/publishing/monetize/pay-per-result.md.
+If you want more details about PPR pricing, refer to our [PPR documentation](https://docs.apify.com/platform/actors/publishing/monetize/pay-per-result.md).
 
 ### Rental pricing model
 
@@ -106,7 +106,7 @@ If you want more details about PPR pricing, refer to our https://docs.apify.com/
 
 Rental pricing details
 
-If you want more details about rental pricing, refer to our https://docs.apify.com/platform/actors/publishing/monetize/rental.md.
+If you want more details about rental pricing, refer to our [rental pricing documentation](https://docs.apify.com/platform/actors/publishing/monetize/rental.md).
 
 ## Setting up monetization
 
@@ -139,7 +139,7 @@ Also, remember that your Actor is a package deal with the Apify platform. All th
 
 Apify Store is like any other marketplace, so take a look at your competition there. Are you the first in your lane, or are there other similar tools? What makes yours stand out? Remember, your README is your first impression — communicate your tool's benefits clearly and offer something unique. Competing with other developers is great, but collaborations can drive even better results 😉
 
-Learn more about what makes a good readme here: https://docs.apify.com/academy/actor-marketing-playbook/actor-basics/how-to-create-an-actor-readme.md
+Learn more about what makes a good readme here: [How to create an Actor README](https://docs.apify.com/academy/actor-marketing-playbook/actor-basics/how-to-create-an-actor-readme.md)
 
 ### Rental, pay-per-result (PPR), or pay-per-event (PPE)
 
@@ -153,7 +153,7 @@ Additional benefits
 
 Actors that implement PPE receive additional benefits, including increased visibility in Apify Store and enhanced discoverability.
 
-To estimate pricing, run a few test runs and review the statistics in the Actor https://console.apify.com/actors?tab=analytics tab.
+To estimate pricing, run a few test runs and review the statistics in the Actor [Analytics](https://console.apify.com/actors?tab=analytics) tab.
 
 ### Adapt when needed
 
@@ -179,9 +179,9 @@ Use emails!
 
 ## Resources
 
-* Learn about https://apify.com/partners/actor-developers
-* Detailed guide to https://docs.apify.com/academy/get-most-of-actors/monetizing-your-actor
-* Guide to https://docs.apify.com/platform/actors/publishing
-* Watch our webinar on how to https://www.youtube.com/watch?v=4nxStxC1BJM
-* Read a blog post from our CEO on the https://blog.apify.com/make-regular-passive-income-developing-web-automation-actors-b0392278d085/
-* Learn about the https://apify.com/pricing/creator-plan, which allows you to create and freely test your own Actors for $1
+* Learn about [incentives behind monetization](https://apify.com/partners/actor-developers)
+* Detailed guide to [setting up monetization models](https://docs.apify.com/academy/get-most-of-actors/monetizing-your-actor)
+* Guide to [publishing Actors](https://docs.apify.com/platform/actors/publishing)
+* Watch our webinar on how to [build, publish and monetize Actors](https://www.youtube.com/watch?v=4nxStxC1BJM)
+* Read a blog post from our CEO on the [reasoning behind monetizing Actors](https://blog.apify.com/make-regular-passive-income-developing-web-automation-actors-b0392278d085/)
+* Learn about the [Creator plan](https://apify.com/pricing/creator-plan), which allows you to create and freely test your own Actors for $1

@@ -1,3 +1,5 @@
+# Source: https://docs.datadoghq.com/getting_started/opentelemetry.md
+
 # Source: https://docs.datadoghq.com/tracing/other_telemetry/connect_logs_and_traces/opentelemetry.md
 
 # Source: https://docs.datadoghq.com/opentelemetry.md
@@ -6,7 +8,6 @@
 title: OpenTelemetry in Datadog
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > OpenTelemetry in Datadog
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # OpenTelemetry in Datadog

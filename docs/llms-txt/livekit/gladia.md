@@ -1,6 +1,6 @@
 # Source: https://docs.livekit.io/agents/models/stt/plugins/gladia.md
 
-LiveKit docs › Models › Speech-to-text (STT) › Plugins › Gladia
+LiveKit docs › Models › STT › Plugins › Gladia
 
 ---
 
@@ -25,7 +25,7 @@ This section provides a brief overview of the Gladia STT plugin. For more inform
 Install the plugin from PyPI:
 
 ```shell
-uv add "livekit-agents[gladia]~=1.2"
+uv add "livekit-agents[gladia]~=1.3"
 
 ```
 
@@ -110,7 +110,7 @@ The following resources provide more information about using Gladia with LiveKit
 
 ---
 
-This document was rendered at 2025-11-18T23:55:08.004Z.
+This document was rendered at 2026-02-03T03:25:03.441Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/stt/plugins/gladia.md](https://docs.livekit.io/agents/models/stt/plugins/gladia.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

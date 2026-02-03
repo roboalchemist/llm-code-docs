@@ -18,7 +18,7 @@ These general optimization methods speed up both development and production buil
 
 ### Upgrade Rsbuild
 
-Upgrading to the latest version of Rsbuild gives you access to the latest performance optimizations. See [Upgrade Rsbuild](/guide/basic/upgrade-rsbuild.md) for more details.
+Upgrading to the latest version of Rsbuild gives you access to the latest performance optimizations. See [Upgrade Rsbuild](/guide/upgrade/upgrade-rsbuild.md) for more details.
 
 ### Enable persistent cache
 

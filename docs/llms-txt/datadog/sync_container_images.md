@@ -6,9 +6,8 @@ description: >-
   Synchronize Datadog container images from public registries to your private
   registry using Crane or similar tools
 breadcrumbs: >-
-  Docs > Container Monitoring > Containers Guides > Synchronize Datadog's images
-  with a private registry
-source_url: https://docs.datadoghq.com/guide/sync_container_images/index.html
+  Docs > Containers > Containers Guides > Synchronize Datadog's images with a
+  private registry
 ---
 
 # Synchronize Datadog's images with a private registry

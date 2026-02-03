@@ -4,17 +4,9 @@
 
 # Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/whatsapp.md
 
-# Source: https://docs.pipecat.ai/server/services/transport/whatsapp.md
-
-# Source: https://docs.pipecat.ai/guides/features/whatsapp.md
-
-# Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/whatsapp.md
-
-# Source: https://docs.pipecat.ai/server/services/transport/whatsapp.md
-
-# Source: https://docs.pipecat.ai/guides/features/whatsapp.md
-
-# Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/whatsapp.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # WhatsApp Business Calling API
 
@@ -74,7 +66,6 @@ transport = SmallWebRTCTransport(
     params=TransportParams(
         audio_in_enabled=True,
         audio_out_enabled=True,
-        vad_analyzer=SileroVADAnalyzer(),
     ),
 )
 ```
@@ -105,8 +96,3 @@ Common Pipecat Cloud issues:
    * Ensure that the WhatsApp token is still valid.
 
 > For a complete troubleshooting section, see [WhatsApp Business Calling guide](/guides/features/whatsapp#troubleshooting).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

@@ -1,3 +1,5 @@
+# Source: https://docs.slack.dev/tools/deno-slack-sdk/guides/following-security-best-practices
+
 # Following security best practices
 
 ## Workflow apps require a paid plan

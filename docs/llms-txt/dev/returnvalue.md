@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/blueprints/returnvalue.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Return value
 
 Returns a value from this block to the caller. Use to pass results to another blueprint.
@@ -90,14 +94,14 @@ Below are the possible end states of the block call.
       <td>Success</td>
       <td>-</td>
       <td>success</td>
-      <td>If the function doesn't raise an Exception.</td>
+      <td>The value was returned successfully.</td>
     </tr>
 
     <tr>
       <td>Error</td>
       <td>-</td>
       <td>error</td>
-      <td>If the function raises an Exception.</td>
+      <td>There was an error returning the value.</td>
     </tr>
   </tbody>
 </table>

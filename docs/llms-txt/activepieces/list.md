@@ -18,133 +18,99 @@
 
 # Source: https://www.activepieces.com/docs/endpoints/connections/list.md
 
-# Source: https://www.activepieces.com/docs/endpoints/users/list.md
-
-# Source: https://www.activepieces.com/docs/endpoints/user-invitations/list.md
-
-# Source: https://www.activepieces.com/docs/endpoints/templates/list.md
-
-# Source: https://www.activepieces.com/docs/endpoints/projects/list.md
-
-# Source: https://www.activepieces.com/docs/endpoints/project-members/list.md
-
-# Source: https://www.activepieces.com/docs/endpoints/global-connections/list.md
-
-# Source: https://www.activepieces.com/docs/endpoints/folders/list.md
-
-# Source: https://www.activepieces.com/docs/endpoints/flows/list.md
-
-# Source: https://www.activepieces.com/docs/endpoints/flow-runs/list.md
-
-# Source: https://www.activepieces.com/docs/endpoints/connections/list.md
-
-# Source: https://www.activepieces.com/docs/endpoints/users/list.md
-
-# Source: https://www.activepieces.com/docs/endpoints/user-invitations/list.md
-
-# Source: https://www.activepieces.com/docs/endpoints/projects/list.md
-
-# Source: https://www.activepieces.com/docs/endpoints/project-members/list.md
-
-# Source: https://www.activepieces.com/docs/endpoints/mcp-servers/list.md
-
-# Source: https://www.activepieces.com/docs/endpoints/global-connections/list.md
-
-# Source: https://www.activepieces.com/docs/endpoints/folders/list.md
-
-# Source: https://www.activepieces.com/docs/endpoints/flows/list.md
-
-# Source: https://www.activepieces.com/docs/endpoints/flow-templates/list.md
-
-# Source: https://www.activepieces.com/docs/endpoints/flow-runs/list.md
-
-# Source: https://www.activepieces.com/docs/endpoints/connections/list.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # List Connections
 
 > List app connections
 
+
+
 ## OpenAPI
 
 ````yaml GET /v1/app-connections
+openapi: 3.0.3
+info:
+  title: Activepieces Documentation
+  version: 0.0.0
+servers:
+  - url: https://cloud.activepieces.com/api
+    description: Production Server
+security: []
+externalDocs:
+  url: https://www.activepieces.com/docs
+  description: Find more info here
 paths:
-  path: /v1/app-connections
-  method: get
-  servers:
-    - url: https://cloud.activepieces.com/api
-      description: Production Server
-  request:
-    security:
-      - title: apiKey
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Use your api key generated from the admin console
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        cursor:
-          schema:
-            - type: string
-              required: false
-        projectId:
-          schema:
-            - type: string
-              required: true
-        scope:
-          schema:
-            - type: enum<string>
-              enum:
-                - PROJECT
-              required: false
-            - type: enum<string>
-              enum:
-                - PLATFORM
-              required: false
-        pieceName:
-          schema:
-            - type: string
-              required: false
-        displayName:
-          schema:
-            - type: string
-              required: false
-        status:
-          schema:
-            - type: array
-              items:
-                allOf:
-                  - anyOf:
-                      - type: string
-                        enum:
-                          - ACTIVE
-                      - type: string
-                        enum:
-                          - MISSING
-                      - type: string
-                        enum:
-                          - ERROR
-              required: false
-        limit:
-          schema:
-            - type: number
-              required: false
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: array
+  /v1/app-connections:
+    get:
+      tags:
+        - app-connections
+      description: List app connections
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: cursor
+          required: false
+        - schema:
+            type: string
+          in: query
+          name: projectId
+          required: true
+        - schema:
+            anyOf:
+              - type: string
+                enum:
+                  - PROJECT
+              - type: string
+                enum:
+                  - PLATFORM
+          in: query
+          name: scope
+          required: false
+        - schema:
+            type: string
+          in: query
+          name: pieceName
+          required: false
+        - schema:
+            type: string
+          in: query
+          name: displayName
+          required: false
+        - schema:
+            type: array
+            items:
+              anyOf:
+                - type: string
+                  enum:
+                    - ACTIVE
+                - type: string
+                  enum:
+                    - MISSING
+                - type: string
+                  enum:
+                    - ERROR
+          in: query
+          name: status
+          required: false
+        - schema:
+            type: number
+          in: query
+          name: limit
+          required: false
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
                     items:
                       description: App connection is a connection to an external app.
                       type: object
@@ -234,9 +200,6 @@ paths:
                             externalId:
                               type: string
                               nullable: true
-                            lastChangelogDismissed:
-                              type: string
-                              nullable: true
                             platformId:
                               type: string
                               nullable: true
@@ -257,6 +220,9 @@ paths:
                               type: string
                             updated:
                               type: string
+                            lastActiveDate:
+                              type: string
+                              nullable: true
                           required:
                             - id
                             - email
@@ -277,6 +243,8 @@ paths:
                             pattern: ^[0-9a-zA-Z]{21}$
                             type: string
                           nullable: true
+                        pieceVersion:
+                          type: string
                       required:
                         - id
                         - created
@@ -288,56 +256,24 @@ paths:
                         - projectIds
                         - scope
                         - status
-              next:
-                allOf:
-                  - description: Cursor to the next page
+                        - pieceVersion
+                  next:
+                    description: Cursor to the next page
                     type: string
                     nullable: true
-              previous:
-                allOf:
-                  - description: Cursor to the previous page
+                  previous:
+                    description: Cursor to the previous page
                     type: string
                     nullable: true
-            requiredProperties:
-              - data
-        examples:
-          example:
-            value:
-              data:
-                - id: <string>
-                  created: <string>
-                  updated: <string>
-                  externalId: <string>
-                  displayName: <string>
-                  type: OAUTH2
-                  pieceName: <string>
-                  projectIds:
-                    - <string>
-                  platformId: <string>
-                  scope: PROJECT
-                  status: ACTIVE
-                  ownerId: <string>
-                  owner:
-                    id: <string>
-                    email: <string>
-                    firstName: <string>
-                    status: ACTIVE
-                    externalId: <string>
-                    lastChangelogDismissed: <string>
-                    platformId: <string>
-                    platformRole: ADMIN
-                    lastName: <string>
-                    created: <string>
-                    updated: <string>
-                  metadata: {}
-                  flowIds:
-                    - <string>
-              next: <string>
-              previous: <string>
-        description: Default Response
-  deprecated: false
-  type: path
+                required:
+                  - data
+      security:
+        - apiKey: []
 components:
-  schemas: {}
+  securitySchemes:
+    apiKey:
+      type: http
+      description: Use your api key generated from the admin console
+      scheme: bearer
 
 ````

@@ -2,10 +2,6 @@
 
 # Source: https://docs.zenml.io/pro/access-management/service-accounts.md
 
-# Source: https://docs.zenml.io/api-reference/oss-api/oss-api/service-accounts.md
-
-# Source: https://docs.zenml.io/pro/access-management/service-accounts.md
-
 # Service Accounts
 
 Service accounts in ZenML Pro provide a secure way to authenticate automated systems, CI/CD pipelines, and other non-interactive applications with your ZenML Pro organization. Unlike user accounts, service accounts are designed specifically for programmatic access and can be managed centrally through the Organization Settings interface.

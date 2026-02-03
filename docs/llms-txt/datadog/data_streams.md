@@ -4,7 +4,6 @@
 title: Data Streams Monitoring
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Data Streams Monitoring
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Data Streams Monitoring

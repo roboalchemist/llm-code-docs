@@ -9,7 +9,7 @@ To learn more about Optimize, see our article: [Mailgun Optimize: Introducing th
 
 Below is a list of Mailgun Optimize APIs and an overview of each. Each of these represents a critical aspect of email deliverability and management, ensuring that your email campaigns achieve maximum reach and effectiveness. You will be able to see the various endpoints for each API by clicking on the dropdown for each API on the left sidebar.
 
-The complete [OpenAPI](https://www.openapis.org/) spec is available here: [Download OAS 3.1 Specification](https://documentation.mailgun.com/babadd35a5313c37aed088feab80bdec/openapi-final.yaml)
+The complete [OpenAPI](https://www.openapis.org/) spec is available here: [Download OAS 3.1 Specification](https://documentation.mailgun.com/docs/inboxready/api-reference/optimize/inboxready)
 
 ## Domains
 

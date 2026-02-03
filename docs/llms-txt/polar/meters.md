@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/features/usage-based-billing/meters.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Meters
 
 > Creating and managing meters for Usage Based Billing
@@ -144,10 +148,6 @@ The following Meter Filter & Aggregation will match events that have the name `o
 ## Good to know
 
 A few things to keep in mind when creating and managing meters:
-
-### Renaming a Meter
-
-Until [https://github.com/polarsource/polar/issues/6490](https://github.com/polarsource/polar/issues/6490) is fixed, please [contact support](/support) to rename the meter for you.
 
 ### Updating a Meter
 

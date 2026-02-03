@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/deployment-testing/best-practices/handling-data-drift.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Handling Data Drift
 
 > Ensuring Datafold in CI executes apples-to-apples comparison between staging and production environments.

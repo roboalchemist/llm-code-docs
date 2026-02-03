@@ -4,7 +4,6 @@
 title: Will I lose my diagrams if I downgrade?
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > FAQ > Will I lose my diagrams if I downgrade?
-source_url: https://docs.datadoghq.com/faq/what-happens-downgrade/index.html
 ---
 
 # Will I lose my diagrams if I downgrade?

@@ -1,12 +1,6 @@
 # Source: https://gitbook.com/docs/developers/gitbook-api/api-reference/translations/glossary.md
 
-# Source: https://gitbook.com/docs/documentation/zh/zi-yuan/glossary.md
-
-# Source: https://gitbook.com/docs/documentation/fr/ressources/glossary.md
-
-# Source: https://gitbook.com/docs/resources/glossary.md
-
-# Source: https://gitbook.com/docs/developers/gitbook-api/api-reference/translations/glossary.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/rissu/glossary.md
 
 # Source: https://gitbook.com/docs/documentation/zh/zi-yuan/glossary.md
 

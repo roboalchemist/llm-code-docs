@@ -12,61 +12,25 @@
 
 # Source: https://docs.livekit.io/agents/models/llm/plugins/groq.md
 
-# Source: https://docs.livekit.io/agents/models/stt/plugins/groq.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/groq.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/groq.md
-
-# Source: https://docs.livekit.io/agents/integrations/groq.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/groq.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/groq.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/groq.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/groq.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/groq.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/groq.md
-
-# Source: https://docs.livekit.io/agents/integrations/groq.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/groq.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/groq.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/groq.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/groq.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/groq.md
-
-# Source: https://docs.livekit.io/agents/integrations/groq.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/groq.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/groq.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/groq.md
-
-LiveKit docs › Partner spotlight › Groq › Groq STT Plugin
+LiveKit docs › Models › LLM › Plugins › Groq
 
 ---
 
-# Groq STT plugin guide
+# Groq LLM plugin guide
 
-> How to use the Groq STT plugin for LiveKit Agents.
+> How to use the Groq LLM plugin for LiveKit Agents.
 
 Available in:
-- [ ] Node.js
+- [x] Node.js
 - [x] Python
 
 ## Overview
 
-This plugin allows you to use [Groq](https://groq.com/) as an STT provider for your voice agents.
+This plugin allows you to use [Groq](https://groq.com/) as an LLM provider for your voice agents.
+
+> 💡 **LiveKit Inference**
+> 
+> Some Groq models are also available in LiveKit Inference, with billing and integration handled automatically. See [the docs](https://docs.livekit.io/agents/models/llm.md) for more information.
 
 ## Quick reference
 
@@ -76,21 +40,8 @@ This section includes a basic usage example and some reference material. For lin
 
 Install the plugin from PyPI:
 
-**Python**:
-
 ```shell
-uv add "livekit-agents[groq]~=1.2"
-
-```
-
----
-
-**Node.js**:
-
-For Node.js, support for Groq STT is available using the OpenAI plugin.
-
-```shell
-pnpm add @livekit/agents-plugin-openai@1.x
+uv add "livekit-agents[groq]~=1.3"
 
 ```
 
@@ -102,62 +53,51 @@ Set `GROQ_API_KEY` in your `.env` file.
 
 ### Usage
 
-Use Groq STT in your `AgentSession` or as a standalone transcription service. For example, you can use this STT in the [Voice AI quickstart](https://docs.livekit.io/agents/start/voice-ai.md).
-
-**Python**:
+Use a Groq LLM in your `AgentSession` or as a standalone LLM service. For example, you can use this LLM in the [Voice AI quickstart](https://docs.livekit.io/agents/start/voice-ai.md).
 
 ```python
 from livekit.plugins import groq
-   
+
 session = AgentSession(
-   stt=groq.STT(
-      model="whisper-large-v3-turbo",
-      language="en",
-   ),
-   # ... tts, llm, vad, turn_detection, etc.
-)
-
-```
-
----
-
-**Node.js**:
-
-```typescript
-import * as openai from '@livekit/agents-plugin-openai';
-
-const session = new voice.AgentSession({
-    stt: new openai.STT.withGroq(
-        model: "whisper-large-v3-turbo"
+    llm=groq.LLM(
+        model="llama3-8b-8192"
     ),
-    // ... tts, llm, vad, turn_detection, etc.
-});
+    # ... tts, stt, vad, turn_detection, etc.
+)
 
 ```
 
 ### Parameters
 
-This section describes some of the available parameters. See the plugin reference links in the [Additional resources](#additional-resources) section for a complete list of all available parameters.
+This section describes some of the available parameters. For a complete reference of all available parameters, see the [plugin reference](https://docs.livekit.io/reference/python/v1/livekit/plugins/groq/services.html.md#livekit.plugins.groq.services.LLM).
 
-- **`model`** _(string)_ (optional) - Default: `whisper-large-v3-turbo`: Name of the STT model to use. For help with model selection, see the [Groq STT documentation](https://console.groq.com/docs/speech-to-text).
+- **`model`** _(string)_ (optional) - Default: `llama-3.3-70b-versatile`: Name of the LLM model to use. For all options, see the [Groq model list](https://console.groq.com/docs/models).
 
-- **`language`** _(string)_ (optional) - Default: `en`: Language of the input audio in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) format.
+- **`temperature`** _(float)_ (optional) - Default: `1.0`: Controls the randomness of the model's output. Higher values, for example 0.8, make the output more random, while lower values, for example 0.2, make it more focused and deterministic.
 
-- **`prompt`** _(string)_ (optional): Prompt to guide the model's style or specify how to spell unfamiliar words. 224 tokens max.
+- **`parallel_tool_calls`** _(bool)_ (optional): Controls whether the model can make multiple tool calls in parallel. When enabled, the model can make multiple tool calls simultaneously, which can improve performance for complex tasks.
+
+- **`tool_choice`** _(ToolChoice | Literal['auto', 'required', 'none'])_ (optional) - Default: `auto`: Controls how the model uses tools. Set to 'auto' to let the model decide, 'required' to force tool usage, or 'none' to disable tool usage.
 
 ## Additional resources
 
 The following resources provide more information about using Groq with LiveKit Agents.
 
-- **[Groq docs](https://console.groq.com/docs/speech-to-text)**: Groq STT docs.
+- **[Python package](https://pypi.org/project/livekit-plugins-groq/)**: The `livekit-plugins-groq` package on PyPI.
 
-- **[Voice AI quickstart](https://docs.livekit.io/agents/start/voice-ai.md)**: Get started with LiveKit Agents and Groq STT.
+- **[Plugin reference](https://docs.livekit.io/reference/python/v1/livekit/plugins/groq/index.html.md#livekit.plugins.groq.LLM)**: Reference for the Groq LLM plugin.
 
-- **[Groq ecosystem guide](https://docs.livekit.io/agents/integrations/groq.md)**: Overview of the entire Groq and LiveKit Agents integration.
+- **[GitHub repo](https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-groq)**: View the source or contribute to the LiveKit Groq LLM plugin.
+
+- **[Groq docs](https://console.groq.com/docs/overview)**: Groq's official API documentation.
+
+- **[Voice AI quickstart](https://docs.livekit.io/agents/start/voice-ai.md)**: Get started with LiveKit Agents and Groq.
+
+- **[Groq ecosystem overview](https://docs.livekit.io/agents/integrations/groq.md)**: Overview of the entire Groq and LiveKit Agents integration.
 
 ---
 
-This document was rendered at 2025-11-18T23:55:08.359Z.
-For the latest version of this document, see [https://docs.livekit.io/agents/models/stt/plugins/groq.md](https://docs.livekit.io/agents/models/stt/plugins/groq.md).
+This document was rendered at 2026-02-03T03:25:00.368Z.
+For the latest version of this document, see [https://docs.livekit.io/agents/models/llm/plugins/groq.md](https://docs.livekit.io/agents/models/llm/plugins/groq.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

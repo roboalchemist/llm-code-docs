@@ -1,7 +1,5 @@
 # Source: https://rspack.dev/api/plugin-api/context-module-factory-hooks.md
 
-import { Collapse, CollapsePanel } from '@components/Collapse';
-
 # ContextModuleFactory
 
 The `ContextModuleFactory` module is used by the `Compiler` to generate dependencies from [require.context](/api/runtime-api/module-methods.md#requirecontext) API. It resolves the requested directory, generates requests for each file and filters against passed regExp. Matching dependencies then passes through [NormalModuleFactory](/api/plugin-api/normal-module-factory-hooks.md).
@@ -12,44 +10,11 @@ The `ContextModuleFactory` module is used by the `Compiler` to generate dependen
 
 Called before resolving the requested directory. The request can be ignored by returning `false`.
 
-<Collapse>
-  <CollapsePanel className="collapse-code-panel" header="BeforeResolveResult.ts" key="BeforeResolveResult">
-    ```ts
-    type BeforeResolveData = {
-      context: string;
-      request: string;
-      regExp: RegExp | undefined;
-      recursive: boolean;
-    }
-
-    export type BeforeResolveResult =
-      | false
-      | BeforeResolveData;
-    ```
-  </CollapsePanel>
-</Collapse>
-
+BeforeResolveResult.ts
 ## `afterResolve`
 
 `AsyncSeriesBailHook<[AfterResolveResult]>`
 
 Called after the requested directory resolved.
 
-<Collapse>
-  <CollapsePanel className="collapse-code-panel" header="AfterResolveResult.ts" key="AfterResolveResult">
-    ```ts
-    type AfterResolveData = {
-      resource: number;
-      context: string;
-      request: string;
-      regExp: RegExp | undefined;
-      recursive: boolean;
-      dependencies: Dependency[];
-    }
-
-    export type AfterResolveResult = 
-      | false
-      | AfterResolveData;
-    ```
-  </CollapsePanel>
-</Collapse>
+AfterResolveResult.ts

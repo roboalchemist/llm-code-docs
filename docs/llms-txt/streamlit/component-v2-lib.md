@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/custom-components/component-v2-lib
+
 # Component
 
 The [@streamlit/component-v2-lib](https://www.npmjs.com/package/@streamlit/component-v2-lib) package provides TypeScript type definitions and utilities for building Streamlit custom components using the v2 API.

@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/widgets/st.checkbox
+
 # st.checkbox
 
 Display a checkbox widget.

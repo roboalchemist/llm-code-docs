@@ -4,7 +4,6 @@
 title: Redshift Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > AWS Components > Redshift Component
-source_url: https://docs.datadoghq.com/components-aws/redshift/index.html
 ---
 
 # Redshift Component

@@ -214,3 +214,8 @@ We provide a switch page that helps you quickly view or set DevTool. If you want
 </PlatformTabs>
 
 You can also customize the page according to your needs, making the configuration of DevTool more diverse.
+
+## Compatibility
+
+
+**Error:** No compatibility data found for `devtool.integration.switch`

@@ -1,4 +1,4 @@
-# Source: https://docs.warp.dev/platform/cli/troubleshooting.md
+# Source: https://docs.warp.dev/reference/cli/troubleshooting.md
 
 # Troubleshooting
 

@@ -1,5 +1,9 @@
 # Source: https://gofastmcp.com/python-sdk/fastmcp-server-tasks-capabilities.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # capabilities
 
 # `fastmcp.server.tasks.capabilities`
@@ -8,18 +12,18 @@ SEP-1686 task capabilities declaration.
 
 ## Functions
 
-### `get_task_capabilities` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/tasks/capabilities.py#L6" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `get_task_capabilities` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/tasks/capabilities.py#L20" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-get_task_capabilities() -> dict[str, Any]
+get_task_capabilities() -> ServerTasksCapability | None
 ```
 
-Return the SEP-1686 task capabilities structure.
+Return the SEP-1686 task capabilities.
 
-This is the standard capabilities map advertised to clients,
-declaring support for list, cancel, and request operations.
+Returns task capabilities as a first-class ServerCapabilities field,
+declaring support for list, cancel, and request operations per SEP-1686.
 
+Returns None if pydocket is not installed (no task support).
 
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://gofastmcp.com/llms.txt
+Note: prompts/resources are passed via extra\_data since the SDK types
+don't include them yet (FastMCP supports them ahead of the spec).

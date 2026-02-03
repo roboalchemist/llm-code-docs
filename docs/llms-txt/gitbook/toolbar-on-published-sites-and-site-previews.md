@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/zi-yuan/gitbook-ui/toolbar-on-published-sites-and-site-previews.md
-
-# Source: https://gitbook.com/docs/documentation/fr/ressources/gitbook-ui/toolbar-on-published-sites-and-site-previews.md
-
-# Source: https://gitbook.com/docs/resources/gitbook-ui/toolbar-on-published-sites-and-site-previews.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/rissu/gitbook-ui/toolbar-on-published-sites-and-site-previews.md
 
 # Source: https://gitbook.com/docs/documentation/zh/zi-yuan/gitbook-ui/toolbar-on-published-sites-and-site-previews.md
 

@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/ecosystem/prisma.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Use Prisma with Bun
 
 <Note>
@@ -162,4 +166,4 @@
 
 ***
 
-That's it! Now that you've set up Prisma using Bun, we recommend referring to the [official Prisma docs](https://www.prisma.io/docs/concepts/components/prisma-client) as you continue to develop your application.
+That's it! Now that you've set up Prisma using Bun, we recommend referring to the [official Prisma docs](https://www.prisma.io/docs/orm/prisma-client) as you continue to develop your application.

@@ -4,7 +4,9 @@
 
 Use Custom connected accounts with Connect to control your connected accounts' entire experience.
 
-> Identity verification requirements are updated as laws and regulations change around the world. If you’re building your own onboarding flow to onboard accounts, you must plan on reviewing and updating onboarding requirements at least every six months. To avoid this maintenance obligation, use [Connect Onboarding for Custom Accounts](https://docs.stripe.com/connect/custom/hosted-onboarding.md).
+> #### Newer Connect integrations
+> 
+> The information on this page applies only to platforms that already use legacy connected account types. If you’re setting up a new Connect platform, or your integration uses the Accounts v2 API, see [Configure the behavior of connected accounts](https://docs.stripe.com/connect/accounts-v2/connected-account-configuration.md) to learn about connected account configurations. If your integration uses the Accounts v1 API, see [Account controller properties](https://docs.stripe.com/connect/migrate-to-controller-properties.md#account-controller-properties).
 
 A *Custom* connected account is almost completely invisible to the account holder. You, the platform, are responsible for all interactions with your connected accounts and for collecting all the information needed to verify each account.
 
@@ -16,6 +18,8 @@ Creating a Custom connected account involves the following steps:
 1. Properly identify the [country](https://docs.stripe.com/connect/custom-accounts.md#country) and any related requirements.
 1. [Create](https://docs.stripe.com/connect/custom-accounts.md#create) the account.
 1. Complete the [identity verification](https://docs.stripe.com/connect/custom-accounts.md#identity-verification) process.
+
+Identity verification requirements are updated as laws and regulations change globally. If you’re building your own onboarding flow to onboard accounts, you must plan on reviewing and updating onboarding requirements at least every six months. To avoid this maintenance obligation, use [Connect Onboarding for Custom Accounts](https://docs.stripe.com/connect/custom/hosted-onboarding.md).
 
 > To comply with French PSD2 regulations, platforms in France [must use account tokens](https://stripe.com/guides/frequently-asked-questions-about-stripe-connect-and-psd2#regulatory-status-of-connect). An additional benefit of tokens is that the platform doesn’t have to store PII data, which is transferred from the connected account directly to Stripe. For platforms in other countries, we recommend using account tokens, but they aren’t required.
 
@@ -194,7 +198,9 @@ var service = client.V1.Accounts;
 Account account = service.Create(options);
 ```
 
-> US platforms can create accounts for [cross-border transfers](https://docs.stripe.com/connect/account-capabilities.md#transfers-cross-border) by [specifying the recipient service agreement](https://docs.stripe.com/connect/service-agreement-types.md#choosing-type-with-api).
+Stripe supports cross-border transfers on the payments balance between the United States, Canada, United Kingdom, EEA, and Switzerland. In other scenarios, your platform and any connected account must be in the same region. Attempting to transfer funds across unsupported borders or balances returns an error. See [Cross-border payouts](https://docs.stripe.com/connect/cross-border-payouts.md) for supported funds flows between other regions.
+
+You must only use transfers in combination with the permitted use cases for [charges](https://docs.stripe.com/connect/charges.md), [tops-ups](https://docs.stripe.com/connect/top-ups.md) and [fees](https://docs.stripe.com/connect/custom-accounts.md#collect-fees). We recommend using separate charges and transfers only when you’re responsible for negative balances of your connected accounts.
 
 The result of a successful API call is the connected account information:
 

@@ -27,7 +27,7 @@ In this article, *we’ll refer to the input schema as the user interface* of yo
 
 Understand input schemas
 
-To fully understand the recommendations in this blog post, you’ll first need to familiarize yourself with the https://docs.apify.com/platform/actors/development/actor-definition/input-schema. This context is essential to make good use of the insights shared here.
+To fully understand the recommendations in this blog post, you’ll first need to familiarize yourself with the [technical aspects of the input schema](https://docs.apify.com/platform/actors/development/actor-definition/input-schema). This context is essential to make good use of the insights shared here.
 
 ## The importance of a good input schema
 
@@ -55,7 +55,7 @@ A well-designed input schema is all about managing user expectations, reducing c
 
 ## Most important elements of the input schema
 
-You can see the full list of elements and their technical characteristics in https://docs.apify.com/academy/deploying-your-code/input-schema: titles, tooltips, toggles, prefills, etc. That's not what this guide is about. It's not enough to just create an input schema, you should ideally aim to place and word its elements to the user's advantage: to alleviate the user's cognitive load and make the acquaintance and usage of your tool as smooth as possible.
+You can see the full list of elements and their technical characteristics in [Docs](https://docs.apify.com/academy/deploying-your-code/input-schema): titles, tooltips, toggles, prefills, etc. That's not what this guide is about. It's not enough to just create an input schema, you should ideally aim to place and word its elements to the user's advantage: to alleviate the user's cognitive load and make the acquaintance and usage of your tool as smooth as possible.
 
 Unfortunately, when it comes to UX, there's only so much you can achieve armed with HTML alone. Here are the best elements to focus on, along with some best practices for using them effectively:
 
@@ -132,7 +132,7 @@ Unfortunately, when it comes to UX, there's only so much you can achieve armed w
 
 tip
 
-Read more on the use of emojis: https://docs.apify.com/academy/actor-marketing-playbook/actor-basics/actors-and-emojis.md
+Read more on the use of emojis: [Actors and emojis](https://docs.apify.com/academy/actor-marketing-playbook/actor-basics/actors-and-emojis.md)
 
 ## Example of an improved input schema
 
@@ -175,9 +175,8 @@ The version above was the improved input schema. Here's what this tool's input s
 
 * *User feedback*. If they're asking obvious things, complaining, or consistently making silly mistakes with input, take notes. Feedback from users can help you understand their experience and identify areas for improvement.
 * *High churn rates*. If your users are trying your tool but quickly abandon it, this is a sign they are having difficulties with your schema.
-* *Input Schema Viewer*. Write your base schema in any code editor, then copy the file and put it into https://console.apify.com/actors/UHTe5Bcb4OUEkeahZ/source.\*\* This tool should help you visualize your Input Schema before you add it to your Actor and build it. Seeing how your edits look in Apify Console right away will make the process of editing the fields in code easier.
 
 ## Resources
 
-* Basics of input schema: https://docs.apify.com/academy/deploying-your-code/input-schema
-* Specifications of input schema: https://docs.apify.com/platform/actors/development/actor-definition/input-schema
+* Basics of input schema: [https://docs.apify.com/academy/deploying-your-code/input-schema](https://docs.apify.com/academy/deploying-your-code/input-schema)
+* Specifications of input schema: [https://docs.apify.com/platform/actors/development/actor-definition/input-schema](https://docs.apify.com/platform/actors/development/actor-definition/input-schema)

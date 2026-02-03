@@ -2,17 +2,9 @@
 
 # Source: https://trigger.dev/docs/realtime/backend/subscribe.md
 
-# Source: https://trigger.dev/docs/realtime/react-hooks/subscribe.md
-
-# Source: https://trigger.dev/docs/realtime/backend/subscribe.md
-
-# Source: https://trigger.dev/docs/realtime/react-hooks/subscribe.md
-
-# Source: https://trigger.dev/docs/realtime/backend/subscribe.md
-
-# Source: https://trigger.dev/docs/realtime/react-hooks/subscribe.md
-
-# Source: https://trigger.dev/docs/realtime/backend/subscribe.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Subscribe functions
 
@@ -24,7 +16,7 @@ These functions allow you to subscribe to run updates from your backend code. Ea
 
 Subscribes to all changes to a specific run.
 
-```ts Example theme={null}
+```ts Example theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 for await (const run of runs.subscribeToRun("run_1234")) {
@@ -42,7 +34,7 @@ This function subscribes to all changes to a run. It returns an async iterator t
 
 Subscribes to all changes to runs with a specific tag.
 
-```ts Example theme={null}
+```ts Example theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 for await (const run of runs.subscribeToRunsWithTag("user:1234")) {
@@ -60,7 +52,7 @@ This function subscribes to all changes to runs with a specific tag. It returns 
 
 Subscribes to all changes for runs in a batch.
 
-```ts Example theme={null}
+```ts Example theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 for await (const run of runs.subscribeToBatch("batch_1234")) {
@@ -78,7 +70,7 @@ This function subscribes to all changes for runs in a batch. It returns an async
 
 You can infer the types of the run's payload and output by passing the type of the task to the subscribe functions:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { runs, tasks } from "@trigger.dev/sdk";
 import type { myTask } from "./trigger/my-task";
 
@@ -98,7 +90,7 @@ async function myBackend() {
 
 When using `subscribeToRunsWithTag`, you can pass a union of task types:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 import type { myTask, myOtherTask } from "./trigger/my-task";
 
@@ -142,7 +134,7 @@ Use the metadata API within your task to update metadata in real-time. In this b
 
 This example task updates the progress of a task as it processes items.
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 // Your task code
 import { task, metadata } from "@trigger.dev/sdk";
 
@@ -177,7 +169,7 @@ async function processItem(item: string) {
 
 We can now subscribe to the runs and receive real-time metadata updates.
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 // Somewhere in your backend code
 import { runs } from "@trigger.dev/sdk";
 import type { progressTask } from "./trigger/progress-task";
@@ -212,7 +204,7 @@ For more information on how to write tasks that use the metadata API, as well as
 
 You can get type safety for your metadata by defining types:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 import type { progressTask } from "./trigger/progress-task";
 

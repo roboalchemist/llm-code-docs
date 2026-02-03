@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/integrations/bmc.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LLM Observability with BMC and OpenLLMetry
 
 BMC Helix provides the capability to export observability data directly using the OpenTelemetry Collector. This requires deploying an OpenTelemetry Collector in your cluster.
@@ -21,8 +25,3 @@ Then, set this env var, and you're done!
 ```bash  theme={null}
 TRACELOOP_BASE_URL=http://<tenantURL>
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

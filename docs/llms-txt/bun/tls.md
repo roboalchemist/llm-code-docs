@@ -2,21 +2,13 @@
 
 # Source: https://bun.com/docs/guides/http/tls.md
 
-# Source: https://bun.com/docs/runtime/http/tls.md
-
-# Source: https://bun.com/docs/guides/http/tls.md
-
-# Source: https://bun.com/docs/runtime/http/tls.md
-
-# Source: https://bun.com/docs/guides/http/tls.md
-
-# Source: https://bun.com/docs/runtime/http/tls.md
-
-# Source: https://bun.com/docs/guides/http/tls.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Configure TLS on an HTTP server
 
-Set the `tls` key to configure TLS. Both `key` and `cert` are required. The `key` should be the contents of your private key; `cert` should be the contents of your issued certificate. Use [`Bun.file()`](https://bun.com/docs/api/file-io#reading-files-bun-file) to read the contents.
+Set the `tls` key to configure TLS. Both `key` and `cert` are required. The `key` should be the contents of your private key; `cert` should be the contents of your issued certificate. Use [`Bun.file()`](/runtime/file-io#reading-files-bun-file) to read the contents.
 
 ```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const server = Bun.serve({

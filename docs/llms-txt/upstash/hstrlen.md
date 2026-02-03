@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hstrlen.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hstrlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hstrlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hstrlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hstrlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hstrlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hstrlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hstrlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hstrlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hstrlen.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # HSTRLEN
 
@@ -26,22 +12,22 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the hash.
 </ParamField>
 
-<ParamField body="field" type="string" required>
+<ParamField body="field" type="str" required>
   The name of the field.
 </ParamField>
 
 ## Response
 
-<ResponseField type="integer" required>
+<ResponseField type="int" required>
   `0` if the hash or field does not exist. Otherwise the length of the string.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  const length = await redis.hstrlen("key", "field")
+  ```py Example theme={"system"}
+  length = redis.hstrlen("key", "field")
   ```
 </RequestExample>

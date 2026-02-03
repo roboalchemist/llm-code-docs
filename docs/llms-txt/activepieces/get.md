@@ -8,111 +8,83 @@
 
 # Source: https://www.activepieces.com/docs/endpoints/flow-runs/get.md
 
-# Source: https://www.activepieces.com/docs/endpoints/templates/get.md
-
-# Source: https://www.activepieces.com/docs/endpoints/sample-data/get.md
-
-# Source: https://www.activepieces.com/docs/endpoints/folders/get.md
-
-# Source: https://www.activepieces.com/docs/endpoints/flows/get.md
-
-# Source: https://www.activepieces.com/docs/endpoints/flow-runs/get.md
-
-# Source: https://www.activepieces.com/docs/endpoints/sample-data/get.md
-
-# Source: https://www.activepieces.com/docs/endpoints/folders/get.md
-
-# Source: https://www.activepieces.com/docs/endpoints/flows/get.md
-
-# Source: https://www.activepieces.com/docs/endpoints/flow-templates/get.md
-
-# Source: https://www.activepieces.com/docs/endpoints/flow-runs/get.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Get Flow Run
 
 > Get Flow Run
 
+
+
 ## OpenAPI
 
 ````yaml GET /v1/flow-runs/{id}
+openapi: 3.0.3
+info:
+  title: Activepieces Documentation
+  version: 0.0.0
+servers:
+  - url: https://cloud.activepieces.com/api
+    description: Production Server
+security: []
+externalDocs:
+  url: https://www.activepieces.com/docs
+  description: Find more info here
 paths:
-  path: /v1/flow-runs/{id}
-  method: get
-  servers:
-    - url: https://cloud.activepieces.com/api
-      description: Production Server
-  request:
-    security:
-      - title: apiKey
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Use your api key generated from the admin console
-          cookie: {}
-    parameters:
-      path:
-        id:
-          schema:
-            - type: string
-              required: true
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - type: string
-              created:
-                allOf:
-                  - type: string
-              updated:
-                allOf:
-                  - type: string
-              projectId:
-                allOf:
-                  - type: string
-              flowId:
-                allOf:
-                  - type: string
-              parentRunId:
-                allOf:
-                  - type: string
-              failParentOnFailure:
-                allOf:
-                  - type: boolean
-              tags:
-                allOf:
-                  - type: array
+  /v1/flow-runs/{id}:
+    get:
+      tags:
+        - flow-runs
+      description: Get Flow Run
+      parameters:
+        - schema:
+            pattern: ^[0-9a-zA-Z]{21}$
+            type: string
+          in: path
+          name: id
+          required: true
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  created:
+                    type: string
+                  updated:
+                    type: string
+                  projectId:
+                    type: string
+                  flowId:
+                    type: string
+                  parentRunId:
+                    type: string
+                  failParentOnFailure:
+                    type: boolean
+                  triggeredBy:
+                    type: string
+                  tags:
+                    type: array
                     items:
                       type: string
-              flowVersionId:
-                allOf:
-                  - type: string
-              flowVersion:
-                allOf:
-                  - type: object
+                  flowVersionId:
+                    type: string
+                  flowVersion:
+                    type: object
                     properties:
                       displayName:
                         type: string
-              logsFileId:
-                allOf:
-                  - type: string
+                  logsFileId:
+                    type: string
                     nullable: true
-              tasks:
-                allOf:
-                  - type: number
-              status:
-                allOf:
-                  - anyOf:
+                  status:
+                    anyOf:
                       - type: string
                         enum:
                           - FAILED
@@ -140,75 +112,60 @@ paths:
                       - type: string
                         enum:
                           - TIMEOUT
-              duration:
-                allOf:
-                  - type: number
-              startTime:
-                allOf:
-                  - type: string
-              finishTime:
-                allOf:
-                  - type: string
-              environment:
-                allOf:
-                  - anyOf:
+                      - type: string
+                        enum:
+                          - CANCELED
+                  startTime:
+                    type: string
+                  finishTime:
+                    type: string
+                  environment:
+                    anyOf:
                       - type: string
                         enum:
                           - PRODUCTION
                       - type: string
                         enum:
                           - TESTING
-              steps:
-                allOf:
-                  - type: object
+                  steps:
+                    type: object
                     nullable: true
                     additionalProperties: {}
-              failedStepName:
-                allOf:
-                  - type: string
-              stepNameToTest:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - id
-              - created
-              - updated
-              - projectId
-              - flowId
-              - failParentOnFailure
-              - flowVersionId
-              - status
-              - startTime
-              - environment
-        examples:
-          example:
-            value:
-              id: <string>
-              created: <string>
-              updated: <string>
-              projectId: <string>
-              flowId: <string>
-              parentRunId: <string>
-              failParentOnFailure: true
-              tags:
-                - <string>
-              flowVersionId: <string>
-              flowVersion:
-                displayName: <string>
-              logsFileId: <string>
-              tasks: 123
-              status: FAILED
-              duration: 123
-              startTime: <string>
-              finishTime: <string>
-              environment: PRODUCTION
-              steps: {}
-              failedStepName: <string>
-              stepNameToTest: <string>
-        description: Default Response
-  deprecated: false
-  type: path
+                  failedStep:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      displayName:
+                        type: string
+                    required:
+                      - name
+                      - displayName
+                  stepNameToTest:
+                    type: string
+                  archivedAt:
+                    default: null
+                    type: string
+                    nullable: true
+                  stepsCount:
+                    type: number
+                required:
+                  - id
+                  - created
+                  - updated
+                  - projectId
+                  - flowId
+                  - failParentOnFailure
+                  - flowVersionId
+                  - status
+                  - environment
+      security:
+        - apiKey: []
 components:
-  schemas: {}
+  securitySchemes:
+    apiKey:
+      type: http
+      description: Use your api key generated from the admin console
+      scheme: bearer
 
 ````

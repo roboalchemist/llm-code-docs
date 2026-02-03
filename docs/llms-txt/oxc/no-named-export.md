@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/import/no-named-export.md
 ---
-# import/no-named-export&#x20;
 
 ### What it does
 

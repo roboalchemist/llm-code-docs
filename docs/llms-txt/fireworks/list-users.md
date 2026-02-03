@@ -1,141 +1,189 @@
 # Source: https://docs.fireworks.ai/api-reference/list-users.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Users
+
+
 
 ## OpenAPI
 
 ````yaml get /v1/accounts/{account_id}/users
+openapi: 3.1.0
+info:
+  title: Gateway REST API
+  version: 4.21.6
+servers:
+  - url: https://api.fireworks.ai
+security:
+  - BearerAuth: []
+tags:
+  - name: Gateway
 paths:
-  path: /v1/accounts/{account_id}/users
-  method: get
-  servers:
-    - url: https://api.fireworks.ai
-  request:
-    security:
-      - title: BearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: >-
-                Bearer authentication using your Fireworks API key. Format:
-                Bearer <API_KEY>
-          cookie: {}
-    parameters:
-      path:
-        account_id:
+  /v1/accounts/{account_id}/users:
+    get:
+      tags:
+        - Gateway
+      summary: List Users
+      operationId: Gateway_ListUsers
+      parameters:
+        - name: pageSize
+          description: |-
+            The maximum number of users to return. The maximum page_size is 200,
+            values above 200 will be coerced to 200.
+            If unspecified, the default is 50.
+          in: query
+          required: false
           schema:
-            - type: string
-              required: true
-              description: The Account Id
-      query:
-        pageSize:
+            type: integer
+            format: int32
+        - name: pageToken
+          description: >-
+            A page token, received from a previous ListUsers call. Provide this
+
+            to retrieve the subsequent page. When paginating, all other
+            parameters
+
+            provided to ListUsers must match the call that provided the page
+
+            token.
+          in: query
+          required: false
           schema:
-            - type: integer
-              required: false
-              description: >-
-                The maximum number of users to return. The maximum page_size is
-                200,
-
-                values above 200 will be coerced to 200.
-
-                If unspecified, the default is 50.
-        pageToken:
+            type: string
+        - name: filter
+          description: |-
+            Only users satisfying the provided filter (if specified) will be
+            returned. See https://google.aip.dev/160 for the filter grammar.
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-              description: >-
-                A page token, received from a previous ListUsers call. Provide
-                this
+            type: string
+        - name: orderBy
+          description: >-
+            A comma-separated list of fields to order by. e.g. "foo,bar"
 
-                to retrieve the subsequent page. When paginating, all other
-                parameters
+            The default sort order is ascending. To specify a descending order
+            for a
 
-                provided to ListUsers must match the call that provided the page
+            field, append a " desc" suffix. e.g. "foo desc,bar"
 
-                token.
-        filter:
+            Subfields are specified with a "." character. e.g. "foo.bar"
+
+            If not specified, the default order is by "name".
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-              description: |-
-                Only users satisfying the provided filter (if specified) will be
-                returned. See https://google.aip.dev/160 for the filter grammar.
-        orderBy:
+            type: string
+        - name: readMask
+          description: >-
+            The fields to be returned in the response. If empty or "*", all
+            fields will be returned.
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-              description: >-
-                A comma-separated list of fields to order by. e.g. "foo,bar"
-
-                The default sort order is ascending. To specify a descending
-                order for a
-
-                field, append a " desc" suffix. e.g. "foo desc,bar"
-
-                Subfields are specified with a "." character. e.g. "foo.bar"
-
-                If not specified, the default order is by "name".
-        readMask:
+            type: string
+        - name: account_id
+          in: path
+          required: true
+          description: The Account Id
           schema:
-            - type: string
-              required: false
-              description: >-
-                The fields to be returned in the response. If empty or "*", all
-                fields will be returned.
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              users:
-                allOf:
-                  - type: array
-                    items:
-                      type: object
-                      $ref: '#/components/schemas/gatewayUser'
-              nextPageToken:
-                allOf:
-                  - type: string
-                    description: >-
-                      A token, which can be sent as `page_token` to retrieve the
-                      next page.
-
-                      If this field is omitted, there are no subsequent pages.
-              totalSize:
-                allOf:
-                  - type: integer
-                    format: int32
-                    description: The total number of users.
-            refIdentifier: '#/components/schemas/gatewayListUsersResponse'
-        examples:
-          example:
-            value:
-              users:
-                - name: <string>
-                  displayName: <string>
-                  serviceAccount: true
-                  createTime: '2023-11-07T05:31:56Z'
-                  role: <string>
-                  email: <string>
-                  state: STATE_UNSPECIFIED
-                  status:
-                    code: OK
-                    message: <string>
-                  updateTime: '2023-11-07T05:31:56Z'
-              nextPageToken: <string>
-              totalSize: 123
-        description: A successful response.
-  deprecated: false
-  type: path
+            type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/gatewayListUsersResponse'
 components:
   schemas:
+    gatewayListUsersResponse:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/gatewayUser'
+            type: object
+        nextPageToken:
+          type: string
+          description: >-
+            A token, which can be sent as `page_token` to retrieve the next
+            page.
+
+            If this field is omitted, there are no subsequent pages.
+        totalSize:
+          type: integer
+          format: int32
+          description: The total number of users.
+    gatewayUser:
+      type: object
+      properties:
+        name:
+          type: string
+          title: >-
+            The resource name of the user. e.g.
+            accounts/my-account/users/my-user
+          readOnly: true
+        displayName:
+          type: string
+          description: |-
+            Human-readable display name of the user. e.g. "Alice"
+            Must be fewer than 64 characters long.
+        serviceAccount:
+          type: boolean
+          title: Whether this user is a service account (can only be set by admins)
+        createTime:
+          type: string
+          format: date-time
+          description: The creation time of the user.
+          readOnly: true
+        role:
+          type: string
+          description: 'The user''s role: admin, user, contributor, or inference-user.'
+        email:
+          type: string
+          description: The user's email address.
+        state:
+          $ref: '#/components/schemas/gatewayUserState'
+          description: The state of the user.
+          readOnly: true
+        status:
+          $ref: '#/components/schemas/gatewayStatus'
+          description: Contains information about the user status.
+          readOnly: true
+        updateTime:
+          type: string
+          format: date-time
+          description: The update time for the user.
+          readOnly: true
+      title: 'Next ID: 13'
+      required:
+        - role
+    gatewayUserState:
+      type: string
+      enum:
+        - STATE_UNSPECIFIED
+        - CREATING
+        - READY
+        - UPDATING
+        - DELETING
+      default: STATE_UNSPECIFIED
+    gatewayStatus:
+      type: object
+      properties:
+        code:
+          $ref: '#/components/schemas/gatewayCode'
+          description: The status code.
+        message:
+          type: string
+          description: A developer-facing error message in English.
+      title: >-
+        Mimics
+        [https://github.com/googleapis/googleapis/blob/master/google/rpc/status.proto]
     gatewayCode:
       type: string
       enum:
@@ -281,70 +329,13 @@ components:
       title: >-
         Mimics
         [https://github.com/googleapis/googleapis/blob/master/google/rpc/code.proto]
-    gatewayStatus:
-      type: object
-      properties:
-        code:
-          $ref: '#/components/schemas/gatewayCode'
-          description: The status code.
-        message:
-          type: string
-          description: A developer-facing error message in English.
-      title: >-
-        Mimics
-        [https://github.com/googleapis/googleapis/blob/master/google/rpc/status.proto]
-    gatewayUser:
-      type: object
-      properties:
-        name:
-          type: string
-          title: >-
-            The resource name of the user. e.g.
-            accounts/my-account/users/my-user
-          readOnly: true
-        displayName:
-          type: string
-          description: |-
-            Human-readable display name of the user. e.g. "Alice"
-            Must be fewer than 64 characters long.
-        serviceAccount:
-          type: boolean
-          title: Whether this user is a service account (can only be set by admins)
-        createTime:
-          type: string
-          format: date-time
-          description: The creation time of the user.
-          readOnly: true
-        role:
-          type: string
-          description: The user's role, e.g. admin or user.
-        email:
-          type: string
-          description: The user's email address.
-        state:
-          $ref: '#/components/schemas/gatewayUserState'
-          description: The state of the user.
-          readOnly: true
-        status:
-          $ref: '#/components/schemas/gatewayStatus'
-          description: Contains information about the user status.
-          readOnly: true
-        updateTime:
-          type: string
-          format: date-time
-          description: The update time for the user.
-          readOnly: true
-      title: 'Next ID: 13'
-      required:
-        - role
-    gatewayUserState:
-      type: string
-      enum:
-        - STATE_UNSPECIFIED
-        - CREATING
-        - READY
-        - UPDATING
-        - DELETING
-      default: STATE_UNSPECIFIED
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Bearer authentication using your Fireworks API key. Format: Bearer
+        <API_KEY>
+      bearerFormat: API_KEY
 
 ````

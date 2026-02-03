@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/config/extensions/pythonExtension.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Python
 
 > Use the python build extension to add support for executing Python scripts in your project
@@ -8,13 +12,13 @@ If you need to execute Python scripts in your Trigger.dev project, you can use t
 
 First, you'll need to install the `@trigger.dev/python` package:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 npm add @trigger.dev/python
 ```
 
 Then, you can use the `pythonExtension` build extension in your `trigger.config.ts` file:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { pythonExtension } from "@trigger.dev/python/extension";
 
@@ -28,7 +32,7 @@ export default defineConfig({
 
 This will take care of adding python to the build image and setting up the necessary environment variables to execute Python scripts. You can then use our `python` utilities in the `@trigger.dev/python` package to execute Python scripts in your tasks. For example, running a Python script inline in a task:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 import { python } from "@trigger.dev/python";
 
@@ -45,7 +49,7 @@ export const myScript = task({
 
 You can automatically add python scripts to your project using the `scripts` option in the `pythonExtension` function. This will copy the specified scripts to the build directory during the deploy process. For example:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { pythonExtension } from "@trigger.dev/python/extension";
 
@@ -63,7 +67,7 @@ export default defineConfig({
 
 This will copy all Python files in the `python` directory to the build directory during the deploy process. You can then execute these scripts using the `python.runScript` function:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 import { python } from "@trigger.dev/python";
 
@@ -85,7 +89,7 @@ export const myScript = task({
 
 If you have a `requirements.txt` file in your project, you can use the `requirementsFile` option in the `pythonExtension` function to install the required packages during the build process. For example:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { pythonExtension } from "@trigger.dev/python/extension";
 
@@ -112,7 +116,7 @@ This will install the packages specified in the `requirements.txt` file during t
 
 If you are using a virtual environment in your project, you can use the `devPythonBinaryPath` option in the `pythonExtension` function to specify the path to the Python binary in the virtual environment. For example:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { pythonExtension } from "@trigger.dev/python/extension";
 
@@ -134,7 +138,7 @@ This has no effect in production mode, but in development mode, it will use the 
 
 All of the `python` functions have a streaming version that allows you to stream the output of the Python script as it runs. For example:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 import { python } from "@trigger.dev/python";
 
@@ -156,7 +160,7 @@ export const myStreamingScript = task({
 
 We automatically inject the environment variables in the `process.env` object when running Python scripts. You can access these environment variables in your Python scripts using the `os.environ` dictionary. For example:
 
-```python  theme={null}
+```python  theme={"theme":"css-variables"}
 import os
 
 print(os.environ["MY_ENV_VAR"])
@@ -164,7 +168,7 @@ print(os.environ["MY_ENV_VAR"])
 
 You can also pass additional environment variables to the Python script using the `env` option in the `python.runScript` function. For example:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 import { python } from "@trigger.dev/python";
 

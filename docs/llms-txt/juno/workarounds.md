@@ -10,12 +10,6 @@ This page is dedicated to helping you make the most of Juno features, even when 
 
 Although Juno does not yet support direct satellite transfers - such as if you want to hand over a project to your friends or colleagues - you can use the following steps as a workaround:
 
-**Note:**
-
-There is no "account" on Juno. The Console solely holds a key-pair list of the developer IDs with their respective Mission Control IDs. All data and control are entirely managed by you.
-
-Nevertheless, for this tutorial, "account" refers to someone able to sign in into the Juno Console and who has a Mission Control.
-
 #### 1\. Add the new access key to the Satellite
 
 **Danger:**
@@ -24,28 +18,27 @@ Never ever add access keys to your modules without being absolutely certain of t
 
 In your satellite, assign the access key of the destination account with administrative permissions:
 
-*   The Mission Control ID
 *   The Developer ID (available under "Preferences")
 
-In other words, ask your friend or colleague for their Developer ID and Mission Control ID, and add those as new access keys. Again, **please be absolutely certain** before adding the controllers.
+In other words, ask your friend or colleague for their Developer ID, and add it as new access keys. Again, **please be absolutely certain** before adding the controllers.
 
 #### 2\. Attach Satellite in destination account
 
-The destination account â your friend or colleague â can use the "Attach Satellite" feature in their [Mission Control](https://console.juno.build/mission-control/). To do this, they will need the Satellite ID.
+The destination account â your friend or colleague â can use the "Attach Satellite" feature available in the launchpad of the [Console](https://console.juno.build) (the "Home" screen). To do this, they will need the Satellite ID.
 
-By doing so, and because you have set them as a controller in the previous step, the Satellite you are transferring will be linked with their account and made available in the Console.
+By doing so, and because you have set them as an administrator in the previous step, the Satellite you are transferring will be linked with their account and made available in the Console.
 
 **Tip:**
 
 At this stage, the satellite is linked to both accounts, making it accessible from each. If your goal is to share the satellite, you can consider this process complete and stop here. Otherwise, continue with the next steps.
 
-#### 3\. Remove Unnecessary Controllers
+#### 3\. Remove Unnecessary Access Keys
 
-The destination account â your friend or colleague, who is now the owner of the satellite â can then remove the access key(s) that should no longer be listed, specifically your own Developer ID and your Mission Control ID.
+The destination account â your friend or colleague, who is now the owner of the satellite â can then remove the access key(s) that should no longer be listed, specifically your own Developer ID and, if you got one, your Mission Control ID.
 
 #### 4\. Confirm and Detach
 
-Wait for confirmation that the destination account has completed all the steps and successfully taken over the satellite. Once confirmed, you can remove the satellite from your console using the "Detach Satellite" option available in the satellite overview.
+Wait for confirmation that the destination account has completed all the steps and successfully taken over the satellite. Once confirmed, you can remove the satellite from your console using the "Detach Satellite" option available in the Satellite overview.
 
 ---
 
@@ -61,7 +54,7 @@ Sharing the same identity also means sharing access to the same wallet linked to
 
 #### 1\. Create a new identity
 
-Go to [identity.internetcomputer.org](https://identity.internetcomputer.org) and create a new identity.
+Go to [id.ai](https://id.ai) and create a new identity.
 
 #### 2\. Set up
 
@@ -73,7 +66,7 @@ Arrange a call or meeting with the person you want to share the identity with, a
 
 #### 4\. Sign into your Internet Identity
 
-Once ready, sign again into [identity.internetcomputer.org](https://identity.internetcomputer.org) using the newly created identity.
+Once ready, sign again into [id.ai](https://id.ai) using the newly created identity.
 
 #### 5\. Add a new passkey
 
@@ -81,7 +74,7 @@ Click "Add new passkey" to initiate the process of adding the other personâ
 
 #### 6\. Share the generated link
 
-A link (e.g.,`https://identity.internetcomputer.org/?action=add-passkey&ii=1122333` for an identity number `1122333`) will be generated and valid for 15 minutes. Copy and send this link to the person you want to share the identity with.
+A link (e.g.,`https://id.ai/pair#12345`) will be generated and valid for 15 minutes. Copy and send this link to the person you want to share the identity with.
 
 #### 7\. Approve the new passkey
 

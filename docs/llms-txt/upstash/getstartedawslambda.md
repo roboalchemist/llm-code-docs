@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/howto/getstartedawslambda.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Started with AWS Lambda
 
 You can connect to Upstash database from your Lambda functions using your

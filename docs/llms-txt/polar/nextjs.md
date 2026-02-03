@@ -2,17 +2,9 @@
 
 # Source: https://polar.sh/docs/guides/nextjs.md
 
-# Source: https://polar.sh/docs/integrate/sdk/adapters/nextjs.md
-
-# Source: https://polar.sh/docs/guides/nextjs.md
-
-# Source: https://polar.sh/docs/integrate/sdk/adapters/nextjs.md
-
-# Source: https://polar.sh/docs/guides/nextjs.md
-
-# Source: https://polar.sh/docs/integrate/sdk/adapters/nextjs.md
-
-# Source: https://polar.sh/docs/guides/nextjs.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Integrate Polar with Next.js
 
@@ -20,7 +12,7 @@
 
 Feel free to use our quick-start script to get started inside a new Next.js project:
 
-```bash  theme={null}
+```bash Terminal theme={null}
 # Inside a new Next.js project
 npx polar-init
 ```
@@ -33,7 +25,7 @@ Consider following this guide while using the Polar Sandbox Environment. This wi
 
 To get started, you need to install the Polar JavaScript SDK and the Polar Nextjs helper package. You can do this by running the following command:
 
-```bash  theme={null}
+```bash Terminal theme={null}
 pnpm install @polar-sh/sdk @polar-sh/nextjs
 ```
 
@@ -73,7 +65,7 @@ import { Checkout } from "@polar-sh/nextjs";
 
 export const GET = Checkout({
   accessToken: process.env.POLAR_ACCESS_TOKEN!,
-  successUrl: "/confirmation?checkout_id={CHECKOUT_ID}",
+  successUrl: "https://your-app.com/confirmation?checkout_id={CHECKOUT_ID}",
   server: "sandbox", // Use this option if you're using the sandbox environment - else use 'production' or omit the parameter
 });
 ```
@@ -90,7 +82,7 @@ If you're developing locally, you can use a tool like [ngrok](https://ngrok.com/
 
 Run the following command to start an ngrok tunnel:
 
-```bash  theme={null}
+```bash Terminal theme={null}
 ngrok http 3000
 ```
 
@@ -101,7 +93,7 @@ ngrok http 3000
 3. Generate a secret key to sign the requests. This will allow you to verify that the requests are truly coming from Polar.
 4. Add the secret key to your environment variables.
 
-```bash  theme={null}
+```bash Terminal theme={null}
 # .env
 POLAR_ACCESS_TOKEN="polar_pat..."
 POLAR_WEBHOOK_SECRET="..."

@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/api-reference/templates/list-templates.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Templates
 
 > List all templates.
@@ -65,7 +69,7 @@ By default, the API will return the most recent 20 templates. You can optionally
 <QueryParams type="templates" isRequired={true} />
 
 <RequestExample>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -76,7 +80,7 @@ By default, the API will return the most recent 20 templates. You can optionally
   });
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->templates->list([
@@ -85,7 +89,7 @@ By default, the API will return the most recent 20 templates. You can optionally
   ]);
   ```
 
-  ```py Python theme={null}
+  ```py Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
@@ -96,7 +100,7 @@ By default, the API will return the most recent 20 templates. You can optionally
   })
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -107,7 +111,7 @@ By default, the API will return the most recent 20 templates. You can optionally
   )
   ```
 
-  ```go Go theme={null}
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   import (
   	"context"
 
@@ -117,14 +121,14 @@ By default, the API will return the most recent 20 templates. You can optionally
   func main() {
   	client := resend.NewClient("re_xxxxxxxxx")
 
-  	templates, err := client.Templates.ListWithContext(context.TODO(), &resend.ListOptions{
+  	client.Templates.ListWithContext(context.TODO(), &resend.ListOptions{
   		Limit: 2,
   		After: "34a080c9-b17d-4187-ad80-5af20266e535",
   	})
   }
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{list_opts::ListOptions, Resend, Result};
 
   #[tokio::main]
@@ -141,7 +145,7 @@ By default, the API will return the most recent 20 templates. You can optionally
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -158,7 +162,7 @@ By default, the API will return the most recent 20 templates. You can optionally
   }
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -167,7 +171,7 @@ By default, the API will return the most recent 20 templates. You can optionally
   Console.WriteLine( "Nr Templates={0}", resp.Content.Data.Count );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X GET 'https://api.resend.com/templates?limit=2&after=34a080c9-b17d-4187-ad80-5af20266e535' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json'
@@ -175,7 +179,7 @@ By default, the API will return the most recent 20 templates. You can optionally
 </RequestExample>
 
 <ResponseExample>
-  ```json Response theme={null}
+  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "object": "list",
     "data": [

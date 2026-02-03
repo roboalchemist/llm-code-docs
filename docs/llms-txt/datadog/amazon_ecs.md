@@ -3,8 +3,7 @@
 ---
 title: Amazon ECS
 description: Install and configure the Datadog Agent on Amazon Elastic Container Service
-breadcrumbs: Docs > Container Monitoring > Amazon ECS
-source_url: https://docs.datadoghq.com/amazon_ecs/index.html
+breadcrumbs: Docs > Containers > Amazon ECS
 ---
 
 # Amazon ECS

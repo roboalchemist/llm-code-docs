@@ -151,7 +151,7 @@ For some, verifying the identity of customers can be beneficial. Consider using 
 
 ### Use auth and capture when creating payments
 
-Credit card charge attempts are processed in two parts. The charge is first *authorized* by requesting authorization for the amount to charge from the *card issuer* (The entity that issued a payment card to a cardholder. This could be a bank, such as with the Visa or Mastercard network, or it could be the card network itself, such as with American Express).  After a charge is approved, by default it’s then *captured* immediately afterwards and the amount deducted from the card.
+Credit card charge attempts are processed in two parts. The charge is first *authorized* by requesting authorization for the amount to charge from the *card issuer* (The entity that issued a payment card to a cardholder. This could be a bank, such as with the Visa or Mastercard network, or it could be the card network itself, such as with American Express). After a charge is approved, by default it’s then *captured* immediately afterwards and the amount deducted from the card.
 
 A [capture later](https://docs.stripe.com/payments/place-a-hold-on-a-payment-method.md) payment flow (sometimes called “auth and capture”) is the process of performing these two steps at separate times. The authorization can be made first, which holds the amount on the card and appears on a customer’s statement as a pending transaction, but doesn’t actually move money out of their account. The charge can then be captured any time up to 7 days after the authorization. Capturing a charge completes the payment and the funds are deducted from the customer’s card. If a charge isn’t captured within the time limit, the authorization is automatically released.
 

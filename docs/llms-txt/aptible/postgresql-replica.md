@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/troubleshooting/common-errors-issues/postgresql-replica.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # PostgreSQL Replica max_connections
 
 A PostgreSQL replica's `max_connections` setting must be greater than or equal to the primary's setting; if the value is increased on the primary before being changed on the replica it will result in the replica becoming inaccessible with the following error:

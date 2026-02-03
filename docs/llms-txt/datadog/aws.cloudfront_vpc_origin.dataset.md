@@ -4,8 +4,6 @@
 title: CloudFront VPC Origin
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > CloudFront VPC Origin
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.cloudfront_vpc_origin.dataset/index.html
 ---
 
 # CloudFront VPC Origin
@@ -18,10 +16,10 @@ aws.cloudfront_vpc_origin
 
 ## Fields
 
-| Title      | ID   | Type   | Data Type            | Description |
-| ---------- | ---- | ------ | -------------------- | ----------- |
-| _key       | core | string |
-| account_id | core | string |
-| e_tag      | core | string | The VPC origin ETag. |
-| tags       | core | hstore |
-| vpc_origin | core | json   | The VPC origin.      |
+| Title      | ID   | Type       | Data Type                                                                   | Description |
+| ---------- | ---- | ---------- | --------------------------------------------------------------------------- | ----------- |
+| _key       | core | string     |
+| account_id | core | string     | The account ID of the Amazon Web Services account that owns the VPC origin. |
+| e_tag      | core | string     | The VPC origin ETag.                                                        |
+| tags       | core | hstore_csv |
+| vpc_origin | core | json       | The VPC origin.                                                             |

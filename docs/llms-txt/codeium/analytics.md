@@ -2,19 +2,13 @@
 
 # Source: https://docs.windsurf.com/plugins/accounts/analytics.md
 
-# Source: https://docs.windsurf.com/windsurf/accounts/analytics.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/analytics.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/analytics.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/analytics.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/analytics.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/analytics.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Analytics
+
+> View individual user analytics, team analytics, usage patterns, and metrics for your Windsurf usage including code completion stats and AI-written code percentage.
 
 ## Individuals
 

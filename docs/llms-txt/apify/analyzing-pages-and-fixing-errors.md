@@ -14,23 +14,23 @@ This quick lesson covers the absolute basics by discussing some of the most comm
 
 It is often tricky to see the full scope of what can go wrong. We assume that once the code is set up correctly, it will keep working. Unfortunately, that is rarely true in the realm of web scraping and automation.
 
-Websites change, they introduce new https://docs.apify.com/academy/anti-scraping.md, programming tools change and, in addition, people make mistakes.
+Websites change, they introduce new [anti-scraping technologies](https://docs.apify.com/academy/anti-scraping.md), programming tools change and, in addition, people make mistakes.
 
 Here are the most common reasons your working solution may break.
 
-* The website changes its layout or https://www.datafeedwatch.com/academy/data-feed.
-* A site's layout changes depending on location or uses https://www.youtube.com/watch?v=XDoKXaGrUxE&feature=youtu.be.
+* The website changes its layout or [data feed](https://www.datafeedwatch.com/academy/data-feed).
+* A site's layout changes depending on location or uses [A/B testing](https://www.youtube.com/watch?v=XDoKXaGrUxE&feature=youtu.be).
 * A page starts to block you (recognizes you as a bot).
-* The website https://docs.apify.com/academy/node-js/dealing-with-dynamic-pages.md, so the code works only sometimes, if you are slow or lucky enough.
+* The website [loads its data later dynamically](https://docs.apify.com/academy/node-js/dealing-with-dynamic-pages.md), so the code works only sometimes, if you are slow or lucky enough.
 * You made a mistake when updating your code.
-* Your https://docs.apify.com/academy/anti-scraping/mitigation/proxies.md aren't working.
-* You have upgraded your https://www.quora.com/What-is-a-dependency-in-coding (other software that your software relies upon), and the new versions no longer work (this is harder to debug).
+* Your [proxies](https://docs.apify.com/academy/anti-scraping/mitigation/proxies.md) aren't working.
+* You have upgraded your [dependencies](https://www.quora.com/What-is-a-dependency-in-coding) (other software that your software relies upon), and the new versions no longer work (this is harder to debug).
 
 ## Diagnosing/analyzing the issue
 
 Web scraping and automation are very specific types of programming. It is not possible to rely on specialized debugging tools, since the code does not output the same results every time. However, there are still many ways to diagnose issues in a crawler.
 
-> Many issues are edge cases, which occur in one of a thousand pages or are time-dependent. Because of this, you cannot rely only on https://en.wikipedia.org/wiki/Deterministic_algorithm.
+> Many issues are edge cases, which occur in one of a thousand pages or are time-dependent. Because of this, you cannot rely only on [determinism](https://en.wikipedia.org/wiki/Deterministic_algorithm).
 
 ### Logging
 
@@ -54,9 +54,9 @@ The log begins with the **page type**. Usually, we use labels such as **\[CATEGO
 
 #### Logging errors
 
-Errors require a different approach because, if your code crashes, your usual logs will not be called. Instead, exception handlers will print the error, but these are usually ugly messages with a https://en.wikipedia.org/wiki/Stack_trace that only the experts will understand.
+Errors require a different approach because, if your code crashes, your usual logs will not be called. Instead, exception handlers will print the error, but these are usually ugly messages with a [stack trace](https://en.wikipedia.org/wiki/Stack_trace) that only the experts will understand.
 
-You can overcome this by adding https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch into your code. In the catch block, explain what happened and re-throw the error (so the request is automatically retried).
+You can overcome this by adding [try/catch blocks](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) into your code. In the catch block, explain what happened and re-throw the error (so the request is automatically retried).
 
 
 ```
@@ -70,22 +70,20 @@ try {
 ```
 
 
-Read more information about logging and error handling in our developer https://docs.apify.com/academy/web-scraping-for-beginners/best-practices.md section.
-
 ### Saving snapshots
 
-By snapshots, we mean **screenshots** if you use a https://docs.apify.com/academy/puppeteer-playwright.md and HTML saved into a https://crawlee.dev/api/core/class/KeyValueStore that you can display in your own browser. Snapshots are useful throughout your code but especially important in error handling.
+By snapshots, we mean **screenshots** if you use a [browser with Puppeteer/Playwright](https://docs.apify.com/academy/puppeteer-playwright.md) and HTML saved into a [key-value store](https://crawlee.dev/api/core/class/KeyValueStore) that you can display in your own browser. Snapshots are useful throughout your code but especially important in error handling.
 
 Note that an error can happen only in a few pages out of a thousand and look completely random. You cannot do much else than to save and analyze a snapshot.
 
 Snapshots can tell you if:
 
 * A website has changed its layout. This can also mean A/B testing or different content for different locations.
-* You have been blocked—you open a https://en.wikipedia.org/wiki/CAPTCHA or an **Access Denied** page.
+* You have been blocked—you open a [CAPTCHA](https://en.wikipedia.org/wiki/CAPTCHA) or an **Access Denied** page.
 * Data load later dynamically—the page is empty.
 * The page was redirected—the content is different.
 
-You can learn how to take snapshots in Puppeteer or Playwright in https://docs.apify.com/academy/puppeteer-playwright/page/page-methods.md
+You can learn how to take snapshots in Puppeteer or Playwright in [this short lesson](https://docs.apify.com/academy/puppeteer-playwright/page/page-methods.md)
 
 #### When to save snapshots
 
@@ -128,7 +126,7 @@ Logging and snapshotting are great tools but once you reach a certain run size, 
 
 ## With the Apify SDK
 
-This example extends our snapshot solution above by creating a https://docs.apify.com/platform/storage/usage.md#named-and-unnamed-storages (named datasets have infinite retention), where we will accumulate error reports. Those reports will explain what happened and will link to a saved snapshot, so we can do a quick visual check.
+This example extends our snapshot solution above by creating a [named dataset](https://docs.apify.com/platform/storage/usage.md#named-and-unnamed-storages) (named datasets have infinite retention), where we will accumulate error reports. Those reports will explain what happened and will link to a saved snapshot, so we can do a quick visual check.
 
 
 ```

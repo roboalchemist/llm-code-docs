@@ -1,7 +1,5 @@
 # Source: https://rspack.dev/plugins/webpack/progress-plugin.md
 
-import { Table } from '@builtIns';
-
 # ProgressPlugin
 
 This plugin can be used to configure the progress bar.
@@ -18,9 +16,9 @@ new rspack.ProgressPlugin(options);
 
 Provide a handler function which will be called when hooks report progress. `handler` function arguments:
 
-* `percentage`: a number between 0 and 1 indicating the completion percentage of the compilation
-* `message`: a short description of the currently-executing hook
-* `...args`: zero or more additional strings describing the current progress
+- `percentage`: a number between 0 and 1 indicating the completion percentage of the compilation
+- `message`: a short description of the currently-executing hook
+- `...args`: zero or more additional strings describing the current progress
 
 ```js
 const handler = (percentage, message, ...args) => {
@@ -35,22 +33,22 @@ new rspack.ProgressPlugin(handler);
 
 #### prefix
 
-* **Type:** `string`
-* **Default:** `'Rspack'`
+- **Type:** `string`
+- **Default:** `'Rspack'`
 
 The text will be displayed before the progress bar.
 
 #### profile
 
-* **Type:** `boolean`
-* **Default:** `false`
+- **Type:** `boolean`
+- **Default:** `false`
 
 Tells `ProgressPlugin` to collect profile data for progress steps.
 
 #### template
 
-* **Type:** `string`
-* **Default:** `● {prefix:.bold} {bar:25.green/white.dim} ({percent}%) {wide_msg:.dim}`
+- **Type:** `string`
+- **Default:** `● {prefix:.bold} {bar:25.green/white.dim} ({percent}%) {wide_msg:.dim}`
 
 The template of progress bar.
 
@@ -58,8 +56,8 @@ Also see [indicatif::ProgressBar::with\_template](https://docs.rs/indicatif/late
 
 #### tick
 
-* **Type:** `string | string[] | undefined`
-* **Default:** `undefined`
+- **Type:** `string | string[] | undefined`
+- **Default:** `undefined`
 
 The tick string sequence for spinners, if it's string then it will be split into characters.
 
@@ -67,8 +65,8 @@ Also see [indicatif::ProgressBar::tick\_strings](https://docs.rs/indicatif/lates
 
 #### progressChars
 
-* **Type:** `string`
-* **Default:** `━━`
+- **Type:** `string`
+- **Default:** `━━`
 
 The progress characters `(filled, current, to do)`.
 

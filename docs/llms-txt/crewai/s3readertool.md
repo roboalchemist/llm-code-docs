@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/cloud-storage/s3readertool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # S3 Reader Tool
 
 > The `S3ReaderTool` enables CrewAI agents to read files from Amazon S3 buckets.

@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/cli-login-commands.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # CLI login command
 
 > Use these options when logging in to Trigger.dev using the CLI.
@@ -7,15 +11,15 @@
 Run the command like this:
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":"css-variables"}
   npx trigger.dev@latest login
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm dlx trigger.dev@latest login
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn dlx trigger.dev@latest login
   ```
 </CodeGroup>

@@ -1,283 +1,167 @@
 # Source: https://docs.comfy.org/api-reference/registry/retrieve-a-node-by-comfyui-node-name.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Retrieve a node by ComfyUI node name
 
 > Returns the node that contains a ComfyUI node with the specified name
 
+
+
 ## OpenAPI
 
 ````yaml https://api.comfy.org/openapi get /comfy-nodes/{comfyNodeName}/node
+openapi: 3.0.2
+info:
+  title: Comfy API
+  version: '1.0'
+servers:
+  - url: https://api.comfy.org
+security: []
 paths:
-  path: /comfy-nodes/{comfyNodeName}/node
-  method: get
-  servers:
-    - url: https://api.comfy.org
-  request:
-    security: []
-    parameters:
-      path:
-        comfyNodeName:
+  /comfy-nodes/{comfyNodeName}/node:
+    get:
+      tags:
+        - Registry
+      summary: Retrieve a node by ComfyUI node name
+      description: Returns the node that contains a ComfyUI node with the specified name
+      operationId: GetNodeByComfyNodeName
+      parameters:
+        - description: The name of the ComfyUI node
+          in: path
+          name: comfyNodeName
+          required: true
           schema:
-            - type: string
-              required: true
-              description: The name of the ComfyUI node
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              author:
-                allOf:
-                  - type: string
-              banner_url:
-                allOf:
-                  - description: URL to the node's banner.
-                    type: string
-              category:
-                allOf:
-                  - deprecated: true
-                    description: >-
-                      DEPRECATED: The category of the node. Use 'tags' field
-                      instead. This field will be removed in a future version.
-                    type: string
-              created_at:
-                allOf:
-                  - description: The date and time when the node was created
-                    format: date-time
-                    type: string
-              description:
-                allOf:
-                  - type: string
-              downloads:
-                allOf:
-                  - description: The number of downloads of the node.
-                    type: integer
-              github_stars:
-                allOf:
-                  - description: Number of stars on the GitHub repository.
-                    type: integer
-              icon:
-                allOf:
-                  - description: URL to the node's icon.
-                    type: string
-              id:
-                allOf:
-                  - description: The unique identifier of the node.
-                    type: string
-              latest_version:
-                allOf:
-                  - $ref: '#/components/schemas/NodeVersion'
-              license:
-                allOf:
-                  - description: The path to the LICENSE file in the node's repository.
-                    type: string
-              name:
-                allOf:
-                  - description: The display name of the node.
-                    type: string
-              preempted_comfy_node_names:
-                allOf:
-                  - description: >-
-                      A list of Comfy node names that are preempted by this
-                      node.
-                    items:
-                      type: string
-                    type: array
-              publisher:
-                allOf:
-                  - $ref: '#/components/schemas/Publisher'
-              rating:
-                allOf:
-                  - description: The average rating of the node.
-                    type: number
-              repository:
-                allOf:
-                  - description: URL to the node's repository.
-                    type: string
-              search_ranking:
-                allOf:
-                  - description: >-
-                      A numerical value representing the node's search ranking,
-                      used for sorting search results.
-                    type: integer
-              status:
-                allOf:
-                  - $ref: '#/components/schemas/NodeStatus'
-              status_detail:
-                allOf:
-                  - description: The status detail of the node.
-                    type: string
-              supported_accelerators:
-                allOf:
-                  - description: >-
-                      List of accelerators (e.g. CUDA, DirectML, ROCm) that this
-                      node supports
-                    items:
-                      type: string
-                    type: array
-              supported_comfyui_frontend_version:
-                allOf:
-                  - description: Supported versions of ComfyUI frontend
-                    type: string
-              supported_comfyui_version:
-                allOf:
-                  - description: Supported versions of ComfyUI
-                    type: string
-              supported_os:
-                allOf:
-                  - description: List of operating systems that this node supports
-                    items:
-                      type: string
-                    type: array
-              tags:
-                allOf:
-                  - items:
-                      type: string
-                    type: array
-              tags_admin:
-                allOf:
-                  - description: Admin-only tags for security warnings and admin metadata
-                    items:
-                      type: string
-                    type: array
-              translations:
-                allOf:
-                  - additionalProperties:
-                      additionalProperties: true
-                      type: object
-                    description: Translations of node metadata in different languages.
-                    type: object
-            refIdentifier: '#/components/schemas/Node'
-        examples:
-          example:
-            value:
-              author: <string>
-              banner_url: <string>
-              category: <string>
-              created_at: '2023-11-07T05:31:56Z'
-              description: <string>
-              downloads: 123
-              github_stars: 123
-              icon: <string>
-              id: <string>
-              latest_version:
-                changelog: <string>
-                comfy_node_extract_status: <string>
-                createdAt: '2023-11-07T05:31:56Z'
-                dependencies:
-                  - <string>
-                deprecated: true
-                downloadUrl: <string>
-                id: <string>
-                node_id: <string>
-                status: NodeVersionStatusActive
-                status_reason: <string>
-                supported_accelerators:
-                  - <string>
-                supported_comfyui_frontend_version: <string>
-                supported_comfyui_version: <string>
-                supported_os:
-                  - <string>
-                tags:
-                  - <string>
-                tags_admin:
-                  - <string>
-                version: <string>
-              license: <string>
-              name: <string>
-              preempted_comfy_node_names:
-                - <string>
-              publisher:
-                createdAt: '2023-11-07T05:31:56Z'
-                description: <string>
-                id: <string>
-                logo: <string>
-                members:
-                  - id: <string>
-                    role: <string>
-                    user:
-                      email: <string>
-                      id: <string>
-                      name: <string>
-                name: <string>
-                source_code_repo: <string>
-                status: PublisherStatusActive
-                support: <string>
-                website: <string>
-              rating: 123
-              repository: <string>
-              search_ranking: 123
-              status: NodeStatusActive
-              status_detail: <string>
-              supported_accelerators:
-                - <string>
-              supported_comfyui_frontend_version: <string>
-              supported_comfyui_version: <string>
-              supported_os:
-                - <string>
-              tags:
-                - <string>
-              tags_admin:
-                - <string>
-              translations: {}
-        description: Node details
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - &ref_0
-                    type: string
-              message:
-                allOf:
-                  - &ref_1
-                    type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: &ref_2
-              - error
-              - message
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: No node found containing the specified ComfyUI node name
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-              message:
-                allOf:
-                  - *ref_1
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Internal server error
-  deprecated: false
-  type: path
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Node'
+          description: Node details
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: No node found containing the specified ComfyUI node name
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
 components:
   schemas:
-    NodeStatus:
-      enum:
-        - NodeStatusActive
-        - NodeStatusDeleted
-        - NodeStatusBanned
-      type: string
+    Node:
+      properties:
+        author:
+          type: string
+        banner_url:
+          description: URL to the node's banner.
+          type: string
+        category:
+          deprecated: true
+          description: >-
+            DEPRECATED: The category of the node. Use 'tags' field instead. This
+            field will be removed in a future version.
+          type: string
+        created_at:
+          description: The date and time when the node was created
+          format: date-time
+          type: string
+        description:
+          type: string
+        downloads:
+          description: The number of downloads of the node.
+          type: integer
+        github_stars:
+          description: Number of stars on the GitHub repository.
+          type: integer
+        icon:
+          description: URL to the node's icon.
+          type: string
+        id:
+          description: The unique identifier of the node.
+          type: string
+        latest_version:
+          $ref: '#/components/schemas/NodeVersion'
+        license:
+          description: The path to the LICENSE file in the node's repository.
+          type: string
+        name:
+          description: The display name of the node.
+          type: string
+        preempted_comfy_node_names:
+          description: A list of Comfy node names that are preempted by this node.
+          items:
+            type: string
+          type: array
+        publisher:
+          $ref: '#/components/schemas/Publisher'
+        rating:
+          description: The average rating of the node.
+          type: number
+        repository:
+          description: URL to the node's repository.
+          type: string
+        search_ranking:
+          description: >-
+            A numerical value representing the node's search ranking, used for
+            sorting search results.
+          type: integer
+        status:
+          $ref: '#/components/schemas/NodeStatus'
+        status_detail:
+          description: The status detail of the node.
+          type: string
+        supported_accelerators:
+          description: >-
+            List of accelerators (e.g. CUDA, DirectML, ROCm) that this node
+            supports
+          items:
+            type: string
+          type: array
+        supported_comfyui_frontend_version:
+          description: Supported versions of ComfyUI frontend
+          type: string
+        supported_comfyui_version:
+          description: Supported versions of ComfyUI
+          type: string
+        supported_os:
+          description: List of operating systems that this node supports
+          items:
+            type: string
+          type: array
+        tags:
+          items:
+            type: string
+          type: array
+        tags_admin:
+          description: Admin-only tags for security warnings and admin metadata
+          items:
+            type: string
+          type: array
+        translations:
+          additionalProperties:
+            additionalProperties: true
+            type: object
+          description: Translations of node metadata in different languages.
+          type: object
+      type: object
+    ErrorResponse:
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+      required:
+        - error
+        - message
+      type: object
     NodeVersion:
       properties:
         changelog:
@@ -343,14 +227,6 @@ components:
             unique for the node.
           type: string
       type: object
-    NodeVersionStatus:
-      enum:
-        - NodeVersionStatusActive
-        - NodeVersionStatusDeleted
-        - NodeVersionStatusBanned
-        - NodeVersionStatusPending
-        - NodeVersionStatusFlagged
-      type: string
     Publisher:
       properties:
         createdAt:
@@ -383,6 +259,20 @@ components:
         website:
           type: string
       type: object
+    NodeStatus:
+      enum:
+        - NodeStatusActive
+        - NodeStatusDeleted
+        - NodeStatusBanned
+      type: string
+    NodeVersionStatus:
+      enum:
+        - NodeVersionStatusActive
+        - NodeVersionStatusDeleted
+        - NodeVersionStatusBanned
+        - NodeVersionStatusPending
+        - NodeVersionStatusFlagged
+      type: string
     PublisherMember:
       properties:
         id:

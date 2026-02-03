@@ -4,8 +4,6 @@
 title: DocumentDB Cluster Snapshot
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > DocumentDB Cluster Snapshot
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.docdb_clustersnapshot.dataset/index.html
 ---
 
 # DocumentDB Cluster Snapshot
@@ -40,5 +38,5 @@ aws.docdb_clustersnapshot
 | status                                | core | string        | Specifies the status of this cluster snapshot.                                                                                                                                                                                                                                                                |
 | storage_encrypted                     | core | bool          | Specifies whether the cluster snapshot is encrypted.                                                                                                                                                                                                                                                          |
 | storage_type                          | core | string        | Storage type associated with your cluster snapshot For information on storage types for Amazon DocumentDB clusters, see Cluster storage configurations in the <i>Amazon DocumentDB Developer Guide</i>. Valid values for storage type - <code>standard | iopt1</code> Default value is <code>standard </code> |
-| tags                                  | core | hstore        |
+| tags                                  | core | hstore_csv    |
 | vpc_id                                | core | string        | Provides the virtual private cloud (VPC) ID that is associated with the cluster snapshot.                                                                                                                                                                                                                     |

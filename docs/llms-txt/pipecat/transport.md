@@ -2,13 +2,9 @@
 
 # Source: https://docs.pipecat.ai/client/c++/transport.md
 
-# Source: https://docs.pipecat.ai/client/js/transports/transport.md
-
-# Source: https://docs.pipecat.ai/client/c++/transport.md
-
-# Source: https://docs.pipecat.ai/client/js/transports/transport.md
-
-# Source: https://docs.pipecat.ai/client/c++/transport.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Daily WebRTC Transport
 
@@ -82,8 +78,3 @@ Then, build the project:
     Example Node.js proxy implementation
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

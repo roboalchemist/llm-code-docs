@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/send-with-hono.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send emails with Hono
 
 > Learn how to send your first email using Hono and the Resend Node.js SDK.
@@ -16,16 +20,20 @@ To get the most out of this guide, you'll need to:
 Get the Resend Node.js SDK.
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":{"light":"github-light","dark":"vesper"}}
   npm install resend
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":{"light":"github-light","dark":"vesper"}}
   yarn add resend
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":{"light":"github-light","dark":"vesper"}}
   pnpm add resend
+  ```
+
+  ```bash bun theme={"theme":{"light":"github-light","dark":"vesper"}}
+  bun add resend
   ```
 </CodeGroup>
 
@@ -33,7 +41,7 @@ Get the Resend Node.js SDK.
 
 Start by creating your email template on `emails/email-template.tsx`.
 
-```tsx emails/email-template.tsx theme={null}
+```tsx emails/email-template.tsx theme={"theme":{"light":"github-light","dark":"vesper"}}
 import * as React from 'react';
 
 interface EmailTemplateProps {
@@ -51,7 +59,7 @@ export function EmailTemplate({ firstName }: EmailTemplateProps) {
 
 To use JSX/TSX with Hono, we need to modify the `tsconfig.json`.
 
-```json tsconfig.json theme={null}
+```json tsconfig.json theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
   "compilerOptions": {
     "jsx": "react-jsx",
@@ -64,7 +72,7 @@ To use JSX/TSX with Hono, we need to modify the `tsconfig.json`.
 
 Create a new file `index.tsx` and send your first email.
 
-```ts index.tsx theme={null}
+```ts index.tsx theme={"theme":{"light":"github-light","dark":"vesper"}}
 import { Hono } from 'hono';
 import { Resend } from 'resend';
 import { EmailTemplate } from './emails/email-template';

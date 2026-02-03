@@ -42,7 +42,7 @@ Manage your LiveKit Cloud project settings and configuration.
 
 ---
 
-This document was rendered at 2025-12-31T18:29:38.856Z.
+This document was rendered at 2026-02-03T03:25:23.132Z.
 For the latest version of this document, see [https://docs.livekit.io/deploy/admin.md](https://docs.livekit.io/deploy/admin.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

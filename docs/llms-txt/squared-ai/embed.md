@@ -1,5 +1,9 @@
 # Source: https://docs.squared.ai/activation/data-apps/visualizations/embed.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Embed in Business Apps
 
 > Learn how to embed Data Apps into tools like CRMs, support platforms, or internal web apps.

@@ -1,0 +1,25 @@
+# Source: https://docs.datadoghq.com/security/default_rules/76c-cbb-28a.md
+
+---
+title: IIS HTTP requests from security scanner
+description: Datadog, the leading service for cloud-scale monitoring.
+breadcrumbs: Docs > Datadog Security > OOTB Rules > IIS HTTP requests from security scanner
+---
+
+# IIS HTTP requests from security scanner
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190) 
+## Goal{% #goal %}
+
+Detect when a web application is being scanned. This will identify attacker IP addresses who are not trying to hide their attempt to attack your system. More advanced hackers will use an inconspicuous user agent.
+
+## Strategy{% #strategy %}
+
+Inspect the user agent in the HTTP headers to determine if an IP is scanning your application and generate an `INFO` signal.
+
+## Triage and response{% #triage-and-response %}
+
+1. Determine if this IP is making authenticated requests to the application.
+1. If the IP is making authenticated requests to the application:
+   - Investigate the HTTP logs and determine if the user is attacking your application.
+
+The HTTP headers in the query are from [darkqusar](https://gist.github.com/darkquasar)'s [gist](https://gist.github.com/darkquasar/84fb2cec6cc1668795bd97c02302d380)

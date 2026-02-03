@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Cloudcraft (Standalone) > Account Management > Cancel your Cloudcraft
   (Standalone) Subscription
-source_url: https://docs.datadoghq.com/account-management/cancel-subscription/index.html
 ---
 
 # Cancel your Cloudcraft (Standalone) Subscription

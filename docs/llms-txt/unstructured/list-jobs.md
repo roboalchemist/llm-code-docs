@@ -1,108 +1,79 @@
 # Source: https://docs.unstructured.io/api-reference/jobs/list-jobs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Jobs
 
 > Retrieve a list of jobs with optional filtering by workflow ID or job status.
 
+
+
 ## OpenAPI
 
 ````yaml https://platform.unstructuredapp.io/openapi.json get /api/v1/jobs/
+openapi: 3.1.0
+info:
+  title: Platform API
+  version: 3.1.0
+servers:
+  - url: https://platform.unstructuredapp.io/
+    description: Unstructured Platform API
+    x-speakeasy-server-id: platform-api
+security: []
 paths:
-  path: /api/v1/jobs/
-  method: get
-  servers:
-    - url: https://platform.unstructuredapp.io/
-      description: Unstructured Platform API
-  request:
-    security:
-      - title: HTTPBearer
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        workflow_id:
+  /api/v1/jobs/:
+    get:
+      tags:
+        - jobs
+      summary: List Jobs
+      description: >-
+        Retrieve a list of jobs with optional filtering by workflow ID or job
+        status.
+      operationId: list_jobs
+      parameters:
+        - name: workflow_id
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-              title: Workflow Id
-              format: uuid
-            - type: 'null'
-              required: false
-              title: Workflow Id
-        status:
+            anyOf:
+              - type: string
+                format: uuid
+              - type: 'null'
+            title: Workflow Id
+        - name: status
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-              title: Status
-            - type: 'null'
-              required: false
-              title: Status
-      header:
-        unstructured-api-key:
+            anyOf:
+              - type: string
+              - type: 'null'
+            title: Status
+        - name: unstructured-api-key
+          in: header
+          required: false
           schema:
-            - type: string
-              required: false
-              title: Unstructured-Api-Key
-            - type: 'null'
-              required: false
-              title: Unstructured-Api-Key
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: array
-            items:
-              allOf:
-                - $ref: '#/components/schemas/JobInformation'
-            title: Response List Jobs
-        examples:
-          example:
-            value:
-              - id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                workflow_id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                workflow_name: <string>
-                status: SCHEDULED
-                created_at: '2023-11-07T05:31:56Z'
-                runtime: <string>
-                input_file_ids:
-                  - <string>
-                output_node_files:
-                  - node_id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                    file_id: <string>
-                job_type: ephemeral
-        description: Successful Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    type: array
-                    title: Detail
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+            anyOf:
+              - type: string
+              - type: 'null'
+            title: Unstructured-Api-Key
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/JobInformation'
+                title: Response List Jobs
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
     JobInformation:
@@ -155,6 +126,15 @@ components:
         - status
         - created_at
       title: JobInformation
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     JobStatus:
       type: string
       enum:
@@ -173,11 +153,27 @@ components:
         file_id:
           type: string
           title: File Id
+        node_type:
+          type: string
+          title: Node Type
+        node_subtype:
+          type: string
+          title: Node Subtype
       type: object
       required:
         - node_id
         - file_id
+        - node_type
+        - node_subtype
       title: NodeFileMetadata
+    WorkflowJobType:
+      type: string
+      enum:
+        - ephemeral
+        - persistent
+        - scheduled
+        - template
+      title: WorkflowJobType
     ValidationError:
       properties:
         loc:
@@ -199,13 +195,5 @@ components:
         - msg
         - type
       title: ValidationError
-    WorkflowJobType:
-      type: string
-      enum:
-        - ephemeral
-        - persistent
-        - scheduled
-        - template
-      title: WorkflowJobType
 
 ````

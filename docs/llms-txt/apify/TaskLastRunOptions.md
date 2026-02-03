@@ -2,6 +2,8 @@
 
 # TaskLastRunOptions<!-- -->
 
+Options for filtering the last run of a Task.
+
 ## Index[**](#Index)
 
 ### Properties
@@ -10,7 +12,7 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#status)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/task.ts#L236)optionalstatus
+### [**](#status)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/task.ts#L326)optionalstatus
 
 **status?
 

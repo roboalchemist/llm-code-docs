@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/webhooks/unsubscribe-webhook.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Unsubscribe
 
 > Unsubscribe a vehicle from a webhook.

@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/custom-nodes/backend/datatypes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Datatypes
 
 These are the most important built in datatypes. You can also [define your own](./more_on_inputs#custom-datatypes).

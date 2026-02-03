@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/tesla/set-charge-ammeter.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Amperage
 
 > Set the amperage drawn by the vehicle from the EVSE for the current charging session. If the vehicle is not plugged in, this endpoint results in a vehicle state error.

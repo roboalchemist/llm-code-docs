@@ -4,7 +4,6 @@
 title: IoT Job
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > IoT Job
-source_url: https://docs.datadoghq.com/data_directory/aws/aws.iot_job.dataset/index.html
 ---
 
 # IoT Job
@@ -17,10 +16,10 @@ aws.iot_job
 
 ## Fields
 
-| Title           | ID   | Type   | Data Type                       | Description |
-| --------------- | ---- | ------ | ------------------------------- | ----------- |
-| _key            | core | string |
-| account_id      | core | string |
-| document_source | core | string | An S3 link to the job document. |
-| job             | core | json   | Information about the job.      |
-| tags            | core | hstore |
+| Title           | ID   | Type       | Data Type                       | Description |
+| --------------- | ---- | ---------- | ------------------------------- | ----------- |
+| _key            | core | string     |
+| account_id      | core | string     |
+| document_source | core | string     | An S3 link to the job document. |
+| job             | core | json       | Information about the job.      |
+| tags            | core | hstore_csv |

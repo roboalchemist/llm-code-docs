@@ -1,5 +1,9 @@
 # Source: https://docs.meshconnect.com/advanced/intelligent-provider-filtering.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.meshconnect.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Intelligent Provider Filtering in Mesh Link
 
 Mesh automatically applies intelligent filtering during Link initialization to ensure users only see compatible, compliant, and viable providers (wallets, exchanges, brokers). This improves success rates, avoids regulatory blockers, and enhances user experience.

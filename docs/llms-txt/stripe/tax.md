@@ -6,6 +6,8 @@ Automate sales tax, VAT, and GST compliance on all your transactions—low or no
 
 Stripe Tax is a global all-in-one tax compliance solution that handles tax obligation monitoring, registrations, calculations, collections, and filings.
 
+> You might be eligible for a 1099 tax form through a platform that pays you with Stripe. Learn more about how to [receive your forms](https://support.stripe.com/express/topics/1099-tax-forms).
+
 ## Understand where to register
 
 Stripe Tax proactively monitors your transactions, providing clarity on where you may have tax obligations. You can see how your Stripe transactions compare to filing thresholds, helping you understand where to register, and you can switch on tax collection in relevant locations.

@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/manage/user-feedback.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Respond to user feedback and bugs
 
 > For public integrations, Zapier's Support team logs user requests and reported problems in Zapier's issue tracker, that your team can see from the _Bug & Feature Requests_ page in the Manage section.

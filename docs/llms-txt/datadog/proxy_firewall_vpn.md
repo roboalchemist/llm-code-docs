@@ -6,7 +6,6 @@ description: Learn how to set up Continuous Testing on a private environment.
 breadcrumbs: >-
   Docs > Continuous Testing > Testing Local and Staging Environments > Testing
   With Proxies, Firewalls, or VPNs
-source_url: https://docs.datadoghq.com/environments/proxy_firewall_vpn/index.html
 ---
 
 # Testing With Proxies, Firewalls, or VPNs

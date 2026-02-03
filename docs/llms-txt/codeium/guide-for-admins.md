@@ -2,21 +2,13 @@
 
 # Source: https://docs.windsurf.com/plugins/guide-for-admins.md
 
-# Source: https://docs.windsurf.com/windsurf/guide-for-admins.md
-
-# Source: https://docs.windsurf.com/plugins/guide-for-admins.md
-
-# Source: https://docs.windsurf.com/windsurf/guide-for-admins.md
-
-# Source: https://docs.windsurf.com/plugins/guide-for-admins.md
-
-# Source: https://docs.windsurf.com/windsurf/guide-for-admins.md
-
-# Source: https://docs.windsurf.com/plugins/guide-for-admins.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Guide for Admins
 
-> Windsurf Guide for Enterprise Admins
+> Enterprise admin guide for deploying Windsurf at scale. Configure SSO, SCIM, RBAC, analytics, and team management for large organizations.
 
 # Windsurf Guide for Enterprise Admins
 
@@ -83,9 +75,18 @@ The <a href="https://windsurf.com/team/settings" target="_blank">Admin Portal</a
 * Configure which AI models your teams can access within Windsurf
 * Select multiple models for different use cases (code completion, chat, etc.)
 
+**Default Model Override**
+
+* Set the default Cascade model for users on your team
+* This model is pre-selected each time a user opens Windsurf (not just the first time)
+* Users can still change their model at any time during a session
+* Only models enabled in Models Configuration are available as default options
+
 **Auto Run Terminal Commands** *(Beta)*
 
-* Allow or restrict Cascade's ability to auto-execute commands on users' machines
+* Set the maximum auto-execution level for terminal commands across your organization
+* Four levels available: **Disabled** (no auto-execution), **Allowlist Only** (only allowlisted commands), **Auto** (AI-judged safe commands), and **Turbo** (all commands except denylisted)
+* Users can select any level up to the maximum you configure, giving them flexibility within your security policy
 * [Learn more about auto-executed commands](https://docs.windsurf.com/windsurf/terminal#auto-executed-cascade-commands)
 
 **MCP Servers** *(Beta)*

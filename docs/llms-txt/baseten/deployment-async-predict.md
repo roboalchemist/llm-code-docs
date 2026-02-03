@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/reference/inference-api/predict-endpoints/deployment-async-predict.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Async deployment
 
 > Use this endpoint to call any [published deployment](/deploy/lifecycle) of your model.
@@ -22,7 +26,7 @@
 
 ### Body
 
-There is a 256 KiB size limit to `/async_predict` request payloads.
+There is a 256 KiB size limit to `/async_predict` request payloads.
 
 <ParamField body="model_input" type="json" required>
   JSON-serializable model input.
@@ -82,7 +86,7 @@ Two types of rate limits apply when making async requests:
 
 * Calls to the `/async_predict` endpoint are limited to **200 requests per second**.
 
-* Each organization is limited to **5,000 `QUEUED` or `IN_PROGRESS` async requests**, summed across all deployments.
+* Each organization is limited to **50,000 `QUEUED` or `IN_PROGRESS` async requests**, summed across all deployments.
 
 If either limit is exceeded, subsequent `/async_predict` requests will receive a 429 status code.
 
@@ -92,7 +96,7 @@ To avoid hitting these rate limits, we advise:
 * Monitoring the [async queue size metric](/observability/metrics#async-queue-metrics). If your model is accumulating a backlog of requests, consider increasing the number of requests your model can process at once by increasing the number of max replicas or the concurrency target in your autoscaling settings.
 
 <RequestExample>
-  ```py Python theme={"system"}
+  ```python Python theme={"system"}
   import requests
   import os
 
@@ -134,7 +138,7 @@ To avoid hitting these rate limits, we advise:
   }'
   ```
 
-  ```js Node.js theme={"system"}
+  ```javascript Node.js theme={"system"}
   const fetch = require("node-fetch");
 
   const resp = await fetch(

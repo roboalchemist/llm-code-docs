@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/manage/export-ui.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Export integration to Platform UI
 
 > The Zapier Platform UI is the easiest way for anyone with API experience to build Zapier integrations. It is for users more comfortable with a visual form editor.

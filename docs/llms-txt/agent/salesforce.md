@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/recipes/salesforce.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Calling Agents from Salesforce (SFDC)
 
 This guide walks you through integrating [Agent.ai](http://Agent.ai)'s intelligent agents directly within Salesforce without requiring external code. By setting up Named Credentials and creating a Flow with HTTP callouts, you'll enable your Salesforce instance to seamlessly communicate with [Agent.ai](http://Agent.ai)'s services. This integration allows your agents to respond to record creation events, process data from your Salesforce objects, and write results back to your records—all while maintaining the security and governance controls of your Salesforce environment. Follow these step-by-step instructions to set up this powerful integration in under 30 minutes.

@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/reference/aptible-cli/cli-commands/cli-metric-drain-create-influxdb-custom.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # aptible metric_drain:create:influxdb:custom
 
 This command lets you create a [Metric Drain](/core-concepts/observability/metrics/metrics-drains/overview) to forward your container metrics to an InfluxDB database hosted outside Aptible.

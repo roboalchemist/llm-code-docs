@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/guides/email-dark-mode.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Dark mode support in emails
 
 > Understanding dark mode support in email clients and best practices for consistent rendering.

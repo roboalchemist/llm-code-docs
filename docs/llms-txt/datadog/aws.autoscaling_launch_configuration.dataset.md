@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > DDSQL Reference > Data Directory > EC2 Auto Scaling Launch
   Configuration
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.autoscaling_launch_configuration.dataset/index.html
 ---
 
 # EC2 Auto Scaling Launch Configuration
@@ -43,5 +41,5 @@ aws.autoscaling_launch_configuration
 | ramdisk_id                       | core | string        | The ID of the RAM disk associated with the AMI.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | security_groups                  | core | array<string> | A list that contains the security groups to assign to the instances in the Auto Scaling group. For more information, see Control traffic to your Amazon Web Services resources using security groups in the Amazon Virtual Private Cloud User Guide.                                                                                                                                                                                                                                                                                                                                                   |
 | spot_price                       | core | string        | The maximum hourly price to be paid for any Spot Instance launched to fulfill the request. Spot Instances are launched when the price you specify exceeds the current Spot price. For more information, see Requesting Spot Instances for fault-tolerant and flexible applications in the Amazon EC2 Auto Scaling User Guide.                                                                                                                                                                                                                                                                          |
-| tags                             | core | hstore        |
+| tags                             | core | hstore_csv    |
 | user_data                        | core | string        | The user data to make available to the launched EC2 instances. For more information, see Instance metadata and user data in the Amazon EC2 User Guide. If you are using a command line tool, base64-encoding is performed for you, and you can load the text from a file. Otherwise, you must provide base64-encoded text. User data is limited to 16 KB.                                                                                                                                                                                                                                              |

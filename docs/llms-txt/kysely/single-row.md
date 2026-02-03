@@ -4,12 +4,6 @@
 
 # Source: https://kysely.dev/docs/examples/delete/single-row.md
 
-# Source: https://kysely.dev/docs/examples/update/single-row.md
-
-# Source: https://kysely.dev/docs/examples/insert/single-row.md
-
-# Source: https://kysely.dev/docs/examples/delete/single-row.md
-
 # Single row
 
 Delete a single row:

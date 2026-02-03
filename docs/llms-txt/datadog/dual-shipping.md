@@ -6,7 +6,6 @@ description: >-
   Configure the Datadog Agent to send metrics, logs, and traces to multiple
   Datadog organizations simultaneously.
 breadcrumbs: Docs > Agent > Agent Configuration > Dual Shipping
-source_url: https://docs.datadoghq.com/configuration/dual-shipping/index.html
 ---
 
 # Dual Shipping

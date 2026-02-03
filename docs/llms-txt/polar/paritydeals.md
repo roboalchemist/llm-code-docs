@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/features/integrations/paritydeals.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Purchase Power Parity with ParityDeals
 
 > Offer products with different price across the globe

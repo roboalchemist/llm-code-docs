@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/app-guides/use-domain-apex-with-endpoints/aws-domain-apex-redirect.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AWS Domain Apex Redirect
 
 > This tutorial will guide you through the process of setting up an Apex redirect using AWS S3, AWS CloudFront, and AWS Certificate Manager.

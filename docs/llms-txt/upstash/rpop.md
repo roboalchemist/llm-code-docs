@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/list/rpop.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/rpop.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/rpop.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/rpop.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/rpop.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/rpop.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/rpop.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/rpop.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/rpop.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/rpop.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # RPOP
 
@@ -26,11 +12,11 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the list.
 </ParamField>
 
-<ParamField body="count" type="integer">
+<ParamField body="count" type="int">
   How many elements to pop. If not specified, a single element is popped.
 </ParamField>
 
@@ -43,15 +29,15 @@
 </ResponseField>
 
 <RequestExample>
-  ```ts Single  theme={"system"}
-  await redis.rpush("key", "a", "b", "c"); 
-  const element = await redis.rpop("key");
-  console.log(element); // "c"
+  ```py Single  theme={"system"}
+  redis.rpush("mylist", "one", "two", "three")
+
+  assert redis.rpop("mylist") == "three"
   ```
 
-  ```ts Multiple  theme={"system"}
-  await redis.rpush("key", "a", "b", "c"); 
-  const element = await redis.rpop("key", 2);
-  console.log(element); // ["c", "b"]
+  ```py Multiple  theme={"system"}
+  redis.rpush("mylist", "one", "two", "three")
+
+  assert redis.rpop("mylist", 2) == ["three", "two"]
   ```
 </RequestExample>

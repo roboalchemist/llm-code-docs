@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/ai/contextual-menu.md
+# Source: https://www.mintlify.com/docs/ai/contextual-menu.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Contextual menu
 
@@ -23,6 +27,7 @@ The contextual menu includes several pre-built options that you can enable by ad
 | **Open in ChatGPT**     | `chatgpt`    | Creates a ChatGPT conversation with the current page as context          |
 | **Open in Claude**      | `claude`     | Creates a Claude conversation with the current page as context           |
 | **Open in Perplexity**  | `perplexity` | Creates a Perplexity conversation with the current page as context       |
+| **Open in Grok**        | `grok`       | Creates a Grok conversation with the current page as context             |
 | **Copy MCP server URL** | `mcp`        | Copies your MCP server URL to the clipboard                              |
 | **Connect to Cursor**   | `cursor`     | Installs your hosted MCP server in Cursor                                |
 | **Connect to VS Code**  | `vscode`     | Installs your hosted MCP server in VS Code                               |
@@ -45,6 +50,7 @@ Add the `contextual` field to your `docs.json` file and specify which options yo
      "chatgpt",
      "claude",
      "perplexity",
+     "grok",
      "mcp",
      "cursor",
      "vscode"
@@ -70,19 +76,10 @@ Create custom options in the contextual menu by adding an object to the `options
 
   Options:
 
-  * [Font Awesome icon](https://fontawesome.com/icons) name
-  * [Lucide icon](https://lucide.dev/icons) name
-  * JSX-compatible SVG code wrapped in curly braces
+  * [Font Awesome icon](https://fontawesome.com/icons) name, if you have the `icons.library` [property](/organize/settings#param-icons) set to `fontawesome` in your `docs.json`
+  * [Lucide icon](https://lucide.dev/icons) name, if you have the `icons.library` [property](/organize/settings#param-icons) set to `lucide` in your `docs.json`
   * URL to an externally hosted icon
   * Path to an icon file in your project
-
-  For custom SVG icons:
-
-  1. Convert your SVG using the [SVGR converter](https://react-svgr.com/playground/).
-  2. Paste your SVG code into the SVG input field.
-  3. Copy the complete `<svg>...</svg>` element from the JSX output field.
-  4. Wrap the JSX-compatible SVG code in curly braces: `icon={<svg ...> ... </svg>}`.
-  5. Adjust `height` and `width` as needed.
 </ResponseField>
 
 <ResponseField name="iconType" type="string">

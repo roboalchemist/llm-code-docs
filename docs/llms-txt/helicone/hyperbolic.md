@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/getting-started/integration-method/hyperbolic.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Hyperbolic Integration
 
 > Integrate Helicone with Hyperbolic, a platform for running open-source LLMs. Monitor and analyze interactions with any Hyperbolic-deployed model using a simple base_url configuration.

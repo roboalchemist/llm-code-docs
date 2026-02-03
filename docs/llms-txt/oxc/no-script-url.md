@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/no-script-url.md
 ---
-# eslint/no-script-url&#x20;
 
 ### What it does
 
@@ -18,11 +17,9 @@ performance issues.
 
 ### Examples
 
-Examples of **incorrect** code for this rule
+Examples of **incorrect** code for this rule:
 
 ```javascript
-/*eslint no-script-url: "error"*/
-
 location.href = "javascript:void(0)";
 
 location.href = `javascript:void(0)`;

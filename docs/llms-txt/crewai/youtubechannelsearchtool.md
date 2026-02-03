@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/search-research/youtubechannelsearchtool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # YouTube Channel RAG Search
 
 > The `YoutubeChannelSearchTool` is designed to perform a RAG (Retrieval-Augmented Generation) search within the content of a Youtube channel.
@@ -105,10 +109,10 @@ youtube_channel_tool = YoutubeChannelSearchTool(
             ),
         ),
         embedder=dict(
-            provider="google", # or openai, ollama, ...
+            provider="google-generativeai", # or openai, ollama, ...
             config=dict(
-                model="models/embedding-001",
-                task_type="retrieval_document",
+                model_name="gemini-embedding-001",
+                task_type="RETRIEVAL_DOCUMENT",
                 # title="Embeddings",
             ),
         ),

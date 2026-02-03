@@ -71,5 +71,5 @@ $ curl -s http://localhost:8080/document/v1/music/music/docid/2 | python -m json
 - [Vespaのインストールをセキュア](../en/security/securing-your-vespa-installation)にします。 
 - AWSで稼働させるには、[AWS EC2での複数ノードのクイック・スタート](../en/operations/self-managed/multinode-systems.html#aws-ec2)または [AWS ECSでの複数ノードのクイック・スタート](../en/operations/self-managed/multinode-systems.html#aws-ecs)を参照してください。 
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

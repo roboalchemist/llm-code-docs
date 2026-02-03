@@ -4,7 +4,6 @@
 title: Remote Agent Management
 description: Remotely upgrade and configure your Agents
 breadcrumbs: Docs > Agent > Fleet Automation > Remote Agent Management
-source_url: https://docs.datadoghq.com/fleet_automation/remote_management/index.html
 ---
 
 # Remote Agent Management
@@ -60,7 +59,7 @@ Datadog suggests at least 2GB for the initial Agent install and an additional 2G
 
    {% image
       source="https://datadog-docs.imgix.net/images/agent/fleet_automation/upgrade-screen2.6ae4c20285dcf62bf47d7aa48d5990fc.png?auto=format"
-      alt="UI showing the Upgrade Agents tab with the âUpgrade Nowâ button." /%}
+      alt="UI showing the Upgrade Agents tab with the 'Upgrade Now' button." /%}
 
 1. **Select the Agents you want to upgrade**. You can target a group of Agents by filtering on host information or tags.
 

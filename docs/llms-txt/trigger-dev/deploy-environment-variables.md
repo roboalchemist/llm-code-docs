@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/deploy-environment-variables.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Environment Variables
 
 > Any environment variables used in your tasks need to be added so the deployed code will run successfully.
@@ -78,6 +82,85 @@ We have a complete set of SDK functions (and REST API) you can use to directly m
 | [envvars.update()](/management/envvars/update)     | Update a single environment variable                        |
 | [envvars.del()](/management/envvars/delete)        | Delete a single environment variable                        |
 
+#### Initial load from .env file
+
+To initially load environment variables from a `.env` file into your Trigger.dev cloud environment, you can use `envvars.upload()`. This is useful for one-time bulk imports when setting up a new project or environment.
+
+```ts  theme={"theme":"css-variables"}
+import { envvars } from "@trigger.dev/sdk";
+import { readFileSync } from "fs";
+import { parse } from "dotenv";
+
+// Read and parse your .env file
+const envContent = readFileSync(".env.production", "utf-8");
+const parsed = parse(envContent);
+
+// Upload to Trigger.dev (replace with your project ref and environment slug)
+await envvars.upload("proj_your_project_ref", "prod", {
+  variables: parsed,
+  override: false, // Set to true to override existing variables
+});
+```
+
+When called inside a task, you can omit the project ref and environment slug as they'll be automatically inferred from the task context:
+
+```ts  theme={"theme":"css-variables"}
+import { envvars, task } from "@trigger.dev/sdk";
+import { readFileSync } from "fs";
+import { parse } from "dotenv";
+
+export const setupEnvVars = task({
+  id: "setup-env-vars",
+  run: async () => {
+    const envContent = readFileSync(".env.production", "utf-8");
+    const parsed = parse(envContent);
+
+    // projectRef and environment slug are automatically inferred from ctx
+    await envvars.upload({
+      variables: parsed,
+      override: false,
+    });
+  },
+});
+```
+
+<Note>
+  This is different from `syncEnvVars` which automatically syncs variables during every deploy. Use `envvars.upload()` for one-time initial loads, and `syncEnvVars` for ongoing synchronization.
+</Note>
+
+#### Getting the current environment
+
+When using `envvars.retrieve()` inside a task, you can access the current environment information from the task context (`ctx`). The `envvars.retrieve()` function doesn't return the environment, but you can get it from `ctx.environment`:
+
+```ts  theme={"theme":"css-variables"}
+import { envvars, task } from "@trigger.dev/sdk";
+
+export const myTask = task({
+  id: "my-task",
+  run: async (payload, { ctx }) => {
+    // Get the current environment information
+    const currentEnv = ctx.environment.slug; // e.g., "dev", "prod", "staging"
+    const envType = ctx.environment.type; // e.g., "DEVELOPMENT", "PRODUCTION", "STAGING", "PREVIEW"
+
+    // Retrieve an environment variable
+    // When called inside a task, projectRef and slug are automatically inferred
+    const apiKey = await envvars.retrieve("API_KEY");
+
+    console.log(`Retrieved API_KEY from environment: ${currentEnv} (${envType})`);
+    console.log(`Value: ${apiKey.value}`);
+  },
+});
+```
+
+The context object provides:
+
+* `ctx.environment.slug` - The environment slug (e.g., "dev", "prod")
+* `ctx.environment.type` - The environment type ("DEVELOPMENT", "PRODUCTION", "STAGING", or "PREVIEW")
+* `ctx.environment.id` - The environment ID
+* `ctx.project.ref` - The project reference
+
+For more information about the context object, see the [Context documentation](/context).
+
 ### Sync env vars from another service
 
 You could use the SDK functions above but it's much easier to use our `syncEnvVars` build extension in your `trigger.config` file.
@@ -89,7 +172,7 @@ You could use the SDK functions above but it's much easier to use our `syncEnvVa
 
 In this example we're using env vars from [Infisical](https://infisical.com).
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { syncEnvVars } from "@trigger.dev/build/extensions/core";
 import { InfisicalSDK } from "@infisical/sdk";
@@ -141,7 +224,7 @@ This means that you need to redeploy your Trigger.dev tasks if you change the en
 
 `syncEnvVars` does not have any effect when running the `dev` command locally. If you want to inject environment variables from another service into your local environment you can do so via a `.env` file or just supplying them as environment variables in your terminal. Most services will have a CLI tool that allows you to run a command with environment variables set:
 
-```sh  theme={null}
+```sh  theme={"theme":"css-variables"}
 infisical run -- npx trigger.dev@latest dev
 ```
 
@@ -151,7 +234,7 @@ Any environment variables set in the CLI command will be available to your local
 
 You can return env vars as an object with string keys and values, or an array of names + values.
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 return {
   MY_ENV_VAR: "my value",
   MY_OTHER_ENV_VAR: "my other value",
@@ -160,7 +243,7 @@ return {
 
 or
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 return [
   {
     name: "MY_ENV_VAR",
@@ -199,7 +282,7 @@ Securely pass a Google credential JSON file to your Trigger.dev task using envir
   <Step title="Use the environment variable in your code">
     Add the following code to your Trigger.dev task:
 
-    ```ts  theme={null}
+    ```ts  theme={"theme":"css-variables"}
     import { google } from "googleapis";
 
     const credentials = JSON.parse(
@@ -241,7 +324,7 @@ This is the simplest way to bring dotenvx or `.env.production` variables into yo
 
 If you'd prefer an automated flow, you can use the `syncEnvVars` build extension to programmatically load and return your variables:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { syncEnvVars } from "@trigger.dev/build/extensions/core";
 import dotenvx from "@dotenvx/dotenvx";

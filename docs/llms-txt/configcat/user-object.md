@@ -2,19 +2,21 @@
 
 # User Object
 
+Copy page
+
 The *User Object* represents a user in your application. It is a collection of *user attributes* that store various pieces of information about the user.
 
-The User Object is necessary to evaluate [Targeting Rules](https://configcat.com/docs/docs/targeting/targeting-rule/targeting-rule-overview/.md) and [Percentage Options](https://configcat.com/docs/docs/targeting/percentage-options/.md). It allows you to pass the user attributes that are referenced in the rules of the feature flag to the ConfigCat SDK.
+The User Object is necessary to evaluate [Targeting Rules](https://configcat.com/docs/targeting/targeting-rule/targeting-rule-overview.md) and [Percentage Options](https://configcat.com/docs/targeting/percentage-options.md). It allows you to pass the user attributes that are referenced in the rules of the feature flag to the ConfigCat SDK.
 
 info
 
-The User Object is essential if you'd like to use ConfigCat's [Targeting](https://configcat.com/docs/docs/targeting/targeting-overview/.md) feature.
+The User Object is essential if you'd like to use ConfigCat's [Targeting](https://configcat.com/docs/targeting/targeting-overview.md) feature.
 
 ## The relationship between the User Object and Targeting Rules[​](#the-relationship-between-the-user-object-and-targeting-rules "Direct link to The relationship between the User Object and Targeting Rules")
 
-**As a product manager**, you can define [Targeting Rules](https://configcat.com/docs/docs/targeting/targeting-rule/targeting-rule-overview/.md) on the [ConfigCat Dashboard](https://app.configcat.com) based on the user attributes that are provided by your application.
+**As a product manager**, you can define [Targeting Rules](https://configcat.com/docs/targeting/targeting-rule/targeting-rule-overview.md) on the [ConfigCat Dashboard](https://app.configcat.com) based on the user attributes that are provided by your application.
 
-**As a developer**, User Object allows you to pass user attributes to the ConfigCat SDK, which you (or your teammates) can reference in the [Targeting Rules](https://configcat.com/docs/docs/targeting/targeting-rule/targeting-rule-overview/.md) on the [Dashboard](https://app.configcat.com).
+**As a developer**, User Object allows you to pass user attributes to the ConfigCat SDK, which you (or your teammates) can reference in the [Targeting Rules](https://configcat.com/docs/targeting/targeting-rule/targeting-rule-overview.md) on the [Dashboard](https://app.configcat.com).
 
 ## Security and privacy concerns[​](#security-and-privacy-concerns "Direct link to Security and privacy concerns")
 
@@ -33,7 +35,7 @@ The User Object offers the following properties to store user data:
 
 ### Code example[​](#code-example "Direct link to Code example")
 
-```
+```js
 const userObject = {
   identifier: '#UNIQUE-USER-IDENTIFIER#', // required
   email: 'john@example.com',
@@ -43,11 +45,12 @@ const userObject = {
     UserRole: 'Admin',
   },
 };
+
 ```
 
 ### Identifier attribute[​](#identifier-attribute "Direct link to Identifier attribute")
 
-The unique identifier of a user in your application. This is a **REQUIRED** attribute. ConfigCat uses this attribute to differentiate your users from each other. By default, it is used to evaluate [Percentage Options](https://configcat.com/docs/docs/targeting/percentage-options/.md).
+The unique identifier of a user in your application. This is a **REQUIRED** attribute. ConfigCat uses this attribute to differentiate your users from each other. By default, it is used to evaluate [Percentage Options](https://configcat.com/docs/targeting/percentage-options.md).
 
 Our recommendation for an identifier:
 
@@ -61,7 +64,7 @@ To use custom attributes, you need to pass a User Object containing the `custom`
 
 info
 
-The custom attribute's value can be of multiple types: e.g. string, number, date, array of strings, etc. Check the [SDK reference](https://configcat.com/docs/docs/sdk-reference/overview/.md) for more details.
+The custom attribute's value can be of multiple types: e.g. string, number, date, array of strings, etc. Check the [SDK reference](https://configcat.com/docs/sdk-reference/overview.md) for more details.
 
 ## Examples[​](#examples "Direct link to Examples")
 
@@ -89,11 +92,12 @@ This allows us to define a Targeting Rule that turns on the feature for the cust
 
 Add the **SubscriptionType** custom attribute to the User Object in your application code.
 
-```
+```js
 const userObject = {
   identifier: userId,
   custom: {
     SubscriptionType: 'Pro',
   },
 };
+
 ```

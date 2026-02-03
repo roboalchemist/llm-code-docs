@@ -2,13 +2,9 @@
 
 # Source: https://docs.pipecat.ai/server/services/transport/tavus.md
 
-# Source: https://docs.pipecat.ai/server/services/video/tavus.md
-
-# Source: https://docs.pipecat.ai/server/services/transport/tavus.md
-
-# Source: https://docs.pipecat.ai/server/services/video/tavus.md
-
-# Source: https://docs.pipecat.ai/server/services/transport/tavus.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # TavusTransport
 
@@ -85,8 +81,3 @@ See the [complete example](https://github.com/pipecat-ai/pipecat/blob/main/examp
 * Avatar and replica setup
 * Pipeline integration with TTS
 * Event handling for participant management
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

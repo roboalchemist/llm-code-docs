@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/frameworks/supabase-edge-functions-basic.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Triggering tasks from Supabase edge functions
 
 > This guide will show you how to trigger a task from a Supabase edge function, and then view the run in our dashboard.
@@ -33,7 +37,7 @@ This guide shows you how to set up and deploy a simple Supabase edge function ex
 
     You can create a new project by running the following command in your terminal using the Supabase CLI:
 
-    ```bash  theme={null}
+    ```bash  theme={"theme":"css-variables"}
     supabase init
     ```
 
@@ -50,7 +54,7 @@ This guide shows you how to set up and deploy a simple Supabase edge function ex
 
     This is required for the Trigger.dev SDK to work correctly.
 
-    ```ts package.json theme={null}
+    ```ts package.json theme={"theme":"css-variables"}
     {
       "devDependencies": {
         "typescript": "^5.6.2"
@@ -67,25 +71,31 @@ This guide shows you how to set up and deploy a simple Supabase edge function ex
     Run this command in the root of your project to get started:
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest init
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest init
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest init
       ```
     </CodeGroup>
 
     It will do a few things:
 
-    1. Log you into the CLI if you're not already logged in.
-    2. Create a `trigger.config.ts` file in the root of your project.
-    3. Ask where you'd like to create the `/trigger` directory.
-    4. Create the `/trigger` directory with an example task, `/trigger/example.[ts/js]`.
+    <Tip title="MCP Server">
+      Our [Trigger.dev MCP server](/mcp-introduction) gives your AI assistant direct access to Trigger.dev tools; search docs, trigger tasks, deploy projects, and monitor runs. We recommend installing it for the best developer experience.
+    </Tip>
+
+    1. Ask if you want to install the [Trigger.dev MCP server](/mcp-introduction) for your AI assistant.
+    2. Log you into the CLI if you're not already logged in.
+    3. Ask you to select your project.
+    4. Install the required SDK packages.
+    5. Ask where you'd like to create the `/trigger` directory and create it with an example task.
+    6. Create a `trigger.config.ts` file in the root of your project.
 
     Install the "Hello World" example task when prompted. We'll use this task to test the setup.
   </Step>
@@ -96,15 +106,15 @@ This guide shows you how to set up and deploy a simple Supabase edge function ex
     It can also update your `@trigger.dev/*` packages to prevent version mismatches and failed deploys. You will always be prompted first.
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest dev
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest dev
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest dev
       ```
     </CodeGroup>
@@ -141,7 +151,7 @@ This guide shows you how to set up and deploy a simple Supabase edge function ex
 
     In your project, run the following command in the terminal using the Supabase CLI:
 
-    ```bash  theme={null}
+    ```bash  theme={"theme":"css-variables"}
     supabase functions new edge-function-trigger
     ```
   </Step>
@@ -149,7 +159,7 @@ This guide shows you how to set up and deploy a simple Supabase edge function ex
   <Step title="Update the edge function code">
     Replace the placeholder code in your `edge-function-trigger/index.ts` file with the following:
 
-    ```ts functions/edge-function-trigger/index.ts theme={null}
+    ```ts functions/edge-function-trigger/index.ts theme={"theme":"css-variables"}
     // Setup type definitions for built-in Supabase Runtime APIs
     import "jsr:@supabase/functions-js/edge-runtime.d.ts";
     // Import the Trigger.dev SDK - replace "<your-sdk-version>" with the version of the SDK you are using, e.g. "3.0.0". You can find this in your package.json file.
@@ -181,7 +191,7 @@ This guide shows you how to set up and deploy a simple Supabase edge function ex
   <Step title="Deploy your edge function using the Supabase CLI">
     You can now deploy your edge function with the following command in your terminal:
 
-    ```bash  theme={null}
+    ```bash  theme={"theme":"css-variables"}
     supabase functions deploy edge-function-trigger --no-verify-jwt
     ```
 
@@ -228,15 +238,15 @@ Add `TRIGGER_SECRET_KEY` <Icon icon="circle-4" iconType="solid" size={20} color=
     Next, deploy your `hello-world` task to [Trigger.dev cloud](https://cloud.trigger.dev).
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest deploy
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest deploy
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest deploy
       ```
     </CodeGroup>

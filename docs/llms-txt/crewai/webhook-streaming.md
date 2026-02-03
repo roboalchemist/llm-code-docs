@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/enterprise/features/webhook-streaming.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Webhook Streaming
 
 > Using Webhook Streaming to stream events to your webhook
@@ -15,7 +19,7 @@ When using the Kickoff API, include a `webhooks` object to your request, for exa
 
 ```json  theme={null}
 {
-  "inputs": {"foo": "bar"},
+  "inputs": { "foo": "bar" },
   "webhooks": {
     "events": ["crew_kickoff_started", "llm_call_started"],
     "url": "https://your.endpoint/webhook",
@@ -45,8 +49,8 @@ Each webhook sends a list of events:
       "data": {
         "model": "gpt-4",
         "messages": [
-          {"role": "system", "content": "You are an assistant."},
-          {"role": "user", "content": "Summarize this article."}
+          { "role": "system", "content": "You are an assistant." },
+          { "role": "user", "content": "Summarize this article." }
         ]
       }
     }
@@ -54,7 +58,7 @@ Each webhook sends a list of events:
 }
 ```
 
-The `data` object structure varies by event type. Refer to the [event list](https://github.com/crewAIInc/crewAI/tree/main/src/crewai/utilities/events) on GitHub.
+The `data` object structure varies by event type. Refer to the [event list](https://github.com/crewAIInc/crewAI/tree/main/lib/crewai/src/crewai/events/types) on GitHub.
 
 As requests are sent over HTTP, the order of events can't be guaranteed. If you need ordering, use the `timestamp` field.
 
@@ -163,6 +167,7 @@ You can emit your own custom events, and they will be delivered through the webh
   </Card>
 
   <Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-    Contact our support team for assistance with webhook integration or troubleshooting.
+    Contact our support team for assistance with webhook integration or
+    troubleshooting.
   </Card>
 </CardGroup>

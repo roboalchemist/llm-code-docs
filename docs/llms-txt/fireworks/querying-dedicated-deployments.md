@@ -1,11 +1,15 @@
 # Source: https://docs.fireworks.ai/tools-sdks/python-client/querying-dedicated-deployments.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Querying Dedicated Deployments
 
 > Learn how to connect to and query dedicated deployments that were created outside the SDK
 
 <Warning>
-  This SDK documentation applies to version [0.19.20](https://pypi.org/project/fireworks-ai/0.19.20/) and earlier. The Build SDK will be deprecated and replaced with version 1.0.0 of the SDK (see our [changelog](/updates/changelog#2025-11-12) for more details). Please migrate to the new SDK when it becomes available.
+  This SDK documentation applies to version [0.19.20](https://pypi.org/project/fireworks-ai/0.19.20/) and earlier. The Build SDK will be deprecated and replaced with version 1.0.0 of the SDK (see our [changelog](/updates/changelog#2025-11-12) for more details). Please migrate to the [new SDK](/tools-sdks/python-sdk).
 </Warning>
 
 When you have dedicated deployments that were created via `firectl` or the Fireworks web UI, you can easily connect to them using the Build SDK to run inference. This is particularly useful when you want to leverage existing infrastructure or when deployments are managed by different teams.

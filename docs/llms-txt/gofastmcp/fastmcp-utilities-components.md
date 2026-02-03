@@ -1,72 +1,101 @@
 # Source: https://gofastmcp.com/python-sdk/fastmcp-utilities-components.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # components
 
 # `fastmcp.utilities.components`
 
+## Functions
+
+### `get_fastmcp_metadata` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/components.py#L26" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+get_fastmcp_metadata(meta: dict[str, Any] | None) -> FastMCPMeta
+```
+
+Extract FastMCP metadata from a component's meta dict.
+
+Handles both the current `fastmcp` namespace and the legacy `_fastmcp`
+namespace for compatibility with older FastMCP servers.
+
 ## Classes
 
-### `FastMCPMeta` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/components.py#L16" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `FastMCPMeta` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/components.py#L20" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
-### `FastMCPComponent` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/components.py#L29" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `FastMCPComponent` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/components.py#L61" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 Base class for FastMCP tools, prompts, resources, and resource templates.
 
 **Methods:**
 
-#### `key` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/components.py#L66" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `make_key` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/components.py#L112" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+make_key(cls, identifier: str) -> str
+```
+
+Construct the lookup key for this component type.
+
+**Args:**
+
+* `identifier`: The raw identifier (name for tools/prompts, uri for resources)
+
+**Returns:**
+
+* A prefixed key like "tool:name" or "resource:uri"
+
+#### `key` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/components.py#L126" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 key(self) -> str
 ```
 
-The key of the component. This is used for internal bookkeeping
-and may reflect e.g. prefixes or other identifiers. You should not depend on
-keys having a certain value, as the same tool loaded from different
-hierarchies of servers may have different keys.
+The globally unique lookup key for this component.
 
-#### `get_meta` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/components.py#L75" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+Format: "{key_prefix}:{identifier}@{version}" or "{key_prefix}:{identifier}@"
+e.g. "tool:my\_tool\@v2", "tool:my\_tool@", "resource:file://x.txt@"
+
+The @ suffix is ALWAYS present to enable unambiguous parsing of keys
+(URIs may contain @ characters, so we always include the delimiter).
+
+Subclasses should override this to use their specific identifier.
+Base implementation uses name.
+
+#### `get_meta` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/components.py#L141" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-get_meta(self, include_fastmcp_meta: bool | None = None) -> dict[str, Any] | None
+get_meta(self) -> dict[str, Any]
 ```
 
 Get the meta information about the component.
 
-If include\_fastmcp\_meta is True, a `_fastmcp` key will be added to the
-meta, containing a `tags` field with the tags of the component.
+Returns a dict that always includes a `fastmcp` key containing:
 
-#### `model_copy` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/components.py#L99" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+* `tags`: sorted list of component tags
+* `version`: component version (only if set)
 
-```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-model_copy(self) -> Self
-```
+Internal keys (prefixed with `_`) are stripped from the fastmcp namespace.
 
-Create a copy of the component.
-
-**Args:**
-
-* `update`: A dictionary of fields to update.
-* `deep`: Whether to deep copy the component.
-* `key`: The key to use for the copy.
-
-#### `enable` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/components.py#L132" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `enable` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/components.py#L189" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 enable(self) -> None
 ```
 
-Enable the component.
+Removed in 3.0. Use server.enable(keys=\[...]) instead.
 
-#### `disable` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/components.py#L136" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `disable` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/components.py#L196" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 disable(self) -> None
 ```
 
-Disable the component.
+Removed in 3.0. Use server.disable(keys=\[...]) instead.
 
-#### `copy` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/components.py#L140" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `copy` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/components.py#L203" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 copy(self) -> Self
@@ -74,35 +103,40 @@ copy(self) -> Self
 
 Create a copy of the component.
 
-### `MirroredComponent` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/components.py#L145" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
-
-Base class for components that are mirrored from a remote server.
-
-Mirrored components cannot be enabled or disabled directly. Call copy() first
-to create a local version you can modify.
-
-**Methods:**
-
-#### `enable` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/components.py#L158" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `register_with_docket` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/components.py#L207" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-enable(self) -> None
+register_with_docket(self, docket: Docket) -> None
 ```
 
-Enable the component.
+Register this component with docket for background execution.
 
-#### `disable` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/components.py#L167" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+No-ops if task\_config.mode is "forbidden". Subclasses override to
+register their callable (self.run, self.read, self.render, or self.fn).
+
+#### `add_to_docket` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/components.py#L215" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-disable(self) -> None
+add_to_docket(self, docket: Docket, *args: Any, **kwargs: Any) -> Execution
 ```
 
-Disable the component.
+Schedule this component for background execution via docket.
 
-#### `copy` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/components.py#L176" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+Subclasses override this to handle their specific calling conventions:
+
+* Tool: add\_to\_docket(docket, arguments: dict, \*\*kwargs)
+* Resource: add\_to\_docket(docket, \*\*kwargs)
+* ResourceTemplate: add\_to\_docket(docket, params: dict, \*\*kwargs)
+* Prompt: add\_to\_docket(docket, arguments: dict | None, \*\*kwargs)
+
+The \*\*kwargs are passed through to docket.add() (e.g., key=task\_key).
+
+#### `get_span_attributes` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/utilities/components.py#L237" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-copy(self) -> Self
+get_span_attributes(self) -> dict[str, Any]
 ```
 
-Create a copy of the component that can be modified.
+Return span attributes for telemetry.
+
+Subclasses should call super() and merge their specific attributes.

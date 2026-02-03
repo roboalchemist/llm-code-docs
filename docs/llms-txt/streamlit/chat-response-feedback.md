@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/tutorials/chat-and-llm-apps/chat-response-feedback
+
 # Collect user feedback about LLM responses
 
 A common task in a chat app is to collect user feedback about an LLM's responses. Streamlit includes `st.feedback` to conveniently collect user sentiment by displaying a group of selectable sentiment icons.

@@ -12,7 +12,7 @@ Stripe supports manually defining prices in different currencies when creating [
 
 Use manual currency prices instead of Adaptive Pricing when:
 
-- Adaptive Pricing isn’t [supported](https://docs.stripe.com/payments/currencies/localize-prices/adaptive-pricing.md#restrictions) for your business or Checkout configuration. Reach out to [adaptive-pricing-beta@stripe.com](mailto:adaptive-pricing-beta@stripe.com) to ask about joining the preview.
+- Adaptive Pricing isn’t [supported](https://docs.stripe.com/payments/currencies/localize-prices/adaptive-pricing.md#restrictions) for your business or Checkout configuration.
 - You’re supporting a region where you’re comfortable taking on fluctuations in the currency’s exchange rate.
 
 Manually defined multi-currency prices override Adaptive Pricing for those currencies, even if it’s enabled.

@@ -4,8 +4,6 @@
 title: EC2 Traffic Mirror Filter
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > EC2 Traffic Mirror Filter
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.ec2_traffic_mirror_filter.dataset/index.html
 ---
 
 # EC2 Traffic Mirror Filter
@@ -26,5 +24,5 @@ aws.ec2_traffic_mirror_filter
 | egress_filter_rules      | core | json          | Information about the egress rules that are associated with the Traffic Mirror filter.  |
 | ingress_filter_rules     | core | json          | Information about the ingress rules that are associated with the Traffic Mirror filter. |
 | network_services         | core | array<string> | The network service traffic that is associated with the Traffic Mirror filter.          |
-| tags                     | core | hstore        |
+| tags                     | core | hstore_csv    |
 | traffic_mirror_filter_id | core | string        | The ID of the Traffic Mirror filter.                                                    |

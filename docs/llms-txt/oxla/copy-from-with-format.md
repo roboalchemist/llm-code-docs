@@ -1,5 +1,9 @@
 # Source: https://docs.oxla.com/sql-reference/sql-statements/copy-from/copy-from-with-format.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.oxla.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # COPY FROM with FORMAT
 
 ## Overview

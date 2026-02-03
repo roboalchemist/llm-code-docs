@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/strategies/homoglyph/
+
 # homoglyph
 
 Homoglyph Encoding Strategy

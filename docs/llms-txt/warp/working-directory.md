@@ -17,4 +17,4 @@ Warp's working directory feature is designed to enhance your workflow by enablin
 
 ## How to use it
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-28df13a68133e6b8616525cff46242da198f7ce9%2Fworking-directory-demo.gif?alt=media&#x26;token=cb629cc7-397a-4bb7-b9c5-d2346533694e" alt="Working Directory Demo"><figcaption><p>Working Directory Demo</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-28df13a68133e6b8616525cff46242da198f7ce9%2Fworking-directory-demo.gif?alt=media" alt="Working Directory Demo"><figcaption><p>Working Directory Demo</p></figcaption></figure>

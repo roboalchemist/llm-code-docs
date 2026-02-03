@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/ecosystem/neon-serverless-postgres.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Use Neon's Serverless Postgres with Bun
 
 [Neon](https://neon.tech/) is a fully managed serverless Postgres. Neon separates compute and storage to offer modern developer features such as autoscaling, branching, bottomless storage, and more.
@@ -19,7 +23,7 @@ bun add @neondatabase/serverless
 
 Create a `.env.local` file and add your [Neon Postgres connection string](https://neon.tech/docs/connect/connect-from-any-app) to it.
 
-```sh .env.local icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ini .env.local icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 DATABASE_URL=postgresql://usertitle:password@ep-adj-noun-guid.us-east-1.aws.neon.tech/neondb?sslmode=require
 ```
 
@@ -31,7 +35,7 @@ Paste the following code into your project's `index.ts` file.
 import { neon } from "@neondatabase/serverless";
 
 // Bun automatically loads the DATABASE_URL from .env.local
-// Refer to: https://bun.com/docs/runtime/env for more information
+// Refer to: https://bun.com/docs/runtime/environment-variables for more information
 const sql = neon(process.env.DATABASE_URL);
 
 const rows = await sql`SELECT version()`;

@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/examples/open-sources/projects.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Projects
 
 > Explore our collection of popular open source projects that showcase Tavily's use cases and capabilities.
@@ -135,8 +139,3 @@ export const GitHubReposGrid = () => {
 
 
 <GitHubReposGrid />
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

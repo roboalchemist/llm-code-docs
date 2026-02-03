@@ -1,5 +1,9 @@
 # Source: https://dub.co/docs/concepts/webhooks/event-types.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dub.co/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Event types
 
 > List of available webhook events you can listen to along with their payload examples

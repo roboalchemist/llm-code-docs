@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/features/cost-insights/cost-traces.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Cost Traces
 
 > Aggregate events by user sessions to calculate costs

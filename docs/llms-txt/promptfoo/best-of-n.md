@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/strategies/best-of-n/
+
 # Best-of-N (BoN) Jailbreaking Strategy
 
 Best-of-N (BoN) is a simple but effective black-box jailbreaking algorithm that works by repeatedly sampling variations of a prompt with modality-specific augmentations until a harmful response is elicited.

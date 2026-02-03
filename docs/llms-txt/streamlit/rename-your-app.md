@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/deploy/streamlit-community-cloud/manage-your-app/rename-your-app
+
 # Rename or change your app's GitHub coordinates
 
 Streamlit Community Cloud identifies apps by their GitHub coordinates (owner, repository, branch, entrypoint file path). If you move or rename one of these coordinates without preparation, you will lose access to administer any associated app.

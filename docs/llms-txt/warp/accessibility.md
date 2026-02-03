@@ -20,7 +20,7 @@ This will ensure that you can receive all future updates automatically, without 
 
 From there, Warp should seamlessly work with VoiceOver and start announcing what's happening on the screen and what actions you can take. This may be a major difference from other apps - as Warp announces stuff on its own, letting you know what's going on. There's currently no way to navigate between different UI elements using VO key combinations.
 
-Once installed, it will ask you to log in. Warp also sends telemetry that we use to improve the overall user experience. You can find out more about that in the [privacy section](https://docs.warp.dev/privacy/privacy).
+Once installed, it will ask you to log in. Warp also sends telemetry that we use to improve the overall user experience. You can find out more about that in the [privacy section](https://docs.warp.dev/support-and-community/privacy-and-security/privacy).
 
 The login flow will require you to navigate between the app and your browser. The last step before you can start enjoying our new terminal app is filling up the onboarding survey.
 
@@ -46,10 +46,10 @@ Warp supports voice input as an alternative way to interact with your terminal. 
 * Ask questions about command usage
 * Perform complex multi-step operations
 
-Voice input can be enabled in `Settings > AI > Voice`. For detailed information about voice features and setup, see our [Voice documentation](https://docs.warp.dev/agents/voice).
+Voice input can be enabled in `Settings > AI > Voice`. For detailed information about voice features and setup, see our [Voice documentation](https://docs.warp.dev/agent-platform/agent/voice).
 
 ## Future work
 
 While not all Warp features are accessible yet, we've implemented a process around releasing new features and changes to the main app, to ensure that all new code provides proper a11y announcements.
 
-This is not the ideal and final implementation. We're happy to hear your thoughts and ideas on how we can improve. The biggest milestone for this work is to add support for navigating the UI elements using the keyboard. Give Warp a try, and please, do not hesitate to [share your feedback](https://docs.warp.dev/support-and-billing/sending-us-feedback).
+This is not the ideal and final implementation. We're happy to hear your thoughts and ideas on how we can improve. The biggest milestone for this work is to add support for navigating the UI elements using the keyboard. Give Warp a try, and please, do not hesitate to [share your feedback](https://docs.warp.dev/support-and-community/troubleshooting-and-support/sending-us-feedback).

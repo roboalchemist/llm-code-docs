@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/reference/zapier-workflow-element-tutorial.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Embedding the Zapier Workflow Element
 
 > The Zapier Workflow Element is a prebuilt UI component that enables you to suface your Zapier integration and user workflows directly in your app

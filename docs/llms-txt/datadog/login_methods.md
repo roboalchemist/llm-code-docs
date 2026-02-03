@@ -6,7 +6,6 @@ description: >-
   Enable or disable authentication methods like username/password, Google OAuth,
   and SAML for your Datadog organization with MFA enforcement options.
 breadcrumbs: Docs > Account Management > Configuring Login Methods
-source_url: https://docs.datadoghq.com/login_methods/index.html
 ---
 
 # Configuring Login Methods

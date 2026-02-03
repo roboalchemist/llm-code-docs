@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/deployment/platforms/cerebrium.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Cerebrium
 
 > Deploy Pipecat applications to Cerebrium
@@ -92,7 +96,6 @@ async def main(room_url: str, token: str):
                 audio_in_enabled=True,
                 audio_out_enabled=True,
                 transcription_enabled=True,
-                vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.6)),
             ),
         )
 
@@ -114,16 +117,20 @@ async def main(room_url: str, token: str):
             voice_id="79a125e8-cd45-4c13-8a67-188112f4dd22",  # British Lady
         )
 
+        vad_processor = VADProcessor(vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.2)))
+
         custom_context = LLMContext(messages)
+        custom_user_aggregator, custom_assistant_aggregator = LLMContextAggregatorPair(context)
         context_aggregator_custom = LLMContextAggregatorPair(custom_context)
 
         pipeline = Pipeline(
             [
                 transport.input(),  # Transport user input
-                context_aggregator_custom.user(),
+                vad_processor,
+                custom_user_aggregator,
                 llm,
                 tts,
-                context_aggregator_custom.assistant(),
+                custom_assistant_aggregator,
                 transport.output(),  # Transport bot output
             ]
         )
@@ -131,7 +138,6 @@ async def main(room_url: str, token: str):
         task = PipelineTask(
             pipeline,
             params=PipelineParams(
-                allow_interruptions=True,
                 enable_metrics=True,
                 enable_usage_metrics=True,
             ),
@@ -257,8 +263,3 @@ If you implement all three models locally, you should have much better performan
 * [RAG voice agent](https://www.cerebrium.ai/blog/creating-a-realtime-rag-voice-agent): Create a voice agent that can do RAG using Cerebrium + OpenAI + Pinecone
 * [Twilio voice agent](https://docs.cerebrium.ai/v4/examples/twilio-voice-agent): Create a voice agent that can receive phone calls via Twilio
 * [OpenAI Realtime API implementation](https://www.cerebrium.ai/blog/an-alternative-to-openai-realtime-api-for-voice-capabilities): Create a voice agent that can receive phone calls via OpenAI Realtime API
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

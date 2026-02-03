@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/api-reference/datafold-sdk.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Datafold SDK
 
 The Datafold SDK allows you to accomplish certain actions using a thin programmatic wrapper around the Datafold REST API, in particular:

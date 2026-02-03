@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/gateway/integrations/zapier.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Zapier Integration
 
 > Use the Helicone Zapier app to run Chat Completions via the AI Gateway — no provider keys required.
@@ -74,3 +78,7 @@ It also has a blank curl request, in the event that you don't find an action you
 * Ensure your Helicone API key is valid and has write access.
 * If a request fails, review the error in the Zap run details and the corresponding request in Helicone for provider/model‑specific messages.
 * To switch models later, update the model field in the Zap action or use Helicone routing/policies to control traffic centrally.
+
+<Note title="Request a Helicone Integration" type="info">
+  Looking for a framework or tool not listed here? [Request it here!](https://forms.gle/E9GYKWevh6NGDdDj7)
+</Note>

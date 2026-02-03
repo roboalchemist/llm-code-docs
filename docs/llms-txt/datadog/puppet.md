@@ -4,7 +4,6 @@
 title: Puppet
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Agent > Supported Platforms > Puppet
-source_url: https://docs.datadoghq.com/supported_platforms/puppet/index.html
 ---
 
 # Puppet

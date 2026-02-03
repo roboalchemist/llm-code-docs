@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/rest/prompts/get-v1prompt-2025-id-promptid.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Prompt
 
 > Retrieve a specific prompt by ID

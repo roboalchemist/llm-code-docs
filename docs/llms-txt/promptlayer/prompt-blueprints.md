@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/running-requests/prompt-blueprints.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Prompt Blueprints
 
 Prompt Blueprints are a core concept in PromptLayer that provides a standardized, model-agnostic representation of prompts. They serve as an abstraction layer that:
@@ -14,6 +18,12 @@ Think of Prompt Blueprints as a universal language for LLM interactions that shi
 ## Accessing the Prompt Blueprint
 
 Instead of accessing the raw LLM response via `response["raw_response"]`, it's recommended to use the standardized `response["prompt_blueprint"]`. This ensures consistency across different providers.
+
+<Warning>
+  **Provider-Specific Schema Notice**
+
+  The `raw_response` object structure is provider-specific and may change without notice as LLM providers update their APIs. PromptLayer passes through the native format from each provider. For stable, provider-agnostic prompt data, always use `prompt_blueprint` instead.
+</Warning>
 
 ```python  theme={null}
 response = promptlayer_client.run(
@@ -405,8 +415,3 @@ Prompt Blueprints can be configured to produce structured outputs that follow a 
 For detailed information on creating and using structured outputs with your prompt templates, see our [Structured Outputs documentation](/features/prompt-registry/structured-outputs).
 
 ## Prompt Blueprint Schema
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

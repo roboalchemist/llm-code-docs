@@ -8,7 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > Agent > Agent Guides > Instrumenting a Ruby on Rails application on
   Heroku with Datadog
-source_url: https://docs.datadoghq.com/guide/heroku-ruby/index.html
 ---
 
 # Instrumenting a Ruby on Rails application on Heroku with Datadog

@@ -8,11 +8,8 @@
 
 The EditorDragHandle component provides drag-and-drop functionality for reordering editor blocks using the `@tiptap/extension-drag-handle-vue-3` package.
 
-<caution>
-
-It must be used inside an [Editor](/docs/components/editor) component's default slot to have access to the editor instance.
-
-</caution>
+> [!CAUTION]
+> It must be used inside an [Editor](/docs/components/editor) component's default slot to have access to the editor instance.
 
 It extends the [Button](/docs/components/button) component, so you can pass any property such as `color`, `variant`, `size`, etc.
 
@@ -35,11 +32,9 @@ Hover over the left side of this block to see the drag handle appear and reorder
 </template>
 ```
 
-<callout icon="i-custom-tiptap" target="_blank" to="https://tiptap.dev/docs/editor/extensions/functionality/drag-handle-vue">
-
-Learn more about the Drag Handle extension in the TipTap documentation.
-
-</callout>
+> [!NOTE]
+> See: https://tiptap.dev/docs/editor/extensions/functionality/drag-handle-vue
+> Learn more about the Drag Handle extension in the TipTap documentation.
 
 ### Icon
 
@@ -53,33 +48,22 @@ Use the `icon` prop to customize the drag handle icon.
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.drag` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.drag` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.drag` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.drag` key.
 
 ### Options
 
 Use the `options` prop to customize the positioning behavior using [Floating UI options](https://floating-ui.com/docs/computeposition#options).
 
-<note>
-
-The offset is automatically calculated to center the handle for small blocks and align it to the top for taller blocks.
-
-</note>
+> [!NOTE]
+> The offset is automatically calculated to center the handle for small blocks and align it to the top for taller blocks.
 
 ```vue
 <template>
@@ -221,11 +205,8 @@ const items = (editor: Editor): DropdownMenuItem[][] => {
 </template>
 ```
 
-<note>
-
-This example uses the `mapEditorItems` utility from `@nuxt/ui/utils/editor` to automatically map handler kinds (like `duplicate`, `delete`, `moveUp`, etc.) to their corresponding editor commands with proper state management.
-
-</note>
+> [!NOTE]
+> This example uses the `mapEditorItems` utility from `@nuxt/ui/utils/editor` to automatically map handler kinds (like `duplicate`, `delete`, `moveUp`, etc.) to their corresponding editor commands with proper state management.
 
 ### With suggestion menu
 
@@ -313,7 +294,7 @@ interface EditorDragHandleProps {
   /**
    * @default "\"neutral\""
    */
-  color?: "neutral" | "primary" | "secondary" | "success" | "info" | "warning" | "error" | undefined;
+  color?: "error" | "neutral" | "primary" | "secondary" | "success" | "info" | "warning" | undefined;
   /**
    * @default "\"ghost\""
    */
@@ -324,9 +305,18 @@ interface EditorDragHandleProps {
   options?: FloatingUIOptions | undefined;
   ui?: ({ root?: ClassNameValue; handle?: ClassNameValue; } & { base?: ClassNameValue; label?: ClassNameValue; leadingIcon?: ClassNameValue; leadingAvatar?: ClassNameValue; leadingAvatarSize?: ClassNameValue; trailingIcon?: ClassNameValue; }) | undefined;
   pluginKey?: string | PluginKey<any> | undefined;
+  nestedOptions?: NormalizedNestedOptions | undefined;
   onElementDragStart?: ((e: DragEvent) => void) | undefined;
   onElementDragEnd?: ((e: DragEvent) => void) | undefined;
   getReferencedVirtualElement?: (() => VirtualElement | null) | undefined;
+  /**
+   * Enable drag handles for nested content (list items, blockquotes, etc.).
+   * 
+   * When enabled, the drag handle will appear for nested blocks, not just
+   * top-level blocks. A rule-based scoring system determines which node
+   * to target based on cursor position and configured rules.
+   */
+  nested?: boolean | NestedOptions | undefined;
   /**
    * Class to apply when the link is exact active
    */
@@ -347,14 +337,14 @@ interface EditorDragHandleProps {
   /**
    * The type of the button when not a link.
    */
-  type?: "button" | "submit" | "reset" | undefined;
+  type?: "reset" | "submit" | "button" | undefined;
   onClick?: ((event: MouseEvent) => void | Promise<void>) | ((event: MouseEvent) => void | Promise<void>)[] | undefined;
   /**
    * The element or component this component should render as when not a link.
    */
   as?: any;
   label?: string | undefined;
-  activeColor?: "neutral" | "primary" | "secondary" | "success" | "info" | "warning" | "error" | undefined;
+  activeColor?: "error" | "neutral" | "primary" | "secondary" | "success" | "info" | "warning" | undefined;
   activeVariant?: "ghost" | "solid" | "outline" | "soft" | "subtle" | "link" | undefined;
   /**
    * @default "\"sm\""
@@ -422,6 +412,7 @@ interface EditorDragHandleSlots {
  */
 interface EditorDragHandleEmits {
   nodeChange: (payload: [{ node: JSONContent; pos: number; }]) => void;
+  hover: (payload: [{ node: JSONContent; pos: number; }]) => void;
 }
 ```
 
@@ -442,8 +433,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

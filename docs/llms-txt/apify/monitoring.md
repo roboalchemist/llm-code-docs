@@ -42,7 +42,7 @@ When you set up an alert, you have four choices for how you want the metrics to 
 
 3. **Alert, when run status is one of following** - This type of alert is checked only after the run finishes. It makes possible to track the status of your finished runs and send an alert if the run finishes in a state you do not expect. If your Actor runs very often and suddenly starts failing, you will receive a single alert after the first failed run in 1 minute, and then aggregated alert every 15 minutes.
 
-4. **Alert for dataset field statistics** - If you have a https://docs.apify.com/platform/actors/development/actor-definition/dataset-schema/validation.md set up, then you can use the field statistics to set up an alert. You can use field statistics for example to track if some field is filled in all records, if some numeric value is too low/high (for example when tracking the price of a product over multiple sources), if the number of items in an array is too low/high (for example alert on Instagram Actor if post has a lot of comments) and many other tasks like these.
+4. **Alert for dataset field statistics** - If you have a [dataset schema](https://docs.apify.com/platform/actors/development/actor-definition/dataset-schema/validation.md) set up, then you can use the field statistics to set up an alert. You can use field statistics for example to track if some field is filled in all records, if some numeric value is too low/high (for example when tracking the price of a product over multiple sources), if the number of items in an array is too low/high (for example alert on Instagram Actor if post has a lot of comments) and many other tasks like these.
 
    important
 
@@ -53,7 +53,7 @@ When you set up an alert, you have four choices for how you want the metrics to 
 You can get notified by email, Slack, or in Apify Console. If you use Slack, we suggest using Slack notifications instead of email because they are more reliable, and you can also get notified quicker.
 
 1. **Email** - You can set up one or more emails to receive alert notifications. To do that, you just have to separate them by commas. You can also disable email notifications if you don't want to receive them.
-2. **Slack** - To set up Slack notifications, you first need to connect your Slack workspace to Apify. To do that, go to your https://console.apify.com/account/integrations and click on the **+ Add** button in the Slack section. Once you have your workspace connected, you can choose the workspace when setting up alert notifications and then pick a channel to which you want the notifications to be delivered.
+2. **Slack** - To set up Slack notifications, you first need to connect your Slack workspace to Apify. To do that, go to your [account integration settings](https://console.apify.com/account/integrations) and click on the **+ Add** button in the Slack section. Once you have your workspace connected, you can choose the workspace when setting up alert notifications and then pick a channel to which you want the notifications to be delivered.
 3. **In Console** - You can also get notified in Apify Console. This is useful if you access Apify Console often, and you do not need to be notified as soon as possible.
 
 ![Notifications configurations](/assets/images/notifications-fb7866065c7158dd7f9ecc88ed03ca88.png)
@@ -99,7 +99,7 @@ These are just a few examples of what you can monitor. It's always recommended t
 
 ### Alternative solutions
 
-For more complex monitoring, you can use the https://apify.com/apify/monitoring, which is a collection of https://docs.apify.com/platform/actors.md that allows you to automate the monitoring of jobs you have running on the https://apify.com. The monitoring suite offers some features that are not **currently** available in Apify Console, such as:
+For more complex monitoring, you can use the [monitoring suite](https://apify.com/apify/monitoring), which is a collection of [Apify Actors](https://docs.apify.com/platform/actors.md) that allows you to automate the monitoring of jobs you have running on the [Apify platform](https://apify.com). The monitoring suite offers some features that are not **currently** available in Apify Console, such as:
 
 1. Schema validation of the output
 2. Duplicate checks in the output

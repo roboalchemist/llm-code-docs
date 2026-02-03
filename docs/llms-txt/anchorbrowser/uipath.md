@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/integrations/open-source/playwright/business-applications/uipath.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # UiPath
 
 > Automate UiPath RPA management workflows with Playwright when APIs aren't available.

@@ -17,11 +17,9 @@ Tailwind CSS uses a CSS-first configuration, letting you define your design toke
 }
 ```
 
-<note to="https://tailwindcss.com/docs/theme" target="_blank">
-
-Check the Tailwind CSS documentation for all available theme variable customization options.
-
-</note>
+> [!NOTE]
+> See: https://tailwindcss.com/docs/theme
+> Check the Tailwind CSS documentation for all available theme variable customization options.
 
 ### Fonts
 
@@ -37,15 +35,10 @@ Use the `--font-*` theme variables to [customize the font family utilities](http
 }
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<note to="/docs/getting-started/integrations/fonts">
-
-Fonts defined here are automatically loaded and optimized by the `@nuxt/fonts` module.
-
-</note>
-</template>
-</framework-only>
+**Nuxt:**
+> [!NOTE]
+> See: /docs/getting-started/integrations/fonts
+> Fonts defined here are automatically loaded and optimized by the `@nuxt/fonts` module.
 
 ### Colors
 
@@ -84,11 +77,8 @@ Use the `--color-*` theme variables to [customize your colors](https://tailwindc
 }
 ```
 
-<warning>
-
-When adding custom colors, make sure to define all shades from `50` to `950` for each color.
-
-</warning>
+> [!WARNING]
+> When adding custom colors, make sure to define all shades from `50` to `950` for each color.
 
 ### Breakpoints
 
@@ -269,27 +259,14 @@ These semantic colors are available in the `color` prop of Nuxt UI components:
 </template>
 ```
 
-<note>
-
-Try the <prose-icon className="text-primary" name="i-lucide-swatch-book">
-
-
-
-</prose-icon>
-
- theme picker in the header to instantly see how different color schemes affect the entire UI!
-
-</note>
+> [!NOTE]
+> Try the  theme picker in the header to instantly see how different color schemes affect the entire UI!
 
 ### Runtime configuration
 
-<framework-only>
-<template v-slot:nuxt="">
-<div>
-
-You can configure these colors at runtime in your [`app.config.ts`](https://nuxt.com/docs/guide/directory-structure/app-config#app-config-file) file under the `ui.colors` key, allowing for dynamic theme customization without restarting the server:
-
-```ts [app.config.ts]
+**Nuxt:**
+You can configure these colors at runtime in your app.config.ts file under the ui.colors key, allowing for dynamic theme customization without restarting the server:
+```ts
 export default defineAppConfig({
   ui: {
     colors: {
@@ -299,17 +276,12 @@ export default defineAppConfig({
     }
   }
 })
+
 ```
 
-</div>
-</template>
-
-<template v-slot:vue="">
-<div>
-
-You can configure these colors at runtime in your `vite.config.ts` file under the `ui.colors` key, allowing for dynamic theme customization:
-
-```ts [vite.config.ts]
+**Vue:**
+You can configure these colors at runtime in your vite.config.ts file under the ui.colors key, allowing for dynamic theme customization:
+```ts
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import ui from '@nuxt/ui/vite'
@@ -328,32 +300,19 @@ export default defineConfig({
     })
   ]
 })
+
 ```
 
-</div>
-</template>
-</framework-only>
-
-<caution>
-
-You can only use colors that exist in your theme. Either:
-
-- Use [Tailwind's default colors](https://tailwindcss.com/docs/colors) (like `blue`, `green`, `zinc`)
-- Define custom colors first using the `@theme` directive (like `brand` in our example above)
-
-</caution>
+> [!CAUTION]
+> You can only use colors that exist in your theme. Either:Use [Tailwind's default colors](https://tailwindcss.com/docs/colors) (like `blue`, `green`, `zinc`)Define custom colors first using the `@theme` directive (like `brand` in our example above)
 
 ### Extend colors
 
 You may want to define extra semantic colors beyond the defaults, such as adding a `tertiary` color:
 
-<framework-only>
-<template v-slot:nuxt="">
-<div>
-
-First, register the new color in your `nuxt.config.ts` under the `ui.theme.colors` key:
-
-```ts [nuxt.config.ts]
+**Nuxt:**
+First, register the new color in your nuxt.config.ts under the ui.theme.colors key:
+```ts
 export default defineNuxtConfig({
   ui: {
     theme: {
@@ -369,11 +328,10 @@ export default defineNuxtConfig({
     }
   }
 })
+
 ```
-
-Then, assign it in your `app.config.ts` under the `ui.colors` key:
-
-```ts [app.config.ts]
+Then, assign it in your app.config.ts under the ui.colors key:
+```ts
 export default defineAppConfig({
   ui: {
     colors: {
@@ -383,17 +341,12 @@ export default defineAppConfig({
     }
   }
 })
+
 ```
 
-</div>
-</template>
-
-<template v-slot:vue="">
-<div>
-
-Register and assign the new color in your `vite.config.ts` file:
-
-```ts [vite.config.ts]
+**Vue:**
+Register and assign the new color in your vite.config.ts file:
+```ts
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import ui from '@nuxt/ui/vite'
@@ -423,11 +376,8 @@ export default defineConfig({
     })
   ]
 })
-```
 
-</div>
-</template>
-</framework-only>
+```
 
 Finally, use this new color in components that support the `color` prop or [as a class](/docs/getting-started/theme/css-variables):
 

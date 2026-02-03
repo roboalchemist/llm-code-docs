@@ -77,13 +77,13 @@ The `ApiKey` can be later inspected throughout the [request pipeline](/order-of-
 Using existing HTTP Functionality makes it simple and interoperable to use with any HTTP Client even command-line clients like curl where API Keys can be specified in the **Username** of HTTP Basic Auth:
 
 :::sh
-curl https://api.stripe.com/v1/charges -u STRIPE_KEY_REDACTED:
+curl https://api.stripe.com/v1/charges -u yDOr26HsxyhpuRB3qbG07qfCmDhqutnA:
 :::
 
 Or as a HTTP Bearer Token in the **Authorization** HTTP Request Header:
 
 :::sh
-curl https://api.stripe.com/v1/charges -H "Authorization: Bearer STRIPE_KEY_REDACTED"
+curl https://api.stripe.com/v1/charges -H "Authorization: Bearer yDOr26HsxyhpuRB3qbG07qfCmDhqutnA"
 :::
  
 Both of these methods are built into most HTTP Clients. Here are a few different ways which you can send them using ServiceStack's [.NET Service Clients](/csharp-client):

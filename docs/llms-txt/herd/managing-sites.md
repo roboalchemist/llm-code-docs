@@ -1,5 +1,9 @@
 # Source: https://herd.laravel.com/docs/macos/sites/managing-sites.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://herd.laravel.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Managing Sites
 
 # Manage Sites in Herd

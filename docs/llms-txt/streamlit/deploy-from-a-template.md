@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/deploy/streamlit-community-cloud/get-started/deploy-from-a-template
+
 # Deploy an app from a template
 
 Streamlit Community Cloud makes it easy to get started with several convenient templates. Just pick a template, and Community Cloud will fork it to your account and deploy it. Any edits you push to your new fork will immediately show up in your deployed app. Additionally, if you don't want to use a local development environment, Community Cloud makes it easy to create a GitHub codespace that's fully configured for Streamlit app development.

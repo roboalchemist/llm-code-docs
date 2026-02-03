@@ -2,10 +2,7 @@
 
 # List Pending Invitations in Product
 
-```
-GET 
-/v1/products/:productId/invitations
-```
+Copy page
 
 This endpoint returns the list of pending invitations within the given Product identified by the `productId` parameter.
 

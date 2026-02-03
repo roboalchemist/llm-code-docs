@@ -4,8 +4,6 @@
 title: DMS Certificate
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > DMS Certificate
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.dms_certificate.dataset/index.html
 ---
 
 # DMS Certificate
@@ -18,17 +16,17 @@ aws.dms_certificate
 
 ## Fields
 
-| Title                     | ID   | Type      | Data Type                                                                                                                                                                                                     | Description |
-| ------------------------- | ---- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| _key                      | core | string    |
-| account_id                | core | string    |
-| certificate_arn           | core | string    | The Amazon Resource Name (ARN) for the certificate.                                                                                                                                                           |
-| certificate_creation_date | core | timestamp | The date that the certificate was created.                                                                                                                                                                    |
-| certificate_identifier    | core | string    | A customer-assigned name for the certificate. Identifiers must begin with a letter and must contain only ASCII letters, digits, and hyphens. They can't end with a hyphen or contain two consecutive hyphens. |
-| certificate_owner         | core | string    | The owner of the certificate.                                                                                                                                                                                 |
-| certificate_pem           | core | string    | The contents of a .pem file, which contains an X.509 certificate.                                                                                                                                             |
-| key_length                | core | int64     | The key length of the cryptographic algorithm being used.                                                                                                                                                     |
-| signing_algorithm         | core | string    | The signing algorithm for the certificate.                                                                                                                                                                    |
-| tags                      | core | hstore    |
-| valid_from_date           | core | timestamp | The beginning date that the certificate is valid.                                                                                                                                                             |
-| valid_to_date             | core | timestamp | The final date that the certificate is valid.                                                                                                                                                                 |
+| Title                     | ID   | Type       | Data Type                                                                                                                                                                                                     | Description |
+| ------------------------- | ---- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| _key                      | core | string     |
+| account_id                | core | string     |
+| certificate_arn           | core | string     | The Amazon Resource Name (ARN) for the certificate.                                                                                                                                                           |
+| certificate_creation_date | core | timestamp  | The date that the certificate was created.                                                                                                                                                                    |
+| certificate_identifier    | core | string     | A customer-assigned name for the certificate. Identifiers must begin with a letter and must contain only ASCII letters, digits, and hyphens. They can't end with a hyphen or contain two consecutive hyphens. |
+| certificate_owner         | core | string     | The owner of the certificate.                                                                                                                                                                                 |
+| certificate_pem           | core | string     | The contents of a .pem file, which contains an X.509 certificate.                                                                                                                                             |
+| key_length                | core | int64      | The key length of the cryptographic algorithm being used.                                                                                                                                                     |
+| signing_algorithm         | core | string     | The signing algorithm for the certificate.                                                                                                                                                                    |
+| tags                      | core | hstore_csv |
+| valid_from_date           | core | timestamp  | The beginning date that the certificate is valid.                                                                                                                                                             |
+| valid_to_date             | core | timestamp  | The final date that the certificate is valid.                                                                                                                                                                 |

@@ -10,7 +10,6 @@ description: >-
 breadcrumbs: >-
   Docs > APM > Tracing Guides > Tutorial - Enabling Tracing for a Go Application
   and Datadog Agent in Containers
-source_url: https://docs.datadoghq.com/guide/tutorial-enable-go-containers/index.html
 ---
 
 # Tutorial - Enabling Tracing for a Go Application and Datadog Agent in Containers

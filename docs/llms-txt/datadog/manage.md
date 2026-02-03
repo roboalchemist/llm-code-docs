@@ -1,5 +1,3 @@
-# Source: https://docs.datadoghq.com/cloudprem/manage.md
-
 # Source: https://docs.datadoghq.com/account_management/teams/manage.md
 
 ---
@@ -8,7 +6,6 @@ description: >-
   Customize team pages, manage membership, set up subteams, and configure team
   access through identity providers or SAML attribute mapping.
 breadcrumbs: Docs > Account Management > Teams > Team Management
-source_url: https://docs.datadoghq.com/teams/manage/index.html
 ---
 
 # Team Management

@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/platform-guides/cancel-aptible-account.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to cancel my Aptible Account
 
 > To cancel your Deploy account and avoid any future charges, please follow these steps in order.
@@ -27,8 +31,11 @@
      </Warning>
 7. Deprovision the [environment](/core-concepts/architecture/environments) from the dashboard.
    * You can deprovision environments once all the resources in that [environment](/core-concepts/architecture/environments) have been deprovisioned. If you have not deleted all resources, you will see a message advising you to delete any remaining resources before you can successfully deprovision the [environment](/core-concepts/architecture/environments).
-8. Submit a [support](/how-to-guides/troubleshooting/aptible-support) request to deprovision your [Dedicated Stack](/core-concepts/architecture/stacks#dedicated-stacks) and, if applicable, remove Premium or Enterprise Support.
-   * If this step is incomplete, you will incur charges until Aptible deprovisions the dedicated stack and removes paid support from your account. Aptible Support can only complete this step after your team submits a request.
+8. Submit an account deletion request through the Dashboard to deprovision your [Dedicated Stack](/core-concepts/architecture/stacks#dedicated-stacks) and, if applicable, remove Premium or Enterprise Support.
+   * Navigate to your organization's settings to access the account deletion form.
+   * Confirm your organization name and provide a cancellation reason (both required).
+   * The request automatically creates a support ticket with your account details and cancellation reason.
+   * If this step is incomplete, you will incur charges until Aptible deprovisions the dedicated stack and removes paid support from your account. Aptible Support can only complete this step after you submit the account deletion form.
 
 <Warning>
   Final Invoice: Please note you will likely receive one more invoice after deprovisioning for usage from the last invoice to the time of deprovisioning.

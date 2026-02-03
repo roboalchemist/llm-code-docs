@@ -1,10 +1,11 @@
+# Source: https://docs.datadoghq.com/getting_started/database_monitoring.md
+
 # Source: https://docs.datadoghq.com/database_monitoring.md
 
 ---
 title: Database Monitoring
 description: Learn about Database Monitoring and get started
 breadcrumbs: Docs > Database Monitoring
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Database Monitoring

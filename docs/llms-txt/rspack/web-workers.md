@@ -1,10 +1,13 @@
 # Source: https://rspack.dev/guide/features/web-workers.md
 
-import WebpackLicense from '@components/WebpackLicense';
-import { ApiMeta, Stability } from '@components/ApiMeta.tsx';
-import { Tabs, Tab } from '@theme';
+CC 4.0 License> The content of this section is derived from the content of the following links and is subject to the CC BY 4.0 license.
+> 
+> - [https://webpack.js.org/guides/web-workers/](https://webpack.js.org/guides/web-workers/)
+> 
+> The following contents can be assumed to be the result of modifications and deletions based on the original contents if not specifically stated.
+> 
+> 
 
-<WebpackLicense from="https://webpack.js.org/guides/web-workers/" />
 
 # Web Workers
 
@@ -34,7 +37,7 @@ This syntax was chosen for its strong standards compliance. It's built on the st
 
 In addition to `new Worker()`, Rspack also supports the following syntax by default:
 
-* `new SharedWorker()`, see [SharedWorker](https://developer.mozilla.org/en-US/docs/Web/API/SharedWorker)
+- `new SharedWorker()`, see [SharedWorker](https://developer.mozilla.org/en-US/docs/Web/API/SharedWorker)
 
 ```js
 const sharedWorker = new SharedWorker(
@@ -43,7 +46,7 @@ const sharedWorker = new SharedWorker(
 sharedWorker.port.start();
 ```
 
-* `import { Worker } from "node:worker_threads"`: commonly used in Node.js environments, see [Worker threads](https://nodejs.org/api/worker_threads.html)
+- `import { Worker } from "node:worker_threads"`: commonly used in Node.js environments, see [Worker threads](https://nodejs.org/api/worker_threads.html)
 
 ```js
 import { Worker } from 'node:worker_threads';
@@ -51,7 +54,7 @@ import { Worker } from 'node:worker_threads';
 const worker = new Worker(new URL('./node-worker.js', import.meta.url));
 ```
 
-* `navigator.serviceWorker.register()`: used to register Service Workers, see [ServiceWorkerContainer](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/register)
+- `navigator.serviceWorker.register()`: used to register Service Workers, see [ServiceWorkerContainer](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerContainer/register)
 
 ```js
 navigator.serviceWorker.register('./sw.js').then((registration) => {
@@ -65,9 +68,9 @@ To support additional custom syntax, you can configure it through [`module.parse
 
 For usage examples, see:
 
-* [examples/worker](https://github.com/rstackjs/rstack-examples/tree/main/rspack/worker)
-* [examples/monaco-editor-js](https://github.com/rstackjs/rstack-examples/tree/main/rspack/monaco-editor-js)
-* [examples/monaco-editor-ts-react](https://github.com/rstackjs/rstack-examples/tree/main/rspack/monaco-editor-ts-react)
+- [examples/worker](https://github.com/rstackjs/rstack-examples/tree/main/rspack/worker)
+- [examples/monaco-editor-js](https://github.com/rstackjs/rstack-examples/tree/main/rspack/monaco-editor-js)
+- [examples/monaco-editor-ts-react](https://github.com/rstackjs/rstack-examples/tree/main/rspack/monaco-editor-ts-react)
 
 ### Notes
 
@@ -94,32 +97,33 @@ Rspack also supports worker-loader. However, since [worker-loader](https://githu
 
 Use [resolveLoader](/config/resolve-loader.md) to replace worker-loader with worker-rspack-loader:
 
-<Tabs>
-  <Tab label="ESM">
-    ```js title="rspack.config.mjs"
-    import { createRequire } from 'module';
 
-    const require = createRequire(import.meta.url);
+**ESM**
 
-    export default {
-      resolveLoader: {
-        alias: {
-          'worker-loader': require.resolve('worker-rspack-loader'),
-        },
-      },
-    };
-    ```
-  </Tab>
+```js title="rspack.config.mjs"
+import { createRequire } from 'module';
 
-  <Tab label="CJS">
-    ```js title="rspack.config.cjs"
-    module.exports = {
-      resolveLoader: {
-        alias: {
-          'worker-loader': require.resolve('worker-rspack-loader'),
-        },
-      },
-    };
-    ```
-  </Tab>
-</Tabs>
+const require = createRequire(import.meta.url);
+
+export default {
+  resolveLoader: {
+    alias: {
+      'worker-loader': require.resolve('worker-rspack-loader'),
+    },
+  },
+};
+```
+
+
+**CJS**
+
+```js title="rspack.config.cjs"
+module.exports = {
+  resolveLoader: {
+    alias: {
+      'worker-loader': require.resolve('worker-rspack-loader'),
+    },
+  },
+};
+```
+

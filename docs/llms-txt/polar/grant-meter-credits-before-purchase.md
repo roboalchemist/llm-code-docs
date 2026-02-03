@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/guides/grant-meter-credits-before-purchase.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to Grant Meter Credits Before Purchase
 
 > Learn how to grant meter credits to customers before they make any purchase using the Polar API.
@@ -235,8 +239,3 @@ await polar.events.ingest({
 
 // Balance is now -1 (used 1 unit beyond credits)
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://polar.sh/docs/llms.txt

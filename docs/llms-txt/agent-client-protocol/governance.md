@@ -1,5 +1,9 @@
 # Source: https://agentclientprotocol.com/community/governance.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://agentclientprotocol.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Governance
 
 > How the ACP project is governed
@@ -194,8 +198,3 @@ Refer to [the maintainer list](https://github.com/agentclientprotocol/agent-clie
 * This project does not require a Contributor License Agreement (CLA). Instead, contributions are accepted under the following terms:
 
 > By contributing to this project, you agree that your contributions will be licensed under the [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0). You affirm that you have the legal right to submit your work, that you are not including code you do not have rights to, and that you understand contributions are made without requiring a Contributor License Agreement (CLA).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://agentclientprotocol.com/llms.txt

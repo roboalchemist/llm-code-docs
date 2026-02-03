@@ -1,55 +1,62 @@
 # Source: https://docs.squared.ai/api-reference/sync_runs/get_sync_runs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Sync Runs
 
 > Retrieves a list of sync runs for a specific sync, optionally filtered by status.
 
+
+
 ## OpenAPI
 
 ````yaml GET /api/v1/syncs/{sync_id}/sync_runs
+openapi: 3.0.1
+info:
+  title: AI Squared API
+  version: 1.0.0
+servers:
+  - url: https://api.squared.ai
+security: []
 paths:
-  path: /api/v1/syncs/{sync_id}/sync_runs
-  method: get
-  servers:
-    - url: https://api.squared.ai
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path:
-        sync_id:
+  /api/v1/syncs/{sync_id}/sync_runs:
+    get:
+      tags:
+        - SyncRuns
+      summary: List sync runs for a specific sync
+      description: >-
+        Retrieves a list of sync runs for a specific sync, optionally filtered
+        by status.
+      operationId: getSyncRuns
+      parameters:
+        - name: sync_id
+          in: path
+          required: true
           schema:
-            - type: integer
-              required: true
-              description: The ID of the sync to list runs for.
-      query:
-        status:
+            type: integer
+          description: The ID of the sync to list runs for.
+        - name: status
+          in: query
           schema:
-            - type: string
-              description: Optional status to filter the sync runs by.
-        page:
+            type: string
+          description: Optional status to filter the sync runs by.
+        - name: page
+          in: query
           schema:
-            - type: integer
-              description: Page number for pagination.
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: array
+            type: integer
+          description: Page number for pagination.
+      responses:
+        '200':
+          description: A JSON array of sync runs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -92,9 +99,8 @@ paths:
                             updated_at:
                               type: string
                               format: date-time
-              links:
-                allOf:
-                  - type: object
+                  links:
+                    type: object
                     properties:
                       self:
                         type: string
@@ -113,55 +119,26 @@ paths:
                       last:
                         type: string
                         format: uri
-        examples:
-          example:
-            value:
-              data:
-                - id: <string>
-                  type: <string>
-                  attributes:
-                    sync_id: 123
-                    status: <string>
-                    started_at: '2023-11-07T05:31:56Z'
-                    finished_at: '2023-11-07T05:31:56Z'
-                    duration: 123
-                    total_query_rows: 123
-                    skipped_rows: 123
-                    total_rows: 123
-                    successful_rows: 123
-                    failed_rows: 123
-                    error: <string>
-                    created_at: '2023-11-07T05:31:56Z'
-                    updated_at: '2023-11-07T05:31:56Z'
-              links:
-                self: <string>
-                first: <string>
-                prev: <string>
-                next: <string>
-                last: <string>
-        description: A JSON array of sync runs
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              message:
-                allOf:
-                  - type: string
+        '404':
+          description: Sync not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
                     example: Sync not found
-              status:
-                allOf:
-                  - type: string
+                  status:
+                    type: string
                     example: not_found
-        examples:
-          example:
-            value:
-              message: Sync not found
-              status: not_found
-        description: Sync not found
-  deprecated: false
-  type: path
+      security:
+        - bearerAuth: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 
 ````

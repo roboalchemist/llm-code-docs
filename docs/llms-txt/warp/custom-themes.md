@@ -266,7 +266,7 @@ If your theme has an intended custom background image, include a comment in the 
 
 ## Community
 
-All other Warp-related things can be discussed, please [contact us](https://docs.warp.dev/support-and-billing/sending-us-feedback).
+All other Warp-related things can be discussed, please [contact us](https://docs.warp.dev/support-and-community/troubleshooting-and-support/sending-us-feedback).
 
 ## Open source dependencies
 

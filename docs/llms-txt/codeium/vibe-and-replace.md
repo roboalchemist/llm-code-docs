@@ -1,6 +1,12 @@
 # Source: https://docs.windsurf.com/windsurf/vibe-and-replace.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Vibe and Replace
+
+> AI-powered find and replace that applies natural language prompts to each match. Use Smart mode for careful changes or Fast mode for quick transformations.
 
 Vibe and Replace is an evolution of find and replace that allows you to search through your codebase for exact text matches and apply an AI prompt to each replacement.
 

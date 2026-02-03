@@ -1,6 +1,10 @@
 # Source: https://docs.tavily.com/documentation/integrations/agent-builder.md
 
-# Agent Builder
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# OpenAI Agent Builder
 
 > Integrate OpenAI’s Agent Builder with Tavily’s MCP server to empower your AI agents with real-time web access.
 
@@ -38,8 +42,11 @@ Before you begin, make sure you have:
 
   Remember to replace `YOUR_API_KEY` with your actual Tavily API key.
 
+  {" "}
+
   <Tip>
-    Need an API key? Get one instantly from your [Tavily dashboard](https://app.tavily.com/home)
+    Need an API key? Get one instantly from your [Tavily
+    dashboard](https://app.tavily.com/home)
   </Tip>
 
   Click **Connect** to establish the connection to Tavily.
@@ -101,8 +108,3 @@ Develop agents that crawl competitor websites, map their content strategies, and
 ### News & Event Monitors
 
 Build agents that track breaking news on specific topics by leveraging Tavily's news search mode, providing real-time updates with citations.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

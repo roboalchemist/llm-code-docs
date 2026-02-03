@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/no-alert.md
 ---
-# eslint/no-alert&#x20;
 
 ### What it does
 

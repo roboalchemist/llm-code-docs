@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/example-projects/anchor-browser-web-scraper.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Automated website monitoring with Anchor Browser
 
 > Automated web monitoring using Trigger.dev's task scheduling and Anchor Browser's AI-powered browser automation.
@@ -41,7 +45,7 @@ The task runs daily at 5pm ET to find the cheapest Broadway tickets available fo
 
 This task runs daily at 5pm ET, in [src/trigger/broadway-monitor.ts](https://github.com/triggerdotdev/examples/tree/main/anchor-browser-web-scraper/src/trigger/broadway-monitor.ts):
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { schedules } from "@trigger.dev/sdk";
 import Anchorbrowser from "anchorbrowser";
 
@@ -100,7 +104,7 @@ export const broadwayMonitor = schedules.task({
 
 Since Anchor Browser uses browser automation libraries (Playwright) under the hood, we need to configure Trigger.dev to handle these dependencies properly by excluding them from the build bundle in [trigger.config.ts](https://github.com/triggerdotdev/examples/tree/main/anchor-browser-web-scraper/trigger.config.ts):
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({

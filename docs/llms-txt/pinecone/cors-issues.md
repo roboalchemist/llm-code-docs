@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/troubleshooting/cors-issues.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # CORS Issues
 
 Cross-Origin Resource Sharing (CORS) is an HTTP-header based security feature that

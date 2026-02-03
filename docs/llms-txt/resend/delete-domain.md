@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/api-reference/domains/delete-domain.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete Domain
 
 > Remove an existing domain.
@@ -41,7 +45,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </ResendParamField>
 
 <RequestExample>
-  ```js Node.js theme={null}
+  ```js Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -51,13 +55,13 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   );
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->domains->remove('d91cd9bd-1176-453e-8fc1-35364d380206');
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
@@ -65,20 +69,24 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   resend.Domains.remove(domain_id="d91cd9bd-1176-453e-8fc1-35364d380206")
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   Resend.api_key = ENV["RESEND_API_KEY"]
   Resend::Domains.remove("d91cd9bd-1176-453e-8fc1-35364d380206")
   ```
 
-  ```go Go theme={null}
-  import 	"github.com/resend/resend-go/v3"
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
 
-  client := resend.NewClient("re_xxxxxxxxx")
+  import "github.com/resend/resend-go/v3"
 
-  removed, err := client.Domains.Remove("d91cd9bd-1176-453e-8fc1-35364d380206")
+  func main() {
+  	client := resend.NewClient("re_xxxxxxxxx")
+
+  	client.Domains.Remove("d91cd9bd-1176-453e-8fc1-35364d380206")
+  }
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{Resend, Result};
 
   #[tokio::main]
@@ -94,7 +102,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -106,7 +114,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   }
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -114,14 +122,14 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   await resend.DomainDeleteAsync( new Guid( "d91cd9bd-1176-453e-8fc1-35364d380206" ) );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X DELETE 'https://api.resend.com/domains/d91cd9bd-1176-453e-8fc1-35364d380206' \
        -H 'Authorization: Bearer re_xxxxxxxxx'
   ```
 </RequestExample>
 
 <ResponseExample>
-  ```json Response theme={null}
+  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "object": "domain",
     "id": "d91cd9bd-1176-453e-8fc1-35364d380206",

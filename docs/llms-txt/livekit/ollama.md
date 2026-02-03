@@ -1,6 +1,6 @@
 # Source: https://docs.livekit.io/agents/models/llm/plugins/ollama.md
 
-LiveKit docs › Models › Large language models (LLM) › Plugins › Ollama
+LiveKit docs › Models › LLM › Plugins › Ollama
 
 ---
 
@@ -14,14 +14,14 @@ Available in:
 
 ## Overview
 
-This plugin allows you to use a local [Ollama](https://ollama.com/library) instance as an LLM provider for your voice agents.
+This plugin allows you to use a local [Ollama](https://ollama.com/library) instance as an LLM provider for your voice agents. Ollama compatibility is provided by the OpenAI plugin using the Ollama Chat Completions API.
 
 ## Usage
 
 Install the OpenAI plugin to add Ollama support:
 
 ```shell
-uv add "livekit-agents[openai]~=1.2"
+uv add "livekit-agents[openai]~=1.3"
 
 ```
 
@@ -56,7 +56,7 @@ The following links provide more information about the Ollama integration.
 
 - **[Python package](https://pypi.org/project/livekit-plugins-openai/)**: The `livekit-plugins-openai` package on PyPI.
 
-- **[Plugin reference](https://docs.livekit.run/reference/python/v1/livekit/plugins/openai/index.html#livekit.plugins.openai.LLM.with_ollama)**: Reference for the `with_ollama` method of the OpenAI LLM plugin.
+- **[Plugin reference](https://docs.livekit.io/reference/python/v1/livekit/plugins/openai/index.html#livekit.plugins.openai.LLM.with_ollama)**: Reference for the `with_ollama` method of the OpenAI LLM plugin.
 
 - **[GitHub repo](https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-openai)**: View the source or contribute to the LiveKit OpenAI LLM plugin.
 
@@ -66,7 +66,7 @@ The following links provide more information about the Ollama integration.
 
 ---
 
-This document was rendered at 2025-11-18T23:55:11.590Z.
+This document was rendered at 2026-02-03T03:25:00.993Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/llm/plugins/ollama.md](https://docs.livekit.io/agents/models/llm/plugins/ollama.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

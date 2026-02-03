@@ -6,8 +6,6 @@ description: >-
   Extract and inject Datadog, B3, and W3C Trace Context headers to propagate the
   context of a distributed trace.
 breadcrumbs: Docs > APM > Application Instrumentation > Trace Context Propagation
-source_url: >-
-  https://docs.datadoghq.com/trace_collection/trace_context_propagation/index.html
 ---
 
 # Trace Context Propagation
@@ -773,17 +771,17 @@ By default, `user.id,session.id,account.id` baggage keys are added as span tags.
 
 Support for baggage as span tags was introduced in the following releases:
 
-| Language  | Minimum SDK version |
-| --------- | ------------------- |
-| Java      | 1.52.0              |
-| Python    | 3.7.0               |
-| Ruby      | 2.20.0              |
-| Go        | 2.2.2               |
-| .NET      | 3.23.0              |
-| Node      | 5.54.0              |
-| PHP       | 1.10.0              |
-| C++/Proxy | Not supported       |
-| Rust      | Not supported       |
+| Language  | Minimum SDK version                         |
+| --------- | ------------------------------------------- |
+| Java      | 1.52.0                                      |
+| Python    | 3.7.0                                       |
+| Ruby      | 2.20.0                                      |
+| Go        | 2.2.2                                       |
+| .NET      | 3.23.0                                      |
+| Node      | 5.54.0                                      |
+| PHP       | 1.10.0                                      |
+| C++/Proxy | 1.9.0 (Nginx). Other proxies not supported. |
+| Rust      | Not supported                               |
 
 ## Further reading{% #further-reading %}
 

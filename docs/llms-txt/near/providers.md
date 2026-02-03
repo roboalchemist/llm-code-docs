@@ -12,7 +12,7 @@ balancing.
 
 :::tip
 
-If you want to use a custom RPC provider with NEAR Wallet Selector, [check this example](../../web3-apps/tutorials/web-login/wallet-selector.md#custom-rpc).
+You can use any of these RPC endpoints with [any of our APIs](../../tools/near-api.md#view-function) or [wallet libraries](../../web3-apps/tutorials/wallet-login.md)
 
 :::
 
@@ -63,7 +63,7 @@ FastNear maintains [a comprehensive Grafana dashboard](https://grafana.fastnear.
 
 ## RPC Failover
 
-In `near-api-js` you can use [`FailoverRpcProvider`](../../tools/near-api.md#rpc-failover) to automatically switch RPC providers when one provider is experiencing downtime, or implement an RPC selection widget that allows users to add their own RPC provider.
+In `near-api-js` you can use [`FailoverRpcProvider`](https://github.com/near-examples/near-api-examples/blob/main/near-api-js/examples/rpc-failover.ts) to automatically switch RPC providers when one provider is experiencing downtime, or implement an RPC selection widget that allows users to add their own RPC provider.
 
 As a user, if a dApp or wallet doesn't support RPC failover and the primary provider is down, you can use an RPC Selector browser extension to redirect all requests to an RPC provider of your choice.
 

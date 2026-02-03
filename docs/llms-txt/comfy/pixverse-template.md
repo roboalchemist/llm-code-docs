@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/built-in-nodes/partner-node/video/pixverse/pixverse-template.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # PixVerse Template - ComfyUI Native Node Documentation
 
 > A helper node that provides preset templates for PixVerse video generation

@@ -1,3 +1,9 @@
+# Angular Documentation
+
+Source: https://angular.dev/llms-full.txt
+
+---
+
 # Home • Angular
 
 ```markdown

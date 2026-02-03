@@ -6,23 +6,29 @@
 
 # Source: https://docs.unstructured.io/api-reference/legacy-api/partition/chunking.md
 
-# Source: https://docs.unstructured.io/ui/chunking.md
-
-# Source: https://docs.unstructured.io/open-source/core-functionality/chunking.md
-
-# Source: https://docs.unstructured.io/open-source/best-practices/chunking.md
-
-# Source: https://docs.unstructured.io/api-reference/legacy-api/partition/chunking.md
-
-# Source: https://docs.unstructured.io/ui/chunking.md
-
-# Source: https://docs.unstructured.io/open-source/core-functionality/chunking.md
-
-# Source: https://docs.unstructured.io/open-source/best-practices/chunking.md
-
-# Source: https://docs.unstructured.io/api-reference/partition/chunking.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Chunking strategies
+
+<Note>
+  The following information applies to the legacy Unstructured Partition Endpoint.
+
+  Unstructured recommends that you use the
+  [on-demand jobs](/api-reference/workflow/overview#run-an-on-demand-job) functionality in the
+  [Unstructured API](/api-reference/overview) instead. Unstructured's on-demand jobs provide
+  many benefits over the legacy Unstructured Partition Endpoint, including support for:
+
+  * Production-level usage.
+  * Multiple local input files in batches.
+  * The latest and highest-performing models.
+  * Post-transform enrichments.
+  * All of Unstructured's chunking strategies.
+  * The generation of vector embeddings.
+
+  The Unstructured API also provides support for processing files and data in remote locations.
+</Note>
 
 Chunking functions use metadata and document elements detected with partition functions to split a document into
 appropriately-sized chunks for uses cases such as retrieval-augmented generation (RAG).

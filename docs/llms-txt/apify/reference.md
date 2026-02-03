@@ -8,36 +8,6 @@
 
 # Source: https://docs.apify.com/api/client/js/reference.md
 
-# Source: https://docs.apify.com/cli/docs/reference.md
-
-# Source: https://docs.apify.com/sdk/python/reference.md
-
-# Source: https://docs.apify.com/sdk/js/reference.md
-
-# Source: https://docs.apify.com/api/client/python/reference.md
-
-# Source: https://docs.apify.com/api/client/js/reference.md
-
-# Source: https://docs.apify.com/cli/docs/reference.md
-
-# Source: https://docs.apify.com/sdk/python/reference.md
-
-# Source: https://docs.apify.com/sdk/js/reference.md
-
-# Source: https://docs.apify.com/api/client/python/reference.md
-
-# Source: https://docs.apify.com/api/client/js/reference.md
-
-# Source: https://docs.apify.com/cli/docs/reference.md
-
-# Source: https://docs.apify.com/sdk/python/reference.md
-
-# Source: https://docs.apify.com/sdk/js/reference.md
-
-# Source: https://docs.apify.com/api/client/python/reference.md
-
-# Source: https://docs.apify.com/api/client/js/reference.md
-
 # apify-client<!-- -->
 
 ## Index[**](#Index)
@@ -69,6 +39,7 @@
 * [**KeyValueStoreClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/KeyValueStoreClient.md)
 * [**KeyValueStoreCollectionClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/KeyValueStoreCollectionClient.md)
 * [**LogClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/LogClient.md)
+* [**LoggerActorRedirect](https://docs.apify.com/api/client/js/api/client/js/reference/class/LoggerActorRedirect.md)
 * [**RequestQueueClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/RequestQueueClient.md)
 * [**RequestQueueCollectionClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/RequestQueueCollectionClient.md)
 * [**RunClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/RunClient.md)
@@ -76,6 +47,7 @@
 * [**ScheduleClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/ScheduleClient.md)
 * [**ScheduleCollectionClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/ScheduleCollectionClient.md)
 * [**StoreCollectionClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/StoreCollectionClient.md)
+* [**StreamedLog](https://docs.apify.com/api/client/js/api/client/js/reference/class/StreamedLog.md)
 * [**TaskClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/TaskClient.md)
 * [**TaskCollectionClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/TaskCollectionClient.md)
 * [**UserClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/UserClient.md)
@@ -140,6 +112,7 @@
 * [**FieldStatistics](https://docs.apify.com/api/client/js/api/client/js/reference/interface/FieldStatistics.md)
 * [**FlatPricePerMonthActorPricingInfo](https://docs.apify.com/api/client/js/api/client/js/reference/interface/FlatPricePerMonthActorPricingInfo.md)
 * [**FreeActorPricingInfo](https://docs.apify.com/api/client/js/api/client/js/reference/interface/FreeActorPricingInfo.md)
+* [**GetStreamedLogOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/GetStreamedLogOptions.md)
 * [**KeyValueClientCreateKeysUrlOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/KeyValueClientCreateKeysUrlOptions.md)
 * [**KeyValueClientGetRecordOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/KeyValueClientGetRecordOptions.md)
 * [**KeyValueClientListKeysOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/KeyValueClientListKeysOptions.md)
@@ -153,6 +126,7 @@
 * [**KeyValueStoreRecordOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/KeyValueStoreRecordOptions.md)
 * [**KeyValueStoreStats](https://docs.apify.com/api/client/js/api/client/js/reference/interface/KeyValueStoreStats.md)
 * [**Limits](https://docs.apify.com/api/client/js/api/client/js/reference/interface/Limits.md)
+* [**LogOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/LogOptions.md)
 * [**MonthlyUsage](https://docs.apify.com/api/client/js/api/client/js/reference/interface/MonthlyUsage.md)
 * [**MonthlyUsageCycle](https://docs.apify.com/api/client/js/api/client/js/reference/interface/MonthlyUsageCycle.md)
 * [**OpenApiDefinition](https://docs.apify.com/api/client/js/api/client/js/reference/interface/OpenApiDefinition.md)
@@ -198,6 +172,7 @@
 * [**ScheduledActorRunInput](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ScheduledActorRunInput.md)
 * [**ScheduledActorRunOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ScheduledActorRunOptions.md)
 * [**StoreCollectionListOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/StoreCollectionListOptions.md)
+* [**StreamedLogOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/StreamedLogOptions.md)
 * [**Task](https://docs.apify.com/api/client/js/api/client/js/reference/interface/Task.md)
 * [**TaskCallOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/TaskCallOptions.md)
 * [**TaskCollectionListOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/TaskCollectionListOptions.md)
@@ -255,95 +230,103 @@
 
 ## Type Aliases<!-- -->[**](<#Type Aliases>)
 
-### [**](#ActorChargeEvents)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L578)ActorChargeEvents
+### [**](#ActorChargeEvents)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L898)ActorChargeEvents
 
 **ActorChargeEvents: Record\<string, [ActorChargeEvent](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorChargeEvent.md)>
 
-### [**](#ActorCollectionListResult)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_collection.ts#L69)ActorCollectionListResult
+Mapping of event names to their pricing information.
+
+### [**](#ActorCollectionListResult)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_collection.ts#L111)ActorCollectionListResult
 
 **ActorCollectionListResult: [PaginatedList](https://docs.apify.com/api/client/js/api/client/js/reference/interface/PaginatedList.md)<[ActorCollectionListItem](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorCollectionListItem.md)>
 
-### [**](#ActorEnvVarListResult)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_env_var_collection.ts#L49)ActorEnvVarListResult
+### [**](#ActorEnvVarListResult)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_env_var_collection.ts#L91)ActorEnvVarListResult
 
 **ActorEnvVarListResult: Pick<[PaginatedList](https://docs.apify.com/api/client/js/api/client/js/reference/interface/PaginatedList.md)<[ActorEnvironmentVariable](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorEnvironmentVariable.md)>, total | items>
 
-### [**](#ActorRunPricingInfo)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L588)ActorRunPricingInfo
+### [**](#ActorRunPricingInfo)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L916)ActorRunPricingInfo
 
 **ActorRunPricingInfo: [PricePerEventActorPricingInfo](https://docs.apify.com/api/client/js/api/client/js/reference/interface/PricePerEventActorPricingInfo.md) | [PricePerDatasetItemActorPricingInfo](https://docs.apify.com/api/client/js/api/client/js/reference/interface/PricePerDatasetItemActorPricingInfo.md) | [FlatPricePerMonthActorPricingInfo](https://docs.apify.com/api/client/js/api/client/js/reference/interface/FlatPricePerMonthActorPricingInfo.md) | [FreeActorPricingInfo](https://docs.apify.com/api/client/js/api/client/js/reference/interface/FreeActorPricingInfo.md)
 
-### [**](#ActorTaggedBuilds)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L329)ActorTaggedBuilds
+Union type representing all possible Actor pricing models.
+
+### [**](#ActorTaggedBuilds)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L539)ActorTaggedBuilds
 
 **ActorTaggedBuilds: Record\<string, [ActorTaggedBuild](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorTaggedBuild.md)>
 
-### [**](#ActorUpdateOptions)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L337)ActorUpdateOptions
+Mapping of build tags (e.g., 'latest', 'beta') to their corresponding build information.
 
-**ActorUpdateOptions: Partial\<Pick<[Actor](https://docs.apify.com/api/client/js/api/client/js/reference/interface/Actor.md), name | description | isPublic | isDeprecated | seoTitle | seoDescription | title | restartOnError | versions | categories | defaultRunOptions | actorStandby>>
+### [**](#ActorUpdateOptions)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L553)ActorUpdateOptions
 
-### [**](#ActorVersion)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_version.ts#L106)ActorVersion
+**ActorUpdateOptions: Partial\<Pick<[Actor](https://docs.apify.com/api/client/js/api/client/js/reference/interface/Actor.md), name | description | isPublic | isDeprecated | seoTitle | seoDescription | title | restartOnError | versions | categories | defaultRunOptions | actorStandby | actorPermissionLevel | taggedBuilds>>
+
+Fields that can be updated when modifying an Actor.
+
+### [**](#ActorVersion)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_version.ts#L142)ActorVersion
 
 **ActorVersion: [ActorVersionSourceFiles](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorVersionSourceFiles.md) | [ActorVersionGitRepo](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorVersionGitRepo.md) | [ActorVersionTarball](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorVersionTarball.md) | [ActorVersionGitHubGist](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorVersionGitHubGist.md)
 
-### [**](#ActorVersionListResult)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_version_collection.ts#L51)ActorVersionListResult
+### [**](#ActorVersionListResult)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_version_collection.ts#L90)ActorVersionListResult
 
 **ActorVersionListResult: Pick<[PaginatedList](https://docs.apify.com/api/client/js/api/client/js/reference/interface/PaginatedList.md)<[FinalActorVersion](https://docs.apify.com/api/client/js/api/client/js/reference.md#FinalActorVersion)>, total | items>
 
-### [**](#AllowedHttpMethods)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L710)AllowedHttpMethods
+### [**](#AllowedHttpMethods)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L1010)AllowedHttpMethods
 
 **AllowedHttpMethods: GET | HEAD | POST | PUT | DELETE | TRACE | OPTIONS | CONNECT | PATCH
 
-### [**](#BuildCollectionClientListItem)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/build_collection.ts#L42)BuildCollectionClientListItem
+HTTP methods supported by Request Queue requests.
+
+### [**](#BuildCollectionClientListItem)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/build_collection.ts#L78)BuildCollectionClientListItem
 
 **BuildCollectionClientListItem: Required\<Pick<[Build](https://docs.apify.com/api/client/js/api/client/js/reference/interface/Build.md), id | status | startedAt | finishedAt>> & Partial\<Pick<[Build](https://docs.apify.com/api/client/js/api/client/js/reference/interface/Build.md), meta | usageTotalUsd>>
 
-### [**](#BuildCollectionClientListResult)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/build_collection.ts#L45)BuildCollectionClientListResult
+### [**](#BuildCollectionClientListResult)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/build_collection.ts#L81)BuildCollectionClientListResult
 
 **BuildCollectionClientListResult: [PaginatedList](https://docs.apify.com/api/client/js/api/client/js/reference/interface/PaginatedList.md)<[BuildCollectionClientListItem](https://docs.apify.com/api/client/js/api/client/js/reference.md#BuildCollectionClientListItem)>
 
-### [**](#DatasetCollectionClientListResult)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/dataset_collection.ts#L58)DatasetCollectionClientListResult
+### [**](#DatasetCollectionClientListResult)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/dataset_collection.ts#L100)DatasetCollectionClientListResult
 
-**DatasetCollectionClientListResult: [PaginatedList](https://docs.apify.com/api/client/js/api/client/js/reference/interface/PaginatedList.md)<[Dataset](https://docs.apify.com/api/client/js/api/client/js/reference/interface/Dataset.md)>
+**DatasetCollectionClientListResult: [PaginatedList](https://docs.apify.com/api/client/js/api/client/js/reference/interface/PaginatedList.md)<[Dataset](https://docs.apify.com/api/client/js/api/client/js/reference/interface/Dataset.md)> & { unnamed: boolean }
 
-### [**](#Dictionary)[**](https://github.com/apify/apify-client-js/blob/master/src/utils.ts#L260)Dictionary
+### [**](#Dictionary)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/utils.ts#L318)Dictionary
 
 **Dictionary\<T>: Record\<PropertyKey, T>
+
+Generic dictionary type (key-value map).
+
+***
 
 #### Type parameters
 
 * **T** = unknown
 
-### [**](#FinalActorVersion)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_version.ts#L108)FinalActorVersion
+  The type of values in the dictionary
+
+### [**](#FinalActorVersion)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_version.ts#L144)FinalActorVersion
 
 **FinalActorVersion: [ActorVersion](https://docs.apify.com/api/client/js/api/client/js/reference.md#ActorVersion) & Required\<Pick<[ActorVersion](https://docs.apify.com/api/client/js/api/client/js/reference.md#ActorVersion), versionNumber | buildTag>>
 
-### [**](#KeyValueStoreCollectionListResult)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/key_value_store_collection.ts#L63)KeyValueStoreCollectionListResult
+### [**](#KeyValueStoreCollectionListResult)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/key_value_store_collection.ts#L103)KeyValueStoreCollectionListResult
 
-**KeyValueStoreCollectionListResult: Omit<[KeyValueStore](https://docs.apify.com/api/client/js/api/client/js/reference/interface/KeyValueStore.md), stats> & { username?
+**KeyValueStoreCollectionListResult: [PaginatedList](https://docs.apify.com/api/client/js/api/client/js/reference/interface/PaginatedList.md)<[KeyValueStore](https://docs.apify.com/api/client/js/api/client/js/reference/interface/KeyValueStore.md)> & { unnamed: boolean }
 
-<!-- -->
+### [**](#LimitsUpdateOptions)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/user.ts#L288)LimitsUpdateOptions
 
-: string }
+**LimitsUpdateOptions: { maxMonthlyUsageUsd: number } | { dataRetentionDays: number }
 
-### [**](#LimitsUpdateOptions)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/user.ts#L251)LimitsUpdateOptions
-
-**LimitsUpdateOptions: Pick<[Limits](https://docs.apify.com/api/client/js/api/client/js/reference/interface/Limits.md), maxMonthlyUsageUsd | dataRetentionDays>
-
-### [**](#RequestQueueClientGetRequestResult)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L708)RequestQueueClientGetRequestResult
+### [**](#RequestQueueClientGetRequestResult)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L1005)RequestQueueClientGetRequestResult
 
 **RequestQueueClientGetRequestResult: Omit<[RequestQueueClientListItem](https://docs.apify.com/api/client/js/api/client/js/reference/interface/RequestQueueClientListItem.md), retryCount>
 
-### [**](#RequestQueueClientRequestToDelete)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L704)RequestQueueClientRequestToDelete
+### [**](#RequestQueueClientRequestToDelete)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L1001)RequestQueueClientRequestToDelete
 
 **RequestQueueClientRequestToDelete: Pick<[RequestQueueClientRequestSchema](https://docs.apify.com/api/client/js/api/client/js/reference/interface/RequestQueueClientRequestSchema.md), id> | Pick<[RequestQueueClientRequestSchema](https://docs.apify.com/api/client/js/api/client/js/reference/interface/RequestQueueClientRequestSchema.md), uniqueKey>
 
-### [**](#RequestQueueCollectionListResult)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue_collection.ts#L53)RequestQueueCollectionListResult
+### [**](#RequestQueueCollectionListResult)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue_collection.ts#L94)RequestQueueCollectionListResult
 
-**RequestQueueCollectionListResult: [PaginatedList](https://docs.apify.com/api/client/js/api/client/js/reference/interface/PaginatedList.md)<[RequestQueue](https://docs.apify.com/api/client/js/api/client/js/reference/interface/RequestQueue.md) & { username?
+**RequestQueueCollectionListResult: [PaginatedList](https://docs.apify.com/api/client/js/api/client/js/reference/interface/PaginatedList.md)<[RequestQueue](https://docs.apify.com/api/client/js/api/client/js/reference/interface/RequestQueue.md)> & { unnamed: boolean }
 
-<!-- -->
-
-: string }> & { unnamed: boolean }
-
-### [**](#RequestQueueRequestsAsyncIterable)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L712)RequestQueueRequestsAsyncIterable
+### [**](#RequestQueueRequestsAsyncIterable)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L1012)RequestQueueRequestsAsyncIterable
 
 **RequestQueueRequestsAsyncIterable\<T>: AsyncIterable\<T>
 
@@ -351,39 +334,57 @@
 
 * **T**
 
-### [**](#ReturnTypeFromOptions)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/key_value_store.ts#L400)ReturnTypeFromOptions
+### [**](#ReturnTypeFromOptions)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/key_value_store.ts#L629)ReturnTypeFromOptions
 
 **ReturnTypeFromOptions\<Options>: Options\[stream] extends true ? Readable : Options\[buffer] extends true ? Buffer : JsonValue
+
+Helper type to determine the return type based on getRecord options.
+
+Returns Readable if stream option is true, Buffer if buffer option is true, otherwise returns JsonValue.
+
+***
 
 #### Type parameters
 
 * **Options**: [KeyValueClientGetRecordOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/KeyValueClientGetRecordOptions.md)
 
-### [**](#ScheduleAction)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/schedule.ts#L103)ScheduleAction
+### [**](#ScheduleAction)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/schedule.ts#L152)ScheduleAction
 
 **ScheduleAction: [ScheduleActionRunActor](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ScheduleActionRunActor.md) | [ScheduleActionRunActorTask](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ScheduleActionRunActorTask.md)
 
-### [**](#ScheduleCreateOrUpdateData)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/schedule.ts#L84)ScheduleCreateOrUpdateData
+Union type representing all possible scheduled actions.
+
+### [**](#ScheduleCreateOrUpdateData)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/schedule.ts#L127)ScheduleCreateOrUpdateData
 
 **ScheduleCreateOrUpdateData: Partial\<Pick<[Schedule](https://docs.apify.com/api/client/js/api/client/js/reference/interface/Schedule.md), name | title | cronExpression | timezone | isEnabled | isExclusive | description | notifications> & { actions: DistributiveOptional<[ScheduleAction](https://docs.apify.com/api/client/js/api/client/js/reference.md#ScheduleAction), id>\[] }>
 
-### [**](#TaskList)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/task_collection.ts#L56)TaskList
+Data for creating or updating a Schedule.
+
+### [**](#TaskList)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/task_collection.ts#L94)TaskList
 
 **TaskList: Omit<[Task](https://docs.apify.com/api/client/js/api/client/js/reference/interface/Task.md), options | input>
 
-### [**](#TaskStartOptions)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/task.ts#L239)TaskStartOptions
+### [**](#TaskStartOptions)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/task.ts#L335)TaskStartOptions
 
 **TaskStartOptions: Omit<[ActorStartOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorStartOptions.md), contentType | forcePermissionLevel>
 
-### [**](#TaskUpdateData)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/task.ts#L231)TaskUpdateData
+Options for starting a Task.
+
+Similar to [ActorStartOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorStartOptions.md) but without contentType (Task input is predefined) and forcePermissionLevel.
+
+### [**](#TaskUpdateData)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/task.ts#L318)TaskUpdateData
 
 **TaskUpdateData: Partial\<Pick<[Task](https://docs.apify.com/api/client/js/api/client/js/reference/interface/Task.md), name | title | description | options | input | actorStandby>>
 
-### [**](#WebhookCondition)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/webhook.ts#L127)WebhookCondition
+Fields that can be updated when modifying a Task.
+
+### [**](#WebhookCondition)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/webhook.ts#L188)WebhookCondition
 
 **WebhookCondition: [WebhookAnyRunOfActorCondition](https://docs.apify.com/api/client/js/api/client/js/reference/interface/WebhookAnyRunOfActorCondition.md) | [WebhookAnyRunOfActorTaskCondition](https://docs.apify.com/api/client/js/api/client/js/reference/interface/WebhookAnyRunOfActorTaskCondition.md) | [WebhookCertainRunCondition](https://docs.apify.com/api/client/js/api/client/js/reference/interface/WebhookCertainRunCondition.md)
 
-### [**](#WebhookEventType)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/webhook.ts#L125)WebhookEventType
+Condition that determines when a webhook should be triggered.
+
+### [**](#WebhookEventType)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/webhook.ts#L183)WebhookEventType
 
 **WebhookEventType: typeof WEBHOOK\_EVENT\_TYPES\[keyof
 
@@ -391,6 +392,10 @@
 
 typeof WEBHOOK\_EVENT\_TYPES]
 
-### [**](#WebhookUpdateData)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/webhook.ts#L103)WebhookUpdateData
+Event types that can trigger webhooks.
+
+### [**](#WebhookUpdateData)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/webhook.ts#L155)WebhookUpdateData
 
 **WebhookUpdateData: Partial\<Pick<[Webhook](https://docs.apify.com/api/client/js/api/client/js/reference/interface/Webhook.md), isAdHoc | eventTypes | condition | ignoreSslErrors | doNotRetry | requestUrl | payloadTemplate | shouldInterpolateStrings | isApifyIntegration | headersTemplate | description>> & [WebhookIdempotencyKey](https://docs.apify.com/api/client/js/api/client/js/reference/interface/WebhookIdempotencyKey.md)
+
+Data for updating a webhook.

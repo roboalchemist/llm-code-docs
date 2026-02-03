@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/digestauth.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add authentication with Digest Authentication
 
 > Digest Auth prompts users to enter their username and password, optionally along with any additional data your API requires for authentication. Zapier makes an unauthenticated API call to get the nonce from your server, and uses it to encrypt and pass the authentication data to your server with each API call.

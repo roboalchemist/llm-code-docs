@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/getting-started-nextjs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Next.js
 
 > Install OpenLLMetry for Next.js by following these 3 easy steps and get instant monitoring.
@@ -234,8 +238,3 @@ You can also check out our full working example with Next.js 13 [here](https://g
     </Tip>
   </Step>
 </Steps>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

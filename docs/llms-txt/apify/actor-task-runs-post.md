@@ -9,7 +9,7 @@ https://api.apify.com/v2/actor-tasks/:actorTaskId/runs
 ```
 
 
-Clientshttps://docs.apify.com/api/client/python/reference/class/TaskClientAsync#callhttps://docs.apify.com/api/client/js/reference/class/TaskClient#startRuns an Actor task and immediately returns without waiting for the run to finish.
+Runs an Actor task and immediately returns without waiting for the run to finish.
 
 Optionally, you can override the Actor input configuration by passing a JSON object as the POST payload and setting the `Content-Type: application/json` HTTP header.
 
@@ -26,7 +26,10 @@ To fetch the Actor run results that are typically stored in the default dataset,
 ## Responses
 
 * 201
+* 400
 
 **Response Headers**
 
 * **Location**
+
+Bad request - invalid input parameters or request body.

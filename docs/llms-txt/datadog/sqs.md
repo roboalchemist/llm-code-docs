@@ -1,10 +1,11 @@
+# Source: https://docs.datadoghq.com/data_streams/setup/technologies/sqs.md
+
 # Source: https://docs.datadoghq.com/cloudcraft/components-aws/sqs.md
 
 ---
 title: SQS Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > AWS Components > SQS Component
-source_url: https://docs.datadoghq.com/components-aws/sqs/index.html
 ---
 
 # SQS Component

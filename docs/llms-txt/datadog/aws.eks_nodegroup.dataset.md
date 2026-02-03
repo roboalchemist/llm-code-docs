@@ -4,8 +4,6 @@
 title: EKS Node Group
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > EKS Node Group
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.eks_nodegroup.dataset/index.html
 ---
 
 # EKS Node Group
@@ -42,7 +40,7 @@ aws.eks_nodegroup
 | scaling_config     | core | json          | The scaling configuration details for the Auto Scaling group that is associated with your node group.                                                                                                                                                                                                                                  |
 | status             | core | string        | The current status of the managed node group.                                                                                                                                                                                                                                                                                          |
 | subnets            | core | array<string> | The subnets that were specified for the Auto Scaling group that is associated with your node group.                                                                                                                                                                                                                                    |
-| tags               | core | hstore        |
+| tags               | core | hstore_csv    |
 | taints             | core | json          | The Kubernetes taints to be applied to the nodes in the node group when they are created. Effect is one of No_Schedule, Prefer_No_Schedule, or No_Execute. Kubernetes taints can be used together with tolerations to control how workloads are scheduled to your nodes. For more information, see Node taints on managed node groups. |
 | update_config      | core | json          | The node group update configuration.                                                                                                                                                                                                                                                                                                   |
 | version            | core | string        | The Kubernetes version of the managed node group.                                                                                                                                                                                                                                                                                      |

@@ -1,5 +1,9 @@
 # Source: https://docs.tavus.io/sections/conversational-video-interface/component-library/components.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Components
 
 > Learn about our pre-built React components to accelerate integrating the Tavus Conversational Video Interface (CVI) into your application.

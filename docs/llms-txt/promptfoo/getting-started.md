@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/getting-started/
+
 # Getting started
 
 After [installing](/docs/installation/) promptfoo, you can set up your first config file in two ways:

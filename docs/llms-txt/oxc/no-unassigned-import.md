@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/import/no-unassigned-import.md
 ---
-# import/no-unassigned-import&#x20;
 
 ### What it does
 
@@ -54,7 +53,7 @@ default: `[]`
 
 A list of glob patterns to allow unassigned imports for specific modules.
 For example:
-`{ "allow": ["*.css"] }` will allow unassigned imports for any module ending with `.css`.
+`{ "allow": ["**/*.css"] }` will allow unassigned imports for any module ending with `.css`.
 
 ## How to use
 

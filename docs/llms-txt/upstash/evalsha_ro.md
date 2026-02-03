@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/scripts/evalsha_ro.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/evalsha_ro.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/scripts/evalsha_ro.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/evalsha_ro.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/scripts/evalsha_ro.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/evalsha_ro.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/scripts/evalsha_ro.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/evalsha_ro.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/scripts/evalsha_ro.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/scripts/evalsha_ro.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # EVALSHA_RO
 
@@ -28,15 +14,15 @@
 
 ## Arguments
 
-<ParamField body="sha" type="string" required>
+<ParamField body="sha" type="str" required>
   The sha1 hash of the read-only script.
 </ParamField>
 
-<ParamField body="keys" type="string[]" required>
+<ParamField body="keys" type="List[str]" required>
   All of the keys accessed in the script
 </ParamField>
 
-<ParamField body="args" type="unknown[]" required>
+<ParamField body="args" type="List[str]" required>
   All of the arguments you passed to the script
 </ParamField>
 
@@ -47,10 +33,8 @@
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-
-  const result = await redis.evalshaRo("fb67a0c03b48ddbf8b4c9b011e779563bdbc28cb", [], ["hello"]);
-  console.log(result) // "hello"
-
+  ```py Example theme={"system"}
+  result = redis.evalsha_ro("fb67a0c03b48ddbf8b4c9b011e779563bdbc28cb", args=["hello"])
+  assert result = "hello"
   ```
 </RequestExample>

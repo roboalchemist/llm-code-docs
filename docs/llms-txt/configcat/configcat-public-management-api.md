@@ -4,6 +4,8 @@ Version: v1
 
 # ConfigCat Public Management API
 
+Copy page
+
 The purpose of this API is to access the ConfigCat platform programmatically. You can **Create**, **Read**, **Update** and **Delete** any entities like **Feature Flags, Configs, Environments** or **Products** within ConfigCat.
 
 **Base API URL**: <https://api.configcat.com>
@@ -12,7 +14,7 @@ If you prefer the swagger documentation, you can find it here: [Swagger UI](http
 
 The API is based on HTTP REST, uses resource-oriented URLs, status codes and supports JSON format.
 
-**Important:** Do not use this API for accessing and evaluating feature flag values. Use the [SDKs](https://configcat.com/docs/docs/sdk-reference/overview/.md) or the [ConfigCat Proxy](https://configcat.com/docs/docs/advanced/proxy/proxy-overview/.md) instead.
+**Important:** Do not use this API for accessing and evaluating feature flag values. Use the [SDKs](https://configcat.com/docs/sdk-reference/overview.md) or the [ConfigCat Proxy](https://configcat.com/docs/advanced/proxy/proxy-overview.md) instead.
 
 ## OpenAPI Specification[​](#openapi-specification "Direct link to OpenAPI Specification")
 

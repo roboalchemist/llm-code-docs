@@ -1,186 +1,81 @@
 # Source: https://smartcar.com/docs/help/oem-integrations/vw/whats-new.md
 
-# Source: https://smartcar.com/docs/help/oem-integrations/tesla/whats-new.md
-
-# Source: https://smartcar.com/docs/help/oem-integrations/mercedes/whats-new.md
-
-# Source: https://smartcar.com/docs/help/oem-integrations/vw/whats-new.md
+# Source: https://smartcar.com/docs/help/oem-integrations/volvo/whats-new.md
 
 # Source: https://smartcar.com/docs/help/oem-integrations/tesla/whats-new.md
 
 # Source: https://smartcar.com/docs/help/oem-integrations/mercedes/whats-new.md
 
-# Source: https://smartcar.com/docs/help/oem-integrations/vw/whats-new.md
-
-# Source: https://smartcar.com/docs/help/oem-integrations/tesla/whats-new.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Important Updates
 
-> Upcoming changes to data access and permissions in 2025
+> Updates regarding the Mercedes-Benz Smartcar Integration.
 
-## May 20, 2025
+## December 15th, 2025
 
-Smartcar now handles adding Virtual Keys for Tesla vehicles on your behalf in the Connect flow. Virtual Keys are required for third-party applications to issue commands to Tesla vehicles and are the preferred method for accessing data.
+Smartcar is excited to announce the availability of the Mercedes-Benz Connectivity Services partner integration. This integration enables developers to connect Mercedes-Benz electric vehicles in Europe and access vehicle data for smart charging, energy management, and mobility applications.
 
-<Frame type="simple">
-  <img src="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=e504d181b6936f3e0ba17926a2923be2" data-og-width="2283" width="2283" data-og-height="931" height="931" data-path="images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?w=280&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=02c5b864bdd1e8c5541ed1a1bfc80549 280w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?w=560&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=a1ca3a12ee41154e396ae4ce1b56af65 560w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?w=840&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=89747ff417caaf5f36b30737aa24bd0a 840w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?w=1100&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=6f5036a32588937a17a0ea6fb0adc4bb 1100w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?w=1650&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=3e4e9358fb3e91fc7e6b1ad8bc7bac0d 1650w, https://mintcdn.com/smartcar-docs/bl2aLGyZU43A919o/images/help-center/oem-integrations/tesla/add-virtual-key/VirtualKeyPageMobile.png?w=2500&fit=max&auto=format&n=bl2aLGyZU43A919o&q=85&s=b8b9c2e23830523d41d1c9c753d3b309 2500w" />
+### VIN Verification in Connect Flow
+
+When connecting a Mercedes-Benz vehicle through Smartcar Connect, vehicle owners will be prompted to enter their Vehicle Identification Number (VIN) as part of the authentication process. This additional verification step is a requirement from Mercedes to enroll a vehicle.
+
+<Frame type="simple" caption="Prompt in Smartcar Connect to enter VIN">
+  <img src="https://mintcdn.com/smartcar-docs/v9G7Qw0FU2IgW59i/images/help-center/oem-integrations/mercedes/mercedes-vin.png?fit=max&auto=format&n=v9G7Qw0FU2IgW59i&q=85&s=b7378594e095bbbfad98a1768020273d" width="400" data-og-width="750" data-og-height="1624" data-path="images/help-center/oem-integrations/mercedes/mercedes-vin.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/smartcar-docs/v9G7Qw0FU2IgW59i/images/help-center/oem-integrations/mercedes/mercedes-vin.png?w=280&fit=max&auto=format&n=v9G7Qw0FU2IgW59i&q=85&s=5339ab590eddcf1a9129b7372cebcf46 280w, https://mintcdn.com/smartcar-docs/v9G7Qw0FU2IgW59i/images/help-center/oem-integrations/mercedes/mercedes-vin.png?w=560&fit=max&auto=format&n=v9G7Qw0FU2IgW59i&q=85&s=0b5b1be7fb8b79a80de638a96dd62218 560w, https://mintcdn.com/smartcar-docs/v9G7Qw0FU2IgW59i/images/help-center/oem-integrations/mercedes/mercedes-vin.png?w=840&fit=max&auto=format&n=v9G7Qw0FU2IgW59i&q=85&s=f01e31b332ed489a015cdf060dff0701 840w, https://mintcdn.com/smartcar-docs/v9G7Qw0FU2IgW59i/images/help-center/oem-integrations/mercedes/mercedes-vin.png?w=1100&fit=max&auto=format&n=v9G7Qw0FU2IgW59i&q=85&s=6590751276ac41a89fa2efde1f3a9776 1100w, https://mintcdn.com/smartcar-docs/v9G7Qw0FU2IgW59i/images/help-center/oem-integrations/mercedes/mercedes-vin.png?w=1650&fit=max&auto=format&n=v9G7Qw0FU2IgW59i&q=85&s=a6856fbd7921c031fbc473c7297f1afb 1650w, https://mintcdn.com/smartcar-docs/v9G7Qw0FU2IgW59i/images/help-center/oem-integrations/mercedes/mercedes-vin.png?w=2500&fit=max&auto=format&n=v9G7Qw0FU2IgW59i&q=85&s=fca18dfe920033499727699ad4738693 2500w" />
 </Frame>
 
-For more details, visit the [Virtual Key documentation](/help/oem-integrations/tesla/virtual-key-tesla).
+<Note>
+  The VIN can be found in various places such as the Mercedes mobile app, Mercedes web portal, the vehicle's registration documents, insurance papers, or on the vehicle itself (typically on the driver's side dashboard or door jamb).
+</Note>
 
-## January 10, 2025
+### Supported Vehicle Types
 
-Starting in March 2025, Tesla will require a new permission to access live
-location data for its vehicles. Due to this change, you have two options:
+Currently, the Mercedes-Benz integration supports the following powertrain types for **new connections**:
 
-**If your application needs live location data:**<br />
-Users will need to reauthenticate and grant explicit access to the Vehicle
-Location permission to continue receiving location data beyond March 2025, if
-they haven’t already done so. This permission was previously included as part of
-the Vehicle Information permission.
+* **BEV (Battery Electric Vehicles)** - Fully electric Mercedes-Benz vehicles
+* **PHEV (Plug-in Hybrid Electric Vehicles)** - Mercedes-Benz plug-in hybrid vehicles
 
-**If your application only needs to know whether the vehicle is at home:**<br />
-A new boolean value will be available soon, and it will not require
-reauthentication. Vehicle owners can set their home location in the Tesla
-application.
+### Need Support for Other Vehicle Types?
 
-### Why is this change occurring?
+**Existing Connections**: If you have existing connections to Mercedes-Benz vehicles with other powertrain types (such as traditional internal combustion engine vehicles), these connections will continue to work, but re-authentication is not supported at this time. If your application requires support for Mercedes-Benz vehicles with other powertrain types, please [contact our team](mailto:support@smartcar.com) to discuss your specific requirements. We're continuously working with Mercedes to expand compatibility across different vehicle types and would love to hear about your use case.
 
-Tesla now provides users more granular data access control, and requires vehicle
-owners to explicitly consent to sharing location data with 3rd parties like
-Smartcar. This ultimately gives drivers more control and awareness of how and
-what data they decide to share.
+### Supported Smartcar Signals:
 
-### Next steps if you need live location data
+* [Charge.IsChargingCableConnected](/api-reference/signals/charge#is-charging-cable-connected)
+* [Charge.IsCharging](/api-reference/signals/charge#is-charging)
+* [Charge.DetailedChargingStatus](/api-reference/signals/charge#detailed-charging-status)
+* [Charge.ChargeTimers](/api-reference/signals/charge#charge-timers)
+* [Charge.ChargeLimits](/api-reference/signals/charge#charge-limits)
+* [Charge.TimeToComplete](/api-reference/signals/charge#time-to-complete)
+* [Charge.Wattage](/api-reference/signals/charge#wattage)
+* [TractionBattery.StateOfCharge](/api-reference/signals/tractionbattery#state-of-charge)
+* [TractionBattery.Range](/api-reference/signals/tractionbattery#range)
+* [TractionBattery.NominalCapacity](/api-reference/signals/tractionbattery#nominal-capacities)
+* [Location.PreciseLocation](/api-reference/signals/location#location)
+* [Odometer.TraveledDistance](/api-reference/signals/odometer#traveled-distance)
 
-**1. Check existing permissions** <br />
-Use the [User Access](/api-reference/tesla/get-user-access) endpoint to verify whether a vehicle has already
-been granted the required permission on Tesla's side.
+### Smartcar Legacy API v2 Endpoints Supported:
 
-**2. Update Smartcar Connect scopes**<br />
-To ensure vehicle owners grant the new permission, append `required:` to your
-scopes in the Smartcar Connect URL (for example, `required:read_location`). For
-detailed instructions, please refer to [this guide](/help/oem-integrations/tesla/developers#requiring-tesla-permissions).
+* [/odometer](/api-reference/get-odometer)
+* [/location](/api-reference/get-location)
+* [/battery](/api-reference/evs/get-battery-level)
+* [/battery/capacity](/api-reference/get-nominal-capacity)
+* [/charge](/api-reference/evs/get-charge-limit)
 
-**3. Prompt users to reauthenticate**<br />
-If needed, guide users to reauthenticate their Tesla vehicles using the methods outlined
-[here](/help/oem-integrations/tesla/developers#updating-access-with-tesla).
+### Supported Commands:
 
-<br />
+* [Charge Start](/api-reference/evs/control-charge)
+* [Charge Stop](/api-reference/evs/control-charge)
 
-<Warning>
-  If the Vehicle Location permission isn’t granted by March 2025, you may
-  encounter a `PERMISSION` error. As a result, your
-  application will no longer receive live location data from affected Tesla
-  vehicles until they reauthenticate.
-</Warning>
+### Notes
 
-## December 19, 2024
+This Mercedes-Benz integration is automatically enabled for your application when connecting vehicles out of Europe.
 
-Starting **January 21, 2025**, a Virtual Key will be required to maintain access to
-Tesla vehicle data. Failure to make the necessary changes could result in a
-disruption to your service after this date. Below, we’ve outlined the steps you
-need to take to prepare, depending on your situation.
+* Supported European markets: Reach customers in Austria, Belgium, Denmark, Finland, France, Germany, Great Britain, Ireland, Italy, Luxembourg, Netherlands, Norway, Poland, Portugal, Spain, Sweden, and Switzerland
+* As part of this integration, drivers will be asked to enter their Vehicle Identification Number (VIN) during the new consent authentication flow. We recommend preparing your customer guidance and support content accordingly
+* If charge control permissions are requested by the connecting application only EQA, EQB, EQE and EQS vehicles are compatible
+* Only EQ models support control charge at this time. For EQE and EQS models, if the state of charge is lower than 20%, stop commands are rejected by Mercedes. For all other EQ models, if the state of charge is below 50%, stopping the charging process is rejected by Mercedes and the car will continue to charge until it reaches at least 50% for vehicle reliability reasons,
 
-### For new developers
-
-If you're on an **Enterprise** plan, please reach out to your Account Manager or
-Solutions Architect for information on setting up your own Virtual Key.
-
-**Free** and **Build** customers can get started with the default Virtual Key.
-
-### For existing developers
-
-<AccordionGroup>
-  <Accordion title="I'm using an app.car subdomain that Smartcar has created for me">
-    **What’s changing?**
-
-    Telsa is changing the way data can be accessed by 3rd party applications.
-
-    **What do you need to do?**
-
-    To ensure continuous data access, please have your users add your Virtual Key to
-    their vehicles if they haven’t already.  They can follow [this
-    guide](https://smartcar.com/docs/help/oem-integrations/tesla/developers#adding-a-virtual-key)
-    for more information. If you already prompt users to add a Virtual Key as your
-    application issues commands - no additional work is needed, please continue to
-    do so.
-
-    **What is a Virtual Key?**
-
-    A virtual key is a digital access method required by Tesla for third-party
-    applications to receive vehicle data and issue commands to Tesla vehicles.
-    Please see [this
-    guide](https://smartcar.com/docs/help/oem-integrations/tesla/developers#adding-a-virtual-key)
-    for more information.
-
-    **Where can I find my Virtual Key?**
-
-    The Virtual Key URL for your application will be sent back along with the
-    authorization code after a user completes the Connect flow.
-    Alternatively, you can reach out to Support or your Account Manager and they'll be able to provide
-    it to you.
-
-    **What happens if my users do not add my Virtual Key?**
-
-    Starting January 21, 2025 you will not be able to get data from Tesla vehicles
-    you are connected to and will receive a `virtual_key_required` error instead
-    ([docs](https://smartcar.com/docs/errors/api-errors/connected-services-account-errors#virtual-key-required)).
-
-    **What about vehicles that do not support Virtual Keys?**
-
-    2020 and earlier Model S and X **will not** require a Virtual Key to keep
-    working at this time. However, you may not always receive the latest data from
-    the vehicle when you make an API request to Smartcar.
-
-    **Will my users need to reauthenticate?**
-
-    No. They simply need to add the Virtual Key to their vehicle.
-  </Accordion>
-
-  <Accordion title="I'm using Smartcar's default Tesla application">
-    **What’s changing?**
-
-    Tesla is changing the way data can be accessed by 3rd party applications.
-
-    **What do you need to do?**
-
-    To ensure continuous data access, please have your users add your Virtual Key to their vehicles if they haven’t already.  They can
-    follow [this
-    guide](https://smartcar.com/docs/help/oem-integrations/tesla/developers#adding-a-virtual-key)
-    for more information. If you already prompt users to add a Virtual Key as your
-    application issues commands - no additional work is needed, please continue to
-    do so.
-
-    **What is a Virtual Key?**
-
-    A virtual key is a digital access method required by Tesla for third-party
-    applications to receive vehicle data and issue commands to Tesla vehicles.
-    Please see [this
-    guide](https://smartcar.com/docs/help/oem-integrations/tesla/developers#adding-a-virtual-key)
-    for more information.
-
-    **Where can I find my Virtual Key?**
-
-    The Virtual Key URL for your application will be sent back along with the
-    authorization code after a user completes the Connect flow. The Virtual Key URL
-    is:
-    [`https://www.tesla.com/_ak/smartcar.com`](https://www.tesla.com/_ak/smartcar.com)
-
-    **What happens if my users do not add my Virtual Key?**
-
-    Starting January 21, 2025 you will not be able to get data from Tesla vehicles
-    you are connected to and will receive a `virtual_key_required` error instead
-    ([docs](https://smartcar.com/docs/errors/api-errors/connected-services-account-errors#virtual-key-required)).
-
-    **What about vehicles that do not support Virtual Keys?**
-
-    2020 and earlier Model S and X **will not** require a Virtual Key to keep
-    working at this time. However, you may not always receive the latest data from
-    the vehicle when you make an API request to Smartcar.
-
-    **Will my users need to reauthenticate?**
-
-    No. They simply need to add the Virtual Key to their vehicle.
-  </Accordion>
-</AccordionGroup>
+For more information about compatible vehicle data and features, see the [compatibility matrix](https://smartcar.com/product/compatible-vehicles).

@@ -6,7 +6,6 @@ description: >-
   Analyze resource performance with health metrics, dependency maps, span
   summaries, and frontend impact data.
 breadcrumbs: Docs > APM > Service Observability > Resource Page
-source_url: https://docs.datadoghq.com/services/resource_page/index.html
 ---
 
 # Resource Page

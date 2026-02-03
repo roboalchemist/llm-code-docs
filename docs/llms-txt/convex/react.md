@@ -4,12 +4,6 @@
 
 # Source: https://docs.convex.dev/quickstart/react.md
 
-# Source: https://docs.convex.dev/api/modules/react.md
-
-# Source: https://docs.convex.dev/client/react.md
-
-# Source: https://docs.convex.dev/quickstart/react.md
-
 # React Quickstart
 
 [YouTube video player](https://www.youtube.com/embed/4MgsvjMb59Q)

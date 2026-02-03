@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/examples/notebooks-and-replits.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Notebooks & Replits
 
 # Explore awesome apps

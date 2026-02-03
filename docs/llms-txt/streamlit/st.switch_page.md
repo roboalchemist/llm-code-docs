@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/navigation/st.switch_page
+
 # st.switch_page
 
 Programmatically switch the current page in a multipage app.

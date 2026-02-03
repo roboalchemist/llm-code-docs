@@ -6,9 +6,8 @@ description: >-
   Automatically inject environment variables and standard tags into Kubernetes
   pods using the Datadog Admission Controller
 breadcrumbs: >-
-  Docs > Container Monitoring > Cluster Agent for Kubernetes > Datadog Admission
+  Docs > Containers > Cluster Agent for Kubernetes > Datadog Admission
   Controller
-source_url: https://docs.datadoghq.com/cluster_agent/admission_controller/index.html
 ---
 
 # Datadog Admission Controller

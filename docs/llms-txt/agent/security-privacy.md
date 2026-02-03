@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/security-privacy.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Data Security & Privacy at Agent.ai
 
 > Agent.ai prioritizes your data security and privacy with full encryption, no data reselling, and transparent handling practices. Find out how we protect your information while providing AI agent services and our current compliance status.

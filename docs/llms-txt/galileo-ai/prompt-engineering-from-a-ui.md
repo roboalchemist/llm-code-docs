@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/quickstart/prompt-engineering-from-a-ui.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Prompt Engineering From A UI
 
 > Explore UI-driven prompt engineering in Galileo Evaluate to create, test, and refine prompts with intuitive interfaces and robust evaluation tools.
@@ -21,7 +25,6 @@ If you already have an application or prototype you're looking to Evaluate, Prom
 1. Login to the Galileo console
 
 2. Create a **New Project** via the "+" button.
-
    1. Give your project a **Name**, or choose Galileo's proposed name
 
    2. Select "**Evaluate**"
@@ -39,13 +42,12 @@ This will take you to the Galileo Playground. Next, we choose a template, model 
 3. Enter a **Prompt**. Put variables in curly braces e.g. `{topic}`
 
 4. **Add Data**: There are 2 ways to add data
-
    1. Upload a CSV - with the first row representing *variable names* and each following row representing the *values*
 
    2. Manually add data by clicking on "**+ Add data**"
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/galileo/images/gen-ai.png" />
+  <img src="https://mintcdn.com/galileo/_xpCBW-9wyhpIMLs/images/gen-ai.png?fit=max&auto=format&n=_xpCBW-9wyhpIMLs&q=85&s=8fe322aaa2908366e74a648e814ed03a" data-og-width="1979" width="1979" data-og-height="1102" height="1102" data-path="images/gen-ai.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/galileo/_xpCBW-9wyhpIMLs/images/gen-ai.png?w=280&fit=max&auto=format&n=_xpCBW-9wyhpIMLs&q=85&s=aa57bf3159ce4ee5f7b7eaf3ea10847f 280w, https://mintcdn.com/galileo/_xpCBW-9wyhpIMLs/images/gen-ai.png?w=560&fit=max&auto=format&n=_xpCBW-9wyhpIMLs&q=85&s=bcb41eaaea84528f0e75e9c07678be02 560w, https://mintcdn.com/galileo/_xpCBW-9wyhpIMLs/images/gen-ai.png?w=840&fit=max&auto=format&n=_xpCBW-9wyhpIMLs&q=85&s=9f73b76cb5248ce43cf2d8321deb74c6 840w, https://mintcdn.com/galileo/_xpCBW-9wyhpIMLs/images/gen-ai.png?w=1100&fit=max&auto=format&n=_xpCBW-9wyhpIMLs&q=85&s=9f122fd48037ef0b67a63ace5b2a05d5 1100w, https://mintcdn.com/galileo/_xpCBW-9wyhpIMLs/images/gen-ai.png?w=1650&fit=max&auto=format&n=_xpCBW-9wyhpIMLs&q=85&s=2349d9e4b501c7b21c47c0e126d9cc26 1650w, https://mintcdn.com/galileo/_xpCBW-9wyhpIMLs/images/gen-ai.png?w=2500&fit=max&auto=format&n=_xpCBW-9wyhpIMLs&q=85&s=12cb651f612af9edb57d55b65e9976f0 2500w" />
 </Frame>
 
 ### Choosing Your Guardrail Metrics

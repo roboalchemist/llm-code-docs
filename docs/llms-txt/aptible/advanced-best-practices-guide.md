@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/platform-guides/advanced-best-practices-guide.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Advanced Best Practices Guide
 
 > Learn how to take your infrastructure to the next level with advanced best practices

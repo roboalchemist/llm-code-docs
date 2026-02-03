@@ -1,8 +1,8 @@
+# Source: https://oxc.rs/docs/guide/usage/parser.md
+
 # Source: https://oxc.rs/docs/learn/parser_in_rust/parser.md
 
 # Source: https://oxc.rs/docs/learn/architecture/parser.md
-
-# Source: https://oxc.rs/docs/guide/usage/parser.md
 
 # Source: https://oxc.rs/docs/contribute/parser.md
 

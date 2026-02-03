@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/getting-started/quickstarts/database-connection.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Connect your app to a SQL database
 
 > Learn how to connect to your Replit database from your Replit App.
@@ -15,7 +19,7 @@ To determine which type of connection you need, see
 in the Neon documentation.
 
 <Tip>
-  Use **Agent** or **Assistant** to generate code that connects to your existing database.
+  Use **Agent** to generate code that connects to your existing database.
 </Tip>
 
 ## Prerequisites
@@ -30,7 +34,7 @@ Before getting started, make sure you have the following:
 <Note>
   This tutorial does not provide examples for all programming languages.
   Use PostgresSQL driver documentation for your project's programming language
-  or ask Assistant to translate the code examples.
+  or ask Agent to translate the code examples.
 </Note>
 
 <Steps>
@@ -171,6 +175,12 @@ Before getting started, make sure you have the following:
     Navigate to the **Console** tool, where you should see a data from your `users` table, if any exists.
   </Step>
 </Steps>
+
+## Share a database across multiple Replit Apps
+
+If you need multiple Replit Apps to share a single database, you can expose it as a REST API. This approach allows other applications or services to securely access and manipulate database data through standardized HTTP requests.
+
+See the tutorial on [sharing a database across multiple apps](/tutorials/share-database-across-apps) for a complete guide on setting up a secure database API service using the Database API Example template.
 
 ## Next steps
 

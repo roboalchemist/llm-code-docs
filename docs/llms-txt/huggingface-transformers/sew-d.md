@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/sew-d.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/sew-d.md
 
 # SEW-D
 
@@ -24,7 +24,7 @@ This model was contributed by [anton-l](https://huggingface.co/anton-l).
 
 - SEW-D is a speech model that accepts a float array corresponding to the raw waveform of the speech signal.
 - SEWDForCTC is fine-tuned using connectionist temporal classification (CTC) so the model output has to be decoded
-  using [Wav2Vec2CTCTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2#transformers.Wav2Vec2CTCTokenizer).
+  using [Wav2Vec2CTCTokenizer](/docs/transformers/v5.0.0/en/model_doc/wav2vec2#transformers.Wav2Vec2CTCTokenizer).
 
 ## Resources
 
@@ -35,15 +35,15 @@ This model was contributed by [anton-l](https://huggingface.co/anton-l).
 
 #### transformers.SEWDConfig[[transformers.SEWDConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sew_d/configuration_sew_d.py#L27)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sew_d/configuration_sew_d.py#L26)
 
-This is the configuration class to store the configuration of a [SEWDModel](/docs/transformers/v5.0.0rc1/en/model_doc/sew-d#transformers.SEWDModel). It is used to instantiate a SEW-D
+This is the configuration class to store the configuration of a [SEWDModel](/docs/transformers/v5.0.0/en/model_doc/sew-d#transformers.SEWDModel). It is used to instantiate a SEW-D
 model according to the specified arguments, defining the model architecture. Instantiating a configuration with the
 defaults will yield a similar configuration to that of the SEW-D
 [asapp/sew-d-tiny-100k](https://huggingface.co/asapp/sew-d-tiny-100k) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -60,7 +60,7 @@ Example:
 >>> configuration = model.config
 ```
 
-to_dicttransformers.SEWDConfig.to_dicthttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sew_d/configuration_sew_d.py#L282[]
+to_dicttransformers.SEWDConfig.to_dicthttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sew_d/configuration_sew_d.py#L284[]
 
 Serializes this instance to a Python dictionary.
 
@@ -98,7 +98,7 @@ activation_dropout (`float`, *optional*, defaults to 0.1) : The dropout probabil
 
 attention_dropout (`float`, *optional*, defaults to 0.1) : The dropout ratio for the attention probabilities.
 
-final_dropout (`float`, *optional*, defaults to 0.1) : The dropout probability for the final projection layer of [SEWDForCTC](/docs/transformers/v5.0.0rc1/en/model_doc/sew-d#transformers.SEWDForCTC).
+final_dropout (`float`, *optional*, defaults to 0.1) : The dropout probability for the final projection layer of [SEWDForCTC](/docs/transformers/v5.0.0/en/model_doc/sew-d#transformers.SEWDForCTC).
 
 initializer_range (`float`, *optional*, defaults to 0.02) : The standard deviation of the truncated_normal_initializer for initializing all weight matrices.
 
@@ -162,17 +162,17 @@ mask_time_min_masks (`int`, *optional*, defaults to 2), : The minimum number of 
 
 **Parameters:**
 
-config ([SEWDForCTC](/docs/transformers/v5.0.0rc1/en/model_doc/sew-d#transformers.SEWDForCTC)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([SEWDForCTC](/docs/transformers/v5.0.0/en/model_doc/sew-d#transformers.SEWDForCTC)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
-target_lang (`str`, *optional*) : Language id of adapter weights. Adapter weights are stored in the format adapter..safetensors or adapter..bin. Only relevant when using an instance of [SEWDForCTC](/docs/transformers/v5.0.0rc1/en/model_doc/sew-d#transformers.SEWDForCTC) with adapters. Uses 'eng' by default.
+target_lang (`str`, *optional*) : Language id of adapter weights. Adapter weights are stored in the format adapter..safetensors or adapter..bin. Only relevant when using an instance of [SEWDForCTC](/docs/transformers/v5.0.0/en/model_doc/sew-d#transformers.SEWDForCTC) with adapters. Uses 'eng' by default.
 
 **Returns:**
 
-`[transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or a tuple of
+A [transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([SEWDConfig](/docs/transformers/v5.0.0rc1/en/model_doc/sew-d#transformers.SEWDConfig)) and inputs.
+elements depending on the configuration ([SEWDConfig](/docs/transformers/v5.0.0/en/model_doc/sew-d#transformers.SEWDConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
@@ -190,12 +190,12 @@ elements depending on the configuration ([SEWDConfig](/docs/transformers/v5.0.0r
 
 #### transformers.SEWDForSequenceClassification[[transformers.SEWDForSequenceClassification]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sew_d/modeling_sew_d.py#L1520)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sew_d/modeling_sew_d.py#L1518)
 
 SEWD Model with a sequence classification head on top (a linear layer over the pooled output) for tasks like SUPERB
 Keyword Spotting.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -203,11 +203,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.SEWDForSequenceClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sew_d/modeling_sew_d.py#L1553[{"name": "input_values", "val": ": typing.Optional[torch.Tensor]"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "labels", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "**kwargs", "val": ""}]- **input_values** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`) --
+forwardtransformers.SEWDForSequenceClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sew_d/modeling_sew_d.py#L1551[{"name": "input_values", "val": ": torch.Tensor | None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "labels", "val": ": torch.Tensor | None = None"}, {"name": "**kwargs", "val": ""}]- **input_values** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`) --
   Float values of input raw speech waveform. Values can be obtained by loading a `.flac` or `.wav` audio file
   into an array of type `list[float]`, a `numpy.ndarray` or a `torch.Tensor`, *e.g.* via the torchcodec library
   (`pip install torchcodec`) or the soundfile library (`pip install soundfile`).
-  To prepare the array into `input_values`, the [AutoProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoProcessor) should be used for padding and conversion
+  To prepare the array into `input_values`, the [AutoProcessor](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoProcessor) should be used for padding and conversion
   into a tensor of type `torch.FloatTensor`. See `SEWDProcessor.__call__` for details.
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Mask to avoid performing attention on padding token indices. Mask values selected in `[0, 1]`:
@@ -223,13 +223,13 @@ forwardtransformers.SEWDForSequenceClassification.forwardhttps://github.com/hugg
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 - **labels** (`torch.LongTensor` of shape `(batch_size,)`, *optional*) --
   Labels for computing the sequence classification/regression loss. Indices should be in `[0, ...,
   config.num_labels - 1]`. If `config.num_labels == 1` a regression loss is computed (Mean-Square loss), If
-  `config.num_labels > 1` a classification loss is computed (Cross-Entropy).0[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
+  `config.num_labels > 1` a classification loss is computed (Cross-Entropy).0[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([SEWDConfig](/docs/transformers/v5.0.0rc1/en/model_doc/sew-d#transformers.SEWDConfig)) and inputs.
+elements depending on the configuration ([SEWDConfig](/docs/transformers/v5.0.0/en/model_doc/sew-d#transformers.SEWDConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).
@@ -242,7 +242,7 @@ elements depending on the configuration ([SEWDConfig](/docs/transformers/v5.0.0r
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [SEWDForSequenceClassification](/docs/transformers/v5.0.0rc1/en/model_doc/sew-d#transformers.SEWDForSequenceClassification) forward method, overrides the `__call__` special method.
+The [SEWDForSequenceClassification](/docs/transformers/v5.0.0/en/model_doc/sew-d#transformers.SEWDForSequenceClassification) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -306,15 +306,15 @@ Example of multi-label classification:
 
 **Parameters:**
 
-config ([SEWDForSequenceClassification](/docs/transformers/v5.0.0rc1/en/model_doc/sew-d#transformers.SEWDForSequenceClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([SEWDForSequenceClassification](/docs/transformers/v5.0.0/en/model_doc/sew-d#transformers.SEWDForSequenceClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
+A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([SEWDConfig](/docs/transformers/v5.0.0rc1/en/model_doc/sew-d#transformers.SEWDConfig)) and inputs.
+elements depending on the configuration ([SEWDConfig](/docs/transformers/v5.0.0/en/model_doc/sew-d#transformers.SEWDConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).

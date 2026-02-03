@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/powered-by-zapier/zap-creation/filter-actions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Filter Actions
 
 > Learn how to configure Filter by Zapier actions to control workflow execution based on conditions.

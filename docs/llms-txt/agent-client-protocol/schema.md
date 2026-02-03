@@ -1,6 +1,8 @@
 # Source: https://agentclientprotocol.com/protocol/schema.md
 
-# Source: https://agentclientprotocol.com/protocol/draft/schema.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://agentclientprotocol.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Schema
 
@@ -198,178 +200,6 @@ See protocol docs: [Cancellation](https://agentclientprotocol.com/protocol/promp
   The ID of the session to cancel operations for.
 </ResponseField>
 
-<a id="session-fork" />
-
-### <span class="font-mono">session/fork</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Forks an existing session to create a new independent session.
-
-This method is only available if the agent advertises the `session.fork` capability.
-
-The agent should create a new session with the same conversation context as the
-original, allowing operations like generating summaries without affecting the
-original session's history.
-
-#### <span class="font-mono">ForkSessionRequest</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Request parameters for forking an existing session.
-
-Creates a new session based on the context of an existing one, allowing
-operations like generating summaries without affecting the original session's history.
-
-Only available if the Agent supports the `session.fork` capability.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="cwd" type={"string"} required>
-  The working directory for this session.
-</ResponseField>
-
-<ResponseField name="mcpServers" type={<a href="#mcpserver">McpServer[]</a>}>
-  List of MCP servers to connect to for this session.
-</ResponseField>
-
-<ResponseField name="sessionId" type={<a href="#sessionid">SessionId</a>} required>
-  The ID of the session to fork.
-</ResponseField>
-
-#### <span class="font-mono">ForkSessionResponse</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Response from forking an existing session.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="configOptions" type={<><span><a href="#sessionconfigoption">SessionConfigOption[]</a></span><span> | null</span></>}>
-  **UNSTABLE**
-
-  This capability is not part of the spec yet, and may be removed or changed at any point.
-
-  Initial session configuration options if supported by the Agent.
-</ResponseField>
-
-<ResponseField name="models" type={<><span><a href="#sessionmodelstate">SessionModelState</a></span><span> | null</span></>}>
-  **UNSTABLE**
-
-  This capability is not part of the spec yet, and may be removed or changed at any point.
-
-  Initial model state if supported by the Agent
-</ResponseField>
-
-<ResponseField name="modes" type={<><span><a href="#sessionmodestate">SessionModeState</a></span><span> | null</span></>}>
-  Initial mode state if supported by the Agent
-
-  See protocol docs: [Session Modes](https://agentclientprotocol.com/protocol/session-modes)
-</ResponseField>
-
-<ResponseField name="sessionId" type={<a href="#sessionid">SessionId</a>} required>
-  Unique identifier for the newly created forked session.
-</ResponseField>
-
-<a id="session-list" />
-
-### <span class="font-mono">session/list</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Lists existing sessions known to the agent.
-
-This method is only available if the agent advertises the `listSessions` capability.
-
-The agent should return metadata about sessions with optional filtering and pagination support.
-
-#### <span class="font-mono">ListSessionsRequest</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Request parameters for listing existing sessions.
-
-Only available if the Agent supports the `listSessions` capability.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="cursor" type={"string | null"}>
-  Opaque cursor token from a previous response's nextCursor field for cursor-based pagination
-</ResponseField>
-
-<ResponseField name="cwd" type={"string | null"}>
-  Filter sessions by working directory. Must be an absolute path.
-</ResponseField>
-
-#### <span class="font-mono">ListSessionsResponse</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Response from listing sessions.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="nextCursor" type={"string | null"}>
-  Opaque cursor token. If present, pass this in the next request's cursor parameter
-  to fetch the next page. If absent, there are no more results.
-</ResponseField>
-
-<ResponseField name="sessions" type={<a href="#sessioninfo">SessionInfo[]</a>} required>
-  Array of session information objects
-</ResponseField>
-
 <a id="session-load" />
 
 ### <span class="font-mono">session/load</span>
@@ -432,22 +262,6 @@ Response from loading an existing session.
   these keys.
 
   See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="configOptions" type={<><span><a href="#sessionconfigoption">SessionConfigOption[]</a></span><span> | null</span></>}>
-  **UNSTABLE**
-
-  This capability is not part of the spec yet, and may be removed or changed at any point.
-
-  Initial session configuration options if supported by the Agent.
-</ResponseField>
-
-<ResponseField name="models" type={<><span><a href="#sessionmodelstate">SessionModelState</a></span><span> | null</span></>}>
-  **UNSTABLE**
-
-  This capability is not part of the spec yet, and may be removed or changed at any point.
-
-  Initial model state if supported by the Agent
 </ResponseField>
 
 <ResponseField name="modes" type={<><span><a href="#sessionmodestate">SessionModeState</a></span><span> | null</span></>}>
@@ -516,22 +330,6 @@ See protocol docs: [Creating a Session](https://agentclientprotocol.com/protocol
   these keys.
 
   See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="configOptions" type={<><span><a href="#sessionconfigoption">SessionConfigOption[]</a></span><span> | null</span></>}>
-  **UNSTABLE**
-
-  This capability is not part of the spec yet, and may be removed or changed at any point.
-
-  Initial session configuration options if supported by the Agent.
-</ResponseField>
-
-<ResponseField name="models" type={<><span><a href="#sessionmodelstate">SessionModelState</a></span><span> | null</span></>}>
-  **UNSTABLE**
-
-  This capability is not part of the spec yet, and may be removed or changed at any point.
-
-  Initial model state if supported by the Agent
 </ResponseField>
 
 <ResponseField name="modes" type={<><span><a href="#sessionmodestate">SessionModeState</a></span><span> | null</span></>}>
@@ -625,166 +423,6 @@ See protocol docs: [Check for Completion](https://agentclientprotocol.com/protoc
   Indicates why the agent stopped processing the turn.
 </ResponseField>
 
-<a id="session-resume" />
-
-### <span class="font-mono">session/resume</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Resumes an existing session without returning previous messages.
-
-This method is only available if the agent advertises the `session.resume` capability.
-
-The agent should resume the session context, allowing the conversation to continue
-without replaying the message history (unlike `session/load`).
-
-#### <span class="font-mono">ResumeSessionRequest</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Request parameters for resuming an existing session.
-
-Resumes an existing session without returning previous messages (unlike `session/load`).
-This is useful for agents that can resume sessions but don't implement full session loading.
-
-Only available if the Agent supports the `session.resume` capability.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="cwd" type={"string"} required>
-  The working directory for this session.
-</ResponseField>
-
-<ResponseField name="mcpServers" type={<a href="#mcpserver">McpServer[]</a>}>
-  List of MCP servers to connect to for this session.
-</ResponseField>
-
-<ResponseField name="sessionId" type={<a href="#sessionid">SessionId</a>} required>
-  The ID of the session to resume.
-</ResponseField>
-
-#### <span class="font-mono">ResumeSessionResponse</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Response from resuming an existing session.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="configOptions" type={<><span><a href="#sessionconfigoption">SessionConfigOption[]</a></span><span> | null</span></>}>
-  **UNSTABLE**
-
-  This capability is not part of the spec yet, and may be removed or changed at any point.
-
-  Initial session configuration options if supported by the Agent.
-</ResponseField>
-
-<ResponseField name="models" type={<><span><a href="#sessionmodelstate">SessionModelState</a></span><span> | null</span></>}>
-  **UNSTABLE**
-
-  This capability is not part of the spec yet, and may be removed or changed at any point.
-
-  Initial model state if supported by the Agent
-</ResponseField>
-
-<ResponseField name="modes" type={<><span><a href="#sessionmodestate">SessionModeState</a></span><span> | null</span></>}>
-  Initial mode state if supported by the Agent
-
-  See protocol docs: [Session Modes](https://agentclientprotocol.com/protocol/session-modes)
-</ResponseField>
-
-<a id="session-set_config_option" />
-
-### <span class="font-mono">session/set\_config\_option</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Sets the current value for a session configuration option.
-
-#### <span class="font-mono">SetSessionConfigOptionRequest</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Request parameters for setting a session configuration option.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="configId" type={<a href="#sessionconfigid">SessionConfigId</a>} required>
-  The ID of the configuration option to set.
-</ResponseField>
-
-<ResponseField name="sessionId" type={<a href="#sessionid">SessionId</a>} required>
-  The ID of the session to set the configuration option for.
-</ResponseField>
-
-<ResponseField name="value" type={<a href="#sessionconfigvalueid">SessionConfigValueId</a>} required>
-  The ID of the configuration option value to set.
-</ResponseField>
-
-#### <span class="font-mono">SetSessionConfigOptionResponse</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Response to `session/set_config_option` method.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="configOptions" type={<a href="#sessionconfigoption">SessionConfigOption[]</a>} required>
-  The full set of configuration options and their current values.
-</ResponseField>
-
 <a id="session-set_mode" />
 
 ### <span class="font-mono">session/set\_mode</span>
@@ -836,64 +474,6 @@ Response to `session/set_mode` method.
 **Properties:**
 
 <ResponseField name="_meta" type={"object | null"} />
-
-<a id="session-set_model" />
-
-### <span class="font-mono">session/set\_model</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Select a model for a given session.
-
-#### <span class="font-mono">SetSessionModelRequest</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Request parameters for setting a session model.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="modelId" type={<a href="#modelid">ModelId</a>} required>
-  The ID of the model to set.
-</ResponseField>
-
-<ResponseField name="sessionId" type={<a href="#sessionid">SessionId</a>} required>
-  The ID of the session to set the model for.
-</ResponseField>
-
-#### <span class="font-mono">SetSessionModelResponse</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Response to `session/set_model` method.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
 
 ## Client
 
@@ -1461,66 +1041,6 @@ Response containing the exit status of a terminal command.
   The signal that terminated the process (may be null if exited normally).
 </ResponseField>
 
-## Protocol Level
-
-Defines the interface that ACP-compliant agents and clients must both implement.
-
-Notifications whose methods start with '$/' are messages which are protocol
-implementation dependent and might not be implementable in all clients or
-agents. For example if the implementation uses a single threaded synchronous
-programming language then there is little it can do to react to a `$/cancel\_request\` notification. If an agent or client receives notifications
-starting with '\$/' it is free to ignore the notification.
-
-<a id="$-cancel_request" />
-
-### <span class="font-mono">\$/cancel\_request</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or
-changed at any point.
-
-Cancels an ongoing request.
-
-This is a notification sent by the the side that sent a request to cancel that request.
-
-Upon receiving this notification, the receiver:
-
-1. MUST cancel the corresponding request activity and all nested activities
-2. MAY send any pending notifications.
-3. MUST send one of these responses for the original request:
-
-* Valid response with appropriate data (partial results or cancellation marker)
-* Error response with code `-32800` (Cancelled)
-
-See protocol docs: [Cancellation](https://agentclientprotocol.com/protocol/cancellation)
-
-#### <span class="font-mono">CancelRequestNotification</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Notification to cancel an ongoing request.
-
-See protocol docs: [Cancellation](https://agentclientprotocol.com/protocol/cancellation)
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="requestId" type={<a href="#requestid">RequestId</a>} required>
-  The ID of the request to cancel.
-</ResponseField>
-
 ## <span class="font-mono">AgentCapabilities</span>
 
 Capabilities supported by the agent.
@@ -1670,7 +1190,7 @@ The input specification for a command.
 
 **Type:** Union
 
-<ResponseField name="Variant">
+<ResponseField name="unstructured">
   All text that was typed after the command name is provided as input.
 
   <Expandable title="Properties">
@@ -1762,30 +1282,6 @@ See protocol docs: [Client Capabilities](https://agentclientprotocol.com/protoco
   Whether the Client support all `terminal/*` methods.
 
   * Default: `false`
-</ResponseField>
-
-## <span class="font-mono">ConfigOptionUpdate</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Session configuration options have been updated.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="configOptions" type={<a href="#sessionconfigoption">SessionConfigOption[]</a>} required>
-  The full set of configuration options and their current values.
 </ResponseField>
 
 ## <span class="font-mono">Content</span>
@@ -2181,15 +1677,6 @@ and use the reserved range (-32000 to -32099) for protocol-specific errors.
   implementation-defined server errors.
 </ResponseField>
 
-<ResponseField name="-32800" type="int32">
-  **Request cancelled**: **UNSTABLE**
-
-  This capability is not part of the spec yet, and may be removed or changed at any point.
-
-  Execution of the method was aborted either due to a cancellation request from the caller or
-  because of resource constraints or shutdown.
-</ResponseField>
-
 <ResponseField name="-32000" type="int32">
   **Authentication required**: Authentication is required before this operation
   can be performed.
@@ -2199,7 +1686,7 @@ and use the reserved range (-32000 to -32099) for protocol-specific errors.
   **Resource not found**: A given resource, such as a file, was not found.
 </ResponseField>
 
-<ResponseField name="integer" type="int32">
+<ResponseField name="Other" type="int32">
   Other undefined error code.
 </ResponseField>
 
@@ -2440,7 +1927,7 @@ See protocol docs: [MCP Servers](https://agentclientprotocol.com/protocol/sessio
   </Expandable>
 </ResponseField>
 
-<ResponseField name="Variant">
+<ResponseField name="stdio">
   Stdio transport configuration
 
   All Agents MUST support this transport.
@@ -2558,48 +2045,6 @@ Stdio transport configuration for MCP.
 
 <ResponseField name="name" type={"string"} required>
   Human-readable name identifying this MCP server.
-</ResponseField>
-
-## <span class="font-mono">ModelId</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-A unique identifier for a model.
-
-**Type:** `string`
-
-## <span class="font-mono">ModelInfo</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Information about a selectable model.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="description" type={"string | null"}>
-  Optional description of the model.
-</ResponseField>
-
-<ResponseField name="modelId" type={<a href="#modelid">ModelId</a>} required>
-  Unique identifier for the model.
-</ResponseField>
-
-<ResponseField name="name" type={"string"} required>
-  Human-readable name of the model.
 </ResponseField>
 
 ## <span class="font-mono">PermissionOption</span>
@@ -2845,11 +2290,11 @@ The Server MUST reply with the same value in the Response object if included. Th
   {""}
 </ResponseField>
 
-<ResponseField name="integer" type="int64">
+<ResponseField name="Number" type="int64">
   {""}
 </ResponseField>
 
-<ResponseField name="string" type="string">
+<ResponseField name="Str" type="string">
   {""}
 </ResponseField>
 
@@ -2978,210 +2423,6 @@ See protocol docs: [Session Capabilities](https://agentclientprotocol.com/protoc
   See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
 </ResponseField>
 
-<ResponseField name="fork" type={<><span><a href="#sessionforkcapabilities">SessionForkCapabilities</a></span><span> | null</span></>}>
-  **UNSTABLE**
-
-  This capability is not part of the spec yet, and may be removed or changed at any point.
-
-  Whether the agent supports `session/fork`.
-</ResponseField>
-
-<ResponseField name="list" type={<><span><a href="#sessionlistcapabilities">SessionListCapabilities</a></span><span> | null</span></>}>
-  **UNSTABLE**
-
-  This capability is not part of the spec yet, and may be removed or changed at any point.
-
-  Whether the agent supports `session/list`.
-</ResponseField>
-
-<ResponseField name="resume" type={<><span><a href="#sessionresumecapabilities">SessionResumeCapabilities</a></span><span> | null</span></>}>
-  **UNSTABLE**
-
-  This capability is not part of the spec yet, and may be removed or changed at any point.
-
-  Whether the agent supports `session/resume`.
-</ResponseField>
-
-## <span class="font-mono">SessionConfigGroupId</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Unique identifier for a session configuration option value group.
-
-**Type:** `string`
-
-## <span class="font-mono">SessionConfigId</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Unique identifier for a session configuration option.
-
-**Type:** `string`
-
-## <span class="font-mono">SessionConfigOption</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-A session configuration option selector and its current state.
-
-**Type:** Union
-
-<ResponseField name="select" type="object">
-  Single-value selector (dropdown).
-
-  <Expandable title="Properties">
-    <ResponseField name="currentValue" type={<a href="#sessionconfigvalueid">SessionConfigValueId</a>} required>
-      The currently selected value.
-    </ResponseField>
-
-    <ResponseField name="options" type={<a href="#sessionconfigselectoptions">SessionConfigSelectOptions</a>} required>
-      The set of selectable options.
-    </ResponseField>
-
-    <ResponseField name="type" type={"string"} required />
-  </Expandable>
-</ResponseField>
-
-## <span class="font-mono">SessionConfigSelect</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-A single-value selector (dropdown) session configuration option payload.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="currentValue" type={<a href="#sessionconfigvalueid">SessionConfigValueId</a>} required>
-  The currently selected value.
-</ResponseField>
-
-<ResponseField name="options" type={<a href="#sessionconfigselectoptions">SessionConfigSelectOptions</a>} required>
-  The set of selectable options.
-</ResponseField>
-
-## <span class="font-mono">SessionConfigSelectGroup</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-A group of possible values for a session configuration option.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="group" type={<a href="#sessionconfiggroupid">SessionConfigGroupId</a>} required>
-  Unique identifier for this group.
-</ResponseField>
-
-<ResponseField name="name" type={"string"} required>
-  Human-readable label for this group.
-</ResponseField>
-
-<ResponseField name="options" type={<a href="#sessionconfigselectoption">SessionConfigSelectOption[]</a>} required>
-  The set of option values in this group.
-</ResponseField>
-
-## <span class="font-mono">SessionConfigSelectOption</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-A possible value for a session configuration option.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="description" type={"string | null"}>
-  Optional description for this option value.
-</ResponseField>
-
-<ResponseField name="name" type={"string"} required>
-  Human-readable label for this option value.
-</ResponseField>
-
-<ResponseField name="value" type={<a href="#sessionconfigvalueid">SessionConfigValueId</a>} required>
-  Unique identifier for this option value.
-</ResponseField>
-
-## <span class="font-mono">SessionConfigSelectOptions</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Possible values for a session configuration option.
-
-**Type:** Union
-
-<ResponseField name="array" type="array">
-  A flat list of options with no grouping.
-</ResponseField>
-
-<ResponseField name="array" type="array">
-  A list of options grouped under headers.
-</ResponseField>
-
-## <span class="font-mono">SessionConfigValueId</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Unique identifier for a session configuration option value.
-
-**Type:** `string`
-
-## <span class="font-mono">SessionForkCapabilities</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Capabilities for the `session/fork` method.
-
-By supplying `\{\}` it means that the agent supports forking of sessions.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
 ## <span class="font-mono">SessionId</span>
 
 A unique identifier for a conversation session between a client and agent.
@@ -3192,89 +2433,6 @@ allowing multiple independent interactions with the same agent.
 See protocol docs: [Session ID](https://agentclientprotocol.com/protocol/session-setup#session-id)
 
 **Type:** `string`
-
-## <span class="font-mono">SessionInfo</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Information about a session returned by session/list
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="cwd" type={"string"} required>
-  The working directory for this session. Must be an absolute path.
-</ResponseField>
-
-<ResponseField name="sessionId" type={<a href="#sessionid">SessionId</a>} required>
-  Unique identifier for the session
-</ResponseField>
-
-<ResponseField name="title" type={"string | null"}>
-  Human-readable title for the session
-</ResponseField>
-
-<ResponseField name="updatedAt" type={"string | null"}>
-  ISO 8601 timestamp of last activity
-</ResponseField>
-
-## <span class="font-mono">SessionInfoUpdate</span>
-
-Update to session metadata. All fields are optional to support partial updates.
-
-Agents send this notification to update session information like title or custom metadata.
-This allows clients to display dynamic session names and track session state changes.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="title" type={"string | null"}>
-  Human-readable title for the session. Set to null to clear.
-</ResponseField>
-
-<ResponseField name="updatedAt" type={"string | null"}>
-  ISO 8601 timestamp of last activity. Set to null to clear.
-</ResponseField>
-
-## <span class="font-mono">SessionListCapabilities</span>
-
-Capabilities for the `session/list` method.
-
-By supplying `\{\}` it means that the agent supports listing of sessions.
-
-Further capabilities can be added in the future for other means of filtering or searching the list.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
 
 ## <span class="font-mono">SessionMode</span>
 
@@ -3328,56 +2486,6 @@ The set of modes and the one currently active.
 
 <ResponseField name="currentModeId" type={<a href="#sessionmodeid">SessionModeId</a>} required>
   The current mode the Agent is in.
-</ResponseField>
-
-## <span class="font-mono">SessionModelState</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-The set of models and the one currently active.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-</ResponseField>
-
-<ResponseField name="availableModels" type={<a href="#modelinfo">ModelInfo[]</a>} required>
-  The set of models that the Agent can use
-</ResponseField>
-
-<ResponseField name="currentModelId" type={<a href="#modelid">ModelId</a>} required>
-  The current model the Agent is in.
-</ResponseField>
-
-## <span class="font-mono">SessionResumeCapabilities</span>
-
-**UNSTABLE**
-
-This capability is not part of the spec yet, and may be removed or changed at any point.
-
-Capabilities for the `session/resume` method.
-
-By supplying `\{\}` it means that the agent supports resuming of sessions.
-
-**Type:** Object
-
-**Properties:**
-
-<ResponseField name="_meta" type={"object | null"}>
-  The \_meta property is reserved by ACP to allow clients and agents to attach additional
-  metadata to their interactions. Implementations MUST NOT make assumptions about values at
-  these keys.
-
-  See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
 </ResponseField>
 
 ## <span class="font-mono">SessionUpdate</span>
@@ -3611,54 +2719,6 @@ See protocol docs: [Agent Reports Output](https://agentclientprotocol.com/protoc
     </ResponseField>
 
     <ResponseField name="sessionUpdate" type={"string"} required />
-  </Expandable>
-</ResponseField>
-
-<ResponseField name="config_option_update" type="object">
-  **UNSTABLE**
-
-  This capability is not part of the spec yet, and may be removed or changed at any point.
-
-  Session configuration options have been updated.
-
-  <Expandable title="Properties">
-    <ResponseField name="_meta" type={"object | null"}>
-      The \_meta property is reserved by ACP to allow clients and agents to attach additional
-      metadata to their interactions. Implementations MUST NOT make assumptions about values at
-      these keys.
-
-      See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-    </ResponseField>
-
-    <ResponseField name="configOptions" type={<a href="#sessionconfigoption">SessionConfigOption[]</a>} required>
-      The full set of configuration options and their current values.
-    </ResponseField>
-
-    <ResponseField name="sessionUpdate" type={"string"} required />
-  </Expandable>
-</ResponseField>
-
-<ResponseField name="session_info_update" type="object">
-  Session metadata has been updated (title, timestamps, custom metadata)
-
-  <Expandable title="Properties">
-    <ResponseField name="_meta" type={"object | null"}>
-      The \_meta property is reserved by ACP to allow clients and agents to attach additional
-      metadata to their interactions. Implementations MUST NOT make assumptions about values at
-      these keys.
-
-      See protocol docs: [Extensibility](https://agentclientprotocol.com/protocol/extensibility)
-    </ResponseField>
-
-    <ResponseField name="sessionUpdate" type={"string"} required />
-
-    <ResponseField name="title" type={"string | null"}>
-      Human-readable title for the session. Set to null to clear.
-    </ResponseField>
-
-    <ResponseField name="updatedAt" type={"string | null"}>
-      ISO 8601 timestamp of last activity. Set to null to clear.
-    </ResponseField>
   </Expandable>
 </ResponseField>
 
@@ -4111,8 +3171,3 @@ All text that was typed after the command name is provided as input.
 <ResponseField name="hint" type={"string"} required>
   A hint to display when the input hasn't been provided yet
 </ResponseField>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://agentclientprotocol.com/llms.txt

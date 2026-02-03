@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Cloudcraft (Standalone) > FAQ > I can't create IAM roles in AWS. How
   can I add an AWS account?
-source_url: >-
-  https://docs.datadoghq.com/faq/workaround-add-aws-account-without-permission/index.html
 ---
 
 # I can't create IAM roles in AWS. How can I add an AWS account?

@@ -1,6 +1,10 @@
 # Source: https://docs.baseten.co/development/model/private-registries.md
 
-# Private Docker Registries
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Private Docker registries
 
 > A guide to configuring a private container registry for your truss
 

@@ -6,14 +6,14 @@
 
 ***
 
-https://www.make.com/ *(formerly Integromat)* allows you to create scenarios where you can integrate various services (modules) to automate and centralize jobs. Apify has its own module you can use to run Apify Actors, get notified about run statuses, and receive Actor results directly in your Make scenario.
+[Make](https://www.make.com/) *(formerly Integromat)* allows you to create scenarios where you can integrate various services (modules) to automate and centralize jobs. Apify has its own module you can use to run Apify Actors, get notified about run statuses, and receive Actor results directly in your Make scenario.
 
 ## Connect Apify to Make
 
 To use the Apify integration on Make, you will need:
 
-* An https://console.apify.com/.
-* A Make account (and a https://www.make.com/en/help/scenarios/creating-a-scenario).
+* An [Apify account](https://console.apify.com/).
+* A Make account (and a [scenario](https://www.make.com/en/help/scenarios/creating-a-scenario)).
 
 ### Add the Apify module to scenario
 
@@ -31,7 +31,7 @@ In the Connection configuration window, you'll authorize the connection between 
 
    ![API token](/assets/images/apify-token-dae5841a8f092a14cb29f08ba244acd9.png)
 
-2. You can find this token in the Apify Console by navigating to **https://console.apify.com/settings/integrations**
+2. You can find this token in the Apify Console by navigating to **[Settings > API & Integrations](https://console.apify.com/settings/integrations)**
 
    ![Integrations token](/assets/images/apify-integrations-token-a480c4034e9658f9989b7c661ee0fad5.png)
 
@@ -128,4 +128,4 @@ That’s it! Once the Actor run is complete, its data will be exported to the Go
 
 ### Searches
 
-* **Get Dataset Items:** Retrieves items from a https://docs.apify.com/platform/storage/dataset.md.
+* **Get Dataset Items:** Retrieves items from a [dataset](https://docs.apify.com/platform/storage/dataset.md).

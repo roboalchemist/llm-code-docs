@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/knowledge-base/bolt-new-integration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send emails with Bolt.new and Resend
 
 > Learn how to add the Resend integration to your Bolt.new project.

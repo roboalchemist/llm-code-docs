@@ -1,53 +1,55 @@
 # Source: https://infisical.com/docs/api-reference/endpoints/deprecated/organizations/projects.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Projects
 
 > Return projects in organization that user is apart of
 
+
+
 ## OpenAPI
 
 ````yaml GET /api/v2/organizations/{organizationId}/workspaces
+openapi: 3.0.3
+info:
+  title: Infisical API
+  description: List of all available APIs that can be consumed
+  version: 0.0.1
+servers:
+  - url: https://us.infisical.com
+    description: Production server (US)
+  - url: https://eu.infisical.com
+    description: Production server (EU)
+  - url: http://localhost:8080
+    description: Local server
+security: []
 paths:
-  path: /api/v2/organizations/{organizationId}/workspaces
-  method: get
-  servers:
-    - url: https://us.infisical.com
-      description: Production server (US)
-    - url: https://eu.infisical.com
-      description: Production server (EU)
-    - url: http://localhost:8080
-      description: Local server
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: An access token in Infisical
-          cookie: {}
-    parameters:
-      path:
-        organizationId:
-          schema:
-            - type: string
-              required: true
-              description: The ID of the organization to get projects from.
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              workspaces:
-                allOf:
-                  - type: array
+  /api/v2/organizations/{organizationId}/workspaces:
+    get:
+      tags:
+        - Organizations
+      description: Return projects in organization that user is apart of
+      operationId: listOrgProjects
+      parameters:
+        - schema:
+            type: string
+          in: path
+          name: organizationId
+          required: true
+          description: The ID of the organization to get projects from.
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  workspaces:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -79,225 +81,155 @@ paths:
                         - organization
                         - environments
                       additionalProperties: false
-            requiredProperties:
-              - workspaces
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              workspaces:
-                - id: <string>
-                  name: <string>
-                  slug: <string>
-                  organization: <string>
-                  environments:
-                    - name: <string>
-                      slug: <string>
-        description: Default Response
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                required:
+                  - workspaces
+                additionalProperties: false
+        '400':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 400
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 400
-              message: <string>
-              error: <string>
-        description: Default Response
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  error:
+                    type: string
+                  details: {}
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 401
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 401
-              message: <string>
-              error: <string>
-        description: Default Response
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '403':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 403
-              message:
-                allOf:
-                  - type: string
-              details:
-                allOf:
-                  - {}
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 403
-              message: <string>
-              details: <any>
-              error: <string>
-        description: Default Response
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  details: {}
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '404':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 404
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 404
-              message: <string>
-              error: <string>
-        description: Default Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '422':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 422
-              message:
-                allOf:
-                  - {}
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 422
-              message: <any>
-              error: <string>
-        description: Default Response
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message: {}
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - error
+                additionalProperties: false
+        '500':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 500
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 500
-              message: <string>
-              error: <string>
-        description: Default Response
-  deprecated: false
-  type: path
+                  message:
+                    type: string
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+      security:
+        - bearerAuth: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: An access token in Infisical
 
 ````

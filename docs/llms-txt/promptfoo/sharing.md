@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/usage/sharing/
+
 # Sharing
 
 Share your eval results with others using the `share` command or the web interface.

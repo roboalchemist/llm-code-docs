@@ -1,5 +1,9 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/stacking-and-ci.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # CI Optimizations
 
 > Learn CI optimizations & best practices for stacked pull requests.

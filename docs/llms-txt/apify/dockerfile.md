@@ -6,7 +6,7 @@
 
 ***
 
-When developing an https://docs.apify.com/platform/actors.md on the Apify platform, you can choose from a variety of pre-built Docker images to serve as the base for your Actor. These base images come with pre-installed dependencies and tools, making it easier to set up your development environment and ensuring consistent behavior across different environments.
+When developing an [Actor](https://docs.apify.com/platform/actors.md) on the Apify platform, you can choose from a variety of pre-built Docker images to serve as the base for your Actor. These base images come with pre-installed dependencies and tools, making it easier to set up your development environment and ensuring consistent behavior across different environments.
 
 ## Base Docker images
 
@@ -17,32 +17,133 @@ Apify provides several Docker images that can serve as base images for Actors. A
 
 Pre-cached Docker images
 
-All Apify Docker images are pre-cached on Apify servers to speed up Actor builds and runs. The source code for generating these images is available in the https://github.com/apify/apify-actor-docker repository.
+All Apify Docker images are pre-cached on Apify servers to speed up Actor builds and runs. The source code for generating these images is available in the [apify-actor-docker](https://github.com/apify/apify-actor-docker) repository.
 
 ### Node.js base images
 
-These images come with Node.js (versions `20`, `22`, or `24`) the https://docs.apify.com/sdk/js, and https://crawlee.dev/ preinstalled. The `latest` tag corresponds to the latest LTS version of Node.js.
+These images come with Node.js (versions `20`, `22`, or `24`) the [Apify SDK for JavaScript](https://docs.apify.com/sdk/js), and [Crawlee](https://crawlee.dev/) preinstalled. The `latest` tag corresponds to the latest LTS version of Node.js.
 
-| Image                                                         | Description                                                                                                                |
-| ------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| https://hub.docker.com/r/apify/actor-node/                    | Slim Alpine Linux image with only essential tools. Does not include headless browsers.                                     |
-| https://hub.docker.com/r/apify/actor-node-puppeteer-chrome/   | Debian image with Chromium, Google Chrome, and the https://github.com/puppeteer/puppeteer library.                         |
-| https://hub.docker.com/r/apify/actor-node-playwright-chrome/  | Debian image with Chromium, Google Chrome, and the https://github.com/microsoft/playwright library.                        |
-| https://hub.docker.com/r/apify/actor-node-playwright-firefox/ | Debian image with Firefox and the https://github.com/microsoft/playwright library .                                        |
-| https://hub.docker.com/r/apify/actor-node-playwright-webkit/  | Ubuntu image with WebKit and the https://github.com/microsoft/playwright library.                                          |
-| https://hub.docker.com/r/apify/actor-node-playwright/         | Ubuntu image with https://github.com/microsoft/playwright and all its browsers (Chromium, Google Chrome, Firefox, WebKit). |
+| Image                                                                                          | Description                                                                                                                              |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| [actor-node](https://hub.docker.com/r/apify/actor-node/)                                       | Slim Alpine Linux image with only essential tools. Does not include headless browsers.                                                   |
+| [actor-node-puppeteer-chrome](https://hub.docker.com/r/apify/actor-node-puppeteer-chrome/)     | Debian image with Chromium, Google Chrome, and the [puppeteer](https://github.com/puppeteer/puppeteer) library.                          |
+| [actor-node-playwright-chrome](https://hub.docker.com/r/apify/actor-node-playwright-chrome/)   | Debian image with Chromium, Google Chrome, and the [playwright](https://github.com/microsoft/playwright) library.                        |
+| [actor-node-playwright-firefox](https://hub.docker.com/r/apify/actor-node-playwright-firefox/) | Debian image with Firefox and the [playwright](https://github.com/microsoft/playwright) library .                                        |
+| [actor-node-playwright-webkit](https://hub.docker.com/r/apify/actor-node-playwright-webkit/)   | Ubuntu image with WebKit and the [playwright](https://github.com/microsoft/playwright) library.                                          |
+| [actor-node-playwright](https://hub.docker.com/r/apify/actor-node-playwright/)                 | Ubuntu image with [playwright](https://github.com/microsoft/playwright) and all its browsers (Chromium, Google Chrome, Firefox, WebKit). |
 
-See the https://docs.apify.com/sdk/js/docs/guides/docker-images for more details.
+See the [Docker image guide](https://docs.apify.com/sdk/js/docs/guides/docker-images) for more details.
 
 ### Python base images
 
-These images come with Python (version `3.9`, `3.10`, `3.11`, `3.12`, or `3.13`) and the https://docs.apify.com/sdk/python preinstalled. The `latest` tag corresponds to the latest Python 3 version supported by the Apify SDK.
+These images come with Python (version `3.9`, `3.10`, `3.11`, `3.12`, or `3.13`) and the [Apify SDK for Python](https://docs.apify.com/sdk/python) preinstalled. The `latest` tag corresponds to the latest Python 3 version supported by the Apify SDK.
 
-| Image                                                  | Description                                                                                                                   |
-| ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------- |
-| https://hub.docker.com/r/apify/actor-python            | Slim Debian image with only the Apify SDK for Python. Does not include headless browsers.                                     |
-| https://hub.docker.com/r/apify/actor-python-playwright | Debian image with https://github.com/microsoft/playwright and all its browsers.                                               |
-| https://hub.docker.com/r/apify/actor-python-selenium   | Debian image with https://github.com/seleniumhq/selenium, Google Chrome, and https://developer.chrome.com/docs/chromedriver/. |
+| Image                                                                             | Description                                                                                                                                               |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [actor-python](https://hub.docker.com/r/apify/actor-python)                       | Slim Debian image with only the Apify SDK for Python. Does not include headless browsers.                                                                 |
+| [actor-python-playwright](https://hub.docker.com/r/apify/actor-python-playwright) | Debian image with [playwright](https://github.com/microsoft/playwright) and all its browsers.                                                             |
+| [actor-python-selenium](https://hub.docker.com/r/apify/actor-python-selenium)     | Debian image with [selenium](https://github.com/seleniumhq/selenium), Google Chrome, and [ChromeDriver](https://developer.chrome.com/docs/chromedriver/). |
+
+## Image tag naming convention
+
+Docker image tags follow a consistent naming pattern that allows you to pin specific versions:
+
+### Node.js images
+
+For Node.js images, the tag format is:
+
+* `{node-version}` - A Node.js version only (e.g., `20`, `22`, `24`)
+* `{node-version}-{library-version}` - A Node.js version with pinned Playwright/Puppeteer version (e.g., `22-1.52.0`)
+
+Examples:
+
+| Tag         | Description                                                                               |
+| ----------- | ----------------------------------------------------------------------------------------- |
+| `20`        | Node.js 20 with the Playwright/Puppeteer version that was latest when the image was built |
+| `22`        | Node.js 22 with the Playwright/Puppeteer version that was latest when the image was built |
+| `22-1.52.0` | Node.js 22 with Playwright/Puppeteer version 1.52.0 pinned                                |
+| `latest`    | Latest LTS Node.js version                                                                |
+
+### Python images
+
+For Python images, the tag format is:
+
+* `{python-version}` - A Python version only (e.g., `3.11`, `3.12`, `3.13`)
+* `{python-version}-{library-version}` - A Python version with pinned Playwright/Selenium version
+
+### Available tags
+
+To see all available tags for an image, visit Docker Hub:
+
+* [View actor-node-playwright-chrome tags](https://hub.docker.com/r/apify/actor-node-playwright-chrome/tags)
+* [View actor-node-playwright tags](https://hub.docker.com/r/apify/actor-node-playwright/tags)
+* [View actor-node-puppeteer-chrome tags](https://hub.docker.com/r/apify/actor-node-puppeteer-chrome/tags)
+* [View actor-python-playwright tags](https://hub.docker.com/r/apify/actor-python-playwright/tags)
+
+You can also query available tags programmatically:
+
+
+```
+curl -s "https://registry.hub.docker.com/v2/repositories/apify/actor-node-playwright-chrome/tags?page_size=50" | jq '.results[].name'
+```
+
+
+## Version pinning for reproducible builds
+
+For production Actors, pin both the Node.js/Python version and the browser automation library version in your Dockerfile. This ensures reproducible builds and prevents unexpected behavior when new versions are released.
+
+### Recommended approach
+
+In your `Dockerfile`, use a fully pinned tag:
+
+
+```
+# Pin both Node.js 22 and Playwright 1.52.0
+FROM apify/actor-node-playwright-chrome:22-1.52.0
+```
+
+
+In your `package.json`, match the Playwright/Puppeteer version to your Docker image tag:
+
+
+```
+{
+    "dependencies": {
+        "apify": "^3.5.0",
+        "@crawlee/playwright": "^3.15.0",
+        "playwright": "1.52.0"
+    }
+}
+```
+
+
+Why version matching matters
+
+When the Playwright/Puppeteer version in your `package.json` differs from what's pre-installed in the Docker image, npm will download and install the version specified in `package.json`. This can lead to:
+
+* Slower builds due to downloading browser binaries
+* Potential version incompatibilities
+* Inconsistent behavior between local development and production
+
+### Using `*` as version (alternative approach)
+
+You may encounter older documentation or templates using `*` as the Playwright/Puppeteer version:
+
+
+```
+{
+    "dependencies": {
+        "playwright": "*"
+    }
+}
+```
+
+
+The asterisk (`*`) tells npm to use whatever version is already installed, which prevents re-downloading the library. While this approach still works, **pinning specific versions is now preferred** because:
+
+1. Reproducibility - Your builds will behave the same way regardless of when you build them
+2. Predictability - You know exactly which version you're running
+3. Debugging - Version-specific issues are easier to track down
 
 ## Custom Dockerfile
 
@@ -74,7 +175,7 @@ COPY --chown=myuser:myuser . ./
 ```
 
 
-For more information about `Dockerfile` syntax and commands, see the https://docs.docker.com/reference/dockerfile/.
+For more information about `Dockerfile` syntax and commands, see the [Dockerfile reference](https://docs.docker.com/reference/dockerfile/).
 
 Custom base images
 
@@ -105,13 +206,13 @@ This means the system expects the source code to be in `main.js` by default. If 
 
 Optimization tips
 
-You can check out various optimization tips for Dockerfile in our https://docs.apify.com/platform/actors/development/performance.md documentation.
+You can check out various optimization tips for Dockerfile in our [Performance](https://docs.apify.com/platform/actors/development/performance.md) documentation.
 
 ## Updating older Dockerfiles
 
 All Apify base Docker images now use a non-root user to enhance security. This change requires updates to existing Actor `Dockerfile`s that use the `apify/actor-node`, `apify/actor-python`, `apify/actor-python-playwright`, or `apify/actor-python-selenium` images. This section provides guidance on resolving common issues that may arise during this migration.
 
-If you encounter an issue that is not listed here, or need more guidance on how to update your Dockerfile, please https://github.com/apify/apify-actor-docker/issues/new.
+If you encounter an issue that is not listed here, or need more guidance on how to update your Dockerfile, please [open an issue in the apify-actor-docker GitHub repository](https://github.com/apify/apify-actor-docker/issues/new).
 
 Action required
 
@@ -125,7 +226,7 @@ To improve security, the affected images no longer run as the `root` user. Inste
 
 #### Crawlee templates automatically installing `git` in Python images
 
-If you've built your Actor using a https://crawlee.dev/ template, you might have the following line in your `Dockerfile`:
+If you've built your Actor using a [Crawlee](https://crawlee.dev/) template, you might have the following line in your `Dockerfile`:
 
 
 ```

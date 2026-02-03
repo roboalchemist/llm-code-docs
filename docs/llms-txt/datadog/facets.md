@@ -1,3 +1,5 @@
+# Source: https://docs.datadoghq.com/events/explorer/facets.md
+
 # Source: https://docs.datadoghq.com/continuous_integration/explorer/facets.md
 
 # Source: https://docs.datadoghq.com/continuous_delivery/explorer/facets.md
@@ -8,7 +10,6 @@ description: Learn about facets for filtering and grouping your deployment execu
 breadcrumbs: >-
   Docs > Continuous Delivery Visibility > Explore CD Visibility Deployments >
   Deployment Execution Facets
-source_url: https://docs.datadoghq.com/explorer/facets/index.html
 ---
 
 # Deployment Execution Facets

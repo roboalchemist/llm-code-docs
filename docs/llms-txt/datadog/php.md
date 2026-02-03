@@ -1,8 +1,18 @@
+# Source: https://docs.datadoghq.com/security/code_security/software_composition_analysis/setup_runtime/compatibility/php.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/gcp/cloud-run/php.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/compatibility/php.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/php.md
+
 # Source: https://docs.datadoghq.com/profiler/profiler_troubleshooting/php.md
 
 # Source: https://docs.datadoghq.com/profiler/enabling/php.md
 
 # Source: https://docs.datadoghq.com/tracing/other_telemetry/connect_logs_and_traces/php.md
+
+# Source: https://docs.datadoghq.com/tracing/trace_collection/dynamic_instrumentation/enabling/php.md
 
 # Source: https://docs.datadoghq.com/tracing/trace_collection/library_config/php.md
 
@@ -20,7 +30,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > APM > Application Instrumentation > Add the Datadog Tracing Library >
   Tracing PHP Applications
-source_url: https://docs.datadoghq.com/trace_collection/dd_libraries/php/index.html
 ---
 
 # Tracing PHP Applications

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/configuration/expected-outputs/model-graded/select-best/
+
 # Select Best
 
 The `select-best` assertion compares multiple outputs in the same test case and selects the one that best meets a specified criterion. This is useful for comparing different prompt or model variations to determine which produces the best result.

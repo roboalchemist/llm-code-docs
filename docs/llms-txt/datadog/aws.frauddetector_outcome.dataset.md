@@ -4,8 +4,6 @@
 title: Fraud Detector Outcome
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Fraud Detector Outcome
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.frauddetector_outcome.dataset/index.html
 ---
 
 # Fraud Detector Outcome
@@ -18,13 +16,13 @@ aws.frauddetector_outcome
 
 ## Fields
 
-| Title             | ID   | Type   | Data Type                                        | Description |
-| ----------------- | ---- | ------ | ------------------------------------------------ | ----------- |
-| _key              | core | string |
-| account_id        | core | string |
-| arn               | core | string | The outcome ARN.                                 |
-| created_time      | core | string | The timestamp when the outcome was created.      |
-| description       | core | string | The outcome description.                         |
-| last_updated_time | core | string | The timestamp when the outcome was last updated. |
-| name              | core | string | The outcome name.                                |
-| tags              | core | hstore |
+| Title             | ID   | Type       | Data Type                                        | Description |
+| ----------------- | ---- | ---------- | ------------------------------------------------ | ----------- |
+| _key              | core | string     |
+| account_id        | core | string     |
+| arn               | core | string     | The outcome ARN.                                 |
+| created_time      | core | string     | The timestamp when the outcome was created.      |
+| description       | core | string     | The outcome description.                         |
+| last_updated_time | core | string     | The timestamp when the outcome was last updated. |
+| name              | core | string     | The outcome name.                                |
+| tags              | core | hstore_csv |

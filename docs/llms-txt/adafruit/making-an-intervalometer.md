@@ -102,24 +102,24 @@ In Stock
 [Adafruit METRO 328 - Arduino Compatible - with Headers](https://www.adafruit.com/product/2488)
 This is the&nbsp; **Adafruit METRO Arduino-Compatible - with&nbsp;headers.&nbsp;** It's a fully assembled and tested microcontroller and physical computing board with through-hole headers attached.&nbsp; If you don't want a&nbsp;Metro with the headers attached for...
 
-Out of Stock
+In Stock
 [Buy Now](https://www.adafruit.com/product/2488)
 [Related Guides to the Product](https://learn.adafruit.com/products/2488/guides)
 
 ## Related Guides
 
-- [1,500 NeoPixel LED Curtain with Raspberry Pi and Fadecandy](https://learn.adafruit.com/1500-neopixel-led-curtain-with-raspberry-pi-fadecandy.md)
-- [How to Find Hidden COM Ports](https://learn.adafruit.com/how-to-find-hidden-com-ports.md)
-- [WiFi Weather Station](https://learn.adafruit.com/wifi-weather-station-arduino-cc3000.md)
-- [Arduino Tips, Tricks, and Techniques](https://learn.adafruit.com/arduino-tips-tricks-and-techniques.md)
-- [Analog Feedback Servos](https://learn.adafruit.com/analog-feedback-servos.md)
-- [Motorized Camera Slider MK3 ](https://learn.adafruit.com/motorized-camera-slider-mk3.md)
-- [Arduino Ethernet + SD Card](https://learn.adafruit.com/arduino-ethernet-sd-card.md)
-- [Adafruit AirLift Shield - ESP32 WiFi Co-Processor](https://learn.adafruit.com/adafruit-airlift-shield-esp32-wifi-co-processor.md)
+- [RePaper eInk Development Board](https://learn.adafruit.com/repaper-eink-development-board.md)
+- [Adafruit MSA301 Triple Axis Accelerometer](https://learn.adafruit.com/msa301-triple-axis-accelerometer.md)
+- [Bluetooth Controlled Motorized Camera Slider](https://learn.adafruit.com/bluetooth-motorized-camera-slider.md)
+- [Adafruit  PCA9685 16-Channel Servo Driver](https://learn.adafruit.com/16-channel-pwm-servo-driver.md)
 - [Adalight Project Pack](https://learn.adafruit.com/adalight-diy-ambient-tv-lighting.md)
-- [Low Power Coin Cell Voltage Logger](https://learn.adafruit.com/low-power-coin-cell-voltage-logger.md)
-- [A REST API for Arduino & the CC3000 WiFi Chip](https://learn.adafruit.com/a-rest-api-for-arduino-and-the-cc3000-wifi-chip.md)
-- [8BitBox](https://learn.adafruit.com/8bitbox.md)
-- [Mystery Box: NeoMatrix Mk I](https://learn.adafruit.com/mystery-box-neomatrix-mk-i.md)
-- [Bluetooth Temperature & Humidity Sensor](https://learn.adafruit.com/bluetooth-temperature-and-humidity-sensor.md)
-- [Ladyada's Learn Arduino - Lesson #0](https://learn.adafruit.com/ladyadas-learn-arduino-lesson-number-0.md)
+- [Reverse Geocache Box](https://learn.adafruit.com/reverse-geocache-engagement-box.md)
+- [Introducing Adafruit Trellis ](https://learn.adafruit.com/adafruit-trellis-diy-open-source-led-keypad.md)
+- [Sending an SMS with Temboo](https://learn.adafruit.com/sending-an-sms-with-temboo.md)
+- [20mm LED Pixels](https://learn.adafruit.com/20mm-led-pixels.md)
+- [Remote controlled door lock using a fingerprint sensor & Adafruit IO](https://learn.adafruit.com/remote-controlled-door-lock-using-a-fingerprint-sensor-and-adafruit-io.md)
+- [Character LCDs](https://learn.adafruit.com/character-lcds.md)
+- [Smart Measuring Cup](https://learn.adafruit.com/smart-measuring-cup.md)
+- [Memories of an Arduino](https://learn.adafruit.com/memories-of-an-arduino.md)
+- [Arduino Lesson 2. LEDs](https://learn.adafruit.com/adafruit-arduino-lesson-2-leds.md)
+- [Smart Cocktail Shaker](https://learn.adafruit.com/smart-cocktail-shaker.md)

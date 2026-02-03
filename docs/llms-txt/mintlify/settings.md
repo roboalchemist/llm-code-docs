@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/organize/settings.md
+# Source: https://www.mintlify.com/docs/organize/settings.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Global settings
 
@@ -48,7 +52,7 @@ This section contains the full reference for the `docs.json` file.
 </ResponseField>
 
 <ResponseField name="colors" type="object" required>
-  The colors used in your documentation. Colors are applied differently across themes. If you only provide a primary color, it will be used for all color elements.
+  The colors used in your documentation. Colors are applied differently across themes. If you only provide a primary color, it applies to all color elements.
 
   <Expandable title="Colors">
     <ResponseField name="primary" type="string matching ^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$" required>
@@ -88,7 +92,7 @@ This section contains the full reference for the `docs.json` file.
     </ResponseField>
 
     <ResponseField name="href" type="string (uri)">
-      The URL to redirect to when clicking the logo. If not provided, the logo will link to your homepage. Example: `https://mintlify.com`
+      The URL to redirect to when clicking the logo. If not provided, the logo links to your homepage. Example: `https://mintlify.com`
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -120,11 +124,11 @@ This section contains the full reference for the `docs.json` file.
     </ResponseField>
 
     <ResponseField name="fonts" type="object">
-      Font configuration for thumbnails. Only Google Fonts family names are supported.
+      Font configuration for thumbnails. Only supports Google Fonts family names.
 
       <Expandable title="Fonts">
         <ResponseField name="family" type="string" required>
-          Font family name, such as "Open Sans" or "Playfair Display". [Google Fonts](https://fonts.google.com) family names are supported.
+          Font family name, such as "Open Sans" or "Playfair Display". Supports [Google Fonts](https://fonts.google.com) family names.
         </ResponseField>
       </Expandable>
     </ResponseField>
@@ -137,6 +141,13 @@ This section contains the full reference for the `docs.json` file.
   <Expandable title="Styling">
     <ResponseField name="eyebrows" type="&#x22;section&#x22; | &#x22;breadcrumbs&#x22;">
       The style of the page eyebrow. Choose `section` to show the section name or `breadcrumbs` to show the full navigation path. Defaults to `section`.
+    </ResponseField>
+
+    <ResponseField name="latex" type="boolean">
+      Controls whether LaTeX stylesheets are included, overriding automatic detection. By default, Mintlify automatically detects LaTeX usage in your content and loads the necessary stylesheets.
+
+      * Set to `true` to force-load LaTeX stylesheets when automatic detection fails to recognize your mathematical expressions.
+      * Set to `false` to prevent loading LaTeX stylesheets for improved performance if you don't use mathematical expressions but have content that triggers false-positive detection.
     </ResponseField>
 
     <ResponseField name="codeblocks" type="&#x22;system&#x22; | &#x22;dark&#x22; | string | object">
@@ -188,6 +199,28 @@ This section contains the full reference for the `docs.json` file.
           ```
         </Expandable>
       </ResponseField>
+
+      <ResponseField name="languages" type="object">
+        Custom language configuration for code blocks.
+
+        <Expandable title="languages">
+          <ResponseField name="custom" type="array of string">
+            Paths to JSON files describing custom Shiki languages. Use this to add syntax highlighting for languages not included in Shiki's default set.
+
+            The JSON file must follow the [TextMate grammar format](https://macromates.com/manual/en/language_grammars) used by Shiki.
+
+            ```json  theme={null}
+            "styling": {
+              "codeblocks": {
+                "languages": {
+                  "custom": ["/languages/my-custom-language.json"]
+                }
+              }
+            }
+            ```
+          </ResponseField>
+        </Expandable>
+      </ResponseField>
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -199,8 +232,10 @@ This section contains the full reference for the `docs.json` file.
     <ResponseField name="library" type="&#x22;fontawesome&#x22; | &#x22;lucide&#x22;" required>
       Icon library to use throughout your documentation. Defaults to `fontawesome`.
 
+      You can only use one icon library for your project. All icon names in your documentation must come from the same library.
+
       <Note>
-        You can specify a URL to an externally hosted icon, path to an icon file in your project, or JSX-compatible SVG code for any individual icon, regardless of the library setting.
+        You can specify a URL to an externally hosted icon or a path to an icon file in your project for any individual icon, regardless of the library setting.
       </Note>
     </ResponseField>
   </Expandable>
@@ -211,7 +246,7 @@ This section contains the full reference for the `docs.json` file.
 
   <Expandable title="Fonts">
     <ResponseField name="family" type="string" required>
-      Font family, such as "Open Sans." [Google Fonts](https://fonts.google.com) family names are supported.
+      Font family, such as "Open Sans." Supports [Google Fonts](https://fonts.google.com) family names.
     </ResponseField>
 
     <ResponseField name="weight" type="number">
@@ -236,7 +271,7 @@ This section contains the full reference for the `docs.json` file.
 
       <Expandable title="Heading">
         <ResponseField name="family" type="string" required>
-          Font family, such as "Open Sans", "Playfair Display." [Google Fonts](https://fonts.google.com) family names are supported.
+          Font family, such as "Open Sans", "Playfair Display." Supports [Google Fonts](https://fonts.google.com) family names.
         </ResponseField>
 
         <ResponseField name="weight" type="number">
@@ -263,7 +298,7 @@ This section contains the full reference for the `docs.json` file.
 
       <Expandable title="Body">
         <ResponseField name="family" type="string" required>
-          Font family, such as "Open Sans", "Playfair Display." [Google Fonts](https://fonts.google.com) family names are supported.
+          Font family, such as "Open Sans", "Playfair Display." Supports [Google Fonts](https://fonts.google.com) family names.
         </ResponseField>
 
         <ResponseField name="weight" type="number">
@@ -296,7 +331,7 @@ This section contains the full reference for the `docs.json` file.
     </ResponseField>
 
     <ResponseField name="strict" type="boolean">
-      Whether to hide the light/dark mode toggle. Defaults to `true`.
+      Whether to hide the light/dark mode toggle. Defaults to `false`.
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -366,11 +401,11 @@ This section contains the full reference for the `docs.json` file.
 
           Options:
 
-          * [Font Awesome icon](https://fontawesome.com/icons) name
-          * [Lucide icon](https://lucide.dev/icons) name
-          * JSX-compatible SVG code wrapped in curly braces
+          * [Font Awesome](https://fontawesome.com/icons) icon name, if you have the `icons.library` [property](/organize/settings#param-icons) set to `fontawesome` in your `docs.json`
+          * [Lucide](https://lucide.dev/icons) icon name, if you have the `icons.library` [property](/organize/settings#param-icons) set to `lucide` in your `docs.json`
           * URL to an externally hosted icon
           * Path to an icon file in your project
+          * SVG code wrapped in curly braces
 
           For custom SVG icons:
 
@@ -478,11 +513,11 @@ This section contains the full reference for the `docs.json` file.
 
               Options:
 
-              * [Font Awesome icon](https://fontawesome.com/icons) name
-              * [Lucide icon](https://lucide.dev/icons) name
-              * JSX-compatible SVG code wrapped in curly braces
+              * [Font Awesome](https://fontawesome.com/icons) icon name, if you have the `icons.library` [property](/organize/settings#param-icons) set to `fontawesome` in your `docs.json`
+              * [Lucide](https://lucide.dev/icons) icon name, if you have the `icons.library` [property](/organize/settings#param-icons) set to `lucide` in your `docs.json`
               * URL to an externally hosted icon
               * Path to an icon file in your project
+              * SVG code wrapped in curly braces
 
               For custom SVG icons:
 
@@ -524,11 +559,11 @@ This section contains the full reference for the `docs.json` file.
 
               Options:
 
-              * [Font Awesome icon](https://fontawesome.com/icons) name
-              * [Lucide icon](https://lucide.dev/icons) name
-              * JSX-compatible SVG code wrapped in curly braces
+              * [Font Awesome](https://fontawesome.com/icons) icon name, if you have the `icons.library` [property](/organize/settings#param-icons) set to `fontawesome` in your `docs.json`
+              * [Lucide](https://lucide.dev/icons) icon name, if you have the `icons.library` [property](/organize/settings#param-icons) set to `lucide` in your `docs.json`
               * URL to an externally hosted icon
               * Path to an icon file in your project
+              * SVG code wrapped in curly braces
 
               For custom SVG icons:
 
@@ -588,11 +623,11 @@ This section contains the full reference for the `docs.json` file.
 
               Options:
 
-              * [Font Awesome icon](https://fontawesome.com/icons) name
-              * [Lucide icon](https://lucide.dev/icons) name
-              * JSX-compatible SVG code wrapped in curly braces
+              * [Font Awesome](https://fontawesome.com/icons) icon name, if you have the `icons.library` [property](/organize/settings#param-icons) set to `fontawesome` in your `docs.json`
+              * [Lucide](https://lucide.dev/icons) icon name, if you have the `icons.library` [property](/organize/settings#param-icons) set to `lucide` in your `docs.json`
               * URL to an externally hosted icon
               * Path to an icon file in your project
+              * SVG code wrapped in curly braces
 
               For custom SVG icons:
 
@@ -636,11 +671,11 @@ This section contains the full reference for the `docs.json` file.
 
               Options:
 
-              * [Font Awesome icon](https://fontawesome.com/icons) name
-              * [Lucide icon](https://lucide.dev/icons) name
-              * JSX-compatible SVG code wrapped in curly braces
+              * [Font Awesome](https://fontawesome.com/icons) icon name, if you have the `icons.library` [property](/organize/settings#param-icons) set to `fontawesome` in your `docs.json`
+              * [Lucide](https://lucide.dev/icons) icon name, if you have the `icons.library` [property](/organize/settings#param-icons) set to `lucide` in your `docs.json`
               * URL to an externally hosted icon
               * Path to an icon file in your project
+              * SVG code wrapped in curly braces
 
               For custom SVG icons:
 
@@ -700,7 +735,19 @@ This section contains the full reference for the `docs.json` file.
 
   <Expandable title="Interaction">
     <ResponseField name="drilldown" type="boolean">
-      Control automatic navigation behavior when selecting navigation groups. Set to `true` to force navigation to the first page when a navigation group is expanded. Set to `false` to prevent navigation and only expand or collapse the group. Leave unset to use the theme's default behavior.
+      Control automatic navigation behavior when selecting navigation groups. Set to `true` to force navigation to the first page when a navigation group expands. Set to `false` to prevent navigation and only expand or collapse the group. Leave unset to use the theme's default behavior.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="metadata" type="object">
+  Metadata configuration for documentation pages.
+
+  <Expandable title="Metadata">
+    <ResponseField name="timestamp" type="boolean">
+      Enable the last modified date on all pages. When enabled, all pages display the date the content was last modified. Defaults to `false`.
+
+      You can override this setting on individual pages with the `timestamp` frontmatter field. See [Pages](/organize/pages#last-modified-timestamp) for more information.
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -755,8 +802,8 @@ This section contains the full reference for the `docs.json` file.
   Site-wide banner displayed at the top of pages.
 
   <Expandable title="Banner">
-    <ResponseField name="content" type="string">
-      The content of the banner. Supports plain text and Markdown formatting. For example:
+    <ResponseField name="content" type="string" required>
+      The text content displayed in the banner. Supports basic MDX formatting including links, bold, and italic text. Custom components are not supported. For example:
 
       ```json  theme={null}
       {
@@ -766,7 +813,7 @@ This section contains the full reference for the `docs.json` file.
     </ResponseField>
 
     <ResponseField name="dismissible" type="boolean">
-      Whether users can dismiss the banner. Defaults to `false`.
+      Whether to show the dismiss button on the right side of the banner. Defaults to `false`.
     </ResponseField>
   </Expandable>
 </ResponseField>
@@ -793,7 +840,7 @@ This section contains the full reference for the `docs.json` file.
   Contextual menu for AI-optimized content and integrations.
 
   <Expandable title="Contextual">
-    <ResponseField name="options" type="array of &#x22;copy&#x22; | &#x22;view&#x22; | &#x22;chatgpt&#x22; | &#x22;claude&#x22; | &#x22;perplexity&#x22; | &#x22;mcp&#x22; | &#x22;cursor&#x22; | &#x22;vscode&#x22;" required>
+    <ResponseField name="options" type="array of &#x22;copy&#x22; | &#x22;view&#x22; | &#x22;chatgpt&#x22; | &#x22;claude&#x22; | &#x22;perplexity&#x22; | &#x22;mcp&#x22; | &#x22;cursor&#x22; | &#x22;vscode&#x22; | object" required>
       Actions available in the contextual menu. The first option appears as the default.
 
       * `copy`: Copy the current page as Markdown to the clipboard.
@@ -805,6 +852,32 @@ This section contains the full reference for the `docs.json` file.
       * `cursor`: Installs your hosted MCP server in Cursor.
       * `vscode`: Installs your hosted MCP server in VSCode.
 
+      Define custom contextual menu options as objects with the following properties:
+
+      <Expandable title="Custom option">
+        <ResponseField name="title" type="string" required>
+          Display title for the custom option.
+        </ResponseField>
+
+        <ResponseField name="description" type="string" required>
+          Description text for the custom option.
+        </ResponseField>
+
+        <ResponseField name="icon" type="string">
+          Icon for the custom option. Supports icon library names, URLs, paths, or SVG code.
+        </ResponseField>
+
+        <ResponseField name="href" type="string or object" required>
+          Link destination for the custom option. Can be a simple URL string or an object with `base` and optional `query` parameters.
+
+          Placeholder values:
+
+          * `$page`: Current page content
+          * `$path`: Current page path
+          * `$mcp`: MCP server URL
+        </ResponseField>
+      </Expandable>
+
       <img src="https://mintcdn.com/mintlify/f7fo9pnTEtzBD70_/images/page-context-menu.png?fit=max&auto=format&n=f7fo9pnTEtzBD70_&q=85&s=8833b554020642ceb0495df962ae833b" alt="Contextual Menu" className="rounded-xl" data-og-width="1348" width="1348" data-og-height="824" height="824" data-path="images/page-context-menu.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/f7fo9pnTEtzBD70_/images/page-context-menu.png?w=280&fit=max&auto=format&n=f7fo9pnTEtzBD70_&q=85&s=7a0efdfd96e69fa3c8ebd6e9f99f4b00 280w, https://mintcdn.com/mintlify/f7fo9pnTEtzBD70_/images/page-context-menu.png?w=560&fit=max&auto=format&n=f7fo9pnTEtzBD70_&q=85&s=47d1dbd6083d226fed80f4b72f4222c9 560w, https://mintcdn.com/mintlify/f7fo9pnTEtzBD70_/images/page-context-menu.png?w=840&fit=max&auto=format&n=f7fo9pnTEtzBD70_&q=85&s=41ba28c312c712498667ec1ccefe19dc 840w, https://mintcdn.com/mintlify/f7fo9pnTEtzBD70_/images/page-context-menu.png?w=1100&fit=max&auto=format&n=f7fo9pnTEtzBD70_&q=85&s=88343286a1eefd010a309e6d0149c1f6 1100w, https://mintcdn.com/mintlify/f7fo9pnTEtzBD70_/images/page-context-menu.png?w=1650&fit=max&auto=format&n=f7fo9pnTEtzBD70_&q=85&s=9aa4f98ec00564bfd1411d94185a5942 1650w, https://mintcdn.com/mintlify/f7fo9pnTEtzBD70_/images/page-context-menu.png?w=2500&fit=max&auto=format&n=f7fo9pnTEtzBD70_&q=85&s=47ed706ae17656ec0f2ad1d58d024a0b 2500w" />
 
       <Note>
@@ -814,16 +887,16 @@ This section contains the full reference for the `docs.json` file.
   </Expandable>
 </ResponseField>
 
-### API Configurations
+### API configurations
 
 <ResponseField name="api" type="object">
   API documentation and interactive playground settings.
 
-  <Expandable title="Api">
+  <Expandable title="api">
     <ResponseField name="openapi" type="string or array or object">
       OpenAPI specification files for generating API documentation. Can be a single URL/path or an array of URLs/paths.
 
-      <Expandable title="Openapi">
+      <Expandable title="openapi">
         <ResponseField name="source" type="string">
           URL or path to your OpenAPI specification file.
 
@@ -836,12 +909,33 @@ This section contains the full reference for the `docs.json` file.
           Do not include a leading slash.
         </ResponseField>
       </Expandable>
+
+      <CodeGroup>
+        ```json Single file theme={null}
+        "openapi": "openapi.json"
+        ```
+
+        ```json Multiple files theme={null}
+        "openapi": [
+          "openapi/v1.json",
+          "openapi/v2.json",
+          "https://api.example.com/openapi.yaml"
+        ]
+        ```
+
+        ```json Directory theme={null}
+        "openapi": {
+          "source": "openapi.json",
+          "directory": "api-docs"
+        }
+        ```
+      </CodeGroup>
     </ResponseField>
 
     <ResponseField name="asyncapi" type="string or array or object">
       AsyncAPI specification files for generating API documentation. Can be a single URL/path or an array of URLs/paths.
 
-      <Expandable title="Asyncapi">
+      <Expandable title="asyncapi">
         <ResponseField name="source" type="string">
           URL or path to your AsyncAPI specification file.
 
@@ -854,6 +948,27 @@ This section contains the full reference for the `docs.json` file.
           Do not include a leading slash.
         </ResponseField>
       </Expandable>
+
+      <CodeGroup>
+        ```json Single file theme={null}
+        "asyncapi": "asyncapi.json"
+        ```
+
+        ```json Multiple files theme={null}
+        "asyncapi": [
+          "asyncapi/events.yaml",
+          "asyncapi/webhooks.yaml",
+          "https://api.example.com/asyncapi.json"
+        ]
+        ```
+
+        ```json Directory theme={null}
+        "asyncapi": {
+          "source": "asyncapi.json",
+          "directory": "websockets"
+        }
+        ```
+      </CodeGroup>
     </ResponseField>
 
     <ResponseField name="params" type="object">
@@ -885,7 +1000,20 @@ This section contains the full reference for the `docs.json` file.
 
       <Expandable title="Examples">
         <ResponseField name="languages" type="array of string">
-          Example languages for the autogenerated API snippets
+          Example languages for the autogenerated API snippets. Supported languages include:
+
+          * `bash` (displayed as cURL)
+          * `go`
+          * `java`
+          * `javascript`
+          * `node` (displayed as Node.js)
+          * `php`
+          * `powershell`
+          * `python`
+          * `ruby`
+          * `swift`
+
+          Common aliases are also supported: `curl`, `golang`, `js`,  `nodejs`, `rb`, `sh`.
         </ResponseField>
 
         <ResponseField name="defaults" type="&#x22;required&#x22; | &#x22;all&#x22;">
@@ -895,11 +1023,15 @@ This section contains the full reference for the `docs.json` file.
         <ResponseField name="prefill" type="boolean">
           Whether to prefill the API playground with data from schema examples. When enabled, the playground automatically populates request fields with example values from your OpenAPI specification. Defaults to `false`.
         </ResponseField>
+
+        <ResponseField name="autogenerate" type="boolean">
+          Whether to generate code samples for endpoints from API specifications. Defaults to `true`. When set to `false`, only manually-written code samples (from `x-codeSamples` in OpenAPI specifications or `<RequestExample>` components in MDX) appear in the API playground.
+        </ResponseField>
       </Expandable>
     </ResponseField>
 
     <ResponseField name="mdx" type="object">
-      Configurations for API pages generated from `MDX` files.
+      Configurations for API pages generated from MDX files.
 
       <Expandable title="Mdx">
         <ResponseField name="auth" type="object">
@@ -917,7 +1049,7 @@ This section contains the full reference for the `docs.json` file.
         </ResponseField>
 
         <ResponseField name="server" type="string or array">
-          Server configuration for API requests.
+          Base URL prepended to relative paths in page-level `api` frontmatter fields. Not used when the frontmatter contains a full URL.
         </ResponseField>
       </Expandable>
     </ResponseField>
@@ -962,6 +1094,16 @@ This section contains the full reference for the `docs.json` file.
       <Expandable title="Amplitude">
         <ResponseField name="apiKey" type="string" required>
           Your Amplitude API key.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="clarity" type="object">
+      Microsoft Clarity integration.
+
+      <Expandable title="Clarity">
+        <ResponseField name="projectId" type="string" required>
+          Your Microsoft Clarity project ID.
         </ResponseField>
       </Expandable>
     </ResponseField>
@@ -1028,6 +1170,20 @@ This section contains the full reference for the `docs.json` file.
       <Expandable title="Heap">
         <ResponseField name="appId" type="string" required>
           Your Heap app ID.
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="hightouch" type="object">
+      Hightouch integration.
+
+      <Expandable title="Hightouch">
+        <ResponseField name="writeKey" type="string" required>
+          Your Hightouch write key.
+        </ResponseField>
+
+        <ResponseField name="apiHost" type="string">
+          Your Hightouch API host.
         </ResponseField>
       </Expandable>
     </ResponseField>
@@ -1179,7 +1335,7 @@ This section contains the full reference for the `docs.json` file.
 
       <Expandable title="404">
         <ResponseField name="redirect" type="boolean">
-          Whether to automatically redirect to the home page when a page is not found.
+          Whether to automatically redirect to the home page when a page is not found. Defaults to `true`.
         </ResponseField>
 
         <ResponseField name="title" type="string">
@@ -1187,7 +1343,7 @@ This section contains the full reference for the `docs.json` file.
         </ResponseField>
 
         <ResponseField name="description" type="string">
-          Custom description for the 404 error page. Supports Markdown formatting.
+          Custom description for the 404 error page. Supports basic MDX formatting including links, bold, and italic text. Custom components are not supported.
         </ResponseField>
       </Expandable>
     </ResponseField>
@@ -1198,7 +1354,7 @@ This section contains the full reference for the `docs.json` file.
 
 <Tabs>
   <Tab title="Basic example">
-    ```json docs.json lines wrap theme={null}
+    ```json docs.json  theme={null}
     {
       "$schema": "https://mintlify.com/docs.json",
       "theme": "maple",
@@ -1345,7 +1501,7 @@ This section contains the full reference for the `docs.json` file.
   </Tab>
 
   <Tab title="Interactive API example">
-    ```json docs.json {43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,72,73,74,75,76,77,78,79} lines wrap theme={null}
+    ```json docs.json {43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,72,73,74,75,76,77,78,79}  theme={null}
     {
       "$schema": "https://mintlify.com/docs.json",
       "theme": "maple",
@@ -1519,7 +1675,7 @@ This section contains the full reference for the `docs.json` file.
   </Tab>
 
   <Tab title="Multi-language example">
-    ```json docs.json lines wrap theme={null}
+    ```json docs.json  theme={null}
     {
       "$schema": "https://mintlify.com/docs.json",
       "theme": "maple",
@@ -1739,7 +1895,7 @@ If your docs project uses the deprecated `mint.json` file, follow these steps to
     mint upgrade
     ```
 
-    This command will create a `docs.json` file from your existing `mint.json`. Review the generated file to ensure all settings are correct.
+    This command creates a `docs.json` file from your existing `mint.json`. Review the generated file to ensure all settings are correct.
   </Step>
 
   <Step title="Delete your mint.json file">

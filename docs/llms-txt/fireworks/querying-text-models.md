@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/guides/querying-text-models.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Text Models
 
 > Query, track and manage inference for text models
@@ -8,12 +12,29 @@
   New to Fireworks? Start with the [Serverless Quickstart](/getting-started/quickstart) for a step-by-step guide to making your first API call.
 </Info>
 
-Fireworks provides fast, cost-effective access to leading open-source text models through OpenAI-compatible APIs. Query models via serverless inference or dedicated deployments using the chat completions API (recommended), completions API, or responses API. [Browse 100+ available models →](https://fireworks.ai/models)
+Fireworks provides fast, cost-effective access to leading open-source text models through OpenAI-compatible APIs. Query models via serverless inference or dedicated deployments using the chat completions API (recommended), completions API, or responses API.
+
+[Browse 100+ available models →](https://fireworks.ai/models)
 
 ## Chat Completions API
 
 <Tabs>
-  <Tab title="Python">
+  <Tab title="Python (Fireworks SDK)">
+    ```python  theme={null}
+    from fireworks import Fireworks
+
+    client = Fireworks()
+
+    response = client.chat.completions.create(
+      model="accounts/fireworks/models/deepseek-v3p1",
+      messages=[{"role": "user", "content": "Explain quantum computing in simple terms"}]
+    )
+
+    print(response.choices[0].message.content)
+    ```
+  </Tab>
+
+  <Tab title="Python (OpenAI SDK)">
     ```python  theme={null}
     import os
     from openai import OpenAI
@@ -86,17 +107,17 @@ Fireworks also supports [Completions API](/guides/completions-api) and [Response
 
 ## Querying dedicated deployments
 
-For consistent performance, guaranteed capacity, or higher throughput, you can query [on-demand deployments](/guides/ondemand-deployments) instead of serverless models. Deployments use the same APIs with a deployment-specific model identifier:
+For consistent performance, guaranteed capacity, or higher throughput, you can query [on-demand deployments](/guides/ondemand-deployments) instead of serverless models. Deployments use the same APIs with a deployment-specific identifier:
 
 ```
-<MODEL_NAME>#<DEPLOYMENT_NAME>
+accounts/<ACCOUNT_ID>/deployments/<DEPLOYMENT_ID>
 ```
 
 For example:
 
 ```python  theme={null}
 response = client.chat.completions.create(
-    model="accounts/fireworks/models/deepseek-v3p1#accounts/<ACCOUNT_ID>/deployments/<DEPLOYMENT_ID>",
+    model="accounts/<ACCOUNT_ID>/deployments/<DEPLOYMENT_ID>",
     messages=[{"role": "user", "content": "Hello"}]
 )
 ```
@@ -174,7 +195,24 @@ for chunk in stream:
 Use async clients to make multiple concurrent requests for better throughput:
 
 <Tabs>
-  <Tab title="Python">
+  <Tab title="Python (Fireworks SDK)">
+    ```python  theme={null}
+    from fireworks import AsyncFireworks
+
+    client = AsyncFireworks()
+
+    async def main():
+      response = await client.chat.completions.create(
+        model="accounts/fireworks/models/deepseek-v3p1",
+        messages=[{"role": "user", "content": "Hello"}]
+      )
+      print(response.choices[0].message.content)
+
+    asyncio.run(main())
+    ```
+  </Tab>
+
+  <Tab title="Python (OpenAI SDK)">
     ```python  theme={null}
     import asyncio
     from openai import AsyncOpenAI
@@ -223,7 +261,7 @@ Every response includes token usage information and performance metrics for debu
 
 **Token usage** (prompt, completion, total tokens) is included in the response body for all requests.
 
-**Performance metrics** (latency, time-to-first-token, etc.) are included in response headers for non-streaming requests. For streaming requests, use the `perf_metrics_in_response` parameter to include all metrics in the response body.
+**Performance metrics** (latency, time-to-first-token, etc.) are included in response headers for non-streaming requests. For streaming requests, use the [`perf_metrics_in_response`](/api-reference/post-chatcompletions#body-perf-metrics-in-response) parameter to include all metrics in the response body.
 
 <Tabs>
   <Tab title="Non-streaming">
@@ -289,7 +327,7 @@ Every response includes token usage information and performance metrics for debu
   Usage information is automatically included in the final chunk for streaming responses (the chunk with `finish_reason` set). This is a Fireworks extension - OpenAI SDK doesn't return usage for streaming by default.
 </Note>
 
-For all available metrics and details, see the [API reference documentation](/api-reference/post-chatcompletions#response-perf_metrics).
+For all available metrics and details, see the [API reference documentation](/api-reference/post-chatcompletions#body-perf-metrics-in-response).
 
 <Tip>
   If you encounter errors during inference, see [Inference Error Codes](/guides/inference-error-codes) for common issues and resolutions.
@@ -412,17 +450,9 @@ Extend text models with additional features for structured outputs, tool integra
     <Tabs>
       <Tab title="Python">
         ```python  theme={null}
-        import os
-        from openai import OpenAI
-
-        client = OpenAI(
-            api_key=os.environ.get("FIREWORKS_API_KEY"),
-            base_url="https://api.fireworks.ai/inference/v1"
-        )
-
         response = client.chat.completions.with_raw_response.create(
-            model="accounts/fireworks/models/deepseek-v3p1",
-            messages=[{"role": "user", "content": "Hello"}]
+          model="accounts/fireworks/models/deepseek-v3p1",
+          messages=[{"role": "user", "content": "Hello"}]
         )
 
         # Access headers from the raw response
@@ -581,50 +611,9 @@ Language models process text in chunks called **tokens**. In English, a token ca
 
 For Llama models, use [this tokenizer tool](https://belladoreai.github.io/llama-tokenizer-js/example-demo/build/) to estimate token counts. Actual usage is returned in the `usage` field of every API response.
 
-## OpenAI SDK Migration
+## OpenAI SDK migration
 
-<Accordion title="OpenAI SDK compatibility notes">
-  Fireworks provides an OpenAI-compatible API, making migration straightforward. However, there are some minor differences to be aware of:
-
-  ### Behavioral differences
-
-  **`stop` parameter:**
-
-  * **Fireworks**: Returns text including the stop word
-  * **OpenAI**: Omits the stop word
-  * *You can easily truncate it client-side if needed*
-
-  **`max_tokens` with context limits:**
-
-  * **Fireworks**: Automatically adjusts `max_tokens` lower if `prompt + max_tokens` exceeds the model's context window
-  * **OpenAI**: Returns an invalid request error
-  * *Control this behavior with the `context_length_exceeded_behavior` parameter*
-
-  **Streaming usage stats:**
-
-  * **Fireworks**: Returns `usage` field in the final chunk (where `finish_reason` is set) for both streaming and non-streaming
-  * **OpenAI**: Only returns usage for non-streaming responses
-
-  Example accessing streaming usage:
-
-  ```python  theme={null}
-  for chunk in client.chat.completions.create(stream=True, ...):
-      if chunk.usage:  # Available in final chunk
-          print(f"Tokens: {chunk.usage.total_tokens}")
-  ```
-
-  ### Unsupported parameters
-
-  The following OpenAI parameters are not yet supported:
-
-  * `presence_penalty`
-  * `frequency_penalty`
-  * `best_of` (use `n` instead)
-  * `logit_bias`
-  * `functions` (deprecated - use [Tool Calling](/guides/function-calling) with the `tools` parameter instead)
-
-  Have a use case requiring one of these? [Join our Discord](https://discord.gg/fireworks-ai) to discuss.
-</Accordion>
+Fireworks provides an OpenAI-compatible API, making migration from OpenAI straightforward. For detailed information on setup, usage examples, and API compatibility notes, see the [OpenAI compatibility guide](/tools-sdks/openai-compatibility).
 
 ## Next steps
 

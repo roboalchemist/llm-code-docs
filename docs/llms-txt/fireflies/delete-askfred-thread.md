@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/graphql-api/mutation/delete-askfred-thread.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete AskFred Thread
 
 > Delete an AskFred conversation thread and all its messages
@@ -163,8 +167,3 @@ mutation DeleteThread($id: String!) {
     Review thread content before deletion
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.fireflies.ai/llms.txt

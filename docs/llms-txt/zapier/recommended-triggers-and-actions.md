@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/quickstart/recommended-triggers-and-actions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Recommended triggers and actions
 
 > Whether you’re just starting to scope out a new Zapier integration build or have successfully launched your app in the Zapier App Directory, it’s helpful to know what features users find the most valuable and are the most widely used across Zapier’s various [app categories](https://zapier.com/apps). Ensuring your integration covers the foundational triggers, actions, and searches applicable to your app will provide more utility to your users.

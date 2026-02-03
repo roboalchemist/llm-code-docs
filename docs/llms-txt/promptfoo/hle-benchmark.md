@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/guides/hle-benchmark/
+
 # Testing Humanity's Last Exam with Promptfoo
 
 [Humanity's Last Exam (HLE)](https://arxiv.org/abs/2501.14249) is a challenging benchmark commissioned by Scale AI and the Center for AI Safety (CAIS), developed by 1,000+ subject experts from over 500 institutions across 50 countries. Created to address benchmark saturation where current models achieve 90%+ accuracy on MMLU, HLE presents genuinely difficult expert-level questions that test AI capabilities at the frontier of human knowledge.

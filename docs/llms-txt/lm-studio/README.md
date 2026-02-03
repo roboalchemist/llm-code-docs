@@ -1,3 +1,5 @@
+# Source: https://github.com/lmstudio-ai/localization/blob/main/README.md
+
 # localization/README.md at main · lmstudio-ai/localization · GitHub
 
 The provided HTML content is a complex web page with various elements, including navigation menus, images, and text. To create a clean Markdown representation, we will focus on the main content and exclude non-essential elements. The main content of the HTML is the navigation menu and the text content within it.

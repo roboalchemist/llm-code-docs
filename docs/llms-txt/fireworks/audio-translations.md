@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/api-reference/audio-translations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Translate audio
 
 ### Headers
@@ -34,7 +38,6 @@
 
   * `mms_fa` optimal accuracy for multilingual speech.
   * `tdnn_ffn` optimal accuracy for English-only speech.
-  * `gentle` best accuracy for English-only speech (requires a dedicated endpoint, contact us at <a href="mailto:inquiries@fireworks.ai">[inquiries@fireworks.ai](mailto:inquiries@fireworks.ai)</a>).
 </ParamField>
 
 <ParamField query="language" type="string | null" optional>

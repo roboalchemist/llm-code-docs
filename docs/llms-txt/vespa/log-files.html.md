@@ -169,7 +169,7 @@ The access log includes everything happening before rendering, but will exclude 
 
 The ZooKeeper log file is normally not necessary to monitor on a regular basis, but is mentioned here as a possible source of information in case you should ever need to debug the Vespa configuration system. It is located at `$VESPA_HOME/logs/vespa/zookeeper.<servicename>.log`.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

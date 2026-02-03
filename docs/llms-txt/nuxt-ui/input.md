@@ -26,11 +26,9 @@ Some types have been implemented in their own components such as [Checkbox](/doc
 </template>
 ```
 
-<callout icon="i-simple-icons-mdnwebdocs" target="_blank" to="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types">
-
-You can check all the available types on the MDN Web Docs.
-
-</callout>
+> [!NOTE]
+> See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#input_types
+> You can check all the available types on the MDN Web Docs.
 
 ### Placeholder
 
@@ -52,11 +50,8 @@ Use the `color` prop to change the ring color when the Input is focused.
 </template>
 ```
 
-<note>
-
-The `highlight` prop is used here to show the focus state. It's used internally when a validation error occurs.
-
-</note>
+> [!NOTE]
+> The `highlight` prop is used here to show the focus state. It's used internally when a validation error occurs.
 
 ### Variant
 
@@ -126,23 +121,15 @@ Use the `loading-icon` prop to customize the loading icon. Defaults to `i-lucide
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.loading` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.loading` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.loading` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.loading` key.
 
 ### Disabled
 
@@ -418,17 +405,9 @@ defineShortcuts({
 </template>
 ```
 
-<note to="/composables/define-shortcuts">
-
-This example uses the `defineShortcuts` composable to focus the Input when the <kbd value="/">
-
-
-
-</kbd>
-
- key is pressed.
-
-</note>
+> [!NOTE]
+> See: /composables/define-shortcuts
+> This example uses the `defineShortcuts` composable to focus the Input when the  key is pressed.
 
 ### With mask
 
@@ -485,11 +464,9 @@ const email = ref('')
 </template>
 ```
 
-<tip to="/docs/components/form">
-
-It also provides validation and error handling when used within a **Form** component.
-
-</tip>
+> [!TIP]
+> See: /docs/components/form
+> It also provides validation and error handling when used within a Form component.
 
 ### Within a FieldGroup
 
@@ -554,7 +531,7 @@ interface InputProps {
   /**
    * @default "\"off\""
    */
-  autocomplete?: string | undefined;
+  autocomplete?: (string & {}) | "on" | "off" | undefined;
   autofocus?: boolean | undefined;
   /**
    * @default "0"
@@ -565,14 +542,14 @@ interface InputProps {
    * Highlight the ring color like a focus state.
    */
   highlight?: boolean | undefined;
-  modelValue?: AcceptableValue | undefined;
-  defaultValue?: AcceptableValue | undefined;
-  modelModifiers?: ModelModifiers<AcceptableValue> | undefined;
+  modelValue?: T | undefined;
+  defaultValue?: T | undefined;
+  modelModifiers?: ModelModifiers<T> | undefined;
   ui?: { root?: ClassNameValue; base?: ClassNameValue; leading?: ClassNameValue; leadingIcon?: ClassNameValue; leadingAvatar?: ClassNameValue; leadingAvatarSize?: ClassNameValue; trailing?: ClassNameValue; trailingIcon?: ClassNameValue; } | undefined;
   /**
    * Display an icon based on the `leading` and `trailing` props.
    */
-  icon?: string | object | undefined;
+  icon?: any;
   /**
    * Display an avatar on the left side.
    */
@@ -584,7 +561,7 @@ interface InputProps {
   /**
    * Display an icon on the left side.
    */
-  leadingIcon?: string | object | undefined;
+  leadingIcon?: any;
   /**
    * When `true`, the icon will be displayed on the right side.
    */
@@ -592,7 +569,7 @@ interface InputProps {
   /**
    * Display an icon on the right side.
    */
-  trailingIcon?: string | object | undefined;
+  trailingIcon?: any;
   /**
    * When `true`, the loading icon will be displayed.
    */
@@ -600,7 +577,7 @@ interface InputProps {
   /**
    * The icon when the `loading` prop is `true`.
    */
-  loadingIcon?: string | object | undefined;
+  loadingIcon?: any;
   enterKeyHint?: "search" | "enter" | "done" | "go" | "next" | "previous" | "send" | undefined;
   form?: string | undefined;
   formaction?: string | undefined;
@@ -619,11 +596,9 @@ interface InputProps {
 }
 ```
 
-<callout icon="i-simple-icons-mdnwebdocs" target="_blank" to="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attributes">
-
-This component also supports all native `<input>` HTML attributes.
-
-</callout>
+> [!NOTE]
+> See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attributes
+> This component also supports all native `<input>` HTML attributes.
 
 ### Slots
 
@@ -645,7 +620,7 @@ interface InputSlots {
  * Emitted events for the Input component
  */
 interface InputEmits {
-  update:modelValue: (payload: [value: AcceptableValue]) => void;
+  update:modelValue: (payload: [value: T]) => void;
   blur: (payload: [event: FocusEvent]) => void;
   change: (payload: [event: Event]) => void;
 }
@@ -983,8 +958,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

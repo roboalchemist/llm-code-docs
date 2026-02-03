@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/cloud-services/deployments/reserved-vm-deployments.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Reserved VM Deployments
 
 > Reserved VM Deployments publish your Replit App to an always-on cloud server.

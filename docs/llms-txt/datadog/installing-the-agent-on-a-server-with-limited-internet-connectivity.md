@@ -8,8 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > Agent > Agent Guides > Installing the Agent on a server with limited
   internet connectivity
-source_url: >-
-  https://docs.datadoghq.com/guide/installing-the-agent-on-a-server-with-limited-internet-connectivity/index.html
 ---
 
 # Installing the Agent on a server with limited internet connectivity

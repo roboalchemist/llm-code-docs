@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/getting-started/ask-docs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Chat with Fireflies AI Assistant
 
 > Navigate Fireflies.ai Documentation using the AI Assistant

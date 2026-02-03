@@ -8,7 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > Account Management > Single Sign On With SAML > The Datadog Mobile App
   with IdP Initiated SAML
-source_url: https://docs.datadoghq.com/saml/mobile-idp-login/index.html
 ---
 
 # The Datadog Mobile App with IdP Initiated SAML

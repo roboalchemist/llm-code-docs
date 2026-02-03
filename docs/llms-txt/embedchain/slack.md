@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/components/data-sources/slack.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 🤖 Slack
 
 ## Pre-requisite
@@ -15,7 +19,7 @@
 
 This will automatically retrieve data from the workspace associated with the user's token.
 
-```python
+```python  theme={null}
 import os
 from embedchain import App
 
@@ -33,7 +37,7 @@ print(result)
 
 1. Setup the Slack loader by configuring the Slack Webclient.
 
-```Python
+```Python  theme={null}
 from embedchain.loaders.slack import SlackLoader
 
 os.environ["SLACK_USER_TOKEN"] = "xoxp-*"
@@ -51,7 +55,7 @@ NOTE: you can also pass the `config` with `base_url`, `headers`, `team_id` to se
 
 2. Once you setup the loader, you can create an app and load data using the above slack loader
 
-```Python
+```Python  theme={null}
 import os
 from embedchain.pipeline import Pipeline as App
 
@@ -64,7 +68,7 @@ question = "Which bots are available in the slack workspace's random channel?"
 
 3. We automatically create a chunker to chunk your slack data, however if you wish to provide your own chunker class. Here is how you can do that:
 
-```Python
+```Python  theme={null}
 from embedchain.chunkers.slack import SlackChunker
 from embedchain.config.add_config import ChunkerConfig
 

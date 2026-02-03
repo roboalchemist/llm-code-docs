@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/api-reference/metrics-glossary.md
 
-# Source: https://docs.aporia.com/api-reference/metrics-glossary.md
-
-# Source: https://docs.aporia.com/v1/api-reference/metrics-glossary.md
-
 # Metrics Glossary
 
 Here you can find information about all the performance metrics supported by Aporia.

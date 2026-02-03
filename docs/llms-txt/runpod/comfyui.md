@@ -2,6 +2,10 @@
 
 # Source: https://docs.runpod.io/tutorials/pods/comfyui.md
 
+# Source: https://docs.runpod.io/tutorials/serverless/comfyui.md
+
+# Source: https://docs.runpod.io/tutorials/pods/comfyui.md
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
 > Use this file to discover all available pages before exploring further.

@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/troubleshooting/common-errors-issues/aptible-ssh-operation-timed-out.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # aptible ssh Operation Timed Out
 
 When connecting using [`aptible ssh`](/reference/aptible-cli/cli-commands/cli-ssh), you might encounter this error:

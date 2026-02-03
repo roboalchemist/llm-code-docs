@@ -260,7 +260,7 @@ Here are some common success criteria that may be useful regardless of whether a
 
 The choice of model depends on the trade-offs between cost, accuracy, and response time.
 
-Many customers have found `claude-3-5-haiku-20241022` an ideal model for ticket routing, as it is the fastest and most cost-effective model in the Claude 3 family while still delivering excellent results. If your classification problem requires deep subject matter expertise or a large volume of intent categories complex reasoning, you may opt for the [larger Sonnet model](/docs/en/about-claude/models). 
+Many customers have found `claude-haiku-4-5-20251001` an ideal model for ticket routing, as it is the fastest and most cost-effective model in the Claude 4 family while still delivering excellent results. If your classification problem requires deep subject matter expertise or a large volume of intent categories complex reasoning, you may opt for the [larger Sonnet model](/docs/en/about-claude/models). 
 
 ### Build a strong prompt
 
@@ -353,7 +353,7 @@ import re
 client = anthropic.Anthropic()
 
 # Set the default model
-DEFAULT_MODEL="claude-3-5-haiku-20241022"
+DEFAULT_MODEL="claude-haiku-4-5-20251001"
 
 def classify_support_request(ticket_contents):
     # Define the prompt for the classification task
@@ -418,7 +418,7 @@ import re
 client = anthropic.Anthropic()
 
 # Set the default model
-DEFAULT_MODEL="claude-3-5-haiku-20241022"
+DEFAULT_MODEL="claude-haiku-4-5-20251001"
 
 def classify_support_request(request, actual_intent):
     # Define the prompt for the classification task
@@ -491,7 +491,7 @@ Despite providing examples being the most effective way to improve performance, 
 
 In this scenario, you could employ a vector database to do similarity searches from a dataset of examples and retrieve the most relevant examples for a given query. 
 
-This approach, outlined in detail in our [classification recipe](https://github.com/anthropics/anthropic-cookbook/blob/82675c124e1344639b2a875aa9d3ae854709cd83/skills/classification/guide.ipynb), has been shown to improve performance from 71% accuracy to 93% accuracy.
+This approach, outlined in detail in our [classification recipe](https://platform.claude.com/cookbook/capabilities-classification-guide), has been shown to improve performance from 71% accuracy to 93% accuracy.
 
 ### Account specifically for expected edge cases
 
@@ -531,7 +531,7 @@ For either of these approaches, you will need to wrap your script in a service. 
 ***
 
 <CardGroup cols={2}>
-    <Card title="Classification cookbook" icon="link" href="https://github.com/anthropics/anthropic-cookbook/tree/main/capabilities/classification">
+    <Card title="Classification cookbook" icon="link" href="https://platform.claude.com/cookbook/capabilities-classification-guide">
         Visit our classification cookbook for more example code and detailed eval guidance.
     </Card>
     <Card title="Claude Console" icon="link" href="/dashboard">

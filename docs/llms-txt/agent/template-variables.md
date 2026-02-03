@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/builder/template-variables.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Template Variables
 
 > Use the variable syntax and curly braces button to insert data from previous actions into your workflow

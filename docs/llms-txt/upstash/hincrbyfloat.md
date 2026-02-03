@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hincrbyfloat.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hincrbyfloat.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hincrbyfloat.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hincrbyfloat.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hincrbyfloat.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hincrbyfloat.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hincrbyfloat.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hincrbyfloat.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hincrbyfloat.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hincrbyfloat.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # HINCRBYFLOAT
 
@@ -26,11 +12,11 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the hash.
 </ParamField>
 
-<ParamField body="field" type="string" required>
+<ParamField body="field" type="str" required>
   The field to increment
 </ParamField>
 
@@ -45,11 +31,9 @@
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.hset("key", {
-    field: 20,
-    });
-  const after = await redis.hincrby("key", "field", 2.5);
-  console.log(after); // 22.5
+  ```py Example theme={"system"}
+  redis.hset("myhash", "field1", 5.5)
+
+  assert redis.hincrbyfloat("myhash", "field1", 10.1) - 15.6 < 0.0001
   ```
 </RequestExample>

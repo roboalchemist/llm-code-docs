@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/integrations/dynatrace.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LLM Observability with Dynatrace and OpenLLMetry
 
 <Frame>
@@ -25,8 +29,3 @@ TRACELOOP_HEADERS=Authorization=Api-Token%20<YOUR_ACCESS_TOKEN>
 ```
 
 Done! All exported spans, along with their span attributes, will appear within the [Dynatrace trace view](https://wkf10640.apps.dynatrace.com/ui/apps/dynatrace.genai.observability).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

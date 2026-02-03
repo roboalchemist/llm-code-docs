@@ -1,0 +1,22 @@
+# Source: https://docs.datadoghq.com/security/default_rules/4af-ed1-fc0.md
+
+---
+title: Azure Frontdoor WAF Blocked a Request
+description: Datadog, the leading service for cloud-scale monitoring.
+breadcrumbs: Docs > Datadog Security > OOTB Rules > Azure Frontdoor WAF Blocked a Request
+---
+
+# Azure Frontdoor WAF Blocked a Request
+Classification:attackTactic:[TA0001-initial-access](https://attack.mitre.org/tactics/TA0001)Technique:[T1190-exploit-public-facing-application](https://attack.mitre.org/techniques/T1190) 
+## Goal{% #goal %}
+
+Detect when an Azure Frontdoor Web Application Firewall (WAF) blocks a request from an IP address.
+
+## Strategy{% #strategy %}
+
+This rule monitors Azure Activity logs for Frontdoor Web Application Firewall logs and detects when the `@evt.name` has a value of `Microsoft.Network/FrontDoor/WebApplicationFirewallLog/Write` and `@properties.action` has a value of `Block`.
+
+## Triage and response{% #triage-and-response %}
+
+1. Inspect whether this request should have been blocked or not.
+1. Navigate to the IP dashboard and inspect other requests this IP address has made.

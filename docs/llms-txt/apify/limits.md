@@ -1,5 +1,3 @@
-# Source: https://docs.apify.com/api/client/js/reference/interface/Limits.md
-
 # Source: https://docs.apify.com/platform/limits.md
 
 # Limits
@@ -8,9 +6,9 @@
 
 ***
 
-The tables below demonstrate the Apify platform's default resource limits. For API limits such as rate limits and max payload size, see the https://docs.apify.com/api/v2.md#rate-limiting.
+The tables below demonstrate the Apify platform's default resource limits. For API limits such as rate limits and max payload size, see the [API documentation](https://docs.apify.com/api/v2.md#rate-limiting).
 
-> If needed, the limits shown below can be increased on paid accounts. For details, contact us at **mailto:hello@apify.com** or using the chat in https://console.apify.com/ under the "Help & Resources → Contact Support".
+> If needed, the limits shown below can be increased on paid accounts. For details, contact us at **[hello@apify.com](mailto:hello@apify.com)** or using the chat in [Apify Console](https://console.apify.com/) under the "Help & Resources → Contact Support".
 
 ## Actor runtime limits
 
@@ -44,8 +42,8 @@ The tables below demonstrate the Apify platform's default resource limits. For A
 
 ## Usage limit
 
-The Apify platform also introduces usage limits based on the billing plan to protect users from accidental overspending. To learn more about usage limits, head over to the https://docs.apify.com/platform/console/billing.md#limits section of our docs.
+The Apify platform also introduces usage limits based on the billing plan to protect users from accidental overspending. To learn more about usage limits, head over to the [Limits](https://docs.apify.com/platform/console/billing.md#limits) section of our docs.
 
-View these limits and adjust your maximum usage limit in https://console.apify.com/billing#/limits:
+View these limits and adjust your maximum usage limit in [Apify Console](https://console.apify.com/billing#/limits):
 
 ![](/assets/images/usage-limits-2b0ebb13462f1d8122148611409b965a.png "Apify Security Whitepaper")

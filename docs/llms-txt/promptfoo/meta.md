@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/strategies/meta/
+
 # Meta-Agent Jailbreaks Strategy
 
 The Meta-Agent Jailbreaks strategy (`jailbreak:meta`) uses strategic decision-making to test your system's resilience against adaptive attacks.

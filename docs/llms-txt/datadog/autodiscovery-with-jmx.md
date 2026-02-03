@@ -5,8 +5,7 @@ title: Autodiscovery with JMX
 description: >-
   Configure JMX-based integrations for containerized Java applications using
   Autodiscovery templates
-breadcrumbs: Docs > Container Monitoring > Containers Guides > Autodiscovery with JMX
-source_url: https://docs.datadoghq.com/guide/autodiscovery-with-jmx/index.html
+breadcrumbs: Docs > Containers > Containers Guides > Autodiscovery with JMX
 ---
 
 # Autodiscovery with JMX

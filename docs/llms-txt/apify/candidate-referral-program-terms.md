@@ -18,7 +18,7 @@ is neither:
 
 and recommends to Apify a suitable job candidate (“**Candidate**”):
 
-* for any open full-time position published on the Apify Job page available at: https://apify.com/jobs;
+* for any open full-time position published on the Apify Job page available at: [https://apify.com/jobs](https://apify.com/jobs);
 * who is not already in Apify’s applicant database, and is not active in the recruitment process (in which case you will be informed by Apify);
 * with whom Apify concludes an employment contract that establishes full-time employment between Apify and the Candidate (any candidates hired on a “DPP/DPČ” basis are excluded from this program);
 * who confirms that he/she was recommended to Apify by you and
@@ -36,6 +36,6 @@ Please note that the reward is subject to the applicable taxes. You are solely r
 
 You may recommend more than one Candidate. If you and someone else recommend one Candidate for the same open position in parallel, the reward will be provided to the individual who recommended the Candidate first for that specific open position.
 
-The current list of open positions is available on the Apify Job page: https://apify.com/jobs.
+The current list of open positions is available on the Apify Job page: [https://apify.com/jobs](https://apify.com/jobs).
 
-This Apify Candidate Referral Program is effective from its publication and remains in effect as long as it is published on the website http://www.apify.com. Apify reserves the right to modify or revoke this Candidate Referral Program and its terms at any time and at its sole discretion by removing it from the website http://www.apify.com.
+This Apify Candidate Referral Program is effective from its publication and remains in effect as long as it is published on the website [www.apify.com](http://www.apify.com). Apify reserves the right to modify or revoke this Candidate Referral Program and its terms at any time and at its sole discretion by removing it from the website [www.apify.com](http://www.apify.com).

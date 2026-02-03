@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/errors/api-errors/authentication-errors.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Authentication Errors
 
 > Thrown when there is an issue with your authorization header.

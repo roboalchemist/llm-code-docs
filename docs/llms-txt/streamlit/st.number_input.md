@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/widgets/st.number_input
+
 # st.number_input
 
 Display a numeric input widget.

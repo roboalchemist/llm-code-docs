@@ -2,13 +2,13 @@
 
 # Notifications
 
-Receive alerts on important updates to desktop, mobile, Slack or email.
+Receive alerts on important updates in the Linear desktop app, mobile app, Slack, or email.
 
 ![Linear app settings page showing notification settings](https://webassets.linear.app/images/ornj730p/production/e96ceb63af7f0d20f769ac8be820e1dcdbe53d41-2396x1634.png?q=95&auto=format&dpr=2)
 
 ## Overview
 
-You will always be notified for all notification types to your Linear inbox. Optionally, configure additional desktop push notifications, personal Slack notifications, mobile notifications and email digests. 
+You’ll always see notifications in your Linear inbox. For real-time alerts, you can use the Linear desktop app, mobile app, Slack, or email digests.
 
 ## Configure
 
@@ -16,7 +16,7 @@ Go to [Settings > Account > Notifications](https://linear.app/settings/account/n
 
 You can customize for the types of updates you'd like to receive from Linear such as changelogs, DPA updates and other communications.
 
-Notification are categorized into their methods: Desktop, Mobile, Email, and Slack. A green dot next to a method will signify this method is enabled an a gray dot will signify it is disabled.
+Notification are categorized by channel: Desktop, Mobile, Email, and Slack. A green dot next to a channel will signify this method is enabled and a gray dot means it is disabled.
 
 ![Notification methods](https://webassets.linear.app/images/ornj730p/production/e2983e8b986d5d2c15e0c1cc19437482d267706b-1394x692.png?q=95&auto=format&dpr=2)
 
@@ -48,14 +48,12 @@ To manage subscriptions, open issues individually and then press `Shift` `S` to 
 
 <details>
 <summary>My notifications are enabled. Why am I not receiving them?</summary>
-If you have Linear open in multiple tabs or both the Desktop and website app open, it's possible that notifications are sent to one but not the other. The workaround is to only use one version of Linear at a time. If none of those apply, please reach out to our support team. 
-
-If you're a Safari user, see the Q&A about notifications for browsers. Unfortunately, Safari does not support Push API which we use to send desktop notifications.
+If you have Linear open in multiple tabs or both the Desktop and website app open, it's possible that notifications are sent to one but not the other. The workaround is to only use one version of Linear at a time. If none of those apply, please reach out to our support team.
 </details>
 
 <details>
-<summary>How can I re-enable notifications if I disabled them in my browser?</summary>
-If you disabled them in the browser you might need to go through your browser settings and clean up the site preferences. If you're using Chrome, update settings here: `chrome://settings/content/notifications?search=notifications` and then re-enable in Linear.
+<summary>Do you support browser-based notifications?</summary>
+Browser-based desktop notifications are no longer supported in Linear, and cannot be configured unless they were already active in your current browser. To receive notifications, use the Linear desktop app, mobile app, Slack, or email digests instead.
 </details>
 
 <details>

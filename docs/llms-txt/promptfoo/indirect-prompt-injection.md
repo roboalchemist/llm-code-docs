@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/indirect-prompt-injection/
+
 # Indirect Prompt Injection Plugin
 
 Tests whether untrusted data (RAG context, emails, user profiles) can hijack your model when placed into the prompt.

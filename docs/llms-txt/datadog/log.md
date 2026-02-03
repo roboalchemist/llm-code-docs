@@ -8,9 +8,8 @@ description: >-
   Configure log collection from applications running in Docker containers using
   the Datadog Agent
 breadcrumbs: >-
-  Docs > Container Monitoring > Docker Agent for Docker, containerd, and Podman
-  > Docker Log collection
-source_url: https://docs.datadoghq.com/docker/log/index.html
+  Docs > Containers > Docker Agent for Docker, containerd, and Podman > Docker
+  Log collection
 ---
 
 # Docker Log collection

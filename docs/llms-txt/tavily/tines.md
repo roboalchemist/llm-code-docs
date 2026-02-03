@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/documentation/integrations/tines.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tines
 
 > Integrate Tavily with Tines for automated, no-code intelligence workflows.
@@ -71,8 +75,3 @@ Integrate [Tavily with Tines](https://www.tines.com/docs/credentials/connect-flo
     </p>
   </Accordion>
 </AccordionGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

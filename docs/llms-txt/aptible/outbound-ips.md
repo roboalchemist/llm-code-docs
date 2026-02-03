@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/apps/connecting-to-apps/outbound-ips.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Outbound IP Addresses
 
 > Learn about using outbound IP addresses to create an allowlist
@@ -21,6 +25,15 @@ The outbound IP addresses for an app *may* change for the following reasons:
 In either case, Aptible selects the new IP address from a pool of pre-defined IP addresses associated with the NAT gateway. This set pool will not change without notification from Aptible.
 
 <Warning> For this reason, when sharing IP addresses with vendors or partners for whitelisting, ensure all of the provided outbound IP addresses are whitelisted. </Warning>
+
+# Email Notifications for IP Changes
+
+When Aptible adds new outbound IP addresses to your stack's NAT gateway pool, email notifications are sent to:
+
+* Your organization's Ops Alert contact
+* All account owners
+
+This ensures timely notification of this important change to all key organization members.
 
 # Determining Outbound IP Address Pool
 

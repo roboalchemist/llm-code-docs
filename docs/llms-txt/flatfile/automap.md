@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/automap.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Automap Plugin
 
 > Automatically map columns for headless data import workflows in Flatfile with configurable confidence levels
@@ -11,11 +15,11 @@ This is ideal for scenarios where files with consistent schemas are uploaded pro
 ## Installation
 
 <CodeGroup>
-  ```bash npm
+  ```bash npm theme={null}
   npm install @flatfile/plugin-automap
   ```
 
-  ```bash yarn
+  ```bash yarn theme={null}
   yarn add @flatfile/plugin-automap
   ```
 </CodeGroup>
@@ -81,7 +85,7 @@ The `automap` function accepts an `AutomapOptions` configuration object with the
 This example shows the simplest way to use the automap plugin, targeting a specific sheet for all uploaded CSV files.
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { automap } from '@flatfile/plugin-automap';
 
@@ -96,7 +100,7 @@ This example shows the simplest way to use the automap plugin, targeting a speci
   });
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { automap } from '@flatfile/plugin-automap';
 
@@ -117,7 +121,7 @@ This example shows the simplest way to use the automap plugin, targeting a speci
 This example demonstrates a more complete configuration, including a failure callback and targeting a specific workbook.
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { automap } from '@flatfile/plugin-automap';
 
@@ -140,7 +144,7 @@ This example demonstrates a more complete configuration, including a failure cal
   });
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { automap } from '@flatfile/plugin-automap';
   import type { FlatfileEvent } from '@flatfile/listener';
@@ -170,7 +174,7 @@ This example demonstrates a more complete configuration, including a failure cal
 This example uses a function for `defaultTargetSheet` to dynamically route data to different sheets based on the filename.
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { automap } from '@flatfile/plugin-automap';
 
@@ -195,7 +199,7 @@ This example uses a function for `defaultTargetSheet` to dynamically route data 
   });
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { automap } from '@flatfile/plugin-automap';
   import type { FlatfileEvent } from '@flatfile/listener';
@@ -232,7 +236,7 @@ The most effective way to troubleshoot the plugin is to set the `debug: true` op
 * The reason for any failures
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { automap } from '@flatfile/plugin-automap';
 
@@ -254,7 +258,7 @@ The most effective way to troubleshoot the plugin is to set the `debug: true` op
   });
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { automap } from '@flatfile/plugin-automap';
   import type { FlatfileEvent } from '@flatfile/listener';

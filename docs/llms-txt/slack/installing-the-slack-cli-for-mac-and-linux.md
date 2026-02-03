@@ -1,3 +1,5 @@
+# Source: https://docs.slack.dev/tools/slack-cli/guides/installing-the-slack-cli-for-mac-and-linux
+
 # Installing the Slack CLI for Mac & Linux
 
 The Slack CLI is a useful tool for building Slack apps. This is your one-stop shop for installing this tool.

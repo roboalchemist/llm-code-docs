@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/api-reference/domains/create-domain.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create Domain
 
 > Create a domain through the Resend Email API.
@@ -55,6 +59,30 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   Learn more about [custom return paths](/dashboard/domains/introduction#custom-return-path).
 </ResendParamField>
 
+<ResendParamField body="open_tracking" type="boolean">
+  Track the open rate of each email.
+</ResendParamField>
+
+<ResendParamField body="click_tracking" type="boolean">
+  Track clicks within the body of each HTML email.
+</ResendParamField>
+
+<ParamField body="tls" type="string" default="opportunistic">
+  <ul>
+    <li>
+      `opportunistic`: Opportunistic TLS means that it always attempts to make a
+      secure connection to the receiving mail server. If it can't establish a
+      secure connection, it sends the message unencrypted.
+    </li>
+
+    <li>
+      `enforced`: Enforced TLS on the other hand, requires that the email
+      communication must use TLS no matter what. If the receiving server does
+      not support TLS, the email will not be sent.
+    </li>
+  </ul>
+</ParamField>
+
 <ParamField body="capabilities" type="object">
   Configure the domain capabilities for sending and receiving emails. At least one capability must be enabled.
 
@@ -75,7 +103,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </Info>
 
 <RequestExample>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -83,7 +111,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   const { data, error } = await resend.domains.create({ name: 'example.com' });
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->domains->create([
@@ -91,7 +119,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   ]);
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
@@ -103,7 +131,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   resend.Domains.create(params)
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   Resend.api_key = ENV["RESEND_API_KEY"]
 
   params = {
@@ -113,19 +141,23 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   puts domain
   ```
 
-  ```go Go theme={null}
-  import 	"github.com/resend/resend-go/v3"
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
 
-  client := resend.NewClient("re_xxxxxxxxx")
+  import "github.com/resend/resend-go/v3"
 
-  params := &resend.CreateDomainRequest{
-      Name: "example.com",
+  func main() {
+  	client := resend.NewClient("re_xxxxxxxxx")
+
+  	params := &resend.CreateDomainRequest{
+  		Name: "example.com",
+  	}
+
+  	client.Domains.Create(params)
   }
-
-  domain, err := client.Domains.Create(params)
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{types::CreateDomainOptions, Resend, Result};
 
   #[tokio::main]
@@ -141,7 +173,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -157,7 +189,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   }
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -166,7 +198,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   Console.WriteLine( "Domain Id={0}", resp.Content.Id );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X POST 'https://api.resend.com/domains' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json' \
@@ -177,7 +209,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </RequestExample>
 
 <ResponseExample>
-  ```json Response theme={null}
+  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "id": "4dd369bc-aa82-4ff3-97de-514ae3000ee0",
     "name": "example.com",

@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/chatbot/builder/save-your-work.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Save your work
 
 > Learn how to save your changes in the Builder.

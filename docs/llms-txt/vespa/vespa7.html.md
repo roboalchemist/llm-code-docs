@@ -4,7 +4,7 @@
 
  
 
-These notes documents the changes between Vespa major versions 6 and 7. As documented in [Vespa versions](https://vespa.ai/releases#versions), major versions are used to mark breaking compatibility, not to release significant new functionality (which instead happens on minor versions). However, even on major versions, compatibility is broken only in two specific ways: **Changes to defaults** means that applications may need to set some option explicitly to preserve earlier behavior, and **removal of deprecated functionality** means that applications _which use functionality that has earlier been deprecated_ need to change to keep working.
+These notes documents the changes between Vespa major versions 6 and 7. As documented in [Vespa versions](../../learn/releases.html#versions), major versions are used to mark breaking compatibility, not to release significant new functionality (which instead happens on minor versions). However, even on major versions, compatibility is broken only in two specific ways: **Changes to defaults** means that applications may need to set some option explicitly to preserve earlier behavior, and **removal of deprecated functionality** means that applications _which use functionality that has earlier been deprecated_ need to change to keep working.
 
 Most deprecated functionality causes warning during compilation (Java API deprecations) or deployment (application package deprecations), however with web service APIs there is no way to emit deprecation warnings, and we have to rely on marking these as deprecated in the documentation.
 
@@ -242,7 +242,7 @@ The following metrics are renamed:
 
 Vespa will not any longer implicitly load the "search" components" in containers which load the "document-api" components. If your application depends on "search" functionality in a container specifying the `<document-api>` tag in services.xml, make sure this container also specifies the `<search>` tag.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

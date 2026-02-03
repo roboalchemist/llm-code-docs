@@ -111,7 +111,7 @@ The multimeter includes:
 
 - AC/DC Voltage...
 
-Out of Stock
+In Stock
 [Buy Now](https://www.adafruit.com/product/2034)
 [Related Guides to the Product](https://learn.adafruit.com/products/2034/guides)
 ### Pocket Autoranging Digital Multimeter
@@ -121,7 +121,7 @@ When we're on the go, we like to keep a multimeter in our purse and this model i
   
 First up, this meter can measure nearly everything: it's got DC and AC...
 
-In Stock
+Out of Stock
 [Buy Now](https://www.adafruit.com/product/850)
 [Related Guides to the Product](https://learn.adafruit.com/products/850/guides)
 ### Multi-Meter! - Skill badge, iron-on patch
@@ -146,7 +146,7 @@ No Longer Stocked
 
 ## Related Guides
 
-- [Ladyada's Toolkit](https://learn.adafruit.com/ladyadas-toolkit.md)
-- [Energy Budgets](https://learn.adafruit.com/energy-budgets.md)
 - [USB-PD Hacks](https://learn.adafruit.com/usb-pd-hacks.md)
+- [Energy Budgets](https://learn.adafruit.com/energy-budgets.md)
+- [Ladyada's Toolkit](https://learn.adafruit.com/ladyadas-toolkit.md)
 - [Collin's Lab: Multimeters](https://learn.adafruit.com/collins-lab-multimeters.md)

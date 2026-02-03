@@ -1,16 +1,16 @@
-# Source: https://gitbook.com/docs/documentation/zh/gitbook-agent/write-and-edit-with-ai.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/gitbook-agent/write-and-edit-with-ai.md
 
-# Source: https://gitbook.com/docs/documentation/fr/gitbook-agent/write-and-edit-with-ai.md
+# Source: https://gitbook.com/docs/documentation/zh/gitbook-dai-li-agent/write-and-edit-with-ai.md
 
-# Source: https://gitbook.com/docs/gitbook-agent/write-and-edit-with-ai.md
-
-# Source: https://gitbook.com/docs/documentation/zh/gitbook-agent/write-and-edit-with-ai.md
-
-# Source: https://gitbook.com/docs/documentation/fr/gitbook-agent/write-and-edit-with-ai.md
+# Source: https://gitbook.com/docs/documentation/fr/agent-gitbook/write-and-edit-with-ai.md
 
 # Source: https://gitbook.com/docs/gitbook-agent/write-and-edit-with-ai.md
 
 # Writing with GitBook Agent
+
+{% hint style="info" %}
+This feature is available on [Pro and Enterprise plans](https://www.gitbook.com/pricing).
+{% endhint %}
 
 GitBook Agent is a powerful tool for generating content for your documentation in GitBook.
 
@@ -18,14 +18,14 @@ The Agent can do everything from write small sections of text on your page, to e
 
 {% hint style="info" %}
 
-## GitBook Agent follows your style guide
+### GitBook Agent follows your style guide
 
-You can [add your own style guide and custom instructions](https://gitbook.com/docs/what-is-gitbook-agent#add-a-style-guide-and-custom-instructions) at an organization level — so the Agent will always match your tone and style whenever you ask it to help.
+You can [add your own style guide and custom instructions](https://gitbook.com/docs/what-is-gitbook-agent#add-a-style-guide-and-custom-instructions) at an organization level — so the Agent will always match your tone and style whenever you ask it to help.
 {% endhint %}
 
 ### What can GitBook Agent do?
 
-GitBook Agent is deeply integrated into the GitBook app, so it understands the blocks you can create in the editor, and the wider content of your space.&#x20;
+GitBook Agent is deeply integrated into the GitBook app, so it understands the blocks you can create in the editor, and the wider content of your space.
 
 That means you can use the Agent to:
 
@@ -53,9 +53,9 @@ You can open the Agent chat window in a change request at any time by hitting th
 
 <div data-with-frame="true"><figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FPQtoLdPQWjOsz0vdowMn%2FCleanShot%202025-12-08%20at%2021.41.29%402x.png?alt=media&#x26;token=d3ea84f8-723e-463c-b84b-be6f02db490a" alt=""><figcaption><p>Open GitBook Agent in a change request</p></figcaption></figure></div>
 
-Here you can write a prompt for the Agent to follow — it will explain what it’s doing as it follows your instructions, with the changes appearing in your space is it works.&#x20;
+Here you can write a prompt for the Agent to follow — it will explain what it’s doing as it follows your instructions, with the changes appearing in your space is it works.
 
-You can give follow-up instructions or clarify steps, or edit the content of your space directly at any point, allowing you to work alongside GitBook Agent.&#x20;
+You can give follow-up instructions or clarify steps, or edit the content of your space directly at any point, allowing you to work alongside GitBook Agent.
 
 #### Implement a change request with GitBook Agent
 
@@ -63,9 +63,9 @@ Click the **GitBook Agent** section of the **Edit** button in the top-right of a
 
 Here you can write a prompt to tell the Agent what you want your change request to include, then add reference pages that might be useful as context for the changes.
 
-Once you click **Start change request** the Agent will open a change request for you and start carrying out your instructions. At every stage, the Agent will tell you what it’s doing in the chat window on the right-hand side of the app.&#x20;
+Once you click **Start change request** the Agent will open a change request for you and start carrying out your instructions. At every stage, the Agent will tell you what it’s doing in the chat window on the right-hand side of the app.
 
-When it’s done, you can edit the content yourself directly on the page, or give the Agent more instructions to continue refining your changes.&#x20;
+When it’s done, you can edit the content yourself directly on the page, or give the Agent more instructions to continue refining your changes.
 
 #### Tag GitBook Agent in a comment
 
@@ -73,15 +73,32 @@ If you want the Agent to review a specific block on your page, you can tag it in
 
 GitBook Agent will update the content based on your prompt, then reply to your comment telling you what it did.
 
+#### Improve page content with GitBook Agent
+
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FFTJDHOlJcYyh2M3tK6Xe%2Fpage-actions.png?alt=media&#x26;token=65358b13-2bef-4fda-bbe6-9308b7daba6f" alt=""><figcaption></figcaption></figure>
+
+The **Improve** menu gives you a choice of presets that tell GitBook Agent to carry out common actions to improve your page content.
+
+You can access the **Improve** menu from the editor by hovering over the page title, or by opening the page’s **Actions menu** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FQ4IsWwmEEi5QM7PSXNsN%2Factions%20-%20dark.svg?alt=media&#x26;token=ebff54f4-9825-4ab0-99bc-633e1c449371" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F89MTSo5XRpPMVr1T0rxS%2Factions.svg?alt=media&#x26;token=2b5d001e-560a-4f29-8d22-de8163725ca1" alt=""></picture>.
+
+From the Improve menu, you can tell the Agent to:
+
+* Add an icon for the page
+* Generate a page description based on its content
+* Fix spelling and grammar
+* Rewrite for consistency with other pages
+* Optimize for SEO
+* Add a summary and next steps section
+* Link to related topics and pages
+* Divide the single page into multiple pages
+
+The first two options are conditional — they change based on your page content. So if your page already has an icon and description, you won’t see those choices in the menu.
+
+Select any option and the Agent will instantly get to work on your task.
+
 #### Create new content in an empty block
 
-{% hint style="info" %}
-This feature is available on [Pro and Enterprise plans](https://www.gitbook.com/pricing).
-{% endhint %}
-
 You can use GitBook Agent to create content on any empty line on your page. It can create all kinds of content — formatted in Markdown — including code samples, templates, page summaries and more.
-
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F0EHNd5EkqsaaYFXpZEq2%2FWrite%20with%20AI%402x.png?alt=media&#x26;token=9fc735b3-4ae6-4efa-8d90-398c0d776723" alt="A GitBook screenshot showing the AI writing options"><figcaption><p>Write with GitBook AI.</p></figcaption></figure>
 
 Press `Space` on any empty line, or type `/` and choose **Write with AI** to launch GitBook Agent.
 
@@ -92,10 +109,10 @@ You can instantly start typing any prompt you want. GitBook Agent will analyze t
 Alternatively, you can choose from one of the suggested prompts or prompt starters:
 
 * **Continue writing** – GitBook Agent will analyze the content on your current page and then generate more content based on that.
-* **Explain…** – Choose this, then tell GitBook Agent what you want it to explain. This isn’t limited by content on your page, so you can ask it to explain anything at all.
-* **Summarize** – Summarize all the content on your page. This is great for writing a TL;DR at the bottom of a detailed document, or adding a quick summary at the top for people just checking in.
-* **Explain this** – This will explain the complex information on your page in simpler language — including explaining acronyms and other jargon. This is perfect if the page you’re reading involves a lot of complex information, or you want to add an explainer for less technical folks.
-* **Translate** – Translate your current page into one of a set number of languages. If you want to translate into a language that’s not on the list, simply type it into the prompt box.
+* **Explain…** – Choose this, then tell GitBook Agent what you want it to explain. This isn’t limited by content on your page, so you can ask it to explain anything at all.
+* **Summarize** – Summarize all the content on your page. This is great for writing a TL;DR at the bottom of a detailed document, or adding a quick summary at the top for people just checking in.
+* **Explain this** – This will explain the complex information on your page in simpler language — including explaining acronyms and other jargon. This is perfect if the page you’re reading involves a lot of complex information, or you want to add an explainer for less technical folks.
+* **Translate** – Translate your current page into one of a set number of languages. If you want to translate into a language that’s not on the list, simply type it into the prompt box.
 
 ### Write effective prompts for GitBook Agent <a href="#write-effective-prompts" id="write-effective-prompts"></a>
 
@@ -103,8 +120,8 @@ GitBook Agent is like a teammate that’s great at taking directions. You need t
 
 Here are some quick tips for writing good prompts:
 
-* **Break it down** – The Agent is best at completing focused tasks. Break down complex projects into smaller steps and ask the Agent to complete them one at a time.
-* **Be specific** – Generic prompts like `@gitbook improve this page` will apply general best practices, but without more specific guidance the Agent may not achieve the goal you had in mind.
-* **Focus on outcomes** – If you’re hearing about a specific problem customers are having, tell the Agent about those problems — or the outcomes you want to achieve. It will suggest improvements based on those outcomes.
-* **Give direct instructions** – If you want the Agent to use a stepper block for a step-by-step guide, or add an FAQ section with a bunch of expandable blocks, tell it precisely what to do to get the right results first time.
-* **Use broad prompts for wider improvements** – For maintenance tasks like fixing typos, updating a feature name across pages or removing specific block types from your docs, you can use commands like `@gitbook replace all instances of v2.3.9 with v2.4.0`.
+* **Break it down** – The Agent is best at completing focused tasks. Break down complex projects into smaller steps and ask the Agent to complete them one at a time.
+* **Be specific** – Generic prompts like `@gitbook improve this page` will apply general best practices, but without more specific guidance the Agent may not achieve the goal you had in mind.
+* **Focus on outcomes** – If you’re hearing about a specific problem customers are having, tell the Agent about those problems — or the outcomes you want to achieve. It will suggest improvements based on those outcomes.
+* **Give direct instructions** – If you want the Agent to use a stepper block for a step-by-step guide, or add an FAQ section with a bunch of expandable blocks, tell it precisely what to do to get the right results first time.
+* **Use broad prompts for wider improvements** – For maintenance tasks like fixing typos, updating a feature name across pages or removing specific block types from your docs, you can use commands like `@gitbook replace all instances of v2.3.9 with v2.4.0`.

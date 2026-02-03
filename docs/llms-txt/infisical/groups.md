@@ -1,30 +1,34 @@
 # Source: https://infisical.com/docs/documentation/platform/groups.md
 
-# User Groups
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-> Manage user groups in Infisical.
+# Groups
+
+> Manage groups containing users and machine identities in Infisical.
 
 <Info>
-  User Groups is a paid feature.
-
-  If you're using Infisical Cloud, then it is available under the **Enterprise Tier**. If you're self-hosting Infisical,
-  then you should contact [team@infisical.com](mailto:team@infisical.com) to purchase an enterprise license to use it.
+  Groups is a paid feature. If you're using Infisical Cloud, then it is
+  available under the **Enterprise Tier**. If you're self-hosting Infisical,
+  then you should contact [team@infisical.com](mailto:team@infisical.com) to purchase an enterprise license
+  to use it.
 </Info>
 
 ## Concept
 
-A (user) group is a collection of users that you can create in an Infisical organization to more efficiently manage permissions and access control for multiple users together. For example, you can have a group called `Developers` with the `Developer` role containing all the developers in your organization.
+A group is a collection of identities (users and/or machine identities) that you can create in an Infisical organization to more efficiently manage permissions and access control for multiple identities together. For example, you can have a group called `Developers` with the `Developer` role containing all the developers in your organization, or a group called `CI/CD Identities` containing all the machine identities used in your CI/CD pipelines.
 
-User groups have the following properties:
+Groups have the following properties:
 
-* If a group is added to a project under specific role(s), all users in the group will be provisioned access to the project with the role(s). Conversely, if a group is removed from a project, all users in the group will lose access to the project.
-* If a user is added to a group, they will inherit the access control properties of the group including access to project(s) under the role(s) assigned to the group. Conversely, if a user is removed from a group, they will lose access to project(s) that the group has access to.
-* If a user was previously added to a project under a role and is later added to a group that has access to the same project under a different role, then the user will now have access to the project under the composite permissions of the two roles. If the group is subsequently removed from the project, the user will not lose access to the project as they were previously added to the project separately.
-* A user can be part of multiple groups. If a user is part of multiple groups, they will inherit the composite permissions of all the groups that they are part of.
+* If a group is added to a project under specific role(s), all identities in the group will be provisioned access to the project with the role(s). Conversely, if a group is removed from a project, all identities in the group will lose access to the project.
+* If an identity is added to a group, they will inherit the access control properties of the group including access to project(s) under the role(s) assigned to the group. Conversely, if an identity is removed from a group, they will lose access to project(s) that the group has access to.
+* If an identity was previously added to a project under a role and is later added to a group that has access to the same project under a different role, then the identity will now have access to the project under the composite permissions of the two roles. If the group is subsequently removed from the project, the identity will not lose access to the project as they were previously added to the project separately.
+* An identity can be part of multiple groups. If an identity is part of multiple groups, they will inherit the composite permissions of all the groups that they are part of.
 
 ## Workflow
 
-In the following steps, we explore how to create and use user groups to provision user access to projects in Infisical.
+In the following steps, we explore how to create and use groups to provision access to projects in Infisical. Groups can contain both users and machine identities, and the workflow is the same for both types of identities.
 
 <Steps>
   <Step title="Creating a group">
@@ -43,12 +47,12 @@ In the following steps, we explore how to create and use user groups to provisio
     * Role (required): A role from the Organization Roles tab for the group to assume. The organization role assigned will determine what organization level resources this group can have access to.
   </Step>
 
-  <Step title="Adding users to the group">
-    Next, you'll want to assign users to the group. To do this, press on the users icon on the group and start assigning users to the group.
+  <Step title="Adding identities to the group">
+    Next, you'll want to assign identities (users and/or machine identities) to the group. To do this, click on the group row to open the group details page and click on the **+** button.
 
-        <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/groups/groups-org-users.png" alt="groups org users" />
+        <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/groups/group-details.png" alt="groups org users details" />
 
-    In this example, we're assigning **Alan Turing** and **Ada Lovelace** to the group **Engineering**.
+    In this example, we're assigning **Alan Turing** and **Ada Lovelace** (users) to the group **Engineering**. You can similarly add machine identities to the group by selecting them from the **Machine Identities** tab in the modal.
 
         <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/groups/groups-org-users-assign.png" alt="groups org assign users" />
   </Step>
@@ -56,7 +60,7 @@ In the following steps, we explore how to create and use user groups to provisio
   <Step title="Adding the group to a project">
     To enable the group to access project-level resources such as secrets within a specific project, you should add it to that project.
 
-    To do this, head over to the project you want to add the group to and go to Project Settings > Access Control > Groups and press **Add group**.
+    To do this, head over to the project you want to add the group to and go to Project Settings > Access Control > Groups and press **Add Group to Project**.
 
         <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/groups/groups-project.png" alt="groups project" />
 
@@ -66,6 +70,6 @@ In the following steps, we explore how to create and use user groups to provisio
 
     That's it!
 
-    The users of the group now have access to the project under the role you assigned to the group.
+    All identities of the group now have access to the project under the role you assigned to the group.
   </Step>
 </Steps>

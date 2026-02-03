@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/architecture/
+
 # Architecture
 
 Promptfoo automated red teaming consists of three main components: **plugins**, **strategies**, and **targets**.

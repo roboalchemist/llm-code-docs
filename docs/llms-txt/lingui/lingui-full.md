@@ -1675,7 +1675,7 @@ Integrate Lingui into your existing workflow. It supports explicit message keys 
 
 ### Lightweight and Optimized[​](#lightweight-and-optimized "Direct link to Lightweight and Optimized")
 
-Core library is less than [2 kB gzipped](https://bundlephobia.com/result?p=@lingui/core), React components are additional [1.4 kB gzipped](https://bundlephobia.com/result?p=@lingui/react).
+Core library is less than [2 kB gzipped](https://bundlephobia.com/result?p=@lingui/core), React components are additional [1.3 kB gzipped](https://bundlephobia.com/result?p=@lingui/react).
 
 ### AI Translations Ready[​](#ai-translations-ready "Direct link to AI Translations Ready")
 
@@ -1930,6 +1930,7 @@ The PO Gettext formatter accepts the following options:
 | `lineNumbers`          | boolean | `true`         | Include line numbers in the origin comments. This makes it easier to locate messages in the source code                                                                  |
 | `disableSelectWarning` | boolean | `false`        | Disable warnings about unsupported `Select` features encountered in catalogs. This can be useful if you're aware of the limitation and want to suppress related warnings |
 | `customICUPrefix`      | string  | `"js-lingui:"` | Override the default prefix for ICU and plural comments in the final PO catalog                                                                                          |
+| `mergePlurals`         | boolean | `false`        | Combine plural entries that have the same content but different variables into a single PO entry                                                                         |
 
 ### Examples[​](#po-gettext-examples "Direct link to Examples")
 
@@ -1973,6 +1974,47 @@ With this format, plural messages are exported in the following ways, depending 
   # customICUPrefix = jsi18n:
   #. jsi18n:icu=%7BanotherCount%2C+plural%2C+one+%7BSingular+case%7D+other+%7BCase+number+%7BanotherCount%7D%7D%7D&pluralize_on=anotherCount
   ```
+
+#### Duplicate Plurals[​](#duplicate-plurals "Direct link to Duplicate Plurals")
+
+When two calls to `plural` or `<Plural />` are made with identical strings, but pluralize on different variables, they will create separate PO entries. However, `msgid` will be the same. Some TMS might not allow duplicate `msgid`, even with different comments, and should use `mergePlurals` option to merge these entries into a single PO entry during extraction. During compilation, it will be re-expanded to multiple units.
+
+```
+plural(count, {
+  one: "one book",
+  other: "many books",
+});
+plural(anotherCount, {
+  one: "one book",
+  other: "many books",
+});
+```
+
+Without `mergePlurals`:
+
+```
+#. js-lingui:icu={count, plural, one {one book} other {many books}}&pluralize_on=count
+msgid "one book"
+msgid_plural "many books"
+msgstr[0] "one book"
+msgstr[1] "many books"
+
+#. js-lingui:icu={anotherCount, plural, one {one book} other {many books}}&pluralize_on=anotherCount
+msgid "one book"
+msgid_plural "many books"
+msgstr[0] "one book"
+msgstr[1] "many books"
+```
+
+With `mergePlurals`:
+
+```
+#. js-lingui:icu={$var, plural, one {one book} other {many books}}&pluralize_on=count,anotherCount
+msgid "one book"
+msgid_plural "many books"
+msgstr[0] "one book"
+msgstr[1] "many books"
+```
 
 ### Limitations[​](#po-gettext-limitations "Direct link to Limitations")
 
@@ -2306,6 +2348,7 @@ lingui compile
     [--namespace <namespace>]
     [--watch [--debounce <delay>]]
     [--workers]
+    [--output-prefix <prefix>]
 ```
 
 Once you have all the catalogs ready and translated, you can use this command to compile all the catalogs into minified JS/TS files. It compiles message catalogs located in the [`path`](/ref/conf.md#catalogs) directory and generates minified JavaScript files. The resulting file is a string that is parsed into a plain JS object using `JSON.parse`.
@@ -2383,6 +2426,33 @@ Use the `--verbose` flag to see the actual pool size.
 Worker threads can significantly improve performance on large projects. However, on small projects they may provide little benefit or even be slightly slower due to thread startup overhead.
 
 A larger worker pool also increases memory usage. Adjust this value for your project to achieve the best performance.
+
+#### `--output-prefix <prefix>`[​](#compile-output-prefix "Direct link to compile-output-prefix")
+
+Adds a custom string to the beginning of compiled message catalogs (a header/prefix). By default, Lingui adds `/*eslint-disable*/` to prevent linters from reporting issues in generated files.
+
+Use this option for other tools that rely on header directives (e.g., different linters, coverage tools, or formatters). Provide the full prefix exactly as it should appear in the output.
+
+**Default value:** `/*eslint-disable*/`
+
+**Examples:**
+
+```
+# For Oxlint
+lingui compile --output-prefix "/*oxlint-disable*/"
+
+# For Biome
+lingui compile --output-prefix "/*biome-ignore lint: auto-generated*/"
+
+# For no prefix at all
+lingui compile --output-prefix ""
+```
+
+The generated file header will look like:
+
+```
+/*your-prefix-here*/ export const messages = JSON.parse("{}");
+```
 
 ## Configuring the Source Locale[​](#configuring-the-source-locale "Direct link to Configuring the Source Locale")
 
@@ -2812,6 +2882,33 @@ Sort by the message ID, `js-lingui-id` will be used if no custom id provided.
 #### origin[​](#origin "Direct link to origin")
 
 Sort by message origin (e.g. `App.js:3`)
+
+#### Custom Function[​](#custom-function "Direct link to Custom Function")
+
+You can provide custom sort function:
+
+```
+export default defineConfig({
+  // [...]
+  orderBy: (a, b) => {
+    /* `a` and `b` has a shape
+     * {
+     *   messageId: string
+     *   entry: ExtractedMessageType
+     * }
+     */
+    const aIsGlobal = a.messageId.startsWith("global.");
+    const bIsGlobal = b.messageId.startsWith("global.");
+
+    // Put `global.*` entries first
+    if (aIsGlobal && !bIsGlobal) return -1;
+    if (!aIsGlobal && bIsGlobal) return 1;
+
+    // Otherwise, sort alphabetically
+    return a.messageId.localeCompare(b.messageId);
+  },
+});
+```
 
 ## rootDir[​](#rootdir "Direct link to rootDir")
 

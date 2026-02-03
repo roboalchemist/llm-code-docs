@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/getting-started/deploy-starter-template/python-django.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Python + Django - Starter Template
 
 > Deploy a starter template Python app using the Django framework on Aptible

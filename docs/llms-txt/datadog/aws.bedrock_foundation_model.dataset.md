@@ -4,8 +4,6 @@
 title: Bedrock Foundation Model
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Bedrock Foundation Model
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.bedrock_foundation_model.dataset/index.html
 ---
 
 # Bedrock Foundation Model

@@ -1,12 +1,16 @@
 # Source: https://trigger.dev/docs/config/extensions/audioWaveform.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Audio Waveform
 
 > Use the audioWaveform build extension to add support for Audio Waveform in your project
 
 Previously, we installed [Audio Waveform](https://github.com/bbc/audiowaveform) in the build image. That's been moved to a build extension:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { audioWaveform } from "@trigger.dev/build/extensions/audioWaveform";
 

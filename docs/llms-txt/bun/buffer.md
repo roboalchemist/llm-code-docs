@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/read-file/buffer.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Read a file to a Buffer
 
 The `Bun.file()` function accepts a path and returns a `BunFile` instance. The `BunFile` class extends `Blob` and allows you to lazily read the file in a variety of formats.
@@ -16,4 +20,4 @@ const buffer = Buffer.from(arrbuf);
 
 ***
 
-Refer to [Binary data > Buffer](https://bun.com/docs/api/binary-data#buffer) for more information on working with `Buffer` and other binary data formats in Bun.
+Refer to [Binary data > Buffer](/runtime/binary-data#buffer) for more information on working with `Buffer` and other binary data formats in Bun.

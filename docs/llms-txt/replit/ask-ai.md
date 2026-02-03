@@ -1,8 +1,518 @@
 # Source: https://docs.replit.com/getting-started/quickstarts/ask-ai.md
 
-# Create with AI
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-> Learn how to create a Replit App using AI-powered tools.
+# Build your first App
+
+> Create an interactive piano app using Replit Agent in just a few minutes.
+
+export const PromptAnatomy = () => {
+  if (typeof document !== 'undefined' && !document.getElementById('prompt-anatomy-styles')) {
+    const style = document.createElement('style');
+    style.id = 'prompt-anatomy-styles';
+    style.textContent = `
+      /* Theme variables - light mode */
+      .prompt-anatomy {
+        --pa-bg: #FFFFFF;
+        --pa-border: #E4E4E4;
+        --pa-text: #1D1D1D;
+        --pa-what-bg: #FFF4E6;
+        --pa-what-border: #FFB951;
+        --pa-what-text: #8B5A00;
+        --pa-look-bg: #E8F4FF;
+        --pa-look-border: #5BA8FF;
+        --pa-look-text: #004B8D;
+        --pa-work-bg: #F3E8FF;
+        --pa-work-border: #A78BFA;
+        --pa-work-text: #6B21A8;
+        --pa-legend-bg: #F5F5F5;
+      }
+
+      /* Theme variables - dark mode */
+      .dark .prompt-anatomy,
+      html.dark .prompt-anatomy,
+      [data-theme="dark"] .prompt-anatomy {
+        --pa-bg: #1A1C25;
+        --pa-border: #3A3D47;
+        --pa-text: #F5F5F5;
+        --pa-what-bg: #3D2E1F;
+        --pa-what-border: #FFB951;
+        --pa-what-text: #FFD494;
+        --pa-look-bg: #1A2A3A;
+        --pa-look-border: #5BA8FF;
+        --pa-look-text: #9DCFFF;
+        --pa-work-bg: #2D1B3D;
+        --pa-work-border: #A78BFA;
+        --pa-work-text: #D8B4FE;
+        --pa-legend-bg: #24262F;
+      }
+
+      .prompt-anatomy {
+        font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      }
+
+      .prompt-anatomy-container {
+        background: var(--pa-bg);
+        border: 1px solid var(--pa-border);
+        border-radius: 12px;
+        padding: 20px;
+        margin: 16px 0;
+      }
+
+      .prompt-anatomy-text {
+        font-size: 15px;
+        line-height: 2.3;
+        color: var(--pa-text);
+        margin-bottom: 20px;
+      }
+
+      .prompt-highlight {
+        padding: 2px 4px;
+        border-radius: 4px;
+        border: 1px solid;
+        font-weight: 500;
+        transition: all 0.2s ease;
+        box-decoration-break: clone;
+        -webkit-box-decoration-break: clone;
+      }
+
+      .prompt-highlight-what {
+        background: var(--pa-what-bg);
+        border-color: var(--pa-what-border);
+        color: var(--pa-what-text);
+      }
+
+      .prompt-highlight-look {
+        background: var(--pa-look-bg);
+        border-color: var(--pa-look-border);
+        color: var(--pa-look-text);
+      }
+
+      .prompt-highlight-work {
+        background: var(--pa-work-bg);
+        border-color: var(--pa-work-border);
+        color: var(--pa-work-text);
+      }
+
+      .prompt-anatomy-legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        padding: 16px;
+        background: var(--pa-legend-bg);
+        border-radius: 8px;
+      }
+
+      .prompt-legend-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+      }
+
+      .prompt-legend-badge {
+        padding: 4px 8px;
+        border-radius: 4px;
+        border: 1px solid;
+        font-weight: 500;
+        white-space: nowrap;
+      }
+
+      .prompt-legend-badge-what {
+        background: var(--pa-what-bg);
+        border-color: var(--pa-what-border);
+        color: var(--pa-what-text);
+      }
+
+      .prompt-legend-badge-look {
+        background: var(--pa-look-bg);
+        border-color: var(--pa-look-border);
+        color: var(--pa-look-text);
+      }
+
+      .prompt-legend-badge-work {
+        background: var(--pa-work-bg);
+        border-color: var(--pa-work-border);
+        color: var(--pa-work-text);
+      }
+
+      .prompt-legend-text {
+        color: var(--pa-text);
+      }
+
+      @media screen and (max-width: 640px) {
+        .prompt-anatomy-container {
+          padding: 16px;
+        }
+
+        .prompt-anatomy-text {
+          font-size: 14px;
+        }
+
+        .prompt-anatomy-legend {
+          flex-direction: column;
+          gap: 12px;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+  return <div className="prompt-anatomy">
+      <div className="prompt-anatomy-container">
+        <div className="prompt-anatomy-text">
+          <span className="prompt-highlight prompt-highlight-what">Build a realistic 16-key piano</span>
+          {' '}with{' '}
+          <span className="prompt-highlight prompt-highlight-look">proper white and black key layout that looks exactly like a real piano</span>
+          .{' '}
+          <span className="prompt-highlight prompt-highlight-work">Each key should press down with realistic depth animation when clicked and play the correct note</span>.
+        </div>
+
+        <div className="prompt-anatomy-legend">
+          <div className="prompt-legend-item">
+            <span className="prompt-legend-badge prompt-legend-badge-what">What to build</span>
+            <span className="prompt-legend-text">The main thing you want</span>
+          </div>
+          <div className="prompt-legend-item">
+            <span className="prompt-legend-badge prompt-legend-badge-look">How it looks</span>
+            <span className="prompt-legend-text">Visual details and design</span>
+          </div>
+          <div className="prompt-legend-item">
+            <span className="prompt-legend-badge prompt-legend-badge-work">How it works</span>
+            <span className="prompt-legend-text">Interactions and behavior</span>
+          </div>
+        </div>
+      </div>
+    </div>;
+};
+
+export const AgentInput = ({defaultPrompt = ""}) => {
+  if (typeof document !== 'undefined' && !window.LZString) {
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.5.0/lz-string.min.js';
+    document.head.appendChild(script);
+  }
+  const inputId = 'agent-input-textarea';
+  const appPlaceholder = "Make a software application that…";
+  const designPlaceholder = "Design me a website, slide deck, interactive prototype...";
+  if (typeof document !== 'undefined' && !document.getElementById('agent-input-styles')) {
+    const style = document.createElement('style');
+    style.id = 'agent-input-styles';
+    style.textContent = `
+      /* Theme variables - light mode */
+      #agent-input-container {
+        --ai-surface-bg: #FFFFFF;
+        --ai-surface-higher: #F5F5F5;
+        --ai-border-default: #E4E4E4;
+        --ai-border-regular: #EBEBEB;
+        --ai-text-secondary: #5C5C5C;
+        --ai-text-tertiary: #858585;
+        --ai-text-primary: #1D1D1D;
+        --ai-button-bg-disabled: #F5F5F5;
+        --ai-button-text-disabled: #858585;
+        --ai-button-bg-active: #0079F2;
+        --ai-button-text-active: #FFFFFF;
+        --ai-inactive-hover-bg: #EBEBEB;
+        --ai-shadow: 0 2px 6px #00000005;
+      }
+      
+      /* Theme variables - dark mode */
+      .dark #agent-input-container,
+      html.dark #agent-input-container,
+      [data-theme="dark"] #agent-input-container {
+        --ai-surface-bg: #1A1C25;
+        --ai-surface-higher: #24262F;
+        --ai-border-default: #3A3D47;
+        --ai-border-regular: #2E3039;
+        --ai-text-secondary: #E0E0E0;
+        --ai-text-tertiary: #9CA3AF;
+        --ai-text-primary: #F5F5F5;
+        --ai-button-bg-disabled: #24262F;
+        --ai-button-text-disabled: #6B7280;
+        --ai-inactive-hover-bg: #2E3039;
+        --ai-shadow: 0 2px 6px #00000020;
+      }
+      
+      /* Entry animation */
+      @keyframes agent-input-fade-in-up {
+        from { transform: translateY(10px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+      
+      /* Tab states - active */
+      #agent-input-container a[data-active="true"] {
+        color: var(--ai-text-secondary) !important;
+        background: var(--ai-surface-bg) !important;
+        border-color: var(--ai-border-default) !important;
+        z-index: 2;
+        transform: none;
+      }
+      #agent-input-container a[data-active="true"] .tab-curve-fill { fill: var(--ai-surface-bg); }
+      #agent-input-container a[data-active="true"] .tab-curve-stroke { stroke: var(--ai-border-default); }
+      #agent-input-container a[data-active="true"] .border-cover { display: block; background: var(--ai-surface-bg); }
+      
+      /* Tab states - inactive */
+      #agent-input-container a[data-active="false"] {
+        color: var(--ai-text-tertiary) !important;
+        background: var(--ai-surface-higher) !important;
+        border-color: var(--ai-border-regular) !important;
+        z-index: 1;
+        transform: translateY(2px);
+        transition: 0.15s transform;
+      }
+      #agent-input-container a[data-active="false"] .tab-curve-fill { fill: var(--ai-surface-higher); }
+      #agent-input-container a[data-active="false"] .tab-curve-stroke { stroke: var(--ai-border-regular); }
+      #agent-input-container a[data-active="false"] .border-cover { display: none; }
+      
+      /* Hover state - triggered by hovering inner container OR active tab */
+      #agent-input-container:has(#agent-input-inner:hover) #agent-input-inner,
+      #agent-input-container:has(a[data-active="true"]:hover) #agent-input-inner {
+        border-color: #85C7FF !important;
+      }
+      #agent-input-container:has(#agent-input-inner:hover) a[data-active="true"],
+      #agent-input-container:has(a[data-active="true"]:hover) a[data-active="true"] {
+        border-color: #85C7FF !important;
+      }
+      #agent-input-container:has(#agent-input-inner:hover) a[data-active="true"] .tab-curve-stroke,
+      #agent-input-container:has(a[data-active="true"]:hover) a[data-active="true"] .tab-curve-stroke {
+        stroke: #85C7FF !important;
+      }
+      
+      /* Focus state */
+      #agent-input-container:has(#agent-input-inner:focus-within) #agent-input-inner,
+      #agent-input-container:has(#agent-input-inner:focus-within) a[data-active="true"] {
+        border-color: #0079F2 !important;
+      }
+      #agent-input-container:has(#agent-input-inner:focus-within) a[data-active="true"] .tab-curve-stroke {
+        stroke: #0079F2 !important;
+      }
+      
+      /* Inactive tab hover */
+      @media (hover: hover) {
+        #agent-input-container a[data-active="false"]:hover {
+          background: var(--ai-inactive-hover-bg) !important;
+          color: var(--ai-text-secondary) !important;
+          transform: translateY(0) !important;
+          border-color: var(--ai-border-default) !important;
+        }
+        #agent-input-container a[data-active="false"]:hover .tab-curve-stroke {
+          stroke: var(--ai-border-default) !important;
+        }
+      }
+      
+      /* Responsive - narrow screens */
+      @media screen and (max-width: 420px) {
+        #agent-input-container .tab-curve { display: none !important; }
+        #agent-input-container #agent-input-tabs { padding-left: 0 !important; padding-right: 0 !important; }
+        #agent-input-container #agent-input-tabs a { border-radius: 8px 8px 0 0 !important; }
+        #agent-input-container #agent-input-tabs a:last-child { margin-right: 0 !important; }
+        #agent-input-container #agent-input-inner { border-radius: 0 0 8px 8px !important; }
+        #agent-input-container .border-cover { left: 0 !important; right: 0 !important; }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+  const getPromptValue = () => document.getElementById(inputId)?.value?.trim() || '';
+  const getLink = () => {
+    if (typeof document === 'undefined' || !window.LZString) return '';
+    const prompt = getPromptValue();
+    if (!prompt) return '';
+    const stack = document.getElementById('agent-input-container')?.dataset?.stack || 'Build';
+    const encoded = window.LZString.compressToEncodedURIComponent(prompt);
+    const utm = 'utm_source=replit-docs&utm_medium=docs&utm_campaign=docs-intro-agent-input&utm_content=homepage-prompt-box';
+    return `https://replit.com/?stack=${stack}&prompt=${encoded}&referrer=replit-docs&${utm}`;
+  };
+  const updateButtonState = () => {
+    const btn = document.getElementById('agent-input-start-btn');
+    if (!btn) return;
+    const hasText = getPromptValue().length > 0;
+    btn.style.background = `var(--ai-button-bg-${hasText ? 'active' : 'disabled'})`;
+    btn.style.color = `var(--ai-button-text-${hasText ? 'active' : 'disabled'})`;
+    btn.style.cursor = hasText ? 'pointer' : 'not-allowed';
+  };
+  const handleTabClick = (e, tabName) => {
+    e.preventDefault();
+    const container = document.getElementById('agent-input-container');
+    const textarea = document.getElementById(inputId);
+    if (!container) return;
+    const isApp = tabName === 'App';
+    container.dataset.stack = isApp ? 'Build' : 'Design';
+    container.querySelector('#agent-input-tab-app').dataset.active = isApp ? 'true' : 'false';
+    container.querySelector('#agent-input-tab-design').dataset.active = isApp ? 'false' : 'true';
+    if (textarea) textarea.placeholder = isApp ? appPlaceholder : designPlaceholder;
+  };
+  const handleStartClick = e => {
+    e.preventDefault();
+    const link = getLink();
+    if (link) window.open(link, '_blank');
+  };
+  const TabCurve = ({tabId, side}) => {
+    const clipId = `clip-${tabId}-${side}`;
+    return <svg className="tab-curve" width="9" height="9" viewBox="0 0 9 9" fill="none" style={{
+      position: 'absolute',
+      [side]: '-8px',
+      bottom: '-1px',
+      pointerEvents: 'none',
+      transform: side === 'right' ? 'scaleX(-1)' : 'none',
+      overflow: 'hidden'
+    }}>
+        <defs><clipPath id={clipId}><rect width="9" height="9" /></clipPath></defs>
+        <g clipPath={`url(#${clipId})`}>
+          <path className="tab-curve-fill" d="M9 9H-2V8H0C4.41828 8 8 4.41828 8 0V-2H9V9Z" />
+          <rect className="tab-curve-stroke" x="-9.5" y="-9.5" width="17" height="17" rx="7.5" fill="none" strokeWidth="1" />
+        </g>
+      </svg>;
+  };
+  const Tab = ({id, name, icon, isActive}) => <a href="#" id={id} data-active={isActive ? "true" : "false"} onClick={e => handleTabClick(e, name)} style={{
+    display: 'flex',
+    flex: 1,
+    position: 'relative',
+    cursor: 'pointer',
+    boxSizing: 'border-box',
+    marginRight: '-1px',
+    borderTop: '1px solid',
+    borderLeft: '1px solid',
+    borderRight: '1px solid',
+    borderBottom: 'none',
+    borderRadius: '8px 8px 0 0',
+    height: '37px',
+    textDecoration: 'none',
+    userSelect: 'none',
+    overflow: 'visible'
+  }}>
+      <TabCurve tabId={id} side="left" />
+      <TabCurve tabId={id} side="right" />
+      <span className="border-cover" style={{
+    position: 'absolute',
+    right: 0,
+    bottom: '-1px',
+    left: 0,
+    height: '2px',
+    zIndex: 3
+  }} />
+      <span style={{
+    display: 'flex',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: '4px',
+    zIndex: 1,
+    padding: '8px 12px',
+    fontSize: '14px'
+  }}>
+        {icon}
+        <span>{name}</span>
+      </span>
+    </a>;
+  const AppIcon = <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path fillRule="evenodd" d="M12 1.252c.483 0 .957.127 1.375.368l-.001.001 6.998 3.998.003.001.153.096a2.752 2.752 0 0 1 1.222 2.283v8.002a2.75 2.75 0 0 1-1.375 2.379h-.003l-6.998 3.999h.001a2.75 2.75 0 0 1-1.294.366.75.75 0 0 1-.163 0 2.748 2.748 0 0 1-1.293-.365l-6.997-4h-.003A2.751 2.751 0 0 1 2.25 16V7.999l.006-.18A2.75 2.75 0 0 1 3.625 5.62h.003l6.997-3.999c.418-.241.892-.37 1.375-.37ZM3.75 15.999l.01.163a1.25 1.25 0 0 0 .615.918l6.875 3.929v-8.575l-7.5-4.31v7.875Zm9-3.565v8.575l6.875-3.929A1.25 1.25 0 0 0 20.25 16V8.123l-7.5 4.31ZM12 2.752c-.22 0-.435.057-.625.167l-.003.002L4.52 6.836l7.479 4.299 7.48-4.3-6.851-3.914-.003-.002A1.25 1.25 0 0 0 12 2.752Z" clipRule="evenodd" /></svg>;
+  const DesignIcon = <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21.25 4.123a1.374 1.374 0 0 0-2.343-.97L12.06 9.999 14 11.94l6.848-6.845c.257-.257.402-.607.402-.97ZM8.37 13.688c.418.205.803.474 1.135.806.332.332.602.716.807 1.132L12.939 13l-1.94-1.94-2.629 2.629ZM3.75 17.5c0 .856-.326 1.68-.91 2.305l-.018.018a.252.252 0 0 0 .038.385.25.25 0 0 0 .138.042H6.5a2.75 2.75 0 1 0-2.75-2.75Zm19-13.377c0 .762-.303 1.493-.842 2.032l-11.163 11.16A4.248 4.248 0 0 1 6.5 21.75H3a1.75 1.75 0 0 1-1.256-2.97c.325-.347.506-.805.506-1.28a4.251 4.251 0 0 1 4.432-4.246L17.846 2.092a2.873 2.873 0 0 1 4.904 2.031Z" /></svg>;
+  const ArrowIcon = <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path fillRule="evenodd" d="M19.53 11.47a.75.75 0 0 1 0 1.06l-7 7a.75.75 0 1 1-1.06-1.06l5.72-5.72H5a.75.75 0 0 1 0-1.5h12.19l-5.72-5.72a.75.75 0 0 1 1.06-1.06l7 7Z" clipRule="evenodd" /></svg>;
+  if (typeof document !== 'undefined' && defaultPrompt) {
+    setTimeout(() => {
+      updateButtonState();
+    }, 0);
+  }
+  return <div id="agent-input-container" data-stack="Build" style={{
+    fontFamily: "'IBM Plex Sans', sans-serif",
+    width: '100%',
+    maxWidth: '650px',
+    minWidth: '320px',
+    alignSelf: 'center',
+    opacity: 0,
+    animation: 'agent-input-fade-in-up 300ms ease-out forwards'
+  }}>
+      <div style={{
+    display: 'flex',
+    flexDirection: 'column'
+  }}>
+        <div id="agent-input-tabs" style={{
+    display: 'flex',
+    position: 'relative',
+    alignSelf: 'center',
+    marginBottom: '-1px',
+    padding: '0 37px',
+    width: '100%',
+    boxSizing: 'border-box',
+    overflow: 'visible'
+  }}>
+          <Tab id="agent-input-tab-app" name="App" icon={AppIcon} isActive={true} />
+          <Tab id="agent-input-tab-design" name="Design" icon={DesignIcon} isActive={false} />
+        </div>
+        <div id="agent-input-inner" style={{
+    position: 'relative',
+    zIndex: 1,
+    borderRadius: '8px',
+    border: '1px solid var(--ai-border-default)',
+    background: 'var(--ai-surface-bg)',
+    transition: 'border-color 120ms ease-out'
+  }}>
+          <div style={{
+    display: 'grid',
+    gridTemplate: '1fr / 1fr',
+    position: 'relative',
+    boxShadow: 'var(--ai-shadow)'
+  }}>
+            <div style={{
+    gridArea: '1 / 1',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '4px',
+    padding: '12px'
+  }}>
+              <div style={{
+    display: 'flex',
+    flexGrow: 1,
+    maxHeight: '300px',
+    overflow: 'auto'
+  }}>
+                <textarea id={inputId} placeholder={appPlaceholder} defaultValue={defaultPrompt} onInput={updateButtonState} style={{
+    width: '100%',
+    minHeight: '80px',
+    padding: '5px 6px',
+    border: 'none',
+    outline: 'none',
+    resize: 'none',
+    fontSize: '14px',
+    lineHeight: '1.5',
+    color: 'var(--ai-text-primary)',
+    background: 'transparent',
+    fontFamily: 'inherit',
+    boxSizing: 'border-box',
+    flexGrow: 1
+  }} />
+              </div>
+              <div style={{
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+    height: '32px'
+  }}>
+                <a href="#" id="agent-input-start-btn" onClick={handleStartClick} style={{
+    display: 'flex',
+    alignItems: 'center',
+    gap: '6px',
+    padding: '0 14px',
+    height: '32px',
+    fontSize: '14px',
+    border: 'none',
+    borderRadius: '8px',
+    transition: 'all 120ms ease-out',
+    color: 'var(--ai-button-text-disabled)',
+    background: 'var(--ai-button-bg-disabled)',
+    cursor: 'not-allowed',
+    textDecoration: 'none'
+  }}>
+                  <span>Start</span>
+                  {ArrowIcon}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>;
+};
 
 export const AiPrompt = ({children}) => {
   return <CodeBlock className="relative block font-sans whitespace-pre-wrap break-words">
@@ -12,184 +522,84 @@ export const AiPrompt = ({children}) => {
     </CodeBlock>;
 };
 
-## Create your app using AI
+⏰ *Estimated time: 5 minutes*
 
-⏰ *Estimated time: 7 minutes*
-
-Learn how to create your Replit App using the **Agent** and **Assistant** AI tools in this guide.
-
-<CardGroup cols={2}>
-  <Card title="Agent" icon="robot">
-    Specializes in generating new projects and building complex features.
-  </Card>
-
-  <Card title="Assistant" icon="wand-magic-sparkles">
-    Specializes in describing your code, making quick fixes, and adding new features.
-  </Card>
-</CardGroup>
-
-Follow the steps below to build a polished business website. Use Replit's
-AI features to create an app, and refine it until it matches your desired design.
+This guide will help you create your first app in just a few minutes, no coding experience required. You'll use Agent to build an interactive piano from a simple prompt.
 
 <Frame>
-  <img src="https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_complete.png?fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=c9f8c70074726fcaa44932037d722af6" width="500" alt="image of the Completed App" data-og-width="768" data-og-height="525" data-path="images/getting-started/quickstart_ai_complete.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_complete.png?w=280&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=2d9e1c79c775c2e02e8bc4c4d4b1de6e 280w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_complete.png?w=560&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=ab822e9fcb92dc7c6308cedd5ae68a36 560w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_complete.png?w=840&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=392e9033727e4679dd1df2ce3ecfa9d8 840w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_complete.png?w=1100&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=5be58a7f01703a8d7e201cc6d554c9c4 1100w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_complete.png?w=1650&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=3a8973fa47ba7f085548dad9fdc38e45 1650w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_complete.png?w=2500&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=c8b10d174fc0c263ebf0569e2135ebb5 2500w" />
+  <img src="https://mintcdn.com/replit/CKgy3zbnPnUlDukQ/images/getting-started/quickstart_piano_complete.png?fit=max&auto=format&n=CKgy3zbnPnUlDukQ&q=85&s=76dbd6c44f768c4cb88bd7f1ee51699c" width="500" alt="Interactive piano app with white and black keys" data-og-width="1820" data-og-height="1024" data-path="images/getting-started/quickstart_piano_complete.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/CKgy3zbnPnUlDukQ/images/getting-started/quickstart_piano_complete.png?w=280&fit=max&auto=format&n=CKgy3zbnPnUlDukQ&q=85&s=c6fa3a98918b58530888496d523995a0 280w, https://mintcdn.com/replit/CKgy3zbnPnUlDukQ/images/getting-started/quickstart_piano_complete.png?w=560&fit=max&auto=format&n=CKgy3zbnPnUlDukQ&q=85&s=a63df97df109833b6a781e020e673666 560w, https://mintcdn.com/replit/CKgy3zbnPnUlDukQ/images/getting-started/quickstart_piano_complete.png?w=840&fit=max&auto=format&n=CKgy3zbnPnUlDukQ&q=85&s=8c22f8c1d9c852a10daaeca78b647741 840w, https://mintcdn.com/replit/CKgy3zbnPnUlDukQ/images/getting-started/quickstart_piano_complete.png?w=1100&fit=max&auto=format&n=CKgy3zbnPnUlDukQ&q=85&s=bac9b18817e82741c2c344a7cc6b9d73 1100w, https://mintcdn.com/replit/CKgy3zbnPnUlDukQ/images/getting-started/quickstart_piano_complete.png?w=1650&fit=max&auto=format&n=CKgy3zbnPnUlDukQ&q=85&s=85bf2db7ad259dcad4a892f5c26d4d51 1650w, https://mintcdn.com/replit/CKgy3zbnPnUlDukQ/images/getting-started/quickstart_piano_complete.png?w=2500&fit=max&auto=format&n=CKgy3zbnPnUlDukQ&q=85&s=de405cc4db69ccaca3d0e4c4fadf1b42 2500w" />
 </Frame>
 
-<Steps>
-  <Step title="Create an App">
-    Navigate to the Home screen and select **Create App**:
+## Before you begin
 
-    <img src="https://mintcdn.com/replit/0UCOQvZyQpUEM03B/images/shared/buttons/create_app.png?fit=max&auto=format&n=0UCOQvZyQpUEM03B&q=85&s=705d40879ca0ed04e8cc315c1e34649d" width="250" alt="image of the Create App button" data-og-width="448" data-og-height="66" data-path="images/shared/buttons/create_app.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/0UCOQvZyQpUEM03B/images/shared/buttons/create_app.png?w=280&fit=max&auto=format&n=0UCOQvZyQpUEM03B&q=85&s=5bcc3b3ab117756f9eb1f3689e805b28 280w, https://mintcdn.com/replit/0UCOQvZyQpUEM03B/images/shared/buttons/create_app.png?w=560&fit=max&auto=format&n=0UCOQvZyQpUEM03B&q=85&s=16c6ebca5e404c320629982c94b0b7b0 560w, https://mintcdn.com/replit/0UCOQvZyQpUEM03B/images/shared/buttons/create_app.png?w=840&fit=max&auto=format&n=0UCOQvZyQpUEM03B&q=85&s=91c5acdfbe73b75b10bc0b187cae01e5 840w, https://mintcdn.com/replit/0UCOQvZyQpUEM03B/images/shared/buttons/create_app.png?w=1100&fit=max&auto=format&n=0UCOQvZyQpUEM03B&q=85&s=8a98e12c8c472ce59126459419e8653f 1100w, https://mintcdn.com/replit/0UCOQvZyQpUEM03B/images/shared/buttons/create_app.png?w=1650&fit=max&auto=format&n=0UCOQvZyQpUEM03B&q=85&s=aa9af47d3deb715adc7ea76997991841 1650w, https://mintcdn.com/replit/0UCOQvZyQpUEM03B/images/shared/buttons/create_app.png?w=2500&fit=max&auto=format&n=0UCOQvZyQpUEM03B&q=85&s=2c93fdb671fbcf3d6291d84f19819d30 2500w" />
+You'll need:
 
-    Select the **Create with Replit Agent** tab as shown in the following image:
+* A free Replit account ([sign up at replit.com](https://replit.com))
+* A modern web browser (Chrome, Firefox, Safari, or Edge)
 
-    <Frame>
-      <img src="https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_agent_tab.png?fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=2a090cd16e6106b66d7d1d99cff7c2e5" alt="image of the Create with Replit Agent tab" data-og-width="593" width="593" data-og-height="290" height="290" data-path="images/getting-started/quickstart_ai_agent_tab.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_agent_tab.png?w=280&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=f94588d4e35cdd8fa29f5d9682ee536d 280w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_agent_tab.png?w=560&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=c5fc185a25d44275c591833ecaebd49b 560w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_agent_tab.png?w=840&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=1eb897115040ae9b02cfe511657b8185 840w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_agent_tab.png?w=1100&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=cb094b1cf650bf9f1fa71be8c2122b25 1100w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_agent_tab.png?w=1650&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=b5f1afd199d576bae30c4b9f28135ee6 1650w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_agent_tab.png?w=2500&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=f2bd31622c31f662f1c3b3efd3d4db13 2500w" />
-    </Frame>
-  </Step>
+<Note>This tutorial uses Agent, which is included in the free Starter plan with daily credits. No credit card required.</Note>
 
-  <Step title="Craft your prompt">
-    To ask Agent to create your Replit App, enter your **prompt** in the text area.
-    A prompt is a description of the task you want AI to perform.
-
-    You can include text and file attachments in your prompt. Follow these steps to submit both in your prompt:
-
-    1. Copy the following image:
-       <Frame>
-         <img src="https://mintcdn.com/replit/rBzGsKp9NcWJ7sib/images/getting-started/saas_website.png?fit=max&auto=format&n=rBzGsKp9NcWJ7sib&q=85&s=2067b8c5135a6721522ae743de44000c" alt="image of a SaaS business website" data-og-width="2466" width="2466" data-og-height="1482" height="1482" data-path="images/getting-started/saas_website.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/rBzGsKp9NcWJ7sib/images/getting-started/saas_website.png?w=280&fit=max&auto=format&n=rBzGsKp9NcWJ7sib&q=85&s=ad8d46c262cf535875f0321fe9ca1734 280w, https://mintcdn.com/replit/rBzGsKp9NcWJ7sib/images/getting-started/saas_website.png?w=560&fit=max&auto=format&n=rBzGsKp9NcWJ7sib&q=85&s=b36180ace49d7c0da958799b7e6b811a 560w, https://mintcdn.com/replit/rBzGsKp9NcWJ7sib/images/getting-started/saas_website.png?w=840&fit=max&auto=format&n=rBzGsKp9NcWJ7sib&q=85&s=4b055c0827ed387ac7a0e0e1cc55b95f 840w, https://mintcdn.com/replit/rBzGsKp9NcWJ7sib/images/getting-started/saas_website.png?w=1100&fit=max&auto=format&n=rBzGsKp9NcWJ7sib&q=85&s=be99cdf4897bc649b3e3f97ba613fdfc 1100w, https://mintcdn.com/replit/rBzGsKp9NcWJ7sib/images/getting-started/saas_website.png?w=1650&fit=max&auto=format&n=rBzGsKp9NcWJ7sib&q=85&s=a8ae5bb9fb2ac3d3c575a62ad048eb15 1650w, https://mintcdn.com/replit/rBzGsKp9NcWJ7sib/images/getting-started/saas_website.png?w=2500&fit=max&auto=format&n=rBzGsKp9NcWJ7sib&q=85&s=dd80df9d5f9f9b11ae9a266d114da714 2500w" />
-       </Frame>
-    2. Paste the image into Agent text area.
-    3. Enter the following prompt in the text area:
-       <AiPrompt>
-         Build a website for a SaaS B2B website that looks like the attached file.
-       </AiPrompt>
-    4. Select **Start building**.
-  </Step>
-
-  <Step title="Review and approve Agent's plan">
-    After you submit your prompt, Agent sets up your Replit App and provides updates on its status in real time.
-    You can monitor and view the history in the **Progress** tab.
-
-    When Agent finishes setup, it prompts you with what it intends to build and options to include additional features as shown in the following image:
-
-    <Frame>
-      <img src="https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_agent_approve.png?fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=e0e12411ed9022c097f53675f38cf08b" alt="image of Agent's approve dialog" data-og-width="566" width="566" data-og-height="360" height="360" data-path="images/getting-started/quickstart_ai_agent_approve.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_agent_approve.png?w=280&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=2dbe7e3c85bfd3f66b2035e6fe32fcaf 280w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_agent_approve.png?w=560&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=a32d797cca0bdd4bbbfeb07d3f5bff7d 560w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_agent_approve.png?w=840&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=b89b8c97b50dfb2c78e3f3f472a16a0b 840w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_agent_approve.png?w=1100&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=7542ea7f3919310aafc2daf71f7411aa 1100w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_agent_approve.png?w=1650&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=5724aa246549a9266eb8687724830c06 1650w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_agent_approve.png?w=2500&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=9c534d6330106dc83b46075af6b82ebb 2500w" />
-    </Frame>
-
-    Leave the additional options unchecked and select **Approve plan & start**.
-  </Step>
-
-  <Step title="Test the app">
-    After Agent builds your app, navigate to the **Preview** tab, where you can interact with the website.
-    The website should resemble the following image:
-
-    <Note>The generated website might differ since Agent can return different results for the same prompt.</Note>
-
-    <Frame>
-      <img src="https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_agent_generated_page.png?fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=a43537d5d2f2fd7de129ad7d89832bd6" alt="image of the Preview tool showing the website created by Agent" data-og-width="850" width="850" data-og-height="861" height="861" data-path="images/getting-started/quickstart_ai_agent_generated_page.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_agent_generated_page.png?w=280&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=d8e31458f5ce3d036ef117fe4e05aac5 280w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_agent_generated_page.png?w=560&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=92e6f7c86b9b399379ff4935cbc05ceb 560w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_agent_generated_page.png?w=840&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=b9fc2750ed6a19bf20618c703dcf5f79 840w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_agent_generated_page.png?w=1100&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=910a14b12a65320e49033d73c47cccac 1100w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_agent_generated_page.png?w=1650&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=690c04f3ede8132b9db0e5c8d3978bb1 1650w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_agent_generated_page.png?w=2500&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=507c2b8ab056a5130778466d25ff5b32 2500w" />
-    </Frame>
-
-    Since the prompt only includes information about the landing page, Agent might omit content creation for the links on the page.
-
-    The next step demonstrates how to use Assistant to add those pages.
-  </Step>
-
-  <Step title="Improve the app using the Assistant">
-    Navigate to the **Assistant** tab, which should resemble the following image:
-
-    <Frame>
-      <img src="https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_assistant_new.png?fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=1cff00bfb352263664b4a2ecf5a5c8bb" alt="image of the Assistant tab" data-og-width="522" width="522" data-og-height="664" height="664" data-path="images/getting-started/quickstart_ai_assistant_new.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_assistant_new.png?w=280&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=f894896d7e260e1722888770810bca88 280w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_assistant_new.png?w=560&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=501d1f532ed03e5fe0c2d47a8f680e85 560w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_assistant_new.png?w=840&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=5691689aeecac0f6c0f840a9948aa3eb 840w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_assistant_new.png?w=1100&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=39fa58d0cc324cab2957ca88b611e8c6 1100w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_assistant_new.png?w=1650&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=2a8d1ed962680558721f893838f1d0da 1650w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_assistant_new.png?w=2500&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=2f5934835636997f5ebbdc76dfb2af8c 2500w" />
-    </Frame>
-
-    Enter the following prompt in the text area and submit it:
-
-    <AiPrompt>
-      Create pages for each of the links in the navigation bar.
-    </AiPrompt>
-
-    You can select **Preview code changes** to view the Assistant's planned changes.
-
-    Select **Apply All** and confirm your selection if prompted.
-
-    <Note>
-      Assistant and Agent, which rely on popular AI models, occasionally produce results that don't fulfill your request.
-      If you encounter issues, follow up with a prompt that describes the error messages or the incorrect behavior.
-      Alternatively, you can use the Rollback feature to restore your Replit App to a previously known working state.
-    </Note>
-
-    At this point, you should have a navigable website that includes sample text and functional links.
-  </Step>
-</Steps>
-
-## Explore
-
-Try the tasks in the following sections to build your knowledge of Replit.
-
-### Undo an Agent change
-
-Agent lets you perform a rollback, a feature that reverts your app to a previous checkpoint, discarding all changes made after that point.
-Follow these steps to revert the app to a specific checkpoint:
-
-<Warning>
-  When you use the rollback feature, you restore the Replit App to a previous state. This action removes all changes made after that point. This includes edits by you or AI-powered features and AI conversation context. Database data can also be restored if you select "Restore databases" under "Additional rollback options." The rollback affects your entire development environment.
-</Warning>
-
-For detailed information about checkpoints and rollbacks, see [Checkpoints and Rollbacks](/replitai/checkpoints-and-rollbacks).
+## Build your piano
 
 <Steps>
-  <Step title="Locate the checkpoint">
-    Navigate to the **Agent** tab and locate the checkpoint you want to restore.
+  <Step title="Start with an idea">
+    **Agent** is Replit's AI that builds apps from natural language. You describe what you want, and Agent writes the code, designs the interface, and creates a working app.
 
-    Select **Rollback to here** to undo all changes after that point as shown in the following image:
+    To communicate with Agent, you write a **prompt** - a text instruction describing what you want to build. Be specific about what you want to build, how you want it to look, and how it will work.
+
+    <PromptAnatomy />
+  </Step>
+
+  <Step title="Start building">
+    Select **Start** below to open [Replit](https://replit.com) and start building.
+
+    <AgentInput defaultPrompt="Build a realistic 16-key piano with proper white and black key layout that looks exactly like a real piano. Each key should press down with realistic depth animation when clicked and play the correct note." />
+  </Step>
+
+  <Step title="Agent builds your piano">
+    Agent will set up your app and start building. You'll see real-time updates in the **Progress** tab as Agent creates your piano.
 
     <Frame>
-      <img src="https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_agent_rollback.png?fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=f13073a05de87b7898a5b14b5a03e51f" alt="image of Rollback to here button in the Agent tab" data-og-width="539" width="539" data-og-height="110" height="110" data-path="images/getting-started/quickstart_ai_agent_rollback.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_agent_rollback.png?w=280&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=3a41d3ffa64d399cfc9547e68e62ee06 280w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_agent_rollback.png?w=560&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=1577e2dfafda016ab654ad8d0ae43168 560w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_agent_rollback.png?w=840&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=b8ed596c7d844a7abfb3e21bd43ac045 840w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_agent_rollback.png?w=1100&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=1aa5af329fa8fd153717404ee5dea20f 1100w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_agent_rollback.png?w=1650&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=fb0fd28b491ec1d1f27067801a747f62 1650w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_agent_rollback.png?w=2500&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=022131732e113df9f62b26c300d76741 2500w" />
+      <img src="https://mintcdn.com/replit/CKgy3zbnPnUlDukQ/images/getting-started/quickstart_piano_building.png?fit=max&auto=format&n=CKgy3zbnPnUlDukQ&q=85&s=14cb55577a07158f149fe2c3cc8605ed" alt="Progress tab showing Agent building the piano in real-time" data-og-width="1230" width="1230" data-og-height="366" height="366" data-path="images/getting-started/quickstart_piano_building.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/CKgy3zbnPnUlDukQ/images/getting-started/quickstart_piano_building.png?w=280&fit=max&auto=format&n=CKgy3zbnPnUlDukQ&q=85&s=53a33bd2be76297319f28e11d84fa181 280w, https://mintcdn.com/replit/CKgy3zbnPnUlDukQ/images/getting-started/quickstart_piano_building.png?w=560&fit=max&auto=format&n=CKgy3zbnPnUlDukQ&q=85&s=f5048ddbcc69be51d0f48ca331156c6a 560w, https://mintcdn.com/replit/CKgy3zbnPnUlDukQ/images/getting-started/quickstart_piano_building.png?w=840&fit=max&auto=format&n=CKgy3zbnPnUlDukQ&q=85&s=25c2b1e5377bf0a9e4870485e715adf5 840w, https://mintcdn.com/replit/CKgy3zbnPnUlDukQ/images/getting-started/quickstart_piano_building.png?w=1100&fit=max&auto=format&n=CKgy3zbnPnUlDukQ&q=85&s=712d63b27a40dfc96a9abea7be191ee4 1100w, https://mintcdn.com/replit/CKgy3zbnPnUlDukQ/images/getting-started/quickstart_piano_building.png?w=1650&fit=max&auto=format&n=CKgy3zbnPnUlDukQ&q=85&s=8d304873c15c9576bd12bfc427c3a971 1650w, https://mintcdn.com/replit/CKgy3zbnPnUlDukQ/images/getting-started/quickstart_piano_building.png?w=2500&fit=max&auto=format&n=CKgy3zbnPnUlDukQ&q=85&s=5bca0efe01e0d163d4c42fa0d7f102be 2500w" />
     </Frame>
+
+    When Agent finishes, it will show you what it built. The process takes about five minutes.
   </Step>
 
-  <Step title="Verify the rollback">
-    After Agent completes your request, check that the **Agent** tab displays "Rollback completed".
+  <Step title="Play your piano">
+    Once Agent completes, navigate to the **Preview** tab to see and interact with your piano.
 
-    Confirm that your app functionality matches its state before the checkpoint.
-  </Step>
-</Steps>
-
-### Undo an Assistant change
-
-Assistant lets you perform a rollback, a feature that reverts your app to a previous checkpoint, discarding all changes made after that point.
-Follow these steps to revert the app to a specific checkpoint:
-
-<Warning>
-  When you use the rollback feature, you restore the Replit App to a previous state. This action removes all changes made after that point. This includes edits by you or AI-powered features and AI conversation context. Database data can also be restored if you select "Restore databases" under "Additional rollback options." The rollback affects your entire development environment.
-</Warning>
-
-<Steps>
-  <Step title="Locate the checkpoint">
-    Navigate to the **Assistant** tab and locate the checkpoint you want to restore.
-
-    Select **Undo these changes**\* to revert all changes from the checkpoint after that point in time as shown in the following image:
+    Click the keys to hear them play and see the realistic press-down animation.
 
     <Frame>
-      <img src="https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_assistant_rollback.png?fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=3c2572c20df0c108d45a4cdbfbf7dd06" alt="image of Undo these changes button in the Assistant tab" data-og-width="490" width="490" data-og-height="99" height="99" data-path="images/getting-started/quickstart_ai_assistant_rollback.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_assistant_rollback.png?w=280&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=f5747e68266869e32d93a34cb845c91a 280w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_assistant_rollback.png?w=560&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=e1ea9058c05a84dc92edb2e80de73835 560w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_assistant_rollback.png?w=840&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=7a694298484fa76ecbe0d399c9f99e17 840w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_assistant_rollback.png?w=1100&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=a97fe57000d75204a8a575873c6ec914 1100w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_assistant_rollback.png?w=1650&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=39c7ba2e6cc3a90296e679447ce531a3 1650w, https://mintcdn.com/replit/h9U_mFqw8XzNXJwv/images/getting-started/quickstart_ai_assistant_rollback.png?w=2500&fit=max&auto=format&n=h9U_mFqw8XzNXJwv&q=85&s=72c3c124ace3d1884eaf59dc5bcf2dc7 2500w" />
+      <video autoPlay muted loop playsInline src="https://cdn.replit.com/sanity/quickstart-piano-demo.mp4" />
     </Frame>
-  </Step>
 
-  <Step title="Verify the rollback">
-    After Assistant completes your request, the **Undo these changes** button label should be replaced with **Restore checkpoint**.
+    <Note>Your piano design might look slightly different since Agent can generate varied results from the same prompt.</Note>
 
-    Confirm that your app functionality matches its state before the checkpoint.
+    ### Try playing a tune
+
+    Use the note names shown on your piano to play "Mary Had a Little Lamb":
+
+    ```
+    E D C D E E E
+    D D D
+    E G G
+    E D C D E E E D D E D C
+    ```
+
+    Click the keys labeled with these note names to play the tune.
+
+    ### Stretch goal: Add recording
+
+    Want to take it further? Ask Agent to add a record button so you can capture your melody and play it back. Try prompting: "Add a record button that lets me record what I play and a play button to hear it back."
   </Step>
 </Steps>
 
 ## Continue your journey
 
-Now that you've completed this tutorial, you're ready to explore more possibilities with your Replit App.
-Try the following next steps to enhance your skills:
+Now that you've built your first app, here's what to try next:
 
-* Use Agent to create a new Replit App using your own prompt. If your prompt needs more direction or details, select the pen icon labeled **Improve prompt**.
-* Add features to your app using Assistant. Navigate to the **Assistant** tab and try one of the recommended prompts.
-* Publish your Replit App to make it publicly available. Learn more about publishing options and billing from [About Deployments](/category/replit-deployments/).
-* Learn more about the AI-powered Replit features from the following guides:
-
-  * [Replit Agent](/replitai/agent/)
-  * [Replit Assistant](/replitai/agent/)
+* **Build something new**: Try creating a game, drawing app, or anything you can imagine with [Agent](/replitai/agent)
+* **Share with friends**: Publish your piano so others can play it. Learn how in [Replit Deployments](/category/replit-deployments)
+* **Keep learning**: Learn about [App Mode vs Design Mode](/tutorials/design-vs-build-mode#design-vs-build-mode) to understand when to use each

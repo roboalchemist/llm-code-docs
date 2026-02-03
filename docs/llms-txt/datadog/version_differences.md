@@ -6,7 +6,6 @@ description: >-
   Overview of key differences between major Datadog Agent versions, including
   performance improvements, new functionalities, and upgrade recommendations.
 breadcrumbs: Docs > Agent > Agent Guides > Agent Version differences
-source_url: https://docs.datadoghq.com/guide/version_differences/index.html
 ---
 
 # Agent Version differences
@@ -55,7 +54,7 @@ The big difference between Agent 5 and Agent 6 is that Agent 6 is a complete rew
 
 **Agent v6 new functionalities**:
 
-To see all changes between Agent v5 and v6, consult the [Datadog Agent dedicated changes](https://github.com/DataDog/datadog-agent/blob/master/docs/agent/changes.md) documentation. The following are key differentiators:
+The following are key differentiators:
 
 - [Distributions metrics](https://docs.datadoghq.com/metrics/types/?tab=distribution#metric-types) can be performed on the server directly to calculate real, effective global percentiles.
 - [DogStatsD](https://docs.datadoghq.com/developers/dogstatsd/unix_socket/) can be used over a Unix socket instead of over UDP.
@@ -63,6 +62,7 @@ To see all changes between Agent v5 and v6, consult the [Datadog Agent dedicated
 - [Prometheus OpenMetrics is supported natively](https://www.datadoghq.com/blog/monitor-prometheus-metrics).
 - [All your logs can be sent to Datadog for alerting, analysis, and correlation with metrics](https://docs.datadoghq.com/logs/).
 
+To see all changes to the Agent, consult the [Datadog Agent Changelog](https://github.com/DataDog/datadog-agent/blob/main/CHANGELOG.rst).
 {% /tab %}
 
 ## Further Reading{% #further-reading %}

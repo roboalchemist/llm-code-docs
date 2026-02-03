@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/integrations/burp/
+
 # Finding LLM Jailbreaks with Burp Suite
 
 This guide shows how to integrate Promptfoo's application-level jailbreak creation with Burp Suite's Intruder feature for security testing of LLM-powered applications.

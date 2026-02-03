@@ -1,102 +1,177 @@
 # Source: https://docs.datadoghq.com/incident_response/incident_management.md
 
+# Source: https://docs.datadoghq.com/getting_started/incident_management.md
+
 ---
-title: Incident Management
-description: Create and manage incidents
-breadcrumbs: Docs > Incident Management
-source_url: https://docs.datadoghq.com/incident_management/index.html
+title: Getting Started with Incident Management
+description: >-
+  Track and communicate issues from declaration through resolution with
+  collaborative workflows, timelines, and postmortems.
+breadcrumbs: Docs > Getting Started > Getting Started with Incident Management
 ---
 
-# Incident Management
+# Getting Started with Incident Management
 
-{% callout %}
-##### Join an enablement webinar session
+## Overview{% #overview %}
 
-Explore and register for Foundation Enablement sessions. Learn how Datadog Incident Management enables DevOps teams and SREs to more effectively manage their incident response workflows from start to finish, saving time and reducing frustration when it matters most.
+Datadog Incident Management is for tracking and communicating about an issue you've identified with your metrics, traces, or logs.
 
-[SIGN UP](https://www.datadoghq.com/technical-enablement/sessions/?tags.topics-0=Incidents)
-{% /callout %}
+This guide walks you through using the Datadog site for declaring an incident, updating the incident as investigation and remediation progresses, and generating a postmortem when the incident has been resolved. The example assumes the [Slack integration](https://docs.datadoghq.com/integrations/slack/) is enabled.
 
-Datadog Incident Management helps your team members identify, mitigate, and analyze disruptions and threats to your organization's services. With Incident Management, you can design an automation-enhanced response process that helps your teams assemble around a shared framework and toolkit. You can also use incident analytics to evaluate the effectiveness of your incident response process.
+## Walking through an incident from issue detection to resolution{% #walking-through-an-incident-from-issue-detection-to-resolution %}
 
-Incidents live in Datadog alongside your metrics, traces, and logs. Your teams can declare incidents from monitor alerts, security signals, events, cases, and more. You can also configure monitors to [declare incidents automatically](https://docs.datadoghq.com/incident_response/incident_management/declare#from-a-monitor).
+### Declaring an incident{% #declaring-an-incident %}
 
-## Get Started{% #get-started %}
+**Scenario:** A monitor is alerting on a high number of errors which may be slowing down several services. It's unclear whether customers are being impacted.
 
-Incident Management requires no installation. Get started by taking a Learning Center course, reading our guided walkthrough, or declaring an incident.
+This guide describes using the [Datadog Clipboard](https://docs.datadoghq.com/dashboards/guide/datadog_clipboard) to declare an incident. Using the Clipboard, you can gather information from different sources, such as graphs, monitors, entire dashboards, or [notebooks](https://docs.datadoghq.com/notebooks/#overview). This helps you provide as much information as possible when declaring an incident.
 
-- [Learn about Datadog Incident Management by working through a hands-on examples](https://learn.datadoghq.com/courses/intro-to-incident-management)
-- [Guided walkthrough of an Incident workflow](https://docs.datadoghq.com/getting_started/incident_management/)
-- [Declare an incident](https://docs.datadoghq.com/incident_response/incident_management/declare)
+1. In Datadog, navigate to [**Dashboard List**](https://app.datadoghq.com/dashboard/lists) and select **System - Metrics**.
+1. Hover over one of the graphs and copy it to the Clipboard with one of the following commands:
+   - **Ctrl**/**Cmd** + **C**
+   - Click the **Export** icon on the graph and select **Copy**.
+1. In the Datadog menu on the left-hand side, go to [**Monitors** > **Monitors List**](https://app.datadoghq.com/monitors/manage) and select **[Auto] Clock in sync with NTP**.
+1. Open the Clipboard: **Ctrl**/**Cmd** + **Shift** + **K**.
+1. In the Clipboard, click **Add current page** to add the monitor to the Clipboard.
+   {% image
+      source="https://datadog-docs.imgix.net/images/getting_started/incident_management/copy_to_clipboard.a1ba0cdba0598063a42cb23d530eabdb.png?auto=format"
+      alt="Copy to Clipboard" /%}
+1. Click **Select All** and then **Export items toâ¦**
+1. Select **Declare Incident**.
+1. Describe what's happening:
+|  |
+|  |
+| Title              | Follow any naming conventions your team wants to use for incident titles. Because this is not a real incident, include the word `TEST` to make it clear that this is a test incident. An example title: `[TEST] My incident test` |
+| Severity Level     | Set to **Unknown** since it's unclear whether customers are being impacted and how related services are being impacted. See the in-app description of what each severity level means and follow your team's guidelines.           |
+| Incident Commander | Leave this assigned to you. In an actual incident this would be assigned to the leader of the incident investigation. You or others can update who the incident commander is as the incident investigation progresses.            |
+1. Click **Declare Incident** to create the incident. You can also declare an incident from a [graph](https://docs.datadoghq.com/incident_response/incident_management/#from-a-graph), [monitor](https://docs.datadoghq.com/incident_response/incident_management/#from-a-monitor), or the [incidents API](https://docs.datadoghq.com/api/latest/incidents/#create-an-incident). For APM users, you can click the incidents icon on any APM graph to declare an incident. As part of the Slack integration, you can also use the `/datadog incident` shortcut to declare an incident and set the title, severity, and customer impact.
+1. Click **Slack Channel** on the incident's page to go to the incident's Slack channel.
 
-## View your incidents{% #view-your-incidents %}
+A new Slack channel dedicated to the incident is automatically created for any new incident, so that you can consolidate communication with your team and begin troubleshooting. If your organization's Slack integration is set up to update a global incident channel, then the channel is updated with the new incident.
 
-To view your incidents, go to the [Incidents](https://app.datadoghq.com/incidents) page to see a feed of all ongoing incidents.
+If you don't have the Slack integration enabled, click **Add Chat** to add the link to the chat service you are using to discuss the incident.
 
-- Filter your incidents through the properties listed on the left, including Status, Severity, and Time To Repair (hours).
-- Use the Search field to enter tag attributes or keywords.
-- Export your search results with the Export button at the top of the incident list.
-- Configure additional fields that appear for all incidents in [Incident Settings](https://app.datadoghq.com/incidents/settings).
+Click **Add Video Call** to add a link to the call where discussions about the incident are happening.
 
-You can also view your Incidents list from your mobile device home screen and manage/create incidents by downloading the [Datadog Mobile App](https://docs.datadoghq.com/mobile), available on the [Apple App Store](https://apps.apple.com/app/datadog/id1391380318) and [Google Play Store](https://play.google.com/store/apps/details?id=com.datadog.app).
+### Troubleshooting and updating the incident{% #troubleshooting-and-updating-the-incident %}
+
+The Incident page has four main sections: *Overview*, *Timeline*, *Remediation*, and *Notifications*. Update these sections as the incident progresses to keep everyone informed of the current status.
+
+#### Overview{% #overview-1 %}
+
+**Scenario:** After some investigation, you discover that the root cause is a host running out of memory. You've also been informed that a small subset of customers are being affected and seeing slow loading of pages. The first customer report came in 15 minutes ago. It is a SEV-3 incident.
+
+In the *Overview* section, you can update incident fields and customer impact as the investigation continues.
+
+To update the severity level and root cause:
+
+1. Click the *Severity* dropdown and select **SEV-3**.
+1. Under *What happened*, select **Monitor** in the *Detection Method* dropdown (Unknown is selected), because you were first alerted by a monitor on the issue.
+1. Add to the *Why it happened* field: `TEST: Host is running out of memory.`
+1. Click **Save** to update the properties. From Slack, you can also update the title, severity, or status of an ongoing issue using the `/datadog incident update` command.
+
+To add the customer impact:
+
+1. Click **+ Add** in the *Impact* section.
+1. Change the timestamp to 15 minutes earlier, because that was when the first customer report came in.
+1. Add to descriptions field: `TEST: Some customers seeing pages loading slowly.`
+1. Click **Save** to update the fields. The *Impact* section updates to show how long the customer impact has been going on. All changes made on the *Overview* page are added to the *Timeline*.
+
+#### Timeline{% #timeline %}
+
+The *Timeline* shows additions and changes to incident fields and information in chronological order.
+
+{% image
+   source="https://datadog-docs.imgix.net/images/getting_started/incident_management/flag_event.237c6916698429a523a2e39eff38f88e.png?auto=format"
+   alt="Flag Event" /%}
+
+1. Click the **Timeline** tab.
+1. Find the *Impact added* event and mark as *Important* by clicking the flag icon.
+1. Add a note to the timeline: `I found the host causing the issue.`
+1. Hover over the note's event and click the pencil icon to change the timestamp of the note because you actually found the host causing the issue 10 minutes ago.
+1. Flag the note as **Important**.
+1. Click **Slack Channel** to go back to the incident's Slack channel.
+1. Post a message in the channel saying `I am working on a fix.`
+1. Click the message's actions command icon (three dots on the right after hovering over a message).
+1. Select **Add to Incident** to send the message to the timeline.
+
+{% image
+   source="https://datadog-docs.imgix.net/images/getting_started/incident_management/add_from_slack.cce467f05c722f6a7fc287958b0745e8.png?auto=format"
+   alt="Add from Slack" /%}
+
+You can add any Slack comment in the incident channel to the timeline so that you can consolidate important communications related to the investigation and mitigation of the incident.
+
+#### Remediation{% #remediation %}
+
+**Scenario:** There's a notebook on how to handle this kind of issue, which includes tasks that need to be done to fix it.
+
+In the *Remediation* section, you can keep track of documents and tasks for investigating the issue or for post-incident remediation tasks.
+
+1. Click the **Remediation** tab.
+1. Click the plus icon `+` in the *Documents* box and add a link to a [Datadog notebook](https://app.datadoghq.com/notebook/list). All updates to the *Documents* section are added to the timeline as an *Incident Update* type.
+1. Add a task by adding a description of a task in the *Incident Tasks* box, for example: `Run the steps in the notebook.`
+1. Click **Create Task**.
+1. Click **Assign To** and assign yourself the task.
+1. Click **Set Due Date** and set the date for today. All task additions and changes are recorded in the *Timeline*. You can also add post-incident tasks in the *Remediation* section to keep track of them.
+
+#### Notifications{% #notifications %}
+
+**Scenario:** The issue has been mitigated, and the team is monitoring the situation. The incident status is stable.
+
+In the *Notifications* section, you can send out a notification updating the status of the incident.
+
+1. Navigate back to the *Overview* section.
+1. Change the status in the dropdown menu from *ACTIVE* to *STABLE*.
+1. Go to the *Notifications* tab.
+1. Click **New Notification**. The default message has the incident's title in the subject and information about the current status of the incident in the body. In an actual incident you would send updates to the people involved in the incident. For this example, send a notification to yourself only.
+1. Add yourself to the *Recipients* field.
+1. Click **Send**. You should receive an email with the message. You can create customized [message templates](https://app.datadoghq.com/incidents/settings#Messages). Group templates together using the *Category* field.
+
+### Resolution and postmortem{% #resolution-and-postmortem %}
+
+**Scenario:** It's been confirmed that the issue no longer impacts customers and that you've resolved the issue. The team wants a postmortem to look back on what went wrong.
+
+1. Go to the *Overview* section.
+1. Change the status from *STABLE* to *RESOLVED* so that it's no longer active. You can also change the date and time for when the customer impact ended if it occurred earlier.
+1. When an incident's status is set to resolved, a *Generate Postmortem* button appears at the top. Click **Generate Postmortem**.
+1. For the timeline section, select **Marked as Important** so that only the *Important* events are added to the postmortem.
+1. Click **Generate**.
+
+The postmortem is generated as a Datadog Notebook or Confluence page, and it includes the timeline events and resources referenced during the investigation and remediation. This makes it easier to review and further document what caused the issue and how to prevent it in the future.
+
+If there are follow-up tasks that you and your team need to complete to ensure the issue doesn't happen again, add those and track them in the Remediation's *Incident Tasks* section.
+
+{% image
+   source="https://datadog-docs.imgix.net/images/getting_started/incident_management/generate_postmortem.4534ce0623bae4e011d057e8a621736d.png?auto=format"
+   alt="Generate Postmortem" /%}
+
+## Customizing your incident management workflow{% #customizing-your-incident-management-workflow %}
+
+Datadog Incident Management can be customized with different severity and status levels, based on your organization's needs, and also include additional information such as APM services and teams related to the incident. For more information, see this [section](https://docs.datadoghq.com/incident_response/incident_management/#status-levels) of the Incident Management page.
+
+You can also set up notification rules to automatically notify specific people or services based on an incident's severity level. For more information, see the [Incident Settings](https://docs.datadoghq.com/incident_response/incident_management/incident_settings) documentation.
+
+To customize Incident Management, go to the [incident settings page](https://app.datadoghq.com/incidents/settings). From the Datadog menu on the left-hand side, go to **Monitors** > **Incidents** (if you get an Incident Management welcome screen, click **Get Started**). Then on the top, click **Settings**.
+
+## Create and Manage Incidents on Mobile{% #create-and-manage-incidents-on-mobile %}
+
+The [Datadog Mobile App](https://docs.datadoghq.com/mobile/), available on the [Apple App Store](https://apps.apple.com/app/datadog/id1391380318) and [Google Play Store](https://play.google.com/store/apps/details?id=com.datadog.app), enables users to create, view, search, and filter all incidents you have access to in your Datadog account from the Datadog Mobile App to ensure quick response and resolution without opening your laptop.
+
+You can also declare and edit incidents and quickly communicate to your teams through integrations with Slack, Zoom, and many more.
 
 {% image
    source="https://datadog-docs.imgix.net/images/service_management/mobile/iOS_Incident_V2.e869960f9a218c34e15b8b5dbfffbbe0.png?auto=format"
    alt="Two views in the Datadog Mobile App: one showing an incidents list with high-level details about each incident, and one showing a detailed panel for a single incident" /%}
 
-## Describing the incident{% #describing-the-incident %}
-
-When declaring an incident, it is critical to provide a comprehensive description, detailing what happened, why it occurred, and related attributes to ensure all stakeholders in the incident management process are fully informed. The essential elements of an incident declaration include a title, severity level, and incident commanders. Effective incident management documentation includes:
-
-- Updating incident details, including its status, impact, root cause, detection methods, and service impacts.
-- Forming and managing a response team, using custom responder roles, and leveraging metadata attributes for detailed incident assessment.
-- Configuring notifications to keep all stakeholders informed throughout the incident resolution process.
-
-For more information, see the [Describe an Incident](https://docs.datadoghq.com/incident_response/incident_management/describe) documentation.
-
-## Evaluate incident data{% #evaluate-incident-data %}
-
-Incident Analytics provides insights into the efficiency and performance of your incident response process by allowing you to aggregate and analyze statistics from past incidents. Key metrics, such as time to resolution and customer impact, can be tracked over time. You can query these analytics using graph widgets in dashboards and notebooks. Datadog offers customizable templates, such as the Incident Management Overview Dashboard and a Notebook Incident Report, to help you get started.
-
-For more details on the measures collected and step-by-step graph configurations to visualize your data, see [Incident Management Analytics](https://docs.datadoghq.com/incident_response/incident_management/analytics/).
-
-## Integrations{% #integrations %}
-
-Incident Management integrates closely with other Datadog products, including:
-
-- [Datadog Status Pages](https://docs.datadoghq.com/incident_response/status_pages/) to create public or private status pages and connect them to incidents.
-- [Datadog On-Call](https://docs.datadoghq.com/incident_response/on-call/) to escalate pages into incidents and manually or automatically page teams from an incident.
-- [Datadog Notebooks](https://docs.datadoghq.com/notebooks/) to draft and review postmortems.
-- [Datadog Workflow Automation](https://docs.datadoghq.com/actions/workflows/) to build and execute automations.
-
-### Third-party integrations{% #third-party-integrations %}
-
-Incident Management integrates with third-party applications, including:
-
-- [Atlassian Statuspage](https://docs.datadoghq.com/integrations/statuspage/) to create and update Statuspage incidents.
-- [Confluence](https://docs.datadoghq.com/integrations/confluence/) to generate incident postmortems.
-- [CoScreen](https://docs.datadoghq.com/coscreen) to launch collaborative meetings with multi-user screen sharing, remote control, and built-in audio and video chat.
-- [CoTerm](https://docs.datadoghq.com/coterm) to follow terminal-based incident remediation activities in real time.
-- [Jira](https://docs.datadoghq.com/integrations/jira/) to create a Jira ticket for an incident.
-- [Microsoft Teams](https://docs.datadoghq.com/integrations/microsoft-teams/?tab=datadogapprecommended#datadog-incident-management-in-microsoft-teams) to create channels and video meetings for incidents.
-- [PagerDuty](https://docs.datadoghq.com/integrations/pagerduty/) and [OpsGenie](https://docs.datadoghq.com/integrations/opsgenie/) to page your on-call engineers and auto-resolve pages upon incident resolution.
-- [ServiceNow](https://docs.datadoghq.com/integrations/servicenow/) to create a ServiceNow tickets for incidents.
-- [Slack](https://docs.datadoghq.com/integrations/slack/?tab=slackapplicationbeta#using-the-slack-app) to create channels for incidents.
-- [Webhooks](https://docs.datadoghq.com/integrations/webhooks/) to send incident notifications using webhooks (for example, [sending SMS to Twilio](https://docs.datadoghq.com/integrations/webhooks/#sending-sms-through-twilio)).
-- [Zoom](https://docs.datadoghq.com/integrations/zoom-incident-management/) to launch video calls for incidents.
-
-## Billing{% #billing %}
-
-Incident Management is a seat-based SKU. To learn more about how Incident Management is billed and how to manage seats within Datadog, visit our [pricing page](https://www.datadoghq.com/pricing/?product=incident-response#products) and the [Incident Response billing documentation](https://docs.datadoghq.com/account_management/billing/incident_response/).
-
 ## Further Reading{% #further-reading %}
 
-- [Check out the latest Incident Management releases! (App login required).](https://app.datadoghq.com/release-notes?category=Incident%20Management)
-- [Incident Management Analytics](https://docs.datadoghq.com/dashboards/querying/#incident-management-analytics)
+- [Introduction to Incident Management](https://learn.datadoghq.com/courses/intro-to-incident-management)
+- [Datadog on Incident Management](https://www.youtube.com/watch?v=QIambwILy_M)
+- [Incident Management](https://docs.datadoghq.com/monitors/incident_management)
 - [Join an interactive session to improve your Incident Management](https://dtdg.co/fe)
+- [Incident Management with Datadog](https://www.datadoghq.com/blog/incident-response-with-datadog/)
+- [Notification Rules](https://docs.datadoghq.com/incident_response/incident_management/incident_settings)
+- [Slack integration with incidents](https://docs.datadoghq.com/integrations/slack/?tab=slackapplicationus#using-datadog-incidents)
 - [More efficient pair programming with Datadog CoScreen](https://www.datadoghq.com/blog/pair-programming-coscreen-datadog/)
 - [Best practices for writing incident postmortems](https://www.datadoghq.com/blog/incident-postmortem-process-best-practices/)
-- [Automate common security tasks and stay ahead of threats with Datadog Workflows and Cloud SIEM](https://www.datadoghq.com/blog/automate-security-tasks-with-workflows-and-cloud-siem/)
-- [Ensure high service availability with Datadog Service Management](https://www.datadoghq.com/blog/datadog-service-management/)
-- [Security and SRE: How Datadog's combined approach aims to tackle security and reliability challenges](https://www.datadoghq.com/blog/datadogs-approach-sre-security/)
-- [Unify remediation and communication with Datadog Incident Response](https://www.datadoghq.com/blog/incidents-ai-workbench-status-page/)
+- [How we manage incidents at Datadog](https://www.datadoghq.com/blog/how-datadog-manages-incidents/)

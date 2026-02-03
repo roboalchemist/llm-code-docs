@@ -93,11 +93,11 @@ When the method `claim` is called the NFT needs to be transferred to the highest
 
         <Language value="rust" language="rust">
             ```
-        nft_contract::ext(self.nft_contract.clone())
+        let transfer_nft = nft_contract::ext(self.nft_contract.clone())
             .with_static_gas(Gas::from_tgas(30))
             .with_attached_deposit(NearToken::from_yoctonear(1))
             .nft_transfer(self.highest_bid.bidder.clone(), self.token_id.clone());
-    }
+
 ```
             ```
 use near_sdk::{ext_contract, AccountId};
@@ -106,10 +106,10 @@ use crate::TokenId;
 
 // NFT interface for cross-contract calls
 #[ext_contract(nft_contract)]
+#[allow(dead_code)]
 trait NFT {
     fn nft_transfer(&self, receiver_id: AccountId, token_id: TokenId);
 }
-
 ```
         </Language>
 
@@ -164,10 +164,10 @@ pub struct Contract {
         We add the `serilizers` macro to enable json serialization so the object as a whole can easily be displayed to the frontend without having to output each field individually.
 
         ```
-    pub fn get_auction_info(&self) -> &Contract {
-        self
+        self.auction_end_time
     }
-}
+
+    pub fn get_auction_info(&self) -> &Contract {
 ```
 
 
@@ -199,17 +199,17 @@ To deploy the NFT contract, this time we're going to use `dev deploy` which crea
     <TabItem value="rust" label="🦀 Rust">
 
         ```
-    let nft_wasm = std::fs::read(NFT_WASM_FILEPATH)?;
-    let nft_contract = sandbox.dev_deploy(&nft_wasm).await?;
+    let auctioneer = create_subaccount(&sandbox, "auctioneer.sandbox").await?;
+    let nft_contract = create_subaccount(&sandbox, "nft-contract.sandbox")
+        .await?
+        .as_contract();
+    let contract = create_subaccount(&sandbox, "contract.sandbox")
+        .await?
+        .as_contract();
 
-    let res = nft_contract
-        .call("new_default_meta")
-        .args_json(serde_json::json!({"owner_id": root.id()}))
-        .transact()
-        .await?;
-
-    assert!(res.is_success());
-
+    // Initialize signer for the contract deployment
+    let signer = near_api::Signer::from_secret_key(
+        near_sandbox::config::DEFAULT_GENESIS_ACCOUNT_PRIVATE_KEY
 ```
 
     </TabItem>
@@ -247,26 +247,26 @@ To start a proper auction the auction contract should own an NFT. To do this the
     <TabItem value="rust" label="🦀 Rust">
 
         ```
+            .unwrap(),
+    )?;
+
+    // Deploy the NFT contract
+    near_api::Contract::deploy(nft_contract.account_id().clone())
+        .use_code(nft_wasm)
+        .with_init_call(
+            "new_default_meta",
+            json!({"owner_id": nft_contract.account_id()}),
+        )?
+        .with_signer(signer.clone())
+        .send_to(&sandbox_network)
+        .await?
+        .assert_success();
+
+    // Mint NFT
     const TOKEN_ID: &str = "1";
     let request_payload = json!({
         "token_id": TOKEN_ID,
-        "receiver_id": contract_account.id(),
-        "token_metadata": {
-            "title": "LEEROYYYMMMJENKINSSS",
-            "description": "Alright time's up, let's do this.",
-            "media": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.Fhp4lHufCdTzTeGCAblOdgHaF7%26pid%3DApi&f=1"
-        },
-    });
-
-    let res = contract_account
-        .call(nft_contract.id(), "nft_mint")
-        .args_json(request_payload)
-        .deposit(NearToken::from_millinear(80))
-        .transact()
-        .await?;
-
-    assert!(res.is_success());
-
+        "receiver_id": contract.account_id(),
 ```
 
     </TabItem>
@@ -294,21 +294,21 @@ After `claim` is called, the test should verify that the auction winner now owns
     <TabItem value="rust" label="🦀 Rust">
 
         ```
-    let token_info: serde_json::Value = nft_contract
-        .call("nft_token")
-        .args_json(json!({"token_id": TOKEN_ID}))
-        .transact()
+    contract
+        .call_function("bid", ())
+        .transaction()
+        .deposit(NearToken::from_near(1))
+        .with_signer(alice.account_id().clone(), signer.clone())
+        .send_to(&sandbox_network)
         .await?
-        .json()
-        .unwrap();
-    let owner_id: String = token_info["owner_id"].as_str().unwrap().to_string();
+        .assert_failure();
 
-    assert_eq!(
-        owner_id,
-        bob.id().to_string(),
-        "token owner is not the highest bidder"
-    );
-
+    // Auctioneer claims auction but did not finish
+    contract
+        .call_function("claim", ())
+        .transaction()
+        .gas(NearGas::from_tgas(30))
+        .with_signer(auctioneer.account_id().clone(), signer.clone())
 ```
 
     </TabItem>
@@ -322,7 +322,7 @@ After `claim` is called, the test should verify that the auction winner now owns
 If you would like to interact with the new contract via the CLI you can mint an NFT from a pre-deployed NFT contract 
 
 ```bash
-near call nft.examples.testnet nft_mint '{"token_id": "TYPE_A_UNIQUE_VALUE_HERE", "receiver_id": "<accountId>", "metadata": { "title": "GO TEAM", "description": "The Team Goes", "media": "https://bafybeidl4hjbpdr6u6xvlrizwxbrfcyqurzvcnn5xoilmcqbxfbdwrmp5m.ipfs.dweb.link/", "copies": 1}}' --accountId <accountId> --deposit 0.1 
+near call nft.examples.testnet nft_mint '{"token_id": "TYPE_A_UNIQUE_VALUE_HERE", "receiver_id": "<accountId>", "metadata": { "title": "GO TEAM", "description": "The Team Goes", "media": "https://bafybeidl4hjbpdr6u6xvlrizwxbrfcyqurzvcnn5xoilmcqbxfbdwrmp5m.ipfs.dweb.link/", "copies": 1}}' --useAccount <accountId> --deposit 0.1 
 ```
 ---
 

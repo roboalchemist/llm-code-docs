@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hget.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hget.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hget.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hget.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hget.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hget.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hget.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hget.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hget.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hget.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # HGET
 
@@ -26,24 +12,25 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key to get.
 </ParamField>
 
-<ParamField body="field" type="string" required>
+<ParamField body="field" type="str" required>
   The field to get.
 </ParamField>
 
 ## Response
 
-<ResponseField type="TValue | null" required>
+<ResponseField type="Optional[str]">
   The value of the field, or `null`, when field is not present in the hash or key does not exist.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.hset("key", {field: "value"});
-  const field = await redis.hget("key", "field");
-  console.log(field); // "value"
+  ```py Example theme={"system"}
+  redis.hset("myhash", "field1", "Hello")
+
+  assert redis.hget("myhash", "field1") == "Hello"
+  assert redis.hget("myhash", "field2") is None
   ```
 </RequestExample>

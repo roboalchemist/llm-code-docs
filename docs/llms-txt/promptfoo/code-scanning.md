@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/code-scanning/
+
 # Code Scanning
 
 Promptfoo Code Scanning uses AI agents to find LLM-related vulnerabilities in your codebase and helps you fix them before you merge. By focusing specifically on LLM-related vulnerabilities, it finds issues that more general security scanners might miss.

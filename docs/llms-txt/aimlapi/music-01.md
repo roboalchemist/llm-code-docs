@@ -36,9 +36,13 @@ This endpoint uploads a reference music piece to the server, analyzes it, and re
 This endpoint generates a new music piece based on the voice and/or instrumental pattern identifiers obtained from the first endpoint above.\
 The generation can be completed in 50-60 seconds or take a bit more.
 
-{% openapi src="<https://3927338786-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FROMd1X5PuqtikJ48n2N9%2Fuploads%2Fgit-blob-5519d529caf423b131c5bfdab8fe1e153659e737%2Fmusic-01.json?alt=media>" path="/v2/generate/audio/minimax/generate" method="post" %}
-[music-01.json](https://3927338786-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FROMd1X5PuqtikJ48n2N9%2Fuploads%2Fgit-blob-5519d529caf423b131c5bfdab8fe1e153659e737%2Fmusic-01.json?alt=media)
-{% endopenapi %}
+## POST /v2/generate/audio/minimax/generate
+
+>
+
+```json
+{"openapi":"3.0.0","info":{"title":"AI/ML Gateway","version":"1.0"},"servers":[{"url":"https://api.aimlapi.com"}],"security":[{"access-token":[]}],"components":{"securitySchemes":{"access-token":{"scheme":"bearer","bearerFormat":"<YOUR_AIMLAPI_KEY>","type":"http","description":"Bearer key"}},"schemas":{"Minimax.v2.GenerateAudioResponseDTO":{"type":"object","properties":{"data":{"type":"object","properties":{"status":{"type":"integer","description":"Music generation status. 1: In progress; 2: Completed."},"audio":{"type":"string","description":"Hex-encoded audio data or URL depending on output_format. When output_format is \"hex\", contains hex-encoded audio. When output_format is \"url\", contains download URL."}},"required":["status","audio"]},"extra_info":{"type":"object","properties":{"audio_length":{"type":"integer"},"audio_size":{"type":"integer"},"audio_bitrate":{"type":"integer"},"audio_sample_rate":{"type":"integer"},"music_duration":{"type":"integer"},"music_sample_rate":{"type":"integer"},"music_channel":{"type":"integer"},"bitrate":{"type":"integer"},"music_size":{"type":"integer"}}},"analysis_info":{"nullable":true},"trace_id":{"type":"string"},"base_resp":{"type":"object","properties":{"status_code":{"type":"integer"},"status_msg":{"type":"string"}},"required":["status_code","status_msg"]}},"required":["base_resp"]}}},"paths":{"/v2/generate/audio/minimax/generate":{"post":{"operationId":"MinimaxAudioControllerV2_createGeneration_v2","parameters":[],"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"lyrics":{"type":"string","description":"Lyrics with optional formatting. You can use a newline to separate each line of lyrics. You can use two newlines to add a pause between lines. You can use double hash marks (##) at the beginning and end of the lyrics to add accompaniment. Maximum 600 characters."},"model":{"enum":["music-01"]},"audio_setting":{"type":"object","properties":{"sample_rate":{"type":"integer","description":"The sampling rate of the generated music.","enum":[16000,24000,32000,44100]},"bitrate":{"type":"integer","description":"The bit rate of the generated music.","enum":[32000,64000,128000,256000]},"format":{"type":"string","enum":["mp3","wav","pcm"],"description":"The format of the generated music."}},"required":["format"]},"refer_voice":{"type":"string","description":"voice_id.\n  At least one of refer_voice or refer_instrumental is required. When only refer_voice is provided, the system can still output music data. The generated music will be an a cappella vocal hum that aligns with the provided refer_voice and the generated lyrics, without any instrumental accompaniment."},"refer_instrumental":{"type":"string","description":"instrumental_id.\n  At least one of refer_voice or refer_instrumental is required. When only refer_instrumental is provided, the system can still output music data. The generated music will be a purely instrumental track that aligns with the provided refer_instrumental, without any vocals."}},"required":["lyrics","model"]}}}},"responses":{"default":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Minimax.v2.GenerateAudioResponseDTO"}}}}},"tags":["Minimax"]}}}}
+```
 
 ## Quick Code Example
 
@@ -136,7 +140,7 @@ def main():
 
 if __name__ == "__main__":
     main()
-
+    
 ```
 
 {% endcode %}

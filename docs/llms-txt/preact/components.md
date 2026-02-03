@@ -1,3 +1,7 @@
+# Source: https://preactjs.com/guide/v10/components#error-boundaries
+
+# Source: https://preactjs.com/guide/v10/components#fragments
+
 # Components
 
 Components represent the basic building block in Preact. They are fundamental in making it easy to build complex UIs from little building blocks. They're also responsible for attaching state to our rendered output.

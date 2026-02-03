@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/insurance/
+
 # Insurance Red-Teaming Plugins
 
 The Insurance Red-Teaming Plugins are a specialized suite designed for AI systems operating in health insurance contexts. These plugins test critical insurance compliance functions including HIPAA-compliant PHI handling, provider network accuracy, and non-discriminatory coverage determinations.

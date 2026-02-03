@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/qstash/integrations/llm.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LLM - OpenAI
 
 QStash has built-in support for calling LLM APIs. This allows you to take advantage of QStash features such as retries, callbacks, and batching while using LLM APIs.

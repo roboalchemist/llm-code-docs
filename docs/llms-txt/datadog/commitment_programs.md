@@ -6,7 +6,6 @@ description: >-
   Learn how to manage the performance and status of your cloud discount
   programs.
 breadcrumbs: Docs > Cloud Cost Management > Planning > Commitment Programs
-source_url: https://docs.datadoghq.com/planning/commitment_programs/index.html
 ---
 
 # Commitment Programs

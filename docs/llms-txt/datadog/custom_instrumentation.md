@@ -6,7 +6,6 @@ description: >-
   Add custom spans, tags, and instrumentation to capture application-specific
   observability data using Datadog APIs and OpenTelemetry.
 breadcrumbs: Docs > APM > Application Instrumentation > Code-Based Custom Instrumentation
-source_url: https://docs.datadoghq.com/trace_collection/custom_instrumentation/index.html
 ---
 
 # Code-Based Custom Instrumentation
@@ -30,18 +29,44 @@ Follow the relevant documentation for your custom instrumentation approach to le
 {% tab title="OpenTelemetry API (Recommended)" %}
 Datadog tracing libraries provide an implementation of the OpenTelemetry API for instrumenting your code. This means you can maintain vendor-neutral instrumentation of all your services, while still taking advantage of Datadog's native implementation, features, and products. You can configure it to generate Datadog-style spans and traces to be processed by the Datadog tracing library for your language, and send those to Datadog.
 
+- [Java](otel_instrumentation/java)
+- [Python](otel_instrumentation/python)
+- [Ruby](otel_instrumentation/ruby)
+- [go](otel_instrumentation/go)
+- [Node.js](otel_instrumentation/nodejs)
+- [PHP](otel_instrumentation/php)
+- [.Net](otel_instrumentation/dotnet)
+- [iOS](otel_instrumentation/ios)
+- [Android](android/otel)
+- [Rust](rust/)
 
 {% /tab %}
 
 {% tab title="Datadog API" %}
 Use the Datadog API to add custom instrumentation that allows you to programmatically create, modify, or delete traces to send to Datadog. This is useful for tracing in-house code not captured by automatic instrumentation, removing unwanted spans from traces, and for providing deeper visibility and context into spans, including adding span tags.
 
+- [Java](dd_libraries/java)
+- [Python](dd_libraries/python)
+- [Ruby](dd_libraries/ruby)
+- [go](dd_libraries/go)
+- [Node.js](dd_libraries/nodejs)
+- [PHP](dd_libraries/php)
+- [C++](dd_libraries/cpp)
+- [.Net](dd_libraries/dotnet)
+- [Android](android/otel)
 
 {% /tab %}
 
 {% tab title="OpenTracing (Legacy)" %}
 If [OpenTelemetry](https://docs.datadoghq.com/tracing/trace_collection/otel_instrumentation/) or [`ddtrace`](https://docs.datadoghq.com/tracing/trace_collection/custom_instrumentation/) custom instrumentation doesn't work for you, each of the supported languages also has support for sending [OpenTracing](https://opentracing.io/docs/) data to Datadog. OpenTracing is archived and the project is unsupported.
 
+- [Java](opentracing/java)
+- [Python](opentracing/python)
+- [Node.js](opentracing/nodejs)
+- [Ruby](opentracing/ruby)
+- [.Net](opentracing/dotnet)
+- [PHP](opentracing/php)
+- [Android](opentracing/android)
 
 {% /tab %}
 

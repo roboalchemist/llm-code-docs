@@ -4,7 +4,6 @@
 title: Save and Reuse Actions
 description: Save and reuse an action and its parameters
 breadcrumbs: Docs > App Builder > Save and Reuse Actions
-source_url: https://docs.datadoghq.com/app_builder/saved_actions/index.html
 ---
 
 # Save and Reuse Actions

@@ -1,12 +1,16 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/integrations/custom-chain.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Logging Workflows
 
 > No matter how you're orchestrating your workflows, we have an interface to help you upload them to Galileo.
 
 To log your runs with Galileo, you'd start with the same typical flow of logging into Galileo:
 
-```py
+```py  theme={null}
 import promptquality as pq
 
 pq.login()
@@ -14,7 +18,7 @@ pq.login()
 
 Next you can construct your [EvaluateRun](https://promptquality.docs.rungalileo.io/#promptquality.EvaluateRun) object:
 
-```py
+```py  theme={null}
 from promptquality import EvaluateRun
 
 metrics = [pq.Scorers.context_adherence_plus, pq.Scorers.prompt_injection]
@@ -28,7 +32,7 @@ Datasets should also be constructed in such a way that a sample represents the e
 An evaluate run typically consists of multiple workflows, or multiple AI turns.
 Here's an example of how you can log your workflows using your llm app:
 
-```py
+```py  theme={null}
 def my_llm_app(input, evaluate_run):
     context = " ... [text explaining hallucinations] ... "
     template = "Given the following context answer the question. \n Context: {context} \n Question: {question}"
@@ -54,7 +58,7 @@ for input in eval_set:
 
 Finally, log your Evaluate run to Galileo:
 
-```py
+```py  theme={null}
 evaluate_run.finish()
 ```
 
@@ -62,7 +66,7 @@ evaluate_run.finish()
 
 If you're looking to log RAG workflows it's easy to add a retriever step. Here's an example with RAG:
 
-```py
+```py  theme={null}
 def my_llm_app(input, evaluate_run):
     template = "Given the following context answer the question. \n Context: {context} \n Question: {question}"
     wf = evaluate_run.add_workflow(input=input)
@@ -102,7 +106,7 @@ Below is an example on how to log an agentic workflow (say in the middle of a mu
 * a tool execution
 * an LLM call without tools, where the LLM responds back to the user.
 
-```py
+```py  theme={null}
 # Initiate the agentic workflow with the last user message as input
 last_user_message = chat_history[-1].content
 agent_wf = evaluate_run.add_agent_workflow(input=last_user_message)
@@ -150,7 +154,7 @@ agent_wf.conclude(output=llm_response.content)
 If you want to log more complex inputs and outputs to your nodes, we provide support for that as well.
 For retriever outputs we support the [Document](https://promptquality.docs.rungalileo.io/#promptquality.Document) object.
 
-```py
+```py  theme={null}
 wf = evaluate_run.add_workflow(input="Who's a good bot?", output="I am!", duration_ns=2000)
 wf.add_retriever(
     input="Who's a good bot?",
@@ -161,7 +165,7 @@ wf.add_retriever(
 
 For LLM inputs and outputs we support the [Message](https://promptquality.docs.rungalileo.io/#promptquality.Message) object.
 
-```py
+```py  theme={null}
 wf = evaluate_run.add_workflow(input="Who's a good bot?", output="I am!", duration_ns=2000)
 wf.add_llm(
     input=pq.Message(content="Given this context: Research shows that I am a good bot. answer this: Who's a good bot?"),
@@ -176,7 +180,7 @@ wf.add_llm(
 
 Often times an llm interaction consists of multiple messages. You can log these as well.
 
-```py
+```py  theme={null}
 wf = evaluate_run.add_workflow(input="Who's a good bot?", output="I am!", duration_ns=2000)
 wf.add_llm(
     input=[
@@ -193,7 +197,7 @@ wf.add_llm(
 If you have more complex workflows that involve nesting workflows within workflows, we support that too.
 Here's an example of how you can log nested workflow using conclude to step out of the nested workflow, back into the base workflow:
 
-```py
+```py  theme={null}
 wf = evaluate_run.add_workflow("input", "output", duration_ns=100)
 # Add a workflow inside the base workflow.
 nested_wf = wf.add_sub_workflow(input="inner input")

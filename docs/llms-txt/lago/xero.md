@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/integrations/accounting/xero.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Xero
 
 > Lago seamlessly integrates with Xero, enabling real-time synchronization of billing data with your preferred accounting tool.

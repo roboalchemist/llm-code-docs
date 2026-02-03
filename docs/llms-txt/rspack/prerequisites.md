@@ -6,8 +6,8 @@ Rspack is built using [Rust](https://rust-lang.org/) and [NAPI-RS](https://napi.
 
 ## Setup Rust
 
-* Install Rust using [rustup](https://rustup.rs/).
-* If you are using VS Code, we recommend installing the [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer) extension.
+- Install Rust using [rustup](https://rustup.rs/).
+- If you are using VS Code, we recommend installing the [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer) extension.
 
 ## Setup Node.js
 

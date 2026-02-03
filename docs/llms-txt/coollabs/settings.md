@@ -1,5 +1,9 @@
 # Source: https://docs.coollabs.io/coolify/v3/settings.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.coollabs.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # null
 
 Only users in the `root team` could configure system-wide settings.
@@ -106,5 +110,5 @@ You can add custom SSL certificates to Coolify Proxy, even self-signed.
 
 You can add custom Docker registries and set authentication for it to be able to:
 
-*   pull/push private images
-*   prevent to be rate limited
+* pull/push private images
+* prevent to be rate limited

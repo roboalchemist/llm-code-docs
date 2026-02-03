@@ -8,8 +8,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > APM > Tracing Guides > Tutorial - Enabling Tracing for a Java
   Application with the Admission Controller
-source_url: >-
-  https://docs.datadoghq.com/guide/tutorial-enable-java-admission-controller/index.html
 ---
 
 # Tutorial - Enabling Tracing for a Java Application with the Admission Controller

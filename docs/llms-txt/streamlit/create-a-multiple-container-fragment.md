@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/tutorials/execution-flow/create-a-multiple-container-fragment
+
 # Create a fragment across multiple containers
 
 Streamlit lets you turn functions into [fragments](https://docs.streamlit.io/develop/concepts/architecture/fragments), which can rerun independently from the full script. If your fragment doesn't write to outside containers, Streamlit will clear and redraw all the fragment elements with each fragment rerun. However, if your fragment _does_ write elements to outside containers, Streamlit will not clear those elements during a fragment rerun. Instead, those elements accumulate with each fragment rerun until the next full-script rerun. If you want a fragment to update multiple containers in your app, use `st.empty()` containers to prevent accumulating elements.

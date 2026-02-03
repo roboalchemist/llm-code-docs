@@ -6,7 +6,7 @@
 
 ## Usage
 
-The Table component is built on top of [TanStack Table](https://tanstack.com/table/latest) and is powered by the [useVueTable](https://tanstack.com/table/latest/docs/framework/vue/vue-table#usevuetable) composable to provide a flexible and fully type-safe API. *Some features of TanStack Table are not supported yet, we'll add more over time.*
+The Table component is built on top of [TanStack Table](https://tanstack.com/table/latest) and is powered by the [useVueTable](https://tanstack.com/table/latest/docs/framework/vue/vue-table#usevuetable) composable to provide a flexible and fully type-safe API.
 
 ```vue [TableExample.vue]
 <script setup lang="ts">
@@ -209,23 +209,35 @@ const columns: TableColumn<Payment>[] = [{
       onClick: () => column.toggleSorting(column.getIsSorted() === 'asc')
     })
   },
-  cell: ({ row }) => h('div', { class: 'lowercase' }, row.getValue('email'))
+  meta: {
+    class: {
+      td: 'lowercase'
+    }
+  }
 }, {
   accessorKey: 'amount',
-  header: () => h('div', { class: 'text-right' }, 'Amount'),
+  header: 'Amount',
+  meta: {
+    class: {
+      th: 'text-right',
+      td: 'text-right font-medium'
+    }
+  },
   cell: ({ row }) => {
     const amount = Number.parseFloat(row.getValue('amount'))
-
-    const formatted = new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'EUR'
     }).format(amount)
-
-    return h('div', { class: 'text-right font-medium' }, formatted)
   }
 }, {
   id: 'actions',
   enableHiding: false,
+  meta: {
+    class: {
+      td: 'text-right'
+    }
+  },
   cell: ({ row }) => {
     const items = [{
       type: 'label',
@@ -254,7 +266,7 @@ const columns: TableColumn<Payment>[] = [{
       label: 'View payment details'
     }]
 
-    return h('div', { class: 'text-right' }, h(UDropdownMenu, {
+    return h(UDropdownMenu, {
       'content': {
         align: 'end'
       },
@@ -264,9 +276,8 @@ const columns: TableColumn<Payment>[] = [{
       'icon': 'i-lucide-ellipsis-vertical',
       'color': 'neutral',
       'variant': 'ghost',
-      'class': 'ml-auto',
       'aria-label': 'Actions dropdown'
-    })))
+    }))
   }
 }]
 
@@ -334,11 +345,9 @@ function randomize() {
 </template>
 ```
 
-<callout icon="i-simple-icons-github" to="https://github.com/nuxt/ui/tree/v4/docs/app/components/content/examples/table/TableExample.vue" ariaLabel="View source code">
-
-This example demonstrates the most common use case of the `Table` component. Check out the source code on GitHub.
-
-</callout>
+> [!NOTE]
+> See: https://github.com/nuxt/ui/tree/v4/docs/app/components/content/examples/table/TableExample.vue
+> This example demonstrates the most common use case of the `Table` component. Check out the source code on GitHub.
 
 ### Data
 
@@ -408,11 +417,9 @@ Extra properties for the column.
 
 In order to render components or other HTML elements, you will need to use the Vue [`h` function](https://vuejs.org/api/render-function.html#h) inside the `header` and `cell` props. This is different from other components that use slots but allows for more flexibility.
 
-<tip ariaLabel="Table columns with slots" to="#with-slots">
-
-You can also use slots to customize the header and data cells of the table.
-
-</tip>
+> [!TIP]
+> See: #with-slots
+> You can also use slots to customize the header and data cells of the table.
 
 ```vue [TableColumnsExample.vue]
 <script setup lang="ts">
@@ -494,16 +501,19 @@ const columns: TableColumn<Payment>[] = [{
   header: 'Email'
 }, {
   accessorKey: 'amount',
-  header: () => h('div', { class: 'text-right' }, 'Amount'),
+  header: 'Amount',
+  meta: {
+    class: {
+      th: 'text-right',
+      td: 'text-right font-medium'
+    }
+  },
   cell: ({ row }) => {
     const amount = Number.parseFloat(row.getValue('amount'))
-
-    const formatted = new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'EUR'
     }).format(amount)
-
-    return h('div', { class: 'text-right font-medium' }, formatted)
   }
 }]
 </script>
@@ -513,11 +523,8 @@ const columns: TableColumn<Payment>[] = [{
 </template>
 ```
 
-<note>
-
-When rendering components with `h`, you can either use the `resolveComponent` function or import from `#components`.
-
-</note>
+> [!NOTE]
+> When rendering components with `h`, you can either use the `resolveComponent` function or import from `#components`.
 
 ### Meta
 
@@ -538,11 +545,12 @@ Use the `meta` prop as an object ([TableMeta](https://tanstack.com/table/latest/
   
   </span>
 
-```vue [TableCustomMetaExample.vue]
+```vue [TableMetaExample.vue]
 <script setup lang="ts">
-import type { ColumnDef } from '@tanstack/vue-table'
+import type { TableColumn } from '@nuxt/ui'
+import type { TableMeta, Row } from '@tanstack/vue-table'
 
-interface Payment {
+type Payment = {
   id: string
   date: string
   status: 'paid' | 'failed' | 'refunded'
@@ -550,124 +558,122 @@ interface Payment {
   amount: number
 }
 
-const data: Payment[] = [
-  {
-    id: '4600',
-    date: '2024-03-11T15:30:00',
-    status: 'paid',
-    email: 'james.anderson@example.com',
-    amount: 594
-  },
-  {
-    id: '4599',
-    date: '2024-03-11T10:10:00',
-    status: 'failed',
-    email: 'mia.white@example.com',
-    amount: 276
-  },
-  {
-    id: '4598',
-    date: '2024-03-11T08:50:00',
-    status: 'refunded',
-    email: 'william.brown@example.com',
-    amount: 315
-  },
-  {
-    id: '4597',
-    date: '2024-03-10T19:45:00',
-    status: 'paid',
-    email: 'emma.davis@example.com',
-    amount: 529
-  },
-  {
-    id: '4596',
-    date: '2024-03-10T15:55:00',
-    status: 'paid',
-    email: 'ethan.harris@example.com',
-    amount: 639
-  }
-]
+const data = ref<Payment[]>([{
+  id: '4600',
+  date: '2024-03-11T15:30:00',
+  status: 'paid',
+  email: 'james.anderson@example.com',
+  amount: 594
+}, {
+  id: '4599',
+  date: '2024-03-11T10:10:00',
+  status: 'failed',
+  email: 'mia.white@example.com',
+  amount: 276
+}, {
+  id: '4598',
+  date: '2024-03-11T08:50:00',
+  status: 'refunded',
+  email: 'william.brown@example.com',
+  amount: 315
+}, {
+  id: '4597',
+  date: '2024-03-10T19:45:00',
+  status: 'paid',
+  email: 'emma.davis@example.com',
+  amount: 529
+}, {
+  id: '4596',
+  date: '2024-03-10T15:55:00',
+  status: 'paid',
+  email: 'ethan.harris@example.com',
+  amount: 639
+}])
 
-const columns: ColumnDef<Payment>[] = [
-  {
-    accessorKey: 'id',
-    header: 'ID',
-    meta: {
-      class: {
-        th: 'text-center font-semibold',
-        td: 'text-center font-mono'
-      }
-    }
-  },
-  {
-    accessorKey: 'date',
-    header: 'Date',
-    cell: ({ row }) => {
-      return new Date(row.getValue('date')).toLocaleString('en-US', {
-        day: 'numeric',
-        month: 'short',
-        hour: '2-digit',
-        minute: '2-digit'
-      })
-    }
-  },
-  {
-    accessorKey: 'status',
-    header: 'Status',
-    meta: {
-      class: {
-        th: 'text-center',
-        td: 'text-center'
-      }
-    },
-    cell: ({ row }) => {
-      const status = row.getValue('status') as string
-      const colorMap = {
-        paid: 'text-success',
-        failed: 'text-error',
-        refunded: 'text-warning'
-      }
-      return h('span', {
-        class: `font-semibold capitalize ${colorMap[status as keyof typeof colorMap]}`
-      }, status)
-    }
-  },
-  {
-    accessorKey: 'email',
-    header: 'Email',
-    meta: {
-      class: {
-        th: 'text-left',
-        td: 'text-left'
-      }
-    }
-  },
-  {
-    accessorKey: 'amount',
-    header: 'Amount',
-    meta: {
-      class: {
-        th: 'text-right font-bold text-primary',
-        td: 'text-right font-mono'
-      }
-    },
-    cell: ({ row }) => {
-      const amount = Number.parseFloat(row.getValue('amount'))
-      const formatted = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD'
-      }).format(amount)
-
-      return h('span', {
-        class: 'font-semibold text-success'
-      }, formatted)
+const columns: TableColumn<Payment>[] = [{
+  accessorKey: 'id',
+  header: 'ID',
+  meta: {
+    class: {
+      th: 'text-center font-semibold',
+      td: 'text-center font-mono'
     }
   }
-]
+}, {
+  accessorKey: 'date',
+  header: 'Date',
+  cell: ({ row }) => {
+    return new Date(row.getValue('date')).toLocaleString('en-US', {
+      day: 'numeric',
+      month: 'short',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    })
+  }
+}, {
+  accessorKey: 'status',
+  header: 'Status',
+  meta: {
+    class: {
+      th: 'text-center',
+      td: 'text-center'
+    }
+  },
+  cell: ({ row }) => {
+    const status = row.getValue('status') as string
+    const colorMap = {
+      paid: 'text-success',
+      failed: 'text-error',
+      refunded: 'text-warning'
+    }
+    return h('span', { class: `font-semibold capitalize ${colorMap[status as keyof typeof colorMap]}` }, status)
+  }
+}, {
+  accessorKey: 'email',
+  header: 'Email',
+  meta: {
+    class: {
+      th: 'text-left',
+      td: 'text-left'
+    }
+  }
+}, {
+  accessorKey: 'amount',
+  header: 'Amount',
+  meta: {
+    class: {
+      th: 'text-right font-bold text-primary',
+      td: 'text-right font-mono'
+    }
+  },
+  cell: ({ row }) => {
+    const amount = Number.parseFloat(row.getValue('amount'))
+    const formatted = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD'
+    }).format(amount)
+    return h('span', { class: 'font-semibold text-success' }, formatted)
+  }
+}]
+
+const meta: TableMeta<Payment> = {
+  class: {
+    tr: (row: Row<Payment>) => {
+      if (row.original.status === 'failed') {
+        return 'bg-error/10'
+      }
+      if (row.original.status === 'refunded') {
+        return 'bg-warning/10'
+      }
+      return ''
+    }
+  }
+}
 </script>
 
 <template>
-  <UTable :data="data" :columns="columns" class="w-full" />
+  <UTable :data="data" :columns="columns" :meta="meta" class="flex-1" />
 </template>
 ```
 
@@ -784,21 +790,29 @@ const columns: TableColumn<Payment>[] = [{
   header: 'Email'
 }, {
   accessorKey: 'amount',
-  header: () => h('div', { class: 'text-right' }, 'Amount'),
+  header: 'Amount',
+  meta: {
+    class: {
+      th: 'text-right',
+      td: 'text-right font-medium'
+    }
+  },
   cell: ({ row }) => {
     const amount = Number.parseFloat(row.getValue('amount'))
-
-    const formatted = new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'EUR'
     }).format(amount)
-
-    return h('div', { class: 'text-right font-medium' }, formatted)
   }
 }, {
   id: 'actions',
+  meta: {
+    class: {
+      td: 'text-right'
+    }
+  },
   cell: ({ row }) => {
-    return h('div', { class: 'text-right' }, h(UDropdownMenu, {
+    return h(UDropdownMenu, {
       'content': {
         align: 'end'
       },
@@ -808,9 +822,8 @@ const columns: TableColumn<Payment>[] = [{
       'icon': 'i-lucide-ellipsis-vertical',
       'color': 'neutral',
       'variant': 'ghost',
-      'class': 'ml-auto',
       'aria-label': 'Actions dropdown'
-    })))
+    }))
   }
 }]
 
@@ -848,11 +861,8 @@ function getRowItems(row: Row<Payment>) {
 
 You can add a new column that renders a [Button](/docs/components/button) component inside the `cell` to toggle the expandable state of a row using the TanStack Table [Expanding APIs](https://tanstack.com/table/latest/docs/api/features/expanding).
 
-<caution>
-
-You need to define the `#expanded` slot to render the expanded content which will receive the row as a parameter.
-
-</caution>
+> [!CAUTION]
+> You need to define the `#expanded` slot to render the expanded content which will receive the row as a parameter.
 
 ```vue [TableRowExpandableExample.vue]
 <script setup lang="ts">
@@ -948,16 +958,19 @@ const columns: TableColumn<Payment>[] = [{
   header: 'Email'
 }, {
   accessorKey: 'amount',
-  header: () => h('div', { class: 'text-right' }, 'Amount'),
+  header: 'Amount',
+  meta: {
+    class: {
+      th: 'text-right',
+      td: 'text-right font-medium'
+    }
+  },
   cell: ({ row }) => {
     const amount = Number.parseFloat(row.getValue('amount'))
-
-    const formatted = new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'EUR'
     }).format(amount)
-
-    return h('div', { class: 'text-right font-medium' }, formatted)
   }
 }]
 
@@ -979,17 +992,11 @@ const expanded = ref({ 1: true })
 </template>
 ```
 
-<tip>
+> [!TIP]
+> You can use the `expanded` prop to control the expandable state of the rows (can be binded with `v-model`).
 
-You can use the `expanded` prop to control the expandable state of the rows (can be binded with `v-model`).
-
-</tip>
-
-<note>
-
-You could also add this action to the [`DropdownMenu`](/docs/components/dropdown-menu) component inside the `actions` column.
-
-</note>
+> [!NOTE]
+> You could also add this action to the [`DropdownMenu`](/docs/components/dropdown-menu) component inside the `actions` column.
 
 ### With grouped rows
 
@@ -1005,7 +1012,7 @@ You can group rows based on a given column value and show/hide sub rows via some
 
 ```vue [TableGroupedRowsExample.vue]
 <script setup lang="ts">
-import { h, resolveComponent } from 'vue'
+import { resolveComponent } from 'vue'
 import type { TableColumn } from '@nuxt/ui'
 import { getGroupedRowModel } from '@tanstack/vue-table'
 import type { GroupingOptions } from '@tanstack/vue-table'
@@ -1146,16 +1153,19 @@ const columns: TableColumn<Payment>[] = [
   },
   {
     accessorKey: 'amount',
-    header: () => h('div', { class: 'text-right' }, 'Amount'),
+    header: 'Amount',
+    meta: {
+      class: {
+        th: 'text-right',
+        td: 'text-right font-medium'
+      }
+    },
     cell: ({ row }) => {
       const amount = Number.parseFloat(row.getValue('amount'))
-
-      const formatted = new Intl.NumberFormat('en-US', {
+      return new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'EUR'
       }).format(amount)
-
-      return h('div', { class: 'text-right font-medium' }, formatted)
     },
     aggregationFn: 'sum'
   }
@@ -1303,16 +1313,19 @@ const columns: TableColumn<Payment>[] = [{
   header: 'Email'
 }, {
   accessorKey: 'amount',
-  header: () => h('div', { class: 'text-right' }, 'Amount'),
+  header: 'Amount',
+  meta: {
+    class: {
+      th: 'text-right',
+      td: 'text-right font-medium'
+    }
+  },
   cell: ({ row }) => {
     const amount = Number.parseFloat(row.getValue('amount'))
-
-    const formatted = new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'EUR'
     }).format(amount)
-
-    return h('div', { class: 'text-right font-medium' }, formatted)
   }
 }]
 
@@ -1338,21 +1351,15 @@ const rowSelection = ref({ 1: true })
 </template>
 ```
 
-<tip>
-
-You can use the `row-selection` prop to control the selection state of the rows (can be binded with `v-model`).
-
-</tip>
+> [!TIP]
+> You can use the `row-selection` prop to control the selection state of the rows (can be binded with `v-model`).
 
 ### With row select event
 
 You can add a `@select` listener to make rows clickable with or without a checkbox column.
 
-<note>
-
-The handler function receives the `Event` and `TableRow` instance as the first and second arguments respectively.
-
-</note>
+> [!NOTE]
+> The handler function receives the `Event` and `TableRow` instance as the first and second arguments respectively.
 
 ```vue [TableRowSelectEventExample.vue]
 <script setup lang="ts">
@@ -1443,16 +1450,19 @@ const columns: TableColumn<Payment>[] = [{
   header: 'Email'
 }, {
   accessorKey: 'amount',
-  header: () => h('div', { class: 'text-right' }, 'Amount'),
+  header: 'Amount',
+  meta: {
+    class: {
+      th: 'text-right',
+      td: 'text-right font-medium'
+    }
+  },
   cell: ({ row }) => {
     const amount = Number.parseFloat(row.getValue('amount'))
-
-    const formatted = new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'EUR'
     }).format(amount)
-
-    return h('div', { class: 'text-right font-medium' }, formatted)
   }
 }]
 
@@ -1486,21 +1496,15 @@ function onSelect(e: Event, row: TableRow<Payment>) {
 </template>
 ```
 
-<tip>
-
-You can use this to navigate to a page, open a modal or even to select the row manually.
-
-</tip>
+> [!TIP]
+> You can use this to navigate to a page, open a modal or even to select the row manually.
 
 ### With row context menu event
 
 You can add a `@contextmenu` listener to make rows right clickable and wrap the Table in a [ContextMenu](/docs/components/context-menu) component to display row actions for example.
 
-<note>
-
-The handler function receives the `Event` and `TableRow` instance as the first and second arguments respectively.
-
-</note>
+> [!NOTE]
+> The handler function receives the `Event` and `TableRow` instance as the first and second arguments respectively.
 
 ```vue [TableRowContextMenuEventExample.vue]
 <script setup lang="ts">
@@ -1599,16 +1603,19 @@ const columns: TableColumn<Payment>[] = [{
   header: 'Email'
 }, {
   accessorKey: 'amount',
-  header: () => h('div', { class: 'text-right' }, 'Amount'),
+  header: 'Amount',
+  meta: {
+    class: {
+      th: 'text-right',
+      td: 'text-right font-medium'
+    }
+  },
   cell: ({ row }) => {
     const amount = Number.parseFloat(row.getValue('amount'))
-
-    const formatted = new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'EUR'
     }).format(amount)
-
-    return h('div', { class: 'text-right font-medium' }, formatted)
   }
 }]
 
@@ -1668,11 +1675,8 @@ function onContextmenu(_e: Event, row: TableRow<Payment>) {
 
 You can add a `@hover` listener to make rows hoverable and use a [Popover](/docs/components/popover) or a [Tooltip](/docs/components/tooltip) component to display row details for example.
 
-<note>
-
-The handler function receives the `Event` and `TableRow` instance as the first and second arguments respectively.
-
-</note>
+> [!NOTE]
+> The handler function receives the `Event` and `TableRow` instance as the first and second arguments respectively.
 
 ```vue [TableRowHoverEventExample.vue]
 <script setup lang="ts">
@@ -1767,16 +1771,19 @@ const columns: TableColumn<Payment>[] = [{
   header: 'Email'
 }, {
   accessorKey: 'amount',
-  header: () => h('div', { class: 'text-right' }, 'Amount'),
+  header: 'Amount',
+  meta: {
+    class: {
+      th: 'text-right',
+      td: 'text-right font-medium'
+    }
+  },
   cell: ({ row }) => {
     const amount = Number.parseFloat(row.getValue('amount'))
-
-    const formatted = new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'EUR'
     }).format(amount)
-
-    return h('div', { class: 'text-right font-medium' }, formatted)
   }
 }]
 
@@ -1834,11 +1841,8 @@ function onHover(_e: Event, row: TableRow<Payment> | null) {
 </template>
 ```
 
-<note>
-
-This example is similar as the Popover [with following cursor example](/docs/components/popover#with-following-cursor) and uses a [`refDebounced`](https://vueuse.org/shared/refDebounced/#refdebounced) to prevent the Popover from opening and closing too quickly when moving the cursor from one row to another.
-
-</note>
+> [!NOTE]
+> This example is similar as the Popover [with following cursor example](/docs/components/popover#with-following-cursor) and uses a [`refDebounced`](https://vueuse.org/shared/refDebounced/#refdebounced) to prevent the Popover from opening and closing too quickly when moving the cursor from one row to another.
 
 ### With column footer
 
@@ -1924,26 +1928,27 @@ const columns: TableColumn<Payment>[] = [{
   header: 'Email'
 }, {
   accessorKey: 'amount',
-  header: () => h('div', { class: 'text-right' }, 'Amount'),
+  header: 'Amount',
+  meta: {
+    class: {
+      th: 'text-right',
+      td: 'text-right font-medium'
+    }
+  },
   footer: ({ column }) => {
     const total = column.getFacetedRowModel().rows.reduce((acc: number, row: TableRow<Payment>) => acc + Number.parseFloat(row.getValue('amount')), 0)
-
     const formatted = new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'EUR'
     }).format(total)
-
-    return h('div', { class: 'text-right font-medium' }, `Total: ${formatted}`)
+    return `Total: ${formatted}`
   },
   cell: ({ row }) => {
     const amount = Number.parseFloat(row.getValue('amount'))
-
-    const formatted = new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'EUR'
     }).format(amount)
-
-    return h('div', { class: 'text-right font-medium' }, formatted)
   }
 }]
 </script>
@@ -2049,16 +2054,19 @@ const columns: TableColumn<Payment>[] = [{
   }
 }, {
   accessorKey: 'amount',
-  header: () => h('div', { class: 'text-right' }, 'Amount'),
+  header: 'Amount',
+  meta: {
+    class: {
+      th: 'text-right',
+      td: 'text-right font-medium'
+    }
+  },
   cell: ({ row }) => {
     const amount = Number.parseFloat(row.getValue('amount'))
-
-    const formatted = new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'EUR'
     }).format(amount)
-
-    return h('div', { class: 'text-right font-medium' }, formatted)
   }
 }]
 
@@ -2078,11 +2086,8 @@ const sorting = ref([{
 </template>
 ```
 
-<tip>
-
-You can use the `sorting` prop to control the sorting state of the columns (can be binded with `v-model`).
-
-</tip>
+> [!TIP]
+> You can use the `sorting` prop to control the sorting state of the columns (can be binded with `v-model`).
 
 You can also create a reusable component to make any column header sortable.
 
@@ -2169,16 +2174,19 @@ const columns: TableColumn<Payment>[] = [{
   header: ({ column }) => getHeader(column, 'Email')
 }, {
   accessorKey: 'amount',
-  header: ({ column }) => h('div', { class: 'text-right' }, getHeader(column, 'Amount')),
+  header: ({ column }) => getHeader(column, 'Amount'),
+  meta: {
+    class: {
+      th: 'text-right',
+      td: 'text-right font-medium'
+    }
+  },
   cell: ({ row }) => {
     const amount = Number.parseFloat(row.getValue('amount'))
-
-    const formatted = new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'EUR'
     }).format(amount)
-
-    return h('div', { class: 'text-right font-medium' }, formatted)
   }
 }]
 
@@ -2241,21 +2249,15 @@ const sorting = ref([{
 </template>
 ```
 
-<note>
-
-In this example, we use a function to define the column header but you can also create an actual component.
-
-</note>
+> [!NOTE]
+> In this example, we use a function to define the column header but you can also create an actual component.
 
 ### With column pinning
 
 You can update a column `header` to render a [Button](/docs/components/button) component inside the `header` to toggle the pinning state using the TanStack Table [Pinning APIs](https://tanstack.com/table/latest/docs/api/features/row-pinning).
 
-<note>
-
-A pinned column will become sticky on the left or right side of the table.
-
-</note>
+> [!NOTE]
+> A pinned column will become sticky on the left or right side of the table. When using column pinning, you should define explicit `size` values for your columns to ensure proper column width handling, especially with multiple pinned columns.
 
 ```vue [TableColumnPinningExample.vue]
 <script setup lang="ts">
@@ -2275,31 +2277,31 @@ type Payment = {
 }
 
 const data = ref<Payment[]>([{
-  id: '46000000000000000000000000000000000000000',
+  id: '4600000000000000000000000000000000000000',
   date: '2024-03-11T15:30:00',
   status: 'paid',
   email: 'james.anderson@example.com',
   amount: 594000
 }, {
-  id: '45990000000000000000000000000000000000000',
+  id: '4599000000000000000000000000000000000000',
   date: '2024-03-11T10:10:00',
   status: 'failed',
   email: 'mia.white@example.com',
   amount: 276000
 }, {
-  id: '45980000000000000000000000000000000000000',
+  id: '4598000000000000000000000000000000000000',
   date: '2024-03-11T08:50:00',
   status: 'refunded',
   email: 'william.brown@example.com',
   amount: 315000
 }, {
-  id: '45970000000000000000000000000000000000000',
+  id: '4597000000000000000000000000000000000000',
   date: '2024-03-10T19:45:00',
   status: 'paid',
   email: 'emma.davis@example.com',
   amount: 5290000
 }, {
-  id: '45960000000000000000000000000000000000000',
+  id: '4596000000000000000000000000000000000000',
   date: '2024-03-10T15:55:00',
   status: 'paid',
   email: 'ethan.harris@example.com',
@@ -2309,10 +2311,12 @@ const data = ref<Payment[]>([{
 const columns: TableColumn<Payment>[] = [{
   accessorKey: 'id',
   header: ({ column }) => getHeader(column, 'ID', 'left'),
-  cell: ({ row }) => `#${row.getValue('id')}`
+  cell: ({ row }) => `#${row.getValue('id')}`,
+  size: 381
 }, {
   accessorKey: 'date',
-  header: ({ column }) => getHeader(column, 'Date', 'left')
+  header: ({ column }) => getHeader(column, 'Date', 'left'),
+  size: 172
 }, {
   accessorKey: 'status',
   header: ({ column }) => getHeader(column, 'Status', 'left'),
@@ -2324,23 +2328,29 @@ const columns: TableColumn<Payment>[] = [{
     })[row.getValue('status') as string]
 
     return h(UBadge, { class: 'capitalize', variant: 'subtle', color }, () => row.getValue('status'))
-  }
+  },
+  size: 103
 }, {
   accessorKey: 'email',
-  header: ({ column }) => getHeader(column, 'Email', 'left')
+  header: ({ column }) => getHeader(column, 'Email', 'left'),
+  size: 232
 }, {
   accessorKey: 'amount',
-  header: ({ column }) => h('div', { class: 'text-right' }, getHeader(column, 'Amount', 'right')),
+  header: ({ column }) => getHeader(column, 'Amount', 'right'),
+  meta: {
+    class: {
+      th: 'text-right',
+      td: 'text-right font-medium'
+    }
+  },
   cell: ({ row }) => {
     const amount = Number.parseFloat(row.getValue('amount'))
-
-    const formatted = new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'EUR'
     }).format(amount)
-
-    return h('div', { class: 'text-right font-medium' }, formatted)
-  }
+  },
+  size: 130
 }]
 
 function getHeader(column: Column<Payment>, label: string, position: 'left' | 'right') {
@@ -2359,7 +2369,7 @@ function getHeader(column: Column<Payment>, label: string, position: 'left' | 'r
 }
 
 const columnPinning = ref({
-  left: [],
+  left: ['id'],
   right: ['amount']
 })
 </script>
@@ -2374,11 +2384,8 @@ const columnPinning = ref({
 </template>
 ```
 
-<tip>
-
-You can use the `column-pinning` prop to control the pinning state of the columns (can be binded with `v-model`).
-
-</tip>
+> [!TIP]
+> You can use the `column-pinning` prop to control the pinning state of the columns (can be binded with `v-model`).
 
 ### With column visibility
 
@@ -2465,16 +2472,19 @@ const columns: TableColumn<Payment>[] = [{
   header: 'Email'
 }, {
   accessorKey: 'amount',
-  header: () => h('div', { class: 'text-right' }, 'Amount'),
+  header: 'Amount',
+  meta: {
+    class: {
+      th: 'text-right',
+      td: 'text-right font-medium'
+    }
+  },
   cell: ({ row }) => {
     const amount = Number.parseFloat(row.getValue('amount'))
-
-    const formatted = new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'EUR'
     }).format(amount)
-
-    return h('div', { class: 'text-right font-medium' }, formatted)
   }
 }]
 
@@ -2521,11 +2531,8 @@ const columnVisibility = ref({
 </template>
 ```
 
-<tip>
-
-You can use the `column-visibility` prop to control the visibility state of the columns (can be binded with `v-model`).
-
-</tip>
+> [!TIP]
+> You can use the `column-visibility` prop to control the visibility state of the columns (can be binded with `v-model`).
 
 ### With column filters
 
@@ -2611,16 +2618,19 @@ const columns: TableColumn<Payment>[] = [{
   header: 'Email'
 }, {
   accessorKey: 'amount',
-  header: () => h('div', { class: 'text-right' }, 'Amount'),
+  header: 'Amount',
+  meta: {
+    class: {
+      th: 'text-right',
+      td: 'text-right font-medium'
+    }
+  },
   cell: ({ row }) => {
     const amount = Number.parseFloat(row.getValue('amount'))
-
-    const formatted = new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'EUR'
     }).format(amount)
-
-    return h('div', { class: 'text-right font-medium' }, formatted)
   }
 }]
 
@@ -2653,11 +2663,8 @@ const columnFilters = ref([{
 </template>
 ```
 
-<tip>
-
-You can use the `column-filters` prop to control the filters state of the columns (can be binded with `v-model`).
-
-</tip>
+> [!TIP]
+> You can use the `column-filters` prop to control the filters state of the columns (can be binded with `v-model`).
 
 ### With global filter
 
@@ -2743,16 +2750,19 @@ const columns: TableColumn<Payment>[] = [{
   header: 'Email'
 }, {
   accessorKey: 'amount',
-  header: () => h('div', { class: 'text-right' }, 'Amount'),
+  header: 'Amount',
+  meta: {
+    class: {
+      th: 'text-right',
+      td: 'text-right font-medium'
+    }
+  },
   cell: ({ row }) => {
     const amount = Number.parseFloat(row.getValue('amount'))
-
-    const formatted = new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'EUR'
     }).format(amount)
-
-    return h('div', { class: 'text-right font-medium' }, formatted)
   }
 }]
 
@@ -2779,11 +2789,8 @@ const globalFilter = ref('45')
 </template>
 ```
 
-<tip>
-
-You can use the `global-filter` prop to control the global filter state (can be binded with `v-model`).
-
-</tip>
+> [!TIP]
+> You can use the `global-filter` prop to control the global filter state (can be binded with `v-model`).
 
 ### With pagination
 
@@ -2926,14 +2933,19 @@ const columns: TableColumn<Payment>[] = [{
   header: 'Email'
 }, {
   accessorKey: 'amount',
-  header: () => h('div', { class: 'text-right' }, 'Amount'),
+  header: 'Amount',
+  meta: {
+    class: {
+      th: 'text-right',
+      td: 'text-right font-medium'
+    }
+  },
   cell: ({ row }) => {
     const amount = Number.parseFloat(row.getValue('amount'))
-    const formatted = new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'EUR'
     }).format(amount)
-    return h('div', { class: 'text-right font-medium' }, formatted)
   }
 }]
 
@@ -2941,13 +2953,24 @@ const pagination = ref({
   pageIndex: 0,
   pageSize: 5
 })
+
+const globalFilter = ref('')
 </script>
 
 <template>
   <div class="w-full space-y-4 pb-4">
+    <div class="flex px-4 py-3.5 border-b border-accented">
+      <UInput
+        v-model="globalFilter"
+        class="max-w-sm"
+        placeholder="Filter..."
+      />
+    </div>
+
     <UTable
       ref="table"
       v-model:pagination="pagination"
+      v-model:global-filter="globalFilter"
       :data="data"
       :columns="columns"
       :pagination-options="{
@@ -2956,9 +2979,9 @@ const pagination = ref({
       class="flex-1"
     />
 
-    <div class="flex justify-center border-t border-default pt-4">
+    <div class="flex justify-end border-t border-default pt-4 px-4">
       <UPagination
-        :default-page="(table?.tableApi?.getState().pagination.pageIndex || 0) + 1"
+        :page="(table?.tableApi?.getState().pagination.pageIndex || 0) + 1"
         :items-per-page="table?.tableApi?.getState().pagination.pageSize"
         :total="table?.tableApi?.getFilteredRowModel().rows.length"
         @update:page="(p) => table?.tableApi?.setPageIndex(p - 1)"
@@ -2968,11 +2991,8 @@ const pagination = ref({
 </template>
 ```
 
-<tip>
-
-You can use the `pagination` prop to control the pagination state (can be binded with `v-model`).
-
-</tip>
+> [!TIP]
+> You can use the `pagination` prop to control the pagination state (can be binded with `v-model`).
 
 ### With fetched data
 
@@ -3039,7 +3059,7 @@ const columns: TableColumn<User>[] = [{
 
 ### With infinite scroll
 
-If you use server-side pagination, you can use the [`useInfiniteScroll`](https://vueuse.org/core/useInfiniteScroll/#useinfinitescroll) composable to load more data when scrolling.
+If you use server-side pagination, you can use the [`useInfiniteScroll`](https://vueuse.org/core/useInfiniteScroll/#useinfinitescroll) composable to load more data  as the user scrolls.
 
 ```vue [TableInfiniteScrollExample.vue]
 <script setup lang="ts">
@@ -3134,16 +3154,13 @@ onMounted(() => {
 
 You can use the [`useSortable`](https://vueuse.org/integrations/useSortable/) composable from [`@vueuse/integrations`](https://vueuse.org/integrations/README.html) to enable drag and drop functionality on the Table. This integration wraps [Sortable.js](https://sortablejs.github.io/Sortable/) to provide a seamless drag and drop experience.
 
-<note>
-
-Since the table ref doesn't expose the tbody element, add a unique class to it via the `:ui` prop to target it with `useSortable` (e.g. `:ui="{ tbody: 'my-table-tbody' }"`).
-
-</note>
+> [!NOTE]
+> Since the table ref doesn't expose the tbody element, add a unique class to it via the `:ui` prop to target it with `useSortable` (e.g. `:ui="{ tbody: 'my-table-tbody' }"`).
 
 ```vue [TableDragAndDropExample.vue]
 <script setup lang="ts">
 import type { TableColumn } from '@nuxt/ui'
-import { useSortable } from '@vueuse/integrations/useSortable.mjs'
+import { useSortable } from '@vueuse/integrations/useSortable'
 
 type Payment = {
   id: string
@@ -3195,14 +3212,19 @@ const columns: TableColumn<Payment>[] = [{
   header: 'Email'
 }, {
   accessorKey: 'amount',
-  header: () => h('div', { class: 'text-right' }, 'Amount'),
+  header: 'Amount',
+  meta: {
+    class: {
+      th: 'text-right',
+      td: 'text-right font-medium'
+    }
+  },
   cell: ({ row }) => {
     const amount = Number.parseFloat(row.getValue('amount'))
-    const formatted = new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'EUR'
     }).format(amount)
-    return h('div', { class: 'text-right font-medium' }, formatted)
   }
 }]
 
@@ -3224,15 +3246,12 @@ useSortable('.my-table-tbody', data, {
 </template>
 ```
 
-### With virtualization <badge label="4.1+"></badge>
+### With virtualization `4.1+`
 
 Use the `virtualize` prop to enable virtualization for large datasets as a boolean or an object with options like `{ estimateSize: 65, overscan: 12 }`. You can also pass other [TanStack Virtual options](https://tanstack.com/virtual/latest/docs/api/virtualizer#optional-options) to customize the virtualization behavior.
 
-<warning>
-
-When virtualization is enabled, the divider between rows and sticky properties are not supported.
-
-</warning>
+> [!WARNING]
+> When virtualization is enabled, the divider between rows and sticky properties are not supported.
 
 ```vue [TableVirtualizeExample.vue]
 <script setup lang="ts">
@@ -3290,16 +3309,19 @@ const columns: TableColumn<Payment>[] = [{
   header: 'Email'
 }, {
   accessorKey: 'amount',
-  header: () => h('div', { class: 'text-right' }, 'Amount'),
+  header: 'Amount',
+  meta: {
+    class: {
+      th: 'text-right',
+      td: 'text-right font-medium'
+    }
+  },
   cell: ({ row }) => {
     const amount = Number.parseFloat(row.getValue('amount'))
-
-    const formatted = new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'EUR'
     }).format(amount)
-
-    return h('div', { class: 'text-right font-medium' }, formatted)
   }
 }]
 </script>
@@ -3314,11 +3336,8 @@ const columns: TableColumn<Payment>[] = [{
 </template>
 ```
 
-<note>
-
-A height constraint is required on the table for virtualization to work properly (e.g., `class="h-[400px]"`).
-
-</note>
+> [!NOTE]
+> A height constraint is required on the table for virtualization to work properly (e.g., `class="h-[400px]"`).
 
 ### With tree data
 
@@ -3460,16 +3479,19 @@ const columns: TableColumn<Payment>[] = [{
   header: 'Email'
 }, {
   accessorKey: 'amount',
-  header: () => h('div', { class: 'text-right' }, 'Amount'),
+  header: 'Amount',
+  meta: {
+    class: {
+      th: 'text-right',
+      td: 'text-right font-medium'
+    }
+  },
   cell: ({ row }) => {
     const amount = Number.parseFloat(row.getValue('amount'))
-
-    const formatted = new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'EUR'
     }).format(amount)
-
-    return h('div', { class: 'text-right font-medium' }, formatted)
   }
 }]
 
@@ -3635,13 +3657,13 @@ interface TableProps {
    * The element or component this component should render as.
    */
   as?: any;
-  data?: unknown[] | undefined;
-  columns?: TableColumn<unknown, unknown>[] | undefined;
+  data?: T[] | undefined;
+  columns?: TableColumn<T, unknown>[] | undefined;
   caption?: string | undefined;
   /**
    * You can pass any object to `options.meta` and access it anywhere the `table` is available via `table.options.meta`.
    */
-  meta?: TableMeta<unknown> | undefined;
+  meta?: TableMeta<T> | undefined;
   /**
    * Enable virtualization for large datasets.
    * Note: when enabled, the divider between rows and sticky properties are not supported.
@@ -3670,21 +3692,21 @@ interface TableProps {
 }"
    */
   watchOptions?: WatchOptions<boolean> | undefined;
-  globalFilterOptions?: Omit<GlobalFilterOptions<unknown>, "onGlobalFilterChange"> | undefined;
-  columnFiltersOptions?: Omit<ColumnFiltersOptions<unknown>, "getFilteredRowModel" | "onColumnFiltersChange"> | undefined;
+  globalFilterOptions?: Omit<GlobalFilterOptions<T>, "onGlobalFilterChange"> | undefined;
+  columnFiltersOptions?: Omit<ColumnFiltersOptions<T>, "getFilteredRowModel" | "onColumnFiltersChange"> | undefined;
   columnPinningOptions?: Omit<ColumnPinningOptions, "onColumnPinningChange"> | undefined;
   columnSizingOptions?: Omit<ColumnSizingOptions, "onColumnSizingChange" | "onColumnSizingInfoChange"> | undefined;
   visibilityOptions?: Omit<VisibilityOptions, "onColumnVisibilityChange"> | undefined;
-  sortingOptions?: Omit<SortingOptions<unknown>, "getSortedRowModel" | "onSortingChange"> | undefined;
+  sortingOptions?: Omit<SortingOptions<T>, "getSortedRowModel" | "onSortingChange"> | undefined;
   groupingOptions?: Omit<GroupingOptions, "onGroupingChange"> | undefined;
-  expandedOptions?: Omit<ExpandedOptions<unknown>, "getExpandedRowModel" | "onExpandedChange"> | undefined;
-  rowSelectionOptions?: Omit<RowSelectionOptions<unknown>, "onRowSelectionChange"> | undefined;
-  rowPinningOptions?: Omit<RowPinningOptions<unknown>, "onRowPinningChange"> | undefined;
+  expandedOptions?: Omit<ExpandedOptions<T>, "getExpandedRowModel" | "onExpandedChange"> | undefined;
+  rowSelectionOptions?: Omit<RowSelectionOptions<T>, "onRowSelectionChange"> | undefined;
+  rowPinningOptions?: Omit<RowPinningOptions<T>, "onRowPinningChange"> | undefined;
   paginationOptions?: Omit<PaginationOptions, "onPaginationChange"> | undefined;
-  facetedOptions?: FacetedOptions<unknown> | undefined;
-  onSelect?: ((e: Event, row: TableRow<unknown>) => void) | undefined;
-  onHover?: ((e: Event, row: TableRow<unknown> | null) => void) | undefined;
-  onContextmenu?: ((e: Event, row: TableRow<unknown>) => void) | ((e: Event, row: TableRow<unknown>) => void)[] | undefined;
+  facetedOptions?: FacetedOptions<T> | undefined;
+  onSelect?: ((e: Event, row: TableRow<T>) => void) | undefined;
+  onHover?: ((e: Event, row: TableRow<T> | null) => void) | undefined;
+  onContextmenu?: ((e: Event, row: TableRow<T>) => void) | ((e: Event, row: TableRow<T>) => void)[] | undefined;
   ui?: { root?: ClassNameValue; base?: ClassNameValue; caption?: ClassNameValue; thead?: ClassNameValue; tbody?: ClassNameValue; tfoot?: ClassNameValue; tr?: ClassNameValue; th?: ClassNameValue; td?: ClassNameValue; separator?: ClassNameValue; empty?: ClassNameValue; loading?: ClassNameValue; } | undefined;
   state?: Partial<TableState> | undefined;
   onStateChange?: ((updater: Updater<TableState>) => void) | undefined;
@@ -3724,15 +3746,15 @@ interface TableProps {
   /**
    * Default column options to use for all column defs supplied to the table.
    */
-  defaultColumn?: Partial<ColumnDef<unknown, unknown>> | undefined;
+  defaultColumn?: Partial<ColumnDef<T, unknown>> | undefined;
   /**
    * This optional function is used to derive a unique ID for any given row. If not provided the rows index is used (nested rows join together with `.` using their grandparents' index eg. `index.index.index`). If you need to identify individual rows that are originating from any server-side operations, it's suggested you use this function to return an ID that makes sense regardless of network IO/ambiguity eg. a userId, taskId, database ID field, etc.
    */
-  getRowId?: ((originalRow: unknown, index: number, parent?: Row<unknown> | undefined) => string) | undefined;
+  getRowId?: ((originalRow: T, index: number, parent?: Row<T> | undefined) => string) | undefined;
   /**
    * This optional function is used to access the sub rows for any given row. If you are using nested rows, you will need to use this function to return the sub rows object (or undefined) from the row.
    */
-  getSubRows?: ((originalRow: unknown, index: number) => unknown[] | undefined) | undefined;
+  getSubRows?: ((originalRow: T, index: number) => T[] | undefined) | undefined;
   /**
    * Use this option to optionally pass initial state to the table. This state will be used when resetting various table states either automatically by the table (eg. `options.autoResetPageIndex`) or via functions like `table.resetRowSelection()`. Most reset function allow you optionally pass a flag to reset to a blank/default state instead of the initial state.
    * 
@@ -3742,71 +3764,30 @@ interface TableProps {
   /**
    * This option is used to optionally implement the merging of table options.
    */
-  mergeOptions?: ((defaultOptions: TableOptions<unknown>, options: Partial<TableOptions<unknown>>) => TableOptions<unknown>) | undefined;
+  mergeOptions?: ((defaultOptions: TableOptions<T>, options: Partial<TableOptions<T>>) => TableOptions<T>) | undefined;
   cellpadding?: Numberish | undefined;
   cellspacing?: Numberish | undefined;
   summary?: string | undefined;
   width?: Numberish | undefined;
-  /**
-   * @default "undefined"
-   */
   globalFilter?: string | undefined;
-  /**
-   * @default "[]"
-   */
   columnFilters?: ColumnFiltersState | undefined;
-  /**
-   * @default "[]"
-   */
   columnOrder?: ColumnOrderState | undefined;
-  /**
-   * @default "{}"
-   */
   columnVisibility?: VisibilityState | undefined;
-  /**
-   * @default "{}"
-   */
   columnPinning?: ColumnPinningState | undefined;
-  /**
-   * @default "{}"
-   */
   columnSizing?: ColumnSizingState | undefined;
-  /**
-   * @default "{}"
-   */
   columnSizingInfo?: ColumnSizingInfoState | undefined;
-  /**
-   * @default "{}"
-   */
   rowSelection?: RowSelectionState | undefined;
-  /**
-   * @default "{}"
-   */
   rowPinning?: RowPinningState | undefined;
-  /**
-   * @default "[]"
-   */
   sorting?: SortingState | undefined;
-  /**
-   * @default "[]"
-   */
   grouping?: GroupingState | undefined;
-  /**
-   * @default "{}"
-   */
   expanded?: ExpandedState | undefined;
-  /**
-   * @default "{}"
-   */
   pagination?: PaginationState | undefined;
 }
 ```
 
-<callout icon="i-simple-icons-mdnwebdocs" to="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table#attributes" target="_blank">
-
-This component also supports all native `<table>` HTML attributes.
-
-</callout>
+> [!NOTE]
+> See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table#attributes
+> This component also supports all native `<table>` HTML attributes.
 
 ### Slots
 
@@ -3925,12 +3906,12 @@ export default defineAppConfig({
         base: 'min-w-full',
         caption: 'sr-only',
         thead: 'relative',
-        tbody: '[&>tr]:data-[selectable=true]:hover:bg-elevated/50 [&>tr]:data-[selectable=true]:focus-visible:outline-primary',
+        tbody: 'isolate [&>tr]:data-[selectable=true]:hover:bg-elevated/50 [&>tr]:data-[selectable=true]:focus-visible:outline-primary',
         tfoot: 'relative',
         tr: 'data-[selected=true]:bg-elevated/50',
         th: 'px-4 py-3.5 text-sm text-highlighted text-left rtl:text-right font-semibold [&:has([role=checkbox])]:pe-0',
         td: 'p-4 text-sm text-muted whitespace-nowrap [&:has([role=checkbox])]:pe-0',
-        separator: 'absolute z-[1] left-0 w-full h-px bg-(--ui-border-accented)',
+        separator: 'absolute z-1 left-0 w-full h-px bg-(--ui-border-accented)',
         empty: 'py-6 text-center text-sm text-muted',
         loading: 'py-6 text-center'
       },
@@ -3943,25 +3924,25 @@ export default defineAppConfig({
         },
         pinned: {
           true: {
-            th: 'sticky bg-default/75 data-[pinned=left]:left-0 data-[pinned=right]:right-0',
-            td: 'sticky bg-default/75 data-[pinned=left]:left-0 data-[pinned=right]:right-0'
+            th: 'sticky bg-default/75 z-1',
+            td: 'sticky bg-default/75 z-1'
           }
         },
         sticky: {
           true: {
-            thead: 'sticky top-0 inset-x-0 bg-default/75 z-[1] backdrop-blur',
-            tfoot: 'sticky bottom-0 inset-x-0 bg-default/75 z-[1] backdrop-blur'
+            thead: 'sticky top-0 inset-x-0 bg-default/75 backdrop-blur z-1',
+            tfoot: 'sticky bottom-0 inset-x-0 bg-default/75 backdrop-blur z-1'
           },
           header: {
-            thead: 'sticky top-0 inset-x-0 bg-default/75 z-[1] backdrop-blur'
+            thead: 'sticky top-0 inset-x-0 bg-default/75 backdrop-blur z-1'
           },
           footer: {
-            tfoot: 'sticky bottom-0 inset-x-0 bg-default/75 z-[1] backdrop-blur'
+            tfoot: 'sticky bottom-0 inset-x-0 bg-default/75 backdrop-blur z-1'
           }
         },
         loading: {
           true: {
-            thead: 'after:absolute after:z-[1] after:h-px'
+            thead: 'after:absolute after:z-1 after:h-px'
           }
         },
         loadingAnimation: {
@@ -4070,8 +4051,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

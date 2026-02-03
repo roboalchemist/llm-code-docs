@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/search-research/serpapi-googleshoppingtool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SerpApi Google Shopping Tool
 
 > The `SerpApiGoogleShoppingTool` searches Google Shopping results using SerpApi.

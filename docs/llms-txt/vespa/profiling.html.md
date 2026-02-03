@@ -121,7 +121,7 @@ where _$hostname_ is the node that is running the container with the YourKit age
 
 You are now ready to profile your application. (You will need to put some realistic load against the container instance, see the [Vespa benchmarking guide](benchmarking.html)) After having started the load simulation you can start the profiling session, open the YourKit application installed locally and select _Monitor Remote Applications =\> Connect to remote application_. Enter _localhost:1080_ and press Connect. You should now see the profiling screen with _Remote application "Server" (PID XXXXX) is being profiled at localhost:1080_.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

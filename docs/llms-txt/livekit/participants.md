@@ -10,18 +10,22 @@ LiveKit docs › Understanding LiveKit › Rooms, participants, & tracks › Par
 
 ## Overview
 
-A `Participant` is a user or process that is participating in a realtime session. They are represented by a unique developer-provided `identity` and a server-generated `sid`. A participant object also contains metadata about its state and tracks they've published.
+A `Participant` is a user or process that is participating in a realtime session. They are represented by a unique developer-provided `identity` and a server-generated `sid`. A participant object also contains metadata about its state and [tracks](https://docs.livekit.io/intro/basics/rooms-participants-tracks/tracks.md) they've published.
 
 > ❗ **Important**
 > 
-> A participant's identity is unique per room. If participants with the same identity join a room, only the most recent one to join will remain; the server automatically disconnects other participants using that identity.
+> A participant's identity is unique per room. If participants with the same identity join a room, only the most recent one to join can remain; the server automatically disconnects other participants using that identity.
 
-There are two kinds of participant objects in the SDKs:
+There are two participant classes in the SDKs:
 
-- A `LocalParticipant` represents the current user who, by default, can publish tracks in a room.
-- A `RemoteParticipant` represents a remote user. The local participant, by default, can subscribe to any tracks published by a remote participant.
+- `LocalParticipant`: An instance of `LocalParticipant` is created when a user connects to a room and represents the current user. It's the interface that lets the user publish tracks to the room.
+- `RemoteParticipant`: An instance of `RemoteParticipant` is created for each remote user that joins the room. The local participant, by default, can subscribe to any tracks published by a remote participant.
 
 A participant may also [exchange data](https://docs.livekit.io/transport/data.md) with one or many other participants.
+
+### Linked participant
+
+In an agent session, an agent can interact with one participant at a time. The _linked participant_ is the participant the agent is actively "listening" to. To learn more, see [Linked participant in agent sessions](https://docs.livekit.io/agents/logic/sessions.md#linked-participant).
 
 ### Hidden participants
 
@@ -667,7 +671,7 @@ You can also unmute the track by setting `muted` to `false`.
 
 ---
 
-This document was rendered at 2025-12-31T18:29:32.123Z.
+This document was rendered at 2026-02-03T03:24:52.870Z.
 For the latest version of this document, see [https://docs.livekit.io/intro/basics/rooms-participants-tracks/participants.md](https://docs.livekit.io/intro/basics/rooms-participants-tracks/participants.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

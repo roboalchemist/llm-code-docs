@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/examplecode/tools/snowflake-streamlit.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Streamlit in Snowflake
 
 [Streamlit](https://streamlit.io/) is an open-source Python framework for data scientists and AI/ML engineers to

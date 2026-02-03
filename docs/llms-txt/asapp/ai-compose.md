@@ -1,9 +1,13 @@
 # Source: https://docs.asapp.com/ai-productivity/ai-compose.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AI Compose
 
 <Frame>
-  <img src="https://mintcdn.com/asapp/oWc-pd36yCvpD40u/images/autocompose/autocompose-home.png?fit=max&auto=format&n=oWc-pd36yCvpD40u&q=85&s=cee9fe320b1776f90d2c5742e322eda3" data-og-width="1408" width="1408" data-og-height="594" height="594" data-path="images/autocompose/autocompose-home.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/oWc-pd36yCvpD40u/images/autocompose/autocompose-home.png?w=280&fit=max&auto=format&n=oWc-pd36yCvpD40u&q=85&s=d6eabf4cb53b0f89bb134a4110dc875f 280w, https://mintcdn.com/asapp/oWc-pd36yCvpD40u/images/autocompose/autocompose-home.png?w=560&fit=max&auto=format&n=oWc-pd36yCvpD40u&q=85&s=a3051a57babea9dad3405415496971eb 560w, https://mintcdn.com/asapp/oWc-pd36yCvpD40u/images/autocompose/autocompose-home.png?w=840&fit=max&auto=format&n=oWc-pd36yCvpD40u&q=85&s=25167dee223503d1a0ee1ccce7eb6ff9 840w, https://mintcdn.com/asapp/oWc-pd36yCvpD40u/images/autocompose/autocompose-home.png?w=1100&fit=max&auto=format&n=oWc-pd36yCvpD40u&q=85&s=8c9dd4f429981b9a6d2a0511ec5631de 1100w, https://mintcdn.com/asapp/oWc-pd36yCvpD40u/images/autocompose/autocompose-home.png?w=1650&fit=max&auto=format&n=oWc-pd36yCvpD40u&q=85&s=45cbb525c2766fb719f192e574b12bd7 1650w, https://mintcdn.com/asapp/oWc-pd36yCvpD40u/images/autocompose/autocompose-home.png?w=2500&fit=max&auto=format&n=oWc-pd36yCvpD40u&q=85&s=eeba04790089c1124b769f997b92c687 2500w" />
+  <img src="https://mintcdn.com/asapp/aCHMKq7AVTQocNEN/images/autocompose/aicompose-home.png?fit=max&auto=format&n=aCHMKq7AVTQocNEN&q=85&s=3646dcd64ceda1a4dc08a0d813a85cfd" data-og-width="2112" width="2112" data-og-height="891" height="891" data-path="images/autocompose/aicompose-home.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/aCHMKq7AVTQocNEN/images/autocompose/aicompose-home.png?w=280&fit=max&auto=format&n=aCHMKq7AVTQocNEN&q=85&s=3098e07f61c0c46d57e849f1951d84d6 280w, https://mintcdn.com/asapp/aCHMKq7AVTQocNEN/images/autocompose/aicompose-home.png?w=560&fit=max&auto=format&n=aCHMKq7AVTQocNEN&q=85&s=b5b5d61df3df593dd1d92ca95cebe450 560w, https://mintcdn.com/asapp/aCHMKq7AVTQocNEN/images/autocompose/aicompose-home.png?w=840&fit=max&auto=format&n=aCHMKq7AVTQocNEN&q=85&s=39a2fde97de77b6dcd75ac362806a20a 840w, https://mintcdn.com/asapp/aCHMKq7AVTQocNEN/images/autocompose/aicompose-home.png?w=1100&fit=max&auto=format&n=aCHMKq7AVTQocNEN&q=85&s=ef4d80d21dfa8b45430b1540b5fbc1aa 1100w, https://mintcdn.com/asapp/aCHMKq7AVTQocNEN/images/autocompose/aicompose-home.png?w=1650&fit=max&auto=format&n=aCHMKq7AVTQocNEN&q=85&s=fea5babcf2b8fd84580746c3395400b7 1650w, https://mintcdn.com/asapp/aCHMKq7AVTQocNEN/images/autocompose/aicompose-home.png?w=2500&fit=max&auto=format&n=aCHMKq7AVTQocNEN&q=85&s=1872de00052e4a394e23f0287d21253d 2500w" />
 </Frame>
 
 ASAPP AI Compose helps agents compose the best response to customers, using machine learning techniques to suggest complete responses, partial sentences, key phrases and spelling fixes in real-time based on both the context of the conversation and past agent behavior.
@@ -15,31 +19,31 @@ AI Compose provides the following features:
 | Feature                  | Description                                                                                                               |
 | :----------------------- | :------------------------------------------------------------------------------------------------------------------------ |
 | **Autosuggest**          | Provides up to three suggestions that appear in a suggestion drawer above the typing field before the agent begins typing |
-| **Autocomplete**         | Provides up to three suggestions that appear in a suggestion drawer above the typing field after the agent begins typing  |
+| **Autocomplete**         | Provides up to three suggestions that appear in a suggestion drawer above the typing field after the agent starts typing  |
 | **Phrase autocomplete**  | Provides in-line phrase suggestions that appear while an agent is typing                                                  |
 | **Response quicksearch** | Allows in-line search of global and custom responses                                                                      |
-| **Fluency correction**   | Applies automatic grammar corrections that an agent can undo                                                              |
-| **Profanity blocking**   | Prevents an agent from sending a message containing profanity to the customer                                             |
+| **Fluency correction**   | Applies automatic grammar corrections that agents can undo                                                                |
+| **Profanity blocking**   | Prevents agents from sending messages containing profanity to customers                                                   |
 | **Custom response list** | Enables management of an individual agent's custom responses in a simple library interface                                |
 | **Global response list** | Enables management of global responses in a simple tooling interface                                                      |
 
 ## How it works
 
-AI Compose takes in a live feed of your agent's conversations, and then using our various AI models, returns a list of changes or suggested responses based on the state of conversation and currently typed message.
+AI Compose takes in a live feed of your agents' conversations and then uses our various AI models to return a list of changes or suggested responses based on the state of the conversation and the currently typed message.
 
-1. Provide Conversation data via Conversation API.
+1. Provide conversation data via the Conversation API.
 2. In your Agent Application, call the AI Compose APIs to retrieve the list of changes or suggested responses.
-3. Show the potential changes or responses to your Agent for them to incorporate.
+3. Show the potential changes or responses to your agents for them to incorporate.
 
-This streamlines your agent's efficiency while still allowing agents to review changes, ensuring only the highest quality of responses are sent to your customers.
+This streamlines your agents' efficiency while still allowing agents to review changes, ensuring only the highest quality of responses reach your customers.
 
 AI Compose has the following technical components:
 
-| Component              | Description                                                                                                                          |
-| :--------------------- | :----------------------------------------------------------------------------------------------------------------------------------- |
-| **Autosuggest model**  | LLM Retrained by ASAPP with agent usage data                                                                                         |
-| **Data Storage**       | A storage for historical conversations, global response lists and agent historical feature usage that are used for weekly retraining |
-| **Conversation API**\* | An API for creating and updating conversations and conversation data                                                                 |
+| Component              | Description                                                                                                                           |
+| :--------------------- | :------------------------------------------------------------------------------------------------------------------------------------ |
+| **Autosuggest model**  | LLM that ASAPP retrains with agent usage data                                                                                         |
+| **Data Storage**       | Storage for historical conversations, global response lists, and agent historical feature usage that ASAPP uses for weekly retraining |
+| **Conversation API**\* | An API for creating and updating conversations and conversation data                                                                  |
 
 <Frame>
   <img src="https://mintcdn.com/asapp/AXwA7-nbwQCJ8xte/image/uuid-efcbb75b-b38e-3cc1-4f44-1630dbe3c68b.png?fit=max&auto=format&n=AXwA7-nbwQCJ8xte&q=85&s=11aff522949940bc1ab8369aa5849d73" data-og-width="1986" width="1986" data-og-height="1091" height="1091" data-path="image/uuid-efcbb75b-b38e-3cc1-4f44-1630dbe3c68b.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/AXwA7-nbwQCJ8xte/image/uuid-efcbb75b-b38e-3cc1-4f44-1630dbe3c68b.png?w=280&fit=max&auto=format&n=AXwA7-nbwQCJ8xte&q=85&s=9f411a0fda2f59605038821b7f57fe95 280w, https://mintcdn.com/asapp/AXwA7-nbwQCJ8xte/image/uuid-efcbb75b-b38e-3cc1-4f44-1630dbe3c68b.png?w=560&fit=max&auto=format&n=AXwA7-nbwQCJ8xte&q=85&s=4d5c6574b0bcf9ca000baadef4a7a576 560w, https://mintcdn.com/asapp/AXwA7-nbwQCJ8xte/image/uuid-efcbb75b-b38e-3cc1-4f44-1630dbe3c68b.png?w=840&fit=max&auto=format&n=AXwA7-nbwQCJ8xte&q=85&s=79139f71020f62ea35426edda76e794f 840w, https://mintcdn.com/asapp/AXwA7-nbwQCJ8xte/image/uuid-efcbb75b-b38e-3cc1-4f44-1630dbe3c68b.png?w=1100&fit=max&auto=format&n=AXwA7-nbwQCJ8xte&q=85&s=2fe0ed4bf042aa57673d62f0871ea4f9 1100w, https://mintcdn.com/asapp/AXwA7-nbwQCJ8xte/image/uuid-efcbb75b-b38e-3cc1-4f44-1630dbe3c68b.png?w=1650&fit=max&auto=format&n=AXwA7-nbwQCJ8xte&q=85&s=39a3f8a9aa36e3af9bd31845a0ecf76e 1650w, https://mintcdn.com/asapp/AXwA7-nbwQCJ8xte/image/uuid-efcbb75b-b38e-3cc1-4f44-1630dbe3c68b.png?w=2500&fit=max&auto=format&n=AXwA7-nbwQCJ8xte&q=85&s=1f6a4bbea65aeb855605b27d7eaffa17 2500w" />
@@ -47,7 +51,7 @@ AI Compose has the following technical components:
 
 ## Get Started
 
-Integrate AI Compose into your applications and upscale your agent response rates.
+Integrate AI Compose into your applications and scale up your agent response rates.
 
 ### Integrate AI Compose
 
@@ -71,7 +75,7 @@ For a functional breakdown and walkthrough of effective use cases and configurat
 <Card title="AI Compose Feature Releases" href="/ai-productivity/ai-compose/feature-releases">Visit the feature releases for new additions to AI Compose functionality</Card>
 
 <Note>
-  Product and Deployment Guides will be updated as new features become available in production.
+  The system will update Product and Deployment Guides as new features become available in production.
 </Note>
 
 ## Enhance AI Compose

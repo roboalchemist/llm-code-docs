@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/database-guides/upgrade-mongodb.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Upgrade MongoDB
 
 The goal of this guide is to upgrade a MongoDB [Database](/core-concepts/managed-databases/managing-databases/overview) to a newer release. The process is quick and easy to complete but only works from one release to the next, so in order to upgrade multiple releases, the process must be completed multiple times.

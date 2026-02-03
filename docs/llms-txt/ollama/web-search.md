@@ -1,5 +1,9 @@
 # Source: https://docs.ollama.com/capabilities/web-search.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ollama.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Web search
 
 Ollama's web search API can be used to augment models with the latest information to reduce hallucinations and improve accuracy.
@@ -110,7 +114,7 @@ More Ollama [Python example](https://github.com/ollama/ollama-python/blob/main/e
 import { Ollama } from "ollama";
 
 const client = new Ollama();
-const results = await client.webSearch({ query: "what is ollama?" });
+const results = await client.webSearch("what is ollama?");
 console.log(JSON.stringify(results, null, 2));
 ```
 
@@ -213,7 +217,7 @@ models](https://ollama.com/models)\n\nAvailable for macOS, Windows, and Linux',
 import { Ollama } from "ollama";
 
 const client = new Ollama();
-const fetchResult = await client.webFetch({ url: "https://ollama.com" });
+const fetchResult = await client.webFetch("https://ollama.com");
 console.log(JSON.stringify(fetchResult, null, 2));
 ```
 

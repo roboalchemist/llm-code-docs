@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/integrations/n8n/
+
 # Using Promptfoo in n8n Workflows
 
 This guide shows how to run Promptfoo evaluations from an **n8n** workflow so you can:

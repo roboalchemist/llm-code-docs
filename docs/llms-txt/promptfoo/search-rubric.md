@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/configuration/expected-outputs/model-graded/search-rubric/
+
 # Search-Rubric
 
 The `search-rubric` assertion type is like `llm-rubric` but with web search capabilities. It evaluates outputs according to a rubric while having the ability to search for current information when needed.

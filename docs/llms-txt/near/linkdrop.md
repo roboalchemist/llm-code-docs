@@ -73,9 +73,9 @@ The contract will create a drop and **return the numerical ID** that identifies 
 const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
 const DROP_AMOUNT = "10000000000000000000000"; // 0.1 NEAR
 
-const { callMethod } = useWalletSelector();
+const { callFunction } = useNearWallet();
 
-await callMethod({
+await callFunction({
   contractId: KEYPOM_CONTRACT_ADDRESS,
   method: "create_drop",
   args: {
@@ -87,13 +87,13 @@ await callMethod({
 });
 ```
 
-Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
 ```bash
-near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_per_use": "10000000000000000000000"}' --depositYocto 23000000000000000000000 --gas 100000000000000 --accountId bob.near
+near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_per_use": "10000000000000000000000"}' --depositYocto 23000000000000000000000 --gas 100000000000000 --useAccount bob.near
 ```
 
   </TabItem>
@@ -134,9 +134,9 @@ const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
 const NFT_CONTRACT_ADDRESS = "nft.primitives.near";
 const DROP_AMOUNT = "10000000000000000000000";
 
-const { callMethod, accountId } = useWalletSelector();
+const { callFunction, accountId } = useNearWallet();
 
-await callMethod({
+await callFunction({
   contractId: KEYPOM_CONTRACT_ADDRESS,
   method: "create_drop",
   args: {
@@ -154,13 +154,13 @@ await callMethod({
 });
 ```
 
-Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
 ```bash
-near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_per_use": "10000000000000000000000", "nft": {"sender_id": "bob.near", "contract_id": "nft.primitives.near"}}' --depositYocto 23000000000000000000000 --gas 100000000000000 --accountId bob.near
+near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_per_use": "10000000000000000000000", "nft": {"sender_id": "bob.near", "contract_id": "nft.primitives.near"}}' --depositYocto 23000000000000000000000 --gas 100000000000000 --useAccount bob.near
 ```
 
   </TabItem>
@@ -183,9 +183,9 @@ const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
 const NFT_CONTRACT_ADDRESS = "nft.primitives.near";
 const NFT_TOKEN_ID = "1";
 
-const { callMethod } = useWalletSelector();
+const { callFunction } = useNearWallet();
 
-await callMethod({
+await callFunction({
   contractId: NFT_CONTRACT_ADDRESS,
   method: "nft_transfer_call",
   args: {
@@ -198,13 +198,13 @@ await callMethod({
 });
 ```
 
-Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
 ```bash
-near call nft.primitives.near nft_transfer_call '{"receiver_id": "v2.keypom.near", "token_id": <YOUR TOKEN ID>, "msg": <YOUR DROP ID>}' --depositYocto 1 --gas 100000000000000 --accountId bob.near
+near call nft.primitives.near nft_transfer_call '{"receiver_id": "v2.keypom.near", "token_id": <YOUR TOKEN ID>, "msg": <YOUR DROP ID>}' --depositYocto 1 --gas 100000000000000 --useAccount bob.near
 ```
 
   </TabItem>
@@ -245,9 +245,9 @@ const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
 const FT_CONTRACT_ADDRESS = "ft.primitives.near";
 const DROP_AMOUNT = "10000000000000000000000";
 
-const { callMethod, accountId } = useWalletSelector();
+const { callFunction, accountId } = useNearWallet();
 
-await callMethod({
+await callFunction({
   contractId: KEYPOM_CONTRACT_ADDRESS,
   method: "create_drop",
   args: {
@@ -267,13 +267,13 @@ await callMethod({
 });
 ```
 
-Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
 ```bash
-near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_per_use": "10000000000000000000000", "ftData": {"contractId": "ft.primitives.near","senderId": "bob.near", "amount": "1"}}}' --depositYocto 23000000000000000000000 --gas 100000000000000 --accountId bob.near
+near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_per_use": "10000000000000000000000", "ftData": {"contractId": "ft.primitives.near","senderId": "bob.near", "amount": "1"}}}' --depositYocto 23000000000000000000000 --gas 100000000000000 --useAccount bob.near
 ```
 
   </TabItem>
@@ -299,9 +299,9 @@ To transfer FTs to an account, you need to first [register](./ft#registering-a-u
 const KEYPOM_CONTRACT_ADDRESS = "v2.keypom.near";
 const FT_CONTRACT_ADDRESS = "ft.primitives.near";
 
-const { callMethod } = useWalletSelector();
+const { callFunction } = useNearWallet();
 
-await callMethod({
+await callFunction({
   contractId: FT_CONTRACT_ADDRESS,
   method: "ft_transfer",
   args: {
@@ -313,13 +313,13 @@ await callMethod({
 });
 ```
 
-Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
 ```bash
-near call ft.primitives.near ft_transfer '{"receiver_id": "v2.keypom.near", "amount": "1"}' --depositYocto 1 --gas 100000000000000 --accountId bob.near
+near call ft.primitives.near ft_transfer '{"receiver_id": "v2.keypom.near", "amount": "1"}' --depositYocto 1 --gas 100000000000000 --useAccount bob.near
 ```
 
   </TabItem>
@@ -354,9 +354,9 @@ const NFT_CONTRACT_ADDRESS = "nft.primitives.near";
 const NFT_TOKEN_ID = "1";
 const DROP_AMOUNT = "10000000000000000000000";
 
-const { callMethod } = useWalletSelector();
+const { callFunction } = useNearWallet();
 
-await callMethod({
+await callFunction({
   contractId: KEYPOM_CONTRACT_ADDRESS,
   method: "create_drop",
   args: {
@@ -391,13 +391,13 @@ await callMethod({
 });
 ```
 
-Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
 ```bash
-near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_per_use": "10000000000000000000000", "fcData": {"methods": [[{"receiverId": "nft.primitives.near","methodName": "nft_mint","args": {"token_id": "1", "metadata": {"title": "My NFT drop","description": "","media": ""}, "accountIdField": "receiver_id", "attachedDeposit": "10000000000000000000000"}]]}}' --depositYocto 23000000000000000000000 --gas 100000000000000 --accountId bob.near
+near call v2.keypom.near create_drop '{"public_keys": <PUBLIC_KEYS>, "deposit_per_use": "10000000000000000000000", "fcData": {"methods": [[{"receiverId": "nft.primitives.near","methodName": "nft_mint","args": {"token_id": "1", "metadata": {"title": "My NFT drop","description": "","media": ""}, "accountIdField": "receiver_id", "attachedDeposit": "10000000000000000000000"}]]}}' --depositYocto 23000000000000000000000 --gas 100000000000000 --useAccount bob.near
 ```
 
   </TabItem>

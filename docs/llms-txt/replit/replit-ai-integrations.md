@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replitai/replit-ai-integrations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Replit AI Integrations
 
 > Use AI models from providers like OpenAI, Anthropic, Google, and OpenRouter without requiring your own developer account or API key.
@@ -30,10 +34,6 @@ Replit AI Integrations streamlines AI development with built-in access and trans
 * **Usage tracking**: View your usage per Existing Replit App on your usage page
 * **Cross-stack support**: Works across all programming languages and frameworks
 * **Optional BYOK**: Bring your own API key if you prefer to use your own credentials
-
-<Note>
-  Replit AI Integrations is currently rolling out to paying users.
-</Note>
 
 ## Getting started
 
@@ -85,13 +85,13 @@ All Replit AI Integrations usage appears on your [usage page](/billing/managing-
 
 Replit AI Integrations currently supports:
 
-* **OpenAI**: Multimodal models for text generation and reasoning. Supports chat completions, responses, and image generation.
+* **OpenAI**: Multimodal models for text generation, reasoning, and audio. Supports chat completions, responses, image generation, audio transcription (`gpt-4o-transcribe`, `gpt-4o-transcribe-mini`), and audio output (`gpt-4o-audio`, `gpt-4o-audio-mini`).
 * **Anthropic**: Multimodal models for reasoning, writing, and coding. Supports the Messages API and interactions with web search.
 * **Google (Gemini)**: Multimodal models for text generation and reasoning. Supports text and image generation.
 * **OpenRouter**: Access to models from providers such as Microsoft (Phi series), Meta (Llama series), Mistral, Qwen, DeepSeek, Nvidia, Amazon, and more.
 
 <Note>
-  Replit AI Integrations supports **text and image output only**. Audio output (such as text-to-speech) and video output are not supported. If you need these capabilities, you'll need to use your own API key from a provider that offers them.
+  Replit AI Integrations supports **text, image, and audio output**. Video output is not supported. If you need video generation capabilities, you'll need to use your own API key from a provider that offers them.
 </Note>
 
 ## OpenRouter privacy and availability
@@ -148,11 +148,22 @@ Build powerful AI applications across any stack:
   </Accordion>
 
   <Accordion title="Do I need a paid Replit account?">
-    Yes. Replit AI Integrations is available for paying users. Free users will need to provide their own API keys to use AI model providers.
+    Yes. Replit AI Integrations is available for paying users.
   </Accordion>
 
   <Accordion title="What models are available?">
-    Replit AI Integrations supports models from OpenAI (including GPT-4o and o3), Anthropic (Claude models), Google (Gemini models), and OpenRouter (providing access to models from Meta, Microsoft, Mistral, and other providers).
+    Replit AI Integrations supports models from leading AI providers:
+
+    |                |                                                               |
+    | -------------- | ------------------------------------------------------------- |
+    | **OpenAI**     | GPT models for text generation, reasoning, and image creation |
+    | **Anthropic**  | Claude models for reasoning, writing, and coding              |
+    | **Google**     | Gemini models for multimodal understanding                    |
+    | **OpenRouter** | 200+ models from Meta, Mistral, DeepSeek, Qwen, and more      |
+
+    <Tip>
+      For the complete and up-to-date model catalog, see [OpenRouter's model list](https://openrouter.ai/models).
+    </Tip>
   </Accordion>
 
   <Accordion title="How is billing calculated?">
@@ -188,6 +199,6 @@ Build powerful AI applications across any stack:
   </Accordion>
 
   <Accordion title="What types of models & outputs are supported?">
-    Replit AI Integrations supports text and image output only. Audio output (such as text-to-speech) and video output are not supported. If your application requires audio or video generation capabilities, Agent will direct you to use your own API key from a provider that offers these features.
+    Replit AI Integrations supports text, image, and audio output. Audio capabilities include transcription (speech-to-text) via `gpt-4o-transcribe` and `gpt-4o-transcribe-mini`, and audio generation via `gpt-4o-audio` and `gpt-4o-audio-mini`. Video output is not supported. If your application requires video generation capabilities, Agent will direct you to use your own API key from a provider that offers these features.
   </Accordion>
 </AccordionGroup>

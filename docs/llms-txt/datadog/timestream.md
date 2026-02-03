@@ -4,7 +4,6 @@
 title: Timestream Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > AWS Components > Timestream Component
-source_url: https://docs.datadoghq.com/components-aws/timestream/index.html
 ---
 
 # Timestream Component

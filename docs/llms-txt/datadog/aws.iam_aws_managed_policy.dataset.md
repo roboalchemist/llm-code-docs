@@ -4,8 +4,6 @@
 title: Managed Policy
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Managed Policy
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.iam_aws_managed_policy.dataset/index.html
 ---
 
 # Managed Policy

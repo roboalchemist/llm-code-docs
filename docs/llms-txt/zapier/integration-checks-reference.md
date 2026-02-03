@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/publish/integration-checks-reference.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Integration check reference
 
 > Before you can submit your integration for publishing, it runs through a set of automated checks to ensure it's working properly and giving our users (and yours) the best possible experience.

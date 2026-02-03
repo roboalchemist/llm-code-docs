@@ -53,7 +53,7 @@ The [Redis Admin UI](/admin-ui-redis) lets you manage your App's configured Redi
 It can be enabled by registering the `AdminRedisFeature` plugin:
 
 ```csharp
-Plugins.Add(new AdminRedisFeature());
+services.AddPlugin(new AdminRedisFeature());
 ```
 
 Which will enable the **Redis** Admin UI:
@@ -73,7 +73,7 @@ The [Database Admin UI](/admin-ui-database) lets you quickly browse and navigate
 It can be enabled by registering the `AdminDatabaseFeature` plugin from [ServiceStack.Server](https://nuget.org/packages/ServiceStack.Server):
 
 ```csharp
-Plugins.Add(new AdminDatabaseFeature());
+services.AddPlugin(new AdminDatabaseFeature());
 ```
 
 Which will enable the **Database** Admin UI:
@@ -89,7 +89,7 @@ See [Database Admin docs](/admin-ui-database) for more info.
 Enables invaluable observability into your App, from being able to quickly inspect and browse incoming requests, to tracing their behavior:
 
 :::sh
-x mix profiling
+npx add-in profiling
 :::
 
 Which will add the [Modular Startup](/modular-startup) configuration to your Host project that registers both Request Logging & Profiling features when running your App in [DebugMode](/debugging#debugmode) (i.e. Development):
@@ -151,10 +151,10 @@ public class ConfigureValidation : IHostingStartup
 }
 ```
 
-Which can be quickly added to your project with the [x mix script](/mix-tool) below:
+Which can be quickly added to your project with:
 
 :::sh
-x mix validation-source
+npx add-in validation-source
 :::
 
 Which the built-in [Validation Feature](/validation.html#validation-feature) detects to register the `GetValidationRules` and `ModifyValidationRules` APIs used by the Admin Validation Feature:

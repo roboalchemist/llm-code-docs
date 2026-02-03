@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/configuration/expected-outputs/model-graded/llm-rubric/
+
 # LLM Rubric
 
 `llm-rubric` is promptfoo's general-purpose grader for "LLM as a judge" evaluation.

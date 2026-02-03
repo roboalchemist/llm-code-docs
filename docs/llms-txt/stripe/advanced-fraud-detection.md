@@ -4,7 +4,7 @@
 
 Learn about tools developers can use to maximize Stripe's ability to prevent fraudulent payments.
 
-[Stripe.js](https://docs.stripe.com/js.md) is Stripe’s JavaScript library designed to enable businesses to securely collect sensitive payment information from the customer’s browser. The Stripe [iOS SDK](https://docs.stripe.com/mobile/ios/basic.md) and [Android SDK](https://docs.stripe.com/mobile/android/basic.md) are the mobile app counterparts to Stripe.js.
+[Stripe.js](https://docs.stripe.com/js.md) is Stripe’s JavaScript library designed to enable businesses to securely collect sensitive payment information from the customer’s browser. The [Stripe In-App Payments](https://docs.stripe.com/payments/mobile.md) provides the native iOS and Android counterparts to Stripe.js.
 
 Stripe.js and the mobile SDKs provide advanced fraud detection by looking at signals about device characteristics and user activity that help distinguish between legitimate and fraudulent transactions. These signals power Stripe’s fraud prevention systems, such as *Radar* (Stripe Radar helps detect and block fraud for any type of business using machine learning that trains on data across millions of global companies. It’s built into Stripe and requires no additional setup to get started). The signals are transmitted to Stripe’s back end by periodically making requests to the `m.stripe.com` endpoint.
 

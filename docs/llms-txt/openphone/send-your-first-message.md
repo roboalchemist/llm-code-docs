@@ -1,5 +1,9 @@
 # Source: https://www.quo.com/docs/mdx/api-reference/send-your-first-message.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.quo.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send your first message
 
 > This is a step-by-step guide for sending your first text message.

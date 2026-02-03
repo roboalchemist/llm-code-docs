@@ -2,54 +2,15 @@
 
 # Source: https://docs.stripe.com/payments/checkout/save-during-payment.md
 
-# Source: https://docs.stripe.com/payments/save-during-payment.md
+# Save payment details during payment
 
-# Source: https://docs.stripe.com/payments/checkout/save-during-payment.md
+Learn how to accept a payment and save your customer's payment details for future purchases.
 
-# Source: https://docs.stripe.com/payments/save-during-payment.md
+# Stripe-hosted page
 
-# Source: https://docs.stripe.com/payments/checkout/save-during-payment.md
+> This is a Stripe-hosted page for when payment-ui is stripe-hosted. View the full page at https://docs.stripe.com/payments/checkout/save-during-payment?payment-ui=stripe-hosted.
 
-# Source: https://docs.stripe.com/payments/save-during-payment.md
-
-# Source: https://docs.stripe.com/payments/checkout/save-during-payment.md
-
-# Source: https://docs.stripe.com/payments/save-during-payment.md
-
-# Source: https://docs.stripe.com/payments/checkout/save-during-payment.md
-
-# Source: https://docs.stripe.com/payments/save-during-payment.md
-
-# Save a customer's payment method when they use it for a payment
-
-Learn how to save your customer's payment details for future purchases when they make a payment.
-
-# Checkout Sessions API
-
-> This is a Checkout Sessions API for when payment-ui is embedded-components. View the full page at https://docs.stripe.com/payments/save-during-payment?payment-ui=embedded-components.
-
-Use the [Checkout Sessions API](https://docs.stripe.com/api/checkout/sessions.md) to save payment details during a purchase. This is useful for situations such as:
-
-- Charging a customer for an e-commerce order and storing the payment details for future purchases.
-- Initiating the first payment in a series of recurring payments.
-- Charging a deposit and storing the payment details to charge the full amount later.
-
-## Compliance
-
-You’re responsible for your compliance with all applicable laws, regulations, and network rules when saving a customer’s payment details. These requirements generally apply if you want to save your customer’s payment method for future use, such as displaying a customer’s payment method to them in the checkout flow for a future purchase or charging them when they’re not actively using your website or app. Add terms to your website or app that state how you plan to save payment method details and allow customers to opt in.
-
-When you save a payment method, you can only use it for the specific usage you have included in your terms. To charge a payment method when a customer is offline and save it as an option for future purchases, make sure that you explicitly collect consent from the customer for this specific use. For example, include a “Save my payment method for future use” checkbox to collect consent.
-
-To charge a customer when they’re offline, make sure your terms include the following:
-
-- The customer’s agreement to your initiating a payment or a series of payments on their behalf for specified transactions.
-- The anticipated timing and frequency of payments (for example, if the charges are for scheduled installments, subscription payments, or unscheduled top-ups).
-- How you determine the payment amount.
-- Your cancellation policy, if the payment method is for a subscription service.
-
-Make sure you keep a record of your customer’s written agreement to these terms.
-
-> When using Elements with the Checkout Sessions API, only cards are supported for saved payment methods. You can’t save other payment methods, such as bank accounts.
+Use [Stripe Checkout](https://docs.stripe.com/payments/checkout.md) for a fast, low-code integration that allows your customers to save their payment details for future purchases.
 
 ## Set up Stripe [Server-side]
 
@@ -107,7 +68,7 @@ composer require stripe/stripe-php
   - https://mvnrepository.com/artifact/com.stripe/stripe-java or
   - https://github.com/stripe/stripe-java/releases/latest
 */
-implementation "com.stripe:stripe-java:30.0.0"
+implementation "com.stripe:stripe-java:31.3.0"
 ```
 
 ```xml
@@ -120,7 +81,7 @@ implementation "com.stripe:stripe-java:30.0.0"
 <dependency>
   <groupId>com.stripe</groupId>
   <artifactId>stripe-java</artifactId>
-  <version>30.0.0</version>
+  <version>31.3.0</version>
 </dependency>
 ```
 
@@ -143,13 +104,13 @@ npm install stripe --save
 # Make sure your project is using Go Modules
 go mod init
 # Install stripe-go
-go get -u github.com/stripe/stripe-go/v83
+go get -u github.com/stripe/stripe-go/v84
 ```
 
 ```go
 // Then import the package
 import (
-  "github.com/stripe/stripe-go/v83"
+  "github.com/stripe/stripe-go/v84"
 )
 ```
 
@@ -166,9 +127,13 @@ dotnet restore
 Install-Package Stripe.net
 ```
 
-## Create a Customer [Server-side]
+## Create a customer [Server-side]
 
 To set a card up for future payments, you must attach it to a *Customer* (Customer objects represent customers of your business. They let you reuse payment methods and give you the ability to track multiple payments). Create a Customer object when your customer creates an account with your business. Customer objects allow for reusing payment methods and tracking across multiple payments.
+
+> #### Compare Customers v1 and Accounts v2 references
+> 
+> If your Connect platform uses [customer-configured Accounts](https://docs.stripe.com/api/v2/core/accounts/create.md#v2_create_accounts-configuration-customer), use our [guide](https://docs.stripe.com/connect/use-accounts-as-customers.md) to replace `Customer` and event references in your code with the equivalent Accounts v2 API references.
 
 ```curl
 curl https://api.stripe.com/v1/customers \
@@ -255,32 +220,631 @@ Successful creation returns the [Customer](https://docs.stripe.com/api/customers
 
 You can find these customers in the [Customers](https://dashboard.stripe.com/customers) page in the Dashboard.
 
-## Enable saved payment methods
+## Create a Checkout Session [Client-side] [Server-side]
 
-> Global privacy laws are complicated and nuanced. Before implementing the ability to store customer payment method details, work with your legal team to make sure that it complies with your privacy and compliance framework.
+Add a checkout button to your website that calls a server-side endpoint to create a [Checkout Session](https://docs.stripe.com/api/checkout/sessions/create.md).
 
-To allow a customer to save their payment method for future use, specify the [saved_payment_method_options.payment_method_save](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-saved_payment_method_options-payment_method_save) parameter when creating the Checkout Session.
+You can also create a Checkout Session for an [existing customer](https://docs.stripe.com/payments/existing-customers.md?platform=web&ui=stripe-hosted), allowing you to prefill Checkout fields with known contact information and unify your purchase history for that customer.
 
-Saving a payment method requires a [Customer](https://docs.stripe.com/api/customers/object.md). Pass an existing customer or create a new one by setting [customer_creation](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-customer_creation) to `always` on the Checkout Session.
+```html
+<html>
+  <head>
+    <title>Buy cool new product</title>
+  </head>
+  <body>
+    <!-- Use action="/create-checkout-session.php" if your server is PHP based. -->
+    <form action="/create-checkout-session" method="POST">
+      <button type="submit">Checkout</button>
+    </form>
+  </body>
+</html>
+```
+
+A Checkout Session is the programmatic representation of what your customer sees when they’re redirected to the payment form. You can configure it with options such as:
+
+- [Line items](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-line_items) to charge
+- Currencies to use
+
+You must populate `success_url` with the URL value of a page on your website that Checkout returns your customer to after they complete the payment.
+
+> Checkout Sessions expire 24 hours after creation by default.
+
+After creating a Checkout Session, redirect your customer to the [URL](https://docs.stripe.com/api/checkout/sessions/object.md#checkout_session_object-url) returned in the response.
+
+#### Ruby
+
+```ruby
+# This example sets up an endpoint using the Sinatra framework.
+
+
+require 'json'
+require 'sinatra'
+require 'stripe'
+
+# Set your secret key. Remember to switch to your live secret key in production.
+# See your keys here: https://dashboard.stripe.com/apikeys
+Stripe.api_key = '<<YOUR_SECRET_KEY>>'
+
+post '/create-checkout-session' dosession = Stripe::Checkout::Session.create({
+    line_items: [{
+      price_data: {
+        currency: 'usd',
+        product_data: {
+          name: 'T-shirt',
+        },
+        unit_amount: 2000,
+      },
+      quantity: 1,
+    }],
+    mode: 'payment',
+    # These placeholder URLs will be replaced in a following step.
+    success_url: 'https://example.com/success',
+  })
+
+  redirect session.url, 303
+end
+```
+
+#### Python
+
+```python
+# This example sets up an endpoint using the Flask framework.
+# Watch this video to get started: https://youtu.be/7Ul1vfmsDck.
+
+import os
+import stripe
+
+from flask import Flask, redirect
+
+app = Flask(__name__)
+
+stripe.api_key = '<<YOUR_SECRET_KEY>>'
+
+@app.route('/create-checkout-session', methods=['POST'])
+def create_checkout_session():session = stripe.checkout.Session.create(
+    line_items=[{
+      'price_data': {
+        'currency': 'usd',
+        'product_data': {
+          'name': 'T-shirt',
+        },
+        'unit_amount': 2000,
+      },
+      'quantity': 1,
+    }],
+    mode='payment',
+    success_url='http://localhost:4242/success',
+  )
+
+  return redirect(session.url, code=303)
+
+if __name__== '__main__':
+    app.run(port=4242)
+```
+
+#### PHP
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
+$checkout_session = $stripe->checkout->sessions->create([
+  'line_items' => [[
+    'price_data' => [
+      'currency' => 'usd',
+      'product_data' => [
+        'name' => 'T-shirt',
+      ],
+      'unit_amount' => 2000,
+    ],
+    'quantity' => 1,
+  ]],
+  'mode' => 'payment',
+  'success_url' => 'http://localhost:4242/success',
+]);
+
+header("HTTP/1.1 303 See Other");
+header("Location: " . $checkout_session->url);
+?>
+```
+
+#### Java
+
+```java
+import java.util.HashMap;
+import java.util.Map;
+import static spark.Spark.get;
+import static spark.Spark.post;
+import static spark.Spark.port;
+import static spark.Spark.staticFiles;
+
+import com.stripe.Stripe;
+import com.stripe.model.checkout.Session;
+import com.stripe.param.checkout.SessionCreateParams;
+
+public class Server {
+
+  public static void main(String[] args) {
+    port(4242);
+    Stripe.apiKey = "<<YOUR_SECRET_KEY>>";
+
+    post("/create-checkout-session", (request, response) -> {SessionCreateParams params =
+        SessionCreateParams.builder()
+          .setMode(SessionCreateParams.Mode.PAYMENT)
+          .setSuccessUrl("http://localhost:4242/success")
+          .addLineItem(
+          SessionCreateParams.LineItem.builder()
+            .setQuantity(1L)
+            .setPriceData(
+              SessionCreateParams.LineItem.PriceData.builder()
+                .setCurrency("usd")
+                .setUnitAmount(2000L)
+                .setProductData(
+                  SessionCreateParams.LineItem.PriceData.ProductData.builder()
+                    .setName("T-shirt")
+                    .build())
+                .build())
+            .build())
+          .build();
+
+      Session session = Session.create(params);
+
+      response.redirect(session.getUrl(), 303);
+      return "";
+    });
+  }
+}
+```
+
+#### Node.js
+
+```javascript
+// This example sets up an endpoint using the Express framework.
+
+const express = require('express');
+const app = express();
+const stripe = require('stripe')('<<YOUR_SECRET_KEY>>')
+
+app.post('/create-checkout-session', async (req, res) => {const session = await stripe.checkout.sessions.create({
+    line_items: [
+      {
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: 'T-shirt',
+          },
+          unit_amount: 2000,
+        },
+        quantity: 1,
+      },
+    ],
+    mode: 'payment',
+    success_url: 'http://localhost:4242/success',
+  });
+
+  res.redirect(303, session.url);
+});
+
+app.listen(4242, () => console.log(`Listening on port ${4242}!`));
+```
+
+#### Go
+
+```go
+package main
+
+import (
+  "net/http"
+
+  "github.com/labstack/echo"
+  "github.com/labstack/echo/middleware"
+  "github.com/stripe/stripe-go/v76.0.0"
+  "github.com/stripe/stripe-go/v76.0.0/checkout/session"
+)
+
+// This example sets up an endpoint using the Echo framework.
+// Watch this video to get started: https://youtu.be/ePmEVBu8w6Y.
+
+func main() {
+  stripe.Key = "<<YOUR_SECRET_KEY>>"
+
+  e := echo.New()
+  e.Use(middleware.Logger())
+  e.Use(middleware.Recover())
+
+  e.POST("/create-checkout-session", createCheckoutSession)
+
+  e.Logger.Fatal(e.Start("localhost:4242"))
+}
+
+func createCheckoutSession(c echo.Context) (err error) {params := &stripe.CheckoutSessionParams{
+    Mode: stripe.String(string(stripe.CheckoutSessionModePayment)),
+    LineItems: []*stripe.CheckoutSessionLineItemParams{
+      &stripe.CheckoutSessionLineItemParams{
+        PriceData: &stripe.CheckoutSessionLineItemPriceDataParams{
+          Currency: stripe.String("usd"),
+          ProductData: &stripe.CheckoutSessionLineItemPriceDataProductDataParams{
+            Name: stripe.String("T-shirt"),
+          },
+          UnitAmount: stripe.Int64(2000),
+        },
+        Quantity: stripe.Int64(1),
+      },
+    },
+    SuccessURL: stripe.String("http://localhost:4242/success"),
+  }
+
+  s, _ := session.New(params)
+
+  if err != nil {
+    return err
+  }
+
+  return c.Redirect(http.StatusSeeOther, s.URL)
+}
+```
+
+#### .NET
+
+```dotnet
+// This example sets up an endpoint using the ASP.NET MVC framework.
+// Watch this video to get started: https://youtu.be/2-mMOB8MhmE.
+
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using Stripe;
+using Stripe.Checkout;
+
+namespace server.Controllers
+{
+  public class PaymentsController : Controller
+  {
+    public PaymentsController()
+    {
+      StripeConfiguration.ApiKey = "<<YOUR_SECRET_KEY>>";
+    }
+
+    [HttpPost("create-checkout-session")]
+    public ActionResult CreateCheckoutSession()
+    {var options = new SessionCreateOptions
+      {
+        LineItems = new List<SessionLineItemOptions>
+        {
+          new SessionLineItemOptions
+          {
+            PriceData = new SessionLineItemPriceDataOptions
+            {
+              UnitAmount = 2000,
+              Currency = "usd",
+              ProductData = new SessionLineItemPriceDataProductDataOptions
+              {
+                Name = "T-shirt",
+              },
+            },
+            Quantity = 1,
+          },
+        },
+        Mode = "payment",
+        SuccessUrl = "http://localhost:4242/success",
+      };
+
+      var service = new SessionService();
+      Session session = service.Create(options);
+
+      Response.Headers.Add("Location", session.Url);
+      return new StatusCodeResult(303);
+    }
+  }
+}
+```
+
+### Payment methods
+
+By default, Stripe enables cards and other common payment methods. You can turn individual payment methods on or off in the [Stripe Dashboard](https://dashboard.stripe.com/settings/payment_methods). In Checkout, Stripe evaluates the currency and any restrictions, then dynamically presents the supported payment methods to the customer.
+
+To see how your payment methods appear to customers, enter a transaction ID or set an order amount and currency in the Dashboard.
+
+You can enable Apple Pay and Google Pay in your [payment methods settings](https://dashboard.stripe.com/settings/payment_methods). By default, Apple Pay is enabled and Google Pay is disabled. However, in some cases Stripe filters them out even when they’re enabled. We filter Google Pay if you [enable automatic tax](https://docs.stripe.com/tax/checkout.md) without collecting a shipping address.
+
+Checkout’s Stripe-hosted pages don’t need integration changes to enable Apple Pay or Google Pay. Stripe handles these payments the same way as other card payments.
+
+### Confirm your endpoint
+
+Confirm your endpoint is accessible by starting your web server (for example, `localhost:4242`) and running the following command:
+
+```bash
+curl -X POST -is "http://localhost:4242/create-checkout-session" -d ""
+```
+
+You should see a response in your terminal that looks like this:
+
+```bash
+HTTP/1.1 303 See Other
+Location: https://checkout.stripe.com/c/pay/cs_test_...
+...
+```
+
+### Testing 
+
+You should now have a working checkout button that redirects your customer to Stripe Checkout.
+
+1. Click the checkout button.
+1. You’re redirected to the Stripe Checkout payment form.
+
+If your integration isn’t working:
+
+1. Open the Network tab in your browser’s developer tools.
+1. Click the checkout button and confirm it sent an XHR request to your server-side endpoint (`POST /create-checkout-session`).
+1. Verify the request is returning a 200 status.
+1. Use `console.log(session)` inside your button click listener to confirm the correct data returned.
+
+For more information about configuring and testing your hosted Checkout integration, see [Accept a Payment](https://docs.stripe.com/payments/accept-a-payment.md?platform=web&ui=hosted-form).
+
+## Save payment method [Server-side]
+
+After setting up your hosted Checkout integration, choose a configuration for your integration to save the payment methods used by your customers.
+
+By default, payment methods used to make a one-time payment with Checkout aren’t available for future use.
+
+### Save payment methods to charge them off-session
+
+You can set Checkout to save payment methods used to make a one-time payment by passing the [payment_intent_data.setup_future_usage](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-payment_intent_data-setup_future_usage) argument. This is useful if you need to capture a payment method on-file to use for future fees, such as cancellation or no-show fees.
 
 ```curl
 curl https://api.stripe.com/v1/checkout/sessions \
   -u "<<YOUR_SECRET_KEY>>:" \
-  -d "line_items[0][price]"="{{PRICE_ID}}" \
-  -d "line_items[0][quantity]"=2 \
-  -d mode=payment \
-  -d ui_mode=custom \
   -d customer_creation=always \
+  -d "line_items[0][price_data][currency]"=usd \
+  -d "line_items[0][price_data][product_data][name]"=T-shirt \
+  -d "line_items[0][price_data][unit_amount]"=2000 \
+  -d "line_items[0][quantity]"=1 \
+  -d mode=payment \
+  --data-urlencode success_url="https://example.com/success.html" \
+  -d "payment_intent_data[setup_future_usage]"=off_session
+```
+
+```cli
+stripe checkout sessions create  \
+  --customer-creation=always \
+  -d "line_items[0][price_data][currency]"=usd \
+  -d "line_items[0][price_data][product_data][name]"=T-shirt \
+  -d "line_items[0][price_data][unit_amount]"=2000 \
+  -d "line_items[0][quantity]"=1 \
+  --mode=payment \
+  --success-url="https://example.com/success.html" \
+  -d "payment_intent_data[setup_future_usage]"=off_session
+```
+
+```ruby
+# Set your secret key. Remember to switch to your live secret key in production.
+# See your keys here: https://dashboard.stripe.com/apikeys
+client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
+
+session = client.v1.checkout.sessions.create({
+  customer_creation: 'always',
+  line_items: [
+    {
+      price_data: {
+        currency: 'usd',
+        product_data: {name: 'T-shirt'},
+        unit_amount: 2000,
+      },
+      quantity: 1,
+    },
+  ],
+  mode: 'payment',
+  success_url: 'https://example.com/success.html',
+  payment_intent_data: {setup_future_usage: 'off_session'},
+})
+```
+
+```python
+# Set your secret key. Remember to switch to your live secret key in production.
+# See your keys here: https://dashboard.stripe.com/apikeys
+client = StripeClient("<<YOUR_SECRET_KEY>>")
+
+# For SDK versions 12.4.0 or lower, remove '.v1' from the following line.
+session = client.v1.checkout.sessions.create({
+  "customer_creation": "always",
+  "line_items": [
+    {
+      "price_data": {
+        "currency": "usd",
+        "product_data": {"name": "T-shirt"},
+        "unit_amount": 2000,
+      },
+      "quantity": 1,
+    },
+  ],
+  "mode": "payment",
+  "success_url": "https://example.com/success.html",
+  "payment_intent_data": {"setup_future_usage": "off_session"},
+})
+```
+
+```php
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+$stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
+
+$session = $stripe->checkout->sessions->create([
+  'customer_creation' => 'always',
+  'line_items' => [
+    [
+      'price_data' => [
+        'currency' => 'usd',
+        'product_data' => ['name' => 'T-shirt'],
+        'unit_amount' => 2000,
+      ],
+      'quantity' => 1,
+    ],
+  ],
+  'mode' => 'payment',
+  'success_url' => 'https://example.com/success.html',
+  'payment_intent_data' => ['setup_future_usage' => 'off_session'],
+]);
+```
+
+```java
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
+
+SessionCreateParams params =
+  SessionCreateParams.builder()
+    .setCustomerCreation(SessionCreateParams.CustomerCreation.ALWAYS)
+    .addLineItem(
+      SessionCreateParams.LineItem.builder()
+        .setPriceData(
+          SessionCreateParams.LineItem.PriceData.builder()
+            .setCurrency("usd")
+            .setProductData(
+              SessionCreateParams.LineItem.PriceData.ProductData.builder()
+                .setName("T-shirt")
+                .build()
+            )
+            .setUnitAmount(2000L)
+            .build()
+        )
+        .setQuantity(1L)
+        .build()
+    )
+    .setMode(SessionCreateParams.Mode.PAYMENT)
+    .setSuccessUrl("https://example.com/success.html")
+    .setPaymentIntentData(
+      SessionCreateParams.PaymentIntentData.builder()
+        .setSetupFutureUsage(
+          SessionCreateParams.PaymentIntentData.SetupFutureUsage.OFF_SESSION
+        )
+        .build()
+    )
+    .build();
+
+// For SDK versions 29.4.0 or lower, remove '.v1()' from the following line.
+Session session = client.v1().checkout().sessions().create(params);
+```
+
+```node
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
+
+const session = await stripe.checkout.sessions.create({
+  customer_creation: 'always',
+  line_items: [
+    {
+      price_data: {
+        currency: 'usd',
+        product_data: {
+          name: 'T-shirt',
+        },
+        unit_amount: 2000,
+      },
+      quantity: 1,
+    },
+  ],
+  mode: 'payment',
+  success_url: 'https://example.com/success.html',
+  payment_intent_data: {
+    setup_future_usage: 'off_session',
+  },
+});
+```
+
+```go
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
+params := &stripe.CheckoutSessionCreateParams{
+  CustomerCreation: stripe.String(stripe.CheckoutSessionCustomerCreationAlways),
+  LineItems: []*stripe.CheckoutSessionCreateLineItemParams{
+    &stripe.CheckoutSessionCreateLineItemParams{
+      PriceData: &stripe.CheckoutSessionCreateLineItemPriceDataParams{
+        Currency: stripe.String(stripe.CurrencyUSD),
+        ProductData: &stripe.CheckoutSessionCreateLineItemPriceDataProductDataParams{
+          Name: stripe.String("T-shirt"),
+        },
+        UnitAmount: stripe.Int64(2000),
+      },
+      Quantity: stripe.Int64(1),
+    },
+  },
+  Mode: stripe.String(stripe.CheckoutSessionModePayment),
+  SuccessURL: stripe.String("https://example.com/success.html"),
+  PaymentIntentData: &stripe.CheckoutSessionCreatePaymentIntentDataParams{
+    SetupFutureUsage: stripe.String("off_session"),
+  },
+}
+result, err := sc.V1CheckoutSessions.Create(context.TODO(), params)
+```
+
+```dotnet
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+var options = new Stripe.Checkout.SessionCreateOptions
+{
+    CustomerCreation = "always",
+    LineItems = new List<Stripe.Checkout.SessionLineItemOptions>
+    {
+        new Stripe.Checkout.SessionLineItemOptions
+        {
+            PriceData = new Stripe.Checkout.SessionLineItemPriceDataOptions
+            {
+                Currency = "usd",
+                ProductData = new Stripe.Checkout.SessionLineItemPriceDataProductDataOptions
+                {
+                    Name = "T-shirt",
+                },
+                UnitAmount = 2000,
+            },
+            Quantity = 1,
+        },
+    },
+    Mode = "payment",
+    SuccessUrl = "https://example.com/success.html",
+    PaymentIntentData = new Stripe.Checkout.SessionPaymentIntentDataOptions
+    {
+        SetupFutureUsage = "off_session",
+    },
+};
+var client = new StripeClient("<<YOUR_SECRET_KEY>>");
+var service = client.V1.Checkout.Sessions;
+Stripe.Checkout.Session session = service.Create(options);
+```
+
+If you use Checkout in `subscription` mode, Stripe automatically saves the payment method to charge it for subsequent payments. Card payment methods saved to customers using either `setup_future_usage` or `subscription` mode don’t appear for return purchases in Checkout (more on this below). We recommend using [custom text](https://docs.stripe.com/payments/checkout/customization/policies.md) to link out to any relevant terms regarding the usage of saved payment information.
+
+> Global privacy laws are complicated and nuanced. We recommend contacting your legal and privacy team prior to implementing [setup_future_usage](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-payment_intent_data-setup_future_usage) because it might implicate your existing privacy compliance framework. Refer to [the guidance issued by the European Protection Board](https://edpb.europa.eu/system/files/2021-05/recommendations022021_on_storage_of_credit_card_data_en_1.pdf) to learn more about saving payment details.
+
+### Save payment methods to prefill them in Checkout
+
+By default, Checkout uses [Link](https://docs.stripe.com/payments/link/checkout-link.md) to provide your customers with the option to securely save and reuse their payment information. If you prefer to manage payment methods yourself, use [saved_payment_method_options.payment_method_save](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-saved_payment_method_options-payment_method_save) when creating a Checkout Session to let your customers save their payment methods for future purchases in Checkout.
+
+```curl
+curl https://api.stripe.com/v1/checkout/sessions \
+  -u "<<YOUR_SECRET_KEY>>:" \
+  -d customer_creation=always \
+  -d "line_items[0][price_data][currency]"=usd \
+  -d "line_items[0][price_data][product_data][name]"=T-shirt \
+  -d "line_items[0][price_data][unit_amount]"=2000 \
+  -d "line_items[0][quantity]"=1 \
+  -d mode=payment \
+  --data-urlencode success_url="https://example.com/success.html" \
   -d "saved_payment_method_options[payment_method_save]"=enabled
 ```
 
 ```cli
 stripe checkout sessions create  \
-  -d "line_items[0][price]"="{{PRICE_ID}}" \
-  -d "line_items[0][quantity]"=2 \
-  --mode=payment \
-  --ui-mode=custom \
   --customer-creation=always \
+  -d "line_items[0][price_data][currency]"=usd \
+  -d "line_items[0][price_data][product_data][name]"=T-shirt \
+  -d "line_items[0][price_data][unit_amount]"=2000 \
+  -d "line_items[0][quantity]"=1 \
+  --mode=payment \
+  --success-url="https://example.com/success.html" \
   -d "saved_payment_method_options[payment_method_save]"=enabled
 ```
 
@@ -290,15 +854,19 @@ stripe checkout sessions create  \
 client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
 
 session = client.v1.checkout.sessions.create({
+  customer_creation: 'always',
   line_items: [
     {
-      price: '{{PRICE_ID}}',
-      quantity: 2,
+      price_data: {
+        currency: 'usd',
+        product_data: {name: 'T-shirt'},
+        unit_amount: 2000,
+      },
+      quantity: 1,
     },
   ],
   mode: 'payment',
-  ui_mode: 'custom',
-  customer_creation: 'always',
+  success_url: 'https://example.com/success.html',
   saved_payment_method_options: {payment_method_save: 'enabled'},
 })
 ```
@@ -310,10 +878,19 @@ client = StripeClient("<<YOUR_SECRET_KEY>>")
 
 # For SDK versions 12.4.0 or lower, remove '.v1' from the following line.
 session = client.v1.checkout.sessions.create({
-  "line_items": [{"price": "{{PRICE_ID}}", "quantity": 2}],
-  "mode": "payment",
-  "ui_mode": "custom",
   "customer_creation": "always",
+  "line_items": [
+    {
+      "price_data": {
+        "currency": "usd",
+        "product_data": {"name": "T-shirt"},
+        "unit_amount": 2000,
+      },
+      "quantity": 1,
+    },
+  ],
+  "mode": "payment",
+  "success_url": "https://example.com/success.html",
   "saved_payment_method_options": {"payment_method_save": "enabled"},
 })
 ```
@@ -324,15 +901,19 @@ session = client.v1.checkout.sessions.create({
 $stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
 
 $session = $stripe->checkout->sessions->create([
+  'customer_creation' => 'always',
   'line_items' => [
     [
-      'price' => '{{PRICE_ID}}',
-      'quantity' => 2,
+      'price_data' => [
+        'currency' => 'usd',
+        'product_data' => ['name' => 'T-shirt'],
+        'unit_amount' => 2000,
+      ],
+      'quantity' => 1,
     ],
   ],
   'mode' => 'payment',
-  'ui_mode' => 'custom',
-  'customer_creation' => 'always',
+  'success_url' => 'https://example.com/success.html',
   'saved_payment_method_options' => ['payment_method_save' => 'enabled'],
 ]);
 ```
@@ -344,15 +925,25 @@ StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
 
 SessionCreateParams params =
   SessionCreateParams.builder()
+    .setCustomerCreation(SessionCreateParams.CustomerCreation.ALWAYS)
     .addLineItem(
       SessionCreateParams.LineItem.builder()
-        .setPrice("{{PRICE_ID}}")
-        .setQuantity(2L)
+        .setPriceData(
+          SessionCreateParams.LineItem.PriceData.builder()
+            .setCurrency("usd")
+            .setProductData(
+              SessionCreateParams.LineItem.PriceData.ProductData.builder()
+                .setName("T-shirt")
+                .build()
+            )
+            .setUnitAmount(2000L)
+            .build()
+        )
+        .setQuantity(1L)
         .build()
     )
     .setMode(SessionCreateParams.Mode.PAYMENT)
-    .setUiMode(SessionCreateParams.UiMode.CUSTOM)
-    .setCustomerCreation(SessionCreateParams.CustomerCreation.ALWAYS)
+    .setSuccessUrl("https://example.com/success.html")
     .setSavedPaymentMethodOptions(
       SessionCreateParams.SavedPaymentMethodOptions.builder()
         .setPaymentMethodSave(
@@ -372,15 +963,21 @@ Session session = client.v1().checkout().sessions().create(params);
 const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
 
 const session = await stripe.checkout.sessions.create({
+  customer_creation: 'always',
   line_items: [
     {
-      price: '{{PRICE_ID}}',
-      quantity: 2,
+      price_data: {
+        currency: 'usd',
+        product_data: {
+          name: 'T-shirt',
+        },
+        unit_amount: 2000,
+      },
+      quantity: 1,
     },
   ],
   mode: 'payment',
-  ui_mode: 'custom',
-  customer_creation: 'always',
+  success_url: 'https://example.com/success.html',
   saved_payment_method_options: {
     payment_method_save: 'enabled',
   },
@@ -392,15 +989,21 @@ const session = await stripe.checkout.sessions.create({
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
 params := &stripe.CheckoutSessionCreateParams{
+  CustomerCreation: stripe.String(stripe.CheckoutSessionCustomerCreationAlways),
   LineItems: []*stripe.CheckoutSessionCreateLineItemParams{
     &stripe.CheckoutSessionCreateLineItemParams{
-      Price: stripe.String("{{PRICE_ID}}"),
-      Quantity: stripe.Int64(2),
+      PriceData: &stripe.CheckoutSessionCreateLineItemPriceDataParams{
+        Currency: stripe.String(stripe.CurrencyUSD),
+        ProductData: &stripe.CheckoutSessionCreateLineItemPriceDataProductDataParams{
+          Name: stripe.String("T-shirt"),
+        },
+        UnitAmount: stripe.Int64(2000),
+      },
+      Quantity: stripe.Int64(1),
     },
   },
   Mode: stripe.String(stripe.CheckoutSessionModePayment),
-  UIMode: stripe.String(stripe.CheckoutSessionUIModeCustom),
-  CustomerCreation: stripe.String(stripe.CheckoutSessionCustomerCreationAlways),
+  SuccessURL: stripe.String("https://example.com/success.html"),
   SavedPaymentMethodOptions: &stripe.CheckoutSessionCreateSavedPaymentMethodOptionsParams{
     PaymentMethodSave: stripe.String(stripe.CheckoutSessionSavedPaymentMethodOptionsPaymentMethodSaveEnabled),
   },
@@ -413,17 +1016,25 @@ result, err := sc.V1CheckoutSessions.Create(context.TODO(), params)
 // See your keys here: https://dashboard.stripe.com/apikeys
 var options = new Stripe.Checkout.SessionCreateOptions
 {
+    CustomerCreation = "always",
     LineItems = new List<Stripe.Checkout.SessionLineItemOptions>
     {
         new Stripe.Checkout.SessionLineItemOptions
         {
-            Price = "{{PRICE_ID}}",
-            Quantity = 2,
+            PriceData = new Stripe.Checkout.SessionLineItemPriceDataOptions
+            {
+                Currency = "usd",
+                ProductData = new Stripe.Checkout.SessionLineItemPriceDataProductDataOptions
+                {
+                    Name = "T-shirt",
+                },
+                UnitAmount = 2000,
+            },
+            Quantity = 1,
         },
     },
     Mode = "payment",
-    UiMode = "custom",
-    CustomerCreation = "always",
+    SuccessUrl = "https://example.com/success.html",
     SavedPaymentMethodOptions = new Stripe.Checkout.SessionSavedPaymentMethodOptionsOptions
     {
         PaymentMethodSave = "enabled",
@@ -434,84 +1045,43 @@ var service = client.V1.Checkout.Sessions;
 Stripe.Checkout.Session session = service.Create(options);
 ```
 
-After you create the Checkout Session, use the [client secret](https://docs.stripe.com/api/checkout/sessions/object.md#checkout_session_object-client_secret) returned in the response to [build your checkout page](https://docs.stripe.com/payments/quickstart-checkout-sessions.md).
+Passing this parameter in either [payment](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-mode) or [subscription](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-mode) mode displays an optional checkbox to let customers explicitly save their payment method for future purchases. When customers check this checkbox, Checkout saves the payment method with [allow_redisplay: always](https://docs.stripe.com/api/payment_methods/object.md#payment_method_object-allow_redisplay). Checkout uses this parameter to determine whether a payment method can be prefilled on future purchases. When using `saved_payment_method_options.payment_method_save`, you don’t need to pass in `setup_future_usage` to save the payment method.
 
-> In the latest version of Stripe.js, specifying `enableSave` to `auto` is optional because that’s the default value when saved payment methods are enabled on the Checkout Session.
+If your Connect platform uses [customer-configured Accounts](https://docs.stripe.com/api/v2/core/accounts/create.md#v2_create_accounts-configuration-customer), use our [guide](https://docs.stripe.com/connect/use-accounts-as-customers.md) to replace `Customer` and event references in your code with the equivalent Accounts v2 API references.
 
-#### HTML + JS
+Using [saved_payment_method_options.payment_method_save](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-saved_payment_method_options-payment_method_save) requires a `Customer`. To save a new customer, set the Checkout Session’s [customer_creation](https://docs.stripe.com/api/checkout/sessions/create.md) to `always`. Otherwise, the session doesn’t save the customer or the payment method.
 
-The Payment Element automatically displays a consent collection checkbox when saved payment methods are enabled on the Checkout Session. You can explicitly configure this behavior using [elementsOptions](https://docs.stripe.com/js/custom_checkout/init#custom_checkout_init-options-elementsOptions) on `initCheckout`.
+If `payment_method_save` isn’t passed in or if the customer doesn’t agree to save the payment method, Checkout still saves payment methods created in `subscription` mode or using `setup_future_usage`. These payment methods have an `allow_redisplay` value of `limited`, which prevents them from being prefilled for returning purchases and allows you to comply with card network rules and data protection regulations. Learn how to [change the default behavior enabled by these modes](https://support.stripe.com/questions/prefilling-saved-cards-in-checkout) and how to change or override `allow_redisplay` behavior.
 
-```javascript
-const checkout = stripe.initCheckout({
-  clientSecret,
-  elementsOptions: {savedPaymentMethod: {
-      // Default is 'auto' in the latest version of Stripe.js - this configuration is optional
-      enableSave: 'auto',
-    }
-  }
-});
-```
+> You can use Checkout to save cards and other payment methods to charge them off-session, but Checkout only prefills saved cards. Learn how to [prefill saved cards](https://support.stripe.com/questions/prefilling-saved-cards-in-checkout). To save a payment method without an initial payment, [use Checkout in setup mode](https://docs.stripe.com/payments/save-and-reuse.md?platform=checkout).
 
-#### React
+### Let customers remove saved payment methods
 
-The Payment Element automatically displays a consent collection checkbox when saved payment methods are enabled on the Checkout Session. You can explicitly configure this behavior using [elementsOptions](https://docs.stripe.com/js/custom_checkout/react/checkout_provider#custom_checkout_react_checkout_provider-options-elementsOptions) on the `CheckoutProvider`.
-
-```jsx
-import React from 'react';
-import {CheckoutProvider} from '@stripe/react-stripe-js/checkout';
-import CheckoutForm from './CheckoutForm';
-
-const App = () => {
-  const clientSecret = fetch('/create-checkout-session', {method: 'POST'})
-    .then((response) => response.json())
-    .then((json) => json.checkoutSessionClientSecret)
-
-  return (
-    <CheckoutProvider
-      stripe={stripe}
-      options={{
-        clientSecret,
-        elementsOptions: {savedPaymentMethod: {
-            // Default is 'auto' in the latest version of Stripe.js - this configuration is optional
-            enableSave: 'auto',
-          }
-        },
-      }}
-    >
-      <CheckoutForm />
-    </CheckoutProvider>
-  );
-};
-
-export default App;
-```
-
-## Reuse a previously saved payment method
-
-Each saved payment method is linked to a [Customer](https://docs.stripe.com/api/customers/object.md) object. Before creating the Checkout Session, authenticate your customer, and pass the corresponding [Customer ID](https://docs.stripe.com/api/customers/object.md#customer_object-id) to the Checkout Session.
-
-> In the latest version of Stripe.js, `enableRedisplay` defaults to `auto` when saved payment methods are enabled on the Checkout Session.
-
-The Payment Element automatically redisplays previously saved payment methods for your customer to use during checkout when saved payment methods are enabled on the Checkout Session.
+To let your customers remove a saved payment method so it doesn’t resurface for future payments, use [saved_payment_method_options.payment_method_remove](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-saved_payment_method_options-payment_method_remove) when creating a Checkout Session.
 
 ```curl
 curl https://api.stripe.com/v1/checkout/sessions \
   -u "<<YOUR_SECRET_KEY>>:" \
-  -d "line_items[0][price]"="{{PRICE_ID}}" \
-  -d "line_items[0][quantity]"=2 \
+  -d customer={{CUSTOMER_ID}} \
+  -d "line_items[0][price_data][currency]"=usd \
+  -d "line_items[0][price_data][product_data][name]"=T-shirt \
+  -d "line_items[0][price_data][unit_amount]"=2000 \
+  -d "line_items[0][quantity]"=1 \
   -d mode=payment \
-  -d ui_mode=custom \
-  -d customer="{{CUSTOMER_ID}}"
+  --data-urlencode success_url="https://example.com/success.html" \
+  -d "saved_payment_method_options[payment_method_remove]"=enabled
 ```
 
 ```cli
 stripe checkout sessions create  \
-  -d "line_items[0][price]"="{{PRICE_ID}}" \
-  -d "line_items[0][quantity]"=2 \
+  --customer={{CUSTOMER_ID}} \
+  -d "line_items[0][price_data][currency]"=usd \
+  -d "line_items[0][price_data][product_data][name]"=T-shirt \
+  -d "line_items[0][price_data][unit_amount]"=2000 \
+  -d "line_items[0][quantity]"=1 \
   --mode=payment \
-  --ui-mode=custom \
-  --customer="{{CUSTOMER_ID}}"
+  --success-url="https://example.com/success.html" \
+  -d "saved_payment_method_options[payment_method_remove]"=enabled
 ```
 
 ```ruby
@@ -520,15 +1090,20 @@ stripe checkout sessions create  \
 client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
 
 session = client.v1.checkout.sessions.create({
+  customer: '{{CUSTOMER_ID}}',
   line_items: [
     {
-      price: '{{PRICE_ID}}',
-      quantity: 2,
+      price_data: {
+        currency: 'usd',
+        product_data: {name: 'T-shirt'},
+        unit_amount: 2000,
+      },
+      quantity: 1,
     },
   ],
   mode: 'payment',
-  ui_mode: 'custom',
-  customer: '{{CUSTOMER_ID}}',
+  success_url: 'https://example.com/success.html',
+  saved_payment_method_options: {payment_method_remove: 'enabled'},
 })
 ```
 
@@ -539,10 +1114,20 @@ client = StripeClient("<<YOUR_SECRET_KEY>>")
 
 # For SDK versions 12.4.0 or lower, remove '.v1' from the following line.
 session = client.v1.checkout.sessions.create({
-  "line_items": [{"price": "{{PRICE_ID}}", "quantity": 2}],
-  "mode": "payment",
-  "ui_mode": "custom",
   "customer": "{{CUSTOMER_ID}}",
+  "line_items": [
+    {
+      "price_data": {
+        "currency": "usd",
+        "product_data": {"name": "T-shirt"},
+        "unit_amount": 2000,
+      },
+      "quantity": 1,
+    },
+  ],
+  "mode": "payment",
+  "success_url": "https://example.com/success.html",
+  "saved_payment_method_options": {"payment_method_remove": "enabled"},
 })
 ```
 
@@ -552,15 +1137,20 @@ session = client.v1.checkout.sessions.create({
 $stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
 
 $session = $stripe->checkout->sessions->create([
+  'customer' => '{{CUSTOMER_ID}}',
   'line_items' => [
     [
-      'price' => '{{PRICE_ID}}',
-      'quantity' => 2,
+      'price_data' => [
+        'currency' => 'usd',
+        'product_data' => ['name' => 'T-shirt'],
+        'unit_amount' => 2000,
+      ],
+      'quantity' => 1,
     ],
   ],
   'mode' => 'payment',
-  'ui_mode' => 'custom',
-  'customer' => '{{CUSTOMER_ID}}',
+  'success_url' => 'https://example.com/success.html',
+  'saved_payment_method_options' => ['payment_method_remove' => 'enabled'],
 ]);
 ```
 
@@ -571,15 +1161,29 @@ StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
 
 SessionCreateParams params =
   SessionCreateParams.builder()
+    .setCustomer("{{CUSTOMER_ID}}")
     .addLineItem(
       SessionCreateParams.LineItem.builder()
-        .setPrice("{{PRICE_ID}}")
-        .setQuantity(2L)
+        .setPriceData(
+          SessionCreateParams.LineItem.PriceData.builder()
+            .setCurrency("usd")
+            .setProductData(
+              SessionCreateParams.LineItem.PriceData.ProductData.builder()
+                .setName("T-shirt")
+                .build()
+            )
+            .setUnitAmount(2000L)
+            .build()
+        )
+        .setQuantity(1L)
         .build()
     )
     .setMode(SessionCreateParams.Mode.PAYMENT)
-    .setUiMode(SessionCreateParams.UiMode.CUSTOM)
-    .setCustomer("{{CUSTOMER_ID}}")
+    .setSuccessUrl("https://example.com/success.html")
+    .setSavedPaymentMethodOptions(
+      SessionCreateParams.SavedPaymentMethodOptions.builder().build()
+    )
+    .putExtraParam("saved_payment_method_options[payment_method_remove]", "enabled")
     .build();
 
 // For SDK versions 29.4.0 or lower, remove '.v1()' from the following line.
@@ -592,15 +1196,24 @@ Session session = client.v1().checkout().sessions().create(params);
 const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
 
 const session = await stripe.checkout.sessions.create({
+  customer: '{{CUSTOMER_ID}}',
   line_items: [
     {
-      price: '{{PRICE_ID}}',
-      quantity: 2,
+      price_data: {
+        currency: 'usd',
+        product_data: {
+          name: 'T-shirt',
+        },
+        unit_amount: 2000,
+      },
+      quantity: 1,
     },
   ],
   mode: 'payment',
-  ui_mode: 'custom',
-  customer: '{{CUSTOMER_ID}}',
+  success_url: 'https://example.com/success.html',
+  saved_payment_method_options: {
+    payment_method_remove: 'enabled',
+  },
 });
 ```
 
@@ -609,16 +1222,24 @@ const session = await stripe.checkout.sessions.create({
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
 params := &stripe.CheckoutSessionCreateParams{
+  Customer: stripe.String("{{CUSTOMER_ID}}"),
   LineItems: []*stripe.CheckoutSessionCreateLineItemParams{
     &stripe.CheckoutSessionCreateLineItemParams{
-      Price: stripe.String("{{PRICE_ID}}"),
-      Quantity: stripe.Int64(2),
+      PriceData: &stripe.CheckoutSessionCreateLineItemPriceDataParams{
+        Currency: stripe.String(stripe.CurrencyUSD),
+        ProductData: &stripe.CheckoutSessionCreateLineItemPriceDataProductDataParams{
+          Name: stripe.String("T-shirt"),
+        },
+        UnitAmount: stripe.Int64(2000),
+      },
+      Quantity: stripe.Int64(1),
     },
   },
   Mode: stripe.String(stripe.CheckoutSessionModePayment),
-  UIMode: stripe.String(stripe.CheckoutSessionUIModeCustom),
-  Customer: stripe.String("{{CUSTOMER_ID}}"),
+  SuccessURL: stripe.String("https://example.com/success.html"),
+  SavedPaymentMethodOptions: &stripe.CheckoutSessionCreateSavedPaymentMethodOptionsParams{},
 }
+params.AddExtra("saved_payment_method_options[payment_method_remove]", "enabled")
 result, err := sc.V1CheckoutSessions.Create(context.TODO(), params)
 ```
 
@@ -627,426 +1248,41 @@ result, err := sc.V1CheckoutSessions.Create(context.TODO(), params)
 // See your keys here: https://dashboard.stripe.com/apikeys
 var options = new Stripe.Checkout.SessionCreateOptions
 {
+    Customer = "{{CUSTOMER_ID}}",
     LineItems = new List<Stripe.Checkout.SessionLineItemOptions>
     {
         new Stripe.Checkout.SessionLineItemOptions
         {
-            Price = "{{PRICE_ID}}",
-            Quantity = 2,
+            PriceData = new Stripe.Checkout.SessionLineItemPriceDataOptions
+            {
+                Currency = "usd",
+                ProductData = new Stripe.Checkout.SessionLineItemPriceDataProductDataOptions
+                {
+                    Name = "T-shirt",
+                },
+                UnitAmount = 2000,
+            },
+            Quantity = 1,
         },
     },
     Mode = "payment",
-    UiMode = "custom",
-    Customer = "{{CUSTOMER_ID}}",
+    SuccessUrl = "https://example.com/success.html",
+    SavedPaymentMethodOptions = new Stripe.Checkout.SessionSavedPaymentMethodOptionsOptions(),
 };
+options.AddExtraParam("saved_payment_method_options[payment_method_remove]", "enabled");
 var client = new StripeClient("<<YOUR_SECRET_KEY>>");
 var service = client.V1.Checkout.Sessions;
 Stripe.Checkout.Session session = service.Create(options);
 ```
 
-#### HTML + JS
+The customer can’t remove a payment method if it’s tied to an active subscription and the customer doesn’t have a default payment method saved for invoice and subscription payments.
 
-You can explicitly configure the redisplay behavior using [elementsOptions](https://docs.stripe.com/js/custom_checkout/init#custom_checkout_init-options-elementsOptions) on `initCheckout`.
 
-```javascript
-const checkout = stripe.initCheckout({
-  clientSecret,
-  elementsOptions: {
-    savedPaymentMethod: {
-      // Default is 'auto' in the latest version of Stripe.js - this configuration is optional
-      enableSave: 'auto',// Default is 'auto' in the latest version of Stripe.js - this configuration is optional
-      enableRedisplay: 'auto',
-    }
-  }
-});
-```
+# Embedded form
 
-#### React
+> This is a Embedded form for when payment-ui is embedded-form. View the full page at https://docs.stripe.com/payments/checkout/save-during-payment?payment-ui=embedded-form.
 
-You can explicitly configure the redisplay behavior using [elementsOptions](https://docs.stripe.com/js/custom_checkout/react/checkout_provider#custom_checkout_react_checkout_provider-options-elementsOptions) on the `CheckoutProvider`.
-
-```jsx
-import React from 'react';
-import {CheckoutProvider} from '@stripe/react-stripe-js/checkout';
-import CheckoutForm from './CheckoutForm';
-
-const App = () => {
-  const clientSecret = fetch('/create-checkout-session', {method: 'POST'})
-    .then((response) => response.json())
-    .then((json) => json.checkoutSessionClientSecret)
-
-  return (
-    <CheckoutProvider
-      stripe={stripe}
-      options={{
-        clientSecret,
-        elementsOptions: {
-          savedPaymentMethod: {
-            // Default is 'auto' in the latest version of Stripe.js - this configuration is optional
-            enableSave: 'auto',// Default is 'auto' in the latest version of Stripe.js - this configuration is optional
-            enableRedisplay: 'auto',
-          }
-        },
-      }}
-    >
-      <CheckoutForm />
-    </CheckoutProvider>
-  );
-};
-
-export default App;
-```
-
-## Optional: Build a saved payment method UI
-
-#### HTML + JS
-
-You can build your own saved payment method UI instead of using the built-in UI provided by the Payment Element.
-
-To prevent the Payment Element from handling consent collection and displaying the previously saved payment methods, pass in additional [elementsOptions](https://docs.stripe.com/js/custom_checkout/init#custom_checkout_init-options-elementsOptions) on `initCheckout`.
-
-```javascript
-const checkout = stripe.initCheckout({
-  clientSecret,
-  elementsOptions: {savedPaymentMethod: {
-      enableSave: 'never',
-      enableRedisplay: 'never',
-    }
-  }
-});
-```
-
-#### React
-
-You can build your own saved payment method UI instead of using the built-in UI provided by the Payment Element. To prevent the Payment Element from handling consent collection and displaying the previously saved payment methods, pass in additional [elementsOptions](https://docs.stripe.com/js/custom_checkout/react/checkout_provider#custom_checkout_react_checkout_provider-options-elementsOptions) on the `CheckoutProvider`.
-
-```jsx
-import React from 'react';
-import {CheckoutProvider} from '@stripe/react-stripe-js/checkout';
-import CheckoutForm from './CheckoutForm';
-
-const App = () => {
-  const clientSecret = fetch('/create-checkout-session', {method: 'POST'})
-    .then((response) => response.json())
-    .then((json) => json.checkoutSessionClientSecret)
-
-  return (
-    <CheckoutProvider
-      stripe={stripe}
-      options={{
-        clientSecret,
-        elementsOptions: {savedPaymentMethod: {
-            enableSave: 'never',
-            enableRedisplay: 'never',
-          }
-        },
-      }}
-    >
-      <CheckoutForm />
-    </CheckoutProvider>
-  );
-};
-
-export default App;
-```
-
-### Collect consent
-
-> Global privacy laws are complicated and nuanced. Before implementing the ability to store customer payment method details, work with your legal team to make sure that it complies with your privacy and compliance framework.
-
-In most cases, you must collect a customer’s consent before you save their payment method details. The following example shows how to obtain consent using a checkbox.
-
-#### HTML + JS
-
-```html
-<label>
-  <input type="checkbox" id="save-payment-method-checkbox" />
-  Save my payment information for future purchases
-</label>
-<button id="pay-button">Pay</button>
-<div id="confirm-errors"></div>
-```
-
-#### React
-
-```jsx
-import React from 'react';
-
-type Props = {
-  savePaymentMethod: boolean;
-  onSavePaymentMethodChange: (save: boolean) => void;
-}
-const ConsentCollection = (props: Props) => {
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    props.onSavePaymentMethodChange(e.target.checked);
-  };
-  return (
-    <label>
-      <input
-        type="checkbox"
-        checked={props.savePaymentMethod}
-        onChange={handleChange}
-      />
-      Save my payment information for future purchases
-    </label>
-  );
-};
-
-export default ConsentCollection;
-```
-
-When you call [confirm](https://docs.stripe.com/js/custom_checkout/confirm), you can indicate to Stripe that your customer has provided consent by passing the `savePaymentMethod` parameter. When you save a customer’s payment details, you’re responsible for complying with all applicable laws, regulations, and network rules.
-
-#### HTML + JS
-
-```js
-const checkout = stripe.initCheckout({clientSecret});
-const button = document.getElementById('pay-button');
-const errors = document.getElementById('confirm-errors');
-const checkbox = document.getElementById('save-payment-method-checkbox');
-const loadActionsResult = await checkout.loadActions();
-if (loadActionsResult.type === 'success') {
-  const {actions} = loadActionsResult;
-  button.addEventListener('click', () => {
-    // Clear any validation errors
-    errors.textContent = '';
-const savePaymentMethod = checkbox.checked;
-    actions.confirm({savePaymentMethod}).then((result) => {
-      if (result.type === 'error') {
-        errors.textContent = result.error.message;
-      }
-    });
-  });
-}
-```
-
-#### React
-
-```jsx
-import React from 'react';
-import {useCheckout} from '@stripe/react-stripe-js/checkout';
-
-type Props = {
-  savePaymentMethod: boolean;
-}
-const PayButton = (props: Props) => {
-  const checkoutState = useCheckout();
-  const [loading, setLoading] = React.useState(false);
-  const [error, setError] = React.useState(null);
-
-  if (checkoutState.type === 'loading') {
-    return (
-      <div>Loading...</div>
-    );
-  } else if (checkoutState.type === 'error') {
-    return (
-      <div>Error: {checkoutState.error.message}</div>
-    );
-  }
-  const {confirm} = checkoutState.checkout;
-  const handleClick = () => {
-    setLoading(true);confirm({savePaymentMethod: props.savePaymentMethod}).then((result) => {
-      if (result.type === 'error') {
-        setError(result.error)
-      }
-      setLoading(false);
-    })
-  };
-
-  return (
-    <div>
-      <button disabled={!loading} onClick={handleClick}>
-        Pay
-      </button>
-      {error && <div>{error.message}</div>}
-    </div>
-  )
-};
-
-export default PayButton;
-```
-
-### Render saved payment methods
-
-Use the [savedPaymentMethods](https://docs.stripe.com/js/custom_checkout/session_object#custom_checkout_session_object-savedPaymentMethods) array on the front end to render the customer’s available payment methods.
-
-> The `savedPaymentMethods` array includes only the payment methods that have [allow_redisplay](https://docs.stripe.com/api/payment_methods/object.md#payment_method_object-allow_redisplay) set to `always`. Follow the steps for [collecting consent](https://docs.stripe.com/payments/save-during-payment.md#collect-consent) from your customer and make sure to properly set the `allow_redisplay` parameter.
-
-#### HTML + JS
-
-```html
-<div id="saved-payment-methods"></div>
-```
-
-```js
-const checkout = stripe.initCheckout({clientSecret});
-const loadActionsResult = await checkout.loadActions();
-if (loadActionsResult.type === 'success') {
-  const container = document.getElementById('saved-payment-methods');
-  const {actions} = loadActionsResult;
-  actions.getSession().savedPaymentMethods.forEach((pm) => {
-    const label = document.createElement('label');
-    const radio = document.createElement('input');
-
-    radio.type = 'radio';
-    radio.value = pm.id;
-
-    label.appendChild(radio);
-    label.appendChild(document.createTextNode(`Card ending in ${pm.card.last4}`));
-    container.appendChild(label);
-  });
-}
-```
-
-#### React
-
-```jsx
-import React from 'react';
-import {useCheckout} from '@stripe/react-stripe-js/checkout';
-
-type Props = {
-  selectedPaymentMethod: string | null;
-  onSelectPaymentMethod: (paymentMethod: string) => void;
-};
-const PaymentMethods = (props: Props) => {const checkoutState = useCheckout();
-
-  if (checkoutState.type === 'loading') {
-    return (
-      <div>Loading...</div>
-    );
-  } else if (checkoutState.type === 'error') {
-    return (
-      <div>Error: {checkoutState.error.message}</div>
-    );
-  }const {savedPaymentMethods} = checkoutState.checkout;
-
-  const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    props.onSelectPaymentMethod(e.target.value);
-  };
-
-  return (
-    <div>
-      {savedPaymentMethods.map((pm) => (
-        <label key={pm.id}>
-          <input
-            type="radio"
-            value={pm.id}
-            checked={props.selectedPaymentMethod === pm.id}
-            onChange={handleOptionChange}
-          />
-          Card ending in {pm.card.last4}
-        </label>
-      ))}
-    </div>
-  );
-};
-
-export default PaymentMethods;
-```
-
-### Confirm with a saved payment method
-
-When your customer selects a saved payment method and is ready to complete checkout, call [confirm](https://docs.stripe.com/js/custom_checkout/confirm) and pass in the [paymentMethod](https://docs.stripe.com/js/custom_checkout/confirm#custom_checkout_session_confirm-options-paymentMethod) ID.
-
-#### HTML + JS
-
-```html
-<button id="pay-button">Pay</button>
-```
-
-```js
-const checkout = stripe.initCheckout({clientSecret});
-
-const loadActionsResult = await checkout.loadActions();
-if (loadActionsResult.type === 'success') {
-  const container = document.getElementById('saved-payment-methods');
-  const {actions} = loadActionsResult;
-  actions.getSession().savedPaymentMethods.forEach((pm) => {
-    const label = document.createElement('label');
-    const radio = document.createElement('input');
-
-    radio.type = 'radio';
-    radio.value = pm.id;
-
-    label.appendChild(radio);
-    label.appendChild(document.createTextNode(`Card ending in ${pm.card.last4}`));
-    container.appendChild(label);
-  });
-}
-```
-
-#### React
-
-```jsx
-import React from 'react';
-import {useCheckout} from '@stripe/react-stripe-js/checkout';
-
-type Props = {
-  selectedPaymentMethod: string | null;
-}
-const PayButton = (props: Props) => {
-  const checkoutState = useCheckout();
-  const [loading, setLoading] = React.useState(false);
-
-  if (checkoutState.type === 'loading') {
-    return (
-      <div>Loading...</div>
-    );
-  } else if (checkoutState.type === 'error') {
-    return (
-      <div>Error: {checkoutState.error.message}</div>
-    );
-  }
-  const {confirm} = checkoutState.checkout;
-
-  const handleClick = () => {
-    setLoading(true);confirm({paymentMethod: props.selectedPaymentMethod}).then((result) => {
-      if (result.error) {
-        // Confirmation failed. Display the error message.
-      }
-      setLoading(false);
-    })
-  };
-
-  return (
-    <button disabled={loading} onClick={handleClick}>
-      Pay
-    </button>
-  )
-};
-
-export default PayButton;
-```
-
-
-# Payment Intents API
-
-> This is a Payment Intents API for when payment-ui is elements. View the full page at https://docs.stripe.com/payments/save-during-payment?payment-ui=elements.
-
-Use the [Payment Intents API](https://docs.stripe.com/api/payment_intents.md) to save payment details from a purchase. There are several use cases:
-
-- Charge a customer for an e-commerce order and store the details for future purchases.
-- Initiate the first payment of a series of recurring payments.
-- Charge a deposit and store the details to charge the full amount later.
-
-> #### Card-present transactions
-> 
-> Card-present transactions, such as payments through Stripe Terminal, use a different process for saving the payment method. For details, see [the Terminal documentation](https://docs.stripe.com/terminal/features/saving-payment-details/save-after-payment.md).
-
-## Compliance
-
-You’re responsible for your compliance with all applicable laws, regulations, and network rules when saving a customer’s payment details. These requirements generally apply if you want to save your customer’s payment method for future use, such as displaying a customer’s payment method to them in the checkout flow for a future purchase or charging them when they’re not actively using your website or app. Add terms to your website or app that state how you plan to save payment method details and allow customers to opt in.
-
-When you save a payment method, you can only use it for the specific usage you have included in your terms. To charge a payment method when a customer is offline and save it as an option for future purchases, make sure that you explicitly collect consent from the customer for this specific use. For example, include a “Save my payment method for future use” checkbox to collect consent.
-
-To charge them when they’re offline, make sure your terms include the following:
-
-- The customer’s agreement to your initiating a payment or a series of payments on their behalf for specified transactions.
-- The anticipated timing and frequency of payments (for example, if the charges are for scheduled installments, subscription payments, or unscheduled top-ups).
-- How you determine the payment amount.
-- Your cancellation policy, if the payment method is for a subscription service.
-
-Make sure you keep a record of your customer’s written agreement to these terms.
+Use [Stripe Checkout](https://docs.stripe.com/payments/checkout.md) to embed a prebuilt payment form on your website that allows your customers to save their payment details for future purchases.
 
 ## Set up Stripe [Server-side]
 
@@ -1104,7 +1340,7 @@ composer require stripe/stripe-php
   - https://mvnrepository.com/artifact/com.stripe/stripe-java or
   - https://github.com/stripe/stripe-java/releases/latest
 */
-implementation "com.stripe:stripe-java:30.0.0"
+implementation "com.stripe:stripe-java:31.3.0"
 ```
 
 ```xml
@@ -1117,7 +1353,7 @@ implementation "com.stripe:stripe-java:30.0.0"
 <dependency>
   <groupId>com.stripe</groupId>
   <artifactId>stripe-java</artifactId>
-  <version>30.0.0</version>
+  <version>31.3.0</version>
 </dependency>
 ```
 
@@ -1140,13 +1376,13 @@ npm install stripe --save
 # Make sure your project is using Go Modules
 go mod init
 # Install stripe-go
-go get -u github.com/stripe/stripe-go/v83
+go get -u github.com/stripe/stripe-go/v84
 ```
 
 ```go
 // Then import the package
 import (
-  "github.com/stripe/stripe-go/v83"
+  "github.com/stripe/stripe-go/v84"
 )
 ```
 
@@ -1163,9 +1399,13 @@ dotnet restore
 Install-Package Stripe.net
 ```
 
-## Create a Customer [Server-side]
+## Create a customer [Server-side]
 
 To set a card up for future payments, you must attach it to a *Customer* (Customer objects represent customers of your business. They let you reuse payment methods and give you the ability to track multiple payments). Create a Customer object when your customer creates an account with your business. Customer objects allow for reusing payment methods and tracking across multiple payments.
+
+> #### Compare Customers v1 and Accounts v2 references
+> 
+> If your Connect platform uses [customer-configured Accounts](https://docs.stripe.com/api/v2/core/accounts/create.md#v2_create_accounts-configuration-customer), use our [guide](https://docs.stripe.com/connect/use-accounts-as-customers.md) to replace `Customer` and event references in your code with the equivalent Accounts v2 API references.
 
 ```curl
 curl https://api.stripe.com/v1/customers \
@@ -1252,218 +1492,166 @@ Successful creation returns the [Customer](https://docs.stripe.com/api/customers
 
 You can find these customers in the [Customers](https://dashboard.stripe.com/customers) page in the Dashboard.
 
-## Enable payment methods
+## Create a Checkout Session [Server-side]
 
-View your [payment methods settings](https://dashboard.stripe.com/settings/payment_methods) and enable the payment methods you want to support. You need at least one payment method enabled to create a *PaymentIntent* (The Payment Intents API tracks the lifecycle of a customer checkout flow and triggers additional authentication steps when required by regulatory mandates, custom Radar fraud rules, or redirect-based payment methods).
+From your server, create a *Checkout Session* (A Checkout Session represents your customer's session as they pay for one-time purchases or subscriptions through Checkout. After a successful payment, the Checkout Session contains a reference to the Customer, and either the successful PaymentIntent or an active Subscription) and set the [ui_mode](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-ui_mode) to `embedded`. You can configure the [Checkout Session](https://docs.stripe.com/api/checkout/sessions/create.md) with [line items](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-line_items) to include and options such as [currency](https://docs.stripe.com/api/checkout/sessions/object.md#checkout_session_object-currency).
 
-By default, Stripe enables cards and other prevalent payment methods that can help you reach more customers, but we recommend turning on additional payment methods that are relevant for your business and customers. See [Payment method support](https://docs.stripe.com/payments/payment-methods/payment-method-support.md) for product and payment method support, and our [pricing page](https://stripe.com/pricing/local-payment-methods) for fees.
+You can also create a Checkout Session for an [existing customer](https://docs.stripe.com/payments/existing-customers.md?platform=web&ui=stripe-hosted), allowing you to prefill Checkout fields with known contact information and unify your purchase history for that customer.
 
-## Create a payment [Server-side]
+To return customers to a custom page that you host on your website, specify that page’s URL in the [return_url](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-return_url) parameter. Include the `{CHECKOUT_SESSION_ID}` template variable in the URL to retrieve the session’s status on the return page. Checkout automatically substitutes the variable with the Checkout Session ID before redirecting.
 
-> If you want to render the Payment Element without first creating a PaymentIntent, see [Collect payment details before creating an Intent](https://docs.stripe.com/payments/accept-a-payment-deferred.md?type=payment).
+Read more about [configuring the return page](https://docs.stripe.com/payments/accept-a-payment.md?payment-ui=checkout&ui=embedded-form#return-page) and other options for [customizing redirect behavior](https://docs.stripe.com/payments/checkout/custom-success-page.md?payment-ui=embedded-form).
 
-The [PaymentIntent](https://docs.stripe.com/api/payment_intents.md) object represents your intent to collect payment from a customer and tracks charge attempts and state changes throughout the payment process.
-A high-level overview of the payments integration this document describes. (See full diagram at https://docs.stripe.com/payments/save-during-payment)
-### Create the PaymentIntent
-
-Create a PaymentIntent on your server. Specify an [amount](https://docs.stripe.com/api/payment_intents/create.md#create_payment_intent-amount), [currency](https://docs.stripe.com/api/payment_intents/create.md#create_payment_intent-currency), and [customer](https://docs.stripe.com/api/payment_intents/create.md#create_payment_intent-customer). In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default. Enable [setup_future_usage](https://docs.stripe.com/api/payment_intents/create.md#create_payment_intent-setup_future_usage). The payment methods you configured in the Dashboard are automatically added to the Payment Intent.
-
-If you don’t want to use the Dashboard or if you want to specify payment methods manually, you can list them using the `payment_method_types` [attribute](https://docs.stripe.com/api/payment_intents/create.md#create_payment_intent-payment_method_types).
-
-```curl
-curl https://api.stripe.com/v1/payment_intents \
-  -u "<<YOUR_SECRET_KEY>>:" \
-  -d customer="{{CUSTOMER_ID}}" \
-  -d amount=1099 \
-  -d currency=usd \
-  -d setup_future_usage=off_session \
-  -d "automatic_payment_methods[enabled]"=true
-```
-
-```cli
-stripe payment_intents create  \
-  --customer="{{CUSTOMER_ID}}" \
-  --amount=1099 \
-  --currency=usd \
-  --setup-future-usage=off_session \
-  -d "automatic_payment_methods[enabled]"=true
-```
-
-```ruby
-# Set your secret key. Remember to switch to your live secret key in production.
-# See your keys here: https://dashboard.stripe.com/apikeys
-client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
-
-payment_intent = client.v1.payment_intents.create({
-  customer: '{{CUSTOMER_ID}}',
-  amount: 1099,
-  currency: 'usd',
-  setup_future_usage: 'off_session',
-  automatic_payment_methods: {enabled: true},
-})
-```
-
-```python
-# Set your secret key. Remember to switch to your live secret key in production.
-# See your keys here: https://dashboard.stripe.com/apikeys
-client = StripeClient("<<YOUR_SECRET_KEY>>")
-
-# For SDK versions 12.4.0 or lower, remove '.v1' from the following line.
-payment_intent = client.v1.payment_intents.create({
-  "customer": "{{CUSTOMER_ID}}",
-  "amount": 1099,
-  "currency": "usd",
-  "setup_future_usage": "off_session",
-  "automatic_payment_methods": {"enabled": True},
-})
-```
-
-```php
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-$stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
-
-$paymentIntent = $stripe->paymentIntents->create([
-  'customer' => '{{CUSTOMER_ID}}',
-  'amount' => 1099,
-  'currency' => 'usd',
-  'setup_future_usage' => 'off_session',
-  'automatic_payment_methods' => ['enabled' => true],
-]);
-```
-
-```java
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
-
-PaymentIntentCreateParams params =
-  PaymentIntentCreateParams.builder()
-    .setCustomer("{{CUSTOMER_ID}}")
-    .setAmount(1099L)
-    .setCurrency("usd")
-    .setSetupFutureUsage(PaymentIntentCreateParams.SetupFutureUsage.OFF_SESSION)
-    .setAutomaticPaymentMethods(
-      PaymentIntentCreateParams.AutomaticPaymentMethods.builder().setEnabled(true).build()
-    )
-    .build();
-
-// For SDK versions 29.4.0 or lower, remove '.v1()' from the following line.
-PaymentIntent paymentIntent = client.v1().paymentIntents().create(params);
-```
-
-```node
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
-
-const paymentIntent = await stripe.paymentIntents.create({
-  customer: '{{CUSTOMER_ID}}',
-  amount: 1099,
-  currency: 'usd',
-  setup_future_usage: 'off_session',
-  automatic_payment_methods: {
-    enabled: true,
-  },
-});
-```
-
-```go
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.PaymentIntentCreateParams{
-  Customer: stripe.String("{{CUSTOMER_ID}}"),
-  Amount: stripe.Int64(1099),
-  Currency: stripe.String(stripe.CurrencyUSD),
-  SetupFutureUsage: stripe.String(stripe.PaymentIntentSetupFutureUsageOffSession),
-  AutomaticPaymentMethods: &stripe.PaymentIntentCreateAutomaticPaymentMethodsParams{
-    Enabled: stripe.Bool(true),
-  },
-}
-result, err := sc.V1PaymentIntents.Create(context.TODO(), params)
-```
-
-```dotnet
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-var options = new PaymentIntentCreateOptions
-{
-    Customer = "{{CUSTOMER_ID}}",
-    Amount = 1099,
-    Currency = "usd",
-    SetupFutureUsage = "off_session",
-    AutomaticPaymentMethods = new PaymentIntentAutomaticPaymentMethodsOptions
-    {
-        Enabled = true,
-    },
-};
-var client = new StripeClient("<<YOUR_SECRET_KEY>>");
-var service = client.V1.PaymentIntents;
-PaymentIntent paymentIntent = service.Create(options);
-```
-
-> Always decide how much to charge on the server side, a trusted environment, as opposed to the client. This prevents malicious customers from being able to choose their own prices.
-
-### Retrieve the client secret
-
-The PaymentIntent includes a *client secret* (The client secret is a unique key returned from Stripe as part of a PaymentIntent. This key lets the client access important fields from the PaymentIntent (status, amount, currency) while hiding sensitive ones (metadata, customer)) that the client side uses to securely complete the payment process. You can use different approaches to pass the client secret to the client side.
-
-#### Single-page application
-
-Retrieve the client secret from an endpoint on your server, using the browser’s `fetch` function. This approach is best if your client side is a single-page application, particularly one built with a modern frontend framework like React. Create the server endpoint that serves the client secret:
+After you create the Checkout Session, use the `client_secret` returned in the response to [mount Checkout](https://docs.stripe.com/payments/checkout/save-during-payment.md#mount-checkout).
 
 #### Ruby
 
 ```ruby
-get '/secret' do
-  intent = # ... Create or retrieve the PaymentIntent
-  {client_secret: intent.client_secret}.to_json
+# This example sets up an endpoint using the Sinatra framework.
+# To learn more about Sinatra, watch this video: https://youtu.be/8aA9Enb8NVc.
+require 'json'
+require 'sinatra'
+require 'stripe'
+
+# Set your secret key. Remember to switch to your live secret key in production.
+# See your keys here: https://dashboard.stripe.com/apikeys
+Stripe.api_key = '<<YOUR_SECRET_KEY>>'
+
+post '/create-checkout-session' do
+  session = Stripe::Checkout::Session.create({
+    line_items: [{
+      price_data: {
+        currency: 'usd',
+        product_data: {
+          name: 'T-shirt',
+        },
+        unit_amount: 2000,
+      },
+      quantity: 1,
+    }],
+    mode: 'payment',ui_mode: 'embedded',
+    return_url: 'https://example.com/checkout/return?session_id={CHECKOUT_SESSION_ID}'
+  })
+
+  {clientSecret: session.client_secret}.to_json
 end
 ```
 
 #### Python
 
 ```python
-from flask import Flask, jsonify
+# This example sets up an endpoint using the Flask framework.
+# To learn more about Flask, watch this video: https://youtu.be/7Ul1vfsmsDck.
+import os
+import stripe
+from flask import Flask, redirect
+
 app = Flask(__name__)
 
-@app.route('/secret')
-def secret():
-  intent = # ... Create or retrieve the PaymentIntent
-  return jsonify(client_secret=intent.client_secret)
+stripe.api_key = '<<YOUR_SECRET_KEY>>'
+
+@app.route('/create-checkout-session', methods=['POST'])
+def create_checkout_session():
+  session = stripe.checkout.Session.create(
+    line_items = [{
+      'price_data': {
+        'currency': 'usd',
+        'product_data': {
+          'name': 'T-shirt',
+        },
+        'unit_amount': 2000,
+      },
+      'quantity': 1,
+    }],
+    mode = 'payment',ui_mode = 'embedded',
+    return_url = 'https://example.com/checkout/return?session_id={CHECKOUT_SESSION_ID}',
+  )
+
+  return jsonify(clientSecret=session.client_secret)
+
+if __name__ == '__main__':
+  app.run(port=4242)
 ```
 
 #### PHP
 
 ```php
 <?php
-    $intent = # ... Create or retrieve the PaymentIntent
-    echo json_encode(array('client_secret' => $intent->client_secret));
+
+require 'vendor/autoload.php';
+
+$stripe = new \Stripe\StripeClient([
+  "api_key" => '<<YOUR_SECRET_KEY>>'
+]);
+
+$checkout_session = $stripe->checkout->sessions->create([
+  'line_items' => [[
+    'price_data' => [
+      'currency' => 'usd',
+      'product_data' => [
+        'name' => 'T-shirt',
+      ],
+      'unit_amount' => 2000,
+    ],
+    'quantity' => 1,
+  ]],
+  'mode' => 'payment','ui_mode' => 'embedded',
+  'return_url' => 'https://example.com/checkout/return?session_id={CHECKOUT_SESSION_ID}',
+]);
+
+  echo json_encode(array('clientSecret' => $checkout_session->client_secret));
 ?>
 ```
 
 #### Java
 
 ```java
+
 import java.util.HashMap;
 import java.util.Map;
-
-import com.stripe.model.PaymentIntent;
-
+import static spark.Spark.get;
+import static spark.Spark.post;
+import static spark.Spark.port;
+import static spark.Spark.staticFiles;
 import com.google.gson.Gson;
 
-import static spark.Spark.get;
+import com.stripe.Stripe;
+import com.stripe.model.checkout.Session;
+import com.stripe.param.checkout.SessionCreateParams;
 
-public class StripeJavaQuickStart {
+public class Server {
+
   public static void main(String[] args) {
+    port(4242);
+    Stripe.apiKey = "<<YOUR_SECRET_KEY>>";
+
     Gson gson = new Gson();
 
-    get("/secret", (request, response) -> {
-      PaymentIntent intent = // ... Fetch or create the PaymentIntent
+    post("/create-checkout-session", (request, response) -> {
+
+      SessionCreateParams params =
+        SessionCreateParams.builder()
+          .setMode(SessionCreateParams.Mode.PAYMENT).setUiMode(SessionCreateParams.UiMode.EMBEDDED)
+          .setReturnUrl("https://example.com/return?session_id={CHECKOUT_SESSION_ID}")
+          .addLineItem(
+          SessionCreateParams.LineItem.builder()
+            .setQuantity(1L)
+            .setPriceData(
+              SessionCreateParams.LineItem.PriceData.builder()
+                .setCurrency("usd")
+                .setUnitAmount(2000L)
+                .setProductData(
+                  SessionCreateParams.LineItem.PriceData.ProductData.builder()
+                    .setName("T-shirt")
+                    .build())
+                .build())
+            .build())
+          .build();
+
+      Session session = Session.create(params);
 
       Map<String, String> map = new HashMap();
-      map.put("client_secret", intent.getClientSecret());
+      map.put("clientSecret", session.getRawJsonObject().getAsJsonPrimitive("client_secret").getAsString());
 
       return map;
     }, gson::toJson);
@@ -1474,1472 +1662,291 @@ public class StripeJavaQuickStart {
 #### Node.js
 
 ```javascript
+// This example sets up an endpoint using the Express framework.
 const express = require('express');
 const app = express();
 
-app.get('/secret', async (req, res) => {
-  const intent = // ... Fetch or create the PaymentIntent
-  res.json({client_secret: intent.client_secret});
+const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
+
+app.post('/create-checkout-session', async (req, res) => {
+  const session = await stripe.checkout.sessions.create({
+    line_items: [{
+      price_data: {
+        currency: 'usd',
+        product_data: {
+          name: 'T-shirt',
+        },
+        unit_amount: 2000,
+      },
+      quantity: 1,
+    }],
+    mode: 'payment',ui_mode: 'embedded',
+    return_url: 'https://example.com/checkout/return?session_id={CHECKOUT_SESSION_ID}'
+  });
+
+  res.send({clientSecret: session.client_secret});
 });
 
-app.listen(3000, () => {
-  console.log('Running on port 3000');
-});
+app.listen(4242, () => console.log(`Listening on port ${4242}!`));
 ```
 
 #### Go
 
 ```go
+
 package main
 
 import (
-  "encoding/json"
   "net/http"
 
-  stripe "github.com/stripe/stripe-go/v76.0.0"
+  "github.com/labstack/echo"
+  "github.com/labstack/echo/middleware"
+  "github.com/stripe/stripe-go/v76.0.0"
+  "github.com/stripe/stripe-go/v76.0.0/checkout/session"
 )
 
-type CheckoutData struct {
-  ClientSecret string `json:"client_secret"`
-}
+// This example sets up an endpoint using the Echo framework.
+// To learn more about Echo, watch this video: https://youtu.be/ePmEVBu8w6Y.
 
 func main() {
-  http.HandleFunc("/secret", func(w http.ResponseWriter, r *http.Request) {
-    intent := // ... Fetch or create the PaymentIntent
-    data := CheckoutData{
-      ClientSecret: intent.ClientSecret,
-    }
-    w.Header().Set("Content-Type", "application/json")
-    w.WriteHeader(http.StatusOK)
-    json.NewEncoder(w).Encode(data)
-  })
+  stripe.Key = "<<YOUR_SECRET_KEY>>"
 
-  http.ListenAndServe(":3000", nil)
+  e := echo.New()
+  e.Use(middleware.Logger())
+  e.Use(middleware.Recover())
+
+  e.POST("/create-checkout-session", createCheckoutSession)
+
+  e.Logger.Fatal(e.Start("localhost:4242"))
+}
+
+type CheckoutData struct {
+  ClientSecret string `json:"clientSecret"`
+}
+
+func createCheckoutSession(c echo.Context) (err error) {
+  params := &stripe.CheckoutSessionParams{
+    Mode: stripe.String(string(stripe.CheckoutSessionModePayment)),UIMode: stripe.String("embedded"),
+    ReturnURL: stripe.String("https://example.com/checkout/return?session_id={CHECKOUT_SESSION_ID}"),
+    LineItems: []*stripe.CheckoutSessionLineItemParams{
+      &stripe.CheckoutSessionLineItemParams{
+        PriceData: &stripe.CheckoutSessionLineItemPriceDataParams{
+          Currency: stripe.String("usd"),
+          ProductData: &stripe.CheckoutSessionLineItemPriceDataProductDataParams{
+            Name: stripe.String("T-shirt"),
+          },
+          UnitAmount: stripe.Int64(2000),
+        },
+        Quantity: stripe.Int64(1),
+      },
+    },
+  }
+
+  s, _ := session.New(params)
+
+  if err != nil {
+    return err
+  }
+
+  data := CheckoutData{
+    ClientSecret: s.ClientSecret,
+  }
+
+  return c.JSON(http.StatusOK, data)
 }
 ```
 
 #### .NET
 
-```csharp
-using System;
+```dotnet
+// This example sets up an endpoint using the ASP.NET MVC framework.
+// To learn more about ASP.NET MVC, watch this video: https://youtu.be/2-mMOB8MhmE.
+
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Stripe;
+using Stripe.Checkout;
 
-namespace StripeExampleApi.Controllers
+namespace server.Controllers
 {
-  [Route("secret")]
-  [ApiController]
-  public class CheckoutApiController : Controller
+  public class PaymentsController : Controller
   {
-    [HttpGet]
-    public ActionResult Get()
+    public PaymentsController()
     {
-      var intent = // ... Fetch or create the PaymentIntent
-      return Json(new {client_secret = intent.ClientSecret});
+      StripeConfiguration.ApiKey = "<<YOUR_SECRET_KEY>>";
     }
-  }
-}
-```
 
-And then fetch the client secret with JavaScript on the client side:
-
-```javascript
-(async () => {
-  const response = await fetch('/secret');
-  const {client_secret: clientSecret} = await response.json();
-  // Render the form using the clientSecret
-})();
-```
-
-#### Server-side rendering
-
-Pass the client secret to the client from your server. This approach works best if your application generates static content on the server before sending it to the browser.
-
-Add the [client_secret](https://docs.stripe.com/api/payment_intents/object.md#payment_intent_object-client_secret) in your checkout form. In your server-side code, retrieve the client secret from the PaymentIntent:
-
-#### Ruby
-
-```erb
-<form id="payment-form" data-secret="<%= @intent.client_secret %>">
-  <div id="payment-element">
-    <!-- placeholder for Elements -->
-  </div>
-  <button id="submit">Submit</button>
-</form>
-```
-
-```ruby
-get '/checkout' do
-  @intent = # ... Fetch or create the PaymentIntent
-  erb :checkout
-end
-```
-
-#### Python
-
-```html
-<form id="payment-form" data-secret="{{ client_secret }}">
-  <div id="payment-element">
-    <!-- placeholder for Elements -->
-  </div>
-  <button id="submit">Submit</button>
-</form>
-```
-
-```python
-@app.route('/checkout')
-def checkout():
-  intent = # ... Fetch or create the PaymentIntent
-  return render_template('checkout.html', client_secret=intent.client_secret)
-```
-
-#### PHP
-
-```php
-<?php
-  $intent = # ... Fetch or create the PaymentIntent;
-?>
-...
-<form id="payment-form" data-secret="<?= $intent->client_secret ?>">
-  <div id="payment-element">
-    <!-- placeholder for Elements -->
-  </div>
-  <button id="submit">Submit</button>
-</form>
-...
-```
-
-#### Java
-
-```html
-<form id="payment-form" data-secret="{{ client_secret }}">
-  <div id="payment-element">
-    <!-- placeholder for Elements -->
-  </div>
-  <button id="submit">Submit</button>
-</form>
-```
-
-```java
-import java.util.HashMap;
-import java.util.Map;
-
-import com.stripe.model.PaymentIntent;
-
-import spark.ModelAndView;
-
-import static spark.Spark.get;
-
-public class StripeJavaQuickStart {
-  public static void main(String[] args) {
-    get("/checkout", (request, response) -> {
-      PaymentIntent intent = // ... Fetch or create the PaymentIntent
-
-      Map map = new HashMap();
-      map.put("client_secret", intent.getClientSecret());
-
-      return new ModelAndView(map, "checkout.hbs");
-    }, new HandlebarsTemplateEngine());
-  }
-}
-```
-
-#### Node.js
-
-```html
-<form id="payment-form" data-secret="{{ client_secret }}">
-  <div id="payment-element">
-    <!-- Elements will create form elements here -->
-  </div>
-
-  <button id="submit">Submit</button>
-</form>
-```
-
-```javascript
-const express = require('express');
-const expressHandlebars = require('express-handlebars');
-const app = express();
-
-app.engine('.hbs', expressHandlebars({ extname: '.hbs' }));
-app.set('view engine', '.hbs');
-app.set('views', './views');
-
-app.get('/checkout', async (req, res) => {
-  const intent = // ... Fetch or create the PaymentIntent
-  res.render('checkout', { client_secret: intent.client_secret });
-});
-
-app.listen(3000, () => {
-  console.log('Running on port 3000');
-});
-```
-
-#### Go
-
-```html
-<form id="payment-form" data-secret="{{ .ClientSecret }}">
-  <div id="payment-element">
-    <!-- placeholder for Elements -->
-  </div>
-  <button id="submit">Submit</button>
-</form>
-```
-
-```go
-package main
-
-import (
-  "html/template"
-  "net/http"
-
-  stripe "github.com/stripe/stripe-go/v76.0.0"
-)
-
-type CheckoutData struct {
-  ClientSecret string
-}
-
-func main() {
-  checkoutTmpl := template.Must(template.ParseFiles("views/checkout.html"))
-
-  http.HandleFunc("/checkout", func(w http.ResponseWriter, r *http.Request) {
-    intent := // ... Fetch or create the PaymentIntent
-    data := CheckoutData{
-      ClientSecret: intent.ClientSecret,
-    }
-    checkoutTmpl.Execute(w, data)
-  })
-
-  http.ListenAndServe(":3000", nil)
-}
-```
-
-#### .NET
-
-```html
-<form id="payment-form" data-secret="@ViewData["ClientSecret"]">
-  <div id="payment-element">
-    <!-- placeholder for Elements -->
-  </div>
-  <button id="submit">Submit</button>
-</form>
-```
-
-```csharp
-using System;
-using Microsoft.AspNetCore.Mvc;
-using Stripe;
-
-namespace StripeExampleApi.Controllers
-{
-  [Route("/[controller]")]
-  public class CheckoutApiController : Controller
-  {
-    public IActionResult Index()
+    [HttpPost("create-checkout-session")]
+    public ActionResult CreateCheckoutSession()
     {
-      var intent = // ... Fetch or create the PaymentIntent
-      ViewData["ClientSecret"] = intent.ClientSecret;
-      return View();
+      var options = new SessionCreateOptions
+      {
+        LineItems = new List<SessionLineItemOptions>
+        {
+          new SessionLineItemOptions
+          {
+            PriceData = new SessionLineItemPriceDataOptions
+            {
+              UnitAmount = 2000,
+              Currency = "usd",
+              ProductData = new SessionLineItemPriceDataProductDataOptions
+              {
+                Name = "T-shirt",
+              },
+            },
+            Quantity = 1,
+          },
+        },
+        Mode = "payment",
+        UiMode = "embedded",
+        ReturnUrl = "https://example.com/return?session_id={CHECKOUT_SESSION_ID}",
+      };
+
+      var service = new SessionService();
+      Session session = service.Create(options);
+
+      return Json(new {clientSecret = session.ClientSecret});
     }
   }
 }
 ```
 
-## Collect payment details [Client-side]
-
-Collect payment details on the client with the [Payment Element](https://docs.stripe.com/payments/payment-element.md). The Payment Element is a prebuilt UI component that simplifies collecting payment details for a variety of payment methods.
-
-The Payment Element contains an iframe that securely sends payment information to Stripe over an HTTPS connection. Avoid placing the Payment Element within another iframe because some payment methods require redirecting to another page for payment confirmation.
-
-If you do choose to use an iframe and want to accept Apple Pay or Google Pay, the iframe must have the [allow](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#attr-allowpaymentrequest) attribute set to equal `"payment *"`.
-
-The checkout page address must start with `https://` rather than `http://` for your integration to work. You can test your integration without using HTTPS, but remember to [enable it](https://docs.stripe.com/security/guide.md#tls) when you’re ready to accept live payments.
+## Mount Checkout [Client-side] [Server-side]
 
 #### HTML + JS
 
-### Set up Stripe.js
-
-The Payment Element is automatically available as a feature of Stripe.js. Include the Stripe.js script on your checkout page by adding it to the `head` of your HTML file. Always load Stripe.js directly from js.stripe.com to remain PCI compliant. Don’t include the script in a bundle or host a copy of it yourself.
+Checkout is available as part of [Stripe.js](https://docs.stripe.com/js.md). Include the Stripe.js script on your page by adding it to the head of your HTML file. Next, create an empty DOM node (container) to use for mounting.
 
 ```html
 <head>
-  <title>Checkout</title>
   <script src="https://js.stripe.com/clover/stripe.js"></script>
 </head>
+<body>
+  <div id="checkout">
+    <!-- Checkout will insert the payment form here -->
+  </div>
+</body>
 ```
 
-Create an instance of Stripe with the following JavaScript on your checkout page:
+Initialize Stripe.js with your publishable API key.
+
+Create an asynchronous `fetchClientSecret` function that makes a request to your server to create the Checkout Session and retrieve the client secret. Pass this function into `options` when you create the Checkout instance:
 
 ```javascript
-// Set your publishable key: remember to change this to your live publishable key in production
-// See your keys here: https://dashboard.stripe.com/apikeys
+// Initialize Stripe.js
 const stripe = Stripe('<<YOUR_PUBLISHABLE_KEY>>');
-```
 
-### Add the Payment Element to your payment page
+initialize();
 
-The Payment Element needs a place to live on your payment page. Create an empty DOM node (container) with a unique ID in your payment form:
+// Fetch Checkout Session and retrieve the client secret
+async function initialize() {
+  const fetchClientSecret = async () => {
+    const response = await fetch("/create-checkout-session", {
+      method: "POST",
+    });
+    const { clientSecret } = await response.json();
+    return clientSecret;
+  };
 
-```html
-<form id="payment-form">
-  <div id="payment-element">
-    <!-- Elements will create form elements here -->
-  </div>
-  <button id="submit">Submit</button>
-  <div id="error-message">
-    <!-- Display error message to your customers here -->
-  </div>
-</form>
-```
+  // Initialize Checkout
+  const checkout = await stripe.initEmbeddedCheckout({
+    fetchClientSecret,
+  });
 
-When the previous form loads, create an instance of the Payment Element and mount it to the container DOM node. Pass the [client secret](https://docs.stripe.com/api/payment_intents/object.md#payment_intent_object-client_secret) from the previous step into `options` when you create the [Elements](https://docs.stripe.com/js/elements_object/create) instance:
-
-Handle the client secret carefully because it can complete the charge. Don’t log it, embed it in URLs, or expose it to anyone but the customer.
-
-```javascript
-const options = {
-  clientSecret: '{{CLIENT_SECRET}}',
-  // Fully customizable with appearance API.
-  appearance: {/*...*/},
-};
-
-// Set up Stripe.js and Elements to use in checkout form, passing the client secret obtained in a previous stepconst elements = stripe.elements(options);
-
-// Create and mount the Payment Element
-const paymentElementOptions = { layout: 'accordion'};
-const paymentElement = elements.create('payment', paymentElementOptions);
-paymentElement.mount('#payment-element');
-
+  // Mount Checkout
+  checkout.mount('#checkout');
+}
 ```
 
 #### React
 
-### Set up Stripe.js
-
-Install [React Stripe.js](https://www.npmjs.com/package/@stripe/react-stripe-js) and the [Stripe.js loader](https://www.npmjs.com/package/@stripe/stripe-js) from the npm public registry:
+Install [react-stripe-js](https://docs.stripe.com/sdks/stripejs-react.md) and the Stripe.js loader from npm:
 
 ```bash
 npm install --save @stripe/react-stripe-js @stripe/stripe-js
 ```
 
-### Add and configure the Elements provider to your payment page
+To use the Embedded Checkout component, create an `EmbeddedCheckoutProvider`. Call `loadStripe` with your publishable API key and pass the returned `Promise` to the provider.
 
-To use the Payment Element component, wrap your checkout page component in an [Elements provider](https://docs.stripe.com/sdks/stripejs-react.md#elements-provider). Call `loadStripe` with your publishable key, and pass the returned `Promise` to the `Elements` provider. Also pass the [client secret](https://docs.stripe.com/api/payment_intents/object.md#payment_intent_object-client_secret) from the previous step as `options` to the `Elements` provider.
+Create an asynchronous `fetchClientSecret` function that makes a request to your server to create the Checkout Session and retrieve the client secret. Pass this function into the `options` prop accepted by the provider.
 
 ```jsx
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {Elements} from '@stripe/react-stripe-js';
+import * as React from 'react';
 import {loadStripe} from '@stripe/stripe-js';
-
-import CheckoutForm from './CheckoutForm';
+import {
+  EmbeddedCheckoutProvider,
+  EmbeddedCheckout
+} from '@stripe/react-stripe-js';
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
-const stripePromise = loadStripe('<<YOUR_PUBLISHABLE_KEY>>');
+const stripePromise = loadStripe('pk_test_123');
 
-function App() {
-  const options = {
-    // passing the client secret obtained in step 3
-    clientSecret: '{{CLIENT_SECRET}}',
-    // Fully customizable with appearance API.
-    appearance: {/*...*/},
-  };
+const App = () => {
+  const fetchClientSecret = useCallback(() => {
+    // Create a Checkout Session
+    return fetch("/create-checkout-session", {
+      method: "POST",
+    })
+      .then((res) => res.json())
+      .then((data) => data.clientSecret);
+  }, []);
+
+  const options = {fetchClientSecret};
 
   return (
-    <Elements stripe={stripePromise} options={options}>
-      <CheckoutForm />
-    </Elements>
-  );
-};
-
-ReactDOM.render(<App />, document.getElementById('root'));
-```
-
-### Add the Payment Element component
-
-Use the `PaymentElement` component to build your form:
-
-```jsx
-import React from 'react';
-import {PaymentElement} from '@stripe/react-stripe-js';
-
-const CheckoutForm = () => {
-  return (
-    <form><PaymentElement />
-      <button>Submit</button>
-    </form>
-  );
-};
-
-export default CheckoutForm;
-```
-
-Stripe Elements is a collection of drop-in UI components. To further customize your form or collect different customer information, browse the [Elements docs](https://docs.stripe.com/payments/elements.md).
-
-The Payment Element renders a dynamic form that allows your customer to pick a payment method. For each payment method, the form automatically asks the customer to fill in all necessary payment details.
-
-### Customize appearance
-
-Customize the Payment Element to match the design of your site by passing the [appearance object](https://docs.stripe.com/js/elements_object/create#stripe_elements-options-appearance) into `options` when creating the `Elements` provider.
-
-### Collect addresses
-
-By default, the Payment Element only collects the necessary billing address details. Some behavior, such as [calculating tax](https://docs.stripe.com/api/tax/calculations/create.md) or entering shipping details, requires your customer’s full address. You can:
-
-- Use the [Address Element](https://docs.stripe.com/elements/address-element.md) to take advantage of autocomplete and localization features to collect your customer’s full address. This helps ensure the most accurate tax calculation.
-- Collect address details using your own custom form.
-
-### Request Apple Pay merchant token
-
-If you’ve configured your integration to [accept Apple Pay payments](https://docs.stripe.com/payments/accept-a-payment.md?platform=web&ui=elements#apple-pay-and-google-pay), we recommend configuring the Apple Pay interface to return a merchant token to enable merchant initiated transactions (MIT). [Request the relevant merchant token type](https://docs.stripe.com/apple-pay/merchant-tokens.md?pay-element=web-pe) in the Payment Element.
-
-## Optional: Link in your checkout page [Client-side]
-
-Let your customer check out faster by using [Link](https://docs.stripe.com/payments/link.md) in the [Payment Element](https://docs.stripe.com/payments/payment-element.md). You can autofill information for any logged-in customer already using Link, regardless of whether they initially saved their information in Link with another business. The default Payment Element integration includes a Link prompt in the card form. To manage Link in the Payment Element, go to your [payment method settings](https://dashboard.stripe.com/settings/payment_methods).
-![Authenticate or enroll with Link directly in the Payment Element during checkout](https://b.stripecdn.com/docs-statics-srv/assets/link-in-pe.2efb5138a4708b781b8a913ebddd9aba.png)
-
-Collect a customer email address for Link authentication or enrollment
-
-### Integration options 
-
-There are two ways you can integrate Link with the Payment Element. Of these, Stripe recommends passing a customer email address to the Payment Element if available. Remember to consider how your checkout flow works when deciding between these options:
-
-| Integration option                                                 | Checkout flow                                                                                                                                                                        | Description                                                                                                                                                                                                                                                |
-| ------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Pass a customer email address to the Payment Element (Recommended) | - Your customer enters their email address before landing on the checkout page (in a previous account creation step, for example).
-  - You prefer to use your own email input field. | Programmatically pass a customer email address to the Payment Element. In this scenario, a customer authenticates to Link directly in the payment form instead of a separate UI component.                                                                 |
-| Collect a customer email address in the Payment Element            | - Your customers can choose to enter their email and authenticate or enroll with Link directly in the Payment Element during checkout.
-  - No code change is required.               | If a customer hasn’t enrolled with Link and they choose a supported payment method in the Payment Element, they’re prompted to save their details using Link. For those who have already enrolled, Link automatically populates their payment information. |
-
-Use [defaultValues](https://docs.stripe.com/js/elements_object/create_payment_element#payment_element_create-options-defaultValues) to pass a customer email address to the Payment Element.
-
-```javascript
-const paymentElement = elements.create('payment', {
-  defaultValues: {
-    billingDetails: {
-      email: 'foo@bar.com',
-    }
-  },
-  // Other options
-});
-```
-
-For more information, read how to [build a custom checkout page that includes Link](https://docs.stripe.com/payments/link/add-link-elements-integration.md).
-
-## Optional: Save and retrieve customer payment methods
-
-You can configure the Payment Element to save your customer’s payment methods for future use. This section shows you how to integrate the [saved payment methods feature](https://docs.stripe.com/payments/save-customer-payment-methods.md), which enables the Payment Element to:
-
-- Prompt buyers for consent to save a payment method
-- Save payment methods when buyers provide consent
-- Display saved payment methods to buyers for future purchases
-- [Automatically update lost or expired cards](https://docs.stripe.com/payments/cards/overview.md#automatic-card-updates) when buyers replace them
-![The Payment Element and a saved payment method checkbox](https://b.stripecdn.com/docs-statics-srv/assets/spm-save.fe0b24afd0f0a06e0cf4eecb0ce2403a.png)
-
-Save payment methods.
-![The Payment Element with a Saved payment method selected](https://b.stripecdn.com/docs-statics-srv/assets/spm-saved.5dba5a8a190a9a0e9f1a99271bed3f4b.png)
-
-Reuse a previously saved payment method.
-
-### Enable saving the payment method in the Payment Element
-
-When creating a [PaymentIntent](https://docs.stripe.com/api/payment_intents/.md) on your server, also create a [CustomerSession](https://docs.stripe.com/api/customer_sessions/.md) providing the [Customer ID](https://docs.stripe.com/api/customers/object.md#customer_object-id) and enabling the [payment_element](https://docs.stripe.com/api/customer_sessions/object.md#customer_session_object-components-payment_element) component for your session. Configure which saved payment method [features](https://docs.stripe.com/api/customer_sessions/create.md#create_customer_session-components-payment_element-features) you want to enable. For instance, enabling [payment_method_save](https://docs.stripe.com/api/customer_sessions/create.md#create_customer_session-components-payment_element-features-payment_method_save) displays a checkbox offering customers to save their payment details for future use.
-
-You can specify `setup_future_usage` on a PaymentIntent or Checkout Session to override the default behavior for saving payment methods. This ensures that you automatically save the payment method for future use, even if the customer doesn’t explicitly choose to save it.
-
-> Allowing buyers to remove their saved payment methods by enabling [payment_method_remove](https://docs.stripe.com/api/customer_sessions/create.md#create_customer_session-components-payment_element-features-payment_method_remove) impacts subscriptions that depend on that payment method. Removing the payment method detaches the [PaymentMethod](https://docs.stripe.com/api/payment_methods.md) from that [Customer](https://docs.stripe.com/api/customers.md).
-
-#### Ruby
-
-```ruby
-
-# Set your secret key. Remember to switch to your live secret key in production.
-# See your keys here: https://dashboard.stripe.com/apikeys
-Stripe.api_key = '<<YOUR_SECRET_KEY>>'
-
-post '/create-intent-and-customer-session' do
-  intent = Stripe::PaymentIntent.create({
-    amount: 1099,
-    currency: 'usd',
-    # In the latest version of the API, specifying the `automatic_payment_methods` parameter
-    # is optional because Stripe enables its functionality by default.
-    automatic_payment_methods: {enabled: true},
-    customer: {{CUSTOMER_ID}},
-  })
-  customer_session = Stripe::CustomerSession.create({
-    customer: {{CUSTOMER_ID}},
-    components: {
-      payment_element: {
-          enabled: true,
-          features: {
-            payment_method_redisplay: 'enabled',
-            payment_method_save: 'enabled',
-            payment_method_save_usage: 'off_session',
-            payment_method_remove: 'enabled',
-          },
-        },
-    },
-  })
-  {
-    client_secret: intent.client_secret,
-    customer_session_client_secret: customer_session.client_secret
-  }.to_json
-end
-```
-
-#### Python
-
-```python
-
-# Set your secret key. Remember to switch to your live secret key in production.
-# See your keys here: https://dashboard.stripe.com/apikeys
-stripe.api_key = '<<YOUR_SECRET_KEY>>'
-
-@app.route('/create-intent-and-customer-session', methods=['POST'])
-def createIntentAndCustomerSession():
-  intent = stripe.PaymentIntent.create(
-    amount=1099,
-    currency='usd',
-    # In the latest version of the API, specifying the `automatic_payment_methods` parameter
-    # is optional because Stripe enables its functionality by default.
-    automatic_payment_methods={
-      'enabled': True,
-    },
-    customer={{CUSTOMER_ID}},
+    <div id="checkout">
+      <EmbeddedCheckoutProvider
+        stripe={stripePromise}
+        options={options}
+      >
+        <EmbeddedCheckout />
+      </EmbeddedCheckoutProvider>
+    </div>
   )
-  customer_session = stripe.CustomerSession.create(
-    customer={{CUSTOMER_ID}},
-    components={
-      "payment_element": {
-        "enabled": True,
-        "features": {
-          "payment_method_redisplay": "enabled",
-          "payment_method_save": "enabled",
-          "payment_method_save_usage": "off_session",
-          "payment_method_remove": "enabled",
-        },
-      },
-    },
-  )
-  return jsonify(
-    client_secret=intent.client_secret,
-    customer_session_client_secret=customer_session.client_secret
-  )
-```
-
-#### PHP
-
-```php
-
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-$stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
-
-$intent = $stripe->paymentIntents->create(
-  [
-    'amount' => 1099,
-    'currency' => 'usd',
-    // In the latest version of the API, specifying the `automatic_payment_methods` parameter
-    // is optional because Stripe enables its functionality by default.
-    'automatic_payment_methods' => ['enabled' => true],
-    'customer' => {{CUSTOMER_ID}},
-  ]
-);
-$customer_session = $stripe->customerSessions->create([
-  'customer' => {{CUSTOMER_ID}},
-  'components' => [
-    'payment_element' => [
-      'enabled' => true,
-      'features' => [
-        'payment_method_redisplay' => 'enabled',
-        'payment_method_save' => 'enabled',
-        'payment_method_save_usage' => 'off_session',
-        'payment_method_remove' => 'enabled',
-      ],
-    ],
-  ],
-]);
-echo json_encode(array(
-  'client_secret' => $intent->client_secret,
-  'customer_session_client_secret' => $customer_session->client_secret
-));
-```
-
-#### Node.js
-
-```javascript
-
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
-
-app.post('/create-intent-and-customer-session', async (req, res) => {
-  const intent = await stripe.paymentIntents.create({
-    amount: 1099,
-    currency: 'usd',
-    // In the latest version of the API, specifying the `automatic_payment_methods` parameter
-    // is optional because Stripe enables its functionality by default.
-    automatic_payment_methods: {enabled: true},
-    customer: {{CUSTOMER_ID}},
-  });
-  const customerSession = await stripe.customerSessions.create({
-    customer: {{CUSTOMER_ID}},
-    components: {
-      payment_element: {
-        enabled: true,
-        features: {
-          payment_method_redisplay: 'enabled',
-          payment_method_save: 'enabled',
-          payment_method_save_usage: 'off_session',
-          payment_method_remove: 'enabled',
-        },
-      },
-    },
-  });
-  res.json({
-    client_secret: intent.client_secret,
-    customer_session_client_secret: customerSession.client_secret
-  });
-});
-```
-
-#### Java
-
-```java
-
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-Stripe.apiKey = "<<YOUR_SECRET_KEY>>";
-
-post(
-  "/create-intent-and-customer-session",
-  (request, response) -> {
-    response.type("application/json");
-
-    PaymentIntentCreateParams intentParams = PaymentIntentCreateParams.builder()
-      .setAmount(1099L)
-      .setCurrency("usd")
-      // In the latest version of the API, specifying the `automatic_payment_methods` parameter
-      // is optional because Stripe enables its functionality by default.
-      .setAutomaticPaymentMethods(
-        PaymentIntentCreateParams.AutomaticPaymentMethods.builder().setEnabled(true).build()
-      )
-      .setCustomer({{CUSTOMER_ID}})
-      .build();
-
-    PaymentIntent paymentIntent = PaymentIntent.create(intentParams);
-
-    CustomerSessionCreateParams csParams = CustomerSessionCreateParams.builder()
-      .setCustomer({{CUSTOMER_ID}})
-      .setComponents(CustomerSessionCreateParams.Components.builder().build())
-      .putExtraParam("components[payment_element][enabled]", true)
-      .putExtraParam(
-        "components[payment_element][features][payment_method_redisplay]",
-        "enabled"
-      )
-      .putExtraParam(
-        "components[payment_element][features][payment_method_save]",
-        "enabled"
-      )
-      .putExtraParam(
-        "components[payment_element][features][payment_method_save_usage]",
-        "off_session"
-      )
-      .putExtraParam(
-        "components[payment_element][features][payment_method_remove]",
-        "enabled"
-      )
-      .build();
-
-    CustomerSession customerSession = CustomerSession.create(csParams);
-
-    Map<String, Object> responseData = new HashMap<>();
-    responseData.put("clientSecret", paymentIntent.getClientSecret());
-    responseData.put("customerSessionClientSecret", customerSession.getClientSecret());
-    return StripeObject.PRETTY_PRINT_GSON.toJson(responseData);
-  }
-);
-```
-
-#### Go
-
-```go
-
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-stripe.Key = "<<YOUR_SECRET_KEY>>"
-
-type CheckoutData struct {
-  ClientSecret string `json:"client_secret"`
-  CustomerSessionClientSecret string `json:"customer_session_client_secret"`
-}
-
-func main() {
-  http.HandleFunc("/create-intent-and-customer-session", func(w http.ResponseWriter, r *http.Request) {
-    intentParams := &stripe.PaymentIntentParams{
-      Amount: stripe.Int64(1099),
-      Currency: stripe.String(string(stripe.CurrencyUSD)),
-      // In the latest version of the API, specifying the `automatic_payment_methods` parameter
-      // is optional because Stripe enables its functionality by default.
-      AutomaticPaymentMethods: &stripe.PaymentIntentAutomaticPaymentMethodsParams{
-        Enabled: stripe.Bool(true),
-      },
-      Customer: stripe.String({{CUSTOMER_ID}}),
-    };
-    intent, _ := .New(intentParams);
-
-    csParams := &stripe.CustomerSessionParams{
-      Customer: stripe.String({{CUSTOMER_ID}}),
-      Components: &stripe.CustomerSessionComponentsParams{},
-    }
-    csParam.AddExtra("components[payment_element][enabled]", true)
-    csParam.AddExtra(
-      "components[payment_element][features][payment_method_redisplay]",
-      "enabled",
-    )
-    csParam.AddExtra(
-      "components[payment_element][features][payment_method_save]",
-      "enabled",
-    )
-    csParam.AddExtra(
-      "components[payment_element][features][payment_method_save_usage]",
-      "off_session",
-    )
-    csParam.AddExtra(
-      "components[payment_element][features][payment_method_remove]",
-      "enabled",
-    )
-
-    customerSession, _ := customersession.New(csParams)
-    data := CheckoutData{
-      ClientSecret: intent.ClientSecret,
-      CustomerSessionClientSecret: customerSession.ClientSecret
-    }
-    w.Header().Set("Content-Type", "application/json")
-    w.WriteHeader(http.StatusOK)
-    json.NewEncoder(w).Encode(data)
-  })
 }
 ```
 
-#### .NET
+Checkout renders in an iframe that securely sends payment information to Stripe over an HTTPS connection.
 
-```csharp
+> Avoid placing Checkout within another iframe because some payment methods require redirecting to another page for payment confirmation.
 
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-StripeConfiguration.ApiKey = "<<YOUR_SECRET_KEY>>";
+## Save payment method [Server-side]
 
-namespace StripeExampleApi.Controllers
-{
-  [Route("create-intent-and-customer-session")]
-  [ApiController]
-  public class CheckoutApiController : Controller
-  {
-    [HttpPost]
-    public ActionResult Post()
-    {
-      var intentOptions = new PaymentIntentCreateOptions
-      {
-          Amount = 1099,
-          Currency = "usd",
-          // In the latest version of the API, specifying the `automatic_payment_methods` parameter
-          // is optional because Stripe enables its functionality by default.
-          AutomaticPaymentMethods = new PaymentIntentAutomaticPaymentMethodsOptions
-          {
-              Enabled = true,
-          },
-          Customer = {{CUSTOMER_ID}},
-      };
-      var intentService = new PaymentIntentService();
-      var intent = intentService.Create(intentOptions);
+After setting up your embedded Checkout integration, choose a configuration for your integration to save the payment methods used by your customers.
 
-      var customerSessionOptions = new CustomerSessionCreateOptions
-      {
-          Customer = {{CUSTOMER_ID}},
-          Components = new CustomerSessionComponentsOptions(),
-      }
-      customerSessionOptions.AddExtraParam("components[payment_element][enabled]", true);
-      customerSessionOptions.AddExtraParam(
-          "components[payment_element][features][payment_method_redisplay]",
-          "enabled");
-      customerSessionOptions.AddExtraParam(
-          "components[payment_element][features][payment_method_save]",
-          "enabled");
-      customerSessionOptions.AddExtraParam(
-          "components[payment_element][features][payment_method_save_usage]",
-          "off_session");
-      customerSessionOptions.AddExtraParam(
-          "components[payment_element][features][payment_method_remove]",
-          "enabled");
-      var customerSessionService = new CustomerSessionService();
-      var customerSession = customerSessionService.Create(customerSessionOptions);
+By default, payment methods used to make a one-time payment with Checkout aren’t available for future use.
 
-      return Json(new {
-        client_secret = intent.ClientSecret,
-        customerSessionClientSecret = customerSession.ClientSecret
-      });
-    }
-  }
-}
-```
+### Save payment methods to charge them off-session
 
-Your Elements instance uses the CustomerSession’s *client secret* (A client secret is used with your publishable key to authenticate a request for a single object. Each client secret is unique to the object it's associated with) to access that customer’s saved payment methods. [Handle errors](https://docs.stripe.com/error-handling.md) properly when you create the CustomerSession. If an error occurs, you don’t need to provide the CustomerSession client secret to the Elements instance, as it’s optional.
-
-Create the Elements instance using the client secrets for both the PaymentIntent and the CustomerSession. Then, use this Elements instance to create a Payment Element.
-
-```javascript
-// Create the CustomerSession and obtain its clientSecret
-const res = await fetch("/create-intent-and-customer-session", {
-  method: "POST"
-});
-
-const {
-  customer_session_client_secret: customerSessionClientSecret
-} = await res.json();
-
-const elementsOptions = {
-  clientSecret: '{{CLIENT_SECRET}}',customerSessionClientSecret,
-  // Fully customizable with appearance API.
-  appearance: {/*...*/},
-};
-
-// Set up Stripe.js and Elements to use in checkout form, passing the client secret
-// and CustomerSession's client secret obtained in a previous step
-const elements = stripe.elements(elementsOptions);
-
-// Create and mount the Payment Element
-const paymentElementOptions = { layout: 'accordion'};
-const paymentElement = elements.create('payment', paymentElementOptions);
-paymentElement.mount('#payment-element');
-```
-
-When confirming the PaymentIntent, Stripe.js automatically controls setting [setup_future_usage](https://docs.stripe.com/api/payment_intents/object.md#payment_intent_object-setup_future_usage) on the PaymentIntent and [allow_redisplay](https://docs.stripe.com/api/payment_methods/object.md#payment_method_object-allow_redisplay) on the PaymentMethod, depending on whether the customer checked the box to save their payment details.
-
-### Enforce CVC recollection
-
-Optionally, specify `require_cvc_recollection` [when creating the PaymentIntent](https://docs.stripe.com/api/payment_intents/create.md#create_payment_intent-payment_method_options-card-require_cvc_recollection) to enforce CVC recollection when a customer is paying with a card.
-
-### Detect the selection of a saved payment method
-
-To control dynamic content when a saved payment method is selected, listen to the Payment Element `change` event, which is populated with the selected payment method.
-
-```javascript
-paymentElement.on('change', function(event) {
-  if (event.value.payment_method) {
-    // Control dynamic content if a saved payment method is selected
-  }
-})
-```
-
-## Optional: Collect address details [Client-side]
-
-#### HTML + JS
-
-The [Address Element](https://docs.stripe.com/elements/address-element.md) lets you collect shipping or billing addresses. Create an empty DOM node for the Address Element. Display it after the Link Authentication Element:
-
-```html
-<form id="payment-form">
-  <h3>Contact info</h3>
-  <div id="link-authentication-element"></div><h3>Shipping</h3>
-  <div id="address-element"></div>
-
-  <h3>Payment</h3>
-  <div id="payment-element"></div>
-
-  <button type="submit">Submit</button>
-</form>
-```
-
-Then, create an instance of the Address Element, and mount it to the DOM node:
-
-```javascript
-// Customize the appearance of Elements using the Appearance API.
-const appearance = { /* ... */ };
-
-// Enable the skeleton loader UI for the optimal loading experience.
-const loader = 'auto';
-
-const stripe = Stripe('<<YOUR_PUBLISHABLE_KEY>>');
-
-// Create an elements group from the Stripe instance passing in the clientSecret and, optionally, appearance.
-const elements = stripe.elements({clientSecret, appearance, loader});
-
-// Create Element instances
-const linkAuthenticationElement = elements.create("linkAuthentication");const addressElement = elements.create("address", {
-  mode: 'shipping',
-  allowedCountries: ['US']
-});
-const paymentElement = elements.create("payment");
-
-// Mount the Elements to their corresponding DOM node
-linkAuthenticationElement.mount("#link-authentication-element");addressElement.mount("#address-element");
-paymentElement.mount("#payment-element");
-```
-
-Display the Address Element before the Payment Element. The Payment Element dynamically detects address data collected by the Address Element, hiding unnecessary fields and collecting additional billing address details as necessary.
-
-### Retrieve address information 
-
-The Address Element automatically passes the shipping address when a customer submits payment, but you can also retrieve the address details on the frontend using the `change` event. The `change` event sends whenever the user updates any field in the Address Element, or after selecting saved addresses:
-
-```javascript
-addressElement.on('change', (event: AddressChangeEvent) => {
-  const address = event.value;
-})
-```
-
-### Prefill a shipping address 
-
-Use [defaultValues](https://docs.stripe.com/js/elements_object/create_address_element#address_element_create-options-defaultValues) to prefill address information, speeding checkout for your customers.
-
-```javascript
-// Create addressElement with the defaultValues option
-const addressElement = elements.create("address", {
-  mode: 'shipping',
-  defaultValues: {
-    name: 'Jane Doe',
-    address: {
-      line1: '354 Oyster Point Blvd',
-      line2: '',
-      city: 'South San Francisco',
-      state: 'CA',
-      postal_code: '94080',
-      country: 'US',
-    }
-  }
-});
-
-// Mount the Element to its corresponding DOM node
-addressElement.mount("#address-element");
-```
-
-#### React
-
-To collect addresses, create an empty DOM node for the [Address Element](https://docs.stripe.com/elements/address-element.md) to render into. The Address Element must be displayed after the Link Authentication Element for Link to autofill a customer’s saved address details:
-
-```jsx
-import {loadStripe} from "@stripe/stripe-js";
-import {
-  Elements,
-  LinkAuthenticationElement,AddressElement,
-  PaymentElement,
-} from "@stripe/react-stripe-js";
-
-const stripe = loadStripe('<<YOUR_PUBLISHABLE_KEY>>');
-
-// Customize the appearance of Elements using the Appearance API.
-const appearance = {/* ... */};
-
-// Enable the skeleton loader UI for the optimal loading experience.
-const loader = 'auto';
-
-const CheckoutPage = ({clientSecret}) => (
-  <Elements stripe={stripe} options={{clientSecret, appearance, loader}}>
-    <CheckoutForm />
-  </Elements>
-);
-
-export default function CheckoutForm() {
-  return (
-    <form>
-      <h3>Contact info</h3>
-      <LinkAuthenticationElement /><h3>Shipping</h3>
-      <AddressElement options={{mode: 'shipping', allowedCountries: ['US']}} />
-      <h3>Payment</h3>
-      <PaymentElement />
-      <button type="submit">Submit</button>
-    </form>
-  );
-}
-```
-
-Display the `AddressElement` before the `PaymentElement`. The `PaymentElement` dynamically detects address data collected by the `AddressElement`, hiding unnecessary fields and collecting additional billing address details as necessary.
-
-### Retrieve address information
-
-The `AddressElement` automatically passes the shipping address when a customer submits the payment, but you can also retrieve the address details on the frontend using the `onChange` property. The `onChange` handler sends an event whenever the user updates any field in the Address Element or selects a saved address:
-
-```jsx
-<AddressElement onChange={(event) => {
-  setAddressState(event.value);
-}} />
-```
-
-### Prefill a shipping address
-
-Use [defaultValues](https://docs.stripe.com/js/elements_object/create_address_element#address_element_create-options-defaultValues) to prefill address information, speeding checkout for your customers.
-
-```jsx
-<AddressElement options={{
-  mode: 'shipping',
-  defaultValues: {
-    name: 'Jane Doe',
-    address: {
-      line1: '354 Oyster Point Blvd',
-      line2: '',
-      city: 'South San Francisco',
-      state: 'CA',
-      postal_code: '94080',
-      country: 'US',
-    }
-  }
-}}>
-```
-
-## Optional: Customize the layout [Client-side]
-
-You can customize the Payment Element’s layout (accordion or tabs) to fit your checkout interface. For more information about each of the properties, see  [elements.create](https://docs.stripe.com/js/elements_object/create_payment_element#payment_element_create-options).
-
-#### Accordion
-
-You can start using the layout features by passing a layout `type` and other optional properties when creating the Payment Element:
-
-```javascript
-const paymentElement = elements.create('payment', {
-  layout: {
-    type: 'accordion',
-    defaultCollapsed: false,
-    radios: true,
-    spacedAccordionItems: false
-  }
-});
-```
-
-#### Tabs
-
-### Specify the layout
-
-Set the value for layout to `tabs`. You also have the option to specify other properties, such as the ones in the following example:
-
-```javascript
-const paymentElement = elements.create('payment', {
-  layout: {
-    type: 'tabs',
-    defaultCollapsed: false,
-  }
-});
-```
-
-The following image is the same Payment Element rendered using different layout configurations:
-![Three checkout form experiences](https://b.stripecdn.com/docs-statics-srv/assets/pe_layout_example.525f78bcb99b95e49be92e5dd34df439.png)
-
-Payment Element layouts
-
-## Optional: Customize the appearance [Client-side]
-
-Now that you’ve added the Payment Element to your page, you can customize its appearance to make it fit your design. To learn more about customizing the Payment Element, see [Elements Appearance API](https://docs.stripe.com/elements/appearance-api.md).
-![Customize the Payment Element](https://b.stripecdn.com/docs-statics-srv/assets/appearance_example.e076cc750983bf552baf26c305e7fc90.png)
-
-Customize the Payment Element
-
-## Optional: Fetch updates from the server [Client-side]
-
-You might want to update attributes on the PaymentIntent after the Payment Element renders, such as the [amount](https://docs.stripe.com/api/payment_intents/update.md#update_payment_intent-amount) (for example, discount codes or shipping costs). You can [update the PaymentIntent](https://docs.stripe.com/api/payment_intents/update.md) on your server, then call [elements.fetchUpdates](https://docs.stripe.com/js/elements_object/fetch_updates) to see the new amount reflected in the Payment Element. This example shows you how to create the server endpoint that updates the amount on the PaymentIntent:
-
-#### Ruby
-
-```ruby
-get '/update' do
-  intent = Stripe::PaymentIntent.update(
-    '{{PAYMENT_INTENT_ID}}',
-    {amount: 1499},
-  )
-  {status: intent.status}.to_json
-end
-```
-
-#### Python
-
-```python
-@app.route('/update')
-def secret():
-  intent = stripe.PaymentIntent.modify(
-    "{{PAYMENT_INTENT_ID}}",
-    amount=1499,
-  )
-  return jsonify(status=intent.status)
-```
-
-#### PHP
-
-```php
-<?php
-    $intent = $stripe->paymentIntents->update(
-      '{{PAYMENT_INTENT_ID}}',
-      ['amount' => 1499]
-    );
-    echo json_encode(array('status' => $intent->status));
-?>
-```
-
-#### Java
-
-```java
-import java.util.HashMap;
-import java.util.Map;
-
-import com.stripe.model.PaymentIntent;
-
-import com.google.gson.Gson;
-
-import static spark.Spark.get;
-
-public class StripeJavaQuickStart {
-  public static void main(String[] args) {
-    Gson gson = new Gson();
-
-    get("/update", (request, response) -> {
-      PaymentIntent paymentIntent =
-        PaymentIntent.retrieve(
-          "{{PAYMENT_INTENT_ID}}"
-        );
-
-      Map<String, Object> params = new HashMap<>();
-      params.put("amount", 1499);
-      PaymentIntent updatedPaymentIntent =
-        paymentIntent.update(params);
-
-      Map<String, String> response = new HashMap();
-      response.put("status", updatedPaymentIntent.getStatus());
-
-      return map;
-    }, gson::toJson);
-  }
-}
-```
-
-#### Node.js
-
-```javascript
-app.get('/update', async (req, res) => {
-  const intent = await stripe.paymentIntents.update(
-    '{{PAYMENT_INTENT_ID}}',
-    {amount: 1499}
-  );
-  res.json({status: intent.status});
-});
-```
-
-#### Go
-
-```go
-package main
-
-import (
-  "encoding/json"
-  "net/http"
-
-  stripe "github.com/stripe/stripe-go/v76.0.0"
-)
-
-type UpdateData struct {
-  Status string `json:"status"`
-}
-
-func main() {
-  http.HandleFunc("/update", func(w http.ResponseWriter, r *http.Request) {
-    params := &stripe.PaymentIntentParams{
-      Amount: stripe.Int64(1499),
-    }
-    pi, _ := paymentintent.Update(
-      "{{PAYMENT_INTENT_ID}}",
-      params,
-    )
-
-    data := UpdateData{
-      Status: pi.Status,
-    }
-    w.Header().Set("Content-Type", "application/json")
-    w.WriteHeader(http.StatusOK)
-    json.NewEncoder(w).Encode(data)
-  })
-
-  http.ListenAndServe(":3000", nil)
-}
-```
-
-#### .NET
-
-```csharp
-using System;
-using Microsoft.AspNetCore.Mvc;
-using Stripe;
-
-namespace StripeExampleApi.Controllers
-{
-  [Route("update")]
-  [ApiController]
-  public class CheckoutApiController : Controller
-  {
-    [HttpPost]
-    public ActionResult Post()
-    {
-      var options = new PaymentIntentUpdateOptions
-      {
-        Amount = 1499,
-      };
-      var service = new PaymentIntentService();
-      var intent = service.Update(
-        "{{PAYMENT_INTENT_ID}}",
-        options);
-      return Json(new {status = intent.Status});
-    }
-  }
-}
-```
-
-This example demonstrates how to update the UI to reflect these changes on the client side:
-
-```javascript
-(async () => {
-  const response = await fetch('/update');
-  if (response.status === 'requires_payment_method') {
-    const {error} = await elements.fetchUpdates();
-  }
-})();
-```
-
-## Submit the payment to Stripe [Client-side]
-
-Use [stripe.confirmPayment](https://docs.stripe.com/js/payment_intents/confirm_payment) to complete the payment using details from the Payment Element. Provide a [return_url](https://docs.stripe.com/api/payment_intents/create.md#create_payment_intent-return_url) to this function to indicate where Stripe should redirect the user after they complete the payment. Your user may be first redirected to an intermediate site, like a bank authorization page, before being redirected to the `return_url`. Card payments immediately redirect to the `return_url` when a payment is successful.
-
-If you don’t want to redirect for card payments after payment completion, you can set [redirect](https://docs.stripe.com/js/payment_intents/confirm_payment#confirm_payment_intent-options-redirect) to `if_required`. This only redirects customers that check out with redirect-based payment methods.
-
-#### HTML + JS
-
-```javascript
-const form = document.getElementById('payment-form');
-
-form.addEventListener('submit', async (event) => {
-  event.preventDefault();
-const {error} = await stripe.confirmPayment({
-    //`Elements` instance that was used to create the Payment Element
-    elements,
-    confirmParams: {
-      return_url: 'https://example.com/order/123/complete',
-    },
-  });
-
-  if (error) {
-    // This point will only be reached if there is an immediate error when
-    // confirming the payment. Show error to your customer (for example, payment
-    // details incomplete)
-    const messageContainer = document.querySelector('#error-message');
-    messageContainer.textContent = error.message;
-  } else {
-    // Your customer will be redirected to your `return_url`. For some payment
-    // methods like iDEAL, your customer will be redirected to an intermediate
-    // site first to authorize the payment, then redirected to the `return_url`.
-  }
-});
-```
-
-#### React
-
-To call [stripe.confirmPayment](https://docs.stripe.com/js/payment_intents/confirm_payment) from your payment form component, use the [useStripe](https://docs.stripe.com/sdks/stripejs-react.md#usestripe-hook) and [useElements](https://docs.stripe.com/sdks/stripejs-react.md#useelements-hook) hooks.
-
-If you prefer traditional class components over hooks, you can instead use an [ElementsConsumer](https://docs.stripe.com/sdks/stripejs-react.md#elements-consumer).
-
-```jsx
-import React, {useState} from 'react';
-import {useStripe, useElements, PaymentElement} from '@stripe/react-stripe-js';
-
-const CheckoutForm = () => {
-  const stripe = useStripe();
-  const elements = useElements();
-
-  const [errorMessage, setErrorMessage] = useState(null);
-
-  const handleSubmit = async (event) => {
-    // We don't want to let default form submission happen here,
-    // which would refresh the page.
-    event.preventDefault();
-
-    if (!stripe || !elements) {
-      // Stripe.js hasn't yet loaded.
-      // Make sure to disable form submission until Stripe.js has loaded.
-      return;
-    }
-const {error} = await stripe.confirmPayment({
-      //`Elements` instance that was used to create the Payment Element
-      elements,
-      confirmParams: {
-        return_url: 'https://example.com/order/123/complete',
-      },
-    });
-
-
-    if (error) {
-      // This point will only be reached if there is an immediate error when
-      // confirming the payment. Show error to your customer (for example, payment
-      // details incomplete)
-      setErrorMessage(error.message);
-    } else {
-      // Your customer will be redirected to your `return_url`. For some payment
-      // methods like iDEAL, your customer will be redirected to an intermediate
-      // site first to authorize the payment, then redirected to the `return_url`.
-    }
-  };
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <PaymentElement />
-      <button disabled={!stripe}>Submit</button>
-      {/* Show error message to your customers */}
-      {errorMessage && <div>{errorMessage}</div>}
-    </form>
-  )
-};
-
-export default CheckoutForm;
-```
-
-> `stripe.confirmPayment` may take several seconds to complete. During that time, disable your form from being resubmitted and show a waiting indicator like a spinner. If you receive an error, show it to the customer, re-enable the form, and hide the waiting indicator. If the customer must perform additional steps to complete the payment, such as authentication, Stripe.js walks them through that process.
-
-If the payment succeeded, the card is saved to the Customer object. This is reflected on the *PaymentMethod* (PaymentMethods represent your customer's payment instruments, used with the Payment Intents or Setup Intents APIs)’s [customer](https://docs.stripe.com/api/payment_methods/object.md#payment_method_object-customer) field. At this point, associate the ID of the *Customer* (Customer objects represent customers of your business. They let you reuse payment methods and give you the ability to track multiple payments) object with your own internal representation of a customer, if you have one. Now you can use the stored PaymentMethod object to collect payments from your customer in the future without prompting them for their payment details again.
-
-Make sure the `return_url` corresponds to a page on your website that provides the status of the payment. When Stripe redirects the customer to the `return_url`, we provide the following URL query parameters:
-
-| Parameter                      | Description                                                                                                                                   |
-| ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `payment_intent`               | The unique identifier for the `PaymentIntent`.                                                                                                |
-| `payment_intent_client_secret` | The [client secret](https://docs.stripe.com/api/payment_intents/object.md#payment_intent_object-client_secret) of the `PaymentIntent` object. |
-
-> If you have tooling that tracks the customer’s browser session, you might need to add the `stripe.com` domain to the referrer exclude list. Redirects cause some tools to create new sessions, which prevents you from tracking the complete session.
-
-Use one of the query parameters to retrieve the PaymentIntent. Inspect the [status of the PaymentIntent](https://docs.stripe.com/payments/paymentintents/lifecycle.md) to decide what to show your customers. You can also append your own query parameters when providing the `return_url`, which persist through the redirect process.
-
-#### HTML + JS
-
-```javascript
-
-// Initialize Stripe.js using your publishable key
-const stripe = Stripe('<<YOUR_PUBLISHABLE_KEY>>');
-
-// Retrieve the "payment_intent_client_secret" query parameter appended to
-// your return_url by Stripe.js
-const clientSecret = new URLSearchParams(window.location.search).get(
-  'payment_intent_client_secret'
-);
-
-// Retrieve the PaymentIntent
-stripe.retrievePaymentIntent(clientSecret).then(({paymentIntent}) => {
-  const message = document.querySelector('#message')
-
-  // Inspect the PaymentIntent `status` to indicate the status of the payment
-  // to your customer.
-  //
-  // Some payment methods will [immediately succeed or fail][0] upon
-  // confirmation, while others will first enter a `processing` state.
-  //
-  // [0]: https://stripe.com/docs/payments/payment-methods#payment-notification
-  switch (paymentIntent.status) {
-    case 'succeeded':
-      message.innerText = 'Success! Payment received.';
-      break;
-
-    case 'processing':
-      message.innerText = "Payment processing. We'll update you when payment is received.";
-      break;
-
-    case 'requires_payment_method':
-      message.innerText = 'Payment failed. Please try another payment method.';
-      // Redirect your user back to your payment page to attempt collecting
-      // payment again
-      break;
-
-    default:
-      message.innerText = 'Something went wrong.';
-      break;
-  }
-});
-```
-
-#### React
-
-```jsx
-import React, {useState, useEffect} from 'react';
-import {useStripe} from '@stripe/react-stripe-js';
-
-const PaymentStatus = () => {
-  const stripe = useStripe();
-  const [message, setMessage] = useState(null);
-
-  useEffect(() => {
-    if (!stripe) {
-      return;
-    }
-
-    // Retrieve the "payment_intent_client_secret" query parameter appended to
-    // your return_url by Stripe.js
-    const clientSecret = new URLSearchParams(window.location.search).get(
-      'payment_intent_client_secret'
-    );
-
-    // Retrieve the PaymentIntent
-    stripe
-      .retrievePaymentIntent(clientSecret)
-      .then(({paymentIntent}) => {
-        // Inspect the PaymentIntent `status` to indicate the status of the payment
-        // to your customer.
-        //
-        // Some payment methods will [immediately succeed or fail][0] upon
-        // confirmation, while others will first enter a `processing` state.
-        //
-        // [0]: https://stripe.com/docs/payments/payment-methods#payment-notification
-        switch (paymentIntent.status) {
-          case 'succeeded':
-            setMessage('Success! Payment received.');
-            break;
-
-          case 'processing':
-            setMessage("Payment processing. We'll update you when payment is received.");
-            break;
-
-          case 'requires_payment_method':
-            // Redirect your user back to your payment page to attempt collecting
-            // payment again
-            setMessage('Payment failed. Please try another payment method.');
-            break;
-
-          default:
-            setMessage('Something went wrong.');
-            break;
-        }
-      });
-  }, [stripe]);
-
-
-  return message;
-};
-
-export default PaymentStatus;
-```
-
-## Charge the saved payment method later [Server-side]
-
-> `bancontact`, `ideal`, and `sofort` are one-time payment methods by default. When set up for future usage, they generate a `sepa_debit` reusable payment method type so you need to use `sepa_debit` to query for saved payment methods.
-
-> #### Compliance
-> 
-> You’re responsible for your compliance with all applicable laws, regulations, and network rules when saving a customer’s payment details. When rendering past payment methods to your end customer for future purchases, make sure you’re listing payment methods where you’ve collected consent from the customer to save the payment method details for this specific future use. To differentiate between payment methods attached to customers that can and can’t be presented to your end customer as a saved payment method for future purchases, use the [allow_redisplay](https://docs.stripe.com/api/payment_methods/object.md#payment_method_object-allow_redisplay) parameter.
-
-When you’re ready to charge your customer *off-session* (A payment is described as off-session if it occurs without the direct involvement of the customer, using previously-collected payment information), use the Customer and PaymentMethod IDs to create a PaymentIntent. To find a payment method to charge, list the payment methods associated with your customer. This example lists cards but you can list any supported [type](https://docs.stripe.com/api/payment_methods/object.md#payment_method_object-type).
+You can set Checkout to save payment methods used to make a one-time payment by passing the [payment_intent_data.setup_future_usage](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-payment_intent_data-setup_future_usage) argument. This is useful if you need to capture a payment method on-file to use for future fees, such as cancellation or no-show fees.
 
 ```curl
-curl -G https://api.stripe.com/v1/payment_methods \
+curl https://api.stripe.com/v1/checkout/sessions \
   -u "<<YOUR_SECRET_KEY>>:" \
-  -d customer="{{CUSTOMER_ID}}" \
-  -d type=card
+  -d customer_creation=always \
+  -d "line_items[0][price_data][currency]"=usd \
+  -d "line_items[0][price_data][product_data][name]"=T-shirt \
+  -d "line_items[0][price_data][unit_amount]"=2000 \
+  -d "line_items[0][quantity]"=1 \
+  -d mode=payment \
+  -d ui_mode=embedded \
+  --data-urlencode return_url="https://example.com/return" \
+  -d "payment_intent_data[setup_future_usage]"=off_session
 ```
 
 ```cli
-stripe payment_methods list  \
-  --customer="{{CUSTOMER_ID}}" \
-  --type=card
+stripe checkout sessions create  \
+  --customer-creation=always \
+  -d "line_items[0][price_data][currency]"=usd \
+  -d "line_items[0][price_data][product_data][name]"=T-shirt \
+  -d "line_items[0][price_data][unit_amount]"=2000 \
+  -d "line_items[0][quantity]"=1 \
+  --mode=payment \
+  --ui-mode=embedded \
+  --return-url="https://example.com/return" \
+  -d "payment_intent_data[setup_future_usage]"=off_session
 ```
 
 ```ruby
@@ -2947,9 +1954,22 @@ stripe payment_methods list  \
 # See your keys here: https://dashboard.stripe.com/apikeys
 client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
 
-payment_methods = client.v1.payment_methods.list({
-  customer: '{{CUSTOMER_ID}}',
-  type: 'card',
+session = client.v1.checkout.sessions.create({
+  customer_creation: 'always',
+  line_items: [
+    {
+      price_data: {
+        currency: 'usd',
+        product_data: {name: 'T-shirt'},
+        unit_amount: 2000,
+      },
+      quantity: 1,
+    },
+  ],
+  mode: 'payment',
+  ui_mode: 'embedded',
+  return_url: 'https://example.com/return',
+  payment_intent_data: {setup_future_usage: 'off_session'},
 })
 ```
 
@@ -2959,9 +1979,22 @@ payment_methods = client.v1.payment_methods.list({
 client = StripeClient("<<YOUR_SECRET_KEY>>")
 
 # For SDK versions 12.4.0 or lower, remove '.v1' from the following line.
-payment_methods = client.v1.payment_methods.list({
-  "customer": "{{CUSTOMER_ID}}",
-  "type": "card",
+session = client.v1.checkout.sessions.create({
+  "customer_creation": "always",
+  "line_items": [
+    {
+      "price_data": {
+        "currency": "usd",
+        "product_data": {"name": "T-shirt"},
+        "unit_amount": 2000,
+      },
+      "quantity": 1,
+    },
+  ],
+  "mode": "payment",
+  "ui_mode": "embedded",
+  "return_url": "https://example.com/return",
+  "payment_intent_data": {"setup_future_usage": "off_session"},
 })
 ```
 
@@ -2970,9 +2003,22 @@ payment_methods = client.v1.payment_methods.list({
 // See your keys here: https://dashboard.stripe.com/apikeys
 $stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
 
-$paymentMethods = $stripe->paymentMethods->all([
-  'customer' => '{{CUSTOMER_ID}}',
-  'type' => 'card',
+$session = $stripe->checkout->sessions->create([
+  'customer_creation' => 'always',
+  'line_items' => [
+    [
+      'price_data' => [
+        'currency' => 'usd',
+        'product_data' => ['name' => 'T-shirt'],
+        'unit_amount' => 2000,
+      ],
+      'quantity' => 1,
+    ],
+  ],
+  'mode' => 'payment',
+  'ui_mode' => 'embedded',
+  'return_url' => 'https://example.com/return',
+  'payment_intent_data' => ['setup_future_usage' => 'off_session'],
 ]);
 ```
 
@@ -2981,15 +2027,39 @@ $paymentMethods = $stripe->paymentMethods->all([
 // See your keys here: https://dashboard.stripe.com/apikeys
 StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
 
-PaymentMethodListParams params =
-  PaymentMethodListParams.builder()
-    .setCustomer("{{CUSTOMER_ID}}")
-    .setType(PaymentMethodListParams.Type.CARD)
+SessionCreateParams params =
+  SessionCreateParams.builder()
+    .setCustomerCreation(SessionCreateParams.CustomerCreation.ALWAYS)
+    .addLineItem(
+      SessionCreateParams.LineItem.builder()
+        .setPriceData(
+          SessionCreateParams.LineItem.PriceData.builder()
+            .setCurrency("usd")
+            .setProductData(
+              SessionCreateParams.LineItem.PriceData.ProductData.builder()
+                .setName("T-shirt")
+                .build()
+            )
+            .setUnitAmount(2000L)
+            .build()
+        )
+        .setQuantity(1L)
+        .build()
+    )
+    .setMode(SessionCreateParams.Mode.PAYMENT)
+    .setUiMode(SessionCreateParams.UiMode.EMBEDDED)
+    .setReturnUrl("https://example.com/return")
+    .setPaymentIntentData(
+      SessionCreateParams.PaymentIntentData.builder()
+        .setSetupFutureUsage(
+          SessionCreateParams.PaymentIntentData.SetupFutureUsage.OFF_SESSION
+        )
+        .build()
+    )
     .build();
 
 // For SDK versions 29.4.0 or lower, remove '.v1()' from the following line.
-StripeCollection<PaymentMethod> stripeCollection =
-  client.v1().paymentMethods().list(params);
+Session session = client.v1().checkout().sessions().create(params);
 ```
 
 ```node
@@ -2997,9 +2067,26 @@ StripeCollection<PaymentMethod> stripeCollection =
 // See your keys here: https://dashboard.stripe.com/apikeys
 const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
 
-const paymentMethods = await stripe.paymentMethods.list({
-  customer: '{{CUSTOMER_ID}}',
-  type: 'card',
+const session = await stripe.checkout.sessions.create({
+  customer_creation: 'always',
+  line_items: [
+    {
+      price_data: {
+        currency: 'usd',
+        product_data: {
+          name: 'T-shirt',
+        },
+        unit_amount: 2000,
+      },
+      quantity: 1,
+    },
+  ],
+  mode: 'payment',
+  ui_mode: 'embedded',
+  return_url: 'https://example.com/return',
+  payment_intent_data: {
+    setup_future_usage: 'off_session',
+  },
 });
 ```
 
@@ -3007,593 +2094,542 @@ const paymentMethods = await stripe.paymentMethods.list({
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.PaymentMethodListParams{
-  Customer: stripe.String("{{CUSTOMER_ID}}"),
-  Type: stripe.String(stripe.PaymentMethodTypeCard),
+params := &stripe.CheckoutSessionCreateParams{
+  CustomerCreation: stripe.String(stripe.CheckoutSessionCustomerCreationAlways),
+  LineItems: []*stripe.CheckoutSessionCreateLineItemParams{
+    &stripe.CheckoutSessionCreateLineItemParams{
+      PriceData: &stripe.CheckoutSessionCreateLineItemPriceDataParams{
+        Currency: stripe.String(stripe.CurrencyUSD),
+        ProductData: &stripe.CheckoutSessionCreateLineItemPriceDataProductDataParams{
+          Name: stripe.String("T-shirt"),
+        },
+        UnitAmount: stripe.Int64(2000),
+      },
+      Quantity: stripe.Int64(1),
+    },
+  },
+  Mode: stripe.String(stripe.CheckoutSessionModePayment),
+  UIMode: stripe.String(stripe.CheckoutSessionUIModeEmbedded),
+  ReturnURL: stripe.String("https://example.com/return"),
+  PaymentIntentData: &stripe.CheckoutSessionCreatePaymentIntentDataParams{
+    SetupFutureUsage: stripe.String("off_session"),
+  },
 }
-result := sc.V1PaymentMethods.List(context.TODO(), params)
+result, err := sc.V1CheckoutSessions.Create(context.TODO(), params)
 ```
 
 ```dotnet
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
-var options = new PaymentMethodListOptions
+var options = new Stripe.Checkout.SessionCreateOptions
 {
-    Customer = "{{CUSTOMER_ID}}",
-    Type = "card",
+    CustomerCreation = "always",
+    LineItems = new List<Stripe.Checkout.SessionLineItemOptions>
+    {
+        new Stripe.Checkout.SessionLineItemOptions
+        {
+            PriceData = new Stripe.Checkout.SessionLineItemPriceDataOptions
+            {
+                Currency = "usd",
+                ProductData = new Stripe.Checkout.SessionLineItemPriceDataProductDataOptions
+                {
+                    Name = "T-shirt",
+                },
+                UnitAmount = 2000,
+            },
+            Quantity = 1,
+        },
+    },
+    Mode = "payment",
+    UiMode = "embedded",
+    ReturnUrl = "https://example.com/return",
+    PaymentIntentData = new Stripe.Checkout.SessionPaymentIntentDataOptions
+    {
+        SetupFutureUsage = "off_session",
+    },
 };
 var client = new StripeClient("<<YOUR_SECRET_KEY>>");
-var service = client.V1.PaymentMethods;
-StripeList<PaymentMethod> paymentMethods = service.List(options);
+var service = client.V1.Checkout.Sessions;
+Stripe.Checkout.Session session = service.Create(options);
 ```
 
-When you have the Customer and PaymentMethod IDs, create a PaymentIntent with the amount and currency of the payment. Set a few other parameters to make the off-session payment:
+If you use Checkout in `subscription` mode, Stripe automatically saves the payment method to charge it for subsequent payments. Card payment methods saved to customers using either `setup_future_usage` or `subscription` mode don’t appear for return purchases in Checkout (more on this below). We recommend using [custom text](https://docs.stripe.com/payments/checkout/customization/policies.md) to link out to any relevant terms regarding the usage of saved payment information.
 
-- Set [off_session](https://docs.stripe.com/api/payment_intents/confirm.md#confirm_payment_intent-off_session) to `true` to indicate that the customer isn’t in your checkout flow during a payment attempt and can’t fulfill an authentication request made by a partner, such as a card issuer, bank, or other payment institution. If, during your checkout flow, a partner requests authentication, Stripe requests exemptions using customer information from a previous *on-session* (A payment is described as on-session if it occurs while the customer is actively in your checkout flow and able to authenticate the payment method) transaction. If the conditions for exemption aren’t met, the PaymentIntent might throw an error.
-- Set the value of the PaymentIntent’s [confirm](https://docs.stripe.com/api/payment_intents/create.md#create_payment_intent-confirm) property to `true`, which causes confirmation to occur immediately when the PaymentIntent is created.
-- Set [payment_method](https://docs.stripe.com/api.md#create_payment_intent-payment_method) to the ID of the PaymentMethod and [customer](https://docs.stripe.com/api.md#create_payment_intent-customer) to the ID of the Customer.
+> Global privacy laws are complicated and nuanced. We recommend contacting your legal and privacy team prior to implementing [setup_future_usage](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-payment_intent_data-setup_future_usage) because it might implicate your existing privacy compliance framework. Refer to [the guidance issued by the European Protection Board](https://edpb.europa.eu/system/files/2021-05/recommendations022021_on_storage_of_credit_card_data_en_1.pdf) to learn more about saving payment details.
 
-#### curl
+### Save payment methods to prefill them in Checkout
 
-```bash
-curl https://api.stripe.com/v1/payment_intents \
-  -u <<YOUR_SECRET_KEY>>: \
-  -d amount=1099 \
-  -d currency=usd \
-  # In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
-  -d "automatic_payment_methods[enabled]"=true \-d customer="{{CUSTOMER_ID}}" \
-  -d payment_method="{{PAYMENT_METHOD_ID}}" \
-  -d return_url="https://example.com/order/123/complete" \
-  -d off_session=true \
-  -d confirm=true
+By default, Checkout uses [Link](https://docs.stripe.com/payments/link/checkout-link.md) to provide your customers with the option to securely save and reuse their payment information. If you prefer to manage payment methods yourself, use [saved_payment_method_options.payment_method_save](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-saved_payment_method_options-payment_method_save) when creating a Checkout Session to let your customers save their payment methods for future purchases in Checkout.
+
+```curl
+curl https://api.stripe.com/v1/checkout/sessions \
+  -u "<<YOUR_SECRET_KEY>>:" \
+  -d customer_creation=always \
+  -d "line_items[0][price_data][currency]"=usd \
+  -d "line_items[0][price_data][product_data][name]"=T-shirt \
+  -d "line_items[0][price_data][unit_amount]"=2000 \
+  -d "line_items[0][quantity]"=1 \
+  -d mode=payment \
+  -d ui_mode=embedded \
+  --data-urlencode return_url="https://example.com/return" \
+  -d "saved_payment_method_options[payment_method_save]"=enabled
 ```
 
-#### Stripe CLI
-
-```bash
-stripe payment_intents create \
-  --amount=1099 \
-  --currency=usd \
-  -d "automatic_payment_methods[enabled]"=true \
- # In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.--customer={{CUSTOMER_ID}} \
-  --payment-method={{PAYMENT_METHOD_ID}} \
-  --return-url="https://example.com/order/123/complete" \
-  --off-session=true \
-  --confirm=true
+```cli
+stripe checkout sessions create  \
+  --customer-creation=always \
+  -d "line_items[0][price_data][currency]"=usd \
+  -d "line_items[0][price_data][product_data][name]"=T-shirt \
+  -d "line_items[0][price_data][unit_amount]"=2000 \
+  -d "line_items[0][quantity]"=1 \
+  --mode=payment \
+  --ui-mode=embedded \
+  --return-url="https://example.com/return" \
+  -d "saved_payment_method_options[payment_method_save]"=enabled
 ```
-
-#### Ruby
 
 ```ruby
-
 # Set your secret key. Remember to switch to your live secret key in production.
 # See your keys here: https://dashboard.stripe.com/apikeys
-Stripe.api_key = '<<YOUR_SECRET_KEY>>'
+client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
 
-begin
-  intent = Stripe::PaymentIntent.create({
-    amount: 1099,
-    currency: 'usd',
-    # In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
-    automatic_payment_methods: {enabled: true},customer: '{{CUSTOMER_ID}}',
-    payment_method: '{{PAYMENT_METHOD_ID}}',
-    return_url: 'https://example.com/order/123/complete',
-    off_session: true,
-    confirm: true,
-  })
-rescue Stripe::CardError => e
-  # Error code will be authentication_required if authentication is needed
-  puts "Error is: \#{e.error.code}"
-  payment_intent_id = e.error.payment_intent.id
-  payment_intent = Stripe::PaymentIntent.retrieve(payment_intent_id)
-  puts payment_intent.id
-end
+session = client.v1.checkout.sessions.create({
+  customer_creation: 'always',
+  line_items: [
+    {
+      price_data: {
+        currency: 'usd',
+        product_data: {name: 'T-shirt'},
+        unit_amount: 2000,
+      },
+      quantity: 1,
+    },
+  ],
+  mode: 'payment',
+  ui_mode: 'embedded',
+  return_url: 'https://example.com/return',
+  saved_payment_method_options: {payment_method_save: 'enabled'},
+})
 ```
-
-#### Python
 
 ```python
-
 # Set your secret key. Remember to switch to your live secret key in production.
 # See your keys here: https://dashboard.stripe.com/apikeys
-stripe.api_key = '<<YOUR_SECRET_KEY>>'
+client = StripeClient("<<YOUR_SECRET_KEY>>")
 
-try:
-  stripe.PaymentIntent.create(
-    amount=1099,
-    currency='usd',
-    # In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
-    automatic_payment_methods={"enabled": True},customer='{{CUSTOMER_ID}}',
-    payment_method='{{PAYMENT_METHOD_ID}}',
-    return_url='https://example.com/order/123/complete',
-    off_session=True,
-    confirm=True,
-  )
-except stripe.error.CardError as e:
-  err = e.error
-  # Error code will be authentication_required if authentication is needed
-  print("Code is: %s" % err.code)
-  payment_intent_id = err.payment_intent['id']
-  payment_intent = stripe.PaymentIntent.retrieve(payment_intent_id)
+# For SDK versions 12.4.0 or lower, remove '.v1' from the following line.
+session = client.v1.checkout.sessions.create({
+  "customer_creation": "always",
+  "line_items": [
+    {
+      "price_data": {
+        "currency": "usd",
+        "product_data": {"name": "T-shirt"},
+        "unit_amount": 2000,
+      },
+      "quantity": 1,
+    },
+  ],
+  "mode": "payment",
+  "ui_mode": "embedded",
+  "return_url": "https://example.com/return",
+  "saved_payment_method_options": {"payment_method_save": "enabled"},
+})
 ```
-
-#### PHP
 
 ```php
-
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
-\Stripe\Stripe::setApiKey('<<YOUR_SECRET_KEY>>');
+$stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
 
-try {
-  \Stripe\PaymentIntent::create([
-    'amount' => 1099,
-    'currency' => 'usd',
-    // In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
-    'automatic_payment_methods' => ['enabled' => true],'customer' => '{{CUSTOMER_ID}}',
-    'payment_method' => '{{PAYMENT_METHOD_ID}}',
-    'return_url' => 'https://example.com/order/123/complete',
-    'off_session' => true,
-    'confirm' => true,
-  ]);
-} catch (\Stripe\Exception\CardException $e) {
-  // Error code will be authentication_required if authentication is needed
-  echo 'Error code is:' . $e->getError()->code;
-  $payment_intent_id = $e->getError()->payment_intent->id;
-  $payment_intent = \Stripe\PaymentIntent::retrieve($payment_intent_id);
-}
+$session = $stripe->checkout->sessions->create([
+  'customer_creation' => 'always',
+  'line_items' => [
+    [
+      'price_data' => [
+        'currency' => 'usd',
+        'product_data' => ['name' => 'T-shirt'],
+        'unit_amount' => 2000,
+      ],
+      'quantity' => 1,
+    ],
+  ],
+  'mode' => 'payment',
+  'ui_mode' => 'embedded',
+  'return_url' => 'https://example.com/return',
+  'saved_payment_method_options' => ['payment_method_save' => 'enabled'],
+]);
 ```
-
-#### Java
 
 ```java
-
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
-Stripe.apiKey = "<<YOUR_SECRET_KEY>>";
+StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
 
-PaymentIntentCreateParams params =
-  PaymentIntentCreateParams.builder()
-    .setCurrency("usd")
-    .setAmount(1099)
-    // In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
-    .setAutomaticPaymentMethods(
-      PaymentIntentCreateParams.AutomaticPaymentMethods.builder().setEnabled(true).build()
-    ).setCustomer("{{CUSTOMER_ID}}")
-    .setPaymentMethod("{{PAYMENT_METHOD_ID}}")
-    .setReturnUrl("https://example.com/order/123/complete")
-    .setConfirm(true)
-    .setOffSession(true)
+SessionCreateParams params =
+  SessionCreateParams.builder()
+    .setCustomerCreation(SessionCreateParams.CustomerCreation.ALWAYS)
+    .addLineItem(
+      SessionCreateParams.LineItem.builder()
+        .setPriceData(
+          SessionCreateParams.LineItem.PriceData.builder()
+            .setCurrency("usd")
+            .setProductData(
+              SessionCreateParams.LineItem.PriceData.ProductData.builder()
+                .setName("T-shirt")
+                .build()
+            )
+            .setUnitAmount(2000L)
+            .build()
+        )
+        .setQuantity(1L)
+        .build()
+    )
+    .setMode(SessionCreateParams.Mode.PAYMENT)
+    .setUiMode(SessionCreateParams.UiMode.EMBEDDED)
+    .setReturnUrl("https://example.com/return")
+    .setSavedPaymentMethodOptions(
+      SessionCreateParams.SavedPaymentMethodOptions.builder()
+        .setPaymentMethodSave(
+          SessionCreateParams.SavedPaymentMethodOptions.PaymentMethodSave.ENABLED
+        )
+        .build()
+    )
     .build();
-try {
-  PaymentIntent.create(params);
-} catch (CardException e) {
-  // Error code will be authentication_required if authentication is needed
-  System.out.println("Error code is : " + e.getCode());
-  String paymentIntentId = e.getStripeError().getPaymentIntent().getId();
-  PaymentIntent paymentIntent = PaymentIntent.retrieve(paymentIntentId);
-  System.out.println(paymentIntent.getId());
-}
+
+// For SDK versions 29.4.0 or lower, remove '.v1()' from the following line.
+Session session = client.v1().checkout().sessions().create(params);
 ```
 
-#### Node.js
-
-```javascript
-
+```node
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
 
-try {
-  const paymentIntent = await stripe.paymentIntents.create({
-    amount: 1099,
-    currency: 'usd',
-    // In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
-    automatic_payment_methods: {enabled: true},customer: '{{CUSTOMER_ID}}',
-    payment_method: '{{PAYMENT_METHOD_ID}}',
-    return_url: 'https://example.com/order/123/complete',
-    off_session: true,
-    confirm: true,
-  });
-} catch (err) {
-  // Error code will be authentication_required if authentication is needed
-  console.log('Error code is: ', err.code);
-  const paymentIntentRetrieved = await stripe.paymentIntents.retrieve(err.raw.payment_intent.id);
-  console.log('PI retrieved: ', paymentIntentRetrieved.id);
-}
+const session = await stripe.checkout.sessions.create({
+  customer_creation: 'always',
+  line_items: [
+    {
+      price_data: {
+        currency: 'usd',
+        product_data: {
+          name: 'T-shirt',
+        },
+        unit_amount: 2000,
+      },
+      quantity: 1,
+    },
+  ],
+  mode: 'payment',
+  ui_mode: 'embedded',
+  return_url: 'https://example.com/return',
+  saved_payment_method_options: {
+    payment_method_save: 'enabled',
+  },
+});
 ```
-
-#### Go
 
 ```go
-
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
-stripe.Key = "<<YOUR_SECRET_KEY>>"
-
-params := &stripe.PaymentIntentParams{
-  Amount: stripe.Int64(1099),
-  Currency: stripe.String(string(stripe.CurrencyUSD)),
-  // In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
-  AutomaticPaymentMethods: &stripe.PaymentIntentAutomaticPaymentMethodsParams{
-    Enabled: stripe.Bool(true),
-  },Customer: stripe.String("{{CUSTOMER_ID}}"),
-  PaymentMethod: stripe.String("{{PAYMENT_METHOD_ID}}"),
-  ReturnUrl: stripe.String("https://example.com/order/123/complete"),
-  Confirm: stripe.Bool(true),
-  OffSession: stripe.Bool(true),
+sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
+params := &stripe.CheckoutSessionCreateParams{
+  CustomerCreation: stripe.String(stripe.CheckoutSessionCustomerCreationAlways),
+  LineItems: []*stripe.CheckoutSessionCreateLineItemParams{
+    &stripe.CheckoutSessionCreateLineItemParams{
+      PriceData: &stripe.CheckoutSessionCreateLineItemPriceDataParams{
+        Currency: stripe.String(stripe.CurrencyUSD),
+        ProductData: &stripe.CheckoutSessionCreateLineItemPriceDataProductDataParams{
+          Name: stripe.String("T-shirt"),
+        },
+        UnitAmount: stripe.Int64(2000),
+      },
+      Quantity: stripe.Int64(1),
+    },
+  },
+  Mode: stripe.String(stripe.CheckoutSessionModePayment),
+  UIMode: stripe.String(stripe.CheckoutSessionUIModeEmbedded),
+  ReturnURL: stripe.String("https://example.com/return"),
+  SavedPaymentMethodOptions: &stripe.CheckoutSessionCreateSavedPaymentMethodOptionsParams{
+    PaymentMethodSave: stripe.String(stripe.CheckoutSessionSavedPaymentMethodOptionsPaymentMethodSaveEnabled),
+  },
 }
-
-_, err := paymentintent.New(params)
-
-if err != nil {
-  if stripeErr, ok := err.(*stripe.Error); ok {
-    // Error code will be authentication_required if authentication is needed
-    fmt.Printf("Error code: %v", stripeErr.Code)
-
-    paymentIntentID := stripeErr.PaymentIntent.ID
-    paymentIntent, _ := paymentintent.Get(paymentIntentID, nil)
-
-    fmt.Printf("PI: %v", paymentIntent.ID)
-  }
-}
+result, err := sc.V1CheckoutSessions.Create(context.TODO(), params)
 ```
-
-#### .NET
 
 ```dotnet
-
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
-StripeConfiguration.ApiKey = "<<YOUR_SECRET_KEY>>";
-
-try
+var options = new Stripe.Checkout.SessionCreateOptions
 {
-  var service = new PaymentIntentService();
-  var options = new PaymentIntentCreateOptions
-  {
-    Amount = 1099,
-    Currency = "usd",
-    // In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
-    AutomaticPaymentMethods = new PaymentIntentAutomaticPaymentMethodsOptions
+    CustomerCreation = "always",
+    LineItems = new List<Stripe.Checkout.SessionLineItemOptions>
     {
-        Enabled = true,
-    },Customer = "{{CUSTOMER_ID}}",
-    PaymentMethod = "{{PAYMENT_METHOD_ID}}",
-    ReturnUrl = "https://example.com/order/123/complete",
-    Confirm = true,
-    OffSession = true,
-  };
-  service.Create(options);
+        new Stripe.Checkout.SessionLineItemOptions
+        {
+            PriceData = new Stripe.Checkout.SessionLineItemPriceDataOptions
+            {
+                Currency = "usd",
+                ProductData = new Stripe.Checkout.SessionLineItemPriceDataProductDataOptions
+                {
+                    Name = "T-shirt",
+                },
+                UnitAmount = 2000,
+            },
+            Quantity = 1,
+        },
+    },
+    Mode = "payment",
+    UiMode = "embedded",
+    ReturnUrl = "https://example.com/return",
+    SavedPaymentMethodOptions = new Stripe.Checkout.SessionSavedPaymentMethodOptionsOptions
+    {
+        PaymentMethodSave = "enabled",
+    },
+};
+var client = new StripeClient("<<YOUR_SECRET_KEY>>");
+var service = client.V1.Checkout.Sessions;
+Stripe.Checkout.Session session = service.Create(options);
+```
+
+Passing this parameter in either [payment](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-mode) or [subscription](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-mode) mode displays an optional checkbox to let customers explicitly save their payment method for future purchases. When customers check this checkbox, Checkout saves the payment method with [allow_redisplay: always](https://docs.stripe.com/api/payment_methods/object.md#payment_method_object-allow_redisplay). Checkout uses this parameter to determine whether a payment method can be prefilled on future purchases. When using `saved_payment_method_options.payment_method_save`, you don’t need to pass in `setup_future_usage` to save the payment method.
+
+If your Connect platform uses [customer-configured Accounts](https://docs.stripe.com/api/v2/core/accounts/create.md#v2_create_accounts-configuration-customer), use our [guide](https://docs.stripe.com/connect/use-accounts-as-customers.md) to replace `Customer` and event references in your code with the equivalent Accounts v2 API references.
+
+Using [saved_payment_method_options.payment_method_save](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-saved_payment_method_options-payment_method_save) requires a `Customer`. To save a new customer, set the Checkout Session’s [customer_creation](https://docs.stripe.com/api/checkout/sessions/create.md) to `always`. Otherwise, the session doesn’t save the customer or the payment method.
+
+If `payment_method_save` isn’t passed in or if the customer doesn’t agree to save the payment method, Checkout still saves payment methods created in `subscription` mode or using `setup_future_usage`. These payment methods have an `allow_redisplay` value of `limited`, which prevents them from being prefilled for returning purchases and allows you to comply with card network rules and data protection regulations. Learn how to [change the default behavior enabled by these modes](https://support.stripe.com/questions/prefilling-saved-cards-in-checkout) and how to change or override `allow_redisplay` behavior.
+
+> You can use Checkout to save cards and other payment methods to charge them off-session, but Checkout only prefills saved cards. Learn how to [prefill saved cards](https://support.stripe.com/questions/prefilling-saved-cards-in-checkout). To save a payment method without an initial payment, [use Checkout in setup mode](https://docs.stripe.com/payments/save-and-reuse.md?platform=checkout).
+
+### Let customers remove saved payment methods
+
+To let your customers remove a saved payment method so it doesn’t resurface for future payments, use [saved_payment_method_options.payment_method_remove](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-saved_payment_method_options-payment_method_remove) when creating a Checkout Session.
+
+```curl
+curl https://api.stripe.com/v1/checkout/sessions \
+  -u "<<YOUR_SECRET_KEY>>:" \
+  -d customer={{CUSTOMER_ID}} \
+  -d "line_items[0][price_data][currency]"=usd \
+  -d "line_items[0][price_data][product_data][name]"=T-shirt \
+  -d "line_items[0][price_data][unit_amount]"=2000 \
+  -d "line_items[0][quantity]"=1 \
+  -d mode=payment \
+  -d ui_mode=embedded \
+  --data-urlencode return_url="https://example.com/return" \
+  -d "saved_payment_method_options[payment_method_remove]"=enabled
+```
+
+```cli
+stripe checkout sessions create  \
+  --customer={{CUSTOMER_ID}} \
+  -d "line_items[0][price_data][currency]"=usd \
+  -d "line_items[0][price_data][product_data][name]"=T-shirt \
+  -d "line_items[0][price_data][unit_amount]"=2000 \
+  -d "line_items[0][quantity]"=1 \
+  --mode=payment \
+  --ui-mode=embedded \
+  --return-url="https://example.com/return" \
+  -d "saved_payment_method_options[payment_method_remove]"=enabled
+```
+
+```ruby
+# Set your secret key. Remember to switch to your live secret key in production.
+# See your keys here: https://dashboard.stripe.com/apikeys
+client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
+
+session = client.v1.checkout.sessions.create({
+  customer: '{{CUSTOMER_ID}}',
+  line_items: [
+    {
+      price_data: {
+        currency: 'usd',
+        product_data: {name: 'T-shirt'},
+        unit_amount: 2000,
+      },
+      quantity: 1,
+    },
+  ],
+  mode: 'payment',
+  ui_mode: 'embedded',
+  return_url: 'https://example.com/return',
+  saved_payment_method_options: {payment_method_remove: 'enabled'},
+})
+```
+
+```python
+# Set your secret key. Remember to switch to your live secret key in production.
+# See your keys here: https://dashboard.stripe.com/apikeys
+client = StripeClient("<<YOUR_SECRET_KEY>>")
+
+# For SDK versions 12.4.0 or lower, remove '.v1' from the following line.
+session = client.v1.checkout.sessions.create({
+  "customer": "{{CUSTOMER_ID}}",
+  "line_items": [
+    {
+      "price_data": {
+        "currency": "usd",
+        "product_data": {"name": "T-shirt"},
+        "unit_amount": 2000,
+      },
+      "quantity": 1,
+    },
+  ],
+  "mode": "payment",
+  "ui_mode": "embedded",
+  "return_url": "https://example.com/return",
+  "saved_payment_method_options": {"payment_method_remove": "enabled"},
+})
+```
+
+```php
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+$stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
+
+$session = $stripe->checkout->sessions->create([
+  'customer' => '{{CUSTOMER_ID}}',
+  'line_items' => [
+    [
+      'price_data' => [
+        'currency' => 'usd',
+        'product_data' => ['name' => 'T-shirt'],
+        'unit_amount' => 2000,
+      ],
+      'quantity' => 1,
+    ],
+  ],
+  'mode' => 'payment',
+  'ui_mode' => 'embedded',
+  'return_url' => 'https://example.com/return',
+  'saved_payment_method_options' => ['payment_method_remove' => 'enabled'],
+]);
+```
+
+```java
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
+
+SessionCreateParams params =
+  SessionCreateParams.builder()
+    .setCustomer("{{CUSTOMER_ID}}")
+    .addLineItem(
+      SessionCreateParams.LineItem.builder()
+        .setPriceData(
+          SessionCreateParams.LineItem.PriceData.builder()
+            .setCurrency("usd")
+            .setProductData(
+              SessionCreateParams.LineItem.PriceData.ProductData.builder()
+                .setName("T-shirt")
+                .build()
+            )
+            .setUnitAmount(2000L)
+            .build()
+        )
+        .setQuantity(1L)
+        .build()
+    )
+    .setMode(SessionCreateParams.Mode.PAYMENT)
+    .setUiMode(SessionCreateParams.UiMode.EMBEDDED)
+    .setReturnUrl("https://example.com/return")
+    .setSavedPaymentMethodOptions(
+      SessionCreateParams.SavedPaymentMethodOptions.builder().build()
+    )
+    .putExtraParam("saved_payment_method_options[payment_method_remove]", "enabled")
+    .build();
+
+// For SDK versions 29.4.0 or lower, remove '.v1()' from the following line.
+Session session = client.v1().checkout().sessions().create(params);
+```
+
+```node
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
+
+const session = await stripe.checkout.sessions.create({
+  customer: '{{CUSTOMER_ID}}',
+  line_items: [
+    {
+      price_data: {
+        currency: 'usd',
+        product_data: {
+          name: 'T-shirt',
+        },
+        unit_amount: 2000,
+      },
+      quantity: 1,
+    },
+  ],
+  mode: 'payment',
+  ui_mode: 'embedded',
+  return_url: 'https://example.com/return',
+  saved_payment_method_options: {
+    payment_method_remove: 'enabled',
+  },
+});
+```
+
+```go
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
+params := &stripe.CheckoutSessionCreateParams{
+  Customer: stripe.String("{{CUSTOMER_ID}}"),
+  LineItems: []*stripe.CheckoutSessionCreateLineItemParams{
+    &stripe.CheckoutSessionCreateLineItemParams{
+      PriceData: &stripe.CheckoutSessionCreateLineItemPriceDataParams{
+        Currency: stripe.String(stripe.CurrencyUSD),
+        ProductData: &stripe.CheckoutSessionCreateLineItemPriceDataProductDataParams{
+          Name: stripe.String("T-shirt"),
+        },
+        UnitAmount: stripe.Int64(2000),
+      },
+      Quantity: stripe.Int64(1),
+    },
+  },
+  Mode: stripe.String(stripe.CheckoutSessionModePayment),
+  UIMode: stripe.String(stripe.CheckoutSessionUIModeEmbedded),
+  ReturnURL: stripe.String("https://example.com/return"),
+  SavedPaymentMethodOptions: &stripe.CheckoutSessionCreateSavedPaymentMethodOptionsParams{},
 }
-catch (StripeException e)
+params.AddExtra("saved_payment_method_options[payment_method_remove]", "enabled")
+result, err := sc.V1CheckoutSessions.Create(context.TODO(), params)
+```
+
+```dotnet
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+var options = new Stripe.Checkout.SessionCreateOptions
 {
-  switch (e.StripeError.Type)
-  {
-    case "card_error":
-      // Error code will be authentication_required if authentication is needed
-      Console.WriteLine("Error code: " + e.StripeError.Code);
-      var paymentIntentId = e.StripeError.PaymentIntent.Id;
-      var service = new PaymentIntentService();
-      var paymentIntent = service.Get(paymentIntentId);
-
-      Console.WriteLine(paymentIntent.Id);
-      break;
-    default:
-      break;
-  }
-}
-```
-
-## Optional: Save payment details for future use [Server-side]
-
-As described in the [Create a PaymentIntent](https://docs.stripe.com/payments/save-during-payment.md?platform=web#web-create-payment-intent) step, you can [save payment details](https://docs.stripe.com/payments/accept-a-payment.md#save-payment-method-details) to a customer by passing the [setup_future_usage](https://docs.stripe.com/api/payment_intents/object.md#payment_intent_object-setup_future_usage) argument. While you can make a subset of payment methods [reusable](https://docs.stripe.com/payments/accept-a-payment.md#save-payment-method-details) in this way, you can’t make all payment methods reusable. A single payment intent can handle both reusable and non-reusable payment methods. See the [Payment method support](https://docs.stripe.com/payments/payment-methods/payment-method-support.md#additional-api-supportability) page to learn more about which payment methods are compatible with [setup_future_usage](https://docs.stripe.com/api/payment_intents/object.md#payment_intent_object-setup_future_usage).
-
-For example, you can accept card payments and Giropay (which you can’t reuse). When customers select the card payment method, you can save the payment method to the customer for [future usage](https://docs.stripe.com/payments/accept-a-payment.md#save-payment-method-details) by configuring `setup_future_usage=off_session` on the `payment_method_options[card]` object.
-
-If the customer declines to have their payment details saved, disable `setup_future_usage` in the PaymentIntent on the server-side. We don’t support making this adjustment on the client-side.
-
-#### Manage payment methods from the Dashboard
-
-You can manage payment methods from the [Dashboard](https://dashboard.stripe.com/settings/payment_methods). Stripe handles the return of eligible payment methods based on factors such as the transaction’s amount, currency, and payment flow.
-
-#### curl
-
-```bash
-curl https://api.stripe.com/v1/payment_intents \
-  -u <<YOUR_SECRET_KEY>>: \
-  -d "amount"=1099 \
-  -d "currency"="usd" \
-  -d "automatic_payment_methods[enabled]"="true" \
-  -d "payment_method_options[card][setup_future_usage]"="off_session"
-```
-
-#### Ruby
-
-```ruby
-
-# Set your secret key. Remember to switch to your live secret key in production.
-# See your keys here: https://dashboard.stripe.com/apikeys
-Stripe.api_key = '<<YOUR_SECRET_KEY>>'
-
-Stripe::PaymentIntent.create({
-  amount: 1099,
-  currency: 'usd',
-  # In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
-  automatic_payment_methods: {
-    enabled: true,
-  },
-  payment_method_options: {
-    card: {
-      setup_future_usage: 'off_session'
+    Customer = "{{CUSTOMER_ID}}",
+    LineItems = new List<Stripe.Checkout.SessionLineItemOptions>
+    {
+        new Stripe.Checkout.SessionLineItemOptions
+        {
+            PriceData = new Stripe.Checkout.SessionLineItemPriceDataOptions
+            {
+                Currency = "usd",
+                ProductData = new Stripe.Checkout.SessionLineItemPriceDataProductDataOptions
+                {
+                    Name = "T-shirt",
+                },
+                UnitAmount = 2000,
+            },
+            Quantity = 1,
+        },
     },
-  },
-})
+    Mode = "payment",
+    UiMode = "embedded",
+    ReturnUrl = "https://example.com/return",
+    SavedPaymentMethodOptions = new Stripe.Checkout.SessionSavedPaymentMethodOptionsOptions(),
+};
+options.AddExtraParam("saved_payment_method_options[payment_method_remove]", "enabled");
+var client = new StripeClient("<<YOUR_SECRET_KEY>>");
+var service = client.V1.Checkout.Sessions;
+Stripe.Checkout.Session session = service.Create(options);
 ```
 
-#### Python
-
-```python
-
-# Set your secret key. Remember to switch to your live secret key in production.
-# See your keys here: https://dashboard.stripe.com/apikeys
-stripe.api_key = '<<YOUR_SECRET_KEY>>'
-
-stripe.PaymentIntent.create(
-  amount=1099,
-  currency='usd',
-  # In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
-  automatic_payment_methods={
-    'enabled': True,
-  },
-  payment_method_options={
-    'card': {
-      'setup_future_usage': 'off_session',
-    },
-  },
-)
-```
-
-#### PHP
-
-```php
-
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-\Stripe\Stripe::setApiKey('<<YOUR_SECRET_KEY>>');
-
-\Stripe\PaymentIntent::create([
-  'amount' => 1099,
-  'currency' => 'usd',
-  // In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
-  'automatic_payment_methods' => [
-    'enabled' => 'true',
-  ],
-  'payment_method_options' => [
-    'card' => [
-      'setup_future_usage' => 'off_session',
-    ],
-  ],
-]);
-```
-
-#### Node.js
-
-```javascript
-
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
-
-const paymentIntent = await stripe.paymentIntents.create({
-  amount: 1099,
-  currency: 'usd',
-  // In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
-  automatic_payment_methods: {
-    enabled: true,
-  },
-  payment_method_options: {
-    card: {
-      setup_future_usage: 'off_session',
-    },
-  },
-});
-```
-
-#### Stripe CLI
-
-```bash
-stripe payment_intents create \
-  --amount=1099 \
-  --currency=usd \
-  -d "automatic_payment_methods[enabled]"=true \
-  -d "payment_method_options[card][setup_future_usage]"="off_session"
-```
-
-#### Listing payment methods manually
-
-Alternatively, you can list `card` and `giropay` using [payment method types](https://docs.stripe.com/api/payment_intents/create.md#create_payment_intent-payment_method_types) like in the example below.
-
-#### curl
-
-```bash
-curl https://api.stripe.com/v1/payment_intents \
-  -u <<YOUR_SECRET_KEY>>: \
-  -d "amount"=1099 \
-  -d "currency"="usd" \
-  -d "payment_method_types[]"="card" \
-  -d "payment_method_types[]"="giropay" \
-  -d "payment_method_options[card][setup_future_usage]"="off_session"
-```
-
-#### Ruby
-
-```ruby
-
-# Set your secret key. Remember to switch to your live secret key in production.
-# See your keys here: https://dashboard.stripe.com/apikeys
-Stripe.api_key = '<<YOUR_SECRET_KEY>>'
-
-Stripe::PaymentIntent.create({
-  amount: 1099,
-  currency: 'usd',
-  payment_method_types: ['card', 'giropay'],
-  payment_method_options: {
-    card: {
-      setup_future_usage: 'off_session'
-    },
-  },
-})
-```
-
-#### Python
-
-```python
-
-# Set your secret key. Remember to switch to your live secret key in production.
-# See your keys here: https://dashboard.stripe.com/apikeys
-stripe.api_key = '<<YOUR_SECRET_KEY>>'
-
-stripe.PaymentIntent.create(
-  # Make sure the total amount fits within Afterpay transaction amount limits:
-  # https://stripe.com/docs/payments/afterpay-clearpay#collection-schedule
-  amount=1099,
-  currency='usd',
-  payment_method_types=['card', 'giropay'],
-  payment_method_options={
-    'card': {
-      'setup_future_usage': 'off_session',
-  },
-)
-```
-
-#### PHP
-
-```php
-
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-\Stripe\Stripe::setApiKey('<<YOUR_SECRET_KEY>>');
-
-\Stripe\PaymentIntent::create([
-  'amount' => 1099,
-  'currency' => 'usd',
-  'payment_method_types' => ['card', 'giropay'],
-  'payment_method_options' => [
-    'card' => [
-      'setup_future_usage' => 'off_session',
-    ],
-  ],
-]);
-```
-
-#### Node.js
-
-```javascript
-
-// Set your secret key. Remember to switch to your live secret key in production.
-// See your keys here: https://dashboard.stripe.com/apikeys
-const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
-
-const paymentIntent = await stripe.paymentIntents.create({
-  amount: 1099,
-  currency: 'usd',
-  payment_method_types: ['card', 'giropay'],
-  payment_method_options: {
-    card: {
-      setup_future_usage: 'off_session',
-    },
-  },
-});
-```
-
-#### Stripe CLI
-
-```bash
-stripe payment_intents create \
-  --amount=1099 \
-  --currency=usd \
-  -d "payment_method_types[]"="card" \
-  -d "payment_method_types[]"="giropay" \
-  -d "payment_method_options[card][setup_future_usage]"="off_session"
-
-```
-
-## Test the integration
-
-Use test payment details and the test redirect page to verify your integration. Click the tabs below to view details for each payment method.
-
-#### Cards
-
-| Payment method | Scenario                                                                                                                                                                                                                                                                                                        | How to test                                                                                                                 |
-| -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Credit card    | The card setup succeeds and doesn’t require *authentication* (Strong Customer Authentication (SCA) is a regulatory requirement in effect as of September 14, 2019, that impacts many European online payments. It requires customers to use two-factor authentication like 3D Secure to verify their purchase). | Fill out the credit card form using the credit card number `4242 4242 4242 4242` with any expiration, CVC, and postal code. |
-| Credit card    | The card requires authentication for the initial setup, then succeeds for subsequent payments.                                                                                                                                                                                                                  | Fill out the credit card form using the credit card number `4000 0025 0000 3155` with any expiration, CVC, and postal code. |
-| Credit card    | The card requires authentication for the initial setup and also requires authentication for subsequent payments.                                                                                                                                                                                                | Fill out the credit card form using the credit card number `4000 0027 6000 3184` with any expiration, CVC, and postal code. |
-| Credit card    | The card is declined during setup.                                                                                                                                                                                                                                                                              | Fill out the credit card form using the credit card number `4000 0000 0000 9995` with any expiration, CVC, and postal code. |
-
-#### Bank redirects
-
-| Payment method    | Scenario                                                                                                                                                 | How to test                                                                                                                                                                            |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Bancontact        | Your customer successfully sets up a SEPA Direct Debit payment method for future usage by using Bancontact.                                              | Use any name in the Bancontact form, then click **Authorize test setup** on the redirect page.                                                                                         |
-| Bancontact        | Your customer fails to authenticate on the Bancontact redirect page.                                                                                     | Use any name in the Bancontact form, then click **Fail test setup** on the redirect page.                                                                                              |
-| BECS Direct Debit | Your customer successfully pays with BECS Direct Debit.                                                                                                  | Fill out the form using the account number `900123456`. The confirmed PaymentIntent initially transitions to `processing`, then transitions to the `succeeded` status 3 minutes later. |
-| BECS Direct Debit | Your customer’s payment fails with an `account_closed` error code.                                                                                       | Fill out the form using the account number `111111113`.                                                                                                                                |
-| iDEAL             | Your customer successfully sets up a [SEPA Direct Debit](https://docs.stripe.com/payments/sepa-debit.md) payment method for future usage by using iDEAL. | Use any name and bank in the iDEAL form, then click **Authorize test setup** on the redirect page.                                                                                     |
-| iDEAL             | Your customer fails to authenticate on the iDEAL redirect page.                                                                                          | Select any bank and use any name in the iDEAL form, then click **Fail test setup** on the redirect page.                                                                               |
-
-#### Bank debits
-
-| Payment method    | Scenario                                                                                         | How to test                                                                                                                                                                                       |
-| ----------------- | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| SEPA Direct Debit | Your customer successfully pays with SEPA Direct Debit.                                          | Fill out the form using the account number `AT321904300235473204`. The confirmed PaymentIntent initially transitions to processing, then transitions to the succeeded status three minutes later. |
-| SEPA Direct Debit | Your customer’s payment intent status transition from `processing` to `requires_payment_method`. | Fill out the form using the account number `AT861904300235473202`.                                                                                                                                |
-
-### Test charging a saved SEPA Debit PaymentMethod
-
-Confirming the PaymentIntent  using iDEAL, Bancontact, or Sofort, generates a [SEPA Direct Debit](https://docs.stripe.com/payments/sepa-debit.md) *PaymentMethod* (PaymentMethods represent your customer's payment instruments, used with the Payment Intents or Setup Intents APIs). SEPA Direct Debit is a [delayed notification](https://docs.stripe.com/payments/payment-methods.md#payment-notification) payment method that transitions to an intermediate `processing` state before transitioning several days later to a `succeeded` or `requires_payment_method` state.
-
-#### Email
-
-Set `payment_method.billing_details.email` to one of the following values to test the PaymentIntent status transitions. You can include your own custom text at the beginning of the email address followed by an underscore. For example, `test_1_generatedSepaDebitIntentsFail@example.com` results in a SEPA Direct Debit PaymentMethod that always fails when used with a PaymentIntent.
-
-| Email Address                                          | Description                                                                                                       |
-| ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- |
-| `generatedSepaDebitIntentsSucceed@example.com`         | The PaymentIntent status transitions from `processing` to `succeeded`.                                            |
-| `generatedSepaDebitIntentsSucceedDelayed@example.com`  | The PaymentIntent status transitions from `processing` to `succeeded` after at least three minutes.               |
-| `generatedSepaDebitIntentsFail@example.com`            | The PaymentIntent status transitions from `processing` to `requires_payment_method`.                              |
-| `generatedSepaDebitIntentsFailDelayed@example.com`     | The PaymentIntent status transitions from `processing` to `requires_payment_method` after at least three minutes. |
-| `generatedSepaDebitIntentsSucceedDisputed@example.com` | The PaymentIntent status transitions from `processing` to `succeeded`, but a dispute is created immediately.      |
-
-#### PaymentMethod
-
-Use these PaymentMethods to test that the PaymentIntent status transitions. These tokens are useful for automated testing to immediately attach the PaymentMethod to the SetupIntent on the server.
-
-| Payment Method                                           | Description                                                                                                       |
-| -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `pm_bancontact_generatedSepaDebitIntentsSucceed`         | The PaymentIntent status transitions from `processing` to `succeeded`.                                            |
-| `pm_bancontact_generatedSepaDebitIntentsSucceedDelayed`  | The PaymentIntent status transitions from `processing` to `succeeded` after at least three minutes.               |
-| `pm_bancontact_generatedSepaDebitIntentsFail`            | The PaymentIntent status transitions from `processing` to `requires_payment_method`.                              |
-| `pm_bancontact_generatedSepaDebitIntentsFailDelayed`     | The PaymentIntent status transitions from `processing` to `requires_payment_method` after at least three minutes. |
-| `pm_bancontact_generatedSepaDebitIntentsSucceedDisputed` | The PaymentIntent status transitions from `processing` to `succeeded`, but a dispute is created immediately.      |
-
-## Optional: Apple Pay and Google Pay [Client-side]
-
-When you [enable card payments](https://docs.stripe.com/payments/save-and-reuse.md?platform=web&ui=elements#create-intent), we display Apple Pay and Google Pay for customers whose environment meets the [wallet display conditions](https://docs.stripe.com/testing/wallets.md). To accept payments from these wallets, you must also:
-
-- Enable them in your [payment methods settings](https://dashboard.stripe.com/settings/payment_methods). Apple Pay is enabled by default.
-- [Register your domain](https://docs.stripe.com/payments/payment-methods/pmd-registration.md).
-
-> #### Regional Testing
-> 
-> Stripe Elements doesn’t support Google Pay or Apple Pay for Stripe accounts and customers in India. Therefore, you can’t test your Google Pay or Apple Pay integration if the tester’s IP address is in India, even if the Stripe account is based outside India.
-
-## See also
-
-- [Save payment details during in-app payments](https://docs.stripe.com/payments/mobile/save-during-payment.md)
-- [Save payment details in a Checkout session](https://docs.stripe.com/payments/checkout/how-checkout-works.md#save-payment-methods)
-- [Accept a payment](https://docs.stripe.com/payments/accept-a-payment.md)
-- [Set up future payments](https://docs.stripe.com/payments/save-and-reuse.md)
-- [Handle post-payment events](https://docs.stripe.com/payments/handling-payment-events.md)
+The customer can’t remove a payment method if it’s tied to an active subscription and the customer doesn’t have a default payment method saved for invoice and subscription payments.
 

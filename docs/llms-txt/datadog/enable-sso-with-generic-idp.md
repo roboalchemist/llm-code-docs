@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Cloudcraft (Standalone) > Account Management > Enable SSO with a
   Generic Identity Provider
-source_url: >-
-  https://docs.datadoghq.com/account-management/enable-sso-with-generic-idp/index.html
 ---
 
 # Enable SSO with a Generic Identity Provider

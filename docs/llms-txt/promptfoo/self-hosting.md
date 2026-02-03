@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/usage/self-hosting/
+
 # Self-hosting Promptfoo
 
 Promptfoo provides a basic Docker image that allows you to host a server that stores evals. This guide covers various deployment methods.

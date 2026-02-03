@@ -4,12 +4,6 @@
 
 # Source: https://docs.carv.io/svm-ai-agentic-chain/introduction.md
 
-# Source: https://docs.carv.io/carv-labs/introduction.md
-
-# Source: https://docs.carv.io/d.a.t.a.-ai-framework/introduction.md
-
-# Source: https://docs.carv.io/svm-ai-agentic-chain/introduction.md
-
 # Introduction
 
 **CARV SVM Chain is an AI agentic infrastructure that extends SVM's capabilities onto Ethereum.**&#x49;n a world where data powers the next wave of technology disruption, the need for secure, scalable, and intelligent infrastructure has never been greater. CARV SVM Chain emerges as the groundbreaking agentic infrastructure that **bridges the best of Solana and Ethereum**, extending the Solana Virtual Machine's (SVM) scalability with Ethereum's security, while tapping into the liquidity in both ecosystems.

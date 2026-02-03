@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/frameworks/supabase-edge-functions-database-webhooks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Triggering tasks from Supabase Database Webhooks
 
 > This guide shows you how to trigger a transcribing task when a row is added to a table in a Supabase database, using a Database Webhook and Edge Function.
@@ -40,7 +44,7 @@ Supabase and Trigger.dev can be used together to create powerful workflows trigg
 
     You can create a new project by running the following command in your terminal using the Supabase CLI:
 
-    ```bash  theme={null}
+    ```bash  theme={"theme":"css-variables"}
     supabase init
     ```
 
@@ -57,7 +61,7 @@ Supabase and Trigger.dev can be used together to create powerful workflows trigg
 
     This is required for the Trigger.dev SDK to work correctly.
 
-    ```ts package.json theme={null}
+    ```ts package.json theme={"theme":"css-variables"}
     {
       "devDependencies": {
         "typescript": "^5.6.2"
@@ -74,15 +78,15 @@ Supabase and Trigger.dev can be used together to create powerful workflows trigg
     Run this command in the root of your project to get started:
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest init
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest init
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest init
       ```
     </CodeGroup>
@@ -118,7 +122,7 @@ Add two new columns, one called `video_url` with the type `text` <Icon icon="cir
 
 To allow you to use TypeScript to interact with your table, you need to [generate the type definitions](https://supabase.com/docs/guides/api/rest/generating-types) for your Supabase table using the Supabase CLI.
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 supabase gen types --lang=typescript --project-id <project-ref> --schema public > database.types.ts
 ```
 
@@ -133,15 +137,15 @@ This task takes a video from a public video url, extracts the audio using FFmpeg
 You will need to install some additional dependencies for this task:
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":"css-variables"}
   npm install @deepgram/sdk @supabase/supabase-js fluent-ffmpeg
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm install @deepgram/sdk @supabase/supabase-js fluent-ffmpeg
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn install @deepgram/sdk @supabase/supabase-js fluent-ffmpeg
   ```
 </CodeGroup>
@@ -154,7 +158,7 @@ These dependencies will allow you to interact with the Deepgram and Supabase API
   place to prevent this.
 </Warning>
 
-```ts /trigger/videoProcessAndUpdate.ts theme={null}
+```ts /trigger/videoProcessAndUpdate.ts theme={"theme":"css-variables"}
 // Install any missing dependencies below
 import { createClient as createDeepgramClient } from "@deepgram/sdk";
 import { createClient as createSupabaseClient } from "@supabase/supabase-js";
@@ -268,7 +272,7 @@ export const videoProcessAndUpdate = task({
 
 Before you can deploy the task, you'll need to add the FFmpeg build extension to your `trigger.config.ts` file.
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 // Add this import
 import { ffmpeg } from "@trigger.dev/build/extensions/core";
 import { defineConfig } from "@trigger.dev/sdk";
@@ -307,15 +311,15 @@ You will need to add your `DEEPGRAM_SECRET_KEY`, `SUPABASE_PROJECT_URL` and `SUP
 Now you can now deploy your task using the following command:
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":"css-variables"}
   npx trigger.dev@latest deploy
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm dlx trigger.dev@latest deploy
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn dlx trigger.dev@latest deploy
   ```
 </CodeGroup>
@@ -338,11 +342,11 @@ Add `TRIGGER_SECRET_KEY` <Icon icon="circle-4" iconType="solid" size={20} color=
 
 Now create an Edge Function using the Supabase CLI. Call it `video-processing-handler`. This function will be triggered by the Database Webhook.
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 supabase functions new video-processing-handler
 ```
 
-```ts functions/video-processing-handler/index.ts theme={null}
+```ts functions/video-processing-handler/index.ts theme={"theme":"css-variables"}
 // Setup type definitions for built-in Supabase Runtime APIs
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { tasks } from "npm:@trigger.dev/sdk@latest";
@@ -376,7 +380,7 @@ Deno.serve(async (req) => {
 
 Now deploy your new Edge Function with the following command:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 supabase functions deploy video-processing-handler
 ```
 

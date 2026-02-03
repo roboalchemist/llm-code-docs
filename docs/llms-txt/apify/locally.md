@@ -18,9 +18,9 @@ This guide walks you through the full lifecycle of an Actor. You'll start by cre
 
 ### Prerequisites
 
-* https://nodejs.org/en/ version 16 or higher with `npm` installed on your computer.
-* The https://docs.apify.com/cli/docs/installation installed.
-* Optional: To deploy your Actor, https://console.apify.com/sign-in.
+* [Node.js](https://nodejs.org/en/) version 16 or higher with `npm` installed on your computer.
+* The [Apify CLI](https://docs.apify.com/cli/docs/installation) installed.
+* Optional: To deploy your Actor, [sign in](https://console.apify.com/sign-in).
 
 ### Step 1: Create your Actor
 
@@ -42,7 +42,7 @@ The CLI will ask you to:
 
    Explore Actor templates
 
-   Browse the https://apify.com/templates to find the best fit for your Actor.
+   Browse the [full list of templates](https://apify.com/templates) to find the best fit for your Actor.
 
 The CLI will:
 
@@ -67,10 +67,6 @@ apify run
 ```
 
 
-Clear data with --purge
-
-During development, use `apify run --purge`. This clears all results from previous runs, so it's as if you're running the Actor for the first time.
-
 You'll see output similar to this in your terminal:
 
 
@@ -93,7 +89,7 @@ Let's explore the Actor structure.
 
 #### The `.actor` folder
 
-The `.actor` folder contains the Actor configuration. The `actor.json` file defines the Actor's name, description, and other settings. Find more info in the https://docs.apify.com/platform/actors/development/actor-definition/actor-json definition.
+The `.actor` folder contains the Actor configuration. The `actor.json` file defines the Actor's name, description, and other settings. Find more info in the [actor.json](https://docs.apify.com/platform/actors/development/actor-definition/actor-json) definition.
 
 #### Actor's `input`
 
@@ -105,11 +101,11 @@ To change the `INPUT.json`, edit the `input_schema.json` in the `.actor` folder 
 
 This JSON Schema validates input automatically (no error handling needed), powers the Actor's user interface, generates API docs, and enables smart integration with tools like Zapier or Make by auto-linking input fields.
 
-Find more info in the https://docs.apify.com/platform/actors/development/actor-definition/input-schema.md documentation.
+Find more info in the [Input schema](https://docs.apify.com/platform/actors/development/actor-definition/input-schema.md) documentation.
 
 #### Actor's `storage`
 
-The Actor system provides two storage types for files and results: https://docs.apify.com/platform/storage/key-value-store.md store and https://docs.apify.com/platform/storage/dataset.md.
+The Actor system provides two storage types for files and results: [key-value](https://docs.apify.com/platform/storage/key-value-store.md) store and [dataset](https://docs.apify.com/platform/storage/dataset.md).
 
 ##### Key-value store
 
@@ -123,8 +119,8 @@ The dataset stores a series of data objects from web scraping, crawling, or data
 
 You define the Actor output using the Output schema files:
 
-* https://docs.apify.com/platform/actors/development/actor-definition/dataset-schema.md
-* https://docs.apify.com/platform/actors/development/actor-definition/key-value-store-schema.md
+* [Dataset Schema Specification](https://docs.apify.com/platform/actors/development/actor-definition/dataset-schema.md)
+* [Key-value Store Schema Specification](https://docs.apify.com/platform/actors/development/actor-definition/key-value-store-schema.md)
 
 The system uses this to generate an immutable JSON file that tells users where to find the Actor's results.
 
@@ -158,7 +154,7 @@ Good job! 🎉 You're ready to develop your Actor. You can make changes to your 
 
 ## Next steps
 
-* Visit the https://docs.apify.com/academy.md to access a comprehensive collection of tutorials, documentation, and learning resources.
-* To understand Actors in detail, read the https://whitepaper.actor/.
-* Check https://docs.apify.com/platform/actors/development/deployment/continuous-integration.md documentation to automate your Actor development process.
-* After you finish building your first Actor, you can https://docs.apify.com/platform/actors/publishing.md.
+* Visit the [Apify Academy](https://docs.apify.com/academy.md) to access a comprehensive collection of tutorials, documentation, and learning resources.
+* To understand Actors in detail, read the [Actor Whitepaper](https://whitepaper.actor/).
+* Check [Continuous integration](https://docs.apify.com/platform/actors/development/deployment/continuous-integration.md) documentation to automate your Actor development process.
+* After you finish building your first Actor, you can [share it with other users and even monetize it](https://docs.apify.com/platform/actors/publishing.md).

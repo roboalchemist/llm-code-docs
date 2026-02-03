@@ -1,5 +1,9 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/beta-cli.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Use Beta CLI Releases
 
 > Join the Graphite CLI beta test group for early access to the newest features.

@@ -18,38 +18,38 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#calls)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/webhook_dispatch.ts#L31)calls
+### [**](#calls)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/webhook_dispatch.ts#L52)calls
 
 **calls: [WebhookDispatchCall](https://docs.apify.com/api/client/js/api/client/js/reference/interface/WebhookDispatchCall.md)\[]
 
-### [**](#createdAt)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/webhook_dispatch.ts#L28)createdAt
+### [**](#createdAt)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/webhook_dispatch.ts#L49)createdAt
 
 **createdAt: Date
 
-### [**](#eventData)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/webhook_dispatch.ts#L33)eventData
+### [**](#eventData)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/webhook_dispatch.ts#L54)eventData
 
 **eventData: null | [WebhookDispatchEventData](https://docs.apify.com/api/client/js/api/client/js/reference/interface/WebhookDispatchEventData.md)
 
-### [**](#eventType)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/webhook_dispatch.ts#L30)eventType
+### [**](#eventType)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/webhook_dispatch.ts#L51)eventType
 
 **eventType: [WebhookEventType](https://docs.apify.com/api/client/js/api/client/js/reference.md#WebhookEventType)
 
-### [**](#id)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/webhook_dispatch.ts#L25)id
+### [**](#id)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/webhook_dispatch.ts#L46)id
 
 **id: string
 
-### [**](#status)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/webhook_dispatch.ts#L29)status
+### [**](#status)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/webhook_dispatch.ts#L50)status
 
 **status: [WebhookDispatchStatus](https://docs.apify.com/api/client/js/api/client/js/reference/enum/WebhookDispatchStatus.md)
 
-### [**](#userId)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/webhook_dispatch.ts#L26)userId
+### [**](#userId)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/webhook_dispatch.ts#L47)userId
 
 **userId: string
 
-### [**](#webhook)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/webhook_dispatch.ts#L32)webhook
+### [**](#webhook)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/webhook_dispatch.ts#L53)webhook
 
 **webhook: Pick<[Webhook](https://docs.apify.com/api/client/js/api/client/js/reference/interface/Webhook.md), isAdHoc | requestUrl>
 
-### [**](#webhookId)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/webhook_dispatch.ts#L27)webhookId
+### [**](#webhookId)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/webhook_dispatch.ts#L48)webhookId
 
 **webhookId: string

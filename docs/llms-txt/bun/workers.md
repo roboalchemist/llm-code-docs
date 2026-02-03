@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/runtime/workers.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Workers
 
 > Use Bun's Workers API to create and communicate with a new JavaScript instance running on a separate thread while sharing I/O resources with the main thread
@@ -30,7 +34,7 @@ worker.onmessage = event => {
 
 ### Worker thread
 
-```ts worker.ts  icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts worker.ts icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // prevents TS errors
 declare var self: Worker;
 
@@ -82,15 +86,9 @@ const worker = new Worker("./worker.ts", {
 You can also pass a `blob:` URL to `Worker`. This is useful for creating workers from strings or other sources.
 
 ```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
-const blob = new Blob(
-  [
-    `
-  self.onmessage = (event: MessageEvent) => postMessage(event.data)`,
-  ],
-  {
-    type: "application/typescript",
-  },
-);
+const blob = new Blob([`self.onmessage = (event: MessageEvent) => postMessage(event.data)`], {
+  type: "application/typescript",
+});
 const url = URL.createObjectURL(blob);
 const worker = new Worker(url);
 ```
@@ -98,13 +96,7 @@ const worker = new Worker(url);
 Like the rest of Bun, workers created from `blob:` URLs support TypeScript, JSX, and other file types out of the box. You can communicate it should be loaded via typescript either via `type` or by passing a `filename` to the `File` constructor.
 
 ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
-const file = new File(
-  [
-    `
-  self.onmessage = (event: MessageEvent) => postMessage(event.data)`,
-  ],
-  "worker.ts",
-);
+const file = new File([`self.onmessage = (event: MessageEvent) => postMessage(event.data)`], "worker.ts");
 const url = URL.createObjectURL(file);
 const worker = new Worker(url);
 ```

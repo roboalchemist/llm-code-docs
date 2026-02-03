@@ -1,3 +1,21 @@
+# Source: https://docs.datadoghq.com/feature_flags/server/java.md
+
+# Source: https://docs.datadoghq.com/security/code_security/software_composition_analysis/setup_runtime/compatibility/java.md
+
+# Source: https://docs.datadoghq.com/security/code_security/iast/setup/compatibility/java.md
+
+# Source: https://docs.datadoghq.com/security/code_security/iast/setup/java.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/gcp/cloud-run/java.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/aws/lambda/java.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/compatibility/java.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/java.md
+
+# Source: https://docs.datadoghq.com/data_streams/setup/language/java.md
+
 # Source: https://docs.datadoghq.com/profiler/profiler_troubleshooting/java.md
 
 # Source: https://docs.datadoghq.com/profiler/enabling/java.md
@@ -14,6 +32,8 @@
 
 # Source: https://docs.datadoghq.com/tracing/trace_collection/custom_instrumentation/opentracing/java.md
 
+# Source: https://docs.datadoghq.com/tracing/trace_collection/custom_instrumentation/java.md
+
 # Source: https://docs.datadoghq.com/tracing/trace_collection/dd_libraries/java.md
 
 ---
@@ -22,7 +42,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > APM > Application Instrumentation > Add the Datadog Tracing Library >
   Tracing Java Applications
-source_url: https://docs.datadoghq.com/trace_collection/dd_libraries/java/index.html
 ---
 
 # Tracing Java Applications
@@ -81,7 +100,7 @@ java -javaagent:/path/to/dd-java-agent.jar -Ddd.profiling.enabled=true -Ddd.logs
 
 **Note**: If you have a strong need to reduce the size of your image and omit modules, you can use the [`jdeps`](https://docs.oracle.com/en/java/javase/11/tools/jdeps.html) command to identify dependencies. However, required modules can change over time, so do this at your own risk.
 
-**Note**: When enabling the tracer for Java 24+, you may see warnings related to JNI native access or `sun.misc.Unsafe` memory access. Suppress these warnings by adding the `--illegal-native-access=allow` and `--sun-misc-unsafe-memory-access=allow` environment variables right before the `-javaagent:/path/to/dd-java-agent.jar` argument. See [JEP 472](https://openjdk.org/jeps/472) and [JEP 498](https://openjdk.org/jeps/498) for more information.
+**Note**: When running the tracer with Java 24+, you may see warnings related to JNI native access. Suppress these warnings by adding the `--enable-native-access=ALL-UNNAMED` flag. See [JEP 472](https://openjdk.org/jeps/472) for more details.
 
 {% alert level="warning" %}
 Enabling profiling may impact your bill depending on your APM bundle. See the [pricing page](https://docs.datadoghq.com/account_management/billing/apm_tracing_profiler/) for more information.

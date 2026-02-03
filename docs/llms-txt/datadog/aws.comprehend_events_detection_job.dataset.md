@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > DDSQL Reference > Data Directory > Comprehend Events Detection Job
   Properties
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.comprehend_events_detection_job.dataset/index.html
 ---
 
 # Comprehend Events Detection Job Properties
@@ -35,5 +33,5 @@ aws.comprehend_events_detection_job
 | message              | core | string        | A description of the status of the events detection job.                                                                                                                                                                                                                                                                                                                                                                                                              |
 | output_data_config   | core | json          | The output data configuration that you supplied when you created the events detection job.                                                                                                                                                                                                                                                                                                                                                                            |
 | submit_time          | core | timestamp     | The time that the events detection job was submitted for processing.                                                                                                                                                                                                                                                                                                                                                                                                  |
-| tags                 | core | hstore        |
+| tags                 | core | hstore_csv    |
 | target_event_types   | core | array<string> | The types of events that are detected by the job.                                                                                                                                                                                                                                                                                                                                                                                                                     |

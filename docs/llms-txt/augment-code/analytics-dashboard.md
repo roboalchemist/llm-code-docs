@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/codereview/analytics-dashboard.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Analytics Dashboard
 
 > Track code review metrics and measure the impact of Augment Code Review on your team.
@@ -24,8 +28,3 @@ Use the Code Review Analytics dashboard to track the review load automated by Au
 
 * **Addressed Comments**: A chart detailing total number of comments per day broken down by unaddressed (gray) vs addressed (green). You can interpret the green bar to mean Augment Code Review caught issues that developers fixed and may not have without the comment.
 * **Reviewed PRs**: A chart detailing the total number of reviewed PRs per day (blue).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.augmentcode.com/llms.txt

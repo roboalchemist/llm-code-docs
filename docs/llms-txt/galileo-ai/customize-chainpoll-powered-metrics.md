@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/how-to/customize-chainpoll-powered-metrics.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Customize Chainpoll-powered Metrics
 
 > Improve metric accuracy by customizing your Chainpoll-powered metrics
@@ -26,7 +30,7 @@ Generally, better models will provide more accurate metric values, and a higher 
 
 We allow customizing execution parameters for the [AI-powered metrics](/galileo/gen-ai-studio-products/galileo-guardrail-metrics) from our Guardrail Store. By default, these metrics use gpt-4o-mini for the model and 3 judges (except for chunk attribution & utilization, which uses 1 judge and for which the number of judges cannot be customized). To customize this, when creating your run you can customize these metrics as:
 
-```python
+```python  theme={null}
 pq.EvaluateRun(..., scorers=[
     pq.CustomizedChainPollScorer(
         scorer_name=pq.CustomizedScorerName.context_adherence_plus,

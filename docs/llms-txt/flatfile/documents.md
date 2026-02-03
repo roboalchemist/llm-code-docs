@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/core-concepts/documents.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Documents
 
 > Standalone webpages within Flatfile Spaces for guidance and dynamic content
@@ -11,7 +15,7 @@ Often used for getting started guides, Documents become extremely powerful with 
 Flatfile also allows you to use HTML tags in your Markdown-formatted text. This is helpful if you prefer certain HTML tags rather than Markdown syntax. Links in documents (both Markdown and HTML) automatically open in a new tab to ensure users don't navigate away from the Flatfile interface.
 
 <Frame caption="An example Welcome Document with steps for data import">
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/flatfileinc/static/images/document.png" width="610" />
+  <img src="https://mintcdn.com/flatfileinc/1Ya11_XgeUaQ5e1v/static/images/document.png?fit=max&auto=format&n=1Ya11_XgeUaQ5e1v&q=85&s=03550278ec929bc8fd9490d998168533" width="610" data-og-width="3028" data-og-height="1778" data-path="static/images/document.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/flatfileinc/1Ya11_XgeUaQ5e1v/static/images/document.png?w=280&fit=max&auto=format&n=1Ya11_XgeUaQ5e1v&q=85&s=cbb7f200f917b3aff17af71d312d4bc9 280w, https://mintcdn.com/flatfileinc/1Ya11_XgeUaQ5e1v/static/images/document.png?w=560&fit=max&auto=format&n=1Ya11_XgeUaQ5e1v&q=85&s=1f55dbe0fb8259dbf00fe7325f350de6 560w, https://mintcdn.com/flatfileinc/1Ya11_XgeUaQ5e1v/static/images/document.png?w=840&fit=max&auto=format&n=1Ya11_XgeUaQ5e1v&q=85&s=5af18a338f94c4eee3371c5d78949a94 840w, https://mintcdn.com/flatfileinc/1Ya11_XgeUaQ5e1v/static/images/document.png?w=1100&fit=max&auto=format&n=1Ya11_XgeUaQ5e1v&q=85&s=2c36335f92bf1eec1c48b942b026f040 1100w, https://mintcdn.com/flatfileinc/1Ya11_XgeUaQ5e1v/static/images/document.png?w=1650&fit=max&auto=format&n=1Ya11_XgeUaQ5e1v&q=85&s=b39c37ee5bcd6f995c1d4d903dc8351d 1650w, https://mintcdn.com/flatfileinc/1Ya11_XgeUaQ5e1v/static/images/document.png?w=2500&fit=max&auto=format&n=1Ya11_XgeUaQ5e1v&q=85&s=80cda307d30ebbeca050b9d3fb551ae3 2500w" />
 </Frame>
 
 ## Key Features
@@ -40,7 +44,7 @@ Documents support embedding interactive data blocks (Workbooks, Sheets, and Diff
 
 You can create Documents upon Space creation using the [Space Configure Plugin](/plugins/space-configure), or dynamically in a [Listener](/core-concepts/listeners) using the API:
 
-```javascript
+```javascript  theme={null}
 import api from "@flatfile/api";
 
 export default function flatfileEventListener(listener) {
@@ -71,7 +75,7 @@ Actions are optional and allow you to run custom operations in response to a use
 
 Define Actions on a Document using the `actions` parameter when a document is created:
 
-```javascript
+```javascript  theme={null}
 import api from "@flatfile/api";
 
 export default function flatfileEventListener(listener) {
@@ -115,7 +119,7 @@ Documents have an optional `treatments` parameter which takes an array of treatm
 
 Giving your Document a treatment of `"ephemeral"` will cause the Document to appear as a full-screen takeover, and it will not appear in the sidebar of your Space like other Documents. You can use ephemeral Documents to create a more focused experience for your end users.
 
-```javascript
+```javascript  theme={null}
 const ephemeralDoc = await api.documents.create(spaceId, {
   title: "Getting started",
   body: "# Welcome ...",
@@ -133,7 +137,7 @@ Blocks are dynamic, embedded entities that you can use to display data inside a 
 
 Use this Block to render an entire Workbook with all its Sheets inside a Document, providing users with tabbed navigation between sheets. You can embed a Workbook by passing a workbook ID and optional name. You can also control whether the embedded Workbook is expanded when the document loads and whether to show the header.
 
-```javascript
+```javascript  theme={null}
 const doc = await api.documents.create(spaceId, {
   title: "Getting started",
   body:
@@ -162,7 +166,7 @@ Use this Block to render a Sheet along with all its data inside of a Document. Y
 
 You can include as many embedded Sheets in your Document as you like, but end users will only be able to expand a maximum of 10 embedded Sheets at once.
 
-```javascript
+```javascript  theme={null}
 const doc = await api.documents.create(spaceId, {
   title: "Getting started",
   body:
@@ -192,7 +196,7 @@ Use this Block to show a side-by-side comparison of the data in a Sheet now vers
 
 Use `direction="sheet_to_snapshot"` if you want to show changes that have been made since the time the Snapshot was taken, i.e. to review past changes. Use `direction="snapshot_to_sheet"` if to preview the changes that would occur if you were to revert your Sheet back to the state it was in when the Snapshot was taken.
 
-```javascript
+```javascript  theme={null}
 const doc = await api.documents.create(spaceId, {
   title: 'Getting started',
   body:

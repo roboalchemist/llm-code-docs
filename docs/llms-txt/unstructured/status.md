@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/support/status.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Check service status
 
 The [Unstructured Status](https://unstructuredio.trust.pagerduty.com/posts/dashboard) dashboard provides information about the

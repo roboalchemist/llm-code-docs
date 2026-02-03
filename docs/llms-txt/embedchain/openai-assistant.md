@@ -2,77 +2,50 @@
 
 # Source: https://docs.embedchain.ai/api-reference/store/openai-assistant.md
 
-# Source: https://docs.embedchain.ai/examples/openai-assistant.md
-
-# Source: https://docs.embedchain.ai/api-reference/store/openai-assistant.md
-
-# Source: https://docs.embedchain.ai/examples/openai-assistant.md
-
-# Source: https://docs.embedchain.ai/api-reference/store/openai-assistant.md
-
-# Source: https://docs.embedchain.ai/examples/openai-assistant.md
-
-# Source: https://docs.embedchain.ai/api-reference/store/openai-assistant.md
-
-# Source: https://docs.embedchain.ai/examples/openai-assistant.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # OpenAI Assistant
 
-<img src="https://blogs.swarthmore.edu/its/wp-content/uploads/2022/05/openai.jpg" align="center" width="500" alt="OpenAI Logo" />
+### Arguments
 
-Embedchain now supports [OpenAI Assistants API](https://platform.openai.com/docs/assistants/overview) which allows you to build AI assistants within your own applications. An Assistant has instructions and can leverage models, tools, and knowledge to respond to user queries.
+<ParamField path="name" type="string">
+  Name for your AI assistant
+</ParamField>
 
-At a high level, an integration of the Assistants API has the following flow:
+<ParamField path="instructions" type="string">
+  how the Assistant and model should behave or respond
+</ParamField>
 
-1. Create an Assistant in the API by defining custom instructions and picking a model
-2. Create a Thread when a user starts a conversation
-3. Add Messages to the Thread as the user ask questions
-4. Run the Assistant on the Thread to trigger responses. This automatically calls the relevant tools.
+<ParamField path="assistant_id" type="string">
+  Load existing OpenAI Assistant. If you pass this, you don't have to pass other arguments.
+</ParamField>
 
-Creating an OpenAI Assistant using Embedchain is very simple 3 step process.
+<ParamField path="thread_id" type="string">
+  Existing OpenAI thread id if exists
+</ParamField>
 
-## Step 1: Create OpenAI Assistant
+<ParamField path="model" type="str" default="gpt-4-1106-preview">
+  OpenAI model to use
+</ParamField>
 
-Make sure that you have `OPENAI_API_KEY` set in the environment variable.
+<ParamField path="tools" type="list">
+  OpenAI tools to use. Default set to `[{"type": "retrieval"}]`
+</ParamField>
 
-```python Initialize
-from embedchain.store.assistants import OpenAIAssistant
+<ParamField path="data_sources" type="list" default="[]">
+  Add data sources to your assistant. You can add in the following format: `[{"source": "https://example.com", "data_type": "web_page"}]`
+</ParamField>
 
-assistant = OpenAIAssistant(
-    name="OpenAI DevDay Assistant",
-    instructions="You are an organizer of OpenAI DevDay",
-)
-```
+<ParamField path="telemetry" type="boolean" default="True">
+  Anonymous telemetry (doesn't collect any user information or user's files). Used to improve the Embedchain package utilization. Default is `True`.
+</ParamField>
 
-If you want to use the existing assistant, you can do something like this:
+## Usage
 
-```python Initialize
-# Load an assistant and create a new thread
-assistant = OpenAIAssistant(assistant_id="asst_xxx")
+For detailed guidance on creating your own OpenAI Assistant, click the link below. It provides step-by-step instructions to help you through the process:
 
-# Load a specific thread for an assistant
-assistant = OpenAIAssistant(assistant_id="asst_xxx", thread_id="thread_xxx")
-```
-
-## Step-2: Add data to thread
-
-You can add any custom data source that is supported by Embedchain. Else, you can directly pass the file path on your local system and Embedchain propagates it to OpenAI Assistant.
-
-```python Add data
-assistant.add("/path/to/file.pdf")
-assistant.add("https://www.youtube.com/watch?v=U9mJuUkhUzk")
-assistant.add("https://openai.com/blog/new-models-and-developer-products-announced-at-devday")
-```
-
-## Step-3: Chat with your Assistant
-
-```python Chat
-assistant.chat("How much OpenAI credits were offered to attendees during OpenAI DevDay?")
-# Response: 'Every attendee of OpenAI DevDay 2023 was offered $500 in OpenAI credits.'
-```
-
-You can try it out yourself using the following Google Colab notebook:
-
-<a href="https://colab.research.google.com/drive/1BKlXZYSl6AFRgiHZ5XIzXrXC_24kDYHQ?usp=sharing">
-  <img src="https://camo.githubusercontent.com/84f0493939e0c4de4e6dbe113251b4bfb5353e57134ffd9fcab6b8714514d4d1/68747470733a2f2f636f6c61622e72657365617263682e676f6f676c652e636f6d2f6173736574732f636f6c61622d62616467652e737667" alt="Open in Colab" />
-</a>
+<Card title="Guide to Creating Your OpenAI Assistant" icon="link" href="/examples/openai-assistant">
+  Learn how to build an OpenAI Assistant using the `OpenAIAssistant` class.
+</Card>

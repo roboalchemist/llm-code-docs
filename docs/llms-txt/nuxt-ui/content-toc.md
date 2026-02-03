@@ -4,11 +4,9 @@
 
 > A sticky Table of Contents with automatic active anchor link highlighting.
 
-<warning to="/docs/getting-started/integrations/content">
-
-This component is only available when the `@nuxt/content` module is installed.
-
-</warning>
+> [!WARNING]
+> See: /docs/getting-started/integrations/content
+> This component is only available when the `@nuxt/content` module is installed.
 
 ## Usage
 
@@ -34,6 +32,10 @@ if (!page.value) {
 Use the `title` prop to change the title of the Table of Contents.
 
 ```vue
+<script setup lang="ts">
+import type { ContentTocLink } from '@nuxt/ui'
+</script>
+
 <template>
   <UContentToc title="On this page" />
 </template>
@@ -44,6 +46,10 @@ Use the `title` prop to change the title of the Table of Contents.
 Use the `color` prop to change the color of the links.
 
 ```vue
+<script setup lang="ts">
+import type { ContentTocLink } from '@nuxt/ui'
+</script>
+
 <template>
   <UContentToc color="neutral" />
 </template>
@@ -56,6 +62,10 @@ Use the `highlight` prop to display a highlighted border for the active item.
 Use the `highlight-color` prop to change the color of the border. It defaults to the `color` prop.
 
 ```vue
+<script setup lang="ts">
+import type { ContentTocLink } from '@nuxt/ui'
+</script>
+
 <template>
   <UContentToc highlight highlight-color="neutral" color="neutral" />
 </template>
@@ -113,7 +123,7 @@ interface ContentTocProps {
   /**
    * The icon displayed to collapse the content.
    */
-  trailingIcon?: string | object | undefined;
+  trailingIcon?: any;
   /**
    * The title of the table of contents.
    */
@@ -124,7 +134,7 @@ interface ContentTocProps {
    */
   highlight?: boolean | undefined;
   highlightColor?: "primary" | "secondary" | "success" | "info" | "warning" | "error" | "neutral" | undefined;
-  links?: ContentTocLink[] | undefined;
+  links?: T[] | undefined;
   ui?: { root?: ClassNameValue; container?: ClassNameValue; top?: ClassNameValue; bottom?: ClassNameValue; trigger?: ClassNameValue; title?: ClassNameValue; trailing?: ClassNameValue; trailingIcon?: ClassNameValue; content?: ClassNameValue; list?: ClassNameValue; listWithChildren?: ClassNameValue; item?: ClassNameValue; itemWithChildren?: ClassNameValue; link?: ClassNameValue; linkText?: ClassNameValue; indicator?: ClassNameValue; } | undefined;
   /**
    * The open state of the collapsible when it is initially rendered. <br> Use when you do not need to control its open state.
@@ -312,8 +322,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog prefix="content">
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

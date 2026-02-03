@@ -4,7 +4,6 @@
 title: How do I disable Google Sign in?
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > FAQ > How do I disable Google Sign in?
-source_url: https://docs.datadoghq.com/faq/disable-google-sign-in/index.html
 ---
 
 # How do I disable Google Sign in?

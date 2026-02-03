@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/zhang-hu-guan-li/account-settings.md
-
-# Source: https://gitbook.com/docs/documentation/fr/gestion-du-compte/account-settings.md
-
-# Source: https://gitbook.com/docs/account-management/account-settings.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/akaunto/account-settings.md
 
 # Source: https://gitbook.com/docs/documentation/zh/zhang-hu-guan-li/account-settings.md
 
@@ -14,7 +10,7 @@
 
 You can manage your login details, third-party login options, GitBook subdomain, interface theme, notification, integrations and API access tokens.
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FPDQ6eEW8uCoR0iPwDWoW%2Faccount-settings.svg?alt=media&#x26;token=97dc8598-db51-40ec-886d-553768ea345b" alt="A GitBook screenshot showing the personal settings page"><figcaption><p>Your personal settings page.</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F2E6zG4rAbCopn4gDLXWJ%2F22_01_06_account_settings%402x.png?alt=media&#x26;token=398eb68e-4247-415c-bf2e-28acdaa7eff3" alt="A GitBook screenshot showing the personal settings page"><figcaption><p>Your personal settings page.</p></figcaption></figure>
 
 ### How to access your personal account settings
 

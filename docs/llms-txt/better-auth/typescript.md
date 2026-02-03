@@ -4,11 +4,7 @@
 
 Better Auth TypeScript integration.
 
-***
 
-title: TypeScript
-description: Better Auth TypeScript integration.
-------------------------------------------------
 
 Better Auth is designed to be type-safe. Both the client and server are built with TypeScript, allowing you to easily infer types.
 

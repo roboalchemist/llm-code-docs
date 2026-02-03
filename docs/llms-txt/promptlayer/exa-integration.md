@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/features/exa-integration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Exa
 
 [Exa](https://exa.ai/) provides AI-powered web search and research models that can be integrated with PromptLayer through custom providers. Exa's models excel at finding relevant information, generating research reports, and providing cited answers from web sources.
@@ -104,8 +108,3 @@ print(f"Request ID: {response['request_id']}")
 * [Custom Providers](/features/custom-providers)
 * [Supported Providers](/features/supported-providers)
 * [Exa Official Documentation](https://docs.exa.ai/reference/openai-sdk)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

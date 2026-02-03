@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/reference/get-report.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Evaluation
 
 > Retrieve the info about a report.
@@ -169,7 +173,3 @@ paths:
           description: Report not found or not accessible
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

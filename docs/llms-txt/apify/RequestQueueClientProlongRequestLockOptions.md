@@ -11,7 +11,7 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#forefront)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L642)optionalforefront
+### [**](#forefront)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L926)optionalforefront
 
 **forefront?
 
@@ -19,6 +19,6 @@
 
 : boolean
 
-### [**](#lockSecs)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L643)lockSecs
+### [**](#lockSecs)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L927)lockSecs
 
 **lockSecs: number

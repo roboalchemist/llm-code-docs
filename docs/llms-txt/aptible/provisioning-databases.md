@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/managed-databases/provisioning-databases.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Provisioning Databases
 
 > Learn about provisioning Managed Databases on Aptible
@@ -43,4 +47,6 @@ Aptible provides a platform to provision secure, reliable, Managed Databases in 
       </Frame>
   * Using the [`aptible db:create`](/reference/aptible-cli/cli-commands/cli-db-create) command
   * Using the Aptible [Terraform Provider](https://registry.terraform.io/providers/aptible/aptible/latest/docs)
+
+  <Note>Database handles cannot start with `internal-` or `sg-` prefixes. Refer to [Managing Databases](/core-concepts/managed-databases/managing-databases/overview) for more information about naming restrictions.</Note>
 </Accordion>

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/strategies/rot13/
+
 # ROT13 Encoding Strategy
 
 The ROT13 Encoding strategy tests an AI system's ability to resist encoded inputs that might bypass security controls. ROT13 is a simple substitution cipher (A→N, B→O, etc) historically used for hiding spoilers and light obfuscation on the internet, making it an interesting probe for testing how models handle familiar-but-transformed text. The strategy works because character-level transformations often fall outside safety training's focus on semantic content, and models may encounter ROT13 during pretraining in different contexts like forums, games, and puzzles.

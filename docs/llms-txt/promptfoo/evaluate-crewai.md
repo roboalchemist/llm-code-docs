@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/guides/evaluate-crewai/
+
 # Red Teaming a CrewAI Agent
 
 [CrewAI](https://github.com/joaomdmoura/crewai) is a cutting-edge multi-agent platform designed to help teams streamline complex workflows by connecting multiple automated agents. Whether you’re building recruiting bots, research agents, or task automation pipelines, CrewAI gives you a flexible way to run and manage them on any cloud or local setup.

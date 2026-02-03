@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/languages/rest-api.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # REST API
 
 Right now, the best way to access PromptLayer is through our Python wrapper library that can be installed with `pip install promptlayer`.
@@ -13,8 +17,3 @@ PromptLayer provides a powerful REST API that allows you to interact with the pl
 ## API Reference
 
 For detailed information about the available API endpoints and their usage, please refer to our [REST API Reference](/reference/rest-api-reference).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

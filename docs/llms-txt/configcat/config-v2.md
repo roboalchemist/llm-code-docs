@@ -2,6 +2,8 @@
 
 # Config V2 Overview
 
+Copy page
+
 Config V2 is a new version of ConfigCat. It comes with a new Dashboard, Public Management API, SDKs, and features.
 
 ## What's new?[​](#whats-new "Direct link to What's new?")
@@ -9,12 +11,12 @@ Config V2 is a new version of ConfigCat. It comes with a new Dashboard, Public M
 * A bunch of new features and improvements listed below.
 * New config editor UI on the Dashboard.
 * [New and improved config JSON schema.](https://github.com/configcat/config-json)
-* New API: [See the API Docs.](https://configcat.com/docs/docs/api/reference/configcat-public-management-api/.md)
-* New SDKs: [See the supported SDK versions.](https://configcat.com/docs/docs/advanced/config-v2-sdk-compatibility/.md)
+* New API: [See the API Docs.](https://configcat.com/docs/api/reference/configcat-public-management-api.md)
+* New SDKs: [See the supported SDK versions.](https://configcat.com/docs/advanced/config-v2-sdk-compatibility.md)
 
 ## How to migrate from Config V1 to Config V2?[​](#how-to-migrate-from-config-v1-to-config-v2 "Direct link to How to migrate from Config V1 to Config V2?")
 
-See the [Config V2 Migration Guide](https://configcat.com/docs/docs/advanced/config-v2-migration-guide/.md). If you get stuck or have any questions about the migration, feel free to [contact us](https://configcat.com/support/).
+See the [Config V2 Migration Guide](https://configcat.com/docs/advanced/config-v2-migration-guide.md). If you get stuck or have any questions about the migration, feel free to [contact us](https://configcat.com/support/).
 
 ## New features[​](#new-features "Direct link to New features")
 

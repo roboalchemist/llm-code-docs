@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/blueprints/parsepdftool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Parse PDF tool
 
 Uses Writer API to extract the text content of a PDF file stored in Writer cloud.
@@ -142,14 +146,14 @@ Below are the possible end states of the block call.
       <td>Success</td>
       <td>-</td>
       <td>success</td>
-      <td>If the execution was successful.</td>
+      <td>The PDF was parsed successfully.</td>
     </tr>
 
     <tr>
       <td>Error</td>
       <td>-</td>
       <td>error</td>
-      <td>If the function raises an Exception.</td>
+      <td>There was an error parsing the PDF.</td>
     </tr>
   </tbody>
 </table>

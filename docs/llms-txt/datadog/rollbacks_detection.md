@@ -6,7 +6,6 @@ description: Learn how CD Visibility detects deployment rollbacks.
 breadcrumbs: >-
   Docs > Continuous Delivery Visibility > CD Visibility Features > Rollback
   Detection
-source_url: https://docs.datadoghq.com/features/rollbacks_detection/index.html
 ---
 
 # Rollback Detection

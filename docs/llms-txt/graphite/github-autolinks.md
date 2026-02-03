@@ -1,5 +1,9 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/github-autolinks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # GitHub Autolinks
 
 > Learn how to configure GitHub autolinks to automatically reference external resources like issue trackers in your pull requests on Graphite.

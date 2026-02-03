@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/faq/faq-enterprise.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LanceDB Enterprise FAQ
 
 > Commonly asked questions about LanceDB Enterprise.
@@ -107,8 +111,3 @@ Upgrade to a recent pylance version (v0.18.0+), then use *LanceDataset.data\_sto
 >>> lance.dataset("my_dataset").data_storage_version
 '2.0'
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

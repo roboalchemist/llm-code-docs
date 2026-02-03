@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/use-cases/semantic-search.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 🔍 Semantic Search
 
 Semantic searching, which involves understanding the intent and contextual meaning behind search queries, is yet another popular use-case of RAG. It has several popular use cases across various domains:
@@ -22,7 +26,7 @@ Embedchain offers a simple yet customizable `search()` API that you can use for 
 
 First, let's create your RAG pipeline. Open your Python environment and enter:
 
-```python Create pipeline
+```python Create pipeline theme={null}
 from embedchain import App
 app = App()
 ```
@@ -33,7 +37,7 @@ This initializes your application.
 
 Now, let's add data to your pipeline. We'll include the Next.JS website and its documentation:
 
-```python Ingest data sources
+```python Ingest data sources theme={null}
 # Add Next.JS Website and docs
 app.add("https://nextjs.org/sitemap.xml", data_type="sitemap")
 
@@ -47,7 +51,7 @@ This step incorporates over **15K pages** from the Next.JS website and forum int
 
 Test the pipeline on your local machine:
 
-```python Search App
+```python Search App theme={null}
 app.search("Summarize the features of Next.js 14?")
 [
   {

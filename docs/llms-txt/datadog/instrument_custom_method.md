@@ -8,7 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > APM > Tracing Guides > Instrument a custom method to get deep
   visibility into your business logic
-source_url: https://docs.datadoghq.com/guide/instrument_custom_method/index.html
 ---
 
 # Instrument a custom method to get deep visibility into your business logic

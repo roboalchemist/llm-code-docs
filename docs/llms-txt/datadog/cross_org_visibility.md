@@ -6,7 +6,6 @@ description: >-
   Share data and perform queries between different organizations in the same
   account.
 breadcrumbs: Docs > Account Management > Cross-Organization Visibility
-source_url: https://docs.datadoghq.com/org_settings/cross_org_visibility/index.html
 ---
 
 # Cross-Organization Visibility

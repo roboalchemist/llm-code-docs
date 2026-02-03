@@ -64,11 +64,8 @@ const items: NavigationMenuItem[][] = [[{
 </template>
 ```
 
-<note>
-
-In this example, we use the [NavigationMenu](/docs/components/navigation-menu) component to render some links.
-
-</note>
+> [!NOTE]
+> In this example, we use the [NavigationMenu](/docs/components/navigation-menu) component to render some links.
 
 ## API
 
@@ -118,8 +115,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

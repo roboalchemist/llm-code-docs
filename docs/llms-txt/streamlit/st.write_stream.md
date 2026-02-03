@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/write-magic/st.write_stream
+
 # st.write_stream
 
 Stream a generator, iterable, or stream-like sequence to the app.

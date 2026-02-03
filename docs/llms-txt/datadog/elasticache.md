@@ -4,7 +4,6 @@
 title: ElastiCache Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > AWS Components > ElastiCache Component
-source_url: https://docs.datadoghq.com/components-aws/elasticache/index.html
 ---
 
 # ElastiCache Component

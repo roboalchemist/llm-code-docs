@@ -22,11 +22,8 @@ Use the `default-value` prop to set the initial value when you do not need to co
 </template>
 ```
 
-<note>
-
-This component relies on the [`@internationalized/number`](https://react-spectrum.adobe.com/internationalized/number/index.html) package which provides utilities for formatting and parsing numbers across locales and numbering systems.
-
-</note>
+> [!NOTE]
+> This component relies on the [`@internationalized/number`](https://react-spectrum.adobe.com/internationalized/number/index.html) package which provides utilities for formatting and parsing numbers across locales and numbering systems.
 
 ### Min / Max
 
@@ -273,7 +270,7 @@ interface InputNumberProps {
    */
   highlight?: boolean | undefined;
   /**
-   * The orientation of the input menu.
+   * The orientation of the input number.
    * @default "\"horizontal\""
    */
   orientation?: "horizontal" | "vertical" | undefined;
@@ -281,11 +278,11 @@ interface InputNumberProps {
    * Configure the increment button. The `color` and `size` are inherited.
    * @default "true"
    */
-  increment?: boolean | ButtonProps | undefined;
+  increment?: boolean | Omit<ButtonProps, LinkPropsKeys> | undefined;
   /**
    * The icon displayed to increment the value.
    */
-  incrementIcon?: string | object | undefined;
+  incrementIcon?: any;
   /**
    * Disable the increment button.
    */
@@ -294,18 +291,18 @@ interface InputNumberProps {
    * Configure the decrement button. The `color` and `size` are inherited.
    * @default "true"
    */
-  decrement?: boolean | ButtonProps | undefined;
+  decrement?: boolean | Omit<ButtonProps, LinkPropsKeys> | undefined;
   /**
    * The icon displayed to decrement the value.
    */
-  decrementIcon?: string | object | undefined;
+  decrementIcon?: any;
   /**
    * Disable the decrement button.
    */
   decrementDisabled?: boolean | undefined;
   autofocus?: boolean | undefined;
   autofocusDelay?: number | undefined;
-  modelModifiers?: Pick<ModelModifiers<InputNumberValue>, "optional"> | undefined;
+  modelModifiers?: Pick<ModelModifiers<T>, "optional"> | undefined;
   ui?: { root?: ClassNameValue; base?: ClassNameValue; increment?: ClassNameValue; decrement?: ClassNameValue; } | undefined;
   modelValue?: number | null | undefined;
   defaultValue?: number | undefined;
@@ -357,8 +354,11 @@ interface InputNumberProps {
    * When `true`, the Number Field is read-only.
    */
   readonly?: boolean | undefined;
-  autocomplete?: string | undefined;
-  enterKeyHint?: "search" | "enter" | "done" | "go" | "next" | "previous" | "send" | undefined;
+  /**
+   * When `true`, the input will be focused when the value changes.
+   */
+  focusOnChange?: boolean | undefined;
+  enterKeyHint?: "enter" | "done" | "go" | "next" | "previous" | "search" | "send" | undefined;
   form?: string | undefined;
   formaction?: string | undefined;
   formenctype?: string | undefined;
@@ -366,14 +366,13 @@ interface InputNumberProps {
   formnovalidate?: Booleanish | undefined;
   formtarget?: string | undefined;
   list?: string | undefined;
+  autocomplete?: "on" | "off" | (string & {}) | undefined;
 }
 ```
 
-<callout icon="i-simple-icons-mdnwebdocs" target="_blank" to="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attributes">
-
-This component also supports all native `<input>` HTML attributes.
-
-</callout>
+> [!NOTE]
+> See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attributes
+> This component also supports all native `<input>` HTML attributes.
 
 ### Slots
 
@@ -394,7 +393,7 @@ interface InputNumberSlots {
  * Emitted events for the InputNumber component
  */
 interface InputNumberEmits {
-  update:modelValue: (payload: [value: InputNumberValue]) => void;
+  update:modelValue: (payload: [value: T]) => void;
   blur: (payload: [event: FocusEvent]) => void;
   change: (payload: [event: Event]) => void;
 }
@@ -694,8 +693,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

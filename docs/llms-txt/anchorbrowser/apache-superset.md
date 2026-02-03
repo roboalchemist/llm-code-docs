@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/integrations/open-source/playwright/e2e-testing/apache-superset.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Apache Superset
 
 > Test Apache Superset dashboards and data visualization workflows with Playwright's end-to-end testing framework.

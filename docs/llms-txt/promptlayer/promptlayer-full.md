@@ -114,7 +114,8 @@ Complete reference for all node types used in Agents and evaluation pipelines
 This page documents all available node types for Agents (workflows) and column types for evaluation pipelines. Agents and evaluations share the same node types—each has specific configuration options that determine its behavior.
 
 <Note>
-  In Agents, these are called **nodes**. In evaluation pipelines, they're called **columns**. The configuration is identical.
+  In Agents, these are called **nodes**. In evaluation pipelines, they're called
+  **columns**. The configuration is identical.
 </Note>
 
 ## How Column Sources Work
@@ -127,7 +128,8 @@ Columns can reference data from two places:
 When you specify a `source` or include a column name in `sources`, the system first looks for an evaluation column with that name, then falls back to looking for a dataset column.
 
 <Info>
-  Columns are executed in order based on their `position`. A column can only reference other columns that come before it in the pipeline.
+  Columns are executed in order based on their `position`. A column can only
+  reference other columns that come before it in the pipeline.
 </Info>
 
 ### Example: Chaining Columns Together
@@ -177,8 +179,10 @@ columns = [
 These columns execute prompts, code, or external services.
 
 <AccordionGroup>
-  <Accordion title="PROMPT_TEMPLATE">
-    Runs a prompt template from the registry against each row.
+  <Accordion title="Prompt Template">
+    Runs a prompt template against each row. You can reference a template from the Prompt Registry or define one inline.
+
+    **Registry Reference (using `template`)**
 
     | Field                               | Type    | Required | Description                                           |
     | ----------------------------------- | ------- | -------- | ----------------------------------------------------- |
@@ -232,9 +236,61 @@ These columns execute prompts, code, or external services.
       }
     }
     ```
+
+    **Inline Template (using `inline_template`)**
+
+    Define a prompt template directly in the configuration without saving it to the registry. This is useful for quick experimentation or one-off evaluations.
+
+    | Field                                   | Type    | Required | Description                                           |
+    | --------------------------------------- | ------- | -------- | ----------------------------------------------------- |
+    | `inline_template.inline`                | boolean | Yes      | Must be `true`                                        |
+    | `inline_template.prompt_template`       | object  | Yes      | The template content (chat or completion format)      |
+    | `inline_template.metadata`              | object  | No       | Model configuration (provider, name, parameters)      |
+    | `inline_template.source_prompt_name`    | string  | No       | Name of the registry prompt this was derived from     |
+    | `inline_template.source_prompt_version` | integer | No       | Version number of the source prompt                   |
+    | `prompt_template_variable_mappings`     | object  | Yes      | Maps template input variables to dataset/column names |
+
+    ```json theme={null}
+    {
+      "column_type": "PROMPT_TEMPLATE",
+      "name": "Generate Response",
+      "configuration": {
+        "inline_template": {
+          "inline": true,
+          "prompt_template": {
+            "type": "chat",
+            "messages": [
+              {
+                "role": "system",
+                "content": [{"type": "text", "text": "You are a helpful assistant."}]
+              },
+              {
+                "role": "user",
+                "content": [{"type": "text", "text": "Answer: {question}"}]
+              }
+            ]
+          },
+          "metadata": {
+            "model": {
+              "provider": "openai",
+              "name": "gpt-4",
+              "parameters": {"temperature": 0.7}
+            }
+          }
+        },
+        "prompt_template_variable_mappings": {
+          "question": "user_question"
+        }
+      }
+    }
+    ```
+
+    <Warning>
+      You must provide exactly one of `template` or `inline_template`. They are mutually exclusive.
+    </Warning>
   </Accordion>
 
-  <Accordion title="CODE_EXECUTION">
+  <Accordion title="Code Execution">
     Executes custom Python or JavaScript code. The code receives a `data` dictionary containing all column values for the current row.
 
     | Field      | Type   | Required | Description              |
@@ -254,7 +310,7 @@ These columns execute prompts, code, or external services.
     ```
   </Accordion>
 
-  <Accordion title="ENDPOINT">
+  <Accordion title="Endpoint">
     Calls an external HTTP endpoint. The request body contains all column values for the current row.
 
     | Field     | Type   | Required | Description             |
@@ -276,7 +332,7 @@ These columns execute prompts, code, or external services.
     ```
   </Accordion>
 
-  <Accordion title="WORKFLOW">
+  <Accordion title="Workflow">
     Runs a PromptLayer workflow.
 
     | Field                     | Type    | Required | Description                              |
@@ -324,7 +380,7 @@ These columns execute prompts, code, or external services.
     ```
   </Accordion>
 
-  <Accordion title="HUMAN">
+  <Accordion title="Human">
     Adds a column for manual human evaluation.
 
     | Field        | Type   | Required | Description                    |
@@ -348,7 +404,7 @@ These columns execute prompts, code, or external services.
     ```
   </Accordion>
 
-  <Accordion title="CONVERSATION_SIMULATOR">
+  <Accordion title="Conversation Simulator">
     Simulates multi-turn conversations to test chatbots and conversational agents. An AI-powered user persona engages in realistic dialogue with your prompt template, allowing you to evaluate how well your agent handles extended interactions.
 
     | Field                                  | Type    | Required    | Description                                                                                                                                                            |
@@ -491,12 +547,129 @@ These columns execute prompts, code, or external services.
   </Accordion>
 </AccordionGroup>
 
+## Loop Types
+
+These nodes enable iterating over collections or executing repeated operations within Agents.
+
+<AccordionGroup>
+  <Accordion title="For Loop">
+    Iterates over a collection of items or runs a fixed number of times, executing a prompt template or sub-workflow on each iteration.
+
+    | Field                | Type    | Required    | Description                                                                 |
+    | -------------------- | ------- | ----------- | --------------------------------------------------------------------------- |
+    | `loop_type`          | string  | Yes         | `"prompt"` or `"workflow"`                                                  |
+    | `prompt_config`      | object  | Conditional | Configuration for prompt execution (required if `loop_type` = "prompt")     |
+    | `workflow_config`    | object  | Conditional | Configuration for workflow execution (required if `loop_type` = "workflow") |
+    | `iterator_source`    | string  | Conditional | Source node providing the collection to iterate over                        |
+    | `max_iterations`     | integer | Conditional | Fixed number of iterations (mutually exclusive with `iterator_source`)      |
+    | `return_all_outputs` | boolean | No          | Return all outputs from each iteration (default: false)                     |
+    | `variable_mappings`  | object  | No          | Maps template variables to source nodes or special loop variables           |
+
+    **Special loop variables for `variable_mappings`:**
+
+    * `loop_index` - Current iteration index (0-based)
+    * `previous_outputs` - Array of all outputs from previous iterations
+    * `_iterator_item` - Current item from the iterated collection
+
+    <Warning>
+      Exactly **one** of `iterator_source` or `max_iterations` must be provided.
+    </Warning>
+
+    ```json theme={null}
+    {
+      "node_type": "FOR_LOOP",
+      "name": "process_items",
+      "is_output_node": true,
+      "dependencies": ["items"],
+      "configuration": {
+        "loop_type": "prompt",
+        "iterator_source": "items",
+        "prompt_config": {
+          "template": {
+            "name": "item-processor",
+            "label": "production"
+          },
+          "prompt_template_variable_mappings": {
+            "item": "_iterator_item",
+            "index": "loop_index"
+          }
+        },
+        "variable_mappings": {
+          "item": "_iterator_item",
+          "index": "loop_index"
+        }
+      }
+    }
+    ```
+
+    **Output structure:**
+
+    ```json theme={null}
+    {
+      "iterations": 5,
+      "outputs": ["output1", "output2", "output3", "output4", "output5"],
+      "final_output": "output5"
+    }
+    ```
+  </Accordion>
+
+  <Accordion title="While Loop">
+    Executes repeatedly until an end condition is met or maximum iterations are reached.
+
+    | Field                     | Type    | Required    | Description                                                                 |
+    | ------------------------- | ------- | ----------- | --------------------------------------------------------------------------- |
+    | `loop_type`               | string  | Yes         | `"prompt"` or `"workflow"`                                                  |
+    | `prompt_config`           | object  | Conditional | Configuration for prompt execution (required if `loop_type` = "prompt")     |
+    | `workflow_config`         | object  | Conditional | Configuration for workflow execution (required if `loop_type` = "workflow") |
+    | `end_condition_json_path` | string  | No          | JSONPath expression to evaluate termination (loop stops when truthy)        |
+    | `max_iterations`          | integer | No          | Maximum iterations (defaults to system limit)                               |
+    | `return_all_outputs`      | boolean | No          | Return all outputs (default: false)                                         |
+    | `variable_mappings`       | object  | No          | Maps template variables to source nodes or special variables                |
+
+    <Info>
+      **Termination behavior:**
+
+      * If `end_condition_json_path` is set: Loop ends when JSONPath extracts a truthy value
+      * If not set: Loop ends when output is falsy (empty, null, false)
+    </Info>
+
+    ```json theme={null}
+    {
+      "node_type": "WHILE_LOOP",
+      "name": "refine_loop",
+      "is_output_node": true,
+      "dependencies": ["initial_draft"],
+      "configuration": {
+        "loop_type": "prompt",
+        "max_iterations": 5,
+        "end_condition_json_path": "$.is_complete",
+        "prompt_config": {
+          "template": {
+            "name": "text-refiner",
+            "label": "production"
+          },
+          "prompt_template_variable_mappings": {
+            "text": "initial_draft",
+            "previous_results": "previous_outputs"
+          }
+        },
+        "variable_mappings": {
+          "text": "initial_draft",
+          "previous_results": "previous_outputs",
+          "iteration": "loop_index"
+        }
+      }
+    }
+    ```
+  </Accordion>
+</AccordionGroup>
+
 ## Evaluation Types
 
 These columns evaluate or compare data and typically return boolean or numeric scores.
 
 <AccordionGroup>
-  <Accordion title="LLM_ASSERTION">
+  <Accordion title="LLM Assertion">
     Uses an LLM to evaluate content against a natural language prompt. Returns a boolean indicating pass/fail.
 
     | Field           | Type   | Required    | Description                                                     |
@@ -562,7 +735,7 @@ These columns evaluate or compare data and typically return boolean or numeric s
     The output will be a dictionary with each assertion as a key and its boolean result as the value.
   </Accordion>
 
-  <Accordion title="COMPARE">
+  <Accordion title="Compare">
     Compares two values for equality. Supports string comparison and JSON comparison with optional JSONPath.
 
     | Field                       | Type   | Required | Description                                              |
@@ -600,7 +773,7 @@ These columns evaluate or compare data and typically return boolean or numeric s
     ```
   </Accordion>
 
-  <Accordion title="CONTAINS">
+  <Accordion title="Contains">
     Checks if a value contains a substring (case-insensitive).
 
     | Field          | Type   | Required    | Description                                                     |
@@ -621,7 +794,7 @@ These columns evaluate or compare data and typically return boolean or numeric s
     ```
   </Accordion>
 
-  <Accordion title="REGEX">
+  <Accordion title="Regex">
     Tests if content matches a regular expression pattern. Returns boolean.
 
     | Field           | Type   | Required | Description                |
@@ -641,7 +814,7 @@ These columns evaluate or compare data and typically return boolean or numeric s
     ```
   </Accordion>
 
-  <Accordion title="COSINE_SIMILARITY">
+  <Accordion title="Cosine Similarity">
     Calculates semantic similarity between two texts using embeddings. Returns a float between 0 and 1.
 
     | Field     | Type  | Required | Description                                |
@@ -660,7 +833,7 @@ These columns evaluate or compare data and typically return boolean or numeric s
     ```
   </Accordion>
 
-  <Accordion title="ABSOLUTE_NUMERIC_DISTANCE">
+  <Accordion title="Absolute Numeric Distance">
     Calculates the absolute difference between two numeric values.
 
     | Field     | Type  | Required | Description                                        |
@@ -678,7 +851,7 @@ These columns evaluate or compare data and typically return boolean or numeric s
     ```
   </Accordion>
 
-  <Accordion title="AI_DATA_EXTRACTION">
+  <Accordion title="AI Data Extraction">
     Uses an LLM to extract specific information from content based on a natural language query.
 
     | Field    | Type   | Required | Description                                     |
@@ -704,7 +877,7 @@ These columns evaluate or compare data and typically return boolean or numeric s
 These columns extract or parse data from other columns.
 
 <AccordionGroup>
-  <Accordion title="JSON_PATH">
+  <Accordion title="JSON Path">
     Extracts data from JSON using JSONPath expressions.
 
     | Field                | Type    | Required | Description                                               |
@@ -726,7 +899,7 @@ These columns extract or parse data from other columns.
     ```
   </Accordion>
 
-  <Accordion title="XML_PATH">
+  <Accordion title="XML Path">
     Extracts data from XML using XPath expressions.
 
     | Field         | Type    | Required | Description                                                          |
@@ -750,7 +923,7 @@ These columns extract or parse data from other columns.
     ```
   </Accordion>
 
-  <Accordion title="REGEX_EXTRACTION">
+  <Accordion title="Regex Extraction">
     Extracts content matching a regular expression pattern. Returns an array of all matches.
 
     | Field           | Type   | Required | Description                 |
@@ -770,7 +943,7 @@ These columns extract or parse data from other columns.
     ```
   </Accordion>
 
-  <Accordion title="PARSE_VALUE">
+  <Accordion title="Parse Value">
     Parses and converts a value to a specific type.
 
     | Field    | Type   | Required | Description                                             |
@@ -796,7 +969,7 @@ These columns extract or parse data from other columns.
 These columns transform, combine, or validate data.
 
 <AccordionGroup>
-  <Accordion title="VARIABLE">
+  <Accordion title="Variable">
     Creates a static value that can be referenced by other columns.
 
     | Field         | Type   | Required | Description        |
@@ -835,7 +1008,7 @@ These columns transform, combine, or validate data.
     ```
   </Accordion>
 
-  <Accordion title="ASSERT_VALID">
+  <Accordion title="Assert Valid">
     Validates that data is in a valid format. Returns boolean.
 
     | Field    | Type   | Required | Description                                                  |
@@ -855,7 +1028,7 @@ These columns transform, combine, or validate data.
     ```
   </Accordion>
 
-  <Accordion title="COALESCE">
+  <Accordion title="Coalesce">
     Returns the first non-null value from multiple sources.
 
     | Field     | Type  | Required | Description                      |
@@ -873,7 +1046,7 @@ These columns transform, combine, or validate data.
     ```
   </Accordion>
 
-  <Accordion title="COMBINE_COLUMNS">
+  <Accordion title="Combine Columns">
     Combines multiple column values into a single dictionary object.
 
     | Field     | Type  | Required | Description                      |
@@ -891,7 +1064,7 @@ These columns transform, combine, or validate data.
     ```
   </Accordion>
 
-  <Accordion title="COUNT">
+  <Accordion title="Count">
     Counts occurrences in text content.
 
     | Field    | Type   | Required | Description                                                   |
@@ -911,7 +1084,7 @@ These columns transform, combine, or validate data.
     ```
   </Accordion>
 
-  <Accordion title="MATH_OPERATOR">
+  <Accordion title="Math Operator">
     Performs numeric comparisons. Returns boolean.
 
     | Field      | Type   | Required    | Description                                                                                                       |
@@ -948,7 +1121,7 @@ These columns transform, combine, or validate data.
     ```
   </Accordion>
 
-  <Accordion title="MIN_MAX">
+  <Accordion title="Min/Max">
     Finds the minimum or maximum value from an array or JSON structure.
 
     | Field       | Type   | Required | Description                                        |
@@ -1905,7 +2078,11 @@ Below is a complete reference of all available column types and their configurat
 
 #### PROMPT\_TEMPLATE
 
-Executes a prompt template from your Prompt Registry.
+Executes a prompt template from your Prompt Registry or an inline template defined directly in the configuration.
+
+**Option A: Registry Reference**
+
+Reference a prompt template stored in the Prompt Registry:
 
 ```json theme={null}
 {
@@ -1934,6 +2111,52 @@ Executes a prompt template from your Prompt Registry.
   "report_id": 456
 }
 ```
+
+**Option B: Inline Template**
+
+Define a prompt template directly in the configuration without saving it to the registry. This is useful for quick experimentation, one-off evaluations, or iterating on prompts before committing them to the registry.
+
+```json theme={null}
+{
+  "column_type": "PROMPT_TEMPLATE",
+  "name": "Generate Response",
+  "configuration": {
+    "inline_template": {
+      "inline": true,
+      "prompt_template": {              // Required: The template content
+        "type": "chat",
+        "messages": [
+          {
+            "role": "system",
+            "content": [{"type": "text", "text": "You are a helpful assistant."}]
+          },
+          {
+            "role": "user",
+            "content": [{"type": "text", "text": "Answer this question: {question}"}]
+          }
+        ]
+      },
+      "metadata": {                     // Optional: Model configuration
+        "model": {
+          "provider": "openai",
+          "name": "gpt-4",
+          "parameters": {"temperature": 0.7}
+        }
+      },
+      "source_prompt_name": null,       // Optional: Track which registry prompt this was derived from
+      "source_prompt_version": null     // Optional: Track the source version number
+    },
+    "prompt_template_variable_mappings": {
+      "question": "question"            // Map template variables to columns
+    }
+  },
+  "report_id": 456
+}
+```
+
+<Info>
+  You must provide exactly one of `template` (registry reference) or `inline_template` (inline content) in the configuration. They are mutually exclusive.
+</Info>
 
 #### ENDPOINT
 
@@ -2917,6 +3140,10 @@ When streaming is enabled, each chunk includes:
 * `prompt_blueprint`: The progressively built prompt blueprint showing the current state of the response
 * `request_id`: Only included in the final chunk to indicate completion
 
+<Note>
+  The `raw_response` structure is provider-specific and may change as LLM providers update their APIs. For stable, provider-agnostic access, use `prompt_blueprint` instead.
+</Note>
+
 Example usage for OpenAI:
 
 ```python theme={null}
@@ -3433,6 +3660,95 @@ pl_client.log_request(
 )
 ```
 
+## Logging Extended Thinking and Reasoning
+
+When logging requests that use extended thinking (Anthropic), thinking mode (Google), or reasoning (OpenAI), you need to:
+
+1. **Include the thinking configuration in `parameters`** - Use the provider-specific format
+2. **Include thinking content blocks in the output** - Add them to the message content array
+
+### Anthropic Extended Thinking
+
+For Anthropic models with extended thinking enabled, pass the `thinking` parameter:
+
+```python theme={null}
+pl_client.log_request(
+    provider="anthropic",
+    model="claude-3-7-sonnet-20250219",
+    input=input_blueprint,
+    output={
+        "type": "chat",
+        "messages": [{
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "thinking",
+                    "thinking": "Let me analyze this step by step...",
+                    "signature": "ErUBCk..."  # Include if returned by the API
+                },
+                {
+                    "type": "text",
+                    "text": "Based on my analysis, here's the answer..."
+                }
+            ]
+        }]
+    },
+    parameters={
+        "max_tokens": 16000,
+        "thinking": {
+            "type": "enabled",
+            "budget_tokens": 10000
+        }
+    },
+    request_start_time=request_start_time,
+    request_end_time=request_end_time
+)
+```
+
+### Google/Gemini Thinking Mode
+
+For Google models with thinking mode, use the `thinking_config` parameter:
+
+```python theme={null}
+pl_client.log_request(
+    provider="google",
+    model="gemini-2.0-flash-thinking-exp",
+    input=input_blueprint,
+    output=output_blueprint,
+    parameters={
+        "thinking_config": {
+            "include_thoughts": True,
+            "thinking_budget": 8000
+        }
+    },
+    request_start_time=request_start_time,
+    request_end_time=request_end_time
+)
+```
+
+### OpenAI Reasoning Models (o1, o3, etc.)
+
+For OpenAI reasoning models, use the `reasoning_effort` parameter:
+
+```python theme={null}
+pl_client.log_request(
+    provider="openai",
+    model="o1",
+    input=input_blueprint,
+    output=output_blueprint,
+    parameters={
+        "reasoning_effort": "high"  # Options: "low", "medium", "high"
+    },
+    request_start_time=request_start_time,
+    request_end_time=request_end_time,
+    api_type="chat-completions"
+)
+```
+
+<Note>
+  The parameter name varies by provider — make sure to use the correct format for your provider as shown above.
+</Note>
+
 ## Working with Tools and Function Calls
 
 For OpenAI/Anthropic function calling or tool use:
@@ -3574,11 +3890,11 @@ It is helpful to link requests to eachother when building workflows with chains 
   curl --request POST \
     --url https://api.promptlayer.com/rest/track-group \
     --header 'Content-Type: application/json' \
+    --header 'X-API-KEY: pl_<YOUR API KEY>' \
     --data '{
-      "api_key": "pl_<YOUR API KEY>",
       "request_id": "<REQUEST ID>",
-      "group_id": "<GROUP ID>",
-  }'
+      "group_id": "<GROUP ID>"
+    }'
   ```
 </CodeGroup>
 
@@ -3624,8 +3940,8 @@ We recommend using this for things like session IDs, user IDs, or error messages
   curl --request POST \
     --url https://api.promptlayer.com/rest/track-metadata \
     --header 'Content-Type: application/json' \
+    --header 'X-API-KEY: pl_<YOUR API KEY>' \
     --data '{
-      "api_key": "pl_<YOUR API KEY>",
       "request_id": "<REQUEST ID>",
       "metadata": {
         "user_id":"1abf2345f",
@@ -3788,11 +4104,11 @@ By default, an individual score is named default. You can enrich a request with 
   curl --request POST \
     --url https://api.promptlayer.com/rest/track-score \
     --header 'Content-Type: application/json' \
+    --header 'X-API-KEY: pl_<YOUR API KEY>' \
     --data '{
-      "api_key": "pl_<YOUR API KEY>",
       "request_id": "<REQUEST ID>",
       "score": <YOUR SCORE>,
-      "name": <YOUR SCORE NAME>,
+      "name": <YOUR SCORE NAME>
     }'
   ```
 </CodeGroup>
@@ -4316,8 +4632,8 @@ To associate requests with a prompt from the prompt registry, run the code
   curl --request POST \
     --url https://api.promptlayer.com/rest/track-prompt \
     --header 'Content-Type: application/json' \
+    --header 'X-API-KEY: pl_<YOUR API KEY>' \
     --data '{
-      "api_key": "pl_<YOUR API KEY>",
       "request_id": "<REQUEST ID>",
       "prompt_name": "<PROMPT TEMPLATE NAME>",
       "prompt_input_variables": <PROMPT TEMPLATE INPUT VARIABLES>,
@@ -4357,8 +4673,8 @@ You can also use prompt [template release labels](/features/prompt-registry#rele
   curl --request POST \
     --url https://api.promptlayer.com/rest/track-prompt \
     --header 'Content-Type: application/json' \
+    --header 'X-API-KEY: pl_<YOUR API KEY>' \
     --data '{
-      "api_key": "pl_<YOUR API KEY>",
       "request_id": "<REQUEST ID>",
       "prompt_name": "<PROMPT TEMPLATE NAME>",
       "prompt_input_variables": <PROMPT TEMPLATE INPUT VARIABLES>,
@@ -4537,7 +4853,10 @@ It’s simple.
   ```
 </CodeGroup>
 
-Alternatively, use the REST API endpoint `/prompte-templates/{prompt_name}` ([read more](/reference/templates-get)).
+Alternatively, use the REST API:
+
+* `POST /prompt-templates/{prompt_name}` to get a template with input variables and provider-formatted output ([read more](/reference/templates-get))
+* `GET /prompt-templates/{prompt_name}` to get raw template data without applying input variables, useful for syncing, caching, or inspection ([read more](/reference/templates-get-raw))
 
 ### By Release Label
 
@@ -4593,6 +4912,20 @@ Currently we support `provider` type of either `openai` or `anthropic`.
 #### Setting Execution Parameters
 
 When using PromptLayer, ensure you set any necessary parameters for execution, such as `provider`, `input_variables`, and other specific parameters required by the LLM provider (e.g., `temperature`, `max_tokens` for OpenAI). Use the `llm_kwargs` as provided. If you need to override certain arguments, it is recommended to create a new version on PromptLayer. Alternatively, you can override them on your end if necessary.
+
+<Warning>
+  **Provider-Specific Schema Notice**
+
+  The `llm_kwargs` object structure is provider-specific and may change without notice as LLM providers update their APIs. For example, Provider's system message format may change from a string to an array of objects.
+
+  PromptLayer passes through the native format required by each provider. If you need stable, provider-agnostic access to prompt data, use `prompt_template` instead, which provides a consistent structure regardless of the target provider.
+
+  We recommend:
+
+  * Do not hard-code assumptions about `llm_kwargs` structure in your application
+  * Use `prompt_template` for storing or caching prompt data
+  * Test your integration when switching providers or after provider API updates
+</Warning>
 
 <CodeGroup>
   ```python Python SDK theme={null}
@@ -5943,6 +6276,9 @@ We notify you for these events:
 | `prompt_template_label_created`              | When a new release label for a prompt template is created.                                                                                                                                                 | <ul><li>`prompt_template_id` (number)</li><li>`prompt_template_name` (string)</li><li>`prompt_template_version_number` (number)</li><li>`prompt_template_label` (string)</li></ul>                                                       |
 | `prompt_template_label_deleted`              | When a release label for a prompt template is deleted.                                                                                                                                                     | <ul><li>`prompt_template_id` (number)</li><li>`prompt_template_name` (string)</li><li>`prompt_template_version_number` (number)</li><li>`prompt_template_label` (string)</li></ul>                                                       |
 | `prompt_template_label_moved`                | When a release label is moved between prompt template versions.                                                                                                                                            | <ul><li>`prompt_template_id` (number)</li><li>`prompt_template_name` (string)</li><li>`prompt_template_version_number` (number)</li><li>`old_prompt_template_version_number` (number)</li><li>`prompt_template_label` (string)</li></ul> |
+| `prompt_template_label_change_requested`     | When a change to a protected release label is requested and requires approval.                                                                                                                             | <ul><li>`prompt_template_id` (number)</li><li>`prompt_template_name` (string)</li><li>`prompt_template_label` (string)</li><li>`change_type` (string: "move" or "deletion")</li></ul>                                                    |
+| `prompt_template_label_change_approved`      | When a pending change to a protected release label is approved.                                                                                                                                            | <ul><li>`prompt_template_id` (number)</li><li>`prompt_template_name` (string)</li><li>`prompt_template_label` (string)</li><li>`change_type` (string: "move" or "deletion")</li></ul>                                                    |
+| `prompt_template_label_change_denied`        | When a pending change to a protected release label is denied.                                                                                                                                              | <ul><li>`prompt_template_id` (number)</li><li>`prompt_template_name` (string)</li><li>`prompt_template_label` (string)</li><li>`change_type` (string: "move" or "deletion")</li></ul>                                                    |
 | `prompt_template_updated`                    | When a snippet imported in a prompt template is updated.                                                                                                                                                   | <ul><li>`prompt_template_id` (number)</li><li>`prompt_template_name` (string)</li><li>`prompt_template_version_number` (number)</li></ul>                                                                                                |
 | `agent_run_finished`                         | When an agent (workflow) run is completed. <br /><br /> Note: This event may fire multiple times for the same execution and is not triggered for runs from the dashboard, only when called via SDK or API. | <ul><li>`agent_name` (string)</li><li>`agent_id` (number)</li><li>`agent_execution_id` (number)</li></ul>                                                                                                                                |
 | `report_finished`                            | When a evaluation report is completed.                                                                                                                                                                     | <ul><li>`report_id` (number)</li><li>`report_name` (string)</li></ul>                                                                                                                                                                    |
@@ -7043,6 +7379,8 @@ The [PromptLayer request ID](/features/prompt-history/request-id) is used to tag
   PROMPT_NAME = "ai-poet-test"
   INPUT_VARIABLES = {"topic": "PromptLayer the Premier Prompt Engineering Platform"}
   template = pl_client.templates.get(PROMPT_NAME, {"input_variables": INPUT_VARIABLES})
+  # Note: llm_kwargs structure is provider-specific and may change.
+  # See https://docs.promptlayer.com/features/prompt-registry/overview#setting-execution-parameters
   pl_messages = template["llm_kwargs"]["messages"]
 
   messages = [
@@ -7053,6 +7391,7 @@ The [PromptLayer request ID](/features/prompt-history/request-id) is used to tag
   PROMPT_NAME = "check-the-weather"
   INPUT_VARIABLES = {'location': 'New York'}
   template = pl_client.templates.get(PROMPT_NAME, {"input_variables": INPUT_VARIABLES})
+  # Note: llm_kwargs structure is provider-specific and may change.
   pl_messages = template["llm_kwargs"]["messages"]
   messages = [
       (convert_role(pl_message["role"]), convert_content(pl_message["content"])) for pl_message in pl_messages
@@ -7850,7 +8189,8 @@ This tutorial walks you through building an AI application that generates cake r
 * View logs and debug issues
 
 <Info>
-  [Create an account](https://dashboard.promptlayer.com/create-account) to follow along.
+  [Create an account](https://dashboard.promptlayer.com/create-account) to
+  follow along.
 </Info>
 
 ## Creating Your First Prompt
@@ -7936,11 +8276,12 @@ Save your prompt by clicking **Save Template**.
 PromptLayer tracks every change you make to a prompt. Each save creates a new version with a record of what changed, when, and by whom.
 
 <Accordion title="Prompt Writing Tips">
-  * Use headers to structure your prompt (`**Section**:`)
-  * Be specific about output format
-  * Include examples when possible
-
-  PromptLayer supports [Jinja2 templates](/features/prompt-registry/template-variables#jinja2-templates) for more advanced variable logic. For structured outputs, see our guide on [tool calling with LLMs](https://blog.promptlayer.com/tool-calling-with-llms-how-and-when-to-use-it/).
+  * Use headers to structure your prompt (`**Section**:`) - Be specific about
+    output format - Include examples when possible PromptLayer supports [Jinja2
+    templates](/features/prompt-registry/template-variables#jinja2-templates) for
+    more advanced variable logic. For structured outputs, see our guide on [tool
+    calling with
+    LLMs](https://blog.promptlayer.com/tool-calling-with-llms-how-and-when-to-use-it/).
 </Accordion>
 
 ### Editing Prompts
@@ -7990,7 +8331,9 @@ PromptLayer is model-agnostic. You can switch between OpenAI, Anthropic, Google,
 All prompts work across models, including [function calling and tool use](/features/prompt-registry/tool-calling). You can also connect [private models or custom hosts](/features/custom-providers), and build [fine-tuned models](/why-promptlayer/fine-tuning).
 
 <Note>
-  Any model with a `base_url` can be added as a [custom provider](/features/custom-providers) - including self-hosted models, Azure OpenAI, or any OpenAI-compatible API.
+  Any model with a `base_url` can be added as a [custom
+  provider](/features/custom-providers) - including self-hosted models, Azure
+  OpenAI, or any OpenAI-compatible API.
 </Note>
 
 ## Deploying to Prod
@@ -8097,7 +8440,8 @@ For agents, [traces](/running-requests/traces) show each step of the workflow as
 </Frame>
 
 <Tip>
-  Continue to [Quickstart Part 2](/quickstart-part-two) to learn about evaluations, backtests, and connecting PromptLayer to your code.
+  Continue to [Quickstart Part 2](/quickstart-part-two) to learn about
+  evaluations, backtests, and connecting PromptLayer to your code.
 </Tip>
 
 You can also watch our [Tutorial Videos](/tutorial-videos) for guided walkthroughs.
@@ -8841,17 +9185,19 @@ Agents use the same node types as evaluation pipelines. For the complete list of
 
 Common node types include:
 
-| Node Type            | Description                        |
-| -------------------- | ---------------------------------- |
-| `VARIABLE`           | Static value                       |
-| `CODE_EXECUTION`     | Run Python or JavaScript code      |
-| `PROMPT_TEMPLATE`    | Call an LLM with a prompt template |
-| `ENDPOINT`           | Make an HTTP request               |
-| `COMPARE`            | Compare two values                 |
-| `CONTAINS`           | Check if string contains value     |
-| `LLM_ASSERTION`      | LLM-based evaluation               |
-| `AI_DATA_EXTRACTION` | Extract structured data            |
-| `CODING_AGENT`       | Claude Code sandbox                |
+| Node Type            | Description                                                                                          |
+| -------------------- | ---------------------------------------------------------------------------------------------------- |
+| `VARIABLE`           | Static value                                                                                         |
+| `CODE_EXECUTION`     | Run Python or JavaScript code                                                                        |
+| `PROMPT_TEMPLATE`    | Call an LLM with a prompt template                                                                   |
+| `ENDPOINT`           | Make an HTTP request                                                                                 |
+| `FOR_LOOP`           | Iterate over a collection ([details](/features/evaluations/column-types#for-loop-for_loop))          |
+| `WHILE_LOOP`         | Execute until condition is met ([details](/features/evaluations/column-types#while-loop-while_loop)) |
+| `COMPARE`            | Compare two values                                                                                   |
+| `CONTAINS`           | Check if string contains value                                                                       |
+| `LLM_ASSERTION`      | LLM-based evaluation                                                                                 |
+| `AI_DATA_EXTRACTION` | Extract structured data                                                                              |
+| `CODING_AGENT`       | Claude Code sandbox                                                                                  |
 
 ## Response
 
@@ -9142,7 +9488,7 @@ Use the `status` parameter to control which evaluations are returned based on th
 * `all`: Returns both active and deleted evaluations
 
 
-# Get All Prompt Templates
+# List Prompt Templates
 Source: https://docs.promptlayer.com/reference/list-prompt-templates
 
 GET /prompt-templates
@@ -9167,12 +9513,12 @@ Use the `status` parameter to control which prompt templates are returned based 
 This endpoint requires API key authentication via the `X-API-KEY` header.
 
 
-# Get All Workflows / Agents
+# List Agents
 Source: https://docs.promptlayer.com/reference/list-workflows
 
 GET /workflows
 
-Get a list of all workflows/agents in the system.
+Get a list of all agents in the system.
 
 
 # Log Request
@@ -9215,6 +9561,72 @@ When logging requests that use structured outputs (JSON schemas), include the sc
 For complete examples with OpenAI, Anthropic, Google Gemini, and detailed implementation guidance, see:
 
 **[Logging Structured Outputs Guide →](/features/prompt-history/structured-output-logging)**
+
+## Using Extended Thinking / Reasoning
+
+When logging requests that use extended thinking (Anthropic), thinking mode (Google), or reasoning (OpenAI), the configuration must be passed inside the `parameters` field using provider-specific formats:
+
+| Provider  | Parameter          | Example                                                                    |
+| --------- | ------------------ | -------------------------------------------------------------------------- |
+| Anthropic | `thinking`         | `{"thinking": {"type": "enabled", "budget_tokens": 10000}}`                |
+| Google    | `thinking_config`  | `{"thinking_config": {"include_thoughts": true, "thinking_budget": 8000}}` |
+| OpenAI    | `reasoning_effort` | `{"reasoning_effort": "high"}`                                             |
+
+For complete examples with thinking content blocks and full code samples, see:
+
+**[Logging Extended Thinking Guide →](/features/prompt-history/custom-logging#logging-extended-thinking-and-reasoning)**
+
+## Error Tracking
+
+You can log failed or problematic requests using the `status`, `error_type`, and `error_message` fields. This is useful for monitoring error rates, debugging issues, and tracking provider reliability.
+
+### Example: Logging a Failed Request
+
+```json theme={null}
+{
+  "provider": "openai",
+  "model": "gpt-4",
+  "api_type": "chat-completions",
+  "input": {
+    "type": "chat",
+    "messages": [{"role": "user", "content": "Hello"}]
+  },
+  "output": {
+    "type": "chat",
+    "messages": []
+  },
+  "request_start_time": "2024-01-15T10:30:00Z",
+  "request_end_time": "2024-01-15T10:30:30Z",
+  "status": "ERROR",
+  "error_type": "PROVIDER_TIMEOUT",
+  "error_message": "Request timed out after 30 seconds"
+}
+```
+
+### Example: Logging a Warning
+
+Use `WARNING` status for requests that succeeded but had issues (e.g., retries, degraded responses):
+
+```json theme={null}
+{
+  "provider": "anthropic",
+  "model": "claude-3-sonnet",
+  "api_type": "chat-completions",
+  "input": {
+    "type": "chat",
+    "messages": [{"role": "user", "content": "Summarize this"}]
+  },
+  "output": {
+    "type": "chat",
+    "messages": [{"role": "assistant", "content": "Summary..."}]
+  },
+  "request_start_time": "2024-01-15T10:30:00Z",
+  "request_end_time": "2024-01-15T10:30:05Z",
+  "status": "WARNING",
+  "error_type": "PROVIDER_RATE_LIMIT",
+  "error_message": "Succeeded after 2 retries due to rate limiting"
+}
+```
 
 ## Related Documentation
 
@@ -9522,27 +9934,56 @@ The Python library is a wrapper over our REST API. If you use another language, 
 
 Here are the calls you can make via our REST API:
 
-1. [Get Prompt Template](/reference/templates-get)
-2. [Publish Prompt Template](/reference/templates-publish)
-3. [Get Prompt Template Labels](/reference/templates-labels-get)
-4. [Create Prompt Template Label](/reference/prompt-labels-create)
-5. [Move Prompt Template Labels](/reference/prompt-labels-patch)
-6. [Delete Prompt Template Label](/reference/prompt-labels-delete)
-7. [Track Score](/reference/track-score)
-8. [Track Prompt](/reference/track-prompt)
-9. [Track Group](/reference/track-group)
-10. [Track Metadata](/reference/track-metadata)
-11. [Get All Prompt Templates](/reference/list-prompt-templates)
-12. [List Datasets](/reference/list-datasets)
-13. [Create Dataset Group](/reference/create-dataset-group)
-14. [Create Dataset Version from File](/reference/create-dataset-version-from-file)
-15. [Create Dataset Version from Filter Params](/reference/create-dataset-version-from-filter-params)
-16. [Create Dataset from History](/reference/create-dataset-version-from-filter-params)
-17. [Create Evaluation Pipeline](/reference/create-reports)
-18. [Delete Reports by Name](/reference/delete-reports-by-name)
-19. [Get Agent Version Execution Results](/reference/workflow-version-execution-results)
-20. [Run Agent](/reference/run-workflow)
-21. [Create Spans Bulk](/reference/spans-bulk)
+### Prompt Templates
+
+* [Get Prompt Template](/reference/templates-get)
+* [Get Prompt Template (Raw)](/reference/templates-get-raw)
+* [List Prompt Templates](/reference/list-prompt-templates)
+* [Publish Prompt Template](/reference/templates-publish)
+* [List Prompt Template Labels](/reference/templates-labels-get)
+* [Create Prompt Template Label](/reference/prompt-labels-create)
+* [Move Prompt Template Label](/reference/prompt-labels-patch)
+* [Delete Prompt Template Label](/reference/prompt-labels-delete)
+* [Get Snippet Usage](/reference/get-snippet-usage)
+
+### Tracking
+
+* [Log Request](/reference/log-request)
+* [Track Prompt](/reference/track-prompt)
+* [Track Score](/reference/track-score)
+* [Track Metadata](/reference/track-metadata)
+* [Track Group](/reference/track-group)
+* [Create Spans Bulk](/reference/spans-bulk)
+
+### Datasets
+
+* [List Datasets](/reference/list-datasets)
+* [Create Dataset Group](/reference/create-dataset-group)
+* [Create Dataset Version from File](/reference/create-dataset-version-from-file)
+* [Create Dataset Version from Filter Params](/reference/create-dataset-version-from-filter-params)
+
+### Evaluations
+
+* [List Evaluations](/reference/list-evaluations)
+* [Create Evaluation Pipeline](/reference/create-reports)
+* [Run Report](/reference/run-report)
+* [Get Report](/reference/get-report)
+* [Get Report Score](/reference/get-report-score)
+* [Add Report Columns](/reference/add-report-columns)
+* [Update Report Score Card](/reference/update-report-score-card)
+* [Delete Reports by Name](/reference/delete-reports-by-name)
+
+### Agents
+
+* [List Agents](/reference/list-workflows)
+* [Create Agent](/reference/create-workflow)
+* [Update Agent](/reference/patch-workflow)
+* [Run Agent](/reference/run-workflow)
+* [Get Agent Version Execution Results](/reference/workflow-version-execution-results)
+
+### Other
+
+* [Create Folder](/reference/create-folder)
 
 
 # Run Full Evaluation
@@ -9659,8 +10100,8 @@ When included, the `log_request` field creates a request log associated with the
 * **model** (string, required): The model name
 * **input** (object, required): The input template (chat or completion format)
 * **output** (object, required): The output template (chat or completion format)
-* **request\_start\_time** (datetime, required): ISO format datetime
-* **request\_end\_time** (datetime, required): ISO format datetime
+* **request\_start\_time** (datetime, optional): ISO format datetime. If omitted, defaults to the parent span's `start_time`.
+* **request\_end\_time** (datetime, optional): ISO format datetime. If omitted, defaults to the parent span's `end_time`.
 * **parameters** (object, optional): Model parameters used
 * **tags** (array\[string], optional): Tags to associate with the request
 * **metadata** (object, optional): Metadata key-value pairs
@@ -9682,6 +10123,8 @@ Returns a JSON object with:
 * **request\_logs** (array, optional): Array of created request log objects (only present if log\_request was provided)
 
 ## Example Request
+
+### With explicit request times
 
 ```json theme={null}
 {
@@ -9749,10 +10192,71 @@ Returns a JSON object with:
 }
 ```
 
+### With inherited span times
+
+When `request_start_time` and `request_end_time` are omitted, they are automatically inherited from the span's `start_time` and `end_time`:
+
+```json theme={null}
+{
+  "spans": [
+    {
+      "name": "llm_call",
+      "context": {
+        "trace_id": "d4b5e2a1-3c8f-4e9a-b7d6-1a2b3c4d5e6f",
+        "span_id": "b2c3d4e5-6f7a-8b9c-0d1e-2f3a4b5c6d7e",
+        "trace_state": ""
+      },
+      "kind": "SpanKind.INTERNAL",
+      "parent_id": null,
+      "start_time": 1630000000000000000,
+      "end_time": 1630000001000000000,
+      "status": {
+        "status_code": "StatusCode.OK",
+        "description": "OK"
+      },
+      "attributes": {},
+      "resource": {
+        "attributes": {
+          "service.name": "my-app"
+        },
+        "schema_url": ""
+      },
+      "log_request": {
+        "provider": "openai",
+        "model": "gpt-3.5-turbo",
+        "input": {
+          "type": "chat",
+          "messages": [
+            {
+              "role": "user",
+              "content": [{"type": "text", "text": "Hello!"}]
+            }
+          ]
+        },
+        "output": {
+          "type": "chat",
+          "messages": [
+            {
+              "role": "assistant",
+              "content": [{"type": "text", "text": "Hi there!"}]
+            }
+          ]
+        },
+        "prompt_name": "greeting_prompt",
+        "prompt_version_number": 1,
+        "input_tokens": 5,
+        "output_tokens": 3
+      }
+    }
+  ]
+}
+```
+
 ## Notes
 
 * Spans with names "openai.OpenAI" or "anthropic.Anthropic" are excluded from processing
 * When `log_request` is provided, the created request log will be associated with the span via the span\_id
+* If `request_start_time` or `request_end_time` is omitted from `log_request`, the value is inherited from the parent span's `start_time` or `end_time` (converted from nanoseconds). This avoids requiring you to redundantly set both span and request log times.
 * If a prompt\_name is specified but not found, the span will still be created but the log\_request creation will be skipped for that span
 * All operations are atomic - if any span creation fails, the entire batch is rolled back
 
@@ -9766,8 +10270,80 @@ Retrieve a prompt template using either the `prompt_name` or `prompt_id`. Option
 
 PromptLayer will try to read the model provider from the parameters you attached to the prompt template. You can optionally pass in a `provider` to override the one set in the Prompt Registry. This will return LLM-specific arguments that can be passed directly into your LLM client. To format the template with input variables, use `input_variables`.
 
+<Warning>
+  **Provider-Specific Schema Notice**
 
-# Get Prompt Template Labels
+  The `llm_kwargs` object in the response is provider-specific and its structure may change without notice as LLM providers update their APIs (e.g., Provider's system message format changing from string to an array).
+
+  For stable, provider-agnostic prompt data, use `prompt_template` instead of `llm_kwargs`. Do not hard-code assumptions about `llm_kwargs` structure in production applications.
+</Warning>
+
+
+# Get Prompt Template (Raw)
+Source: https://docs.promptlayer.com/reference/templates-get-raw
+
+GET /prompt-templates/{identifier}
+Retrieve raw prompt template data without applying input variables. Designed for GitHub sync, local caching, and template inspection. By default, snippets are resolved (expanded). Use resolve_snippets=false to get the raw template with snippet references intact.
+
+Retrieve raw prompt template data without applying input variables. This endpoint is designed for:
+
+* **GitHub sync**: Use `resolve_snippets=false` to get the raw template with `@@@snippet@@@` references intact
+* **Local caching**: Fetch resolved templates with optional `llm_kwargs` for offline use
+* **Template inspection**: View template structure and metadata without executing
+
+Unlike the [POST endpoint](/reference/templates-get), this GET endpoint does not accept `input_variables` or `provider` in a request body. Instead, it returns the raw template data with placeholders preserved.
+
+### Query Parameters
+
+| Parameter            | Type    | Default | Description                                                                                     |
+| -------------------- | ------- | ------- | ----------------------------------------------------------------------------------------------- |
+| `version`            | integer | -       | Specific version number. Mutually exclusive with `label`.                                       |
+| `label`              | string  | -       | Release label name (e.g. `prod`). Mutually exclusive with `version`.                            |
+| `resolve_snippets`   | boolean | `true`  | When `true`, snippets are expanded. When `false`, raw `@@@snippet@@@` references are preserved. |
+| `include_llm_kwargs` | boolean | `false` | When `true`, includes provider-specific LLM API format in the response.                         |
+
+### Caching
+
+Responses are cached by default. To bypass the cache, send the `Cache-Control: no-cache` header.
+
+<Warning>
+  **Provider-Specific Schema Notice**
+
+  The `llm_kwargs` field (when requested via `include_llm_kwargs=true`) is provider-specific and its structure may change without notice as LLM providers update their APIs.
+
+  For stable, provider-agnostic prompt data, use `prompt_template` instead of `llm_kwargs`.
+</Warning>
+
+### Examples
+
+```bash theme={null}
+# Default: resolved snippets, latest version
+curl -H "X-API-KEY: your_api_key" \
+  https://api.promptlayer.com/prompt-templates/my-prompt
+
+# Raw template with snippet references (for GitHub sync)
+curl -H "X-API-KEY: your_api_key" \
+  "https://api.promptlayer.com/prompt-templates/my-prompt?resolve_snippets=false"
+
+# With llm_kwargs (for local caching)
+curl -H "X-API-KEY: your_api_key" \
+  "https://api.promptlayer.com/prompt-templates/my-prompt?include_llm_kwargs=true"
+
+# Specific version
+curl -H "X-API-KEY: your_api_key" \
+  "https://api.promptlayer.com/prompt-templates/my-prompt?version=2"
+
+# By release label
+curl -H "X-API-KEY: your_api_key" \
+  "https://api.promptlayer.com/prompt-templates/my-prompt?label=prod"
+```
+
+### Authentication
+
+This endpoint requires API key authentication via the `X-API-KEY` header.
+
+
+# List Prompt Template Labels
 Source: https://docs.promptlayer.com/reference/templates-labels-get
 
 GET /prompt-templates/{identifier}/labels
@@ -9798,8 +10374,8 @@ pl_group_id = promptlayer_client.group.create()
 import requests
 response = requests.post(
   "https://api.promptlayer.com/rest/track-group",
+  headers={"X-API-KEY": "<YOUR_API_KEY>"},
   json={
-      "api_key": "<YOUR_API_KEY>",
       "request_id": "<REQUEST_ID>",
       "group_id": pl_group_id,
   },
@@ -9820,8 +10396,8 @@ Associate a metadata dictionary with a request. This can be used for things like
 import requests
 response = requests.post(
   "https://api.promptlayer.com/rest/track-metadata",
+  headers={"X-API-KEY": "<YOUR_API_KEY>"},
   json={
-      "api_key": "<YOUR_API_KEY>",
       "request_id": "<REQUEST_ID>",
       "metadata": {"session_id": "abc123", "user_id": "user123"}
   },
@@ -9842,8 +10418,8 @@ Associate a prompt template with a request.
 import requests
 response = requests.post(
   "https://api.promptlayer.com/rest/track-prompt",
+  headers={"X-API-KEY": "<YOUR_API_KEY>"},
   json={
-      "api_key": "<YOUR_API_KEY>",
       "prompt_name": "<PROMPT_NAME>",
       "prompt_input_variables": {"variable1": "value1", "variable2": "value2"},
       "request_id": "<REQUEST_ID>",
@@ -10082,6 +10658,12 @@ Think of Prompt Blueprints as a universal language for LLM interactions that shi
 ## Accessing the Prompt Blueprint
 
 Instead of accessing the raw LLM response via `response["raw_response"]`, it's recommended to use the standardized `response["prompt_blueprint"]`. This ensures consistency across different providers.
+
+<Warning>
+  **Provider-Specific Schema Notice**
+
+  The `raw_response` object structure is provider-specific and may change without notice as LLM providers update their APIs. PromptLayer passes through the native format from each provider. For stable, provider-agnostic prompt data, always use `prompt_blueprint` instead.
+</Warning>
 
 ```python theme={null}
 response = promptlayer_client.run(
@@ -10652,7 +11234,15 @@ When streaming is enabled, each chunk includes both the raw streaming response a
 
 ### Overriding Model Parameters
 
-You can also override `provider` and `model` at runtime to choose a different LLM provider or model. This is useful if you want to use a different provider than the one specified in the prompt template. PromptLayer will automatically return the corrent `llm_kwargs` for the specified provider and model with default values for the parameters corresponding to the `provider` and `model`.
+You can also override `provider` and `model` at runtime to choose a different LLM provider or model. This is useful if you want to use a different provider than the one specified in the prompt template. PromptLayer will automatically return the correct `llm_kwargs` for the specified provider and model with default values for the parameters corresponding to the `provider` and `model`.
+
+<Warning>
+  **Provider-Specific Schema Notice**
+
+  The `llm_kwargs` and `raw_response` objects have provider-specific structures that may change as LLM providers update their APIs. PromptLayer passes through the native format required by each provider.
+
+  For stable, provider-agnostic prompt data, use `prompt_blueprint.prompt_template` instead of relying on the structure of provider-specific objects.
+</Warning>
 
 <CodeGroup>
   ```python Python SDK theme={null}
@@ -11085,6 +11675,8 @@ def main():
 
 @pl_client.traceable()
 def openai_call():
+    # Note: llm_kwargs structure is provider-specific and may change.
+    # See https://docs.promptlayer.com/features/prompt-registry/overview#setting-execution-parameters
     OpenAI = pl_client.openai.OpenAI
     openai = OpenAI()
     template = pl_client.templates.get("simple-greeting")
@@ -11694,14 +12286,20 @@ Input Variables are the data you feed into an Agent. They can be text, numbers, 
 
 Nodes are the building blocks of the Agent. Each node represents a specific action or decision. Types include:
 
-* **Prompt Template**: Make an LLM call using a specified prompt template and input variables.
+* **Prompt Template**: Make an LLM call using a prompt template from the registry or an [inline template](#inline-templates) defined directly in the node configuration.
 * **Callback Endpoint**: Make external API calls (ex: RAG steps) or trigger callback requests after workflow processes finish.
 * **Coding Agent**: Execute AI coding agents (such as Claude Code) in a sandboxed environment for data transformations, file processing, and complex analysis. [Learn more about Coding Agent](/features/evaluations/eval-types#coding-agent)
+* **For Loop**: Iterate over collections, running a prompt or sub-workflow on each item. [Learn more about For Loop](/running-requests/workflow-loops#for-loop-for_loop)
+* **While Loop**: Execute repeatedly until a condition is met. [Learn more about While Loop](/running-requests/workflow-loops#while-loop-while_loop)
 * **Math Operator**: Perform numerical comparisons or calculations between different data sources.
 * **Parse Value**: Extract and process specific data types like strings, numbers, or JSON from inputs.
 
 <Info>
-  **Want to learn about all available node types?** Agent nodes use the same building blocks as evaluation types. [View all eval types](/features/evaluations/eval-types) to see the full catalog of nodes you can use in your agents, including LLM assertions, data extraction, conversation simulators, and more.
+  **Want to learn about all available node types?** Agent nodes use the same
+  building blocks as evaluation types. [View all eval
+  types](/features/evaluations/eval-types) to see the full catalog of nodes you
+  can use in your agents, including LLM assertions, data extraction,
+  conversation simulators, and more.
 </Info>
 
 <img alt="Nodes" />
@@ -11726,6 +12324,53 @@ You can compare values against numbers or booleans, and multiple conditions can 
 Output Nodes determine what your Agent returns as its final result. When using Conditional Edges to create different paths in your workflow, you can place multiple Output Nodes at the end of different branches. Similar to a "return statement" in programming, whichever Output Node executes successfully first will provide the final output. This allows your Agent to deliver different results based on the specific conditions that were met during the workflow.
 
 <img alt="Output Nodes" />
+
+### 5. Inline Templates
+
+Prompt Template nodes can reference a template from the Prompt Registry or define a template inline. Inline templates are useful for quick iteration and experimentation without committing a prompt to the registry.
+
+When creating or updating an agent programmatically, use `inline_template` instead of `template` in a Prompt Template node's configuration:
+
+```json theme={null}
+{
+  "name": "Generate Summary",
+  "node_type": "PROMPT_TEMPLATE",
+  "configuration": {
+    "inline_template": {
+      "inline": true,
+      "prompt_template": {
+        "type": "chat",
+        "messages": [
+          {
+            "role": "system",
+            "content": [{"type": "text", "text": "Summarize the following text concisely."}]
+          },
+          {
+            "role": "user",
+            "content": [{"type": "text", "text": "{input_text}"}]
+          }
+        ]
+      },
+      "metadata": {
+        "model": {
+          "provider": "openai",
+          "name": "gpt-4",
+          "parameters": {"temperature": 0.3}
+        }
+      }
+    },
+    "prompt_template_variable_mappings": {
+      "input_text": "document"
+    }
+  },
+  "dependencies": ["document"],
+  "is_output_node": false
+}
+```
+
+<Info>
+  You must provide exactly one of `template` (registry reference) or `inline_template` (inline content) in a Prompt Template node's configuration. They are mutually exclusive. You can convert an inline template to a registry template at any time from the UI using "Save to Registry".
+</Info>
 
 ## Versioning
 
@@ -12385,6 +13030,152 @@ The key to writing good prompts is to build a dev environment that let's your te
 </div>
 
 
+# RBAC
+Source: https://docs.promptlayer.com/why-promptlayer/rbac
+
+
+
+**Role-based Access Control (RBAC)** provides fine-grained permission management for your workspaces. With RBAC enabled, you can define roles at the organization level and apply them to workspace members, giving you precise control over who can do what in each workspace.
+
+## How RBAC Works
+
+RBAC operates on a simple but powerful principle: **roles are defined at the organization level, but applied at the workspace level**. This means you can create a set of roles once for your organization and reuse them across all your workspaces, while still maintaining workspace-specific access control.
+
+### Role Definition (Organization Level)
+
+Roles belong to your organization and can be used across all workspaces. You have two options:
+
+* **Default Roles**: System-provided roles available to all organizations (`Contributor`, `Publisher`, `Developer`, `Admin`)
+* **Custom Roles**: Organization-specific roles you create to match your team's needs
+
+Each role consists of a name and a set of permissions that define what actions that role allows.
+
+### Role Application (Workspace Level)
+
+When you assign roles to workspace members, you're granting them specific permissions within that workspace. A user can have different roles in different workspaces, and can even have multiple roles in the same workspace. When a user has multiple roles, their effective permissions are the combination of all permissions from their assigned roles.
+
+For example, if Alice has both `Contributor` and `Publisher` roles in Workspace A, she can edit prompts and deploy them to production. But if she only has the `Contributor` role in Workspace B, she can edit prompts there but cannot deploy them.
+
+## Default Roles
+
+<img alt="RBAC Roles" />
+
+PromptLayer provides four default roles that cover most common use cases:
+
+### Contributor
+
+**What they can do**: Create and edit content
+
+* **Prompt templates and versions**: Create, update, rename, delete, move, and duplicate prompt templates and versions
+* **Workflows**: Create, update, rename, delete, move, and duplicate workflows and workflow versions
+* **Datasets**: Create, update, rename, delete, move, and duplicate datasets and dataset groups
+* **Reports**: Create, update, rename, delete, move, and duplicate reports and evaluations
+* **Metadata**: Edit metadata associated with requests and entities
+
+**Best for**: Team members who need to create and iterate on prompts, workflows, and evaluations, but don't need to deploy changes to production.
+
+### Publisher
+
+**What they can do**: Deploy changes to production
+
+* Create and manage prompt labels
+* Deploy prompt changes through changelogs
+* Create and manage workflow labels
+* Move labels between versions
+
+**Best for**: Team members who need to deploy changes to production. Typically combined with `Contributor` for users who need both editing and deployment capabilities.
+
+### Developer
+
+**What they can do**: Manage API access
+
+* Create, view, and delete API keys
+
+**Best for**: Developers who need to manage API keys for programmatic access to your prompts and workflows.
+
+### Admin
+
+**What they can do**: Everything
+
+* All permissions from other roles
+* Manage workspace member roles and permissions
+* Approve protected label changes
+* Full administrative access
+
+**Best for**: Workspace administrators who need complete control over the workspace.
+
+<Warning>
+  Users with the `Admin` role can perform destructive workspace-wide actions,
+  including inviting and removing other members from the workspace, even other
+  admins. Grant this role only to trusted team members who need full
+  administrative control.
+</Warning>
+
+## Custom Roles
+
+<img alt="Create Custom Role" />
+
+Beyond the default roles, you can create custom roles tailored to your organization's specific needs. Custom roles are defined at the organization level and can be reused across all workspaces.
+
+Only organization owners can create custom roles. When creating a custom role, you select which permissions to include, allowing you to create roles that match your team's workflow exactly. For example, you might create a "QA Tester" role that can only edit reports and datasets, or a "Deployment Manager" role that combines `Publisher` and `Developer` permissions.
+
+## Permissions
+
+RBAC uses fine-grained permissions that control specific actions:
+
+* **`PROMPT_EDIT`**: Edit prompt templates, create versions, modify metadata
+* **`PROMPT_DEPLOY`**: Create labels, deploy changes, move labels between versions
+* **`WORKFLOW_EDIT`**: Edit workflows, create versions, modify structure
+* **`WORKFLOW_DEPLOY`**: Create workflow labels, deploy workflow changes
+* **`DATASET_EDIT`**: Create and manage datasets and dataset groups
+* **`REPORT_EDIT`**: Create, edit, and run reports and evaluations
+* **`METADATA_EDIT`**: Edit metadata associated with requests
+* **`MANAGE_API_KEYS`**: Create and delete API keys
+* **`ADMIN`**: Full administrative access, including managing member roles
+
+<Warning>
+  The `ADMIN` permission grants full administrative access and allows users to
+  perform destructive workspace-wide actions, including inviting and removing
+  other members from the workspace, even other admins. Grant this permission
+  only to trusted team members who need full administrative control.
+</Warning>
+
+## Enabling RBAC
+
+RBAC is enabled per organization. When RBAC is disabled, all workspace members receive default permissions (all permissions except `ADMIN`) automatically. When RBAC is enabled, workspace members have no permissions by default and must be explicitly assigned roles to gain access.
+
+This secure-by-default approach ensures that when RBAC is enabled, users only get the permissions they need, following the principle of least privilege.
+
+## Managing Roles
+
+Users with the `ADMIN` permission in a workspace can assign roles to members of that workspace. Organization owners can assign roles to members in any workspace within their organization.
+
+To manage a member's roles:
+
+1. Go to your organization settings
+2. Select your organization
+3. Navigate to Workspaces
+4. Select the workspace
+5. Click the three dots menu next to the member
+6. Choose "Manage roles"
+
+<img alt="Manage Roles" />
+
+When assigning roles, remember that:
+
+* Roles are assigned to workspace members (not directly to users)
+* Effective permissions are the union of all permissions from assigned roles
+* Role assignments are workspace-specific
+
+## Best Practices
+
+* **Start with default roles**: The default roles cover most common scenarios. Use them before creating custom roles.
+* **Follow least privilege**: Only grant the minimum permissions needed for each team member to do their job.
+* **Combine roles strategically**: Assign multiple roles when users need permissions from different roles (e.g., `Contributor` + `Publisher` for someone who edits and deploys).
+* **Review regularly**: Periodically review role assignments to ensure they still match your team's needs as roles and responsibilities evolve.
+* **Use custom roles thoughtfully**: Create custom roles when you have a recurring pattern that doesn't fit the default roles, not for one-off cases.
+
+
 # Organizations & Workspaces
 Source: https://docs.promptlayer.com/why-promptlayer/shared-workspaces
 
@@ -12416,6 +13207,8 @@ Organizations support different user roles:
 * **Owner**: Full administrative access, billing management, and ability to manage all workspaces
 * **Admin**: Can manage users, create workspaces, and access all workspace data
 * **Member**: Default role with access to assigned workspaces
+
+For more granular workspace-level permission control, [RBAC (Role-Based Access Control)](/why-promptlayer/rbac) allows you to define custom roles and fine-grained permissions at the workspace level.
 
 ### Managing Your Organization
 

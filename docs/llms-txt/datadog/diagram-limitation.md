@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Cloudcraft (Standalone) > FAQ > How many diagrams can I have on my
   account?
-source_url: https://docs.datadoghq.com/faq/diagram-limitation/index.html
 ---
 
 # How many diagrams can I have on my account?

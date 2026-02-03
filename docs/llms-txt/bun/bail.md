@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/test/bail.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Bail early with the Bun test runner
 
 Use the `--bail` flag to bail on a test run after a single failure. This is useful for aborting as soon as possible in a continuous integration environment.
@@ -19,4 +23,4 @@ bun test --bail=10
 
 ***
 
-See [Docs > Test runner](https://bun.sh/docs/cli/test) for complete documentation of `bun test`.
+See [Docs > Test runner](/test) for complete documentation of `bun test`.

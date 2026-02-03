@@ -1,5 +1,9 @@
 # Source: https://docs.squared.ai/guides/data-modelling/sync-modes/incremental.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Incremental
 
 > Incremental sync only transfer new or updated data, minimizing data transfer

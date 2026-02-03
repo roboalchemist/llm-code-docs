@@ -1,7 +1,6 @@
 # Source: https://turbo.build/messages/unnecessary-package-task-syntax.md
 
 # Unnecessary package task syntax error
-Description: Learn more about errors with unnecessary package task syntax in Turborepo.
 
 ## Why this error occurred
 
@@ -38,3 +37,7 @@ Remove the package prefix from the task name:
   }
 }
 ```
+
+---
+
+[View full sitemap](/sitemap.md)

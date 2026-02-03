@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/invoicing/download-invoices.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Download invoices
 
 When a new invoice is `finalized`, Lago will automatically send a

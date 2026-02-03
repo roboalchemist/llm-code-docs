@@ -26,30 +26,32 @@ Issues will not be auto-closed until the associated cycle and project are comple
 
 ## Auto-archive
 
-Archiving happens automatically with no user action required - there is no way to manually archive issues.
+Archiving happens automatically with no option to manually archive items.
 
-![auto-archive issues closed for selection in settings](https://webassets.linear.app/images/ornj730p/production/a6b1715ab09502f90afe419afa83a926a1cb379d-1414x426.png?q=95&auto=format&dpr=2)
+![Auto-archive closed issues, cycles, and projects](https://webassets.linear.app/images/ornj730p/production/d65e6891b0933632dd09f3ddf3de9ede8f640b3a-1452x466.png?q=95&auto=format&dpr=2)
 
-You can adjust the auto-archive time period, after which closed issues are auto-archived in _Team Settings > Workflow_. Changes made will apply within 24 hours, so if you have issues that have been completed for 2 months and change to a 1 month auto-archive schedule, you can expect to see those archive within the next day.
-
-Projects and cycles cannot archive before their issues are archived. Once all issues are archived these entities are archived immediately afterwards. 
+You can adjust the auto-archive time period, after which closed issues are auto-archived in _Team Settings > Issue statuses & automations_. Changes made will apply within 24 hours, so if you have issues that have been completed for 2 months and change to a 1 month auto-archive schedule, you can expect to see those archive within the next day.
 
 ### Issues are not archiving
 
-There are some scenarios in which issues will not archive:
+* The parent issue is not closed
+* Sub-issues are not all closed
+* Sub-issues in another project is not closed
+* The issue's project is not yet available to archive.
 
-* Issues will not be archived if the associated cycle is not completed
-* Issues will not archive if the associated project is not marked as Completed or Cancelled
-* Sub-issues will not archive if the parent issue is not Completed or Cancelled
+If a completed issue is blocked from auto-archiving by a project or another issue, it will still need to wait the necessary auto-archive time. For example, with a 1 month auto-archive period in place, an issue that's been done for 3 months in an active project will archive 1 month after the project has been completed.
 
-> [!NOTE]
-> If a completed issue is blocked from auto-archiving for one of the above reasons, it will still need to wait the necessary auto-archive period when separated from the project, cycle or sub-issue in question.   
->   
-> For example, with a 1 month auto-archive period in place, an issue that's been done for 3 months in an active project will archive 1 month after the project has been completed.
+### Projects are not archiving
+
+Scenarios that prevent a project from archiving:
+
+* The project status is not closed (completed or cancelled category)
+* Updates/changes have been made (e.g. renaming a project)
+* All issues are not yet available to archive. A project's issues has to be available to archive in order for the project to archive. This helps to prevent missing data when looking at a project's graph or other calculations.
 
 ## The archives
 
-![overflow menu on a team showing open archive](https://webassets.linear.app/images/ornj730p/production/e20628c04092db1245ec3354523e019d11e3a6f8-820x454.png?q=95&auto=format&dpr=2)
+![Archives](https://webassets.linear.app/images/ornj730p/production/cd479f2a2c0fdb25c803ee5fa99738c254c13ca4-914x362.png?q=95&auto=format&dpr=2)
 
 Each team has its own archives page where you will find archived or deleted issues, initiatives, cycles, projects, and documents. Access it with the shortcut `G` then `X` or find it in the sidebar under the three dot menu beside each team name. To keep the app speedy, archived issues are loaded on demand rather than stored in the client, so you may find the issues load a little slower on this page than elsewhere in the app.
 

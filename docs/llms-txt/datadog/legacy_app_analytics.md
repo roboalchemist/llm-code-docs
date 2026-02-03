@@ -7,7 +7,6 @@ description: >-
   information for legacy setups and migration guidance to new ingestion
   controls.
 breadcrumbs: Docs > APM > App Analytics
-source_url: https://docs.datadoghq.com/legacy_app_analytics/index.html
 ---
 
 # App Analytics

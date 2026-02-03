@@ -3,8 +3,7 @@
 ---
 title: View and Manage Cases
 description: Datadog, the leading service for cloud-scale monitoring.
-breadcrumbs: Docs > Case Management > View and Manage Cases
-source_url: https://docs.datadoghq.com/case_management/view_and_manage/index.html
+breadcrumbs: Docs > Incident Response > Case Management > View and Manage Cases
 ---
 
 # View and Manage Cases

@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/deployments/scheduling-automatic-backups-for-your-cluster/aws-velero-account-setup-script.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Aws Velero Account Setup Script
 
 > Automate AWS Velero setup for Galileo cluster backups with this script, ensuring seamless backup scheduling and data resilience for AWS deployments.

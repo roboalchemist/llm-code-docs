@@ -4,7 +4,6 @@
 title: Trace Queries Source Data
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > APM > Tracing Guides > Trace Queries Source Data
-source_url: https://docs.datadoghq.com/guide/trace_queries_dataset/index.html
 ---
 
 # Trace Queries Source Data

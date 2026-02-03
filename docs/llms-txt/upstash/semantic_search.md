@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/vector/tutorials/semantic_search.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Simple Semantic Search
 
 In this tutorial, we'll demonstrate how to use Upstash Vector for semantic search. We will upload several documents and perform a search query to find the most semantically similar documents using embeddings generated automatically by Upstash.

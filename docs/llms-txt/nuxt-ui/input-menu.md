@@ -23,17 +23,11 @@ const items = ref<undefined>([
 </template>
 ```
 
-<tip>
+> [!TIP]
+> Use this over an [`Input`](/docs/components/input) to take advantage of Reka UI's [`Combobox`](https://reka-ui.com/docs/components/combobox) component that offers autocomplete capabilities.
 
-Use this over an [`Input`](/docs/components/input) to take advantage of Reka UI's [`Combobox`](https://reka-ui.com/docs/components/combobox) component that offers autocomplete capabilities.
-
-</tip>
-
-<note>
-
-This component is similar to the [`SelectMenu`](/docs/components/select-menu) but it's using an Input instead of a Select.
-
-</note>
+> [!NOTE]
+> This component is similar to the [`SelectMenu`](/docs/components/select-menu) but it's using an Input instead of a Select.
 
 ### Items
 
@@ -151,6 +145,9 @@ const items = ref<InputMenuItem[]>([
 </template>
 ```
 
+> [!TIP]
+> Use the `by` prop to compare objects by a field instead of reference when the `model-value` is an object.
+
 ### Multiple
 
 Use the `multiple` prop to allow multiple selections, the selected items will be displayed as tags.
@@ -170,11 +167,8 @@ const items = ref<undefined>([
 </template>
 ```
 
-<caution>
-
-Ensure to pass an array to the `default-value` prop or the `v-model` directive.
-
-</caution>
+> [!CAUTION]
+> Ensure to pass an array to the `default-value` prop or the `v-model` directive.
 
 ### Delete Icon
 
@@ -195,23 +189,15 @@ const items = ref<undefined>([
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.close` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.close` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.close` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.close` key.
 
 ### Placeholder
 
@@ -289,11 +275,8 @@ const items = ref<undefined>([
 </template>
 ```
 
-<note>
-
-The `highlight` prop is used here to show the focus state. It's used internally when a validation error occurs.
-
-</note>
+> [!NOTE]
+> The `highlight` prop is used here to show the focus state. It's used internally when a validation error occurs.
 
 ### Variant
 
@@ -371,23 +354,15 @@ const items = ref<undefined>([
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.chevronDown` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.chevronDown` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.chevronDown` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.chevronDown` key.
 
 ### Selected Icon
 
@@ -408,23 +383,63 @@ const items = ref<undefined>([
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.check` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.check` key.
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.check` key.
 
-</tip>
+### Clear `4.4+`
+
+Use the `clear` prop to display a clear button when a value is selected.
+
+```vue
+<script setup lang="ts">
+const items = ref<undefined>([
+  'Backlog',
+  'Todo',
+  'In Progress',
+  'Done',
+])
+</script>
+
+<template>
+  <UInputMenu model-value="Backlog" clear :items="items" />
 </template>
+```
 
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
+### Clear Icon `4.4+`
 
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.check` key.
+Use the `clear-icon` prop to customize the clear button [Icon](/docs/components/icon). Defaults to `i-lucide-x`.
 
-</tip>
+```vue
+<script setup lang="ts">
+const items = ref<undefined>([
+  'Backlog',
+  'Todo',
+  'In Progress',
+  'Done',
+])
+</script>
+
+<template>
+  <UInputMenu model-value="Backlog" clear clear-icon="i-lucide-trash" :items="items" />
 </template>
-</framework-only>
+```
+
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.close` key.
+
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.close` key.
 
 ### Avatar
 
@@ -484,23 +499,15 @@ const items = ref<undefined>([
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.loading` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.loading` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.loading` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.loading` key.
 
 ### Disabled
 
@@ -600,11 +607,8 @@ const value = ref(items.value[0])
 </template>
 ```
 
-<tip>
-
-You can also use the `#leading` slot to display the selected icon.
-
-</tip>
+> [!TIP]
+> You can also use the `#leading` slot to display the selected icon.
 
 ### With avatar in items
 
@@ -657,11 +661,8 @@ const value = ref(items.value[0])
 </template>
 ```
 
-<tip>
-
-You can also use the `#leading` slot to display the selected avatar.
-
-</tip>
+> [!TIP]
+> You can also use the `#leading` slot to display the selected avatar.
 
 ### With chip in items
 
@@ -714,11 +715,8 @@ const value = ref(items.value[0])
 </template>
 ```
 
-<note>
-
-In this example, the `#leading` slot is used to display the selected chip.
-
-</note>
+> [!NOTE]
+> In this example, the `#leading` slot is used to display the selected chip.
 
 ### Control open state
 
@@ -740,17 +738,8 @@ defineShortcuts({
 </template>
 ```
 
-<note>
-
-In this example, leveraging [`defineShortcuts`](/docs/composables/define-shortcuts), you can toggle the InputMenu by pressing <kbd value="O">
-
-
-
-</kbd>
-
-.
-
-</note>
+> [!NOTE]
+> In this example, leveraging [`defineShortcuts`](/docs/composables/define-shortcuts), you can toggle the InputMenu by pressing .
 
 ### Control open state on focus
 
@@ -835,17 +824,12 @@ function onCreate(item: string) {
 </template>
 ```
 
-<note>
+> [!NOTE]
+> The create option shows when no match is found by default. Set it to `always` to show it even when similar values exist.
 
-The create option shows when no match is found by default. Set it to `always` to show it even when similar values exist.
-
-</note>
-
-<tip to="#emits">
-
-Use the `@create` event to handle the creation of the item. You will receive the event and the item as arguments.
-
-</tip>
+> [!TIP]
+> See: #emits
+> Use the `@create` event to handle the creation of the item. You will receive the event and the item as arguments.
 
 ### With fetched items
 
@@ -933,11 +917,8 @@ const { data: users, status } = await useFetch('https://jsonplaceholder.typicode
 </template>
 ```
 
-<note>
-
-This example uses [`refDebounced`](https://vueuse.org/shared/refDebounced/#refdebounced) to debounce the API calls.
-
-</note>
+> [!NOTE]
+> This example uses [`refDebounced`](https://vueuse.org/shared/refDebounced/#refdebounced) to debounce the API calls.
 
 ### With filter fields
 
@@ -990,15 +971,13 @@ const { data: users, status } = await useFetch('https://jsonplaceholder.typicode
 </template>
 ```
 
-### With virtualization <badge label="4.1+"></badge>
+### With virtualization `4.1+`
 
 Use the `virtualize` prop to enable virtualization for large lists as a boolean or an object with options like `{ estimateSize: 32, overscan: 12 }`.
 
-<warning target="_blank" to="https://github.com/unovue/reka-ui/issues/1885">
-
-When enabled, all groups are flattened into a single list due to a limitation of Reka UI.
-
-</warning>
+> [!WARNING]
+> See: https://github.com/unovue/reka-ui/issues/1885
+> When enabled, all groups are flattened into a single list due to a limitation of Reka UI.
 
 ```vue [InputMenuVirtualizeExample.vue]
 <script setup lang="ts">
@@ -1012,6 +991,70 @@ const items: InputMenuItem[] = Array(1000).fill(0).map((_, i) => ({
 
 <template>
   <UInputMenu virtualize :items="items" class="w-48" />
+</template>
+```
+
+### With infinite scroll `4.4+`
+
+You can use the [`useInfiniteScroll`](https://vueuse.org/core/useInfiniteScroll/) composable to load more data as the user scrolls.
+
+```vue [InputMenuInfiniteScrollExample.vue]
+<script setup lang="ts">
+import { useInfiniteScroll } from '@vueuse/core'
+
+type User = {
+  firstName: string
+}
+
+type UserResponse = {
+  users: User[]
+  total: number
+  skip: number
+  limit: number
+}
+
+const skip = ref(0)
+
+const { data, status, execute } = await useFetch('https://dummyjson.com/users?limit=10&select=firstName', {
+  key: 'select-menu-users-infinite-scroll',
+  params: { skip },
+  transform: (data?: UserResponse) => {
+    return data?.users.map(user => user.firstName)
+  },
+  lazy: true,
+  immediate: false
+})
+
+const users = ref<string[]>([])
+
+watch(data, () => {
+  users.value = [
+    ...users.value,
+    ...(data.value || [])
+  ]
+})
+
+execute()
+
+const inputMenu = useTemplateRef('inputMenu')
+
+onMounted(() => {
+  useInfiniteScroll(() => inputMenu.value?.viewportRef, () => {
+    skip.value += 10
+  }, {
+    canLoadMore: () => {
+      return status.value !== 'pending'
+    }
+  })
+})
+</script>
+
+<template>
+  <UInputMenu
+    ref="inputMenu"
+    placeholder="Select user"
+    :items="users"
+  />
 </template>
 ```
 
@@ -1053,23 +1096,20 @@ const { data: users } = await useFetch('https://jsonplaceholder.typicode.com/use
 </template>
 ```
 
-<tip>
-
-You can also change the content width globally in your `app.config.ts`:
-
-```text
-export default defineAppConfig({
-  ui: {
-    inputMenu: {
-      slots: {
-        content: 'min-w-fit'
-      }
-    }
-  }
-})
-```
-
-</tip>
+> [!TIP]
+> You can also change the content width globally in your `app.config.ts`:
+> ```text
+> export default defineAppConfig({
+>   ui: {
+>     inputMenu: {
+>       slots: {
+>         content: 'min-w-fit'
+>       }
+>     }
+>   }
+> })
+> 
+> ```
 
 ### As a CountryPicker
 
@@ -1151,16 +1191,25 @@ interface InputMenuProps {
   /**
    * The icon displayed to open the menu.
    */
-  trailingIcon?: string | object | undefined;
+  trailingIcon?: any;
   /**
    * The icon displayed when an item is selected.
    */
-  selectedIcon?: string | object | undefined;
+  selectedIcon?: any;
   /**
    * The icon displayed to delete a tag.
    * Works only when `multiple` is `true`.
    */
-  deleteIcon?: string | object | undefined;
+  deleteIcon?: any;
+  /**
+   * Display a clear button to reset the model value.
+   * Can be an object to pass additional props to the Button.
+   */
+  clear?: boolean | Partial<Omit<ButtonProps, LinkPropsKeys>> | undefined;
+  /**
+   * The icon displayed in the clear button.
+   */
+  clearIcon?: any;
   /**
    * The content of the menu.
    */
@@ -1179,34 +1228,35 @@ interface InputMenuProps {
    * Note: when enabled, all groups are flattened into a single list due to a limitation of Reka UI (https://github.com/unovue/reka-ui/issues/1885).
    * @default "false"
    */
-  virtualize?: boolean | { overscan?: number | undefined; estimateSize?: number | undefined; } | undefined;
+  virtualize?: boolean | { overscan?: number | undefined; estimateSize?: number | ((index: number) => number) | undefined; } | undefined;
   /**
    * When `items` is an array of objects, select the field to use as the value instead of the object itself.
    */
-  valueKey?: GetItemKeys<ArrayOrNested<InputMenuItem>> | undefined;
+  valueKey?: VK | undefined;
   /**
    * When `items` is an array of objects, select the field to use as the label.
    * @default "\"label\""
    */
-  labelKey?: GetItemKeys<ArrayOrNested<InputMenuItem>> | undefined;
+  labelKey?: GetItemKeys<T> | undefined;
   /**
    * When `items` is an array of objects, select the field to use as the description.
    * @default "\"description\""
    */
-  descriptionKey?: GetItemKeys<ArrayOrNested<InputMenuItem>> | undefined;
-  items?: ArrayOrNested<InputMenuItem> | undefined;
+  descriptionKey?: GetItemKeys<T> | undefined;
+  items?: T | undefined;
   /**
    * The value of the InputMenu when initially rendered. Use when you do not need to control the state of the InputMenu.
    */
-  defaultValue?: any;
+  defaultValue?: GetModelValue<T, VK, M> | undefined;
   /**
    * The controlled value of the InputMenu. Can be binded-with with `v-model`.
    */
-  modelValue?: any;
+  modelValue?: GetModelValue<T, VK, M> | undefined;
+  modelModifiers?: Omit<ModelModifiers<GetModelValue<T, VK, M>>, "lazy"> | undefined;
   /**
    * Whether multiple options can be selected or not.
    */
-  multiple?: boolean | undefined;
+  multiple?: M | undefined;
   /**
    * Highlight the ring color like a focus state.
    */
@@ -1214,7 +1264,7 @@ interface InputMenuProps {
   /**
    * Determines if custom user input that does not exist in options can be added.
    */
-  createItem?: boolean | "always" | { position?: "bottom" | "top" | undefined; when?: "empty" | "always" | undefined; } | undefined;
+  createItem?: boolean | "always" | { position?: "top" | "bottom" | undefined; when?: "always" | "empty" | undefined; } | undefined;
   /**
    * Fields to filter items by.
    */
@@ -1223,13 +1273,13 @@ interface InputMenuProps {
    * When `true`, disable the default filters, useful for custom filtering (useAsyncData, useFetch, etc.).
    */
   ignoreFilter?: boolean | undefined;
-  ui?: { root?: ClassNameValue; base?: ClassNameValue; leading?: ClassNameValue; leadingIcon?: ClassNameValue; leadingAvatar?: ClassNameValue; leadingAvatarSize?: ClassNameValue; trailing?: ClassNameValue; trailingIcon?: ClassNameValue; arrow?: ClassNameValue; content?: ClassNameValue; viewport?: ClassNameValue; group?: ClassNameValue; empty?: ClassNameValue; label?: ClassNameValue; separator?: ClassNameValue; item?: ClassNameValue; itemLeadingIcon?: ClassNameValue; itemLeadingAvatar?: ClassNameValue; itemLeadingAvatarSize?: ClassNameValue; itemLeadingChip?: ClassNameValue; itemLeadingChipSize?: ClassNameValue; itemTrailing?: ClassNameValue; itemTrailingIcon?: ClassNameValue; itemWrapper?: ClassNameValue; itemLabel?: ClassNameValue; itemDescription?: ClassNameValue; tagsItem?: ClassNameValue; tagsItemText?: ClassNameValue; tagsItemDelete?: ClassNameValue; tagsItemDeleteIcon?: ClassNameValue; tagsInput?: ClassNameValue; } | undefined;
+  ui?: { root?: ClassNameValue; base?: ClassNameValue; leading?: ClassNameValue; leadingIcon?: ClassNameValue; leadingAvatar?: ClassNameValue; leadingAvatarSize?: ClassNameValue; trailing?: ClassNameValue; trailingIcon?: ClassNameValue; trailingClear?: ClassNameValue; arrow?: ClassNameValue; content?: ClassNameValue; viewport?: ClassNameValue; group?: ClassNameValue; empty?: ClassNameValue; label?: ClassNameValue; separator?: ClassNameValue; item?: ClassNameValue; itemLeadingIcon?: ClassNameValue; itemLeadingAvatar?: ClassNameValue; itemLeadingAvatarSize?: ClassNameValue; itemLeadingChip?: ClassNameValue; itemLeadingChipSize?: ClassNameValue; itemTrailing?: ClassNameValue; itemTrailingIcon?: ClassNameValue; itemWrapper?: ClassNameValue; itemLabel?: ClassNameValue; itemDescription?: ClassNameValue; tagsItem?: ClassNameValue; tagsItemText?: ClassNameValue; tagsItemDelete?: ClassNameValue; tagsItemDeleteIcon?: ClassNameValue; tagsInput?: ClassNameValue; } | undefined;
   /**
    * When `true`, prevents the user from interacting with listbox
    */
   disabled?: boolean | undefined;
   /**
-   * The controlled open state of the Combobox. Can be binded with with `v-model:open`.
+   * The controlled open state of the Combobox. Can be binded with `v-model:open`.
    */
   open?: boolean | undefined;
   /**
@@ -1251,6 +1301,11 @@ interface InputMenuProps {
    */
   resetSearchTermOnSelect?: boolean | undefined;
   /**
+   * When `true` the `modelValue` will be reset to `null` (or `[]` if `multiple`)
+   * @default "true"
+   */
+  resetModelValueOnClear?: boolean | undefined;
+  /**
    * When `true`, hover over item will trigger highlight
    */
   highlightOnHover?: boolean | undefined;
@@ -1263,9 +1318,13 @@ interface InputMenuProps {
    */
   openOnFocus?: boolean | undefined;
   /**
+   * Use this to compare objects by a particular field, or pass your own comparison function for complete control over how objects are compared.
+   */
+  by?: string | ((a: T, b: T) => boolean) | undefined;
+  /**
    * Display an icon based on the `leading` and `trailing` props.
    */
-  icon?: string | object | undefined;
+  icon?: any;
   /**
    * Display an avatar on the left side.
    */
@@ -1277,7 +1336,7 @@ interface InputMenuProps {
   /**
    * Display an icon on the left side.
    */
-  leadingIcon?: string | object | undefined;
+  leadingIcon?: any;
   /**
    * When `true`, the icon will be displayed on the right side.
    */
@@ -1289,8 +1348,7 @@ interface InputMenuProps {
   /**
    * The icon when the `loading` prop is `true`.
    */
-  loadingIcon?: string | object | undefined;
-  autocomplete?: string | undefined;
+  loadingIcon?: any;
   enterKeyHint?: "search" | "enter" | "done" | "go" | "next" | "previous" | "send" | undefined;
   form?: string | undefined;
   formaction?: string | undefined;
@@ -1300,6 +1358,7 @@ interface InputMenuProps {
   formtarget?: string | undefined;
   list?: string | undefined;
   readonly?: Booleanish | undefined;
+  autocomplete?: (string & {}) | "on" | "off" | undefined;
   /**
    * @default "\"\""
    */
@@ -1307,11 +1366,9 @@ interface InputMenuProps {
 }
 ```
 
-<callout icon="i-simple-icons-mdnwebdocs" target="_blank" to="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attributes">
-
-This component also supports all native `<input>` HTML attributes.
-
-</callout>
+> [!NOTE]
+> See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#attributes
+> This component also supports all native `<input>` HTML attributes.
 
 ### Slots
 
@@ -1348,9 +1405,10 @@ interface InputMenuEmits {
   blur: (payload: [event: FocusEvent]) => void;
   focus: (payload: [event: FocusEvent]) => void;
   create: (payload: [item: string]) => void;
-  highlight: (payload: [payload: { ref: HTMLElement; value: any; } | undefined]) => void;
-  remove-tag: (payload: [item: any]) => void;
-  update:modelValue: (payload: [value: any]) => void;
+  clear: (payload: []) => void;
+  highlight: (payload: [payload: { ref: HTMLElement; value: GetModelValue<T, VK, M>; } | undefined]) => void;
+  remove-tag: (payload: [item: GetModelValue<T, VK, M>]) => void;
+  update:modelValue: (payload: [value: GetModelValue<T, VK, M>]) => void;
   update:searchTerm: (payload: [value: string]) => void;
 }
 ```
@@ -1410,6 +1468,44 @@ When accessing the component via a template ref, you can use the following:
       </code>
     </td>
   </tr>
+  
+  <tr>
+    <td>
+      <code className="language-ts-type shiki shiki-themes material-theme-lighter material-theme material-theme-palenight" language="ts-type" style="">
+        <span class="sBMFI">
+          viewportRef
+        </span>
+      </code>
+    </td>
+    
+    <td>
+      <code className="language-ts-type shiki shiki-themes material-theme-lighter material-theme material-theme-palenight" language="ts-type" style="">
+        <span class="sBMFI">
+          Ref
+        </span>
+        
+        <span class="sMK4o">
+          <
+        </span>
+        
+        <span class="sBMFI">
+          HTMLDivElement
+        </span>
+        
+        <span class="sMK4o">
+          |
+        </span>
+        
+        <span class="sBMFI">
+          null
+        </span>
+        
+        <span class="sMK4o">
+          >
+        </span>
+      </code>
+    </td>
+  </tr>
 </tbody>
 </table>
 
@@ -1431,6 +1527,7 @@ export default defineAppConfig({
         leadingAvatarSize: '',
         trailing: 'group absolute inset-y-0 end-0 flex items-center disabled:cursor-not-allowed disabled:opacity-75',
         trailingIcon: 'shrink-0 text-dimmed',
+        trailingClear: 'p-0',
         arrow: 'fill-default',
         content: 'max-h-60 w-(--reka-combobox-trigger-width) bg-default shadow-lg rounded-md ring ring-default overflow-hidden data-[state=open]:animate-[scale-in_100ms_ease-out] data-[state=closed]:animate-[scale-out_100ms_ease-in] origin-(--reka-combobox-content-transform-origin) pointer-events-auto flex flex-col',
         viewport: 'relative scroll-py-1 overflow-y-auto flex-1',
@@ -1858,8 +1955,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

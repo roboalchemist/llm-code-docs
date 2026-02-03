@@ -3,13 +3,16 @@
 ---
 url: /docs/guide/usage/linter/rules/jest/prefer-lowercase-title.md
 ---
-# jest/prefer-lowercase-title&#x20;
 
 ### What it does
 
 Enforce `it`, `test`, `describe`, and `bench` to have descriptions that begin with a
-lowercase letter. This provides more readable test failures. This rule is not
-enabled by default.
+lowercase letter. This provides more readable test failures.
+
+### Why is this bad?
+
+Lowercase messages for test failures generally result in more grammatically correct
+failure messages when you have a test failure.
 
 ### Examples
 

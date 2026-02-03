@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/chat/st.chat_input
+
 # st.chat_input
 
 Display a chat input widget.

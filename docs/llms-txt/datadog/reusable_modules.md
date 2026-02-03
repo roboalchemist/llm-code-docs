@@ -6,7 +6,6 @@ description: >-
   Save and reuse groups of components and queries across multiple App Builder
   applications as modular templates.
 breadcrumbs: Docs > App Builder > Components > Reusable Modules
-source_url: https://docs.datadoghq.com/app_builder/components/reusable_modules/index.html
 ---
 
 # Reusable Modules

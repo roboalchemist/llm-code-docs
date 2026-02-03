@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/agent-desk/integrations/web-sdk/web-customization.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Web Customization
 
 Once properly installed and configured, the ASAPP Chat SDK embeds two snippets of HTML markup into your host web page:

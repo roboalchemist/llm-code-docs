@@ -1,5 +1,9 @@
 # Source: https://gofastmcp.com/python-sdk/fastmcp-server-auth-providers-azure.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # azure
 
 # `fastmcp.server.auth.providers.azure`
@@ -11,11 +15,7 @@ using the OAuth Proxy pattern for non-DCR OAuth flows.
 
 ## Classes
 
-### `AzureProviderSettings` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/providers/azure.py#L29" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
-
-Settings for Azure OAuth provider.
-
-### `AzureProvider` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/providers/azure.py#L62" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `AzureProvider` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/providers/azure.py#L30" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 Azure (Microsoft Entra) OAuth provider for FastMCP.
 
@@ -51,7 +51,7 @@ Setup:
 
 **Methods:**
 
-#### `authorize` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/providers/azure.py#L293" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `authorize` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/providers/azure.py#L224" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 authorize(self, client: OAuthClientInformationFull, params: AuthorizationParams) -> str

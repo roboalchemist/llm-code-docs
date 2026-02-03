@@ -1,13 +1,19 @@
 # Source: https://rspack.dev/config/mode.md
 
-import WebpackLicense from '@components/WebpackLicense';
-import PropertyType from '@components/PropertyType';
+CC 4.0 License> The content of this section is derived from the content of the following links and is subject to the CC BY 4.0 license.
+> 
+> - [https://webpack.js.org/configuration/mode/](https://webpack.js.org/configuration/mode/)
+> 
+> The following contents can be assumed to be the result of modifications and deletions based on the original contents if not specifically stated.
+> 
+> 
 
-<WebpackLicense from="https://webpack.js.org/configuration/mode/" />
 
 # Mode
 
-<PropertyType type="'production' | 'development' | 'none'" defaultValueList={[{ defaultValue: "'production'" }]} />
+- Type: `'production' | 'development' | 'none'`
+- Default:`'production'`
+
 
 The `mode` configuration is used to set the build mode of Rspack to enable the default optimization strategy.
 
@@ -49,15 +55,15 @@ rspack --mode=production
 
 In production mode, Rspack automatically enables the following optimization strategies:
 
-* Replace `process.env.NODE_ENV` in code with `'production'`.
-* Set the default value of `optimization.minimize` to `true` to enable SWC minification.
+- Replace `process.env.NODE_ENV` in code with `'production'`.
+- Set the default value of `optimization.minimize` to `true` to enable SWC minification.
 
 ### development
 
 In development mode, Rspack automatically enables the following optimization strategies:
 
-* Replace `process.env.NODE_ENV` in code with `'development'`.
-* Set proper naming format for modules and chunks.
+- Replace `process.env.NODE_ENV` in code with `'development'`.
+- Set proper naming format for modules and chunks.
 
 ### none
 

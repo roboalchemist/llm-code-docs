@@ -25,6 +25,10 @@ The BlogPosts component provides a flexible layout to display a list of [BlogPos
 Use the `posts` prop as an array of objects with the properties of the [BlogPost](/docs/components/blog-post#props) component.
 
 ```vue
+<script setup lang="ts">
+import type { BlogPostProps } from '@nuxt/ui'
+</script>
+
 <template>
   <UBlogPosts />
 </template>
@@ -35,24 +39,22 @@ Use the `posts` prop as an array of objects with the properties of the [BlogPost
 Use the `orientation` prop to change the orientation of the BlogPosts. Defaults to `horizontal`.
 
 ```vue
+<script setup lang="ts">
+import type { BlogPostProps } from '@nuxt/ui'
+</script>
+
 <template>
   <UBlogPosts orientation="vertical" />
 </template>
 ```
 
-<tip>
-
-When using the `posts` prop instead of the default slot, the `orientation` of the posts is automatically reversed, `horizontal` to `vertical` and vice versa.
-
-</tip>
+> [!TIP]
+> When using the `posts` prop instead of the default slot, the `orientation` of the posts is automatically reversed, `horizontal` to `vertical` and vice versa.
 
 ## Examples
 
-<note>
-
-While these examples use [Nuxt Content](https://content.nuxt.com), the components can be integrated with any content management system.
-
-</note>
+> [!NOTE]
+> While these examples use [Nuxt Content](https://content.nuxt.com), the components can be integrated with any content management system.
 
 ### Within a page
 
@@ -83,17 +85,11 @@ const { data: posts } = await useAsyncData('posts', () => queryCollection('posts
 </template>
 ```
 
-<note>
+> [!NOTE]
+> In this example, the `posts` are fetched using `queryCollection` from the `@nuxt/content` module.
 
-In this example, the `posts` are fetched using `queryCollection` from the `@nuxt/content` module.
-
-</note>
-
-<tip>
-
-The `to` prop is overridden here since `@nuxt/content` uses the `path` property.
-
-</tip>
+> [!TIP]
+> The `to` prop is overridden here since `@nuxt/content` uses the `path` property.
 
 ## API
 
@@ -156,8 +152,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

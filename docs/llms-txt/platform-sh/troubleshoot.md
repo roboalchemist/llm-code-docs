@@ -8,26 +8,6 @@
 
 # Source: https://docs.upsun.com/add-services/mysql/troubleshoot.md
 
-# Source: https://docs.upsun.com/domains/troubleshoot.md
-
-# Source: https://docs.upsun.com/integrations/source/troubleshoot.md
-
-# Source: https://docs.upsun.com/development/troubleshoot.md
-
-# Source: https://docs.upsun.com/languages/php/troubleshoot.md
-
-# Source: https://docs.upsun.com/add-services/mysql/troubleshoot.md
-
-# Source: https://docs.upsun.com/domains/troubleshoot.md
-
-# Source: https://docs.upsun.com/integrations/source/troubleshoot.md
-
-# Source: https://docs.upsun.com/development/troubleshoot.md
-
-# Source: https://docs.upsun.com/languages/php/troubleshoot.md
-
-# Source: https://docs.upsun.com/add-services/mysql/troubleshoot.md
-
 # Troubleshoot MySQL
 
 For more general information, see how to [troubleshoot development](https://docs.upsun.com/development/troubleshoot.md).
@@ -175,7 +155,7 @@ The default value of `16` is shown below to illustrate:
 
     The memory for a given container from its `size` depends on its [container profile](https://docs.upsun.com/manage-resources/adjust-resources.md#advanced-container-profiles).
 
-    For example, [MariaDB](https://docs.upsun.com/manage-resources/adjust-resources.md#default-container-profiles) has a `HIGH_MEMORY` [container profile](https://docs.upsun.com/manage-resources/adjust-resources.md#advanced-container-profiles).
+    For example, [MariaDB](https://docs.upsun.com/manage-resources/adjust-resources.md#default-container-profiles) has a [`HIGH_MEMORY` container profile](https://docs.upsun.com/manage-resources/adjust-resources.md#advanced-container-profiles).
     For `--size mariadb:1`, it means 1 CPU and 2432 MB of memory.
 
 If we assume the configuration above, where:

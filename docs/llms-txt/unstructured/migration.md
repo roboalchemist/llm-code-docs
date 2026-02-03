@@ -1,9 +1,13 @@
 # Source: https://docs.unstructured.io/api-reference/workflow/migration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Migration
 
 This page contains information about how to migrate from previous versions of the
-[UnstructuredWorkflow Endpoint](/api-reference/workflow/overview).
+Unstructured API's [workflow operations](/api-reference/workflow/overview).
 
 ## ConnectorConfigInput and ConnectorType classes are deprecated
 

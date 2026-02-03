@@ -4,589 +4,1765 @@ Source: https://docs.turso.tech/llms-full.txt
 
 ---
 
-# AgentFS Introduction
-Source: https://docs.turso.tech/agentfs/introduction
+# Audit Filesystem Changes
+Source: https://docs.turso.tech/agentfs/guides/auditing
 
-A filesystem and state management SDK for AI agents, built on Turso
+Inspect and analyze what an agent did during a session
 
-AgentFS is a specialized filesystem and state management SDK designed for AI agents. It provides a complete, queryable, and portable solution for managing agent state, files, and interactions—all powered by Turso's embedded database technology.
+AgentFS records every file operation and tool call, giving you complete visibility into agent behavior. This is essential for debugging, compliance, and understanding how agents work.
 
-## Why AgentFS?
+## Viewing the Timeline
 
-Building reliable AI agents requires solving fundamental challenges:
+See a chronological list of tool calls:
 
-* **State Management**: Agents need persistent memory across sessions
-* **Auditability**: Every action must be traceable for debugging and compliance
-* **Reproducibility**: Agent states must be snapshottable and restorable
-* **Simplicity**: Complex distributed systems shouldn't be required for agent development
-
-AgentFS solves these challenges with a single, portable database file that contains your entire agent runtime.
-
-## Key Features
-
-<CardGroup cols={2}>
-  <Card title="Virtual Filesystem" icon="folder">
-    POSIX-like file and directory operations for agent data management
-  </Card>
-
-  <Card title="Key-Value Store" icon="database">
-    Fast, typed storage for agent state and configuration
-  </Card>
-
-  <Card title="Tool Call Tracking" icon="list-check">
-    Automatic audit logging of all agent tool invocations
-  </Card>
-
-  <Card title="Single File Storage" icon="file">
-    Entire agent runtime in one portable Turso database
-  </Card>
-</CardGroup>
-
-## Core Capabilities
-
-### 🗄️ Unified Storage
-
-Everything your agent needs—files, state, history—stored in a single database file. No complex infrastructure, just one file you can query, backup, or move.
-
-### 🔍 Built-in Auditability
-
-Every filesystem operation, state change, and tool call is automatically recorded. Query your agent's behavior with SQL:
-
-```sql  theme={null}
--- Find all web searches performed by the agent
-SELECT * FROM toolcalls
-WHERE name = 'web_search'
-ORDER BY timestamp DESC;
-
--- Analyze file modifications
-SELECT * FROM events
-WHERE type = 'file_write'
-AND timestamp > datetime('now', '-1 hour');
+```bash theme={null}
+agentfs timeline my-session
 ```
 
-### 🔄 State Reproducibility
+Output:
 
-Snapshot agent states at any point and restore them later. Perfect for:
-
-* Debugging complex agent behaviors
-* Testing different execution paths
-* Creating checkpoints in long-running workflows
-
-### 📦 Portability
-
-Move your entire agent between environments with a single file. Development to production, cloud to edge—your agent's complete state travels with it.
-
-## Architecture
-
-AgentFS provides three main interfaces:
-
-```mermaid  theme={null}
-graph LR
-    A[AI Agent] --> B[AgentFS SDK]
-    B --> C[Filesystem API]
-    B --> D[Key-Value API]
-    B --> E[Tool Call API]
-    C --> F[Turso Database]
-    D --> F
-    E --> F
+```
+ID   TOOL                 STATUS       DURATION STARTED
+4    execute_code         pending            -- 2024-01-05 09:44:20
+3    api_call             error           300ms 2024-01-05 09:44:15
+2    read_file            success          50ms 2024-01-05 09:44:10
+1    web_search           success        1200ms 2024-01-05 09:43:45
 ```
 
-All operations are atomic and transactional, ensuring data consistency even during failures.
+### Filtering Results
 
-## Quick Example
+Show only specific tool types:
 
-```typescript  theme={null}
-import { AgentFS } from 'agentfs-sdk';
+```bash theme={null}
+agentfs timeline my-session --filter web_search
+```
 
-// Open or create an agent filesystem
-const agent = await AgentFS.open(
-  './my-agent.db'
-);
+Show only errors:
 
-// Store agent configuration
-await agent.kv.set('agent:config', {
-  model: 'gpt-4',
-  temperature: 0.7,
-  maxTokens: 2000
-});
+```bash theme={null}
+agentfs timeline my-session --status error
+```
 
-// Write generated content
-await agent.fs.writeFile(
-  '/outputs/report.md',
-  reportContent
-);
+Limit number of entries:
 
-// Track tool usage
-await agent.tools.record(
-  'generate_report',
-  startTime,
-  endTime,
-  { topic: 'Q4 Analysis' },
-  { success: true, pages: 15 }
-);
+```bash theme={null}
+agentfs timeline my-session --limit 20
+```
 
-// Query the agent's work
-const recentFiles = await agent.fs.readdir('/outputs');
-const toolHistory = await agent.tools.list({ limit: 10 });
+### JSON Output
+
+For programmatic analysis:
+
+```bash theme={null}
+agentfs timeline my-session --format json
+```
+
+```json theme={null}
+[
+  {
+    "id": 1,
+    "name": "web_search",
+    "status": "success",
+    "started_at": 1704447825,
+    "completed_at": 1704447826,
+    "duration_ms": 1200,
+    "parameters": {"query": "AI agents"},
+    "result": {"results": ["result1", "result2"]}
+  }
+]
+```
+
+## Inspecting Files
+
+List all files in a session:
+
+```bash theme={null}
+agentfs fs ls my-session
+```
+
+Output:
+
+```
+d artifacts
+f config.json
+f output.txt
+```
+
+List a subdirectory:
+
+```bash theme={null}
+agentfs fs ls my-session /artifacts
+```
+
+Read file contents:
+
+```bash theme={null}
+agentfs fs cat my-session /output.txt
+```
+
+## Viewing Changes (Diff)
+
+See what changed compared to the original filesystem:
+
+```bash theme={null}
+agentfs diff my-session
+```
+
+This shows:
+
+* New files created
+* Modified files
+* Deleted files
+
+## Querying with SQL
+
+Since AgentFS uses SQLite, you can run arbitrary queries:
+
+<Tabs>
+  <Tab title="Turso">
+    ```bash theme={null}
+    tursodb .agentfs/my-session.db
+    ```
+  </Tab>
+
+  <Tab title="SQLite">
+    ```bash theme={null}
+    sqlite3 .agentfs/my-session.db
+    ```
+  </Tab>
+</Tabs>
+
+Example queries:
+
+```sql theme={null}
+-- Find all tool calls that took longer than 1 second
+SELECT name, duration_ms
+FROM toolcalls
+WHERE duration_ms > 1000;
+
+-- Count tool usage by type
+SELECT name, COUNT(*) as count
+FROM toolcalls
+GROUP BY name
+ORDER BY count DESC;
+
+-- Find files modified in the last hour
+SELECT path, mtime
+FROM fs_inode
+WHERE mtime > strftime('%s', 'now', '-1 hour');
+
+-- Get total bytes written
+SELECT SUM(size) as total_bytes
+FROM fs_inode
+WHERE mode & 0170000 = 0100000;  -- regular files only
 ```
 
 ## Use Cases
 
-<CardGroup cols={2}>
-  <Card title="Development & Testing" icon="code">
-    Develop agents locally with full state persistence and debugging capabilities
-  </Card>
+### Debugging Agent Failures
 
-  <Card title="Production Deployment" icon="rocket">
-    Deploy agents with built-in logging, monitoring, and state management
-  </Card>
+When an agent fails, use the timeline to understand what happened:
 
-  <Card title="Compliance & Auditing" icon="shield">
-    Track every agent action for regulatory compliance and accountability
-  </Card>
+```bash theme={null}
+# See recent activity
+agentfs timeline my-session --limit 20
 
-  <Card title="Multi-Agent Systems" icon="users">
-    Share state between agents or maintain isolation with separate databases
-  </Card>
-</CardGroup>
+# Focus on errors
+agentfs timeline my-session --status error
 
-## Getting Started
-
-Ready to build more reliable AI agents? Start with our quickstart guide:
-
-<Card title="AgentFS Quickstart" icon="play" href="/agentfs/quickstart">
-  Set up AgentFS and build your first stateful agent in minutes
-</Card>
-
-## Available SDKs
-
-<CardGroup cols={3}>
-  <Card title="TypeScript" icon="js" href="/agentfs/sdk/typescript">
-    Full-featured SDK for Node.js and browser environments
-  </Card>
-
-  <Card title="Rust" icon="rust" href="/agentfs/sdk/rust">
-    High-performance native SDK with async support
-  </Card>
-
-  <Card title="Python" icon="python">
-    Coming soon - Python SDK for data science and ML workflows
-  </Card>
-</CardGroup>
-
-## Learn More
-
-* [Blog: Introducing AgentFS](https://turso.tech/blog/agentfs) - Deep dive into why we built AgentFS
-* [GitHub Repository](https://github.com/tursodatabase/agentfs) - Source code and examples
-* [API Reference](/agentfs/api-reference) - Complete API documentation
-
-<Warning>
-  AgentFS is currently in ALPHA. We recommend using it for development and testing only. The API may change as we gather feedback from the community.
-</Warning>
-
-
-# AgentFS Quickstart
-Source: https://docs.turso.tech/agentfs/quickstart
-
-Build your first stateful AI agent with AgentFS in 5 minutes
-
-Get up and running with AgentFS to build stateful, auditable AI agents in just a few minutes.
-
-## Prerequisites
-
-* Node.js 18+ or Rust 1.70+
-* Basic familiarity with async/await programming
-* An AI/LLM API key (optional, for agent examples)
-
-## Installation
-
-<Tabs>
-  <Tab title="TypeScript/JavaScript">
-    ```bash  theme={null}
-    npm install agentfs-sdk
-    ```
-  </Tab>
-
-  <Tab title="Rust">
-    ```toml  theme={null}
-    [dependencies]
-    agentfs = "0.1"
-    tokio = { version = "1", features = ["full"] }
-    ```
-  </Tab>
-</Tabs>
-
-## Create Your First Agent
-
-Let's build a simple agent that maintains conversation history and generates files.
-
-<Tabs>
-  <Tab title="TypeScript">
-    ```typescript  theme={null}
-    import { AgentFS } from 'agentfs-sdk';
-
-    // Initialize AgentFS with a local database
-    const agent = await AgentFS.open(
-      './my-agent.db'
-    );
-
-    // Store agent configuration
-    await agent.kv.set('agent:id', 'assistant-001');
-    await agent.kv.set(
-      'agent:created',
-      new Date().toISOString()
-    );
-
-    // Create a conversation history
-    const conversations = [];
-
-    async function addMessage(role: string, content: string) {
-      const message = {
-        role,
-        content,
-        timestamp: Date.now()
-      };
-
-      conversations.push(message);
-
-      // Persist to AgentFS
-      await agent.kv.set('conversations', conversations);
-
-      // Also save as a file for easy access
-      const filename = `/conversations/${Date.now()}.json`;
-      await agent.fs.writeFile(
-        filename,
-        JSON.stringify(message, null, 2)
-      );
-
-      // Track this as a tool call
-      await agent.tools.record(
-        'save_message',
-        Date.now() / 1000,
-        Date.now() / 1000 + 0.1,
-        { role, contentLength: content.length },
-        { saved: true, filename }
-      );
-    }
-
-    // Example usage
-    await addMessage(
-      'user',
-      'Hello, can you help me with a task?'
-    );
-    await addMessage(
-      'assistant',
-      'Of course! I'd be happy to help.'
-    );
-
-    // Retrieve conversation history
-    const history = await agent.kv.get('conversations');
-    console.log('Conversation history:', history);
-
-    // List all conversation files
-    const files = await agent.fs.readdir('/conversations');
-    console.log('Saved conversations:', files);
-    ```
-  </Tab>
-
-  <Tab title="Rust">
-    ```rust  theme={null}
-    use agentfs::AgentFS;
-    use serde::{Serialize, Deserialize};
-    use chrono::Utc;
-
-    #[derive(Serialize, Deserialize)]
-    struct Message {
-        role: String,
-        content: String,
-        timestamp: i64,
-    }
-
-    #[tokio::main]
-    async fn main() -> Result<(),
-      Box<dyn std::error::Error>> {
-        // Initialize AgentFS with a local database
-        let agent = AgentFS::open(
-          "./my-agent.db"
-        ).await?;
-
-        // Store agent configuration
-        agent.kv.set("agent:id", "assistant-001").await?;
-        agent.kv.set(
-          "agent:created",
-          Utc::now().to_rfc3339()
-        ).await?;
-
-        // Create a message
-        let message = Message {
-            role: "user".to_string(),
-            content: "Hello, can you help me with a task?"
-              .to_string(),
-            timestamp: Utc::now().timestamp_millis(),
-        };
-
-        // Save message to filesystem
-        let filename = format!(
-          "/conversations/{}.json",
-          message.timestamp
-        );
-        let json = serde_json::to_string_pretty(
-          &message
-        )?;
-        agent.fs.write_file(
-          &filename,
-          json.as_bytes()
-        ).await?;
-
-        // Track as tool call
-        agent.tools.record(
-            "save_message",
-            Utc::now().timestamp() as f64,
-            Utc::now().timestamp() as f64 + 0.1,
-            serde_json::json!({
-                "role": message.role,
-                "contentLength": message.content.len()
-            }),
-            serde_json::json!({
-                "saved": true,
-                "filename": filename
-            })
-        ).await?;
-
-        // List saved conversations
-        let files = agent.fs.readdir("/conversations").await?;
-        println!("Saved conversations: {:?}", files);
-
-        Ok(())
-    }
-    ```
-  </Tab>
-</Tabs>
-
-## Working with Files
-
-AgentFS provides a POSIX-like filesystem API for managing agent-generated content:
-
-```typescript  theme={null}
-// Create directories
-await agent.fs.mkdir('/reports');
-await agent.fs.mkdir('/reports/2024');
-
-// Write files
-const report = "# Q4 2024 Analysis\n\nKey findings...";
-await agent.fs.writeFile(
-  '/reports/2024/q4-analysis.md',
-  report
-);
-
-// Read files
-const content = await agent.fs.readFile(
-  '/reports/2024/q4-analysis.md'
-);
-console.log(content.toString());
-
-// List directory contents
-const reports = await agent.fs.readdir('/reports/2024');
-console.log('Available reports:', reports);
-
-// Check file metadata
-const stats = await agent.fs.stat(
-  '/reports/2024/q4-analysis.md'
-);
-console.log('File size:', stats.size);
-console.log('Created:', new Date(stats.ctime * 1000));
+# Check what files were created/modified
+agentfs fs ls my-session
 ```
 
-## Managing Agent State
+### Performance Analysis
 
-Use the key-value store for fast access to agent configuration and state:
+Find slow operations:
 
-```typescript  theme={null}
-// Store structured data
-await agent.kv.set('user:preferences', {
-  theme: 'dark',
-  language: 'en',
-  notifications: true
-});
-
-// Store conversation context
-await agent.kv.set('context:current', {
-  topic: 'data analysis',
-  tools: ['calculator', 'chart_generator'],
-  startTime: Date.now()
-});
-
-// Retrieve values
-const preferences = await agent.kv.get('user:preferences');
-const context = await agent.kv.get('context:current');
-
-// Delete keys
-await agent.kv.delete('context:previous');
-
-// List all keys with a prefix
-const userKeys = await agent.kv.list({ prefix: 'user:' });
-console.log('User data keys:', userKeys);
+```sql theme={null}
+SELECT name, AVG(duration_ms) as avg_ms, COUNT(*) as count
+FROM toolcalls
+GROUP BY name
+ORDER BY avg_ms DESC;
 ```
 
-## Tracking Tool Calls
+### Compliance Auditing
 
-Every tool invocation can be automatically tracked for debugging and compliance:
+Export a complete record of agent activity:
 
-```typescript  theme={null}
-// Record a web search
-const startTime = Date.now() / 1000;
-const results = await performWebSearch(
-  'AgentFS tutorial'
-);
-const endTime = Date.now() / 1000;
-
-await agent.tools.record(
-  'web_search',
-  startTime,
-  endTime,
-  { query: 'AgentFS tutorial', maxResults: 10 },
-  {
-    resultsFound: results.length,
-    topResult: results[0]?.url
-  }
-);
-
-// Record an API call
-await agent.tools.record(
-  'openai_completion',
-  Date.now() / 1000,
-  Date.now() / 1000 + 2.5,
-  { model: 'gpt-4', temperature: 0.7 },
-  { tokensUsed: 1500, success: true }
-);
-
-// Query tool usage
-const recentTools = await agent.tools.list({ limit: 10 });
-console.log('Recent tool calls:', recentTools);
-
-// Get specific tool call
-const toolCall = await agent.tools.get(recentTools[0].id);
-console.log('Tool details:', toolCall);
-```
-
-## Querying Agent History
-
-Since AgentFS is built on Turso, you can query your agent's behavior with SQL:
-
-```typescript  theme={null}
-// Get the underlying database connection
-const db = agent.db;
-
-// Find all files created in the last hour
-const recentFiles = await db.prepare(`
-  SELECT * FROM events
-  WHERE type = 'file_write'
-  AND timestamp > datetime('now', '-1 hour')
-  ORDER BY timestamp DESC
-`).all();
-
-// Analyze tool usage patterns
-const toolStats = await db.prepare(`
-  SELECT
-    name as tool_name,
-    COUNT(*) as usage_count,
-    AVG(julianday(ended_at) -
-        julianday(started_at)) * 86400
-        as avg_duration_seconds
-  FROM toolcalls
-  GROUP BY name
-  ORDER BY usage_count DESC
-`).all();
-
-console.log('Tool usage statistics:', toolStats);
-```
-
-## Best Practices
-
-### 1. Structure Your Filesystem
-
-Organize files logically for easy navigation:
-
-```
-/
-├── conversations/     # Chat histories
-├── outputs/          # Generated content
-├── cache/           # Temporary data
-├── logs/            # Agent logs
-└── config/          # Configuration files
-```
-
-### 2. Use Consistent Key Naming
-
-Adopt a naming convention for KV store keys:
-
-```typescript  theme={null}
-// Good: Hierarchical and clear
-await agent.kv.set(
-  'user:123:preferences', {...}
-);
-await agent.kv.set(
-  'session:abc:context', {...}
-);
-await agent.kv.set(
-  'cache:api:response:xyz', {...}
-);
-
-// Avoid: Flat and ambiguous
-await agent.kv.set('prefs', {...});
-await agent.kv.set('data1', {...});
-```
-
-### 3. Track Important Operations
-
-Record tool calls for critical operations:
-
-```typescript  theme={null}
-async function generateReport(data: any) {
-  const start = Date.now() / 1000;
-
-  try {
-    const report = await createReport(data);
-
-    await agent.tools.record(
-      'generate_report',
-      start,
-      Date.now() / 1000,
-      { dataSize: data.length },
-      { success: true, reportId: report.id }
-    );
-
-    return report;
-  } catch (error) {
-    await agent.tools.record(
-      'generate_report',
-      start,
-      Date.now() / 1000,
-      { dataSize: data.length },
-      { success: false, error: error.message }
-    );
-    throw error;
-  }
-}
+```bash theme={null}
+agentfs timeline my-session --format json > audit-log.json
 ```
 
 ## Next Steps
 
-<CardGroup cols={2}>
-  <Card title="TypeScript SDK Reference" icon="js" href="/agentfs/sdk/typescript">
-    Complete API documentation for TypeScript/JavaScript
+<CardGroup>
+  <Card title="Overlay Filesystem" icon="layer-group" href="/agentfs/guides/overlay">
+    Understanding copy-on-write
   </Card>
 
-  <Card title="Rust SDK Reference" icon="rust" href="/agentfs/sdk/rust">
-    Complete API documentation for Rust
+  <Card title="Syncing" icon="cloud" href="/agentfs/guides/sync">
+    Sync sessions to Turso Cloud
+  </Card>
+</CardGroup>
+
+
+# MCP Server Integration
+Source: https://docs.turso.tech/agentfs/guides/mcp
+
+Use AgentFS as an MCP server for AI assistants
+
+AgentFS can run as an [MCP (Model Context Protocol)](https://modelcontextprotocol.io/) server, exposing filesystem and key-value operations to AI assistants like Claude Desktop.
+
+## Starting the MCP Server
+
+```bash theme={null}
+agentfs serve mcp my-agent
+```
+
+This starts an MCP server that exposes AgentFS tools over stdio.
+
+## Available Tools
+
+### Filesystem Tools
+
+| Tool         | Description                   |
+| ------------ | ----------------------------- |
+| `read_file`  | Read file contents            |
+| `write_file` | Write file contents           |
+| `readdir`    | List directory contents       |
+| `mkdir`      | Create directory              |
+| `remove`     | Remove file or directory      |
+| `rename`     | Rename file or directory      |
+| `stat`       | Get file metadata             |
+| `access`     | Check file access permissions |
+
+### Key-Value Tools
+
+| Tool        | Description        |
+| ----------- | ------------------ |
+| `kv_get`    | Get value by key   |
+| `kv_set`    | Set key-value pair |
+| `kv_delete` | Delete key         |
+| `kv_list`   | List all keys      |
+
+## Limiting Exposed Tools
+
+For security, you can limit which tools are available:
+
+```bash theme={null}
+# Read-only mode
+agentfs serve mcp my-agent --tools read_file,readdir,stat,kv_get,kv_list
+
+# Filesystem only
+agentfs serve mcp my-agent --tools read_file,write_file,readdir,mkdir,remove
+
+# Key-value only
+agentfs serve mcp my-agent --tools kv_get,kv_set,kv_delete,kv_list
+```
+
+## Security Considerations
+
+<Warning>
+  The MCP server gives AI assistants direct access to the AgentFS filesystem. Consider these security practices:
+
+  * **Limit tools** - Only expose tools the assistant needs
+  * **Use overlays** - Create overlay filesystems instead of giving access to real directories
+  * **Review the agent database** - Check `.agentfs/*.db` periodically
+</Warning>
+
+## Debugging
+
+Check if the MCP server is working:
+
+```bash theme={null}
+# Run manually to see output
+agentfs serve mcp my-agent
+
+# Check if the database exists
+ls -la .agentfs/my-agent.db
+```
+
+## Next Steps
+
+<CardGroup>
+  <Card title="NFS Server" icon="network-wired" href="/agentfs/guides/nfs">
+    Remote access via NFS
   </Card>
 
-  <Card title="Examples" icon="github" href="https://github.com/tursodatabase/agentfs/tree/main/examples">
-    Browse complete example applications
+  <Card title="Copy-on-Write Overlays" icon="layer-group" href="/agentfs/guides/overlay">
+    How isolation works
+  </Card>
+</CardGroup>
+
+
+# NFS Server Access
+Source: https://docs.turso.tech/agentfs/guides/nfs
+
+Export AgentFS over the network via NFS
+
+AgentFS can expose filesystems over NFS, enabling remote access from other machines, containers, or virtual machines.
+
+## Starting the NFS Server
+
+```bash theme={null}
+agentfs serve nfs my-agent
+```
+
+By default, this listens on `127.0.0.1:11111`.
+
+### Binding to All Interfaces
+
+To allow remote access:
+
+```bash theme={null}
+agentfs serve nfs my-agent --bind 0.0.0.0 --port 2049
+```
+
+<Warning>
+  Exposing NFS on `0.0.0.0` makes the filesystem accessible to anyone who can reach your machine. Use firewall rules or a VPN for production deployments.
+</Warning>
+
+## Mounting the Filesystem
+
+### From the Same Machine
+
+```bash theme={null}
+mkdir /mnt/agentfs
+mount -t nfs -o vers=3,tcp,port=11111,mountport=11111,nolock 127.0.0.1:/ /mnt/agentfs
+```
+
+### From a Remote Machine
+
+```bash theme={null}
+mount -t nfs -o vers=3,tcp,port=2049,mountport=2049,nolock server-ip:/ /mnt/agentfs
+```
+
+### Mount Options Explained
+
+| Option            | Description                        |
+| ----------------- | ---------------------------------- |
+| `vers=3`          | Use NFSv3 protocol                 |
+| `tcp`             | Use TCP transport                  |
+| `port=11111`      | NFS server port                    |
+| `mountport=11111` | Mount protocol port                |
+| `nolock`          | Disable file locking (single-user) |
+
+## Unmounting
+
+```bash theme={null}
+umount /mnt/agentfs
+```
+
+If the mount is busy:
+
+```bash theme={null}
+umount -f /mnt/agentfs  # Force unmount
+# or
+umount -l /mnt/agentfs  # Lazy unmount
+```
+
+## Next Steps
+
+<CardGroup>
+  <Card title="MCP Server" icon="plug" href="/agentfs/guides/mcp">
+    Expose AgentFS via MCP
   </Card>
 
-  <Card title="Architecture Guide" icon="book" href="/agentfs/architecture">
-    Deep dive into AgentFS internals
+  <Card title="Sync with Turso Cloud" icon="cloud" href="/agentfs/guides/sync">
+    Back up and share agent state
+  </Card>
+</CardGroup>
+
+
+# Copy-on-Write Overlays
+Source: https://docs.turso.tech/agentfs/guides/overlay
+
+How copy-on-write isolation works in AgentFS
+
+AgentFS uses an overlay filesystem to provide copy-on-write isolation. This lets agents freely modify files while keeping your original data safe.
+
+## How Overlay Works
+
+An overlay filesystem combines two layers:
+
+```
+┌────────────────────────────────────┐
+│         Merged View (what you see) │
+├────────────────────────────────────┤
+│  Delta Layer (AgentFS database)    │  ← Writes go here
+├────────────────────────────────────┤
+│  Base Layer (original directory)   │  ← Read-only
+└────────────────────────────────────┘
+```
+
+**Reading a file:**
+
+1. Check delta layer first
+2. If not found, read from base layer
+
+**Writing a file:**
+
+1. Copy file to delta layer (if from base)
+2. Write changes to delta layer
+3. Base layer is never modified
+
+**Deleting a file:**
+
+1. Create a "whiteout" marker in delta layer
+2. File appears deleted in merged view
+3. Original file in base layer is untouched
+
+## Creating an Overlay Filesystem
+
+### With `agentfs run`
+
+The simplest way - automatically creates an overlay over your current directory:
+
+```bash theme={null}
+cd /path/to/project
+agentfs run /bin/bash
+```
+
+### With `agentfs init --base`
+
+Create an overlay explicitly:
+
+```bash theme={null}
+agentfs init my-overlay --base /path/to/project
+```
+
+Then mount it:
+
+```bash theme={null}
+agentfs mount my-overlay ./workspace
+```
+
+Or run a command in it:
+
+```bash theme={null}
+agentfs run --session my-overlay /bin/bash
+```
+
+## Viewing Changes
+
+See what's different from the base:
+
+```bash theme={null}
+agentfs diff my-overlay
+```
+
+## Practical Examples
+
+### Safe Refactoring
+
+Let an agent refactor your code without risk:
+
+```bash theme={null}
+cd my-project
+agentfs run --session refactor python3 refactor_agent.py
+
+# Review what changed
+agentfs diff refactor
+
+# Happy? Apply changes manually or via script
+# Not happy? Just delete the session
+rm .agentfs/refactor.db
+```
+
+### Testing Destructive Operations
+
+Try something dangerous safely:
+
+```bash theme={null}
+agentfs run --session test /bin/bash
+$ rm -rf src/  # Yikes!
+$ exit
+
+# Original files are fine
+ls src/  # Still there!
+
+# Only the overlay was affected
+agentfs fs ls test  # Shows the deletion
+```
+
+### Parallel Experiments
+
+Run multiple experiments on the same codebase:
+
+```bash theme={null}
+# Experiment A
+agentfs run --session exp-a python3 approach_a.py
+
+# Experiment B (same base, different changes)
+agentfs run --session exp-b python3 approach_b.py
+
+# Compare results
+agentfs diff exp-a
+agentfs diff exp-b
+```
+
+## Storage Efficiency
+
+The overlay only stores:
+
+* **Modified files** - Full copy after first write
+* **New files** - Stored entirely in delta
+* **Deleted files** - Small whiteout marker
+
+Original files are never duplicated. A 10GB project with 1MB of changes only uses \~1MB in the delta layer.
+
+## Technical Details
+
+### File Operations
+
+| Operation           | Behavior                  |
+| ------------------- | ------------------------- |
+| Read existing file  | Pass through to base      |
+| Write existing file | Copy to delta, then write |
+| Create new file     | Write directly to delta   |
+| Delete file         | Create whiteout in delta  |
+| Rename file         | Delete old + create new   |
+
+### Whiteouts
+
+When you delete a base file, AgentFS creates a "whiteout" - a marker that hides the file:
+
+```sql theme={null}
+-- Whiteouts in the database
+SELECT * FROM fs_inode WHERE whiteout = 1;
+```
+
+### Database Schema
+
+The delta layer is stored in SQLite:
+
+```sql theme={null}
+-- Files and directories
+CREATE TABLE fs_inode (
+    ino INTEGER PRIMARY KEY,
+    parent_ino INTEGER,
+    name TEXT,
+    mode INTEGER,
+    size INTEGER,
+    ...
+    whiteout INTEGER DEFAULT 0
+);
+
+-- File contents
+CREATE TABLE fs_block (
+    ino INTEGER,
+    block_num INTEGER,
+    data BLOB
+);
+```
+
+See the [AgentFS Specification](https://github.com/tursodatabase/agentfs/blob/main/SPEC.md) for the complete schema.
+
+## Next Steps
+
+<CardGroup>
+  <Card title="Sessions" icon="clock" href="/agentfs/guides/sessions">
+    Share state between agents
+  </Card>
+
+  <Card title="Syncing" icon="cloud" href="/agentfs/guides/sync">
+    Sync overlays to Turso Cloud
+  </Card>
+</CardGroup>
+
+
+# Agentic Coding
+Source: https://docs.turso.tech/agentfs/guides/sandbox
+
+Run AI coding agents safely with AgentFS sandboxing
+
+AgentFS lets you run AI coding agents like Claude Code, Codex, and OpenCode in a sandboxed environment where file changes are isolated from your original source tree.
+
+## Supported Agents
+
+| Agent                                                   | Command                 |
+| ------------------------------------------------------- | ----------------------- |
+| [Claude Code](https://code.claude.com/docs/en/overview) | `agentfs run claude`    |
+| [Codex](https://openai.com/codex/)                      | `agentfs run codex`     |
+| [OpenCode](https://opencode.ai/)                        | `agentfs run opencode`  |
+| Any CLI tool                                            | `agentfs run <command>` |
+
+## Workflow
+
+Here's a typical agentic coding workflow. This example uses Claude Code, but the workflow is the same with OpenCode, Codex, and others.
+
+### Step 1: Clone the Repository
+
+Clone the git repository to a host directory. Keep this source tree clean from build artifacts. When there's a merge to main, pull to this repository to keep it up-to-date.
+
+```bash theme={null}
+git clone https://github.com/tursodatabase/agentfs.git
+cd agentfs
+```
+
+### Step 2: Start an AgentFS Session
+
+Use `agentfs run` with the `--session` flag to start a session. Pick a name that can eventually become your git branch name.
+
+<Tabs>
+  <Tab title="Claude Code">
+    ```bash theme={null}
+    agentfs run --session fix-bug-123 claude
+    ```
+  </Tab>
+
+  <Tab title="Codex">
+    ```bash theme={null}
+    agentfs run --session fix-bug-123 codex
+    ```
+  </Tab>
+
+  <Tab title="OpenCode">
+    ```bash theme={null}
+    agentfs run --session fix-bug-123 opencode
+    ```
+  </Tab>
+</Tabs>
+
+The agent now runs in a copy-on-write environment. Your original source tree remains untouched while the agent works.
+
+### Step 3 (Optional): Manual Investigation
+
+If the agent does something unusual, open another terminal and join the same session to investigate:
+
+```bash theme={null}
+agentfs run --session fix-bug-123 bash
+```
+
+The filesystem is shared between the shell and the agent. You can browse files, run tests, or check what's happening while the agent works.
+
+### Step 4: Push to Branch
+
+Once the agent has completed the work, ask it to create a branch, commit the code, and push:
+
+> "Create a branch called fix-bug-123, commit these changes, and push to origin"
+
+You can then create a PR manually from the pushed branch.
+
+## Why This Workflow?
+
+* **Clean source tree** - Your original clone stays pristine and easy to update from upstream
+* **Isolated changes** - Each task gets its own session, preventing cross-contamination
+* **Easy investigation** - Join any session to see what's happening in real-time
+* **Standard git flow** - Push branches and create PRs as usual
+
+## Next Steps
+
+<CardGroup>
+  <Card title="Multi-Agent Sessions" icon="clock" href="/agentfs/guides/sessions">
+    Share state between agents and terminals
+  </Card>
+
+  <Card title="Auditing" icon="magnifying-glass" href="/agentfs/guides/auditing">
+    Inspect what an agent did with diff and timeline
+  </Card>
+</CardGroup>
+
+
+# Shared Agent Sessions
+Source: https://docs.turso.tech/agentfs/guides/sessions
+
+Share state between multiple agents and terminals with named sessions
+
+Named sessions let you share a filesystem between multiple agents, terminals, or runs. All participants see the same copy-on-write view of your project.
+
+## Creating a Session
+
+Use `--session` to create a named session:
+
+```bash theme={null}
+agentfs run --session my-project /bin/bash
+```
+
+This creates a session called `my-project`. All changes are stored in `.agentfs/my-project.db`.
+
+## Resuming a Session
+
+Run the same command to resume where you left off:
+
+```bash theme={null}
+# First run - make some changes
+agentfs run --session my-project /bin/bash
+$ echo "hello" > test.txt
+$ exit
+
+# Second run - changes are still there
+agentfs run --session my-project /bin/bash
+$ cat test.txt
+hello
+```
+
+## Multi-Terminal Collaboration
+
+Multiple terminals can share the same session simultaneously:
+
+```bash theme={null}
+# Terminal 1
+agentfs run --session shared-work /bin/bash
+
+# Terminal 2 - joins the same filesystem
+agentfs run --session shared-work python3 agent.py
+
+# Terminal 3 - also sees the same files
+agentfs run --session shared-work vim
+```
+
+All terminals share the same copy-on-write filesystem. Changes made in one terminal are immediately visible in others.
+
+## Use Cases
+
+### Iterative Development
+
+Work on a task across multiple sessions:
+
+```bash theme={null}
+# Morning session
+agentfs run --session feature-x /bin/bash
+# ... work on the feature, then exit for lunch
+
+# Afternoon session - continue where you left off
+agentfs run --session feature-x /bin/bash
+```
+
+### Safe Experimentation
+
+Create a session, try something risky, then decide whether to keep it:
+
+```bash theme={null}
+agentfs run --session experiment /bin/bash
+# ... try some changes
+
+# Option A: Happy with changes
+agentfs diff experiment  # Review
+# Apply changes to real filesystem (manually or via script)
+
+# Option B: Discard everything
+rm .agentfs/experiment.db
+```
+
+### Agent Supervision
+
+Run an agent and monitor its work from another terminal:
+
+```bash theme={null}
+# Terminal 1: Run the agent
+agentfs run --session agent-task python3 agent.py
+
+# Terminal 2: Watch what it's doing
+agentfs run --session agent-task /bin/bash
+$ watch ls -la  # See files being created
+$ tail -f agent.log  # Monitor logs
+```
+
+## Managing Sessions
+
+List files in a session:
+
+```bash theme={null}
+agentfs fs ls my-session
+```
+
+View session changes:
+
+```bash theme={null}
+agentfs diff my-session
+```
+
+Delete a session:
+
+```bash theme={null}
+rm .agentfs/my-session.db
+```
+
+## Session Storage
+
+Sessions are stored as SQLite databases in `.agentfs/`:
+
+```
+.agentfs/
+├── my-project.db
+├── experiment.db
+└── shared-work.db
+```
+
+Each database contains:
+
+* All modified files
+* Deleted file markers (whiteouts)
+* Tool call audit log
+* Key-value store data
+
+## Next Steps
+
+<CardGroup>
+  <Card title="Auditing" icon="list" href="/agentfs/guides/auditing">
+    Inspect what happened in a session
+  </Card>
+
+  <Card title="Overlay Filesystem" icon="layer-group" href="/agentfs/guides/overlay">
+    How copy-on-write works
+  </Card>
+</CardGroup>
+
+
+# Sync with Turso Cloud
+Source: https://docs.turso.tech/agentfs/guides/sync
+
+Synchronize agent filesystems with remote Turso databases
+
+AgentFS can sync with [Turso Cloud](https://turso.tech), enabling backup, collaboration, and distributed agent deployments.
+
+## Setting Up Sync
+
+### 1. Create a Turso Database
+
+If you don't have a Turso account, [sign up](https://turso.tech) first.
+
+Create a database for your agent:
+
+```bash theme={null}
+turso db create my-agent-db
+```
+
+Get the database URL:
+
+```bash theme={null}
+turso db show my-agent-db --url
+# Output: libsql://my-agent-db-username.turso.io
+```
+
+### 2. Initialize with Sync
+
+Create a new agent filesystem with sync enabled:
+
+```bash theme={null}
+agentfs init my-agent --sync-remote-url libsql://my-agent-db-username.turso.io
+```
+
+Or add sync to an existing agent:
+
+```bash theme={null}
+# Edit the database to add sync configuration
+# (Feature coming soon)
+```
+
+## Sync Commands
+
+### Pull Remote Changes
+
+Download changes from Turso Cloud:
+
+```bash theme={null}
+agentfs sync my-agent pull
+```
+
+### Push Local Changes
+
+Upload local changes to Turso Cloud:
+
+```bash theme={null}
+agentfs sync my-agent push
+```
+
+### View Sync Status
+
+Check sync statistics:
+
+```bash theme={null}
+agentfs sync my-agent stats
+```
+
+### Create Checkpoint
+
+Force a sync checkpoint:
+
+```bash theme={null}
+agentfs sync my-agent checkpoint
+```
+
+## Use Cases
+
+### Backup and Recovery
+
+Automatically back up agent state:
+
+```bash theme={null}
+# After important work
+agentfs sync my-agent push
+
+# On a new machine
+agentfs init my-agent --sync-remote-url libsql://...
+agentfs sync my-agent pull
+```
+
+### Multi-Machine Agents
+
+Run agents on multiple machines with shared state:
+
+```bash theme={null}
+# Machine A
+agentfs run --session shared-agent python3 agent.py
+agentfs sync shared-agent push
+
+# Machine B
+agentfs sync shared-agent pull
+agentfs run --session shared-agent python3 agent.py
+```
+
+## Partial Sync
+
+For large filesystems, use partial sync to only fetch what's needed:
+
+```bash theme={null}
+agentfs init my-agent \
+  --sync-remote-url libsql://... \
+  --sync-partial-prefetch \
+  --sync-partial-segment-size 1000
+```
+
+### Partial Sync Options
+
+| Option                            | Description                   |
+| --------------------------------- | ----------------------------- |
+| `--sync-partial-prefetch`         | Enable prefetching            |
+| `--sync-partial-segment-size`     | Segment size for partial sync |
+| `--sync-partial-bootstrap-query`  | Custom bootstrap query        |
+| `--sync-partial-bootstrap-length` | Bootstrap prefix length       |
+
+## Authentication
+
+Sync requires a Turso auth token. Set it via environment variable:
+
+```bash theme={null}
+export TURSO_AUTH_TOKEN=$(turso db tokens create my-agent-db)
+```
+
+Or create a long-lived token:
+
+```bash theme={null}
+turso db tokens create my-agent-db --expiration none
+```
+
+## Conflict Resolution
+
+AgentFS uses last-write-wins for conflicts. If the same file is modified on multiple machines:
+
+1. Push from Machine A succeeds
+2. Push from Machine B fails (conflict)
+3. Machine B must pull first, then push
+
+## Next Steps
+
+<CardGroup>
+  <Card title="Turso Cloud" icon="cloud" href="https://turso.tech">
+    Learn more about Turso Cloud
+  </Card>
+
+  <Card title="NFS Server" icon="network-wired" href="/agentfs/guides/nfs">
+    Remote access via NFS
+  </Card>
+</CardGroup>
+
+
+# Installation
+Source: https://docs.turso.tech/agentfs/installation
+
+Install the AgentFS CLI on Linux, macOS, and Windows
+
+## Quick Install
+
+The fastest way to install AgentFS:
+
+```bash theme={null}
+curl -fsSL https://github.com/tursodatabase/agentfs/releases/latest/download/agentfs-installer.sh | sh
+```
+
+This installs the `agentfs` binary to `~/.cargo/bin`.
+
+## Platform-Specific Instructions
+
+<Tabs>
+  <Tab title="macOS">
+    ```bash theme={null}
+    curl -fsSL https://github.com/tursodatabase/agentfs/releases/latest/download/agentfs-installer.sh | sh
+    ```
+
+    After installation, restart your terminal or run:
+
+    ```bash theme={null}
+    source ~/.zshrc  # or ~/.bashrc
+    ```
+  </Tab>
+
+  <Tab title="Linux">
+    **Using the installer:**
+
+    ```bash theme={null}
+    curl -fsSL https://github.com/tursodatabase/agentfs/releases/latest/download/agentfs-installer.sh | sh
+    ```
+
+    After installation, restart your terminal or run:
+
+    ```bash theme={null}
+    source ~/.bashrc  # or ~/.zshrc
+    ```
+
+    **Requirements:**
+
+    * FUSE must be available for filesystem mounting
+    * On Ubuntu/Debian: `sudo apt install fuse3`
+    * On Fedora: `sudo dnf install fuse3`
+  </Tab>
+
+  <Tab title="Windows">
+    **Using PowerShell:**
+
+    ```powershell theme={null}
+    irm https://github.com/tursodatabase/agentfs/releases/latest/download/agentfs-installer.ps1 | iex
+    ```
+
+    Or download the binary directly from the [releases page](https://github.com/tursodatabase/agentfs/releases).
+  </Tab>
+</Tabs>
+
+## Verify Installation
+
+```bash theme={null}
+agentfs --version
+```
+
+## Shell Completions
+
+Enable tab completion for your shell:
+
+```bash theme={null}
+# Auto-detect shell
+agentfs completions install
+
+# Or specify shell explicitly
+agentfs completions install bash
+agentfs completions install zsh
+agentfs completions install fish
+```
+
+Restart your shell after installing completions.
+
+## Building from Source
+
+Requires Rust 1.70+:
+
+```bash theme={null}
+git clone https://github.com/tursodatabase/agentfs.git
+cd agentfs/cli
+cargo install --path .
+```
+
+## Next Steps
+
+<CardGroup>
+  <Card title="Agentic Coding" icon="robot" href="/agentfs/guides/sandbox">
+    Run AI coding agents safely
+  </Card>
+
+  <Card title="CLI Reference" icon="terminal" href="/agentfs/reference/cli">
+    Full command reference
+  </Card>
+</CardGroup>
+
+
+# AgentFS
+Source: https://docs.turso.tech/agentfs/introduction
+
+A filesystem for AI agents, built on Turso
+
+AgentFS is a filesystem for AI agents. It provides copy-on-write isolation, letting agents safely modify files while keeping your original data untouched.
+It is available both as a CLI, that wraps an existing program in a sandboxed session, and an SDK that allows you to build custom agents with a filesystem
+abstraction.
+
+## Key Features
+
+* **Copy-on-Write Isolation** — Run agents in sandboxed environments where changes are isolated from your source tree
+* **Single File Storage** — Everything stored in one portable SQLite database for easy sharing and snapshotting
+* **Built-in Auditing** — Every file operation is recorded and queryable
+* **Cloud Sync** — Optionally sync agent state to Turso Cloud
+
+## Quick Start
+
+```bash theme={null}
+# Install
+curl -fsSL https://agentfs.ai/install | bash
+
+# Run a shell in an isolated environment
+cd /path/to/project
+agentfs run bash
+
+# Any changes are isolated - your original files are safe
+```
+
+## Next Steps
+
+<CardGroup>
+  <Card title="Installation" icon="download" href="/agentfs/installation">
+    Install the AgentFS CLI
+  </Card>
+
+  <Card title="Agentic Coding" icon="robot" href="/agentfs/guides/sandbox">
+    Run AI coding agents safely
+  </Card>
+
+  <Card title="AgentFS SDKs" icon="robot" href="/agentfs/sdk">
+    Build custom agents with the AgentFS SDKs
+  </Card>
+</CardGroup>
+
+<Warning>
+  This software is ALPHA; use only for development, testing, and experimentation. We are working to make it production-ready, but do not use it for critical data until it is ready.
+</Warning>
+
+
+# CLI Reference
+Source: https://docs.turso.tech/agentfs/reference/cli
+
+Complete reference for the AgentFS command-line interface
+
+Complete reference for the `agentfs` command-line tool.
+
+<Info>
+  For the latest reference, see [MANUAL.md](https://github.com/tursodatabase/agentfs/blob/main/MANUAL.md) in the repository.
+</Info>
+
+## Installation
+
+```bash theme={null}
+curl -fsSL https://github.com/tursodatabase/agentfs/releases/latest/download/agentfs-installer.sh | sh
+```
+
+## Commands
+
+### agentfs init
+
+Initialize a new agent filesystem.
+
+```bash theme={null}
+agentfs init [OPTIONS] [ID]
+```
+
+**Arguments:**
+
+* `ID` - Agent identifier (default: `agent-{timestamp}`)
+
+**Options:**
+
+| Option                    | Description                           |
+| ------------------------- | ------------------------------------- |
+| `--force`                 | Overwrite existing agent filesystem   |
+| `--base <PATH>`           | Base directory for overlay filesystem |
+| `--sync-remote-url <URL>` | Remote Turso database URL             |
+
+**Example:**
+
+```bash theme={null}
+agentfs init my-agent
+agentfs init my-overlay --base /path/to/project
+```
+
+***
+
+### agentfs run
+
+Execute a program in a sandboxed environment.
+
+```bash theme={null}
+agentfs run [OPTIONS] <COMMAND> [ARGS]...
+```
+
+**Options:**
+
+| Option                   | Description                         |
+| ------------------------ | ----------------------------------- |
+| `--session <ID>`         | Named session for persistence       |
+| `--allow <PATH>`         | Allow write access to directory     |
+| `--no-default-allows`    | Disable default allowed directories |
+| `--experimental-sandbox` | Use ptrace sandbox (Linux)          |
+| `--strace`               | Show intercepted syscalls           |
+
+**Examples:**
+
+```bash theme={null}
+agentfs run /bin/bash
+agentfs run --session my-project python3 agent.py
+agentfs run --allow /tmp --allow ~/.cache /bin/bash
+```
+
+***
+
+### agentfs mount
+
+Mount an agent filesystem or list mounts.
+
+```bash theme={null}
+agentfs mount [OPTIONS] [ID_OR_PATH] [MOUNT_POINT]
+```
+
+Without arguments, lists all mounted filesystems.
+
+**Options:**
+
+| Option               | Description                   |
+| -------------------- | ----------------------------- |
+| `-a, --auto-unmount` | Automatically unmount on exit |
+| `--allow-root`       | Allow root user access        |
+| `-f, --foreground`   | Run in foreground             |
+| `--uid <UID>`        | User ID for files             |
+| `--gid <GID>`        | Group ID for files            |
+
+**Examples:**
+
+```bash theme={null}
+agentfs mount                              # List mounts
+agentfs mount my-agent ./mnt               # Mount agent
+agentfs mount my-agent ./mnt -a -f         # Foreground with auto-unmount
+```
+
+**Unmounting:**
+
+* Linux: `fusermount -u <MOUNT_POINT>`
+* macOS: `umount <MOUNT_POINT>`
+
+***
+
+### agentfs serve mcp
+
+Start an MCP (Model Context Protocol) server.
+
+```bash theme={null}
+agentfs serve mcp <ID_OR_PATH> [OPTIONS]
+```
+
+**Options:**
+
+| Option            | Description                   |
+| ----------------- | ----------------------------- |
+| `--tools <TOOLS>` | Comma-separated list of tools |
+
+**Available Tools:**
+
+| Category   | Tools                                                                               |
+| ---------- | ----------------------------------------------------------------------------------- |
+| Filesystem | `read_file`, `write_file`, `readdir`, `mkdir`, `remove`, `rename`, `stat`, `access` |
+| Key-Value  | `kv_get`, `kv_set`, `kv_delete`, `kv_list`                                          |
+
+**Examples:**
+
+```bash theme={null}
+agentfs serve mcp my-agent
+agentfs serve mcp my-agent --tools read_file,readdir,stat
+```
+
+***
+
+### agentfs serve nfs
+
+Start an NFS server.
+
+```bash theme={null}
+agentfs serve nfs <ID_OR_PATH> [OPTIONS]
+```
+
+**Options:**
+
+| Option          | Description                       |
+| --------------- | --------------------------------- |
+| `--bind <IP>`   | IP to bind (default: `127.0.0.1`) |
+| `--port <PORT>` | Port (default: `11111`)           |
+
+**Example:**
+
+```bash theme={null}
+agentfs serve nfs my-agent --bind 0.0.0.0 --port 2049
+```
+
+**Mounting:**
+
+```bash theme={null}
+mount -t nfs -o vers=3,tcp,port=11111,mountport=11111,nolock localhost:/ /mnt
+```
+
+***
+
+### agentfs sync
+
+Synchronize with a remote Turso database.
+
+```bash theme={null}
+agentfs sync <ID_OR_PATH> <SUBCOMMAND>
+```
+
+**Subcommands:**
+
+| Command      | Description          |
+| ------------ | -------------------- |
+| `pull`       | Pull remote changes  |
+| `push`       | Push local changes   |
+| `stats`      | View sync statistics |
+| `checkpoint` | Create checkpoint    |
+
+**Example:**
+
+```bash theme={null}
+agentfs sync my-agent pull
+agentfs sync my-agent push
+```
+
+***
+
+### agentfs fs
+
+Filesystem operations on agent databases.
+
+#### agentfs fs ls
+
+```bash theme={null}
+agentfs fs ls <ID_OR_PATH> [FS_PATH]
+```
+
+List files. Output: `f <name>` for files, `d <name>` for directories.
+
+#### agentfs fs cat
+
+```bash theme={null}
+agentfs fs cat <ID_OR_PATH> <FILE_PATH>
+```
+
+Display file contents.
+
+#### agentfs fs write
+
+```bash theme={null}
+agentfs fs write <ID_OR_PATH> <FILE_PATH> <CONTENT>
+```
+
+Write content to a file.
+
+**Examples:**
+
+```bash theme={null}
+agentfs fs ls my-agent
+agentfs fs cat my-agent /config.json
+agentfs fs write my-agent /hello.txt "Hello, world!"
+```
+
+***
+
+### agentfs diff
+
+Show filesystem changes in overlay mode.
+
+```bash theme={null}
+agentfs diff <ID_OR_PATH>
+```
+
+***
+
+### agentfs timeline
+
+Display agent action timeline.
+
+```bash theme={null}
+agentfs timeline [OPTIONS] <ID_OR_PATH>
+```
+
+**Options:**
+
+| Option              | Description                           |
+| ------------------- | ------------------------------------- |
+| `--limit <N>`       | Limit entries (default: 100)          |
+| `--filter <TOOL>`   | Filter by tool name                   |
+| `--status <STATUS>` | Filter: `pending`, `success`, `error` |
+| `--format <FORMAT>` | Output: `table`, `json`               |
+
+**Examples:**
+
+```bash theme={null}
+agentfs timeline my-agent
+agentfs timeline my-agent --filter web_search --status error
+agentfs timeline my-agent --format json
+```
+
+***
+
+### agentfs completions
+
+Manage shell completions.
+
+```bash theme={null}
+agentfs completions install [SHELL]
+agentfs completions uninstall [SHELL]
+agentfs completions show
+```
+
+Supported: `bash`, `zsh`, `fish`, `powershell`
+
+## Environment Variables
+
+Variables set inside the sandbox:
+
+| Variable          | Description               |
+| ----------------- | ------------------------- |
+| `AGENTFS`         | Set to `1` inside sandbox |
+| `AGENTFS_SANDBOX` | Sandbox type              |
+| `AGENTFS_SESSION` | Session ID                |
+
+## Files
+
+| Path                 | Description               |
+| -------------------- | ------------------------- |
+| `.agentfs/<ID>.db`   | Agent filesystem database |
+| `~/.config/agentfs/` | Configuration directory   |
+
+## See Also
+
+<CardGroup>
+  <Card title="Installation" icon="download" href="/agentfs/installation">
+    Installation instructions
+  </Card>
+
+  <Card title="Sandbox Guide" icon="shield" href="/agentfs/guides/sandbox">
+    Running agents in sandboxes
+  </Card>
+</CardGroup>
+
+
+# Python SDK
+Source: https://docs.turso.tech/agentfs/sdk/python
+
+AgentFS Python SDK for building AI agents
+
+The AgentFS Python SDK provides an async interface for building AI agents with persistent storage.
+
+## Installation
+
+```bash theme={null}
+pip install agentfs-sdk
+```
+
+## Quick Start
+
+```python theme={null}
+import asyncio
+from agentfs_sdk import AgentFS, AgentFSOptions
+
+async def main():
+    # Open an agent filesystem
+    agent = await AgentFS.open(AgentFSOptions(id='my-agent'))
+
+    # Use key-value store
+    await agent.kv.set('config', {'debug': True})
+    config = await agent.kv.get('config')
+
+    # Use filesystem
+    await agent.fs.write_file('/notes.txt', 'Hello, AgentFS!')
+    content = await agent.fs.read_file('/notes.txt')
+
+    # Track tool calls
+    call_id = await agent.tools.start('search', {'query': 'Python'})
+    await agent.tools.success(call_id, {'results': ['result1']})
+
+    await agent.close()
+
+asyncio.run(main())
+```
+
+## Opening a Filesystem
+
+### By Agent ID
+
+Creates database at `.agentfs/{id}.db`:
+
+```python theme={null}
+agent = await AgentFS.open(AgentFSOptions(id='my-agent'))
+```
+
+### By Path
+
+Specify a custom database path:
+
+```python theme={null}
+agent = await AgentFS.open(AgentFSOptions(path='./data/mydb.db'))
+```
+
+### Context Manager
+
+Automatically closes the database:
+
+```python theme={null}
+async with await AgentFS.open(AgentFSOptions(id='my-agent')) as agent:
+    await agent.kv.set('key', 'value')
+    # Database is closed when exiting
+```
+
+## Key-Value Store
+
+Simple key-value storage with JSON serialization.
+
+### Set a Value
+
+```python theme={null}
+await agent.kv.set('user:123', {'name': 'Alice', 'age': 30})
+await agent.kv.set('counter', 42)
+await agent.kv.set('active', True)
+```
+
+### Get a Value
+
+```python theme={null}
+user = await agent.kv.get('user:123')
+# Returns None if key doesn't exist
+```
+
+### List Keys
+
+```python theme={null}
+# List all keys with prefix
+keys = await agent.kv.list('user:')
+# Returns: ['user:123', 'user:456', ...]
+```
+
+### Delete a Key
+
+```python theme={null}
+await agent.kv.delete('user:123')
+```
+
+## Filesystem
+
+POSIX-like filesystem operations.
+
+### Write a File
+
+Creates parent directories automatically:
+
+```python theme={null}
+await agent.fs.write_file('/data/config.json', '{"key": "value"}')
+
+# Write bytes
+await agent.fs.write_file('/data/image.png', image_bytes)
+```
+
+### Read a File
+
+```python theme={null}
+# Read as string (default)
+content = await agent.fs.read_file('/data/config.json')
+
+# Read as bytes
+data = await agent.fs.read_file('/data/image.png', encoding=None)
+```
+
+### List Directory
+
+```python theme={null}
+entries = await agent.fs.readdir('/data')
+# Returns: ['config.json', 'image.png', ...]
+```
+
+### Get File Stats
+
+```python theme={null}
+stats = await agent.fs.stat('/data/config.json')
+print(f"Size: {stats.size} bytes")
+print(f"Modified: {stats.mtime}")
+print(f"Is file: {stats.is_file()}")
+print(f"Is directory: {stats.is_dir()}")
+```
+
+### Delete a File
+
+```python theme={null}
+await agent.fs.delete_file('/data/config.json')
+```
+
+### Create Directory
+
+```python theme={null}
+await agent.fs.mkdir('/data/subdir')
+```
+
+## Tool Calls
+
+Track and analyze tool/function calls for debugging and auditing.
+
+### Start and Complete
+
+```python theme={null}
+# Start a tool call
+call_id = await agent.tools.start('search', {'query': 'Python'})
+
+# ... perform the operation ...
+
+# Mark as successful
+await agent.tools.success(call_id, {'results': ['result1', 'result2']})
+
+# Or mark as failed
+await agent.tools.error(call_id, 'Connection timeout')
+```
+
+### Record Completed Call
+
+If you have start and end times:
+
+```python theme={null}
+await agent.tools.record(
+    name='search',
+    started_at=1234567890.0,
+    completed_at=1234567892.0,
+    parameters={'query': 'Python'},
+    result={'results': ['result1']}
+)
+```
+
+### Query Tool Calls
+
+```python theme={null}
+# Get by name
+calls = await agent.tools.get_by_name('search', limit=10)
+
+# Get recent calls
+recent = await agent.tools.get_recent(since=1234567890.0)
+
+# Get by ID
+call = await agent.tools.get(42)
+```
+
+### Get Statistics
+
+```python theme={null}
+stats = await agent.tools.get_stats()
+for stat in stats:
+    print(f"{stat.name}:")
+    print(f"  Total calls: {stat.total_calls}")
+    print(f"  Successful: {stat.successful}")
+    print(f"  Failed: {stat.failed}")
+    print(f"  Avg duration: {stat.avg_duration_ms:.2f}ms")
+```
+
+## Complete Example
+
+```python theme={null}
+import asyncio
+import time
+from agentfs_sdk import AgentFS, AgentFSOptions
+
+async def main():
+    async with await AgentFS.open(AgentFSOptions(id='demo-agent')) as agent:
+        # Store configuration
+        await agent.kv.set('agent:config', {
+            'model': 'gpt-4',
+            'temperature': 0.7
+        })
+
+        # Create a research document
+        research = """
+        # Research Notes
+
+        ## Topic: AgentFS
+
+        AgentFS provides persistent storage for AI agents.
+        """
+
+        await agent.fs.write_file('/research/agentfs.md', research)
+
+        # Track a simulated tool call
+        call_id = await agent.tools.start('web_search', {
+            'query': 'AgentFS documentation'
+        })
+
+        # Simulate some work
+        await asyncio.sleep(0.1)
+
+        await agent.tools.success(call_id, {
+            'results_count': 5,
+            'top_result': 'https://docs.turso.tech/agentfs'
+        })
+
+        # List what we created
+        files = await agent.fs.readdir('/research')
+        print(f"Files: {files}")
+
+        # Get tool stats
+        stats = await agent.tools.get_stats()
+        for stat in stats:
+            print(f"{stat.name}: {stat.total_calls} calls")
+
+asyncio.run(main())
+```
+
+## API Reference
+
+### AgentFS
+
+| Method                  | Description                        |
+| ----------------------- | ---------------------------------- |
+| `AgentFS.open(options)` | Open or create an agent filesystem |
+| `agent.close()`         | Close the database connection      |
+| `agent.kv`              | Key-value store interface          |
+| `agent.fs`              | Filesystem interface               |
+| `agent.tools`           | Tool calls interface               |
+
+### AgentFSOptions
+
+| Property | Type  | Description                                   |
+| -------- | ----- | --------------------------------------------- |
+| `id`     | `str` | Agent identifier (creates `.agentfs/{id}.db`) |
+| `path`   | `str` | Custom database path                          |
+
+### KvStore
+
+| Method            | Description           |
+| ----------------- | --------------------- |
+| `set(key, value)` | Store a value         |
+| `get(key)`        | Retrieve a value      |
+| `delete(key)`     | Delete a key          |
+| `list(prefix)`    | List keys with prefix |
+
+### Filesystem
+
+| Method                      | Description            |
+| --------------------------- | ---------------------- |
+| `write_file(path, content)` | Write file contents    |
+| `read_file(path, encoding)` | Read file contents     |
+| `readdir(path)`             | List directory entries |
+| `stat(path)`                | Get file metadata      |
+| `delete_file(path)`         | Delete a file          |
+| `mkdir(path)`               | Create directory       |
+
+### ToolCalls
+
+| Method                     | Description             |
+| -------------------------- | ----------------------- |
+| `start(name, params)`      | Start tracking a call   |
+| `success(id, result)`      | Mark call as successful |
+| `error(id, message)`       | Mark call as failed     |
+| `record(...)`              | Record a completed call |
+| `get(id)`                  | Get call by ID          |
+| `get_by_name(name, limit)` | Query by tool name      |
+| `get_recent(since)`        | Get recent calls        |
+| `get_stats()`              | Get usage statistics    |
+
+## Next Steps
+
+<CardGroup>
+  <Card title="OpenAI Agents" icon="robot" href="/agentfs/integrations/openai-agents">
+    Using AgentFS with OpenAI Agents SDK
+  </Card>
+
+  <Card title="LlamaIndex" icon="llama" href="/agentfs/integrations/llamaindex">
+    Using AgentFS with LlamaIndex
   </Card>
 </CardGroup>
 
@@ -602,7 +1778,7 @@ Build high-performance stateful AI agents with the AgentFS Rust SDK.
 
 Add AgentFS to your `Cargo.toml`:
 
-```toml  theme={null}
+```toml theme={null}
 [dependencies]
 agentfs = "0.1"
 tokio = { version = "1", features = ["full"] }
@@ -612,14 +1788,18 @@ serde_json = "1"
 
 ## Quick Start
 
-```rust  theme={null}
-use agentfs::AgentFS;
+```rust theme={null}
+use agentfs::{AgentFS, AgentFSOptions};
 use anyhow::Result;
 
 #[tokio::main]
 async fn main() -> Result<()> {
-    // Open or create an agent filesystem
-    let agent = AgentFS::open("./agent.db").await?;
+    // Persistent storage with identifier
+    let agent = AgentFS::open(AgentFSOptions::with_id("my-agent")).await?;
+    // Creates: .agentfs/my-agent.db
+
+    // Or use ephemeral in-memory database
+    let ephemeral = AgentFS::open(AgentFSOptions::ephemeral()).await?;
 
     // Use the three main APIs
     agent.kv.set("key", "value").await?;              // Key-value store
@@ -636,24 +1816,38 @@ async fn main() -> Result<()> {
 
 The main entry point for all AgentFS operations.
 
-#### `AgentFS::open(path: impl AsRef<Path>)`
+#### `AgentFS::open(options: AgentFSOptions)`
 
 Creates or opens an AgentFS database.
 
-```rust  theme={null}
+```rust theme={null}
 use agentfs::{AgentFS, AgentFSOptions};
 
-// Simple open
-let agent = AgentFS::open("./my-agent.db").await?;
+// Persistent storage with identifier
+let agent = AgentFS::open(AgentFSOptions::with_id("my-agent")).await?;
+// Creates: .agentfs/my-agent.db
 
-// With options
-let agent = AgentFS::open_with_options(
-    "./agent.db",
-    AgentFSOptions {
-        readonly: false,
-        create_if_missing: true,
-    }
-).await?;
+// Ephemeral in-memory database
+let ephemeral = AgentFS::open(AgentFSOptions::ephemeral()).await?;
+```
+
+**AgentFSOptions Configuration:**
+
+```rust theme={null}
+pub struct AgentFSOptions {
+    /// Optional unique identifier for the agent.
+    /// - If Some(id): Creates persistent storage at `.agentfs/{id}.db`
+    /// - If None: Uses ephemeral in-memory database
+    pub id: Option<String>,
+}
+
+impl AgentFSOptions {
+    /// Create options for a persistent agent with the given ID
+    pub fn with_id(id: impl Into<String>) -> Self;
+
+    /// Create options for an ephemeral in-memory agent
+    pub fn ephemeral() -> Self;
+}
 ```
 
 #### Fields
@@ -671,7 +1865,7 @@ Fast, typed storage with Serde serialization support.
 
 Store any serializable value.
 
-```rust  theme={null}
+```rust theme={null}
 use serde::{Serialize, Deserialize};
 
 #[derive(Serialize, Deserialize)]
@@ -695,7 +1889,7 @@ agent.kv.set("active", true).await?;
 
 Retrieve and deserialize values.
 
-```rust  theme={null}
+```rust theme={null}
 // Get with type inference
 let prefs: Option<UserPreferences> = agent.kv.get("user:preferences").await?;
 
@@ -712,7 +1906,7 @@ let theme = agent.kv.get::<String>("theme").await?.unwrap_or("light".to_string()
 
 Remove a key-value pair.
 
-```rust  theme={null}
+```rust theme={null}
 agent.kv.delete("session:expired").await?;
 ```
 
@@ -720,7 +1914,7 @@ agent.kv.delete("session:expired").await?;
 
 List keys with filtering and pagination.
 
-```rust  theme={null}
+```rust theme={null}
 use agentfs::ListOptions;
 
 // List all keys
@@ -750,7 +1944,7 @@ let page2 = agent.kv.list(ListOptions {
 
 Remove all key-value pairs.
 
-```rust  theme={null}
+```rust theme={null}
 agent.kv.clear().await?;
 ```
 
@@ -762,7 +1956,7 @@ POSIX-like filesystem operations for managing agent data.
 
 Write bytes to a file, creating parent directories as needed.
 
-```rust  theme={null}
+```rust theme={null}
 // Write text
 agent.fs.write_file("/report.md", b"# Report\nContent...").await?;
 
@@ -779,7 +1973,7 @@ agent.fs.write_file("/images/chart.png", &image_data).await?;
 
 Read file contents as bytes.
 
-```rust  theme={null}
+```rust theme={null}
 // Read as bytes
 let data = agent.fs.read_file("/report.md").await?;
 
@@ -795,7 +1989,7 @@ let config: serde_json::Value = serde_json::from_slice(&json_data)?;
 
 Create a directory, optionally creating parent directories.
 
-```rust  theme={null}
+```rust theme={null}
 // Create single directory
 agent.fs.mkdir("/reports").await?;
 
@@ -807,7 +2001,7 @@ agent.fs.mkdir_p("/reports/2024/Q4").await?;
 
 List directory contents with metadata.
 
-```rust  theme={null}
+```rust theme={null}
 let entries = agent.fs.readdir("/reports").await?;
 
 for entry in entries {
@@ -828,7 +2022,7 @@ let files: Vec<_> = entries
 
 Get file or directory metadata.
 
-```rust  theme={null}
+```rust theme={null}
 let stat = agent.fs.stat("/report.md").await?;
 
 println!("Size: {} bytes", stat.size);
@@ -848,7 +2042,7 @@ if stat.is_file() {
 
 Check if a file or directory exists.
 
-```rust  theme={null}
+```rust theme={null}
 if agent.fs.exists("/config.json").await? {
     let config = agent.fs.read_file("/config.json").await?;
 }
@@ -858,7 +2052,7 @@ if agent.fs.exists("/config.json").await? {
 
 Remove a file or empty directory.
 
-```rust  theme={null}
+```rust theme={null}
 // Remove file
 agent.fs.rm("/old-report.md").await?;
 
@@ -873,7 +2067,7 @@ agent.fs.rm_rf("/old-data").await?;
 
 Move or rename files and directories.
 
-```rust  theme={null}
+```rust theme={null}
 // Rename file
 agent.fs.rename("/draft.md", "/final.md").await?;
 
@@ -885,7 +2079,7 @@ agent.fs.rename("/temp/data.json", "/archive/data.json").await?;
 
 Copy a file to a new location.
 
-```rust  theme={null}
+```rust theme={null}
 agent.fs.copy_file("/template.md", "/new-report.md").await?;
 ```
 
@@ -897,7 +2091,7 @@ Record and query agent tool invocations.
 
 Record a tool invocation with timing and I/O data.
 
-```rust  theme={null}
+```rust theme={null}
 use agentfs::ToolCall;
 use chrono::Utc;
 use serde_json::json;
@@ -925,7 +2119,7 @@ agent.tools.record(ToolCall {
 
 Query recorded tool calls.
 
-```rust  theme={null}
+```rust theme={null}
 use agentfs::ToolListOptions;
 use chrono::{Duration, Utc};
 
@@ -954,7 +2148,7 @@ let last_hour = agent.tools.list(ToolListOptions {
 
 Get details of a specific tool call.
 
-```rust  theme={null}
+```rust theme={null}
 if let Some(call) = agent.tools.get("call_123abc").await? {
     let duration = call.ended_at - call.started_at;
     println!("Tool: {}", call.name);
@@ -966,7 +2160,7 @@ if let Some(call) = agent.tools.get("call_123abc").await? {
 
 Remove a tool call record.
 
-```rust  theme={null}
+```rust theme={null}
 agent.tools.delete("call_123abc").await?;
 ```
 
@@ -974,7 +2168,7 @@ agent.tools.delete("call_123abc").await?;
 
 Remove all tool call records.
 
-```rust  theme={null}
+```rust theme={null}
 agent.tools.clear().await?;
 ```
 
@@ -994,17 +2188,37 @@ Build stateful AI agents with the AgentFS TypeScript SDK, supporting both Node.j
 
 ## Installation
 
-```bash  theme={null}
-bun add agentfs-sdk
-```
+<Tabs>
+  <Tab title="npm">
+    ```bash theme={null}
+    npm install agentfs-sdk
+    ```
+  </Tab>
+
+  <Tab title="bun">
+    ```bash theme={null}
+    bun add agentfs-sdk
+    ```
+  </Tab>
+
+  <Tab title="deno">
+    ```typescript theme={null}
+    import { AgentFS } from "npm:agentfs-sdk";
+    ```
+  </Tab>
+</Tabs>
 
 ## Quick Start
 
-```typescript  theme={null}
+```typescript theme={null}
 import { AgentFS } from 'agentfs-sdk';
 
-// Open or create an agent filesystem
-const agent = await AgentFS.open('./agent.db');
+// Persistent storage with identifier
+const agent = await AgentFS.open({ id: 'my-agent' });
+// Creates: .agentfs/my-agent.db
+
+// Or use ephemeral in-memory database
+const ephemeralAgent = await AgentFS.open();
 
 // Use the three main APIs
 // Key-value store
@@ -1021,21 +2235,26 @@ await agent.tools.record(...);
 
 The main entry point for all AgentFS operations.
 
-#### `AgentFS.open(path: string, options?: AgentFSOptions)`
+#### `AgentFS.open(options?: AgentFSOptions)`
 
 Creates or opens an AgentFS database.
 
-```typescript  theme={null}
+```typescript theme={null}
 interface AgentFSOptions {
-  // Optional configuration
-  readonly?: boolean;  // Open in read-only mode
+  /**
+   * Optional unique identifier for the agent.
+   * - If provided: Creates persistent storage at `.agentfs/{id}.db`
+   * - If omitted: Uses ephemeral in-memory database
+   */
+  id?: string;
 }
 
-const agent = await AgentFS.open('./my-agent.db');
-const readOnlyAgent = await AgentFS.open(
-  './agent.db',
-  { readonly: true }
-);
+// Persistent storage
+const agent = await AgentFS.open({ id: 'my-agent' });
+// Creates: .agentfs/my-agent.db
+
+// Ephemeral in-memory database
+const ephemeralAgent = await AgentFS.open();
 ```
 
 #### Properties
@@ -1053,7 +2272,7 @@ Fast, typed storage for agent state and configuration.
 
 Store a value with automatic JSON serialization.
 
-```typescript  theme={null}
+```typescript theme={null}
 await agent.kv.set('user:123', {
   name: 'Alice',
   preferences: { theme: 'dark' }
@@ -1063,11 +2282,11 @@ await agent.kv.set('session:current', 'abc-123');
 await agent.kv.set('counter', 42);
 ```
 
-#### `kv.get<T>(key: string): Promise<T | null>`
+#### `kv.get<T>(key: string): Promise<T | undefined>`
 
 Retrieve a value with automatic deserialization.
 
-```typescript  theme={null}
+```typescript theme={null}
 interface UserData {
   name: string;
   preferences: { theme: string };
@@ -1083,40 +2302,23 @@ if (user) {
 
 Remove a key-value pair.
 
-```typescript  theme={null}
+```typescript theme={null}
 await agent.kv.delete('session:expired');
 ```
 
-#### `kv.list(options?: ListOptions)`
+#### `kv.list(prefix: string): Promise<{ key: string, value: any }[]>`
 
-List keys with optional filtering.
+List keys matching a prefix.
 
-```typescript  theme={null}
-interface ListOptions {
-  prefix?: string;  // Filter by key prefix
-  limit?: number;   // Maximum results
-  cursor?: string;  // Pagination cursor
+```typescript theme={null}
+// List all user keys
+const userEntries = await agent.kv.list('user:');
+for (const { key, value } of userEntries) {
+  console.log(key, value);
 }
 
-// List all user keys
-const userKeys = await agent.kv.list(
-  { prefix: 'user:' }
-);
-
-// Paginated listing
-const page1 = await agent.kv.list({ limit: 10 });
-const page2 = await agent.kv.list({
-  limit: 10,
-  cursor: page1.cursor
-});
-```
-
-#### `kv.clear()`
-
-Remove all key-value pairs.
-
-```typescript  theme={null}
-await agent.kv.clear();
+// List all keys (empty prefix)
+const allEntries = await agent.kv.list('');
 ```
 
 ### Filesystem API
@@ -1127,7 +2329,7 @@ POSIX-like filesystem operations for managing agent data.
 
 Write data to a file, creating parent directories as needed.
 
-```typescript  theme={null}
+```typescript theme={null}
 // Write text
 await agent.fs.writeFile('/reports/summary.md', '# Report\nContent...');
 
@@ -1136,36 +2338,28 @@ const imageBuffer = await fetch(url).then(r => r.arrayBuffer());
 await agent.fs.writeFile('/images/chart.png', Buffer.from(imageBuffer));
 ```
 
-#### `fs.readFile(path: string): Promise<Buffer>`
+#### `fs.readFile(path: string, options?: BufferEncoding): Promise<Buffer | string>`
 
-Read file contents as a Buffer.
+Read file contents. Returns a Buffer by default, or a string if encoding is specified.
 
-```typescript  theme={null}
+```typescript theme={null}
+// Read as Buffer (default)
 const data = await agent.fs.readFile('/reports/summary.md');
 const text = data.toString('utf-8');
+
+// Read as string with encoding
+const content = await agent.fs.readFile('/reports/summary.md', 'utf-8');
 
 // For JSON files
 const jsonData = await agent.fs.readFile('/config.json');
 const config = JSON.parse(jsonData.toString());
 ```
 
-#### `fs.mkdir(path: string, options?: MkdirOptions)`
-
-Create a directory.
-
-```typescript  theme={null}
-interface MkdirOptions {
-  recursive?: boolean;  // Create parent directories if needed
-}
-
-await agent.fs.mkdir('/reports/2024/Q4', { recursive: true });
-```
-
 #### `fs.readdir(path: string): Promise<string[]>`
 
 List directory contents.
 
-```typescript  theme={null}
+```typescript theme={null}
 const files = await agent.fs.readdir('/reports');
 // Returns: ['summary.md', '2024/', 'archive/']
 
@@ -1184,7 +2378,7 @@ for (const entry of files) {
 
 Get file or directory metadata.
 
-```typescript  theme={null}
+```typescript theme={null}
 interface Stats {
   size: number;        // File size in bytes
   mode: number;        // File mode/permissions
@@ -1203,71 +2397,43 @@ console.log(`Modified: ${new Date(stats.mtime * 1000)}`);
 
 Check if a file or directory exists.
 
-```typescript  theme={null}
+```typescript theme={null}
 if (await agent.fs.exists('/reports/draft.md')) {
   console.log('Draft exists');
 }
 ```
 
-#### `fs.rm(path: string, options?: RmOptions)`
+#### `fs.deleteFile(path: string)`
 
-Remove a file or directory.
+Delete a file.
 
-```typescript  theme={null}
-interface RmOptions {
-  recursive?: boolean;  // Remove directories and contents
-  force?: boolean;     // Don't error if doesn't exist
-}
-
-// Remove a file
-await agent.fs.rm('/reports/old.md');
-
-// Remove directory tree
-await agent.fs.rm('/archive', { recursive: true });
-
-// Safe removal
-await agent.fs.rm('/maybe-exists.txt', { force: true });
-```
-
-#### `fs.rename(oldPath: string, newPath: string)`
-
-Move or rename a file or directory.
-
-```typescript  theme={null}
-await agent.fs.rename('/reports/draft.md', '/reports/final.md');
-await agent.fs.rename('/temp', '/archive/2024');
-```
-
-#### `fs.copyFile(src: string, dest: string)`
-
-Copy a file to a new location.
-
-```typescript  theme={null}
-await agent.fs.copyFile('/reports/template.md', '/reports/new-report.md');
+```typescript theme={null}
+await agent.fs.deleteFile('/reports/old.md');
 ```
 
 ### Tool Call Tracking API
 
 Record and query agent tool invocations for debugging and compliance.
 
-#### `tools.record(name, startTime, endTime, input, output)`
+#### `tools.record(name, started_at, completed_at, parameters?, result?, error?): Promise<number>`
 
 Record a tool invocation.
 
-```typescript  theme={null}
+```typescript theme={null}
 await agent.tools.record(
   name: string,           // Tool identifier
-  startTime: number,      // Unix timestamp (seconds)
-  endTime: number,        // Unix timestamp (seconds)
-  input: any,            // Tool input (JSON-serializable)
-  output: any            // Tool output (JSON-serializable)
+  started_at: number,     // Unix timestamp (seconds)
+  completed_at: number,   // Unix timestamp (seconds)
+  parameters?: any,       // Tool parameters (JSON-serializable)
+  result?: any,           // Tool result (JSON-serializable)
+  error?: string          // Error message if failed
 );
 
 // Example: Track an API call
 const start = Date.now() / 1000;
 const response = await callOpenAI(prompt);
 
-await agent.tools.record(
+const id = await agent.tools.record(
   'openai_completion',
   start,
   Date.now() / 1000,
@@ -1276,71 +2442,29 @@ await agent.tools.record(
 );
 ```
 
-#### `tools.list(options?: ToolListOptions)`
-
-Query recorded tool calls.
-
-```typescript  theme={null}
-interface ToolListOptions {
-  limit?: number;      // Maximum results
-  offset?: number;     // Skip results
-  name?: string;       // Filter by tool name
-  since?: number;      // After timestamp
-  until?: number;      // Before timestamp
-}
-
-// Get recent tool calls
-const recent = await agent.tools.list({ limit: 10 });
-
-// Get specific tool usage
-const searches = await agent.tools.list({
-  name: 'web_search',
-  limit: 100
-});
-
-// Get calls from last hour
-const lastHour = await agent.tools.list({
-  since: Date.now() / 1000 - 3600
-});
-```
-
-#### `tools.get(id: string)`
+#### `tools.get(id: number): Promise<ToolCall | undefined>`
 
 Get details of a specific tool call.
 
-```typescript  theme={null}
-const toolCall = await agent.tools.get('call_123abc');
-console.log('Duration:', toolCall.endTime - toolCall.startTime, 'seconds');
-```
-
-#### `tools.delete(id: string)`
-
-Remove a tool call record.
-
-```typescript  theme={null}
-await agent.tools.delete('call_123abc');
-```
-
-#### `tools.clear()`
-
-Remove all tool call records.
-
-```typescript  theme={null}
-await agent.tools.clear();
+```typescript theme={null}
+const toolCall = await agent.tools.get(42);
+if (toolCall) {
+  console.log('Duration:', toolCall.duration_ms, 'ms');
+}
 ```
 
 ## Browser Support
 
 AgentFS works in browser environments using WebAssembly:
 
-```html  theme={null}
+```html theme={null}
 <!DOCTYPE html>
 <html>
 <head>
   <script type="module">
     import { AgentFS } from 'https://unpkg.com/agentfs-sdk/dist/browser.js';
 
-    const agent = await AgentFS.open('browser-agent.db');
+    const agent = await AgentFS.open({ id: 'browser-agent' });
 
     // All APIs work the same in browser
     await agent.kv.set('browser:data', { platform: 'web' });
@@ -1387,7 +2511,7 @@ API tokens allow access to manage all API resources, including creating and dest
 
 Turso uses Bearer authentication, and requires your API token to be passed with all protected requests in the `Authorization` header:
 
-```bash  theme={null}
+```bash theme={null}
 Authorization: Bearer TOKEN
 ```
 
@@ -1395,7 +2519,7 @@ Authorization: Bearer TOKEN
 
 The Turso API is located at the following URL:
 
-```bash  theme={null}
+```bash theme={null}
 https://api.turso.tech
 ```
 
@@ -1474,7 +2598,7 @@ Generates an authorization token for the specified database.
 </RequestExample>
 
 <ResponseExample>
-  ```json  theme={null}
+  ```json theme={null}
   {
     "jwt": "TOKEN"
   }
@@ -1792,7 +2916,7 @@ Generates an authorization token for the specified group.
 </RequestExample>
 
 <ResponseExample>
-  ```json  theme={null}
+  ```json theme={null}
   {
     "jwt": "TOKEN"
   }
@@ -1970,7 +3094,7 @@ The Turso API gives you everything needed to manage your organization and its me
 
 If you want to programatically create and manage databases, either for building a platform where you provide SQLite databases to your users or have a per-user SQLite database architecture, this is the API to do that.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="API Quickstart" icon="play" href="/api-reference/quickstart">
     Get started with the Turso API to create your first database.
   </Card>
@@ -1980,7 +3104,7 @@ If you want to programatically create and manage databases, either for building 
 
 Start integrating the Turso API with your platform in a few simple steps.
 
-<Snippet file="platform-api-links.mdx" />
+<Snippet />
 
 
 # Closest Region
@@ -2216,7 +3340,7 @@ GET /v1/organizations/{organizationSlug}/members/{username}
 Retrieve details of a specific member in the organization.
 
 <RequestExample>
-  ```bash  theme={null}
+  ```bash theme={null}
   curl -L https://api.turso.tech/v1/organizations/{organizationSlug}/members/{username} \
     -H 'Authorization: Bearer TOKEN'
   ```
@@ -2230,7 +3354,7 @@ PATCH /v1/organizations/{organizationSlug}/members/{username}
 Update the role of an organization member. Only organization admins or owners can perform this action.
 
 <RequestExample>
-  ```bash  theme={null}
+  ```bash theme={null}
   curl -L -X PATCH https://api.turso.tech/v1/organizations/{organizationSlug}/members/{username} \
     -H 'Authorization: Bearer TOKEN' \
     -H 'Content-Type: application/json' \
@@ -2262,7 +3386,7 @@ GET /v1/organizations/{organizationSlug}
 Retrieve details of a specific organization.
 
 <RequestExample>
-  ```bash  theme={null}
+  ```bash theme={null}
   curl -L https://api.turso.tech/v1/organizations/{organizationSlug} \
     -H 'Authorization: Bearer TOKEN'
   ```
@@ -2352,7 +3476,7 @@ Get started with Turso API in a few easy steps.
   <Step title="Retrieve your account or organization slug">
     The Platform API can be used with your personal account or with an organization. You'll need the obtain the `slug` of your account or organization using using the Turso CLI:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso org list
     ```
   </Step>
@@ -2360,7 +3484,7 @@ Get started with Turso API in a few easy steps.
   <Step title="Create a new Platform API Token">
     Now create a new API Token using the Turso CLI:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso auth api-tokens mint quickstart
     ```
 
@@ -2456,7 +3580,7 @@ Get started with Turso API in a few easy steps.
   <Step title="Connect to your database">
     You now have a database, distributed across multiple regions that you can connect to using one of the official or experimental SDKs:
 
-    <Snippet file="all-sdks.mdx" />
+    <Snippet />
   </Step>
 </Steps>
 
@@ -2588,7 +3712,7 @@ Source: https://docs.turso.tech/cli/auth/api-tokens/list
 
 To list all API tokens for the current organization, run the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso auth api-tokens list
 ```
 
@@ -2600,7 +3724,7 @@ Source: https://docs.turso.tech/cli/auth/api-tokens/mint
 
 To create a new API token for the current organization, run the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso auth api-tokens mint <api-token-name>
 ```
 
@@ -2612,7 +3736,7 @@ Source: https://docs.turso.tech/cli/auth/api-tokens/revoke
 
 To revoke an API token for the current organization, run the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso auth api-tokens revoke <api-token-name>
 ```
 
@@ -2624,7 +3748,7 @@ Source: https://docs.turso.tech/cli/auth/login
 
 To authenticate the Turso CLI with your account, run the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso auth login
 ```
 
@@ -2646,7 +3770,7 @@ Source: https://docs.turso.tech/cli/auth/logout
 
 To logout of the Turso CLI, run the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso auth logout
 ```
 
@@ -2664,7 +3788,7 @@ Source: https://docs.turso.tech/cli/auth/signup
 
 To sign up for a new Turso account using the CLI, run the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso auth signup
 ```
 
@@ -2686,7 +3810,7 @@ Source: https://docs.turso.tech/cli/auth/token
 
 You can obtain your current API token that is used to authenticate with the Turso Platform API by running the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso auth token
 ```
 
@@ -2698,7 +3822,7 @@ Source: https://docs.turso.tech/cli/auth/whoami
 
 You can obtain the username for the currently logged in user by running the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso auth whoami
 ```
 
@@ -2712,7 +3836,7 @@ Source: https://docs.turso.tech/cli/authentication
 
 The Turso CLI uses an access token to authenticate with Turso. You can login using the command:
 
-```bash  theme={null}
+```bash theme={null}
 turso auth login
 ```
 
@@ -2724,7 +3848,7 @@ This will open a browser window, asking you to log into your account with GitHub
 
 Once you're logged in, you can manage your account and databases. You can explore all of the commands via the docs, or by using the `--help` flag for each subcommand:
 
-```bash  theme={null}
+```bash theme={null}
 turso
 ```
 
@@ -2736,7 +3860,7 @@ turso
 
 If you're new to Turso, you can create an account using the Turso CLI:
 
-```bash  theme={null}
+```bash theme={null}
 turso auth signup
 ```
 
@@ -2744,7 +3868,7 @@ turso auth signup
 
 You can logout of the Turso CLI using the `logout` command:
 
-```bash  theme={null}
+```bash theme={null}
 turso auth logout
 ```
 
@@ -2756,7 +3880,7 @@ Source: https://docs.turso.tech/cli/contact/bookmeeting
 
 You can book a meeting with the Turso team to discuss your project and requirements using the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso contact bookmeeting
 ```
 
@@ -2772,7 +3896,7 @@ Source: https://docs.turso.tech/cli/contact/feedback
 
 You can send feedback to the Turso team by using the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso contact feedback
 ```
 
@@ -2784,7 +3908,7 @@ Source: https://docs.turso.tech/cli/db/create
 
 You can create a new database in a specific group using the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso db create [database-name]
 ```
 
@@ -2822,7 +3946,7 @@ The examples below outline the most common use cases for the `db create` command
 
 You can create a new database in a specific group using the `--group` flag:
 
-```bash  theme={null}
+```bash theme={null}
 turso db create [database-name] --group <group-name>
 ```
 
@@ -2830,7 +3954,7 @@ turso db create [database-name] --group <group-name>
 
 You can create a new Turso database from an existing SQLite file using the `--from-file` flag:
 
-```bash  theme={null}
+```bash theme={null}
 turso db create [database-name] --from-file ./path/to/file.db
 ```
 
@@ -2842,7 +3966,7 @@ turso db create [database-name] --from-file ./path/to/file.db
 
 You can create a new database using the output of `.dump` using the `--from-dump` flag:
 
-```bash  theme={null}
+```bash theme={null}
 turso db create [database-name] --from-dump ./path/to/dump.sql
 ```
 
@@ -2850,7 +3974,7 @@ turso db create [database-name] --from-dump ./path/to/dump.sql
 
 You can create a new Turso database from an existing database using the `--from-db` flag:
 
-```bash  theme={null}
+```bash theme={null}
 turso db create [database-name] --from-db <existing-database-name>
 ```
 
@@ -2858,7 +3982,7 @@ turso db create [database-name] --from-db <existing-database-name>
 
 You can create a new Turso database from an existing database at a specific point in time using the `--from-db` and `--timestamp` flags:
 
-```bash  theme={null}
+```bash theme={null}
 turso db create [database-name] --from-db <existing-database-name> --timestamp 2024-01-01T10:10:10-10:00
 ```
 
@@ -2866,7 +3990,7 @@ turso db create [database-name] --from-db <existing-database-name> --timestamp 2
 
 You can create a new Turso database from a CSV file using the `--from-csv` flag:
 
-```bash  theme={null}
+```bash theme={null}
 turso db create [database-name] --from-csv ./path/to/file.csv --csv-table-name <desired-table-name>
 ```
 
@@ -2874,7 +3998,7 @@ turso db create [database-name] --from-csv ./path/to/file.csv --csv-table-name <
 
 You can create a database with experimental support for SQLite [extensions](/libsql#extensions) using the `--enable-extensions` flag:
 
-```bash  theme={null}
+```bash theme={null}
 turso db create [database-name] --enable-extensions
 ```
 
@@ -2890,7 +4014,7 @@ Source: https://docs.turso.tech/cli/db/destroy
 
 You can destroy a database by using the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso db destroy <database-name> [flags]
 ```
 
@@ -2910,7 +4034,7 @@ Export a database snapshot from Turso to a SQLite file.
 
 This command exports a snapshot of the current generation of a Turso database to a local SQLite file. Note that the exported file may not contain the latest changes. Use SDK to sync the database after exporting to ensure you have the most recent version.
 
-```bash  theme={null}
+```bash theme={null}
 turso db export <database> [flags]
 ```
 
@@ -2931,7 +4055,7 @@ Source: https://docs.turso.tech/cli/db/import
 
 You can import an existing SQLite file to Turso Cloud using the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso db import ~/path/to/database.db
 ```
 
@@ -2958,7 +4082,7 @@ Source: https://docs.turso.tech/cli/db/inspect
 
 You can inspect the usage of a database, including the total space used, rows read and written with the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso db inspect <database-name>
 ```
 
@@ -2996,7 +4120,7 @@ Source: https://docs.turso.tech/cli/db/list
 
 You can obtain a list of all databases for the current user or organization by running the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso db list
 ```
 
@@ -3014,7 +4138,7 @@ Source: https://docs.turso.tech/cli/db/locations
 
 You can fetch a list of supported locations where databases can be located by running the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso db locations
 ```
 
@@ -3032,7 +4156,7 @@ Source: https://docs.turso.tech/cli/db/shell
 
 You can connect directly to a Turso database by using the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso db shell <database-name> [sql] [flags]
 ```
 
@@ -3050,7 +4174,7 @@ turso db shell <database-name> [sql] [flags]
 
 You can execute SQL directly against a database using the shell:
 
-```bash  theme={null}
+```bash theme={null}
 turso db shell <database-name> "SELECT * FROM users"
 ```
 
@@ -3058,7 +4182,7 @@ turso db shell <database-name> "SELECT * FROM users"
 
 You can dump the contents of a Turso database using the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso db shell <database-name> .dump > dump.sql
 ```
 
@@ -3070,7 +4194,7 @@ turso db shell <database-name> .dump > dump.sql
 
 You can load a dump file into a new database using the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso db shell <database-name> < dump.sql
 ```
 
@@ -3078,7 +4202,7 @@ turso db shell <database-name> < dump.sql
 
 If you're using `turso dev` locally, you can use the shell by providing the URL to your database:
 
-```bash  theme={null}
+```bash theme={null}
 turso db shell http://127.0.0.1:8080
 ```
 
@@ -3090,7 +4214,7 @@ Source: https://docs.turso.tech/cli/db/show
 
 You can obtain details about the database, including the name, ID, libSQL server version, group, size and location.
 
-```bash  theme={null}
+```bash theme={null}
 turso db show <database-name> [flags]
 ```
 
@@ -3111,7 +4235,7 @@ Source: https://docs.turso.tech/cli/db/tokens/create
 
 You can create a new token that can be used to connect to one database using the command:
 
-```bash  theme={null}
+```bash theme={null}
 turso db tokens create <database-name> [flags]
 ```
 
@@ -3130,7 +4254,7 @@ The examples below outline the most common use cases for the `db tokens create` 
 
 You can create a token with read only access to a database using the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso db tokens create <database-name> --read-only
 ```
 
@@ -3138,7 +4262,7 @@ turso db tokens create <database-name> --read-only
 
 You can create a token with a specific expiration time using the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso db tokens create <database-name> --expiration 7d3h2m1s
 ```
 
@@ -3150,7 +4274,7 @@ Source: https://docs.turso.tech/cli/db/tokens/invalidate
 
 You can invalidate all tokens for a database by running the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso db tokens invalidate <database-name> [flags]
 ```
 
@@ -3179,7 +4303,7 @@ Source: https://docs.turso.tech/cli/group/aws-migration/abort
 
 You can abort the AWS migration process by using the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso group aws-migration abort <group-name>
 ```
 
@@ -3191,7 +4315,7 @@ Source: https://docs.turso.tech/cli/group/aws-migration/info
 
 You can check the AWS migration details by using the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso group aws-migration info <group-name>
 ```
 
@@ -3203,7 +4327,7 @@ Source: https://docs.turso.tech/cli/group/aws-migration/start
 
 You can start the AWS migration process by using the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso group aws-migration start <group-name>
 ```
 
@@ -3215,7 +4339,7 @@ Source: https://docs.turso.tech/cli/group/create
 
 You can create a new group of databases. Groups belong to a primary region.
 
-```bash  theme={null}
+```bash theme={null}
 turso group create <group-name> [flags]
 ```
 
@@ -3243,7 +4367,7 @@ Source: https://docs.turso.tech/cli/group/destroy
 
 You can destroy a group and all of its databases using the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso group destroy <group-name> [flags]
 ```
 
@@ -3261,7 +4385,7 @@ Source: https://docs.turso.tech/cli/group/list
 
 You can obtain a list of all groups by using the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso group list
 ```
 
@@ -3273,7 +4397,7 @@ Source: https://docs.turso.tech/cli/group/tokens/create
 
 You can create a new token that can be used to connect to any database in the group using the command:
 
-```bash  theme={null}
+```bash theme={null}
 turso group tokens create <group-name> [flags]
 ```
 
@@ -3292,7 +4416,7 @@ The examples below outline the most common use cases for the `group tokens creat
 
 You can create a token with read only access using the command:
 
-```bash  theme={null}
+```bash theme={null}
 turso group tokens create <group-name> --read-only
 ```
 
@@ -3300,7 +4424,7 @@ turso group tokens create <group-name> --read-only
 
 You can create a token with a specific expiration time using the command:
 
-```bash  theme={null}
+```bash theme={null}
 turso group tokens create <group-name> --expiration 7d
 ```
 
@@ -3312,7 +4436,7 @@ Source: https://docs.turso.tech/cli/group/tokens/invalidate
 
 You can invalidate all tokens for a group by running the command:
 
-```bash  theme={null}
+```bash theme={null}
 turso group tokens invalidate <group-name> [flags]
 ```
 
@@ -3330,7 +4454,7 @@ Source: https://docs.turso.tech/cli/group/transfer
 
 You can transfer a group (including its databases) to an organization you're an admin or owner of using the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso group transfer <group-name> <organization-name> [flags]
 ```
 
@@ -3352,7 +4476,7 @@ Source: https://docs.turso.tech/cli/group/unarchive
 
 You can unarchive inactive databases by running the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso group unarchive <group-name>
 ```
 
@@ -3368,7 +4492,7 @@ Source: https://docs.turso.tech/cli/group/update
 
 You can update the group, including all databases the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso group update <group-name> [flags]
 ```
 
@@ -3386,7 +4510,7 @@ turso group update <group-name> [flags]
 
 You can update a group and all its databases to enable `all` extensions:
 
-```bash  theme={null}
+```bash theme={null}
 turso group update <group-name> --extensions all
 ```
 
@@ -3400,7 +4524,7 @@ The Turso CLI will automatically attempt to open a browser, or wait for further 
 
 You can opt out of this behaviour by passing the `--headless` flag with operations:
 
-```bash  theme={null}
+```bash theme={null}
 turso auth login --headless
 ```
 
@@ -3416,13 +4540,13 @@ Source: https://docs.turso.tech/cli/help
 
 You can always find a summary of all commands by running the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso help
 ```
 
 You can also find out more about each command, as well as any required or optional arguments by passing the `--help` flag to the command:
 
-```bash  theme={null}
+```bash theme={null}
 turso auth --help
 turso db create --help
 ```
@@ -3439,13 +4563,13 @@ Learn how to install the Turso CLI on Mac, Linux and Windows.
 
 To install the Turso CLI on macOS, we recommend that you use Homebrew:
 
-```bash  theme={null}
+```bash theme={null}
 brew install tursodatabase/tap/turso
 ```
 
 If you don't use Homebrew, you can use the following command to execute a shell script that installs the CLI:
 
-```bash  theme={null}
+```bash theme={null}
 curl -sSfL https://get.tur.so/install.sh | bash
 ```
 
@@ -3453,7 +4577,7 @@ curl -sSfL https://get.tur.so/install.sh | bash
 
 Run the following command to execute a shell script that installs the CLI:
 
-```bash  theme={null}
+```bash theme={null}
 curl -sSfL https://get.tur.so/install.sh | bash
 ```
 
@@ -3463,13 +4587,13 @@ Installing the Turso CLI on Windows requires that you have [WSL](https://learn.m
 
 Once WSL is installed, run the following in PowerShell:
 
-```bash  theme={null}
+```bash theme={null}
 wsl
 ```
 
 You can then execute the script to install the Turso CLI:
 
-```bash  theme={null}
+```bash theme={null}
 curl -sSfL https://get.tur.so/install.sh | bash
 ```
 
@@ -3477,7 +4601,7 @@ curl -sSfL https://get.tur.so/install.sh | bash
 
 You must open a new shell to verify the installation with the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso
 ```
 
@@ -3558,7 +4682,7 @@ Source: https://docs.turso.tech/cli/org/billing
 
 To open the billing portal for your organization:
 
-```bash  theme={null}
+```bash theme={null}
 turso org billing
 ```
 
@@ -3570,7 +4694,7 @@ Source: https://docs.turso.tech/cli/org/create
 
 To create a new organization that you own, run the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso org create <name>
 ```
 
@@ -3586,7 +4710,7 @@ Source: https://docs.turso.tech/cli/org/destroy
 
 To delete an existing organization that you own, run the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso org destroy <organization-slug>
 ```
 
@@ -3602,7 +4726,7 @@ Source: https://docs.turso.tech/cli/org/list
 
 To list organizations of which you are the owner or a member, run the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso org list
 ```
 
@@ -3614,7 +4738,7 @@ Source: https://docs.turso.tech/cli/org/members/add
 
 To add an existing Turso user as a member to the current active organization, run the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso org members add <username> [flags]
 ```
 
@@ -3632,7 +4756,7 @@ Source: https://docs.turso.tech/cli/org/members/invite
 
 To invite someone who isn't already a Turso user to the current active organization, run the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso org members invite <email> [flags]
 ```
 
@@ -3650,7 +4774,7 @@ Source: https://docs.turso.tech/cli/org/members/list
 
 To list all members of the current active organization, run the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso org members list
 ```
 
@@ -3666,7 +4790,7 @@ Source: https://docs.turso.tech/cli/org/members/rm
 
 To remove a member from the current organization, use the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso org members rm <username>
 ```
 
@@ -3678,7 +4802,7 @@ Source: https://docs.turso.tech/cli/org/switch
 
 To switch the current active organization for the CLI, use the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso org switch <organization-slug>
 ```
 
@@ -3690,7 +4814,7 @@ Source: https://docs.turso.tech/cli/plan/overages/disable
 
 You can disable overages for the current repository by running the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso plan overages disable
 ```
 
@@ -3706,7 +4830,7 @@ Source: https://docs.turso.tech/cli/plan/overages/enable
 
 You can enable overages for the current repository by running the following command:
 
-```bash  theme={null}
+```bash theme={null}
 turso plan overages enable
 ```
 
@@ -3718,7 +4842,7 @@ Source: https://docs.turso.tech/cli/plan/select
 
 You can switch your current plan at any time using the command:
 
-```bash  theme={null}
+```bash theme={null}
 turso plan select
 ```
 
@@ -3734,7 +4858,7 @@ Source: https://docs.turso.tech/cli/plan/show
 
 You can show the current plan usage and limits with the command:
 
-```bash  theme={null}
+```bash theme={null}
 turso plan show
 ```
 
@@ -3746,7 +4870,7 @@ Source: https://docs.turso.tech/cli/plan/upgrade
 
 You can upgrade your account to a paid plan at any time using the command:
 
-```bash  theme={null}
+```bash theme={null}
 turso plan upgrade
 ```
 
@@ -3762,20 +4886,20 @@ Update the Turso CLI to the latest version to benefit from all the latest featur
 
 ## macOS
 
-```bash  theme={null}
+```bash theme={null}
 brew update
 brew upgrade
 ```
 
 ## Linux
 
-```bash  theme={null}
+```bash theme={null}
 turso update
 ```
 
 ## Windows
 
-```bash  theme={null}
+```bash theme={null}
 turso update
 ```
 
@@ -3821,7 +4945,7 @@ The commit latency is not the expected latency in every commit, but the ceiling 
 
 To understand how this works, let's consider the following scenario:
 
-```mermaid  theme={null}
+```mermaid theme={null}
 sequenceDiagram
     participant Timeline
     participant DB1 as Database 1
@@ -3861,6 +4985,209 @@ In addition to our simulator, we rely on [Antithesis](https://antithesis.com) fu
 The combination of our ground-up DST server and Antithesis allows us to test years of possible combinations of unlikely scenarios over the course of mere hours, making sure the system works as specified.
 
 
+# Encryption
+Source: https://docs.turso.tech/cloud/encryption
+
+
+
+All databases are encrypted-at-rest at the volume level in the Turso Cloud, as part of our SOC2 standards. See [our trust center](https://trust.turso.tech) for details.
+
+For Enterprise customers, there is the option to encrypt the databases with a key that you provide (Native Encryption), as described below.
+
+Native Encryption happens at the server level, making sure that nobody has access to your data at any time. In fact, because it is possible to encrypt different databases with different keys, it is possible for you to use different keys for different customers' databases. If the keys themselves are provided by your customers, Native Encryption offers your customers the guarantee that not even you can have access to their data.
+
+Turso Cloud native encryption for data at rest uses industry-standard AEAD algorithms. Each database page is encrypted individually, ensuring data integrity and security across all environments. Native encryption is available on the [Enterprise plan](https://tur.so/turso-enterprise-chat).
+
+<Info>
+  **You hold the keys.** Each database can be encrypted with its own unique key that only you control. Turso never sees or stores your encryption keys. Encryption works seamlessly with both remote queries and sync.
+</Info>
+
+* **Page-level encryption**: Each 4 KiB page is encrypted individually with a unique nonce
+* **AEAD algorithms**: Support for AEGIS-256, AES-GCM, and ChaCha20Poly1305
+* **Data integrity**: Built-in authentication tags prevent tampering and corruption
+* **In-memory keys**: Encryption keys are never stored on disk
+
+Turso Cloud with native encryption is perfect for:
+
+<CardGroup>
+  <Card title="AI Agents" icon="robot">
+    Manage a fleet of trusted agents that deal with personal private data
+  </Card>
+
+  <Card title="Fintech Applications" icon="credit-card">
+    Meet regulatory requirements for sensitive financial data
+  </Card>
+
+  <Card title="Privacy-Focused Products" icon="user-shield">
+    Build user trust with strong data protection
+  </Card>
+
+  <Card title="Healthcare Apps" icon="heart-pulse">
+    Protect patient data and meet HIPAA compliance
+  </Card>
+
+  <Card title="AI/ML Applications" icon="brain">
+    Secure training data and model outputs
+  </Card>
+</CardGroup>
+
+## What's Encrypted
+
+<CardGroup>
+  <Card title="Encrypted" icon="lock">
+    * The database file and Write-Ahead Log (WAL) file on disk and on S3.
+  </Card>
+</CardGroup>
+
+## Generate an Encryption Key
+
+Generate a secure encryption key in base64 format. The key size depends on the cipher you choose:
+
+<Tabs>
+  <Tab title="256-bit (32 bytes)">
+    For AEGIS-256 variants and AES-256-GCM:
+
+    ```bash theme={null}
+    openssl rand -base64 32
+    ```
+
+    Output example:
+
+    ```
+    YUfkdsD2SJe4KzTB8n6CjwCgs1YIW6k1xxMEguRuI5s=
+    ```
+  </Tab>
+
+  <Tab title="128-bit (16 bytes)">
+    For AEGIS-128 variants and AES-128-GCM:
+
+    ```bash theme={null}
+    openssl rand -base64 16
+    ```
+
+    Output example:
+
+    ```
+    XG1iWMFBFYEYrmYxjWDf5w==
+    ```
+  </Tab>
+</Tabs>
+
+<Warning>
+  **Store your key securely!** If you lose the encryption key, you will not be
+  able to access your encrypted database. Keys are never stored anywhere in the Turso Cloud.
+</Warning>
+
+## Create an Encrypted Database
+
+<Steps>
+  <Step title="Launch with encryption">
+    Use the `--remote-encryption-key`, `--remote-encryption-cipher` flags and specify your cipher and key in database creation command:
+
+    ```bash theme={null}
+    turso db create my-secret-db --remote-encryption-key "YOUR_SECRET_KEY" --remote-encryption-cipher aegis128l
+    ```
+
+    Replace `YOUR_SECRET_KEY` with the key you generated above. You can also set the `TURSO_DB_REMOTE_ENCRYPTION_KEY` environment variable instead of passing the flag each time.
+  </Step>
+
+  <Step title="Create and insert data">
+    Use `--remote-encryption-key` flag to start the shell, create a table and insert some data:
+
+    ```bash theme={null}
+    turso db shell my-secret-db --remote-encryption-key "YOUR_SECRET_KEY"
+    ```
+
+    ```sql theme={null}
+    CREATE TABLE secrets (id INT, data TEXT);
+    INSERT INTO secrets VALUES (1, 'sensitive information');
+    INSERT INTO secrets VALUES (2, 'confidential data');
+    ```
+  </Step>
+
+  <Step title="Verify encryption">
+    Exit the shell (type `.quit`) and try to open the database without the key:
+
+    ```bash theme={null}
+    turso db shell my-secret-db
+    ```
+
+    You won't be able to access the data. The database is encrypted in the cloud.
+  </Step>
+</Steps>
+
+## Upload Existing Database
+
+To upload an existing encrypted database, provide the cipher and key flags during creation:
+
+```bash theme={null}
+turso db create my-secret-db --remote-encryption-key "YOUR_SECRET_KEY" --remote-encryption-cipher aegis128l --from-file my-db.db
+```
+
+## Branching and Point-in-Time Recovery (PITR)
+
+Encrypted databases support [branching](/features/branching), and [point-in-time recovery (PITR)](/features/point-in-time-recovery). The new branch will use the same cipher algorithm and the same encryption key. During creation you need to specify the same encryption key that was used for the parent database:
+
+```bash theme={null}
+turso db create my-secret-db-fork --remote-encryption-key "YOUR_SECRET_KEY" --from-db my-secret-db
+```
+
+## Rekeying
+
+Rekeying is not supported yet. However, you can export the database and create a new one with a different cipher and key:
+
+```bash theme={null}
+turso db export my-secret-db --remote-encryption-key "YOUR_SECRET_KEY"
+turso db create my-new-secret-db --remote-encryption-key "YOUR_NEW_SECRET_KEY" --remote-encryption-cipher aegis256 --from-file my-secret-db.db
+```
+
+## Supported Ciphers
+
+Turso Cloud supports multiple variants of three AEAD encryption algorithms, offering different trade-offs between performance and compatibility.
+
+### AES-GCM
+
+NIST-approved standard for compliance requirements. Widely supported across industries.
+
+| Cipher          | Key Size           | Cipher Code | Use Case                             |
+| --------------- | ------------------ | ----------- | ------------------------------------ |
+| **AES-128-GCM** | 128-bit (16 bytes) | `aes128gcm` | Compliance with 128-bit requirements |
+| **AES-256-GCM** | 256-bit (32 bytes) | `aes256gcm` | Maximum security for compliance      |
+
+### ChaCha20-Poly1305
+
+| Cipher                | Key Size           | Cipher Code        | Use Case            |
+| --------------------- | ------------------ | ------------------ | ------------------- |
+| **ChaCha20-Poly1305** | 256-bit (32 bytes) | `chacha20poly1305` | Alternative for AES |
+
+### AEGIS
+
+Modern, high-performance cipher family optimized for speed. **Recommended for most use cases.**
+
+| Cipher          | Key Size           | Cipher Code  | Use Case                               |
+| --------------- | ------------------ | ------------ | -------------------------------------- |
+| **AEGIS-128L**  | 128-bit (16 bytes) | `aegis128l`  | Balanced performance, 128-bit security |
+| **AEGIS-128X2** | 128-bit (16 bytes) | `aegis128x2` | 2x parallel processing                 |
+| **AEGIS-128X4** | 128-bit (16 bytes) | `aegis128x4` | 4x parallel processing, maximum speed  |
+| **AEGIS-256**   | 256-bit (32 bytes) | `aegis256`   | Balanced 256-bit security              |
+| **AEGIS-256X2** | 256-bit (32 bytes) | `aegis256x2` | 2x parallel processing, 256-bit        |
+| **AEGIS-256X4** | 256-bit (32 bytes) | `aegis256x4` | 4x parallel, maximum speed & security  |
+
+<Info>
+  **Choosing a cipher:**
+
+  * Use `aegis128l` for 128 bit encryption, `aegis256` for 256 bit encryption (default recommendation)
+  * For AES, use `aes128gcm` for 128 bit encryption, `aes256gcm` or `chacha20poly1305` for 256 bit encryption
+</Info>
+
+## Future Work
+
+Future encryption features in development:
+
+* **Encrypt existing databases**: Migrate unencrypted databases to encrypted format
+* **Key rotation**: Update encryption keys without data loss
+
+
 # Migrate to Turso
 Source: https://docs.turso.tech/cloud/migrate-to-turso
 
@@ -3869,7 +5196,7 @@ Learn how to import your existing SQLite database to Turso.
 This guide will walk you through the process of migrating your existing SQLite database to Turso Cloud. You can choose between using the Turso CLI, or the Platform API.
 
 <Frame>
-    <img src="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/cloud/import.png?fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=b9672b095d28bc1d3efdc25d337a9a73" alt="Migrate to Turso" data-og-width="2400" width="2400" data-og-height="1350" height="1350" data-path="images/cloud/import.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/cloud/import.png?w=280&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=8702fe3f9759d751a6505f6b46231e9c 280w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/cloud/import.png?w=560&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=3ca3132caf4cd3ac4801ef625d9efe39 560w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/cloud/import.png?w=840&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=dde8a497829d31e67db68821b6f84ca2 840w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/cloud/import.png?w=1100&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=b96b48bea87374fd53ae5d41d72dcff0 1100w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/cloud/import.png?w=1650&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=67de98575c1f5a965da0c01111640e6f 1650w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/cloud/import.png?w=2500&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=db8dad63565c794220b58b68034a1f8e 2500w" />
+  <img alt="Migrate to Turso" />
 </Frame>
 
 ## Preparing to Migrate
@@ -3880,7 +5207,7 @@ Before importing your SQLite database to Turso, you need to ensure it's compatib
   <Step title="Open your SQLite database">
     Use the SQLite command-line tool or any SQLite client to open your database:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     sqlite3 path/to/your/database.db
     ```
   </Step>
@@ -3888,7 +5215,7 @@ Before importing your SQLite database to Turso, you need to ensure it's compatib
   <Step title="Set WAL journal mode">
     Run the following command to switch your database to WAL mode:
 
-    ```sql  theme={null}
+    ```sql theme={null}
     PRAGMA journal_mode='wal';
     ```
 
@@ -3898,7 +5225,7 @@ Before importing your SQLite database to Turso, you need to ensure it's compatib
   <Step title="Checkpoint and truncate the WAL file">
     Execute a checkpoint to ensure all changes are written to the main database file and truncate the WAL file:
 
-    ```sql  theme={null}
+    ```sql theme={null}
     PRAGMA wal_checkpoint(truncate);
     ```
   </Step>
@@ -3906,7 +5233,7 @@ Before importing your SQLite database to Turso, you need to ensure it's compatib
   <Step title="Verify the journal mode">
     Confirm that your database is now in WAL mode:
 
-    ```sql  theme={null}
+    ```sql theme={null}
     PRAGMA journal_mode;
     ```
 
@@ -3916,7 +5243,7 @@ Before importing your SQLite database to Turso, you need to ensure it's compatib
   <Step title="Close the database">
     Exit the SQLite shell:
 
-    ```sql  theme={null}
+    ```sql theme={null}
     .exit
     ```
 
@@ -3936,7 +5263,7 @@ You can create a new database from a local SQLite file using the Turso CLI:
   <Step title="Import your SQLite Database">
     Import your existing SQLite database file using the `db import` command:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso db import ~/path/to/my-database.db
     ```
 
@@ -3949,7 +5276,7 @@ You can create a new database from a local SQLite file using the Turso CLI:
   <Step title="Connect to your database">
     You can now connect to your database using the shell:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso db shell <database-name>
     ```
   </Step>
@@ -3978,7 +5305,7 @@ You can also use the Platform API to migrate your existing SQLite database:
   <Step title="Create a new Platform API Token">
     Now create a new API Token using the Turso CLI:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso auth api-tokens mint quickstart
     ```
 
@@ -3990,7 +5317,7 @@ You can also use the Platform API to migrate your existing SQLite database:
   <Step title="Retrieve your account or organization slug">
     The Platform API can be used with your personal account or with an organization. You'll need the obtain the `slug` of your account or organization using using the Turso CLI:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso org list
     ```
   </Step>
@@ -3998,7 +5325,7 @@ You can also use the Platform API to migrate your existing SQLite database:
   <Step title="Create a Database for Import">
     First, create a database that's ready to receive an import:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     curl -X POST "https://api.turso.tech/v1/organizations/{organizationSlug}/databases" \
       -L \
       -H "Authorization: Bearer TOKEN" \
@@ -4018,7 +5345,7 @@ You can also use the Platform API to migrate your existing SQLite database:
   <Step title="Create a Database Token">
     Generate an authentication token for your database:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     curl -X POST "https://api.turso.tech/v1/organizations/{organizationSlug}/databases/{databaseName}/auth/tokens" \
       -L \
       -H "Authorization: Bearer TOKEN"
@@ -4030,7 +5357,7 @@ You can also use the Platform API to migrate your existing SQLite database:
   <Step title="Upload Your SQLite Database">
     Finally, upload your SQLite database file:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     curl -X POST "https://{databaseName}-{organizationSlug}.turso.io/v1/upload" \
       -H "Authorization: Bearer DATABASE_TOKEN" \
       --data-binary @/path/to/your/database.db
@@ -4045,7 +5372,7 @@ You can also use the Platform API to migrate your existing SQLite database:
 
 You're now ready to connect to your new Turso database using any of the Turso client libraries.
 
-<Snippet file="all-sdks.mdx" />
+<Snippet />
 
 
 # Private Endpoints
@@ -4101,22 +5428,79 @@ Set up an AWS VPC endpoint to securely access Turso databases through AWS Privat
       </Step>
 
       <Step title="Update Application Connections">
-        Replace public Turso endpoints with the new VPC endpoint URL format:
+        Make sure you are using the regional Turso URL format:
 
-        ```bash  theme={null}
-        curl -H "Host: <database-name>.turso.io" https://<database-name>.aws-us-east-1.turso.io
+        ```bash theme={null}
+        curl https://<database_name>-<organization_slug>.aws-us-east-1.turso.io
         ```
       </Step>
 
       <Step title="Verify Setup">
         Test your VPC endpoint configuration from within your VPC:
 
-        ```bash  theme={null}
+        ```bash theme={null}
         # Test connectivity
-        curl -v https://<your-database-name>.aws-us-east-1.turso.io
+        curl -v https://<database_name>-<organization_slug>.aws-us-east-1.turso.io
 
         # Verify private routing (should show traffic staying within AWS network)
-        traceroute -T <your-database-name>.aws-us-east-1.turso.io
+        traceroute -T <database_name>-<organization_slug>.aws-us-east-1.turso.io
+        ```
+      </Step>
+    </Steps>
+  </Tab>
+
+  <Tab title="us-east-2">
+    <Steps>
+      <Step title="Create VPC Endpoint">
+        Navigate to **VPC Dashboard** → **Endpoints** → **Create endpoint** and configure:
+
+        <AccordionGroup>
+          <Accordion title="Basic Settings">
+            * **Name**: Enter a descriptive name (e.g., `turso-database-endpoint`)
+            * **Service category**: Select "Other endpoint services"
+            * **Service name**: Enter `com.amazonaws.vpce.us-east-2.vpce-svc-0bd615901070ec214`
+            * Click **Verify service**
+          </Accordion>
+
+          <Accordion title="Network Configuration">
+            * Select your **VPC**
+            * Enable **DNS name**
+            * Choose **IPv4** for DNS record type
+            * Select subnets in supported AZs (`use2-az1` and/or `use2-az2`)
+            * Configure security groups and click **Create endpoint**
+          </Accordion>
+        </AccordionGroup>
+      </Step>
+
+      <Step title="Configure Security Groups">
+        Update security groups to allow proper communication:
+
+        **VPC Endpoint Security Group:**
+
+        * Inbound: Allow HTTPS (port 443) from your application security groups
+
+        **Application Security Groups:**
+
+        * Outbound: Allow HTTPS (port 443) to the VPC endpoint security group
+      </Step>
+
+      <Step title="Update Application Connections">
+        Make sure you are using the regional Turso URL format:
+
+        ```bash theme={null}
+        curl https://<database_name>-<organization_slug>.aws-us-east-2.turso.io
+        ```
+      </Step>
+
+      <Step title="Verify Setup">
+        Test your VPC endpoint configuration from within your VPC:
+
+        ```bash theme={null}
+        # Test connectivity
+        curl -v https://<database_name>-<organization_slug>.aws-us-east-2.turso.io
+
+        # Verify private routing (should show traffic staying within AWS network)
+        traceroute -T <database_name>-<organization_slug>.aws-us-east-2.turso.io
         ```
       </Step>
     </Steps>
@@ -4158,22 +5542,22 @@ Set up an AWS VPC endpoint to securely access Turso databases through AWS Privat
       </Step>
 
       <Step title="Update Application Connections">
-        Replace public Turso endpoints with the new VPC endpoint URL format:
+        Make sure you are using the regional Turso URL format:
 
-        ```bash  theme={null}
-        curl -H "Host: <database-name>.turso.io" https://<database-name>.aws-us-west-2.turso.io
+        ```bash theme={null}
+        curl https://<database_name>-<organization_slug>.aws-us-west-2.turso.io
         ```
       </Step>
 
       <Step title="Verify Setup">
         Test your VPC endpoint configuration from within your VPC:
 
-        ```bash  theme={null}
+        ```bash theme={null}
         # Test connectivity
-        curl -v https://<your-database-name>.aws-us-west-2.turso.io
+        curl -v https://<database_name>-<organization_slug>.aws-us-west-2.turso.io
 
         # Verify private routing (should show traffic staying within AWS network)
-        traceroute -T <your-database-name>.aws-us-west-2.turso.io
+        traceroute -T <database_name>-<organization_slug>.aws-us-west-2.turso.io
         ```
       </Step>
     </Steps>
@@ -4215,22 +5599,22 @@ Set up an AWS VPC endpoint to securely access Turso databases through AWS Privat
       </Step>
 
       <Step title="Update Application Connections">
-        Replace public Turso endpoints with the new VPC endpoint URL format:
+        Make sure you are using the regional Turso URL format:
 
-        ```bash  theme={null}
-        curl -H "Host: <database-name>.turso.io" https://<database-name>.aws-eu-west-1.turso.io
+        ```bash theme={null}
+        curl https://<database_name>-<organization_slug>.aws-eu-west-1.turso.io
         ```
       </Step>
 
       <Step title="Verify Setup">
         Test your VPC endpoint configuration from within your VPC:
 
-        ```bash  theme={null}
+        ```bash theme={null}
         # Test connectivity
-        curl -v https://<your-database-name>.aws-eu-west-1.turso.io
+        curl -v https://<database_name>-<organization_slug>.aws-eu-west-1.turso.io
 
         # Verify private routing (should show traffic staying within AWS network)
-        traceroute -T <your-database-name>.aws-eu-west-1.turso.io
+        traceroute -T <database_name>-<organization_slug>.aws-eu-west-1.turso.io
         ```
       </Step>
     </Steps>
@@ -4272,22 +5656,22 @@ Set up an AWS VPC endpoint to securely access Turso databases through AWS Privat
       </Step>
 
       <Step title="Update Application Connections">
-        Replace public Turso endpoints with the new VPC endpoint URL format:
+        Make sure you are using the regional Turso URL format:
 
-        ```bash  theme={null}
-        curl -H "Host: <database-name>.turso.io" https://<database-name>.aws-ap-south-1.turso.io
+        ```bash theme={null}
+        curl https://<database_name>-<organization_slug>.aws-ap-south-1.turso.io
         ```
       </Step>
 
       <Step title="Verify Setup">
         Test your VPC endpoint configuration from within your VPC:
 
-        ```bash  theme={null}
+        ```bash theme={null}
         # Test connectivity
-        curl -v https://<your-database-name>.aws-ap-south-1.turso.io
+        curl -v https://<database_name>-<organization_slug>.aws-ap-south-1.turso.io
 
         # Verify private routing (should show traffic staying within AWS network)
-        traceroute -T <your-database-name>.aws-ap-south-1.turso.io
+        traceroute -T <database_name>-<organization_slug>.aws-ap-south-1.turso.io
         ```
       </Step>
     </Steps>
@@ -4329,22 +5713,22 @@ Set up an AWS VPC endpoint to securely access Turso databases through AWS Privat
       </Step>
 
       <Step title="Update Application Connections">
-        Replace public Turso endpoints with the new VPC endpoint URL format:
+        Make sure you are using the regional Turso URL format:
 
-        ```bash  theme={null}
-        curl -H "Host: <database-name>.turso.io" https://<database-name>.aws-ap-northeast-1.turso.io
+        ```bash theme={null}
+        curl https://<database_name>-<organization_slug>.aws-ap-northeast-1.turso.io
         ```
       </Step>
 
       <Step title="Verify Setup">
         Test your VPC endpoint configuration from within your VPC:
 
-        ```bash  theme={null}
+        ```bash theme={null}
         # Test connectivity
-        curl -v https://<your-database-name>.aws-ap-northeast-1.turso.io
+        curl -v https://<database_name>-<organization_slug>.aws-ap-northeast-1.turso.io
 
         # Verify private routing (should show traffic staying within AWS network)
-        traceroute -T <your-database-name>.aws-ap-northeast-1.turso.io
+        traceroute -T <database_name>-<organization_slug>.aws-ap-northeast-1.turso.io
         ```
       </Step>
     </Steps>
@@ -4387,7 +5771,7 @@ This quickstart focuses on the JWKS approach, which allows you to leverage your 
 
     Use the Turso CLI to generate a JWT template with fine-grained permissions:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     # Full access to all tables in a database
     turso org jwks template --database <database-name> --scope full-access
 
@@ -4452,13 +5836,13 @@ This quickstart focuses on the JWKS approach, which allows you to leverage your 
 
     ### Using the CLI
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso org jwks save <name> <url>
     ```
 
     Example:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso org jwks save clerk https://your-app.clerk.accounts.dev/.well-known/jwks.json
     ```
 
@@ -4470,7 +5854,7 @@ This quickstart focuses on the JWKS approach, which allows you to leverage your 
   <Step title="Use Tokens in Your Application">
     Pass the JWT token from your authentication provider when creating the database client:
 
-    ```javascript  theme={null}
+    ```javascript theme={null}
     import { createClient } from "@tursodatabase/serverless";
 
     // Get the JWT token from your auth provider
@@ -4497,13 +5881,13 @@ This quickstart focuses on the JWKS approach, which allows you to leverage your 
 
 ### List JWKS Endpoints
 
-```bash  theme={null}
+```bash theme={null}
 turso org jwks list
 ```
 
 ### Remove JWKS Endpoint
 
-```bash  theme={null}
+```bash theme={null}
 turso org jwks remove <name>
 ```
 
@@ -4517,14 +5901,14 @@ Source: https://docs.turso.tech/connect/dart
   <Step title="Install">
     Add the turso\_dart package to your `pubspec.yaml`:
 
-    ```yaml  theme={null}
+    ```yaml theme={null}
     dependencies:
       turso_dart:
     ```
 
     Then run:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     dart pub get
     ```
   </Step>
@@ -4532,7 +5916,7 @@ Source: https://docs.turso.tech/connect/dart
   <Step title="Connect">
     Create a client connection. You can connect to an in-memory database or a local file:
 
-    ```dart  theme={null}
+    ```dart theme={null}
     import 'package:turso_dart/turso_dart.dart';
 
     // In memory
@@ -4548,7 +5932,7 @@ Source: https://docs.turso.tech/connect/dart
   <Step title="Create table">
     Create a table for customers:
 
-    ```dart  theme={null}
+    ```dart theme={null}
     await client.execute(
       "CREATE TABLE IF NOT EXISTS customers (id INTEGER PRIMARY KEY, name TEXT)"
     );
@@ -4558,7 +5942,7 @@ Source: https://docs.turso.tech/connect/dart
   <Step title="Insert data">
     Insert some data into the customers table:
 
-    ```dart  theme={null}
+    ```dart theme={null}
     await client.query("INSERT INTO customers(name) VALUES ('John Doe')");
     await client.query("INSERT INTO customers(name) VALUES ('Jane Smith')");
     ```
@@ -4567,7 +5951,7 @@ Source: https://docs.turso.tech/connect/dart
   <Step title="Query data">
     Query all customers from the table:
 
-    ```dart  theme={null}
+    ```dart theme={null}
     final result = await client.query("SELECT * FROM customers");
     print(result);
     ```
@@ -4576,7 +5960,7 @@ Source: https://docs.turso.tech/connect/dart
   <Step title="Prepared statements">
     Use prepared statements for better performance and security:
 
-    ```dart  theme={null}
+    ```dart theme={null}
     final statement = await client.prepare("SELECT * FROM customers WHERE id = ?");
     final result = await statement.query(positional: [1]);
     print(result);
@@ -4594,7 +5978,7 @@ Source: https://docs.turso.tech/connect/go
   <Step title="Install">
     Add the Turso package to your Go project:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     go get github.com/tursodatabase/turso-go
     go install github.com/tursodatabase/turso-go
     ```
@@ -4603,7 +5987,7 @@ Source: https://docs.turso.tech/connect/go
   <Step title="Connect">
     Here's how you can connect to a local SQLite database:
 
-    ```go  theme={null}
+    ```go theme={null}
     package main
 
     import (
@@ -4622,7 +6006,7 @@ Source: https://docs.turso.tech/connect/go
   <Step title="Create table">
     Create a table for users:
 
-    ```go  theme={null}
+    ```go theme={null}
     _, err := conn.Exec(`
       CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -4638,7 +6022,7 @@ Source: https://docs.turso.tech/connect/go
   <Step title="Insert data">
     Insert some data into the users table:
 
-    ```go  theme={null}
+    ```go theme={null}
     _, err = conn.Exec("INSERT INTO users (username) VALUES (?)", "alice")
     if err != nil {
         panic(err)
@@ -4654,7 +6038,7 @@ Source: https://docs.turso.tech/connect/go
   <Step title="Query data">
     Query all users from the table:
 
-    ```go  theme={null}
+    ```go theme={null}
     stmt, _ := conn.Prepare("SELECT * FROM users")
     defer stmt.Close()
 
@@ -4681,7 +6065,7 @@ Source: https://docs.turso.tech/connect/java
 
     Build jar and publish to maven local:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     cd bindings/java
 
     # Please select the appropriate target platform, currently supports `macos_x86`, `macos_arm64`, `windows` and `linux_x86`
@@ -4693,7 +6077,7 @@ Source: https://docs.turso.tech/connect/java
 
     Now you can use the dependency as follows:
 
-    ```gradle  theme={null}
+    ```gradle theme={null}
     dependencies {
         implementation("tech.turso:turso:0.0.1-SNAPSHOT")
     }
@@ -4713,7 +6097,7 @@ Source: https://docs.turso.tech/connect/javascript
   <Step title="Install">
     Add the Turso database package to your JavaScript project:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     npm i @tursodatabase/database
     ```
   </Step>
@@ -4721,7 +6105,7 @@ Source: https://docs.turso.tech/connect/javascript
   <Step title="Connect">
     Here's how you can connect to a local SQLite database:
 
-    ```javascript  theme={null}
+    ```javascript theme={null}
     import { connect } from "@tursodatabase/database";
 
     const db = await connect("sqlite.db");
@@ -4731,7 +6115,7 @@ Source: https://docs.turso.tech/connect/javascript
   <Step title="Create table">
     Create a table for users:
 
-    ```javascript  theme={null}
+    ```javascript theme={null}
     const createTable = db.prepare(`
       CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -4745,7 +6129,7 @@ Source: https://docs.turso.tech/connect/javascript
   <Step title="Insert data">
     Insert some data into the users table:
 
-    ```javascript  theme={null}
+    ```javascript theme={null}
     const insertUser = db.prepare("INSERT INTO users (username) VALUES (?)");
     insertUser.run("alice");
     insertUser.run("bob");
@@ -4755,7 +6139,7 @@ Source: https://docs.turso.tech/connect/javascript
   <Step title="Query data">
     Query all users from the table:
 
-    ```javascript  theme={null}
+    ```javascript theme={null}
     const stmt = db.prepare("SELECT * FROM users");
     const users = stmt.all();
     console.log(users);
@@ -4780,7 +6164,7 @@ Source: https://docs.turso.tech/connect/python
   <Step title="Install">
     Add the Turso package to your Python project:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     uv pip install pyturso
     ```
   </Step>
@@ -4788,7 +6172,7 @@ Source: https://docs.turso.tech/connect/python
   <Step title="Connect">
     Here's how you can connect to a local SQLite database:
 
-    ```python  theme={null}
+    ```python theme={null}
     import turso
 
     con = turso.connect("sqlite.db")
@@ -4799,7 +6183,7 @@ Source: https://docs.turso.tech/connect/python
   <Step title="Create table">
     Create a table for users:
 
-    ```python  theme={null}
+    ```python theme={null}
     cur.execute("""
       CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -4813,7 +6197,7 @@ Source: https://docs.turso.tech/connect/python
   <Step title="Insert data">
     Insert some data into the users table:
 
-    ```python  theme={null}
+    ```python theme={null}
     cur.execute("INSERT INTO users (username) VALUES (?)", ("alice",))
     cur.execute("INSERT INTO users (username) VALUES (?)", ("bob",))
     con.commit()
@@ -4823,7 +6207,7 @@ Source: https://docs.turso.tech/connect/python
   <Step title="Query data">
     Query all users from the table:
 
-    ```python  theme={null}
+    ```python theme={null}
     res = cur.execute("SELECT * FROM users")
     users = res.fetchall()
     print(users)
@@ -4841,7 +6225,7 @@ Source: https://docs.turso.tech/connect/rust
   <Step title="Install">
     Add the Turso crate to your Rust project:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     cargo add turso
     ```
   </Step>
@@ -4849,7 +6233,7 @@ Source: https://docs.turso.tech/connect/rust
   <Step title="Connect">
     Here's how you can connect to a local SQLite database:
 
-    ```rust  theme={null}
+    ```rust theme={null}
     use turso::Builder;
 
     #[tokio::main]
@@ -4865,7 +6249,7 @@ Source: https://docs.turso.tech/connect/rust
   <Step title="Create table">
     Create a table for users:
 
-    ```rust  theme={null}
+    ```rust theme={null}
     conn.execute(
         "CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -4879,7 +6263,7 @@ Source: https://docs.turso.tech/connect/rust
   <Step title="Insert data">
     Insert some data into the users table:
 
-    ```rust  theme={null}
+    ```rust theme={null}
     conn.execute("INSERT INTO users (username) VALUES (?)", ("alice",)).await?;
     conn.execute("INSERT INTO users (username) VALUES (?)", ("bob",)).await?;
     ```
@@ -4888,7 +6272,7 @@ Source: https://docs.turso.tech/connect/rust
   <Step title="Query data">
     Query all users from the table:
 
-    ```rust  theme={null}
+    ```rust theme={null}
     let res = conn.query("SELECT * FROM users", ()).await?;
     println!("{:?}", res);
     ```
@@ -5000,7 +6384,7 @@ Currently, LibSQL supports the following functions:
   <Step title="Create a table">
     Begin by declaring a column used for storing vectors with the `F32_BLOB` datatype:
 
-    ```sql  theme={null}
+    ```sql theme={null}
     CREATE TABLE movies (
       title     TEXT,
       year      INT,
@@ -5014,7 +6398,7 @@ Currently, LibSQL supports the following functions:
   <Step title="Generate and insert embeddings">
     Once you generate embeddings for your data (via an LLM), you can insert them into your table:
 
-    ```sql  theme={null}
+    ```sql theme={null}
     INSERT INTO movies (title, year, embedding)
     VALUES
       ('Napoleon', 2023, vector32('[0.800, 0.579, 0.481, 0.229]')),
@@ -5029,7 +6413,7 @@ Currently, LibSQL supports the following functions:
   <Step title="Perform a vector similarity search">
     You can now write queries combining vectors and standard SQLite data:
 
-    ```sql  theme={null}
+    ```sql theme={null}
     SELECT title,
            vector_extract(embedding),
            vector_distance_cos(embedding, vector32('[0.064, 0.777, 0.661, 0.687]')) AS distance
@@ -5057,7 +6441,7 @@ The cosine distance ranges from 0 to 2, where:
   be interpreted as effectively zero, indicating an exact or near-exact match
   between vectors.
 
-  ```sql  theme={null}
+  ```sql theme={null}
   SELECT vector_distance_cos('[1000]', '[1000]');
   -- Output: -2.0479999918166e-09
   ```
@@ -5085,7 +6469,7 @@ LibSQL introduces a custom index type that helps speed up nearest neighbors quer
 
 From a syntax perspective, the vector index differs from ordinary application-defined B-Tree indices in that it must wrap the vector column into a `libsql_vector_idx` marker function like this
 
-```sql  theme={null}
+```sql theme={null}
 CREATE INDEX movies_idx ON movies (libsql_vector_idx(embedding));
 ```
 
@@ -5102,7 +6486,7 @@ The vector index is fully integrated into the LibSQL core, so it inherits all op
 * You can drop index with `DROP INDEX movies_idx` command
 * You can create [partial](https://www.sqlite.org/partialindex.html) vector index with a custom filtering rule:
 
-```sql  theme={null}
+```sql theme={null}
 CREATE INDEX movies_idx ON movies (libsql_vector_idx(embedding))
 WHERE year >= 2000;
 ```
@@ -5117,7 +6501,7 @@ In order for table-valued function to work query vector **must** have the same v
 
 LibSQL vector index optionally can accept settings which must be specified as variadic parameters of the `libsql_vector_idx` function as strings in the format `key=value`:
 
-```sql  theme={null}
+```sql theme={null}
 CREATE INDEX movies_idx
 ON movies(libsql_vector_idx(embedding, 'metric=l2', 'compress_neighbors=float8'));
 ```
@@ -5144,7 +6528,7 @@ At the moment LibSQL supports the following settings:
   <Step title="Create a table">
     Begin by declaring a column used for storing vectors with the `F32_BLOB` datatype:
 
-    ```sql  theme={null}
+    ```sql theme={null}
     CREATE TABLE movies (
       title     TEXT,
       year      INT,
@@ -5158,7 +6542,7 @@ At the moment LibSQL supports the following settings:
   <Step title="Generate and insert embeddings">
     Once you generate embeddings for your data (via an LLM), you can insert them into your table:
 
-    ```sql  theme={null}
+    ```sql theme={null}
     INSERT INTO movies (title, year, embedding)
     VALUES
       ('Napoleon', 2023, vector32('[0.800, 0.579, 0.481, 0.229]')),
@@ -5173,7 +6557,7 @@ At the moment LibSQL supports the following settings:
   <Step title="Create an Index">
     Create an index using the `libsql_vector_idx` function:
 
-    ```sql  theme={null}
+    ```sql theme={null}
     CREATE INDEX movies_idx ON movies(libsql_vector_idx(embedding));
     ```
 
@@ -5186,7 +6570,7 @@ At the moment LibSQL supports the following settings:
   </Step>
 
   <Step title="Query the indexed table">
-    ```sql  theme={null}
+    ```sql theme={null}
     SELECT title, year
     FROM vector_top_k('movies_idx', vector32('[0.064, 0.777, 0.661, 0.687]'), 3)
     JOIN movies ON movies.rowid = id
@@ -5240,7 +6624,7 @@ Make sure you have the [Turso CLI](/cli/installation) installed, and [logged in]
   <Step title="Enable attach on required databases">
     You will first need to enable the `ATTACH` feature on the database(s) you want to attach:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso db config attach allow <database-name>
     ```
   </Step>
@@ -5248,7 +6632,7 @@ Make sure you have the [Turso CLI](/cli/installation) installed, and [logged in]
   <Step title="Retrieve Database ID">
     You now need to retrieve the **Database ID** for the database you want to `ATTACH`:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso db show <database-name>
     ```
   </Step>
@@ -5256,7 +6640,7 @@ Make sure you have the [Turso CLI](/cli/installation) installed, and [logged in]
   <Step title="Connect to any database with attach">
     Now pass the names of the databases via the `--attach` flag when connecting to your database(s):
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso db shell <database-name> --attach <...database-name(s)>
     ```
   </Step>
@@ -5264,7 +6648,7 @@ Make sure you have the [Turso CLI](/cli/installation) installed, and [logged in]
   <Step title="ATTACH">
     Now once connected to the database you can invoke an `ATTACH` statement to connect the other database(s):
 
-    ```sql  theme={null}
+    ```sql theme={null}
     ATTACH "<database-id>" AS my_db;
     ```
   </Step>
@@ -5272,7 +6656,7 @@ Make sure you have the [Turso CLI](/cli/installation) installed, and [logged in]
   <Step title="Query">
     Execute a query using the alias for any attached database(s):
 
-    ```sql  theme={null}
+    ```sql theme={null}
     SELECT * FROM my_db.my_table;
     ```
   </Step>
@@ -5286,7 +6670,7 @@ You can use one of the libSQL client SDKs with [TypeScript](/sdk/ts), [Rust](/sd
   <Step title="Enable attach on required databases">
     You will first need to enable the `ATTACH` feature on the database(s) you want to attach:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso db config attach allow <database-name>
     ```
   </Step>
@@ -5294,7 +6678,7 @@ You can use one of the libSQL client SDKs with [TypeScript](/sdk/ts), [Rust](/sd
   <Step title="Retrieve Database ID">
     You now need to retrieve the **Database ID** for the database you want to `ATTACH`:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso db show <database-name>
     ```
   </Step>
@@ -5302,7 +6686,7 @@ You can use one of the libSQL client SDKs with [TypeScript](/sdk/ts), [Rust](/sd
   <Step title="Create token with ATTACH permissions">
     Now create a token for the libSQL client with the `attach` permission for the database you want to attach:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso db tokens create <database-name> --attach <another-database-name>
     ```
   </Step>
@@ -5381,9 +6765,9 @@ You can create a new database from an existing database using the CLI or API:
 Refer to the following references for more details about all arguments:
 
 <CardGroup>
-  <Card horizontal title="CLI Reference" icon="terminal" href="/cli/db/create" />
+  <Card title="CLI Reference" icon="terminal" href="/cli/db/create" />
 
-  <Card horizontal title="API Reference" icon="code" href="/api-reference/databases/create" />
+  <Card title="API Reference" icon="code" href="/api-reference/databases/create" />
 </CardGroup>
 
 ## Things to know
@@ -5435,7 +6819,7 @@ Allow your users to reach local replicas of your database, wherever they are.
 
 For those seeking the ultimate in speed, Turso enables the [embedding of databases](/features/embedded-replicas) directly within your application on the same node. This configuration eliminates inter-regional request hopping, effectively bringing latency down to zero.
 
-<iframe src="https://www.youtube.com/embed/DyO4OP5v0IM" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen className="w-full aspect-video" />
+<iframe title="YouTube video player" />
 
 ## How it works
 
@@ -5512,7 +6896,7 @@ Embedded replicas provide a smooth switch between local and remote database oper
 
 You can automatically sync data to your embedded replica using the periodic sync interval property. Simply pass the `syncInterval` parameter when instantiating the client:
 
-```ts  theme={null}
+```ts theme={null}
 import { createClient } from "@libsql/client";
 
 const client = createClient({
@@ -5530,22 +6914,22 @@ Embedded Replicas also will guarantee read-your-writes semantics. What that mean
 
 Other replicas will see the new data when they call `sync()`, or at the next sync period, if [Periodic Sync](#periodic-sync) is used.
 
-<img src="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/features/embedded-replicas/read-your-writes.png?fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=44d76ec117694d77b50d0b6f134065fe" alt="Read your writes" data-og-width="1666" width="1666" data-og-height="1034" height="1034" data-path="features/embedded-replicas/read-your-writes.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/features/embedded-replicas/read-your-writes.png?w=280&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=6beb0e6514362724f14e840ee9748e4d 280w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/features/embedded-replicas/read-your-writes.png?w=560&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=16559702458398bdc02137f40ed2f2d1 560w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/features/embedded-replicas/read-your-writes.png?w=840&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=13332c6c60a24c313e0361e6b91886d1 840w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/features/embedded-replicas/read-your-writes.png?w=1100&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=39b3141fcdeff77a1fd99502f1c7ed06 1100w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/features/embedded-replicas/read-your-writes.png?w=1650&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=955916bd4b6433dc571ab92560b63b7d 1650w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/features/embedded-replicas/read-your-writes.png?w=2500&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=53c8f60f64f5c647e1bd7038a62f2fd5 2500w" />
+<img alt="Read your writes" />
 
 ### Encryption at rest
 
 Embedded Replicas support encryption at rest with one of the libSQL client SDKs. Simply pass the `encryptionKey` parameter when instantiating the client:
 
 <CodeGroup>
-  <Snippet file="encryption-at-rest-typescript.mdx" />
+  <Snippet />
 
-  <Snippet file="encryption-at-rest-golang.mdx" />
+  <Snippet />
 
-  <Snippet file="encryption-at-rest-rust.mdx" />
+  <Snippet />
 
-  <Snippet file="encryption-at-rest-python.mdx" />
+  <Snippet />
 
-  <Snippet file="encryption-at-rest-flutter.mdx" />
+  <Snippet />
 </CodeGroup>
 
 <Note>The encryption key used should be generated and managed by you.</Note>
@@ -5697,7 +7081,7 @@ You can sync changes from the remote database to the local replica manually:
 
 ## Deployment Guides
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card href="/features/embedded-replicas/with-fly" title="Turso + Fly">
     Deploy a JavaScript project with Embedded Replicas to Fly.io
   </Card>
@@ -5725,7 +7109,7 @@ Source: https://docs.turso.tech/features/embedded-replicas/with-akamai
 
 Deploy a JavaScript/Rust app using [Turso embedded replicas](/features/embedded-replicas) to [Akamai](https://www.linode.com/).
 
-<img src="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/akamai-banner.png?fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=66d07bd3d96ab8ddcec273d80a00fdca" alt="Akamai banner" data-og-width="1133" width="1133" data-og-height="595" height="595" data-path="images/platforms/akamai-banner.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/akamai-banner.png?w=280&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=7e4da37bf6a452264bff0be6725749a8 280w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/akamai-banner.png?w=560&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=a582bfcffff91ca1d7b40c1565c0870d 560w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/akamai-banner.png?w=840&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=6e9cb8c3f56ac4d26b7dfbe2902cd12e 840w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/akamai-banner.png?w=1100&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=0380395041ac579b29e8ca192fcb42f2 1100w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/akamai-banner.png?w=1650&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=f58c99fc7d4c58b6d14f9852b7d4d49c 1650w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/akamai-banner.png?w=2500&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=8addc1be9c1c579e1d0cbe4f0334fd2a 2500w" />
+<img alt="Akamai banner" />
 
 ## Prerequisites
 
@@ -5739,7 +7123,7 @@ Before you start, make sure you:
   <Step title="Retrieve database credentials">
     You will need an existing database to continue. If you don't have one, [create one](/quickstart).
 
-    <Snippet file="retrieve-database-credentials.mdx" />
+    <Snippet />
 
     <Info>You will want to store these as environment variables.</Info>
   </Step>
@@ -5747,7 +7131,7 @@ Before you start, make sure you:
   <Step>
     Fork one of the following embedded replica projects from GitHub
 
-    <CardGroup cols={2}>
+    <CardGroup>
       <Card title="My Expenses Tracker - (Elysia + Bun)" icon="github" href="https://github.com/tursodatabase/embedded-replicas-with-js">
         See the full source code
       </Card>
@@ -5784,7 +7168,7 @@ Source: https://docs.turso.tech/features/embedded-replicas/with-fly
 
 Deploy a JavaScript app using [Turso embedded replicas](/features/embedded-replicas) to [Fly.io](https://www.fly.io/).
 
-<img src="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/fly-banner.png?fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=f3d7f266e79052e9d176d519a4a277fc" alt="Koyeb banner" data-og-width="1133" width="1133" data-og-height="595" height="595" data-path="images/platforms/fly-banner.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/fly-banner.png?w=280&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=4f2b9cc3a0a6b192a4d1cb492bb944dc 280w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/fly-banner.png?w=560&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=437795d31a96fb3c16d0729287a676e5 560w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/fly-banner.png?w=840&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=15228f989a0e419c8829fc70c5e75700 840w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/fly-banner.png?w=1100&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=11bbca9fcfeadb59b105fc30eb4996da 1100w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/fly-banner.png?w=1650&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=0b3ad55854bc704cc5fb3f8d8f00e7c1 1650w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/fly-banner.png?w=2500&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=d4cd31c518def5ec3454466dbfec6a53 2500w" />
+<img alt="Koyeb banner" />
 
 ## Prerequisites
 
@@ -5802,7 +7186,7 @@ Before you start, make sure you:
   <Step title="Launch with Fly">
     Using the Fly CLI, launch it:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     fly launch
     ```
 
@@ -5812,7 +7196,7 @@ Before you start, make sure you:
   <Step title="Create a shared volume">
     Now create a volume that will be used to store the embedded replica(s):
 
-    ```bash  theme={null}
+    ```bash theme={null}
     fly volumes create libsql_data
     ```
   </Step>
@@ -5822,7 +7206,7 @@ Before you start, make sure you:
 
     Update `fly.toml` this file to mount the new volume:
 
-    ```toml  theme={null}
+    ```toml theme={null}
     [[mounts]]
     source = "libsql_data"
     destination = "/app/data"
@@ -5830,7 +7214,7 @@ Before you start, make sure you:
 
     Then inside `Dockerfile`, make sure you install and update `ca-certificates`:
 
-    ```dockerfile  theme={null}
+    ```dockerfile theme={null}
     RUN apt-get update -qq && \
         apt-get install -y ca-certificates && \
         update-ca-certificates
@@ -5838,7 +7222,7 @@ Before you start, make sure you:
 
     Make sure to also add the following line after any `COPY` commands to copy the certificates:
 
-    ```dockerfile  theme={null}
+    ```dockerfile theme={null}
     COPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
     ```
   </Step>
@@ -5846,7 +7230,7 @@ Before you start, make sure you:
   <Step title="Configure the libSQL client">
     You will want to change the `url` to point to a local file, and set the `syncUrl` to be your Turso database URL:
 
-    ```ts  theme={null}
+    ```ts theme={null}
     import { createClient } from "@libsql/client";
 
     const client = createClient({
@@ -5859,7 +7243,7 @@ Before you start, make sure you:
   </Step>
 
   <Step title="Deploy your updated app">
-    ```bash  theme={null}
+    ```bash theme={null}
     fly deploy
     ```
   </Step>
@@ -5871,7 +7255,7 @@ Source: https://docs.turso.tech/features/embedded-replicas/with-koyeb
 
 Deploy a JavaScript/Rust app using [Turso embedded replicas](/features/embedded-replicas) to [Koyeb](https://www.koyeb.com/).
 
-<img src="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/koyeb-banner.png?fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=6f7f0ee22ae417bb3743cd771b4c8a4a" alt="Koyeb banner" data-og-width="1133" width="1133" data-og-height="595" height="595" data-path="images/platforms/koyeb-banner.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/koyeb-banner.png?w=280&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=3a37d05b05434ec42c03cef40844b2ad 280w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/koyeb-banner.png?w=560&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=a926c63a243466bfec358e32cbb6b8dc 560w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/koyeb-banner.png?w=840&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=c32425916c62d0679901af3822b89473 840w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/koyeb-banner.png?w=1100&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=2f9fe06a552430f6ea5a98eafa9ba733 1100w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/koyeb-banner.png?w=1650&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=acc4224be02b1b558a835f0713613d50 1650w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/koyeb-banner.png?w=2500&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=7621a49790d9c814524bada502407df9 2500w" />
+<img alt="Koyeb banner" />
 
 ## Prerequisites
 
@@ -5885,7 +7269,7 @@ Before you start, make sure you:
   <Step title="Retrieve database credentials">
     You will need an existing database to continue. If you don't have one, [create one](/quickstart).
 
-    <Snippet file="retrieve-database-credentials.mdx" />
+    <Snippet />
 
     <Info>You will want to store these as environment variables.</Info>
   </Step>
@@ -5893,7 +7277,7 @@ Before you start, make sure you:
   <Step>
     Fork one of the following embedded replica project from GitHub
 
-    <CardGroup cols={2}>
+    <CardGroup>
       <Card title="My Expenses Tracker - (Elysia + Bun)" icon="github" href="https://github.com/tursodatabase/embedded-replicas-with-js">
         See the full source code
       </Card>
@@ -5919,7 +7303,7 @@ Before you start, make sure you:
   </Step>
 
   <Step title="Fill in the environment variables on Koyeb's deploy page">
-        <img src="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/koyeb-env-variables.png?fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=fbe69407ce481b6f89954813101965b4" alt="Koyeb deploy page - environment variables" data-og-width="1298" width="1298" data-og-height="501" height="501" data-path="images/platforms/koyeb-env-variables.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/koyeb-env-variables.png?w=280&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=6cff6cc0a7847edabe15e14bc6419399 280w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/koyeb-env-variables.png?w=560&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=7b151860e44183bcbe2cd03d9a40b740 560w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/koyeb-env-variables.png?w=840&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=d7b37c14230f5247b8b91eb4c39deba1 840w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/koyeb-env-variables.png?w=1100&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=b2f314dbd701465a55772d5f88feb50e 1100w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/koyeb-env-variables.png?w=1650&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=d47c9aa00dfcbb0ae7b0a84e5551ccdf 1650w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/koyeb-env-variables.png?w=2500&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=0fb52561c549f7fba3b316a0db9daf0f 2500w" />
+    <img alt="Koyeb deploy page - environment variables" />
   </Step>
 
   <Step title="Deploy">
@@ -5933,7 +7317,7 @@ Source: https://docs.turso.tech/features/embedded-replicas/with-railway
 
 Deploy a JavaScript/Rust app using [Turso embedded replicas](/features/embedded-replicas) to [Railway](https://railway.app/).
 
-<img src="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/railway-banner.png?fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=c04df842dadd8d42cd24364580fbf7bf" alt="Koyeb banner" data-og-width="1133" width="1133" data-og-height="595" height="595" data-path="images/platforms/railway-banner.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/railway-banner.png?w=280&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=7a2da6f3ae7830cf5920606ab60414c1 280w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/railway-banner.png?w=560&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=969fe3af1ec1097016c5cfa8db2ce858 560w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/railway-banner.png?w=840&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=d687210faf0308b804c2fffa589258cb 840w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/railway-banner.png?w=1100&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=e890cc6aa90a2997267ba26c8e51ea80 1100w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/railway-banner.png?w=1650&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=ac9e200a13dbcc2b57f3578461d639e3 1650w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/railway-banner.png?w=2500&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=7292a312d2b6f479acae09d766c06458 2500w" />
+<img alt="Koyeb banner" />
 
 ## Prerequisites
 
@@ -5947,7 +7331,7 @@ Before you start, make sure you:
   <Step title="Retrieve database credentials">
     You will need an existing database to continue. If you don't have one, [create one](/quickstart).
 
-    <Snippet file="retrieve-database-credentials.mdx" />
+    <Snippet />
 
     <Info>You will want to store these as environment variables.</Info>
   </Step>
@@ -5955,7 +7339,7 @@ Before you start, make sure you:
   <Step title="Get application code">
     Fork and clone the following embedded replica project from GitHub locally:
 
-    <CardGroup cols={2}>
+    <CardGroup>
       <Card title="My Expenses Tracker - (Elysia + Bun)" icon="github" href="https://github.com/tursodatabase/embedded-replicas-with-js">
         See the full source code
       </Card>
@@ -5969,7 +7353,7 @@ Before you start, make sure you:
   <Step title="Create a new Railway project">
     Run the following command to create a new Railway project. Provide the project's name when prompted.
 
-    ```sh  theme={null}
+    ```sh theme={null}
     railway init
     ```
   </Step>
@@ -5981,7 +7365,7 @@ Before you start, make sure you:
   <Step title="Link application to service">
     Run the following command to list and select the service to link to your application:
 
-    ```sh  theme={null}
+    ```sh theme={null}
     railway service
     ```
   </Step>
@@ -5989,7 +7373,7 @@ Before you start, make sure you:
   <Step title="Add database credentials">
     Open the service on your Railway dashboard and add your Turso database Credentials.
 
-    ```sh  theme={null}
+    ```sh theme={null}
     TURSO_DATABASE_URL=libsql://[db-name]-[github-username].turso.io
     TURSO_AUTH_TOKEN=...
     LOCAL_DB=file:local-db-name.db
@@ -5999,7 +7383,7 @@ Before you start, make sure you:
   <Step title="Deploy">
     Run the following command to deploy your application:
 
-    ```sh  theme={null}
+    ```sh theme={null}
     railway up
     ```
 
@@ -6019,7 +7403,7 @@ Source: https://docs.turso.tech/features/embedded-replicas/with-render
 
 Deploy a JavaScript app using [Turso embedded replicas](/features/embedded-replicas) to [Render](https://render.com/).
 
-<img src="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/render-banner.png?fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=6e416c1d54d38e041de310997834574e" alt="Render banner" data-og-width="1133" width="1133" data-og-height="595" height="595" data-path="images/platforms/render-banner.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/render-banner.png?w=280&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=ba8f9b05eec5513e77472bc58aeed6f6 280w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/render-banner.png?w=560&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=0f641d33347d1f9489f4d54732c63af9 560w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/render-banner.png?w=840&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=442b19fd3617b08f6d9f1cd70f389e43 840w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/render-banner.png?w=1100&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=98443de6f20cf710f3b56961a962068f 1100w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/render-banner.png?w=1650&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=c1a0c7b2acdfbc6e3a5e010578c9d99d 1650w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/platforms/render-banner.png?w=2500&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=64af00e16f300cf2885e5680c668cf9a 2500w" />
+<img alt="Render banner" />
 
 ## Prerequisites
 
@@ -6033,7 +7417,7 @@ Before you start, make sure you:
   <Step title="Retrieve database credentials">
     You will need an existing database to continue. If you don't have one, [create one](/quickstart).
 
-    <Snippet file="retrieve-database-credentials.mdx" />
+    <Snippet />
 
     <Info>You will want to store these as environment variables.</Info>
   </Step>
@@ -6065,7 +7449,7 @@ Before you start, make sure you:
   <Step title="Set project's environment variables">
     On the web service configuration page, under "Advanced" add **a secret file** and fill it in with your database secret credentials:
 
-        <img src="https://mintlify.s3.us-west-1.amazonaws.com/turso/features/embedded-replicas/images/platforms/render-env-vars.png" alt="Render secret credentials" />
+    <img alt="Render secret credentials" />
   </Step>
 
   <Step title="Deploy project">
@@ -6101,7 +7485,7 @@ Turso allows you to create a single schema and share it across multiple database
 
 You can create and manage parent or child databases using the [Turso CLI](/cli/db/create), and [Platform API](/api-reference/databases/create).
 
-<iframe src="https://www.youtube.com/embed/Slacu1aGm8A" title="Multi database schema changes" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen className="w-full aspect-video" />
+<iframe title="Multi database schema changes" />
 
 ### Turso CLI
 
@@ -6111,7 +7495,7 @@ Make sure you have the [Turso CLI](/cli/installation) installed, and [logged in]
   <Step title="Create Parent Database">
     Create a single database using the `--type` flag set to `schema`:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso db create parent-db --type schema
     ```
   </Step>
@@ -6119,7 +7503,7 @@ Make sure you have the [Turso CLI](/cli/installation) installed, and [logged in]
   <Step title="Create Schema">
     Connect to your database using the shell to `CREATE TABLE`, `CREATE TRIGGER`, `CREATE VIEW`, and anything else to setup your schema:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso db shell parent-db
     ```
   </Step>
@@ -6127,7 +7511,7 @@ Make sure you have the [Turso CLI](/cli/installation) installed, and [logged in]
   <Step title="Create Child Database(s)">
     Create one or more child databases using the `--schema` flag with the name of the parent database:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso db create child-db --schema parent-db
     ```
   </Step>
@@ -6135,7 +7519,7 @@ Make sure you have the [Turso CLI](/cli/installation) installed, and [logged in]
   <Step title="Apply Additional Schema Changes">
     You can now apply additional schema changes to the parent database, and the child databases will be automatically updated:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso db shell parent-db "CREATE TABLE users (id INT PRIMARY KEY, name TEXT);"
     ```
   </Step>
@@ -6149,7 +7533,7 @@ Make sure you have an API Token, and know your Organization name:
   <Step title="Create Parent Database">
     Create a database and set the `is_schema` field to `true`:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     curl -L -X POST 'https://api.turso.tech/v1/organizations/{organizationSlug}/databases' \
       -H 'Authorization: Bearer TOKEN' \
       -H 'Content-Type: application/json' \
@@ -6172,7 +7556,7 @@ Make sure you have an API Token, and know your Organization name:
   <Step title="Create Child Database(s)">
     Create one or more child databases and pass the `schema` field the name of your parent database:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     curl -L -X POST 'https://api.turso.tech/v1/organizations/{organizationSlug}/databases' \
       -H 'Authorization: Bearer TOKEN' \
       -H 'Content-Type: application/json' \
@@ -6187,7 +7571,7 @@ Make sure you have an API Token, and know your Organization name:
   <Step title="Apply Additional Schema Changes">
     You can now apply additional schema changes to the parent database, and the child databases will be automatically updated:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso db shell parent-db "CREATE TABLE users (id INT PRIMARY KEY, name TEXT);"
     ```
   </Step>
@@ -6259,9 +7643,9 @@ Turso supports point-in-time recovery (PITR) for databases. PITR allows you to r
 Refer to the following references for more details about all arguments:
 
 <CardGroup>
-  <Card horizontal title="CLI Reference" icon="terminal" href="/cli/db/create" />
+  <Card title="CLI Reference" icon="terminal" href="/cli/db/create" />
 
-  <Card horizontal title="API Reference" icon="code" href="/api-reference/databases/create" />
+  <Card title="API Reference" icon="code" href="/api-reference/databases/create" />
 </CardGroup>
 
 ## Things to know
@@ -6352,7 +7736,7 @@ Use embedded databases for agents that process data locally within a single work
 
 Local data pipelines, on-device processing of sensitive data, development/testing workflows, and single-agent analysis tasks.
 
-```javascript  theme={null}
+```javascript theme={null}
 import { connect } from "@tursodatabase/database";
 
 // Create a local embedded database for this agent
@@ -6388,7 +7772,7 @@ Use Turso Sync for agents that need persistent memory across sessions, coordinat
 
 💡 Conversational agents with session memory, multi-agent coordination systems, long-running workflows with recovery needs, and agents reporting to central systems.
 
-```javascript  theme={null}
+```javascript theme={null}
 import { connect } from "@tursodatabase/database";
 
 // Connect to a synced database (embedded locally, synced to Turso Cloud)
@@ -6426,7 +7810,7 @@ await db.sync();
 
 Each agent gets its own embedded database. Best for independent agents with no shared state.
 
-```javascript  theme={null}
+```javascript theme={null}
 // Agent 1
 const agent1DB = await connect("agent-1.db");
 
@@ -6442,7 +7826,7 @@ const agent2DB = await connect("agent-2.db");
 
 Multiple agents connect to the same synced database. Best for coordinated agent systems.
 
-```javascript  theme={null}
+```javascript theme={null}
 // Agent 1 connects and writes tasks
 const agent1DB = await connect({
   path: "agent-1-local.db",
@@ -6472,7 +7856,7 @@ const pendingTasks = agent2DB
 
 A central synced database with agents pushing results and pulling new tasks.
 
-```javascript  theme={null}
+```javascript theme={null}
 // Worker agents push results only
 const workerDB = await connect({
   path: "worker-local.db",
@@ -6496,7 +7880,7 @@ const coordinatorDB = await connect({
 
 For systems managing many agents, you can create individual databases for each agent using the [Platform API](https://docs.turso.tech/api-reference):
 
-```javascript  theme={null}
+```javascript theme={null}
 import { createClient } from "@tursodatabase/api";
 
 const turso = createClient({
@@ -6639,7 +8023,7 @@ Source: https://docs.turso.tech/introduction
 The small database to power your big dreams in the age of AI.
 
 <Frame>
-    <img src="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/turso-banner.png?fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=e06c9ad0e66501d523ed87aaecefa6ba" alt="Turso Quickstart" data-og-width="2400" width="2400" data-og-height="1350" height="1350" data-path="images/turso-banner.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/turso-banner.png?w=280&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=8b20ed5206dfa768faa67ebaaa6b832c 280w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/turso-banner.png?w=560&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=376c803dccd32eaac0ccb57f4063d21c 560w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/turso-banner.png?w=840&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=9804e2564ed19e87654321d6f4b444cf 840w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/turso-banner.png?w=1100&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=40068eeca4870fb12ef9e5cbb07e28cb 1100w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/turso-banner.png?w=1650&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=35ea6fb0cf6c171072ad123ed2a3360c 1650w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/turso-banner.png?w=2500&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=22b4e1581b136d62244394221d9ac8a9 2500w" />
+  <img alt="Turso Quickstart" />
 </Frame>
 
 Turso is the small database to power your big dreams in the age of AI. The most efficient way to build for traditional applications, smart devices, embodied AI, agents, and anything in between.
@@ -6650,7 +8034,7 @@ Turso is the small database to power your big dreams in the age of AI. The most 
 
 Choose your path to get started with Turso:
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Turso Database (Embedded)" icon="microchip" href="/tursodb/quickstart">
     An embedded database engine that goes anywhere. Offline, in the browser, or
     on-device.
@@ -6669,7 +8053,7 @@ Choose your path to get started with Turso:
 
 The next evolution of SQLite, built for modern applications:
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Vector Search" icon="magnifying-glass">
     Native similarity search for AI apps and RAG workflows, no extensions
     required
@@ -6700,19 +8084,19 @@ The next evolution of SQLite, built for modern applications:
 
 Connect with developers and the Turso team:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Turso Database Core Developers" icon="discord" href="https://discord.gg/jgjmyYgHwB">
     Join the core development community for Turso Database discussions
   </Card>
 
-  <Card title="Turso Community" icon="discord" href="https://discord.gg/turso">
+  <Card title="Turso Community" icon="discord" href="https://tur.so/discord">
     Connect with users and get support for Turso Cloud
   </Card>
 </CardGroup>
 
 ### Follow Us
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="GitHub" icon="star" href="https://github.com/tursodatabase" />
 
   <Card title="X (Twitter)" icon="x-twitter" href="https://twitter.com/tursodatabase" />
@@ -6732,12 +8116,12 @@ Postgres and MySQL have long vied for SQL dominance, while SQLite remains a favo
 
 libSQL is a fork of SQLite that aims to be a modern database, with a focus on low query latency and high availability. It's designed to be a drop-in replacement for SQLite, and scales globally with Turso over HTTP.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="tursodatabase/libsql" icon="github" href="https://github.com/tursodatabase/libsql/">
     Browse the libSQL source code on GitHub, report issues, feature requests and contribute using pull requests.
   </Card>
 
-  <Card title="Discord" href="https://discord.gg/turso" icon="discord">
+  <Card title="Discord" href="https://tur.so/discord" icon="discord">
     Join the community on Discord to talk about the development of libSQL.
   </Card>
 </CardGroup>
@@ -6769,15 +8153,15 @@ libSQL introduces an essential feature for production environments: **encryption
 libSQL's encryption leverages existing, proven encryption solutions, integrating them directly into the fork of SQLite. The encryption is page-based, allowing for efficient data access without decrypting the entire file. Supported encryption standards include SQLCipher (default) and wxSQLite3's AES 256 Bit, with further options for customization per database.
 
 <CodeGroup>
-  <Snippet file="encryption-at-rest-typescript.mdx" />
+  <Snippet />
 
-  <Snippet file="encryption-at-rest-golang.mdx" />
+  <Snippet />
 
-  <Snippet file="encryption-at-rest-rust.mdx" />
+  <Snippet />
 
-  <Snippet file="encryption-at-rest-python.mdx" />
+  <Snippet />
 
-  <Snippet file="encryption-at-rest-flutter.mdx" />
+  <Snippet />
 </CodeGroup>
 
 <Note>The encryption key used should be generated and managed by you.</Note>
@@ -6809,13 +8193,13 @@ You can always dump your production database and use it locally for development:
 
 <Steps>
   <Step title="Create a dump using the Turso CLI">
-    ```bash  theme={null}
+    ```bash theme={null}
     turso db shell your-database .dump > dump.sql
     ```
   </Step>
 
   <Step title="Create SQLite file from dump">
-    ```bash  theme={null}
+    ```bash theme={null}
     cat dump.sql | sqlite3 local.db
     ```
   </Step>
@@ -6898,7 +8282,7 @@ When working with an [SDK](/sdk), you can pass it a `file:` URL to connect to a 
 
 If you're using [libSQL](/libsql) specific features like [extensions](/libsql#extensions), you should use the Turso CLI:
 
-```bash  theme={null}
+```bash theme={null}
 turso dev
 ```
 
@@ -6939,7 +8323,7 @@ This will start a local libSQL server and create a database for you. You can the
 
 If you want to persist changes, or use a production dump, you can pass the `--db-file` flag with the name of the SQLite file:
 
-```bash  theme={null}
+```bash theme={null}
 turso dev --db-file local.db
 ```
 
@@ -7011,13 +8395,13 @@ Welcome to Turso! Get started with Turso in minutes.
   <Step title="Create a Database">
     Now create your first database in a location closest to you with the name `my-db`:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso db create my-db
     ```
 
     The Turso CLI automatically detected your closest region to create a database. It used this location to create a `default` "group" for your database, which you can inspect using the following command:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso db show my-db
     ```
   </Step>
@@ -7025,7 +8409,7 @@ Welcome to Turso! Get started with Turso in minutes.
   <Step title="Connect to Database Shell">
     Congratulations, you created a database! Now connect to it with the `shell` command:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso db shell my-db
     ```
 
@@ -7037,7 +8421,7 @@ Welcome to Turso! Get started with Turso in minutes.
       <Accordion title="Create table">
         Now create a table for `users` using SQL:
 
-        ```sql  theme={null}
+        ```sql theme={null}
         CREATE TABLE users (
           ID INTEGER PRIMARY KEY AUTOINCREMENT,
           name TEXT
@@ -7048,7 +8432,7 @@ Welcome to Turso! Get started with Turso in minutes.
       <Accordion title="Insert into new table">
         Then insert a row into the `users` table:
 
-        ```sql  theme={null}
+        ```sql theme={null}
         INSERT INTO users (name) VALUES ("Iku");
         ```
       </Accordion>
@@ -7056,7 +8440,7 @@ Welcome to Turso! Get started with Turso in minutes.
       <Accordion title="Select all rows from table">
         Finally, query for all `users`:
 
-        ```sql  theme={null}
+        ```sql theme={null}
         SELECT * FROM users;
         ```
       </Accordion>
@@ -7064,7 +8448,7 @@ Welcome to Turso! Get started with Turso in minutes.
 
     When you're ready to move onto the next step, you'll want to to quit the shell:
 
-    ```sql  theme={null}
+    ```sql theme={null}
     .quit
     ```
   </Step>
@@ -7072,7 +8456,7 @@ Welcome to Turso! Get started with Turso in minutes.
   <Step title="Connect your application to your database">
     You're now ready to connect your application to your database. Pick from one of the SDKs below to continue:
 
-    <Snippet file="all-sdks.mdx" />
+    <Snippet />
   </Step>
 </Steps>
 
@@ -7082,7 +8466,7 @@ Source: https://docs.turso.tech/sdk/activerecord/guides/rails
 
 Set up Turso in your Ruby on Rails project in minutes.
 
-<Snippet file="technical-preview-banner.mdx" />
+<Snippet />
 
 ## Prerequisites
 
@@ -7096,25 +8480,25 @@ Before you start, make sure you:
   <Step title="Install the libsql_activerecord Rubygem">
     Add the following to your Gemfile:
 
-    ```ruby  theme={null}
+    ```ruby theme={null}
     gem 'libsql_activerecord'
     ```
 
     Then run:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     bundle install
     ```
   </Step>
 
   <Step title="Configure database credentials">
-    <Snippet file="retrieve-database-credentials.mdx" />
+    <Snippet />
 
     Add your Turso credentials to your Rails credentials file or environment variables.
   </Step>
 
   <Step title="Use the libsql adapter">
-    ```yml  theme={null}
+    ```yml theme={null}
     default: &default
       adapter: libsql
       pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -7130,13 +8514,13 @@ Before you start, make sure you:
   <Step title="Create and run migrations">
     Generate a migration:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     rails generate migration CreateProducts name:string description:text
     ```
 
     Run the migration:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     rails db:migrate
     ```
   </Step>
@@ -7144,7 +8528,7 @@ Before you start, make sure you:
   <Step title="Define models">
     Create a model in `app/models/product.rb`:
 
-    ```ruby  theme={null}
+    ```ruby theme={null}
     class Product < ApplicationRecord
       validates :name, presence: true
     end
@@ -7154,7 +8538,7 @@ Before you start, make sure you:
   <Step title="Use in controllers">
     In your controllers, you can now use ActiveRecord methods to interact with your Turso database:
 
-    ```ruby  theme={null}
+    ```ruby theme={null}
     class ProductsController < ApplicationController
       def index
         @products = Product.all
@@ -7181,7 +8565,7 @@ Before you start, make sure you:
   <Step title="Execute raw SQL (if needed)">
     You can also execute raw SQL queries:
 
-    ```ruby  theme={null}
+    ```ruby theme={null}
     results = ActiveRecord::Base.connection.execute("SELECT * FROM products")
     ```
   </Step>
@@ -7189,7 +8573,7 @@ Before you start, make sure you:
 
 ## Examples
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Ruby on Rails App" icon="github" href="https://github.com/tursodatabase/libsql-activerecord/tree/main/examples/railsapp">
     See the full source code
   </Card>
@@ -7201,7 +8585,7 @@ Source: https://docs.turso.tech/sdk/activerecord/quickstart
 
 Get started with Turso and ActiveRecord in a few simple steps.
 
-<Snippet file="technical-preview-banner.mdx" />
+<Snippet />
 
 In this Ruby quickstart we will learn how to:
 
@@ -7217,20 +8601,20 @@ In this Ruby quickstart we will learn how to:
   <Step title="Retrieve database credentials">
     You will need an existing database to continue. If you don't have one, [create one](/quickstart).
 
-    <Snippet file="retrieve-database-credentials.mdx" />
+    <Snippet />
   </Step>
 
   <Step title="Install">
     In your Ruby project, add the following gems to your Gemfile:
 
-    ```ruby  theme={null}
+    ```ruby theme={null}
     gem 'libsql_activerecord'
     gem 'activerecord'
     ```
 
     Then run:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     bundle install
     ```
   </Step>
@@ -7240,7 +8624,7 @@ In this Ruby quickstart we will learn how to:
 
     <AccordionGroup>
       <Accordion title="Embedded Replicas">
-        ```rb  theme={null}
+        ```rb theme={null}
         require 'libsql_activerecord'
         require 'active_record'
 
@@ -7254,7 +8638,7 @@ In this Ruby quickstart we will learn how to:
       </Accordion>
 
       <Accordion title="Local only">
-        ```rb  theme={null}
+        ```rb theme={null}
         require 'libsql_activerecord'
         require 'active_record'
 
@@ -7266,7 +8650,7 @@ In this Ruby quickstart we will learn how to:
       </Accordion>
 
       <Accordion title="Remote only">
-        ```rb  theme={null}
+        ```rb theme={null}
         require 'libsql_activerecord'
         require 'active_record'
 
@@ -7279,7 +8663,7 @@ In this Ruby quickstart we will learn how to:
       </Accordion>
 
       <Accordion title="In-memory">
-        ```rb  theme={null}
+        ```rb theme={null}
         require 'libsql_activerecord'
         require 'active_record'
 
@@ -7292,7 +8676,7 @@ In this Ruby quickstart we will learn how to:
   <Step title="Define models">
     Create model files for your database tables. For example, `product.rb`:
 
-    ```rb  theme={null}
+    ```rb theme={null}
     class Product < ActiveRecord::Base
       validates :name, presence: true
     end
@@ -7302,7 +8686,7 @@ In this Ruby quickstart we will learn how to:
   <Step title="Create and execute a migration">
     Create a migration file (e.g., `001_create_products.rb`):
 
-    ```rb  theme={null}
+    ```rb theme={null}
     class CreateProducts < ActiveRecord::Migration[8.0]
       def change
         create_table :products do |t|
@@ -7316,7 +8700,7 @@ In this Ruby quickstart we will learn how to:
 
     Execute the migration:
 
-    ```rb  theme={null}
+    ```rb theme={null}
     require_relative 'database'
     require_relative '001_create_products'
 
@@ -7359,7 +8743,7 @@ In this Ruby quickstart we will learn how to:
   <Step title="Work with associations">
     Define associations in your models:
 
-    ```ruby  theme={null}
+    ```ruby theme={null}
     class Author < ActiveRecord::Base
       has_many :books
     end
@@ -7371,7 +8755,7 @@ In this Ruby quickstart we will learn how to:
 
     Use associations in your code:
 
-    ```ruby  theme={null}
+    ```ruby theme={null}
     author = Author.create(name: 'Jane Doe')
     book = author.books.create(title: 'My First Book')
 
@@ -7443,7 +8827,7 @@ Source: https://docs.turso.tech/sdk/c/quickstart
 
 Get started with Turso and C using the libSQL client in a few simple steps.
 
-<Snippet file="technical-preview-banner.mdx" />
+<Snippet />
 
 In this C quickstart we will learn how to:
 
@@ -7457,9 +8841,9 @@ In this C quickstart we will learn how to:
   <Step title="Retrieve database credentials">
     You will need an existing database to continue. If you don't have one, [create one](/quickstart).
 
-    <Snippet file="retrieve-database-credentials.mdx" />
+    <Snippet />
 
-    <Snippet file="mobile-secrets-warning.mdx" />
+    <Snippet />
   </Step>
 
   <Step title="Install">
@@ -7471,7 +8855,7 @@ In this C quickstart we will learn how to:
 
     After building, make sure to link against the library when compiling your C program:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     gcc -o your_program your_program.c -L/path/to/libsql/lib -llibsql
     ```
   </Step>
@@ -7481,7 +8865,7 @@ In this C quickstart we will learn how to:
 
     <AccordionGroup>
       <Accordion title="Embedded Replicas">
-        ```c  theme={null}
+        ```c theme={null}
         #include "libsql.h"
 
         libsql_setup((libsql_config_t){0});
@@ -7498,7 +8882,7 @@ In this C quickstart we will learn how to:
       </Accordion>
 
       <Accordion title="Local only">
-        ```c  theme={null}
+        ```c theme={null}
         #include "libsql.h"
 
         libsql_setup((libsql_config_t){0});
@@ -7512,7 +8896,7 @@ In this C quickstart we will learn how to:
       </Accordion>
 
       <Accordion title="Remote only">
-        ```c  theme={null}
+        ```c theme={null}
         #include "libsql.h"
 
         libsql_setup((libsql_config_t){0});
@@ -7531,7 +8915,7 @@ In this C quickstart we will learn how to:
   <Step title="Execute">
     You can execute a SQL query against your existing database by preparing a statement and then executing it:
 
-    ```c  theme={null}
+    ```c theme={null}
     libsql_statement_t stmt = libsql_connection_prepare(conn, "SELECT * FROM users");
     libsql_rows_t rows = libsql_statement_query(stmt);
     ```
@@ -7556,7 +8940,7 @@ In this C quickstart we will learn how to:
   <Step title="Sync (Embedded Replicas only)">
     When using embedded replicas, you should call `libsql_database_sync()` on the database to sync your local database with the primary database, unless you are using `sync_interval` (though there is no issue with calling `sync` with `sync_interval` enabled):
 
-    ```c  theme={null}
+    ```c theme={null}
     libsql_sync_t sync = libsql_database_sync(db);
     if (sync.err) {
         fprintf(stderr, "Error syncing database: %s\n", libsql_error_message(sync.err));
@@ -7575,7 +8959,7 @@ Source: https://docs.turso.tech/sdk/c/reference
 
 libSQL C Reference
 
-<Snippet file="technical-preview-banner.mdx" />
+<Snippet />
 
 ## Installing
 
@@ -7587,7 +8971,7 @@ To use the libSQL C bindings, you need to include the `libsql.h` header file in 
 
 Before using libSQL, you need to call the setup function:
 
-```c  theme={null}
+```c theme={null}
 libsql_setup((libsql_config_t){0});
 ```
 
@@ -7596,7 +8980,7 @@ libsql_setup((libsql_config_t){0});
 libSQL supports connecting to \[in-memory
 databases]\([https://www.sqlite.org/inmemorydb.htm](https://www.sqlite.org/inmemorydb.htm) databases for cases where you don't require persistence:
 
-```c  theme={null}
+```c theme={null}
 libsql_database_t db = libsql_database_init((libsql_database_desc_t){.path = ":memory:"});
 libsql_connection_t conn = libsql_database_connect(db);
 ```
@@ -7605,7 +8989,7 @@ libsql_connection_t conn = libsql_database_connect(db);
 
 You can work locally using an SQLite file:
 
-```c  theme={null}
+```c theme={null}
 libsql_database_t db = libsql_database_init((libsql_database_desc_t){.path = "local.db"});
 libsql_connection_t conn = libsql_database_connect(db);
 ```
@@ -7614,7 +8998,7 @@ libsql_connection_t conn = libsql_database_connect(db);
 
 You can connect to remote databases using a URL and auth token:
 
-```c  theme={null}
+```c theme={null}
 libsql_database_t db = libsql_database_init((libsql_database_desc_t){
     .url = "TURSO_DATABASE_URL",
     .auth_token = "TURSO_AUTH_TOKEN"
@@ -7626,7 +9010,7 @@ libsql_connection_t conn = libsql_database_connect(db);
 
 You can work with embedded replicas that can sync from the remote URL and delegate writes to the remote primary database:
 
-```c  theme={null}
+```c theme={null}
 libsql_database_t db = libsql_database_init((libsql_database_desc_t){
     .path = "local.db",
     .url = "TURSO_DATABASE_URL",
@@ -7639,7 +9023,7 @@ libsql_connection_t conn = libsql_database_connect(db);
 
 The `libsql_database_sync` function allows you to sync manually the local database with the remote counterpart:
 
-```c  theme={null}
+```c theme={null}
 libsql_sync_t sync = libsql_database_sync(db);
 ```
 
@@ -7647,7 +9031,7 @@ libsql_sync_t sync = libsql_database_sync(db);
 
 The `sync_interval` parameter in the database description allows you to set an interval for automatic synchronization of the database in the background:
 
-```c  theme={null}
+```c theme={null}
 libsql_database_t db = libsql_database_init((libsql_database_desc_t){
     .path = "local.db",
     .url = "TURSO_DATABASE_URL",
@@ -7660,7 +9044,7 @@ libsql_database_t db = libsql_database_init((libsql_database_desc_t){
 
 The `not_read_your_writes` parameter in the database description configures the database connection to ensure that writes are immediately visible to subsequent read operations initiated by the same connection. This is **enabled by default**, and you can disable it by setting `not_read_your_writes` to `true`:
 
-```c  theme={null}
+```c theme={null}
 libsql_database_t db = libsql_database_init((libsql_database_desc_t){
     .path = "local.db",
     .url = "TURSO_DATABASE_URL",
@@ -7673,13 +9057,13 @@ libsql_database_t db = libsql_database_init((libsql_database_desc_t){
 
 You can use `libsql_connection_batch` for simple queries without parameters:
 
-```c  theme={null}
+```c theme={null}
 libsql_batch_t batch = libsql_connection_batch(conn, "CREATE TABLE users (id INTEGER PRIMARY KEY, name TEXT)");
 ```
 
 For queries with results, use `libsql_connection_prepare` and `libsql_statement_query`:
 
-```c  theme={null}
+```c theme={null}
 libsql_statement_t stmt = libsql_connection_prepare(conn, "SELECT * FROM users");
 libsql_rows_t rows = libsql_statement_query(stmt);
 ```
@@ -7688,7 +9072,7 @@ libsql_rows_t rows = libsql_statement_query(stmt);
 
 You can prepare a statement using `libsql_connection_prepare` and then execute it with `libsql_statement_execute` or `libsql_statement_query`:
 
-```c  theme={null}
+```c theme={null}
 libsql_statement_t stmt = libsql_connection_prepare(conn, "INSERT INTO users (name) VALUES (?)");
 libsql_statement_bind_value(stmt, libsql_text("John Doe", 8));
 libsql_execute_t result = libsql_statement_execute(stmt);
@@ -7714,7 +9098,7 @@ libSQL supports the use of positional and named placeholders within SQL statemen
 
 libSQL supports transactions:
 
-```c  theme={null}
+```c theme={null}
 libsql_transaction_t tx = libsql_connection_transaction(conn);
 // Perform operations within the transaction
 libsql_transaction_commit(tx); // or libsql_transaction_rollback(tx)
@@ -7724,7 +9108,7 @@ libsql_transaction_commit(tx); // or libsql_transaction_rollback(tx)
 
 Remember to clean up resources when you're done:
 
-```c  theme={null}
+```c theme={null}
 libsql_statement_deinit(stmt);
 libsql_connection_deinit(conn);
 libsql_database_deinit(db);
@@ -7752,17 +9136,17 @@ Before you start, make sure you:
 
 <Steps>
   <Step title="Add packages to your project">
-    ```bash  theme={null}
+    ```bash theme={null}
     flutter pub add drift_libsql drift drift_flutter dev:build_runner dev:drift_dev
     ```
   </Step>
 
   <Step title="Retrieve database credentials">
-    <Snippet file="retrieve-database-credentials.mdx" />
+    <Snippet />
   </Step>
 
   <Step title="Create a table schema">
-    ```dart  theme={null}
+    ```dart theme={null}
     class TaskTable extends Table {
       IntColumn get id => integer().autoIncrement()();
       TextColumn get title => text()();
@@ -7773,7 +9157,7 @@ Before you start, make sure you:
   </Step>
 
   <Step title="Create db class">
-    ```dart  theme={null}
+    ```dart theme={null}
     @DriftDatabase(tables: [TaskTable])
     class AppDatabase extends _$AppDatabase {
       AppDatabase(super.e);
@@ -7785,13 +9169,13 @@ Before you start, make sure you:
   </Step>
 
   <Step title="Run build runner">
-    ```bash  theme={null}
+    ```bash theme={null}
     dart run build_runner build
     ```
   </Step>
 
   <Step title="Create the db">
-    ```dart  theme={null}
+    ```dart theme={null}
     final db = AppDatabase(DriftLibsqlDatabase(
         "${dir.path}/replica.db",
         syncUrl: url,
@@ -7803,7 +9187,7 @@ Before you start, make sure you:
   </Step>
 
   <Step title="Perform SQL operations">
-    ```dart  theme={null}
+    ```dart theme={null}
     await db.into(db.taskTable).insert(TaskTableCompanion.insert(
     	title: task.title,
     	description: task.description,
@@ -7819,7 +9203,7 @@ Source: https://docs.turso.tech/sdk/flutter/quickstart
 Get started with Flutter and Dart using the libSQL client in a few simple steps
 
 <Note>
-  This SDK is community maintained and may not be officially supported by Turso, or up to date with the latest features. Join the `#libsql-dart` channel [on Discord](https://discord.gg/turso) for help and feedback.
+  This SDK is community maintained and may not be officially supported by Turso, or up to date with the latest features. Join the `#libsql-dart` channel [on Discord](https://tur.so/discord) for help and feedback.
 </Note>
 
 In this Flutter/Dart quickstart we will learn how to:
@@ -7834,13 +9218,13 @@ In this Flutter/Dart quickstart we will learn how to:
   <Step title="Retrieve database credentials">
     You will need an existing database to continue. If you don't have one, [create one](/quickstart).
 
-    <Snippet file="retrieve-database-credentials.mdx" />
+    <Snippet />
 
     <Info>You will want to store these as environment variables.</Info>
   </Step>
 
   <Step title="Install libsql_dart">
-    ```bash  theme={null}
+    ```bash theme={null}
     flutter pub add libsql_dart
     ```
   </Step>
@@ -7850,7 +9234,7 @@ In this Flutter/Dart quickstart we will learn how to:
 
     <AccordionGroup>
       <Accordion title="Embedded Replicas">
-        ```dart  theme={null}
+        ```dart theme={null}
         final dir = await getApplicationCacheDirectory();
         final path = '${dir.path}/local.db';
 
@@ -7878,7 +9262,7 @@ In this Flutter/Dart quickstart we will learn how to:
       </Accordion>
 
       <Accordion title="Remote only">
-        ```dart  theme={null}
+        ```dart theme={null}
         final client = LibsqlClient('<TURSO_OR_LIBSQL_URL>')
           ..authToken = '<TOKEN>';
         ```
@@ -7887,7 +9271,7 @@ In this Flutter/Dart quickstart we will learn how to:
   </Step>
 
   <Step title="Connect">
-    ```dart  theme={null}
+    ```dart theme={null}
     await client.connect();
     ```
   </Step>
@@ -7953,7 +9337,7 @@ In this Flutter/Dart quickstart we will learn how to:
   <Step title="Sync (Embedded Replicas only)">
     When using embedded replicas you should call `sync()` on the connector to sync your local database with the primary database.
 
-    ```dart  theme={null}
+    ```dart theme={null}
     await client.sync();
     ```
   </Step>
@@ -7969,13 +9353,13 @@ The libSQL package for Flutter / Dart contains everything you need to work with 
 
 ## Add the package to your project
 
-```bash  theme={null}
+```bash theme={null}
 flutter pub add libsql_dart
 ```
 
 Alternatively, manually add it to your project's `pubspec.yaml`
 
-```yaml  theme={null}
+```yaml theme={null}
 libsql_dart:
 ```
 
@@ -7987,7 +9371,7 @@ Call `LibsqlClient` constructor to create the database client. Different configu
 
 libSQL supports connecting to [in-memory databases](https://www.sqlite.org/inmemorydb.html) for cases where you don't require persistence:
 
-```dart  theme={null}
+```dart theme={null}
 final client = LibsqlClient(":memory:");
 ```
 
@@ -7995,7 +9379,7 @@ final client = LibsqlClient(":memory:");
 
 You can work locally using an SQLite file and passing the path to `LibsqlClient`:
 
-```dart  theme={null}
+```dart theme={null}
 final dir = await getApplicationCacheDirectory();
 final path = '${dir.path}/local.db';
 
@@ -8006,7 +9390,7 @@ final client = LibsqlClient(path);
 
 You can work with remote database by passing your Turso Database URL:
 
-```dart  theme={null}
+```dart theme={null}
 final client = LibsqlClient('<TURSO_OR_LIBSQL_URL>')
 	..authToken = '<TOKEN>';
 ```
@@ -8015,7 +9399,7 @@ final client = LibsqlClient('<TURSO_OR_LIBSQL_URL>')
 
 You can work with embedded replicas by passing your Turso Database URL to `syncUrl`:
 
-```dart  theme={null}
+```dart theme={null}
 final dir = await getApplicationCacheDirectory();
 final path = '${dir.path}/local.db';
 
@@ -8025,11 +9409,11 @@ final client = LibsqlClient(path)
 	..readYourWrites = true;
 ```
 
-<Snippet file="embedded-replicas-warning.mdx" />
+<Snippet />
 
 ### Connect
 
-```dart  theme={null}
+```dart theme={null}
 await client.connect();
 ```
 
@@ -8037,7 +9421,7 @@ await client.connect();
 
 The `sync()` function allows you to sync manually the local database with the remote counterpart:
 
-```ts  theme={null}
+```ts theme={null}
 await client.sync();
 ```
 
@@ -8045,7 +9429,7 @@ await client.sync();
 
 You can automatically sync at intervals by configuring the `syncIntervalSeconds` property when instantiating the client:
 
-```dart  theme={null}
+```dart theme={null}
 final dir = await getApplicationCacheDirectory();
 final path = '${dir.path}/local.db';
 
@@ -8060,7 +9444,7 @@ final client = LibsqlClient(path)
 
 To enable encryption on a SQLite file, pass the `encryptionKey`:
 
-```dart  theme={null}
+```dart theme={null}
 final dir = await getApplicationCacheDirectory();
 final path = '${dir.path}/local.db';
 
@@ -8073,7 +9457,7 @@ Encrypted databases appear as raw data and cannot be read as standard SQLite dat
 
 Returns number of rows affected:
 
-```dart  theme={null}
+```dart theme={null}
 await client.execute("create table if not exists customers (id integer primary key, name text);");
 ```
 
@@ -8081,7 +9465,7 @@ await client.execute("create table if not exists customers (id integer primary k
 
 Returns rows as `List<Map<String, dynamic>>`. Will returns empty list when is not performing select query:
 
-```dart  theme={null}
+```dart theme={null}
 await client.query("insert into customers(name) values ('John Doe')");
 
 print(await client.query("select * from customers"));
@@ -8117,7 +9501,7 @@ libSQL supports the use of positional and named placeholders within SQL statemen
 
 A batch consists of multiple SQL statements executed sequentially within an implicit transaction. The backend handles the transaction: success commits all changes, while any failure results in a full rollback with no modifications.
 
-```dart  theme={null}
+```dart theme={null}
 await client.batch("""insert into customers (name) values ('Jane Doe'); insert into customers (name) values ('Jake Doe');""");
 ```
 
@@ -8140,7 +9524,7 @@ Interactive transactions in SQLite ensure the consistency of a series of read an
 | `commit()`   | Commits all write statements in the transaction                     |
 | `rollback()` | Rolls back the entire transaction                                   |
 
-```dart  theme={null}
+```dart theme={null}
 final tx = await client.transaction();
 
 await tx
@@ -8165,7 +9549,7 @@ await tx.commit();
 
 You can attach multiple databases to the current connection using the `ATTACH` attachment:
 
-```dart  theme={null}
+```dart theme={null}
 final tx = await client.transaction(behavior: LibsqlTransactionBehavior.readOnly);
 
 await tx.execute("ATTACH "<database-id>" AS attached");
@@ -8212,7 +9596,7 @@ In this Go quickstart we will learn how to:
   <Step title="Retrieve database credentials">
     You will need an existing database to continue. If you don't have one, [create one](/quickstart).
 
-    <Snippet file="retrieve-database-credentials.mdx" />
+    <Snippet />
 
     <Info>You will want to store these as environment variables.</Info>
   </Step>
@@ -8222,13 +9606,13 @@ In this Go quickstart we will learn how to:
 
     <AccordionGroup>
       <Accordion title="Local / Embedded Replicas">
-        ```bash  theme={null}
+        ```bash theme={null}
         go get github.com/tursodatabase/go-libsql
         ```
       </Accordion>
 
       <Accordion title="Remote only">
-        ```bash  theme={null}
+        ```bash theme={null}
         go get github.com/tursodatabase/libsql-client-go/libsql
         ```
       </Accordion>
@@ -8240,7 +9624,7 @@ In this Go quickstart we will learn how to:
 
     <AccordionGroup>
       <Accordion title="Embedded Replicas">
-        ```go  theme={null}
+        ```go theme={null}
         package main
 
         import (
@@ -8282,7 +9666,7 @@ In this Go quickstart we will learn how to:
       </Accordion>
 
       <Accordion title="Local only">
-        ```go  theme={null}
+        ```go theme={null}
         package main
 
         import (
@@ -8307,7 +9691,7 @@ In this Go quickstart we will learn how to:
       </Accordion>
 
       <Accordion title="Remote only">
-        ```go  theme={null}
+        ```go theme={null}
         package main
 
         import (
@@ -8336,7 +9720,7 @@ In this Go quickstart we will learn how to:
   <Step title="Execute">
     You can execute a SQL query against your existing database. Create a function to query your database that accepts the pointer to `sql.DB` as an argument:
 
-    ```go  theme={null}
+    ```go theme={null}
     type User struct {
     	ID   int
     	Name string
@@ -8372,7 +9756,7 @@ In this Go quickstart we will learn how to:
 
     Now inside `func main()` call `queryUsers` and pass in the pointer to `sql.DB`:
 
-    ```go  theme={null}
+    ```go theme={null}
     queryUsers(db)
     ```
   </Step>
@@ -8380,7 +9764,7 @@ In this Go quickstart we will learn how to:
   <Step title="Sync (Embedded Replicas only)">
     When using embedded replicas you should call `Sync()` on the connector to sync your local database with the primary database.
 
-    ```go  theme={null}
+    ```go theme={null}
     if err := connector.Sync(); err != nil {
       fmt.Println("Error syncing database:", err)
     }
@@ -8388,7 +9772,7 @@ In this Go quickstart we will learn how to:
 
     The connector can automatically sync your database at a regular interval when using the `WithSyncInterval` option:
 
-    ```go  theme={null}
+    ```go theme={null}
     syncInterval := time.Minute
 
     connector, err := libsql.NewEmbeddedReplicaConnector(dbPath, primaryUrl,
@@ -8409,7 +9793,7 @@ Source: https://docs.turso.tech/sdk/go/reference
 
 You can work with [embedded replicas](/features/embedded-replicas) that can sync from the remote database to a local SQLite file, and delegate writes to the remote primary database:
 
-```go  theme={null}
+```go theme={null}
 package main
 
 import (
@@ -8449,13 +9833,13 @@ func main() {
 }
 ```
 
-<Snippet file="embedded-replicas-warning.mdx" />
+<Snippet />
 
 ### Manual Sync
 
 The `Sync` function allows you to sync manually the local database with the remote counterpart:
 
-```go  theme={null}
+```go theme={null}
 if err := connector.Sync(); err != nil {
     fmt.Println("Error syncing database:", err)
 }
@@ -8465,7 +9849,7 @@ if err := connector.Sync(); err != nil {
 
 You can automatically sync at intervals using `WithSyncInterval` and passing a `time.Duration` as an argument. For example, to sync every minute, you can use the following code:
 
-```go  theme={null}
+```go theme={null}
 syncInterval := time.Minute
 
 connector, err := libsql.NewEmbeddedReplicaConnector(dbPath, primaryUrl,
@@ -8480,7 +9864,7 @@ By default, the database connection ensures that writes are immediately visible 
 
 You can disable this behaviour using `WithReadYourWrites(false)`:
 
-```go  theme={null}
+```go theme={null}
 connector, err := libsql.NewEmbeddedReplicaConnector(dbPath, primaryUrl,
     libsql.WithAuthToken(authToken),
     libsql.WithReadYourWrites(false),
@@ -8491,7 +9875,7 @@ connector, err := libsql.NewEmbeddedReplicaConnector(dbPath, primaryUrl,
 
 To enable encryption on a SQLite file, pass the encryption key value as an argument to the constructor:
 
-```go  theme={null}
+```go theme={null}
 encryptionKey := "SuperSecretKey"
 
 connector, err := libsql.NewEmbeddedReplicaConnector(dbPath, primaryUrl,
@@ -8521,7 +9905,7 @@ In this HTTP quickstart we will learn how to:
   <Step title="Create HTTP Database URL">
     Using the [Turso CLI](/cli) or [Platform API](/api-reference), fetch your database URL:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso db show <database-name> --http-url
     ```
 
@@ -8533,7 +9917,7 @@ In this HTTP quickstart we will learn how to:
   <Step title="Create Database Auth Token">
     Using the Turso CLI or Platform API, create a new auth token for your database:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso db tokens create <database-name>
     ```
   </Step>
@@ -8541,7 +9925,7 @@ In this HTTP quickstart we will learn how to:
   <Step title="Create JSON Request Payload">
     We'll be sending the query using JSON, so let's create a JSON payload that executes a SQL statement and closes the connection immediately:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "requests": [
         { "type": "execute", "stmt": { "sql": "SELECT * FROM users" } },
@@ -8621,7 +10005,7 @@ In this HTTP quickstart we will learn how to:
     <Accordion title="Response">
       The response will be a JSON object with a `results` array containing the results of your query that looks something like this:
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "baton": null,
         "base_url": null,
@@ -8728,14 +10112,14 @@ Turso Databases can be accessed via HTTP. The API enable developers to perform S
 
 Simply replace your database URL protocol `libsql://` with `https://`:
 
-```bash  theme={null}
+```bash theme={null}
 https://[databaseName]-[organizationSlug].turso.io
 ```
 
 You can obtain your database base URL from the Turso CLI:
 
 <Accordion title="Obtain HTTP URL using Turso CLI">
-  ```bash  theme={null}
+  ```bash theme={null}
   turso db show <database-name> --http-url
   ```
 </Accordion>
@@ -8744,12 +10128,12 @@ You can obtain your database base URL from the Turso CLI:
 
 Turso uses Bearer authentication, and requires your API token to be passed with all protected requests in the `Authorization` header:
 
-```bash  theme={null}
+```bash theme={null}
 Authorization: Bearer TOKEN
 ```
 
 <Accordion title="Create token using Turso CLI">
-  ```bash  theme={null}
+  ```bash theme={null}
   turso db tokens create <database-name>
   ```
 </Accordion>
@@ -9211,7 +10595,7 @@ Returns detailed information about a specific migration job.
 
 #### Path Parameters
 
-<ParamField path="id" type="number" required>
+<ParamField type="number">
   The ID of the migration job.
 </ParamField>
 
@@ -9253,7 +10637,7 @@ Returns detailed information about a specific migration job.
 
 You can listen to changes committed to your database using the `/beta/listen` endpoint:
 
-<Snippet file="technical-preview-banner.mdx" />
+<Snippet />
 
 <Warning>Currently not available on AWS for Free, Developer and Scaler plans.</Warning>
 
@@ -9270,11 +10654,11 @@ curl -L 'https://[primary-instance-id]-[databaseName]-[organizationSlug].turso.i
 
 #### Query Parameters
 
-<ParamField query="table" type="string" required>
+<ParamField type="string">
   The name of the table to listen to.
 </ParamField>
 
-<ParamField query="action" type="string" required>
+<ParamField type="string">
   The name of the action to listen to — `insert`, `update`, or `delete`.
 </ParamField>
 
@@ -9290,86 +10674,83 @@ Turso provides multiple SDKs that you can use to connect a local SQLite file or 
 
 Turso SDKs are fully compatible with [libSQL](/libsql), so you can use the same SDK to connect to a local database ([SQLite](/local-development#sqlite)), [libSQL server](/local-development#libsql-server), a remote database, or an [embedded replica](/features/embedded-replicas).
 
-<Snippet file="official-sdks.mdx" />
+<Snippet />
 
 ## Community SDKs
 
 These SDKs are community-driven and don't come with official Turso support.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card
-    horizontal
     title="Flutter / Dart"
     icon={
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-    <path
-      fill="#1ebca1"
-      d="M429.5 236.3L291.7 374.1 429.5 512H272l-59.1-59.1-78.8-78.8L272 236.3H429.5zM272 0L16 256l78.8 78.8L429.5 0H272z"
-    />
-  </svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+  <path
+    fill="#1ebca1"
+    d="M429.5 236.3L291.7 374.1 429.5 512H272l-59.1-59.1-78.8-78.8L272 236.3H429.5zM272 0L16 256l78.8 78.8L429.5 0H272z"
+  />
+</svg>
 }
     href="/sdk/flutter/quickstart"
   />
 
   <Card
-    horizontal
     title="Capacitor"
     icon={
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-    <path
-      fill="#53b9ff"
-      d="M19.93 27.059.156 46.859l30.496 30.59L0 108.191l19.715 19.813L50.43 97.25l30.547 30.531 19.777-19.8Zm0 0"
-    />
-    <path
-      fill="#119eff"
-      d="M70.258 77.45 50.43 97.25l30.547 30.531 19.777-19.8Zm0 0"
-    />
-    <path fill-opacity=".2" d="M70.258 77.45 50.43 97.25l7.633 7.59Zm0 0" />
-    <path
-      fill="#53b9ff"
-      d="M97.285 50.492 128 19.738 108.215 0 77.512 30.691 46.957.156 27.184 19.957l80.82 80.922 19.777-19.8Zm0 0"
-    />
-    <path
-      fill="#119eff"
-      d="m57.68 50.492 19.828-19.8L46.957.155 27.184 19.957Zm0 0"
-    />
-    <path fill-opacity=".2" d="m57.68 50.492 19.828-19.8-7.633-7.594Zm0 0" />
-  </svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <path
+    fill="#53b9ff"
+    d="M19.93 27.059.156 46.859l30.496 30.59L0 108.191l19.715 19.813L50.43 97.25l30.547 30.531 19.777-19.8Zm0 0"
+  />
+  <path
+    fill="#119eff"
+    d="M70.258 77.45 50.43 97.25l30.547 30.531 19.777-19.8Zm0 0"
+  />
+  <path fill-opacity=".2" d="M70.258 77.45 50.43 97.25l7.633 7.59Zm0 0" />
+  <path
+    fill="#53b9ff"
+    d="M97.285 50.492 128 19.738 108.215 0 77.512 30.691 46.957.156 27.184 19.957l80.82 80.922 19.777-19.8Zm0 0"
+  />
+  <path
+    fill="#119eff"
+    d="m57.68 50.492 19.828-19.8L46.957.155 27.184 19.957Zm0 0"
+  />
+  <path fill-opacity=".2" d="m57.68 50.492 19.828-19.8-7.633-7.594Zm0 0" />
+</svg>
 }
     href="https://capawesome.io/plugins/libsql"
   />
 
-  <Card horizontal title="React Native / OP-SQLite" icon="react" href="https://op-engineering.github.io/op-sqlite/" />
+  <Card title="React Native / OP-SQLite" icon="react" href="https://op-engineering.github.io/op-sqlite/" />
 
   <Card
-    horizontal
     title="Laravel"
     icon={
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    preserveAspectRatio="xMidYMid"
-    viewBox="0 0 256 264"
-  >
-    <path
-      d="m255.9 59.6.1 1.1v56.6c0 1.4-.8 2.8-2 3.5l-47.6 27.4v54.2c0 1.4-.7 2.8-2 3.5l-99.1 57-.7.4-.3.1c-.7.2-1.4.2-2.1 0l-.4-.1-.6-.3L2 206c-1.3-.8-2.1-2.2-2.1-3.6V32.7l.1-1.1.2-.4.3-.6.2-.4.4-.5.4-.3c.2 0 .3-.2.5-.3L51.6.6c1.3-.8 2.9-.8 4.1 0L105.3 29c.2 0 .3.2.4.3l.5.3c0 .2.2.4.3.5l.3.4.3.6.1.4.2 1v106l41.2-23.7V60.7c0-.4 0-.7.2-1l.1-.4.3-.7.3-.3.3-.5.5-.3.4-.4 49.6-28.5c1.2-.7 2.8-.7 4 0L254 57l.5.4.4.3.4.5.2.3c.2.2.2.5.3.7l.2.3Zm-8.2 55.3v-47l-17.3 10-24 13.7v47l41.3-23.7Zm-49.5 85v-47l-23.6 13.5-67.2 38.4v47.5l90.8-52.3ZM8.2 39.9V200l90.9 52.3v-47.5l-47.5-26.9-.4-.4c-.2 0-.3-.1-.4-.3l-.4-.4-.3-.4-.2-.5-.2-.5v-.6l-.2-.5V63.6L25.6 49.8l-17.3-10Zm45.5-31L12.4 32.8l41.3 23.7 41.2-23.7L53.7 8.9ZM75 157.3l24-13.8V39.8l-17.3 10-24 13.8v103.6l17.3-10ZM202.3 36.9 161 60.7l41.3 23.8 41.3-23.8-41.3-23.8Zm-4.1 54.7-24-13.8-17.3-10v47l24 13.9 17.3 10v-47Zm-95 106 60.6-34.5 30.2-17.3-41.2-23.8-47.5 27.4L62 174.3l41.2 23.3Z"
-      fill="#1ebca1"
-    />
-  </svg>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  preserveAspectRatio="xMidYMid"
+  viewBox="0 0 256 264"
+>
+  <path
+    d="m255.9 59.6.1 1.1v56.6c0 1.4-.8 2.8-2 3.5l-47.6 27.4v54.2c0 1.4-.7 2.8-2 3.5l-99.1 57-.7.4-.3.1c-.7.2-1.4.2-2.1 0l-.4-.1-.6-.3L2 206c-1.3-.8-2.1-2.2-2.1-3.6V32.7l.1-1.1.2-.4.3-.6.2-.4.4-.5.4-.3c.2 0 .3-.2.5-.3L51.6.6c1.3-.8 2.9-.8 4.1 0L105.3 29c.2 0 .3.2.4.3l.5.3c0 .2.2.4.3.5l.3.4.3.6.1.4.2 1v106l41.2-23.7V60.7c0-.4 0-.7.2-1l.1-.4.3-.7.3-.3.3-.5.5-.3.4-.4 49.6-28.5c1.2-.7 2.8-.7 4 0L254 57l.5.4.4.3.4.5.2.3c.2.2.2.5.3.7l.2.3Zm-8.2 55.3v-47l-17.3 10-24 13.7v47l41.3-23.7Zm-49.5 85v-47l-23.6 13.5-67.2 38.4v47.5l90.8-52.3ZM8.2 39.9V200l90.9 52.3v-47.5l-47.5-26.9-.4-.4c-.2 0-.3-.1-.4-.3l-.4-.4-.3-.4-.2-.5-.2-.5v-.6l-.2-.5V63.6L25.6 49.8l-17.3-10Zm45.5-31L12.4 32.8l41.3 23.7 41.2-23.7L53.7 8.9ZM75 157.3l24-13.8V39.8l-17.3 10-24 13.8v103.6l17.3-10ZM202.3 36.9 161 60.7l41.3 23.8 41.3-23.8-41.3-23.8Zm-4.1 54.7-24-13.8-17.3-10v47l24 13.9 17.3 10v-47Zm-95 106 60.6-34.5 30.2-17.3-41.2-23.8-47.5 27.4L62 174.3l41.2 23.3Z"
+    fill="#1ebca1"
+  />
+</svg>
 }
     href="https://github.com/richan-fongdasen/turso-laravel"
   />
 
-  <Card horizontal title=".NET" icon="microsoft" href="https://github.com/tvandinther/libsql-client-dotnet" />
+  <Card title=".NET" icon="microsoft" href="https://github.com/tvandinther/libsql-client-dotnet" />
 
-  <Card horizontal title="Java" icon="java" href="https://github.com/dbeaver/dbeaver-jdbc-libsql" />
+  <Card title="Java" icon="java" href="https://github.com/dbeaver/dbeaver-jdbc-libsql" />
 
-  <Card horizontal title="Stateless libSQL" icon="github" href="https://github.com/DaBigBlob/libsql-stateless-easy" />
+  <Card title="Stateless libSQL" icon="github" href="https://github.com/DaBigBlob/libsql-stateless-easy" />
 </CardGroup>
 
 ## Turso over HTTP
 
-<CardGroup cols={2}>
-  <Snippet file="http-sdk.mdx" />
+<CardGroup>
+  <Snippet />
 </CardGroup>
 
 
@@ -9378,7 +10759,7 @@ Source: https://docs.turso.tech/sdk/kotlin/quickstart
 
 Get started with Turso and Android using the libSQL client in a few simple steps.
 
-<Snippet file="technical-preview-banner.mdx" />
+<Snippet />
 
 <Note>
   This will only work with the Android Gradle Plugin for now. Fully Kotlin
@@ -9397,9 +10778,9 @@ In this Kotlin quickstart we will learn how to:
   <Step title="Retrieve database credentials">
     You will need an existing database to continue. If you don't have one, [create one](/quickstart).
 
-    <Snippet file="retrieve-database-credentials.mdx" />
+    <Snippet />
 
-    <Snippet file="mobile-secrets-warning.mdx" />
+    <Snippet />
   </Step>
 
   <Step title="Install">
@@ -9409,7 +10790,7 @@ In this Kotlin quickstart we will learn how to:
       This will only work with the Android Gradle Plugin for now.
     </Note>
 
-    ```kotlin  theme={null}
+    ```kotlin theme={null}
     dependencies {
         implementation("tech.turso.libsql:libsql:0.1.0")
     }
@@ -9421,7 +10802,7 @@ In this Kotlin quickstart we will learn how to:
 
     <AccordionGroup>
       <Accordion title="Embedded Replicas">
-        ```kotlin  theme={null}
+        ```kotlin theme={null}
         import tech.turso.libsql.Libsql
 
         val db = Libsql.open(
@@ -9435,7 +10816,7 @@ In this Kotlin quickstart we will learn how to:
       </Accordion>
 
       <Accordion title="Local only">
-        ```kotlin  theme={null}
+        ```kotlin theme={null}
         import tech.turso.libsql.Libsql
 
         val db = Libsql.open(path = "./local.db")
@@ -9444,7 +10825,7 @@ In this Kotlin quickstart we will learn how to:
       </Accordion>
 
       <Accordion title="Remote only">
-        ```kotlin  theme={null}
+        ```kotlin theme={null}
         import tech.turso.libsql.Libsql
 
         val db = Libsql.open(
@@ -9461,7 +10842,7 @@ In this Kotlin quickstart we will learn how to:
   <Step title="Execute">
     You can execute a SQL query against your existing database by calling `execute()`:
 
-    ```kotlin  theme={null}
+    ```kotlin theme={null}
     db.connect().use {
         it.execute("INSERT INTO users (id) VALUES (1)")
     }
@@ -9490,7 +10871,7 @@ In this Kotlin quickstart we will learn how to:
     `syncInterval` (though there is no issue with calling `sync` with
     `syncInterval` enabled):
 
-    ```kotlin  theme={null}
+    ```kotlin theme={null}
     db.sync()
     ```
   </Step>
@@ -9502,7 +10883,7 @@ Source: https://docs.turso.tech/sdk/kotlin/reference
 
 libSQL Android Reference
 
-<Snippet file="technical-preview-banner.mdx" />
+<Snippet />
 
 <Note>
   This will only work with the Android Gradle Plugin for now. Fully Kotlin
@@ -9513,7 +10894,7 @@ libSQL Android Reference
 
 Add libsql as a implementation dependency in Gradle:
 
-```kotlin  theme={null}
+```kotlin theme={null}
 dependencies {
     implementation("tech.turso.libsql:libsql:0.1.0")
 }
@@ -9525,7 +10906,7 @@ libSQL supports connecting to [in-memory
 databases](https://www.sqlite.org/inmemorydb.html) for cases where you don't
 require persistence:
 
-```kotlin  theme={null}
+```kotlin theme={null}
 import tech.turso.libsql.Libsql
 
 val db = Libsql.open(":memory:")
@@ -9536,7 +10917,7 @@ val conn = db.connect()
 
 You can work locally using an SQLite file:
 
-```kotlin  theme={null}
+```kotlin theme={null}
 import tech.turso.libsql.Libsql
 
 val db = Libsql.open(path = "./local.db")
@@ -9548,7 +10929,7 @@ val conn = db.connect()
 You can work with embedded replicas that can sync from the remote URL and
 delegate writes to the remote primary database:
 
-```kotlin  theme={null}
+```kotlin theme={null}
 import tech.turso.libsql.Libsql
 
 val db = Libsql.open(
@@ -9565,7 +10946,7 @@ val conn = db.connect()
 The `sync` function allows you to sync manually the local database with the
 remote counterpart:
 
-```kotlin  theme={null}
+```kotlin theme={null}
 db.sync() // Call sync manually to update local database (only for EmbeddedReplicaDatabase)
 ```
 
@@ -9616,7 +10997,7 @@ A batch consists of multiple SQL statements executed sequentially within an
 implicit transaction. The backend handles the transaction: success commits all
 changes, while any failure results in a full rollback with no modifications.
 
-```kotlin  theme={null}
+```kotlin theme={null}
 db.connect().use {
     it.execute_batch("
       CREATE TABLE IF NOT EXISTS users (
@@ -9637,7 +11018,7 @@ and write operations within a transaction's scope. These transactions give you
 control over when to commit or roll back changes, isolating them from other
 client activity.
 
-```kotlin  theme={null}
+```kotlin theme={null}
 db.connect().use {
     val tx = it.transaction();
 
@@ -9673,7 +11054,7 @@ In this Laravel quickstart we will learn how to:
   <Step title="Retrieve database credentials">
     You will need an existing database to continue. If you don't have one, [create one](/quickstart).
 
-    <Snippet file="retrieve-database-credentials.mdx" />
+    <Snippet />
 
     <Info>You will want to store these as environment variables.</Info>
   </Step>
@@ -9681,7 +11062,7 @@ In this Laravel quickstart we will learn how to:
   <Step title="Install">
     Install the package to your Laravel project using Composer:
 
-    ```console  theme={null}
+    ```console theme={null}
     composer require turso/libsql-laravel
     ```
 
@@ -9695,7 +11076,7 @@ In this Laravel quickstart we will learn how to:
       <Accordion title="Local only">
         Update your `config/database.php`:
 
-        ```php  theme={null}
+        ```php theme={null}
         return [
             "default" => env("DB_CONNECTION", "libsql"),
 
@@ -9715,7 +11096,7 @@ In this Laravel quickstart we will learn how to:
       <Accordion title="Remote only">
         Update your `config/database.php`:
 
-        ```php  theme={null}
+        ```php theme={null}
         return [
             "default" => env("DB_CONNECTION", "libsql"),
 
@@ -9742,7 +11123,7 @@ In this Laravel quickstart we will learn how to:
       <Accordion title="Embedded Replicas">
         Update your `config/database.php`:
 
-        ```php  theme={null}
+        ```php theme={null}
         return [
             "default" => env("DB_CONNECTION", "libsql"),
 
@@ -9776,13 +11157,13 @@ In this Laravel quickstart we will learn how to:
   <Step title="Create a model and migration">
     Create a User model and migration:
 
-    ```console  theme={null}
+    ```console theme={null}
     php artisan make:model User -m
     ```
 
     Update the migration file:
 
-    ```php  theme={null}
+    ```php theme={null}
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
@@ -9798,7 +11179,7 @@ In this Laravel quickstart we will learn how to:
   <Step title="Run migrations">
     Apply the migration to create the users table:
 
-    ```console  theme={null}
+    ```console theme={null}
     php artisan migrate
     ```
   </Step>
@@ -9861,7 +11242,7 @@ Source: https://docs.turso.tech/sdk/php/orm/doctrine-dbal
 
 Set up Turso in your PHP + Doctrine DBAL project in minutes
 
-<img src="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/doctrine-dbal-banner.png?fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=42ebe47228681e458a0f7570d61f74e5" alt="Doctrine DBAL" data-og-width="2266" width="2266" data-og-height="1190" height="1190" data-path="images/guides/doctrine-dbal-banner.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/doctrine-dbal-banner.png?w=280&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=864fd83beb681026576e3d9ee74602f3 280w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/doctrine-dbal-banner.png?w=560&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=0351299f895b54f2ef62d4554c6f6582 560w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/doctrine-dbal-banner.png?w=840&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=6162516596ddc4d5ece04c2bf8376b5d 840w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/doctrine-dbal-banner.png?w=1100&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=dfa7de6b4abf5c588bbcc6bd14971564 1100w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/doctrine-dbal-banner.png?w=1650&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=2d3c7e020e892cefbf0940985c52b372 1650w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/doctrine-dbal-banner.png?w=2500&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=7f8683ab28cc780491e0d2d29a91411b 2500w" />
+<img alt="Doctrine DBAL" />
 
 ## Prerequisites
 
@@ -9871,25 +11252,25 @@ Before you start, make sure you:
 * [Sign up or login to Turso](/cli/authentication#signup)
 * Have an PHP Application with Doctrine DBAL
 
-<Snippet file="install-libsql-extension-php.mdx" />
+<Snippet />
 
 <Steps>
   <Step title="Configure database credentials">
     Get the database URL:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso db show --url <database-name>
     ```
 
     Get the database authentication token:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso db tokens create <database-name>
     ```
 
     Assign credentials to the environment variables inside `.env`.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     TURSO_DATABASE_URL=
     TURSO_AUTH_TOKEN=
     ```
@@ -9900,14 +11281,14 @@ Before you start, make sure you:
   <Step title="Create PHP Project">
     Create new directory:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     mkdir your-awesome-php-project
     cd your-awesome-php-project
     ```
   </Step>
 
   <Step title="Install Turso Doctrine DBAL">
-    ```bash  theme={null}
+    ```bash theme={null}
     composer require tursodatabase/turso-doctrine-dbal
     ```
   </Step>
@@ -9966,7 +11347,7 @@ Before you start, make sure you:
   </Step>
 
   <Step title="Project Structure Example">
-    ```bash  theme={null}
+    ```bash theme={null}
     src/
     ├── helpers.php
     └── Todo.php
@@ -10170,7 +11551,7 @@ Before you start, make sure you:
 
 ## Examples
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="PHP Todo CLI + Doctrine DBAL" icon="github" href="https://github.com/tursodatabase/example/php-todo-cli-doctrine-dbal/tree/master">
     See the full source code
   </Card>
@@ -10199,7 +11580,7 @@ In this PHP quickstart we will learn how to:
     You will need an existing database to continue. If you don't have one, [create
     one](/quickstart).
 
-    <Snippet file="retrieve-database-credentials.mdx" />
+    <Snippet />
 
     <Info>You will want to store these as environment variables.</Info>
   </Step>
@@ -10207,7 +11588,7 @@ In this PHP quickstart we will learn how to:
   <Step title="Install">
     Install the package to your project using composer:
 
-    ```console  theme={null}
+    ```console theme={null}
     composer require turso/libsql
     ```
   </Step>
@@ -10217,7 +11598,7 @@ In this PHP quickstart we will learn how to:
 
     <AccordionGroup>
       <Accordion title="Embedded Replica">
-        ```php  theme={null}
+        ```php theme={null}
         use Libsql\Database;
 
         $db = new Database(
@@ -10231,7 +11612,7 @@ In this PHP quickstart we will learn how to:
       </Accordion>
 
       <Accordion title="Local only">
-        ```php  theme={null}
+        ```php theme={null}
         use Libsql\Database;
 
         $db = new Database(path: "database.db");
@@ -10239,7 +11620,7 @@ In this PHP quickstart we will learn how to:
 
         Or just:
 
-        ```php  theme={null}
+        ```php theme={null}
         use Libsql\Database;
 
         $db = new Database("database.db");
@@ -10247,7 +11628,7 @@ In this PHP quickstart we will learn how to:
       </Accordion>
 
       <Accordion title="Local only">
-        ```php  theme={null}
+        ```php theme={null}
         use Libsql\Database;
 
         $db = new Database(path: "database.db");
@@ -10255,7 +11636,7 @@ In this PHP quickstart we will learn how to:
 
         Or just:
 
-        ```php  theme={null}
+        ```php theme={null}
         use Libsql\Database;
 
         $db = new Database("database.db");
@@ -10263,7 +11644,7 @@ In this PHP quickstart we will learn how to:
       </Accordion>
 
       <Accordion title="Remote only">
-        ```php  theme={null}
+        ```php theme={null}
         use Libsql\Database;
 
         $db = new Database(
@@ -10278,7 +11659,7 @@ In this PHP quickstart we will learn how to:
   <Step title="Execute">
     You can execute SQL queries against your existing database as follows:
 
-    ```php  theme={null}
+    ```php theme={null}
     $createUsers = "
       CREATE TABLE IF NOT EXISTS users (
           id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -10311,7 +11692,7 @@ In this PHP quickstart we will learn how to:
     When using embedded replicas you should call `sync()` on the database type
     to sync your local database with the primary database:
 
-    ```php  theme={null}
+    ```php theme={null}
     <?php
 
     $db->sync();
@@ -10329,7 +11710,7 @@ libSQL PHP Reference
 
 Install the package to your project using composer:
 
-```console  theme={null}
+```console theme={null}
 composer require turso/libsql
 ```
 
@@ -10337,7 +11718,7 @@ composer require turso/libsql
 
 Make sure to add `use Libsql\Database` to access the `Database` object.
 
-```php  theme={null}
+```php theme={null}
 $db = new Database("local.db")
 ```
 
@@ -10347,13 +11728,13 @@ libSQL supports connecting to [in-memory
 databases](https://www.sqlite.org/inmemorydb.html) for cases where you don't
 require persistence:
 
-```php  theme={null}
+```php theme={null}
 $db = new Database(":memory:");
 ```
 
 Or the simpler:
 
-```php  theme={null}
+```php theme={null}
 $db = new Database();
 ```
 
@@ -10361,13 +11742,13 @@ $db = new Database();
 
 You can work locally by passing a path as the first parameter.
 
-```php  theme={null}
+```php theme={null}
 $db = new Database("local.db")
 ```
 
 Or more explicitly:
 
-```php  theme={null}
+```php theme={null}
 $db = new Database(path: "local.db")
 ```
 
@@ -10375,7 +11756,7 @@ $db = new Database(path: "local.db")
 
 You can use a remote only database by passing `url` and `authToken`.
 
-```php  theme={null}
+```php theme={null}
 $db = new Database(
     url: getenv('TURSO_URL'),
     authToken: getenv('TURSO_AUTH_TOKEN'),
@@ -10388,7 +11769,7 @@ You can work with embedded replicas by passing a `path`, `url` and `authToken`.
 Embedded replicas can sync from the remote URL and delegate writes to the
 remote primary database:
 
-```php  theme={null}
+```php theme={null}
 $db = new Database(
     path: 'test.db',
     url: getenv('TURSO_URL'),
@@ -10400,7 +11781,7 @@ $db = new Database(
 
 The `sync_interval` function allows you to set an interval for automatic synchronization of the database in the background:
 
-```php  theme={null}
+```php theme={null}
 $db = new Database(
     path: 'test.db',
     url: getenv('TURSO_URL'),
@@ -10414,7 +11795,7 @@ $db = new Database(
 The `sync` function allows you to sync manually the local database with the
 remote counterpart:
 
-```php  theme={null}
+```php theme={null}
 $db->sync()
 ```
 
@@ -10428,7 +11809,7 @@ the writing process.
 
 You can disable this behavior by passing `false`:
 
-```php  theme={null}
+```php theme={null}
 $db = new Database(
     path: 'test.db',
     url: getenv('TURSO_URL'),
@@ -10461,7 +11842,7 @@ SQL statement, as well as optional arguments:
 You can prepare a cached statement using `prepare()`, bind parameters, and then
 query it:
 
-```php  theme={null}
+```php theme={null}
 $stmt = $conn->prepare("SELECT * FROM users where id = ?");
 $rows = $stmt->bind([1])->query();
 ```
@@ -10486,7 +11867,7 @@ A batch consists of multiple SQL statements executed sequentially within an
 implicit transaction. The backend handles the transaction: success commits all
 changes, while any failure results in a full rollback with no modifications.
 
-```php  theme={null}
+```php theme={null}
 $conn->execute_batch("
   CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY,
@@ -10505,7 +11886,7 @@ and write operations within a transaction's scope. These transactions give you
 control over when to commit or roll back changes, isolating them from other
 client activity.
 
-```php  theme={null}
+```php theme={null}
 $tx = conn->transaction();
 
 $tx->execute("INSERT INTO users (name) VALUES (?1)", ["Iku"]);
@@ -10527,7 +11908,7 @@ Source: https://docs.turso.tech/sdk/python/guides/flask
 
 Set up Turso in your Flask project in minutes
 
-<img src="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/flask-banner.png?fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=29d0d7405a0b24c0f3ccf312ac32ad4b" alt="Flask banner" data-og-width="1133" width="1133" data-og-height="595" height="595" data-path="images/guides/flask-banner.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/flask-banner.png?w=280&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=8950504620a6928be70f6c82db873dd8 280w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/flask-banner.png?w=560&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=1ee389b2952213f82cd94b5b0c65bca0 560w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/flask-banner.png?w=840&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=ababf954914cdd9a4e1d292b63e7ba71 840w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/flask-banner.png?w=1100&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=5d5182974b80e1bdb6d43bb2717b1b41 1100w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/flask-banner.png?w=1650&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=eebe61e88f400ee0017d1c4823d1e34d 1650w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/flask-banner.png?w=2500&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=337ac8c1fa7f32586d3c4cde541894e6 2500w" />
+<img alt="Flask banner" />
 
 ## Prerequisites
 
@@ -10539,13 +11920,13 @@ Before you start, make sure you:
 
 <Steps>
   <Step title="Install the libSQL dialect">
-    ```bash  theme={null}
+    ```bash theme={null}
     pip install sqlalchemy-libsql python-dotenv
     ```
   </Step>
 
   <Step title="Retrieve database credentials">
-    <Snippet file="retrieve-database-credentials.mdx" />
+    <Snippet />
   </Step>
 
   <Step title="Create database models">
@@ -10569,7 +11950,7 @@ Before you start, make sure you:
   </Step>
 
   <Step title="Query">
-    ```python  theme={null}
+    ```python theme={null}
     from dotenv import load_dotenv
     from sqlalchemy import create_engine
     from sqlalchemy.orm import Session
@@ -10602,7 +11983,7 @@ Before you start, make sure you:
 
 ## Examples
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Social App" icon="github" href="https://github.com/tursodatabase/examples/tree/master/app-find-me-on-python-htmx">
     See the full source code
   </Card>
@@ -10614,7 +11995,7 @@ Source: https://docs.turso.tech/sdk/python/orm/sqlalchemy
 
 Configure SQLAlchemy to work with your Turso database
 
-<img src="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/sqlalchemy-banner.png?fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=c43a5833c30b4a5d3403fd4d68fd84e2" alt="SQLAlchemy Quickstart" data-og-width="1133" width="1133" data-og-height="595" height="595" data-path="images/guides/sqlalchemy-banner.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/sqlalchemy-banner.png?w=280&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=bf9161005342db8e96f7340f48b52af6 280w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/sqlalchemy-banner.png?w=560&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=3153839be444a4fd1ed6f4e510849da3 560w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/sqlalchemy-banner.png?w=840&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=1ff30339afd65c8ccc38358bde6fe90d 840w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/sqlalchemy-banner.png?w=1100&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=180f1d982006bce507bc4778e39d6302 1100w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/sqlalchemy-banner.png?w=1650&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=8794b2dd589b0ab1ceb28ff6cc654f85 1650w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/sqlalchemy-banner.png?w=2500&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=e7e5feb8e49ceced92f91be9ed5a2cd4 2500w" />
+<img alt="SQLAlchemy Quickstart" />
 
 ## Prerequisites
 
@@ -10625,13 +12006,13 @@ Before you start, make sure you:
 
 <Steps>
   <Step title="Install the libSQL dialect for SQLAlchemy">
-    ```bash  theme={null}
+    ```bash theme={null}
     pip install sqlalchemy-libsql
     ```
   </Step>
 
   <Step title="Retrieve database credentials">
-    <Snippet file="retrieve-database-credentials.mdx" />
+    <Snippet />
   </Step>
 
   <Step title="Create database models">
@@ -10657,7 +12038,7 @@ Before you start, make sure you:
   <Step title="Create engine">
     <AccordionGroup>
       <Accordion title="Embedded Replicas">
-        ```python  theme={null}
+        ```python theme={null}
         from dotenv import load_dotenv
         from sqlalchemy import create_engine
 
@@ -10675,7 +12056,7 @@ Before you start, make sure you:
       </Accordion>
 
       <Accordion title="Remote only">
-        ```python  theme={null}
+        ```python theme={null}
         from dotenv import load_dotenv
         from sqlalchemy import create_engine
 
@@ -10692,7 +12073,7 @@ Before you start, make sure you:
       </Accordion>
 
       <Accordion title="Memory Only">
-        ```python  theme={null}
+        ```python theme={null}
         from sqlalchemy import create_engine
 
         engine = create_engine("sqlite+libsql://")
@@ -10700,7 +12081,7 @@ Before you start, make sure you:
       </Accordion>
 
       <Accordion title="Local only">
-        ```python  theme={null}
+        ```python theme={null}
         from sqlalchemy import create_engine
 
         engine = create_engine("sqlite+libsql:///local.db")
@@ -10747,7 +12128,7 @@ In this Python quickstart we will learn how to:
   <Step title="Retrieve database credentials">
     You will need an existing database to continue. If you don't have one, [create one](/quickstart).
 
-    <Snippet file="retrieve-database-credentials.mdx" />
+    <Snippet />
 
     <Info>You will want to store these as environment variables.</Info>
   </Step>
@@ -10755,7 +12136,7 @@ In this Python quickstart we will learn how to:
   <Step title="Install">
     First begin by adding libSQL to your project:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     pip install libsql
     ```
   </Step>
@@ -10763,7 +12144,7 @@ In this Python quickstart we will learn how to:
   <Step title="Connect">
     Then import the package:
 
-    ```py  theme={null}
+    ```py theme={null}
     import libsql
     ```
 
@@ -10771,7 +12152,7 @@ In this Python quickstart we will learn how to:
 
     <AccordionGroup>
       <Accordion title="Embedded Replicas">
-        ```py  theme={null}
+        ```py theme={null}
         url = os.getenv("TURSO_DATABASE_URL")
         auth_token = os.getenv("TURSO_AUTH_TOKEN")
 
@@ -10781,7 +12162,7 @@ In this Python quickstart we will learn how to:
       </Accordion>
 
       <Accordion title="Local only">
-        ```py  theme={null}
+        ```py theme={null}
         conn = libsql.connect("hello.db")
         cur = conn.cursor()
         ```
@@ -10792,7 +12173,7 @@ In this Python quickstart we will learn how to:
   <Step title="Execute">
     You can execute SQL queries against your existing database as follows:
 
-    ```py  theme={null}
+    ```py theme={null}
     conn.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER);")
     conn.execute("INSERT INTO users(id) VALUES (10);")
 
@@ -10803,7 +12184,7 @@ In this Python quickstart we will learn how to:
   <Step title="Sync (Embedded Replicas only)">
     When using embedded replicas you should call `sync()` on the connector to sync your local database with the primary database.
 
-    ```py  theme={null}
+    ```py theme={null}
     conn.execute("CREATE TABLE IF NOT EXISTS users (id INTEGER);")
     conn.execute("INSERT INTO users(id) VALUES (1);")
     conn.commit()
@@ -10825,7 +12206,7 @@ Source: https://docs.turso.tech/sdk/python/reference
 
 You can work with [embedded replicas](/features/embedded-replicas) that can sync from the remote database to a local SQLite file, and delegate writes to the remote primary database:
 
-```py  theme={null}
+```py theme={null}
 import os
 
 import libsql
@@ -10839,13 +12220,13 @@ conn.commit()
 print(conn.execute("select * from users").fetchall())
 ```
 
-<Snippet file="embedded-replicas-warning.mdx" />
+<Snippet />
 
 ### Periodic Sync
 
 You can automatically sync at intervals by passing time in seconds to the `sync_interval` option. For example, to sync every minute, you can use the following code:
 
-```py  theme={null}
+```py theme={null}
 conn = libsql.connect("local.db", sync_interval=60, sync_url=os.getenv("LIBSQL_URL"),
                       auth_token=os.getenv("LIBSQL_AUTH_TOKEN"))
 ```
@@ -10854,7 +12235,7 @@ conn = libsql.connect("local.db", sync_interval=60, sync_url=os.getenv("LIBSQL_U
 
 The `Sync` function allows you to sync manually the local database with the remote counterpart:
 
-```py  theme={null}
+```py theme={null}
 conn.execute("INSERT INTO users(id) VALUES (2);")
 conn.commit()
 conn.sync()
@@ -10864,7 +12245,7 @@ conn.sync()
 
 To enable encryption on a SQLite file, pass the encryption secret to the `encryption_key` option:
 
-```py  theme={null}
+```py theme={null}
 conn = libsql.connect("encrypted.db", sync_url=os.getenv("LIBSQL_URL"),
                       auth_token=os.getenv("LIBSQL_AUTH_TOKEN"),
                       encryption_key=os.getenv("ENCRYPTION_KEY"))
@@ -10896,7 +12277,7 @@ Source: https://docs.turso.tech/sdk/ruby/quickstart
 
 Get started with Turso and Ruby using the libSQL client in a few simple steps.
 
-<Snippet file="technical-preview-banner.mdx" />
+<Snippet />
 
 In this Ruby quickstart we will learn how to:
 
@@ -10910,15 +12291,15 @@ In this Ruby quickstart we will learn how to:
   <Step title="Retrieve database credentials">
     You will need an existing database to continue. If you don't have one, [create one](/quickstart).
 
-    <Snippet file="retrieve-database-credentials.mdx" />
+    <Snippet />
 
-    <Snippet file="mobile-secrets-warning.mdx" />
+    <Snippet />
   </Step>
 
   <Step title="Install">
     Inside your Ruby project, install the following Rubygem:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     bundle add turso_libsql
     ```
   </Step>
@@ -10926,7 +12307,7 @@ In this Ruby quickstart we will learn how to:
   <Step title="Connect">
     <AccordionGroup>
       <Accordion title="Embedded Replicas">
-        ```rb  theme={null}
+        ```rb theme={null}
         require 'turso_libsql'
 
         db =Libsql::Database.new(
@@ -10939,7 +12320,7 @@ In this Ruby quickstart we will learn how to:
       </Accordion>
 
       <Accordion title="Local only">
-        ```rb  theme={null}
+        ```rb theme={null}
         require 'turso_libsql'
 
         db = Libsql::Database.new(path: 'local.db')
@@ -10947,7 +12328,7 @@ In this Ruby quickstart we will learn how to:
       </Accordion>
 
       <Accordion title="Remote only">
-        ```rb  theme={null}
+        ```rb theme={null}
         require 'turso_libsql'
 
         db = Libsql::Database.new(
@@ -10962,7 +12343,7 @@ In this Ruby quickstart we will learn how to:
   <Step title="Execute">
     You can execute a SQL query against your existing database by preparing a statement and then executing it:
 
-    ```c  theme={null}
+    ```c theme={null}
     db.connect do |conn|
       rows = conn.query 'SELECT * FROM users'
       rows.close
@@ -10982,7 +12363,7 @@ In this Ruby quickstart we will learn how to:
   <Step title="Sync (Embedded Replicas only)">
     When using embedded replicas, you should call `sync` on the database to sync your local database with the primary database, unless you are using `sync_interval` (though there is no issue with calling `sync` with `sync_interval` enabled):
 
-    ```rb  theme={null}
+    ```rb theme={null}
     db.sync
     ```
   </Step>
@@ -11001,7 +12382,7 @@ Source: https://docs.turso.tech/sdk/rust/guides/actix
 
 Set up Turso in your Actix project in minutes
 
-<img src="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/actix-banner.png?fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=4d06a48cc1186caa607491545546e600" alt="Actix banner" data-og-width="1133" width="1133" data-og-height="595" height="595" data-path="images/guides/actix-banner.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/actix-banner.png?w=280&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=8b3a1be0ff68b893ffb52e0d19c89684 280w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/actix-banner.png?w=560&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=7f97b18410c1f093093a1120bd0a884d 560w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/actix-banner.png?w=840&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=3e8b1f399ca826f962dfe82a5cf6b01c 840w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/actix-banner.png?w=1100&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=c1167e8b829243c9956d0bd672fd852f 1100w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/actix-banner.png?w=1650&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=6517991814a6de85ef7a9b7ca118f28f 1650w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/actix-banner.png?w=2500&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=4ebe1f254cea8d7c3423bb3d3224639f 2500w" />
+<img alt="Actix banner" />
 
 ## Prerequisites
 
@@ -11015,27 +12396,27 @@ Before you start, make sure you:
   <Step title="Retrieve database credentials">
     You will need an existing database to continue. If you don't have one, [create one](/quickstart).
 
-    <Snippet file="retrieve-database-credentials.mdx" />
+    <Snippet />
 
     <Info>You will want to store these as environment variables.</Info>
   </Step>
 
   <Step title="Add the libsql crate to the project">
-    ```sh  theme={null}
+    ```sh theme={null}
     cargo add libsql
     ```
 
     <Note>
       Optionally, you can add a package such as [`dotenvy`](https://docs.rs/dotenvy/latest/dotenvy) to help you work with `.env` files:
 
-      ```sh  theme={null}
+      ```sh theme={null}
       cargo add dotenvy
       ```
     </Note>
   </Step>
 
   <Step title="Execute SQL">
-    ```rust  theme={null}
+    ```rust theme={null}
     #[tokio::main]
     #[actix_web::main]
     async fn main() -> std::io::Result<()> {
@@ -11079,7 +12460,7 @@ Before you start, make sure you:
 
 ## Examples
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Turso + Actix Web Traffic Tracker" icon="github" href="https://github.com/tursodatabase/examples/tree/master/app-web-traffic-tracker-actix">
     See the full source code
   </Card>
@@ -11091,7 +12472,7 @@ Source: https://docs.turso.tech/sdk/rust/guides/axum
 
 Set up Turso in your Axum project in minutes
 
-<img src="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/axum-banner.png?fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=e92d18a8f72196e94541553f254a77b3" alt="Axum banner" data-og-width="1133" width="1133" data-og-height="595" height="595" data-path="images/guides/axum-banner.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/axum-banner.png?w=280&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=bf97083ac7752958846a6a4024787f1c 280w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/axum-banner.png?w=560&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=48b6b7b19875da1dcdfd973969b16de1 560w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/axum-banner.png?w=840&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=eae74778559611606d2ec712b9872652 840w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/axum-banner.png?w=1100&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=07070e8cd61568e2038a786f8f01a42b 1100w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/axum-banner.png?w=1650&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=5574e47b4fe290f4191c4274bd0018ea 1650w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/axum-banner.png?w=2500&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=8fa6e56263a10312c22f9cbad07bb5de 2500w" />
+<img alt="Axum banner" />
 
 ## Prerequisites
 
@@ -11105,27 +12486,27 @@ Before you start, make sure you:
   <Step title="Retrieve database credentials">
     You will need an existing database to continue. If you don't have one, [create one](/quickstart).
 
-    <Snippet file="retrieve-database-credentials.mdx" />
+    <Snippet />
 
     <Info>You will want to store these as environment variables.</Info>
   </Step>
 
   <Step title="Add the libsql crate to the project">
-    ```sh  theme={null}
+    ```sh theme={null}
     cargo add libsql
     ```
 
     <Note>
       Optionally, you can add a package such as [`dotenvy`](https://docs.rs/dotenvy/latest/dotenvy) to help you work with `.env` files:
 
-      ```sh  theme={null}
+      ```sh theme={null}
       cargo add dotenvy
       ```
     </Note>
   </Step>
 
   <Step title="Execute SQL">
-    ```rust  theme={null}
+    ```rust theme={null}
     use libsql::{Builder, Connection, Database, Result};
 
     #[tokio::main]
@@ -11156,7 +12537,7 @@ Before you start, make sure you:
   </Step>
 
   <Step title="Use in an Axum handler">
-    ```rust  theme={null}
+    ```rust theme={null}
     use axum::{
         extract::State,
         routing::get,
@@ -11224,7 +12605,7 @@ Source: https://docs.turso.tech/sdk/rust/guides/rocket
 
 Set up Turso in your Rocket project in minutes
 
-<img src="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/rocket-banner.png?fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=74dabf48dfb2a2ec82d5750672eab0e9" alt="Rocket banner" data-og-width="1133" width="1133" data-og-height="595" height="595" data-path="images/guides/rocket-banner.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/rocket-banner.png?w=280&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=79c495f110640528a720e6d12211e35f 280w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/rocket-banner.png?w=560&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=db1326a6701c4d0ea44385ac5326b9ff 560w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/rocket-banner.png?w=840&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=0bceb710baa09c0157d946ba8b117aa5 840w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/rocket-banner.png?w=1100&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=9b851ad8ba5c332c1593360c1cfbc15c 1100w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/rocket-banner.png?w=1650&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=9252aba70541fa4a8f4b9eb3c2945ec4 1650w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/rocket-banner.png?w=2500&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=5e72dd784c997c914335c463056a3329 2500w" />
+<img alt="Rocket banner" />
 
 ## Prerequisites
 
@@ -11238,27 +12619,27 @@ Before you start, make sure you:
   <Step title="Retrieve database credentials">
     You will need an existing database to continue. If you don't have one, [create one](/quickstart).
 
-    <Snippet file="retrieve-database-credentials.mdx" />
+    <Snippet />
 
     <Info>You will want to store these as environment variables.</Info>
   </Step>
 
   <Step title="Add the libsql crate to the project">
-    ```sh  theme={null}
+    ```sh theme={null}
     cargo add libsql
     ```
 
     <Note>
       Optionally, you can add a package such as [`dotenvy`](https://docs.rs/dotenvy/latest/dotenvy) to help you work with `.env` files:
 
-      ```sh  theme={null}
+      ```sh theme={null}
       cargo add dotenvy
       ```
     </Note>
   </Step>
 
   <Step title="Execute SQL">
-    ```rust  theme={null}
+    ```rust theme={null}
     #[get("/todos")]
     async fn get_todos() -> Json<Vec<Todo>> {
         dotenv().expect(".env file not found");
@@ -11293,7 +12674,7 @@ Before you start, make sure you:
 
 ## Examples
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Turso + Rocket Todo List" icon="github" href="https://github.com/tursodatabase/examples/tree/master/app-todo-rocket">
     See the full source code
   </Card>
@@ -11305,7 +12686,7 @@ Source: https://docs.turso.tech/sdk/rust/guides/tauri
 
 Set up Turso in your Tauri project in minutes
 
-<img src="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/tauri-banner.png?fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=92bdd8d06ba15875c3c553650796b77d" alt="Tauri banner" data-og-width="1133" width="1133" data-og-height="595" height="595" data-path="images/guides/tauri-banner.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/tauri-banner.png?w=280&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=0a7bad4818f5aa4c4abff5814f24a531 280w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/tauri-banner.png?w=560&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=95abd25b2f34c5e3c4aa66bdf96e7c2f 560w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/tauri-banner.png?w=840&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=b57c63cf21ba58ef19000163344a7902 840w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/tauri-banner.png?w=1100&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=6e04691ec86f779bf627348676652415 1100w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/tauri-banner.png?w=1650&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=5be3ffcb6e0e77a221f72d65f06f4113 1650w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/tauri-banner.png?w=2500&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=828d2c7045e3a39c13e3563913fbdbf5 2500w" />
+<img alt="Tauri banner" />
 
 ## Prerequisites
 
@@ -11334,7 +12715,7 @@ Before you start, make sure you:
   </Step>
 
   <Step title="Fetch Rust dependencies inside the `src-tauri` directory.">
-    ```bash  theme={null}
+    ```bash theme={null}
     cargo fetch
     ```
   </Step>
@@ -11342,13 +12723,13 @@ Before you start, make sure you:
   <Step title="Configure database credentials">
     Get the database URL.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso db show --url <database-name>
     ```
 
     Get the database authentication token.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso db tokens create <database-name>
     ```
 
@@ -11440,7 +12821,7 @@ Before you start, make sure you:
 
 ## Examples
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Personal Notes App" icon="github" href="https://github.com/tursodatabase/examples/tree/master/app-turso-notes">
     See the full source code
   </Card>
@@ -11464,7 +12845,7 @@ In this Rust quickstart we will learn how to:
   <Step title="Retrieve database credentials">
     You will need an existing database to continue. If you don't have one, [create one](/quickstart).
 
-    <Snippet file="retrieve-database-credentials.mdx" />
+    <Snippet />
 
     <Info>You will want to store these as environment variables.</Info>
   </Step>
@@ -11472,7 +12853,7 @@ In this Rust quickstart we will learn how to:
   <Step title="Install">
     First begin by installing the `libsql` [crate](https://crates.io/crates/libsql):
 
-    ```bash  theme={null}
+    ```bash theme={null}
     cargo add libsql
     ```
   </Step>
@@ -11482,7 +12863,7 @@ In this Rust quickstart we will learn how to:
 
     <AccordionGroup>
       <Accordion title="Embedded Replicas">
-        ```rust  theme={null}
+        ```rust theme={null}
         use libsql::Builder;
 
         let url = std::env::var("TURSO_DATABASE_URL").expect("TURSO_DATABASE_URL must be set");
@@ -11496,7 +12877,7 @@ In this Rust quickstart we will learn how to:
       </Accordion>
 
       <Accordion title="Local only">
-        ```rust  theme={null}
+        ```rust theme={null}
         use libsql::Builder;
 
         let db = Builder::new_local("local.db").build().await?;
@@ -11505,7 +12886,7 @@ In this Rust quickstart we will learn how to:
       </Accordion>
 
       <Accordion title="Remote only">
-        ```rust  theme={null}
+        ```rust theme={null}
         use libsql::Builder;
 
         let url = std::env::var("TURSO_DATABASE_URL").expect("TURSO_DATABASE_URL must be set");
@@ -11523,7 +12904,7 @@ In this Rust quickstart we will learn how to:
   <Step title="Execute">
     You can execute a SQL query against your existing database by calling `execute()`:
 
-    ```rust  theme={null}
+    ```rust theme={null}
     conn.execute("SELECT * FROM users", ()).await?;
     ```
 
@@ -11541,7 +12922,7 @@ In this Rust quickstart we will learn how to:
 
     To retrieve results from a query, you can use the `query()` method:
 
-    ```rust  theme={null}
+    ```rust theme={null}
     let mut rows = conn.query("SELECT * FROM users", ()).await?;
 
     while let Some(row) = rows.next().await? {
@@ -11555,13 +12936,13 @@ In this Rust quickstart we will learn how to:
   <Step title="Sync (Embedded Replicas only)">
     When using embedded replicas you should call `sync()` on the database type to sync your local database with the primary database:
 
-    ```rust  theme={null}
+    ```rust theme={null}
     db.sync().await.unwrap();
     ```
 
     You can also set up automatic periodic syncing when creating the database:
 
-    ```rust  theme={null}
+    ```rust theme={null}
     use std::time::Duration;
 
     let db = Builder::new_remote_replica("local.db", url, token)
@@ -11586,7 +12967,7 @@ The libSQL Rust crate contains everything you need to work with Turso and works 
 
 Install the crate in your project using the following command:
 
-```bash  theme={null}
+```bash theme={null}
 cargo add libsql
 ```
 
@@ -11603,7 +12984,7 @@ The following features are available:
 | `replication` | Combines core with additional code required for replication, enabling the embedded replica features.                                                                                                                                                 |
 | `encryption`  | Enables encryption at rest support, adding the necessary code to compile encryption capabilities and expose functions for configuring it. **This is optional and not enabled by default**, catering to projects that require enhanced data security. |
 
-```toml  theme={null}
+```toml theme={null}
 [dependencies]
 libsql = { version = "...", features = ["encryption"] }
 ```
@@ -11616,7 +12997,7 @@ libsql = { version = "...", features = ["encryption"] }
 
 Make sure add the crate to your project at the top of your file:
 
-```rust  theme={null}
+```rust theme={null}
 use libsql::Builder;
 
 let url = env::var("LIBSQL_URL").expect("LIBSQL_URL must be set");
@@ -11630,7 +13011,7 @@ let conn = db.connect().unwrap();
 
 libSQL supports connecting to [in-memory databases](https://www.sqlite.org/inmemorydb.html) for cases where you don't require persistence:
 
-```rust  theme={null}
+```rust theme={null}
 use libsql::Builder;
 
 let db = Builder::new_local(":memory:").build().await.unwrap();
@@ -11641,7 +13022,7 @@ let conn = db.connect().unwrap();
 
 You can work locally using an SQLite file using `new_local`:
 
-```rust  theme={null}
+```rust theme={null}
 use libsql::Builder;
 
 let mut db = Builder::new_local("local.db").build().await.unwrap();
@@ -11652,7 +13033,7 @@ let conn = db.connect().unwrap();
 
 You can work with embedded replicas using `new_remote_replica` that can sync from the remote URL and delegate writes to the remote primary database:
 
-```rust  theme={null}
+```rust theme={null}
 use libsql::Builder;
 
 let url = env::var("LIBSQL_URL").expect("LIBSQL_URL must be set");
@@ -11666,7 +13047,7 @@ let conn = db.connect().unwrap();
 
 The `sync` function allows you to sync manually the local database with the remote counterpart:
 
-```rust  theme={null}
+```rust theme={null}
 use libsql::Builder;
 
 let url = env::var("LIBSQL_URL").expect("LIBSQL_URL must be set");
@@ -11680,14 +13061,14 @@ db.sync().await.unwrap(); // Call sync manually to update local database
 ```
 
 <Info>
-  If you require full control over how frames get from your instance of `sqld` (libSQL Server), you can do this using `new_local_replica` and `sync_frames`. Reach out to us [on Discord](https://discord.gg/turso) if you want to learn more.
+  If you require full control over how frames get from your instance of `sqld` (libSQL Server), you can do this using `new_local_replica` and `sync_frames`. Reach out to us [on Discord](https://tur.so/discord) if you want to learn more.
 </Info>
 
 ### Sync Interval
 
 The `sync_interval` function allows you to set an interval for automatic synchronization of the database in the background:
 
-```rust  theme={null}
+```rust theme={null}
 use libsql::Builder;
 use std::time::Duration;
 
@@ -11708,7 +13089,7 @@ The `read_your_writes` function configures the database connection to ensure tha
 
 You can disable this behavior by passing `false` to the function:
 
-```rust  theme={null}
+```rust theme={null}
 use libsql::Builder;
 
 let url = env::var("LIBSQL_URL").expect("LIBSQL_URL must be set");
@@ -11726,7 +13107,7 @@ let conn = db.connect().unwrap();
 
 To enable encryption on a SQLite file (`new_local` or `new_remote_replica`), make sure you have the [`encryption` feature enabled](#conditional-compilation), and pass the `encryption_config`:
 
-<Snippet file="encryption-at-rest-rust.mdx" />
+<Snippet />
 
 <Info>
   Encrypted databases appear as raw data and cannot be read as standard SQLite databases. You must use the libSQL client for any operations — [learn more](/libsql#encryption-at-rest).
@@ -11750,7 +13131,7 @@ You can pass a string to `execute()` to invoke a SQL statement, as well as optio
 
 You can prepare a cached statement using `prepare()` and then execute it with `query()`:
 
-```rust  theme={null}
+```rust theme={null}
 let mut stmt = db_conn.prepare("SELECT * FROM users").await?;
 
 db_conn.query(&stmt, [&1]).await?;
@@ -11780,7 +13161,7 @@ libSQL supports the use of positional and named placeholders within SQL statemen
 
 You can use the `de::from_row` function to deserialize a row into a struct:
 
-```rust  theme={null}
+```rust theme={null}
 use libsql::{de, Builder};
 
 let mut stmt = conn
@@ -11811,7 +13192,7 @@ let user = de::from_row::<User>(&row).unwrap();
 
 A batch consists of multiple SQL statements executed sequentially within an implicit transaction. The backend handles the transaction: success commits all changes, while any failure results in a full rollback with no modifications.
 
-```rust  theme={null}
+```rust theme={null}
 conn.execute_batch(r#"
   CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY,
@@ -11860,7 +13241,7 @@ Source: https://docs.turso.tech/sdk/swift/quickstart
 
 Get started with Turso and Swift using the libSQL client in a few simple steps.
 
-<Snippet file="technical-preview-banner.mdx" />
+<Snippet />
 
 In this Swift quickstart we will learn how to:
 
@@ -11874,9 +13255,9 @@ In this Swift quickstart we will learn how to:
   <Step title="Retrieve database credentials">
     You will need an existing database to continue. If you don't have one, [create one](/quickstart).
 
-    <Snippet file="retrieve-database-credentials.mdx" />
+    <Snippet />
 
-    <Snippet file="mobile-secrets-warning.mdx" />
+    <Snippet />
   </Step>
 
   <Step title="Install">
@@ -11888,7 +13269,7 @@ In this Swift quickstart we will learn how to:
 
     Or add it to your SwiftPM dependencies:
 
-    ```swift  theme={null}
+    ```swift theme={null}
     import PackageDescription
 
     let package = Package(
@@ -11906,7 +13287,7 @@ In this Swift quickstart we will learn how to:
 
     <AccordionGroup>
       <Accordion title="Embedded Replicas">
-        ```swift  theme={null}
+        ```swift theme={null}
         import Libsql
 
         let db = try Database(
@@ -11921,7 +13302,7 @@ In this Swift quickstart we will learn how to:
       </Accordion>
 
       <Accordion title="Local only">
-        ```swift  theme={null}
+        ```swift theme={null}
         import Libsql
 
         let db = try Database(
@@ -11933,7 +13314,7 @@ In this Swift quickstart we will learn how to:
       </Accordion>
 
       <Accordion title="Remote only">
-        ```swift  theme={null}
+        ```swift theme={null}
         import Libsql
 
         let db = try Database(
@@ -11951,7 +13332,7 @@ In this Swift quickstart we will learn how to:
     You can execute a SQL query against your existing database by calling `query()`,
     or `execute()` when you expect the query to not yield any rows:
 
-    ```swift  theme={null}
+    ```swift theme={null}
     let rows = try conn.query("SELECT * FROM users")
     ```
 
@@ -11976,7 +13357,7 @@ In this Swift quickstart we will learn how to:
     `sync_interval` (though there is no issue with calling `sync` with
     `sync_interval` enabled):
 
-    ```swift  theme={null}
+    ```swift theme={null}
     try db.sync()
     ```
   </Step>
@@ -11988,7 +13369,7 @@ Source: https://docs.turso.tech/sdk/swift/reference
 
 libSQL Swift Reference
 
-<Snippet file="technical-preview-banner.mdx" />
+<Snippet />
 
 ## Installing
 
@@ -12000,7 +13381,7 @@ First begin by adding `libsql` as a package dependency in XCode using this repo:
 
 Or add it to your SwiftPM dependencies:
 
-```swift  theme={null}
+```swift theme={null}
 import PackageDescription
 
 let package = Package(
@@ -12018,7 +13399,7 @@ libSQL supports connecting to [in-memory
 databases](https://www.sqlite.org/inmemorydb.html) for cases where you don't
 require persistence:
 
-```swift  theme={null}
+```swift theme={null}
 import Libsql
 
 let db = Database(":memory:")
@@ -12029,7 +13410,7 @@ let conn = try db.connect()
 
 You can work locally using an SQLite file:
 
-```swift  theme={null}
+```swift theme={null}
 import Libsql
 
 let db = Database("local.db")
@@ -12041,7 +13422,7 @@ let conn = try db.connect()
 You can work with embedded replicas that can sync from the remote URL and
 delegate writes to the remote primary database:
 
-```swift  theme={null}
+```swift theme={null}
 import Libsql
 
 let db = try Database(
@@ -12057,7 +13438,7 @@ let conn = try db.connect()
 
 The `sync` function allows you to sync manually the local database with the remote counterpart:
 
-```swift  theme={null}
+```swift theme={null}
 try db.sync() // Call sync manually to update local database
 ```
 
@@ -12066,7 +13447,7 @@ try db.sync() // Call sync manually to update local database
 The `syncInterval` parameter allows you to set an interval for automatic
 synchronization of the database in the background:
 
-```swift  theme={null}
+```swift theme={null}
 import Libsql
 
 let db = try Database(
@@ -12089,7 +13470,7 @@ the writing process.
 
 You can disable this behavior by passing `false` to the function:
 
-```swift  theme={null}
+```swift theme={null}
 import Libsql
 
 let db = try Database(
@@ -12126,7 +13507,7 @@ optional arguments:
 You can prepare a cached statement using `prepare()` and then execute it with
 `query()`:
 
-```swift  theme={null}
+```swift theme={null}
 let stmt = try conn.prepare("SELECT * FROM users WHERE id = ?")
 stmt.bind([1])
 stmt.query()
@@ -12159,7 +13540,7 @@ Source: https://docs.turso.tech/sdk/ts/guides/astro
 
 Set up Turso in your Astro project in minutes.
 
-<img src="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/astro-banner.png?fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=5b0999657788a4cdccf007d44d34ca89" alt="Astro banner" data-og-width="1133" width="1133" data-og-height="595" height="595" data-path="images/guides/astro-banner.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/astro-banner.png?w=280&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=acd93bb0a08016652c40033dc484eb53 280w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/astro-banner.png?w=560&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=f955e74fb17f84acee3a9befa34a6c49 560w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/astro-banner.png?w=840&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=ba1cf3cb6adb4f65bd1a8eb245402be3 840w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/astro-banner.png?w=1100&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=c35aedb626841dcf33320730c45a3b2a 1100w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/astro-banner.png?w=1650&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=495d78b0edd0607175da507eda81e38d 1650w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/astro-banner.png?w=2500&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=0d9e9b1989c1a48b3dfaf878629742f9 2500w" />
+<img alt="Astro banner" />
 
 ## Prerequisites
 
@@ -12171,11 +13552,11 @@ To get the most out of this guide, you'll need to:
 
 <Steps>
   <Step title="Install the libSQL SDK">
-    <Snippet file="install-libsql-client-ts.mdx" />
+    <Snippet />
   </Step>
 
   <Step title="Configure database credentials">
-    <Snippet file="retrieve-database-credentials.mdx" />
+    <Snippet />
   </Step>
 
   <Step title="Configure libSQL client">
@@ -12195,7 +13576,7 @@ To get the most out of this guide, you'll need to:
   </Step>
 
   <Step title="Execute SQL">
-    ```ts  theme={null}
+    ```ts theme={null}
     ---
     import { turso } from './turso'
 
@@ -12207,7 +13588,7 @@ To get the most out of this guide, you'll need to:
 
 ## Examples
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Blog" icon="github" href="https://github.com/tursodatabase/examples/tree/master/app-tustro-blog">
     See the full source code
   </Card>
@@ -12219,7 +13600,7 @@ Source: https://docs.turso.tech/sdk/ts/guides/elysia
 
 Set up Turso in your Elysia project in minutes.
 
-<img src="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/elysia-banner.png?fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=feb0570b5243f4be9c133fe35f0f8f42" alt="Elysia banner" data-og-width="1133" width="1133" data-og-height="595" height="595" data-path="images/guides/elysia-banner.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/elysia-banner.png?w=280&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=9d779ae17b95de5bffcdd6d6b00c52cd 280w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/elysia-banner.png?w=560&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=5c4c42b19a88b721c82bcf3e92746d77 560w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/elysia-banner.png?w=840&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=c8dac8cb47227600bab867c120f96c62 840w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/elysia-banner.png?w=1100&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=9e29f807ea44446d070721ff0feec017 1100w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/elysia-banner.png?w=1650&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=099cee954cf61283c7a3fe348d8b3a40 1650w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/elysia-banner.png?w=2500&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=278e08a186ab927fcf1f64c974b935fd 2500w" />
+<img alt="Elysia banner" />
 
 ## Prerequisites
 
@@ -12231,19 +13612,19 @@ Before you start, make sure you:
 
 <Steps>
   <Step title="Install the libSQL SDK">
-    <Snippet file="install-libsql-client-ts.mdx" />
+    <Snippet />
   </Step>
 
   <Step title="Retrieve database credentials">
-    <Snippet file="retrieve-database-credentials.mdx" />
+    <Snippet />
   </Step>
 
   <Step title="Configure libSQL client">
-    <Snippet file="configure-libsql-client-ts.mdx" />
+    <Snippet />
   </Step>
 
   <Step title="Execute SQL">
-    ```ts  theme={null}
+    ```ts theme={null}
     import { Elysia } from "elysia";
     import { turso } from "./lib/turso";
 
@@ -12257,7 +13638,7 @@ Before you start, make sure you:
 
 ## Examples
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Expenses tracker app with Elysia & Turso" icon="github" href="https://github.com/tursodatabase/examples/tree/master/app-expenses-tracker-elysia">
     See the full source code
   </Card>
@@ -12269,7 +13650,7 @@ Source: https://docs.turso.tech/sdk/ts/guides/hono
 
 Set up Turso in your Hono project in minutes.
 
-<img src="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/hono-banner.png?fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=1c88c1bf0425b350d511be756e47f83f" alt="Hono banner" data-og-width="1133" width="1133" data-og-height="595" height="595" data-path="images/guides/hono-banner.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/hono-banner.png?w=280&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=234cb8da3dfdea684ed7917070fa098a 280w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/hono-banner.png?w=560&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=305fa4551cad881c77cd62778aa08dd1 560w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/hono-banner.png?w=840&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=771fafafa997bdeacd3ef111d78e7871 840w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/hono-banner.png?w=1100&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=e9ffe56a8ba2cda4e00d97d59ddb6cdd 1100w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/hono-banner.png?w=1650&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=5e96d297a5e2a61b343e4f6b83e2b273 1650w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/hono-banner.png?w=2500&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=abbd75b72849fc77ab6f29082958ccff 2500w" />
+<img alt="Hono banner" />
 
 ## Prerequisites
 
@@ -12281,19 +13662,19 @@ Before you start, make sure you:
 
 <Steps>
   <Step title="Install the libSQL SDK">
-    <Snippet file="install-libsql-client-ts.mdx" />
+    <Snippet />
   </Step>
 
   <Step title="Retrieve database credentials">
-    <Snippet file="retrieve-database-credentials.mdx" />
+    <Snippet />
   </Step>
 
   <Step title="Configure libSQL client">
-    <Snippet file="configure-libsql-client-ts.mdx" />
+    <Snippet />
   </Step>
 
   <Step title="Execute SQL">
-    ```ts  theme={null}
+    ```ts theme={null}
     import { Hono } from "hono";
     import { turso } from "./lib/turso";
 
@@ -12310,7 +13691,7 @@ Before you start, make sure you:
 
 ## Examples
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Expenses tracker app with Hono & Turso" icon="github" href="https://github.com/tursodatabase/examples/tree/master/app-expenses-tracker-hono">
     See the full source code
   </Card>
@@ -12322,7 +13703,7 @@ Source: https://docs.turso.tech/sdk/ts/guides/nextjs
 
 Set up Turso in your Next.js project in minutes.
 
-<img src="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/nextjs-banner.png?fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=70fd7aa0941f6871ae5e4a2eb3292cce" alt="Next.js banner" data-og-width="1133" width="1133" data-og-height="595" height="595" data-path="images/guides/nextjs-banner.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/nextjs-banner.png?w=280&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=3ec3bc230f1a419c2fe1e76226f1c53e 280w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/nextjs-banner.png?w=560&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=3aea7655fd4bd73d0184f940cf81ea73 560w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/nextjs-banner.png?w=840&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=27acb905210e1ffbb4af5741a6a786b1 840w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/nextjs-banner.png?w=1100&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=f47b1f24678b02ea31781bdfa12656fb 1100w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/nextjs-banner.png?w=1650&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=3bee8f44381437fa9c6a5e09b4832a5c 1650w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/nextjs-banner.png?w=2500&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=9a6aa8d84b587b5a3887c2b1760bc23b 2500w" />
+<img alt="Next.js banner" />
 
 ## Prerequisites
 
@@ -12334,15 +13715,15 @@ Before you start, make sure you:
 
 <Steps>
   <Step title="Install the libSQL SDK">
-    <Snippet file="install-libsql-client-ts.mdx" />
+    <Snippet />
   </Step>
 
   <Step title="Configure database credentials">
-    <Snippet file="retrieve-database-credentials.mdx" />
+    <Snippet />
   </Step>
 
   <Step title="Configure libSQL client">
-    <Snippet file="configure-libsql-client-ts.mdx" />
+    <Snippet />
   </Step>
 
   <Step title="Execute SQL">
@@ -12396,7 +13777,7 @@ Before you start, make sure you:
 
 ## Examples
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Full Stack App" icon="github" href="https://github.com/tursodatabase/nextjs-turso-starter">
     Build with Next.js, Turso, and Drizzle ORM.
   </Card>
@@ -12408,7 +13789,7 @@ Source: https://docs.turso.tech/sdk/ts/guides/nuxt
 
 Set up Turso in your Nuxt project in minutes
 
-<img src="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/nuxt-banner.png?fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=9c0353730a9944cd5e99e71cb2666025" alt="Nuxt banner" data-og-width="1133" width="1133" data-og-height="595" height="595" data-path="images/guides/nuxt-banner.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/nuxt-banner.png?w=280&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=d23020628a50e20de2adb3640c9f8d59 280w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/nuxt-banner.png?w=560&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=1332aca63b6ecb15314160bb66f6233c 560w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/nuxt-banner.png?w=840&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=da752fd34f3d2d9c198168372325f2dd 840w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/nuxt-banner.png?w=1100&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=cc7f2c6c63e6fdc34eb212fd521aff88 1100w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/nuxt-banner.png?w=1650&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=1a8a4af2319bfe8b67d182a6537b5fd2 1650w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/nuxt-banner.png?w=2500&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=4c090687b14172f59a0e3159aaf323b3 2500w" />
+<img alt="Nuxt banner" />
 
 Before you start, make sure you:
 
@@ -12418,25 +13799,25 @@ Before you start, make sure you:
 
 <Steps>
   <Step title="Install the libSQL SDK">
-    <Snippet file="install-libsql-client-ts.mdx" />
+    <Snippet />
   </Step>
 
   <Step title="Configure database credentials">
     Get the database URL:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso db show --url <database-name>
     ```
 
     Get the database authentication token:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso db tokens create <database-name>
     ```
 
     Assign credentials to the environment variables inside `.env`.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     NUXT_TURSO_DATABASE_URL=
     NUXT_TURSO_AUTH_TOKEN=
     ```
@@ -12496,7 +13877,7 @@ Before you start, make sure you:
 
 ## Examples
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Website + App" icon="github" href="https://github.com/tursodatabase/examples/tree/master/app-top-web-frameworks">
     See the full source code
   </Card>
@@ -12508,7 +13889,7 @@ Source: https://docs.turso.tech/sdk/ts/guides/quasar
 
 Set up Turso in your Quasar project in minutes
 
-<img src="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/quasar-banner.png?fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=182fddd15a287e68b1780415464cec13" alt="Quasar banner" data-og-width="1133" width="1133" data-og-height="595" height="595" data-path="images/guides/quasar-banner.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/quasar-banner.png?w=280&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=603696183288616b38c56d31534b9c31 280w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/quasar-banner.png?w=560&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=4ec5e625b6aa4a81e85c688fe31ad953 560w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/quasar-banner.png?w=840&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=89f836cae210c0ca240d118025141a84 840w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/quasar-banner.png?w=1100&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=76f69f80e2758438693195f418c8924c 1100w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/quasar-banner.png?w=1650&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=eb8e7b24973ed40ede4df58d6131ddeb 1650w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/quasar-banner.png?w=2500&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=d57a65d82eea0054be3a6f6b4177ea79 2500w" />
+<img alt="Quasar banner" />
 
 ## Prerequisites
 
@@ -12520,32 +13901,32 @@ Before you start, make sure you:
 
 <Steps>
   <Step title="Install the libSQL SDK">
-    <Snippet file="install-libsql-client-ts.mdx" />
+    <Snippet />
   </Step>
 
   <Step title="Configure database credentials">
     Get the database URL:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso db show --url <database-name>
     ```
 
     Get the database authentication token:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso db tokens create <database-name>
     ```
 
     Assign credentials to the environment variables inside `.env.local`.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     VITE_TURSO_DATABASE_URL="..."
     VITE_TURSO_AUTH_TOKEN="..."
     ```
   </Step>
 
   <Step title="Configure libSQL Client">
-    ```js  theme={null}
+    ```js theme={null}
     import { createClient } from "@libsql/client/web";
 
     const turso = createClient({
@@ -12596,7 +13977,7 @@ Before you start, make sure you:
 
 ## Examples
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Todo App" icon="github" href="https://github.com/tursodatabase/examples/tree/master/quasar-todo-list">
     See the full source code
   </Card>
@@ -12608,7 +13989,7 @@ Source: https://docs.turso.tech/sdk/ts/guides/qwik
 
 Set up Turso in your Qwik project in minutes
 
-<img src="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/qwik-banner.png?fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=bd50c1555e2915546f901981ac6efba5" alt="Qwik banner" data-og-width="1133" width="1133" data-og-height="595" height="595" data-path="images/guides/qwik-banner.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/qwik-banner.png?w=280&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=1569ff1e72474e2bb1b3a44998bdbb45 280w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/qwik-banner.png?w=560&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=ccc4ef9d6b254e2ed512c3962c77d107 560w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/qwik-banner.png?w=840&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=35c89107df28159b166ba85465d52061 840w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/qwik-banner.png?w=1100&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=647c06e863baef5583cfad139fd6c138 1100w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/qwik-banner.png?w=1650&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=e28f620d00518a4518569ecb212a6f15 1650w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/qwik-banner.png?w=2500&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=ae524559d6b1f2d7a289251da8d78ab7 2500w" />
+<img alt="Qwik banner" />
 
 ## Prerequisites
 
@@ -12638,26 +14019,26 @@ Before you start, make sure you:
   <Step title="Configure database credentials">
     Get the database URL:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso db show --url <database-name>
     ```
 
     Get the database authentication token:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso db tokens create <database-name>
     ```
 
     Assign credentials to the environment variables inside `.env.local`.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     PRIVATE_TURSO_DATABASE_URL="..."
     PRIVATE_TURSO_AUTH_TOKEN="..."
     ```
   </Step>
 
   <Step title="Execute SQL">
-    ```ts  theme={null}
+    ```ts theme={null}
     import { tursoClient } from "~/utils/turso";
 
     export const useFrameworks = routeLoader$(
@@ -12676,7 +14057,7 @@ Before you start, make sure you:
 
 ## Examples
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Social Website" icon="github" href="https://github.com/tursodatabase/examples/tree/master/app-find-me-on">
     See the full source code
   </Card>
@@ -12692,7 +14073,7 @@ Source: https://docs.turso.tech/sdk/ts/guides/remix
 
 Set up Turso in your Remix project in minutes
 
-<img src="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/remix-banner.png?fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=84822de5a6eb5531447a66d6afe6662a" alt="Remix banner" data-og-width="1133" width="1133" data-og-height="595" height="595" data-path="images/guides/remix-banner.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/remix-banner.png?w=280&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=cb9d6a03ec600ad6299cf08724510d04 280w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/remix-banner.png?w=560&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=500769f952ad411d97629e2c0a8f7097 560w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/remix-banner.png?w=840&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=0ef00c6077224f81ed5bcb9909c07e7b 840w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/remix-banner.png?w=1100&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=590ba1f30c3be2dae0a94fe04eec59b2 1100w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/remix-banner.png?w=1650&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=ee9954f6081c95ff47c408a60efc2d85 1650w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/remix-banner.png?w=2500&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=6be355e382ad6a283961015d0e8d51e6 2500w" />
+<img alt="Remix banner" />
 
 ## Prerequisites
 
@@ -12704,15 +14085,15 @@ Before you start, make sure you:
 
 <Steps>
   <Step title="Install the libSQL SDK">
-    <Snippet file="install-libsql-client-ts.mdx" />
+    <Snippet />
   </Step>
 
   <Step title="Configure database credentials">
-    <Snippet file="retrieve-database-credentials.mdx" />
+    <Snippet />
   </Step>
 
   <Step title="Configure libSQL Client.">
-    <Snippet file="configure-libsql-client-ts.mdx" />
+    <Snippet />
   </Step>
 
   <Step title="Execute SQL">
@@ -12734,7 +14115,7 @@ Before you start, make sure you:
 
 ## Examples
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="E-commerce Store" icon="github" href="https://github.com/tursodatabase/examples/tree/master/app-the-mug-store">
     See the full source code
   </Card>
@@ -12750,7 +14131,7 @@ Source: https://docs.turso.tech/sdk/ts/guides/sveltekit
 
 Set up Turso in your SvelteKit project in minutes
 
-<img src="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/svelte-banner.png?fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=c5f43db5d48bf2eb2657f687d1f60fa2" alt="SvelteKit banner" data-og-width="1133" width="1133" data-og-height="595" height="595" data-path="images/guides/svelte-banner.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/svelte-banner.png?w=280&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=4732f954767bc40a9a61401d1aaf71a3 280w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/svelte-banner.png?w=560&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=1b44ab6d36b6d7bd05914e7cb0c5e408 560w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/svelte-banner.png?w=840&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=5b209f1aa1ccbdbfac645dc03f9bf41a 840w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/svelte-banner.png?w=1100&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=5bc36b6595ae2e6cda96680e98a7bffc 1100w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/svelte-banner.png?w=1650&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=b003cd9bdeb13d8f583e782fb07be7d2 1650w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/svelte-banner.png?w=2500&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=6739569534ee1a20e6ea67e6391ee8ab 2500w" />
+<img alt="SvelteKit banner" />
 
 ## Prerequisites
 
@@ -12762,11 +14143,11 @@ Before you start, make sure you:
 
 <Steps>
   <Step title="Install the libSQL SDK">
-    <Snippet file="install-libsql-client-ts.mdx" />
+    <Snippet />
   </Step>
 
   <Step title="Configure database credentials">
-    <Snippet file="retrieve-database-credentials.mdx" />
+    <Snippet />
   </Step>
 
   <Step title="Configure libSQL Client.">
@@ -12822,7 +14203,7 @@ Before you start, make sure you:
 
 ## Examples
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Blog" icon="github" href="https://github.com/tursodatabase/examples/tree/master/app-at-the-polls">
     See the full source code
   </Card>
@@ -12836,11 +14217,11 @@ Trace slow queries and capture SQL errors with Sentry.
 
 The [Sentry](https://sentry.io/integrations/turso) integration for `@libsql/client` provides tracing, breadcrumbs, and error handling for SQL queries.
 
-<Snippet file="technical-preview-banner.mdx" />
+<Snippet />
 
 ## Install
 
-```bash  theme={null}
+```bash theme={null}
 npm install sentry-integration-libsql-client
 ```
 
@@ -12848,7 +14229,7 @@ npm install sentry-integration-libsql-client
 
 Once you have a `@libsql/client` instance, you can integrate it with Sentry like this:
 
-```ts  theme={null}
+```ts theme={null}
 import * as Sentry from "@sentry/node";
 import { createClient } from "@libsql/client";
 import { libsqlIntegration } from "sentry-integration-libsql-client";
@@ -12876,7 +14257,7 @@ By default, everything is turned on. You can configure what you want by passing 
 | `breadcrumbs` | `true`  | Enable breadcrumbs for SQL queries.    |
 | `errors`      | `true`  | Enable error handling for SQL queries. |
 
-```ts  theme={null}
+```ts theme={null}
 Sentry.init({
   dsn: "...",
   integrations: [
@@ -12895,7 +14276,7 @@ Source: https://docs.turso.tech/sdk/ts/orm/drizzle
 
 Configure Drizzle to work with Turso
 
-<img src="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/drizzle-banner.png?fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=fa7f430abb2a3b3df72c6ca45649b099" alt="Drizzle banner" data-og-width="1133" width="1133" data-og-height="595" height="595" data-path="images/guides/drizzle-banner.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/drizzle-banner.png?w=280&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=26a0e032b82dd3f67c65acc2afbb8866 280w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/drizzle-banner.png?w=560&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=c2668f6d2dc51b4d3b5b077c81e983a2 560w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/drizzle-banner.png?w=840&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=3dd2356ee0d84cd04a535ecfe53e00f4 840w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/drizzle-banner.png?w=1100&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=2c5507db081b3fe193ba071007faa15c 1100w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/drizzle-banner.png?w=1650&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=b6fb550ab1756ba75a875e8e84af3917 1650w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/drizzle-banner.png?w=2500&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=95887a93a56c3151331382fb30fd71b0 2500w" />
+<img alt="Drizzle banner" />
 
 ## Prerequisites
 
@@ -12925,7 +14306,7 @@ Before you start, make sure you:
 
     Finish by updating `package.json` to include three new `scripts`:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "scripts": {
         "db:generate": "drizzle-kit generate",
@@ -12937,7 +14318,7 @@ Before you start, make sure you:
   </Step>
 
   <Step title="Retrieve database credentials">
-    <Snippet file="retrieve-database-credentials.mdx" />
+    <Snippet />
   </Step>
 
   <Step title="Create a Drizzle schema">
@@ -13008,19 +14389,19 @@ Before you start, make sure you:
 
     Whenever you make changes to the schema, run `db:generate`:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     npm run db:generate
     ```
 
     Now apply these changes to the database with `db:migrate`:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     npm run db:migrate
     ```
   </Step>
 
   <Step title="Query">
-    ```ts  theme={null}
+    ```ts theme={null}
     import { db } from "./db";
     import { fooTable } from "./schema";
 
@@ -13049,7 +14430,7 @@ You can extend Drizzle to support Turso's native vector — [learn more](/featur
   <Step title="Define custom vector type">
     Inside `db/schema.ts`, add the following:
 
-    ```typescript  theme={null}
+    ```typescript theme={null}
     import { sql } from "drizzle-orm";
     import { customType } from "drizzle-orm/sqlite-core";
 
@@ -13075,7 +14456,7 @@ You can extend Drizzle to support Turso's native vector — [learn more](/featur
   <Step title="Create a table with a vector column">
     Now where you define the schema, invoke `float32Array` to create a column that stores vectors:
 
-    ```typescript  theme={null}
+    ```typescript theme={null}
     import { sqliteTable, integer } from "drizzle-orm/sqlite-core";
 
     export const vectorTable = sqliteTable("vector_table", {
@@ -13088,7 +14469,7 @@ You can extend Drizzle to support Turso's native vector — [learn more](/featur
   <Step title="Create a vector index">
     You will need to use raw SQL to create the index:
 
-    ```typescript  theme={null}
+    ```typescript theme={null}
     import { drizzle } from "drizzle-orm/libsql";
     import { createClient } from "@libsql/client";
 
@@ -13108,7 +14489,7 @@ You can extend Drizzle to support Turso's native vector — [learn more](/featur
   </Step>
 
   <Step title="Insert vector data">
-    ```typescript  theme={null}
+    ```typescript theme={null}
     await db
       .insert(vectorTable)
       .values([{ vector: sql`vector32(${JSON.stringify([1.1, 2.2, 3.3])})` }]);
@@ -13118,7 +14499,7 @@ You can extend Drizzle to support Turso's native vector — [learn more](/featur
   <Step title="Query vector data">
     Calculate vector distance:
 
-    ```typescript  theme={null}
+    ```typescript theme={null}
     const res = await db
       .select({
         distance: sql<number>`vector_distance_cos(${vectorTable.vector}, vector32(${JSON.stringify([2.2, 3.3, 4.4])}))`,
@@ -13130,7 +14511,7 @@ You can extend Drizzle to support Turso's native vector — [learn more](/featur
 
     Perform efficient nearest neighbor search:
 
-    ```typescript  theme={null}
+    ```typescript theme={null}
     const topK = await db
       .select({
         id: sql`id`,
@@ -13154,7 +14535,7 @@ Source: https://docs.turso.tech/sdk/ts/orm/prisma
 
 Configure Prisma to work with your Turso database
 
-<img src="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/prisma-banner.png?fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=ce5d303037fe9f45a7918d238def83f4" alt="Prisma banner" data-og-width="1133" width="1133" data-og-height="595" height="595" data-path="images/guides/prisma-banner.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/prisma-banner.png?w=280&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=315f2189b2bfa2c923dfcbae4d437975 280w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/prisma-banner.png?w=560&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=2a348894cff62936b74e7616376e9ebb 560w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/prisma-banner.png?w=840&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=ef17ceb704249fa97a65ab4bfb137e02 840w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/prisma-banner.png?w=1100&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=f5db712d781e3ede9168634f133bf954 1100w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/prisma-banner.png?w=1650&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=91978e4b6add028766a8c3526551210c 1650w, https://mintcdn.com/turso/7mjM7fXIfeZ8ZwNC/images/guides/prisma-banner.png?w=2500&fit=max&auto=format&n=7mjM7fXIfeZ8ZwNC&q=85&s=4c5601571f1d730e298699fc26486063 2500w" />
+<img alt="Prisma banner" />
 
 ## Prerequisites
 
@@ -13182,7 +14563,7 @@ Before you start, make sure you:
   </Step>
 
   <Step title="Retrieve database credentials">
-    <Snippet file="retrieve-database-credentials.mdx" />
+    <Snippet />
   </Step>
 
   <Step title="Enable the `driverAdapters` preview feature flag:">
@@ -13254,7 +14635,7 @@ Before you start, make sure you:
 
     Then, apply the migration to your Turso database using the Turso's CLI
 
-    ```bash  theme={null}
+    ```bash theme={null}
     turso db shell turso-prisma-db < ./prisma/migrations/20230922132717_init/migration.sql
     ```
 
@@ -13264,7 +14645,7 @@ Before you start, make sure you:
   </Step>
 
   <Step title="Query">
-    ```ts  theme={null}
+    ```ts theme={null}
     const response = await prisma.table_name.findMany();
     ```
   </Step>
@@ -13287,25 +14668,25 @@ In this JavaScript quickstart we will learn how to:
   <Step title="Retrieve database credentials">
     You will need an existing database to continue. If you don't have one, [create one](/quickstart).
 
-    <Snippet file="retrieve-database-credentials.mdx" />
+    <Snippet />
 
     <Info>You will want to store these as environment variables.</Info>
   </Step>
 
   <Step title="Install @libsql/client">
-    <Snippet file="install-libsql-client-ts.mdx" />
+    <Snippet />
   </Step>
 
   <Step title="Initialize a new client">
     Next add your database URL and auth token:
 
-    <Snippet file="configure-libsql-client-ts.mdx" />
+    <Snippet />
   </Step>
 
   <Step title="Execute a query using SQL">
     You can execute a SQL query against your existing database by calling `execute()`:
 
-    ```ts  theme={null}
+    ```ts theme={null}
     await turso.execute("SELECT * FROM users");
     ```
 
@@ -13348,13 +14729,13 @@ The following runtime environments are known to be compatible:
 
 ## Installing
 
-<Snippet file="install-libsql-client-ts.mdx" />
+<Snippet />
 
 ## Initializing
 
 Import `createClient` to initialize a client that you can use to query your database:
 
-<Snippet file="configure-libsql-client-ts.mdx" />
+<Snippet />
 
 <br />
 
@@ -13405,13 +14786,13 @@ const client = createClient({
 });
 ```
 
-<Snippet file="embedded-replicas-warning.mdx" />
+<Snippet />
 
 ### Manual Sync
 
 The `sync()` function allows you to sync manually the local database with the remote counterpart:
 
-```ts  theme={null}
+```ts theme={null}
 await client.sync();
 ```
 
@@ -13434,7 +14815,7 @@ const client = createClient({
 
 To enable encryption on a SQLite file, pass the `encryptionKey`:
 
-<Snippet file="encryption-at-rest-typescript.mdx" />
+<Snippet />
 
 Encrypted databases appear as raw data and cannot be read as standard SQLite databases. You must use the libSQL client for any operations — [learn more](/libsql#encryption-at-rest).
 
@@ -13538,7 +14919,7 @@ libSQL supports the use of positional and named placeholders within SQL statemen
 
 A batch consists of multiple SQL statements executed sequentially within an implicit transaction. The backend handles the transaction: success commits all changes, while any failure results in a full rollback with no modifications.
 
-```ts  theme={null}
+```ts theme={null}
 const result = await client.batch(
   [
     {
@@ -13667,7 +15048,7 @@ Interactive transactions in SQLite ensure the consistency of a series of read an
 
 You can attach multiple databases to the current connection using the `ATTACH` attachment:
 
-```ts  theme={null}
+```ts theme={null}
 import { createClient } from "@libsql/client";
 
 const client = createClient({
@@ -13689,80 +15070,488 @@ const rs = await txn.execute("SELECT * FROM attached.users");
 </Info>
 
 
-# Sync with Turso Cloud
-Source: https://docs.turso.tech/sync/turso-cloud
+# Partial sync
+Source: https://docs.turso.tech/sync/partial
+
+Sync only what you need. Faster cold starts and lower bandwidth by lazily fetching database pages on demand.
+
+<Note>
+  This particular usage uses the Turso Cloud to sync the local Turso databases and assumes that you have an account.
+</Note>
+
+Partial sync lets your app open and use a database without downloading the entire file.
+The client lazily fetches pages of the database file from the Turso Cloud when a query touches data that is not present locally.
+This reduces startup time and network usage for large databases, while remaining fully compatible with the push/pull methods used
+by Turso's standard `sync` solution.
+
+<Note>
+  * Reads on not-yet-downloaded data transparently trigger on-demand page fetches.
+  * Writes still apply locally first and are pushed as logical statements.
+</Note>
+
+## Modes
+
+Two bootstrap strategies define what is present locally at connect time:
+
+* **Prefix bootstrap**: download the first N bytes of the database file.
+  * Good default when you want a minimal, predictable starting footprint.
+* **Query bootstrap**: download pages touched by running a server-side SQL query.
+  * Ideal to hydrate only a narrow working set (e.g., a single user's rows, small tables with metadata, references, etc).
+
+Both modes continue to lazily fetch missing pages on demand.
+
+### Prefix bootstrap
+
+<CodeGroup>
+  ```ts TypeScript theme={null}
+  import { connect } from '@tursodatabase/sync';
+
+  const db = await connect({
+    path: './app.db',
+    url: 'libsql://...',
+    authToken: process.env.TURSO_AUTH_TOKEN,
+    partialSync: {
+      bootstrapStrategy: { kind: 'prefix', length: 128 * 1024 }, // 128 KiB
+    },
+  });
+  ```
+
+  ```py Python theme={null}
+  import os
+  import turso.sync
+
+  conn = turso.sync.connect(
+      path="./app.db",
+      remote_url="libsql://...",
+      remote_auth_token=os.environ["TURSO_AUTH_TOKEN"],
+      partial_sync_opts=turso.sync.PartialSyncOpts(
+          bootstrap_strategy=turso.sync.PartialSyncPrefixBootstrap(length=128 * 1024),
+      ),
+  )
+  ```
+
+  ```go Go theme={null}
+  import (
+  	"turso"
+  )
+
+  db, err := turso.NewTursoSyncDb(context.Background(), turso.TursoSyncDbConfig{
+    Path:            "./app.db",
+    RemoteUrl:       "libsql://...",
+    RemoteAuthToken: os.Getenv("TURSO_AUTH_TOKEN"),
+    PartialSyncConfig: turso.TursoPartialSyncConfig{
+      BoostrapStrategyPrefix: 128 * 1024, // 128 KiB
+    },
+  })
+  ```
+</CodeGroup>
+
+### Query bootstrap
+
+<CodeGroup>
+  ```ts TypeScript theme={null}
+  import { connect } from '@tursodatabase/sync';
+
+  const db = await connect({
+    path: './app.db',
+    url: 'libsql://...',
+    authToken: process.env.TURSO_AUTH_TOKEN,
+    partialSync: {
+      bootstrapStrategy: {
+        kind: 'query',
+        query: `SELECT * FROM messages WHERE user_id = 'u_123' LIMIT 100`,
+      },
+    },
+  });
+  ```
+
+  ```py Python theme={null}
+  import turso.sync
+
+  conn = turso.sync.connect(
+      path=":memory:",
+      remote_url="libsql://...",
+      partial_sync_opts=turso.sync.PartialSyncOpts(
+          bootstrap_strategy=turso.sync.PartialSyncQueryBootstrap(
+              query="SELECT * FROM messages WHERE user_id = 'u_123' LIMIT 100"
+          ),
+      ),
+  )
+  ```
+
+  ```go Go theme={null}
+  import (
+  	"turso"
+  )
+
+  db, err := turso.NewTursoSyncDb(context.Background(), turso.TursoSyncDbConfig{
+    Path:            "./app.db",
+    RemoteUrl:       "libsql://...",
+    RemoteAuthToken: os.Getenv("TURSO_AUTH_TOKEN"),
+    PartialSyncConfig: turso.TursoPartialSyncConfig{
+      BoostrapStrategyQuery: "SELECT * FROM messages WHERE user_id = 'u_123' LIMIT 100",
+    },
+  })
+  ```
+</CodeGroup>
+
+## Optimizations
+
+### Segment size (batched lazy reads)
+
+<Frame>
+  <img alt="segment size" />
+</Frame>
+
+When the client needs a page that isn’t present locally, partial sync performs an on-demand fetch from the remote database.
+To reduce round-trips and speed up these fetches, you can configure the **segment size**: instead of requesting a single page, the client downloads a whole *segment* of pages in one request.
+
+This lets the client amortize network overhead and hydrate nearby pages that are likely to be accessed soon.
+
+**How it works**
+
+Suppose your database has:
+
+* `page_size = 4 KiB`
+* `segment_size = 16 KiB`
+
+If a local query touches page **6**, the client computes the segment that page belongs to:
+
+* 16 KiB segment = 4 pages
+* Segment covering page 6 = pages **5-8**
+
+The client then fetches all four pages in a single request and stores them locally.
+Future reads to those pages incur no additional network cost.
+
+**Benefits**
+
+* Fewer HTTP requests (one segment fetch vs. many single-page fetches)
+* Faster hydration of hot ranges
+* Better performance for workloads with spatial locality (e.g., range scans, index lookups)
+
+**Default**
+
+The default `segment_size` is **128 KiB** (typically 32 pages on a 4 KiB page size), which provides a good balance between request overhead and total bytes transferred.
+
+<Tip>
+  If your workload touches data in tight clusters (e.g., reading several adjacent rows), larger segment sizes can significantly improve performance.
+
+  Conversely, very sparse/random-access workloads may benefit from smaller segment sizes.
+</Tip>
+
+<CodeGroup>
+  ```ts TypeScript theme={null}
+  await connect({
+    ...
+    partialSync: {
+      bootstrapStrategy: { kind: 'prefix', length: 128 * 1024 }, // 128 KiB
+      segmentSize: 16 * 1024,
+    },
+  });
+  ```
+
+  ```py Python theme={null}
+  turso.sync.connect(
+      ...
+      partial_sync_opts=turso.sync.PartialSyncOpts(
+          bootstrap_strategy=turso.sync.PartialSyncPrefixBootstrap(length=128 * 1024),
+          segment_size=16 * 1024,
+      ),
+  )
+  ```
+
+  ```go Go theme={null}
+  turso.NewTursoSyncDb(context.Background(), turso.TursoSyncDbConfig{
+    ...
+    PartialSyncConfig: turso.TursoPartialSyncConfig{
+      BoostrapStrategyPrefix: 128 * 1024, // 128 KiB
+      SegmentSize: 16 * 1024,
+    },
+  })
+  ```
+</CodeGroup>
+
+### Prefetch
+
+<Frame>
+  <img alt="prefetch" />
+</Frame>
+
+Prefetch is an optional optimization that builds on top of lazy page fetches.
+When enabled, the client not only retrieves the pages required by the current query, but also **inspects the structure of the newly downloaded pages and recent access patterns** to predict which pages are likely to be needed next.
+
+If the client detects a natural continuation of the access pattern — such as child pages referenced by an internal B-tree node — it proactively downloads those pages in advance.
+This reduces the number of future on-demand fetches and helps avoid stalls during operations like range scans, index walks, or sequential lookups.
+
+<CodeGroup>
+  ```ts TypeScript theme={null}
+  await connect({
+    ...
+    partialSync: {
+      bootstrapStrategy: { kind: 'prefix', length: 128 * 1024 }, // 128 KiB
+      prefetch: true,
+    },
+  });
+  ```
+
+  ```py Python theme={null}
+  turso.sync.connect(
+      ...
+      partial_sync_opts=turso.sync.PartialSyncOpts(
+          bootstrap_strategy=turso.sync.PartialSyncPrefixBootstrap(length=128 * 1024),
+          prefetch=True,
+      ),
+  )
+  ```
+
+  ```go Go theme={null}
+  turso.NewTursoSyncDb(context.Background(), turso.TursoSyncDbConfig{
+    ...
+    PartialSyncConfig: turso.TursoPartialSyncConfig{
+      BoostrapStrategyPrefix: 128 * 1024, // 128 KiB
+      Prefetch: true,
+    },
+  })
+  ```
+</CodeGroup>
+
+<Note>
+  `segment_size` and `prefetch` are complementary.
+
+  Segment size batches nearby pages into a single on-demand fetch, while prefetch looks at the query's access pattern and proactively fetches additional pages likely to be needed next.
+
+  Using both together can provide the best performance for real-world workloads.
+</Note>
 
 
+# Usage
+Source: https://docs.turso.tech/sync/usage
 
-## Quickstart
+How to enable and use sync with Turso across TypeScript, Python, and Go.
+
+This guide shows how to set up a Turso database and use the sync features from your application.
+
+<Note>
+  This particular usage uses the Turso Cloud to sync the local Turso databases and assumes that you have an account.
+</Note>
 
 <Steps>
-  <Step title="Installation">
-    Install the Turso Sync package:
+  <Step title="1. Setup Turso Cloud database">
+    * Follow our [Quickstart](/quickstart) to install the CLI, create a database
 
-    ```bash  theme={null}
-    npm install @tursodatabase/sync
+    * Get the database URL (`libsql://...`):
+
+    ```
+    turso db show <db>
+    ```
+
+    * Create a token for your app:
+
+    ```
+    turso db tokens create <db>
     ```
   </Step>
 
-  <Step title="Getting Started">
-    To sync a database hosted at Turso Cloud:
+  <Step title="2. Setup a basic connection with sync">
+    You need three essentials to enable sync:
 
-    ```javascript  theme={null}
-    import { connect } from "@tursodatabase/sync";
+    * Local path: where the local, synced tursodb file is stored
+    * Remote URL: your Turso Cloud URL (`libsql://...`)
+    * Auth token: Turso Cloud token to authenticate requests
 
-    const db = await connect({
-      path: "local.db", // path used as a prefix for local files created by sync-engine
-      url: "https://<db>.turso.io", // URL of the remote database: turso db show <db>
-      authToken: "...", // auth token issued from the Turso Cloud: turso db tokens create <db>
-      clientName: "turso-sync-example", // arbitrary client name
-    });
-    ```
+    <CodeGroup>
+      ```ts TypeScript theme={null}
+      import { connect } from '@tursodatabase/sync';
+
+      const db = await connect({
+        path: './app.db',                               // local path
+        url: 'libsql://...',                            // remote URL (generated with turso db show <db-name> --url)
+        authToken: process.env.TURSO_AUTH_TOKEN,        // authentication token (generated with turso db tokens create <db-name>)
+        // longPollTimeoutMs: 10_000,                   // optional: server waits before replying to pull
+        // bootstrapIfEmpty: false,                     // set to false to avoid bootstrapping on first run
+      });
+      ```
+
+      ```py Python theme={null}
+      import os
+      import turso.sync
+
+      conn = turso.sync.connect(
+          path="./app.db",                                  # local path
+          remote_url="libsql://...",                        # remote URL (generated with turso db show <db-name> --url)
+          remote_auth_token=os.environ["TURSO_AUTH_TOKEN"], # authentication token (generated with turso db tokens create <db-name>)
+          # long_poll_timeout_ms=10_000,                    # optional: server waits before replying to pull
+          # bootstrap_if_empty=False,                       # set to false to avoid bootstrapping on first run
+      )
+      ```
+
+      ```go Go theme={null}
+      package main
+
+      import (
+      	"turso"
+      )
+
+      db, err := turso.NewTursoSyncDb(ctx, turso.TursoSyncDbConfig{
+        Path:              "./app.db",                    // local path
+        RemoteUrl:         "libsql://...",                // remote URL (generated with turso db show <db-name> --url)
+        RemoteAuthToken:   os.Getenv("TURSO_AUTH_TOKEN"), // authentication token (generated with turso db tokens create <db-name>)
+        // LongPollTimeoutMs: 10_000,                     // optional: server waits before replying to pull
+        // BootstrapIfEmpty: false,                       // set to false to avoid bootstrapping on first run
+      })
+      ```
+    </CodeGroup>
+
+    <Note>
+      On the first run, the local database is automatically bootstrapped from the remote — so the remote must be reachable during the initial connect.
+
+      If you set `bootstrap_if_empty` to `false`, the local database will start empty instead.
+      You can bootstrap or update it later at any time by explicitly calling `pull()`.
+    </Note>
   </Step>
 
-  <Step title="Sync Operations">
-    The `db` object has the same functions as the `Database` class from `@tursodatabase/database` package but adds additional methods for sync:
+  <Step title="3. Push changes">
+    Push sends your local changes to the Turso Cloud server. Under the hood, logical statements are sent, and on conflicts the strategy is "last push wins".
 
-    ```javascript  theme={null}
-    // Pull changes from the remote database
-    await db.pull();
+    <CodeGroup>
+      ```ts TypeScript theme={null}
+      await db.exec("CREATE TABLE IF NOT EXISTS notes(id TEXT PRIMARY KEY, body TEXT)");
+      await db.exec("INSERT INTO notes VALUES ('n1', 'hello')");
 
-    // Push local changes to the remote database
-    await db.push();
+      await db.push();
+      ```
 
-    // Pull and push changes in one operation
-    await db.sync();
-    ```
+      ```py Python theme={null}
+      conn.execute("CREATE TABLE IF NOT EXISTS notes(id TEXT PRIMARY KEY, body TEXT)")
+      conn.commit()
+      conn.execute("INSERT INTO notes VALUES ('n1', 'hello')")
+      conn.commit()
+
+      conn.push()
+      ```
+
+      ```go Go theme={null}
+      // create *sql.DB instance
+      conn, err := db.Connect(ctx)
+      if err != nil {
+        return err
+      }
+
+      _, err = conn.ExecContext(ctx, "CREATE TABLE IF NOT EXISTS notes(id TEXT PRIMARY KEY, body TEXT)")
+      if err != nil {
+        return err
+      }
+      _, err = conn.ExecContext(ctx, "INSERT INTO notes VALUES ('n1', 'hello')")
+      if err != nil {
+        return err
+      }
+
+      if err := db.Push(ctx); err != nil {
+      	return err
+      }
+      ```
+    </CodeGroup>
   </Step>
 
-  <Step title="Working with Data">
-    You can perform regular database operations alongside sync:
+  <Step title="4. Pull changes">
+    Pull fetches remote changes and applies them locally. It returns a boolean indicating whether anything changed.
 
-    ```javascript  theme={null}
-    // Execute SQL statements
-    await db.execute(
-      "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY, name TEXT)",
-    );
+    * Configure `long_poll_timeout_ms`/`LongPollTimeoutMs` if you want the server to wait for changes and avoid empty replies.
+    * If you pushed earlier, a subsequent pull can still return that something changed due to server-side conflict resolution frames.
 
-    // Insert data
-    await db.execute("INSERT INTO users (name) VALUES (?)", ["Alice"]);
+    <CodeGroup>
+      ```ts TypeScript theme={null}
+      // Returns true if anything changed locally
+      const changed = await db.pull();
+      console.info('pulled changes:', changed);
+      ```
 
-    // Query data
-    const result = await db.execute("SELECT * FROM users");
-    console.log(result.rows);
+      ```py Python theme={null}
+      changed = conn.pull()
+      print("pulled changes:", changed)
+      ```
 
-    // Sync changes with remote
-    await db.sync();
-    ```
+      ```go Go theme={null}
+      changed, err := db.Pull(ctx)
+      if err != nil {
+      	return err
+      }
+      log.Println("pulled changes:", changed)
+      ```
+    </CodeGroup>
+  </Step>
+
+  <Step title="5. Checkpoint">
+    Checkpoint compacts the local WAL to bound local disk usage while preserving sync state.
+
+    <CodeGroup>
+      ```ts TypeScript theme={null}
+      await db.checkpoint();
+      ```
+
+      ```py Python theme={null}
+      conn.checkpoint()
+      ```
+
+      ```go Go theme={null}
+      if err := db.Checkpoint(ctx); err != nil {
+      	return err
+      }
+      ```
+    </CodeGroup>
+  </Step>
+
+  <Step title="6. Stats">
+    Stats help you observe sync behavior and usage (WAL sizes, last push/pull times, network usage, revision, etc.).
+
+    <CodeGroup>
+      ```ts TypeScript theme={null}
+      const s = await db.stats();
+      console.info({
+        cdcOperations: s.cdcOperations,
+        mainWalSize: s.mainWalSize,
+        revertWalSize: s.revertWalSize,
+        networkReceivedBytes: s.networkReceivedBytes,
+        networkSentBytes: s.networkSentBytes,
+        lastPullUnixTime: s.lastPullUnixTime,
+        lastPushUnixTime: s.lastPushUnixTime,
+        revision: s.revision,
+      });
+      ```
+
+      ```py Python theme={null}
+      s = conn.stats()
+      print({
+          "cdc_operations": s.cdc_operations,
+          "main_wal_size": s.main_wal_size,
+          "revert_wal_size": s.revert_wal_size,
+          "network_received_bytes": s.network_received_bytes,
+          "network_sent_bytes": s.network_sent_bytes,
+          "last_pull_unix_time": s.last_pull_unix_time,
+          "last_push_unix_time": s.last_push_unix_time,
+          "revision": s.revision,
+      })
+      ```
+
+      ```go Go theme={null}
+      s, err := db.Stats(ctx)
+      if err != nil {
+      	return err
+      }
+      log.Printf("stats: cdc=%v, main=%d revert=%d rx=%d tx=%d pull=%d push=%d revision=%s",
+        s.CdcOperations,
+        s.MainWalSize,
+        s.RevertWalSize,
+        s.NetworkReceivedBytes,
+        s.NetworkSentBytes,
+        s.LastPullUnixTime,
+        s.LastPushUnixTime,
+        s.Revision,
+      )
+      ```
+    </CodeGroup>
   </Step>
 </Steps>
-
-## Examples
-
-Explore these Sync examples to learn more about using Turso Sync + Cloud:
-
-* [Node](https://github.com/tursodatabase/turso/blob/main/examples/javascript/sync-node) — Node.js with bidirectional sync to Turso Cloud
-* [Wasm + Vite](https://github.com/tursodatabase/turso/blob/main/examples/javascript/sync-wasm-vite) — Browser (WASM) with bidirectional sync to Turso Cloud
 
 
 # Turso Cloud Documentation
@@ -13778,24 +15567,24 @@ Your fully managed SQLite-compatible database platform built on libSQL
 
 Turso Cloud is your fully managed SQLite-compatible database platform, designed to scale from prototype to production. Built on [libSQL](/libsql), Turso Cloud provides the performance and reliability of SQLite with the convenience and scalability of a modern cloud database service.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card
     title="Vector Search"
     icon={
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke-width="1.5"
-      stroke="#1ebca1"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"
-      />
-    </svg>
-  }
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="1.5"
+    stroke="#1ebca1"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z"
+    />
+  </svg>
+}
     href="/features/ai-and-embeddings"
   >
     Native similarity search for AI apps and RAG workflows, no extensions
@@ -13805,33 +15594,33 @@ Turso Cloud is your fully managed SQLite-compatible database platform, designed 
   <Card
     title="Replication & Sync"
     icon={
-    <svg viewBox="0 0 216 216" xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="m25.3 114.3 15.9 48c1.5 4.5 5 8 9.5 9.5l48 15.9c5.3 1.8 11.2.4 15.2-3.6l76.7-76.7c3-3 4.6-7.1 4.3-11.4l-3.7-64c-.3-5.5-4.7-10-10.3-10.3l-64-3.7c-4.2-.2-8.4 1.3-11.4 4.3l-76.6 76.8c-4 4-5.4 9.9-3.6 15.2z"
-        fill="none"
-        stroke="#1ebca1"
-        stroke-miterlimit="10"
-        stroke-width="19.2"
-      />
-      <path
-        d="m119.2 82.2 6.5-1.5c2.9-.7 5.8 1.2 6.5 4.1.2.8.2 1.6 0 2.4l-1.5 6.5c-3.3 12.4-21.1 8.4-18.8-4.2.8-3.8 3.8-6.5 7.3-7.3z"
-        fill="#1ebca1"
-      />
-      <path
-        d="m21.1 191.8 99.8-99.8"
-        fill="none"
-        stroke="#1ebca1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="19.2"
-      />
-      <g fill="#1ebca1">
-        <path d="m141.8 142.4c-1.4 1.4-3.5 1.9-5.4 1.3l-13.3-4.4c-2-.7-4.3-.1-5.8 1.4l-8.9 8.9c-1.8 1.8-1.1 4.8 1.3 5.6l20.6 6.8c8.9 2.9 18.4.6 25-5.9" />
-        <path d="m107 177.2c-1.4 1.4-3.5 1.9-5.4 1.3l-14.6-4.8c-1.2-.4-2.5 0-3.4.8l-9.9 9.9c-1.8 1.8-1.1 4.8 1.3 5.6l20.6 6.8c8.9 2.9 18.4.6 25-5.9" />
-        <path d="m175.2 109c-1.4 1.4-3.5 1.9-5.4 1.3l-13.3-4.4c-2-.7-4.3-.1-5.8 1.4l-8.9 8.9c-1.8 1.8-1.1 4.8 1.3 5.6l20.6 6.8c8.9 2.9 18.4.6 25-5.9" />
-      </g>
-    </svg>
-  }
+  <svg viewBox="0 0 216 216" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="m25.3 114.3 15.9 48c1.5 4.5 5 8 9.5 9.5l48 15.9c5.3 1.8 11.2.4 15.2-3.6l76.7-76.7c3-3 4.6-7.1 4.3-11.4l-3.7-64c-.3-5.5-4.7-10-10.3-10.3l-64-3.7c-4.2-.2-8.4 1.3-11.4 4.3l-76.6 76.8c-4 4-5.4 9.9-3.6 15.2z"
+      fill="none"
+      stroke="#1ebca1"
+      stroke-miterlimit="10"
+      stroke-width="19.2"
+    />
+    <path
+      d="m119.2 82.2 6.5-1.5c2.9-.7 5.8 1.2 6.5 4.1.2.8.2 1.6 0 2.4l-1.5 6.5c-3.3 12.4-21.1 8.4-18.8-4.2.8-3.8 3.8-6.5 7.3-7.3z"
+      fill="#1ebca1"
+    />
+    <path
+      d="m21.1 191.8 99.8-99.8"
+      fill="none"
+      stroke="#1ebca1"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="19.2"
+    />
+    <g fill="#1ebca1">
+      <path d="m141.8 142.4c-1.4 1.4-3.5 1.9-5.4 1.3l-13.3-4.4c-2-.7-4.3-.1-5.8 1.4l-8.9 8.9c-1.8 1.8-1.1 4.8 1.3 5.6l20.6 6.8c8.9 2.9 18.4.6 25-5.9" />
+      <path d="m107 177.2c-1.4 1.4-3.5 1.9-5.4 1.3l-14.6-4.8c-1.2-.4-2.5 0-3.4.8l-9.9 9.9c-1.8 1.8-1.1 4.8 1.3 5.6l20.6 6.8c8.9 2.9 18.4.6 25-5.9" />
+      <path d="m175.2 109c-1.4 1.4-3.5 1.9-5.4 1.3l-13.3-4.4c-2-.7-4.3-.1-5.8 1.4l-8.9 8.9c-1.8 1.8-1.1 4.8 1.3 5.6l20.6 6.8c8.9 2.9 18.4.6 25-5.9" />
+    </g>
+  </svg>
+}
     href="/features/embedded-replicas/introduction"
   >
     Keep devices in sync with each other on demand with Turso Cloud.
@@ -13840,20 +15629,20 @@ Turso Cloud is your fully managed SQLite-compatible database platform, designed 
   <Card
     title="Branching"
     icon={
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke-width="1.5"
-      stroke="#1ebca1"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z"
-      />
-    </svg>
-  }
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="1.5"
+    stroke="#1ebca1"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z"
+    />
+  </svg>
+}
     href="/features/branching"
   >
     Create isolated Copy-on-Write branches super fast.
@@ -13862,41 +15651,63 @@ Turso Cloud is your fully managed SQLite-compatible database platform, designed 
   <Card
     title="Analytics"
     icon={
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke-width="1.5"
-      stroke="#1ebca1"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"
-      />
-    </svg>
-  }
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="1.5"
+    stroke="#1ebca1"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"
+    />
+  </svg>
+}
   >
     Monitor performance and usage across databases.
   </Card>
 
   <Card
+    title="Per-Database Encryption"
+    icon={
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="1.5"
+    stroke="#1ebca1"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"
+    />
+  </svg>
+}
+    href="/cloud/encryption"
+  >
+    Keep sensitive data private with keys only you control.
+  </Card>
+
+  <Card
     title="Team Access"
     icon={
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke-width="1.5"
-      stroke="#1ebca1"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"
-      />
-    </svg>
-  }
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="1.5"
+    stroke="#1ebca1"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"
+    />
+  </svg>
+}
   >
     Collaborate on databases with members, and manage access permissions.
   </Card>
@@ -13904,40 +15715,40 @@ Turso Cloud is your fully managed SQLite-compatible database platform, designed 
   <Card
     title="Fully Managed"
     icon={
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke-width="1.5"
-      stroke="#1ebca1"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"
-      />
-    </svg>
-  }
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="1.5"
+    stroke="#1ebca1"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"
+    />
+  </svg>
+}
   >
     We handle infrastructure, scaling, and security.
   </Card>
 
   <Card
     icon={
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke-width="1.5"
-      stroke="#1ebca1"
-    >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"
-      />
-    </svg>
-  }
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="1.5"
+    stroke="#1ebca1"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3"
+    />
+  </svg>
+}
     title="Backups and Recovery"
     href="/features/point-in-time-recovery"
   >
@@ -13949,7 +15760,7 @@ Turso Cloud is your fully managed SQLite-compatible database platform, designed 
 
 Learn how to manage, distribute and integrate your databases with the CLI, API and SDKs.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Turso CLI" icon="terminal" href="/cli">
     Manage groups, databases, and API tokens with the Turso CLI.
   </Card>
@@ -13961,33 +15772,33 @@ Learn how to manage, distribute and integrate your databases with the CLI, API a
   <Card
     title="Client SDKs"
     icon={
-    <svg viewBox="0 0 216 216" xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="m25.3 114.3 15.9 48c1.5 4.5 5 8 9.5 9.5l48 15.9c5.3 1.8 11.2.4 15.2-3.6l76.7-76.7c3-3 4.6-7.1 4.3-11.4l-3.7-64c-.3-5.5-4.7-10-10.3-10.3l-64-3.7c-4.2-.2-8.4 1.3-11.4 4.3l-76.6 76.8c-4 4-5.4 9.9-3.6 15.2z"
-        fill="none"
-        stroke="#1ebca1"
-        stroke-miterlimit="10"
-        stroke-width="19.2"
-      />
-      <path
-        d="m119.2 82.2 6.5-1.5c2.9-.7 5.8 1.2 6.5 4.1.2.8.2 1.6 0 2.4l-1.5 6.5c-3.3 12.4-21.1 8.4-18.8-4.2.8-3.8 3.8-6.5 7.3-7.3z"
-        fill="#1ebca1"
-      />
-      <path
-        d="m21.1 191.8 99.8-99.8"
-        fill="none"
-        stroke="#1ebca1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        stroke-width="19.2"
-      />
-      <g fill="#1ebca1">
-        <path d="m141.8 142.4c-1.4 1.4-3.5 1.9-5.4 1.3l-13.3-4.4c-2-.7-4.3-.1-5.8 1.4l-8.9 8.9c-1.8 1.8-1.1 4.8 1.3 5.6l20.6 6.8c8.9 2.9 18.4.6 25-5.9" />
-        <path d="m107 177.2c-1.4 1.4-3.5 1.9-5.4 1.3l-14.6-4.8c-1.2-.4-2.5 0-3.4.8l-9.9 9.9c-1.8 1.8-1.1 4.8 1.3 5.6l20.6 6.8c8.9 2.9 18.4.6 25-5.9" />
-        <path d="m175.2 109c-1.4 1.4-3.5 1.9-5.4 1.3l-13.3-4.4c-2-.7-4.3-.1-5.8 1.4l-8.9 8.9c-1.8 1.8-1.1 4.8 1.3 5.6l20.6 6.8c8.9 2.9 18.4.6 25-5.9" />
-      </g>
-    </svg>
-  }
+  <svg viewBox="0 0 216 216" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="m25.3 114.3 15.9 48c1.5 4.5 5 8 9.5 9.5l48 15.9c5.3 1.8 11.2.4 15.2-3.6l76.7-76.7c3-3 4.6-7.1 4.3-11.4l-3.7-64c-.3-5.5-4.7-10-10.3-10.3l-64-3.7c-4.2-.2-8.4 1.3-11.4 4.3l-76.6 76.8c-4 4-5.4 9.9-3.6 15.2z"
+      fill="none"
+      stroke="#1ebca1"
+      stroke-miterlimit="10"
+      stroke-width="19.2"
+    />
+    <path
+      d="m119.2 82.2 6.5-1.5c2.9-.7 5.8 1.2 6.5 4.1.2.8.2 1.6 0 2.4l-1.5 6.5c-3.3 12.4-21.1 8.4-18.8-4.2.8-3.8 3.8-6.5 7.3-7.3z"
+      fill="#1ebca1"
+    />
+    <path
+      d="m21.1 191.8 99.8-99.8"
+      fill="none"
+      stroke="#1ebca1"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="19.2"
+    />
+    <g fill="#1ebca1">
+      <path d="m141.8 142.4c-1.4 1.4-3.5 1.9-5.4 1.3l-13.3-4.4c-2-.7-4.3-.1-5.8 1.4l-8.9 8.9c-1.8 1.8-1.1 4.8 1.3 5.6l20.6 6.8c8.9 2.9 18.4.6 25-5.9" />
+      <path d="m107 177.2c-1.4 1.4-3.5 1.9-5.4 1.3l-14.6-4.8c-1.2-.4-2.5 0-3.4.8l-9.9 9.9c-1.8 1.8-1.1 4.8 1.3 5.6l20.6 6.8c8.9 2.9 18.4.6 25-5.9" />
+      <path d="m175.2 109c-1.4 1.4-3.5 1.9-5.4 1.3l-13.3-4.4c-2-.7-4.3-.1-5.8 1.4l-8.9 8.9c-1.8 1.8-1.1 4.8 1.3 5.6l20.6 6.8c8.9 2.9 18.4.6 25-5.9" />
+    </g>
+  </svg>
+}
     href="/sdk"
   >
     Connect and integrate Turso into your application with one of our libSQL
@@ -14001,10 +15812,10 @@ Learn how to manage, distribute and integrate your databases with the CLI, API a
 
 ## Community
 
-Join the Turso community to ask questions, share what you're working on, discuss best practices, and share tips on [Discord](https://discord.gg/turso), [Twitter](https://twitter.com/tursodatabase), and [LinkedIn](https://www.linkedin.com/company/turso).
+Join the Turso community to ask questions, share what you're working on, discuss best practices, and share tips on [Discord](https://tur.so/discord), [Twitter](https://twitter.com/tursodatabase), and [LinkedIn](https://www.linkedin.com/company/turso).
 
-<CardGroup cols={3}>
-  <Card title="Discord" icon="discord" href="https://discord.gg/turso" />
+<CardGroup>
+  <Card title="Discord" icon="discord" href="https://tur.so/discord" />
 
   <Card title="GitHub" icon="star" href="https://github.com/tursodatabase" />
 
@@ -14034,7 +15845,7 @@ Turso Database provides native encryption for data at rest using industry-standa
 
 Turso Database with encryption is perfect for:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Fintech Applications" icon="credit-card">
     Meet regulatory requirements for sensitive financial data
   </Card>
@@ -14054,7 +15865,7 @@ Turso Database with encryption is perfect for:
 
 ## What's Encrypted
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Encrypted" icon="lock">
     * All database pages with your data - The database file - Write-Ahead Log
       (WAL) file
@@ -14073,7 +15884,7 @@ Generate a secure encryption key in hexadecimal format. The key size depends on 
   <Tab title="256-bit (32 bytes)">
     For AEGIS-256 variants and AES-256-GCM:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     openssl rand -hex 32
     ```
 
@@ -14087,7 +15898,7 @@ Generate a secure encryption key in hexadecimal format. The key size depends on 
   <Tab title="128-bit (16 bytes)">
     For AEGIS-128 variants and AES-128-GCM:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     openssl rand -hex 16
     ```
 
@@ -14110,7 +15921,7 @@ Generate a secure encryption key in hexadecimal format. The key size depends on 
   <Step title="Launch with encryption">
     Use the `--experimental-encryption` flag and specify your cipher and key in the connection URI:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     tursodb --experimental-encryption "file:encrypted.db?cipher=aegis256&hexkey=YOUR_HEX_KEY"
     ```
 
@@ -14120,7 +15931,7 @@ Generate a secure encryption key in hexadecimal format. The key size depends on 
   <Step title="Create and insert data">
     Once in the interactive shell, create a table and insert some data:
 
-    ```sql  theme={null}
+    ```sql theme={null}
     CREATE TABLE secrets (id INT, data TEXT);
     INSERT INTO secrets VALUES (1, 'sensitive information');
     INSERT INTO secrets VALUES (2, 'confidential data');
@@ -14130,7 +15941,7 @@ Generate a secure encryption key in hexadecimal format. The key size depends on 
   <Step title="Verify encryption">
     Exit the shell (type `.quit`) and try to open the database without the key:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     tursodb encrypted.db
     ```
 
@@ -14142,13 +15953,13 @@ Generate a secure encryption key in hexadecimal format. The key size depends on 
 
 To access an existing encrypted database, provide the same cipher and key used during creation:
 
-```bash  theme={null}
+```bash theme={null}
 tursodb --experimental-encryption "file:encrypted.db?cipher=aegis256&hexkey=YOUR_HEX_KEY"
 ```
 
 Then query your data:
 
-```sql  theme={null}
+```sql theme={null}
 SELECT * FROM secrets;
 ```
 
@@ -14201,7 +16012,7 @@ file:database.db?cipher=CIPHER&hexkey=HEX_KEY
 
 **Example URIs:**
 
-```bash  theme={null}
+```bash theme={null}
 # AEGIS-256 with 256-bit key
 file:encrypted.db?cipher=aegis256&hexkey=2d7a30108d3eb3e45c90a732041fe54778bdcf707c76749fab7da335d1b39c1d
 
@@ -14241,7 +16052,7 @@ Source: https://docs.turso.tech/tursodb/quickstart
   <Step title="Install">
     <Tabs>
       <Tab title="macOS / Linux">
-        ```bash  theme={null}
+        ```bash theme={null}
         curl --proto '=https' --tlsv1.2 -LsSf https://github.com/tursodatabase/turso/releases/latest/download/turso_cli-installer.sh | sh
         ```
       </Tab>
@@ -14249,7 +16060,7 @@ Source: https://docs.turso.tech/tursodb/quickstart
       <Tab title="Windows">
         Run the following command in PowerShell:
 
-        ```powershell  theme={null}
+        ```powershell theme={null}
         irm https://github.com/tursodatabase/turso/releases/latest/download/turso_cli-installer.ps1 | iex
         ```
 
@@ -14261,7 +16072,7 @@ Source: https://docs.turso.tech/tursodb/quickstart
   <Step title="Launch">
     Then launch the interactive shell:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     tursodb
     ```
 
@@ -14283,7 +16094,7 @@ Source: https://docs.turso.tech/tursodb/quickstart
       <Accordion title="Create a table">
         Create a table for users:
 
-        ```sql  theme={null}
+        ```sql theme={null}
         CREATE TABLE users (id INT, username TEXT);
         ```
       </Accordion>
@@ -14291,7 +16102,7 @@ Source: https://docs.turso.tech/tursodb/quickstart
       <Accordion title="Insert data">
         Insert some data into the users table:
 
-        ```sql  theme={null}
+        ```sql theme={null}
         INSERT INTO users VALUES (1, 'alice');
         INSERT INTO users VALUES (2, 'bob');
         ```
@@ -14300,7 +16111,7 @@ Source: https://docs.turso.tech/tursodb/quickstart
       <Accordion title="Query data">
         Query all users from the table:
 
-        ```sql  theme={null}
+        ```sql theme={null}
         SELECT * FROM users;
         ```
 

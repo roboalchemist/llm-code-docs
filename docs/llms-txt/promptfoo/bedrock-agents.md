@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/bedrock-agents/
+
 # AWS Bedrock Agents
 
 The AWS Bedrock Agents provider enables you to test and evaluate AI agents built with Amazon Bedrock Agents. Amazon Bedrock Agents uses the reasoning of foundation models (FMs), APIs, and data to break down user requests, gathers relevant information, and efficiently completes tasks—freeing teams to focus on high-value work.

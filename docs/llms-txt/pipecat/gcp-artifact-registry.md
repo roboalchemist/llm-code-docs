@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/container-registries/gcp-artifact-registry.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # GCP Artifact Registry
 
 > Deploy Pipecat Cloud agents using Google Cloud Artifact Registry
@@ -75,8 +79,3 @@ Replace the following placeholders with your actual values:
     Registry Reader` role or equivalent permissions to pull images from your
   private repository.
 </Note>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

@@ -7,7 +7,6 @@ description: >-
   feature flags, configuration changes, and other modifications to your
   services.
 breadcrumbs: Docs > Change Tracking
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Change Tracking
@@ -115,6 +114,35 @@ To see relevant changes within the timeline and as overlays on your dashboard, e
 1. Click **Show Overlays** at the top of the page to enable the change timeline and change overlays on supported widgets.
 1. Hover over any change indicator or overlay to view a summary of the change.
 1. Click the change indicator or overlay to view detailed information and take remediation actions.
+
+### Widgets{% #widgets %}
+
+In addition to the out-of-the-box integrations, Change Tracking is available as a data source for widgets across Datadog, including Dashboards and Notebooks.
+
+{% image
+   source="https://datadog-docs.imgix.net/images/change_tracking/change-tracking-datasource-examples.6de4bb5bbc078a6d29a7c4149c570de8.png?auto=format"
+   alt="Change Tracking datasource examples" /%}
+
+To configure a widget using Change Tracking data:
+
+1. In a dashboard or notebook, add or edit a supported widget type (Timeseries, Query Value, Table, Tree Map, Top List, Pie, Change, or Bar Chart).
+1. From the **data source** dropdown, select `Change Tracking`.
+1. Configure your filters (**Service** is required).
+1. (Optional) For widgets that support grouping, use **Group by** to split results.
+
+{% image
+   source="https://datadog-docs.imgix.net/images/change_tracking/change-tracking-datasource-edit-widget.4a8becf174362b04f38a62f30863a128.png?auto=format"
+   alt="Change Tracking datasource widgets" /%}
+
+For Timeseries widgets, you can also enable Change Tracking as an **Event Overlay**, which displays changes on top of the timeseries to help correlate them with metric behavior.
+
+{% image
+   source="https://datadog-docs.imgix.net/images/change_tracking/change-tracking-datasource-edit-overlay.73fe5f475f55f38922328434ee27c731.png?auto=format"
+   alt="Change Tracking datasource as Event Overlay" /%}
+
+#### View change details{% #view-change-details %}
+
+To view information about a change or set of changes, click a datapoint in the widget and select **View Changes**. This opens the Change Tracking side panel with additional details.
 
 ## Tracked changes{% #tracked-changes %}
 

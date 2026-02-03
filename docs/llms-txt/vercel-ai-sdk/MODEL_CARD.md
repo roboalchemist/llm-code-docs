@@ -1,3 +1,5 @@
+# Source: https://github.com/meta-llama/llama-models/blob/main/models/llama3_1/MODEL_CARD.md
+
 # llama-models/models/llama3_1/MODEL_CARD.md at main · meta-llama/llama-models · GitHub
 
 # Llama 3.1

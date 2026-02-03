@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/ecosystem/upstash.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Bun Redis with Upstash
 
 [Upstash](https://upstash.com/) is a fully managed Redis database as a service. Upstash works with the Redis® API, which means you can use Bun's native Redis client to connect to your Upstash database.
@@ -33,7 +37,7 @@
 
     Set the `REDIS_URL` environment variable in your `.env` file using the Redis endpoint (not the REST URL):
 
-    ```env .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```ini .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
     REDIS_URL=rediss://********@********.upstash.io:6379
     ```
 

@@ -8,7 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > Agent > Host Agent Log collection > (Legacy) Automatic Multi-line
   Detection and Aggregation
-source_url: https://docs.datadoghq.com/logs/auto_multiline_detection_legacy/index.html
 ---
 
 # (Legacy) Automatic Multi-line Detection and Aggregation

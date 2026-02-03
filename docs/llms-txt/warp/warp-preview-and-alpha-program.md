@@ -1,4 +1,4 @@
-# Source: https://docs.warp.dev/community/warp-preview-and-alpha-program.md
+# Source: https://docs.warp.dev/support-and-community/community/warp-preview-and-alpha-program.md
 
 # Warp Preview & Alpha Program
 
@@ -17,7 +17,7 @@ To learn more about Warp Preview, check out our [launch blog post](https://warp.
 ### Getting Started with Warp Preview
 
 1. **Download**: Get the Warp Preview build from [warp.dev/download-preview](https://warp.dev/download-preview).
-2. **Sign in**: [Log in](https://docs.warp.dev/getting-started/readme#log-in-to-warp-optional) with your Warp account (not optional for Warp Preview).
+2. **Sign in**: [Log in](https://docs.warp.dev/support-and-community/community/broken-reference) with your Warp account (not optional for Warp Preview).
 3. **Run side-by-side**: You can keep Warp Preview alongside your stable Warp installation.
 
 ### Important Notes
@@ -29,7 +29,7 @@ To learn more about Warp Preview, check out our [launch blog post](https://warp.
 
 ### Providing Warp Preview Feedback
 
-For details on how to send feedback for Warp Preview, please see [Preview-Specific Feedback](https://docs.warp.dev/support-and-billing/sending-us-feedback#preview-specific-feedback).
+For details on how to send feedback for Warp Preview, please see [Preview-Specific Feedback](https://github.com/warpdotdev/gitbook/blob/main/docs/README.md#preview-specific-feedback).
 
 ### The Alpha Program
 

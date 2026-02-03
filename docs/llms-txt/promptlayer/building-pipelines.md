@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/features/evaluations/building-pipelines.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Getting Started
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/8hW-OjwpwMk" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
@@ -41,8 +45,3 @@ If the last step of your evaluation pipeline contains all booleans or numeric va
 ## Executing Full Batch Runs
 
 Transition from pipeline to full batch run to apply your pipeline across the entire dataset for comprehensive evaluation.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

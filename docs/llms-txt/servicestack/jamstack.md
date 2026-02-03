@@ -35,7 +35,7 @@ Ultimately, it's hosting your App's pre-rendered static UI assets on Content Del
 
 ### $0.40 /month
 
-Other by-products of generating pre-computed CDN hostable assets, is interchangeable cost-effective hosting and great SEO - characteristics our Jamstack Demos take advantage of with free **UI** hosting on GitHub Pages CDN leaving their only cost to host its **.NET 8 API** back-ends, deployed with SSH in Docker compose containers to a vanilla [Digital Ocean](https://www.digitalocean.com) droplet costing only **[$0.40 /month each](https://vue-ssg.jamstacks.net/hosting)**.
+Other by-products of generating pre-computed CDN hostable assets, is interchangeable cost-effective hosting and great SEO - characteristics our Jamstack Demos take advantage of with free **UI** hosting on GitHub Pages CDN leaving their only cost to host its **.NET 10 API** back-ends, deployed with SSH in Docker compose containers to a vanilla [Digital Ocean](https://www.digitalocean.com) droplet costing only **$0.40 /month each**.
 
 ### Recommended Templates
 
@@ -43,12 +43,11 @@ These templates represent the best-in class experiences for their respective **R
 
 We've put together a quick check list to help decide which templates we'd recommend:
 
-| Project                                                 | Recommendation                                                                  |
-|---------------------------------------------------------|---------------------------------------------------------------------------------|
-| [Next.js](https://github.com/NetCoreTemplates/nextjs)   | If you prefer React                                                             |
-| [Vue SSG](https://github.com/NetCoreTemplates/vue-ssg)  | If you prefer Vue and SEO is important                                          |
-| [Blazor Tailwind](/templates/blazor-tailwind)           | If you prefer a full C# Stack or are developing Line of Business (LOB) Apps     |
-| [Vue SPA](https://github.com/NetCoreTemplates/vue-vite) | If you prefer Vue and happy to trade SEO benefits of SSG for a simpler template |
+| Project                                                      | Recommendation                                                                  |
+|--------------------------------------------------------------|---------------------------------------------------------------------------------|
+| [Next.js](https://github.com/NetCoreTemplates/nextjs)        | If you prefer React with Next.js                                                |
+| [React SPA](https://github.com/NetCoreTemplates/react-spa)   | If you prefer React                                                             |
+| [Blazor Tailwind](/templates/blazor-tailwind)                | If you prefer a full C# Stack or are developing Line of Business (LOB) Apps     |
 
 Still not sure? familiarize yourself with their respective dev models by comparing their functionality equivalent TODOs MVC Examples:
 
@@ -57,11 +56,11 @@ Still not sure? familiarize yourself with their respective dev models by compari
 <jamstack-todos class="not-prose my-8 pb-8"></jamstack-todos>
 
 All projects utilize the same back-end ServiceStack Services with **TODOs MVC** implemented in
-[TodosServices.cs](https://github.com/NetCoreTemplates/blazor-wasm/blob/main/MyApp.ServiceInterface/TodosServices.cs).
+[TodosServices.cs](https://github.com/LegacyTemplates/blazor-wasm/blob/main/MyApp.ServiceInterface/TodosServices.cs).
 
 
 As **Bookings CRUD** is an [AutoQuery CRUD](/autoquery/crud) API, it defines [all its functionality](/autoquery/crud-bookings) in its declarative
-[Bookings.cs](https://github.com/NetCoreTemplates/blazor-wasm/blob/main/MyApp.ServiceModel/Bookings.cs) DTOs and serves as a good example for the minimal dev model effort required to implement a typical Authenticated CRUD UI in each framework:
+[Bookings.cs](https://github.com/NetCoreTemplates/blazor-vue/blob/main/MyApp.ServiceModel/Bookings.cs) DTOs and serves as a good example for the minimal dev model effort required to implement a typical Authenticated CRUD UI in each framework:
 
 ### Bookings CRUD
 
@@ -79,17 +78,15 @@ An updated list of available Jamstack project templates is also at https://jamst
 
 ### Pre-configured Jamstack App Deployments
 
-All project templates supports CDN hostable UI assets and include the [necessary GitHub Actions](https://vue-ssg.jamstacks.net/posts/deploy) that takes care of building and SSH deploying a Docker compose production build of your App to any Linux Host with just a few GitHub Action Secrets in your GitHub repo. 
+All project templates supports CDN hostable UI assets and include the necessary GitHub Actions that takes care of building and SSH deploying a Docker compose production build of your App to any Linux Host with just a few GitHub Action Secrets in your GitHub repo. 
 
 The optional `DEPLOY_CDN` secret lets you control whether to deploy your App's static `/wwwroot` assets to your GitHub Pages CDN by specifying the custom domain to use and is what all JamStack Live demos used to deploy a copy of their UIs to GitHub Pages CDN:
 
 | Project Source                                                         | GitHub Pages CDN              | Digital Ocean Docker .NET API     |
 | -                                                                      | -                             | -                                 |
 | [nextjs](https://github.com/NetCoreTemplates/nextjs)                   | nextjs.jamstacks.net          | nextjs-api.jamstacks.net          |
-| [vue-ssg](https://github.com/NetCoreTemplates/vue-ssg)                 | vue-ssg.jamstacks.net         | vue-ssg-api.jamstacks.net         |
 | [blazor](https://github.com/NetCoreTemplates/blazor)                   | blazor.web-templates.io       | blazor.web-templates.io           |
 | [vue-spa](https://github.com/NetCoreTemplates/vue-spa)                 | vue-spa.jamstacks.net         | vue-spa-api.jamstacks.net         |
-| [blazor-wasm](https://github.com/NetCoreTemplates/blazor-wasm)         | blazor-wasm.web-templates.io  | blazor-wasm.web-templates.io      |
 
 ## Blazor WebAssembly
 
@@ -100,13 +97,6 @@ The [Blazor WebAssembly (WASM)](/templates/blazor-tailwind) template offers a pu
 ### Great Perceived Performance and SEO
 
 Typically the **large download sizes** & slow initial load times of Blazor WASM Apps would make it a poor choice for Internet hosted sites. However, our Blazor WASM template has largely mitigated this with easily maintainable built-in pre-rendering techniques to make every page appear to load quickly, including **instant loading** of its Markdown Pages courtesy of the GitHub Actions publish task generating & deploying pre-rendered content pages.
-
-<p class="pt-3 text-center">You can see the results of this in its live demo when loading the home page, which only has a slight delay:</p>
-
-<a class="flex flex-col justify-center items-center hover:no-underline mb-8" href="https://blazor-wasm.web-templates.io">
-    <h3 class="mb-3">blazor-wasm.web-templates.io</h3>
-    <img src="/img/pages/jamstack/blazor-wasm/home.png" class="border border-solid border-gray-200 max-w-screen-sm">
-</a>
 
 ### Learn more
 
@@ -187,12 +177,11 @@ Ultimately its architectural choices allows Vite to deliver Lightning Fast **Hot
 
 Both Vue & Vite being led by [Evan You](https://github.com/yyx990803), which ensures both have stellar integration and delivers a well-supported & productive development experience making it the clear choice for any new Vue project.
 
-Both vue-ssg.jamstacks.net and vue-vite.jamstacks.net utilizing the same high-end Vue3, TypeScript and Tailwind components means their included pages like **TODOs MVC**, **Bookings** and **Sign In** contain **identical source code**, the choice on which to use effectively becomes if you need advanced features like [Static Site Generation](https://www.cloudflare.com/en-au/learning/performance/static-site-generator/) **(SSG)** and **Dark Mode** or would otherwise prefer to start with a simpler template.
+vue-static.web-templates.io utilizes the same high-end Vue3, TypeScript and Tailwind components means their included pages like **TODOs MVC**, **Bookings** and **Sign In** contain **identical source code**, the choice on which to use effectively becomes if you need advanced features like [Static Site Generation](https://www.cloudflare.com/en-au/learning/performance/static-site-generator/) **(SSG)** and **Dark Mode** or would otherwise prefer to start with a simpler template.
 
 #### Features list comparison
 
- - vue-ssg.jamstacks.net/features
- - vue-vite.jamstacks.net/features
+ - vue-static.web-templates.io/features
 
 ### Stale-while-revalidate in Vue3
 
@@ -217,23 +206,11 @@ const { data, error } = swrClient.get(() =>
 
 Where it yields the same optimal UX with cached API responses rendered instantly before later updating itself if modified.
 
-## Vue SSG
-
-React & Next.js are primarily corporate-led efforts whilst the Vue ecosystem is largely community led, with one of Vue's lieutenants [Anthony Fu](https://github.com/antfu) being the primary developer behind many of the developer-experience focused features adopted in his [vite-ssg](https://github.com/antfu/vite-ssg) project. Most of these features are designed to reduce developer effort by auto registering routes and components by convention which effectively gives it [Nuxt](https://nuxtjs.org) like productivity by utilizing hand-picked quality dependencies without needing to be reliant on the slow development pace of a heavy framework like Nuxt.
-
-Anthony's own opinionated Vite Starter Template - [Vitesse](https://github.com/antfu/vitesse) serves as a great resource for an experienced insight into a curated list of Vue & Vite packages offering the nicest developer experience, although Vue SSG will be more conservative and adopt more well-known technologies like [tailwindcss](https://tailwindcss.com/) in favor of [Windi CSS](https://github.com/windicss/windicss).
-
-Otherwise, it's still jam-packed full of features for modern Web Apps, including built-in **Dark Mode** support:
-
-<a class="flex flex-col justify-center items-center my-8" href="https://vue-ssg.jamstacks.net">
-    <img src="/img/pages/jamstack/vue-ssg-home.png" class="max-w-screen-md">
-</a>
-
 ## Vue Vite
 
 Don't need SSG or Dark mode? Try the simpler **SPA** template instead:
 
-<a class="flex flex-col justify-center items-center my-8 pb-8" href="https://vue-vite.jamstacks.net">
+<a class="flex flex-col justify-center items-center my-8 pb-8" href="https://vue-static.web-templates.io">
     <img src="/img/pages/jamstack/vue-vite-home.png" class="max-w-screen-md">
 </a>
 

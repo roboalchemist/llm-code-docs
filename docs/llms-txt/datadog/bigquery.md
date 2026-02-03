@@ -1,3 +1,5 @@
+# Source: https://docs.datadoghq.com/data_observability/quality_monitoring/data_warehouses/bigquery.md
+
 # Source: https://docs.datadoghq.com/cloud_cost_management/allocation/bigquery.md
 
 ---
@@ -6,7 +8,6 @@ description: >-
   Learn how to allocate Cloud Cost Management spending across your organization
   with BigQuery Cost Allocation.
 breadcrumbs: Docs > Cloud Cost Management > Cost Allocation > BigQuery Cost Allocation
-source_url: https://docs.datadoghq.com/allocation/bigquery/index.html
 ---
 
 # BigQuery Cost Allocation

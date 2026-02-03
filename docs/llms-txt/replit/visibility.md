@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replit-app/visibility.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Replit App Visibility
 
 > Learn how to create and manage private Replit Apps with a Core membership or Teams Pro account. Control access to your projects with privacy settings.

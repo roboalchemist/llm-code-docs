@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/send-with-axum.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send emails with Axum
 
 > Send your first email using Axum and the Resend Rust SDK.
@@ -15,14 +19,14 @@ To get the most out of this guide, you'll need to:
 
 Get the Resend Rust SDK and the [Tokio](https://tokio.rs) runtime.
 
-```bash  theme={null}
+```bash  theme={"theme":{"light":"github-light","dark":"vesper"}}
 cargo add resend-rs
 cargo add tokio -F macros,rt-multi-thread
 ```
 
 ## 2. Send an Email
 
-```rust  theme={null}
+```rust  theme={"theme":{"light":"github-light","dark":"vesper"}}
 use std::sync::Arc;
 
 use axum::{extract::State, http::StatusCode, routing::get, Router};
@@ -69,7 +73,7 @@ async fn endpoint(State(state): State<Arc<AppState>>) -> Result<String, StatusCo
 }
 ```
 
-Opening your browser at `http://localhost:3000` (or running `curl localhost:3001`) should send an
+Opening your browser at `http://localhost:3000` (or running `curl localhost:3000`) should send an
 email and return you its id!
 
 ## 3. Try it yourself!

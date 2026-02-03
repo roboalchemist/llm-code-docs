@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/deploy/csp-configuration.md
+# Source: https://www.mintlify.com/docs/deploy/csp-configuration.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Content Security Policy (CSP) configuration
 
@@ -20,29 +24,30 @@ The following CSP directives are used to control which resources can be loaded:
 
 ## Domain whitelist
 
-| Domain                          | Purpose                        | CSP directive               | Required |
-| :------------------------------ | :----------------------------- | :-------------------------- | :------- |
-| `d4tuoctqmanu0.cloudfront.net`  | KaTeX CSS, fonts               | `style-src`, `font-src`     | Required |
-| `*.mintlify.dev`                | Documentation content          | `connect-src`, `frame-src`  | Required |
-| `*.mintlify.com`                | Dashboard, API, insights proxy | `connect-src`               | Required |
-| `leaves.mintlify.com`           | Assistant API                  | `connect-src`               | Required |
-| `d3gk2c5xim1je2.cloudfront.net` | Icons, images, logos           | `img-src`                   | Required |
-| `d1ctpt7j8wusba.cloudfront.net` | Mint version and release files | `connect-src`               | Required |
-| `mintcdn.com`                   | Images, favicons               | `img-src`, `connect-src`    | Required |
-| `*.mintcdn.com`                 | Images, favicons               | `img-src`, `connect-src`    | Required |
-| `api.mintlifytrieve.com`        | Search API                     | `connect-src`               | Required |
-| `cdn.jsdelivr.net`              | Emoji assets for OG images     | `script-src`, `img-src`     | Required |
-| `fonts.googleapis.com`          | Google Fonts                   | `style-src`, `font-src`     | Optional |
-| `www.googletagmanager.com`      | Google Analytics/GTM           | `script-src`, `connect-src` | Optional |
-| `cdn.segment.com`               | Segment analytics              | `script-src`, `connect-src` | Optional |
-| `plausible.io`                  | Plausible analytics            | `script-src`, `connect-src` | Optional |
-| `us.posthog.com`                | PostHog analytics              | `connect-src`               | Optional |
-| `tag.clearbitscripts.com`       | Clearbit tracking              | `script-src`                | Optional |
-| `cdn.heapanalytics.com`         | Heap analytics                 | `script-src`                | Optional |
-| `chat.cdn-plain.com`            | Plain chat widget              | `script-src`                | Optional |
-| `chat-assets.frontapp.com`      | Front chat widget              | `script-src`                | Optional |
-| `browser.sentry-cdn.com`        | Sentry error tracking          | `script-src`, `connect-src` | Optional |
-| `js.sentry-cdn.com`             | Sentry JavaScript SDK          | `script-src`                | Optional |
+| Domain                                | Purpose                         | CSP directive               | Required |
+| :------------------------------------ | :------------------------------ | :-------------------------- | :------- |
+| `d4tuoctqmanu0.cloudfront.net`        | KaTeX CSS, fonts                | `style-src`, `font-src`     | Required |
+| `*.mintlify.dev`                      | Documentation content           | `connect-src`, `frame-src`  | Required |
+| `*.mintlify.com`                      | Dashboard, API, analytics proxy | `connect-src`               | Required |
+| `leaves.mintlify.com`                 | Assistant API                   | `connect-src`               | Required |
+| `d3gk2c5xim1je2.cloudfront.net`       | Icons, images, logos            | `img-src`                   | Required |
+| `d1ctpt7j8wusba.cloudfront.net`       | Mint version and release files  | `connect-src`               | Required |
+| `mintcdn.com`                         | Images, favicons                | `img-src`, `connect-src`    | Required |
+| `*.mintcdn.com`                       | Images, favicons                | `img-src`, `connect-src`    | Required |
+| `api.mintlifytrieve.com`              | Search API                      | `connect-src`               | Required |
+| `cdn.jsdelivr.net`                    | Emoji assets for OG images      | `script-src`, `img-src`     | Required |
+| `mintlify.s3.us-west-1.amazonaws.com` | S3-hosted images                | `img-src`                   | Required |
+| `fonts.googleapis.com`                | Google Fonts                    | `style-src`, `font-src`     | Optional |
+| `www.googletagmanager.com`            | Google Analytics/GTM            | `script-src`, `connect-src` | Optional |
+| `cdn.segment.com`                     | Segment analytics               | `script-src`, `connect-src` | Optional |
+| `plausible.io`                        | Plausible analytics             | `script-src`, `connect-src` | Optional |
+| `us.posthog.com`                      | PostHog analytics               | `connect-src`               | Optional |
+| `tag.clearbitscripts.com`             | Clearbit tracking               | `script-src`                | Optional |
+| `cdn.heapanalytics.com`               | Heap analytics                  | `script-src`                | Optional |
+| `chat.cdn-plain.com`                  | Plain chat widget               | `script-src`                | Optional |
+| `chat-assets.frontapp.com`            | Front chat widget               | `script-src`                | Optional |
+| `browser.sentry-cdn.com`              | Sentry error tracking           | `script-src`, `connect-src` | Optional |
+| `js.sentry-cdn.com`                   | Sentry JavaScript SDK           | `script-src`                | Optional |
 
 ## Example CSP configuration
 
@@ -58,7 +63,7 @@ us.posthog.com tag.clearbitscripts.com cdn.heapanalytics.com chat.cdn-plain.com 
 browser.sentry-cdn.com js.sentry-cdn.com;
 style-src 'self' 'unsafe-inline' d4tuoctqmanu0.cloudfront.net fonts.googleapis.com;
 font-src 'self' d4tuoctqmanu0.cloudfront.net fonts.googleapis.com;
-img-src 'self' data: blob: d3gk2c5xim1je2.cloudfront.net mintcdn.com *.mintcdn.com cdn.jsdelivr.net;
+img-src 'self' data: blob: d3gk2c5xim1je2.cloudfront.net mintcdn.com *.mintcdn.com cdn.jsdelivr.net mintlify.s3.us-west-1.amazonaws.com;
 connect-src 'self' *.mintlify.dev *.mintlify.com d1ctpt7j8wusba.cloudfront.net mintcdn.com *.mintcdn.com
 api.mintlifytrieve.com www.googletagmanager.com cdn.segment.com plausible.io us.posthog.com browser.sentry-cdn.com;
 frame-src 'self' *.mintlify.dev;
@@ -80,7 +85,7 @@ Create a Response Header Transform Rule:
 * **Header name**: `Content-Security-Policy`
 * **Header value**:
   ```text wrap theme={null}
-  default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' d4tuoctqmanu0.cloudfront.net fonts.googleapis.com; font-src 'self' d4tuoctqmanu0.cloudfront.net fonts.googleapis.com; img-src 'self' data: blob: d3gk2c5xim1je2.cloudfront.net mintcdn.com *.mintcdn.com cdn.jsdelivr.net; connect-src 'self' *.mintlify.dev *.mintlify.com d1ctpt7j8wusba.cloudfront.net mintcdn.com *.mintcdn.com api.mintlifytrieve.com; frame-src 'self' *.mintlify.dev;
+  default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' d4tuoctqmanu0.cloudfront.net fonts.googleapis.com; font-src 'self' d4tuoctqmanu0.cloudfront.net fonts.googleapis.com; img-src 'self' data: blob: d3gk2c5xim1je2.cloudfront.net mintcdn.com *.mintcdn.com cdn.jsdelivr.net mintlify.s3.us-west-1.amazonaws.com; connect-src 'self' *.mintlify.dev *.mintlify.com d1ctpt7j8wusba.cloudfront.net mintcdn.com *.mintcdn.com api.mintlifytrieve.com; frame-src 'self' *.mintlify.dev;
   ```
 
 4. Deploy your rule.
@@ -96,7 +101,7 @@ Add a response headers policy in CloudFront:
     "Config": {
     "SecurityHeadersConfig": {
         "ContentSecurityPolicy": {
-        "ContentSecurityPolicy": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' d4tuoctqmanu0.cloudfront.net fonts.googleapis.com; font-src 'self' d4tuoctqmanu0.cloudfront.net fonts.googleapis.com; img-src 'self' data: blob: d3gk2c5xim1je2.cloudfront.net mintcdn.com *.mintcdn.com cdn.jsdelivr.net; connect-src 'self' *.mintlify.dev *.mintlify.com d1ctpt7j8wusba.cloudfront.net mintcdn.com *.mintcdn.com api.mintlifytrieve.com; frame-src 'self' *.mintlify.dev;",
+        "ContentSecurityPolicy": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' d4tuoctqmanu0.cloudfront.net fonts.googleapis.com; font-src 'self' d4tuoctqmanu0.cloudfront.net fonts.googleapis.com; img-src 'self' data: blob: d3gk2c5xim1je2.cloudfront.net mintcdn.com *.mintcdn.com cdn.jsdelivr.net mintlify.s3.us-west-1.amazonaws.com; connect-src 'self' *.mintlify.dev *.mintlify.com d1ctpt7j8wusba.cloudfront.net mintcdn.com *.mintcdn.com api.mintlifytrieve.com; frame-src 'self' *.mintlify.dev;",
         "Override": true
         }
       }
@@ -117,7 +122,7 @@ Add to your `vercel.json`:
     "headers": [
         {
         "key": "Content-Security-Policy",
-        "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' d4tuoctqmanu0.cloudfront.net fonts.googleapis.com; font-src 'self' d4tuoctqmanu0.cloudfront.net fonts.googleapis.com; img-src 'self' data: blob: d3gk2c5xim1je2.cloudfront.net mintcdn.com *.mintcdn.com cdn.jsdelivr.net; connect-src 'self' *.mintlify.dev *.mintlify.com d1ctpt7j8wusba.cloudfront.net mintcdn.com *.mintcdn.com api.mintlifytrieve.com; frame-src 'self' *.mintlify.dev;"
+        "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' d4tuoctqmanu0.cloudfront.net fonts.googleapis.com; font-src 'self' d4tuoctqmanu0.cloudfront.net fonts.googleapis.com; img-src 'self' data: blob: d3gk2c5xim1je2.cloudfront.net mintcdn.com *.mintcdn.com cdn.jsdelivr.net mintlify.s3.us-west-1.amazonaws.com; connect-src 'self' *.mintlify.dev *.mintlify.com d1ctpt7j8wusba.cloudfront.net mintcdn.com *.mintcdn.com api.mintlifytrieve.com; frame-src 'self' *.mintlify.dev;"
         }
       ]
     }

@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Continuous Profiler > Continuous Profiler Guides > Isolate Outliers in
   Monolithic Services
-source_url: >-
-  https://docs.datadoghq.com/guide/isolate-outliers-in-monolithic-services/index.html
 ---
 
 # Isolate Outliers in Monolithic Services

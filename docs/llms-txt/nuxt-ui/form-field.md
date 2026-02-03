@@ -20,11 +20,8 @@ Use the `label` prop to set the label for the form control.
 </template>
 ```
 
-<note>
-
-The label `for` attribute and the form control are associated with a unique `id` if not provided.
-
-</note>
+> [!NOTE]
+> The label `for` attribute and the form control are associated with a unique `id` if not provided.
 
 When using the `required` prop, an asterisk is added next to the label.
 
@@ -86,11 +83,9 @@ When used inside a [Form](/docs/components/form), this is automatically set when
 </template>
 ```
 
-<tip to="/docs/getting-started/theme/design-system#colors">
-
-This sets the `color` to `error` on the form control. You can change it globally in your `app.config.ts`.
-
-</tip>
+> [!TIP]
+> See: /docs/getting-started/theme/design-system#colors
+> This sets the `color` to `error` on the form control. You can change it globally in your `app.config.ts`.
 
 ### Size
 
@@ -99,6 +94,18 @@ Use the `size` prop to change the size of the FormField, the `size` is proxied t
 ```vue
 <template>
   <UFormField label="Email" description="We'll never share your email with anyone else." hint="Optional" help="Please enter a valid email address." size="xl">
+    <UInput placeholder="Enter your email" class="w-full" />
+  </UFormField>
+</template>
+```
+
+### Orientation `4.3+`
+
+Use the `orientation` prop to change the layout of the FormField. Defaults to `vertical`.
+
+```vue
+<template>
+  <UFormField orientation="horizontal" label="Email" help="Please enter a valid email address." class="w-72">
     <UInput placeholder="Enter your email" class="w-full" />
   </UFormField>
 </template>
@@ -128,6 +135,9 @@ interface FormFieldProps {
   label?: string | undefined;
   description?: string | undefined;
   help?: string | undefined;
+  /**
+   * @default "undefined"
+   */
   error?: string | boolean | undefined;
   hint?: string | undefined;
   size?: "md" | "xs" | "sm" | "lg" | "xl" | undefined;
@@ -140,6 +150,10 @@ interface FormFieldProps {
    * Delay in milliseconds before validating the form on input events.
    */
   validateOnInputDelay?: number | undefined;
+  /**
+   * The orientation of the form field.
+   */
+  orientation?: "vertical" | "horizontal" | undefined;
   ui?: { root?: ClassNameValue; wrapper?: ClassNameValue; labelWrapper?: ClassNameValue; label?: ClassNameValue; container?: ClassNameValue; description?: ClassNameValue; error?: ClassNameValue; hint?: ClassNameValue; help?: ClassNameValue; } | undefined;
 }
 ```
@@ -169,9 +183,9 @@ export default defineAppConfig({
       slots: {
         root: '',
         wrapper: '',
-        labelWrapper: 'flex content-center items-center justify-between',
+        labelWrapper: 'flex content-center items-center justify-between gap-1',
         label: 'block font-medium text-default',
-        container: 'mt-1 relative',
+        container: 'relative',
         description: 'text-muted',
         error: 'mt-2 text-error',
         hint: 'text-muted',
@@ -199,10 +213,19 @@ export default defineAppConfig({
           true: {
             label: "after:content-['*'] after:ms-0.5 after:text-error"
           }
+        },
+        orientation: {
+          vertical: {
+            container: 'mt-1'
+          },
+          horizontal: {
+            root: 'flex justify-between place-items-baseline gap-2'
+          }
         }
       },
       defaultVariants: {
-        size: 'md'
+        size: 'md',
+        orientation: 'vertical'
       }
     }
   }
@@ -211,8 +234,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

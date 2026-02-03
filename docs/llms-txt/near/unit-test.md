@@ -49,8 +49,8 @@ The tests in the [Counter Example](https://github.com/near-examples/counters) re
 ```
     ```
 [dev-dependencies]
-near-sdk = { version = "5.1.0", features = ["unit-testing"] }
-near-workspaces = { version = "0.16.0", features = ["unstable"] }
+near-sdk = { version = "5.24.0", features = ["unit-testing"] }
+near-sandbox = "0.3"
 ```
   </Language>
 </CodeTabs>

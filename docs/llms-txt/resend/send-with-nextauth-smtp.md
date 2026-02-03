@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/send-with-nextauth-smtp.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send emails using NextAuth with SMTP
 
 > Learn how to send your first email using NextAuth.
@@ -16,32 +20,40 @@ To get the most out of this guide, you'll need to:
 Install the [NextAuth](https://next-auth.js.org/getting-started/example#install-nextauth) package.
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":{"light":"github-light","dark":"vesper"}}
   npm install next-auth
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":{"light":"github-light","dark":"vesper"}}
   yarn add next-auth
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":{"light":"github-light","dark":"vesper"}}
   pnpm add next-auth
+  ```
+
+  ```bash bun theme={"theme":{"light":"github-light","dark":"vesper"}}
+  bun add next-auth
   ```
 </CodeGroup>
 
 Then, install the [Nodemailer](https://www.npmjs.com/package/nodemailer) package.
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":{"light":"github-light","dark":"vesper"}}
   npm install nodemailer
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":{"light":"github-light","dark":"vesper"}}
   yarn add nodemailer
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":{"light":"github-light","dark":"vesper"}}
   pnpm add nodemailer
+  ```
+
+  ```bash bun theme={"theme":{"light":"github-light","dark":"vesper"}}
+  bun add nodemailer
   ```
 </CodeGroup>
 
@@ -49,7 +61,7 @@ Then, install the [Nodemailer](https://www.npmjs.com/package/nodemailer) package
 
 Add your Resend SMTP crendentials in your application's `.env` file:
 
-```ini .env theme={null}
+```ini .env theme={"theme":{"light":"github-light","dark":"vesper"}}
 EMAIL_SERVER_USER=resend
 EMAIL_SERVER_PASSWORD=YOUR_API_KEY
 EMAIL_SERVER_HOST=smtp.resend.com
@@ -61,7 +73,7 @@ EMAIL_FROM=onboarding@resend.dev
 
 Finally, in your \[...nextauth].js file (typically located in pages/api/auth), configure the Email provider with your SMTP settings:
 
-```js index.ts theme={null}
+```js index.ts theme={"theme":{"light":"github-light","dark":"vesper"}}
 import NextAuth from 'next-auth';
 import EmailProvider from 'next-auth/providers/email';
 import nodemailer from 'nodemailer';

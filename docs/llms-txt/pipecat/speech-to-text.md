@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/guides/learn/speech-to-text.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Speech to Text
 
 > Learn how to configure speech recognition to convert user audio into text in your Pipecat pipeline
@@ -218,10 +222,11 @@ While many STT services provide Voice Activity Detection, use Pipecat's local Si
 ```python  theme={null}
 from pipecat.audio.vad.silero import SileroVADAnalyzer
 
-# Configure in transport params
-transport = YourTransport(
-    params=TransportParams(
-        vad_analyzer=SileroVADAnalyzer(),  # 150-200ms faster than remote VAD
+# Configure in context aggregator
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.2)),
     ),
 )
 ```
@@ -248,8 +253,3 @@ Now that you understand speech recognition, let's explore how to manage conversa
 <Card title="Context Management" icon="arrow-right" href="/guides/learn/context-management">
   Learn how to handle conversation history and context in your pipeline
 </Card>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

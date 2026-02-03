@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/configuration/expected-outputs/model-graded/context-recall/
+
 # Context recall
 
 Checks if your retrieved context contains the information needed to generate a known correct answer.

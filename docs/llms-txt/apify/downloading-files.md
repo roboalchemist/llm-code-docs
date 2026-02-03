@@ -21,7 +21,7 @@ await client.send('Page.setDownloadBehavior', { behavior: 'allow', downloadPath:
 ```
 
 
-We use the mysterious `client` API which gives us access to all the functions of the underlying https://pptr.dev/api/puppeteer.cdpsession (Puppeteer & Playwright are built on top of it). Basically, it extends Puppeteer's functionality. Then we can download the file by clicking on the button.
+We use the mysterious `client` API which gives us access to all the functions of the underlying [Chrome DevTools Protocol](https://pptr.dev/api/puppeteer.cdpsession) (Puppeteer & Playwright are built on top of it). Basically, it extends Puppeteer's functionality. Then we can download the file by clicking on the button.
 
 
 ```
@@ -114,4 +114,4 @@ const response = await request(options);
 ```
 
 
-Now, the response contains the binary data of the downloaded file. It can be saved to the disk, uploaded somewhere, or https://docs.apify.com/academy/puppeteer-playwright/common-use-cases/submitting-a-form-with-a-file-attachment.md.
+Now, the response contains the binary data of the downloaded file. It can be saved to the disk, uploaded somewhere, or [submitted with another form](https://docs.apify.com/academy/puppeteer-playwright/common-use-cases/submitting-a-form-with-a-file-attachment.md).

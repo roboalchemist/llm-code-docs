@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/gettingstarted/quickstart/apikeys.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Creating an API Key
 
 > Generate authentication keys for REST API access and voice agent deployment.
@@ -37,8 +41,3 @@ API keys must be managed using the Ultravox console. Once you have created an AP
     <img className="hidden h-64 dark:block" src="https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/images/screenshots/newapikey-dark.png?fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=aed71fae2a5ce25380fb2b825531ca48" data-og-width="812" width="812" data-og-height="299" height="299" data-path="images/screenshots/newapikey-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/images/screenshots/newapikey-dark.png?w=280&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=81c9a8e9bafcfe4cbef0d130e65c2a9e 280w, https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/images/screenshots/newapikey-dark.png?w=560&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=d5a3a36dc815442656f4c56fe6394ce9 560w, https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/images/screenshots/newapikey-dark.png?w=840&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=33ef2c4f5fbd850f67fd58a083a6f870 840w, https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/images/screenshots/newapikey-dark.png?w=1100&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=afb9019801d2e573bd5a138765f3740b 1100w, https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/images/screenshots/newapikey-dark.png?w=1650&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=a67e4ae440bca94ebd7462bec1db6f41 1650w, https://mintcdn.com/fixie-ff99b187/RRU3EPaTCQ6pUNKk/images/screenshots/newapikey-dark.png?w=2500&fit=max&auto=format&n=RRU3EPaTCQ6pUNKk&q=85&s=0bb2dabce6f27986ede88e9627a2c794 2500w" />
   </Step>
 </Steps>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

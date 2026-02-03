@@ -6,7 +6,6 @@ description: >-
   Learn how to create dashboards and monitors that compare service latency
   metrics week over week to identify performance trends and issues.
 breadcrumbs: Docs > APM > Tracing Guides > Compare a Service's latency to the previous week
-source_url: https://docs.datadoghq.com/guide/week_over_week_p50_comparison/index.html
 ---
 
 # Compare a Service's latency to the previous week

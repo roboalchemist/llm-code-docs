@@ -169,7 +169,7 @@ Vespa can calculate and return all [rank-features](../api/query.html#ranking.lis
 
 See [upgrade procedure](/en/operations/self-managed/live-upgrade.html) for how to upgrade.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

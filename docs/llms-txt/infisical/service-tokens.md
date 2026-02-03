@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/internals/service-tokens.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Service tokens
 
 > Understanding service tokens and their best practices.

@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/qstash/howto/debug-logs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Debug Logs
 
 To debug the logs, first you need to understand the different states a message can

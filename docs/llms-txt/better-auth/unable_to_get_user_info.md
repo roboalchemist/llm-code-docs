@@ -1,14 +1,10 @@
-# Source: https://www.better-auth.com/llms.txt/docs/errors/unable_to_get_user_info.md
+# Source: https://www.better-auth.com/llms.txt/docs/reference/errors/unable_to_get_user_info.md
 
-# Unable to get user info
+# unable_to_get_user_info
 
 The user info was not found in the request.
 
-***
 
-title: Unable to get user info
-description: The user info was not found in the request.
---------------------------------------------------------
 
 ## What is it?
 

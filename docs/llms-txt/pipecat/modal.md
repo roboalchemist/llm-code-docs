@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/deployment/platforms/modal.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Modal
 
 > Deploy Pipecat applications to Modal
@@ -132,8 +136,3 @@ On your [Modal dashboard](https://modal.com/apps), you should have two Apps list
   For next steps on running a self-hosted LLM and reducing latency, check out
   all of Modal's LLM examples
 </Card>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

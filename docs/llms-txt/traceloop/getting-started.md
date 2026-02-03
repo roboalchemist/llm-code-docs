@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/hub/getting-started.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Getting Started with Traceloop Hub
 
 > Set up Hub as a smart proxy to all your LLM calls.
@@ -45,8 +49,3 @@ client = OpenAI(
     # default_headers={"x-traceloop-pipeline": "optional-pipeline-name"},
 )
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

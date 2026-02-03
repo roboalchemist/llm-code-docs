@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/enterprise/red-teams/
+
 # Running Red Teams
 
 Promptfoo Enterprise allows you to configure targets, plugin collections, and scan configurations that can be shared among your team.

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/jfrog/
+
 # JFrog ML
 
 This documentation covers the **JFrog ML** provider for AI model inference (formerly known as Qwak). This is different from **JFrog Artifactory**, which is supported in [ModelAudit](/docs/model-audit/usage/#jfrog-artifactory) for scanning models stored in artifact repositories.

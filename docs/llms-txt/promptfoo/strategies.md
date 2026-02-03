@@ -1,3 +1,7 @@
+# Source: https://www.promptfoo.dev/docs/red-team/strategies/
+
+# Source: https://www.promptfoo.dev/docs/tags/strategies/
+
 # One doc tagged with "strategies"
 
 [View all tags](/docs/tags/)

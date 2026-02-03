@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/guides/learn/llm.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LLM Inference
 
 > Learn how to configure language models to generate intelligent responses in your voice AI pipeline
@@ -196,8 +200,3 @@ Now that you understand LLM configuration, let's explore how function calling en
 <Card title="Function Calling" icon="arrow-right" href="/guides/learn/function-calling">
   Learn how to enable LLMs to interact with external services and APIs
 </Card>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

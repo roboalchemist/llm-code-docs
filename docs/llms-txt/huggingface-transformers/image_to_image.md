@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/tasks/image_to_image.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/tasks/image_to_image.md
 
 # Image-to-Image Task Guide
 

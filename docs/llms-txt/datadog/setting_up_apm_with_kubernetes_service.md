@@ -6,8 +6,6 @@ description: >-
   Learn how to set up APM and distributed tracing in Kubernetes environments
   with proper service configuration and networking.
 breadcrumbs: Docs > APM > Tracing Guides > Setting up APM with Kubernetes Service
-source_url: >-
-  https://docs.datadoghq.com/guide/setting_up_apm_with_kubernetes_service/index.html
 ---
 
 # Setting up APM with Kubernetes Service

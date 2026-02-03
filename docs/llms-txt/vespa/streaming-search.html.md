@@ -18,7 +18,7 @@ Note: Using both streaming and indexed mode in the same cluster is discouraged. 
 
 Streaming search uses the same implementation of most features in Vespa, including matching, ranking, grouping and sorting, and mostly supports the same features. A [schema](../basics/schemas.html) used in[indexed mode](../reference/applications/services/content.html#document)can in most cases be used in streaming search without any changes. The following differences however apply:
 
-- Streaming search does not use the [linguistics](../linguistics/linguistics.html) module while feeding documents. Instead, the string fields of each streamed document are [tokenized](../linguistics/linguistics.html#tokenization) and [normalized](../linguistics/linguistics.html#normalization) on the fly as part of performing a search. Query terms are [normalized](../linguistics/linguistics.html#normalization) in the same way. [Stemming](../linguistics/linguistics.html#stemming) is not supported for streaming search. 
+- Streaming search does not use the [linguistics](../linguistics/linguistics.html) module while feeding documents. Instead, the string fields of each streamed document are [tokenized](../linguistics/linguistics-opennlp.html#tokenization) and [normalized](../linguistics/linguistics-opennlp.html#normalization) on the fly as part of performing a search. Query terms are [normalized](../linguistics/linguistics-opennlp.html#normalization) in the same way. [Stemming](../linguistics/linguistics-opennlp.html#stemming) is not supported for streaming search. 
 - Since there are no indexes, the content nodes do not collect term statistics and average field length statistics. 
   - Term significance should be provided by a [global significance model](../ranking/significance#global-significance-model), if [text matching features](../reference/ranking/rank-features.html) that benefit from it are used. This includes among others _[bm25](../ranking/bm25.html)_, _nativeRank_, _nativeFieldMatch_, _nativeProximity_ and _fieldMatch_.
   - If using _bm25_, adjust the [averageFieldLength](../reference/ranking/rank-feature-configuration.html#properties) configuration for a more precise _bm25_ score.
@@ -159,7 +159,7 @@ For better control of memory usage, use direct IO for reads when[document store 
           <store>\<cache\>\<maxsize\>1073741824\</maxsize\>\</cache\>
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

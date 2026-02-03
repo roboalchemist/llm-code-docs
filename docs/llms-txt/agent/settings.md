@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/user/settings.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # User Settings in Agent.ai
 
 The User Settings page lets you manage your profile details, preferences, and integrations. From notifications to API credits, this is where you control how [Agent.ai](http://Agent.ai) works for you.

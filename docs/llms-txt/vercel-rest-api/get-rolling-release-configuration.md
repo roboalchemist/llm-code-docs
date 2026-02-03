@@ -1,80 +1,77 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/rolling-release/get-rolling-release-configuration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get rolling release configuration
 
 > Get the Rolling Releases configuration for a project. The project-level config is simply a template that will be used for any future rolling release, and not the configuration for any active rolling release.
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v1/projects/{idOrName}/rolling-release/config
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v1/projects/{idOrName}/rolling-release/config
-  method: get
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path:
-        idOrName:
+  /v1/projects/{idOrName}/rolling-release/config:
+    get:
+      tags:
+        - rolling-release
+      summary: Get rolling release configuration
+      description: >-
+        Get the Rolling Releases configuration for a project. The project-level
+        config is simply a template that will be used for any future rolling
+        release, and not the configuration for any active rolling release.
+      operationId: getRollingReleaseConfig
+      parameters:
+        - name: idOrName
+          description: Project ID or project name (URL-encoded)
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: Project ID or project name (URL-encoded)
-      query:
-        teamId:
+            description: Project ID or project name (URL-encoded)
+            type: string
+        - description: The Team identifier to perform the request on behalf of.
+          in: query
+          name: teamId
           schema:
-            - type: string
-              description: The Team identifier to perform the request on behalf of.
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-        slug:
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        - description: The Team slug to perform the request on behalf of.
+          in: query
+          name: slug
           schema:
-            - type: string
-              description: The Team slug to perform the request on behalf of.
-              example: my-team-url-slug
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: getRollingReleaseConfig
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.rollingRelease.getRollingReleaseConfig({
-              idOrName: "<value>",
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-              slug: "my-team-url-slug",
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              rollingRelease:
-                allOf:
-                  - nullable: true
+            type: string
+            example: my-team-url-slug
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                properties:
+                  rollingRelease:
+                    nullable: true
                     properties:
                       target:
                         type: string
@@ -95,6 +92,9 @@ paths:
                               example: 25
                             requireApproval:
                               type: boolean
+                              enum:
+                                - false
+                                - true
                               description: >-
                                 Whether or not this stage requires manual
                                 approval to proceed
@@ -107,6 +107,9 @@ paths:
                               example: 600
                             linearShift:
                               type: boolean
+                              enum:
+                                - false
+                                - true
                               description: >-
                                 Whether to linearly shift traffic over the
                                 duration of this stage
@@ -127,6 +130,9 @@ paths:
                           always have targetPercentage: 100.
                       canaryResponseHeader:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                         description: >-
                           Whether the request served by a canary deployment
                           should return a header indicating a canary was served.
@@ -138,45 +144,24 @@ paths:
                     description: >-
                       Project-level rolling release configuration that defines
                       how deployments should be gradually rolled out
-            requiredProperties:
-              - rollingRelease
-        examples:
-          example:
-            value:
-              rollingRelease:
-                target: production
-                stages:
-                  - targetPercentage: 25
-                    requireApproval: false
-                    duration: 600
-                    linearShift: false
-                canaryResponseHeader: false
-        description: ''
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: One of the provided values in the request query is invalid.
-        examples: {}
-        description: One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-    '404': {}
-  deprecated: false
-  type: path
+                required:
+                  - rollingRelease
+                type: object
+        '400':
+          description: One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+        '404':
+          description: ''
+      security:
+        - bearerToken: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

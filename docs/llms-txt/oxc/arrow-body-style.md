@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/arrow-body-style.md
 ---
-# eslint/arrow-body-style&#x20;
 
 ### What it does
 
@@ -131,7 +130,7 @@ const foo3 = () => {
 Examples of **incorrect** code for this rule with the `{ "requireReturnForObjectLiteral": true }` option:
 
 ```js
-/* arrow-body-style: ["error", "as-needed", { "requireReturnForObjectLiteral": true }]*/
+/* arrow-body-style: ["error", "as-needed", { "requireReturnForObjectLiteral": true }] */
 
 /* ✘ Bad: */
 const foo = () => ({});
@@ -141,7 +140,7 @@ const bar = () => ({ bar: 0 });
 Examples of **correct** code for this rule with the `{ "requireReturnForObjectLiteral": true }` option:
 
 ```js
-/* arrow-body-style: ["error", "as-needed", { "requireReturnForObjectLiteral": true }]*/
+/* arrow-body-style: ["error", "as-needed", { "requireReturnForObjectLiteral": true }] */
 
 /* ✔ Good: */
 const foo = () => {};
@@ -149,6 +148,22 @@ const bar = () => {
   return { bar: 0 };
 };
 ```
+
+## Configuration
+
+### The 1st option
+
+type: `"as-needed" | "always" | "never"`
+
+### The 2nd option
+
+This option is an object with the following properties:
+
+#### requireReturnForObjectLiteral
+
+type: `boolean`
+
+default: `false`
 
 ## How to use
 

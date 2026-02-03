@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/creating-content/blocks/quote.md
-
-# Source: https://gitbook.com/docs/documentation/fr/creating-content/blocks/quote.md
-
-# Source: https://gitbook.com/docs/creating-content/blocks/quote.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/creating-content/blocks/quote.md
 
 # Source: https://gitbook.com/docs/documentation/zh/creating-content/blocks/quote.md
 

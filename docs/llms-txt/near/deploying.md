@@ -2,28 +2,22 @@
 
 # Source: https://docs.near.org/ai/shade-agents/getting-started/quickstart/deploying.md
 
-# Source: https://docs.near.org/ai/shade-agents/tutorials/ai-dao/deploying.md
-
-# Source: https://docs.near.org/ai/shade-agents/getting-started/quickstart/deploying.md
-
-# Source: https://docs.near.org/ai/shade-agents/tutorials/ai-dao/deploying.md
-
-# Source: https://docs.near.org/ai/shade-agents/getting-started/quickstart/deploying.md
-
-# Source: https://docs.near.org/ai/shade-agents/tutorials/ai-dao/deploying.md
-
-# Source: https://docs.near.org/ai/shade-agents/getting-started/quickstart/deploying.md
-
-# Source: https://docs.near.org/ai/shade-agents/tutorials/ai-dao/deploying.md
-
-# Source: https://docs.near.org/ai/shade-agents/getting-started/quickstart/deploying.md
-
 ---
 id: deploying
 title: Deploying an Agent
 sidebar_label: Deploying an Agent
 description: "Learn how to quickly deploy your first Shade Agent."
 ---
+
+:::warning
+The Shade Agent Framework is experimental and contains known critical vulnerabilities.
+
+It must not be used in production or on mainnet and is intended solely for testing and non-critical use on testnet.
+
+No representations or warranties are made regarding security, correctness, or fitness for any purpose. Use of this software is entirely at your own risk.
+
+A production-ready version of the framework is currently in development.
+:::
 
 
 
@@ -125,12 +119,6 @@ Phala Cloud is a cloud service that supports hosting applications in a TEE. It m
   ```bash
   npm i
   ```
-
----
-
-:::warning
-This technology has not yet undergone a formal audit. Please conduct your own due diligence and exercise caution before integrating or relying on it in production environments.
-:::
 
 ---
 

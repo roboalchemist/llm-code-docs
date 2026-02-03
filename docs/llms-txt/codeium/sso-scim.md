@@ -2,19 +2,13 @@
 
 # Source: https://docs.windsurf.com/plugins/accounts/sso-scim.md
 
-# Source: https://docs.windsurf.com/windsurf/accounts/sso-scim.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/sso-scim.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/sso-scim.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/sso-scim.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/sso-scim.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/sso-scim.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Setting up SSO & SCIM
+
+> Configure Single Sign-On (SSO) and SCIM provisioning for your organization using Google Workspace, Microsoft Azure AD, Okta, or other SAML identity providers.
 
 This feature is only available to Teams and Enterprise users.
 
@@ -70,7 +64,7 @@ This feature is only available to Teams and Enterprise users.
     On Codeium’s settings page, click **Enable Login with SAML**, and then click **Save**. Make sure to click on **Test Login** to make sure login works as expected. All users now will have SSO login enforced.
   </Tab>
 
-  <Tab title="Azure AD SSO">
+  <Tab title="Microsoft Entra ID">
     Windsurf Enterprise now supports sign in with Single Sign-On (SSO) via SAML. If your organization uses Microsoft Entra ID (formerly Azure AD), you will be able to use SSO with Windsurf.
 
     <Note>Windsurf only supports SP-initiated SSO; IDP-initiated SSO is NOT currently supported.</Note>

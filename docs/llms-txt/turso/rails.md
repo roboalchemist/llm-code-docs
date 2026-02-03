@@ -1,5 +1,9 @@
 # Source: https://docs.turso.tech/sdk/activerecord/guides/rails.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Ruby on Rails + Turso
 
 > Set up Turso in your Ruby on Rails project in minutes.

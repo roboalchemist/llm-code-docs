@@ -2,23 +2,13 @@
 
 # Source: https://docs.windsurf.com/plugins/accounts/api-reference/errors.md
 
-# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/errors.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/api-reference/errors.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/errors.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/api-reference/errors.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/errors.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/api-reference/errors.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/errors.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Error Handling
 
-> Common error messages and debugging tips for the Analytics API
+> Common error messages and debugging tips for the Analytics API including authentication, query structure, and rate limiting errors.
 
 ## Overview
 
@@ -54,12 +44,12 @@ When an error occurs, the API returns an error response with a descriptive messa
   <Accordion title="Insufficient permissions">
     **Error:** `Insufficient permissions`
 
-    **Cause:** The service key doesn't have the required "Teams Read-only" permissions.
+    **Cause:** The service key doesn't have the required permissions for the endpoint you're calling.
 
     **Solution:**
 
     * Update the service key permissions in team settings
-    * Ensure the service key has "Teams Read-only" access
+    * Refer to the [API introduction](/plugins/accounts/api-reference/api-introduction#required-permissions) for the specific permission required by each endpoint
   </Accordion>
 </AccordionGroup>
 
@@ -143,7 +133,7 @@ When an error occurs, the API returns an error response with a descriptive messa
 
     **Cause:** The aggregation function is not supported for the specified field type.
 
-    **Solution:** Check the [Available Fields](/windsurf/accounts/api-reference/custom-analytics#available-fields) section to see which aggregation functions are valid for each field. String fields typically only support `COUNT` and `UNSPECIFIED`.
+    **Solution:** Check the [Available Fields](/plugins/accounts/api-reference/custom-analytics#available-fields) section to see which aggregation functions are valid for each field. String fields typically only support `COUNT` and `UNSPECIFIED`.
   </Accordion>
 
   <Accordion title="Distinct field aggregation">
@@ -298,7 +288,7 @@ Begin with basic queries and gradually add complexity:
 
 ### 2. Validate Field Names
 
-Double-check field names against the [Available Fields](/windsurf/accounts/api-reference/custom-analytics#available-fields) documentation.
+Double-check field names against the [Available Fields](/plugins/accounts/api-reference/custom-analytics#available-fields) documentation.
 
 ### 3. Check Aggregation Compatibility
 

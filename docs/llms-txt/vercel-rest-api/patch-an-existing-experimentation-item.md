@@ -1,157 +1,113 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/marketplace/patch-an-existing-experimentation-item.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Patch an existing experimentation item
 
 > Patch an existing experimentation item
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples patch /v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: >-
-    /v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}
-  method: patch
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path:
-        integrationConfigurationId:
+  /v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}:
+    patch:
+      tags:
+        - marketplace
+      summary: Patch an existing experimentation item
+      description: Patch an existing experimentation item
+      parameters:
+        - name: integrationConfigurationId
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-        resourceId:
+            type: string
+        - name: resourceId
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-        itemId:
+            type: string
+        - name: itemId
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              slug:
-                allOf:
-                  - type: string
-                    maxLength: 1024
-              origin:
-                allOf:
-                  - type: string
-                    maxLength: 2048
-              name:
-                allOf:
-                  - type: string
-                    maxLength: 1024
-              category:
-                allOf:
-                  - type: string
-                    enum:
-                      - experiment
-                      - flag
-              description:
-                allOf:
-                  - type: string
-                    maxLength: 1024
-              isArchived:
-                allOf:
-                  - type: boolean
-              createdAt:
-                allOf:
-                  - type: number
-              updatedAt:
-                allOf:
-                  - type: number
-            requiredProperties:
-              - slug
-              - origin
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              slug: <string>
-              origin: <string>
-              name: <string>
-              category: experiment
-              description: <string>
-              isArchived: true
-              createdAt: 123
-              updatedAt: 123
-    codeSamples:
-      - label: >-
-          patch_/v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/items/{itemId}
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            await vercel.marketplace.updateInstallationIntegrationConfiguration({
-              integrationConfigurationId: "<id>",
-              resourceId: "<id>",
-              itemId: "<id>",
-            });
-
-
-          }
-
-          run();
-  response:
-    '204':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The item was updated
-        examples: {}
-        description: The item was updated
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: |-
-              One of the provided values in the request body is invalid.
-              One of the provided values in the request query is invalid.
-        examples: {}
-        description: |-
-          One of the provided values in the request body is invalid.
-          One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-    '404': {}
-  deprecated: false
-  type: path
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required:
+                - slug
+                - origin
+              properties:
+                slug:
+                  type: string
+                  maxLength: 1024
+                origin:
+                  type: string
+                  maxLength: 2048
+                name:
+                  type: string
+                  maxLength: 1024
+                category:
+                  type: string
+                  enum:
+                    - experiment
+                    - flag
+                description:
+                  type: string
+                  maxLength: 1024
+                isArchived:
+                  type: boolean
+                createdAt:
+                  type: number
+                updatedAt:
+                  type: number
+      responses:
+        '204':
+          description: The item was updated
+        '400':
+          description: |-
+            One of the provided values in the request body is invalid.
+            One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+        '404':
+          description: ''
+      security:
+        - bearerToken: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

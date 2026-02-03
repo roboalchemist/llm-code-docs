@@ -1,5 +1,9 @@
 # Source: https://docs.tavus.io/sections/integrations/livekit.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LiveKit Agent
 
 > Integrate a Tavus Replica into LiveKit as the conversational video avatar.
@@ -109,8 +113,3 @@ Make sure you have the following before starting:
 <Note>
   Try out the integration using this <a href="https://github.com/livekit-examples/python-agents-examples/tree/main/avatars/tavus" target="_blank">sample app</a>.
 </Note>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavus.io/llms.txt

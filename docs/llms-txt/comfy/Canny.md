@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/built-in-nodes/Canny.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Canny - ComfyUI Built-in Node Documentation
 
 > The Canny node used to extract edge lines from photos.

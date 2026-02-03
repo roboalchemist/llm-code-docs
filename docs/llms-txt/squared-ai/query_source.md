@@ -1,66 +1,63 @@
 # Source: https://docs.squared.ai/api-reference/connectors/query_source.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Query Source
+
+
 
 ## OpenAPI
 
 ````yaml POST /api/v1/connectors/{id}/query_source
+openapi: 3.0.1
+info:
+  title: AI Squared API
+  version: 1.0.0
+servers:
+  - url: https://api.squared.ai
+security: []
 paths:
-  path: /api/v1/connectors/{id}/query_source
-  method: post
-  servers:
-    - url: https://api.squared.ai
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path:
-        id:
+  /api/v1/connectors/{id}/query_source:
+    post:
+      tags:
+        - Connectors
+      summary: Query your source data
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the connector to query
           schema:
-            - type: integer
-              required: true
-              description: The ID of the connector to query
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              query:
-                allOf:
-                  - type: string
-                    description: SQL query to be executed
-            required: true
-        examples:
-          example:
-            value:
-              query: <string>
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: array
-            items:
-              allOf:
-                - type: object
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query:
+                  type: string
+                  description: SQL query to be executed
+      responses:
+        '200':
+          description: An array of generic JSON objects representing the preview data.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
                   additionalProperties: true
-        examples:
-          example:
-            value:
-              - {}
-        description: An array of generic JSON objects representing the preview data.
-  deprecated: false
-  type: path
+      security:
+        - bearerAuth: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 
 ````

@@ -4,7 +4,6 @@
 title: System Requirements
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > Getting started > System Requirements
-source_url: https://docs.datadoghq.com/getting-started/system-requirements/index.html
 ---
 
 # System Requirements

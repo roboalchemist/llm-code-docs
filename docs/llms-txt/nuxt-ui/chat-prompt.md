@@ -8,44 +8,17 @@
 
 The ChatPrompt component renders a `<form>` element and extends the [Textarea](/docs/components/textarea) component so you can pass any property such as `icon`, `placeholder`, `autofocus`, etc.
 
-<code-preview>
-<u-chat-prompt variant="subtle">
-<u-chat-prompt-submit className="rounded-full" color="neutral">
-
-
-
-</u-chat-prompt-submit>
-
-<template v-slot:footer="">
-<u-select :items="[{"label":"Gemini 2.5 Pro","value":"gemini-2.5-pro","icon":"i-simple-icons-googlegemini"},{"label":"GPT-4o","value":"gpt-4o","icon":"i-simple-icons-openai"},{"label":"Claude 3.5 Sonnet","value":"claude-3.5-sonnet","icon":"i-simple-icons-anthropic"},{"label":"Llama 4","value":"llama-4","icon":"i-simple-icons-ollama"}]" icon="i-simple-icons-openai" modelValue="gpt-4o" placeholder="Select a model" variant="ghost">
-
-
-
-</u-select>
+```vue
+<template>
+  <u-chat-prompt variant=subtle>
+  <u-chat-prompt-submit color=neutral />
+  <template v-slot:footer=>
+  <u-select :items=[{"label":"Gemini 2.5 Pro","value":"gemini-2.5-pro","icon":"i-simple-icons-googlegemini"},{"label":"GPT-4o","value":"gpt-4o","icon":"i-simple-icons-openai"},{"label":"Claude 3.5 Sonnet","value":"claude-3.5-sonnet","icon":"i-simple-icons-anthropic"},{"label":"Llama 4","value":"llama-4","icon":"i-simple-icons-ollama"}] icon=i-simple-icons-openai modelValue=gpt-4o placeholder=Select a model variant=ghost /></template></u-chat-prompt>
 </template>
-</u-chat-prompt>
-</code-preview>
+```
 
-<note>
-
-The ChatPrompt handles the following events:
-
-- The form is submitted when the user presses <kbd value="enter">
-
-
-
-</kbd>
-
- or when the user clicks on the submit button.
-- The textarea is blurred when <kbd value="escape">
-
-
-
-</kbd>
-
- is pressed and emits a `close` event.
-
-</note>
+> [!NOTE]
+> The ChatPrompt handles the following events:The form is submitted when the user presses  or when the user clicks on the submit button.The textarea is blurred when  is pressed and emits a `close` event.
 
 ### Variant
 
@@ -59,17 +32,9 @@ Use the `variant` prop to change the style of the prompt. Defaults to `outline`.
 
 ## Examples
 
-<note target="_blank" to="https://ai-sdk.dev/docs/getting-started/nuxt">
-
-These chat components are designed to be used with the **AI SDK v5** from **Vercel AI SDK**.
-
-</note>
-
-<callout icon="i-simple-icons-github" target="_blank" to="https://github.com/nuxt-ui-templates/chat">
-
-Check out the source code of our **AI Chat template** on GitHub for a real-life example.
-
-</callout>
+> [!TIP]
+> See: /docs/components/chat-messages#examples
+> Check the ChatMessages documentation for server API setup and installation instructions.
 
 ### Within a page
 
@@ -80,7 +45,6 @@ Pass the `input` prop alongside the `error` prop to disable the textarea when an
 ```vue [pages/[id].vue]
 <script setup lang="ts">
 import { Chat } from '@ai-sdk/vue'
-import { getTextFromMessage } from '@nuxt/ui/utils/ai'
 
 const input = ref('')
 
@@ -103,7 +67,10 @@ function onSubmit() {
       <UContainer>
         <UChatMessages :messages="chat.messages" :status="chat.status">
           <template #content="{ message }">
-            <MDC :value="getTextFromMessage(message)" :cache-key="message.id" class="*:first:mt-0 *:last:mb-0" />
+            <template v-for="(part, index) in message.parts" :key="`${message.id}-${part.type}-${index}`">
+              <MDC v-if="part.type === 'text' && message.role === 'assistant'" :value="part.text" :cache-key="`${message.id}-${index}`" class="*:first:mt-0 *:last:mb-0" />
+              <p v-else-if="part.type === 'text' && message.role === 'user'" class="whitespace-pre-wrap">{{ part.text }}</p>
+            </template>
           </template>
         </UChatMessages>
       </UContainer>
@@ -112,7 +79,7 @@ function onSubmit() {
     <template #footer>
       <UContainer class="pb-4 sm:pb-6">
         <UChatPrompt v-model="input" :error="chat.error" @submit="onSubmit">
-          <UChatPromptSubmit :status="chat.status" @stop="chat.stop" @reload="chat.regenerate" />
+          <UChatPromptSubmit :status="chat.status" @stop="chat.stop()" @reload="chat.regenerate()" />
         </UChatPrompt>
       </UContainer>
     </template>
@@ -184,7 +151,7 @@ interface ChatPromptProps {
   /**
    * Display an icon based on the `leading` and `trailing` props.
    */
-  icon?: string | object | undefined;
+  icon?: any;
   /**
    * Display an avatar on the left side.
    */
@@ -196,7 +163,7 @@ interface ChatPromptProps {
   /**
    * The icon when the `loading` prop is `true`.
    */
-  loadingIcon?: string | object | undefined;
+  loadingIcon?: any;
   /**
    * @default "1"
    */
@@ -215,11 +182,9 @@ interface ChatPromptProps {
 }
 ```
 
-<callout icon="i-simple-icons-mdnwebdocs" target="_blank" to="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attributes">
-
-This component also supports all native `<textarea>` HTML attributes.
-
-</callout>
+> [!NOTE]
+> See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea#attributes
+> This component also supports all native `<textarea>` HTML attributes.
 
 ### Slots
 
@@ -346,8 +311,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

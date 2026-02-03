@@ -1,3 +1,5 @@
+# Source: https://python.langchain.com/oss/python/langchain/models
+
 # LangChain overview - Docs by LangChain
 
 The refined Markdown strictly adheres to the provided HTML content, focusing on the main content area and excluding navigation, headers, footers, and other non-essential elements. It maintains the semantic structure and preserves the essential information.

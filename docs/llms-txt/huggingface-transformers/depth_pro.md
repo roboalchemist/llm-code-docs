@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/depth_pro.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/depth_pro.md
 
 # DepthPro
 
@@ -145,15 +145,15 @@ If you're interested in submitting a resource to be included here, please feel f
 
 #### transformers.DepthProConfig[[transformers.DepthProConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/depth_pro/configuration_depth_pro.py#L27)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/depth_pro/configuration_depth_pro.py#L26)
 
-This is the configuration class to store the configuration of a [DepthProModel](/docs/transformers/v5.0.0rc1/en/model_doc/depth_pro#transformers.DepthProModel). It is used to instantiate a
+This is the configuration class to store the configuration of a [DepthProModel](/docs/transformers/v5.0.0/en/model_doc/depth_pro#transformers.DepthProModel). It is used to instantiate a
 DepthPro model according to the specified arguments, defining the model architecture. Instantiating a configuration
 with the defaults will yield a similar configuration to that of the DepthPro
 [apple/DepthPro](https://huggingface.co/apple/DepthPro) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -198,21 +198,21 @@ use_fov_model (`bool`, *optional*, defaults to `False`) : Whether to use `DepthP
 
 num_fov_head_layers (`int`, *optional*, defaults to 2) : Number of convolution layers in the head of `DepthProFovModel`.
 
-image_model_config (`Union[dict[str, Any], PreTrainedConfig]`, *optional*) : The configuration of the image encoder model, which is loaded using the [AutoModel](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoModel) API. By default, Dinov2 model is used as backbone.
+image_model_config (`Union[dict[str, Any], PreTrainedConfig]`, *optional*) : The configuration of the image encoder model, which is loaded using the [AutoModel](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoModel) API. By default, Dinov2 model is used as backbone.
 
-patch_model_config (`Union[dict[str, Any], PreTrainedConfig]`, *optional*) : The configuration of the patch encoder model, which is loaded using the [AutoModel](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoModel) API. By default, Dinov2 model is used as backbone.
+patch_model_config (`Union[dict[str, Any], PreTrainedConfig]`, *optional*) : The configuration of the patch encoder model, which is loaded using the [AutoModel](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoModel) API. By default, Dinov2 model is used as backbone.
 
-fov_model_config (`Union[dict[str, Any], PreTrainedConfig]`, *optional*) : The configuration of the fov encoder model, which is loaded using the [AutoModel](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoModel) API. By default, Dinov2 model is used as backbone.
+fov_model_config (`Union[dict[str, Any], PreTrainedConfig]`, *optional*) : The configuration of the fov encoder model, which is loaded using the [AutoModel](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoModel) API. By default, Dinov2 model is used as backbone.
 
 ## DepthProImageProcessor[[transformers.DepthProImageProcessor]]
 
 #### transformers.DepthProImageProcessor[[transformers.DepthProImageProcessor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/depth_pro/image_processing_depth_pro.py#L56)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/depth_pro/image_processing_depth_pro.py#L55)
 
 Constructs a DepthPro image processor.
 
-preprocesstransformers.DepthProImageProcessor.preprocesshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/depth_pro/image_processing_depth_pro.py#L191[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]"}, {"name": "do_resize", "val": ": typing.Optional[bool] = None"}, {"name": "size", "val": ": typing.Optional[dict[str, int]] = None"}, {"name": "resample", "val": ": typing.Optional[PIL.Image.Resampling] = None"}, {"name": "do_rescale", "val": ": typing.Optional[bool] = None"}, {"name": "rescale_factor", "val": ": typing.Optional[float] = None"}, {"name": "do_normalize", "val": ": typing.Optional[bool] = None"}, {"name": "image_mean", "val": ": typing.Union[float, list[float], NoneType] = None"}, {"name": "image_std", "val": ": typing.Union[float, list[float], NoneType] = None"}, {"name": "return_tensors", "val": ": typing.Union[str, transformers.utils.generic.TensorType, NoneType] = None"}, {"name": "data_format", "val": ": typing.Union[str, transformers.image_utils.ChannelDimension] = "}, {"name": "input_data_format", "val": ": typing.Union[str, transformers.image_utils.ChannelDimension, NoneType] = None"}]- **images** (`ImageInput`) --
+preprocesstransformers.DepthProImageProcessor.preprocesshttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/depth_pro/image_processing_depth_pro.py#L190[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]"}, {"name": "do_resize", "val": ": bool | None = None"}, {"name": "size", "val": ": dict[str, int] | None = None"}, {"name": "resample", "val": ": PIL.Image.Resampling | None = None"}, {"name": "do_rescale", "val": ": bool | None = None"}, {"name": "rescale_factor", "val": ": float | None = None"}, {"name": "do_normalize", "val": ": bool | None = None"}, {"name": "image_mean", "val": ": float | list[float] | None = None"}, {"name": "image_std", "val": ": float | list[float] | None = None"}, {"name": "return_tensors", "val": ": str | transformers.utils.generic.TensorType | None = None"}, {"name": "data_format", "val": ": str | transformers.image_utils.ChannelDimension = "}, {"name": "input_data_format", "val": ": str | transformers.image_utils.ChannelDimension | None = None"}]- **images** (`ImageInput`) --
   Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If
   passing in images with pixel values between 0 and 1, set `do_rescale=False`.
 - **do_resize** (`bool`, *optional*, defaults to `self.do_resize`) --
@@ -271,7 +271,7 @@ image_mean (`float` or `list[float]`, *optional*, defaults to `IMAGENET_STANDARD
 image_std (`float` or `list[float]`, *optional*, defaults to `IMAGENET_STANDARD_STD`) : Standard deviation to use if normalizing the image. This is a float or list of floats the length of the number of channels in the image. Can be overridden by the `image_std` parameter in the `preprocess` method.
 #### post_process_depth_estimation[[transformers.DepthProImageProcessor.post_process_depth_estimation]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/depth_pro/image_processing_depth_pro.py#L312)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/depth_pro/image_processing_depth_pro.py#L311)
 
 Post-processes the raw depth predictions from the model to generate
 final depth predictions which is caliberated using the field of view if provided
@@ -294,47 +294,47 @@ predictions, and field of view (degrees) and focal length (pixels) if `field_of_
 
 #### transformers.DepthProImageProcessorFast[[transformers.DepthProImageProcessorFast]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/depth_pro/image_processing_depth_pro_fast.py#L51)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/depth_pro/image_processing_depth_pro_fast.py#L50)
 
 Constructs a fast Depth Pro image processor.
 
-preprocesstransformers.DepthProImageProcessorFast.preprocesshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_utils_fast.py#L839[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]"}, {"name": "*args", "val": ""}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.processing_utils.ImagesKwargs]"}]- **images** (`Union[PIL.Image.Image, numpy.ndarray, torch.Tensor, list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]`) --
+preprocesstransformers.DepthProImageProcessorFast.preprocesshttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_utils_fast.py#L838[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]"}, {"name": "*args", "val": ""}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.processing_utils.ImagesKwargs]"}]- **images** (`Union[PIL.Image.Image, numpy.ndarray, torch.Tensor, list, list, list]`) --
   Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If
   passing in images with pixel values between 0 and 1, set `do_rescale=False`.
-- **do_convert_rgb** (`bool`, *optional*) --
+- **do_convert_rgb** (`bool | None.do_convert_rgb`) --
   Whether to convert the image to RGB.
-- **do_resize** (`bool`, *optional*) --
+- **do_resize** (`bool | None.do_resize`) --
   Whether to resize the image.
-- **size** (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) --
+- **size** (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) --
   Describes the maximum input dimensions to the model.
-- **crop_size** (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) --
+- **crop_size** (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) --
   Size of the output image after applying `center_crop`.
 - **resample** (`Annotated[Union[PILImageResampling, int, NoneType], None]`) --
   Resampling filter to use if resizing the image. This can be one of the enum `PILImageResampling`. Only
   has an effect if `do_resize` is set to `True`.
-- **do_rescale** (`bool`, *optional*) --
+- **do_rescale** (`bool | None.do_rescale`) --
   Whether to rescale the image.
-- **rescale_factor** (`float`, *optional*) --
+- **rescale_factor** (`float | None.rescale_factor`) --
   Rescale factor to rescale the image by if `do_rescale` is set to `True`.
-- **do_normalize** (`bool`, *optional*) --
+- **do_normalize** (`bool | None.do_normalize`) --
   Whether to normalize the image.
-- **image_mean** (`Union[float, list[float], tuple[float, ...], NoneType]`) --
+- **image_mean** (`float | list[float] | tuple[float, ...] | None.image_mean`) --
   Image mean to use for normalization. Only has an effect if `do_normalize` is set to `True`.
-- **image_std** (`Union[float, list[float], tuple[float, ...], NoneType]`) --
+- **image_std** (`float | list[float] | tuple[float, ...] | None.image_std`) --
   Image standard deviation to use for normalization. Only has an effect if `do_normalize` is set to
   `True`.
-- **do_pad** (`bool`, *optional*) --
+- **do_pad** (`bool | None.do_pad`) --
   Whether to pad the image. Padding is done either to the largest size in the batch
   or to a fixed square size per image. The exact padding strategy depends on the model.
-- **pad_size** (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) --
+- **pad_size** (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) --
   The size in `{"height": int, "width" int}` to pad the images to. Must be larger than any image size
   provided for preprocessing. If `pad_size` is not provided, images will be padded to the largest
   height and width in the batch. Applied only when `do_pad=True.`
-- **do_center_crop** (`bool`, *optional*) --
+- **do_center_crop** (`bool | None.do_center_crop`) --
   Whether to center crop the image.
-- **data_format** (`Union[~image_utils.ChannelDimension, str, NoneType]`) --
+- **data_format** (`str | ~image_utils.ChannelDimension | None.data_format`) --
   Only `ChannelDimension.FIRST` is supported. Added for compatibility with slow processors.
-- **input_data_format** (`Union[~image_utils.ChannelDimension, str, NoneType]`) --
+- **input_data_format** (`str | ~image_utils.ChannelDimension | None.input_data_format`) --
   The channel dimension format for the input image. If unset, the channel dimension format is inferred
   from the input image. Can be one of:
   - `"channels_first"` or `ChannelDimension.FIRST`: image in (num_channels, height, width) format.
@@ -342,13 +342,13 @@ preprocesstransformers.DepthProImageProcessorFast.preprocesshttps://github.com/h
   - `"none"` or `ChannelDimension.NONE`: image in (height, width) format.
 - **device** (`Annotated[Union[str, torch.device, NoneType], None]`) --
   The device to process the images on. If unset, the device is inferred from the input images.
-- **return_tensors** (`Annotated[Union[str, ~utils.generic.TensorType, NoneType], None]`) --
+- **return_tensors** (`Annotated[str | ~utils.generic.TensorType | None, None]`) --
   Returns stacked tensors if set to `pt, otherwise returns a list of tensors.
-- **disable_grouping** (`bool`, *optional*) --
+- **disable_grouping** (`bool | None.disable_grouping`) --
   Whether to disable grouping of images by size to process them individually and not in batches.
   If None, will be set to True if the images are on CPU, and False otherwise. This choice is based on
   empirical observations, as detailed here: https://github.com/huggingface/transformers/pull/38157
-- **image_seq_length** (`int`, *optional*) --
+- **image_seq_length** (`int | None.image_seq_length`) --
   The number of image tokens to be used for each image in the input.
   Added for backward compatibility but this should be set as a processor attribute in future models.0``- **data** (`dict`) -- Dictionary of lists/arrays/tensors returned by the __call__ method ('pixel_values', etc.).
 - **tensor_type** (`Union[None, str, TensorType]`, *optional*) -- You can give a tensor_type here to convert the lists of integers in PyTorch/Numpy Tensors at
@@ -356,45 +356,45 @@ preprocesstransformers.DepthProImageProcessorFast.preprocesshttps://github.com/h
 
 **Parameters:**
 
-images (`Union[PIL.Image.Image, numpy.ndarray, torch.Tensor, list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]`) : Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If passing in images with pixel values between 0 and 1, set `do_rescale=False`.
+images (`Union[PIL.Image.Image, numpy.ndarray, torch.Tensor, list, list, list]`) : Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If passing in images with pixel values between 0 and 1, set `do_rescale=False`.
 
-do_convert_rgb (`bool`, *optional*) : Whether to convert the image to RGB.
+do_convert_rgb (`bool | None.do_convert_rgb`) : Whether to convert the image to RGB.
 
-do_resize (`bool`, *optional*) : Whether to resize the image.
+do_resize (`bool | None.do_resize`) : Whether to resize the image.
 
-size (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) : Describes the maximum input dimensions to the model.
+size (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) : Describes the maximum input dimensions to the model.
 
-crop_size (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) : Size of the output image after applying `center_crop`.
+crop_size (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) : Size of the output image after applying `center_crop`.
 
 resample (`Annotated[Union[PILImageResampling, int, NoneType], None]`) : Resampling filter to use if resizing the image. This can be one of the enum `PILImageResampling`. Only has an effect if `do_resize` is set to `True`.
 
-do_rescale (`bool`, *optional*) : Whether to rescale the image.
+do_rescale (`bool | None.do_rescale`) : Whether to rescale the image.
 
-rescale_factor (`float`, *optional*) : Rescale factor to rescale the image by if `do_rescale` is set to `True`.
+rescale_factor (`float | None.rescale_factor`) : Rescale factor to rescale the image by if `do_rescale` is set to `True`.
 
-do_normalize (`bool`, *optional*) : Whether to normalize the image.
+do_normalize (`bool | None.do_normalize`) : Whether to normalize the image.
 
-image_mean (`Union[float, list[float], tuple[float, ...], NoneType]`) : Image mean to use for normalization. Only has an effect if `do_normalize` is set to `True`.
+image_mean (`float | list[float] | tuple[float, ...] | None.image_mean`) : Image mean to use for normalization. Only has an effect if `do_normalize` is set to `True`.
 
-image_std (`Union[float, list[float], tuple[float, ...], NoneType]`) : Image standard deviation to use for normalization. Only has an effect if `do_normalize` is set to `True`.
+image_std (`float | list[float] | tuple[float, ...] | None.image_std`) : Image standard deviation to use for normalization. Only has an effect if `do_normalize` is set to `True`.
 
-do_pad (`bool`, *optional*) : Whether to pad the image. Padding is done either to the largest size in the batch or to a fixed square size per image. The exact padding strategy depends on the model.
+do_pad (`bool | None.do_pad`) : Whether to pad the image. Padding is done either to the largest size in the batch or to a fixed square size per image. The exact padding strategy depends on the model.
 
-pad_size (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) : The size in `{"height": int, "width" int}` to pad the images to. Must be larger than any image size provided for preprocessing. If `pad_size` is not provided, images will be padded to the largest height and width in the batch. Applied only when `do_pad=True.`
+pad_size (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) : The size in `{"height": int, "width" int}` to pad the images to. Must be larger than any image size provided for preprocessing. If `pad_size` is not provided, images will be padded to the largest height and width in the batch. Applied only when `do_pad=True.`
 
-do_center_crop (`bool`, *optional*) : Whether to center crop the image.
+do_center_crop (`bool | None.do_center_crop`) : Whether to center crop the image.
 
-data_format (`Union[~image_utils.ChannelDimension, str, NoneType]`) : Only `ChannelDimension.FIRST` is supported. Added for compatibility with slow processors.
+data_format (`str | ~image_utils.ChannelDimension | None.data_format`) : Only `ChannelDimension.FIRST` is supported. Added for compatibility with slow processors.
 
-input_data_format (`Union[~image_utils.ChannelDimension, str, NoneType]`) : The channel dimension format for the input image. If unset, the channel dimension format is inferred from the input image. Can be one of: - `"channels_first"` or `ChannelDimension.FIRST`: image in (num_channels, height, width) format. - `"channels_last"` or `ChannelDimension.LAST`: image in (height, width, num_channels) format. - `"none"` or `ChannelDimension.NONE`: image in (height, width) format.
+input_data_format (`str | ~image_utils.ChannelDimension | None.input_data_format`) : The channel dimension format for the input image. If unset, the channel dimension format is inferred from the input image. Can be one of: - `"channels_first"` or `ChannelDimension.FIRST`: image in (num_channels, height, width) format. - `"channels_last"` or `ChannelDimension.LAST`: image in (height, width, num_channels) format. - `"none"` or `ChannelDimension.NONE`: image in (height, width) format.
 
 device (`Annotated[Union[str, torch.device, NoneType], None]`) : The device to process the images on. If unset, the device is inferred from the input images.
 
-return_tensors (`Annotated[Union[str, ~utils.generic.TensorType, NoneType], None]`) : Returns stacked tensors if set to `pt, otherwise returns a list of tensors.
+return_tensors (`Annotated[str | ~utils.generic.TensorType | None, None]`) : Returns stacked tensors if set to `pt, otherwise returns a list of tensors.
 
-disable_grouping (`bool`, *optional*) : Whether to disable grouping of images by size to process them individually and not in batches. If None, will be set to True if the images are on CPU, and False otherwise. This choice is based on empirical observations, as detailed here: https://github.com/huggingface/transformers/pull/38157
+disable_grouping (`bool | None.disable_grouping`) : Whether to disable grouping of images by size to process them individually and not in batches. If None, will be set to True if the images are on CPU, and False otherwise. This choice is based on empirical observations, as detailed here: https://github.com/huggingface/transformers/pull/38157
 
-image_seq_length (`int`, *optional*) : The number of image tokens to be used for each image in the input. Added for backward compatibility but this should be set as a processor attribute in future models.
+image_seq_length (`int | None.image_seq_length`) : The number of image tokens to be used for each image in the input. Added for backward compatibility but this should be set as a processor attribute in future models.
 
 **Returns:**
 
@@ -405,7 +405,7 @@ image_seq_length (`int`, *optional*) : The number of image tokens to be used for
   initialization.
 #### post_process_depth_estimation[[transformers.DepthProImageProcessorFast.post_process_depth_estimation]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/depth_pro/image_processing_depth_pro_fast.py#L102)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/depth_pro/image_processing_depth_pro_fast.py#L100)
 
 Post-processes the raw depth predictions from the model to generate
 final depth predictions which is caliberated using the field of view if provided
@@ -428,11 +428,11 @@ predictions, and field of view (degrees) and focal length (pixels) if `field_of_
 
 #### transformers.DepthProModel[[transformers.DepthProModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/depth_pro/modeling_depth_pro.py#L629)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/depth_pro/modeling_depth_pro.py#L627)
 
 The bare Depth Pro Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -440,10 +440,10 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.DepthProModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/depth_pro/modeling_depth_pro.py#L641[{"name": "pixel_values", "val": ": FloatTensor"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`) --
+forwardtransformers.DepthProModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/depth_pro/modeling_depth_pro.py#L639[{"name": "pixel_values", "val": ": FloatTensor"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [DepthProImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/depth_pro#transformers.DepthProImageProcessor). See [DepthProImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details (`processor_class` uses
-  [DepthProImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/depth_pro#transformers.DepthProImageProcessor) for processing images).
+  [DepthProImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/depth_pro#transformers.DepthProImageProcessorFast). See [DepthProImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details (`processor_class` uses
+  [DepthProImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/depth_pro#transformers.DepthProImageProcessorFast) for processing images).
 - **output_attentions** (`bool`, *optional*) --
   Whether or not to return the attentions tensors of all attention layers. See `attentions` under returned
   tensors for more detail.
@@ -451,22 +451,22 @@ forwardtransformers.DepthProModel.forwardhttps://github.com/huggingface/transfor
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0`transformers.models.depth_pro.modeling_depth_pro.DepthProOutput` or `tuple(torch.FloatTensor)`A `transformers.models.depth_pro.modeling_depth_pro.DepthProOutput` or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0`transformers.models.depth_pro.modeling_depth_pro.DepthProOutput` or `tuple(torch.FloatTensor)`A `transformers.models.depth_pro.modeling_depth_pro.DepthProOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([DepthProConfig](/docs/transformers/v5.0.0rc1/en/model_doc/depth_pro#transformers.DepthProConfig)) and inputs.
+elements depending on the configuration ([DepthProConfig](/docs/transformers/v5.0.0/en/model_doc/depth_pro#transformers.DepthProConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, n_patches_per_batch, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **features** (`Union[torch.FloatTensor, List[torch.FloatTensor]]`, *optional*) -- Features from encoders. Can be a single feature or a list of features.
-- **hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor, ...] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor, ...] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [DepthProModel](/docs/transformers/v5.0.0rc1/en/model_doc/depth_pro#transformers.DepthProModel) forward method, overrides the `__call__` special method.
+The [DepthProModel](/docs/transformers/v5.0.0/en/model_doc/depth_pro#transformers.DepthProModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -477,11 +477,13 @@ Examples:
 ```python
 >>> import torch
 >>> from PIL import Image
->>> import requests
+>>> import httpx
+>>> from io import BytesIO
 >>> from transformers import AutoProcessor, DepthProModel
 
 >>> url = "https://www.ilankelman.org/stopsigns/australia.jpg"
->>> image = Image.open(requests.get(url, stream=True).raw)
+>>> with httpx.stream("GET", url) as response:
+...     image = Image.open(BytesIO(response.read()))
 
 >>> checkpoint = "apple/DepthPro-hf"
 >>> processor = AutoProcessor.from_pretrained(checkpoint)
@@ -499,7 +501,7 @@ torch.Size([1, 35, 577, 1024])
 
 **Parameters:**
 
-config ([DepthProModel](/docs/transformers/v5.0.0rc1/en/model_doc/depth_pro#transformers.DepthProModel)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([DepthProModel](/docs/transformers/v5.0.0/en/model_doc/depth_pro#transformers.DepthProModel)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
@@ -507,15 +509,15 @@ config ([DepthProModel](/docs/transformers/v5.0.0rc1/en/model_doc/depth_pro#tran
 
 A `transformers.models.depth_pro.modeling_depth_pro.DepthProOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([DepthProConfig](/docs/transformers/v5.0.0rc1/en/model_doc/depth_pro#transformers.DepthProConfig)) and inputs.
+elements depending on the configuration ([DepthProConfig](/docs/transformers/v5.0.0/en/model_doc/depth_pro#transformers.DepthProConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, n_patches_per_batch, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **features** (`Union[torch.FloatTensor, List[torch.FloatTensor]]`, *optional*) -- Features from encoders. Can be a single feature or a list of features.
-- **hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor, ...] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor, ...] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
@@ -525,11 +527,11 @@ elements depending on the configuration ([DepthProConfig](/docs/transformers/v5.
 
 #### transformers.DepthProForDepthEstimation[[transformers.DepthProForDepthEstimation]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/depth_pro/modeling_depth_pro.py#L998)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/depth_pro/modeling_depth_pro.py#L998)
 
 DepthPro Model with a depth estimation head on top (consisting of 3 convolutional layers).
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -537,10 +539,10 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.DepthProForDepthEstimation.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/depth_pro/modeling_depth_pro.py#L1023[{"name": "pixel_values", "val": ": FloatTensor"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`) --
+forwardtransformers.DepthProForDepthEstimation.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/depth_pro/modeling_depth_pro.py#L1023[{"name": "pixel_values", "val": ": FloatTensor"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [DepthProImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/depth_pro#transformers.DepthProImageProcessor). See [DepthProImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details (`processor_class` uses
-  [DepthProImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/depth_pro#transformers.DepthProImageProcessor) for processing images).
+  [DepthProImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/depth_pro#transformers.DepthProImageProcessorFast). See [DepthProImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details (`processor_class` uses
+  [DepthProImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/depth_pro#transformers.DepthProImageProcessorFast) for processing images).
 - **labels** (`torch.LongTensor` of shape `(batch_size, height, width)`, *optional*) --
   Ground truth depth estimation maps for computing the loss.
 - **output_attentions** (`bool`, *optional*) --
@@ -550,23 +552,23 @@ forwardtransformers.DepthProForDepthEstimation.forwardhttps://github.com/hugging
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0`transformers.models.depth_pro.modeling_depth_pro.DepthProDepthEstimatorOutput` or `tuple(torch.FloatTensor)`A `transformers.models.depth_pro.modeling_depth_pro.DepthProDepthEstimatorOutput` or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0`transformers.models.depth_pro.modeling_depth_pro.DepthProDepthEstimatorOutput` or `tuple(torch.FloatTensor)`A `transformers.models.depth_pro.modeling_depth_pro.DepthProDepthEstimatorOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([DepthProConfig](/docs/transformers/v5.0.0rc1/en/model_doc/depth_pro#transformers.DepthProConfig)) and inputs.
+elements depending on the configuration ([DepthProConfig](/docs/transformers/v5.0.0/en/model_doc/depth_pro#transformers.DepthProConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
-- **predicted_depth** (`torch.FloatTensor` of shape `(batch_size, height, width)`, *optional*, defaults to `None`) -- Predicted depth for each pixel.
+- **predicted_depth** (`torch.FloatTensor | None.predicted_depth` of shape `(batch_size, height, width)`, defaults to `None`) -- Predicted depth for each pixel.
 - **field_of_view** (`torch.FloatTensor` of shape `(batch_size,)`, *optional*, returned when `use_fov_model` is provided) -- Field of View Scaler.
-- **hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor, ...] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor, ...] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [DepthProForDepthEstimation](/docs/transformers/v5.0.0rc1/en/model_doc/depth_pro#transformers.DepthProForDepthEstimation) forward method, overrides the `__call__` special method.
+The [DepthProForDepthEstimation](/docs/transformers/v5.0.0/en/model_doc/depth_pro#transformers.DepthProForDepthEstimation) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -578,10 +580,12 @@ Examples:
 >>> from transformers import AutoImageProcessor, DepthProForDepthEstimation
 >>> import torch
 >>> from PIL import Image
->>> import requests
+>>> import httpx
+>>> from io import BytesIO
 
 >>> url = "http://images.cocodataset.org/val2017/000000039769.jpg"
->>> image = Image.open(requests.get(url, stream=True).raw)
+>>> with httpx.stream("GET", url) as response:
+...     image = Image.open(BytesIO(response.read()))
 
 >>> checkpoint = "apple/DepthPro-hf"
 >>> processor = AutoImageProcessor.from_pretrained(checkpoint)
@@ -614,7 +618,7 @@ Examples:
 
 **Parameters:**
 
-config ([DepthProForDepthEstimation](/docs/transformers/v5.0.0rc1/en/model_doc/depth_pro#transformers.DepthProForDepthEstimation)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([DepthProForDepthEstimation](/docs/transformers/v5.0.0/en/model_doc/depth_pro#transformers.DepthProForDepthEstimation)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 use_fov_model (`bool`, *optional*) : Whether to use the field of view model.
 
@@ -624,16 +628,16 @@ use_fov_model (`bool`, *optional*) : Whether to use the field of view model.
 
 A `transformers.models.depth_pro.modeling_depth_pro.DepthProDepthEstimatorOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([DepthProConfig](/docs/transformers/v5.0.0rc1/en/model_doc/depth_pro#transformers.DepthProConfig)) and inputs.
+elements depending on the configuration ([DepthProConfig](/docs/transformers/v5.0.0/en/model_doc/depth_pro#transformers.DepthProConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
-- **predicted_depth** (`torch.FloatTensor` of shape `(batch_size, height, width)`, *optional*, defaults to `None`) -- Predicted depth for each pixel.
+- **predicted_depth** (`torch.FloatTensor | None.predicted_depth` of shape `(batch_size, height, width)`, defaults to `None`) -- Predicted depth for each pixel.
 - **field_of_view** (`torch.FloatTensor` of shape `(batch_size,)`, *optional*, returned when `use_fov_model` is provided) -- Field of View Scaler.
-- **hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor, ...] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor, ...] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention

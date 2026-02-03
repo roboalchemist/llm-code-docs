@@ -6,25 +6,9 @@
 
 # Source: https://docs.replit.com/billing/teams-billing/overview.md
 
-# Source: https://docs.replit.com/teams/projects/overview.md
-
-# Source: https://docs.replit.com/teams/information-security/overview.md
-
-# Source: https://docs.replit.com/replitai/mcp/overview.md
-
-# Source: https://docs.replit.com/billing/teams-billing/overview.md
-
-# Source: https://docs.replit.com/teams/projects/overview.md
-
-# Source: https://docs.replit.com/teams/information-security/overview.md
-
-# Source: https://docs.replit.com/billing/teams-billing/overview.md
-
-# Source: https://docs.replit.com/teams/projects/overview.md
-
-# Source: https://docs.replit.com/teams/information-security/overview.md
-
-# Source: https://docs.replit.com/billing/teams-billing/overview.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Overview
 
@@ -84,6 +68,10 @@ export const CreditPackTable = () => <table>
 
 export const TeamsCredits = '$40';
 
+<Warning>
+  The Teams plan is being replaced by the new Pro plan. These changes will take effect on February 20th, 2026. [Learn more about what's changing](https://blog.replit.com/pro-plan).
+</Warning>
+
 ## Replit Teams Billing
 
 Replit Teams plans have two parts of their billing: Seats and Usage-Based costs. Both are charged at the same time on the same invoice. To see your historic and upcoming bills, visit the usage page.
@@ -107,8 +95,4 @@ If your team needs additional credits beyond your monthly subscription allowance
 
 <CreditPackTable />
 
-Credit packs expire three months after the purchase date and do not renew or roll over. Credits are automatically used from the credit pack that expires earliest first, helping you maximize the value of your purchases. They're perfect for covering temporary spikes in team usage or preparing for larger projects.
-
-<Note>
-  Credit packs are gradually rolling out to customers, so you may not have access yet. If you have any questions, you can [contact our Support team](https://replit.com/help).
-</Note>
+Credit packs expire six months after the purchase date and do not renew or roll over. Credits are automatically used from the credit pack that expires earliest first, helping you maximize the value of your purchases. They're perfect for covering temporary spikes in team usage or preparing for larger projects.

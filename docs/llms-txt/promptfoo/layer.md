@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/strategies/layer/
+
 # Layer Strategy
 
 The Layer strategy allows you to compose multiple red team strategies sequentially, creating sophisticated attack chains by feeding the output of one strategy into the next. This enables complex transformations like applying multiple encoding layers or combining agentic attacks with multi-modal output (audio/image).

@@ -70,7 +70,7 @@ await page.type('input[name=email]', 'john.doe@example.com');
 ```
 
 
-To add the file to the appropriate input, we first need to find it and then use the https://pptr.dev/api/puppeteer.elementhandle.uploadfile function.
+To add the file to the appropriate input, we first need to find it and then use the [uploadFile()](https://pptr.dev/api/puppeteer.elementhandle.uploadfile) function.
 
 
 ```

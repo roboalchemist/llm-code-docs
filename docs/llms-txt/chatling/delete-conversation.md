@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/api-reference/v2/conversations/delete-conversation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete conversation
 
 > Delete a conversation.

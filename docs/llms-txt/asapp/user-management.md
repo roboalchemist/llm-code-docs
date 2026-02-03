@@ -2,29 +2,17 @@
 
 # Source: https://docs.asapp.com/agent-desk/digital-agent-desk/user-management.md
 
-# Source: https://docs.asapp.com/agent-desk/integrations/user-management.md
-
-# Source: https://docs.asapp.com/agent-desk/digital-agent-desk/user-management.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/user-management.md
-
-# Source: https://docs.asapp.com/agent-desk/digital-agent-desk/user-management.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/user-management.md
-
-# Source: https://docs.asapp.com/agent-desk/digital-agent-desk/user-management.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/user-management.md
-
-# Source: https://docs.asapp.com/agent-desk/digital-agent-desk/user-management.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # User Management
 
 > Learn how to manage users and roles in the Digital Agent Desk.
 
-You control the User Management (Roles and Permissions) within the Digital Agent Desk.
+You control User Management (roles and permissions) within the Digital Agent Desk.
 
-These roles dictate if a user can authenticate to *Agent Desk*, *Admin Dashboard*, or both. In addition, roles determine what view and data users see in the Admin Dashboard. You can pass User Data to ASAPP via *SSO*, AD/LDAP, or other approved integration.
+These roles determine whether a user can authenticate to *Agent Desk*, *Admin Dashboard*, or both. Additionally, roles determine what views and data users see in the Admin Dashboard. You can pass user data to ASAPP via *SSO*, AD/LDAP, or other approved integrations.
 
 <Frame>
   <img src="https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-6f3c5891-ad4d-bf0b-06f3-31d6bf3b96ac.png?fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=54905ac24ba5ff2ed16b53aa4a0b1366" data-og-width="1462" width="1462" data-og-height="1132" height="1132" data-path="image/uuid-6f3c5891-ad4d-bf0b-06f3-31d6bf3b96ac.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-6f3c5891-ad4d-bf0b-06f3-31d6bf3b96ac.png?w=280&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=8057d5387d513182f84c55e36cf6ad75 280w, https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-6f3c5891-ad4d-bf0b-06f3-31d6bf3b96ac.png?w=560&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=af2e242729027b50e9ff3d063d9fa93e 560w, https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-6f3c5891-ad4d-bf0b-06f3-31d6bf3b96ac.png?w=840&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=bbc0fc19332416a9b08de3a57236c7ac 840w, https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-6f3c5891-ad4d-bf0b-06f3-31d6bf3b96ac.png?w=1100&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=6bc45940f020776738e87bf79c84b0e0 1100w, https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-6f3c5891-ad4d-bf0b-06f3-31d6bf3b96ac.png?w=1650&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=81821f2d659c03c9911a3dc7e7ac4e1b 1650w, https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-6f3c5891-ad4d-bf0b-06f3-31d6bf3b96ac.png?w=2500&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=292f998e4aef93e57aae1783abee6bd9 2500w" />
@@ -40,12 +28,12 @@ This section describes the following:
 
 This is a high-level overview of the User Management setup process.
 
-1. ASAPP demos the Desk/Admin Interface.
-2. Call with ASAPP to confirm the access and permission requirements. ASAPP and you complete a Configuration spreadsheet defining all the Roles & Permissions.
-3. ASAPP sends you a copy of the Configuration spreadsheet for review and approval. ASAPP will make additional changes if needed and send to you for approval.
+1. ASAPP demonstrates the Desk/Admin Interface.
+2. ASAPP calls with you to confirm access and permission requirements. ASAPP and you complete a configuration spreadsheet defining all roles and permissions.
+3. ASAPP sends you a copy of the configuration spreadsheet for review and approval. ASAPP makes additional changes if needed and sends them to you for approval.
 4. ASAPP implements and tests the configuration.
-5. ASAPP trains you to set up and modify User Management.
-6. ASAPP goes live with your new Customer Interaction system.
+5. ASAPP trains you to set up and modify user management.
+6. ASAPP launches your new customer interaction system.
 
 ## Resource Overview
 
@@ -66,12 +54,12 @@ The following table lists and defines all resources:
       <td class="td" rowspan="2"><p>Agent Desk</p></td>
       <td class="td" rowspan="2"><p>The App where Agents communicate with customers.</p></td>
       <td class="td"><p>Authorization</p></td>
-      <td class="td"><p>Allows you to successfully authenticate via Single Sign-On (SSO) into the ASAPP Agent Desk.</p></td>
+      <td class="td"><p>Enables you to successfully authenticate via Single Sign-On (SSO) into the ASAPP Agent Desk.</p></td>
     </tr>
 
     <tr>
       <td class="td"><p>Go to Desk</p></td>
-      <td class="td"><p>Allows you to click <strong>Go to Desk</strong> from the Nav to open Agent Desk in a new tab. Requires Agent Desk access.</p></td>
+      <td class="td"><p>Enables you to click <strong>Go to Desk</strong> from the Nav to open Agent Desk in a new tab. Requires Agent Desk access.</p></td>
     </tr>
 
     <tr>
@@ -85,14 +73,14 @@ The following table lists and defines all resources:
       <td class="td"><p>Admin Dashboard</p></td>
       <td class="td"><p>The App where you can monitor agent activity in real-time, view agent metrics, and take operational actions (e.g. biz hours adjustments)</p></td>
       <td class="td"><p>Authorization</p></td>
-      <td class="td"><p>Allows you to successfully authenticate via SSO into the ASAPP Admin Dashboard.</p></td>
+      <td class="td"><p>Enables you to successfully authenticate via SSO into the ASAPP Admin Dashboard.</p></td>
     </tr>
 
     <tr>
       <td class="td" rowspan="2"><p>Live Insights</p></td>
       <td class="td" rowspan="2"><p>Dashboard in Admin that displays how each of your queues are performing in real-time. You can drill down into each queue to gain insight into what areas need attention.</p></td>
       <td class="td"><p>Access</p></td>
-      <td class="td"><p>Allows you to see Live Insights in the Admin navigation and access it.</p></td>
+      <td class="td"><p>Enables you to see Live Insights in the Admin navigation and access it.</p></td>
     </tr>
 
     <tr>
@@ -106,7 +94,7 @@ The following table lists and defines all resources:
       <td class="td"><p>Power Analyst Access</p></td>
 
       <td class="td">
-        <p>Allows you to see the Historical Reporting page in the Admin Navigation with Power Analyst access type, which entails the following:</p>
+        <p>Enables you to see the Historical Reporting page in the Admin Navigation with Power Analyst access type, which includes the following:</p>
 
         <ul>
           <li><p>Access to ASAPP Reports</p></li>
@@ -123,7 +111,7 @@ The following table lists and defines all resources:
       <td class="td"><p>Creator Access</p></td>
 
       <td class="td">
-        <p>Allows you to see the Historical Reporting page in the Admin Navigation with Creator access type, which entails the following:</p>
+        <p>Enables you to see the Historical Reporting page in the Admin Navigation with Creator access type, which includes the following:</p>
 
         <ul>
           <li><p>Power Analyst privileges</p></li>
@@ -168,7 +156,7 @@ The following table lists and defines all resources:
       <td class="td"><p>Business Hours</p></td>
       <td class="td"><p>Allows Admin users to set their business hours of operation and holidays on a per queue basis.</p></td>
       <td class="td"><p>Access</p></td>
-      <td class="td"><p>Allows you to see Business Hours in the Admin navigation, access it, and make changes.</p></td>
+      <td class="td"><p>Enables you to see Business Hours in the Admin navigation, access it, and make changes.</p></td>
     </tr>
 
     <tr>
@@ -180,31 +168,31 @@ The following table lists and defines all resources:
 
     <tr>
       <td class="td"><p>Knowledge Base</p></td>
-      <td class="td"><p>An ASAPP feature that helps Agents access information without the needing to navigate any external systems by surfacing KB content directly within Agent Desk.</p></td>
+      <td class="td"><p>An ASAPP feature that helps agents access information without needing to navigate external systems by surfacing KB content directly within Agent Desk.</p></td>
       <td class="td"><p>Access</p></td>
-      <td class="td"><p>Allows you to see Knowledge Base content in the Admin navigation, access it, and make changes.</p></td>
+      <td class="td"><p>Enables you to see Knowledge Base content in the Admin navigation, access it, and make changes.</p></td>
     </tr>
 
     <tr>
       <td class="td" rowspan="5"><p>Conversation Manager</p></td>
       <td class="td" rowspan="5"><p>Admin Feature where you can monitor current conversations individually in the Conversation Manager. The Conversation Manager shows all current, queued, and historical conversations handled by SRS, bot, or by a live agent.</p></td>
       <td class="td"><p>Access</p></td>
-      <td class="td"><p>Allows you to see Conversation Manager in the Admin navigation and access it.</p></td>
+      <td class="td"><p>Enables you to see Conversation Manager in the Admin navigation and access it.</p></td>
     </tr>
 
     <tr>
       <td class="td"><p>Conversation Download</p></td>
-      <td class="td"><p>Allows you to select 1 or more conversations in Conversation Manager to export to either an HTML or CSV file.</p></td>
+      <td class="td"><p>Enables you to select 1 or more conversations in Conversation Manager to export to either an HTML or CSV file.</p></td>
     </tr>
 
     <tr>
       <td class="td"><p>Whisper</p></td>
-      <td class="td"><p>Allows you to send an inline, private message to an agent within a currently live chat, selected from the Conversation Manager.</p></td>
+      <td class="td"><p>Enables you to send an inline, private message to an agent within a currently live chat, selected from the Conversation Manager.</p></td>
     </tr>
 
     <tr>
       <td class="td"><p>SRS Issues</p></td>
-      <td class="td"><p>Allows you to see conversations only handled by SRS in the Conversation Manager.</p></td>
+      <td class="td"><p>Enables you to see conversations only handled by SRS in the Conversation Manager.</p></td>
     </tr>
 
     <tr>
@@ -216,17 +204,17 @@ The following table lists and defines all resources:
       <td class="td" rowspan="4"><p>User Management</p></td>
       <td class="td" rowspan="4"><p>Admin Feature to edit user roles and permissions.</p></td>
       <td class="td"><p>Access</p></td>
-      <td class="td"><p>Allows you to see User Management in their Admin navigation, access it, and make changes to queue membership, status, and concurrency per user.</p></td>
+      <td class="td"><p>Enables you to see User Management in their Admin navigation, access it, and make changes to queue membership, status, and concurrency per user.</p></td>
     </tr>
 
     <tr>
       <td class="td"><p>Editable Roles</p></td>
-      <td class="td"><p>Allows you to change the role(s) of a user in User Management.</p></td>
+      <td class="td"><p>Enables you to change the role(s) of a user in User Management.</p></td>
     </tr>
 
     <tr>
       <td class="td"><p>Editable Custom Attributes</p></td>
-      <td class="td"><p>Allows you to change the value of a custom user attribute per user in User Management. If Off, then these custom attributes will be read-only in the list of users.</p></td>
+      <td class="td"><p>Enables you to change the value of a custom user attribute per user in User Management. If disabled, these custom attributes will be read-only in the list of users.</p></td>
     </tr>
 
     <tr>

@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/teams/identity-and-access-management/viewer-seats.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Viewer Seats
 
 > Learn how to set up and manage viewer seats for your Replit Team.

@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/squeezebert.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/squeezebert.md
 
 # SqueezeBERT
 
@@ -48,15 +48,15 @@ This model was contributed by [forresti](https://huggingface.co/forresti).
 
 #### transformers.SqueezeBertConfig[[transformers.SqueezeBertConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/squeezebert/configuration_squeezebert.py#L24)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/squeezebert/configuration_squeezebert.py#L23)
 
-This is the configuration class to store the configuration of a [SqueezeBertModel](/docs/transformers/v5.0.0rc1/en/model_doc/squeezebert#transformers.SqueezeBertModel). It is used to instantiate a
+This is the configuration class to store the configuration of a [SqueezeBertModel](/docs/transformers/v5.0.0/en/model_doc/squeezebert#transformers.SqueezeBertModel). It is used to instantiate a
 SqueezeBERT model according to the specified arguments, defining the model architecture. Instantiating a
 configuration with the defaults will yield a similar configuration to that of the SqueezeBERT
 [squeezebert/squeezebert-uncased](https://huggingface.co/squeezebert/squeezebert-uncased) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Examples:
 
@@ -75,7 +75,7 @@ Examples:
 
 **Parameters:**
 
-vocab_size (`int`, *optional*, defaults to 30522) : Vocabulary size of the SqueezeBERT model. Defines the number of different tokens that can be represented by the `inputs_ids` passed when calling [SqueezeBertModel](/docs/transformers/v5.0.0rc1/en/model_doc/squeezebert#transformers.SqueezeBertModel).
+vocab_size (`int`, *optional*, defaults to 30522) : Vocabulary size of the SqueezeBERT model. Defines the number of different tokens that can be represented by the `inputs_ids` passed when calling [SqueezeBertModel](/docs/transformers/v5.0.0/en/model_doc/squeezebert#transformers.SqueezeBertModel).
 
 hidden_size (`int`, *optional*, defaults to 768) : Dimensionality of the encoder layers and the pooler layer.
 
@@ -93,13 +93,17 @@ attention_probs_dropout_prob (`float`, *optional*, defaults to 0.1) : The dropou
 
 max_position_embeddings (`int`, *optional*, defaults to 512) : The maximum sequence length that this model might ever be used with. Typically set this to something large just in case (e.g., 512 or 1024 or 2048).
 
-type_vocab_size (`int`, *optional*, defaults to 2) : The vocabulary size of the `token_type_ids` passed when calling [BertModel](/docs/transformers/v5.0.0rc1/en/model_doc/bert#transformers.BertModel).
+type_vocab_size (`int`, *optional*, defaults to 2) : The vocabulary size of the `token_type_ids` passed when calling [BertModel](/docs/transformers/v5.0.0/en/model_doc/bert#transformers.BertModel).
 
 initializer_range (`float`, *optional*, defaults to 0.02) : The standard deviation of the truncated_normal_initializer for initializing all weight matrices.
 
 layer_norm_eps (`float`, *optional*, defaults to 1e-12) : 
 
 pad_token_id (`int`, *optional*, defaults to 0) : The ID of the token in the word embedding to use as padding.
+
+bos_token_id (`int`, *optional*) : Beginning of stream token id.
+
+eos_token_id (`int`, *optional*) : End of stream token id.
 
 embedding_size (`int`, *optional*, defaults to 768) : The dimension of the word embedding vectors. 
 
@@ -115,18 +119,20 @@ intermediate_groups (`int`, *optional*, defaults to 4) : The number of groups in
 
 output_groups (`int`, *optional*, defaults to 4) : The number of groups in the third feed forward network layer.
 
+tie_word_embeddings (`bool`, *optional*, defaults to `True`) : Whether to tie weight embeddings
+
 ## SqueezeBertTokenizer[[transformers.BertTokenizer]]
 
 #### transformers.BertTokenizer[[transformers.BertTokenizer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/bert/tokenization_bert.py#L43)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/bert/tokenization_bert.py#L41)
 
 Construct a BERT tokenizer (backed by HuggingFace's tokenizers library). Based on WordPiece.
 
-This tokenizer inherits from [TokenizersBackend](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should refer to
+This tokenizer inherits from [TokenizersBackend](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should refer to
 this superclass for more information regarding those methods.
 
-get_special_tokens_masktransformers.BertTokenizer.get_special_tokens_maskhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L1335[{"name": "token_ids_0", "val": ": list[int]"}, {"name": "token_ids_1", "val": ": Optional[list[int]] = None"}, {"name": "already_has_special_tokens", "val": ": bool = False"}]- **token_ids_0** -- List of IDs for the (possibly already formatted) sequence.
+get_special_tokens_masktransformers.BertTokenizer.get_special_tokens_maskhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L1330[{"name": "token_ids_0", "val": ": list[int]"}, {"name": "token_ids_1", "val": ": list[int] | None = None"}, {"name": "already_has_special_tokens", "val": ": bool = False"}]- **token_ids_0** -- List of IDs for the (possibly already formatted) sequence.
 - **token_ids_1** -- Unused when `already_has_special_tokens=True`. Must be None in that case.
 - **already_has_special_tokens** -- Whether the sequence is already formatted with special tokens.0A list of integers in the range [0, 1]1 for a special token, 0 for a sequence token.
 
@@ -162,17 +168,17 @@ strip_accents (`bool`, *optional*) : Whether or not to strip all accents. If thi
 1 for a special token, 0 for a sequence token.
 #### save_vocabulary[[transformers.BertTokenizer.save_vocabulary]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_tokenizers.py#L384)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_tokenizers.py#L408)
 
 ## SqueezeBertTokenizerFast[[transformers.BertTokenizer]]
 
 #### transformers.BertTokenizer[[transformers.BertTokenizer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/bert/tokenization_bert.py#L43)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/bert/tokenization_bert.py#L41)
 
 Construct a BERT tokenizer (backed by HuggingFace's tokenizers library). Based on WordPiece.
 
-This tokenizer inherits from [TokenizersBackend](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should refer to
+This tokenizer inherits from [TokenizersBackend](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should refer to
 this superclass for more information regarding those methods.
 
 **Parameters:**
@@ -199,11 +205,11 @@ strip_accents (`bool`, *optional*) : Whether or not to strip all accents. If thi
 
 #### transformers.SqueezeBertModel[[transformers.SqueezeBertModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/squeezebert/modeling_squeezebert.py#L418)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/squeezebert/modeling_squeezebert.py#L418)
 
 The bare Squeezebert Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -211,11 +217,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.SqueezeBertModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/squeezebert/modeling_squeezebert.py#L435[{"name": "input_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "token_type_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.SqueezeBertModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/squeezebert/modeling_squeezebert.py#L435[{"name": "input_ids", "val": ": torch.Tensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "token_type_ids", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.Tensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -247,9 +253,9 @@ forwardtransformers.SqueezeBertModel.forwardhttps://github.com/huggingface/trans
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/squeezebert#transformers.SqueezeBertConfig)) and inputs.
+elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/v5.0.0/en/model_doc/squeezebert#transformers.SqueezeBertConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
@@ -265,7 +271,7 @@ elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [SqueezeBertModel](/docs/transformers/v5.0.0rc1/en/model_doc/squeezebert#transformers.SqueezeBertModel) forward method, overrides the `__call__` special method.
+The [SqueezeBertModel](/docs/transformers/v5.0.0/en/model_doc/squeezebert#transformers.SqueezeBertModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -273,15 +279,15 @@ the latter silently ignores them.
 
 **Parameters:**
 
-config ([SqueezeBertModel](/docs/transformers/v5.0.0rc1/en/model_doc/squeezebert#transformers.SqueezeBertModel)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([SqueezeBertModel](/docs/transformers/v5.0.0/en/model_doc/squeezebert#transformers.SqueezeBertModel)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/squeezebert#transformers.SqueezeBertConfig)) and inputs.
+elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/v5.0.0/en/model_doc/squeezebert#transformers.SqueezeBertConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
@@ -302,11 +308,11 @@ elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/
 
 #### transformers.SqueezeBertForMaskedLM[[transformers.SqueezeBertForMaskedLM]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/squeezebert/modeling_squeezebert.py#L498)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/squeezebert/modeling_squeezebert.py#L498)
 
 The Squeezebert Model with a `language modeling` head on top."
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -314,11 +320,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.SqueezeBertForMaskedLM.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/squeezebert/modeling_squeezebert.py#L520[{"name": "input_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "token_type_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.SqueezeBertForMaskedLM.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/squeezebert/modeling_squeezebert.py#L520[{"name": "input_ids", "val": ": torch.Tensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "token_type_ids", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.Tensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.Tensor | None = None"}, {"name": "labels", "val": ": torch.Tensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -354,9 +360,9 @@ forwardtransformers.SqueezeBertForMaskedLM.forwardhttps://github.com/huggingface
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/squeezebert#transformers.SqueezeBertConfig)) and inputs.
+elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/v5.0.0/en/model_doc/squeezebert#transformers.SqueezeBertConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Masked language modeling (MLM) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
@@ -369,7 +375,7 @@ elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [SqueezeBertForMaskedLM](/docs/transformers/v5.0.0rc1/en/model_doc/squeezebert#transformers.SqueezeBertForMaskedLM) forward method, overrides the `__call__` special method.
+The [SqueezeBertForMaskedLM](/docs/transformers/v5.0.0/en/model_doc/squeezebert#transformers.SqueezeBertForMaskedLM) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -407,15 +413,15 @@ Example:
 
 **Parameters:**
 
-config ([SqueezeBertForMaskedLM](/docs/transformers/v5.0.0rc1/en/model_doc/squeezebert#transformers.SqueezeBertForMaskedLM)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([SqueezeBertForMaskedLM](/docs/transformers/v5.0.0/en/model_doc/squeezebert#transformers.SqueezeBertForMaskedLM)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or a tuple of
+A [transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/squeezebert#transformers.SqueezeBertConfig)) and inputs.
+elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/v5.0.0/en/model_doc/squeezebert#transformers.SqueezeBertConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Masked language modeling (MLM) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
@@ -433,12 +439,12 @@ elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/
 
 #### transformers.SqueezeBertForSequenceClassification[[transformers.SqueezeBertForSequenceClassification]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/squeezebert/modeling_squeezebert.py#L579)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/squeezebert/modeling_squeezebert.py#L579)
 
 SqueezeBERT Model transformer with a sequence classification/regression head on top (a linear layer on top of the
 pooled output) e.g. for GLUE tasks.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -446,11 +452,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.SqueezeBertForSequenceClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/squeezebert/modeling_squeezebert.py#L592[{"name": "input_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "token_type_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.SqueezeBertForSequenceClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/squeezebert/modeling_squeezebert.py#L592[{"name": "input_ids", "val": ": torch.Tensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "token_type_ids", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.Tensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.Tensor | None = None"}, {"name": "labels", "val": ": torch.Tensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -486,9 +492,9 @@ forwardtransformers.SqueezeBertForSequenceClassification.forwardhttps://github.c
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/squeezebert#transformers.SqueezeBertConfig)) and inputs.
+elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/v5.0.0/en/model_doc/squeezebert#transformers.SqueezeBertConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).
@@ -501,7 +507,7 @@ elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [SqueezeBertForSequenceClassification](/docs/transformers/v5.0.0rc1/en/model_doc/squeezebert#transformers.SqueezeBertForSequenceClassification) forward method, overrides the `__call__` special method.
+The [SqueezeBertForSequenceClassification](/docs/transformers/v5.0.0/en/model_doc/squeezebert#transformers.SqueezeBertForSequenceClassification) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -565,15 +571,15 @@ Example of multi-label classification:
 
 **Parameters:**
 
-config ([SqueezeBertForSequenceClassification](/docs/transformers/v5.0.0rc1/en/model_doc/squeezebert#transformers.SqueezeBertForSequenceClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([SqueezeBertForSequenceClassification](/docs/transformers/v5.0.0/en/model_doc/squeezebert#transformers.SqueezeBertForSequenceClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
+A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/squeezebert#transformers.SqueezeBertConfig)) and inputs.
+elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/v5.0.0/en/model_doc/squeezebert#transformers.SqueezeBertConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).
@@ -591,12 +597,12 @@ elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/
 
 #### transformers.SqueezeBertForMultipleChoice[[transformers.SqueezeBertForMultipleChoice]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/squeezebert/modeling_squeezebert.py#L666)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/squeezebert/modeling_squeezebert.py#L666)
 
 The Squeezebert Model with a multiple choice classification head on top (a linear layer on top of the pooled output and a
 softmax) e.g. for RocStories/SWAG tasks.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -604,11 +610,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.SqueezeBertForMultipleChoice.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/squeezebert/modeling_squeezebert.py#L677[{"name": "input_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "token_type_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, num_choices, sequence_length)`) --
+forwardtransformers.SqueezeBertForMultipleChoice.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/squeezebert/modeling_squeezebert.py#L677[{"name": "input_ids", "val": ": torch.Tensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "token_type_ids", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.Tensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.Tensor | None = None"}, {"name": "labels", "val": ": torch.Tensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, num_choices, sequence_length)`) --
   Indices of input sequence tokens in the vocabulary.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -646,9 +652,9 @@ forwardtransformers.SqueezeBertForMultipleChoice.forwardhttps://github.com/huggi
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.MultipleChoiceModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MultipleChoiceModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.MultipleChoiceModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MultipleChoiceModelOutput) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.MultipleChoiceModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MultipleChoiceModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.MultipleChoiceModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MultipleChoiceModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/squeezebert#transformers.SqueezeBertConfig)) and inputs.
+elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/v5.0.0/en/model_doc/squeezebert#transformers.SqueezeBertConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape *(1,)*, *optional*, returned when `labels` is provided) -- Classification loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, num_choices)`) -- *num_choices* is the second dimension of the input tensors. (see *input_ids* above).
@@ -663,7 +669,7 @@ elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [SqueezeBertForMultipleChoice](/docs/transformers/v5.0.0rc1/en/model_doc/squeezebert#transformers.SqueezeBertForMultipleChoice) forward method, overrides the `__call__` special method.
+The [SqueezeBertForMultipleChoice](/docs/transformers/v5.0.0/en/model_doc/squeezebert#transformers.SqueezeBertForMultipleChoice) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -693,15 +699,15 @@ Example:
 
 **Parameters:**
 
-config ([SqueezeBertForMultipleChoice](/docs/transformers/v5.0.0rc1/en/model_doc/squeezebert#transformers.SqueezeBertForMultipleChoice)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([SqueezeBertForMultipleChoice](/docs/transformers/v5.0.0/en/model_doc/squeezebert#transformers.SqueezeBertForMultipleChoice)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.MultipleChoiceModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MultipleChoiceModelOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.MultipleChoiceModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MultipleChoiceModelOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.MultipleChoiceModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MultipleChoiceModelOutput) or a tuple of
+A [transformers.modeling_outputs.MultipleChoiceModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MultipleChoiceModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/squeezebert#transformers.SqueezeBertConfig)) and inputs.
+elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/v5.0.0/en/model_doc/squeezebert#transformers.SqueezeBertConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape *(1,)*, *optional*, returned when `labels` is provided) -- Classification loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, num_choices)`) -- *num_choices* is the second dimension of the input tensors. (see *input_ids* above).
@@ -721,12 +727,12 @@ elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/
 
 #### transformers.SqueezeBertForTokenClassification[[transformers.SqueezeBertForTokenClassification]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/squeezebert/modeling_squeezebert.py#L769)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/squeezebert/modeling_squeezebert.py#L769)
 
 The Squeezebert transformer with a token classification head on top (a linear layer on top of the hidden-states
 output) e.g. for Named-Entity-Recognition (NER) tasks.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -734,11 +740,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.SqueezeBertForTokenClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/squeezebert/modeling_squeezebert.py#L781[{"name": "input_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "token_type_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.SqueezeBertForTokenClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/squeezebert/modeling_squeezebert.py#L781[{"name": "input_ids", "val": ": torch.Tensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "token_type_ids", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.Tensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.Tensor | None = None"}, {"name": "labels", "val": ": torch.Tensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -772,9 +778,9 @@ forwardtransformers.SqueezeBertForTokenClassification.forwardhttps://github.com/
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/squeezebert#transformers.SqueezeBertConfig)) and inputs.
+elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/v5.0.0/en/model_doc/squeezebert#transformers.SqueezeBertConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided)  -- Classification loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.num_labels)`) -- Classification scores (before SoftMax).
@@ -787,7 +793,7 @@ elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [SqueezeBertForTokenClassification](/docs/transformers/v5.0.0rc1/en/model_doc/squeezebert#transformers.SqueezeBertForTokenClassification) forward method, overrides the `__call__` special method.
+The [SqueezeBertForTokenClassification](/docs/transformers/v5.0.0/en/model_doc/squeezebert#transformers.SqueezeBertForTokenClassification) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -826,15 +832,15 @@ Example:
 
 **Parameters:**
 
-config ([SqueezeBertForTokenClassification](/docs/transformers/v5.0.0rc1/en/model_doc/squeezebert#transformers.SqueezeBertForTokenClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([SqueezeBertForTokenClassification](/docs/transformers/v5.0.0/en/model_doc/squeezebert#transformers.SqueezeBertForTokenClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or a tuple of
+A [transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/squeezebert#transformers.SqueezeBertConfig)) and inputs.
+elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/v5.0.0/en/model_doc/squeezebert#transformers.SqueezeBertConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided)  -- Classification loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.num_labels)`) -- Classification scores (before SoftMax).
@@ -852,12 +858,12 @@ elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/
 
 #### transformers.SqueezeBertForQuestionAnswering[[transformers.SqueezeBertForQuestionAnswering]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/squeezebert/modeling_squeezebert.py#L835)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/squeezebert/modeling_squeezebert.py#L835)
 
 The Squeezebert transformer with a span classification head on top for extractive question-answering tasks like
 SQuAD (a linear layer on top of the hidden-states output to compute `span start logits` and `span end logits`).
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -865,11 +871,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.SqueezeBertForQuestionAnswering.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/squeezebert/modeling_squeezebert.py#L846[{"name": "input_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "token_type_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "start_positions", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "end_positions", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.SqueezeBertForQuestionAnswering.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/squeezebert/modeling_squeezebert.py#L846[{"name": "input_ids", "val": ": torch.Tensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "token_type_ids", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.Tensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.Tensor | None = None"}, {"name": "start_positions", "val": ": torch.Tensor | None = None"}, {"name": "end_positions", "val": ": torch.Tensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -909,9 +915,9 @@ forwardtransformers.SqueezeBertForQuestionAnswering.forwardhttps://github.com/hu
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/squeezebert#transformers.SqueezeBertConfig)) and inputs.
+elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/v5.0.0/en/model_doc/squeezebert#transformers.SqueezeBertConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Total span extraction loss is the sum of a Cross-Entropy for the start and end positions.
 - **start_logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`) -- Span-start scores (before SoftMax).
@@ -925,7 +931,7 @@ elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [SqueezeBertForQuestionAnswering](/docs/transformers/v5.0.0rc1/en/model_doc/squeezebert#transformers.SqueezeBertForQuestionAnswering) forward method, overrides the `__call__` special method.
+The [SqueezeBertForQuestionAnswering](/docs/transformers/v5.0.0/en/model_doc/squeezebert#transformers.SqueezeBertForQuestionAnswering) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -965,15 +971,15 @@ Example:
 
 **Parameters:**
 
-config ([SqueezeBertForQuestionAnswering](/docs/transformers/v5.0.0rc1/en/model_doc/squeezebert#transformers.SqueezeBertForQuestionAnswering)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([SqueezeBertForQuestionAnswering](/docs/transformers/v5.0.0/en/model_doc/squeezebert#transformers.SqueezeBertForQuestionAnswering)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or a tuple of
+A [transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/v5.0.0rc1/en/model_doc/squeezebert#transformers.SqueezeBertConfig)) and inputs.
+elements depending on the configuration ([SqueezeBertConfig](/docs/transformers/v5.0.0/en/model_doc/squeezebert#transformers.SqueezeBertConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Total span extraction loss is the sum of a Cross-Entropy for the start and end positions.
 - **start_logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`) -- Span-start scores (before SoftMax).

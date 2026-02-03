@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/widgets/st.camera_input
+
 # st.camera_input
 
 Display a widget that returns pictures from the user's webcam.

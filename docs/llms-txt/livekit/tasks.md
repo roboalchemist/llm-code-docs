@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/agents/logic/tasks.md
 
-# Source: https://docs.livekit.io/agents/build/tasks.md
-
-LiveKit docs › Building voice agents › Tasks & task groups
+LiveKit docs › Logic & Structure › Tasks & task groups
 
 ---
 
@@ -20,7 +18,7 @@ Tasks are focused, reusable units that perform a specific objective and return a
 
 For multi-step flows, the framework provides `TaskGroup`. A task group executes an ordered sequence of tasks while allowing users to return to earlier steps for corrections. All tasks in a group share conversation context, and when the group finishes, a summarized result is returned to the agent that started it.
 
-Tasks and task groups are core building blocks for complex voice AI [workflows](https://docs.livekit.io/agents/build/workflows.md). Common use cases for tasks include:
+Tasks and task groups are core building blocks for complex voice AI [workflows](https://docs.livekit.io/agents/logic/workflows.md). Common use cases for tasks include:
 
 - Obtaining recording consent at the start of a call.
 - Collecting structured information such as an address or payment details.
@@ -67,7 +65,7 @@ class CollectConsent(AgentTask[bool]):
 
 ### Running a task
 
-A task must be created within the context of an [active](https://docs.livekit.io/agents/build/agents-handoffs.md#active-agent) `Agent`, and runs automatically when it's created. The task takes control of the session until it returns a result. Await the task to receive its result.
+A task must be created within the context of an [active](https://docs.livekit.io/agents/logic/agents-handoffs.md#active-agent) `Agent`, and runs automatically when it's created. The task takes control of the session until it returns a result. Await the task to receive its result.
 
 ```python
 from livekit.agents import Agent, function_tool, get_job_context
@@ -167,6 +165,7 @@ The framework includes prebuilt tasks for common use cases within the module [li
 - [GetEmailTask](#getemailtask)
 - [GetAddressTask](#getaddresstask)
 - [GetDtmfTask](#getdtmftask)
+- [WarmTransferTask](#warmtransfertask)
 
 ### Customizing prebuilt tasks
 
@@ -252,7 +251,7 @@ async def collect_shipping_address(self) -> str:
 
 ### GetDtmfTask
 
-Use `GetDtmfTask` to collect a series of keypad inputs from callers. The task can handle both Dual-tone multi-frequency (DTMF) tones and spoken digits. This is essential for Interactive Voice Response (IVR) systems and telephony apps. To learn more, see [Handling DTMF](https://docs.livekit.io/sip/dtmf.md).
+Use `GetDtmfTask` to collect a series of keypad inputs from callers. The task can handle both Dual-tone multi-frequency (DTMF) tones and spoken digits. This is essential for Interactive Voice Response (IVR) systems and telephony apps. To learn more, see [Handling DTMF](https://docs.livekit.io/telephony/features/dtmf.md).
 
 The following example asks the caller to provide a 10-digit phone number and confirms the number with the caller:
 
@@ -299,7 +298,49 @@ The following additional resources provide more information about the topics dis
 
 - **[DTMF example](https://github.com/livekit/agents/blob/main/examples/dtmf/basic_dtmf_agent.py)**: A menu-based example that demonstrates using DTMF to collect user input.
 
-- **[Handling DTMF](https://docs.livekit.io/sip/dtmf.md)**: Sending and receiving DTMF in LiveKit telephony apps.
+- **[Handling DTMF](https://docs.livekit.io/telephony/features/dtmf.md)**: Sending and receiving DTMF in LiveKit telephony apps.
+
+### WarmTransferTask
+
+Use `WarmTransferTask` to execute an agent-assisted warm transfer. The task automatically manages the complexities of the transfer workflow. To learn more, see the [Warm transfer](https://docs.livekit.io/telephony/features/transfers/warm.md) topic.
+
+```python
+from livekit.agents.beta.workflows import WarmTransferTask
+
+result = await WarmTransferTask(
+    target_phone_number=<supervisor-phone-number>,  # Supervisor's phone number
+    sip_trunk_id=<outbound-trunk-id>,               # Outbound trunk ID
+    chat_ctx=self.chat_ctx,                         # Conversation history
+)
+
+```
+
+You can set the outbound trunk ID as an environment variable `LIVEKIT_SIP_OUTBOUND_TRUNK`:
+
+```shell
+export LIVEKIT_SIP_OUTBOUND_TRUNK=<outbound-trunk-id>
+
+```
+
+#### Customizing WarmTransferTask
+
+You can customize the behavior of `WarmTransferTask` by passing additional parameters:
+
+- `hold_audio`: Audio to play while the caller is on hold. By default, plays `BuiltinAudioClip.HOLD_MUSIC`.
+- `extra_instructions`: Additional instructions for the transfer agent. These instructions are passed to the transfer (or supervisor) agent along with the converation history and the default instructions. You can override the `get_instructions` method to replace the default instructions entirely.
+- `tools`: Additional tools that can be used in the execution of the transfer task. These tools can be used in place of, or in addition to, the default tools.
+
+For a full list of parameters, see the [WarmTransferTask reference](https://docs.livekit.io/reference/python/v1/livekit/agents/beta/workflows/warm_transfer.html.md#livekit.agents.beta.workflows.warm_transfer.WarmTransferTask).
+
+`WarmTransferTask` includes default tools that handle specific steps in the transfer workflow. These include rejecting a transfer request, connecting the supervisor to the original caller, and voicemail detection. You can customize the default behavior by updating the instructions and adding replacement tools.
+
+For an example, see [Customizing GetEmailTask](#customize-getemailtask).
+
+#### Additional resources
+
+The following additional resources provide more information about the topics discussed in this section:
+
+- **[Agent-assisted warm transfer](https://docs.livekit.io/telephony/features/transfers/warm.md)**: A comprehensive guide to transferring calls using an AI agent to provide context.
 
 ## Task group
 
@@ -309,7 +350,15 @@ The following additional resources provide more information about the topics dis
 
 Task groups let you build complex, user-friendly workflows that mirror real conversational behavior—where users might need to revisit or correct earlier steps without losing context. They're designed as ordered, multi-step flows that can be broken into discrete tasks, with built-in regression support for safely moving backward.
 
-`TaskGroup` supports task chaining, which allows tasks to call or re-enter other tasks dynamically while maintaining the overall flow order. This lets users return to earlier steps as often as needed. All tasks in the group share the same conversation context, and when the group finishes, the summarized context is passed back to the controlling agent.
+`TaskGroup` supports task chaining, which allows tasks to call or re-enter other tasks dynamically while maintaining the overall flow order. This lets users return to earlier steps as often as needed. All tasks in the group share the same conversation context, and when the group finishes, the summarized context can be passed back to the controlling agent.
+
+#### Configuration options
+
+`TaskGroup` supports the following parameters:
+
+- `summarize_chat_ctx`: Whether to summarize the interactions within the `TaskGroup` into one message and merge into the main context (default: `True`)
+- `chat_ctx`: The shared chat context within the TaskGroup. Pass the current chat context to ensure conversational continuity.
+- `return_exceptions`: Whether to directly propagate an error. When set to `True`, the exception is added to the results dictionary and the sequence continues (default: `False`)
 
 ### Basic usage
 
@@ -318,8 +367,10 @@ Initialize and set up a `TaskGroup` by adding tasks to it. Add tasks in the orde
 ```python
 from livekit.agents.beta.workflows import GetEmailTask, TaskGroup
 
-# Create and configure TaskGroup
-task_group = TaskGroup()
+
+# Create and configure TaskGroup with the current agent's chat context
+chat_ctx = self.chat_ctx
+task_group = TaskGroup(chat_ctx=chat_ctx)
 
 # Add tasks using lambda factories
 task_group.add(
@@ -445,11 +496,11 @@ The following topics provider more information on creating complex workflows for
 
 - **[Nodes](https://docs.livekit.io/agents/build/nodes.md)**: Add custom behavior to any component of the voice pipeline.
 
-- **[Testing & evaluation](https://docs.livekit.io/agents/build/testing.md)**: Test every aspect of your agents with a custom test suite.
+- **[Testing & evaluation](https://docs.livekit.io/agents/start/testing.md)**: Test every aspect of your agents with a custom test suite.
 
 ---
 
-This document was rendered at 2025-11-18T23:55:03.441Z.
-For the latest version of this document, see [https://docs.livekit.io/agents/build/tasks.md](https://docs.livekit.io/agents/build/tasks.md).
+This document was rendered at 2026-02-03T03:24:55.899Z.
+For the latest version of this document, see [https://docs.livekit.io/agents/logic/tasks.md](https://docs.livekit.io/agents/logic/tasks.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/agents/
+
 # How to red team LLM Agents
 
 LLM agents are capable of interacting with their environment and executing complex tasks using natural language interfaces. As these agents gain access to external systems and sensitive data, security assessments are essential.

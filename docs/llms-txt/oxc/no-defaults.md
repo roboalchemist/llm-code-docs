@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/jsdoc/no-defaults.md
 ---
-# jsdoc/no-defaults&#x20;
 
 ### What it does
 

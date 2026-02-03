@@ -1,5 +1,9 @@
 # Source: https://code.claude.com/docs/en/microsoft-foundry.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Claude Code on Microsoft Foundry
 
 > Learn about configuring Claude Code through Microsoft Foundry, including setup, configuration, and troubleshooting.
@@ -66,7 +70,7 @@ export CLAUDE_CODE_USE_FOUNDRY=1
 # Azure resource name (replace {resource} with your resource name)
 export ANTHROPIC_FOUNDRY_RESOURCE={resource}
 # Or provide the full base URL:
-# export ANTHROPIC_FOUNDRY_BASE_URL=https://{resource}.services.ai.azure.com
+# export ANTHROPIC_FOUNDRY_BASE_URL=https://{resource}.services.ai.azure.com/anthropic
 
 # Set models to your resource's deployment names
 export ANTHROPIC_DEFAULT_SONNET_MODEL='claude-sonnet-4-5'
@@ -107,8 +111,3 @@ If you receive an error "Failed to get token from azureADTokenProvider: ChainedT
 * [Microsoft Foundry documentation](https://learn.microsoft.com/en-us/azure/ai-foundry/what-is-azure-ai-foundry)
 * [Microsoft Foundry models](https://ai.azure.com/explore/models)
 * [Microsoft Foundry pricing](https://azure.microsoft.com/en-us/pricing/details/ai-foundry/)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://code.claude.com/docs/llms.txt

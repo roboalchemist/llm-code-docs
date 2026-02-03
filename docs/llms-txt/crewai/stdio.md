@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/mcp/stdio.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Stdio Transport
 
 > Learn how to connect CrewAI to local MCP servers using the Stdio (Standard Input/Output) transport mechanism.

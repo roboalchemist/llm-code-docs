@@ -2,31 +2,15 @@
 
 # Source: https://upstash.com/docs/search/features/filtering.md
 
-# Source: https://upstash.com/docs/vector/features/filtering.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://upstash.com/docs/search/features/filtering.md
+# Filtering
 
-# Source: https://upstash.com/docs/vector/features/filtering.md
+Search queries with filters only return documents which have the content or metadata matching with the filter.
 
-# Source: https://upstash.com/docs/search/features/filtering.md
-
-# Source: https://upstash.com/docs/vector/features/filtering.md
-
-# Source: https://upstash.com/docs/search/features/filtering.md
-
-# Source: https://upstash.com/docs/vector/features/filtering.md
-
-# Source: https://upstash.com/docs/search/features/filtering.md
-
-# Source: https://upstash.com/docs/vector/features/filtering.md
-
-# Metadata Filtering
-
-You can further restrict the vector similarity search by providing a filter based on a specific metadata criteria.
-
-Queries with metadata filters only return vectors which have metadata matching with the filter.
-
-Upstash Vector allows you to filter keys which have the following value types:
+Upstash Search allows you to filter by content and metadata keys which have the following value types:
 
 * string
 * number
@@ -35,199 +19,220 @@ Upstash Vector allows you to filter keys which have the following value types:
 * array
 
 Filtering is implemented as a combination of in and post-filtering. Every query is assigned a filtering budget,
-determining the number of candidate vectors that can be compared against the filter during query execution. If this
+determining the number of candidate documents that can be compared against the filter during query execution. If this
 budget is exceeded, the system fallbacks into post-filtering. Therefore, with highly selective filters, fewer
-than `topK` vectors may be returned.
+than `topK` documents may be returned.
+
+***
 
 ## Filter Syntax
 
-A filter has a syntax that resembles SQL, which consists of operators on object keys and boolean operators
+A filter has a syntax that resembles SQL, which consists of operators on content and metadata keys and boolean operators
 to combine them.
 
-Assuming you have a metadata like below:
+To distinguish fields in content and metadata, metadata keys must be prefixed with
+the `@metadata` identifier.
 
-```json  theme={"system"}
+Assuming you have content like below:
+
+```typescript  theme={"system"}
 {
-    "city": "Istanbul",
-    "country": "Turkey",
-    "is_capital": false,
-    "population": 15460000,
-    "geography": {
-        "continent": "Asia",
-        "coordinates": {
-            "latitude": 41.0082,
-            "longitude": 28.9784
-        }
-    },
-    "economy": {
-        "currency": "TRY",
-        "major_industries": [
-            "Tourism",
-            "Textiles",
-            "Finance"
-        ]
-    }
+  // 👇 searchable and filterable
+  content: {
+    name: "Wireless Headphones",
+    description: "Noise-cancelling bluetooth headphones",
+    brand: "Sony",
+    category: "Electronics",
+    warehouse_location: "A3-15",
+    in_stock: 3
+  },
+  // 👇 not searchable, but filterable
+  metadata: {
+    sku: "AT-WH-001",
+    supplier_id: "SUP-123",
+  }
 }
 ```
 
-Then, you can query similar vectors with a filter like below:
+Filter documents like so:
 
 <Tabs>
   <Tab title="Python">
-    ```python  theme={"system"}
-    from upstash_vector import Index
-
-    index = Index(
-      url="UPSTASH_VECTOR_REST_URL",
-      token="UPSTASH_VECTOR_REST_TOKEN",
-    )
-
-    index.query(
-      vector=[0.9215, 0.3897],
-      filter="population >= 1000000 AND geography.continent = 'Asia'",
-      top_k=5,
-      include_metadata=True
+    ```py  theme={"system"}
+    scores = index.search(
+        query="sony headphones",
+        filter="warehouse_location = 'A3-15' AND @metadata.supplier_id = 'SUP-123'",
     )
     ```
   </Tab>
 
-  <Tab title="JavaScript">
-    ```js  theme={"system"}
-    import { Index } from "@upstash/vector"
-
-    const index = new Index({
-      url: "UPSTASH_VECTOR_REST_URL",
-      token: "UPSTASH_VECTOR_REST_TOKEN",
-    })
-
-    await index.query({
-      vector: [0.9215, 0.3897],
-      filter: "population >= 1000000 AND geography.continent = 'Asia'",
-      topK: 5,
-      includeMetadata: true,
+  <Tab title="TypeScript">
+    ```ts  theme={"system"}
+    const searchResults = await index.search({
+        query: "sony headphones",
+        filter: "warehouse_location = 'A3-15' AND @metadata.supplier_id = 'SUP-123'",
     });
-    ```
-  </Tab>
-
-  <Tab title="Go">
-    ```go  theme={"system"}
-    package main
-
-    import (
-    	"github.com/upstash/vector-go"
-    )
-
-    func main() {
-    	index := vector.NewIndex("UPSTASH_VECTOR_REST_URL", "UPSTASH_VECTOR_REST_TOKEN")
-
-    	index.Query(vector.Query{
-    		Vector:          []float32{0.9215, 0.3897},
-    		Filter:          `population >= 1000000 AND geography.continent = 'Asia'`,
-    		TopK:            5,
-    		IncludeMetadata: true,
-    	})
-    }
-    ```
-  </Tab>
-
-  <Tab title="PHP">
-    ```php  theme={"system"}
-    use Upstash\Vector\Index;
-    use Upstash\Vector\VectorQuery;
-
-    $index = new Index(
-      url: 'UPSTASH_VECTOR_REST_URL',
-      token: 'UPSTASH_VECTOR_REST_TOKEN',
-    );
-
-    $index->query(new VectorQuery(
-      vector: [0.9215, 0.3897],
-      topK: 5,
-      includeMetadata: true,
-      filter: "population >= 1000000 AND geography.continent = 'Asia'",
-    ));
-    ```
-  </Tab>
-
-  <Tab title="curl">
-    ```shell  theme={"system"}
-    curl $UPSTASH_VECTOR_REST_URL/query \
-      -H "Authorization: Bearer $UPSTASH_VECTOR_REST_TOKEN" \
-      -d '{
-       "vector":[0.9215,0.3897],
-       "topK" : 5,
-       "filter": "population >= 1000000 AND geography.continent = \"Asia\"",
-       "includeMetadata": true
-    }'
     ```
   </Tab>
 </Tabs>
 
-### Operators
+### TypeSafe Filters (TypeScript)
+
+In our [TypeScript SDK](https://github.com/upstash/search-js), we support a typesafe way to build filters:
+
+```ts  theme={"system"}
+import { Search } from "@upstash/search";
+
+type Content = { text: string }
+type Metadata = { count: number }
+
+const client = Search.fromEnv()
+const searchIndex = client.index<Content, Metadata>("hello world!");
+
+const results = await searchIndex.search({
+  query: "hello world!",
+  limit: 2,
+  filter: {
+    AND: [
+      // filtering by content field
+      { text: { glob: "*test-data*" } }, 
+      // filtering by metadata field (add @metadata prefix)
+      { "@metadata.count": { greaterThanOrEquals: 3 } }
+    ],
+  },
+});
+```
+
+<Note>
+  You can pass type parameters to the `index` method to enable type-safe filters. The first type parameter is for [content fields](/search/features/content-and-metadata#content), and the optional second type parameter is for [metadata fields](/search/features/content-and-metadata).
+
+  Use the `@metadata` prefix to filter by metadata fields in your filter objects. If you don't need to filter by metadata, you can omit the metadata type parameter.
+</Note>
+
+You can use the `AND` and `OR` operators to build complex filters.
+
+<CodeGroup>
+  ```ts AND theme={"system"}
+  const searchResults = await index.search({
+    query: "sony headphones",
+    filter: {
+      AND: [
+        { warehouse_location: { equals: 'A3-15' } },
+        { in_stock: { greaterThan: 0 } }
+      ]
+    },
+  });
+  ```
+
+  ```ts OR theme={"system"}
+  const searchResults = await index.search({
+    query: "sony headphones",
+    filter: {
+      OR: [
+        { warehouse_location: { equals: 'A3-15' } },
+        { in_stock: { greaterThan: 0 } }
+      ]
+    },
+  });
+  ```
+
+  ```ts Nested AND/OR theme={"system"}
+  const searchResults = await index.search({
+    query: "sony headphones",
+    filter: {
+      AND: [
+        { category: { contains: 'electronics' } },
+        { OR: [
+          { warehouse_location: { equals: 'A3-15' } },
+          { in_stock: { greaterThan: 0 } }
+        ]}
+      ]
+    },
+  });
+  ```
+</CodeGroup>
+
+All the operations below except for filtering array elements and nested objects are supported in the typesafe filters.
+
+***
+
+## Operators
 
 #### Equals (=)
 
-The `equals` operator filters keys whose values are equal to the given literal.
+The `equals` operator filters content whose values are equal to the given literal.
 
 It is applicable to *string*, *number*, and *boolean* values.
 
 ```SQL  theme={"system"}
-country = 'Turkey' AND population = 15460000 AND is_capital = false
+warehouse_location = 'A3-15' AND in_stock = 3
 ```
+
+***
 
 #### Not Equals (!=)
 
-The `not equals` operator filters keys whose values are not equal to the given literal.
+The `not equals` operator filters content whose values are not equal to the given literal.
 
 It is applicable to *string*, *number*, and *boolean* values.
 
 ```SQL  theme={"system"}
-country != 'Germany' AND population != 12500000 AND is_capital != true
+warehouse_location != 'A3-15' AND in_stock != 3
 ```
+
+***
 
 #### Less Than (\<)
 
-The `less than` operator filters keys whose values are less than the given literal.
+The `less than` operator filters content whose values are less than the given literal.
 
 It is applicable to *number* values.
 
 ```SQL  theme={"system"}
-population < 20000000 OR geography.coordinates.longitude < 30.0
+in_stock < 3
 ```
+
+***
 
 #### Less Than or Equals (\<=)
 
-The `less than or equals` operator filters keys whose values are less than or equal to the given literal.
+The `less than or equals` operator filters content whose values are less than or equal to the given literal.
 
 It is applicable to *number* values.
 
 ```SQL  theme={"system"}
-population <= 20000000 OR geography.coordinates.longitude <= 30.0
+in_stock <= 3
 ```
+
+***
 
 #### Greater Than (>)
 
-The `greater than` operator filters keys whose values are greater than the given literal.
+The `greater than` operator filters content whose values are greater than the given literal.
 
 It is applicable to *number* values.
 
 ```SQL  theme={"system"}
-population > 10000000 OR geography.coordinates.latitude > 39.5
+in_stock > 3
 ```
+
+***
 
 #### Greater Than or Equals (>=)
 
-The `greater than or equals` operator filters keys whose values are greater than or equal to the given literal.
+The `greater than or equals` operator filters content whose values are greater than or equal to the given literal.
 
 It is applicable to *number* values.
 
 ```SQL  theme={"system"}
-population >= 10000000 OR geography.coordinates.latitude >= 39.5
+in_stock >= 3
 ```
+
+***
 
 #### Glob
 
-The `glob` operator filters keys whose values match with the given UNIX glob pattern.
+The `glob` operator filters content whose values match with the given UNIX glob pattern.
 
 It is applicable to *string* values.
 
@@ -243,30 +248,33 @@ The glob operator supports the following wildcards:
   * `[^abc]` matches any one character other than `a`, `b`, or `c`.
   * `[^a-z]` matches any one character other than `a` to `z`.
 
-For example, the filter below would only match with city names whose second character is `s` or `z`,
-and ends with anything other than `m` to `z`.
+For example, the filter below would only match with warehouse locations whose first character is `A` or `B`.
 
 ```SQL  theme={"system"}
-city GLOB '?[sz]*[^m-z]'
+warehouse_location GLOB '[AB]*'
 ```
+
+***
 
 #### Not Glob
 
-The `not glob` operator filters keys whose values do not match with the given UNIX glob pattern.
+The `not glob` operator filters content whose values do not match with the given UNIX glob pattern.
 
 It is applicable to *string* values.
 
 It has the same properties with the glob operator.
 
-For example, the filter below would only match with city names whose first character is anything other than `A`.
+For example, the filter below would only match with warehouse locations whose first character is anything other than `A`.
 
 ```SQL  theme={"system"}
-city NOT GLOB 'A*'
+warehouse_location NOT GLOB 'A*'
 ```
+
+***
 
 #### In
 
-The `in` operator filters keys whose values are equal to any of the given literals.
+The `in` operator filters content whose values are equal to any of the given literals.
 
 It is applicable to *string*, *number*, and *boolean* values.
 
@@ -280,9 +288,11 @@ Semantically, it is equivalent to equals operator applied to all of the given li
 country = 'Germany' OR country = 'Turkey' OR country = 'France'
 ```
 
+***
+
 #### Not In
 
-The `not in` operator filters keys whose values are not equal to any of the given literals.
+The `not in` operator filters content whose values are not equal to any of the given literals.
 
 It is applicable to *string*, *number*, and *boolean* values.
 
@@ -296,9 +306,11 @@ Semantically, it is equivalent to not equals operator applied to all of the give
 economy.currency != 'USD' AND economy.currency != 'EUR'
 ```
 
+***
+
 #### Contains
 
-The `contains` operator filters keys whose values contain the given literal.
+The `contains` operator filters content whose values contain the given literal.
 
 It is applicable to *array* values.
 
@@ -306,9 +318,11 @@ It is applicable to *array* values.
 economy.major_industries CONTAINS 'Tourism'
 ```
 
+***
+
 #### Not Contains
 
-The `not contains` operator filters keys whose values do not contain the given literal.
+The `not contains` operator filters content whose values do not contain the given literal.
 
 It is applicable to *array* values.
 
@@ -316,21 +330,27 @@ It is applicable to *array* values.
 economy.major_industries NOT CONTAINS 'Steel Production'
 ```
 
+***
+
 #### Has Field
 
-The `has field` operator filters keys which have the given JSON field.
+The `has field` operator filters content which have the given JSON field.
 
 ```SQL  theme={"system"}
 HAS FIELD geography.coordinates
 ```
 
+***
+
 #### Has Not Field
 
-The `has not field` operator filters keys which do not have the given JSON field.
+The `has not field` operator filters content which do not have the given JSON field.
 
 ```SQL  theme={"system"}
 HAS NOT FIELD geography.coordinates.longitude
 ```
+
+***
 
 ### Boolean Operators
 
@@ -360,16 +380,20 @@ would be equivalent to
 (country = 'Turkey' AND population > 10000000) OR is_capital = false
 ```
 
+***
+
 ### Filtering Nested Objects
 
-It is possible to filter nested object keys by referencing them with the `.` accessor.
+It is possible to filter nested object fields by referencing them with the `.` accessor.
 
-Nested objects can be at arbitrary depths, so more than one `.` accessor can be used
+Nested fields can be at arbitrary depths, so more than one `.` accessor can be used
 in the same identifier.
 
 ```SQL  theme={"system"}
 economy.currency != 'USD' AND geography.coordinates.latitude >= 35.0
 ```
+
+***
 
 ### Filtering Array Elements
 
@@ -389,6 +413,8 @@ last element.
 ```SQL  theme={"system"}
 economy.major_industries[#-1] = 'Finance'
 ```
+
+***
 
 ### Miscellaneous
 

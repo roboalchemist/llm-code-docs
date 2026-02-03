@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/development/chain/localdev.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Local Development
 
 > Iterating, Debugging, Testing, Mocking

@@ -1,43 +1,68 @@
 # Source: https://docs.baseten.co/examples/deploy-your-first-model.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deploy your first model
 
-> From model weights to API endpoint
+> Learn how to package and deploy an AI model as a production-ready API endpoint on Baseten.
 
-This guide walks through packaging and deploying [Phi-3-mini-4k-instruct](https://huggingface.co/microsoft/Phi-3-mini-4k-instruct), a 3.8B parameter LLM, as a production-ready API endpoint.
+Deploying a model to Baseten turns your model code into a production-ready API endpoint. You package your model with [Truss](https://pypi.org/project/truss/), push it to Baseten, and receive a URL you can call from any application.
 
-We'll cover:
+This guide walks through deploying [Phi-3-mini-4k-instruct](https://huggingface.co/microsoft/Phi-3-mini-4k-instruct), a 3.8B parameter LLM, from local code to a production API. You'll create a Truss project, write model code, configure dependencies and GPU resources, deploy to Baseten, and call your model's API endpoint.
 
-1. **Loading model weights** from Hugging Face
-2. **Running inference** on a GPU
-3. **Configuring dependencies and infrastructure**
-4. **Iterating with live reload development**
-5. **Deploying to production with autoscaling**
+## Set up your environment
 
-By the end, you’ll have an AI model running on scalable infrastructure, callable via an API.
+Before you begin, [sign up](https://app.baseten.co/signup) or [sign in](https://app.baseten.co/login) to Baseten.
 
-## 1. Setup
+### Install Truss
 
-Before you begin:
+[Truss](https://pypi.org/project/truss/) is Baseten's model packaging framework. It handles containerization, dependencies, and deployment configuration.
 
-1. [Sign up](https://app.baseten.co/signup) or [sign in](https://app.baseten.co/login) to Baseten
-2. Generate an [API key](https://app.baseten.co/settings/account/api_keys) and store it securely
-3. Install [Truss](https://pypi.org/project/truss/), our model packaging framework
+<Note>
+  Using a virtual environment is recommended to avoid dependency conflicts with other Python projects.
+</Note>
 
-```sh  theme={"system"}
-pip install --upgrade truss
-```
+<Tabs>
+  <Tab title="uv (recommended)">
+    [uv](https://docs.astral.sh/uv/) is a fast Python package manager. These commands create a virtual environment, activate it, and install Truss:
+
+    ```sh  theme={"system"}
+    uv venv && source .venv/bin/activate
+    uv pip install truss
+    ```
+  </Tab>
+
+  <Tab title="pip (macOS/Linux)">
+    These commands create a virtual environment, activate it, and install Truss:
+
+    ```sh  theme={"system"}
+    python -m venv .venv && source .venv/bin/activate
+    pip install --upgrade truss
+    ```
+  </Tab>
+
+  <Tab title="pip (Windows)">
+    These commands create a virtual environment, activate it, and install Truss:
+
+    ```sh  theme={"system"}
+    python -m venv .venv && .venv\Scripts\activate
+    pip install --upgrade truss
+    ```
+  </Tab>
+</Tabs>
 
 <Tip>
-  New accounts include free credits—this guide should use less than \$1 in GPU
+  New accounts include free credits; this guide should use less than \$1 in GPU
   costs.
 </Tip>
 
 ***
 
-## 2. Create a Truss
+## Create a Truss
 
-A **Truss** packages your model into a **deployable container** with all dependencies and configurations.
+A **Truss** packages your model into a deployable container with all dependencies and configurations.
 
 Create a new Truss:
 
@@ -47,27 +72,37 @@ truss init phi-3-mini && cd phi-3-mini
 
 When prompted, give your Truss a name like `Phi 3 Mini`.
 
-You should see the following file structure:
+This command scaffolds a project with the following structure:
 
-```arduino  theme={"system"}
+```
 phi-3-mini/
-  data/
   model/
     __init__.py
     model.py
-  packages/
   config.yaml
+  data/
+  packages/
 ```
 
-You'll primarily edit `model/model.py` and `config.yaml`.
+The key files are:
+
+* `model/model.py`: Your model code with `load()` and `predict()` methods.
+* `config.yaml`: Dependencies, resources, and deployment settings.
+* `data/`: Optional directory for data files bundled with your model.
+* `packages/`: Optional directory for local Python packages.
+
+Truss uses this structure to build and deploy your model automatically. You
+define your model in `model.py` and your infrastructure in `config.yaml`, no
+Dockerfiles or container management required.
 
 ***
 
-## 3. Load model weights
+## Implement model code
 
-[Phi-3-mini-4k-instruct](https://huggingface.co/microsoft/Phi-3-mini-4k-instruct) is available on Hugging Face. We’ll **load its weights using** transformers.
-
-Edit `model/model.py`:
+In this example, you'll implement the model code for
+[Phi-3-mini-4k-instruct](https://huggingface.co/microsoft/Phi-3-mini-4k-instruct).
+You'll use the `transformers` library to load the model and tokenizer and PyTorch to run inference.
+Replace the contents of `model/model.py` with the following code:
 
 ```python model/model.py theme={"system"}
 import torch
@@ -87,17 +122,7 @@ class Model:
         self._tokenizer = AutoTokenizer.from_pretrained(
             "microsoft/Phi-3-mini-4k-instruct"
         )
-```
 
-***
-
-## 4. Implement Model Inference
-
-Define how the model processes incoming requests by implementing the `predict()` function:
-
-```python model/model.py theme={"system"}
-class Model:
-    ...
     def predict(self, request):
         messages = request.pop("messages")
         model_inputs = self._tokenizer.apply_chat_template(
@@ -109,21 +134,56 @@ class Model:
         return {"output": self._tokenizer.decode(outputs[0], skip_special_tokens=True)}
 ```
 
-This function:
+Truss models follow a three-method pattern that separates initialization from inference:
 
-* ✅ Accepts a list of messages
-* ✅ Uses Hugging Face’s tokenizer
-* ✅ Generates a response with max 256 tokens
+| Method     | When it's called                     | What to do here                                           |
+| ---------- | ------------------------------------ | --------------------------------------------------------- |
+| `__init__` | Once when the class is created       | Initialize variables, store configuration, set secrets    |
+| `load`     | Once at startup, before any requests | Load model weights, tokenizers, and other heavy resources |
+| `predict`  | On every API request                 | Process input, run inference, return response             |
+
+**Why separate `load` from `__init__`?**
+
+The `load` method runs during the container's cold start, before your model
+receives traffic. This keeps expensive operations (like downloading
+large model weights) out of the request path.
+
+### Understand the request/response flow
+
+The `predict` method receives `request`, a dictionary containing the JSON body
+from the API call:
+
+```python  theme={"system"}
+# API call with: {"messages": [{"role": "user", "content": "Hello"}]}
+def predict(self, request):
+    messages = request.pop("messages")  # Extract from request
+    # ... run inference ...
+    return {"output": result}  # Return dict becomes JSON response
+```
+
+Whatever dictionary you return becomes the API response. You control the input
+parameters and output format.
+
+### GPU and memory patterns
+
+A few patterns in this code are common across GPU models:
+
+* **`device_map="cuda"`**: Loads model weights directly to GPU.
+* **`.to("cuda")`**: Moves input tensors to GPU for inference.
+* **`torch.no_grad()`**: Disables gradient tracking to save memory (gradients aren't needed for inference).
 
 ***
 
-## 5. Configure Dependencies & GPU
+## Configure dependencies and GPU
 
-In `config.yaml`, define the **Python environment** and **compute resources**:
+The `config.yaml` file defines your model's environment and compute resources.
+This configuration determines how your container is built and what hardware it
+runs on.
 
-### Set Dependencies
+### Set Python version and dependencies
 
 ```yaml config.yaml theme={"system"}
+python_version: py311
 requirements:
   - six==1.17.0
   - accelerate==0.30.1
@@ -132,9 +192,25 @@ requirements:
   - torch==2.3.0
 ```
 
+**Key configuration options:**
+
+| Field             | Purpose                                  | Example                           |
+| ----------------- | ---------------------------------------- | --------------------------------- |
+| `python_version`  | Python version for your container        | `py39`, `py310`, `py311`, `py312` |
+| `requirements`    | Python packages to install (pip format)  | `torch==2.3.0`                    |
+| `system_packages` | System-level dependencies (apt packages) | `ffmpeg`, `libsm6`                |
+
+For the complete list of configuration options, see the [Truss reference config](/reference/truss-configuration).
+
+<Note>
+  Always pin exact versions (e.g., `torch==2.3.0` not `torch>=2.0`). This
+  ensures reproducible builds and your model behaves the same way every time it's
+  deployed.
+</Note>
+
 ### Allocate a GPU
 
-Phi-3-mini needs \~7.6GB VRAM. A T4 GPU (16GB VRAM) is a good choice.
+The `resources` section specifies what hardware your model runs on:
 
 ```yaml config.yaml theme={"system"}
 resources:
@@ -142,71 +218,181 @@ resources:
   use_gpu: true
 ```
 
+**Choosing the right GPU:** Match your GPU to your model's VRAM requirements. For Phi-3-mini (\~7.6GB), a T4 (16GB) provides headroom for inference.
+
+| GPU  | VRAM    | Good for                                    |
+| ---- | ------- | ------------------------------------------- |
+| T4   | 16GB    | Small models, embeddings, fine-tuned models |
+| L4   | 24GB    | Medium models (7B parameters)               |
+| A10G | 24GB    | Medium models, image generation             |
+| A100 | 40/80GB | Large models (13B-70B parameters)           |
+| H100 | 80GB    | Very large models, high throughput          |
+
+<Tip>
+  **Estimating VRAM:** A rough rule is 2GB of VRAM per billion parameters for float16 models. A 7B model needs \~14GB VRAM minimum.
+</Tip>
+
 ***
 
-## 6. Deploy the Model
+## Deploy the model
 
-### 1. Get Your API Key
+### Authenticate with Baseten
 
-🔗 Generate an API Key
-
-You can generate the API key from the Baseten UI. Click on the User icon at the top-right, then click API keys. Save your API-key, because we will use it in the next step.
-
-### 2. Push Your Model to Baseten
+First, generate an API key from the [Baseten settings](https://app.baseten.co/settings/account/api_keys). Then log in:
 
 ```sh  theme={"system"}
-truss push
+truss login
 ```
 
-Since this is a first-time deployment, `truss` will ask for your API-key and save it for future runs.
+The expected output is:
 
-Monitor the deployment from [your Baseten dashboard](https://app.baseten.co/models/).
+```output  theme={"system"}
+💻 Let's add a Baseten remote!
+🤫 Quietly paste your API_KEY:
+```
 
-***
+Paste your API key when prompted. Truss saves your credentials for future deployments.
 
-## 7. Call the Model API
+### Push your model to Baseten
 
-After the deployment is complete, we can call the model API. First, store the Baseten API key as an environment variable:
+For development with live reload:
 
 ```sh  theme={"system"}
-export BASETEN_API_KEY=<your_api_key>
+truss push --watch
 ```
 
-Below is the client code. Be sure to replace `model_id` from your deployment.
+The expected output is:
 
-```python  theme={"system"}
-import requests
-import os
+```output  theme={"system"}
+Deploying truss using T4x4x16 instance type.
+✨ Model Phi 3 Mini was successfully pushed ✨
 
-model_id = "your_model_id"
-baseten_api_key = os.environ["BASETEN_API_KEY"]
-
-resp = requests.post(
-    f"https://model-{model_id}.api.baseten.co/development/predict",
-    headers={"Authorization": f"Api-Key {baseten_api_key}"},
-    json={"messages": ["What is AGI?"]}
-)
-
-print(resp.json())
+🪵  View logs for your deployment at https://app.baseten.co/models/abc1d2ef/logs/xyz123
 ```
+
+<Note>
+  When no flag is specified, `truss push` defaults to a published deployment. Use `--watch` for development deployments with live reload support.
+</Note>
+
+In this example, the logs URL contains two IDs:
+
+* **Model ID**: The string after `/models/` (e.g., `abc1d2ef`) which you'll use this to call the model API.
+* **Deployment ID**: The string after `/logs/` (e.g., `xyz123`) identifies this specific deployment.
+
+You can also find your model ID in [your Baseten dashboard](https://app.baseten.co/models/) by clicking on your model.
 
 ***
 
-## 8. Live Reload for Development
+## Call the model API
 
-Avoid long deploy times when testing changes—use **live reload**:
+After the deployment is complete, you can call the model API:
+
+<Tabs>
+  <Tab title="Truss CLI">
+    From your Truss project directory, run:
+
+    ```sh  theme={"system"}
+    truss predict --data '{"messages": [{"role": "user", "content": "What is AGI?"}]}'
+    ```
+
+    The expected output is:
+
+    ```output  theme={"system"}
+    Calling predict on development deployment...
+    {
+      "output": "AGI stands for Artificial General Intelligence..."
+    }
+    ```
+
+    The Truss CLI uses your saved credentials and automatically targets the correct deployment.
+  </Tab>
+
+  <Tab title="cURL">
+    Set your API key and replace `YOUR_MODEL_ID` with your model ID (e.g., `abc1d2ef`):
+
+    ```sh  theme={"system"}
+    export BASETEN_API_KEY=YOUR_API_KEY
+
+    curl -X POST https://model-YOUR_MODEL_ID.api.baseten.co/development/predict \
+      -H "Authorization: Api-Key $BASETEN_API_KEY" \
+      -H "Content-Type: application/json" \
+      -d '{"messages": [{"role": "user", "content": "What is AGI?"}]}'
+    ```
+
+    The expected output is:
+
+    ```output  theme={"system"}
+    {'output': 'AGI stands for Artificial General Intelligence...'}
+    ```
+  </Tab>
+
+  <Tab title="Python">
+    Set your API key as an environment variable, then replace `YOUR_MODEL_ID` with your model ID:
+
+    ```sh  theme={"system"}
+    export BASETEN_API_KEY=YOUR_API_KEY
+    ```
+
+    ```python main.py theme={"system"}
+    import requests
+    import os
+
+    model_id = "YOUR_MODEL_ID"  # Replace with your model ID (e.g., "abc1d2ef")
+    baseten_api_key = os.environ["BASETEN_API_KEY"]
+
+    resp = requests.post(
+        f"https://model-{model_id}.api.baseten.co/development/predict",
+        headers={"Authorization": f"Api-Key {baseten_api_key}"},
+        json={
+            "messages": [
+                {"role": "user", "content": "What is AGI?"}
+            ]
+        }
+    )
+
+    print(resp.json())
+    ```
+
+    The expected output is:
+
+    ```output  theme={"system"}
+    {'output': 'AGI stands for Artificial General Intelligence...'}
+    ```
+  </Tab>
+</Tabs>
+
+***
+
+## Use live reload for development
+
+To avoid long deploy times when testing changes, use **live reload**:
 
 ```sh  theme={"system"}
 truss watch
 ```
 
-* Saves time by **patching only the updated code**
-* Skips rebuilding Docker containers
-* Keeps the model server running while iterating
+The expected output is:
 
-Make changes to `model.py`, save, and test the API again.
+```output  theme={"system"}
+🪵  View logs for your deployment at https://app.baseten.co/models/<model_id>/logs/<deployment_id>
+🚰 Attempting to sync truss with remote
+No changes observed, skipping patching.
+👀 Watching for changes to truss...
+```
 
-## 9. Promote to Production
+When you save changes to `model.py`, Truss automatically patches the deployed model:
+
+```output  theme={"system"}
+Changes detected, creating patch...
+Created patch to update model code file: model/model.py
+Model Phi 3 Mini patched successfully.
+```
+
+This saves time by patching only the updated code without rebuilding Docker containers or restarting the model server.
+
+***
+
+## Promote to production
 
 Once you're happy with the model, deploy it to production:
 
@@ -214,32 +400,31 @@ Once you're happy with the model, deploy it to production:
 truss push --publish
 ```
 
-This updates the **API endpoint** from:
+This changes the API endpoint from `/development/predict` to `/production/predict`:
 
-* ❌ **Development**: /development/predict
-* ✅ **Production**: /production/predict
-
-```python  theme={"system"}
-resp = requests.post(
-    f"https://model-{model_id}.api.baseten.co/production/predict",
-    headers={"Authorization": f"Api-Key {baseten_api_key}"},
-    json={
-        "messages": [
-            {"role": "user", "content": "What is AGI?"}
-        ],
-    }
-)
+```sh  theme={"system"}
+curl -X POST https://model-YOUR_MODEL_ID.api.baseten.co/production/predict \
+  -H "Authorization: Api-Key $BASETEN_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"messages": [{"role": "user", "content": "What is AGI?"}]}'
 ```
+
+<Tip>
+  To call your production endpoint, you need your model ID. The output of `truss push --publish` includes a logs URL:
+
+  ```output  theme={"system"}
+  🪵  View logs for your deployment at https://app.baseten.co/models/abc1d2ef/logs/xyz123
+  ```
+
+  Your model ID is the string after `/models/` (e.g., `abc1d2ef`). You can also find it in your [Baseten dashboard](https://app.baseten.co/models/).
+</Tip>
 
 ***
 
-## Next Steps
+## Next steps
 
-🚀 You’ve successfully packaged, deployed, and invoked an AI model with Truss!
+Now that you've deployed your first model, continue learning:
 
-Explore more:
-
-* Learning more about [model serving with Truss](/development/model/overview).
-* [Example implementations](https://github.com/basetenlabs/truss-examples) for dozens of open source models.
-* [Inference examples](/inference/concepts) and [Baseten integrations](/inference/integrations).
-* Using [autoscaling settings](/deployment/autoscaling) to spin up and down multiple GPU replicas.
+* [Model serving with Truss](/development/model/overview): Configure dependencies, secrets, and resources.
+* [Example implementations](https://github.com/basetenlabs/truss-examples): Deploy dozens of open source models.
+* [Autoscaling settings](/deployment/autoscaling): Scale GPU replicas based on demand.

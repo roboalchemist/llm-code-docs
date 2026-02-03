@@ -4,7 +4,6 @@
 title: File share Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: 'Docs > Cloudcraft (Standalone) > Components: Azure > File share Component'
-source_url: https://docs.datadoghq.com/components-azure/file-share/index.html
 ---
 
 # File share Component

@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/use-cases/media-generation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AI media generation workflows
 
 > Learn how to use Trigger.dev for AI media generation including image creation, video synthesis, audio generation, and multi-modal content workflows
@@ -51,7 +55,7 @@ Build AI media generation pipelines that handle unpredictable API latencies and 
     **Supervisor pattern with approval gate**. Generates AI content, pauses execution with wait.forToken to allow human review, applies feedback if needed, publishes approved content.
 
     <div align="center">
-      ```mermaid  theme={null}
+      ```mermaid  theme={"theme":"css-variables"}
       graph TB
           A[generateContent] --> B[createWithAI]
           B --> C[wait.forToken approval]
@@ -68,7 +72,7 @@ Build AI media generation pipelines that handle unpredictable API latencies and 
     Simple AI image generation. Receives prompt and parameters, calls OpenAI DALL·E 3, post-processes result, uploads to storage.
 
     <div align="center">
-      ```mermaid  theme={null}
+      ```mermaid  theme={"theme":"css-variables"}
       graph TB
           A[generateImage] --> B[optimizeImage]
           B --> C[uploadToStorage]
@@ -81,7 +85,7 @@ Build AI media generation pipelines that handle unpredictable API latencies and 
     **Coordinator pattern with rate limiting**. Receives batch of generation requests, coordinates parallel processing with configurable concurrency to respect API rate limits, validates outputs, stores results.
 
     <div align="center">
-      ```mermaid  theme={null}
+      ```mermaid  theme={"theme":"css-variables"}
       graph TB
           A[processBatch] --> B[coordinateGeneration]
           B --> C[batchTriggerAndWait]
@@ -104,7 +108,7 @@ Build AI media generation pipelines that handle unpredictable API latencies and 
     **Coordinator pattern with sequential processing**. Generates initial content with AI, applies style transfer or enhancement, upscales resolution, optimizes and compresses for delivery.
 
     <div align="center">
-      ```mermaid  theme={null}
+      ```mermaid  theme={"theme":"css-variables"}
       graph TB
           A[processCreative] --> B[generateWithAI]
           B --> C[applyStyleTransfer]

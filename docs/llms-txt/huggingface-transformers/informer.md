@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/informer.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/informer.md
 
 # Informer
 
@@ -25,15 +25,15 @@ A list of official Hugging Face and community (indicated by 🌎) resources to h
 
 #### transformers.InformerConfig[[transformers.InformerConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/informer/configuration_informer.py#L26)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/informer/configuration_informer.py#L23)
 
-This is the configuration class to store the configuration of an [InformerModel](/docs/transformers/v5.0.0rc1/en/model_doc/informer#transformers.InformerModel). It is used to instantiate an
+This is the configuration class to store the configuration of an [InformerModel](/docs/transformers/v5.0.0/en/model_doc/informer#transformers.InformerModel). It is used to instantiate an
 Informer model according to the specified arguments, defining the model architecture. Instantiating a configuration
 with the defaults will yield a similar configuration to that of the Informer
 [huggingface/informer-tourism-monthly](https://huggingface.co/huggingface/informer-tourism-monthly) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -120,11 +120,11 @@ distil (`bool`, *optional*, defaults to `True`) : Whether to use distilling in e
 
 #### transformers.InformerModel[[transformers.InformerModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/informer/modeling_informer.py#L1145)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/informer/modeling_informer.py#L1143)
 
 The bare Informer Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -132,7 +132,7 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.InformerModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/informer/modeling_informer.py#L1283[{"name": "past_values", "val": ": Tensor"}, {"name": "past_time_features", "val": ": Tensor"}, {"name": "past_observed_mask", "val": ": Tensor"}, {"name": "static_categorical_features", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "static_real_features", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "future_values", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "future_time_features", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "decoder_attention_mask", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "encoder_outputs", "val": ": typing.Optional[list[torch.FloatTensor]] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "**kwargs", "val": ""}]- **past_values** (`torch.FloatTensor` of shape `(batch_size, sequence_length)` or `(batch_size, sequence_length, input_size)`) --
+forwardtransformers.InformerModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/informer/modeling_informer.py#L1281[{"name": "past_values", "val": ": Tensor"}, {"name": "past_time_features", "val": ": Tensor"}, {"name": "past_observed_mask", "val": ": Tensor"}, {"name": "static_categorical_features", "val": ": torch.Tensor | None = None"}, {"name": "static_real_features", "val": ": torch.Tensor | None = None"}, {"name": "future_values", "val": ": torch.Tensor | None = None"}, {"name": "future_time_features", "val": ": torch.Tensor | None = None"}, {"name": "decoder_attention_mask", "val": ": torch.LongTensor | None = None"}, {"name": "encoder_outputs", "val": ": list[torch.FloatTensor] | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "**kwargs", "val": ""}]- **past_values** (`torch.FloatTensor` of shape `(batch_size, sequence_length)` or `(batch_size, sequence_length, input_size)`) --
   Past values of the time series, that serve as context in order to predict the future. The sequence size of
   this tensor must be larger than the `context_length` of the model, since the model will use the larger size
   to construct lag features, i.e. additional values from the past which are added in order to serve as "extra
@@ -227,8 +227,8 @@ forwardtransformers.InformerModel.forwardhttps://github.com/huggingface/transfor
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -245,19 +245,19 @@ forwardtransformers.InformerModel.forwardhttps://github.com/huggingface/transfor
   If set to `True`, `past_key_values` key value states are returned and can be used to speed up decoding (see
   `past_key_values`).
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 - **cache_position** (`torch.LongTensor` of shape `(sequence_length)`, *optional*) --
   Indices depicting the position of the input sequence tokens in the sequence. Contrarily to `position_ids`,
   this tensor is not affected by padding. It is used to update the cache in the correct position and to infer
-  the complete sequence length.0[transformers.modeling_outputs.Seq2SeqTSModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqTSModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.Seq2SeqTSModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqTSModelOutput) or a tuple of
+  the complete sequence length.0[transformers.modeling_outputs.Seq2SeqTSModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqTSModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.Seq2SeqTSModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqTSModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([InformerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/informer#transformers.InformerConfig)) and inputs.
+elements depending on the configuration ([InformerConfig](/docs/transformers/v5.0.0/en/model_doc/informer#transformers.InformerConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the decoder of the model.
 
   If `past_key_values` is used only the last hidden-state of the sequences of shape `(batch_size, 1,
   hidden_size)` is output.
-- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and in the cross-attention
   blocks) that can be used (see `past_key_values` input) to speed up sequential decoding.
@@ -290,7 +290,7 @@ elements depending on the configuration ([InformerConfig](/docs/transformers/v5.
 - **scale** (`torch.FloatTensor` of shape `(batch_size,)` or `(batch_size, input_size)`, *optional*) -- Scaling values of each time series' context window which is used to give the model inputs of the same
   magnitude and then used to rescale back to the original magnitude.
 - **static_features** (`torch.FloatTensor` of shape `(batch_size, feature size)`, *optional*) -- Static features of each time series' in a batch which are copied to the covariates at inference time.
-The [InformerModel](/docs/transformers/v5.0.0rc1/en/model_doc/informer#transformers.InformerModel) forward method, overrides the `__call__` special method.
+The [InformerModel](/docs/transformers/v5.0.0/en/model_doc/informer#transformers.InformerModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -327,21 +327,21 @@ Examples:
 
 **Parameters:**
 
-config ([InformerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/informer#transformers.InformerConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([InformerConfig](/docs/transformers/v5.0.0/en/model_doc/informer#transformers.InformerConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.Seq2SeqTSModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqTSModelOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.Seq2SeqTSModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqTSModelOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.Seq2SeqTSModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqTSModelOutput) or a tuple of
+A [transformers.modeling_outputs.Seq2SeqTSModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqTSModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([InformerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/informer#transformers.InformerConfig)) and inputs.
+elements depending on the configuration ([InformerConfig](/docs/transformers/v5.0.0/en/model_doc/informer#transformers.InformerConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the decoder of the model.
 
   If `past_key_values` is used only the last hidden-state of the sequences of shape `(batch_size, 1,
   hidden_size)` is output.
-- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and in the cross-attention
   blocks) that can be used (see `past_key_values` input) to speed up sequential decoding.
@@ -379,11 +379,11 @@ elements depending on the configuration ([InformerConfig](/docs/transformers/v5.
 
 #### transformers.InformerForPrediction[[transformers.InformerForPrediction]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/informer/modeling_informer.py#L1525)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/informer/modeling_informer.py#L1523)
 
 The Informer Model with a distribution head on top for time-series forecasting.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -391,7 +391,7 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.InformerForPrediction.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/informer/modeling_informer.py#L1560[{"name": "past_values", "val": ": Tensor"}, {"name": "past_time_features", "val": ": Tensor"}, {"name": "past_observed_mask", "val": ": Tensor"}, {"name": "static_categorical_features", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "static_real_features", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "future_values", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "future_time_features", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "future_observed_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "decoder_attention_mask", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "encoder_outputs", "val": ": typing.Optional[list[torch.FloatTensor]] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "**kwargs", "val": ""}]- **past_values** (`torch.FloatTensor` of shape `(batch_size, sequence_length)` or `(batch_size, sequence_length, input_size)`) --
+forwardtransformers.InformerForPrediction.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/informer/modeling_informer.py#L1558[{"name": "past_values", "val": ": Tensor"}, {"name": "past_time_features", "val": ": Tensor"}, {"name": "past_observed_mask", "val": ": Tensor"}, {"name": "static_categorical_features", "val": ": torch.Tensor | None = None"}, {"name": "static_real_features", "val": ": torch.Tensor | None = None"}, {"name": "future_values", "val": ": torch.Tensor | None = None"}, {"name": "future_time_features", "val": ": torch.Tensor | None = None"}, {"name": "future_observed_mask", "val": ": torch.Tensor | None = None"}, {"name": "decoder_attention_mask", "val": ": torch.LongTensor | None = None"}, {"name": "encoder_outputs", "val": ": list[torch.FloatTensor] | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "**kwargs", "val": ""}]- **past_values** (`torch.FloatTensor` of shape `(batch_size, sequence_length)` or `(batch_size, sequence_length, input_size)`) --
   Past values of the time series, that serve as context in order to predict the future. The sequence size of
   this tensor must be larger than the `context_length` of the model, since the model will use the larger size
   to construct lag features, i.e. additional values from the past which are added in order to serve as "extra
@@ -494,8 +494,8 @@ forwardtransformers.InformerForPrediction.forwardhttps://github.com/huggingface/
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -512,19 +512,19 @@ forwardtransformers.InformerForPrediction.forwardhttps://github.com/huggingface/
   If set to `True`, `past_key_values` key value states are returned and can be used to speed up decoding (see
   `past_key_values`).
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 - **cache_position** (`torch.LongTensor` of shape `(sequence_length)`, *optional*) --
   Indices depicting the position of the input sequence tokens in the sequence. Contrarily to `position_ids`,
   this tensor is not affected by padding. It is used to update the cache in the correct position and to infer
-  the complete sequence length.0[transformers.modeling_outputs.Seq2SeqTSModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqTSModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.Seq2SeqTSModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqTSModelOutput) or a tuple of
+  the complete sequence length.0[transformers.modeling_outputs.Seq2SeqTSModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqTSModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.Seq2SeqTSModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqTSModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([InformerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/informer#transformers.InformerConfig)) and inputs.
+elements depending on the configuration ([InformerConfig](/docs/transformers/v5.0.0/en/model_doc/informer#transformers.InformerConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the decoder of the model.
 
   If `past_key_values` is used only the last hidden-state of the sequences of shape `(batch_size, 1,
   hidden_size)` is output.
-- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and in the cross-attention
   blocks) that can be used (see `past_key_values` input) to speed up sequential decoding.
@@ -557,7 +557,7 @@ elements depending on the configuration ([InformerConfig](/docs/transformers/v5.
 - **scale** (`torch.FloatTensor` of shape `(batch_size,)` or `(batch_size, input_size)`, *optional*) -- Scaling values of each time series' context window which is used to give the model inputs of the same
   magnitude and then used to rescale back to the original magnitude.
 - **static_features** (`torch.FloatTensor` of shape `(batch_size, feature size)`, *optional*) -- Static features of each time series' in a batch which are copied to the covariates at inference time.
-The [InformerForPrediction](/docs/transformers/v5.0.0rc1/en/model_doc/informer#transformers.InformerForPrediction) forward method, overrides the `__call__` special method.
+The [InformerForPrediction](/docs/transformers/v5.0.0/en/model_doc/informer#transformers.InformerForPrediction) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -611,21 +611,21 @@ Examples:
 
 **Parameters:**
 
-config ([InformerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/informer#transformers.InformerConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([InformerConfig](/docs/transformers/v5.0.0/en/model_doc/informer#transformers.InformerConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.Seq2SeqTSModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqTSModelOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.Seq2SeqTSModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqTSModelOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.Seq2SeqTSModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqTSModelOutput) or a tuple of
+A [transformers.modeling_outputs.Seq2SeqTSModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqTSModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([InformerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/informer#transformers.InformerConfig)) and inputs.
+elements depending on the configuration ([InformerConfig](/docs/transformers/v5.0.0/en/model_doc/informer#transformers.InformerConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the decoder of the model.
 
   If `past_key_values` is used only the last hidden-state of the sequences of shape `(batch_size, 1,
   hidden_size)` is output.
-- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and in the cross-attention
   blocks) that can be used (see `past_key_values` input) to speed up sequential decoding.

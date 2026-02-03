@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/runtime/http/websockets.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # WebSockets
 
 > Server-side WebSockets in Bun
@@ -170,7 +174,7 @@ Bun.serve({
 
 To connect to this server from the browser, create a new `WebSocket`.
 
-```ts browser.js icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js browser.js icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const socket = new WebSocket("ws://localhost:3000/chat");
 
 socket.addEventListener("message", event => {

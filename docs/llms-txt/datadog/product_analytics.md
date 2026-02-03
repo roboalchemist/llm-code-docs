@@ -4,7 +4,6 @@
 title: Product Analytics
 description: Product Analytics help you understand your application usage at a glance.
 breadcrumbs: Docs > Product Analytics
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Product Analytics

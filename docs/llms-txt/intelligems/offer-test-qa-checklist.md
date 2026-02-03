@@ -1,4 +1,4 @@
-# Source: https://docs.intelligems.io/offer-experiences/offer-test-qa-checklist.md
+# Source: https://docs.intelligems.io/offer-personalizations/offer-test-qa-checklist.md
 
 # Offer Test QA Checklist
 

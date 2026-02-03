@@ -1,52 +1,70 @@
-# Source: https://docs.baseten.co/observability/secrets.md
+# Source: https://docs.baseten.co/organization/secrets.md
 
 # Source: https://docs.baseten.co/development/model/secrets.md
 
-# Source: https://docs.baseten.co/observability/secrets.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.baseten.co/development/model/secrets.md
+# Secrets
 
-# Source: https://docs.baseten.co/observability/secrets.md
+> Use secrets securely in your models
 
-# Source: https://docs.baseten.co/development/model/secrets.md
+Truss allows you to securely manage API keys, access tokens, passwords, and other secrets without exposing them in code.
 
-# Source: https://docs.baseten.co/observability/secrets.md
+## Create a secret
 
-# Source: https://docs.baseten.co/development/model/secrets.md
+<Tabs>
+  <Tab title="Baseten UI">
+    1. Go to [Secrets](https://app.baseten.co/settings/secrets) in your account settings.
+    2. Enter the name and value of the secret, for example `hf_access_token` and `hf_...`.
+    3. Select **Add secret**.
+  </Tab>
 
-# Source: https://docs.baseten.co/observability/secrets.md
+  <Tab title="cURL">
+    To create a secret with the API, use the following command:
 
-# Source: https://docs.baseten.co/development/model/secrets.md
+    ```bash  theme={"system"}
+    curl --request POST \
+      --url https://api.baseten.co/v1/secrets \
+      --header "Authorization: Api-Key $BASETEN_API_KEY" \
+      --data '{
+        "name": "hf_access_token",
+        "value": "hf_..."
+      }'
+    ```
 
-# Security and secrets
+    For more information, see the
+    [Upsert a secret](/reference/management-api/secrets/upserts-a-secret) reference.
+  </Tab>
+</Tabs>
 
-> Using secrets securely in your ML models
+## Use secrets in your model
 
-Truss allows you to securely manage **API keys**, **access tokens**, **passwords**, **and other secrets** without exposing them in code.
+Once you've created a secret, declare it in your `config.yaml` and access it in your model code.
 
-## 1. Define Secrets in `config.yaml`
+<Warning>
+  Never store actual secret values in `config.yaml`. Use `null` as a placeholder.
+  The secret in your `config.yaml` is a reference to the key in the secret manager.
+</Warning>
 
-Add secrets with **placeholder** values in `config.yaml`:
+Specify the reference to the secret in `config.yaml`:
 
-```yaml  theme={"system"}
+```yaml config.yaml theme={"system"}
 secrets:
   hf_access_token: null
 ```
 
-<Warning>Never store actual secret values in `config.yaml`. Store secrets in the [workspace settings](https://app.baseten.co/settings/secrets).</Warning>
+Secrets are passed as keyword arguments to the `Model` class. To access them, store the secrets in `__init__`:
 
-## 2. Access Secrets in `model.py`
-
-Secrets are passed as **keyword arguments** to the `Model` class:
-
-```python  theme={"system"}
+```python main.py theme={"system"}
 def __init__(self, **kwargs):
     self._secrets = kwargs["secrets"]
 ```
 
-Use secrets inside load or predict:
+Then use the secret in `load` or `predict` section of your model by accessing the secret using the key:
 
-```python  theme={"system"}
+```python main.py theme={"system"}
 def load(self):
     self._model = pipeline(
         "fill-mask",
@@ -55,11 +73,35 @@ def load(self):
     )
 ```
 
-## 3. Store Secrets on Your Remote
+## Use secrets in custom Docker images
 
-* On **Baseten**, add secrets in the [workspace settings](https://app.baseten.co/settings/secrets).
-* Use the **exact name** from `config.yaml` (case-sensitive).
+When using [custom Docker images](/development/model/custom-server), Truss
+injects secrets into your container at `/secrets/{secret_name}` instead of
+passing them through `kwargs`.
 
-## 4. Deploying with Secrets
+You must specify the reference to the secret and then access it in your `start_command` or application code.
 
-By default, models have access to any secrets on a workspace.
+Specify the reference to the secret in `config.yaml`:
+
+```yaml config.yaml theme={"system"}
+secrets:
+  hf_access_token: null
+```
+
+### Read secrets in your `start_command`
+
+To read a secret in your `start_command`:
+
+```yaml config.yaml theme={"system"}
+docker_server:
+  start_command: sh -c "HF_TOKEN=$(cat /secrets/hf_access_token) my-server --port 8000"
+```
+
+### Read secrets in application code
+
+To read a secret in application code:
+
+```python main.py theme={"system"}
+with open("/secrets/hf_access_token", "r") as f:
+    hf_token = f.read().strip()
+```

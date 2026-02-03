@@ -1,8 +1,13 @@
 # Source: https://rspack.dev/config/watch.md
 
-import WebpackLicense from '@components/WebpackLicense';
+CC 4.0 License> The content of this section is derived from the content of the following links and is subject to the CC BY 4.0 license.
+> 
+> - [https://webpack.js.org/configuration/watch](https://webpack.js.org/configuration/watch)
+> 
+> The following contents can be assumed to be the result of modifications and deletions based on the original contents if not specifically stated.
+> 
+> 
 
-<WebpackLicense from="https://webpack.js.org/configuration/watch" />
 
 # Watch
 
@@ -10,8 +15,8 @@ Rspack can watch files and recompile whenever they change.
 
 ## watch
 
-* **Type:** `boolean`
-* **Default:** `false`
+- **Type:** `boolean`
+- **Default:** `false`
 
 Turn on watch mode. This means that after the initial build, Rspack will continue to watch for changes in any of the resolved files.
 
@@ -27,7 +32,7 @@ export default {
 
 ## watchOptions
 
-* **Type:** `object`
+- **Type:** `object`
 
 A set of options used to customize watch mode.
 
@@ -42,8 +47,8 @@ export default {
 
 ### watchOptions.aggregateTimeout
 
-* **Type:** `number`
-* **Default:** `5`
+- **Type:** `number`
+- **Default:** `5`
 
 Add a delay before rebuilding once the first file changed. This allows Rspack to aggregate any other changes made during this time period into one rebuild. Pass a value in milliseconds:
 
@@ -58,8 +63,8 @@ export default {
 
 ### watchOptions.ignored
 
-* **Type:** `RegExp | string | string[]`
-* **Default:** `/[\\/](?:\.git|node_modules)[\\/]/`
+- **Type:** `RegExp | string | string[]`
+- **Default:** `/[\\/](?:\.git|node_modules)[\\/]/`
 
 The path that matches is excluded while watching. Watching many files can result in a lot of CPU or memory usage.
 
@@ -115,8 +120,8 @@ When using glob patterns, Rspack convert them to regular expressions with [glob-
 
 ### watchOptions.poll
 
-* **Type:** `boolean`, `number`
-* **Default:** `false`
+- **Type:** `boolean`, `number`
+- **Default:** `false`
 
 Whether to watch by polling.
 
@@ -144,8 +149,8 @@ export default {
 
 ### watchOptions.followSymlinks
 
-* **Type:** `boolean`
-* **Default:** `false`
+- **Type:** `boolean`
+- **Default:** `false`
 
 Follow symbolic links while looking for a file. This is usually not needed as Rspack already resolves symlinks with [resolve.symlinks](/config/resolve.md#resolvesymlinks).
 
@@ -160,7 +165,7 @@ export default {
 
 ### watchOptions.stdin
 
-* **Type:** `boolean`
+- **Type:** `boolean`
 
 Stop watching when stdin stream has ended.
 

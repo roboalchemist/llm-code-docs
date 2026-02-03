@@ -8,7 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > Account Management > Account Management Guides > Manage Datadog with
   Terraform
-source_url: https://docs.datadoghq.com/guide/manage-datadog-with-terraform/index.html
 ---
 
 # Manage Datadog with Terraform

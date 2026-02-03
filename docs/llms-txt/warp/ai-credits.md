@@ -1,4 +1,4 @@
-# Source: https://docs.warp.dev/support-and-billing/plans-and-pricing/ai-credits.md
+# Source: https://docs.warp.dev/support-and-community/plans-and-billing/ai-credits.md
 
 # AI Credits
 
@@ -11,7 +11,7 @@ This interaction consumes **at least one AI credit**, though more complex intera
 Because of these factors and the nature of LLMs, AI credit usage is **non-deterministic** -- two similar prompts can still use a different number of credits.
 
 {% hint style="info" %}
-For a general breakdown of what factors contribute to how many AI credits are consumed, please refer to: [#how-are-warp-ai-credits-calculated](#how-are-warp-ai-credits-calculated "mention")
+For a general breakdown of what factors contribute to how many AI credits are consumed, please refer to: [How are Warp AI credits calculated?](#how-are-warp-ai-credits-calculated)
 {% endhint %}
 
 Since there's no exact formula for predicting usage, we recommend building an intuitive understanding by experimenting with different prompts, models, and tracking how many credits they consume.
@@ -20,7 +20,7 @@ Since there's no exact formula for predicting usage, we recommend building an in
 
 In an Agent conversation, a **turn** represents a single exchange (a response from the LLM). To see how many credits a turn consumed, hover over the **credit count chip** at the bottom of the Agent's response:
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-380fc3f7a723b1c3ef51b34f12be275013d3a75e%2Finline-credit-usage-footer.png?alt=media" alt=""><figcaption><p>The conversation AI usage footer shows how many credits a conversation has consumed, and breaks down the usage by credits, tool calls, context window, files changed, diffs applied, and more.</p></figcaption></figure>
+<figure><img src="https://2974137108-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FD4dBaHbuMVNs0iB2iqZ1%2Fuploads%2Fgit-blob-380fc3f7a723b1c3ef51b34f12be275013d3a75e%2Finline-credit-usage-footer.png?alt=media" alt=""><figcaption><p>The conversation AI usage footer shows how many credits a conversation has consumed, and breaks down the usage by credits, tool calls, context window, files changed, diffs applied, and more.</p></figcaption></figure>
 
 {% hint style="info" %}
 You can view your total AI credit usage, along with other billing details, in `Settings > Billing and usage`.
@@ -29,14 +29,14 @@ You can view your total AI credit usage, along with other billing details, in `S
 #### Credit **limits and billing**
 
 * **Seat-level allocation**: on team plans, credit limits apply per seat — each team member has their own allowance.
-* **Hitting the credit limits**: Once you hit your monthly credit limit, your access will depend on your plan. On the Free plan, AI access stops until your next billing cycle. On paid plans with Add-on credits, you can continue using AI with [**usage-based billing**](https://docs.warp.dev/support-and-billing/plans-and-pricing/add-on-credits), charged per extra credit.
+* **Hitting the credit limits**: Once you hit your monthly credit limit, your access will depend on your plan. On the Free plan, AI access stops until your next billing cycle. On paid plans with Add-on credits, you can continue using AI with [**usage-based billing**](https://docs.warp.dev/support-and-community/plans-and-billing/add-on-credits), charged per extra credit.
 
 #### **Other features that use AI** credit**s**
 
 In addition to direct Agent conversations, the following features also consume AI credits:
 
-* [Generate](https://docs.warp.dev/agents/generate) helps you look up commands and suggestions as you type. As you refine your input, multiple credits may be used before you select a final suggestion.
-* [AI Autofill in Workflows](https://docs.warp.dev/knowledge-and-collaboration/warp-drive/workflows#ai-autofill) count as a credit each time it is run.
+* [Generate](https://docs.warp.dev/agent-platform/agent/generate) helps you look up commands and suggestions as you type. As you refine your input, multiple credits may be used before you select a final suggestion.
+* [AI Autofill in Workflows](https://docs.warp.dev/warp/knowledge-and-collaboration/warp-drive/workflows#ai-autofill) count as a credit each time it is run.
 
 {% hint style="success" %}
 Regular shell commands in Warp do not consume or count towards AI credits.
@@ -82,7 +82,7 @@ Some tasks are straightforward and may require only a single quick response, wit
 
 #### 4. Amount of context passed to the model
 
-Prompts that include large amounts of context (such as [attached blocks](https://docs.warp.dev/agents/using-agents/agent-context#attaching-blocks-as-context), long user query messages, etc.) or file attachments like [images](https://docs.warp.dev/agents/using-agents/agent-context#attaching-images-as-context) may also increase the number of credits used due to increased token consumption.
+Prompts that include large amounts of context (such as [attached blocks](https://docs.warp.dev/agent-platform/agent/using-agents/agent-context/#attaching-blocks-as-context), long user query messages, etc.) or file attachments like [images](https://docs.warp.dev/agent-platform/agent/using-agents/agent-context/#attaching-images-as-context) may also increase the number of credits used due to increased token consumption.
 
 {% hint style="info" %}
 **Tip**: When sharing logs, code, or other large pieces of content, attach only the most relevant portions instead of full outputs.

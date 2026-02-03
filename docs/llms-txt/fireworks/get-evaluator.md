@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/api-reference/get-evaluator.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Evaluator
 
 > Retrieves an evaluator by name. Use this to monitor build progress after
@@ -19,7 +23,7 @@ Possible states:
 openapi: 3.1.0
 info:
   title: Gateway REST API
-  version: 4.15.25
+  version: 4.21.6
 servers:
   - url: https://api.fireworks.ai
 security:
@@ -103,6 +107,16 @@ components:
         state:
           $ref: '#/components/schemas/gatewayEvaluatorState'
           readOnly: true
+        criteria:
+          type: array
+          items:
+            $ref: '#/components/schemas/gatewayCriterion'
+            type: object
+          title: >-
+            Criteria for the evaluator, it should produce a score for the metric
+            (name of criteria)
+
+            Used for eval3 with UI upload path
         requirements:
           type: string
           title: Content for the requirements.txt for package installation
@@ -137,6 +151,18 @@ components:
         - ACTIVE: The evaluator is ready to use for evaluation
          - BUILDING: The evaluator is being built, i.e. building the e2b template
          - BUILD_FAILED: The evaluator build failed, and it cannot be used for evaluation
+    gatewayCriterion:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/gatewayCriterionType'
+        name:
+          type: string
+        description:
+          type: string
+        codeSnippets:
+          $ref: '#/components/schemas/gatewayCodeSnippets'
+          title: Criteria for code snippet
     gatewayStatus:
       type: object
       properties:
@@ -160,6 +186,27 @@ components:
           description: >-
             Normalized GitHub repository name (e.g. owner/repository) when the
             source is GitHub.
+    gatewayCriterionType:
+      type: string
+      enum:
+        - TYPE_UNSPECIFIED
+        - CODE_SNIPPETS
+      default: TYPE_UNSPECIFIED
+      title: '- CODE_SNIPPETS: Code snippets for Sandbox based evaluation'
+    gatewayCodeSnippets:
+      type: object
+      properties:
+        language:
+          type: string
+        fileContents:
+          type: object
+          additionalProperties:
+            type: string
+          title: File name to code snippet, default is main.py
+        entryFile:
+          type: string
+        entryFunc:
+          type: string
     gatewayCode:
       type: string
       enum:
@@ -327,7 +374,3 @@ components:
       bearerFormat: API_KEY
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.fireworks.ai/llms.txt

@@ -389,7 +389,7 @@ Our Wall of Love
 
 [@morganlinton](https://x.com/morganlinton/status/1839454165703204955)
 
-If you're coding with AI, and haven't discovered @firecrawl\_dev yet, prepare to have your mind blown 🤯
+If you're coding with AI, and haven't discovered @firecrawl yet, prepare to have your mind blown 🤯
 
 ![Chris DeWeese](https://www.firecrawl.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftestimonial-09.a66dcc26.jpg&w=96&q=75)
 
@@ -397,7 +397,7 @@ If you're coding with AI, and haven't discovered @firecrawl\_dev yet, prepare to
 
 [@ChrisDevApps](https://x.com/ChrisDevApps/status/1853587120406876601)
 
-Started using @firecrawl\_dev for a project, I wish I used this sooner.
+Started using @firecrawl for a project, I wish I used this sooner.
 
 ![Bardia Pourvakil](https://www.firecrawl.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftestimonial-01.025350bc.jpeg&w=96&q=75)
 
@@ -413,7 +413,7 @@ The Firecrawl team ships. I wanted types for their node SDK, and less than an ho
 
 [@TomReppelin](https://x.com/TomReppelin/status/1844382491014201613)
 
-I found gold today. Thank you @firecrawl\_dev
+I found gold today. Thank you @firecrawl
 
 ![latentsauce 🧘🏽](https://www.firecrawl.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftestimonial-07.c2285d35.jpeg&w=96&q=75)
 
@@ -429,7 +429,7 @@ Firecrawl simplifies data preparation significantly, exactly what I was hoping f
 
 [@morganlinton](https://x.com/morganlinton/status/1839454165703204955)
 
-If you're coding with AI, and haven't discovered @firecrawl\_dev yet, prepare to have your mind blown 🤯
+If you're coding with AI, and haven't discovered @firecrawl yet, prepare to have your mind blown 🤯
 
 ![Chris DeWeese](https://www.firecrawl.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftestimonial-09.a66dcc26.jpg&w=96&q=75)
 
@@ -437,7 +437,7 @@ If you're coding with AI, and haven't discovered @firecrawl\_dev yet, prepare to
 
 [@ChrisDevApps](https://x.com/ChrisDevApps/status/1853587120406876601)
 
-Started using @firecrawl\_dev for a project, I wish I used this sooner.
+Started using @firecrawl for a project, I wish I used this sooner.
 
 ![Bardia Pourvakil](https://www.firecrawl.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftestimonial-01.025350bc.jpeg&w=96&q=75)
 
@@ -453,7 +453,7 @@ The Firecrawl team ships. I wanted types for their node SDK, and less than an ho
 
 [@TomReppelin](https://x.com/TomReppelin/status/1844382491014201613)
 
-I found gold today. Thank you @firecrawl\_dev
+I found gold today. Thank you @firecrawl
 
 ![latentsauce 🧘🏽](https://www.firecrawl.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftestimonial-07.c2285d35.jpeg&w=96&q=75)
 
@@ -560,7 +560,6 @@ Subscribe$190/yr
 - Scrape 3,000 pages\*
 - 20 /scrape per min
 - 3 /crawl per min
-- 1 seat
 
 ## StandardMost Popular
 
@@ -575,7 +574,6 @@ Subscribe$990/yr
 - Scrape 100,000 pages\*
 - 100 /scrape per min
 - 10 /crawl per min
-- 3 seats
 - Standard Support
 
 ## Growth
@@ -591,7 +589,6 @@ Subscribe$3990/yr
 - Scrape 500,000 pages\*
 - 1000 /scrape per min
 - 50 /crawl per min
-- 5 seats
 - Priority Support
 
 ## Add-ons
@@ -613,7 +610,7 @@ Talk to us
 - Bulk discounts
 - Top priority support
 - Custom concurrency limits
-- Improved Stealth Proxies
+- Improved Enhanced Proxies
 - SLAs
 - Advanced Security & Controls
 
@@ -740,7 +737,6 @@ Subscribe$190/yr
 - Scrape 3,000 pages\*
 - 20 /scrape per min
 - 3 /crawl per min
-- 1 seat
 
 ## StandardMost Popular
 
@@ -755,7 +751,6 @@ Subscribe$990/yr
 - Scrape 100,000 pages\*
 - 100 /scrape per min
 - 10 /crawl per min
-- 3 seats
 - Standard Support
 
 ## Growth
@@ -771,7 +766,6 @@ Subscribe$3990/yr
 - Scrape 500,000 pages\*
 - 1000 /scrape per min
 - 50 /crawl per min
-- 5 seats
 - Priority Support
 
 ## Add-ons
@@ -793,7 +787,7 @@ Talk to us
 - Bulk discounts
 - Top priority support
 - Custom concurrency limits
-- Improved Stealth Proxies
+- Improved Enhanced Proxies
 - SLAs
 - Advanced Security & Controls
 
@@ -824,7 +818,7 @@ Our Wall of Love
 
 [@morganlinton](https://x.com/morganlinton/status/1839454165703204955)
 
-If you're coding with AI, and haven't discovered @firecrawl\_dev yet, prepare to have your mind blown 🤯
+If you're coding with AI, and haven't discovered @firecrawl yet, prepare to have your mind blown 🤯
 
 ![Chris DeWeese](https://www.firecrawl.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftestimonial-09.a66dcc26.jpg&w=96&q=75)
 
@@ -832,7 +826,7 @@ If you're coding with AI, and haven't discovered @firecrawl\_dev yet, prepare to
 
 [@ChrisDevApps](https://x.com/ChrisDevApps/status/1853587120406876601)
 
-Started using @firecrawl\_dev for a project, I wish I used this sooner.
+Started using @firecrawl for a project, I wish I used this sooner.
 
 ![Bardia Pourvakil](https://www.firecrawl.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftestimonial-01.025350bc.jpeg&w=96&q=75)
 
@@ -848,7 +842,7 @@ The Firecrawl team ships. I wanted types for their node SDK, and less than an ho
 
 [@TomReppelin](https://x.com/TomReppelin/status/1844382491014201613)
 
-I found gold today. Thank you @firecrawl\_dev
+I found gold today. Thank you @firecrawl
 
 ![latentsauce 🧘🏽](https://www.firecrawl.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftestimonial-07.c2285d35.jpeg&w=96&q=75)
 
@@ -864,7 +858,7 @@ Firecrawl simplifies data preparation significantly, exactly what I was hoping f
 
 [@morganlinton](https://x.com/morganlinton/status/1839454165703204955)
 
-If you're coding with AI, and haven't discovered @firecrawl\_dev yet, prepare to have your mind blown 🤯
+If you're coding with AI, and haven't discovered @firecrawl yet, prepare to have your mind blown 🤯
 
 ![Chris DeWeese](https://www.firecrawl.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftestimonial-09.a66dcc26.jpg&w=96&q=75)
 
@@ -872,7 +866,7 @@ If you're coding with AI, and haven't discovered @firecrawl\_dev yet, prepare to
 
 [@ChrisDevApps](https://x.com/ChrisDevApps/status/1853587120406876601)
 
-Started using @firecrawl\_dev for a project, I wish I used this sooner.
+Started using @firecrawl for a project, I wish I used this sooner.
 
 ![Bardia Pourvakil](https://www.firecrawl.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftestimonial-01.025350bc.jpeg&w=96&q=75)
 
@@ -888,7 +882,7 @@ The Firecrawl team ships. I wanted types for their node SDK, and less than an ho
 
 [@TomReppelin](https://x.com/TomReppelin/status/1844382491014201613)
 
-I found gold today. Thank you @firecrawl\_dev
+I found gold today. Thank you @firecrawl
 
 ![latentsauce 🧘🏽](https://www.firecrawl.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftestimonial-07.c2285d35.jpeg&w=96&q=75)
 
@@ -1427,7 +1421,7 @@ Introducing /extract - Get web data with a prompt [Try now](https://www.firecraw
 
 ### New Features & Additions
 
-- **Proxy & Stealth Options:** Introduced a proxy option and stealthProxy flag (#1196)
+- **Proxy & Enhanced Options:** Introduced a proxy option and stealthProxy flag (#1196)
 - **Deep Research (Alpha):** Launched an alpha implementation of deep research (#1202)
 - **LLM Text Generator:** Added a new endpoint for llms.txt generation (#1201)
 
@@ -2642,12 +2636,12 @@ Oct 28 to Nov 3
 
 Follow us on your favorite platform to hear about every newFirecrawllaunch during the week!
 
-[X](https://x.com/firecrawl_dev)
+[X](https://x.com/firecrawl)
 
 [LinkedIn](https://www.linkedin.com/company/firecrawl)
 
 [GitHub](https://github.com/firecrawl/firecrawl) [X\\
-X](https://x.com/firecrawl_dev) [LinkedIn\\
+X](https://x.com/firecrawl) [LinkedIn\\
 LinkedIn](https://www.linkedin.com/company/firecrawl)
 
 [![Launch Week II Recap](https://www.firecrawl.dev/images/blog/launch-week-ii-recap.jpg)\\
@@ -2820,7 +2814,7 @@ Join the waitlist for beta access.
 
 Join the waitlist
 
-[X](https://x.com/firecrawl_dev)
+[X](https://x.com/firecrawl)
 
 [LinkedIn](https://www.linkedin.com/company/sideguide-dev)
 
@@ -3567,7 +3561,7 @@ Our Wall of Love
 
 [@morganlinton](https://x.com/morganlinton/status/1839454165703204955)
 
-If you're coding with AI, and haven't discovered @firecrawl\_dev yet, prepare to have your mind blown 🤯
+If you're coding with AI, and haven't discovered @firecrawl yet, prepare to have your mind blown 🤯
 
 ![Chris DeWeese](https://www.firecrawl.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftestimonial-09.a66dcc26.jpg&w=96&q=75)
 
@@ -3575,7 +3569,7 @@ If you're coding with AI, and haven't discovered @firecrawl\_dev yet, prepare to
 
 [@ChrisDevApps](https://x.com/ChrisDevApps/status/1853587120406876601)
 
-Started using @firecrawl\_dev for a project, I wish I used this sooner.
+Started using @firecrawl for a project, I wish I used this sooner.
 
 ![Bardia Pourvakil](https://www.firecrawl.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftestimonial-01.025350bc.jpeg&w=96&q=75)
 
@@ -3591,7 +3585,7 @@ The Firecrawl team ships. I wanted types for their node SDK, and less than an ho
 
 [@TomReppelin](https://x.com/TomReppelin/status/1844382491014201613)
 
-I found gold today. Thank you @firecrawl\_dev
+I found gold today. Thank you @firecrawl
 
 ![latentsauce 🧘🏽](https://www.firecrawl.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftestimonial-07.c2285d35.jpeg&w=96&q=75)
 
@@ -3607,7 +3601,7 @@ Firecrawl simplifies data preparation significantly, exactly what I was hoping f
 
 [@morganlinton](https://x.com/morganlinton/status/1839454165703204955)
 
-If you're coding with AI, and haven't discovered @firecrawl\_dev yet, prepare to have your mind blown 🤯
+If you're coding with AI, and haven't discovered @firecrawl yet, prepare to have your mind blown 🤯
 
 ![Chris DeWeese](https://www.firecrawl.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftestimonial-09.a66dcc26.jpg&w=96&q=75)
 
@@ -3615,7 +3609,7 @@ If you're coding with AI, and haven't discovered @firecrawl\_dev yet, prepare to
 
 [@ChrisDevApps](https://x.com/ChrisDevApps/status/1853587120406876601)
 
-Started using @firecrawl\_dev for a project, I wish I used this sooner.
+Started using @firecrawl for a project, I wish I used this sooner.
 
 ![Bardia Pourvakil](https://www.firecrawl.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftestimonial-01.025350bc.jpeg&w=96&q=75)
 
@@ -3631,7 +3625,7 @@ The Firecrawl team ships. I wanted types for their node SDK, and less than an ho
 
 [@TomReppelin](https://x.com/TomReppelin/status/1844382491014201613)
 
-I found gold today. Thank you @firecrawl\_dev
+I found gold today. Thank you @firecrawl
 
 ![latentsauce 🧘🏽](https://www.firecrawl.dev/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Ftestimonial-07.c2285d35.jpeg&w=96&q=75)
 
@@ -3755,7 +3749,7 @@ Join the waitlist for beta access.
 
 Join the waitlist
 
-[X](https://x.com/firecrawl_dev)
+[X](https://x.com/firecrawl)
 
 [LinkedIn](https://www.linkedin.com/company/sideguide-dev)
 
@@ -4126,7 +4120,7 @@ Look for even more speed and reliability improvements coming soon!
 
 ### New Templates & Community Creations
 
-Not only did we release some examples and templates this month, but we also witnessed incredible creations from our community. If you’re working on an interesting Firecrawl project, we’d love to hear about it! Give us a shout at [@firecrawl\_dev](https://x.com/firecrawl_dev). Here are a few highlights:
+Not only did we release some examples and templates this month, but we also witnessed incredible creations from our community. If you’re working on an interesting Firecrawl project, we’d love to hear about it! Give us a shout at [@firecrawl](https://x.com/firecrawl). Here are a few highlights:
 
 - Firecrawl Web Data Ingestion UI Template [(Link to repo)](https://github.com/firecrawl/firecrawl/tree/main/apps/ui/ingestion-ui)
 - Generative UI with demo Firecrawl x Langchain by Brace Sproul from Langchain [(Link to repo)](https://github.com/bracesproul/gen-ui)

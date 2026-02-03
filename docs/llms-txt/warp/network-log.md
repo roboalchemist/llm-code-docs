@@ -1,4 +1,4 @@
-# Source: https://docs.warp.dev/privacy/network-log.md
+# Source: https://docs.warp.dev/support-and-community/privacy-and-security/network-log.md
 
 # Network Log
 

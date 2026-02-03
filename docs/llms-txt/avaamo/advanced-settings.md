@@ -4,12 +4,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/skills/prompt-skill/advanced-settings.md
 
-# Source: https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/build-skill-responses/advanced-settings.md
-
-# Source: https://docs.avaamo.com/user-guide/llamb/get-started/step-2-ingest-enterprise-content/advanced-settings.md
-
-# Source: https://docs.avaamo.com/user-guide/skills/prompt-skill/advanced-settings.md
-
 # Advanced Settings
 
 The **Advanced Settings** section lets you configure and fine-tune your agent's behavior, ensuring optimal performance during customer interactions. This includes selecting the AI model, defining a voice persona, adding custom parameters, and adding ASR Entities.

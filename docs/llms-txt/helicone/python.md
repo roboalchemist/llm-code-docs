@@ -20,71 +20,9 @@
 
 # Source: https://docs.helicone.ai/integrations/anthropic/python.md
 
-# Source: https://docs.helicone.ai/integrations/xai/python.md
-
-# Source: https://docs.helicone.ai/integrations/openai/python.md
-
-# Source: https://docs.helicone.ai/integrations/nvidia/python.md
-
-# Source: https://docs.helicone.ai/integrations/llama/python.md
-
-# Source: https://docs.helicone.ai/integrations/instructor/python.md
-
-# Source: https://docs.helicone.ai/integrations/groq/python.md
-
-# Source: https://docs.helicone.ai/integrations/gemini/vertex/python.md
-
-# Source: https://docs.helicone.ai/integrations/gemini/api/python.md
-
-# Source: https://docs.helicone.ai/integrations/bedrock/python.md
-
-# Source: https://docs.helicone.ai/integrations/azure/python.md
-
-# Source: https://docs.helicone.ai/integrations/anthropic/python.md
-
-# Source: https://docs.helicone.ai/integrations/xai/python.md
-
-# Source: https://docs.helicone.ai/integrations/openai/python.md
-
-# Source: https://docs.helicone.ai/integrations/nvidia/python.md
-
-# Source: https://docs.helicone.ai/integrations/llama/python.md
-
-# Source: https://docs.helicone.ai/integrations/instructor/python.md
-
-# Source: https://docs.helicone.ai/integrations/groq/python.md
-
-# Source: https://docs.helicone.ai/integrations/gemini/vertex/python.md
-
-# Source: https://docs.helicone.ai/integrations/gemini/api/python.md
-
-# Source: https://docs.helicone.ai/integrations/bedrock/python.md
-
-# Source: https://docs.helicone.ai/integrations/azure/python.md
-
-# Source: https://docs.helicone.ai/integrations/anthropic/python.md
-
-# Source: https://docs.helicone.ai/integrations/xai/python.md
-
-# Source: https://docs.helicone.ai/integrations/openai/python.md
-
-# Source: https://docs.helicone.ai/integrations/nvidia/python.md
-
-# Source: https://docs.helicone.ai/integrations/llama/python.md
-
-# Source: https://docs.helicone.ai/integrations/instructor/python.md
-
-# Source: https://docs.helicone.ai/integrations/groq/python.md
-
-# Source: https://docs.helicone.ai/integrations/gemini/vertex/python.md
-
-# Source: https://docs.helicone.ai/integrations/gemini/api/python.md
-
-# Source: https://docs.helicone.ai/integrations/bedrock/python.md
-
-# Source: https://docs.helicone.ai/integrations/azure/python.md
-
-# Source: https://docs.helicone.ai/integrations/anthropic/python.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Anthropic Python SDK Integration
 

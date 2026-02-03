@@ -769,7 +769,7 @@ If you need to roll back to a previous version of the application package this c
 
 Also see [rollback](/en/applications/deployment.html#rollback).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

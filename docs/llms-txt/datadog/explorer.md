@@ -1,3 +1,7 @@
+# Source: https://docs.datadoghq.com/events/explorer.md
+
+# Source: https://docs.datadoghq.com/error_tracking/explorer.md
+
 # Source: https://docs.datadoghq.com/continuous_integration/explorer.md
 
 # Source: https://docs.datadoghq.com/continuous_delivery/explorer.md
@@ -10,7 +14,6 @@
 title: Error Tracking Explorer
 description: Learn about the Error Tracking Explorer.
 breadcrumbs: Docs > APM > Error Tracking for Backend Services > Error Tracking Explorer
-source_url: https://docs.datadoghq.com/error_tracking/explorer/index.html
 ---
 
 # Error Tracking Explorer

@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/integrations/platforms/aws/lambda.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AWS Lambda
 
 > How to use Infisical secrets in AWS Lambda
@@ -97,8 +101,3 @@ Verify the values in the Lambda console or by invoking the function.
   Parameter Store to keep your secrets continuously in sync and avoid manually
   updating the Lambda configuration.
 </Note>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://infisical.com/docs/llms.txt

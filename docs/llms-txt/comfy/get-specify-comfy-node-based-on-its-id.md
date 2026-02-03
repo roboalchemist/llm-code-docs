@@ -1,181 +1,126 @@
 # Source: https://docs.comfy.org/api-reference/registry/get-specify-comfy-node-based-on-its-id.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # get specify comfy-node based on its id
+
+
 
 ## OpenAPI
 
 ````yaml https://api.comfy.org/openapi get /nodes/{nodeId}/versions/{version}/comfy-nodes/{comfyNodeName}
+openapi: 3.0.2
+info:
+  title: Comfy API
+  version: '1.0'
+servers:
+  - url: https://api.comfy.org
+security: []
 paths:
-  path: /nodes/{nodeId}/versions/{version}/comfy-nodes/{comfyNodeName}
-  method: get
-  servers:
-    - url: https://api.comfy.org
-  request:
-    security: []
-    parameters:
-      path:
-        nodeId:
+  /nodes/{nodeId}/versions/{version}/comfy-nodes/{comfyNodeName}:
+    get:
+      tags:
+        - Registry
+      summary: get specify comfy-node based on its id
+      operationId: GetComfyNode
+      parameters:
+        - in: path
+          name: nodeId
+          required: true
           schema:
-            - type: string
-              required: true
-        version:
+            type: string
+        - in: path
+          name: version
+          required: true
           schema:
-            - type: string
-              required: true
-        comfyNodeName:
+            type: string
+        - in: path
+          name: comfyNodeName
+          required: true
           schema:
-            - type: string
-              required: true
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              category:
-                allOf:
-                  - description: >-
-                      UI category where the node is listed, used for grouping
-                      nodes.
-                    type: string
-              comfy_node_name:
-                allOf:
-                  - description: Unique identifier for the node
-                    type: string
-              deprecated:
-                allOf:
-                  - description: >-
-                      Indicates if the node is deprecated. Deprecated nodes are
-                      hidden in the UI.
-                    type: boolean
-              description:
-                allOf:
-                  - description: Brief description of the node's functionality or purpose.
-                    type: string
-              experimental:
-                allOf:
-                  - description: >-
-                      Indicates if the node is experimental, subject to changes
-                      or removal.
-                    type: boolean
-              function:
-                allOf:
-                  - description: Name of the entry-point function to execute the node.
-                    type: string
-              input_types:
-                allOf:
-                  - description: Defines input parameters
-                    type: string
-              output_is_list:
-                allOf:
-                  - description: Boolean values indicating if each output is a list.
-                    items:
-                      type: boolean
-                    type: array
-              policy:
-                allOf:
-                  - $ref: '#/components/schemas/ComfyNodePolicy'
-              return_names:
-                allOf:
-                  - description: Names of the outputs for clarity in workflows.
-                    type: string
-              return_types:
-                allOf:
-                  - description: Specifies the types of outputs produced by the node.
-                    type: string
-            refIdentifier: '#/components/schemas/ComfyNode'
-        examples:
-          example:
-            value:
-              category: <string>
-              comfy_node_name: <string>
-              deprecated: true
-              description: <string>
-              experimental: true
-              function: <string>
-              input_types: <string>
-              output_is_list:
-                - true
-              policy: ComfyNodePolicyActive
-              return_names: <string>
-              return_types: <string>
-        description: Comy Nodes created successfully
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Unauthorized
-        examples: {}
-        description: Unauthorized
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - &ref_0
-                    type: string
-              message:
-                allOf:
-                  - &ref_1
-                    type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: &ref_2
-              - error
-              - message
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Forbidden
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-              message:
-                allOf:
-                  - *ref_1
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Version not found
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-              message:
-                allOf:
-                  - *ref_1
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Internal server error
-  deprecated: false
-  type: path
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ComfyNode'
+          description: Comy Nodes created successfully
+        '401':
+          description: Unauthorized
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Version not found
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
 components:
   schemas:
+    ComfyNode:
+      properties:
+        category:
+          description: UI category where the node is listed, used for grouping nodes.
+          type: string
+        comfy_node_name:
+          description: Unique identifier for the node
+          type: string
+        deprecated:
+          description: >-
+            Indicates if the node is deprecated. Deprecated nodes are hidden in
+            the UI.
+          type: boolean
+        description:
+          description: Brief description of the node's functionality or purpose.
+          type: string
+        experimental:
+          description: >-
+            Indicates if the node is experimental, subject to changes or
+            removal.
+          type: boolean
+        function:
+          description: Name of the entry-point function to execute the node.
+          type: string
+        input_types:
+          description: Defines input parameters
+          type: string
+        output_is_list:
+          description: Boolean values indicating if each output is a list.
+          items:
+            type: boolean
+          type: array
+        policy:
+          $ref: '#/components/schemas/ComfyNodePolicy'
+        return_names:
+          description: Names of the outputs for clarity in workflows.
+          type: string
+        return_types:
+          description: Specifies the types of outputs produced by the node.
+          type: string
+      type: object
+    ErrorResponse:
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+      required:
+        - error
+        - message
+      type: object
     ComfyNodePolicy:
       enum:
         - ComfyNodePolicyActive

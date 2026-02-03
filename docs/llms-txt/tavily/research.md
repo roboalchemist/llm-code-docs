@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/documentation/api-reference/endpoint/research.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create Research Task
 
 > Tavily Research performs comprehensive research on a given topic by conducting multiple searches, analyzing sources, and generating a detailed research report.
@@ -304,7 +308,3 @@ components:
         is your Tavily API key (e.g., Bearer tvly-YOUR_API_KEY).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

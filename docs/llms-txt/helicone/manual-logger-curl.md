@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/getting-started/integration-method/manual-logger-curl.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Manual Logger - cURL
 
 > Integrate any custom LLM with Helicone using cURL. Step-by-step guide for direct API integration to connect your proprietary or open-source models.

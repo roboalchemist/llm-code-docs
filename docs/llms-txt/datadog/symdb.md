@@ -8,8 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > APM > Application Instrumentation > Dynamic Instrumentation >
   Autocomplete and Search
-source_url: >-
-  https://docs.datadoghq.com/trace_collection/dynamic_instrumentation/symdb/index.html
 ---
 
 # Autocomplete and Search

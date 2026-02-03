@@ -66,14 +66,14 @@ The Vespa platform is open source, and can be deployed in self-managed systems a
 
 Documents that describe functionality with such limited applicability are clearly marked by one or more of the following chips:
 
-| Vespa CloudThis content is applicable to Vespa Cloud deployments. | Only applicable with Vespa Cloud deployments. |
-| Self-managedThis content is applicable to self-managed Vespa systems. | Only applicable with self-managed deployments. |
+| Vespa CloudThis content is applicable to Vespa Cloud deployments. | Only applicable to Vespa Cloud deployments. |
+| Self-managedThis content is applicable to self-managed Vespa systems. | Only applicable to self-managed deployments. |
 | EnterpriseNot open source: This functionality is only available commercially. | Not open source: Available commercially only (both self-managed and on cloud unless also marked by one of the other chips above). |
 
   
   
 
-For clarity, any document _not_ marked with any of these chips describes functionality that is open source and available both on with Vespa Cloud and self-managed deployments.
+For clarity, any document _not_ marked with any of these chips describes functionality that is open source and available both on Vespa Cloud and self-managed deployments.
 
 ##### Contributing
 
@@ -107,7 +107,7 @@ Notes and other Important pieces of information are shown like:
 
  **Deprecated:** Deprecation warning here
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -374,7 +374,7 @@ In addition to the access log, one entry per connection is written to the connec
 | cipherSuite | string | Name of session cipher suite | no |
 | sniServerName | string | SNI server name | no |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -687,7 +687,7 @@ A cluster is typically sized to handle a given load. A given percentage of the c
 
  To configure what the minimal cluster size is, use [min-distributor-up-ratio](../../reference/applications/services/content.html#min-distributor-up-ratio) and [min-storage-up-ratio](../../reference/applications/services/content.html#min-storage-up-ratio). |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -725,7 +725,7 @@ $ export MAVEN_OPTS="-Xms128m -Xmx1024m"
 $ ./bootstrap.sh java && mvn install
 ```
 
-See [vespa.ai releases](https://vespa.ai/releases).
+See [vespa.ai releases](../../learn/releases.html).
 
 ##### Container images
 
@@ -754,7 +754,7 @@ $ dnf install -y vespa
 
 Package repository hosting is graciously provided by [Cloudsmith](https://cloudsmith.com) which is a fully hosted, cloud-native and universal package management solution:[![OSS hosting by Cloudsmith](https://img.shields.io/badge/OSS%20hosting%20by-cloudsmith-blue?logo=cloudsmith&style=flat-square)](https://cloudsmith.com)
 
- **Important:** Please note that the retention of released RPMs in the repository is limited to the latest 50 releases. Use the Docker images (above) for installations of specific versions older than this. Any problems with released rpm packages will be fixed in subsequent releases, please [report any issues](https://vespa.ai/support) - troubleshoot using the [install example](/en/operations/self-managed/multinode-systems.html#aws-ec2-singlenode).
+ **Important:** Please note that the retention of released RPMs in the repository is limited to the latest 50 releases. Use the Docker images (above) for installations of specific versions older than this. Any problems with released rpm packages will be fixed in subsequent releases, please [report any issues](https://vespa.ai/support/) - troubleshoot using the [install example](/en/operations/self-managed/multinode-systems.html#aws-ec2-singlenode).
 
 Refer to [vespa.spec](https://github.com/vespa-engine/vespa/blob/master/dist/vespa.spec). Build RPMs for a given Vespa version X.Y.Z:
 
@@ -766,18 +766,18 @@ $ docker run --rm -ti -v $(pwd):/wd:Z -w /wd \
          docker.io/vespaengine/vespa-build-almalinux-8:latest \
          make -f .copr/Makefile rpms outdir=/wd
 $ ls *.rpm | grep -v debug
-vespa-8.617.12-1.el8.src.rpm
-vespa-8.617.12-1.el8.x86_64.rpm
-vespa-ann-benchmark-8.617.12-1.el8.x86_64.rpm
-vespa-base-8.617.12-1.el8.x86_64.rpm
-vespa-base-libs-8.617.12-1.el8.x86_64.rpm
-vespa-clients-8.617.12-1.el8.x86_64.rpm
-vespa-config-model-fat-8.617.12-1.el8.x86_64.rpm
-vespa-jars-8.617.12-1.el8.x86_64.rpm
-vespa-libs-8.617.12.el8.x86_64.rpm
-vespa-malloc-8.617.12-1.el8.x86_64.rpm
-vespa-node-admin-8.617.12-1.el8.x86_64.rpm
-vespa-tools-8.617.12-1.el8.x86_64.rpm
+vespa-8.634.24-1.el8.src.rpm
+vespa-8.634.24-1.el8.x86_64.rpm
+vespa-ann-benchmark-8.634.24-1.el8.x86_64.rpm
+vespa-base-8.634.24-1.el8.x86_64.rpm
+vespa-base-libs-8.634.24-1.el8.x86_64.rpm
+vespa-clients-8.634.24-1.el8.x86_64.rpm
+vespa-config-model-fat-8.634.24-1.el8.x86_64.rpm
+vespa-jars-8.634.24-1.el8.x86_64.rpm
+vespa-libs-8.634.24.el8.x86_64.rpm
+vespa-malloc-8.634.24-1.el8.x86_64.rpm
+vespa-node-admin-8.634.24-1.el8.x86_64.rpm
+vespa-tools-8.634.24-1.el8.x86_64.rpm
 ```
 
 Find most utilities in the vespa-x.y.z\*.rpm - other RPMs:
@@ -799,7 +799,7 @@ Find most utilities in the vespa-x.y.z\*.rpm - other RPMs:
 | vespa-malloc | Vespa has its own memory allocator, _vespa-malloc_ - refer to _/opt/vespa/etc/vespamalloc.conf_ |
 | vespa-clients | _vespa-feed-client.jar_ - see [vespa-feed-client](../../clients/vespa-feed-client.html) |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -874,7 +874,7 @@ httpport 19110
 
  **Important:** Omitting `-i` will return the default configuration, meaning not generated for the active service instance.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -1012,7 +1012,7 @@ Example log:
 ...
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -1315,7 +1315,7 @@ Users have reported that "Copying the currentEpoch to acceptedEpoch fixed the pr
 
  |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -1438,7 +1438,7 @@ where the resulting RMIREGISTRY and JMX lines determine port1 and port2, respect
 
 The state of each container is available in JConsole by pressing the Threads tab and selecting the thread of interest in the threads list. Threads of interest includes _search_, _connector_, _closer_, _transport_ and _acceptor_ (the latter four are used for backend communications).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -1472,7 +1472,7 @@ On each of the nodes needing recovery:
   - Check if a node is up using [/state/v1/health](../../reference/api/state-v1.html#state-v1-health). 
   - Check the `vds.idealstate.merge_bucket.pending.average` metric on content nodes. When 0, all buckets are in sync - see [example](../metrics.html). 
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -1505,7 +1505,7 @@ $ docker run --detach --name vespa --hostname vespa-container \
   vespaengine/vespa-generic-intel-x86_64
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -1749,7 +1749,7 @@ docker.io/vespaengine/vespa latest 8cfb0da22c01 35 hours ago 1.2 GB
 
 If the application package depends on downloaded models, look for `RuntimeException: Not able to create config builder for payload` - [details](../../applications/components.html#component-load).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -1867,7 +1867,7 @@ An error message with "hostname detection failed" is emitted if the `VESPA_HOSTN
 | VESPA\_CONFIGPROXY\_JVMARGS | JVM arguments for the config proxy - see [tuning](../../performance/container-tuning.html#config-server-and-config-proxy). |
 | VESPA\_LOG\_LEVEL | Tuning of log output from tools, see [controlling log levels](../../reference/operations/log-files.html#controlling-log-levels). |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -1914,7 +1914,7 @@ $[vespa](../../clients/vespa-cli.html#deployment)prepare <app> && vespa activate
 ###### Troubleshooting
 See [config server troubleshooting](configuration-server.html#troubleshooting).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -2221,7 +2221,7 @@ Follow these steps to set up monitoring with Grafana for a Vespa instance. This 
 
 ##### Histograms
 
-Metric histograms is supported for [Gauge](https://javadoc.io/doc/com.yahoo.vespa/container-core/latest/com/yahoo/metrics/simple/Gauge.html) metrics. Create the metric like in [album-recommendation-java](https://github.com/vespa-engine/sample-apps/tree/master/album-recommendation-java), adding the histogram:
+Metric histograms is supported for [Gauge](https://javadoc.io/doc/com.yahoo.vespa/container-disc/latest/com/yahoo/metrics/simple/Gauge.html) metrics. Create the metric like in [album-recommendation-java](https://github.com/vespa-engine/sample-apps/tree/master/album-recommendation-java), adding the histogram:
 
 ```
 public HitCountSearcher(MetricReceiver receiver) {
@@ -2255,7 +2255,7 @@ The histograms for the last five minutes of logged data are available as CSV per
 #### end of metric totalhits_per_query, dimensions: { "chain": "metalchain" }
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -2364,7 +2364,7 @@ Can [AWS Auto Scaling](https://aws.amazon.com/autoscaling/) be used? Read the [a
 ```
 $ SSH_AUTH_SOCK=/dev/null ssh -i mykeypair.pem centos@ec2-3-231-33-190.compute-1.amazonaws.com
 ```
-- On each of the 10 hosts, install Vespa using the [installaton procedure](build-install.html#rpms): 
+- On each of the 10 hosts, install Vespa using the [installation procedure](build-install.html#rpms): 
 ```
 $ sudo dnf config-manager \
   --add-repo https://raw.githubusercontent.com/vespa-engine/vespa/master/dist/vespa-engine.repo
@@ -2761,7 +2761,7 @@ Observe that both clusters use `node1`. This is a non-recommended configuration,
 
 ##### Autoscaling
 
-A common question is, _"Can [AWS Auto Scaling](https://aws.amazon.com/autoscaling/) be used?"_ That is a difficult question to answer, here is a transcript from the [Vespa Slack](http://slack.vespa.ai):
+A common question is, _"Can [AWS Auto Scaling](https://aws.amazon.com/autoscaling/) be used?"_ That is a difficult question to answer, here is a transcript from the [Vespa Slack](https://slack.vespa.ai):
 
 > I have a question about deployment. I set up cluster on two AWS auto-scaling groups (config & services) based on [multinode-systems.html#aws-ec2](#aws-ec2). But if one of instances was replaced by auto-scaling group, I need manually update hosts.xml file, zip it and deploy new version of the app. I'm thinking about automation of this process by Cloudwatch & Lambda... I wonder if there is some node-discovery mechanism which can e.g. check instances tags and update hosts config based on it?
 
@@ -2775,14 +2775,14 @@ Nothing of this is impossible, and it is actually implemented at [cloud.vespa.ai
 
 So, my recommendation is starting with a static set of hosts, like in [multinode-HA](https://github.com/vespa-engine/sample-apps/tree/master/examples/operations/multinode-HA) - and in parallel try out [cloud.vespa.ai/en/free-trial](https://cloud.vespa.ai/en/free-trial) with autoscaling experiments using your data and use cases.
 
-Autoscaling can save money, but before going there, it is wise to read anout [performance](/en/performance) and optimize resources using a static node set (or use the sizing suggestions from the Vespa Cloud Console). I.e., get the node resources right first, then consider if autoscaling node count for your load patterns makes sense.
+Autoscaling can save money, but before going there, it is wise to read about [performance](/en/performance/) and optimize resources using a static node set (or use the sizing suggestions from the Vespa Cloud Console). I.e., get the node resources right first, then consider if autoscaling node count for your load patterns makes sense.
 
 ##### Next steps
 
 - [Multinode-HA](https://github.com/vespa-engine/sample-apps/tree/master/examples/operations/multinode-HA) is a high-availability multi-node template - use this as a basis for the final configuration.
 - The [multinode](https://github.com/vespa-engine/sample-apps/tree/master/examples/operations/multinode) sample application is a useful for experimenting with node state transitions. 
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -2866,7 +2866,7 @@ $ echo "override VESPA_HOSTNAME localhost" >> $VESPA_HOME/conf/vespa/default-env
 
 Running Java unit tests won't pick up settings in `default-env.txt` and will default to "localhost" if `VESPA_HOSTNAME` isn't set in the environment.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -2941,7 +2941,7 @@ $ docker exec vespa vespa-proton-cmd --local triggerFlush
 $ docker exec vespa find /opt/vespa/var/db/vespa/search/cluster.music/n0/documents/music/0.ready
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -2967,7 +2967,7 @@ $ ps ax | grep vespa-slobrok
 ```
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -3012,7 +3012,15 @@ This section describes how to install and run Vespa on a single machine using Ku
 
 **Prerequisites:**
 
-- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with Podman or [Docker](https://docs.docker.com/engine/install/) installed. See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings. For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html)
+- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with [Podman Desktop](https://podman.io/) or [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed, with an engine running. 
+  - Alternatively, start the Podman daemon:
+```
+$ podman machine init --memory 6000
+$ podman machine start
+```
+  - See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings.
+
+- For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html).
 - Memory: Minimum 5 GB RAM dedicated to Docker/Podman. [Memory recommendations](/en/operations/self-managed/node-setup.html#memory-settings). 
 - Disk: Avoid `NO_SPACE` - the vespaengine/vespa container image + headroom for data requires disk space. [Read more](/en/writing/feed-block.html). 
 - [Homebrew](https://brew.sh/) to install the [Vespa CLI](/en/clients/vespa-cli.html), or download the Vespa CLI from [Github releases](https://github.com/vespa-engine/vespa/releases). 
@@ -3173,7 +3181,7 @@ At any point during the procedure, dump logs for troubleshooting:
 $ kubectl logs vespa-0
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -3247,7 +3255,7 @@ podman run --detach --name vespa --hostname vespa-container \
 ```
 8. All Nvidia GPUs on the host should now be available inside the container, with devices exposed at `/dev/nvidiaN`. See [stateless model evaluation](../../ranking/stateless-model-evaluation.html#onnx-inference-options) for how to configure the ONNX runtime to use a GPU for computation. Similar for embedding models using GPU, see [embedder onnx reference](../../reference/rag/embedding.html#embedder-onnx-reference-config). 
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -3527,7 +3535,7 @@ The profile in the shared-credentials file
 
  |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -3673,7 +3681,7 @@ An application can be given a user-defined version, available at[/ApplicationSta
 </services>
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -3798,7 +3806,7 @@ Deploying a change to an application package is generally safe to do at any time
 
 ###### Next: [Schemas](schemas.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -3827,7 +3835,7 @@ Vespa defined various component types (superclasses) for common tasks:
 | --- | --- |
 | Request handler | 
 
-[Request handlers](../../applications/request-handlers.html) allow applications to implement arbitrary HTTP APIs. A request handler accepts a request and returns a response. Custom request handlers are subclasses of [ThreadedHttpRequestHandler](https://javadoc.io/doc/com.yahoo.vespa/container-core/latest/com/yahoo/container/jdisc/ThreadedHttpRequestHandler.html).
+[Request handlers](../../applications/request-handlers.html) allow applications to implement arbitrary HTTP APIs. A request handler accepts a request and returns a response. Custom request handlers are subclasses of [ThreadedHttpRequestHandler](https://javadoc.io/doc/com.yahoo.vespa/container-disc/latest/com/yahoo/container/jdisc/ThreadedHttpRequestHandler.html).
 
  |
 | Processor | 
@@ -3837,7 +3845,7 @@ The [processing framework](../../applications/processing.html) can be used to cr
  |
 | Renderer | 
 
-Renderers convert a Response (or query Result) into a serialized form sent over the network. Renderers are subclasses of [com.yahoo.processing.rendering.Renderer](https://github.com/vespa-engine/vespa/blob/master/container-core/src/main/java/com/yahoo/processing/rendering/Renderer.java).
+Renderers convert a Response (or query Result) into a serialized form sent over the network. Renderers are subclasses of [com.yahoo.processing.rendering.Renderer](https://github.com/vespa-engine/vespa/blob/master/container-disc/src/main/java/com/yahoo/processing/rendering/Renderer.java).
 
  |
 | Searcher | 
@@ -3905,7 +3913,7 @@ These components are available from Vespa for [injection](../../applications/dep
 | [Executor](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/Executor.html) | Default threadpool for processing requests in threaded request handler |
 | [Linguistics](https://github.com/vespa-engine/vespa/blob/master/linguistics/src/main/java/com/yahoo/language/Linguistics.java) | Inject a Linguistics component like [SimpleLinguistics](https://github.com/vespa-engine/vespa/blob/master/linguistics/src/main/java/com/yahoo/language/simple/SimpleLinguistics.java) or provide a custom implementation - see [linguistics](../../linguistics/linguistics.html). |
 | [Metric](https://github.com/vespa-engine/vespa/blob/master/jdisc_core/src/main/java/com/yahoo/jdisc/Metric.java) | Jdisc core interface for metrics. Required by all subclasses of ThreadedRequestHandler. |
-| [MetricReceiver](https://github.com/vespa-engine/vespa/blob/master/container-core/src/main/java/com/yahoo/metrics/simple/MetricReceiver.java) | Use to emit metrics from a component. Find an example in the [metrics](../../operations/metrics.html#metrics-from-custom-components) guide. |
+| [MetricReceiver](https://github.com/vespa-engine/vespa/blob/master/container-disc/src/main/java/com/yahoo/metrics/simple/MetricReceiver.java) | Use to emit metrics from a component. Find an example in the [metrics](../../operations/metrics.html#metrics-from-custom-components) guide. |
 | [ModelsEvaluator](https://github.com/vespa-engine/vespa/blob/master/model-evaluation/src/main/java/ai/vespa/models/evaluation/ModelsEvaluator.java) | Evaluates machine-learned models added to Vespa applications and available as config form. |
 | [SentencePieceEmbedder](https://github.com/vespa-engine/vespa/blob/master/linguistics-components/src/main/java/com/yahoo/language/sentencepiece/SentencePieceEmbedder.java) | A native Java implementation of SentencePiece, see [SentencePiece embedder](../rag/embedding.html#sentencepiece-embedder). |
 | [VespaCurator](https://github.com/vespa-engine/vespa/blob/master/zkfacade/src/main/java/com/yahoo/vespa/curator/api/VespaCurator.java) | 
@@ -3913,7 +3921,7 @@ These components are available from Vespa for [injection](../../applications/dep
 A client for ZooKeeper. For use in container clusters that have ZooKeeper enabled. See [using ZooKeeper](../../applications/using-zookeeper).
 
  |
-| [VipStatus](https://github.com/vespa-engine/vespa/blob/master/container-core/src/main/java/com/yahoo/container/handler/VipStatus.java) | Use this to gain control over the service status (up/down) to be emitted from this container. |
+| [VipStatus](https://github.com/vespa-engine/vespa/blob/master/container-disc/src/main/java/com/yahoo/container/handler/VipStatus.java) | Use this to gain control over the service status (up/down) to be emitted from this container. |
 | [WordPieceEmbedder](https://github.com/vespa-engine/vespa/blob/master/linguistics-components/src/main/java/com/yahoo/language/wordpiece/WordPieceEmbedder.java) | An implementation of the WordPiece embedder, usually used with BERT models. Refer to [WordPiece embedder](../rag/embedding.html#wordpiece-embedder). |
 | [SystemInfo](https://github.com/vespa-engine/vespa/blob/master/hosted-zone-api/src/main/java/ai/vespa/cloud/SystemInfo.java) | Vespa Cloud: Provides information about the environment the component is running in. [Read more](/en/applications/components.html#the-systeminfo-injectable-component). |
 | Available in containers having `search` |
@@ -3988,7 +3996,7 @@ Two version references are said to be _compatible_ if one is a prefix of the oth
 </search>
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -4205,7 +4213,7 @@ Note that each '.' in the parameter's definition corresponds to a child element 
 
 Assigning values to _arrays_ is done by using the `<item>` element. This ensures that the given config values do not overwrite any existing array elements from higher-level xml elements in services, or from Vespa itself.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -4338,7 +4346,7 @@ Example:
 
 ##### clients
 
-Vespa Cloud only. The `clients` element is a parent element for [client](#client) security configuration. Find details and practical examples in the [security guide](../../../security/guide#configure-tokens). Example:
+Vespa Cloud only. The `clients` element is a parent element for [client](#client) security configuration. Find details and practical examples in the [security guide](../../../security/guide#configuring-tokens). Example:
 
 ```
 ```
@@ -4396,7 +4404,7 @@ Vespa Cloud only. Child element of [client](#client). Configure tokens using the
 | --- | --- | --- | --- | --- |
 | id | required | string | | 
 
-Token ID, see the [security guide](../../../security/guide#configure-tokens).
+Token ID, see the [security guide](../../../security/guide#configuring-tokens).
 
  |
 
@@ -4760,7 +4768,7 @@ The maximum number of threads relative to vCPU cores. Value must be greater than
 
 The size of the request queue relative to effective number of threads. Specify `0` to disable queuing. Queueing is disabled by default.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -4969,11 +4977,16 @@ To add document processors either before or after the indexer, declare a chain (
 
 Contained in [content](#content). The minimum total data copies the cluster will maintain. This can be set instead of (or in addition to) redundancy to ensure that a minimum number of copies are always maintained regardless of other configuration.
 
-Example: If _min-redundancy_ is 2 and there is 1 content group, there will be 2 data copies in the group (2 copies for the cluster). If the number of groups is changed to 2 there will be 1 data copy in each group (still 2 copies for the cluster).
-
-Read more about the actual number of replicas when using [groups](#group) in [topology change](/en/content/elasticity.html#changing-topology).
-
 `min-redundancy` can be changed without node restart - replicas will be added or removed automatically.
+
+###### min-redundancy and groups
+
+A group will always have minimum one copy of each document in the cluster. This is also the most commonly used configuration; Increase replica level with more groups to improve query capacity.
+
+- Example 1: If _min-redundancy_ is 2 and there is 1 content group, there will be 2 data copies in the group (2 copies for the cluster). If the number of groups is changed to 2 there will be 1 data copy in each group (still 2 copies for the cluster).
+- Example 2: A cluster is configured to [autoscale](../../../operations/autoscaling.html) using `groups="[2,3]"`. Here, configure min-redundancy to 2, as each group will have 1 replica irrespective of number of groups, here 2 or 3 - see [replicas](../../../content/elasticity.html#replicas). Setting the lower bound ensures correct replica level for 2 groups.
+
+For self-managed Vespa: Read more about the actual number of replicas when using [groups](#group) in [topology change](/en/content/elasticity.html#changing-topology).
 
 ##### redundancy
 
@@ -5687,7 +5700,7 @@ A ratio for the number of content groups that are allowed to be down simultaneou
 
  |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -5696,6 +5709,7 @@ A ratio for the number of content groups that are allowed to be down simultaneou
 - [document](#document)
 - [document-processing](#document-processing)
 - [min-redundancy](#min-redundancy)
+- [min-redundancy and groups](#min-redundancy-and-groups)
 - [redundancy](#redundancy)
 - [coverage-policy](#coverage-policy)
 - [node](#node)
@@ -6181,7 +6195,7 @@ The deadline of this BCP group. See deadline on the BCP element.
 
  |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -6375,7 +6389,7 @@ Specifies configuration for the thread pool used by document processor chains. A
 
 Number of worker threads per vCPU. Default value is `1`. The pool runs with `threads * vCPU` workers.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -6431,7 +6445,7 @@ Example:
 
 Alias used in [services.xml](services/services.html) to refer to the host.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -6481,7 +6495,7 @@ Example:
 
 ##### server
 
-The definition of a http server. Configure the server using[jdisc.http.connector.def](https://github.com/vespa-engine/vespa/blob/master/container-core/src/main/resources/configdefinitions/jdisc.http.jdisc.http.connector.def).
+The definition of a http server. Configure the server using[jdisc.http.connector.def](https://github.com/vespa-engine/vespa/blob/master/container-disc/src/main/resources/configdefinitions/jdisc.http.jdisc.http.connector.def).
 
 | Attribute | Required | Value | Default | Description |
 | --- | --- | --- | --- | --- |
@@ -6546,7 +6560,7 @@ Comma-separated list of TLS cipher suites to enable. The specified ciphers must 
 
 ##### ssl-provider
 
-Setup TLS on the HTTP server through a programmatic Java interface. The specified class must implement the [SslProvider](https://javadoc.io/doc/com.yahoo.vespa/container-core/latest/com/yahoo/jdisc/http/SslProvider.html) interface.
+Setup TLS on the HTTP server through a programmatic Java interface. The specified class must implement the [SslProvider](https://javadoc.io/doc/com.yahoo.vespa/container-disc/latest/com/yahoo/jdisc/http/SslProvider.html) interface.
 
 | Attribute | Required | Value | Default | Description |
 | --- | --- | --- | --- | --- |
@@ -6780,7 +6794,7 @@ Example:
 </request-chain>
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -7058,7 +7072,7 @@ The name of a phase or component which should succeed this phase or component. M
 
 The name of a phase or component which should precede this phase or component. Multiple `after` elements can be used to define multiple component or phases which always should precede this component or phase in a chain. In other words, the phase or component defined is placed _after_ the name in the element.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -7397,6 +7411,11 @@ The id of the source search chain is _sourceId@providerId_. This search chain au
 
 Specifies configuration for the thread pool for the jdisc search handler. All parameters are relative to the number of CPU cores—see the [container tuning example](../../../performance/container-tuning.html#container-worker-threads-example). This thread pool also supports the optional `max` attribute, which lets the pool grow up to `max * vCPU` threads under load before shrinking back after 5 seconds of idleness. Requests are rejected once the allowed number of threads is reached, all are busy, and the queue is full.
 
+Optional sub-elements:
+
+- [threads](#threadpool-threads)
+- [queue](#threadpool-queue)
+
 ###### threads
 
 The number of permanent threads relative to number of vCPU cores. Default value is `10`.
@@ -7413,7 +7432,7 @@ The maximum number of threads relative to vCPU cores. Value must be greater than
 
 The size of the request queue relative to effective number of threads. Specify `0` to disable queuing. Default value is `40`.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -7499,7 +7518,7 @@ The resources must match a node flavor in[AWS](https://cloud.vespa.ai/en/referen
 | --- | --- | --- | --- |
 | **vcpu** | float or range | 2 | CPU (virtual threads) |
 | **memory** | float or range, each followed by a byte unit, such as "Gb" | 8 Gb in container clusters, 16 Gb in content clusters | Memory |
-| **disk** | float or range, each followed by a byte unit, such as "Gb" | 50 in container clusters, 300 in content clusters | Disk space. To fit core dumps/heap dumps, the disk space should be larger than 3 x memory size for content nodes, 2 x memory size for container nodes. |
+| **disk** | float or range, each followed by a byte unit, such as "Gb" | 50 in container clusters, 300 in content clusters | Disk space. To fit core dumps/heap dumps, the disk space should be larger than 3 x memory size for content nodes, 2 x memory size for container nodes. If disk size is not explicitly specified, Vespa Cloud chooses a default disk size. The default may be automatically increased to satisfy the minimum disk-to-memory ratio. When both disk and memory are explicitly specified, Vespa Cloud enforces the same minimum ratios. |
 | **storage-type** | string (enum) | `any` | The type of storage to use. This is useful to specify local storage when network storage provides insufficient io operations or too noisy io performance: 
 - `local`: Node-local storage is required.
 - `remote`: Network storage must be used.
@@ -7579,7 +7598,7 @@ Most elements in _services.xml_ accept a sub-element named _config_._config_ ele
 
 Some features are configurable using XML files in subdirectories of the application package. This means that the configuration found in these XML files will be used as if it was inlined in _services.xml_. This is supported for [search chains](search.html#chain),[docproc chains](docproc.html) and[routing tables](../../../writing/document-routing.html#routing-services).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -7650,7 +7669,7 @@ Combining Vespa JUnit 5 test suites with unit tests in TestNG is possible. You'l
 ```
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -7808,7 +7827,7 @@ All requests and responses must be in JSON format. The tests allow simple JSON v
 
 Note that the empty object `{ }` matches any other object, and can be used to fill elements of an array that require no further validation.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -7862,7 +7881,7 @@ An `allow` tag disables a particular validation for a limited time and contains 
 
 See [ValidationId.java](https://github.com/vespa-engine/vespa/blob/master/config-model-api/src/main/java/com/yahoo/config/application/api/ValidationId.java) for a complete list of validation overrides.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -7916,7 +7935,7 @@ See [ValidationId.java](https://github.com/vespa-engine/vespa/blob/master/config
 - [Health and Metric APIs](../../operations/metrics.html)
 - [/cluster/v2 API](cluster-v2.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -8054,7 +8073,7 @@ Responses are in JSON format, with the following fields:
 | --- | --- |
 | message | An info/error message. |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -8290,7 +8309,7 @@ Responses are in JSON format, with the following fields:
 | message | An error message — included for failed requests. |
 | ToDo | Add more fields here. |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -8546,7 +8565,7 @@ Example:
 ```
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -9330,7 +9349,7 @@ If you need to roll back to a previous version of the application package this c
 
 Also see [rollback](/en/applications/deployment.html#rollback).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -9961,7 +9980,7 @@ In the JSON format a continuation is included _once_ at the very end of the resp
 
 In the JSON Lines format, a contination object is emitted to the stream _every time_ a backend data [bucket](../../content/buckets.html) has been fully visited, as well as at the end of the response stream. This may happen many times in a response. Each continuation object _subsumes_ the progress of previously emitted continuations, meaning that a client only needs to remember the _most recent_ continuation value it observed in the response. If the request fails prior to completion, the client can specify the most recent continuation in the next request; it will then only receive duplicates for the data buckets that were actively being processed when the request failed.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -10085,7 +10104,7 @@ dimensions
 
  | metrics | Object | Set of metric dimension-name/value pairs. |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -10163,7 +10182,7 @@ services
 
  | nodes | Array | Array of service objects, the are services running on the node. The `service` object is defined in [/metrics/v1/values](metrics-v1.html#metrics-v1-values). |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -10223,7 +10242,7 @@ Non-exhaustive list of status codes:
 
 Responses are in Prometheus format, the values are the same as in [/metrics/v1/values](metrics-v1.html#metrics-v1-values)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -10238,9 +10257,9 @@ Refer to the [Query API guide](../../querying/query-api.html) for API examples.
 
 All the request parameters listed below can be set in query profiles. The first four blocks of properties are also modeled as[query profile types](../../querying/query-profiles.html#query-profile-types). These types can be referred from query profiles (and inheriting types) to provide type checking on the parameters.
 
-These parameters often have both a full name - including the path from the root query profile - and one or more abbreviated names. Both names can be used in requests, while only full names can be used in query profiles. The full names are case-sensitive, abbreviated names are case-insensitive.
+Parameters have _full name_ and can have one or more shorter aliases, shown in square brackets below. Both names can be used in requests and query profiles. Aliases are case-insensitive in requests.
 
-The parameters modeled as query profiles are also available through get methods as Java objects from the Query to Searcher components.
+When accessing parameters from Searcher components, the full names correspond to the path from the root Query object to that parameter.
 
 ##### Parameters
 Query
@@ -10268,6 +10287,7 @@ Query Model
 - [model.type.composite](#model.type.composite)
 - [model.type.tokenization](#model.type.tokenization)
 - [model.type.syntax](#model.type.syntax)
+- [model.type.profile](#model.type.profile)
 - [model.type.isYqlDefault](#model.type.isYqlDefault)
 
 Ranking
@@ -10416,7 +10436,7 @@ An index name. The field which is searched for query terms which doesn't explici
 
 Encoding names or aliases defined in the [IANA character sets](https://www.iana.org/assignments/character-sets/character-sets.xhtml). Sets the encoding to use when returning a result. The query is always encoded as UTF-8, independently of how the result will be encoded.
 
-The encodings `big5`, `euc-jp`, `euc-kr`, `gb2312`, `iso-2022-jp` and `shift-jis` also influences how [tokenization](../../linguistics/linguistics.html#tokenization) is done in the absence of an explicit language setting.
+The encodings `big5`, `euc-jp`, `euc-kr`, `gb2312`, `iso-2022-jp` and `shift-jis` also influences how [tokenization](../../linguistics/linguistics-opennlp.html#tokenization) is done in the absence of an explicit language setting.
 
  |
 | model.filter | filter | String | | 
@@ -10532,6 +10552,11 @@ Sets the syntax used to interpret the query string. Options:
 | simple | Use the [simple query language](../querying/simple-query-language.html) suitable for end users. |
 | web | Like the [simple query language](../querying/simple-query-language.html), but '+' in front of a term means "search for this term as-is", and 'a OR b' (capital OR) means match either a or b. |
 | yql | Parse as a [YQL query](https://docs.vespa.ai/en/reference/query-language-reference.html). |
+
+ |
+| model.type.profile | | String | `(null)` | 
+
+Overrides the linguistics profile assigned to the field(s) searched. The linguistics profile is used to choose the processing done in the [linguistics component](../../linguistics/linguistics.html).
 
  |
 | model.type.isYqlDefault | | Boolean | `false` | 
@@ -10719,7 +10744,7 @@ Threshold value deciding if a query with an approximate [nearestNeighbor](../que
 
  |
 | ranking.matching  
-.approximateThreshold | | double [0.0, 1.0] | 0.05 | 
+.approximateThreshold | | double [0.0, 1.0] | 0.02 | 
 
 Rank profile equivalent: [approximate-threshold](../schemas/schemas.html#approximate-threshold)
 
@@ -10727,7 +10752,7 @@ Threshold value deciding if a query with an approximate [nearestNeighbor](../que
 
  |
 | ranking.matching  
-.filterFirstThreshold | | double [0.0, 1.0] | 0.0 | 
+.filterFirstThreshold | | double [0.0, 1.0] | 0.3 | 
 
 Rank profile equivalent: [filter-first-threshold](../schemas/schemas.html#filter-first-threshold)
 
@@ -10869,6 +10894,7 @@ Whether to bold query terms in [schema](../schemas/schemas.html) fields defined 
 | --- | --- |
 | _No value_ or [default](../querying/default-result-format.html) | The default, builtin JSON format |
 | [json](../querying/default-result-format.html) | Builtin JSON format |
+| `cbor` | Builtin [CBOR](https://cbor.io/) format. Binary encoding, responses are smaller and faster to render than JSON, especially for numeric data. Semantically equivalent to JSON. Cannot be used with `jsoncallback` (JSONP). Requires Vespa 8.623.5 or later. |
 | `xml` | Builtin XML format. 
  **Deprecated:** See [deprecations](../release-notes/vespa8.html).
  |
@@ -10876,6 +10902,8 @@ Whether to bold query terms in [schema](../schemas/schemas.html) fields defined 
  **Deprecated:** See [deprecations](../release-notes/vespa8.html).
  |
 | _Any other value_ | A custom [result renderer](../../applications/result-renderers.html) supplied by the application |
+
+The response format can also be selected via the HTTP `Accept` header. If the Accept header specifies `application/cbor` with higher priority than `application/json`, CBOR will be used. The `format` query parameter overrides the Accept header.
 
  |
 | presentation.summary | summary | String | | 
@@ -11237,7 +11265,7 @@ A string with JSON. Refer to the [select reference](../querying/json-query-langu
 
  |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -11331,7 +11359,7 @@ Returns a mandatory service [version](#version). Example:
 /state/v1/health
 ```
 
-Returns the service status, with [time](#time), [status](#status) and [metrics](#metrics). Metrics contains `requestsPerSecond` and `latencySeconds`, see [StateHandler](https://github.com/vespa-engine/vespa/blob/master/container-core/src/main/java/com/yahoo/container/jdisc/state/StateHandler.java).
+Returns the service status, with [time](#time), [status](#status) and [metrics](#metrics). Metrics contains `requestsPerSecond` and `latencySeconds`, see [StateHandler](https://github.com/vespa-engine/vespa/blob/master/container-disc/src/main/java/com/yahoo/container/jdisc/state/StateHandler.java).
 
 Example:
 
@@ -11469,7 +11497,7 @@ code
 - down
 - initializing
 
-Containers with the [query API](../../querying/query-api.html) enabled return `initializing` while waiting for content nodes to start, see [example](https://github.com/vespa-engine/sample-apps/tree/master/examples/operations/multinode-HA). `up` means that the service is fully up. Assume status `down` if no response. Refer to [StateMonitor](https://github.com/vespa-engine/vespa/blob/master/container-core/src/main/java/com/yahoo/container/jdisc/state/StateMonitor.java) for implementation.
+Containers with the [query API](../../querying/query-api.html) enabled return `initializing` while waiting for content nodes to start, see [example](https://github.com/vespa-engine/sample-apps/tree/master/examples/operations/multinode-HA). `up` means that the service is fully up. Assume status `down` if no response. Refer to [StateMonitor](https://github.com/vespa-engine/vespa/blob/master/container-disc/src/main/java/com/yahoo/container/jdisc/state/StateMonitor.java) for implementation.
 
  |
 | 
@@ -11558,7 +11586,7 @@ rate
 
  | values | Number | Metric rate: _count_ divided by _snapshot interval_. |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -11587,7 +11615,7 @@ Vespa implements a modified version of the Hierarchical Navigable Small World (H
 
 - **Multithreaded Indexing** - The costly part when performing real time changes to the _HNSW_ graph is distance calculations while searching the graph layers to find which links to change. These distance calculations are performed by multiple indexing threads.
 
-- **Multiple value types** - The cost driver of vector search is often storing the vectors in memory, which is required to produce accurate results at low latency. An effective way to reduce cost is to reduce the size of each vector value. Vespa supports double, float, bfloat16, int8 and [single-bit values](../rag/binarizing-vectors.md). Changing from float to bfloat16 can halve cost with negligible impact on accuracy, while single-bit values greatly reduce both memory and cpu costs, and can be effectively combined with larger vector values stored on disk as a paged attribute to be used for ranking.
+- **Multiple value types** - The cost driver of vector search is often storing the vectors in memory, which is required to produce accurate results at low latency. An effective way to reduce cost is to reduce the size of each vector value. Vespa supports double, float, bfloat16, int8 and [single-bit values](../rag/binarizing-vectors.html). Changing from float to bfloat16 can halve cost with negligible impact on accuracy, while single-bit values greatly reduce both memory and cpu costs, and can be effectively combined with larger vector values stored on disk as a paged attribute to be used for ranking.
 
 - **Optimized HNSW lookups** - ANN searches in Vespa [support](https://blog.vespa.ai/tweaking-ann-parameters/) both pre-and post-filtering, beam exploration, and filtering before distance calculation ("Acorn 1"). Tuning parameters for these makes it possible to strike a good balance between performance and accuracy for any data set. Vespa's [ANN tuning tool](https://vespa-engine.github.io/pyvespa/examples/ann-parameter-tuning-vespa-cloud.html) can be used to automate the process.
 
@@ -11709,7 +11737,7 @@ Using lower tensor cell type precision can reduce memory footprint significantly
 
 Vespa [tensor cell value types](../performance/feature-tuning.html#cell-value-types) include:
 
-- `int8` - 1 byte per value. Also used to represent [packed binary values](../rag/binarizing-vectors.md).
+- `int8` - 1 byte per value. Also used to represent [packed binary values](../rag/binarizing-vectors.html).
 - `bfloat16` - 2 bytes per value. See [bfloat16 floating-point format](https://en.wikipedia.org/wiki/Bfloat16_floating-point_format).
 - `float` - 4 bytes per value. Standard float.
 - `double` - 8 bytes per value. Standard double.
@@ -11726,7 +11754,7 @@ Note that strongly sublinear search is not necessarily true if the application u
 
 Changing the [distance-metric](../reference/schemas/schemas.html#distance-metric)for a tensor field with `hnsw` index requires [restarting](../reference/schemas/schemas.html#changes-that-require-restart-but-not-re-feed), but not re-indexing (re-feed vectors). Similar, changing the `max-links-per-node` and`neighbors-to-explore-at-insert` construction parameters requires re-starting.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -11741,6 +11769,1540 @@ Changing the [distance-metric](../reference/schemas/schemas.html#distance-metric
 - [Memory](#memory)
 - [Search latency and document volume](#search-latency-and-document-volume)
 - [HNSW Operations](#hnsw-operations)
+
+---
+
+## Kubernetes
+
+### Architecture
+![Vespa Operator Architecture](/assets/img/vespa-operator-architecture.png)
+
+#### Architecture
+
+ 
+
+ ![Vespa Operator Architecture](/assets/img/vespa-operator-architecture.png)
+
+The Vespa Operator is an implementation of the [Operator Pattern](https://kubernetes.io/docs/concepts/extend-kubernetes/operator/) that extends Kubernetes with custom orchestration capabilities for Vespa. It relies on a [Custom Resource Definition](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) called a `VespaSet`, which represents a quorum of [ConfigServers](https://docs.vespa.ai/en/operations/self-managed/configuration-server.html) in a Kubernetes namespace. The Vespa Operator is responsible for the deployment and lifecycle of the `VespaSet` resource and its ConfigServers, which collectively entails the infrastructure for Vespa on Kubernetes.
+
+[Application Packages](https://docs.vespa.ai/en/basics/applications.html) are deployed to the [ConfigServers](https://docs.vespa.ai/en/operations/self-managed/configuration-server.html) to create Vespa applications. The ConfigServers will dynamically instantiate the services as individual Pods based on the settings provided in the Application Package. After an Application Package is deployed, the ConfigServers will remain responsible for the management and lifecycle of the Vespa application.
+
+ Copyright © 2026 - [Cookie Preferences](#)
+
+---
+
+### Provide Custom Overrides
+While services.xml defines the Vespa application specification, it abstracts away the underlying Kubernetes infrastructure.
+
+#### Provide Custom Overrides
+
+ 
+
+While services.xml defines the Vespa application specification, it abstracts away the underlying Kubernetes infrastructure. Advanced users often need to configure Kubernetes-specific settings for the Vespa application Pods to integrate Vespa within their broader platform ecosystem.
+
+The Pod Template mechanism allows you to inject custom configurations into the Vespa application pods created by the ConfigServer.
+
+Common use cases for overriding the default pod configuration include:
+
+- **Sidecar Injection**: Running auxiliary containers alongside Vespa for logging (e.g., Fluent Bit), monitoring (e.g., Datadog, Prometheus exporters), or service mesh proxies (e.g., Envoy, Istio). 
+- **Scheduling Constraints**: Using nodeSelector, affinity, or tolerations to pin Vespa pods to specific hardware (e.g., high-memory nodes, specific availability zones) or isolate them from other workloads.
+- **Metadata Management**: Adding custom Labels or Annotations for cost allocation, team ownership, or integration with external inventory tools.
+- **Security & Config**: Mounting Kubernetes Secrets or ConfigMaps that contain credentials or environment configurations required by custom sidecars.
+
+##### Configure Custom Overrides
+
+Overrides are defined in the `VespaSet` Custom Resource under `spec.application.podTemplate` and `spec.configServer.podTemplate`. This field accepts a standard Kubernetes PodTemplateSpec.
+
+The Operator and ConfigServer treat this template as an overlay. When creating a ConfigServer or Application Pod, the base template of the main `vespa` container is merged with your custom overlay.
+
+Vespa on Kubernetes enforces a `Add-Only` merge strategy. One cannot remove or downgrade core `vespa` container settings, but only augment them.
+
+| Category | Allowed Actions | Restricted Actions |
+| --- | --- | --- |
+| **Containers** | 
+- Add new sidecar containers.
+- Add env vars/mounts to main container.
+
+ | 
+- Cannot change main container image, command, or args.
+- Cannot override main container CPU/Memory resources (these are locked to `services.xml`).
+
+ |
+| **Volumes** | 
+- Add new Volumes (ConfigMap, Secret, EmptyDir).
+
+ | 
+- Cannot modify operator-reserved volumes (e.g., `/data`).
+
+ |
+| **Metadata** | 
+- Add new Labels and Annotations.
+
+ | 
+- Cannot overwrite operator-created labels and annotations
+
+ |
+
+##### Examples
+
+###### Example 1: Injecting a Logging Sidecar
+
+This example adds a Fluent Bit sidecar to ship logs to a central system. It defines the sidecar container and mounts a shared volume that the Vespa container also writes to.
+
+```
+apiVersion: k8s.ai.vespa/v1
+kind: VespaSet
+metadata:
+  name: my-vespa-cluster
+spec:
+  application:
+    image: vespaengine/vespa:8.200.15
+    # Define the Custom Overlay
+    podTemplate:
+      spec:
+        containers:
+          # 1. Define the Sidecar
+          - name: fluent-bit
+            image: fluent/fluent-bit:1.9
+            volumeMounts:
+              - name: vespa-logs
+                mountPath: /opt/vespa/logs/vespa
+        # 2. Define the Shared Volume
+        volumes:
+          - name: vespa-logs
+            emptyDir: {}
+```
+
+###### Example 2: Pinning Pods to Specific Nodes
+
+This example uses a nodeSelector to ensure Vespa pods only run on nodes labeled with workload=high-performance.
+
+```
+apiVersion: k8s.ai.vespa/v1
+kind: VespaSet
+metadata:
+  name: prod-vespa
+spec:
+  application:
+    podTemplate:
+      spec:
+        # Schedule only on nodes with label 'workload: high-performance'
+        nodeSelector:
+          workload: high-performance
+        # Tolerate the 'dedicated' taint if those nodes are tainted
+        tolerations:
+          - key: "dedicated"
+            operator: "Equal"
+            value: "search-team"
+            effect: "NoSchedule"
+```
+
+###### Example 3: Adding Cost Allocation Labels
+
+This example adds custom labels that will appear on every tenant pod, enabling cost tracking by team.
+
+```
+apiVersion: k8s.ai.vespa/v1
+kind: VespaSet
+metadata:
+  name: shared-vespa
+spec:
+  application:
+    podTemplate:
+      metadata:
+        labels:
+          cost-center: "engineering-search"
+          owner: "team-alpha"
+        annotations:
+          # Example annotation for an external monitoring system
+          monitoring.datadoghq.com/enabled: "true"
+```
+
+ Copyright © 2026 - [Cookie Preferences](#)
+
+###### On this page:
+
+- [Configure Custom Overrides](#)
+- [Examples](#)
+- [Example 1: Injecting a Logging Sidecar](#)
+- [Example 2: Pinning Pods to Specific Nodes](#)
+- [Example 3: Adding Cost Allocation Labels](#)
+
+---
+
+### Configure External Access Layer
+The Vespa Operator automatically provisions Kubernetes `Service` resources to enable external access for feeding and querying data.
+
+#### Configure External Access Layer
+
+ 
+
+The Vespa Operator automatically provisions Kubernetes `Service` resources to enable external access for feeding and querying data. This behavior is controlled by the `VespaSet` Custom Resource configuration. Refer to the [VespaSet Reference](vespaset-reference.html) to configure the `VespaSet`.
+
+Load balancers are provisioned exclusively for Container clusters. Content clusters communicate internally and do not require external load balancing services. The type of service provisioned is determined by the `spec.ingress.endpointType` field in the `VespaSet`.
+
+##### Supported Endpoint Types
+
+The operator supports four endpoint types to cover different infrastructure requirements.
+
+| Endpoint Type | Kubernetes Service Type | Use Case |
+| --- | --- | --- |
+| `LOAD_BALANCER` | `LoadBalancer` | Provision the cloud-native (AWS, GCP, Azure) load-balancer. |
+| `NODE_PORT` | `NodePort` | Expose a static port across every worker node, allowing external traffic to access the cluster from any node's IP. |
+| `CLUSTER_IP` | `ClusterIP` | Each Container Pod will expose an internal IP address. Should not be used for production use-cases. |
+| `NONE` | N/A | An external access layer will not be provisioned. Custom networking setups (Istio, Ingress Controllers) where no automatic service is desired. |
+
+##### LOAD\_BALANCER
+
+This is the recommended configuration for production deployments on cloud providers (EKS, GKE, AKS). The operator creates a standard Kubernetes `LoadBalancer` service, triggering the cloud provider to provision a managed load balancer (e.g., AWS NLB).
+
+**Configuration:**
+
+```
+ingress:
+  endpointType: LOAD_BALANCER
+```
+
+On AWS, the ConfigServer automatically applies the annotation `service.beta.kubernetes.io/aws-load-balancer-internal: "true"` to all Container pods. This provisions an **internal** Network Load Balancer (NLB) accessible only within the VPC where the EKS cluster nodes reside.
+
+##### NODE\_PORT
+
+The `NODE_PORT` type exposes the Vespa container cluster on a specific port (range 30000-32767) across all Kubernetes worker nodes.
+
+**Configuration:**
+
+```
+ingress:
+  endpointType: NODE_PORT
+```
+
+When this option is set, Kubernetes opens a static port on every worker node. External traffic can reach the application via `<NodeIP>:<NodePort>`. Note that unlike `LOAD_BALANCER`, this does not provide health checks at the entry point level. If a worker node with a connection crashes, the connection will simply time out or fail. This additionally requires all worker nodes to expose an External IP.
+
+To use the `NODE_PORT` service, find the assigned port.
+
+```
+$ kubectl get service lb-default -n $NAMESPACE
+
+NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE
+lb-default NodePort 10.100.150.25 <none>**80:31942/TCP**5m
+```
+
+Get the list of nodes and look for their External IP addresses.
+
+```
+$ kubectl get nodes -o wide
+
+NAME STATUS ROLES AGE VERSION INTERNAL-IP EXTERNAL-IP OS-IMAGE KERNEL-VERSION
+ip-192-168-3-50.us-east-2.compute.internal Ready <none> 10d v1.27.3-eks-a5565ad 192.168.3.50**18.221.100.45**Amazon Linux 2 5.10.184-175.731.amzn2.x86_64
+ip-192-168-3-51.us-east-2.compute.internal Ready <none> 10d v1.27.3-eks-a5565ad 192.168.3.51**3.142.200.10**Amazon Linux 2 5.10.184-175.731.amzn2.x86_64
+```
+
+Choose any External IP and combine the IP and port to access the service.
+
+```
+$ curl http://18.221.100.45:31942/state/v1/health
+
+{
+  "time" : 1769981985754,
+  "status" : {
+    "code" : "up"
+  },
+  "metrics" : {
+    "snapshot" : {
+      "from" : 1.769981924895E9,
+      "to" : 1.769981984895E9
+    },
+    "values" : [ {
+      "name" : "requestsPerSecond",
+      "values" : {
+        "count" : 19,
+        "rate" : 0.31666666666666665
+      }
+    }, {
+      "name" : "latencySeconds",
+      "values" : {
+        "average" : 0.009578947368421053,
+        "sum" : 0.182,
+        "count" : 19,
+        "last" : 0.003,
+        "max" : 0.057,
+        "min" : 0.0,
+        "rate" : 0.31666666666666665
+      }
+    } ]
+  }
+}
+```
+
+##### CLUSTER\_IP
+
+This type restricts access to within the Kubernetes cluster. It provides a stable internal IP and DNS name (e.g., `lb-default.vespa.svc.cluster.local`) but assigns no external IP.
+
+**Configuration:**
+
+```
+ingress:
+  endpointType: CLUSTER_IP
+```
+
+The `CLUSTER_IP` service is ideal for architectures where the clients (e.g., front-end applications or ingestion services) run inside the same Kubernetes cluster as Vespa.
+
+##### NONE
+
+This option disables automatic Service provisioning. Use this if you intend to manually define `Ingress` resources, use a Service Mesh (like Istio or Linkerd), or have complex networking requirements not covered by the standard types.
+
+**Configuration:**
+
+```
+ingress:
+  endpointType: NONE
+```
+
+##### Traffic Routing & Labeling
+
+To ensure zero-downtime deployments, the ConfigServer manages traffic routing dynamically using Kubernetes labels. The created Services use the selector `vespa.ai/tenant-lb: backend`. When the Pod is provisioned, these labels are automatically attached.
+
+During a rolling upgrade, the label is removed from the terminating Pod(s) before they are shut down. This provides a window for the remaining traffic to drain before the Pod is upgraded.
+
+**Note**: The Service exposes port **80** (plaintext) and **443** (TLS) externally, mapping them to the container's port 4443.
+
+ Copyright © 2026 - [Cookie Preferences](#)
+
+###### On this page:
+
+- [Supported Endpoint Types](#)
+- [LOAD\_BALANCER](#)
+- [NODE\_PORT](#)
+- [CLUSTER\_IP](#)
+- [NONE](#)
+- [Traffic Routing & Labeling](#)
+
+---
+
+### Install Vespa on Kubernetes
+The Vespa Operator should be installed using the official Helm chart.
+
+#### Install Vespa on Kubernetes
+
+ 
+
+The Vespa Operator should be installed using the official Helm chart.  
+ The operator depends on the installation of the `VespaSet` [Custom Resource Definition](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) (CRD), which is defined at the Kubernetes cluster scope.  
+ Through the Helm Chart, the installation of the CRD and the required RBAC permissions can be simplified. The required permissions are listed in the [Permissions](#permissions) section.
+
+Our container registry is located at `images.ves.pa`.  
+ For accessing the required Vespa on Kubernetes container images (and helm chart) you will need to contact us through our support portal, we will provide you with a the authentication id and token.  
+**Important:** For production use, we _require_ mirroring these images into your own registry or a well-known internal repository appropriate for your infrastructure!
+
+Our support team will provide you with the required credentials, you will have access to the following:
+
+- the _Vespa on Kubernetes_ image, corresponding to `$OCI_IMAGE_REFERENCE` in this guide,
+- the _Vespa Operator_ image, corresponding to `$OCI_IMAGE_REFERENCE_OPERATOR` in this guide,
+- the official _Vespa Helm Chart_ OCI, referred to as `$HELM_OCI_CHART_REFERENCE` in this guide.
+
+##### Requirements
+
+The following tools are encouraged for a smooth deployment.
+
+- [Helm CLI](https://helm.sh/docs/intro/install/)
+- Kubernetes Command Line Tool ([kubectl](https://kubernetes.io/docs/reference/kubectl/))
+- [Vespa CLI](https://docs.vespa.ai/en/clients/vespa-cli.html)
+- the Vespa on Kubernetes and Vespa Operator images
+- the Vespa Helm Chart
+- [MiniKube (Optional)](https://minikube.sigs.k8s.io/docs/)
+- Podman or Docker
+
+These instructions assume that `kubeconfig` is pointing to an active Kubernetes cluster. Refer to the [Getting Started](https://kubernetes.io/docs/setup/) guide to create a Kubernetes cluster.
+
+##### MiniKube Setup
+
+MiniKube allows for simple local testing of Vespa on Kubernetes. Skip to the [Deploy Vespa Operator](#install-helm-chart) section below to directly start installation.
+
+Initialize a Minikube cluster with 8 nodes, 2CPUs and 4GiB memory each ausing the Podman driver. Enable Minikube's image registry add-on to allow the Minikube nodes to access the image.
+
+```
+#### Start Minikube
+minikube start --nodes 8 --cpus 2 --memory 4GiB --driver=podman
+
+#### Enable Image Registry add-on
+minikube addons enable registry
+
+#### Verify MiniKube cluster was created
+minikube status
+```
+
+```
+#### Authenticate to the registry
+echo $VESPAAI_REGISTRY_TOKEN | podman login images.ves.pa \
+  -u "$VESPAAI_REGISTRY_USER" \
+  --password-stdin
+
+#### Cache the images locally
+podman pull images.ves.pa/kubernetes/vespa:$VESPA_VERSION
+podman pull images.ves.pa/kubernetes/operator:$VESPA_VERSION
+```
+
+Once the Minikube cluster is set up, push the images to the MiniKube registry, to make accessible to the MiniKube nodes. The MiniKube registry is accessible from `$(minikube ip):5000`.
+
+```
+#### Save the minikube registry endpoint
+$MINIKUBE_REGISTRY=$(minikube ip)
+
+#### Push the kubernetes/vespa image to the registry
+podman tag kubernetes/vespa:$VESPA_VERSION $MINIKUBE_REGISTRY:5000/localhost/kubernetes/vespa:$VESPA_VERSION
+podman push --tls-verify=false $MINIKUBE_REGISTRY:5000/localhost/kubernetes/vespa:$VESPA_VERSION
+
+#### Push the kubernetes/operator image to the registry
+podman tag kubernetes/operator:$VESPA_VERSION $MINIKUBE_REGISTRY:5000/localhost/kubernetes/operator:$VESPA_VERSION
+podman push --tls-verify=false $MINIKUBE_REGISTRY:5000/localhost/kubernetes/operator:$VESPA_VERSION
+```
+
+The images will now be available to the Minikube nodes from `$MINIKUBE_REGISTRY:5000/localhost/kubernetes/operator:$VESPA_VERSION`.
+
+```
+export OCI_IMAGE_REFERENCE=$MINIKUBE_REGISTRY:5000/localhost/kubernetes/vespa
+export OCI_IMAGE_REFERENCE_OPERATOR=$MINIKUBE_REGISTRY:5000/localhost/kubernetes/operator
+export OCI_IMAGE_TAG=$VESPA_VERSION
+```
+
+Then, install the [Local Persistent Volume](https://github.com/kubernetes-sigs/sig-storage-local-static-provisioner) provisioner Helm Chart. This will allow Persistent Volumes to be created in a MiniKube environment. It will automatically create a StorageClass called `local-storage`, which should be used for the next steps.
+
+```
+#### Clone the local persistent volume static provisioner from the Kubernetes sigs
+$ git clone git@github.com:kubernetes-sigs/sig-storage-local-static-provisioner.git
+
+#### Deploy onto the Kubernetes cluster
+$ helm install -f helm/examples/baremetal-default-storage.yaml local-volume-provisioner --namespace kube-system ./helm/provisioner
+
+#### Create several volumes on each Minikube node.
+$ for n in minikube minikube-m02 minikube-m03 minikube-m04 minikube-m05 minikube-m06 minikube-m07 minikube-m08; do
+  echo "==> $n"
+  minikube ssh -n "$n" -- '
+    set -e
+    for i in 1 2 3 4; do
+      sudo mkdir -p /mnt/disks/vol$i
+      if ! mountpoint -q /mnt/disks/vol$i; then
+        sudo mount --bind /mnt/disks/vol$i /mnt/disks/vol$i
+      fi
+    done
+    echo "Mounted:"
+    mount | grep -E "/mnt/disks/vol[1-4]" || true
+  '
+done
+```
+
+##### Deploy Vespa Operator
+
+The Helm Chart installs the Vespa Operator and the `Role`, `RoleBinding`, and `ServiceAccount` resources with the necessary permissions to operate Vespa. Optionally, the CRD specification can be installed onto the Kubernetes cluster.
+
+An installation can be performed as follows. This will deploy the Vespa Operator to the `vespa` namespace and apply the `VespaSet` CRD specification to the cluster.
+
+```
+$ helm install vespa-operator $HELM_OCI_CHART_REFERENCE --namespace vespa --create-namespace --set image.repository $OCI_IMAGE_REFERENCE_OPERATOR --set image.tag $OCI_IMAGE_TAG
+```
+
+If CRDs are managed separately, the CRD installation can be disabled. However, the CRD specification must be manually applied to the cluster before installing the Helm Chart. Our support team can provide this specification if necessary.
+
+```
+$ kubectl apply vespasets.k8s.ai.vespa-v1.yaml
+$ helm install vespa-operator $HELM_OCI_CHART_REFERENCE --namespace $NAMESPACE --create-namespace --skip-crds --set image.repository $OCI_IMAGE_REFERENCE_OPERATOR --set image.tag $OCI_IMAGE_TAG
+```
+
+Ensure that the `Deployment` resource was successfully applied and the operator `Pod` was created. It can be done using the following check.
+
+```
+$ kubectl wait --for=condition=available deployment/vespa-operator --timeout=120s -n $NAMESPACE \
+&& kubectl get pods -l app=vespa-operator -o wide -n $NAMESPACE
+```
+
+The full reference guide for the Helm Chart can be found in the [Helm Reference](helm-reference.html) section.
+
+##### Deploy a VespaSet
+
+A `VespaSet` represents a quorum of [ConfigServers](https://docs.vespa.ai/en/operations/self-managed/configuration-server.html) that manage Vespa applications. Several examples of `VespaSet` specifications are provided in the Helm Chart `samples` directory. A sample `VespaSet` resource for [Amazon Elastic Kubernetes Service](https://aws.amazon.com/eks/) (EKS) is shown below.
+
+```
+#### VespaSet configuration for AWS EKS
+apiVersion: k8s.ai.vespa/v1
+kind: VespaSet
+metadata:
+  name: vespaset-sample
+  namespace: vespa
+spec:
+  version: $OCI_IMAGE_TAG
+
+  configServer:
+    image: "$OCI_IMAGE_REFERENCE"
+    storageClass: "gp3"
+    generateRbac: false
+
+  application:
+    image: "$OCI_IMAGE_REFERENCE"
+    storageClass: "gp3"
+
+  ingress:
+    endpointType: "NODE_PORT"
+```
+
+An example for MiniKube would be as follows.
+
+```
+#### VespaSet configuration for AWS EKS
+apiVersion: k8s.ai.vespa/v1
+kind: VespaSet
+metadata:
+  name: vespaset-sample
+  namespace: vespa
+spec:
+  version: $OCI_IMAGE_TAG
+
+  configServer:
+    image: "$OCI_IMAGE_REFERENCE"
+    storageClass: "local-storage"
+    generateRbac: false
+
+  application:
+    image: "$OCI_IMAGE_REFERENCE"
+    storageClass: "local-storage"
+
+  ingress:
+    endpointType: "NODE_PORT"
+```
+
+Note that the `$OCI_IMAGE_REFERENCE` is shared between the ConfigServer and the Vespa Application Pods.
+
+Apply the `VespaSet` resource to the Kubernetes Cluster. The operator will automatically detect the `VespaSet` and create a quorum of ConfigServers.
+
+The ConfigServers will then bootstrap the Vespa infrastructure. This process takes roughly a minute. The bootstrap process is completed once the `VespaSet` shows the status as `RUNNING` for all ConfigServer Pods.
+
+```
+$ kubectl describe vespaset vespaset-sample -n vespa
+Name: vespaset-sample
+Namespace: vespa
+Labels: <none>
+Annotations: <none>
+API Version: k8s.ai.vespa/v1
+Kind: VespaSet
+Metadata:
+  Creation Timestamp: 2026-01-29T21:32:27Z
+  Finalizers:
+    vespasets.k8s.ai.vespa/finalizer
+  Generation: 1
+  Resource Version: 121822902
+  UID: a70f56e9-6625-4011-acd7-9f7cad29dbc2
+Spec:
+  Application:
+    Image: $OCI_IMAGE_REFERENCE
+    Storage Class: gp3
+  Config Server:
+    Generate Rbac: false
+    Image: $OCI_IMAGE_REFERENCE
+    Storage Class: gp3
+  Ingress:
+    Endpoint Type: NODE_PORT
+  Version: $OCI_IMAGE_TAG
+Status:
+  Bootstrap Status:
+    Pods:
+      cfg-0:
+        Last Updated: 2026-01-29T21:38:45Z
+        Message: Pod is running
+        Phase: RUNNING
+      cfg-1:
+        Last Updated: 2026-01-29T21:38:09Z
+        Message: Pod is running
+        Phase: RUNNING
+      cfg-2:
+        Last Updated: 2026-01-29T21:36:32Z
+        Message: Pod is running
+        Phase: RUNNING
+  Last Transition Time: 2026-01-29T21:33:55Z
+  Message: All configservers running
+  Phase: RUNNING
+Events: <none>
+```
+
+The status of the bootstrap process can be easily queried as follows.
+
+```
+$ kubectl get vespaset upgradetest-vespaset -n mramdenbourg-upgradetest -o json \
+| jq -e '
+  .status.bootstrapStatus.pods as $p
+  | ($p["cfg-0"].phase == "RUNNING")
+  and ($p["cfg-1"].phase == "RUNNING")
+  and ($p["cfg-2"].phase == "RUNNING")
+'
+```
+
+The full reference guide for the VespaSet CRD can be found in the [VespaSet Reference](vespaset-reference.html) section.
+
+##### Deploy a Vespa Application
+
+A Vespa application can be deployed once the bootstrap process has completed. Refer to the [Vespa Sample Applications](https://github.com/vespa-engine/sample-apps) to get started. In the following example, we will use the [Album Recommendation](https://github.com/vespa-engine/sample-apps/tree/master/album-recommendation) sample.
+
+Set up the Vespa CLI to download the Album Recommendation sample application to a working directory and use the local endpoints.
+
+```
+$ vespa clone album-recommendation myapp && cd myapp
+$ vespa config set target local
+```
+
+Enable a port-forward of the ConfigServer's ingress port to a port locally.
+
+```
+$ kubectl -n mramdenbourg-upgradetest port-forward pod/cfg-0 19071:19071
+```
+
+The application can be deployed using the Vespa CLI.
+
+```
+$ vespa deploy --wait 600
+```
+
+This will create the Container, Content, and Cluster-Controller Pods as specified in the application package. The deployment is considered complete once all Pods are in phase `RUNNING` in the `VespaSet` status. This can be queried as follows.
+
+```
+$ kubectl get vespaset upgradetest-vespaset -n mramdenbourg-upgradetest -o json \
+| jq -e '
+  .status.bootstrapStatus.pods
+  | with_entries(
+      select(
+        .key as $k
+        | [
+            "cluster-controllers-104",
+            "cluster-controllers-105",
+            "cluster-controllers-106",
+            "default-100",
+            "default-101",
+            "documentation-102",
+            "documentation-103"
+          ]
+        | index($k) | not
+      )
+    )
+  | all(.phase == "RUNNING")
+'
+```
+
+Note the names of the Pods may change depending on your specific Application Package configuration.
+
+Port forwarding provides a simple way to access the application locally. For other ingress options, see the [Configuring the External Access Layer](ingress.html) section.
+
+##### Feed Documents
+
+Feed documents to the Dataplane entrypoint by port-forwarding to both the Dataplane Pod and the ConfigServer Pod.
+
+```
+$ kubectl -n mramdenbourg-upgradetest port-forward pod/cfg-0 19071:19071
+$ kubectl -n mramdenbourg-upgradetest port-forward pod/default-100 8080:8080
+```
+
+Then, use the Vespa CLI to feed a document.
+
+```
+vespa feed dataset/A-Head-Full-of-Dreams.json
+```
+
+##### Permissions
+
+The Vespa Operator requires the following permissions. These permissions are listed by Kubernetes [API verbs](https://kubernetes.io/docs/reference/access-authn-authz/rbac/) per resource.
+
+| Kubernetes Resource | Required Permissions |
+| --- | --- |
+| CustomResourceDefinitions | create, get, list, watch |
+| VespaSet | get, list, watch, create, update, patch, delete |
+| VespaSet Subresources | `vespasets/status`: update, patch  
+`vespasets/finalizers`: update |
+| ConfigMaps | get, list, watch, create, update, patch, delete |
+| Services | get, list, watch, create, update, patch, delete |
+| Pods | get, list, watch, create, update, patch, delete |
+| Pod Execution | get, create |
+| Events | create, patch |
+| PersistentVolumeClaims | get, list, watch, create, update, patch, delete |
+| ServiceAccounts | get, list, watch, create, update, patch, delete |
+| Roles | get, list, watch, create, update, patch, delete |
+| RoleBindings | get, list, watch, create, update, patch, delete |
+
+ Copyright © 2026 - [Cookie Preferences](#)
+
+###### On this page:
+
+- [Requirements](#)
+- [MiniKube Setup](#)
+- [Deploy Vespa Operator](#install-helm-chart)
+- [Deploy a VespaSet](#)
+- [Deploy a Vespa Application](#)
+- [Feed Documents](#)
+- [Permissions](#permissions)
+
+---
+
+### Configure Log Collection
+Use the Fluent Bit Operator to collect logs and forward them to Grafana Cloud Loki.
+
+#### Configure Log Collection
+
+ 
+
+Use the Fluent Bit Operator to collect logs and forward them to Grafana Cloud Loki.
+
+##### 1. Install Fluent Bit Operator
+
+Install the Fluent Bit Operator in a dedicated `logging` namespace.
+
+```
+$ helm repo add fluent https://fluent.github.io/helm-charts
+$ helm repo update
+$ kubectl create namespace logging
+$ helm install fluent-operator fluent/fluent-operator --namespace logging --set operator.logLevel=debug
+```
+
+Verify the installation by ensuring the operator Pod is running:
+
+```
+$ kubectl get pods -n logging
+```
+
+##### 2. Configure Loki Credentials
+
+To forward logs to Grafana Cloud Loki, you must create a Kubernetes Secret containing your credentials. Obtain your User ID and API Token from the Grafana Cloud Portal under _Connections → Loki_.
+
+```
+$ kubectl create secret generic grafana-cloud-loki -n logging --from-literal=username=$USER_ID --from-literal=password=$API_TOKEN
+```
+
+##### 3. Deploy Fluent Bit Configuration
+
+The Fluent Operator uses Custom Resources to define the logging pipeline. The following configuration sets up a **ClusterInput** to tail container logs, a **ClusterFilter** to add Kubernetes metadata, and a **ClusterOutput** to ship logs to Loki.
+
+Save the following as `fluentbit-logging.yaml`. **Note:** Replace `logs-prod-006.grafana.net` with your specific Loki endpoint.
+
+```
+apiVersion: fluentbit.fluent.io/v1alpha2
+kind: ClusterFluentBitConfig
+metadata:
+  name: fluent-bit-config
+spec:
+  service:
+    httpServer: true
+    parsersFile: parsers.conf
+  inputSelector:
+    matchLabels:
+      fluentbit.fluent.io/enabled: "true"
+  filterSelector:
+    matchLabels:
+      fluentbit.fluent.io/enabled: "true"
+  outputSelector:
+    matchLabels:
+      fluentbit.fluent.io/enabled: "true"
+---
+apiVersion: fluentbit.fluent.io/v1alpha2
+kind: ClusterInput
+metadata:
+  name: kube-containers
+  labels:
+    fluentbit.fluent.io/enabled: "true"
+spec:
+  tail:
+    tag: kube.*
+    path: /var/log/containers/*.log
+    parser: cri
+    readFromHead: false
+    memBufLimit: 5MB
+---
+apiVersion: fluentbit.fluent.io/v1alpha2
+kind: ClusterFilter
+metadata:
+  name: k8s-meta
+  labels:
+    fluentbit.fluent.io/enabled: "true"
+spec:
+  match: "kube.*"
+  filters:
+    - kubernetes:
+        mergeLog: true
+        keepLog: false
+        labels: true
+        annotations: true
+---
+apiVersion: fluentbit.fluent.io/v1alpha2
+kind: ClusterOutput
+metadata:
+  name: loki
+  labels:
+    fluentbit.fluent.io/enabled: "true"
+spec:
+  match: "kube.*"
+  loki:
+    host: logs-prod-006.grafana.net
+    port: 443
+    tls:
+      verify: false
+    httpUser:
+      valueFrom:
+        secretKeyRef:
+          name: grafana-cloud-loki
+          key: username
+    httpPassword:
+      valueFrom:
+        secretKeyRef:
+          name: grafana-cloud-loki
+          key: password
+    labels:
+      - job=fluentbit
+      - cluster=minikube
+    autoKubernetesLabels: "off"
+---
+apiVersion: fluentbit.fluent.io/v1alpha2
+kind: FluentBit
+metadata:
+  name: fluent-bit
+  namespace: logging
+spec:
+  fluentBitConfigName: fluent-bit-config
+  image: ghcr.io/fluent/fluent-operator/fluent-bit:3.1.4
+  tolerations:
+    - operator: Exists
+```
+
+Apply the configuration to your cluster:
+
+```
+$ kubectl apply -f fluentbit-logging.yaml
+```
+
+##### 4. Query Logs
+
+Once deployed, Fluent Bit will run as a `DaemonSet` on every node. You can query the logs using LogQL in Grafana Explore.
+
+Check the Fluent Bit logs to ensure there are no authentication errors (HTTP 401):
+
+```
+$ kubectl logs -n logging -l app.kubernetes.io/name=fluent-bit --tail=50
+```
+
+Use these LogQL queries to inspect Vespa components specifically:
+
+```
+#### Filter logs for the Config Server
+{cluster="minikube", namespace_name="default", pod_name=~"cfg-.*"}
+
+#### Filter logs for specific containers (e.g., query container)
+{cluster="minikube", container_name="vespa"}
+
+#### Search for errors across all Vespa pods
+{cluster="minikube"} |= "error"
+```
+
+ Copyright © 2026 - [Cookie Preferences](#)
+
+---
+
+### Monitor a Vespa on Kubernetes Deployment
+Use the Prometheus Operator to collect metrics from a Vespa on Kubernetes deployment.
+
+#### Monitor a Vespa on Kubernetes Deployment
+
+ 
+
+Use the Prometheus Operator to collect metrics from a Vespa on Kubernetes deployment. This guide covers the installation of the monitoring stack, configuration of `PodMonitor` resources for Vespa components, and forwarding metrics to Grafana Cloud.
+
+##### Prerequisites
+
+- A Kubernetes cluster (EKS, GKE, AKS, or Minikube).
+- [Helm CLI](https://helm.sh/docs/intro/install/)
+- Kubernetes Command Line Tool ([kubectl](https://kubernetes.io/docs/reference/kubectl/))
+- A Grafana Cloud account
+
+##### 1. Install Prometheus Operator
+
+The recommended way to install Prometheus on Kubernetes is via the [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack) Helm chart. Add the repository and create a monitoring namespace.
+
+```
+$ helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+$ helm repo update
+$ kubectl create namespace monitoring
+```
+
+###### Configure Grafana Cloud Credentials
+
+If you intend to forward metrics to Grafana Cloud, create a Kubernetes Secret with your credentials. Retrieve your **Instance ID** (User) and **API Token** (Password) from the Grafana Cloud Portal under _Configure Prometheus_.
+
+```
+$ kubectl create secret generic grafana-cloud-prometheus -n monitoring --from-literal=username=$INSTANCE_ID --from-literal=password=$API_TOKEN
+```
+
+###### Configure Helm Values
+
+Create a `prometheus-values.yaml` file. This configuration enables remote writing to Grafana Cloud, configures the Prometheus Operator to select all `PodMonitors`, and disables the local Grafana instance.
+
+```
+prometheus:
+  prometheusSpec:
+  # Allow Prometheus to discover PodMonitors in other namespaces
+  podMonitorSelectorNilUsesHelmValues: false
+  serviceMonitorSelectorNilUsesHelmValues: false
+
+  # Remote write configuration for Grafana Cloud
+  remoteWrite:
+    - url: [https://prometheus-prod-XX-prod-XX.grafana.net/api/prom/push](https://prometheus-prod-XX-prod-XX.grafana.net/api/prom/push)
+      basicAuth:
+        username:
+          name: grafana-cloud-prometheus
+          key: username
+        password:
+          name: grafana-cloud-prometheus
+          key: password
+      writeRelabelConfigs:
+        - sourceLabels: [__address__]
+          targetLabel: cluster
+          replacement: my-cluster-name
+
+#### Disable local Grafana
+grafana:
+  enabled: false
+
+#### Enable Alertmanager and Kube State Metrics
+alertmanager:
+  enabled: true
+  kube-state-metrics:
+  enabled: true
+```
+
+Install the stack using Helm:
+
+```
+$ helm install prometheus prometheus-community/kube-prometheus-stack --namespace monitoring --values prometheus-values.yaml
+```
+
+##### 2. Configure PodMonitors
+
+Vespa exposes metrics on specific ports that differ from standard web traffic ports. We use the `PodMonitor` Custom Resource to define how Prometheus should scrape these endpoints.
+
+###### Monitor ConfigServer Pods
+
+ConfigServers expose metrics on port **19071** at the path `/configserver-metrics`. Apply the following configuration to scrape these metrics.
+
+```
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: vespa-configserver
+  namespace: $NAMESPACE
+  labels:
+    release: prometheus # Required to be picked up by the operator
+spec:
+  selector:
+    matchLabels:
+      app: vespa-configserver
+  podMetricsEndpoints:
+    - targetPort: 19071
+      path: /configserver-metrics
+      interval: 30s
+      scheme: http
+      params:
+        format: ['prometheus']
+      relabelings:
+        # Map Kubernetes pod name to the 'pod' label
+        - sourceLabels: [__meta_kubernetes_pod_name]
+          targetLabel: pod
+        - targetLabel: vespa_role
+          replacement: configserver
+```
+
+###### Monitor Application Pods
+
+Container and Content Pods expose metrics on the state API port **19092** at `/prometheus/v1/values`. The following example defines a PodMonitor for Vespa application pods.
+
+```
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: vespa-application
+  namespace: default
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchExpressions:
+      # Selects pods that are part of a Vespa application (feed, query, content)
+      - key: vespa.ai/cluster-name
+        operator: Exists
+  podMetricsEndpoints:
+    - targetPort: 19092
+      path: /prometheus/v1/values
+      interval: 30s
+      scheme: http
+      relabelings:
+        - sourceLabels: [__meta_kubernetes_pod_name]
+          targetLabel: pod
+        - sourceLabels: [__meta_kubernetes_namespace]
+          targetLabel: namespace
+        # Extract the role from the pod name or labels if needed
+        - targetLabel: vespa_role
+          replacement: node
+```
+
+##### 3. Verify Metrics
+
+Once the `PodMonitors` are applied, verify that Prometheus is successfully scraping the targets.
+
+###### Check Targets Locally
+
+Port-forward the Prometheus UI to your local machine:
+
+```
+$ kubectl port-forward -n monitoring svc/prometheus-kube-prometheus-prometheus 9090:9090
+```
+
+Navigate to [http://localhost:9090/targets](http://localhost:9090/targets). You should see targets named `default/vespa-configserver` and `default/vespa-application` in the **UP** state.
+
+###### Query Metrics
+
+You can verify the data using PromQL queries in the Prometheus UI or Grafana Explore:
+
+```
+#### Check availability of Config Servers
+up{vespa_role="configserver"}
+
+#### Retrieve average maintenance duration
+vespa_maintenance_duration_average
+
+#### List all metrics coming from Vespa
+{job=~"default/vespa-.*"}
+```
+
+##### Troubleshooting
+
+**Targets show `No active targets`**:
+
+This indicates the `PodMonitor` selector does not match any Pods. Verify the labels on your Vespa pods:
+
+```
+$ kubectl get pods -n $NAMESPACE --show-labels
+```
+
+Ensure the `selector.matchLabels` in your `PodMonitor` YAML matches the labels shown in the output above.
+
+**Targets are in `DOWN` state**:
+
+This usually means Prometheus cannot reach the metric endpoint. Verify that the metrics are exposed on the expected port by running a curl command from within the cluster:
+
+```
+$ kubectl run curl-test -n $NAMESPACE --image=curlimages/curl -it --rm -- curl http://cfg-0.$NAMESPACE.svc.cluster.local:19071/configserver-metrics?format=prometheus
+```
+
+**Network Policies**:
+
+If you use `NetworkPolicy` to restrict traffic, ensure you have a policy allowing ingress traffic from the `monitoring` namespace to the `$NAMESPACE` namespace on ports 19071 and 19092.
+
+ Copyright © 2026 - [Cookie Preferences](#)
+
+###### On this page:
+
+- [Prerequisites](#)
+- [1. Install Prometheus Operator](#)
+- [Configure Grafana Cloud Credentials](#)
+- [Configure Helm Values](#)
+- [2. Configure PodMonitors](#)
+- [Monitor ConfigServer Pods](#)
+- [Monitor Application Pods](#)
+- [3. Verify Metrics](#)
+- [Check Targets Locally](#)
+- [Query Metrics](#)
+- [Troubleshooting](#)
+
+---
+
+### Lifecycle Operations for Vespa on Kubernetes
+The ConfigServer and Vespa Application Pods have built-in resilience and recovery capabilities; they are automatically recovered during failures and gracefully shut down during maintenance or scaling operations to preserve data integrity.
+
+#### Lifecycle Operations for Vespa on Kubernetes
+
+ 
+
+The ConfigServer and Vespa Application Pods have built-in resilience and recovery capabilities; they are automatically recovered during failures and gracefully shut down during maintenance or scaling operations to preserve data integrity.
+
+###### Automatic Recovery
+
+Vespa relies on standard Kubernetes controllers to detect and restart crashed Pods. If a container exits unexpectedly (e.g., OOMKilled or application crash), the kubelet will automatically restart it.
+
+However, the ConfigServers track the health history of every Pod. To prevent a "crash loop" from causing cascading failures or constantly churning resources, the system implements a strict throttling mechanism. The ConfigServers allow a maximum of 2 involuntary Pod disruptions per 24-hour period for a given Vespa Application. If this limit is exceeded, the ConfigServer stops automatically failing these Pods and will require human intervention to investigate the root cause.
+
+###### Graceful Shutdown
+
+To prevent query failures or data loss during termination, a [PreStop Hook](https://kubernetes.io/docs/concepts/containers/container-lifecycle-hooks/) is placed on every ConfigServer and Vespa Application Pod. During a voluntary disruption, this hook ensures that existing traffic is drained and that data is flushed before killing the Pod.
+
+Two types of disruptions exist in Kubernetes:
+
+| Type | Scenario | Behavior |
+| --- | --- | --- |
+| **Voluntary Disruption** | Scaling down, rolling upgrades, or node maintenance. | The preStop hook detects a voluntary disruption, stops the Vespa Container cluster from accepting new traffic, flushes in-memory data to disk for Content clusters, and ensures a clean exit before the Pod is deleted. |
+| **Involuntary Disruption** | Node hardware failure, kernel panic, or eviction. | Kubernetes initiates the termination. The preStop hook attempts to run to flush data and close connections. However, if the Pod is lost abruptly. the hook cannot run, and recovery relies on Vespa's data replication. |
+
+###### Availability Management (PodDisruptionBudgets)
+
+Defining a `PodDisruptionBudget` (PBD) is not supported for Vespa on Kubernetes. The ConfigServer will override any PBD with its own orchestration policy, such as 2 involuntary Pod disruptions per 24 hours, and enforce it over the PDB.
+
+ Copyright © 2026 - [Cookie Preferences](#)
+
+---
+
+### Enable TLS Encryption for Vespa on Kubernetes
+TLS encryption for Vespa on Kubernetes can be configured for internal pod-to-pod communication using mutual TLS (mTLS) and for external ingress traffic.
+
+#### Enable TLS Encryption for Vespa on Kubernetes
+
+ 
+
+TLS encryption for Vespa on Kubernetes can be configured for internal pod-to-pod communication using mutual TLS (mTLS) and for external ingress traffic. This guide demonstrates using [cert-manager](https://cert-manager.io/), a Kubernetes-native certificate management solution that automates certificate issuance and renewal, to set up TLS for the Vespa on Kubernetes deployment.
+
+`cert-manager` integrates with multiple certificate authorities including self-signed CAs, Let's Encrypt, HashiCorp Vault, and commercial providers. It handles the certificate lifecycle by automatically issuing certificates and renewing them before expiration. The [cert-manager CSI driver](https://cert-manager.io/docs/usage/csi-driver/) provides secure certificate delivery to pods through runtime injection via a DaemonSet, ensuring certificates are available before containers start.
+
+##### Prerequisites
+
+- Kubernetes cluster with Vespa Operator installed (see [Installation](installation.html))
+- [cert-manager](https://cert-manager.io/docs/installation/) v1.13 or later
+- [cert-manager CSI driver](https://cert-manager.io/docs/usage/csi-driver/) installed
+- Kubernetes Command Line Tool ([kubectl](https://kubernetes.io/docs/reference/kubectl/))
+- OpenSSL (for CA generation)
+
+##### Enable mTLS for Internal Communication
+
+Mutual TLS (mTLS) secures communication between Vespa services within the Kubernetes cluster. Each pod authenticates using client certificates issued by a namespace-local root Certificate Authority. It is also possible to configure the Certificate Authority to be cluster-global.
+
+This method is ideal for those who prefer TLS to terminate at the service, or those who have already integrated with mTLS from Vespa Cloud. For more details on Vespa's mTLS implementation, see the [Vespa mTLS documentation](https://docs.vespa.ai/en/security/mtls.html).
+
+###### Step 1: Create Certificate Authority
+
+Create a self-signed issuer to bootstrap the certificate chain, then use it to create a namespace-local root CA certificate that acts as the trust anchor for all internal mTLS certificates.
+
+```
+$ cat <<EOF | kubectl apply -f -
+#### Create self-signed issuer
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: root-selfsigned
+  namespace: vespa
+spec:
+  selfSigned: {}
+---
+#### Create root CA certificate
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: root-ca
+  namespace: vespa
+spec:
+  isCA: true
+  commonName: root-ca
+  secretName: root-ca-secret
+  duration: 87600h # 10 years
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+    encoding: PKCS8
+  issuerRef:
+    name: root-selfsigned
+    kind: Issuer
+EOF
+```
+
+###### Step 2: Create CA Issuer
+
+The CA issuer uses the root CA to issue certificates to individual pods.
+
+```
+$ cat <<EOF | kubectl apply -f -
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: ca-issuer
+  namespace: vespa
+spec:
+  ca:
+    secretName: root-ca-secret
+EOF
+```
+
+###### Step 3: Create TLS Configuration
+
+Create a `ConfigMap` that defines the location where Vespa loads TLS certificates and private keys. This configuration file is loaded through the `VESPA_TLS_CONFIG_FILE` environment variable in the Pod specification of the `VespaSet`.
+
+```
+$ cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: vespa-config-tls
+  namespace: vespa
+data:
+  tls-config.json: |
+    {
+      "files": {
+        "ca-certificates": "/etc/tls/ca.crt",
+        "certificates": "/etc/tls/tls.crt",
+        "private-key": "/etc/tls/tls.key"
+      }
+    }
+EOF
+```
+
+###### Step 4: Configure VespaSet with mTLS
+
+Update the VespaSet specification to mount the TLS configuration and use the cert-manager CSI driver for certificate injection via a `PodTempalte`. For more information on the `PodTemplate` specification, refer to the [Custom Overrides](custom-overrides-podtemplate) section.
+
+Set the `VESPA_TLS_CONFIG_FILE` environment variable to point to the TLS configuration file from the `ConfigMap`. The main container name will always be `vespa`.
+
+```
+$ cat <<EOF | kubectl apply -f -
+apiVersion: k8s.ai.vespa/v1
+kind: VespaSet
+metadata:
+  name: vespaset-sample
+  namespace: vespa
+spec:
+  version: $OCI_IMAGE_TAG
+
+  configServer:
+    image: "$OCI_IMAGE_REFERENCE"
+    storageClass: "gp3"
+    generateRbac: false
+    podTemplate:
+      spec:
+        containers:
+          - name: vespa
+            env:
+              - name: VESPA_TLS_CONFIG_FILE
+                value: /etc/tls-config/tls-config.json
+            volumeMounts:
+              - name: tls-certs
+                mountPath: /etc/tls
+                readOnly: true
+              - name: tls-config
+                mountPath: /etc/tls-config/tls-config.json
+                readOnly: true
+                subPath: tls-config.json
+        volumes:
+          - name: tls-certs
+            csi:
+              driver: csi.cert-manager.io
+              readOnly: true
+              volumeAttributes:
+                csi.cert-manager.io/issuer-name: ca-issuer
+                csi.cert-manager.io/issuer-kind: "Issuer"
+                csi.cert-manager.io/issuer-group: "cert-manager.io"
+                csi.cert-manager.io/dns-names: "*.vespa.svc.cluster.local,localhost"
+                csi.cert-manager.io/common-name: "${POD_NAME}.vespa.svc.cluster.local"
+                csi.cert-manager.io/duration: "720h"
+                csi.cert-manager.io/renew-before: "72h"
+                csi.cert-manager.io/fs-group: "1000"
+                csi.cert-manager.io/key-algorithm: "ECDSA"
+                csi.cert-manager.io/key-size: "256"
+                csi.cert-manager.io/key-encoding: "PKCS8"
+          - name: tls-config
+            configMap:
+              name: vespa-config-tls
+
+  application:
+    image: "$OCI_IMAGE_REFERENCE"
+    storageClass: "gp3"
+    podTemplate:
+      spec:
+        containers:
+          - name: vespa
+            env:
+              - name: VESPA_TLS_CONFIG_FILE
+                value: /etc/tls-config/tls-config.json
+            volumeMounts:
+              - name: tls-certs
+                mountPath: /etc/tls
+                readOnly: true
+              - name: tls-config
+                mountPath: /etc/tls-config/tls-config.json
+                readOnly: true
+                subPath: tls-config.json
+        volumes:
+          - name: tls-certs
+            csi:
+              driver: csi.cert-manager.io
+              readOnly: true
+              volumeAttributes:
+                csi.cert-manager.io/issuer-name: ca-issuer
+                csi.cert-manager.io/issuer-kind: "Issuer"
+                csi.cert-manager.io/issuer-group: "cert-manager.io"
+                csi.cert-manager.io/dns-names: "*.vespa.svc.cluster.local,localhost"
+                csi.cert-manager.io/common-name: "${POD_NAME}.vespa.svc.cluster.local"
+                csi.cert-manager.io/duration: "720h"
+                csi.cert-manager.io/renew-before: "72h"
+                csi.cert-manager.io/fs-group: "1000"
+                csi.cert-manager.io/key-algorithm: "ECDSA"
+                csi.cert-manager.io/key-size: "256"
+                csi.cert-manager.io/key-encoding: "PKCS8"
+          - name: tls-config
+            configMap:
+              name: vespa-config-tls
+
+  ingress:
+    endpointType: "NODE_PORT"
+EOF
+```
+
+The main `vespa` container in the `VespaSet` includes a new specification to mount the cert-manager CSI-managed certificates to `/etc/tls/`.
+
+The cert-manager CSI driver automatically injects certificates signed by the CA issuer through the `volume` override, with a 30-day validity period and automatic renewal 3 days before expiration in this example.
+
+##### Enabling TLS for Ingress Traffic
+
+Ingress TLS secures external traffic to Vespa's Data Plane HTTP port. This configuration allows using a separate certificate chain from mTLS, providing security boundary separation between internal and external communication. This is useful when you want to terminate TLS at the service but use different trust anchors for internal and external traffic. These settings apply only to application pods.
+
+###### Step 1: Create External CA for Ingress
+
+In this example, we will generate a dummy Certificate Authority (CA) that will act as a commercial authoritative CA.
+
+Generate a separate Certificate Authority for signing ingress certificates.
+
+```
+$ openssl genrsa -out ingress-ca.key 2048
+$ openssl req -x509 -new -nodes -key ingress-ca.key -sha256 -days 365 \
+  -out ingress-ca.crt -subj "/CN=Ingress CA" \
+  -addext "basicConstraints=CA:TRUE"
+```
+
+###### Step 2: Import CA as Kubernetes Secret
+
+Manually import the CA as a Kubernetes `Secret` resource.
+
+```
+$ kubectl create secret tls ingress-ca \
+  --cert=ingress-ca.crt \
+  --key=ingress-ca.key \
+  -n vespa
+```
+
+###### Step 3: Create Ingress CA Issuer
+
+The ingress issuer references the externally-generated CA and uses it to sign certificates for ingress traffic, separate from the internal mTLS certificate chain.
+
+```
+$ cat <<EOF | kubectl apply -f -
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: ingress-issuer
+  namespace: vespa
+spec:
+  ca:
+    secretName: ingress-ca
+EOF
+```
+
+###### Step 4: Create Ingress TLS Configuration
+
+Create a separate ConfigMap for ingress TLS configuration. This configuration file is loaded through the `VESPA_TLS_CONFIG_FILE_INGRESS` environment variable in the Pod specification of the `VespaSet`.
+
+```
+$ cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: vespa-config-tls-ingress
+  namespace: vespa
+data:
+  tls-config.json: |
+    {
+      "files": {
+        "ca-certificates": "/etc/tls-ingress/ca.crt",
+        "certificates": "/etc/tls-ingress/tls.crt",
+        "private-key": "/etc/tls-ingress/tls.key"
+      }
+    }
+EOF
+```
+
+###### Step 5: Configure Ingress TLS in VespaSet
+
+Update the VespaSet application pod template to include ingress TLS configuration. Set the `VESPA_TLS_CONFIG_FILE_INGRESS` environment variable to point to the ingress TLS configuration file.
+
+```
+$ cat <<EOF | kubectl apply -f -
+apiVersion: k8s.ai.vespa/v1
+kind: VespaSet
+metadata:
+  name: vespaset-sample
+  namespace: vespa
+spec:
+  version: $OCI_IMAGE_TAG
+
+  # ConfigServer configuration remains the same as mTLS-only setup
+
+  application:
+    image: "$OCI_IMAGE_REFERENCE"
+    storageClass: "gp3"
+    podTemplate:
+      spec:
+        containers:
+          - name: vespa
+            env:
+              - name: VESPA_TLS_CONFIG_FILE
+                value: /etc/tls-config/tls-config.json
+              - name: VESPA_TLS_CONFIG_FILE_INGRESS
+                value: /etc/tls-config-ingress/tls-config.json
+            volumeMounts:
+              # mTLS volumes
+              - name: tls-certs
+                mountPath: /etc/tls
+                readOnly: true
+              - name: tls-config
+                mountPath: /etc/tls-config/tls-config.json
+                readOnly: true
+                subPath: tls-config.json
+              # Ingress volumes
+              - name: tls-certs-ingress
+                mountPath: /etc/tls-ingress
+                readOnly: true
+              - name: tls-config-ingress
+                mountPath: /etc/tls-config-ingress/tls-config.json
+                readOnly: true
+                subPath: tls-config.json
+        volumes:
+          # mTLS volumes (same as previous example)
+          - name: tls-certs
+            csi:
+              driver: csi.cert-manager.io
+              readOnly: true
+              volumeAttributes:
+                csi.cert-manager.io/issuer-name: ca-issuer
+                csi.cert-manager.io/issuer-kind: "Issuer"
+                csi.cert-manager.io/issuer-group: "cert-manager.io"
+                csi.cert-manager.io/dns-names: "*.vespa.svc.cluster.local,localhost"
+                csi.cert-manager.io/common-name: "${POD_NAME}.vespa.svc.cluster.local"
+                csi.cert-manager.io/duration: "720h"
+                csi.cert-manager.io/renew-before: "72h"
+                csi.cert-manager.io/fs-group: "1000"
+                csi.cert-manager.io/key-algorithm: "ECDSA"
+                csi.cert-manager.io/key-size: "256"
+                csi.cert-manager.io/key-encoding: "PKCS8"
+          - name: tls-config
+            configMap:
+              name: vespa-config-tls
+          # Ingress TLS volumes
+          - name: tls-certs-ingress
+            csi:
+              driver: csi.cert-manager.io
+              readOnly: true
+              volumeAttributes:
+                csi.cert-manager.io/issuer-name: ingress-issuer
+                csi.cert-manager.io/issuer-kind: "Issuer"
+                csi.cert-manager.io/issuer-group: "cert-manager.io"
+                csi.cert-manager.io/dns-names: "*.vespa.svc.cluster.local,localhost"
+                csi.cert-manager.io/common-name: "${POD_NAME}.vespa.svc.cluster.local"
+                csi.cert-manager.io/duration: "720h"
+                csi.cert-manager.io/renew-before: "72h"
+                csi.cert-manager.io/fs-group: "1000"
+                csi.cert-manager.io/key-algorithm: "ECDSA"
+                csi.cert-manager.io/key-size: "256"
+                csi.cert-manager.io/key-encoding: "PKCS8"
+          - name: tls-config-ingress
+            configMap:
+              name: vespa-config-tls-ingress
+
+  ingress:
+    endpointType: "NODE_PORT"
+EOF
+```
+
+This configuration adds a second TLS certificate chain for ingress traffic by setting the `VESPA_TLS_CONFIG_FILE_INGRESS` environment variable and mounting certificates from the ingress issuer. Both mTLS and ingress TLS configurations coexist, providing separate trust boundaries for internal and external communication.
+
+###### Step 6: Testing with Client Certificates
+
+To test ingress TLS, generate a client certificate signed by the ingress CA.
+
+```
+$ openssl genrsa -out ingress-client.key 2048
+$ openssl req -new -key ingress-client.key -out ingress-client.csr \
+  -subj "/CN=client.local"
+$ openssl x509 -req -in ingress-client.csr \
+  -CA ingress-ca.crt -CAkey ingress-ca.key -CAcreateserial \
+  -out ingress-client.crt -days 365 -sha256
+```
+
+Query Vespa using the client certificate by starting a port-forward to the DataPlane 4443 port.
+
+```
+$ kubectl -n mramdenbourg-upgradetest port-forward pod/$CONTAINER_POD_NAME 4443:4443
+```
+
+Use the client certificate to query the DataPlane cluster.
+
+```
+$ curl --cacert ingress-ca.crt \
+  --key ingress-client.key \
+  --cert ingress-client.crt \
+  -XPOST "https://localhost:4443/document/v1/music/music/docid/1" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "fields": {
+      "artist": "The Beatles",
+      "album": "Abbey Road",
+      "year": 1969
+    }
+  }'
+```
+
+ Copyright © 2026 - [Cookie Preferences](#)
+
+###### On this page:
+
+- [Prerequisites](#)
+- [Enable mTLS for Internal Communication](#mtls)
+- [Step 1: Create Certificate Authority](#)
+- [Step 2: Create CA Issuer](#)
+- [Step 3: Create TLS Configuration](#)
+- [Step 4: Configure VespaSet with mTLS](#)
+- [Enabling TLS for Ingress Traffic](#ingress-tls)
+- [Step 1: Create External CA for Ingress](#)
+- [Step 2: Import CA as Kubernetes Secret](#)
+- [Step 3: Create Ingress CA Issuer](#)
+- [Step 4: Create Ingress TLS Configuration](#)
+- [Step 5: Configure Ingress TLS in VespaSet](#)
+- [Step 6: Testing with Client Certificates](#)
+
+---
+
+### Vespa on Kubernetes
+Vespa applications can be deployed on Kubernetes using the Vespa Operator.
+
+#### Vespa on Kubernetes
+
+ 
+
+Vespa applications can be deployed on Kubernetes using the Vespa Operator. The Vespa Operator provides a native Kubernetes experience to the management of Vespa infrastructure and applications. This includes the deployment, configuration, and upgrades to a Vespa cluster and critical lifecycle operations.
+
+##### Overview
+
+The Vespa Operator simplifies running Vespa on Kubernetes by providing:
+
+- Declarative configuration with a [Custom Resource Definition (CRD)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/)
+- Automated Vespa infrastructure deployment and management
+- Automated deployment, updates, and upgrades to Vespa applications
+- Critical lifecycle operations such as failure handling
+- Secure clusters with TLS
+- Kubernetes-native monitoring of Vespa applications
+- Integration with Kubernetes-native tooling
+
+Refer to the following sections to install, configure, and manage Vespa on Kubernetes. For more details on the design and setup of Vespa on Kubernetes, refer to the [Architecture](architecture.html) section.
+
+- [Install Vespa on Kubernetes](installation.html)
+- [Lifecycle Operations for Vespa on Kubernetes](operations.html)
+- [Enable TLS Encryption for Vespa on Kubernetes](tls.html)
+- [Monitor a Vespa on Kubernetes Deployment](monitoring.html)
+- [Configure Log Collection](logging.html)
+- [Configure External Access Layer for Vespa on Kubernetes](ingress.html)
+- [Provide Custom Overrides](custom-overrides-podtemplate.html)
+
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -11850,7 +13412,7 @@ Note: Always set `RequestPayer: "requester"` to access the objects - transfer co
 
 Once the above lists the log files from S3, review [access-log-lambda](https://github.com/vespa-cloud/vespa-documentation-search/blob/main/access-log-lambda/README.md)for how to write a function to decompress and handle the log data.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -11909,7 +13471,7 @@ Objects are exported once generated - access log files are compressed and export
 
 Note: Always set a user project to access the objects - transfer cost is assigned to the requester.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -12002,7 +13564,7 @@ $ cat JsonAccessLog.20230117* | jq '. |
   . +{iso8601date:(.time|todateiso8601)}'
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -12017,9 +13579,9 @@ $ cat JsonAccessLog.20230117* | jq '. |
 
  **Warning:** The structure of log archive buckets may change without notice
 
-After an Enclave is established in your cloud provider account using Terraform, the module will have created a storage bucket per Vespa Cloud zone you configured in your Enclave. These storage buckets are used to archive logs from the machines that run Vespa inside your account.
+After Vespa Cloud Enclave is established in your cloud provider account using Terraform, the module will have created a storage bucket per Vespa Cloud zone you configured in your enclave. These storage buckets are used to archive logs from the machines that run Vespa inside your account.
 
-There will be one storage bucket per Vespa Cloud Zone that is configured in the Enclave. The name of the bucket will depend on the cloud provider you are setting up the Enclave in.
+There will be one storage bucket per Vespa Cloud Zone that is configured in the enclave. The name of the bucket will depend on the cloud provider you are setting up the enclave in.
 
 Files are synchronized to the archive bucket when the file is rotated by the logging system, or when a virtual machine is deprovisioned from the application. The consequence of this is that frequency of uploads will depend on the activity of the Vespa application.
 
@@ -12046,18 +13608,18 @@ There are three log types that are synced to this bucket.
 - `access`: [Access logs](../access-logging.html)
 - `connection`: [Connection logs](../access-logging.html#connection-log)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
 ### Vespa Cloud Enclave AWS Architecture
-Each Enclave in the tenant AWS account corresponds to a Vespa Cloud[zone](../zones.html).
+Each Vespa Cloud Enclave in the tenant AWS account corresponds to a Vespa Cloud[zone](../zones.html).
 
 #### Vespa Cloud Enclave AWS Architecture
 
  
 
-Each Enclave in the tenant AWS account corresponds to a Vespa Cloud[zone](../zones.html). Inside the tenant AWS account one Enclave is contained within one single[VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
+Each Vespa Cloud Enclave in the tenant AWS account corresponds to a Vespa Cloud[zone](../zones.html). Inside the tenant AWS account one enclave is contained within one single[VPC](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
 
 ![Enclave architecture](/assets/img/vespa-cloud-enclave-aws.png)
 
@@ -12065,11 +13627,11 @@ Each Enclave in the tenant AWS account corresponds to a Vespa Cloud[zone](../zon
 
 Configuration Servers inside the Vespa Cloud zone makes the decision to create or destroy EC2 instances ("Vespa Hosts" in diagram) based on the Vespa applications that are deployed. The Configuration Servers also set up the Network Load Balancers needed to communicate with the deployed Vespa application.
 
-Each Vespa Host will periodically sync its logs to a S3 bucket ("Log Archive"). This bucket is "local" to the Enclave and provisioned by the Terraform module inside the tenant's AWS account.
+Each Vespa Host will periodically sync its logs to a S3 bucket ("Log Archive"). This bucket is "local" to the enclave and provisioned by the Terraform module inside the tenant's AWS account.
 
 ###### Networking
 
-The Enclave VPC is very network restricted. Vespa Hosts do not have public IPv4 addresses and there is no[NAT gateway](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html)available in the VPC. Vespa Hosts have public IPv6 addresses and are able to make outbound connections. Inbound connections are not allowed. Outbound IPv6 connections are used to bootstrap communication with the Configuration Servers, and to report operational metrics back to Vespa Cloud.
+The enclave VPC is very network restricted. Vespa Hosts do not have public IPv4 addresses and there is no[NAT gateway](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html)available in the VPC. Vespa Hosts have public IPv6 addresses and are able to make outbound connections. Inbound connections are not allowed. Outbound IPv6 connections are used to bootstrap communication with the Configuration Servers, and to report operational metrics back to Vespa Cloud.
 
 When a Vespa Host is booted it will set up an encrypted tunnel back to the Configuration Servers. All communication between Configuration Servers and the Vespa Hosts will be run over this tunnel after it is set up.
 
@@ -12077,19 +13639,19 @@ When a Vespa Host is booted it will set up an encrypted tunnel back to the Confi
 
 The Vespa Cloud operations team does _not_ have any direct access to the resources that is part of the customer account. The only possible access is through the management APIs needed to run Vespa itself. In case it is needed for, e.g. incident debugging, direct access can only be granted to the Vespa team by the tenant itself. For further details, see the documentation for the[`ssh`-submodule](https://registry.terraform.io/modules/vespa-cloud/enclave/aws/latest/submodules/ssh).
 
-All communication between the Enclave and the Vespa Cloud configuration servers is encrypted, authenticated and authorized using[mTLS](https://en.wikipedia.org/wiki/Mutual_authentication#mTLS) with identities embedded in the certificate. mTLS communication is facilitated with the[Athenz](https://www.athenz.io/) service.
+All communication between the enclave and the Vespa Cloud configuration servers is encrypted, authenticated and authorized using[mTLS](https://en.wikipedia.org/wiki/Mutual_authentication#mTLS) with identities embedded in the certificate. mTLS communication is facilitated with the[Athenz](https://www.athenz.io/) service.
 
 All data stored is encrypted at rest using[KMS](https://docs.aws.amazon.com/kms/latest/developerguide/overview.html). All keys are managed by the tenant in the tenant's AWS account.
 
-The resources provisioned in the tenant AWS account is either provisioned by the Terraform module executed by the tenant, or by the orchestration services inside a Vespa Cloud Zone.
+The resources provisioned in the tenant AWS account are either provisioned by the Terraform module executed by the tenant, or by the orchestration services inside a Vespa Cloud Zone.
 
 Resources are provisioned by the Vespa Cloud configuration servers, using the[`provision_policy`](https://github.com/vespa-cloud/terraform-aws-enclave/blob/main/modules/provision/main.tf)AWS IAM policy document defined in the Terraform module.
 
-The tenant that registered the AWS account is the only tenant that can deploy applications targeting the Enclave.
+The tenant that registered the AWS account is the only tenant that can deploy applications targeting the enclave.
 
 For more general information about security in Vespa Cloud, see the[whitepaper](../../security/whitepaper).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -12164,7 +13726,7 @@ To tear down a Vespa Cloud Enclave system, do the steps above in reverse order:
 
 It is important to undeploy the Vespa application(s) first. After running the Terraform, Vespa Cloud cannot manage the resources allocated, so you must clean up these yourself.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -12174,6 +13736,53 @@ It is important to undeploy the Vespa application(s) first. After running the Te
 - [4. Deploy a Vespa application](#4-deploy-a-vespa-application)
 - [Next steps](#next-steps)
 - [Enclave teardown](#enclave-teardown)
+
+---
+
+### Architecture for Vespa Cloud Enclave in Azure
+With Vespa Cloud Enclave, all Azure resources associated with your Vespa Cloud applications are in your enclave Azure subscription, as opposed to a shared Vespa Cloud subscription.
+
+#### Architecture for Vespa Cloud Enclave in Azure
+
+ 
+
+###### Architecture
+
+With Vespa Cloud Enclave, all Azure resources associated with your Vespa Cloud applications are in your enclave Azure subscription, as opposed to a shared Vespa Cloud subscription.
+
+Each Vespa Cloud [zone](../zones.html) has an associated zone resource group (RG) in the enclave subscription, that contains all the resources for that zone. For instance, it has one Virtual Network (VNet aka [VPC](https://cloud.google.com/vpc/)).
+
+![Enclave architecture](/assets/img/vespa-cloud-enclave-azure.png)
+
+###### Virtual Machines, Load Balancers, and Blob Storage
+
+Configuration Servers inside the Vespa Cloud subscription make the decision to create or destroy virtual machines ("Vespa Hosts" in diagram) based on the Vespa applications that are deployed. The Configuration Servers also set up the Container Load Balancers needed to communicate with the deployed Vespa application.
+
+Each Vespa Host will periodically sync its logs to a Blob Storage container ("Log Archive") in a Storage Account in the zone RG. This storage account is "local" to the enclave and provisioned by the Terraform module inside your Azure subscription.
+
+###### Networking
+
+The Zone Virtual Network (VNet aka VPC) is very network restricted. The Vespa Hosts do not have a public IPv4 address. But your application can connect to external IPv4 services using a [NAT gateway](https://learn.microsoft.com/en-us/azure/nat-gateway/nat-overview). Vespa Hosts have public IPv6 addresses and are able to make outbound connections. Inbound connections are not allowed. Outbound IPv6 connections are used to bootstrap communication with the Configuration Servers, and to report operational metrics back to Vespa Cloud.
+
+When a Vespa Host is booted, it will set up an encrypted tunnel back to the Configuration Servers. All communication between Configuration Servers and the Vespa Hosts will be run over this tunnel after it is set up.
+
+###### Security
+
+The Vespa Cloud operations team does _not_ have any direct access to the resources in your subscription. The only possible access is through the management APIs needed to run Vespa itself. In case it is needed for, e.g. incident debugging, direct access can only be granted to the Vespa team by you. Enable direct access by setting the`enable_ssh` input to true in the enclave module. For further details, see the documentation for the[enclave module inputs](https://registry.terraform.io/modules/vespa-cloud/enclave/azure/latest/?tab=inputs).
+
+All communication between the enclave and the Vespa Cloud Configuration servers is encrypted, authenticated, and authorized using[mTLS](https://en.wikipedia.org/wiki/Mutual_authentication#mTLS) with identities embedded in the certificate. mTLS communication is facilitated with the[Athenz](https://www.athenz.io/) service.
+
+All data stored is encrypted at rest using[Encryption At Host](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption-overview). All keys are managed automatically by the Azure platform.
+
+The resources provisioned in your Azure subscription are either provisioned by the Vespa Cloud Enclave Terraform module you apply, or by the orchestration services inside a Vespa Cloud zone.
+
+Resources are provisioned by the Vespa Cloud Configuration servers, using the[`id-provisioner`](https://github.com/vespa-cloud/terraform-azure-enclave/blob/main/provisioner.tf)user-assigned managed identity defined in the Terraform module.
+
+Only your Vespa tenant (that registered this Azure subscription) can deploy applications targeting your enclave.
+
+For more general information about security in Vespa Cloud, see the[whitepaper](../../security/whitepaper).
+
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -12205,7 +13814,7 @@ One subscription can host all your Vespa applications, there is no need for mult
 
 The subscription must be prepared for deploying Vespa applications. Use [Terraform](https://www.terraform.io/) to set up the necessary resources using the[modules](https://registry.terraform.io/modules/vespa-cloud/enclave/azure/latest)published by the Vespa team.
 
-Feel free to use the[multi-region example](https://github.com/vespa-cloud/terraform-azure-enclave/blob/main/examples/multi-region/main.tf)to get started.
+Feel free to use the[example](https://github.com/vespa-cloud/terraform-azure-enclave/blob/main/examples/basic/main.tf)to get started.
 
 If you are unfamiliar with Terraform: It is a tool to manage resources and their configuration in various cloud providers, like AWS, Azure, and GCP. Terraform has published a[Get Started - Azure](https://developer.hashicorp.com/terraform/tutorials/azure-get-started)tutorial, and we strongly encourage enclave users to read and follow the Terraform recommendations for[CI/CD](https://developer.hashicorp.com/terraform/tutorials/automation/automate-terraform).
 
@@ -12242,7 +13851,7 @@ To tear down a Vespa Cloud Enclave system, do the steps above in reverse order:
 
 It is important to undeploy the Vespa application(s) first. After running the Terraform, Vespa Cloud cannot manage the resources allocated, so you must clean up these yourself.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -12278,6 +13887,7 @@ Vespa Cloud Enclave is available in AWS, Azure, and GCP.
 ##### Azure
 
 - [Getting started](azure-getting-started.html)
+- [Architecture and security](azure-architecture)
 
 ##### GCP
 
@@ -12307,7 +13917,13 @@ Navigate to the _modules_ directory for details.
 Deployment failed: Invalid application: In container cluster 'mycluster': Could not provision load balancer mytenant:myapp:myinstance:mycluster: Expected to find exactly 1 resource, but got 0 for subnet with service 'tenantelb'
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+**Do we need to take any actions when AWS sends us Amazon EC2 Instance Retirement, Amazon EC2 Instance Availability Issue, or Amazon EC2 Maintenance notifications,?**
+
+Vespa Cloud will take proactive actions on maintenance operations and replace instances that are scheduled for maintenance tasks ahead of time to reduce any impact the maintenance may incur.
+
+All EC2 instance failures are detected by our control plane, and the problematic instances are automatically replaced. The system will, as part of the replacement process, also ensure that the document distribution is kept in line with your application configuration.
+
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -12320,7 +13936,7 @@ Deployment failed: Invalid application: In container cluster 'mycluster': Could 
 ---
 
 ### Architecture for Vespa Cloud Enclave in GCP
-Each Enclave in the tenant GCP project corresponds to a Vespa Cloud[zone](../zones.html).
+Each Vespa Cloud Enclave in the tenant GCP project corresponds to a Vespa Cloud[zone](../zones.html).
 
 #### Architecture for Vespa Cloud Enclave in GCP
 
@@ -12328,7 +13944,7 @@ Each Enclave in the tenant GCP project corresponds to a Vespa Cloud[zone](../zon
 
 ###### Architecture
 
-Each Enclave in the tenant GCP project corresponds to a Vespa Cloud[zone](../zones.html). Inside the tenant GCP project one Enclave is contained within one single [VPC](https://cloud.google.com/vpc/).
+Each Vespa Cloud Enclave in the tenant GCP project corresponds to a Vespa Cloud[zone](../zones.html). Inside the tenant GCP project one enclave is contained within one single [VPC](https://cloud.google.com/vpc/).
 
 ![Enclave architecture](/assets/img/vespa-cloud-enclave-gcp.png)
 
@@ -12336,11 +13952,11 @@ Each Enclave in the tenant GCP project corresponds to a Vespa Cloud[zone](../zon
 
 Configuration Servers inside the Vespa Cloud zone makes the decision to create or destroy compute instances ("Vespa Hosts" in diagram) based on the Vespa applications that are deployed. The Configuration Servers also set up the Network Load Balancers needed to communicate with the deployed Vespa application.
 
-Each Vespa Host will periodically sync its logs to a Cloud Storage bucket ("Log Archive"). This bucket is "local" to the Enclave and provisioned by the Terraform module inside the tenant's GCP project.
+Each Vespa Host will periodically sync its logs to a Cloud Storage bucket ("Log Archive"). This bucket is "local" to the enclave and provisioned by the Terraform module inside the tenant's GCP project.
 
 ###### Networking
 
-The Enclave VPC is very network restricted. Vespa Hosts do not have public IPv4 addresses and there is no[NAT gateway](https://cloud.google.com/nat/docs/overview) available in the VPC. Vespa Hosts have public IPv6 addresses and are able to make outbound connections. Inbound connections are not allowed. Outbound IPv6 connections are used to bootstrap communication with the Configuration Servers, and to report operational metrics back to Vespa Cloud.
+The enclave VPC is very network restricted. Vespa Hosts do not have public IPv4 addresses and there is no[NAT gateway](https://cloud.google.com/nat/docs/overview) available in the VPC. Vespa Hosts have public IPv6 addresses and are able to make outbound connections. Inbound connections are not allowed. Outbound IPv6 connections are used to bootstrap communication with the Configuration Servers, and to report operational metrics back to Vespa Cloud.
 
 When a Vespa Host is booted it will set up an encrypted tunnel back to the Configuration Servers. All communication between Configuration Servers and the Vespa Hosts will be run over this tunnel after it is set up.
 
@@ -12348,19 +13964,19 @@ When a Vespa Host is booted it will set up an encrypted tunnel back to the Confi
 
 The Vespa Cloud operations team does _not_ have any direct access to the resources that is part of the customer account. The only possible access is through the management APIs needed to run Vespa itself. In case it is needed for, e.g. incident debugging, direct access can only be granted to the Vespa team by the tenant itself. Enabling direct access is done by setting the`enable_ssh` input to true in the enclave module. For further details, see the documentation for the[enclave module inputs](https://registry.terraform.io/modules/vespa-cloud/enclave/google/latest/?tab=inputs).
 
-All communication between the Enclave and the Vespa Cloud configuration servers is encrypted, authenticated and authorized using[mTLS](https://en.wikipedia.org/wiki/Mutual_authentication#mTLS) with identities embedded in the certificate. mTLS communication is facilitated with the[Athenz](https://www.athenz.io/) service.
+All communication between the enclave and the Vespa Cloud configuration servers is encrypted, authenticated and authorized using[mTLS](https://en.wikipedia.org/wiki/Mutual_authentication#mTLS) with identities embedded in the certificate. mTLS communication is facilitated with the[Athenz](https://www.athenz.io/) service.
 
 All data stored is encrypted at rest using[Cloud Key Management](https://cloud.google.com/security-key-management). All keys are managed by the tenant in the tenant's GCP project.
 
-The resources provisioned in the tenant GCP project is either provisioned by the Terraform module executed by the tenant, or by the orchestration services inside a Vespa Cloud zone.
+The resources provisioned in the tenant GCP project are either provisioned by the Terraform module executed by the tenant, or by the orchestration services inside a Vespa Cloud zone.
 
 Resources are provisioned by the Vespa Cloud configuration servers, using the[`vespa_cloud_provisioner_role`](https://github.com/vespa-cloud/terraform-google-enclave/blob/main/main.tf)IAM role defined in the Terraform module.
 
-The tenant that registered the GCP project is the only tenant that can deploy applications targeting the Enclave.
+The tenant that registered the GCP project is the only tenant that can deploy applications targeting the enclave.
 
 For more general information about security in Vespa Cloud, see the[whitepaper](../../security/whitepaper).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -12431,7 +14047,7 @@ It is important to undeploy the Vespa application(s) first. After running the Te
 
 **Identities restricted by domain**: If your GCP organization is using[domain restriction for identities](https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains)you will need to permit Vespa.ai GCP identities to be added to your project. For Vespa Cloud the organization ID to allow identities from is: _1056130768533_, and the Google Customer ID is _C00u32w3e_.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -12466,7 +14082,7 @@ Best practise is to ensure the quota is 3x of current resource usage, to also co
 
 This is not to be confused with the [Vespa Cloud quota](https://cloud.vespa.ai/en/reference/quota).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -12518,7 +14134,7 @@ order by price asc, release_date desc
 import field advertiser_ref.name as advertiser_name {}
 ```
 
-The other field option is _index_ - use [index](proton.html#index) for fields used for [text search](../querying/text-matching.html), with [stemming](../linguistics/linguistics.html#stemming) and [normalization](../linguistics/linguistics.html#normalization).
+The other field option is _index_ - use [index](proton.html#index) for fields used for [text search](../querying/text-matching.html), with [stemming](../linguistics/linguistics-opennlp.html#stemming) and [normalization](../linguistics/linguistics-opennlp.html#normalization).
 
 An attribute is an in-memory data structure. Attributes speed up query execution and [document updates](../writing/partial-updates.html), trading off memory. As data structures are regularly optimized, consider both static and temporary resource usage - see [attribute memory usage](#attribute-memory-usage) below. Use attributes in document summaries to limit access to storage to generate result sets.
 
@@ -12783,7 +14399,7 @@ The document meta store scales linearly with number of documents - using approxi
 
 The above is for the _ready_ documents, also check _removed_ and _notready_ - refer to [sub-databases](proton.html#sub-databases).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -13013,7 +14629,7 @@ Note that one or both of the application revision and platform may be upgraded d
 - Set up a deployment badge - available from the console's deployment view - example: ![vespa-team.vespacloud-docsearch.default overview](https://api-ctl.vespa-cloud.com/badge/v1/vespa-team/vespacloud-docsearch/default)
 - Set up a [global query endpoint](../reference/applications/deployment.html#endpoints-global).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -13061,13 +14677,13 @@ Autoscaling is useful in a number of scenarios. Some typical ones are:
 
 - You have a new application which you can't benchmark with realistic data and usage, making you unsure what resources to allocate: Set wide ranges for all resource parameters and let the system choose a configuration. Once you gain experience you can consider tightening the configuration space.
 - You have load that varies quickly during the day, or that may suddenly increase quickly due to some event, and want container cluster resources to quickly adjust to the load: Set a range for the number of nodes and/or vcpu on containers.
-- Your expect your data volume to grow over time, but you don't want to allocate resources prematurely, nor constantly worry about whether it is time to increase: Configure ranges for content nodes and/or node resources such that the size of the system grows with the data.
+- You expect your data volume to grow over time, but you don't want to allocate resources prematurely, nor constantly worry about whether it is time to increase: Configure ranges for content nodes and/or node resources such that the size of the system grows with the data.
 
 ##### Resource tradeoffs
 
 Some other considerations when deciding resources:
 
-- Making changes to resources/nodes is easy and safe, and one of Vespa Cloud's strength. We advise you make controlled changes and observe effect on latencies, data migration and cost. Everything is automated, just deploy a new application package. This is useful learning when later needed during load peaks and capacity requirement changes.
+- Making changes to resources/nodes is easy and safe, and one of Vespa Cloud's strengths. We advise you make controlled changes and observe effect on latencies, data migration and cost. Everything is automated, just deploy a new application package. This is useful learning when later needed during load peaks and capacity requirement changes.
 - Node resources cannot be chosen freely in all zones, CPU/Memory often comes in increments of x 2. Try to make sure that the resource configuration is a good fit.
 - CPU is the most expensive component, optimize for this for most applications.
 - Having few nodes means more overcapacity as Vespa requires that the system will handle one node being down (or one group, in content clusters having multiple groups). 4-5 nodes minimum is a good rule of thumb. Whether 4-5 or 9-10 nodes of half the size is better depends on quicker upgrade cycles vs. smoother resource auto-scale curves. Latencies can be better or worse, depending on static vs dynamic query cost.
@@ -13081,7 +14697,7 @@ It is often safe to follow the _suggested resources_ advice when shown in the co
 
 A Vespa application must handle a combination of reads and writes, from multiple sources. User load often resembles a sine-like curve. Machine-generated load, like a batch job, can be spiky and abrupt.
 
-In the default Vespa configuration, all kinds of load uses \_one\_ default container cluster. Example: An application where daily batch jobs update the corpus at high rate:
+In the default Vespa configuration, all kinds of load uses _one_ default container cluster. Example: An application where daily batch jobs update the corpus at high rate:
 
  ![nodes and resources](/assets/img/load.png)
 
@@ -13089,12 +14705,56 @@ Autoscaling scales _up_ much quicker than _down_, as the probability of a new sp
 
 The best solution for this case is to slow down the batch job, as it is of short duration. It is not always doable to slow down jobs - in these cases, setting up multiple[container clusters](../applications/containers.html)can be a smart thing - optimize each cluster for its load characteristics. This could be a combination of clusters using autoscale and clusters with a fixed size. Autoscaling often works best for the user-generated load, whereas the machine-generated load could either be tuned or routed to a different cluster in the same Vespa application.
 
+##### Examples
+
+Below is an example of node resources with autoscaling that would work well for a container cluster:
+
+```
+```
+<nodes count="[2, 8]">
+    <resources vcpu="[2, 3]" memory="[8Gb, 16Gb]" disk="[50Gb, 100Gb]"/>
+  </nodes>
+```
+```
+
+The above would in general **not be recommended for a content cluster.** Changing cpu, memory or disk usually leads to allocating new nodes to fulfil the new node resources spec. When that happens there will be redistribution of documents between the old and new nodes and this might impact service quality to some degree. For a content cluster it would usually be better to try to stick to the same node resources and add or remove nodes, e.g something like:
+
+```
+```
+<nodes count="[2, 8]">
+    <resources vcpu="4" memory="16Gb" disk="500Gb"/>
+  </nodes>
+```
+```
+
+If a content cluster is configured to autoscale based on node resources (not just number of nodes or groups) this will work fine, but note that using paged attributes or HNSW indexes will make it more expensive and time-consuming to redistribute documents when scaling up or down. When doing the initial feeding of a cluster it will be best to avoid auto-scaling, as changing the topology will require redistribution of documents, possibly several times.
+
+When using groups in a content cluster it's possible to scale the number of groups instead of the number of nodes, e.g. with a fixed group size and a range for the number of groups:
+
+```
+```
+<nodes groups="[2, 4]" group-size="8">
+    <resources vcpu="4" memory="16Gb" disk="500Gb"/>
+  </nodes>
+```
+```
+
+Note that at the moment it is not possible to autoscale GPU resources.
+
 ##### Related reading
 
 - [Feed sizing](../performance/sizing-feeding.html)
 - [Query sizing](../performance/sizing-search.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
+
+###### On this page:
+
+- [When to use autoscaling](#When-to-use-autoscaling)
+- [Resource tradeoffs](#resource-tradeoffs)
+- [Mixed load](#mixed-load)
+- [Examples](#examples)
+- [Related reading](#)
 
 ---
 
@@ -13223,7 +14883,7 @@ $ vespa visit --field-set "[id]" | wc -l
   98984
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -13443,7 +15103,7 @@ Rules of thumb:
 - The user running benchmarks must have read access to the endpoint - if you already have, you can skip this section. Refer to the [Vespa security guide](../security/guide). 
 - [Monitoring](../operations/monitoring.html) is useful to track metrics when benchmarking.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -13594,7 +15254,7 @@ $ curl http://localhost:8080/metrics/v2/values | \
   jq '.nodes[] | select(.role=="content/mysearchcluster/0/0") | .node.metrics[].values."cpu.util"'
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -14173,7 +15833,7 @@ def binarize_tensor(tensor: torch.Tensor) -> str:
     )
 ```
 
-Multivector example, from[ColPali: Efficient Document Retrieval with Vision Language Models](https://pyvespa.readthedocs.io/en/latest/examples/colpali-document-retrieval-vision-language-models-cloud.html):
+Multivector example, from[ColPali: Efficient Document Retrieval with Vision Language Models](https://vespa-engine.github.io/pyvespa/examples/colpali-document-retrieval-vision-language-models-cloud.html):
 
 ```
 import numpy as np
@@ -14204,7 +15864,7 @@ def binarize_token_vectors_hex(vectors: List[torch.Tensor]) -> Dict[str, str]:
     return vespa_tensor
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -14283,7 +15943,7 @@ Use the [custom component state API](../content/proton.html#custom-component-sta
 /state/v1/custom/component/documentdb/mydoctype/subdb/ready/index
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -14390,7 +16050,7 @@ The effect of this is that documents sharing a location will be spread across no
 
 Buckets exist in the _default_ or _global_ bucket space.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -14470,7 +16130,7 @@ and add the plugin to the build instructions:
     <groupId>com.yahoo.vespa</groupId>
     <artifactId>bundle-plugin</artifactId>
     <!-- Find latest version at <a href="https://search.maven.org/search?q=g:com.yahoo.vespa%20a:bundle-plugin">search.maven.org/search?q=g:com.yahoo.vespa%20a:bundle-plugin</a> -->
-    <version>8.617.12</version>
+    <version>8.634.24</version>
     <extensions>true</extensions>
     <configuration>
         <failOnWarnings>true</failOnWarnings>
@@ -14552,7 +16212,7 @@ The minimal Maven _pom.xml_ configuration is:
 
     <properties>
         <!-- Find latest version at[search.maven.org/search?q=g:com.yahoo.vespa](https://search.maven.org/search?q=g:com.yahoo.vespa)-->
-        <vespa.version>8.617.12</vespa.version>
+        <vespa.version>8.634.24</vespa.version>
     </properties>
 
     <build>
@@ -15062,7 +16722,7 @@ One can make it work by managing this dependency explicitly - add this at POM to
 ```
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -15140,7 +16800,7 @@ By default, the cache is enabled, using up to 5% of available memory - configura
 
 _ranking.queryCache_ and _groupingSessionCache_described in the [Query API reference](../reference/api/query.html)are only caching data in between phases for a given a query, so other queries do not get any benefits, but these caches saves container - content node(s) round-trips for a _given_ query.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -15353,7 +17013,7 @@ public Result search(Query query, Execution execution) {
 ```
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -15413,7 +17073,7 @@ Chunkers are [components](../../applications/components.html), so you can also a
 
 You create a chunker component by implementing the[com.yahoo.language.process.Chunker](https://github.com/vespa-engine/vespa/blob/master/linguistics/src/main/java/com/yahoo/language/process/Chunker.java)interface, see [these examples](https://github.com/vespa-engine/vespa/tree/master/linguistics/src/main/java/ai/vespa/language/chunker).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -15726,7 +17386,7 @@ To define a custom embedder in an application and make it usable by Vespa (see [
 ```
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -15894,7 +17554,7 @@ data: {"token":"<first token of response>"}
 ...
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -16167,7 +17827,7 @@ Get the current query access log from the source application (there might be mor
 $ docker exec vespa1 cat /opt/vespa/logs/vespa/access/JsonAccessLog.default
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -16322,7 +17982,7 @@ This way, one can upload the read-only certificate to a Cloudflare worker to lim
 
 See [Data plane access control permissions](guide#permissions).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -16461,7 +18121,7 @@ reindexing.progress
 
  | fraction | Re-indexing progress |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -16584,6 +18244,11 @@ maintenance.successFactorDeviation
 maintenance.duration
 
  | millisecond | Configserver: Maintenance Duration |
+| 
+
+maintenance.congestion
+
+ | failure | Configserver: Maintenance Congestion |
 | 
 
 configserver.zkConnectionLost
@@ -17150,7 +18815,7 @@ throttledHostProvisioning
 
  | binary | Value 1 if host provisioning is throttled, 0 if not |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -18104,7 +19769,7 @@ jvm.threads.states
 
  | thread | The current number of threads (in each state) |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -18452,7 +20117,7 @@ vds.filestor.allthreads.update.count
 
  | request | rate | Number of requests processed. |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -19542,6 +21207,11 @@ vds.distributor.update\_puts.ok
  | operation | The number of successful update\_puts operations performed |
 | 
 
+vds.distributor.mutating\_op\_memory\_usage
+
+ | byte | Estimated amount of memory used by active mutating operations across all distributor stripes, in bytes |
+| 
+
 vds.idealstate.nodes\_per\_merge
 
  | node | The number of nodes involved in a single merge operation. |
@@ -19576,7 +21246,7 @@ vds.bouncer.clock\_skew\_aborts
 
  | operation | Number of client operations that were aborted due to clock skew between sender and receiver exceeding acceptable range |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -19589,7 +21259,7 @@ This is the reference for loadbalancer healthchecks to [containers](../../applic
 
 This is the reference for loadbalancer healthchecks to [containers](../../applications/containers.html).
 
-By default, a container configures an instance of [VipStatusHandler](https://github.com/vespa-engine/vespa/blob/master/container-core/src/main/java/com/yahoo/container/handler/VipStatusHandler.java) to serve `/status.html`. This will respond with status code 200 and text _OK_ if content clusters are UP. See [VipStatus.java](https://github.com/vespa-engine/vespa/blob/master/container-core/src/main/java/com/yahoo/container/handler/VipStatus.java) for details.
+By default, a container configures an instance of [VipStatusHandler](https://github.com/vespa-engine/vespa/blob/master/container-disc/src/main/java/com/yahoo/container/handler/VipStatusHandler.java) to serve `/status.html`. This will respond with status code 200 and text _OK_ if content clusters are UP. See [VipStatus.java](https://github.com/vespa-engine/vespa/blob/master/container-disc/src/main/java/com/yahoo/container/handler/VipStatus.java) for details.
 
 Applications with multiple content clusters should implement custom handlers for healthchecks, if the built-in logic is inadequate for the usage. Also refer to [federation](../../querying/federation.html) for how to manage data sources.
 
@@ -19630,7 +21300,7 @@ If the file exists, its contents will be served on `/status.html`, otherwise an 
 
 The paths `/docproc/freshness-data.xml` and `/docproc/ClusteringDocproc.status` serves the files located at `/full-path-to/freshness-data.xml` and `/full-path-to/ClusteringDocproc.status`, respectively. As the handler instances are independent, a container can be taken out of one type of rotation without affecting another.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -19806,7 +21476,7 @@ The access log includes everything happening before rendering, but will exclude 
 
 The ZooKeeper log file is normally not necessary to monitor on a regular basis, but is mentioned here as a possible source of information in case you should ever need to debug the Vespa configuration system. It is located at `$VESPA_HOME/logs/vespa/zookeeper.<servicename>.log`.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -19836,7 +21506,7 @@ logd.processed.lines
 
  | item | Number of log lines processed |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -19858,6 +21528,7 @@ logd.processed.lines
 | connection | A link used for communication between a client and a server |
 | context switch | A context switch |
 | deployment | A deployment on hosted Vespa |
+| distance | A number describing the distance of two tensors |
 | document | Vespa document, a collection of fields defined in a schema file |
 | documentid | A unique document identifier |
 | dollar | US dollar |
@@ -19867,6 +21538,7 @@ logd.processed.lines
 | fraction | A value in the range [0..1]. Higher values can occur for some metrics, but would indicate the value is outside the allowed range. |
 | generation | Typically, generation of configuration or application package |
 | gigabyte | One billion bytes |
+| graph node | A node in a graph |
 | hit | Document that meets the filtering/restriction criteria specified by a given query |
 | hit/query | Number of hits per query over a period of time |
 | host | Bare metal computer that contain nodes |
@@ -19897,7 +21569,7 @@ logd.processed.lines
 | version | Software or config version |
 | wakeup | Computer thread wake-ups for doing some work |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -19950,7 +21622,7 @@ A metric set is a collection of metrics which can be referenced for convenience.
 - [Clustercontroller Metrics Reference](clustercontroller.html)
 - [Sentinel Metrics Reference](sentinel.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -19974,7 +21646,7 @@ node-certificate.expiry.seconds
 
  | second | Time until node certificate expires |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -20008,13 +21680,13 @@ Content clusters in Vespa can be scaled to any amount of content by adding more 
 
 A Vespa application can consist of any number of stateless and stateful clusters. On larger applications it can be beneficial to split different functions into separate clusters that can be optimized separately. For example, having one stateless container cluster for feeding and another for querying, or using different content clusters for different data schemas.
 
-Read more in [elasticity](../content/elasticity.html) and the [performance guide](../performance).
+Read more in [elasticity](../content/elasticity.html) and the [performance guide](../performance/).
 
   
 
 ###### Next: [What's more](whats-more.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -21099,6 +22771,21 @@ content.proton.documentdb.matching.docs\_reranked
  | document | Number of documents re-ranked (second phase) |
 | 
 
+content.proton.documentdb.matching.exact\_nns\_distances\_computed
+
+ | distance | Number of distances computed in exact nearest-neighbor search |
+| 
+
+content.proton.documentdb.matching.approximate\_nns\_distances\_computed
+
+ | distance | Number of distances computed in approximate nearest-neighbor search |
+| 
+
+content.proton.documentdb.matching.approximate\_nns\_nodes\_visited
+
+ | graph\_node | Number of nodes visited in approximate nearest-neighbor search |
+| 
+
 content.proton.documentdb.matching.rank\_profile.queries
 
  | query | Number of queries executed |
@@ -21147,6 +22834,21 @@ content.proton.documentdb.matching.rank\_profile.docs\_ranked
 content.proton.documentdb.matching.rank\_profile.docs\_reranked
 
  | document | Number of documents re-ranked (second phase) |
+| 
+
+content.proton.documentdb.matching.rank\_profile.exact\_nns\_distances\_computed
+
+ | distance | Number of distances computed in exact nearest-neighbor search |
+| 
+
+content.proton.documentdb.matching.rank\_profile.approximate\_nns\_distances\_computed
+
+ | distance | Number of distances computed in approximate nearest-neighbor search |
+| 
+
+content.proton.documentdb.matching.rank\_profile.approximate\_nns\_nodes\_visited
+
+ | graph\_node | Number of nodes visited in approximate nearest-neighbor search |
 | 
 
 content.proton.documentdb.matching.rank\_profile.limited\_queries
@@ -21268,7 +22970,7 @@ metricmanager.snapshotlatency
 
  | millisecond | Time in ms used to take a snapshot |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -21302,7 +23004,7 @@ sentinel.running
 
  | instance | Number of services the sentinel has running currently |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -21341,7 +23043,7 @@ slobrok.missing.consensus
 
  | second | Number of seconds without full consensus with all other brokers |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -22395,7 +24097,7 @@ vds.server.fnet.num-connections
 
  | connection | Total number of connection objects |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -23193,7 +24895,7 @@ In this example the input is generated with `vespa-significance export`. This is
 | --format \<FORMAT\> | Input format. Format can be `jsonl` or `vstsv`. Defaults to `jsonl`. |
 | -o, --out \<model.json[.zst]\> | Output [significance model](../../../ranking/significance#significance-model-file). |
 | -f, --field \<field\> | JSONL: the name of the text field to analyse. VSTSV: No effect. |
-| -l, --language \<tag[,tag...]\> | Comma-separated ISO language tags. The first tag controls tokenization; additional tags are stored in the model. Required for JSONL, optional for VSTSV (defaults to `un`). See supported tags in [linguistics in Vespa](../../../linguistics/linguistics.html#default-languages). |
+| -l, --language \<tag[,tag...]\> | Comma-separated ISO language tags. The first tag controls tokenization; additional tags are stored in the model. Required for JSONL, optional for VSTSV (defaults to `un`). See supported tags in [linguistics in Vespa](../../../linguistics/linguistics-opennlp.html#default-languages). |
 | -zst, --zst-compression \<ENABLED\> | Enable Zstandard compression of the output. Enabled can be `true` or `false`. Default `false`. When `true`, the output file must end with `.zst`. |
 
 ###### vespa-significance export
@@ -23462,7 +25164,7 @@ Synopsis: `vespa-visit-target [options]`
 | -t, --bindtosocket \<port\> | Bind to TCP port. One, and only one, of the binding options must be set |
 | -v, --verbose | Indent output, show progress and info on STDERR |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -23666,7 +25368,7 @@ dump default dev/myprofiles x=x1&y=y1 # dumps the 'default' profile resolved wit
 | dir | Path to an application package or query profile directory. Default: current dir |
 | parameters | HTTP request encoded dimension keys used during resolving. Default: none |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -24910,6 +26612,11 @@ vds.distributor.bytesstored
  | byte | average | Number of bytes stored in all buckets controlled by this distributor |
 | 
 
+vds.distributor.mutating\_op\_memory\_usage
+
+ | byte | max | Estimated amount of memory used by active mutating operations across all distributor stripes, in bytes |
+| 
+
 vds.bouncer.clock\_skew\_aborts
 
  | operation | count | Number of client operations that were aborted due to clock skew between sender and receiver exceeding acceptable range |
@@ -25760,6 +27467,21 @@ content.proton.documentdb.matching.docs\_matched
  | document | count, rate | Number of documents matched |
 | 
 
+content.proton.documentdb.matching.exact\_nns\_distances\_computed
+
+ | distance | rate | Number of distances computed in exact nearest-neighbor search |
+| 
+
+content.proton.documentdb.matching.approximate\_nns\_distances\_computed
+
+ | distance | rate | Number of distances computed in approximate nearest-neighbor search |
+| 
+
+content.proton.documentdb.matching.approximate\_nns\_nodes\_visited
+
+ | graph\_node | rate | Number of nodes visited in approximate nearest-neighbor search |
+| 
+
 content.proton.documentdb.matching.rank\_profile.queries
 
  | query | rate | Number of queries executed |
@@ -25798,6 +27520,21 @@ content.proton.documentdb.matching.rank\_profile.rerank\_time
 content.proton.documentdb.matching.rank\_profile.docs\_matched
 
  | document | count, rate | Number of documents matched |
+| 
+
+content.proton.documentdb.matching.rank\_profile.exact\_nns\_distances\_computed
+
+ | distance | rate | Number of distances computed in exact nearest-neighbor search |
+| 
+
+content.proton.documentdb.matching.rank\_profile.approximate\_nns\_distances\_computed
+
+ | distance | rate | Number of distances computed in approximate nearest-neighbor search |
+| 
+
+content.proton.documentdb.matching.rank\_profile.approximate\_nns\_nodes\_visited
+
+ | graph\_node | rate | Number of nodes visited in approximate nearest-neighbor search |
 | 
 
 content.proton.documentdb.matching.rank\_profile.limited\_queries
@@ -26259,7 +27996,7 @@ vds.server.fnet.num-connections
 
  | connection | count | Total number of connection objects |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -26356,7 +28093,7 @@ The two latter can be used e.g. for [bucket testing](testing.html#feature-switch
 
 The container will create one or more instances of the component, as specified in [the application package](#adding-component-to-application-package). The container will create a new instance of this component only when it is reconfigured, so any data needed by the component can be read and prepared from a constructor in the component.
 
-See the full API available to components at the [Container Javadoc](https://javadoc.io/doc/com.yahoo.vespa/container-core/latest/com/yahoo/container/package-summary.html).
+See the full API available to components at the [Container Javadoc](https://javadoc.io/doc/com.yahoo.vespa/container-disc/latest/com/yahoo/container/package-summary.html).
 
 Once the component passes unit tests, it can be deployed. The steps involved are building the component jar file, adding it to the Vespa application package and deploying the application package. These steps are described in the following sections, using a searcher as example.
 
@@ -26456,7 +28193,7 @@ The JDisc Container has one set of _global_ packages. These are packages that ar
 
 There is also a set of _exported_ packages. These are available for import, and includes all legacy packages, plus extension packages which are not part of the core API. Note that these are not considered to be "public" APIs, as global packages are, and backwards incompatible changes _can_ be made to these packages, or they may be removed.
 
-The list of exported and global packages is available in the [container-core pom.xml](https://github.com/vespa-engine/vespa/blob/master/container-core/pom.xml), in `project/properties/exportedPackages` and `project/properties/globalPackages`.
+The list of exported and global packages is available in the [container-disc pom.xml](https://github.com/vespa-engine/vespa/blob/master/container-disc/pom.xml), in `project/properties/exportedPackages` and `project/properties/globalPackages`.
 
 ###### Versions
 
@@ -26537,7 +28274,7 @@ java.lang.RuntimeException: Not able to create config builder for payload '{
 
 Check urls / names, and that the model can be downloaded in the network the Vespa Container is running.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -26581,7 +28318,7 @@ Alternatively, use code generation to get a _concrete document type_, a `Documen
     <groupId>com.yahoo.vespa</groupId>
     <artifactId>vespa-documentgen-plugin</artifactId>
     <!-- Find latest version at[search.maven.org/search?q=g:com.yahoo.vespa%20a:vespa-documentgen-plugin](https://search.maven.org/search?q=g:com.yahoo.vespa%20a:vespa-documentgen-plugin)-->
-    <version>8.617.12</version>
+    <version>8.634.24</version>
     <configuration>\<schemasDirectory\>etc/schemas\</schemasDirectory\></configuration>
     <executions>
         <execution>
@@ -26694,7 +28431,7 @@ public class ConcreteDocDocProc extends DocumentProcessor {
 
 Concrete document types are not supported for document updates or removes.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -26865,7 +28602,7 @@ Reading this document is not necessary in order to use Vespa or to develop Java 
   1. [Delete all config server state](../operations/self-managed/configuration-server.html#zookeeper-recovery) on all config servers
   2. Run [vespa-remove-index](../reference/operations/self-managed/tools.html#vespa-remove-index) to wipe content nodes
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -27259,7 +28996,7 @@ To help with unit testing, each config type has a corresponding builder type. Th
 
 A full example can be found in[ConfigSetSubscriptionTest.java](https://github.com/vespa-engine/vespa/blob/master/config/src/test/java/com/yahoo/config/subscription/ConfigSetSubscriptionTest.java).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -27433,7 +29170,7 @@ The `myFile()` and `myModel()` getter returns a `java.nio.Path` object, while th
 
 When the client asks for config that uses the `url` or `model` config type with a URL, the content will be downloaded and cached on the nodes that need it. If you want to change the content, the application package needs to be updated with a new URL for the changed content and the application [deployed](../basics/applications.html), otherwise the cached content will still be used. This avoids unintended changes to the application if the content of a URL changes.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -27562,7 +29299,7 @@ Example scenario (for simplicity—but without loss of generality—assuming red
 
 Since the write at `t=200` _happens-after_ the write at `t=100`, returning the version at`t=100` violates linearizability.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -27575,6 +29312,160 @@ Since the write at `t=200` _happens-after_ the write at `t=100`, returning the v
 ---
 
 ## Ranking
+
+### Constant Tensor JSON Format
+This document describes with examples the JSON formats accepted when reading tensor constants from a file.
+
+#### Constant Tensor JSON Format
+
+ 
+
+This document describes with examples the JSON formats accepted when reading tensor constants from a file. For convenience, compactness, and readability there are various formats that can be used depending on the detailed tensor type:
+
+- [Dense tensors](#dense-tensors): indexed dimensions only
+- [Sparse tensors](#sparse-tensors): mapped dimensions only
+- [Mixed tensors](#mixed-tensors): both indexed and mapped dimensions
+
+##### Canonical type
+
+A tensor type can be declared with its dimension in any order, but internally they will always be sorted in alphabetical order. So the type "`tensor(category{}, brand{}, a[3], x[768], d0[1])`" has the canonical string representation "`tensor(a[3],brand{},category{},d0[1],x[768])`" and the "x" dimension with size 768 is the innermost. For constants, all indexed dimensions must have a known size.
+
+##### Dense tensors
+
+Tensors using only indexed dimensions are used for storing a vector, a matrix, and so on and are collectively known as "dense" tensors. These are particularly easy to handle, as they always have a known number of cells in a well-defined order. They can be input as nested arrays of numerical values. Example with vector of size 5:
+
+```
+{
+      "type": "tensor(x[5])",
+      "values": [13.25, -22, 0.4242, 0, -17.0]
+  }
+```
+
+The "type" field is optional, but must match the [canonical form of the tensor type](#canonical-type) if present. This format is similar to "Indexed tensors short form" in the [document JSON format](../schemas/document-json-format.html#tensor-short-form-indexed).
+
+Example of a 3x4 matrix; note that the dimension names will always be processed in [alphabetical order](#canonical-type) from outermost to innermost.
+
+```
+{
+      "type": "tensor(bar[3],foo[4])",
+      "values": [
+            [2.5, 1.0, 2.0, 3.0],
+            [1.0, 2.0, 3.0, 2.0],
+            [2.0, 3.0, 2.0, 1.5]
+      ]
+  }
+```
+
+Note that the arrays must have exactly the declared number of elements for each dimension, and be correctly nested.
+
+Example of an ONNX model input where we have an extra "batch" dimension which is unused (size 1) for this particular input, but still requires extra brackets:
+
+```
+{
+      "type": "tensor(d0[1],d1[5],d2[2])",
+      "values": [ [
+          [1.1, 1.2],
+          [2.1, 2.2],
+          [3.1, 3.2],
+          [4.1, 4.2],
+          [5.1, 5.2]
+      ] ]
+  }
+```
+
+##### Sparse tensors
+
+Tensors using only mapped dimensions are collectively known as "sparse" tensors. JSON input for these will list the cells directly. Tensors with only one mapped dimension can use as simple JSON object as input:
+
+```
+{
+      "type": "tensor(category{})",
+      "cells": {
+          "tag": 2.5,
+          "another": 2.75
+      }
+  }
+```
+
+The "type" field is optional. This format is similar to "Short form for tensors with a single mapped dimension" in the [document JSON format](../schemas/document-json-format.html#tensor-short-form-mapped).
+
+Tensors with multiple mapped dimensions must use an array of objects, where each object has an "address" containing the labels for all dimensions, and a "value" with the cell value:
+
+```
+{
+      "type": "tensor(category{},product{})",
+      "cells": [
+          {
+              "address": { "category": "foo", "product": "bar" },
+              "value": 1.5
+          },
+          {
+              "address": { "category": "qux", "product": "zap" },
+              "value": 3.5
+          },
+          {
+              "address": { "category": "pop", "product": "rip" },
+              "value": 6.5
+          }
+      ]
+  }
+```
+
+Again, the "type" field is optional, but must match the [canonical form of the tensor type](#canonical-type) if present.
+
+This format is also known as the [general verbose form](../schemas/document-json-format.html#tensor), and it's possible to use it for any tensor type.
+
+##### Mixed tensors
+
+Tensors with both mapped and indexed dimensions can use a "blocks" format; this is similar to the "cells" formats for sparse tensors, but instead of a single cell value you get a block of values for each address. With one mapped dimension and two indexed dimensions:
+
+```
+{
+      "type": "tensor(a{},x[3],y[4])",
+      "blocks": {
+          "bar": [
+              [1.0, 2.0, 0.0, 3.0],
+              [2.0, 2.5, 2.0, 0.5],
+              [3.0, 6.0, 9.0, 9.0]
+          ],
+          "foo": [
+              [1.0, 0.0, 2.0, 3.0],
+              [2.0, 2.5, 2.0, 0.5],
+              [3.0, 3.0, 6.0, 9.0]
+          ]
+      }
+  }
+```
+
+The "type" field is optional, but must match the [canonical form of the tensor type](#canonical-type) if present. This format is similar to the first variant of "Mixed tensors short form" in the [document JSON format](../schemas/document-json-format.html#tensor-short-form-mixed).
+
+With two mapped dimensions and one indexed dimensions:
+
+```
+{
+      "type": "tensor(a{},b{},x[3])",
+      "blocks": [
+          {
+              "address": { "a": "qux", "b": "zap" },
+              "values": [2.5, 3.5, 4.5]
+          },
+          {
+              "address": { "a": "foo", "b": "bar" },
+              "values": [1.5, 2.5, 3.5]
+          },
+          {
+              "address": { "a": "pop", "b": "rip" },
+              "values": [3.5, 4.5, 5.5]
+          }
+      ]
+  }
+```
+
+Again, the "type" field is optional. This format is similar to the second variant of "Mixed tensors short form" in the [document JSON format](../schemas/document-json-format.html#tensor-short-form-mixed).
+
+ Copyright © 2026 - [Cookie Preferences](#)
+
+---
 
 ### Stateless model reference
 _.model_ files are used in[stateless model evaluation](../../ranking/stateless-model-evaluation.html).
@@ -27668,7 +29559,7 @@ model example {
 
 This makes the model _example_ available with the functions _foo1_ and _foo2_.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -27866,7 +29757,7 @@ The nativeRank feature is a pure text match scoring feature. In particular, it d
 - Geographical location of a match correlated to a location associated with the query. Use the _distance_ or _closeness_ feature in a ranking expression to take this into account. 
 - The age of the matching documents. Use the _freshness_ feature in a ranking expression to take this into account. 
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -28044,7 +29935,7 @@ Specifies how many query term indices to iterate over ([0, `maxTerms`\>) when us
 
  |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -29085,7 +30976,7 @@ The plot above shows the possible outputs from the closeness distance rank featu
 
 The plot above shows the possible outputs from the freshness rank feature using the default maxAge of 7776000s (90 days). The _linear(x)_ graph shows the default freshness output while the other graphs are logscale output for various values of the halfResponse parameter: 172800s (2 days), 604800s (7 days - the default value), 1209600s (14 days).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -29277,7 +31168,7 @@ This is used for fields where you do not want matches to have any impact on rele
 
 The empty rank type is also supported by nativeRank.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -29517,7 +31408,24 @@ The `in` membership operator uses a slightly modified if-syntax:
 if (expression1in[expression2, expression3, ..., expressionN], trueExpression, falseExpression)
 ```
 
-If expression1 is equal to either of expression1 through expressionN, then trueExpression is used, otherwise falseExpression.
+If expression1 is equal to either of expression2 through expressionN, then trueExpression is used, otherwise falseExpression.
+
+##### The switch function
+
+ **Note:** Available from Vespa 8.626.55
+
+The `switch` function chooses between multiple sub-expressions based on matching a value. It provides a more readable alternative to chained `if` statements when selecting from several options.
+
+```
+switch (discriminant) {
+    case value1: result1,
+    case value2: result2,
+    ...
+    default: defaultResult
+}
+```
+
+The `discriminant` expression is compared for equality against each `case` value expression in order. When a match is found, the corresponding result expression is evaluated and returned. If no case matches, the `default` result is returned. All expressions may be any ranking expression. At least one `case` must be specified. The `default` must be specified.
 
 ##### The foreach function
 
@@ -30008,13 +31916,14 @@ Matrix multiplication of `x` (usually a vector) and `w` (weights), with `b` adde
 
  |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
 - [Arithmetic operations](#arithmetic-operations)
 - [Mathematical scalar functions](#mathematical-scalar-functions)
 - [The if function](#the-if-function)
+- [The switch function](#the-switch-function)
 - [The foreach function](#the-foreach-function)
 - [Tensor functions](#tensor-functions)
 - [Primitive functions](#primitive-functions)
@@ -30164,7 +32073,7 @@ As these are exposed as rank features, they can be used in ranking expressions e
 
 ###### Next: [Operations](operations.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -30342,7 +32251,7 @@ The algorithm has the following configuration parameters, where the three first 
 | `occurrenceImportance` | 0.05 | The importance of having many occurrences of the query terms, relative to earlinessImportance, segmentProximityImportance and proximityCompletenessImportance in the `match` metric. |
 | `fieldCompletenessImportance` | 0.05 | A number between 0 and 1 which determines the importance of field completeness in relation to query completeness in the `match` and `completeness` metrics. |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -30617,7 +32526,7 @@ Use the following reference documentation on how use tensors in documents:
 - [Tensor field in schema](../schemas/schemas.html#tensor)
 - [Document JSON Format](../schemas/document-json-format.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -30824,7 +32733,7 @@ Please open the following file : ~/tmp/gatling-charts-highcharts-2.0.0-M3a/resul
 
 The report gives graphs showing how the test progressed and summaries for failures and time spent.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -30994,7 +32903,7 @@ Warmups can be disabled by adding the following container http config to the con
 ```
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -31068,7 +32977,7 @@ Vespa's Java container - JDisc, hosts all application components as well as the 
 - [healthchecks](../reference/operations/health-checks.html) - using the Container with a VIP 
 - [Vespa Component Reference](../reference/applications/components.html): The Container's request processing lifecycle 
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -31425,7 +33334,7 @@ curl -X PUT -H "Content-Type: application/json" --data '
 - Refer to [administrative procedures](../operations/self-managed/admin-procedures.html) for configuration and state monitoring / management. 
 - Try the [Multinode testing and observability](https://github.com/vespa-engine/sample-apps/tree/master/examples/operations/multinode) sample app to get familiar with interfaces and behavior. 
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -31468,7 +33377,7 @@ We require all pull request checks to pass.
 
 ##### Versioning
 
-Vespa uses semantic versioning - see [vespa versions](https://vespa.ai/releases#versions). Notice in particular that any Java API in a package having a @PublicAPI annotation in the package-info file cannot be changed in an incompatible way between major versions: Existing types and method signatures must be preserved (but can be marked deprecated).
+Vespa uses semantic versioning - see [vespa versions](releases.html). Notice in particular that any Java API in a package having a @PublicAPI annotation in the package-info file cannot be changed in an incompatible way between major versions: Existing types and method signatures must be preserved (but can be marked deprecated).
 
 ##### Issues
 
@@ -31478,9 +33387,9 @@ There is also a [ToDo list](https://github.com/vespa-engine/vespa/blob/master/TO
 
 ##### Community
 
-If you have questions, want to share your experience or help others, please join our community on the [Vespa Slack](http://slack.vespa.ai), or see Vespa on [Stack Overflow](http://stackoverflow.com/questions/tagged/vespa).
+If you have questions, want to share your experience or help others, please join our community on the [Vespa Slack](https://slack.vespa.ai), or see Vespa on [Stack Overflow](http://stackoverflow.com/questions/tagged/vespa).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -31755,7 +33664,7 @@ The `best_input` uses a tensor join between the `closest(embedding)` tensor and 
 
 This tensor is used in the other Transformer-related functions (`tokenTypeIds tokenAttentionMask tokenInputIds`) as the document tokens.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -31978,7 +33887,7 @@ If only a few documents are returned per response, _wantedDocumentCount_ (defaul
 
 Specifying _concurrency_ (default 1, max 100) increases throughput, at the cost of resource usage. This also increases the number of documents per response, and _could_ lead to excessive memory usage in the HTTP container when many large documents are buffered to be returned in the same response.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -32000,7 +33909,7 @@ The default Vespa query response format is used when [presentation.format](../ap
 
  
 
-The default Vespa query response format is used when [presentation.format](../api/query.html#presentation.format) is unset or set to `json`. Results are rendered with one or more objects:
+The default Vespa query response format is used when [presentation.format](../api/query.html#presentation.format) is unset or set to `json`. An alternative binary [CBOR](https://cbor.io/) format is available by setting `format=cbor` or using `Accept: application/cbor`. CBOR is a drop-in replacement - when deserialized, the result is identical to JSON. CBOR is both more compact and faster to generate, especially for numeric data such as tensors and embeddings. Results are rendered with one or more objects:
 
 - `root`: mandatory object with the tree of returned data
 - `timing`: optional object with query timing information
@@ -32102,7 +34011,7 @@ Array of error messages with the fields given below. [Example](../../querying/qu
  |
 | code | errors | yes | Integer | 
 
-Numeric identifier used by the container application. See [error codes](https://github.com/vespa-engine/vespa/blob/master/container-core/src/main/java/com/yahoo/container/protect/Error.java) and [ErrorMessage.java](https://github.com/vespa-engine/vespa/blob/master/container-search/src/main/java/com/yahoo/search/result/ErrorMessage.java) for a short description.
+Numeric identifier used by the container application. See [error codes](https://github.com/vespa-engine/vespa/blob/master/container-disc/src/main/java/com/yahoo/container/protect/Error.java) and [ErrorMessage.java](https://github.com/vespa-engine/vespa/blob/master/container-search/src/main/java/com/yahoo/search/result/ErrorMessage.java) for a short description.
 
  |
 | message | errors | no | String | 
@@ -32562,7 +34471,7 @@ rank-profile whatever {
 
 which gives you the same output as before.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -32611,7 +34520,7 @@ The identity of a group is held by its _id_. Scalar identities such as long, dou
 
 ###### Multivalue attributes
 
-A [multivalue](/en/searching-multi-valued-fields.html) attribute is a[weighted set](../schemas/schemas.html#weightedset),[array](../schemas/schemas.html#array) or[map](../schemas/schemas.html#map). Most grouping functions will just handle the elements of multivalued attributes separately, as if they were all individual values in separate documents. If you are grouping over array of struct or maps, scoping will be used to preserve structure. Each entry in the array/map will be treated as a separate sub-document. The following syntax can be used when grouping on _map_ attribute fields.
+A [multivalue](../../querying/searching-multivalue-fields) attribute is a[weighted set](../schemas/schemas.html#weightedset),[array](../schemas/schemas.html#array) or[map](../schemas/schemas.html#map). Most grouping functions will just handle the elements of multivalued attributes separately, as if they were all individual values in separate documents. If you are grouping over array of struct or maps, scoping will be used to preserve structure. Each entry in the array/map will be treated as a separate sub-document. The following syntax can be used when grouping on _map_ attribute fields.
 
 Group on map keys:
 
@@ -32675,7 +34584,11 @@ Use a regular expression to match the input, and include only documents that mat
 ```
 all( group(my_array) filter(regex("foo.*", my_array)) ...)
 ```
- Here, each value in _my\_array_ is considered, but only the values that start with a "foo" prefix are collected in groups; All others are ignored. See [example](/en/querying/grouping.html#structured-grouping).
+
+Here only the values that start with a "foo" prefix in _my\_array_ are collected into groups, all others are ignored. See also [this example](../../querying/grouping.html#structured-grouping).
+
+Regex filtering works on the string representation of any field type. For example, you can also filter on boolean values using regex(true) and regex(false).
+
 ###### Range filter
 
 Use a `range` filter to match documents where a field value is between a lower and an upper bound. Example:
@@ -33126,7 +35039,7 @@ bucket ::= "bucket" ( "(" | "[" | "<" )
 rawvalue ::= "{" ( ( string | number ) "," )* "}"
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -33667,7 +35580,7 @@ Format of this in JSON:
 }
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -33818,7 +35731,7 @@ A page which should be rendered with two columns on top.
 </page>
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -33956,7 +35869,7 @@ Includes the page elements contained directly in the `page` element in the given
 | --- | --- | --- |
 | idref | The id specification of the page to include. Portions of the version may be left unspecified to get the latest matching version. | _(Mandatory)_ |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -34154,7 +36067,7 @@ This defines the type of this field. The type is one of:
 
 An identifier is a string matches the pattern `[a-zA-Z_/][a-zA-Z0-9_/]*`.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -34212,13 +36125,7 @@ vespa query "select * from sources * where true"
 
 You can add the `-v` option to see the HTTP request that this becomes.
 
-You can also send the query parameters[as a JSON payload](../querying/query-api.html#http) instead of as request parameters:
-
-```
-$ curl -H "Content-Type: application/json" \
---data '{"yql" : "select * from sources * where true"}' \
-endpoint-url/search/
-```
+On Vespa Cloud your application will by default get an mTLS certificate that you use to make requests. If you want to use an access token, you can [add one in the console](../security/guide#configuring-tokens).
 
 ##### Query request parameters
 
@@ -34226,6 +36133,14 @@ In addition to the YQL parameter, you can send other query request parameters to
 
 ```
 vespa query -v "select * from sources * where true" "timeout=100ms"
+```
+
+You can also send the query parameters[as a JSON payload](../querying/query-api.html#http) instead of as request parameters:
+
+```
+$ curl -H "Content-Type: application/json" \
+--data '{"yql" : "select * from sources * where true"}' \
+endpoint-url/search/
 ```
 
 To see all the parameters accepted, see the [query API reference](../reference/api/query.html).
@@ -34272,7 +36187,7 @@ $ vespa query "select * from sources * where (({targetHits: 10}nearestNeighbor(m
 
 ###### Next: [Ranking](ranking.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -34457,7 +36372,7 @@ There are three types of productions:
 
 The weight is a percentage integer denoting the importance of the produced term. The default is 100. In the query namespace the weight becomes the term weight, determining the relevance contribution of the term.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -34632,7 +36547,7 @@ Get documents on US Foreign politics, including only those matching at least one
 "us foreign politics" (clinton trump)
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -34812,7 +36727,7 @@ Sort in ascending order yearofbirth groups, and sort by relevancy within each gr
 +yearofbirth -[relevance]
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -34941,7 +36856,7 @@ where title contains "madonna"
 
 | Annotation | Effect |
 | --- | --- |
-| [stem](#stem) | By default, the string literal is [tokenized](../../linguistics/linguistics.html#tokenization) to match the field(s) searched. Explicitly control tokenization by using [stem](#stem):
+| [stem](#stem) | By default, the string literal is [tokenized](../../linguistics/linguistics-opennlp.html#tokenization) to match the field(s) searched. Explicitly control tokenization by using [stem](#stem):
 ```
 where title contains ({stem: false}"madonna")
 ```
@@ -35022,7 +36937,11 @@ Negative terms must come after all positive terms. For multi-value fields, setti
  |
 | sameElement | 
 
-_sameElement()_ is an operator that requires the terms to match within the same struct element in an array or a map field. Example:
+The `sameElement()` operator lets you denote conditions that must match within the _same_ element in multivalue fields containing structs or strings.
+
+By default, sameElement uses `AND` to combine the conditions: _All_ the conditions must match in the same element to produce a match.
+
+For example, given this **struct**:
 
 ```
 struct person {
@@ -35037,6 +36956,19 @@ field persons type array<person> {
     struct-field last_name { indexing: attribute }
     struct-field year_of_birth { indexing: attribute }
 }
+```
+
+We can use this query:
+
+```
+where persons contains sameElement(first_name contains 'Joe', last_name contains 'Smith', year_of_birth < 1940)
+```
+
+to return all documents containing a Joe Smith born before 1940 in the `persons` array.
+
+Searching a **map** is done by treating it as an array of a struct with the field members `key` and `value`. For example, given this map:
+
+```
 field identities type map<string, person> {
     indexing: summary
     struct-field key { indexing: attribute }
@@ -35046,56 +36978,48 @@ field identities type map<string, person> {
 }
 ```
 
-With normal _AND_ the query `persons.first_name AND persons.last_name` will normally not give you what you want. It will match if a document has a _persons_ element with a matching _first\_name__AND_ any element with a matching _last\_name_. So you will get a lot of false positives since there is nothing limiting them to the same element. However, that is what _sameElement_ ensures. Note that _sameElement_ uses _AND_ to connect the operands. To use _OR_, use multiple sameElement operators using logical OR.
-
-```
-where persons contains sameElement(first_name contains 'Joe', last_name contains 'Smith', year_of_birth < 1940)
-```
-
-The above returns all documents containing Joe Smith born before 1940 in the _persons_ array.
-
-Searching in a map is similar to searching in an array of struct. The difference is that you have an extra synthetic struct with the field members _key_ and _value_. The above example with the _identities_ map looks like this:
+We can use this query:
 
 ```
 where identities contains sameElement(key contains 'father', value.first_name contains 'Joe', value.last_name contains 'Smith', value.year_of_birth < 1940)
 ```
 
-The above returns all documents that have tagged Joe Smith born before 1940 as a 'father'. The importance here is using the indirection of _key_ and _value_ to address the keys and the values of the map.
+to return all documents that have a Joe Smith born before 1940 keyed as a 'father'.
 
-* * *
+`sameElement()` may also be used to search **array of string** fields. Supported query operators inside sameElement() are `and`, `equiv`, `near`, `onear`, `or`, `rank` and `phrase`. `and` can be used with `!`.
 
-_sameElement()_ can also be used on an indexed array of string since Vespa 8.602.85
+For example given this field:
 
 ```
-field descriptions type array<string> {
+field chunks type array<string> {
     indexing: index | summary
 }
 ```
 
-Supported query operators inside _sameElement()_ are `and`, `equiv`, `near`, `onear`, `or`, `rank` and `phrase`. `and` can be used with `!`. Example _sameElement()_ queries:
+We can use these queries:
 
 ```
-where descriptions contains sameElement("one" and "two")
-where descriptions contains sameElement("one" and equiv("two","three"))
-where descriptions contains sameElement("one" and ({distance: 5}near("two","three",!"four")))
-where descriptions contains sameElement("one" and phrase("two","three"))
-where descriptions contains sameElement("one" and !"two")
-where descriptions contains sameElement("one" or "two")
-where descriptions contains sameElement(rank("one" and "two", "three"))
+where chunks contains sameElement("one" and "two")
+where chunks contains sameElement("one" and equiv("two","three"))
+where chunks contains sameElement("one" and ({distance: 5}near("two","three",!"four")))
+where chunks contains sameElement("one" and phrase("two","three"))
+where chunks contains sameElement("one" and !"two")
+where chunks contains sameElement("one" or "two")
+where chunks contains sameElement(rank("one" and "two", "three"))
 ```
 
-Features inside _sameElement()_ for indexed fields are filtered based on the matching elements, e.g. [_elementwise(bm25(descriptions),x,double)_](../ranking/rank-features.html#elementwise-bm25) will only contain tensor cells based on the matching elements.
+Features inside sameElement() for indexed fields are filtered based on the matching elements, e.g. [elementwise(bm25(descriptions),x,double)](../ranking/rank-features.html#elementwise-bm25) will only contain tensor cells based on the matching elements.
 
  |
 | equiv | 
 
-If two terms in the same field should give exactly the same behavior when matched, the `equiv()` operator behaves like a special case of `or`.
+For cases where two terms in the same field should produce exactly the same behavior when matched, the `equiv()` operator can be used. This behaves like a special case of `or`.
 
 ```
 where fieldName contains equiv("A","B")
 ```
 
-In many cases, the OR operator will give the same results as an EQUIV. The matching logic is exactly the same, and an OR does not have the limitations that EQUIV does (below). The difference is in how matches are visible to ranking functions. All words that are children of an OR count for ranking. When using an EQUIV however, it looks like a single word:
+The matching logic of equiv is the same as OR, and an OR does not have the limitations that EQUIV does (below). The difference is in how matches are visible to ranking functions. All words that are children of an OR count for ranking, while with EQUIV, they look like a single word to ranking:
 
 - Counts as only +1 for queryTermCount
 - Counts as 1 word for completeness measures
@@ -35192,7 +37116,9 @@ yql=select * from sources * where ({grammar.syntax:'none',grammar.tokenization:'
 | --- | --- |
 | [grammar](#grammar) | 
 
-How to parse the user input. For any value of `grammar` other than `raw` or `segment`, only the following annotations are applied:
+Sets the query parse type to apply when interpreting the user input text.
+
+For any value of `grammar` other than `raw` or `segment`, only the following annotations are applied:
 
 - [defaultIndex](#defaultindex)
 - [targetHits](#targethits)
@@ -35667,7 +37593,7 @@ Refer to [SelectTestCase.java](https://github.com/vespa-engine/vespa/blob/master
 | --- | --- | --- | --- |
 | accentDrop | true | boolean | 
 
-Remove accents from this term if it is the setting for this field. Refer to [linguistics](../../linguistics/linguistics.html#normalization).
+Remove accents from this term if it is the setting for this field. Refer to [linguistics](../../linguistics/linguistics-opennlp.html#normalization).
 
  |
 | allowEmpty | false | boolean | 
@@ -35792,7 +37718,7 @@ Raw byteorder is a simple and fast ordering based on memcmp of utf8 for strings 
 
 How to parse [userInput](#userinput). `raw` will treat the user input as a string to be matched without any processing, `segment` will do a first pass through the linguistic libraries, while the rest of the values will treat the string as a query to be parsed.
 
-The individual model.type settings can also be set, using `grammar.composite`, `grammar.tokenization`, and `grammar.syntax`, refer to the [model.type](../api/query.html#model.type) documentation.
+The individual model.type settings can also be set, using `grammar.composite`, `grammar.tokenization`, `grammar.syntax`, and `grammar.profile`—refer to the [model.type](../api/query.html#model.type) documentation.
 
 See also [userInput examples](../../querying/query-api.html#input-examples).
 
@@ -35820,7 +37746,7 @@ Unique ID used for e.g. [connectivity](#connectivity).
  |
 | implicitTransforms | true | boolean | 
 
-Implicit term transformations (field defaults). If `implicitTransforms` is true, the settings for the field in the schema will be honored in term transforms, e.g. if the field has stemming, this term will be stemmed. If `implicitTransforms` is false, the search backend will receive the term exactly as written in the initial YQL expression. This is in other words a top level switch to turn off all other [stemming](../../linguistics/linguistics.html#stemming), accent removal, Unicode [normalizations](../../linguistics/linguistics.html#normalization) and so on.
+Implicit term transformations (field defaults). If `implicitTransforms` is true, the settings for the field in the schema will be honored in term transforms, e.g. if the field has stemming, this term will be stemmed. If `implicitTransforms` is false, the search backend will receive the term exactly as written in the initial YQL expression. This is in other words a top level switch to turn off all other [stemming](../../linguistics/linguistics-opennlp.html#stemming), accent removal, Unicode [normalizations](../../linguistics/linguistics-opennlp.html#normalization) and so on.
 
  |
 | label | | string | 
@@ -35845,7 +37771,7 @@ Used in [fuzzy](#fuzzy). An inclusive upper bound of edit distance between query
  |
 | nfkc | true | boolean | 
 
-NFKC [normalization](../../linguistics/linguistics.html#normalization).
+NFKC [normalization](../../linguistics/linguistics-opennlp.html#normalization).
 
  |
 | normalizeCase | true | boolean | 
@@ -36001,7 +37927,7 @@ Group / aggregate results by adding a grouping expression after a `|` - [read mo
 select * from sources * where sddocname contains 'purchase' | all(group(customer) each(output(sum(price))))
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -36036,12 +37962,12 @@ select * from sources * where sddocname contains 'purchase' | all(group(customer
 
 To delete an application, use the console:
 
-- navigate to the _application_ view at http://console.vespa.ai/tenant/tenant-name/application where you can find the trash can icon to the far right, as an `ACTION`.
-- navigate to the _deploy_ view at_http://console.vespa.ai/tenant/tenant-name/application/app-name/prod/deploy_.
+- navigate to the _application_ view at https://console.vespa-cloud.com/tenant/tenant-name/application where you can find the trash can icon to the far right, as an `ACTION`.
+- navigate to the _deploy_ view at_https://console.vespa-cloud.com/tenant/tenant-name/application/app-name/prod/deploy_.
 
 ![delete production deployment](/assets/img/console/delete-production-deployment.png)
 
-When the application deployments are deleted, delete the application in the [console](http://console.vespa.ai). Remove the CI job that builds and deploys application packages, if any.
+When the application deployments are deleted, delete the application in the [console](https://console.vespa-cloud.com). Remove the CI job that builds and deploys application packages, if any.
 
 ##### Deleting an instance / region
 
@@ -36053,7 +37979,7 @@ To remove an instance or a deployment to a region from an application:
 
 3. Build and deploy the application package.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -36209,7 +38135,7 @@ Upon deployment, the Container will first instantiate `MyDependencyProvider`, an
 
 A provider can declare constructor dependencies, just like any other component.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -36234,7 +38160,7 @@ Follow these steps to deploy a Vespa application which includes Java components 
 
 Alternative versions of this guide:
 
-- [Deploy an application using pyvespa](https://pyvespa.readthedocs.io/en/latest/getting-started-pyvespa-cloud.html) - for Python developers
+- [Deploy an application using pyvespa](https://vespa-engine.github.io/pyvespa/getting-started-pyvespa-cloud.html) - for Python developers
 - [Deploy an application without Java components](deploy-an-application.html)
 - [Deploy an application without Vespa CLI](deploy-an-application-shell.html)
 - [Deploy an application locally](deploy-an-application-local.html)
@@ -36277,7 +38203,7 @@ Congratulations, you have deployed your first Vespa application! Application ins
 
 ###### Next: [Vespa applications](applications.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -36294,19 +38220,27 @@ Follow these steps to deploy a Vespa application having Java components on your 
 
 Alternative versions of this guide:
 
-- [Deploy an application using pyvespa](https://pyvespa.readthedocs.io/en/latest/getting-started-pyvespa-cloud.html) - for Python developers
+- [Deploy an application using pyvespa](https://vespa-engine.github.io/pyvespa/getting-started-pyvespa-cloud.html) - for Python developers
 - [Deploy an application](deploy-an-application.html)
 - [Deploy an application having Java components](deploy-an-application-java.html)
 - [Deploy an application without Vespa CLI](deploy-an-application-shell.html)
 - [Deploy an application without Java components locally](deploy-an-application-local.html)
 
-This is tested with _vespaengine/vespa:8.617.12_ container image.
+This is tested with _vespaengine/vespa:8.634.24_ container image.
 
   
 
 **Prerequisites:**
 
-- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with Podman or [Docker](https://docs.docker.com/engine/install/) installed. See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings. For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html)
+- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with [Podman Desktop](https://podman.io/) or [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed, with an engine running. 
+  - Alternatively, start the Podman daemon:
+```
+$ podman machine init --memory 6000
+$ podman machine start
+```
+  - See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings.
+
+- For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html).
 - Memory: Minimum 4 GB RAM dedicated to Docker/Podman. [Memory recommendations](/en/operations/self-managed/node-setup.html#memory-settings). 
 - Disk: Avoid `NO_SPACE` - the vespaengine/vespa container image + headroom for data requires disk space. [Read more](/en/writing/feed-block.html). 
 - [Homebrew](https://brew.sh/) to install the [Vespa CLI](/en/clients/vespa-cli.html), or download the Vespa CLI from [Github releases](https://github.com/vespa-engine/vespa/releases). 
@@ -36345,7 +38279,7 @@ Congratulations, you have deployed your first Vespa application!
 $ docker rm -f vespa
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -36362,19 +38296,27 @@ Follow these steps to deploy a Vespa application on your own machine.
 
 Alternative versions of this guide:
 
-- [Deploy an application using pyvespa](https://pyvespa.readthedocs.io/en/latest/getting-started-pyvespa-cloud.html) - for Python developers
+- [Deploy an application using pyvespa](https://vespa-engine.github.io/pyvespa/getting-started-pyvespa-cloud.html) - for Python developers
 - [Deploy an application](deploy-an-application.html)
 - [Deploy an application having Java components](deploy-an-application-java.html)
 - [Deploy an application without Vespa CLI](deploy-an-application-shell.html)
 - [Deploy an application having Java components locally](deploy-an-application-local-java.html)
 
-This is tested with _vespaengine/vespa:8.617.12_ container image.
+This is tested with _vespaengine/vespa:8.634.24_ container image.
 
   
 
 **Prerequisites:**
 
-- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with Podman or [Docker](https://docs.docker.com/engine/install/) installed. See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings. For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html)
+- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with [Podman Desktop](https://podman.io/) or [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed, with an engine running. 
+  - Alternatively, start the Podman daemon:
+```
+$ podman machine init --memory 6000
+$ podman machine start
+```
+  - See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings.
+
+- For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html).
 - Memory: Minimum 4 GB RAM dedicated to Docker/Podman. [Memory recommendations](/en/operations/self-managed/node-setup.html#memory-settings). 
 - Disk: Avoid `NO_SPACE` - the vespaengine/vespa container image + headroom for data requires disk space. [Read more](/en/writing/feed-block.html). 
 - [Homebrew](https://brew.sh/) to install the [Vespa CLI](/en/clients/vespa-cli.html), or download the Vespa CLI from [Github releases](https://github.com/vespa-engine/vespa/releases). 
@@ -36411,7 +38353,7 @@ Congratulations, you have deployed your first Vespa application!
 $ docker rm -f vespa
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -36428,7 +38370,7 @@ This lets you deploy an application to the [dev zone](../operations/environments
 
 Alternative versions of this guide:
 
-- [Deploy an application using pyvespa](https://pyvespa.readthedocs.io/en/latest/getting-started-pyvespa-cloud.html) - for Python developers
+- [Deploy an application using pyvespa](https://vespa-engine.github.io/pyvespa/getting-started-pyvespa-cloud.html) - for Python developers
 - [Deploy an application](deploy-an-application.html)
 - [Deploy an application having Java components](deploy-an-application-java.html)
 - [Deploy an application locally](deploy-an-application-local.html)
@@ -36469,7 +38411,7 @@ Congratulations, you have deployed your first Vespa application! Application ins
 
 ###### Next: [Vespa applications](applications.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -36486,7 +38428,7 @@ Follow these steps to deploy a Vespa application to the [dev zone](../operations
 
 Alternative versions of this guide:
 
-- [Deploy an application using pyvespa](https://pyvespa.readthedocs.io/en/latest/getting-started-pyvespa-cloud.html) - for Python developers
+- [Deploy an application using pyvespa](https://vespa-engine.github.io/pyvespa/getting-started-pyvespa-cloud.html) - for Python developers
 - [Deploy an application having Java components](deploy-an-application-java.html)
 - [Deploy an application without Vespa CLI](deploy-an-application-shell.html)
 - [Deploy an application locally](deploy-an-application-local.html)
@@ -36520,7 +38462,7 @@ Congratulations, you have deployed your first Vespa application! Application ins
 
 ###### Next: [Vespa applications](applications.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -36690,7 +38632,7 @@ Note: The include-feature can not be used in combination with [deployment varian
 - [Zones](zones.html)
 - [Routing](endpoint-routing.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -36869,7 +38811,7 @@ You can pick and combine these dimensions in any way you want with other dimensi
 ```
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -36993,7 +38935,7 @@ Any necessary credentials for authentication and authorization should be added t
 
 Also see the [model](../reference/applications/config-files.html#model) config type to specify resources that should be downloaded by container nodes during convergence.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -37171,7 +39113,7 @@ Developers can also set these parameters in the IDE run configuration to debug s
 
 - To run Java [system and staging tests](../reference/applications/testing-java.html) in an IDE, ensure all API and data plane keys and certificates are configured in the IDE as well; not all IDEs pick up all settings from `pom.xml` correctly: 
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -37223,7 +39165,7 @@ Use [DocumentAccess](https://javadoc.io/doc/com.yahoo.vespa/documentapi/latest/c
     <dependency>
         <groupId>com.yahoo.vespa</groupId>
         <artifactId>documentapi</artifactId>
-        <version>8.617.12</version> <!-- Find latest version at[search.maven.org/search?q=g:com.yahoo.vespa%20a:documentapi](https://search.maven.org/search?q=g:com.yahoo.vespa%20a:documentapi)-->
+        <version>8.634.24</version> <!-- Find latest version at[search.maven.org/search?q=g:com.yahoo.vespa%20a:documentapi](https://search.maven.org/search?q=g:com.yahoo.vespa%20a:documentapi)-->
     </dependency>
 <dependencies>
 ```
@@ -37663,7 +39605,7 @@ public class MyClient {
 
 The first optional argument to this client is the [route](document-routing.html) of the cluster to visit. The second is the [fieldset](../schemas/documents.html#fieldsets) set to retrieve.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -38061,7 +40003,7 @@ schema passage {
 }
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -38144,7 +40086,7 @@ mydoctype.mystructarray{$x}.field1=="foo" AND mydoctype.mystructarray{$x}.field2
 
 Variables either have a `key` value (for maps and weighted sets), or an `index` value (for arrays). Variables cannot be used across such contexts (that is, a map key cannot be used to index into an array).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -39405,7 +41347,7 @@ This also works for nested structures, e.g. a `map` of `map` to `array` of `stru
 ```
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -39476,7 +41418,7 @@ A schema file is not sensitive to indentation.
 Elements and structure of a schema file:
 
 ```
-[schema](#schema)[document](#document)[struct](#struct)[field](#field)[match](#match)[field](#field) [array\<type\>](#array)[bool](#bool)[byte](#byte)[double](#double)[float](#float)[int](#int)[long](#long)[map\<key-type,value-type\>](#map)[position](#position)[predicate](#predicate)[raw](#raw)[reference\<document-type\>](#reference)[string](#string)[struct-name](#struct-name)[tensor(dimension-1,...,dimension-N)](#tensor)[uri](#uri)[weightedset\<element-type\>](#weightedset)[weightedset](#weightedset-properties)[alias](#alias)[attribute](#attribute)[distance-metric](#distance-metric)[bolding](#bolding)[dictionary](#dictionary)[id](#id)[index](#index)[hnsw](#index-hnsw)[indexing](#indexing)[match](#match)[normalizing](#normalizing)[query-command](#query-command)[rank](#rank)[rank-type](#rank-type)[sorting](#sorting)[stemming](#stemming)[struct-field](#struct-field)[indexing](#indexing)[match](#match)[query-command](#query-command)[struct-field](#struct-field)…[summary](#summary)[summary-to **DEPRECATED**](#summary-to)[summary](#summary)[summary-to **DEPRECATED**](#summary-to)[weight](#weight)[compression](#compression)[index](#index)[field](#field)[fieldset](#fieldset)[rank-profile](#rank-profile)[diversity](#diversity)[attribute](#diversity-attribute)[min-groups](#diversity-min-groups)[match-phase](#match-phase)[attribute](#match-phase-attribute)[order](#match-phase-order)[max-hits](#match-phase-max-hits)[first-phase](#firstphase-rank)[keep-rank-count](#keep-rank-count)[rank-score-drop-limit](#rank-score-drop-limit)[expression](#expression)[second-phase](#secondphase-rank)[expression](#expression)[rank-score-drop-limit](#secondphase-rank-score-drop-limit)[rerank-count](#secondphase-rerank-count)[global-phase](#globalphase-rank)[expression](#expression)[rerank-count](#globalphase-rerank-count)[rank-score-drop-limit](#globalphase-rank-score-drop-limit)[function [name] ](#function-rank)[inputs](#inputs)[constants](#constants)[onnx-model](#onnx-model)[significance](#significance)[rank-properties](#rank-properties)[match-features](#match-features)[mutate](#mutate)[on-match](#on-match)[on-first-phase](#on-first-phase)[on-second-phase](#on-second-phase)[on-summary](#on-summary)[summary-features](#summary-features)[rank-features](#rank-features)[ignore-default-rank-features](#ignore-default-rank-features)[num-threads-per-search](#num-threads-per-search)[num-search-partitions](#num-search-partitions)[min-hits-per-thread](#min-hits-per-thread)[termwise-limit](#termwise-limit)[post-filter-threshold](#post-filter-threshold)[approximate-threshold](#approximate-threshold)[filter-first-threshold](#filter-first-threshold)[filter-first-exploration](#filter-first-exploration)[exploration-slack](#exploration-slack)[target-hits-max-adjustment-factor](#target-hits-max-adjustment-factor)[filter-threshold](#filter-threshold)[rank](#rank)[filter-threshold](#rank-filter-threshold)[element-gap](#rank-element-gap)[rank-type](#rank-type)[weakand](#weakand)[stopword-limit](#weakand-stopword-limit)[adjust-target](#weakand-adjust-target)[allow-drop-all](#weakand-allow-drop-all)[rank-profile (inner)](#rank-profile)[constant](#constant)[onnx-model](#onnx-model)[stemming](#stemming)[document-summary](#document-summary)[summary](#summary)[import field](#import-field)[raw-as-base64-in-summary](#raw-as-base64-in-summary)
+[schema](#schema)[document](#document)[struct](#struct)[field](#field)[match](#match)[field](#field) [array\<type\>](#array)[bool](#bool)[byte](#byte)[double](#double)[float](#float)[int](#int)[long](#long)[map\<key-type,value-type\>](#map)[position](#position)[predicate](#predicate)[raw](#raw)[reference\<document-type\>](#reference)[string](#string)[struct-name](#struct-name)[tensor(dimension-1,...,dimension-N)](#tensor)[uri](#uri)[weightedset\<element-type\>](#weightedset)[weightedset](#weightedset-properties)[alias](#alias)[attribute](#attribute)[distance-metric](#distance-metric)[bolding](#bolding)[dictionary](#dictionary)[id](#id)[index](#index)[hnsw](#index-hnsw)[indexing](#indexing)[linguistics](#linguistics)[match](#match)[normalizing](#normalizing)[query-command](#query-command)[rank](#rank)[rank-type](#rank-type)[sorting](#sorting)[stemming](#stemming)[struct-field](#struct-field)[indexing](#indexing)[match](#match)[query-command](#query-command)[struct-field](#struct-field)…[summary](#summary)[summary-to **DEPRECATED**](#summary-to)[summary](#summary)[summary-to **DEPRECATED**](#summary-to)[weight](#weight)[compression](#compression)[index](#index)[field](#field)[fieldset](#fieldset)[rank-profile](#rank-profile)[diversity](#diversity)[attribute](#diversity-attribute)[min-groups](#diversity-min-groups)[match-phase](#match-phase)[attribute](#match-phase-attribute)[order](#match-phase-order)[max-hits](#match-phase-max-hits)[first-phase](#firstphase-rank)[keep-rank-count](#keep-rank-count)[rank-score-drop-limit](#rank-score-drop-limit)[expression](#expression)[second-phase](#secondphase-rank)[expression](#expression)[rank-score-drop-limit](#secondphase-rank-score-drop-limit)[rerank-count](#secondphase-rerank-count)[global-phase](#globalphase-rank)[expression](#expression)[rerank-count](#globalphase-rerank-count)[rank-score-drop-limit](#globalphase-rank-score-drop-limit)[function [name] ](#function-rank)[inputs](#inputs)[constants](#constants)[onnx-model](#onnx-model)[significance](#significance)[rank-properties](#rank-properties)[match-features](#match-features)[mutate](#mutate)[on-match](#on-match)[on-first-phase](#on-first-phase)[on-second-phase](#on-second-phase)[on-summary](#on-summary)[summary-features](#summary-features)[rank-features](#rank-features)[ignore-default-rank-features](#ignore-default-rank-features)[num-threads-per-search](#num-threads-per-search)[num-search-partitions](#num-search-partitions)[min-hits-per-thread](#min-hits-per-thread)[termwise-limit](#termwise-limit)[post-filter-threshold](#post-filter-threshold)[approximate-threshold](#approximate-threshold)[filter-first-threshold](#filter-first-threshold)[filter-first-exploration](#filter-first-exploration)[exploration-slack](#exploration-slack)[target-hits-max-adjustment-factor](#target-hits-max-adjustment-factor)[filter-threshold](#filter-threshold)[rank](#rank)[filter-threshold](#rank-filter-threshold)[element-gap](#rank-element-gap)[rank-type](#rank-type)[weakand](#weakand)[stopword-limit](#weakand-stopword-limit)[adjust-target](#weakand-adjust-target)[allow-drop-all](#weakand-allow-drop-all)[rank-profile (inner)](#rank-profile)[constant](#constant)[onnx-model](#onnx-model)[stemming](#stemming)[document-summary](#document-summary)[summary](#summary)[import field](#import-field)[raw-as-base64-in-summary](#raw-as-base64-in-summary)
 ```
 
 ##### schema
@@ -40275,14 +42217,14 @@ This parameter has no effect in [streaming search](../../performance/streaming-s
  |
 | approximate-threshold | Zero or one | 
 
-Threshold value (in the range [0.0, 1.0]) deciding if a query with an approximate [nearestNeighbor](../querying/yql.html#nearestneighbor) operator combined with filters is evaluated by searching the [HNSW](schemas.html#index-hnsw) graph for approximate neighbors with filtering, or performing an [exact nearest neighbor search](../../querying/nearest-neighbor-search) with pre-filtering. The fallback to exact search is chosen when the estimated filter hit ratio of the query is _less_ than this threshold. The default value is 0.05. See [Controlling the filtering behavior with approximate nearest neighbor search](https://blog.vespa.ai/constrained-approximate-nearest-neighbor-search/#controlling-the-filtering-behavior-with-approximate-nearest-neighbor-search) for more details.
+Threshold value (in the range [0.0, 1.0]) deciding if a query with an approximate [nearestNeighbor](../querying/yql.html#nearestneighbor) operator combined with filters is evaluated by searching the [HNSW](schemas.html#index-hnsw) graph for approximate neighbors with filtering, or performing an [exact nearest neighbor search](../../querying/nearest-neighbor-search) with pre-filtering. The fallback to exact search is chosen when the estimated filter hit ratio of the query is _less_ than this threshold. The default value is 0.02. See [Controlling the filtering behavior with approximate nearest neighbor search](https://blog.vespa.ai/constrained-approximate-nearest-neighbor-search/#controlling-the-filtering-behavior-with-approximate-nearest-neighbor-search) for more details.
 
 This parameter has no effect in [streaming search](../../performance/streaming-search.html#differences-in-streaming-search).
 
  |
 | filter-first-threshold | Zero or one | 
 
-Threshold value (in the range [0.0, 1.0]) deciding if the filter is checked before computing a distance (_filter-first heuristic_) while searching the [HNSW](schemas.html#index-hnsw) graph for approximate neighbors with filtering. This improves the response time at low hit ratios but causes a dip in recall. The heuristic is used when the estimated filter hit ratio of the query is _less_ than this threshold. The default value is 0.0.
+Threshold value (in the range [0.0, 1.0]) deciding if the filter is checked before computing a distance (_filter-first heuristic_) while searching the [HNSW](schemas.html#index-hnsw) graph for approximate neighbors with filtering. This improves the response time at low hit ratios but causes a dip in recall. The heuristic is used when the estimated filter hit ratio of the query is _less_ than this threshold. The default value is 0.3.
 
 This parameter has no effect in [streaming search](../../performance/streaming-search.html#differences-in-streaming-search).
 
@@ -40879,7 +42821,7 @@ Use the [summary](../api/query.html#presentation.summary) query parameter to cho
 
 ##### stemming
 
-Contained in [field](#field),[schema](#schema) or[index](#index). Sets how to stem a field or an index, or how to stem by default. Read more on [stemming](../../linguistics/linguistics.html#stemming).
+Contained in [field](#field),[schema](#schema) or[index](#index). Sets how to stem a field or an index, or how to stem by default. Typically used with [OpenNLP linguistics](../../linguistics/linguistics-opennlp.html). Read more on [stemming](../../linguistics/linguistics-opennlp.html#stemming).
 
 ```
 stemming: [stemming-type]
@@ -40897,7 +42839,7 @@ The stemming types are:
 
 ##### normalizing
 
-Contained in [field](#field). Sets [normalizing](../../linguistics/linguistics.html#normalization) to be done on this field. The default is to normalize.
+Contained in [field](#field). Sets [normalizing](../../linguistics/linguistics-opennlp.html#normalization) to be done on this field. The default is to normalize.
 
 ```
 normalizing: [normalizing-type]
@@ -40988,7 +42930,7 @@ Marks the attribute as a special mutable attribute that can be updated by a [mut
 
 An attribute is [multivalued](../../querying/searching-multivalue-fields)if assigning it multiple values during indexing, by using a multivalued field type like array or map, or by using e.g. [split](../writing/indexing-language.html#split) /[for\_each](../writing/indexing-language.html#for_each)or by letting multiple fields write their value to the attribute field.
 
-Note that [normalizing](#normalizing) and[tokenization](../../linguistics/linguistics.html#tokenization)is not supported for attribute fields.
+Note that [normalizing](#normalizing) and[tokenization](../../linguistics/linguistics-opennlp.html#tokenization)is not supported for attribute fields.
 
 Queries in attribute fields are not normalized, nor stemmed. Use [index](#index) on fields to enable. Both _index_ and _attribute_ can be set on a field.
 
@@ -41170,7 +43112,7 @@ An ID must satisfy these requirements:
 
 Contained in [field](#field) or [schema](#schema). Sets index parameters.
 
-Content in [string](#string)-fields with _index_ is [normalized](#normalizing) and [tokenized](../../linguistics/linguistics.html#tokenization) by default. The field can be single- or multivalued (e.g. `array<string>`).
+Content in [string](#string)-fields with _index_ is [normalized](#normalizing) and [tokenized](../../linguistics/linguistics-opennlp.html#tokenization) by default. The field can be single- or multivalued (e.g. `array<string>`).
 
 For [tensor](#tensor)-typed fields, _index_ creates an [HNSW](#index-hnsw) index for [Approximate Nearest Neighbor](../../querying/nearest-neighbor-search-guide) queries, with a default [euclidean](#euclidean) distance metric. The index is built after a [content node restart](#changes-that-require-restart-but-not-re-feed) (automated on Vespa Cloud).
 
@@ -41292,6 +43234,25 @@ When combining both `index` and `attribute` in the indexing statement for a fiel
 
 Find examples and more details in the [Text Matching](../../querying/text-matching.html) guide.
 
+##### linguistics
+
+Sets a linguistics 'profile' deciding how content and searches against this field should be linguistically processed. The profile value is propagated to the [linguistics component](../../linguistics/linguistics.html)which can be configured to do profile-specific processing.
+
+```
+linguistics {
+    profile: myIndexAndSearchProfile
+}
+```
+or
+```
+linguistics {
+    profile {
+        index: myIndexProfile
+        search: mySearchProfile
+    }
+}
+```
+
 ##### match
 
 Contained in [field](#field), [fieldset](#fieldset) or[struct-field](#struct-field). Sets the matching method to use for this field to something other than the default token matching.
@@ -41308,7 +43269,7 @@ match {
 }
 ```
 
-Whether the match type is `text`, `word` or `exact`, all term matching will be done after [normalization](../../linguistics/linguistics.html#normalization)and locale-independent lowercasing (in that order).
+Whether the match type is `text`, `word` or `exact`, all term matching will be done after [normalization](../../linguistics/linguistics-opennlp.html#normalization)and locale-independent lowercasing (in that order).
 
 Find examples and more details in the [Text Matching](../../querying/text-matching.html) guide. Also see search using [regular expressions](../querying/yql.html#matches).
 
@@ -41316,7 +43277,7 @@ Find examples and more details in the [Text Matching](../../querying/text-matchi
 | --- | --- | --- |
 | text | index | 
 
-The default for string fields with `index`. Can not be combined with exact matching. The field is matched per [token](../../linguistics/linguistics.html#tokenization).
+The default for string fields with `index`. Can not be combined with exact matching. The field is matched per [token](../../linguistics/linguistics-opennlp.html#tokenization).
 
  |
 | exact | index, attribute | 
@@ -41388,7 +43349,7 @@ Use case-insensitive matching (the default).
  |
 | cased | index, attribute | 
 
-Use case-sensitive matching. Usually only used together with `match: exact` or `match: word` modes. When using `match: text`, note that if you are using a custom [linguistics implementation](../../linguistics/linguistics.html#creating-a-custom-linguistics-implementation), this will only have effect for string index fields if that implementation produces cased tokens.
+Use case-sensitive matching. Usually only used together with `match: exact` or `match: word` modes. When using `match: text`, note that if you are using a custom [linguistics implementation](../../linguistics/linguistics-custom.html), this will only have effect for string index fields if that implementation produces cased tokens.
 
  |
 | max-length | index | 
@@ -41414,7 +43375,7 @@ Configure the max length of tokens that will be indexed for the field. Longer to
 
 This field is matched using n-grams. For example, with the default gram size 2, the string "hi blue" is tokenized to "hi bl lu ue" both in the index and in queries to the index.
 
-N-gram matching is useful mainly as an alternative to [segmentation](../../linguistics/linguistics.html#tokenization) in CJK languages. Typically, it results in increased recall and lower precision. However, as Vespa usually uses proximity in ranking, the precision offset may not be of much importance. Grams consume more resources than other matching methods because both indexes and queries will have more terms, and the terms contain repetition of the same letters. On the other hand, CPU-intensive CJK segmentation is avoided.
+N-gram matching is useful mainly as an alternative to [segmentation](../../linguistics/linguistics-opennlp.html#tokenization) in CJK languages. Typically, it results in increased recall and lower precision. However, as Vespa usually uses proximity in ranking, the precision offset may not be of much importance. Grams consume more resources than other matching methods because both indexes and queries will have more terms, and the terms contain repetition of the same letters. On the other hand, CPU-intensive CJK segmentation is avoided.
 
 It may also be used for substring matching in general.
 
@@ -41999,7 +43960,7 @@ Re-feed document type 'test' in cluster 'mycluster' because:
     1) Document type 'test': Field 'f1' changed: data type: 'string' -> 'int'
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -42054,6 +44015,7 @@ Re-feed document type 'test' in cluster 'mycluster' because:
 - [index](#index)
 - [hnsw](#index-hnsw)
 - [indexing](#indexing)
+- [linguistics](#linguistics)
 - [match](#match)
 - [rank](#rank)
 - [filter-threshold](#rank-filter-threshold)
@@ -42186,7 +44148,7 @@ You can find the details in [modifying schemas](../reference/schemas/schemas.htm
 
 ###### Next: [Writing](writing.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -42438,7 +44400,7 @@ The framework core supports asynchronous processing, processing one or multiple 
 - A Processing has a `context`, which is a Map of named values which can be used to pass arguments between processors. 
 - Processings are prepared to be stored to disk, to allow a high number of ongoing long-term processings per node. 
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -43337,7 +45299,7 @@ Messages sent to vespa (route default) :
 PutDocument:	ok: 1 msgs/sec: 3.30 failed: 0 ignored: 0 latency(min, max, avg): 225, 225, 225
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -43735,7 +45697,7 @@ group = '(', { space }, ( or | and | not | group | leaf ),
 expression = ( or | and | not | group | leaf ) ;
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -44054,7 +46016,7 @@ Adds ngram annotations to all strings in the execution value.
  |
 | `normalize` | 
 
-[normalize](../../linguistics/linguistics.html#normalization) the input data. The corresponding query command for this function is `normalize`.
+[normalize](../../linguistics/linguistics-opennlp.html#normalization) the input data. The corresponding query command for this function is `normalize`.
 
  |
 | `now` | 
@@ -44085,7 +46047,7 @@ Performs the statement that corresponds to the **first** named field that is not
  |
 | `set_language` | 
 
-Sets the language of this document to the string representation of the execution value. Parses the input value as an RFC 3066 language tag, and sets that language for the current document. This affects the behavior of the [tokenizer](../../linguistics/linguistics.html#tokenization). The recommended use is to have one field in the document containing the language code, and that field should be the **first** field in the document, as it will only affect the fields defined **after** it in the schema. Read [linguistics](../../linguistics/linguistics.html) for more information on how language settings are applied.
+Sets the language of this document to the string representation of the execution value. Parses the input value as an RFC 3066 language tag, and sets that language for the current document. This affects the behavior of the [tokenizer](../../linguistics/linguistics-opennlp.html#tokenization). The recommended use is to have one field in the document containing the language code, and that field should be the **first** field in the document, as it will only affect the fields defined **after** it in the schema. Read [linguistics](../../linguistics/linguistics.html#language-handling) for more information on how language settings are applied.
 
  |
 | `set_var <varName>` | 
@@ -44134,7 +46096,7 @@ Converts all strings in the execution value to a URI struct. If a string could n
 
  |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -44231,7 +46193,7 @@ In addition to supporting writes, the document/v1 HTTP API can also return singl
 
 ###### Next: [Querying](querying.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -44434,7 +46396,7 @@ The work, and thus latency, increases with more [hits](../reference/api/query.ht
 
 Refer to [content node summary cache](../performance/caches-in-vespa.html#content-node-summary-cache).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -44825,7 +46787,7 @@ $ curl http://localhost:8080/document/v1/namespace/music/group/mygroupname/
 ```
  |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -44896,6 +46858,24 @@ field shortid type string {
 ```
 
 This enables using a [document-summary](../querying/document-summaries.html) with only in-memory fields while still getting the identifier you actually care about. If the "user-specified-identifier" is just a simple number you could even use "type int" for this field for minimal memory overhead.
+
+The Document ID is stored on disk in the document summary. To return this value in search results, configure the schema like this:
+
+```
+schema music {
+    document music {
+        field ...
+    }
+    document-summary empty-summary {
+        summary documentid {
+            source: documentid
+        }
+        from-disk
+    }
+    ...
+```
+
+... and use `presentation.summary=empty-summary` in the query API. The `from-disk` setting mutes a warning for document summary disk access; Use a higher query timeout when requesting many IDs like this.
 
 ###### Namespace
 
@@ -45018,7 +46998,7 @@ The sample app [vespa-documentation-search](https://github.com/vespa-cloud/vespa
 
 Both sample apps also use the Document API to GET/PUT/UPDATE other documents as part of processing, using asynchronous [DocumentAccess](https://github.com/vespa-engine/vespa/blob/master/documentapi/src/main/java/com/yahoo/documentapi/DocumentAccess.java). Use this as a starting point for applications that enrich data when writing.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -45078,7 +47058,7 @@ When feeding reviews, there is a custom [document processor](../../applications/
 
 - [Ranking functions](../../reference/schemas/schemas.html#function-rank)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -45177,7 +47157,7 @@ http://localhost:8080/demo?terms=1%202%203%204
 Rendering finished work: 1369733374902
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -45211,7 +47191,15 @@ The main goal is to set up a text search app that combines simple text scoring f
 
 **Prerequisites:**
 
-- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with Podman or [Docker](https://docs.docker.com/engine/install/) installed. See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings. For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html)
+- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with [Podman Desktop](https://podman.io/) or [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed, with an engine running. 
+  - Alternatively, start the Podman daemon:
+```
+$ podman machine init --memory 6000
+$ podman machine start
+```
+  - See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings.
+
+- For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html).
 - Memory: Minimum 4 GB RAM dedicated to Docker/Podman. [Memory recommendations](/en/operations/self-managed/node-setup.html#memory-settings). 
 - Disk: Avoid `NO_SPACE` - the vespaengine/vespa container image + headroom for data requires disk space. [Read more](/en/writing/feed-block.html). 
 - [Homebrew](https://brew.sh/) to install the [Vespa CLI](/en/clients/vespa-cli.html), or download the Vespa CLI from [Github releases](https://github.com/vespa-engine/vespa/releases). 
@@ -46178,7 +48166,7 @@ $ docker rm -f vespa-hybrid
 
 1. Robertson, Stephen and Zaragoza, Hugo and others, 2009. The probabilistic relevance framework: BM25 and beyond. Foundations and Trends in Information Retrieval.&nbsp;[↩](#fnref:1)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -46268,7 +48256,7 @@ The [HTTP API tutorial](http-api.html) shows how to build a custom HTTP API in a
 
 There are many examples and starting applications on[GitHub](https://github.com/vespa-engine/sample-apps/)and [Pyvespa examples](https://vespa-engine.github.io/pyvespa/index.html).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -46310,7 +48298,15 @@ In this part, we will start with a minimal Vespa application to get used to some
 
 **Prerequisites:**
 
-- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with Podman or [Docker](https://docs.docker.com/engine/install/) installed. See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings. For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html)
+- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with [Podman Desktop](https://podman.io/) or [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed, with an engine running. 
+  - Alternatively, start the Podman daemon:
+```
+$ podman machine init --memory 6000
+$ podman machine start
+```
+  - See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings.
+
+- For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html).
 - Memory: Minimum 4 GB RAM dedicated to Docker/Podman. [Memory recommendations](/en/operations/self-managed/node-setup.html#memory-settings). 
 - Disk: Avoid `NO_SPACE` - the vespaengine/vespa container image + headroom for data requires disk space. [Read more](/en/writing/feed-block.html). 
 - [Homebrew](https://brew.sh/) to install the [Vespa CLI](/en/clients/vespa-cli.html), or download the Vespa CLI from [Github releases](https://github.com/vespa-engine/vespa/releases). 
@@ -46486,7 +48482,7 @@ This will delete the Vespa application, including all data and configuration. Se
 
 Our simple application should now be up and running. In the [next part of the tutorial](news-2-basic-feeding-and-query.html), we'll start building from this foundation.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -46538,10 +48534,10 @@ We'll start with developing a search application, so we'll focus on the news con
 Let's start by downloading the data. The `news` sample app directory will be our starting point. We've included a script to download the data for us:
 
 ```
-$ ./bin/download-mind.sh demo
+$ ./bin/download-mind.sh small
 ```
 
-The argument defines which dataset to download. Here, we download the `demo`dataset, but `small` and `large` are valid options. Both the training and validation parts are downloaded to a directory called `mind`. The `demo`dataset is around 27 Mb. Both `train` and `dev` datasets will be downloaded.
+The argument defines which dataset to download. Here, we download the `small`dataset, but `small` and `large` are valid options. Both the training and validation parts are downloaded to a directory called `mind`. Both `train` and `dev` datasets will be downloaded.
 
 Taking a look at the data, in `mind/train/news.tsv`, we see tab-separated lines like the following:
 
@@ -46702,7 +48698,7 @@ The argument is where to find the downloaded data above, which was in the`mind` 
 $ vespa feed mind/vespa.json --target http://localhost:8080
 ```
 
-`vespa feed` reads a JSON array of document operations, or JSONL with one Vespa document JSON formatted operation per line. Once the feed job finishes, all our 28 603 documents are searchable, let us do a quick query to verify:
+`vespa feed` reads a JSON array of document operations, or JSONL with one Vespa document JSON formatted operation per line. Once the feed job finishes, all our 65 238 documents are searchable, let us do a quick query to verify:
 
 ```
 $ vespa query -v 'yql=select * from news where true' 'hits=0'
@@ -46816,7 +48812,7 @@ Search for "music" in the default fieldset, boost documents with festival in the
 
 We now have a Vespa application running with searchable data. In the [next part of the tutorial](news-3-searching.html), we'll explore searching with sorting, grouping, and ranking results.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -47051,7 +49047,7 @@ Before we move on to ranking, it's important to know some of the differences bet
 
 Consider the `title` field from our schema, and the document for the article with title "A little snow causes a big mess, more than 100 crashes on Minnesota roads". In the original input, the value for `title` is a string built of up the 14 words, with a single white space character between them. How should we be able to search this field?
 
-For string fields with `index` which defaults to `match:text`, Vespa performs linguistic processing of the string. This includes [tokenization](../../linguistics/linguistics.html#tokenization), [normalization](../../linguistics/linguistics.html#normalization)and language dependent [stemming](../../linguistics/linguistics.html#stemming) of the string.
+For string fields with `index` which defaults to `match:text`, Vespa performs linguistic processing of the string. This includes [tokenization](../../linguistics/linguistics-opennlp.html#tokenization), [normalization](../../linguistics/linguistics-opennlp.html#normalization)and language dependent [stemming](../../linguistics/linguistics-opennlp.html#stemming) of the string.
 
 In our example, this means that the string above is split into the 14 tokens, enabling Vespa to match this document for:
 
@@ -47199,7 +49195,7 @@ and find documents with high `popularity` values at the top. Note that we must s
 
 After completing this part of the tutorial, you should now have a basic understanding of how you can load data into Vespa and effectively search for content. In the [next part of the tutorial](news-4-embeddings.html), we'll start with the basics for transforming this search app into a recommendation system.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -47454,7 +49450,7 @@ class ContentBasedModel(torch.nn.Module):
 The forward pass function is pretty much the same as before. You can see the entire training script in[train\_cold\_start.py](https://github.com/vespa-engine/sample-apps/blob/master/news/src/python/train_cold_start.py). Running this results in:
 
 ```
-$ python3 src/python/train_cold_start.py mind 10
+$ python3 src/python/train_cold_start.py mind 5
 ```
 
 ```
@@ -47527,7 +49523,7 @@ We are now ready to feed these embedding vectors to Vespa.
 
 Now that we've generated user and document embeddings, we can start using these to recommend news items to users. We'll start feeding these in the [next part of the tutorial](news-5-recommendation.html).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -47720,7 +49716,7 @@ $ vespa feed mind/vespa_user_embeddings.json --target http://localhost:8080
 $ vespa feed mind/vespa_news_embeddings.json --target http://localhost:8080
 ```
 
-Once the feeding jobs finishes, the index is ready to be used, we can verify that we have 28,603 news documents and 5000 user documents:
+Once the feeding jobs finishes, the index is ready to be used, we can verify that we have 65238 news documents and 94057 user documents:
 
 ```
 $ sleep 20
@@ -47826,7 +49822,7 @@ This script first retrieves the user embedding using an HTTP `GET` query to Vesp
 
 Here, you can see the `nearestNeighbor` search operator being set up so that the query parameter `user_embedding` will be searched against the `embedding` document field. The tensor for the `user_embedding` is in the `ranking.features.query(user_embedding)` parameter. Recall from above that we set a query profile type for this exact query parameter, so Vespa knows what to expect here.
 
-When Vespa receives this query, it scans linearly through all documents (28603 if you are using the MIND DEMO dataset), and scores them using the `recommendation` rank profile we set up above. Recall that we ask Vespa to convert the problem from maximum inner product to a nearest distance problem by using the `dotproduct` distance metric; in this case `distance` ranking feature just outputs the negative dotproduct.
+When Vespa receives this query, it scans linearly through all documents, and scores them using the `recommendation` rank profile we set up above. Recall that we ask Vespa to convert the problem from maximum inner product to a nearest distance problem by using the `dotproduct` distance metric; in this case `distance` ranking feature just outputs the negative dotproduct.
 
 With a distance search, we want to find the smallest distances. However, Vespa sorts the final results by decreasing rank score. To get the expected rank order, Vespa provides the `closeness` feature which in this case is just the dotproduct directly.
 
@@ -47862,7 +49858,7 @@ If you recall, Vespa returned something like the following when searching for si
     },
     "coverage": {
       "coverage": 100,
-      "documents": 28603,
+      "documents": 65238,
       "full": true,
       "nodes": 1,
       "results": 1,
@@ -47870,7 +49866,7 @@ If you recall, Vespa returned something like the following when searching for si
     }
 ```
 
-Here, `coverage` shows that Vespa did scan through all 28603 documents. The interesting piece here is the `totalCount`. This number is the number of times a document has been put in the top 10 results during this linear scan.
+Here, `coverage` shows that Vespa did scan through all 65238 documents. The interesting piece here is the `totalCount`. This number is the number of times a document has been put in the top 10 results during this linear scan.
 
 Let's switch to using approximate nearest-neighbors by adding `index` to the embedding field in `news.sd`:
 
@@ -47915,7 +49911,7 @@ schema news {
         field embedding type tensor<float>(d0[50]) {
             indexing: attribute | index
             attribute {
-                distance-metric: euclidean
+                distance-metric: dotproduct
             }
         }
     }
@@ -47974,7 +49970,7 @@ $ ./src/python/user_search.py U33527 10
     },
     "coverage": {
       "coverage": 100,
-      "documents": 28603,
+      "documents": 65238,
       "full": true,
       "nodes": 1,
       "results": 1,
@@ -48020,7 +50016,7 @@ As a note, strict filters that filter away a large part of the corpus would enta
 
 We now have a basic recommendation system up and running. We can query for a user, retrieve the embedding vector and use that for querying the news articles. Right now, this means two calls to Vespa. In the [next part of the tutorial](news-6-recommendation-with-searchers.html), we will introduce `searchers`, which allows for custom logic during query processing inside the Vespa cluster, requiring only one pass from the client to Vespa.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -48068,21 +50064,21 @@ All requests pass through the `container` cluster before passing along to`conten
 
 ```
 { "message": "Invoke searcher 'com.yahoo.search.querytransform.WeakAndReplacementSearcher in vespa'" },
-    { "message": "Invoke searcher 'com.yahoo.prelude.statistics.StatisticsSearcher in native'" },
-    { "message": "Invoke searcher 'com.yahoo.prelude.querytransform.PhrasingSearcher in vespa'" },
-    { "message": "Invoke searcher 'com.yahoo.prelude.searcher.FieldCollapsingSearcher in vespa'" },
-    { "message": "Invoke searcher 'com.yahoo.search.yql.MinimalQueryInserter in vespa'" },
+{ "message": "Invoke searcher 'com.yahoo.prelude.statistics.StatisticsSearcher in native'" },
+{ "message": "Invoke searcher 'com.yahoo.prelude.querytransform.PhrasingSearcher in vespa'" },
+{ "message": "Invoke searcher 'com.yahoo.prelude.searcher.FieldCollapsingSearcher in vespa'" },
+{ "message": "Invoke searcher 'com.yahoo.search.yql.MinimalQueryInserter in vespa'" },
 
-    { "message": "Federating to [mind]" },
+{ "message": "Federating to [mind]" },
 
-    { "message": "Got 10 hits from source:mind" },
-    { "message": "Return searcher 'federation in native'" },
+{ "message": "Got 10 hits from source:mind" },
+{ "message": "Return searcher 'federation in native'" },
 
-    { "message": "Return searcher 'com.yahoo.search.yql.MinimalQueryInserter in vespa'" },
-    { "message": "Return searcher 'com.yahoo.prelude.searcher.FieldCollapsingSearcher in vespa'" },
-    { "message": "Return searcher 'com.yahoo.prelude.querytransform.PhrasingSearcher in vespa'" },
-    { "message": "Return searcher 'com.yahoo.prelude.statistics.StatisticsSearcher in native'" },
-    { "message": "Return searcher 'com.yahoo.search.querytransform.WeakAndReplacementSearcher in vespa'" },
+{ "message": "Return searcher 'com.yahoo.search.yql.MinimalQueryInserter in vespa'" },
+{ "message": "Return searcher 'com.yahoo.prelude.searcher.FieldCollapsingSearcher in vespa'" },
+{ "message": "Return searcher 'com.yahoo.prelude.querytransform.PhrasingSearcher in vespa'" },
+{ "message": "Return searcher 'com.yahoo.prelude.statistics.StatisticsSearcher in native'" },
+{ "message": "Return searcher 'com.yahoo.search.querytransform.WeakAndReplacementSearcher in vespa'" },
 ```
 
 This shows a small sample of the additional output when using `trace.level`. Note the invocations of the Searchers. Each Searcher gets invoked along a chain, and the last Searcher in the chain sends the post-processed query to the search backend. When the results come back, the processing passes back up the chain. The Searchers can then process the results before passing them to the previous Searcher, and ultimately back as a response to the query.
@@ -48259,8 +50255,8 @@ $ vespa query -v \
 Note that the `searchChain` query parameter can be set as default, so this does not have to be passed with the query request. This is done by adding it to the default query profile in[src/main/application/search/query-profiles/default.xml](https://github.com/vespa-engine/sample-apps/blob/master/news/app-6-recommendation-with-searchers/src/main/application/search/query-profiles/default.xml):
 
 ```
-<query-profile id="default" type="root">
-    <field name="searchChain">user</field>
+<query-profile id="default" type="root"<
+    <field name="searchChain">user</field<
 </query-profile>
 ```
 
@@ -48298,7 +50294,7 @@ A common way of performing blending from multiple sources is to implement a spec
 
 We now have a Vespa application up and running that takes a single `user_id`and returns recommendations for that user. In the [next part of the tutorial](news-7-recommendation-with-parent-child.html), we'll address what to do when new users without any history visit our recommendation system.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -48558,7 +50554,7 @@ Ultimately, these features are computed in real-time for every news article duri
 
 This tutorial introduced parent-child relationships and demonstrated it through a global CTR feature we used in ranking. As this feature was based on tensors, we also introduced ranking with tensor expressions. For a real-world use-case using parent-child tensors, see this [blog post](https://blog.vespa.ai/parent-child-joins-tensors-content-recommendation/).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -48617,7 +50613,15 @@ Your browser can’t display SVG. Try upgrading your browser or using a differen
 
 **Prerequisites:**
 
-- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with Podman or [Docker](https://docs.docker.com/engine/install/) installed. See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings. For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html)
+- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with [Podman Desktop](https://podman.io/) or [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed, with an engine running. 
+  - Alternatively, start the Podman daemon:
+```
+$ podman machine init --memory 6000
+$ podman machine start
+```
+  - See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings.
+
+- For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html).
 - Memory: Minimum 4 GB RAM dedicated to Docker/Podman. [Memory recommendations](/en/operations/self-managed/node-setup.html#memory-settings). 
 - Disk: Avoid `NO_SPACE` - the vespaengine/vespa container image + headroom for data requires disk space. [Read more](/en/writing/feed-block.html). 
 - [Homebrew](https://brew.sh/) to install the [Vespa CLI](/en/clients/vespa-cli.html), or download the Vespa CLI from [Github releases](https://github.com/vespa-engine/vespa/releases). 
@@ -49869,7 +51873,7 @@ By using the principles demonstrated in this tutorial, you are empowered to buil
 
 - **Q: How can you say that Vespa can scale to any data and query load?**
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -50243,7 +52247,7 @@ In this tutorial we have looked at using a simple _linear_ ranking function. Ves
 - [Ranking with LightGBM Models](../../ranking/lightgbm)
 - [Ranking with ONNX Models](../../ranking/onnx)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -50274,7 +52278,15 @@ The main goal is to set up a text search app based on simple text scoring featur
 
 **Prerequisites:**
 
-- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with Podman or [Docker](https://docs.docker.com/engine/install/) installed. See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings. For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html)
+- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with [Podman Desktop](https://podman.io/) or [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed, with an engine running. 
+  - Alternatively, start the Podman daemon:
+```
+$ podman machine init --memory 6000
+$ podman machine start
+```
+  - See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings.
+
+- For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html).
 - Memory: Minimum 4 GB RAM dedicated to Docker/Podman. [Memory recommendations](/en/operations/self-managed/node-setup.html#memory-settings). 
 - Disk: Avoid `NO_SPACE` - the vespaengine/vespa container image + headroom for data requires disk space. [Read more](/en/writing/feed-block.html). 
 - [Homebrew](https://brew.sh/) to install the [Vespa CLI](/en/clients/vespa-cli.html), or download the Vespa CLI from [Github releases](https://github.com/vespa-engine/vespa/releases). 
@@ -50354,7 +52366,7 @@ schema msmarco {
             index: enable-bm25
         }
         field body type string {
-            indexing: index
+            indexing: index | summary
             match: text
             index: enable-bm25
         }
@@ -50781,7 +52793,7 @@ schema msmarco {
             index: enable-bm25
         }
         field body type string {
-            indexing: index
+            indexing: index | summary
             match: text
             index: enable-bm25
         }
@@ -50920,7 +52932,7 @@ Foundations and Trends in Information Retrieval.
 
 1. Robertson, Stephen and Zaragoza, Hugo and others, 2009. The probabilistic relevance framework: BM25 and beyond.&nbsp;[↩](#fnref:1)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -51054,7 +53066,7 @@ As buckets are split and joined, it is possible for replicas of a bucket to be s
 - [content nodes](content-nodes.html)
 - [proton](proton.html) - see _ready_ state
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -51113,6 +53125,8 @@ Embedders are [components](../applications/components.html) which must be config
 ```
 
 You can [write your own](https://javadoc.io/doc/com.yahoo.vespa/linguistics/latest/com/yahoo/language/process/Embedder.html), or use [embedders provided in Vespa](#provided-embedders).
+
+If you have multiple container clusters that are using the same embedder, consider using an [include](../reference/applications/services/container.html#include) statement to avoid duplicating component config.
 
 ##### Embedding a query text
 
@@ -51620,7 +53634,7 @@ feed: got error "Post "http://127.0.0.1:8080/document/v1/doc/doc/docid/1": unexp
 
 This could be related to insufficient stateless container (JVM) memory. Check the container logs for OOM errors. See [jvm-tuning](../performance/container-tuning.html#jvm-tuning) for JVM tuning options (The default heap size is 1.5GB). Container crashes could also be caused by too little memory allocated to the docker or podman container, which can cause the Linux kernel to kill processes to free memory. See the [docker containers memory](../operations/self-managed/docker-containers.html#memory) documentation.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -51713,7 +53727,7 @@ If all deployments of an endpoint are deactivated, requests are distributed as i
 
 While Vespa Cloud is hosted in AWS, clients that talk to Vespa Cloud from AWS nodes will be treated as any other client from the Internet. This means clients in AWS will generate regular Internet egress traffic even though they are talking to a service in AWS in the same zone.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -51819,7 +53833,7 @@ Environment settings:
 | `staging` | Used for [automated staging tests](../applications/testing.html#staging-tests). | - | `min(max(2, 0.05 * spec), spec)` |
 | `prod` | Hosts all production deployments. | No expiry | `max(2, spec)` |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -51956,7 +53970,7 @@ $ vespa deploy
 $ vespa curl "schema/v1/"
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -52066,7 +54080,7 @@ By default, this particular client connects to the OpenAI service, but can be us
 - **Q: Can I use the OpenAI client for retrieving embeddings?**
   - A: No, currently, only the [Chat Completion API](https://platform.openai.com/docs/api-reference/chat) is supported.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -52081,13 +54095,13 @@ By default, this particular client connects to the OpenAI service, but can be us
 ## Faq
 
 ### FAQ - frequently asked questions
-Refer to [Vespa Support](https://vespa.ai/support) for more support options.
+Refer to [Vespa Support](https://vespa.ai/support/) for more support options.
 
 #### FAQ - frequently asked questions
 
  
 
-Refer to [Vespa Support](https://vespa.ai/support) for more support options.
+Refer to [Vespa Support](https://vespa.ai/support/) for more support options.
 
 ##### Ranking
 
@@ -52362,7 +54376,7 @@ See [result diversity](../querying/result-diversity) for strategies on how to cr
 
 If you want to search for the most dissimilar items, you can with angular distance multiply your `clip_query_embedding` by the scalar -1. Then you are searching for the points that are closest to the point which is the farthest away from your `clip_query_embedding`.
 
-Also see a [pyvespa example](https://pyvespa.readthedocs.io/en/latest/examples/pyvespa-examples.html#Neighbors).
+Also see a [pyvespa example](https://vespa-engine.github.io/pyvespa/examples/pyvespa-examples.html#Neighbors).
 
 ##### Feeding
 
@@ -52492,6 +54506,16 @@ In short, Vespa is not designed to release memory once used. It is designed for 
 When deleting documents, one can observe a slight increase in memory. A deleted document is represented using a [tombstone](../operations/self-managed/admin-procedures.html#content-cluster-configuration), that will later be removed, see [removed-db-prune-age](../reference/applications/services/content.html#removed-db-prune-age). When running garbage collection, the summary store is scanned using mmap and both VIRT and page cache memory usage increases.
 
 Read up on [attributes](../content/attributes.html) to understand more of how such fields are stored and managed.[Paged attributes](../content/attributes.html#paged-attributes) trades off memory usage vs. query latency for a lower max memory usage.
+
+###### Do empty fields consume memory?
+
+A field is of type _index_ or _attribute_ - [details](../querying/text-matching.html#index-and-attribute).
+
+Fields with _index_ use no incremental memory at deployment, if the field has no value.
+
+Fields with _attribute_ use memory, even if the field value is not set,
+
+Attributes are optimized for random access: To be able to jump to the value of any document in O(1) time. That requires allocating a constant amount of memory (the value, or a pointer) per document, regardless of whether there is a value. In short, knowing that a value is unset is a value in itself for attributes, so deploying new fields or new schemas with attributes will cause an incremental increase in memory. Applications with many unused schemas and fields can factor this in when sizing for memory. Refer to [attributes](../content/attributes.html#attribute-memory-usage) for details.
 
 ###### What is the best practice for scaling Vespa for day vs night?
 
@@ -52650,7 +54674,7 @@ See [encoding troubleshooting](../linguistics/troubleshooting-encoding.html)for 
 
 ###### How to get started?
 
-[Deploy an application](../basics/deploy-an-application.html) to create a tenant and start your [free trial](https://vespa.ai/free-trial). This tenant can be your personal tenant, or shared with others. It can not be renamed.
+[Deploy an application](../basics/deploy-an-application.html) to create a tenant and start your [free trial](https://vespa.ai/free-trial/). This tenant can be your personal tenant, or shared with others. It can not be renamed.
 
 ###### How to create a company tenant?
 
@@ -52756,7 +54780,7 @@ At termination, all application instances are removed, with data, before the ten
 
 In `dev` zones we use shared resources hence have more than one node on each host/instance. In order to provide a best possible overall responsiveness we do not restrict CPU resources for the individual application nodes.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -52829,6 +54853,7 @@ In `dev` zones we use shared resources hence have more than one node on each hos
 - [Get request for a document when document is not in sync in all the replica nodes?](#get-request-for-a-document-when-document-is-not-in-sync-in-all-the-replica-nodes)
 - [How to keep indexes in memory?](#how-to-keep-indexes-in-memory)
 - [Is memory freed when deleting documents?](#is-memory-freed-when-deleting-documents)
+- [Do empty fields consume memory?](#do-empty-fields-consume-memory)
 - [What is the best practice for scaling Vespa for day vs night?](#what-is-the-best-practice-for-scaling-vespa-for-day-vs-night)
 - [We can spike 8x in 5 minutes in terms of throughput requirements.](#we-can-spike-8x-in-5-minutes-in-terms-of-throughput-requirements)
 - [How much lower-level configuration do we need to do? For example, do we need to alter the number of threads per container?](#how-much-lower-level-configuration-do-we-need-to-do-for-example-do-we-need-to-alter-the-number-of-threads-per-container)
@@ -53087,7 +55112,7 @@ One can evaluate if using the hybrid evaluation improves search performance by a
 
 ##### Indexing uuids
 
-When configuring [string](../reference/schemas/schemas.html#string) type fields with `index`, the default [match](../reference/schemas/schemas.html#match) mode is `text`. This means Vespa will [tokenize](../linguistics/linguistics.html#tokenization) the content and index the tokens.
+When configuring [string](../reference/schemas/schemas.html#string) type fields with `index`, the default [match](../reference/schemas/schemas.html#match) mode is `text`. This means Vespa will [tokenize](../linguistics/linguistics-opennlp.html#tokenization) the content and index the tokens.
 
 The string representation of an [Universally unique identifier](https://en.wikipedia.org/wiki/Universally_unique_identifier) (UUID) is 32 hexadecimal (base 16) digits, in five groups, separated by hyphens, in the form 8-4-4-4-12, for a total of 36 characters (32 alphanumeric characters and four hyphens).
 
@@ -53425,7 +55450,7 @@ Three-way mapped (mixed) dot product: [Tensor Playground](https://docs.vespa.ai/
 ```
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -53542,7 +55567,7 @@ This section provides an overview of the main features of Vespa. The remainder o
 - System logs are collected to a central server in real time. 
 - Selected metrics may be emitted to a third-party metrics/alerting system from all the nodes.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -53644,7 +55669,7 @@ Vespaは自己修復のメカニズムを備えておりダイナミックです
 - システムのログはリアルタイムで中央サーバーに収集されます。 
 - すべてのノードから、サードパーティーのメトリクス/アラートシステムに選択されたメトリクスを送信することができます。
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -53692,7 +55717,7 @@ _イタリック文字_は以下の用途に用いられます:
 $ export PATH=$VESPA_HOME/bin:$PATH
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -53763,7 +55788,7 @@ Vespaは以下のオペレーションを受け付けます:
 
 Vespaを使うことで、低レベルの複雑さに開発者が悩むことなく、スケーラブルで高い基準に従う、リッチに機能して高い可用性のあるアプリケーションを構築することができます。 開発者は時間の経過とともに、システムをオフラインにすることなくアプリケーションを進化させ、また成長させることができます。 そして、データを陳腐化させてパーソナライズできなくするような、複雑なデータやページの事前計算を避けることができます。なぜならそれは、同時かつ定期的に変化するユーザーのデータに対する複雑なクエリーをしばしば必要とするからです。
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -53850,7 +55875,7 @@ $ curl -s http://localhost:8080/document/v1/music/music/docid/2 | python -m json
 - [Vespaのインストールをセキュア](../en/security/securing-your-vespa-installation)にします。 
 - AWSで稼働させるには、[AWS EC2での複数ノードのクイック・スタート](../en/operations/self-managed/multinode-systems.html#aws-ec2)または [AWS ECSでの複数ノードのクイック・スタート](../en/operations/self-managed/multinode-systems.html#aws-ecs)を参照してください。 
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -53882,7 +55907,7 @@ The main tasks in creating a federation solution are:
 3. rewriting the received request to an executable query returning the desired data from each source
 4. creating the final result by selecting from, organizing and combining the returned data from each selected source
 
-The container aids with these tasks by providing a way to organize a federated execution as a set of search chains which can be configured through the application package. Read the [Container intro](../jdisc) and[Chained components](../applications/chaining.html) before proceeding. Refer to the `com.yahoo.search.federation`[Javadoc](https://javadoc.io/doc/com.yahoo.vespa/container-search/latest/com/yahoo/search/federation/package-summary.html).
+The container aids with these tasks by providing a way to organize a federated execution as a set of search chains which can be configured through the application package. Read the [Container intro](../applications/containers.html) and[Chained components](../applications/chaining.html) before proceeding. Refer to the `com.yahoo.search.federation`[Javadoc](https://javadoc.io/doc/com.yahoo.vespa/container-search/latest/com/yahoo/search/federation/package-summary.html).
 
 ##### Configuring Providers
 
@@ -54438,7 +56463,7 @@ public class ResultBlenderTestCase {
 
 This shows how a search chain can be created programmatically, with a mock backend producing results suitable for exercising the functionality of the searcher being tested.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -54516,7 +56541,7 @@ ReturnCode(NO_SPACE, External feed is blocked due to resource exhaustion:
 
 To remedy, add nodes to the content cluster to distribute documents with attributes over more nodes.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -54748,7 +56773,7 @@ This illustrates how these parameters can be used to return the most appropriate
 1. Searching for restaurants with the DistanceToPath feature. `distance = 1000, traveled = 0.1`
 2. Searching for gas stations with the DistanceToPath feature. `distance = 1000, traveled = 0.9`
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -54874,7 +56899,7 @@ This is a glossary of both Vespa-specific terminology, and general terms useful 
 
 - **Visit**
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -55012,7 +57037,7 @@ Another important thing to mention is that the reported total-hits will be diffe
 
 If used correctly match-phase can be a life-saver, however, it is not a straight forward fix-it-all silver bullet. Please test and measure your use of match-phase, and contact the Vespa team if your results are not what you expect.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -56034,7 +58059,7 @@ select * from purchase where true limit 0 |
     )
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -56095,7 +58120,7 @@ Vespa.ai has a SOC 2 attestation - read more in the [Trust Center](https://trust
 
 ##### Data Plane
 
-Data plane is protected using mutual TLS or optionally tokens.
+Data plane requests are protected using mutual TLS, or optionally tokens.
 
 ###### Configuring mTLS
 
@@ -56207,23 +58232,24 @@ public class CustomAclHandler extends ThreadedHttpRequestHandler {
     }
 ```
 
-###### Configure tokens
+###### Configuring tokens
 
-While mTLS continues to be the recommended option, the application can also be configured to consume token based authentication when mTLS is not available for the client (e.g. in case of edge functions). Note that it is still required to define at least one client for mTLS.
+Application endpoints can also be configured with token based authentication. Note that it is still required to define at least one client for mTLS.
 
  **Note:**  
 Token authentication must be explicitly enabled when used in combination with[Private Endpoints](../operations/private-endpoints.html).
 
-###### Create tokens using the console
+###### Creating tokens using the console
 
-Tokens are managed in the console under **Account \> Tokens**. All tokens are identified by a name, and can contain multiple versions to easily support token rotation. To create a new token:
+Tokens are identified by a name, and can contain multiple versions to easily support token rotation.
 
-1. Click **Add token**
-2. Enter a name for the token, note that this name must also be referenced in the application later.
-3. Select an expiration for the token.
-4. Click add. Remember to copy the token value and store securely. The value is not stored in Vespa Cloud.
+To create a new token:
 
-To add a new version:
+1. In the [console](https://console.vespa.ai) tenant view, open **Account \> Tokens**
+2. Click **Add token**
+3. Enter a name you'll reference in the application later and click **Add**. Remember to copy the token value and store it securely.
+
+To add a new token _version_:
 
 1. Find the existing token, click **Add version**
 2. Select expiration and click **Add**. Copy the token value and store securely.
@@ -56234,12 +58260,14 @@ To revoke a version:
 
 To manually rotate a token:
 
-1. Add a new token version following the above steps
+1. Add a new token _version_ following the above steps
 2. Revoke the old version when no clients use the old version
 
-###### Application configuration
+###### Application configuration with token endpoints
 
-After creating a token in the console it must be configured for accessing a container cluster, using [clients](../reference/applications/services/container.html#clients) configuration. Below is a simplified example for an application with two container clusters, one for feeding and document access (i.e. read+write), and another for query access (i.e. read) - one token for each:
+After creating a token, it must be configured in your application's services.xml by adding the[clients](../reference/applications/services/container.html#clients) element to your container cluster(s).
+
+Here is an example with multiple container clusters and tokens (you may only have one):
 
 ```
 <container id="documentapi" version="1.0">
@@ -56267,11 +58295,6 @@ After creating a token in the console it must be configured for accessing a cont
     ...
 </container>
 ```
-
-Notes:
-
-- Some applications use _one_ container cluster, and the settings will then be like the `documentapi` cluster above.
-- If the application also uses the default `security/clients.pem to configure mTLS, a configuration must be added for this, as above.
 
 ###### Security recommendations
 
@@ -56347,6 +58370,30 @@ Many developers prefer interactive tools like[Postman](https://postman.com/). Th
 ###### Using Cloudflare Workers
 
 See [Using Cloudflare Workers with Vespa Cloud](cloudflare-workers).
+
+###### Different credentials per instance
+
+To use different credentials per [instance](../learn/tenant-apps-instances.html), use [services.xml variants](../operations/deployment-variants.html#services.xml-variants). As an example, use this to have a separate MTLS keypair for production instances (use the same pattern if using tokens.):
+
+```
+<container id="default" version="1.0">
+    <clients>
+        <client id="mtls" permissions="read" deploy:instance="default">
+            <certificate file="security/clients_dev.pem"/>
+        </client>
+        <client id="mtls" permissions="read" deploy:instance="qa">
+            <certificate file="security/clients_qa.pem"/>
+        </client>
+        <client id="mtls" permissions="read" deploy:instance="prod">
+            <certificate file="security/clients_prod.pem"/>
+        </client>
+    </clients>
+    <search/>
+    <document-api/>
+</container>
+```
+
+Depending on the [instance](../operations/automated-deployments.html) deployed to, a different keypair will be used for dataplane access. Use the same mechanism to have a dedicated credential for the [dev](../operations/environments.html#dev) environment, using `deploy:environment="dev"`.
 
 ##### Control Plane
 
@@ -56431,7 +58478,7 @@ $ vespa deploy -z dev.aws-us-east-1c
 
 Vespa Cloud users on paid plans have access to Vespa Cloud Support. For cases where the Vespa Team needs access to the application's data to provide support, the Vespa support personnel can request access after an explicit approval from the customer in the open support case.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -56439,8 +58486,9 @@ Vespa Cloud users on paid plans have access to Vespa Cloud Support. For cases wh
 - [Data Plane](#data-plane)
 - [Configuring mTLS](#configuring-mtls)
 - [Permissions](#permissions)
-- [Configure tokens](#configure-tokens)
+- [Configuring tokens](#configuring-tokens)
 - [Use endpoints](#use-endpoints)
+- [Different credentials per instance](#different-credentials-per-instance)
 - [Control Plane](#control-plane)
 - [Managing users](#managing-users)
 - [User access to Control Plane](#user-access-to-control-plane)
@@ -56497,7 +58545,7 @@ The same principle applies to `429 Too Many Requests` responses from the [Docume
 
 For more general advise on retries and timeouts see _Amazon Builder's Library_'s[excellent article](https://aws.amazon.com/builders-library/timeouts-retries-and-backoff-with-jitter/) on the subject.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -56564,7 +58612,7 @@ Configuration settings for the server can be modified by setting values for the 
 ```
 ```
 
-Note that it is not allowed to set the `listenPort` in the http-server config, as it conflicts with the port that is set in the _port_ attribute in the _server_ element. For a complete list of configuration fields that can be set, refer to the config definition schema in [jdisc.http.connector.def](https://github.com/vespa-engine/vespa/blob/master/container-core/src/main/resources/configdefinitions/jdisc.http.jdisc.http.connector.def).
+Note that it is not allowed to set the `listenPort` in the http-server config, as it conflicts with the port that is set in the _port_ attribute in the _server_ element. For a complete list of configuration fields that can be set, refer to the config definition schema in [jdisc.http.connector.def](https://github.com/vespa-engine/vespa/blob/master/container-disc/src/main/resources/configdefinitions/jdisc.http.jdisc.http.connector.def).
 
 ###### TLS
 
@@ -56736,7 +58784,7 @@ public class TestRequestFilter extends AbstractResource implements RequestFilter
 
 Build a bundle, and place it in the [application package](../basics/applications.html)'s _components_ directory.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -56825,7 +58873,7 @@ vary: Accept-Encoding
 content-length: 122
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -56852,6 +58900,7 @@ Vespa provides plugins for working with schemas and rank profiles in IDE's:
 Vespa provides plugins for working with schemas and rank profiles in IDE's:
 
 - VSCode: [VS Code extension](https://marketplace.visualstudio.com/items?itemName=vespaai.vespa-language-support)
+- Cursor, code-server and other VS Code compatible IDEs: [VS Code extension in Open VSX registry](https://open-vsx.org/extension/vespaai/vespa-language-support)
 - IntelliJ, PyCharm or WebStorm: [Jetbrains plugin](https://plugins.jetbrains.com/plugin/18074-vespa-schema-language-support)
 - Vim: [neovim](https://blog.vespa.ai/interns-languageserver/#neovim-plugin)
 
@@ -56859,7 +58908,7 @@ If you are working with non-trivial Vespa applications, installing a plugin is h
 
  ![IDE demo](/assets/img/ide.gif)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -57115,7 +59164,7 @@ The rationale for using absolute distribution keys rather than relative ordering
 - A relative ordering means that removing—or just reordering—a single node from the configuration can potentially lead to a full redistribution of all data within that group, not just \( \frac{1}{N\_g} \) of the data. Imagine for instance moving a node from being first in the group to being the last. 
 - If we require nodes with the same relative index in each group to store the same data set (i.e. a row-column strategy), this immediately suffers in failure scenarios even when just a single node becomes unavailable. Data coverage in the group remains reduced until the node is replaced, as no other nodes can take over responsibility for the data. This is because removing the node leads to the problem in the previous point, where a disproportionally large amount of data must be moved due to the relative ordering changing. With the ideal state algorithm, the remaining nodes in the group will transparently assume ownership of the data, with each node receiving an expected \( \frac{1}{N\_g - 1} \) of the unavailable node's buckets. 
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -57173,7 +59222,7 @@ Do a deep performance analysis - how to profile the application as well as Vespa
 - [Profiling](profiling.html): Generic profiling tips.
 - [Valgrind](valgrind.html): Run Vespa with Valgrind
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -57194,7 +59243,7 @@ To see what Vespa is about, visit the [Vespa home page](https://vespa.ai).
 
 [FAQ](en/faq.html) - Frequently asked questions
 
-[Vespa Slack](http://slack.vespa.ai) - chat with users and developers
+[Vespa Slack](https://slack.vespa.ai) - chat with users and developers
 
 [GitHub Issues](https://github.com/vespa-engine/vespa/issues) - browse and create issues
 
@@ -57204,7 +59253,7 @@ To see what Vespa is about, visit the [Vespa home page](https://vespa.ai).
 
 [vespaengine@](https://twitter.com/vespaengine) - Vespa on Twitter
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -57244,7 +59293,7 @@ To build vector indexes larger than available memory efficiently the procedure d
 5. Feed each of the types completely one by one, without applying queries at the same time.
 6. Once all the types are written, you can apply query traffic. Vespa will search across all the types by default, but it is possible to restrict to a subset using the [restrict](../reference/api/query.html#model.restrict) query parameter.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -57383,7 +59432,7 @@ the following will happen for the different partial updates:
 | field2 | The update fails |
 | field1 and field2 | field1 and field2 are updated |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -57625,7 +59674,7 @@ schema books {
 }
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -57766,7 +59815,7 @@ Feeding too much will cause a [feed blocked](feed-block.html) state. Add a node 
 - [Vespa Cloud Benchmarking](../performance/benchmarking-cloud.html)
 - [Monitoring](../operations/monitoring.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -57965,7 +60014,7 @@ myHit.setField("myfield", new SlimeAdapter(slime.get()));
 ```
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -58176,7 +60225,7 @@ Here, the string value of the document would be used as the feature value when e
 - It's also important to use the highest possible precision when reading Vespa features for training as Vespa outputs features using `double` precision. If the training routine rounds features to `float` or other more compact floating number representations, feature split decisions might differ in Vespa versus XGboost.
 - In a distributed setting when multiple nodes uses the model, text matching features such as `nativeRank`, `nativFieldMatch`, `bm25` and `fieldMatch`might differ, depending on which node produced the hit. The reason is that all these features use [term(n).significance](../reference/ranking/rank-features.html#query-features), which is computed locally indexed corpus. The `term(n).significance` feature is related to _Inverse Document Frequency (IDF)_. The `term(n).significance` should be set by a searcher in the container for global correctness as each node will estimate the significance values from the local corpus.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -58189,39 +60238,75 @@ Here, the string value of the document would be used as the feature value when e
 
 ---
 
-## Linguistics
+## Linguistics Custom
 
-### Linguistics in Vespa
-Vespa uses a _linguistics_ module to process text in queries and documents during indexing and searching.
+### Custom Linguistics
+A linguistics component is an implementation of[com.yahoo.language.Linguistics](https://github.com/vespa-engine/vespa/blob/master/linguistics/src/main/java/com/yahoo/language/Linguistics.java).
 
-#### Linguistics in Vespa
+#### Custom Linguistics
 
  
 
-Vespa uses a _linguistics_ module to process text in queries and documents during indexing and searching. The goal of linguistic processing is to increase _recall_ (how many documents are matched) without hurting _precision_ (the relevance of the documents matched) too much. It consists of such operations as:
+A linguistics component is an implementation of[com.yahoo.language.Linguistics](https://github.com/vespa-engine/vespa/blob/master/linguistics/src/main/java/com/yahoo/language/Linguistics.java). Refer to the[com.yahoo.language.simple.SimpleLinguistics](https://github.com/vespa-engine/vespa/blob/master/linguistics/src/main/java/com/yahoo/language/simple/SimpleLinguistics.java) implementation (which can be subclassed for convenience).
 
-- tokenizing text into chunks of known types such as words and punctuation.
-- normalizing accents.
-- finding the base form of words (stemming or lemmatization).
+SimpleLinguistics provides support for english stemming only. Try loading the `com.yahoo.language.simple.SimpleLinguistics` module, or providing another linguistics module.
 
-Linguistic processing is run when writing documents, and when querying:
+The linguistics implementation must be configured as a component in container clusters doing linguistics processing, see [injecting components](../applications/dependency-injection.html).
 
- ![Overview: linguistic processing in Vespa](/assets/img/vespa-overview-linguistics.svg)
+As document processing for indexing is by default done by an autogenerated container cluster which cannot be configured, specify a container cluster for indexing explicitly.
 
-The processing is run on [string](../reference/schemas/schemas.html#string) fields with `index` indexing mode. Overview:
+This example shows how to configure SimpleLinguistics for linguistics using the same cluster for both query and indexing processing (if using different clusters, add the same linguistics component to all of them):
 
-1. When writing documents, string fields with `indexing: index` are by default processed. A field's language will configure this processing. A document/fields can have the language set explicitly, if not, it is [detected](#field-language-detection). 
-2. The field's content is tokenized, normalized and stemmed, and the resulting terms are added to the index. 
- **Note:** The language for the field is not persisted on the content node, just the processed terms themselves
-3. A query is also processed the same way - this is symmetric with the schema. The language of the strings is [detected](#query-language-detection) unless specified using [model.locale](../reference/api/query.html#model.locale) or [annotations](../reference/querying/yql.html#annotations) like `language`. 
- **Note:** This is a very common query problem - it is hard to detect language precisely from short strings.
-4. The processed query is evaluated on the content nodes, and will only work as expected if both documents and queries are processed using identical settings (like same language). 
+```
+<services>
 
-These operations can be turned on or off per field in the [schema](../basics/schemas.html). See [implicitTransforms](../reference/querying/yql.html#implicittransforms) for how to enable/disable transforms per query term.
+    <container version="1.0" id="mycontainer">\<component id="com.yahoo.language.simple.SimpleLinguistics"/\><document-processing/>
+        <search/>
+        <nodes ...>
+    </container>
 
-###### Default languages
+    <content version="1.0">
+        <redundancy>1</redundancy>
+        <documents>
+            <document type="mydocument" mode="index"/>\<document-processing cluster="mycontainer"/\></documents>
+        <nodes ...>
+    </content>
 
-The default Vespa linguistics implementation uses [OpenNLP](https://opennlp.apache.org/). Apache OpenNLP language detection has support for 103 languages, and OpenNLP tokenization and stemming supports these languages:
+</services>
+```
+
+If changing the linguistics component of a live system, recall can be reduced until all documents are re-written. This because documents will still be stored with tokens generated by the previous linguistics module.
+
+ Copyright © 2026 - [Cookie Preferences](#)
+
+---
+
+## Linguistics Opennlp
+
+### OpenNLP Linguistics
+The default Vespa linguistics implementation uses [OpenNLP](https://opennlp.apache.org/).
+
+#### OpenNLP Linguistics
+
+ 
+
+The default Vespa linguistics implementation uses [OpenNLP](https://opennlp.apache.org/). The Apache OpenNLP language detection is also used, by default, even if you're using a different implementation. See [Language handling](linguistics.html#language-handling) for more information. OpenNLP has support for 103 languages.
+
+##### OpenNLP language detection
+
+The OpenNLP language detector gives a prediction with a confidence; with confidence typically increasing with more input. The threshold for using the prediction can be configured with a number typically from 1.0 (wild guess) to 6.0 (confident guess), with 2.0 as the default:
+
+```
+<container id="..." version="1.0">
+    ...
+    <config name="ai.vespa.opennlp.open-nlp">
+      <detectConfidenceThreshold>4.2</detectConfidenceThreshold>
+    </config>
+```
+
+##### Default languages
+
+OpenNLP tokenization and stemming supports these languages:
 
 - Arabic (ar)
 - Catalan (ca)
@@ -58244,17 +60329,7 @@ The default Vespa linguistics implementation uses [OpenNLP](https://opennlp.apac
 - Swedish (sv)
 - Turkish (tr)
 
-Other languages that will use a fallback to English _en_.
-
-The OpenNLP language detector gives a prediction with a confidence; with confidence typically increasing with more input. The threshold for using the prediction can be configured with a number typically from 1.0 (wild guess) to 6.0 (confident guess), with 2.0 as the default:
-
-```
-<container id="..." version="1.0">
-    ...
-    <config name="ai.vespa.opennlp.open-nlp">
-      <detectConfidenceThreshold>4.2</detectConfidenceThreshold>
-    </config>
-```
+Other languages will use a fallback to English _en_.
 
 English uses a simpler stemmer (kStem) by default, which produces fewer stems and therefore lower recall. To use OpenNlp stemming (Snowball) also for English add this config to your \<container\> element(s):
 
@@ -58285,6 +60360,110 @@ The default linguistics implementation does not segment Chinese into tokens, but
 
 The createCjkGrams adds substrings of segments longer than 2 characters, which may increase recall.
 
+##### Tokenization
+
+Tokenization removes any non-word characters, and splits the string into _tokens_ on each word boundary. In addition, CJK tokens are split using a _segmentation_ algorithm. The resulting tokens are then searchable in the index.
+
+Also see [N-gram matching](../reference/schemas/schemas.html#gram).
+
+##### Normalization
+
+An example normalization is à ⇒ a. Normalizing will cause accents and similar decorations which are often misspelled to be normalized the same way both in documents and queries.
+
+Vespa uses [java.text.Normalizer](https://docs.oracle.com/javase/7/docs/api/java/text/Normalizer.html)to normalize text, see[SimpleTransformer.java](https://github.com/vespa-engine/vespa/blob/master/linguistics/src/main/java/com/yahoo/language/simple/SimpleTransformer.java). Normalization preserves case.
+
+Refer to the [nfkc](../reference/querying/yql.html#nfkc) query term annotation. Also see the YQL [accentDrop](../reference/querying/yql.html#accentdrop) annotation.
+
+##### Stemming
+
+Stemming means _translate a word to its base form_(singular forms for nouns, infinitive for verbs), using a [stemmer](https://en.wikipedia.org/wiki/Stemming). Use of stemming increases search recall, because the searcher is usually interested in documents containing query words regardless of the word form used. Stemming in Vespa is symmetric, i.e. words are converted to stems both when indexing and searching.
+
+Examples of this is when text is indexed, the stemmer will convert the noun _reports_ (plural) to _report_, and the latter will be stored in the index. Likewise, before searching, _reports_ will be stemmed to _report_. Another example is that _am_, _are_ and _was_will be stemmed to _be_ both in queries and indexes.
+
+When [bolding](../reference/schemas/schemas.html#bolding) is enabled, all forms of the query term will be bolded. I.e. when searching for _reports_, both _report_, _reported_ and _reports_ will be bolded.
+
+See the [stem](../reference/querying/yql.html#stem) query term annotation.
+
+###### Theory
+
+From a matching point of view, stemming takes all possible token strings and maps them into equivalence classes. So in the example above, the set of tokens { _report_, _reports_, _reported_ } are in an equivalence class. To represent the class, the linguistics library should pick the best element in the class. At query time, the text typed by a user will be tokenized, and then each token should be mapped to the most likely equivalence class, again represented by the shortest element that belongs to the class.
+
+While the theory sounds pretty simple, in practice it is not always possible to figure out which equivalence class a token should belong to. A typical example is the string _number_. In most cases we would guess this to mean a numerical entity of some kind, and the equivalence class would be { _number_, _numbers_ } - but it could also be a verb, with a different equivalence class { _number_, _numbered_, _numbering_ }. These are of course closely related, and in practice they will be merged, so we'll have a slightly larger equivalence class { _number_, _numbers_, _numbered_, _numbering_ } and be happy with that. However, in a sentence such as _my legs keep getting number every day_, the _number_ token clearly does not have the semantics of a numerical entity, but should be in the equivalence class { _numb_, _number_, _numbest_, _numbness_ } instead. But blindly assigning _number_ to the equivalence class _numb_ is clearly not right, since the _more numb_ meaning is much less likely than the _numerical entity_ meaning.
+
+The approach currently taken by the low-level linguistics library will often lead to problems in the _number_-like cases as described above. To give better recall, Vespa has implemented a _multiple_ stemming option.
+
+###### Configuration
+
+By default, all words are stemmed to their _best_ form. Refer to the [stemming reference](../reference/schemas/schemas.html#stemming) for other stemming types. To change type, add:
+
+```
+stemming: [stemming-type]
+```
+
+Stemming can be set either for a field, a fieldset or as a default for all fields. Example: Disable stemming for the field _title_:
+
+```
+field title type string {
+    indexing: summary | index
+    stemming: none
+}
+```
+
+See [andSegmenting](../reference/querying/yql.html#andsegmenting) for how to control re-segmenting when stemming.
+
+ Copyright © 2026 - [Cookie Preferences](#)
+
+###### On this page:
+
+- [OpenNLP language detection](#language-detection)
+- [Default languages](#default-languages)
+- [Chinese](#chinese)
+- [Tokenization](#tokenization)
+- [Normalization](#normalization)
+- [Stemming](#stemming)
+- [Theory](#theory)
+- [Configuration](#configuration)
+
+---
+
+## Linguistics
+
+### Linguistics in Vespa
+Vespa uses a _linguistics_ module to process text in queries and documents during indexing and searching.
+
+#### Linguistics in Vespa
+
+ 
+
+Vespa uses a _linguistics_ module to process text in queries and documents during indexing and searching. The goal of linguistic processing is to increase _recall_ (how many documents are matched) without hurting _precision_ (the relevance of the documents matched) too much. It consists of such operations as:
+
+- tokenizing text into chunks of known types such as words and punctuation.
+- normalizing accents.
+- finding the base form of words (stemming or lemmatization).
+
+Linguistic processing is run when writing documents, and when querying:
+
+ ![Overview: linguistic processing in Vespa](/assets/img/vespa-overview-linguistics.svg)
+
+The processing is run on [string](../reference/schemas/schemas.html#string) fields with `index` indexing mode. Overview:
+
+1. When writing documents, string fields with `indexing: index` are by default processed. A field's language will configure this processing. A document/fields can have the language set explicitly, if not, it is [detected](#field-language-detection). 
+2. The field's content is processed (e.g., tokenized, normalized, stemmed, etc.), and the resulting terms are added to the index. 
+ **Note:** The language for the field is not persisted on the content node, just the processed terms themselves
+3. A query is also processed in a similar fashion. Typically through the same [linguistics profile](../reference/schemas/schemas.html#linguistics) as the field content, producing the same terms from the same text. The language of query strings is [detected](#query-language-detection) unless specified using [model.locale](../reference/api/query.html#model.locale) or [annotations](../reference/querying/yql.html#annotations) like `language`. 
+ **Note:** This is a very common query problem - it is hard to detect language precisely from short strings.
+4. The processed query is evaluated on the content nodes, and will only work as expected if both documents and queries produce the same terms. 
+
+These operations can be turned on or off per field in the [schema](../basics/schemas.html). See [implicitTransforms](../reference/querying/yql.html#implicittransforms) for how to enable/disable transforms per query term.
+
+##### Linguistics implementations
+
+Vespa comes with two linguistics variants out of the box: [OpenNLP](linguistics-opennlp.html) and [Lucene](lucene-linguistics.html). Check out the respective pages for more information on how to configure them.
+
+You can also implement a custom [Linguistics](linguistics-custom.html) component.
+
+The default linguistics variant is [OpenNLP](linguistics-opennlp.html), but for the rest of this page we'll go through common options, such as language handling, inherited by all implementations.
+
 ##### Language handling
 
 Vespa does _not_ know the language of a document - this applies:
@@ -58292,7 +60471,7 @@ Vespa does _not_ know the language of a document - this applies:
 1. The indexing processor is instructed on a per-field level what language to use when calling the underlying linguistics library
 2. The query processor is instructed on a per-query level what language to use
 
-If no language is explicitly set in a document or a query, Vespa will run its configured language detector on the available text (the full content of a document field, or the full `query=` parameter value).
+If no language is explicitly set in a document or a query, Vespa will run its configured language detector (by default, [OpenNLP language detection](linguistics-opennlp.html#language-detection)) on the available text (the full content of a document field, or the full `query=` parameter value).
 
 A document that contains the exact same word as a query might not be recall-able if the language of the document field is detected differently from the query. Unless the query has explicitly declared a [language](../reference/api/query.html#model.language), this can occur.
 
@@ -58378,7 +60557,7 @@ See [query language detection](#query-language-detection) for detection confiden
 
 ###### Querying with language
 
-The content of an indexed string field is language-agnostic. One must therefore apply a symmetric tokenization on the query terms in order to match the content of that field.
+The content of an indexed string field is language-agnostic. One must therefore apply a compatible tokenization on the query terms (e.g., stemming for the same language) in order to match the content of that field.
 
 The query parser subscribes to configuration that tells it what fields are indexed strings, and every query term that targets such a field are run through appropriate tokenization. The [language](../reference/api/query.html#model.language) query parameter controls the language state of these calls.
 
@@ -58434,107 +60613,143 @@ select * from sources * where rank(
 
 We now retrieve using all possible stems/base forms with _weakAnd_, and use the [rank](../reference/querying/yql.html#rank) operator to pass in the original query form, so that ranking can rank literal matches (original) higher. Benefit of _equiv_ is that it allows multiple term variants to share the same position, so that proximity ranking does not become broken by this approach.
 
-##### Tokenization
+##### Linguistics profiles
 
-Tokenization removes any non-word characters, and splits the string into _tokens_ on each word boundary. In addition, CJK tokens are split using a _segmentation_ algorithm. The resulting tokens are then searchable in the index.
+Linguistics profiles are used to configure linguistics processing for a field in the schema. They are typically used with the [Lucene linguistics implementation](lucene-linguistics.html), but can be used in e.g., [custom linguistics implementations](linguistics-custom.html) as well.
 
-Also see [N-gram matching](../reference/schemas/schemas.html#gram).
+###### Symmetrical processing
 
-##### Normalization
-
-An example normalization is à ⇒ a. Normalizing will cause accents and similar decorations which are often misspelled to be normalized the same way both in documents and queries.
-
-Vespa uses [java.text.Normalizer](https://docs.oracle.com/javase/7/docs/api/java/text/Normalizer.html)to normalize text, see[SimpleTransformer.java](https://github.com/vespa-engine/vespa/blob/master/linguistics/src/main/java/com/yahoo/language/simple/SimpleTransformer.java). Normalization preserves case.
-
-Refer to the [nfkc](../reference/querying/yql.html#nfkc) query term annotation. Also see the YQL [accentDrop](../reference/querying/yql.html#accentdrop) annotation.
-
-##### Stemming
-
-Stemming means _translate a word to its base form_(singular forms for nouns, infinitive for verbs), using a [stemmer](https://en.wikipedia.org/wiki/Stemming). Use of stemming increases search recall, because the searcher is usually interested in documents containing query words regardless of the word form used. Stemming in Vespa is symmetric, i.e. words are converted to stems both when indexing and searching.
-
-Examples of this is when text is indexed, the stemmer will convert the noun _reports_ (plural) to _report_, and the latter will be stored in the index. Likewise, before searching, _reports_ will be stemmed to _report_. Another example is that _am_, _are_ and _was_will be stemmed to _be_ both in queries and indexes.
-
-When [bolding](../reference/schemas/schemas.html#bolding) is enabled, all forms of the query term will be bolded. I.e. when searching for _reports_, both _report_, _reported_ and _reports_ will be bolded.
-
-See the [stem](../reference/querying/yql.html#stem) query term annotation.
-
-###### Theory
-
-From a matching point of view, stemming takes all possible token strings and maps them into equivalence classes. So in the example above, the set of tokens { _report_, _reports_, _reported_ } are in an equivalence class. To represent the class, the linguistics library should pick the best element in the class. At query time, the text typed by a user will be tokenized, and then each token should be mapped to the most likely equivalence class, again represented by the shortest element that belongs to the class.
-
-While the theory sounds pretty simple, in practice it is not always possible to figure out which equivalence class a token should belong to. A typical example is the string _number_. In most cases we would guess this to mean a numerical entity of some kind, and the equivalence class would be { _number_, _numbers_ } - but it could also be a verb, with a different equivalence class { _number_, _numbered_, _numbering_ }. These are of course closely related, and in practice they will be merged, so we'll have a slightly larger equivalence class { _number_, _numbers_, _numbered_, _numbering_ } and be happy with that. However, in a sentence such as _my legs keep getting number every day_, the _number_ token clearly does not have the semantics of a numerical entity, but should be in the equivalence class { _numb_, _number_, _numbest_, _numbness_ } instead. But blindly assigning _number_ to the equivalence class _numb_ is clearly not right, since the _more numb_ meaning is much less likely than the _numerical entity_ meaning.
-
-The approach currently taken by the low-level linguistics library will often lead to problems in the _number_-like cases as described above. To give better recall, Vespa has implemented a _multiple_ stemming option.
-
-###### Configuration
-
-By default, all words are stemmed to their _best_ form. Refer to the [stemming reference](../reference/schemas/schemas.html#stemming) for other stemming types. To change type, add:
+For example, a definition like this:
 
 ```
-stemming: [stemming-type]
+field title type string {
+  indexing: summary | index
+  linguistics {
+      profile: whitespaceLowercase
+  }
+}
 ```
 
-Stemming can be set either for a field, a fieldset or as a default for all fields. Example: Disable stemming for the field _title_:
+Will look for a profile named `whitespaceLowercase`, which could be defined like this in `services.xml`:
+
+```
+```
+<item key="profile=whitespaceLowercase;language=en">
+    <tokenizer>
+      <name>whitespace</name>
+    </tokenizer>
+    <tokenFilters>
+      <item>
+        <name>lowercase</name>
+      </item>
+    </tokenFilters>
+  </item>
+```
+```
+
+Note `language=en` there. It is optional: if it's not set, the profile will be used for all languages. But you can have different definitions for different languages on the same profile (e.g., different stemming).
+
+###### Different processing for query strings
+
+For some use cases, you may want to process the query string differently than the document content. Synonyms are a good example. If you expand `dog` to `dog,puppy` at query time, it will match either term in the document anyway - no need to expand it at write-time.
+
+To do this, you'd define a different profile for the query string. Like:
+
+```
+```
+<item key="profile=whitespaceLowercaseSynonyms;language=en">
+    <tokenizer>
+      <name>whitespace</name>
+    </tokenizer>
+    <tokenFilters>
+      <item>
+        <name>lowercase</name>
+      </item>
+      <item>
+        <name>synonymGraph</name>
+        <conf>
+          <!--
+            Synonyms file should contain something like:
+            dog,puppy
+          -->
+          <item key="synonyms">en/synonyms.txt</item>
+        </conf>
+      </item>
+    </tokenFilters>
+  </item>
+```
+```
+
+Then, in the schema, expand `profile` to `profile.index` and `profile.search`:
 
 ```
 field title type string {
     indexing: summary | index
-    stemming: none
+    linguistics {
+        profile {
+            index: whitespaceLowercase
+            search: whitespaceLowercaseSynonyms
+        }
+    }
 }
 ```
 
-See [andSegmenting](../reference/querying/yql.html#andsegmenting) for how to control re-segmenting when stemming.
+At this point, `where synonyms_test contains 'dog'` will match a document containing `puppy`.
 
-##### Creating a custom linguistics implementation
+###### Overriding profile for query strings
 
-A linguistics component is an implementation of[com.yahoo.language.Linguistics](https://github.com/vespa-engine/vespa/blob/master/linguistics/src/main/java/com/yahoo/language/Linguistics.java). Refer to the[com.yahoo.language.simple.SimpleLinguistics](https://github.com/vespa-engine/vespa/blob/master/linguistics/src/main/java/com/yahoo/language/simple/SimpleLinguistics.java) implementation (which can be subclassed for convenience).
-
-SimpleLinguistics provides support for english stemming only. Try loading the `com.yahoo.language.simple.SimpleLinguistics` module, or providing another linguistics module.
-
-The linguistics implementation must be configured as a component in container clusters doing linguistics processing, see [injecting components](../applications/dependency-injection.html).
-
-As document processing for indexing is by default done by an autogenerated container cluster which cannot be configured, specify a container cluster for indexing explicitly.
-
-This example shows how to configure SimpleLinguistics for linguistics using the same cluster for both query and indexing processing (if using different clusters, add the same linguistics component to all of them):
+At query time, you can force Vespa to use a specific profile to process the query string via [grammar.profile](../reference/querying/yql.html#grammar). This works with [userInput()](../reference/querying/yql.html#userinput). For example, to use the `whitespaceLowercase` profile for the query string:
 
 ```
-<services>
-
-    <container version="1.0" id="mycontainer">\<component id="com.yahoo.language.simple.SimpleLinguistics"/\><document-processing/>
-        <search/>
-        <nodes ...>
-    </container>
-
-    <content version="1.0">
-        <redundancy>1</redundancy>
-        <documents>
-            <document type="mydocument" mode="index"/>\<document-processing cluster="mycontainer"/\></documents>
-        <nodes ...>
-    </content>
-
-</services>
+where {defaultIndex:'title', grammar.profile: 'whitespaceLowercase', grammar: 'linguistics'}userInput('dog')
 ```
 
-If changing the linguistics component of a live system, recall can be reduced until all documents are re-written. This because documents will still be stored with tokens generated by the previous linguistics module.
+ **Note:** You should use grammar=linguistics (like in the example above) with grammar.profile to ensure that there is no additional processing (e.g., tokenization) besides what is already defined in the profile.
 
- Copyright © 2025 - [Cookie Preferences](#)
+##### Troubleshooting linguistics processing
+
+If your documents don't match as expected, there are two ways to get more information. First, you can get the tokenized text for a field by using [tokens](../reference/schemas/schemas.html#tokens) in the [document summary](../querying/document-summaries.html). For example, to get the original text and tokens for the `title` field:
+
+```
+document-summary debug-text-tokens {
+    summary title {}
+    summary title_tokens {
+        source: title
+        tokens
+    }
+    from-disk
+}
+```
+
+Then, at query time, you can also get the tokens of the query string by increasing the [trace level](../reference/api/query.html#trace.level):
+
+```
+```
+{
+  "yql": "select * from sources * where title contains \"dog\"",
+  "presentation.summary": "debug-text-tokens",
+  "model.locale": "en",
+  "trace.level": 2
+}
+```
+```
+
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
-- [Default languages](#default-languages)
-- [Chinese](#chinese)
+- [Linguistics implementations](#linguistics-implementations)
 - [Language handling](#language-handling)
 - [Indexing with language](#indexing-with-language)
 - [Field language detection](#field-language-detection)
 - [Querying with language](#querying-with-language)
 - [Query language detection](#query-language-detection)
 - [Multiple languages](#multiple-languages)
-- [Tokenization](#tokenization)
-- [Normalization](#normalization)
-- [Stemming](#stemming)
-- [Theory](#theory)
-- [Configuration](#configuration)
-- [Creating a custom linguistics implementation](#creating-a-custom-linguistics-implementation)
+- [Linguistics profiles](#linguistics-profiles)
+- [Symmetrical processing](#symmetrical-processing)
+- [Different processing for query strings](#different-processing-for-query-strings)
+- [Overriding profile for query strings](#overriding-profile-for-query-strings)
+- [Troubleshooting linguistics processing](#troubleshooting-linguistics-processing)
 
 ---
 
@@ -58579,7 +60794,7 @@ We also provide [llms-full.txt](../../llms-full.txt) which contains the _full_ c
 
 We don't provide any official MCP server at this time, but will update this page as soon as we do.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -58958,7 +61173,7 @@ The above example uses the `LLMSearcher`[class](https://github.com/vespa-engine/
 
 Note that it should not be necessary to create your own components in Java to use this functionality.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -59120,7 +61335,7 @@ To set up GPUs on self-hosted, please refer to [Container GPU setup](../operatio
 
 It is very easy to use GPU acceleration on Vespa Cloud. To enable GPU inference, you need to [request GPUs](../reference/applications/services/services.html#gpu) on the container nodes. For a more practical introduction, please take a look at the [RAG sample app](https://github.com/vespa-engine/sample-apps/tree/master/retrieval-augmented-generation)which also demonstrates how to evaluate the LLM on GPUs on Vespa Cloud.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -59210,12 +61425,21 @@ The Lucene [StandardAnalyzer](https://lucene.apache.org/core/9_8_0/core/org/apac
 
 ##### Linguistics key
 
-Linguistics keys identify a configuration of text analysis. A key has 2 parts: a mandatory [language code](https://github.com/vespa-engine/vespa/blob/master/linguistics/src/main/java/com/yahoo/language/Language.java) and an optional stemming mode. The format is `LANGUAGE_CODE[/STEM_MODE]`. There are 5 stemming modes: `NONE, DEFAULT, ALL, SHORTEST, BEST` (they can be specified in the [field schema](../reference/schemas/schemas.html#stemming)).
+Linguistics keys identify a configuration of text analysis. It can be made of two parts, separated by a semicolon, though you can omit one or the other. The two parts are:
+
+- A [linguistics profile](linguistics.html#linguistics-profiles). 
+- A language key. 
+
+The language key, in turn, has 2 parts: a mandatory [language code](https://github.com/vespa-engine/vespa/blob/master/linguistics/src/main/java/com/yahoo/language/Language.java) and an optional stemming mode. The format is `LANGUAGE_CODE[/STEM_MODE]`. There are 5 stemming modes: `NONE, DEFAULT, ALL, SHORTEST, BEST` (they can be specified in the [field schema](../reference/schemas/schemas.html#stemming)).
 
 Examples of linguistics key:
 
-- `en`: English language. 
-- `en/BEST`: English language with the `BEST` stemming mode. 
+- `profile=whitespaceLowercase`: a profile that applies to all languages. You can bind it to different fields by specifying their [linguistics profiles](linguistics.html#linguistics-profiles) in the schema. 
+- `profile=whitespaceLowercase;language=en`: a profile that applies to the English language. You'd still bind it to fields via their [linguistics profiles](linguistics.html#linguistics-profiles) in the schema, but it will only be applied to the English texts (either at indexing or query time). 
+- `en`: English language: applies to all English texts where no profile is specified (in the schema or [in the query](linguistics.html#overriding-profile-for-query-strings)). 
+- `en/BEST`: English language with the `BEST` stemming mode. Like the previous example, but only applies when [stemming](../reference/schemas/schemas.html#stemming) is set to `BEST`. 
+
+ **Note:** You can use different profiles for document fields and query strings. See [Different processing for query strings](linguistics.html#different-processing-for-query-strings) and the[multiple-profiles sample app](https://github.com/vespa-engine/sample-apps/tree/master/examples/lucene-linguistics/multiple-profiles) for more information.
 
 ##### Customizing text analysis
 
@@ -59229,13 +61453,14 @@ Lucene linguistics provides multiple ways to customize text analysis per languag
 In `services.xml` it is possible to construct an analyzer by providing [configuration for the](https://github.com/vespa-engine/vespa/blob/master/lucene-linguistics/src/main/resources/configdefinitions/lucene-analysis.def)`LuceneLinguistics` component (from all text analysis components that are available on the classpath). Example for the English language:
 
 ```
+```
 <component id="linguistics"
              class="com.yahoo.language.lucene.LuceneLinguistics"
              bundle="your-bundle-name">
-    <config name="com.yahoo.language.lucene.lucene-analysis"/>
+    <config name="com.yahoo.language.lucene.lucene-analysis">
       <configDir>lucene-linguistics</configDir>
       <analysis>
-        <item key="en">
+        <item key="profile=standardStopStem;language=en">
           <tokenizer>
             <name>standard</name>
           </tokenizer>
@@ -59253,24 +61478,29 @@ In `services.xml` it is possible to construct an analyzer by providing [configur
           </tokenFilters>
         </item>
       </analysis>
+    </config>
   </component>
+```
 ```
 
 Notes:
 
-- `item key="en"` value is a [linguistics key](#linguistics-key). 
-- the `en/stopwords.txt` file must be placed in your application package under the `lucene-linguistics` directory. 
-- If the `configDir` is not provided the files must be on the classpath. 
+- `item key="profile=standardStopStem;language=en"` value is a [linguistics key](#linguistics-key). 
+- `name` values are the [SPI names](https://docs.oracle.com/en/java/javase/17/docs/api/java.naming/javax/naming/spi/package-summary.html) of the text analysis components. You'll typically find them in the [Lucene analysis JavaDocs](https://lucene.apache.org/core/9_11_1/analysis/common/allclasses-index.html). For example, the name `stop` along with other options can be found in the [StopFilterFactory JavaDoc](https://lucene.apache.org/core/9_11_1/analysis/common/org/apache/lucene/analysis/core/StopFilterFactory.html). 
+- The `en/stopwords.txt` file must be placed in your application package under the `lucene-linguistics` directory, which is referenced by the `configDir` option. 
+- If `configDir` is not provided the files must be on the classpath. 
 
 ###### Components registry
 
 The [ComponentsRegistry](../applications/dependency-injection.html#depending-on-all-components-of-a-specific-type) mechanism can be used to set a Lucene Analyzer for a language.
 
 ```
+```
 <component
     id="en"
     class="org.apache.lucene.analysis.core.SimpleAnalyzer"
     bundle="your-bundle-name" />
+```
 ```
 
 Where:
@@ -59298,7 +61528,48 @@ In case you need to create a custom component the steps are:
 
 Lucene Linguistics doesn't provide language detection. This means that for both feeding and searching you should provide a [language parameter](../reference/api/query.html#model.language).
 
- Copyright © 2025 - [Cookie Preferences](#)
+##### Indexing all stems
+
+Some analyzers expand the input text into multiple tokens on the same position. For example, those based on the [NGramTokenFilter](https://lucene.apache.org/core/9_11_1/analysis/common/org/apache/lucene/analysis/ngram/NGramTokenFilter.html). Here's a sample analyzer configuration:
+
+```
+```
+<item key="profile=ngram;language=en">
+  <tokenizer>
+    <name>whitespace</name>
+  </tokenizer>
+  <tokenFilters>
+    <item>
+      <name>nGram</name>
+      <conf>
+        <item key="minGramSize">2</item>
+        <item key="maxGramSize">2</item>
+      </conf>
+    </item>
+  </tokenFilters>
+</item>
+```
+```
+
+This will take a text like `dog` and produce `do` and `og` as tokens, plus (by default) the original `dog`. However, Vespa only takes the first token (`do`) and writes it to the index, ignoring the other "stems". As a result, a search for `og` will not match documents that contain `dog`, which is the whole point of using letter n-grams.
+
+To index all stems, you can use the [stemming](../reference/schemas/schemas.html#stemming) parameter in the schema definition of your field:
+
+```
+field title_grams type string {
+  indexing: summary | index
+  linguistics {
+      profile: ngram
+  }
+  stemming: multiple
+}
+```
+
+Now, Vespa will index all stems, and a search for `og` will match documents that contain `dog`.
+
+ **Note:** Queries look for all stems by default (regardless of the schema configuration). For example, a search for`dog` would expand to `do` and `og` as well, looking for all three terms.
+
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -59310,6 +61581,7 @@ Lucene Linguistics doesn't provide language detection. This means that for both 
 - [Components registry](#components-registry)
 - [Custom text analysis components](#adding-custom-analysis-component)
 - [Language Detection](#language-detection)
+- [Indexing all stems](#indexing-all-stemmed-words)
 
 ---
 
@@ -59376,7 +61648,7 @@ Some fields have a different color code. To understand the types of fields, read
 - `Removed` are deleted documents, either by the application, or the document replica has been moved to another node
 - `Documentmetastore` is the document ID mapping - see [attributes](../content/attributes.html#document-meta-store)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -59585,9 +61857,9 @@ Metrics from the container services are the most commonly used, and are listed i
 
 Add custom metrics from components like [Searchers](../applications/searchers.html) and [Document processors](../applications/document-processors.html):
 
-1. Add a [MetricReceiver](https://javadoc.io/doc/com.yahoo.vespa/container-core/latest/com/yahoo/metrics/simple/MetricReceiver.html) instance to the constructor of the component - it is [injected](../applications/dependency-injection.html) by the Container. 
-2. Declare [Gauge](https://javadoc.io/doc/com.yahoo.vespa/container-core/latest/com/yahoo/metrics/simple/Gauge.html) and [Counter](https://javadoc.io/doc/com.yahoo.vespa/container-core/latest/com/yahoo/metrics/simple/Counter.html) metrics using the _declare_-methods on the _MetricReceiver_. Optionally set arbitrary metric dimensions to default values at declaration time - refer to the javadoc for details. 
-3. Each time there is some data to measure, invoke the [sample](https://javadoc.io/doc/com.yahoo.vespa/container-core/latest/com/yahoo/metrics/simple/Gauge.html#sample(double)) method on gauges or the [add](https://javadoc.io/doc/com.yahoo.vespa/container-core/latest/com/yahoo/metrics/simple/Counter.html#add()) method on counters. The gauges and counters declared are inherently thread-safe. When sampling data, any dimensions can optionally be set. 
+1. Add a [MetricReceiver](https://javadoc.io/doc/com.yahoo.vespa/container-disc/latest/com/yahoo/metrics/simple/MetricReceiver.html) instance to the constructor of the component - it is [injected](../applications/dependency-injection.html) by the Container. 
+2. Declare [Gauge](https://javadoc.io/doc/com.yahoo.vespa/container-disc/latest/com/yahoo/metrics/simple/Gauge.html) and [Counter](https://javadoc.io/doc/com.yahoo.vespa/container-disc/latest/com/yahoo/metrics/simple/Counter.html) metrics using the _declare_-methods on the _MetricReceiver_. Optionally set arbitrary metric dimensions to default values at declaration time - refer to the javadoc for details. 
+3. Each time there is some data to measure, invoke the [sample](https://javadoc.io/doc/com.yahoo.vespa/container-disc/latest/com/yahoo/metrics/simple/Gauge.html#sample(double)) method on gauges or the [add](https://javadoc.io/doc/com.yahoo.vespa/container-disc/latest/com/yahoo/metrics/simple/Counter.html#add()) method on counters. The gauges and counters declared are inherently thread-safe. When sampling data, any dimensions can optionally be set. 
 4. Add a [consumer](../reference/applications/services/admin.html#consumer) in _services.xml_ for the metrics to be emitted in the metric APIs, like in the previous section. 
 
 Find a full example in the [album-recommendation-java](https://github.com/vespa-engine/sample-apps/tree/master/album-recommendation-java) sample application.
@@ -59602,7 +61874,7 @@ I have two different libraries that are running as components with their own thr
 
 2. **Q:** How long does an object remain valid? Does the same object remain valid for the life of the container (meaning from container booting up to the point of restart/shutdown) or can the object change? I ask this because we store the reference to the receiver at a common place so that it can be used to emit metrics elsewhere in the library where we can’t inject it, so I am wondering how frequently we need to update this reference. 
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -59634,7 +61906,15 @@ This is a guide for how to move data from Elasticsearch to Vespa. By the end of 
 
 **Prerequisites:**
 
-- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with Podman or [Docker](https://docs.docker.com/engine/install/) installed. See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings. For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html)
+- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with [Podman Desktop](https://podman.io/) or [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed, with an engine running. 
+  - Alternatively, start the Podman daemon:
+```
+$ podman machine init --memory 6000
+$ podman machine start
+```
+  - See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings.
+
+- For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html).
 - Memory: Minimum RAM dedicated to Docker/Podman. [Memory recommendations](/en/operations/self-managed/node-setup.html#memory-settings). 
 - Disk: Avoid `NO_SPACE` - the vespaengine/vespa container image + headroom for data requires disk space. [Read more](/en/writing/feed-block.html). 
 - [Homebrew](https://brew.sh/) to install the [Vespa CLI](/en/clients/vespa-cli.html), or download the Vespa CLI from [Github releases](https://github.com/vespa-engine/vespa/releases). 
@@ -59865,7 +62145,7 @@ These settings impact both performance and how fields are matched. For example, 
 
 To run the steps above, using a local deployment, follow the steps in the [quickstart](../basics/deploy-an-application-local.html) to start a local container running Vespa. Then, deploy the application package from the _bank_ folder.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -59903,7 +62183,15 @@ $ export VESPA_TENANT_NAME=mytenant
 
 **Prerequisites:**
 
-- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with Podman or [Docker](https://docs.docker.com/engine/install/) installed. See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings. For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html)
+- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with [Podman Desktop](https://podman.io/) or [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed, with an engine running. 
+  - Alternatively, start the Podman daemon:
+```
+$ podman machine init --memory 6000
+$ podman machine start
+```
+  - See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings.
+
+- For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html).
 - Memory: Minimum RAM dedicated to Docker/Podman. [Memory recommendations](/en/operations/self-managed/node-setup.html#memory-settings). 
 - Disk: Avoid `NO_SPACE` - the vespaengine/vespa container image + headroom for data requires disk space. [Read more](/en/writing/feed-block.html). 
 - [Homebrew](https://brew.sh/) to install the [Vespa CLI](/en/clients/vespa-cli.html), or download the Vespa CLI from [Github releases](https://github.com/vespa-engine/vespa/releases). 
@@ -60116,7 +62404,7 @@ This is the final step in the functional validation. Please note:
 - Feed (a subset) of the data and validate that queries and other API accesses work as expected.
 - At the end of the validation process, continue to [production deployment](../operations/production-deployment.html) to set up in production zones.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -60471,7 +62759,7 @@ These are [global significance models](../ranking/significance#significance-mode
 ###### significance-en-wikipedia-v1
  |
 | --- |
-| This significance model was generated from [English Wikipedia dump data from 2024-08-01](https://dumps.wikimedia.org/enwiki/20240801/). Available in Vespa as of version 8.426.8. |
+| This significance model was generated from [English Wikipedia dump data from 2024-08-01](https://dumps.wikimedia.org/enwiki/). Available in Vespa as of version 8.426.8. |
 | Model-id | significance-en-wikipedia-v1 |
 | License | [Creative Commons Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0) License](https://creativecommons.org/licenses/by-sa/3.0/deed.en). |
 | Source | [https://data.vespa-cloud.com/significance\_models/significance-en-wikipedia-v1.json.zst](https://data.vespa-cloud.com/significance_models/significance-en-wikipedia-v1.json.zst) |
@@ -60493,7 +62781,7 @@ This can be useful for example to create an application package which uses model
 
 Specifying a model-id can be done for any[config field of type `model`](../applications/configuring-components.html#adding-files-to-the-component-configuration), whether the config is from Vespa or defined by you.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -60627,7 +62915,7 @@ How you will use labels to separate different kinds of queries depends on the ob
 
 For the container level metrics you use the `chain` label to differentiate between different query streams, while you use the `rankProfile` label to do the same in the content level.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -60807,7 +63095,7 @@ Vespa will by default use the following TLS configuration (unless overridden by 
 - `TLS_AES_256_GCM_SHA384` (TLSv1.3)
 - `TLS_CHACHA20_POLY1305_SHA256` (TLSv1.3, JDK 12+)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -60831,7 +63119,7 @@ Vespa will by default use the following TLS configuration (unless overridden by 
 - [**Cloudflare Workers**](cloudflare-workers)describes how you can access mutal TLS protected Vespa Cloud endpoints using Cloudflare Workers.
 - [**Whitepaper**](whitepaper) is an in-depth description of the security architecture of Vespa Cloud.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -61222,7 +63510,7 @@ It's possible to avoid having to create a separate certificate per host in favor
 
 However, for production deployments we recommend using a distinct certificate per host to help mitigate the impact of a host being compromised.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -61727,7 +64015,7 @@ Key functions:
 - [Struct Fields in Schemas](../../reference/schemas/schemas.html#struct-field)
 - [Search Chains](../../applications/searchers.html#search-chains)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -61749,6 +64037,383 @@ Key functions:
 - [Requirements](#requirements)
 - [Recommended Practices](#recommended-practices)
 - [See Also](#see-also)
+
+---
+
+### Saved search notifications
+Vespa for e-commerce includes a module for storing queries in Vespa ("searches") and issuing notifications when a new or updated document matches any saved searches.
+
+#### Saved search notifications
+
+ 
+
+Vespa for e-commerce includes a module for storing queries in Vespa ("searches") and issuing notifications when a new or updated document matches any saved searches. A typical use case in e-commerce is letting users store queries on products using filters on keywords, price, location etc. and sending them a notification when a new product matches their query.
+
+##### Overview
+
+The ecommerce-saved-search module supports:
+
+- **Storing predicate queries** - Saved searches contain arbitrary boolean expressions over a set of string attributes and numerical ranges. See [Predicate Fields](../../schemas/predicate-fields.html).
+- **Schema wiring configuration** - Wirings between the saved search attributes and the document fields can be configured by the application.
+- **Webhook notifications** - A match between a new or updated document and a set of saved searches can be sent to a HTTP endpoint in a JSON format.
+- **Separate document processing** - Separate routing to the saved search component allows processing of saved searches without disrupting normal feed operations.
+
+##### Quick Start
+
+A minimal setup for demonstrating saved search notification capabilities is given in this section. We will develop a small shopping use-case example with a few saved search attributes.
+
+###### Define Schemas
+
+Create two schemas: one for products and one for storing the saved searches.
+
+###### Product Schema
+
+We create a minimal document type representing a product for sale. Each of the three fields will correspond to a searchable attribute in the saved searches.
+
+```
+```
+schema product {
+    document product {
+        
+        # Other fields
+
+        field price type int {
+            indexing: attribute
+        }
+
+        field category type string {
+            indexing: attribute
+        }
+
+        field condition type string {
+            indexing: attribute
+        }
+    }
+
+    # rank-profiles etc.
+}
+```
+```
+
+###### Saved Search Schema
+
+The predicate field will contain the entire search expression used to match products.
+
+```
+```
+schema saved_search {
+    document saved_search {
+        field filters type predicate {
+            indexing: attribute
+            index {
+                arity: 2 # Mandatory
+                # Range of values the expressions are expected to operate on. 
+                # Better performance if these are smaller
+                lower-bound: 3
+                upper-bound: 500
+
+                dense-posting-list-threshold: 0.25
+            }
+        }
+    }
+}
+```
+```
+
+###### Configure Services
+
+A minimal `services.xml` configuring the saved search component can look like this:
+
+```
+```
+<services version="1.0">
+    <container id="default" version="1.0">
+        <search />
+        <document-api />
+
+        <document-processing>
+            <chain id="notification">
+                <documentprocessor id="ai.vespa.ecommerce.savedsearch.SavedSearchDocumentProcessor" 
+                                   bundle="ecommerce-saved-search" />
+                <config name="ai.vespa.ecommerce.savedsearch.schema-wiring">
+                    <notification>
+                        <kind>WEBHOOK</kind>
+                        <webhook>
+                            <URL>http://localhost:8000/notification</URL>
+                        </webhook>
+                    </notification>
+
+                    <itemDocumentType>product</itemDocumentType>
+                    <savedSearchDocumentType>saved_search</savedSearchDocumentType>
+                    <predicateFieldName>filters</predicateFieldName>
+                    <savedSearchNumHits>10</savedSearchNumHits>
+
+                    <regularAttributes>
+                        <item>
+                            <predicateName>category</predicateName>
+                            <fieldPath>category</fieldPath>
+                            <required>true</required>
+                        </item>
+                        <item>
+                            <predicateName>condition</predicateName>
+                            <fieldPath>condition</fieldPath>
+                            <required>false</required>
+                        </item>
+                    </regularAttributes>
+                    <rangeAttributes>
+                        <item>
+                            <predicateName>price</predicateName>
+                            <fieldPath>price</fieldPath>
+                            <required>true</required>
+                        </item>
+                    </rangeAttributes>
+                </config>
+            </chain>
+        </document-processing>
+    </container>
+
+    <content version="1.0" id="content">
+        <min-redundancy>2</min-redundancy>
+        <documents>
+            <document type="saved_search" mode="index" />
+            <document type="product" mode="index" />
+
+            <document-processing />
+        </documents>
+    </content>
+
+    <routing version="1.0">
+        <routingtable protocol="document">
+            <route name="notification-route" hops="forkhop" />
+            <hop name="forkhop" selector="[DocumentRouteSelector]">
+                <recipient session="default/chain.notification" />
+                <recipient session="content" />
+            </hop>
+        </routingtable>
+    </routing>
+</services>
+```
+```
+
+###### Feed Data
+
+###### Feed saved searches
+
+To test the functionality, feed two saved search documents:
+
+```
+```
+[
+  {"put": "id:saved_search:saved_search::search1", "fields": {
+    "filters": "price in [20..100] and category in [Sports, Books]"
+  }},
+  {"put": "id:saved_search:saved_search::search2", "fields": {
+    "filters": "price in [200..487] and category in [Electronics]"
+  }}
+]
+```
+```
+
+###### Feed a product to the notification route
+
+Assume a new product is available, with the following schema:
+
+```
+```
+{"put": "id:saved_search:product::product1", "fields":{"category": "Sports", "price": 50}}
+```
+```
+
+To enable notifications when feeding this product, feed it to the `notification-route`:
+
+```
+```
+$ vespa feed --route notification-route product.jsonl
+```
+```
+
+Assuming everything is set up correctly, it should match `id:saved_search:saved_search::search1` but not `search2`. If a server is receiving requests at the endpoint specified in the `URL` parameter of the `webhook` configuration, you should see a request with a JSON body representing the matched pair.
+
+ **Warning:** The `SavedSearchDocumentProcessor` acts as a **sink** for incoming documents. That is, `Put` and `Update` operations sent to that document processor will not propagate down to the content nodes, effectively discarding the operations. This is why a `routingtable` is specified in the example - documents going to the route `notification-route` will "fork", with one path going to the content cluster and one path to the saved search component.
+
+##### Notification kinds
+
+###### Webhook
+
+The webhook notification kind will send a request to a specified URL for each document that matches a set of saved searches. It requires an external application to provide the handling of such requests.
+
+If the configuration parameter `notification.kind == WEBHOOK`, all configuration parameters prefixed with `notification.webhook` will take effect. The requests from the saved search application will be `POST`-requests with a JSON body:
+
+```
+```
+{
+  "id": "<product-id>",
+  "timestamp": "<ISO-8601-timestamp>",
+  "matched_documents": [
+    "<saved-search-id-1>",
+    "<saved-search-id-2>",
+    ...
+  ]
+}
+```
+```
+
+###### Security
+
+In most cases, the Webhook endpoint handling the notifications is (and should be) protected in some way. The currently supported way to send authorized requests to the webhook endpoint is by combining the [Vespa secret store](../../security/secret-store.html) with the `notification.webhook.headers[].secret` config parameter. Assume we want to send notifications to `https://my.webhook.com/notification`, and that the api requires the following header:
+
+```
+```
+Authorization: Bearer TOKEN
+```
+```
+
+to be present in all requests. To enable our application to use this, first create the secret in Vespa Cloud and let it contain the **full** value of the header: `Bearer TOKEN`, replacing `TOKEN` with the actual token.
+
+Next, add the secret to the application in `services.xml`:
+
+```
+```
+<container>
+    ...
+    <secrets>
+        <myApiToken vault="my-vault" name="my-token-name" />
+    </secrets>
+```
+```
+
+Finally, configure the `SavedSearchDocumentProcessor` to add a header with this secret value to all notification requests:
+
+```
+```
+...
+    <documentprocessor id="ai.vespa.ecommerce.savedsearch.SavedSearchDocumentProcessor" 
+                       bundle="ecommerce-saved-search" />
+    <config name="ai.vespa.ecommerce.savedsearch.schema-wiring">
+        <notification>
+            <kind>WEBHOOK</kind>
+            <webhook>
+            <headers>
+                <item>
+                    <key>Authorization</key>
+                    <!-- Value of secret will be placed in the value field of the HTTP header. -->
+                    <secret>myApiToken</secret>
+                </item>
+            </headers>
+            </webhook>
+        </notification>
+    </config>
+</container>
+```
+```
+
+###### Vespa Schema
+
+For a simpler way to test saved search notification, a method for storing the notifications within the Vespa application is provided. This method represents each notification between a pair of a product and a saved search using a dedicated Vespa document type. It is recommended for testing purposes only.
+
+If the configuration parameter `notification.kind == VESPA_SCHEMA`, all configuration parameters prefixed with `notification.vespaSchema` will take effect. A minimal working example of this notification kind is given below.
+
+###### Notification example
+
+Define a document type for storing the notifications, for example `notification.sd`:
+
+```
+```
+schema notification {
+    document notification {
+        field product_id type string {
+            indexing: attribute | summary
+        }
+
+        field saved_search_id type string {
+            indexing: attribute | summary
+        }
+
+        field timestamp type long {
+            indexing: attribute | summary
+        }
+    }
+}
+```
+```
+
+Add the document type to the application:
+
+```
+```
+<content>
+    <documents>
+        ...
+        <document type="notification" mode="index" />
+    </documents>
+</content>
+```
+```
+
+Configure the schema wirings of the `SavedSearchDocumentProcessor`:
+
+```
+```
+<container>
+    <documentprocessor id="ai.vespa.ecommerce.savedsearch.SavedSearchDocumentProcessor" 
+                       bundle="ecommerce-saved-search" />
+    <config name="ai.vespa.ecommerce.savedsearch.schema-wiring">
+        <notification>
+            <kind>VESPA_SCHEMA</kind>
+            <vespaSchema>
+                <documentType>notification</documentType>
+                <namespace>saved_search</namespace>
+                <fieldPathProductId>product_id</fieldPathProductId>
+                <fieldPathSavedSearchId>saved_search_id</fieldPathSavedSearchId>
+                <fieldPathTimestamp>timestamp</fieldPathTimestamp>
+            </vespaSchema>
+        </notification>
+    </config>
+</container>
+```
+```
+Now notifications can be inspected by using `vespa visit` or `vespa query` with the appropriate parameters.
+##### Configuration reference
+
+This section describes the possible [configuration parameters](../../applications/configuring-components.html) used by the document processor.
+
+| Parameter | Description | Type | Default value |
+| --- | --- | --- | --- |
+| `notification.kind` | Method to use for sending notifications. | `enum {WEBHOOK, DUMMY, VESPA_SCHEMA}` | `DUMMY` |
+| `notification.webhook.URL` | URL to send notification requests. | `string` | |
+| `notification.webhook.connectionPoolSize` | Number of HTTP client threads to use in the container cluster. | `int` | `20` |
+| `notification.webhook.headers[].key` | Key of a header to add to all webhook requests. | `string` | |
+| `notification.webhook.headers[].value` | Value of a header to add to all webhook requests. | `string` | |
+| `notification.webhook.headers[].secret` | Use a secret from Vespa secret store instead of the value provided in `.value`. The value provided here should match the name of a secret specified with a `secrets` tag in `services.xml`. | `string` | |
+| `notification.vespaSchema.documentType` | Name of the Vespa document type to use for storing notifications. This document type has to be defined in the application. | `string` | saved\_search\_notification |
+| `notification.vespaSchema.namespace` | Namespace to use for creating document ids for the notification documents. | `string` | saved\_search |
+| `notification.vespaSchema.fieldPathProductId` | Fieldpath for storing the product id in the notification documents. | `string` | product\_id |
+| `notification.vespaSchema.fieldPathSavedSearchId` | Fieldpath for storing saved search id in the notification documents. | `string` | saved\_search\_id |
+| `notification.vespaSchema.fieldPathTimestamp` | Fieldpath for storing timestamps in the notification documents. | `string` | timestamp |
+| `itemDocumentType` | The name of the document type that can trigger notifications, e.g. `product`. | `string` | product |
+| `savedSearchDocumentType` | The name of the document type storing saved searches, e.g. `saved_search`. | `string` | saved\_search |
+| `predicateFieldName` | The name of the field in `savedSearchDocumentType` storing the predicate query. | `string` | filters |
+| `savedSearchNumHits` | Maximum number of saved searches to issue a notification for one product. | `int` | 100 |
+| `regularAttributes[].predicateName` | The name of a regular (string) attribute to be used in the saved search predicate field. | `string` | |
+| `regularAttributes[].fieldPath` | The field in the `itemDocumentType` to be matched with this attribute. This field should be of type `string`. | `string` | |
+| `regularAttributes[].required` | Whether documents are required to specify this attribute. | `bool` | `false` |
+| `rangeAttributes[].predicateName` | The name of a numerical range attribute to be used in the saved search predicate field. | `string` | |
+| `rangeAttributes[].fieldPath` | The field in the `itemDocumentType` to be matched with this attribute. This field should be of a numeric type, e.g. `int`. | `string` | |
+| `rangeAttributes[].required` | Whether documents are required to specify this attribute. | `bool` | `false` |
+
+ Copyright © 2026 - [Cookie Preferences](#)
+
+###### On this page:
+
+- [Overview](#overview)
+- [Quick Start](#quick-start)
+- [Define Schemas](#define-schemas)
+- [Configure Services](#configure-services)
+- [Feed Data](#feeding)
+- [Notification kinds](#notification-kinds)
+- [Webhook](#notification-kind-webhook)
+- [Vespa Schema](#notification-kind-vespa)
+- [Configuration reference](#configuration)
 
 ---
 
@@ -62000,7 +64665,7 @@ The `rawScore` feature takes a field name as parameter and gives the sum of all 
 
 Query item labeling is a generic mechanism that can be used to attach symbolic names to query items. A query item is labeled by using the `setLabel` method on a query item in the search container query API.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -62164,7 +64829,7 @@ It is also possible to override the user-defined rank-features in a custom searc
 
 The [summary-features](../reference/schemas/schemas.html#summary-features) allows us to have access to the individual ranking signals along with the hit's summary fields.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -62197,7 +64862,15 @@ The guide includes step-by-step instructions on how to reproduce the experiments
 
 **Prerequisites:**
 
-- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with Podman or [Docker](https://docs.docker.com/engine/install/) installed. See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings. For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html)
+- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with [Podman Desktop](https://podman.io/) or [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed, with an engine running. 
+  - Alternatively, start the Podman daemon:
+```
+$ podman machine init --memory 6000
+$ podman machine start
+```
+  - See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings.
+
+- For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html).
 - Memory: Minimum 4 GB RAM dedicated to Docker/Podman. [Memory recommendations](/en/operations/self-managed/node-setup.html#memory-settings). 
 - Disk: Avoid `NO_SPACE` - the vespaengine/vespa container image + headroom for data requires disk space. [Read more](/en/writing/feed-block.html). 
 - [Homebrew](https://brew.sh/) to install the [Vespa CLI](/en/clients/vespa-cli.html), or download the Vespa CLI from [Github releases](https://github.com/vespa-engine/vespa/releases). 
@@ -64011,7 +66684,7 @@ The following removes the container and the data:
 $ docker rm -f vespa
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -64047,7 +66720,7 @@ Nearest neighbor search, or vector search, is a technique used to find the close
 
 Nearest neighbor search, or vector search, is a technique used to find the closest data points to a given query point in a high-dimensional vector space. This is supported in Vespa using the[nearestNeighbor](../reference/querying/yql.html#nearestneighbor) query operator. This operator can be combined with other filters or query terms using the[Vespa query language](query-language.html), making it easy to create hybrid solutions that combine modern vector based techniques with[traditional information retrieval](text-matching.html).
 
-Also see the [pyvespa examples](https://pyvespa.readthedocs.io/en/latest/examples/pyvespa-examples.html#Neighbors).
+Also see the [pyvespa examples](https://vespa-engine.github.io/pyvespa/examples/pyvespa-examples.html#Neighbors).
 
 ##### Minimal example
 
@@ -64387,7 +67060,7 @@ Hamming distance search over binary vectors is implemented with xor and pop coun
 
 See the [Billion Scale Vector Search with Vespa](https://blog.vespa.ai/billion-scale-knn-part-two/)blog post for a detailed introduction to using binary vectors with hamming distance.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -64493,7 +67166,7 @@ Find a list of supported instance types at[AWS](https://cloud.vespa.ai/en/refere
 - [The practical search performance guide](../performance/practical-search-performance-guide.html)
 - [Autoscaling](../operations/autoscaling.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -64534,7 +67207,7 @@ To add a new address to get notifications:
 4. Click **Save**
 5. Go to your email inbox and click the verification link you have received there.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -64801,7 +67474,7 @@ rank-profile myRank {
 }
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -64833,7 +67506,7 @@ Vespa allows application developers to create applications that scale to large a
 
  ![Vespa Overview](/assets/img/vespa-overview.svg)
 
-The [stateless **container** clusters](../jdisc) host components which process incoming data and/or queries and their responses. These components provide functionality belonging to the platform like indexing transformations and the global stages of query execution, but can also include the middleware logic of the application. Application developers can configure their Vespa system with a single stateless cluster which performs all such functions, or create different clusters for each kind of task. The container clusters then pass queries and data operations on to the appropriate nodes in the content clusters. If the application uses data it does not own, you can add components to access data from external services as well.
+The [stateless **container** clusters](../applications/containers.html) host components which process incoming data and/or queries and their responses. These components provide functionality belonging to the platform like indexing transformations and the global stages of query execution, but can also include the middleware logic of the application. Application developers can configure their Vespa system with a single stateless cluster which performs all such functions, or create different clusters for each kind of task. The container clusters then pass queries and data operations on to the appropriate nodes in the content clusters. If the application uses data it does not own, you can add components to access data from external services as well.
 
 [**Content** clusters](../content/elasticity.html) in Vespa are responsible for storing data and execute queries and inferences over the data. Queries can range from simple data lookups for content serving to complex conditions for selecting the relevant data, ranking it using machine-learned models, and grouping and aggregating the data across all nodes participating in the query. All the operations provided by Vespa scales to more content, more expensive inference, and higher query volume simply by adding more nodes to the content clusters.
 
@@ -64861,7 +67534,7 @@ Vespa accepts the following operations:
 
 ##### The stateless container
 
-[Container clusters](../jdisc) host the application components which employ the operations listed above and process their return data. Vespa provides a set of components out of the box, together with component infrastructure: dependency injection, with added support for injection of config from the admin server or the application package; a component model based on OSGi; a shared mechanism to chain components into handler chains for modularity as well as metrics and logging. The container also provides the network layer for handling and issuing remote requests - HTTP is provided out of the box, and other protocols/transports can be transparently plugged in as components.
+[Container clusters](../applications/containers.html) host the application components which employ the operations listed above and process their return data. Vespa provides a set of components out of the box, together with component infrastructure: dependency injection, with added support for injection of config from the admin server or the application package; a component model based on OSGi; a shared mechanism to chain components into handler chains for modularity as well as metrics and logging. The container also provides the network layer for handling and issuing remote requests - HTTP is provided out of the box, and other protocols/transports can be transparently plugged in as components.
 
 Developers can make changes to components (and of course their configuration) simply by redeploying their application package - the system takes care of copying the components to the nodes of the cluster and loading/unloading components impacting request serving or restarting nodes.
 
@@ -64888,7 +67561,7 @@ Vespa allows functionally rich and highly available applications to be developed
 
 For more details, read [Vespa Features](features.html), or try to[deploy an application](../basics/deploy-an-application.html).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -65175,7 +67848,7 @@ A mapping of multiple source modules to places on the page:
 </page>
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -65382,7 +68055,7 @@ Document type _ad_ has two references to _campaign_ (via _campaign\_ref_ and _ot
 
 Document type _campaign_ has a reference to _advertiser_ and imports the field _name_ as _advertiser\_name_. This is also imported into _ad_ via _campaign\_ref_ from its grandparent _advertiser_. To use the imported fields in summary, define a document summary _my\_summary_ containing these fields.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -65502,7 +68175,7 @@ Attribute fields that are also in summary get their values from the memory struc
 - [proton](../content/proton.html) - this should have the full write pipeline, go here for this
 - [parent-child](../schemas/parent-child.html) - how to use parent attributes for even higher update rates
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -65844,7 +68517,7 @@ $ vespa query \
   "presentation.summary=rank_phase_statistics"
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -65918,7 +68591,7 @@ As mentioned, the missing package in this example is part of the SDK. In these c
 </container>
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -65950,7 +68623,15 @@ The guide includes step-by-step instructions on how to reproduce the experiments
 
 **Prerequisites:**
 
-- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with Podman or [Docker](https://docs.docker.com/engine/install/) installed. See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings. For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html)
+- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with [Podman Desktop](https://podman.io/) or [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed, with an engine running. 
+  - Alternatively, start the Podman daemon:
+```
+$ podman machine init --memory 6000
+$ podman machine start
+```
+  - See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings.
+
+- For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html).
 - Memory: Minimum 4 GB RAM dedicated to Docker/Podman. [Memory recommendations](/en/operations/self-managed/node-setup.html#memory-settings). 
 - Disk: Avoid `NO_SPACE` - the vespaengine/vespa container image + headroom for data requires disk space. [Read more](/en/writing/feed-block.html). 
 - [Homebrew](https://brew.sh/) to install the [Vespa CLI](/en/clients/vespa-cli.html), or download the Vespa CLI from [Github releases](https://github.com/vespa-engine/vespa/releases). 
@@ -66502,11 +69183,13 @@ In this particular case the `summaryfetchtime` difference is not that large, but
 
 A note on select field scoping with YQL, e.g. `select title, track_id from ..`. When using the default summary by not using a summary parameter, all fields are delivered from the content nodes to the stateless search container in the summary fill phase, regardless of field scoping. The search container removes the set of fields not selected and renders the result. Hence, select scoping only reduces the amount of data transferred back to the client, and does not impact or optimize the performance of the internal communication and potential summary cache miss. For optimal performance for use cases asking for large number of hits to the client it is recommended to use dedicated document summaries. Note also that Vespa per default limits the max hits to 400 per default, the behavior can be overridden in the [default queryProfile](../reference/api/query.html#queryprofile).
 
-When requesting large amount of data with hits, it is recommended to use result compression. Vespa will compress if the HTTP client uses the [Accept-Encoding](https://www.rfc-editor.org/rfc/rfc9110.html#name-accept-encoding) HTTP request header:
+When requesting large amounts of data, consider how to reduce response size. Vespa supports gzip compression if the HTTP client uses the [Accept-Encoding](https://www.rfc-editor.org/rfc/rfc9110.html#name-accept-encoding) HTTP request header:
 
 ```
 Accept-Encoding: gzip
 ```
+
+Compression reduces data transfer but adds CPU overhead. The lowest latency is achieved without compression if network bandwidth is sufficient.[CBOR format](../reference/api/query.html#presentation.format) (`format=cbor` or `Accept: application/cbor`) is both more compact and faster to generate than JSON, especially for numeric data such as tensors and embeddings. CBOR can also be combined with gzip compression. CBOR is a drop-in replacement for JSON - when deserialized, the result is identical.
 
 ##### Searching attribute fields
 
@@ -67925,7 +70608,7 @@ This concludes this tutorial. The following removes the container and the data:
 $ docker rm -f vespa
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -68247,7 +70930,7 @@ escape_2 = '\\', ( '\\' | 't' | 'n' | 'f' | 'r' | '"' | 'x', hexdigit, hexdigit 
 hexdigit = digit | 'a' | 'b' | 'c' | 'd' | 'e' | 'f' | 'A' | 'B' | 'C' | 'D' | 'E' | 'F' ;
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -68378,7 +71061,7 @@ If you have an existing deployment with a private endpoint, you must remove any 
 ```
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -68411,7 +71094,7 @@ To use processing, add this dependency to _pom.xml_:
 <dependency>
   <groupId>com.yahoo.vespa</groupId>
   <artifactId>container</artifactId>
-  <version>8.617.12</version> <!-- Find latest version at[search.maven.org/search?q=g:com.yahoo.vespa%20a:container](https://search.maven.org/search?q=g:com.yahoo.vespa%20a:container)-->
+  <version>8.634.24</version> <!-- Find latest version at[search.maven.org/search?q=g:com.yahoo.vespa%20a:container](https://search.maven.org/search?q=g:com.yahoo.vespa%20a:container)-->
   <scope>provided</scope>
 </dependency>
 ```
@@ -68481,7 +71164,7 @@ As a processor may participate in many processing executions at one time, field 
 
 ##### Response Rendering
 
-A _Renderer_ is used to serialize the Response for return to a client. Renderers are subclasses of`com.yahoo.processing.rendering.Renderer`. A convenience superclass which handles waiting for future data in the asynchronous case is provided as`com.yahoo.processing.rendering.AsynchronousSectionedRenderer`. The default renderer, which renders in a simple JSON format is[com.yahoo.processing.rendering.ProcessingRenderer](https://github.com/vespa-engine/vespa/blob/master/container-core/src/main/java/com/yahoo/processing/rendering/ProcessingRenderer.java)and can be subclassed to customize rendering of each kind of Data item.
+A _Renderer_ is used to serialize the Response for return to a client. Renderers are subclasses of`com.yahoo.processing.rendering.Renderer`. A convenience superclass which handles waiting for future data in the asynchronous case is provided as`com.yahoo.processing.rendering.AsynchronousSectionedRenderer`. The default renderer, which renders in a simple JSON format is[com.yahoo.processing.rendering.ProcessingRenderer](https://github.com/vespa-engine/vespa/blob/master/container-disc/src/main/java/com/yahoo/processing/rendering/ProcessingRenderer.java)and can be subclassed to customize rendering of each kind of Data item.
 
 Processors are regular [components](components.html) which are added to the application package in the [renderer section](../reference/applications/services/processing.html#renderer) of the _services.xml_ file. A renderer is selected in the request by setting the `format` parameter in the request to the renderer id.
 
@@ -68720,7 +71403,7 @@ public class AsyncDataProcessingInitiator extends Processor {
 }
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -68875,7 +71558,7 @@ Find alternative deployment procedures in the next sections.
 
 Find the 'zone' endpoint to use under Endpoints in the [console](https://console.vespa-cloud.com/). There is an mTLS endpoint for each zone by default. See [configuring mTLS](../security/guide#configuring-mtls) for how to use mTLS certificates.
 
-You can also add [access tokens](../security/guide#configure-tokens) in the console as an alternative to mTLS, and specify [global](../reference/applications/deployment.html#endpoints-global) and [private](../reference/applications/deployment.html#endpoint-private) endpoints in _deployment.xml_.
+You can also add [access tokens](../security/guide#configuring-tokens) in the console as an alternative to mTLS, and specify [global](../reference/applications/deployment.html#endpoints-global) and [private](../reference/applications/deployment.html#endpoint-private) endpoints in _deployment.xml_.
 
 Write data efficiently using the [document/v1 API](../reference/api/document-v1.html) using HTTP/2, or with the [Vespa CLI](../clients/vespa-cli.html). There is also a [Java library](../clients/vespa-feed-client.html#java-library).
 
@@ -68979,7 +71662,7 @@ There are three recommended options:
 2. **Use private endpoints via AWS PrivateLink or GCP Private Service Connect:** Vespa allows you to set up private endpoints for exclusive access from your own, co-located VPCs. This requires less administrative overhead than general VPC peering and is also more secure. Refer to [private endpoints](private-endpoints.html).
 3. **Run Vespa workloads in your own account/project (Enclave):** The Vespa Cloud Enclave feature allows you to have all your Vespa workloads run in your own account. In this case, you can set up any required peering to open the connection into your application. While generally available, using Vespa Cloud Enclave requires significantly more effort from the application team in terms of operating the service, and is only recommended for larger applications that can justify the additional work from e.g., a security or interoperability perspective. Refer to [Vespa Cloud Enclave](enclave/enclave).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -69125,7 +71808,7 @@ where _$hostname_ is the node that is running the container with the YourKit age
 
 You are now ready to profile your application. (You will need to put some realistic load against the container instance, see the [Vespa benchmarking guide](benchmarking.html)) After having started the load simulation you can start the profiling session, open the YourKit application installed locally and select _Monitor Remote Applications =\> Connect to remote application_. Enter _localhost:1080_ and press Connect. You should now see the profiling screen with _Remote application "Server" (PID XXXXX) is being profiled at localhost:1080_.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -69647,7 +72330,7 @@ Example `state/v1/custom/component/documentdb/mydoctype`:
 ```
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -69904,7 +72587,7 @@ Applications can group _all_ documents (select all documents in YQL). Using `lim
 
 All fields are returned in results by default. To specify a subset of fields, use [document summaries](document-summaries.html). When searching text, having a static abstract of the document in a field, or using a [dynamic summary](../reference/schemas/schemas.html#summary)can both improve the visual relevance of the search, and cut bandwidth used.
 
-The default output format is [JSON](../reference/querying/default-result-format.html). Write a custom [Renderer](../applications/result-renderers.html) to generate results in other formats.
+The default output format is [JSON](../reference/querying/default-result-format.html). A binary [CBOR](https://cbor.io/) format is also available via[format=cbor](../reference/api/query.html#presentation.format) - responses are smaller and faster to render, especially for numeric data, and is a drop-in replacement that produces identical results when deserialized. Write a custom [Renderer](../applications/result-renderers.html) to generate results in other formats.
 
 Read more on [request-response](../applications/processing.html) processing - use this to write code to manipulate results.
 
@@ -70470,7 +73153,7 @@ Result for the grouping query `
 ```
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -70649,7 +73332,7 @@ Escapes - see the [FAQ](../learn/faq#how-does-backslash-escapes-work):
 $ vespa query -v 'select * from music where artist matches "M.ta\\.\\.ica"'
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -71011,7 +73694,7 @@ It can sometimes be handy to be able to dump resolved query profiles offline. Ru
 $[vespa-query-profile-dump-tool](../reference/operations/tools.html#vespa-query-profile-dump-tool)
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -71240,55 +73923,7 @@ Put the file on all container nodes, configure the location and [deploy](../basi
     </config>
 ```
 
-##### Special tokens
-
-Query tokens are built from _text characters_, as defined by `isTextCharacter` in[com.yahoo.text.Text](https://github.com/vespa-engine/vespa/blob/master/vespajlib/src/main/java/com/yahoo/text/Text.java). To query for terms with other characters, like _c++_ or _.net_, use _special tokens_. Unlike query rewriting/phrasing, special tokens modifies data at feeding time, so changes to configuration should be followed by (automatic) document re-feed.
-
-Add a [specialtokens config](../reference/applications/services/services.html#generic-config) to _services.xml_ to enable. Specify a token list called _default_, with a list of tokens. A token can have an optional replacement. All special tokens must be in lower-case. There is no need to enable it for particular fields, or indicate the need for special token handling during query input. Refer to [specialtokens.def](https://github.com/vespa-engine/vespa/blob/master/configdefinitions/src/vespa/specialtokens.def) for details. Example configuration:
-
-```
-<?xml version="1.0" encoding="UTF-8"?>
-<services version="1.0">
-    <config name="vespa.configdefinition.specialtokens">
-        <tokenlist>
-            <item>
-                <name>default</name>
-                <tokens>
-                    <item>
-                        <token>c++</token>
-                    </item>
-                    <item>
-                        <token>wal-mart</token>
-                        <replace>walmart</replace>
-                    </item>
-                    <item>
-                        <token>.net</token>
-                    </item>
-                </tokens>
-            </item>
-        </tokenlist>
-    </config>
-    ...
-</services>
-```
-
- **Note:** Special tokens is most useful for text search, meaning fields with longer text. For use cases with full exact matching in small fields, like `where product contains "M&M"`, consider using [match: exact](../reference/schemas/schemas.html#match), like
-```
-field product type string {
-        indexing: summary | index
-        match: exact
-    }
-```
-
-Remember to encode queries when testing with non-textual characters. The Vespa CLI has a `-v` option to print as YQL:
-
-```
-$ vespa query -v 'select * from items where product contains "M&M"'
-
-curl http://127.0.0.1:8080/search/\?timeout=10s\&yql=select+%2A+from+items+where+product+contains+%22M%26M%22
-```
-
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -71299,7 +73934,6 @@ curl http://127.0.0.1:8080/search/\?timeout=10s\&yql=select+%2A+from+items+where
 - [Using multiple rule bases](#using-multiple-rule-bases)
 - [Using a finite state automaton](#using-a-finite-state-automaton)
 - [Query phrasing](#query-phrasing)
-- [Special tokens](#special-tokens)
 
 ---
 
@@ -71435,7 +74069,11 @@ If also leveraging [multiphase searching](../applications/searchers.html#multiph
 
 The difference is most pronounced when the corpus is divided onto many content nodes. Consider a case with 7 content nodes, fetching 100 matches from each. These are merged (by relevance score) into a list of 700 hits, and the 100 with the best relevance are selected and _filled_. If you use _match-features_, they need to be calculated for all 700 hits. Compare with _summary-features_, where only the final 100 hits need to be considered for calculating those.
 
-##### The "if" function and string equality tests
+##### Conditional expressions
+
+Ranking expressions support conditional logic to choose between different sub-expressions based on document attributes, query parameters, or other features. This enables ranking to adapt to different document types, user segments, or business rules within a single rank profile.
+
+###### The if function
 
 `if` can be used for other purposes than encoding MLR trained decision trees. One use is to choose different ranking functions for different types of documents in the same search. Ranking expressions are able to do string equality tests, so to choose between different ranking sub-functions based on the value of a string attribute (say, "category"), use an expression like:
 
@@ -71456,6 +74094,19 @@ if (fieldMatch(business).fieldCompleteness==1, 0.8+document.distance*0.2,
 This function puts all exact matches on business names first, sorted by geographical distance, followed by all shops sorted by title match, followed by everything else sorted by the overall match quality and popularity.
 
 Also see [pin results](multivalue-query-operators.html#pin-results-example) for a comprehensive examples of using a tiered ranking function to pin queries and results.
+
+###### The switch function
+
+When comparing many values against the same discriminant value, the `switch` function provides a more readable alternative to deeply nested `if` statements. For example, the nested if expression above can be written more clearly as:
+
+```
+switch (attribute(category)) {
+    case "restaurant":_…restaurant function_,
+    case "hotel":_…hotel function_,
+    default:_…default function_}
+```
+
+Use `switch` when testing a single expression for equality against multiple values. Continue using `if` for different comparison operators or when each condition tests different expressions, such as in the tiering example above. See the [switch function reference](../reference/ranking/ranking-expressions.html#the-switch-function) for details.
 
 ##### Using constants
 
@@ -71576,7 +74227,7 @@ Use a weighted average of the match quality in some fields, multiplied by 1-exp 
   7*attributeMatch(tags).normalizedWeight ) /22 * ( 1 - age(creationtime) )
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -71587,7 +74238,9 @@ Use a weighted average of the match quality in some fields, multiplied by 1-exp 
 - [Feature contribution functions](#feature-contribution-functions)
 - [Dumping rank features for specific documents](#dumping-rank-features-for-specific-documents)
 - [Accessing feature/function values in results](#accessing-feature-function-values-in-results)
-- [The "if" function and string equality tests](#the-if-function-and-string-equality-tests)
+- [Conditional expressions](#conditional-expressions)
+- [The if function](#the-if-function)
+- [The switch function](#the-switch-function)
 - [Using constants](#using-constants)
 - [Using query variables](#using-query-variables)
 - [Query feature types](#query-feature-types)
@@ -71907,7 +74560,7 @@ Read more in [the wand documentation](wand.html).
 - 
 - Read more about custom re-ranking of the final result set in[reranking in searcher](reranking-in-searcher).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -72017,7 +74670,7 @@ In a shared service scenario, you may want to assign different quota based on a 
 
 The searcher will emit the [count metric](../operations/metrics.html)`requestsOverQuota` with the dimension `[rate.idDimension=rate.id]`.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -72152,7 +74805,7 @@ The [Document API](document-api-guide.html) forwards requests to distributors on
 - [/document/v1/ API guide](document-v1-api-guide.html)
 - [/document/v1/ API reference](../reference/api/document-v1.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -72240,7 +74893,7 @@ Relevant pointers:
 - [Advanced indexing language](../reference/writing/indexing-language.html)
 - [Schemas](../basics/schemas.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -72294,7 +74947,7 @@ In addition, some public Java classes and methods are marked with the com.yahoo.
 
 Data written to Vespa is compatible between adjacent releases. For self-hosted systems, it may be necessary to upgrade through each minor release rather than in larger leaps to ensure Vespa can read existing data. This is a good practice in any case.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -72316,7 +74969,7 @@ In most cases, implementing your own request handlers is unnecessary, as both se
 
 ##### Implementing a request handler
 
-Upon receiving a request, the request handler must consume its content, process it, and then return a response. The most convenient way to implement a request handler is by subclassing the [ThreadedHttpRequestHandler](https://javadoc.io/doc/com.yahoo.vespa/container-core/latest/com/yahoo/container/jdisc/ThreadedHttpRequestHandler.html).
+Upon receiving a request, the request handler must consume its content, process it, and then return a response. The most convenient way to implement a request handler is by subclassing the [ThreadedHttpRequestHandler](https://javadoc.io/doc/com.yahoo.vespa/container-disc/latest/com/yahoo/container/jdisc/ThreadedHttpRequestHandler.html).
 
 This utility base class uses a synchronous API and a multithreaded execution model. It also implements a lot of functionality that is needed by most request handlers:
 
@@ -72343,7 +74996,7 @@ To deploy a request handler in an application, use the [handler](../reference/ap
 
 A request handler may be bound to zero or more URI patterns by adding a [binding](../reference/applications/services/container.html#binding) element for each pattern.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -72368,7 +75021,15 @@ See also [life of a query in Vespa](../performance/sizing-search.html#life-of-a-
 
 **Prerequisites:**
 
-- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with Podman or [Docker](https://docs.docker.com/engine/install/) installed. See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings. For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html)
+- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with [Podman Desktop](https://podman.io/) or [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed, with an engine running. 
+  - Alternatively, start the Podman daemon:
+```
+$ podman machine init --memory 6000
+$ podman machine start
+```
+  - See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings.
+
+- For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html).
 - Memory: Minimum 4 GB RAM dedicated to Docker/Podman. [Memory recommendations](/en/operations/self-managed/node-setup.html#memory-settings). 
 - Disk: Avoid `NO_SPACE` - the vespaengine/vespa container image + headroom for data requires disk space. [Read more](/en/writing/feed-block.html). 
 - [Homebrew](https://brew.sh/) to install the [Vespa CLI](/en/clients/vespa-cli.html), or download the Vespa CLI from [Github releases](https://github.com/vespa-engine/vespa/releases). 
@@ -72662,7 +75323,7 @@ Remove app and data:
 $ docker rm -f vespa
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -72781,7 +75442,7 @@ Setting the [collapsefield](../reference/api/query.html#collapsefield) parameter
 
 Using collapsefield is a cheap option when results only contains a small number of duplicates on average, since it defers all diversification work until the end. When there may be many duplicates, using either the diversify tag or grouping should be preferred.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -72800,7 +75461,7 @@ Renderers are implemented by subclassing one of:
 
 - [com.yahoo.search.rendering.Renderer](https://javadoc.io/doc/com.yahoo.vespa/container-search/latest/com/yahoo/search/rendering/Renderer.html)
 - [com.yahoo.search.rendering.SectionedRenderer](https://javadoc.io/doc/com.yahoo.vespa/container-search/latest/com/yahoo/search/rendering/SectionedRenderer.html)
-- [com.yahoo.processing.rendering.AsynchronousSectionedRenderer\<Result\>](https://javadoc.io/doc/com.yahoo.vespa/container-core/latest/com/yahoo/processing/rendering/AsynchronousSectionedRenderer.html)
+- [com.yahoo.processing.rendering.AsynchronousSectionedRenderer\<Result\>](https://javadoc.io/doc/com.yahoo.vespa/container-disc/latest/com/yahoo/processing/rendering/AsynchronousSectionedRenderer.html)
 
 SectionedRenderer differs from Renderer by providing each part to be rendered in separate steps. It is therefore easier to implement a SectionedRenderer than a regular Renderer. AsynchronousSectionedRenderer has a similar API to SectionedRenderer, but supports asynchronously fetched hit contents, so if supporting slow clients or backends is a priority, this offers some advantages. AsynchronousSectionedRenderer also exposes an OutputStream instead of a Writer, so if the backend data contains data encoded the same way as the output from the container (often UTF-8), performance gains are possible.
 
@@ -73071,7 +75732,7 @@ This is the same as for the [processing framework](processing.html#response-rend
 
 Find an example in [DemoRenderer.java](https://github.com/vespa-engine/sample-apps/blob/master/examples/http-api-using-request-handlers-and-processors/src/main/java/ai/vespa/examples/DemoRenderer.java).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -73079,7 +75740,6 @@ Find an example in [DemoRenderer.java](https://github.com/vespa-engine/sample-ap
 
 ### search
 
-https://www.googletagmanager.com/ns.html?id=GTM-WM6MPVZP
 [![Vespa logo](/assets/logos/logo.svg)](https://docs.vespa.ai/)
 
 #### 
@@ -73419,10 +76079,19 @@ https://www.googletagmanager.com/ns.html?id=GTM-WM6MPVZP
  ![▼](/assets/icons/arrow-down.svg) Linguistics and text processing 
 
 ##### 
-[Linguistics](/en/linguistics/linguistics.html)
+ ![▼](/assets/icons/arrow-down.svg)Linguistics 
 
-##### 
+###### 
+[Linguistics Overview](/en/linguistics/linguistics.html)
+
+###### 
+[Default (OpenNLP) linguistics](/en/linguistics/linguistics-opennlp.html)
+
+###### 
 [Lucene linguistics](/en/linguistics/lucene-linguistics.html)
+
+###### 
+[Custom linguistics](/en/linguistics/linguistics-custom.html)
 
 ##### 
 [Query rewriting](/en/linguistics/query-rewriting.html)
@@ -73554,6 +76223,9 @@ https://www.googletagmanager.com/ns.html?id=GTM-WM6MPVZP
 [Azure getting started](/en/operations/enclave/azure-getting-started.html)
 
 ###### 
+[Azure architecture](/en/operations/enclave/azure-architecture.html)
+
+###### 
 [GCP getting started](/en/operations/enclave/gcp-getting-started.html)
 
 ###### 
@@ -73670,6 +76342,36 @@ https://www.googletagmanager.com/ns.html?id=GTM-WM6MPVZP
 ###### 
 [Monitoring](/en/operations/self-managed/monitoring.html)
 
+##### 
+ ![▼](/assets/icons/arrow-down.svg)Kubernetes 
+
+###### 
+[Vespa on Kubernetes](/en/operations/kubernetes/vespa-on-kubernetes.html)
+
+###### 
+[Architecture](/en/operations/kubernetes/architecture.html)
+
+###### 
+[Vespa on Kubernetes](/en/operations/kubernetes/installation.html)
+
+###### 
+[Lifecycle Operations for Vespa on Kubernetes](/en/operations/kubernetes/operations.html)
+
+###### 
+[Enable TLS Encryption for Vespa on Kubernetes](/en/operations/kubernetes/tls.html)
+
+###### 
+[Monitor a Vespa on Kubernetes Deployment](/en/operations/kubernetes/monitoring.html)
+
+###### 
+[Configure Log Collections](/en/operations/kubernetes/logging.html)
+
+###### 
+[Configure External Access Layer for Vespa on Kubernetes](/en/operations/kubernetes/ingress.html)
+
+###### 
+[Provide Custom Overrides](/en/operations/kubernetes/custom-overrides-podtemplate.html)
+
 #### 
  ![▼](/assets/icons/arrow-down.svg) Security 
 
@@ -73717,6 +76419,9 @@ https://www.googletagmanager.com/ns.html?id=GTM-WM6MPVZP
 
 ###### 
 [Multi-currency filtering](/en/modules/e-commerce/multi-currency-filtering.html)
+
+###### 
+[Saved search notifications](/en/modules/e-commerce/saved-search.html)
 
 #### 
  ![▼](/assets/icons/arrow-down.svg) Reference 
@@ -74134,8 +76839,12 @@ https://www.googletagmanager.com/ns.html?id=GTM-WM6MPVZP
   - [Model hub](/en/rag/model-hub.html)
 
 - #Linguistics and text processing
-  - [Linguistics](/en/linguistics/linguistics.html)
-  - [Lucene linguistics](/en/linguistics/lucene-linguistics.html)
+  - Linguistics
+    - [Linguistics Overview](/en/linguistics/linguistics.html)
+    - [Default (OpenNLP) linguistics](/en/linguistics/linguistics-opennlp.html)
+    - [Lucene linguistics](/en/linguistics/lucene-linguistics.html)
+    - [Custom linguistics](/en/linguistics/linguistics-custom.html)
+
   - [Query rewriting](/en/linguistics/query-rewriting.html)
   - [Troubleshooting character encoding](/en/linguistics/troubleshooting-encoding.html)
 
@@ -74182,6 +76891,7 @@ https://www.googletagmanager.com/ns.html?id=GTM-WM6MPVZP
     - [AWS getting started](/en/operations/enclave/aws-getting-started.html)
     - [AWS architecture](/en/operations/enclave/aws-architecture.html)
     - [Azure getting started](/en/operations/enclave/azure-getting-started.html)
+    - [Azure architecture](/en/operations/enclave/azure-architecture.html)
     - [GCP getting started](/en/operations/enclave/gcp-getting-started.html)
     - [GCP architecture](/en/operations/enclave/gcp-architecture.html)
     - [Log archive](/en/operations/enclave/archive.html)
@@ -74224,6 +76934,17 @@ https://www.googletagmanager.com/ns.html?id=GTM-WM6MPVZP
     - [Container](/en/operations/self-managed/container.html)
     - [Monitoring](/en/operations/self-managed/monitoring.html)
 
+  - Kubernetes
+    - [Vespa on Kubernetes](/en/operations/kubernetes/vespa-on-kubernetes.html)
+    - [Architecture](/en/operations/kubernetes/architecture.html)
+    - [Vespa on Kubernetes](/en/operations/kubernetes/installation.html)
+    - [Lifecycle Operations for Vespa on Kubernetes](/en/operations/kubernetes/operations.html)
+    - [Enable TLS Encryption for Vespa on Kubernetes](/en/operations/kubernetes/tls.html)
+    - [Monitor a Vespa on Kubernetes Deployment](/en/operations/kubernetes/monitoring.html)
+    - [Configure Log Collections](/en/operations/kubernetes/logging.html)
+    - [Configure External Access Layer for Vespa on Kubernetes](/en/operations/kubernetes/ingress.html)
+    - [Provide Custom Overrides](/en/operations/kubernetes/custom-overrides-podtemplate.html)
+
 - #Security
   - [Security overview](/en/security/security.html)
   - [Security Guide](/en/security/guide.html)
@@ -74242,6 +76963,7 @@ https://www.googletagmanager.com/ns.html?id=GTM-WM6MPVZP
 - #Modules
   - E-commerce
     - [Multi-currency filtering](/en/modules/e-commerce/multi-currency-filtering.html)
+    - [Saved search notifications](/en/modules/e-commerce/saved-search.html)
 
 - #Reference
   - APIs
@@ -74376,7 +77098,7 @@ https://www.googletagmanager.com/ns.html?id=GTM-WM6MPVZP
 | Search in GitHub Issues: | |
 | Search in the Vespa-Slack:&nbsp; | |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -74824,6 +77546,8 @@ Any searchers should assume they are operating in a multiphase setup, meaning:
 - Federating searchers should implement both the regular `search` method and the `fill` method. The fill method must request filling down the source branches which has remaining hits in the result.
 - Backend searchers, which wish to support multiphase searching, should initially deliver unfilled hits and implement a `fill` method which fills the hits in the given result belonging to that backend with information from the backend.
 
+ **Note:**[vespa-match-features](https://vinted.engineering/2025/11/06/vespa-match-features/)is a good article on multiphase searching, result fill and match-features.
+
 ##### Error handling
 
 If your searcher encounters a problem and wants to signal an error, set an error hit in the result object by calling `result.hits().addError(errorMsg)`.
@@ -74846,7 +77570,7 @@ It is not generally possible to prevent this from ever happening, but searchers 
 
 In a Searcher, one often will use [WordItem](https://javadoc.io/doc/com.yahoo.vespa/container-search/latest/com/yahoo/prelude/query/WordItem.html) to modify the current query, or create a new query based on input query terms, or results from the current query. To keep linguistic settings (e.g. stemming) from the parent query, set `isFromQuery` to true - [example](https://github.com/vespa-cloud/vespa-documentation-search/blob/main/src/main/java/ai/vespa/cloud/docsearch/DocumentationSearcher.java).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -74890,7 +77614,7 @@ When building a search application we need to think about:
 There is a lot of text matching options we should think about when designing and mapping our document model to a Vespa document schema:
 
 - For string fields we should think about using text style matching or database-style exact matching.
-- For string fields there are also several[linguistic processing](../linguistics/linguistics.html) options like [tokenization](../linguistics/linguistics.html#tokenization), normalization and language dependent [stemming](../linguistics/linguistics.html#stemming).
+- For string fields there are also several[linguistic processing](../linguistics/linguistics.html) options like [tokenization](../linguistics/linguistics-opennlp.html#tokenization), normalization and language dependent [stemming](../linguistics/linguistics-opennlp.html#stemming).
 - String fields which shares the same [match](../reference/schemas/schemas.html#match) and linguistic processing settings can be combined using [fieldsets](../reference/schemas/schemas.html#fieldset).
 
 At query time, we can take the user query and translate it into a valid Vespa query request which implements our matching and retrieval strategy over the designed document schema.
@@ -74905,7 +77629,15 @@ In the following sections we explore matching and ranking over multivalued strin
 
 **Prerequisites:**
 
-- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with Podman or [Docker](https://docs.docker.com/engine/install/) installed. See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings. For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html)
+- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with [Podman Desktop](https://podman.io/) or [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed, with an engine running. 
+  - Alternatively, start the Podman daemon:
+```
+$ podman machine init --memory 6000
+$ podman machine start
+```
+  - See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings.
+
+- For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html).
 - Memory: Minimum 4 GB RAM dedicated to Docker/Podman. [Memory recommendations](/en/operations/self-managed/node-setup.html#memory-settings). 
 - Disk: Avoid `NO_SPACE` - the vespaengine/vespa container image + headroom for data requires disk space. [Read more](/en/writing/feed-block.html). 
 - [Homebrew](https://brew.sh/) to install the [Vespa CLI](/en/clients/vespa-cli.html), or download the Vespa CLI from [Github releases](https://github.com/vespa-engine/vespa/releases). 
@@ -75437,7 +78169,7 @@ That concludes the matching and ranking experiments. To shut down the container:
 $ docker rm -f vespa
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -75586,7 +78318,7 @@ Typically, store the `Secret` in your class, and when you want to use the secret
 
 Ensure that you do not store the `current` value itself - then the secret value will not be updated when the configuration is changed.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -75655,7 +78387,7 @@ Vespa does not have application-level support for encryption of on-disk document
 
 Protect all internal endpoints and protocols in Vespa with mutually authenticated Transport Layer Security (mTLS). See the [dedicated documentation](mtls) on how to get started, and try the [multinode-HA](https://github.com/vespa-engine/sample-apps/tree/master/examples/operations/multinode-HA)example.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -75825,7 +78557,7 @@ The resolution logic is as follows:
 - When language is implicitly detected 
   - Select the last specified model with the detected language. If not available, try “un” and then “en” languages. Fail if none are available.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -75975,8 +78707,12 @@ The resolution logic is as follows:
 
 ###### Linguistics and text processing
 
-- [Linguistics](/en/linguistics/linguistics.html)
-- [Lucene linguistics](/en/linguistics/lucene-linguistics.html)
+- Linguistics 
+  - [Linguistics Overview](/en/linguistics/linguistics.html)
+  - [Default (OpenNLP) linguistics](/en/linguistics/linguistics-opennlp.html)
+  - [Lucene linguistics](/en/linguistics/lucene-linguistics.html)
+  - [Custom linguistics](/en/linguistics/linguistics-custom.html)
+
 - [Query rewriting](/en/linguistics/query-rewriting.html)
 - [Troubleshooting character encoding](/en/linguistics/troubleshooting-encoding.html)
 
@@ -76026,6 +78762,7 @@ The resolution logic is as follows:
   - [AWS getting started](/en/operations/enclave/aws-getting-started.html)
   - [AWS architecture](/en/operations/enclave/aws-architecture.html)
   - [Azure getting started](/en/operations/enclave/azure-getting-started.html)
+  - [Azure architecture](/en/operations/enclave/azure-architecture.html)
   - [GCP getting started](/en/operations/enclave/gcp-getting-started.html)
   - [GCP architecture](/en/operations/enclave/gcp-architecture.html)
   - [Log archive](/en/operations/enclave/archive.html)
@@ -76068,6 +78805,17 @@ The resolution logic is as follows:
   - [Container](/en/operations/self-managed/container.html)
   - [Monitoring](/en/operations/self-managed/monitoring.html)
 
+- Kubernetes 
+  - [Vespa on Kubernetes](/en/operations/kubernetes/vespa-on-kubernetes.html)
+  - [Architecture](/en/operations/kubernetes/architecture.html)
+  - [Vespa on Kubernetes](/en/operations/kubernetes/installation.html)
+  - [Lifecycle Operations for Vespa on Kubernetes](/en/operations/kubernetes/operations.html)
+  - [Enable TLS Encryption for Vespa on Kubernetes](/en/operations/kubernetes/tls.html)
+  - [Monitor a Vespa on Kubernetes Deployment](/en/operations/kubernetes/monitoring.html)
+  - [Configure Log Collections](/en/operations/kubernetes/logging.html)
+  - [Configure External Access Layer for Vespa on Kubernetes](/en/operations/kubernetes/ingress.html)
+  - [Provide Custom Overrides](/en/operations/kubernetes/custom-overrides-podtemplate.html)
+
 ###### Security
 
 - [Security overview](/en/security/security.html)
@@ -76089,6 +78837,7 @@ The resolution logic is as follows:
 
 - E-commerce 
   - [Multi-currency filtering](/en/modules/e-commerce/multi-currency-filtering.html)
+  - [Saved search notifications](/en/modules/e-commerce/saved-search.html)
 
 ###### Reference
 
@@ -76215,7 +78964,7 @@ The resolution logic is as follows:
   - [Vespa 8](/en/reference/release-notes/vespa8.html)
   - [Vespa 9 (upcoming)](/en/reference/release-notes/vespa9.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -76472,7 +79221,7 @@ It is easy to change the group topology without service disruption, with a few c
 ```
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -76823,7 +79572,7 @@ vds.idealstate.merge_bucket.done_failed
 ```
  |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -77153,7 +79902,7 @@ content.proton.documentdb.matching.rank_profile.queries
 **Memory usage**:
 - documentdb: _vespa.content.proton.documentdb.memory\_usage.allocated\_bytes.last_
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -77193,7 +79942,7 @@ An example application package can be found at in the[model-evaluation system te
 
 ###### The model evaluation tag
 
-To enable both the REST API and the Java API, add the `model-evaluation` tag inside the [container](../jdisc) clusters where it is needed in [services.xml](../reference/applications/services/services.html):
+To enable both the REST API and the Java API, add the `model-evaluation` tag inside the [container](../applications/containers.html) clusters where it is needed in [services.xml](../reference/applications/services/services.html):
 
 ```
 <container>
@@ -77354,7 +80103,7 @@ ONNX models are evaluated using [ONNX Runtime](https://onnxruntime.ai/). Vespa p
 
 Since stateless model evaluation is based on auto-discovery of models under the`models` directory in the application package, the above would only be needed for models that should not use the default settings, or should run on a GPU.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -77390,7 +80139,7 @@ Note: Using both streaming and indexed mode in the same cluster is discouraged. 
 
 Streaming search uses the same implementation of most features in Vespa, including matching, ranking, grouping and sorting, and mostly supports the same features. A [schema](../basics/schemas.html) used in[indexed mode](../reference/applications/services/content.html#document)can in most cases be used in streaming search without any changes. The following differences however apply:
 
-- Streaming search does not use the [linguistics](../linguistics/linguistics.html) module while feeding documents. Instead, the string fields of each streamed document are [tokenized](../linguistics/linguistics.html#tokenization) and [normalized](../linguistics/linguistics.html#normalization) on the fly as part of performing a search. Query terms are [normalized](../linguistics/linguistics.html#normalization) in the same way. [Stemming](../linguistics/linguistics.html#stemming) is not supported for streaming search. 
+- Streaming search does not use the [linguistics](../linguistics/linguistics.html) module while feeding documents. Instead, the string fields of each streamed document are [tokenized](../linguistics/linguistics-opennlp.html#tokenization) and [normalized](../linguistics/linguistics-opennlp.html#normalization) on the fly as part of performing a search. Query terms are [normalized](../linguistics/linguistics-opennlp.html#normalization) in the same way. [Stemming](../linguistics/linguistics-opennlp.html#stemming) is not supported for streaming search. 
 - Since there are no indexes, the content nodes do not collect term statistics and average field length statistics. 
   - Term significance should be provided by a [global significance model](../ranking/significance#global-significance-model), if [text matching features](../reference/ranking/rank-features.html) that benefit from it are used. This includes among others _[bm25](../ranking/bm25.html)_, _nativeRank_, _nativeFieldMatch_, _nativeProximity_ and _fieldMatch_.
   - If using _bm25_, adjust the [averageFieldLength](../reference/ranking/rank-feature-configuration.html#properties) configuration for a more precise _bm25_ score.
@@ -77531,7 +80280,7 @@ For better control of memory usage, use direct IO for reads when[document store 
           <store>\<cache\>\<maxsize\>1073741824\</maxsize\>\</cache\>
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -77614,7 +80363,7 @@ email_struct = Struct(name="email", fields=[
     schema.document.add_structs(email_struct)
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -77649,7 +80398,7 @@ Tenants in trial are auto-expired once trial is completed. Move to a paid plan t
 
 It is not possible to auto-migrate applications and data between tenants. To move an application to a new tenant, re-deploy the application with the new tenant name, see [cloning applications and data](../cloud/cloning-applications-and-data).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -77917,7 +80666,7 @@ schema example {
 
 See also a runnable example in this [tensor playground example](https://docs.vespa.ai/playground/#N4KABGBEBmkFxgNrgmUrWQPYAd5QFNIAaFDSPBdDTAO30gFsBPAfQAsBLAc3dYBNOjVgDcCAYwAuWAE4kyNSEQSRJBWgGdZAHmgAbLAENJAPgAUAD0QBGAEwBdAJRwbxW8QDMxACzEArMQAbMQA7MQAHMQAnMTWAAyx1rEOkAoQAL4K6aQY1OS4DEQ5ipRoaXQM0JwyGpKsgQJCGqxY0KwsHDx8gsJiUrLyNJjKUGqaspaIgU5mHVy8jb0S0jLAFnCWjumOqUOZGNkKeZgFKkXlFPjH5PQqtLKMhnqcAF7nQxBKDHq2rPcyj2ebzMVRqdQaPWarXabHm3SEomWsmIYAsO3K+1QmPsIHSQA).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -78283,7 +81032,7 @@ See also:
 - The [Tensor Java API](https://javadoc.io/doc/com.yahoo.vespa/vespajlib/latest/com/yahoo/tensor/Tensor.html).
 - [Tensor ranking performance](../performance/feature-tuning.html#tensor-ranking).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -78373,7 +81122,7 @@ schema msmarco {
     }
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -78513,7 +81262,7 @@ Sometimes a new feature requires [incompatible changes to a data field](../refer
 
 One way to reduce the need for incompatible changes can be decreased by making the semantics of the fields more precise. E.g., if a field is defined as the "quality" of a document, where a higher number means higher quality, a new algorithm which produces a different range and distribution will typically be an incompatible change. However, if the field is defined more precisely as the average time spent on the document once it is clicked, then a new algorithm which produces better estimates of this value will not be an incompatible change. Using precise semantics also have the advantage of making it easier to understand if the use of the data and its statistical properties are reasonable.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -78730,7 +81479,7 @@ $ vespa query 'select * from music where album contains ({maxEditDistance: 1}fuz
 
 Fuzzy matching is great for misspellings. See use of _prefixLength_ and _fast-search_ in the [reference](../reference/querying/yql.html#fuzzy).
 
-Character [normalization](../linguistics/linguistics.html#normalization) is not performed for fuzzy matches.
+Character [normalization](../linguistics/linguistics-opennlp.html#normalization) is not performed for fuzzy matches.
 
 ###### Fuzzy prefix match
 
@@ -78770,7 +81519,7 @@ A substring search:
 $ vespa query 'select * from music where album matches "head"'
 ```
 
-Character [normalization](../linguistics/linguistics.html#normalization) is not performed for regular expression matches.
+Character [normalization](../linguistics/linguistics-opennlp.html#normalization) is not performed for regular expression matches.
 
 ##### N-Gram match
 
@@ -78814,7 +81563,7 @@ Alternatives for matching with spell checking:
 
 3. will give the cheapest queries and exact control over misspelled matching, but a larger index, more work for the developer, and adjusting spell correction becomes more complicated. 1. will be most expensive, but maybe also most convenient There are currently no rank signals giving you the match quality. 2. Is in between, and will probably work best when incorporating ranking signals that use proximity (such as e.g. [nativeRank](../ranking/nativerank.html) but not [bm25](../ranking/bm25.html)).
 
-Read [Simplify Search with Multilingual Embedding Models](https://blog.vespa.ai/simplify-search-with-multilingual-embeddings) for semantic matching and ranking.
+Read [Simplify Search with Multilingual Embedding Models](https://blog.vespa.ai/simplify-search-with-multilingual-embeddings/) for semantic matching and ranking.
 
 ##### Query Trace
 
@@ -78867,7 +81616,7 @@ ilscript[0].content[2] "clear_state | guard { input year | summary year | attrib
 ilscript[0].content[3] "clear_state | guard { input category_scores | summary category_scores | attribute category_scores; }"
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -78999,7 +81748,7 @@ Migrating from one topology to another is easy, as Vespa Cloud will auto-migrate
 
 Documents are fed to Vespa Cloud using the[\<document-api\>](../reference/api/document-v1.html#configuration) endpoint. This means one Vespa Container node forwards document writes to all the replicas in parallel. As all groups have a replica, adding a group will not add feed _latency_ in theory due to the parallelism. However, there will be an increase in practice as more nodes mean more latency variation, and the slowest node sets the end latency.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -79067,7 +81816,7 @@ Also, remember Windows 1252 is _not_ the same as ISO-8859-1.
 
 Use proper JSON - a common error is not stripping ASCII control characters from feed data. See [stripInvalidCharacters](https://github.com/vespa-engine/vespa/blob/master/vespajlib/src/main/java/com/yahoo/text/Text.java) for a utility function.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -79237,7 +81986,7 @@ public class DemoTest {
 }
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -79291,7 +82040,7 @@ public class MyRequestHandler extends ThreadedHttpRequestHandler {
 }
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -79359,7 +82108,7 @@ $ VESPA_USE_VALGRIND="vespa-proton" VESPA_VALGRIND_OPT="--tool=callgrind --simul
 
 Remember to stop Vespa - the callgrind.\* files are not generated until the program stops.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -79436,7 +82185,7 @@ Read more on selecting the optimal type:
 
 Vectors are often some hundred numbers long, like 768 or 384. A longer vector can hold more information, but some dimensions are more information-rich than others. If most of the values in a dimension are equal or very close to each other, the dimension has little value and can be eliminated:
 
-- [Dimension reduction using Principal Component Analysis (PCA)](https://blog.vespa.ai/building-billion-scale-vector-search-part-two#dimension-reduction-using-principal-component-analysis-pca)
+- [Dimension reduction using Principal Component Analysis (PCA)](https://blog.vespa.ai/building-billion-scale-vector-search-part-two/#dimension-reduction-using-principal-component-analysis-pca)
 
 A better approach is often to use an ML model with the optimal size from the start for the use case, once found.
 
@@ -79462,7 +82211,7 @@ There are ways to approximate this by doing fewer calculations, and still findin
 
 Note that ANNs require some kind of indexing to speed up search, so inserts (adding a new vector) are more expensive (uses more CPU) and takes more space (memory and disk). When evaluating different kinds of ANN indexing, consider if your use case requires updates, including deletes, to the vectors - Vespa supports all.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -79501,6 +82250,17 @@ To learn the basics on how to use Vespa CLI, see the [quick start guide](../basi
 
 See the [reference documentation](../reference/clients/vespa-cli/vespa) for documentation of individual Vespa CLI commands and their options. This documentation is also bundled with CLI and accessible through `vespa help
   <command>` or `man vespa-<command>`.
+
+MTLS keypair location:
+
+```
+$ ls -l .vespa/mytenant.myapp.default/
+total 16
+-rw-r--r-- 1 name staff 3273 Nov 7 08:02 data-plane-private-key.pem
+-rw-r--r-- 1 name staff 1697 Nov 7 08:02 data-plane-public-cert.pem
+```
+
+The `.vespa` directory should be in the home directory or cwd. Remember to run `vespa config set target cloud` for Vespa Cloud endpoints.
 
 ##### Cheat sheet
 
@@ -79696,7 +82456,7 @@ Example query file:
 ```
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -79784,7 +82544,7 @@ Add _vespa-feed-client_ as dependency to your Maven (or other build system using
 <dependency>
     <groupId>com.yahoo.vespa</groupId>
     <artifactId>vespa-feed-client</artifactId>
-    <version>8.617.12</version>
+    <version>8.634.24</version>
 </dependency>
 ```
 
@@ -79817,7 +82577,7 @@ $ vespa-feed-client \
   --endpoint http://container-endpoint:8080/
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -79852,10 +82612,7 @@ Use it on Vespa instances running locally, remotely or in Vespa Cloud - use a to
 
 $ export VESPA\_CLI\_DATA\_PLANE\_TOKEN='value-of-token'
 
-To get started, see the following quick start guides:
-
-- Local Vespa instance: [https://docs.vespa.ai/en/vespa-quick-start.html](https://docs.vespa.ai/en/vespa-quick-start.html)
-- Vespa Cloud: [https://docs.vespa.ai/en/cloud/getting-started.html](https://docs.vespa.ai/en/cloud/getting-started.html)
+To get started, follow [https://docs.vespa.ai/en/basics/deploy-an-application.html](https://docs.vespa.ai/en/basics/deploy-an-application.html)
 
 The complete Vespa documentation is available at https://docs.vespa.ai.
 
@@ -79899,7 +82656,7 @@ vespa [flags]
 - [vespa version](vespa_version.html) - Show current CLI version and check for updates
 - [vespa visit](vespa_visit.html) - Retrieve and print all documents from Vespa
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -79941,7 +82698,7 @@ vespa activate [flags]
 
 - [vespa](vespa.html) - The command-line tool for Vespa.ai
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -79991,7 +82748,7 @@ vespa auth [flags]
 - [vespa auth logout](vespa_auth_logout.html) - Sign out of Vespa Cloud
 - [vespa auth show](vespa_auth_show.html) - Show authenticated user
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -80038,7 +82795,7 @@ export VESPA_CLI_API_KEY_FILE=/path/to/api-key
 
 Note that when overriding the developer key through environment variables, that key will always be used. It's not possible to specify a tenant-specific key through the environment.
 
-See [https://docs.vespa.ai/en/cloud/security/guide.html](https://docs.vespa.ai/en/cloud/security/guide.html) for more details about developer keys.
+See [https://docs.vespa.ai/en/security/guide.html](https://docs.vespa.ai/en/security/guide.html) for more details about developer keys.
 
 ```
 vespa auth api-key [flags]
@@ -80073,7 +82830,7 @@ $ vespa auth api-key -a my-tenant.my-app.my-instance
 
 - [vespa auth](vespa_auth.html) - Manage Vespa Cloud credentials
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -80105,7 +82862,7 @@ The private key and certificate will be stored in the Vespa CLI home directory (
 
 It's possible to override the private key and certificate used through environment variables. This can be useful in continuous integration systems.
 
-It's also possible override the CA certificate which can be useful when using self-signed certificates with a self-hosted Vespa service. See [https://docs.vespa.ai/en/operations-selfhosted/mtls.html](https://docs.vespa.ai/en/operations-selfhosted/mtls.html) for more information.
+It's also possible override the CA certificate which can be useful when using self-signed certificates with a self-hosted Vespa service. See [https://docs.vespa.ai/en/security/mtls.html](https://docs.vespa.ai/en/security/mtls.html) for more information.
 
 Example of setting the CA certificate, certificate and key in-line:
 
@@ -80131,7 +82888,7 @@ export VESPA_CLI_DATA_PLANE_TRUST_ALL=true
 
 Note that when overriding key pair through environment variables, that key pair will always be used for all applications. It's not possible to specify an application-specific key.
 
-See [https://docs.vespa.ai/en/cloud/security/guide.html](https://docs.vespa.ai/en/cloud/security/guide.html) for more details.
+See [https://docs.vespa.ai/en/security/guide.html](https://docs.vespa.ai/en/security/guide.html) for more details.
 
 ```
 vespa auth cert [flags]
@@ -80170,7 +82927,7 @@ $ vespa auth cert -a my-tenant.my-app.my-instance path/to/application/package
 - [vespa auth](vespa_auth.html) - Manage Vespa Cloud credentials
 - [vespa auth cert add](vespa_auth_cert_add.html) - Add certificate to application package
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -80236,7 +82993,7 @@ $ vespa auth cert add -a my-tenant.my-app.my-instance path/to/application/packag
 
 - [vespa auth cert](vespa_auth_cert.html) - Create a new self-signed certificate for authentication with Vespa Cloud data plane
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -80301,7 +83058,7 @@ $ vespa auth login
 
 - [vespa auth](vespa_auth.html) - Manage Vespa Cloud credentials
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -80357,7 +83114,7 @@ $ vespa auth logout
 
 - [vespa auth](vespa_auth.html) - Manage Vespa Cloud credentials
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -80416,7 +83173,7 @@ $ vespa auth show
 
 - [vespa auth](vespa_auth.html) - Manage Vespa Cloud credentials
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -80482,7 +83239,7 @@ $ vespa clone album-recommendation my-app
 
 - [vespa](vespa.html) - The command-line tool for Vespa.ai
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -80536,7 +83293,7 @@ Generate the autocompletion script for vespa for the specified shell. See each s
 - [vespa completion powershell](vespa_completion_powershell.html) - Generate the autocompletion script for powershell
 - [vespa completion zsh](vespa_completion_zsh.html) - Generate the autocompletion script for zsh
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -80614,7 +83371,7 @@ vespa completion bash
 
 - [vespa completion](vespa_completion.html) - Generate the autocompletion script for the specified shell
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -80682,7 +83439,7 @@ vespa completion fish [flags]
 
 - [vespa completion](vespa_completion.html) - Generate the autocompletion script for the specified shell
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -80744,7 +83501,7 @@ vespa completion powershell [flags]
 
 - [vespa completion](vespa_completion.html) - Generate the autocompletion script for the specified shell
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -80826,7 +83583,7 @@ vespa completion zsh [flags]
 
 - [vespa completion](vespa_completion.html) - Generate the autocompletion script for the specified shell
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -80870,11 +83627,11 @@ The following global flags/options can be configured:
 
 application
 
-Specifies the application ID to manage. It has three parts, separated by dots, with the third part being optional. If the third part is omitted it defaults to "default". This is only relevant for the "cloud" and "hosted" targets. See [https://docs.vespa.ai/en/cloud/tenant-apps-instances.html](https://docs.vespa.ai/en/cloud/tenant-apps-instances.html) for more details. This has no default value. Examples: tenant1.app1, tenant1.app1.instance1
+Specifies the application ID to manage. It has three parts, separated by dots, with the third part being optional. If the third part is omitted it defaults to "default". This is only relevant for the "cloud" and "hosted" targets. See [https://docs.vespa.ai/en/learn/tenant-apps-instances.html](https://docs.vespa.ai/en/learn/tenant-apps-instances.html) for more details. This has no default value. Examples: tenant1.app1, tenant1.app1.instance1
 
 cluster
 
-Specifies the container cluster to manage. If left empty (default) and the application has only one container cluster, that cluster is chosen automatically. When an application has multiple cluster this must specify a valid cluster name, as specified in services.xml. See[https://docs.vespa.ai/en/reference/services-container.html](https://docs.vespa.ai/en/reference/services-container.html) for more details.
+Specifies the container cluster to manage. If left empty (default) and the application has only one container cluster, that cluster is chosen automatically. When an application has multiple cluster this must specify a valid cluster name, as specified in services.xml. See[https://docs.vespa.ai/en/reference/applications/services/container.html](https://docs.vespa.ai/en/reference/applications/services/container.html) for more details.
 
 color
 
@@ -80901,7 +83658,7 @@ Authentication is configured automatically for the cloud and hosted targets. To 
 
 zone
 
-Specifies a custom zone to use when connecting to a Vespa Cloud application. This is only relevant for cloud and hosted targets and defaults to a dev zone. See [https://docs.vespa.ai/en/cloud/zones.html](https://docs.vespa.ai/en/cloud/zones.html) for available zones. Examples: dev.aws-us-east-1c, dev.gcp-us-central1-f
+Specifies a custom zone to use when connecting to a Vespa Cloud application. This is only relevant for cloud and hosted targets and defaults to a dev zone. See [https://docs.vespa.ai/en/operations/zones.html](https://docs.vespa.ai/en/operations/zones.html) for available zones. Examples: dev.aws-us-east-1c, dev.gcp-us-central1-f
 
 ```
 vespa config [flags]
@@ -80932,7 +83689,7 @@ vespa config [flags]
 - [vespa config set](vespa_config_set.html) - Set a configuration option.
 - [vespa config unset](vespa_config_unset.html) - Unset a configuration option.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -80996,7 +83753,7 @@ $ vespa config get --local
 
 - [vespa config](vespa_config.html) - Manage persistent values for global flags
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -81066,7 +83823,7 @@ $ vespa config set --local zone dev.aws-us-east-1c
 
 - [vespa config](vespa_config.html) - Manage persistent values for global flags
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -81132,7 +83889,7 @@ $ vespa config unset --local application
 
 - [vespa config](vespa_config.html) - Manage persistent values for global flags
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -81200,7 +83957,7 @@ $ vespa curl -- -v --data-urlencode "yql=select * from music where album contain
 
 - [vespa](vespa.html) - The command-line tool for Vespa.ai
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -81228,7 +83985,7 @@ Deploy (prepare and activate) an application package
 
 Deploy (prepare and activate) an application package.
 
-An application package defines a deployable Vespa application. See[https://docs.vespa.ai/en/reference/application-packages-reference.html](https://docs.vespa.ai/en/reference/application-packages-reference.html) for details about the files contained in this package.
+An application package defines a deployable Vespa application. See[https://docs.vespa.ai/en/reference/applications/application-packages.html](https://docs.vespa.ai/en/reference/applications/application-packages.html) for details about the files contained in this package.
 
 To get started, 'vespa clone' can be used to download a sample application.
 
@@ -81277,7 +84034,7 @@ $ vespa deploy -t cloud -z dev.gcp-us-central1-f
 
 - [vespa](vespa.html) - The command-line tool for Vespa.ai
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -81309,7 +84066,7 @@ This command removes the currently deployed application and permanently deletes 
 
 When run interactively, the command will prompt for confirmation before removing the application. When run non-interactively, the command will refuse to remove the application unless the –force option is given.
 
-This command can only be used to remove non-production deployments, in Vespa Cloud. See [https://docs.vespa.ai/en/cloud/deleting-applications.html](https://docs.vespa.ai/en/cloud/deleting-applications.html) for how to remove production deployments.
+This command can only be used to remove non-production deployments, in Vespa Cloud. See [https://docs.vespa.ai/en/operations/deleting-applications.html](https://docs.vespa.ai/en/operations/deleting-applications.html) for how to remove production deployments.
 
 For other systems, destroy the application by removing the containers in use by the application. For example: https://github.com/vespa-engine/sample-apps/tree/master/examples/operations/multinode-HA#clean-up-after-testing
 
@@ -81348,7 +84105,7 @@ $ vespa destroy --force
 
 - [vespa](vespa.html) - The command-line tool for Vespa.ai
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -81376,11 +84133,11 @@ Issue a single document operation to Vespa
 
 Issue a single document operation to Vespa.
 
-The operation must be on the format documented in[https://docs.vespa.ai/en/reference/document-json-format.html#document-operations](https://docs.vespa.ai/en/reference/document-json-format.html#document-operations)
+The operation must be on the format documented in[https://docs.vespa.ai/en/reference/schemas/document-json-format.html#document-operations](https://docs.vespa.ai/en/reference/schemas/document-json-format.html#document-operations)
 
 When this returns successfully, the document is guaranteed to be visible in any subsequent get or query operation.
 
-To feed with high throughput, [https://docs.vespa.ai/en/reference/vespa-cli/vespa\_feed.html](https://docs.vespa.ai/en/reference/vespa-cli/vespa_feed.html)should be used instead of this.
+To feed with high throughput, [https://docs.vespa.ai/en/reference/clients/vespa-cli/vespa\_feed.html](https://docs.vespa.ai/en/reference/clients/vespa-cli/vespa_feed.html)should be used instead of this.
 
 ```
 vespa document json-file [flags]
@@ -81423,7 +84180,7 @@ $ vespa document src/test/resources/A-Head-Full-of-Dreams.json
 - [vespa document remove](vespa_document_remove.html) - Removes a document from Vespa
 - [vespa document update](vespa_document_update.html) - Modifies some fields of an existing document
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -81487,7 +84244,7 @@ $ vespa document get id:mynamespace:music::song-1 id:mynamespace:music::song-2
 
 - [vespa document](vespa_document.html) - Issue a single document operation to Vespa
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -81555,7 +84312,7 @@ $ vespa document put id:mynamespace:music::a-head-full-of-dreams --data '{"field
 
 - [vespa document](vespa_document.html) - Issue a single document operation to Vespa
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -81621,7 +84378,7 @@ $ vespa document remove id:mynamespace:music::a-head-full-of-dreams
 
 - [vespa document](vespa_document.html) - Issue a single document operation to Vespa
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -81687,7 +84444,7 @@ $ vespa document update id:mynamespace:music::a-head-full-of-dreams src/test/res
 
 - [vespa document](vespa_document.html) - Issue a single document operation to Vespa
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -81788,7 +84545,7 @@ $ cat docs.jsonl | vespa feed -
 
 - [vespa](vespa.html) - The command-line tool for Vespa.ai
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -81852,7 +84609,7 @@ $ vespa fetch -t cloud mycloudapp.zip
 
 - [vespa](vespa.html) - The command-line tool for Vespa.ai
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -81903,7 +84660,7 @@ Provides subcommands to inspect various things in more detail
 - [vespa](vespa.html) - The command-line tool for Vespa.ai
 - [vespa inspect profile](vespa_inspect_profile.html) - Inspect profiling results
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -81959,7 +84716,7 @@ vespa inspect profile [flags]
 
 - [vespa inspect](vespa_inspect.html) - Provides insight
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -82030,7 +84787,7 @@ $ vespa log --follow
 
 - [vespa](vespa.html) - The command-line tool for Vespa.ai
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -82081,7 +84838,7 @@ vespa prepare [application-directory-or-file] [flags]
 
 - [vespa](vespa.html) - The command-line tool for Vespa.ai
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -82137,7 +84894,7 @@ $ vespa prod deploy
 - [vespa prod deploy](vespa_prod_deploy.html) - Deploy an application to production
 - [vespa prod init](vespa_prod_init.html) - Modify service.xml and deployment.xml for production deployment
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -82169,7 +84926,7 @@ This commands uploads an application package to Vespa Cloud and deploys it to th
 
 Nodes are allocated to the application according to resources specified in services.xml.
 
-For more information about production deployments in Vespa Cloud see:[https://docs.vespa.ai/en/cloud/production-deployment.html](https://docs.vespa.ai/en/cloud/production-deployment.html)[https://docs.vespa.ai/en/cloud/automated-deployments.html](https://docs.vespa.ai/en/cloud/automated-deployments.html)
+For more information about production deployments in Vespa Cloud see:[https://docs.vespa.ai/en/operations/production-deployment.html](https://docs.vespa.ai/en/operations/production-deployment.html)[https://docs.vespa.ai/en/operations/automated-deployments.html](https://docs.vespa.ai/en/operations/automated-deployments.html)
 
 ```
 vespa prod deploy [application-directory-or-file] [flags]
@@ -82210,7 +84967,7 @@ $ vespa prod deploy
 
 - [vespa prod](vespa_prod.html) - Deploy an application package to production in Vespa Cloud
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -82240,7 +84997,7 @@ Modify service.xml and deployment.xml for production deployment.
 
 Only basic deployment configuration is available through this command. For advanced configuration see the relevant Vespa Cloud documentation and make changes to deployment.xml and services.xml directly.
 
-Reference:[https://docs.vespa.ai/en/reference/services.html](https://docs.vespa.ai/en/reference/services.html)[https://docs.vespa.ai/en/reference/deployment.html](https://docs.vespa.ai/en/reference/deployment.html)
+Reference:[https://docs.vespa.ai/en/reference/applications/services/services.html](https://docs.vespa.ai/en/reference/applications/services/services.html)[https://docs.vespa.ai/en/reference/applications/deployment.html](https://docs.vespa.ai/en/reference/applications/deployment.html)
 
 ```
 vespa prod init [flags]
@@ -82268,7 +85025,7 @@ vespa prod init [flags]
 
 - [vespa prod](vespa_prod.html) - Deploy an application package to production in Vespa Cloud
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -82295,7 +85052,7 @@ Issue a query to Vespa
 
 Issue a query to Vespa.
 
-Any parameter from [https://docs.vespa.ai/en/reference/query-api-reference.html](https://docs.vespa.ai/en/reference/query-api-reference.html)can be set by the syntax [parameter-name]=[value].
+Any parameter from [https://docs.vespa.ai/en/reference/api/query.html](https://docs.vespa.ai/en/reference/api/query.html)can be set by the syntax [parameter-name]=[value].
 
 ```
 vespa query query-parameters [flags]
@@ -82338,7 +85095,7 @@ $ vespa query --header='X-First-Name: Joe' 'yql=select * from music where album 
 
 - [vespa](vespa.html) - The command-line tool for Vespa.ai
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -82407,7 +85164,7 @@ $ vepsa status --format plain --cluster mycluster
 - [vespa status deploy](vespa_status_deploy.html) - Show status of the Vespa deploy service
 - [vespa status deployment](vespa_status_deployment.html) - Show status of a Vespa deployment
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -82465,7 +85222,7 @@ $ vespa status deploy
 
 - [vespa status](vespa_status.html) - Show Vespa endpoints and status
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -82531,7 +85288,7 @@ $ vespa status deployment -t local [session-id] --wait 600
 
 - [vespa status](vespa_status.html) - Show Vespa endpoints and status
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -82644,7 +85401,7 @@ $ vespa status document
 
 - [vespa status](vespa_status.html) - Verify that a service is ready to use (query by default)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -82756,7 +85513,7 @@ $ vespa status query
 
 - [vespa status](vespa_status.html) - Verify that a service is ready to use (query by default)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -82785,7 +85542,7 @@ Run a test suite, or a single test
 
 Runs all JSON test files in the specified directory, or the single JSON test file specified.
 
-See [https://docs.vespa.ai/en/reference/testing.html](https://docs.vespa.ai/en/reference/testing.html) for details.
+See [https://docs.vespa.ai/en/reference/applications/testing.html](https://docs.vespa.ai/en/reference/applications/testing.html) for details.
 
 ```
 vespa test test-directory-or-file [flags]
@@ -82821,7 +85578,7 @@ $ vespa test src/test/application/tests/system-test/feed-and-query.json
 
 - [vespa](vespa.html) - The command-line tool for Vespa.ai
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -82872,7 +85629,7 @@ vespa version [flags]
 
 - [vespa](vespa.html) - The command-line tool for Vespa.ai
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -82943,7 +85700,7 @@ $ vespa visit --field-set "[id]" # list document IDs
 
 - [vespa](vespa.html) - The command-line tool for Vespa.ai
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -82965,7 +85722,7 @@ These notes documents the changes between Vespa major versions 6 and 7.
 
  
 
-These notes documents the changes between Vespa major versions 6 and 7. As documented in [Vespa versions](https://vespa.ai/releases#versions), major versions are used to mark breaking compatibility, not to release significant new functionality (which instead happens on minor versions). However, even on major versions, compatibility is broken only in two specific ways: **Changes to defaults** means that applications may need to set some option explicitly to preserve earlier behavior, and **removal of deprecated functionality** means that applications _which use functionality that has earlier been deprecated_ need to change to keep working.
+These notes documents the changes between Vespa major versions 6 and 7. As documented in [Vespa versions](../../learn/releases.html#versions), major versions are used to mark breaking compatibility, not to release significant new functionality (which instead happens on minor versions). However, even on major versions, compatibility is broken only in two specific ways: **Changes to defaults** means that applications may need to set some option explicitly to preserve earlier behavior, and **removal of deprecated functionality** means that applications _which use functionality that has earlier been deprecated_ need to change to keep working.
 
 Most deprecated functionality causes warning during compilation (Java API deprecations) or deployment (application package deprecations), however with web service APIs there is no way to emit deprecation warnings, and we have to rely on marking these as deprecated in the documentation.
 
@@ -83203,7 +85960,7 @@ The following metrics are renamed:
 
 Vespa will not any longer implicitly load the "search" components" in containers which load the "document-api" components. If your application depends on "search" functionality in a container specifying the `<document-api>` tag in services.xml, make sure this container also specifies the `<search>` tag.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -83343,7 +86100,7 @@ to:
 }
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -83354,7 +86111,7 @@ This document lists the changes between Vespa major versions 7 and 8.
 
  
 
-This document lists the changes between Vespa major versions 7 and 8. As documented in [Vespa versions](https://vespa.ai/releases#versions), new functionality in Vespa is introduced in minor versions, while major versions are used to mark releases breaking compatibility. As Vespa 8 does not introduce any new functionality, it is as safe and mature as the versions of Vespa 7 preceding it. No further releases will be made of Vespa 7, except possible critical security fixes.
+This document lists the changes between Vespa major versions 7 and 8. As documented in [Vespa versions](../../learn/releases.html#versions), new functionality in Vespa is introduced in minor versions, while major versions are used to mark releases breaking compatibility. As Vespa 8 does not introduce any new functionality, it is as safe and mature as the versions of Vespa 7 preceding it. No further releases will be made of Vespa 7, except possible critical security fixes.
 
 ##### Overview
 
@@ -83827,7 +86584,7 @@ $ vespa-configproxy-cmd -m setmode memorycache
 $[vespa deploy](/en/clients/vespa-cli.html#deployment)
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -84044,7 +86801,7 @@ Vespa can calculate and return all [rank-features](../api/query.html#ranking.lis
 
 See [upgrade procedure](/en/operations/self-managed/live-upgrade.html) for how to upgrade.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -84121,7 +86878,7 @@ The `.vespaignore` format is a subset of the `.gitignore` format, where:
 
 Complex rules, such as negated patterns and recursive globbing (`**`) are not supported.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -84438,7 +87195,7 @@ Check [multinode-HA](https://github.com/vespa-engine/sample-apps/tree/master/exa
 
 Another source of this error can be an unresponsive container instance, e.g. during overload.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -84649,7 +87406,7 @@ The [rawScore](../reference/ranking/rank-features.html#rawScore(field)) ranking 
 
 In this example, the inner product score is 41, and the bm25 of the text is 35.003.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -84704,9 +87461,9 @@ public class DemoHandler extends com.yahoo.container.jdisc.ThreadedHttpRequestHa
 
 ##### Accessing the HTTP request
 
-Custom [request handlers](request-handlers.html), are given a[com.yahoo.container.jdisc.HttpRequest](https://javadoc.io/doc/com.yahoo.vespa/container-core/latest/com/yahoo/container/jdisc/HttpRequest.html), with direct access to associated properties and request data.
+Custom [request handlers](request-handlers.html), are given a[com.yahoo.container.jdisc.HttpRequest](https://javadoc.io/doc/com.yahoo.vespa/container-disc/latest/com/yahoo/container/jdisc/HttpRequest.html), with direct access to associated properties and request data.
 
-In [Processing](processing.html), the Processors are given a [com.yahoo.processing.Request](https://javadoc.io/doc/com.yahoo.vespa/container-core/latest/com/yahoo/processing/Request.html)containing the HTTP URL parameters:
+In [Processing](processing.html), the Processors are given a [com.yahoo.processing.Request](https://javadoc.io/doc/com.yahoo.vespa/container-disc/latest/com/yahoo/processing/Request.html)containing the HTTP URL parameters:
 
 ```
 // url parameters are added to properties
@@ -84798,7 +87555,7 @@ This is the right way since it ties that execution to the one you're in.
 
 One hence cannot execute a search chain from the search chain component constructor to e.g. refresh a cache. It is impossible since the search chains can't be constructed until this constructor returns. An alternative is to extract the refreshing into a separate component which has both the client and execution factory injected into it.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -84832,7 +87589,7 @@ The _Vespa basics_ articles introduces the central concepts in Vespa, but can't 
 
 Read more in the full [features](../learn/features.html) list.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 
@@ -85037,7 +87794,7 @@ Vespa is released up to 4 times a week, and we strive to keep all applications a
 
 Any unexpected production issue, including security incidents, is handled through our incident management process. Non-security incidents are announced through our console. Security incidents are communicated directly to affected customers. A post-mortem review process is initiated after every incident. In the event of a potential security breach, a forensic investigation is conducted.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -85305,7 +88062,7 @@ schema docs {
 
 With this, we can use the powerful ranking framework in Vespa to select the best chunks to provide to the LLM, without sending any chunks that won't be used over the network.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -85327,6 +88084,8 @@ Vespa supports importing Gradient Boosting Decision Tree (GBDT) models trained w
  
 
 Vespa supports importing Gradient Boosting Decision Tree (GBDT) models trained with XGBoost.
+
+ **Warning:** Vespa only supports XGBoost models trained with XGBoost version 1.5 or earlier. Using models trained with later versions of XGBoost may result in prediction mismatches between Vespa and XGBoost's native predict functions.
 
 ##### Exporting models from XGBoost
 
@@ -85474,7 +88233,7 @@ schema xgboost {
 - It's also important to use the highest possible precision when reading Vespa features for training as Vespa outputs features using `double` precision. If the training routine rounds features to `float` or other more compact floating number representations, feature split decisions might differ in Vespa versus XGboost.
 - In a distributed setting when multiple nodes uses the model, text matching features such as `nativeRank`, `nativFieldMatch`, `bm25` and `fieldMatch`might differ, depending on which node produced the hit. The reason is that all these features use [term(n).significance](../reference/ranking/rank-features.html#query-features), which is computed locally indexed corpus. The `term(n).significance` feature is related to _Inverse Document Frequency (IDF)_. The `term(n).significance` should be set by a searcher in the container for global correctness as each node will estimate the significance values from the local corpus.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ###### On this page:
 
@@ -85502,49 +88261,49 @@ If an application requires zone-specific configuration (e.g., different capacity
 
 `dev` zones for development and performance testing:
 
-| Environment | Default | Region |
-| --- | --- | --- |
-| [dev](environments.html#dev) | Yes | aws-us-east-1c |
-| [dev](environments.html#dev) | No | aws-euw1-az1 |
-| [dev](environments.html#dev) | No | azure-eastus-az1 |
-| [dev](environments.html#dev) | No | gcp-us-central1-f |
+| Environment | Default | Region | AWS Zone ID |
+| --- | --- | --- | --- |
+| [dev](environments.html#dev) | Yes | aws-us-east-1c | use1-az6 |
+| [dev](environments.html#dev) | No | aws-euw1-az1 | euw1-az1 |
+| [dev](environments.html#dev) | No | azure-eastus-az1 | |
+| [dev](environments.html#dev) | No | gcp-us-central1-f | |
 
 `prod` zones for production serving, with a [CD pipeline](automated-deployments.html):
 
-| Environment | Region |
-| --- | --- |
-| [prod](environments.html#prod) | aws-us-east-1c |
-| [prod](environments.html#prod) | aws-use1-az4 |
-| [prod](environments.html#prod) | aws-use2-az1 |
-| [prod](environments.html#prod) | aws-use2-az3 |
-| [prod](environments.html#prod) | aws-us-west-2a |
-| [prod](environments.html#prod) | aws-usw2-az3 |
-| [prod](environments.html#prod) | aws-eu-west-1a |
-| [prod](environments.html#prod) | aws-euw1-az1 |
-| [prod](environments.html#prod) | aws-euc1-az1 |
-| [prod](environments.html#prod) | aws-euc1-az3 |
-| [prod](environments.html#prod) | aws-cac1-az1 |
-| [prod](environments.html#prod) | aws-cac1-az2 |
-| [prod](environments.html#prod) | aws-ap-northeast-1a |
-| [prod](environments.html#prod) | aws-apne1-az1 |
-| [prod](environments.html#prod) | gcp-europe-west3-b |
-| [prod](environments.html#prod) | gcp-us-central1-a |
-| [prod](environments.html#prod) | gcp-us-central1-b |
-| [prod](environments.html#prod) | gcp-us-central1-c |
-| [prod](environments.html#prod) | gcp-us-central1-f |
+| Environment | Region | AWS Zone ID |
+| --- | --- | --- |
+| [prod](environments.html#prod) | aws-us-east-1c | use1-az6 |
+| [prod](environments.html#prod) | aws-use1-az4 | use1-az4 |
+| [prod](environments.html#prod) | aws-use2-az1 | use2-az1 |
+| [prod](environments.html#prod) | aws-use2-az3 | use2-az3 |
+| [prod](environments.html#prod) | aws-us-west-2a | usw2-az1 |
+| [prod](environments.html#prod) | aws-usw2-az3 | usw2-az3 |
+| [prod](environments.html#prod) | aws-eu-west-1a | euw1-az2 |
+| [prod](environments.html#prod) | aws-euw1-az1 | euw1-az1 |
+| [prod](environments.html#prod) | aws-euc1-az1 | euc1-az1 |
+| [prod](environments.html#prod) | aws-euc1-az3 | euc1-az3 |
+| [prod](environments.html#prod) | aws-cac1-az1 | cac1-az1 |
+| [prod](environments.html#prod) | aws-cac1-az2 | cac1-az2 |
+| [prod](environments.html#prod) | aws-ap-northeast-1a | apne1-az4 |
+| [prod](environments.html#prod) | aws-apne1-az1 | apne1-az1 |
+| [prod](environments.html#prod) | gcp-europe-west3-b | |
+| [prod](environments.html#prod) | gcp-us-central1-a | |
+| [prod](environments.html#prod) | gcp-us-central1-b | |
+| [prod](environments.html#prod) | gcp-us-central1-c | |
+| [prod](environments.html#prod) | gcp-us-central1-f | |
 
 The `prod` zones use ephemeral instances for system tests and staging tests, running in [test](environments.html#test) and [staging](environments.html#staging) environments. These are internal zones, and never directly deployed to, included here for reference:
 
-| Environment | Region |
-| --- | --- |
-| [test](environments.html#test) | aws-us-east-1c |
-| [test](environments.html#test) | gcp-us-central1-f |
-| [staging](environments.html#staging) | aws-us-east-1c |
-| [staging](environments.html#staging) | gcp-us-central1-f |
+| Environment | Region | AWS Zone ID |
+| --- | --- | --- |
+| [test](environments.html#test) | aws-us-east-1c | use1-az6 |
+| [test](environments.html#test) | gcp-us-central1-f | |
+| [staging](environments.html#staging) | aws-us-east-1c | use1-az6 |
+| [staging](environments.html#staging) | gcp-us-central1-f | |
 
 Contact [Support](https://vespa.ai/support/) to request more zones.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ---
 

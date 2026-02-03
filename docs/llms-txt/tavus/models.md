@@ -1,10 +1,14 @@
 # Source: https://docs.tavus.io/sections/models.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Models
 
 ## Raven: Perception Model
 
-Raven-0 is the first contextual perception system that **enables machines to see, reason, and understand like humans in real-time**, interpreting emotions, body language, and environmental context to enhance conversation.
+Raven is the first contextual perception system that **enables machines to see, reason, and understand like humans in real-time**, interpreting emotions, body language, and environmental context to enhance conversation.
 
 ### Key Features
 
@@ -28,7 +32,7 @@ Raven-0 is the first contextual perception system that **enables machines to see
 
 ## Sparrow: Conversational Turn-Taking Model
 
-Sparrow-0 is a transformer-based model built for **dynamic, natural conversations, understanding tone, rhythm, and subtle cues** to adapt in real time with human-like fluidity.
+Sparrow is a transformer-based model built for **dynamic, natural conversations, understanding tone, rhythm, and subtle cues** to adapt in real time with human-like fluidity.
 
 ### Key Features
 
@@ -52,7 +56,7 @@ Sparrow-0 is a transformer-based model built for **dynamic, natural conversation
 
 ## Phoenix: Replica Rendering Model
 
-Phoenix-3 is built on a Gaussian diffusion model that generates **lifelike digital replicas with natural facial movements, micro-expressions, and real-time emotional responses**.
+Phoenix is built on a Gaussian diffusion model that generates **lifelike digital replicas with natural facial movements, micro-expressions, and real-time emotional responses**.
 
 ### Key Features
 

@@ -1,4 +1,8 @@
-# Source: https://docs.perplexity.ai/guides/api-key-management.md
+# Source: https://docs.perplexity.ai/docs/admin/api-key-management.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # API Key Management
 

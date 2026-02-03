@@ -2,6 +2,8 @@
 
 # Dart (Flutter) SDK Reference
 
+Copy page
+
 [![Star on GitHub](https://img.shields.io/github/stars/configcat/dart-sdk.svg?style=social)](https://github.com/configcat/dart-sdk/stargazers) [![pub package](https://img.shields.io/pub/v/configcat_client.svg)](https://pub.dev/packages/configcat_client) [![Dart CI](https://github.com/configcat/dart-sdk/actions/workflows/dart-ci.yml/badge.svg?branch=main)](https://github.com/configcat/dart-sdk/actions/workflows/dart-ci.yml)
 
 [ConfigCat Dart (Flutter) SDK on GitHub](https://github.com/configcat/dart-sdk)
@@ -13,68 +15,77 @@
 * Dart
 * Flutter
 
-```
+```bash
 dart pub add configcat_client
-```
 
 ```
+
+```bash
 flutter pub add configcat_client
+
 ```
 
 Or put the following directly to your `pubspec.yml` and run `dart pub get` or `flutter pub get`.
 
 pubspec.yml
 
-```
+```yaml
 dependencies:
   configcat_client: ^4.0.0
+
 ```
 
 ### 2. Import the ConfigCat SDK[​](#2-import-the-configcat-sdk "Direct link to 2. Import the ConfigCat SDK")
 
-```
+```dart
 import 'package:configcat_client/configcat_client.dart';
+
 ```
 
 ### 3. Create the *ConfigCat* client with your *SDK Key*[​](#3-create-the-configcat-client-with-your-sdk-key "Direct link to 3-create-the-configcat-client-with-your-sdk-key")
 
-```
+```dart
 final client = ConfigCatClient.get(sdkKey: '#YOUR-SDK-KEY#');
+
 ```
 
 ### 4. (Optional) Set up Flutter caching[​](#4-optional-set-up-flutter-caching "Direct link to 4. (Optional) Set up Flutter caching")
 
 If you're using the SDK in a Flutter application, it's recommended to use the [Flutter Preferences Cache](https://github.com/configcat/flutter-preferences-cache) implementation for caching. It stores the downloaded `config JSON` using the [shared\_preferences](https://pub.dev/packages/shared_preferences) package.
 
-```
+```dart
 import 'package:configcat_preferences_cache/configcat_preferences_cache.dart';
-```
 
 ```
+
+```dart
 final client = ConfigCatClient.get(
     sdkKey: '#YOUR-SDK-KEY#',
     options: ConfigCatOptions(cache: ConfigCatPreferencesCache()));
+
 ```
 
 ### 5. Get your setting value[​](#5-get-your-setting-value "Direct link to 5. Get your setting value")
 
-```
+```dart
 final isMyAwesomeFeatureEnabled = await client.getValue(key: 'isMyAwesomeFeatureEnabled', defaultValue: false);
 if (isMyAwesomeFeatureEnabled) {
     doTheNewThing();
 } else {
     doTheOldThing();
 }
+
 ```
 
 ### 6. Close *ConfigCat* client​[​](#6-close-configcat-client "Direct link to 6-close-configcat-client")
 
 You can safely shut down all clients at once or individually and release all associated resources on application exit.
 
-```
+```dart
 ConfigCatClient.closeAll(); // closes all clients
 
 client.close(); // closes the specific client
+
 ```
 
 ## Setting up the *ConfigCat Client*[​](#setting-up-the-configcat-client "Direct link to setting-up-the-configcat-client")
@@ -91,7 +102,7 @@ client.close(); // closes the specific client
 
 To customize the SDK's behavior, you can pass an additional `ConfigCatOptions` parameter to the `get()` static factory method where the `ConfigCatOptions` class is used to set up the *ConfigCat Client*.
 
-```
+```dart
 final client = ConfigCatClient.get(
     sdkKey: '#YOUR-SDK-KEY#',
     options: ConfigCatOptions(
@@ -99,24 +110,25 @@ final client = ConfigCatClient.get(
         logger: ConfigCatLogger(level: LogLevel.info)
     )
 );
+
 ```
 
 These are the available options on the `ConfigCatOptions` class:
 
-| Properties       | Description                                                                                                                                                                                                                                                                                                                         |
-| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `dataGovernance` | Optional, defaults to `global`. Describes the location of your feature flag and setting data within the ConfigCat CDN. This parameter needs to be in sync with your Data Governance preferences. [More about Data Governance](https://configcat.com/docs/docs/advanced/data-governance/.md). Available options: `global`, `euOnly`. |
-| `baseUrl`        | Optional, sets the CDN base url (forward proxy, dedicated subscription) from where the sdk will download the config JSON.                                                                                                                                                                                                           |
-| `connectTimeout` | Optional, sets the underlying [Dio](https://github.com/flutterchina/dio) HTTP client's connect timeout. [More about the HTTP Client](#httpclient).                                                                                                                                                                                  |
-| `receiveTimeout` | Optional, sets the underlying [Dio](https://github.com/flutterchina/dio) HTTP client's receive timeout. [More about the HTTP Client](#httpclient).                                                                                                                                                                                  |
-| `sendTimeout`    | Optional, sets the underlying [Dio](https://github.com/flutterchina/dio) HTTP client's send timeout. [More about the HTTP Client](#httpclient).                                                                                                                                                                                     |
-| `cache`          | Optional, sets a custom cache implementation for the client. [More about cache](#custom-cache).                                                                                                                                                                                                                                     |
-| `pollingMode`    | Optional, sets the polling mode for the client. [More about polling modes](#polling-modes).                                                                                                                                                                                                                                         |
-| `logger`         | Optional, sets the internal logger and log level. [More about logging](#logging).                                                                                                                                                                                                                                                   |
-| `override`       | Optional, sets local feature flag & setting overrides. [More about feature flag overrides](#flag-overrides).                                                                                                                                                                                                                        |
-| `defaultUser`    | Optional, sets the default user. [More about default user](#default-user).                                                                                                                                                                                                                                                          |
-| `offline`        | Optional, defaults to `false`. Indicates whether the SDK should be initialized in offline mode. [More about offline mode](#online--offline-mode).                                                                                                                                                                                   |
-| `hooks`          | Optional, used to subscribe events that the SDK sends in specific scenarios. [More about hooks](#hooks).                                                                                                                                                                                                                            |
+| Properties       | Description                                                                                                                                                                                                                                                                                                                   |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `dataGovernance` | Optional, defaults to `global`. Describes the location of your feature flag and setting data within the ConfigCat CDN. This parameter needs to be in sync with your Data Governance preferences. [More about Data Governance](https://configcat.com/docs/advanced/data-governance.md). Available options: `global`, `euOnly`. |
+| `baseUrl`        | Optional, sets the CDN base url (forward proxy, dedicated subscription) from where the sdk will download the config JSON.                                                                                                                                                                                                     |
+| `connectTimeout` | Optional, sets the underlying [Dio](https://github.com/flutterchina/dio) HTTP client's connect timeout. [More about the HTTP Client](#httpclient).                                                                                                                                                                            |
+| `receiveTimeout` | Optional, sets the underlying [Dio](https://github.com/flutterchina/dio) HTTP client's receive timeout. [More about the HTTP Client](#httpclient).                                                                                                                                                                            |
+| `sendTimeout`    | Optional, sets the underlying [Dio](https://github.com/flutterchina/dio) HTTP client's send timeout. [More about the HTTP Client](#httpclient).                                                                                                                                                                               |
+| `cache`          | Optional, sets a custom cache implementation for the client. [More about cache](#custom-cache).                                                                                                                                                                                                                               |
+| `pollingMode`    | Optional, sets the polling mode for the client. [More about polling modes](#polling-modes).                                                                                                                                                                                                                                   |
+| `logger`         | Optional, sets the internal logger and log level. [More about logging](#logging).                                                                                                                                                                                                                                             |
+| `override`       | Optional, sets local feature flag & setting overrides. [More about feature flag overrides](#flag-overrides).                                                                                                                                                                                                                  |
+| `defaultUser`    | Optional, sets the default user. [More about default user](#default-user).                                                                                                                                                                                                                                                    |
+| `offline`        | Optional, defaults to `false`. Indicates whether the SDK should be initialized in offline mode. [More about offline mode](#online--offline-mode).                                                                                                                                                                             |
+| `hooks`          | Optional, used to subscribe events that the SDK sends in specific scenarios. [More about hooks](#hooks).                                                                                                                                                                                                                      |
 
 caution
 
@@ -124,18 +136,19 @@ We strongly recommend you to use the `ConfigCatClient` as a Singleton object in 
 
 ## Anatomy of `getValue()`[​](#anatomy-of-getvalue "Direct link to anatomy-of-getvalue")
 
-| Parameters     | Description                                                                                                                                             |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `key`          | **REQUIRED.** The key of a specific setting or feature flag. Set on *ConfigCat Dashboard* for each setting.                                             |
-| `defaultValue` | **REQUIRED.** This value will be returned in case of an error.                                                                                          |
-| `user`         | Optional, *User Object*. Essential when using Targeting. [Read more about Targeting.](https://configcat.com/docs/docs/targeting/targeting-overview/.md) |
+| Parameters     | Description                                                                                                                                       |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `key`          | **REQUIRED.** The key of a specific setting or feature flag. Set on *ConfigCat Dashboard* for each setting.                                       |
+| `defaultValue` | **REQUIRED.** This value will be returned in case of an error.                                                                                    |
+| `user`         | Optional, *User Object*. Essential when using Targeting. [Read more about Targeting.](https://configcat.com/docs/targeting/targeting-overview.md) |
 
-```
+```dart
 final value = await client.getValue(
     key: 'keyOfMySetting',
     defaultValue: false,
     user: ConfigCatUser(identifier: '#USER-IDENTIFIER#'), // Optional User Object
 );
+
 ```
 
 caution
@@ -161,28 +174,30 @@ When relying on type inference and not explicitly specifying the type parameter,
 
 To correctly evaluate a decimal setting, you should use:
 
-```
+```dart
 var value = client.getValue("keyOfMyDecimalSetting", 0.0);
 // -or-
 var value = client.getValue<double>("keyOfMyDecimalSetting", 0);
+
 ```
 
 ## Anatomy of `getValueDetails()`[​](#anatomy-of-getvaluedetails "Direct link to anatomy-of-getvaluedetails")
 
 `getValueDetails()` is similar to `getValue()` but instead of returning the evaluated value only, it gives more detailed information about the evaluation result.
 
-| Parameters     | Description                                                                                                                                             |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `key`          | **REQUIRED.** The key of a specific setting or feature flag. Set on *ConfigCat Dashboard* for each setting.                                             |
-| `defaultValue` | **REQUIRED.** This value will be returned in case of an error.                                                                                          |
-| `user`         | Optional, *User Object*. Essential when using Targeting. [Read more about Targeting.](https://configcat.com/docs/docs/targeting/targeting-overview/.md) |
+| Parameters     | Description                                                                                                                                       |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `key`          | **REQUIRED.** The key of a specific setting or feature flag. Set on *ConfigCat Dashboard* for each setting.                                       |
+| `defaultValue` | **REQUIRED.** This value will be returned in case of an error.                                                                                    |
+| `user`         | Optional, *User Object*. Essential when using Targeting. [Read more about Targeting.](https://configcat.com/docs/targeting/targeting-overview.md) |
 
-```
+```dart
 final details = await client.getValueDetails(
     key: 'keyOfMySetting',
     defaultValue: false,
     user: ConfigCatUser(identifier: '#USER-IDENTIFIER#'), // Optional User Object
 );
+
 ```
 
 caution
@@ -204,14 +219,16 @@ The `details` result contains the following information:
 
 ## User Object[​](#user-object "Direct link to User Object")
 
-The [User Object](https://configcat.com/docs/docs/targeting/user-object/.md) is essential if you'd like to use ConfigCat's [Targeting](https://configcat.com/docs/docs/targeting/targeting-overview/.md) feature.
+The [User Object](https://configcat.com/docs/targeting/user-object.md) is essential if you'd like to use ConfigCat's [Targeting](https://configcat.com/docs/targeting/targeting-overview.md) feature.
 
-```
+```dart
 final user = ConfigCatUser(identifier: '#UNIQUE-USER-IDENTIFIER#');
-```
 
 ```
+
+```dart
 final user = ConfigCatUser(identifier: 'john@example.com');
+
 ```
 
 ### Customized User Object creation[​](#customized-user-object-creation "Direct link to Customized User Object creation")
@@ -223,7 +240,7 @@ final user = ConfigCatUser(identifier: 'john@example.com');
 | `country`    | Optional parameter for easier Targeting Rule definitions.                                                                       |
 | `custom`     | Optional dictionary for custom attributes of a user for advanced Targeting Rule definitions. e.g. User role, Subscription type. |
 
-```
+```dart
 final user = ConfigCatUser(
     identifier: '#UNIQUE-USER-IDENTIFIER#',
     email: 'john@example.com',
@@ -233,11 +250,12 @@ final user = ConfigCatUser(
         'UserRole': 'Admin'
     }
 );
+
 ```
 
 The `custom` map also allows attribute values other than `String` values:
 
-```
+```dart
 final user = ConfigCatUser(
     identifier: '#UNIQUE-USER-IDENTIFIER#',
     email: 'john@example.com',
@@ -248,6 +266,7 @@ final user = ConfigCatUser(
       'Roles': {"Role1", "Role2"}
     }
 );
+
 ```
 
 ### User Object Attribute Types[​](#user-object-attribute-types "Direct link to User Object Attribute Types")
@@ -289,34 +308,37 @@ There's an option to set a default User Object that will be used at feature flag
 
 You can set the default User Object either on SDK initialization:
 
-```
+```dart
 final client = ConfigCatClient.get(
     sdkKey: '#YOUR-SDK-KEY#',
     options: ConfigCatOptions(
         defaultUser: ConfigCatUser(identifier: 'john@example.com')
     )
 );
+
 ```
 
 or with the `setDefaultUser()` method of the ConfigCat client.
 
-```
+```dart
 client.setDefaultUser(ConfigCatUser(identifier: 'john@example.com'));
+
 ```
 
 Whenever the `getValue()`, `getValueDetails()`, `getAllValues()`, or `getAllVariationIds()` methods are called without an explicit `user` parameter, the SDK will automatically use the default user as a User Object.
 
-```
+```dart
 final user = ConfigCatUser(identifier: 'john@example.com');
 client.setDefaultUser(user);
 
 // The default user will be used at the evaluation process.
 final value = await client.getValue(key: 'keyOfMySetting', defaultValue: false);
+
 ```
 
 When the `user` parameter is specified on the requesting method, it takes precedence over the default user.
 
-```
+```dart
 final user = ConfigCatUser(identifier: 'john@example.com');
 client.setDefaultUser(user);
 
@@ -324,17 +346,19 @@ final otherUser = ConfigCatUser(identifier: 'brian@example.com');
 
 // otherUser will be used at the evaluation process.
 final value = await client.getValue(key: 'keyOfMySetting', defaultValue: false, user: otherUser);
+
 ```
 
 For deleting the default user, you can do the following:
 
-```
+```dart
 client.clearDefaultUser();
+
 ```
 
 ## Polling Modes[​](#polling-modes "Direct link to Polling Modes")
 
-The *ConfigCat SDK* supports 3 different polling strategies to fetch feature flags and settings from the ConfigCat CDN. Once the latest data is downloaded, it is stored in the cache, then calls to `getValue()` use the cached data to evaluate feature flags and settings. With the following polling modes, you can customize the SDK to best fit to your application's lifecycle.<br />[More about polling modes.](https://configcat.com/docs/docs/advanced/caching/.md)
+The *ConfigCat SDK* supports 3 different polling strategies to fetch feature flags and settings from the ConfigCat CDN. Once the latest data is downloaded, it is stored in the cache, then calls to `getValue()` use the cached data to evaluate feature flags and settings. With the following polling modes, you can customize the SDK to best fit to your application's lifecycle.<br />[More about polling modes.](https://configcat.com/docs/advanced/caching.md)
 
 ### Auto polling (default)[​](#auto-polling-default "Direct link to Auto polling (default)")
 
@@ -342,7 +366,7 @@ The *ConfigCat SDK* downloads the latest config data from the ConfigCat CDN auto
 
 Use the the `autoPollInterval` option parameter of the `PollingMode.autoPoll()` to change the polling interval.
 
-```
+```dart
 final client = ConfigCatClient.get(
     sdkKey: '<PLACE-YOUR-SDK-KEY-HERE>',
     options: ConfigCatOptions(
@@ -351,6 +375,7 @@ final client = ConfigCatClient.get(
         ),
     )
 );
+
 ```
 
 Available options:
@@ -366,7 +391,7 @@ When calling `getValue()`, the *ConfigCat SDK* downloads the latest config data 
 
 Use the `cacheRefreshInterval` option parameter of the `PollingMode.lazyLoad()` to set cache lifetime.
 
-```
+```dart
 final client = ConfigCatClient.get(
     sdkKey: '<PLACE-YOUR-SDK-KEY-HERE>',
     options: ConfigCatOptions(
@@ -376,6 +401,7 @@ final client = ConfigCatClient.get(
         ),
     )
 );
+
 ```
 
 Available options:
@@ -388,7 +414,7 @@ Available options:
 
 Manual polling gives you full control over when the config data is downloaded from the ConfigCat CDN. The *ConfigCat SDK* will not download it automatically. Calling `forceRefresh()` is your application's responsibility.
 
-```
+```dart
 final client = ConfigCatClient.get(
     sdkKey: '<PLACE-YOUR-SDK-KEY-HERE>',
     options: ConfigCatOptions(
@@ -397,6 +423,7 @@ final client = ConfigCatClient.get(
 );
 
 client.forceRefresh();
+
 ```
 
 > `getValue()` returns `defaultValue` if the cache is empty. Call `forceRefresh()` to update the cache.
@@ -427,7 +454,7 @@ The SDK provides several hooks (events), by means of which you can get notified 
 
 You can subscribe to these events either on SDK initialization:
 
-```
+```dart
 final client = ConfigCatClient.get(
     sdkKey: '#YOUR-SDK-KEY#',
     options: ConfigCatOptions(
@@ -437,28 +464,32 @@ final client = ConfigCatClient.get(
         )
     )
 );
+
 ```
 
 or with the `hooks` property of the ConfigCat client:
 
-```
+```dart
 client.hooks.addOnFlagEvaluated((details) => /* handle the event */);
+
 ```
 
 ## Online / Offline mode[​](#online--offline-mode "Direct link to Online / Offline mode")
 
 In cases when you'd want to prevent the SDK from making HTTP calls, you can put it in offline mode:
 
-```
+```dart
 client.setOffline();
+
 ```
 
 In offline mode, the SDK won't initiate HTTP requests and will work only from its cache.
 
 To put the SDK back in online mode, you can do the following:
 
-```
+```dart
 client.setOnline();
+
 ```
 
 > With `client.isOffline()` you can check whether the SDK is in offline mode.
@@ -475,7 +506,7 @@ With flag overrides you can overwrite the feature flags & settings downloaded fr
 
 You can set up the SDK to load your feature flag & setting overrides from a `Map<String, Object>`.
 
-```
+```dart
 final client = ConfigCatClient.get(
     sdkKey: 'localhost',
     options: ConfigCatOptions(
@@ -491,28 +522,31 @@ final client = ConfigCatClient.get(
         )
     )
 );
+
 ```
 
 ## `getAllKeys()`[​](#getallkeys "Direct link to getallkeys")
 
 You can get the keys for all available feature flags and settings by calling the `getAllKeys()` method.
 
-```
+```dart
 final client = ConfigCatClient.get(sdkKey: '#YOUR-SDK-KEY#');
 final keys = await client.getAllKeys();
+
 ```
 
 ## `getAllValues()`[​](#getallvalues "Direct link to getallvalues")
 
 Evaluates and returns the values of all feature flags and settings. Passing a User Object is optional.
 
-```
+```dart
 final client = ConfigCatClient.get(sdkKey: '#YOUR-SDK-KEY#');
 final settingValues = await client.getAllValues();
 
 // invoke with User Object
 final user = ConfigCatUser(identifier: '#UNIQUE-USER-IDENTIFIER#');
 final settingValuesTargeting = await client.getAllValues(user);
+
 ```
 
 ## Cache[​](#cache "Direct link to Cache")
@@ -525,17 +559,18 @@ The SDK caches the downloaded `config JSON` only in memory by default. In case y
 * **Linux**: File in `XDG_DATA_HOME` directory.
 * **Windows**: File in roaming `AppData` directory.
 
-```
+```dart
 final client = ConfigCatClient.get(
     sdkKey: '#YOUR-SDK-KEY#',
     options: ConfigCatOptions(cache: ConfigCatPreferencesCache()));
+
 ```
 
 ### Custom Cache[​](#custom-cache "Direct link to Custom Cache")
 
 You have the option to inject your custom cache implementation into the client. All you have to do is to inherit from the `ConfigCatCache` abstract class:
 
-```
+```dart
 class MyCustomCache extends ConfigCatCache {
     @override
     Future<String> read(String key) {
@@ -547,19 +582,21 @@ class MyCustomCache extends ConfigCatCache {
         // here you have to store the new value in the cache
     }
 }
+
 ```
 
 Then use your custom cache implementation:
 
-```
+```dart
 final client = ConfigCatClient.get(
     sdkKey: '<PLACE-YOUR-SDK-KEY-HERE>',
     options: ConfigCatOptions(cache: MyCustomCache()));
+
 ```
 
 info
 
-The Dart (Flutter) SDK supports *shared caching*. You can read more about this feature and the required minimum SDK versions [here](https://configcat.com/docs/docs/advanced/caching/.md#shared-cache).
+The Dart (Flutter) SDK supports *shared caching*. You can read more about this feature and the required minimum SDK versions [here](https://configcat.com/docs/advanced/caching.md#shared-cache).
 
 ## HttpClient[​](#httpclient "Direct link to HttpClient")
 
@@ -569,7 +606,7 @@ The ConfigCat SDK internally uses a [Dio HTTP client](https://github.com/flutter
 
 You can set the maximum wait time for a ConfigCat HTTP response by using Dio's timeouts.
 
-```
+```dart
 final client = ConfigCatClient.get(
     sdkKey: '<PLACE-YOUR-SDK-KEY-HERE>',
     options: ConfigCatOptions(
@@ -578,6 +615,7 @@ final client = ConfigCatClient.get(
         receiveTimeout: Duration(seconds: 10), // timeout for reading the server's HTTP response
     )
 );
+
 ```
 
 Default timeout values:
@@ -590,7 +628,7 @@ Default timeout values:
 
 If your application runs behind a proxy you can do the following:
 
-```
+```dart
 import 'package:dio/adapter.dart';
 
 (client.httpClient.httpClientAdapter as DefaultHttpClientAdapter)
@@ -599,6 +637,7 @@ import 'package:dio/adapter.dart';
             return 'PROXY proxyHost:proxyPort';
         };
     };
+
 ```
 
 ## Force refresh[​](#force-refresh "Direct link to Force refresh")
@@ -609,7 +648,7 @@ Call the `forceRefresh()` method on the client to download the latest config JSO
 
 The default logger used by the SDK simply outputs the log messages with `print()`, but you can override it with your implementation via the `logger` client option. The custom implementation must satisfy the [Logger](https://github.com/configcat/dart-sdk/blob/main/lib/src/log/logger.dart) abstract class.
 
-```
+```dart
 class MyCustomLogger implements Logger {
   @override
   void close() {
@@ -636,28 +675,31 @@ class MyCustomLogger implements Logger {
     // write the warning logs
   }
 }
+
 ```
 
 Then you can use your custom logger implementation at the SDK's initialization:
 
-```
+```dart
 final client = ConfigCatClient.get(
     sdkKey: '<PLACE-YOUR-SDK-KEY-HERE>',
     options: ConfigCatOptions(
         logger: ConfigCatLogger(internalLogger: MyCustomLogger()),
     )
 );
+
 ```
 
 You can change the verbosity of the logs by passing a `LogLevel` parameter to the `logger` option.
 
-```
+```dart
 final client = ConfigCatClient.get(
     sdkKey: '<PLACE-YOUR-SDK-KEY-HERE>',
     options: ConfigCatOptions(
         logger: ConfigCatLogger(level: LogLevel.info),
     )
 );
+
 ```
 
 Available log levels:
@@ -672,12 +714,13 @@ Available log levels:
 
 Info level logging helps to inspect how a feature flag was evaluated:
 
-```
+```bash
 [INFO] 2022-01-20T18:22:02.313703 ConfigCat - [5000] Evaluating 'isPOCFeatureEnabled' for User '{"Identifier":"<SOME USERID>","Email":"configcat@example.com","Country":"US","SubscriptionType":"Pro","Role":"Admin","version":"1.0.0"}'
   Evaluating targeting rules and applying the first match if any:
   - IF User.Email CONTAINS ANY OF ['@something.com'] THEN 'False' => no match
   - IF User.Email CONTAINS ANY OF ['@example.com'] THEN 'True' => MATCH, applying rule
   Returning 'True'.
+
 ```
 
 ## Sample Apps[​](#sample-apps "Direct link to Sample Apps")

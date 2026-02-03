@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/api-reference/app/get.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 📄 get
 
 ## Get data sources
@@ -8,7 +12,7 @@
 
 ### Usage
 
-```python
+```python  theme={null}
 from embedchain import App
 
 app = App()

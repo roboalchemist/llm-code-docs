@@ -6,7 +6,6 @@ description: >-
   Use the browser-based Datadog Agent Manager GUI to configure and manage the
   Windows Agent with supported browsers and authentication.
 breadcrumbs: Docs > Agent > Agent Guides > Datadog Agent Manager for Windows
-source_url: https://docs.datadoghq.com/guide/datadog-agent-manager-windows/index.html
 ---
 
 # Datadog Agent Manager for Windows

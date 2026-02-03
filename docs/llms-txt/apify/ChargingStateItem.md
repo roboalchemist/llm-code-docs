@@ -11,10 +11,10 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#charge_count)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/_charging.py#L375)charge\_count
+### [**](#charge_count)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/_charging.py#L374)charge\_count
 
 **charge\_count: int
 
-### [**](#total_charged_amount)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/_charging.py#L376)total\_charged\_amount
+### [**](#total_charged_amount)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/_charging.py#L375)total\_charged\_amount
 
 **total\_charged\_amount: Decimal

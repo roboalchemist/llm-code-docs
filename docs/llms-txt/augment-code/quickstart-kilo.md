@@ -1,15 +1,19 @@
 # Source: https://docs.augmentcode.com/context-services/mcp/quickstart-kilo.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Quickstart (Kilo)
 
 > Get started with Augment Context Engine MCP in Kilo in minutes
 
 ## Quick Start with Kilo
 
-### 1. Install Auggie CLI (Pre-release version)
+### 1. Install Auggie CLI
 
 ```bash  theme={null}
-npm install -g @augmentcode/auggie@prerelease
+npm install -g @augmentcode/auggie@latest
 ```
 
 ### 2. Sign in to Augment
@@ -34,11 +38,11 @@ Paste this configuration:
 {
   "mcpServers": {
     "augment-context-engine": {
-      "command":"auggie",
-      "type":"stdio",
-      "args":["--mcp"],
-      "disabled":false,
-      "alwaysAllow":["codebase-retrieval"]
+      "command": "auggie",
+      "type": "stdio",
+      "args": ["--mcp", "--mcp-auto-workspace"],
+      "disabled": false,
+      "alwaysAllow": ["codebase-retrieval"]
     }
   }
 }
@@ -46,11 +50,7 @@ Paste this configuration:
 
 ### 4. Test the integration
 
-Prompt: "What is this project ? Please use codebase retrieval tool to get the answer."
+Prompt: "What is this project? Please use codebase retrieval tool to get the answer."
+
 Kilo should confirm it has access to the `codebase-retrieval` tool.
 <img src="https://mintcdn.com/augment-mtje7p526w/rIravLuzI7-HsY1h/images/kilo-3.png?fit=max&auto=format&n=rIravLuzI7-HsY1h&q=85&s=643074aad72151ee9dffcb93459abb2c" alt="Kilo test" data-og-width="722" width="722" data-og-height="353" height="353" data-path="images/kilo-3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/augment-mtje7p526w/rIravLuzI7-HsY1h/images/kilo-3.png?w=280&fit=max&auto=format&n=rIravLuzI7-HsY1h&q=85&s=014bc1ed3f7acd980d6680e4afcd2bdb 280w, https://mintcdn.com/augment-mtje7p526w/rIravLuzI7-HsY1h/images/kilo-3.png?w=560&fit=max&auto=format&n=rIravLuzI7-HsY1h&q=85&s=a613929cf00eaa3aa0b653cc70291d6f 560w, https://mintcdn.com/augment-mtje7p526w/rIravLuzI7-HsY1h/images/kilo-3.png?w=840&fit=max&auto=format&n=rIravLuzI7-HsY1h&q=85&s=e1d8aead98c97fca4ec7f1052627794e 840w, https://mintcdn.com/augment-mtje7p526w/rIravLuzI7-HsY1h/images/kilo-3.png?w=1100&fit=max&auto=format&n=rIravLuzI7-HsY1h&q=85&s=1cf25dbca0ba9b86263d9c687e4313e1 1100w, https://mintcdn.com/augment-mtje7p526w/rIravLuzI7-HsY1h/images/kilo-3.png?w=1650&fit=max&auto=format&n=rIravLuzI7-HsY1h&q=85&s=762f4f2dbec4e2eaaecd9b45c924aa18 1650w, https://mintcdn.com/augment-mtje7p526w/rIravLuzI7-HsY1h/images/kilo-3.png?w=2500&fit=max&auto=format&n=rIravLuzI7-HsY1h&q=85&s=df1331ebf761134639118abe3736bd25 2500w" />
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.augmentcode.com/llms.txt

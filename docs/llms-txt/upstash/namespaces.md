@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/vector/features/namespaces.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Namespaces
 
 Upstash Vector allows you to partition a single index into multiple isolated namespaces. Each namespace acts as a self-contained subset of the index, and read and write requests are limited to one namespace.

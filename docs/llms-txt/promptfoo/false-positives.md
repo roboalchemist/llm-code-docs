@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/troubleshooting/false-positives/
+
 # Preventing False Positives
 
 False positives occur when a test case is marked as passing when it should have been marked as failing or vice versa. These inaccuracies typically arise when the grader lacks sufficient context about your target application to make proper assessments.

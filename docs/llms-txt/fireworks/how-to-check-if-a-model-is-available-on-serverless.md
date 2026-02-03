@@ -1,26 +1,64 @@
 # Source: https://docs.fireworks.ai/faq-new/models-inference/how-to-check-if-a-model-is-available-on-serverless.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to check if a model is available on serverless?
 
 ## Web UI
 
 Go to [https://app.fireworks.ai/models?filter=LLM\&serverless=true](https://app.fireworks.ai/models?filter=LLM\&serverless=true)
 
-## Programmatically
+## API
 
-You can use the
-[`is_available_on_serverless`](/tools-sdks/python-client/sdk-reference#is-available-on-serverless)
-method on the [LLM](/tools-sdks/python-client/sdk-reference#llm) object in our
-[Build SDK](/tools-sdks/python-client/sdk-introduction) to check if a model is
-available on serverless.
+You can programmatically retrieve all serverless models using the [List Models API](/api-reference/list-models) with the `supports_serverless=true` filter.
 
-```python  theme={null}
-llm = LLM(model="llama4-maverick-instruct-basic", deployment_type="auto")
-print(llm.is_available_on_serverless()) # True
+<Tabs>
+  <Tab title="Python (Fireworks SDK)">
+    ```python  theme={null}
+    from fireworks import Fireworks
 
-llm = LLM(model="qwen2p5-7b-instruct", deployment_type="auto")
-# Error will be raised saying: "LLM(id=...) must be provided when deployment_strategy is on-demand"
-# Which means the model is not available on serverless if the
-# deployment_strategy was resolved as "on-demand" when the deployment_type was
-# "auto"
-```
+    client = Fireworks()
+
+    # List all serverless models
+    models = client.models.list(filter="supports_serverless=true")
+
+    for model in models:
+        print(model.name)
+    ```
+
+    You can also combine filters and customize the response:
+
+    ```python  theme={null}
+    # List serverless models with pagination
+    models = client.models.list(
+        filter="supports_serverless=true",
+        page_size=50,
+    )
+
+    for model in models:
+        print(f"{model.name}: {model.display_name}")
+    ```
+  </Tab>
+
+  <Tab title="curl">
+    ```bash  theme={null}
+    curl "https://api.fireworks.ai/v1/accounts/fireworks/models?filter=supports_serverless%3Dtrue" \
+      -H "Authorization: Bearer $FIREWORKS_API_KEY"
+    ```
+
+    With pagination:
+
+    ```bash  theme={null}
+    curl "https://api.fireworks.ai/v1/accounts/fireworks/models?filter=supports_serverless%3Dtrue&pageSize=50" \
+      -H "Authorization: Bearer $FIREWORKS_API_KEY"
+    ```
+  </Tab>
+</Tabs>
+
+The filter parameter uses the [AIP-160 filter syntax](https://google.aip.dev/160). The `supports_serverless` field indicates whether a model is available on serverless infrastructure.
+
+<Tip>
+  See the [List Models API reference](/api-reference/list-models) for all available parameters including `order_by`, `page_size`, and `read_mask`.
+</Tip>

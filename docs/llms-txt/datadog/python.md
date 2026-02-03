@@ -1,3 +1,25 @@
+# Source: https://docs.datadoghq.com/feature_flags/server/python.md
+
+# Source: https://docs.datadoghq.com/error_tracking/backend/capturing_handled_errors/python.md
+
+# Source: https://docs.datadoghq.com/developers/integrations/python.md
+
+# Source: https://docs.datadoghq.com/security/code_security/software_composition_analysis/setup_runtime/compatibility/python.md
+
+# Source: https://docs.datadoghq.com/security/code_security/iast/setup/compatibility/python.md
+
+# Source: https://docs.datadoghq.com/security/code_security/iast/setup/python.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/gcp/cloud-run/python.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/aws/lambda/python.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/compatibility/python.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/python.md
+
+# Source: https://docs.datadoghq.com/data_streams/setup/language/python.md
+
 # Source: https://docs.datadoghq.com/profiler/profiler_troubleshooting/python.md
 
 # Source: https://docs.datadoghq.com/profiler/enabling/python.md
@@ -24,7 +46,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > APM > Application Instrumentation > Add the Datadog Tracing Library >
   Tracing Python Applications
-source_url: https://docs.datadoghq.com/trace_collection/dd_libraries/python/index.html
 ---
 
 # Tracing Python Applications

@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/jetbrains/setup-augment/install-jetbrains-ides.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Install Augment for JetBrains IDEs
 
 > Are you ready for your new superpowers? Augment in JetBrains IDEs gives you powerful code completions integrated into your favorite text editor.

@@ -6,21 +6,21 @@
 
 ***
 
-In the https://docs.apify.com/academy/python/scrape-data-python.md, we learned how to scrape data from the web in Python using the https://www.crummy.com/software/BeautifulSoup/ library. The Python ecosystem's strengths lie mainly in data processing, though, so in this tutorial we will learn how to process the data stored in an Apify dataset using the https://pandas.pydata.org/ library, and how to visualize it using https://matplotlib.org/.
+In the [previous tutorial](https://docs.apify.com/academy/python/scrape-data-python.md), we learned how to scrape data from the web in Python using the [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/) library. The Python ecosystem's strengths lie mainly in data processing, though, so in this tutorial we will learn how to process the data stored in an Apify dataset using the [Pandas](https://pandas.pydata.org/) library, and how to visualize it using [Matplotlib](https://matplotlib.org/).
 
-In this tutorial, we will use the Actor we created in the https://docs.apify.com/academy/python/scrape-data-python.md, so if you haven't completed that tutorial yet, please do so now.
+In this tutorial, we will use the Actor we created in the [previous tutorial](https://docs.apify.com/academy/python/scrape-data-python.md), so if you haven't completed that tutorial yet, please do so now.
 
-> In a rush? Skip this tutorial and https://github.com/apify/apify-docs/tree/master/examples/python-data-parser/.
+> In a rush? Skip this tutorial and [get the full code example](https://github.com/apify/apify-docs/tree/master/examples/python-data-parser/).
 
 ## Processing previously scraped data
 
-In the previous tutorial, we set out to select our next holiday destination based on the forecast of the upcoming weather there. We have written an Actor that scrapes the BBC Weather forecast for the upcoming two weeks for three destinations: Prague, New York, and Honolulu. It then saves the scraped data to a https://docs.apify.com/platform/storage/dataset.md on the Apify platform.
+In the previous tutorial, we set out to select our next holiday destination based on the forecast of the upcoming weather there. We have written an Actor that scrapes the BBC Weather forecast for the upcoming two weeks for three destinations: Prague, New York, and Honolulu. It then saves the scraped data to a [dataset](https://docs.apify.com/platform/storage/dataset.md) on the Apify platform.
 
 Now, we need to process the scraped data and make a visualization that will help us decide which location has the best weather, and will therefore become our next holiday destination.
 
 ### Setting up the Actor
 
-First, we need to create another Actor. You can do it the same way as before - go to the https://console.apify.com/, open the https://console.apify.com/actors, click on the **Create new** button in the top right, and select the **Example: Hello world in Python** Actor template.
+First, we need to create another Actor. You can do it the same way as before - go to the [Apify Console](https://console.apify.com/), open the [Actors section](https://console.apify.com/actors), click on the **Create new** button in the top right, and select the **Example: Hello world in Python** Actor template.
 
 In the page that opens, you can see your newly created Actor. In the **Settings** tab, you can give it a name (e.g. `bbc-weather-parser`) and further customize its settings. We'll skip customizing the settings for now, the defaults should be fine. In the **Source** tab, you can see the files that are at the heart of the Actor. Although there are several of them, just two are important for us now, `main.py` and `requirements.txt`.
 
@@ -54,7 +54,7 @@ import pandas
 
 ### Scraping the data
 
-Next, we need to run the weather scraping Actor and access its results. We do that through the https://docs.apify.com/api/client/python, which greatly simplifies working with the Apify platform and allows you to use its functions without having to call the Apify API directly.
+Next, we need to run the weather scraping Actor and access its results. We do that through the [Apify API Client for Python](https://docs.apify.com/api/client/python), which greatly simplifies working with the Apify platform and allows you to use its functions without having to call the Apify API directly.
 
 First, we initialize an `ApifyClient` instance. All the necessary arguments are automatically provided to the Actor process as environment variables accessible in Python through the `os.environ` mapping. We need to run the Actor from the previous tutorial, which we have named `bbc-weather-scraper`, and wait for it to finish. We create a sub-client for working with that Actor and run the Actor through it. We then check whether the Actor run has succeeded. If so, we create a client for working with its default dataset.
 
@@ -117,7 +117,7 @@ axes.figure.tight_layout()
 ```
 
 
-As the last step, we need to save the plot to a record in a https://docs.apify.com/platform/storage/key-value-store.md on the Apify platform, so that we can access it later. We save the rendered figure with the plot to an in-memory buffer, and then save the contents of that buffer to the default key-value store of the Actor run through its resource subclient.
+As the last step, we need to save the plot to a record in a [key-value store](https://docs.apify.com/platform/storage/key-value-store.md) on the Apify platform, so that we can access it later. We save the rendered figure with the plot to an in-memory buffer, and then save the contents of that buffer to the default key-value store of the Actor run through its resource subclient.
 
 
 ```

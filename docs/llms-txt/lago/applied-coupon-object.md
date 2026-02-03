@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/api-reference/coupons/applied-coupon-object.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # The applied coupon object
 
 > This object represents a coupon applied to a customer. It can override the initial values of a coupon.

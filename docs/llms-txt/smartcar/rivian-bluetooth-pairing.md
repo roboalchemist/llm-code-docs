@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/connect/other-actions/rivian-bluetooth-pairing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Rivian Bluetooth Pairing
 
 > To support vehicle commands such as lock/unlock or start/stop charge, Rivian requires a mobile device to be paired via Bluetooth with the vehicle.

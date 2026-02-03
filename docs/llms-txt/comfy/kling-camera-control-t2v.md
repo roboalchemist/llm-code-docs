@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/built-in-nodes/partner-node/video/kwai_vgi/kling-camera-control-t2v.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Kling Text to Video (Camera Control) - ComfyUI Built-in Node
 
 > A text to video generation node with camera control features

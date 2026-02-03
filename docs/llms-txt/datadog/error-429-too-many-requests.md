@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Cloudcraft (Standalone) > FAQ > Why do I get a 429 Too Many Requests
   error when using the API?
-source_url: https://docs.datadoghq.com/faq/error-429-too-many-requests/index.html
 ---
 
 # Why do I get a 429 Too Many Requests error when using the API?

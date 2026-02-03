@@ -1,5 +1,9 @@
 # Source: https://docs.tavus.io/sections/conversational-video-interface/component-library/hooks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Hooks
 
 > See what hooks Tavus supports for managing video calls, media controls, participant management, and conversation events.

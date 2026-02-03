@@ -42,23 +42,15 @@ Use the `indeterminate-icon` prop to customize the indeterminate icon. Defaults 
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.minus` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.minus` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.minus` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.minus` key.
 
 ### Label
 
@@ -98,23 +90,15 @@ Use the `icon` prop to set the icon of the Checkbox when it is checked. Defaults
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.check` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.check` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.check` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.check` key.
 
 ### Color
 
@@ -191,11 +175,11 @@ interface CheckboxProps {
   /**
    * The icon displayed when checked.
    */
-  icon?: string | object | undefined;
+  icon?: any;
   /**
    * The icon displayed when the checkbox is indeterminate.
    */
-  indeterminateIcon?: string | object | undefined;
+  indeterminateIcon?: any;
   ui?: { root?: ClassNameValue; container?: ClassNameValue; base?: ClassNameValue; indicator?: ClassNameValue; icon?: ClassNameValue; wrapper?: ClassNameValue; label?: ClassNameValue; description?: ClassNameValue; } | undefined;
   /**
    * When `true`, prevents the user from interacting with the checkbox
@@ -235,11 +219,9 @@ interface CheckboxProps {
 }
 ```
 
-<callout icon="i-simple-icons-mdnwebdocs" target="_blank" to="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attributes">
-
-This component also supports all native `<button>` HTML attributes.
-
-</callout>
+> [!NOTE]
+> See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attributes
+> This component also supports all native `<button>` HTML attributes.
 
 ### Slots
 
@@ -368,9 +350,10 @@ export default defineAppConfig({
         },
         disabled: {
           true: {
-            base: 'cursor-not-allowed opacity-75',
-            label: 'cursor-not-allowed opacity-75',
-            description: 'cursor-not-allowed opacity-75'
+            root: 'opacity-75',
+            base: 'cursor-not-allowed',
+            label: 'cursor-not-allowed',
+            description: 'cursor-not-allowed'
           }
         },
         checked: {
@@ -466,7 +449,7 @@ export default defineAppConfig({
           variant: 'card',
           disabled: true,
           class: {
-            root: 'cursor-not-allowed opacity-75'
+            root: 'cursor-not-allowed'
           }
         }
       ],
@@ -483,8 +466,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

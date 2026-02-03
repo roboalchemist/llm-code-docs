@@ -1,14 +1,16 @@
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/best-practices.md
 
-# Source: https://docs.apify.com/academy/web-scraping-for-beginners/best-practices.md
-
 # Best practices when writing scrapers
 
 **Understand the standards and best practices that we here at Apify abide by to write readable, scalable, and maintainable code.**
 
+Archived course
+
+This is an archive of our old course. Check out our new [Web scraping basics for JavaScript devs](https://docs.apify.com/academy/scraping-basics-javascript.md) course instead! We plan to completely retire this old course in a few months.
+
 ***
 
-Every developer has their own style, which evolves as they grow and learn. While one dev might prefer a more https://en.wikipedia.org/wiki/Functional_programming style, another might find an https://en.wikipedia.org/wiki/Imperative_programming approach to be more intuitive. We at Apify understand this, and have written this best practices lesson with that in mind.
+Every developer has their own style, which evolves as they grow and learn. While one dev might prefer a more [functional](https://en.wikipedia.org/wiki/Functional_programming) style, another might find an [imperative](https://en.wikipedia.org/wiki/Imperative_programming) approach to be more intuitive. We at Apify understand this, and have written this best practices lesson with that in mind.
 
 The goal of this lesson is not to force you into a specific paradigm or to make you think that you're doing things wrong, but instead to provide you some insight into the standards and best practices that we at Apify follow to ensure readable, maintainable, scalable code.
 
@@ -18,23 +20,23 @@ When it comes to your code style when writing scrapers, there are some general t
 
 ### Clean code
 
-Praise https://blog.risingstack.com/javascript-clean-coding-best-practices-node-js-at-scale/! Use proper variable and function names that are descriptive of what they are, and split your code into smaller https://en.wikipedia.org/wiki/Pure_function functions.
+Praise [clean code](https://blog.risingstack.com/javascript-clean-coding-best-practices-node-js-at-scale/)! Use proper variable and function names that are descriptive of what they are, and split your code into smaller [pure](https://en.wikipedia.org/wiki/Pure_function) functions.
 
 ### Constant variables
 
-Define any https://softwareengineering.stackexchange.com/questions/250619/best-practices-reasons-for-string-constants-in-javascript that globally apply to the scraper in a single file named **constants.js**, from where they will all be imported. Constant variable names should be in `UPPERCASE_WITH_UNDERSCORES` style.
+Define any [constant variables](https://softwareengineering.stackexchange.com/questions/250619/best-practices-reasons-for-string-constants-in-javascript) that globally apply to the scraper in a single file named **constants.js**, from where they will all be imported. Constant variable names should be in `UPPERCASE_WITH_UNDERSCORES` style.
 
 > If you have a whole lot of constant variables, they can be in a folder named **constants** organized into different files.
 
 ### Use ES6 JavaScript
 
-If you're writing your scraper in JavaScript, use https://www.w3schools.com/js/js_es6.asp features and ditch the old ones which they replace. This means using `const` and `let` instead of `var`, `includes` instead of `indexOf`, etc.
+If you're writing your scraper in JavaScript, use [ES6](https://www.w3schools.com/js/js_es6.asp) features and ditch the old ones which they replace. This means using `const` and `let` instead of `var`, `includes` instead of `indexOf`, etc.
 
-> To learn more about some of the most popular (and awesome) ES6+ features, check out https://medium.com/@matthiasvstephens/why-is-es6-so-awesome-88bff6857849 article.
+> To learn more about some of the most popular (and awesome) ES6+ features, check out [this](https://medium.com/@matthiasvstephens/why-is-es6-so-awesome-88bff6857849) article.
 
 ### No magic numbers
 
-Avoid using https://en.wikipedia.org/wiki/Magic_number_(programming) as much as possible. Either declare them as a **constant** variable in your **constants.js** file, or if they are only used once, add a comment explaining what the number is.
+Avoid using [magic numbers](https://en.wikipedia.org/wiki/Magic_number_(programming)) as much as possible. Either declare them as a **constant** variable in your **constants.js** file, or if they are only used once, add a comment explaining what the number is.
 
 Don't write code like this:
 
@@ -57,7 +59,7 @@ const fahrenheitToCelsius = (celsius) => (celsius - 32) * (5 / 9);
 
 Don't be shy to add comments to your code! Even when using descriptive function and variable naming, it might still be a good idea to add a comment in places where you had to make a tough decision or chose an unusual choice.
 
-> If you're a true pro, use https://jsdoc.app/ to comment and document your code.
+> If you're a true pro, use [JSDoc](https://jsdoc.app/) to comment and document your code.
 
 ## Logging
 
@@ -95,7 +97,7 @@ When allowing your users to pass input properties which could break the scraper 
 
 Validate the input provided by the user! This should be the very first thing your scraper does. If the fields in the input are missing or in an incorrect type/format, either parse the value and correct it programmatically or throw an informative error telling the user how to fix the error.
 
-> On the Apify platform, you can use the https://docs.apify.com/academy/deploying-your-code/input-schema.md to both validate inputs and generate a clean UI for those using your scraper.
+> On the Apify platform, you can use the [input schema](https://docs.apify.com/academy/deploying-your-code/input-schema.md) to both validate inputs and generate a clean UI for those using your scraper.
 
 ## Error handling
 

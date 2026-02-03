@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/features/usage-based-billing/ingestion-strategies/delta-time-strategy.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delta Time Strategy
 
 > Ingest delta time of arbitrary execution

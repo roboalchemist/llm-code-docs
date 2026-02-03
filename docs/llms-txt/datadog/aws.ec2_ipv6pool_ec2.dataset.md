@@ -4,8 +4,6 @@
 title: EC2 IPv6 Pool EC2
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > EC2 IPv6 Pool EC2
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.ec2_ipv6pool_ec2.dataset/index.html
 ---
 
 # EC2 IPv6 Pool EC2
@@ -18,11 +16,11 @@ aws.ec2_ipv6pool_ec2
 
 ## Fields
 
-| Title            | ID   | Type   | Data Type                             | Description |
-| ---------------- | ---- | ------ | ------------------------------------- | ----------- |
-| _key             | core | string |
-| account_id       | core | string |
-| description      | core | string | The description for the address pool. |
-| pool_cidr_blocks | core | json   | The CIDR blocks for the address pool. |
-| pool_id          | core | string | The ID of the address pool.           |
-| tags             | core | hstore |
+| Title            | ID   | Type       | Data Type                             | Description |
+| ---------------- | ---- | ---------- | ------------------------------------- | ----------- |
+| _key             | core | string     |
+| account_id       | core | string     |
+| description      | core | string     | The description for the address pool. |
+| pool_cidr_blocks | core | json       | The CIDR blocks for the address pool. |
+| pool_id          | core | string     | The ID of the address pool.           |
+| tags             | core | hstore_csv |

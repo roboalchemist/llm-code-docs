@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/installation/manual_install.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to install ComfyUI manually in different systems
 
 For the installation of ComfyUI, it is mainly divided into several steps:
@@ -193,7 +197,7 @@ Suppose you want to add the following model paths to ComfyUI:
 ```
 📁 YOUR_PATH/
   ├── 📁models/
-  |   ├── 📁 lora/
+  |   ├── 📁 loras/
   |   │   └── xxxxx.safetensors
   |   ├── 📁 checkpoints/
   |   │   └── xxxxx.safetensors

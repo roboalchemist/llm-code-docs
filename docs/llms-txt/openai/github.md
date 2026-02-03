@@ -1,42 +1,61 @@
 # Source: https://developers.openai.com/codex/integrations/github.md
 
-# Code Review
+# Use Codex in GitHub
 
-Codex can review code directly in GitHub. This is great for finding bugs and improving code quality.
-
-
+Use Codex to review pull requests without leaving GitHub. Add a pull request comment with `@codex review`, and Codex replies with a standard GitHub code review.
 
 <YouTubeEmbed
   title="Codex code review walkthrough"
   videoId="HwbSWVg5Ln4"
-  class="mx-auto"
+  class="max-w-md mr-auto"
 />
+<br />
 
-## Setup
+## Set up code review
 
-Before you can use Codex directly inside GitHub, you will need to make sure [Codex cloud](/codex/cloud) is set up.
+1. Set up [Codex cloud](https://developers.openai.com/codex/cloud).
+2. Go to [Codex settings](https://chatgpt.com/codex/settings/code-review) and turn on **Code review** for your repository.
 
-Afterwards, you can go into the [Codex settings](https://chatgpt.com/codex/settings/code-review) and enable "Code review" on your repository.
+<div class="not-prose max-w-3xl mr-auto">
+  <img src="https://developers.openai.com/images/codex/code-review/code-review-settings.png"
+    alt="Codex settings showing the Code review toggle"
+    class="block h-auto w-full mx-0!"
+  />
+</div>
+<br />
 
-![](/images/codex/code-review/code-review-settings.png)
+## Request a review
 
-## Usage
+1. In a pull request comment, mention `@codex review`.
+2. Wait for Codex to react (👀) and post a review.
 
-After you have enabled Code review on your repository, you can start using it by tagging `@codex` in a comment on a pull request.
+<div class="not-prose max-w-xl mr-auto">
+  <img src="https://developers.openai.com/images/codex/code-review/review-trigger.png"
+    alt="A pull request comment with @codex review"
+    class="block h-auto w-full mx-0!"
+  />
+</div>
+<br />
 
-To trigger a review by codex you'll have to specifically write `@codex review`.
+Codex posts a review on the pull request, just like a teammate would.
 
-![](/images/codex/code-review/review-trigger.png)
+<div class="not-prose max-w-3xl mr-auto">
+  <img src="https://developers.openai.com/images/codex/code-review/review-example.png"
+    alt="Example Codex code review on a pull request"
+    class="block h-auto w-full mx-0!"
+  />
+</div>
+<br />
 
-Afterwards you'll see Codex react to your comment with 👀 acknowledging that it started your task.
+## Enable automatic reviews
 
-Once completed Codex will leave a regular code review in the PR the same way your team would do.
+If you want Codex to review every pull request automatically, turn on **Automatic reviews** in [Codex settings](https://chatgpt.com/codex/settings/code-review). Codex will post a review whenever a new PR is opened for review, without needing an `@codex review` comment.
 
-![](/images/codex/code-review/review-example.png)
+## Customize what Codex reviews
 
-## Customizing what Codex looks for
+Codex searches your repository for `AGENTS.md` files and follows any **Review guidelines** you include.
 
-Codex automatically searches your repository for `AGENTS.md` files and follows any **Review guidelines** that you include in them. Add a top-level `AGENTS.md` file (or extend an existing one) with a section such as:
+To set guidelines for a repository, add or update a top-level `AGENTS.md` with a section like this:
 
 ```md
 ## Review guidelines
@@ -45,10 +64,18 @@ Codex automatically searches your repository for `AGENTS.md` files and follows a
 - Verify that authentication middleware wraps every route.
 ```
 
-Codex applies the guidance from the closest `AGENTS.md` file to each changed file, so you can place more specific instructions deeper in the tree when particular packages need extra scrutiny. For one-off requests, mention `@codex review for <special instruction>` in your PR comment (for example, `@codex review for security regressions`) and Codex will prioritize that focus area for that review.
+Codex applies guidance from the closest `AGENTS.md` to each changed file. You can place more specific instructions deeper in the tree when particular packages need extra scrutiny.
 
-On GitHub Codex will only flag P0 and P1 issues. If you want to have Codex for example call out typos in documentation as an issue, you can call out in the `AGENTS.md` file in your `Review guidelines` section that the model should treat typos as P1.
+For a one-off focus, add it to your pull request comment, for example:
 
-## Giving Codex other tasks
+`@codex review for security regressions`
 
-If you mention `@codex` in a comment with anything other than `review` Codex will kick off a [cloud task](/codex/cloud) instead with the context of your pull request.
+In GitHub, Codex flags only P0 and P1 issues. If you want Codex to flag typos in documentation, add guidance in `AGENTS.md` (for example, “Treat typos in docs as P1.”).
+
+## Give Codex other tasks
+
+If you mention `@codex` in a comment with anything other than `review`, Codex starts a [cloud task](https://developers.openai.com/codex/cloud) using your pull request as context.
+
+```md
+@codex fix the CI failures
+```

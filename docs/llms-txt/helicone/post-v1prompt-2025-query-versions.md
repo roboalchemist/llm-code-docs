@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/rest/prompts/post-v1prompt-2025-query-versions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Prompt Versions
 
 > Retrieve all versions of a specific prompt

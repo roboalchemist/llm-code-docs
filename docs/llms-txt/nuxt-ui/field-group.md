@@ -79,7 +79,7 @@ You can use a [Tooltip](/components/tooltip) within a field group.
 </template>
 ```
 
-### With dropdown
+### With dropdown menu
 
 You can use a [DropdownMenu](/components/dropdown-menu) within a field group.
 
@@ -203,8 +203,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

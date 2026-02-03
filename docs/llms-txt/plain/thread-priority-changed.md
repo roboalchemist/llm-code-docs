@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/webhooks/thread-priority-changed.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Thread priority changed
 
 This event is fired when the priority of a thread changes.

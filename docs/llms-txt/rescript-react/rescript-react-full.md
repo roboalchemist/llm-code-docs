@@ -1,3 +1,9 @@
+# Rescript React Documentation
+
+Source: https://rescript-lang.org/docs/react/latest/llms-full.txt
+
+---
+
 # The ReScript Programming Language
 
 ```markdown

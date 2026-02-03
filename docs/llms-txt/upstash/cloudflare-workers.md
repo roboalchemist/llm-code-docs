@@ -2,212 +2,242 @@
 
 # Source: https://upstash.com/docs/qstash/quickstarts/cloudflare-workers.md
 
-# Source: https://upstash.com/docs/workflow/quickstarts/cloudflare-workers.md
-
-# Source: https://upstash.com/docs/qstash/quickstarts/cloudflare-workers.md
-
-# Source: https://upstash.com/docs/workflow/quickstarts/cloudflare-workers.md
-
-# Source: https://upstash.com/docs/qstash/quickstarts/cloudflare-workers.md
-
-# Source: https://upstash.com/docs/workflow/quickstarts/cloudflare-workers.md
-
-# Source: https://upstash.com/docs/qstash/quickstarts/cloudflare-workers.md
-
-# Source: https://upstash.com/docs/workflow/quickstarts/cloudflare-workers.md
-
-# Source: https://upstash.com/docs/qstash/quickstarts/cloudflare-workers.md
-
-# Source: https://upstash.com/docs/workflow/quickstarts/cloudflare-workers.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Cloudflare Workers
 
-<Card title="GitHub Repository" icon="github" href="https://github.com/upstash/workflow-js/tree/main/examples/cloudflare-workers" horizontal>
-  You can find the project source code on GitHub.
-</Card>
+This is a step by step guide on how to receive webhooks from QStash in your
+Cloudflare Worker.
 
-<Card title="Deploy With Cloudflare Workers" icon="cloudflare" href="https://deploy.workers.cloudflare.com/?url=https://github.com/upstash/qstash-workflow-example-cloudflare-workers" horizontal>
-  Deploy the project to Cloudflare Workers with a single click.
-</Card>
+### Project Setup
 
-This guide provides detailed, step-by-step instructions on how to use and deploy Upstash Workflow with Cloudflare Workers. You can also explore our [Cloudflare Workers example](https://github.com/upstash/workflow-js/tree/main/examples/cloudflare-workers) or [Hono.js Cloudflare Workers example](https://github.com/upstash/workflow-js/tree/main/examples/cloudflare-workers-hono) for detailed, end-to-end examples and best practices.
+We will use **C3 (create-cloudflare-cli)** command-line tool to create our functions. You can open a new terminal window and run C3 using the prompt below.
 
-## Prerequisites
+<CodeGroup>
+  ```shell npm theme={"system"}
+  npm create cloudflare@latest
+  ```
 
-1. An Upstash QStash API key.
-2. Node.js and npm (another package manager) installed.
+  ```shell yarn theme={"system"}
+  yarn create cloudflare@latest
+  ```
+</CodeGroup>
 
-If you haven't obtained your QStash API key yet, you can do so by [signing up](https://console.upstash.com/login) for an Upstash account and navigating to your QStash dashboard.
+This will install the `create-cloudflare` package, and lead you through setup. C3 will also install Wrangler in projects by default, which helps us testing and deploying the projects.
 
-## Step 1: Installation
+```text  theme={"system"}
+➜  npm create cloudflare@latest
+Need to install the following packages:
+  create-cloudflare@2.52.3
+Ok to proceed? (y) y
 
-First, install the Workflow SDK in your worker project:
+using create-cloudflare version 2.52.3
 
-<Tabs>
-  <Tab title="npm">
-    ```bash  theme={"system"}
-    npm install @upstash/workflow
-    ```
-  </Tab>
-
-  <Tab title="pnpm">
-    ```bash  theme={"system"}
-    pnpm install @upstash/workflow
-    ```
-  </Tab>
-
-  <Tab title="bun">
-    ```bash  theme={"system"}
-    bun add @upstash/workflow
-    ```
-  </Tab>
-</Tabs>
-
-## Step 2: Configure Environment Variables
-
-Create a `.dev.vars` file in your project root and add your QStash token. This key is used to authenticate your application with the QStash service.
-
-```bash Terminal theme={"system"}
-touch .dev.vars
+╭ Create an application with Cloudflare Step 1 of 3
+│
+├ In which directory do you want to create your application?
+│ dir ./cloudflare_starter
+│
+├ What would you like to start with?
+│ category Hello World example
+│
+├ Which template would you like to use?
+│ type Worker only
+│
+├ Which language do you want to use?
+│ lang TypeScript
+│
+├ Do you want to use git for version control?
+│ yes git
+│
+╰ Application created
 ```
 
-Upstash Workflow is powered by [QStash](/qstash/overall/getstarted), which requires access to your endpoint to execute workflows. When your app is deployed, QStash will use the app's URL. However, for local development, you have two main options: [use a local QStash server or set up a local tunnel](/workflow/howto/local-development).
-
-### Option 1: Local QStash Server
-
-To start the local QStash server, run:
+We will also install the **Upstash QStash library**.
 
 ```bash  theme={"system"}
-npx @upstash/qstash-cli dev
+npm install @upstash/qstash
 ```
 
-Once the command runs successfully, you’ll see `QSTASH_URL` and `QSTASH_TOKEN` values in the console. Add these values to your `.dev.vars` file:
+### 3. Use QStash in your handler
 
-```txt .dev.vars theme={"system"}
-QSTASH_URL="http://127.0.0.1:8080"
-QSTASH_TOKEN="<QSTASH_TOKEN>"
+First we import the library:
+
+```ts src/index.ts theme={"system"}
+import { Receiver } from "@upstash/qstash";
 ```
 
-This approach allows you to test workflows locally without affecting your billing. However, runs won't be logged in the Upstash Console.
+Then we adjust the `Env` interface to include the `QSTASH_CURRENT_SIGNING_KEY`
+and `QSTASH_NEXT_SIGNING_KEY` environment variables.
 
-### Option 2: Local Tunnel
-
-Alternatively, you can set up a local tunnel. For this option:
-
-1. Copy the `QSTASH_TOKEN` from the Upstash Console.
-2. Update your `.dev.vars` file with the following:
-
-```txt .dev.vars theme={"system"}
-QSTASH_TOKEN="***"
-UPSTASH_WORKFLOW_URL="<UPSTASH_WORKFLOW_URL>"
+```ts src/index.ts theme={"system"}
+export interface Env {
+  QSTASH_CURRENT_SIGNING_KEY: string;
+  QSTASH_NEXT_SIGNING_KEY: string;
+}
 ```
 
-* Replace `***` with your actual QStash token.
-* Set `UPSTASH_WORKFLOW_URL` to the public URL provided by your local tunnel.
+And then we validate the signature in the `handler` function.
 
-Here’s where you can find your QStash token:
+First we create a new receiver and provide it with the signing keys.
 
-<Frame>
-  <img src="https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash-workflow/qstash_token.png?fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=df12ba48119bcdd13a675e53b43ab74d" data-og-width="1211" width="1211" data-og-height="833" height="833" data-path="img/qstash-workflow/qstash_token.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash-workflow/qstash_token.png?w=280&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=c251f0eeb0a6973ff498f9e9930aed70 280w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash-workflow/qstash_token.png?w=560&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=d452c08e1a638dff258d938aa8544f25 560w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash-workflow/qstash_token.png?w=840&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=6b197538fe5190c7936b751ec228ef39 840w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash-workflow/qstash_token.png?w=1100&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=63da8b3df03c88ff0a7700af7a5db6fb 1100w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash-workflow/qstash_token.png?w=1650&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=8df98665037cf63deb6b48d5c22d3f6b 1650w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash-workflow/qstash_token.png?w=2500&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=b3ef0ab4137bdec59b7cb772550933e1 2500w" />
-</Frame>
+```ts src/index.ts theme={"system"}
+const receiver = new Receiver({
+  currentSigningKey: env.QSTASH_CURRENT_SIGNING_KEY,
+  nextSigningKey: env.QSTASH_NEXT_SIGNING_KEY,
+});
+```
 
-Using a local tunnel connects your endpoint to the production QStash, enabling you to view workflow logs in the Upstash Console.
+Then we verify the signature.
 
-## Step 3: Create a Workflow Endpoint
+```ts src/index.ts theme={"system"}
+const body = await request.text();
 
-A workflow endpoint allows you to define a set of steps that, together, make up a workflow. Each step contains a piece of business logic that is automatically retried on failure, with easy monitoring via our visual workflow dashboard.
+const isValid = await receiver.verify({
+  signature: request.headers.get("Upstash-Signature")!,
+  body,
+});
+```
 
-To define a workflow endpoint with Cloudflare Workers, navigate into your workers entrypoint file (usually `src/index.ts`) and add the following code:
+The entire file looks like this now:
 
-```typescript src/index.ts theme={"system"}
-import { serve } from "@upstash/workflow/cloudflare"
+```ts src/index.ts theme={"system"}
+import { Receiver } from "@upstash/qstash";
 
-interface Env {
-  ENVIRONMENT: "development" | "production"
+export interface Env {
+  QSTASH_CURRENT_SIGNING_KEY: string;
+  QSTASH_NEXT_SIGNING_KEY: string;
 }
 
-export default serve<{ text: string }>(
-  async (context) => {
-    const initialPayload = context.requestPayload.text
+export default {
+  async fetch(request, env, ctx): Promise<Response> {
+    const receiver = new Receiver({
+      currentSigningKey: env.QSTASH_CURRENT_SIGNING_KEY,
+      nextSigningKey: env.QSTASH_NEXT_SIGNING_KEY,
+    });
 
-    const result = await context.run("initial-step", async () => {
-        console.log(`Step 1 running with payload: ${initialPayload}`)
+    const body = await request.text();
 
-        return { text: "initial step ran" }
-      }
-    )
+    const isValid = await receiver.verify({
+      signature: request.headers.get("Upstash-Signature")!,
+      body,
+    });
 
-    await context.run("second-step", async () => {
-      console.log(`Step 2 running with result from step 1: ${result.text}`)
-    })
-  }
-)
+    if (!isValid) {
+      return new Response("Invalid signature", { status: 401 });
+    }
+
+    // signature is valid
+
+    return new Response("Hello World!");
+  },
+} satisfies ExportedHandler<Env>;
 ```
 
-## Step 4: Run the Workflow Endpoint
+### Configure Credentials
 
-To start your worker locally, run the following command:
+There are two methods for setting up the credentials for QStash. One for worker level, the other for account level.
 
-```bash Terminal theme={"system"}
-npm run wrangler dev
+#### Using Cloudflare Secrets (Worker Level Secrets)
+
+This is the common way of creating secrets for your worker, see [Workflow Secrets](https://developers.cloudflare.com/workers/configuration/secrets/)
+
+* Navigate to [Upstash Console](https://console.upstash.com) and get your QStash credentials.
+
+* In [Cloudflare Dashboard](https://dash.cloudflare.com/), Go to **Compute (Workers)** > **Workers & Pages**.
+
+* Select your worker and go to **Settings** > **Variables and Secrets**.
+
+* Add your QStash credentials as secrets here:
+
+<Frame>
+  <img src="https://mintcdn.com/upstash/DrxIz7v3jaqUZCku/img/cloudflare-integration/secrets.png?fit=max&auto=format&n=DrxIz7v3jaqUZCku&q=85&s=0fdc5a1123d5c3c3eaa083821712e887" data-og-width="1718" width="1718" data-og-height="624" height="624" data-path="img/cloudflare-integration/secrets.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/DrxIz7v3jaqUZCku/img/cloudflare-integration/secrets.png?w=280&fit=max&auto=format&n=DrxIz7v3jaqUZCku&q=85&s=50845185131054d4d6a5a5297494386a 280w, https://mintcdn.com/upstash/DrxIz7v3jaqUZCku/img/cloudflare-integration/secrets.png?w=560&fit=max&auto=format&n=DrxIz7v3jaqUZCku&q=85&s=8ed427e7462fcf0f234f39de7f51c39b 560w, https://mintcdn.com/upstash/DrxIz7v3jaqUZCku/img/cloudflare-integration/secrets.png?w=840&fit=max&auto=format&n=DrxIz7v3jaqUZCku&q=85&s=edf1bdf371db5acbb1fa785d93c89347 840w, https://mintcdn.com/upstash/DrxIz7v3jaqUZCku/img/cloudflare-integration/secrets.png?w=1100&fit=max&auto=format&n=DrxIz7v3jaqUZCku&q=85&s=e1e318665638791c5628f810b1048a2d 1100w, https://mintcdn.com/upstash/DrxIz7v3jaqUZCku/img/cloudflare-integration/secrets.png?w=1650&fit=max&auto=format&n=DrxIz7v3jaqUZCku&q=85&s=86ede44dae15be8f5019028458507fca 1650w, https://mintcdn.com/upstash/DrxIz7v3jaqUZCku/img/cloudflare-integration/secrets.png?w=2500&fit=max&auto=format&n=DrxIz7v3jaqUZCku&q=85&s=3dc232893357fcb259639d2b7e648b91 2500w" />
+</Frame>
+
+#### Using Cloudflare Secrets Store (Account Level Secrets)
+
+This method requires a few modifications in the worker code, see [Access to Secret on Env Object](https://developers.cloudflare.com/secrets-store/integrations/workers/#3-access-the-secret-on-the-env-object)
+
+```ts src/index.ts theme={"system"}
+import { Receiver } from "@upstash/qstash";
+
+export interface Env {
+  QSTASH_CURRENT_SIGNING_KEY: SecretsStoreSecret;
+  QSTASH_NEXT_SIGNING_KEY: SecretsStoreSecret;
+}
+
+export default {
+  async fetch(request, env, ctx): Promise<Response> {
+    const c = new Receiver({
+      currentSigningKey: await env.QSTASH_CURRENT_SIGNING_KEY.get(),
+      nextSigningKey: await env.QSTASH_NEXT_SIGNING_KEY.get(),
+    });
+
+    // Rest of the code
+  },
+};
 ```
 
-Executing this command prints a local URL to your workflow endpoint. By default, this URL is `http://localhost:8787`.
+After doing these modifications, you can deploy the worker to Cloudflare with `npx wrangler deploy`, and
+follow the steps below to define the secrets:
 
-You can verify your correct environment variable setup by checking the wrangler output, which should now have access to your `QSTASH_TOKEN` binding and log your local URL:
+* Navigate to [Upstash Console](https://console.upstash.com) and get your QStash credentials.
+
+* In [Cloudflare Dashboard](https://dash.cloudflare.com/), Go to **Secrets Store** and add QStash credentials as secrets.
 
 <Frame>
-  <img src="https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash-workflow/wrangler.png?fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=707cec511359835449c86699cb91de29" data-og-width="1122" width="1122" data-og-height="524" height="524" data-path="img/qstash-workflow/wrangler.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash-workflow/wrangler.png?w=280&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=0015387b2cb15a57dc551aa28a97eb5a 280w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash-workflow/wrangler.png?w=560&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=fefc9cb350d93dcc2ba2ae75af33444a 560w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash-workflow/wrangler.png?w=840&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=76795e5a692e024263b10123c4df1aa4 840w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash-workflow/wrangler.png?w=1100&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=0b95c822fdf5022159caa4bcdfe4f6cc 1100w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash-workflow/wrangler.png?w=1650&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=1e347cb36ad119611d338dd3e7497c4d 1650w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash-workflow/wrangler.png?w=2500&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=e2a023d8ab3f3a7fc0d9eee18ba2ed37 2500w" />
+  <img src="https://mintcdn.com/upstash/DrxIz7v3jaqUZCku/img/cloudflare-integration/secrets-store.png?fit=max&auto=format&n=DrxIz7v3jaqUZCku&q=85&s=daefd6a42242541b70452ccd1071e7dd" data-og-width="1940" width="1940" data-og-height="1110" height="1110" data-path="img/cloudflare-integration/secrets-store.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/DrxIz7v3jaqUZCku/img/cloudflare-integration/secrets-store.png?w=280&fit=max&auto=format&n=DrxIz7v3jaqUZCku&q=85&s=4dcc1246d56ffba5f01961b68774af90 280w, https://mintcdn.com/upstash/DrxIz7v3jaqUZCku/img/cloudflare-integration/secrets-store.png?w=560&fit=max&auto=format&n=DrxIz7v3jaqUZCku&q=85&s=8a288410ed7f8913c97e610d41ebd7c6 560w, https://mintcdn.com/upstash/DrxIz7v3jaqUZCku/img/cloudflare-integration/secrets-store.png?w=840&fit=max&auto=format&n=DrxIz7v3jaqUZCku&q=85&s=a180068645d1f866f6ca5c6f302f7e16 840w, https://mintcdn.com/upstash/DrxIz7v3jaqUZCku/img/cloudflare-integration/secrets-store.png?w=1100&fit=max&auto=format&n=DrxIz7v3jaqUZCku&q=85&s=8c371c37e0b4809493768fd8734c1337 1100w, https://mintcdn.com/upstash/DrxIz7v3jaqUZCku/img/cloudflare-integration/secrets-store.png?w=1650&fit=max&auto=format&n=DrxIz7v3jaqUZCku&q=85&s=b0e40ebfe03c24b833311fb3806bb09a 1650w, https://mintcdn.com/upstash/DrxIz7v3jaqUZCku/img/cloudflare-integration/secrets-store.png?w=2500&fit=max&auto=format&n=DrxIz7v3jaqUZCku&q=85&s=a420fa6ad32aa11a9198f73e5ae7b6b1 2500w" />
 </Frame>
 
-Then, make a POST request to your workflow endpoint. For each workflow run, a unique workflow run ID is returned:
+* Under **Compute (Workers)** > **Workers & Pages**, find your worker and add these secrets as bindings.
 
-```bash Terminal theme={"system"}
-curl -X POST https://localhost:8787/ -D '{"text": "hello world!"}'
+<Frame>
+  <img src="https://mintcdn.com/upstash/DrxIz7v3jaqUZCku/img/cloudflare-integration/add-binding.png?fit=max&auto=format&n=DrxIz7v3jaqUZCku&q=85&s=3959adcb8a96153fbc001d35609182ad" data-og-width="1940" width="1940" data-og-height="1368" height="1368" data-path="img/cloudflare-integration/add-binding.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/DrxIz7v3jaqUZCku/img/cloudflare-integration/add-binding.png?w=280&fit=max&auto=format&n=DrxIz7v3jaqUZCku&q=85&s=8ac52ecfe1badade3aa079ab5be91840 280w, https://mintcdn.com/upstash/DrxIz7v3jaqUZCku/img/cloudflare-integration/add-binding.png?w=560&fit=max&auto=format&n=DrxIz7v3jaqUZCku&q=85&s=8a824b1590cddb28be8ae046008d6daa 560w, https://mintcdn.com/upstash/DrxIz7v3jaqUZCku/img/cloudflare-integration/add-binding.png?w=840&fit=max&auto=format&n=DrxIz7v3jaqUZCku&q=85&s=f7ca746df30c5b0e4c9ba39c99def7d5 840w, https://mintcdn.com/upstash/DrxIz7v3jaqUZCku/img/cloudflare-integration/add-binding.png?w=1100&fit=max&auto=format&n=DrxIz7v3jaqUZCku&q=85&s=b689b92485b9c5f538ba6b7f340d84e2 1100w, https://mintcdn.com/upstash/DrxIz7v3jaqUZCku/img/cloudflare-integration/add-binding.png?w=1650&fit=max&auto=format&n=DrxIz7v3jaqUZCku&q=85&s=43d991ebc0be959c42efb31a95bac614 1650w, https://mintcdn.com/upstash/DrxIz7v3jaqUZCku/img/cloudflare-integration/add-binding.png?w=2500&fit=max&auto=format&n=DrxIz7v3jaqUZCku&q=85&s=ffb326c5cadb3044db014762bddbeddf 2500w" />
+</Frame>
 
-# result: {"workflowRunId":"wfr_xxxxxx"}
+### Deployment
+
+<Note>
+  Newer deployments may revert the configurations you did in the dashboard.
+  While worker level secrets persist, the bindings will be gone!
+</Note>
+
+Deploy your function to Cloudflare with `npx wrangler deploy`
+
+The endpoint of the function will be provided to you, once the deployment is done.
+
+### Publish a message
+
+Open a different terminal and publish a message to QStash. Note the destination
+url is the same that was printed in the previous deploy step.
+
+```bash  theme={"system"}
+curl --request POST "https://qstash.upstash.io/v2/publish/https://<your-worker-name>.<account-name>.workers.dev" \
+     -H "Authorization: Bearer <QSTASH_TOKEN>" \
+     -H "Content-Type: application/json" \
+     -d "{ \"hello\": \"world\"}"
 ```
 
-<Frame>
-  <img src="https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash-workflow/workers_local_request.png?fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=3536436ca84be611df74e8f0c9da3dd8" data-og-width="1765" width="1765" data-og-height="584" height="584" data-path="img/qstash-workflow/workers_local_request.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash-workflow/workers_local_request.png?w=280&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=bcceb8996cb4efcfd07b66f2d6f41256 280w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash-workflow/workers_local_request.png?w=560&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=feaba5ae13295f5749cda6187322cb48 560w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash-workflow/workers_local_request.png?w=840&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=5681fd9d6446929480e65e262360ccd6 840w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash-workflow/workers_local_request.png?w=1100&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=9f41dfd3fdcdf275a630ad42c8cb836b 1100w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash-workflow/workers_local_request.png?w=1650&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=de4a09255a54bc0e31d0d4d13ddb2d20 1650w, https://mintcdn.com/upstash/V1WwT580M-elE8rq/img/qstash-workflow/workers_local_request.png?w=2500&fit=max&auto=format&n=V1WwT580M-elE8rq&q=85&s=44e6b099d57d05ef9d696a3d125e6177 2500w" />
-</Frame>
+In the logs you should see something like this:
 
-See the [documentation on starting a workflow](/workflow/howto/start) for other ways you can start your workflow.
+```bash  theme={"system"}
+$ npx wrangler tail
 
-If you didn't set up local QStash development server, you can use this ID to track the workflow run and see its status in your QStash workflow dashboard. All steps are listed with their statuses, headers, and body for a detailed overview of your workflow from start to finish. Click on a step to see its detailed logs.
+⛅️ wrangler 4.43.0
+--------------------
 
-<Frame>
-  <img src="https://mintcdn.com/upstash/pqZtv0gXFMQuy8rU/img/qstash-workflow/dashboard.png?fit=max&auto=format&n=pqZtv0gXFMQuy8rU&q=85&s=d62fa91b9bcfc9c845105c42dae6f1e0" data-og-width="1656" width="1656" data-og-height="1080" height="1080" data-path="img/qstash-workflow/dashboard.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/pqZtv0gXFMQuy8rU/img/qstash-workflow/dashboard.png?w=280&fit=max&auto=format&n=pqZtv0gXFMQuy8rU&q=85&s=8b59e83f0dc4ac843391ad758f34f0e8 280w, https://mintcdn.com/upstash/pqZtv0gXFMQuy8rU/img/qstash-workflow/dashboard.png?w=560&fit=max&auto=format&n=pqZtv0gXFMQuy8rU&q=85&s=000f796c9f6977bd9918ffcb657fbee3 560w, https://mintcdn.com/upstash/pqZtv0gXFMQuy8rU/img/qstash-workflow/dashboard.png?w=840&fit=max&auto=format&n=pqZtv0gXFMQuy8rU&q=85&s=8609b0c44963e73b7be7b1eac2f855bf 840w, https://mintcdn.com/upstash/pqZtv0gXFMQuy8rU/img/qstash-workflow/dashboard.png?w=1100&fit=max&auto=format&n=pqZtv0gXFMQuy8rU&q=85&s=2a37385f1f54c7ed8597051b02dfb783 1100w, https://mintcdn.com/upstash/pqZtv0gXFMQuy8rU/img/qstash-workflow/dashboard.png?w=1650&fit=max&auto=format&n=pqZtv0gXFMQuy8rU&q=85&s=b2b4cdfe944c486ed4c73078c2509222 1650w, https://mintcdn.com/upstash/pqZtv0gXFMQuy8rU/img/qstash-workflow/dashboard.png?w=2500&fit=max&auto=format&n=pqZtv0gXFMQuy8rU&q=85&s=c3a84ffafdd7cbe5b00be4e435dacf84 2500w" />
-</Frame>
-
-## Step 5: Deploying to Production
-
-When deploying your Cloudflare Worker with Upstash Workflow to production, there are a few key points to keep in mind:
-
-1. **Environment Variables**: Make sure that all necessary environment variables from your `.dev.vars` file are set in your Cloudflare Worker project settings. For example, your `QSTASH_TOKEN`, `ENVIRONMENT`, and any other configuration variables your workflow might need.
-
-2. **Remove Local Development Settings**: In your production code, you can remove or conditionally exclude any local development settings. For example, if you used [local tunnel for local development](/workflow/howto/local-development#local-tunnel-with-ngrok)
-
-3. **Deployment**: Deploy your Cloudflare Worker to production as you normally would, for example using the Cloudflare CLI:
-
-   ```bash Terminal theme={"system"}
-   wrangler deploy
-   ```
-
-4. **Verify Workflow Endpoint**: After deployment, verify that your workflow endpoint is accessible by making a POST request to your production URL:
-
-   ```bash Terminal theme={"system"}
-   curl -X POST https://<YOUR-PRODUCTION-URL>/ -D '{"text": "hello world!"}'
-   ```
-
-5. **Monitor in QStash Dashboard**: Use the QStash dashboard to monitor your production workflows. You can track workflow runs, view step statuses, and access detailed logs.
-
-6. **Set Up Alerts**: Consider setting up alerts in Sentry or other monitoring tools to be notified of any workflow failures in production.
+Successfully created tail, expires at 2025-10-16T00:25:17Z
+Connected to <your-worker-name>, waiting for logs...
+POST https://<your-worker-name>.<account-name>.workers.dev/ - Ok @ 10/15/2025, 10:34:55 PM
+```
 
 ## Next Steps
 
-1. Learn how to protect your workflow endpoint from unauthorized access by [securing your workflow endpoint](/workflow/howto/security).
+That's it, you have successfully created a secure Cloudflare Worker, that
+receives and verifies incoming webhooks from qstash.
 
-2. Explore [the source code](https://github.com/upstash/workflow-js/tree/main/examples/cloudflare-workers) for a detailed, end-to-end example and best practices.
+Learn more about publishing a message to qstash [here](/qstash/howto/publishing).
 
-3. For setting up and testing your workflows in a local environment, check out our [local development guide](/workflow/howto/local-development).
+You can find the source code [here](https://github.com/upstash/qstash-examples/tree/main/cloudflare-workers).

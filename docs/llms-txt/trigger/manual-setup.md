@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/manual-setup.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Manual setup
 
 > How to manually setup Trigger.dev in your project.
@@ -16,7 +20,7 @@ This guide covers how to manually set up Trigger.dev in your project, including 
 
 Before setting up your project, you need to authenticate the CLI with Trigger.dev:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 # Login to Trigger.dev
 npx trigger.dev@latest login
 
@@ -31,22 +35,22 @@ This will open your browser to authenticate. Once authenticated, you'll need to 
 Install the required packages based on your package manager:
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":"css-variables"}
   npm add @trigger.dev/sdk@latest
   npm add --save-dev @trigger.dev/build@latest
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm add @trigger.dev/sdk@latest
   pnpm add -D @trigger.dev/build@latest
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn add @trigger.dev/sdk@latest
   yarn add -D @trigger.dev/build@latest
   ```
 
-  ```bash bun theme={null}
+  ```bash bun theme={"theme":"css-variables"}
   bun add @trigger.dev/sdk@latest
   bun add -D @trigger.dev/build@latest
   ```
@@ -61,7 +65,7 @@ For local development, you need to set up the `TRIGGER_SECRET_KEY` environment v
 3. Copy the **DEV** secret key
 4. Add it to your local environment file:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 TRIGGER_SECRET_KEY=tr_dev_xxxxxxxxxx
 ```
 
@@ -69,7 +73,7 @@ TRIGGER_SECRET_KEY=tr_dev_xxxxxxxxxx
 
 If you're using a self-hosted Trigger.dev instance, also set:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 TRIGGER_API_URL=https://your-trigger-instance.com
 ```
 
@@ -79,7 +83,7 @@ You can run the Trigger.dev CLI in two ways:
 
 ### Option 1: Using npx/pnpm dlx/yarn dlx
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 # npm
 npx trigger.dev@latest dev
 
@@ -94,7 +98,7 @@ yarn dlx trigger.dev@latest dev
 
 Add the CLI to your `package.json`:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "devDependencies": {
     "trigger.dev": "^4.0.0"
@@ -104,7 +108,7 @@ Add the CLI to your `package.json`:
 
 Then add scripts to your `package.json`:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "scripts": {
     "dev:trigger": "trigger dev",
@@ -117,7 +121,7 @@ Then add scripts to your `package.json`:
 
 Make sure to pin the version of the CLI to the same version as the SDK that you are using:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 "devDependencies": {
   "trigger.dev": "^4.0.0",
   "@trigger.dev/build": "^4.0.0"
@@ -133,7 +137,7 @@ While running the CLI `dev` or `deploy` commands, the CLI will automatically det
 
 Create a `trigger.config.ts` file in your project root (or `trigger.config.mjs` for JavaScript projects):
 
-```typescript  theme={null}
+```typescript  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -169,7 +173,7 @@ export default defineConfig({
 
 By default, Trigger.dev will use the Node.js runtime. If you're using Bun, you can specify the runtime:
 
-```typescript  theme={null}
+```typescript  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -185,7 +189,7 @@ See our [Bun runtime documentation](/guides/frameworks/bun) for more information
 
 Create a `trigger` directory (matching the `dirs` in your config) and add an example task:
 
-```typescript src/trigger/example.ts theme={null}
+```typescript src/trigger/example.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 export const helloWorld = task({
@@ -207,7 +211,7 @@ See our [Tasks](/tasks/overview) docs for more information on how to create task
 
 If you're using TypeScript, add `trigger.config.ts` to your `tsconfig.json` include array:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "compilerOptions": {
     // ... your existing options
@@ -223,7 +227,7 @@ If you're using TypeScript, add `trigger.config.ts` to your `tsconfig.json` incl
 
 Add `.trigger` to your `.gitignore` file to exclude Trigger.dev's local development files:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 # Trigger.dev
 .trigger
 ```
@@ -236,7 +240,7 @@ If you're building a React frontend application and want to display task status 
 
 ### Installation
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 # npm
 npm install @trigger.dev/react-hooks@latest
 
@@ -254,7 +258,7 @@ bun add @trigger.dev/react-hooks@latest
 
 1. **Generate a Public Access Token** in your backend:
 
-```typescript  theme={null}
+```typescript  theme={"theme":"css-variables"}
 import { auth } from "@trigger.dev/sdk";
 
 // In your backend API
@@ -269,7 +273,7 @@ export async function getPublicAccessToken() {
 
 2. **Use hooks to monitor tasks**:
 
-```tsx  theme={null}
+```tsx  theme={"theme":"css-variables"}
 import { useRealtimeRun } from "@trigger.dev/react-hooks";
 
 export function TaskStatus({
@@ -303,7 +307,7 @@ Build extensions allow you to customize the build process. Ensure you have the `
 
 Now you can use any of the built-in extensions:
 
-```typescript  theme={null}
+```typescript  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { prismaExtension } from "@trigger.dev/build/extensions/prisma";
 
@@ -312,6 +316,7 @@ export default defineConfig({
   build: {
     extensions: [
       prismaExtension({
+        mode: "legacy",
         schema: "prisma/schema.prisma",
         migrate: true, // Run migrations on deploy
       }),
@@ -339,7 +344,7 @@ This approach creates a dedicated tasks package that can be consumed by multiple
 
 **Root `package.json`**:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "name": "my-monorepo",
   "private": true,
@@ -358,7 +363,7 @@ This approach creates a dedicated tasks package that can be consumed by multiple
 
 **`pnpm-workspace.yaml`**:
 
-```yaml  theme={null}
+```yaml  theme={"theme":"css-variables"}
 packages:
   - "apps/*"
   - "packages/*"
@@ -366,7 +371,7 @@ packages:
 
 **`turbo.json`**:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "$schema": "https://turbo.build/schema.json",
   "ui": "tui",
@@ -390,7 +395,7 @@ packages:
 
 **`packages/tasks/package.json`**:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "name": "@repo/tasks",
   "version": "0.0.0",
@@ -409,7 +414,7 @@ packages:
 
 **`packages/tasks/trigger.config.ts`**:
 
-```typescript  theme={null}
+```typescript  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -431,20 +436,20 @@ export default defineConfig({
 
 **`packages/tasks/src/index.ts`**:
 
-```typescript  theme={null}
+```typescript  theme={"theme":"css-variables"}
 export * from "@trigger.dev/sdk"; // Export values and types from the Trigger.dev sdk
 ```
 
 **`packages/tasks/src/trigger/index.ts`**:
 
-```typescript  theme={null}
+```typescript  theme={"theme":"css-variables"}
 // Export tasks
 export * from "./example";
 ```
 
 **`packages/tasks/src/trigger/example.ts`**:
 
-```typescript  theme={null}
+```typescript  theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 export const helloWorld = task({
@@ -466,7 +471,7 @@ See our [turborepo-prisma-tasks-package example](https://github.com/triggerdotde
 
 **`apps/web/package.json`**:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "name": "web",
   "dependencies": {
@@ -480,7 +485,7 @@ See our [turborepo-prisma-tasks-package example](https://github.com/triggerdotde
 
 **`apps/web/app/api/actions.ts`**:
 
-```typescript  theme={null}
+```typescript  theme={"theme":"css-variables"}
 "use server";
 
 import { tasks } from "@repo/tasks/trigger";
@@ -505,7 +510,7 @@ export async function triggerHelloWorld(name: string) {
 
 Run the development server for the tasks package:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 # From the root of your monorepo
 cd packages/tasks
 npx trigger.dev@latest dev
@@ -522,7 +527,7 @@ This approach installs Trigger.dev directly in individual apps that need backgro
 
 **`apps/web/package.json`**:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "name": "web",
   "dependencies": {
@@ -541,7 +546,7 @@ This approach installs Trigger.dev directly in individual apps that need backgro
 
 **`apps/web/trigger.config.ts`**:
 
-```typescript  theme={null}
+```typescript  theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -565,7 +570,7 @@ export default defineConfig({
 
 **`apps/web/src/trigger/example.ts`**:
 
-```typescript  theme={null}
+```typescript  theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 export const helloWorld = task({
@@ -585,7 +590,7 @@ export const helloWorld = task({
 
 **`apps/web/app/api/actions.ts`**:
 
-```typescript  theme={null}
+```typescript  theme={"theme":"css-variables"}
 "use server";
 
 import { tasks } from "@trigger.dev/sdk";
@@ -608,7 +613,7 @@ export async function triggerHelloWorld(name: string) {
 
 #### 5. Development workflow
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 # From the app directory
 cd apps/web
 npx trigger.dev@latest dev

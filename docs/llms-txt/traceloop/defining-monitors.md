@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/monitoring/defining-monitors.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Defining Monitors
 
 > Learn how to create and configure monitors to evaluate your LLM outputs
@@ -96,8 +100,3 @@ You can use Regex like `text":"(.+?)"` to extract just the text content. The reg
 ### Advanced
 
 You can set a **Rate sample** to control the percentage of spans within the selected filter group that the monitor will run on.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

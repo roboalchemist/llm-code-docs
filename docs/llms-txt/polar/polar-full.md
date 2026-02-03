@@ -364,8 +364,6 @@ Source: https://polar.sh/docs/api-reference/customer-portal/orders/get
 get /v1/customer-portal/orders/{id}
 Get an order by ID for the authenticated customer.
 
-**Scopes**: `customer_portal:read` `customer_portal:write`
-
 
 
 # Get Order Invoice
@@ -373,8 +371,6 @@ Source: https://polar.sh/docs/api-reference/customer-portal/orders/get-invoice
 
 get /v1/customer-portal/orders/{id}/invoice
 Get an order's invoice data.
-
-**Scopes**: `customer_portal:read` `customer_portal:write`
 
 <Note>
   The invoice must be generated first before it can be retrieved. You should call the [`POST /v1/customer-portal/orders/{id}/invoice`](/api-reference/customer-portal/orders/post-invoice) endpoint to generate the invoice.
@@ -389,8 +385,6 @@ Source: https://polar.sh/docs/api-reference/customer-portal/orders/list
 get /v1/customer-portal/orders/
 List orders of the authenticated customer.
 
-**Scopes**: `customer_portal:read` `customer_portal:write`
-
 
 
 # Update Order
@@ -399,8 +393,6 @@ Source: https://polar.sh/docs/api-reference/customer-portal/orders/patch
 patch /v1/customer-portal/orders/{id}
 Update an order for the authenticated customer.
 
-**Scopes**: `customer_portal:write`
-
 
 
 # Generate Order Invoice
@@ -408,8 +400,6 @@ Source: https://polar.sh/docs/api-reference/customer-portal/orders/post-invoice
 
 post /v1/customer-portal/orders/{id}/invoice
 Trigger generation of an order's invoice.
-
-**Scopes**: `customer_portal:read` `customer_portal:write`
 
 <Warning>
   Once the invoice is generated, it's permanent and cannot be modified.
@@ -431,7 +421,6 @@ Trigger generation of an order's invoice.
 Source: https://polar.sh/docs/api-reference/customer-portal/seats/assign
 
 post /v1/customer-portal/seats
-**Scopes**: `customer_portal:write`
 
 
 
@@ -457,7 +446,6 @@ List all subscriptions where the authenticated customer has claimed a seat.
 Source: https://polar.sh/docs/api-reference/customer-portal/seats/resend
 
 post /v1/customer-portal/seats/{seat_id}/resend
-**Scopes**: `customer_portal:write`
 
 
 
@@ -465,7 +453,6 @@ post /v1/customer-portal/seats/{seat_id}/resend
 Source: https://polar.sh/docs/api-reference/customer-portal/seats/revoke
 
 delete /v1/customer-portal/seats/{seat_id}
-**Scopes**: `customer_portal:write`
 
 
 
@@ -474,6 +461,9 @@ Source: https://polar.sh/docs/api-reference/customer-portal/sessions/create
 
 post /v1/customer-sessions/
 Create a customer session.
+
+For organizations with `member_model_enabled`, this will automatically
+create a member session for the owner member of the customer.
 
 **Scopes**: `customer_sessions:write`
 
@@ -484,8 +474,6 @@ Source: https://polar.sh/docs/api-reference/customer-portal/subscriptions/cancel
 
 delete /v1/customer-portal/subscriptions/{id}
 Cancel a subscription of the authenticated customer.
-
-**Scopes**: `customer_portal:write`
 
 
 
@@ -514,8 +502,6 @@ Source: https://polar.sh/docs/api-reference/customer-portal/subscriptions/update
 
 patch /v1/customer-portal/subscriptions/{id}
 Update a subscription of the authenticated customer.
-
-**Scopes**: `customer_portal:write`
 
 
 
@@ -593,6 +579,8 @@ a specific subscription or revoke certain benefits.
 Note: The customers information will nonetheless be retained for historic
 orders and subscriptions.
 
+Set `anonymize=true` to also anonymize PII for GDPR compliance.
+
 **Scopes**: `customers:write`
 
 
@@ -604,6 +592,8 @@ delete /v1/customers/external/{external_id}
 Delete a customer by external ID.
 
 Immediately cancels any active subscriptions and revokes any active benefits.
+
+Set `anonymize=true` to also anonymize PII for GDPR compliance.
 
 **Scopes**: `customers:write`
 
@@ -826,7 +816,7 @@ Source: https://polar.sh/docs/api-reference/introduction
 
 Base URLs, authentication, pagination, rate limits, and the difference between the Core API and the Customer Portal API
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Production Base URL" icon="globe">
     `https://api.polar.sh/v1`
   </Card>
@@ -866,7 +856,7 @@ Read more: [Sandbox Environment](/integrate/sandbox)
 
 Use an **OAT** to act on behalf of your organization (manage products, prices, checkouts, orders, subscriptions, benefits, etc.).
 
-```http  theme={null}
+```http theme={null}
 Authorization: Bearer polar_oat_xxxxxxxxxxxxxxxxx
 ```
 
@@ -1287,7 +1277,7 @@ Trigger generation of an order's invoice.
   After successfully calling this endpoint, you get a `202` response, meaning
   the generation of the invoice has been scheduled. It usually only takes a few
   seconds before you can retrieve the invoice using the [`GET /v1/orders/{id}
-    /invoice`](/api-reference/orders/get-invoice) endpoint.
+      /invoice`](/api-reference/orders/get-invoice) endpoint.
 
   If you want a reliable notification when the invoice is ready, you can listen to the
   [`order.updated`](/api-reference/webhooks/order.updated) webhook and check the [`is_invoice_generated` field](/api-reference/webhooks/order.updated#schema-data-is-invoice-generated).
@@ -1398,7 +1388,7 @@ Create a refund.
 Source: https://polar.sh/docs/api-reference/refunds/list
 
 get /v1/refunds/
-List products.
+List refunds.
 
 **Scopes**: `refunds:read` `refunds:write`
 
@@ -1729,7 +1719,7 @@ Stay up to date with the latest changes, improvements and deprecations to the Po
 
   To be more consistent across our API, we've renamed `customer_external_id` field to `external_customer_id` in the Checkout API and Customer Session API.
 
-  * <Icon icon="circle-exclamation" size={16} color="orange" /> **Deprecated**:
+  * <Icon icon="circle-exclamation" /> **Deprecated**:
     `customer_external_id` field in the Checkout API and Customer Session API. Use
     `external_customer_id` instead.
 
@@ -1767,9 +1757,9 @@ Stay up to date with the latest changes, improvements and deprecations to the Po
 <Update label="2025-04-16">
   ## Benefit metadata support and floating point numbers in metadata
 
-  * <Icon icon="check" size={16} color="green" /> **Added**: Benefits now support
+  * <Icon icon="check" /> **Added**: Benefits now support
     [metadata](/api-reference/benefits/create#body-metadata).
-  * <Icon icon="check" size={16} color="green" /> **Added**: Metadata values now
+  * <Icon icon="check" /> **Added**: Metadata values now
     support floating-point numbers. Before, only strings, integers and booleans
     were supported.
 </Update>
@@ -1779,11 +1769,11 @@ Stay up to date with the latest changes, improvements and deprecations to the Po
 
   To be more consistent with the [Order schema changes](#2025-03-14), we've made some changes to the field related to amounts in the Checkout schema.
 
-  * <Icon icon="check" size={16} color="green" /> **Added**:
+  * <Icon icon="check" /> **Added**:
     [`checkout.discount_amount`](/api-reference/checkouts/get-session#response-discount-amount).
-  * <Icon icon="check" size={16} color="green" /> **Added**:
+  * <Icon icon="check" /> **Added**:
     [`checkout.net_amount`](/api-reference/checkouts/get-session#response-net-amount).
-  * <Icon icon="circle-exclamation" size={16} color="orange" /> **Deprecated**:
+  * <Icon icon="circle-exclamation" /> **Deprecated**:
     `checkout.subtotal_amount`, use
     [`checkout.net_amount`](/api-reference/checkouts/get-session#response-net-amount)
     instead.
@@ -1794,15 +1784,15 @@ Stay up to date with the latest changes, improvements and deprecations to the Po
 
   Until now, Polar only kept track of fully processed, **paid** orders. To help you keep track of the order lifecycle, we've added a new status `pending`, which is a transitive state meaning the order is created but not paid yet. In most cases, the order will transition from `pending` to `paid` in a short time.
 
-  * <Icon icon="circle-exclamation" size={16} color="orange" /> When receiving
+  * <Icon icon="circle-exclamation" /> When receiving
     `order.created` event, the order status might not be `paid`.
-  * <Icon icon="check" size={16} color="green" /> **Added**:
+  * <Icon icon="check" /> **Added**:
     [`order.updated`](/api-reference/webhooks/order.updated) webhook, sent when
     the order status changes or when it's partially or fully refunded.
-  * <Icon icon="check" size={16} color="green" /> **Added**:
+  * <Icon icon="check" /> **Added**:
     [`order.paid`](/api-reference/webhooks/order.paid) webhook, sent when the
     order is fully processed and paid.
-  * <Icon icon="check" size={16} color="green" /> **Added**:
+  * <Icon icon="check" /> **Added**:
     [`Order.paid`](/api-reference/orders/get#response-paid) property to the order
     schema.
 
@@ -1817,16 +1807,16 @@ Stay up to date with the latest changes, improvements and deprecations to the Po
 
   To prepare our next move to support usage-based billing, we've made some changes to the [`Subscription`](/api-reference/subscriptions/get) and [`Order`](/api-reference/orders/get) schemas. The main reason behind those is that we need to support multiple prices and items in a single subscription or order.
 
-  * <Icon icon="circle-exclamation" size={16} color="orange" /> **Deprecated**:
+  * <Icon icon="circle-exclamation" /> **Deprecated**:
     `Subscription.price_id` and `Subscription.price`. Use the
     `Subscription.prices` array instead.
-  * <Icon icon="circle-exclamation" size={16} color="orange" /> **Deprecated**:
+  * <Icon icon="circle-exclamation" /> **Deprecated**:
     `Order.product_price_id` and `Order.product_price`. Use the `Order.items`
     array instead.
-  * <Icon icon="circle-exclamation" size={16} color="orange" /> **Deprecated**:
+  * <Icon icon="circle-exclamation" /> **Deprecated**:
     `Order.amount`. Use the `Order.net_amount` instead. It has the same value and
     meaning, but the new name is more explicit.
-  * <Icon icon="check" size={16} color="green" /> **Added**:
+  * <Icon icon="check" /> **Added**:
     `Order.subtotal_amount`, `Order.discount_amount`, and `Order.total_amount`
     fields to provide a more detailed breakdown of the order amount.
 </Update>
@@ -1837,10 +1827,50 @@ Source: https://polar.sh/docs/changelog/recent
 
 Stay up to date with the latest changes and improvements to Polar.
 
+<Update label="2025-10-17">
+  ## Ability to update subscription to an updated price of the product
+
+  Merchants can now [update existing subscriptions](https://polar.sh/docs/api-reference/subscriptions/update#subscriptionupdateproduct) from archived pricing schemes to current ones within the same product.
+
+  * Enables migration from grandfathered pricing to current pricing schemes
+  * Prorations calculated using active subscription prices
+  * In the dashboard, a small badge **Upgrade pricing** will indicate that you can update to the same product, but with the new pricing scheme.
+
+  <img />
+
+  ## New IP ranges
+
+  From **October 27th, 2025**, [new IP ranges](https://polar.sh/docs/integrate/webhooks/delivery#ip-allowlist) will be added.
+
+  ## Improved Subscription Cancellation Flow
+
+  [Benefits](https://polar.sh/docs/features/benefits/introduction) attached to the subscription [are now automatically revoked](https://github.com/polarsource/polar/pull/7271) when the subscription is canceled.
+
+  ## Ability to specify External ID
+
+  [External ID can now be specified](https://github.com/polarsource/polar/pull/7275) during creation of a customer via the dashboard.
+
+  <img />
+
+  ## Ability to set Return URL for Checkouts and Customer Portal
+
+  A Return URL can now be set while generating a [checkout session](https://polar.sh/docs/api-reference/checkouts/create-session#body-return-url-one-of-0) or a [customer portal session](https://polar.sh/docs/api-reference/customer-portal/sessions/create#body-one-of-0-return-url-one-of-0). This allows you to preserve the context for the end users who visit either if they wish to go back to the application.
+
+  ## Ability to search Customers via their External ID
+
+  The [List Customers API](https://polar.sh/docs/api-reference/customers/list) now accepts Customer's External ID [in the **query** parameter](https://polar.sh/docs/api-reference/customers/list#parameter-one-of-0).
+
+  ## Ability to disable automatic customer emails
+
+  Via the organization settings, you can now disable the emails we automatically send to customers on certain events. This gives you the ability to own the communications with the customers.
+
+  <img />
+</Update>
+
 <Update label="2025-10-10">
   ## Launched In-Product Chat Support for Merchants
 
-  <img src="https://mintcdn.com/polar/BSq8s4sf_HNjO0FK/assets/changelog/2025-10-10/launched-merchant-support.jpg?fit=max&auto=format&n=BSq8s4sf_HNjO0FK&q=85&s=8d424a428d041a57cd35ea2e3128071f" data-og-width="4291" width="4291" data-og-height="2632" height="2632" data-path="assets/changelog/2025-10-10/launched-merchant-support.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/BSq8s4sf_HNjO0FK/assets/changelog/2025-10-10/launched-merchant-support.jpg?w=280&fit=max&auto=format&n=BSq8s4sf_HNjO0FK&q=85&s=c78c874694d6f94ad123370b637fd3c3 280w, https://mintcdn.com/polar/BSq8s4sf_HNjO0FK/assets/changelog/2025-10-10/launched-merchant-support.jpg?w=560&fit=max&auto=format&n=BSq8s4sf_HNjO0FK&q=85&s=b4fea1eb74ad72346c0096b6c7f21bac 560w, https://mintcdn.com/polar/BSq8s4sf_HNjO0FK/assets/changelog/2025-10-10/launched-merchant-support.jpg?w=840&fit=max&auto=format&n=BSq8s4sf_HNjO0FK&q=85&s=287b7597e37f6554ebc5a45894585b1e 840w, https://mintcdn.com/polar/BSq8s4sf_HNjO0FK/assets/changelog/2025-10-10/launched-merchant-support.jpg?w=1100&fit=max&auto=format&n=BSq8s4sf_HNjO0FK&q=85&s=65836546055f23909a482d19145813aa 1100w, https://mintcdn.com/polar/BSq8s4sf_HNjO0FK/assets/changelog/2025-10-10/launched-merchant-support.jpg?w=1650&fit=max&auto=format&n=BSq8s4sf_HNjO0FK&q=85&s=decd651383ea8e53a884211992c8c97a 1650w, https://mintcdn.com/polar/BSq8s4sf_HNjO0FK/assets/changelog/2025-10-10/launched-merchant-support.jpg?w=2500&fit=max&auto=format&n=BSq8s4sf_HNjO0FK&q=85&s=025c6d15aa49af9754f0d44dd61783e0 2500w" />
+  <img />
 
   We're excited to introduce a chat widget to the Polar dashboard, making it easier than ever for merchants to get help directly within the product.
 
@@ -1897,7 +1927,7 @@ Stay up to date with the latest changes and improvements to Polar.
 
   ## Cancellation metrics
 
-  <img src="https://mintcdn.com/polar/KPDvrxuIefIR_xN_/assets/changelog/2025-09-22/cancellation-metrics-example.png?fit=max&auto=format&n=KPDvrxuIefIR_xN_&q=85&s=03281906e75a2f354a6636e54d226296" data-og-width="2490" width="2490" data-og-height="1186" height="1186" data-path="assets/changelog/2025-09-22/cancellation-metrics-example.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/KPDvrxuIefIR_xN_/assets/changelog/2025-09-22/cancellation-metrics-example.png?w=280&fit=max&auto=format&n=KPDvrxuIefIR_xN_&q=85&s=6ae19ffbdaba4c7c0fe0d526ace61321 280w, https://mintcdn.com/polar/KPDvrxuIefIR_xN_/assets/changelog/2025-09-22/cancellation-metrics-example.png?w=560&fit=max&auto=format&n=KPDvrxuIefIR_xN_&q=85&s=42b4d9d3462985ebbe5caf58f19ecbe1 560w, https://mintcdn.com/polar/KPDvrxuIefIR_xN_/assets/changelog/2025-09-22/cancellation-metrics-example.png?w=840&fit=max&auto=format&n=KPDvrxuIefIR_xN_&q=85&s=fb4c1227797e8c4a7b87470f359b745e 840w, https://mintcdn.com/polar/KPDvrxuIefIR_xN_/assets/changelog/2025-09-22/cancellation-metrics-example.png?w=1100&fit=max&auto=format&n=KPDvrxuIefIR_xN_&q=85&s=8a7543565cb1ecfc64d1646cbc314f09 1100w, https://mintcdn.com/polar/KPDvrxuIefIR_xN_/assets/changelog/2025-09-22/cancellation-metrics-example.png?w=1650&fit=max&auto=format&n=KPDvrxuIefIR_xN_&q=85&s=364f0ea64944d70c3cf8d1dafb791c60 1650w, https://mintcdn.com/polar/KPDvrxuIefIR_xN_/assets/changelog/2025-09-22/cancellation-metrics-example.png?w=2500&fit=max&auto=format&n=KPDvrxuIefIR_xN_&q=85&s=db2266c6f032f8d0c503f06ea1de3ffa 2500w" />
+  <img />
 
   We've added detailed cancellation metrics, giving you clearer insights into subscription cancellations and their impact on your business performance.
 </Update>
@@ -1965,9 +1995,9 @@ Stay up to date with the latest changes and improvements to Polar.
 
   We've added a new **Checkouts** tab under the **Sales**, where you can review all the checkout sessions, successful or not. You can filter them by customer email, status, and product. You can also see the payment attempts for each checkout session, including the reason for any failed or declined payments.
 
-  <img className="block dark:hidden" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkout.light.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=4672cafc0b218d34a55c5cc006fdb153" data-og-width="3840" width="3840" data-og-height="2403" height="2403" data-path="assets/features/orders/checkout.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkout.light.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=bcf9dd8baf9fae7b84d2d046e9b4f811 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkout.light.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=1ac73955d12edfb9a605799d246d5237 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkout.light.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=4c931b7de4121f568d1ebefe90f42792 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkout.light.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=87c8d57825f9c084f1b3664402629a23 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkout.light.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=21eb74aed158f9b11a2015bcfa763039 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkout.light.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=d51d0053a32db9f505742b4d4203854c 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkout.dark.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=d8ebc400902b1179700e7348745793e8" data-og-width="3840" width="3840" data-og-height="2403" height="2403" data-path="assets/features/orders/checkout.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkout.dark.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=5b1783d55724d4260dab83ba63b66a77 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkout.dark.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=a0cf5741f10810ab68d2dd1962511895 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkout.dark.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=189ed0cb4d1ec19a9daf370f778dfea1 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkout.dark.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=115d82a958ab384611b9fa868566d104 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkout.dark.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=479d59cc8717b0f6330996e2f04915dd 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkout.dark.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=af86f31f76639dc114a243f54495601f 2500w" />
+  <img />
 
   The payment attempts information is also available on each order.
 
@@ -2001,7 +2031,7 @@ Stay up to date with the latest changes and improvements to Polar.
 
   Integrating authentication and billing for your users has never been easier.
 
-  <img src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/changelog/2025-03-04/better_auth.jpeg?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=41206888e5c593cac95721d75ef3292c" data-og-width="3680" width="3680" data-og-height="3668" height="3668" data-path="assets/changelog/2025-03-04/better_auth.jpeg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/changelog/2025-03-04/better_auth.jpeg?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=a3a315f319b6e462a42d1a4815c806df 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/changelog/2025-03-04/better_auth.jpeg?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=1c166f855f7dac6b29f212ed49793fa9 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/changelog/2025-03-04/better_auth.jpeg?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=45446626b116d984c78c9d821396cca6 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/changelog/2025-03-04/better_auth.jpeg?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=06b67e75a228b7a33f5c1d60cafabedf 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/changelog/2025-03-04/better_auth.jpeg?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=e7315932501dc71542d1ea1bea1d495e 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/changelog/2025-03-04/better_auth.jpeg?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=6a2e2aacb09903b8be46f928e989d702 2500w" />
+  <img />
 
   [Better Auth](https://www.better-auth.com/) is an open source authentication framework for
   TypeScript that is quickly becoming a favorite amongst developers. Today, we're
@@ -2031,11 +2061,9 @@ Stay up to date with the latest changes and improvements to Polar.
 
   Thus, we introduce support for **multiple products** at checkout, allowing customers to switch between them before purchasing. Typically, you can offer a monthly and a yearly product, with specific pricing and benefits for each.
 
-  {" "}
+  <img />
 
-  <img className="block dark:hidden" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/session/checkout_multiple_products.light.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=36f88ae4e5e70735484c068f3605b713" data-og-width="3840" width="3840" data-og-height="2500" height="2500" data-path="assets/features/checkout/session/checkout_multiple_products.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/session/checkout_multiple_products.light.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=04994e58aef6964bcbad83136d7a623b 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/session/checkout_multiple_products.light.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=97436039cd7d08c4ca762d81dada1a73 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/session/checkout_multiple_products.light.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=3bf82c3989003e71f22a230a25db119f 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/session/checkout_multiple_products.light.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=10505f70deec13a9097af4daa1d04b86 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/session/checkout_multiple_products.light.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=47784df3a7278ec4df21c13c3ff81b5c 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/session/checkout_multiple_products.light.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=f91a412a12601270ac3bfadd82832e7e 2500w" />
-
-  <img className="hidden dark:block" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/session/checkout_multiple_products.dark.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=82f61a0c8e8108b64d214c223d9a0f67" data-og-width="3840" width="3840" data-og-height="2500" height="2500" data-path="assets/features/checkout/session/checkout_multiple_products.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/session/checkout_multiple_products.dark.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=06d12edfe721f4ed1686a09110f935be 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/session/checkout_multiple_products.dark.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=7bfedd743a9e5a2e2924f072218a6d73 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/session/checkout_multiple_products.dark.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=d931de8df011738cedb1988f3c7adaee 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/session/checkout_multiple_products.dark.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=bd13134692851f71dd9228f52558b8a6 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/session/checkout_multiple_products.dark.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=5396835651699c364b553bcc5ea9f34d 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/session/checkout_multiple_products.dark.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=8b2984d955958ad755028e2760028fcd 2500w" />
+  <img />
 
   This is available right now using the [Checkout Session API](/features/checkout/session) and [Checkout Links](/features/checkout/links).
 
@@ -2043,12 +2071,10 @@ Stay up to date with the latest changes and improvements to Polar.
 
   * Products can no longer have both a monthly and yearly pricing. Existing products still work, but you'll see a warning like this when trying to edit their pricing:
 
-  {" "}
-
   <Frame>
-    <img className="block dark:hidden h-[200px]" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/changelog/2025-02-19/deprecated_pricing.light.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=49934d3505bcdc38dbeafe43f9a72b58" data-og-width="636" width="636" data-og-height="840" height="840" data-path="assets/changelog/2025-02-19/deprecated_pricing.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/changelog/2025-02-19/deprecated_pricing.light.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=e65d3de7ddfd5a6ab1769f4b6df49c86 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/changelog/2025-02-19/deprecated_pricing.light.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=5cd2637aa8693c489f61689bf9608b2c 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/changelog/2025-02-19/deprecated_pricing.light.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=f1848eed72e8996b801ca5ff2dd369a0 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/changelog/2025-02-19/deprecated_pricing.light.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=cff67ee9261a7fa66266b23054905ce9 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/changelog/2025-02-19/deprecated_pricing.light.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=a41ef4b91020fd4ec3fcc1f52ba39e91 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/changelog/2025-02-19/deprecated_pricing.light.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=b642f0b6bfcbcb10d76b5e10d75cafe0 2500w" />
+    <img />
 
-    <img className="hidden dark:block h-[200px]" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/changelog/2025-02-19/deprecated_pricing.dark.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=26006e80ef284cc79eb4bf7a434e166f" data-og-width="636" width="636" data-og-height="840" height="840" data-path="assets/changelog/2025-02-19/deprecated_pricing.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/changelog/2025-02-19/deprecated_pricing.dark.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=4525f8a4779925efaf53ad5a21118c47 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/changelog/2025-02-19/deprecated_pricing.dark.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=7f79e8f8b5bdb4269b6bee2454466d45 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/changelog/2025-02-19/deprecated_pricing.dark.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=e29745dbd4d5b72a54b350560f24af76 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/changelog/2025-02-19/deprecated_pricing.dark.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=30576f8854febabb8129d38f184b8361 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/changelog/2025-02-19/deprecated_pricing.dark.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=ca196f3fc92085b830bdc6dbba0375cb 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/changelog/2025-02-19/deprecated_pricing.dark.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=023941a6e7f1cf03e82c18376cd5c7b6 2500w" />
+    <img />
   </Frame>
 
   ### API changes
@@ -2067,9 +2093,9 @@ Source: https://polar.sh/docs/features/analytics
 
 Polar offers a professional metrics dashboard out of the box. So you can stay focused on increasing revenue vs. how to measure it.
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/analytics/overview.light.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=f926ad1de9c00a3f8ba61bf2e90776aa" data-og-width="5108" width="5108" data-og-height="2648" height="2648" data-path="assets/features/analytics/overview.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/analytics/overview.light.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=67927d816784763bb42159cea9ae5c90 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/analytics/overview.light.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=0faf455f9402048ade37405bf3fb473d 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/analytics/overview.light.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=c8846a8b10e94f1aeaf3f953bc22d7d4 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/analytics/overview.light.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=3546fddaab33ac92866b60af5f190f06 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/analytics/overview.light.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=ad5b55f9a6d5141c20c1abf140d72e55 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/analytics/overview.light.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=7b66890781954ea18ba661314b1350e6 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/analytics/overview.dark.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=010e4bacd232feaa9964092602b7c826" data-og-width="5108" width="5108" data-og-height="2646" height="2646" data-path="assets/features/analytics/overview.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/analytics/overview.dark.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=fd42834a06e0720001d624286e946817 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/analytics/overview.dark.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=cc41424432d453af72bc3ff7c593ff77 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/analytics/overview.dark.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=cb007dc6579e9e693eb7cca4b62cdd46 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/analytics/overview.dark.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=e5bdf711c781921f957ce2db97e6ef96 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/analytics/overview.dark.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=4576dbb757f5b2e82cdc9a7f4fe8f155 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/analytics/overview.dark.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=f3d6510f86407edaff882f9470879483 2500w" />
+<img />
 
 **Missing any metrics?** [Let us know so we can add it.](https://github.com/orgs/polarsource/discussions/categories/feature-requests)
 
@@ -2131,9 +2157,9 @@ Create your own Credits benefit
 
 The Credits benefit allows you to credit a customer's Usage Meter balance.
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/credits/credits.light.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=95a964aa562069bd58a551e44c757459" data-og-width="1620" width="1620" data-og-height="2304" height="2304" data-path="assets/features/benefits/credits/credits.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/credits/credits.light.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=b760d24e9a3986942f85f837906349fa 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/credits/credits.light.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=83df523fa528bf405607cfffc437ef16 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/credits/credits.light.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=05e2f5f37fc1f0f66a2269a07f188ed1 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/credits/credits.light.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=ed026417db037e5e4248776054fd6033 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/credits/credits.light.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=b547ce3907051f816340a08b145fa910 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/credits/credits.light.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=deda471c9661f21c57aebfcd23057040 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/credits/credits.dark.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=a545e217dd64f288b127ec76eb3527ef" data-og-width="1620" width="1620" data-og-height="2304" height="2304" data-path="assets/features/benefits/credits/credits.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/credits/credits.dark.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=f53dd50244006f52fe28389ccd32dc11 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/credits/credits.dark.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=ed51c6ecd5c605c90933ff9a8036c01f 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/credits/credits.dark.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=c1604014eb9f4556687cb2dae0cd4730 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/credits/credits.dark.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=8d6c8f2f81c2fbe10de06d045cae5488 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/credits/credits.dark.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=08efb35cd818b5c25f0011415eb7da5e 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/credits/credits.dark.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=6ce168ea0a513884b7be0e7989633a84 2500w" />
+<img />
 
 ## Crediting Usage Meter Balance
 
@@ -2176,7 +2202,7 @@ Source: https://polar.sh/docs/features/benefits/discord-access
 
 Sell Discord access & roles with ease
 
-<img src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/discord/hero.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=184ffa11c392303eecdec13a1c91ae5e" data-og-width="2400" width="2400" data-og-height="1448" height="1448" data-path="assets/features/benefits/discord/hero.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/discord/hero.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=8d1cc71114f3239845eb7cf3f7cfd8cf 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/discord/hero.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=8aad162e4078a9d1102a27359a55867f 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/discord/hero.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=5800491c7ed21990320723c8cb620732 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/discord/hero.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=79cf17a84dde92b8751b6edec92d0585 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/discord/hero.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=216483bae4e5ba762681758c6f9912bd 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/discord/hero.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=543d19cae5dd8300908c2ba03a8c591e 2500w" />
+<img />
 
 Automating Discord server invites and roles for customers or subscribers is super easy and powerful with Polar.
 
@@ -2186,9 +2212,9 @@ Automating Discord server invites and roles for customers or subscribers is supe
 
 ## Create Discord Benefit
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/discord/create.light.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=e2045a8cbc6eb7bac1168682a29456dd" data-og-width="940" width="940" data-og-height="764" height="764" data-path="assets/features/benefits/discord/create.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/discord/create.light.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=151886d0b7a9ad757afba66158d02a4e 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/discord/create.light.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=d6add5fcb01c77b043375600469d2396 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/discord/create.light.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=14f6c9c256767df1e3a10a24c961b458 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/discord/create.light.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=ae2d25089d4234e5aff515a0b7dbe091 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/discord/create.light.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=13d6d4190d916dfcdd2536b7fbfc6c91 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/discord/create.light.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=4faf97a4f150659dcd5d6a148d5b8e1c 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/discord/create.dark.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=c5ed8ed8263425b77fda1414c373958f" data-og-width="940" width="940" data-og-height="764" height="764" data-path="assets/features/benefits/discord/create.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/discord/create.dark.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=4759ac188bb096faa3d0e928017d43e6 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/discord/create.dark.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=62fb5d5a08cf2bcf297ec95d0346da0a 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/discord/create.dark.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=ffb1b08ffe2d4bab674d18476bfd0e84 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/discord/create.dark.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=92f6035303cfe5739bbe9f83de8f3673 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/discord/create.dark.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=da8672773481aadae6326b61d38b1e86 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/discord/create.dark.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=fc117373ec9a93a6e24ef17b27fe9690 2500w" />
+<img />
 
 Click on `Connect your Discord server`. You'll be redirected to Discord where you can grant the Polar App for your desired server.
 
@@ -2226,7 +2252,7 @@ Source: https://polar.sh/docs/features/benefits/file-downloads
 
 Offer digital file downloads with ease
 
-<img src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/file-downloads/hero.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=ddcefae9f5a02b807dd50dda51fa18cc" data-og-width="2396" width="2396" data-og-height="1712" height="1712" data-path="assets/features/benefits/file-downloads/hero.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/file-downloads/hero.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=63e45f6b0bca5d1f1e3c0c7e567531b5 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/file-downloads/hero.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=bd593d64b5a1ef56a0a9b4f1eb089b72 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/file-downloads/hero.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=32d8b705e5666a9b58e10466bfd8cd41 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/file-downloads/hero.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=5b8dcf4116452d787cd5064afade1113 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/file-downloads/hero.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=1e96f1754ae30ef2a4dc6af7de30fcfa 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/file-downloads/hero.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=8ebcdde0ec150b3de9a0abbd876a7b21 2500w" />
+<img />
 
 ## Sell Digital Products
 
@@ -2286,7 +2312,7 @@ Source: https://polar.sh/docs/features/benefits/github-access
 
 Sell premium GitHub repository access with ease
 
-<img src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/github/hero.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=12d4147b094c8f5b3d002d600757ceb0" data-og-width="2400" width="2400" data-og-height="1374" height="1374" data-path="assets/features/benefits/github/hero.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/github/hero.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=63ab6d00001a48eb6e2238a7d3810f8b 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/github/hero.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=50de8533120fd2528f0dfc08821f13bc 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/github/hero.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=c8e2e6f5f7eb1243f5d73005fa99908b 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/github/hero.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=913360e5400ee1a5af42173b254b2c34 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/github/hero.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=602a9f9247cb101f8c4a85a95df67e33 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/github/hero.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=b1470520f9688da10c7d7b451bddff18 2500w" />
+<img />
 
 ## Sell GitHub Repository Access
 
@@ -2402,7 +2428,7 @@ Source: https://polar.sh/docs/features/benefits/license-keys
 
 Sell license key access to your service, software or APIs with ease
 
-<img src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/license-keys/hero.jpeg?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=179f2df948e4835f6e8e160b31507c3a" data-og-width="1807" width="1807" data-og-height="923" height="923" data-path="assets/features/benefits/license-keys/hero.jpeg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/license-keys/hero.jpeg?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=fd5df2ce54643a72893c02979b2f934a 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/license-keys/hero.jpeg?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=e668484882393fee5a4c4709889de083 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/license-keys/hero.jpeg?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=0b2edd3d16ac8a699424b4e43623b9a9 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/license-keys/hero.jpeg?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=8a26693d265da8debd720c7f353f7e97 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/license-keys/hero.jpeg?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=97f97ac71f3111178accbf4f6ab71d1f 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/license-keys/hero.jpeg?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=09a569e033695495781eac931e9bf818 2500w" />
+<img />
 
 You can easily sell software license keys with Polar without having to deal with sales tax or hosting an API to validate them in real-time. License keys with Polar come with a lot of powerful features built-in.
 
@@ -2458,7 +2484,7 @@ In case you've setup license keys to have a maximum amount of activation instanc
 
 **No activation limit?** You can skip this step.
 
-```bash  theme={null}
+```bash Terminal theme={null}
 curl -X POST https://api.polar.sh/v1/customer-portal/license-keys/activate
 -H "Content-Type: application/json"
 -d '{
@@ -2470,29 +2496,29 @@ curl -X POST https://api.polar.sh/v1/customer-portal/license-keys/activate
 }'
 ```
 
-<ParamField path="key" type="string" required>
+<ParamField type="string">
   Replace with the users license key (from input in your app).
 </ParamField>
 
-<ParamField path="organization_id" type="string" required>
+<ParamField type="string">
   Replace with your organization ID here found in your settings.
 </ParamField>
 
-<ParamField path="label" type="string" required>
+<ParamField type="string">
   Set a label to associate with this specific activation.
 </ParamField>
 
-<ParamField path="conditions" type="object">
+<ParamField type="object">
   JSON object with custom conditions to validate against in the future, e.g IP, mac address, major version etc.
 </ParamField>
 
-<ParamField path="meta" type="object">
+<ParamField type="object">
   JSON object with metadata to store for the users activation.
 </ParamField>
 
 #### **Response (200 OK)**
 
-```json  theme={null}
+```json theme={null}
 {
   "id": "b6724bc8-7ad9-4ca0-b143-7c896fcbb6fe",
   "license_key_id": "508176f7-065a-4b5d-b524-4e9c8a11ed63",
@@ -2525,7 +2551,7 @@ curl -X POST https://api.polar.sh/v1/customer-portal/license-keys/activate
 For each session of your premium app, library or API, we recommend you validate the users license key via the
 [`/v1/customer-portal/license-keys/validate`](/api-reference/customer-portal/license-keys/validate) endpoint.
 
-```bash  theme={null}
+```bash Terminal theme={null}
 curl -X POST https://api.polar.sh/v1/customer-portal/license-keys/validate
 -H "Content-Type: application/json"
 -d '{
@@ -2537,29 +2563,29 @@ curl -X POST https://api.polar.sh/v1/customer-portal/license-keys/validate
 }'
 ```
 
-<ParamField path="key" type="string" required>
+<ParamField type="string">
   Replace with the users license key (from input in your app).
 </ParamField>
 
-<ParamField path="organization_id" type="string" required>
+<ParamField type="string">
   Replace with your organization ID here found in your settings.
 </ParamField>
 
-<ParamField path="activation_id" type="string">
+<ParamField type="string">
   The activation ID to validate - required in case activations limit is enabled and used (above).
 </ParamField>
 
-<ParamField path="conditions" type="object">
+<ParamField type="object">
   In case of activation instances. Same exact JSON object as upon registration of the activation.
 </ParamField>
 
-<ParamField path="increment_usage" type="integer">
+<ParamField type="integer">
   In case you want to increment usage upon validation.
 </ParamField>
 
 #### **Response (200 OK)**
 
-```json  theme={null}
+```json theme={null}
 {
   "id": "508176f7-065a-4b5d-b524-4e9c8a11ed63",
   "organization_id": "fda84e25-7b55-4d67-916d-60ead04ff61f",
@@ -2597,7 +2623,7 @@ Source: https://polar.sh/docs/features/checkout/embed
 
 Embed our checkout directly on your site
 
-<img src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/embed/demo.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=721c4f727f588f28851d8da2322daf16" data-og-width="3680" width="3680" data-og-height="2236" height="2236" data-path="assets/features/checkout/embed/demo.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/embed/demo.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=e3f8f37a1c1b77a90c6665f48ce073d7 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/embed/demo.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=da785d45034ef0b276d690b0529bd798 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/embed/demo.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=e0e25deefa02bde98bf7b14c2d8b9d1a 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/embed/demo.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=c3e65abb8cc2a5f6cd80c060bfbd01cb 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/embed/demo.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=17fb67d868489bb4155c6f2c3b116ee4 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/embed/demo.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=87bd933324c57090e46d2120f73cd407 2500w" />
+<img />
 
 You can either copy and paste our code snippet to get up and running in a second or use our JavaScript library for more advanced integrations. Our embedded checkout allows you to provide a seamless purchasing experience without redirecting users away from your site.
 
@@ -2609,7 +2635,7 @@ First, create a [Checkout Link](/features/checkout/links) as described in the pr
 
 The snippet looks like this:
 
-```typescript  theme={null}
+```typescript theme={null}
 <a
   href="__CHECKOUT_LINK__"
   data-polar-checkout
@@ -2617,10 +2643,11 @@ The snippet looks like this:
 >
   Purchase
 </a>
+
 <script
-  src="https://cdn.jsdelivr.net/npm/@polar-sh/checkout@0.1/dist/embed.global.js"
   defer
   data-auto-init
+  src="https://cdn.jsdelivr.net/npm/@polar-sh/checkout@latest/dist/embed.global.js"
 ></script>
 ```
 
@@ -2650,7 +2677,7 @@ Then, you should import the `PolarEmbedCheckout` helper class and manually call 
 
 Here is an example in React:
 
-```ts  theme={null}
+```ts theme={null}
 import { PolarEmbedCheckout } from '@polar-sh/checkout/embed'
 import { useEffect } from 'react'
 
@@ -2687,7 +2714,7 @@ For users who need more control over the embedded checkout flow, the `PolarEmbed
 
 Instead of using declarative triggers with `data-polar-checkout` attributes, you can programmatically create and control checkout instances:
 
-```ts  theme={null}
+```ts theme={null}
 import { PolarEmbedCheckout } from "@polar-sh/checkout/embed";
 
 // Open checkout programmatically when needed
@@ -2698,7 +2725,9 @@ const openCheckout = async () => {
   try {
     // This creates the checkout iframe and returns a Promise
     // that resolves when the checkout is fully loaded
-    const checkout = await PolarEmbedCheckout.create(checkoutLink, theme);
+    const checkout = await PolarEmbedCheckout.create(checkoutLink, {
+      theme,
+    });
 
     // Now you can interact with the checkout instance
     return checkout;
@@ -2715,20 +2744,16 @@ document.getElementById("buy-button").addEventListener("click", () => {
 
 ### Listening for checkout events
 
-You can listen for checkout events to respond to user interactions:
+You can listen for checkout events to respond to user interactions. For the `loaded` event, we recommend using the `onLoaded` callback in the `create` method to ensure it's always executed, even if the checkout loads very quickly.
 
-```ts  theme={null}
+```ts theme={null}
 import { PolarEmbedCheckout } from "@polar-sh/checkout/embed";
 
 const openCheckoutWithEvents = async () => {
-  const checkout = await PolarEmbedCheckout.create("__CHECKOUT_LINK__");
-
-  // Listen for when the checkout is loaded
-  checkout.addEventListener("loaded", (event) => {
-    console.log("Checkout loaded");
-    // Call event.preventDefault() if you want to prevent the standard behavior
-    // event.preventDefault()
-    // Note: This would prevent removing the loader if it's still visible
+  const checkout = await PolarEmbedCheckout.create("__CHECKOUT_LINK__", {
+    onLoaded: (event) => {
+      console.log("Checkout loaded");
+    },
   });
 
   // Listen for when the checkout has been closed
@@ -2769,7 +2794,7 @@ const openCheckoutWithEvents = async () => {
 
 Here's a more complete React example that handles checkout events:
 
-```ts  theme={null}
+```ts theme={null}
 import { PolarEmbedCheckout } from '@polar-sh/checkout/embed'
 import { useState, useEffect } from 'react'
 
@@ -2789,7 +2814,13 @@ const CheckoutButton = () => {
       try {
         const checkout = await PolarEmbedCheckout.create(
           '__CHECKOUT_LINK__',
-          'light'
+          {
+            theme: 'light',
+            onLoaded: (event) => {
+              console.log('Checkout loaded successfully');
+              // This is guaranteed to be called even if checkout loads quickly
+            }
+          }
         )
 
       setCheckoutInstance(checkout)
@@ -2830,7 +2861,7 @@ export default CheckoutButton
 
 In some cases, you might need to programmatically close the checkout - for instance, if you detect that a user needs to take an action elsewhere in your application first:
 
-```ts  theme={null}
+```ts theme={null}
 import { PolarEmbedCheckout } from "@polar-sh/checkout/embed";
 
 // Example: open checkout and store the instance
@@ -2914,9 +2945,9 @@ creates a checkout session for customers.
 Checkout Links can be managed from the **Checkout Links** tabs of the Products section. Click on **New Link** to create a new one.
 
 <Frame>
-  <img className="block dark:hidden" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/create.light.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=72a31513d6f7226cc17e94b4c58ca2cd" data-og-width="1620" width="1620" data-og-height="2304" height="2304" data-path="assets/features/checkout/links/create.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/create.light.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=2a601b4e14c78c6a3a86f4695cb0e874 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/create.light.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=738a28ee21637ac4897fb77cae731173 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/create.light.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=d5be5ff69604d81851a21811342f40f0 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/create.light.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=1dbf2230a8d62f3eca56f143c89bd3d5 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/create.light.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=f8558ed91355eb9c7ff8d06c87948f23 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/create.light.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=58d314816ed83e11395270b7cae32a05 2500w" />
+  <img />
 
-  <img className="hidden dark:block" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/create.dark.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=17c40b706377d71c9e5d73b4ee1e1ebe" data-og-width="1620" width="1620" data-og-height="2304" height="2304" data-path="assets/features/checkout/links/create.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/create.dark.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=a88117255fb447f2167a901dc44bd786 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/create.dark.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=0a69d0efc11e9b8622ff3ccb23f4a6ff 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/create.dark.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=09c1d11b23cac91601239d820dadc57f 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/create.dark.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=2c64df021ceb0683ac37ceb4ae0192e6 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/create.dark.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=74d157d480eb828b0ec4dd180b7e3376 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/create.dark.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=109598098aa62f2e37805ac7bf1d1261 2500w" />
+  <img />
 </Frame>
 
 #### Label
@@ -2927,9 +2958,9 @@ This is an internal name for the Checkout Link. It's only visible to you.
 
 You can select one or **several** products. With several products, customers will be able to switch between them on the checkout page.
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/checkout_multiple_products.light.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=0cce5b2ade56d8be88bcecd1b59a9426" data-og-width="3840" width="3840" data-og-height="2500" height="2500" data-path="assets/features/checkout/links/checkout_multiple_products.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/checkout_multiple_products.light.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=81d388ddcfb786bb86cc09d9cf9ba637 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/checkout_multiple_products.light.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=dbcfdd0c2a27b2d3d29e3cf1448a1904 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/checkout_multiple_products.light.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=e1374223415627f8c45d1ef4d56a9535 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/checkout_multiple_products.light.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=efd59ce3ad4738fa316b18ead4a6c93c 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/checkout_multiple_products.light.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=799013832ed88bfa4a8709e6e31ec13c 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/checkout_multiple_products.light.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=93fdb67c6e863d2a3d42b4e6106beecd 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/checkout_multiple_products.dark.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=284cedc2ba0bee4bc5a35c8571f9884a" data-og-width="3840" width="3840" data-og-height="2500" height="2500" data-path="assets/features/checkout/links/checkout_multiple_products.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/checkout_multiple_products.dark.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=28ad596f39f0071cdf6ebff24dd924af 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/checkout_multiple_products.dark.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=a458623c56f532dd1107ceb10df8c00c 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/checkout_multiple_products.dark.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=0f3c313cde746fb224893f493f46ec36 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/checkout_multiple_products.dark.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=c7d5cddba9a739f8a6b426aedc94e362 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/checkout_multiple_products.dark.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=232c97d2f61fec1a91697edfcd68a01c 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/checkout_multiple_products.dark.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=bfd17425e10cd466072e1238183b5f7e 2500w" />
+<img />
 
 #### Discount
 
@@ -2945,9 +2976,9 @@ This is an optional key-value object allowing you to store additional informatio
 
 You can share the Checkout Link URL on your webpage, social media, or directly to customers.
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/checkout_link.light.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=0cea22165e21ee7df3bb8b40fd6c802d" data-og-width="1320" width="1320" data-og-height="1030" height="1030" data-path="assets/features/checkout/links/checkout_link.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/checkout_link.light.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=8eaa90d8814cd2a0bd7da1463bdc76c8 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/checkout_link.light.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=a706e71e5ff949498115ec1ef8aa341a 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/checkout_link.light.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=bff20c898abc7d24b5f13fc6be80773b 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/checkout_link.light.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=19ac59f8dc034a68eefbf60f27c9ac90 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/checkout_link.light.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=93e300396799bd58d70012b6bb57e532 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/checkout_link.light.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=232769397ef0a371aec554b8b951a38b 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/checkout_link.dark.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=52995548b0c4a6b960981f91c663174e" data-og-width="1320" width="1320" data-og-height="1030" height="1030" data-path="assets/features/checkout/links/checkout_link.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/checkout_link.dark.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=51bafd1fda3dff32a0d380a93294af6a 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/checkout_link.dark.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=ad493c46a4f264c513bbd7155aa7f8ea 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/checkout_link.dark.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=5013674a50e89c7712952b968c4800d5 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/checkout_link.dark.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=eb532d2bd4a06e919c03d560158a3abd 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/checkout_link.dark.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=599bef0ee892334a94f1a15faa9779c4 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/links/checkout_link.dark.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=86d193d3f120d300194d4659c3647228 2500w" />
+<img />
 
 <Warning>
   Checkout Links will go against our API, and redirect to short-lived Checkout session. This means that the Checkout page the user will end up on, are temporary and expires after a while if no successful purchase is made.
@@ -2963,23 +2994,23 @@ You can pass optional query parameters to your Checkout Links.
 
 You can prefill the checkout fields with the following query parameters:
 
-<ParamField path="customer_email" type="string">
+<ParamField type="string">
   Prefill customer email at checkout
 </ParamField>
 
-<ParamField path="customer_name" type="string">
+<ParamField type="string">
   Prefill customer name at checkout
 </ParamField>
 
-<ParamField path="discount_code" type="string">
+<ParamField type="string">
   Prefill discount code
 </ParamField>
 
-<ParamField path="amount" type="string">
+<ParamField type="string">
   Prefill amount in case of Pay What You Want pricing
 </ParamField>
 
-<ParamField path="custom_field_data.{slug}" type="string">
+<ParamField type="string">
   Prefill checkout fields data, where `{slug}` is the slug of the custom field.
 </ParamField>
 
@@ -2987,27 +3018,27 @@ You can prefill the checkout fields with the following query parameters:
 
 The following query parameters will automatically be set on Checkout [`metadata`](/api-reference/checkouts/get-session#response-metadata).
 
-<ParamField path="reference_id" type="string">
+<ParamField type="string">
   Your own reference ID for the checkout session.
 </ParamField>
 
-<ParamField path="utm_source" type="string">
+<ParamField type="string">
   UTM source of the checkout session.
 </ParamField>
 
-<ParamField path="utm_medium" type="string">
+<ParamField type="string">
   UTM medium of the checkout session.
 </ParamField>
 
-<ParamField path="utm_campaign" type="string">
+<ParamField type="string">
   UTM campaign of the checkout session.
 </ParamField>
 
-<ParamField path="utm_content" type="string">
+<ParamField type="string">
   UTM content of the checkout session.
 </ParamField>
 
-<ParamField path="utm_term" type="string">
+<ParamField type="string">
   UTM term of the checkout session.
 </ParamField>
 
@@ -3029,9 +3060,91 @@ The API will return you an object containing all the information about the sessi
 
 You can create a checkout session with multiple products. This is useful if you want to allow your customers to choose between different products before they checkout.
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/session/checkout_multiple_products.light.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=36f88ae4e5e70735484c068f3605b713" data-og-width="3840" width="3840" data-og-height="2500" height="2500" data-path="assets/features/checkout/session/checkout_multiple_products.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/session/checkout_multiple_products.light.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=04994e58aef6964bcbad83136d7a623b 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/session/checkout_multiple_products.light.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=97436039cd7d08c4ca762d81dada1a73 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/session/checkout_multiple_products.light.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=3bf82c3989003e71f22a230a25db119f 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/session/checkout_multiple_products.light.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=10505f70deec13a9097af4daa1d04b86 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/session/checkout_multiple_products.light.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=47784df3a7278ec4df21c13c3ff81b5c 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/session/checkout_multiple_products.light.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=f91a412a12601270ac3bfadd82832e7e 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/session/checkout_multiple_products.dark.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=82f61a0c8e8108b64d214c223d9a0f67" data-og-width="3840" width="3840" data-og-height="2500" height="2500" data-path="assets/features/checkout/session/checkout_multiple_products.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/session/checkout_multiple_products.dark.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=06d12edfe721f4ed1686a09110f935be 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/session/checkout_multiple_products.dark.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=7bfedd743a9e5a2e2924f072218a6d73 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/session/checkout_multiple_products.dark.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=d931de8df011738cedb1988f3c7adaee 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/session/checkout_multiple_products.dark.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=bd13134692851f71dd9228f52558b8a6 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/session/checkout_multiple_products.dark.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=5396835651699c364b553bcc5ea9f34d 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/checkout/session/checkout_multiple_products.dark.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=8b2984d955958ad755028e2760028fcd 2500w" />
+<img />
+
+## Ad-hoc prices
+
+For advanced use cases where you need complete control over pricing, you can create ad-hoc prices directly when creating a checkout session. Ad-hoc prices are temporary prices that exist only for that specific checkout session and don't appear in your product's catalog.
+
+This is useful when you need to:
+
+* Apply dynamic pricing based on user-specific factors
+* Create custom pricing tiers for specific customers
+* Implement usage-based or calculated pricing that varies per checkout
+* Test pricing variations without modifying your product catalog
+
+When creating a checkout session, you can pass a `prices` parameter that maps product IDs to an array of price definitions. These prices will be created on-the-fly and associated with the checkout session.
+
+<Note>
+  Ad-hoc prices are marked with `source: "ad_hoc"` in the API response, while catalog prices have `source: "catalog"`. Ad-hoc prices are temporary and specific to the checkout session.
+</Note>
+
+### Example
+
+<CodeGroup>
+  ```ts TypeScript theme={null}
+  import { Polar } from "@polar-sh/sdk";
+
+  const polar = new Polar({
+    accessToken: process.env["POLAR_ACCESS_TOKEN"] ?? "",
+  });
+
+  async function run() {
+    const checkout = await polar.checkouts.create({
+      products: ["productId"],
+      prices: {
+        "productId": [
+          {
+            amountType: "fixed",
+            priceAmount: 10000, // $100.00
+            priceCurrency: "usd",
+          }
+        ]
+      }
+    });
+
+    console.log(checkout.url);
+  }
+
+  run();
+  ```
+
+  ```py Python theme={null}
+  from polar_sdk import Polar
+
+  with Polar(
+      access_token="<YOUR_BEARER_TOKEN_HERE>",
+  ) as polar:
+      checkout = polar.checkouts.create(request={
+          "products": ["<product_id>"],
+          "prices": {
+              "<product_id>": [
+                  {
+                      "amount_type": "fixed",
+                      "price_amount": 10000,  # $100.00
+                      "price_currency": "usd",
+                  }
+              ]
+          }
+      })
+
+      print(checkout.url)
+  ```
+</CodeGroup>
+
+### Price types
+
+Ad-hoc prices support all the same price types as catalog prices:
+
+* **Fixed**: A fixed amount price
+* **Custom**: Pay-what-you-want pricing
+* **Free**: No charge
+* **Seat-based**: Pricing based on number of seats
+* **Metered**: Usage-based pricing tied to a meter
+
+For the complete schema of each price type, refer to the [Checkout API reference](/api-reference/checkouts/create-session).
 
 ## External Customer ID
 
@@ -3092,7 +3205,7 @@ Cost Insights works by allowing you to add a special `_cost` property to any eve
 
 To track costs, add a `_cost` property to your event's metadata when ingesting events.
 
-```typescript TypeScript (SDK) theme={null}
+```typescript icon="square-js" TypeScript (SDK) theme={null}
 import { Polar } from "@polar-sh/sdk";
 
 const polar = new Polar({
@@ -3161,7 +3274,7 @@ The `_cost` property has the following structure:
 
 Track the cost of LLM API calls per customer:
 
-```typescript TypeScript theme={null}
+```typescript icon="square-js" TypeScript theme={null}
 import { Polar } from "@polar-sh/sdk";
 import OpenAI from "openai";
 
@@ -3212,7 +3325,7 @@ await polar.events.ingest({
 
 Track compute, storage, or API costs:
 
-```json  theme={null}
+```json theme={null}
 {
   "events": [
     {
@@ -3235,7 +3348,7 @@ Track compute, storage, or API costs:
 
 Track costs from external services:
 
-```json  theme={null}
+```json theme={null}
 {
   "events": [
     {
@@ -3260,7 +3373,7 @@ Track costs from external services:
 
 Ingest cost events as they occur to maintain accurate, up-to-date metrics:
 
-```typescript TypeScript theme={null}
+```typescript icon="square-js" TypeScript theme={null}
 import { Polar } from "@polar-sh/sdk";
 
 const polar = new Polar({
@@ -3295,7 +3408,7 @@ await polar.events.ingest({
 
 The `amount` field supports up to 12 decimal places, perfect for tracking micro-costs:
 
-```json  theme={null}
+```json theme={null}
 {
   "_cost": {
     "amount": 0.000125, // $0.00000125
@@ -3308,7 +3421,7 @@ The `amount` field supports up to 12 decimal places, perfect for tracking micro-
 
 Combine `_cost` with other metadata to understand cost drivers:
 
-```json  theme={null}
+```json theme={null}
 {
   "metadata": {
     "_cost": {
@@ -3338,11 +3451,16 @@ Source: https://polar.sh/docs/features/cost-insights/introduction
 
 Track costs, profits, and customer lifetime value with event-based cost tracking
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/lA614ZvRwurqvmze/assets/features/cost/ingestion.light.png?fit=max&auto=format&n=lA614ZvRwurqvmze&q=85&s=92ccae14e7ee0573454e268f316764f2" data-og-width="1306" width="1306" data-og-height="372" height="372" data-path="assets/features/cost/ingestion.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/lA614ZvRwurqvmze/assets/features/cost/ingestion.light.png?w=280&fit=max&auto=format&n=lA614ZvRwurqvmze&q=85&s=45ce5db8c37ac44662e76c4cc2cc73a0 280w, https://mintcdn.com/polar/lA614ZvRwurqvmze/assets/features/cost/ingestion.light.png?w=560&fit=max&auto=format&n=lA614ZvRwurqvmze&q=85&s=2ea03f25659454141515d53e516a7dd8 560w, https://mintcdn.com/polar/lA614ZvRwurqvmze/assets/features/cost/ingestion.light.png?w=840&fit=max&auto=format&n=lA614ZvRwurqvmze&q=85&s=951cffe443ae1426186a2af1db0da702 840w, https://mintcdn.com/polar/lA614ZvRwurqvmze/assets/features/cost/ingestion.light.png?w=1100&fit=max&auto=format&n=lA614ZvRwurqvmze&q=85&s=010145f34f19f7d91723020befc4b28d 1100w, https://mintcdn.com/polar/lA614ZvRwurqvmze/assets/features/cost/ingestion.light.png?w=1650&fit=max&auto=format&n=lA614ZvRwurqvmze&q=85&s=50600d7e5a306f2d50579cf4e4d4359f 1650w, https://mintcdn.com/polar/lA614ZvRwurqvmze/assets/features/cost/ingestion.light.png?w=2500&fit=max&auto=format&n=lA614ZvRwurqvmze&q=85&s=4f727791de9b720f22e5facf54ce2aa1 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/lA614ZvRwurqvmze/assets/features/cost/ingestion.dark.png?fit=max&auto=format&n=lA614ZvRwurqvmze&q=85&s=76714c2c92a4ddc8959ab178e3e352e3" data-og-width="1306" width="1306" data-og-height="368" height="368" data-path="assets/features/cost/ingestion.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/lA614ZvRwurqvmze/assets/features/cost/ingestion.dark.png?w=280&fit=max&auto=format&n=lA614ZvRwurqvmze&q=85&s=698b9e1eadddb8384b6888abc740730e 280w, https://mintcdn.com/polar/lA614ZvRwurqvmze/assets/features/cost/ingestion.dark.png?w=560&fit=max&auto=format&n=lA614ZvRwurqvmze&q=85&s=6e6255bba857238f0824d4f067e0970d 560w, https://mintcdn.com/polar/lA614ZvRwurqvmze/assets/features/cost/ingestion.dark.png?w=840&fit=max&auto=format&n=lA614ZvRwurqvmze&q=85&s=4ce6690eb8fcbb897e3c40b41132afdd 840w, https://mintcdn.com/polar/lA614ZvRwurqvmze/assets/features/cost/ingestion.dark.png?w=1100&fit=max&auto=format&n=lA614ZvRwurqvmze&q=85&s=7f29ec5d3c5bd304055a22380a8db943 1100w, https://mintcdn.com/polar/lA614ZvRwurqvmze/assets/features/cost/ingestion.dark.png?w=1650&fit=max&auto=format&n=lA614ZvRwurqvmze&q=85&s=807d07a01136e8bb4a92668f6563ef3d 1650w, https://mintcdn.com/polar/lA614ZvRwurqvmze/assets/features/cost/ingestion.dark.png?w=2500&fit=max&auto=format&n=lA614ZvRwurqvmze&q=85&s=0274d6bb9273d61a2a460b2d640aee4c 2500w" />
+<img />
 
 Cost Insights is a powerful feature that enables you to calculate business-centric metrics like Costs, Profits, and Customer Lifetime Value (LTV) by annotating your events with cost data.
+
+<Note>
+  Cost Insights is currently in beta. You may enable it in your organization
+  settings.
+</Note>
 
 ## Overview
 
@@ -3358,7 +3476,7 @@ Cost Insights works in three simple steps:
 
 ### Quick Example
 
-```json  theme={null}
+```json theme={null}
 {
   "events": [
     {
@@ -3384,7 +3502,7 @@ Cost Insights works in three simple steps:
 
 ## Documentation
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Cost Events" icon="chart-line" href="/features/cost-insights/cost-events">
     Learn how to track costs by adding the `_cost` property to your events
     metadata
@@ -3414,9 +3532,9 @@ With Polar, you can easily add such fields to your checkout using **Custom Field
 
 Custom Fields are managed at an organization's level. To create them, go to **Settings** and **Custom Fields**. You'll see the list of all the available fields on your organization.
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_fields.light.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=9336e8c093e8554f3c876539b0a04dfc" data-og-width="3840" width="3840" data-og-height="2400" height="2400" data-path="assets/features/custom-fields/custom_fields.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_fields.light.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=99738023cb392ee16d02c7054e9754a9 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_fields.light.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=048d0d106f56c8edaef22aef0e99dd81 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_fields.light.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=34107884543bfd1c72905cc70549689b 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_fields.light.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=008ff767bd951aa023dfee7f7979bc5a 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_fields.light.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=0bc7971296e76e6a605755ffab93f55a 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_fields.light.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=5f172512315eb713c17eb17978044337 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_fields.dark.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=5ef991dece22a9936a56ba80ff2b7f0b" data-og-width="3840" width="3840" data-og-height="2400" height="2400" data-path="assets/features/custom-fields/custom_fields.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_fields.dark.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=fc52ba0c61d624545ea29c159494231e 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_fields.dark.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=7c6ccbf7fdca8a9a21c4113cd38f9baa 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_fields.dark.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=c77df99ab9f9595201730d7b0fa97539 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_fields.dark.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=d64b3fa5d15352ff291393b944b1819e 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_fields.dark.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=c3be6ef25b4c9109d2879740e5a60652 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_fields.dark.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=ff9d438f6dcc5b86ed9bb62009a32500 2500w" />
+<img />
 
 Click on **New Custom Field** to create a new one.
 
@@ -3464,9 +3582,9 @@ The slug determines the key that'll be used to store the data inside objects rel
 
 The name is what we'll be displayed to you to recognize the field across your dashboard. By default, it'll also be the label of the field displayed to the customer, unless you customize it under `Form input options`.
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/create_custom_field.light.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=6f8ed2dbf246c197d69eabc7b21f0c11" data-og-width="1620" width="1620" data-og-height="2334" height="2334" data-path="assets/features/custom-fields/create_custom_field.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/create_custom_field.light.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=7145aa50e436d95a00ae6daa21844dd8 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/create_custom_field.light.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=c5ea12890fe0a4c56ae6cf65109bba36 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/create_custom_field.light.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=10209fe5d1ee0ce9e81dd2ffd21515ac 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/create_custom_field.light.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=f7f9b8c239476a79ada1198ce9d67ca3 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/create_custom_field.light.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=3e5ffcbb2a8ef05b39f77de327b54bb6 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/create_custom_field.light.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=45309ac3f5dbb22a07c847be60ba6162 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/create_custom_field.dark.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=7b328aefe3e549d8f5b3239ed4ab6c8a" data-og-width="1620" width="1620" data-og-height="2334" height="2334" data-path="assets/features/custom-fields/create_custom_field.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/create_custom_field.dark.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=f007d5a459da5fd3a3ffec21065d4adf 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/create_custom_field.dark.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=289bded19a3c21dbf4545869ce1ec08e 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/create_custom_field.dark.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=65aa7cee7b5bed0709b3c1c1b1b84732 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/create_custom_field.dark.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=29a401893fa916d2a501b6522e9c7062 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/create_custom_field.dark.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=e98f035efdf080491a243aaa00f1e7c5 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/create_custom_field.dark.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=341b56ceead350f11e635508f8abe638 2500w" />
+<img />
 
 ### Form input options
 
@@ -3478,17 +3596,17 @@ Those options allow you to customize how the field is displayed to the customer.
 
 The label and help text supports basic Markdown syntax, so you can add bold, italic or even links.
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/label_markdown.light.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=ab5165a85316c4f7fcf18a7a1fddc1ed" data-og-width="1383" width="1383" data-og-height="132" height="132" data-path="assets/features/custom-fields/label_markdown.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/label_markdown.light.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=19844fefa75decc0601c8128e98d9c96 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/label_markdown.light.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=be9c366a882e53983a18c8b400e7bc06 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/label_markdown.light.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=ef4676c752357a75de68d6983051be6e 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/label_markdown.light.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=9daa35911458a0ac34d3f7b81711f563 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/label_markdown.light.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=bba0de986dcc4038e3484214f7de8eaf 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/label_markdown.light.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=532f364ac05a4f92b5e7da1b5ca35269 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/label_markdown.dark.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=37edbb93d8023a969f300f0c6ed64ec1" data-og-width="1383" width="1383" data-og-height="132" height="132" data-path="assets/features/custom-fields/label_markdown.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/label_markdown.dark.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=0765fc54e2d5ae68cb8b40313ff12731 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/label_markdown.dark.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=62e402a85a3b7caf2af24e094be9ba2a 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/label_markdown.dark.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=33b9838694288f840345e0bb0f969495 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/label_markdown.dark.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=767e6b797327290e8019fefecac9916f 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/label_markdown.dark.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=5ad6b20342db96da76c9f37d143c1366 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/label_markdown.dark.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=73f6e72be1efd3d8c36c5c51451f2ad1 2500w" />
+<img />
 
 ## Add Custom Field to Checkout
 
 Custom Fields are enabled on Checkout specifically on each **product**. While [creating or updating](/features/products) a product, you can select the custom fields you want to include in the checkout for this product.
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/add_custom_field.light.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=3e6f915cce570e5557be4840a8b3635f" data-og-width="3837" width="3837" data-og-height="2400" height="2400" data-path="assets/features/custom-fields/add_custom_field.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/add_custom_field.light.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=4bdcf4810737beb41ed521a928407635 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/add_custom_field.light.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=c2041fe74136e03ef388644aeea7a434 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/add_custom_field.light.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=d6071ab1af356051ed83715e177dee00 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/add_custom_field.light.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=58f8ba77347b09fee18ac471c4907611 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/add_custom_field.light.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=8f56592489d9413d31854657234331fc 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/add_custom_field.light.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=aeff088270d57722f9da8becba3105b1 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/add_custom_field.dark.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=112f8074ec995496251095ebd4df8357" data-og-width="3837" width="3837" data-og-height="2400" height="2400" data-path="assets/features/custom-fields/add_custom_field.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/add_custom_field.dark.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=0f6ada199c79681b31d6dd4258d65272 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/add_custom_field.dark.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=504c37f51d4e036374057188caf7cfc6 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/add_custom_field.dark.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=85010fa50961e1669864d9dffaeb2d9e 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/add_custom_field.dark.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=3f2f1b750428c92f7811eefda4babe16 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/add_custom_field.dark.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=9841ba793d86860a77ff28864ffba5aa 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/add_custom_field.dark.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=a8b6597bff942af6791ed8db7710938a 2500w" />
+<img />
 
 Note that you can make the field `Required`.
 
@@ -3499,21 +3617,21 @@ Note that you can make the field `Required`.
 
 The fields are now added as part of the Checkout form for this product.
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_fields_checkout.light.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=4e3f32d0f537cf0380c4a8a115202768" data-og-width="1866" width="1866" data-og-height="4245" height="4245" data-path="assets/features/custom-fields/custom_fields_checkout.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_fields_checkout.light.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=1893b34f87e7c82e92f8e6b3f59332e1 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_fields_checkout.light.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=e0538da0d07c346dd56da836812d40f9 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_fields_checkout.light.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=b749a6b21fb0267de676e8202ff82da5 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_fields_checkout.light.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=651735fedc7da7960627e85c69666654 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_fields_checkout.light.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=7cb564705010222b816c593a434a7b64 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_fields_checkout.light.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=58a42c1de4ed2717c3873bccdee3d5d7 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_fields_checkout.dark.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=68bf181a740cd2112944ad02fac3cd19" data-og-width="1866" width="1866" data-og-height="4245" height="4245" data-path="assets/features/custom-fields/custom_fields_checkout.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_fields_checkout.dark.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=37b05d38a102673642ad98226dba6a09 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_fields_checkout.dark.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=9428f14dbb8a2fbc963fb736c772c390 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_fields_checkout.dark.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=7793c80f3b096e26fb1438894b73b4aa 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_fields_checkout.dark.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=4333ac142a8c12f93374f2fa5077c1c0 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_fields_checkout.dark.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=ad26d11aa34ef27f3f176e9b1ec36ee6 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_fields_checkout.dark.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=66c1d2c61a0b953ae79e833f527423b8 2500w" />
+<img />
 
 ## Read data
 
 Once you have added Custom Fields to your organization, they'll be automatically displayed as a column in your `Sales` page, both on Orders and Subscriptions. From there, you'll be able to see the data input by the customer.
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_field_data.light.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=775aed8bcca102fe3a9caf11e8206589" data-og-width="3840" width="3840" data-og-height="2400" height="2400" data-path="assets/features/custom-fields/custom_field_data.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_field_data.light.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=856ce9f562e46e391a38f4d2f593dca5 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_field_data.light.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=f832cc93c8243197a5dd468f10e487dc 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_field_data.light.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=8c5618d4d3f450eacaff556d342da7f5 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_field_data.light.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=268debb6a903f1e9909ad85b4bdbbc3f 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_field_data.light.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=6b8d02bcf00ddf2840fd1c7b5c65769a 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_field_data.light.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=9bb67b0942b01aeb4cef525eff57a7ce 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_field_data.dark.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=e519df0b07c7c4ce98f43d2db87d617d" data-og-width="3840" width="3840" data-og-height="2400" height="2400" data-path="assets/features/custom-fields/custom_field_data.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_field_data.dark.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=6137a51ded5e20729371330eab9c2b5a 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_field_data.dark.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=4ff972940db450a9500ca9f826459926 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_field_data.dark.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=40e5347906d7d65f567123b6c0ef9ceb 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_field_data.dark.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=20a253bb440e190ecaff8bb9a4ff71fb 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_field_data.dark.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=05052261aa334be53809a8fc3d3c53d6 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/custom-fields/custom_field_data.dark.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=9ce699636347368146bd0dd6360158ae 2500w" />
+<img />
 
 This data is also available from the [Orders](/api-reference/orders/get) and [Subscriptions](/api-reference/subscriptions/get) API, under the `custom_field_data` property. Each value is referenced by the **slug** of the field.
 
-```json  theme={null}
+```json theme={null}
 {
   // ...
   "custom_field_value": {
@@ -3529,9 +3647,9 @@ Source: https://polar.sh/docs/features/customer-management
 
 Get insights on your customers and sales
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-management/details.light.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=dc8cb8a0793331ec889f89f3b84d33ac" data-og-width="3586" width="3586" data-og-height="2058" height="2058" data-path="assets/features/customer-management/details.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-management/details.light.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=bae78683c0d08af7443429396e34ff37 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-management/details.light.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=3373c7a73fd4466b11e869a77d565087 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-management/details.light.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=77b4dfed4b853207f4f7bcc80cfbc8c5 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-management/details.light.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=4203867948a461a250e4fd8a0e0b80b4 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-management/details.light.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=9b8c2177ae145edd18da9d342e6b41bc 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-management/details.light.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=eabd97efe2c60bf0d4383b5b2ffb9040 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-management/details.dark.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=53377b04b7d065e66102c0a2141118fb" data-og-width="5110" width="5110" data-og-height="2642" height="2642" data-path="assets/features/customer-management/details.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-management/details.dark.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=bbd9c9c7ce8485be5e5f915a3a50ce59 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-management/details.dark.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=2a8289667951ee421994f95ab675e8ec 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-management/details.dark.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=92b6c0e70e36f730ca69201ee3d6a0c2 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-management/details.dark.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=1ed6e42cf08b7d6493e66a8ebf40880e 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-management/details.dark.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=2fb8048d2b752758b307b972d51a8293 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-management/details.dark.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=d3677f8c6668c78a86fbebc3ec990c68 2500w" />
+<img />
 
 ## Managing Customers
 
@@ -3545,19 +3663,19 @@ Quite often, you'll have our own users management system in your application, wh
 
 We have dedicated API endpoints that work with the `external_id` field, so you don't even have to store the internal Polar ID in your system.
 
-<Card title="Get Customer by External ID" icon="link" href="/api-reference/customers/get-external" horizontal />
+<Card title="Get Customer by External ID" icon="link" href="/api-reference/customers/get-external" />
 
-<Card title="Update Customer by External ID" icon="link" href="/api-reference/customers/update-external" horizontal />
+<Card title="Update Customer by External ID" icon="link" href="/api-reference/customers/update-external" />
 
-<Card title="Delete Customer by External ID" icon="link" href="/api-reference/customers/delete-external" horizontal />
+<Card title="Delete Customer by External ID" icon="link" href="/api-reference/customers/delete-external" />
 
 ## Metadata
 
 You may set additional metadata on Customers. This can be very useful to store additional data about your customer you want to be available through our API and webhooks.
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-management/edit.light.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=00c8cdfc037e19bfe63045c1d9d9459e" data-og-width="1498" width="1498" data-og-height="960" height="960" data-path="assets/features/customer-management/edit.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-management/edit.light.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=2311a62fc87614187fdc6db3cf6dcc4e 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-management/edit.light.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=3136da81850bbf5112a08da4dd331a90 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-management/edit.light.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=4d0dc1e893909a66008cae1d58d1bb79 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-management/edit.light.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=0a45a8134a21dbb82eef752f96c88e11 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-management/edit.light.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=2fc8bb0d02e3f5855ac354d26529eec6 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-management/edit.light.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=4dde37266fa28b5479ddd3a3eaac611e 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-management/edit.dark.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=1981f637bea304c95d62ed7b7d85d14f" data-og-width="1512" width="1512" data-og-height="964" height="964" data-path="assets/features/customer-management/edit.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-management/edit.dark.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=88775acf708be69243d11458acf316cf 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-management/edit.dark.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=e5119c234bc4c23d48135d83ce06349e 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-management/edit.dark.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=2b2d2e7fef128546a7bc00d9d9d25c45 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-management/edit.dark.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=b8ed1faa8b58f5775359d737eb762315 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-management/edit.dark.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=046e0d5acd6f5a6128566168d1acc316 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-management/edit.dark.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=684fac2c9c0f32548cf08dd328875e54 2500w" />
+<img />
 
 It can be set through the dashboard or through the [API](/api-reference/customers/update#body-metadata). It can also be pre-set when creating a Checkout Session by using the [`customer_metadata`](/api-reference/checkouts/create-session#body-customer-metadata) field. This way, after a successful checkout, the metadata will automatically be set on the newly created Customer.
 
@@ -3569,17 +3687,17 @@ Enable customers to view & manage orders and subscriptions easily
 
 The Customer Portal is a destination where your customers can see their orders and ongoing subscriptions. It’s also where they’re able to get hands on receipts, benefits, and more.
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-portal/overview.light.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=20c5b716cad34eae8c8826867b5ca193" data-og-width="2560" width="2560" data-og-height="1600" height="1600" data-path="assets/features/customer-portal/overview.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-portal/overview.light.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=8f01ea1d4e91c09f49c2476110386353 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-portal/overview.light.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=c9d66922828a39dc3ac909b30917b446 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-portal/overview.light.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=785ee603adb693a4fa829d93a606ab77 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-portal/overview.light.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=324319684f981d20851136ffcb88ee67 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-portal/overview.light.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=f18087ef61f5465d0ed023a028872083 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-portal/overview.light.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=e2ca2157b2bd081ac151da31307406f5 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-portal/overview.dark.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=632bacb36eafb5ff4dbe0ab5df3d99e3" data-og-width="2560" width="2560" data-og-height="1600" height="1600" data-path="assets/features/customer-portal/overview.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-portal/overview.dark.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=35b91aae9a98baf708121c72c68d39bc 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-portal/overview.dark.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=4522200fcbfce8b1eaf4030533fb90b4 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-portal/overview.dark.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=46a007396278fb0e8f0a56f8dacc8b0d 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-portal/overview.dark.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=59efb6fd2b7be5c0fb2b8bd09c231085 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-portal/overview.dark.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=6e82b4f155efb4e91c24ed7acb607c78 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-portal/overview.dark.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=2089aef4bba333852bc03de6a003806d 2500w" />
+<img />
 
 ## Redirect to your Customer Portal
 
 The customer portal is directly available from the URL `https://polar.sh/your-org-slug/portal`. Your customers will be able to authenticate there by entering the email they used to purchase or subscribe to your products.
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-portal/signin.light.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=1320caeb29255a378aa93359741683dc" data-og-width="2560" width="2560" data-og-height="1600" height="1600" data-path="assets/features/customer-portal/signin.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-portal/signin.light.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=06755f525ecbcbb281e1a6ee4bbb3ae6 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-portal/signin.light.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=7a4faf4286bd9cce515605645d9a2438 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-portal/signin.light.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=922cbbc24b93ce5ecbf039df1c39eb7f 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-portal/signin.light.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=de1643211047afbb1cbf9f271b30c90d 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-portal/signin.light.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=0f96da032474ec30ff2b9507fbb4dd47 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-portal/signin.light.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=7c26c94ab8ba80ea4b157bbcdb20a143 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-portal/signin.dark.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=ccae95a5124e942c32465d86d3a3c2be" data-og-width="2560" width="2560" data-og-height="1600" height="1600" data-path="assets/features/customer-portal/signin.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-portal/signin.dark.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=fba70cd56605613ebaa2d15d88d14dd0 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-portal/signin.dark.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=5825af76eb943ab0616a3c51845bdbfd 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-portal/signin.dark.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=1dfa40c2881bc64c6181a61fc0b0dfc0 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-portal/signin.dark.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=b556c0723753d57745205ae9af24bb6f 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-portal/signin.dark.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=dc6beb4d5a7b576d90074e2424f2fd0a 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/customer-portal/signin.dark.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=902d186439610cffb4414735903adf1c 2500w" />
+<img />
 
 Customer Portal Sign In
 
@@ -3589,7 +3707,7 @@ You can provide a pre-authenticated Customer Portal Link to your customers. This
 
 Using the Polar API, all you need is to call the `customerSessions` endpoint. Here’s an example using our TypeScript SDK.
 
-```typescript  theme={null}
+```typescript theme={null}
 import { Polar } from "@polar-sh/sdk";
 
 const polar = new Polar({
@@ -3607,9 +3725,9 @@ async function run() {
 run();
 ```
 
-Or, if you use NextJS as your framework, we have a handy utility which shortens down your code significantly.
+Or, if you use Next.js as your framework, we have a handy utility which shortens down your code significantly.
 
-```typescript  theme={null}
+```typescript theme={null}
 // app/portal/route.ts
 import { CustomerPortal } from "@polar-sh/nextjs";
 
@@ -3628,9 +3746,9 @@ Create discounts on products and subscriptions
 
 Discounts are a way to reduce the price of a product or subscription. They can be applied to one-time purchasable products or subscriptions.
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/discounts/create.light.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=3c4044637217753344822d88e4807de7" data-og-width="2598" width="2598" data-og-height="1710" height="1710" data-path="assets/features/discounts/create.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/discounts/create.light.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=68c6dde8e228e487236c57c1a4662e7c 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/discounts/create.light.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=d5c23eaed21e4222942bcc01fbffa12c 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/discounts/create.light.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=c5299db162e19f12339ef6a918cef77a 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/discounts/create.light.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=419bdefa767de5a45bdc2e37ff7f7464 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/discounts/create.light.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=4f739cc64b4056a3489b92c74e5d5d26 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/discounts/create.light.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=f86b965d715c16caf6f4b56b75e56182 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/discounts/create.dark.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=42b5287244d46cabf83fce057270dafe" data-og-width="2414" width="2414" data-og-height="1702" height="1702" data-path="assets/features/discounts/create.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/discounts/create.dark.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=f4a8a684b3167574299c44dd943c79d7 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/discounts/create.dark.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=93359f47f1550465094b1f3d07cc7f3d 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/discounts/create.dark.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=54cb09d31fd6519568f09dcd0b41f9a8 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/discounts/create.dark.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=0afbe2464830888bfd8e81ef759ab2e6 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/discounts/create.dark.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=cbf2607c8b664696a2c55106c3eeabdc 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/discounts/create.dark.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=c946617093723bdd2fcdf45acb2cdb8c 2500w" />
+<img />
 
 ## Create a discount
 
@@ -3681,9 +3799,9 @@ Source: https://polar.sh/docs/features/finance/accounts
 
 You need to setup an account so that we can issue [payouts](/features/finance/payouts).
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/finance/accounts/onboarding.light.jpeg?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=3e8753cc9ed378fb8fbcccc90a103805" data-og-width="1764" width="1764" data-og-height="122" height="122" data-path="assets/features/finance/accounts/onboarding.light.jpeg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/finance/accounts/onboarding.light.jpeg?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=d23fc05f85d95c4f1118e5e53d2123a6 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/finance/accounts/onboarding.light.jpeg?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=76371132b7b8796537d17beb9d5e37d2 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/finance/accounts/onboarding.light.jpeg?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=a57d8982cc281a118f65e84c1e37c92d 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/finance/accounts/onboarding.light.jpeg?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=3d1770bd2e16045920d438cea0e3b039 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/finance/accounts/onboarding.light.jpeg?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=ae9a44f26b18a51e99f854631b96488b 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/finance/accounts/onboarding.light.jpeg?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=371bb135b3bf22d7dd0870399edc1bcd 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/finance/accounts/onboarding.dark.jpeg?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=28d52eb8f51bc8508d4a9ad7362fac73" data-og-width="1764" width="1764" data-og-height="124" height="124" data-path="assets/features/finance/accounts/onboarding.dark.jpeg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/finance/accounts/onboarding.dark.jpeg?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=b941bdf218edbc0d64b7e8d3d40984ea 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/finance/accounts/onboarding.dark.jpeg?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=cd9c903fd3057fb712b83093a70552df 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/finance/accounts/onboarding.dark.jpeg?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=1e422dc85feed9441e0d84f4abe71f77 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/finance/accounts/onboarding.dark.jpeg?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=b78a2ede5c816891f768d7f055836a0e 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/finance/accounts/onboarding.dark.jpeg?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=999e2ccb820157f42690f5bd94686e37 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/finance/accounts/onboarding.dark.jpeg?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=c6d365b0dafe3b04c4fc6210f4bc3c61 2500w" />
+<img />
 
 1. Go to the `Finance` page in your Polar dashboard
 2. Click `Setup` in the card shown above in your dashboard
@@ -3693,9 +3811,9 @@ You need to setup an account so that we can issue [payouts](/features/finance/pa
 
 ### Stripe Connect Express
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/finance/accounts/create.light.jpeg?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=42e607628ce93340ba7a1137f976da65" data-og-width="1794" width="1794" data-og-height="612" height="612" data-path="assets/features/finance/accounts/create.light.jpeg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/finance/accounts/create.light.jpeg?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=b2f28752e52cf5ddd12cecd103f5cb93 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/finance/accounts/create.light.jpeg?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=3a40171a7ca59fa67ef7e3037ec04792 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/finance/accounts/create.light.jpeg?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=7da85808b33c0e23ea97cc31a949559a 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/finance/accounts/create.light.jpeg?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=af81ee6d951c320f6683cc2d972b6cec 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/finance/accounts/create.light.jpeg?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=0f1bbcab0c3810923dc16eeb90580363 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/finance/accounts/create.light.jpeg?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=f7a930718380c76180aacd99e6a105e1 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/finance/accounts/create.dark.jpeg?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=e26f1f4573f9670ed7a4f2f8acb7d0a1" data-og-width="1794" width="1794" data-og-height="604" height="604" data-path="assets/features/finance/accounts/create.dark.jpeg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/finance/accounts/create.dark.jpeg?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=a382e69965e427ec88df07e7b9a6e516 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/finance/accounts/create.dark.jpeg?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=8afd5ac9a49b24b43114499e47abab78 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/finance/accounts/create.dark.jpeg?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=24504b2a71abafec31ffc2a8c9804557 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/finance/accounts/create.dark.jpeg?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=5ac1f6b3e9eb56d5c160adec3794e87b 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/finance/accounts/create.dark.jpeg?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=d316f841046371fcbbbbabb902a9dc49 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/finance/accounts/create.dark.jpeg?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=c9034aace3d938454c13531cca1b4cf2 2500w" />
+<img />
 
 Stripe is the default and recommended option since it enables instant transfers.
 
@@ -3709,9 +3827,9 @@ You can see your available balance for payout at any time under your `Finance` p
 
 ## Polar Balance
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/balance/overview.light.jpeg?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=603040c0ac9331aa9f71061ce20401fe" data-og-width="2700" width="2700" data-og-height="1655" height="1655" data-path="assets/features/finance/balance/overview.light.jpeg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/balance/overview.light.jpeg?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=6529976df66cd742e20c10ebb55e0ae4 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/balance/overview.light.jpeg?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=69d38a80ec87b8570ac2de258c2aca5a 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/balance/overview.light.jpeg?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=eee05402a367e6b6ff852a6bd1affc73 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/balance/overview.light.jpeg?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=478a2087cc991fe8e1ee79c7df3b4c15 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/balance/overview.light.jpeg?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=86fa56a53c17368478745b16eca9bcc6 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/balance/overview.light.jpeg?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=1c0f49ccecfa3816949bf667aef241d7 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/balance/overview.dark.jpeg?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=b4ac9458eabafcf793d75e6f3ed1fba5" data-og-width="2700" width="2700" data-og-height="1655" height="1655" data-path="assets/features/finance/balance/overview.dark.jpeg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/balance/overview.dark.jpeg?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=6856965e705e0a7780a314efd51323e9 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/balance/overview.dark.jpeg?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=f961a0dc4422622252b8bcb1e14807d5 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/balance/overview.dark.jpeg?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=ba183428c854b03b7298925de3a8ea71 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/balance/overview.dark.jpeg?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=632b277632ce76ca121f02f03bf887e4 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/balance/overview.dark.jpeg?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=6829eb56c20281d715f0f157a5fcc640 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/balance/overview.dark.jpeg?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=9b705aa285731285b606a34dc6aa3c51 2500w" />
+<img />
 
 Your balance is all the earnings minus:
 
@@ -3789,9 +3907,9 @@ Since we're the Merchant of Record, your customers get an invoice from Polar. Th
 
 You can generate them from the **Payouts** page under **Finance** in your Polar dashboard. Click on the ellipsis next to the payout you want to generate a reverse invoice for, and select **Download invoice**.
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/payouts/download.light.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=40ec44b479a7df5eda411f5a78efb007" data-og-width="3120" width="3120" data-og-height="2352" height="2352" data-path="assets/features/finance/payouts/download.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/payouts/download.light.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=cb7bb80dd439c561b090ebd235944f94 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/payouts/download.light.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=cc6713f08cc15b4500cc3d35a2b3466b 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/payouts/download.light.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=9aebb3d34f319d33e6e6322fa06031b9 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/payouts/download.light.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=81da6c8f5e4c7898575c24ef5664c87a 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/payouts/download.light.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=ab50f3f8394580bf5aac81adc2296e88 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/payouts/download.light.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=3b8a9f013ca990ef5c41f450916941fa 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/payouts/download.dark.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=05f61e1a55d50ab99578c60b38b2dba8" data-og-width="3120" width="3120" data-og-height="2352" height="2352" data-path="assets/features/finance/payouts/download.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/payouts/download.dark.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=2967273df8ce5f2d36e25deb8392bde5 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/payouts/download.dark.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=3b8929a716ae3c360ec85220c24a126a 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/payouts/download.dark.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=3eb07e86cd3e5e4a40851c44d248c613 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/payouts/download.dark.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=b6729b01b076fc738c600455761e428d 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/payouts/download.dark.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=0a75de9a244d44f2d073f3228a035cc0 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/payouts/download.dark.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=669c04eeca43efdb65bfa7851a485a94 2500w" />
+<img />
 
 A modal will open, allowing you to:
 
@@ -3800,9 +3918,9 @@ A modal will open, allowing you to:
 * Add notes shown at the bottom of the invoice.
 * Customize the invoice number. By default, we generate one like `POLAR-0001`, but you can change it to your own format and sequence.
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/payouts/generate.light.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=14a707adf05125dd6ffa2adf110e8a85" data-og-width="1620" width="1620" data-og-height="2304" height="2304" data-path="assets/features/finance/payouts/generate.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/payouts/generate.light.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=c73992012e6e856c17844654571dee7b 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/payouts/generate.light.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=8752891d4a18f61c8d925b7a534125e9 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/payouts/generate.light.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=2175eb00739053f72fcf606ddfebf073 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/payouts/generate.light.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=e8eb0e887e5b0afc11a4530f3094f74b 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/payouts/generate.light.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=4f3ef364476cbc2b967b8f3fea3c8c78 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/payouts/generate.light.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=b8c50729f9c429d12802feee26f43f0a 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/payouts/generate.dark.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=3a0cbb2660c294ef3042e4fdfe4eed7f" data-og-width="1620" width="1620" data-og-height="2304" height="2304" data-path="assets/features/finance/payouts/generate.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/payouts/generate.dark.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=fab78703b125a33119834aa4fbace888 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/payouts/generate.dark.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=fcf1095d697c75c475b0184e0dd888d7 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/payouts/generate.dark.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=d365af461cc432040b18de62e1d38cd1 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/payouts/generate.dark.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=4b0c2c94c8dbeab77159872c97b5a0f4 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/payouts/generate.dark.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=9ca26a531f657dad53338aa4d7ffaabb 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/finance/payouts/generate.dark.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=3021598d1155465ab187dda0e8558345 2500w" />
+<img />
 
 <Warning>
   Once the reverse invoice is generated, it cannot be changed. Make sure to
@@ -3811,7 +3929,7 @@ A modal will open, allowing you to:
 
 ### Sample Reverse Invoice
 
-<iframe src="https://polar-public-assets.s3.us-east-2.amazonaws.com/sample-reverse-invoice.pdf" width="100%" height="600px" />
+<iframe />
 
 ## Frequently Asked Questions
 
@@ -3871,8 +3989,8 @@ First, you'll need to create an API token in Polar that Affonso can use to commu
 8. Click **Create token** and copy the generated token
 9. Provide this token to Affonso by entering it [in their integration settings](https://affonso.io/app/affiliate-program/connect)
 
-<video controls width="600">
-  <source src="https://affonso-videos.s3.eu-central-1.amazonaws.com/Connect_Polar_Affonso_1.mp4" type="video/mp4" />
+<video>
+  <source type="video/mp4" />
 </video>
 
 ### 2. Set Up Webhooks in Polar
@@ -3890,15 +4008,15 @@ After connecting your Polar account with Affonso, you'll [receive a webhook URL 
    * `subscription.canceled`
 7. Click **Save** to complete the webhook setup
 
-<video controls width="600">
-  <source src="https://affonso-videos.s3.eu-central-1.amazonaws.com/Connect_Polar_Affonso_2.mp4" type="video/mp4" />
+<video>
+  <source type="video/mp4" />
 </video>
 
 ### 3. Add the Affonso Tracking Script to Your Website
 
 Add Affonso's tracking script to the `<head>` tag of your website:
 
-```html  theme={null}
+```html theme={null}
 <!-- Place in <head> tag -->
 <script
   async
@@ -3921,7 +4039,7 @@ This script should be placed on all pages of your website, including:
 
 For better conversion insights, you can track when users sign up through an affiliate link:
 
-```javascript  theme={null}
+```javascript theme={null}
 // After successful registration
 window.Affonso.signup(userEmail);
 ```
@@ -3930,14 +4048,14 @@ window.Affonso.signup(userEmail);
 
 To ensure proper commission attribution, pass the referral data when creating checkout sessions:
 
-```javascript  theme={null}
+```javascript theme={null}
 // Get the referral ID from the Affonso global variable
 const referralId = window.affonso_referral;
 
 // Create checkout session with Polar
 const checkout = await polar.checkouts.create({
   products: ["your_product_id"],
-  success_url: "https://your-site.com/success",
+  success_url: "https://your-app.com/success",
   metadata: {
     affonso_referral: referralId, // Include referral ID from Affonso
   }
@@ -3977,7 +4095,7 @@ Source: https://polar.sh/docs/features/integrations/fernand
 
 Learn how to sync customer and payment data from Polar to Fernand.
 
-<img src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/overview.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=b88538e65544e963bc3d58002ae490a9" data-og-width="2160" width="2160" data-og-height="1236" height="1236" data-path="assets/features/integrations/fernand/overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/overview.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=897c6c50feef09e9935e65dbb621d22f 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/overview.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=9c5c32018b6ecf2dda93a9fc475b419d 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/overview.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=65425ec74bab9627bd2993756bcc90cb 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/overview.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=248ad82e7f68819bed5ac67a850571b0 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/overview.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=e0ce3b8d1639085693ed42f72c400c35 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/overview.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=05fbb37d999054add9754eff7161ed51 2500w" />
+<img />
 
 ## What is Fernand?
 
@@ -3997,7 +4115,7 @@ This enables you to:
 
 ## How to connect Fernand with Polar
 
-<img src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/enable.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=fd7b3bb222aaf0f953bb3380b6191ae3" data-og-width="2160" width="2160" data-og-height="1199" height="1199" data-path="assets/features/integrations/fernand/enable.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/enable.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=3c91be1f53a2db0d09d0815aaa418bb9 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/enable.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=636155ebaba7e9bc3fb3fe9dd45eefa3 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/enable.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=5c33cd5d98f078b0c87c071f4b596cc6 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/enable.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=c9c31d16e617c0d5a9016b2af742d080 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/enable.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=9517b8d2ee3c256b1b182d8e7a0a8657 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/enable.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=5e1e8ced3419be0eebdd773590ed46cc 2500w" />
+<img />
 
 1. Open [Integrations](https://app.getfernand.com/settings/organization/integrations) in your Fernand organization settings.
 2. Click on **Connect Polar**.
@@ -4014,7 +4132,7 @@ Once Polar is connected, you can create automation rules in Fernand based on Pol
 
 Let’s walk through a basic example: auto-replying to all customers on your `Pro` plan.
 
-<img src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/inbox.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=d4e253667c841e2223bd94db3b34f409" data-og-width="1280" width="1280" data-og-height="659" height="659" data-path="assets/features/integrations/fernand/inbox.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/inbox.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=4e04e85618a90322a16cae3c8ce670ec 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/inbox.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=31ee8e81b408242dd33c7cdb3fc9ec2b 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/inbox.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=821ea41265e2228afefcc409eb1c84fe 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/inbox.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=ed05d0eb42cfcfbf50d37ee630627dd0 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/inbox.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=f7740f807828d9cb68e6d63d195ae14b 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/inbox.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=b0e1217e19a8d48884711988c7169095 2500w" />
+<img />
 
 ### Create a new rule
 
@@ -4023,13 +4141,13 @@ Let’s walk through a basic example: auto-replying to all customers on your `Pr
     1. Go to [Rules](https://app.getfernand.com/settings/organization/rules) in Fernand.
     2. Click `Add rule` and give it a descriptive name.
 
-    <img src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/create-rule.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=25780e683d3c9796dde3245b65915c04" data-og-width="2320" width="2320" data-og-height="1597" height="1597" data-path="assets/features/integrations/fernand/create-rule.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/create-rule.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=a53366fd55fb6a34271057a3cd3cf055 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/create-rule.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=dee0c4481ee8f196b5cdd2b3aac167a4 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/create-rule.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=d5fe3839441b01a27076d6b4f8a8dc2a 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/create-rule.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=81f5eaaa4b926dc92e83ef5d7919bb32 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/create-rule.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=479bc657cf2f5fcfee76b7f832bc1344 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/create-rule.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=d36ade3b5cf72a25aaa418617daa16a9 2500w" />
+    <img />
   </Step>
 
   <Step title="Select a trigger">
     This ensures the rule runs on each new customer message.
 
-    <img src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/rule-trigger.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=aeff3403e656453aa466b014e60b576b" data-og-width="2320" width="2320" data-og-height="1597" height="1597" data-path="assets/features/integrations/fernand/rule-trigger.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/rule-trigger.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=2556e928d12ec31c371fbd0c4d4c3740 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/rule-trigger.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=dac0117d53c8841023342742d70433be 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/rule-trigger.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=2348c74c80bdcd7d52f3f953fbffa4d6 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/rule-trigger.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=e290a183aa0f239677b75ca25d3b6d96 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/rule-trigger.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=b7c65e12376bd68f8651ea985f9cc648 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/rule-trigger.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=ad57136672c63572d7f08e47ddaf518c 2500w" />
+    <img />
   </Step>
 
   <Step title="Select a condition">
@@ -4040,7 +4158,7 @@ Let’s walk through a basic example: auto-replying to all customers on your `Pr
 
     You can target specific plans (e.g. `Pro`, `Business`) or specific products to personalize support or automate prioritization.
 
-    <img src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/rule-conditions.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=7ed92fcbca3e73c386624f3fadd59e0f" data-og-width="2320" width="2320" data-og-height="1597" height="1597" data-path="assets/features/integrations/fernand/rule-conditions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/rule-conditions.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=e4f1816abf559122016d1bbba1f09fb0 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/rule-conditions.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=2f2a39970873f13a645ac9da14431ded 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/rule-conditions.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=af65ed15ea90391de629467476f357c2 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/rule-conditions.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=ac3fe60db359a36cefa3310065d6580e 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/rule-conditions.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=3f67fc898eca5931ecebb4f8b0624651 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/rule-conditions.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=b925c4ae62aaf58690ce493b3d03c504 2500w" />
+    <img />
   </Step>
 
   <Step title="Select an action">
@@ -4051,7 +4169,7 @@ Let’s walk through a basic example: auto-replying to all customers on your `Pr
     * Tag the conversation with `priority` or `paid`
     * Trigger a webhook for external automation
 
-    <img src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/action.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=5991fcfc0687d4cc116fc5e67da3b579" data-og-width="2320" width="2320" data-og-height="2352" height="2352" data-path="assets/features/integrations/fernand/action.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/action.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=793688754f120034816233cdecd19307 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/action.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=09c4a013ad40ecb03d7e963d7eac3a3e 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/action.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=45dbd1bbd21ac26941deec8828af8445 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/action.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=aed9e829552d2878db7987084ac5c798 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/action.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=2b1a1284dec7cee9f78d488d138d0b7c 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/fernand/action.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=8fb23f5d26ca36a8483281100dea8958 2500w" />
+    <img />
   </Step>
 </Steps>
 
@@ -4108,19 +4226,19 @@ Go to [app.paritydeals.com](http://app.paritydeals.com) and sign up.
 
 In your ParityDeals dashboard, click `Create Deals` > `Create Deals with Polar`.
 
-<img src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/connect.light.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=380b19a4b436cc7144fe70555ac48ee4" data-og-width="3390" width="3390" data-og-height="1928" height="1928" data-path="assets/features/integrations/paritydeals/connect.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/connect.light.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=7d745ea42b4abe2cee4579bf86449ad0 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/connect.light.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=28479d2a12040a0296fe40bc337b8b28 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/connect.light.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=8dbc2b0a3416399b402bea92d6bd4e92 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/connect.light.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=e4949ae5880e0870f10c96b6a557897b 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/connect.light.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=297e9b0fa3c9f6adde369f22bef342c9 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/connect.light.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=91ac45cbf0e762a29321e1ebe3134248 2500w" />
+<img />
 
 ### Grant ParityDeals Access (OAuth 2.0)
 
 No need to create API access keys and share them externally. Just connect securely and grant the necessary permissions using Polar OAuth 2.0.
 
-<img src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/grant.light.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=d38ee9aaa7efe1e936f0f65847fcfe30" data-og-width="3390" width="3390" data-og-height="1928" height="1928" data-path="assets/features/integrations/paritydeals/grant.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/grant.light.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=1a7b7ebfc5273a94cf720c666b0cde2b 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/grant.light.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=d8976370466d04f6937e2dfc00eadab3 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/grant.light.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=020e30f2601600d65dbfd7fbd883355a 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/grant.light.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=f798b1964cd77ccb4c4fdd979e866af6 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/grant.light.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=36442459bbef903454e5d338d23d503b 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/grant.light.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=f39001580304c8249f19db6df7b74b54 2500w" />
+<img />
 
 ### Choose Products
 
 Now, let's select the Polar products you want to offer deals for.
 
-<img src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/choose-products.light.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=389665fb4c7b0433696ee3127849acb2" data-og-width="3390" width="3390" data-og-height="1928" height="1928" data-path="assets/features/integrations/paritydeals/choose-products.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/choose-products.light.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=d55cceeb66c9b4573fb1a5951fd5d734 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/choose-products.light.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=feedd73bfda73ad81b1ba79d696a710d 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/choose-products.light.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=8925335195bfb7a5136b788bd3a7595e 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/choose-products.light.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=da8f4af1b3581d9f5ec9e8a3f23aedab 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/choose-products.light.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=7757301076c61fddfeb090af3075d305 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/choose-products.light.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=144b0050975045513c5ce627dc8cc6b0 2500w" />
+<img />
 
 ### Configure Deals
 
@@ -4129,23 +4247,23 @@ Let's configure our deal settings.
 * Enter your website URL (requires your own site vs. Polar storefront)
 * Enter a targeted URL path, e.g `/pricing` to only show deals on that page
 
-<img src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/create-deals.light.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=949909121fedb3cb385841126059b886" data-og-width="3390" width="3390" data-og-height="1928" height="1928" data-path="assets/features/integrations/paritydeals/create-deals.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/create-deals.light.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=4fb54994d85087b94038e251b0836413 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/create-deals.light.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=a7df5ee1577322e4976a7d46918d229e 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/create-deals.light.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=fa041e6735614992bb0e43f5b032d8f9 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/create-deals.light.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=0bcad37131b54954b9e7f5dd4c8af0c1 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/create-deals.light.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=2167e43a1524946731f84f3fe553f387 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/create-deals.light.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=0f72314ca5421ad81f9eaf5305695850 2500w" />
+<img />
 
 Now we can configure the deals for different countries. ParityDeals offers great defaults, but you can of course change them.
 
-<img src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/customize-deals.light.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=437db4cc1c875c1a43312801267e1edf" data-og-width="3390" width="3390" data-og-height="1928" height="1928" data-path="assets/features/integrations/paritydeals/customize-deals.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/customize-deals.light.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=29bae9c54ab955b50ff738e9dbc434a9 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/customize-deals.light.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=1bb023e2b2c0ec5be9747bdbba712ae4 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/customize-deals.light.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=ff713eba200368872c0a89e636d0452a 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/customize-deals.light.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=d149e337bfd0e398d99962dc786e9b30 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/customize-deals.light.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=d1463511b58391313590762cc7e8c5e2 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/customize-deals.light.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=dee705be869e3bbb3f7179d478448d6a 2500w" />
+<img />
 
 ### Configure Banner
 
 You can then customize the ParityDeals banner to suit your site and design.
 
-<img src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/customize-banner.light.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=768323a8222a26b6279e33a29d58ed2f" data-og-width="3390" width="3390" data-og-height="1928" height="1928" data-path="assets/features/integrations/paritydeals/customize-banner.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/customize-banner.light.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=c43943ff594e56ab4ddeddd33c0b40b1 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/customize-banner.light.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=301fb1563d0a16d0af7633e3ad2d7986 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/customize-banner.light.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=b056bccb572f29ac4e38e61dfc07196c 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/customize-banner.light.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=2334bd67d3ebc36143c0c7d1b972dfb9 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/customize-banner.light.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=344aec11c0f0592a95ce6c531aa274fd 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/customize-banner.light.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=1da6795cc3ce00ad959b512eebb13daf 2500w" />
+<img />
 
 ### Embed Banner
 
 Finally, we're all setup over at ParityDeals. Just copy the script to their banner and embed it on your site. You're now done 👏🏼
 
-<img src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/success.light.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=f798f597faf884b32ded6cf493c0097b" data-og-width="3390" width="3390" data-og-height="1928" height="1928" data-path="assets/features/integrations/paritydeals/success.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/success.light.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=4ed7aa5041af60702eb44174001e76bc 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/success.light.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=34e118bfc67351cd76fe839499b0915d 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/success.light.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=b497f411f874d49dda64e71404dbc6d2 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/success.light.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=fdbd8cd7f969d4946c109d3e98e23d73 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/success.light.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=dd0e89169fe28e895668bfb6bd392c7f 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/paritydeals/success.light.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=302773ed132549f33d4e23b90e7e3c7c 2500w" />
+<img />
 
 ## Questions & Help
 
@@ -4157,7 +4275,7 @@ Source: https://polar.sh/docs/features/integrations/raycast
 
 The fastest way to access Polar from your keyboard
 
-<img src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/raycast/hero.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=c0ee6608105a2797546bb31d14121345" data-og-width="1020" width="1020" data-og-height="1020" height="1020" data-path="assets/features/integrations/raycast/hero.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/raycast/hero.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=1d8527b4e4e57261524ab63e55eb52ca 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/raycast/hero.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=fb4df1391ba100ceae0e81f4f1c60b6d 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/raycast/hero.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=8bcd00a258807e37fabbe7f164dfaca6 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/raycast/hero.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=2a3cb9420f33f97db0875eeb6f3bddf3 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/raycast/hero.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=70967cceab0d4d287f821f2a156cc94b 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/integrations/raycast/hero.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=611d5da40856ff9df3bb7f7ba97f472e 2500w" />
+<img />
 
 ## Install Extension
 
@@ -4184,32 +4302,6 @@ Keep track of all your customers.
 Source: https://polar.sh/docs/features/integrations/zapier
 
 Connect Polar to hundreds of other apps with Zapier
-
-export const ZapierEmbed = () => {
-  if (typeof document === "undefined") {
-    return null;
-  } else {
-    setTimeout(() => {
-      const script = document.createElement("script");
-      script.type = "module";
-      script.src = "https://cdn.zapier.com/packages/partner-sdk/v0/zapier-elements/zapier-elements.esm.js";
-      document.head.appendChild(script);
-      const stylesheet = document.createElement("link");
-      stylesheet.rel = "stylesheet";
-      stylesheet.href = "https://cdn.zapier.com/packages/partner-sdk/v0/zapier-elements/zapier-elements.css";
-      document.head.appendChild(stylesheet);
-      const element = document.createElement("zapier-workflow");
-      element.clientId = "Zci4gpfx7Co47mBoFOYm0m8bmnzB5UPcw7eGhpSR";
-      element.theme = document.querySelector("html").classList.contains("dark") ? "dark" : "light";
-      element.introCopyDisplay = "hide";
-      element.manageZapsDisplay = "hide";
-      element.guessZapDisplay = "hide";
-      const container = document.querySelector("#zapier-container") || document.body;
-      container.appendChild(element);
-    }, 1);
-    return <div id="zapier-container"></div>;
-  }
-};
 
 [Zapier](https://zapier.com/apps/polar/integrations) lets you connect Polar to 2,000+ other web services. Automated connections called Zaps, set up in minutes with no coding, can automate your day-to-day tasks and build workflows between apps that otherwise wouldn't be possible.
 
@@ -4248,17 +4340,17 @@ Source: https://polar.sh/docs/features/orders
 
 ## Sales
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/overview.light.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=fe0b6b72270e05881b7b37758edcb85a" data-og-width="3018" width="3018" data-og-height="1706" height="1706" data-path="assets/features/orders/overview.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/overview.light.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=e71aaf8816e96b397bf06ab3e2cdab20 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/overview.light.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=8233141eafba9efb803fba4939a8cb33 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/overview.light.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=6a7195f46cb2642c85b09ffcd165822b 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/overview.light.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=4009e51d6778b9c54aa83a9266681823 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/overview.light.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=439681c34e80f22486bdb6584492c7b6 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/overview.light.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=016bfa3f8d6f5d3464f3a3d2c12d0c2e 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/overview.dark.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=737954c20bfae390ecceaca168331728" data-og-width="3012" width="3012" data-og-height="1706" height="1706" data-path="assets/features/orders/overview.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/overview.dark.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=889bd833b0c6d24c4d20fe067e5ef44c 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/overview.dark.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=7f59e12f70c35c1a92bb72f28daac6f6 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/overview.dark.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=ea77b1ae5336918db227d5d7e87060d6 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/overview.dark.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=3a898822f08437fde39a7c2632a1d28f 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/overview.dark.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=f63178461b550cbc85e10b586392f62b 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/overview.dark.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=ef3a70bcbafee15fb6f22e88fd40da2b 2500w" />
+<img />
 
 The sales view shows you all sales in a paginated list.
 
 ## Order & Subscription Details
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/detail.light.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=6523d1c46bff6d54f477c93c4aba4ac4" data-og-width="3586" width="3586" data-og-height="2064" height="2064" data-path="assets/features/orders/detail.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/detail.light.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=79b2ee7e67d0871211bf44b28f31644e 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/detail.light.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=56d87ffddd6c188cfb477791452b7b4b 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/detail.light.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=3b9a46077f1b5cee757f9397d039f703 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/detail.light.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=21c96d19451a20f440590133d3660758 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/detail.light.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=87169c7e4f4a0b97373c4bf491436944 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/detail.light.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=3def73e428c7babb6561a21d5c2490db 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/detail.dark.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=8e6249c99bc8a0de9692a8a2552d68bd" data-og-width="3582" width="3582" data-og-height="2062" height="2062" data-path="assets/features/orders/detail.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/detail.dark.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=9615ad7f2aa387ec580eb4f4f99d533f 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/detail.dark.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=40b4205341eaa10b8413764237a3dc2a 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/detail.dark.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=acc68b0686d95652492dc15ec2e33b76 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/detail.dark.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=0d4a1563fe9fe66fa81c461143c5def7 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/detail.dark.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=6e4ce9645f34c1fdeb2149e70612b460 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/detail.dark.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=93369b6e2b0aafccb25cfbd05d26f025 2500w" />
+<img />
 
 Each sale has metadata attached to it. Common properties like
 
@@ -4271,9 +4363,9 @@ Each sale has metadata attached to it. Common properties like
 
 ## Checkouts
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkouts.light.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=ae81bc0afa3cbb1eac266c1c487b467f" data-og-width="3840" width="3840" data-og-height="2403" height="2403" data-path="assets/features/orders/checkouts.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkouts.light.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=dda034f0aac14f6433420a16d47469cc 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkouts.light.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=a0712f5e452032a07d0277b9127cdc3f 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkouts.light.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=6ae741beae2cc2771f811bb77dcbaef4 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkouts.light.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=0ba869459fa97197554e24ca34ee48f7 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkouts.light.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=9216bfdef2347effa99d1b49164f76a8 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkouts.light.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=a977560848eacecf32e77e079a689071 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkouts.dark.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=24c3d3dae78336a5df6f137c3b9361cb" data-og-width="3840" width="3840" data-og-height="2403" height="2403" data-path="assets/features/orders/checkouts.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkouts.dark.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=cfd0379b58face2c354f35d45327fcd5 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkouts.dark.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=90a0ee60d259b24fb55f3e84f7a75898 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkouts.dark.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=7033a3f522e6dd4b63177c12a952f7bc 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkouts.dark.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=16dec8bdc47655a3e6911da315911961 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkouts.dark.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=b2c514226bdf913c25946fdcf5c85b4e 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkouts.dark.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=ca30d6c0dc46933a3b3d5793e0b3e601 2500w" />
+<img />
 
 You can also have an overview of all checkout sessions. You can filter them by customer email, status and product.
 
@@ -4286,9 +4378,9 @@ A checkout can be in the following states:
 
 If you click on a Checkout, you can have more details on the **payment attempts**, in particular, why a payment has failed or has been declined.
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkout.light.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=4672cafc0b218d34a55c5cc006fdb153" data-og-width="3840" width="3840" data-og-height="2403" height="2403" data-path="assets/features/orders/checkout.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkout.light.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=bcf9dd8baf9fae7b84d2d046e9b4f811 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkout.light.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=1ac73955d12edfb9a605799d246d5237 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkout.light.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=4c931b7de4121f568d1ebefe90f42792 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkout.light.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=87c8d57825f9c084f1b3664402629a23 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkout.light.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=21eb74aed158f9b11a2015bcfa763039 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkout.light.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=d51d0053a32db9f505742b4d4203854c 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkout.dark.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=d8ebc400902b1179700e7348745793e8" data-og-width="3840" width="3840" data-og-height="2403" height="2403" data-path="assets/features/orders/checkout.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkout.dark.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=5b1783d55724d4260dab83ba63b66a77 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkout.dark.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=a0cf5741f10810ab68d2dd1962511895 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkout.dark.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=189ed0cb4d1ec19a9daf370f778dfea1 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkout.dark.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=115d82a958ab384611b9fa868566d104 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkout.dark.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=479d59cc8717b0f6330996e2f04915dd 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/orders/checkout.dark.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=af86f31f76639dc114a243f54495601f 2500w" />
+<img />
 
 
 # Products
@@ -4302,9 +4394,9 @@ Create digital products on Polar in minutes
   Subscriptions or pay once products are both considered a product in Polar (API & data model). Just with different pricing & billing logic. So both are shown & managed under Products with the ability to filter based on pricing model.
 </Info>
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/zvkg8NKbsUaW8X97/assets/features/products/create.light.png?fit=max&auto=format&n=zvkg8NKbsUaW8X97&q=85&s=a94ab7f48dc66bf74d1a0e2b24edd7b3" data-og-width="3598" width="3598" data-og-height="2068" height="2068" data-path="assets/features/products/create.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/zvkg8NKbsUaW8X97/assets/features/products/create.light.png?w=280&fit=max&auto=format&n=zvkg8NKbsUaW8X97&q=85&s=3342de5a1fda10332201c979567da1ef 280w, https://mintcdn.com/polar/zvkg8NKbsUaW8X97/assets/features/products/create.light.png?w=560&fit=max&auto=format&n=zvkg8NKbsUaW8X97&q=85&s=feae8abcbf8feaf7668b596b19ce4ec5 560w, https://mintcdn.com/polar/zvkg8NKbsUaW8X97/assets/features/products/create.light.png?w=840&fit=max&auto=format&n=zvkg8NKbsUaW8X97&q=85&s=379bd9755c71ecce9d7cc0f79c493012 840w, https://mintcdn.com/polar/zvkg8NKbsUaW8X97/assets/features/products/create.light.png?w=1100&fit=max&auto=format&n=zvkg8NKbsUaW8X97&q=85&s=4f0e03b336b6df3714f9301865db1de8 1100w, https://mintcdn.com/polar/zvkg8NKbsUaW8X97/assets/features/products/create.light.png?w=1650&fit=max&auto=format&n=zvkg8NKbsUaW8X97&q=85&s=1d1c3a48885a34da5dfa8bca89bbdf48 1650w, https://mintcdn.com/polar/zvkg8NKbsUaW8X97/assets/features/products/create.light.png?w=2500&fit=max&auto=format&n=zvkg8NKbsUaW8X97&q=85&s=435e54e90d6b49e550e36bcd4a39060d 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/zvkg8NKbsUaW8X97/assets/features/products/create.dark.png?fit=max&auto=format&n=zvkg8NKbsUaW8X97&q=85&s=6b996058348a4d458cb902bb59480ba8" data-og-width="3590" width="3590" data-og-height="2064" height="2064" data-path="assets/features/products/create.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/zvkg8NKbsUaW8X97/assets/features/products/create.dark.png?w=280&fit=max&auto=format&n=zvkg8NKbsUaW8X97&q=85&s=78cc1f3de86b024da0b8d7a2eddf6233 280w, https://mintcdn.com/polar/zvkg8NKbsUaW8X97/assets/features/products/create.dark.png?w=560&fit=max&auto=format&n=zvkg8NKbsUaW8X97&q=85&s=d7d69fd9e25051664de3f0b94bd2ea75 560w, https://mintcdn.com/polar/zvkg8NKbsUaW8X97/assets/features/products/create.dark.png?w=840&fit=max&auto=format&n=zvkg8NKbsUaW8X97&q=85&s=96062f7d64a663f12f90e9a5e2bd1f5c 840w, https://mintcdn.com/polar/zvkg8NKbsUaW8X97/assets/features/products/create.dark.png?w=1100&fit=max&auto=format&n=zvkg8NKbsUaW8X97&q=85&s=72b99d186d691f2fff98ce3f95342388 1100w, https://mintcdn.com/polar/zvkg8NKbsUaW8X97/assets/features/products/create.dark.png?w=1650&fit=max&auto=format&n=zvkg8NKbsUaW8X97&q=85&s=68d8c95f518c652b58b420f08810c1ae 1650w, https://mintcdn.com/polar/zvkg8NKbsUaW8X97/assets/features/products/create.dark.png?w=2500&fit=max&auto=format&n=zvkg8NKbsUaW8X97&q=85&s=b9395bd590d7948b8bd97c81694c55e9 2500w" />
+<img />
 
 ## Create a product
 
@@ -4365,9 +4457,9 @@ You can read more about how trials work [here](/features/trials).
 
 You can collect additional information from your customers at checkout. This can be useful for things like phone number, terms of service agreement or specific data you need to collect.
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/zvkg8NKbsUaW8X97/assets/features/products/checkout_fields.light.png?fit=max&auto=format&n=zvkg8NKbsUaW8X97&q=85&s=2665b59c0b3e1b7ce2a24ea6d66f8588" data-og-width="1834" width="1834" data-og-height="736" height="736" data-path="assets/features/products/checkout_fields.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/zvkg8NKbsUaW8X97/assets/features/products/checkout_fields.light.png?w=280&fit=max&auto=format&n=zvkg8NKbsUaW8X97&q=85&s=ebc3f481c77697906b398b9381700ba8 280w, https://mintcdn.com/polar/zvkg8NKbsUaW8X97/assets/features/products/checkout_fields.light.png?w=560&fit=max&auto=format&n=zvkg8NKbsUaW8X97&q=85&s=8fccd24e37cfc6538e2faf5b331d9629 560w, https://mintcdn.com/polar/zvkg8NKbsUaW8X97/assets/features/products/checkout_fields.light.png?w=840&fit=max&auto=format&n=zvkg8NKbsUaW8X97&q=85&s=e584b42e2428f8a1cef8b31cba943246 840w, https://mintcdn.com/polar/zvkg8NKbsUaW8X97/assets/features/products/checkout_fields.light.png?w=1100&fit=max&auto=format&n=zvkg8NKbsUaW8X97&q=85&s=277371e4d5d301a7bc03766c78f7a992 1100w, https://mintcdn.com/polar/zvkg8NKbsUaW8X97/assets/features/products/checkout_fields.light.png?w=1650&fit=max&auto=format&n=zvkg8NKbsUaW8X97&q=85&s=c2c2a1eb2c612973fd2e1bf880370fb6 1650w, https://mintcdn.com/polar/zvkg8NKbsUaW8X97/assets/features/products/checkout_fields.light.png?w=2500&fit=max&auto=format&n=zvkg8NKbsUaW8X97&q=85&s=5de86d91e7dce575dbce4053fc9b9cad 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/zvkg8NKbsUaW8X97/assets/features/products/checkout_fields.dark.png?fit=max&auto=format&n=zvkg8NKbsUaW8X97&q=85&s=d84bd7a7da76985f013081684af04016" data-og-width="1850" width="1850" data-og-height="756" height="756" data-path="assets/features/products/checkout_fields.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/zvkg8NKbsUaW8X97/assets/features/products/checkout_fields.dark.png?w=280&fit=max&auto=format&n=zvkg8NKbsUaW8X97&q=85&s=1c0186fb2f03f05cb789b872954a9acf 280w, https://mintcdn.com/polar/zvkg8NKbsUaW8X97/assets/features/products/checkout_fields.dark.png?w=560&fit=max&auto=format&n=zvkg8NKbsUaW8X97&q=85&s=bb0b661903e6088d3b38ff51c4d1cd89 560w, https://mintcdn.com/polar/zvkg8NKbsUaW8X97/assets/features/products/checkout_fields.dark.png?w=840&fit=max&auto=format&n=zvkg8NKbsUaW8X97&q=85&s=5fbf1fc871aa4ae80331226aa5965128 840w, https://mintcdn.com/polar/zvkg8NKbsUaW8X97/assets/features/products/checkout_fields.dark.png?w=1100&fit=max&auto=format&n=zvkg8NKbsUaW8X97&q=85&s=341fefc972d048d3513df5caff562eb0 1100w, https://mintcdn.com/polar/zvkg8NKbsUaW8X97/assets/features/products/checkout_fields.dark.png?w=1650&fit=max&auto=format&n=zvkg8NKbsUaW8X97&q=85&s=6f29d467f476aeec2172d042e7466bf0 1650w, https://mintcdn.com/polar/zvkg8NKbsUaW8X97/assets/features/products/checkout_fields.dark.png?w=2500&fit=max&auto=format&n=zvkg8NKbsUaW8X97&q=85&s=f939d4312501fcc11e2a657ec8b590b5 2500w" />
+<img />
 
 Fields are managed from your organization settings, and you can choose which fields to show on a per-product basis, and set if they are required or not. We support the following field types:
 
@@ -4430,9 +4522,9 @@ No matter what refund policy you offer to customers, Polar makes it easy to offe
 
 However, even in case you have a “no refund” policy, Polar reserves the right to issue refunds within 60 days of purchase - at our own discretion. We reserve this right in an effort to automatically and proactively reduce costly chargebacks.
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/refunds/order-refund.light.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=8deb5fa2aadb287ab895c8e6d0dc9b96" data-og-width="1488" width="1488" data-og-height="634" height="634" data-path="assets/features/refunds/order-refund.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/refunds/order-refund.light.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=ecbeb7c946b3ff7ad7de16857948a8ab 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/refunds/order-refund.light.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=c15206646029c7ebf0c7ee5bed1cc237 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/refunds/order-refund.light.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=9834eac763ec16939f755c3d3d6be2a3 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/refunds/order-refund.light.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=b1bfcfc0495574d13d5b12a3b4b07a8e 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/refunds/order-refund.light.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=da7c1ac70d5020ec59ee434e91c63445 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/refunds/order-refund.light.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=554a61cff813c9c39556a479e6be158f 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/refunds/order-refund.dark.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=b634b5a88b66bcb8379a238832e37d8d" data-og-width="1472" width="1472" data-og-height="646" height="646" data-path="assets/features/refunds/order-refund.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/refunds/order-refund.dark.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=46f1205d710b57ae3250ce35eaf30857 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/refunds/order-refund.dark.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=c3e114f35114a5fce2ce31a96d853439 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/refunds/order-refund.dark.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=9a6ac68c728a98d093a85f9d79eaf8fc 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/refunds/order-refund.dark.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=dfc6f7fd4178a03c1e5f3ab724d6e5d9 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/refunds/order-refund.dark.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=446c057b0cfdf6fb3579bd63dee963d5 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/refunds/order-refund.dark.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=480743c1277dd317fe7b296f5cd67750 2500w" />
+<img />
 
 <Note>
   **Polar can issue refunds on your behalf**
@@ -4446,9 +4538,9 @@ However, even in case you have a “no refund” policy, Polar reserves the righ
 2. Scroll down to the “Refund” section
 3. Click “Refund”
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/refunds/issue-refund.light.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=72b1c9f4e81f6fcc00d395f681396515" data-og-width="1402" width="1402" data-og-height="960" height="960" data-path="assets/features/refunds/issue-refund.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/refunds/issue-refund.light.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=918554c1ec10dd8092d87fe8f0b5cb8f 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/refunds/issue-refund.light.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=2f197a8156e8cb17a914895d3e290ec2 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/refunds/issue-refund.light.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=91a6745d8938f98ddc09405a853c0dfa 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/refunds/issue-refund.light.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=cbb728319eb9ce79dd5378495b3b7ff8 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/refunds/issue-refund.light.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=7a5ac21de9dd591098c0f6f249119071 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/refunds/issue-refund.light.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=adb22faaa7f43423c283f52189f41132 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/refunds/issue-refund.dark.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=239999e5fdca1b9f872a847a893e2f33" data-og-width="1430" width="1430" data-og-height="966" height="966" data-path="assets/features/refunds/issue-refund.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/refunds/issue-refund.dark.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=c9c0f915426fc6f26c579a6a6ead12c7 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/refunds/issue-refund.dark.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=5341a41bf0876f0efbeb07d7b1dcdc17 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/refunds/issue-refund.dark.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=6a54d47b34539317fafb79e339659bf3 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/refunds/issue-refund.dark.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=cbf1ee0407910fb5ee2815da47fcf949 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/refunds/issue-refund.dark.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=c7436d4ce2358fbcd2c7b5ac242ff435 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/refunds/issue-refund.dark.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=ee55a2f3cd980e247a3c2c8745c53fc9 2500w" />
+<img />
 
 **Amount**
 
@@ -4717,7 +4809,7 @@ See the [Customer Seats API Reference](/api-reference/customer-seats/assign) for
 
 ### Example: Assign a seat (subscription)
 
-```typescript  theme={null}
+```typescript theme={null}
 await polar.customerSeats.assign({
   subscription_id: "sub_123",
   email: "engineer@company.com",
@@ -4730,7 +4822,7 @@ await polar.customerSeats.assign({
 
 ### Example: Assign a seat (one-time purchase)
 
-```typescript  theme={null}
+```typescript theme={null}
 await polar.customerSeats.assign({
   order_id: "order_456",
   email: "engineer@company.com",
@@ -4743,7 +4835,7 @@ await polar.customerSeats.assign({
 
 ### Example: List seats for subscription
 
-```typescript  theme={null}
+```typescript theme={null}
 const seats = await polar.customerSeats.list({
   subscription_id: "sub_123"
 });
@@ -4753,7 +4845,7 @@ console.log(`Available: ${seats.available_seats}/${seats.total_seats}`);
 
 ### Example: List seats for order
 
-```typescript  theme={null}
+```typescript theme={null}
 const seats = await polar.customerSeats.list({
   order_id: "order_456"
 });
@@ -4851,9 +4943,9 @@ The trial period consists of two parameters:
 * **A unit**: day, week, month, or year.
 * **A duration**: a number representing how many units the trial will last.
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/setup.light.png?fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=808ba964c320447e8bb71612e27687d0" data-og-width="738" width="738" data-og-height="260" height="260" data-path="assets/features/trials/setup.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/setup.light.png?w=280&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=4fcfd0070c9e5253ee69f2bdbb59f1f7 280w, https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/setup.light.png?w=560&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=c3f79b4b212a10ac184114d9daaa3875 560w, https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/setup.light.png?w=840&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=46a20e477e4440168def8ff1f5ff981d 840w, https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/setup.light.png?w=1100&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=6aa9888c5eb90426e3c1871d6bbf189c 1100w, https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/setup.light.png?w=1650&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=6a7e1cbe712be49b252f5f6a6957b04c 1650w, https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/setup.light.png?w=2500&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=d6481e23ba2cf03e160d9db75eb39a9c 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/setup.dark.png?fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=45e513c1055d34cff0569e72750ca83c" data-og-width="738" width="738" data-og-height="260" height="260" data-path="assets/features/trials/setup.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/setup.dark.png?w=280&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=a87e68d23703f6f6821467d7f9401035 280w, https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/setup.dark.png?w=560&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=0571140c6735921dfcef1243e2212817 560w, https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/setup.dark.png?w=840&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=ba7005e18f90b984d287cb1fa38e6adc 840w, https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/setup.dark.png?w=1100&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=1eb19537130488fdc5b2e602207fc9d6 1100w, https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/setup.dark.png?w=1650&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=5b44bdaf04a9e05685654917f3de36a6 1650w, https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/setup.dark.png?w=2500&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=c15cd0d1db1ce2971e6f5d2920760875 2500w" />
+<img />
 
 ## Starting a trial
 
@@ -4863,9 +4955,9 @@ We'll still collect their payment information at checkout, but they won't be cha
 
 Once the trial period ends, the customer will be automatically charged for the subscription, and their billing cycle will begin.
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/checkout.light.png?fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=a022daf013c20b48e1fdfd6610214b21" data-og-width="1162" width="1162" data-og-height="612" height="612" data-path="assets/features/trials/checkout.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/checkout.light.png?w=280&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=fbd287450129c8314db7c172a18e0400 280w, https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/checkout.light.png?w=560&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=a754f0e914ea2a5d33cbdb9a78e3e63c 560w, https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/checkout.light.png?w=840&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=3bdf9c2c463c415b3e5d4ecdaedaf7ce 840w, https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/checkout.light.png?w=1100&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=1519c8ce8d5bf50da448c5fabab2ebf2 1100w, https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/checkout.light.png?w=1650&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=55cb34b210769fc9a1a491125e834170 1650w, https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/checkout.light.png?w=2500&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=dbdfada58d5dfa2188ac8227e50dad43 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/checkout.dark.png?fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=5b41262d9dd3f8513060027341ab72ff" data-og-width="1160" width="1160" data-og-height="612" height="612" data-path="assets/features/trials/checkout.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/checkout.dark.png?w=280&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=19af6353f41146584913e2e9b8b25cd2 280w, https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/checkout.dark.png?w=560&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=b43b031871cae05ad977af0c559c2571 560w, https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/checkout.dark.png?w=840&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=3cf49290fd51d8f145dcd296c7fc9d6a 840w, https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/checkout.dark.png?w=1100&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=4b6e98e4d1381fd7666c6bfd36c0b5a8 1100w, https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/checkout.dark.png?w=1650&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=075e63a6d5688dae9291616969909f64 1650w, https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/checkout.dark.png?w=2500&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=23bf69aa0406fb615fd781cfdbc2baa1 2500w" />
+<img />
 
 ## Adding, extending or canceling a trial
 
@@ -4875,9 +4967,9 @@ To add or extend a trial, set a new trial end date in the future. If the subscri
 
 To cancel a trial, click on the **End trial** button. The subscription will become active immediately, and the customer will be charged immediately for a new billing cycle.
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/update.light.png?fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=e8068c41e9a3eef52df62342a8b24cdb" data-og-width="1080" width="1080" data-og-height="800" height="800" data-path="assets/features/trials/update.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/update.light.png?w=280&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=8f0072d92524ba23db0456da130d3b53 280w, https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/update.light.png?w=560&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=9d251cdf512299f07e62b7448902b2ba 560w, https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/update.light.png?w=840&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=0dcf7d5afaecf3cfabe0d0e24da92568 840w, https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/update.light.png?w=1100&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=6c92cf547dbee64f012b08387252ca15 1100w, https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/update.light.png?w=1650&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=64d82d2d76092fc1b7b9bbeecd854eeb 1650w, https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/update.light.png?w=2500&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=0654a5854cac78a4986675c1a119b944 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/update.dark.png?fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=18f6391c5e807fae964668ca29702895" data-og-width="1080" width="1080" data-og-height="800" height="800" data-path="assets/features/trials/update.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/update.dark.png?w=280&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=593567603580e4c92a390d5306f13084 280w, https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/update.dark.png?w=560&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=06b8c708e99d0939d0b7950b793b79b4 560w, https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/update.dark.png?w=840&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=607ceb412cf8911a45653b7dbe414b1a 840w, https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/update.dark.png?w=1100&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=79e2379515425312d36838b7ab5cd792 1100w, https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/update.dark.png?w=1650&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=c0e7b9fb0e08327860b4aa388f4632e7 1650w, https://mintcdn.com/polar/6okRukiIx_KDNAFT/assets/features/trials/update.dark.png?w=2500&fit=max&auto=format&n=6okRukiIx_KDNAFT&q=85&s=67b1072c9ea512b588e1e4e33d2017c1 2500w" />
+<img />
 
 ## Preventing trial abuse
 
@@ -4955,9 +5047,9 @@ Our Usage Based Billing infrastructure is built to work with Subscription produc
 
 To charge your customers for usage, you need to add a metered price to your product. You'll need the select the **Meter** and the **amount per unit**.
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/cap.light.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=b4ac7dd5bf3e6a6f1aa8ef8866bc81a3" data-og-width="1434" width="1434" data-og-height="752" height="752" data-path="assets/features/usage/cap.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/cap.light.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=822053ba1df3df18cbcbc561b192be2d 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/cap.light.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=bbb1d12e8d4747fdd517589e269ac0ea 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/cap.light.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=33795a10571507b63808224050dbdb44 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/cap.light.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=d49bad6531fa37e3cf6971220f0ea173 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/cap.light.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=15e6a9f00e9cbccc1fc19543e5d6b2da 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/cap.light.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=5ded0738148af721334e6697c1faccf6 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/cap.dark.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=d2fb533708a2a5a4f25ffaa9f248331b" data-og-width="1444" width="1444" data-og-height="748" height="748" data-path="assets/features/usage/cap.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/cap.dark.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=7efa3c14ef16cc2d9d5b8d95f1807c0f 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/cap.dark.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=c5a7da3d6b825d49c0a3b703ea6c7348 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/cap.dark.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=5bfcb816299d5d0c1217e97deac61ca1 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/cap.dark.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=06a4f592338b149cffa42701aa5076c2 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/cap.dark.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=560342eb952b8b4275a299861f894656 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/cap.dark.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=387130fbd30b5ad23b78b34f351b768a 2500w" />
+<img />
 
 Optionally, you can set a **cap**. The customer will be charged the cap amount if they exceed it, regardless of the usage.
 
@@ -4982,9 +5074,9 @@ When a subscription is canceled, it generally remains active until the end of th
 
 Customers can view their estimated charges for each meter in the Customer Portal.
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/portal.light.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=85bdb395f87e972ed50a7381ba3aad43" data-og-width="2358" width="2358" data-og-height="1218" height="1218" data-path="assets/features/usage/portal.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/portal.light.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=8972d5a0a8a6f872681d6f9868bcc880 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/portal.light.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=96aeab3c57e09af522465cc2d079c11b 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/portal.light.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=eb837824af9aaa0ed9ea55353c8375a0 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/portal.light.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=1b4dda5c34f856b934d2b76fdfbade24 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/portal.light.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=553abd674a5c2fb50a15fe5aad61a54e 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/portal.light.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=e5a029265468a698405d6b5b85e8c4d2 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/portal.dark.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=44f1b0e0f67aaa22b293a7dafaf3ab99" data-og-width="2364" width="2364" data-og-height="1214" height="1214" data-path="assets/features/usage/portal.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/portal.dark.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=f5c9e22d99ee09640a9057f823bddfa2 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/portal.dark.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=1cfb93c49691551d3a0015f86ba582ec 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/portal.dark.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=30229e91a32620d8044e49045b02c465 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/portal.dark.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=d7a5b71049e90623dbc912bc4040cdff 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/portal.dark.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=0d05475d6642dd222c07255936727b21 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/portal.dark.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=b541f2af5d8fb788af4089b07d7d395d 2500w" />
+<img />
 
 
 # Credits
@@ -5008,9 +5100,9 @@ To avoid any overage charges, don't create any Metered price on your product. Th
 
 ## Issuing Credits with the Credits Benefit
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/credits/credits.light.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=95a964aa562069bd58a551e44c757459" data-og-width="1620" width="1620" data-og-height="2304" height="2304" data-path="assets/features/benefits/credits/credits.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/credits/credits.light.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=b760d24e9a3986942f85f837906349fa 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/credits/credits.light.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=83df523fa528bf405607cfffc437ef16 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/credits/credits.light.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=05e2f5f37fc1f0f66a2269a07f188ed1 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/credits/credits.light.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=ed026417db037e5e4248776054fd6033 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/credits/credits.light.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=b547ce3907051f816340a08b145fa910 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/credits/credits.light.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=deda471c9661f21c57aebfcd23057040 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/credits/credits.dark.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=a545e217dd64f288b127ec76eb3527ef" data-og-width="1620" width="1620" data-og-height="2304" height="2304" data-path="assets/features/benefits/credits/credits.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/credits/credits.dark.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=f53dd50244006f52fe28389ccd32dc11 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/credits/credits.dark.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=ed51c6ecd5c605c90933ff9a8036c01f 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/credits/credits.dark.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=c1604014eb9f4556687cb2dae0cd4730 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/credits/credits.dark.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=8d6c8f2f81c2fbe10de06d045cae5488 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/credits/credits.dark.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=08efb35cd818b5c25f0011415eb7da5e 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/features/benefits/credits/credits.dark.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=6ce168ea0a513884b7be0e7989633a84 2500w" />
+<img />
 
 The Credits benefit will credit a customer's Usage Meter balance at different points in time depending on the type of product the benefit is attached to.
 
@@ -5054,7 +5146,7 @@ Events are sent to Polar using the [Events Ingestion API](/api-reference/events/
 
 Here is an example of an event:
 
-```json  theme={null}
+```json theme={null}
 {
   "name": "ai_usage",
   "external_customer_id": "cus_123",
@@ -5074,7 +5166,7 @@ To ingest events, you can use the Polar SDKs.
 
 ### TypeScript Example
 
-```typescript  theme={null}
+```typescript theme={null}
 import { Polar } from "@polar-sh/sdk";
 
 const polar = new Polar({
@@ -5126,7 +5218,7 @@ Ingest delta time of arbitrary execution. Bring your own now-resolver.
 pnpm add @polar-sh/ingestion
 ```
 
-```typescript  theme={null}
+```typescript theme={null}
 import { Ingestion } from "@polar-sh/ingestion";
 import { DeltaTimeStrategy } from "@polar-sh/ingestion/strategies/DeltaTime";
 
@@ -5165,7 +5257,7 @@ export async function GET(request: Request) {
 
 #### Ingestion Payload
 
-```json  theme={null}
+```json theme={null}
 {
   "customerId": "123",
   "name": "execution-time",
@@ -5210,7 +5302,7 @@ Wrap any LLM model from the `@ai-sdk/*` library, to automatically fire prompt- &
 pnpm add @polar-sh/ingestion ai @ai-sdk/openai
 ```
 
-```typescript  theme={null}
+```typescript theme={null}
 import { Ingestion } from "@polar-sh/ingestion";
 import { LLMStrategy } from "@polar-sh/ingestion/strategies/LLM";
 import { generateText } from "ai";
@@ -5219,6 +5311,7 @@ import { openai } from "@ai-sdk/openai";
 // Setup the LLM Ingestion Strategy
 const llmIngestion = Ingestion({ accessToken: process.env.POLAR_ACCESS_TOKEN })
   .strategy(new LLMStrategy(openai("gpt-4o")))
+  .cost((ctx) => ({ amount: 123, currency: "usd" })) // Optional: Set the cost of the LLM usage
   .ingest("openai-usage");
 
 export async function POST(req: Request) {
@@ -5227,7 +5320,7 @@ export async function POST(req: Request) {
   // Get the wrapped LLM model with ingestion capabilities
   // Pass Customer Id to properly annotate the ingestion events with a specific customer
   const model = llmIngestion.client({
-    customerId: request.headers.get("X-Polar-Customer-Id") ?? "",
+    customerId: "xxx",
   });
 
   const { text } = await generateText({
@@ -5242,13 +5335,25 @@ export async function POST(req: Request) {
 
 #### Ingestion Payload
 
-```json  theme={null}
+```json theme={null}
 {
   "customerId": "123",
   "name": "openai-usage",
   "metadata": {
-    "promptTokens": 100,
-    "completionTokens": 200
+    "inputTokens": 100,
+    "outputTokens": 200,
+    "cachedInputTokens": 10,
+    "totalTokens": 300,
+    "model": "gpt-4o",
+    "provider": "openai.responses",
+    "strategy": "LLM",
+    "_cost": {
+      "amount": 123, // Amount is expected to be in cents. $1.23 should be represented as 123
+      "currency": "usd"
+    },
+    "_llm": {
+      ... //
+    }
   }
 }
 ```
@@ -5271,7 +5376,7 @@ Our Python SDK includes an ingestion helper and strategies for common use cases.
 
 The ingestion helper is a simple wrapper around the Polar events ingestion API. It takes care of batching and sending events to Polar in the background, without blocking your main thread.
 
-```python  theme={null}
+```python theme={null}
 import os
 from polar_sdk.ingestion import Ingestion
 
@@ -5292,7 +5397,7 @@ ingestion.ingest({
 
 With our PydanticAI strategy, you can easily track the usage of LLMs and send the data to Polar for billing.
 
-```python  theme={null}
+```python theme={null}
 import os
 from polar_sdk.ingestion import Ingestion
 from polar_sdk.ingestion.strategies import PydanticAIStrategy
@@ -5321,7 +5426,7 @@ if __name__ == '__main__':
 
 #### Ingestion Payload
 
-```json  theme={null}
+```json theme={null}
 {
   "name": "ai_usage",
   "external_customer_id": "CUSTOMER_ID",
@@ -5348,7 +5453,7 @@ Wrap the official AWS S3 Client with our S3 Ingestion Strategy to automatically 
 pnpm add @polar-sh/ingestion @aws-sdk/client-s3
 ```
 
-```typescript  theme={null}
+```typescript theme={null}
 import { Ingestion } from "@polar-sh/ingestion";
 import { S3Strategy } from "@polar-sh/ingestion/strategies/S3";
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
@@ -5396,7 +5501,7 @@ export async function POST(request: Request) {
 
 #### Ingestion Payload
 
-```json  theme={null}
+```json theme={null}
 {
   "customerId": "123",
   "name": "s3-uploads",
@@ -5423,7 +5528,7 @@ Wrap any Readable or Writable stream of choice to automatically ingest the bytes
 pnpm add @polar-sh/ingestion
 ```
 
-```typescript  theme={null}
+```typescript theme={null}
 import { Ingestion } from '@polar-sh/ingestion';
 import { StreamStrategy } from '@polar-sh/ingestion/strategies/Stream';
 
@@ -5455,7 +5560,7 @@ export async function GET(request: Request) {
 
 #### Ingestion Payload
 
-```json  theme={null}
+```json theme={null}
 {
   "customerId": "123",
   "name": "my-stream",
@@ -5500,7 +5605,7 @@ Events are sent to Polar using the [Events Ingestion API](/api-reference/events/
 
 Here is an example of an event:
 
-```json  theme={null}
+```json theme={null}
 {
   "name": "ai_usage",
   "external_customer_id": "cus_123",
@@ -5543,33 +5648,33 @@ Get up and running in 5 minutes
     Meters consist of filters and an aggregation function.
     The filter is used to filter the events that should be included in the meter and the aggregation function is used to compute the usage.
 
-    <img className="block dark:hidden" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/create-meter.light.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=0145ac51bc8100b038482d31612f3ea6" data-og-width="3598" width="3598" data-og-height="2070" height="2070" data-path="assets/features/usage/create-meter.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/create-meter.light.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=06564195b986ffcc5e117fe8d9811a5a 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/create-meter.light.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=68bed5ae2b654f960df4cfd9f89067df 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/create-meter.light.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=b4eae2ac77588c804de04f46f9bb0ea0 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/create-meter.light.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=7a869fe027539a8cecb45c92c5781031 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/create-meter.light.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=e661f4bf96776191db89ceaf6f74c4bd 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/create-meter.light.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=ed97c0b4c66e04ccee501693c309a6bc 2500w" />
+    <img />
 
-    <img className="hidden dark:block" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/create-meter.dark.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=2293c25c2e2c014abcf6c8a761568f95" data-og-width="3590" width="3590" data-og-height="2066" height="2066" data-path="assets/features/usage/create-meter.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/create-meter.dark.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=b5dfdb7fff99d88e7ab1e071dc3b1c49 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/create-meter.dark.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=cb463be35ab687fc710735ecc25115a7 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/create-meter.dark.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=81913de1ce93b114391ef2e3e47e7326 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/create-meter.dark.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=3517924ffa89faf0a672ded7ebfce07b 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/create-meter.dark.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=121d7076d48d16cc60d6f8d01da93b83 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/create-meter.dark.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=3a90619357124a1d53198daeb6cac936 2500w" />
+    <img />
   </Step>
 
   <Step title="Add metered price to a Product">
     To enable usage based billing for a Product, you need to add a metered price to the Product. Metered prices are only applicable to Subscription Products.
 
-    <img className="block dark:hidden" src="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/features/usage/product-meter.light.png?fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=c1a9f0493fa6b73f0d4581b19e5d757c" data-og-width="2552" width="2552" data-og-height="1600" height="1600" data-path="assets/features/usage/product-meter.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/features/usage/product-meter.light.png?w=280&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=3bd76b239eb542976ada85b10d77ac74 280w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/features/usage/product-meter.light.png?w=560&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=77cc8b5ff8e3ece74597def4976e6e54 560w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/features/usage/product-meter.light.png?w=840&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=000613bbe30c7d0ea01a68010df9057f 840w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/features/usage/product-meter.light.png?w=1100&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=28a3944f3bd8883e7087e115df0eb0c8 1100w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/features/usage/product-meter.light.png?w=1650&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=0767631d6e5b86e1619cc148ba1165f2 1650w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/features/usage/product-meter.light.png?w=2500&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=09603dfff2709840a9d549daf1212edd 2500w" />
+    <img />
 
-    <img className="hidden dark:block" src="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/features/usage/product-meter.dark.png?fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=4a54e18d784e6c6312c73dd42b02c473" data-og-width="2548" width="2548" data-og-height="1596" height="1596" data-path="assets/features/usage/product-meter.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/features/usage/product-meter.dark.png?w=280&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=4220c9a8ec19f60bfeea859a6347a768 280w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/features/usage/product-meter.dark.png?w=560&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=5d64369c39f00993c5c02c333b651e1f 560w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/features/usage/product-meter.dark.png?w=840&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=1ea7e017198475c81a3fd3299ad7bded 840w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/features/usage/product-meter.dark.png?w=1100&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=145f18199abc0b5374aa57645b37a01d 1100w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/features/usage/product-meter.dark.png?w=1650&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=7e7e6a2f4a6e2caf87821fe0d2386ba2 1650w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/features/usage/product-meter.dark.png?w=2500&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=e4dd36ce07c66dbcc6ccd39721148808 2500w" />
+    <img />
   </Step>
 
   <Step title="Ingest Events">
     Now you're ready to ingest events from your application. Sending events which match the meter's filter will increment the meter's usage for the customer.
 
-    <img className="block dark:hidden" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/ingest.light.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=6428f34bbf464c2e8248138ccbcea782" data-og-width="1572" width="1572" data-og-height="1104" height="1104" data-path="assets/features/usage/ingest.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/ingest.light.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=48ec9760e08b32f72af0eb64f6fdf229 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/ingest.light.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=203d82a019fad623818cb1bc97e6ee32 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/ingest.light.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=3a5c2fd9b97c3a34b3c9781751cae1f2 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/ingest.light.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=d0cd0f66ddb26b8c21cad10cbf39ce31 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/ingest.light.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=b0b2666811cd8342645f91466cc66b07 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/ingest.light.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=ac827327a6bdc5ab6e808b10bb45dd6d 2500w" />
+    <img />
 
-    <img className="hidden dark:block" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/ingest.dark.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=f8b485ff1e386a0fa79c50d428c5b958" data-og-width="1566" width="1566" data-og-height="1102" height="1102" data-path="assets/features/usage/ingest.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/ingest.dark.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=5bf03be85d4df401d958f91cf55b843c 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/ingest.dark.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=a36b6e326318b5348db5a266b1419932 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/ingest.dark.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=e98887dbff16f4595454edacb70abb13 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/ingest.dark.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=b5e57c3e293ec3763c69d5b9f5aa79e0 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/ingest.dark.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=3bf6e392f7eb1c9a5566ae8d4dd3593d 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/ingest.dark.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=be5fb49f7b023b6d7d9696aaa1d4aa55 2500w" />
+    <img />
   </Step>
 
   <Step title="Customer Usage">
     Customers can view their estimated charges for each meter in the Customer Portal.
 
-    <img className="block dark:hidden" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/portal.light.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=85bdb395f87e972ed50a7381ba3aad43" data-og-width="2358" width="2358" data-og-height="1218" height="1218" data-path="assets/features/usage/portal.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/portal.light.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=8972d5a0a8a6f872681d6f9868bcc880 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/portal.light.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=96aeab3c57e09af522465cc2d079c11b 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/portal.light.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=eb837824af9aaa0ed9ea55353c8375a0 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/portal.light.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=1b4dda5c34f856b934d2b76fdfbade24 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/portal.light.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=553abd674a5c2fb50a15fe5aad61a54e 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/portal.light.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=e5a029265468a698405d6b5b85e8c4d2 2500w" />
+    <img />
 
-    <img className="hidden dark:block" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/portal.dark.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=44f1b0e0f67aaa22b293a7dafaf3ab99" data-og-width="2364" width="2364" data-og-height="1214" height="1214" data-path="assets/features/usage/portal.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/portal.dark.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=f5c9e22d99ee09640a9057f823bddfa2 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/portal.dark.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=1cfb93c49691551d3a0015f86ba582ec 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/portal.dark.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=30229e91a32620d8044e49045b02c465 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/portal.dark.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=d7a5b71049e90623dbc912bc4040cdff 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/portal.dark.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=0d05475d6642dd222c07255936727b21 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/portal.dark.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=b541f2af5d8fb788af4089b07d7d395d 2500w" />
+    <img />
   </Step>
 </Steps>
 
@@ -5591,17 +5696,17 @@ You can create and manage your meters from the dashboard. Polar is then able to 
 
 To create a meter, navigate to the Meters page in the sidebar and click the "Create Meter" button.
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/create-meter.light.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=0145ac51bc8100b038482d31612f3ea6" data-og-width="3598" width="3598" data-og-height="2070" height="2070" data-path="assets/features/usage/create-meter.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/create-meter.light.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=06564195b986ffcc5e117fe8d9811a5a 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/create-meter.light.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=68bed5ae2b654f960df4cfd9f89067df 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/create-meter.light.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=b4eae2ac77588c804de04f46f9bb0ea0 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/create-meter.light.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=7a869fe027539a8cecb45c92c5781031 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/create-meter.light.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=e661f4bf96776191db89ceaf6f74c4bd 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/create-meter.light.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=ed97c0b4c66e04ccee501693c309a6bc 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/create-meter.dark.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=2293c25c2e2c014abcf6c8a761568f95" data-og-width="3590" width="3590" data-og-height="2066" height="2066" data-path="assets/features/usage/create-meter.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/create-meter.dark.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=b5dfdb7fff99d88e7ab1e071dc3b1c49 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/create-meter.dark.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=cb463be35ab687fc710735ecc25115a7 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/create-meter.dark.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=81913de1ce93b114391ef2e3e47e7326 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/create-meter.dark.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=3517924ffa89faf0a672ded7ebfce07b 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/create-meter.dark.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=121d7076d48d16cc60d6f8d01da93b83 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/create-meter.dark.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=3a90619357124a1d53198daeb6cac936 2500w" />
+<img />
 
 ## Filters
 
 A filter is a set of clauses that are combined using conjunctions. They're used to filter events that you've ingested into Polar.
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/filter.light.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=77aca67ac7630a38fefa9a6d567a58f3" data-og-width="1274" width="1274" data-og-height="922" height="922" data-path="assets/features/usage/filter.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/filter.light.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=63aa8d2fcf57607d894e4197508ac471 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/filter.light.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=d490a459b8e9337775da489d8eca6479 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/filter.light.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=a9194a1390f970bfb6e6b6ce3dbe5f91 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/filter.light.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=f77a2c146f613ff58848c7f061b21032 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/filter.light.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=fd58c1a2958502970dd1be8186c23008 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/filter.light.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=f2856bd8129920878767bfa7220a50fd 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/filter.dark.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=6c855b483334dba4b7f26e54c2878080" data-og-width="1276" width="1276" data-og-height="914" height="914" data-path="assets/features/usage/filter.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/filter.dark.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=08917a3bdf591a0fbf9935baa877c923 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/filter.dark.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=cc350040cb98987f87fa45533bed74d8 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/filter.dark.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=1c069e1bc97edf426a6f52c394ba172a 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/filter.dark.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=e90bf35497aa55d2ddaee0bb890a5339 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/filter.dark.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=2f6b218e91faa3c76ad587c943ffab61 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/filter.dark.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=ea95d3313fd786655c0071a4fea0eaaa 2500w" />
+<img />
 
 ### Clauses
 
@@ -5658,7 +5763,7 @@ For example, if you want to count the number of events that match the filter, yo
   <Accordion title="Example">
     Consider the following events:
 
-    ```json  theme={null}
+    ```json theme={null}
     [
       {
         "name": "ai_usage",
@@ -5708,9 +5813,9 @@ If you want to use a metadata property in the aggregation, you can use the metad
 
 The following Meter Filter & Aggregation will match events that have the name `openai-usage` and sum units over metadata property `completionTokens`.
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/meter.light.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=2c4ba244ceee17f9bda8665f6a22a6b6" data-og-width="1108" width="1108" data-og-height="936" height="936" data-path="assets/features/usage/meter.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/meter.light.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=b2a94e81c180337d7ee2009a44bc2785 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/meter.light.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=eed0481a8ba7ccd18c11926272a102cd 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/meter.light.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=36c75ae39756a3e7a432d7e820321647 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/meter.light.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=548601de5159c35205887b849fbf5e1d 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/meter.light.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=e5c3046097cc051d249d43da23ff2f74 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/meter.light.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=75af4ab8b61038d26c2bf1f0b92dfa96 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/meter.dark.png?fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=ef46a2a0420e3e01d7a181d3e7ddf118" data-og-width="1116" width="1116" data-og-height="928" height="928" data-path="assets/features/usage/meter.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/meter.dark.png?w=280&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=1c1c57db0b50e0894c152e6fa5efce1c 280w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/meter.dark.png?w=560&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=a798552d1ead623238cc00e12de88cf3 560w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/meter.dark.png?w=840&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=cbcf411fe67a5142b614989510ae9952 840w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/meter.dark.png?w=1100&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=7c6db5a8ea7a281cdfc14291a96082c1 1100w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/meter.dark.png?w=1650&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=88a0ffbfa69bf627373eca1f00b73557 1650w, https://mintcdn.com/polar/fnujBPxaFvfkZfB0/assets/features/usage/meter.dark.png?w=2500&fit=max&auto=format&n=fnujBPxaFvfkZfB0&q=85&s=f76c0904beb7ecb5a83c2da8f27b1704 2500w" />
+<img />
 
 <Tip>
   You can **Preview** the events matched by the meter while creating it.
@@ -5719,10 +5824,6 @@ The following Meter Filter & Aggregation will match events that have the name `o
 ## Good to know
 
 A few things to keep in mind when creating and managing meters:
-
-### Renaming a Meter
-
-Until [https://github.com/polarsource/polar/issues/6490](https://github.com/polarsource/polar/issues/6490) is fixed, please [contact support](/support) to rename the meter for you.
 
 ### Updating a Meter
 
@@ -5741,19 +5842,19 @@ Learn how to allow multiple subscriptions per customer in Polar.
     `https://polar.sh/dashboard/${org_slug}/settings`\
     Scroll down to **Subscriptions** section.
 
-    <img height="200" src="https://mintcdn.com/polar/t2pAmq6cpH5AKAcM/assets/guides/enable-multiple-subscription/settings.png?fit=max&auto=format&n=t2pAmq6cpH5AKAcM&q=85&s=c0389fa04bf3816133ac86eaf963cc5f" data-og-width="1715" data-og-height="895" data-path="assets/guides/enable-multiple-subscription/settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/t2pAmq6cpH5AKAcM/assets/guides/enable-multiple-subscription/settings.png?w=280&fit=max&auto=format&n=t2pAmq6cpH5AKAcM&q=85&s=e464376c3bc81c7726e2b128f753dfb5 280w, https://mintcdn.com/polar/t2pAmq6cpH5AKAcM/assets/guides/enable-multiple-subscription/settings.png?w=560&fit=max&auto=format&n=t2pAmq6cpH5AKAcM&q=85&s=2ba293efda1cc1ff4176688f55ca2a43 560w, https://mintcdn.com/polar/t2pAmq6cpH5AKAcM/assets/guides/enable-multiple-subscription/settings.png?w=840&fit=max&auto=format&n=t2pAmq6cpH5AKAcM&q=85&s=059dad623c48cd23ce641112622ea1c8 840w, https://mintcdn.com/polar/t2pAmq6cpH5AKAcM/assets/guides/enable-multiple-subscription/settings.png?w=1100&fit=max&auto=format&n=t2pAmq6cpH5AKAcM&q=85&s=d6521b821cd77deaf6a36b3995ebe03f 1100w, https://mintcdn.com/polar/t2pAmq6cpH5AKAcM/assets/guides/enable-multiple-subscription/settings.png?w=1650&fit=max&auto=format&n=t2pAmq6cpH5AKAcM&q=85&s=9b6f45d13f175e5be4e78cd190da0146 1650w, https://mintcdn.com/polar/t2pAmq6cpH5AKAcM/assets/guides/enable-multiple-subscription/settings.png?w=2500&fit=max&auto=format&n=t2pAmq6cpH5AKAcM&q=85&s=c2a25af16082b79d4029e6343d88f7d8 2500w" />
+    <img />
   </Step>
 
   <Step title="Toggle Allow multiple subscriptions">
     **Toggle ON** Allow multiple subscriptions to allow multiple subscriptions per customer.
 
-    <img height="200" src="https://mintcdn.com/polar/t2pAmq6cpH5AKAcM/assets/guides/enable-multiple-subscription/enable-multiple-subs.png?fit=max&auto=format&n=t2pAmq6cpH5AKAcM&q=85&s=cc78edc5981bd43ad3fead3c25a8876f" data-og-width="1715" data-og-height="895" data-path="assets/guides/enable-multiple-subscription/enable-multiple-subs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/t2pAmq6cpH5AKAcM/assets/guides/enable-multiple-subscription/enable-multiple-subs.png?w=280&fit=max&auto=format&n=t2pAmq6cpH5AKAcM&q=85&s=5b8df83f8b869fa10b000256ffe9ca9c 280w, https://mintcdn.com/polar/t2pAmq6cpH5AKAcM/assets/guides/enable-multiple-subscription/enable-multiple-subs.png?w=560&fit=max&auto=format&n=t2pAmq6cpH5AKAcM&q=85&s=8fcb48b0229a259dd91ebe982bbfb1e2 560w, https://mintcdn.com/polar/t2pAmq6cpH5AKAcM/assets/guides/enable-multiple-subscription/enable-multiple-subs.png?w=840&fit=max&auto=format&n=t2pAmq6cpH5AKAcM&q=85&s=d5d7b379a7ca5a58ef2629e1c4fa0ebc 840w, https://mintcdn.com/polar/t2pAmq6cpH5AKAcM/assets/guides/enable-multiple-subscription/enable-multiple-subs.png?w=1100&fit=max&auto=format&n=t2pAmq6cpH5AKAcM&q=85&s=d961988b0e6833d665c94a9ef0bf6ebf 1100w, https://mintcdn.com/polar/t2pAmq6cpH5AKAcM/assets/guides/enable-multiple-subscription/enable-multiple-subs.png?w=1650&fit=max&auto=format&n=t2pAmq6cpH5AKAcM&q=85&s=a13a84940ec935b8419d2adc6f3aabaa 1650w, https://mintcdn.com/polar/t2pAmq6cpH5AKAcM/assets/guides/enable-multiple-subscription/enable-multiple-subs.png?w=2500&fit=max&auto=format&n=t2pAmq6cpH5AKAcM&q=85&s=ee6df11eeebac60ea44828198a627018 2500w" />
+    <img />
   </Step>
 
   <Step title="Save the changes">
     Click **Save** in the **Subscriptions** section to save the changed settings.
 
-    <img height="200" src="https://mintcdn.com/polar/t2pAmq6cpH5AKAcM/assets/guides/enable-multiple-subscription/save-enabled-multiple-subs.png?fit=max&auto=format&n=t2pAmq6cpH5AKAcM&q=85&s=c0333a02947fb1e9129c14af811bcdd7" data-og-width="1715" data-og-height="895" data-path="assets/guides/enable-multiple-subscription/save-enabled-multiple-subs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/t2pAmq6cpH5AKAcM/assets/guides/enable-multiple-subscription/save-enabled-multiple-subs.png?w=280&fit=max&auto=format&n=t2pAmq6cpH5AKAcM&q=85&s=309ff56e2494e4adf989338cea064f48 280w, https://mintcdn.com/polar/t2pAmq6cpH5AKAcM/assets/guides/enable-multiple-subscription/save-enabled-multiple-subs.png?w=560&fit=max&auto=format&n=t2pAmq6cpH5AKAcM&q=85&s=c5181e0303e117e77329e92798fa9589 560w, https://mintcdn.com/polar/t2pAmq6cpH5AKAcM/assets/guides/enable-multiple-subscription/save-enabled-multiple-subs.png?w=840&fit=max&auto=format&n=t2pAmq6cpH5AKAcM&q=85&s=cc506cca6099195ac54d426adf841e33 840w, https://mintcdn.com/polar/t2pAmq6cpH5AKAcM/assets/guides/enable-multiple-subscription/save-enabled-multiple-subs.png?w=1100&fit=max&auto=format&n=t2pAmq6cpH5AKAcM&q=85&s=ad6cec2429f8df685ae648bd69a7430f 1100w, https://mintcdn.com/polar/t2pAmq6cpH5AKAcM/assets/guides/enable-multiple-subscription/save-enabled-multiple-subs.png?w=1650&fit=max&auto=format&n=t2pAmq6cpH5AKAcM&q=85&s=35dfa44956f38095679c9015d0f0cd5a 1650w, https://mintcdn.com/polar/t2pAmq6cpH5AKAcM/assets/guides/enable-multiple-subscription/save-enabled-multiple-subs.png?w=2500&fit=max&auto=format&n=t2pAmq6cpH5AKAcM&q=85&s=818dd40b78e4b84ed4632f830874f4d2 2500w" />
+    <img />
   </Step>
 </Steps>
 
@@ -5769,15 +5870,15 @@ Learn how to use the Custom Benefit to automatically share links with customers 
   <Step title="Go to Benefits">
     In the Polar dashboard sidebar, click on **Benefits**.
 
-    You can also go directly to `https://polar.sh/dashboard/${org_slug}/benefits`.
+    You can also go directly to `https://polar.sh/dashboard/${org_slug}/products/benefits`.
 
-    <img height="200" src="https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/benefits-page.png?fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=70fa50c0ac36ad18b5199025e96d47c0" data-og-width="1753" data-og-height="895" data-path="assets/guides/automate-post-purchase-link-sharing/benefits-page.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/benefits-page.png?w=280&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=9f717248844b61b4347678adb69f8657 280w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/benefits-page.png?w=560&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=5171950de488357cb3b38122fb008276 560w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/benefits-page.png?w=840&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=e1d3afe3cff8bf002e577a4e58986378 840w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/benefits-page.png?w=1100&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=f1be4c81a66d425ea6a12bcf6b20410a 1100w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/benefits-page.png?w=1650&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=3cdb04a1f9025903f47e41040272eda8 1650w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/benefits-page.png?w=2500&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=556dbf78588e017661df839a3209cb55 2500w" />
+    <img />
   </Step>
 
   <Step title="Click on Create Benefit">
     Click on **Create Benefit**. You’ll see three configuration fields as shown in the image below: **Description**, **Type**, and **Private note**.
 
-    <img height="200" src="https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-benefit.png?fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=0bb5a2fdbf2266e9ce9891238a3eb090" data-og-width="1753" data-og-height="895" data-path="assets/guides/automate-post-purchase-link-sharing/create-benefit.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-benefit.png?w=280&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=c610378a483683f66c47bd4094ab17ad 280w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-benefit.png?w=560&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=dcc2514407ed6b0c27ad8f599231ed29 560w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-benefit.png?w=840&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=7663be86fd6cab13bef5f587e4e58ce8 840w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-benefit.png?w=1100&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=ccacf4cd09e2fd2f6e49be3d11fe1f85 1100w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-benefit.png?w=1650&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=7a7db7f2d4d80cd30ee9839da8aee995 1650w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-benefit.png?w=2500&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=9663e3db69beb8b1a38841c51a52352d 2500w" />
+    <img />
 
     The **Type** field is set to Custom by default (which is what we need).
 
@@ -5787,7 +5888,7 @@ Learn how to use the Custom Benefit to automatically share links with customers 
   </Step>
 
   <Step title="Fill the configuration fields">
-    <a id="configuration-fill" />
+    <a />
 
     Fill the **Description** and **Private note** fields where:
 
@@ -5797,11 +5898,11 @@ Learn how to use the Custom Benefit to automatically share links with customers 
     Make sure to add your link inside the **Private note** section so that it's only accessible post a payment.
     Then, click the **Create** button to save the configuration.
 
-    <img height="200" src="https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-benefit-with-details.png?fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=6eea610f696828d084b8d9e7b37acab5" data-og-width="1805" data-og-height="902" data-path="assets/guides/automate-post-purchase-link-sharing/create-benefit-with-details.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-benefit-with-details.png?w=280&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=daf24b4c7f53274596e3ccbdeaeedff4 280w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-benefit-with-details.png?w=560&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=500b1737514501988c562ec4e646dda1 560w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-benefit-with-details.png?w=840&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=3472f3796d62f30b3b04a29af6621aab 840w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-benefit-with-details.png?w=1100&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=2d984f6961ac7df3ed4c0608dcf26b93 1100w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-benefit-with-details.png?w=1650&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=d46993ea20b5439165de6b41420325b2 1650w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-benefit-with-details.png?w=2500&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=65117eb3b1d717ff7d6ec95cd1f1f0fa 2500w" />
+    <img />
   </Step>
 
   <Step title="You've successfully created your own Link Benefit!">
-    <img height="200" src="https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/benefit-created.png?fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=43308330a6dbf8ea20928e9fb2aefbb0" data-og-width="1753" data-og-height="895" data-path="assets/guides/automate-post-purchase-link-sharing/benefit-created.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/benefit-created.png?w=280&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=a31a8fe5735e4424c978dcc442805c35 280w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/benefit-created.png?w=560&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=bbc658067a4080ca12967f0ee7e8c7d3 560w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/benefit-created.png?w=840&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=0740b5f8155be8f55572779392ec0992 840w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/benefit-created.png?w=1100&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=16684aae1ff1be028748dd8eb85f5fcf 1100w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/benefit-created.png?w=1650&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=d2ec820acc03b76c0c8c3e6bc79a9711 1650w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/benefit-created.png?w=2500&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=e2f9811a9a3f416efc89d4654006baaa 2500w" />
+    <img />
   </Step>
 </Steps>
 
@@ -5813,38 +5914,38 @@ Learn how to use the Custom Benefit to automatically share links with customers 
 
     You can also go directly to `https://polar.sh/dashboard/${org_slug}/products`.
 
-    <img height="200" src="https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/product-catalogue.png?fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=47cfecc9c4e3ca117fe18b36c86c3e74" data-og-width="1753" data-og-height="895" data-path="assets/guides/automate-post-purchase-link-sharing/product-catalogue.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/product-catalogue.png?w=280&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=096d46b0617e0a517181e4a1920023e8 280w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/product-catalogue.png?w=560&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=85e6167d46106cf85cf7bce4d42b057a 560w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/product-catalogue.png?w=840&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=cfd58866ae899ca462fa36c214992040 840w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/product-catalogue.png?w=1100&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=512109a02e000528c6e53f8a6bbf2435 1100w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/product-catalogue.png?w=1650&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=9bdf3cdc1f3d2d66a3d0d74f3c3b93fa 1650w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/product-catalogue.png?w=2500&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=c4c90e486c8f8dd15a284ad5583affe0 2500w" />
+    <img />
   </Step>
 
   <Step title="Fill new Product information">
     Click on **New Product**. Fill out the Product information.
 
-    <img height="200" src="https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-product-1.png?fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=bcf69f29179191b6135ed68fa0ff0ad8" data-og-width="1752" data-og-height="902" data-path="assets/guides/automate-post-purchase-link-sharing/create-product-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-product-1.png?w=280&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=3c4801b8723706f15436530d76394be0 280w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-product-1.png?w=560&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=fd841dddecd97e5c7968e61e65cc694f 560w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-product-1.png?w=840&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=bf768f33a641aa7dfe8ef85563dc2b00 840w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-product-1.png?w=1100&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=3b249a604e8869162fef04a2a0cd6773 1100w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-product-1.png?w=1650&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=334862fae7484184ca02d5a721d0b037 1650w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-product-1.png?w=2500&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=dd57a05eb2e4e903012a1ccdb23441dc 2500w" />
+    <img />
   </Step>
 
   <Step title="Scroll to Automated Benefits">
     On the product creation page, scroll to the bottom to find the **Automated Benefits** section.
 
-    <img height="200" src="https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-product2.png?fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=bbb1bc96c239d65abfef58b78a6dcba6" data-og-width="1753" data-og-height="895" data-path="assets/guides/automate-post-purchase-link-sharing/create-product2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-product2.png?w=280&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=a373b2d72db21477d4dabfb6d6f385bd 280w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-product2.png?w=560&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=cda5fa3efd6356410e6366b0e132b1c1 560w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-product2.png?w=840&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=f5abd98ba9cf9b1a31ad462151ff61c1 840w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-product2.png?w=1100&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=d50e5e32d16245ea3144f9f64f5891d9 1100w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-product2.png?w=1650&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=57ba69ac95d5e60b76ad76bee7cad256 1650w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-product2.png?w=2500&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=30fc8f5eed2138fc56633821e15f38dc 2500w" />
+    <img />
   </Step>
 
   <Step title="Select your Custom Benefit">
     Click on Custom to see all the custom benefits you’ve created, and then toggle ON the one you want to enable.
 
-    <img height="200" src="https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-product3.png?fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=8dd40ce959f911bbd97fecf6e8bcdab5" data-og-width="1753" data-og-height="885" data-path="assets/guides/automate-post-purchase-link-sharing/create-product3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-product3.png?w=280&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=298309cb160670b4c1a3fd7280f61d61 280w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-product3.png?w=560&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=abefc0c07a76e4286d4b37dfd35ae2ed 560w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-product3.png?w=840&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=7a5cf350157c583e7f114f8f4e39cd1b 840w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-product3.png?w=1100&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=ab01c0e27f0146216d3acc033995a065 1100w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-product3.png?w=1650&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=fc49e9e7c86a56d42de03765ed093f84 1650w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-product3.png?w=2500&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=3b921b66541e4b936ac5bbb58ba66cf3 2500w" />
+    <img />
 
     <Info>
       If you don’t want to use an existing Custom benefit, you can create a new one by clicking **Create new**.
       Enter the configuration details, following the [Step 3](#configuration-fill) of [Create a Custom Benefit](#create-a-custom-benefit) section.
 
-      <img height="200" src="https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-product4.png?fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=d6923712622de2cd67c868ef501c4048" data-og-width="1807" data-og-height="891" data-path="assets/guides/automate-post-purchase-link-sharing/create-product4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-product4.png?w=280&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=c093de2c94ce6c724602f43664dfbdac 280w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-product4.png?w=560&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=2edee315f0e35b0725334d9c92a0090e 560w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-product4.png?w=840&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=ad774f24e5f2f53ea1b988a63ee30b7a 840w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-product4.png?w=1100&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=8a8b73291a9d1bbc898c06e3ae5559f5 1100w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-product4.png?w=1650&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=e0fcb0d6bb6cdaf0dfbb8b5736eb72ac 1650w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/create-product4.png?w=2500&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=86bf287d712aa55f60f13236339503d3 2500w" />
+      <img />
     </Info>
   </Step>
 
   <Step title="Save the Product">
     Click on **Create Product** button in the product creation form.
 
-    <img height="200" src="https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/product-created.png?fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=5c07e41436100302e7e314a38ae054a8" data-og-width="1753" data-og-height="888" data-path="assets/guides/automate-post-purchase-link-sharing/product-created.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/product-created.png?w=280&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=e970b89553da7d37349fcc00f6c86c09 280w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/product-created.png?w=560&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=47ed3bb472bffaa71131eefcf5086d3b 560w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/product-created.png?w=840&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=adfd04ee11dbb3d1768a156e4f4a6481 840w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/product-created.png?w=1100&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=dcdcfcd4b71edb35b5a1d58255a17bdd 1100w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/product-created.png?w=1650&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=d5feac7f1d8088c25c723fd312f4e43a 1650w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/product-created.png?w=2500&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=6ba0693c22d2ce22839b8c668437b782 2500w" />
+    <img />
 
     Your product is successfully created along with the Custom benefit that allows you to share the links automatically to customers after purchase.
   </Step>
@@ -5858,25 +5959,25 @@ Your Custom Benefit is visible to customers at multiple stages of their purchase
 
 When a customer opens the checkout session, they’ll see the **Description of your Custom Benefit** listed under **Included**.
 
-<img height="200" src="https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/checkout.png?fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=d68cf44511e8ec1df8597016d6dbfc58" data-og-width="1731" data-og-height="880" data-path="assets/guides/automate-post-purchase-link-sharing/checkout.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/checkout.png?w=280&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=cf8a1e577615c464627985cbf890af41 280w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/checkout.png?w=560&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=239c2100aa096d06fc53edc724ce75f8 560w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/checkout.png?w=840&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=3e3ba6563dad26f6331a5fab3ae6cfef 840w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/checkout.png?w=1100&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=a0d6a07fca9a3f27a91f904ac366fc59 1100w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/checkout.png?w=1650&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=c5d97b7136cf0dfc254216cde559933a 1650w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/checkout.png?w=2500&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=012abb96b7152df2ca16d0bad64a1a7b 2500w" />
+<img />
 
 ### After Purchase
 
 Once the customer completes their purchase, the **Description**, the **Benefit Type** (in this case, **Custom**), and the **rendered Markdown content** from the **Private note** of the **Custom Benefit** are displayed, allowing them to access any links or formatted text you’ve added.
 
-<img height="200" src="https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/purchased.png?fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=274313c153abfff9edfa0c922a1960de" data-og-width="1805" data-og-height="902" data-path="assets/guides/automate-post-purchase-link-sharing/purchased.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/purchased.png?w=280&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=e4cac4612a7c853a09fffc6311269832 280w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/purchased.png?w=560&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=a77822597282a82a8eca32133c53903b 560w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/purchased.png?w=840&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=05f5eabe8636982416231f62dedddf0e 840w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/purchased.png?w=1100&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=e25698a73d67352e05570142053e2537 1100w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/purchased.png?w=1650&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=044f7af81dd0fbe6657c2cdcf2ecbedd 1650w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/purchased.png?w=2500&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=b73d46f9127ba5fb43b9819257e712db 2500w" />
+<img />
 
 ### Purchase Confirmation Email
 
 The **Description** and the rendered Markdown content of the **Custom Benefit** also appear in the purchase confirmation email sent to the customer, as shown below.
 
-<img height="200" src="https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/email.png?fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=e05039d86f493f175ef0baf087750b04" data-og-width="731" data-og-height="757" data-path="assets/guides/automate-post-purchase-link-sharing/email.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/email.png?w=280&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=27d1935f1e015ea51c7ed16ba44a33a5 280w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/email.png?w=560&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=7ea6eb6ea0e8ac371a47e9f8d852af65 560w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/email.png?w=840&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=39002a04c166934f0fb66e11ab612ad0 840w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/email.png?w=1100&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=24fd865270c4e0ffe2a9caae0bee756b 1100w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/email.png?w=1650&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=d041a7cfe8ebee413572a6777328cb4a 1650w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/email.png?w=2500&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=5bdd45a85447e85d5c56b6bea0d9319e 2500w" />
+<img />
 
 ### Customer Portal
 
 When the customer opens the [Customer Portal](/features/customer-portal) through the link in their confirmation email, the **Custom Benefit** is displayed there as well.
 
-<img height="200" src="https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/customer-portal.png?fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=189241b896ee27d5358623289f1d0b0c" data-og-width="1721" data-og-height="900" data-path="assets/guides/automate-post-purchase-link-sharing/customer-portal.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/customer-portal.png?w=280&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=92009bb531945a92cce27246a37e23c1 280w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/customer-portal.png?w=560&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=ac92f45711edb034fa2011ff1a39ce67 560w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/customer-portal.png?w=840&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=e0d3069aa91beffce2c0cec1fc5c5455 840w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/customer-portal.png?w=1100&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=8b4635aca952872a8950e5e08a3a95d0 1100w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/customer-portal.png?w=1650&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=d4ce7b6b52fdaec2fc87e3ecd330c457 1650w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/customer-portal.png?w=2500&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=8fa6f6c26fe01eadaaf13e322a51a788 2500w" />
+<img />
 
 
 # How to Change Account Email (as a Merchant)
@@ -5888,35 +5989,35 @@ Learn how to change your account email on Polar as a Merchant.
   <Step title="Go to the Account Settings">
     To access account settings, open the menu in the bottom left corner in the dashboard and click `Account Settings`.
 
-    <img height="200" src="https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/first.png?fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=01b0b9fbe7ada8801b2dbed3a8dc3876" data-og-width="3024" data-og-height="1816" data-path="assets/guides/change-email-as-merchant/first.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/first.png?w=280&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=3317c4f7b99b470e988096c29d7dff5a 280w, https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/first.png?w=560&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=d02bc5b18bbc7ef0fba4fc6c98f9b5b4 560w, https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/first.png?w=840&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=4bd4e051c9c6b50f0be5d25942cc78d7 840w, https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/first.png?w=1100&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=f355e18fa81f463f332b036c929ce2d8 1100w, https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/first.png?w=1650&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=9652f135d3adf300040338c2a740d674 1650w, https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/first.png?w=2500&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=bad686b9553ecc5ca22c0be49c4d765f 2500w" />
+    <img />
   </Step>
 
   <Step title="Click Change Email">
     Click `Change Email` button in the `Account Connections` section to start changing your email.
 
-    <img height="200" src="https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/second.png?fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=318118a969921058d54cb828a95df01e" data-og-width="3024" data-og-height="1802" data-path="assets/guides/change-email-as-merchant/second.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/second.png?w=280&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=2dc96284615ab2b5c359f440686f71f5 280w, https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/second.png?w=560&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=4fc06c869ec0789bfb758686162e9716 560w, https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/second.png?w=840&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=30da1153b704155fdbbb0948eed297af 840w, https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/second.png?w=1100&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=69f12188e15d0efa92d6c903bb8bb98b 1100w, https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/second.png?w=1650&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=0029947cfa6e6ff6a44a7a76df5da962 1650w, https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/second.png?w=2500&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=89b55d8f2debd0075c875c88a7a3b9fc 2500w" />
+    <img />
   </Step>
 
   <Step title="Fill in your new email">
     Enter the new email in the input box that appears.
 
-    <img height="200" src="https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/third.png?fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=017fb49c5104122c0d407e3e7fac994a" data-og-width="3024" data-og-height="1811" data-path="assets/guides/change-email-as-merchant/third.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/third.png?w=280&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=1558f5177d25be4d603d3b012ead8682 280w, https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/third.png?w=560&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=5b25a176208a457aaf13086902e77239 560w, https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/third.png?w=840&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=7eb9cc34ec3740d3f7c0ff8bf37f0ec4 840w, https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/third.png?w=1100&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=8c7abde0030cc35b6ff25c369a92eb2a 1100w, https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/third.png?w=1650&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=c0fed48c3006c5981b54c856ba6e0f16 1650w, https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/third.png?w=2500&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=68f0b8e3340cec1a2c11573fadceba93 2500w" />
+    <img />
   </Step>
 
   <Step title="Open the email sent by Polar">
     Polar would send an email to the new email that is entered in the previous step. Click the `Update my email` button in the email.
 
-    <img height="200" src="https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/fourth.png?fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=72ca29e830d1a248ec0f3ce71f215e85" data-og-width="3024" data-og-height="1812" data-path="assets/guides/change-email-as-merchant/fourth.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/fourth.png?w=280&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=704a23953d3bbcbee83c397385a37eda 280w, https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/fourth.png?w=560&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=4408ea60d55e2d9226f4a9d5917bc041 560w, https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/fourth.png?w=840&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=87242d9c720430023c42816b2dfa5043 840w, https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/fourth.png?w=1100&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=6bda9862ca6649d46b63391646edafac 1100w, https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/fourth.png?w=1650&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=75da9a1517b281b359e5f5bb7e620949 1650w, https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/fourth.png?w=2500&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=8c0931366cb4e24a4594987e3ad921b7 2500w" />
+    <img />
   </Step>
 
   <Step title="Confirm change of email">
     Confirm the email change by pressing the `Update the email` button.
 
-    <img height="200" src="https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/fifth.png?fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=ddf9fc6f2525846eaaec237690893aad" data-og-width="3024" data-og-height="1807" data-path="assets/guides/change-email-as-merchant/fifth.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/fifth.png?w=280&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=5775ead5b4f44856657f3a2d21afa03e 280w, https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/fifth.png?w=560&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=016c4bea5747c1c58b42902ca103bf23 560w, https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/fifth.png?w=840&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=a3ed191c6d65dec48c1ee12f3875092f 840w, https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/fifth.png?w=1100&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=751deb8a794aae70119d3e6ead5b3fa1 1100w, https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/fifth.png?w=1650&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=528c69c315698114c58b523fb7d6d68a 1650w, https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/fifth.png?w=2500&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=1a867748cf333f389468a67cc7352e83 2500w" />
+    <img />
   </Step>
 
   <Step title="You've successfully changed your email!">
-    <img height="200" src="https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/sixth.png?fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=fbcd2ee5621278146cf8e98c42b58fad" data-og-width="3024" data-og-height="1815" data-path="assets/guides/change-email-as-merchant/sixth.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/sixth.png?w=280&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=5737141b0c23517a05f6b7934d589d1c 280w, https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/sixth.png?w=560&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=d88bd48313a8b8e3a4bd5d14449ba728 560w, https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/sixth.png?w=840&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=23ccb64479249ec8ebdfe68698736f85 840w, https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/sixth.png?w=1100&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=6075f8ed54cad27dbbbeff608c181593 1100w, https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/sixth.png?w=1650&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=5d1e75e234ce0dc402ec69f96af906c1 1650w, https://mintcdn.com/polar/ZdQN7jC5c6Niet6J/assets/guides/change-email-as-merchant/sixth.png?w=2500&fit=max&auto=format&n=ZdQN7jC5c6Niet6J&q=85&s=6596ab1ec74f60c5e01c0eef751b6818 2500w" />
+    <img />
   </Step>
 </Steps>
 
@@ -5936,7 +6037,7 @@ Learn how to create checkout sessions via API.
   <Step title="Save your Access Token">
     After creating your access token, you will be able to view it. Please copy and save your access token.
 
-    <img height="200" src="https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/access-token.png?fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=05fafce5da35f0a91784fc4b20c3cdf3" data-og-width="1812" data-og-height="888" data-path="assets/guides/theme-switch-in-checkout/access-token.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/access-token.png?w=280&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=fe6ff8fe2ee5c7f32d6f8a73b5bcb9f7 280w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/access-token.png?w=560&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=6d2cffbcbc5c3c948ca4ca29558b2e9f 560w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/access-token.png?w=840&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=980b12abb6421aa527792824921c9420 840w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/access-token.png?w=1100&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=f1b0b2522e1ac7655261e33d66d4741a 1100w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/access-token.png?w=1650&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=1d825d4b7afdd88a97df5eb84f26995c 1650w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/access-token.png?w=2500&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=07a92382e3a9d56eef45822e263874a4 2500w" />
+    <img />
   </Step>
 
   <Step title="Go to the Products Catalogue">
@@ -5944,14 +6045,14 @@ Learn how to create checkout sessions via API.
     You can also go directly to:\
     `https://polar.sh/dashboard/${org_slug}/products`
 
-    <img height="200" src="https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/products-catalogue.png?fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=628d916b10c27aaecdb0565bf5230851" data-og-width="1823" data-og-height="893" data-path="assets/guides/theme-switch-in-checkout/products-catalogue.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/products-catalogue.png?w=280&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=54d9d9ab47ae41bfa607f6ecb6993882 280w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/products-catalogue.png?w=560&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=7177a3856b4f4dae145f38ddd03c650c 560w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/products-catalogue.png?w=840&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=09011c2bdfe7eaad0183c4ff346d3e47 840w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/products-catalogue.png?w=1100&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=6807c4c9245314a0fcdb7b4d7ffc73fc 1100w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/products-catalogue.png?w=1650&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=a177149c115d1c2826faa3de00a02d8e 1650w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/products-catalogue.png?w=2500&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=8f92f10e45898edf624c1a9f291ea50a 2500w" />
+    <img />
   </Step>
 
   <Step title="Access the product IDs for checkout">
     Retrieve the Product IDs for the items you wish to include in checkout by clicking on the **⋮ (More options) menu** next to chosen products and selecting **Copy Product ID**.\
     These IDs will be required in the next step to create a checkout session.
 
-    <img height="200" src="https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/product-id.png?fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=f2ebcca1da24b5ca23a3082f6e60ba77" data-og-width="1812" data-og-height="888" data-path="assets/guides/theme-switch-in-checkout/product-id.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/product-id.png?w=280&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=8b661d3ef050af5be34b451b9f3d61e6 280w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/product-id.png?w=560&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=90af62851b0b8a46ef1aa39293b17d68 560w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/product-id.png?w=840&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=e99a2fccd183695a7db4c242c11ebb61 840w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/product-id.png?w=1100&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=f166a54def5c40696f0581145effe46b 1100w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/product-id.png?w=1650&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=60657f0aa3514e1bc95db7416fd5b949 1650w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/product-id.png?w=2500&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=652420983cfaa2d96bd7117da8dd29b0 2500w" />
+    <img />
   </Step>
 
   <Step title="Create a Checkout Session using the API">
@@ -5961,7 +6062,7 @@ Learn how to create checkout sessions via API.
     * \<YOUR\_ACCESS\_TOKEN> with your actual access token
     * \<PRODUCT\_ID\_1>, \<PRODUCT\_ID\_2>, etc., with the product IDs you want to include in the session
 
-    ```bash  theme={null}
+    ```bash Terminal theme={null}
     curl --request POST \
         --url https://api.polar.sh/v1/checkouts/ \
         --header 'Authorization: Bearer <YOUR_ACCESS_TOKEN>' \
@@ -5981,7 +6082,7 @@ Learn how to create checkout sessions via API.
   <Step title="Access the Checkout Session URL">
     The curl command returns a JSON. Access the checkout URL from the <code>"url"</code> key of the JSON.
 
-    ```json  theme={null}
+    ```json theme={null}
     {
         "...": "...",
         "url": "https://buy.polar.sh/polar_c_...", // [!code ++]
@@ -6005,25 +6106,25 @@ Learn how to create multiple organizations.
   <Step title="Create another organization">
     To create an organization in addition to your first organization, open the menu in the bottom left corner in the dashboard and click `New Organization`.
 
-    <img height="200" src="https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/first.png?fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=4bb2b13810e3e0e7a8dc7d99bcaaebd7" data-og-width="3024" data-og-height="1700" data-path="assets/guides/create-multiple-organizations/first.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/first.png?w=280&fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=a58197f4b4204af52981a1c4bcaafe93 280w, https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/first.png?w=560&fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=a1178a40b2b7d5d0786fb32478cdbdcd 560w, https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/first.png?w=840&fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=1c4a9b42b3c85cc82cd14c6de7441bcf 840w, https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/first.png?w=1100&fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=8bbbf0cb5de8de296e3b423b5fd02fdd 1100w, https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/first.png?w=1650&fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=77d4f2299284aec9392e6fdeed7ad98c 1650w, https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/first.png?w=2500&fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=c3bae174c423fa054951140ae37bb604 2500w" />
+    <img />
   </Step>
 
   <Step title="Fill in the information for the new organization">
-    <img height="200" src="https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/second.png?fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=21ad6c9d4c6e9bc1992c842caead55ce" data-og-width="3024" data-og-height="1812" data-path="assets/guides/create-multiple-organizations/second.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/second.png?w=280&fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=045de1e7cb233731c9bbf4114c76bdfb 280w, https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/second.png?w=560&fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=4246cdf1f4eb47e66aeb3d463419d570 560w, https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/second.png?w=840&fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=d3341d0e16661109a30a68ba25212262 840w, https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/second.png?w=1100&fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=242b2bac33fdeb5f75b537763b213dfb 1100w, https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/second.png?w=1650&fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=f92bc458bbff8bbeb4c1ee6b9f1fa38f 1650w, https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/second.png?w=2500&fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=8f5d370b8d33fd38f0ced18171f8a204 2500w" />
+    <img />
   </Step>
 
   <Step title="Create your first product in the new organization">
-    <img height="200" src="https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/third.png?fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=f3f7c210d8315411f10b9d4a5299f2d6" data-og-width="3024" data-og-height="1805" data-path="assets/guides/create-multiple-organizations/third.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/third.png?w=280&fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=773fe32a42cfe3f3e06070b1d0f57e1f 280w, https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/third.png?w=560&fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=1d4df9491a881c1a4030e4f1aa25ce26 560w, https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/third.png?w=840&fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=af5f9ce46b71ba566c0163cc9a180d7f 840w, https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/third.png?w=1100&fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=4809bd97d78006b0c09463d640c8cef3 1100w, https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/third.png?w=1650&fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=71f5cac00aee605db315a1a35e26d9ee 1650w, https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/third.png?w=2500&fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=b3ddaf343c8c80410552144b8f14ec75 2500w" />
+    <img />
   </Step>
 
   <Step title="You've succesfully created a new organization!">
-    <img height="200" src="https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/fourth.png?fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=eb1344a1e5a28307218d39b7b41de4a1" data-og-width="3024" data-og-height="1806" data-path="assets/guides/create-multiple-organizations/fourth.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/fourth.png?w=280&fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=80c25d28ae850931bcce9d19ebd83353 280w, https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/fourth.png?w=560&fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=2460f6e2ef5b0964fd4a91e9cc16921e 560w, https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/fourth.png?w=840&fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=eee4e911e16bb505c2eb00cc129bbbca 840w, https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/fourth.png?w=1100&fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=0ae5113a99717c0515c9e25d4f19b56f 1100w, https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/fourth.png?w=1650&fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=695990d84e9860478ef4153940ace5df 1650w, https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/fourth.png?w=2500&fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=680e71a2dff911f55a76f6e4de9b06cf 2500w" />
+    <img />
   </Step>
 
   <Step title="Switch between multiple organizations">
     Now that you have multiple organizations, to switch between then, just open the menu in the bottom left corner in the dashboard, and then select the desired organization you want to switch to.
 
-    <img height="200" src="https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/fifth.png?fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=2e2b798c5c3ab31ed87f4c6f9d872dbf" data-og-width="3024" data-og-height="1819" data-path="assets/guides/create-multiple-organizations/fifth.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/fifth.png?w=280&fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=7259ede8aa98d392b23dfca955a52316 280w, https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/fifth.png?w=560&fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=ffd9fce237a6615b4f189330d9113d08 560w, https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/fifth.png?w=840&fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=e82fee26a622e6d59d50ebcdc04561b3 840w, https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/fifth.png?w=1100&fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=3ebc5eccc186df9e453b4929276e0ed8 1100w, https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/fifth.png?w=1650&fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=d8f8e05234e4abeea036d713d85fbb8a 1650w, https://mintcdn.com/polar/2KUxSftzs576zQ6I/assets/guides/create-multiple-organizations/fifth.png?w=2500&fit=max&auto=format&n=2KUxSftzs576zQ6I&q=85&s=89e5006216feb94ff2f64370c044382e 2500w" />
+    <img />
   </Step>
 </Steps>
 
@@ -6041,19 +6142,19 @@ Learn how create product variants in Polar and how customers can easily switch b
     You can also go directly to:\
     `https://polar.sh/dashboard/${org_slug}/products`
 
-    <img height="200" src="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/product-catalogue.png?fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=7c4a8b6889162b8ba00b1ec3a76ab1ba" data-og-width="1757" data-og-height="871" data-path="assets/guides/variants/product-catalogue.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/product-catalogue.png?w=280&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=e00d3b4533a027bca5eb27a3d2233610 280w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/product-catalogue.png?w=560&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=7a957ac0ff64baa1aa2db2682137a1ad 560w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/product-catalogue.png?w=840&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=4bc353016fafd7f706f9c310b35598a4 840w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/product-catalogue.png?w=1100&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=c4082d9e73a9a1bf35bd0e0854b95916 1100w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/product-catalogue.png?w=1650&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=84ad8a280e6be664841db2e9e5e1e5ae 1650w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/product-catalogue.png?w=2500&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=09fdad8d0b18bd7c6ade92caed936708 2500w" />
+    <img />
   </Step>
 
   <Step title="Create a product">
     Click on **New Product** and fill the product information. Here, we are creating a monthly subscription product **Basic version** with cost \$20.
 
-    <img height="200" src="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/basic-version.png?fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=8c2c27cad0a3deecc7f4c01293ff7031" data-og-width="1757" data-og-height="871" data-path="assets/guides/variants/basic-version.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/basic-version.png?w=280&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=5493e15916391a3a2ef0339dd7dd8df5 280w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/basic-version.png?w=560&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=ad9512312363b9fc212662e7e45cd0d5 560w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/basic-version.png?w=840&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=a90e8e24bb9fdd4d30084d08b225f923 840w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/basic-version.png?w=1100&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=8c8e1df677240b16464268d4a7a5ee47 1100w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/basic-version.png?w=1650&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=945c2ddad73715cd823dbdb2e0b279d5 1650w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/basic-version.png?w=2500&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=627c01e8e9f118e2c5130b32957ec24b 2500w" />
+    <img />
 
-    <img height="200" src="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/basic-version2.png?fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=1d2f834903fda274c4aa4f699d2c21b7" data-og-width="1757" data-og-height="871" data-path="assets/guides/variants/basic-version2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/basic-version2.png?w=280&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=1cf97840d3e99b8946d79c4017ae2252 280w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/basic-version2.png?w=560&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=3accfc7f210994d44fb7dcdfb645bbcb 560w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/basic-version2.png?w=840&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=a91a5d8dc428f6f6b207df62b2bd75f4 840w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/basic-version2.png?w=1100&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=dd9ad7383e38029ffe0452e934a70cb5 1100w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/basic-version2.png?w=1650&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=aff210bb22071dc7cae4369f5c0960cb 1650w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/basic-version2.png?w=2500&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=2c6da4d1f857b81466a0885219cc8743 2500w" />
+    <img />
 
     Your product catalogue should now show this product as follows:
 
-    <img height="200" src="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/catalogue-basic.png?fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=97849159c32582a962b4c59ee1ed4809" data-og-width="1757" data-og-height="871" data-path="assets/guides/variants/catalogue-basic.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/catalogue-basic.png?w=280&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=12d7a6369febb872784c82986207a93b 280w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/catalogue-basic.png?w=560&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=bd903d50f3e4aebdef8347d7de7e5d74 560w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/catalogue-basic.png?w=840&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=9610545a7be1d45f9d238bb076eaddf5 840w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/catalogue-basic.png?w=1100&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=eaf653048bdfe1625a9595cf9a6ae922 1100w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/catalogue-basic.png?w=1650&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=715a35b82f4fb7ae1536e8cd44eee799 1650w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/catalogue-basic.png?w=2500&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=ff17b00278d3b056f06318482121b722 2500w" />
+    <img />
   </Step>
 
   <Step title="Similarly, create two more products">
@@ -6061,19 +6162,19 @@ Learn how create product variants in Polar and how customers can easily switch b
 
     * **Mid version**: Fill the product information. We create a monthly subscription product named **Mid version** with cost \$30.
 
-    <img height="200" src="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/mid-version.png?fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=d0e6e087786645c6c70f4772ae00e042" data-og-width="1757" data-og-height="871" data-path="assets/guides/variants/mid-version.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/mid-version.png?w=280&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=336c0434fce191707f2f9bc27389c949 280w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/mid-version.png?w=560&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=fceaf35a72978ad8f55a0afcd166af54 560w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/mid-version.png?w=840&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=c6d8d0082b3a8ac899063afbf2dd50b5 840w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/mid-version.png?w=1100&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=9057a30dc0b848b37963f940a7795a69 1100w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/mid-version.png?w=1650&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=b265e24697cb5bada8cd1cce91661985 1650w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/mid-version.png?w=2500&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=521cdfc36d2a4b9bfcc60706622138c1 2500w" />
+    <img />
 
-    <img height="200" src="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/mid-version2.png?fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=b89cff6a6b5f76d9a6ea9f260b4e8e37" data-og-width="1757" data-og-height="871" data-path="assets/guides/variants/mid-version2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/mid-version2.png?w=280&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=8bfd355326fddc61d90ca6927147270b 280w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/mid-version2.png?w=560&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=0ed90025563730cd841322dceccea2a5 560w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/mid-version2.png?w=840&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=03c3663d498f889e7c435139f49c9912 840w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/mid-version2.png?w=1100&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=0eb746e67a293437ed73abca3c9a0515 1100w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/mid-version2.png?w=1650&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=448ce8b24cd2a37a7c58d54ecd55d636 1650w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/mid-version2.png?w=2500&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=728f891adf874d88c2910a07838336c5 2500w" />
+    <img />
 
     * **Advanced version**: We create a monthly subscription product named **Advanced version** with cost \$40.
 
-    <img height="200" src="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/advanced-version.png?fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=4069bb1bcf54841ccdcbb0019e35c7eb" data-og-width="1757" data-og-height="871" data-path="assets/guides/variants/advanced-version.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/advanced-version.png?w=280&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=058c58a4bdb960f79e4db20ad901e1f9 280w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/advanced-version.png?w=560&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=332b31c6f1a3876a02c1c8872cea2f0a 560w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/advanced-version.png?w=840&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=92d1565d8d9c1ddcce2346a391cb752e 840w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/advanced-version.png?w=1100&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=914e66ff65dd3fd47a465b61eedb8013 1100w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/advanced-version.png?w=1650&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=17b506e998738a4594cb57325edf25b6 1650w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/advanced-version.png?w=2500&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=4d545f3c659ead0a87765ffe69ccfdca 2500w" />
+    <img />
 
-    <img height="200" src="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/advanced-version2.png?fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=b2305b715d19a9d01f6d4310b72c1e62" data-og-width="1757" data-og-height="871" data-path="assets/guides/variants/advanced-version2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/advanced-version2.png?w=280&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=64c050199971010489612ebd329383c5 280w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/advanced-version2.png?w=560&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=57ed4a483fd44eb9fd37bb30904d0e14 560w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/advanced-version2.png?w=840&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=c9928dc1c51477eeb3e687c51ceb3d56 840w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/advanced-version2.png?w=1100&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=f943194f963f77352e89663ecf0d4695 1100w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/advanced-version2.png?w=1650&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=06c1bbb00d58ac6d9de2ae107c805c0d 1650w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/advanced-version2.png?w=2500&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=ffe61dceae328894eac280ccaa088ef0 2500w" />
+    <img />
 
     * **Product Catalogue**: You should be able to see all your products on Product Catalogue.
 
-    <img height="200" src="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/catalogue-with-3-products.png?fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=adaa8979c5f15f5ab657f8b042d3f83e" data-og-width="1757" data-og-height="871" data-path="assets/guides/variants/catalogue-with-3-products.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/catalogue-with-3-products.png?w=280&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=67fa6d02e05b70534e6aa03b6a281b2a 280w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/catalogue-with-3-products.png?w=560&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=dde99f90cbf9ce98321875abaf883ae1 560w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/catalogue-with-3-products.png?w=840&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=80831818df4d98fb92e074f2329f2101 840w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/catalogue-with-3-products.png?w=1100&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=c6a9ecef6a7efe75005165dab4fd35eb 1100w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/catalogue-with-3-products.png?w=1650&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=7ebb09920e3a21aca49e73b634ca7e32 1650w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/catalogue-with-3-products.png?w=2500&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=024c3aad8078fc09af3a82fa534b53c3 2500w" />
+    <img />
   </Step>
 </Steps>
 
@@ -6085,13 +6186,13 @@ Learn how create product variants in Polar and how customers can easily switch b
     You can also go directly to:\
     `https://polar.sh/dashboard/${org_slug}/products/checkout-links`
 
-    <img height="200" src="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/checkout-links.png?fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=23d69547e3f9a82ea6549e65612140e4" data-og-width="1757" data-og-height="871" data-path="assets/guides/variants/checkout-links.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/checkout-links.png?w=280&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=8dd3aa6cb0dbe57709a4a430ddcb6882 280w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/checkout-links.png?w=560&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=8cebc5108369331e8b46afd773f4c2a6 560w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/checkout-links.png?w=840&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=5b9df8f7b810ce70712dbda8a352e0ff 840w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/checkout-links.png?w=1100&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=57e429830047e4077dd5d28e92becf19 1100w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/checkout-links.png?w=1650&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=b8a2252fb5770f2ba9e6261dd19d85e9 1650w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/checkout-links.png?w=2500&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=77828a1d012c8ab8c9ae99828166bf01 2500w" />
+    <img />
   </Step>
 
   <Step title="Create a Checkout Link">
     Click on **New Link** and select all your products which you want to offer as variants.
 
-    <img height="200" src="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/create-checkout-links.png?fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=101ad4a828b7f2bf6837416c74f95035" data-og-width="1757" data-og-height="871" data-path="assets/guides/variants/create-checkout-links.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/create-checkout-links.png?w=280&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=d0ea8e14630df687b3a38f1072e5c36b 280w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/create-checkout-links.png?w=560&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=205bb1283365a5f2c1e3a6f9de748eec 560w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/create-checkout-links.png?w=840&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=836ac4bb7eef5b11faae853b4b5af1d4 840w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/create-checkout-links.png?w=1100&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=40babfef68f234de451ba2e59c34cd61 1100w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/create-checkout-links.png?w=1650&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=e00c703b819fd9872b062af7a8b350d7 1650w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/create-checkout-links.png?w=2500&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=a45679bab485848ebb8ce02c18d40456 2500w" />
+    <img />
 
     At this step, you may add a label, success URL and metadata. You may also configure whether discount codes are allowed and whether billing address is required from customers.
     Click on **Create Link** after adding your configurations.
@@ -6100,11 +6201,11 @@ Learn how create product variants in Polar and how customers can easily switch b
   <Step title="Accessing the checkout link">
     You should be able to see your label name in **Checkout Links**. In our case, **3 products** is the default label name assigned by the system.
 
-    <img height="200" src="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/link-created.png?fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=3667c130d38ba37dacc9116fb46b84de" data-og-width="1757" data-og-height="871" data-path="assets/guides/variants/link-created.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/link-created.png?w=280&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=5f4c475b5ea236b4fcec6fb25321d5c9 280w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/link-created.png?w=560&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=f02400318f29a5d588bede388edff10c 560w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/link-created.png?w=840&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=1bdc99672bf40f32d51654b7234b7a4f 840w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/link-created.png?w=1100&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=e8f600fb00fd909759c706838e29ddb2 1100w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/link-created.png?w=1650&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=5492abd38984522ccc0ea620e12a107f 1650w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/link-created.png?w=2500&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=1a180009d8fa569c4409b6999a6fadad 2500w" />
+    <img />
 
     Click on your label to see the checkout link.
 
-    <img height="200" src="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/access-link.png?fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=d819dacbf7cf45c2a31dbbe6e7b44e13" data-og-width="1757" data-og-height="871" data-path="assets/guides/variants/access-link.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/access-link.png?w=280&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=21cb2613e618416456294d3f25a926b9 280w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/access-link.png?w=560&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=d0c210aa96b8871909575397d32e7c77 560w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/access-link.png?w=840&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=d0f47ca993732b8d37ac9d9be26be189 840w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/access-link.png?w=1100&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=3165120ea92e4f9e40e3f0466dabfa93 1100w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/access-link.png?w=1650&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=49725791cd7daf98daab5b6074eaf3b4 1650w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/access-link.png?w=2500&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=4aa50f0f189deae33004e4479673f99e 2500w" />
+    <img />
 
     You can copy this link and share to your customers for them to purchase a variant.
   </Step>
@@ -6116,13 +6217,13 @@ Learn how create product variants in Polar and how customers can easily switch b
   <Step title="Purchasing a product">
     On opening the checkout link, the customer will need to select the variant they want to purchase and fill their email address and card details.
 
-    <img height="200" src="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/full-page-checkout-page.png?fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=766c5bf3cf2d0fff321f464f3c6e2adb" data-og-width="1444" data-og-height="1410" data-path="assets/guides/variants/full-page-checkout-page.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/full-page-checkout-page.png?w=280&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=35a0bc0f42ccefec65d3697fb12f3bf5 280w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/full-page-checkout-page.png?w=560&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=ead885117a379a9b94c96bbf16052b1a 560w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/full-page-checkout-page.png?w=840&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=e0e1dc806223eb9fea886f1adba1a6c5 840w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/full-page-checkout-page.png?w=1100&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=1492862b73dd47c8452faba13bb27e64 1100w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/full-page-checkout-page.png?w=1650&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=22dba661c2131ea94590c27a8ce08806 1650w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/full-page-checkout-page.png?w=2500&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=9046f3d0c69180f0242563d6cb08044e 2500w" />
+    <img />
   </Step>
 
   <Step title="Access email for upgrade/downgrade link">
     Once the customer has purchased the subscription, they will receive an email containing the link to access their purchase.
 
-    <img height="200" src="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-mail-2.png?fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=cc127fe5bde5d5120d813d710f55b430" data-og-width="971" data-og-height="781" data-path="assets/guides/variants/customer-mail-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-mail-2.png?w=280&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=34242c2738eb2565d97bc69b155e9ddd 280w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-mail-2.png?w=560&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=eaaa1ea5e817086542cb0f441c24365a 560w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-mail-2.png?w=840&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=3139378644b34cc776eea25ef948bdf7 840w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-mail-2.png?w=1100&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=4afe9d6657e55aefc9a1de1cdf26c4ce 1100w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-mail-2.png?w=1650&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=b1877ca68b5b24ba54cf176ea95a8894 1650w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-mail-2.png?w=2500&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=b2e99840c0b01d7315a67ef419306fff 2500w" />
+    <img />
   </Step>
 </Steps>
 
@@ -6132,19 +6233,19 @@ Learn how create product variants in Polar and how customers can easily switch b
   <Step title="Open Customer Portal and click on Change Plan">
     On opening the link from the email received, the customer needs to click on **Change Plan**.
 
-    <img height="200" src="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-1.png?fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=b710f5f771290112039e945e9b48b368" data-og-width="1482" data-og-height="787" data-path="assets/guides/variants/customer-portal-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-1.png?w=280&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=d0ccfc3e85dc64534feedf33e3c27ac3 280w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-1.png?w=560&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=4e6a9b417e4d2c4b1dfcf873942b4b67 560w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-1.png?w=840&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=b615cb64cf6805e4ca113b2db5dd3c15 840w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-1.png?w=1100&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=ddc465a86cf51543fb3ac80856f646c1 1100w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-1.png?w=1650&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=5d3b9f9ec7e62fda55525f929be30429 1650w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-1.png?w=2500&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=3226182458d7c65ba918f1bf3f8b7d9f 2500w" />
+    <img />
   </Step>
 
   <Step title="Select the desired plan">
     Then, they can select the plan they want to downgrade to and click on **Change Plan**.
 
-    <img height="200" src="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-3.png?fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=8f050dfc7823abcfaccdb4c771552f57" data-og-width="1645" data-og-height="865" data-path="assets/guides/variants/customer-portal-3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-3.png?w=280&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=ed973945b3d33a0ecaeee96365ed89f6 280w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-3.png?w=560&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=f7b79439cafa746989d7cfd0ff4d8866 560w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-3.png?w=840&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=7ebdea2e0681677eb583645b675cc52e 840w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-3.png?w=1100&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=49043970fa7552c028c0b8b434884695 1100w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-3.png?w=1650&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=624d74a73a1df92f59fa6461713e54ee 1650w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-3.png?w=2500&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=111c5de0e216f6265829cd01c98c9dc4 2500w" />
+    <img />
   </Step>
 
   <Step title="Downgraded successfully">
     Now, the product is changed to **Basic version** instead of **Mid version** on the portal.
 
-    <img height="200" src="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-4.png?fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=b4070552c8549136a3b97432b9c05abf" data-og-width="1645" data-og-height="865" data-path="assets/guides/variants/customer-portal-4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-4.png?w=280&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=60c0276913e8e4c7aada546d260ebf2b 280w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-4.png?w=560&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=5a09a1dc8c85329e7e41f03a600cc281 560w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-4.png?w=840&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=de26f4e10dd904cafe5063dc23da04e1 840w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-4.png?w=1100&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=98957060497d81a67aef1ebee8921844 1100w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-4.png?w=1650&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=701e4a43f7c29491ce55d3ef5dad07fe 1650w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-4.png?w=2500&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=d6a50c078031177748ed12b43fb2f43d 2500w" />
+    <img />
   </Step>
 </Steps>
 
@@ -6154,19 +6255,19 @@ Learn how create product variants in Polar and how customers can easily switch b
   <Step title="Open Customer Portal and click on Change Plan">
     On opening the link from the email received, the customer needs to click on **Change Plan**.
 
-    <img height="200" src="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-1.png?fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=b710f5f771290112039e945e9b48b368" data-og-width="1482" data-og-height="787" data-path="assets/guides/variants/customer-portal-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-1.png?w=280&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=d0ccfc3e85dc64534feedf33e3c27ac3 280w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-1.png?w=560&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=4e6a9b417e4d2c4b1dfcf873942b4b67 560w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-1.png?w=840&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=b615cb64cf6805e4ca113b2db5dd3c15 840w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-1.png?w=1100&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=ddc465a86cf51543fb3ac80856f646c1 1100w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-1.png?w=1650&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=5d3b9f9ec7e62fda55525f929be30429 1650w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-1.png?w=2500&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=3226182458d7c65ba918f1bf3f8b7d9f 2500w" />
+    <img />
   </Step>
 
   <Step title="Select the desired plan">
     Then, they need to select the variant they want to upgrade to, **Advanced version** and click on **Change Plan**.
 
-    <img height="200" src="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-5.png?fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=ae7ae1008422adcc755ab56d4da26224" data-og-width="1645" data-og-height="865" data-path="assets/guides/variants/customer-portal-5.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-5.png?w=280&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=934129b1c8ad7c2935f57a7be533a017 280w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-5.png?w=560&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=5b216d92934cea154fa9d3847f6f05f4 560w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-5.png?w=840&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=a9368af496546fd9146d6b460a9da937 840w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-5.png?w=1100&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=5eef222d768bfaff6bac7aa74b2a64c4 1100w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-5.png?w=1650&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=aa48914e6213711e21b1ece73555f958 1650w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-5.png?w=2500&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=d78888f1c7499bbc81417c930216e732 2500w" />
+    <img />
   </Step>
 
   <Step title="Upgraded successfully">
     Now, the product is changed to **Advanced version** on the portal.
 
-    <img height="200" src="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-6.png?fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=ca35ad3ea7e4d154680e4788185638b5" data-og-width="1645" data-og-height="865" data-path="assets/guides/variants/customer-portal-6.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-6.png?w=280&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=c5c1c736de93a02ae7b34043ac0397f8 280w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-6.png?w=560&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=b510e257f0d6254497bca450429b384d 560w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-6.png?w=840&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=6c948d26155800e0954c983eec2624fb 840w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-6.png?w=1100&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=7f174535ab6291b2383bd7b91a6adea4 1100w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-6.png?w=1650&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=86d433cdfa6153552993a3a4e7c84042 1650w, https://mintcdn.com/polar/DR6pBq_Z5cTZz3sx/assets/guides/variants/customer-portal-6.png?w=2500&fit=max&auto=format&n=DR6pBq_Z5cTZz3sx&q=85&s=0859c56a99c91e2fe3777b6fe555e5b3 2500w" />
+    <img />
   </Step>
 </Steps>
 
@@ -6190,7 +6291,7 @@ Learn how to customize the order in which Benefits appear in checkouts.
     <Info>
       Instead of creating the Benefits beforehand, you can also create them while creating the product by clicking the `Create New` button under the desired Benefit Type in the Automated Benefits section of the product configuration.
 
-      <img height="200" src="https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/benefits-creation-while-product-creation.png?fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=9e65506376074218438168bc7da56e70" data-og-width="1755" data-og-height="881" data-path="assets/guides/customize-benefits-order-in-checkouts/benefits-creation-while-product-creation.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/benefits-creation-while-product-creation.png?w=280&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=0b812de70ffe11d5f833bd54217affc0 280w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/benefits-creation-while-product-creation.png?w=560&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=9d1167f1b81f645690027ea3d5ab58e9 560w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/benefits-creation-while-product-creation.png?w=840&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=468d01299516490c212aff5f39a10e92 840w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/benefits-creation-while-product-creation.png?w=1100&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=d715578cdb413b7c2c301b9cf34297f6 1100w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/benefits-creation-while-product-creation.png?w=1650&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=867ea09debea44462680d833e507730c 1650w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/benefits-creation-while-product-creation.png?w=2500&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=96f456a661e2edc6185d316ab9198340 2500w" />
+      <img />
     </Info>
   </Step>
 
@@ -6201,7 +6302,7 @@ Learn how to customize the order in which Benefits appear in checkouts.
   <Step title="View Checkout">
     The checkout session looks like below. The Custom Benefit named **Product Link** appears first, followed by the File Downloads Benefit named **Product File**.
 
-    <img height="200" src="https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/checkout-session.png?fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=d0acd841c4d67e89aa2f272686038e78" data-og-width="1749" data-og-height="881" data-path="assets/guides/customize-benefits-order-in-checkouts/checkout-session.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/checkout-session.png?w=280&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=faa06d17f69e867af7d2b6b2348969f4 280w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/checkout-session.png?w=560&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=55fe0672c99890eb53227f1802618074 560w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/checkout-session.png?w=840&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=ee0649ef55e890d6c58befd4cde38109 840w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/checkout-session.png?w=1100&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=07b8f7d1c31a8cf87adb1e41aed963dc 1100w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/checkout-session.png?w=1650&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=2ac8eafb0080e328b51ce91cfdb5dc6a 1650w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/checkout-session.png?w=2500&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=18d4cc58564a345a6bc64d486caf9f0d 2500w" />
+    <img />
   </Step>
 </Steps>
 
@@ -6211,38 +6312,38 @@ Learn how to customize the order in which Benefits appear in checkouts.
   <Step title="Navigate to Products">
     In the Polar dashboard sidebar, navigate to **Products** > **Catalogue** for your organization. You can also go directly to `https://polar.sh/dashboard/${org_slug}/products`.
 
-    <img height="200" src="https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/products-catalogue.png?fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=ea3eed5902df9a8fd8c289a785dd80ca" data-og-width="1810" data-og-height="889" data-path="assets/guides/customize-benefits-order-in-checkouts/products-catalogue.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/products-catalogue.png?w=280&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=9931054dbb2b959d75738fb2d37a6609 280w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/products-catalogue.png?w=560&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=5d4921e5bc1027afc4d83d8b227e91fc 560w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/products-catalogue.png?w=840&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=a56da48d5cb3da8c0b165b2d2586c587 840w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/products-catalogue.png?w=1100&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=94f9740f1154e193b8fca31fa50ff965 1100w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/products-catalogue.png?w=1650&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=2acd9b978fcec6a0ea1e5fe681b7d542 1650w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/products-catalogue.png?w=2500&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=a47b223e9a444cd277f1db2de82fb9dc 2500w" />
+    <img />
   </Step>
 
   <Step title="Select a Product">
     Choose the product whose Benefits you want to reorder, click on it and scroll down to the **Automated Benefits** section.
 
-    <img height="200" src="https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/automated-benefits.png?fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=940f6b849eb308fe58a3922a040f248f" data-og-width="1798" data-og-height="896" data-path="assets/guides/customize-benefits-order-in-checkouts/automated-benefits.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/automated-benefits.png?w=280&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=f952543fcf12c3db42e4e14137a8796d 280w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/automated-benefits.png?w=560&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=87d752c39c9e82f7d73e5219fa5ce8c7 560w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/automated-benefits.png?w=840&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=ffe680a2b1f08fb4583138b4fd074da2 840w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/automated-benefits.png?w=1100&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=434f66684132a7540333e79697a3bae7 1100w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/automated-benefits.png?w=1650&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=a5888d8cadbc26e86a6e8450a634f4d7 1650w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/automated-benefits.png?w=2500&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=abbae25884e6220f9e0ee5a512d03a76 2500w" />
+    <img />
   </Step>
 
   <Step title="Click Reorder">
     Click the `Reorder` button to change the order of benefits.
 
-    <img height="200" src="https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/reorder.png?fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=718b1f68ef4d5d59478bc6a964168ee9" data-og-width="1785" data-og-height="900" data-path="assets/guides/customize-benefits-order-in-checkouts/reorder.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/reorder.png?w=280&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=e5b082cad6b1267ddfca3c81df80846a 280w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/reorder.png?w=560&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=289d48a92c3d1250265b1147acfdd7c2 560w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/reorder.png?w=840&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=d0719e801505cb0a3938c029e6bbc6e6 840w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/reorder.png?w=1100&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=6ac0c193264701c0226e8eda863b67d7 1100w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/reorder.png?w=1650&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=edf6698bb754384ffac022e245d0ccb7 1650w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/reorder.png?w=2500&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=0d63a8653aec6162e9b3955bb8d78d3a 2500w" />
+    <img />
   </Step>
 
   <Step title="Drag to reorder">
     Drag the Benefits up or down to change their order as desired.
 
-    <img height="200" src="https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/drag-and-drop.png?fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=4f7f19f4214b01da20797fac34124955" data-og-width="1793" data-og-height="900" data-path="assets/guides/customize-benefits-order-in-checkouts/drag-and-drop.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/drag-and-drop.png?w=280&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=de256e72cd3200680198216107caba0c 280w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/drag-and-drop.png?w=560&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=70e51acf84d1f9d81f419768192e275e 560w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/drag-and-drop.png?w=840&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=6abba6a8b786df098f0c5dc8c46b9fe5 840w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/drag-and-drop.png?w=1100&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=2f59f329920b98d37127628e3383f6f6 1100w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/drag-and-drop.png?w=1650&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=80d6c14aa17eb73068fc3b38deea3757 1650w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/drag-and-drop.png?w=2500&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=8e0e761cdaa99b73fadea0bd1b5ca43e 2500w" />
+    <img />
   </Step>
 
   <Step title="Verify the order in Checkout">
     Open the product checkout page. The benefits have been reordered successfully.
 
-    <img height="200" src="https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/order-changed.png?fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=4124d6217e7f0386ca1acd4250fd0989" data-og-width="1790" data-og-height="900" data-path="assets/guides/customize-benefits-order-in-checkouts/order-changed.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/order-changed.png?w=280&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=024d3b8618933286c90499a07c3efff4 280w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/order-changed.png?w=560&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=83e54b652a466b592e547ad5bf908113 560w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/order-changed.png?w=840&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=788c71a39f58eb7cf4f6ca6bec941588 840w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/order-changed.png?w=1100&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=966b718a4a62c3e950be3a28bb1a3a4c 1100w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/order-changed.png?w=1650&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=0cac56f848a2f2471c48ad218155fc0d 1650w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/order-changed.png?w=2500&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=b3089b4d169e1437dbaf1788faec80f5 2500w" />
+    <img />
   </Step>
 </Steps>
 
 <Info>
   You can also Reorder the Benefits while creating the Product itself by clicking on `Reorder` button in Automated Benefits section.
 
-  <img height="200" src="https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/benefits-creation-while-product-creation.png?fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=9e65506376074218438168bc7da56e70" data-og-width="1755" data-og-height="881" data-path="assets/guides/customize-benefits-order-in-checkouts/benefits-creation-while-product-creation.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/benefits-creation-while-product-creation.png?w=280&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=0b812de70ffe11d5f833bd54217affc0 280w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/benefits-creation-while-product-creation.png?w=560&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=9d1167f1b81f645690027ea3d5ab58e9 560w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/benefits-creation-while-product-creation.png?w=840&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=468d01299516490c212aff5f39a10e92 840w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/benefits-creation-while-product-creation.png?w=1100&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=d715578cdb413b7c2c301b9cf34297f6 1100w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/benefits-creation-while-product-creation.png?w=1650&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=867ea09debea44462680d833e507730c 1650w, https://mintcdn.com/polar/mL-baIKTd7M2jhcf/assets/guides/customize-benefits-order-in-checkouts/benefits-creation-while-product-creation.png?w=2500&fit=max&auto=format&n=mL-baIKTd7M2jhcf&q=85&s=96f456a661e2edc6185d316ab9198340 2500w" />
+  <img />
 </Info>
 
 
@@ -6265,21 +6366,21 @@ Learn how to customize the order in which products appear in checkouts.
   <Step title="Save your Access Token">
     After creating your access token, you will be able to view it. Please copy and save your access token.
 
-    <img height="200" src="https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/access-token.png?fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=4d5b14416665214c4191b03aef3e7948" data-og-width="1812" data-og-height="888" data-path="assets/guides/customize-products-order-in-checkouts/access-token.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/access-token.png?w=280&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=6a1d91421855bf48787256011085543c 280w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/access-token.png?w=560&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=962154d88f31d18e25c1a3fd2c259a1d 560w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/access-token.png?w=840&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=8817261c27016420555745c51e573a59 840w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/access-token.png?w=1100&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=00ee0ec52a7a4945abe9e33027174849 1100w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/access-token.png?w=1650&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=6ddd8520287a31508cfa9802a600cb64 1650w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/access-token.png?w=2500&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=8e0a71bca66648ce87dd007ee40a5d2d 2500w" />
+    <img />
   </Step>
 
   <Step title="Go to the Products Catalogue">
     In the Polar dashboard sidebar, navigate to **Products** > **Catalogue** for your organization.
     You can also go directly to `https://polar.sh/dashboard/${org_slug}/products`.
 
-    <img height="200" src="https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/products-catalogue.png?fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=1a593ae8c7c476b62f5cdde8730e3efe" data-og-width="1823" data-og-height="893" data-path="assets/guides/customize-products-order-in-checkouts/products-catalogue.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/products-catalogue.png?w=280&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=d2750ba879c5a666e54efe2031730af2 280w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/products-catalogue.png?w=560&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=845f9dd7b5c263d7ca659d3caa35fe75 560w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/products-catalogue.png?w=840&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=c0721a52f061be734515cbb5180e02cf 840w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/products-catalogue.png?w=1100&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=0b6ad5e65fc24653f7b73d920ebdae86 1100w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/products-catalogue.png?w=1650&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=2da3b2b75643e33181bdcca7e3a0ffc1 1650w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/products-catalogue.png?w=2500&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=23e366428c00e9b9aaae91a9c7241d56 2500w" />
+    <img />
   </Step>
 
   <Step title="Access the product IDs for checkout">
     Retrieve the Product IDs for the items you wish to include in checkout by clicking on the **⋮ (More options) menu** next to chosen products and selecting **Copy Product ID**.\
     These IDs will be required in the next step to create a checkout.
 
-    <img height="200" src="https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/product-id.png?fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=9a39f0e5d6371a9fec7ed25d455db1f5" data-og-width="1812" data-og-height="888" data-path="assets/guides/customize-products-order-in-checkouts/product-id.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/product-id.png?w=280&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=7f5b4302d631dbcd91bb92500ad6e291 280w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/product-id.png?w=560&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=9e2e7a3b50d1dddd659bc62588f1682b 560w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/product-id.png?w=840&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=99505b88028686328cfa8d7cff5c7fbb 840w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/product-id.png?w=1100&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=cde8b9cf816e0adf912747587d40c247 1100w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/product-id.png?w=1650&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=161e2c5bdb3ceb608d7df0560c83600d 1650w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/product-id.png?w=2500&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=4b1860690f22615e76ec61b4187754a9 2500w" />
+    <img />
   </Step>
 </Steps>
 
@@ -6298,7 +6399,7 @@ Learn how to customize the order in which products appear in checkouts.
 
     * \<PRODUCT\_ID\_1>, \<PRODUCT\_ID\_2>, etc., with the product IDs in the order you want them to appear in the checkout.
 
-    ```bash  theme={null}
+    ```bash Terminal theme={null}
     curl --request POST \
         --url https://api.polar.sh/v1/checkout-links/ \
         --header 'Authorization: Bearer <YOUR_ACCESS_TOKEN>' \
@@ -6317,7 +6418,7 @@ Learn how to customize the order in which products appear in checkouts.
   <Step title="Open the Checkout Link URL">
     The curl command returns a JSON. Access the checkout link URL from the <code>"url"</code> key of the JSON and open it.
 
-    ```json  theme={null}
+    ```json theme={null}
     {
         "...": "...",
         "...": "...",
@@ -6327,13 +6428,13 @@ Learn how to customize the order in which products appear in checkouts.
 
     It looks like below:
 
-    <img height="200" src="https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/p1-p2.png?fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=19f442e4c663437294322cbe56e64b42" data-og-width="1721" data-og-height="856" data-path="assets/guides/customize-products-order-in-checkouts/p1-p2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/p1-p2.png?w=280&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=e6ec7a88585185eeccbf6b1031ca972e 280w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/p1-p2.png?w=560&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=2b35b129862dd35af72f4b61d72c9462 560w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/p1-p2.png?w=840&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=429a6bc2f033f6d3af6f9472c1ee9176 840w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/p1-p2.png?w=1100&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=59e91b849d852f401c3e1bc0f28b3b99 1100w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/p1-p2.png?w=1650&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=907ffe2f96e3db609d570fba09d3fd29 1650w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/p1-p2.png?w=2500&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=24f504d9bd817330e92b86c84fe9168f 2500w" />
+    <img />
   </Step>
 
   <Step title="Change the order of products">
     If you want to change the order and make Product 2 appear before Product 1, place Product 2's ID first, followed by Product 1's ID in the API call.
 
-    ```bash  theme={null}
+    ```bash Terminal theme={null}
     curl --request POST \
         --url https://api.polar.sh/v1/checkouts/ \
         --header 'Authorization: Bearer <YOUR_ACCESS_TOKEN>' \
@@ -6348,7 +6449,7 @@ Learn how to customize the order in which products appear in checkouts.
 
     The checkout looks like below:
 
-    <img height="200" src="https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/p2-p1.png?fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=1fc8c36350cebf7ba2780291982255d5" data-og-width="1721" data-og-height="856" data-path="assets/guides/customize-products-order-in-checkouts/p2-p1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/p2-p1.png?w=280&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=914da9ee0d2ce06fd4c0bb67026e9b76 280w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/p2-p1.png?w=560&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=c34230677cf2697ba8ed32e045aad7b5 560w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/p2-p1.png?w=840&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=d822a66431a546649fefcc6b6460d96a 840w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/p2-p1.png?w=1100&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=634ec974b61615686c08c82de68b02eb 1100w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/p2-p1.png?w=1650&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=a75cbd9408cf4430b2a1e177d61387cc 1650w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/p2-p1.png?w=2500&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=9f0594d2e1b3ef979c64c6e5b1bf3af1 2500w" />
+    <img />
   </Step>
 </Steps>
 
@@ -6367,7 +6468,7 @@ Learn how to customize the order in which products appear in checkouts.
 
     * \<PRODUCT\_ID\_1>, \<PRODUCT\_ID\_2>, etc., with the product IDs in the order you want them to appear in the checkout.
 
-    ```bash  theme={null}
+    ```bash Terminal theme={null}
     curl --request POST \
         --url https://api.polar.sh/v1/checkouts/ \
         --header 'Authorization: Bearer <YOUR_ACCESS_TOKEN>' \
@@ -6386,7 +6487,7 @@ Learn how to customize the order in which products appear in checkouts.
   <Step title="Open the Checkout Session URL">
     The curl command returns a JSON. Access the checkout session URL from the <code>"url"</code> key of the JSON and open it.
 
-    ```json  theme={null}
+    ```json theme={null}
     {
         "...": "...",
         "url": "https://buy.polar.sh/polar_c_...", // [!code ++]
@@ -6396,13 +6497,13 @@ Learn how to customize the order in which products appear in checkouts.
 
     It looks like below:
 
-    <img height="200" src="https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/p1-p2.png?fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=19f442e4c663437294322cbe56e64b42" data-og-width="1721" data-og-height="856" data-path="assets/guides/customize-products-order-in-checkouts/p1-p2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/p1-p2.png?w=280&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=e6ec7a88585185eeccbf6b1031ca972e 280w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/p1-p2.png?w=560&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=2b35b129862dd35af72f4b61d72c9462 560w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/p1-p2.png?w=840&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=429a6bc2f033f6d3af6f9472c1ee9176 840w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/p1-p2.png?w=1100&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=59e91b849d852f401c3e1bc0f28b3b99 1100w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/p1-p2.png?w=1650&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=907ffe2f96e3db609d570fba09d3fd29 1650w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/p1-p2.png?w=2500&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=24f504d9bd817330e92b86c84fe9168f 2500w" />
+    <img />
   </Step>
 
   <Step title="Change the order of products">
     If you want to change the order and make Product 2 appear before Product 1, place Product 2's ID first, followed by Product 1's ID in the API call.
 
-    ```bash  theme={null}
+    ```bash Terminal theme={null}
     curl --request POST \
         --url https://api.polar.sh/v1/checkouts/ \
         --header 'Authorization: Bearer <YOUR_ACCESS_TOKEN>' \
@@ -6417,7 +6518,146 @@ Learn how to customize the order in which products appear in checkouts.
 
     The checkout looks like below:
 
-    <img height="200" src="https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/p2-p1.png?fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=1fc8c36350cebf7ba2780291982255d5" data-og-width="1721" data-og-height="856" data-path="assets/guides/customize-products-order-in-checkouts/p2-p1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/p2-p1.png?w=280&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=914da9ee0d2ce06fd4c0bb67026e9b76 280w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/p2-p1.png?w=560&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=c34230677cf2697ba8ed32e045aad7b5 560w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/p2-p1.png?w=840&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=d822a66431a546649fefcc6b6460d96a 840w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/p2-p1.png?w=1100&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=634ec974b61615686c08c82de68b02eb 1100w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/p2-p1.png?w=1650&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=a75cbd9408cf4430b2a1e177d61387cc 1650w, https://mintcdn.com/polar/WdO7SaZ4QOb9_Uo-/assets/guides/customize-products-order-in-checkouts/p2-p1.png?w=2500&fit=max&auto=format&n=WdO7SaZ4QOb9_Uo-&q=85&s=9f0594d2e1b3ef979c64c6e5b1bf3af1 2500w" />
+    <img />
+  </Step>
+</Steps>
+
+
+# How to disable email editing in checkout
+Source: https://polar.sh/docs/guides/disable-email-editing-in-checkout
+
+Learn how to prevent customers from editing their email address during checkout by linking to existing customers.
+
+When you want to prevent customers from changing their email address during the checkout process, you can link the checkout session to an existing customer. This is useful when customers are already authenticated in your application and you want to ensure the purchase is associated with their verified account.
+
+## Overview
+
+By passing either `customer_id` or `external_customer_id` when creating a checkout session, Polar will:
+
+* Pre-fill the customer's information in the checkout form
+* **Disable the email field** so it cannot be edited
+* Link the resulting order to the specified customer
+
+## Using Customer ID
+
+If you've already created a customer in Polar and have their Polar customer ID, you can use it directly.
+
+<Steps>
+  <Step title="Get the Customer ID">
+    Retrieve the customer ID from your Polar dashboard or through the [Customers API](/api-reference/customers/list).
+
+    The customer ID is a UUID format like: `992fae2a-2a17-4b7a-8d9e-e287cf90131b`
+  </Step>
+
+  <Step title="Create Checkout Session with customer_id">
+    Pass the `customer_id` parameter when creating the checkout session.
+
+    <CodeGroup>
+      ```ts TypeScript theme={null}
+      import { Polar } from "@polar-sh/sdk";
+
+      const polar = new Polar({ accessToken: process.env["POLAR_ACCESS_TOKEN"] });
+
+      const checkout = await polar.checkouts.create({
+          products: ["<product_id>"],
+          customerId: "992fae2a-2a17-4b7a-8d9e-e287cf90131b", // [!code ++]
+      });
+
+      console.log(checkout.url);
+      ```
+
+      ```py Python theme={null}
+      from polar_sdk import Polar
+
+      with Polar(
+          access_token="<YOUR_BEARER_TOKEN_HERE>",
+      ) as polar:
+
+          checkout = polar.checkouts.create(request={
+              "products": ["<product_id>"],
+              "customer_id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b",  # [!code ++]
+          })
+
+          print(checkout.url)
+      ```
+
+      ```bash cURL theme={null}
+      curl --request POST \
+        --url https://api.polar.sh/v1/checkouts/ \
+        --header 'Authorization: Bearer <YOUR_ACCESS_TOKEN>' \
+        --header 'Content-Type: application/json' \
+        --data '{
+          "products": ["<product_id>"],
+          "customer_id": "992fae2a-2a17-4b7a-8d9e-e287cf90131b"
+        }'
+      ```
+    </CodeGroup>
+  </Step>
+
+  <Step title="Redirect to Checkout">
+    Redirect your customer to the checkout URL returned in the response. The email field will be pre-filled and disabled for editing.
+  </Step>
+</Steps>
+
+## Using External Customer ID
+
+If you have your own user management system, you can use your internal customer ID. This is the recommended approach as it makes reconciliation between your system and Polar easier.
+
+<Steps>
+  <Step title="Use Your Internal Customer ID">
+    When creating a checkout session, pass your application's user ID as the `external_customer_id`.
+
+    Polar will:
+
+    * Look for an existing customer with this external ID
+    * If found, link to that customer and pre-fill their data
+  </Step>
+
+  <Step title="Create Checkout Session with external_customer_id">
+    <CodeGroup>
+      ```ts TypeScript theme={null}
+      import { Polar } from "@polar-sh/sdk";
+
+      const polar = new Polar({ accessToken: process.env["POLAR_ACCESS_TOKEN"] });
+
+      const checkout = await polar.checkouts.create({
+          products: ["<product_id>"],
+          externalCustomerId: "user_12345", // Your application's user ID // [!code ++]
+      });
+
+      console.log(checkout.url);
+      ```
+
+      ```py Python theme={null}
+      from polar_sdk import Polar
+
+      with Polar(
+          access_token="<YOUR_BEARER_TOKEN_HERE>",
+      ) as polar:
+
+          checkout = polar.checkouts.create(request={
+              "products": ["<product_id>"],
+              "external_customer_id": "user_12345",  # Your application's user ID # [!code ++]
+          })
+
+          print(checkout.url)
+      ```
+
+      ```bash cURL theme={null}
+      curl --request POST \
+        --url https://api.polar.sh/v1/checkouts/ \
+        --header 'Authorization: Bearer <YOUR_ACCESS_TOKEN>' \
+        --header 'Content-Type: application/json' \
+        --data '{
+          "products": ["<product_id>"],
+          "external_customer_id": "user_12345"
+        }'
+      ```
+    </CodeGroup>
+  </Step>
+
+  <Step title="Redirect to Checkout">
+    Redirect your customer to the checkout URL. The email field will be disabled from editing.
   </Step>
 </Steps>
 
@@ -6434,21 +6674,540 @@ Learn how to disable the option for customers to upgrade or downgrade subscripti
     `https://polar.sh/dashboard/${org_slug}/settings`\
     Scroll down to **Subscriptions** section.
 
-    <img height="200" src="https://mintcdn.com/polar/YXFhZ1qGOz_x16Vd/assets/guides/disable-prices-changes-by-customer/settings.png?fit=max&auto=format&n=YXFhZ1qGOz_x16Vd&q=85&s=701f0dc92b3ae6aefc794ca3d16c6b2e" data-og-width="1715" data-og-height="895" data-path="assets/guides/disable-prices-changes-by-customer/settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/YXFhZ1qGOz_x16Vd/assets/guides/disable-prices-changes-by-customer/settings.png?w=280&fit=max&auto=format&n=YXFhZ1qGOz_x16Vd&q=85&s=5a0e5b29df80f2af2a5214c22ff9ebd8 280w, https://mintcdn.com/polar/YXFhZ1qGOz_x16Vd/assets/guides/disable-prices-changes-by-customer/settings.png?w=560&fit=max&auto=format&n=YXFhZ1qGOz_x16Vd&q=85&s=48a49708b7b7ec372402021e7f6311b8 560w, https://mintcdn.com/polar/YXFhZ1qGOz_x16Vd/assets/guides/disable-prices-changes-by-customer/settings.png?w=840&fit=max&auto=format&n=YXFhZ1qGOz_x16Vd&q=85&s=7a2f6efa7d327293e55ce74d1b12b540 840w, https://mintcdn.com/polar/YXFhZ1qGOz_x16Vd/assets/guides/disable-prices-changes-by-customer/settings.png?w=1100&fit=max&auto=format&n=YXFhZ1qGOz_x16Vd&q=85&s=f48341705c1fac568bb77f64732c44a2 1100w, https://mintcdn.com/polar/YXFhZ1qGOz_x16Vd/assets/guides/disable-prices-changes-by-customer/settings.png?w=1650&fit=max&auto=format&n=YXFhZ1qGOz_x16Vd&q=85&s=517368b29ab6a348222c29c9c5cabaac 1650w, https://mintcdn.com/polar/YXFhZ1qGOz_x16Vd/assets/guides/disable-prices-changes-by-customer/settings.png?w=2500&fit=max&auto=format&n=YXFhZ1qGOz_x16Vd&q=85&s=dc53203f5142157c4ed5ae34a6aaef9b 2500w" />
+    <img />
   </Step>
 
   <Step title="Toggle Allow price changes">
     **Toggle OFF** Allow price changes to prevent customers from upgrading or downgrading their subscriptions from the customer portal.
 
-    <img height="200" src="https://mintcdn.com/polar/YXFhZ1qGOz_x16Vd/assets/guides/disable-prices-changes-by-customer/disable-price-changes.png?fit=max&auto=format&n=YXFhZ1qGOz_x16Vd&q=85&s=23defe54af5e17807c516beaf52cda32" data-og-width="1715" data-og-height="895" data-path="assets/guides/disable-prices-changes-by-customer/disable-price-changes.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/YXFhZ1qGOz_x16Vd/assets/guides/disable-prices-changes-by-customer/disable-price-changes.png?w=280&fit=max&auto=format&n=YXFhZ1qGOz_x16Vd&q=85&s=544cb8b5ae636060cf1012dec97f9124 280w, https://mintcdn.com/polar/YXFhZ1qGOz_x16Vd/assets/guides/disable-prices-changes-by-customer/disable-price-changes.png?w=560&fit=max&auto=format&n=YXFhZ1qGOz_x16Vd&q=85&s=f016b72d973c8b522b0a358b35c7ad2c 560w, https://mintcdn.com/polar/YXFhZ1qGOz_x16Vd/assets/guides/disable-prices-changes-by-customer/disable-price-changes.png?w=840&fit=max&auto=format&n=YXFhZ1qGOz_x16Vd&q=85&s=fb9f9dc6eae4a92c5bc0f7a96051646a 840w, https://mintcdn.com/polar/YXFhZ1qGOz_x16Vd/assets/guides/disable-prices-changes-by-customer/disable-price-changes.png?w=1100&fit=max&auto=format&n=YXFhZ1qGOz_x16Vd&q=85&s=ca27f0e7d5d5b9be7f9501cb23c0bdc9 1100w, https://mintcdn.com/polar/YXFhZ1qGOz_x16Vd/assets/guides/disable-prices-changes-by-customer/disable-price-changes.png?w=1650&fit=max&auto=format&n=YXFhZ1qGOz_x16Vd&q=85&s=e91128afe750c747193bc35722059ae2 1650w, https://mintcdn.com/polar/YXFhZ1qGOz_x16Vd/assets/guides/disable-prices-changes-by-customer/disable-price-changes.png?w=2500&fit=max&auto=format&n=YXFhZ1qGOz_x16Vd&q=85&s=fa83a3b408d6cda98379745bef3bcbc1 2500w" />
+    <img />
   </Step>
 
   <Step title="Save the changes">
     Click **Save** in the **Subscriptions** section to save the changed settings.
 
-    <img height="200" src="https://mintcdn.com/polar/YXFhZ1qGOz_x16Vd/assets/guides/disable-prices-changes-by-customer/price-changes-saved.png?fit=max&auto=format&n=YXFhZ1qGOz_x16Vd&q=85&s=a17e65a0b1d14c9569a318aa417bcd3e" data-og-width="1715" data-og-height="895" data-path="assets/guides/disable-prices-changes-by-customer/price-changes-saved.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/YXFhZ1qGOz_x16Vd/assets/guides/disable-prices-changes-by-customer/price-changes-saved.png?w=280&fit=max&auto=format&n=YXFhZ1qGOz_x16Vd&q=85&s=18c8a1f24b7557d06ff6d2d121e0989a 280w, https://mintcdn.com/polar/YXFhZ1qGOz_x16Vd/assets/guides/disable-prices-changes-by-customer/price-changes-saved.png?w=560&fit=max&auto=format&n=YXFhZ1qGOz_x16Vd&q=85&s=8d278754e026c13e8ef0c1f20310d615 560w, https://mintcdn.com/polar/YXFhZ1qGOz_x16Vd/assets/guides/disable-prices-changes-by-customer/price-changes-saved.png?w=840&fit=max&auto=format&n=YXFhZ1qGOz_x16Vd&q=85&s=58941a6d88123c347de6bb56d63ac144 840w, https://mintcdn.com/polar/YXFhZ1qGOz_x16Vd/assets/guides/disable-prices-changes-by-customer/price-changes-saved.png?w=1100&fit=max&auto=format&n=YXFhZ1qGOz_x16Vd&q=85&s=1653a17e87a101a743e213e6a1ec14ff 1100w, https://mintcdn.com/polar/YXFhZ1qGOz_x16Vd/assets/guides/disable-prices-changes-by-customer/price-changes-saved.png?w=1650&fit=max&auto=format&n=YXFhZ1qGOz_x16Vd&q=85&s=5ce9b1df1e9bbfe659dbab7e31174cfa 1650w, https://mintcdn.com/polar/YXFhZ1qGOz_x16Vd/assets/guides/disable-prices-changes-by-customer/price-changes-saved.png?w=2500&fit=max&auto=format&n=YXFhZ1qGOz_x16Vd&q=85&s=ade9e55382cc0710c252d41c42fd980e 2500w" />
+    <img />
   </Step>
 </Steps>
+
+
+# How to Grant Meter Credits After Purchase
+Source: https://polar.sh/docs/guides/grant-meter-credits-after-purchase
+
+Learn how to automatically grant meter credits to users after purchase using the Meter Credits benefits or Webhooks.
+
+## Overview
+
+When building usage-based billing systems, you may want to give new customers an initial credit balance (e.g., 10 free units) when they purchase a product. This is useful for:
+
+* Offering free trials with credits
+* Onboarding bonuses
+* Promotional credits for new signups or purchases
+
+There are two ways to grant initial meter credits in Polar:
+
+1. **Meter Credits Benefit (Recommended)** - Automatically grant credits when a customer purchases a product
+2. **Webhook + Events API** - Programmatically grant credits for advanced use cases
+
+### Which Method Should I Use?
+
+| Feature                | Meter Credits Benefit         | Webhook + Events API                      |
+| ---------------------- | ----------------------------- | ----------------------------------------- |
+| **Setup Complexity**   | ✅ Simple - No code required   | ⚙️ Advanced - Requires coding             |
+| **Automatic Credits**  | ✅ Yes                         | ❌ No - Manual implementation              |
+| **Custom Logic**       | ❌ No                          | ✅ Yes - Full control                      |
+| **One-time Products**  | ✅ Credits granted at purchase | ✅ Credits granted at purchase             |
+| **Recurring Products** | ❌ No                          | ✅ Can be credited every cycle (with code) |
+| **Best For**           | Most use cases                | Complex crediting rules                   |
+
+<Tip>
+  **Start with Method 1** (Meter Credits Benefit) unless you need custom logic or complex crediting rules. It's simpler and requires no code.
+</Tip>
+
+***
+
+## Method 1: Using Meter Credits Benefit (Recommended)
+
+The simplest way to grant initial credits is to use the built-in **Meter Credits** benefit. This automatically grants credits (once) to customers when they purchase a product.
+
+### Step 1: Create a Meter with Sum Aggregation
+
+First, [create a meter](/features/usage-based-billing/meters) that will track your customers usage.
+
+### Step 2: Create a Meter Credits Benefit
+
+Now [create a Meter Credits benefit](/features/benefits/credits) that will grant the initial credits.
+
+### Step 3: Create a Product with the Benefit
+
+Create a product and attach the Meter Credits benefit to it.
+
+<Steps>
+  <Step title="Create a product">
+    Navigate to **Products** > **Catalogue** and click **New Product**.
+  </Step>
+
+  <Step title="Configure the product">
+    * Set a name and description
+    * Choose your product type (Recurring)
+    * Set the price (can be \$0 for free signup, or any amount)
+    * Click "Add Additional Price"
+      * Attach your meter to the product and set the per unit cost
+  </Step>
+
+  <Step title="Add the Meter Credits benefit">
+    Scroll to the **Automated Benefits** section and toggle ON the Meter Credits benefit you created.
+  </Step>
+
+  <Step title="Save the product">
+    Click **Create Product** to save.
+  </Step>
+</Steps>
+
+That's it! Now when a customer purchases this product, they will automatically receive the specified amount of meter credits.
+
+***
+
+## Method 2: Using Webhooks + Events API (Advanced)
+
+For more complex scenarios where you need custom logic or want to grant credits outside the purchase flow, you can use webhooks and the Events API.
+
+### When to Use This Method
+
+* You need custom logic to determine credit amounts
+* You want to grant credits based on external events
+* You need to grant credits to existing customers programmatically
+* You want to implement complex crediting rules
+
+### How It Works
+
+This approach involves:
+
+1. Creating a product with a meter attached (using sum aggregation)
+2. Setting up webhooks to listen for purchases
+3. When a purchase is made, ingesting a negative event value to grant credits
+
+<Info>
+  **Why negative values?**
+
+  When you ingest an event with a negative value (e.g., `-10`) to a meter using **Sum** aggregation, it effectively grants the customer 10 units of credit, reducing their usage meter balance.
+</Info>
+
+### Prerequisites
+
+* A Polar account with an organization
+* A meter created with **Sum** aggregation
+* A product with the meter attached
+* Webhooks enabled
+* A Polar access token for API calls
+
+### Step 1: Create a Meter
+
+First, create a meter that will track your customers' usage.
+
+<Steps>
+  <Step title="Navigate to Meters">
+    In the Polar dashboard sidebar, click on **Products** > **Meters**.
+  </Step>
+
+  <Step title="Create a new meter">
+    Click **Create Meter** and configure:
+
+    * **Name**: Give your meter a descriptive name (e.g., "API Calls" or "Storage Usage")
+    * **Filter**: Add filters to match your usage events (e.g., name equals "api\_usage")
+    * **Aggregation**: Select **Sum** and enter the property to sum (e.g., `units`)
+
+    <Warning>
+      The meter **must use Sum aggregation** for this approach to work.
+    </Warning>
+  </Step>
+
+  <Step title="Save the meter">
+    Save your meter and note down the meter name - you'll need this when ingesting events.
+  </Step>
+</Steps>
+
+Learn more about [creating meters](/features/usage-based-billing/meters).
+
+### Step 2. Create a Product
+
+Follow the same steps as Method 1 to create your product (you don't need to create or attach the Meter Credits benefit for this approach).
+
+### Step 3: Set Up Webhooks
+
+Configure webhooks to receive notifications when users make purchases.
+
+<Steps>
+  <Step title="Add webhook endpoint">
+    Follow our [Setup Webhooks](/integrate/webhooks/endpoints) guide to create a new webhook endpoint.
+  </Step>
+
+  <Step title="Subscribe to order.paid event">
+    When configuring your webhook, make sure to subscribe to the `order.paid` event. This event is triggered when a customer successfully completes a purchase.
+  </Step>
+
+  <Step title="Save webhook secret">
+    Store your webhook secret securely in your environment variables.
+
+    ```bash Terminal theme={null}
+    POLAR_ACCESS_TOKEN="polar_pat_..."
+    POLAR_WEBHOOK_SECRET="whsec_..."
+    PRODUCT_ID="prod_..." # The product ID to grant credits for
+    ```
+  </Step>
+</Steps>
+
+### Step 4: Implement the Webhook Handler
+
+Create a webhook handler that listens for `order.paid` events and grants initial credits by ingesting negative event values.
+
+#### Next.js Example
+
+```typescript icon="square-js" title="app/api/webhook/polar/route.ts" theme={null}
+import { Polar } from "@polar-sh/sdk";
+import { Webhooks } from "@polar-sh/nextjs";
+
+const polar = new Polar({ accessToken: process.env.POLAR_ACCESS_TOKEN });
+
+export const POST = Webhooks({
+  webhookSecret: process.env.POLAR_WEBHOOK_SECRET,
+  onOrderPaid: async (order) => {
+    // Check if this is the product we want to grant credits for
+    const targetProductId = process.env.PRODUCT_ID;
+    if (order.data.product_id === targetProductId) {
+      // Grant 10 credits by ingesting a negative event
+      await polar.events.ingest({
+        events: [
+          {
+            name: "meter-name",
+            customerId: order.data.customer_id,
+            metadata: {
+              units: -10, // Negative value grants credits
+              reason: "initial_signup_bonus",
+            },
+          },
+        ],
+      });
+      console.log(`Granted 10 credits to customer ${order.data.customer_id}`);
+    }
+  },
+});
+```
+
+### Step 5: Test Your Integration
+
+Test that credits are properly granted when a customer makes a purchase.
+
+<Steps>
+  <Step title="Use the sandbox environment">
+    Test your integration in Polar's [sandbox environment](/integrate/sandbox) to avoid affecting production data.
+  </Step>
+
+  <Step title="Make a test purchase">
+    Create a checkout session and complete a test purchase.
+  </Step>
+
+  <Step title="Verify webhook receipt">
+    Check your server logs to confirm the `order.paid` webhook was received.
+  </Step>
+
+  <Step title="Check customer balance">
+    Use the [Customer Meters API](/api-reference/customer-meters/list) to verify the credits were applied:
+
+    ```typescript theme={null}
+    const meters = await polar.customerMeters.list({
+      customerId: "cus_...",
+    });
+
+    console.log(meters.items[0].balance); // Should show -10 (or your credit amount)
+    ```
+  </Step>
+</Steps>
+
+### Important Considerations for Webhook Method
+
+#### Negative Balance vs. Positive Usage
+
+When using negative events to grant credits:
+
+* A **negative balance** (e.g., `-10`) means the customer has 10 credits available
+* As the customer uses your service, positive events reduce this negative balance
+* When the balance reaches `0`, the customer has used all their credits
+* Positive balances indicate usage beyond the granted credits
+
+#### Example Flow
+
+```typescript theme={null}
+// Initial state: Customer has 0 balance
+// You grant 10 credits: balance = -10
+
+// Customer uses 3 units: balance = -7 (7 credits remaining)
+// Customer uses 5 more units: balance = -2 (2 credits remaining)
+// Customer uses 3 more units: balance = 1 (1 unit of overage, if metered pricing is enabled)
+```
+
+#### Preventing Double Credits
+
+To avoid granting credits multiple times, consider:
+
+1. **Check order status** - Only grant credits for new orders
+2. **Use idempotency** - Track which orders you've already processed
+3. **Database records** - Store a record of credit grants
+
+```typescript theme={null}
+// Example with idempotency check
+const hasGrantedCredits = await checkIfAlreadyGranted(order.id);
+
+if (!hasGrantedCredits) {
+  await polar.events.ingest({
+    events: [{
+      name: "meter-name",
+      customerId: order.data.customer_id,
+      metadata: { units: -10 },
+    }],
+  });
+  
+  await recordCreditGrant(order.id);
+}
+```
+
+
+# How to Grant Meter Credits Before Purchase
+Source: https://polar.sh/docs/guides/grant-meter-credits-before-purchase
+
+Learn how to grant meter credits to customers before they make any purchase using the Polar API.
+
+## Overview
+
+You may want to grant usage credits to customers even before they make a purchase. This is useful for:
+
+* **Free trial credits** - Give new signups free credits to try your service
+* **Promotional campaigns** - Grant credits as part of marketing initiatives
+* **Testing and demos** - Provide credits for product demonstrations
+
+This guide shows you how to grant credits to customers who don't have an active subscription or purchase yet.
+
+## How It Works
+
+To grant credits before a purchase, you need to:
+
+1. Create a customer in Polar (if they don't exist)
+2. Create a meter with **Sum** aggregation to track usage
+3. Ingest an event with a **negative value** to grant credits
+
+<Info>
+  **Why negative values?**
+
+  When you ingest an event with a negative value (e.g., `-10`) to a meter using **Sum** aggregation, it grants the customer credits. A negative balance means available credits, which get reduced as they use your service.
+</Info>
+
+## Step 1: Create a Meter
+
+First, create a meter that will track your customers' usage.
+
+<Steps>
+  <Step title="Navigate to Meters">
+    In the Polar dashboard sidebar, click on **Products** > **Meters**.
+  </Step>
+
+  <Step title="Create a new meter">
+    Click **Create Meter** and configure:
+
+    * **Name**: Give your meter a descriptive name (e.g., "API Calls" or "Storage Usage")
+    * **Filter**: Add filters to match your usage events (e.g., name equals "api\_usage")
+    * **Aggregation**: Select **Sum** and enter the property to sum (e.g., `units`)
+
+    <Warning>
+      The meter **must use Sum aggregation** for this approach to work.
+    </Warning>
+  </Step>
+
+  <Step title="Save the meter">
+    Save your meter and note down the meter name - you'll need this when ingesting events.
+  </Step>
+</Steps>
+
+Learn more about [creating meters](/features/usage-based-billing/meters).
+
+## Step 2: Create a Customer
+
+If your customer doesn't already exist in Polar, you need to create them first.
+
+### Option A: Create via Dashboard
+
+<Steps>
+  <Step title="Navigate to Customers">
+    In the Polar dashboard sidebar, click on **Customers**.
+  </Step>
+
+  <Step title="Add new customer">
+    Click **Add Customer** and fill in:
+
+    * **Email**: Customer's email address (required)
+    * **Name**: Customer's full name (optional)
+    * **External ID**: Your internal user ID for easy reference (optional but recommended)
+  </Step>
+
+  <Step title="Save customer">
+    Click **Save** and note down the Customer ID.
+  </Step>
+</Steps>
+
+### Option B: Create via API
+
+Use the Polar SDK or API to create a customer programmatically:
+
+```typescript icon="square-js" title="create-customer.ts" theme={null}
+import { Polar } from "@polar-sh/sdk";
+
+const polar = new Polar({
+  accessToken: process.env.POLAR_ACCESS_TOKEN,
+});
+
+// Create a new customer
+await polar.customers.create({
+  email: "user@example.com",
+  name: "John Doe",
+  externalId: "user_123", // Your internal user ID (optional)
+});
+```
+
+<Tip>
+  Use the `externalId` field to link Polar customers with your internal user system. This allows you to reference customers without storing Polar's internal ID.
+</Tip>
+
+### Using External ID
+
+If you set an `externalId` when creating the customer, you can use it in event ingestion instead of the Polar customer ID:
+
+```typescript theme={null}
+// Instead of using customerId, use externalCustomerId
+await polar.events.ingest({
+  events: [{
+    name: "api_usage",
+    externalCustomerId: "user_123", // Your internal ID
+    metadata: { units: -10 }
+  }]
+});
+```
+
+Learn more about [customer management](/features/customer-management).
+
+## Step 3: Grant Credits by Ingesting a Negative Event
+
+Now that you have a customer and a meter, grant credits by ingesting an event with a negative value.
+
+### Using the Polar SDK
+
+```typescript icon="square-js" title="grant-credits.ts" theme={null}
+import { Polar } from "@polar-sh/sdk";
+
+const polar = new Polar({
+  accessToken: process.env.POLAR_ACCESS_TOKEN,
+});
+
+async function grantCredits(customerId: string, credits: number) {
+  await polar.events.ingest({
+    events: [
+      {
+        customerId,
+        name: "api_usage", // Must match your meter's filter name
+        metadata: {
+          units: -credits, // Negative value grants credits
+        },
+      },
+    ],
+  });
+  
+  console.log(`Granted ${credits} credits to customer ${customerId}`);
+}
+
+// Grant 10 credits to a customer
+await grantCredits("cus_abc123", 10);
+```
+
+### Using External Customer ID
+
+If you're using `externalId` for customer management:
+
+```typescript icon="square-js" title="grant-credits-external.ts" theme={null}
+import { Polar } from "@polar-sh/sdk";
+
+const polar = new Polar({
+  accessToken: process.env.POLAR_ACCESS_TOKEN,
+});
+
+async function grantCreditsToExternalUser(externalUserId: string, credits: number) {
+  await polar.events.ingest({
+    events: [
+      {
+        name: "api_usage", // Must match your meter's filter name
+        externalCustomerId: externalUserId, // Use your internal ID
+        metadata: {
+          units: -credits, // Negative value grants credits
+        },
+      },
+    ],
+  });
+  
+  console.log(`Granted ${credits} credits to user ${externalUserId}`);
+}
+
+// Grant 10 credits using your internal user ID
+await grantCreditsToExternalUser("user_123", 10);
+```
+
+## Step 4: Verify Credits Were Granted
+
+Check that the credits were successfully granted to the customer.
+
+### Using Customer Meters API
+
+```typescript theme={null}
+import { Polar } from "@polar-sh/sdk";
+
+const polar = new Polar({
+  accessToken: process.env.POLAR_ACCESS_TOKEN,
+});
+
+// Check customer's meter balance
+const meters = await polar.customerMeters.list({
+  customerId: "cus_abc123",
+});
+
+meters.items.filter((balance) => balance > 0).forEach((meter) => {
+  console.log(`${Math.abs(meter.balance)} credits available for ${meter.meter_id}.`);
+});
+```
+
+### Example Usage Flow
+
+```typescript theme={null}
+// Initial state: Customer created, 0 balance
+// Grant 10 credits: balance = 10
+
+// Customer uses 3 units
+await polar.events.ingest({
+  events: [{
+    name: "api_usage",
+    customerId: "cus_abc123",
+    metadata: { units: 3 } // Positive value for usage
+  }]
+});
+
+// Balance is now 7 (7 credits remaining)
+
+// Customer uses 8 more units
+await polar.events.ingest({
+  events: [{
+    name: "api_usage",
+    customerId: "cus_abc123",
+    metadata: { units: 8 }
+  }]
+});
+
+// Balance is now -1 (used 1 unit beyond credits)
+```
 
 
 # Introduction
@@ -6470,7 +7229,7 @@ Source: https://polar.sh/docs/guides/laravel
 
 In this guide, we'll show you how to integrate Polar with Laravel.
 
-<img src="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/guides/laravel/hero.jpeg?fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=7f57da3dcc77d6f8e0f8b2e760f0aeea" data-og-width="1920" width="1920" data-og-height="1080" height="1080" data-path="assets/guides/laravel/hero.jpeg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/guides/laravel/hero.jpeg?w=280&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=5c8af67a7a1f3e1ed28e24fd633057fb 280w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/guides/laravel/hero.jpeg?w=560&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=991feb7c5298a76f861c23fe8143583b 560w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/guides/laravel/hero.jpeg?w=840&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=2a542a3866463e546ed8f3d295fcf843 840w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/guides/laravel/hero.jpeg?w=1100&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=4f7bc6092412d56d1ae3bccdfeebdfcf 1100w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/guides/laravel/hero.jpeg?w=1650&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=9b627520015006b566123b43379d83c0 1650w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/guides/laravel/hero.jpeg?w=2500&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=36e5b661f7df187fac6bb1b04d18fa88 2500w" />
+<img />
 
 Consider following this guide while using the Polar Sandbox Environment. This will allow you to test your integration without affecting your production data.
 
@@ -6494,14 +7253,14 @@ You can create an organization access token from your organization settings.
 
 Go ahead and add the following entry in your `routes/web.php` file:
 
-```php  theme={null}
+```php theme={null}
 // routes/web.php
 Route::get('/products', [ProductsController::class, 'handle']);
 ```
 
 Next up, create the `ProductsController` class in the `app/Http/Controllers` directory:
 
-```php  theme={null}
+```php theme={null}
 // app/Http/Controllers/ProductsController.php
 <?php
 
@@ -6532,7 +7291,7 @@ class ProductsController extends Controller
 
 Finally, create the `products` view in the `resources/views` directory:
 
-```php  theme={null}
+```php theme={null}
 // resources/views/products.blade.php
 @foreach ($products as $product)
     <div>
@@ -6552,14 +7311,14 @@ This endpoint will be responsible for creating a new checkout session, redirecti
 
 Go ahead and create a new entry in your `routes/web.php` file:
 
-```php  theme={null}
+```php theme={null}
 // routes/web.php
 Route::get('/checkout', [CheckoutController::class, 'handle']);
 ```
 
 Next, create the `CheckoutController` class in the `app/Http/Controllers` directory:
 
-```php  theme={null}
+```php theme={null}
 // app/Http/Controllers/CheckoutController.php
 <?php
 
@@ -6605,14 +7364,14 @@ Upon Checkout success, the user will be redirected to the confirmation page.
 
 Create a new entry in your `routes/web.php` file:
 
-```php  theme={null}
+```php theme={null}
 // routes/web.php
 Route::get('/confirmation', [ConfirmationController::class, 'handle']);
 ```
 
 Next, create the `ConfirmationController` class in the `app/Http/Controllers` directory:
 
-```php  theme={null}
+```php theme={null}
 // app/Http/Controllers/ConfirmationController.php
 <?php
 
@@ -6656,7 +7415,7 @@ If you're developing locally, you can use a tool like [ngrok](https://ngrok.com/
 
 Run the following command to start an ngrok tunnel:
 
-```bash  theme={null}
+```bash Terminal theme={null}
 ngrok http 3000
 ```
 
@@ -6667,7 +7426,7 @@ ngrok http 3000
 3. Generate a secret key to sign the requests. This will allow you to verify that the requests are truly coming from Polar.
 4. Add the secret key to your environment variables.
 
-```bash  theme={null}
+```bash Terminal theme={null}
 # .env
 POLAR_API_KEY="polar_oat..."
 POLAR_WEBHOOK_SECRET="..."
@@ -6677,20 +7436,20 @@ POLAR_WEBHOOK_SECRET="..."
 
 First, we need to install the standard-webhooks package to properly decode the incoming webhook payloads.
 
-```bash  theme={null}
+```bash Terminal theme={null}
 composer require standard-webhooks/standard-webhooks:dev-main
 ```
 
 Go and add a `routes/api.php` file and add the following entry:
 
-```php  theme={null}
+```php theme={null}
 // routes/api.php
 Route::webhooks('/webhook/polar');
 ```
 
 Make sure that it is included in the Bootstrap file.
 
-```php  theme={null}
+```php theme={null}
 // bootstrap/app.php
 <?php
 
@@ -6715,13 +7474,13 @@ return Application::configure(basePath: dirname(__DIR__))
 
 We will use Spatie's Webhook Client to handle the webhook events. It will automatically verify the signature of the requests, and dispatch the payload to a job queue for processing.
 
-```bash  theme={null}
+```bash Terminal theme={null}
 composer require spatie/laravel-webhook-client
 ```
 
 Let's publish the config:
 
-```bash  theme={null}
+```bash Terminal theme={null}
 php artisan vendor:publish --provider="Spatie\WebhookClient\WebhookClientServiceProvider" --tag="webhook-client-config"
 ```
 
@@ -6729,7 +7488,7 @@ This will create a new file called webhook-client.php in the config folder.
 
 We need to adjust it to properly verify the signature of the requests.
 
-```php  theme={null}
+```php theme={null}
 // config/webhook-client.php
 <?php
 return [
@@ -6806,7 +7565,7 @@ return [
 
 By default, all webhook calls get saved into the database. So, we need to publish the migration that will hold the records. So run:
 
-```bash  theme={null}
+```bash Terminal theme={null}
 php artisan vendor:publish --provider="Spatie\WebhookClient\WebhookClientServiceProvider" --tag="webhook-client-migrations"
 ```
 
@@ -6831,7 +7590,7 @@ The next thing we do is to create a folder named Handler inside the app folder. 
 
 Inside app/Handler/PolarSignature.php, what we want to do is to validate that the request came from Polar. Add the code to that file.
 
-```php  theme={null}
+```php theme={null}
 // app/Handler/PolarSignature.php
 <?php
 
@@ -6860,7 +7619,7 @@ class PolarSignature implements SignatureValidator
 
 Great. So the other file app/Handler/ProcessWebhook.php extends the ProcessWebhookJob class which holds the WebhookCall variables containing each job’s detail.
 
-```php  theme={null}
+```php theme={null}
 // app/Handler/ProcessWebhook.php
 <?php
 
@@ -6944,7 +7703,7 @@ In this guide, we'll show you how to integrate Polar with Next.js.
 
 Feel free to use our quick-start script to get started inside a new Next.js project:
 
-```bash  theme={null}
+```bash Terminal theme={null}
 # Inside a new Next.js project
 npx polar-init
 ```
@@ -6957,7 +7716,7 @@ Consider following this guide while using the Polar Sandbox Environment. This wi
 
 To get started, you need to install the Polar JavaScript SDK and the Polar Nextjs helper package. You can do this by running the following command:
 
-```bash  theme={null}
+```bash Terminal theme={null}
 pnpm install @polar-sh/sdk @polar-sh/nextjs
 ```
 
@@ -6973,7 +7732,7 @@ You can create an organization access token from your organization settings.
 
 To interact with the Polar API, you need to create a new instance of the `Polar` class. This class uses the provided access token to authenticate with the Polar API.
 
-```typescript  theme={null}
+```typescript theme={null}
 // src/polar.ts
 import { Polar } from "@polar-sh/sdk";
 
@@ -6991,13 +7750,13 @@ Next up, we need to create a checkout endpoint to handle the creation of checkou
 
 Go ahead and create a new GET route in Next.js.
 
-```typescript  theme={null}
+```typescript theme={null}
 // src/app/checkout/route.ts
 import { Checkout } from "@polar-sh/nextjs";
 
 export const GET = Checkout({
   accessToken: process.env.POLAR_ACCESS_TOKEN!,
-  successUrl: "/confirmation?checkout_id={CHECKOUT_ID}",
+  successUrl: "https://your-app.com/confirmation?checkout_id={CHECKOUT_ID}",
   server: "sandbox", // Use this option if you're using the sandbox environment - else use 'production' or omit the parameter
 });
 ```
@@ -7014,7 +7773,7 @@ If you're developing locally, you can use a tool like [ngrok](https://ngrok.com/
 
 Run the following command to start an ngrok tunnel:
 
-```bash  theme={null}
+```bash Terminal theme={null}
 ngrok http 3000
 ```
 
@@ -7025,7 +7784,7 @@ ngrok http 3000
 3. Generate a secret key to sign the requests. This will allow you to verify that the requests are truly coming from Polar.
 4. Add the secret key to your environment variables.
 
-```bash  theme={null}
+```bash Terminal theme={null}
 # .env
 POLAR_ACCESS_TOKEN="polar_pat..."
 POLAR_WEBHOOK_SECRET="..."
@@ -7033,7 +7792,7 @@ POLAR_WEBHOOK_SECRET="..."
 
 ### Setting up the Webhook handler
 
-```typescript  theme={null}
+```typescript theme={null}
 // src/app/api/webhook/polar/route.ts
 import { Webhooks } from "@polar-sh/nextjs";
 
@@ -7049,7 +7808,7 @@ The webhook event is now verified and you can proceed to handle the payload data
 
 Depending on which events you've subscribed to, you'll receive different payloads. This is where you can update your database, send notifications, etc.
 
-```typescript  theme={null}
+```typescript theme={null}
 // src/app/api/webhook/polar/route.ts
 import { Webhooks } from "@polar-sh/nextjs";
 
@@ -7069,6 +7828,435 @@ If you're building a real-time application, you might want to notify the client 
 ## Conclusion
 
 If you have issues or need support, feel free to join [our Discord](https://discord.gg/Pnhfz3UThd).
+
+
+# Proration for Subscription Upgrades and Downgrades
+Source: https://polar.sh/docs/guides/proration-for-subscription-changes
+
+Learn how proration works in Polar, including available proration types, billing behavior during upgrades and downgrades, and how to configure proration using APIs and dashboard settings.
+
+## What is Proration?
+
+Proration is the adjustment of charges based on the unused portion of the current billing period when a subscription is upgraded or downgraded.
+
+## Types of Proration
+
+For both `prorate` and `invoice` proration types, the **subscription plan always changes immediately**, whether the change is an upgrade or a downgrade. The only difference between the two proration types is **when the price difference is charged or credited**.
+
+### Invoice Immediately (`invoice`)
+
+The prorated price difference is charged or credited immediately when the subscription is upgraded or downgraded.
+
+### Next Invoice (`prorate`)
+
+The prorated price difference is charged or credited on the next invoice on updgrading or downgrading a subscription.
+
+## How to change the default proration setting using dashboard
+
+<Steps>
+  <Step title="Go to Organization Settings">
+    In the Polar dashboard sidebar, click on **Settings**.
+    You can also go directly to:\
+    `https://polar.sh/dashboard/${org_slug}/settings`\
+    Scroll down to **Subscriptions** section.
+
+    <img />
+  </Step>
+
+  <Step title="Choose the Proration type">
+    Choose the default proration behavior: **Invoice Immediately** or **Next invoice**.
+
+    <img />
+
+    The default proration setting is changed successfully.
+  </Step>
+</Steps>
+
+## How to change the default proration setting using the OAT API
+
+You can change the default proration behavior using the [Update Organization API](https://polar.sh/docs/api-reference/organizations/update).
+
+## How to prorate when updating subscription via API
+
+<Steps>
+  <Step title="Create an organization Token">
+    Create a new organization token by following our [Organization Access Tokens](https://polar.sh/docs/integrate/oat) guide.
+  </Step>
+
+  <Step title="Save your Access Token">
+    After creating your access token, you will be able to view it. Please copy and save your access token.
+
+    <img />
+  </Step>
+
+  <Step title="Copy the Subscription ID">
+    * In the Polar dashboard sidebar, navigate to **Sales** > **Subscriptions** for your organization.
+      You can also go directly to:\
+      `https://polar.sh/dashboard/${org_slug}/sales/subscriptions`
+
+    <img />
+
+    * Click on the Subscription you want to upgrade/downgrade and copy its **Subscription ID**.
+
+    <img />
+  </Step>
+
+  <Step title="Copy the Product ID">
+    * In the Polar dashboard sidebar, navigate to **Products** > **Catalogue** for your organization.
+      You can also go directly to:\
+      `https://polar.sh/dashboard/${org_slug}/products`
+
+    <img />
+
+    * Retrieve the Product ID for the item you wish to upgrade the subscription to by clicking on the **⋮ (More options) menu** next to chosen products and selecting **Copy Product ID**.
+
+    <img />
+  </Step>
+
+  <Step title="Call the Update Subscription API">
+    Call the **Update Subscription API** as follows.
+
+    Make sure to replace:
+
+    * **subscription\_id** with the ID of the subscription you want to update
+
+    * **product\_id** with the new product ID
+
+    * **type\_of\_proration** with the desired proration type:
+      * `invoice`: to charge/credit the prorated price difference immediately
+      * `prorate`: to charge/credit the prorated price difference on next invoice
+
+    <CodeGroup>
+      ```bash cURL theme={null}
+      curl --request PATCH \
+        --url https://api.polar.sh/v1/subscriptions/{<subscription_id>} \
+        --header 'Authorization: Bearer <YOUR_BEARER_TOKEN_HERE>' \
+        --header 'Content-Type: application/json' \
+        --data '{
+          "product_id": "<product_id>",
+          "proration_behavior": "type_of_proration"
+        }'
+      ```
+
+      ```py Python theme={null}
+      from polar_sdk import Polar
+
+      with Polar(
+          access_token="<YOUR_BEARER_TOKEN_HERE>",
+      ) as polar:
+
+          res = polar.subscriptions.update(id="<subscription_id>", subscription_update={
+              "product_id": "<product_id>",
+              "proration_behavior": "<type_of_proration>"
+          })
+
+          # Handle response
+          print(res)
+      ```
+    </CodeGroup>
+  </Step>
+</Steps>
+
+## Some examples for proration amount calculation
+
+You can create a subscription with two plan options, one for \$5 and other for \$20 by following [Create Product Variants](https://polar.sh/docs/guides/create-variants).
+
+### Case 1: Upgrading the subscription
+
+You can upgrade a subscription by following the steps outlined in [Subscription Upgrades](https://polar.sh/docs/guides/subscription-upgrades), which explains the process from both the merchant’s and the customer’s perspectives.
+
+**Example 1: Proration type = `invoice`**
+
+<img />
+
+Assuming that the month when the subscription was purchased has 30 days. In case of 31 days, instead of 30th + 1 day, it would be 31st + 1 day = 32nd day.
+
+**Example 2: Proration type = `prorate`**
+
+<img />
+
+Assuming that the month when the subscription was purchased has 30 days. In case of 31 days, instead of 30th + 1 day, it would be 31st + 1 day = 32nd day.
+
+<Note>
+  If the billing interval changes, i.e. daily to monthly or monthly to yearly or vice versa, the proration is always applied as invoice (even if set to prorate).
+</Note>
+
+### Case 2: Downgrading the subscription
+
+You can downgrade a subscription by following the steps outlined in [Subscription Downgrades](https://polar.sh/docs/guides/subscription-downgrades), which explains the process from both the merchant’s and the customer’s perspectives.
+
+**Example 1: Proration type = `invoice`**
+
+<img />
+
+Assuming that the month when the subscription was purchased has 30 days. In case of 31 days, instead of 30th + 1 day, it would be 31st + 1 day = 32nd day.
+
+**Example 2: Proration type = `prorate`**
+
+<img />
+
+Assuming that the month when the subscription was purchased has 30 days. In case of 31 days, instead of 30th + 1 day, it would be 31st + 1 day = 32nd day.
+
+<Note>
+  If the billing interval changes, i.e. daily to monthly or monthly to yearly or vice versa, the proration is always applied as invoice (even if set to prorate).
+</Note>
+
+
+# How to schedule subscription downgrades with Upstash QStash
+Source: https://polar.sh/docs/guides/schedule-subscription-downgrades-qstash
+
+Learn how to automatically schedule subscription downgrades at the end of the current billing period using the Polar API and Upstash QStash.
+
+## Overview
+
+When managing subscriptions, you may want to schedule downgrades to take effect at the end of the current billing period rather than immediately. This ensures customers receive the full value of their current subscription while automatically transitioning to another tier when their billing period ends.
+
+## Prerequisites
+
+* A [Polar API access token](/integrate/authentication)
+* An [Upstash QStash](https://upstash.com/qstash) account
+* A server endpoint that can receive HTTP requests
+  * [Node.js](https://nodejs.org/en/blog/announcements/v20-release-announce) or your preferred backend language installed
+
+## Step 1: Set Up Environment Variables
+
+Store your API credentials securely in environment variables.
+
+```bash Terminal theme={null}
+# Polar API credentials
+POLAR_MODE="sandbox" # can be "production"
+POLAR_ACCESS_TOKEN="polar_pat_..."
+
+# Upstash QStash credentials
+QSTASH_URL="https://qstash.upstash.io"
+QSTASH_TOKEN="ey...="
+QSTASH_CURRENT_SIGNING_KEY="sig_..."
+QSTASH_NEXT_SIGNING_KEY="sig_..."
+
+# Your application URL
+APP_URL="https://localhost:3000"
+```
+
+<Info>
+  You can find your QStash token in the [Upstash Console](https://console.upstash.com/qstash) under the **QStash** section.
+</Info>
+
+## Step 2: Schedule the Downgrade with QStash
+
+Use Upstash QStash to schedule an HTTP request to your downgrade endpoint at the end of the billing period.
+
+Here's a complete Next.js API route that schedules a downgrade:
+
+```tsx title="app/api/schedule-downgrade/route.ts" theme={null}
+import { Polar } from "@polar-sh/sdk";
+import { Client } from "@upstash/qstash";
+import { NextRequest, NextResponse } from "next/server";
+
+const polar = new Polar({
+  server: process.env.POLAR_MODE,
+  accessToken: process.env.POLAR_ACCESS_TOKEN,
+});
+
+const qstash = new Client({
+  token: process.env.QSTASH_TOKEN,
+});
+
+export async function POST(req: NextRequest) {
+  try {
+    const { subscriptionId, newProductId } = await req.json();
+
+    // Step 1: Fetch current subscription details
+    const subscription = await polar.subscriptions.get({
+      id: subscriptionId,
+    });
+
+    if (!subscription.currentPeriodEnd) {
+      return NextResponse.json(
+        { error: "Subscription has no current period end date" },
+        { status: 400 }
+      );
+    }
+
+    // Step 2: Calculate when to execute the downgrade
+    const executeAt = new Date(subscription.currentPeriodEnd);
+
+    // Step 3: Schedule the downgrade with QStash
+    const result = await qstash.publishJSON({
+      retries: 1,
+      body: {
+        subscriptionId,
+        newProductId,
+        customerId: subscription.customerId,
+      },
+      url: `${process.env.APP_URL}/api/execute-downgrade`,
+      delay: Math.floor((executeAt.getTime() - (new Date()).getTime()) / 1000),
+    });
+
+    // Step 4: Optionally store the scheduled task
+    // You might want to store this in your database
+    console.log(`Scheduled downgrade for subscription ${subscriptionId}`);
+    console.log(`Will execute at: ${executeAt.toISOString()}`);
+    console.log(`QStash message ID: ${result.messageId}`);
+
+    return NextResponse.json({
+      success: true,
+      messageId: result.messageId,
+      scheduledFor: executeAt.toISOString(),
+    });
+  } catch (error) {
+    console.error("Failed to schedule downgrade:", error);
+    return NextResponse.json(
+      { error: "Failed to schedule downgrade" },
+      { status: 500 }
+    );
+  }
+}
+```
+
+<Tip>
+  Store the QStash `messageId` in your database along with the subscription ID. This allows you to track or cancel scheduled downgrades if needed.
+</Tip>
+
+## Step 3: Create the Downgrade Execution Endpoint
+
+Create an endpoint that QStash will call at the scheduled time to execute the downgrade.
+
+Here's a completed Next.js API route for downgrade:
+
+```tsx title="app/api/execute-downgrade/route.ts" theme={null}
+import { Polar } from "@polar-sh/sdk";
+import { NextRequest, NextResponse } from "next/server";
+import { verifySignatureAppRouter } from "@upstash/qstash/nextjs";
+import { SubscriptionProrationBehavior } from "@polar-sh/sdk/models/components/subscriptionprorationbehavior.js";
+
+const polar = new Polar({
+  server: process.env.POLAR_MODE,
+  accessToken: process.env.POLAR_ACCESS_TOKEN,
+});
+
+async function handler(req: NextRequest) {
+  try {
+    const { subscriptionId, newProductId, customerId } = await req.json();
+
+    console.log(`Executing downgrade for subscription ${subscriptionId}`);
+
+    // Fetch the subscription to verify it's still active
+    const subscription = await polar.subscriptions.get({
+      id: subscriptionId,
+    });
+
+    // Verify subscription is still active
+    if (subscription.status !== "active" && subscription.status !== "trialing") {
+      console.log(`Subscription ${subscriptionId} is not active, skipping downgrade`);
+      return NextResponse.json({
+        success: false,
+        reason: "Subscription is not active",
+      });
+    }
+
+    // Check if already on the target product
+    if (subscription.productId === newProductId) {
+      console.log(`Subscription already on product ${newProductId}`);
+      return NextResponse.json({
+        success: true,
+        reason: "Already on target product",
+      });
+    }
+
+    // Execute the downgrade
+    const updatedSubscription = await polar.subscriptions.update({
+      id: subscriptionId,
+      subscriptionUpdate: {
+        productId: newProductId,
+        prorationBehavior: SubscriptionProrationBehavior.Invoice,
+      },
+    });
+
+    console.log(`Successfully downgraded subscription ${subscriptionId}`);
+    console.log(`New product: ${updatedSubscription.product.name}`);
+
+    return NextResponse.json({
+      success: true,
+      subscription: updatedSubscription,
+    });
+  } catch (error) {
+    console.error("Failed to execute downgrade:", error);
+    
+    // Return 200 to prevent QStash retries for certain errors
+    if (error instanceof Error && error.message.includes("not found")) {
+      return NextResponse.json(
+        { success: false, error: "Subscription not found" },
+        { status: 200 }
+      );
+    }
+
+    // Let QStash retry for other errors
+    return NextResponse.json(
+      { error: "Failed to execute downgrade" },
+      { status: 500 }
+    );
+  }
+}
+
+// Verify QStash signature to ensure requests come from QStash
+export const POST = verifySignatureAppRouter(handler);
+```
+
+<Warning>
+  **Security**: Always verify QStash signatures to ensure requests are coming from QStash and not malicious actors. The `verifySignatureAppRouter` function handles this automatically.
+</Warning>
+
+## Step 4: Test Your Integration
+
+Test the complete flow to ensure downgrades are scheduled and executed correctly.
+
+<Steps>
+  <Step title="Test in Sandbox Environment">
+    Use Polar's [sandbox environment](/integrate/sandbox) to test without affecting production data.
+
+    ```tsx theme={null}
+    const polar = new Polar({
+      // Use sandbox for testing
+      server: process.env.POLAR_MODE,
+      accessToken: process.env.POLAR_ACCESS_TOKEN,
+    });
+    ```
+  </Step>
+
+  <Step title="Schedule a Test Downgrade">
+    Create a test subscription and schedule a downgrade for a few minutes in the future.
+
+    ```tsx theme={null}
+    // Schedule downgrade 5 minutes from now for testing
+    const executeAt = new Date(Date.now() + 5 * 60 * 1000);
+
+    const result = await fetch("/api/schedule-downgrade", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        subscriptionId: "sub_test_xxxxx",
+        newProductId: "prod_basic_xxxxx",
+      }),
+    });
+    ```
+  </Step>
+
+  <Step title="Monitor QStash Logs">
+    Check the [Upstash Console](https://console.upstash.com/qstash) to see scheduled messages and their status.
+  </Step>
+
+  <Step title="Verify the Downgrade">
+    After the scheduled time, verify the subscription was downgraded:
+
+    ```tsx theme={null}
+    const subscription = await polar.subscriptions.get({
+      id: "sub_test_xxxxx",
+    });
+
+    console.log("Current product:", subscription.product.name);
+    ```
+  </Step>
+</Steps>
 
 
 # Implementing Seat-Based Pricing
@@ -7155,7 +8343,7 @@ You can also create seat-based products via API:
 
 **Subscription example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 const subscriptionProduct = await polar.products.create({
   name: "Team Pro Plan",
   organization_id: "org_123",
@@ -7176,7 +8364,7 @@ const subscriptionProduct = await polar.products.create({
 
 **One-time purchase example:**
 
-```typescript  theme={null}
+```typescript theme={null}
 const oneTimeProduct = await polar.products.create({
   name: "Enterprise License Pack",
   organization_id: "org_123",
@@ -7198,11 +8386,11 @@ const oneTimeProduct = await polar.products.create({
 
 Create a checkout session that allows customers to select seat quantity:
 
-```typescript  theme={null}
+```typescript theme={null}
 const checkout = await polar.checkouts.create({
   product_price_id: "price_123",
   seats: 5, // Customer selects quantity
-  success_url: "https://yourapp.com/success",
+  success_url: "https://your-app.com/success",
   customer_email: "billing@company.com"
 });
 
@@ -7223,7 +8411,7 @@ The checkout displays:
 
 Listen for purchase webhooks to know when a customer buys seats:
 
-```typescript  theme={null}
+```typescript theme={null}
 // Webhook handler
 app.post('/webhooks/polar', async (req, res) => {
   const event = req.body;
@@ -7260,7 +8448,7 @@ app.post('/webhooks/polar', async (req, res) => {
 
 Create an interface for billing managers to assign seats:
 
-```typescript  theme={null}
+```typescript theme={null}
 // List available seats (works for both subscriptions and orders)
 async function getSeatInfo(params: { subscription_id?: string; order_id?: string }) {
   const { seats, available_seats, total_seats } =
@@ -7310,7 +8498,7 @@ async function assignSeat(
 
 Example UI component (React):
 
-```tsx  theme={null}
+```tsx theme={null}
 function SeatManagement({ subscriptionId }: { subscriptionId: string }) {
   const [seatInfo, setSeatInfo] = useState(null);
   const [email, setEmail] = useState("");
@@ -7400,7 +8588,7 @@ function SeatManagement({ subscriptionId }: { subscriptionId: string }) {
 
 When a team member receives an invitation email, they'll click a link with the invitation token. Build a claim page:
 
-```typescript  theme={null}
+```typescript theme={null}
 // Claim page route: /claim?token=abc123...
 
 async function handleClaimPage(token: string) {
@@ -7442,7 +8630,7 @@ async function claimSeat(token: string) {
 
 Example claim page (React):
 
-```tsx  theme={null}
+```tsx theme={null}
 function ClaimPage() {
   const [token] = useSearchParams();
   const [claimInfo, setClaimInfo] = useState(null);
@@ -7494,7 +8682,7 @@ function ClaimPage() {
 
 After a seat is claimed, benefits are granted automatically via background jobs. Listen for webhooks to track this:
 
-```typescript  theme={null}
+```typescript theme={null}
 app.post('/webhooks/polar', async (req, res) => {
   const event = req.body;
 
@@ -7523,7 +8711,7 @@ app.post('/webhooks/polar', async (req, res) => {
 
 Allow billing managers to revoke seats:
 
-```typescript  theme={null}
+```typescript theme={null}
 async function revokeSeat(seatId: string) {
   const revokedSeat = await polar.customerSeats.revoke({
     seat_id: seatId
@@ -7546,7 +8734,7 @@ async function revokeSeat(seatId: string) {
 
 **For subscriptions**, allow billing managers to add or reduce seats:
 
-```typescript  theme={null}
+```typescript theme={null}
 async function addSeats(subscriptionId: string, newTotal: number) {
   // Update subscription seat count
   const subscription = await polar.subscriptions.update({
@@ -7583,13 +8771,13 @@ async function reduceSeats(subscriptionId: string, newTotal: number) {
 
 **For one-time purchases**, customers buy additional seats via new orders:
 
-```typescript  theme={null}
+```typescript theme={null}
 async function purchaseMoreSeats(productId: string, additionalSeats: number) {
   // Create a new checkout for additional seats
   const checkout = await polar.checkouts.create({
     product_id: productId,
     seats: additionalSeats,
-    success_url: "https://yourapp.com/success"
+    success_url: "https://your-app.com/success"
   });
 
   // Each order is independent with its own seat pool
@@ -7607,7 +8795,7 @@ async function purchaseMoreSeats(productId: string, additionalSeats: number) {
 
 Always check available seats before showing the assignment form:
 
-```typescript  theme={null}
+```typescript theme={null}
 if (available_seats === 0) {
   return (
     <div>
@@ -7624,7 +8812,7 @@ if (available_seats === 0) {
 
 Store useful context in seat metadata:
 
-```typescript  theme={null}
+```typescript theme={null}
 await polar.customerSeats.assign({
   subscription_id: subId,
   email: "dev@company.com",
@@ -7639,7 +8827,7 @@ await polar.customerSeats.assign({
 
 ### 3. Handle expired tokens gracefully
 
-```typescript  theme={null}
+```typescript theme={null}
 try {
   await claimSeat(token);
 } catch (error) {
@@ -7654,7 +8842,7 @@ try {
 
 Monitor seat usage to identify upsell opportunities:
 
-```typescript  theme={null}
+```typescript theme={null}
 const { seats, available_seats, total_seats } = await getSeatInfo(subId);
 const utilization = ((total_seats - available_seats) / total_seats) * 100;
 
@@ -7678,7 +8866,7 @@ Make it clear to billing managers that:
 
 ### Bulk seat assignment
 
-```typescript  theme={null}
+```typescript theme={null}
 async function assignMultipleSeats(
   subscriptionId: string,
   emails: string[]
@@ -7705,7 +8893,7 @@ async function assignMultipleSeats(
 
 ### Syncing with your user system
 
-```typescript  theme={null}
+```typescript theme={null}
 // When a user joins your system
 async function onUserSignup(email: string, organizationId: string) {
   // Check if they have a pending seat
@@ -7731,7 +8919,7 @@ async function onUserSignup(email: string, organizationId: string) {
 
 ### Custom portal integration
 
-```typescript  theme={null}
+```typescript theme={null}
 // Display team subscriptions in your app
 async function getTeamSubscriptions(customerId: string) {
   const subs = await polar.customerPortal.seats.listSubscriptions({
@@ -7769,7 +8957,7 @@ Make sure to revoke seats before reducing the subscription seat count. You canno
 
 Invitation tokens expire after 24 hours. Have the billing manager resend the invitation:
 
-```typescript  theme={null}
+```typescript theme={null}
 await polar.customerSeats.resend({ seat_id: seatId });
 ```
 
@@ -7779,10 +8967,6 @@ await polar.customerSeats.resend({ seat_id: seatId });
 * Explore the [Customer Seats API Reference](/api-reference/customer-seats/assign)
 * Set up [webhook handlers](/integrate/webhooks/endpoints) for real-time updates
 * Learn about [Customer Portal customization](/features/customer-portal)
-
-## Need Help?
-
-Join our [Discord community](https://polar.sh/discord) or contact support for assistance with seat-based pricing implementation.
 
 
 # How to perform subscription downgrades
@@ -7798,13 +8982,13 @@ Learn how to downgrade a subscription as a merchant or a customer.
     You can also go directly to:\
     `https://polar.sh/dashboard/${org_slug}/sales/subscriptions`
 
-    <img height="200" src="https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/subscription-page.png?fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=7eb81fed176683efe283ff229ccd8503" data-og-width="1751" data-og-height="888" data-path="assets/guides/downgrades/subscription-page.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/subscription-page.png?w=280&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=6392a181b621f176c1c85097f94e0b4d 280w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/subscription-page.png?w=560&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=274d4e85961a05b79304bd6c07dec9cf 560w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/subscription-page.png?w=840&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=efcc15793306bc4528781fa8e9fb5369 840w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/subscription-page.png?w=1100&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=38cdcd13e979e7227e51f23bfae2f17f 1100w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/subscription-page.png?w=1650&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=f4f4544eb204a9adce86453326353765 1650w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/subscription-page.png?w=2500&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=8ea03006c0707678cc3ce2c52e7cee35 2500w" />
+    <img />
   </Step>
 
   <Step title="Select the subscription to be downgraded">
     Click on the subscription you want to downgrade. The subscription details page opens up as shown below. Click on **Update Subscription**.
 
-    <img height="200" src="https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/open-subscription.png?fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=c034f5e337e6db8299aee306d3f19f42" data-og-width="1758" data-og-height="886" data-path="assets/guides/downgrades/open-subscription.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/open-subscription.png?w=280&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=4ca3f14c32cc812acaa8304472921be8 280w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/open-subscription.png?w=560&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=8e9285fcf44e305728e8ee9d3c02a980 560w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/open-subscription.png?w=840&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=99525671e8b372ce08d0f4a15c1a23d3 840w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/open-subscription.png?w=1100&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=797202eeb235c60fb66fb38f76385315 1100w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/open-subscription.png?w=1650&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=68779650eeea6b659a637489eda77e6a 1650w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/open-subscription.png?w=2500&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=91be4b15096b4abc80b460d032703192 2500w" />
+    <img />
   </Step>
 
   <Step title="Choose the plan and the proration behavior">
@@ -7821,13 +9005,13 @@ Learn how to downgrade a subscription as a merchant or a customer.
 
     Then, click on **Update Subscription**.
 
-    <img height="200" src="https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/downgrade-subscription.png?fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=6a474d763ef0edcd2f0503e76569b7f5" data-og-width="1751" data-og-height="888" data-path="assets/guides/downgrades/downgrade-subscription.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/downgrade-subscription.png?w=280&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=3a4253ec16977fc47cd57b478bbf152a 280w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/downgrade-subscription.png?w=560&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=c355638849e663e44be7594c65130475 560w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/downgrade-subscription.png?w=840&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=eadbe17ad279f1c4dbefcb43d4fff9da 840w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/downgrade-subscription.png?w=1100&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=e0f87f159dd2e0a0e01b818270046929 1100w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/downgrade-subscription.png?w=1650&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=0982710c9c3a4b925e5902a00f825b11 1650w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/downgrade-subscription.png?w=2500&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=7ae33469816d79f32f207d9a49c4975b 2500w" />
+    <img />
   </Step>
 
   <Step title="Successful downgrade!">
     The subscription is successfully downgraded to **Basic version**.
 
-    <img height="200" src="https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/downgraded-successfully.png?fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=b57209d76570479c6bdf2936708c4485" data-og-width="1751" data-og-height="888" data-path="assets/guides/downgrades/downgraded-successfully.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/downgraded-successfully.png?w=280&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=3e161cc0b31a357c65be8f2f11d8d05e 280w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/downgraded-successfully.png?w=560&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=4a7d1debbbb9d0cd43eaf403f164cd09 560w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/downgraded-successfully.png?w=840&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=51e4edb12c0d1a1f35a554e39c0e808c 840w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/downgraded-successfully.png?w=1100&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=b1d2dbcc1674d80a0de4f66942de9127 1100w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/downgraded-successfully.png?w=1650&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=a14a0930e3529656d3ad252ec30d811a 1650w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/downgraded-successfully.png?w=2500&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=1f2f33dd53eef86ac298f89645e5ad52 2500w" />
+    <img />
   </Step>
 </Steps>
 
@@ -7841,25 +9025,25 @@ Learn how to downgrade a subscription as a merchant or a customer.
   <Step title="Open email and click the purchase link">
     Open the email you received after purchasing the subscription. Click the **Access my Purchase** link to go to the Customer Portal, where you can downgrade your subscription.
 
-    <img height="10" src="https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/customer-mail-2.png?fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=c9d8f725498c1b3746efec167a7d63db" data-og-width="971" data-og-height="781" data-path="assets/guides/downgrades/customer-mail-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/customer-mail-2.png?w=280&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=d4092347cf6f930dd4e77a8a5218d537 280w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/customer-mail-2.png?w=560&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=e3a0a6e511cfabd73a8a8079be03ff2e 560w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/customer-mail-2.png?w=840&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=3c4473949a1864d88ddd16a096292169 840w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/customer-mail-2.png?w=1100&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=ef36fb6f6edc00d0d5e02320d9f442f9 1100w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/customer-mail-2.png?w=1650&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=8400a225bec2dc5931e78777a662bc8c 1650w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/customer-mail-2.png?w=2500&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=a62d053aab0001540f45142f7d00f44b 2500w" />
+    <img />
   </Step>
 
   <Step title="Browse Overview > Subscriptions in Customer Portal">
     In the Overview tab of Customer Portal, scroll to **Subscriptions** and click on **Change Plan**.
 
-    <img height="200" src="https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/customer-portal-1.png?fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=13acf9cdcc4f8943429e4f5ddfdbe038" data-og-width="1482" data-og-height="787" data-path="assets/guides/downgrades/customer-portal-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/customer-portal-1.png?w=280&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=732047a094c3a5dbfa4e2d7c7f9e48f1 280w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/customer-portal-1.png?w=560&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=89bc7a352c5886777aac4c10f6a97cdb 560w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/customer-portal-1.png?w=840&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=94971b445bc87dae1b51292feaebb08b 840w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/customer-portal-1.png?w=1100&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=004b4a2ee235d7ebfa88af90749cb852 1100w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/customer-portal-1.png?w=1650&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=7eedab4a97cf4db3f558e0617eaaa0c3 1650w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/customer-portal-1.png?w=2500&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=904dce0f33cef6f7997c213f0a58b4a2 2500w" />
+    <img />
   </Step>
 
   <Step title="Select the desired plan">
     Select the plan you want to downgrade to and click on **Change Plan**.
 
-    <img height="200" src="https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/customer-portal-3.png?fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=0a0bcf75f8d7f0382fe856e51a3f0cc9" data-og-width="1645" data-og-height="865" data-path="assets/guides/downgrades/customer-portal-3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/customer-portal-3.png?w=280&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=9512758c7eadde40434bd482741144cb 280w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/customer-portal-3.png?w=560&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=880f0b9575aea3a54101ebf9e80513ac 560w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/customer-portal-3.png?w=840&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=d3fafa6ca7414d7d0e3959b0af05a6f6 840w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/customer-portal-3.png?w=1100&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=f1bd3e6bb97905cd24f682d8471220b8 1100w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/customer-portal-3.png?w=1650&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=67cb3c58ba44bcc19c2f021d9b6b390d 1650w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/customer-portal-3.png?w=2500&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=26aa3916b592ca347ce7812fb82ccb9b 2500w" />
+    <img />
   </Step>
 
   <Step title="Successful downgrade!">
     The subscription is successfully downgraded to **Basic version**.
 
-    <img height="200" src="https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/customer-portal-4.png?fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=f173ca27018320bd58009364735e08ff" data-og-width="1645" data-og-height="865" data-path="assets/guides/downgrades/customer-portal-4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/customer-portal-4.png?w=280&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=c3667bb51815312ca03a2ff076ea52a1 280w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/customer-portal-4.png?w=560&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=d5eed1d527c5c8b1a96e2985547b4c4f 560w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/customer-portal-4.png?w=840&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=8f8da3f2b05bbccf7bd7312c44a87284 840w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/customer-portal-4.png?w=1100&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=33dff3baf44d3c540afaddc64a9240b2 1100w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/customer-portal-4.png?w=1650&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=08d0a8264fe9b3bd5e583df8ea87ccf1 1650w, https://mintcdn.com/polar/K0t73w4I_XlJF033/assets/guides/downgrades/customer-portal-4.png?w=2500&fit=max&auto=format&n=K0t73w4I_XlJF033&q=85&s=8f6dc78f6fa429520f6cf1f90d1a13e1 2500w" />
+    <img />
   </Step>
 </Steps>
 
@@ -7877,13 +9061,13 @@ Learn how to upgrade a subscription as a merchant or a customer.
     You can also go directly to:\
     `https://polar.sh/dashboard/${org_slug}/sales/subscriptions`
 
-    <img height="200" src="https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/subscription-page.png?fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=ea1aee972b31067bb4cde286ec391cd8" data-og-width="1751" data-og-height="888" data-path="assets/guides/upgrades/subscription-page.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/subscription-page.png?w=280&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=234174f11edb7147e9f3c4f835581390 280w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/subscription-page.png?w=560&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=28457e36bc6ddbdc6c039adb1ba4f860 560w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/subscription-page.png?w=840&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=c5d988075e45c74cb055649a9af43fdd 840w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/subscription-page.png?w=1100&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=d4533171b96f505154e3f704e4334607 1100w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/subscription-page.png?w=1650&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=9d3295d25dea7ed8bed807e28370fcd3 1650w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/subscription-page.png?w=2500&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=96c1877fa76372bf2ee0c907b3fff255 2500w" />
+    <img />
   </Step>
 
   <Step title="Select the subscription to be upgraded">
     Click on the subscription you want to upgrade. The subscription details page opens up as shown below. Click on **Update Subscription**.
 
-    <img height="200" src="https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/open-subscription.png?fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=c6518cf9be3cf6ad1569c36df4ef8a1b" data-og-width="1758" data-og-height="886" data-path="assets/guides/upgrades/open-subscription.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/open-subscription.png?w=280&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=dd8dafcf221d701f0e7c214397e61901 280w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/open-subscription.png?w=560&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=8f9d0cceaaf3c732316ab2999ead696e 560w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/open-subscription.png?w=840&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=f07755f9ab9251fd31e8f55080e06078 840w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/open-subscription.png?w=1100&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=da052eba36e3eebaa86836b746919070 1100w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/open-subscription.png?w=1650&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=8fa8abd3f7bb2c1fdc58f6e34e060c56 1650w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/open-subscription.png?w=2500&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=bcec6fa38c88d8e629d72cdb0c10357b 2500w" />
+    <img />
   </Step>
 
   <Step title="Choose the plan and the proration behavior">
@@ -7900,13 +9084,13 @@ Learn how to upgrade a subscription as a merchant or a customer.
 
     Then, click on **Update Subscription**.
 
-    <img height="200" src="https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/upgrade-subscription.png?fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=02c3b87e08f90b53f98c3dfa783fa8e5" data-og-width="1751" data-og-height="888" data-path="assets/guides/upgrades/upgrade-subscription.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/upgrade-subscription.png?w=280&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=c65b1b1df6880d956f690d8550450908 280w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/upgrade-subscription.png?w=560&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=020b6c06b855e0f3ef5a5baf26ddf1ac 560w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/upgrade-subscription.png?w=840&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=bb7aba0dcd1c0df8f4aceed6080c39a8 840w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/upgrade-subscription.png?w=1100&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=1d3c6dee73fb17ced53dc2c4b9d4ef40 1100w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/upgrade-subscription.png?w=1650&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=bdefa54ad6b42192d5fcf72c9bb2d1a7 1650w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/upgrade-subscription.png?w=2500&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=630ba57705c82da40ab6fd2d1945eca1 2500w" />
+    <img />
   </Step>
 
   <Step title="Successful upgrade!">
     The subscription is successfully upgraded to **Advanced version**.
 
-    <img height="200" src="https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/upgraded-successfully.png?fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=2d38c138df2d9842c1a9f427e564f396" data-og-width="1751" data-og-height="888" data-path="assets/guides/upgrades/upgraded-successfully.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/upgraded-successfully.png?w=280&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=c8b812f7b226f928172d437a25d0492a 280w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/upgraded-successfully.png?w=560&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=f1885cc7b5ef0e0bc1c4f10276a69d71 560w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/upgraded-successfully.png?w=840&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=dbccdb1d3af8bb27e307a36450ebe9be 840w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/upgraded-successfully.png?w=1100&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=32a90e42323ab1f3af635237f7d3053e 1100w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/upgraded-successfully.png?w=1650&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=a831cde6e354a9aa94251c1c9c57b996 1650w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/upgraded-successfully.png?w=2500&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=287ab28283cea6842fd2dbf69f4c6910 2500w" />
+    <img />
   </Step>
 </Steps>
 
@@ -7920,25 +9104,25 @@ Learn how to upgrade a subscription as a merchant or a customer.
   <Step title="Open email and click the purchase link">
     Open the email you received after purchasing the subscription. Click the **Access my Purchase** link to go to the Customer Portal, where you can upgrade your subscription.
 
-    <img height="10" src="https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/customer-mail-2.png?fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=17aef0f6dd4b72e5fc265ea5b6ca4666" data-og-width="971" data-og-height="781" data-path="assets/guides/upgrades/customer-mail-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/customer-mail-2.png?w=280&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=d6b0970d3faad197affad840dc51604c 280w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/customer-mail-2.png?w=560&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=eda1880e9947de05554c60a92431acdf 560w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/customer-mail-2.png?w=840&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=aa595de9c96853629ffa952f32246ad9 840w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/customer-mail-2.png?w=1100&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=3f8db329d92c4375a469132809be1e0e 1100w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/customer-mail-2.png?w=1650&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=14c04af129610d17266bda6c21d3efa1 1650w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/customer-mail-2.png?w=2500&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=5474d8f5890e38d604743992f465c261 2500w" />
+    <img />
   </Step>
 
   <Step title="Browse Overview > Subscriptions in Customer Portal">
     In the Overview tab of Customer Portal, scroll to **Subscriptions** and click on **Change Plan**.
 
-    <img height="200" src="https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/customer-portal-1.png?fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=b80a30e0e60d0aa0414f25f45b4e2a24" data-og-width="1482" data-og-height="787" data-path="assets/guides/upgrades/customer-portal-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/customer-portal-1.png?w=280&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=8ae1cc333ed00eaffea3f94631e049bc 280w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/customer-portal-1.png?w=560&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=7275a1eb873a800daf598ac062efddd6 560w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/customer-portal-1.png?w=840&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=fc1841e5a893b2cdcea52865dfeedc85 840w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/customer-portal-1.png?w=1100&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=3b0a8165e0c6d696c235ef085114e196 1100w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/customer-portal-1.png?w=1650&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=9349f18a0eccfa0e6e4b1e50f48b8f0a 1650w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/customer-portal-1.png?w=2500&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=37ba976592db8d8bb36d38030485db0c 2500w" />
+    <img />
   </Step>
 
   <Step title="Select the desired plan">
     Select the plan you want to upgrade to and click on **Change Plan**.
 
-    <img height="200" src="https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/customer-portal-5.png?fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=42569be1e0827b9a2d02a3994369e997" data-og-width="1645" data-og-height="865" data-path="assets/guides/upgrades/customer-portal-5.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/customer-portal-5.png?w=280&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=259e30c83f4bb50ded6f55e7a5d6c025 280w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/customer-portal-5.png?w=560&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=1e146844b4ec7a8e4ffa776b3e035d6c 560w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/customer-portal-5.png?w=840&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=ad14de143803109e096ccaa629d5afa3 840w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/customer-portal-5.png?w=1100&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=39f832193492b3bd169b9904fe02be94 1100w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/customer-portal-5.png?w=1650&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=28fbf0db17cef7738783428595794414 1650w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/customer-portal-5.png?w=2500&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=9829b13a1c7db4146af9163ab0b82385 2500w" />
+    <img />
   </Step>
 
   <Step title="Successful upgrade!">
     The subscription is successfully upgraded to **Advanced version**.
 
-    <img height="200" src="https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/customer-portal-6.png?fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=b0ffcca6a2e4a881ef0d406c42fc664f" data-og-width="1645" data-og-height="865" data-path="assets/guides/upgrades/customer-portal-6.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/customer-portal-6.png?w=280&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=6d0d0f0c11c8338fb0a25853ff31cb1d 280w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/customer-portal-6.png?w=560&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=808c94c75182e3cba4d30f6e656c99b1 560w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/customer-portal-6.png?w=840&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=2241c317b23034ed0c9d717aa7f21084 840w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/customer-portal-6.png?w=1100&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=85b6c74a8a7cf61e386746d87ac7b194 1100w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/customer-portal-6.png?w=1650&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=2cfd01d64afa3e6710156a712fa3bca5 1650w, https://mintcdn.com/polar/2bXdXuawAwyvxCIS/assets/guides/upgrades/customer-portal-6.png?w=2500&fit=max&auto=format&n=2bXdXuawAwyvxCIS&q=85&s=e67095fe165f59a8d8ce019c62c74394 2500w" />
+    <img />
   </Step>
 </Steps>
 
@@ -7964,7 +9148,7 @@ Learn how to switch the theme in a checkout session and a checkout link.
 
     The checkout session then looks like below:
 
-    <img height="200" src="https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/dark-theme.png?fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=733b69a76981dca8476348cdca31857f" data-og-width="1725" data-og-height="890" data-path="assets/guides/theme-switch-in-checkout/dark-theme.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/dark-theme.png?w=280&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=22ec47b5d61ebef7acc71387e70041dd 280w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/dark-theme.png?w=560&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=c43f6b59ac8f6a0757410b737664f61e 560w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/dark-theme.png?w=840&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=6652bc9ba77c9d7e8059de845c7ba306 840w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/dark-theme.png?w=1100&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=e9ffb7787359ae6ebc0a4711bc5eaa31 1100w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/dark-theme.png?w=1650&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=8941f85d0f81ae69530bd294f1093129 1650w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/dark-theme.png?w=2500&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=d7ad7867098e65f0395a098e567ff54e 2500w" />
+    <img />
   </Step>
 
   <Step title="Switch to light theme">
@@ -7975,7 +9159,7 @@ Learn how to switch the theme in a checkout session and a checkout link.
 
     The checkout session then looks like below:
 
-    <img height="200" src="https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/light-theme.png?fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=928ed962755384be0e82a0535fd43125" data-og-width="1725" data-og-height="890" data-path="assets/guides/theme-switch-in-checkout/light-theme.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/light-theme.png?w=280&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=85f038e03b2bef53adb07f05222ecc7a 280w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/light-theme.png?w=560&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=cb227f4e7b4f8dbc62d295c26f5a9118 560w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/light-theme.png?w=840&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=b3b4498668d098d42c54498546a63449 840w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/light-theme.png?w=1100&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=fffeae63e47f016b60deb1e0538cd0e9 1100w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/light-theme.png?w=1650&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=3a3e15d4d8facc5a0063e6049e2e1861 1650w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/light-theme.png?w=2500&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=54e41a74a71158de80e64f40fd2e6a54 2500w" />
+    <img />
   </Step>
 </Steps>
 
@@ -7997,7 +9181,7 @@ Learn how to switch the theme in a checkout session and a checkout link.
 
     The checkout session then looks like below:
 
-    <img height="200" src="https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/dark-theme.png?fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=733b69a76981dca8476348cdca31857f" data-og-width="1725" data-og-height="890" data-path="assets/guides/theme-switch-in-checkout/dark-theme.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/dark-theme.png?w=280&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=22ec47b5d61ebef7acc71387e70041dd 280w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/dark-theme.png?w=560&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=c43f6b59ac8f6a0757410b737664f61e 560w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/dark-theme.png?w=840&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=6652bc9ba77c9d7e8059de845c7ba306 840w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/dark-theme.png?w=1100&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=e9ffb7787359ae6ebc0a4711bc5eaa31 1100w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/dark-theme.png?w=1650&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=8941f85d0f81ae69530bd294f1093129 1650w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/dark-theme.png?w=2500&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=d7ad7867098e65f0395a098e567ff54e 2500w" />
+    <img />
   </Step>
 
   <Step title="Switch to light theme">
@@ -8008,7 +9192,7 @@ Learn how to switch the theme in a checkout session and a checkout link.
 
     The checkout session then looks like below:
 
-    <img height="200" src="https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/light-theme.png?fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=928ed962755384be0e82a0535fd43125" data-og-width="1725" data-og-height="890" data-path="assets/guides/theme-switch-in-checkout/light-theme.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/light-theme.png?w=280&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=85f038e03b2bef53adb07f05222ecc7a 280w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/light-theme.png?w=560&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=cb227f4e7b4f8dbc62d295c26f5a9118 560w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/light-theme.png?w=840&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=b3b4498668d098d42c54498546a63449 840w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/light-theme.png?w=1100&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=fffeae63e47f016b60deb1e0538cd0e9 1100w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/light-theme.png?w=1650&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=3a3e15d4d8facc5a0063e6049e2e1861 1650w, https://mintcdn.com/polar/C5Fvr5TyCIop5r-p/assets/guides/theme-switch-in-checkout/light-theme.png?w=2500&fit=max&auto=format&n=C5Fvr5TyCIop5r-p&q=85&s=54e41a74a71158de80e64f40fd2e6a54 2500w" />
+    <img />
   </Step>
 </Steps>
 
@@ -8062,11 +9246,11 @@ The customer state object contains:
 
 Thus, with that single object, you have all the required information to check if you should provision access to your service or not.
 
-<Card title="Get Customer State by External ID" icon="ring" iconType="duotone" href="/api-reference/customers/state-external" horizontal>
+<Card title="Get Customer State by External ID" icon="ring" href="/api-reference/customers/state-external">
   One endpoint to rule them all, using your own customer ID.
 </Card>
 
-<Card title="Get Customer State " icon="ring" iconType="duotone" href="/api-reference/customers/state" horizontal>
+<Card title="Get Customer State " icon="ring" href="/api-reference/customers/state">
   The same one, but with internal Polar customer ID.
 </Card>
 
@@ -8080,7 +9264,7 @@ To be notified of the customer state changes, you can listen to the `customer.st
 
 By subscribing to this webhook event, you keep your system up-to-date and update your customer's access accordingly.
 
-<Card title="customer.state_changed" icon="ring" iconType="duotone" href="/api-reference/webhooks/customer.state_changed" horizontal>
+<Card title="customer.state_changed" icon="ring" href="/api-reference/webhooks/customer.state_changed">
   One webhook to rule them all.
 </Card>
 
@@ -8090,7 +9274,7 @@ Source: https://polar.sh/docs/integrate/mcp
 
 Extend the capabilities of your AI agents with Polar's MCP Server
 
-<img src="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/mcp/mcp.png?fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=a6b10fbceef95c6f4a2c9793c9ee60fa" data-og-width="2676" width="2676" data-og-height="1592" height="1592" data-path="assets/integrate/mcp/mcp.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/mcp/mcp.png?w=280&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=abc2ede6a851f182767300a280c00411 280w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/mcp/mcp.png?w=560&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=ef8336debe0ab28deeef4d7d7669368c 560w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/mcp/mcp.png?w=840&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=ad707972479f7eb54511bc2f713bf8c5 840w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/mcp/mcp.png?w=1100&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=6920ec776075a3506ef44e29c12403c7 1100w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/mcp/mcp.png?w=1650&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=12a956db103ce1c7851ee28f1ebb40e1 1650w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/mcp/mcp.png?w=2500&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=2b4774ac779c3531d71c628fbb564d69 2500w" />
+<img />
 
 Supercharge your AI agents with Polar as a Model Context Protocol (MCP) server.
 
@@ -8106,16 +9290,34 @@ You need a MCP-capable agent environment to use Polar over MCP. A few of them ar
 
 ## Connecting to Polar MCP
 
-When you can specify a MCP URL, use `https://mcp.polar.sh/mcp/polar-mcp`.
+Polar provides two MCP servers:
+
+* **Production**: `https://mcp.polar.sh/mcp/polar-mcp` - Connect to your live Polar organization
+* **Sandbox**: `https://mcp.polar.sh/mcp/polar-sandbox` - Connect to the Polar sandbox environment for testing
+
+When you can specify a MCP URL, use one of the URLs above depending on your environment.
 
 If you have to specify a command, use:
 
-```json  theme={null}
+```json theme={null}
 {
   "mcpServers": {
     "Polar": {
       "command": "npx",
       "args": ["mcp-remote", "https://mcp.polar.sh/mcp/polar-mcp"]
+    }
+  }
+}
+```
+
+For sandbox:
+
+```json theme={null}
+{
+  "mcpServers": {
+    "Polar Sandbox": {
+      "command": "npx",
+      "args": ["mcp-remote", "https://mcp.polar.sh/mcp/polar-sandbox"]
     }
   }
 }
@@ -8125,7 +9327,7 @@ If you have to specify a command, use:
 
 In `.cursor/mcp.json`, add:
 
-```
+```json theme={null}
 {
   "mcpServers": {
     "Polar": {
@@ -8135,11 +9337,23 @@ In `.cursor/mcp.json`, add:
 }
 ```
 
+For sandbox:
+
+```json theme={null}
+{
+  "mcpServers": {
+    "Polar Sandbox": {
+      "url": "https://mcp.polar.sh/mcp/polar-sandbox"
+    }
+  }
+}
+```
+
 ### Windsurf
 
 In `mcp_config.json`, add:
 
-```json  theme={null}
+```json theme={null}
 {
   "mcpServers": {
     "Polar": {
@@ -8150,14 +9364,53 @@ In `mcp_config.json`, add:
 }
 ```
 
+For sandbox:
+
+```json theme={null}
+{
+  "mcpServers": {
+    "Polar Sandbox": {
+      "command": "npx",
+      "args": ["mcp-remote", "https://mcp.polar.sh/mcp/polar-sandbox"]
+    }
+  }
+}
+```
+
 ### Codex
 
 Add the following to your `~/.codex/config.toml`:
 
-```sh  theme={null}
+```toml theme={null}
+[features]
+rmcp_client = true
+
 [mcp_servers.polar]
-command = "npx"
-args = ["-y", "mcp-remote", "https://mcp.polar.sh/mcp/polar-mcp"]
+type = "http"
+url = "https://mcp.polar.sh/mcp/polar-mcp"
+```
+
+Then run:
+
+```sh theme={null}
+codex mcp login polar
+```
+
+For sandbox:
+
+```toml theme={null}
+[features]
+rmcp_client = true
+
+[mcp_servers.polar_sandbox]
+type = "http"
+url = "https://mcp.polar.sh/mcp/polar-sandbox"
+```
+
+Then run:
+
+```sh theme={null}
+codex mcp login polar_sandbox
 ```
 
 ### Claude Code
@@ -8168,17 +9421,27 @@ Run the following command:
 claude mcp add --transport http "Polar" "https://mcp.polar.sh/mcp/polar-mcp"
 ```
 
+For sandbox:
+
+```
+claude mcp add --transport http "Polar Sandbox" "https://mcp.polar.sh/mcp/polar-sandbox"
+```
+
 ### ChatGPT
 
 MCP is only available for paid users in beta on ChatGPT web, by enabling Developer Mode.
 
 Once Developer Mode is enabled, go to *Settings* → *Connectors* and add the MCP server using `https://mcp.polar.sh/mcp/polar-mcp`.
 
+For sandbox, use `https://mcp.polar.sh/mcp/polar-sandbox` instead.
+
 ### Claude Desktop
 
 Go to *Settings* → *Connectors* and click *Add custom connector*.
 
 Name it "Polar" and add `https://mcp.polar.sh/mcp/polar-mcp` as the server URL.
+
+For sandbox, use `https://mcp.polar.sh/mcp/polar-sandbox` as the server URL instead.
 
 Save, and click *Connect* to connect to your Polar organization.
 
@@ -8202,28 +9465,28 @@ https://polar.sh/oauth2/authorize?
 
 The parameters are the one described in the [OpenID Connect specification](https://openid.net/specs/openid-connect-core-1_0.html#AuthRequest). The most important ones are:
 
-<ParamField path="response_type=code" type="string" required>
+<ParamField type="string">
   Indicates that you want to use the authorization code flow. Most common and
   the only one supported by Polar.
 </ParamField>
 
-<ParamField path="client_id" type="string" required>
+<ParamField type="string">
   The Client ID you got when creating the OAuth 2.0 client.
 </ParamField>
 
-<ParamField path="redirect_uri" type="string" required>
+<ParamField type="string">
   The URL where the user will be redirected after granting access to their data.
   Make sure you declared it when creating the OAuth2 client.
 </ParamField>
 
-<ParamField path="scope" type="string" required>
+<ParamField type="string">
   A space-separated list of scopes you want to ask for. Make sure they are part
   of the scopes you declared when creating the OAuth2 client.
 </ParamField>
 
 If you redirect the user to this URL, they'll see a page asking them to grant access to their data, corresponding to the scopes you asked for. By default, the user will also be prompted to select one of their organizations, as Polar generates organization-level access tokens by default.
 
-<img src="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/oauth2/connect.png?fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=1927989fc0478485e77a1140a088e939" data-og-width="1920" width="1920" data-og-height="1080" height="1080" data-path="assets/integrate/oauth2/connect.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/oauth2/connect.png?w=280&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=a1aee489dd928855eebd48275b442a3a 280w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/oauth2/connect.png?w=560&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=08e3afe8990106c73cd5201a6175fd50 560w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/oauth2/connect.png?w=840&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=98c7a9731dec10d2c508bb6165acc93e 840w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/oauth2/connect.png?w=1100&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=5d09f0d4a88bb704f79590b3f8e611bd 1100w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/oauth2/connect.png?w=1650&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=fee040d7fffec477262ae5bf313ffa76 1650w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/oauth2/connect.png?w=2500&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=a60a6a05eb190e81c422087c317e8300 2500w" />
+<img />
 
 If they allow it and select an organization, they'll be redirected to your `redirect_uri` with a `code` parameter in the query string. This code is a one-time code that you can exchange for an access token.
 
@@ -8244,7 +9507,7 @@ Once you have the authorization code, you can exchange it for an access token. T
 
 Here is an example with cURL:
 
-```bash  theme={null}
+```bash Terminal theme={null}
 curl -X POST https://api.polar.sh/v1/oauth2/token \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -d 'grant_type=authorization_code&code=AUTHORIZATION_CODE&client_id=CLIENT_ID&client_secret=CLIENT_SECRET&redirect_uri=https://example.com/callback'
@@ -8252,7 +9515,7 @@ curl -X POST https://api.polar.sh/v1/oauth2/token \
 
 You should get the following response:
 
-```json  theme={null}
+```json theme={null}
 {
   "token_type": "Bearer",
   "access_token": "polar_at_XXX",
@@ -8293,7 +9556,7 @@ In this case, **and only if the client is configured as a Public Client**, the r
 
 Once you have an access token, either from a Personal Access Token or from the OpenID Connect flow, you can make authenticated requests to the API. Here is a simple example with cURL:
 
-```bash  theme={null}
+```bash Terminal theme={null}
 curl -X GET https://api.polar.sh/v1/oauth2/userinfo \
   -H 'Authorization: Bearer polar_at_XXX'
 ```
@@ -8425,13 +9688,46 @@ Source: https://polar.sh/docs/integrate/sdk/adapters/astro
 
 Payments and Checkouts made dead simple with Astro
 
-`pnpm install @polar-sh/astro zod`
+## Examples
+
+* [With Astro](https://github.com/polarsource/examples/tree/main/with-astro)
+* [With Astro and Cloudflare Workers](https://github.com/polarsource/examples/tree/main/with-astro-cloudflare-workers)
+
+## Installation
+
+Install the required Polar packages using the following command:
+
+<Tabs>
+  <Tab title="npm">
+    ```bash Terminal theme={null}
+    npm install zod @polar-sh/astro
+    ```
+  </Tab>
+
+  <Tab title="yarn">
+    ```bash Terminal theme={null}
+    yarn add zod @polar-sh/astro
+    ```
+  </Tab>
+
+  <Tab title="pnpm">
+    ```bash Terminal theme={null}
+    pnpm add zod @polar-sh/astro
+    ```
+  </Tab>
+
+  <Tab title="bun">
+    ```bash Terminal theme={null}
+    bun add zod @polar-sh/astro
+    ```
+  </Tab>
+</Tabs>
 
 ## Checkout
 
 Create a Checkout handler which takes care of redirections.
 
-```typescript  theme={null}
+```typescript icon="square-js"  theme={null}
 import { Checkout } from "@polar-sh/astro";
 import { POLAR_ACCESS_TOKEN, POLAR_SUCCESS_URL } from "astro:env/server";
 
@@ -8459,7 +9755,7 @@ Pass query params to this route.
 
 Create a customer portal where your customer can view orders and subscriptions.
 
-```typescript  theme={null}
+```typescript icon="square-js"  theme={null}
 import { CustomerPortal } from "@polar-sh/astro";
 import { POLAR_ACCESS_TOKEN } from "astro:env/server";
 
@@ -8475,7 +9771,7 @@ export const GET = CustomerPortal({
 
 A simple utility which resolves incoming webhook payloads by signing the webhook secret properly.
 
-```typescript  theme={null}
+```typescript icon="square-js"  theme={null}
 import { Webhooks } from '@polar-sh/astro';
 import { POLAR_WEBHOOK_SECRET } from "astro:env/server"
 
@@ -8522,11 +9818,11 @@ Source: https://polar.sh/docs/integrate/sdk/adapters/better-auth
 
 Payments and Checkouts made dead simple with BetterAuth
 
-# @polar-sh/better-auth
+## @polar-sh/better-auth
 
 A [Better Auth](https://github.com/better-auth/better-auth) plugin for integrating [Polar](https://polar.sh) payments and subscriptions into your authentication flow.
 
-## Features
+### Features
 
 * [Automatic Customer creation on signup](#automatic-customer-creation-on-signup)
 * [Sync customer deletion](#sync-customer-deletion)
@@ -8536,22 +9832,37 @@ A [Better Auth](https://github.com/better-auth/better-auth) plugin for integrati
 * [Handle Polar Webhooks securely with signature verification](#webhooks-plugin)
 * [Customer Portal](#portal-plugin)
 
+## Examples
+
+* [With Next.js, Better Auth and Cloudflare Workers](https://github.com/polarsource/examples/tree/main/with-nextjs-better-auth-cloudflare-workers)
+
 ## Installation
+
+Install the required Better Auth and Polar packages using the following command:
 
 <Tabs>
   <Tab title="npm">
-    Install the BetterAuth and Polar required libraries using the following
-    command: `npm install better-auth @polar-sh/better-auth @polar-sh/sdk`
+    ```bash Terminal theme={null}
+    npm install better-auth @polar-sh/better-auth @polar-sh/sdk
+    ```
   </Tab>
 
   <Tab title="yarn">
-    Install the BetterAuth and Polar required libraries using the following
-    command: `yarn add better-auth @polar-sh/better-auth @polar-sh/sdk`
+    ```bash Terminal theme={null}
+    yarn add better-auth @polar-sh/better-auth @polar-sh/sdk
+    ```
   </Tab>
 
   <Tab title="pnpm">
-    Install the BetterAuth and Polar required libraries using the following
-    command: `pnpm add better-auth @polar-sh/better-auth @polar-sh/sdk`
+    ```bash Terminal theme={null}
+    pnpm add better-auth @polar-sh/better-auth @polar-sh/sdk
+    ```
+  </Tab>
+
+  <Tab title="bun">
+    ```bash Terminal theme={null}
+    bun add better-auth @polar-sh/better-auth @polar-sh/sdk
+    ```
   </Tab>
 </Tabs>
 
@@ -8621,7 +9932,7 @@ A [Better Auth](https://github.com/better-auth/better-auth) plugin for integrati
 
     #### Polar Plugin Configuration Options
 
-    ```typescript  theme={null}
+    ```typescript theme={null}
     // ...
 
     const auth = betterAuth({
@@ -8703,7 +10014,7 @@ To support [checkouts](/features/checkout/links) in your app, you would pass the
 The checkout plugin accepts the following configuration options:
 
 * **`products`** (optional): An array of product mappings or a function that returns them asynchronously. Each mapping contains a `productId` and a `slug` that allows you to reference products by a friendly slug instead of their full ID.
-* **`successUrl`** (optional): The relative URL where customers will be redirected after a successful checkout completion. You can use the `{CHECKOUT_ID}` placeholder in the URL to include the checkout session ID in the redirect.
+* **`successUrl`** (optional): The relative path or absolute URL where customers will be redirected after a successful checkout completion. You can use the `{CHECKOUT_ID}` placeholder in the URL to include the checkout session ID in the redirect.
 * **`returnUrl`** (optional): An optional URL which renders a back-button in the Checkout.
 * **`authenticatedUsersOnly`** (optional): A boolean flag that controls whether checkout sessions require user authentication. When set to `true`, only authenticated users can initiate checkouts and the customer information will be automatically associated with the authenticated user. When `false`, anonymous checkouts are allowed.
 * **`theme`** (optional): A string that can be used to enforce the theme of the checkout page. Can be either `light` or `dark`.
@@ -8727,9 +10038,9 @@ The checkout plugin accepts the following configuration options:
                     checkout({ // [!code ++]
                         // Optional field - will make it possible to pass a slug to checkout instead of Product ID
                         products: [ { productId: "123-456-789", slug: "pro" } ], // [!code ++]
-                        // Relative URL to return to when checkout is successfully completed
+                        // Relative path or absolute URL to redirect to when checkout is successfully completed
                         successUrl: "/success?checkout_id={CHECKOUT_ID}", // [!code ++]
-                        // Wheather you want to allow unauthenticated checkout sessions or not
+                        // Whether you want to allow unauthenticated checkout sessions or not
                         authenticatedUsersOnly: true, // [!code ++]
                         // An optional URL which renders a back-button in the Checkout
                         returnUrl: "https://myapp.com" // [!code ++]
@@ -9075,11 +10386,15 @@ Source: https://polar.sh/docs/integrate/sdk/adapters/deno
 
 Payments and Checkouts made dead simple with Deno
 
+## Examples
+
+* [With Deno](https://github.com/polarsource/examples/tree/main/with-deno)
+
 ## Checkout
 
 Create a Checkout handler which takes care of redirections.
 
-```typescript  theme={null}
+```typescript icon="square-js"  theme={null}
 import { Checkout } from "jsr:@polar-sh/deno";
 
 Deno.serve(
@@ -9106,7 +10421,7 @@ Pass query params to this route.
 
 Create a customer portal where your customer can view orders and subscriptions.
 
-```typescript  theme={null}
+```typescript icon="square-js"  theme={null}
 import { CustomerPortal } from "jsr:@polar-sh/deno";
 
 Deno.serve(
@@ -9123,7 +10438,7 @@ Deno.serve(
 
 A simple utility which resolves incoming webhook payloads by signing the webhook secret properly.
 
-```typescript  theme={null}
+```typescript icon="square-js"  theme={null}
 import { Webhooks } from "jsr:@polar-sh/deno";
 
 Deno.serve(
@@ -9171,15 +10486,45 @@ Source: https://polar.sh/docs/integrate/sdk/adapters/elysia
 
 Payments and Checkouts made dead simple with Elysia
 
-```bash  theme={null}
-pnpm install @polar-sh/elysia zod
-```
+## Examples
+
+* [With Elysia](https://github.com/polarsource/examples/tree/main/with-elysia)
+
+## Installation
+
+Install the required Polar packages using the following command:
+
+<Tabs>
+  <Tab title="npm">
+    ```bash Terminal theme={null}
+    npm install zod @polar-sh/elysia
+    ```
+  </Tab>
+
+  <Tab title="yarn">
+    ```bash Terminal theme={null}
+    yarn add zod @polar-sh/elysia
+    ```
+  </Tab>
+
+  <Tab title="pnpm">
+    ```bash Terminal theme={null}
+    pnpm add zod @polar-sh/elysia
+    ```
+  </Tab>
+
+  <Tab title="bun">
+    ```bash Terminal theme={null}
+    bun add zod @polar-sh/elysia
+    ```
+  </Tab>
+</Tabs>
 
 ### Checkout
 
 Create a Checkout handler which takes care of redirections.
 
-```typescript  theme={null}
+```typescript icon="square-js"  theme={null}
 import { Elysia } from "elysia";
 import { Checkout } from "@polar-sh/elysia";
 
@@ -9212,7 +10557,7 @@ Pass query params to this route.
 
 Create a customer portal where your customer can view orders and subscriptions.
 
-```typescript  theme={null}
+```typescript icon="square-js"  theme={null}
 import { Elysia } from "elysia";
 import { CustomerPortal } from "@polar-sh/elysia";
 
@@ -9233,7 +10578,7 @@ app.get(
 
 A simple utility which resolves incoming webhook payloads by signing the webhook secret properly.
 
-```typescript  theme={null}
+```typescript icon="square-js"  theme={null}
 import { Elysia } from 'elysia'
 import { Webhooks } from "@polar-sh/elysia";
 
@@ -9282,15 +10627,45 @@ Source: https://polar.sh/docs/integrate/sdk/adapters/express
 
 Payments and Checkouts made dead simple with Express
 
-```bash  theme={null}
-pnpm install @polar-sh/express zod
-```
+## Examples
+
+* [With Express v4](https://github.com/polarsource/examples/tree/main/with-express-v4)
+
+## Installation
+
+Install the required Polar packages using the following command:
+
+<Tabs>
+  <Tab title="npm">
+    ```bash Terminal theme={null}
+    npm install zod @polar-sh/express
+    ```
+  </Tab>
+
+  <Tab title="yarn">
+    ```bash Terminal theme={null}
+    yarn add zod @polar-sh/express
+    ```
+  </Tab>
+
+  <Tab title="pnpm">
+    ```bash Terminal theme={null}
+    pnpm add zod @polar-sh/express
+    ```
+  </Tab>
+
+  <Tab title="bun">
+    ```bash Terminal theme={null}
+    bun add zod @polar-sh/express
+    ```
+  </Tab>
+</Tabs>
 
 ## Checkout
 
 Create a Checkout handler which takes care of redirections.
 
-```typescript  theme={null}
+```typescript theme={null}
 import express from "express";
 import { Checkout } from "@polar-sh/express";
 
@@ -9323,7 +10698,7 @@ Pass query params to this route.
 
 Create a customer portal where your customer can view orders and subscriptions.
 
-```typescript  theme={null}
+```typescript theme={null}
 import express from "express";
 import { CustomerPortal } from "@polar-sh/express";
 
@@ -9344,7 +10719,7 @@ app.get(
 
 A simple utility which resolves incoming webhook payloads by signing the webhook secret properly.
 
-```typescript  theme={null}
+```typescript theme={null}
 import express from 'express'
 import { Webhooks } from "@polar-sh/express";
 
@@ -9395,15 +10770,45 @@ Source: https://polar.sh/docs/integrate/sdk/adapters/fastify
 
 Payments and Checkouts made dead simple with Fastify
 
-```bash  theme={null}
-pnpm install @polar-sh/fastify zod
-```
+## Examples
+
+* [With Fastify](https://github.com/polarsource/examples/tree/main/with-fastify)
+
+## Installation
+
+Install the required Polar packages using the following command:
+
+<Tabs>
+  <Tab title="npm">
+    ```bash Terminal theme={null}
+    npm install zod @polar-sh/fastify
+    ```
+  </Tab>
+
+  <Tab title="yarn">
+    ```bash Terminal theme={null}
+    yarn add zod @polar-sh/fastify
+    ```
+  </Tab>
+
+  <Tab title="pnpm">
+    ```bash Terminal theme={null}
+    pnpm add zod @polar-sh/fastify
+    ```
+  </Tab>
+
+  <Tab title="bun">
+    ```bash Terminal theme={null}
+    bun add zod @polar-sh/fastify
+    ```
+  </Tab>
+</Tabs>
 
 ## Checkout
 
 Create a Checkout handler which takes care of redirections.
 
-```typescript  theme={null}
+```typescript theme={null}
 import fastify from "fastify";
 import { Checkout } from "@polar-sh/fastify";
 
@@ -9434,7 +10839,7 @@ Pass query params to this route.
 
 Create a customer portal where your customer can view orders and subscriptions.
 
-```typescript  theme={null}
+```typescript theme={null}
 import fastify from "fastify";
 import { CustomerPortal } from "@polar-sh/fastify";
 
@@ -9453,7 +10858,7 @@ fastify().get(
 
 A simple utility which resolves incoming webhook payloads by signing the webhook secret properly.
 
-```typescript  theme={null}
+```typescript theme={null}
 import fastify from 'fastify'
 import { Webhooks } from "@polar-sh/fastify";
 
@@ -9500,15 +10905,45 @@ Source: https://polar.sh/docs/integrate/sdk/adapters/hono
 
 Payments and Checkouts made dead simple with Hono
 
-```bash  theme={null}
-pnpm install @polar-sh/hono zod
-```
+## Examples
+
+* [With Hono and Cloudflare Workers](https://github.com/polarsource/examples/tree/main/with-hono-cloudflare-workers)
+
+## Installation
+
+Install the required Polar packages using the following command:
+
+<Tabs>
+  <Tab title="npm">
+    ```bash Terminal theme={null}
+    npm install zod @polar-sh/hono
+    ```
+  </Tab>
+
+  <Tab title="yarn">
+    ```bash Terminal theme={null}
+    yarn add zod @polar-sh/hono
+    ```
+  </Tab>
+
+  <Tab title="pnpm">
+    ```bash Terminal theme={null}
+    pnpm add zod @polar-sh/hono
+    ```
+  </Tab>
+
+  <Tab title="bun">
+    ```bash Terminal theme={null}
+    bun add zod @polar-sh/hono
+    ```
+  </Tab>
+</Tabs>
 
 ## Checkout
 
 Create a Checkout handler which takes care of redirections.
 
-```typescript  theme={null}
+```typescript theme={null}
 import { Hono } from "hono";
 import { Checkout } from "@polar-sh/hono";
 
@@ -9541,7 +10976,7 @@ Pass query params to this route.
 
 Create a customer portal where your customer can view orders and subscriptions.
 
-```typescript  theme={null}
+```typescript theme={null}
 import { Hono } from "hono";
 import { CustomerPortal } from "@polar-sh/hono";
 
@@ -9562,7 +10997,7 @@ app.get(
 
 A simple utility which resolves incoming webhook payloads by signing the webhook secret properly.
 
-```typescript  theme={null}
+```typescript theme={null}
 import { Hono } from 'hono'
 import { Webhooks } from "@polar-sh/hono";
 
@@ -9606,28 +11041,28 @@ The Webhook handler also supports granular handlers for easy integration.
 * `onCustomerStateChanged` - Triggered when a customer state changes
 
 
-# null
+# Laravel
 Source: https://polar.sh/docs/integrate/sdk/adapters/laravel
 
-
-
-![](https://banners.beyondco.de/laravel-polar.png?theme=dark\&packageManager=composer+require\&packageName=danestves%2Flaravel-polar\&pattern=pieFactory\&style=style_1\&description=Easily+integrate+your+Laravel+application+with+Polar.sh\&md=1\&showWatermark=1\&fontSize=100px\&images=https%3A%2F%2Flaravel.com%2Fimg%2Flogomark.min.svg "Laravel Polar")
-
-# Polar for Laravel
+Payments and Checkouts made dead simple with Laravel
 
 Seamlessly integrate Polar.sh subscriptions and payments into your Laravel application. This package provides an elegant way to handle subscriptions, manage recurring payments, and interact with Polar's API. With built-in support for webhooks, subscription management, and a fluent API, you can focus on building your application while we handle the complexities of subscription billing.
+
+<Note>
+  This provider is not maintained or officially supported by Polar. Use at your own discretion. If you have questions about the provider, please contact the project maintainer.
+</Note>
 
 ## Installation
 
 **Step 1:** You can install the package via composer:
 
-```bash  theme={null}
+```bash Terminal theme={null}
 composer require danestves/laravel-polar
 ```
 
 **Step 2:** Run `:install`:
 
-```bash  theme={null}
+```bash Terminal theme={null}
 php artisan polar:install
 ```
 
@@ -9635,25 +11070,25 @@ This will publish the config, migrations and views, and ask to run the migration
 
 Or publish and run the migrations individually:
 
-```bash  theme={null}
+```bash Terminal theme={null}
 php artisan vendor:publish --tag="polar-migrations"
 ```
 
-```bash  theme={null}
+```bash Terminal theme={null}
 php artisan vendor:publish --tag="polar-config"
 ```
 
-```bash  theme={null}
+```bash Terminal theme={null}
 php artisan vendor:publish --tag="polar-views"
 ```
 
-```bash  theme={null}
+```bash Terminal theme={null}
 php artisan migrate
 ```
 
 This is the contents of the published config file:
 
-```php  theme={null}
+```php theme={null}
 <?php
 
 return [
@@ -9732,7 +11167,7 @@ Configure your access token. Create a new token in the Polar Dashboard > Setting
 * [https://sandbox.polar.sh/dashboard/ORG\_SLUG/settings](https://sandbox.polar.sh/dashboard/ORG_SLUG/settings) (Sandbox)
 * [https://polar.sh/dashboard/ORG\_SLUG/settings](https://polar.sh/dashboard/ORG_SLUG/settings) (Production)
 
-```bash  theme={null}
+```bash Terminal theme={null}
 POLAR_ACCESS_TOKEN="<your_access_token>"
 ```
 
@@ -9756,7 +11191,7 @@ Configure the webhook for the following events that this pacckage supports:
 * `benefit_grant.updated`
 * `benefit_grant.revoked`
 
-```bash  theme={null}
+```bash Terminal theme={null}
 POLAR_WEBHOOK_SECRET="<your_webhook_secret>"
 ```
 
@@ -9766,7 +11201,7 @@ Let’s make sure everything’s ready for your customers to checkout smoothly. 
 
 First, we’ll need to set up a model to handle billing—don’t worry, it’s super simple! In most cases, this will be your app’s User model. Just add the Billable trait to your model like this (you’ll import it from the package first, of course):
 
-```php  theme={null}
+```php theme={null}
 use Danestves\LaravelPolar\Billable;
 
 class User extends Authenticatable
@@ -9781,7 +11216,7 @@ Now the user model will have access to the methods provided by the package. You 
 
 Polar includes a JavaScript script that you can use to initialize the [Polar Embedded Checkout](https://polar.sh/docs/features/checkout/embed). If you going to use this functionality, you can use the `@polarEmbedScript` directive to include the script in your views inside the `<head>` tag.
 
-```blade  theme={null}
+```blade theme={null}
 <head>
     ...
 
@@ -9797,7 +11232,7 @@ This package includes a webhook handler that will handle the webhooks from Polar
 
 Incoming webhooks should not be affected by [CSRF protection](https://laravel.com/docs/csrf). To prevent this, add your webhook path to the except list of your `App\Http\Middleware\VerifyCsrfToken` middleware:
 
-```php  theme={null}
+```php theme={null}
 protected $except = [
     'polar/*',
 ];
@@ -9805,7 +11240,7 @@ protected $except = [
 
 Or if you're using Laravel v11 and up, you should exclude `polar/*` in your application's `bootstrap/app.php` file:
 
-```php  theme={null}
+```php theme={null}
 ->withMiddleware(function (Middleware $middleware) {
     $middleware->validateCsrfTokens(except: [
         'polar/*',
@@ -9827,7 +11262,7 @@ This package includes a list of commands that you can use to retrieve informatio
 
 To create a checkout to show only a single payment, pass a single items to the array of products when creating the checkout.
 
-```php  theme={null}
+```php theme={null}
 use Illuminate\Http\Request;
 
 Route::get('/subscribe', function (Request $request) {
@@ -9837,7 +11272,7 @@ Route::get('/subscribe', function (Request $request) {
 
 If you want to show multiple products that the user can choose from, you can pass an array of product ids to the `checkout` method.
 
-```php  theme={null}
+```php theme={null}
 use Illuminate\Http\Request;
 
 Route::get('/subscribe', function (Request $request) {
@@ -9854,7 +11289,7 @@ This could be useful if you want to offer monthly, yearly, and lifetime plans fo
 
 You can override the price of a product using the `charge` method.
 
-```php  theme={null}
+```php theme={null}
 use Illuminate\Http\Request;
 
 Route::get('/subscribe', function (Request $request) {
@@ -9866,7 +11301,7 @@ Route::get('/subscribe', function (Request $request) {
 
 Instead of redirecting the user you can create the checkout link, pass it to the page and use our blade component:
 
-```php  theme={null}
+```php theme={null}
 use Illuminate\Http\Request;
 
 Route::get('/billing', function (Request $request) {
@@ -9878,13 +11313,13 @@ Route::get('/billing', function (Request $request) {
 
 Now we can use the button like this:
 
-```blade  theme={null}
+```blade theme={null}
 <x-polar-button :checkout="$checkout" />
 ```
 
 The component accepts the normal props that a link element accepts. You can change the theme of the embedded checkout by using the following prop:
 
-```blade  theme={null}
+```blade theme={null}
 <x-polar-button :checkout="$checkout" data-polar-checkout-theme="dark" />
 ```
 
@@ -9894,7 +11329,7 @@ It defaults to light theme, so you only need to pass the prop if you want to cha
 
 You can override the user data using the following methods in your models provided by the `Billable` trait.
 
-```php  theme={null}
+```php theme={null}
 public function polarName(): ?string; // default: $model->name
 public function polarEmail(): ?string; // default: $model->email
 ```
@@ -9903,14 +11338,14 @@ public function polarEmail(): ?string; // default: $model->email
 
 You can redirect the user to a custom page after the purchase using the `withSuccessUrl` method:
 
-```php  theme={null}
+```php theme={null}
 $request->user()->checkout('variant-id')
     ->withSuccessUrl(url('/success'));
 ```
 
 You can also add the `checkout_id={CHECKOUT_ID}` query parameter to the URL to retrieve the checkout session id:
 
-```php  theme={null}
+```php theme={null}
 $request->user()->checkout('variant-id')
     ->withSuccessUrl(url('/success?checkout_id={CHECKOUT_ID}'));
 ```
@@ -9919,14 +11354,14 @@ $request->user()->checkout('variant-id')
 
 You can add custom metadata to the checkout session using the `withMetadata` method:
 
-```php  theme={null}
+```php theme={null}
 $request->user()->checkout('variant-id')
     ->withMetadata(['key' => 'value']);
 ```
 
 You can also add customer metadata to the checkout session using the `withCustomerMetadata` method:
 
-```php  theme={null}
+```php theme={null}
 $request->user()->checkout('variant-id')
     ->withCustomerMetadata(['key' => 'value']);
 ```
@@ -9949,7 +11384,7 @@ Using any of these will result in an exception being thrown.
 
 Customers can update their personal information (e.g., name, email address) by accessing their [self-service customer portal](https://polar.sh/docs/features/customer-portal). To redirect customers to this portal, call the `redirectToCustomerPortal()` method on your billable model (e.g., the User model).
 
-```php  theme={null}
+```php theme={null}
 use Illuminate\Http\Request;
 
 Route::get('/customer-portal', function (Request $request) {
@@ -9959,7 +11394,7 @@ Route::get('/customer-portal', function (Request $request) {
 
 Optionally, you can obtain the signed customer portal URL directly:
 
-```php  theme={null}
+```php theme={null}
 $url = $user->customerPortalUrl();
 ```
 
@@ -9969,7 +11404,7 @@ $url = $user->customerPortalUrl();
 
 You can retrieve orders by using the `orders` relationship on the billable model:
 
-```blade  theme={null}
+```blade theme={null}
 <table>
     @foreach ($user->orders as $order)
         <td>{{ $order->ordered_at->toFormattedDateString() }}</td>
@@ -9988,19 +11423,19 @@ You can retrieve orders by using the `orders` relationship on the billable model
 
 You can check the status of an order by using the `status` attribute:
 
-```php  theme={null}
+```php theme={null}
 $order->status;
 ```
 
 Or you can use some of the helper methods offers by the `Order` model:
 
-```php  theme={null}
+```php theme={null}
 $order->paid();
 ```
 
 Aside from that, you can run two other checks: refunded, and partially refunded. If the order is refunded, you can utilize the refunded\_at timestamp:
 
-```blade  theme={null}
+```blade theme={null}
 @if ($order->refunded())
     Order {{ $order->polar_id }} was refunded on {{ $order->refunded_at->toFormattedDateString() }}
 @endif
@@ -10008,7 +11443,7 @@ Aside from that, you can run two other checks: refunded, and partially refunded.
 
 You may also see if an order was for a certain product:
 
-```php  theme={null}
+```php theme={null}
 if ($order->hasProduct('product_id_123')) {
     // ...
 }
@@ -10016,7 +11451,7 @@ if ($order->hasProduct('product_id_123')) {
 
 Or for an specific price:
 
-```php  theme={null}
+```php theme={null}
 if ($order->hasPrice('price_id_123')) {
     // ...
 }
@@ -10024,7 +11459,7 @@ if ($order->hasPrice('price_id_123')) {
 
 Furthermore, you can check if a consumer has purchased a specific product:
 
-```php  theme={null}
+```php theme={null}
 if ($user->hasPurchasedProduct('product_id_123')) {
     // ...
 }
@@ -10032,7 +11467,7 @@ if ($user->hasPurchasedProduct('product_id_123')) {
 
 Or for an specific price:
 
-```php  theme={null}
+```php theme={null}
 if ($user->hasPurchasedPrice('price_id_123')) {
     // ...
 }
@@ -10044,7 +11479,7 @@ if ($user->hasPurchasedPrice('price_id_123')) {
 
 Starting a subscription is simple. For this, we require our product's variant id. Copy the product id and start a new subscription checkout using your billable model:
 
-```php  theme={null}
+```php theme={null}
 use Illuminate\Http\Request;
 
 Route::get('/subscribe', function (Request $request) {
@@ -10054,7 +11489,7 @@ Route::get('/subscribe', function (Request $request) {
 
 When a customer completes their checkout, the incoming `SubscriptionCreated` event webhook connects it to your billable model in the database. You may then get the subscription from your billable model:
 
-```php  theme={null}
+```php theme={null}
 $subscription = $user->subscription();
 ```
 
@@ -10062,7 +11497,7 @@ $subscription = $user->subscription();
 
 Once a consumer has subscribed to your services, you can use a variety of methods to check on the status of their subscription. The most basic example is to check if a customer has a valid subscription.
 
-```php  theme={null}
+```php theme={null}
 if ($user->subscribed()) {
     // ...
 }
@@ -10070,7 +11505,7 @@ if ($user->subscribed()) {
 
 You can utilize this in a variety of locations in your app, such as middleware, rules, and so on, to provide services. To determine whether an individual subscription is valid, you can use the `valid` method:
 
-```php  theme={null}
+```php theme={null}
 if ($user->subscription()->valid()) {
     // ...
 }
@@ -10080,7 +11515,7 @@ This method, like the subscribed method, returns true if your membership is acti
 
 You may also check if a subscription is for a certain product:
 
-```php  theme={null}
+```php theme={null}
 if ($user->subscription()->hasProduct('product_id_123')) {
     // ...
 }
@@ -10088,7 +11523,7 @@ if ($user->subscription()->hasProduct('product_id_123')) {
 
 Or for a certain price:
 
-```php  theme={null}
+```php theme={null}
 if ($user->subscription()->hasPrice('price_id_123')) {
     // ...
 }
@@ -10096,7 +11531,7 @@ if ($user->subscription()->hasPrice('price_id_123')) {
 
 If you wish to check if a subscription is on a specific price while being valid, you can use:
 
-```php  theme={null}
+```php theme={null}
 if ($user->subscribedToPrice('price_id_123')) {
     // ...
 }
@@ -10104,7 +11539,7 @@ if ($user->subscribedToPrice('price_id_123')) {
 
 Alternatively, if you use different [subscription types](#multiple-subscriptions), you can pass a type as an additional parameter:
 
-```php  theme={null}
+```php theme={null}
 if ($user->subscribed('swimming')) {
     // ...
 }
@@ -10118,7 +11553,7 @@ if ($user->subscribedToPrice('price_id_123', 'swimming')) {
 
 To see if a user has cancelled their subscription, you can use the cancelled method:
 
-```php  theme={null}
+```php theme={null}
 if ($user->subscription()->cancelled()) {
     // ...
 }
@@ -10126,7 +11561,7 @@ if ($user->subscription()->cancelled()) {
 
 When they are in their grace period, you can utilize the `onGracePeriod` check.
 
-```php  theme={null}
+```php theme={null}
 if ($user->subscription()->onGracePeriod()) {
     // ...
 }
@@ -10136,7 +11571,7 @@ if ($user->subscription()->onGracePeriod()) {
 
 If a recurring payment fails, the subscription will become past due. This indicates that the subscription is still valid, but your customer's payments will be retried in two weeks.
 
-```php  theme={null}
+```php theme={null}
 if ($user->subscription()->pastDue()) {
     // ...
 }
@@ -10146,7 +11581,7 @@ if ($user->subscription()->pastDue()) {
 
 There are several subscription scopes available for querying subscriptions in specific states:
 
-```php  theme={null}
+```php theme={null}
 // Get all active subscriptions...
 $subscriptions = Subscription::query()->active()->get();
 
@@ -10156,7 +11591,7 @@ $subscriptions = $user->subscriptions()->cancelled()->get();
 
 Here's all available scopes:
 
-```php  theme={null}
+```php theme={null}
 Subscription::query()->incomplete();
 Subscription::query()->incompleteExpired();
 Subscription::query()->onTrial();
@@ -10170,7 +11605,7 @@ Subscription::query()->cancelled();
 
 When a consumer is on a monthly plan, they may desire to upgrade to a better plan, alter their payments to an annual plan, or drop to a lower-cost plan. In these cases, you can allow them to swap plans by giving a different product id to the `swap` method:
 
-```php  theme={null}
+```php theme={null}
 use App\Models\User;
 
 $user = User::find(1);
@@ -10180,7 +11615,7 @@ $user->subscription()->swap('product_id_123');
 
 This will change the customer's subscription plan, however billing will not occur until the next payment cycle. If you want to immediately invoice the customer, you can use the `swapAndInvoice` method instead.
 
-```php  theme={null}
+```php theme={null}
 $user = User::find(1);
 
 $user->subscription()->swapAndInvoice('product_id_123');
@@ -10192,7 +11627,7 @@ In certain situations, you may wish to allow your consumer to subscribe to numer
 
 To handle the various subscriptions, you can offer a type of subscription as the second argument when creating a new one:
 
-```php  theme={null}
+```php theme={null}
 $user = User::find(1);
 
 $checkout = $user->subscribe('product_id_123', 'swimming');
@@ -10200,7 +11635,7 @@ $checkout = $user->subscribe('product_id_123', 'swimming');
 
 You can now always refer to this specific subscription type by passing the type argument when getting it:
 
-```php  theme={null}
+```php theme={null}
 $user = User::find(1);
 
 // Retrieve the swimming subscription type...
@@ -10217,7 +11652,7 @@ $user->subscription('swimming')->cancel();
 
 To cancel a subscription, call the `cancel` method.
 
-```php  theme={null}
+```php theme={null}
 $user = User::find(1);
 
 $user->subscription()->cancel();
@@ -10225,7 +11660,7 @@ $user->subscription()->cancel();
 
 This will cause your subscription to be cancelled. If you cancel your subscription in the middle of the cycle, it will enter a grace period, and the ends\_at column will be updated. The customer will continue to have access to the services offered for the duration of the period. You may check the grace period by calling the `onGracePeriod` method:
 
-```php  theme={null}
+```php theme={null}
 if ($user->subscription()->onGracePeriod()) {
     // ...
 }
@@ -10233,7 +11668,7 @@ if ($user->subscription()->onGracePeriod()) {
 
 Polar does not offer immediate cancellation. To resume a subscription while it is still in its grace period, use the resume method.
 
-```php  theme={null}
+```php theme={null}
 $user->subscription()->resume();
 ```
 
@@ -10260,7 +11695,7 @@ Each of these events has a billable `$model` object and an event `$payload`. The
 
 If you wish to respond to these events, you must establish listeners for them. For example, you may wish to react when a subscription is updated.
 
-```php  theme={null}
+```php theme={null}
 <?php
 
 namespace App\Listeners;
@@ -10285,7 +11720,7 @@ The [Polar documentation](https://polar.sh/docs/integrate/webhooks/events) inclu
 
 Laravel v11 and up will automatically discover the listener. If you're using Laravel v10 or lower, you should configure it in your app's `EventServiceProvider`:
 
-```php  theme={null}
+```php theme={null}
 <?php
 
 namespace App\Providers;
@@ -10306,7 +11741,7 @@ class EventServiceProvider extends ServiceProvider
 
 ## Testing
 
-```bash  theme={null}
+```bash Terminal theme={null}
 composer test
 ```
 
@@ -10319,21 +11754,52 @@ Please see [CHANGELOG](https://github.com/danestves/laravel-polar/blob/main/CHAN
 The MIT License (MIT). Please see [License File](https://github.com/danestves/laravel-polar/blob/main/LICENSE.md) for more information.
 
 
-# NextJS
+# Next.js
 Source: https://polar.sh/docs/integrate/sdk/adapters/nextjs
 
-Payments and Checkouts made dead simple with NextJS
+Payments and Checkouts made dead simple with Next.js
 
-```bash  theme={null}
-pnpm install @polar-sh/nextjs zod
-```
+## Examples
+
+* [With Next.js](https://github.com/polarsource/examples/tree/main/with-nextjs)
+* [With Next.js and Upstash QStash](https://github.com/polarsource/examples/tree/main/with-nextjs-qstash-schedule-downgrades)
+* [With Next.js, Better Auth and Cloudflare Workers](https://github.com/polarsource/examples/tree/main/with-nextjs-better-auth-cloudflare-workers)
+
+## Installation
+
+Install the required Polar packages using the following command:
+
+<Tabs>
+  <Tab title="npm">
+    ```bash Terminal theme={null}
+    npm install zod @polar-sh/nextjs
+    ```
+  </Tab>
+
+  <Tab title="yarn">
+    ```bash Terminal theme={null}
+    yarn add zod @polar-sh/nextjs
+    ```
+  </Tab>
+
+  <Tab title="pnpm">
+    ```bash Terminal theme={null}
+    pnpm add zod @polar-sh/nextjs
+    ```
+  </Tab>
+
+  <Tab title="bun">
+    ```bash Terminal theme={null}
+    bun add zod @polar-sh/nextjs
+    ```
+  </Tab>
+</Tabs>
 
 ## Checkout
 
 Create a Checkout handler which takes care of redirections.
 
-```typescript  theme={null}
-// checkout/route.ts
+```typescript icon="square-js" checkout/route.ts theme={null}
 import { Checkout } from "@polar-sh/nextjs";
 
 export const GET = Checkout({
@@ -10360,8 +11826,7 @@ Pass query params to this route.
 
 Create a customer portal where your customer can view orders and subscriptions.
 
-```typescript  theme={null}
-// portal/route.ts
+```typescript icon="square-js" portal/route.ts theme={null}
 import { CustomerPortal } from "@polar-sh/nextjs";
 
 export const GET = CustomerPortal({
@@ -10376,8 +11841,7 @@ export const GET = CustomerPortal({
 
 A simple utility which resolves incoming webhook payloads by signing the webhook secret properly.
 
-```typescript  theme={null}
-// api/webhook/polar/route.ts
+```typescript icon="square-js" api/webhook/polar/route.ts theme={null}
 import { Webhooks } from "@polar-sh/nextjs";
 
 export const POST = Webhooks({
@@ -10426,17 +11890,45 @@ Source: https://polar.sh/docs/integrate/sdk/adapters/nuxt
 
 Payments and Checkouts made dead simple with Nuxt
 
+## Examples
+
+* [With Nuxt](https://github.com/polarsource/examples/tree/main/with-nuxt)
+
 ## Installation
 
-Choose your preferred package manager to install the module:
+Install the required Polar packages using the following command:
 
-`pnpm add @polar-sh/nuxt`
+<Tabs>
+  <Tab title="npm">
+    ```bash Terminal theme={null}
+    npm install zod @polar-sh/nuxt
+    ```
+  </Tab>
+
+  <Tab title="yarn">
+    ```bash Terminal theme={null}
+    yarn add zod @polar-sh/nuxt
+    ```
+  </Tab>
+
+  <Tab title="pnpm">
+    ```bash Terminal theme={null}
+    pnpm add zod @polar-sh/nuxt
+    ```
+  </Tab>
+
+  <Tab title="bun">
+    ```bash Terminal theme={null}
+    bun add zod @polar-sh/nuxt
+    ```
+  </Tab>
+</Tabs>
 
 ### Register the module
 
 Add the module to your `nuxt.config.ts`:
 
-```typescript  theme={null}
+```typescript theme={null}
 export default defineNuxtConfig({
   modules: ["@polar-sh/nuxt"],
 });
@@ -10446,8 +11938,7 @@ export default defineNuxtConfig({
 
 Create a Checkout handler which takes care of redirections.
 
-```typescript  theme={null}
-// server/routes/api/checkout.post.ts
+```typescript icon="square-js" server/routes/api/checkout.post.ts theme={null}
 export default defineEventHandler((event) => {
   const {
     private: { polarAccessToken, polarCheckoutSuccessUrl, polarServer },
@@ -10480,8 +11971,7 @@ Pass query params to this route.
 
 Create a customer portal where your customer can view orders and subscriptions.
 
-```typescript  theme={null}
-// server/routes/api/portal.get.ts
+```typescript icon="square-js" server/routes/api/portal.get.ts theme={null}
 export default defineEventHandler((event) => {
   const {
     private: { polarAccessToken, polarCheckoutSuccessUrl, polarServer },
@@ -10505,8 +11995,7 @@ export default defineEventHandler((event) => {
 
 A simple utility which resolves incoming webhook payloads by signing the webhook secret properly.
 
-```typescript  theme={null}
-// server/routes/webhook/polar.post.ts
+```typescript icon="square-js" server/routes/webhook/polar.post.ts theme={null}
 export default defineEventHandler((event) => {
   const {
     private: { polarWebhookSecret },
@@ -10561,15 +12050,45 @@ Source: https://polar.sh/docs/integrate/sdk/adapters/remix
 
 Payments and Checkouts made dead simple with Remix
 
-```bash  theme={null}
-pnpm install @polar-sh/remix zod
-```
+## Examples
+
+* [With Remix](https://github.com/polarsource/examples/tree/main/with-remix)
+
+## Installation
+
+Install the required Polar packages using the following command:
+
+<Tabs>
+  <Tab title="npm">
+    ```bash Terminal theme={null}
+    npm install zod @polar-sh/remix
+    ```
+  </Tab>
+
+  <Tab title="yarn">
+    ```bash Terminal theme={null}
+    yarn add zod @polar-sh/remix
+    ```
+  </Tab>
+
+  <Tab title="pnpm">
+    ```bash Terminal theme={null}
+    pnpm add zod @polar-sh/remix
+    ```
+  </Tab>
+
+  <Tab title="bun">
+    ```bash Terminal theme={null}
+    bun add zod @polar-sh/remix
+    ```
+  </Tab>
+</Tabs>
 
 ## Checkout
 
 Create a Checkout handler which takes care of redirections.
 
-```typescript  theme={null}
+```typescript icon="square-js" app/routes/checkout.tsx theme={null}
 import { Checkout } from "@polar-sh/remix";
 
 export const loader = Checkout({
@@ -10596,7 +12115,7 @@ Pass query params to this route.
 
 Create a customer portal where your customer can view orders and subscriptions.
 
-```typescript  theme={null}
+```typescript icon="square-js" app/routes/customer-portal.tsx theme={null}
 import { CustomerPortal } from "@polar-sh/remix";
 
 export const loader = CustomerPortal({
@@ -10611,11 +12130,137 @@ export const loader = CustomerPortal({
 
 A simple utility which resolves incoming webhook payloads by signing the webhook secret properly.
 
-```typescript  theme={null}
+```typescript icon="square-js" app/routes/webhook.tsx theme={null}
 import { Webhooks } from "@polar-sh/remix";
 
 export const action = Webhooks({
   webhookSecret: process.env.POLAR_WEBHOOK_SECRET!,
+  onPayload: async (payload) => /** Handle payload */,
+})
+```
+
+### Payload Handlers
+
+The Webhook handler also supports granular handlers for easy integration.
+
+* `onPayload` - Catch-all handler for any incoming Webhook event
+* `onCheckoutCreated` - Triggered when a checkout is created
+* `onCheckoutUpdated` - Triggered when a checkout is updated
+* `onOrderCreated` - Triggered when an order is created
+* `onOrderPaid` - Triggered when an order is paid
+* `onOrderRefunded` - Triggered when an order is refunded
+* `onRefundCreated` - Triggered when a refund is created
+* `onRefundUpdated` - Triggered when a refund is updated
+* `onSubscriptionCreated` - Triggered when a subscription is created
+* `onSubscriptionUpdated` - Triggered when a subscription is updated
+* `onSubscriptionActive` - Triggered when a subscription becomes active
+* `onSubscriptionCanceled` - Triggered when a subscription is canceled
+* `onSubscriptionRevoked` - Triggered when a subscription is revoked
+* `onSubscriptionUncanceled` - Triggered when a subscription cancellation is reversed
+* `onProductCreated` - Triggered when a product is created
+* `onProductUpdated` - Triggered when a product is updated
+* `onOrganizationUpdated` - Triggered when an organization is updated
+* `onBenefitCreated` - Triggered when a benefit is created
+* `onBenefitUpdated` - Triggered when a benefit is updated
+* `onBenefitGrantCreated` - Triggered when a benefit grant is created
+* `onBenefitGrantUpdated` - Triggered when a benefit grant is updated
+* `onBenefitGrantRevoked` - Triggered when a benefit grant is revoked
+* `onCustomerCreated` - Triggered when a customer is created
+* `onCustomerUpdated` - Triggered when a customer is updated
+* `onCustomerDeleted` - Triggered when a customer is deleted
+* `onCustomerStateChanged` - Triggered when a customer state changes
+
+
+# Supabase
+Source: https://polar.sh/docs/integrate/sdk/adapters/supabase
+
+Payments and Checkouts made dead simple with Supabase
+
+## Examples
+
+* [With Supabase and React Router v7](https://github.com/polarsource/examples/tree/main/with-react-router-supabase)
+
+## Installation
+
+Install the required Polar packages using the following command:
+
+<Tabs>
+  <Tab title="npm">
+    ```bash Terminal theme={null}
+    npm install zod @polar-sh/supabase
+    ```
+  </Tab>
+
+  <Tab title="yarn">
+    ```bash Terminal theme={null}
+    yarn add zod @polar-sh/supabase
+    ```
+  </Tab>
+
+  <Tab title="pnpm">
+    ```bash Terminal theme={null}
+    pnpm add zod @polar-sh/supabase
+    ```
+  </Tab>
+
+  <Tab title="bun">
+    ```bash Terminal theme={null}
+    bun add zod @polar-sh/supabase
+    ```
+  </Tab>
+</Tabs>
+
+## Checkout
+
+Create a Checkout handler which takes care of redirections.
+
+```typescript theme={null}
+import { Checkout } from "@polar-sh/supabase";
+
+export const GET = Checkout({
+  accessToken: POLAR_ACCESS_TOKEN,
+  successUrl: POLAR_SUCCESS_URL,
+  returnUrl: "https://myapp.com", // An optional URL which renders a back-button in the Checkout
+  server: "sandbox", // Use sandbox if you're testing Polar - omit the parameter or pass 'production' otherwise
+  theme: "dark", // Enforces the theme - System-preferred theme will be set if left omitted
+});
+```
+
+### Query Params
+
+Pass query params to this route.
+
+* products `?products=123`
+* customerId (optional) `?products=123&customerId=xxx`
+* customerExternalId (optional) `?products=123&customerExternalId=xxx`
+* customerEmail (optional) `?products=123&customerEmail=janedoe@gmail.com`
+* customerName (optional) `?products=123&customerName=Jane`
+* metadata (optional) `URL-Encoded JSON string`
+
+## Customer Portal
+
+Create a customer portal where your customer can view orders and subscriptions.
+
+```typescript theme={null}
+import { CustomerPortal } from "@polar-sh/supabase";
+
+export const GET = CustomerPortal({
+  accessToken: POLAR_ACCESS_TOKEN,
+  getCustomerId: (event) => "", // Function to resolve a Polar Customer ID
+  returnUrl: "https://myapp.com", // An optional URL which renders a back-button in the Customer Portal
+  server: "sandbox", // Use sandbox if you're testing Polar - omit the parameter or pass 'production' otherwise
+});
+```
+
+## Webhooks
+
+A simple utility which resolves incoming webhook payloads by signing the webhook secret properly.
+
+```typescript theme={null}
+import { Webhooks } from '@polar-sh/supabase';
+
+export const POST = Webhooks({
+  webhookSecret: POLAR_WEBHOOK_SECRET,
   onPayload: async (payload) => /** Handle payload */,
 })
 ```
@@ -10657,16 +12302,45 @@ Source: https://polar.sh/docs/integrate/sdk/adapters/sveltekit
 
 Payments and Checkouts made dead simple with Sveltekit
 
-```bash  theme={null}
-pnpm install @polar-sh/sveltekit zod
-```
+## Examples
+
+* [With SvelteKit](https://github.com/polarsource/examples/tree/main/with-sveltekit)
+
+## Installation
+
+Install the required Polar packages using the following command:
+
+<Tabs>
+  <Tab title="npm">
+    ```bash Terminal theme={null}
+    npm install zod @polar-sh/sveltekit
+    ```
+  </Tab>
+
+  <Tab title="yarn">
+    ```bash Terminal theme={null}
+    yarn add zod @polar-sh/sveltekit
+    ```
+  </Tab>
+
+  <Tab title="pnpm">
+    ```bash Terminal theme={null}
+    pnpm add zod @polar-sh/sveltekit
+    ```
+  </Tab>
+
+  <Tab title="bun">
+    ```bash Terminal theme={null}
+    bun add zod @polar-sh/sveltekit
+    ```
+  </Tab>
+</Tabs>
 
 ## Checkout
 
 Create a Checkout handler which takes care of redirections.
 
-```typescript  theme={null}
-// /api/checkout/+server.ts
+```typescript icon="square-js" src/routes/checkout/+server.ts theme={null}
 import { Checkout } from "@polar-sh/sveltekit";
 
 export const GET = Checkout({
@@ -10693,15 +12367,14 @@ Pass query params to this route.
 
 Create a customer portal where your customer can view orders and subscriptions.
 
-```typescript  theme={null}
-// /api/portal/+server.ts
+```typescript icon="square-js" src/routes/portal/+server.ts theme={null}
 import { CustomerPortal } from "@polar-sh/sveltekit";
 
 export const GET = CustomerPortal({
+  server: process.env.POLAR_MODE, // Use sandbox if you're testing Polar - omit the parameter or pass 'production' otherwise
   accessToken: process.env.POLAR_ACCESS_TOKEN,
-  getCustomerId: (event) => "", // Function to resolve a Polar Customer ID
   returnUrl: "https://myapp.com", // An optional URL which renders a back-button in the Customer Portal
-  server: "sandbox", // Use sandbox if you're testing Polar - omit the parameter or pass 'production' otherwise
+  getCustomerId: (event) => "", // Function to resolve a Polar Customer ID
 });
 ```
 
@@ -10709,14 +12382,14 @@ export const GET = CustomerPortal({
 
 A simple utility which resolves incoming webhook payloads by signing the webhook secret properly.
 
-```typescript  theme={null}
-// api/webhook/polar/+server.ts
+```typescript icon="square-js" src/routes/api/webhooks/polar/+server.ts theme={null}
 import { Webhooks } from "@polar-sh/sveltekit";
 
 export const POST = Webhooks({
-  webhookSecret: process.env.POLAR_WEBHOOK_SECRET!,
+  webhookSecret: process.env.POLAR_WEBHOOK_SECRET,
   onPayload: async (payload) => {
     // Handle the payload
+    console.log(payload)
   },
 });
 ```
@@ -10758,14 +12431,45 @@ Source: https://polar.sh/docs/integrate/sdk/adapters/tanstack-start
 
 Payments and Checkouts made dead simple with TanStack Start
 
-<CodeGroup>`npm install @polar-sh/tanstack-start`</CodeGroup>
+## Examples
+
+* [With TanStack Start](https://github.com/polarsource/examples/tree/main/with-tanstack-start)
+
+## Installation
+
+Install the required Polar packages using the following command:
+
+<Tabs>
+  <Tab title="npm">
+    ```bash Terminal theme={null}
+    npm install zod @polar-sh/tanstack-start
+    ```
+  </Tab>
+
+  <Tab title="yarn">
+    ```bash Terminal theme={null}
+    yarn add zod @polar-sh/tanstack-start
+    ```
+  </Tab>
+
+  <Tab title="pnpm">
+    ```bash Terminal theme={null}
+    pnpm add zod @polar-sh/tanstack-start
+    ```
+  </Tab>
+
+  <Tab title="bun">
+    ```bash Terminal theme={null}
+    bun add zod @polar-sh/tanstack-start
+    ```
+  </Tab>
+</Tabs>
 
 ## Checkout
 
 Create a Checkout handler which takes care of redirections.
 
-```typescript  theme={null}
-// routes/api/checkout.ts
+```typescript icon="square-js" routes/api/checkout.ts theme={null}
 import { Checkout } from "@polar-sh/tanstack-start";
 import { createFileRoute } from "@tanstack/react-start";
 
@@ -10799,8 +12503,7 @@ Pass query params to this route.
 
 Create a customer portal where your customer can view orders and subscriptions.
 
-```typescript  theme={null}
-// routes/api/portal.ts
+```typescript icon="square-js" routes/api/portal.ts theme={null}
 import { CustomerPortal } from "@polar-sh/tanstack-start";
 import { createFileRoute } from "@tanstack/react-start";
 import { getSupabaseServerClient } from "~/servers/supabase-server";
@@ -10823,8 +12526,7 @@ export const Route = createFileRoute("/api/portal")({
 
 A simple utility which resolves incoming webhook payloads by signing the webhook secret properly.
 
-```typescript  theme={null}
-// routes/api/webhook/polar.ts
+```typescript icon="square-js" routes/api/webhook/polar.ts theme={null}
 import { Webhooks } from "@polar-sh/tanstack-start";
 import { createFileRoute } from "@tanstack/react-router";
 
@@ -10879,9 +12581,59 @@ The Webhook handler also supports granular handlers for easy integration.
 # Go SDK
 Source: https://polar.sh/docs/integrate/sdk/golang
 
+SDK for Golang
 
+## Examples
 
-Documentation coming soon.
+* [With Go (Gin)](https://github.com/polarsource/examples/tree/main/with-golang-gin)
+
+## Installation
+
+```bash theme={null}
+go get github.com/polarsource/polar-go
+```
+
+## Quickstart
+
+```go icon="golang" main.go theme={null}
+package main
+
+import (
+	"context"
+	polargo "github.com/polarsource/polar-go"
+	"log"
+	"os"
+)
+
+func main() {
+	ctx := context.Background()
+
+	s := polargo.New(
+		polargo.WithSecurity(os.Getenv("POLAR_ACCESS_TOKEN")),
+	)
+
+	res, err := s.Organizations.List(ctx, nil, polargo.Pointer[int64](1), polargo.Pointer[int64](10), nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+	if res.ListResourceOrganization != nil {
+		for {
+			// handle items
+
+			res, err = res.Next()
+
+			if err != nil {
+				// handle error
+			}
+
+			if res == nil {
+				break
+			}
+		}
+	}
+}
+
+```
 
 
 # PHP SDK
@@ -10893,11 +12645,11 @@ A fully-featured PHP SDK for the Polar API.
 
 ### Quickstart
 
-```bash  theme={null}
+```bash Terminal theme={null}
 composer require polar-sh/sdk
 ```
 
-```php  theme={null}
+```php theme={null}
 declare(strict_types=1);
 
 require 'vendor/autoload.php';
@@ -10926,7 +12678,7 @@ foreach ($responses as $response) {
 
 You can configure the SDK so it hits the [sandbox environment](/integrate/sandbox) instead of the production one. You just need to set the server when building the client:
 
-```php  theme={null}
+```php theme={null}
 $sdk = Polar\Polar::builder()
     ->setServer('sandbox')
     ->setSecurity('<YOUR_BEARER_TOKEN_HERE>')
@@ -10944,11 +12696,11 @@ Under the hood, schemas are validated by [Pydantic](https://docs.pydantic.dev/la
 
 ### Quickstart
 
-```bash  theme={null}
+```bash Terminal theme={null}
 pip install polar-sdk
 ```
 
-```python  theme={null}
+```python theme={null}
 # Synchronous Example
 from polar_sdk import Polar
 
@@ -10974,7 +12726,7 @@ if res is not None:
 
 You can configure the SDK so it hits the [sandbox environment](/integrate/sandbox) instead of the production one. You just need to add the `server` argument when instantiating the client:
 
-```python  theme={null}
+```python theme={null}
 s = Polar(
     server="sandbox",
     access_token="<YOUR_BEARER_TOKEN_HERE>",
@@ -10985,24 +12737,46 @@ s = Polar(
 # TypeScript SDK
 Source: https://polar.sh/docs/integrate/sdk/typescript
 
-SDK for JavaScript runtimes (Node.js and browsers)
+SDK for JavaScript runtimes (Node.js and Browser)
 
-### Quickstart
+## Examples
 
-```bash  theme={null}
-pnpm add @polar-sh/sdk
-```
+* [With Node.js](https://github.com/polarsource/examples/tree/main/with-nodejs)
 
-```typescript  theme={null}
+## Installation
+
+<Tabs>
+  <Tab title="npm">
+    ```bash Terminal theme={null}
+    npm install @polar-sh/sdk
+    ```
+  </Tab>
+
+  <Tab title="yarn">
+    ```bash Terminal theme={null}
+    yarn add @polar-sh/sdk
+    ```
+  </Tab>
+
+  <Tab title="pnpm">
+    ```bash Terminal theme={null}
+    pnpm add @polar-sh/sdk
+    ```
+  </Tab>
+</Tabs>
+
+## Quickstart
+
+```typescript icon="square-js" index.js theme={null}
 import { Polar } from '@polar-sh/sdk'
 
 const polar = new Polar({
-  accessToken: process.env['POLAR_ACCESS_TOKEN'] ?? '',
+  accessToken: process.env.POLAR_ACCESS_TOKEN,
+  server: process.env.POLAR_MODE || 'sandbox' // sandbox or production
 })
 
 async function run() {
   const result = await polar.users.benefits.list({})
-
   for await (const page of result) {
     // Handle the page
     console.log(page)
@@ -11011,8 +12785,6 @@ async function run() {
 
 run()
 ```
-
-[Read more](https://github.com/polarsource/polar-js)
 
 <Note>
   **camelCase vs. snake\_case**
@@ -11029,28 +12801,20 @@ run()
 
 ### Framework Adapters
 
-Implement Checkout & Webhook handlers in 5 lines of code.
+Implement Checkout & Webhook handlers in few lines of code.
 
-* [Next.js](/integrate/sdk/adapters/nextjs)
 * [Astro](/integrate/sdk/adapters/astro)
-* [Remix](/integrate/sdk/adapters/remix)
-* [Sveltekit](/integrate/sdk/adapters/sveltekit)
+* [Better Auth](/integrate/sdk/adapters/better-auth)
 * [Deno](/integrate/sdk/adapters/deno)
 * [Elysia](/integrate/sdk/adapters/elysia)
 * [Express](/integrate/sdk/adapters/express)
-* [Fastify](/integrate/sdk/adapters/fastify)
 * [Hono](/integrate/sdk/adapters/hono)
-
-### Sandbox Environment
-
-You can configure the SDK so it hits the [sandbox environment](/integrate/sandbox) instead of the production one. You just need to add the `server` property to the configuration object:
-
-```typescript  theme={null}
-const polar = new Polar({
-  server: 'sandbox',
-  accessToken: process.env['POLAR_ACCESS_TOKEN'] ?? '',
-})
-```
+* [Fastify](/integrate/sdk/adapters/fastify)
+* [Next.js](/integrate/sdk/adapters/nextjs)
+* [Nuxt](/integrate/sdk/adapters/nuxt)
+* [Remix](/integrate/sdk/adapters/remix)
+* [Sveltekit](/integrate/sdk/adapters/sveltekit)
+* [TanStack Start](/integrate/sdk/adapters/tanstack-start)
 
 
 # Handle & monitor webhook deliveries
@@ -11058,9 +12822,9 @@ Source: https://polar.sh/docs/integrate/webhooks/delivery
 
 How to parse, validate and handle webhooks and monitor their deliveries on Polar
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/delivery.light.png?fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=1c5f560bcca11607c67cc7f8b467dca4" data-og-width="2740" width="2740" data-og-height="1522" height="1522" data-path="assets/integrate/webhooks/delivery.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/delivery.light.png?w=280&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=61c5f66e8cb7acab698915171b5bde4e 280w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/delivery.light.png?w=560&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=f452e9e0edebfa7b912f85238d9d7f3c 560w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/delivery.light.png?w=840&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=49d406e3c294cb33ac178f7c61cd81aa 840w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/delivery.light.png?w=1100&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=f2a6770fba4cc61303cc7d84de7db7bb 1100w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/delivery.light.png?w=1650&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=609d960dff8b2cf958e52118b7747365 1650w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/delivery.light.png?w=2500&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=683818fb66539342505f27574af611a5 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/delivery.dark.png?fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=4ce4ac52095eb88c9073c4a18099a0bf" data-og-width="2672" width="2672" data-og-height="1526" height="1526" data-path="assets/integrate/webhooks/delivery.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/delivery.dark.png?w=280&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=623e1747b6245fd84986462620718bcc 280w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/delivery.dark.png?w=560&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=da4785f9e803826575e0a148286e3c43 560w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/delivery.dark.png?w=840&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=0d3e453abcd767cddea396717bc774ec 840w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/delivery.dark.png?w=1100&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=314fcf0248f280018d16f61ff50cb86c 1100w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/delivery.dark.png?w=1650&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=aa74acbb1c73448868054df87bd7e0ad 1650w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/delivery.dark.png?w=2500&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=9117a6ffafa146e98eed1f1f1582a776 2500w" />
+<img />
 
 Once a webhook endpoint is setup you will have access to the delivery overview
 page. Here you can:
@@ -11083,22 +12847,22 @@ Our TypeScript & Python SDKs come with a built-in helper function to easily
 validate and parse the webhook event - see full examples below.
 
 <CodeGroup>
-  ```typescript JS (Express) theme={null}
+  ```typescript icon="square-js" JS (Express) theme={null}
   import express, { Request, Response } from 'express'
   import { validateEvent, WebhookVerificationError } from '@polar-sh/sdk/webhooks'
 
   const app = express()
 
   app.post(
-  '/webhook',
-  express.raw({ type: 'application/json' }),
-  (req: Request, res: Response) => {
-  try {
-  const event = validateEvent(
-  req.body,
-  req.headers,
-  process.env['POLAR_WEBHOOK_SECRET'] ?? '',
-  )
+    '/webhook',
+    express.raw({ type: 'application/json' }),
+    (req: Request, res: Response) => {
+      try {
+        const event = validateEvent(
+          req.body,
+          req.headers,
+          process.env['POLAR_WEBHOOK_SECRET'] ?? '',
+        )
 
         // Process the event
 
@@ -11109,10 +12873,8 @@ validate and parse the webhook event - see full examples below.
         }
         throw error
       }
-
-  },
+    },
   )
-
   ```
 
   ```python Python (Flask) theme={null}
@@ -11201,10 +12963,18 @@ If we hit an error while trying to reach your endpoint, whether it is a temporar
 
 ### Delivery Timeouts
 
-We timeout our requests to your endpoint after **20 seconds**. Triggering a
-retry attempt after a delay as explained above. However, we strongly recommend you optimize your endpoint route to be fast. A
-best practice is for your webhook handler to queue a background worker task to handle the
+We currently timeout our requests to your endpoint after **10 seconds**, triggering a
+retry attempt after a delay as explained above. However, we strongly recommend you optimize your endpoint route to respond within **2 seconds** to ensure reliable delivery. We may lower the timeout threshold in the future, so we advise implementing your webhook handler to queue a background worker task to handle the
 payload asynchronously.
+
+### Endpoint Disabling
+
+Webhook endpoints are automatically disabled after **10 consecutive failed deliveries** (non-2xx responses). When this happens:
+
+* The endpoint is marked as disabled and will no longer receive new events.
+* Admin of the organization will receive an email notification.
+
+To re-enable a disabled endpoint, go to your organization's webhook settings in the dashboard and manually enable it. Before re-enabling, ensure your endpoint is properly configured and reachable to avoid repeated disabling.
 
 ## Troubleshooting
 
@@ -11236,6 +13006,12 @@ any issues arise.
   route exists and see any issues along the way
 * Try adding trailing `/` to the URL on Polar. Often `/foo` is resolved to
   `/foo/` by frameworks.
+
+`HTTP 3xx`
+
+Redirect responses (301, 302, 307, etc.) are treated as failures. Polar does not follow redirects for webhook deliveries. Update your webhook URL to the final destination URL to avoid redirects.
+
+A common cause is hosting providers like Vercel that redirect between `www` and non-`www` domains. Make sure your configured URL matches your actual domain.
 
 `HTTP 403`
 
@@ -11279,17 +13055,17 @@ formatting. Making it a breeze to setup in-chat notifications for your team.
   <Step title="Add new endpoint">
     Head over to your organization settings and click on the `Add Endpoint` button to create a new webhook.
 
-    <img className="block dark:hidden" src="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/create.light.png?fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=23eb5510c1dbd2f511461dfe1e262485" data-og-width="1532" width="1532" data-og-height="389" height="389" data-path="assets/integrate/webhooks/create.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/create.light.png?w=280&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=a351c94bc7d002cfe01d4b90d8ec583f 280w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/create.light.png?w=560&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=bf3519e1ee9851a86af38687e0f485fc 560w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/create.light.png?w=840&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=1da4ac8731e29d4854dfc874051725c0 840w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/create.light.png?w=1100&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=1a925a887349c660469c221438ce8472 1100w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/create.light.png?w=1650&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=0e7d63bd8ed6e7d29c84f6f31d376042 1650w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/create.light.png?w=2500&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=989ec443952fc397adca0fcd68e2ab8d 2500w" />
+    <img />
 
-    <img className="hidden dark:block" src="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/create.dark.png?fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=c86d0770b5dc4d42279d9f1da568edb8" data-og-width="1494" width="1494" data-og-height="388" height="388" data-path="assets/integrate/webhooks/create.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/create.dark.png?w=280&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=32ccd01674a4936933650414fc920523 280w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/create.dark.png?w=560&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=642a4166857e8c82092f035c5055b30c 560w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/create.dark.png?w=840&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=f5dc475d503ecbb05ee41e6c879756f8 840w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/create.dark.png?w=1100&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=1421996da6c06e3cfe3ad7212579e3c4 1100w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/create.dark.png?w=1650&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=ac70b9d0291437b5073e22fe413bee30 1650w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/create.dark.png?w=2500&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=adae7e7ef7b875a18a6582b7b7c2f3c0 2500w" />
+    <img />
   </Step>
 
   <Step title="Specify your endpoint URL">
     Enter the URL to which the webhook events should be sent.
 
-    <img className="block dark:hidden" src="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/url.light.png?fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=7ef69a33df9105e42fd8ab618a30669d" data-og-width="1075" width="1075" data-og-height="402" height="402" data-path="assets/integrate/webhooks/url.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/url.light.png?w=280&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=9b83d589c935a1114d1abe2363ccc320 280w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/url.light.png?w=560&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=7e07c55097be4d033521f8df4cc3d10d 560w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/url.light.png?w=840&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=503ebb430cff99a14ec5a6958479ddfd 840w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/url.light.png?w=1100&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=2f13c432330d46fd247bb7865083c8c5 1100w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/url.light.png?w=1650&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=65760df05d7310fa490cc0b7714dd7fc 1650w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/url.light.png?w=2500&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=806064df619d5c8d9bae4a61688310ad 2500w" />
+    <img />
 
-    <img className="hidden dark:block" src="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/url.dark.png?fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=6a4514f5bd12fcf01ab1aa1bc2b1f26a" data-og-width="1068" width="1068" data-og-height="398" height="398" data-path="assets/integrate/webhooks/url.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/url.dark.png?w=280&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=a2a279ce6d5955c0cb1f79504e880cb1 280w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/url.dark.png?w=560&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=aff292b704a653df95e8f7a0fdbf6c62 560w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/url.dark.png?w=840&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=e05077418ae849f841b8817725095f7b 840w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/url.dark.png?w=1100&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=11a85bb4ca26112804fafa276290e53a 1100w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/url.dark.png?w=1650&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=ff125ccdf3b378753f5022621b0b78a8 1650w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/url.dark.png?w=2500&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=ec6538e59e41c92123760a599197ade0 2500w" />
+    <img />
 
     <Tip>
       **Developing locally?**
@@ -11298,7 +13074,7 @@ formatting. Making it a breeze to setup in-chat notifications for your team.
 
       Once you have `ngrok` you can easily start a tunnel:
 
-      ```bash  theme={null}
+      ```bash Terminal theme={null}
       ngrok http 3000
       ```
 
@@ -11312,9 +13088,9 @@ formatting. Making it a breeze to setup in-chat notifications for your team.
 
     If you wish to send notifications to a Discord or Slack channel, you can select the corresponding format here. Polar will then adapt the payload so properly formatted messages are sent to your channel.
 
-    <img className="block dark:hidden" src="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/format.light.png?fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=77c7f9e6a2f2c3bd1bede381f692908c" data-og-width="1034" width="1034" data-og-height="402" height="402" data-path="assets/integrate/webhooks/format.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/format.light.png?w=280&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=277936fd188888f6e4b81f8973f2f8ac 280w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/format.light.png?w=560&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=acded2e888ca6e24d95d4684793139a9 560w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/format.light.png?w=840&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=566b754e7651e74e8876e4fcb3692467 840w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/format.light.png?w=1100&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=7e607f77f8b1811f5ae45a269fea7afb 1100w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/format.light.png?w=1650&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=ba2313fa067e67b0ec450a2d83643c49 1650w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/format.light.png?w=2500&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=c6e8087507a215a93b47d821c536ea47 2500w" />
+    <img />
 
-    <img className="hidden dark:block" src="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/format.dark.png?fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=896fc481fe7c61892b034380247479ae" data-og-width="1050" width="1050" data-og-height="418" height="418" data-path="assets/integrate/webhooks/format.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/format.dark.png?w=280&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=46a709ed3ee3cc5c0e879e62eda39d87 280w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/format.dark.png?w=560&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=473dd0c2d23a6018519bdc5db9198635 560w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/format.dark.png?w=840&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=360f78fc430b955e0c7148c428c672a1 840w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/format.dark.png?w=1100&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=0182443ea5be4606ce19c61e383b0dbb 1100w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/format.dark.png?w=1650&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=43763ad9655461dd11d8b0a427ac7d86 1650w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/format.dark.png?w=2500&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=d17c85b66413e5749f7681ad3075fda2 2500w" />
+    <img />
 
     If you paste a Discord or Slack Webhook URL, the format will be automatically selected.
   </Step>
@@ -11326,9 +13102,9 @@ formatting. Making it a breeze to setup in-chat notifications for your team.
 
     You can set your own or generate a random one.
 
-    <img className="block dark:hidden" src="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/secret.light.png?fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=e9fa8ce33d0e86d6331813f4a37ab509" data-og-width="1074" width="1074" data-og-height="331" height="331" data-path="assets/integrate/webhooks/secret.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/secret.light.png?w=280&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=4461f60b5496f5ebaabdaaeb21ec3277 280w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/secret.light.png?w=560&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=0d849356d3b2b6fee04f64499211e30c 560w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/secret.light.png?w=840&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=9930ebe92473176eb9609e7a2e519d9a 840w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/secret.light.png?w=1100&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=b973426f396f58c78ba1ed383ca48cd1 1100w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/secret.light.png?w=1650&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=e1cf218d85849a7decda559d7a80bdb9 1650w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/secret.light.png?w=2500&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=cce65883b68b70301736c88079002ee5 2500w" />
+    <img />
 
-    <img className="hidden dark:block" src="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/secret.dark.png?fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=d447062a9726d8d9116aef2984a96cc2" data-og-width="1072" width="1072" data-og-height="332" height="332" data-path="assets/integrate/webhooks/secret.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/secret.dark.png?w=280&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=e95eaeac04c68cdf4ba4fe55bd3cb011 280w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/secret.dark.png?w=560&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=0254c3bbabf858a252aeac0d41a0980e 560w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/secret.dark.png?w=840&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=6e4bb6b660dbd7267967be16dbd683d4 840w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/secret.dark.png?w=1100&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=6200bd4919d56b4d28a836d3ef2adcf5 1100w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/secret.dark.png?w=1650&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=5066f5e1100d89df0c798edb0e4dae2c 1650w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/integrate/webhooks/secret.dark.png?w=2500&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=3e3435cd0dc0323f90420e6302f861e7 2500w" />
+    <img />
   </Step>
 
   <Step title="Subscribe to events">
@@ -11349,57 +13125,67 @@ Our webhook events and in which context they are useful
 
 ### Checkout
 
-<Card title="checkout.created" icon="link" href="/api-reference/webhooks/checkout.created" horizontal />
+<Columns>
+  <Card title="checkout.created" icon="link" href="/api-reference/webhooks/checkout.created" />
 
-<Card title="checkout.updated" icon="link" href="/api-reference/webhooks/checkout.updated" horizontal />
+  <Card title="checkout.updated" icon="link" href="/api-reference/webhooks/checkout.updated" />
+</Columns>
 
 ### Customers
 
-<Card title="customer.created" icon="link" href="/api-reference/webhooks/customer.created" horizontal>
-  Fired when a new customer has been created.
-</Card>
+<Columns>
+  <Card title="customer.created" icon="link" href="/api-reference/webhooks/customer.created">
+    Fired when a new customer has been created.
+  </Card>
 
-<Card title="customer.updated" icon="link" href="/api-reference/webhooks/customer.updated" horizontal>
-  Fired when a customer has been updated.
-</Card>
+  <Card title="customer.updated" icon="link" href="/api-reference/webhooks/customer.updated">
+    Fired when a customer has been updated.
+  </Card>
 
-<Card title="customer.deleted" icon="link" href="/api-reference/webhooks/customer.deleted" horizontal>
-  Fired when a customer has been deleted.
-</Card>
+  <Card title="customer.deleted" icon="link" href="/api-reference/webhooks/customer.deleted">
+    Fired when a customer has been deleted.
+  </Card>
 
-<Card title="customer.state_changed" icon="link" href="/api-reference/webhooks/customer.state_changed" horizontal>
-  Fired when a customer's state has changed. Includes active subscriptions and
-  granted benefits.
-</Card>
+  <Card title="customer.state_changed" icon="link" href="/api-reference/webhooks/customer.state_changed">
+    Fired when a customer's state has changed. Includes active subscriptions and
+    granted benefits.
+  </Card>
+</Columns>
 
 ### Subscriptions
 
 In order to properly implement logic for handling subscriptions, you should look into the following events.
 
-<Card title="subscription.created" icon="link" href="/api-reference/webhooks/subscription.created" horizontal>
-  Fired when a new subscription has been created.
-</Card>
+<Columns>
+  <Card title="subscription.created" icon="link" href="/api-reference/webhooks/subscription.created">
+    Fired when a new subscription has been created.
+  </Card>
 
-<Card title="subscription.updated" icon="link" href="/api-reference/webhooks/subscription.updated" horizontal>
-  Use this event if you want to handle cancellations, un-cancellations, etc. The
-  updated event is a catch-all event for `subscription.active` ,
-  `subscription.canceled`, `subscription.uncanceled` and `subscription.revoked`.
-</Card>
+  <Card title="subscription.active" icon="link" href="/api-reference/webhooks/subscription.active" />
 
-<Card title="order.created" icon="link" href="/api-reference/webhooks/order.created" horizontal>
-  In case you want to do logic when a subscription is renewed, you should listen
-  to `order.created` and the `billing_reason` field. It can be `purchase`,
-  `subscription_create`, `subscription_cycle` and `subscription_update`.
-  `subscription_cycle` is used when subscriptions renew.
-</Card>
+  <Card title="subscription.uncanceled" icon="link" href="/api-reference/webhooks/subscription.uncanceled" />
 
-<Card title="subscription.active" icon="link" href="/api-reference/webhooks/subscription.active" horizontal />
+  <Card title="subscription.canceled" icon="link" href="/api-reference/webhooks/subscription.canceled" />
 
-<Card title="subscription.canceled" icon="link" href="/api-reference/webhooks/subscription.canceled" horizontal />
+  <Card title="subscription.past_due" icon="link" href="/api-reference/webhooks/subscription.past_due">
+    Fired when a subscription payment has failed. The customer can recover by updating their payment method.
+  </Card>
 
-<Card title="subscription.uncanceled" icon="link" href="/api-reference/webhooks/subscription.uncanceled" horizontal />
+  <Card title="subscription.updated" icon="link" href="/api-reference/webhooks/subscription.updated">
+    Use this event if you want to handle cancellations, un-cancellations, etc. The
+    updated event is a catch-all event for `subscription.active`,
+    `subscription.canceled`, `subscription.uncanceled`, `subscription.past_due` and `subscription.revoked`.
+  </Card>
 
-<Card title="subscription.revoked" icon="link" href="/api-reference/webhooks/subscription.revoked" horizontal />
+  <Card title="order.created" icon="link" href="/api-reference/webhooks/order.created">
+    In case you want to do logic when a subscription is renewed, you should listen
+    to `order.created` and the `billing_reason` field. It can be `purchase`,
+    `subscription_create`, `subscription_cycle` and `subscription_update`.
+    `subscription_cycle` is used when subscriptions renew.
+  </Card>
+
+  <Card title="subscription.revoked" icon="link" href="/api-reference/webhooks/subscription.revoked" />
+</Columns>
 
 #### Cancellation Sequences
 
@@ -11455,47 +13241,59 @@ Shortly after the initial renewal events, the platform will trigger a payment fo
 
 Both events will contain the same order data, with the order status changed to `paid`.
 
-### Order
+### Orders
 
-<Card title="order.created" icon="link" href="/api-reference/webhooks/order.created" horizontal />
+<Columns>
+  <Card title="order.created" icon="link" href="/api-reference/webhooks/order.created" />
 
-<Card title="order.paid" icon="link" href="/api-reference/webhooks/order.paid" horizontal />
+  <Card title="order.paid" icon="link" href="/api-reference/webhooks/order.paid" />
 
-<Card title="order.updated" icon="link" href="/api-reference/webhooks/order.updated" horizontal />
+  <Card title="order.updated" icon="link" href="/api-reference/webhooks/order.updated" />
 
-<Card title="order.refunded" icon="link" href="/api-reference/webhooks/order.refunded" horizontal />
+  <Card title="order.refunded" icon="link" href="/api-reference/webhooks/order.refunded" />
+</Columns>
 
 ### Refunds
 
-<Card title="refund.created" icon="link" href="/api-reference/webhooks/refund.created" horizontal />
+<Columns>
+  <Card title="refund.created" icon="link" href="/api-reference/webhooks/refund.created" />
 
-<Card title="refund.updated" icon="link" href="/api-reference/webhooks/refund.updated" horizontal />
+  <Card title="refund.updated" icon="link" href="/api-reference/webhooks/refund.updated" />
+</Columns>
 
 ### Benefit Grants
 
-<Card title="benefit_grant.created" icon="link" href="/api-reference/webhooks/benefit_grant.created" horizontal />
+<Columns>
+  <Card title="benefit_grant.created" icon="link" href="/api-reference/webhooks/benefit_grant.created" />
 
-<Card title="benefit_grant.updated" icon="link" href="/api-reference/webhooks/benefit_grant.updated" horizontal />
+  <Card title="benefit_grant.updated" icon="link" href="/api-reference/webhooks/benefit_grant.updated" />
 
-<Card title="benefit_grant.revoked" icon="link" href="/api-reference/webhooks/benefit_grant.revoked" horizontal />
+  <Card title="benefit_grant.revoked" icon="link" href="/api-reference/webhooks/benefit_grant.revoked" />
+</Columns>
 
 ## Organization Events
 
 ### Benefits
 
-<Card title="benefit.created" icon="link" href="/api-reference/webhooks/benefit.created" horizontal />
+<Columns>
+  <Card title="benefit.created" icon="link" href="/api-reference/webhooks/benefit.created" />
 
-<Card title="benefit.updated" icon="link" href="/api-reference/webhooks/benefit.updated" horizontal />
+  <Card title="benefit.updated" icon="link" href="/api-reference/webhooks/benefit.updated" />
+</Columns>
 
 ### Products
 
-<Card title="product.created" icon="link" href="/api-reference/webhooks/product.created" horizontal />
+<Columns>
+  <Card title="product.created" icon="link" href="/api-reference/webhooks/product.created" />
 
-<Card title="product.updated" icon="link" href="/api-reference/webhooks/product.updated" horizontal />
+  <Card title="product.updated" icon="link" href="/api-reference/webhooks/product.updated" />
+</Columns>
 
 ### Organization
 
-<Card title="organization.updated" icon="link" href="/api-reference/webhooks/organization.updated" horizontal />
+<Columns>
+  <Card title="organization.updated" icon="link" href="/api-reference/webhooks/organization.updated" />
+</Columns>
 
 
 # Polar: Turn Your Software into a Business
@@ -11503,13 +13301,13 @@ Source: https://polar.sh/docs/introduction
 
 The next generation unicorns will be built by smaller teams. Polar makes that dream possible.
 
-<img height="200" src="https://mintcdn.com/polar/tln9ARb2-irqBjrI/assets/welcome.png?fit=max&auto=format&n=tln9ARb2-irqBjrI&q=85&s=77f478097b919ac411345198842e767f" data-og-width="1600" data-og-height="800" data-path="assets/welcome.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/tln9ARb2-irqBjrI/assets/welcome.png?w=280&fit=max&auto=format&n=tln9ARb2-irqBjrI&q=85&s=28bf3e47c929f9e427b17315e00ee1c6 280w, https://mintcdn.com/polar/tln9ARb2-irqBjrI/assets/welcome.png?w=560&fit=max&auto=format&n=tln9ARb2-irqBjrI&q=85&s=260199956236f0a2ead86031d775af58 560w, https://mintcdn.com/polar/tln9ARb2-irqBjrI/assets/welcome.png?w=840&fit=max&auto=format&n=tln9ARb2-irqBjrI&q=85&s=3d013ab760ea72077eb7c8134e8548ee 840w, https://mintcdn.com/polar/tln9ARb2-irqBjrI/assets/welcome.png?w=1100&fit=max&auto=format&n=tln9ARb2-irqBjrI&q=85&s=a2c47966345d43cb3b759117559e4812 1100w, https://mintcdn.com/polar/tln9ARb2-irqBjrI/assets/welcome.png?w=1650&fit=max&auto=format&n=tln9ARb2-irqBjrI&q=85&s=c796c5bc04a8fd9288cc316c60de69fc 1650w, https://mintcdn.com/polar/tln9ARb2-irqBjrI/assets/welcome.png?w=2500&fit=max&auto=format&n=tln9ARb2-irqBjrI&q=85&s=ef0553664980e1fe54d0d9f5c6ca421b 2500w" />
+<img />
 
 ## What is Polar?
 
 Turn your software into a business with Polar. Sell digital products, subscriptions, and more without the hassle of traditional payment systems.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Beyond Payment Processing" icon="credit-card">
     Unlike Stripe that only handles transactions, we provide complete billing
     infrastructure with tax compliance, product management, and automated access
@@ -11554,7 +13352,7 @@ Turn your software into a business with Polar. Sell digital products, subscripti
 
 ### Flexible Product Management
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="One-time Purchases" icon="cart-shopping">
     Sell digital products, courses, templates, or software licenses with instant
     delivery
@@ -11571,11 +13369,11 @@ Turn your software into a business with Polar. Sell digital products, subscripti
 
 ### Powerful Checkout Experience
 
-<img className="block dark:hidden" src="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/introduction/checkout.light.png?fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=46584e16a18277dd02826c4cb7bd022e" data-og-width="5114" width="5114" data-og-height="2634" height="2634" data-path="assets/introduction/checkout.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/introduction/checkout.light.png?w=280&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=21510e8fe4de5b148dd01dee0995ac0c 280w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/introduction/checkout.light.png?w=560&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=72bce537427cca4d98ba9abddf1e7fd7 560w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/introduction/checkout.light.png?w=840&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=60178f415259c421a68bfd32aac9917b 840w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/introduction/checkout.light.png?w=1100&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=d4f97a26d0a84d1c2f3bf3c00fbdd95f 1100w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/introduction/checkout.light.png?w=1650&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=9a05830baaf35382a005488a05a0339f 1650w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/introduction/checkout.light.png?w=2500&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=8f69d0043f8b5f333f62872cb9f67dcc 2500w" />
+<img />
 
-<img className="hidden dark:block" src="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/introduction/checkout.dark.png?fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=0b0e33d58f00d805d8a69b6b0427d66a" data-og-width="5108" width="5108" data-og-height="2632" height="2632" data-path="assets/introduction/checkout.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/introduction/checkout.dark.png?w=280&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=0e0410d0af4eeab8965d201908a75d5a 280w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/introduction/checkout.dark.png?w=560&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=f890d34fdd4c207fb22200d0632dfdba 560w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/introduction/checkout.dark.png?w=840&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=383f251422314162525d5027d26bb383 840w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/introduction/checkout.dark.png?w=1100&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=aa0b5cf0b6f37fb7fdb7e5ef788a0ae7 1100w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/introduction/checkout.dark.png?w=1650&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=5bc29bc1c9481cd0e0ca0bc37f8199c6 1650w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/introduction/checkout.dark.png?w=2500&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=d55ea9c6814f62cca863f002754e21a7 2500w" />
+<img />
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Checkout Links" icon="link" href="/features/checkout/links">
     No-code solution for quick product sales. Create and share instantly.
   </Card>
@@ -11594,7 +13392,7 @@ Turn your software into a business with Polar. Sell digital products, subscripti
 **Set it and forget it**: Configure once, and customers get instant access to
 their benefits automatically. No manual work required.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="License Keys" icon="key" href="/features/benefits/license-keys">
     Generate and deliver software licenses automatically with custom formats
   </Card>
@@ -11624,9 +13422,9 @@ their benefits automatically. No manual work required.
   <Step title="Create Your Account">
     [Sign up for Polar](https://polar.sh/signup) using GitHub, Google, or email. Create an organization to manage your products and customers.
 
-    <img className="block dark:hidden" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/create-org.light.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=b416d158706b4ba00056ba9fbe29657c" data-og-width="2044" width="2044" data-og-height="1664" height="1664" data-path="assets/create-org.light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/create-org.light.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=f367f8bee4da0a2a4c698b281a67c55f 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/create-org.light.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=33706ed67d23149e33a392e669a35394 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/create-org.light.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=bb36c1899e8040449c96bbc9d2766fc9 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/create-org.light.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=cc5a2cefa02e173a44d8cee69906c892 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/create-org.light.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=f30b170b73f62471e70d405db6dbf555 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/create-org.light.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=df816a78009c7c6ff94780c6fa5c70a7 2500w" />
+    <img />
 
-    <img className="hidden dark:block" src="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/create-org.dark.png?fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=59301a615164f57999574c07c7b55f0d" data-og-width="1986" width="1986" data-og-height="1678" height="1678" data-path="assets/create-org.dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/create-org.dark.png?w=280&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=f53b0b62849df5f50f00f03b7034c9b0 280w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/create-org.dark.png?w=560&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=10395cc35b04681cb2fae0695e63c96f 560w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/create-org.dark.png?w=840&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=b55ba88bb0ba84a14cc74898eaa9f4fc 840w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/create-org.dark.png?w=1100&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=8e66502778b17459062169266138e64e 1100w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/create-org.dark.png?w=1650&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=27015fbb4b98a501750e3ff6b786ea09 1650w, https://mintcdn.com/polar/Ut0vPUvE1pIdMcH2/assets/create-org.dark.png?w=2500&fit=max&auto=format&n=Ut0vPUvE1pIdMcH2&q=85&s=4bb9f7c6f7a388a93cf012c46ab421cd 2500w" />
+    <img />
   </Step>
 
   <Step title="Create Your First Product">
@@ -11684,7 +13482,7 @@ their benefits automatically. No manual work required.
 
 ### Framework Adapters (Recommended)
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Next.js" icon="react" href="/integrate/sdk/adapters/nextjs">
     React-based full-stack framework with App Router support
   </Card>
@@ -11703,7 +13501,7 @@ their benefits automatically. No manual work required.
 </CardGroup>
 
 <Expandable title="All 12 supported frameworks">
-  <CardGroup cols={4}>
+  <CardGroup>
     <Card title="Nuxt" href="/integrate/sdk/adapters/nuxt">
       Vue.js framework
     </Card>
@@ -11748,7 +13546,7 @@ their benefits automatically. No manual work required.
 
 ### Native SDKs
 
-<CardGroup cols={4}>
+<CardGroup>
   <Card title="JS/TS" icon="js" href="/integrate/sdk/typescript">
     For web and Node.js applications
   </Card>
@@ -11770,7 +13568,7 @@ their benefits automatically. No manual work required.
 
 <Tabs>
   <Tab title="Individual Developers">
-    <CardGroup cols={2}>
+    <CardGroup>
       <Card title="Ship Faster" icon="rocket">
         Focus on your product, not billing infrastructure. Get to market weeks faster.
       </Card>
@@ -11790,7 +13588,7 @@ their benefits automatically. No manual work required.
   </Tab>
 
   <Tab title="Small Teams">
-    <CardGroup cols={2}>
+    <CardGroup>
       <Card title="No Engineering Overhead" icon="wrench">
         Complete billing solution without months of custom development work.
       </Card>
@@ -11810,7 +13608,7 @@ their benefits automatically. No manual work required.
   </Tab>
 
   <Tab title="Growing Businesses">
-    <CardGroup cols={2}>
+    <CardGroup>
       <Card title="Enterprise Features" icon="building">
         Advanced analytics, custom fields, bulk operations, and priority support.
       </Card>
@@ -11828,7 +13626,7 @@ their benefits automatically. No manual work required.
 
 ## Transparent Pricing
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="4% + 40¢" icon="percent">
     **Per successful transaction**
 
@@ -11854,7 +13652,7 @@ their benefits automatically. No manual work required.
 Polar is built in the open with full transparency and a growing community of
 contributors.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Open Source Codebase" icon="github" href="https://github.com/polarsource/polar">
     Apache 2.0 license with 36+ contributors and growing
   </Card>
@@ -11880,7 +13678,7 @@ contributors.
 
 ## Ready to Start?
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Create Account" icon="user-plus" href="https://polar.sh/signup">
     **Free signup, no credit card required**
 
@@ -11967,19 +13765,19 @@ Don’t hesitate to [reach out to us](/support) in advance in case you’re unsu
   * Quickly & poorly executed websites, products or services
   * Services with a lot of bugs and issues
   * Products, services or websites we determine to have a low trust score
-* Fake testimonials, reviews, and social proof. It's deceptive to consumers which is behaviour we do not tolerate.
+* Fake testimonials, reviews, social proof, and review inflation platforms. It's deceptive to consumers which is behaviour we do not tolerate.
 * Trademark violations
 * "Get rich" schemes or content
-* Gambling & betting services
+* Gambling & betting services (including lootboxes, mystery boxes and pack openings of random nature)
 * Regulated services or products
 * Counterfeit goods
 * Job boards
 * NFT & Crypto assets.
-* Cheating: Utilizing cheat codes, hacks, or any unauthorized modifications that alter gameplay or provide an unfair advantage.
+* Cheating: Utilizing macros, cheat codes, hacks, or any unauthorized modifications that alter gameplay or provide an unfair advantage.
 * Reselling Licenses: Selling, distributing, or otherwise transferring software licenses at reduced prices or without proper authorization.
 * Services to circumvent rules or terms of other services: Attempting to bypass, manipulate, or undermine any established rules, gameplay mechanics, or pricing structures of other vendors/games.
 * Financial services, e.g facilitating transactions, investments or balances for customers.
-* Financial trading, brokerage, or investment advisory services (including insights platforms).
+* Financial trading, trading bots, brokerage, or investment advisory services (including insights platforms).
 * Financial advice, e.g content or services related to tax guidance, wealth management, trading signals, investment strategies etc.
 * IPTV services
 * Virus & Spyware
@@ -11993,7 +13791,9 @@ Don’t hesitate to [reach out to us](/support) in advance in case you’re unsu
 * API & IP cloaking services, e.g services to circumvent IP bans, API rate limits etc.
 * Products or services associated with pseudo-science; clairvoyance, horoscopes, fortune-telling etc.
 * Travel services, reservation services, travel clubs and timeshares
-* Medical advice services or products, e.g. pharmaceutical, weight loss, muscle building.
+* Medical advice services or products, e.g. pharmaceutical, weight loss, muscle building
+* Watermark removal services
+* Third-party content downloaders (e.g., YouTube, Instagram, Snapchat, etc.)
 
 ## Restricted Businesses
 
@@ -12072,7 +13872,7 @@ We’ll soon offer the ability to submit all of this information in advance to s
 
 ### Continuous reviews (Async)
 
-We continuously monitor all transactions across our platform to proactively prevent fraud. In addition to performing asynchronous reviews of accounts at certain sale thresholds. These reviews are often completed within hours and without any additional information required from you.
+We continuously monitor all transactions across our platform to proactively prevent fraud. In addition to performing asynchronous reviews of accounts at certain sale thresholds. These reviews are often completed within a day or two and without any additional information required from you.
 
 You’ll get notified over email that a review is taking place. Payouts will be paused during this time, but it has no impact on your customers’ experience or ability to purchase, subscribe or checkout at any time.
 
@@ -12147,6 +13947,43 @@ For merchants who violate our [acceptable use policies](/merchant-of-record/acce
   * We strive to collaborate with merchants on the best possible path forward. Clear fraud or abuse, however, is immediately blocked.
   * We have to cancel subscriptions and refund payments made in violation of our acceptable use policies for compliance and risk, and strive to do so in collaboration with the merchant.
 
+## Frequently Asked Questions
+
+### Why is my account under review again?
+
+Your account may go through multiple reviews as your business grows. We perform [continuous reviews](#continuous-reviews-async) at certain sales thresholds to maintain platform integrity and prevent fraud. This is a standard practice across payment platforms and is part of our ongoing risk management process.
+
+### Why do you need my social media in settings?
+
+We request social media information as part of our identity verification and fraud prevention processes. This helps us:
+
+* Verify that you're a real business or creator with an online presence
+* Understand your products and services better
+* Ensure compliance with our [acceptable use policies](/merchant-of-record/acceptable-use)
+
+Providing accurate social media information helps speed up the review process and demonstrates the legitimacy of your business.
+
+### Are social media settings visible publicly?
+
+No, your social media settings are not publicly visible. This information is used internally for verification and compliance purposes only. We treat all merchant information with strict confidentiality and use it solely for risk assessment and account review processes.
+
+### Why do I need to share a video recording showing the product working?
+
+To help us verify that everything is working correctly in line with our acceptable use policy, our team would ask you to share a 100% discount code by email. This is our preferred method, as it allows the team to go through the full journey themselves and confirm the automated fulfillment from an unpaid user to a paid user.
+
+Alternatively, you can provide a video recording that clearly shows the complete flow from an unpaid user to a paid user, including how the product is automatically accessible after purchase.
+
+### How does changing the admin of an organization work?
+
+To change the admin of an organization:
+
+1. Invite the new admin to the team via `Settings` > `Members` in the Polar dashboard
+2. Ask that new admin to complete identity verification under `Finance` > `Account` after logging in via that email in the Polar dashboard
+3. Make sure no payout is pending
+4. Send an email from the current admin email to our support confirming the transfer to the new admin
+
+If you need assistance with changing organization ownership or have special circumstances, please contact [support@polar.sh](mailto:support@polar.sh).
+
 
 # Fees
 Source: https://polar.sh/docs/merchant-of-record/fees
@@ -12197,21 +14034,17 @@ Therefore, we might need to intervene and even suspend your account unless swift
 
 ## Payout Fees
 
-While payouts may incur fees charged by the payout providers (such as Stripe), Polar does not add any extra fees or markup. These are strictly the provider’s fees, and Polar does not profit from them.
+While payouts may incur fees charged by our payout provider (Stripe), Polar does not add any extra fees or markup. These are strictly Stripe’s fees, and Polar does not profit from them.
 
 In addition, Polar offers manual withdrawals for developers. Keeping you in control of when to issue payouts.
 
 *Unless you have a Polar balance that you haven't withdrawn for several months, at which point we'll eventually need to trigger a payout on your behalf.*
 
-**Stripe**
+**Fees (Stripe)**
 
 * \$2 per month of active payout(s)
 * 0.25% + \$0.25 per payout
 * Cross border fees (currency conversion): 0.25% (EU) - 1% in other countries.
-
-**Open Collective (Deprecated for new users)**
-
-* 10% on amount transferred
 
 ## Volume pricing
 
@@ -12233,7 +14066,7 @@ infrastructure and international sales tax headaches to us.
 
 **Payment Service Providers (PSPs)**
 
-<img src="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/merchant-of-record/introduction/psp.jpeg?fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=d6ebe86951492acc24c283751030c583" data-og-width="887" width="887" data-og-height="387" height="387" data-path="assets/merchant-of-record/introduction/psp.jpeg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/merchant-of-record/introduction/psp.jpeg?w=280&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=25d8cf1a2ae0adaccb5167475013e6f2 280w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/merchant-of-record/introduction/psp.jpeg?w=560&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=fac4d6d7b5fdc077efd474c16e863dc2 560w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/merchant-of-record/introduction/psp.jpeg?w=840&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=cc360576c276b4e0a025f2f3060aa449 840w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/merchant-of-record/introduction/psp.jpeg?w=1100&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=9db2980a3b5b00b53a66ae5719853f5d 1100w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/merchant-of-record/introduction/psp.jpeg?w=1650&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=effbe04373f198495dd879c5432e9f29 1650w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/merchant-of-record/introduction/psp.jpeg?w=2500&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=dbac7e033111188f629837188252f731 2500w" />
+<img />
 
 Stripe and other Payment Service Providers (PSPs) offer an accessible and convenient abstraction to faciliate transactions on top of underlying credit card networks & banks.
 
@@ -12244,7 +14077,7 @@ Stripe and other Payment Service Providers (PSPs) offer an accessible and conven
 
 **Merchants of Record (MoRs)**
 
-<img src="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/merchant-of-record/introduction/mor.jpeg?fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=f4fee8f5df14dcf7bee87625c2b2d326" data-og-width="887" width="887" data-og-height="507" height="507" data-path="assets/merchant-of-record/introduction/mor.jpeg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/merchant-of-record/introduction/mor.jpeg?w=280&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=ae1577f59bca9cd7de2c2a158e6eca85 280w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/merchant-of-record/introduction/mor.jpeg?w=560&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=edad11494676d31b52007110cfe2912e 560w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/merchant-of-record/introduction/mor.jpeg?w=840&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=e1f1b60e74670bd7312735c9182552eb 840w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/merchant-of-record/introduction/mor.jpeg?w=1100&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=d6ffbc639f044e8ecd59caf7f932fd45 1100w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/merchant-of-record/introduction/mor.jpeg?w=1650&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=79244345ed678e50497d165124b53ebe 1650w, https://mintcdn.com/polar/0Af3hN6-oIM4IHT3/assets/merchant-of-record/introduction/mor.jpeg?w=2500&fit=max&auto=format&n=0Af3hN6-oIM4IHT3&q=85&s=b1479bd9e69b8f89f3ae0658e6525968 2500w" />
+<img />
 
 Merchants of Record offer yet another layer of convenient abstraction to facilitate digital orders on top of the underlying PSPs and transactions. E.g Polar is built on Stripe (+ more PSPs in the future).
 
@@ -12360,6 +14193,18 @@ However, in case of neither we reserve the right to block payments from such cou
 Selling a lot and want to handle this yourself, i.e worth the ongoing costs? Feel free to reach out and we'd be happy to introduce you to our contacts at the accounting firms we use.
 
 We consider MoR a key value-add to Polar, but not the sole reason for Polar to exist. Our ambition is to be the easiest way to monetize for developers. However, we're never going to be the right solution for all use cases. But we'll always salute and help anyone who ships software - regardless of billing platform.
+
+## Frequently Asked Questions
+
+<AccordionGroup>
+  <Accordion title="What is Polar's VAT number?">
+    Polar's VAT number is `EU372061545`. This is an EU One Stop Shop (OSS) registration, which allows non-EU businesses like Polar (a Delaware C Corporation) to handle VAT for all EU countries through a single registration in Ireland.
+  </Accordion>
+
+  <Accordion title="Why doesn't my accounting software recognize this VAT number?">
+    OSS VAT numbers use the `EU` prefix instead of country-specific prefixes (like `IE` for Ireland). Some accounting software predates the OSS program or lacks support for this format. You can manually enter the number if your software allows overriding validation, or contact your software vendor to request OSS number support.
+  </Accordion>
+</AccordionGroup>
 
 
 # null
@@ -12546,7 +14391,7 @@ Ready to make the jump from Lemon Squeezy to Polar? Use the `polar-migrate` CLI 
 
 ### Getting Started
 
-```bash  theme={null}
+```bash Terminal theme={null}
 npx polar-migrate@latest
 ```
 
@@ -12580,7 +14425,7 @@ The support channels you can access differ according to your use of Polar.
 
 | Support channels                                     | Community support | Billing support | Standard support |
 | :--------------------------------------------------- | :---------------: | :-------------: | :--------------: |
-| [Discord Server](#discord) (not an official channel) |         ✓         |        ✗        |         ✓        |
+| [Discord Server](#discord) (not an official channel) |         ✓         |        ✗        |         ✗        |
 | [Email](#email)                                      |         -         |        ✓        |         ✓        |
 
 ## Email

@@ -4,7 +4,6 @@
 title: Product Allotments
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Account Management > Billing > Product Allotments
-source_url: https://docs.datadoghq.com/billing/product_allotments/index.html
 ---
 
 # Product Allotments

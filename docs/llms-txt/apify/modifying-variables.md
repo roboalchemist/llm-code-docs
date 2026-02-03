@@ -6,7 +6,7 @@
 
 ***
 
-In the introduction of this course, we searched for the term **test** on the https://www.cheddar.com/ website and discovered a request to their GraphQL API. The payload looked like this:
+In the introduction of this course, we searched for the term **test** on the [Cheddar](https://www.cheddar.com/) website and discovered a request to their GraphQL API. The payload looked like this:
 
 
 ```
@@ -117,4 +117,4 @@ Depending on the API, doing just this can be sufficient. However, sometimes we w
 
 ## Next up
 
-In the https://docs.apify.com/academy/api-scraping/graphql-scraping/introspection.md we will be walking you through how to learn about a GraphQL API before scraping it by using **introspection**.
+In the [next lesson](https://docs.apify.com/academy/api-scraping/graphql-scraping/introspection.md) we will be walking you through how to learn about a GraphQL API before scraping it by using **introspection**.

@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/plans/charges/invoiceable-vs-noninvoiceable.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Invoiceable vs Uninvoiceable
 
 > In-advance charges can be either invoiceable or not.

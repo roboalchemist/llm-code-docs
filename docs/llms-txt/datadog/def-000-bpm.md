@@ -1,0 +1,29 @@
+# Source: https://docs.datadoghq.com/security/default_rules/def-000-bpm.md
+
+---
+title: >-
+  IAM users should not have IAM inline policies that allow decryption actions on
+  all KMS keys
+description: Datadog, the leading service for cloud-scale monitoring.
+breadcrumbs: >-
+  Docs > Datadog Security > OOTB Rules > IAM users should not have IAM inline
+  policies that allow decryption actions on all KMS keys
+---
+
+# IAM users should not have IAM inline policies that allow decryption actions on all KMS keys
+ 
+## Description{% #description %}
+
+This control examines whether your IAM User inline policies allow AWS KMS decryption actions on all KMS resources. The control will fail if the policy allows any of the following actions on all KMS keys:
+
+- `kms:*`
+- `kms:Decrypt`
+- `kms:ReEncryptFrom`
+
+The control specifically checks the Resource element of the policy and does not consider any conditions specified in the Condition element.
+
+To enhance security, instead of granting permissions for all KMS keys, identify the specific keys that principals need to access encrypted data. Design policies to restrict user permissions to only those keys. For example, instead of allowing kms:Decrypt on all KMS keys, grant this permission only for keys in a particular region relevant to your account. Applying the principle of least privilege helps reduce the risk of unintentional data exposure.
+
+## Remediation{% #remediation %}
+
+See the [IAM Policies and Wildcards](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_wildcards) and [Editing inline policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-edit.html#edit-inline-policy-console) documentation for steps on how to identify and rectify policies that contain overly permissive KMS permissions.

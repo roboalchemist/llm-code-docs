@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replit-workspace/replit-auth.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Replit Auth
 
 > Add user accounts, personalized experiences, and secure access control to your app. Enterprise-grade authentication that works with a single Agent prompt.
@@ -126,7 +130,7 @@ To encourage applications that teach people about Replit, any user that signs up
 ### Common issues
 
 1. **User not recognized after login**
-   * If you're experiencing issues, ask [Replit Assistant](/replitai/assistant) for help debugging your authentication implementation.
+   * If you're experiencing issues, ask [Replit Agent](/replitai/agent) for help debugging your authentication implementation.
 
 2. **Custom icon not displaying**
    * Make sure the icon URL is accessible and in a supported format (PNG or JPG).
@@ -137,5 +141,4 @@ To encourage applications that teach people about Replit, any user that signs up
 ## Additional resources
 
 * [Replit Database Documentation](/cloud-services/storage-and-databases/replit-database)
-* [Replit Assistant](/replitai/assistant)
 * [Replit Agent](/replitai/agent)

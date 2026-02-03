@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/api/playground-endpoints/create-a-playground-endpoint.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create a playground endpoint
 
 > Create a new playground endpoint
@@ -29,17 +33,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: fc986c1b-3ac3-43f2-9eea-591c65a3532e
+              $ref: c9f91f28-a872-4e0d-8c0c-0ffccfd5d2b4
       responses:
         '201':
           description: Endpoint created successfully
           content:
             application/json:
               schema:
-                $ref: de2e1fa8-21f2-491c-ba89-61f1f6d017c0
+                $ref: 4bd06036-0e5a-4d67-ba4b-2f5fbdb818ed
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

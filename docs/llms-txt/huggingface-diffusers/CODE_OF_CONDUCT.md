@@ -1,3 +1,5 @@
+# Source: https://github.com/huggingface/diffusers/blob/main/CODE_OF_CONDUCT.md
+
 # diffusers/CODE_OF_CONDUCT.md at main · huggingface/diffusers · GitHub
 
 The provided HTML content is primarily a navigation menu and a GitHub logo, along with a skip-to-content link. The main content of the HTML is not present in the provided HTML snippet. Therefore, there is no main content to extract and convert into Markdown.

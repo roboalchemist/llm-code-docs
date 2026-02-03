@@ -1,5 +1,9 @@
 # Source: https://docs.giselles.ai/en/faq/application/run-apps.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.giselles.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Run Apps FAQ
 
 > Frequently asked questions about running apps in Giselle
@@ -66,8 +70,3 @@ App executions consume AI model tokens, which are billed based on usage. You can
 
 * [Playground guide](/en/guides/playground) - How to use the Playground
 * [Tasks guide](/en/guides/tasks) - Understanding task history and results
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.giselles.ai/llms.txt

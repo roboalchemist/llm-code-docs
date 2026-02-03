@@ -1,3 +1,5 @@
+# Source: https://embednotionpages.com/blog/use-notion-for-academic-research-and-study-planning
+
 # How to Use Notion for Academic Research and Study Planning: A Step-by-Step Guide
 
 Notion has become a versatile tool for students and academics who seek an organized approach to manage their research and study schedules. Its multipurpose functionality allows users to create structured databases, manage tasks, and consolidate notes, making it particularly useful for academic research. Adapting Notion for educational purposes can streamline processes, offer clarity in organizing research materials, and foster a productive learning environment.

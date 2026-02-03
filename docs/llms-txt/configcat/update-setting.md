@@ -2,20 +2,17 @@
 
 # Update Flag
 
-```
-PATCH 
-/v1/settings/:settingId
-```
+Copy page
 
 This endpoint updates the metadata of a Feature Flag or Setting with a collection of [JSON Patch](https://jsonpatch.com) operations in a specified Config.
 
-Only the `name`, `hint` and `tags` attributes are modifiable by this endpoint. The `tags` attribute is a simple collection of the [tag IDs](https://configcat.com/docs/docs/api/reference/get-tags/.md) attached to the given setting.
+Only the `name`, `hint` and `tags` attributes are modifiable by this endpoint. The `tags` attribute is a simple collection of the [tag IDs](https://configcat.com/docs/api/reference/get-tags.md) attached to the given setting.
 
 The advantage of using JSON Patch is that you can describe individual update operations on a resource without touching attributes that you don't want to change.
 
 For example: We have the following resource.
 
-```
+```json
 {
   "settingId": 5345,
   "key": "myGrandFeature",
@@ -30,11 +27,12 @@ For example: We have the following resource.
     }
   ]
 }
+
 ```
 
 If we send an update request body as below (it changes the `name` and adds the already existing tag with the id `2`):
 
-```
+```json
 [
   {
     "op": "replace", 
@@ -47,11 +45,12 @@ If we send an update request body as below (it changes the `name` and adds the a
     "value": 2
   }
 ]
+
 ```
 
 Only the `name` and `tags` are updated and all the other attributes remain unchanged. So we get a response like this:
 
-```
+```json
 {
   "settingId": 5345, 
   "key": "myGrandFeature", 
@@ -71,6 +70,7 @@ Only the `name` and `tags` are updated and all the other attributes remain uncha
     }
   ]
 }
+
 ```
 
 ## Request[​](#request "Direct link to Request")

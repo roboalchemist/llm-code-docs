@@ -8,9 +8,9 @@ Stripe offers several different onboarding options:
 
 - **Stripe-hosted onboarding**: Your connected accounts go through the onboarding flow in a Stripe-hosted web form.
 - **Embedded onboarding**: You embed the Account onboarding component directly in your application and your connected accounts go through the onboarding flow without leaving your application.
-- **API onboarding**: You use Stripe’s APIs to build your own customized onboarding UI.
+- **API onboarding**: You use the Stripe API to build your own customized onboarding UI.
 
-Choose the onboarding option that best fits your business. Stripe recommends using Stripe-hosted onboarding or Embedded onboarding. These options automatically update to handle changing requirements when they apply to a connected account.
+Choose the onboarding option that best fits your business. We recommend using Stripe-hosted onboarding or Embedded onboarding. These options automatically update to handle changing requirements when they apply to a connected account.
 
 |                                                       | [**STRIPE-HOSTED ONBOARDING**](https://docs.stripe.com/connect/hosted-onboarding.md) | [**EMBEDDED ONBOARDING**](https://docs.stripe.com/connect/embedded-onboarding.md)                                         | [**API ONBOARDING**](https://docs.stripe.com/connect/api-onboarding.md)                                    |
 | ----------------------------------------------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
@@ -24,11 +24,11 @@ Choose the onboarding option that best fits your business. Stripe recommends usi
 
 ## Stripe-hosted onboarding
 
-Stripe-hosted onboarding is a web form hosted by Stripe with your brand’s name, color, and icon, and is localized for all Stripe-supported countries. Stripe-hosted onboarding uses the Accounts API to read an account’s requirements and generate a custom guided flow. It lets the account user upload documents and applies robust data validation, including real-time verification when possible.
+Stripe-hosted onboarding is a web form hosted by Stripe with your brand’s name, color, and icon, and is localized for all Stripe-supported countries. Stripe-hosted onboarding uses the Accounts API to read an account’s requirements and generate a custom guided flow. It lets the account user upload documents and applies data validation, including real-time verification when possible.
 
 Additionally, Stripe-hosted onboarding lets existing connected accounts update their business type or previously submitted details.
 
-Stripe-hosted onboarding with Accounts v1 supports [networked onboarding](https://docs.stripe.com/connect/networked-onboarding.md), which allows owners of multiple Stripe accounts to share certain business information between them. When they onboard an account, they can reuse that information from an existing account instead of resubmitting it.
+Stripe-hosted onboarding with Accounts v1 supports [networked onboarding](https://docs.stripe.com/connect/networked-onboarding.md), which allows owners of multiple Stripe accounts to share certain types of business information between them. When they onboard an account, they can reuse that information from an existing account instead of resubmitting it.
 
 Use Stripe-hosted onboarding if you want Stripe to handle onboarding and reduce the amount of effort for your platform.
 
@@ -40,7 +40,7 @@ Embedded onboarding is a themeable onboarding UI with limited Stripe branding, a
 
 Additionally, Embedded onboarding lets existing connected accounts update their business type or previously submitted details.
 
-Embedded onboarding with Accounts v1 supports [networked onboarding](https://docs.stripe.com/connect/networked-onboarding.md), which allows owners of multiple Stripe accounts to share certain business information between them. When they onboard an account, they can reuse that information from an existing account instead of resubmitting it.
+Embedded onboarding with Accounts v1 supports [networked onboarding](https://docs.stripe.com/connect/networked-onboarding.md), which allows owners of multiple Stripe accounts to share certain types of business information between them. When they onboard an account, they can reuse that information from an existing account instead of resubmitting it.
 
 With embedded onboarding, you get a customized onboarding flow and don’t need to update your onboarding integration as compliance requirements change.
 
@@ -50,6 +50,6 @@ See [Embedded onboarding](https://docs.stripe.com/connect/embedded-onboarding.md
 
 You use the Accounts API to build an onboarding flow and handle identity verification, localization, and error handling for each country your connected accounts onboard in. Your platform is responsible for all interactions with your connected accounts and for collecting all the information needed to verify each account. You must plan on reviewing and updating onboarding requirements at least every 6 months.
 
-Stripe doesn’t recommend this option unless you’re committed to the operational complexity required to build and maintain an API onboarding flow. For a customized onboarding flow, use embedded onboarding.
+We don’t recommend this option unless you’re committed to the operational complexity required to build and maintain an API onboarding flow. For a customized onboarding flow, use embedded onboarding.
 
 See [API onboarding](https://docs.stripe.com/connect/api-onboarding.md) to learn more.

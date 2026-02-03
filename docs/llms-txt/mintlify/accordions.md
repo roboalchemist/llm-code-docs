@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/components/accordions.md
+# Source: https://www.mintlify.com/docs/components/accordions.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Accordions
 
@@ -103,11 +107,11 @@ Group related accordions together using `<AccordionGroup>`. This creates a cohes
 
   Options:
 
-  * [Font Awesome icon](https://fontawesome.com/icons) name
-  * [Lucide icon](https://lucide.dev/icons) name
-  * JSX-compatible SVG code wrapped in curly braces
+  * [Font Awesome](https://fontawesome.com/icons) icon name, if you have the `icons.library` [property](/organize/settings#param-icons) set to `fontawesome` in your `docs.json`
+  * [Lucide](https://lucide.dev/icons) icon name, if you have the `icons.library` [property](/organize/settings#param-icons) set to `lucide` in your `docs.json`
   * URL to an externally hosted icon
   * Path to an icon file in your project
+  * SVG code wrapped in curly braces
 
   For custom SVG icons:
 

@@ -2,7 +2,7 @@
 
 # Ambient Agents Session Sharing
 
-Ambient Agent Session Sharing lets you open, inspect, and continue interacting with agent tasks that are running on remote virtual machines. Whether an Ambient Agent was triggered from [integrations](https://github.com/warpdotdev/gitbook/blob/main/docs/knowledge-and-collaboration/session-sharing/broken-reference/README.md) like Slack, Linear, GitHub Actions, or the [Warp CLI](https://docs.warp.dev/platform/cli), you can view its full session, follow along in real time, ask follow-up questions, and even “fork” the work into your local Warp environment.
+Ambient Agent Session Sharing lets you open, inspect, and continue interacting with agent tasks that are running on remote virtual machines. Whether an Ambient Agent was triggered from [integrations](https://docs.warp.dev/agent-platform/integrations/integrations-overview) like Slack, Linear, GitHub Actions, or the [Warp CLI](https://docs.warp.dev/reference/cli), you can view its full session, follow along in real time, ask follow-up questions, and even "fork" the work into your local Warp environment.
 
 {% embed url="<https://www.loom.com/share/edd662da8de345ae979c4d39eb19c513>" %}
 
@@ -27,10 +27,10 @@ Everything is accessible whether or not Warp is installed on the viewer’s mach
 
 #### 1. Open a remote Ambient Agent run
 
-When an Ambient Agent starts working — for example, from a Slack mention, a Linear issue, or a [cli](https://docs.warp.dev/platform/cli "mention") trigger — Warp attaches a shareable link to the run.
+When an Ambient Agent starts working — for example, from a Slack mention, a Linear issue, or a [CLI](https://docs.warp.dev/reference/cli) trigger — Warp attaches a shareable link to the run.
 
-* From [slack](https://docs.warp.dev/integrations/slack "mention"), click **View Agent** in the agent response to open the session.
-* From [linear](https://docs.warp.dev/integrations/linear "mention"), click the ↗ **Warp** button ("Open in Warp") on the ticket to open the session.
+* From [Slack](https://docs.warp.dev/agent-platform/integrations/slack), click **View Agent** in the agent response to open the session.
+* From [Linear](https://docs.warp.dev/agent-platform/integrations/linear), click the ↗ **Warp** button ("Open in Warp") on the ticket to open the session.
 
 You can also open the session directly in your browser without installing Warp. Here, you’ll see the complete agent session running on a cloud VM, including all steps, logs, and context.
 

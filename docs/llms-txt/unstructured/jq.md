@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/examplecode/tools/jq.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Query JSON with jq
 
 [jq](https://jqlang.org/) is a lightweight and flexible command-line JSON processor. You can use `jq` on a local development machine to

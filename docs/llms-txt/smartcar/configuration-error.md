@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/errors/connect-errors/configuration-error.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Configuration
 
 > This error occurs when the user has encountered an Error page in Connect and has chosen to return to your application.
@@ -21,7 +25,7 @@ Location: https://example.com/callback
 
 On redirect, Connect will return the status code and message of the error that they encountered. This will be triggered if:
 
-* A user tried to directly navigate to a page that is past their current step in Connect (ie. going directly from the Preamble screen to the Permission Grants screen by directly going to connect.smartcar.com/grant).
+* A user tried to directly navigate to a page that is past their current step in Connect (i.e. going directly from the Preamble screen to the Permission Grants screen by directly going to connect.smartcar.com/grant).
 * A user is trying to use Single Select in live mode with a test mode VIN or with a simulated VIN in a non-simulated mode.
 * A user is trying to use Single Select with an invalid mock VIN.
 * A validation error occurs when trying to check compatibility by VIN.

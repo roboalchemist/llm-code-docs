@@ -224,7 +224,7 @@ An example of this object is below:
 ```json
 {
   "attributes": {},
-  "created_at": "{{ now.Year }}-03-15T19:50:09.514267+00:00",
+  "created_at": "2026-03-15T19:50:09.514267+00:00",
   "default_domain": null,
   "description": "",
   "id": "azertyuiopqsdfghjklm",
@@ -251,7 +251,7 @@ An example of this object is below:
   },
   "timezone": "Europe/Dublin",
   "title": "Activity script examples",
-  "updated_at": "{{ now.Year }}-04-21T17:15:35.526498+00:00"
+  "updated_at": "2026-04-21T17:15:35.526498+00:00"
 }
 ```
 
@@ -359,7 +359,7 @@ function HMAC(key, value) {
   return h.digest();
 }
 var kSecret = "wJalrXUtnFEMI/K7MDENG+bPxRfiCYEXAMPLEKEY";
-HMAC(HMAC(HMAC(HMAC("AWS4" + kSecret,"{{ now.Year }}0830"),"us-east-1"),"iam"),"aws4_request");
+HMAC(HMAC(HMAC(HMAC("AWS4" + kSecret,"20260830"),"us-east-1"),"iam"),"aws4_request");
 ```
 
 > Example taken from the [AWS documentation for signing API requests](https://docs.aws.amazon.com/general/latest/gr/sigv4-calculate-signature.md).

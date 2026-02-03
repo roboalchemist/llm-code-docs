@@ -1,5 +1,9 @@
 # Source: https://www.activepieces.com/docs/handbook/engineering/playbooks/releases.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to create Release
 
 Pre-releases are versions of the software that are released before the final version. They are used to test new features and bug fixes before they are released to the public. Pre-releases are typically labeled with a version number that includes a pre-release identifier, such as `official` or `rc`.

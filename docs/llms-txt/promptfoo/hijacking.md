@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/hijacking/
+
 # Hijacking Plugin
 
 The Hijacking red teaming plugin is designed to test whether a large language model can be distracted from its intended system purpose.

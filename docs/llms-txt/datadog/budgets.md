@@ -8,7 +8,6 @@ description: >-
   After starting to ingest costs in Cloud Cost Management, set up budgets and
   visualize how you're tracking against them.
 breadcrumbs: Docs > Cloud Cost Management > Planning > Budgets
-source_url: https://docs.datadoghq.com/planning/budgets/index.html
 ---
 
 # Budgets

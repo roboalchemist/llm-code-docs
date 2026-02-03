@@ -2,8 +2,6 @@
 
 # Source: https://getlago.com/docs/guide/plans/overview.md
 
-# Source: https://getlago.com/docs/guide/plans/charges/overview.md
-
 # Source: https://getlago.com/docs/guide/lago-self-hosted/overview.md
 
 # Source: https://getlago.com/docs/guide/invoicing/overview.md
@@ -12,43 +10,15 @@
 
 # Source: https://getlago.com/docs/guide/invoicing/e-invoicing/overview.md
 
-# Source: https://getlago.com/docs/guide/billable-metrics/aggregation-types/overview.md
-
-# Source: https://getlago.com/docs/guide/analytics/overview.md
-
-# Source: https://getlago.com/docs/guide/wallet-and-prepaid-credits/overview.md
-
-# Source: https://getlago.com/docs/guide/plans/overview.md
-
-# Source: https://getlago.com/docs/guide/plans/charges/overview.md
-
-# Source: https://getlago.com/docs/guide/lago-self-hosted/overview.md
-
-# Source: https://getlago.com/docs/guide/invoicing/overview.md
-
-# Source: https://getlago.com/docs/guide/invoicing/invoicing-settings/overview.md
-
-# Source: https://getlago.com/docs/guide/invoicing/e-invoicing/overview.md
+# Source: https://getlago.com/docs/guide/invoicing/credit-notes/overview.md
 
 # Source: https://getlago.com/docs/guide/billable-metrics/aggregation-types/overview.md
 
 # Source: https://getlago.com/docs/guide/analytics/overview.md
 
-# Source: https://getlago.com/docs/guide/wallet-and-prepaid-credits/overview.md
-
-# Source: https://getlago.com/docs/guide/plans/overview.md
-
-# Source: https://getlago.com/docs/guide/plans/charges/overview.md
-
-# Source: https://getlago.com/docs/guide/lago-self-hosted/overview.md
-
-# Source: https://getlago.com/docs/guide/invoicing/overview.md
-
-# Source: https://getlago.com/docs/guide/invoicing/invoicing-settings/overview.md
-
-# Source: https://getlago.com/docs/guide/billable-metrics/aggregation-types/overview.md
-
-# Source: https://getlago.com/docs/guide/analytics/overview.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Overview
 

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/aegis/
+
 # Aegis: NVIDIA AI Content Safety Dataset
 
 The Aegis plugin uses NVIDIA's [Aegis AI Content Safety Dataset](https://huggingface.co/datasets/nvidia/Aegis-AI-Content-Safety-Dataset-1.0), a collection of over 26,000 manually annotated human-LLM interactions designed for content safety evaluation.

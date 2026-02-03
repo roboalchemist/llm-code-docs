@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/quantization/eetq.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/quantization/eetq.md
 
 # EETQ
 
@@ -19,7 +19,7 @@ git submodule update --init --recursive
 pip install .
 ```
 
-Quantize a model on-the-fly by defining the quantization data type in [EetqConfig](/docs/transformers/v5.0.0rc1/en/main_classes/quantization#transformers.EetqConfig).
+Quantize a model on-the-fly by defining the quantization data type in [EetqConfig](/docs/transformers/v5.0.0/en/main_classes/quantization#transformers.EetqConfig).
 
 ```py
 from transformers import AutoModelForCausalLM, EetqConfig
@@ -33,7 +33,7 @@ model = AutoModelForCausalLM.from_pretrained(
 )
 ```
 
-Save the quantized model with [save_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.save_pretrained) so it can be reused again with [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained).
+Save the quantized model with [save_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.save_pretrained) so it can be reused again with [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained).
 
 ```py
 quant_path = "/path/to/save/quantized/model"

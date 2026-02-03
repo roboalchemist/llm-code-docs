@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/assistant/context-snippets-overview.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Context snippets overview
 
 > Retrieve context snippets from your assistant's knowledge base.
@@ -16,7 +20,7 @@ Retrieving context snippets is useful for performing tasks like the following:
 
 ## SDK support
 
-The Pinecone [Python SDK](/reference/python-sdk) and [Node.js SDK](/reference/node-sdk) provide convenient programmatic access to [retrieve context snippets](/reference/api/latest/assistant/context_assistant).
+The Pinecone [Python SDK](/reference/sdks/python/overview) and [Node.js SDK](/reference/sdks/node/overview) provide convenient programmatic access to [retrieve context snippets](/reference/api/latest/assistant/context_assistant).
 
 ## Pricing
 

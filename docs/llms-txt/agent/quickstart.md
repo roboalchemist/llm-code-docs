@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/knowledge-agents/quickstart.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Knowledge Agent Quickstart
 
 > Build your first action-taking knowledge agent in under 10 minutes

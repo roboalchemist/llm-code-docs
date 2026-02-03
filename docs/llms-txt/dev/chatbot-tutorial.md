@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/agent-builder/chatbot-tutorial.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Build a chatbot connected to a Knowledge Graph
 
 Agent Builder contains prebuilt UI and blueprint blocks that you can combine to build a full-featured chatbot.

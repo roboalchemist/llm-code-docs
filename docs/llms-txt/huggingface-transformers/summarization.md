@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/tasks/summarization.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/tasks/summarization.md
 
 # Summarization
 
@@ -38,7 +38,7 @@ Start by loading the smaller California state bill subset of the BillSum dataset
 >>> billsum = load_dataset("billsum", split="ca_test")
 ```
 
-Split the dataset into a train and test set with the [train_test_split](https://huggingface.co/docs/datasets/v4.4.1/en/package_reference/main_classes#datasets.Dataset.train_test_split) method:
+Split the dataset into a train and test set with the [train_test_split](https://huggingface.co/docs/datasets/v4.5.0/en/package_reference/main_classes#datasets.Dataset.train_test_split) method:
 
 ```py
 >>> billsum = billsum.train_test_split(test_size=0.2)
@@ -88,13 +88,13 @@ The preprocessing function you want to create needs to:
 ...     return model_inputs
 ```
 
-To apply the preprocessing function over the entire dataset, use 🤗 Datasets [map](https://huggingface.co/docs/datasets/v4.4.1/en/package_reference/main_classes#datasets.Dataset.map) method. You can speed up the `map` function by setting `batched=True` to process multiple elements of the dataset at once:
+To apply the preprocessing function over the entire dataset, use 🤗 Datasets [map](https://huggingface.co/docs/datasets/v4.5.0/en/package_reference/main_classes#datasets.Dataset.map) method. You can speed up the `map` function by setting `batched=True` to process multiple elements of the dataset at once:
 
 ```py
 >>> tokenized_billsum = billsum.map(preprocess_function, batched=True)
 ```
 
-Now create a batch of examples using [DataCollatorForSeq2Seq](/docs/transformers/v5.0.0rc1/en/main_classes/data_collator#transformers.DataCollatorForSeq2Seq). It's more efficient to *dynamically pad* the sentences to the longest length in a batch during collation, instead of padding the whole dataset to the maximum length.
+Now create a batch of examples using [DataCollatorForSeq2Seq](/docs/transformers/v5.0.0/en/main_classes/data_collator#transformers.DataCollatorForSeq2Seq). It's more efficient to *dynamically pad* the sentences to the longest length in a batch during collation, instead of padding the whole dataset to the maximum length.
 
 ```py
 >>> from transformers import DataCollatorForSeq2Seq
@@ -135,9 +135,9 @@ Your `compute_metrics` function is ready to go now, and you'll return to it when
 
 ## Train
 
-If you aren't familiar with finetuning a model with the [Trainer](/docs/transformers/v5.0.0rc1/en/main_classes/trainer#transformers.Trainer), take a look at the basic tutorial [here](../training#train-with-pytorch-trainer)!
+If you aren't familiar with finetuning a model with the [Trainer](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.Trainer), take a look at the basic tutorial [here](../training#train-with-pytorch-trainer)!
 
-You're ready to start training your model now! Load T5 with [AutoModelForSeq2SeqLM](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoModelForSeq2SeqLM):
+You're ready to start training your model now! Load T5 with [AutoModelForSeq2SeqLM](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoModelForSeq2SeqLM):
 
 ```py
 >>> from transformers import AutoModelForSeq2SeqLM, Seq2SeqTrainingArguments, Seq2SeqTrainer
@@ -147,9 +147,9 @@ You're ready to start training your model now! Load T5 with [AutoModelForSeq2Seq
 
 At this point, only three steps remain:
 
-1. Define your training hyperparameters in [Seq2SeqTrainingArguments](/docs/transformers/v5.0.0rc1/en/main_classes/trainer#transformers.Seq2SeqTrainingArguments). The only required parameter is `output_dir` which specifies where to save your model. You'll push this model to the Hub by setting `push_to_hub=True` (you need to be signed in to Hugging Face to upload your model). At the end of each epoch, the [Trainer](/docs/transformers/v5.0.0rc1/en/main_classes/trainer#transformers.Trainer) will evaluate the ROUGE metric and save the training checkpoint.
-2. Pass the training arguments to [Seq2SeqTrainer](/docs/transformers/v5.0.0rc1/en/main_classes/trainer#transformers.Seq2SeqTrainer) along with the model, dataset, tokenizer, data collator, and `compute_metrics` function.
-3. Call [train()](/docs/transformers/v5.0.0rc1/en/main_classes/trainer#transformers.Trainer.train) to finetune your model.
+1. Define your training hyperparameters in [Seq2SeqTrainingArguments](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.Seq2SeqTrainingArguments). The only required parameter is `output_dir` which specifies where to save your model. You'll push this model to the Hub by setting `push_to_hub=True` (you need to be signed in to Hugging Face to upload your model). At the end of each epoch, the [Trainer](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.Trainer) will evaluate the ROUGE metric and save the training checkpoint.
+2. Pass the training arguments to [Seq2SeqTrainer](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.Seq2SeqTrainer) along with the model, dataset, tokenizer, data collator, and `compute_metrics` function.
+3. Call [train()](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.Trainer.train) to finetune your model.
 
 ```py
 >>> training_args = Seq2SeqTrainingArguments(
@@ -179,7 +179,7 @@ At this point, only three steps remain:
 >>> trainer.train()
 ```
 
-Once training is completed, share your model to the Hub with the [push_to_hub()](/docs/transformers/v5.0.0rc1/en/main_classes/trainer#transformers.Trainer.push_to_hub) method so everyone can use your model:
+Once training is completed, share your model to the Hub with the [push_to_hub()](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.Trainer.push_to_hub) method so everyone can use your model:
 
 ```py
 >>> trainer.push_to_hub()
@@ -198,7 +198,7 @@ Come up with some text you'd like to summarize. For T5, you need to prefix your 
 >>> text = "summarize: The Inflation Reduction Act lowers prescription drug costs, health care costs, and energy costs. It's the most aggressive action on tackling the climate crisis in American history, which will lift up American workers and create good-paying, union jobs across the country. It'll lower the deficit and ask the ultra-wealthy and corporations to pay their fair share. And no one making under $400,000 per year will pay a penny more in taxes."
 ```
 
-The simplest way to try out your finetuned model for inference is to use it in a [pipeline()](/docs/transformers/v5.0.0rc1/en/main_classes/pipelines#transformers.pipeline). Instantiate a `pipeline` for summarization with your model, and pass your text to it:
+The simplest way to try out your finetuned model for inference is to use it in a [pipeline()](/docs/transformers/v5.0.0/en/main_classes/pipelines#transformers.pipeline). Instantiate a `pipeline` for summarization with your model, and pass your text to it:
 
 ```py
 >>> from transformers import pipeline
@@ -219,7 +219,7 @@ Tokenize the text and return the `input_ids` as PyTorch tensors:
 >>> inputs = tokenizer(text, return_tensors="pt").input_ids
 ```
 
-Use the [generate()](/docs/transformers/v5.0.0rc1/en/main_classes/text_generation#transformers.GenerationMixin.generate) method to create the summarization. For more details about the different text generation strategies and parameters for controlling generation, check out the [Text Generation](../main_classes/text_generation) API.
+Use the [generate()](/docs/transformers/v5.0.0/en/main_classes/text_generation#transformers.GenerationMixin.generate) method to create the summarization. For more details about the different text generation strategies and parameters for controlling generation, check out the [Text Generation](../main_classes/text_generation) API.
 
 ```py
 >>> from transformers import AutoModelForSeq2SeqLM

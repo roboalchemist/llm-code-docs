@@ -2,17 +2,9 @@
 
 # Source: https://bun.com/docs/guides/runtime/typescript.md
 
-# Source: https://bun.com/docs/typescript.md
-
-# Source: https://bun.com/docs/guides/runtime/typescript.md
-
-# Source: https://bun.com/docs/typescript.md
-
-# Source: https://bun.com/docs/guides/runtime/typescript.md
-
-# Source: https://bun.com/docs/typescript.md
-
-# Source: https://bun.com/docs/guides/runtime/typescript.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Install TypeScript declarations for Bun
 
@@ -60,4 +52,4 @@ Below is the full set of recommended `compilerOptions` for a Bun project. With t
 
 ***
 
-Refer to [Ecosystem > TypeScript](https://bun.com/docs/runtime/typescript) for a complete guide to TypeScript support in Bun.
+Refer to [Ecosystem > TypeScript](/runtime/typescript) for a complete guide to TypeScript support in Bun.

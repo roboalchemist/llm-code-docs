@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/billing-payments.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Billing & Payments
 
 > Learn how manage billing & payments within Aptible

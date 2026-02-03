@@ -1,0 +1,219 @@
+# Source: https://www.mintlify.com/docs/guides/internationalization.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Internationalization
+
+> Set up multi-language documentation to reach global audiences.
+
+Internationalization (i18n) is the process of designing software or content to work for different languages and locales. This guide explains how to structure files, configure navigation, and maintain translations effectively so that you can help users access your documentation in their preferred language and improve global reach.
+
+## File structure
+
+Organize translated content in language-specific directories to keep your documentation maintainable and structure your navigation by language.
+
+Create a separate directory for each language using [ISO 639-1 language codes](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes). Place translated files in these directories with the same structure as your default language.
+
+<Expandable title="supported language codes">
+  * `ar` - Arabic
+  * `cs` - Czech
+  * `cn` or `zh-Hans` - Chinese (Simplified)
+  * `zh-Hant` - Chinese (Traditional)
+  * `de` - German
+  * `en` - English
+  * `es` - Spanish
+  * `fr` - French
+  * `he` - Hebrew
+  * `hi` - Hindi
+  * `id` - Indonesian
+  * `it` - Italian
+  * `jp` - Japanese
+  * `ko` - Korean
+  * `lv` - Latvian
+  * `nl` - Dutch
+  * `no` - Norwegian
+  * `pl` - Polish
+  * `pt` or `pt-BR` - Portuguese
+  * `ro` - Romanian
+  * `ru` - Russian
+  * `sv` - Swedish
+  * `tr` - Turkish
+  * `ua` - Ukrainian
+  * `uz` - Uzbek
+  * `vi` - Vietnamese
+</Expandable>
+
+```text Example file structure theme={null}
+docs/
+├── index.mdx                    # English (default)
+├── quickstart.mdx
+├── fr/
+│   ├── index.mdx               # French
+│   ├── quickstart.mdx
+├── es/
+│   ├── index.mdx               # Spanish
+│   ├── quickstart.mdx
+└── zh/
+    ├── index.mdx               # Chinese
+    └── quickstart.mdx
+```
+
+<Tip>
+  Keep the same file names and directory structure across all languages. This makes it easier to maintain translations and identify missing content.
+</Tip>
+
+## Configure the language switcher
+
+To add a language switcher to your documentation, configure the `languages` array in your `docs.json` navigation.
+
+```json docs.json theme={null}
+{
+  "navigation": {
+    "languages": [
+      {
+        "language": "en",
+        "groups": [
+          {
+            "group": "Getting started",
+            "pages": ["index", "quickstart"]
+          }
+        ]
+      },
+      {
+        "language": "es",
+        "groups": [
+          {
+            "group": "Comenzando",
+            "pages": ["es/index", "es/quickstart"]
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+Each language entry in the `languages` array requires:
+
+* `language`: ISO 639-1 language code
+* Full navigation structure
+* Paths to translated files
+
+The navigation structure can differ between languages to accommodate language-specific content needs.
+
+<Tip>
+  Translate navigation labels like group or tab names to match the language of the content. This creates a fully localized experience for your users.
+</Tip>
+
+### Global navigation
+
+To add global navigation elements that appear across all languages, configure the `global` object in your `docs.json` navigation.
+
+```json docs.json theme={null}
+{
+  "navigation": {
+    "global": {
+      "anchors": [
+        {
+          "anchor": "Documentation",
+          "href": "https://example.com/docs"
+        },
+        {
+          "anchor": "Blog",
+          "href": "https://example.com/blog"
+        }
+      ]
+    },
+    "languages": [
+      // Language-specific navigation
+    ]
+  }
+}
+```
+
+## Maintain translations
+
+Keep translations accurate and synchronized with your source content.
+
+### Translation workflow
+
+1. Update source content in your primary language.
+2. Identify changed content.
+3. Translate changed content.
+4. Review translations for accuracy.
+5. Update translated files.
+6. Verify navigation and links work.
+
+### Automated translations
+
+For automated translation solutions, [contact the Mintlify sales team](mailto:gtm@mintlify.com).
+
+### Images and media
+
+Store translated images in language-specific directories.
+
+```
+images/
+├── dashboard.png          # English version
+├── fr/
+│   └── dashboard.png     # French version
+└── es/
+    └── dashboard.png     # Spanish version
+```
+
+Reference images using relative paths in your translated content.
+
+```mdx es/index.mdx theme={null}
+![Captura de pantalla del panel de control](/images/es/dashboard.png)
+```
+
+## SEO for multi-language sites
+
+Optimize each language version for search engines.
+
+### Page metadata
+
+Include translated metadata in each file's frontmatter:
+
+```mdx fr/index.mdx theme={null}
+---
+title: "Commencer"
+description: "Apprenez à commencer avec notre produit."
+keywords: ["démarrage", "tutoriel", "guide"]
+---
+```
+
+## Best practices
+
+### Date and number formats
+
+Consider locale-specific formatting for dates and numbers.
+
+* Date formats: MM/DD/YYYY vs DD/MM/YYYY
+* Number formats: 1,000.00 vs 1.000,00
+* Currency symbols: \$100.00 vs 100,00€
+
+Include examples in the appropriate format for each language or use universally understood formats.
+
+### Maintain consistency
+
+* Maintain content parity across all languages to ensure every user gets the same quality of information.
+* Create a translation glossary for technical terms.
+* Keep the same content structure across languages.
+* Match the tone and style of your source content.
+* Use Git branches to manage translation work separately from main content updates.
+
+### Layout differences
+
+Some languages require more or less space than English. Test your translated content on different screen sizes to ensure:
+
+* Navigation fits properly.
+* Code blocks don't overflow.
+* Tables and other formatted text remain readable.
+* Images scale appropriately.
+
+### Character encoding
+
+Ensure your development environment and deployment pipeline support UTF-8 encoding to properly display all characters in languages with different alphabets and special characters.

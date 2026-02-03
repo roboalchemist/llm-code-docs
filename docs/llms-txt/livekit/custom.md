@@ -1,140 +1,319 @@
-# Source: https://docs.livekit.io/agents/ops/deployment/custom.md
+# Source: https://docs.livekit.io/frontends/authentication/tokens/custom.md
 
-LiveKit docs › Agent deployment › Custom deployments
+LiveKit docs › Authentication › Tokens › Custom token generation
 
 ---
 
-# Deploying to custom environments
+# Custom token generation
 
-> Guide to running LiveKit Agents in a custom environment.
+> Use a pre-existing token generation mechanism with LiveKit SDKs.
 
 ## Overview
 
-LiveKit agents are ready to deploy to any container orchestration system such as Kubernetes. The framework uses a worker pool model and job dispatch is automatically balanced by LiveKit server across available agent servers. The agent servers themselves spawn a new sub-process for each job, and that job is where your code and agent participant run.
+If you already have a way of generating LiveKit tokens and don't want to use [sandbox token generation](https://docs.livekit.io/frontends/authentication/tokens/sandbox-token-server.md) or [endpoint token generation](https://docs.livekit.io/frontends/authentication/tokens/endpoint.md), you can use a custom `TokenSource` to get token caching and automatic refreshing.
 
-## Project setup
+### Caching tokens
 
-Deploying to a production environment generally requires a simple `Dockerfile` that builds and runs an agent server, and a deployment platform that scales your agent server pool based on load.
+`TokenSource.custom` will refetch cached tokens when it expires, or when the input parameters passed into the `fetch` method changes.
 
-The following starter projects each include a working Dockerfile and CI configuration.
+If you'd like to avoid the automatic caching behavior or handle it manually, see [`TokenSource.literal`](https://github.com/livekit/client-sdk-js?tab=readme-ov-file#tokensourceliteral).
 
-- **[Python Voice Agent](https://github.com/livekit-examples/agent-starter-python)**: A production-ready voice AI starter project for Python.
+## Use a custom TokenSource
 
-- **[Node.js Voice Agent](https://github.com/livekit-examples/agent-starter-node)**: A production-ready voice AI starter project for Node.js.
+This example shows how to use a custom `TokenSource` to connect to a LiveKit room.
 
-## Where to deploy
+**JavaScript**:
 
-LiveKit Agents can be deployed almost anywhere. The LiveKit team and community have found the following deployment platforms to be the easiest and most cost-effective to use.
+```typescript
+import { Room, TokenSource } from 'livekit-client';
 
-- **[LiveKit Cloud](https://docs.livekit.io/agents/ops/deployment.md)**: Run your agent on the same network and infrastructure that serves LiveKit Cloud, with builds, deployment, and scaling handled for you.
+const LIVEKIT_URL = "%{wsURL}%";
 
-- **[Kubernetes](https://github.com/livekit-examples/agent-deployment/tree/main/kubernetes)**: Sample configuration for deploying and autoscaling LiveKit Agents on Kubernetes.
+// Create the TokenSource
+const tokenSource = TokenSource.custom(async (options) => {
+  // Run your custom token generation logic, using values in `options` as inputs
+  // ie, something like:
+  const participantToken = await customTokenGenerationFunction(options.roomName, options.participantName, options.agentName, /* etc */);
 
-- **[Render](https://github.com/livekit-examples/agent-deployment/tree/main/render)**: Sample configuration for deploying and autoscaling LiveKit Agents on Render.
+  return { serverUrl: LIVEKIT_URL, participantToken };
+});
 
-- **[More deployment examples](https://github.com/livekit-examples/agent-deployment)**: Example `Dockerfile` and configuration files for a variety of deployment platforms.
+// Generate a new token (cached and automatically refreshed as needed)
+const { serverUrl, participantToken } = await tokenSource.fetch({ roomName: "room name to join" });
 
-## Networking
-
-Agent servers use a WebSocket connection to register with LiveKit server and accept incoming jobs. This means that agent servers do not need to expose any inbound hosts or ports to the public internet.
-
-You may optionally expose a private health check endpoint for monitoring, but this is not required for normal operation. The default health check server listens on `http://0.0.0.0:8081/`.
-
-## Environment variables
-
-It is best to configure your agent server with environment variables for secrets like API keys. In addition to the LiveKit variables, you are likely to need additional keys for external services your agent depends on.
-
-For instance, an agent built with the [Voice AI quickstart](https://docs.livekit.io/agents/start/voice-ai.md) needs the following keys at a minimum:
-
-** Filename: `.env`**
-
-```shell
-DEEPGRAM_API_KEY=<Your Deepgram API Key>
-OPENAI_API_KEY=<Your OpenAI API Key>
-CARTESIA_API_KEY=<Your Cartesia API Key>
-LIVEKIT_API_KEY=%{apiKey}%
-LIVEKIT_API_SECRET=%{apiSecret}%
-LIVEKIT_URL=%{wsURL}%
+// Use the generated token to connect to a room
+const room = new Room();
+room.connect(serverUrl, participantToken);
 
 ```
 
-> ❗ **Project environments**
-> 
-> It's recommended to use a separate LiveKit instance for staging, production, and development environments. This ensures you can continue working on your agent locally without accidentally processing real user traffic.
-> 
-> In LiveKit Cloud, make a separate project for each environment. Each has a unique URL, API key, and secret.
-> 
-> For self-hosted LiveKit server, use a separate deployment for staging and production and a local server for development.
+---
 
-## Storage
+**React**:
 
-Agent server and job processes have no particular storage requirements beyond the size of the Docker image itself (typically <1GB). 10GB of ephemeral storage should be more than enough to account for this and any temporary storage needs your app has.
+```typescript
+import { TokenSource } from 'livekit-client';
+import { useSession, SessionProvider } from '@livekit/components-react';
 
-## Memory and CPU
+const LIVEKIT_URL = "%{wsURL}%";
 
-Memory and CPU requirements vary significantly based on the specific details of your app. For instance, agents that use [enhanced noise cancellation](https://docs.livekit.io/cloud/noise-cancellation.md) or the [LiveKit turn detector](https://docs.livekit.io/agents/build/turns/turn-detector.md) require more CPU and memory than those that don't. In some cases, the memory requirements might exceed the amount available on a cloud provider's free tier.
+// Create the TokenSource
+// 
+// If your TokenSource.custom relies on other dependencies other than `options`, be
+// sure to wrap it in a `useMemo` so that the reference stays stable.
+const tokenSource = TokenSource.custom(async (options) => {
+  // Run your custom token generation logic, using values in `options` as inputs
+  // ie, something like:
+  const participantToken = await customTokenGenerationFunction(options.roomName, options.participantName, options.agentName, /* etc */);
 
-LiveKit recommends 4 cores and 8GB per agent server as a starting rule for most voice AI apps. This agent server can handle 10-25 concurrent jobs, depending on the components in use.
+  return { serverUrl: LIVEKIT_URL, participantToken };
+});
 
-> ℹ️ **Real world load test results**
-> 
-> LiveKit ran a load test to evaluate the memory and CPU requirements of a typical voice-to-voice app.
-> 
-> - 30 agents each placed in their own LiveKit Cloud room.
-> - 30 simulated user participants, one in each room.
-> - Each simulated participant published looping speech audio to the agents.
-> - Each agent subscribed to the incoming audio of the user and ran the Silero VAD plugin.
-> - Each agent published their own audio (simple looping sine wave).
-> - One additional user participant with a corresponding voice AI agent to ensure subjective quality of service.
-> 
-> This test ran all agents on a single 4-Core, 8GB machine. This machine reached peak usage of:
-> 
-> - CPU: ~3.8 cores utilized
-> - Memory: ~2.8GB used
+export const MyPage = () => {
+  const session = useSession(tokenSource, { roomName: "room name to join" });
 
-## Rollout
+  // Start the session when the component mounts, and end the session when the component unmounts
+  useEffect(() => {
+    session.start();
+    return () => {
+      session.end();
+    };
+  }, []);
 
-Agent servers stop accepting jobs upon `SIGINT` or `SIGTERM`. Any job still running on the agent server continues to run to completion. It's important that you configure a large enough grace period such that your jobs can finish without interrupting the user experience.
+  return (
+    <SessionProvider session={session}>
+      <MyComponent />
+    </SessionProvider>
+  )
+}
 
-Voice AI apps might require a 10+ minute grace period to allow for conversations to finish.
+export const MyComponent = () => {
+  // Access the session available via the context to build your app
+  // ie, show a list of all camera tracks:
+  const cameraTracks = useTracks([Track.Source.Camera], {onlySubscribed: true});
+  return (
+    <>
+      {cameraTracks.map((trackReference) => {
+        return (
+          <VideoTrack {...trackReference} />
+        )
+      })}
+    </>
+  )
+}
 
-Different deployment platforms have different ways of setting this grace period. In Kubernetes, it's the `terminationGracePeriodSeconds` field in the pod spec.
-
-Consult your deployment platform's documentation for more information.
-
-## Load balancing
-
-LiveKit server includes a built-in balanced job distribution system. This system peforms round-robin distribution with a single-assignment principle that ensures each job is assigned to only one agent server. If an agent server fails to accept the job within a predetermined timeout period, the job is sent to another available agent server instead.
-
-LiveKit Cloud additionally exercises geographic affinity to prioritize matching users and agent servers that are geographically closest to each other. This ensures the lowest possible latency between users and agents.
-
-## Agent server availability
-
-Agent server availability is defined by the `load_fnc` and `load_threshold` parameters in the `AgentServer` constructor. The `load_fnc` must return a value between 0 and 1, indicating how busy the agent server is. `load_threshold` is the load value above which the agent server stops accepting new jobs.
-
-The default `load_fnc` is overall CPU utilization, and the default `load_threshold` is `0.7`.
-
-In a custom deployment, you can override `load_fnc` and `load_threshold` to match the scaling behavior of your environment and application.
-
-## Autoscaling
-
-To handle variable traffic patterns, add an autoscaling strategy to your deployment platform. Your autoscaler should use the same underlying metrics as your `load_fnc` (the default is CPU utilization) but should scale up at a _lower_ threshold than your agent server's `load_threshold`. This ensures continuity of service by adding new agent servers before existing ones go out of service. For example, if your `load_threshold` is `0.7`, you should scale up at `0.5`.
-
-Since voice agents are typically long running tasks (relative to typical web requests), rapid increases in load are more likely to be sustained. In technical terms: spikes are less spikey. For your autoscaling configuration, you should consider _reducing_ cooldown/stabilization periods when scaling up. When scaling down, consider _increasing_ cooldown/stabilization periods because agent servers take time to drain.
-
-For example, if deploying on Kubernetes using a Horizontal Pod Autoscaler, see [stabilizationWindowSeconds](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/#default-behavior).
-
-## LiveKit Cloud dashboard
-
-You can use LiveKit Cloud for media transport and agent observability regardless of whether your agents are deployed to a custom environment. See the [Agent observability](https://docs.livekit.io/agents/observability.md) guide for more information.
-
-## Job crashes
-
-Job crashes are written to agent server logs for monitoring. If a job process crashes, it doesn't affect the agent server or other jobs. If the agent server crashes, all child jobs are terminated.
+```
 
 ---
 
-This document was rendered at 2025-11-18T23:55:18.276Z.
-For the latest version of this document, see [https://docs.livekit.io/agents/ops/deployment/custom.md](https://docs.livekit.io/agents/ops/deployment/custom.md).
+**Swift**:
+
+```swift
+import LiveKitComponents
+
+let LIVEKIT_URL = "%{wsURL}%"
+
+public struct MyTokenSource: TokenSourceConfigurable {}
+
+public extension MyTokenSource {
+    func fetch(_ options: TokenRequestOptions) async throws -> TokenSourceResponse {
+        // Run your custom token generation logic, using values in `options` as inputs
+        // ie, something like:
+        let participantToken = await customTokenGenerationFunction(options.roomName, options.participantName, options.agentName, /* etc */)
+
+        return TokenSourceResponse(serverURL: LIVEKIT_URL, participantToken: participantToken)
+    }
+}
+
+@main
+struct SessionApp: App {
+    let session = Session(tokenSource: MyTokenSource())
+
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+                .environmentObject(session)
+                .alert(session.error?.localizedDescription ?? "Error", isPresented: .constant(session.error != nil)) {
+                    Button(action: session.dismissError) { Text("OK") }
+                }
+                .alert(session.agent.error?.localizedDescription ?? "Error", isPresented: .constant(session.agent.error != nil)) {
+                    AsyncButton(action: session.end) { Text("OK") }
+                }
+        }
+    }
+}
+
+struct ContentView: View {
+    @EnvironmentObject var session: Session
+    @State var message = ""
+    
+    var body: some View {
+        if session.isConnected {
+            AsyncButton(action: session.end) {
+                Text("Disconnect")
+            }
+            
+            Text(String(describing: session.agent.agentState))
+        } else {
+            AsyncButton(action: session.start) {
+                Text("Connect")
+            }
+        }
+    }
+}
+
+```
+
+---
+
+**Android**:
+
+```kotlin
+val LIVEKIT_URL = "%{wsURL}%"
+
+val tokenSource = remember {
+    TokenSource.fromCustom { options ->
+        // Run your custom token generation logic, using values in `options` as inputs
+        // ie, something like:
+        var participantToken = customTokenGenerationFunction(options.roomName, options.participantName, options.agentName, /* etc */)
+        return@fromCustom Result.success(TokenSourceResponse(LIVEKIT_URL, participantToken))
+    }
+}
+val session = rememberSession(
+    tokenSource = tokenSource
+)
+
+Column {
+    SessionScope(session = session) { session ->
+        val coroutineScope = rememberCoroutineScope()
+        var shouldConnect by remember { mutableStateOf(false) }
+
+        LaunchedEffect(shouldConnect) {
+            if (shouldConnect) {
+
+                val result = session.start()
+
+                // Handle if the session fails to connect.
+                if (result.isFailure) {
+                    Toast.makeText(context, "Error connecting to the session.", Toast.LENGTH_SHORT).show()
+                    shouldConnect = false
+                }
+            } else {
+                session.end()
+            }
+        }
+        Button(onClick = { shouldConnect = !shouldConnect }) {
+            Text(
+                if (shouldConnect) {
+                    "Disconnect"
+                } else {
+                    "Connect"
+                }
+            )
+        }
+
+        // Agent provides state information about the agent participant.
+        val agent = rememberAgent()
+        Text(agent.agentState.name)
+
+        // SessionMessages handles all transcriptions and chat messages
+        val sessionMessages = rememberSessionMessages()
+
+        LazyColumn {
+            items(items = sessionMessages.messages) { message ->
+                Text(message.message)
+            }
+        }
+
+        val messageState = rememberTextFieldState()
+        TextField(state = messageState)
+        Button(onClick = {
+            coroutineScope.launch {
+                sessionMessages.send(messageState.text.toString())
+                messageState.clearText()
+            }
+        }) {
+            Text("Send")
+        }
+    }
+}
+
+```
+
+---
+
+**Flutter**:
+
+```dart
+import 'package:livekit_client/livekit_client.dart' as sdk;
+
+final LIVEKIT_URL = "%{wsURL}%";
+
+final tokenSource = sdk.CustomTokenSource((options) async {
+  // Run your custom token generation logic, using values in `options` as inputs
+  // ie, something like:
+  final participantToken = await customTokenGenerationFunction(options.roomName, options.participantName, options.agentName, /* etc */);
+
+  return TokenSourceResponse(serverUrl: LIVEKIT_URL, participantToken: participantToken);
+});
+final session = sdk.Session.fromConfigurableTokenSource(
+  tokenSource,
+  const TokenRequestOptions()
+);
+
+/* ... */
+
+await session.start();
+
+// Use session to further build out your application.
+
+```
+
+---
+
+**React Native**:
+
+```typescript
+import { TokenSource } from 'livekit-client';
+import { useSession, SessionProvider } from '@livekit/components-react';
+
+const LIVEKIT_URL = "%{wsURL}%";
+
+// Create the TokenSource
+// 
+// If your TokenSource.custom relies on other dependencies other than `options`, be
+// sure to wrap it in a `useMemo` so that the reference stays stable.
+const tokenSource = TokenSource.custom(async (options) => {
+  // Run your custom token generation logic, using values in `options` as inputs
+  // ie, something like:
+  const participantToken = await customTokenGenerationFunction(options.roomName, options.participantName, options.agentName, /* etc */);
+
+  return { serverUrl: LIVEKIT_URL, participantToken };
+});
+
+export const MyPage = () => {
+  const session = useSession(tokenSource, { roomName: "room name to join" });
+
+  // Start the session when the component mounts, and end the session when the component unmounts
+  useEffect(() => {
+    session.start();
+    return () => {
+      session.end();
+    };
+  }, []);
+
+  return (
+    <SessionProvider session={session}>
+      {/* render the rest of your application here */}
+    </SessionProvider>
+  )
+}
+
+```
+
+---
+
+This document was rendered at 2026-02-03T03:25:09.643Z.
+For the latest version of this document, see [https://docs.livekit.io/frontends/authentication/tokens/custom.md](https://docs.livekit.io/frontends/authentication/tokens/custom.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

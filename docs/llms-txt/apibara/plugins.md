@@ -1,3 +1,7 @@
+# Source: https://www.apibara.com/docs/getting-started/plugins#middleware
+
+# Source: https://www.apibara.com/docs/getting-started/plugins#hooks
+
 # Plugins & Hooks
 
 Indexers are extensible through hooks and plugins. Hooks are functions that are called at specific points in the indexer's lifecycle. Plugins are components that contain reusable hooks callbacks.

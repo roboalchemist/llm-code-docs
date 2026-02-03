@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/open-source/integrations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Integrations
 
 > Integrate your model development pipeline with your favorite machine learning frameworks and libraries, and prepare your data for ingestion into downstream systems. Most of our integrations come in the form of [staging functions](/open-source/core-functionality/staging), which take a list of `Element` objects as input and return formatted dictionaries as output.

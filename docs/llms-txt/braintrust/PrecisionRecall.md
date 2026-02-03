@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/PrecisionRecall.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Evaluating the precision and recall of an emotion classifier
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/PrecisionRecall/PrecisionRecall.ipynb) by [Adrian Barbir](https://www.linkedin.com/in/adrianbarbir/) on 2025-01-17</div>
@@ -241,9 +245,4 @@ There are several ways to improve this emotion classifier, including:
 * Experimenting with different prompts and instructions, or even a series of prompts.
 * Adding a `rationale` to the output for each emotion to help us identify the root cause of the classifier's failures and improve the prompts accordingly.
 * Trying other models like xAI's [Grok 2](https://x.ai/blog/grok-2) or OpenAI's [o1](https://openai.com/o1/). To learn more about comparing evals across multiple AI models, check out this [cookbook](https://www.braintrust.dev/docs/cookbook/recipes/ModelComparison).
-* Adding more sophisticated scoring functions or [LLM-based scoring functions](https://www.braintrust.dev/docs/guides/evals/write#score-using-ai) to evaluate something like "anger" recall.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt
+* Adding more sophisticated scoring functions or [LLM-based scoring functions](/evaluate/run-evaluations#score-using-ai) to evaluate something like "anger" recall.

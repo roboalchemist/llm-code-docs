@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/test/discovery.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Finding tests
 
 > Learn how Bun's test runner discovers and filters test files in your project

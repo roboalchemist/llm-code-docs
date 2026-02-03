@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/getting-started/integration-method/openllmetry.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # OpenLLMetry Async Integration
 
 > Log LLM traces directly to Helicone, bypassing our proxy, with OpenLLMetry. Supports OpenAI, Anthropic, Azure OpenAI, Cohere, Bedrock, Google AI Platform, and more.

@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/ai-agents/translate-and-refine.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Translate text and refine it based on feedback
 
 > This guide will show you how to create a task that translates text and refines it based on feedback.
@@ -22,7 +26,7 @@ This example task translates text into a target language and refines the transla
 * Uses `generateText` again to evaluate the translation
 * Recursively calls itself to refine the translation based on the feedback
 
-```typescript  theme={null}
+```typescript  theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 import { generateText } from "ai";
 import { openai } from "@ai-sdk/openai";
@@ -152,7 +156,7 @@ export const translateAndRefine = task({
 
 On the Test page in the dashboard, select the `translate-and-refine` task and include a payload like the following:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "text": "In the twilight of his years, the old clockmaker's hands, once steady as the timepieces he crafted, now trembled like autumn leaves in the wind.",
   "targetLanguage": "French"

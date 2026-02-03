@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/websets/dashboard/walkthroughs/Sharing-and-Downloading-Your-Results.md
+# Source: https://exa.ai/docs/websets/dashboard/walkthroughs/Sharing-and-Downloading-Your-Results.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Downloading and Sharing Your Results
 
@@ -17,8 +21,3 @@ Click the share icon, switch on the toggle to make your Webset public and share 
 ### Download
 
 Download a CSV by clicking the "Download" button. You can easily upload the CSV to any CRM, candidate management systems, etc.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

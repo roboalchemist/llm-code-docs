@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/aimlapi/
+
 # AI/ML API
 
 [AI/ML API](https://aimlapi.com/) provides access to 300+ AI models through a unified OpenAI-compatible interface, including state-of-the-art models from OpenAI, Anthropic, Google, Meta, and more.

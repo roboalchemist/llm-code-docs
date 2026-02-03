@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/assistant/create-assistant.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create an assistant
 
 > Create and deploy a Pinecone Assistant for your knowledge base.
@@ -20,6 +24,7 @@ You can [create an assistant](/reference/api/latest/assistant/create_assistant),
   assistant = pc.assistant.create_assistant(
       assistant_name="example-assistant", 
       instructions="Use American English for spelling and grammar.", # Description or directive for the assistant to apply to all responses.
+      metadata={"team": "customer-support", "version": "1.0"}, # Optional metadata (max 16KB) for organizing assistants.
       region="us", # Region to deploy assistant. Options: "us" (default) or "eu".
       timeout=30 # Maximum seconds to wait for assistant status to become "Ready" before timing out.
   )
@@ -33,6 +38,7 @@ You can [create an assistant](/reference/api/latest/assistant/create_assistant),
   const assistant = await pc.createAssistant({
     name: 'example-assistant',
     instructions: 'Use American English for spelling and grammar.',
+    metadata: { team: 'customer-support', version: '1.0' }, // Optional metadata (max 16KB) for organizing assistants.
     region: 'us'
   });
   ```
@@ -46,10 +52,15 @@ You can [create an assistant](/reference/api/latest/assistant/create_assistant),
     -d '{
     "name": "example-assistant",
     "instructions": "Use American English for spelling and grammar.",
+    "metadata": {"team": "customer-support", "version": "1.0"},
     "region":"us"
   }'
   ```
 </CodeGroup>
+
+<Note>
+  Instructions (maximum size 16 KB) are included in every chat API call. Longer instructions increase input token costs for each request and consume more of the LLM's context window, reducing available space for retrieved context and conversation history.
+</Note>
 
 <Tip>
   You can create an assistant using the [Pinecone console](https://app.pinecone.io/organizations/-/projects/-/assistant/-/files).

@@ -40,7 +40,7 @@ ReferenceError: document is not defined
 ```
 
 
-The reason this is happening is because we're trying to run browser-side code on the server-side where it is not supported. https://developer.mozilla.org/en-US/docs/Web/API/Document is a property of the browser https://developer.mozilla.org/en-US/docs/Web/API/Window instance that holds the rendered website; therefore, this API is not available in Node.js. How are we supposed to run code within the context of the browser?
+The reason this is happening is because we're trying to run browser-side code on the server-side where it is not supported. [document](https://developer.mozilla.org/en-US/docs/Web/API/Document) is a property of the browser [Window](https://developer.mozilla.org/en-US/docs/Web/API/Window) instance that holds the rendered website; therefore, this API is not available in Node.js. How are we supposed to run code within the context of the browser?
 
 ## Running code in the context of the browser
 
@@ -154,4 +154,4 @@ Now, when we run this code, we can see the title change on the page's tab:
 
 ## Next up
 
-The https://docs.apify.com/academy/puppeteer-playwright/executing-scripts/injecting-code.md will be a short one discussing two different ways of executing scripts on a page.
+The [next lesson](https://docs.apify.com/academy/puppeteer-playwright/executing-scripts/injecting-code.md) will be a short one discussing two different ways of executing scripts on a page.

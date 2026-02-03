@@ -2,10 +2,7 @@
 
 # Get Users
 
-```
-GET 
-/v2/:organizationId/Users
-```
+Copy page
 
 This endpoint returns a list of users.
 

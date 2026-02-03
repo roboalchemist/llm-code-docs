@@ -4,8 +4,6 @@
 title: Ec2 Vpcendpoint Service Permission
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Ec2 Vpcendpoint Service Permission
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.ec2_vpcendpoint_service_permission.dataset/index.html
 ---
 
 # Ec2 Vpcendpoint Service Permission
@@ -18,12 +16,12 @@ aws.ec2_vpcendpoint_service_permission
 
 ## Fields
 
-| Title                 | ID   | Type   | Data Type                                        | Description |
-| --------------------- | ---- | ------ | ------------------------------------------------ | ----------- |
-| _key                  | core | string |
-| account_id            | core | string |
-| principal             | core | string | The Amazon Resource Name (ARN) of the principal. |
-| principal_type        | core | string | The type of principal.                           |
-| service_id            | core | string | The ID of the service.                           |
-| service_permission_id | core | string | The ID of the service permission.                |
-| tags                  | core | hstore |
+| Title                 | ID   | Type       | Data Type                                        | Description |
+| --------------------- | ---- | ---------- | ------------------------------------------------ | ----------- |
+| _key                  | core | string     |
+| account_id            | core | string     |
+| principal             | core | string     | The Amazon Resource Name (ARN) of the principal. |
+| principal_type        | core | string     | The type of principal.                           |
+| service_id            | core | string     | The ID of the service.                           |
+| service_permission_id | core | string     | The ID of the service permission.                |
+| tags                  | core | hstore_csv |

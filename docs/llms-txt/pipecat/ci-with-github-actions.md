@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/ci-with-github-actions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # CI with GitHub Actions
 
 > Automate image builds and deploys for continuous integration
@@ -37,54 +41,56 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Get date
-      id: date
-      run: echo "date=$(date +'%F')" >> $GITHUB_OUTPUT
+      - name: Get date
+        id: date
+        run: echo "date=$(date +'%F')" >> $GITHUB_OUTPUT
 
-    - name: Set up QEMU
-      uses: docker/setup-qemu-action@v3
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
 
-    - name: Login to Docker Hub
-      uses: docker/login-action@v3
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Build and Push
-      uses: docker/build-push-action@v5
-      with:
-        platforms: linux/arm64
-        context: .
-        push: true
-        tags: |
-          ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:latest
-          ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:${{ steps.date.outputs.date }}
+      - name: Build and Push
+        uses: docker/build-push-action@v5
+        with:
+          platforms: linux/arm64
+          context: .
+          push: true
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:${{ steps.date.outputs.date }}
 
-    - name: Deploy to Pipecat Cloud
-      run: |
-        curl -X POST https://api.pipecat.daily.co/v1/agents/${{ github.event.repository.name }} \
-          -H "Authorization: Bearer ${{ secrets.PCC_API_KEY }}" \
-          -H "Content-Type: application/json" \
-          -d '{
-            "image": "${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:${{ steps.date.outputs.date }}",
-            "imagePullSecretSet": "my-image-pull-secret",
-            "secretSet": "my-secret-set",
-            "enableKrisp": true,
-            "autoScaling": {
-              "minAgents": 0,
-              "maxAgents": 10
-            }
-          }'
+      - name: Deploy to Pipecat Cloud
+        run: |
+          curl -X POST https://api.pipecat.daily.co/v1/agents/${{ github.event.repository.name }} \
+            -H "Authorization: Bearer ${{ secrets.PCC_API_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "image": "${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:${{ steps.date.outputs.date }}",
+              "imagePullSecretSet": "my-image-pull-secret",
+              "secretSet": "my-secret-set",
+              "krispViva": {
+                "audioFilter": "tel"
+              },
+              "autoScaling": {
+                "minAgents": 0,
+                "maxAgents": 10
+              }
+            }'
 ```
 
 This workflow will:
@@ -133,9 +139,9 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
     paths:
-      - 'server/**'
+      - "server/**"
 
 jobs:
   deploy:
@@ -145,47 +151,49 @@ jobs:
         working-directory: ./server
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Get date
-      id: date
-      run: echo "date=$(date +'%F')" >> $GITHUB_OUTPUT
+      - name: Get date
+        id: date
+        run: echo "date=$(date +'%F')" >> $GITHUB_OUTPUT
 
-    - name: Set up QEMU
-      uses: docker/setup-qemu-action@v3
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
 
-    - name: Login to Docker Hub
-      uses: docker/login-action@v3
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Build and Push
-      uses: docker/build-push-action@v5
-      with:
-        platforms: linux/arm64
-        context: ./server
-        push: true
-        tags: |
-          ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:latest
-          ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:${{ steps.date.outputs.date }}
+      - name: Build and Push
+        uses: docker/build-push-action@v5
+        with:
+          platforms: linux/arm64
+          context: ./server
+          push: true
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:${{ steps.date.outputs.date }}
 
-    - name: Deploy to Pipecat Cloud
-      run: |
-        curl -X POST https://api.pipecat.daily.co/v1/agents/${{ github.event.repository.name }} \
-          -H "Authorization: Bearer ${{ secrets.PCC_API_KEY }}" \
-          -H "Content-Type: application/json" \
-          -d '{
-            "image": "${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:${{ steps.date.outputs.date }}",
-            "imagePullSecretSet": "my-image-pull-secret",
-            "secretSet": "my-secret-set",
-            "enableKrisp": true,
-            "autoScaling": {
-              "minAgents": 0,
-              "maxAgents": 10
-            }
-          }'
+      - name: Deploy to Pipecat Cloud
+        run: |
+          curl -X POST https://api.pipecat.daily.co/v1/agents/${{ github.event.repository.name }} \
+            -H "Authorization: Bearer ${{ secrets.PCC_API_KEY }}" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "image": "${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}:${{ steps.date.outputs.date }}",
+              "imagePullSecretSet": "my-image-pull-secret",
+              "secretSet": "my-secret-set",
+              "krispViva": {
+                "audioFilter": "tel"
+              },
+              "autoScaling": {
+                "minAgents": 0,
+                "maxAgents": 10
+              }
+            }'
 ```
 
 The `paths` filter ensures the workflow only runs when files in the `server/` directory change, preventing unnecessary builds.
@@ -207,17 +215,16 @@ To use native ARM runners when available:
 ```yml  theme={null}
 jobs:
   deploy:
-    runs-on: ubuntu-24.04-arm  # Use ARM runner
+    runs-on: ubuntu-24.04-arm # Use ARM runner
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    # Remove the "Set up QEMU" step entirely
-
-    - name: Login to Docker Hub
-      uses: docker/login-action@v3
-      # ... rest of workflow
+      # Remove the "Set up QEMU" step entirely
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        # ... rest of workflow
 ```
 
 ## Customizing Deployment Configuration
@@ -227,7 +234,7 @@ The deployment step in the workflow configures your agent using the Pipecat Clou
 * `image`: The Docker image tag to deploy
 * `imagePullSecretSet`: Reference to your image pull credentials (replace `my-image-pull-secret` with your actual secret name)
 * `secretSet`: Reference to your environment secrets (replace `my-secret-set` with your actual secret set name)
-* `enableKrisp`: Enable or disable Krisp noise suppression
+* `krispViva.audioFilter`: The Krisp VIVA audio filter model to use (replace `tel` with your actual filter model)
 * `autoScaling.minAgents`: Minimum number of agent instances to maintain
 * `autoScaling.maxAgents`: Maximum number of agent instances allowed
 
@@ -248,8 +255,3 @@ The deployment step in the workflow configures your agent using the Pipecat Clou
     Configure auto-scaling to handle varying traffic loads.
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

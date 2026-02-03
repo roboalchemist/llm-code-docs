@@ -11,7 +11,7 @@ Creating a Shipping Reminder Callout is one of the simplest and most effective w
 This experience is designed for **all visitors** — it should display for 100% of checkout traffic.\
 Every shopper benefits from knowing how fast your brand ships, especially first-time buyers who may be uncertain about delivery speed.
 
-### What this Experience does
+### What this Personalization does
 
 This experience adds a block to your Shopify checkout page. The block features a single, bold message that communicates urgency or clarity around shipping, fulfillment, or delivery timelines.
 
@@ -29,7 +29,7 @@ Use the Shipping Cutoff Reminder Callout when you want to:
 * Add urgency without using discounts or incentives
 
 {% hint style="success" %}
-**Pro Tip:** A Checkout Experience can include multiple blocks. Combine a trust badge above your payment section with a social proof header or image block for maximum impact.
+**Pro Tip:** A Checkout Personalization can include multiple blocks. Combine a trust badge above your payment section with a social proof header or image block for maximum impact.
 {% endhint %}
 
 ### Why it matters
@@ -37,11 +37,11 @@ Use the Shipping Cutoff Reminder Callout when you want to:
 Checkout is the most important touchpoint in the customer journey.\
 Clear, proactive messaging helps shoppers feel confident and informed, reducing cart abandonment caused by uncertainty about shipping speed or delivery expectations.
 
-## How to Set Up This Checkout Experience in Intelligems <a href="#how-to-set-up-this-offer-in-intelligems" id="how-to-set-up-this-offer-in-intelligems"></a>
+## How to Set Up This Checkout Personalization in Intelligems <a href="#how-to-set-up-this-offer-in-intelligems" id="how-to-set-up-this-offer-in-intelligems"></a>
 
 {% embed url="<https://www.loom.com/share/fb6f5182393b403a942a0f5c04eba3e5>" %}
 
-1. Go to Experiences > **Checkout**
+1. Go to Personalizations > **Checkout**
 2. Select **Callout**
 3. Add a **Block name**
 4. Rename the **Location ID** to be descriptive
@@ -65,7 +65,7 @@ Clear, proactive messaging helps shoppers feel confident and informed, reducing 
 11. You can update the content, launch a different Theme or Template, and update styles or javascript
 12. Add **Targeting** to choose which shoppers you want to see this block. It will be set to all visitors by default.
 13. **Save** your Experience
-14. **Preview** your Checkout Experience on desktop and mobile
+14. **Preview** your Checkout Personalization on desktop and mobile
 15. When everything looks good, **Schedule Your Experience** or **Activate** to go live
     1. You can select a Start time and Stop time when Scheduling
 

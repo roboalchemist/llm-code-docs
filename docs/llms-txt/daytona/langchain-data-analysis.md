@@ -1,8 +1,8 @@
-# Source: https://www.daytona.io/docs/en/langchain-data-analysis.md
+# Source: https://www.daytona.io/docs/en/guides/langchain/langchain-data-analysis.md
 
 import { Image } from 'astro:assets'
 
-import chartImage from '../../../assets/docs/images/langchain-data-analysis-chart.png'
+import chartImage from '../../../../../assets/docs/images/langchain-data-analysis-chart.png'
 
 This package provides the `DaytonaDataAnalysisTool` - LangChain tool integration that enables agents to perform secure Python data analysis in a sandboxed environment. It supports multi-step workflows, file uploads/downloads, and custom result handling, making it ideal for automating data analysis tasks with LangChain agents.
 
@@ -18,7 +18,7 @@ You provide the data and describe what insights you need - the agent handles the
 
 ### 2. Project Setup
 
-#### 2.1 Install Dependencies
+#### Install Dependencies
 
 :::note[Python Version Requirement]
 This example requires **Python 3.10 or higher** because it uses LangChain 1.0+ syntax. It's recommended to use a virtual environment (e.g., `venv` or `poetry`) to isolate project dependencies.
@@ -36,7 +36,7 @@ Install the required packages for this example:
     - `langchain-daytona-data-analysis`: Provides the `DaytonaDataAnalysisTool` for LangChain agents
     - `python-dotenv`: Used for loading environment variables from `.env` file
 
-#### 2.2 Configure Environment
+#### Configure Environment
 
 Get your API keys and configure your environment:
 
@@ -56,7 +56,7 @@ We'll be using a publicly available dataset of vehicle valuation. You can downlo
 
 [https://download.daytona.io/dataset.csv](https://download.daytona.io/dataset.csv)
 
-Download the file and save it as `vehicle-dataset.csv` in your project directory.
+Download the file and save it as `dataset.csv` in your project directory.
 
 ### 4. Initialize the Language Model
 
@@ -72,7 +72,6 @@ Configure the Claude model with the following parameters:
     model = ChatAnthropic(
         model_name="claude-sonnet-4-5-20250929",
         temperature=0,
-        max_tokens_to_sample=1024,
         timeout=None,
         max_retries=2,
         stop=None
@@ -82,7 +81,6 @@ Configure the Claude model with the following parameters:
     **Parameters explained:**
     - `model_name`: Specifies the Claude model to use
     - `temperature`: Tunes the degree of randomness in generation
-    - `max_tokens_to_sample`: Number of tokens to predict per generation
     - `max_retries`: Number of retries allowed for Anthropic API requests
 
 :::tip[Learn More About Models]
@@ -132,19 +130,18 @@ Now we'll initialize the `DaytonaDataAnalysisTool` and upload our dataset.
         on_result=process_data_analysis_result
     )
     
-    try:
-      # Upload the dataset with metadata describing its structure
-      with open("./vehicle-dataset.csv", "rb") as f:
-          DataAnalysisTool.upload_file(
-              f,
-              description=(
-                  "This is a CSV file containing vehicle valuations. "
-                  "Relevant columns:\n"
-                  "- 'year': integer, the manufacturing year of the vehicle\n"
-                  "- 'price_in_euro': float, the listed price of the vehicle in Euros\n"
-                  "Drop rows where 'year' or 'price_in_euro' is missing, non-numeric, or an outlier."
-              )
-          )
+    # Upload the dataset with metadata describing its structure
+    with open("./dataset.csv", "rb") as f:
+        DataAnalysisTool.upload_file(
+            f,
+            description=(
+                "This is a CSV file containing vehicle valuations. "
+                "Relevant columns:\n"
+                "- 'year': integer, the manufacturing year of the vehicle\n"
+                "- 'price_in_euro': float, the listed price of the vehicle in Euros\n"
+                "Drop rows where 'year' or 'price_in_euro' is missing, non-numeric, or an outlier."
+            )
+        )
     ```
 
     **Key points:**
@@ -163,26 +160,26 @@ Finally, we'll create the LangChain agent with our configured model and tool, th
     # Create the agent with the model and data analysis tool
     agent = create_agent(model, tools=[DataAnalysisTool], debug=True)
 
-        # Invoke the agent with our analysis request
-        agent_response = agent.invoke({
-            "messages": [{
-                "role": "user",
-                "content": "Analyze how vehicles price varies by manufacturing year. Create a line chart showing average price per year."
-            }]
-        })
-    finally:
-        # Always close the tool to clean up sandbox resources
-        DataAnalysisTool.close()
+    # Invoke the agent with our analysis request
+    agent_response = agent.invoke({
+        "messages": [{
+            "role": "user",
+            "content": "Analyze how vehicles price varies by manufacturing year. Create a line chart showing average price per year."
+        }]
+    })
+
+    # Always close the tool to clean up sandbox resources
+    DataAnalysisTool.close()
     ```
 
-    **What happens here:**
+  **What happens here:**
     1. The agent receives your natural language request
     2. It determines it needs to use the `DaytonaDataAnalysisTool`
     3. Agent generates Python code to analyze the data
     4. Code executes securely in the Daytona sandbox
     5. Results are processed by our handler function
     6. Charts are saved to your local directory
-    7. Sandbox resources are cleaned up in the `finally` block
+    7. Sandbox resources are cleaned up at the end
 
 ### 8. Running Your Analysis
 
@@ -214,7 +211,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Load the dataset
-df = pd.read_csv('/home/daytona/vehicle-dataset.csv')
+df = pd.read_csv('/home/daytona/dataset.csv')
 
 # Display basic info about the dataset
 print("Dataset shape:", df.shape)
@@ -278,7 +275,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Load the dataset
-df = pd.read_csv('/home/daytona/vehicle-dataset.csv')
+df = pd.read_csv('/home/daytona/dataset.csv')
 
 print("Dataset shape:", df.shape)
 print("\nColumn names:")
@@ -336,7 +333,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Load the dataset
-df = pd.read_csv('/home/daytona/vehicle-dataset.csv')
+df = pd.read_csv('/home/daytona/dataset.csv')
 
 print("Original dataset shape:", df.shape)
 
@@ -479,7 +476,6 @@ Here is the complete, ready-to-run example:
   model = ChatAnthropic(
       model_name="claude-sonnet-4-5-20250929",
       temperature=0,
-      max_tokens_to_sample=1024,
       timeout=None,
       max_retries=2,
       stop=None
@@ -504,7 +500,7 @@ Here is the complete, ready-to-run example:
       )
 
       try:
-          with open("./vehicle-dataset.csv", "rb") as f:
+          with open("./dataset.csv", "rb") as f:
               DataAnalysisTool.upload_file(
                   f,
                   description=(
@@ -655,7 +651,7 @@ Installs one or more Python packages in the sandbox using pip.
 - None
 
 :::note
-The list of preinstalled packages in a sandbox can be found at [Daytona's Default Snapshot documentation](https://www.daytona.io/docs/en/snapshots.md#default-snapshot).
+The list of preinstalled packages in a sandbox can be found at [Daytona's Default Snapshot documentation](https://www.daytona.io/docs/en/snapshots.md#default-snapshots).
 :::
 
 **Example**:

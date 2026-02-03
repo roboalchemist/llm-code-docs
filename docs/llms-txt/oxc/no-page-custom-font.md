@@ -1,9 +1,6 @@
 # Source: https://oxc.rs/docs/guide/usage/linter/rules/nextjs/no-page-custom-font.md
 
 ---
-url: /docs/guide/usage/linter/rules/nextjs/no-page-custom-font.md
----
-# nextjs/no-page-custom-font&#x20;
 
 ### What it does
 
@@ -60,8 +57,6 @@ export default Document;
 
 To **enable** this rule using the config file or in the CLI, you can use:
 
-::: code-group
-
 ```json [Config (.oxlintrc.json)]
 {
   "plugins": ["nextjs"],
@@ -74,8 +69,6 @@ To **enable** this rule using the config file or in the CLI, you can use:
 ```bash [CLI]
 oxlint --deny nextjs/no-page-custom-font --nextjs-plugin
 ```
-
-:::
 
 ## References
 

@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/generativeagent/configuring/tasks-and-functions/enter-specific-task.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Enter a Specific Task
 
 > Learn how to enter a specific task for GenerativeAgent

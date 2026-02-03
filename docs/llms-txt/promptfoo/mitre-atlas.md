@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/mitre-atlas/
+
 # MITRE ATLAS
 
 MITRE ATLAS (Adversarial Threat Landscape for Artificial-Intelligence Systems) is a knowledge base of adversary tactics and techniques based on real-world observations of attacks against machine learning systems. Modeled after the MITRE ATT&CK framework, ATLAS provides a structured way to understand and defend against threats specific to AI and ML systems.

@@ -4,11 +4,7 @@
 
 A Better Auth plugin that enables your auth server to serve as an OAuth 2.1 provider.
 
-***
 
-title: OAuth 2.1 Provider
-description: A Better Auth plugin that enables your auth server to serve as an OAuth 2.1 provider.
---------------------------------------------------------------------------------------------------
 
 An **OAuth 2.1 Provider Plugin** that allows you to turn your authentication server into an OAuth provider with OIDC compatibility allowing users and other services to authenticate with your API.
 
@@ -52,7 +48,7 @@ The plugin has a secured configuration by default providing ease to users unfami
   <Step>
     ### Mount the Plugin
 
-    Add the OIDC plugin to your auth config. See [OIDC Configuration](#oidc-configuration) on how to configure the plugin.
+    Add the OIDC plugin to your auth config. See [Configuration Section](#configuration) on how to configure the plugin.
 
     ```ts title="auth.ts"
     import { betterAuth } from "better-auth";
@@ -172,6 +168,7 @@ In OAuth there are two types of clients:
 
 To obtain client information owned by a specific user or organization use the following endpoint:
 
+
 ### Client Side
 
 ```ts
@@ -196,17 +193,19 @@ const data = await auth.api.getOAuthClient({
 
 ```ts
 type getOAuthClient = {
-  /**
-   * The OAuth client's client_id
-   */
-  client_id: string,
-
+    /**
+     * The OAuth client's client_id
+     */
+    client_id: string,
+  
 }
 ```
+
 
 #### Get Public Client
 
 To obtain public client fields to display on login flow pages such as consent, use the following endpoint. Note: the user must be signed in to use this endpoint.:
+
 
 ### Client Side
 
@@ -232,17 +231,19 @@ const data = await auth.api.getOAuthClientPublic({
 
 ```ts
 type getOAuthClientPublic = {
-  /**
-   * The OAuth client's client_id
-   */
-  client_id: string,
-
+    /**
+     * The OAuth client's client_id
+     */
+    client_id: string,
+  
 }
 ```
+
 
 #### List Clients
 
 To obtain a list of clients owned by a specific user or organization, use the following endpoint:
+
 
 ### Client Side
 
@@ -264,9 +265,10 @@ const data = await auth.api.getOAuthClients({
 
 ```ts
 type getOAuthClients = {
-
+  
 }
 ```
+
 
 #### Create Client
 
@@ -297,6 +299,7 @@ await auth.api.adminCreateOAuthClient({
 
 To update an oauth client tied to a specific user or organization, use the `/oauth2/update-client` endpoint (eg. `updateOAuthClient`). The parameters are equivalent to the registration endpoint described by [RFC7591](https://datatracker.ietf.org/doc/html/rfc7591).
 
+
 ### Client Side
 
 ```ts
@@ -323,17 +326,18 @@ const data = await auth.api.updateOAuthClient({
 
 ```ts
 type updateOAuthClient = {
-  /**
-   * The OAuth client's client_id
-   */
-  client_id: string,
-  /**
-   * The fields to update
-   */
-  update: OAuthClient,
-
+    /**
+     * The OAuth client's client_id
+     */
+    client_id: string,
+    /**
+     * The fields to update
+     */
+    update: OAuthClient,
+  
 }
 ```
+
 
 Restrictions on this endpoint:
 
@@ -362,6 +366,7 @@ await auth.api.adminUpdateOAuthClient({
 
 To rotate a client secret, you must use the following endpoint:
 
+
 ### Client Side
 
 ```ts
@@ -386,17 +391,19 @@ const data = await auth.api.rotateClientSecret({
 
 ```ts
 type rotateClientSecret = {
-  /**
-   * The OAuth client's client_id
-   */
-  client_id: string,
-
+    /**
+     * The OAuth client's client_id
+     */
+    client_id: string,
+  
 }
 ```
+
 
 #### Delete Client
 
 To delete a user or organization's client, use the following endpoint:
+
 
 ### Client Side
 
@@ -422,13 +429,14 @@ const data = await auth.api.deleteOAuthClient({
 
 ```ts
 type deleteOAuthClient = {
-  /**
-   * The OAuth client's client_id
-   */
-  client_id: string,
-
+    /**
+     * The OAuth client's client_id
+     */
+    client_id: string,
+  
 }
 ```
+
 
 ### OAuth Consent
 
@@ -437,6 +445,7 @@ Consent is required on all non-trusted clients, specifically those without `skip
 #### Get Consent
 
 To obtain details of a specific consent, use the following endpoint:
+
 
 ### Client Side
 
@@ -462,17 +471,19 @@ const data = await auth.api.getOAuthConsent({
 
 ```ts
 type getOAuthConsent = {
-  /**
-   * The consent id
-   */
-  id: string,
-
+    /**
+     * The consent id
+     */
+    id: string,
+  
 }
 ```
+
 
 #### List Consent
 
 To obtain a list of user consents, use the following endpoint:
+
 
 ### Client Side
 
@@ -494,13 +505,15 @@ const data = await auth.api.getOAuthConsents({
 
 ```ts
 type getOAuthConsents = {
-
+  
 }
 ```
+
 
 #### Update Consent
 
 To update a specific consent, use the following endpoint:
+
 
 ### Client Side
 
@@ -528,21 +541,23 @@ const data = await auth.api.updateOAuthClient({
 
 ```ts
 type updateOAuthClient = {
-  /**
-   * The consent id
-   */
-  id: string,
-  /**
-   * The values to update
-   */
-  update: OAuthConsent,
-
+    /**
+     * The consent id
+     */
+    id: string,
+    /**
+     * The values to update
+     */
+    update: OAuthConsent,
+  
 }
 ```
+
 
 #### Delete Consent
 
 Revokes a user's consent for a specific client.
+
 
 ### Client Side
 
@@ -568,13 +583,14 @@ const data = await auth.api.deleteOAuthConsent({
 
 ```ts
 type deleteOAuthConsent = {
-  /**
-   * The consent id
-   */
-  id: string,
-
+    /**
+     * The consent id
+     */
+    id: string,
+  
 }
 ```
+
 
 ### Dynamic Registration Endpoint
 
@@ -680,6 +696,7 @@ This implementation currently issues a new refresh token for every refresh reque
 
 Accept or deny user consent for a set of scopes. Note that when denying scopes, the consent cancels and pre-existing consent remains. To remove consent, delete that user's "oauthConsent" for that client.
 
+
 ### Client Side
 
 ```ts
@@ -706,23 +723,25 @@ const data = await auth.api.oauth2Consent({
 
 ```ts
 type oauth2Consent = {
-  /**
-   * Accept or deny user consent for a set of scopes
-   */
-  accept: boolean,
-  /**
-   * Space-separated list of accepted scopes. If not provided, the originally requested scopes are accepted.
-   */
-  scope?: string,
-
+    /**
+     * Accept or deny user consent for a set of scopes
+     */
+    accept: boolean,
+    /**
+     * Space-separated list of accepted scopes. If not provided, the originally requested scopes are accepted.
+     */
+    scope?: string,
+  
 }
 ```
+
 
 ### Continue Endpoint
 
 Sign up registration pages must be [configured](#sign-up-account-screen) to perform account registration steps.
 Account selection must be [configured](#select-account-screen) to perform account selection.
 Post login must be [configured](#post-login-screen) to perform post login selection.
+
 
 ### Client Side
 
@@ -752,21 +771,22 @@ const data = await auth.api.oauth2Continue({
 
 ```ts
 type oauth2Continue = {
-  /**
-   * Confirms an account was selected.
-   */
-  selected?: boolean,
-  /**
-   * Confirms an account was registered
-   */
-  created?: boolean,
-  /**
-   * Confirms completion of post login activity
-   */
-  postLogin?: boolean,
-
+    /**
+     * Confirms an account was selected.
+     */
+    selected?: boolean,
+    /**
+     * Confirms an account was registered
+     */
+    created?: boolean,
+    /**
+     * Confirms completion of post login activity
+     */
+    postLogin?: boolean,
+  
 }
 ```
+
 
 ### Introspect Endpoint
 
@@ -1735,13 +1755,13 @@ Table Name: `oauthClient`
   },
   {
     name: "tos",
-    type: "string[]",
+    type: "string",
     description: "Client Terms of Service displayed on UI Screens",
     isOptional: true,
   },
   {
     name: "policy",
-    type: "string[]",
+    type: "string",
     description: "Client Privacy policy displayed on UI Screens",
     isOptional: true,
   },

@@ -10,18 +10,6 @@
 
 # Source: https://docs.aimlapi.com/api-references/text-models-llm/openai.md
 
-# Source: https://docs.aimlapi.com/api-references/embedding-models/openai.md
-
-# Source: https://docs.aimlapi.com/api-references/speech-models/text-to-speech/openai.md
-
-# Source: https://docs.aimlapi.com/api-references/speech-models/speech-to-text/openai.md
-
-# Source: https://docs.aimlapi.com/api-references/video-models/openai.md
-
-# Source: https://docs.aimlapi.com/api-references/image-models/openai.md
-
-# Source: https://docs.aimlapi.com/api-references/text-models-llm/openai.md
-
 # OpenAI
 
 - [gpt-3.5-turbo](/api-references/text-models-llm/openai/gpt-3.5-turbo.md)
@@ -56,3 +44,4 @@
 - [gpt-5.2](/api-references/text-models-llm/openai/gpt-5.2.md)
 - [gpt-5.2-chat-latest](/api-references/text-models-llm/openai/gpt-5.2-chat-latest.md)
 - [gpt-5.2-pro](/api-references/text-models-llm/openai/gpt-5.2-pro.md)
+- [gpt-5.2-codex](/api-references/text-models-llm/openai/gpt-5.2-codex.md)

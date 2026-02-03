@@ -6,11 +6,12 @@
 
 Nuxt UI thrives thanks to its incredible community ❤️. We welcome all contributions through bug reports, pull requests, and feedback to help make this library even better.
 
-<caution>
+> [!CAUTION]
+> Before reporting a bug or requesting a feature, make sure that you have read through our [documentation](https://ui.nuxt.com/) and existing [issues](https://github.com/nuxt/ui/issues?q=is%3Aissue%20is%3Aopen%20sort%3Aupdated-desc).
 
-Before reporting a bug or requesting a feature, make sure that you have read through our [documentation](https://ui.nuxt.com/) and existing [issues](https://github.com/nuxt/ui/issues?q=is%3Aissue%20is%3Aopen%20sort%3Aupdated-desc).
+## AI assistance `New`
 
-</caution>
+We provide a [skill](https://github.com/nuxt/ui/tree/v4/.claude/skills/contributing) for [Claude](https://claude.ai) to help you contribute to Nuxt UI. It will automatically guide you through component structure, theming patterns, testing conventions, and documentation guidelines when working in this repository.
 
 ## Project structure
 
@@ -101,11 +102,8 @@ nuxt-ui make component block --content
 nuxt-ui make component my-component --template=docs
 ```
 
-<note>
-
-When creating a new component, the CLI will automatically generate all the necessary files like the component itself, theme, tests, and documentation.
-
-</note>
+> [!NOTE]
+> When creating a new component, the CLI will automatically generate all the necessary files like the component itself, theme, tests, and documentation.
 
 ### Locales
 
@@ -115,11 +113,9 @@ You can create new locales using the following command:
 nuxt-ui make locale --code <code> --name <name>
 ```
 
-<note to="/docs/getting-started/integrations/i18n/nuxt#supported-languages">
-
-Learn more about **i18n** in the documentation.
-
-</note>
+> [!NOTE]
+> See: /docs/getting-started/integrations/i18n/nuxt#supported-languages
+> Learn more about i18n in the documentation.
 
 ## Submit a Pull Request (PR)
 
@@ -131,59 +127,45 @@ If there isn't, open a new issue to discuss the problem or feature.
 
 To begin local development, follow these steps:
 
-<steps level="4">
-
-#### Clone the `nuxt/ui` repository to your local machine
-
+Clone the nuxt/ui repository to your local machine
 ```sh
 git clone -b v4 https://github.com/nuxt/ui.git
+
 ```
-
-#### Enable [Corepack](https://github.com/nodejs/corepack)
-
+Enable Corepack
 ```sh
 corepack enable
+
 ```
-
-#### Install dependencies
-
+Install dependencies
 ```sh
 pnpm install
+
 ```
-
-#### Generate type stubs
-
+Generate type stubs
 ```sh
 pnpm run dev:prepare
+
 ```
-
-#### Start development
-
-- To work on the **documentation** located in the `docs` folder, run:
-
+Start developmentTo work on the documentation located in the docs folder, run:
 ```sh
 pnpm run docs
+
 ```
-
-- To test the Nuxt components using the **playground**, run:
-
+To test the Nuxt components using the playground, run:
 ```sh
 pnpm run dev
+
 ```
-
-- To test the Vue components using the **playground**, run:
-
+To test the Vue components using the playground, run:
 ```sh
 pnpm run dev:vue
+
 ```
 
-</steps>
-
-<note to="#cli">
-
-If you're working on implementing a new component, check the **CLI** section to kickstart the process.
-
-</note>
+> [!NOTE]
+> See: #cli
+> If you're working on implementing a new component, check the CLI section to kickstart the process.
 
 ### IDE Setup
 
@@ -198,11 +180,8 @@ We recommend using VSCode alongside the [ESLint extension](https://marketplace.v
 }
 ```
 
-<warning>
-
-Since ESLint is already configured to format the code, there's no need for duplicating functionality with **Prettier**. If you have it installed in your editor, we recommend disabling it to avoid conflicts.
-
-</warning>
+> [!WARNING]
+> Since ESLint is already configured to format the code, there's no need for duplicating functionality with Prettier. If you have it installed in your editor, we recommend disabling it to avoid conflicts.
 
 ### Linting
 
@@ -223,18 +202,14 @@ pnpm run typecheck
 
 ### Testing
 
-Before submitting a PR, ensure that you run the tests for both `nuxt` and `vue`:
+Before submitting a PR, ensure that you run the tests:
 
 ```sh
-pnpm run test # for Nuxt
-pnpm run test:vue # for Vue
+pnpm run test
 ```
 
-<tip>
-
-If you have to update the snapshots, press `u` after the tests have finished running.
-
-</tip>
+> [!TIP]
+> If you have to update the snapshots, press `u` after the tests have finished running.
 
 ### Commit conventions
 

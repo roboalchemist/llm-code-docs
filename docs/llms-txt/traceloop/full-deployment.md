@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/self-host/full-deployment.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Full Platform Self-Hosting
 
 > Deploy the complete Traceloop platform in your infrastructure
@@ -407,8 +411,3 @@ kubectl logs -n traceloop deployment/traceloop-api
 * Check our [troubleshooting guide](/self-host/troubleshooting)
 * [Schedule support](https://calendly.com/d/cq42-93s-kcx)
 * Join our [Slack community](https://traceloop.com/slack)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/import/no-webpack-loader-syntax.md
 ---
-# import/no-webpack-loader-syntax&#x20;
 
 ### What it does
 

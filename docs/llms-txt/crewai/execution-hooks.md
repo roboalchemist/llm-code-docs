@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/learn/execution-hooks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Execution Hooks Overview
 
 > Understanding and using execution hooks in CrewAI for fine-grained control over agent operations

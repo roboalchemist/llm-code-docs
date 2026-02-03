@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/reference/aptible-cli/cli-commands/cli-db-create.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # aptible db:create
 
 This command creates a new [Database](/core-concepts/managed-databases/overview) using the General Purpose container profile by default. The container profile can only be modified in the Aptible dashboard.

@@ -6,7 +6,6 @@ description: >-
   Automatically map identity provider groups to Datadog roles using the
   Authentication Mapping API for federated authentication systems.
 breadcrumbs: Docs > Account Management > Federated Authentication to Role Mapping API
-source_url: https://docs.datadoghq.com/authn_mapping/index.html
 ---
 
 # Federated Authentication to Role Mapping API

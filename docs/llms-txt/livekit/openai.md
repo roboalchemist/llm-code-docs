@@ -22,134 +22,46 @@
 
 # Source: https://docs.livekit.io/agents/models/llm/inference/openai.md
 
-# Source: https://docs.livekit.io/agents/models/stt/plugins/openai.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/openai.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/openai.md
-
-# Source: https://docs.livekit.io/agents/models/realtime/plugins/openai.md
-
-# Source: https://docs.livekit.io/agents/models/llm/inference/openai.md
-
-# Source: https://docs.livekit.io/agents/integrations/openai.md
-
-# Source: https://docs.livekit.io/agents/models/realtime/plugins/openai.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/openai.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/openai.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/openai.md
-
-# Source: https://docs.livekit.io/agents/models/llm/inference/openai.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/openai.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/openai.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/openai.md
-
-# Source: https://docs.livekit.io/agents/models/realtime/plugins/openai.md
-
-# Source: https://docs.livekit.io/agents/models/llm/inference/openai.md
-
-# Source: https://docs.livekit.io/agents/integrations/openai.md
-
-# Source: https://docs.livekit.io/agents/models/realtime/plugins/openai.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/openai.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/openai.md
-
-# Source: https://docs.livekit.io/agents/models/llm/inference/openai.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/openai.md
-
-# Source: https://docs.livekit.io/agents/models/llm/inference/openai.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/openai.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/openai.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/openai.md
-
-# Source: https://docs.livekit.io/agents/models/realtime/plugins/openai.md
-
-# Source: https://docs.livekit.io/agents/models/llm/inference/openai.md
-
-# Source: https://docs.livekit.io/agents/integrations/openai.md
-
-# Source: https://docs.livekit.io/agents/models/realtime/plugins/openai.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/openai.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/openai.md
-
-# Source: https://docs.livekit.io/agents/models/llm/inference/openai.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/openai.md
-
-LiveKit docs › Partner spotlight › OpenAI › OpenAI STT Plugin
+LiveKit docs › Models › LLM › Inference › OpenAI
 
 ---
 
-# OpenAI STT plugin guide
+# OpenAI LLM models
 
-> How to use the OpenAI STT plugin for LiveKit Agents.
-
-Available in:
-- [x] Node.js
-- [x] Python
+> Reference for OpenAI models served via LiveKit Inference.
 
 ## Overview
 
-This plugin allows you to use [OpenAI](https://platform.openai.com) as an STT provider for your voice agents.
+LiveKit Inference includes support for the following OpenAI models. Pricing information for each model and provider is available on the [pricing page](https://livekit.io/pricing/inference#proprietary-llms).
 
-## Quick reference
+| Model name | Model ID | Providers |
+| ---------- | -------- | -------- |
+| GPT-4o | `openai/gpt-4o` | `azure`, `openai` |
+| GPT-4o mini | `openai/gpt-4o-mini` | `azure`, `openai` |
+| GPT-4.1 | `openai/gpt-4.1` | `azure`, `openai` |
+| GPT-4.1 mini | `openai/gpt-4.1-mini` | `azure`, `openai` |
+| GPT-4.1 nano | `openai/gpt-4.1-nano` | `azure`, `openai` |
+| GPT-5 | `openai/gpt-5` | `azure`, `openai` |
+| GPT-5 mini | `openai/gpt-5-mini` | `azure`, `openai` |
+| GPT-5 nano | `openai/gpt-5-nano` | `azure`, `openai` |
+| GPT-5.1 | `openai/gpt-5.1` | `azure`, `openai` |
+| GPT-5.1 Chat Latest | `openai/gpt-5.1-chat-latest` | `azure`, `openai` |
+| GPT-5.2 | `openai/gpt-5.2` | `azure`, `openai` |
+| GPT-5.2 Chat Latest | `openai/gpt-5.2-chat-latest` | `azure`, `openai` |
+| GPT OSS 120B | `openai/gpt-oss-120b` | `baseten`, `groq`, (cerebras coming soon) |
 
-This section includes a basic usage example and some reference material. For links to more detailed documentation, see [Additional resources](#additional-resources).
+## Usage
 
-### Installation
-
-Install the plugin from PyPI:
-
-**Python**:
-
-```shell
-uv add "livekit-agents[openai]~=1.2"
-
-```
-
----
-
-**Node.js**:
-
-```shell
-pnpm add @livekit/agents-plugin-openai@1.x
-
-```
-
-### Authentication
-
-The OpenAI plugin requires an [OpenAI API key](https://platform.openai.com/api-keys).
-
-Set `OPENAI_API_KEY` in your `.env` file.
-
-### Usage
-
-Use OpenAI STT in an `AgentSession` or as a standalone transcription service. For example, you can use this STT in the [Voice AI quickstart](https://docs.livekit.io/agents/start/voice-ai.md).
+To use OpenAI, pass the model id to the `llm` argument in your `AgentSession`. LiveKit Inference manages the connection to the model automatically and picks the best available provider.
 
 **Python**:
 
 ```python
-from livekit.plugins import openai
+from livekit.agents import AgentSession
 
 session = AgentSession(
-  stt = openai.STT(
-    model="gpt-4o-transcribe",
-  ),
-  # ... llm, tts, etc.
+    llm="openai/gpt-4.1-mini",
+    # ... tts, stt, vad, turn_detection, etc.
 )
 
 ```
@@ -159,38 +71,86 @@ session = AgentSession(
 **Node.js**:
 
 ```typescript
-import * as openai from '@livekit/agents-plugin-openai';
+import { AgentSession } from '@livekit/agents';
 
-const session = new voice.AgentSession({
-    stt: new openai.STT(
-        model: "gpt-4o-transcribe"
-    ),
-    // ... llm, tts, etc.
+session = new AgentSession({
+    llm: "openai/gpt-4.1-mini",
+    // ... tts, stt, vad, turn_detection, etc.
 });
 
 ```
 
-### Parameters
+## Parameters
 
-This section describes some of the available parameters. See the plugin reference links in the [Additional resources](#additional-resources) section for a complete list of all available parameters.
+To customize additional parameters, or specify the exact provider to use, use the `LLM` class from the `inference` module.
 
-- **`model`** _(WhisperModels | string)_ (optional) - Default: `gpt-4o-transcribe`: Model to use for transcription. See OpenAI's documentation for a list of [supported models](https://platform.openai.com/docs/models#transcription).
+**Python**:
 
-- **`language`** _(string)_ (optional) - Default: `en`: Language of input audio in [ISO-639-1](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) format. See OpenAI's documentation for a list of [supported languages](https://platform.openai.com/docs/guides/speech-to-text#supported-languages).
+```python
+from livekit.agents import AgentSession, inference
 
-## Additional resources
+session = AgentSession(
+    llm=inference.LLM(
+        model="openai/gpt-5-mini", 
+        provider="openai",
+        extra_kwargs={
+            "reasoning_effort": "low"
+        }
+    ),
+    # ... tts, stt, vad, turn_detection, etc.
+)
 
-The following resources provide more information about using OpenAI with LiveKit Agents.
-
-- **[OpenAI docs](https://platform.openai.com/docs/guides/speech-to-text)**: OpenAI STT docs.
-
-- **[Voice AI quickstart](https://docs.livekit.io/agents/start/voice-ai.md)**: Get started with LiveKit Agents and OpenAI STT.
-
-- **[OpenAI ecosystem guide](https://docs.livekit.io/agents/integrations/openai.md)**: Overview of the entire OpenAI and LiveKit Agents integration.
+```
 
 ---
 
-This document was rendered at 2025-11-18T23:55:08.704Z.
-For the latest version of this document, see [https://docs.livekit.io/agents/models/stt/plugins/openai.md](https://docs.livekit.io/agents/models/stt/plugins/openai.md).
+**Node.js**:
+
+```typescript
+import { AgentSession, inference } from '@livekit/agents';
+
+session = new AgentSession({
+    llm: new inference.LLM({ 
+        model: "openai/gpt-5-mini", 
+        provider: "openai",
+        modelOptions: { 
+            reasoning_effort: "low" 
+        }
+    }),
+    // ... tts, stt, vad, turn_detection, etc.
+});
+
+```
+
+- **`model`** _(string)_: The model to use for the LLM. Must be a model from OpenAI.
+
+- **`provider`** _(string)_: The provider to use for the LLM. Must be `openai` to use OpenAI models and other parameters.
+
+- **`extra_kwargs`** _(dict)_ (optional): Additional parameters to pass to the provider's Chat Completions API, such as `reasoning_effort` or `max_completion_tokens`.
+
+In Node.js this parameter is called `modelOptions`.
+
+## Additional resources
+
+The following links provide more information about OpenAI in LiveKit Inference.
+
+- **[OpenAI Plugin](https://docs.livekit.io/agents/models/llm/plugins/openai.md)**: Plugin to use your own OpenAI account instead of LiveKit Inference.
+
+- **[Azure OpenAI Plugin](https://docs.livekit.io/agents/models/llm/plugins/azure-openai.md)**: Plugin to use your own Azure OpenAI account instead of LiveKit Inference.
+
+- **[OpenAI docs](https://platform.openai.com/docs)**: Official OpenAI platform documentation.
+
+- **[Azure OpenAI docs](https://learn.microsoft.com/en-us/azure/ai-foundry/openai/overview)**: Azure OpenAI documentation, for OpenAI proprietary models.
+
+- **[Baseten docs](https://docs.baseten.co/development/model-apis/overview)**: Baseten's official Model API documentation, for GPT-OSS models.
+
+- **[Groq docs](https://console.groq.com/docs/overview)**: Groq's official API documentation, for GPT-OSS models.
+
+- **[OpenAI ecosystem overview](https://docs.livekit.io/agents/integrations/openai.md)**: Overview of the entire OpenAI ecosystem and LiveKit Agents integration.
+
+---
+
+This document was rendered at 2026-02-03T03:24:59.320Z.
+For the latest version of this document, see [https://docs.livekit.io/agents/models/llm/inference/openai.md](https://docs.livekit.io/agents/models/llm/inference/openai.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/telephony/telnyx-websocket.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Telnyx Websocket Transport
 
 > Using Telnyx's WebSocket Transport for your Pipecat Cloud agents
@@ -98,8 +102,3 @@ To test your integration, simply dial your Telnyx phone number from any phone. T
 ## Next Steps
 
 For complete implementation details including dial-out, caller personalization, custom parameters, and advanced call control features, see the [Telnyx WebSocket Integration guide](/guides/telephony/telnyx-websockets).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

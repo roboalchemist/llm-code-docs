@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/templates/per-transaction/stripe.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Clone Stripe pricing
 
 > Replicate Stripe's per-transaction pricing model with Lago.

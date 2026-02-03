@@ -4,11 +4,7 @@
 
 Integrate Better Auth with Express.
 
-***
 
-title: Express Integration
-description: Integrate Better Auth with Express.
-------------------------------------------------
 
 This guide will show you how to integrate Better Auth with [express.js](https://expressjs.com/).
 

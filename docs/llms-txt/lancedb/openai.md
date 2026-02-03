@@ -2,9 +2,9 @@
 
 # Source: https://docs.lancedb.com/integrations/embedding/openai.md
 
-# Source: https://docs.lancedb.com/integrations/reranking/openai.md
-
-# Source: https://docs.lancedb.com/integrations/embedding/openai.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # OpenAI
 
@@ -23,8 +23,3 @@ LanceDB registers the OpenAI embeddings function in the registry by default, as 
     {PyEmbeddingOpenaiBasic}
   </CodeBlock>
 </CodeGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

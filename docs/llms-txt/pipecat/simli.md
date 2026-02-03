@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/services/video/simli.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Simli
 
 > Real-time AI avatar video generation service using WebRTC streaming
@@ -49,8 +53,3 @@ Before using Simli video services, you need:
 
 * `SIMLI_API_KEY`: Your Simli API key for authentication
 * `SIMLI_FACE_ID`: ID of your avatar face
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

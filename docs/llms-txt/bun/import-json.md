@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/runtime/import-json.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Import a JSON file
 
 Bun natively supports `.json` imports.
@@ -41,4 +45,4 @@ data.author.name; // => "John Dough"
 
 ***
 
-See [Docs > Runtime > TypeScript](https://bun.com/docs/runtime/typescript) for more information on using TypeScript with Bun.
+See [Docs > Runtime > TypeScript](/runtime/typescript) for more information on using TypeScript with Bun.

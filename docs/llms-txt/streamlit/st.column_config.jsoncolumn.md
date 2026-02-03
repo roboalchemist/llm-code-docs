@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/data/st.column_config/st.column_config.jsoncolumn
+
 # st.column_config.JsonColumn
 
 Configure a JSON column in `st.dataframe` or `st.data_editor`.

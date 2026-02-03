@@ -3,8 +3,7 @@
 ---
 title: Build Datadog Agent image
 description: Instructions for building custom Datadog Agent Docker images from source code
-breadcrumbs: Docs > Container Monitoring > Containers Guides > Build Datadog Agent image
-source_url: https://docs.datadoghq.com/guide/build-container-agent/index.html
+breadcrumbs: Docs > Containers > Containers Guides > Build Datadog Agent image
 ---
 
 # Build Datadog Agent image

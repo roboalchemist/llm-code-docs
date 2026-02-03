@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/security-compliance/authentication/sso.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Single Sign-On (SSO)
 
 <Frame> <img src="https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/SSO-app-ui.png?fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=69c735cebc73dc9cbaaf925a7e55b981" alt="" data-og-width="5120" width="5120" data-og-height="3060" height="3060" data-path="images/SSO-app-ui.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/SSO-app-ui.png?w=280&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=2a8a1e409cdf0a381d134935cf3cc729 280w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/SSO-app-ui.png?w=560&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=ca0492bcdf096f0be99c486064f8207e 560w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/SSO-app-ui.png?w=840&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=3cfe944f6170be54a9a8b656d0ff4b4f 840w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/SSO-app-ui.png?w=1100&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=bbbd7d84fae265ee12b21877cefab86e 1100w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/SSO-app-ui.png?w=1650&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=6d5a0ce318580db3b2a044def41197dd 1650w, https://mintcdn.com/aptible/gJr2xlqbHzeeHUse/images/SSO-app-ui.png?w=2500&fit=max&auto=format&n=gJr2xlqbHzeeHUse&q=85&s=82f358649697ac43978cc7200aabf926 2500w" /> </Frame>

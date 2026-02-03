@@ -145,12 +145,18 @@ running `make release`.
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/script.py#L17"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/script.py#L19"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### store_true
 
->  store_true ()
+``` python
+
+def store_true(
+    
+):
+
+```
 
 *Placeholder to pass to
 [`Param`](https://fastcore.fast.ai/script.html#param) for
@@ -159,12 +165,18 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/script.py#L22"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/script.py#L24"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### store_false
 
->  store_false ()
+``` python
+
+def store_false(
+    
+):
+
+```
 
 *Placeholder to pass to
 [`Param`](https://fastcore.fast.ai/script.html#param) for
@@ -174,12 +186,18 @@ action*
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/script.py#L27"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/script.py#L29"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### bool_arg
 
->  bool_arg (v)
+``` python
+
+def bool_arg(
+    v
+):
+
+```
 
 *Use as `type` for [`Param`](https://fastcore.fast.ai/script.html#param)
 to get `bool` behavior*
@@ -187,12 +205,18 @@ to get `bool` behavior*
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/script.py#L32"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/script.py#L34"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### clean_type_str
 
->  clean_type_str (x:str)
+``` python
+
+def clean_type_str(
+    x:str
+):
+
+```
 
 ``` python
 class Test: pass
@@ -207,13 +231,19 @@ test_eq(clean_type_str(store_false), 'store_false')
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/script.py#L39"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/script.py#L41"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### Param
 
->  Param (help='', type=None, opt=True, action=None, nargs=None, const=None,
->             choices=None, required=None, default=None, version=None)
+``` python
+
+def Param(
+    help:str='', type:NoneType=None, opt:bool=True, action:NoneType=None, nargs:NoneType=None, const:NoneType=None,
+    choices:NoneType=None, required:NoneType=None, default:NoneType=None, version:NoneType=None
+):
+
+```
 
 *A parameter in a function used in
 [`anno_parser`](https://fastcore.fast.ai/script.html#anno_parser) or
@@ -276,41 +306,22 @@ test_eq(p.kwargs, {'help': 'help (default: 1)', 'type': int, 'default': 1})
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/script.py#L79"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/script.py#L102"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### anno_parser
 
->  anno_parser (func, prog:str=None)
+``` python
+
+def anno_parser(
+    func, prog:str=None
+):
+
+```
 
 *Look at params (annotated with
 [`Param`](https://fastcore.fast.ai/script.html#param)) in func and
 return an `ArgumentParser`*
-
-<table>
-<thead>
-<tr>
-<th></th>
-<th><strong>Type</strong></th>
-<th><strong>Default</strong></th>
-<th><strong>Details</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>func</td>
-<td></td>
-<td></td>
-<td>Function to get arguments from</td>
-</tr>
-<tr>
-<td>prog</td>
-<td>str</td>
-<td>None</td>
-<td>The name of the program</td>
-</tr>
-</tbody>
-</table>
 
 This converts a function with parameter annotations of type
 [`Param`](https://fastcore.fast.ai/script.html#param) into an
@@ -345,7 +356,7 @@ p.print_help()
       --b B           param 2 (default: test)
       --c {aa,bb,cc}  param 3 (default: aa)
 
-We can also check the version and help flaggs are working.
+We can also check the version and help flags are working.
 
 ``` python
 try: p.parse_args(['--v'])
@@ -400,17 +411,31 @@ p.print_help()
       --b B           param 2 (default: test)
       --c {aa,bb,cc}  param 3 (default: aa)
 
-------------------------------------------------------------------------
+It also works with Union types:
 
-<a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/script.py#L93"
-target="_blank" style="float:right; font-size:smaller">source</a>
+``` python
+def h(n:int|str, exts:str|list=None):
+    "Test union types"
 
-### args_from_prog
+p = anno_parser(h, 'test')
+p.print_help()
+```
 
->  args_from_prog (func, prog)
+    usage: test [-h] [--exts EXTS] n
 
-*Extract args from `prog`*
+    Test union types
+
+    positional arguments:
+      n
+
+    options:
+      -h, --help   show this help message and exit
+      --exts EXTS
+
+``` python
+test_eq(p.parse_args(['42', '--exts', 'py']).n, 42)
+test_eq(p.parse_args(['hello']).n, 'hello')
+```
 
 Sometimes it’s convenient to extract arguments from the actual name of
 the called program.
@@ -418,6 +443,24 @@ the called program.
 will do this, assuming that names and values of the params are separated
 by a `#`. Optionally there can also be a prefix separated by `##`
 (double underscore).
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/script.py#L120"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### args_from_prog
+
+``` python
+
+def args_from_prog(
+    func, prog
+):
+
+```
+
+*Extract args from `prog`*
 
 ``` python
 exp = {'a': False, 'b': 'baa'}
@@ -428,12 +471,34 @@ test_eq(args_from_prog(f, 'a#0#b#baa'), exp)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/script.py#L109"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/script.py#L144"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### set_ctx
+
+``` python
+
+def set_ctx(
+    cv, val:bool=True
+):
+
+```
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/script.py#L152"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### call_parse
 
->  call_parse (func=None, nested=False)
+``` python
+
+def call_parse(
+    func:NoneType=None, nested:bool=False
+):
+
+```
 
 *Decorator to create a simple CLI from `func` using
 [`anno_parser`](https://fastcore.fast.ai/script.html#anno_parser)*

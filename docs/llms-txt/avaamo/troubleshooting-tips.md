@@ -12,20 +12,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/llamb/troubleshooting-tips.md
 
-# Source: https://docs.avaamo.com/user-guide/ref/avaamo-platform-api-documentation/troubleshooting-tips.md
-
-# Source: https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/using-q-and-a-designer/troubleshooting-tips.md
-
-# Source: https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/customize-your-skill/troubleshooting-tips.md
-
-# Source: https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/using-avaamo-answers-1/troubleshooting-tips.md
-
-# Source: https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/using-smalltalk/troubleshooting-tips.md
-
-# Source: https://docs.avaamo.com/user-guide/datasync-ai/troubleshooting-tips.md
-
-# Source: https://docs.avaamo.com/user-guide/llamb/troubleshooting-tips.md
-
 # Troubleshooting tips
 
 In case you are unable to receive the expected response from LLaMB, the following few troubleshooting tips can help:

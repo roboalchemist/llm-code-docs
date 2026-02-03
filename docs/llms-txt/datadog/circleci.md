@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Continuous Integration Visibility > CI Pipeline Visibility in Datadog >
   CircleCI Setup for CI Visibility
-source_url: https://docs.datadoghq.com/pipelines/circleci/index.html
 ---
 
 # CircleCI Setup for CI Visibility

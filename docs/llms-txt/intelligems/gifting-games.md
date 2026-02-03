@@ -4,7 +4,7 @@
 
 Offers allow you to serve specific discounts and offers to your site visitors using. One of these types of Offers is a Gift With Purchase. While you can have such an Experience on all the time, Intelligems can also help you test which thresholds and gifts drive the most value.
 
-You can do this by setting up an [Offer Test](https://docs.intelligems.io/offer-experiences/testing-offer-personalizations).
+You can do this by setting up an [Offer Test](https://docs.intelligems.io/offer-personalizations/testing-offer-personalizations).
 
 *What these test designs might look like:*
 

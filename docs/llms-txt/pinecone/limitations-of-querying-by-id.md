@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/troubleshooting/limitations-of-querying-by-id.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Limitations of querying by ID
 
 When [querying by record ID](/guides/search/semantic-search#search-with-a-record-id), even with a high `topK`, the response is not guaranteed to include the record with the specified ID.

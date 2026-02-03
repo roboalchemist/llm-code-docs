@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/features/integrations/raycast.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Polar for Raycast
 
 > The fastest way to access Polar from your keyboard

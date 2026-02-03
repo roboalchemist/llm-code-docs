@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/integrations/llms/supported-llms.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Supported LLMs
 
 > Galileo comes with support for the following LLMs out of the box. In the Playground, you will see models for which you've added an integration.

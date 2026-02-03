@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/integrations/sentry.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LLM Observability with Sentry and OpenLLMetry
 
 Install Sentry SDK with OpenTelemetry support:
@@ -62,8 +66,3 @@ Then, when initializing the Traceloop SDK, make sure to override the processor a
   })
   ```
 </CodeGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

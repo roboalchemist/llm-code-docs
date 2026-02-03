@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/PromptChaining.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Evaluating a prompt chaining agent
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/PromptChaining/prompt-chaining.ipynb) by [Adrian Barbir](https://www.linkedin.com/in/adrianbarbir/) on 2025-01-30</div>
@@ -554,8 +558,3 @@ If you select the experiment, you can see all of the different evaluations and s
 * Check out the [guide to what you should do after running an eval](https://www.braintrust.dev/blog/after-evals)
 
 * Try out another [agent cookbook](https://www.braintrust.dev/docs/cookbook/recipes/APIAgent-Py)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

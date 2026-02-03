@@ -6,7 +6,6 @@ description: >-
   Configure Azure Private Link to send telemetry to Datadog securely without
   using the public internet, including endpoint setup and DNS configuration.
 breadcrumbs: Docs > Agent > Agent Guides > Connect to Datadog over Azure Private Link
-source_url: https://docs.datadoghq.com/guide/azure-private-link/index.html
 ---
 
 # Connect to Datadog over Azure Private Link

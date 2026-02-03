@@ -4,11 +4,7 @@
 
 Username plugin
 
-***
 
-title: Username
-description: Username plugin
-----------------------------
 
 The username plugin is a lightweight plugin that adds username support to the email and password authenticator. This allows users to sign in with their username instead of their email.
 
@@ -40,7 +36,7 @@ The username plugin is a lightweight plugin that adds username support to the em
 
     <Tabs items={["migrate", "generate"]}>
       <Tab value="migrate">
-        <CodeBlockTabs defaultValue="npm">
+        <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
           <CodeBlockTabsList>
             <CodeBlockTabsTrigger value="npm">
               npm
@@ -86,7 +82,7 @@ The username plugin is a lightweight plugin that adds username support to the em
       </Tab>
 
       <Tab value="generate">
-        <CodeBlockTabs defaultValue="npm">
+        <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
           <CodeBlockTabsList>
             <CodeBlockTabsTrigger value="npm">
               npm
@@ -158,6 +154,7 @@ The username plugin is a lightweight plugin that adds username support to the em
 To sign up a user with username, you can use the existing `signUp.email` function provided by the client.
 The `signUp` function should take a new `username` property in the object.
 
+
 ### Client Side
 
 ```ts
@@ -188,29 +185,30 @@ const data = await auth.api.signUpEmail({
 
 ```ts
 type signUpEmail = {
-    /**
-     * The email of the user.
-    */
-    email: string = "email@domain.com"
-    /**
-     * The name of the user.
-    */
-    name: string = "Test User"
-    /**
-     * The password of the user.
-    */
-    password: string = "password1234"
-    /**
-     * The username of the user.
-    */
-    username?: string = "test"
-    /**
-     * An optional display username of the user.
-    */
-    displayUsername?: string = "Test User123"
-
+      /**
+       * The email of the user.
+      */
+      email: string = "email@domain.com"
+      /**
+       * The name of the user.
+      */
+      name: string = "Test User"
+      /**
+       * The password of the user.
+      */
+      password: string = "password1234"
+      /**
+       * The username of the user.
+      */
+      username?: string = "test"
+      /**
+       * An optional display username of the user.
+      */
+      displayUsername?: string = "Test User123"
+  
 }
 ```
+
 
 <Callout type="info">
   If only `username` is provided, the `displayUsername` will be set to the pre normalized version of the `username`. You can see the [Username Normalization](#username-normalization) and [Display Username Normalization](#display-username-normalization) sections for more details.
@@ -219,6 +217,7 @@ type signUpEmail = {
 ### Sign in
 
 To sign in a user with username, you can use the `signIn.username` function provided by the client.
+
 
 ### Client Side
 
@@ -244,21 +243,23 @@ const data = await auth.api.signInUsername({
 
 ```ts
 type signInUsername = {
-    /**
-     * The username of the user.
-    */
-    username: string = "test"
-    /**
-     * The password of the user.
-    */
-    password: string = "password1234"
-
+      /**
+       * The username of the user.
+      */
+      username: string = "test"
+      /**
+       * The password of the user.
+      */
+      password: string = "password1234"
+  
 }
 ```
+
 
 ### Update username
 
 To update the username of a user, you can use the `updateUser` function provided by the client.
+
 
 ### Client Side
 
@@ -282,17 +283,19 @@ const data = await auth.api.updateUser({
 
 ```ts
 type updateUser = {
-    /**
-     * The username to update.
-    */
-    username?: string = "new-username"
-
+      /**
+       * The username to update.
+      */
+      username?: string = "new-username"
+  
 }
 ```
+
 
 ### Check if username is available
 
 To check if a username is available, you can use the `isUsernameAvailable` function provided by the client.
+
 
 ### Client Side
 
@@ -316,13 +319,14 @@ const response = await auth.api.isUsernameAvailable({
 
 ```ts
 type isUsernameAvailable = {
-    /**
-     * The username to check.
-    */
-    username: string = "new-username"
-
+      /**
+       * The username to check.
+      */
+      username: string = "new-username"
+  
 }
 ```
+
 
 ## Options
 

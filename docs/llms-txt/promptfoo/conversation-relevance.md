@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/configuration/expected-outputs/model-graded/conversation-relevance/
+
 # Conversation Relevance
 
 The `conversation-relevance` assertion evaluates whether responses in a conversation remain relevant throughout the dialogue. This is particularly useful for chatbot applications where maintaining conversational coherence is critical.

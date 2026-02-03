@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/agent-desk/insights-manager/live-insights/navigation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Navigation
 
 > Learn how to navigate the Live Insights interface.
@@ -23,9 +27,9 @@ Live Insights provides different views of queue performance data:
   <img src="https://mintcdn.com/asapp/3gV5ovdpglqSwLMa/images/messaging-platform/insights-manager/access-queue.png?fit=max&auto=format&n=3gV5ovdpglqSwLMa&q=85&s=99e84db6da178a4734a8c21573b33a92" data-og-width="1730" width="1730" data-og-height="1204" height="1204" data-path="images/messaging-platform/insights-manager/access-queue.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/3gV5ovdpglqSwLMa/images/messaging-platform/insights-manager/access-queue.png?w=280&fit=max&auto=format&n=3gV5ovdpglqSwLMa&q=85&s=4a478326c3665b92cd894756b55bebef 280w, https://mintcdn.com/asapp/3gV5ovdpglqSwLMa/images/messaging-platform/insights-manager/access-queue.png?w=560&fit=max&auto=format&n=3gV5ovdpglqSwLMa&q=85&s=6e1780376dac2b70a4aaacb1301b0d09 560w, https://mintcdn.com/asapp/3gV5ovdpglqSwLMa/images/messaging-platform/insights-manager/access-queue.png?w=840&fit=max&auto=format&n=3gV5ovdpglqSwLMa&q=85&s=6e0b584d7b66667014e7dc0114f983a6 840w, https://mintcdn.com/asapp/3gV5ovdpglqSwLMa/images/messaging-platform/insights-manager/access-queue.png?w=1100&fit=max&auto=format&n=3gV5ovdpglqSwLMa&q=85&s=23b772aa4de33b95257ff6d8fa7933e0 1100w, https://mintcdn.com/asapp/3gV5ovdpglqSwLMa/images/messaging-platform/insights-manager/access-queue.png?w=1650&fit=max&auto=format&n=3gV5ovdpglqSwLMa&q=85&s=1f8f5021ede5494a14712fb69dc4de9a 1650w, https://mintcdn.com/asapp/3gV5ovdpglqSwLMa/images/messaging-platform/insights-manager/access-queue.png?w=2500&fit=max&auto=format&n=3gV5ovdpglqSwLMa&q=85&s=92d6d317ad381f1e69fb389fa827a96e 2500w" />
 </Frame>
 
-You can access single queue or queue group in two ways:
+You can access a single queue or queue group in two ways:
 
-1. From Overview, **click a tile** → the relevant queue details page opens.
+1. From Overview, **click a tile** → the system opens the relevant queue details page.
 2. From the **queue dropdown**, select a **queue** or **queue group**.
 
 ## Navigate Away from a Single Queue or Queue Group
@@ -36,9 +40,9 @@ You can navigate back to the Live Insights Overview, or to a different queue or 
   <img src="https://mintcdn.com/asapp/3gV5ovdpglqSwLMa/images/messaging-platform/insights-manager/navigate-away-queue.png?fit=max&auto=format&n=3gV5ovdpglqSwLMa&q=85&s=18e2b299f389473ce28bbe8a9f94c56a" data-og-width="1730" width="1730" data-og-height="1204" height="1204" data-path="images/messaging-platform/insights-manager/navigate-away-queue.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/3gV5ovdpglqSwLMa/images/messaging-platform/insights-manager/navigate-away-queue.png?w=280&fit=max&auto=format&n=3gV5ovdpglqSwLMa&q=85&s=8b60ba6591d24e00a046b174386e029a 280w, https://mintcdn.com/asapp/3gV5ovdpglqSwLMa/images/messaging-platform/insights-manager/navigate-away-queue.png?w=560&fit=max&auto=format&n=3gV5ovdpglqSwLMa&q=85&s=db17cf45a74cb11eb1a2aa9a1db49fcf 560w, https://mintcdn.com/asapp/3gV5ovdpglqSwLMa/images/messaging-platform/insights-manager/navigate-away-queue.png?w=840&fit=max&auto=format&n=3gV5ovdpglqSwLMa&q=85&s=e8a7290631e2221df1045b8d3050b353 840w, https://mintcdn.com/asapp/3gV5ovdpglqSwLMa/images/messaging-platform/insights-manager/navigate-away-queue.png?w=1100&fit=max&auto=format&n=3gV5ovdpglqSwLMa&q=85&s=7db4fcfa71706b9e3e0e7d14fee0155d 1100w, https://mintcdn.com/asapp/3gV5ovdpglqSwLMa/images/messaging-platform/insights-manager/navigate-away-queue.png?w=1650&fit=max&auto=format&n=3gV5ovdpglqSwLMa&q=85&s=5983e466f8df621e943afbb10e15c7de 1650w, https://mintcdn.com/asapp/3gV5ovdpglqSwLMa/images/messaging-platform/insights-manager/navigate-away-queue.png?w=2500&fit=max&auto=format&n=3gV5ovdpglqSwLMa&q=85&s=a49a7b103add069cc4c2051c2f4f7ecd 2500w" />
 </Frame>
 
-1. **Back arrow**: on click, the Live Insights Overview opens.
+1. **Back arrow**: when you click, the system opens the Live Insights Overview.
 2. **Queue channel indicator**: indicates if the queue is a voice or chat queue.
-3. **Queue dropdown**: on click, you can select a different queue or queue group.
+3. **Queue dropdown**: when you click, you can select a different queue or queue group.
 
 ## Channel-based Queues
 
@@ -50,7 +54,7 @@ Queues and queue groups host channel-specific content. ASAPP supports three queu
 
 1. **Chat queues**: includes all digital channels such as Apple Messages for Business, Web, SMS, iOS and Android.
 2. **Voice queues**: includes all voice channels in one queue.
-3. **Queue groups**: groups are made of aggregated queues of a single type. Each group contains either chat queues or voice queues. The number of queues in the queue group displays below the channel icon.
+3. **Queue groups**: groups consist of aggregated queues of a single type. Each group contains either chat queues or voice queues. The number of queues in the queue group displays below the channel icon.
 
 ## Access Queue Performance and Conversation Data
 

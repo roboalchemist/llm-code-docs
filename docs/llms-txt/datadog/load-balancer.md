@@ -6,7 +6,6 @@
 title: Load Balancer Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > AWS Components > Load Balancer Component
-source_url: https://docs.datadoghq.com/components-aws/load-balancer/index.html
 ---
 
 # Load Balancer Component

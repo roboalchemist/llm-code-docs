@@ -6,7 +6,6 @@ description: >-
   Monitor and optimize Datadog Agent CPU and memory usage for APM workloads to
   prevent resource exhaustion.
 breadcrumbs: Docs > APM > APM Troubleshooting > Agent Resource Usage by APM
-source_url: https://docs.datadoghq.com/troubleshooting/agent_apm_resource_usage/index.html
 ---
 
 # Agent Resource Usage by APM

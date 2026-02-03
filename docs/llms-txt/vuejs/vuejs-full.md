@@ -10663,7 +10663,7 @@ Since version 3.2.34, a single-file component using `<script setup>` will automa
 
 ## Max Cached Instances {#max-cached-instances}
 
-We can limit the maximum number of component instances that can be cached via the `max` prop. When `max` is specified, `<KeepAlive>` behaves like an [LRU cache](<https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_recently_used_(LRU)>): if the number of cached instances is about to exceed the specified max count, the least recently accessed cached instance will be destroyed to make room for the new one.
+We can limit the maximum number of component instances that can be cached via the `max` prop. When `max` is specified, `<KeepAlive>` behaves like an [LRU cache](<https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_Recently_Used_(LRU)>): if the number of cached instances is about to exceed the specified max count, the least recently accessed cached instance will be destroyed to make room for the new one.
 
 ```vue-html
 <KeepAlive :max="10">
@@ -16146,7 +16146,7 @@ You should now have your first Vue project running! Note that the example compon
 
 - The recommended IDE setup is [Visual Studio Code](https://code.visualstudio.com/) + [Vue - Official extension](https://marketplace.visualstudio.com/items?itemName=Vue.volar). If you use other editors, check out the [IDE support section](/guide/scaling-up/tooling#ide-support).
 - More tooling details, including integration with backend frameworks, are discussed in the [Tooling Guide](/guide/scaling-up/tooling).
-- To learn more about the underlying build tool Vite, check out the [Vite docs](https://vitejs.dev).
+- To learn more about the underlying build tool Vite, check out the [Vite docs](https://vite.dev).
 - If you choose to use TypeScript, check out the [TypeScript Usage Guide](typescript/overview).
 
 When you are ready to ship your app to production, run the following:

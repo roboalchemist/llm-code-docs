@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/concepts/app-testing/automate-tests
+
 # Automate your tests with CI
 
 One of the key benefits of app testing is that tests can be automated using Continuous Integration (CI). By running tests automatically during development, you can validate that changes to your app don't break existing functionality. You can verify app code as you commit, catch bugs early, and prevent accidental breaks before deployment.

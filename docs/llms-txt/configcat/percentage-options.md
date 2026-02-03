@@ -2,6 +2,8 @@
 
 # Percentage Options
 
+Copy page
+
 ## What are Percentage Options?[​](#what-are-percentage-options "Direct link to What are Percentage Options?")
 
 Using *Percentage Options*, you can define that a certain percentage of users should receive a specific value.
@@ -18,11 +20,11 @@ You can add Percentage Options to a feature flag by clicking the **+%** button o
 
 Percentage Options is a list of *% value* and *served value* pairs, where % values add up to 100.
 
-It divides users into groups according to the percentage split defined by the % values. The grouping is random and based on the [Percentage Evaluation Attribute](#percentage-evaluation-attribute). By default, this is the [User Object's](https://configcat.com/docs/docs/targeting/user-object/.md) **Identifier** attribute. However, you can use any other user attribute as the basis of the grouping.
+It divides users into groups according to the percentage split defined by the % values. The grouping is random and based on the [Percentage Evaluation Attribute](#percentage-evaluation-attribute). By default, this is the [User Object's](https://configcat.com/docs/targeting/user-object.md) **Identifier** attribute. However, you can use any other user attribute as the basis of the grouping.
 
 info
 
-If the Percentage Evaluation Attribute is not present in the [User Object](https://configcat.com/docs/docs/targeting/user-object/.md), the ["To unidentified" value](https://configcat.com/docs/docs/targeting/targeting-overview/.md#to-all-users--to-all-other--to-unidentified-value) will be returned. (Read more about the feature flag evaluation algorithm [here](https://configcat.com/docs/docs/targeting/feature-flag-evaluation/.md).)
+If the Percentage Evaluation Attribute is not present in the [User Object](https://configcat.com/docs/targeting/user-object.md), the ["To unidentified" value](https://configcat.com/docs/targeting/targeting-overview.md#to-all-users--to-all-other--to-unidentified-value) will be returned. (Read more about the feature flag evaluation algorithm [here](https://configcat.com/docs/targeting/feature-flag-evaluation.md).)
 
 Percentage Options are designed to be [sticky](#stickiness) and [consistent](#consistency) across all SDKs, ensuring a reliable experience.
 
@@ -38,7 +40,7 @@ The value to return when the user falls into the group determined by the % value
 
 In the case of a feature flag (boolean setting), there must be two options. One for the **ON** and one for the **OFF** state.
 
-In the case of a string, integer or double setting, the maximum number of options [depends on your subscription plan](https://configcat.com/docs/docs/subscription-plan-limits/.md). You can add options by clicking the **+% OPTION** button.
+In the case of a string, integer or double setting, the maximum number of options [depends on your subscription plan](https://configcat.com/docs/subscription-plan-limits.md). You can add options by clicking the **+% OPTION** button.
 
 ## Percentage Options within Targeting Rules[​](#percentage-options-within-targeting-rules "Direct link to Percentage Options within Targeting Rules")
 
@@ -48,13 +50,13 @@ In this case, the Percentage Options will be evaluated only if the Targeting Rul
 
 info
 
-If the Percentage Evaluation Attribute is not present in the [User Object](https://configcat.com/docs/docs/targeting/user-object/.md), the targeting rule will be skipped - despite the matching Targeting Rule. Read more about the feature flag evaluation algorithm [here](https://configcat.com/docs/docs/targeting/feature-flag-evaluation/.md).
+If the Percentage Evaluation Attribute is not present in the [User Object](https://configcat.com/docs/targeting/user-object.md), the targeting rule will be skipped - despite the matching Targeting Rule. Read more about the feature flag evaluation algorithm [here](https://configcat.com/docs/targeting/feature-flag-evaluation.md).
 
 ![Percentage options within targeting rules](/docs/assets/targeting/percentage-options/percentage-options-within-targeting-rule_192dpi.png)
 
 ## Percentage Evaluation Attribute[​](#percentage-evaluation-attribute "Direct link to Percentage Evaluation Attribute")
 
-The *Percentage Evaluation Attribute* (sometimes called *percentage attribute*) is the user attribute by which users are grouped. By default, it is the [User Object's](https://configcat.com/docs/docs/targeting/user-object/.md) **Identifier** attribute. However, you can use any other user attribute as the basis of the grouping (see the example use case [below](#percentage-options-based-on-other-user-attributes)).
+The *Percentage Evaluation Attribute* (sometimes called *percentage attribute*) is the user attribute by which users are grouped. By default, it is the [User Object's](https://configcat.com/docs/targeting/user-object.md) **Identifier** attribute. However, you can use any other user attribute as the basis of the grouping (see the example use case [below](#percentage-options-based-on-other-user-attributes)).
 
 ### How to change the Percentage Evaluation Attribute?[​](#how-to-change-the-percentage-evaluation-attribute "Direct link to How to change the Percentage Evaluation Attribute?")
 
@@ -72,7 +74,7 @@ The selected Percentage Evaluation Attribute applies to all Percentage Options w
 
 For example, if you have a feature flag with a Percentage Option of **20% ON**, then you change the Percentage Option to **40% ON**, and then back to **20% ON**, the same 20% of users will get the **ON** value for the feature flag just like the first time.
 
-For a demonstration of this concept, see this [example scenario](https://configcat.com/docs/docs/targeting/feature-flag-evaluation/.md#example-scenarios-for-percentage-options).
+For a demonstration of this concept, see this [example scenario](https://configcat.com/docs/targeting/feature-flag-evaluation.md#example-scenarios-for-percentage-options).
 
 ## Consistency[​](#consistency "Direct link to Consistency")
 
@@ -124,7 +126,7 @@ The go-to feature for A/B testing is Percentage Options. So let's add one with 3
 
 info
 
-To make all this useful, that is, to measure the effectiveness of the different strategies, we also need to integrate with an analytics service like [Amplitude](https://configcat.com/docs/docs/integrations/amplitude/.md) or [Mixpanel](https://configcat.com/docs/docs/integrations/mixpanel/.md) and update our application to send feature flag evaluation results to it.
+To make all this useful, that is, to measure the effectiveness of the different strategies, we also need to integrate with an analytics service like [Amplitude](https://configcat.com/docs/integrations/amplitude.md) or [Mixpanel](https://configcat.com/docs/integrations/mixpanel.md) and update our application to send feature flag evaluation results to it.
 
 ### Complex phased rollout / Canary release / Percentage rollout scenario[​](#complex-phased-rollout--canary-release--percentage-rollout-scenario "Direct link to Complex phased rollout / Canary release / Percentage rollout scenario")
 

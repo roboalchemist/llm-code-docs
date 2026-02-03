@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/management/errors-and-retries.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Errors and retries
 
 > Handling errors and retries with the Trigger.dev management API
@@ -8,7 +12,7 @@
 
 When the SDK method is unable to connect to the API server, or the API server returns a non-successful response, the SDK will throw an `ApiError` that you can catch and handle:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { runs, APIError } from "@trigger.dev/sdk";
 
 async function main() {
@@ -30,7 +34,7 @@ The SDK will automatically retry requests that fail due to network errors or ser
 
 You can customize the retry behavior by passing a `requestOptions` option to the `configure` function:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { configure } from "@trigger.dev/sdk";
 
 configure({
@@ -48,7 +52,7 @@ configure({
 
 All SDK functions also take a `requestOptions` parameter as the last argument, which can be used to customize the request options. You can use this to disable retries for a specific request:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 async function main() {

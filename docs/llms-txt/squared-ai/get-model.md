@@ -1,44 +1,45 @@
 # Source: https://docs.squared.ai/api-reference/models/get-model.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Model
+
+
 
 ## OpenAPI
 
 ````yaml GET /api/v1/models/{id}
+openapi: 3.0.1
+info:
+  title: AI Squared API
+  version: 1.0.0
+servers:
+  - url: https://api.squared.ai
+security: []
 paths:
-  path: /api/v1/models/{id}
-  method: get
-  servers:
-    - url: https://api.squared.ai
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path:
-        id:
+  /api/v1/models/{id}:
+    get:
+      tags:
+        - Models
+      summary: Retrieves a model
+      parameters:
+        - name: id
+          in: path
+          required: true
           schema:
-            - type: integer
-              required: true
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: object
+            type: integer
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
                     properties:
                       id:
                         type: string
@@ -67,26 +68,13 @@ paths:
                           updated_at:
                             type: string
                             format: date-time
-        examples:
-          example:
-            value:
-              data:
-                id: <string>
-                type: <string>
-                attributes:
-                  name: <string>
-                  description: <string>
-                  query: <string>
-                  query_type: <string>
-                  configuration: {}
-                  primary_key: <string>
-                  connector_id: 123
-                  created_at: '2023-11-07T05:31:56Z'
-                  updated_at: '2023-11-07T05:31:56Z'
-        description: Successful operation
-  deprecated: false
-  type: path
+      security:
+        - bearerAuth: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 
 ````

@@ -2,21 +2,13 @@
 
 # Source: https://docs.windsurf.com/plugins/accounts/api-reference/custom-analytics.md
 
-# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/custom-analytics.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/api-reference/custom-analytics.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/custom-analytics.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/api-reference/custom-analytics.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/custom-analytics.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/api-reference/custom-analytics.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Custom Analytics Query
 
-> Flexible analytics querying with custom selections, filters, and aggregations
+> Flexible analytics querying with custom selections, filters, and aggregations for autocomplete, chat, command, and PCW data.
 
 ## Overview
 
@@ -25,7 +17,7 @@ The Custom Analytics API provides flexible querying capabilities for autocomplet
 ## Request
 
 <ParamField body="service_key" type="string" required>
-  Your service key with "Teams Read-only" permissions
+  Your service key with "Analytics Read" permissions
 </ParamField>
 
 <ParamField body="group_name" type="string">
@@ -34,55 +26,99 @@ The Custom Analytics API provides flexible querying capabilities for autocomplet
 
 <ParamField body="query_requests" type="array" required>
   Array of query request objects defining the data to retrieve
+
+  <Expandable title="Query Request Object">
+    <ParamField body="data_source" type="string" required>
+      Data source to query. Options:
+
+      * `QUERY_DATA_SOURCE_USER_DATA` - Autocomplete data
+      * `QUERY_DATA_SOURCE_CHAT_DATA` - Chat data
+      * `QUERY_DATA_SOURCE_COMMAND_DATA` - Command data
+      * `QUERY_DATA_SOURCE_PCW_DATA` - Percent Code Written data
+    </ParamField>
+
+    <ParamField body="selections" type="array" required>
+      Array of field selections to retrieve
+
+      <Expandable title="Selection Object">
+        <ParamField body="field" type="string" required>
+          Field name to select (see Available Fields section)
+        </ParamField>
+
+        <ParamField body="name" type="string">
+          Alias for the field. If not specified, defaults to `{aggregation_function}_{field_name}` (lowercase)
+        </ParamField>
+
+        <ParamField body="aggregation_function" type="string">
+          Aggregation function to apply:
+
+          * `QUERY_AGGREGATION_UNSPECIFIED` (default)
+          * `QUERY_AGGREGATION_COUNT`
+          * `QUERY_AGGREGATION_SUM`
+          * `QUERY_AGGREGATION_AVG`
+          * `QUERY_AGGREGATION_MAX`
+          * `QUERY_AGGREGATION_MIN`
+        </ParamField>
+      </Expandable>
+    </ParamField>
+
+    <ParamField body="filters" type="array">
+      Array of filters to apply
+
+      <Expandable title="Filter Object">
+        <ParamField body="name" type="string" required>
+          Field name to filter on
+        </ParamField>
+
+        <ParamField body="filter" type="string" required>
+          Filter operation:
+
+          * `QUERY_FILTER_EQUAL`
+          * `QUERY_FILTER_NOT_EQUAL`
+          * `QUERY_FILTER_GREATER_THAN`
+          * `QUERY_FILTER_LESS_THAN`
+          * `QUERY_FILTER_GE` (greater than or equal)
+          * `QUERY_FILTER_LE` (less than or equal)
+        </ParamField>
+
+        <ParamField body="value" type="string" required>
+          Value to compare against
+        </ParamField>
+      </Expandable>
+    </ParamField>
+
+    <ParamField body="aggregations" type="array">
+      Array of aggregations to group by
+
+      <Expandable title="Aggregation Object">
+        <ParamField body="field" type="string" required>
+          Field name to group by
+        </ParamField>
+
+        <ParamField body="name" type="string" required>
+          Alias for the aggregation field
+        </ParamField>
+      </Expandable>
+    </ParamField>
+  </Expandable>
 </ParamField>
 
 ## Query Request Structure
 
 Each query request object contains:
 
-<ParamField body="data_source" type="string" required>
-  Data source to query. Options:
-
-  * `QUERY_DATA_SOURCE_USER_DATA` - Autocomplete data
-  * `QUERY_DATA_SOURCE_CHAT_DATA` - Chat data
-  * `QUERY_DATA_SOURCE_COMMAND_DATA` - Command data
-  * `QUERY_DATA_SOURCE_PCW_DATA` - Percent Code Written data
-</ParamField>
-
-<ParamField body="selections" type="array" required>
-  Array of field selections to retrieve (see Selections section)
-</ParamField>
-
-<ParamField body="filters" type="array">
-  Array of filters to apply (see Filters section)
-</ParamField>
-
-<ParamField body="aggregations" type="array">
-  Array of aggregations to group by (see Aggregations section)
-</ParamField>
+* **data\_source** (required): Data source to query
+* **selections** (required): Array of field selections to retrieve
+* **filters** (optional): Array of filters to apply
+* **aggregations** (optional): Array of aggregations to group by
 
 ## Selections
 
 Selections define which fields to retrieve and how to aggregate them.
 
-<ParamField body="field" type="string" required>
-  Field name to select (see Available Fields section)
-</ParamField>
-
-<ParamField body="name" type="string">
-  Alias for the field. If not specified, defaults to `{aggregation_function}_{field_name}` (lowercase)
-</ParamField>
-
-<ParamField body="aggregation_function" type="string">
-  Aggregation function to apply:
-
-  * `QUERY_AGGREGATION_UNSPECIFIED` (default)
-  * `QUERY_AGGREGATION_COUNT`
-  * `QUERY_AGGREGATION_SUM`
-  * `QUERY_AGGREGATION_AVG`
-  * `QUERY_AGGREGATION_MAX`
-  * `QUERY_AGGREGATION_MIN`
-</ParamField>
+* **field** (required): Field name to select
+* **name** (optional): Alias for the field
+* **aggregation\_function** (optional): Aggregation function to apply
 
 ### Selection Example
 
@@ -98,24 +134,9 @@ Selections define which fields to retrieve and how to aggregate them.
 
 Filters narrow down data to elements meeting specific criteria.
 
-<ParamField body="name" type="string" required>
-  Field name to filter on
-</ParamField>
-
-<ParamField body="value" type="string" required>
-  Value to compare against
-</ParamField>
-
-<ParamField body="filter" type="string" required>
-  Filter operation:
-
-  * `QUERY_FILTER_EQUAL`
-  * `QUERY_FILTER_NOT_EQUAL`
-  * `QUERY_FILTER_GREATER_THAN`
-  * `QUERY_FILTER_LESS_THAN`
-  * `QUERY_FILTER_GE` (greater than or equal)
-  * `QUERY_FILTER_LE` (less than or equal)
-</ParamField>
+* **name** (required): Field name to filter on
+* **filter** (required): Filter operation
+* **value** (required): Value to compare against
 
 ### Filter Example
 
@@ -131,13 +152,8 @@ Filters narrow down data to elements meeting specific criteria.
 
 Aggregations group data by specified criteria.
 
-<ParamField body="field" type="string" required>
-  Field name to group by
-</ParamField>
-
-<ParamField body="name" type="string" required>
-  Alias for the aggregation field
-</ParamField>
+* **field** (required): Field name to group by
+* **name** (required): Alias for the aggregation field
 
 ### Aggregation Example
 
@@ -286,12 +302,12 @@ curl -X POST --header "Content-Type: application/json" \
       ],
       "filters": [
         {
-          "name": "hour",
+          "name": "date",
           "filter": "QUERY_FILTER_GE",
           "value": "2024-01-01"
         },
         {
-          "name": "hour",
+          "name": "date",
           "filter": "QUERY_FILTER_LE",
           "value": "2024-02-01"
         }

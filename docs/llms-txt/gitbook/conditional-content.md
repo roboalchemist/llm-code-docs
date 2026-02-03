@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/creating-content/blocks/conditional-content.md
-
-# Source: https://gitbook.com/docs/documentation/fr/creating-content/blocks/conditional-content.md
-
-# Source: https://gitbook.com/docs/creating-content/blocks/conditional-content.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/creating-content/blocks/conditional-content.md
 
 # Source: https://gitbook.com/docs/documentation/zh/creating-content/blocks/conditional-content.md
 
@@ -12,11 +8,11 @@
 
 # Conditional content
 
-Conditional content blocks let you control who can see a given block of content on your page based on user data and variables. These variables can be passed in via cookies, feature flags, authenticated access, or URL parameters.&#x20;
+Conditional content blocks let you control who can see a given block of content on your page based on user data and variables. These variables can be passed in via cookies, feature flags, authenticated access, or URL parameters.
 
 ### Create conditional content
 
-To add a conditional block, begin a new line in the editor, type <kbd>/</kbd>, then select  <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FG1cXfAVYBRLW0aRpIDRJ%2Fpage-condition%20-%20dark.svg?alt=media&#x26;token=dd656a89-387d-41c7-adf8-994848ec3440" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F51vQZhUqnkdsYpyUo1Pj%2Fpage-condition.svg?alt=media&#x26;token=31dd334a-5097-4081-915c-db460e610ec6" alt="The Page condition icon in GitBook"></picture> **Conditional content**.&#x20;
+To add a conditional block, begin a new line in the editor, type <kbd>/</kbd>, then select <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FG1cXfAVYBRLW0aRpIDRJ%2Fpage-condition%20-%20dark.svg?alt=media&#x26;token=dd656a89-387d-41c7-adf8-994848ec3440" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F51vQZhUqnkdsYpyUo1Pj%2Fpage-condition.svg?alt=media&#x26;token=31dd334a-5097-4081-915c-db460e610ec6" alt="The Page condition icon in GitBook"></picture> **Conditional content**.
 
 After inserting the block, click the red condition badge in the top right of the block.
 

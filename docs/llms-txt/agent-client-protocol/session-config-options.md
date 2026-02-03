@@ -1,5 +1,9 @@
 # Source: https://agentclientprotocol.com/rfds/session-config-options.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://agentclientprotocol.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Session Config Options
 
 Author(s): [@benbrandt](https://github.com/benbrandt)
@@ -27,6 +31,8 @@ Since this space is moving fast, we ideally would find a more flexible option wi
 > What are you proposing to improve the situation?
 
 Instead, we can allow Agents to provide configuration options in the `session/new` response that not only provide a list of options, but also a `key` of some kind that is a unique identifier for that selector.
+
+Additionally, we can optionally allow an Agent to mark each option with a semantic category so that Clients can reliably distinguish broadly common option types (e.g. model selector vs session mode selector vs thought/reasoning level), without needing to infer meaning from the option `id` or `name`. This is intended for UX only (e.g. keyboard shortcuts, icons, preferred placement), and MUST NOT be required for correctness.
 
 When the Client receives or sends an update to this selector, it would require both the selector key and the key for the new value.
 
@@ -61,6 +67,7 @@ Something like an `InitializeResponse` that looks like:
         "id": "mode", // this is the unique `key` for communication about which option is being used
         "name": "Session Mode", // Human-readable label for the option
         "description": "Optional description for the Client to display to the user."
+        "category": "mode",
         "type": "select",
         "currentValue": "ask",
         "options": [
@@ -79,6 +86,7 @@ Something like an `InitializeResponse` that looks like:
       {
         "id": "models",
         "name": "Model",
+        "category": "model",
         "type": "select",
         "currentValue": "ask",
         "options": [
@@ -98,6 +106,23 @@ Something like an `InitializeResponse` that looks like:
   }
 }
 ```
+
+### Option category (optional)
+
+Each top-level config option MAY include an optional `category` field. This is intended to help Clients distinguish broadly common selectors and provide a consistent UX (for example, attaching keyboard shortcuts to the first option of a given category).
+
+In addition to `category`, Clients SHOULD use the ordering of the `configOptions` array as provided by the Agent as the primary way to establish priority and resolve ties. For example, if multiple options share the same `category`, a Client can prefer the first matching option in the list when assigning keyboard shortcuts or deciding which options to surface most prominently.
+
+`category` is semantic metadata and MUST NOT be required for correctness. Clients MUST handle missing or unknown categories gracefully.
+
+Category names beginning with `_` are free for custom use. Category names that do not begin with `_` are reserved for the ACP spec.
+
+Proposed enum:
+
+* `mode` - Session mode selector
+* `model` - Model selector
+* `thought_level` - Thought/reasoning level selector
+* Any string beginning with `_` - Custom category (e.g., `_my_custom_category`)
 
 When we introduce this, we could also allow for grouped options, in case there are logical sub-headers and groupings for the options in an individual selector.
 
@@ -240,8 +265,5 @@ This is a question we should discuss of how much complexity we want to introduce
 ## Revision history
 
 * 2025-10-29: Initial draft
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://agentclientprotocol.com/llms.txt
+* 2026-01-09: Add option categories
+* 2026-01-15: Allow for category extensions

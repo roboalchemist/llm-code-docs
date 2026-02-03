@@ -6,7 +6,6 @@ description: >-
   Monitor your Datadog usage across all products with month-to-date summaries,
   usage trends, top custom metrics, and logs usage by index.
 breadcrumbs: Docs > Account Management > Plan and Usage Settings > Usage Details
-source_url: https://docs.datadoghq.com/plan_and_usage/usage_details/index.html
 ---
 
 # Usage Details

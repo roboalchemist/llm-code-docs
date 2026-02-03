@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/webhooks/versions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Webhook Versions
 
 Every [webhook target](https://www.plain.com/docs/webhooks#receiving-events-from-plain) in Plain is associated with a specific version. The webhook version defines the schema of the payload that Plain sends to your endpoint. By specifying a version, you ensure that the payload format remains consistent, even as Plain evolves and introduces changes to the webhook schema.

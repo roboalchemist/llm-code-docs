@@ -4,7 +4,6 @@
 title: Manage Your Team
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > Account Management > Manage Your Team
-source_url: https://docs.datadoghq.com/account-management/manage-teams/index.html
 ---
 
 # Manage Your Team

@@ -1,8 +1,70 @@
-# Source: https://docs.perplexity.ai/getting-started/quickstart.md
+# Source: https://docs.perplexity.ai/docs/search/quickstart.md
+
+# Source: https://docs.perplexity.ai/docs/grounded-llm/responses/quickstart.md
+
+# Source: https://docs.perplexity.ai/docs/grounded-llm/chat-completions/quickstart.md
+
+# Source: https://docs.perplexity.ai/docs/grounded-llm/chat-completions/pro-search/quickstart.md
+
+# Source: https://docs.perplexity.ai/docs/getting-started/quickstart.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Quickstart
 
 > Generate an API key and make your first call in < 3 minutes.
+
+## Overview
+
+The Perplexity API provides three core APIs for different use cases: **Chat Completions** for web-grounded AI responses with Sonar models, **Agentic Research** for accessing OpenAI, Anthropic, Google, and xAI models with unified search tools and transparent pricing, and **Search** for ranked web search results.
+
+All APIs support both REST and SDK access with streaming, filtering, and advanced controls.
+
+## Available APIs
+
+<CardGroup cols={3}>
+  <Card title="Chat Completions" icon="message" href="/docs/grounded-llm/chat-completions/quickstart">
+    Web-grounded AI responses with citations, conversation context, and streaming support.
+  </Card>
+
+  <Card title="Agentic Research" icon="code" href="/docs/grounded-llm/responses/quickstart">
+    Third-party models from OpenAI, Anthropic, Google, and more with presets and web search tools.
+  </Card>
+
+  <Card title="Search" icon="magnifying-glass" href="/docs/search/quickstart">
+    Ranked web search results with filtering, multi-query support, and domain controls.
+  </Card>
+</CardGroup>
+
+## Choosing the Right API
+
+<AccordionGroup>
+  <Accordion title="Use the Chat Completions API when..." icon="message">
+    * You want **Perplexity's Sonar models** optimized for research and Q\&A
+    * You need **built-in citations** and conversation context
+    * You prefer **simplicity**—just send a message and get a researched answer
+
+    **Best for:** AI assistants, research tools, Q\&A applications
+  </Accordion>
+
+  <Accordion title="Use the Agentic Research API when..." icon="code">
+    * You need **multi-provider access** to OpenAI, Anthropic, Google, and more models through one API
+    * You want **granular control** over model selection, reasoning, token budgets, and tools
+    * You want **presets** for common use configurations or full customization for advanced workflows
+
+    **Best for:** Agentic workflows, custom AI applications, multi-model experimentation
+  </Accordion>
+
+  <Accordion title="Use the Search API when..." icon="magnifying-glass">
+    * You need **raw search results** without LLM processing
+    * You want to **build custom AI workflows** with your own models
+    * You need **search data** for indexing, analysis, or training
+
+    **Best for:** Custom AI pipelines, data collection, search integration
+  </Accordion>
+</AccordionGroup>
 
 ## Generating an API Key
 
@@ -11,23 +73,146 @@
 </Card>
 
 <Info>
-  See the [API Groups](/getting-started/api-groups) page to set up an API group.
+  See the [API Groups](/docs/getting-started/api-groups) page to set up an API group.
 </Info>
 
+## Installation
+
+Install the SDK for your preferred language:
+
+<CodeGroup>
+  ```bash Python theme={null}
+  pip install perplexityai
+  ```
+
+  ```bash TypeScript/JavaScript theme={null}
+  npm install @perplexity-ai/perplexity_ai
+  ```
+</CodeGroup>
+
+## Authentication
+
+Set your API key as an environment variable:
+
+<Tabs>
+  <Tab title="macOS/Linux">
+    ```bash  theme={null}
+    export PERPLEXITY_API_KEY="your_api_key_here"
+    ```
+  </Tab>
+
+  <Tab title="Windows">
+    ```powershell  theme={null}
+    setx PERPLEXITY_API_KEY "your_api_key_here"
+    ```
+  </Tab>
+</Tabs>
+
+Or use a `.env` file in your project:
+
+```bash .env theme={null}
+PERPLEXITY_API_KEY=your_api_key_here
+```
+
 <Note>
-  **OpenAI SDK Compatible:** Perplexity's API supports the OpenAI Chat Completions format. You can use OpenAI client libraries by pointing to our endpoint. See our [OpenAI SDK Guide](/guides/chat-completions-guide) for examples.
+  **OpenAI SDK Compatible:** Perplexity's API supports the OpenAI Chat Completions format. You can use OpenAI client libraries by pointing to our endpoint. See our [OpenAI Compatibility Guide](/docs/grounded-llm/openai-compatibility) for examples.
 </Note>
 
 ## Making Your First API Call
 
+Choose your API based on your use case:
+
 <Tabs>
-  <Tab title="Python SDK">
-    <Note>
-      **Install the SDK first:** `pip install perplexityai`
-    </Note>
+  <Tab title="Agentic Research API">
+    Use for third-party models with web search tools and presets:
 
     <CodeGroup>
-      ```python Non-streaming Request theme={null}
+      ```python Python theme={null}
+      from perplexity import Perplexity
+
+      # Initialize the client (uses PERPLEXITY_API_KEY environment variable)
+      client = Perplexity()
+
+      # Make the API call with a preset
+      response = client.responses.create(
+          preset="pro-search",
+          input="What are the latest developments in AI?"
+      )
+
+      # Print the AI's response
+      print(response.output_text)
+      ```
+
+      ```typescript TypeScript theme={null}
+      import Perplexity from '@perplexity-ai/perplexity_ai';
+
+      // Initialize the client (uses PERPLEXITY_API_KEY environment variable)
+      const client = new Perplexity();
+
+      // Make the API call with a preset
+      const response = await client.responses.create({
+          preset: "pro-search",
+          input: "What are the latest developments in AI?"
+      });
+
+      // Print the AI's response
+      console.log(response.output_text);
+      ```
+
+      ```bash cURL theme={null}
+      curl https://api.perplexity.ai/v1/responses \
+        -H "Authorization: Bearer $PERPLEXITY_API_KEY" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "preset": "pro-search",
+          "input": "What are the latest developments in AI?"
+        }' | jq
+      ```
+    </CodeGroup>
+
+    <Accordion title="Example Response">
+      The response includes structured output with tool usage and citations:
+
+      ```json  theme={null}
+      {
+        "id": "resp_1234567890",
+        "object": "response",
+        "created_at": 1756485272,
+        "model": "openai/gpt-5.1",
+        "status": "completed",
+        "output": [
+          {
+            "type": "message",
+            "role": "assistant",
+            "content": [
+              {
+                "type": "output_text",
+                "text": "Recent developments in AI include...",
+                "annotations": [
+                  {
+                    "type": "citation",
+                    "url": "https://example.com/article1"
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "usage": {
+          "input_tokens": 20,
+          "output_tokens": 250,
+          "total_tokens": 270
+        }
+      }
+      ```
+    </Accordion>
+  </Tab>
+
+  <Tab title="Chat Completions API">
+    Use for web-grounded AI responses with Perplexity's Sonar models:
+
+    <CodeGroup>
+      ```python Python theme={null}
       from perplexity import Perplexity
 
       # Initialize the client (uses PERPLEXITY_API_KEY environment variable)
@@ -37,7 +222,7 @@
       completion = client.chat.completions.create(
           model="sonar-pro",
           messages=[
-              {"role": "user", "content": "What were the results of the 2025 French Open Finals?"}
+              {"role": "user", "content": "What are the latest developments in AI?"}
           ]
       )
 
@@ -45,17 +230,144 @@
       print(completion.choices[0].message.content)
       ```
 
-      ```python Streaming Response theme={null}
+      ```typescript TypeScript theme={null}
+      import Perplexity from '@perplexity-ai/perplexity_ai';
+
+      // Initialize the client (uses PERPLEXITY_API_KEY environment variable)
+      const client = new Perplexity();
+
+      // Make the API call
+      const completion = await client.chat.completions.create({
+          model: "sonar-pro",
+          messages: [
+              { role: "user", content: "What are the latest developments in AI?" }
+          ]
+      });
+
+      // Print the AI's response
+      console.log(completion.choices[0].message.content);
+      ```
+
+      ```bash cURL theme={null}
+      curl https://api.perplexity.ai/chat/completions \
+        -H "Authorization: Bearer $PERPLEXITY_API_KEY" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "model": "sonar-pro",
+          "messages": [
+            {
+              "role": "user",
+              "content": "What are the latest developments in AI?"
+            }
+          ]
+        }' | jq
+      ```
+    </CodeGroup>
+
+    <Accordion title="Example Response">
+      The response includes the AI's answer with citations and search results:
+
+      ```json  theme={null}
+      {
+        "id": "66f3900f-e32e-4d59-b677-1a55de188262",
+        "model": "sonar-pro",
+        "created": 1756485272,
+        "object": "chat.completion",
+        "choices": [
+          {
+            "index": 0,
+            "finish_reason": "stop",
+            "message": {
+              "role": "assistant",
+              "content": "Recent developments in AI include...[1][2]"
+            }
+          }
+        ],
+        "usage": {
+          "prompt_tokens": 12,
+          "completion_tokens": 315,
+          "total_tokens": 327
+        },
+        "citations": [
+          "https://example.com/article1",
+          "https://example.com/article2"
+        ]
+      }
+      ```
+    </Accordion>
+  </Tab>
+</Tabs>
+
+## Streaming Responses
+
+Enable streaming for real-time output with either API:
+
+<Tabs>
+  <Tab title="Agentic Research API">
+    <CodeGroup>
+      ```python Python theme={null}
       from perplexity import Perplexity
 
-      # Initialize the client (uses PERPLEXITY_API_KEY environment variable)
+      client = Perplexity()
+
+      # Make the streaming API call
+      stream = client.responses.create(
+          preset="pro-search",
+          input="Explain quantum computing",
+          stream=True
+      )
+
+      # Process the streaming response
+      for chunk in stream:
+          if chunk.type == "response.output_text.delta":
+              print(chunk.delta, end="", flush=True)
+      ```
+
+      ```typescript TypeScript theme={null}
+      import Perplexity from '@perplexity-ai/perplexity_ai';
+
+      const client = new Perplexity();
+
+      // Make the streaming API call
+      const stream = await client.responses.create({
+          preset: "pro-search",
+          input: "Explain quantum computing",
+          stream: true
+      });
+
+      // Process the streaming response
+      for await (const chunk of stream) {
+          if (chunk.type === "response.output_text.delta") {
+              process.stdout.write(chunk.delta);
+          }
+      }
+      ```
+
+      ```bash cURL theme={null}
+      curl https://api.perplexity.ai/v1/responses \
+        -H "Authorization: Bearer $PERPLEXITY_API_KEY" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "preset": "pro-search",
+          "input": "Explain quantum computing",
+          "stream": true
+        }'
+      ```
+    </CodeGroup>
+  </Tab>
+
+  <Tab title="Chat Completions API">
+    <CodeGroup>
+      ```python Python theme={null}
+      from perplexity import Perplexity
+
       client = Perplexity()
 
       # Make the streaming API call
       stream = client.chat.completions.create(
           model="sonar-pro",
           messages=[
-              {"role": "user", "content": "What are the most popular open-source alternatives to OpenAI's GPT models?"}
+              {"role": "user", "content": "Explain quantum computing"}
           ],
           stream=True
       )
@@ -66,64 +378,16 @@
               print(chunk.choices[0].delta.content, end="")
       ```
 
-      ```python With API Key (Alternative) theme={null}
-      import os
-      from perplexity import Perplexity
-
-      # Initialize client with explicit API key
-      client = Perplexity(api_key=os.environ.get("PERPLEXITY_API_KEY"))
-
-      completion = client.chat.completions.create(
-          model="sonar-pro",
-          messages=[
-              {"role": "user", "content": "What were the results of the 2025 French Open Finals?"}
-          ]
-      )
-
-      print(completion.choices[0].message.content)
-      ```
-    </CodeGroup>
-
-    <Note>
-      Set your API key as an environment variable: `export PERPLEXITY_API_KEY="your_api_key_here"` (macOS/Linux) or `setx PERPLEXITY_API_KEY "your_api_key_here"` (Windows).
-    </Note>
-  </Tab>
-
-  <Tab title="TypeScript SDK">
-    <Note>
-      **Install the SDK first:** `npm install @perplexity-ai/perplexity_ai`
-    </Note>
-
-    <CodeGroup>
-      ```typescript Non-streaming Request theme={null}
+      ```typescript TypeScript theme={null}
       import Perplexity from '@perplexity-ai/perplexity_ai';
 
-      // Initialize the client (uses PERPLEXITY_API_KEY environment variable)
-      const client = new Perplexity();
-
-      // Make the API call
-      const completion = await client.chat.completions.create({
-          model: "sonar-pro",
-          messages: [
-              { role: "user", content: "What were the results of the 2025 French Open Finals?" }
-          ]
-      });
-
-      // Print the AI's response
-      console.log(completion.choices[0].message.content);
-      ```
-
-      ```typescript Streaming Response theme={null}
-      import Perplexity from '@perplexity-ai/perplexity_ai';
-
-      // Initialize the client (uses PERPLEXITY_API_KEY environment variable)
       const client = new Perplexity();
 
       // Make the streaming API call
       const stream = await client.chat.completions.create({
           model: "sonar-pro",
           messages: [
-              { role: "user", content: "What are the most popular open-source alternatives to OpenAI's GPT models?" }
+              { role: "user", content: "Explain quantum computing" }
           ],
           stream: true
       });
@@ -136,263 +400,62 @@
       }
       ```
 
-      ```typescript With API Key (Alternative) theme={null}
-      import Perplexity from '@perplexity-ai/perplexity_ai';
-
-      // Initialize client with explicit API key
-      const client = new Perplexity({
-          apiKey: process.env.PERPLEXITY_API_KEY
-      });
-
-      const completion = await client.chat.completions.create({
-          model: "sonar-pro",
-          messages: [
-              { role: "user", content: "What were the results of the 2025 French Open Finals?" }
-          ]
-      });
-
-      console.log(completion.choices[0].message.content);
-      ```
-    </CodeGroup>
-
-    <Note>
-      Set your API key as an environment variable: `export PERPLEXITY_API_KEY="your_api_key_here"` (macOS/Linux) or `setx PERPLEXITY_API_KEY "your_api_key_here"` (Windows).
-    </Note>
-  </Tab>
-
-  <Tab title="cURL">
-    **cURL** is a command-line tool for making HTTP requests. Set your API key and run the command:
-
-    <CodeGroup>
-      ```bash Non-streaming Request theme={null}
-      curl --location 'https://api.perplexity.ai/chat/completions' \
-      --header 'accept: application/json' \
-      --header 'content-type: application/json' \
-      --header "Authorization: Bearer $SONAR_API_KEY" \
-      --data '{
-        "model": "sonar-pro",
-        "messages": [
-          {
-            "role": "user",
-            "content": "What were the results of the 2025 French Open Finals?"
-          }
-        ]
-      }' | jq
-      ```
-
-      ```bash Streaming Response theme={null}
+      ```bash cURL theme={null}
       curl https://api.perplexity.ai/chat/completions \
-      -H "Content-Type: application/json" \
-      -H "Authorization: Bearer $SONAR_API_KEY" \
-      -d '{
-      "model": "sonar-pro",
-      "messages": [
-      {
-        "role": "user",
-        "content": "What were the results of the 2025 French Open Finals?"
-      }
-      ],
-      "stream": true
-      }'| jq
+        -H "Authorization: Bearer $PERPLEXITY_API_KEY" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "model": "sonar-pro",
+          "messages": [
+            {
+              "role": "user",
+              "content": "Explain quantum computing"
+            }
+          ],
+          "stream": true
+        }'
       ```
     </CodeGroup>
   </Tab>
 </Tabs>
 
-<Accordion title="Here's an example response (raw response at the end)">
-  ## Response Content
-
-  ```
-  ## 2025 French Open Finals Results
-
-  **Men's Singles Final**
-
-  - **Champion:** Carlos Alcaraz
-  - **Runner-up:** Jannik Sinner
-  - **Score:** 4–6, 6–7^(4–7), 6–4, 7–6^(7–3), 7–6^(10–2)
-  - **Details:** Carlos Alcaraz successfully defended his title by defeating Jannik Sinner in a dramatic five-set final. The match lasted 5 hours and 29 minutes, making it the longest French Open final in history and the second-longest major final ever. Alcaraz came back from two sets down and saved three championship points, marking a historic comeback. This victory gave Alcaraz his second French Open and fifth Grand Slam title, making him the second-youngest man to win five majors in the Open Era. It was also the first time a French Open singles final was decided by a final-set tiebreak.[1][2]
-
-  **Women's Singles Final**
-
-  - **Champion:** Coco Gauff
-  - **Runner-up:** Aryna Sabalenka
-  - **Score:** (Set scores not fully provided, but Gauff won in three sets)
-  - **Details:** Coco Gauff rallied from an early deficit to defeat Aryna Sabalenka in a three-set battle. After losing the first set, Gauff fought back to claim her second Grand Slam title, with both coming against Sabalenka (the first being the 2023 US Open). Gauff’s victory marks her first French Open crown at age 21.[5]
-
-  **Women's Doubles Final**
-
-  - **Champions:** Anna Danilina / Aleksandra Krunić
-  - **Runners-up:** Sara Errani / (partner not fully specified)
-  - **Score:** 4–6, 6–1, 6–1
-  - **Details:** Danilina and Krunić won the women's doubles final in three sets, taking control after dropping the first set.[3]
-
-  **Summary Table**
-
-  | Event                  | Winner                                | Runner-up                        | Score                                         |
-  |------------------------|---------------------------------------|----------------------------------|-----------------------------------------------|
-  | Men's Singles          | Carlos Alcaraz                        | Jannik Sinner                    | 4–6, 6–7(4–7), 6–4, 7–6(7–3), 7–6(10–2)       |
-  | Women's Singles        | Coco Gauff                            | Aryna Sabalenka                  | Gauff won in 3 sets (full scores not given)   |
-  | Women's Doubles        | Anna Danilina / Aleksandra Krunić     | Sara Errani / (unspecified)      | 4–6, 6–1, 6–1                                 |
-
-  Alcaraz's men's final win was both historic for its comeback and duration, and Gauff’s victory marked a defining moment in her early career.[1][2][5]
-  ```
-
-  ## Search Results
-
-  ```json  theme={null}
-  [
-    "https://en.wikipedia.org/wiki/2025_French_Open_%E2%80%93_Men's_singles",
-    "https://en.wikipedia.org/wiki/2025_French_Open_%E2%80%93_Men's_singles_final",
-    "https://www.rolandgarros.com/en-us/matches?status=finished",
-    "https://www.tennis.com/news/articles/who-were-the-winners-and-losers-at-2025-roland-garros",
-    "https://www.cbssports.com/tennis/news/2025-french-open-results-schedule-as-jannik-sinner-faces-carlos-alcaraz-coco-gauff-earns-first-title/"
-  ]
-  ```
-
-  ## Sample Search Results (first 2 sources)
-
-  ```json  theme={null}
-  [
-    {
-      "title": "2025 French Open – Men's singles final",
-      "url": "https://en.wikipedia.org/wiki/2025_French_Open_%E2%80%93_Men's_singles_final",
-      "date": "2025-06-08",
-      "last_updated": "2025-08-09",
-      "snippet": "After 5 hours and 29 minutes of play, Alcaraz defeated Sinner 4–6, 6–7 (4–7) , 6–4, 7–6 (7–3) , 7–6 (10–2) , in the longest French Open final in history."
-    },
-    {
-      "title": "2025 Roland Garros Men's Singles Tennis Live Scores - ESPN",
-      "url": "https://www.espn.com/tennis/scoreboard/tournament/_/eventId/172-2025/competitionType/1",
-      "date": "2025-06-08",
-      "last_updated": "2025-08-29",
-      "snippet": "2025 Roland Garros Scores May 18 - June 8, 2025 Court Philippe-Chatrier, Paris, France Men's Singles 2025 Carlos Alcaraz Defending Champion Carlos Alcaraz."
-    }
-  ]
-  ```
-
-  ## Usage Information
-
-  ```json  theme={null}
-  {
-      "prompt_tokens": 12,
-      "completion_tokens": 315,
-      "total_tokens": 327,
-      "search_context_size": "low",
-      "cost": {
-        "input_tokens_cost": 0.0,
-        "output_tokens_cost": 0.005,
-        "request_cost": 0.006,
-        "total_cost": 0.011
-      }
-  }
-  ```
-
-  ## Raw Response
-
-  ```json expandable theme={null}
-  {
-    "id": "66f3900f-e32e-4d59-b677-1a55de188262",
-    "model": "sonar-pro",
-    "created": 1756485272,
-    "usage": {
-      "prompt_tokens": 12,
-      "completion_tokens": 315,
-      "total_tokens": 327,
-      "search_context_size": "low",
-      "cost": {
-        "input_tokens_cost": 0.0,
-        "output_tokens_cost": 0.005,
-        "request_cost": 0.006,
-        "total_cost": 0.011
-      }
-    },
-    "citations": [
-      "https://en.wikipedia.org/wiki/2025_French_Open_%E2%80%93_Men's_singles_final",
-      "https://www.espn.com/tennis/scoreboard/tournament/_/eventId/172-2025/competitionType/1",
-      "https://www.cbssports.com/tennis/news/2025-french-open-results-schedule-as-jannik-sinner-faces-carlos-alcaraz-coco-gauff-earns-first-title/",
-      "https://www.youtube.com/watch?v=jrkwqoI-gEg",
-      "https://en.wikipedia.org/wiki/2025_French_Open_%E2%80%93_Men's_singles"
-    ],
-    "search_results": [
-      {
-        "title": "2025 French Open – Men's singles final",
-        "url": "https://en.wikipedia.org/wiki/2025_French_Open_%E2%80%93_Men's_singles_final",
-        "date": "2025-06-08",
-        "last_updated": "2025-08-09",
-        "snippet": "After 5 hours and 29 minutes of play, Alcaraz defeated Sinner 4–6, 6–7 (4–7) , 6–4, 7–6 (7–3) , 7–6 (10–2) , in the longest French Open final in history."
-      },
-      {
-        "title": "2025 Roland Garros Men's Singles Tennis Live Scores - ESPN",
-        "url": "https://www.espn.com/tennis/scoreboard/tournament/_/eventId/172-2025/competitionType/1",
-        "date": "2025-06-08",
-        "last_updated": "2025-08-29",
-        "snippet": "2025 Roland Garros Scores May 18 - June 8, 2025 Court Philippe-Chatrier, Paris, France Men's Singles 2025 Carlos Alcaraz Defending Champion Carlos Alcaraz."
-      },
-      {
-        "title": "2025 French Open: Results, schedule as Jannik Sinner ...",
-        "url": "https://www.cbssports.com/tennis/news/2025-french-open-results-schedule-as-jannik-sinner-faces-carlos-alcaraz-coco-gauff-earns-first-title/",
-        "date": "2025-06-07",
-        "last_updated": "2025-08-29",
-        "snippet": "The women's final is on June 7, and the men's final is one day later on June 8. Men's final. (1) Jannik Sinner vs. (2) Carlos Alcaraz -- Sunday, ..."
-      },
-      {
-        "title": "Alcaraz, Gauff Win French Open 2025 | Swiatek, Ruud Fall - YouTube",
-        "url": "https://www.youtube.com/watch?v=jrkwqoI-gEg",
-        "date": "2025-06-09",
-        "last_updated": "2025-08-04",
-        "snippet": "We had some big changes in the rankings also. What was your favorite moment? 0:00 | Intro 0:14 | Weekly Results 0:36 | Rise & Fall 1:24 ..."
-      },
-      {
-        "title": "2025 French Open – Men's singles",
-        "url": "https://en.wikipedia.org/wiki/2025_French_Open_%E2%80%93_Men's_singles",
-        "date": "2025-04-27",
-        "last_updated": "2025-08-29",
-        "snippet": "Defending champion Carlos Alcaraz defeated Jannik Sinner in the final, 4–6, 6–7, 6–4, 7–6, 7–6 to win the men's singles tennis title at the 2025 French Open. ..."
-      }
-    ],
-    "object": "chat.completion",
-    "choices": [
-      {
-        "index": 0,
-        "finish_reason": "stop",
-        "message": {
-          "role": "assistant",
-          "content": "**Carlos Alcaraz won the 2025 French Open men's singles final, defeating Jannik Sinner 4–6, 6–7(4–7), 6–4, 7–6(7–3), 7–6(10–2), while Coco Gauff won the women's singles title by rallying past Aryna Sabalenka in three sets**[1][3][5][4].\n\nKey details from the finals:\n\n- **Men's Singles:**  \n  - Alcaraz came back from two sets down to win in the longest French Open final ever (5 hours, 29 minutes)[1][5].\n  - He saved three championship points, a record in the Open Era for men's majors[1][5].\n  - This marked his second Roland Garros title and fifth Grand Slam overall[5].\n  - The match was the first French Open singles final decided by a match tiebreak (final set tiebreak introduced in 2022)[1][5].\n\n- **Women's Singles:**  \n  - Coco Gauff defeated Aryna Sabalenka after losing the first set, showcasing a strong comeback[3].\n  - Gauff secured her second Grand Slam (her first was at the 2023 US Open)[3].\n  - The final was played June 7, 2025; Gauff overcame an early deficit to win in three sets[3].\n\nThese finals were historic for their drama, length, and the milestone achievements for both Alcaraz and Gauff."
-        },
-        "delta": {
-          "role": "assistant",
-          "content": ""
-        }
-      }
-    ]
-  }
-
-  ```
-</Accordion>
-
-<Info title="Complete Streaming Guide" href="/guides/streaming-responses">
-  For a full guide on streaming, including parsing, error handling, citation management, and best practices, see our [streaming guide](/guides/streaming-responses).
+<Info title="Complete Streaming Guide" href="/docs/grounded-llm/output-control/streaming-responses">
+  For a full guide on streaming, including parsing, error handling, citation management, and best practices, see our [streaming guide](/docs/grounded-llm/output-control/streaming-responses).
 </Info>
 
 ## Next Steps
 
-Now that you've made your first API call, here are some recommended next steps:
+Now that you've made your first API call, explore each API in depth:
+
+<CardGroup cols={3}>
+  <Card title="Chat Completions API" icon="message" href="/docs/grounded-llm/chat-completions/quickstart">
+    Get started with web-grounded AI responses
+  </Card>
+
+  <Card title="Agentic Research API" icon="code" href="/docs/grounded-llm/responses/quickstart">
+    Get started with third-party models and presets
+  </Card>
+
+  <Card title="Search API" icon="magnifying-glass" href="/docs/search/quickstart">
+    Get started with web search results
+  </Card>
+</CardGroup>
 
 <CardGroup cols={2}>
-  <Card title="The Perplexity SDK Guide" icon="book" href="/guides/perplexity-sdk">
-    Learn how to use the official Perplexity SDK with type safety, async support, and advanced features.
+  <Card title="Perplexity SDK" icon="book" href="/docs/sdk/overview">
+    Learn about the official Perplexity SDK with type safety and async support
   </Card>
 
-  <Card title="Models" icon="brain" href="/getting-started/models">
-    Explore the different models available and their capabilities.
+  <Card title="Models" icon="brain" href="/docs/getting-started/models">
+    Explore available models and their capabilities
   </Card>
 
-  <Card title="API Reference" icon="code" href="/api-reference">
-    View the complete API documentation with detailed endpoint specifications.
+  <Card title="API Reference" icon="code" href="/api-reference/chat-completions-post">
+    View complete API documentation with detailed endpoint specifications
   </Card>
 
-  <Card title="Examples" icon="play" href="/cookbook/index">
-    Explore code examples, tutorials, and integration patterns.
+  <Card title="Examples" icon="play" href="/docs/cookbook/index">
+    Explore code examples, tutorials, and integration patterns
   </Card>
 </CardGroup>
 

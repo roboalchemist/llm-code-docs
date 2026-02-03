@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/errors/api-errors/connected-services-account-errors.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Connected Services Account Errors
 
 > Thrown when there are issues with the user's connected service account.

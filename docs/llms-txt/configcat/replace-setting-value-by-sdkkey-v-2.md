@@ -2,10 +2,7 @@
 
 # Replace value
 
-```
-PUT 
-/v2/settings/:settingKeyOrId/value
-```
+Copy page
 
 This endpoint replaces the value and the Targeting Rules of a Feature Flag or Setting in a specified Environment identified by the [SDK key](https://app.configcat.com/sdkkey) passed in the `X-CONFIGCAT-SDKKEY` header.
 
@@ -15,7 +12,7 @@ Only the `defaultValue`, `targetingRules`, and `percentageEvaluationAttribute` f
 
 For example: We have the following resource of a Feature Flag.
 
-```
+```json
 {
   "defaultValue": {
     "boolValue": false
@@ -40,27 +37,30 @@ For example: We have the following resource of a Feature Flag.
     }
   ]
 }
+
 ```
 
 If we send a replace request body as below:
 
-```
+```json
 {
   "defaultValue": {
     "boolValue": true
   }
 }
+
 ```
 
 Then besides that the default served value is set to `true`, all the Targeting Rules are deleted. So we get a response like this:
 
-```
+```json
 {
   "defaultValue": {
     "boolValue": true
   },
   "targetingRules": []
 }
+
 ```
 
 ## Request[​](#request "Direct link to Request")

@@ -43,7 +43,7 @@ vespa auth [flags]
 - [vespa auth logout](vespa_auth_logout.html) - Sign out of Vespa Cloud
 - [vespa auth show](vespa_auth_show.html) - Show authenticated user
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

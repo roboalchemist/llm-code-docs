@@ -1,6 +1,10 @@
 # Source: https://docs.fireworks.ai/fine-tuning/cli-reference.md
 
-# Training Guide: CLI
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Training Overview
 
 > Launch RFT jobs using the eval-protocol CLI
 
@@ -56,6 +60,10 @@ The following guide will help you:
     cd evaluator_directory
     ep local-test
     ```
+
+    <Note>
+      If using a Dockerfile, it must use a Debian-based image (no Alpine or CentOS), be single-stage (no multi-stage builds), and only use supported instructions: `FROM`, `RUN`, `COPY`, `ADD`, `WORKDIR`, `USER`, `ENV`, `CMD`, `ENTRYPOINT`, `ARG`. Instructions like `EXPOSE` and `VOLUME` are ignored. See [Dockerfile constraints for RFT evaluators](/fine-tuning/quickstart-svg-agent#dockerfile-constraints-for-rft-evaluators) for details.
+    </Note>
   </Step>
 
   <Step title="Create the RFT job">
@@ -115,11 +123,11 @@ Customize your RFT job with these flags:
 **Rollout (sampling) parameters**:
 
 ```bash  theme={null}
---inference-temperature 0.8   # Sampling temperature (default: 0.7)
---inference-n 8               # Number of rollouts per prompt (default: 4)
---inference-max-tokens 4096   # Max tokens per response (default: 2048)
---inference-top-p 0.95        # Top-p sampling (default: 1.0)
---inference-top-k 50          # Top-k sampling (default: 40)
+--temperature 0.8   # Sampling temperature (default: 0.7)
+--n 8               # Number of rollouts per prompt (default: 4)
+--max-tokens 4096   # Max tokens per response (default: 32768)
+--top-p 0.95        # Top-p sampling (default: 1.0)
+--top-k 50          # Top-k sampling (default: 40)
 ```
 
 **Remote environments**:
@@ -160,7 +168,7 @@ eval-protocol create rft --help
     Save intermediate checkpoints during training:
 
     ```bash  theme={null}
-    firectl create rftj \
+    firectl rftj create \
       --base-model accounts/fireworks/models/llama-v3p1-8b-instruct \
       --checkpoint-frequency 500  # Save every 500 steps
       ...
@@ -173,7 +181,7 @@ eval-protocol create rft --help
     Speed up training with multiple GPUs:
 
     ```bash  theme={null}
-    firectl create rftj \
+    firectl rftj create \
       --base-model accounts/fireworks/models/llama-v3p1-70b-instruct \
       --accelerator-count 4  # Use 4 GPUs
       ...
@@ -186,7 +194,7 @@ eval-protocol create rft --help
     For evaluators that need more time:
 
     ```bash  theme={null}
-    firectl create rftj \
+    firectl rftj create \
       --rollout-timeout 300  # 5 minutes per rollout
       ...
     ```
@@ -211,8 +219,8 @@ eval-protocol create rft \
 eval-protocol create rft \
   --base-model accounts/fireworks/models/llama-v3p1-8b-instruct \
   --output-model high-quality-model \
-  --inference-n 8 \
-  --inference-temperature 1.0
+  --n 8 \
+  --temperature 1.0
 ```
 
 **Remote environment** (for multi-turn agents):
@@ -239,7 +247,7 @@ eval-protocol create rft \
 For users already familiar with Fireworks `firectl`, you can create RFT jobs directly:
 
 ```bash  theme={null}
-firectl create rftj \
+firectl rftj create \
   --base-model accounts/fireworks/models/llama-v3p1-8b-instruct \
   --dataset accounts/your-account/datasets/my-dataset \
   --evaluator accounts/your-account/evaluators/my-evaluator \
@@ -253,7 +261,7 @@ firectl create rftj \
 * More verbose but offers finer control
 * Same underlying API as `eval-protocol`
 
-See [firectl documentation](/tools-sdks/firectl/commands/create-reinforcement-fine-tuning-job) for all options.
+See [firectl documentation](/tools-sdks/firectl/commands/reinforcement-fine-tuning-job-create) for all options.
 
 ## Next steps
 

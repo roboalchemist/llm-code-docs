@@ -2,6 +2,8 @@
 
 # ScheduleActionRunActorTask<!-- -->
 
+Scheduled action to run an Actor task.
+
 ### Hierarchy
 
 * BaseScheduleAction\<ScheduleActions.RunActorTask>
@@ -18,17 +20,17 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#actorTaskId)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/schedule.ts#L124)actorTaskId
+### [**](#actorTaskId)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/schedule.ts#L185)actorTaskId
 
 **actorTaskId: string
 
-### [**](#id)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/schedule.ts#L99)inheritedid
+### [**](#id)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/schedule.ts#L145)inheritedid
 
 **id: string
 
 Inherited from BaseScheduleAction.id
 
-### [**](#input)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/schedule.ts#L125)optionalinput
+### [**](#input)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/schedule.ts#L186)optionalinput
 
 **input?
 
@@ -36,7 +38,7 @@ Inherited from BaseScheduleAction.id
 
 : string
 
-### [**](#type)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/schedule.ts#L100)inheritedtype
+### [**](#type)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/schedule.ts#L146)inheritedtype
 
 **type: RunActorTask
 

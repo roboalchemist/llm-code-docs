@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/configuration/huggingface-datasets/
+
 # HuggingFace Datasets
 
 Promptfoo can import test cases directly from [HuggingFace datasets](https://huggingface.co/docs/datasets) using the `huggingface://datasets/` prefix.

@@ -14,17 +14,17 @@ You can switch between input styles in `Settings > Appearance > Input`.
 Classic Input remains supported for users who prefer a traditional terminal experience, but it is considered a legacy option. We encourage you to use Universal Input for the best experience.
 {% endhint %}
 
-[Agent Mode](https://docs.warp.dev/agents/using-agents) works in Classic Input just like it does in Universal Input, with some minor differences.
+[Agent Mode](https://docs.warp.dev/agent-platform/agent/using-agents) works in Classic Input just like it does in Universal Input, with some minor differences.
 
 ### Learn more about Classic Input
 
 Classic Input supports all of Warp’s core terminal features, including the following and more:
 
-* [prompt](https://docs.warp.dev/terminal/appearance/prompt "mention") — Use a fully customizable Warp prompt or your shell prompt, with support for PS1 and same-line prompts.
-* [input-position](https://docs.warp.dev/terminal/appearance/input-position "mention") — Choose where the input appears in Warp, including both the prompt and the command line.
-* [editor](https://docs.warp.dev/terminal/editor "mention")— Warp’s input editor works like a modern IDE, with rich editing capabilities not found in most terminals.
-* [entry](https://docs.warp.dev/terminal/entry "mention") — Access Warp’s features for command history, synchronized inputs, YAML workflows, and more.
-* [text-selection](https://docs.warp.dev/terminal/more-features/text-selection "mention") — Use smart selection or rectangular (column) selection to highlight text precisely without tedious cleanup.
+* [Prompt](https://docs.warp.dev/terminal/appearance/prompt) — Use a fully customizable Warp prompt or your shell prompt, with support for PS1 and same-line prompts.
+* [Input Position](https://docs.warp.dev/terminal/appearance/input-position) — Choose where the input appears in Warp, including both the prompt and the command line.
+* [Modern Text Editing](https://docs.warp.dev/terminal/editor) — Warp's input editor works like a modern IDE, with rich editing capabilities not found in most terminals.
+* [Command Entry](https://docs.warp.dev/terminal/entry) — Access Warp's features for command history, synchronized inputs, YAML workflows, and more.
+* [Text Selection](https://docs.warp.dev/terminal/more-features/text-selection) — Use smart selection or rectangular (column) selection to highlight text precisely without tedious cleanup.
 
 ### How to enter Agent Mode
 
@@ -60,7 +60,7 @@ This will put you in *Pair* mode by default. While pairing with Warp, you can wr
 
 When you are in Agent Mode, a ✨ sparkles icon will display in line with your terminal input.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-f886e83dea97c4d46e3af7e2ee5274d8da4c79a1%2Fundo_my_git_commit.png?alt=media" alt="The sparkles on the command line indicate Agent Mode is active."><figcaption><p>The sparkles on the command line indicate Agent Mode is active.</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-f886e83dea97c4d46e3af7e2ee5274d8da4c79a1%2Fundo_my_git_commit.png?alt=media" alt="The sparkles on the command line indicate Agent Mode is active."><figcaption><p>The sparkles on the command line indicate Agent Mode is active.</p></figcaption></figure>
 
 ### Auto-detection for natural language and configurable settings
 
@@ -72,7 +72,7 @@ You may also turn autodetection off from `Settings > AI > Input Auto-detection`.
 
 The first time you enter Agent Mode, you will be served a banner with the option to disable auto-detection for natural language on your command line:
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-33884cb98a4271fb1f7f91f543c69a916201ad4e%2Fbanner_for_auto-detection_first_experience.png?alt=media&#x26;token=43bd3585-ef9e-4021-aa1e-e1b470b01440" alt="Warp displays an option to toggle natural language detection on / off"><figcaption><p>Warp displays an option to toggle natural language detection on / off</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-33884cb98a4271fb1f7f91f543c69a916201ad4e%2Fbanner_for_auto-detection_first_experience.png?alt=media" alt="Warp displays an option to toggle natural language detection on / off"><figcaption><p>Warp displays an option to toggle natural language detection on / off</p></figcaption></figure>
 
 ### Input Hints
 
@@ -110,7 +110,7 @@ When you run a command suggested by Agent Mode, that command will work like a st
 
 If the suggested command fails and you want to resolve the error, you may start a new AI query to address the problem.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-36ee84d97a6458bc9607bf5c868a21935007e721%2Fagent-mode-suggestion.png?alt=media&#x26;token=ed50eb85-8223-4de7-8dc6-3ceb4609338a" alt="Agent Mode makes a suggestion to run a command."><figcaption><p>Agent Mode makes a suggestion to run a command.</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-36ee84d97a6458bc9607bf5c868a21935007e721%2Fagent-mode-suggestion%20(1).png?alt=media" alt="Agent Mode makes a suggestion to run a command."><figcaption><p>Agent Mode makes a suggestion to run a command.</p></figcaption></figure>
 
 #### Agent Mode Requested Commands
 
@@ -120,12 +120,12 @@ You must explicitly agree and press `ENTER` to run the requested command. When y
 
 If you do not wish to send the command or its output to AI, you can click Cancel or press `CTRL-C` to exit Agent Mode and return to the traditional command line.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-6872236ded0f64a0dfb3de102a23be643f7e8974%2FScreenshot%202024-06-14%20at%205.13.02%E2%80%AFPM.png?alt=media&#x26;token=582d7764-319c-4c2d-b3b4-e98b21c935f8" alt="Warp AI asks permission to run a command and read the output."><figcaption><p>Warp AI asks permission to run a command and read the output.</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-6872236ded0f64a0dfb3de102a23be643f7e8974%2Fwarp-ai-permissions.png?alt=media" alt="Warp AI asks permission to run a command and read the output."><figcaption><p>Warp AI asks permission to run a command and read the output.</p></figcaption></figure>
 
 Once a requested command is executed, you may click to expand the output and view command details.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-85e9e1e0fd2be28e1e4515bcd0b54673d2b8cbbf%2FScreenshot%202024-06-14%20at%205.21.37%E2%80%AFPM.png?alt=media" alt=""><figcaption><p>Viewing command details</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-85e9e1e0fd2be28e1e4515bcd0b54673d2b8cbbf%2Fwarp-ai-viewing-commands.png?alt=media" alt=""><figcaption><p>Viewing command details</p></figcaption></figure>
 
 In the case that a requested command fails, Warp AI will detect that. Agent Mode is self-correcting. It will request another command until it completes the task for you.
 
-Warp lets you choose from a curated list of LLMs for use in Agent Mode. By default, Warp uses **Claude 4 Sonnet** for auto, but you can switch to other supported models. For all available models, please refer to [model-choice](https://docs.warp.dev/agents/using-agents/model-choice "mention").
+Warp lets you choose from a curated list of LLMs for use in Agent Mode. By default, Warp uses **Claude 4 Sonnet** for auto, but you can switch to other supported models. For all available models, please refer to [Model Choice](https://docs.warp.dev/agent-platform/agent/using-agents/model-choice).

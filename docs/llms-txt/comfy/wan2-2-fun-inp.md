@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/video/wan/wan2-2-fun-inp.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ComfyUI Wan2.2 Fun Inp Start-End Frame Video Generation Example
 
 > This article introduces how to use ComfyUI to complete the Wan2.2 Fun Inp start-end frame video generation example
@@ -46,7 +50,7 @@ Below are the relevant model weights and code repositories:
 
     <Tab title="Desktop or Cloud users">
       * The Desktop is base on ComfyUI stable release, it will auto-update when there is a new Desktop stable release available.
-      * [Cloud](https://cloud.comfy.org) will update after ComfyUI stable release, we will update the Cloud after ComfyUI stable release.
+      * [Cloud](https://cloud.comfy.org) will update after ComfyUI stable release.
 
       So, if you find any core node missing in this document, it might be because the new core nodes have not yet been released in the latest stable version. Please wait for the next stable release.
     </Tab>
@@ -75,6 +79,10 @@ Or, after updating ComfyUI to the latest version, download the workflow below an
 
 <a className="prose" target="_blank" href="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/refs/heads/main/templates/video_wan2_2_14B_animate.json" style={{ display: 'inline-block', backgroundColor: '#0078D6', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
   <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Download JSON Workflow</p>
+</a>
+
+<a className="prose" target="_blank" href="https://cloud.comfy.org/?template=video_wan2_2_14B_fun_inpaint&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28A745', color: '#FFFFFF', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
+  <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Run on Comfy Cloud</p>
 </a>
 
 Use the following materials as the start and end frames

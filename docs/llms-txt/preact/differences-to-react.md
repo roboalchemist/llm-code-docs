@@ -1,3 +1,5 @@
+# Source: https://preactjs.com/guide/v10/differences-to-react#features-exclusive-to-preactcompat
+
 # Differences to React
 
 Preact is not intended to be a reimplementation of React. There are differences. Many of these differences are trivial, or can be completely removed by using [preact/compat](/guide/v10/getting-started#aliasing-react-to-preact), which is a thin layer over Preact that attempts to achieve 100% compatibility with React.

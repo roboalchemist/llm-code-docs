@@ -71,19 +71,20 @@ This endpoint creates and sends a music generation task to the server — and re
 >
 
 ```json
-{"openapi":"3.0.0","info":{"title":"AIML API","version":"1.0.0"},"servers":[{"url":"https://api.aimlapi.com"}],"paths":{"/v2/generate/audio":{"post":{"operationId":"_v2_generate_audio","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"model":{"type":"string","enum":["elevenlabs/eleven_music"]},"prompt":{"type":"string","maxLength":2000,"description":"A text description that can define the genre, mood, instruments, vocals, tempo, structure, and even lyrics of the track. It can be high-level (“peaceful meditation with voiceover”) or detailed (“solo piano in C minor, 90 BPM, raw and emotional”). Use keywords to control genre, emotional tone, vocals (e.g., a cappella, two singers harmonizing), structure (e.g., “lyrics begin at 15 seconds”), or provide custom lyrics directly in the prompt."},"music_length_ms":{"type":"integer","minimum":10000,"maximum":300000,"default":10000,"description":"The length of the song to generate in milliseconds. This parameter may not always be respected by the model, and the actual audio length can differ."}},"required":["model","prompt"],"title":"elevenlabs/eleven_music"}}}},"responses":{"200":{"content":{"application/json":{"schema":{"type":"object","properties":{"id":{"type":"string","description":"The ID of the generated audio."},"status":{"type":"string","enum":["queued","generating","completed","error"],"description":"The current status of the generation task."},"audio_file":{"type":"object","nullable":true,"properties":{"url":{"type":"string","format":"uri","description":"The URL where the file can be downloaded from."}},"required":["url"]},"error":{"type":"object","nullable":true,"properties":{"name":{"type":"string"},"message":{"type":"string"}},"required":["name","message"],"description":"Description of the error, if any."},"meta":{"type":"object","nullable":true,"properties":{"usage":{"type":"object","nullable":true,"properties":{"credits_used":{"type":"number","description":"The number of tokens consumed during generation."}},"required":["credits_used"]}},"description":"Additional details about the generation."}},"required":["id","status"]}}}}}}}}}
+{"openapi":"3.0.0","info":{"title":"AIML API","version":"1.0.0"},"servers":[{"url":"https://api.aimlapi.com"}],"paths":{"/v2/generate/audio":{"post":{"operationId":"_v2_generate_audio","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"model":{"type":"string","enum":["elevenlabs/eleven_music"]},"prompt":{"type":"string","maxLength":2000,"description":"A text description that can define the genre, mood, instruments, vocals, tempo, structure, and even lyrics of the track. It can be high-level (“peaceful meditation with voiceover”) or detailed (“solo piano in C minor, 90 BPM, raw and emotional”). Use keywords to control genre, emotional tone, vocals (e.g., a cappella, two singers harmonizing), structure (e.g., “lyrics begin at 15 seconds”), or provide custom lyrics directly in the prompt."},"music_length_ms":{"type":"integer","minimum":10000,"maximum":300000,"default":10000,"description":"The length of the song to generate in milliseconds. This parameter may not always be respected by the model, and the actual audio length can differ.","format":"milliseconds"}},"required":["model","prompt"],"title":"elevenlabs/eleven_music"}}}},"responses":{"200":{"content":{"application/json":{"schema":{"type":"object","properties":{"id":{"type":"string","description":"The ID of the generated audio."},"status":{"type":"string","enum":["queued","generating","completed","error"],"description":"The current status of the generation task."},"audio_file":{"type":"object","nullable":true,"properties":{"url":{"type":"string","format":"uri","description":"The URL where the file can be downloaded from."}},"required":["url"]},"error":{"type":"object","nullable":true,"properties":{"name":{"type":"string"},"message":{"type":"string"}},"required":["name","message"],"description":"Description of the error, if any."},"meta":{"type":"object","nullable":true,"properties":{"usage":{"type":"object","nullable":true,"properties":{"credits_used":{"type":"number","description":"The number of tokens consumed during generation."}},"required":["credits_used"]}},"description":"Additional details about the generation."}},"required":["id","status"]}}}}}}}}}
 ```
 
 ### Retrieve the generated music sample from the server <a href="#retrieve-the-generated-video-from-the-server" id="retrieve-the-generated-video-from-the-server"></a>
 
-After sending a request for music generation, this task is added to the queue. Based on the service's load, the generation can be completed in 30-40 seconds or take a bit more.
+After sending a request for music generation, this task is added to the queue. This endpoint lets you check the status of a audio generation task using its `id`, obtained from the endpoint described above.\
+If the video generation task status is `complete`, the response will include the final result — with the generated audio URL and additional metadata.
 
 ## GET /v2/generate/audio
 
 >
 
 ```json
-{"openapi":"3.0.0","info":{"title":"AI/ML Gateway","version":"1.0"},"servers":[{"url":"https://api.aimlapi.com"}],"security":[{"access-token":[]}],"components":{"securitySchemes":{"access-token":{"scheme":"bearer","bearerFormat":"<YOUR_AIMLAPI_KEY>","type":"http","description":"Bearer key"}},"schemas":{"Audio.v2.PollAudioResponseDTO":{"type":"object","properties":{"audio_file":{"type":"object","properties":{"url":{"type":"string","format":"uri"}},"required":["url"]},"id":{"type":"string"},"status":{"type":"string","enum":["queued","completed","generating","error"]},"error":{"nullable":true}},"required":["id","status"]}}},"paths":{"/v2/generate/audio":{"get":{"operationId":"AudioModelsControllerV2_fetchGeneration_v2","parameters":[{"name":"generation_id","required":true,"in":"query","schema":{"type":"string"}}],"responses":{"default":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Audio.v2.PollAudioResponseDTO"}}}}},"tags":["Audio Generation"]}}}}
+{"openapi":"3.0.0","info":{"title":"AIML API","version":"1.0.0"},"servers":[{"url":"https://api.aimlapi.com"}],"security":[{"access-token":[]}],"components":{"securitySchemes":{"access-token":{"scheme":"bearer","bearerFormat":"<YOUR_AIMLAPI_KEY>","type":"http","description":"Bearer key","in":"header"}}},"paths":{"/v2/generate/audio":{"get":{"operationId":"_v2_generate_audio","parameters":[{"name":"generation_id","required":true,"in":"query","schema":{"type":"string"}}],"responses":{"200":{"content":{"application/json":{"schema":{"type":"object","properties":{"id":{"type":"string","description":"The ID of the generated audio."},"status":{"type":"string","enum":["queued","generating","completed","error"],"description":"The current status of the generation task."},"audio_file":{"type":"object","nullable":true,"properties":{"url":{"type":"string","format":"uri","description":"The URL where the file can be downloaded from."}},"required":["url"]},"error":{"type":"object","nullable":true,"properties":{"name":{"type":"string"},"message":{"type":"string"}},"required":["name","message"],"description":"Description of the error, if any."},"meta":{"type":"object","nullable":true,"properties":{"usage":{"type":"object","nullable":true,"properties":{"credits_used":{"type":"number","description":"The number of tokens consumed during generation."}},"required":["credits_used"]}},"description":"Additional details about the generation."}},"required":["id","status"]}}}}}}}}}
 ```
 
 ## Full Example: Generating and Retrieving the Audio From the Server <a href="#full-example-generating-and-retrieving-the-video-from-the-server" id="full-example-generating-and-retrieving-the-video-from-the-server"></a>
@@ -149,11 +150,11 @@ def main():
         
             status = response_data.get("status")
             
-            if status in ["waiting", "queued", "generating"]:
+            if status in ["queued", "generating"]:
                 print(f"Status: {status}. Checking again in 10 seconds.")
                 time.sleep(10)
             else:
-                print("Generation complete:/n", response_data)
+                print("Generation complete:\n", response_data)
                 return response_data
    
         print("Timeout reached. Stopping.")
@@ -269,8 +270,7 @@ function main() {
                 }
 
                 const status = responseData.status;
-        
-                if (["waiting", "queued", "generating"].includes(status)) {
+                if (["queued", "generating"].includes(status)) {
                     console.log(`Status: ${status}. Checking again in 10 seconds.`);
                     setTimeout(checkStatus, interval);
                 } else {
@@ -299,7 +299,7 @@ main();
 Generation: {'status': 'queued', 'id': '60ac7c34-3224-4b14-8e7d-0aa0db708325:elevenlabs/eleven_music'}
 Still waiting... Checking again in 10 seconds.
 Still waiting... Checking again in 10 seconds.
-Generation complete:/n {'id': '60ac7c34-3224-4b14-8e7d-0aa0db708325:elevenlabs/eleven_music', 'status': 'completed', 'audio_file': {'url': 'https://cdn.aimlapi.com/generations/hippopotamus/1757963033314-8ca7729d-b78c-4d4c-9ef9-89b2fb3d07e8.mp3'}}
+Generation complete:\n {'id': '60ac7c34-3224-4b14-8e7d-0aa0db708325:elevenlabs/eleven_music', 'status': 'completed', 'audio_file': {'url': 'https://cdn.aimlapi.com/generations/hippopotamus/1757963033314-8ca7729d-b78c-4d4c-9ef9-89b2fb3d07e8.mp3'}}
 ```
 
 {% endcode %}

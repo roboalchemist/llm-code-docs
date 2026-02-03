@@ -1,4 +1,4 @@
-# Source: https://docs.warp.dev/agents/using-agents/agent-profiles-permissions.md
+# Source: https://docs.warp.dev/agent-platform/agent/using-agents/agent-profiles-permissions.md
 
 # Agent Profiles & Permissions
 
@@ -9,16 +9,16 @@ Agent Profiles let you configure how your Agent behaves in different situations.
 * **Default profile**: Every user starts with a default profile, you can edit it at any time, and new profiles will copy its settings as a starting point.
 * **Other profiles**: Set up different profiles for different workflows (e.g., "Safe & cautious", "YOLO mode", etc.). Manage them in the Profiles settings menu.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-3268384dc2edf5ade8e322c57b894a520bd156e0%2Fagent-profiles.png?alt=media" alt=""><figcaption><p>Agent Profiles in Settings: define how your Agent operates.</p></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-3268384dc2edf5ade8e322c57b894a520bd156e0%2Fagent-profiles.png?alt=media" alt=""><figcaption><p>Agent Profiles in Settings: define how your Agent operates.</p></figcaption></figure>
 
 **In each Agent Profile, you can configure:**
 
 * The name of the profile
 * **Base model**: The core engine for your Agent. It handles most interactions and invokes other models when needed (e.g. for code generation).
-  * This model is also used for [planning](https://docs.warp.dev/agents/using-agents/planning "mention"), which is responsible for breaking down complex tasks into actionable steps. It generates structured execution plans and decides how to route work between models.
+  * This model is also used for [Planning](https://docs.warp.dev/agent-platform/agent/using-agents/planning), which is responsible for breaking down complex tasks into actionable steps. It generates structured execution plans and decides how to route work between models.
 * Agent autonomy and permissions
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-1560870ccbbb9be601226971ecf5dfa2d1205119%2Fagent-profiles-settings.png?alt=media" alt=""><figcaption><p>Agent Profiles in Settings: editting a Profile.</p></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-1560870ccbbb9be601226971ecf5dfa2d1205119%2Fagent-profiles-settings.png?alt=media" alt=""><figcaption><p>Agent Profiles in Settings: editing a Profile.</p></figcaption></figure>
 
 ## Agent Permissions
 
@@ -30,16 +30,16 @@ You can control how much autonomy the Agent has when performing different types 
 * Read files
 * Create plans
 * Execute commands
-* Interact with running commands (via [full-terminal-use](https://docs.warp.dev/agents/full-terminal-use "mention"))
+* Interact with running commands (via [Full Terminal Use](https://docs.warp.dev/agent-platform/agent/full-terminal-use))
 
-<div align="center"><figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-bf381f2dba1cc2eddb99dc969ee9619a4f5e165f%2Fagent-permissions-with-full-terminal-use.png?alt=media" alt=""><figcaption><p>Fine-tuning agent control: This permissions panel lets users customize how much autonomy the Agent has when applying code diffs, reading files, creating plans, and executing commands.</p></figcaption></figure></div>
+<div align="center"><figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-bf381f2dba1cc2eddb99dc969ee9619a4f5e165f%2Fagent-permissions-with-full-terminal-use.png?alt=media" alt=""><figcaption><p>Fine-tuning agent control: This permissions panel lets users customize how much autonomy the Agent has when applying code diffs, reading files, creating plans, and executing commands.</p></figcaption></figure></div>
 
 **Each permission has different levels of autonomy:**
 
 <table><thead><tr><th width="196.3369140625">Autonomy level</th><th>Description</th></tr></thead><tbody><tr><td>Agent Decides</td><td>Agent will act autonomously when it's confident, but prompt for approval when uncertain. This option balances speed with control, allowing the Agent to go ahead with common workflows while keeping you in the loop for more complex or risky steps.</td></tr><tr><td>Always ask</td><td>Agent will request explicit user approval before taking any action. Choose this for sensitive actions.</td></tr><tr><td>Always allow</td><td>Agent will perform the action without ever requesting explicit conformation. Use this for tasks you fully trust the Agent to handle on its own.</td></tr><tr><td>Never</td><td>Agent will not ever take the action (i.e. Create plans).</td></tr></tbody></table>
 
 {% hint style="info" %}
-*When all Agent permissions are set to Always allow, the Agent gains full autonomy (“YOLO mode”); however, any denylist rules will still override these settings.*
+When all Agent permissions are set to **Always allow**, the Agent gains full autonomy (“YOLO mode”); however, any denylist rules will still override these settings.
 {% endhint %}
 
 ### Command allowlist
@@ -54,7 +54,7 @@ The Warp Agent lets you define an allowlist of commands that run automatically w
 
 You can add your own regular expressions to this list in `Settings > AI > Agents > Command allowlist`. Commands in the allowlist will always auto-execute, even if they are not read-only operations.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-01a396aec1551b41f950851c4d3bcd1593687884%2Fagent-profiles-allow-and-denylists.png?alt=media" alt=""><figcaption><p>Command allowlist and denylists as part of an Agent Profile.</p></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-01a396aec1551b41f950851c4d3bcd1593687884%2Fagent-profiles-allow-and-denylists.png?alt=media" alt=""><figcaption><p>Command allowlist and denylists as part of an Agent Profile.</p></figcaption></figure>
 
 ### Command denylist
 
@@ -77,7 +77,7 @@ In this settings menu, you can configure which MCP servers the Agent is allowed 
 * Use the MCP denylist to require approval before calling certain servers, even if they’re also in the allowlist.
 * Or set the Agent to “decide” — it will act autonomously when confident, and ask for confirmation when uncertain.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-344ffccc0b38f35cf6237784a18b7913ef92e343%2FMCP_servers_agent_permissions.png?alt=media" alt=""><figcaption><p>Customize how the Agent interacts with MCP servers by choosing between “Agent decides,” allowlist, or denylist settings.</p></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-344ffccc0b38f35cf6237784a18b7913ef92e343%2FMCP_servers_agent_permissions.png?alt=media" alt=""><figcaption><p>Customize how the Agent interacts with MCP servers by choosing between “Agent decides,” allowlist, or denylist settings.</p></figcaption></figure>
 
 {% hint style="info" %}
 To learn how to build and configure your own MCP server, check out the [MCP feature docs](https://docs.warp.dev/knowledge-and-collaboration/mcp).
@@ -101,7 +101,7 @@ Auto-approve all Agent actions with: `CTRL + SHIFT + I`
 {% endtab %}
 {% endtabs %}
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-d0711cc28a1082a1faab7728b5330034cd6fd1de%2Frun-until-completion.png?alt=media" alt=""><figcaption><p>A button overlay in the lower-right corner lets you enable auto-approve or end the Agent interaction.</p></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-d0711cc28a1082a1faab7728b5330034cd6fd1de%2Frun-until-completion.png?alt=media" alt=""><figcaption><p>A button overlay in the lower-right corner lets you enable auto-approve or end the Agent interaction.</p></figcaption></figure>
 
 {% hint style="info" %}
 *Run until completion* ignores the denylist entirely. It’s the purest form of “YOLO” mode and essentially a fully “autonomous mode” where the Agent proceeds without asking for confirmation.

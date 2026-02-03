@@ -6,7 +6,6 @@ description: >-
   Detect, investigate, and monitor unexpected cost changes across your cloud
   infrastructure.
 breadcrumbs: Docs > Cloud Cost Management > Cost Changes
-source_url: https://docs.datadoghq.com/cost_changes/index.html
 ---
 
 # Cost Changes

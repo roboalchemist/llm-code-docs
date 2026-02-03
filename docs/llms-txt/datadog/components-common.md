@@ -4,7 +4,6 @@
 title: 'Components: Common'
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: 'Docs > Cloudcraft (Standalone) > Components: Common'
-source_url: https://docs.datadoghq.com/components-common/index.html
 ---
 
 # Components: Common

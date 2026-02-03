@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/blueprints/uitrigger.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # UI Trigger
 
 Triggers an event based on UI interactions like button clicks or input changes.

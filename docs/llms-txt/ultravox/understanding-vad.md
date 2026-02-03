@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/noise/understanding-vad.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Understanding VAD
 
 > Learn how Ultravox's multi-model VAD system works and when to adjust voice activity detection parameters.
@@ -133,8 +137,3 @@ Before adjusting VAD parameters, consider:
 * **Network quality** → Poor connections can affect VAD performance.
 
 Remember: VAD tuning is a series of trade-offs. The system is designed to be intelligent and adaptive. Trust the defaults unless you have a compelling, well-tested reason to change them.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

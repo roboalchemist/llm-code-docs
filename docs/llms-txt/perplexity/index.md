@@ -1,4 +1,8 @@
-# Source: https://docs.perplexity.ai/cookbook/index.md
+# Source: https://docs.perplexity.ai/docs/cookbook/index.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Perplexity API Cookbook
 
@@ -17,15 +21,15 @@ To get started with any project in this cookbook:
 
 ## What's Inside
 
-### [Examples](/cookbook/examples/README)
+### [Examples](/docs/cookbook/examples/README)
 
 Ready-to-run projects that demonstrate specific use cases and implementation patterns.
 
-### [Showcase](/cookbook/showcase/briefo/)
+### [Showcase](/docs/cookbook/showcase/briefo/)
 
 Community-built applications that demonstrate real-world implementations of the API Platform.
 
-### [Integration Guides](/cookbook/articles/memory-management/chat-summary-memory-buffer/README)
+### [Integration Guides](/docs/cookbook/articles/memory-management/chat-summary-memory-buffer/README)
 
 In-depth tutorials for advanced implementations and integrations with other tools.
 

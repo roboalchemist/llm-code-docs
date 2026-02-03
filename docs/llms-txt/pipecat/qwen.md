@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/services/llm/qwen.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Qwen
 
 > LLM service implementation using Alibaba Cloud's Qwen models through an OpenAI-compatible interface
@@ -47,8 +51,3 @@ Before using Qwen LLM services, you need:
 ### Required Environment Variables
 
 * `QWEN_API_KEY`: Your Qwen API key for authentication
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

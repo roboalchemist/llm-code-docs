@@ -4,12 +4,6 @@
 
 # Source: https://mui.com/x/react-data-grid/filtering/quick-filter.md
 
-# Source: https://mui.com/x/api/data-grid/quick-filter.md
-
-# Source: https://mui.com/x/react-data-grid/components/quick-filter.md
-
-# Source: https://mui.com/x/react-data-grid/filtering/quick-filter.md
-
 # Data Grid - Quick filter
 
 One filter field to quickly filter grid.

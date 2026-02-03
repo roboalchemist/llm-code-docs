@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/generativeagent/integrate/sip-transfers-api.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # API-based SIP Transfers
 
 > Use REST API calls to pass rich context data for SIP transfers with unlimited complexity

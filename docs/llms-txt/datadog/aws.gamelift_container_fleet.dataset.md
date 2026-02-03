@@ -4,8 +4,6 @@
 title: GameLift Container Fleet
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > GameLift Container Fleet
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.gamelift_container_fleet.dataset/index.html
 ---
 
 # GameLift Container Fleet
@@ -44,4 +42,4 @@ aws.gamelift_container_fleet
 | per_instance_container_group_definition_arn       | core | string        | The Amazon Resource Name (ARN) that is assigned to the fleet's per-instance container group. The ARN value also identifies the specific container group definition version in use.                                                                                                                                                                                                                                                                                                                             |
 | per_instance_container_group_definition_name      | core | string        | The name of the fleet's per-instance container group definition.                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | status                                            | core | string        | The current status of the container fleet. PENDING -- A new container fleet has been requested. CREATING -- A new container fleet resource is being created. CREATED -- A new container fleet resource has been created. No fleet instances have been deployed. ACTIVATING -- New container fleet instances are being deployed. ACTIVE -- The container fleet has been deployed and is ready to host game sessions. UPDATING -- Updates to the container fleet is being updated. A deployment is in progress.  |
-| tags                                              | core | hstore        |
+| tags                                              | core | hstore_csv    |

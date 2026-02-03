@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/guides/disable-email-editing-in-checkout.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to disable email editing in checkout
 
 > Learn how to prevent customers from editing their email address during checkout by linking to existing customers.
@@ -136,8 +140,3 @@ If you have your own user management system, you can use your internal customer 
     Redirect your customer to the checkout URL. The email field will be disabled from editing.
   </Step>
 </Steps>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://polar.sh/docs/llms.txt

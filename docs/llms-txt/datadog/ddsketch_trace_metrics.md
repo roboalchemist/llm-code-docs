@@ -6,7 +6,6 @@ description: >-
   Learn about DDSketch-based metrics in APM for computing accurate percentiles
   and latency distributions with improved accuracy.
 breadcrumbs: Docs > APM > Tracing Guides > DDSketch-based Metrics in APM
-source_url: https://docs.datadoghq.com/guide/ddsketch_trace_metrics/index.html
 ---
 
 # DDSketch-based Metrics in APM

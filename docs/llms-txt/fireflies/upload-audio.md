@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/graphql-api/mutation/upload-audio.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Upload Audio
 
 > Use the API to upload audio to Fireflies.ai
@@ -47,6 +51,10 @@ The `uploadAudio` mutation allows you to upload audio files to Fireflies.ai for 
 
     <ResponseField name="bypass_size_check" type="Boolean">
       Bypasses the internal file size validation that normally rejects audio files smaller than 50kb. Set to true if you need to process very short audio clips.
+    </ResponseField>
+
+    <ResponseField name="download_auth" type="DownloadAuthInput">
+      Authentication configuration for downloading the media file. Use this when your audio/video file requires authentication (bearer token or basic auth). If not provided, defaults to no authentication (publicly accessible URL). See [DownloadAuthInput](/schema/input/download-auth-input) for details.
     </ResponseField>
   </Expandable>
 </ParamField>
@@ -255,14 +263,81 @@ mutation uploadAudio($input: AudioUploadInput) {
   ```
 </ResponseExample>
 
+## Authenticated Downloads
+
+The `download_auth` field allows you to upload audio/video files that require authentication. This is useful when your media files are hosted on private servers or behind authentication.
+
+### Bearer Token Authentication
+
+Use bearer token authentication when your media URL requires an `Authorization: Bearer <token>` header:
+
+```graphql  theme={null}
+mutation {
+  uploadAudio(input: {
+    url: "https://example.com/protected-audio.mp3"
+    title: "Protected Meeting Recording"
+    download_auth: {
+      type: bearer_token
+      bearer: {
+        token: "your-bearer-token-here"
+      }
+    }
+  }) {
+    success
+    message
+  }
+}
+```
+
+### Basic Authentication
+
+Use basic authentication when your media URL requires username and password:
+
+```graphql  theme={null}
+mutation {
+  uploadAudio(input: {
+    url: "https://example.com/protected-audio.mp3"
+    title: "Protected Meeting Recording"
+    download_auth: {
+      type: basic_auth
+      basic: {
+        username: "your-username"
+        password: "your-password"
+      }
+    }
+  }) {
+    success
+    message
+  }
+}
+```
+
+**Note:** The username is optional for basic auth. If not provided, only the password will be used.
+
 ## FAQ
 
 <Accordion title="Can I upload a file directly from my machine?">
-  <p>Audio upload only works with publicly accessible URLs. We cannot accept files hosted on your local machine or a private server.</p>
+  <p>Audio upload only works with publicly accessible URLs or URLs with supported authentication (bearer token or basic auth). We cannot accept files hosted on your local machine.</p>
 </Accordion>
 
 <Accordion title="I don't want to expose my audio files to the public internet. How can I upload them to Fireflies.ai safely?">
-  <p>You may use signed urls with short expiry times to upload audio files to Fireflies.ai. Fireflies will download the file from the url and process it.</p>
+  <p>You have two options:</p>
+
+  <ol>
+    <li><strong>Signed URLs:</strong> Use signed URLs with short expiry times (e.g., AWS S3 presigned URLs, Google Cloud Storage signed URLs)</li>
+    <li><strong>Authenticated Downloads:</strong> Use the <code>download\_auth</code> field to provide bearer token or basic authentication credentials. Fireflies will use these credentials when downloading your media file.</li>
+  </ol>
+</Accordion>
+
+<Accordion title="What authentication methods are supported?">
+  <p>Fireflies supports two authentication methods for downloading media files:</p>
+
+  <ul>
+    <li><strong>Bearer Token:</strong> Adds <code>Authorization: Bearer \<token></code> header when downloading</li>
+    <li><strong>Basic Auth:</strong> Adds <code>Authorization: Basic \<base64(username:password)></code> header when downloading</li>
+  </ul>
+
+  <p>If your media file is publicly accessible, you don't need to provide <code>download\_auth</code>.</p>
 </Accordion>
 
 ## Error Codes

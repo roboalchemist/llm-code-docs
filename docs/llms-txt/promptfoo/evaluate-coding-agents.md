@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/guides/evaluate-coding-agents/
+
 # Evaluate Coding Agents
 
 Coding agents present a different evaluation challenge than standard LLMs. A chat model transforms input to output in one step. An agent decides what to do, does it, observes the result, and iterates—often dozens of times before producing a final answer.

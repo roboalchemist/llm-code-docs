@@ -1,16 +1,17 @@
 # Source: https://gofastmcp.com/integrations/mcp-json-configuration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # MCP JSON Configuration 🤝 FastMCP
 
 > Generate standard MCP configuration files for any compatible client
 
 export const VersionBadge = ({version}) => {
-  return <code className="version-badge-container">
-            <p className="version-badge">
-                <span className="version-badge-label">New in version:</span> 
-                <code className="version-badge-version">{version}</code>
-            </p>
-        </code>;
+  return <Badge stroke size="lg" icon="gift" iconType="regular" className="version-badge">
+            New in version <code>{version}</code>
+        </Badge>;
 };
 
 <VersionBadge version="2.10.3" />

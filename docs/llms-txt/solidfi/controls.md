@@ -4,29 +4,9 @@
 
 # Source: https://docs.solidfi.com/accounts/controls.md
 
-# Source: https://docs.solidfi.com/payments/controls.md
-
-# Source: https://docs.solidfi.com/card-issuance/controls.md
-
-# Source: https://docs.solidfi.com/accounts/controls.md
-
-# Source: https://docs.solidfi.com/payments/controls.md
-
-# Source: https://docs.solidfi.com/card-issuance/controls.md
-
-# Source: https://docs.solidfi.com/accounts/controls.md
-
-# Source: https://docs.solidfi.com/payments/controls.md
-
-# Source: https://docs.solidfi.com/card-issuance/controls.md
-
-# Source: https://docs.solidfi.com/accounts/controls.md
-
-# Source: https://docs.solidfi.com/payments/controls.md
-
-# Source: https://docs.solidfi.com/card-issuance/controls.md
-
-# Source: https://docs.solidfi.com/accounts/controls.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.solidfi.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Controls
 

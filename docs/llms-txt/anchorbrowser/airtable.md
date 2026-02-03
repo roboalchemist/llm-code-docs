@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/integrations/open-source/playwright/business-applications/airtable.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Airtable
 
 > Automate Airtable database workflows with Playwright when APIs aren't available.

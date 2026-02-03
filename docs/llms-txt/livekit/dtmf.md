@@ -1,7 +1,5 @@
 # Source: https://docs.livekit.io/telephony/features/dtmf.md
 
-# Source: https://docs.livekit.io/sip/dtmf.md
-
 LiveKit docs › Features › DTMF
 
 ---
@@ -12,13 +10,13 @@ LiveKit docs › Features › DTMF
 
 ## Overview
 
-LiveKit's Telephony stack fully supports Dual-tone Multi-Frequency (DTMF) tones, enabling integration with legacy Interactive Voice Response (IVR) systems. It also enables agents to receive DTMF tones from telephone users.
+LiveKit's telephony stack fully supports Dual-tone Multi-Frequency (DTMF) tones, enabling integration with legacy Interactive Voice Response (IVR) systems. It also enables agents to receive DTMF tones from telephone users.
 
 ## Agents framework support
 
 If you're building telephony apps with the LiveKit Agents framework, there are additional features that provide support for DTMF:
 
-- The `ivr_detection` option for [`AgentSession`](https://docs.livekit.io/agents/build/sessions.md#session-options). When set to `True`, this automatically makes use of built-in tools to detect IVR systems and relay DTMF tones from the user back to the telephony provider.
+- The `ivr_detection` option for [`AgentSession`](https://docs.livekit.io/agents/logic/sessions.md#session-options). When set to `True`, this automatically makes use of built-in tools to detect IVR systems and relay DTMF tones from the user back to the telephony provider.
 
 To enable IVR detection, set `ivr_detection=True` in the `AgentSession` constructor:
 
@@ -29,7 +27,7 @@ session = AgentSession(
 )
 
 ```
-- A prebuilt task for collecting DTMF inputs. It can be used to collect any number of digits from a caller, including, for example, a phone number or credit card number. The task supports both DTMF tones and spoken digits. To learn more, see [GetDtmfTask](https://docs.livekit.io/agents/build/tasks.md#getdtmftask).
+- A prebuilt task for collecting DTMF inputs. It can be used to collect any number of digits from a caller, including, for example, a phone number or credit card number. The task supports both DTMF tones and spoken digits. To learn more, see [GetDtmfTask](https://docs.livekit.io/agents/logic/tasks.md#getdtmftask).
 
 ## Sending DTMF using the API
 
@@ -160,7 +158,7 @@ func DTMFCallbackExample() {
 
 ---
 
-This document was rendered at 2025-11-18T23:55:21.399Z.
-For the latest version of this document, see [https://docs.livekit.io/sip/dtmf.md](https://docs.livekit.io/sip/dtmf.md).
+This document was rendered at 2026-02-03T03:25:11.008Z.
+For the latest version of this document, see [https://docs.livekit.io/telephony/features/dtmf.md](https://docs.livekit.io/telephony/features/dtmf.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

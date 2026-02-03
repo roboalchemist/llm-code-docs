@@ -2,17 +2,9 @@
 
 # Source: https://docs.tavus.io/sections/replica/quickstart.md
 
-# Source: https://docs.tavus.io/sections/video/quickstart.md
-
-# Source: https://docs.tavus.io/sections/replica/quickstart.md
-
-# Source: https://docs.tavus.io/sections/video/quickstart.md
-
-# Source: https://docs.tavus.io/sections/replica/quickstart.md
-
-# Source: https://docs.tavus.io/sections/video/quickstart.md
-
-# Source: https://docs.tavus.io/sections/replica/quickstart.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Quickstart
 

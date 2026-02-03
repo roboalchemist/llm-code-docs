@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/moonshine.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/moonshine.md
 
 # Moonshine
 
@@ -9,7 +9,7 @@ You can find all the original Moonshine checkpoints under the [Useful Sensors](h
 > [!TIP]
 > Click on the Moonshine models in the right sidebar for more examples of how to apply Moonshine to different speech recognition tasks.
 
-The example below demonstrates how to transcribe speech into text with [Pipeline](/docs/transformers/v5.0.0rc1/en/main_classes/pipelines#transformers.Pipeline) or the [AutoModel](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoModel) class.
+The example below demonstrates how to transcribe speech into text with [Pipeline](/docs/transformers/v5.0.0/en/main_classes/pipelines#transformers.Pipeline) or the [AutoModel](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoModel) class.
 
 ```py
 import torch
@@ -59,15 +59,15 @@ transcription[0]
 
 #### transformers.MoonshineConfig[[transformers.MoonshineConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/moonshine/configuration_moonshine.py#L27)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/moonshine/configuration_moonshine.py#L25)
 
-This is the configuration class to store the configuration of a [MoonshineModel](/docs/transformers/v5.0.0rc1/en/model_doc/moonshine#transformers.MoonshineModel). It is used to instantiate a Moonshine
+This is the configuration class to store the configuration of a [MoonshineModel](/docs/transformers/v5.0.0/en/model_doc/moonshine#transformers.MoonshineModel). It is used to instantiate a Moonshine
 model according to the specified arguments, defining the model architecture. Instantiating a configuration with the
 defaults will yield a similar configuration to that of the Moonshine
 [UsefulSensors/moonshine-tiny](https://huggingface.co/UsefulSensors/moonshine-tiny).
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -86,7 +86,7 @@ Example:
 
 **Parameters:**
 
-vocab_size (`int`, *optional*, defaults to 32768) : Vocabulary size of the Moonshine model. Defines the number of different tokens that can be represented by the `inputs_ids` passed when calling [MoonshineModel](/docs/transformers/v5.0.0rc1/en/model_doc/moonshine#transformers.MoonshineModel).
+vocab_size (`int`, *optional*, defaults to 32768) : Vocabulary size of the Moonshine model. Defines the number of different tokens that can be represented by the `inputs_ids` passed when calling [MoonshineModel](/docs/transformers/v5.0.0/en/model_doc/moonshine#transformers.MoonshineModel).
 
 hidden_size (`int`, *optional*, defaults to 288) : Dimension of the hidden representations.
 
@@ -130,15 +130,19 @@ bos_token_id (`int`, *optional*, defaults to 1) : Denotes beginning of sequences
 
 eos_token_id (`int`, *optional*, defaults to 2) : Denotes end of sequences token id.
 
+pad_token_id (`int`, *optional*) : Padding token id.
+
+tie_word_embeddings (`bool`, *optional*, defaults to `True`) : Whether to tie weight embeddings
+
 ## MoonshineModel[[transformers.MoonshineModel]]
 
 #### transformers.MoonshineModel[[transformers.MoonshineModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/moonshine/modeling_moonshine.py#L851)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/moonshine/modeling_moonshine.py#L849)
 
 The bare Moonshine Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -146,12 +150,12 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.MoonshineModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/moonshine/modeling_moonshine.py#L916[{"name": "input_values", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "decoder_input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "decoder_attention_mask", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "encoder_outputs", "val": ": typing.Optional[tuple[tuple[torch.FloatTensor]]] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.EncoderDecoderCache] = None"}, {"name": "decoder_inputs_embeds", "val": ": typing.Optional[tuple[torch.FloatTensor]] = None"}, {"name": "decoder_position_ids", "val": ": typing.Optional[tuple[torch.LongTensor]] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_values** (`torch.FloatTensor` of shape `(batch_size, audio_length)`) --
+forwardtransformers.MoonshineModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/moonshine/modeling_moonshine.py#L914[{"name": "input_values", "val": ": torch.FloatTensor | None = None"}, {"name": "attention_mask", "val": ": torch.LongTensor | None = None"}, {"name": "decoder_input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "decoder_attention_mask", "val": ": torch.LongTensor | None = None"}, {"name": "encoder_outputs", "val": ": tuple[tuple[torch.FloatTensor]] | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.EncoderDecoderCache | None = None"}, {"name": "decoder_inputs_embeds", "val": ": tuple[torch.FloatTensor] | None = None"}, {"name": "decoder_position_ids", "val": ": tuple[torch.LongTensor] | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_values** (`torch.FloatTensor` of shape `(batch_size, audio_length)`) --
   Float values of the raw speech waveform. Raw speech waveform can be
   obtained by loading a `.flac` or `.wav` audio file into an array of type `list[float]`, a
   `numpy.ndarray` or a `torch.Tensor`, *e.g.* via the torchcodec library (`pip install torchcodec`) or
   the soundfile library (`pip install soundfile`). To prepare the array into
-  `input_values`, the [AutoFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoFeatureExtractor) should be used for padding
+  `input_values`, the [AutoFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoFeatureExtractor) should be used for padding
   and conversion into a tensor of type `torch.FloatTensor`.
 - **attention_mask** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Mask to avoid performing attention on padding token indices. Mask values selected in `[0, 1]`:
@@ -163,14 +167,14 @@ forwardtransformers.MoonshineModel.forwardhttps://github.com/huggingface/transfo
 - **decoder_input_ids** (`torch.LongTensor` of shape `(batch_size, target_sequence_length)`, *optional*) --
   Indices of decoder input sequence tokens in the vocabulary.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are decoder input IDs?](../glossary#decoder-input-ids)
 - **decoder_attention_mask** (`torch.LongTensor` of shape `(batch_size, target_sequence_length)`, *optional*) --
   Mask to avoid performing attention on certain token indices. By default, a causal mask will be used, to
   make sure the model can only look at previous inputs in order to predict the future.
-- **encoder_outputs** (`tuple[tuple[torch.FloatTensor]]`, *optional*) --
+- **encoder_outputs** (`tuple`, *optional*) --
   Tuple consists of (`last_hidden_state`, *optional*: `hidden_states`, *optional*: `attentions`)
   `last_hidden_state` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) is a sequence of
   hidden-states at the output of the last layer of the encoder. Used in the cross-attention of the decoder.
@@ -179,15 +183,15 @@ forwardtransformers.MoonshineModel.forwardhttps://github.com/huggingface/transfo
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
   If `past_key_values` are used, the user is expected to input only unprocessed `input_ids` (those that don't
   have their past key value states given to this model) of shape `(batch_size, unprocessed_length)` instead of all `input_ids`
   of shape `(batch_size, sequence_length)`.
-- **decoder_inputs_embeds** (`tuple[torch.FloatTensor]` of shape `(batch_size, target_sequence_length, hidden_size)`, *optional*) --
+- **decoder_inputs_embeds** (`tuple` of shape `(batch_size, target_sequence_length, hidden_size)`, *optional*) --
   Optionally, instead of passing `decoder_input_ids` you can choose to directly pass an embedded
   representation. If `past_key_values` is used, optionally only the last `decoder_inputs_embeds` have to be
   input (see `past_key_values`). This is useful if you want more control over how to convert
@@ -204,15 +208,15 @@ forwardtransformers.MoonshineModel.forwardhttps://github.com/huggingface/transfo
 - **cache_position** (`torch.LongTensor` of shape `(sequence_length)`, *optional*) --
   Indices depicting the position of the input sequence tokens in the sequence. Contrarily to `position_ids`,
   this tensor is not affected by padding. It is used to update the cache in the correct position and to infer
-  the complete sequence length.0[transformers.modeling_outputs.Seq2SeqModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.Seq2SeqModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqModelOutput) or a tuple of
+  the complete sequence length.0[transformers.modeling_outputs.Seq2SeqModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.Seq2SeqModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MoonshineConfig](/docs/transformers/v5.0.0rc1/en/model_doc/moonshine#transformers.MoonshineConfig)) and inputs.
+elements depending on the configuration ([MoonshineConfig](/docs/transformers/v5.0.0/en/model_doc/moonshine#transformers.MoonshineConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the decoder of the model.
 
   If `past_key_values` is used only the last hidden-state of the sequences of shape `(batch_size, 1,
   hidden_size)` is output.
-- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and in the cross-attention
   blocks) that can be used (see `past_key_values` input) to speed up sequential decoding.
@@ -240,7 +244,7 @@ elements depending on the configuration ([MoonshineConfig](/docs/transformers/v5
 
   Attentions weights of the encoder, after the attention softmax, used to compute the weighted average in the
   self-attention heads.
-The [MoonshineModel](/docs/transformers/v5.0.0rc1/en/model_doc/moonshine#transformers.MoonshineModel) forward method, overrides the `__call__` special method.
+The [MoonshineModel](/docs/transformers/v5.0.0/en/model_doc/moonshine#transformers.MoonshineModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -266,21 +270,21 @@ Example:
 
 **Parameters:**
 
-config ([MoonshineConfig](/docs/transformers/v5.0.0rc1/en/model_doc/moonshine#transformers.MoonshineConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([MoonshineConfig](/docs/transformers/v5.0.0/en/model_doc/moonshine#transformers.MoonshineConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.Seq2SeqModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqModelOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.Seq2SeqModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqModelOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.Seq2SeqModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqModelOutput) or a tuple of
+A [transformers.modeling_outputs.Seq2SeqModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MoonshineConfig](/docs/transformers/v5.0.0rc1/en/model_doc/moonshine#transformers.MoonshineConfig)) and inputs.
+elements depending on the configuration ([MoonshineConfig](/docs/transformers/v5.0.0/en/model_doc/moonshine#transformers.MoonshineConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the decoder of the model.
 
   If `past_key_values` is used only the last hidden-state of the sequences of shape `(batch_size, 1,
   hidden_size)` is output.
-- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and in the cross-attention
   blocks) that can be used (see `past_key_values` input) to speed up sequential decoding.
@@ -310,7 +314,7 @@ elements depending on the configuration ([MoonshineConfig](/docs/transformers/v5
   self-attention heads.
 #### _mask_input_features[[transformers.MoonshineModel._mask_input_features]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/moonshine/modeling_moonshine.py#L873)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/moonshine/modeling_moonshine.py#L871)
 
 Masks extracted features along time axis and/or along feature axis according to
 [SpecAugment](https://huggingface.co/papers/1904.08779).
@@ -319,11 +323,11 @@ Masks extracted features along time axis and/or along feature axis according to
 
 #### transformers.MoonshineForConditionalGeneration[[transformers.MoonshineForConditionalGeneration]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/moonshine/modeling_moonshine.py#L1011)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/moonshine/modeling_moonshine.py#L1009)
 
 The Moonshine Model with a language modeling head. Can be used for automatic speech recognition.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -331,12 +335,12 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.MoonshineForConditionalGeneration.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/moonshine/modeling_moonshine.py#L1031[{"name": "input_values", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "decoder_input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "decoder_attention_mask", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "encoder_outputs", "val": ": typing.Optional[tuple[tuple[torch.FloatTensor]]] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.EncoderDecoderCache] = None"}, {"name": "decoder_inputs_embeds", "val": ": typing.Optional[tuple[torch.FloatTensor]] = None"}, {"name": "decoder_position_ids", "val": ": typing.Optional[tuple[torch.LongTensor]] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_values** (`torch.FloatTensor` of shape `(batch_size, audio_length)`) --
+forwardtransformers.MoonshineForConditionalGeneration.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/moonshine/modeling_moonshine.py#L1029[{"name": "input_values", "val": ": torch.FloatTensor | None = None"}, {"name": "attention_mask", "val": ": torch.LongTensor | None = None"}, {"name": "decoder_input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "decoder_attention_mask", "val": ": torch.LongTensor | None = None"}, {"name": "encoder_outputs", "val": ": tuple[tuple[torch.FloatTensor]] | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.EncoderDecoderCache | None = None"}, {"name": "decoder_inputs_embeds", "val": ": tuple[torch.FloatTensor] | None = None"}, {"name": "decoder_position_ids", "val": ": tuple[torch.LongTensor] | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_values** (`torch.FloatTensor` of shape `(batch_size, audio_length)`) --
   Float values of the raw speech waveform. Raw speech waveform can be
   obtained by loading a `.flac` or `.wav` audio file into an array of type `list[float]`, a
   `numpy.ndarray` or a `torch.Tensor`, *e.g.* via the torchcodec library (`pip install torchcodec`) or
   the soundfile library (`pip install soundfile`). To prepare the array into
-  `input_values`, the [AutoFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoFeatureExtractor) should be used for padding
+  `input_values`, the [AutoFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoFeatureExtractor) should be used for padding
   and conversion into a tensor of type `torch.FloatTensor`.
 - **attention_mask** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Mask to avoid performing attention on padding token indices. Mask values selected in `[0, 1]`:
@@ -348,14 +352,14 @@ forwardtransformers.MoonshineForConditionalGeneration.forwardhttps://github.com/
 - **decoder_input_ids** (`torch.LongTensor` of shape `(batch_size, target_sequence_length)`, *optional*) --
   Indices of decoder input sequence tokens in the vocabulary.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are decoder input IDs?](../glossary#decoder-input-ids)
 - **decoder_attention_mask** (`torch.LongTensor` of shape `(batch_size, target_sequence_length)`, *optional*) --
   Mask to avoid performing attention on certain token indices. By default, a causal mask will be used, to
   make sure the model can only look at previous inputs in order to predict the future.
-- **encoder_outputs** (`tuple[tuple[torch.FloatTensor]]`, *optional*) --
+- **encoder_outputs** (`tuple`, *optional*) --
   Tuple consists of (`last_hidden_state`, *optional*: `hidden_states`, *optional*: `attentions`)
   `last_hidden_state` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) is a sequence of
   hidden-states at the output of the last layer of the encoder. Used in the cross-attention of the decoder.
@@ -364,15 +368,15 @@ forwardtransformers.MoonshineForConditionalGeneration.forwardhttps://github.com/
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
   If `past_key_values` are used, the user is expected to input only unprocessed `input_ids` (those that don't
   have their past key value states given to this model) of shape `(batch_size, unprocessed_length)` instead of all `input_ids`
   of shape `(batch_size, sequence_length)`.
-- **decoder_inputs_embeds** (`tuple[torch.FloatTensor]` of shape `(batch_size, target_sequence_length, hidden_size)`, *optional*) --
+- **decoder_inputs_embeds** (`tuple` of shape `(batch_size, target_sequence_length, hidden_size)`, *optional*) --
   Optionally, instead of passing `decoder_input_ids` you can choose to directly pass an embedded
   representation. If `past_key_values` is used, optionally only the last `decoder_inputs_embeds` have to be
   input (see `past_key_values`). This is useful if you want more control over how to convert
@@ -393,13 +397,13 @@ forwardtransformers.MoonshineForConditionalGeneration.forwardhttps://github.com/
 - **labels** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Labels for computing the masked language modeling loss. Indices should either be in `[0, ...,
   config.vocab_size]` or -100 (see `input_ids` docstring). Tokens with indices set to `-100` are ignored
-  (masked), the loss is only computed for the tokens with labels in `[0, ..., config.vocab_size]`.0[transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or a tuple of
+  (masked), the loss is only computed for the tokens with labels in `[0, ..., config.vocab_size]`.0[transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MoonshineConfig](/docs/transformers/v5.0.0rc1/en/model_doc/moonshine#transformers.MoonshineConfig)) and inputs.
+elements depending on the configuration ([MoonshineConfig](/docs/transformers/v5.0.0/en/model_doc/moonshine#transformers.MoonshineConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
-- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and in the cross-attention
   blocks) that can be used (see `past_key_values` input) to speed up sequential decoding.
@@ -427,7 +431,7 @@ elements depending on the configuration ([MoonshineConfig](/docs/transformers/v5
 
   Attentions weights of the encoder, after the attention softmax, used to compute the weighted average in the
   self-attention heads.
-The [MoonshineForConditionalGeneration](/docs/transformers/v5.0.0rc1/en/model_doc/moonshine#transformers.MoonshineForConditionalGeneration) forward method, overrides the `__call__` special method.
+The [MoonshineForConditionalGeneration](/docs/transformers/v5.0.0/en/model_doc/moonshine#transformers.MoonshineForConditionalGeneration) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -457,19 +461,19 @@ Example:
 
 **Parameters:**
 
-config ([MoonshineConfig](/docs/transformers/v5.0.0rc1/en/model_doc/moonshine#transformers.MoonshineConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([MoonshineConfig](/docs/transformers/v5.0.0/en/model_doc/moonshine#transformers.MoonshineConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or a tuple of
+A [transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MoonshineConfig](/docs/transformers/v5.0.0rc1/en/model_doc/moonshine#transformers.MoonshineConfig)) and inputs.
+elements depending on the configuration ([MoonshineConfig](/docs/transformers/v5.0.0/en/model_doc/moonshine#transformers.MoonshineConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
-- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and in the cross-attention
   blocks) that can be used (see `past_key_values` input) to speed up sequential decoding.
@@ -499,7 +503,7 @@ elements depending on the configuration ([MoonshineConfig](/docs/transformers/v5
   self-attention heads.
 #### generate[[transformers.MoonshineForConditionalGeneration.generate]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/generation/utils.py#L2284)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/generation/utils.py#L2270)
 
 Generates sequences of token ids for models with a language modeling head.
 
@@ -514,7 +518,7 @@ guide](../generation_strategies).
 
 inputs (`torch.Tensor` of varying shape depending on the modality, *optional*) : The sequence used as a prompt for the generation or as model inputs to the encoder. If `None` the method initializes it with `bos_token_id` and a batch size of 1. For decoder-only models `inputs` should be in the format of `input_ids`. For encoder-decoder models *inputs* can represent any of `input_ids`, `input_values`, `input_features`, or `pixel_values`.
 
-generation_config ([GenerationConfig](/docs/transformers/v5.0.0rc1/en/main_classes/text_generation#transformers.GenerationConfig), *optional*) : The generation configuration to be used as base parametrization for the generation call. `**kwargs` passed to generate matching the attributes of `generation_config` will override them. If `generation_config` is not provided, the default will be used, which has the following loading priority: 1) from the `generation_config.json` model file, if it exists; 2) from the model configuration. Please note that unspecified parameters will inherit [GenerationConfig](/docs/transformers/v5.0.0rc1/en/main_classes/text_generation#transformers.GenerationConfig)'s default values, whose documentation should be checked to parameterize generation.
+generation_config ([GenerationConfig](/docs/transformers/v5.0.0/en/main_classes/text_generation#transformers.GenerationConfig), *optional*) : The generation configuration to be used as base parametrization for the generation call. `**kwargs` passed to generate matching the attributes of `generation_config` will override them. If `generation_config` is not provided, the default will be used, which has the following loading priority: 1) from the `generation_config.json` model file, if it exists; 2) from the model configuration. Please note that unspecified parameters will inherit [GenerationConfig](/docs/transformers/v5.0.0/en/main_classes/text_generation#transformers.GenerationConfig)'s default values, whose documentation should be checked to parameterize generation.
 
 logits_processor (`LogitsProcessorList`, *optional*) : Custom logits processors that complement the default logits processors built from arguments and generation config. If a logit processor is passed that is already created with the arguments or a generation config an error is thrown. This feature is intended for advanced users.
 
@@ -532,28 +536,26 @@ negative_prompt_ids (`torch.LongTensor` of shape `(batch_size, sequence_length)`
 
 negative_prompt_attention_mask (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) : Attention_mask for `negative_prompt_ids`.
 
-use_model_defaults (`bool`, *optional*) : When it is `True`, unset parameters in `generation_config` will be set to the model-specific default generation configuration (`model.generation_config`), as opposed to the global defaults (`GenerationConfig()`). If unset, models saved starting from `v4.50` will consider this flag to be `True`.
-
 custom_generate (`str` or `Callable`, *optional*) : One of the following: - `str` (Hugging Face Hub repository name): runs the custom `generate` function defined at `custom_generate/generate.py` in that repository instead of the standard `generate` method. The repository fully replaces the generation logic, and the return type may differ. - `str` (local repository path): same as above but from a local path, `trust_remote_code` not required. - `Callable`: `generate` will perform the usual input preparation steps, then call the provided callable to run the decoding loop. For more information, see [the docs](../../generation_strategies#custom-generation-methods).
 
 kwargs (`dict[str, Any]`, *optional*) : Ad hoc parametrization of `generation_config` and/or additional model-specific kwargs that will be forwarded to the `forward` function of the model. If the model is an encoder-decoder model, encoder specific kwargs should not be prefixed and decoder specific kwargs should be prefixed with *decoder_*.
 
 **Returns:**
 
-`[ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) or `torch.LongTensor``
+`[ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) or `torch.LongTensor``
 
-A [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) (if `return_dict_in_generate=True`
+A [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) (if `return_dict_in_generate=True`
 or when `config.return_dict_in_generate=True`) or a `torch.LongTensor`.
 
 If the model is *not* an encoder-decoder model (`model.config.is_encoder_decoder=False`), the possible
-[ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) types are:
+[ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) types are:
 
-- [GenerateDecoderOnlyOutput](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.generation.GenerateDecoderOnlyOutput),
-- [GenerateBeamDecoderOnlyOutput](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.generation.GenerateBeamDecoderOnlyOutput)
+- [GenerateDecoderOnlyOutput](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.generation.GenerateDecoderOnlyOutput),
+- [GenerateBeamDecoderOnlyOutput](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.generation.GenerateBeamDecoderOnlyOutput)
 
 If the model is an encoder-decoder model (`model.config.is_encoder_decoder=True`), the possible
-[ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) types are:
+[ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) types are:
 
-- [GenerateEncoderDecoderOutput](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.generation.GenerateEncoderDecoderOutput),
-- [GenerateBeamEncoderDecoderOutput](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.generation.GenerateBeamEncoderDecoderOutput)
+- [GenerateEncoderDecoderOutput](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.generation.GenerateEncoderDecoderOutput),
+- [GenerateBeamEncoderDecoderOutput](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.generation.GenerateBeamEncoderDecoderOutput)
 

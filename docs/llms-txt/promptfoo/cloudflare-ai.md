@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/cloudflare-ai/
+
 # Cloudflare Workers AI
 
 This provider supports the [models](https://developers.cloudflare.com/workers-ai/models/) provided by Cloudflare Workers AI, a serverless edge inference platform that runs AI models closer to users for low-latency responses.

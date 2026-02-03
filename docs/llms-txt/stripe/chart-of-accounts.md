@@ -59,9 +59,9 @@ If you have product-specific accounts in your General Ledger that you want to ma
 
 | Stripe account | GL account number | GL account | Condition | Time period           |
 | -------------- | ----------------- | ---------- | --------- | --------------------- |
-| Revenue        | 10001             | revenue_A  | Product A | Jan 2023 - Indefinite |
-| Revenue        | 10002             | revenue_B  | Product B | Jan 2023 - Indefinite |
-| Revenue        | 10003             | revenue_C  | Product C | Jan 2023 - Indefinite |
+| Revenue        | 10001             | revenue_A  | Product A | Jan 2026 - Indefinite |
+| Revenue        | 10002             | revenue_B  | Product B | Jan 2026 - Indefinite |
+| Revenue        | 10003             | revenue_C  | Product C | Jan 2026 - Indefinite |
 
 After you set up these rules, your journal entries will contain three line items reflecting the revenue distribution for each product. This can help you streamline the process of posting to your GL.
 

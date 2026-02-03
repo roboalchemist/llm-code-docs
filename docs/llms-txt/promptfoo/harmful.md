@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/harmful/
+
 # Harmful Content Plugin
 
 The Harmful Content plugin is designed to test an AI system's ability to handle and respond appropriately to various types of harmful or sensitive content. This plugin covers a wide range of potentially problematic areas, from violent crimes to misinformation.

@@ -6,7 +6,6 @@ description: >-
   Understand how Datadog normalizes span and resource names by replacing GUIDs,
   numeric IDs, and query parameters.
 breadcrumbs: Docs > APM > APM Troubleshooting > Quantization of APM Data
-source_url: https://docs.datadoghq.com/troubleshooting/quantization/index.html
 ---
 
 # Quantization of APM Data

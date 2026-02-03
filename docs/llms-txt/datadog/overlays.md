@@ -7,7 +7,6 @@ description: >-
   perspectives including observability, security, cost management, and
   infrastructure.
 breadcrumbs: Docs > Cloudcraft in Datadog > Overlays
-source_url: https://docs.datadoghq.com/overlays/index.html
 ---
 
 # Overlays

@@ -1,3 +1,9 @@
+# Readme Documentation
+
+Source: https://docs.readme.com/llms-full.txt
+
+---
+
 # Welcome to ReadMe
 
 The refined Markdown strictly adheres to the provided HTML content, focusing on the main content and excluding navigation, headers, footers, and other non-essential elements. The refined Markdown maintains the semantic structure and content integrity of the original HTML.

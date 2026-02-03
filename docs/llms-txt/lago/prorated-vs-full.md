@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/plans/charges/prorated-vs-full.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Prorated vs Full
 
 > Usage-based charges can be either billed fully or prorated based on the number of days used.

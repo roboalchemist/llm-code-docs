@@ -6,19 +6,17 @@ Create sessions and collect identity documents.
 
 This guide explains how to use Stripe Identity to securely collect and verify identity documents.
 
-## Before you begin
-
-1. [Activate your account](https://dashboard.stripe.com/account/onboarding).
-1. Fill out your [Stripe Identity application](https://dashboard.stripe.com/identity/application).
-1. (Optional) Customize your brand settings on the [branding settings page](https://dashboard.stripe.com/settings/branding).
-
-&nbsp;
-
 Show a document upload modal inside your website. Here’s what you’ll do:
 
 1. Add a verification button to your webpage that displays a document upload modal.
 1. Display a confirmation page on identity document submission.
 1. Handle verification results.
+
+## Before you begin
+
+1. [Activate your account](https://dashboard.stripe.com/account/onboarding).
+1. Fill out your [Stripe Identity application](https://dashboard.stripe.com/identity/application).
+1. (Optional) Customize your brand settings on the [branding settings page](https://dashboard.stripe.com/settings/branding).
 
 ## Set up Stripe [Server-side]
 
@@ -76,7 +74,7 @@ composer require stripe/stripe-php
   - https://mvnrepository.com/artifact/com.stripe/stripe-java or
   - https://github.com/stripe/stripe-java/releases/latest
 */
-implementation "com.stripe:stripe-java:30.0.0"
+implementation "com.stripe:stripe-java:31.3.0"
 ```
 
 ```xml
@@ -89,7 +87,7 @@ implementation "com.stripe:stripe-java:30.0.0"
 <dependency>
   <groupId>com.stripe</groupId>
   <artifactId>stripe-java</artifactId>
-  <version>30.0.0</version>
+  <version>31.3.0</version>
 </dependency>
 ```
 
@@ -112,13 +110,13 @@ npm install stripe --save
 # Make sure your project is using Go Modules
 go mod init
 # Install stripe-go
-go get -u github.com/stripe/stripe-go/v83
+go get -u github.com/stripe/stripe-go/v84
 ```
 
 ```go
 // Then import the package
 import (
-  "github.com/stripe/stripe-go/v83"
+  "github.com/stripe/stripe-go/v84"
 )
 ```
 
@@ -825,6 +823,12 @@ Send your users to Stripe to upload their identity documents. Here’s what you�
 1. Display a confirmation page on identity document submission.
 1. Handle verification results.
 
+## Before you begin
+
+1. [Activate your account](https://dashboard.stripe.com/account/onboarding).
+1. Fill out your [Stripe Identity application](https://dashboard.stripe.com/identity/application).
+1. (Optional) Customize your brand settings on the [branding settings page](https://dashboard.stripe.com/settings/branding).
+
 ## Set up Stripe [Server-side]
 
 First, [register](https://dashboard.stripe.com/register) for a Stripe account.
@@ -881,7 +885,7 @@ composer require stripe/stripe-php
   - https://mvnrepository.com/artifact/com.stripe/stripe-java or
   - https://github.com/stripe/stripe-java/releases/latest
 */
-implementation "com.stripe:stripe-java:30.0.0"
+implementation "com.stripe:stripe-java:31.3.0"
 ```
 
 ```xml
@@ -894,7 +898,7 @@ implementation "com.stripe:stripe-java:30.0.0"
 <dependency>
   <groupId>com.stripe</groupId>
   <artifactId>stripe-java</artifactId>
-  <version>30.0.0</version>
+  <version>31.3.0</version>
 </dependency>
 ```
 
@@ -917,13 +921,13 @@ npm install stripe --save
 # Make sure your project is using Go Modules
 go mod init
 # Install stripe-go
-go get -u github.com/stripe/stripe-go/v83
+go get -u github.com/stripe/stripe-go/v84
 ```
 
 ```go
 // Then import the package
 import (
-  "github.com/stripe/stripe-go/v83"
+  "github.com/stripe/stripe-go/v84"
 )
 ```
 
@@ -1478,6 +1482,11 @@ To verify the identity of your users on iOS, present a verification sheet in you
 1. Present the verification sheet.
 1. Handle verification events.
 
+## Before you begin
+
+1. [Activate your account](https://dashboard.stripe.com/account/onboarding).
+1. Fill out your [Stripe Identity application](https://dashboard.stripe.com/identity/application).
+
 The steps in this guide are fully implemented in the [example app](https://github.com/stripe/stripe-ios/tree/master/Example/IdentityVerification%20Example) and [example backend server](https://codesandbox.io/p/devbox/compassionate-violet-gshhgf).
 
 ## Set up [Server-side] [Client-side]
@@ -1607,7 +1616,7 @@ composer require stripe/stripe-php
   - https://mvnrepository.com/artifact/com.stripe/stripe-java or
   - https://github.com/stripe/stripe-java/releases/latest
 */
-implementation "com.stripe:stripe-java:30.0.0"
+implementation "com.stripe:stripe-java:31.3.0"
 ```
 
 ```xml
@@ -1620,7 +1629,7 @@ implementation "com.stripe:stripe-java:30.0.0"
 <dependency>
   <groupId>com.stripe</groupId>
   <artifactId>stripe-java</artifactId>
-  <version>30.0.0</version>
+  <version>31.3.0</version>
 </dependency>
 ```
 
@@ -1643,13 +1652,13 @@ npm install stripe --save
 # Make sure your project is using Go Modules
 go mod init
 # Install stripe-go
-go get -u github.com/stripe/stripe-go/v83
+go get -u github.com/stripe/stripe-go/v84
 ```
 
 ```go
 // Then import the package
 import (
-  "github.com/stripe/stripe-go/v83"
+  "github.com/stripe/stripe-go/v84"
 )
 ```
 
@@ -1707,7 +1716,7 @@ const verificationSession = await stripe.identity.verificationSessions.create({
 // Create an ephemeral key for the VerificationSession
 const ephemeralKey = await stripe.ephemeralKeys.create(
   {verification_session: verificationSession.id},
-  {apiVersion: '2025-10-29.clover'}
+  {apiVersion: '2026-01-28.clover'}
 );
 
 // Return only the ID and ephemeral key secret to the frontend.
@@ -1740,7 +1749,7 @@ verification_session = Stripe::Identity::VerificationSession.create({
 # Create an ephemeral key for the VerificationSession
 ephemeral_key = Stripe::EphemeralKey.create({
   verification_session: verification_session.id,
-}, {stripe_version: '2025-10-29.clover'})
+}, {stripe_version: '2026-01-28.clover'})
 
 # Return only the ID and ephemeral key secret to the frontend.
 verification_session_id = verification_session.id
@@ -1774,7 +1783,7 @@ verification_session = stripe.identity.VerificationSession.create(
 # Create an ephemeral key for the VerificationSession
 ephemeral_key = stripe.EphemeralKey.create(
   verification_session=verification_session.id,
-  stripe_version='2025-10-29.clover',
+  stripe_version='2026-01-28.clover',
 )
 
 # Return only the ID and ephemeral key secret to the frontend.
@@ -1809,7 +1818,7 @@ $verification_session = $stripe->identity->verificationSessions->create([
 $ephemeral_key = $stripe->ephemeralKeys->create([
   'verification_session' => $verification_session->id,
 ], [
-  'stripe_version' => '2025-10-29.clover'
+  'stripe_version' => '2026-01-28.clover'
 ]);
 
 // Return only the ID and ephemeral key secret to the frontend.
@@ -1845,7 +1854,7 @@ VerificationSession verificationSession = VerificationSession.create(params);
 EphemeralKeyCreateParams ephemeralKeyParams =
   EphemeralKeyCreateParams.builder()
     .putExtraParam("verification_session", verificationSession.getId())
-    .setStripeVersion("2025-10-29.clover")
+    .setStripeVersion("2026-01-28.clover")
     .build();
 
 
@@ -1879,7 +1888,7 @@ vs, _ := verificationsession.New(params)
 
 // Create an ephemeral key for the VerificationSession
 ek_params := &stripe.EphemeralKeyParams{
-  StripeVersion: stripe.String("2025-10-29.clover"),
+  StripeVersion: stripe.String("2026-01-28.clover"),
 }
 ek_params.AddExtra("verification_session", vs.ID)
 ek, _ := ephemeralkey.New(ek_params)
@@ -1920,7 +1929,7 @@ var verificationSession = service.Create(options);
 // Create an ephemeral key for the VerificationSession
 var ekOptions = new EphemeralKeyCreateOptions
 {
-  StripeVersion = "2025-10-29.clover"
+  StripeVersion = "2026-01-28.clover"
 };
 ekOptions.AddExtraParam("verification_session", verificationSession.Id);
 var ekService = new EphemeralKeyService();
@@ -2117,6 +2126,11 @@ This guide demonstrates how to migrate a Stripe Identity integration from [Web R
 1. Present the verification sheet.
 1. Handle verification events.
 
+## Before you begin
+
+1. [Activate your account](https://dashboard.stripe.com/account/onboarding).
+1. Fill out your [Stripe Identity application](https://dashboard.stripe.com/identity/application).
+
 The steps in this guide are fully implemented in the [example app](https://github.com/stripe/stripe-ios/tree/master/Example/IdentityVerification%20Example) and [example backend server](https://codesandbox.io/p/devbox/compassionate-violet-gshhgf).
 
 ## Set up [Server-side] [Client-side]
@@ -2246,7 +2260,7 @@ composer require stripe/stripe-php
   - https://mvnrepository.com/artifact/com.stripe/stripe-java or
   - https://github.com/stripe/stripe-java/releases/latest
 */
-implementation "com.stripe:stripe-java:30.0.0"
+implementation "com.stripe:stripe-java:31.3.0"
 ```
 
 ```xml
@@ -2259,7 +2273,7 @@ implementation "com.stripe:stripe-java:30.0.0"
 <dependency>
   <groupId>com.stripe</groupId>
   <artifactId>stripe-java</artifactId>
-  <version>30.0.0</version>
+  <version>31.3.0</version>
 </dependency>
 ```
 
@@ -2282,13 +2296,13 @@ npm install stripe --save
 # Make sure your project is using Go Modules
 go mod init
 # Install stripe-go
-go get -u github.com/stripe/stripe-go/v83
+go get -u github.com/stripe/stripe-go/v84
 ```
 
 ```go
 // Then import the package
 import (
-  "github.com/stripe/stripe-go/v83"
+  "github.com/stripe/stripe-go/v84"
 )
 ```
 
@@ -2725,7 +2739,7 @@ const verificationSession = await stripe.identity.verificationSessions.create({
 // Create an ephemeral key for the VerificationSession
 const ephemeralKey = await stripe.ephemeralKeys.create(
   {verification_session: verificationSession.id},
-  {apiVersion: '2025-10-29.clover'}
+  {apiVersion: '2026-01-28.clover'}
 );
 
 // Return only the ID and ephemeral key secret to the frontend.
@@ -2757,7 +2771,7 @@ verification_session = Stripe::Identity::VerificationSession.create({
 # Create an ephemeral key for the VerificationSession
 ephemeral_key = Stripe::EphemeralKey.create({
   verification_session: verification_session.id,
-}, {stripe_version: '2025-10-29.clover'})
+}, {stripe_version: '2026-01-28.clover'})
 
 # Return only the ID and ephemeral key secret to the frontend.
 verification_session_id = verification_session.id
@@ -2790,7 +2804,7 @@ verification_session = stripe.identity.VerificationSession.create(
 # Create an ephemeral key for the VerificationSession
 ephemeral_key = stripe.EphemeralKey.create(
   verification_session=verification_session.id,
-  stripe_version='2025-10-29.clover',
+  stripe_version='2026-01-28.clover',
 )
 
 # Return only the ID and ephemeral key secret to the frontend.
@@ -2824,7 +2838,7 @@ $verification_session = $stripe->identity->verificationSessions->create([
 $ephemeral_key = $stripe->ephemeralKeys->create([
   'verification_session' => $verification_session->id,
 ], [
-  'stripe_version' => '2025-10-29.clover'
+  'stripe_version' => '2026-01-28.clover'
 ]);
 
 // Return only the ID and ephemeral key secret to the frontend.
@@ -2859,7 +2873,7 @@ VerificationSession verificationSession = VerificationSession.create(params);
 EphemeralKeyCreateParams ephemeralKeyParams =
   EphemeralKeyCreateParams.builder()
     .putExtraParam("verification_session", verificationSession.getId())
-    .setStripeVersion("2025-10-29.clover")
+    .setStripeVersion("2026-01-28.clover")
     .build();
 
 EphemeralKey ephemeralKey = EphemeralKey.create(ephemeralKeyParams);
@@ -2891,7 +2905,7 @@ params.AddMetadata("user_id", "{{USER_ID}}")
 vs, _ := verificationsession.New(params)
 // Create an ephemeral key for the VerificationSession
 ek_params := &stripe.EphemeralKeyParams{
-  StripeVersion: stripe.String("2025-10-29.clover"),
+  StripeVersion: stripe.String("2026-01-28.clover"),
 }
 ek_params.AddExtra("verification_session", vs.ID)
 ek, _ := ephemeralkey.New(ek_params)
@@ -2931,7 +2945,7 @@ var verificationSession = service.Create(options);
 // Create an ephemeral key for the VerificationSession
 var ekOptions = new EphemeralKeyCreateOptions
 {
-  StripeVersion = "2025-10-29.clover"
+  StripeVersion = "2026-01-28.clover"
 };
 ekOptions.AddExtraParam("verification_session", verificationSession.Id);
 var ekService = new EphemeralKeyService();
@@ -3117,6 +3131,11 @@ To verify the identity of your users on Android, present a verification sheet in
 1. Present the verification sheet.
 1. Handle verification events.
 
+## Before you begin
+
+1. [Activate your account](https://dashboard.stripe.com/account/onboarding).
+1. Fill out your [Stripe Identity application](https://dashboard.stripe.com/identity/application).
+
 The steps in this guide are fully implemented in the [example app](https://github.com/stripe/stripe-android/tree/master/identity-example) and [example backend server](https://codesandbox.io/p/devbox/compassionate-violet-gshhgf).
 
 ## Set up [Server-side] [Client-side]
@@ -3142,7 +3161,7 @@ dependencies {
   // ...
 
   // Stripe Identity Android SDK
-  implementation("com.stripe:identity:22.2.0")
+  implementation("com.stripe:identity:22.6.1")
 }
 ```
 
@@ -3157,7 +3176,7 @@ dependencies {
   // ...
 
   // Stripe Identity Android SDK
-  implementation 'com.stripe:identity:22.2.0'
+  implementation 'com.stripe:identity:22.6.1'
 }
 ```
 
@@ -3174,10 +3193,10 @@ dependencies {
   // ...
 
   // Stripe Identity Android SDK
-  implementation('com.stripe:identity:22.2.0') {
+  implementation('com.stripe:identity:22.6.1') {
     exclude group: 'com.stripe', module: 'ml-core-default' // exclude the default TFLite runtime
   }
-  implementation('com.stripe:ml-core-googleplay:22.2.0') // include the Google Play TFLite runtime
+  implementation('com.stripe:ml-core-googleplay:22.6.1') // include the Google Play TFLite runtime
 }
 ```
 
@@ -3188,21 +3207,19 @@ dependencies {
     // ...
 
     // Stripe Identity Android SDK
-    implementation("com.stripe:identity:22.2.0") {
+    implementation("com.stripe:identity:22.6.1") {
         exclude(group = "com.stripe", module = "ml-core-default") // exclude the default TFLite runtime
     }
-    implementation("com.stripe:ml-core-googleplay:22.2.0") // include the Google Play TFLite runtime
+    implementation("com.stripe:ml-core-googleplay:22.6.1") // include the Google Play TFLite runtime
 }
 ```
 
 ### Set up material theme (Client-side)
 
-The Stripe Identity Android SDK requires the hosting activity to use material theme. To enable material theme:
+The Stripe Identity Android SDK requires the hosting activity to use [material theme](https://material.io/develop/android/theming/dark). To enable material theme:
 
 1. Open your project’s `app/src/main/AndroidManifest.xml`.
-1. Make sure the `android:theme` applied to the `application` is a child of one of the material themes(for example, `Theme.MaterialComponents.DayNight`).
-
-See more details about material theme [here](https://material.io/develop/android/theming/dark).
+1. Make sure the `android:theme` applied to the `application` is a child of one of the material themes (for example, `Theme.MaterialComponents.DayNight`).
 
 ### Install Stripe on your server (Server-side)
 
@@ -3260,7 +3277,7 @@ composer require stripe/stripe-php
   - https://mvnrepository.com/artifact/com.stripe/stripe-java or
   - https://github.com/stripe/stripe-java/releases/latest
 */
-implementation "com.stripe:stripe-java:30.0.0"
+implementation "com.stripe:stripe-java:31.3.0"
 ```
 
 ```xml
@@ -3273,7 +3290,7 @@ implementation "com.stripe:stripe-java:30.0.0"
 <dependency>
   <groupId>com.stripe</groupId>
   <artifactId>stripe-java</artifactId>
-  <version>30.0.0</version>
+  <version>31.3.0</version>
 </dependency>
 ```
 
@@ -3296,13 +3313,13 @@ npm install stripe --save
 # Make sure your project is using Go Modules
 go mod init
 # Install stripe-go
-go get -u github.com/stripe/stripe-go/v83
+go get -u github.com/stripe/stripe-go/v84
 ```
 
 ```go
 // Then import the package
 import (
-  "github.com/stripe/stripe-go/v83"
+  "github.com/stripe/stripe-go/v84"
 )
 ```
 
@@ -3360,7 +3377,7 @@ const verificationSession = await stripe.identity.verificationSessions.create({
 // Create an ephemeral key for the VerificationSession
 const ephemeralKey = await stripe.ephemeralKeys.create(
   {verification_session: verificationSession.id},
-  {apiVersion: '2025-10-29.clover'}
+  {apiVersion: '2026-01-28.clover'}
 );
 
 // Return only the ID and ephemeral key secret to the frontend.
@@ -3393,7 +3410,7 @@ verification_session = Stripe::Identity::VerificationSession.create({
 # Create an ephemeral key for the VerificationSession
 ephemeral_key = Stripe::EphemeralKey.create({
   verification_session: verification_session.id,
-}, {stripe_version: '2025-10-29.clover'})
+}, {stripe_version: '2026-01-28.clover'})
 
 # Return only the ID and ephemeral key secret to the frontend.
 verification_session_id = verification_session.id
@@ -3427,7 +3444,7 @@ verification_session = stripe.identity.VerificationSession.create(
 # Create an ephemeral key for the VerificationSession
 ephemeral_key = stripe.EphemeralKey.create(
   verification_session=verification_session.id,
-  stripe_version='2025-10-29.clover',
+  stripe_version='2026-01-28.clover',
 )
 
 # Return only the ID and ephemeral key secret to the frontend.
@@ -3462,7 +3479,7 @@ $verification_session = $stripe->identity->verificationSessions->create([
 $ephemeral_key = $stripe->ephemeralKeys->create([
   'verification_session' => $verification_session->id,
 ], [
-  'stripe_version' => '2025-10-29.clover'
+  'stripe_version' => '2026-01-28.clover'
 ]);
 
 // Return only the ID and ephemeral key secret to the frontend.
@@ -3498,7 +3515,7 @@ VerificationSession verificationSession = VerificationSession.create(params);
 EphemeralKeyCreateParams ephemeralKeyParams =
   EphemeralKeyCreateParams.builder()
     .putExtraParam("verification_session", verificationSession.getId())
-    .setStripeVersion("2025-10-29.clover")
+    .setStripeVersion("2026-01-28.clover")
     .build();
 
 
@@ -3532,7 +3549,7 @@ vs, _ := verificationsession.New(params)
 
 // Create an ephemeral key for the VerificationSession
 ek_params := &stripe.EphemeralKeyParams{
-  StripeVersion: stripe.String("2025-10-29.clover"),
+  StripeVersion: stripe.String("2026-01-28.clover"),
 }
 ek_params.AddExtra("verification_session", vs.ID)
 ek, _ := ephemeralkey.New(ek_params)
@@ -3573,7 +3590,7 @@ var verificationSession = service.Create(options);
 // Create an ephemeral key for the VerificationSession
 var ekOptions = new EphemeralKeyCreateOptions
 {
-  StripeVersion = "2025-10-29.clover"
+  StripeVersion = "2026-01-28.clover"
 };
 ekOptions.AddExtraParam("verification_session", verificationSession.Id);
 var ekService = new EphemeralKeyService();
@@ -3883,6 +3900,11 @@ This guide demonstrates how to migrate a Stripe Identity integration from [Web R
 1. Present the verification sheet.
 1. Handle verification events.
 
+## Before you begin
+
+1. [Activate your account](https://dashboard.stripe.com/account/onboarding).
+1. Fill out your [Stripe Identity application](https://dashboard.stripe.com/identity/application).
+
 The steps in this guide are fully implemented in the [example app](https://github.com/stripe/stripe-android/tree/master/identity-example) and [example backend server](https://codesandbox.io/p/devbox/compassionate-violet-gshhgf).
 
 ## Set up [Server-side] [Client-side]
@@ -3908,7 +3930,7 @@ dependencies {
   // ...
 
   // Stripe Identity Android SDK
-  implementation("com.stripe:identity:22.2.0")
+  implementation("com.stripe:identity:22.6.1")
 }
 ```
 
@@ -3923,7 +3945,7 @@ dependencies {
   // ...
 
   // Stripe Identity Android SDK
-  implementation 'com.stripe:identity:22.2.0'
+  implementation 'com.stripe:identity:22.6.1'
 }
 ```
 
@@ -3940,10 +3962,10 @@ dependencies {
   // ...
 
   // Stripe Identity Android SDK
-  implementation('com.stripe:identity:22.2.0') {
+  implementation('com.stripe:identity:22.6.1') {
     exclude group: 'com.stripe', module: 'ml-core-default' // exclude the default TFLite runtime
   }
-  implementation('com.stripe:ml-core-googleplay:22.2.0') // include the Google Play TFLite runtime
+  implementation('com.stripe:ml-core-googleplay:22.6.1') // include the Google Play TFLite runtime
 }
 ```
 
@@ -3954,21 +3976,19 @@ dependencies {
     // ...
 
     // Stripe Identity Android SDK
-    implementation("com.stripe:identity:22.2.0") {
+    implementation("com.stripe:identity:22.6.1") {
         exclude(group = "com.stripe", module = "ml-core-default") // exclude the default TFLite runtime
     }
-    implementation("com.stripe:ml-core-googleplay:22.2.0") // include the Google Play TFLite runtime
+    implementation("com.stripe:ml-core-googleplay:22.6.1") // include the Google Play TFLite runtime
 }
 ```
 
 ### Set up material theme (Client-side)
 
-The Stripe Identity Android SDK requires the hosting activity to use material theme. To enable material theme:
+The Stripe Identity Android SDK requires the hosting activity to use [material theme](https://material.io/develop/android/theming/dark). To enable material theme:
 
 1. Open your project’s `app/src/main/AndroidManifest.xml`.
-1. Make sure the `android:theme` applied to the `application` is a child of one of the material themes(for example, `Theme.MaterialComponents.DayNight`).
-
-See more details about material theme [here](https://material.io/develop/android/theming/dark).
+1. Make sure the `android:theme` applied to the `application` is a child of one of the material themes (for example, `Theme.MaterialComponents.DayNight`).
 
 ### Install Stripe on your server (Server-side)
 
@@ -4026,7 +4046,7 @@ composer require stripe/stripe-php
   - https://mvnrepository.com/artifact/com.stripe/stripe-java or
   - https://github.com/stripe/stripe-java/releases/latest
 */
-implementation "com.stripe:stripe-java:30.0.0"
+implementation "com.stripe:stripe-java:31.3.0"
 ```
 
 ```xml
@@ -4039,7 +4059,7 @@ implementation "com.stripe:stripe-java:30.0.0"
 <dependency>
   <groupId>com.stripe</groupId>
   <artifactId>stripe-java</artifactId>
-  <version>30.0.0</version>
+  <version>31.3.0</version>
 </dependency>
 ```
 
@@ -4062,13 +4082,13 @@ npm install stripe --save
 # Make sure your project is using Go Modules
 go mod init
 # Install stripe-go
-go get -u github.com/stripe/stripe-go/v83
+go get -u github.com/stripe/stripe-go/v84
 ```
 
 ```go
 // Then import the package
 import (
-  "github.com/stripe/stripe-go/v83"
+  "github.com/stripe/stripe-go/v84"
 )
 ```
 
@@ -4505,7 +4525,7 @@ const verificationSession = await stripe.identity.verificationSessions.create({
 // Create an ephemeral key for the VerificationSession
 const ephemeralKey = await stripe.ephemeralKeys.create(
   {verification_session: verificationSession.id},
-  {apiVersion: '2025-10-29.clover'}
+  {apiVersion: '2026-01-28.clover'}
 );
 
 // Return only the ID and ephemeral key secret to the frontend.
@@ -4537,7 +4557,7 @@ verification_session = Stripe::Identity::VerificationSession.create({
 # Create an ephemeral key for the VerificationSession
 ephemeral_key = Stripe::EphemeralKey.create({
   verification_session: verification_session.id,
-}, {stripe_version: '2025-10-29.clover'})
+}, {stripe_version: '2026-01-28.clover'})
 
 # Return only the ID and ephemeral key secret to the frontend.
 verification_session_id = verification_session.id
@@ -4570,7 +4590,7 @@ verification_session = stripe.identity.VerificationSession.create(
 # Create an ephemeral key for the VerificationSession
 ephemeral_key = stripe.EphemeralKey.create(
   verification_session=verification_session.id,
-  stripe_version='2025-10-29.clover',
+  stripe_version='2026-01-28.clover',
 )
 
 # Return only the ID and ephemeral key secret to the frontend.
@@ -4604,7 +4624,7 @@ $verification_session = $stripe->identity->verificationSessions->create([
 $ephemeral_key = $stripe->ephemeralKeys->create([
   'verification_session' => $verification_session->id,
 ], [
-  'stripe_version' => '2025-10-29.clover'
+  'stripe_version' => '2026-01-28.clover'
 ]);
 
 // Return only the ID and ephemeral key secret to the frontend.
@@ -4639,7 +4659,7 @@ VerificationSession verificationSession = VerificationSession.create(params);
 EphemeralKeyCreateParams ephemeralKeyParams =
   EphemeralKeyCreateParams.builder()
     .putExtraParam("verification_session", verificationSession.getId())
-    .setStripeVersion("2025-10-29.clover")
+    .setStripeVersion("2026-01-28.clover")
     .build();
 
 EphemeralKey ephemeralKey = EphemeralKey.create(ephemeralKeyParams);
@@ -4671,7 +4691,7 @@ params.AddMetadata("user_id", "{{USER_ID}}")
 vs, _ := verificationsession.New(params)
 // Create an ephemeral key for the VerificationSession
 ek_params := &stripe.EphemeralKeyParams{
-  StripeVersion: stripe.String("2025-10-29.clover"),
+  StripeVersion: stripe.String("2026-01-28.clover"),
 }
 ek_params.AddExtra("verification_session", vs.ID)
 ek, _ := ephemeralkey.New(ek_params)
@@ -4711,7 +4731,7 @@ var verificationSession = service.Create(options);
 // Create an ephemeral key for the VerificationSession
 var ekOptions = new EphemeralKeyCreateOptions
 {
-  StripeVersion = "2025-10-29.clover"
+  StripeVersion = "2026-01-28.clover"
 };
 ekOptions.AddExtraParam("verification_session", verificationSession.Id);
 var ekService = new EphemeralKeyService();
@@ -5010,6 +5030,11 @@ To verify the identity of your users on React Native, present a verification she
 1. Present the verification sheet.
 1. Handle verification events.
 
+## Before you begin
+
+1. [Activate your account](https://dashboard.stripe.com/account/onboarding).
+1. Fill out your [Stripe Identity application](https://dashboard.stripe.com/identity/application).
+
 The steps in this guide are fully implemented in the [example app](https://github.com/stripe/stripe-identity-react-native/tree/main/example) and [example backend server](https://codesandbox.io/p/devbox/compassionate-violet-gshhgf).
 
 ## Set up [Server-side] [Client-side]
@@ -5050,12 +5075,10 @@ See [Apple’s documentation](https://developer.apple.com/documentation/avfounda
 
 ### Set up material theme for Android (Client-side)
 
-The Stripe Identity Android SDK requires the hosting activity to use material theme. To enable material theme:
+The Stripe Identity Android SDK requires the hosting activity to use [material theme](https://material.io/develop/android/theming/dark). To enable material theme:
 
 1. Open your project’s `app/src/main/AndroidManifest.xml`.
-1. Make sure the `android:theme` applied to the `application` is a child of one of the material themes(for example, `Theme.MaterialComponents.DayNight`).
-
-See more details about material theme [here](https://material.io/develop/android/theming/dark).
+1. Make sure the `android:theme` applied to the `application` is a child of one of the material themes (for example, `Theme.MaterialComponents.DayNight`).
 
 ### Install Stripe on your server (Server-side)
 
@@ -5113,7 +5136,7 @@ composer require stripe/stripe-php
   - https://mvnrepository.com/artifact/com.stripe/stripe-java or
   - https://github.com/stripe/stripe-java/releases/latest
 */
-implementation "com.stripe:stripe-java:30.0.0"
+implementation "com.stripe:stripe-java:31.3.0"
 ```
 
 ```xml
@@ -5126,7 +5149,7 @@ implementation "com.stripe:stripe-java:30.0.0"
 <dependency>
   <groupId>com.stripe</groupId>
   <artifactId>stripe-java</artifactId>
-  <version>30.0.0</version>
+  <version>31.3.0</version>
 </dependency>
 ```
 
@@ -5149,13 +5172,13 @@ npm install stripe --save
 # Make sure your project is using Go Modules
 go mod init
 # Install stripe-go
-go get -u github.com/stripe/stripe-go/v83
+go get -u github.com/stripe/stripe-go/v84
 ```
 
 ```go
 // Then import the package
 import (
-  "github.com/stripe/stripe-go/v83"
+  "github.com/stripe/stripe-go/v84"
 )
 ```
 
@@ -5213,7 +5236,7 @@ const verificationSession = await stripe.identity.verificationSessions.create({
 // Create an ephemeral key for the VerificationSession
 const ephemeralKey = await stripe.ephemeralKeys.create(
   {verification_session: verificationSession.id},
-  {apiVersion: '2025-10-29.clover'}
+  {apiVersion: '2026-01-28.clover'}
 );
 
 // Return only the ID and ephemeral key secret to the frontend.
@@ -5246,7 +5269,7 @@ verification_session = Stripe::Identity::VerificationSession.create({
 # Create an ephemeral key for the VerificationSession
 ephemeral_key = Stripe::EphemeralKey.create({
   verification_session: verification_session.id,
-}, {stripe_version: '2025-10-29.clover'})
+}, {stripe_version: '2026-01-28.clover'})
 
 # Return only the ID and ephemeral key secret to the frontend.
 verification_session_id = verification_session.id
@@ -5280,7 +5303,7 @@ verification_session = stripe.identity.VerificationSession.create(
 # Create an ephemeral key for the VerificationSession
 ephemeral_key = stripe.EphemeralKey.create(
   verification_session=verification_session.id,
-  stripe_version='2025-10-29.clover',
+  stripe_version='2026-01-28.clover',
 )
 
 # Return only the ID and ephemeral key secret to the frontend.
@@ -5315,7 +5338,7 @@ $verification_session = $stripe->identity->verificationSessions->create([
 $ephemeral_key = $stripe->ephemeralKeys->create([
   'verification_session' => $verification_session->id,
 ], [
-  'stripe_version' => '2025-10-29.clover'
+  'stripe_version' => '2026-01-28.clover'
 ]);
 
 // Return only the ID and ephemeral key secret to the frontend.
@@ -5351,7 +5374,7 @@ VerificationSession verificationSession = VerificationSession.create(params);
 EphemeralKeyCreateParams ephemeralKeyParams =
   EphemeralKeyCreateParams.builder()
     .putExtraParam("verification_session", verificationSession.getId())
-    .setStripeVersion("2025-10-29.clover")
+    .setStripeVersion("2026-01-28.clover")
     .build();
 
 
@@ -5385,7 +5408,7 @@ vs, _ := verificationsession.New(params)
 
 // Create an ephemeral key for the VerificationSession
 ek_params := &stripe.EphemeralKeyParams{
-  StripeVersion: stripe.String("2025-10-29.clover"),
+  StripeVersion: stripe.String("2026-01-28.clover"),
 }
 ek_params.AddExtra("verification_session", vs.ID)
 ek, _ := ephemeralkey.New(ek_params)
@@ -5426,7 +5449,7 @@ var verificationSession = service.Create(options);
 // Create an ephemeral key for the VerificationSession
 var ekOptions = new EphemeralKeyCreateOptions
 {
-  StripeVersion = "2025-10-29.clover"
+  StripeVersion = "2026-01-28.clover"
 };
 ekOptions.AddExtraParam("verification_session", verificationSession.Id);
 var ekService = new EphemeralKeyService();
@@ -5617,6 +5640,11 @@ This guide demonstrates how to migrate a Stripe Identity integration from [Web R
 1. Present the verification sheet.
 1. Handle verification events.
 
+## Before you begin
+
+1. [Activate your account](https://dashboard.stripe.com/account/onboarding).
+1. Fill out your [Stripe Identity application](https://dashboard.stripe.com/identity/application).
+
 The steps in this guide are fully implemented in the [example app](https://github.com/stripe/stripe-identity-react-native/tree/main/example) and [example backend server](https://codesandbox.io/p/devbox/compassionate-violet-gshhgf).
 
 ## Set up [Server-side] [Client-side]
@@ -5657,12 +5685,10 @@ See [Apple’s documentation](https://developer.apple.com/documentation/avfounda
 
 ### Set up material theme for Android (Client-side)
 
-The Stripe Identity Android SDK requires the hosting activity to use material theme. To enable material theme:
+The Stripe Identity Android SDK requires the hosting activity to use [material theme](https://material.io/develop/android/theming/dark). To enable material theme:
 
 1. Open your project’s `app/src/main/AndroidManifest.xml`.
-1. Make sure the `android:theme` applied to the `application` is a child of one of the material themes(for example, `Theme.MaterialComponents.DayNight`).
-
-See more details about material theme [here](https://material.io/develop/android/theming/dark).
+1. Make sure the `android:theme` applied to the `application` is a child of one of the material themes (for example, `Theme.MaterialComponents.DayNight`).
 
 ### Install Stripe on your server (Server-side)
 
@@ -5720,7 +5746,7 @@ composer require stripe/stripe-php
   - https://mvnrepository.com/artifact/com.stripe/stripe-java or
   - https://github.com/stripe/stripe-java/releases/latest
 */
-implementation "com.stripe:stripe-java:30.0.0"
+implementation "com.stripe:stripe-java:31.3.0"
 ```
 
 ```xml
@@ -5733,7 +5759,7 @@ implementation "com.stripe:stripe-java:30.0.0"
 <dependency>
   <groupId>com.stripe</groupId>
   <artifactId>stripe-java</artifactId>
-  <version>30.0.0</version>
+  <version>31.3.0</version>
 </dependency>
 ```
 
@@ -5756,13 +5782,13 @@ npm install stripe --save
 # Make sure your project is using Go Modules
 go mod init
 # Install stripe-go
-go get -u github.com/stripe/stripe-go/v83
+go get -u github.com/stripe/stripe-go/v84
 ```
 
 ```go
 // Then import the package
 import (
-  "github.com/stripe/stripe-go/v83"
+  "github.com/stripe/stripe-go/v84"
 )
 ```
 
@@ -6199,7 +6225,7 @@ const verificationSession = await stripe.identity.verificationSessions.create({
 // Create an ephemeral key for the VerificationSession
 const ephemeralKey = await stripe.ephemeralKeys.create(
   {verification_session: verificationSession.id},
-  {apiVersion: '2025-10-29.clover'}
+  {apiVersion: '2026-01-28.clover'}
 );
 
 // Return only the ID and ephemeral key secret to the frontend.
@@ -6231,7 +6257,7 @@ verification_session = Stripe::Identity::VerificationSession.create({
 # Create an ephemeral key for the VerificationSession
 ephemeral_key = Stripe::EphemeralKey.create({
   verification_session: verification_session.id,
-}, {stripe_version: '2025-10-29.clover'})
+}, {stripe_version: '2026-01-28.clover'})
 
 # Return only the ID and ephemeral key secret to the frontend.
 verification_session_id = verification_session.id
@@ -6264,7 +6290,7 @@ verification_session = stripe.identity.VerificationSession.create(
 # Create an ephemeral key for the VerificationSession
 ephemeral_key = stripe.EphemeralKey.create(
   verification_session=verification_session.id,
-  stripe_version='2025-10-29.clover',
+  stripe_version='2026-01-28.clover',
 )
 
 # Return only the ID and ephemeral key secret to the frontend.
@@ -6298,7 +6324,7 @@ $verification_session = $stripe->identity->verificationSessions->create([
 $ephemeral_key = $stripe->ephemeralKeys->create([
   'verification_session' => $verification_session->id,
 ], [
-  'stripe_version' => '2025-10-29.clover'
+  'stripe_version' => '2026-01-28.clover'
 ]);
 
 // Return only the ID and ephemeral key secret to the frontend.
@@ -6333,7 +6359,7 @@ VerificationSession verificationSession = VerificationSession.create(params);
 EphemeralKeyCreateParams ephemeralKeyParams =
   EphemeralKeyCreateParams.builder()
     .putExtraParam("verification_session", verificationSession.getId())
-    .setStripeVersion("2025-10-29.clover")
+    .setStripeVersion("2026-01-28.clover")
     .build();
 
 EphemeralKey ephemeralKey = EphemeralKey.create(ephemeralKeyParams);
@@ -6365,7 +6391,7 @@ params.AddMetadata("user_id", "{{USER_ID}}")
 vs, _ := verificationsession.New(params)
 // Create an ephemeral key for the VerificationSession
 ek_params := &stripe.EphemeralKeyParams{
-  StripeVersion: stripe.String("2025-10-29.clover"),
+  StripeVersion: stripe.String("2026-01-28.clover"),
 }
 ek_params.AddExtra("verification_session", vs.ID)
 ek, _ := ephemeralkey.New(ek_params)
@@ -6405,7 +6431,7 @@ var verificationSession = service.Create(options);
 // Create an ephemeral key for the VerificationSession
 var ekOptions = new EphemeralKeyCreateOptions
 {
-  StripeVersion = "2025-10-29.clover"
+  StripeVersion = "2026-01-28.clover"
 };
 ekOptions.AddExtraParam("verification_session", verificationSession.Id);
 var ekService = new EphemeralKeyService();
@@ -6582,6 +6608,12 @@ The Stripe Dashboard is the most common way to create one-off verifications but 
 1. Share the verification link with you user.
 1. View verification results in Dashboard.
 
+## Before you begin
+
+1. [Activate your account](https://dashboard.stripe.com/account/onboarding).
+1. Fill out your [Stripe Identity application](https://dashboard.stripe.com/identity/application).
+1. (Optional) Customize your brand settings on the [branding settings page](https://dashboard.stripe.com/settings/branding).
+
 ## Create a VerificationSession [Dashboard]
 
 A [VerificationSession](https://docs.stripe.com/api/identity/verification_sessions.md) is the programmatic representation of the verification. It contains details about the type of verification, such as what [check](https://docs.stripe.com/identity/verification-checks.md) to perform and exposes the [verified outputs](https://docs.stripe.com/api/identity/verification_sessions/object.md#identity_verification_session_object-verified_outputs).
@@ -6606,6 +6638,12 @@ Verification links expire after 48 hours after creation and are single-use. Only
 Use the Dashboard to view all your verifications, inspect collected data, and understand verification failures.
 
 [View your test verifications in the Dashboard](https://dashboard.stripe.com/test/identity/verification-sessions)
+
+## Before you begin
+
+1. [Activate your account](https://dashboard.stripe.com/account/onboarding).
+1. Fill out your [Stripe Identity application](https://dashboard.stripe.com/identity/application).
+1. (Optional) Customize your brand settings on the [branding settings page](https://dashboard.stripe.com/settings/branding).
 
 ## Create a verification flow [Dashboard]
 

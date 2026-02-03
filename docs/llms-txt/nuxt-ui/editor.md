@@ -16,7 +16,8 @@ import { upperFirst } from 'scule'
 import { mapEditorItems } from '@nuxt/ui/utils/editor'
 import { Emoji, gitHubEmojis } from '@tiptap/extension-emoji'
 import { TextAlign } from '@tiptap/extension-text-align'
-import { ImageUpload } from './EditorImageUpload'
+import { CodeBlockShiki } from 'tiptap-extension-code-block-shiki'
+import { ImageUpload } from './EditorImageUploadExtension'
 import { useEditorCompletion } from './EditorUseCompletion'
 import EditorLinkPopover from './EditorLinkPopover.vue'
 
@@ -55,7 +56,7 @@ Try out these powerful capabilities:
 
 Perfect for technical documentation:
 
-\`\`\`
+\`\`\`vue
 <template>
   <UEditor v-model="value" content-type="markdown" />
 </template>
@@ -584,6 +585,13 @@ const emojiItems: EditorEmojiMenuItem[] = gitHubEmojis.filter(emoji => !emoji.na
       Emoji,
       TextAlign.configure({ types: ['heading', 'paragraph'] }),
       ImageUpload,
+      CodeBlockShiki.configure({
+        defaultTheme: 'material-theme',
+        themes: {
+          light: 'material-theme-lighter',
+          dark: 'material-theme-palenight'
+        }
+      }),
       completionExtension
     ]"
     :handlers="customHandlers"
@@ -663,13 +671,38 @@ const emojiItems: EditorEmojiMenuItem[] = gitHubEmojis.filter(emoji => !emoji.na
     <UEditorEmojiMenu :editor="editor" :items="emojiItems" />
   </UEditor>
 </template>
+
+<style>
+html.dark .tiptap .shiki,
+html.dark .tiptap .shiki span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--ui-bg-muted) !important;
+}
+</style>
 ```
 
-<callout icon="i-simple-icons-github" to="https://github.com/nuxt/ui/blob/v4/docs/app/components/content/examples/editor/EditorExample.vue" ariaLabel="View source code">
+> [!NOTE]
+> See: https://github.com/nuxt/ui/blob/v4/docs/app/components/content/examples/editor/EditorExample.vue
+> This example demonstrates a production-ready Editor component. Check out the source code on GitHub.
 
-This example demonstrates a production-ready Editor component. Check out the source code on GitHub.
-
-</callout>
+> [!WARNING]
+> If you encounter prosemirror-related errors such as `Adding different instances of a keyed plugin` when using the Editor component or its extensions, you may need to add prosemirror packages to the `vite.optimizeDeps.include` list in your `nuxt.config.ts` file. This ensures Vite pre-bundles these dependencies to avoid loading multiple instances.
+> ```ts
+> export default defineNuxtConfig({
+>   vite: {
+>     optimizeDeps: {
+>       include: [
+>         '@nuxt/ui > prosemirror-state',
+>         '@nuxt/ui > prosemirror-transform',
+>         '@nuxt/ui > prosemirror-model',
+>         '@nuxt/ui > prosemirror-view',
+>         '@nuxt/ui > prosemirror-gapcursor'
+>       ]
+>     }
+>   }
+> })
+> 
+> ```
 
 ### Content
 
@@ -705,11 +738,8 @@ The Editor includes the following extensions by default:
 - **Mention** - Add @ mentions support
 - **Markdown** - Parse and serialize markdown (when content type is markdown)
 
-<note>
-
-Each built-in extension can be configured using its corresponding prop (`starter-kit`, `placeholder`, `image`, `mention`, `markdown`) to customize its behavior with TipTap options.
-
-</note>
+> [!NOTE]
+> Each built-in extension can be configured using its corresponding prop (`starter-kit`, `placeholder`, `image`, `mention`, `markdown`) to customize its behavior with TipTap options.
 
 You can use the `extensions` prop to add additional TipTap extensions to enhance the Editor's capabilities:
 
@@ -734,11 +764,9 @@ const value = ref('<h1>Hello World</h1>\n')
 </template>
 ```
 
-<tip to="#with-image-upload">
-
-Check out the image upload example for creating custom TipTap extensions.
-
-</tip>
+> [!TIP]
+> See: #with-image-upload
+> Check out the image upload example for creating custom TipTap extensions.
 
 ### Placeholder
 
@@ -746,17 +774,31 @@ Use the `placeholder` prop to set a placeholder text that shows in empty paragra
 
 ```vue
 <template>
-  <UEditor model-value="<h1>Hello World</h1>
-<p></p>
-" placeholder="Start writing..." class="w-full min-h-21" />
+  <UEditor model-value="" placeholder="Start writing..." class="w-full min-h-7" />
 </template>
 ```
 
-<callout icon="i-custom-tiptap" to="https://tiptap.dev/docs/editor/extensions/functionality/placeholder" target="_blank">
+> [!NOTE]
+> The `placeholder` prop accepts a string or an object with [PlaceholderOptions](https://tiptap.dev/docs/editor/extensions/functionality/placeholder) and an additional `mode` property:`everyLine`: Display placeholder on every empty line when focused (default).`firstLine`: Display placeholder only on the first line when the editor is empty.
+> ```vue
+> <template>
+>   <UEditor :placeholder="{ placeholder: 'Start writing...', mode: 'firstLine' }" />
+> </template>
+> 
+> ```
 
-Learn more about Placeholder extension in the TipTap documentation.
+> [!TIP]
+> By default, placeholders only appear on top-level empty nodes. To show placeholders in nested elements like list items, set `includeChildren` to `true`:
+> ```vue
+> <template>
+>   <UEditor :placeholder="{ placeholder: 'Start writing...', includeChildren: true }" />
+> </template>
+> 
+> ```
 
-</callout>
+> [!NOTE]
+> See: https://tiptap.dev/docs/editor/extensions/functionality/placeholder
+> Learn more about Placeholder extension in the TipTap documentation.
 
 ### Starter Kit
 
@@ -787,11 +829,9 @@ const value = ref('<h1>Hello World</h1>\n')
 </template>
 ```
 
-<callout icon="i-custom-tiptap" to="https://tiptap.dev/docs/editor/extensions/functionality/starterkit" target="_blank">
-
-Learn more about StarterKit extension in the TipTap documentation.
-
-</callout>
+> [!NOTE]
+> See: https://tiptap.dev/docs/editor/extensions/functionality/starterkit
+> Learn more about StarterKit extension in the TipTap documentation.
 
 ### Handlers
 
@@ -968,6 +1008,24 @@ The Editor component provides these default handlers, which you can reference in
     
     <td>
       Toggle ordered lists
+    </td>
+    
+    <td>
+      Handles list conversions
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      <code className="language-ts-type shiki shiki-themes material-theme-lighter material-theme material-theme-palenight" language="ts-type" style="">
+        <span class="sBMFI">
+          taskList
+        </span>
+      </code>
+    </td>
+    
+    <td>
+      Toggle task lists
     </td>
     
     <td>
@@ -1239,6 +1297,9 @@ The Editor component provides these default handlers, which you can reference in
 </tbody>
 </table>
 
+> [!WARNING]
+> The `taskList` and `textAlign` handlers only work when their respective extensions are installed, as they are not included in the Editor by default.
+
 Here's how to use default handlers in toolbar or suggestion menu items:
 
 ```vue
@@ -1320,19 +1381,15 @@ const items = [
 </template>
 ```
 
-<tip to="#with-image-upload">
-
-Check out the image upload example for a complete implementation with custom handlers.
-
-</tip>
+> [!TIP]
+> See: #with-image-upload
+> Check out the image upload example for a complete implementation with custom handlers.
 
 ## Examples
 
-<callout icon="i-simple-icons-github" to="https://github.com/nuxt-ui-templates/editor" target="_blank">
-
-Check out the source code of our **Editor template** on GitHub for a real-life example.
-
-</callout>
+> [!NOTE]
+> See: https://github.com/nuxt-ui-templates/editor
+> Check out the source code of our Editor template on GitHub for a real-life example.
 
 ### With toolbar
 
@@ -1674,7 +1731,7 @@ watch(file, async (newFile) => {
 
 1. Create a custom TipTap extension to register the node:
 
-```vue [EditorImageUpload.vue]
+```vue [EditorImageUploadExtension.vue]
 import { Node, mergeAttributes } from '@tiptap/core'
 import type { CommandProps, NodeViewRenderer } from '@tiptap/core'
 import { VueNodeViewRenderer } from '@tiptap/vue-3'
@@ -1719,29 +1776,13 @@ export const ImageUpload = Node.create({
 export default ImageUpload
 ```
 
-<warning>
-
-If you encounter a `Adding different instances of a keyed plugin` error when creating a custom extension, you may need to add `prosemirror-state` to the vite `optimizeDeps` include list in your `nuxt.config.ts` file.
-
-```ts [nuxt.config.ts]
-export default defineNuxtConfig({
-  vite: {
-    optimizeDeps: {
-      include: ['prosemirror-state']
-    }
-  }
-})
-```
-
-</warning>
-
 1. Use the custom extension in the Editor:
 
 ```vue [EditorImageUploadExample.vue]
 <script setup lang="ts">
 import type { EditorCustomHandlers, EditorToolbarItem } from '@nuxt/ui'
 import type { Editor } from '@tiptap/vue-3'
-import { ImageUpload } from './EditorImageUpload'
+import { ImageUpload } from './EditorImageUploadExtension'
 
 const value = ref(`# Image Upload
 
@@ -1829,40 +1870,35 @@ const items = [[{
 </template>
 ```
 
-<callout icon="i-custom-tiptap" to="https://tiptap.dev/docs/editor/extensions/custom-extensions" target="_blank">
-
-Learn more about creating custom extensions in the TipTap documentation.
-
-</callout>
+> [!NOTE]
+> See: https://tiptap.dev/docs/editor/extensions/custom-extensions
+> Learn more about creating custom extensions in the TipTap documentation.
 
 ### With AI completion
 
 This example demonstrates how to add AI-powered features to the Editor using the [Vercel AI SDK](https://ai-sdk.dev/), specifically the [`useCompletion`](https://ai-sdk.dev/docs/reference/ai-sdk-ui/use-completion) composable for streaming text completions, combined with the [Vercel AI Gateway](https://vercel.com/ai-gateway) to access AI models through a centralized endpoint. It includes ghost text autocompletion and text transformation actions (fix grammar, extend, reduce, simplify, translate, etc.).
 
-<note>
-
-You need to install these dependencies first to use this example:
-
-<code-group sync="pm">
-
-```bash [pnpm]
-pnpm add ai @ai-sdk/gateway @ai-sdk/vue
-```
-
-```bash [yarn]
-yarn add ai @ai-sdk/gateway @ai-sdk/vue
-```
-
-```bash [npm]
-npm install ai @ai-sdk/gateway @ai-sdk/vue
-```
-
-```bash [bun]
-bun add ai @ai-sdk/gateway @ai-sdk/vue
-```
-
-</code-group>
-</note>
+> [!NOTE]
+> You need to install these dependencies first to use this example:
+> ```bash
+> pnpm add ai @ai-sdk/gateway @ai-sdk/vue
+> 
+> ```
+> 
+> ```bash
+> yarn add ai @ai-sdk/gateway @ai-sdk/vue
+> 
+> ```
+> 
+> ```bash
+> npm install ai @ai-sdk/gateway @ai-sdk/vue
+> 
+> ```
+> 
+> ```bash
+> bun add ai @ai-sdk/gateway @ai-sdk/vue
+> 
+> ```
 
 1. Create a custom TipTap extension that handles inline ghost text suggestions:
 
@@ -1880,14 +1916,19 @@ export interface CompletionOptions {
    */
   debounce?: number
   /**
+   * Whether to automatically trigger completion while typing
+   * @defaultValue false
+   */
+  autoTrigger?: boolean
+  /**
    * Characters that should prevent completion from triggering
    * @defaultValue ['/', ':', '@']
    */
   triggerCharacters?: string[]
   /**
-   * Called when completion should be triggered, receives the text before cursor
+   * Called when completion should be triggered, receives the editor instance
    */
-  onTrigger?: (textBefore: string) => void
+  onTrigger?: (editor: Editor) => void
   /**
    * Called when suggestion is accepted
    */
@@ -1915,6 +1956,7 @@ export const Completion = Extension.create<CompletionOptions, CompletionStorage>
   addOptions() {
     return {
       debounce: 250,
+      autoTrigger: false,
       triggerCharacters: ['/', ':', '@'],
       onTrigger: undefined,
       onAccept: undefined,
@@ -1968,7 +2010,17 @@ export const Completion = Extension.create<CompletionOptions, CompletionStorage>
 
   addKeyboardShortcuts() {
     return {
-      Tab: ({ editor }) => {
+      'Mod-j': ({ editor }) => {
+        // Clear any existing suggestion first to avoid flickering
+        if (this.storage.visible) {
+          this.storage.clearSuggestion()
+          this.options.onDismiss?.()
+        }
+        // Manually trigger completion
+        this.storage.debouncedTrigger?.(editor as Editor)
+        return true
+      },
+      'Tab': ({ editor }) => {
         if (!this.storage.visible || !this.storage.suggestion || this.storage.position === undefined) {
           return false
         }
@@ -1989,7 +2041,7 @@ export const Completion = Extension.create<CompletionOptions, CompletionStorage>
         this.options.onAccept?.()
         return true
       },
-      Escape: ({ editor }) => {
+      'Escape': ({ editor }) => {
         if (this.storage.visible) {
           this.storage.clearSuggestion()
           // Force decoration update
@@ -2006,16 +2058,22 @@ export const Completion = Extension.create<CompletionOptions, CompletionStorage>
     // Clear suggestion on any edit
     if (this.storage.visible) {
       this.storage.clearSuggestion()
+      // Force decoration update
+      editor.view.dispatch(editor.state.tr.setMeta('completionUpdate', true))
       this.options.onDismiss?.()
     }
 
-    // Debounced trigger check
-    this.storage.debouncedTrigger?.(editor as unknown as Editor)
+    // Debounced trigger check (only if autoTrigger is enabled)
+    if (this.options.autoTrigger) {
+      this.storage.debouncedTrigger?.(editor as Editor)
+    }
   },
 
-  onSelectionUpdate() {
+  onSelectionUpdate({ editor }) {
     if (this.storage.visible) {
       this.storage.clearSuggestion()
+      // Force decoration update
+      editor.view.dispatch(editor.state.tr.setMeta('completionUpdate', true))
       this.options.onDismiss?.()
     }
   },
@@ -2052,9 +2110,8 @@ export const Completion = Extension.create<CompletionOptions, CompletionStorage>
       storage.position = selection.from
       storage.visible = true
 
-      // Get text before cursor as context
-      const textBefore = state.doc.textBetween(0, selection.from, '\n')
-      options.onTrigger(textBefore)
+      // Pass editor to let the handler extract content (e.g., as markdown)
+      options.onTrigger(editor)
     }, options.debounce || 250)
   },
 
@@ -2102,12 +2159,34 @@ export function useEditorCompletion(editorRef: Ref<{ editor: Editor | undefined 
       mode: mode.value,
       language: language.value
     })),
-    onFinish: () => {
+    onFinish: (_prompt, completionText) => {
       // For inline suggestion mode, don't clear - let user accept with Tab
       const storage = getCompletionStorage()
       if (mode.value === 'continue' && storage?.visible) {
         return
       }
+
+      // For transform modes, insert the full completion with markdown parsing
+      const transformModes = ['fix', 'extend', 'reduce', 'simplify', 'summarize', 'translate']
+      if (transformModes.includes(mode.value) && insertState.value && completionText) {
+        const editor = editorRef.value?.editor
+        if (editor) {
+          // Delete the original selection if not already done
+          if (insertState.value.deleteRange) {
+            editor.chain()
+              .focus()
+              .deleteRange(insertState.value.deleteRange)
+              .run()
+          }
+
+          // Insert with markdown parsing
+          editor.chain()
+            .focus()
+            .insertContentAt(insertState.value.pos, completionText, { contentType: 'markdown' })
+            .run()
+        }
+      }
+
       insertState.value = undefined
     },
     onError: (error) => {
@@ -2137,6 +2216,13 @@ export function useEditorCompletion(editorRef: Ref<{ editor: Editor | undefined 
       editor.view.dispatch(editor.state.tr.setMeta('completionUpdate', true))
     } else if (insertState.value) {
       // Direct insertion/transform mode (from toolbar actions)
+
+      // Transform modes use markdown insertion - wait for full completion
+      const transformModes = ['fix', 'extend', 'reduce', 'simplify', 'summarize', 'translate']
+      if (transformModes.includes(mode.value)) {
+        // Don't stream - will be handled in onFinish
+        return
+      }
 
       // If this is the first chunk and we have a selection to replace, delete it first
       if (insertState.value.deleteRange && !oldCompletion) {
@@ -2191,6 +2277,17 @@ export function useEditorCompletion(editorRef: Ref<{ editor: Editor | undefined 
     complete(selectedText)
   }
 
+  function getMarkdownBefore(editor: Editor, pos: number): string {
+    const { state } = editor
+    const serializer = (editor.storage.markdown as { serializer?: { serialize: (content: unknown) => string } })?.serializer
+    if (serializer) {
+      const slice = state.doc.slice(0, pos)
+      return serializer.serialize(slice.content)
+    }
+    // Fallback to plain text
+    return state.doc.textBetween(0, pos, '\n')
+  }
+
   function triggerContinue(editor: Editor) {
     if (isLoading.value) return
 
@@ -2201,22 +2298,23 @@ export function useEditorCompletion(editorRef: Ref<{ editor: Editor | undefined 
 
     if (selection.empty) {
       // No selection: continue from cursor position
-      const textBefore = state.doc.textBetween(0, selection.from, '\n')
+      const textBefore = getMarkdownBefore(editor, selection.from)
       insertState.value = { pos: selection.from }
       complete(textBefore)
     } else {
       // Text selected: append completion after the selection
-      const selectedText = state.doc.textBetween(selection.from, selection.to)
+      const textBefore = getMarkdownBefore(editor, selection.to)
       insertState.value = { pos: selection.to }
-      complete(selectedText)
+      complete(textBefore)
     }
   }
 
   // Configure Completion extension
   const extension = Completion.configure({
-    onTrigger: (textBefore) => {
+    onTrigger: (editor) => {
       if (isLoading.value) return
       mode.value = 'continue'
+      const textBefore = getMarkdownBefore(editor, editor.state.selection.from)
       complete(textBefore)
     },
     onAccept: () => {
@@ -2306,9 +2404,7 @@ export function useEditorCompletion(editorRef: Ref<{ editor: Editor | undefined 
 
 1. Create a server API endpoint to handle completion requests using [`streamText`](https://ai-sdk.dev/docs/reference/ai-sdk-core/stream-text#streamtext):
 
-<code-collapse>
-
-```ts [server/api/completion.post.ts]
+```ts
 import { streamText } from 'ai'
 import { gateway } from '@ai-sdk/gateway'
 
@@ -2368,9 +2464,8 @@ CRITICAL RULES:
     maxOutputTokens
   }).toTextStreamResponse()
 })
-```
 
-</code-collapse>
+```
 
 1. Use the composable in the Editor:
 
@@ -2498,11 +2593,12 @@ const items = computed(() => [[{
 </template>
 ```
 
-<callout icon="i-simple-icons-vercel" to="https://ai-sdk.dev/" target="_blank">
+> [!NOTE]
+> The completion extension can be configured with `autoTrigger: true` to automatically suggest completions while typing (disabled by default). You can also manually trigger it with  .
 
-Learn more about the Vercel AI SDK and available providers.
-
-</callout>
+> [!NOTE]
+> See: https://ai-sdk.dev/
+> Learn more about the Vercel AI SDK and available providers.
 
 ## API
 
@@ -2528,28 +2624,28 @@ interface EditorProps {
    */
   starterKit?: Partial<StarterKitOptions> | undefined;
   /**
-   * The placeholder text to show in empty paragraphs.
-   * `{ showOnlyWhenEditable: false, showOnlyCurrent: true }`{lang="ts-type"}
-   * Can be a string or PlaceholderOptions from `@tiptap/extension-placeholder`.
+   * The placeholder text to show in empty paragraphs. Can be a string or PlaceholderOptions from `@tiptap/extension-placeholder`.
    */
-  placeholder?: string | Partial<PlaceholderOptions> | undefined;
+  placeholder?: string | (Partial<PlaceholderOptions> & { mode?: "firstLine" | "everyLine" | undefined; }) | undefined;
   /**
    * The markdown extension options to configure markdown parsing and serialization.
    */
   markdown?: Partial<MarkdownExtensionOptions> | undefined;
   /**
-   * The image extension options to configure image handling.
+   * The image extension options to configure image handling. Set to `false` to disable the extension.
+   * @default "true"
    */
-  image?: Partial<ImageOptions> | undefined;
+  image?: boolean | Partial<ImageOptions> | undefined;
   /**
-   * The mention extension options to configure mention handling.
+   * The mention extension options to configure mention handling. Set to `false` to disable the extension.
+   * @default "true"
    */
-  mention?: Partial<MentionOptions<any, MentionNodeAttrs>> | undefined;
+  mention?: boolean | Partial<MentionOptions<any, MentionNodeAttrs>> | undefined;
   /**
    * Custom item handlers to override or extend the default handlers.
    * These handlers are provided to all child components (toolbar, suggestion menu, etc.).
    */
-  handlers?: EditorCustomHandlers | undefined;
+  handlers?: H | undefined;
   ui?: { root?: ClassNameValue; content?: ClassNameValue; base?: ClassNameValue; } | undefined;
   /**
    * The extensions to use
@@ -2673,6 +2769,11 @@ interface EditorProps {
    * Called when content is deleted from the editor.
    */
   onDelete?: ((props: { editor: Editor; deletedRange: Range; newRange: Range; transaction: Transaction; combinedTransform: Transform; partial: boolean; from: number; to: number; } & ({ type: "node"; node: Node; newFrom: number; newTo: number; } | { type: "mark"; mark: Mark; })) => void) | undefined;
+  /**
+   * Whether to enable extension-level dispatching of transactions.
+   * If `false`, extensions cannot define their own `dispatchTransaction` hook.
+   */
+  enableExtensionDispatchTransaction?: boolean | undefined;
 }
 ```
 
@@ -2694,7 +2795,7 @@ interface EditorSlots {
  * Emitted events for the Editor component
  */
 interface EditorEmits {
-  update:modelValue: (payload: [value: Content]) => void;
+  update:modelValue: (payload: [value: T]) => void;
 }
 ```
 
@@ -2756,11 +2857,9 @@ When accessing the component via a template ref, you can use the following:
 </tbody>
 </table>
 
-<callout icon="i-custom-tiptap" to="https://tiptap.dev/docs/editor/api/editor" target="_blank">
-
-The exposed editor instance is the TipTap Editor API. Check the TipTap documentation for all available methods and properties.
-
-</callout>
+> [!NOTE]
+> See: https://tiptap.dev/docs/editor/api/editor
+> The exposed editor instance is the TipTap Editor API. Check the TipTap documentation for all available methods and properties.
 
 ## Theme
 
@@ -2773,18 +2872,20 @@ export default defineAppConfig({
         content: 'relative size-full flex-1',
         base: [
           'w-full outline-none *:my-5 *:first:mt-0 *:last:mb-0 sm:px-8 selection:bg-primary/20',
-          '[&_:is(p,h1,h2,h3,h4).is-empty]:before:content-[attr(data-placeholder)] [&_:is(p,h1,h2,h3,h4).is-empty]:before:text-dimmed [&_:is(p,h1,h2,h3,h4).is-empty]:before:float-left [&_:is(p,h1,h2,h3,h4).is-empty]:before:h-0 [&_:is(p,h1,h2,h3,h4).is-empty]:before:pointer-events-none',
-          '[&_li_.is-empty]:before:content-none',
           '[&_p]:leading-7',
           '[&_a]:text-primary [&_a]:border-b [&_a]:border-transparent [&_a]:hover:border-primary [&_a]:font-medium',
           '[&_a]:transition-colors',
+          '[&_a>code]:border-dashed [&_a:hover>code]:border-primary [&_a:hover>code]:text-primary',
+          '[&_a>code]:transition-colors',
           '[&_.mention]:text-primary [&_.mention]:font-medium',
-          '[&_:is(h1,h2,h3,h4)]:text-highlighted [&_:is(h1,h2,h3,h4)]:font-bold',
+          '[&_:is(h1,h2,h3,h4,h5,h6)]:text-highlighted [&_:is(h1,h2,h3,h4,h5,h6)]:font-bold',
           '[&_h1]:text-3xl',
           '[&_h2]:text-2xl',
           '[&_h3]:text-xl',
           '[&_h4]:text-lg',
-          '[&_:is(h1,h2,h3,h4)>code]:border-dashed [&_:is(h1,h2,h3,h4)>code]:font-bold',
+          '[&_h5]:text-base',
+          '[&_h6]:text-base',
+          '[&_:is(h1,h2,h3,h4,h5,h6)>code]:border-dashed [&_:is(h1,h2,h3,h4,h5,h6)>code]:font-bold',
           '[&_h2>code]:text-xl/6',
           '[&_h3>code]:text-lg/5',
           '[&_blockquote]:border-s-4 [&_blockquote]:border-accented [&_blockquote]:ps-4 [&_blockquote]:italic',
@@ -2800,6 +2901,19 @@ export default defineAppConfig({
           '[&_img]:rounded-md [&_img]:block [&_img]:max-w-full [&_img.ProseMirror-selectednode]:outline-2 [&_img.ProseMirror-selectednode]:outline-primary',
           '[&_.ProseMirror-selectednode:not(img):not(pre):not([data-node-view-wrapper])]:bg-primary/20'
         ]
+      },
+      variants: {
+        placeholderMode: {
+          firstLine: {
+            base: '[&_:is(p,h1,h2,h3,h4,h5,h6).is-editor-empty:first-child]:before:content-[attr(data-placeholder)] [&_:is(p,h1,h2,h3,h4,h5,h6).is-editor-empty:first-child]:before:text-dimmed [&_:is(p,h1,h2,h3,h4,h5,h6).is-editor-empty:first-child]:before:float-start [&_:is(p,h1,h2,h3,h4,h5,h6).is-editor-empty:first-child]:before:h-0 [&_:is(p,h1,h2,h3,h4,h5,h6).is-editor-empty:first-child]:before:pointer-events-none'
+          },
+          everyLine: {
+            base: '[&_:is(p,h1,h2,h3,h4,h5,h6).is-empty]:before:content-[attr(data-placeholder)] [&_:is(p,h1,h2,h3,h4,h5,h6).is-empty]:before:text-dimmed [&_:is(p,h1,h2,h3,h4,h5,h6).is-empty]:before:float-start [&_:is(p,h1,h2,h3,h4,h5,h6).is-empty]:before:h-0 [&_:is(p,h1,h2,h3,h4,h5,h6).is-empty]:before:pointer-events-none'
+          }
+        }
+      },
+      defaultVariants: {
+        placeholderMode: 'everyLine'
       }
     }
   }
@@ -2808,8 +2922,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/financial/
+
 # Financial Red-Teaming Plugins
 
 The Financial Red-Teaming Plugins are a specialized suite of tests designed for AI systems operating in financial institutions, investment firms, and banking contexts. These plugins address the unique risks that emerge when AI systems handle financial data, provide investment guidance, or assist with trading decisions in high-stakes financial environments.

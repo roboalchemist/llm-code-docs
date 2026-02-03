@@ -1,33 +1,33 @@
 # Source: https://docs.livekit.io/transport/media/ingress-egress/egress/outputs.md
 
-# Source: https://docs.livekit.io/home/egress/outputs.md
-
-LiveKit docs › Recording & export › Output and streaming options
+LiveKit docs › Media › Stream export & import › Egress › Output & streaming options
 
 ---
 
-# Egress output types
+# Output & streaming options
 
 > Export content anywhere, in any format.
 
-## Supported Outputs
+## Supported outputs
+
+The following table shows the supported output types for each egress type.
 
 | Egress Type | Transcoded | Pass-through (mp4, webm, ogg) | HLS Segments | RTMP stream | SRT stream | WebSocket stream |
-| Room Composite | ✅ |  | ✅ | ✅ | ✅ |  |
+| RoomComposite | ✅ |  | ✅ | ✅ | ✅ |  |
 | Web | ✅ |  | ✅ | ✅ | ✅ |  |
 | Participant | ✅ |  | ✅ | ✅ | ✅ |  |
-| Track Composite | ✅ |  | ✅ | ✅ | ✅ |  |
+| TrackComposite | ✅ |  | ✅ | ✅ | ✅ |  |
 | Track |  | ✅ |  |  |  | ✅ (audio-only) |
 
 > ℹ️ **Note**
 > 
-> A very long-running Egress may hit our [Egress time limits](https://docs.livekit.io/home/cloud/quotas-and-limits.md#egress-time-limits).
+> Any very long-running egress may hit the [egress time limits](https://docs.livekit.io/deploy/admin/quotas-and-limits.md#egress-time-limits).
 
 ## Composite and Participant Egress Outputs
 
 Since Composite and Participant Egress are transcoded, they can be output to a wide range of formats and destinations.
 
-Egress is optimized to transcode once while sending output to multiple destinations. For example, from the same Egress you may simultaneously:
+Egress is optimized to transcode once while sending output to multiple destinations. For example, from the same Egress you can simultaneously:
 
 - Stream to one or more RTMP endpoints.
 - Record as HLS.
@@ -327,7 +327,7 @@ RTMP streams do not perform well over long distances. Some stream providers incl
 
 #### Adding streams to non-streaming egress
 
-Streams can be added and removed on the fly using the [UpdateStream API](https://docs.livekit.io/home/egress/api.md#updatestream).
+Streams can be added and removed on the fly using the [UpdateStream API](https://docs.livekit.io/reference/other/egress/api.md#updatestream).
 
 To use the UpdateStream API, your initial request must include a `StreamOutput`. If the stream will start later, include a `StreamOutput` in the initial request with the correct `protocol` and an empty `urls` array.
 
@@ -342,11 +342,11 @@ Mux is LiveKit's preferred partner for HLS streaming. To start a [Mux](https://w
 When outputing to files, the `filepath` and `filename_prefix` fields support templated variables. The below templates can be used in request filename/filepath parameters:
 
 | Egress Type | {room_id} | {room_name} | {time} | {publisher_identity} | {track_id} | {track_type} | {track_source} |
-| Room Composite | ✔️ | ✔️ | ✔️ |  |  |  |  |
-| Web |  |  | ✔️ |  |  |  |  |
-| Participant | ✔️ | ✔️ | ✔️ | ✔️ |  |  |  |
-| Track Composite | ✔️ | ✔️ | ✔️ | ✔️ |  |  |  |
-| Track | ✔️ | ✔️ | ✔️ | ✔️ | ✔️ | ✔️ | ✔️ |
+| Room Composite | ✅ | ✅ | ✅ |  |  |  |  |
+| Web |  |  | ✅ |  |  |  |  |
+| Participant | ✅ | ✅ | ✅ | ✅ |  |  |  |
+| Track Composite | ✅ | ✅ | ✅ | ✅ |  |  |  |
+| Track | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 
 - If no filename is provided with a request, one will be generated in the form of `"{room_name}-{time}"`.
 - If your filename ends with a `/`, a file will be generated in that directory.
@@ -430,7 +430,7 @@ Configuration fields:
 
 ---
 
-This document was rendered at 2025-11-18T23:54:57.399Z.
-For the latest version of this document, see [https://docs.livekit.io/home/egress/outputs.md](https://docs.livekit.io/home/egress/outputs.md).
+This document was rendered at 2026-02-03T03:25:17.837Z.
+For the latest version of this document, see [https://docs.livekit.io/transport/media/ingress-egress/egress/outputs.md](https://docs.livekit.io/transport/media/ingress-egress/egress/outputs.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

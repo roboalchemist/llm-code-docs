@@ -6,7 +6,6 @@ description: >-
   Configure SafeNet Trusted Access as a SAML identity provider for Datadog with
   metadata upload and two-factor authentication setup.
 breadcrumbs: Docs > Account Management > Single Sign On With SAML > SafeNet SAML IdP
-source_url: https://docs.datadoghq.com/saml/safenet/index.html
 ---
 
 # SafeNet SAML IdP

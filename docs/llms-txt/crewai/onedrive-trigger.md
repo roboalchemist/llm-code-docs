@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/enterprise/guides/onedrive-trigger.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # OneDrive Trigger
 
 > Automate responses to OneDrive file activity
@@ -9,7 +13,8 @@
 Start automations when files change inside OneDrive. You can generate audit summaries, notify security teams about external sharing, or update downstream line-of-business systems with new document metadata.
 
 <Tip>
-  Connect OneDrive in **Tools & Integrations** and toggle the trigger on for your deployment.
+  Connect OneDrive in **Tools & Integrations** and toggle the trigger on for
+  your deployment.
 </Tip>
 
 ## Enabling the OneDrive Trigger
@@ -50,7 +55,9 @@ crewai triggers run microsoft_onedrive/file_changed
 The `crewai triggers run` command will execute your crew with a complete OneDrive payload, allowing you to test your parsing logic before deployment.
 
 <Warning>
-  Use `crewai triggers run microsoft_onedrive/file_changed` (not `crewai run`) to simulate trigger execution during development. After deployment, your crew will automatically receive the trigger payload.
+  Use `crewai triggers run microsoft_onedrive/file_changed` (not `crewai run`)
+  to simulate trigger execution during development. After deployment, your crew
+  will automatically receive the trigger payload.
 </Warning>
 
 ## Troubleshooting

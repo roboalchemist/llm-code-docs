@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/api-references/guides/support-for-ci-cd-with-api-blocks.md
-
-# Source: https://gitbook.com/docs/documentation/fr/api-references/guides/support-for-ci-cd-with-api-blocks.md
-
-# Source: https://gitbook.com/docs/api-references/guides/support-for-ci-cd-with-api-blocks.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/api-references/guides/support-for-ci-cd-with-api-blocks.md
 
 # Source: https://gitbook.com/docs/documentation/zh/api-references/guides/support-for-ci-cd-with-api-blocks.md
 

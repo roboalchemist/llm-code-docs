@@ -1,24 +1,4 @@
-# Source: https://docs.apify.com/api/client/python/docs/overview/getting-started.md
-
 # Source: https://docs.apify.com/api/client/js/docs/getting-started.md
-
-# Source: https://docs.apify.com/academy/getting-started.md
-
-# Source: https://docs.apify.com/academy/apify-scrapers/getting-started.md
-
-# Source: https://docs.apify.com/api/v2/getting-started.md
-
-# Source: https://docs.apify.com/api/client/python/docs/overview/getting-started.md
-
-# Source: https://docs.apify.com/api/client/js/docs/getting-started.md
-
-# Source: https://docs.apify.com/academy/getting-started.md
-
-# Source: https://docs.apify.com/academy/apify-scrapers/getting-started.md
-
-# Source: https://docs.apify.com/api/v2/getting-started.md
-
-# Source: https://docs.apify.com/api/client/python/docs/overview/getting-started.md
 
 # Source: https://docs.apify.com/academy/getting-started.md
 
@@ -28,7 +8,7 @@
 
 # Getting started with Apify API
 
-The Apify API provides programmatic access to the https://docs.apify.com. The API is organized around https://en.wikipedia.org/wiki/Representational_state_transfer HTTP endpoints.
+The Apify API provides programmatic access to the [Apify platform](https://docs.apify.com). The API is organized around [RESTful](https://en.wikipedia.org/wiki/Representational_state_transfer) HTTP endpoints.
 
 <!-- -->
 
@@ -62,7 +42,7 @@ Authorization: Bearer YOUR_API_TOKEN
 ```
 
 
-You can find your API token in the Apify Console under **https://console.apify.com/settings/integrations**.
+You can find your API token in the Apify Console under **[Settings > Integrations](https://console.apify.com/settings/integrations)**.
 
 ### Verify your account
 
@@ -270,7 +250,7 @@ The server timed out waiting for the request to complete.
 
 ## Next steps
 
-* Explore more advanced API endpoints in our full https://docs.apify.com/api/v2.md.
+* Explore more advanced API endpoints in our full [API reference](https://docs.apify.com/api/v2.md).
 
 * Learn about webhooks to get notified when your runs finish.
 
@@ -278,5 +258,5 @@ The server timed out waiting for the request to complete.
 
   <!-- -->
 
-  * https://docs.apify.com/api/client/js
-  * https://docs.apify.com/api/client/python
+  * [JavaScript](https://docs.apify.com/api/client/js)
+  * [Python](https://docs.apify.com/api/client/python)

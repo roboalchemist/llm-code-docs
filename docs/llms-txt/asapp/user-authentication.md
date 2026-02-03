@@ -2,21 +2,9 @@
 
 # Source: https://docs.asapp.com/agent-desk/integrations/android-sdk/user-authentication.md
 
-# Source: https://docs.asapp.com/agent-desk/integrations/ios-sdk/user-authentication.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/android-sdk/user-authentication.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/ios-sdk/user-authentication.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/android-sdk/user-authentication.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/ios-sdk/user-authentication.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/android-sdk/user-authentication.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/ios-sdk/user-authentication.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/android-sdk/user-authentication.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # User Authentication
 

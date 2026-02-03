@@ -4,7 +4,6 @@
 title: Ingestion Controls
 description: Learn how to control Ingestion rates with APM.
 breadcrumbs: Docs > APM > The Trace Pipeline > Ingestion Controls
-source_url: https://docs.datadoghq.com/trace_pipeline/ingestion_controls/index.html
 ---
 
 # Ingestion Controls

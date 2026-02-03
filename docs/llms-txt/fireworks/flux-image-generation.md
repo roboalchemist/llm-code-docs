@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/faq-new/models-inference/flux-image-generation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # FLUX image generation
 
 ## Can I generate multiple images in a single API call?

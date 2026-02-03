@@ -41,5 +41,5 @@ Chunkers are [components](../../applications/components.html), so you can also a
 
 You create a chunker component by implementing the[com.yahoo.language.process.Chunker](https://github.com/vespa-engine/vespa/blob/master/linguistics/src/main/java/com/yahoo/language/process/Chunker.java)interface, see [these examples](https://github.com/vespa-engine/vespa/tree/master/linguistics/src/main/java/ai/vespa/language/chunker).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

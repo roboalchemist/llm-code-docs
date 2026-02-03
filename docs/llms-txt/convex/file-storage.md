@@ -2,10 +2,6 @@
 
 # Source: https://docs.convex.dev/file-storage.md
 
-# Source: https://docs.convex.dev/dashboard/deployments/file-storage.md
-
-# Source: https://docs.convex.dev/file-storage.md
-
 # File Storage
 
 File Storage makes it easy to implement file upload in your app, store files from and send files to third-party APIs, and to serve dynamic files to your users. All file types are supported.

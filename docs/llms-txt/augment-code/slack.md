@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/using-augment/slack.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Using Augment for Slack
 
 > Chat with Augment directly in Slack to explore your codebase, get instant help, and collaborate with your team on technical problems.

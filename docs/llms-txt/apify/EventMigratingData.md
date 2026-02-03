@@ -13,10 +13,10 @@ Data for the migrating event.
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#model_config)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/events/_types.py#L65)model\_config
+### [**](#model_config)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/events/_types.py#L65)model\_config
 
 **model\_config: Undefined
 
-### [**](#time_remaining)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/events/_types.py#L69)time\_remaining
+### [**](#time_remaining)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/events/_types.py#L69)time\_remaining
 
 **time\_remaining: [timedelta\_secs](https://crawlee.dev/python/api#timedelta_secs) | None

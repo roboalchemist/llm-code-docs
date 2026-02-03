@@ -8,7 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > Continuous Integration Visibility > CI Visibility Guides > Pipeline
   Data Model And Execution Types
-source_url: https://docs.datadoghq.com/guides/pipeline_data_model/index.html
 ---
 
 # Pipeline Data Model And Execution Types

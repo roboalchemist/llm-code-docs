@@ -3,15 +3,29 @@
 # Multi-currency settlement
 
 Accept, settle, and pay out funds in multiple currencies.
-Available in: EU, GB, CH, NO, LI, SG, HK, AU, AE, US
+
 If you’re a Connect platform looking to offer multi-currency settlement capabilities to your connected accounts, see our [Connect Docs](https://docs.stripe.com/connect/multicurrency-settlement.md).
 
 Stripe automatically converts all incoming funds into the default currency of your home country. With multi-currency settlement, you can configure your account to accrue balances and get paid out in additional currencies without incurring foreign exchange fees.
 
+## Availability
+
+Multi-currency settlement is available in the following locations:
+
+- AE
+- AU
+- CH
+- EU
+- GB
+- HK
+- LI
+- NO
+- SG
+- US
+
 ## Enable multi-currency settlement
 
 To configure your account to receive settlement and pay out in multiple currencies, configure the currencies and bank accounts in your [Dashboard](https://dashboard.stripe.com/account/payouts).
-![Bank accounts and currencies settings in the Dashboard](https://b.stripecdn.com/docs-statics-srv/assets/bank-accounts-and-currencies-page.cd3a7a8bf6a23667bb5f45f2bf7e19c4.png)
 
 ### Configure settlement currencies
 
@@ -27,7 +41,7 @@ After you meet a currency’s [minimum payout amount](https://docs.stripe.com/pa
 
 ## Fees and minimum payout amounts for multi-currency settlement 
 [See table on original page](https://docs.stripe.com/payouts/multicurrency-settlement)
-If your business is based in a currently ineligible country for multi-currency settlement, [contact support](https://support.stripe.com) to help us with expansion planning.
+If your business is based in a currently ineligible country for multi-currency settlement, contact us using the form at [Stripe support](https://support.stripe.com) to help us with expansion planning.
 
 ## Instant currency conversion for your Stripe balances
 

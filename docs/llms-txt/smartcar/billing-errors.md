@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/errors/api-errors/billing-errors.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Billing Errors
 
 > Thrown when limits have been reached based on your plan, or if the feature is not available.

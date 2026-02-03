@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/agent-desk/insights-manager/live-insights/performance-data.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Performance Data
 
 > Learn how to view performance data in Live Insights.
@@ -13,10 +17,10 @@ You can view performance data for 'right now', as well as for the 'current perio
 </Frame>
 
 1. **Data definitions**: On click, opens a link to view metric definitions within Historical Reporting.
-2. **Channel filter**: Filter performance data by channel. On click, channel options display. Select options to automatically filter data.
-3. **Performance metrics**: Displays all performance metrics currently available. By default, performance metrics showcase a 'Right Now' view.
-4. **Intraday**: Rolling data since the beginning of the day (12 am) is available upon activation. When active, the rolling count or averages since 12 am display.
-5. **Agent metrics and feedback data**: On click, displays the Agent performance data or customer feedback received.
+2. **Channel filter**: Filter performance data by channel. When you click, the system displays channel options. Select options to automatically filter data.
+3. **Performance metrics**: Displays all performance metrics currently available. By default, the system shows performance metrics in a 'Right Now' view.
+4. **Intraday**: Rolling data since the beginning of the day (12 am) is available upon activation. When active, the system displays the rolling count or averages since 12 am.
+5. **Agent metrics and feedback data**: When you click, the system shows the Agent performance data or customer feedback received.
 
 ## Intraday Data
 
@@ -31,7 +35,7 @@ These two views provide you with a fuller picture of queue performance and facil
 1. **Right Now**: Default view. Provides performance data currently captured.
 2. **Since 12 am**: Click the **toggle** to display 'current period' metrics.
 
-Some metrics are not available in this configuration.
+The system does not provide some metrics in this configuration.
 
 <Card title="Metrics Definitions" href="/agent-desk/insights-manager/live-insights/metric-definitions">See Metrics Definitions for more information</Card>
 
@@ -44,4 +48,4 @@ You can segment performance data per channel or by groups of channels.
 </Frame>
 
 1. **Channel dropdown**: To filter data per channel, click the **channel** dropdown to activate channel selection.
-2. **Channel options**: All available channels display in the channel dropdown. You can select one or more **channels** to filter data by. Once selected, the data will automatically update.
+2. **Channel options**: The channel dropdown shows all available channels. You can select one or more **channels** to filter data by. Once selected, the data will automatically update.

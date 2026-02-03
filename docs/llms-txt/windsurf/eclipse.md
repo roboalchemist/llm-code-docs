@@ -1,6 +1,17 @@
 # Source: https://docs.windsurf.com/troubleshooting/plugins-enterprise/eclipse.md
 
-# Eclipse
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Eclipse Troubleshooting
+
+> Troubleshoot Eclipse plugin issues including startup problems, empty chat screen, WebView2, and certificate errors with Java keystore solutions.
+
+<Note>
+  We strongly recommend using the native Windsurf Editor or the JetBrains local plugin for their advanced agentic AI capabilities and cutting-edge features.
+  The Eclipse plugin is under maintenance mode.
+</Note>
 
 # Supported Versions
 
@@ -12,18 +23,6 @@ In Eclipse, logs are written to the following paths:
 
 * **Mac/Linux**: \~/.codeium/codeium.log
 * **Windows**: C:\Users\<username>.codeium\codeium.log
-
-# How to reset or change your Enterprise URL
-
-1. Open the settings/preferences dialog.
-
-2. Select Codeium.
-
-3. Set the Portal URL to `<NEW_URL>`. Then click the Apply and Close button.
-
-<Frame>
-  <img src="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/troubleshooting-eclipse-portal-url.jpg?fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=a7a3dc48899d017362dff5b8cac8d7b3" data-og-width="2890" width="2890" data-og-height="2099" height="2099" data-path="assets/plugins/troubleshooting-eclipse-portal-url.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/troubleshooting-eclipse-portal-url.jpg?w=280&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=f7049748ba25b58625cc311027b5e72d 280w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/troubleshooting-eclipse-portal-url.jpg?w=560&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=50ea671aea859baee84dd99612e65c7b 560w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/troubleshooting-eclipse-portal-url.jpg?w=840&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=ae2c7d50a45a09e7aca67f2bb3203a06 840w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/troubleshooting-eclipse-portal-url.jpg?w=1100&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=4fabb3f06336d578744b7ba05282ab7b 1100w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/troubleshooting-eclipse-portal-url.jpg?w=1650&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=7096312ee2fbef2921692bbe40abba21 1650w, https://mintcdn.com/codeium/d8O4q6w3H2CjrirL/assets/plugins/troubleshooting-eclipse-portal-url.jpg?w=2500&fit=max&auto=format&n=d8O4q6w3H2CjrirL&q=85&s=97be642c613ab57ec808da69b2fbd0a3 2500w" />
-</Frame>
 
 # Known IDE issues and solutions
 

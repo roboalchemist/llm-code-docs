@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/api-reference/corpora/corpora-sources-list.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Corpus Sources
 
 > Lists all sources that are part of the specified corpus
@@ -112,6 +116,14 @@ components:
           allOf:
             - $ref: '#/components/schemas/ultravox.v1.UploadSpec'
           description: Allows loading from a uploaded document.
+        advanced:
+          allOf:
+            - $ref: '#/components/schemas/ultravox.v1.AdvancedSpec'
+          description: |-
+            Allows loading from an advanced documents source.
+             This is similar to an upload source, but requires setting example queries
+             for each document. When a similar query is issued, the document will be
+             returned in its entirety.
       description: >-
         A source of documents for building a corpus. A source defines where
         documents
@@ -193,6 +205,17 @@ components:
       description: >-
         The specification of how to acquire documents for uploaded documents
         source.
+    ultravox.v1.AdvancedSpec:
+      type: object
+      properties:
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/ultravox.v1.AdvancedSpec_DocumentDetails'
+          description: The list of documents to include in this source.
+      description: >-
+        The specification of how to acquire documents for an advanced documents
+        source.
     ultravox.v1.MimeTypeFilter:
       type: object
       properties:
@@ -205,6 +228,25 @@ components:
             - $ref: '#/components/schemas/ultravox.v1.MimeTypeSet'
           description: Mime types must not be in this set to be kept.
       description: A Filter to apply to mime types.
+    ultravox.v1.AdvancedSpec_DocumentDetails:
+      type: object
+      properties:
+        documentId:
+          type: string
+          description: The unique ID of the document.
+        exampleQueries:
+          type: array
+          items:
+            type: string
+          description: |-
+            Example queries for this document. These queries will be embedded
+             instead of the document content.
+             Up to 10 queries may be provided for a document. Each query must be
+             non-empty after stripping whitespace, and at most 400 characters.
+      description: |-
+        Details about a single document. The document will be treated as
+         a single chunk and only the provided example queries will be embedded.
+         On query, matching vectors return the full document content.
     ultravox.v1.MimeTypeSet:
       type: object
       properties:
@@ -226,7 +268,3 @@ components:
       description: API key
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

@@ -1,10 +1,10 @@
 # Source: https://docs.intelligems.io/checkout/checkout-experiences-library.md
 
-# Checkout Experiences Library
+# Checkout Personalizations Library
 
-We built Checkout Experiences to be the best checkout tool to power content right on your Checkout page to improve conversion, AOV, and profit per visitor, right inside of Intelligems.
+We built Checkout Personalizations to be the best checkout tool to power content right on your Checkout page to improve conversion, AOV, and profit per visitor, right inside of Intelligems.
 
-## How to Think About Checkout Experiences
+## How to Think About Checkout Personalizations
 
 Every great checkout experience comes down to three simple questions: **Where, Who, and What.**\
 Together, these three pieces form the backbone of your checkout strategy, shaping how you communicate trust, urgency, and brand values at the final step of the journey.
@@ -44,7 +44,7 @@ The content of your block should answer one question:
 Each message plays a role in reducing hesitation and improving conversion at the finish line.
 
 {% hint style="success" %}
-**Pro Tip:** A Checkout Experience can include multiple blocks. Combine a trust badge above your payment section with a social proof header or image block for maximum impact.
+**Pro Tip:** A Checkout Personalization can include multiple blocks. Combine a trust badge above your payment section with a social proof header or image block for maximum impact.
 {% endhint %}
 
 ### Why it matters
@@ -55,14 +55,16 @@ By pairing the right message, to the right audience, in the right place, you cre
 Put simply:\
 **A great checkout experience builds confidence, clarity, and connection, all in service of higher conversion and happier customers.**
 
-## 4 Checkout Experiences To Build Right Now with Intelligems
+## 6 Checkout Personalizations To Build Right Now with Intelligems
 
 1. [Trust Badges – Brand Promises (Shipping, Returns, Warranty etc.)](https://docs.intelligems.io/checkout/checkout-experiences-library/how-to-set-up-brand-promise-badge-icons-at-checkout)
 2. [Header – 100,000 Happy Customers](https://docs.intelligems.io/checkout/checkout-experiences-library/how-to-set-up-a-shipping-cutoff-message-at-checkout-1)
 3. [Callout – Shipping Reminder](https://docs.intelligems.io/checkout/checkout-experiences-library/how-to-set-up-a-shipping-cutoff-message-at-checkout)
 4. [Image – Influencer Endorsement](https://docs.intelligems.io/checkout/checkout-experiences-library/how-to-set-up-a-shipping-cutoff-message-at-checkout-2)
+5. [Product - Upsell Test (showing 1 vs. 3 products)](https://docs.intelligems.io/checkout/checkout-experiences-library/how-to-set-up-a-product-upsell-checkout-test)
+6. [Product - Showing a Single Product Upsell at Checkout](https://docs.intelligems.io/checkout/checkout-experiences-library/how-to-set-up-a-single-product-upsell-checkout-experience)
 
-## More Checkout Experience Ideas
+## More Checkout Personalization Ideas
 
 Once you’ve watched the walkthrough videos above, explore these examples for inspiration.\
 Each one can be built directly using blocks in Intelligems.
@@ -88,6 +90,16 @@ Bold, single-line trust or reassurance statements.
 * Trusted Since 2012 — Brand heritage and trust signal
 * Family Owned & Operated — Emotional brand connection
 * Student / Military Discounts Available — Value reinforcement
+
+### Product Upsells
+
+Show one more multiple product upsells at checkout
+
+* Top-selling one-size-fits-all SKU –– no hesitation, no choices to make
+* Accessory Add-On — complementary item that pairs with your hero product
+* Care Kit Upsell — cleaning, maintenance, or care products for longevity
+* Under $25 Add-On –– top items to reach free shipping threshold
+* Merch or branded accessory — Lightweight brand extension item&#x20;
 
 ### Badge Tiles / Badge Lists
 

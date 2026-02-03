@@ -1,5 +1,9 @@
 # Source: https://dub.co/docs/sdks/client-side-mobile/installation-guides/swift.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dub.co/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Swift
 
 > How to add the Dub iOS SDK to your Swift project

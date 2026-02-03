@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/chat
+
 # Chat elements
 
 Streamlit provides a few commands to help you build conversational apps. These chat elements are designed to be used in conjunction with each other, but you can also use them separately.

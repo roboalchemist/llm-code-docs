@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/deployment/pipecat-cloud/rest-reference/endpoint/regions-list.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Regions
 
 > Retrieve a list of all available regions for deploying agents and storing secrets.
@@ -107,7 +111,3 @@ components:
         Authorization header.
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

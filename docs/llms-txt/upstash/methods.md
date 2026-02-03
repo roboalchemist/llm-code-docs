@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/sdks/ratelimit-ts/methods.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Methods
 
 This page contains information on what methods are available in Ratelimit and how they can be used. For information on the
@@ -155,3 +159,56 @@ ratelimit.getRemaining(identifier: string): Promise<{
 ```
 
 `remaining` is the remaining tokens. `reset` is the reset timestamp.
+
+## `setDynamicLimit`
+
+This method sets or removes a [global dynamic rate limit](/redis/sdks/ratelimit-ts/features#dynamic-limits). Dynamic limits override the default limiter settings for all subsequent rate limit checks.
+
+```ts  theme={"system"}
+ratelimit.setDynamicLimit(options: {
+  limit: number | false;
+}): Promise<void>
+```
+
+**Parameters:**
+
+* `limit`: The new limit value (number), or `false` to remove the dynamic limit and fall back to the default
+
+**Example:**
+
+```ts  theme={"system"}
+const ratelimit = new Ratelimit({
+  redis: Redis.fromEnv(),
+  limiter: Ratelimit.slidingWindow(10, "10s"),
+  dynamicLimits: true,
+});
+
+// Set a new dynamic limit
+await ratelimit.setDynamicLimit({ limit: 5 });
+
+// Remove dynamic limit (falls back to default of 10)
+await ratelimit.setDynamicLimit({ limit: false });
+```
+
+## `getDynamicLimit`
+
+This method retrieves the current [dynamic limit](/redis/sdks/ratelimit-ts/features#dynamic-limits) if one is set.
+
+```ts  theme={"system"}
+ratelimit.getDynamicLimit(): Promise<{ dynamicLimit: number | null }>
+```
+
+**Returns:** The current dynamic limit value, or `null` if no dynamic limit is set
+
+**Example:**
+
+```ts  theme={"system"}
+const ratelimit = new Ratelimit({
+  redis: Redis.fromEnv(),
+  limiter: Ratelimit.slidingWindow(10, "10s"),
+  dynamicLimits: true,
+});
+
+await ratelimit.setDynamicLimit({ limit: 5 });
+const { dynamicLimit } = await ratelimit.getDynamicLimit(); // returns 5
+```

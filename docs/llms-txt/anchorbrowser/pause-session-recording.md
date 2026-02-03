@@ -1,105 +1,80 @@
 # Source: https://docs.anchorbrowser.io/api-reference/session-recordings/pause-session-recording.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Pause Session Recording
 
 > Pauses the video recording for the specified browser session.
 
+
+
 ## OpenAPI
 
 ````yaml openapi-mintlify.yaml post /v1/sessions/{session_id}/recordings/pause
+openapi: 3.1.0
+info:
+  title: AnchorBrowser API
+  version: 1.0.0
+  description: APIs to manage all browser-related actions and configuration.
+servers:
+  - url: https://api.anchorbrowser.io
+    description: API server
+security: []
 paths:
-  path: /v1/sessions/{session_id}/recordings/pause
-  method: post
-  servers:
-    - url: https://api.anchorbrowser.io
-      description: API server
-  request:
-    security:
-      - title: api key header
-        parameters:
-          query: {}
-          header:
-            anchor-api-key:
-              type: apiKey
-              description: API key passed in the header
-          cookie: {}
-    parameters:
-      path:
-        session_id:
+  /v1/sessions/{session_id}/recordings/pause:
+    post:
+      tags:
+        - Session Recordings
+      summary: Pause Session Recording
+      description: Pauses the video recording for the specified browser session.
+      parameters:
+        - in: path
+          name: session_id
+          required: true
+          description: The ID of the browser session for which to pause recording.
           schema:
-            - type: string
-              required: true
-              description: The ID of the browser session for which to pause recording.
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - $ref: '#/components/schemas/SuccessResponse'
-        examples:
-          example:
-            value:
-              data:
-                data:
-                  status: <string>
-        description: Recording paused successfully.
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                error:
-                  code: 123
-                  message: <string>
-        description: Invalid API Key.
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                error:
-                  code: 123
-                  message: <string>
-        description: Session not found.
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - $ref: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                error:
-                  code: 123
-                  message: <string>
-        description: Failed to pause recording.
-  deprecated: false
-  type: path
+            type: string
+      responses:
+        '200':
+          description: Recording paused successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/SuccessResponse'
+        '401':
+          description: Invalid API Key.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Session not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Failed to pause recording.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - api_key_header: []
 components:
   schemas:
     SuccessResponse:
@@ -120,5 +95,11 @@ components:
               type: integer
             message:
               type: string
+  securitySchemes:
+    api_key_header:
+      type: apiKey
+      in: header
+      name: anchor-api-key
+      description: API key passed in the header
 
 ````

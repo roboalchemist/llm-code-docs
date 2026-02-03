@@ -6,7 +6,6 @@ description: >-
   Guide for upgrading Datadog Agent versions using Fleet Automation remote
   management, installation scripts, and configuration management tools.
 breadcrumbs: Docs > Agent > Agent Guides > Upgrade your Datadog Agent
-source_url: https://docs.datadoghq.com/guide/upgrade_agent_fleet_automation/index.html
 ---
 
 # Upgrade your Datadog Agent

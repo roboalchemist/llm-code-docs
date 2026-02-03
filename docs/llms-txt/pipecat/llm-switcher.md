@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/utilities/service-switchers/llm-switcher.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LLMSwitcher
 
 > Dynamically switch between different LLM services with support for ad-hoc inference and unified function registration
@@ -123,8 +127,3 @@ pipeline = Pipeline([
 # Switch to cheaper model for simple tasks
 await task.queue_frame(ManuallySwitchServiceFrame(service=gpt35))
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

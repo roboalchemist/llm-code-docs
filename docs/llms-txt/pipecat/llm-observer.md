@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/utilities/observers/llm-observer.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LLM Log Observer
 
 > Logging LLM activity in Pipecat
@@ -42,8 +46,3 @@ The observer uses emojis and consistent formatting for easy log reading:
 * 🧠 → \[Destination] LLM CONTEXT FRAME: \[context]
 
 All log entries include timestamps for precise timing analysis.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

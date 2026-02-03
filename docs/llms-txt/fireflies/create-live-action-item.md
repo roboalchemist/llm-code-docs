@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/graphql-api/mutation/create-live-action-item.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create Live Action Item
 
 > Use the API to create an action item during a live meeting
@@ -191,8 +195,3 @@ List of possible error codes that may be returned by the `createLiveActionItem` 
     Pause or resume recording for a live meeting
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.fireflies.ai/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.coollabs.io/fonts/how-to-use.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.coollabs.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to use
 
 > How to get started with Fonts
@@ -10,7 +14,7 @@ Example:
 
 Original `<head>` content:
 
-```html
+```html  theme={null}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -18,7 +22,7 @@ Original `<head>` content:
 
 Replaced `<head>` content:
 
-```html
+```html  theme={null}
 <link rel="preconnect" href="https://api.fonts.coollabs.io" crossorigin>
 <link href="https://api.fonts.coollabs.io/css2?family=Roboto&display=swap" rel="stylesheet">
 ```
@@ -27,7 +31,7 @@ Or with `@import`:
 
 From:
 
-```css
+```css  theme={null}
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 </style>
@@ -35,7 +39,7 @@ From:
 
 To:
 
-```css
+```css  theme={null}
 <style>
 @import url('https://api.fonts.coollabs.io/css2?family=Roboto&display=swap');
 </style>
@@ -49,7 +53,7 @@ Currently, [Material Icons](https://fonts.google.com/icons) is supported.
 
 Original `<head>` content:
 
-```html
+```html  theme={null}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -57,7 +61,7 @@ Original `<head>` content:
 
 Replaced `<head>` content:
 
-```html
+```html  theme={null}
 <link rel="preconnect" href="https://api.fonts.coollabs.io" crossorigin>
 <link href="https://api.fonts.coollabs.io/icon?family=Material+Icons" rel="stylesheet">
 ```

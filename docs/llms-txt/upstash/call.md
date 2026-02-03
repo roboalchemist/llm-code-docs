@@ -2,194 +2,79 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/functions/call.md
 
-# Source: https://upstash.com/docs/workflow/basics/context/call.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/functions/call.md
+# FCALL
 
-# Source: https://upstash.com/docs/workflow/basics/context/call.md
-
-# context.call
-
-`context.call()` performs an HTTP request as a workflow step, supporting longer response times up to 12 hours.
-
-The request is executed by **Upstash on your behalf**, so your application does not consume compute resources during the request duration.
-
-If the endpoint responds with a non‑success status code (anything outside `200–299`),
-`context.call()` still returns the response and the workflow continues.
-This allows you to inspect the response (via the `status` field) and decide how to handle failure cases in your logic.
-
-If you want requests to retry automatically, you can explicitly pass a retry configuration.
+> Invoke a function.
 
 ## Arguments
 
-<ParamField body="url" type="string">
-  The URL of the HTTP endpoint to call.
+<ParamField body="function" type="string" required>
+  The function name.
 </ParamField>
 
-<ParamField body="method" type="string">
-  TThe HTTP method to use (`GET`, `POST`, `PUT`, etc.). Defaults to `GET`.
+<ParamField body="keys" type="string[]">
+  The keys that the function accesses.
+
+  <Warning>
+    The function can only read/write from the keys that are provided in the `keys` argument.
+  </Warning>
 </ParamField>
 
-<ParamField body="body" type="string">
-  The request body.
-</ParamField>
-
-<ParamField body="headers" type="object">
-  A map of headers to include in the request.
-</ParamField>
-
-<ParamField body="retries">
-  Number of retry attempts if the request fails. Defaults to `0` (no retries).
-</ParamField>
-
-<ParamField body="retryDelay">
-  Delay between retries (in milliseconds). By default, uses exponential backoff. You can use mathematical expressions and the special variable `retried` (current retry attempt count starting from 0). Examples: `1000`, `pow(2, retried)`, `max(10, pow(2, retried))`.
-</ParamField>
-
-<ParamField body="flowControl" type="object" optional>
-  Throttle outbound requests.
-
-  See [Flow Control](/workflow/features/flow-control) for details.
-
-  <Expandable title="properties">
-    <ParamField body="key" type="string">
-      A logical grouping key that identifies which requests share the same flow control limits.
-    </ParamField>
-
-    <ParamField body="rate" type="number">
-      The maximum number of allowed requests per second.
-    </ParamField>
-
-    <ParamField body="parallelism" type="number">
-      The maximum number of concurrent requests allowed.
-    </ParamField>
-
-    <ParamField body="period" type="string|number">
-      The time window used to enforce the defined rate limit. Default is `1s`.
-    </ParamField>
-  </Expandable>
-</ParamField>
-
-<ParamField body="timeout" type="number">
-  Maximum time (in seconds) to wait for a response.
-  If retries are enabled, this timeout applies individually to each attempt.
-</ParamField>
-
-<ParamField body="workflow">
-  When using [`serveMany`](/workflow/howto/invoke#servemany), you can call another workflow defined in the same `serveMany` by passing it to this parameter.
-</ParamField>
-
-<ParamField body="stringifyBody" type="string" optional>
-  Whether to automatically stringify the body as JSON. Defaults to `true`
-
-  If set to `false`, the body will be required to be a string and will be sent as-is.
+<ParamField body="args" type="string[]">
+  The arguments for the function.
 </ParamField>
 
 ## Response
 
-<ResponseField name="status" type="number">
-  The HTTP response status code.
+<ResponseField type="unknown" required>
+  The return value of the function.
 </ResponseField>
 
-<ResponseField name="body" type="string">
-  The response body.
+<RequestExample>
+  ```ts Basic theme={"system"}
+  const code = `
+  #!lua name=mylib
+  redis.register_function('helloworld', 
+    function()
+      return 'Hello World!'
+    end
+  )
+  `;
 
-  `context.call()` attempts to parse the body as JSON.
-  If parsing fails, the raw body string is returned.
-</ResponseField>
+  await redis.functions.load({ code, replace: true });
 
-<ResponseField name="headers" type="dictionary">
-  The response headers.
-</ResponseField>
-
-<Tip>
-  In TypeScript, you can declare the expected result type for strong typing:
-
-  ```typescript  theme={"system"}
-  type ResultType = {
-    field1: string,
-    field2: number
-  };
-
-  const result = await context.call<ResultType>( ... );
-  ```
-</Tip>
-
-## Usage
-
-<CodeGroup>
-  ```javascript TypeScript theme={"system"}
-  import { serve } from "@upstash/workflow/nextjs";
-
-  export const { POST } = serve<{ topic: string }>(async (context) => {
-    const { userId, name } = context.requestPayload;
-
-    const { status,  headers,  body } = await context.call("sync-user-data", {
-        url: "https://my-third-party-app", // Endpoint URL
-        method: "POST",
-        body: {
-          userId,
-          name
-        },
-        headers: {
-          authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
-        },
-      }
-    );
-  });
-
+  const res = await redis.functions.call("helloworld");
+  console.log(res); // "Hello World!"
   ```
 
-  ```python Python theme={"system"}
-  from fastapi import FastAPI
-  from upstash_workflow.fastapi import Serve
-  from upstash_workflow import AsyncWorkflowContext
+  ```ts Advanced theme={"system"}
+  const code = `
+  #!lua name=mylib
 
-  app = FastAPI()
-  serve = Serve(app)
+  redis.register_function('my_hset',
+    function (keys, args)
+      local hash = keys[1]
+      local time = redis.call('TIME')[1]
+      return redis.call('HSET', hash, '_last_modified_', time, unpack(args))
+    end
+  )
+  `;
 
+  await redis.functions.load({ code, replace: true });
 
-  @dataclass
-  class Request:
-      topic: str
-
-
-  @serve.post("/api/example")
-  async def example(context: AsyncWorkflowContext[Request]) -> None:
-      request: Request = context.request_payload
-
-      result = await context.call(
-          "generate-long-essay",
-          url="https://api.openai.com/v1/chat/completions",
-          method="POST",
-          body={
-              "model": "gpt-4o",
-              "messages": [
-                  {
-                      "role": "system",
-                      "content": "You are a helpful assistant writing really long essays that would cause a normal serverless function to timeout.",
-                  },
-                  {"role": "user", "content": request["topic"]},
-              ],
-          },
-          headers={
-              "authorization": f"Bearer {os.environ['OPENAI_API_KEY']}",
-          },
-      )
-
-      status, headers, body = result.status, result.headers, result.body
-
+  const res = await redis.functions.call(
+    "my_hset",
+    ["myhash"],
+    [
+      "myfield",
+      "some value",
+      "another_field",
+      "another value",
+    ],
+  );
   ```
-</CodeGroup>
-
-<Tip>
-  We provide integrations for **OpenAI, Anthropic, and Resend**, allowing you to call their APIs with strongly typed request bodies using `context.call`.
-  See [`context.api`](/workflow/basics/context#context-api) for details.
-</Tip>
-
-<Info>
-  The `context.call()` function can make requests to any public API endpoint. However, it cannot:
-
-  * Make requests to localhost (unless you set up a local tunnel, [here's how](http://localhost:3000/workflow/howto/local-development))
-  * Make requests to internal Upstash QStash endpoints.
-</Info>
+</RequestExample>

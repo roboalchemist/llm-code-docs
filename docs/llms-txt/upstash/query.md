@@ -6,216 +6,184 @@
 
 # Source: https://upstash.com/docs/vector/api/endpoints/query.md
 
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/query.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/query.md
+# Query Vectors
 
-# Source: https://upstash.com/docs/vector/sdks/php/commands/query.md
+> Queries the approximate nearest neighbors of a vector.
 
-# Source: https://upstash.com/docs/vector/api/endpoints/query.md
+<Tip>
+  Query will run against the default namespace by default.
+  You can use a different namespace by specifying it in the request path.
+</Tip>
 
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/query.md
+## Request
 
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/query.md
+It is also possible to send a batch query request by providing an array
+of fields below.
 
-# Source: https://upstash.com/docs/vector/sdks/php/commands/query.md
+<ParamField body="vector" name="vector" type="number[]" required>
+  The query vector
+  <Note>The query vector should have the same dimensions as your index.</Note>
+</ParamField>
 
-# Source: https://upstash.com/docs/vector/api/endpoints/query.md
+<ParamField body="topK" type="number" default="10">
+  The total number of the vectors that you want to receive as a query
+  result. The response will be sorted based on the distance metric score,
+  and at most `topK` many vectors will be returned.
+</ParamField>
 
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/query.md
+<ParamField body="includeMetadata" type="boolean" default="false">
+  Whether to include the metadata of the vectors in the response, if any.
+  It is recommended to set this to `true` to easily identify vectors.
+</ParamField>
 
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/query.md
+<ParamField body="includeVectors" type="boolean" default="false">
+  Whether to include the vector values in the response.
+  It is recommended to set this to `false` as the vector values can be
+  quite big, and not needed most of the time.
+</ParamField>
 
-# Source: https://upstash.com/docs/vector/sdks/php/commands/query.md
+<ParamField body="includeData" type="boolean" default="false">
+  Whether to include the data of the vectors in the response, if any.
+</ParamField>
 
-# Source: https://upstash.com/docs/vector/api/endpoints/query.md
+<ParamField body="filter" type="string" default="">
+  [Metadata filter](/vector/features/filtering) to apply.
+</ParamField>
 
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/query.md
+<ParamField body="weightingStrategy" type="string">
+  For sparse vectors of sparse and hybrid indexes, specifies what kind of
+  weighting strategy should be used while querying the matching non-zero
+  dimension values of the query vector with the documents.
 
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/query.md
+  If not provided, no weighting will be used.
 
-# Source: https://upstash.com/docs/vector/sdks/php/commands/query.md
+  Only possible value is `IDF` (inverse document frequency).
+</ParamField>
 
-# Source: https://upstash.com/docs/vector/api/endpoints/query.md
+<ParamField body="fusionAlgorithm" type="string">
+  Fusion algorithm to use while fusing scores
+  from dense and sparse components of a hybrid index.
 
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/query.md
+  If not provided, defaults to `RRF` (Reciprocal Rank Fusion).
 
-# Query
+  Other possible value is `DBSF` (Distribution-Based Score Fusion).
+</ParamField>
 
-The query method is designed to retrieve the most similar vectors from the index, using the specific distance metric defined for your index. This method supports a variety of options to configure the query to your needs.
+## Path
 
-<Note>
-  The dimension of the query vector must match the dimension of your index.
-</Note>
-
-<Note>
-  The score returned from query requests is a normalized value between 0 and 1,
-  where 1 indicates the highest similarity and 0 the lowest regardless of the
-  similarity function used.
-</Note>
-
-## Arguments
-
-<ResponseField name="Payload" type="QueryCommandPayload" required>
-  <Expandable defaultOpen="true">
-    <ResponseField name="vector | sparseVector | data" type="number[] | SparseVector | string" required>
-      <Note>
-        There are two ways to use the query method. You can either create the vectors on your own and pass directly the `vector` or `sparseVector` field, depending on your index type. Or you can pass the `data` field and create the embeddings using Upstash Embedding.
-      </Note>
-
-      The query data/vector that you want to search for in the index.
-    </ResponseField>
-
-    <ResponseField name="topK" type="number" required>
-      The total number of the vectors that you want to receive as a query
-      result. The response will be sorted based on the distance metric score,
-      and `topK` vectors will be returned.
-    </ResponseField>
-
-    <ResponseField name="includeMetadata" type="boolean">
-      Whether to include the metadata of the vectors in the response. Setting
-      this `true` would be the best practice, since it will make it easier to
-      identify the vectors.
-    </ResponseField>
-
-    <ResponseField name="includeVectors" type="boolean">
-      Whether to include the vector themselves in the response.
-    </ResponseField>
-
-    <ResponseField name="includeData" type="boolean">
-      Whether to include [the data field](/vector/features/metadata#data) in the response.
-    </ResponseField>
-
-    <ResponseField name="filter" type="string">
-      The metadata filtering of the vector. This is used to query your data based on the filters and narrow down the query results.
-      If you wanna learn more about filtering check: [Metadata Filtering](/vector/features/filtering)
-    </ResponseField>
-
-    <ResponseField name="weightingStrategy" type="WeightingStrategy">
-      For sparse vectors, what kind of weighting strategy should be used while querying the matching non-zero dimension values of the query vector with the documents. If not provided, no weighting will be used.
-    </ResponseField>
-
-    <ResponseField name="fusionAlgorithm" type="FusionAlgorithm">
-      Fusion algorithm to use while fusing scores from dense and sparse components of a hybrid index. If not provided, defaults to `RRF`.
-    </ResponseField>
-
-    <ResponseField name="queryMode" type="QueryMode">
-      Query mode for hybrid indexes with Upstash-hosted embedding models. Specifies whether to run the query in only the dense index, only the sparse index, or in both. If not provided, defaults to `HYBRID`.
-    </ResponseField>
-  </Expandable>
-</ResponseField>
-
-<ResponseField name="Options" type="QueryCommandOptions">
-  <Expandable defaultOpen="true">
-    <ResponseField name="Namespace" type="string">
-      Namespace to query. If not set, default namespace is used.
-    </ResponseField>
-  </Expandable>
-</ResponseField>
+<ParamField path="namespace" type="string" default="">
+  The namespace to use.
+  When no namespace is specified, the default namespace will be used.
+</ParamField>
 
 ## Response
 
-<ResponseField name="Response" type="QueryResult" required>
+If the request was an array of a single element, or a JSON object,
+an object with the following fields is returned.
+
+If the request was an array of more than one items, an array of
+objects below is returned, one for each query item.
+
+<Note>
+  For dense indexes, the score is normalized to always be between 0 and 1.
+  The closer the score is to 1, the more similar the vector is to the query vector.
+  This does not depend on the distance metric you use.
+
+  For sparse and hybrid indexes, scores can be arbitrary values, but the score
+  will be higher for more similar vectors.
+</Note>
+
+<ResponseField name="Scores" type="Object[]">
   <Expandable defaultOpen="true">
-    <ResponseField name="id" type="string | number" required>
-      The ID of the resulting vector.
+    <ResponseField name="id" type="string" required>
+      The id of the vector.
     </ResponseField>
 
     <ResponseField name="score" type="number" required>
-      The score of the vector data, calculated based on the distance metric of your index.
+      The similarity score of the vector, calculated based on the distance metric of your index.
     </ResponseField>
 
     <ResponseField name="vector" type="number[]">
-      The resulting vector (if `includeVectors` is set to true)
+      The dense vector value for dense and hybrid indexes.
     </ResponseField>
 
-    <ResponseField name="sparseVector" type="SparseVector">
-      The resulting sparseVector (if `includeVectors` is set to true)
+    <ResponseField name="sparseVector" type="Object[]">
+      The sparse vector value for sparse and hybrid indexes.
+
+      <Expandable defaultOpen="true">
+        <ResponseField name="indices" type="number[]">
+          Indices of the non-zero valued dimensions.
+        </ResponseField>
+
+        <ResponseField name="values" type="number[]">
+          Values of the non-zero valued dimensions.
+        </ResponseField>
+      </Expandable>
     </ResponseField>
 
-    <ResponseField name="metadata" type="Record<string, unknown>">
-      The metadata of the vector (if `includeMetadata` is set to true)
+    <ResponseField name="metadata" type="Object">
+      The metadata of the vector, if any.
     </ResponseField>
 
     <ResponseField name="data" type="string">
-      The data of the vector (if `includeData` is set to true)
+      The unstructured data of the vector, if any.
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <RequestExample>
-  ```typescript Using Vector theme={"system"}
-  await index.query({
-    topK: 2,
-    vector: [ ... ],
-    includeMetadata: true,
-    includeVectors: true
-  }, { namespace: "my-namespace" })
-  /*
-  [
-    {
-      id: '6345',
-      score: 0.85,
-      vector: [],
-      metadata: {
-        sentence: "Upstash is great."
-      }
-    },
-    {
-      id: '1233',
-      score: 0.75,
-      vector: [],
-      metadata: undefined
-    },
-  ]
-  */
+  ```sh curl theme={"system"}
+  curl $UPSTASH_VECTOR_REST_URL/query \
+    -X POST \
+    -H "Authorization: Bearer $UPSTASH_VECTOR_REST_TOKEN" \
+    -d '{ "vector": [0.1, 0.2], "topK": 2, "includeMetadata": true }'
   ```
 
-  ```typescript Using Data theme={"system"}
-  const results = await index.query({
-    data: "Movie about an adventure of a hobbit in a fantasy world.",
-    includeVectors: true,
-    includeMetadata: true,
-    topK: 1,
-    filter: "genre = 'fantasy' and title = 'Lord of the Rings'",
-  });
-  /*
-  [
-    {
-      id: "1234",
-      vector: [0.1, 0.2, 0.3, 0.4, 0.5],
-      score: 0.9999999,
-      metadata: {
-        title: "Lord of The Rings",
-        genre: "fantasy",
-        category: "classic",
-      },
-    }
-  ]
-  */
+  ```sh curl (Namespace) theme={"system"}
+  curl $UPSTASH_VECTOR_REST_URL/query/ns \
+    -X POST \
+    -H "Authorization: Bearer $UPSTASH_VECTOR_REST_TOKEN" \
+    -d '{ "vector": [0.1, 0.2], "topK": 2, "includeMetadata": true }'
   ```
 
-  ```typescript Improved Typechecking theme={"system"}
-  type Metadata = {
-    title: string,
-    genre: 'sci-fi' | 'fantasy' | 'horror' | 'action'
-  }
-
-  const results = await index.query<Metadata>({
-    vector: [
-      ... // query embedding
-    ],
-    includeVectors: true,
-    topK: 1,
-    filter: "genre = 'fantasy' and title = 'Lord of the Rings'"
-  })
-
-  if (results[0].metadata) {
-    // Since we passed the Metadata type parameter above,
-    // we can interact with metadata fields without having to
-    // do any typecasting.
-    const { title, genre } = results[0].metadata;
-    console.log(`The best match in fantasy was ${title}`)
-  }
+  ```sh curl (Batch Query) theme={"system"}
+  curl "$UPSTASH_VECTOR_REST_URL/query" \
+    -X POST \
+    -H "Authorization: Bearer $UPSTASH_VECTOR_REST_TOKEN" \
+    -d '[
+          {
+            "vector": [0.1, 0.2],
+            "topK": 2,
+            "includeMetadata": true
+          },
+          {
+            "vector": [0.2, 0.3],
+            "topK": 3
+          }
+        ]'
   ```
 </RequestExample>
+
+<ResponseExample>
+  ```json 200 OK theme={"system"}
+  {
+      "result": [
+          {
+              "id": "id-0",
+              "score": 1.0,
+              "metadata": {
+                  "link": "upstash.com"
+              }
+          },
+          {
+              "id": "id-1",
+              "score": 0.99996454
+          }
+      ]
+  }
+  ```
+</ResponseExample>

@@ -2,7 +2,7 @@
 
 # Monitoring
 
-Keeping your modules running smoothly is essential for any application. The monitoring feature ensures your [Mission Control](/docs/terminology.md#mission-control) (your wallet) and modules â Satellites and Orbiter (Analytics) â stay operational by automatically refilling cycles when they run low. This helps prevent unexpected downtime, allowing you to focus on building and growing your product without worrying about cycle balances.
+Keeping your modules running smoothly is essential for any application. The monitoring feature ensures your modules â Satellites and Orbiter (Analytics) â stay operational by automatically refilling cycles when they run low. This helps prevent unexpected downtime, allowing you to focus on building and growing your product without worrying about cycle balances.
 
 ![A screenshot of the monitoring overview within Juno Console](/assets/images/monitoring-dashboard-caf86757b1501c3fe41cbae3cffa3ff3.webp)
 
@@ -11,23 +11,23 @@ Keeping your modules running smoothly is essential for any application. The moni
 ## Features
 
 *   **Cycle refilling**: Monitored modules are automatically topped up when their balance falls below what's needed to stay active.
-*   **Self-Monitoring**: Your Mission Control ensures that both your wallet and modules maintain sufficient cycles, with full control remaining in your hands at all times.
-*   **Automatic ICP Conversion**: Can mint new cycles from the ICP in your wallet, ensuring your modules stay adequately funded.
+*   **Self-Monitoring**: The monitoring monitors itself to maintain sufficient cycles, with full control remaining in your hands at all times.
 *   **Hourly Checks**: The system evaluates balances once an hour.
+*   **Automatic ICP Conversion**: Can mint new cycles from the ICP in your wallet, ensuring your modules stay adequately funded.
 
 ---
 
 ## Why Enable Monitoring?
 
-When a smart contract runs out of [cycles](/docs/terminology.md#cycles) on the [Internet Computer](https://internetcomputer.org), it stops functioning, which can disrupt your application or service. Enabling monitoring provides peace of mind by automating the management of cycles, ensuring your modules are always ready to perform. It also saves a little time by eliminating the need for manual top-ups.
+When a container runs out of [cycles](/docs/terminology.md#cycles) on the [Internet Computer](https://internetcomputer.org), it stops functioning, which can disrupt your application or service. Enabling monitoring provides peace of mind by automating the management of cycles, ensuring your modules are always ready to perform. It also saves a little time by eliminating the need for manual top-ups.
 
-It's important to note that if your wallet or a module run out of cycles, they will enter a grace period. During this time, the module stops working but can still be restored. If no action is taken, the module eventually gets deleted, resulting in the permanent loss of its data and functionality.
+It's important to note that if your modules run out of cycles, they will enter a grace period. During this time, the module stops working but can still be restored. If no action is taken, the module eventually gets deleted, resulting in the permanent loss of its data and functionality.
 
 ---
 
 ## How does it work?
 
-Monitoring runs hourly within your Mission Control, which acts as the central hub for managing all monitored modules. The process follows these steps:
+Monitoring runs hourly within a dedicated service called Mission Control, which acts as the central hub for managing all monitored modules. The process follows these steps:
 
 ---
 
@@ -116,6 +116,11 @@ In the case of failed attempts (e.g., when Mission Control or a module could not
 
 ## Configuration
 
-To enable monitoring, go to the [Monitoring Section](https://console.juno.build/monitoring) in the Juno Console. Start the wizard by clicking **Enable Auto-Refill** and follow the prompts to select the modules you want to monitor, choose a pre-defined strategy or create a custom one, and enable the feature.
+To enable monitoring, go to the [Monitoring Section](https://console.juno.build/monitoring) in the Juno Console. Start the wizard by clicking **Get started** and follow the prompts to:
 
-The wizard simplifies the setup process, making it easy to configure monitoring according to your needs.
+*   Create the Mission Control service
+*   Select the modules you want to monitor
+*   Choose a pre-defined strategy or create a custom one
+*   Enable the feature
+
+The wizard guides you through the setup process, making it easy to configure monitoring according to your needs.

@@ -1,67 +1,62 @@
 # Source: https://docs.openpipe.ai/api-reference/get-getModel.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.openpipe.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Model
 
 > Get a model by ID.
 
+
+
 ## OpenAPI
 
 ````yaml get /models/{modelSlug}
+openapi: 3.0.3
+info:
+  title: OpenPipe API
+  description: The public API for reporting API calls to OpenPipe
+  version: 0.1.1
+servers:
+  - url: https://api.openpipe.ai/api/v1
+security: []
 paths:
-  path: /models/{modelSlug}
-  method: get
-  servers:
-    - url: https://api.openpipe.ai/api/v1
-  request:
-    security:
-      - title: Authorization
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path:
-        modelSlug:
+  /models/{modelSlug}:
+    get:
+      description: Get a model by ID.
+      operationId: getModel
+      parameters:
+        - name: modelSlug
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - type: string
-              name:
-                allOf:
-                  - type: string
-              object:
-                allOf:
-                  - type: string
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  object:
+                    type: string
                     enum:
                       - model
-              description:
-                allOf:
-                  - type: string
+                  description:
+                    type: string
                     nullable: true
-              created:
-                allOf:
-                  - type: string
-              updated:
-                allOf:
-                  - type: string
-              openpipe:
-                allOf:
-                  - type: object
+                  created:
+                    type: string
+                  updated:
+                    type: string
+                  openpipe:
+                    type: object
                     properties:
                       baseModel:
                         type: string
@@ -92,24 +87,20 @@ paths:
                       - datasetId
                       - errorMessage
                     additionalProperties: false
-              contextWindow:
-                allOf:
-                  - type: number
-              maxCompletionTokens:
-                allOf:
-                  - type: number
-              capabilities:
-                allOf:
-                  - type: array
+                  contextWindow:
+                    type: number
+                  maxCompletionTokens:
+                    type: number
+                  capabilities:
+                    type: array
                     items:
                       type: string
                       enum:
                         - chat
                         - tools
                         - json
-              pricing:
-                allOf:
-                  - type: object
+                  pricing:
+                    type: object
                     properties:
                       chatIn:
                         type: number
@@ -121,84 +112,56 @@ paths:
                       - chatIn
                       - chatOut
                     additionalProperties: false
-              owned_by:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - id
-              - name
-              - object
-              - description
-              - created
-              - updated
-              - openpipe
-              - contextWindow
-              - maxCompletionTokens
-              - capabilities
-              - pricing
-              - owned_by
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              id: <string>
-              name: <string>
-              object: model
-              description: <string>
-              created: <string>
-              updated: <string>
-              openpipe:
-                baseModel: <string>
-                hyperparameters: {}
-                status: PENDING
-                datasetId: <string>
-                errorMessage: <string>
-              contextWindow: 123
-              maxCompletionTokens: 123
-              capabilities:
-                - chat
-              pricing:
-                chatIn: 123
-                chatOut: 123
-              owned_by: <string>
-        description: Successful response
-    default:
-      application/json:
-        schemaArray:
-          - type: object
+                  owned_by:
+                    type: string
+                required:
+                  - id
+                  - name
+                  - object
+                  - description
+                  - created
+                  - updated
+                  - openpipe
+                  - contextWindow
+                  - maxCompletionTokens
+                  - capabilities
+                  - pricing
+                  - owned_by
+                additionalProperties: false
+        default:
+          $ref: '#/components/responses/error'
+      security:
+        - Authorization: []
+components:
+  responses:
+    error:
+      description: Error response
+      content:
+        application/json:
+          schema:
+            type: object
             properties:
               message:
-                allOf:
-                  - type: string
+                type: string
               code:
-                allOf:
-                  - type: string
+                type: string
               issues:
-                allOf:
-                  - type: array
-                    items:
-                      type: object
-                      properties:
-                        message:
-                          type: string
-                      required:
-                        - message
-                      additionalProperties: false
-            requiredProperties:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                  required:
+                    - message
+                  additionalProperties: false
+            required:
               - message
               - code
             additionalProperties: false
-        examples:
-          example:
-            value:
-              message: <string>
-              code: <string>
-              issues:
-                - message: <string>
-        description: Error response
-  deprecated: false
-  type: path
-components:
-  schemas: {}
+  securitySchemes:
+    Authorization:
+      type: http
+      scheme: bearer
 
 ````

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/guides/prevent-llm-hallucinations/
+
 # How to Measure and Prevent LLM Hallucinations
 
 LLMs have great potential, but they are prone to generating incorrect or misleading information, a phenomenon known as hallucination. Factuality and LLM "grounding" are key concerns for developers building LLM applications.

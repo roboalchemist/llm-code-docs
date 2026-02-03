@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/troubleshooting/multi-turn-sessions/
+
 # Session Management
 
 Session management is important for our multi-turn strategies like Crescendo and GOAT. In these cases you want to make sure that the target system is able to maintain context between turns.

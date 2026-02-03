@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/sequence/
+
 # Sequence Provider
 
 The Sequence Provider allows you to send a series of prompts to another provider in sequence, collecting and combining all responses. This is useful for multi-step interactions, conversation flows, or breaking down complex prompts into smaller pieces.

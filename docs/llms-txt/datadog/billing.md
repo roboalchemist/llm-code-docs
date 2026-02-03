@@ -6,7 +6,6 @@ description: >-
   Understand billing cycles, payment methods, usage calculations, and host
   counting with detailed pricing information for Datadog products.
 breadcrumbs: Docs > Account Management > Billing
-source_url: https://docs.datadoghq.com/billing/index.html
 ---
 
 # Billing

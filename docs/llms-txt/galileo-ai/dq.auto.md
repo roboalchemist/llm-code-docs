@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-llm-fine-tune/quickstart/dq.auto.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Configuring Dq Auto
 
 > Automatic Data Insights on your Seq2Seq dataset
@@ -10,7 +14,7 @@ While using auto with default settings is as simple as running `dq.auto()`, you 
 
 #### Example
 
-```py
+```py  theme={null}
 from dataquality.integrations.seq2seq.auto import auto
 from dataquality.integrations.seq2seq.schema import (
     Seq2SeqDatasetConfig,
@@ -35,7 +39,6 @@ auto(
 ## Parameters
 
 * **Parameters**
-
   * **project\_name** (`Union`\[`str`, `None`]) -- Optional project name. If not set, a default name will be used. Default "s2s\_auto"
 
   * **run\_name** (`Union`\[`str`, `None`]) -- Optional run name. If not set, a random name will be generated
@@ -58,7 +61,7 @@ Given either a pandas dataframe, local file path, or huggingface dataset path, t
 
 One of `hf_data`, `train_path`, or `train_data` should be provided.
 
-```py
+```py  theme={null}
 from dataquality.integrations.seq2seq.schema import Seq2SeqDatasetConfig
 
 dataset_config = Seq2SeqDatasetConfig(
@@ -73,7 +76,6 @@ dataset_config = Seq2SeqDatasetConfig(
 ### Parameters
 
 * **Parameters**
-
   * **hf\_data** (`Union`\[`DatasetDict`, `str`, `None`]) -- Use this param if you have huggingface data in the hub or in memory. Otherwise see train\_path or train\_data, val\_path or val\_data, and test\_path or test\_data. If provided, other dataset parameters are ignored.
 
   * **train\_path** (`Union`\[`str`, `None`]) -- Optional training data to use. Must be a path to a local file of type `.csv`, `.json`, or `.jsonl`.
@@ -109,7 +111,6 @@ training_config = Seq2SeqTrainingConfig(
 ### Parameters
 
 * **Parameters**
-
   * **model** (`int`) -- The pretrained AutoModel from huggingface that will be used to tokenize and train on the provided data. Default `google/flan-t5-base`
 
   * **epochs** (`int`) -- The number of epochs to train. Defaults to 3. If set to 0, training/fine-tuning will be skipped and auto will only do a forward pass with the data to gather all the necessary info to display it in the console.
@@ -142,7 +143,6 @@ generation_config = Seq2SeqGenerationConfig(
 ### Parameters
 
 * **Parameters**
-
   * **max\_new\_tokens** (`int`) -- The maximum numbers of tokens to generate, ignoring the number of tokens in the prompt. Default 16
 
   * **temperature** (`float`) -- The value used to modulate the next token probabilities. Default 0.2

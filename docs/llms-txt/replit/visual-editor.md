@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replitai/visual-editor.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Visual Editor
 
 > Replit's Visual Editor empowers you to make direct visual edits to your app's UI in the preview, with seamless source code updates.

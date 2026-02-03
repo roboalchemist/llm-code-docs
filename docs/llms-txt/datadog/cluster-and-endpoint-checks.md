@@ -6,10 +6,8 @@ description: >-
   Troubleshoot issues with cluster checks and endpoint checks dispatched by the
   Datadog Cluster Agent
 breadcrumbs: >-
-  Docs > Container Monitoring > Container Troubleshooting > Troubleshooting
-  Cluster and Endpoint Checks
-source_url: >-
-  https://docs.datadoghq.com/troubleshooting/cluster-and-endpoint-checks/index.html
+  Docs > Containers > Container Troubleshooting > Troubleshooting Cluster and
+  Endpoint Checks
 ---
 
 # Troubleshooting Cluster and Endpoint Checks

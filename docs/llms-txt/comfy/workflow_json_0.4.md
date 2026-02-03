@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/specs/workflow_json_0.4.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Workflow JSON 0.4
 
 > JSON schema for a ComfyUI workflow.

@@ -16,30 +16,30 @@
 
 ## Enumeration Members<!-- -->[**](<#Enumeration Members>)
 
-### [**](#Actors)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/user.ts#L146)Actors
+### [**](#Actors)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/user.ts#L183)Actors
 
 **Actors: ACTORS
 
-### [**](#Proxy)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/user.ts#L151)Proxy
+### [**](#Proxy)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/user.ts#L188)Proxy
 
 **Proxy: PROXY
 
-### [**](#ProxyExternalAccess)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/user.ts#L152)ProxyExternalAccess
+### [**](#ProxyExternalAccess)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/user.ts#L189)ProxyExternalAccess
 
 **ProxyExternalAccess: PROXY\_EXTERNAL\_ACCESS
 
-### [**](#ProxySERPS)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/user.ts#L148)ProxySERPS
+### [**](#ProxySERPS)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/user.ts#L185)ProxySERPS
 
 **ProxySERPS: PROXY\_SERPS
 
-### [**](#Scheduler)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/user.ts#L149)Scheduler
+### [**](#Scheduler)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/user.ts#L186)Scheduler
 
 **Scheduler: SCHEDULER
 
-### [**](#Storage)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/user.ts#L147)Storage
+### [**](#Storage)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/user.ts#L184)Storage
 
 **Storage: STORAGE
 
-### [**](#Webhooks)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/user.ts#L150)Webhooks
+### [**](#Webhooks)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/user.ts#L187)Webhooks
 
 **Webhooks: WEBHOOKS

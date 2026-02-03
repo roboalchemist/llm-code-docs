@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/quickstarts/koyeb.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Koyeb
 
 Integrate a serverless Upstash Redis database with your Koyeb applications. Combine the serverless features of Koyeb on the application side and Upstash for your key-value storage to deploy and scale applications globally with ease.

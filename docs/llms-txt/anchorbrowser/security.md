@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/security.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Trust & Security
 
 Anchor was engineered from the ground up to be the definitive secure browser solution, empowering developers to deploy to production with confidence. We provide the essential security backbone and advanced capabilities required to build the next generation of browser-based workloads.
@@ -48,6 +52,12 @@ We maintain a rigorous security review and auditing process for our entire suppl
 #### Storage of customer data
 
 A core principle of Anchor Browser is minimizing data persistence. By design, we do not store customer data from within the browser sessions. Each browser instance runs in a dedicated, ephemeral virtual machine that is completely destroyed upon session termination. This means that any data accessed, generated, or downloaded during a session is either transferred directly to the customer's own environment via our secure peer-to-peer capability or is irretrievably deleted with the virtual machine. The only customer data we store is essential account and configuration information required for providing our service, such as user roles and network guardrail settings.
+
+#### Data Residency
+
+Anchor Browser infrastructure is by default fully hosted in the United States. All customer data, including browser sessions, account information, and configuration data, is processed and stored exclusively in the AWS `us-east-2` data center in Ohio.
+
+For organizations requiring EU-based infrastructure with full GDPR compliance, we offer dedicated European data residency in the AWS `eu-central-1` data center in Frankfurt on the Growth plan. Contact us at [support@anchorbrowser.io](mailto:support@anchorbrowser.io) or [schedule a call](https://cal.com/team/anchor-browser/30-min-meeting) to get started.
 
 #### Confidentiality & Protection of Customer Data
 

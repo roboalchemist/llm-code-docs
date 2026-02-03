@@ -4,8 +4,6 @@
 title: CodeBuild Source Credential
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > CodeBuild Source Credential
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.codebuild_source_credentials.dataset/index.html
 ---
 
 # CodeBuild Source Credential
@@ -18,12 +16,12 @@ aws.codebuild_source_credentials
 
 ## Fields
 
-| Title       | ID   | Type   | Data Type                                                                                                                                            | Description |
-| ----------- | ---- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| _key        | core | string |
-| account_id  | core | string |
-| arn         | core | string | The Amazon Resource Name (ARN) of the token.                                                                                                         |
-| auth_type   | core | string | The type of authentication used by the credentials. Valid options are OAUTH, BASIC_AUTH, PERSONAL_ACCESS_TOKEN, CODECONNECTIONS, or SECRETS_MANAGER. |
-| resource    | core | string | The connection ARN if your authType is CODECONNECTIONS or SECRETS_MANAGER.                                                                           |
-| server_type | core | string | The type of source provider. The valid options are GITHUB, GITHUB_ENTERPRISE, GITLAB, GITLAB_SELF_MANAGED, or BITBUCKET.                             |
-| tags        | core | hstore |
+| Title       | ID   | Type       | Data Type                                                                                                                                            | Description |
+| ----------- | ---- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| _key        | core | string     |
+| account_id  | core | string     |
+| arn         | core | string     | The Amazon Resource Name (ARN) of the token.                                                                                                         |
+| auth_type   | core | string     | The type of authentication used by the credentials. Valid options are OAUTH, BASIC_AUTH, PERSONAL_ACCESS_TOKEN, CODECONNECTIONS, or SECRETS_MANAGER. |
+| resource    | core | string     | The connection ARN if your authType is CODECONNECTIONS or SECRETS_MANAGER.                                                                           |
+| server_type | core | string     | The type of source provider. The valid options are GITHUB, GITHUB_ENTERPRISE, GITLAB, GITLAB_SELF_MANAGED, or BITBUCKET.                             |
+| tags        | core | hstore_csv |

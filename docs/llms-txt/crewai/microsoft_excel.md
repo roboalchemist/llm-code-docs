@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/enterprise/integrations/microsoft_excel.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Microsoft Excel Integration
 
 > Workbook and data management with Microsoft Excel integration for CrewAI.
@@ -35,7 +39,9 @@ uv add crewai-tools
 ### 3. Environment Variable Setup
 
 <Note>
-  To use integrations with `Agent(apps=[])`, you must set the `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise Token.
+  To use integrations with `Agent(apps=[])`, you must set the
+  `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise
+  Token.
 </Note>
 
 ```bash  theme={null}
@@ -480,5 +486,6 @@ crew.kickoff()
 ### Getting Help
 
 <Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-  Contact our support team for assistance with Microsoft Excel integration setup or troubleshooting.
+  Contact our support team for assistance with Microsoft Excel integration setup
+  or troubleshooting.
 </Card>

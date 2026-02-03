@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/references/open-source.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Open Source
 
 > Understanding Helicone's open-source status and how to contribute

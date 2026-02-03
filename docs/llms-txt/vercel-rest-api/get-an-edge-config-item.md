@@ -1,157 +1,129 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/edge-config/get-an-edge-config-item.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get an Edge Config item
 
 > Returns a specific Edge Config Item.
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v1/edge-config/{edgeConfigId}/item/{edgeConfigItemKey}
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v1/edge-config/{edgeConfigId}/item/{edgeConfigItemKey}
-  method: get
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path:
-        edgeConfigId:
+  /v1/edge-config/{edgeConfigId}/item/{edgeConfigItemKey}:
+    get:
+      tags:
+        - edge-config
+      summary: Get an Edge Config item
+      description: Returns a specific Edge Config Item.
+      operationId: getEdgeConfigItem
+      parameters:
+        - name: edgeConfigId
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-        edgeConfigItemKey:
+            type: string
+            pattern: ^ecfg_
+        - name: edgeConfigItemKey
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-      query:
-        teamId:
+            type: string
+        - description: The Team identifier to perform the request on behalf of.
+          in: query
+          name: teamId
           schema:
-            - type: string
-              description: The Team identifier to perform the request on behalf of.
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-        slug:
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        - description: The Team slug to perform the request on behalf of.
+          in: query
+          name: slug
           schema:
-            - type: string
-              description: The Team slug to perform the request on behalf of.
-              example: my-team-url-slug
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: getEdgeConfigItem
-        lang: go
-        source: "package main\n\nimport(\n\t\"os\"\n\t\"github.com/vercel/vercel\"\n\t\"context\"\n\t\"log\"\n)\n\nfunc main() {\n    s := vercel.New(\n        vercel.WithSecurity(os.Getenv(\"VERCEL_BEARER_TOKEN\")),\n    )\n\n    ctx := context.Background()\n    res, err := s.EdgeConfig.GetEdgeConfigItem(ctx, \"<id>\", \"<value>\", nil, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.EdgeConfigItem != nil {\n        // handle response\n    }\n}"
-      - label: getEdgeConfigItem
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.edgeConfig.getEdgeConfigItem({
-              edgeConfigId: "<id>",
-              edgeConfigItemKey: "<value>",
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-              slug: "my-team-url-slug",
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              key:
-                allOf:
-                  - type: string
-              value:
-                allOf:
-                  - $ref: '#/components/schemas/EdgeConfigItemValue'
-              description:
-                allOf:
-                  - type: string
-              edgeConfigId:
-                allOf:
-                  - type: string
-              createdAt:
-                allOf:
-                  - type: number
-              updatedAt:
-                allOf:
-                  - type: number
-            description: The EdgeConfig.
-            refIdentifier: '#/components/schemas/EdgeConfigItem'
-            requiredProperties:
-              - key
-              - value
-              - edgeConfigId
-              - createdAt
-              - updatedAt
-        examples:
-          example:
-            value:
-              key: <string>
-              value: <string>
-              description: <string>
-              edgeConfigId: <string>
-              createdAt: 123
-              updatedAt: 123
-        description: The EdgeConfig.
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: One of the provided values in the request query is invalid.
-        examples: {}
-        description: One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-    '404': {}
-  deprecated: false
-  type: path
+            type: string
+            example: my-team-url-slug
+      responses:
+        '200':
+          description: The EdgeConfig.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdgeConfigItem'
+        '400':
+          description: One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+        '404':
+          description: ''
+      security:
+        - bearerToken: []
 components:
   schemas:
+    EdgeConfigItem:
+      properties:
+        key:
+          type: string
+        value:
+          $ref: '#/components/schemas/EdgeConfigItemValue'
+        description:
+          type: string
+        edgeConfigId:
+          type: string
+        createdAt:
+          type: number
+        updatedAt:
+          type: number
+      required:
+        - createdAt
+        - edgeConfigId
+        - key
+        - updatedAt
+        - value
+      type: object
+      description: The EdgeConfig.
     EdgeConfigItemValue:
       nullable: true
       oneOf:
         - type: string
         - type: number
-        - type: boolean
         - additionalProperties:
             $ref: '#/components/schemas/EdgeConfigItemValue'
           type: object
         - items:
             $ref: '#/components/schemas/EdgeConfigItemValue'
           type: array
+        - type: boolean
+          enum:
+            - false
+            - true
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

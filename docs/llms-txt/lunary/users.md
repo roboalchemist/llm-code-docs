@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/features/users.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # User Tracking
 
 Identify your users, track their cost, conversations and more.
@@ -150,8 +154,3 @@ While you can track any property you'd like, we recommend using the following on
 | `email`  | Email of the user                       |
 | `avatar` | URL to an avatar                        |
 | `group`  | Group or company ID the user belongs to |
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

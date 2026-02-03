@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/examples/image-generation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Image generation
 
 > Building a text-to-image model with Flux Schnell

@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/auth/ping.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/auth/ping.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/auth/ping.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/auth/ping.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/auth/ping.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/auth/ping.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/auth/ping.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/auth/ping.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/auth/ping.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/auth/ping.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # PING
 
@@ -30,13 +16,12 @@ No arguments
 
 ## Response
 
-<ResponseField type="string" required>
+<ResponseField type="str" required>
   `PONG`
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  const response = await redis.ping();
-  console.log(response); // "PONG"
+  ```py Example theme={"system"}
+  assert redis.ping() == "PONG"
   ```
 </RequestExample>

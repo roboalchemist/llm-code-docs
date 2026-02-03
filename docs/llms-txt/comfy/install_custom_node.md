@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/installation/install_custom_node.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to Install Custom Nodes in ComfyUI
 
 > This guide will show you different methods to install custom nodes in ComfyUI

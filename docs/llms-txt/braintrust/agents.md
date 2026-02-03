@@ -1,6 +1,8 @@
-# Source: https://braintrust.dev/docs/core/functions/agents.md
-
 # Source: https://braintrust.dev/docs/best-practices/agents.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Evaluating agents
 
@@ -174,8 +176,3 @@ Evaluations should evolve alongside your agent’s behavior and product goals.
 </Steps>
 
 By combining offline and online evaluations, and balancing end-to-end testing with single-step checks, you’ll build a solid evaluation architecture. You'll be able to catch issues early, debug faster, and continuously improve your agent based on real-world user expectations.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

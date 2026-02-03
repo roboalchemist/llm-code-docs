@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/qwen3_vl_moe.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/qwen3_vl_moe.md
 
 # Qwen3-VL-Moe
 
@@ -57,15 +57,15 @@ print(output_text)
 
 #### transformers.Qwen3VLMoeConfig[[transformers.Qwen3VLMoeConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/qwen3_vl_moe/configuration_qwen3_vl_moe.py#L224)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/qwen3_vl_moe/configuration_qwen3_vl_moe.py#L216)
 
-This is the configuration class to store the configuration of a [Qwen3VLMoeModel](/docs/transformers/v5.0.0rc1/en/model_doc/qwen3_vl_moe#transformers.Qwen3VLMoeModel). It is used to instantiate a
+This is the configuration class to store the configuration of a [Qwen3VLMoeModel](/docs/transformers/v5.0.0/en/model_doc/qwen3_vl_moe#transformers.Qwen3VLMoeModel). It is used to instantiate a
 Qwen3-VL-MOE model according to the specified arguments, defining the model architecture. Instantiating a configuration
 with the defaults will yield a similar configuration to that of
 Qwen3-VL-30B-A3B-Instruct [Qwen/Qwen3-VL-30B-A3B-Instruct](https://huggingface.co/Qwen/Qwen3-VL-30B-A3B-Instruct).
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 ```python
 >>> from transformers import Qwen3VLMoeForConditionalGeneration, Qwen3VLMoeConfig
@@ -94,21 +94,21 @@ vision_start_token_id (`int`, *optional*, defaults to 151652) : The start token 
 
 vision_end_token_id (`int`, *optional*, defaults to 151653) : The end token index to encode the image prompt.
 
-tie_word_embeddings (`bool`, *optional*, defaults to `False`) : Whether to tie the word embeddings.
+tie_word_embeddings (`bool`, *optional*, defaults to `False`) : Whether the model's input and output word embeddings should be tied.
 
 ## Qwen3VLMoeTextConfig[[transformers.Qwen3VLMoeTextConfig]]
 
 #### transformers.Qwen3VLMoeTextConfig[[transformers.Qwen3VLMoeTextConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/qwen3_vl_moe/configuration_qwen3_vl_moe.py#L28)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/qwen3_vl_moe/configuration_qwen3_vl_moe.py#L24)
 
-This is the configuration class to store the configuration of a [Qwen3VLMoeTextModel](/docs/transformers/v5.0.0rc1/en/model_doc/qwen3_vl_moe#transformers.Qwen3VLMoeTextModel). It is used to instantiate a
+This is the configuration class to store the configuration of a [Qwen3VLMoeTextModel](/docs/transformers/v5.0.0/en/model_doc/qwen3_vl_moe#transformers.Qwen3VLMoeTextModel). It is used to instantiate a
 Qwen3-VL-MOE model according to the specified arguments, defining the model architecture. Instantiating a configuration
 with the defaults will yield a similar configuration to that of
 Qwen3-VL-30B-A3B-Instruct [Qwen/Qwen3-VL-30B-A3B-Instruct](https://huggingface.co/Qwen/Qwen3-VL-30B-A3B-Instruct).
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 ```python
 >>> from transformers import Qwen3VLMoeForConditionalGeneration, Qwen3VLMoeConfig
@@ -125,7 +125,7 @@ documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_class
 
 **Parameters:**
 
-vocab_size (`int`, *optional*, defaults to 151936) : Vocabulary size of the Qwen2MoE model. Defines the number of different tokens that can be represented by the `inputs_ids` passed when calling [Qwen2MoeModel](/docs/transformers/v5.0.0rc1/en/model_doc/qwen2_moe#transformers.Qwen2MoeModel)
+vocab_size (`int`, *optional*, defaults to 151936) : Vocabulary size of the Qwen2MoE model. Defines the number of different tokens that can be represented by the `inputs_ids` passed when calling [Qwen2MoeModel](/docs/transformers/v5.0.0/en/model_doc/qwen2_moe#transformers.Qwen2MoeModel)
 
 hidden_size (`int`, *optional*, defaults to 2048) : Dimension of the hidden representations.
 
@@ -146,8 +146,6 @@ initializer_range (`float`, *optional*, defaults to 0.02) : The standard deviati
 rms_norm_eps (`float`, *optional*, defaults to 1e-06) : The epsilon used by the rms normalization layers.
 
 use_cache (`bool`, *optional*, defaults to `True`) : Whether or not the model should return the last key/values attentions (not used by all models). Only relevant if `config.is_decoder=True`.
-
-tie_word_embeddings (`bool`, *optional*, defaults to `False`) : Whether the model's input and output word embeddings should be tied.
 
 attention_bias (`bool`, defaults to `False`, *optional*, defaults to `False`) : Whether to use a bias in the query, key, value and output projection layers during self-attention.
 
@@ -171,9 +169,9 @@ head_dim (`int`, *optional*) : The dimension of the head. If not specified, will
 
 #### transformers.Qwen3VLMoeVisionModel[[transformers.Qwen3VLMoeVisionModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/qwen3_vl_moe/modeling_qwen3_vl_moe.py#L610)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/qwen3_vl_moe/modeling_qwen3_vl_moe.py#L602)
 
-forwardtransformers.Qwen3VLMoeVisionModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/qwen3_vl_moe/modeling_qwen3_vl_moe.py#L748[{"name": "hidden_states", "val": ": Tensor"}, {"name": "grid_thw", "val": ": Tensor"}, {"name": "**kwargs", "val": ""}]- **hidden_states** (`torch.Tensor` of shape `(seq_len, hidden_size)`) --
+forwardtransformers.Qwen3VLMoeVisionModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/qwen3_vl_moe/modeling_qwen3_vl_moe.py#L747[{"name": "hidden_states", "val": ": Tensor"}, {"name": "grid_thw", "val": ": Tensor"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **hidden_states** (`torch.Tensor` of shape `(seq_len, hidden_size)`) --
   The final hidden states of the model.
 - **grid_thw** (`torch.Tensor` of shape `(num_images_or_videos, 3)`) --
   The temporal, height and width of feature shape of each image in LLM.0`torch.Tensor`hidden_states.
@@ -194,11 +192,11 @@ hidden_states.
 
 #### transformers.Qwen3VLMoeTextModel[[transformers.Qwen3VLMoeTextModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/qwen3_vl_moe/modeling_qwen3_vl_moe.py#L896)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/qwen3_vl_moe/modeling_qwen3_vl_moe.py#L902)
 
 Text part of Qwen3VLMoe, not a pure text-only model, as DeepStack integrates visual features into the early hidden states.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -206,11 +204,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Qwen3VLMoeTextModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/qwen3_vl_moe/modeling_qwen3_vl_moe.py#L916[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "visual_pos_masks", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "deepstack_visual_embeds", "val": ": typing.Optional[list[torch.Tensor]] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.modeling_flash_attention_utils.FlashAttentionKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.Qwen3VLMoeTextModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/qwen3_vl_moe/modeling_qwen3_vl_moe.py#L922[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "visual_pos_masks", "val": ": torch.Tensor | None = None"}, {"name": "deepstack_visual_embeds", "val": ": list[torch.Tensor] | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.modeling_flash_attention_utils.FlashAttentionKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -229,8 +227,8 @@ forwardtransformers.Qwen3VLMoeTextModel.forwardhttps://github.com/huggingface/tr
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -253,15 +251,15 @@ forwardtransformers.Qwen3VLMoeTextModel.forwardhttps://github.com/huggingface/tr
 - **deepstack_visual_embeds** (`list[torch.Tensor]`, *optional*) --
   The deepstack visual embeddings. The shape is (num_layers, visual_seqlen, embed_dim).
   The feature is extracted from the different visual encoder layers, and fed to the decoder
-  hidden states. It's from the paper DeepStack(https://arxiv.org/abs/2406.04334).0[transformers.modeling_outputs.BaseModelOutputWithPast](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPast) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutputWithPast](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPast) or a tuple of
+  hidden states. It's from the paper DeepStack(https://arxiv.org/abs/2406.04334).0[transformers.modeling_outputs.BaseModelOutputWithPast](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPast) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutputWithPast](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPast) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Qwen3VLMoeConfig](/docs/transformers/v5.0.0rc1/en/model_doc/qwen3_vl_moe#transformers.Qwen3VLMoeConfig)) and inputs.
+elements depending on the configuration ([Qwen3VLMoeConfig](/docs/transformers/v5.0.0/en/model_doc/qwen3_vl_moe#transformers.Qwen3VLMoeConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 
   If `past_key_values` is used only the last hidden-state of the sequences of shape `(batch_size, 1,
   hidden_size)` is output.
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and optionally if
   `config.is_encoder_decoder=True` in the cross-attention blocks) that can be used (see `past_key_values`
@@ -275,7 +273,7 @@ elements depending on the configuration ([Qwen3VLMoeConfig](/docs/transformers/v
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [Qwen3VLMoeTextModel](/docs/transformers/v5.0.0rc1/en/model_doc/qwen3_vl_moe#transformers.Qwen3VLMoeTextModel) forward method, overrides the `__call__` special method.
+The [Qwen3VLMoeTextModel](/docs/transformers/v5.0.0/en/model_doc/qwen3_vl_moe#transformers.Qwen3VLMoeTextModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -283,21 +281,21 @@ the latter silently ignores them.
 
 **Parameters:**
 
-config ([Qwen3VLMoeTextConfig](/docs/transformers/v5.0.0rc1/en/model_doc/qwen3_vl_moe#transformers.Qwen3VLMoeTextConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Qwen3VLMoeTextConfig](/docs/transformers/v5.0.0/en/model_doc/qwen3_vl_moe#transformers.Qwen3VLMoeTextConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.BaseModelOutputWithPast](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPast) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.BaseModelOutputWithPast](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPast) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.BaseModelOutputWithPast](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPast) or a tuple of
+A [transformers.modeling_outputs.BaseModelOutputWithPast](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPast) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Qwen3VLMoeConfig](/docs/transformers/v5.0.0rc1/en/model_doc/qwen3_vl_moe#transformers.Qwen3VLMoeConfig)) and inputs.
+elements depending on the configuration ([Qwen3VLMoeConfig](/docs/transformers/v5.0.0/en/model_doc/qwen3_vl_moe#transformers.Qwen3VLMoeConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 
   If `past_key_values` is used only the last hidden-state of the sequences of shape `(batch_size, 1,
   hidden_size)` is output.
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and optionally if
   `config.is_encoder_decoder=True` in the cross-attention blocks) that can be used (see `past_key_values`
@@ -316,11 +314,11 @@ elements depending on the configuration ([Qwen3VLMoeConfig](/docs/transformers/v
 
 #### transformers.Qwen3VLMoeModel[[transformers.Qwen3VLMoeModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/qwen3_vl_moe/modeling_qwen3_vl_moe.py#L1076)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/qwen3_vl_moe/modeling_qwen3_vl_moe.py#L1082)
 
 The bare Qwen3 Vl Moe Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -328,11 +326,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Qwen3VLMoeModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/qwen3_vl_moe/modeling_qwen3_vl_moe.py#L1289[{"name": "input_ids", "val": ": LongTensor = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "pixel_values", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "pixel_values_videos", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "image_grid_thw", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "video_grid_thw", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`) --
+forwardtransformers.Qwen3VLMoeModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/qwen3_vl_moe/modeling_qwen3_vl_moe.py#L1307[{"name": "input_ids", "val": ": LongTensor = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "pixel_values", "val": ": torch.Tensor | None = None"}, {"name": "pixel_values_videos", "val": ": torch.FloatTensor | None = None"}, {"name": "image_grid_thw", "val": ": torch.LongTensor | None = None"}, {"name": "video_grid_thw", "val": ": torch.LongTensor | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -351,8 +349,8 @@ forwardtransformers.Qwen3VLMoeModel.forwardhttps://github.com/huggingface/transf
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -382,22 +380,22 @@ forwardtransformers.Qwen3VLMoeModel.forwardhttps://github.com/huggingface/transf
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
 elements depending on the configuration (`None`) and inputs.
 
-- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*, defaults to `None`) -- Sequence of hidden-states at the output of the last layer of the model.
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **last_hidden_state** (`torch.FloatTensor | None.last_hidden_state` of shape `(batch_size, sequence_length, hidden_size)`, defaults to `None`) -- Sequence of hidden-states at the output of the last layer of the model.
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
 - **rope_deltas** (`torch.LongTensor` of shape `(batch_size, )`, *optional*) -- The rope index difference between sequence length and multimodal rope.
-The [Qwen3VLMoeModel](/docs/transformers/v5.0.0rc1/en/model_doc/qwen3_vl_moe#transformers.Qwen3VLMoeModel) forward method, overrides the `__call__` special method.
+The [Qwen3VLMoeModel](/docs/transformers/v5.0.0/en/model_doc/qwen3_vl_moe#transformers.Qwen3VLMoeModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -405,7 +403,7 @@ the latter silently ignores them.
 
 **Parameters:**
 
-config ([Qwen3VLMoeModel](/docs/transformers/v5.0.0rc1/en/model_doc/qwen3_vl_moe#transformers.Qwen3VLMoeModel)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Qwen3VLMoeModel](/docs/transformers/v5.0.0/en/model_doc/qwen3_vl_moe#transformers.Qwen3VLMoeModel)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
@@ -415,29 +413,89 @@ A `transformers.models.qwen3_vl_moe.modeling_qwen3_vl_moe.Qwen3VLMoeModelOutputW
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
 elements depending on the configuration (`None`) and inputs.
 
-- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*, defaults to `None`) -- Sequence of hidden-states at the output of the last layer of the model.
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **last_hidden_state** (`torch.FloatTensor | None.last_hidden_state` of shape `(batch_size, sequence_length, hidden_size)`, defaults to `None`) -- Sequence of hidden-states at the output of the last layer of the model.
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
 - **rope_deltas** (`torch.LongTensor` of shape `(batch_size, )`, *optional*) -- The rope index difference between sequence length and multimodal rope.
+#### get_video_features[[transformers.Qwen3VLMoeModel.get_video_features]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/qwen3_vl_moe/modeling_qwen3_vl_moe.py#L1224)
+
+**Parameters:**
+
+pixel_values_videos (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`) : The tensors corresponding to the input videos.
+
+video_grid_thw (`torch.LongTensor` of shape `(num_videos, 3)`, *optional*) : The temporal, height and width of feature shape of each video in LLM.
+
+**Returns:**
+
+``transformers.models.qwen3_vl_moe.modeling_qwen3_vl_moe.BaseModelOutputWithDeepstackFeatures` or `tuple(torch.FloatTensor)``
+
+A `transformers.models.qwen3_vl_moe.modeling_qwen3_vl_moe.BaseModelOutputWithDeepstackFeatures` or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([Qwen3VLMoeConfig](/docs/transformers/v5.0.0/en/model_doc/qwen3_vl_moe#transformers.Qwen3VLMoeConfig)) and inputs.
+
+- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) -- Sequence of hidden-states at the output of the last layer of the model.
+- **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`, *optional*) -- Last layer hidden-state after a pooling operation on the spatial dimensions.
+- **hidden_states** (`tuple`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
+- **deepstack_features** (`List[torch.FloatTensor]`, *optional*) -- List of hidden-states (feature maps) from deepstack layers.
+#### get_image_features[[transformers.Qwen3VLMoeModel.get_image_features]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/qwen3_vl_moe/modeling_qwen3_vl_moe.py#L1241)
+
+**Parameters:**
+
+pixel_values (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`) : The tensors corresponding to the input images.
+
+image_grid_thw (`torch.LongTensor` of shape `(num_images, 3)`, *optional*) : The temporal, height and width of feature shape of each image in LLM.
+
+**Returns:**
+
+``transformers.models.qwen3_vl_moe.modeling_qwen3_vl_moe.BaseModelOutputWithDeepstackFeatures` or `tuple(torch.FloatTensor)``
+
+A `transformers.models.qwen3_vl_moe.modeling_qwen3_vl_moe.BaseModelOutputWithDeepstackFeatures` or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([Qwen3VLMoeConfig](/docs/transformers/v5.0.0/en/model_doc/qwen3_vl_moe#transformers.Qwen3VLMoeConfig)) and inputs.
+
+- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) -- Sequence of hidden-states at the output of the last layer of the model.
+- **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`, *optional*) -- Last layer hidden-state after a pooling operation on the spatial dimensions.
+- **hidden_states** (`tuple`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
+- **deepstack_features** (`List[torch.FloatTensor]`, *optional*) -- List of hidden-states (feature maps) from deepstack layers.
 
 ## Qwen3VLMoeForConditionalGeneration[[transformers.Qwen3VLMoeForConditionalGeneration]]
 
 #### transformers.Qwen3VLMoeForConditionalGeneration[[transformers.Qwen3VLMoeForConditionalGeneration]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/qwen3_vl_moe/modeling_qwen3_vl_moe.py#L1482)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/qwen3_vl_moe/modeling_qwen3_vl_moe.py#L1508)
 
-forwardtransformers.Qwen3VLMoeForConditionalGeneration.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/qwen3_vl_moe/modeling_qwen3_vl_moe.py#L1510[{"name": "input_ids", "val": ": LongTensor = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "pixel_values", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "pixel_values_videos", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "image_grid_thw", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "video_grid_thw", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "logits_to_keep", "val": ": typing.Union[int, torch.Tensor] = 0"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]
+forwardtransformers.Qwen3VLMoeForConditionalGeneration.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/qwen3_vl_moe/modeling_qwen3_vl_moe.py#L1560[{"name": "input_ids", "val": ": LongTensor = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "pixel_values", "val": ": torch.Tensor | None = None"}, {"name": "pixel_values_videos", "val": ": torch.FloatTensor | None = None"}, {"name": "image_grid_thw", "val": ": torch.LongTensor | None = None"}, {"name": "video_grid_thw", "val": ": torch.LongTensor | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "logits_to_keep", "val": ": int | torch.Tensor = 0"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]
 
 labels (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*):
 Labels for computing the masked language modeling loss. Indices should either be in `[0, ...,
@@ -451,7 +509,8 @@ The temporal, height and width of feature shape of each video in LLM.
 Example:
 ```python
 >>> from PIL import Image
->>> import requests
+>>> import httpx
+>>> from io import BytesIO
 >>> from transformers import AutoProcessor, Qwen3VLMoeForConditionalGeneration
 
 >>> model = Qwen3VLMoeForConditionalGeneration.from_pretrained("Qwen/Qwen3-VL-30B-A3B-Instruct", dtype="auto", device_map="auto")
@@ -488,4 +547,124 @@ Example:
 >>> processor.batch_decode(generated_ids_trimmed, skip_special_tokens=True, clean_up_tokenization_spaces=False)[0]
 "A woman in a plaid shirt sits on a sandy beach at sunset, smiling as she gives a high-five to a yellow Labrador Retriever wearing a harness. The ocean waves roll in the background."
 ```
+#### get_video_features[[transformers.Qwen3VLMoeForConditionalGeneration.get_video_features]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/qwen3_vl_moe/modeling_qwen3_vl_moe.py#L1528)
+
+Example:
+
+```python
+>>> from PIL import Image
+>>> from transformers import AutoProcessor, Qwen3VLMoeForConditionalGeneration
+
+>>> model = Qwen3VLMoeForConditionalGeneration.from_pretrained("Qwen/Qwen3-VL-30B-A3B-Instruct")
+>>> processor = AutoProcessor.from_pretrained("Qwen/Qwen3-VL-30B-A3B-Instruct")
+
+>>> messages = [
+...     {
+...         "role": "user", "content": [
+...             {"type": "image", "url": "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/pipeline-cat-chonk.jpeg"},
+...             {"type": "text", "text": "Where is the cat standing?"},
+...         ]
+...     },
+... ]
+
+>>> inputs = processor.apply_chat_template(
+...     messages,
+...     tokenize=True,
+...     return_dict=True,
+...     return_tensors="pt",
+...     add_generation_prompt=True
+... )
+>>> # Generate
+>>> generate_ids = model.generate(**inputs)
+>>> processor.batch_decode(generate_ids, skip_special_tokens=True)[0]
+```
+
+**Parameters:**
+
+pixel_values_videos (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`) : The tensors corresponding to the input videos.
+
+video_grid_thw (`torch.LongTensor` of shape `(num_videos, 3)`, *optional*) : The temporal, height and width of feature shape of each video in LLM.
+
+**Returns:**
+
+``transformers.models.qwen3_vl_moe.modeling_qwen3_vl_moe.BaseModelOutputWithDeepstackFeatures` or `tuple(torch.FloatTensor)``
+
+A `transformers.models.qwen3_vl_moe.modeling_qwen3_vl_moe.BaseModelOutputWithDeepstackFeatures` or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([Qwen3VLMoeConfig](/docs/transformers/v5.0.0/en/model_doc/qwen3_vl_moe#transformers.Qwen3VLMoeConfig)) and inputs.
+
+- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) -- Sequence of hidden-states at the output of the last layer of the model.
+- **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`, *optional*) -- Last layer hidden-state after a pooling operation on the spatial dimensions.
+- **hidden_states** (`tuple`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
+- **deepstack_features** (`List[torch.FloatTensor]`, *optional*) -- List of hidden-states (feature maps) from deepstack layers.
+#### get_image_features[[transformers.Qwen3VLMoeForConditionalGeneration.get_image_features]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/qwen3_vl_moe/modeling_qwen3_vl_moe.py#L1545)
+
+Example:
+
+```python
+>>> from PIL import Image
+>>> from transformers import AutoProcessor, Qwen3VLMoeForConditionalGeneration
+
+>>> model = Qwen3VLMoeForConditionalGeneration.from_pretrained("Qwen/Qwen3-VL-30B-A3B-Instruct")
+>>> processor = AutoProcessor.from_pretrained("Qwen/Qwen3-VL-30B-A3B-Instruct")
+
+>>> messages = [
+...     {
+...         "role": "user", "content": [
+...             {"type": "image", "url": "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/pipeline-cat-chonk.jpeg"},
+...             {"type": "text", "text": "Where is the cat standing?"},
+...         ]
+...     },
+... ]
+
+>>> inputs = processor.apply_chat_template(
+...     messages,
+...     tokenize=True,
+...     return_dict=True,
+...     return_tensors="pt",
+...     add_generation_prompt=True
+... )
+>>> # Generate
+>>> generate_ids = model.generate(**inputs)
+>>> processor.batch_decode(generate_ids, skip_special_tokens=True)[0]
+```
+
+**Parameters:**
+
+pixel_values (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`) : The tensors corresponding to the input images.
+
+image_grid_thw (`torch.LongTensor` of shape `(num_images, 3)`, *optional*) : The temporal, height and width of feature shape of each image in LLM.
+
+**Returns:**
+
+``transformers.models.qwen3_vl_moe.modeling_qwen3_vl_moe.BaseModelOutputWithDeepstackFeatures` or `tuple(torch.FloatTensor)``
+
+A `transformers.models.qwen3_vl_moe.modeling_qwen3_vl_moe.BaseModelOutputWithDeepstackFeatures` or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([Qwen3VLMoeConfig](/docs/transformers/v5.0.0/en/model_doc/qwen3_vl_moe#transformers.Qwen3VLMoeConfig)) and inputs.
+
+- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) -- Sequence of hidden-states at the output of the last layer of the model.
+- **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`, *optional*) -- Last layer hidden-state after a pooling operation on the spatial dimensions.
+- **hidden_states** (`tuple`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
+- **deepstack_features** (`List[torch.FloatTensor]`, *optional*) -- List of hidden-states (feature maps) from deepstack layers.
 

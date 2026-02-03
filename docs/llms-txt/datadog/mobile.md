@@ -1,3 +1,5 @@
+# Source: https://docs.datadoghq.com/error_tracking/frontend/mobile.md
+
 # Source: https://docs.datadoghq.com/mobile.md
 
 ---
@@ -6,7 +8,6 @@ description: >-
   Monitor your infrastructure on-the-go with the Datadog mobile app for iOS and
   Android, featuring dashboards, alerts, incidents, and on-call management.
 breadcrumbs: Docs > Datadog Mobile App
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Datadog Mobile App

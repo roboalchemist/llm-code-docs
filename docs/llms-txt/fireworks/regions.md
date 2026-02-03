@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/deployments/regions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Regions
 
 > Fireworks runs a global fleet of hardware on which you can deploy your models.
@@ -40,7 +44,7 @@ Current region availability:
 When creating a deployment, you can pass the `--region` flag:
 
 ```
-firectl create deployment accounts/fireworks/models/llama-v3p1-8b-instruct \
+firectl deployment create accounts/fireworks/models/llama-v3p1-8b-instruct \
     --region US_IOWA_1
 ```
 
@@ -54,7 +58,7 @@ create a new deployment in the new region, then delete the old deployment.
 Each region has it's own separate quota for each hardware type. To view your current quotas, run
 
 ```
-firectl list quotas
+firectl quota list
 ```
 
 If you need deployments in a non-GA region, please contact our team at [inquiries@fireworks.ai](mailto:inquiries@fireworks.ai).

@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/integrations/ai-providers/anthropic.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Anthropic
 
 > Anthropic model provider configuration and integration guide
@@ -11,7 +15,7 @@ Anthropic provides access to Claude models including Claude 4 Sonnet, Claude 4.1
 To use Anthropic with Braintrust, you'll need an Anthropic API key.
 
 1. Visit [Anthropic's Console](https://console.anthropic.com/settings/keys) and create a new API key
-2. Add the Anthropic API key to your organization's [AI providers](https://www.braintrust.dev/app/settings/secrets)
+2. Add the Anthropic API key to your [organization's AI providers](/admin/organizations#configure-ai-providers) or to a [project's AI providers](/admin/projects#configure-ai-providers)
 3. Set the Anthropic API key and your Braintrust API key as environment variables
 
 ```bash title=".env" theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
@@ -23,7 +27,7 @@ BRAINTRUST_API_KEY=<your-braintrust-api-key>
 ```
 
 <Note>
-  API keys are encrypted using 256-bit AES-GCM encryption and are not stored or logged by Braintrust.
+  API keys are encrypted at rest using [transparent data encryption](https://en.wikipedia.org/wiki/Transparent_data_encryption) with a [unique 256-bit key and nonce](https://libsodium.gitbook.io/doc/secret-key_cryptography/aead).
 </Note>
 
 Install the `braintrust` and `@anthropic-ai/sdk` packages.
@@ -58,7 +62,7 @@ Install the `braintrust` and `@anthropic-ai/sdk` packages.
 
 ## Trace with Anthropic
 
-[Trace](/guides/traces) your Anthropic LLM calls for observability and monitoring.
+[Trace](/instrument/custom-tracing) your Anthropic LLM calls for observability and monitoring.
 
 ### Trace automatically
 
@@ -70,7 +74,7 @@ Braintrust provides automatic tracing for Anthropic API calls. Braintrust handle
 * **Java**: Use the tracing interceptor with the Anthropic client
 
 <Tip>
-  For more control over tracing, learn how to [customize traces](/guides/traces/customize).
+  For more control over tracing, learn how to [customize traces](/instrument/advanced-tracing).
 </Tip>
 
 <CodeGroup dropdown>
@@ -222,7 +226,7 @@ Braintrust provides automatic tracing for Anthropic API calls. Braintrust handle
 
 ## Evaluate with Anthropic
 
-Evaluations distill the non-deterministic outputs of Anthropic models into an effective feedback loop that enables you to ship more reliable, higher quality products. The Braintrust `Eval` function is composed of a dataset of user inputs, a task, and a set of scorers. To learn more about evaluations, see the [Experiments](/core/experiments) guide.
+Evaluations distill the non-deterministic outputs of Anthropic models into an effective feedback loop that enables you to ship more reliable, higher quality products. The Braintrust `Eval` function is composed of a dataset of user inputs, a task, and a set of scorers. To learn more about evaluations, see the [Experiments](/evaluate/run-evaluations) guide.
 
 ### Basic Anthropic eval setup
 
@@ -444,7 +448,7 @@ Evaluate the outputs of Anthropic models with Braintrust.
                   DatasetCase.of("What is the capital of France?", "Paris"))
               .taskFunction(taskFunction)
               .scorers(
-                  Scorer.of("contains_answer", output ->
+                  Scorer.of("contains_answer", (evalCase, output) ->
                       output.contains("4") || output.contains("Paris") ? 1.0 : 0.0))
               .build();
 
@@ -456,7 +460,7 @@ Evaluate the outputs of Anthropic models with Braintrust.
 </CodeGroup>
 
 <Tip>
-  Learn more about eval [data](/core/experiments/write#data) and [scorers](/core/experiments/write#scorers).
+  Learn more about eval [data](/evaluate/run-evaluations#datasets) and [scorers](/evaluate/write-scorers).
 </Tip>
 
 ### Use Anthropic as an LLM judge
@@ -646,11 +650,11 @@ Anthropic supports prompt caching to reduce costs and latency for repeated conte
 
 ### Multimodal content, attachments, errors, and masking sensitive data
 
-To learn more about these topics, check out the [customize traces](/guides/traces/customize) guide.
+To learn more about these topics, check out the [customize traces](/instrument/advanced-tracing) guide.
 
 ## Use Anthropic with Braintrust AI proxy
 
-You can also access Anthropic models through the [Braintrust AI Proxy](/guides/proxy), which provides a unified, OpenAI-compatible interface for multiple providers.
+You can also access Anthropic models through the [Braintrust AI Proxy](/deploy/ai-proxy), which provides a unified, OpenAI-compatible interface for multiple providers.
 
 <CodeGroup dropdown>
   ```typescript  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
@@ -686,7 +690,67 @@ You can also access Anthropic models through the [Braintrust AI Proxy](/guides/p
   ```
 </CodeGroup>
 
+### Structured outputs
 
----
+The Braintrust AI Proxy supports structured outputs for Anthropic models.
 
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt
+<CodeGroup dropdown>
+  ```typescript  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+  import { OpenAI } from "openai";
+  import { z } from "zod";
+
+  const client = new OpenAI({
+    baseURL: "https://api.braintrust.dev/v1/proxy",
+    apiKey: process.env.BRAINTRUST_API_KEY,
+  });
+
+  // Define a Zod schema for the response
+  const ResponseSchema = z.object({
+    name: z.string(),
+    age: z.number(),
+  });
+
+  const completion = await client.beta.chat.completions.parse({
+    model: "claude-sonnet-4-5-20250929",
+    messages: [
+      { role: "system", content: "Extract the person's name and age." },
+      { role: "user", content: "My name is John and I'm 30 years old." },
+    ],
+    response_format: {
+      type: "json_schema",
+      json_schema: {
+        name: "person",
+        // The Zod schema for the response
+        schema: ResponseSchema,
+      },
+    },
+  });
+  ```
+
+  ```python  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+  import os
+
+  from openai import OpenAI
+  from pydantic import BaseModel
+
+
+  class Person(BaseModel):
+      name: str
+      age: int
+
+
+  client = OpenAI(
+      base_url="https://api.braintrust.dev/v1/proxy",
+      api_key=os.environ["BRAINTRUST_API_KEY"],
+  )
+
+  completion = client.beta.chat.completions.parse(
+      model="claude-sonnet-4-5-20250929",
+      messages=[
+          {"role": "system", "content": "Extract the person's name and age."},
+          {"role": "user", "content": "My name is John and I'm 30 years old."},
+      ],
+      response_format=Person,
+  )
+  ```
+</CodeGroup>

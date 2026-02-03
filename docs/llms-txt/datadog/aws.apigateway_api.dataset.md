@@ -4,8 +4,6 @@
 title: API Gateway API
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > API Gateway API
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.apigateway_api.dataset/index.html
 ---
 
 # API Gateway API
@@ -34,6 +32,6 @@ aws.apigateway_api
 | name                         | core | string        | The API's name.                                                                                                                                                                                                                                                                                                                                                                   |
 | policy                       | core | string        | A stringified JSON policy document that applies to this RestApi regardless of the caller and Method configuration.                                                                                                                                                                                                                                                                |
 | root_resource_id             | core | string        | The API's root resource ID.                                                                                                                                                                                                                                                                                                                                                       |
-| tags                         | core | hstore        |
+| tags                         | core | hstore_csv    |
 | version                      | core | string        | A version identifier for the API.                                                                                                                                                                                                                                                                                                                                                 |
 | warnings                     | core | array<string> | The warning messages reported when <code>failonwarnings</code> is turned on during API import.                                                                                                                                                                                                                                                                                    |

@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/get-started/installation/community-cloud
+
 # Use Community Cloud to develop with GitHub Codespaces
 
 To use GitHub Codespaces for Streamlit development, you need a properly configured `devcontainer.json` file to set up the environment. Fortunately, Streamlit Community Cloud is here to help! Although Community Cloud is primarily used to deploy and share apps with the rest of the world, we've built in some handy features to make it easy to use GitHub Codespaces. This guide explains how to create a Community Cloud account and use an automated workflow to get you into a GitHub codespace and live-editing a Streamlit app. All this happens right in your browser, no installation required.

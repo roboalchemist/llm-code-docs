@@ -4,11 +4,7 @@
 
 GitLab provider setup and usage.
 
-***
 
-title: GitLab
-description: GitLab provider setup and usage.
----------------------------------------------
 
 <Steps>
   <Step>

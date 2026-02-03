@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/florence2.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/florence2.md
 
 # Florence-2
 
@@ -17,7 +17,7 @@ You can find all the original Florence-2 checkpoints under the [Florence-2](http
 > This model was contributed by [ducviet00](https://huggingface.co/ducviet00).
 > Click on the Florence-2 models in the right sidebar for more examples of how to apply Florence-2 to different vision and language tasks.
 
-The example below demonstrates how to perform object detection with [Pipeline](/docs/transformers/v5.0.0rc1/en/main_classes/pipelines#transformers.Pipeline) or the [AutoModel](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoModel) class.
+The example below demonstrates how to perform object detection with [Pipeline](/docs/transformers/v5.0.0/en/main_classes/pipelines#transformers.Pipeline) or the [AutoModel](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoModel) class.
 
 ```py
 import torch
@@ -125,7 +125,7 @@ print(parsed_answer)
   - ``
   - ``
   - ``
-- The raw output of the model is a string that needs to be parsed. The [Florence2Processor](/docs/transformers/v5.0.0rc1/en/model_doc/florence2#transformers.Florence2Processor) has a [post_process_generation()](/docs/transformers/v5.0.0rc1/en/model_doc/florence2#transformers.Florence2Processor.post_process_generation) method that can parse the string into a more usable format, like bounding boxes and labels for object detection.
+- The raw output of the model is a string that needs to be parsed. The [Florence2Processor](/docs/transformers/v5.0.0/en/model_doc/florence2#transformers.Florence2Processor) has a `post_process_generation()` method that can parse the string into a more usable format, like bounding boxes and labels for object detection.
 
 ## Resources
 
@@ -136,14 +136,14 @@ print(parsed_answer)
 
 #### transformers.Florence2VisionConfig[[transformers.Florence2VisionConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/florence2/configuration_florence2.py#L29)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/florence2/configuration_florence2.py#L28)
 
 This is the configuration class to store the configuration of a `Florence2VisionModel`. It is used to instantiate a Florence2VisionModel
 according to the specified arguments, defining the model architecture. Instantiating a configuration with the
 defaults will yield a similar configuration to that of the Florence2VisionModel architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -202,16 +202,16 @@ initializer_range (`float`, *optional*, defaults to 0.02) : The standard deviati
 
 #### transformers.Florence2Config[[transformers.Florence2Config]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/florence2/configuration_florence2.py#L137)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/florence2/configuration_florence2.py#L136)
 
-This is the configuration class to store the configuration of a [Florence2ForConditionalGeneration](/docs/transformers/v5.0.0rc1/en/model_doc/florence2#transformers.Florence2ForConditionalGeneration). It is used to instantiate an
+This is the configuration class to store the configuration of a [Florence2ForConditionalGeneration](/docs/transformers/v5.0.0/en/model_doc/florence2#transformers.Florence2ForConditionalGeneration). It is used to instantiate an
 Florence-2 model according to the specified arguments, defining the model architecture.
 
 Instantiating a configuration with the defaults will yield a similar configuration to that of the Florence-2
 [florence-community/Florence-2-base](https://huggingface.co/florence-community/Florence-2-base) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -236,9 +236,9 @@ Example:
 
 **Parameters:**
 
-text_config (`dict`, *optional*) : Dictionary of configuration options used to initialize [AutoConfig](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoConfig).
+text_config (`dict`, *optional*) : Dictionary of configuration options used to initialize [AutoConfig](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoConfig).
 
-vision_config (`dict`, *optional*) : Dictionary of configuration options used to initialize [Florence2VisionConfig](/docs/transformers/v5.0.0rc1/en/model_doc/florence2#transformers.Florence2VisionConfig).
+vision_config (`dict`, *optional*) : Dictionary of configuration options used to initialize [Florence2VisionConfig](/docs/transformers/v5.0.0/en/model_doc/florence2#transformers.Florence2VisionConfig).
 
 image_token_id (`int`, *optional*, defaults to 51289) : The image token index to encode the image prompt.
 
@@ -248,83 +248,62 @@ is_encoder_decoder (bool, optional, *optional*, defaults to `True`) : Whether th
 
 #### transformers.Florence2Processor[[transformers.Florence2Processor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/florence2/processing_florence2.py#L45)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/florence2/processing_florence2.py#L45)
 
-Constructs a Florence2 processor which wraps a Florence2 image processor and a Florence2 tokenizer into a single processor.
+Constructs a Florence2Processor which wraps a image processor and a tokenizer into a single processor.
 
-[Florence2Processor](/docs/transformers/v5.0.0rc1/en/model_doc/florence2#transformers.Florence2Processor) offers all the functionalities of [AutoImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoImageProcessor) and [BartTokenizerFast](/docs/transformers/v5.0.0rc1/en/model_doc/longformer#transformers.RobertaTokenizer). See the
-`__call__()` and [decode()](/docs/transformers/v5.0.0rc1/en/model_doc/florence2#transformers.Florence2Processor.decode) for more information.
+[Florence2Processor](/docs/transformers/v5.0.0/en/model_doc/florence2#transformers.Florence2Processor) offers all the functionalities of [CLIPImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/clip#transformers.CLIPImageProcessorFast) and [BartTokenizer](/docs/transformers/v5.0.0/en/model_doc/mvp#transformers.RobertaTokenizer). See the
+[~CLIPImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/clip#transformers.CLIPImageProcessorFast) and [~BartTokenizer](/docs/transformers/v5.0.0/en/model_doc/mvp#transformers.RobertaTokenizer) for more information.
 
-batch_decodetransformers.Florence2Processor.batch_decodehttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/florence2/processing_florence2.py#L239[{"name": "*args", "val": ""}, {"name": "**kwargs", "val": ""}]
+__call__transformers.Florence2Processor.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/florence2/processing_florence2.py#L135[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "text", "val": ": str | list[str] | list[list[str]] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.models.florence2.processing_florence2.Florence2ProcessorKwargs]"}]- **images** (`Union[PIL.Image.Image, numpy.ndarray, torch.Tensor, list, list, list]`, *optional*) --
+  Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If
+  passing in images with pixel values between 0 and 1, set `do_rescale=False`.
+- **text** (`Union[str, list, list]`, *optional*) --
+  The sequence or batch of sequences to be encoded. Each sequence can be a string or a list of strings
+  (pretokenized string). If you pass a pretokenized input, set `is_split_into_words=True` to avoid ambiguity with batched inputs.
+- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType), *optional*) --
+  If set, will return tensors of a particular framework. Acceptable values are:
 
-This method forwards all its arguments to BartTokenizerFast's [batch_decode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.batch_decode). Please
-refer to the docstring of this method for more information.
+  - `'pt'`: Return PyTorch `torch.Tensor` objects.
+  - `'np'`: Return NumPy `np.ndarray` objects.0[BatchFeature](/docs/transformers/v5.0.0/en/main_classes/image_processor#transformers.BatchFeature)A [BatchFeature](/docs/transformers/v5.0.0/en/main_classes/image_processor#transformers.BatchFeature) with the following fields:
+
+- **input_ids** -- List of token ids to be fed to a model. Returned when `text` is not `None`.
+- **attention_mask** -- List of indices specifying which tokens should be attended to by the model (when
+  `return_attention_mask=True` or if *"attention_mask"* is in `self.model_input_names` and if `text` is not
+  `None`).
+- **pixel_values** -- Pixel values to be fed to a model. Returned when `images` is not `None`.
 
 **Parameters:**
 
-image_processor (`AutoImageProcessor`, *optional*) : The image processor is a required input.
+image_processor (`CLIPImageProcessorFast`) : The image processor is a required input.
 
-tokenizer (`Union[BartTokenizer, BartTokenizerFast]`, *optional*) : The tokenizer is a required input.
+tokenizer (`BartTokenizer`) : The tokenizer is a required input.
 
 num_additional_image_tokens (`int`, *optional*, defaults to 0) : Number of additional tokens added to the image embeddings, such as CLS (+1). If the backbone has no CLS or other extra tokens appended, no need to set this arg.
 
 post_processor_config (`dict`,  *optional*, defaults to 0) : Task-specific parsing rules for `Florence2PostProcessor`, e.g. regex patterns, thresholds, or banned tokens.
-#### decode[[transformers.Florence2Processor.decode]]
-
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/florence2/processing_florence2.py#L246)
-
-This method forwards all its arguments to BartTokenizerFast's [decode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.decode). Please refer to
-the docstring of this method for more information.
-#### post_process_generation[[transformers.Florence2Processor.post_process_generation]]
-
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/florence2/processing_florence2.py#L299)
-
-Post-process generation outputs based on the task.
-
-**Parameters:**
-
-text (`str`, *optional*) : Generated text.
-
-sequence (`Union[List[int], torch.Tensor]`, *optional*) : Generated token sequence.
-
-task (`str`, *optional*) : The task for post-processing.
-
-image_size (`Tuple[int, int]`, *optional*) : Image size for dequantization.
 
 **Returns:**
 
-``Dict[str, Any]``
+`[BatchFeature](/docs/transformers/v5.0.0/en/main_classes/image_processor#transformers.BatchFeature)`
 
-Post-processed results keyed by task.
-#### post_process_image_text_to_text[[transformers.Florence2Processor.post_process_image_text_to_text]]
+A [BatchFeature](/docs/transformers/v5.0.0/en/main_classes/image_processor#transformers.BatchFeature) with the following fields:
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/florence2/processing_florence2.py#L281)
-
-Post-processes the output of `FuyuForConditionalGeneration` to only return the text output.
-
-**Parameters:**
-
-generated_outputs (`torch.Tensor` or `np.ndarray`) : The output of the model. The output is expected to be a tensor of shape `(batch_size, sequence_length)` containing the token ids of the generated sequences.
-
-skip_special_tokens (`bool`, *optional*, defaults to `False`) : Whether or not to remove special tokens in the output. Argument passed to the tokenizer's `batch_decode` method.
-
-- ****kwargs** : Additional arguments to be passed to the tokenizer's `batch_decode method`.
-
-**Returns:**
-
-``list[str]``
-
-The decoded text output.
+- **input_ids** -- List of token ids to be fed to a model. Returned when `text` is not `None`.
+- **attention_mask** -- List of indices specifying which tokens should be attended to by the model (when
+  `return_attention_mask=True` or if *"attention_mask"* is in `self.model_input_names` and if `text` is not
+  `None`).
+- **pixel_values** -- Pixel values to be fed to a model. Returned when `images` is not `None`.
 
 ## Florence2Model[[transformers.Florence2Model]]
 
 #### transformers.Florence2Model[[transformers.Florence2Model]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/florence2/modeling_florence2.py#L638)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/florence2/modeling_florence2.py#L668)
 
 Florence-2 is a vision model for captioning, detection, and segmentation.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -332,17 +311,17 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Florence2Model.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/florence2/modeling_florence2.py#L693[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "pixel_values", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "decoder_input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "decoder_attention_mask", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "decoder_inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "encoder_outputs", "val": ": typing.Optional[list[torch.FloatTensor]] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.Florence2Model.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/florence2/modeling_florence2.py#L725[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "pixel_values", "val": ": torch.FloatTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "decoder_input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "decoder_attention_mask", "val": ": torch.LongTensor | None = None"}, {"name": "decoder_inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "encoder_outputs", "val": ": list[torch.FloatTensor] | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [CLIPImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/clip#transformers.CLIPImageProcessor). See [CLIPImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([Florence2Processor](/docs/transformers/v5.0.0rc1/en/model_doc/florence2#transformers.Florence2Processor) uses
-  [CLIPImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/clip#transformers.CLIPImageProcessor) for processing images).
+  [CLIPImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/clip#transformers.CLIPImageProcessorFast). See [CLIPImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([Florence2Processor](/docs/transformers/v5.0.0/en/model_doc/florence2#transformers.Florence2Processor) uses
+  [CLIPImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/clip#transformers.CLIPImageProcessorFast) for processing images).
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Mask to avoid performing attention on padding token indices. Mask values selected in `[0, 1]`:
 
@@ -353,8 +332,8 @@ forwardtransformers.Florence2Model.forwardhttps://github.com/huggingface/transfo
 - **decoder_input_ids** (`torch.LongTensor` of shape `(batch_size, target_sequence_length)`, *optional*) --
   Indices of decoder input sequence tokens in the vocabulary.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are decoder input IDs?](../glossary#decoder-input-ids)
 - **decoder_attention_mask** (`torch.LongTensor` of shape `(batch_size, target_sequence_length)`, *optional*) --
@@ -368,7 +347,7 @@ forwardtransformers.Florence2Model.forwardhttps://github.com/huggingface/transfo
 
   If `decoder_input_ids` and `decoder_inputs_embeds` are both unset, `decoder_inputs_embeds` takes the value
   of `inputs_embeds`.
-- **encoder_outputs** (`list[torch.FloatTensor]`, *optional*) --
+- **encoder_outputs** (`list`, *optional*) --
   Tuple consists of (`last_hidden_state`, *optional*: `hidden_states`, *optional*: `attentions`)
   `last_hidden_state` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) is a sequence of
   hidden-states at the output of the last layer of the encoder. Used in the cross-attention of the decoder.
@@ -377,8 +356,8 @@ forwardtransformers.Florence2Model.forwardhttps://github.com/huggingface/transfo
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -399,47 +378,47 @@ forwardtransformers.Florence2Model.forwardhttps://github.com/huggingface/transfo
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 - **cache_position** (`torch.LongTensor` of shape `(sequence_length)`, *optional*) --
   Indices depicting the position of the input sequence tokens in the sequence. Contrarily to `position_ids`,
   this tensor is not affected by padding. It is used to update the cache in the correct position and to infer
   the complete sequence length.0`transformers.models.florence2.modeling_florence2.Florence2Seq2SeqModelOutput` or `tuple(torch.FloatTensor)`A `transformers.models.florence2.modeling_florence2.Florence2Seq2SeqModelOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Florence2Config](/docs/transformers/v5.0.0rc1/en/model_doc/florence2#transformers.Florence2Config)) and inputs.
+elements depending on the configuration ([Florence2Config](/docs/transformers/v5.0.0/en/model_doc/florence2#transformers.Florence2Config)) and inputs.
 
-- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) -- Sequence of hidden-states at the output of the last layer of the model.
-- **past_key_values** (`~cache_utils.EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the decoder of the model.
+- **past_key_values** (`~cache_utils.EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and optionally if
   `config.is_encoder_decoder=True` in the cross-attention blocks) that can be used (see `past_key_values`
   input) to speed up sequential decoding.
-- **decoder_hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **decoder_hidden_states** (`tuple`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the decoder at the output of each layer plus the initial embedding outputs.
-- **decoder_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **decoder_attentions** (`tuple`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights of the decoder, after the attention softmax, used to compute the weighted average in the
   self-attention heads.
-- **cross_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **cross_attentions** (`tuple`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights of the decoder's cross-attention layer, after the attention softmax, used to compute the
   weighted average in the cross-attention heads.
 - **encoder_last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) -- Sequence of hidden-states at the output of the last layer of the encoder of the model.
-- **encoder_hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **encoder_hidden_states** (`tuple`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the encoder at the output of each layer plus the initial embedding outputs.
-- **encoder_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **encoder_attentions** (`tuple`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights of the encoder, after the attention softmax, used to compute the weighted average in the
   self-attention heads.
 - **image_hidden_states** (`torch.FloatTensor`, *optional*) -- A `torch.FloatTensor` of size `(batch_size, num_image_tokens, hidden_size)`.
   image_hidden_states of the model produced by the vision encoder and after projecting the last hidden state.
-The [Florence2Model](/docs/transformers/v5.0.0rc1/en/model_doc/florence2#transformers.Florence2Model) forward method, overrides the `__call__` special method.
+The [Florence2Model](/docs/transformers/v5.0.0/en/model_doc/florence2#transformers.Florence2Model) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -447,7 +426,7 @@ the latter silently ignores them.
 
 **Parameters:**
 
-config ([Florence2Config](/docs/transformers/v5.0.0rc1/en/model_doc/florence2#transformers.Florence2Config)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Florence2Config](/docs/transformers/v5.0.0/en/model_doc/florence2#transformers.Florence2Config)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
@@ -455,50 +434,82 @@ config ([Florence2Config](/docs/transformers/v5.0.0rc1/en/model_doc/florence2#tr
 
 A `transformers.models.florence2.modeling_florence2.Florence2Seq2SeqModelOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Florence2Config](/docs/transformers/v5.0.0rc1/en/model_doc/florence2#transformers.Florence2Config)) and inputs.
+elements depending on the configuration ([Florence2Config](/docs/transformers/v5.0.0/en/model_doc/florence2#transformers.Florence2Config)) and inputs.
 
-- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) -- Sequence of hidden-states at the output of the last layer of the model.
-- **past_key_values** (`~cache_utils.EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the decoder of the model.
+- **past_key_values** (`~cache_utils.EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and optionally if
   `config.is_encoder_decoder=True` in the cross-attention blocks) that can be used (see `past_key_values`
   input) to speed up sequential decoding.
-- **decoder_hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **decoder_hidden_states** (`tuple`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the decoder at the output of each layer plus the initial embedding outputs.
-- **decoder_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **decoder_attentions** (`tuple`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights of the decoder, after the attention softmax, used to compute the weighted average in the
   self-attention heads.
-- **cross_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **cross_attentions** (`tuple`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights of the decoder's cross-attention layer, after the attention softmax, used to compute the
   weighted average in the cross-attention heads.
 - **encoder_last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) -- Sequence of hidden-states at the output of the last layer of the encoder of the model.
-- **encoder_hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **encoder_hidden_states** (`tuple`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the encoder at the output of each layer plus the initial embedding outputs.
-- **encoder_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **encoder_attentions** (`tuple`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights of the encoder, after the attention softmax, used to compute the weighted average in the
   self-attention heads.
 - **image_hidden_states** (`torch.FloatTensor`, *optional*) -- A `torch.FloatTensor` of size `(batch_size, num_image_tokens, hidden_size)`.
   image_hidden_states of the model produced by the vision encoder and after projecting the last hidden state.
+#### get_image_features[[transformers.Florence2Model.get_image_features]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/florence2/modeling_florence2.py#L685)
+
+Obtains image last hidden states from the vision tower and apply multimodal projection.
+
+**Parameters:**
+
+pixel_values (`torch.FloatTensor]` of shape `(batch_size, channels, height, width)`) : The tensors corresponding to the input images.
+
+**Returns:**
+
+`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
+
+A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([Florence2Config](/docs/transformers/v5.0.0/en/model_doc/florence2#transformers.Florence2Config)) and inputs.
+
+- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
+- **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
+  through the layers used for the auxiliary pretraining task. E.g. for BERT-family of models, this returns
+  the classification token after processing through a linear layer and a tanh activation function. The linear
+  layer weights are trained from the next sentence prediction (classification) objective during pretraining.
+- **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
 
 ## Florence2ForConditionalGeneration[[transformers.Florence2ForConditionalGeneration]]
 
 #### transformers.Florence2ForConditionalGeneration[[transformers.Florence2ForConditionalGeneration]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/florence2/modeling_florence2.py#L801)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/florence2/modeling_florence2.py#L833)
 
 Florence-2 is a vision model for captioning, detection, and segmentation.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -506,17 +517,17 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Florence2ForConditionalGeneration.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/florence2/modeling_florence2.py#L825[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "pixel_values", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "decoder_input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "decoder_attention_mask", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "encoder_outputs", "val": ": typing.Optional[list[torch.FloatTensor]] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "decoder_inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "logits_to_keep", "val": ": typing.Union[int, torch.Tensor] = 0"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.Florence2ForConditionalGeneration.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/florence2/modeling_florence2.py#L860[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "pixel_values", "val": ": torch.FloatTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "decoder_input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "decoder_attention_mask", "val": ": torch.LongTensor | None = None"}, {"name": "encoder_outputs", "val": ": list[torch.FloatTensor] | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "decoder_inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "logits_to_keep", "val": ": int | torch.Tensor = 0"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [CLIPImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/clip#transformers.CLIPImageProcessor). See [CLIPImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([Florence2Processor](/docs/transformers/v5.0.0rc1/en/model_doc/florence2#transformers.Florence2Processor) uses
-  [CLIPImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/clip#transformers.CLIPImageProcessor) for processing images).
+  [CLIPImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/clip#transformers.CLIPImageProcessorFast). See [CLIPImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([Florence2Processor](/docs/transformers/v5.0.0/en/model_doc/florence2#transformers.Florence2Processor) uses
+  [CLIPImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/clip#transformers.CLIPImageProcessorFast) for processing images).
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Mask to avoid performing attention on padding token indices. Mask values selected in `[0, 1]`:
 
@@ -527,14 +538,14 @@ forwardtransformers.Florence2ForConditionalGeneration.forwardhttps://github.com/
 - **decoder_input_ids** (`torch.LongTensor` of shape `(batch_size, target_sequence_length)`, *optional*) --
   Indices of decoder input sequence tokens in the vocabulary.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are decoder input IDs?](../glossary#decoder-input-ids)
 - **decoder_attention_mask** (`torch.LongTensor` of shape `(batch_size, target_sequence_length)`, *optional*) --
   Mask to avoid performing attention on certain token indices. By default, a causal mask will be used, to
   make sure the model can only look at previous inputs in order to predict the future.
-- **encoder_outputs** (`list[torch.FloatTensor]`, *optional*) --
+- **encoder_outputs** (`list`, *optional*) --
   Tuple consists of (`last_hidden_state`, *optional*: `hidden_states`, *optional*: `attentions`)
   `last_hidden_state` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) is a sequence of
   hidden-states at the output of the last layer of the encoder. Used in the cross-attention of the decoder.
@@ -543,8 +554,8 @@ forwardtransformers.Florence2ForConditionalGeneration.forwardhttps://github.com/
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -577,54 +588,54 @@ forwardtransformers.Florence2ForConditionalGeneration.forwardhttps://github.com/
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 - **cache_position** (`torch.LongTensor` of shape `(sequence_length)`, *optional*) --
   Indices depicting the position of the input sequence tokens in the sequence. Contrarily to `position_ids`,
   this tensor is not affected by padding. It is used to update the cache in the correct position and to infer
   the complete sequence length.
-- **logits_to_keep** (`Union[int, torch.Tensor]`, defaults to `0`) --
+- **logits_to_keep** (`Union[int, torch.Tensor]`, *optional*, defaults to `0`) --
   If an `int`, compute logits for the last `logits_to_keep` tokens. If `0`, calculate logits for all
   `input_ids` (special case). Only last token logits are needed for generation, and calculating them only for that
   token can save memory, which becomes pretty significant for long sequences or large vocabulary size.
   If a `torch.Tensor`, must be 1D corresponding to the indices to keep in the sequence length dimension.
   This is useful when using packed tensor format (single dimension for batch and sequence length).0`transformers.models.florence2.modeling_florence2.Florence2Seq2SeqLMOutput` or `tuple(torch.FloatTensor)`A `transformers.models.florence2.modeling_florence2.Florence2Seq2SeqLMOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Florence2Config](/docs/transformers/v5.0.0rc1/en/model_doc/florence2#transformers.Florence2Config)) and inputs.
+elements depending on the configuration ([Florence2Config](/docs/transformers/v5.0.0/en/model_doc/florence2#transformers.Florence2Config)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
-- **past_key_values** (`~cache_utils.EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`~cache_utils.EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and optionally if
   `config.is_encoder_decoder=True` in the cross-attention blocks) that can be used (see `past_key_values`
   input) to speed up sequential decoding.
-- **decoder_hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **decoder_hidden_states** (`tuple`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the decoder at the output of each layer plus the initial embedding outputs.
-- **decoder_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **decoder_attentions** (`tuple`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights of the decoder, after the attention softmax, used to compute the weighted average in the
   self-attention heads.
-- **cross_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **cross_attentions** (`tuple`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights of the decoder's cross-attention layer, after the attention softmax, used to compute the
   weighted average in the cross-attention heads.
 - **encoder_last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) -- Sequence of hidden-states at the output of the last layer of the encoder of the model.
-- **encoder_hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **encoder_hidden_states** (`tuple`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the encoder at the output of each layer plus the initial embedding outputs.
-- **encoder_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **encoder_attentions** (`tuple`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights of the encoder, after the attention softmax, used to compute the weighted average in the
   self-attention heads.
 - **image_hidden_states** (`torch.FloatTensor`, *optional*) -- A `torch.FloatTensor` of size `(batch_size, num_image_tokens, hidden_size)`.
   image_hidden_states of the model produced by the vision encoder and after projecting the last hidden state.
-The [Florence2ForConditionalGeneration](/docs/transformers/v5.0.0rc1/en/model_doc/florence2#transformers.Florence2ForConditionalGeneration) forward method, overrides the `__call__` special method.
+The [Florence2ForConditionalGeneration](/docs/transformers/v5.0.0/en/model_doc/florence2#transformers.Florence2ForConditionalGeneration) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -634,7 +645,8 @@ Example:
 
 ```python
 >>> from PIL import Image
->>> import requests
+>>> import httpx
+>>> from io import BytesIO
 >>> from transformers import AutoProcessor, Florence2ForConditionalGeneration
 
 >>> model = Florence2ForConditionalGeneration.from_pretrained("florence-community/Florence-2-large")
@@ -642,7 +654,8 @@ Example:
 
 >>> prompt = ""
 >>> url = "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformers/tasks/car.jpg"
->>> image = Image.open(requests.get(url, stream=True).raw)
+>>> with httpx.stream("GET", url) as response:
+...     image = Image.open(BytesIO(response.read()))
 
 >>> inputs = processor(text=prompt, images=image, return_tensors="pt")
 
@@ -654,7 +667,7 @@ Example:
 
 **Parameters:**
 
-config ([Florence2Config](/docs/transformers/v5.0.0rc1/en/model_doc/florence2#transformers.Florence2Config)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Florence2Config](/docs/transformers/v5.0.0/en/model_doc/florence2#transformers.Florence2Config)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
@@ -662,51 +675,111 @@ config ([Florence2Config](/docs/transformers/v5.0.0rc1/en/model_doc/florence2#tr
 
 A `transformers.models.florence2.modeling_florence2.Florence2Seq2SeqLMOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Florence2Config](/docs/transformers/v5.0.0rc1/en/model_doc/florence2#transformers.Florence2Config)) and inputs.
+elements depending on the configuration ([Florence2Config](/docs/transformers/v5.0.0/en/model_doc/florence2#transformers.Florence2Config)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
-- **past_key_values** (`~cache_utils.EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`~cache_utils.EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and optionally if
   `config.is_encoder_decoder=True` in the cross-attention blocks) that can be used (see `past_key_values`
   input) to speed up sequential decoding.
-- **decoder_hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **decoder_hidden_states** (`tuple`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the decoder at the output of each layer plus the initial embedding outputs.
-- **decoder_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **decoder_attentions** (`tuple`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights of the decoder, after the attention softmax, used to compute the weighted average in the
   self-attention heads.
-- **cross_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **cross_attentions** (`tuple`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights of the decoder's cross-attention layer, after the attention softmax, used to compute the
   weighted average in the cross-attention heads.
 - **encoder_last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) -- Sequence of hidden-states at the output of the last layer of the encoder of the model.
-- **encoder_hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **encoder_hidden_states** (`tuple`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the encoder at the output of each layer plus the initial embedding outputs.
-- **encoder_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **encoder_attentions** (`tuple`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights of the encoder, after the attention softmax, used to compute the weighted average in the
   self-attention heads.
 - **image_hidden_states** (`torch.FloatTensor`, *optional*) -- A `torch.FloatTensor` of size `(batch_size, num_image_tokens, hidden_size)`.
   image_hidden_states of the model produced by the vision encoder and after projecting the last hidden state.
+#### get_image_features[[transformers.Florence2ForConditionalGeneration.get_image_features]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/florence2/modeling_florence2.py#L854)
+
+Example:
+
+```python
+>>> from PIL import Image
+>>> from transformers import AutoProcessor, Florence2ForConditionalGeneration
+
+>>> model = Florence2ForConditionalGeneration.from_pretrained("florence-community/Florence-2-base")
+>>> processor = AutoProcessor.from_pretrained("florence-community/Florence-2-base")
+
+>>> messages = [
+...     {
+...         "role": "user", "content": [
+...             {"type": "image", "url": "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/pipeline-cat-chonk.jpeg"},
+...             {"type": "text", "text": "Where is the cat standing?"},
+...         ]
+...     },
+... ]
+
+>>> inputs = processor.apply_chat_template(
+...     messages,
+...     tokenize=True,
+...     return_dict=True,
+...     return_tensors="pt",
+...     add_generation_prompt=True
+... )
+>>> # Generate
+>>> generate_ids = model.generate(**inputs)
+>>> processor.batch_decode(generate_ids, skip_special_tokens=True)[0]
+```
+
+**Parameters:**
+
+pixel_values (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`) : The tensors corresponding to the input images. Pixel values can be obtained using [CLIPImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/clip#transformers.CLIPImageProcessorFast). See [CLIPImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([Florence2Processor](/docs/transformers/v5.0.0/en/model_doc/florence2#transformers.Florence2Processor) uses [CLIPImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/clip#transformers.CLIPImageProcessorFast) for processing images).
+
+**Returns:**
+
+`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
+
+A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([Florence2Config](/docs/transformers/v5.0.0/en/model_doc/florence2#transformers.Florence2Config)) and inputs.
+
+- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
+- **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
+  through the layers used for the auxiliary pretraining task. E.g. for BERT-family of models, this returns
+  the classification token after processing through a linear layer and a tanh activation function. The linear
+  layer weights are trained from the next sentence prediction (classification) objective during pretraining.
+- **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
 
 ## Florence2VisionBackbone[[transformers.Florence2VisionBackbone]]
 
 #### transformers.Florence2VisionBackbone[[transformers.Florence2VisionBackbone]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/florence2/modeling_florence2.py#L497)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/florence2/modeling_florence2.py#L509)
 
 The Florence2 backbone.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -714,9 +787,9 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Florence2VisionBackbone.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/florence2/modeling_florence2.py#L544[{"name": "hidden_states", "val": ": Tensor"}, {"name": "**kwargs", "val": ""}]
+forwardtransformers.Florence2VisionBackbone.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/florence2/modeling_florence2.py#L556[{"name": "hidden_states", "val": ": Tensor"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]
 
 **Parameters:**
 
-config ([Florence2VisionConfig](/docs/transformers/v5.0.0rc1/en/model_doc/florence2#transformers.Florence2VisionConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Florence2VisionConfig](/docs/transformers/v5.0.0/en/model_doc/florence2#transformers.Florence2VisionConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 

@@ -6,7 +6,6 @@ description: >-
   Enable and collect debug logs from APM tracers to troubleshoot configuration
   and connectivity issues.
 breadcrumbs: Docs > APM > APM Troubleshooting > Tracer Debug Logs
-source_url: https://docs.datadoghq.com/troubleshooting/tracer_debug_logs/index.html
 ---
 
 # Tracer Debug Logs
@@ -16,6 +15,18 @@ source_url: https://docs.datadoghq.com/troubleshooting/tracer_debug_logs/index.h
 {% alert level="danger" %}
 Automated debug logs are supported for Java, Python, Node.js, and .NET only. For other languages, use [manual debug log collection](https://docs.datadoghq.com/tracing/troubleshooting/tracer_debug_logs/#enable-debug-mode) instead.
 {% /alert %}
+
+{% callout %}
+# Important note for users on the following Datadog sites: app.ddog-gov.com
+
+
+
+{% alert level="warning" %}
+Automated debug log collection is not supported on US1-FED because [Remote Configuration](https://docs.datadoghq.com/agent/remote_config/) is not available in this region. Use [manual debug log collection](https://docs.datadoghq.com/tracing/troubleshooting/tracer_debug_logs/#enable-debug-mode) instead.
+{% /alert %}
+
+
+{% /callout %}
 
 A flare allows you to send necessary troubleshooting information to the Datadog support team, including tracer logs, with sensitive data removed. Flares are useful for troubleshooting issues like high CPU usage, high memory usage, and missing spans.
 

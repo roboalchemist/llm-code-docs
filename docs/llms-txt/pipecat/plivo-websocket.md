@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/telephony/plivo-websocket.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Plivo Websocket Transport
 
 > Using Plivo's WebSocket Transport for your Pipecat Cloud agents
@@ -149,8 +153,3 @@ To test your integration, simply dial your Plivo phone number from any phone. Th
 ## Next Steps
 
 For complete implementation details including dial-out and advanced call control features, see the [Plivo WebSocket Integration guide](/guides/telephony/plivo-websockets).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

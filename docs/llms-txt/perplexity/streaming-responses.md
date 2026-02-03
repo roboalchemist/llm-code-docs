@@ -1,4 +1,8 @@
-# Source: https://docs.perplexity.ai/guides/streaming-responses.md
+# Source: https://docs.perplexity.ai/docs/grounded-llm/output-control/streaming-responses.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Streaming Responses
 
@@ -13,7 +17,7 @@ Streaming allows you to receive partial responses from the Perplexity API as the
 * **Interactive applications** - Provide immediate feedback to users
 
 <Info>
-  Streaming is supported across all Perplexity models including Sonar, Sonar Pro, and reasoning models.
+  Streaming is supported across all Perplexity models and both Chat Completions and Agentic Research APIs.
 </Info>
 
 ## Quick Start
@@ -23,60 +27,112 @@ The easiest way to get started is with the Perplexity SDKs, which handle all the
 To enable streaming, set `stream=True` (Python) or `stream: true` (TypeScript) when creating completions:
 
 <Tabs>
-  <Tab title="Python SDK">
-    ```python  theme={null}
-    from perplexity import Perplexity
+  <Tab title="Agentic Research API">
+    <CodeGroup>
+      ```python Python SDK theme={null}
+      from perplexity import Perplexity
 
-    # Initialize the client (uses PERPLEXITY_API_KEY environment variable)
-    client = Perplexity()
+      # Initialize the client (uses PERPLEXITY_API_KEY environment variable)
+      client = Perplexity()
 
-    # Create streaming completion
-    stream = client.chat.completions.create(
-        model="sonar",
-        messages=[{"role": "user", "content": "What is the latest in AI research?"}],
-        stream=True
-    )
+      # Create streaming response
+      stream = client.responses.create(
+          preset="fast-search",
+          input="What is the latest in AI research?",
+          stream=True
+      )
 
-    # Process streaming response
-    for chunk in stream:
-        if chunk.choices[0].delta.content:
-            print(chunk.choices[0].delta.content, end="")
-    ```
-  </Tab>
+      # Process streaming response
+      for event in stream:
+          if event.type == "response.output_text.delta":
+              print(event.delta, end="")
+      ```
 
-  <Tab title="TypeScript SDK">
-    ```typescript  theme={null}
-    import Perplexity from '@perplexity-ai/perplexity_ai';
+      ```typescript TypeScript SDK theme={null}
+      import Perplexity from '@perplexity-ai/perplexity_ai';
 
-    const client = new Perplexity();
+      const client = new Perplexity();
 
-    // Create streaming completion
-    const stream = await client.chat.completions.create({
-      model: "sonar",
-      messages: [{ role: "user", content: "What is the latest in AI research?" }],
-      stream: true
-    });
+      // Create streaming response
+      const stream = await client.responses.create({
+        preset: "fast-search",
+        input: "What is the latest in AI research?",
+        stream: true
+      });
 
-    // Process streaming response
-    for await (const chunk of stream) {
-      if (chunk.choices[0]?.delta?.content) {
-        process.stdout.write(chunk.choices[0].delta.content);
+      // Process streaming response
+      for await (const event of stream) {
+        if (event.type === "response.output_text.delta") {
+          process.stdout.write(event.delta);
+        }
       }
-    }
-    ```
+      ```
+
+      ```bash cURL theme={null}
+      curl -X POST "https://api.perplexity.ai/v1/responses" \
+        -H "Authorization: Bearer YOUR_API_KEY" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "preset": "fast-search",
+          "input": "What is the latest in AI research?",
+          "stream": true
+        }'
+      ```
+    </CodeGroup>
   </Tab>
 
-  <Tab title="cURL">
-    ```bash  theme={null}
-    curl -X POST "https://api.perplexity.ai/chat/completions" \
-      -H "Authorization: Bearer YOUR_API_KEY" \
-      -H "Content-Type: application/json" \
-      -d '{
-        "model": "sonar",
-        "messages": [{"role": "user", "content": "What is the latest in AI research?"}],
-        "stream": true
-      }'
-    ```
+  <Tab title="Chat Completions API">
+    <CodeGroup>
+      ```python Python SDK theme={null}
+      from perplexity import Perplexity
+
+      # Initialize the client (uses PERPLEXITY_API_KEY environment variable)
+      client = Perplexity()
+
+      # Create streaming completion
+      stream = client.chat.completions.create(
+          model="sonar",
+          messages=[{"role": "user", "content": "What is the latest in AI research?"}],
+          stream=True
+      )
+
+      # Process streaming response
+      for chunk in stream:
+          if chunk.choices[0].delta.content:
+              print(chunk.choices[0].delta.content, end="")
+      ```
+
+      ```typescript TypeScript SDK theme={null}
+      import Perplexity from '@perplexity-ai/perplexity_ai';
+
+      const client = new Perplexity();
+
+      // Create streaming completion
+      const stream = await client.chat.completions.create({
+        model: "sonar",
+        messages: [{ role: "user", content: "What is the latest in AI research?" }],
+        stream: true
+      });
+
+      // Process streaming response
+      for await (const chunk of stream) {
+        if (chunk.choices[0]?.delta?.content) {
+          process.stdout.write(chunk.choices[0].delta.content);
+        }
+      }
+      ```
+
+      ```bash cURL theme={null}
+      curl -X POST "https://api.perplexity.ai/chat/completions" \
+        -H "Authorization: Bearer YOUR_API_KEY" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "model": "sonar",
+          "messages": [{"role": "user", "content": "What is the latest in AI research?"}],
+          "stream": true
+        }'
+      ```
+    </CodeGroup>
   </Tab>
 </Tabs>
 
@@ -337,8 +393,7 @@ Proper error handling is important to ensure your application can recover from e
                 {"role": "user", "content": "Explain machine learning concepts"}
             ],
             "stream": True,
-            "max_tokens": 1000,
-            "temperature": 0.2
+            "max_tokens": 1000
         }
 
         for attempt in range(max_retries):
@@ -823,8 +878,7 @@ For applications that need to process chunks with custom logic:
             model="sonar",
             messages=messages,
             stream=True,
-            max_tokens=1000,  # Reasonable limit
-            temperature=0.7   # Balanced creativity
+            max_tokens=1000  # Reasonable limit
         )
         ```
       </Tab>
@@ -836,8 +890,7 @@ For applications that need to process chunks with custom logic:
             model="sonar-pro",
             messages=messages,
             stream=True,
-            max_tokens=4000,  # Longer responses
-            temperature=0.3   # More focused
+            max_tokens=4000  # Longer responses
         )
         ```
       </Tab>
@@ -851,6 +904,6 @@ For applications that need to process chunks with custom logic:
 
 ## Resources
 
-* [The Perplexity SDK Guide](/guides/perplexity-sdk) - The Perplexity SDK guide
-* [Chat Completions SDK](/guides/chat-completions-sdk) - Complete chat completions guide
+* [The Perplexity SDK Guide](/docs/sdk/overview) - The Perplexity SDK guide
+* [Chat Completions Guide](/docs/grounded-llm/chat-completions/quickstart) - Complete chat completions guide
 * [API Reference - Chat Completions](/api-reference/chat-completions-post) - Complete API documentation

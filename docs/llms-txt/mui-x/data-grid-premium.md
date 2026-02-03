@@ -103,6 +103,9 @@ import { DataGridPremium } from '@mui/x-data-grid-premium';
 | hideFooterPagination | `bool` | `false` | No |  |
 | hideFooterRowCount | `bool` | `false` | No |  |
 | hideFooterSelectedRowCount | `bool` | `false` | No |  |
+| historyEventHandlers | `object` | `Handlers for `rowEditStop`, `cellEditStop` and `clipboardPasteEnd` events` | No |  |
+| historyStackSize | `number` | `30` | No |  |
+| historyValidationEvents | `Array<'activeChartIdChange' \| 'activeStrategyProcessorChange' \| 'aggregationLookupSet' \| 'aggregationModelChange' \| 'aiAssistantActiveConversationIndexChange' \| 'aiAssistantConversationsChange' \| 'cellClick' \| 'cellDoubleClick' \| 'cellDragEnter' \| 'cellDragOver' \| 'cellEditStart' \| 'cellEditStop' \| 'cellFocusIn' \| 'cellFocusOut' \| 'cellKeyDown' \| 'cellKeyUp' \| 'cellModeChange' \| 'cellModesModelChange' \| 'cellMouseDown' \| 'cellMouseOver' \| 'cellMouseUp' \| 'cellSelectionChange' \| 'chartSynchronizationStateChange' \| 'clipboardCopy' \| 'clipboardPasteEnd' \| 'clipboardPasteStart' \| 'columnGroupHeaderBlur' \| 'columnGroupHeaderFocus' \| 'columnGroupHeaderKeyDown' \| 'columnHeaderBlur' \| 'columnHeaderClick' \| 'columnHeaderContextMenu' \| 'columnHeaderDoubleClick' \| 'columnHeaderDragEnd' \| 'columnHeaderDragEndNative' \| 'columnHeaderDragEnter' \| 'columnHeaderDragOver' \| 'columnHeaderDragStart' \| 'columnHeaderEnter' \| 'columnHeaderFocus' \| 'columnHeaderKeyDown' \| 'columnHeaderLeave' \| 'columnHeaderOut' \| 'columnHeaderOver' \| 'columnIndexChange' \| 'columnOrderChange' \| 'columnResize' \| 'columnResizeStart' \| 'columnResizeStop' \| 'columnsChange' \| 'columnSeparatorDoubleClick' \| 'columnSeparatorMouseDown' \| 'columnVisibilityModelChange' \| 'columnWidthChange' \| 'debouncedResize' \| 'densityChange' \| 'detailPanelsExpandedRowIdsChange' \| 'excelExportStateChange' \| 'fetchRows' \| 'filteredRowsSet' \| 'filterModelChange' \| 'headerFilterBlur' \| 'headerFilterClick' \| 'headerFilterKeyDown' \| 'headerFilterMouseDown' \| 'headerSelectionCheckboxChange' \| 'menuClose' \| 'menuOpen' \| 'paginationMetaChange' \| 'paginationModelChange' \| 'pinnedColumnsChange' \| 'pivotModeChange' \| 'pivotModelChange' \| 'pivotPanelOpenChange' \| 'preferencePanelClose' \| 'preferencePanelOpen' \| 'redo' \| 'renderedRowsIntervalChange' \| 'resize' \| 'rootMount' \| 'rowClick' \| 'rowCountChange' \| 'rowDoubleClick' \| 'rowDragEnd' \| 'rowDragOver' \| 'rowDragStart' \| 'rowEditStart' \| 'rowEditStop' \| 'rowExpansionChange' \| 'rowGroupingModelChange' \| 'rowModesModelChange' \| 'rowMouseEnter' \| 'rowMouseLeave' \| 'rowMouseOut' \| 'rowMouseOver' \| 'rowOrderChange' \| 'rowSelectionChange' \| 'rowSelectionCheckboxChange' \| 'rowsScrollEnd' \| 'rowsScrollEndIntersection' \| 'rowsSet' \| 'scrollPositionChange' \| 'sidebarClose' \| 'sidebarOpen' \| 'sortedRowsSet' \| 'sortModelChange' \| 'stateChange' \| 'strategyAvailabilityChange' \| 'undo' \| 'unmount' \| 'viewportInnerSizeChange' \| 'virtualScrollerContentSizeChange' \| 'virtualScrollerTouchMove' \| 'virtualScrollerWheel'>` | `['columnsChange', 'rowsSet', 'sortedRowsSet', 'filteredRowsSet', 'paginationModelChange']` | No |  |
 | ignoreDiacritics | `bool` | `false` | No |  |
 | ignoreValueFormatterDuringExport | `{ clipboardExport?: bool, csvExport?: bool } \| bool` | `false` | No |  |
 | initialState | `object` | - | No |  |
@@ -168,6 +171,7 @@ import { DataGridPremium } from '@mui/x-data-grid-premium';
 | onPreferencePanelOpen | `function(params: GridPreferencePanelParams, event: MuiEvent<{}>, details: GridCallbackDetails) => void` | - | No |  |
 | onProcessRowUpdateError | `function(error: any) => void` | - | No |  |
 | onPrompt | `function(prompt: string, promptContext: string, conversationId: string) => Promise<PromptResponse>` | - | No |  |
+| onRedo | `func` | - | No |  |
 | onResize | `function(containerSize: ElementSize, event: MuiEvent<{}>, details: GridCallbackDetails) => void` | - | No |  |
 | onRowClick | `function(params: GridRowParams, event: MuiEvent<React.MouseEvent>, details: GridCallbackDetails) => void` | - | No |  |
 | onRowCountChange | `function(count: number) => void` | - | No |  |
@@ -182,6 +186,7 @@ import { DataGridPremium } from '@mui/x-data-grid-premium';
 | onSidebarClose | `function(params: GridSidebarParams, event: MuiEvent<{}>, details: GridCallbackDetails) => void` | - | No |  |
 | onSidebarOpen | `function(params: GridSidebarParams, event: MuiEvent<{}>, details: GridCallbackDetails) => void` | - | No |  |
 | onSortModelChange | `function(model: GridSortModel, details: GridCallbackDetails) => void` | - | No |  |
+| onUndo | `func` | - | No |  |
 | pageSizeOptions | `Array<number \| { label: string, value: number }>` | `[25, 50, 100]` | No |  |
 | pagination | `bool` | `false` | No |  |
 | paginationMeta | `{ hasNextPage?: bool }` | - | No |  |
@@ -277,6 +282,7 @@ Pass `GridChartsPanel` to render the default charts panel. |
 | baseButton | `Button` | - | The custom Button component used in the grid. |
 | baseIconButton | `IconButton` | - | The custom IconButton component used in the grid. |
 | baseInput | `Input` | - | The custom Input component used in the grid. |
+| baseTextarea | `InputBase with multiline` | - | The custom Textarea component used in the grid for multiline text editing. |
 | baseToggleButton | `ToggleButton` | - | The custom ToggleButton component used in the grid. |
 | baseTooltip | `Tooltip` | - | The custom Tooltip component used in the grid. |
 | basePagination | `Pagination` | - | The custom Pagination component used in the grid. |
@@ -287,6 +293,8 @@ Pass `GridChartsPanel` to render the default charts panel. |
 | baseTabs | `Tabs` | - | The custom Tabs component used in the grid. |
 | booleanCellTrueIcon | `GridCheckIcon` | - | Icon displayed on the boolean cell to represent the true value. |
 | booleanCellFalseIcon | `GridCloseIcon` | - | Icon displayed on the boolean cell to represent the false value. |
+| undoIcon | `GridUndoIcon` | - | Icon displayed on the undo button in the toolbar. |
+| redoIcon | `GridRedoIcon` | - | Icon displayed on the redo button in the toolbar. |
 | columnMenuIcon | `GridTripleDotsVerticalIcon` | - | Icon displayed on the side of the column header title to display the filter input component. |
 | openFilterButtonIcon | `GridFilterListIcon` | - | Icon displayed on the open filter button present in the toolbar by default. |
 | columnFilteredIcon | `GridFilterAltIcon` | - | Icon displayed on the column header menu to show that a filter has been applied to the column. |
@@ -322,6 +330,8 @@ Pass `GridChartsPanel` to render the default charts panel. |
 | loadIcon | `GridLoadIcon` | - | Icon displayed on the input while processing. |
 | columnReorderIcon | `GridDragIcon` | - | Icon displayed on the column reorder button. |
 | menuItemCheckIcon | `GridCheckIcon` | - | Icon displayed to indicate that a menu item is selected. |
+| longTextCellExpandIcon | `GridLongTextCellExpandIcon` | - | Icon displayed on the long text cell to expand the content. |
+| longTextCellCollapseIcon | `GridLongTextCellCollapseIcon` | - | Icon displayed on the long text cell popup to collapse the content. |
 | columnMenuPinLeftIcon | `GridPushPinLeftIcon` | - | Icon displayed in column menu for left pinning |
 | columnMenuPinRightIcon | `GridPushPinRightIcon` | - | Icon displayed in column menu for right pinning |
 | columnMenuUngroupIcon | `GridWorkspacesIcon` | - | Icon displayed in column menu for ungrouping |
@@ -462,6 +472,11 @@ Pass `GridChartsPanel` to render the default charts panel. |
 | - | detailPanelToggleCell--expanded | Styles applied to the detail panel toggle cell element if expanded. |
 | - | editBooleanCell | Styles applied to root of the boolean edit component. |
 | - | editInputCell | Styles applied to the root of the input component. |
+| - | editLongTextCell | Styles applied to the edit long text cell root element. |
+| - | editLongTextCellPopperContent | Styles applied to the edit long text cell popper content. |
+| - | editLongTextCellPopup | Styles applied to the edit long text cell popup. |
+| - | editLongTextCellTextarea | Styles applied to the edit long text cell textarea. |
+| - | editLongTextCellValue | Styles applied to the edit long text cell value element. |
 | - | filterForm | Styles applied to the root of the filter form component. |
 | - | filterFormColumnInput | Styles applied to the column input of the filter form component. |
 | - | filterFormDeleteIcon | Styles applied to the delete icon of the filter form component. |
@@ -476,6 +491,12 @@ Pass `GridChartsPanel` to render the default charts panel. |
 | - | headerFilterRow | Styles applied to the column header filter row. |
 | - | iconButtonContainer | Styles applied to the column header icon's container. |
 | - | iconSeparator | Styles applied to the column header separator icon element. |
+| - | longTextCell | Styles applied to the long text cell root element. |
+| - | longTextCellCollapseButton | Styles applied to the long text cell collapse button. |
+| - | longTextCellContent | Styles applied to the long text cell content element. |
+| - | longTextCellExpandButton | Styles applied to the long text cell expand button. |
+| - | longTextCellPopperContent | Styles applied to the long text cell popper content. |
+| - | longTextCellPopup | Styles applied to the long text cell popup. |
 | - | main | Styles applied to the main container element. |
 | - | main--hasPinnedRight | Styles applied to the main container element when it has right pinned columns. |
 | - | mainContent |  |

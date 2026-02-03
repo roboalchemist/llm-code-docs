@@ -4,12 +4,6 @@
 
 # Source: https://vitest.dev/config/expect.md
 
-# Source: https://vitest.dev/api/expect.md
-
-# Source: https://vitest.dev/config/browser/expect.md
-
-# Source: https://vitest.dev/config/expect.md
-
 ---
 url: /config/expect.md
 ---

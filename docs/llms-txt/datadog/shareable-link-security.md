@@ -4,7 +4,6 @@
 title: How are shared blueprint links secured?
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > FAQ > How are shared blueprint links secured?
-source_url: https://docs.datadoghq.com/faq/shareable-link-security/index.html
 ---
 
 # How are shared blueprint links secured?

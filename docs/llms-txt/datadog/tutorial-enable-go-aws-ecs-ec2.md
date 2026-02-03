@@ -8,7 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > APM > Tracing Guides > Tutorial - Enabling Tracing for a Go Application
   on Amazon ECS with EC2
-source_url: https://docs.datadoghq.com/guide/tutorial-enable-go-aws-ecs-ec2/index.html
 ---
 
 # Tutorial - Enabling Tracing for a Go Application on Amazon ECS with EC2

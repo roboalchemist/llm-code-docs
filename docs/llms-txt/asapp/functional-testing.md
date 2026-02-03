@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/generativeagent/configuring/functional-testing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Functional Testing
 
 > Learn how to test GenerativeAgent to ensure it handles customer scenarios correctly before production launch.
@@ -22,7 +26,7 @@ If GenerativeAgent cannot help the customer or is unsure about what to do, it wi
 * Focus on preventing potential hallucinations or bad inputs
 * Ensure GenerativeAgent handles expected customer scenarios correctly
 
-Functional Testing is performed after your ASAPP Team has configured GenerativeAgent Tasks and Functions. You will be able to fully integrate GenerativeAgent into your apps after the tests are passed.
+You perform Functional Testing after your ASAPP Team has configured GenerativeAgent Tasks and Functions. You will be able to fully integrate GenerativeAgent into your apps after the tests are passed.
 
 ## Testing Process
 

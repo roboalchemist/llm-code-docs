@@ -1,107 +1,86 @@
 # Source: https://docs.anchorbrowser.io/api-reference/tasks/get-task-metadata.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Task Metadata
 
 > Retrieves task metadata without the code content. Useful for getting task information
 without downloading the full task code.
 
 
+
+
 ## OpenAPI
 
 ````yaml openapi-mintlify.yaml get /v1/task/{taskId}
+openapi: 3.1.0
+info:
+  title: AnchorBrowser API
+  version: 1.0.0
+  description: APIs to manage all browser-related actions and configuration.
+servers:
+  - url: https://api.anchorbrowser.io
+    description: API server
+security: []
 paths:
-  path: /v1/task/{taskId}
-  method: get
-  servers:
-    - url: https://api.anchorbrowser.io
-      description: API server
-  request:
-    security:
-      - title: api key header
-        parameters:
-          query: {}
-          header:
-            anchor-api-key:
-              type: apiKey
-              description: API key passed in the header
-          cookie: {}
-    parameters:
-      path:
-        taskId:
+  /v1/task/{taskId}:
+    get:
+      tags:
+        - Tasks
+      summary: Get Task Metadata
+      description: >
+        Retrieves task metadata without the code content. Useful for getting
+        task information
+
+        without downloading the full task code.
+      parameters:
+        - name: taskId
+          in: path
+          required: true
+          description: The ID of the task to retrieve
           schema:
-            - type: string
-              required: true
-              description: The ID of the task to retrieve
-              format: uuid
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - $ref: '#/components/schemas/TaskMetadata'
-            refIdentifier: '#/components/schemas/TaskMetadataResponse'
-        examples:
-          example:
-            value:
-              data:
-                id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                name: <string>
-                teamId: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                description: <string>
-                latest: <string>
-                deleted: true
-                createdAt: '2023-11-07T05:31:56Z'
-                updatedAt: '2023-11-07T05:31:56Z'
-        description: Task metadata retrieved successfully
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - &ref_0
-                    type: object
-                    properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Task not found
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Failed to retrieve task
-  deprecated: false
-  type: path
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Task metadata retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskMetadataResponse'
+        '404':
+          description: Task not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Failed to retrieve task
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - api_key_header: []
 components:
   schemas:
+    TaskMetadataResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/TaskMetadata'
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
     TaskMetadata:
       type: object
       properties:
@@ -145,5 +124,11 @@ components:
         - deleted
         - createdAt
         - updatedAt
+  securitySchemes:
+    api_key_header:
+      type: apiKey
+      in: header
+      name: anchor-api-key
+      description: API key passed in the header
 
 ````

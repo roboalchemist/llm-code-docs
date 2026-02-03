@@ -1,24 +1,103 @@
 # Source: https://gofastmcp.com/python-sdk/fastmcp-server-dependencies.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # dependencies
 
 # `fastmcp.server.dependencies`
 
+Dependency injection for FastMCP.
+
+DI features (Depends, CurrentContext, CurrentFastMCP) work without pydocket
+using a vendored DI engine. Only task-related dependencies (CurrentDocket,
+CurrentWorker) and background task execution require fastmcp\[tasks].
+
 ## Functions
 
-### `get_context` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L31" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `is_docket_available` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L80" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+is_docket_available() -> bool
+```
+
+Check if pydocket is installed.
+
+### `require_docket` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L93" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+require_docket(feature: str) -> None
+```
+
+Raise ImportError with install instructions if docket not available.
+
+**Args:**
+
+* `feature`: Description of what requires docket (e.g., "`task=True`",
+  "CurrentDocket()"). Will be included in the error message.
+
+### `transform_context_annotations` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L135" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+transform_context_annotations(fn: Callable[..., Any]) -> Callable[..., Any]
+```
+
+Transform ctx: Context into ctx: Context = CurrentContext().
+
+Transforms ALL params typed as Context to use Docket's DI system,
+unless they already have a Dependency-based default (like CurrentContext()).
+
+This unifies the legacy type annotation DI with Docket's Depends() system,
+allowing both patterns to work through a single resolution path.
+
+Note: Only POSITIONAL\_OR\_KEYWORD parameters are reordered (params with defaults
+after those without). KEYWORD\_ONLY parameters keep their position since Python
+allows them to have defaults in any order.
+
+**Args:**
+
+* `fn`: Function to transform
+
+**Returns:**
+
+* Function with modified signature (same function object, updated **signature**)
+
+### `get_context` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L286" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 get_context() -> Context
 ```
 
-### `get_http_request` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L43" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+Get the current FastMCP Context instance directly.
+
+### `get_server` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L296" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+get_server() -> FastMCP
+```
+
+Get the current FastMCP server instance directly.
+
+**Returns:**
+
+* The active FastMCP server
+
+**Raises:**
+
+* `RuntimeError`: If no server in context
+
+### `get_http_request` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L314" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 get_http_request() -> Request
 ```
 
-### `get_http_headers` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L55" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+Get the current HTTP request.
+
+Tries MCP SDK's request\_ctx first, then falls back to FastMCP's HTTP context.
+
+### `get_http_headers` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L334" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 get_http_headers(include_all: bool = False) -> dict[str, str]
@@ -29,10 +108,10 @@ Extract headers from the current HTTP request if available.
 Never raises an exception, even if there is no active HTTP request (in which case
 an empty dict is returned).
 
-By default, strips problematic headers like `content-length` that cause issues if forwarded to downstream clients.
-If `include_all` is True, all headers are returned.
+By default, strips problematic headers like `content-length` that cause issues
+if forwarded to downstream clients. If `include_all` is True, all headers are returned.
 
-### `get_access_token` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L104" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `get_access_token` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L379" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 get_access_token() -> AccessToken | None
@@ -40,6 +119,320 @@ get_access_token() -> AccessToken | None
 
 Get the FastMCP access token from the current context.
 
+This function first tries to get the token from the current HTTP request's scope,
+which is more reliable for long-lived connections where the SDK's auth\_context\_var
+may become stale after token refresh. Falls back to the SDK's context var if no
+request is available.
+
 **Returns:**
 
 * The access token if an authenticated user is available, None otherwise.
+
+### `without_injected_parameters` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L437" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+without_injected_parameters(fn: Callable[..., Any]) -> Callable[..., Any]
+```
+
+Create a wrapper function without injected parameters.
+
+Returns a wrapper that excludes Context and Docket dependency parameters,
+making it safe to use with Pydantic TypeAdapter for schema generation and
+validation. The wrapper internally handles all dependency resolution and
+Context injection when called.
+
+Handles:
+
+* Legacy Context injection (always works)
+* Depends() injection (always works - uses docket or vendored DI engine)
+
+**Args:**
+
+* `fn`: Original function with Context and/or dependencies
+
+**Returns:**
+
+* Async wrapper function without injected parameters
+
+### `resolve_dependencies` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L578" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+resolve_dependencies(fn: Callable[..., Any], arguments: dict[str, Any]) -> AsyncGenerator[dict[str, Any], None]
+```
+
+Resolve dependencies for a FastMCP function.
+
+This function:
+
+1. Filters out any dependency parameter names from user arguments (security)
+2. Resolves Depends() parameters via the DI system
+
+The filtering prevents external callers from overriding injected parameters by
+providing values for dependency parameter names. This is a security feature.
+
+Note: Context injection is handled via transform\_context\_annotations() which
+converts `ctx: Context` to `ctx: Context = Depends(get_context)` at registration
+time, so all injection goes through the unified DI system.
+
+**Args:**
+
+* `fn`: The function to resolve dependencies for
+* `arguments`: User arguments (may contain keys that match dependency names,
+  which will be filtered out)
+
+### `CurrentContext` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L635" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+CurrentContext() -> Context
+```
+
+Get the current FastMCP Context instance.
+
+This dependency provides access to the active FastMCP Context for the
+current MCP operation (tool/resource/prompt call).
+
+**Returns:**
+
+* A dependency that resolves to the active Context instance
+
+**Raises:**
+
+* `RuntimeError`: If no active context found (during resolution)
+
+### `CurrentDocket` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L678" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+CurrentDocket() -> Docket
+```
+
+Get the current Docket instance managed by FastMCP.
+
+This dependency provides access to the Docket instance that FastMCP
+automatically creates for background task scheduling.
+
+**Returns:**
+
+* A dependency that resolves to the active Docket instance
+
+**Raises:**
+
+* `RuntimeError`: If not within a FastMCP server context
+* `ImportError`: If fastmcp\[tasks] not installed
+
+### `CurrentWorker` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L723" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+CurrentWorker() -> Worker
+```
+
+Get the current Docket Worker instance managed by FastMCP.
+
+This dependency provides access to the Worker instance that FastMCP
+automatically creates for background task processing.
+
+**Returns:**
+
+* A dependency that resolves to the active Worker instance
+
+**Raises:**
+
+* `RuntimeError`: If not within a FastMCP server context
+* `ImportError`: If fastmcp\[tasks] not installed
+
+### `CurrentFastMCP` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L765" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+CurrentFastMCP() -> FastMCP
+```
+
+Get the current FastMCP server instance.
+
+This dependency provides access to the active FastMCP server.
+
+**Returns:**
+
+* A dependency that resolves to the active FastMCP server
+
+**Raises:**
+
+* `RuntimeError`: If no server in context (during resolution)
+
+### `CurrentRequest` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L800" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+CurrentRequest() -> Request
+```
+
+Get the current HTTP request.
+
+This dependency provides access to the Starlette Request object for the
+current HTTP request. Only available when running over HTTP transports
+(SSE or Streamable HTTP).
+
+**Returns:**
+
+* A dependency that resolves to the active Starlette Request
+
+**Raises:**
+
+* `RuntimeError`: If no HTTP request in context (e.g., STDIO transport)
+
+### `CurrentHeaders` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L836" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+CurrentHeaders() -> dict[str, str]
+```
+
+Get the current HTTP request headers.
+
+This dependency provides access to the HTTP headers for the current request.
+Returns an empty dictionary when no HTTP request is available, making it
+safe to use in code that might run over any transport.
+
+**Returns:**
+
+* A dependency that resolves to a dictionary of header name -> value
+
+### `CurrentAccessToken` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L875" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+CurrentAccessToken() -> AccessToken
+```
+
+Get the current access token for the authenticated user.
+
+This dependency provides access to the AccessToken for the current
+authenticated request. Raises an error if no authentication is present.
+
+**Returns:**
+
+* A dependency that resolves to the active AccessToken
+
+**Raises:**
+
+* `RuntimeError`: If no authenticated user (use get\_access\_token() for optional)
+
+## Classes
+
+### `ProgressLike` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L904" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+Protocol for progress tracking interface.
+
+Defines the common interface between InMemoryProgress (server context)
+and Docket's Progress (worker context).
+
+**Methods:**
+
+#### `current` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L912" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+current(self) -> int | None
+```
+
+Current progress value.
+
+#### `total` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L917" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+total(self) -> int
+```
+
+Total/target progress value.
+
+#### `message` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L922" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+message(self) -> str | None
+```
+
+Current progress message.
+
+#### `set_total` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L926" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+set_total(self, total: int) -> None
+```
+
+Set the total/target value for progress tracking.
+
+#### `increment` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L930" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+increment(self, amount: int = 1) -> None
+```
+
+Atomically increment the current progress value.
+
+#### `set_message` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L934" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+set_message(self, message: str | None) -> None
+```
+
+Update the progress status message.
+
+### `InMemoryProgress` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L939" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+In-memory progress tracker for immediate tool execution.
+
+Provides the same interface as Docket's Progress but stores state in memory
+instead of Redis. Useful for testing and immediate execution where
+progress doesn't need to be observable across processes.
+
+**Methods:**
+
+#### `current` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L959" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+current(self) -> int | None
+```
+
+#### `total` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L963" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+total(self) -> int
+```
+
+#### `message` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L967" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+message(self) -> str | None
+```
+
+#### `set_total` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L970" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+set_total(self, total: int) -> None
+```
+
+Set the total/target value for progress tracking.
+
+#### `increment` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L976" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+increment(self, amount: int = 1) -> None
+```
+
+Atomically increment the current progress value.
+
+#### `set_message` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L985" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+set_message(self, message: str | None) -> None
+```
+
+Update the progress status message.
+
+### `Progress` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/dependencies.py#L990" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+
+FastMCP Progress dependency that works in both server and worker contexts.
+
+Handles three execution modes:
+
+* In Docket worker: Uses the execution's progress (observable via Redis)
+* In FastMCP server with Docket: Falls back to in-memory progress
+* In FastMCP server without Docket: Uses in-memory progress
+
+This allows tools to use Progress() regardless of whether they're called
+immediately or as background tasks, and regardless of whether pydocket
+is installed.

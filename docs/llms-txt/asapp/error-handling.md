@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/getting-started/developers/error-handling.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Error Handling
 
 > Learn how ASAPP returns Errors in the API
@@ -15,7 +19,7 @@ The message will usually contain enough information to help you resolve the issu
 | Field           | Type   | Description                                                                  |
 | :-------------- | :----- | :--------------------------------------------------------------------------- |
 | error           | object | The main error object containing details about the error                     |
-| error.requestId | string | A unique identifier for the request that resulted in this error              |
+| error.requestId | string | A unique identifier for the request that generated this error                |
 | error.message   | string | A detailed description of the error, including the specific validation issue |
 | error.code      | string | An error code in the format "HTTP\_STATUS\_CODE-ERROR\_SUBCODE"              |
 

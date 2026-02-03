@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/timesformer.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/timesformer.md
 
 # TimeSformer
 
@@ -27,16 +27,16 @@ the number of input frames per clip changes based on the model size so you shoul
 
 #### transformers.TimesformerConfig[[transformers.TimesformerConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/timesformer/configuration_timesformer.py#L24)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/timesformer/configuration_timesformer.py#L23)
 
-This is the configuration class to store the configuration of a [TimesformerModel](/docs/transformers/v5.0.0rc1/en/model_doc/timesformer#transformers.TimesformerModel). It is used to instantiate a
+This is the configuration class to store the configuration of a [TimesformerModel](/docs/transformers/v5.0.0/en/model_doc/timesformer#transformers.TimesformerModel). It is used to instantiate a
 TimeSformer model according to the specified arguments, defining the model architecture. Instantiating a
 configuration with the defaults will yield a similar configuration to that of the TimeSformer
 [facebook/timesformer-base-finetuned-k600](https://huggingface.co/facebook/timesformer-base-finetuned-k600)
 architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -91,11 +91,11 @@ drop_path_rate (`float`, *optional*, defaults to 0) : The dropout ratio for stoc
 
 #### transformers.TimesformerModel[[transformers.TimesformerModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/timesformer/modeling_timesformer.py#L474)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/timesformer/modeling_timesformer.py#L471)
 
 The bare Timesformer Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -103,10 +103,10 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.TimesformerModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/timesformer/modeling_timesformer.py#L490[{"name": "pixel_values", "val": ": FloatTensor"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`) --
+forwardtransformers.TimesformerModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/timesformer/modeling_timesformer.py#L487[{"name": "pixel_values", "val": ": FloatTensor"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [VideoMAEImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/videomae#transformers.VideoMAEImageProcessor). See [VideoMAEImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details (`processor_class` uses
-  [VideoMAEImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/videomae#transformers.VideoMAEImageProcessor) for processing images).
+  [VideoMAEImageProcessor](/docs/transformers/v5.0.0/en/model_doc/videomae#transformers.VideoMAEImageProcessor). See [VideoMAEImageProcessor.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details (`processor_class` uses
+  [VideoMAEImageProcessor](/docs/transformers/v5.0.0/en/model_doc/videomae#transformers.VideoMAEImageProcessor) for processing images).
 - **output_attentions** (`bool`, *optional*) --
   Whether or not to return the attentions tensors of all attention layers. See `attentions` under returned
   tensors for more detail.
@@ -114,9 +114,9 @@ forwardtransformers.TimesformerModel.forwardhttps://github.com/huggingface/trans
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([TimesformerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/timesformer#transformers.TimesformerConfig)) and inputs.
+elements depending on the configuration ([TimesformerConfig](/docs/transformers/v5.0.0/en/model_doc/timesformer#transformers.TimesformerConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
@@ -128,7 +128,7 @@ elements depending on the configuration ([TimesformerConfig](/docs/transformers/
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [TimesformerModel](/docs/transformers/v5.0.0rc1/en/model_doc/timesformer#transformers.TimesformerModel) forward method, overrides the `__call__` special method.
+The [TimesformerModel](/docs/transformers/v5.0.0/en/model_doc/timesformer#transformers.TimesformerModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -207,15 +207,15 @@ Examples:
 
 **Parameters:**
 
-config ([TimesformerModel](/docs/transformers/v5.0.0rc1/en/model_doc/timesformer#transformers.TimesformerModel)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([TimesformerModel](/docs/transformers/v5.0.0/en/model_doc/timesformer#transformers.TimesformerModel)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or a tuple of
+A [transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([TimesformerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/timesformer#transformers.TimesformerConfig)) and inputs.
+elements depending on the configuration ([TimesformerConfig](/docs/transformers/v5.0.0/en/model_doc/timesformer#transformers.TimesformerConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
@@ -232,12 +232,12 @@ elements depending on the configuration ([TimesformerConfig](/docs/transformers/
 
 #### transformers.TimesformerForVideoClassification[[transformers.TimesformerForVideoClassification]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/timesformer/modeling_timesformer.py#L607)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/timesformer/modeling_timesformer.py#L604)
 
 TimeSformer Model transformer with a video classification head on top (a linear layer on top of the final hidden state
 of the [CLS] token) e.g. for ImageNet.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -245,10 +245,10 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.TimesformerForVideoClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/timesformer/modeling_timesformer.py#L620[{"name": "pixel_values", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
+forwardtransformers.TimesformerForVideoClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/timesformer/modeling_timesformer.py#L617[{"name": "pixel_values", "val": ": torch.Tensor | None = None"}, {"name": "labels", "val": ": torch.Tensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [VideoMAEImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/videomae#transformers.VideoMAEImageProcessor). See [VideoMAEImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details (`processor_class` uses
-  [VideoMAEImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/videomae#transformers.VideoMAEImageProcessor) for processing images).
+  [VideoMAEImageProcessor](/docs/transformers/v5.0.0/en/model_doc/videomae#transformers.VideoMAEImageProcessor). See [VideoMAEImageProcessor.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details (`processor_class` uses
+  [VideoMAEImageProcessor](/docs/transformers/v5.0.0/en/model_doc/videomae#transformers.VideoMAEImageProcessor) for processing images).
 - **labels** (`torch.LongTensor` of shape `(batch_size,)`, *optional*) --
   Labels for computing the image classification/regression loss. Indices should be in `[0, ...,
   config.num_labels - 1]`. If `config.num_labels == 1` a regression loss is computed (Mean-Square loss), If
@@ -260,9 +260,9 @@ forwardtransformers.TimesformerForVideoClassification.forwardhttps://github.com/
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.ImageClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.ImageClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutput) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.ImageClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.ImageClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([TimesformerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/timesformer#transformers.TimesformerConfig)) and inputs.
+elements depending on the configuration ([TimesformerConfig](/docs/transformers/v5.0.0/en/model_doc/timesformer#transformers.TimesformerConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).
@@ -274,7 +274,7 @@ elements depending on the configuration ([TimesformerConfig](/docs/transformers/
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [TimesformerForVideoClassification](/docs/transformers/v5.0.0rc1/en/model_doc/timesformer#transformers.TimesformerForVideoClassification) forward method, overrides the `__call__` special method.
+The [TimesformerForVideoClassification](/docs/transformers/v5.0.0/en/model_doc/timesformer#transformers.TimesformerForVideoClassification) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -356,15 +356,15 @@ eating spaghetti
 
 **Parameters:**
 
-config ([TimesformerForVideoClassification](/docs/transformers/v5.0.0rc1/en/model_doc/timesformer#transformers.TimesformerForVideoClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([TimesformerForVideoClassification](/docs/transformers/v5.0.0/en/model_doc/timesformer#transformers.TimesformerForVideoClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.ImageClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.ImageClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.ImageClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutput) or a tuple of
+A [transformers.modeling_outputs.ImageClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([TimesformerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/timesformer#transformers.TimesformerConfig)) and inputs.
+elements depending on the configuration ([TimesformerConfig](/docs/transformers/v5.0.0/en/model_doc/timesformer#transformers.TimesformerConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).

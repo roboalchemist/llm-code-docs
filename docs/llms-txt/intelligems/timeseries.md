@@ -1,14 +1,14 @@
 # Source: https://docs.intelligems.io/analytics/experiment-analytics/timeseries.md
 
-# Timeseries
+# Time Series
 
-Intelligems provides timeseries for most metrics, allowing you to view how your experiment has performed on these metrics over time. There are two timeseries modes, cumulative and discrete. Cumulative is enabled by default, to activate discrete, you can uncheck the “Cumulative” checkbox:
+Intelligems provides time series for most metrics, allowing you to view how your experiment has performed on these metrics over time. There are two time series modes, cumulative and discrete. Cumulative is enabled by default, to activate discrete, you can uncheck the “Cumulative” checkbox:
 
 ## Cumulative
 
 <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-372a2dc7fb4ad835671f7f8529a51c04c9cc4707%2FTimeseries.png?alt=media" alt=""><figcaption></figcaption></figure>
 
-With this mode active, the metrics shown in the timeseries are up to and including the time on the x-axis. For example, in cumulative mode, at X = Jan 1, 2025, the data on the y-axis would be up to and including activity through Jan 1, 2025. Another way of thinking about this is that it’s a snapshot of how the data would have looked at the end of the day on Jan 1, 2025. This can be useful to see how the value of the metric evolved over the course of the experiment
+With this mode active, the metrics shown in the time series are up to and including the time on the x-axis. For example, in cumulative mode, at X = Jan 1, 2025, the data on the y-axis would be up to and including activity through Jan 1, 2025. Another way of thinking about this is that it’s a snapshot of how the data would have looked at the end of the day on Jan 1, 2025. This can be useful to see how the value of the metric evolved over the course of the experiment
 
 ### Confidence Intervals
 

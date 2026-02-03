@@ -1,6 +1,6 @@
 # Source: https://docs.warp.dev/university/mcp-servers/puppeteer-mcp-scraping-amazon-web-reviews.md
 
-# Puppeteer MCP: Scraping Amazon Web Reviews&#x20;
+# Puppeteer MCP: Scraping Amazon Web Reviews
 
 {% hint style="info" %}
 This tutorial demonstrates how to configure and use the **Puppeteer MCP server** inside Warp to scrape Amazon web reviews.
@@ -27,8 +27,7 @@ You’ll learn how to:
 
 {% stepper %}
 {% step %}
-
-### Configure the Puppeteer MCP Server
+**Configure the Puppeteer MCP Server**
 
 Open the MCP panel in Warp:
 
@@ -64,12 +63,11 @@ Save your configuration. Available endpoints will include:
 * `puppeteer.screenshot`
 * `puppeteer.evaluate`
 
-&#x20;These represent actions Warp can call automatically through its AI agent.
+These represent actions Warp can call automatically through its AI agent.
 {% endstep %}
 
 {% step %}
-
-### Use Voice Input to Trigger Automation
+**Use Voice Input to Trigger Automation**
 
 Enable **voice input** by clicking the microphone icon in Warp. Then speak your automation prompt naturally.
 
@@ -81,7 +79,7 @@ Then open each product link and summarize the product reviews.
 Finally, give me a recommendation for which shirt to buy based on the combination of the pricing and review quality.
 ```
 
-### Watch Puppeteer Automate the Workflow
+**Watch Puppeteer Automate the Workflow**
 
 Behind the scenes, Puppeteer:
 
@@ -97,7 +95,7 @@ You can see the browser (Amazon) and Warp side-by-side as Puppeteer performs the
 Puppeteer runs fully headless or in visible browser mode — you don’t need to touch your mouse or keyboard.
 {% endhint %}
 
-### Analyze and Summarize Results
+**Analyze and Summarize Results**
 
 Once the scrape is complete, Warp compiles the data and provides a ranked list of products. Example output (from transcript):
 
@@ -111,7 +109,7 @@ Warp’s recommendation:
 
 > “The Cozy T‑Shirt — $8, 4.5 stars, good fit, and soft fabric.”
 
-### Apply Puppeteer MCP to Other Scenarios
+**Apply Puppeteer MCP to Other Scenarios**
 
 The same setup works for:
 

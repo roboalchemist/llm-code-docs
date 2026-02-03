@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/tutorials/databases/gcs
+
 # Connect Streamlit to Google Cloud Storage
 
 This guide explains how to securely access files on Google Cloud Storage from Streamlit Community Cloud. It uses [Streamlit FilesConnection](https://github.com/streamlit/files-connection), the [gcsfs](https://github.com/fsspec/gcsfs) library, and Streamlit's [Secrets management](/develop/concepts/connections/secrets-management).

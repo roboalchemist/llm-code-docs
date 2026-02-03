@@ -22,11 +22,9 @@ The ChatPalette component is a structured layout wrapper that organizes [ChatMes
 
 ## Examples
 
-<note target="_blank" to="https://ai-sdk.dev/docs/getting-started/nuxt">
-
-These chat components are designed to be used with the **AI SDK v5** from **Vercel AI SDK**.
-
-</note>
+> [!TIP]
+> See: /docs/components/chat-messages#examples
+> Check the ChatMessages documentation for server API setup and installation instructions.
 
 ### Within a Modal
 
@@ -36,7 +34,6 @@ You can use the ChatPalette component inside a [Modal](/docs/components/modal)'s
 <script setup lang="ts">
 import { Chat } from '@ai-sdk/vue'
 import type { UIMessage } from 'ai'
-import { getTextFromMessage } from '@nuxt/ui/utils/ai'
 
 const messages: UIMessage[] = []
 const input = ref('')
@@ -63,11 +60,17 @@ function onSubmit() {
           :assistant="{ icon: 'i-lucide-bot' }"
         >
           <template #content="{ message }">
-            <MDC
-              :value="getTextFromMessage(message)"
-              :cache-key="message.id"
-              class="[&_.my-5]:my-2.5 *:first:!mt-0 *:last:!mb-0 [&_.leading-7]:!leading-6"
-            />
+            <template v-for="(part, index) in message.parts" :key="`${message.id}-${part.type}-${index}`">
+              <MDC
+                v-if="part.type === 'text' && message.role === 'assistant'"
+                :value="part.text"
+                :cache-key="`${message.id}-${index}`"
+                class="[&_.my-5]:my-2.5 *:first:!mt-0 *:last:!mb-0 [&_.leading-7]:!leading-6"
+              />
+              <p v-else-if="part.type === 'text' && message.role === 'user'" class="whitespace-pre-wrap">
+                {{ part.text }}
+              </p>
+            </template>
           </template>
         </UChatMessages>
 
@@ -94,7 +97,6 @@ You can use the ChatPalette component conditionally inside [ContentSearch](/docs
 <script setup lang="ts">
 import { Chat } from '@ai-sdk/vue'
 import type { UIMessage } from 'ai'
-import { getTextFromMessage } from '@nuxt/ui/utils/ai'
 
 const messages: UIMessage[] = []
 const input = ref('')
@@ -154,11 +156,17 @@ function onClose(e: Event) {
           :assistant="{ icon: 'i-lucide-bot' }"
         >
           <template #content="{ message }">
-            <MDC
-              :value="getTextFromMessage(message)"
-              :cache-key="message.id"
-              class="[&_.my-5]:my-2.5 *:first:!mt-0 *:last:!mb-0 [&_.leading-7]:!leading-6"
-            />
+            <template v-for="(part, index) in message.parts" :key="`${message.id}-${part.type}-${index}`">
+              <MDC
+                v-if="part.type === 'text' && message.role === 'assistant'"
+                :value="part.text"
+                :cache-key="`${message.id}-${index}`"
+                class="[&_.my-5]:my-2.5 *:first:!mt-0 *:last:!mb-0 [&_.leading-7]:!leading-6"
+              />
+              <p v-else-if="part.type === 'text' && message.role === 'user'" class="whitespace-pre-wrap">
+                {{ part.text }}
+              </p>
+            </template>
           </template>
         </UChatMessages>
 
@@ -177,6 +185,44 @@ function onClose(e: Event) {
   </UContentSearch>
 </template>
 ```
+
+> [!TIP]
+> You can enhance your chatbot with tool calling capabilities using the [Model Context Protocol](https://ai-sdk.dev/docs/ai-sdk-core/mcp-tools) (`@ai-sdk/mcp`). This allows the AI to search your documentation or perform other actions:
+> ```ts
+> import { StreamableHTTPClientTransport } from '@modelcontextprotocol/sdk/client/streamableHttp.js'
+> import { streamText, convertToModelMessages, stepCountIs } from 'ai'
+> import { experimental_createMCPClient } from '@ai-sdk/mcp'
+> import { gateway } from '@ai-sdk/gateway'
+> 
+> export default defineEventHandler(async (event) => {
+>   const { messages } = await readBody(event)
+> 
+>   const httpTransport = new StreamableHTTPClientTransport(
+>     new URL('https://your-app.com/mcp')
+>   )
+>   const httpClient = await experimental_createMCPClient({
+>     transport: httpTransport
+>   })
+>   const tools = await httpClient.tools()
+> 
+>   return streamText({
+>     model: gateway('anthropic/claude-sonnet-4.5'),
+>     maxOutputTokens: 10000,
+>     system: 'You are a helpful assistant. Use your tools to search for relevant information before answering questions.',
+>     messages: await convertToModelMessages(messages),
+>     stopWhen: stepCountIs(6),
+>     tools,
+>     onFinish: async () => {
+>       await httpClient.close()
+>     },
+>     onError: async (error) => {
+>       console.error(error)
+>       await httpClient.close()
+>     }
+>   }).toUIMessageStreamResponse()
+> })
+> 
+> ```
 
 ## API
 
@@ -226,8 +272,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/example-projects/vercel-ai-sdk-deep-research.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deep research agent using Vercel's AI SDK
 
 > Deep research agent which generates comprehensive PDF reports using Vercel's AI SDK.
@@ -99,7 +103,7 @@ We use the [`useRealtimeTaskTrigger`](/realtime/react-hooks/triggering#userealti
 
 **Frontend (React Hook)**:
 
-```typescript  theme={null}
+```typescript  theme={"theme":"css-variables"}
 const triggerInstance = useRealtimeTaskTrigger<typeof deepResearchOrchestrator>("deep-research", {
   accessToken: triggerToken,
 });
@@ -110,7 +114,7 @@ As the research progresses, the metadata is set within the tasks and the fronten
 
 **Task Metadata**:
 
-```typescript  theme={null}
+```typescript  theme={"theme":"css-variables"}
 metadata.set("status", {
   progress: 25,
   label: `Searching the web for: "${query}"`,

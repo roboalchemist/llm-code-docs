@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/bitsandbytes/v0.49.0/quickstart.md
+# Source: https://huggingface.co/docs/bitsandbytes/v0.49.1/quickstart.md
 
 # Quickstart
 

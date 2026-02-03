@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/contributing/getting-started/code-of-conduct.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Code of Conduct
 
 > What you should know before contributing to Infisical?

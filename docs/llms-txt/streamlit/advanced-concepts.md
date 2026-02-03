@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/get-started/fundamentals/advanced-concepts
+
 # Advanced concepts of Streamlit
 
 Now that you know how a Streamlit app runs and handles data, let's talk about being efficient. Caching allows you to save the output of a function so you can skip over it on rerun. Session State lets you save information for each user that is preserved between reruns. This not only allows you to avoid unecessary recalculation, but also allows you to create dynamic pages and handle progressive processes.

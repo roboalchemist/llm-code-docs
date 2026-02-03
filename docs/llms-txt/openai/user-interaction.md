@@ -22,7 +22,7 @@ When a user sends a prompt, the model evaluates:
 You influence in-conversation discovery by:
 
 1. Writing action-oriented [tool descriptions](https://modelcontextprotocol.io/specification/2025-06-18/server/tools#tool) (“Use this when the user wants to view their kanban board”) rather than generic copy.
-2. Writing clear [component descriptions](/apps-sdk/reference#add-component-descriptions) on the resource UI template metadata.
+2. Writing clear [component descriptions](https://developers.openai.com/apps-sdk/reference#add-component-descriptions) on the resource UI template metadata.
 3. Regularly testing your golden prompt set in ChatGPT developer mode and logging precision/recall.
 
 If the assistant selects your tool, it handles arguments, displays confirmation if needed, and renders the component inline. If no linked tool is an obvious match, the model will default to built-in capabilities, so keep evaluating and improving your metadata.
@@ -46,7 +46,7 @@ Linked tools are always on in the model’s context. When the user writes a prom
 
 - Keep tool descriptions action oriented so the model can disambiguate similar apps.
 - Return structured content that references stable IDs so follow-up prompts can mutate or summarise prior results.
-- Provide `_meta` [hints](/apps-sdk/reference#tool-descriptor-parameters) so the client can streamline confirmation and rendering.
+- Provide `_meta` [hints](https://developers.openai.com/apps-sdk/reference#tool-descriptor-parameters) so the client can streamline confirmation and rendering.
 
 When a call succeeds, the component renders inline and inherits the current theme, composer, and confirmation settings.
 

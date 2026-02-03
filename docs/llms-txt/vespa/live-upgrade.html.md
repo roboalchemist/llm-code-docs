@@ -32,5 +32,5 @@ $[vespa](../../clients/vespa-cli.html#deployment)prepare <app> && vespa activate
 ### Troubleshooting
 See [config server troubleshooting](configuration-server.html#troubleshooting).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

@@ -174,11 +174,16 @@ To add document processors either before or after the indexer, declare a chain (
 
 Contained in [content](#content). The minimum total data copies the cluster will maintain. This can be set instead of (or in addition to) redundancy to ensure that a minimum number of copies are always maintained regardless of other configuration.
 
-Example: If _min-redundancy_ is 2 and there is 1 content group, there will be 2 data copies in the group (2 copies for the cluster). If the number of groups is changed to 2 there will be 1 data copy in each group (still 2 copies for the cluster).
-
-Read more about the actual number of replicas when using [groups](#group) in [topology change](/en/content/elasticity.html#changing-topology).
-
 `min-redundancy` can be changed without node restart - replicas will be added or removed automatically.
+
+### min-redundancy and groups
+
+A group will always have minimum one copy of each document in the cluster. This is also the most commonly used configuration; Increase replica level with more groups to improve query capacity.
+
+- Example 1: If _min-redundancy_ is 2 and there is 1 content group, there will be 2 data copies in the group (2 copies for the cluster). If the number of groups is changed to 2 there will be 1 data copy in each group (still 2 copies for the cluster).
+- Example 2: A cluster is configured to [autoscale](../../../operations/autoscaling.html) using `groups="[2,3]"`. Here, configure min-redundancy to 2, as each group will have 1 replica irrespective of number of groups, here 2 or 3 - see [replicas](../../../content/elasticity.html#replicas). Setting the lower bound ensures correct replica level for 2 groups.
+
+For self-managed Vespa: Read more about the actual number of replicas when using [groups](#group) in [topology change](/en/content/elasticity.html#changing-topology).
 
 ## redundancy
 
@@ -892,7 +897,7 @@ A ratio for the number of content groups that are allowed to be down simultaneou
 
  |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 
@@ -901,6 +906,7 @@ A ratio for the number of content groups that are allowed to be down simultaneou
 - [document](#document)
 - [document-processing](#document-processing)
 - [min-redundancy](#min-redundancy)
+- [min-redundancy and groups](#min-redundancy-and-groups)
 - [redundancy](#redundancy)
 - [coverage-policy](#coverage-policy)
 - [node](#node)

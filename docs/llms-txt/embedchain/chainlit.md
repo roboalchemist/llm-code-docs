@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/integration/chainlit.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ⛓️ Chainlit
 
 > Integrate with Chainlit to create LLM chat apps
@@ -12,7 +16,7 @@ In this example, we will learn how to use Chainlit and Embedchain together.
 
 First, install the required packages:
 
-```bash
+```bash  theme={null}
 pip install embedchain chainlit
 ```
 
@@ -20,7 +24,7 @@ pip install embedchain chainlit
 
 Create a new file called `app.py` and add the following code:
 
-```python
+```python  theme={null}
 import chainlit as cl
 from embedchain import App
 

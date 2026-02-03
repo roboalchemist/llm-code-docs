@@ -4,8 +4,6 @@
 title: API Gateway Base Path Mapping
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > API Gateway Base Path Mapping
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.apigateway_base_path_mapping.dataset/index.html
 ---
 
 # API Gateway Base Path Mapping
@@ -18,12 +16,12 @@ aws.apigateway_base_path_mapping
 
 ## Fields
 
-| Title                 | ID   | Type   | Data Type                                                                                         | Description |
-| --------------------- | ---- | ------ | ------------------------------------------------------------------------------------------------- | ----------- |
-| _key                  | core | string |
-| account_id            | core | string |
-| base_path             | core | string | The base path name that callers of the API must provide as part of the URL after the domain name. |
-| base_path_mapping_arn | core | string |
-| rest_api_id           | core | string | The string identifier of the associated RestApi.                                                  |
-| stage                 | core | string | The name of the associated stage.                                                                 |
-| tags                  | core | hstore |
+| Title                 | ID   | Type       | Data Type                                                                                         | Description |
+| --------------------- | ---- | ---------- | ------------------------------------------------------------------------------------------------- | ----------- |
+| _key                  | core | string     |
+| account_id            | core | string     |
+| base_path             | core | string     | The base path name that callers of the API must provide as part of the URL after the domain name. |
+| base_path_mapping_arn | core | string     |
+| rest_api_id           | core | string     | The string identifier of the associated RestApi.                                                  |
+| stage                 | core | string     | The name of the associated stage.                                                                 |
+| tags                  | core | hstore_csv |

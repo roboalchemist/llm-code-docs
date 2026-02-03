@@ -1,147 +1,108 @@
 # Source: https://docs.anchorbrowser.io/api-reference/tasks/update-task-metadata.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Update Task Metadata
 
 > Updates task metadata (name and description). This does not affect the task code or versions.
 
 
+
+
 ## OpenAPI
 
 ````yaml openapi-mintlify.yaml put /v1/task/{taskId}
+openapi: 3.1.0
+info:
+  title: AnchorBrowser API
+  version: 1.0.0
+  description: APIs to manage all browser-related actions and configuration.
+servers:
+  - url: https://api.anchorbrowser.io
+    description: API server
+security: []
 paths:
-  path: /v1/task/{taskId}
-  method: put
-  servers:
-    - url: https://api.anchorbrowser.io
-      description: API server
-  request:
-    security:
-      - title: api key header
-        parameters:
-          query: {}
-          header:
-            anchor-api-key:
-              type: apiKey
-              description: API key passed in the header
-          cookie: {}
-    parameters:
-      path:
-        taskId:
+  /v1/task/{taskId}:
+    put:
+      tags:
+        - Tasks
+      summary: Update Task Metadata
+      description: >
+        Updates task metadata (name and description). This does not affect the
+        task code or versions.
+      parameters:
+        - name: taskId
+          in: path
+          required: true
+          description: The ID of the task to update
           schema:
-            - type: string
-              required: true
-              description: The ID of the task to update
-              format: uuid
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              name:
-                allOf:
-                  - type: string
-                    pattern: ^[a-zA-Z0-9_-]+$
-                    minLength: 1
-                    maxLength: 255
-                    description: >-
-                      Task name (letters, numbers, hyphens, and underscores
-                      only)
-              description:
-                allOf:
-                  - type: string
-                    maxLength: 1000
-                    description: Optional description of the task
-            required: true
-            refIdentifier: '#/components/schemas/UpdateTaskMetadataRequest'
-        examples:
-          example:
-            value:
-              name: <string>
-              description: <string>
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - $ref: '#/components/schemas/TaskMetadata'
-            refIdentifier: '#/components/schemas/TaskMetadataResponse'
-        examples:
-          example:
-            value:
-              data:
-                id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                name: <string>
-                teamId: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                description: <string>
-                latest: <string>
-                deleted: true
-                createdAt: '2023-11-07T05:31:56Z'
-                updatedAt: '2023-11-07T05:31:56Z'
-        description: Task metadata updated successfully
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - &ref_0
-                    type: object
-                    properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Task not found
-    '409':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Task name already exists
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Failed to update task
-  deprecated: false
-  type: path
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTaskMetadataRequest'
+      responses:
+        '200':
+          description: Task metadata updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskMetadataResponse'
+        '404':
+          description: Task not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: Task name already exists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Failed to update task
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - api_key_header: []
 components:
   schemas:
+    UpdateTaskMetadataRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          pattern: ^[a-zA-Z0-9_-]+$
+          minLength: 1
+          maxLength: 255
+          description: Task name (letters, numbers, hyphens, and underscores only)
+        description:
+          type: string
+          maxLength: 1000
+          description: Optional description of the task
+    TaskMetadataResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/TaskMetadata'
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
     TaskMetadata:
       type: object
       properties:
@@ -185,5 +146,11 @@ components:
         - deleted
         - createdAt
         - updatedAt
+  securitySchemes:
+    api_key_header:
+      type: apiKey
+      in: header
+      name: anchor-api-key
+      description: API key passed in the header
 
 ````

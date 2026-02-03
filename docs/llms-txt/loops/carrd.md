@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/integrations/carrd.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Carrd
 
 > Enable sign ups to Loops using a native Carrd form.

@@ -1,15 +1,19 @@
 # Source: https://docs.augmentcode.com/context-services/mcp/quickstart-claude-code.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Quickstart (Claude Code)
 
 > Get started with Augment Context Engine MCP in Claude Code in minutes
 
 ## Quick Start with Claude Code
 
-### 1. Install Auggie CLI (Pre-release version)
+### 1. Install Auggie CLI
 
 ```bash  theme={null}
-npm install -g @augmentcode/auggie@prerelease
+npm install -g @augmentcode/auggie@latest
 ```
 
 ### 2. Sign in to Augment
@@ -25,13 +29,13 @@ This will open a browser window for authentication.
 Add the MCP server to user scope (available in all projects):
 
 ```bash  theme={null}
-claude mcp add-json auggie-mcp --scope user '{"type":"stdio","command":"auggie","args":["--mcp"]}'
+claude mcp add-json auggie-mcp --scope user '{"type":"stdio","command":"auggie","args":["--mcp","--mcp-auto-workspace"]}'
 ```
 
 Or add to project scope (only available in the current project):
 
 ```bash  theme={null}
-claude mcp add-json auggie-mcp --scope project '{"type":"stdio","command":"auggie","args":["--mcp"]}'
+claude mcp add-json auggie-mcp --scope project '{"type":"stdio","command":"auggie","args":["--mcp","--mcp-auto-workspace"]}'
 ```
 
 ### 4. Test the integration
@@ -41,18 +45,6 @@ claude --print "Do you have access to the Augment codebase retrieval tool? Answe
 ```
 
 Claude should confirm it has access to the `codebase-retrieval` tool.
-
-## Configuration
-
-### Workspace Root
-
-Specify the workspace to index by adding the `-w` argument:
-
-```bash  theme={null}
-claude mcp add-json auggie-mcp --scope user '{"type":"stdio","command":"auggie","args":["-w","/path/to/project","--mcp"]}'
-```
-
-Update `/path/to/project` with your actual project path.
 
 ## Advanced: Non-Interactive Setup
 
@@ -75,18 +67,7 @@ Copy the `accessToken` value (the long string after `"accessToken":"`) and the `
 ### 2. Configure with environment variables
 
 ```bash  theme={null}
-claude mcp add-json auggie-mcp --scope user '{"type":"stdio","command":"auggie","args":["--mcp"],"env":{"AUGMENT_API_TOKEN":"your-access-token","AUGMENT_API_URL":"your-tenant-url"}}'
+claude mcp add-json auggie-mcp --scope user '{"type":"stdio","command":"auggie","args":["--mcp","--mcp-auto-workspace"],"env":{"AUGMENT_API_TOKEN":"your-access-token","AUGMENT_API_URL":"your-tenant-url"}}'
 ```
 
 Replace `your-access-token` and `your-tenant-url` with the values from step 1.
-
-For a specific workspace:
-
-```bash  theme={null}
-claude mcp add-json auggie-mcp --scope user '{"type":"stdio","command":"auggie","args":["-w","/path/to/project","--mcp"],"env":{"AUGMENT_API_TOKEN":"your-access-token","AUGMENT_API_URL":"your-tenant-url"}}'
-```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.augmentcode.com/llms.txt

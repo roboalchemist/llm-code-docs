@@ -4,8 +4,6 @@
 title: CloudFront Origin Request Policy
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > CloudFront Origin Request Policy
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.cloudfront_origin_request_policy.dataset/index.html
 ---
 
 # CloudFront Origin Request Policy
@@ -18,10 +16,10 @@ aws.cloudfront_origin_request_policy
 
 ## Fields
 
-| Title                 | ID   | Type   | Data Type                                         | Description |
-| --------------------- | ---- | ------ | ------------------------------------------------- | ----------- |
-| _key                  | core | string |
-| account_id            | core | string |
-| e_tag                 | core | string | The current version of the origin request policy. |
-| origin_request_policy | core | json   | The origin request policy.                        |
-| tags                  | core | hstore |
+| Title                 | ID   | Type       | Data Type                                         | Description |
+| --------------------- | ---- | ---------- | ------------------------------------------------- | ----------- |
+| _key                  | core | string     |
+| account_id            | core | string     |
+| e_tag                 | core | string     | The current version of the origin request policy. |
+| origin_request_policy | core | json       | The origin request policy.                        |
+| tags                  | core | hstore_csv |

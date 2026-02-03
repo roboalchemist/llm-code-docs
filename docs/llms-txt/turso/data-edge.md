@@ -1,5 +1,9 @@
 # Source: https://docs.turso.tech/features/data-edge.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Data Edge (Deprecated)
 
 > Allow your users to reach local replicas of your database, wherever they are.

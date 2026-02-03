@@ -1,3 +1,9 @@
+# Source: https://docs.streamlit.io/deploy/streamlit-community-cloud/get-started
+
+# Source: https://docs.streamlit.io/develop/concepts/app-testing/get-started
+
+# Source: https://docs.streamlit.io/get-started
+
 # Get started with Streamlit
 
 This Get Started guide explains how Streamlit works, how to install Streamlit on your preferred operating system, and how to create your first Streamlit app!

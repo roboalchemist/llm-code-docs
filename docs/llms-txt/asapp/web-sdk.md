@@ -2,13 +2,9 @@
 
 # Source: https://docs.asapp.com/agent-desk/integrations/web-sdk.md
 
-# Source: https://docs.asapp.com/generativeagent/integrate/web-sdk.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/web-sdk.md
-
-# Source: https://docs.asapp.com/generativeagent/integrate/web-sdk.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/web-sdk.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Web SDK Overview
 

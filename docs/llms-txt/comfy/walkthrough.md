@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/custom-nodes/walkthrough.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Getting Started
 
 This page will take you step-by-step through the process of creating a custom node.

@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/runtime/sql.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SQL
 
 > Bun provides native bindings for working with SQL databases through a unified Promise-based API that supports PostgreSQL, MySQL, and SQLite.
@@ -150,16 +154,16 @@ const memory = new SQL(":memory:");
 const memory2 = new SQL("sqlite://:memory:");
 
 // File-based database
-const db = new SQL("sqlite://myapp.db");
+const sql1 = new SQL("sqlite://myapp.db");
 
 // Using options object
-const db2 = new SQL({
+const sql2 = new SQL({
   adapter: "sqlite",
   filename: "./data/app.db",
 });
 
 // For simple filenames, specify adapter explicitly
-const db3 = new SQL("myapp.db", { adapter: "sqlite" });
+const sql3 = new SQL("myapp.db", { adapter: "sqlite" });
 ```
 
 <Accordion title="SQLite Connection String Formats">
@@ -199,7 +203,7 @@ const db3 = new SQL("myapp.db", { adapter: "sqlite" });
   SQLite databases support additional configuration options:
 
   ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
-  const db = new SQL({
+  const sql = new SQL({
     adapter: "sqlite",
     filename: "app.db",
 
@@ -436,7 +440,7 @@ Bun's SQL is lazy, which means it will only start executing when awaited or exec
 You can cancel a query that is currently executing by calling the `cancel()` method on the query object.
 
 ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
-const query = await sql`SELECT * FROM users`.execute();
+const query = sql`SELECT * FROM users`.execute();
 setTimeout(() => query.cancel(), 100);
 await query;
 ```
@@ -594,7 +598,7 @@ You can configure your database connection manually by passing options to the SQ
 ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { SQL } from "bun";
 
-const db = new SQL({
+const sql = new SQL({
   // Required for MySQL when using options object
   adapter: "mysql",
 
@@ -642,7 +646,7 @@ const db = new SQL({
 ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { SQL } from "bun";
 
-const db = new SQL({
+const sql = new SQL({
   // Connection details (adapter is auto-detected as PostgreSQL)
   url: "postgres://user:pass@localhost:5432/dbname",
 
@@ -687,7 +691,7 @@ const db = new SQL({
 ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { SQL } from "bun";
 
-const db = new SQL({
+const sql = new SQL({
   // Required for SQLite
   adapter: "sqlite",
   filename: "./data/app.db", // or ":memory:" for in-memory database
@@ -915,7 +919,7 @@ const sql = new SQL("postgres://user:password@localhost/mydb?sslmode=verify-full
 Bun's SQL client automatically manages a connection pool, which is a pool of database connections that are reused for multiple queries. This helps to reduce the overhead of establishing and closing connections for each query, and it also helps to manage the number of concurrent connections to the database.
 
 ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
-const db = new SQL({
+const sql = new SQL({
   // Pool configuration
   max: 20, // Maximum 20 concurrent connections
   idleTimeout: 30, // Close idle connections after 30s
@@ -927,7 +931,7 @@ const db = new SQL({
 No connection will be made until a query is made.
 
 ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
-const sql = Bun.sql(); // no connection are created
+const sql = Bun.SQL(); // no connection are created
 
 await sql`...`; // pool is started until max is reached (if possible), first available connection is used
 await sql`...`; // previous connection is reused

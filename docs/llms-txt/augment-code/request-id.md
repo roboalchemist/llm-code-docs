@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/troubleshooting/request-id.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Request IDs
 
 > Request IDs are generated with every code suggestion and chat interaction. Our team may ask you to provide the request ID when you report a bug or issue.

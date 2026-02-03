@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/no-const-assign.md
 ---
-# eslint/no-const-assign&#x20;
 
 ### What it does
 

@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/examplecode/codesamples/oss/vector-database.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Vector database ingestion
 
 <Note> This sample code utilizes the [Unstructured Open Source](/open-source/introduction/overview "Open Source") Library. </Note>

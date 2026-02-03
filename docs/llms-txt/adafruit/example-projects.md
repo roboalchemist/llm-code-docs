@@ -8,72 +8,69 @@
 
 # Source: https://learn.adafruit.com/force-sensitive-resistor-fsr/example-projects.md
 
-# Source: https://learn.adafruit.com/pir-passive-infrared-proximity-motion-sensor/example-projects.md
-
-# Source: https://learn.adafruit.com/tilt-sensor/example-projects.md
-
-# Source: https://learn.adafruit.com/tmp36-temperature-sensor/example-projects.md
-
-# Source: https://learn.adafruit.com/photocells/example-projects.md
-
-# Source: https://learn.adafruit.com/force-sensitive-resistor-fsr/example-projects.md
-
-# Source: https://learn.adafruit.com/pir-passive-infrared-proximity-motion-sensor/example-projects.md
-
-# PIR Motion Sensor
+# Force Sensitive Resistor (FSR)
 
 ## Example Projects
 
-http://www.youtube.com/watch?v=cofqYukXTow&feature=player_embedded
+Here are just a few examples of projects that use FSRs!http://www.youtube.com/watch?feature=player_embedded&v=6duIGjwv6CM
 
-_A simple room greeter that plays the super mario brothers theme music when triggered by a PIR in a hacked airwick freshener unit._![](https://cdn-learn.adafruit.com/assets/assets/000/000/544/medium800/proximity_mario.jpg?1396763909)
+Control LEDs (its a little dark but he's pressing an FSR).![](https://cdn-learn.adafruit.com/assets/assets/000/000/448/medium800/force___flex_2245842706_7fe1c82fc0.jpg?1396763130)
 
-_[A USB-powered singing and blinking Mario mushroom (there's a video on the site!)](http://jarv.org/mario.shtml)_![](https://cdn-learn.adafruit.com/assets/assets/000/000/545/medium800/proximity_umbrella-prototype-1.jpg?1396763913)
+[FSR thumb-wrestling (example from Stanford U. class)](http://protolab.pbworks.com/TutorialSensors#ForceSensitiveResistorFSRThumbWrestling)http://vimeo.com/1908805
 
-http://www.youtube.com/watch?v=6PsnVZ3QstM&feature=player_embedded
+[Tapper, a musical interface that works by having you tap your fingers to the music](http://www.arijoseph.com/blog/2008/10/itppcomp-tapper-proposal/)- [Previous Page](https://learn.adafruit.com/force-sensitive-resistor-fsr/using-an-fsr.md)
 
-[Rain Umbrellas](http://coopy.sproutlab.com/projects/rain-umbrellas/)  
-http://www.youtube.com/watch?v=9zIluzWJQPs&feature=player_embedded
+## Featured Products
 
-A home-made security system using PIR sensors (which is built into a Start Trek panel!)http://www.youtube.com/watch?v=5N7XX-420Rk&feature=player_embedded
+### Round Force-Sensitive Resistor (FSR) -  0.3 ~ 10 Newton Force
 
-PIR sensor + Arduino + Servo = automatic cat door!![](https://cdn-learn.adafruit.com/assets/assets/000/000/546/medium800/proximity_Arduino-2PIR-motion-tracker.jpg?1396763920)
+[Round Force-Sensitive Resistor (FSR) -  0.3 ~ 10 Newton Force](https://www.adafruit.com/product/166)
+FSRs are sensors that allow you to detect physical pressure, squeezing and weight. They are simple to use and low cost. This sensor is an Alpha MF01A-N-221-A01&nbsp;with 1/2 diameter sensing region.
 
-_[A 2-PIR motion tracker](http://web.archive.org/web/20100401235114/http://luckylarry.co.uk/2009/07/arduino-very-basic-motion-tracking-with-2-pir-sensors/)&nbsp;_by Lucky Larry
-
-![](https://cdn-learn.adafruit.com/assets/assets/000/000/547/medium800/proximity_arduino-camera-motion-trigger.jpg?1396763922)
-
-_[A PIR-based remote camera trigger (also by Lucky Larry!)](http://web.archive.org/web/20160412220321/http://luckylarry.co.uk/arduino-projects/arduino-motion-triggered-camera/)_
-
-http://www.youtube.com/watch?v=dGOgCnlizgU&feature=player_embedded
-
-An interesting hack whereby the PIR sensor is used 'raw' to track movement.- [Previous Page](https://learn.adafruit.com/pir-passive-infrared-proximity-motion-sensor/circuitpython-code.md)
-
-## Primary Products
-
-### PIR (motion) sensor
-
-[PIR (motion) sensor](https://www.adafruit.com/product/189)
-PIR sensors are used to detect motion from pets/humanoids from about 20 feet away (possibly works on zombies, not guaranteed). This one has an adjustable delay before firing (approx 2-4 seconds), adjustable sensitivity **and** we include a 1 foot (30 cm) cable with a socket so you...
+We used to stock the Interlink model 402 FSR - the Alpha version is almost half the price...
 
 In Stock
-[Buy Now](https://www.adafruit.com/product/189)
-[Related Guides to the Product](https://learn.adafruit.com/products/189/guides)
+[Buy Now](https://www.adafruit.com/product/166)
+[Related Guides to the Product](https://learn.adafruit.com/products/166/guides)
+### Square Force-Sensitive Resistor (FSR)
+
+[Square Force-Sensitive Resistor (FSR)](https://www.adafruit.com/product/1075)
+FSRs are sensors that allow you to detect physical pressure, squeezing and weight. They are simple to use and low cost. This sensor is an Alpha MF02A-N-221-A01 FSR with a 38mm square sensing region. Note that this sensor can't detect _where_ on the square you pressed (for that, <a...></a...>
+
+In Stock
+[Buy Now](https://www.adafruit.com/product/1075)
+[Related Guides to the Product](https://learn.adafruit.com/products/1075/guides)
+### Extra-long force-sensitive resistor (FSR)
+
+[Extra-long force-sensitive resistor (FSR)](https://www.adafruit.com/product/1071)
+FSRs are sensors that allow you to detect physical pressure, squeezing and weight. They are simple to use and low cost. This sensor is a Interlink model 408 FSR with a massive 1/4-inch x 24-inch sensing region. You can press anywhere along the strip and the pressure will be recognized. Note...
+
+No Longer Stocked
+[Buy Now](https://www.adafruit.com/product/1071)
+[Related Guides to the Product](https://learn.adafruit.com/products/1071/guides)
+### Terminal Block - 2-pin 3.5mm - pack of 5!
+
+[Terminal Block - 2-pin 3.5mm - pack of 5!](https://www.adafruit.com/product/724)
+Nothing makes a project harder to maintain than a lot of loose wiring. That's why we like to use terminal blocks whenever making PCB-to-Wire connections. These particular 3.5mm terminal blocks are our favorite: big enough for a range of wire gauges, easy to adjust with a screwdriver, and...
+
+In Stock
+[Buy Now](https://www.adafruit.com/product/724)
+[Related Guides to the Product](https://learn.adafruit.com/products/724/guides)
 
 ## Related Guides
 
-- [PropMaker Jack O'Lantern](https://learn.adafruit.com/propmaker-jack-o-lantern.md)
-- [No-Code WipperSnapper Summoning Horn](https://learn.adafruit.com/adafruit-io-wippersnapper-summoning-horn.md)
-- [Capacitive Touch Holiday Light Control](https://learn.adafruit.com/capacitive-touch-holiday-light-control.md)
-- [Raspberry Pi Video Synth with Blinka and Processing](https://learn.adafruit.com/raspberry-pi-video-synth-with-blinka-and-processing.md)
-- [Magical Mistletoe](https://learn.adafruit.com/magical-mistletoe.md)
-- [Proximity Based Lighting](https://learn.adafruit.com/proximity-based-lighting.md)
-- [Calibrating Sensors](https://learn.adafruit.com/calibrating-sensors.md)
-- [Fog Machine with Motion Sensor and Adafruit IO](https://learn.adafruit.com/fog-machine-remote-trigger.md)
-- [Feather Freezer Door Alarm](https://learn.adafruit.com/feather-door-alarm.md)
-- [Tombstone Prop-Maker RP2040](https://learn.adafruit.com/tombstone-prop-maker-rp2040.md)
-- [Track a Turtle with WipperSnapper](https://learn.adafruit.com/track-a-turtle-with-wippersnapper.md)
-- [Sitcom SFX Door Trigger](https://learn.adafruit.com/sitcom-sfx-door-trigger.md)
-- [Tree with Animated Eyes and Motion Sensor](https://learn.adafruit.com/tree-ent-sculpture-with-animated-eyes.md)
-- [MIDI Laser Harp with Time of Flight Distance Sensors](https://learn.adafruit.com/midi-laser-harp-time-of-flight-sensors.md)
-- [LPC824 NeoPixel IR Distance Sensor](https://learn.adafruit.com/lpc824-neopixel-ir-distance-sensor.md)
+- [Hang out your washing reminder - Adafruit IO + Vibration switch](https://learn.adafruit.com/hang-out-your-washing-reminder-adafruit-io-vibration-switch.md)
+- [ReBoots Animated LED Boot Laces](https://learn.adafruit.com/re-boots-animated-dancing-boot-laces.md)
+- [Circuit Playground Bike Glove](https://learn.adafruit.com/circuit-playground-bike-glove.md)
+- [CuteCircuit Twirkle Shirt Teardown](https://learn.adafruit.com/cutecircuit-twirkle-shirt-teardown.md)
+- [Tilt Sensor](https://learn.adafruit.com/tilt-sensor.md)
+- [ICEdot Teardown](https://learn.adafruit.com/icedot-teardown.md)
+- [Wireless LED Juggling Balls with ESP-NOW](https://learn.adafruit.com/wireless-juggling-balls-esp-now.md)
+- [Adafruit HX711 24-bit ADC](https://learn.adafruit.com/adafruit-hx711-24-bit-adc.md)
+- [Arcade Stick Conversion](https://learn.adafruit.com/arcade-stick-conversion.md)
+- [Basic Resistor Sensor Reading on Raspberry Pi](https://learn.adafruit.com/basic-resistor-sensor-reading-on-raspberry-pi.md)
+- [Adafruit VEML6070 UV Sensor Breakout](https://learn.adafruit.com/adafruit-veml6070-uv-light-sensor-breakout.md)
+- [NAU7802 Pet Food Scale](https://learn.adafruit.com/nau7802-pet-food-scale.md)
+- [Flora MIDI Drum Glove](https://learn.adafruit.com/midi-drum-glove.md)
+- [Adafruit NAU7802 24-Bit ADC - STEMMA QT / Qwiic](https://learn.adafruit.com/adafruit-nau7802-24-bit-adc-stemma-qt-qwiic.md)
+- [Clue Coffee Scale](https://learn.adafruit.com/clue-coffee-scale.md)

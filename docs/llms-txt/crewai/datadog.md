@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/observability/datadog.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Datadog Integration
 
 > Learn how to integrate Datadog with CrewAI to submit LLM Observability traces to Datadog.

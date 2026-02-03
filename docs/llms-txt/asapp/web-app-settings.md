@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/agent-desk/integrations/web-sdk/web-app-settings.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Web App Settings
 
 This section details the various properties you can provide to the Chat SDK.

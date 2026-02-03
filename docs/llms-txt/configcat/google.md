@@ -2,6 +2,8 @@
 
 # Google Identity Provider
 
+Copy page
+
 Connect ConfigCat with Google via SAML.
 
 ## Introduction[​](#introduction "Direct link to Introduction")
@@ -96,7 +98,7 @@ The next step will guide you on how to configure the Google App with details pro
 
 ## 6. Sign In[​](#6-sign-in "Direct link to 6. Sign In")
 
-* Go to the [ConfigCat Log In](https://app.configcat.com/auth/login) page, and click `COMPANY ACCOUNT - SAML`.
+* Go to the [ConfigCat Log In](https://app.configcat.com) page, and click `COMPANY ACCOUNT - SAML`.
 
   ![ConfigCat SAML login](/docs/assets/saml/dashboard/saml_login.png)
 
@@ -112,4 +114,4 @@ The next step will guide you on how to configure the Google App with details pro
 
 ## 7. Next Steps[​](#7-next-steps "Direct link to 7. Next Steps")
 
-* Configure the [auto-assignment of users](https://configcat.com/docs/docs/advanced/team-management/auto-assign-users/.md).
+* Configure the [auto-assignment of users](https://configcat.com/docs/advanced/team-management/auto-assign-users.md).

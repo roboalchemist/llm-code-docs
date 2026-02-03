@@ -6,7 +6,6 @@ description: >-
   Review security alerts, configuration warnings, and user management best
   practices from Datadog's centralized Safety Center.
 breadcrumbs: Docs > Account Management > Safety Center
-source_url: https://docs.datadoghq.com/safety_center/index.html
 ---
 
 # Safety Center

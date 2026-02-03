@@ -6,7 +6,6 @@ description: >-
   Learn how to install and compile the Datadog Trace Agent from source code
   using Go for development and testing purposes.
 breadcrumbs: Docs > APM > Tracing Guides > Installing the trace Agent from source
-source_url: https://docs.datadoghq.com/guide/trace-agent-from-source/index.html
 ---
 
 # Installing the trace Agent from source

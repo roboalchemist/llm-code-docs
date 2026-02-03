@@ -4,11 +4,7 @@
 
 OAuth 2.0 Device Authorization Grant for limited-input devices
 
-***
 
-title: Device Authorization
-description: OAuth 2.0 Device Authorization Grant for limited-input devices
----------------------------------------------------------------------------
 
 `RFC 8628` `CLI` `Smart TV` `IoT`
 
@@ -63,7 +59,7 @@ This will demonstrate the complete device authorization flow by:
 
     <Tabs items={["migrate", "generate"]}>
       <Tab value="migrate">
-        <CodeBlockTabs defaultValue="npm">
+        <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
           <CodeBlockTabsList>
             <CodeBlockTabsTrigger value="npm">
               npm
@@ -109,7 +105,7 @@ This will demonstrate the complete device authorization flow by:
       </Tab>
 
       <Tab value="generate">
-        <CodeBlockTabs defaultValue="npm">
+        <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
           <CodeBlockTabsList>
             <CodeBlockTabsTrigger value="npm">
               npm
@@ -191,6 +187,7 @@ The device flow follows these steps:
 
 To initiate device authorization, call `device.code` with the client ID:
 
+
 ### Client Side
 
 ```ts
@@ -215,17 +212,18 @@ const data = await auth.api.deviceCode({
 
 ```ts
 type deviceCode = {
-    /**
-     * The OAuth client identifier
-     */
-    client_id: string;
-    /**
-     * Space-separated list of requested scopes (optional)
-     */
-    scope?: string;
-
+      /**
+       * The OAuth client identifier
+       */
+      client_id: string;
+      /**
+       * Space-separated list of requested scopes (optional)
+       */
+      scope?: string;
+  
 }
 ```
+
 
 Example usage:
 
@@ -245,6 +243,7 @@ if (data) {
 ### Polling for Token
 
 After displaying the user code, poll for the access token:
+
 
 ### Client Side
 
@@ -272,21 +271,22 @@ const data = await auth.api.deviceToken({
 
 ```ts
 type deviceToken = {
-    /**
-     * Must be "urn:ietf:params:oauth:grant-type:device_code"
-     */
-    grant_type: string;
-    /**
-     * The device code from the initial request
-     */
-    device_code: string;
-    /**
-     * The OAuth client identifier
-     */
-    client_id: string;
-
+      /**
+       * Must be "urn:ietf:params:oauth:grant-type:device_code"
+       */
+      grant_type: string;
+      /**
+       * The device code from the initial request
+       */
+      device_code: string;
+      /**
+       * The OAuth client identifier
+       */
+      client_id: string;
+  
 }
 ```
+
 
 Example polling implementation:
 
@@ -392,6 +392,7 @@ Users must be authenticated to approve or deny device authorization requests:
 
 #### Approve Device
 
+
 ### Client Side
 
 ```ts
@@ -416,15 +417,17 @@ const data = await auth.api.deviceApprove({
 
 ```ts
 type deviceApprove = {
-    /**
-     * The user code to approve
-     */
-    userCode: string;
-
+      /**
+       * The user code to approve
+       */
+      userCode: string;
+  
 }
 ```
 
+
 #### Deny Device
+
 
 ### Client Side
 
@@ -450,13 +453,14 @@ const data = await auth.api.deviceDeny({
 
 ```ts
 type deviceDeny = {
-    /**
-     * The user code to deny
-     */
-    userCode: string;
-
+      /**
+       * The user code to deny
+       */
+      userCode: string;
+  
 }
 ```
+
 
 #### Example Approval Page
 
@@ -580,6 +584,10 @@ The device flow defines specific error codes:
 ## Example: CLI Application
 
 Here's a complete example for a CLI application based on the actual demo:
+
+<Callout type="info">
+  To use the access token for API requests, ensure you have added the [Bearer plugin](/docs/plugins/bearer) to your auth instance.
+</Callout>
 
 ```ts title="cli-auth.ts"
 import { createAuthClient } from "better-auth/client";

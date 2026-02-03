@@ -4,7 +4,6 @@
 title: Datadog Heroku Buildpack
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Agent > Supported Platforms > Datadog Heroku Buildpack
-source_url: https://docs.datadoghq.com/supported_platforms/heroku/index.html
 ---
 
 # Datadog Heroku Buildpack

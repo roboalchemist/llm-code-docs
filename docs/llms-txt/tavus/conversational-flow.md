@@ -1,25 +1,31 @@
 # Source: https://docs.tavus.io/sections/conversational-video-interface/persona/conversational-flow.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Conversational Flow
 
-> Learn how to configure the Conversational Flow layer to fine-tune turn-taking, interruption handling, and active listening behavior.
+> Learn how to configure the Conversational Flow layer to fine-tune turn-taking and interruption handling behavior.
 
-The **Conversational Flow Layer** in Tavus gives you precise control over the natural dynamics of conversation. This layer allows you to customize how your replica handles turn-taking, interruptions, and backchannel responses to create conversational experiences that match your specific use case.
+The **Conversational Flow Layer** in Tavus gives you precise control over the natural dynamics of conversation. This layer allows you to customize how your replica handles turn-taking and interruptions to create conversational experiences that match your specific use case.
 
 ## Understanding Conversational Flow
 
 Conversational flow encompasses the subtle dynamics that make conversations feel natural:
 
 * **Turn-taking**: How the replica decides when to speak and when to listen
-* **Turn commitment**: How firmly the replica holds its conversational turn once it starts speaking
 * **Interruptibility**: How easily the replica can be interrupted by the user
-* **Active listening**: How the replica provides verbal acknowledgments while listening
 
 <Note>
   All conversational flow parameters are optional. When not explicitly configured, the layer remains inactive. However, if you configure any single parameter, the system will apply sensible defaults to all other parameters to ensure consistent behavior.
 </Note>
 
 ## Configuring the Conversational Flow Layer
+
+<Note>
+  If you're migrating from sparrow-0 (formerly called `smart_turn_detection` on the STT Layer) then check out the [migration guide here](/sections/troubleshooting#conversational-flow-vs-stt-relationship-and-migration).
+</Note>
 
 Define the conversational flow layer under the `layers.conversational_flow` object. Below are the parameters available:
 
@@ -28,18 +34,18 @@ Define the conversational flow layer under the `layers.conversational_flow` obje
 Specifies the model used for detecting conversational turns.
 
 * **Options**:
-  * `sparrow-0`: Standard turn detection model
-  * `sparrow-1`: Advanced turn detection model - faster, more accurate, and more natural than `sparrow-0` (recommended)
+  * `sparrow-1`: Advanced turn detection model - faster, more accurate, and more natural than `sparrow-0` **(recommended)**
+  * `sparrow-0`: Legacy turn detection model (available for backward compatibility)
   * `time-based`: Simple timeout-based turn detection
 
-* **Default**: `sparrow-0` (when any conversational flow parameter is provided)
+* **Default**: `sparrow-1`
 
 ```json  theme={null}
 "turn_detection_model": "sparrow-1"
 ```
 
 <Tip>
-  `sparrow-1` is recommended for all use cases as it provides superior performance with faster response times, higher accuracy, and more natural conversational flow compared to `sparrow-0`.
+  **Sparrow-1 is recommended for all use cases** as it provides superior performance with faster response times, higher accuracy, and more natural conversational flow compared to the legacy Sparrow-0.
 </Tip>
 
 ### 2. `turn_taking_patience`
@@ -61,26 +67,7 @@ Controls how eagerly the replica claims conversational turns. This affects both 
 * `medium`: General purpose conversations, sales calls, presentations
 * `high`: Medical consultations, legal advice, counseling sessions
 
-### 3. `turn_commitment`
-
-Controls how aggressively the replica will barge in and take its turn at the start of speaking. This affects the replica's willingness to start talking even when the user may still be speaking.
-
-* **Options**:
-  * `low`: Less aggressive barge-in. The replica waits more clearly for the user to finish before starting to speak.
-  * `medium` **(default)**: Balanced barge-in behavior. The replica will start speaking when it detects an appropriate opportunity.
-  * `high`: More aggressive barge-in. The replica will more readily start speaking even if the user may still be talking, allowing for more dynamic and overlapping conversation.
-
-```json  theme={null}
-"turn_commitment": "medium"
-```
-
-**Use Cases:**
-
-* `low`: Formal conversations, interviews, scenarios where the user should complete their thoughts
-* `medium`: General conversations, Q\&A sessions, guided interactions
-* `high`: Fast-paced conversations, collaborative brainstorming, scenarios requiring quick back-and-forth exchanges
-
-### 4. `replica_interruptibility`
+### 3. `replica_interruptibility`
 
 Controls how sensitive the replica is to user speech while the replica is talking. Determines whether the replica stops to listen or keeps speaking when interrupted.
 
@@ -99,111 +86,17 @@ Controls how sensitive the replica is to user speech while the replica is talkin
 * `medium`: Standard conversations, interviews, consultations
 * `high`: User-driven conversations, troubleshooting, interactive support
 
-<Note>
-  `turn_commitment` and `replica_interruptibility` work together to create natural conversational dynamics. `turn_commitment` controls how aggressively the replica will barge in at the start of its turn, while `replica_interruptibility` controls how easily the replica can be interrupted once it's already speaking.
-</Note>
-
-### 5. `active_listening`
-
-Controls the frequency of backchannel responses (like "yeah", "mhmm", "I see") while the user is speaking. These verbal cues signal attentiveness and engagement.
-
-<Note>
-  This feature is currently in **English-only beta**. Backchannel responses will only be generated for English conversations.
-</Note>
-
-* **Options**:
-  * `off` **(default)**: No backchannel responses during user speech
-  * `low`: Infrequent backchannels, minimal verbal acknowledgment
-  * `medium`: Moderate backchannels at natural conversation breaks
-  * `high`: Frequent backchannels, active engagement signals
-
-```json  theme={null}
-"active_listening": "medium"
-```
-
-**Use Cases:**
-
-* `off`: Formal presentations, legal contexts, recorded sessions
-* `low`: Professional consultations, technical support
-* `medium`: Coaching sessions, sales calls, general conversations
-* `high`: Therapy sessions, counseling, empathetic support conversations
-
-<Warning>
-  Use `high` active listening carefully. While it creates engaging conversations, too many backchannels can be distracting in some contexts or feel unnatural if overused.
-</Warning>
-
-## Relationship with STT Layer (Sparrow-0)
-
-The Conversational Flow layer provides advanced configuration for **Sparrow-1**, which supersedes the legacy Sparrow-0 configuration in the STT layer. When you configure the Conversational Flow layer with `turn_detection_model` set to `sparrow-1`, these settings **override** the corresponding Sparrow-0 settings in the STT layer.
-
-### Parameter Mapping: Sparrow-0 to Sparrow-1
-
-Here's how Sparrow-0 (STT layer) parameters map to Sparrow-1 (Conversational Flow layer):
-
-| Sparrow-0 (STT Layer)               | Sparrow-1 (Conversational Flow Layer) | Notes                                                |
-| ----------------------------------- | ------------------------------------- | ---------------------------------------------------- |
-| `participant_pause_sensitivity`     | `turn_taking_patience`                | Controls how long to wait before responding          |
-| `participant_interrupt_sensitivity` | `replica_interruptibility`            | Controls how easily the replica can be interrupted   |
-| N/A                                 | `turn_commitment`                     | **New in Sparrow-1**: Controls barge-in behavior     |
-| N/A                                 | `active_listening`                    | **New in Sparrow-1**: Controls backchannel responses |
-
-<Warning>
-  **Important**: When using Sparrow-1 via the Conversational Flow layer, any conflicting settings in the STT layer (Sparrow-0) will be overridden. For example, if you set `participant_pause_sensitivity: "high"` in the STT layer but `turn_taking_patience: "low"` in the Conversational Flow layer with `turn_detection_model: "sparrow-1"`, the Conversational Flow setting (`low`) will take precedence.
-</Warning>
-
-### Migration Guide
-
-If you're currently using Sparrow-0 settings in the STT layer and want to upgrade to Sparrow-1:
-
-**Before (Sparrow-0):**
-
-```json  theme={null}
-{
-  "layers": {
-    "stt": {
-      "participant_pause_sensitivity": "high",
-      "participant_interrupt_sensitivity": "low"
-    }
-  }
-}
-```
-
-**After (Sparrow-1):**
-
-```json  theme={null}
-{
-  "layers": {
-    "conversational_flow": {
-      "turn_detection_model": "sparrow-1",
-      "turn_taking_patience": "low",
-      "replica_interruptibility": "high",
-      "turn_commitment": "medium",
-      "active_listening": "off"
-    }
-  }
-}
-```
-
-<Note>
-  Note the inverted mapping:
-
-  * `participant_pause_sensitivity: "high"` (quick response) → `turn_taking_patience: "low"` (eager)
-  * `participant_interrupt_sensitivity: "low"` (hard to interrupt) → `replica_interruptibility: "high"` (easy to interrupt)
-
-  The naming has been updated in Sparrow-1 to be more intuitive from the replica's perspective.
-</Note>
-
 ## Default Behavior
 
 When the conversational flow layer is not configured, all parameters default to `None` and the layer remains inactive. However, if you configure **any single parameter**, the system automatically applies the following defaults to ensure consistent behavior:
 
-* `turn_detection_model`: `sparrow-0`
+* `turn_detection_model`: `sparrow-1`
 * `turn_taking_patience`: `medium`
-* `turn_commitment`: `medium`
 * `replica_interruptibility`: `medium`
-* `active_listening`: `off`
 
 ## Example Configurations
+
+The following example configurations demonstrate how to tune conversational timing and interruption behavior for different use cases. Use `turn_taking_patience` to bias how quickly the replica responds after a user finishes speaking. Set it high when the replica should avoid interrupting, and low when fast responses are preferred. Use `replica_interruptibility` to control how easily the replica recalculates its response when interrupted; lower values are recommended for most experiences, with higher values reserved for cases where frequent, abrupt interruptions are desirable. Sparrow-1 dynamically handles turn-taking in all cases, with these settings acting as guiding biases rather than hard rules.
 
 ### Example 1: Customer Support Agent
 
@@ -217,11 +110,9 @@ Fast, responsive, and easily interruptible for customer-driven conversations:
   "default_replica_id": "rfe12d8b9597",
   "layers": {
     "conversational_flow": {
-      "turn_detection_model": "sparrow-0",
+      "turn_detection_model": "sparrow-1",
       "turn_taking_patience": "low",
-      "turn_commitment": "low",
-      "replica_interruptibility": "high",
-      "active_listening": "low"
+      "replica_interruptibility": "medium"
     }
   }
 }
@@ -241,9 +132,7 @@ Patient, thoughtful, with engaged listening for sensitive conversations:
     "conversational_flow": {
       "turn_detection_model": "sparrow-1",
       "turn_taking_patience": "high",
-      "turn_commitment": "medium",
-      "replica_interruptibility": "medium",
-      "active_listening": "high"
+      "replica_interruptibility": "verylow"
     }
   }
 }
@@ -251,7 +140,7 @@ Patient, thoughtful, with engaged listening for sensitive conversations:
 
 ### Example 3: Educational Instructor
 
-Committed to delivering complete information with minimal interruption:
+Delivers complete information with minimal interruption:
 
 ```json  theme={null}
 {
@@ -261,11 +150,9 @@ Committed to delivering complete information with minimal interruption:
   "default_replica_id": "rfe12d8b9597",
   "layers": {
     "conversational_flow": {
-      "turn_detection_model": "sparrow-0",
+      "turn_detection_model": "sparrow-1",
       "turn_taking_patience": "medium",
-      "turn_commitment": "high",
-      "replica_interruptibility": "low",
-      "active_listening": "low"
+      "replica_interruptibility": "low"
     }
   }
 }
@@ -291,10 +178,8 @@ Configure just one parameter—others will use defaults:
 
 In this example, the system will automatically set:
 
-* `turn_detection_model`: `sparrow-0`
-* `turn_commitment`: `medium`
+* `turn_detection_model`: `sparrow-1`
 * `replica_interruptibility`: `medium`
-* `active_listening`: `off`
 
 ## Best Practices
 
@@ -302,21 +187,10 @@ In this example, the system will automatically set:
 
 Choose conversational flow settings that align with your application's purpose:
 
-* **Speed-critical applications**: Use `low` turn-taking patience
+* **Speed-critical applications**: Use `low` turn-taking patience and `high` interruptibility
 * **Thoughtful conversations**: Use `high` turn-taking patience
-* **Important information delivery**: Use `high` turn commitment and `low` interruptibility
-* **User-controlled interactions**: Use `low` turn commitment and `high` interruptibility
-
-### Balance Patience and Commitment
-
-The combination of `turn_taking_patience` and `turn_commitment` creates different conversational feels:
-
-| Patience | Commitment | Result                              |
-| -------- | ---------- | ----------------------------------- |
-| Low      | Low        | Rapid, flexible, back-and-forth     |
-| Low      | High       | Quick to start, committed to finish |
-| High     | Low        | Thoughtful but flexible             |
-| High     | High       | Deliberate, complete responses      |
+* **Important information delivery**: Use `low` interruptibility
+* **User-controlled interactions**: Use `high` interruptibility
 
 ### Consider Cultural Context
 

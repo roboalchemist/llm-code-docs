@@ -53,7 +53,7 @@ vespa completion fish [flags]
 
 - [vespa completion](vespa_completion.html) - Generate the autocompletion script for the specified shell
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

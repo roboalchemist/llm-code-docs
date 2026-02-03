@@ -4,7 +4,6 @@
 title: Billing and invoices
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > Account Management > Billing and invoices
-source_url: https://docs.datadoghq.com/account-management/billing-and-invoices/index.html
 ---
 
 # Billing and invoices

@@ -4,6 +4,10 @@
 
 # Source: https://www.traceloop.com/docs/datasets/quick-start.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Quick Start
 
 Datasets are simple data tables that you can use to manage your data for experiments and evaluation of your AI applications.
@@ -56,8 +60,3 @@ Datasets are available in the SDK, and they enable you to create versioned snaps
     * Switch between versions
   </Step>
 </Steps>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/reference/track-group.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Track Group
 
 Associate a group with a request.
@@ -12,8 +16,8 @@ pl_group_id = promptlayer_client.group.create()
 import requests
 response = requests.post(
   "https://api.promptlayer.com/rest/track-group",
+  headers={"X-API-KEY": "<YOUR_API_KEY>"},
   json={
-      "api_key": "<YOUR_API_KEY>",
       "request_id": "<REQUEST_ID>",
       "group_id": pl_group_id,
   },
@@ -37,6 +41,13 @@ paths:
         - group
       summary: Track Group
       operationId: trackGroup
+      parameters:
+        - name: X-API-KEY
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Your PromptLayer API Key.
       requestBody:
         required: true
         content:
@@ -44,9 +55,6 @@ paths:
             schema:
               type: object
               properties:
-                api_key:
-                  type: string
-                  description: Your PromptLayer API Key.
                 request_id:
                   type: integer
                   description: The unique identifier for the request.
@@ -56,7 +64,6 @@ paths:
                     The unique identifier for the group to be associated with
                     the request.
               required:
-                - api_key
                 - request_id
                 - group_id
       responses:
@@ -80,7 +87,3 @@ paths:
           description: Unauthorized
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

@@ -1,6 +1,12 @@
 # Source: https://docs.windsurf.com/context-awareness/fast-context.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Fast Context
+
+> Fast Context is a specialized subagent that retrieves relevant code from your codebase up to 20x faster using SWE-grep models for rapid code retrieval.
 
 Fast Context is a specialized subagent in Windsurf that retrieves relevant code from your codebase up to 20x faster than traditional agentic search. It powers Cascade's ability to quickly understand large codebases while maintaining the intelligence of frontier models.
 

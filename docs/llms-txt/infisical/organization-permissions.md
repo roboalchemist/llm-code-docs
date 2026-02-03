@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/internals/permissions/organization-permissions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Organization Permissions
 
 > Comprehensive guide to Infisical's organization-level permissions

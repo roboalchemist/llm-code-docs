@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/example-projects/claude-github-wiki.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Claude GitHub wiki
 
 > Ask questions about any public GitHub repository and get AI-powered analysis using the Claude Agent SDK and Trigger.dev.
@@ -58,7 +62,7 @@ The agent workflow:
 
 You need to mark the Claude Agent SDK as external in your trigger.config.ts file.
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 
 export default defineConfig({
@@ -83,8 +87,3 @@ export default defineConfig({
 * [**Building agents with Claude Agent SDK**](/guides/ai-agents/claude-code-trigger) – Comprehensive guide for using Claude Agent SDK with Trigger.dev
 * [**Trigger.dev Realtime**](/realtime/overview) – Stream task progress to your frontend
 * [**Errors and retrying**](/errors-retrying) – Handle failures gracefully
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://trigger.dev/docs/llms.txt

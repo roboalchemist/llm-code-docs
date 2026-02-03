@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/use-cases/media-processing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Media processing workflows
 
 > Learn how to use Trigger.dev for media processing including video transcoding, image optimization, audio transformation, and document conversion.
@@ -39,7 +43,7 @@ Build media processing pipelines that handle large files and long-running operat
     Simple video transcoding pipeline. Downloads video from storage, batch triggers parallel transcoding to multiple formats and thumbnail extraction, uploads all results.
 
     <div align="center">
-      ```mermaid  theme={null}
+      ```mermaid  theme={"theme":"css-variables"}
       graph TB
           A[processVideo] --> B[downloadFromStorage]
           B --> C[batchTriggerAndWait]
@@ -59,7 +63,7 @@ Build media processing pipelines that handle large files and long-running operat
     **Router + Coordinator pattern**. Analyzes video metadata to determine source resolution, routes to appropriate transcoding preset, batch triggers parallel post-processing for thumbnails, preview clips, and chapter detection.
 
     <div align="center">
-      ```mermaid  theme={null}
+      ```mermaid  theme={"theme":"css-variables"}
       graph TB
           A[processVideoUpload] --> B[analyzeMetadata]
           B --> C{Source<br/>Resolution?}
@@ -90,7 +94,7 @@ Build media processing pipelines that handle large files and long-running operat
     **Router + Coordinator pattern**. Analyzes image content to detect type, routes to specialized processing (background removal for products, face detection for portraits, scene analysis for landscapes), upscales with AI, batch triggers parallel variant generation.
 
     <div align="center">
-      ```mermaid  theme={null}
+      ```mermaid  theme={"theme":"css-variables"}
       graph TB
           A[processImageUpload] --> B[analyzeContent]
           B --> C{Content<br/>Type?}
@@ -119,7 +123,7 @@ Build media processing pipelines that handle large files and long-running operat
     **Coordinator pattern**. Pre-processes raw audio with noise reduction and speaker diarization, batch triggers parallel tasks for transcription (Deepgram), audio enhancement, and chapter detection, aggregates results to generate show notes and publish.
 
     <div align="center">
-      ```mermaid  theme={null}
+      ```mermaid  theme={"theme":"css-variables"}
       graph TB
           A[processAudioUpload] --> B[cleanAudio]
           B --> C[coordinateProcessing]
@@ -142,7 +146,7 @@ Build media processing pipelines that handle large files and long-running operat
     **Router pattern with human-in-the-loop**. Detects file type and routes to appropriate processor, classifies document with AI to determine type (invoice/contract/receipt), extracts structured data fields, optionally pauses with wait.forToken for human approval.
 
     <div align="center">
-      ```mermaid  theme={null}
+      ```mermaid  theme={"theme":"css-variables"}
       graph TB
           A[processDocumentUpload] --> B[detectFileType]
 

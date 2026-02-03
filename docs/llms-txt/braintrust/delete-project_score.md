@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/api-reference/projectscores/delete-project_score.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete project_score
 
 > Delete a project_score object by its id
@@ -229,8 +233,41 @@ components:
         scorers:
           type: array
           items:
-            $ref: '#/components/schemas/SavedFunctionId'
-          description: The list of scorers to use for online scoring
+            allOf:
+              - $ref: '#/components/schemas/SavedFunctionId'
+              - anyOf:
+                  - type: object
+                    properties:
+                      type:
+                        type: string
+                        enum:
+                          - function
+                      id:
+                        type: string
+                      version:
+                        type: string
+                        description: The version of the function
+                    required:
+                      - type
+                      - id
+                    title: function
+                  - type: object
+                    properties:
+                      type:
+                        type: string
+                        enum:
+                          - global
+                      name:
+                        type: string
+                      function_type:
+                        $ref: '#/components/schemas/FunctionTypeEnum'
+                    required:
+                      - type
+                      - name
+                    title: global
+          description: >-
+            The list of functions to run for online scoring. Can include
+            scorers, facets, or other function types.
         btql_filter:
           type: string
           nullable: true
@@ -238,17 +275,30 @@ components:
         apply_to_root_span:
           type: boolean
           nullable: true
-          description: Whether to trigger online scoring on the root span of each trace
+          description: >-
+            Whether to trigger online scoring on the root span of each trace.
+            Only applies when scope is 'span' or unset.
         apply_to_span_names:
           type: array
           nullable: true
           items:
             type: string
-          description: Trigger online scoring on any spans with a name in this list
+          description: >-
+            Trigger online scoring on any spans with a name in this list. Only
+            applies when scope is 'span' or unset.
         skip_logging:
           type: boolean
           nullable: true
           description: Whether to skip adding scorer spans when computing scores
+        scope:
+          anyOf:
+            - $ref: '#/components/schemas/SpanScope'
+            - $ref: '#/components/schemas/TraceScope'
+            - $ref: '#/components/schemas/GroupScope'
+            - type: 'null'
+          description: >-
+            The scope at which to run the functions. Defaults to span-level
+            execution. Trace/group scope requires all functions to be facets.
       required:
         - sampling_rate
         - scorers
@@ -262,6 +312,9 @@ components:
                 - function
             id:
               type: string
+            version:
+              type: string
+              description: The version of the function
           required:
             - type
             - id
@@ -274,10 +327,71 @@ components:
                 - global
             name:
               type: string
+            function_type:
+              $ref: '#/components/schemas/FunctionTypeEnum'
           required:
             - type
             - name
           title: global
+        - type: 'null'
+      description: Optional function identifier that produced the classification
+    FunctionTypeEnum:
+      type: string
+      enum:
+        - llm
+        - scorer
+        - task
+        - tool
+        - custom_view
+        - preprocessor
+        - facet
+        - classifier
+        - tag
+        - null
+      default: scorer
+      description: The type of global function. Defaults to 'scorer'.
+    SpanScope:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - span
+      required:
+        - type
+      description: Process individual spans
+    TraceScope:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - trace
+        idle_seconds:
+          type: number
+          description: >-
+            Consider trace complete after this many seconds of inactivity
+            (default: 30)
+      required:
+        - type
+      description: Process entire traces (all spans sharing the same root_span_id)
+    GroupScope:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - group
+        group_by:
+          type: string
+          description: Field path to group by, e.g. metadata.session_id
+        idle_seconds:
+          type: number
+          description: 'Optional: trigger after this many seconds of inactivity'
+      required:
+        - type
+        - group_by
+      description: Process spans/traces grouped by a field (e.g., session_id)
   securitySchemes:
     bearerAuth:
       type: http
@@ -290,7 +404,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

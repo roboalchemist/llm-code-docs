@@ -1,238 +1,110 @@
 # Source: https://trigger.dev/docs/management/tasks/batch-trigger.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Batch trigger
 
-> Batch trigger tasks with up to 500 payloads.
+> Batch trigger tasks with up to 1,000 payloads with SDK 4.3.1+ (500 in prior versions).
+
+
 
 ## OpenAPI
 
 ````yaml v3-openapi POST /api/v1/tasks/batch
+openapi: 3.1.0
+info:
+  title: Trigger.dev v3 REST API
+  description: >-
+    The REST API lets you trigger and manage runs on Trigger.dev. You can
+    trigger a run, get the status of a run, and get the results of a run. 
+  version: 2024-04
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: https://api.trigger.dev
+    description: Trigger.dev API
+security: []
 paths:
-  path: /api/v1/tasks/batch
-  method: post
-  servers:
-    - url: https://api.trigger.dev
-      description: Trigger.dev API
-  request:
-    security:
-      - title: secretKey
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: >
-                Use your project-specific Secret API key. Will start with
-                `tr_dev_`, `tr_prod`, `tr_stg`, etc.
-
-
-                You can find your Secret API key in the API Keys section of your
-                Trigger.dev project dashboard.
-
-
-                Our TypeScript SDK will default to using the value of the
-                `TRIGGER_SECRET_KEY` environment variable if it is set. If you
-                are using the SDK in a different environment, you can set the
-                key using the `configure` function.
-
-
-                ```typescript
-
-                import { configure } from "@trigger.dev/sdk";
-
-
-                configure({ accessToken: "tr_dev_1234" });
-
-                ```
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              items:
-                allOf:
-                  - type: array
-                    items:
-                      $ref: '#/components/schemas/BatchTriggerTaskRequestBodyItem'
-                    description: An array of payloads to trigger the task with
-            required: true
-            refIdentifier: '#/components/schemas/BatchTriggerV2RequestBody'
-            requiredProperties:
-              - items
-        examples:
-          example:
-            value:
-              items:
-                - payload: <any>
-                  context: <any>
-                  options:
-                    queue:
-                      name: <string>
-                      concurrencyLimit: 500
-                    concurrencyKey: <string>
-                    idempotencyKey: <string>
-                    ttl: 1h42m
-                    delay: <string>
-                    tags:
-                      - user_123456
-                      - product_4629101
-                    machine: small-2x
-                  task: <string>
-    codeSamples:
-      - lang: typescript
-        source: |-
-          import { task } from "@trigger.dev/sdk";
-
-          export const myTask = await task({
-            id: "my-task",
-            run: async (payload: { message: string }) => {
-              console.log("Hello, world!");
-            }
-          });
-
-          // Somewhere else in your code
-          await myTask.batchTrigger([
-            {
-              payload: { message: "Hello, world!" },
-              options: {
-                idempotencyKey: "unique-key-123",
-                concurrencyKey: "user-123-task",
-                queue: {
-                  name: "my-task-queue",
-                  concurrencyLimit: 5
-                }
-              }
-            }
-          ]);
-      - lang: curl
-        source: |-
-          curl -X POST "https://api.trigger.dev/api/v1/tasks/batch" \
-            -H "Content-Type: application/json" \
-            -H "Authorization: Bearer tr_dev_1234" \
-            -d '{
-                  "items": [
-                    {
-                      "task": "my-task",
-                      "payload": {
-                        "message": "Hello, world!"
-                      },
-                      "context": {
-                        "user": "user123"
-                      },
-                      "options": {
-                        "queue": {
-                          "name": "default",
-                          "concurrencyLimit": 5
-                        },
-                        "concurrencyKey": "user123-task",
-                        "idempotencyKey": "unique-key-123"
-                      }
-                    }
-                  ]
-                }'
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              batchId:
-                allOf:
-                  - type: string
-                    description: The ID of the batch that was triggered
-                    example: batch_1234
-              runs:
-                allOf:
-                  - type: array
-                    items:
-                      type: string
-                    description: An array of run IDs that were triggered
-            refIdentifier: '#/components/schemas/BatchTriggerTaskResponse'
-            requiredProperties:
-              - batchId
-              - runs
-        examples:
-          example:
-            value:
-              batchId: batch_1234
-              runs:
-                - <string>
-        description: Task batch triggered successfully
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - &ref_0
-                    type: string
-                    example: Something went wrong
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: &ref_1
-              - error
-        examples:
-          example:
-            value:
-              error: Something went wrong
-        description: Invalid request parameters or body
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_1
-        examples:
-          example:
-            value:
-              error: Something went wrong
-        description: Unauthorized request
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_1
-        examples:
-          example:
-            value:
-              error: Something went wrong
-        description: Resource not found
-  deprecated: false
-  type: path
+  /api/v1/tasks/batch:
+    post:
+      tags:
+        - tasks
+      summary: Batch trigger tasks
+      description: >-
+        Batch trigger tasks with up to 1,000 payloads with SDK 4.3.1+ (500 in
+        prior versions).
+      operationId: batch_trigger_task_v1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchTriggerV2RequestBody'
+      responses:
+        '200':
+          description: Task batch triggered successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchTriggerTaskResponse'
+        '400':
+          description: Invalid request parameters or body
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - secretKey: []
 components:
   schemas:
-    QueueOptions:
+    BatchTriggerV2RequestBody:
       type: object
       properties:
-        name:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/BatchTriggerTaskRequestBodyItem'
+          description: An array of payloads to trigger the task with
+      required:
+        - items
+    BatchTriggerTaskResponse:
+      type: object
+      required:
+        - batchId
+        - runs
+      properties:
+        batchId:
           type: string
-          description: >-
-            You can define a shared queue and then pass the name in to your
-            task.
-        concurrencyLimit:
-          type: integer
-          minimum: 0
-          maximum: 1000
-          description: >-
-            An optional property that specifies the maximum number of concurrent
-            run executions. If this property is omitted, the task can
-            potentially use up the full concurrency of an environment.
+          description: The ID of the batch that was triggered
+          example: batch_1234
+        runs:
+          type: array
+          items:
+            type: string
+          description: An array of run IDs that were triggered
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Something went wrong
+      required:
+        - error
     BatchTriggerTaskRequestBodyItem:
       type: object
       allOf:
@@ -306,6 +178,22 @@ components:
               description: >-
                 The machine preset to use for this run. This will override the
                 task's machine preset and any defaults.
+    QueueOptions:
+      type: object
+      properties:
+        name:
+          type: string
+          description: >-
+            You can define a shared queue and then pass the name in to your
+            task.
+        concurrencyLimit:
+          type: integer
+          minimum: 0
+          maximum: 1000
+          description: >-
+            An optional property that specifies the maximum number of concurrent
+            run executions. If this property is omitted, the task can
+            potentially use up the full concurrency of an environment.
     TTL:
       type:
         - string
@@ -334,5 +222,32 @@ components:
         * "60s" - 60 seconds
 
         * new Date("2025-01-01T00:00:00Z")
+  securitySchemes:
+    secretKey:
+      type: http
+      scheme: bearer
+      description: >
+        Use your project-specific Secret API key. Will start with `tr_dev_`,
+        `tr_prod`, `tr_stg`, etc.
+
+
+        You can find your Secret API key in the API Keys section of your
+        Trigger.dev project dashboard.
+
+
+        Our TypeScript SDK will default to using the value of the
+        `TRIGGER_SECRET_KEY` environment variable if it is set. If you are using
+        the SDK in a different environment, you can set the key using the
+        `configure` function.
+
+
+        ```typescript
+
+        import { configure } from "@trigger.dev/sdk";
+
+
+        configure({ accessToken: "tr_dev_1234" });
+
+        ```
 
 ````

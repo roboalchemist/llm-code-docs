@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/basic/text-to-image.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ComfyUI Text to Image Workflow
 
 > This guide will help you understand the concept of text-to-image in AI art generation and complete a text-to-image workflow in ComfyUI

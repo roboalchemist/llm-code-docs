@@ -4,24 +4,6 @@
 
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/crawling.md
 
-# Source: https://docs.apify.com/academy/scraping-basics-python/crawling.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/crawling.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript/crawling.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-python/crawling.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/crawling.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript/crawling.md
-
-# Source: https://docs.apify.com/academy/web-scraping-for-beginners/crawling.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-python/crawling.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript2/crawling.md
-
 # Crawling websites with Node.js
 
 **In this lesson, we'll follow links to individual product pages. We'll use the Fetch API to download them and Cheerio to process them.**
@@ -97,7 +79,7 @@ await writeFile('products.csv', await exportCSV(data));
 
 ## Extracting vendor name
 
-Each product URL points to a so-called *product detail page*, or PDP. If we open one of the product URLs in the browser, e.g. the one about https://warehouse-theme-metal.myshopify.com/products/sony-xbr-65x950g-65-class-64-5-diag-bravia-4k-hdr-ultra-hd-tv, we can see that it contains a vendor name, https://en.wikipedia.org/wiki/Stock_keeping_unit, number of reviews, product images, product variants, stock availability, description, and perhaps more.
+Each product URL points to a so-called *product detail page*, or PDP. If we open one of the product URLs in the browser, e.g. the one about [Sony XBR-950G BRAVIA](https://warehouse-theme-metal.myshopify.com/products/sony-xbr-65x950g-65-class-64-5-diag-bravia-4k-hdr-ultra-hd-tv), we can see that it contains a vendor name, [SKU](https://en.wikipedia.org/wiki/Stock_keeping_unit), number of reviews, product images, product variants, stock availability, description, and perhaps more.
 
 ![Product detail page](/assets/images/pdp-5399b26afde645f8ab2426f24cef87b9.png)
 
@@ -214,7 +196,7 @@ If we run the program now, it'll take longer to finish since it's making 24 more
 
 Scraping the vendor's name is nice, but the main reason we started checking the detail pages in the first place was to figure out how to get a price for each product. From the product listing, we could only scrape the min price, and remember—we're building a Node.js app to track prices!
 
-Looking at the https://warehouse-theme-metal.myshopify.com/products/sony-xbr-65x950g-65-class-64-5-diag-bravia-4k-hdr-ultra-hd-tv, it's clear that the listing only shows min prices, because some products have variants, each with a different price. And different stock availability. And different SKUs…
+Looking at the [Sony XBR-950G BRAVIA](https://warehouse-theme-metal.myshopify.com/products/sony-xbr-65x950g-65-class-64-5-diag-bravia-4k-hdr-ultra-hd-tv), it's clear that the listing only shows min prices, because some products have variants, each with a different price. And different stock availability. And different SKUs…
 
 ![Morpheus revealing the existence of product variants](/assets/images/variants-32d39ca999dadb22954e83b0dedd782a.png)
 
@@ -228,7 +210,7 @@ These challenges are here to help you test what you’ve learned in this lesson.
 
 Real world
 
-You're about to touch the real web, which is practical and exciting! But websites change, so some exercises might break. If you run into any issues, please leave a comment below or https://github.com/apify/apify-docs/issues.
+You're about to touch the real web, which is practical and exciting! But websites change, so some exercises might break. If you run into any issues, please leave a comment below or [file a GitHub Issue](https://github.com/apify/apify-docs/issues).
 
 ### Scrape calling codes of African countries
 
@@ -257,7 +239,7 @@ https://en.wikipedia.org/wiki/Cameroon +237
 
 Need a nudge?
 
-Locating cells in tables is sometimes easier if you know how to https://cheerio.js.org/docs/api/classes/Cheerio#filter or https://cheerio.js.org/docs/api/classes/Cheerio#parent in the HTML element tree.
+Locating cells in tables is sometimes easier if you know how to [filter](https://cheerio.js.org/docs/api/classes/Cheerio#filter) or [navigate up](https://cheerio.js.org/docs/api/classes/Cheerio#parent) in the HTML element tree.
 
 Solution
 
@@ -267,36 +249,38 @@ import * as cheerio from 'cheerio';
 
 async function download(url) {
   const response = await fetch(url);
-  if (response.ok) {
-    const html = await response.text();
-    return cheerio.load(html);
-  } else {
+  if (!response.ok) {
     throw new Error(`HTTP ${response.status}`);
   }
+  const html = await response.text();
+  return cheerio.load(html);
 }
 
-const listingURL = "https://en.wikipedia.org/wiki/List_of_sovereign_states_and_dependent_territories_in_Africa";
-const $ = await download(listingURL);
+const listingUrl = 'https://en.wikipedia.org/wiki/List_of_sovereign_states_and_dependent_territories_in_Africa';
+const $ = await download(listingUrl);
 
-const $cells = $(".wikitable tr td:nth-child(3)");
-const promises = $cells.toArray().map(async element => {
+const cells = $('.wikitable tr td:nth-child(3)');
+const promises = cells.toArray().map(async (element) => {
   const $nameCell = $(element);
-  const $link = $nameCell.find("a").first();
-  const countryURL = new URL($link.attr("href"), listingURL).href;
+  const $link = $nameCell.find('a').first();
+  if (!$link.length) {
+    return;
+  }
 
-  const $c = await download(countryURL);
-  const $label = $c("th.infobox-label")
-    .filter((i, element) => $c(element).text().trim() == "Calling code")
+  const countryUrl = new URL($link.attr('href'), listingUrl).href;
+  const $country = await download(countryUrl);
+  const $label = $country('th.infobox-label')
+    .filter((_, el) => $country(el).text().trim() === 'Calling code')
     .first();
-  const callingCode = $label
-    .parent()
-    .find("td.infobox-data")
-    .first()
-    .text()
-    .trim();
 
-  console.log(`${countryURL} ${callingCode || null}`);
+  const callingCode = $label.length
+    ? $label.parent().find('td.infobox-data').first().text()
+.trim()
+    : '';
+
+  console.log(`${countryUrl} ${callingCode || null}`);
 });
+
 await Promise.all(promises);
 ```
 
@@ -326,7 +310,7 @@ PA Media: Lewis Hamilton reveals lifelong battle with depression after school bu
 
 Need a nudge?
 
-* You can use https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors to select HTML elements based on their attribute values.
+* You can use [attribute selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors) to select HTML elements based on their attribute values.
 * Sometimes a person authors the article, but other times it's contributed by a news agency.
 
 Solution
@@ -337,29 +321,36 @@ import * as cheerio from 'cheerio';
 
 async function download(url) {
   const response = await fetch(url);
-  if (response.ok) {
-    const html = await response.text();
-    return cheerio.load(html);
-  } else {
+  if (!response.ok) {
     throw new Error(`HTTP ${response.status}`);
   }
+  const html = await response.text();
+  return cheerio.load(html);
 }
 
-const listingURL = "https://www.theguardian.com/sport/formulaone";
-const $ = await download(listingURL);
+const listingUrl = 'https://www.theguardian.com/sport/formulaone';
+const $ = await download(listingUrl);
 
-const promises = $("#maincontent ul li").toArray().map(async element => {
+const promises = $('#maincontent ul li').toArray().map(async (element) => {
   const $item = $(element);
-  const $link = $item.find("a").first();
-  const authorURL = new URL($link.attr("href"), listingURL).href;
+  const $link = $item.find('a').first();
+  if (!$link.length) {
+    return;
+  }
 
-  const $a = await download(authorURL);
-  const title = $a("h1").text().trim();
+  const articleUrl = new URL($link.attr('href'), listingUrl).href;
+  const $article = await download(articleUrl);
 
-  const author = $a('a[rel="author"]').text().trim();
-  const address = $a('aside address').text().trim();
+  const title = $article('h1').text().trim();
+  if (!title) {
+    return;
+  }
 
-  console.log(`${author || address || null}: ${title}`);
+  const author = $article('a[rel="author"]').first().text().trim();
+  const attribution = author || $article('aside address').first().text().trim() || 'null';
+
+  console.log(`${attribution}: ${title}`);
 });
+
 await Promise.all(promises);
 ```

@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/realtime-api/getting-started.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Getting Started
 
 > Learn how to connect to Fireflies.ai's Realtime API for live transcription

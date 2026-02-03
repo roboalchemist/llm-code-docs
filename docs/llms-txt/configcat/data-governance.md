@@ -2,6 +2,8 @@
 
 # Data Governance - CDN
 
+Copy page
+
 ConfigCat's Data Governance feature gives you control over how and where your config JSONs are published and served from. This helps you comply with regional data handling requirements such as GDPR.
 
 ## CDN - Data Centers[​](#cdn---data-centers "Direct link to CDN - Data Centers")

@@ -4,7 +4,6 @@
 title: SES Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > AWS Components > SES Component
-source_url: https://docs.datadoghq.com/components-aws/ses/index.html
 ---
 
 # SES Component

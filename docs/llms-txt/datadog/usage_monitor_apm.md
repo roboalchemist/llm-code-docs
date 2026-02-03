@@ -4,7 +4,6 @@
 title: View and Alert on APM Usage
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Account Management > Billing > View and Alert on APM Usage
-source_url: https://docs.datadoghq.com/billing/usage_monitor_apm/index.html
 ---
 
 # View and Alert on APM Usage

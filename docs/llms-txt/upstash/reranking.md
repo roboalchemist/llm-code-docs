@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/search/features/reranking.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Reranking
 
 Upstash Search combines semantic and full text search results for maximum relevancy. Optionally, you can re-rank the returned documents using a state of the art model to further improve relevancy.

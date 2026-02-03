@@ -1,5 +1,9 @@
 # Source: https://code.claude.com/docs/en/memory.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Manage Claude's memory
 
 > Learn how to manage Claude Code's memory across sessions with different memory locations and best practices.
@@ -12,7 +16,7 @@ Claude Code offers four memory locations in a hierarchical structure, each servi
 
 | Memory Type                | Location                                                                                                                                                        | Purpose                                             | Use Case Examples                                                    | Shared With                     |
 | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | -------------------------------------------------------------------- | ------------------------------- |
-| **Enterprise policy**      | • macOS: `/Library/Application Support/ClaudeCode/CLAUDE.md`<br />• Linux: `/etc/claude-code/CLAUDE.md`<br />• Windows: `C:\Program Files\ClaudeCode\CLAUDE.md` | Organization-wide instructions managed by IT/DevOps | Company coding standards, security policies, compliance requirements | All users in organization       |
+| **Managed policy**         | • macOS: `/Library/Application Support/ClaudeCode/CLAUDE.md`<br />• Linux: `/etc/claude-code/CLAUDE.md`<br />• Windows: `C:\Program Files\ClaudeCode\CLAUDE.md` | Organization-wide instructions managed by IT/DevOps | Company coding standards, security policies, compliance requirements | All users in organization       |
 | **Project memory**         | `./CLAUDE.md` or `./.claude/CLAUDE.md`                                                                                                                          | Team-shared instructions for the project            | Project architecture, coding standards, common workflows             | Team members via source control |
 | **Project rules**          | `./.claude/rules/*.md`                                                                                                                                          | Modular, topic-specific project instructions        | Language-specific guidelines, testing conventions, API standards     | Team members via source control |
 | **User memory**            | `~/.claude/CLAUDE.md`                                                                                                                                           | Personal preferences for all projects               | Code styling preferences, personal tooling shortcuts                 | Just you (all projects)         |
@@ -35,12 +39,18 @@ See @README for project overview and @package.json for available npm commands fo
 - git workflow @docs/git-instructions.md
 ```
 
-Both relative and absolute paths are allowed. In particular, importing files in user's home dir is a convenient way for your team members to provide individual instructions that are not checked into the repository. Imports are an alternative to CLAUDE.local.md that work better across multiple git worktrees.
+Both relative and absolute paths are allowed. Relative paths resolve relative to the file containing the import, not the working directory. For private per-project preferences that shouldn't be checked into version control, prefer `CLAUDE.local.md`: it is automatically loaded and added to `.gitignore`.
+
+If you work across multiple git worktrees, `CLAUDE.local.md` only exists in one. Use a home-directory import instead so all worktrees share the same personal instructions:
 
 ```
 # Individual Preferences
 - @~/.claude/my-project-instructions.md
 ```
+
+<Warning>
+  The first time Claude Code encounters external imports in a project, it shows an approval dialog listing the specific files. Approve to load them; decline to skip them. This is a one-time decision per project: once declined, the dialog does not resurface and the imports remain disabled.
+</Warning>
 
 To avoid potential collisions, imports are not evaluated inside markdown code spans and code blocks.
 
@@ -56,9 +66,19 @@ Claude Code reads memories recursively: starting in the cwd, Claude Code recurse
 
 Claude will also discover CLAUDE.md nested in subtrees under your current working directory. Instead of loading them at launch, they are only included when Claude reads files in those subtrees.
 
+### Load memory from additional directories
+
+The `--add-dir` flag gives Claude access to additional directories outside your main working directory. By default, CLAUDE.md files from these directories are not loaded.
+
+To also load memory files (CLAUDE.md, .claude/CLAUDE.md, and .claude/rules/\*.md) from additional directories, set the `CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD` environment variable:
+
+```bash  theme={null}
+CLAUDE_CODE_ADDITIONAL_DIRECTORIES_CLAUDE_MD=1 claude --add-dir ../shared-config
+```
+
 ## Directly edit memories with `/memory`
 
-Use the `/memory` slash command during a session to open any memory file in your system editor for more extensive additions or organization.
+Use the `/memory` command during a session to open any memory file in your system editor for more extensive additions or organization.
 
 ## Set up project memory
 
@@ -105,7 +125,8 @@ Rules can be scoped to specific files using YAML frontmatter with the `paths` fi
 
 ```markdown  theme={null}
 ---
-paths: src/api/**/*.ts
+paths:
+  - "src/api/**/*.ts"
 ---
 
 # API Development Rules
@@ -128,23 +149,30 @@ The `paths` field supports standard glob patterns:
 | `*.md`                 | Markdown files in the project root       |
 | `src/components/*.tsx` | React components in a specific directory |
 
-You can use braces to match multiple patterns efficiently:
+You can specify multiple patterns:
 
 ```markdown  theme={null}
 ---
-paths: src/**/*.{ts,tsx}
+paths:
+  - "src/**/*.ts"
+  - "lib/**/*.ts"
+  - "tests/**/*.test.ts"
+---
+```
+
+Brace expansion is supported for matching multiple extensions or directories:
+
+```markdown  theme={null}
+---
+paths:
+  - "src/**/*.{ts,tsx}"
+  - "{src,lib}/**/*.ts"
 ---
 
 # TypeScript/React Rules
 ```
 
-This expands to match both `src/**/*.ts` and `src/**/*.tsx`. You can also combine multiple patterns with commas:
-
-```markdown  theme={null}
----
-paths: {src,lib}/**/*.ts, tests/**/*.test.ts
----
-```
+This expands `src/**/*.{ts,tsx}` to match both `.ts` and `.tsx` files.
 
 ### Subdirectories
 
@@ -200,11 +228,11 @@ User-level rules are loaded before project rules, giving project rules higher pr
 
 ## Organization-level memory management
 
-Enterprise organizations can deploy centrally managed CLAUDE.md files that apply to all users.
+Organizations can deploy centrally managed CLAUDE.md files that apply to all users.
 
 To set up organization-level memory management:
 
-1. Create the enterprise memory file at the **Enterprise policy** location shown in the [memory types table above](#determine-memory-type).
+1. Create the managed memory file at the **Managed policy** location shown in the [memory types table above](#determine-memory-type).
 
 2. Deploy via your configuration management system (MDM, Group Policy, Ansible, etc.) to ensure consistent distribution across all developer machines.
 
@@ -213,8 +241,3 @@ To set up organization-level memory management:
 * **Be specific**: "Use 2-space indentation" is better than "Format code properly".
 * **Use structure to organize**: Format each individual memory as a bullet point and group related memories under descriptive markdown headings.
 * **Review periodically**: Update memories as your project evolves to ensure Claude is always using the most up to date information and context.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://code.claude.com/docs/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/graphite-admin.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # User permissions
 
 > Learn how to manage users and billing information for your organization as a Graphite admin.
@@ -35,6 +39,10 @@ Graphite admins can manage Graphite users in their plan from *Settings* > [*Bill
 * To remove a member from your team, click the `...` icon next to their name and select `Remove from team`.
 
 * To restrict a team member's access to read-only mode, click the `...` icon next to their name and select `Restrict access`. Admins can be in read-only mode and retain their admin privileges (e.g., manage billing info).
+
+## Request to join
+
+Request to Join is an Enterprise-only feature that gives workspace admins greater control over billing and seat management. When enabled, it limits the number of users that can join your workspace based on your contracted number of seats with Graphite. Once the workspace reaches this limit, any additional teammates attempting to join will need to request admin approval before gaining access. Admins can enable or disable this setting from the billing settings page, and will receive email notifications when teammates submit join requests. Pending requests can be approved or denied directly from the billing settings or via email.
 
 ## Manage billing
 

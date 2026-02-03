@@ -4,6 +4,8 @@
 
 Understand how the Billing API objects work together.
 
+If your Connect platform uses [customer-configured Accounts](https://docs.stripe.com/api/v2/core/accounts/create.md#v2_create_accounts-configuration-customer), use our [guide](https://docs.stripe.com/connect/use-accounts-as-customers.md) to replace `Customer` and event references in your code with the equivalent Accounts v2 API references.
+
 *Subscriptions* (A Subscription represents the product details associated with the plan that your customer subscribes to. Allows you to charge the customer on a recurring basis) automatically create *Invoices* (Invoices are statements of amounts owed by a customer. They track the status of payments from draft through paid or otherwise finalized. Subscriptions automatically generate invoices, or you can manually create a one-off invoice) and *Payment Intents* (API object that represents your intent to collect payment from a customer, tracking charge attempts and payment state changes throughout the process) for you. They have the following parts:
 
 - A *Product* (Products represent what your business sells—whether that's a good or a service) to model what is being sold.

@@ -1,6 +1,10 @@
 # Source: https://docs.asapp.com/generativeagent/human-in-the-loop.md
 
-# Human in the Loop
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Human in the Loop Agent
 
 > Learn how GenerativeAgent works with human agents to handle complex cases requiring expert guidance or approval.
 
@@ -8,41 +12,41 @@ Human-in-the-loop is a first-of-its kind capability that allows a human agent to
 
 GenerativeAgent raises a ticket requesting specific help through your existing digital support tool. Available agents within your organization are part of dedicated human-in-the-loop queues where they receive and respond to tickets from GenerativeAgent, thereby resolving the customer issue.
 
-The Human-in-the-loop Agents (HILA) within your organization wait in a queue and are directed to specific scenarios where they take on the action of helping in a customer's issue and give back the conversation to the GenerativeAgent. HILAs can also transfer the conversation to a Live Agent so they take over the task from GenerativeAgent.
+The Human-in-the-loop Agents (HILA) within your organization wait in a queue and receive direction to specific scenarios where they take on the action of helping in a customer's issue and give back the conversation to GenerativeAgent. HILAs can also transfer the conversation to a Live Agent so they take over the task from GenerativeAgent.
 
 ## When should GenerativeAgent consult a human
 
-The Human-in-the-loop capability can be invoked in the task instructions for the GenerativeAgent. You can specify scenarios or actions that the GenerativeAgent cannot perform automatically and require human intervention for information or confirmation. This is similar to actions a human agent cannot complete without supervisor approval.
+You can invoke the Human-in-the-loop capability in the task instructions for GenerativeAgent. You can specify scenarios or actions that GenerativeAgent cannot perform automatically and require human intervention for information or confirmation. This is similar to actions a human agent cannot complete without supervisor approval.
 
 Recommended scenarios for human assistance include:
 
-* Insufficient permissions: When the GenerativeAgent should not act out in its own without HILA approval.
+* Insufficient permissions: When GenerativeAgent should not act on its own without HILA approval.
 * No API to call: Whenever there is no API to call to retrieve specific customer information.
-* No Knowledge Base information: Whenever the question or issue provided by the costumer has no content in the Knowledge Base source that GenerativeAgent can use.
+* No Knowledge Base information: Whenever the question or issue provided by the customer has no content in the Knowledge Base source that GenerativeAgent can use.
 
 ## HILAs
 
-The primary function of the human-in-the-loop is to support and unblock the GenerativeAgent. These supervisors handle tasks requiring approvals or a deep understanding of the issues. Tier 1 agents can address simpler queries. When accepting a ticket from the GenerativeAgent in your digital support tool, agents access an embedded Human-in-the-loop UI.
+The primary function of the human-in-the-loop is to support and unblock GenerativeAgent. These supervisors handle tasks requiring approvals or a deep understanding of the issues. Tier 1 agents can address simpler queries. When accepting a ticket from GenerativeAgent in your digital support tool, agents access an embedded Human-in-the-loop UI.
 
-The actions HILAs are set to do include:
+The actions HILAs perform include:
 
 * Ticket assignments
 * Response edits/decisions
 * Unlock GenerativeAgent
 * Escalation to live agents
 
-Human-in-the-loop agents assist the GenerativeAgent without directly interacting with customers, differing from live agents.
+Human-in-the-loop agents assist GenerativeAgent without directly interacting with customers, differing from live agents.
 
 The key benefit is that a single agent can manage multiple customer conversations simultaneously without engaging in calls or chats.
 
-If the Human-in-the-loop agent determines that a live agent would better serve the customer, they can use the Transfer option in the UI to hand off the conversation from the GenerativeAgent to a live agent.
+If the Human-in-the-loop agent determines that a live agent would better serve the customer, they can use the Transfer option in the UI to hand off the conversation from GenerativeAgent to a live agent.
 
 **When does GenerativeAgent transfer to a live agent?**
 
-The following scenarios are recommended for transferring a conversation to a live agent:
+We recommend the following scenarios for transferring a conversation to a live agent:
 
 * A human-in-the-loop instructs GenerativeAgent to do so
-* There are no Human-in-the-loop agents available. This is managed automatically and does not require explicit instructions.
+* There are no Human-in-the-loop agents available. The system manages this automatically and does not require explicit instructions.
 * The customer explicitly requests it (if configured).
 
 ## Agent UI
@@ -51,22 +55,22 @@ The following scenarios are recommended for transferring a conversation to a liv
 
 Human-in-the-loop agents operate from the existing Agent Desk. To enable the Human-in-the-loop UI and task functions in GenerativeAgent, please contact your Implementation Manager.
 
-The Human-in-the-loop agent UI is the primary application where agents can interact with the GenerativeAgent. Through this interface, they can:
+The Human-in-the-loop agent UI is the primary application where agents can interact with GenerativeAgent. Through this interface, they can:
 
-* Respond to the GenerativeAgent
+* Respond to GenerativeAgent
 * Transfer conversations to live agents
 * View the interaction thread history
 * Access relevant customer information and summarized conversation context
 
 This section provides an overview of important features available:
 
-* **Transfer**: Allows the agent to transfer the conversation from the GenerativeAgent to a live agent.
-* **Ticket Assignment Timer**: Tracks the time elapsed since the ticket was assigned to the agent.
-* **Prompt**: Indicates the specific assistance the GenerativeAgent needs to unblock the customer. This is generated by the GenerativeAgent itself.
-* **Response**: The Human-in-the-loop agent can respond to the GenerativeAgent through an open text field or structured options, depending on the configuration.
+* **Transfer**: Allows the agent to transfer the conversation from GenerativeAgent to a live agent.
+* **Ticket Assignment Timer**: Tracks the time elapsed since the system assigned the ticket to the agent.
+* **Prompt**: Indicates the specific assistance GenerativeAgent needs to unblock the customer. This is generated by GenerativeAgent itself.
+* **Response**: The Human-in-the-loop agent can respond to GenerativeAgent through an open text field or structured options, depending on the configuration.
 * **Send**: After selecting a response, the agent can click 'Send' to submit the response and close the ticket simultaneously.
-* **Context**: Provides a summarized context of the conversation between the GenerativeAgent and the customer.
-* **Transcript**: Displays the complete customer interaction thread prior to the ticket being raised.
+* **Context**: Provides a summarized context of the conversation between GenerativeAgent and the customer.
+* **Transcript**: Displays the complete customer interaction thread prior to GenerativeAgent raising the ticket.
 * **Customer**: Shows the customer's details, including company and specific account information for authenticated customers.
 
 <Frame caption="Human-in-the-loop Agent UI">

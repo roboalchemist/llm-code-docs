@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/tutorials/python_fastapi_caching.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Redis as a Cache for Your FastAPI App
 
 ### Introduction

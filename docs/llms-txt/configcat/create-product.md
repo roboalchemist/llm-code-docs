@@ -2,12 +2,9 @@
 
 # Create Product
 
-```
-POST 
-/v1/organizations/:organizationId/products
-```
+Copy page
 
-This endpoint creates a new Product in a specified Organization identified by the `organizationId` parameter, which can be obtained from the [List Organizations](https://configcat.com/docs/docs/api/reference/get-organizations/.md) endpoint.
+This endpoint creates a new Product in a specified Organization identified by the `organizationId` parameter, which can be obtained from the [List Organizations](https://configcat.com/docs/api/reference/get-organizations.md) endpoint.
 
 ## Request[​](#request "Direct link to Request")
 

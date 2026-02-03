@@ -2,6 +2,8 @@
 
 # Main Concepts
 
+Copy page
+
 ## Feature Flag or Setting[​](#feature-flag-or-setting "Direct link to Feature Flag or Setting")
 
 A *Setting* is an essential bit of *ConfigCat*. It can be of multiple types, such as an on/off switch (bool), number (int, double) or any text (string). You can use it to change your application's behavior remotely, without a new deployment.

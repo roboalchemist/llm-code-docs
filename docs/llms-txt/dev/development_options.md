@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/development_options.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Choose your development path
 
 > Choose your development path for AI agents. Compare no-code builder, Agent Builder, and Writer API/SDKs for customization and technical requirements.
@@ -87,7 +91,7 @@ Determine which path is right for you by thinking about what you want to achieve
     * Create internal tools for content teams
     * Create agents with chat capabilities that can also connect to a Knowledge Graph of your data
     * Create agents that can research, search the web, and prepare reports
-    * Integrate any of the Palmyra LLMs
+    * Use any available model, including Palmyra and external models
 
     ### Quickstart guides
 

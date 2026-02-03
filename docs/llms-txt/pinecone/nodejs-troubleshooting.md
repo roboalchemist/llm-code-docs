@@ -1,8 +1,12 @@
 # Source: https://docs.pinecone.io/troubleshooting/nodejs-troubleshooting.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Node.js Troubleshooting
 
-There could be several reasons why a [Node.js application](/reference/node-sdk) works in development mode but not in deployment.
+There could be several reasons why a [Node.js application](/reference/sdks/node/overview) works in development mode but not in deployment.
 
 In order to troubleshoot the issue, it's important to identify where the application is failing and compare the development and deployment environments to see what differences exist. It's also important to review any error messages or logs that are generated to help identify the issue.
 

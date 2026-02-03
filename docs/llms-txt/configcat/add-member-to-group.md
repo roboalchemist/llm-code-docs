@@ -2,10 +2,7 @@
 
 # Update Member Permissions
 
-```
-POST 
-/v1/organizations/:organizationId/members/:userId
-```
+Copy page
 
 This endpoint updates the permissions of a Member identified by the `userId`. This endpoint can also be used to move a Member between Permission Groups within a Product. Only a single Permission Group can be set per Product.
 

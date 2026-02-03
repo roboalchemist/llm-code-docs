@@ -2,7 +2,11 @@
 
 # Legal and privacy (AU)
 
-<em>Australia</em> When adding Klarna payments to your site, you need to consider privacy and data sharing aspects, and ensure your customer-facing terms reflect the cooperation with Klarna. Please be aware that Klarna Payments may only be utilized at stores (both online and in-store) that have received prior approval from Klarna. Usage of Klarna Payments in any store not authorized by Klarna could result in an obligation to repay any claims arising from such unauthorized use.
+## AU legal & privacy guidelines for Klarna Payments: use only approved stores and clearly disclose pricing, delivery, returns, support and privacy terms.
+
+<em>Australia</em> When adding Klarna payments to your site, you need to consider privacy and data sharing aspects, and ensure your customer-facing terms reflect the cooperation with Klarna.
+
+Please be aware that Klarna Payments may only be utilized at stores (both online and in-store) that have received prior approval from Klarna. Usage of Klarna Payments in any store not authorized by Klarna could result in an obligation to repay any claims arising from such unauthorized use.
 
 ## Terms and conditions
 
@@ -10,7 +14,11 @@ Ensure that your terms and conditions reflect your cooperation with Klarna.
 
 ## Compliance Requirements for your website
 
-As a merchant using Klarna to transact with your customers, it is crucial to meet, among other things, legal requirements on the merchant's website to ensure transparency and compliance with applicable consumer protection laws. Before a customer completes its purchase on your website, you must present the following information in a clear and easily accessible manner on your website. Please note that it is not sufficient to require customers to first contact you to receive this information, nor delay providing it until after the transaction is completed. **Product or Service Description**
+As a merchant using Klarna to transact with your customers, it is crucial to meet, among other things, legal requirements on the merchant's website to ensure transparency and compliance with applicable consumer protection laws.
+
+Before a customer completes its purchase on your website, you must present the following information in a clear and easily accessible manner on your website. Please note that it is not sufficient to require customers to first contact you to receive this information, nor delay providing it until after the transaction is completed.
+
+**Product or Service Description**
 
 - Provide clear, detailed, and accurate descriptions of products or services, including essential characteristics, to ensure customer understanding. If you choose to include images or videos, they must also reflect a clear and honest representation of the products.
 
@@ -51,7 +59,13 @@ As a merchant using Klarna to transact with your customers, it is crucial to mee
 - avoiding the creation of company-controlled review sites that falsely appear independent, and
 - refraining from trading in fake social media influence indicators.
 
-**Important Notice:** Non-compliance with these requirements may significantly impact the resolution of any disputes. Adhering to the guidelines listed above is essential for maintaining trust and accountability in your dealings with customers and ensuring a favorable outcome in dispute scenarios. **Klarna’s Buyers Protection Policy** Do not use Klarna’s Buyer’s Protection Policy in any promotional materials or website copy as an endorsement of the quality of your goods or your store. It is intended to reassure buyers about the purchase process, not to imply any endorsement of product quality or store reputation.
+**Important Notice:**
+
+Non-compliance with these requirements may significantly impact the resolution of any disputes. Adhering to the guidelines listed above is essential for maintaining trust and accountability in your dealings with customers and ensuring a favorable outcome in dispute scenarios.
+
+**Klarna’s Buyers Protection Policy**
+
+Do not use Klarna’s Buyer’s Protection Policy in any promotional materials or website copy as an endorsement of the quality of your goods or your store. It is intended to reassure buyers about the purchase process, not to imply any endorsement of product quality or store reputation.
 
 ## Privacy policy
 

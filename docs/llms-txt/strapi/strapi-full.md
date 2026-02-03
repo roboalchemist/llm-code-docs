@@ -1,3 +1,9 @@
+# Strapi Documentation
+
+Source: https://docs.strapi.io/llms-full.txt
+
+---
+
 # Account billing details
 Source: //cloud/account/account-billing
 
@@ -619,7 +625,7 @@ Strapi Cloud offers 1 Free plan and 3 paid plans: Essential, Pro and Scale (see 
   - Database entries are the number of entries in your database.
   - Asset storage is the amount of storage used by your assets.
   - Asset bandwidth is the amount of bandwidth used by your assets.
-  - API requests are the number of requests made to your APIs. This includes requests to the GraphQL and REST APIs, excluding requests for file and media assets counted towards CDN bandwidth and storage.
+  - API requests are the number of requests made to your APIs. This includes requests to the GraphQL and REST APIs, excluding requests for file and media assets counted towards CDN bandwidth and storage. All API requests are counted towards your monthly usage, regardless of the response type.
 - Cloud specific feature:
   - Backups refers to the automatic backups of Strapi Cloud projects (see [Backups documentation](/cloud/projects/settings#backups) for more information on the feature).
   - Custom domains refer to the ability to define a custom domain for your Strapi Cloud (see [Custom domains](/cloud/projects/settings#connecting-a-custom-domain)).
@@ -998,7 +1004,7 @@ Updating the git repository could result in the loss of the project and its data
 
 5. Click on the **Save & deploy** button for the changes to take effect.
 
-#### Transferring project ownership  {#transferring-project-ownership}
+#### Transferring project ownership {#transferring-project-ownership}
 
 The ownership of the Strapi Cloud project can be transferred to another user, as long as they're a maintainer of the project. It can either be at the initiative of the current project owner, or can be requested by a project maintainer. Once the ownership is transferred, it is permanent until the new owner decides to transfer the ownership again to another maintainer.
 
@@ -1192,7 +1198,7 @@ Ensure the Node version configured in your Strapi project matches the Node versi
 
 3. Click on the **Save & deploy** button for the changes to take effect.
 
-#### Transferring data between environments {#transferring-data-between-environments}
+#### Transferring data between environments  {#transferring-data-between-environments}
 
 The data transfer feature allows you to transfer the entire CMS content (database and assets) from one environment to another within the same Strapi Cloud project. This is useful for testing changes in a secondary environment with up-to-date production data, or for preparing and staging content in a secondary environment before taking it to production.
 
@@ -1326,7 +1332,7 @@ Custom domains are not available on the Free plan. Downgrading to the Free plan 
 | Target                    | Type the target (i.e. actual address where users are redirected when entering hostname). |
 | Set as default domain     | Tick the box to make the new domain the default one.                      |
 
-3. Click on **Save**, or **Save & deploy** if you want the changes to take effect immediately.
+3. Click on **Save & deploy** for the changes to take effect.
 
 :::tip
 To finish setting up your custom domain, in the settings of your domain registar or hosting platform, please add the Target value (e.g., `proud-unicorn-123456af.strapiapp.com`) as a CNAME alias to the DNS records of your domain.
@@ -1483,31 +1489,23 @@ Source: //cms/admin-panel-customization/favicon
 
 Strapi's [admin panel](/cms/admin-panel-customization) displays its branding on various places, including the [logo](/cms/admin-panel-customization/logos) and the favicon. Replacing these images allows you to match the interface and application to your identity.
 
-To replace the favicon:
+There are 2 approaches to replacing the favicon:
 
-1. Create a `/src/admin/extensions/` folder if the folder does not already exist.
-2. Upload your favicon into `/src/admin/extensions/`.
-3. Replace the existing **favicon.png|ico** file at the Strapi application root with a custom `favicon.png|ico` file.
-4. Update `/src/admin/app.[tsx|js]` with the following:
+* Replace the `favicon.png` file at the root of a Strapi project
+* Edit the [`strapi::favicon` middleware configuration](/cms/configurations/middlewares#favicon) with the following code:
 
-   ```js title="./src/admin/app.js"
-   import favicon from "./extensions/favicon.png";
+  ```js title="/config/middlewares.js"
+  // …
+  {
+    name: 'strapi::favicon',
+    config: {
+      path: 'my-custom-favicon.png',
+    },
+  },
+  // …
+  ```
 
-   export default {
-     config: {
-       // replace favicon with a custom icon
-       head: {
-         favicon: favicon,
-       },
-     },
-   };
-   ```
-
-5. Rebuild, launch and revisit your Strapi app by running `yarn build && yarn develop` in the terminal.
-
-:::tip
-This same process may be used to replace the login logo (i.e. `AuthLogo`) and menu logo (i.e. `MenuLogo`) (see [logos customization documentation](/cms/admin-panel-customization/logos)).
-:::
+Once done, rebuild, launch and revisit your Strapi app by running `yarn build && yarn develop` in the terminal.
 
 :::caution
 Make sure that the cached favicon is cleared. It can be cached in your web browser and also with your domain management tool like Cloudflare's CDN.
@@ -4161,7 +4159,7 @@ The [REST API](/cms/api/rest) by default does not populate any relations, media 
 
 The REST API by default does not populate any type of fields, so it will not populate relations, media fields, components, or dynamic zones unless you pass a `populate` parameter to populate various field types.
 
-The `populate` parameter can be used alone or [in combination with with multiple operators](#combining-population-with-other-operators) to have much more control over the population.
+The `populate` parameter can be used alone or [in combination with multiple operators](#combining-population-with-other-operators) to have much more control over the population.
 
 :::caution
 The `find` permission must be enabled for the content-types that are being populated. If a role doesn't have access to a content-type it will not be populated (see [User Guide](/cms/features/users-permissions#editing-a-role) for additional information on how to enable `find` permissions for content-types).
@@ -9804,52 +9802,57 @@ const HomePage = () => {
 
 </details>
 
-#### Accessing data with the `useCMEditViewDataManager` React hook
+#### Accessing data with the `useContentManagerContext` React hook
 
-Once an injection zone is defined, the component to be injected in the Content Manager can have access to all the data of the Edit View through the `useCMEditViewDataManager` React hook.
+Once an injection zone is defined, the component to be injected in the Content Manager can have access to all the data of the Edit View through the `useContentManagerContext` React hook.
 
 <details>
-<summary>Example of a basic component using the 'useCMEditViewDataManager' hook</summary>
+<summary>Example of a basic component using the 'useContentManagerContext' hook</summary>
 
 ```js
 
+  unstable_useContentManagerContext as useContentManagerContext,
+} from '@strapi/strapi/admin';
+
 const MyCompo = () => {
   const {
-    createActionAllowedFields: [], // Array of fields that the user is allowed to edit
-    formErrors: {}, // Object errors
-    readActionAllowedFields: [], // Array of field that the user is allowed to edit
-    slug: 'api::address.address', // Slug of the content-type
-    updateActionAllowedFields: [],
-    allLayoutData: {
-      components: {}, // components layout
-      contentType: {}, // content-type layout
-    },
-    initialData: {},
-    isCreatingEntry: true,
-    isSingleType: true,
-    status: 'resolved',
-    layout: {}, // Current content-type layout
-    hasDraftAndPublish: true,
-    modifiedData: {},
-    onPublish: () => {},
-    onUnpublish: () => {},
-    addComponentToDynamicZone: () => {},
-    addNonRepeatableComponentToField: () => {},
-    addRelation: () => {},
-    addRepeatableComponentToField: () => {},
-    moveComponentDown: () => {},
-    moveComponentField: () => {},
-    moveComponentUp: () => {},
-    moveRelation: () => {},
-    onChange: () => {},
-    onRemoveRelation: () => {},
-    removeComponentFromDynamicZone: () => {},
-    removeComponentFromField: () => {},
-    removeRepeatableField: () => {},
-  } = useCMEditViewDataManager()
+    slug,
+    isCreatingEntry,
+    isSingleType,
+    hasDraftAndPublish,
+    layout,
+    components,
+    contentType,
+    form,
+    model,
+    collectionType,
+    id,
+  } = useContentManagerContext();
 
-  return null
-}
+  // Form state and handlers
+  const {
+    initialValues,
+    values,
+    onChange,
+  } = form;
+
+  /**
+   * Layout structure:
+   *
+   * `layout` is grouped by Content Manager views.
+   *
+   * - layout.edit.layout     → edit view layout definition
+   * - layout.edit.components → component layouts used in the edit view
+   * - layout.list.layout     → list view layout definition
+   */
+  const {
+    edit: { layout: editLayout, components: editComponents },
+    list: { layout: listLayout },
+  } = layout;
+
+  return null;
+};
+
 ```
 
 </details>

@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/cli/version
+
 # streamlit version
 
 Print Streamlit's version number. This command is equivalent to executing `streamlit --version`.

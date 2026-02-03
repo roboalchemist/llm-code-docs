@@ -1,8 +1,6 @@
-# Source: https://docs.livekit.io/deploy/agents/cloud/builds.md
+# Source: https://docs.livekit.io/deploy/agents/builds.md
 
-# Source: https://docs.livekit.io/agents/ops/deployment/builds.md
-
-LiveKit docs › Agent deployment › Deploying to LiveKit Cloud › Builds and Dockerfiles
+LiveKit docs › Agent deployment › Builds and Dockerfiles
 
 ---
 
@@ -19,9 +17,9 @@ LiveKit Cloud builds container images for your agents based on your code and Doc
 3. **Upload:** The CLI uploads the prepared build context to the LiveKit Cloud build service.
 4. **Build:** The build service uses your Dockerfile to create the container image, streaming logs to the CLI.
 
-After the build is complete, deployment begins. See [Deploying new versions](https://docs.livekit.io/agents/ops/deployment.md#deploy) for more information.
+After the build is complete, deployment begins. See [Deploying new versions](https://docs.livekit.io/deploy/agents/managing-deployments.md#deploy) for more information.
 
-To view build logs, see [Build logs](https://docs.livekit.io/agents/ops/deployment/logs.md#build-logs).
+To view build logs, see [Build logs](https://docs.livekit.io/deploy/agents/logs.md#build-logs).
 
 ### Build timeout
 
@@ -42,7 +40,7 @@ To create your own Dockerfile or modify the templates, refer to the following re
 - Clean package lists (for example, `/var/lib/apt/lists`) to keep layers small.
 - **Build time limit**: Keep total build duration under 10 minutes; long builds fail due to the [build timeout](#timeout).
 - **Secrets and configuration**:- Do not copy `.env*` files or include secrets in the image.
-- Use LiveKit Cloud [secrets management](https://docs.livekit.io/agents/ops/deployment/secrets.md) to inject any necessary secrets at runtime.
+- Use LiveKit Cloud [secrets management](https://docs.livekit.io/deploy/agents/secrets.md) to inject any necessary secrets at runtime.
 - Do not set `LIVEKIT_URL`, `LIVEKIT_API_KEY`, or `LIVEKIT_API_SECRET` environment variables. These are injected at runtime by LiveKit Cloud.
 - **Startup command**: Provide a fixed `ENTRYPOINT`/`CMD` that directly launches the agent using the `start` command, without backgrounding or wrapper scripts.
 - **Assets and models**: Download models and other assets during the image build, not on first run, so containers start quickly. Use `download-files` to download assets required by LiveKit plugins.
@@ -121,7 +119,7 @@ RUN mkdir -p src
 # Ensure your uv.lock file is checked in for consistency across environments
 RUN uv sync --locked
 
-# Copy all remaining pplication files into the container
+# Copy all remaining application files into the container
 # This includes source code, configuration files, and dependency specifications
 # (Excludes files specified in .dockerignore)
 COPY . .
@@ -472,7 +470,7 @@ LICENSE
 
 ---
 
-This document was rendered at 2025-11-18T23:55:18.098Z.
-For the latest version of this document, see [https://docs.livekit.io/agents/ops/deployment/builds.md](https://docs.livekit.io/agents/ops/deployment/builds.md).
+This document was rendered at 2026-02-03T03:25:22.541Z.
+For the latest version of this document, see [https://docs.livekit.io/deploy/agents/builds.md](https://docs.livekit.io/deploy/agents/builds.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

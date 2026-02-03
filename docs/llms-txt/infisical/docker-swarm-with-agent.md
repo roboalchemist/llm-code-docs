@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/integrations/platforms/docker-swarm-with-agent.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Docker Swarm
 
 > Learn how to manage secrets in Docker Swarm services.

@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/client/js/api-reference/client-methods.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Client Methods
 
 export const TransportTable = rows => {
@@ -744,8 +748,3 @@ pcClient.setLogLevel(LogLevel.INFO);
 ## Transport Compatibility
 
 <TransportTable rows={methods()} />
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

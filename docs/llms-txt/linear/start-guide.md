@@ -2,58 +2,50 @@
 
 # Start Guide
 
-Linear is designed to help teams move fast, stay organized, and work efficiently. Whether you're managing projects, tracking issues, or optimizing your development process, Linear offers a clean, intuitive platform that adapts to your team's needs.
+Linear helps teams plan, track, and deliver work without a lot of overhead. This guide gets you from “new workspace” to “working in Linear” quickly, with a few paths depending on your role.
 
-This guide will walk you through the key features of Linear and help you get set up quickly, so you can focus on what matters most: delivering impactful work.
+## Get a quick overview
 
-Let’s get started!
+Start here if you want to understand the layout and core workflows before setting anything up.
 
-## Intro to Linear
-
-Watch our high level overview of the Linear environment:
-
-![Watch on YouTube](https://youtube-nocookie.com/watch?v=9Q5BoiIFBiY&t=1s)
-
-### Demo Linear
-
-Visit our [demo](https://linear.app/demo) instance to explore some of the features and workflows in Linear. Changes made are local to your web browser and will be cleared once you refresh the page. The demo does not allow for exploring settings and it does not support/show SLAs.
-
-### Onboarding sessions
-
-[Join a live onboarding session](https://luma.com/linear?utm_source=docs) to learn the essentials of Linear and see demos of our core workflows in action.
-
-### Learning Library
-
-A [playlist of onboarding videos](https://www.youtube.com/playlist?list=PLP9v0Y4zla9vG7k8e279bSz5hUl0oXlMH) covering most common basic workflows that utilized by Linear customers regularly.
+* [**Intro to Linear**](https://www.youtube.com/watch?v=9Q5BoiIFBiY&list=PLP9v0Y4zla9vG7k8e279bSz5hUl0oXlMH&index=1) Watch a high-level walkthrough of the Linear environment.
+* [**Demo Linear**](https://linear.app/demo) Explore our demo workspace to see how issues, projects, and workflows fit together.  
+_Note: Changes are local to your browser and reset on refresh. The demo does not include settings, and it does not show or support SLAs._
+* [**Live onboarding session**](https://luma.com/linear?utm_source=docs) Join a guided session to learn the essentials and see common workflows in action
+* [**Learning Library**](https://www.youtube.com/playlist?list=PLP9v0Y4zla9vG7k8e279bSz5hUl0oXlMH) Visit this playlist of onboarding videos covering the most common day-to-day workflows.
 
 ## Setting up Linear for your organization
 
-Now that you've established an overview and have started exploring some functionalities of Linear, it's time to see how Linear works for your organization!
+Once you’ve seen the basics, the next step is creating a workspace and configuring it for how your team works.
 
-The best way to do this, of course, is to create a workspace by signing up using (preferably) your work email. Once you've created your workspace, check out our onboarding guides:
+### **Create your workspace**
 
-### Onboarding for admins
+* [Sign up](https://linear.app/signup) using your work email (recommended).
+* Create a workspace for your organization.
+
+### Choose the onboarding guide that fits your role
+
+**Admins**
 
 * [How to use Linear: Small teams](https://linear.app/docs/how-to-use-linear-small-teams)
 * [How to use Linear: Startups & mid-size companies](https://linear.app/docs/how-to-use-linear-startups-mid-size-companies)
 * [How to use Linear: Large & scaling companies](https://linear.app/docs/how-to-use-linear-large-scaling-companies)
 
-### Onboarding for team members
+**Team members**
 
-Joining your team in a workspace can be a lot to take in. Visit our [tips for joining your team on Linear](https://linear.app/docs/joining-your-team-on-linear) for guidance on how to navigate your onboarding.
+[Tips for joining your team on Linear](https://linear.app/docs/joining-your-team-on-linear) (recommended if you’re new to an existing workspace)
 
-## Other resources
+## Learn from real examples
 
-### Examples of using Linear
-
-It's always helpful to see examples of other organizations, or even the Linear team, use Linear for their internal tooling. Through conversations with our customers and internal teams, we're passing on the knowledge through these resources:
+If you learn best by seeing how other teams run things, these are good next reads:
 
 * [How we run projects](https://linear.app/blog/how-we-run-projects-at-linear)
+* [Continuous planning in Linear](https://linear.app/now/continuous-planning-in-linear)
 * [How we think about customer experience](https://linear.app/now/cx-in-linear)
 * [Linear for Marketing Teams](https://www.youtube.com/watch?v=Z0hQWaBLrxw)
 * [How Descript uses Linear](https://linear.app/blog/descript-internal-guide-for-using-linear)
 
-### Join our Slack community
+## Join our Slack community
 
 Meet other Linear users to get advice and exchange tips in our [Slack community](https://linear.app/join-slack). The Linear team is active in the Slack community as well, so it's a great place to ask questions.
 

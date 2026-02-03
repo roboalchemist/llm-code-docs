@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/tasks/zero_shot_image_classification.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/tasks/zero_shot_image_classification.md
 
 # Zero-shot image classification
 
@@ -28,7 +28,7 @@ pip install -q "transformers[torch]" pillow
 
 ## Zero-shot image classification pipeline
 
-The simplest way to try out inference with a model supporting zero-shot image classification is to use the corresponding [pipeline()](/docs/transformers/v5.0.0rc1/en/main_classes/pipelines#transformers.pipeline).
+The simplest way to try out inference with a model supporting zero-shot image classification is to use the corresponding [pipeline()](/docs/transformers/v5.0.0/en/main_classes/pipelines#transformers.pipeline).
 Instantiate a pipeline from a [checkpoint on the Hugging Face Hub](https://huggingface.co/models?pipeline_tag=zero-shot-image-classification&sort=downloads):
 
 ```python

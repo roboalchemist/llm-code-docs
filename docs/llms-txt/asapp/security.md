@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/security.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Security
 
 Security is a critical aspect of any platform, and ASAPP takes it seriously, being SOC2 and PCI compliant. We have implemented several security measures to ensure that your data is protected and secure.

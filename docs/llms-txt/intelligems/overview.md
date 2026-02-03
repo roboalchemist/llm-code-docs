@@ -2,10 +2,6 @@
 
 # Source: https://docs.intelligems.io/analytics/overview.md
 
-# Source: https://docs.intelligems.io/analytics/custom-events/overview.md
-
-# Source: https://docs.intelligems.io/analytics/overview.md
-
 # Overview
 
 Intelligems features a sophisticated analytics engine that can measure a wide variety of metrics on your Shopify store with zero setup. Data is available in near real-time — there will generally be a \~30-60s lag between activity on your site and metrics updating in the Intelligems dashboard.

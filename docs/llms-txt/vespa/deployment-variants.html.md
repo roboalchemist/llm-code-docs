@@ -159,5 +159,5 @@ You can pick and combine these dimensions in any way you want with other dimensi
 ```
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

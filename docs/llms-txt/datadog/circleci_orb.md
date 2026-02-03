@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Continuous Testing > Continuous Testing and CI/CD > Continuous Testing
   and CircleCI Orb
-source_url: https://docs.datadoghq.com/cicd_integrations/circleci_orb/index.html
 ---
 
 # Continuous Testing and CircleCI Orb

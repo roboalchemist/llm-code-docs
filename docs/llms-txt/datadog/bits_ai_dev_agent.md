@@ -4,7 +4,6 @@
 title: Bits AI Dev Agent
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Bits AI > Bits AI Dev Agent
-source_url: https://docs.datadoghq.com/bits_ai_dev_agent/index.html
 ---
 
 # Bits AI Dev Agent
@@ -33,6 +32,8 @@ Bits AI Dev Agent is in Preview. To sign up, click **Request Access** and comple
    alt="Bits AI Dev Agent suggesting a fix for an IndexError in a Django app" /%}
 
 Bits AI Dev Agent is a generative AI coding assistant that uses observability data from Datadog to automatically diagnose and fix issues in your code. It integrates with GitHub to create production-ready pull requests, iterates on fixes using CI logs and developer feedback, and draws on multiple Datadog products to generate contextual fixes.
+
+Each time the Dev Agent investigates an issue or generates a fix, it creates a [**code session**](https://app.datadoghq.com/code), which captures the agent's analysis, actions, and any resulting code changes across supported Datadog products.
 
 ## Supported Datadog products{% #supported-datadog-products %}
 
@@ -65,7 +66,7 @@ Bits AI Dev Agent integrates with GitHub to create pull requests, respond to com
 
 **Note**: Comment `@Datadog` to prompt Bits for updates to the PR. Bits Dev never auto-merges PRs.
 
-Go to **Bits AI** > **Dev Agent** > **[Code sessions](https://app.datadoghq.com/code?tab=my-sessions)** to see all Dev Agent code sessions and generated PRs. You can search sessions and filter by service, product source, and status.
+Go to **Bits AI** > **Dev Agent** > **[Code sessions](https://app.datadoghq.com/code)** to see all Dev Agent code sessions and generated PRs. You can search sessions and filter by service, product source, and status.
 
 ### Auto-push{% #auto-push %}
 
@@ -81,7 +82,9 @@ Auto-push is available for Error Tracking and Test Optimization.
 
 #### Security considerations{% #security-considerations %}
 
-Allowing any AI-based tool to read untrusted data can let attackers trick it into outputting malicious code or other output. In some environments, an attacker could craft errors, traces, or other telemetry containing malicious payloads that the Dev Agent reads. Datadog runs security scanning on the output of the Dev Agent, but it is not foolproof.
+Allowing any AI-based tool to read untrusted data can let attackers influence its output. Auto-push behavior depends on the type of data the Dev Agent works with: code-only workflows operate on source code the Agent can inspect directly, while telemetry-based workflows (such as errors or traces) may include untrusted runtime inputs.
+
+To balance safety and automation, you can configure auto-push behavior in [Datadog](https://app.datadoghq.com/code/settings) (for example, limiting auto-push to code-only workflows or requiring review when telemetry is involved). Datadog scans all Agent-generated code before pushing changes, but these safeguards are not foolproof.
 
 ### Error tracking{% #error-tracking %}
 
@@ -118,6 +121,8 @@ Bits AI Dev Agent remediates vulnerabilities at scale, from single issues to lar
 
 - Create PR batches to fix multiple vulnerabilities at once.
 - Use the Campaign tool to push PRs incrementally and manage review workload across teams.
+
+Datadog Code Security uses Bits AI to enhance static analysis and generate remediation suggestions, which can be reviewed and applied through the Bits AI Dev Agent. Learn more about [AI-Enhanced Static Code Analysis](https://docs.datadoghq.com/security/code_security/static_analysis/ai_enhanced_sast/).
 
 ## Get started{% #get-started %}
 

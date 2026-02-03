@@ -2,14 +2,6 @@
 
 # Source: https://docs.vespa.ai/en/reference/rag/embedding.html.md
 
-# Source: https://docs.vespa.ai/en/rag/embedding.html.md
-
-# Source: https://docs.vespa.ai/en/reference/rag/embedding.html.md
-
-# Source: https://docs.vespa.ai/en/rag/embedding.html.md
-
-# Source: https://docs.vespa.ai/en/reference/rag/embedding.html.md
-
 # Embedding Reference
 
  
@@ -316,7 +308,7 @@ To define a custom embedder in an application and make it usable by Vespa (see [
 ```
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

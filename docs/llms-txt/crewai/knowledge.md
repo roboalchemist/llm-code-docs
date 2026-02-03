@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/concepts/knowledge.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Knowledge
 
 > What is knowledge in CrewAI and how to use it.
@@ -399,8 +403,8 @@ crew = Crew(
     agents=[sales_agent, tech_agent, support_agent],
     tasks=[...],
     embedder={  # Fallback embedder for agents without their own
-        "provider": "google",
-        "config": {"model": "text-embedding-004"}
+        "provider": "google-generativeai",
+        "config": {"model_name": "gemini-embedding-001"}
     }
 )
 
@@ -650,9 +654,9 @@ agent = Agent(
     backstory="Expert researcher",
     knowledge_sources=[knowledge_source],
     embedder={
-        "provider": "google",
+        "provider": "google-generativeai",
         "config": {
-            "model": "models/text-embedding-004",
+            "model_name": "gemini-embedding-001",
             "api_key": "your-google-key"
         }
     }

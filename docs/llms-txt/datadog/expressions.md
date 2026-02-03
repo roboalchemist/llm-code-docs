@@ -6,7 +6,6 @@ description: >-
   Use JavaScript expressions in App Builder to create custom interactions
   between components, queries, and app state.
 breadcrumbs: Docs > App Builder > JavaScript Expressions
-source_url: https://docs.datadoghq.com/app_builder/expressions/index.html
 ---
 
 # JavaScript Expressions

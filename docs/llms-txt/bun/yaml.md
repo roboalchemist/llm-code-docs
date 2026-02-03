@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/runtime/yaml.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # YAML
 
 > Use Bun's built-in support for YAML files through both runtime APIs and bundler integration

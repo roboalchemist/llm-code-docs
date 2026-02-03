@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/ai-agent/actions/lead-form.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Lead Form
 
 Collect qualified leads right inside the conversation. The Lead Form action lets your AI Agent present a form in chat, collect user's information, and save them as a contact.

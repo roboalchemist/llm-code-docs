@@ -324,18 +324,50 @@ We detect all major bots and will block execution when one is detected - this en
 
 <summary>Can I test across domains or stores?</summary>
 
-**No, Intelligems does not currently support testing across multiple domains, or multiple Shopify stores.** Each test is limited to a single domain and store where the [Intelligems script](https://docs.intelligems.io/getting-started/updating-the-intelligems-script) is installed - you can find which domain this is and update it if needed on the [settings page](https://app.intelligems.io/settings) in the Intelligems app. Please note that after a domain change all visitors to tests will be considered 'new' for targeting purposes, so we would recommend ending any ongoing tests and restarting them after the domain migration.
+Yes! Intelligems supports registering multiple domains for brands operating several domains under one Shopify account (e.g., yourbrand.com and yourbrand.co.uk).
+
+**To add multiple domains:**
+
+1. Navigate to the Settings page in the Intelligems app
+2. In the Domain Settings section, click "Add Domain" to register additional domains
+3. All registered domains will appear in a list where you can manage them
+
+**What this enables:**
+
+* Run Split URL tests on any of your registered domains
+* Set up subdomain redirects for each domain (e.g., yourbrand.com → try.yourbrand.com AND yourbrand.co.uk → try.yourbrand.co.uk)
 
 **Current limitations:**
 
-* Tests can only run on the domain configured on the Intelligems settings page - this domain must be associated with the Shopify ID you are installed on
+* Cross-domain redirects are not supported. Visitors cannot be redirected from one top-level domain to another (e.g., yourbrand.com → yourbrand.co.uk will not work)
 * Visitor assignments and tracking do not persist across different domains
-* Results cannot be aggregated from multiple domains within a single test
+* Each domain's tests operate independently
 
 **Alternative approaches:**
 
-* **Use subdomains** instead of separate domains when possible (e.g., shop.yourbrand.com vs yourbrand.com)
-* **Focus on single-domain user journeys** to get meaningful test results
+* Use subdomains instead of separate domains when possible (e.g., shop.yourbrand.com vs yourbrand.com)
+* Focus on single-domain user journeys within each registered domain to get meaningful test results
+
+</details>
+
+<details>
+
+<summary>How to Identify the Test Group of a Live Test</summary>
+
+Use the Intelligems JavaScript API to check which test group a user is assigned to in a live test.
+
+**Key Steps:**
+
+1. Get your experiment ID from the test dashboard (Show Info → Test ID)
+2. Open JavaScript Console (`Cmd+Option+J` Mac / `Ctrl+Shift+J` Windows)
+3. Use: `window.igData?.user.getTestGroup("your-test-id-here")`
+4. Review the returned group assignment
+
+**What to verify:** Function returns the correct test group name or `null` if no assignment.
+
+<https://www.loom.com/share/231ab61adca7484b91417d72b55c765c>
+
+&#x20;
 
 </details>
 
@@ -402,6 +434,26 @@ If you'd like Intelligems to investigate the errors, please [share error reports
 <summary>Can I preview a Shopify theme and Intelligems test at the same time?</summary>
 
 Yes, you can! This is a very common practice we use here at Intelligems. You can do this by entering preview mode for your theme and then entering preview mode for your test. The theme should be cached when you open your test preview.
+
+</details>
+
+<details>
+
+<summary>How to Block Intelligems from Running Locally</summary>
+
+Temporarily disable Intelligems on your browser to troubleshoot issues or test baseline functionality.
+
+**Key Steps:**
+
+1. Open Chrome Developer Tools → Network tab (`F12` or `Cmd+Option+I` Mac / `Ctrl+Shift+I` Windows)
+2. Filter for "intelligems" and refresh the page
+3. Right-click `bundle.js` and select "Block Request URL"
+4. Refresh page to test without Intelligems running
+5. **Important:** Unblock when finished testing
+
+**What to verify:** Intelligems widget disappears when blocked, reappears when unblocked.
+
+<https://www.loom.com/share/fbf21e4ba1c642e3b4558feb5817535c>
 
 </details>
 

@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/migration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Migration Guide
 
 PromptLayer takes less than 5 minutes to setup.
@@ -90,8 +94,3 @@ It's super easy to add PromptLayer to an existing project. Usually only takes on
   ]).then(console.log);
   ```
 </CodeGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

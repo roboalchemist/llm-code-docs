@@ -56,7 +56,7 @@ In Stock
 [5V 10A switching power supply](https://www.adafruit.com/product/658)
 This is a beefy switching supply, for when you need a lot of power! It can supply 5V DC up to 10 Amps, running from 110V or 220V power (the plug it comes with is for US/Canada/Japan but you can use any plug adapter for your country, or just replace the cable with a standard computer/appliance...
 
-In Stock
+Out of Stock
 [Buy Now](https://www.adafruit.com/product/658)
 [Related Guides to the Product](https://learn.adafruit.com/products/658/guides)
 ### 5V 2A (2000mA) switching power supply - UL Listed
@@ -64,7 +64,7 @@ In Stock
 [5V 2A (2000mA) switching power supply - UL Listed](https://www.adafruit.com/product/276)
 This is an FCC/CE certified and UL listed power supply. Need a lot of 5V power? This switching supply gives a clean regulated 5V output at up to 2000mA. 110 or 240 input, so it works in any country. The plugs are "US 2-prong" style so you may need a plug adapter, but you can pick one...
 
-Out of Stock
+In Stock
 [Buy Now](https://www.adafruit.com/product/276)
 [Related Guides to the Product](https://learn.adafruit.com/products/276/guides)
 ### Female DC Power adapter - 2.1mm jack to screw terminal block
@@ -79,18 +79,18 @@ In Stock
 ## Related Guides
 
 - [LPD8806 Digital RGB LED Strip](https://learn.adafruit.com/digital-led-strip.md)
-- [Playing sounds and using buttons with Raspberry Pi](https://learn.adafruit.com/playing-sounds-and-using-buttons-with-raspberry-pi.md)
-- [DotStar Pi Painter](https://learn.adafruit.com/dotstar-pi-painter.md)
-- [Web Enabled PIXEL on Raspberry Pi](https://learn.adafruit.com/web-enabled-pixel-on-raspberry-pi.md)
-- [Adafruit 16-Channel PWM/Servo HAT & Bonnet for Raspberry Pi](https://learn.adafruit.com/adafruit-16-channel-pwm-servo-hat-for-raspberry-pi.md)
-- [Adafruit Sparkle Motion](https://learn.adafruit.com/adafruit-sparkle-motion.md)
-- [CircuitPython on Raspberry Pi (Bare Metal / No OS)](https://learn.adafruit.com/circuitpython-on-raspberry-pi-bare-metal-no-os.md)
-- [IoT Moon Phase Guide](https://learn.adafruit.com/moon-phase.md)
-- [Make a Zelda Master Sword with the RP2040 Prop-Maker Feather](https://learn.adafruit.com/master-sword-rp2040.md)
-- [LED Backpack Displays on Raspberry Pi and BeagleBone Black](https://learn.adafruit.com/led-backpack-displays-on-raspberry-pi-and-beaglebone-black.md)
-- [MCP230xx GPIO Expander on the Raspberry Pi](https://learn.adafruit.com/mcp230xx-gpio-expander-on-the-raspberry-pi.md)
-- [Internet of Things Printer for Raspberry Pi](https://learn.adafruit.com/pi-thermal-printer.md)
-- [Adafruit 16x2 Character LCD + Keypad for Raspberry Pi](https://learn.adafruit.com/adafruit-16x2-character-lcd-plus-keypad-for-raspberry-pi.md)
-- [Ultimate Youtube Live Camera](https://learn.adafruit.com/ultimate-youtube-live-camera.md)
-- [Adafruit 128x64 OLED Bonnet for Raspberry Pi](https://learn.adafruit.com/adafruit-128x64-oled-bonnet-for-raspberry-pi.md)
-- [Instant Camera using Raspberry Pi and Thermal Printer](https://learn.adafruit.com/instant-camera-using-raspberry-pi-and-thermal-printer.md)
+- [Magic Band Reader](https://learn.adafruit.com/magic-band-reader.md)
+- [Bubble Table with LED Animations and IR Remote Control](https://learn.adafruit.com/bubble-table-with-led-animations-and-ir-remote-control.md)
+- [Mini Neon Sign Prop & n00ds Booster Case](https://learn.adafruit.com/nood-booster-case.md)
+- [Gemma 3D Printed Tree Topper](https://learn.adafruit.com/gemma-3d-printed-tree-topper.md)
+- [Raspberry Pi SelfieBlock](https://learn.adafruit.com/selfieblock.md)
+- [Rumi Sword - KPop Demon Hunters](https://learn.adafruit.com/rumi-sword.md)
+- [Setting up a Raspberry Pi as a WiFi Access Point](https://learn.adafruit.com/setting-up-a-raspberry-pi-as-a-wifi-access-point.md)
+- [Adafruit's Raspberry Pi Lesson 8. Using a Servo Motor](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-8-using-a-servo-motor.md)
+- [Adafruit NFC/RFID on Raspberry Pi](https://learn.adafruit.com/adafruit-nfc-rfid-on-raspberry-pi.md)
+- [Set up and Blink - MATLAB and Simulink with Raspberry Pi](https://learn.adafruit.com/how-to-use-matlab-and-simulink-with-raspberry-pi.md)
+- [Floor Lamp with NeoPixels and WLED Custom Animations](https://learn.adafruit.com/floor-lamp-with-wled.md)
+- [Reverse Engineering a Bluetooth Low Energy Light Bulb](https://learn.adafruit.com/reverse-engineering-a-bluetooth-low-energy-light-bulb.md)
+- [Running OpenGL-based Games & Emulators on Adafruit PiTFT Displays](https://learn.adafruit.com/running-opengl-based-games-and-emulators-on-adafruit-pitft-displays.md)
+- [CLUE Vertical Garden Weather Visualizer](https://learn.adafruit.com/clue-vertical-garden-weather-visualizer.md)
+- [PiPhone - A Raspberry Pi based Cellphone](https://learn.adafruit.com/piphone-a-raspberry-pi-based-cellphone.md)

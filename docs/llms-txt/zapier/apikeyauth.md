@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/apikeyauth.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add authentication with API Key
 
 > API Key authentication passes along a user-entered API Key with every API call. In your Zapier integration using API Key authentication, the API key—and optionally any other data your API needs—is included every time a Zap step runs.

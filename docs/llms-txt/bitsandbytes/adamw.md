@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/bitsandbytes/v0.49.0/reference/optim/adamw.md
+# Source: https://huggingface.co/docs/bitsandbytes/v0.49.1/reference/optim/adamw.md
 
 # AdamW
 
@@ -10,9 +10,9 @@ bitsandbytes also supports paged optimizers which take advantage of CUDAs unifie
 
 #### bitsandbytes.optim.AdamW[[bitsandbytes.optim.AdamW]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/adamw.py#L9)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/adamw.py#L9)
 
-__init__bitsandbytes.optim.AdamW.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/adamw.py#L10[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.001"}, {"name": "betas", "val": " = (0.9, 0.999)"}, {"name": "eps", "val": " = 1e-08"}, {"name": "weight_decay", "val": " = 0.01"}, {"name": "amsgrad", "val": " = False"}, {"name": "optim_bits", "val": " = 32"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}, {"name": "is_paged", "val": " = False"}]- **params** (`torch.Tensor`) --
+__init__bitsandbytes.optim.AdamW.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/adamw.py#L10[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.001"}, {"name": "betas", "val": " = (0.9, 0.999)"}, {"name": "eps", "val": " = 1e-08"}, {"name": "weight_decay", "val": " = 0.01"}, {"name": "amsgrad", "val": " = False"}, {"name": "optim_bits", "val": " = 32"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}, {"name": "is_paged", "val": " = False"}]- **params** (`torch.Tensor`) --
   The input parameters to optimize.
 - **lr** (`float`, defaults to 1e-3) --
   The learning rate.
@@ -69,9 +69,9 @@ is_paged (`bool`, defaults to `False`) : Whether the optimizer is a paged optimi
 
 #### bitsandbytes.optim.AdamW8bit[[bitsandbytes.optim.AdamW8bit]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/adamw.py#L70)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/adamw.py#L70)
 
-__init__bitsandbytes.optim.AdamW8bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/adamw.py#L71[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.001"}, {"name": "betas", "val": " = (0.9, 0.999)"}, {"name": "eps", "val": " = 1e-08"}, {"name": "weight_decay", "val": " = 0.01"}, {"name": "amsgrad", "val": " = False"}, {"name": "optim_bits", "val": " = 32"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}, {"name": "is_paged", "val": " = False"}]- **params** (`torch.Tensor`) --
+__init__bitsandbytes.optim.AdamW8bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/adamw.py#L71[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.001"}, {"name": "betas", "val": " = (0.9, 0.999)"}, {"name": "eps", "val": " = 1e-08"}, {"name": "weight_decay", "val": " = 0.01"}, {"name": "amsgrad", "val": " = False"}, {"name": "optim_bits", "val": " = 32"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}, {"name": "is_paged", "val": " = False"}]- **params** (`torch.Tensor`) --
   The input parameters to optimize.
 - **lr** (`float`, defaults to 1e-3) --
   The learning rate.
@@ -130,9 +130,9 @@ is_paged (`bool`, defaults to `False`) : Whether the optimizer is a paged optimi
 
 #### bitsandbytes.optim.AdamW32bit[[bitsandbytes.optim.AdamW32bit]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/adamw.py#L142)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/adamw.py#L142)
 
-__init__bitsandbytes.optim.AdamW32bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/adamw.py#L143[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.001"}, {"name": "betas", "val": " = (0.9, 0.999)"}, {"name": "eps", "val": " = 1e-08"}, {"name": "weight_decay", "val": " = 0.01"}, {"name": "amsgrad", "val": " = False"}, {"name": "optim_bits", "val": " = 32"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}, {"name": "is_paged", "val": " = False"}]- **params** (`torch.Tensor`) --
+__init__bitsandbytes.optim.AdamW32bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/adamw.py#L143[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.001"}, {"name": "betas", "val": " = (0.9, 0.999)"}, {"name": "eps", "val": " = 1e-08"}, {"name": "weight_decay", "val": " = 0.01"}, {"name": "amsgrad", "val": " = False"}, {"name": "optim_bits", "val": " = 32"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}, {"name": "is_paged", "val": " = False"}]- **params** (`torch.Tensor`) --
   The input parameters to optimize.
 - **lr** (`float`, defaults to 1e-3) --
   The learning rate.
@@ -189,9 +189,9 @@ is_paged (`bool`, defaults to `False`) : Whether the optimizer is a paged optimi
 
 #### bitsandbytes.optim.PagedAdamW[[bitsandbytes.optim.PagedAdamW]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/adamw.py#L203)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/adamw.py#L203)
 
-__init__bitsandbytes.optim.PagedAdamW.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/adamw.py#L204[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.001"}, {"name": "betas", "val": " = (0.9, 0.999)"}, {"name": "eps", "val": " = 1e-08"}, {"name": "weight_decay", "val": " = 0.01"}, {"name": "amsgrad", "val": " = False"}, {"name": "optim_bits", "val": " = 32"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}]- **params** (`torch.Tensor`) --
+__init__bitsandbytes.optim.PagedAdamW.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/adamw.py#L204[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.001"}, {"name": "betas", "val": " = (0.9, 0.999)"}, {"name": "eps", "val": " = 1e-08"}, {"name": "weight_decay", "val": " = 0.01"}, {"name": "amsgrad", "val": " = False"}, {"name": "optim_bits", "val": " = 32"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}]- **params** (`torch.Tensor`) --
   The input parameters to optimize.
 - **lr** (`float`, defaults to 1e-3) --
   The learning rate.
@@ -244,9 +244,9 @@ block_wise (`bool`, defaults to `True`) : Whether to independently quantize each
 
 #### bitsandbytes.optim.PagedAdamW8bit[[bitsandbytes.optim.PagedAdamW8bit]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/adamw.py#L261)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/adamw.py#L261)
 
-__init__bitsandbytes.optim.PagedAdamW8bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/adamw.py#L262[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.001"}, {"name": "betas", "val": " = (0.9, 0.999)"}, {"name": "eps", "val": " = 1e-08"}, {"name": "weight_decay", "val": " = 0.01"}, {"name": "amsgrad", "val": " = False"}, {"name": "optim_bits", "val": " = 32"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}]- **params** (`torch.Tensor`) --
+__init__bitsandbytes.optim.PagedAdamW8bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/adamw.py#L262[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.001"}, {"name": "betas", "val": " = (0.9, 0.999)"}, {"name": "eps", "val": " = 1e-08"}, {"name": "weight_decay", "val": " = 0.01"}, {"name": "amsgrad", "val": " = False"}, {"name": "optim_bits", "val": " = 32"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}]- **params** (`torch.Tensor`) --
   The input parameters to optimize.
 - **lr** (`float`, defaults to 1e-3) --
   The learning rate.
@@ -301,9 +301,9 @@ block_wise (`bool`, defaults to `True`) : Whether to independently quantize each
 
 #### bitsandbytes.optim.PagedAdamW32bit[[bitsandbytes.optim.PagedAdamW32bit]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/adamw.py#L330)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/adamw.py#L330)
 
-__init__bitsandbytes.optim.PagedAdamW32bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/adamw.py#L331[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.001"}, {"name": "betas", "val": " = (0.9, 0.999)"}, {"name": "eps", "val": " = 1e-08"}, {"name": "weight_decay", "val": " = 0.01"}, {"name": "amsgrad", "val": " = False"}, {"name": "optim_bits", "val": " = 32"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}]- **params** (`torch.Tensor`) --
+__init__bitsandbytes.optim.PagedAdamW32bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/adamw.py#L331[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.001"}, {"name": "betas", "val": " = (0.9, 0.999)"}, {"name": "eps", "val": " = 1e-08"}, {"name": "weight_decay", "val": " = 0.01"}, {"name": "amsgrad", "val": " = False"}, {"name": "optim_bits", "val": " = 32"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}]- **params** (`torch.Tensor`) --
   The input parameters to optimize.
 - **lr** (`float`, defaults to 1e-3) --
   The learning rate.

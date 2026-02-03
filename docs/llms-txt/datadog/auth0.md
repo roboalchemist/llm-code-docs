@@ -6,7 +6,6 @@ description: >-
   Configure Auth0 as a SAML identity provider for Datadog with user metadata and
   profile attribute management for secure authentication.
 breadcrumbs: Docs > Account Management > Single Sign On With SAML > Auth0 SAML IdP
-source_url: https://docs.datadoghq.com/saml/auth0/index.html
 ---
 
 # Auth0 SAML IdP

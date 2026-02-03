@@ -12,8 +12,7 @@ When used standalone, Rspack should always be written as Rspack, not rspack or R
 
 Rspack logo is a small crab as fast as lightning, representing fast compilation of Rspack.
 
-<img src="https://assets.rspack.rs/rspack/rspack-logo.svg" alt="Rspack Logo" style={{ width: '300px' }} />
-
+![Rspack Logo](https://assets.rspack.rs/rspack/rspack-logo.svg)
 ## Design resources
 
 You can find all of Rspack's design resources under the [rstack-design-resources](https://github.com/rstackjs/rstack-design-resources) repository.

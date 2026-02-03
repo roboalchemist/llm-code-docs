@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/tutorials/databases/public-gsheet
+
 # Connect Streamlit to a public Google Sheet
 
 This guide explains how to securely access a public Google Sheet from Streamlit. It uses [st.connection](/develop/api-reference/connections/st.connection), [Streamlit GSheetsConnection](https://github.com/streamlit/gsheets-connection), and Streamlit's [Secrets management](/develop/concepts/connections/secrets-management).

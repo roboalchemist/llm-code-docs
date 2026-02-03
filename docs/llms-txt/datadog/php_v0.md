@@ -6,7 +6,6 @@ description: Compatibility Requirements for the PHP tracer
 breadcrumbs: >-
   Docs > APM > Application Instrumentation > Compatibility Requirements >
   (Legacy) PHP Compatibility Requirements
-source_url: https://docs.datadoghq.com/trace_collection/compatibility/php_v0/index.html
 ---
 
 # (Legacy) PHP Compatibility Requirements

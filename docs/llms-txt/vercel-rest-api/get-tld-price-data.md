@@ -1,332 +1,273 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/domains-registrar/get-tld-price-data.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get TLD price data
 
 > Get price data for a specific TLD. This only reflects base prices for the given TLD. Premium domains may have different prices. Use the [Get price data for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-price-data-for-a-domain) endpoint to get the price data for a specific domain.
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v1/registrar/tlds/{tld}/price
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v1/registrar/tlds/{tld}/price
-  method: get
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path:
-        tld:
+  /v1/registrar/tlds/{tld}/price:
+    get:
+      tags:
+        - domains-registrar
+      summary: Get TLD price data
+      description: >-
+        Get price data for a specific TLD. This only reflects base prices for
+        the given TLD. Premium domains may have different prices. Use the [Get
+        price data for a
+        domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-price-data-for-a-domain)
+        endpoint to get the price data for a specific domain.
+      operationId: getTldPrice
+      parameters:
+        - name: tld
+          in: path
           schema:
-            - type: string
-              required: true
-      query:
-        years:
+            type: string
+          required: true
+        - name: years
+          in: query
           schema:
-            - type: string
-              required: false
-              description: a string to be decoded into a number
-        teamId:
+            type: string
+            description: >-
+              The number of years to get the price for. If not provided, the
+              minimum number of years for the TLD will be used.
+          required: false
+          description: >-
+            The number of years to get the price for. If not provided, the
+            minimum number of years for the TLD will be used.
+        - name: teamId
+          in: query
           schema:
-            - type: string
-              required: false
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: getTldPrice
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.domainsRegistrar.getTldPrice({
-              tld: "<value>",
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              years:
-                allOf:
-                  - type: number
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+          required: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - years
+                  - purchasePrice
+                  - renewalPrice
+                  - transferPrice
+                properties:
+                  years:
+                    type: number
                     description: The number of years the returned price is for.
-              purchasePrice:
-                allOf:
-                  - type: number
-                    description: >-
-                      The base TLD price for purchasing a domain for the given
-                      number of years. If null, the TLD does not support
-                      purchasing domains for the given number of years.
-                    minimum: 0.01
-                    nullable: true
-              renewalPrice:
-                allOf:
-                  - type: number
-                    description: >-
-                      The base TLD price for renewing a domain for the given
-                      number of years. If null, the TLD does not support
-                      renewing domains for the given number of years.
-                    minimum: 0.01
-                    nullable: true
-              transferPrice:
-                allOf:
-                  - type: number
-                    description: >-
-                      The base TLD price for transferring a domain in for the
-                      given number of years. If null, the TLD does not support
-                      transferring domains in for the given number of years.
-                    minimum: 0.01
-                    nullable: true
-            requiredProperties:
-              - years
-              - purchasePrice
-              - renewalPrice
-              - transferPrice
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              years: 123
-              purchasePrice: 1.01
-              renewalPrice: 1.01
-              transferPrice: 1.01
-        description: Success
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: number
-                    enum:
-                      - 400
-              code:
-                allOf:
-                  - type: string
-                    enum:
-                      - tld_not_supported
-              message:
-                allOf:
-                  - type: string
-            description: The TLD is not currently supported.
-            refIdentifier: '#/components/schemas/TldNotSupported'
-            requiredProperties:
-              - status
-              - code
-              - message
-            additionalProperties: false
-          - type: object
-            properties:
-              issues:
-                allOf:
-                  - type: array
-                    items:
-                      $ref: '#/components/schemas/Issue'
-              message:
-                allOf:
-                  - type: string
-            description: The request did not match the expected schema
-            refIdentifier: '#/components/schemas/HttpApiDecodeError'
-            requiredProperties:
-              - issues
-              - message
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              status: 400
-              code: tld_not_supported
-              message: <string>
-        description: There was something wrong with the request
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: number
-                    enum:
-                      - 401
-              code:
-                allOf:
-                  - type: string
-                    enum:
-                      - unauthorized
-              message:
-                allOf:
-                  - type: string
-            refIdentifier: '#/components/schemas/Unauthorized'
-            requiredProperties:
-              - status
-              - code
-              - message
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              status: 401
-              code: unauthorized
-              message: <string>
-        description: Unauthorized
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: number
-                    enum:
-                      - 403
-              code:
-                allOf:
-                  - type: string
-                    enum:
-                      - not_authorized_for_scope
-              message:
-                allOf:
-                  - type: string
-            refIdentifier: '#/components/schemas/NotAuthorizedForScope'
-            requiredProperties:
-              - status
-              - code
-              - message
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              status: 403
-              code: not_authorized_for_scope
-              message: <string>
-        description: NotAuthorizedForScope
-    '429':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: number
-                    enum:
-                      - 429
-              code:
-                allOf:
-                  - type: string
-                    enum:
-                      - too_many_requests
-              message:
-                allOf:
-                  - type: string
-              retryAfter:
-                allOf:
-                  - type: object
-                    required:
-                      - value
-                      - str
-                    properties:
-                      value:
-                        type: number
-                      str:
-                        type: string
-                    additionalProperties: false
-              limit:
-                allOf:
-                  - type: object
-                    required:
-                      - total
-                      - remaining
-                      - reset
-                    properties:
-                      total:
-                        type: number
-                      remaining:
-                        type: number
-                      reset:
-                        type: number
-                    additionalProperties: false
-            refIdentifier: '#/components/schemas/TooManyRequests'
-            requiredProperties:
-              - status
-              - code
-              - message
-              - retryAfter
-              - limit
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              status: 429
-              code: too_many_requests
-              message: <string>
-              retryAfter:
-                value: 123
-                str: <string>
-              limit:
-                total: 123
-                remaining: 123
-                reset: 123
-        description: TooManyRequests
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: number
-                    enum:
-                      - 500
-              code:
-                allOf:
-                  - type: string
-                    enum:
-                      - internal_server_error
-              message:
-                allOf:
-                  - type: string
-            refIdentifier: '#/components/schemas/InternalServerError'
-            requiredProperties:
-              - status
-              - code
-              - message
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              status: 500
-              code: internal_server_error
-              message: <string>
-        description: InternalServerError
-  deprecated: false
-  type: path
+                  purchasePrice:
+                    anyOf:
+                      - type: number
+                        minimum: 0.01
+                      - type: string
+                  renewalPrice:
+                    anyOf:
+                      - type: number
+                        minimum: 0.01
+                      - type: string
+                  transferPrice:
+                    anyOf:
+                      - type: number
+                        minimum: 0.01
+                      - type: string
+                additionalProperties: false
+        '400':
+          description: There was something wrong with the request
+          content:
+            application/json:
+              schema:
+                anyOf:
+                  - $ref: '#/components/schemas/TldNotSupported'
+                  - $ref: '#/components/schemas/HttpApiDecodeError'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Unauthorized'
+        '403':
+          description: NotAuthorizedForScope
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotAuthorizedForScope'
+        '429':
+          description: TooManyRequests
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TooManyRequests'
+        '500':
+          description: InternalServerError
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+      security:
+        - bearerToken: []
 components:
   schemas:
+    TldNotSupported:
+      type: object
+      required:
+        - status
+        - code
+        - message
+      properties:
+        status:
+          type: number
+          enum:
+            - 400
+        code:
+          type: string
+          enum:
+            - tld_not_supported
+        message:
+          type: string
+      additionalProperties: false
+      description: The TLD is not currently supported.
+    HttpApiDecodeError:
+      type: object
+      required:
+        - issues
+        - message
+      properties:
+        issues:
+          type: array
+          items:
+            $ref: '#/components/schemas/Issue'
+        message:
+          type: string
+      additionalProperties: false
+      description: The request did not match the expected schema
+    Unauthorized:
+      type: object
+      required:
+        - status
+        - code
+        - message
+      properties:
+        status:
+          type: number
+          enum:
+            - 401
+        code:
+          type: string
+          enum:
+            - unauthorized
+        message:
+          type: string
+      additionalProperties: false
+    NotAuthorizedForScope:
+      type: object
+      required:
+        - status
+        - code
+        - message
+      properties:
+        status:
+          type: number
+          enum:
+            - 403
+        code:
+          type: string
+          enum:
+            - not_authorized_for_scope
+        message:
+          type: string
+      additionalProperties: false
+    TooManyRequests:
+      type: object
+      required:
+        - status
+        - code
+        - message
+        - retryAfter
+        - limit
+      properties:
+        status:
+          type: number
+          enum:
+            - 429
+        code:
+          type: string
+          enum:
+            - too_many_requests
+        message:
+          type: string
+        retryAfter:
+          type: object
+          required:
+            - value
+            - str
+          properties:
+            value:
+              type: number
+            str:
+              type: string
+          additionalProperties: false
+        limit:
+          type: object
+          required:
+            - total
+            - remaining
+            - reset
+          properties:
+            total:
+              type: number
+            remaining:
+              type: number
+            reset:
+              type: number
+          additionalProperties: false
+      additionalProperties: false
+    InternalServerError:
+      type: object
+      required:
+        - status
+        - code
+        - message
+      properties:
+        status:
+          type: number
+          enum:
+            - 500
+        code:
+          type: string
+          enum:
+            - internal_server_error
+        message:
+          type: string
+      additionalProperties: false
     Issue:
       type: object
       required:
@@ -362,5 +303,10 @@ components:
               type: string
           additionalProperties: false
           description: an object to be decoded into a globally shared symbol
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

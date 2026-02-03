@@ -1,6 +1,12 @@
 # Source: https://docs.windsurf.com/windsurf/ai-commit-message.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AI Commit Messages
+
+> Generate meaningful git commit messages automatically with AI by analyzing your code changes with a single click in Windsurf.
 
 Generate git commit messages with a single click. This feature analyzes your code changes and creates meaningful commit messages that describe what you've done.
 

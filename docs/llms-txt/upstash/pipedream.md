@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/qstash/integrations/pipedream.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Pipedream
 
 > Build and run workflows with 1000s of open source triggers and actions across 900+ apps.

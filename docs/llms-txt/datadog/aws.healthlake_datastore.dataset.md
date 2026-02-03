@@ -4,8 +4,6 @@
 title: HealthLake Data Store Properties
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > HealthLake Data Store Properties
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.healthlake_datastore.dataset/index.html
 ---
 
 # HealthLake Data Store Properties
@@ -18,19 +16,19 @@ aws.healthlake_datastore
 
 ## Fields
 
-| Title                           | ID   | Type      | Data Type                                                                                                                | Description |
-| ------------------------------- | ---- | --------- | ------------------------------------------------------------------------------------------------------------------------ | ----------- |
-| _key                            | core | string    |
-| account_id                      | core | string    |
-| created_at                      | core | timestamp | The time that a data store was created.                                                                                  |
-| datastore_arn                   | core | string    | The Amazon Resource Name used in the creation of the data store.                                                         |
-| datastore_endpoint              | core | string    | The AWS endpoint for the data store. Each data store will have it's own endpoint with data store ID in the endpoint URL. |
-| datastore_id                    | core | string    | The AWS-generated ID number for the data store.                                                                          |
-| datastore_name                  | core | string    | The user-generated name for the data store.                                                                              |
-| datastore_status                | core | string    | The status of the data store.                                                                                            |
-| datastore_type_version          | core | string    | The FHIR version. Only R4 version data is supported.                                                                     |
-| error_cause                     | core | json      | The error cause for the current data store operation.                                                                    |
-| identity_provider_configuration | core | json      | The identity provider that you selected when you created the data store.                                                 |
-| preload_data_config             | core | json      | The preloaded data configuration for the data store. Only data preloaded from Synthea is supported.                      |
-| sse_configuration               | core | json      | The server-side encryption key configuration for a customer provided encryption key (CMK).                               |
-| tags                            | core | hstore    |
+| Title                           | ID   | Type       | Data Type                                                                                | Description |
+| ------------------------------- | ---- | ---------- | ---------------------------------------------------------------------------------------- | ----------- |
+| _key                            | core | string     |
+| account_id                      | core | string     |
+| created_at                      | core | timestamp  | The time the data store was created.                                                     |
+| datastore_arn                   | core | string     | The Amazon Resource Name (ARN) used in the creation of the data store.                   |
+| datastore_endpoint              | core | string     | The AWS endpoint for the data store.                                                     |
+| datastore_id                    | core | string     | The data store identifier.                                                               |
+| datastore_name                  | core | string     | The data store name.                                                                     |
+| datastore_status                | core | string     | The data store status.                                                                   |
+| datastore_type_version          | core | string     | The FHIR release version supported by the data store. Current support is for version R4. |
+| error_cause                     | core | json       | The error cause for the current data store operation.                                    |
+| identity_provider_configuration | core | json       | The identity provider selected during data store creation.                               |
+| preload_data_config             | core | json       | The preloaded Synthea data configuration for the data store.                             |
+| sse_configuration               | core | json       | The server-side encryption key configuration for a customer provided encryption key.     |
+| tags                            | core | hstore_csv |

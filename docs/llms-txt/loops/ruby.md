@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/sdks/ruby.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Ruby SDK
 
 > The official Loops SDK for Ruby.

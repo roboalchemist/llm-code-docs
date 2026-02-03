@@ -1,70 +1,74 @@
 # Source: https://platform.claude.com/docs/en/api/typescript/beta/files/upload.md
 
-## Upload
+# Source: https://platform.claude.com/docs/en/api/ruby/beta/files/upload.md
 
-`client.beta.files.upload(FileUploadParamsparams, RequestOptionsoptions?): FileMetadata`
+# Source: https://platform.claude.com/docs/en/api/python/beta/files/upload.md
+
+# Source: https://platform.claude.com/docs/en/api/kotlin/beta/files/upload.md
+
+# Source: https://platform.claude.com/docs/en/api/java/beta/files/upload.md
+
+# Source: https://platform.claude.com/docs/en/api/go/beta/files/upload.md
+
+# Source: https://platform.claude.com/docs/en/api/beta/files/upload.md
+
+## Upload
 
 **post** `/v1/files`
 
 Upload File
 
-### Parameters
+### Header Parameters
 
-- `params: FileUploadParams`
+- `"anthropic-beta": optional array of AnthropicBeta`
 
-  - `file: Uploadable`
+  Optional header to specify the beta version(s) you want to use.
 
-    Body param: The file to upload
+  - `UnionMember0 = string`
 
-  - `betas?: Array<AnthropicBeta>`
+  - `UnionMember1 = "message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 16 more`
 
-    Header param: Optional header to specify the beta version(s) you want to use.
+    - `"message-batches-2024-09-24"`
 
-    - `(string & {})`
+    - `"prompt-caching-2024-07-31"`
 
-    - `"message-batches-2024-09-24" | "prompt-caching-2024-07-31" | "computer-use-2024-10-22" | 16 more`
+    - `"computer-use-2024-10-22"`
 
-      - `"message-batches-2024-09-24"`
+    - `"computer-use-2025-01-24"`
 
-      - `"prompt-caching-2024-07-31"`
+    - `"pdfs-2024-09-25"`
 
-      - `"computer-use-2024-10-22"`
+    - `"token-counting-2024-11-01"`
 
-      - `"computer-use-2025-01-24"`
+    - `"token-efficient-tools-2025-02-19"`
 
-      - `"pdfs-2024-09-25"`
+    - `"output-128k-2025-02-19"`
 
-      - `"token-counting-2024-11-01"`
+    - `"files-api-2025-04-14"`
 
-      - `"token-efficient-tools-2025-02-19"`
+    - `"mcp-client-2025-04-04"`
 
-      - `"output-128k-2025-02-19"`
+    - `"mcp-client-2025-11-20"`
 
-      - `"files-api-2025-04-14"`
+    - `"dev-full-thinking-2025-05-14"`
 
-      - `"mcp-client-2025-04-04"`
+    - `"interleaved-thinking-2025-05-14"`
 
-      - `"mcp-client-2025-11-20"`
+    - `"code-execution-2025-05-22"`
 
-      - `"dev-full-thinking-2025-05-14"`
+    - `"extended-cache-ttl-2025-04-11"`
 
-      - `"interleaved-thinking-2025-05-14"`
+    - `"context-1m-2025-08-07"`
 
-      - `"code-execution-2025-05-22"`
+    - `"context-management-2025-06-27"`
 
-      - `"extended-cache-ttl-2025-04-11"`
+    - `"model-context-window-exceeded-2025-08-26"`
 
-      - `"context-1m-2025-08-07"`
-
-      - `"context-management-2025-06-27"`
-
-      - `"model-context-window-exceeded-2025-08-26"`
-
-      - `"skills-2025-10-02"`
+    - `"skills-2025-10-02"`
 
 ### Returns
 
-- `FileMetadata`
+- `FileMetadata = object { id, created_at, filename, 4 more }`
 
   - `id: string`
 
@@ -96,20 +100,17 @@ Upload File
 
     - `"file"`
 
-  - `downloadable?: boolean`
+  - `downloadable: optional boolean`
 
     Whether the file can be downloaded.
 
 ### Example
 
-```typescript
-import Anthropic from '@anthropic-ai/sdk';
-
-const client = new Anthropic({
-  apiKey: process.env['ANTHROPIC_API_KEY'], // This is the default and can be omitted
-});
-
-const fileMetadata = await client.beta.files.upload({ file: fs.createReadStream('path/to/file') });
-
-console.log(fileMetadata.id);
+```http
+curl https://api.anthropic.com/v1/files \
+    -H 'Content-Type: multipart/form-data' \
+    -H 'anthropic-version: 2023-06-01' \
+    -H 'anthropic-beta: files-api-2025-04-14' \
+    -H "X-Api-Key: $ANTHROPIC_API_KEY" \
+    -F 'file=@/path/to/file'
 ```

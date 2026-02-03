@@ -6,11 +6,7 @@ Use reports to help analyze and understand your business.
 
 Use prebuilt reports to understand basic activity on your account or across [multiple accounts in an organization](https://docs.stripe.com/reports/multiple-accounts.md) such as payments, payouts, fees, and balance changes. View the reports in the [Stripe Dashboard](https://dashboard.stripe.com/reporting), or download a CSV to complete accounting tasks. Learn more about Stripe’s reporting [features](https://docs.stripe.com/stripe-reports.md#features).
 
-## Get financial reports
-[View reports in the Dashboard](https://dashboard.stripe.com/reports/hub)
 ## Use free reports
-
-Stripe financial reports help you understand and reconcile the activity in your account or [organization](https://docs.stripe.com/reports/multiple-accounts.md). You can view summary reports in the Dashboard or download itemized transaction data as a CSV file.
 
 [Balance](https://docs.stripe.com/reports/balance.md): Reconcile your Stripe balance like a bank account and download a list of payouts.
 
@@ -24,7 +20,7 @@ Stripe financial reports help you understand and reconcile the activity in your 
 
 ## Learn how to configure reports
 
-[Report filters](https://docs.stripe.com/revenue-recognition.md): Understand the settings and controls that are common across all financial reports to find specific data.
+[Report filters](https://docs.stripe.com/reports/options.md): Understand the settings and controls that are common across all financial reports to find specific data.
 
 [Reporting categories and filters](https://docs.stripe.com/reports/reporting-categories.md): Understand the different categories and types of transactions you might encounter.
 
@@ -49,5 +45,5 @@ Stripe financial reports help you understand and reconcile the activity in your 
 - [Prebuilt reports](https://docs.stripe.com/reports/select-a-report.md): Access a variety of ready-made reports covering key business metrics.
 - [Scheduled reports](https://docs.stripe.com/reports/options.md#scheduled-reports): Automate report generation and delivery on a daily, weekly, or monthly basis.
 - [Multiple export formats](https://docs.stripe.com/revenue-recognition/api.md): Use [Revenue Recognition](https://docs.stripe.com/revenue-recognition.md) to download reports in CSV, PDF, or Excel formats for easy analysis and sharing.
-- [Detailed transaction data](https://docs.stripe.com/revenue-recognition.md): Use [Revenue Recognition](https://docs.stripe.com/revenue-recognition.md) to access comprehensive information on payments, refunds, and disputes.
-- [Revenue analytics](https://docs.stripe.com/revenue-recognition/reports.md): Use [Revenue Recognition](https://docs.stripe.com/revenue-recognition.md) to track your revenue trends, including gross and net amounts.
+- [Detailed transaction data](https://docs.stripe.com/revenue-recognition.md): Use Revenue Recognition to access comprehensive information on payments, refunds, and disputes.
+- [Revenue analytics](https://docs.stripe.com/revenue-recognition/reports.md): Use Revenue Recognition to track your revenue trends, including gross and net amounts.

@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xgroup_delconsumer.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # XGROUP DELCONSUMER
 
 > Delete a consumer from a consumer group.

@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/dashboard/settings/billing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Managing Billing
 
 > Manage your account subscription and billing information

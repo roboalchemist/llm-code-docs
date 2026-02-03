@@ -17,10 +17,10 @@ These native nodes eliminate the complexity of managing Apify tasks while provid
 
 The following data sources are available natively in Gumloop:
 
-* https://docs.apify.com/platform/integrations/gumloop/instagram.md
-* https://docs.apify.com/platform/integrations/gumloop/maps.md
-* https://docs.apify.com/platform/integrations/gumloop/tiktok.md
-* https://docs.apify.com/platform/integrations/gumloop/youtube.md
+* [Instagram](https://docs.apify.com/platform/integrations/gumloop/instagram.md)
+* [Google Maps](https://docs.apify.com/platform/integrations/gumloop/maps.md)
+* [TikTok](https://docs.apify.com/platform/integrations/gumloop/tiktok.md)
+* [YouTube](https://docs.apify.com/platform/integrations/gumloop/youtube.md)
 
 ### Gumloop credits
 
@@ -46,13 +46,13 @@ To use the Apify integration in Gumloop, you need an Apify account, a Gumloop ac
 
 1. *Get your Apify API Key*
 
-   To get started, navigate to https://console.apify.com/settings/integrations in Apify Console and copy your API token.
+   To get started, navigate to [Settings > Integrations](https://console.apify.com/settings/integrations) in Apify Console and copy your API token.
 
    ![Apify Settings \&gt; Integrations with API token](/assets/images/generate_apify_token-37964f50ccd164cc0bd956f6970bb9c9.png)
 
 2. *Add Apify credentials to Gumloop*
 
-   Next, go to https://www.gumloop.com/settings/profile/credentials and click **Add New Credentials**. Search for Apify in the credentials list, add your Apify API key, and save the credential.
+   Next, go to [Gumloop Credentials](https://www.gumloop.com/settings/profile/credentials) and click **Add New Credentials**. Search for Apify in the credentials list, add your Apify API key, and save the credential.
 
    ![Gumloop Credentials adding Apify API key](/assets/images/apify_credential_gumloop-8d0b053fbf7d5df02bfa1d5d4921a010.png)
 
@@ -64,7 +64,7 @@ To use the Apify integration in Gumloop, you need an Apify account, a Gumloop ac
 
 4. *Create and save tasks in Apify*
 
-   The Apify Task Runner node fetches tasks from your saved tasks in Apify Console. To create a task, navigate to https://console.apify.com/actors, click on the Actor you want to use, and then click **Create a task** next to the Run button. Configure your task settings and save.
+   The Apify Task Runner node fetches tasks from your saved tasks in Apify Console. To create a task, navigate to [Actors](https://console.apify.com/actors), click on the Actor you want to use, and then click **Create a task** next to the Run button. Configure your task settings and save.
 
    ![Create a task on an Actor](/assets/images/create_apify_task-afe298f980dce74cb43761db7dbecdc0.png)
 
@@ -74,7 +74,7 @@ To use the Apify integration in Gumloop, you need an Apify account, a Gumloop ac
 
 5. *Run your tasks*
 
-   Before tasks appear in Gumloop, they must be executed at least once in Apify. Go to your https://console.apify.com/actors/tasks, click on the task you want to use, and click **Start** to execute it. Wait for the task to complete.
+   Before tasks appear in Gumloop, they must be executed at least once in Apify. Go to your [Saved tasks](https://console.apify.com/actors/tasks), click on the task you want to use, and click **Start** to execute it. Wait for the task to complete.
 
    This step is required because Gumloop needs to understand the output structure of your task to properly configure data fields.
 

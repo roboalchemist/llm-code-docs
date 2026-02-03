@@ -1,10 +1,10 @@
 # Source: https://docs.livekit.io/agents/models/stt.md
 
-LiveKit docs › Models › Speech-to-text (STT) › Overview
+LiveKit docs › Models › STT › Overview
 
 ---
 
-# Speech-to-text (STT) models
+# Speech-to-text (STT) models overview
 
 > Models and plugins for realtime transcription in your voice agents.
 
@@ -14,20 +14,54 @@ STT models, also known as Automated Speech Recognition (ASR) models, are used fo
 
 You can choose a model served through LiveKit Inference, which is included in LiveKit Cloud, or you can use a plugin to connect directly to a wider range of model providers with your own account.
 
-## LiveKit Inference
+### LiveKit Inference
 
 The following models are available in [LiveKit Inference](https://docs.livekit.io/agents/models.md#inference). Refer to the guide for each model for more details on additional configuration options.
 
 | Provider | Model name |  | Languages |
 | -------- | -------- | --------- |
 | [AssemblyAI](https://docs.livekit.io/agents/models/stt/inference/assemblyai.md) | Universal-Streaming | English only |
-| [Cartesia](https://docs.livekit.io/agents/models/stt/inference/cartesia.md) | Ink Whisper | 98 languages |
-| [Deepgram](https://docs.livekit.io/agents/models/stt/inference/deepgram.md) | Nova-3 | Multilingual, 8 languages |
+|   | Universal-Streaming-Multilingual | 6 languages |
+| [Cartesia](https://docs.livekit.io/agents/models/stt/inference/cartesia.md) | Ink Whisper | 100 languages |
+| [Deepgram](https://docs.livekit.io/agents/models/stt/inference/deepgram.md) | Flux | English only |
+|   | Nova-3 | Multilingual, 8 languages |
 |   | Nova-3 Medical | English only |
 |   | Nova-2 | Multilingual, 33 languages |
 |   | Nova-2 Medical | English only |
 |   | Nova-2 Conversational AI | English only |
 |   | Nova-2 Phonecall | English only |
+| [ElevenLabs](https://docs.livekit.io/agents/models/stt/inference/elevenlabs.md) | Scribe V2 Realtime | 41 languages |
+
+### Plugins
+
+The LiveKit Agents framework also includes a variety of open source [plugins](https://docs.livekit.io/agents/models.md#plugins) for a wide range of STT providers. These plugins require authentication with the provider yourself, usually via an API key. You are responsible for setting up your own account and managing your own billing and credentials. The plugins are listed below, along with their availability for Python or Node.js.
+
+| Provider | Python | Node.js |
+| -------- | ------ | ------- |
+| [Amazon Transcribe](https://docs.livekit.io/agents/models/stt/plugins/aws.md) | ✓ | — |
+| [AssemblyAI](https://docs.livekit.io/agents/models/stt/plugins/assemblyai.md) | ✓ | — |
+| [Azure AI Speech](https://docs.livekit.io/agents/models/stt/plugins/azure.md) | ✓ | — |
+| [Azure OpenAI](https://docs.livekit.io/agents/models/stt/plugins/azure-openai.md) | ✓ | — |
+| [Baseten](https://docs.livekit.io/agents/models/stt/plugins/baseten.md) | ✓ | — |
+| [Cartesia](https://docs.livekit.io/agents/models/stt/plugins/cartesia.md) | ✓ | — |
+| [Clova](https://docs.livekit.io/agents/models/stt/plugins/clova.md) | ✓ | — |
+| [Deepgram](https://docs.livekit.io/agents/models/stt/plugins/deepgram.md) | ✓ | ✓ |
+| [ElevenLabs](https://docs.livekit.io/agents/models/stt/plugins/elevenlabs.md) | ✓ | — |
+| [fal](https://docs.livekit.io/agents/models/stt/plugins/fal.md) | ✓ | — |
+| [Gladia](https://docs.livekit.io/agents/models/stt/plugins/gladia.md) | ✓ | — |
+| [Google Cloud](https://docs.livekit.io/agents/models/stt/plugins/google.md) | ✓ | — |
+| [Groq](https://docs.livekit.io/agents/models/stt/plugins/groq.md) | ✓ | — |
+| [Mistral AI](https://docs.livekit.io/agents/models/stt/plugins/mistralai.md) | ✓ | — |
+| [Nvidia](https://docs.livekit.io/agents/models/stt/plugins/nvidia.md) | ✓ | — |
+| [OpenAI](https://docs.livekit.io/agents/models/stt/plugins/openai.md) | ✓ | ✓ |
+| [OVHCloud](https://docs.livekit.io/agents/models/stt/plugins/ovhcloud.md) | ✓ | ✓ |
+| [Sarvam](https://docs.livekit.io/agents/models/stt/plugins/sarvam.md) | ✓ | — |
+| [Simplismart](https://docs.livekit.io/agents/models/stt/plugins/simplismart.md) | ✓ | — |
+| [Soniox](https://docs.livekit.io/agents/models/stt/plugins/soniox.md) | ✓ | — |
+| [Speechmatics](https://docs.livekit.io/agents/models/stt/plugins/speechmatics.md) | ✓ | — |
+| [Spitch](https://docs.livekit.io/agents/models/stt/plugins/spitch.md) | ✓ | — |
+
+Have another provider in mind? LiveKit is open source and welcomes [new plugin contributions](https://docs.livekit.io/agents/models.md#contribute).
 
 ## Usage
 
@@ -94,33 +128,6 @@ const session = new AgentSession({
 ### Additional parameters
 
 More configuration options, such as custom vocabulary, are available for each model. To set additional parameters, use the `STT` class from the `inference` module. Consult each model reference for examples and available parameters.
-
-## Plugins
-
-The LiveKit Agents framework also includes a variety of open source [plugins](https://docs.livekit.io/agents/models.md#plugins) for a wide range of STT providers. These plugins require authentication with the provider yourself, usually via an API key. You are responsible for setting up your own account and managing your own billing and credentials. The plugins are listed below, along with their availability for Python or Node.js.
-
-| Provider | Python | Node.js |
-| -------- | ------ | ------- |
-| [Amazon Transcribe](https://docs.livekit.io/agents/models/stt/plugins/aws.md) | ✓ | — |
-| [AssemblyAI](https://docs.livekit.io/agents/models/stt/plugins/assemblyai.md) | ✓ | — |
-| [Azure AI Speech](https://docs.livekit.io/agents/models/stt/plugins/azure.md) | ✓ | — |
-| [Azure OpenAI](https://docs.livekit.io/agents/models/stt/plugins/azure-openai.md) | ✓ | — |
-| [Baseten](https://docs.livekit.io/agents/models/stt/plugins/baseten.md) | ✓ | — |
-| [Cartesia](https://docs.livekit.io/agents/models/stt/plugins/cartesia.md) | ✓ | — |
-| [Clova](https://docs.livekit.io/agents/models/stt/plugins/clova.md) | ✓ | — |
-| [Deepgram](https://docs.livekit.io/agents/models/stt/plugins/deepgram.md) | ✓ | ✓ |
-| [fal](https://docs.livekit.io/agents/models/stt/plugins/fal.md) | ✓ | — |
-| [Gladia](https://docs.livekit.io/agents/models/stt/plugins/gladia.md) | ✓ | — |
-| [Google Cloud](https://docs.livekit.io/agents/models/stt/plugins/google.md) | ✓ | — |
-| [Groq](https://docs.livekit.io/agents/models/stt/plugins/groq.md) | ✓ | — |
-| [Mistral AI](https://docs.livekit.io/agents/models/stt/plugins/mistralai.md) | ✓ | — |
-| [OpenAI](https://docs.livekit.io/agents/models/stt/plugins/openai.md) | ✓ | ✓ |
-| [Sarvam](https://docs.livekit.io/agents/models/stt/plugins/sarvam.md) | ✓ | — |
-| [Soniox](https://docs.livekit.io/agents/models/stt/plugins/soniox.md) | ✓ | — |
-| [Speechmatics](https://docs.livekit.io/agents/models/stt/plugins/speechmatics.md) | ✓ | — |
-| [Spitch](https://docs.livekit.io/agents/models/stt/plugins/spitch.md) | ✓ | — |
-
-Have another provider in mind? LiveKit is open source and welcomes [new plugin contributions](https://docs.livekit.io/agents/models.md#contribute).
 
 ## Advanced features
 
@@ -289,7 +296,7 @@ To create an entirely custom STT, implement the [STT node](https://docs.livekit.
 
 ### Standalone usage
 
-You can use an `STT` instance in a standalone fashion, without an `AgentSession`, using the streaming interface. Use `push_frame` to add [realtime audio frames](https://docs.livekit.io/home/client/tracks.md) to the stream, and then consume a stream of `SpeechEvent` events as output.
+You can use an `STT` instance in a standalone fashion, without an `AgentSession`, using the streaming interface. Use `push_frame` to add [realtime audio frames](https://docs.livekit.io/transport/media.md) to the stream, and then consume a stream of `SpeechEvent` events as output.
 
 Here is an example of a standalone STT app:
 
@@ -396,7 +403,7 @@ The following resources cover related topics that may be useful for your applica
 
 ---
 
-This document was rendered at 2025-11-18T23:55:06.019Z.
+This document was rendered at 2026-02-03T03:25:02.156Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/stt.md](https://docs.livekit.io/agents/models/stt.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

@@ -11,10 +11,10 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#groups)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/user.ts#L113)groups
+### [**](#groups)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/user.ts#L150)groups
 
 **groups: [ProxyGroup](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ProxyGroup.md)\[]
 
-### [**](#password)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/user.ts#L112)password
+### [**](#password)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/user.ts#L149)password
 
 **password: string

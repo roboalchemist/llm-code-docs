@@ -1,3 +1,5 @@
+# Source: https://docs.datadoghq.com/getting_started/site.md
+
 # Source: https://docs.datadoghq.com/agent/troubleshooting/site.md
 
 ---
@@ -6,7 +8,6 @@ description: >-
   Configure the Datadog Agent to send data to the correct Datadog site by
   setting the site parameter or DD_SITE environment variable.
 breadcrumbs: Docs > Agent > Agent Troubleshooting > Agent Site Issues
-source_url: https://docs.datadoghq.com/troubleshooting/site/index.html
 ---
 
 # Agent Site Issues

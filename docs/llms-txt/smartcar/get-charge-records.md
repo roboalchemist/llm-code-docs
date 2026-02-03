@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/bmw/get-charge-records.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Charge Records
 
 > Returns data associated with completed charging sessions for a vehicle. Limited to the last 30 days or when the owner first granted your application access, which ever is shorter.

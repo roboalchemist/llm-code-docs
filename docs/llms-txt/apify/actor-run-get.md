@@ -70,6 +70,10 @@ This endpoint does not require the authentication token. Instead, calls are auth
 ## Responses
 
 * 200
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

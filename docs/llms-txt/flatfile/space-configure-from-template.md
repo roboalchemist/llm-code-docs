@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/space-configure-from-template.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Space Configure from Template
 
 > Automatically configure new Flatfile Spaces by cloning an existing Space Template, including workbooks, documents, and settings.
@@ -12,7 +16,7 @@ This is particularly useful for scenarios where you need to consistently provisi
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-space-configure-from-template
 ```
 
@@ -28,7 +32,7 @@ The plugin is configured through a single optional parameter passed to the `conf
 
 #### Callback Function Signature
 
-```typescript
+```typescript  theme={null}
 (event: FlatfileEvent, workbookIds: string[], tick: TickFunction) => any | Promise<any>
 ```
 
@@ -41,7 +45,7 @@ The plugin is configured through a single optional parameter passed to the `conf
 ### Basic Usage
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { configureSpaceFromTemplate } from "@flatfile/plugin-space-configure-from-template";
 
   export default function (listener) {
@@ -49,7 +53,7 @@ The plugin is configured through a single optional parameter passed to the `conf
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { configureSpaceFromTemplate } from "@flatfile/plugin-space-configure-from-template";
   import type { FlatfileListener } from "@flatfile/listener";
 
@@ -62,7 +66,7 @@ The plugin is configured through a single optional parameter passed to the `conf
 ### Usage with Callback
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { configureSpaceFromTemplate } from "@flatfile/plugin-space-configure-from-template";
 
   export default function (listener) {
@@ -86,7 +90,7 @@ The plugin is configured through a single optional parameter passed to the `conf
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import type { FlatfileListener } from "@flatfile/listener";
   import { configureSpaceFromTemplate } from "@flatfile/plugin-space-configure-from-template";
 

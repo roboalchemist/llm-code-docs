@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/deployment-testing/configuration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Configuration
 
 > Explore configuration options for CI/CD testing in Datafold.

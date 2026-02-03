@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/api-reference/emails/retrieve-email.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Retrieve Email
 
 > Retrieve a single email.
@@ -16,7 +20,7 @@
 </Info>
 
 <RequestExample>
-  ```js Node.js theme={null}
+  ```js Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -26,34 +30,38 @@
   );
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->emails->get('37e4414c-5e25-4dbc-a071-43552a4bd53b');
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
   resend.Emails.get(email_id="4ef9a417-02e9-4d39-ad75-9611e0fcc33c")
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   Resend.api_key = "re_xxxxxxxxx"
   email = Resend::Emails.get("4ef9a417-02e9-4d39-ad75-9611e0fcc33c")
   puts email
   ```
 
-  ```go Go theme={null}
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
+
   import "github.com/resend/resend-go/v3"
 
-  client := resend.NewClient("re_xxxxxxxxx")
+  func main() {
+  	client := resend.NewClient("re_xxxxxxxxx")
 
-  email, err := client.Emails.Get("4ef9a417-02e9-4d39-ad75-9611e0fcc33c")
+  	client.Emails.Get("4ef9a417-02e9-4d39-ad75-9611e0fcc33c")
+  }
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{Resend, Result};
 
   #[tokio::main]
@@ -69,7 +77,7 @@
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -81,7 +89,7 @@
   }
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -90,14 +98,14 @@
   Console.WriteLine( "Subject={0}", resp.Content.Subject );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X GET 'https://api.resend.com/emails/4ef9a417-02e9-4d39-ad75-9611e0fcc33c' \
        -H 'Authorization: Bearer re_xxxxxxxxx'
   ```
 </RequestExample>
 
 <ResponseExample>
-  ```json Response theme={null}
+  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "object": "email",
     "id": "4ef9a417-02e9-4d39-ad75-9611e0fcc33c",
@@ -111,7 +119,13 @@
     "cc": [],
     "reply_to": [],
     "last_event": "delivered",
-    "scheduled_at": null
+    "scheduled_at": null,
+    "tags": [
+      {
+        "name": "category",
+        "value": "confirm_email"
+      }
+    ]
   }
   ```
 </ResponseExample>

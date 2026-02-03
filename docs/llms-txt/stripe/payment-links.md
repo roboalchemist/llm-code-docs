@@ -246,9 +246,9 @@ const paymentLink = await stripe.paymentLinks.update(
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
 params := &stripe.PaymentLinkUpdateParams{
   AutomaticTax: &stripe.PaymentLinkUpdateAutomaticTaxParams{Enabled: stripe.Bool(true)},
-  PaymentLink: stripe.String("{{PAYMENTLINK_ID}}"),
 }
-result, err := sc.V1PaymentLinks.Update(context.TODO(), params)
+result, err := sc.V1PaymentLinks.Update(
+  context.TODO(), "{{PAYMENTLINK_ID}}", params)
 ```
 
 ```dotnet

@@ -2,9 +2,11 @@
 
 # Using the ConfigCat SDK in Unity
 
+Copy page
+
 ## Getting Started[​](#getting-started "Direct link to Getting Started")
 
-ConfigCat provides support for feature flagging in Unity applications and games via the [ConfigCat .NET SDK](https://configcat.com/docs/docs/sdk-reference/dotnet/.md).
+ConfigCat provides support for feature flagging in Unity applications and games via the [ConfigCat .NET SDK](https://configcat.com/docs/sdk-reference/dotnet.md).
 
 However, compared to an ordinary .NET application, the installation process is different in Unity and requires a bit of extra effort. (Mainly because Unity doesn't support NuGet packages and uses .NET as a scripting platform.)
 
@@ -30,7 +32,7 @@ Or, if you have [.NET](https://dotnet.microsoft.com) installed, you can take a s
 
 1. Create a file named `Plugins.csproj` (anywhere in your file system) with the following content:
    <!-- -->
-   ```
+   ```xml
    <Project Sdk="Microsoft.NET.Sdk">
      <PropertyGroup>
        <TargetFramework>netstandard2.0</TargetFramework>
@@ -39,6 +41,7 @@ Or, if you have [.NET](https://dotnet.microsoft.com) installed, you can take a s
        <PackageReference Include="ConfigCat.Client" Version="*" />
      </ItemGroup>
    </Project>
+
    ```
 2. Run `dotnet publish -c Release` in the same folder.
 3. You will now have all the necessary .dll files in the `bin/Release/netstandard2.0/publish` folder.
@@ -55,7 +58,7 @@ However, sharing object instances between scripts is not straightforward in Unit
 
 Create a folder named `Scripts` in your Unity project's Assets, then add a C# Script named `SingletonServices` to it. Replace the script content with the following code:
 
-```
+```cs
 using System;
 using System.Globalization;
 using System.Threading;
@@ -137,6 +140,7 @@ public class SingletonServices : MonoBehaviour
         }
     }
 }
+
 ```
 
 caution
@@ -149,7 +153,7 @@ Finally, to activate the `SingletonServices` script, add an empty GameObject to 
 
 Once the setup above is done, you will be able to access the *ConfigCat* client in your other scripts and use it to evaluate feature flags and settings:
 
-```
+```cs
 var configCatClient = SingletonServices.Instance.ConfigCatClient;
 
 var isMyAwesomeFeatureEnabled = await configCatClient.GetValueAsync("isMyAwesomeFeatureEnabled", false);
@@ -161,11 +165,12 @@ else
 {
     doTheOldThing();
 }
+
 ```
 
 info
 
-As you can see, feature flag evaluation is asynchronous by default, which in some cases may not play well with Unity's programming model. (Might lead to `async void` event handlers or other cumbersome solutions.) If this is the case for you, consider using [non-blocking synchronous evaluation with snapshots](https://configcat.com/docs/docs/sdk-reference/dotnet/.md#snapshots-and-non-blocking-synchronous-feature-flag-evaluation).
+As you can see, feature flag evaluation is asynchronous by default, which in some cases may not play well with Unity's programming model. (Might lead to `async void` event handlers or other cumbersome solutions.) If this is the case for you, consider using [non-blocking synchronous evaluation with snapshots](https://configcat.com/docs/sdk-reference/dotnet.md#snapshots-and-non-blocking-synchronous-feature-flag-evaluation).
 
 ## Platform compatibility[​](#platform-compatibility "Direct link to Platform compatibility")
 
@@ -181,7 +186,7 @@ We strive to provide an extensive support for the various Unity versions and scr
 
 ## Further reading[​](#further-reading "Direct link to Further reading")
 
-You can read about the configuration and the advanced features of the ConfigCat .NET SDK [here](https://configcat.com/docs/docs/sdk-reference/dotnet/.md).
+You can read about the configuration and the advanced features of the ConfigCat .NET SDK [here](https://configcat.com/docs/sdk-reference/dotnet.md).
 
 ## Guides[​](#guides "Direct link to Guides")
 

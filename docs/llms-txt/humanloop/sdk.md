@@ -9,12 +9,12 @@ The Humanloop platform can be accessed through the API or through our Python and
 
 <Cards>
   <Card
-    title="Python â"
+    title="Python ↗"
     icon="fa-brands fa-python"
     href="https://pypi.org/project/humanloop/"
   />
   <Card
-    title="Node/TypeScript â"
+    title="Node/TypeScript ↗"
     icon="fa-brands fa-node"
     icon="fa-brands fa-js"
     href="https://www.npmjs.com/package/humanloop"

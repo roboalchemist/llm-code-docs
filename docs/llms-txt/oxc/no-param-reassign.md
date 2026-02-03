@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/no-param-reassign.md
 ---
-# eslint/no-param-reassign&#x20;
 
 ### What it does
 

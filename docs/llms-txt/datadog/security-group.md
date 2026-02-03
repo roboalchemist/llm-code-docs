@@ -4,7 +4,6 @@
 title: Security Group Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > AWS Components > Security Group Component
-source_url: https://docs.datadoghq.com/components-aws/security-group/index.html
 ---
 
 # Security Group Component

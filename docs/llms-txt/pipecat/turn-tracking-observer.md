@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/utilities/observers/turn-tracking-observer.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Turn Tracking Observer
 
 > Track conversation turns and events in your Pipecat pipeline
@@ -32,7 +36,6 @@ The observer is automatically created when you initialize a `PipelineTask` with 
 ```python  theme={null}
 task = PipelineTask(
     pipeline,
-    params=PipelineParams(allow_interruptions=True),
     # Turn tracking is enabled by default
 )
 
@@ -95,8 +98,3 @@ After a bot stops speaking, the observer waits for the configured timeout period
 * **Logging**: Record turn-based logs for diagnostics and analysis
 * **Visualization**: Show turn-based conversation timelines in UIs
 * **Tracing**: Group spans and metrics by conversation turns
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

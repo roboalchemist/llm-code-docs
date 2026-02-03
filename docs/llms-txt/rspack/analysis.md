@@ -6,11 +6,10 @@
 
 [Rsdoctor](/guide/optimization/use-rsdoctor.md) provides the `Bundle Size` module, which is mainly used to analyze the information of the outputs of Rspack, including the size of resources, duplicate packages, and module reference relationships:
 
-* **Bundle Overview**: Displays the total number and size of artifacts, as well as the number and size of each file type. It also shows the duplicate packages and their reference chains.
-* **Bundle Analysis Module**: Analyzes the size and code information of the build artifacts' resources (**Assets**) and the included **Modules**. In this module, you can view the **actual code size of modules after packaging** in the Assets, as well as the original code or **packaged code segments** and **module reference relationships**.
+- **Bundle Overview**: Displays the total number and size of artifacts, as well as the number and size of each file type. It also shows the duplicate packages and their reference chains.
+- **Bundle Analysis Module**: Analyzes the size and code information of the build artifacts' resources (**Assets**) and the included **Modules**. In this module, you can view the **actual code size of modules after packaging** in the Assets, as well as the original code or **packaged code segments** and **module reference relationships**.
 
-<img src="https://assets.rspack.rs/others/assets/rsdoctor/bundle-size.jpg" width="700px" style={{ margin: 'auto' }} />
-
+![](https://assets.rspack.rs/others/assets/rsdoctor/bundle-size.jpg)
 Click on the **"Bundle Size"** option in the navigation bar to view the Bundle analysis report. You can see more details from this page: [Bundle Size](https://rsdoctor.rs/guide/usage/bundle-size)
 
 ### Reduce duplicate dependencies
@@ -19,21 +18,13 @@ Bundle size optimization is an important part in production build because it dir
 
 It is common for web projects to bundle multiple versions of third-party dependencies. Duplicate dependencies can lead to increased bundle size and slower build speed.
 
-* Detect duplicate dependencies
+- Detect duplicate dependencies
 
 You can use [Rsdoctor](https://rsdoctor.rs) to detect whether there are duplicate dependencies in the project. Rsdoctor will analyze during the build process, find any duplicate bundled dependencies and display them visually:
 
 ![](https://assets.rspack.rs/others/assets/rsdoctor/overall-alerts.jpg)
 
 For more details, see [Rsdoctor - Duplicate Dependency Problem](https://rsdoctor.rs/blog/topic/duplicate-pkg-problem).
-
-## webpack-bundle-analyzer
-
-Rspack's Command Line Interface (CLI) supports bundle analysis out-of-box via the `--analyze` option. It uses [webpack-bundle-analyzer](https://www.npmjs.com/package/webpack-bundle-analyzer) behind the scenes.
-
-```sh
-$ rspack build --analyze
-```
 
 ## bundle-stats and statoscope
 

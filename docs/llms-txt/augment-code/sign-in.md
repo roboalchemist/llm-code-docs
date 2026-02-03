@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/setup-augment/sign-in.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Sign in and out
 
 > After you have installed the Augment extension, you will need to sign in to your account.

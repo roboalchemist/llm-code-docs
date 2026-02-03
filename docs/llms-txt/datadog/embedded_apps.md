@@ -6,7 +6,6 @@ description: >-
   Embed published apps in dashboards and sync them with template variables and
   time frames for dynamic, contextual actions.
 breadcrumbs: Docs > App Builder > Embedded Apps
-source_url: https://docs.datadoghq.com/app_builder/embedded_apps/index.html
 ---
 
 # Embedded Apps

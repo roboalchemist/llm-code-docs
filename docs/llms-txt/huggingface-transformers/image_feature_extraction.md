@@ -1,6 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/tasks/image_feature_extraction.md
-
-# Source: https://huggingface.co/docs/transformers/v4.57.3/tasks/image_feature_extraction.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/tasks/image_feature_extraction.md
 
 # Image Feature Extraction
 
@@ -28,9 +26,10 @@ Let's see the pipeline in action. First, initialize the pipeline. If you don't p
 
 ```python
 import torch
-from transformers import pipeline, infer_device
+from transformers import pipeline
+from accelerate import Accelerator
 # automatically detects the underlying device type (CUDA, CPU, XPU, MPS, etc.)
-DEVICE = infer_device()
+device = Accelerator().device
 pipe = pipeline(task="image-feature-extraction", model_name="google/vit-base-patch16-384", device=DEVICE, pool=True)
 ```
 

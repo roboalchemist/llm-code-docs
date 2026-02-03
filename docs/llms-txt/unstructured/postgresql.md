@@ -10,33 +10,9 @@
 
 # Source: https://docs.unstructured.io/api-reference/workflow/destinations/postgresql.md
 
-# Source: https://docs.unstructured.io/ui/sources/postgresql.md
-
-# Source: https://docs.unstructured.io/ui/destinations/postgresql.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/source-connectors/postgresql.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/destination-connectors/postgresql.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/sources/postgresql.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/destinations/postgresql.md
-
-# Source: https://docs.unstructured.io/ui/sources/postgresql.md
-
-# Source: https://docs.unstructured.io/ui/destinations/postgresql.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/source-connectors/postgresql.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/destination-connectors/postgresql.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/sources/postgresql.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/destinations/postgresql.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/sources/postgresql.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/destinations/postgresql.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # PostgreSQL
 
@@ -68,8 +44,7 @@
   After you create the destination connector, add it along with a
   [source connector](/api-reference/workflow/sources/overview) to a [workflow](/api-reference/workflow/overview#workflows).
   Then run the worklow as a [job](/api-reference/workflow/overview#jobs). To learn how, try out the
-  [hands-on Workflow Endpoint quickstart](/api-reference/workflow/overview#quickstart),
-  go directly to the [quickstart notebook](https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/Unstructured_Platform_Workflow_Endpoint_Quickstart.ipynb),
+  the notebook [Dropbox-To-Pinecone Connector API Quickstart for Unstructured](https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/Dropbox_To_Pinecone_Connector_Quickstart.ipynb),
   or watch the two 4-minute video tutorials for the [Unstructured Python SDK](/api-reference/workflow/overview#unstructured-python-sdk).
 
   You can also create destination connectors with the Unstructured user interface (UI).
@@ -142,52 +117,152 @@ The following video shows how to set up [Azure Database for PostgreSQL](https://
 
 * A table in the database. Learn how to [create a table](https://www.postgresql.org/docs/current/tutorial-table.html).
 
-  The table's schema must match the schema of the documents that Unstructured produces.
-  Unstructured cannot provide a schema that is guaranteed to work in all
-  circumstances. This is because these schemas will vary based on your source files' types; how you
-  want Unstructured to partition, chunk, and generate embeddings; any custom post-processing code that you run; and other factors.
+  For the destination connector, the table must have a defined schema before Unstructured can write to the table. The minimum viable
+  schema for Unstructured contains only the fields `id`, `element_id`, `record_id`, `text`, (and `embeddings`, if you are using `pgvector` and generating vector embeddings), as follows.
+  `type` is an optional field, but highly recommended.
 
-  You can adapt the following table schema example for your own needs:
+  If you are using `pgvector` and generating vector embeddings, the number of dimensions (in this example, `1536`) must match the number of dimensions for the associated embedding model that you use in any related Unstructured workflows or ingestion pipelines.
 
   <CodeGroup>
     ```sql PostgreSQL theme={null}
     CREATE TABLE elements (
         id UUID PRIMARY KEY,
-        record_id VARCHAR,
-        element_id VARCHAR,
+        element_id TEXT,
+        record_id TEXT,
         text TEXT,
-        embeddings DECIMAL [],
-        parent_id VARCHAR,
-        page_number INTEGER,
-        is_continuation BOOLEAN,
-        orig_elements TEXT,
-        partitioner_type VARCHAR
+        type TEXT
     );
     ```
 
-    ```sql PostgreSQL with pgvector  theme={null}
+    ```sql PostgreSQL with pgvector theme={null}
     CREATE EXTENSION vector;
 
     CREATE TABLE elements (
         id UUID PRIMARY KEY,
-        record_id VARCHAR,
-        element_id VARCHAR,
+        element_id TEXT,
+        record_id TEXT,
         text TEXT,
-        embeddings vector(3072),
-        parent_id VARCHAR,
-        page_number INTEGER,
-        is_continuation BOOLEAN,
-        orig_elements TEXT,
-        partitioner_type VARCHAR
+        type TEXT,
+        embeddings vector(1536)
     );
     ```
   </CodeGroup>
+
+  For objects in the `metadata` field that Unstructured produces and that you want to store in PostgreSQL, you must create fields in your table's schema that
+  follows Unstructured's `metadata` field naming convention. For example, if Unstructured produces a `metadata` field with the following
+  child objects:
+
+  ```json  theme={null}
+  "metadata": {
+    "is_extracted": "true",
+    "coordinates": {
+      "points": [
+        [
+          134.20055555555555,
+          241.36027777777795
+        ],
+        [
+          134.20055555555555,
+          420.0269444444447
+        ],
+        [
+          529.7005555555555,
+          420.0269444444447
+        ],
+        [
+          529.7005555555555,
+          241.36027777777795
+        ]
+      ],
+      "system": "PixelSpace",
+      "layout_width": 1654,
+      "layout_height": 2339
+    },
+    "filetype": "application/pdf",
+    "languages": [
+      "eng"
+    ],
+    "page_number": 1,
+    "image_mime_type": "image/jpeg",
+    "filename": "realestate.pdf",
+    "data_source": {
+      "url": "file:///home/etl/node/downloads/00000000-0000-0000-0000-000000000001/7458635f-realestate.pdf",
+      "record_locator": {
+        "protocol": "file",
+        "remote_file_path": "file:///home/etl/node/downloads/00000000-0000-0000-0000-000000000001/7458635f-realestate.pdf"
+      }
+    }
+  }
+  ```
+
+  You could create corresponding fields in your table's schema by using the following field names and data types:
+
+  <CodeGroup>
+    ```sql PostgreSQL theme={null}
+    -- The fields "id", "element_id", "record_id", and "text" are required.
+    -- "type" is an optional field, but highly recommended.
+    -- All other "metadata" fields are optional.
+    CREATE TABLE elements (
+        id UUID PRIMARY KEY,
+        element_id TEXT,
+        record_id TEXT,
+        text TEXT,
+        type TEXT,
+        is_extracted TEXT,
+        points JSONB,
+        system TEXT,
+        layout_width INTEGER,
+        layout_height INTEGER,
+        filetype TEXT,
+        languages TEXT[],
+        page_number TEXT,
+        image_mime_type TEXT,
+        url TEXT,
+        record_locator JSONB
+    );
+    ```
+
+    ```sql PostgreSQL with pgvector  theme={null}
+    -- The fields "id", "element_id", "record_id", and "text" are required.
+    -- "embeddings" is required if you are generating vector embeddings.
+    --   If you are generating embeddings, the number of dimensions in "embeddings" 
+    --   must match the number of dimensions for the associated embedding model 
+    --   that you use in any related Unstructured workflows or ingestion pipelines.
+    -- "type" is an optional field, but highly recommended.
+    -- All other "metadata" fields are optional.
+    CREATE EXTENSION vector;
+
+    CREATE TABLE elements (
+        id UUID PRIMARY KEY,
+        element_id TEXT,
+        record_id TEXT,
+        text TEXT,
+        type TEXT,
+        embeddings vector(1536),
+        is_extracted TEXT,
+        points JSONB,
+        system TEXT,
+        layout_width INTEGER,
+        layout_height INTEGER,
+        filetype TEXT,
+        languages TEXT[],
+        page_number TEXT,
+        image_mime_type TEXT,
+        url TEXT,
+        record_locator JSONB
+    );
+    ```
+  </CodeGroup>
+
+  Unstructured cannot provide a schema that is guaranteed to work in all
+  circumstances. This is because these schemas will vary based on your source files' types; how you
+  want Unstructured to partition, chunk, and generate embeddings; any custom post-processing code that you run; and other factors.
 
   See also:
 
   * [CREATE TABLE](https://www.postgresql.org/docs/current/sql-createtable.html) for PostgreSQL
   * [CREATE TABLE](https://github.com/pgvector/pgvector) for PostrgreSQL with pgvector
-  * [Unstructured document elements and metadata](/api-reference/partition/document-elements)
+  * [Unstructured document elements and metadata](/api-reference/legacy-api/partition/document-elements)
 
   The following video shows how to use the `psql` utility to connect to PostgreSQL, list databases, and list and create tables:
 

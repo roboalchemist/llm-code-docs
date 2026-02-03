@@ -1,6 +1,6 @@
 # Source: https://docs.livekit.io/agents/start/playground.md
 
-LiveKit docs › Getting started › Agents playground
+LiveKit docs › Get Started › Agents playground
 
 ---
 
@@ -29,7 +29,7 @@ Follow these links to get started with the playground.
 
 ---
 
-This document was rendered at 2025-11-18T23:55:02.579Z.
+This document was rendered at 2026-02-03T03:24:54.348Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/start/playground.md](https://docs.livekit.io/agents/start/playground.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

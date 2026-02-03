@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/integrations/python/reference.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Python SDK Reference
 
 ## Classes
@@ -44,8 +48,3 @@
 | `LUNARY_VERBOSE`     | Enable verbose logging                                                                                             |
 | `LUNARY_API_URL`     | Base URL for the API server. Defaults to `https://api.lunary.ai`; can be customized for self-hosting or local use. |
 | `DISABLE_SSL_VERIFY` | Disable SSL verification if set to `True`                                                                          |
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/utilities/service-switchers/service-switcher.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ServiceSwitcher
 
 > Dynamically switch between different service instances at runtime using configurable strategies
@@ -79,8 +83,3 @@ pipeline = Pipeline([
 # Later, switch to Cartesia
 await task.queue_frame(ManuallySwitchServiceFrame(service=cartesia))
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

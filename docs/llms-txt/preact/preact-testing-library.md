@@ -1,3 +1,5 @@
+# Source: https://preactjs.com/guide/v10/preact-testing-library
+
 # Testing with Preact Testing Library
 
 The [Preact Testing Library](https://github.com/testing-library/preact-testing-library) is a lightweight wrapper around `preact/test-utils`. It provides a set of query methods for accessing the rendered DOM in a way similar to how a user finds elements on a page. This approach allows you to write tests that do not rely on implementation details. Consequently, this makes tests easier to maintain and more resilient when the component being tested is refactored.

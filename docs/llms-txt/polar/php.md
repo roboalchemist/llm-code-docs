@@ -1,12 +1,16 @@
 # Source: https://polar.sh/docs/integrate/sdk/php.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # PHP SDK
 
 A fully-featured PHP SDK for the Polar API.
 
 ### Quickstart
 
-```bash  theme={null}
+```bash Terminal theme={null}
 composer require polar-sh/sdk
 ```
 

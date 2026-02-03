@@ -68,5 +68,5 @@ $ docker exec vespa vespa-proton-cmd --local triggerFlush
 $ docker exec vespa find /opt/vespa/var/db/vespa/search/cluster.music/n0/documents/music/0.ready
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

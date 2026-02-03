@@ -2,6 +2,8 @@
 
 # RequestQueueClientListRequestsOptions<!-- -->
 
+Options for listing all requests in the queue.
+
 ## Index[**](#Index)
 
 ### Properties
@@ -11,7 +13,7 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#exclusiveStartId)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L602)optionalexclusiveStartId
+### [**](#exclusiveStartId)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L869)optionalexclusiveStartId
 
 **exclusiveStartId?
 
@@ -19,7 +21,7 @@
 
 : string
 
-### [**](#limit)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L601)optionallimit
+### [**](#limit)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L867)optionallimit
 
 **limit?
 

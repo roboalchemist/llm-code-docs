@@ -10,7 +10,7 @@
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#__new__)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/_logging.py#L46)\_\_new\_\_
+### [**](#__new__)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/_logging.py#L46)\_\_new\_\_
 
 * ****\_\_new\_\_**(name, bases, attrs): [WithLogDetailsClient](https://docs.apify.com/api/client/python/api/client/python/reference/class/WithLogDetailsClient.md)
 

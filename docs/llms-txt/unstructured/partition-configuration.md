@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/open-source/ingestion/ingest-configuration/partition-configuration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Partition configuration
 
 A standard partition configuration is a collection of parameters designed to oversee document partitioning, whether executed through API integration or by the unstructured library on a local system. These parameters serve a dual role, encompassing those passed to the partition method for the initial segmentation of documents and those responsible for coordinating data after processing, including the dynamic metadata associated with each element.

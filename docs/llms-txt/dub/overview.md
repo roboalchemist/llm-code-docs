@@ -1,5 +1,9 @@
 # Source: https://dub.co/docs/sdks/overview.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dub.co/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Overview
 
 > Open-source client libraries for the Dub API

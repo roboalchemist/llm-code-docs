@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/manage-data/manage-indexes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Manage serverless indexes
 
 > List, describe, and configure serverless indexes.
@@ -97,7 +101,7 @@ Use the [`list_indexes`](/reference/api/latest/control-plane/list_indexes) opera
 
   curl -i -X GET "https://api.pinecone.io/indexes" \
   -H "Api-Key: $PINECONE_API_KEY" \
-  -H "X-Pinecone-API-Version: 2025-04"
+  -H "X-Pinecone-Api-Version: 2025-10"
   ```
 </CodeGroup>
 
@@ -472,7 +476,7 @@ Use the [`describe_index`](/reference/api/latest/control-plane/describe_index/) 
 
   curl -i -X GET "https://api.pinecone.io/indexes/docs-example" \
       -H "Api-Key: $PINECONE_API_KEY" \
-      -H "X-Pinecone-API-Version: 2025-04"
+      -H "X-Pinecone-Api-Version: 2025-10"
   ```
 </CodeGroup>
 
@@ -694,7 +698,7 @@ Use the [`delete_index`](reference/api/latest/control-plane/delete_index) operat
 
   curl -i -X DELETE "https://api.pinecone.io/indexes/docs-example" \
     -H "Api-Key: $PINECONE_API_KEY" \
-    -H "X-Pinecone-API-Version: 2025-04"
+    -H "X-Pinecone-Api-Version: 2025-10"
   ```
 </CodeGroup>
 
@@ -758,7 +762,7 @@ To configure an existing serverless index for an embedding model, use the [`conf
   curl -s -X PATCH "https://api.pinecone.io/indexes/docs-example" \
       -H "Content-Type: application/json" \
       -H "Api-Key: $PINECONE_API_KEY" \
-      -H "X-Pinecone-API-Version: 2025-04" \
+      -H "X-Pinecone-Api-Version: 2025-10" \
       -d '{
         "embed": {
             "model": "llama-text-embed-v2",
@@ -773,7 +777,7 @@ To configure an existing serverless index for an embedding model, use the [`conf
 ## Configure deletion protection
 
 <Note>
-  This feature requires [Pinecone API version](/reference/api/versioning) `2024-07`, [Python SDK](/reference/python-sdk) v5.0.0, [Node.js SDK](/reference/node-sdk) v3.0.0, [Java SDK](/reference/java-sdk) v2.0.0, or [Go SDK](/reference/go-sdk) v1.0.0 or later.
+  This feature requires [Pinecone API version](/reference/api/versioning) `2024-07`, [Python SDK](/reference/sdks/python/overview) v5.0.0, [Node.js SDK](/reference/sdks/node/overview) v3.0.0, [Java SDK](/reference/sdks/java/overview) v2.0.0, or [Go SDK](/reference/sdks/go/overview) v1.0.0 or later.
 </Note>
 
 ### Enable deletion protection
@@ -921,7 +925,7 @@ To enable deletion protection when creating a new index:
     -H "Accept: application/json" \
     -H "Content-Type: application/json" \
     -H "Api-Key: $PINECONE_API_KEY" \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
            "name": "docs-example",
            "dimension": 1536,
@@ -1018,7 +1022,7 @@ To enable deletion protection when configuring an existing index:
   curl -s -X PATCH "https://api.pinecone.io/indexes/docs-example-curl" \
       -H "Content-Type: application/json" \
       -H "Api-Key: $PINECONE_API_KEY" \
-      -H "X-Pinecone-API-Version: 2025-04" \
+      -H "X-Pinecone-Api-Version: 2025-10" \
       -d '{
           "deletion_protection": "enabled"
           }'
@@ -1114,7 +1118,7 @@ Before you can [delete an index](#delete-an-index) with deletion protection enab
   curl -s -X PATCH "https://api.pinecone.io/indexes/docs-example-curl" \
       -H "Content-Type: application/json" \
       -H "Api-Key: $PINECONE_API_KEY" \
-      -H "X-Pinecone-API-Version: 2025-04" \
+      -H "X-Pinecone-Api-Version: 2025-10" \
       -d '{
           "deletion_protection": "disabled"
           }'
@@ -1265,7 +1269,7 @@ To add tags when creating a new index:
     -H "Accept: application/json" \
     -H "Content-Type: application/json" \
     -H "Api-Key: $PINECONE_API_KEY" \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
            "name": "docs-example",
            "dimension": 1536,
@@ -1389,7 +1393,7 @@ To add or update tags when configuring an existing index:
   curl -s -X PATCH "https://api.pinecone.io/indexes/docs-example-curl" \
       -H "Content-Type: application/json" \
       -H "Api-Key: $PINECONE_API_KEY" \
-      -H "X-Pinecone-API-Version: 2025-04" \
+      -H "X-Pinecone-Api-Version: 2025-10" \
       -d '{
               "tags": {
                   "example": "tag",
@@ -1506,7 +1510,7 @@ The following example removes the `example: tag` tag from `docs-example`:
   curl -s -X PATCH "https://api.pinecone.io/indexes/docs-example-curl" \
       -H "Content-Type: application/json" \
       -H "Api-Key: $PINECONE_API_KEY" \
-      -H "X-Pinecone-API-Version: 2025-04" \
+      -H "X-Pinecone-Api-Version: 2025-10" \
       -d '{
               "tags": {
                   "example": ""
@@ -1617,7 +1621,7 @@ Serverless indexes can be [backed up](/guides/manage-data/back-up-an-index). You
 
   curl -X GET "https://api.pinecone.io/indexes/$INDEX_NAME/backups" \
       -H "Api-Key: $PINECONE_API_KEY" \
-      -H "X-Pinecone-API-Version: 2025-04" \
+      -H "X-Pinecone-Api-Version: 2025-10" \
       -H "accept: application/json"
   ```
 </CodeGroup>

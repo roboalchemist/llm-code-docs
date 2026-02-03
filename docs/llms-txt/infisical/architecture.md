@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/pam/architecture.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Architecture
 
 > Learn about the architecture, components, and security model of Infisical PAM.
@@ -81,8 +85,3 @@ For a deep dive into the underlying cryptography, certificate management, and is
 ### Deployment
 
 For instructions on setting up the necessary infrastructure, see the [Gateway Deployment Guide](/documentation/platform/gateways/gateway-deployment).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://infisical.com/docs/llms.txt

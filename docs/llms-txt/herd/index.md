@@ -1,6 +1,45 @@
 # Source: https://herd.laravel.com/docs/macos/changelog/index.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://herd.laravel.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Changelog
+
+<Update label="1.25.0" description="2026-01-19">
+  ## Herd Helper Update
+
+  This version contains an update of the Herd background helper. You will need to provide your password after updating.
+
+  ## New features
+
+  * You can now place custom `.pem` certificates in `config/certificates/` to use them
+  * You can now toggle watching for "Dumps" individually
+  * Added "Laravel Boost" as an option in the site wizard
+
+  ## Fixes and Improvements
+
+  * The version and build number in Settings > About are now selectable for easier copying
+  * Running `herd link` (via CLI or GUI) will update your `.env` with the correct app URL
+  * Fixed a crash of the privileged helper on macOS Sequoia 26.2+ that could prevent nginx from stopping
+  * Fixed an issue where the Livewire Volt option was hidden when selecting WorkOS in site wizard
+  * Fixed an issue where the mail inspector sidebar would unexpectedly open when resizing the window
+  * Fixed an issue with myBB in combination with Herd
+  * Fixed an issue where running `herd init` would not work with MinIO
+  * Fixed an issue where installing Reverb would fail on PHP 8.5
+  * Dump settings are now disabled when general dump interception is paused
+  * Updated the built-in Expose binary
+  * Updated the built-in Laravel installer
+  * Updated the built-in Composer binary
+  * Updated the built-in `cacert.pem` file
+</Update>
+
+<Update label="1.24.0" description="2025-11-20">
+  ## New features
+
+  * Added full support for PHP 8.5
+  * We added a manual theme switcher, in case you want to control Herd's theme independent of your OS preference
+</Update>
 
 <Update label="1.23.0" description="2025-11-04">
   ## New features

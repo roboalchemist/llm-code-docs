@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/dashboard/settings/unsubscribe-page.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Custom Unsubscribe Page
 
 > Customize your unsubscribe page

@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/app-guides/use-nginx-with-aptible-endpoints.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to use Nginx with Aptible Endpoints
 
 Nginx is a popular choice for a reverse proxy to route requests through to Aptible [endpoints](/core-concepts/apps/connecting-to-apps/app-endpoints/overview) using a `proxy_pass` directive.

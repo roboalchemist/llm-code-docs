@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zrank.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zrank.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zrank.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zrank.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zrank.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zrank.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zrank.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zrank.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zrank.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zrank.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # ZRANK
 
@@ -26,7 +12,7 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key to get.
 </ParamField>
 
@@ -36,12 +22,20 @@
 
 ## Response
 
-<ResponseField type="integer" required>
+<ResponseField type="int" required>
   The rank of the member.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  const rank = await redis.rank("key", "member");
+  ```py Example theme={"system"}
+  redis.zadd("myset", {"a": 1, "b": 2, "c": 3})
+
+  assert redis.zrank("myset", "a") == 0
+
+  assert redis.zrank("myset", "d") == None
+
+  assert redis.zrank("myset", "b") == 1
+
+  assert redis.zrank("myset", "c") == 2
   ```
 </RequestExample>

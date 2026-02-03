@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/examples/exa-researcher-python.md
+# Source: https://exa.ai/docs/examples/exa-researcher-python.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Exa Researcher - Python
 
@@ -148,8 +152,3 @@ if __name__ == "__main__":
 ```
 
 This Python implementation of Exa Researcher demonstrates how to leverage Exa's Auto search feature and the OpenAI API to create an automated research tool. By combining Exa's powerful search capabilities with GPT-3.5 Turbo's language understanding and generation, we've created a system that can quickly gather and synthesize information on any given topic.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

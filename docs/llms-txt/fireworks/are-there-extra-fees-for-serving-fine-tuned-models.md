@@ -1,22 +1,23 @@
 # Source: https://docs.fireworks.ai/faq-new/billing-pricing/are-there-extra-fees-for-serving-fine-tuned-models.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Are there extra fees for serving fine-tuned models?
 
-No, deploying fine-tuned models to serverless infrastructure is free. Here's what you need to know:
-
-**What's free**:
-
-* Deploying fine-tuned models to serverless infrastructure
-* Hosting the models on serverless infrastructure
-* Deploying up to 100 fine-tuned models
+Fine-tuned (LoRA) models require a dedicated deployment to serve. Here's what you need to know:
 
 **What you pay for**:
 
-* **Usage costs** on a per-token basis when the model is actually used
-* The **fine-tuning process** itself, if applicable
+* **Deployment costs** on a per-GPU-second basis for hosting the model
+* **The fine-tuning process** itself, if applicable
 
-<Info>
-  Only a limited set of models are supported for serverless hosting of fine-tuned models. Checkout the [Fireworks Model Library](https://app.fireworks.ai/models?filter=LLM\&serverlessWithLoRA=true) to see models with serverless support for fine-tuning.
-</Info>
+**Deployment options**:
 
-*Note*: This differs from on-demand deployments, which include hourly hosting costs.
+* **Live-merge deployment**: Deploy your LoRA model with weights merged into the base model for optimal performance
+* **Multi-LoRA deployment**: Deploy up to 100 LoRA models as addons on a single base model deployment
+
+<Tip>
+  For more details on deploying fine-tuned models, see the [Deploying Fine Tuned Models guide](/fine-tuning/deploying-loras).
+</Tip>

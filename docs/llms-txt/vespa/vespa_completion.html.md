@@ -38,7 +38,7 @@ Generate the autocompletion script for vespa for the specified shell. See each s
 - [vespa completion powershell](vespa_completion_powershell.html) - Generate the autocompletion script for powershell
 - [vespa completion zsh](vespa_completion_zsh.html) - Generate the autocompletion script for zsh
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

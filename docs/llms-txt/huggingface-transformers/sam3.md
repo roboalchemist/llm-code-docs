@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/sam3.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/sam3.md
 
 # SAM3
 
@@ -337,16 +337,31 @@ When running the same text prompt on multiple images, pre-compute text embedding
 ...     print(f"Image {i+1}: {len(results['masks'])} '{text_prompt}' objects found")
 ```
 
+### Custom Resolution Inference
+
+⚠️ **Performance Note**: Custom resolutions may degrade accuracy. The model is meant to be used at 1008px resolution.
+
+For faster inference or lower memory usage:
+
+```python
+>>> config = Sam3Config.from_pretrained("facebook/sam3")
+>>> config.image_size = 560
+>>> model = Sam3Model.from_pretrained("facebook/sam3", config=config).to(device)
+>>> processor = Sam3Processor.from_pretrained("facebook/sam3", size={"height": 560, "width": 560})
+```
+
 ### Prompt Label Conventions
 
 SAM3 uses the following label conventions:
 
 **For points and boxes:**
+
 - `1`: Positive prompt (include this region/object)
 - `0`: Negative prompt (exclude this region/object)
 - `-10`: Padding value for batched inputs
 
 **Coordinate formats:**
+
 - **Input boxes**: `[x1, y1, x2, y2]` (xyxy format) in pixel coordinates
 - **Output boxes** (raw): `[x1, y1, x2, y2]` (xyxy format), normalized to [0, 1]
 - **Output boxes** (post-processed): `[x1, y1, x2, y2]` (xyxy format) in absolute pixel coordinates
@@ -355,9 +370,9 @@ SAM3 uses the following label conventions:
 
 #### transformers.Sam3Config[[transformers.Sam3Config]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3/configuration_sam3.py#L387)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3/configuration_sam3.py#L396)
 
-Configuration class to store the configuration of a [Sam3Model](/docs/transformers/v5.0.0rc1/en/model_doc/sam3#transformers.Sam3Model).
+Configuration class to store the configuration of a [Sam3Model](/docs/transformers/v5.0.0/en/model_doc/sam3#transformers.Sam3Model).
 
 Instantiating a configuration defaults will yield a similar configuration to that of SAM 3
 [facebook/sam3](https://huggingface.co/facebook/sam3) architecture.
@@ -398,7 +413,7 @@ initializer_range (`float`, *optional*, defaults to 0.02) : The standard deviati
 
 #### transformers.Sam3ViTConfig[[transformers.Sam3ViTConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3/configuration_sam3.py#L23)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3/configuration_sam3.py#L22)
 
 Configuration class for SAM3 Vision Encoder (ViT backbone).
 
@@ -445,19 +460,19 @@ initializer_range (`float`, *optional*, defaults to 0.02) : The standard deviati
 
 #### transformers.Sam3VisionConfig[[transformers.Sam3VisionConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3/configuration_sam3.py#L114)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3/configuration_sam3.py#L113)
 
-This is the configuration class to store the configuration of a [Sam3VisionModel](/docs/transformers/v5.0.0rc1/en/model_doc/sam3#transformers.Sam3VisionModel). It is used to instantiate a SAM
+This is the configuration class to store the configuration of a [Sam3VisionModel](/docs/transformers/v5.0.0/en/model_doc/sam3#transformers.Sam3VisionModel). It is used to instantiate a SAM
 vision encoder according to the specified arguments, defining the model architecture. Instantiating a configuration
 defaults will yield a similar configuration to that of SAM 3
 [facebook/sam3](https://huggingface.co/facebook/sam3) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 **Parameters:**
 
-backbone_config (`Union[dict, "PreTrainedConfig"]`, *optional*) : Configuration for the vision backbone. This is used to instantiate the backbone using `AutoModel.from_config`.
+backbone_config (`Union[dict, "PreTrainedConfig"]`, *optional*, defaults to `Sam3ViTConfig()`) : Configuration for the vision backbone. This is used to instantiate the backbone using `AutoModel.from_config`.
 
 fpn_hidden_size (`int`, *optional*, defaults to 256) : The hidden dimension of the FPN.
 
@@ -475,7 +490,7 @@ initializer_range (`float`, *optional*, defaults to 0.02) : The standard deviati
 
 #### transformers.Sam3GeometryEncoderConfig[[transformers.Sam3GeometryEncoderConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3/configuration_sam3.py#L183)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3/configuration_sam3.py#L192)
 
 Configuration class for SAM3 Geometry Encoder.
 
@@ -505,7 +520,7 @@ initializer_range (`float`, *optional*, defaults to 0.02) : The standard deviati
 
 #### transformers.Sam3DETREncoderConfig[[transformers.Sam3DETREncoderConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3/configuration_sam3.py#L239)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3/configuration_sam3.py#L248)
 
 Configuration class for SAM3 DETR Encoder (vision-text fusion encoder).
 
@@ -533,7 +548,7 @@ initializer_range (`float`, *optional*, defaults to 0.02) : The standard deviati
 
 #### transformers.Sam3DETRDecoderConfig[[transformers.Sam3DETRDecoderConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3/configuration_sam3.py#L291)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3/configuration_sam3.py#L300)
 
 Configuration class for SAM3 DETR Decoder (object query decoder).
 
@@ -563,7 +578,7 @@ initializer_range (`float`, *optional*, defaults to 0.02) : The standard deviati
 
 #### transformers.Sam3MaskDecoderConfig[[transformers.Sam3MaskDecoderConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3/configuration_sam3.py#L347)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3/configuration_sam3.py#L356)
 
 Configuration class for SAM3 Mask Decoder (pixel-level mask prediction).
 
@@ -585,15 +600,14 @@ initializer_range (`float`, *optional*, defaults to 0.02) : The standard deviati
 
 #### transformers.Sam3Processor[[transformers.Sam3Processor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3/processing_sam3.py#L88)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3/processing_sam3.py#L87)
 
-Constructs a SAM3 processor which wraps a SAM3 image processor and bounding boxes processing into a
-single processor.
+Constructs a Sam3Processor which wraps a image processor and a tokenizer into a single processor.
 
-[Sam2Processor](/docs/transformers/v5.0.0rc1/en/model_doc/sam2#transformers.Sam2Processor) offers all the functionalities of [Sam2ImageProcessorFast](/docs/transformers/v5.0.0rc1/en/model_doc/sam2#transformers.Sam2ImageProcessorFast) and [Sam2VideoProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/sam2_video#transformers.Sam2VideoProcessor). See the docstring of
-[__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) and [__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/sam2_video#transformers.Sam2VideoProcessor.__call__) for more information.
+[Sam3Processor](/docs/transformers/v5.0.0/en/model_doc/sam3#transformers.Sam3Processor) offers all the functionalities of [Sam3ImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/sam3#transformers.Sam3ImageProcessorFast) and [CLIPTokenizer](/docs/transformers/v5.0.0/en/model_doc/clip#transformers.CLIPTokenizer). See the
+[~Sam3ImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/sam3#transformers.Sam3ImageProcessorFast) and [~CLIPTokenizer](/docs/transformers/v5.0.0/en/model_doc/clip#transformers.CLIPTokenizer) for more information.
 
-__call__transformers.Sam3Processor.__call__https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3/processing_sam3.py#L114[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "text", "val": ": typing.Union[str, list[str], list[list[str]], NoneType] = None"}, {"name": "segmentation_maps", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "input_boxes", "val": ": typing.Union[list[list[list[float]]], torch.Tensor, NoneType] = None"}, {"name": "input_boxes_labels", "val": ": typing.Union[list[list[list[int]]], torch.Tensor, NoneType] = None"}, {"name": "original_sizes", "val": ": typing.Union[list[list[float]], torch.Tensor, NoneType] = None"}, {"name": "return_tensors", "val": ": typing.Union[str, transformers.utils.generic.TensorType, NoneType] = None"}, {"name": "**kwargs", "val": ""}]- **images** (`ImageInput`, *optional*) --
+__call__transformers.Sam3Processor.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3/processing_sam3.py#L101[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "text", "val": ": str | list[str] | list[list[str]] | None = None"}, {"name": "segmentation_maps", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "input_boxes", "val": ": list[list[list[float]]] | torch.Tensor | None = None"}, {"name": "input_boxes_labels", "val": ": list[list[list[int]]] | torch.Tensor | None = None"}, {"name": "original_sizes", "val": ": list[list[float]] | torch.Tensor | None = None"}, {"name": "return_tensors", "val": ": str | transformers.utils.generic.TensorType | None = None"}, {"name": "**kwargs", "val": ""}]- **images** (`ImageInput`, *optional*) --
   The image(s) to process.
 - **text** (`str`, `list[str]`, `list[list[str]]`, *optional*) --
   The text to process.
@@ -605,22 +619,21 @@ __call__transformers.Sam3Processor.__call__https://github.com/huggingface/transf
   The labels for the bounding boxes.
 - **original_sizes** (`list[list[float]]`, `torch.Tensor`, *optional*) --
   The original sizes of the images.
-- **return_tensors** (`str` or `TensorType`, *optional*) --
-  The type of tensors to return.
-- ****kwargs** --
-  Additional keyword arguments to pass to the image processor.0A [BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields- `pixel_values` (`torch.Tensor`): The processed image(s).
+- **return_tensors** (`Union[str, ~utils.generic.TensorType]`, *optional*) --
+  If set, will return tensors of a particular framework. Acceptable values are:
+
+  - `'pt'`: Return PyTorch `torch.Tensor` objects.
+  - `'np'`: Return NumPy `np.ndarray` objects.0A [BatchEncoding](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields- `pixel_values` (`torch.Tensor`): The processed image(s).
 - `original_sizes` (`list[list[float]]`): The original sizes of the images.
 - `labels` (`torch.Tensor`): The processed segmentation maps (if provided).
 - `input_boxes_labels` (`torch.Tensor`): The processed labels for the bounding boxes.
 - `input_boxes` (`torch.Tensor`): The processed bounding boxes.
 
-This method uses [Sam3ImageProcessorFast.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) method to prepare image(s) for the model. It also prepares bounding boxes for the model if they are provided.
-
 **Parameters:**
 
-image_processor (`Sam2ImageProcessorFast`) : An instance of [Sam2ImageProcessorFast](/docs/transformers/v5.0.0rc1/en/model_doc/sam2#transformers.Sam2ImageProcessorFast).
+image_processor (`Sam3ImageProcessorFast`) : The image processor is a required input.
 
-tokenizer ([`PreTrainedTokenizer`, `PreTrainedTokenizerFast`]) : An instance of [`PreTrainedTokenizer`, `PreTrainedTokenizerFast`]. The tokenizer is a required input.
+tokenizer (`CLIPTokenizer`) : The tokenizer is a required input.
 
 target_size (`int`, *optional*) : The target size (target_size, target_size) to which the image will be resized.
 
@@ -628,7 +641,7 @@ point_pad_value (`int`, *optional*, defaults to -10) : The value used for paddin
 
 **Returns:**
 
-`A [BatchEncoding](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields`
+`A [BatchEncoding](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.BatchEncoding) with the following fields`
 
 - `pixel_values` (`torch.Tensor`): The processed image(s).
 - `original_sizes` (`list[list[float]]`): The original sizes of the images.
@@ -640,49 +653,49 @@ point_pad_value (`int`, *optional*, defaults to -10) : The value used for paddin
 
 #### transformers.Sam3ImageProcessorFast[[transformers.Sam3ImageProcessorFast]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3/image_processing_sam3_fast.py#L400)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3/image_processing_sam3_fast.py#L399)
 
 Constructs a fast Sam3 image processor.
 
-preprocesstransformers.Sam3ImageProcessorFast.preprocesshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3/image_processing_sam3_fast.py#L465[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]"}, {"name": "segmentation_maps", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.models.sam3.image_processing_sam3_fast.Sam3FastImageProcessorKwargs]"}]- **images** (`Union[PIL.Image.Image, numpy.ndarray, torch.Tensor, list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]`) --
+preprocesstransformers.Sam3ImageProcessorFast.preprocesshttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3/image_processing_sam3_fast.py#L464[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]"}, {"name": "segmentation_maps", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.models.sam3.image_processing_sam3_fast.Sam3FastImageProcessorKwargs]"}]- **images** (`Union[PIL.Image.Image, numpy.ndarray, torch.Tensor, list, list, list]`) --
   Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If
   passing in images with pixel values between 0 and 1, set `do_rescale=False`.
 - **segmentation_maps** (`ImageInput`, *optional*) --
   The segmentation maps to preprocess.
-- **do_convert_rgb** (`bool`, *optional*) --
+- **do_convert_rgb** (`bool | None.do_convert_rgb`) --
   Whether to convert the image to RGB.
-- **do_resize** (`bool`, *optional*) --
+- **do_resize** (`bool | None.do_resize`) --
   Whether to resize the image.
-- **size** (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) --
+- **size** (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) --
   Describes the maximum input dimensions to the model.
-- **crop_size** (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) --
+- **crop_size** (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) --
   Size of the output image after applying `center_crop`.
 - **resample** (`Annotated[Union[PILImageResampling, int, NoneType], None]`) --
   Resampling filter to use if resizing the image. This can be one of the enum `PILImageResampling`. Only
   has an effect if `do_resize` is set to `True`.
-- **do_rescale** (`bool`, *optional*) --
+- **do_rescale** (`bool | None.do_rescale`) --
   Whether to rescale the image.
-- **rescale_factor** (`float`, *optional*) --
+- **rescale_factor** (`float | None.rescale_factor`) --
   Rescale factor to rescale the image by if `do_rescale` is set to `True`.
-- **do_normalize** (`bool`, *optional*) --
+- **do_normalize** (`bool | None.do_normalize`) --
   Whether to normalize the image.
-- **image_mean** (`Union[float, list[float], tuple[float, ...], NoneType]`) --
+- **image_mean** (`float | list[float] | tuple[float, ...] | None.image_mean`) --
   Image mean to use for normalization. Only has an effect if `do_normalize` is set to `True`.
-- **image_std** (`Union[float, list[float], tuple[float, ...], NoneType]`) --
+- **image_std** (`float | list[float] | tuple[float, ...] | None.image_std`) --
   Image standard deviation to use for normalization. Only has an effect if `do_normalize` is set to
   `True`.
-- **do_pad** (`bool`, *optional*) --
+- **do_pad** (`bool | None.do_pad`) --
   Whether to pad the image. Padding is done either to the largest size in the batch
   or to a fixed square size per image. The exact padding strategy depends on the model.
-- **pad_size** (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) --
+- **pad_size** (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) --
   The size in `{"height": int, "width" int}` to pad the images to. Must be larger than any image size
   provided for preprocessing. If `pad_size` is not provided, images will be padded to the largest
   height and width in the batch. Applied only when `do_pad=True.`
-- **do_center_crop** (`bool`, *optional*) --
+- **do_center_crop** (`bool | None.do_center_crop`) --
   Whether to center crop the image.
-- **data_format** (`Union[~image_utils.ChannelDimension, str, NoneType]`) --
+- **data_format** (`str | ~image_utils.ChannelDimension | None.data_format`) --
   Only `ChannelDimension.FIRST` is supported. Added for compatibility with slow processors.
-- **input_data_format** (`Union[~image_utils.ChannelDimension, str, NoneType]`) --
+- **input_data_format** (`str | ~image_utils.ChannelDimension | None.input_data_format`) --
   The channel dimension format for the input image. If unset, the channel dimension format is inferred
   from the input image. Can be one of:
   - `"channels_first"` or `ChannelDimension.FIRST`: image in (num_channels, height, width) format.
@@ -690,13 +703,13 @@ preprocesstransformers.Sam3ImageProcessorFast.preprocesshttps://github.com/huggi
   - `"none"` or `ChannelDimension.NONE`: image in (height, width) format.
 - **device** (`Annotated[Union[str, torch.device, NoneType], None]`) --
   The device to process the images on. If unset, the device is inferred from the input images.
-- **return_tensors** (`Annotated[Union[str, ~utils.generic.TensorType, NoneType], None]`) --
+- **return_tensors** (`Annotated[str | ~utils.generic.TensorType | None, None]`) --
   Returns stacked tensors if set to `pt, otherwise returns a list of tensors.
-- **disable_grouping** (`bool`, *optional*) --
+- **disable_grouping** (`bool | None.disable_grouping`) --
   Whether to disable grouping of images by size to process them individually and not in batches.
   If None, will be set to True if the images are on CPU, and False otherwise. This choice is based on
   empirical observations, as detailed here: https://github.com/huggingface/transformers/pull/38157
-- **image_seq_length** (`int`, *optional*) --
+- **image_seq_length** (`int | None.image_seq_length`) --
   The number of image tokens to be used for each image in the input.
   Added for backward compatibility but this should be set as a processor attribute in future models.
 - **mask_size** (`dict[str, int]`, *optional*) --
@@ -706,47 +719,47 @@ preprocesstransformers.Sam3ImageProcessorFast.preprocesshttps://github.com/huggi
 
 **Parameters:**
 
-images (`Union[PIL.Image.Image, numpy.ndarray, torch.Tensor, list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]`) : Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If passing in images with pixel values between 0 and 1, set `do_rescale=False`.
+images (`Union[PIL.Image.Image, numpy.ndarray, torch.Tensor, list, list, list]`) : Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If passing in images with pixel values between 0 and 1, set `do_rescale=False`.
 
 segmentation_maps (`ImageInput`, *optional*) : The segmentation maps to preprocess.
 
-do_convert_rgb (`bool`, *optional*) : Whether to convert the image to RGB.
+do_convert_rgb (`bool | None.do_convert_rgb`) : Whether to convert the image to RGB.
 
-do_resize (`bool`, *optional*) : Whether to resize the image.
+do_resize (`bool | None.do_resize`) : Whether to resize the image.
 
-size (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) : Describes the maximum input dimensions to the model.
+size (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) : Describes the maximum input dimensions to the model.
 
-crop_size (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) : Size of the output image after applying `center_crop`.
+crop_size (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) : Size of the output image after applying `center_crop`.
 
 resample (`Annotated[Union[PILImageResampling, int, NoneType], None]`) : Resampling filter to use if resizing the image. This can be one of the enum `PILImageResampling`. Only has an effect if `do_resize` is set to `True`.
 
-do_rescale (`bool`, *optional*) : Whether to rescale the image.
+do_rescale (`bool | None.do_rescale`) : Whether to rescale the image.
 
-rescale_factor (`float`, *optional*) : Rescale factor to rescale the image by if `do_rescale` is set to `True`.
+rescale_factor (`float | None.rescale_factor`) : Rescale factor to rescale the image by if `do_rescale` is set to `True`.
 
-do_normalize (`bool`, *optional*) : Whether to normalize the image.
+do_normalize (`bool | None.do_normalize`) : Whether to normalize the image.
 
-image_mean (`Union[float, list[float], tuple[float, ...], NoneType]`) : Image mean to use for normalization. Only has an effect if `do_normalize` is set to `True`.
+image_mean (`float | list[float] | tuple[float, ...] | None.image_mean`) : Image mean to use for normalization. Only has an effect if `do_normalize` is set to `True`.
 
-image_std (`Union[float, list[float], tuple[float, ...], NoneType]`) : Image standard deviation to use for normalization. Only has an effect if `do_normalize` is set to `True`.
+image_std (`float | list[float] | tuple[float, ...] | None.image_std`) : Image standard deviation to use for normalization. Only has an effect if `do_normalize` is set to `True`.
 
-do_pad (`bool`, *optional*) : Whether to pad the image. Padding is done either to the largest size in the batch or to a fixed square size per image. The exact padding strategy depends on the model.
+do_pad (`bool | None.do_pad`) : Whether to pad the image. Padding is done either to the largest size in the batch or to a fixed square size per image. The exact padding strategy depends on the model.
 
-pad_size (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) : The size in `{"height": int, "width" int}` to pad the images to. Must be larger than any image size provided for preprocessing. If `pad_size` is not provided, images will be padded to the largest height and width in the batch. Applied only when `do_pad=True.`
+pad_size (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) : The size in `{"height": int, "width" int}` to pad the images to. Must be larger than any image size provided for preprocessing. If `pad_size` is not provided, images will be padded to the largest height and width in the batch. Applied only when `do_pad=True.`
 
-do_center_crop (`bool`, *optional*) : Whether to center crop the image.
+do_center_crop (`bool | None.do_center_crop`) : Whether to center crop the image.
 
-data_format (`Union[~image_utils.ChannelDimension, str, NoneType]`) : Only `ChannelDimension.FIRST` is supported. Added for compatibility with slow processors.
+data_format (`str | ~image_utils.ChannelDimension | None.data_format`) : Only `ChannelDimension.FIRST` is supported. Added for compatibility with slow processors.
 
-input_data_format (`Union[~image_utils.ChannelDimension, str, NoneType]`) : The channel dimension format for the input image. If unset, the channel dimension format is inferred from the input image. Can be one of: - `"channels_first"` or `ChannelDimension.FIRST`: image in (num_channels, height, width) format. - `"channels_last"` or `ChannelDimension.LAST`: image in (height, width, num_channels) format. - `"none"` or `ChannelDimension.NONE`: image in (height, width) format.
+input_data_format (`str | ~image_utils.ChannelDimension | None.input_data_format`) : The channel dimension format for the input image. If unset, the channel dimension format is inferred from the input image. Can be one of: - `"channels_first"` or `ChannelDimension.FIRST`: image in (num_channels, height, width) format. - `"channels_last"` or `ChannelDimension.LAST`: image in (height, width, num_channels) format. - `"none"` or `ChannelDimension.NONE`: image in (height, width) format.
 
 device (`Annotated[Union[str, torch.device, NoneType], None]`) : The device to process the images on. If unset, the device is inferred from the input images.
 
-return_tensors (`Annotated[Union[str, ~utils.generic.TensorType, NoneType], None]`) : Returns stacked tensors if set to `pt, otherwise returns a list of tensors.
+return_tensors (`Annotated[str | ~utils.generic.TensorType | None, None]`) : Returns stacked tensors if set to `pt, otherwise returns a list of tensors.
 
-disable_grouping (`bool`, *optional*) : Whether to disable grouping of images by size to process them individually and not in batches. If None, will be set to True if the images are on CPU, and False otherwise. This choice is based on empirical observations, as detailed here: https://github.com/huggingface/transformers/pull/38157
+disable_grouping (`bool | None.disable_grouping`) : Whether to disable grouping of images by size to process them individually and not in batches. If None, will be set to True if the images are on CPU, and False otherwise. This choice is based on empirical observations, as detailed here: https://github.com/huggingface/transformers/pull/38157
 
-image_seq_length (`int`, *optional*) : The number of image tokens to be used for each image in the input. Added for backward compatibility but this should be set as a processor attribute in future models.
+image_seq_length (`int | None.image_seq_length`) : The number of image tokens to be used for each image in the input. Added for backward compatibility but this should be set as a processor attribute in future models.
 
 mask_size (`dict[str, int]`, *optional*) : The size `{"height": int, "width": int}` to resize the segmentation maps to.
 
@@ -762,11 +775,11 @@ mask_size (`dict[str, int]`, *optional*) : The size `{"height": int, "width": in
 
 #### transformers.Sam3ViTModel[[transformers.Sam3ViTModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3/modeling_sam3.py#L782)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3/modeling_sam3.py#L790)
 
 The bare Sam3 Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -774,12 +787,12 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Sam3ViTModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3/modeling_sam3.py#L799[{"name": "pixel_values", "val": ": Tensor"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **pixel_values** (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`) --
+forwardtransformers.Sam3ViTModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3/modeling_sam3.py#L807[{"name": "pixel_values", "val": ": Tensor"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **pixel_values** (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  `image_processor_class`. See `image_processor_class.__call__` for details ([Sam3Processor](/docs/transformers/v5.0.0rc1/en/model_doc/sam3#transformers.Sam3Processor) uses
-  `image_processor_class` for processing images).0[transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or a tuple of
+  [Sam3ImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/sam3#transformers.Sam3ImageProcessorFast). See [Sam3ImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([Sam3Processor](/docs/transformers/v5.0.0/en/model_doc/sam3#transformers.Sam3Processor) uses
+  [Sam3ImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/sam3#transformers.Sam3ImageProcessorFast) for processing images).0[transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Sam3Config](/docs/transformers/v5.0.0rc1/en/model_doc/sam3#transformers.Sam3Config)) and inputs.
+elements depending on the configuration ([Sam3Config](/docs/transformers/v5.0.0/en/model_doc/sam3#transformers.Sam3Config)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
@@ -791,7 +804,7 @@ elements depending on the configuration ([Sam3Config](/docs/transformers/v5.0.0r
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [Sam3ViTModel](/docs/transformers/v5.0.0rc1/en/model_doc/sam3#transformers.Sam3ViTModel) forward method, overrides the `__call__` special method.
+The [Sam3ViTModel](/docs/transformers/v5.0.0/en/model_doc/sam3#transformers.Sam3ViTModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -799,15 +812,15 @@ the latter silently ignores them.
 
 **Parameters:**
 
-config ([Sam3ViTConfig](/docs/transformers/v5.0.0rc1/en/model_doc/sam3#transformers.Sam3ViTConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Sam3ViTConfig](/docs/transformers/v5.0.0/en/model_doc/sam3#transformers.Sam3ViTConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or a tuple of
+A [transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Sam3Config](/docs/transformers/v5.0.0rc1/en/model_doc/sam3#transformers.Sam3Config)) and inputs.
+elements depending on the configuration ([Sam3Config](/docs/transformers/v5.0.0/en/model_doc/sam3#transformers.Sam3Config)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
@@ -824,11 +837,11 @@ elements depending on the configuration ([Sam3Config](/docs/transformers/v5.0.0r
 
 #### transformers.Sam3VisionModel[[transformers.Sam3VisionModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3/modeling_sam3.py#L1002)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3/modeling_sam3.py#L1010)
 
 The vision model from Sam without any head or projection on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -836,30 +849,30 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Sam3VisionModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3/modeling_sam3.py#L1021[{"name": "pixel_values", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]
+forwardtransformers.Sam3VisionModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3/modeling_sam3.py#L1029[{"name": "pixel_values", "val": ": torch.FloatTensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]
 
 **Parameters:**
 
-config ([Sam3VisionConfig](/docs/transformers/v5.0.0rc1/en/model_doc/sam3#transformers.Sam3VisionConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Sam3VisionConfig](/docs/transformers/v5.0.0/en/model_doc/sam3#transformers.Sam3VisionConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 ## Sam3Model[[transformers.Sam3Model]]
 
 #### transformers.Sam3Model[[transformers.Sam3Model]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3/modeling_sam3.py#L2087)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3/modeling_sam3.py#L2101)
 
-forwardtransformers.Sam3Model.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/sam3/modeling_sam3.py#L2203[{"name": "pixel_values", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "vision_embeds", "val": ": typing.Optional[transformers.models.sam3.modeling_sam3.Sam3VisionEncoderOutput] = None"}, {"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "text_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "input_boxes", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "input_boxes_labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
+forwardtransformers.Sam3Model.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3/modeling_sam3.py#L2216[{"name": "pixel_values", "val": ": torch.FloatTensor | None = None"}, {"name": "vision_embeds", "val": ": transformers.models.sam3.modeling_sam3.Sam3VisionEncoderOutput | None = None"}, {"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "text_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "input_boxes", "val": ": torch.FloatTensor | None = None"}, {"name": "input_boxes_labels", "val": ": torch.LongTensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  `image_processor_class`. See `image_processor_class.__call__` for details ([Sam3Processor](/docs/transformers/v5.0.0rc1/en/model_doc/sam3#transformers.Sam3Processor) uses
-  `image_processor_class` for processing images).
+  [Sam3ImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/sam3#transformers.Sam3ImageProcessorFast). See [Sam3ImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([Sam3Processor](/docs/transformers/v5.0.0/en/model_doc/sam3#transformers.Sam3Processor) uses
+  [Sam3ImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/sam3#transformers.Sam3ImageProcessorFast) for processing images).
 - **vision_embeds** (`Sam3VisionEncoderOutput`, *optional*) --
   Pre-computed vision embeddings. Can be used to easily reuse vision embeddings. If provided, `pixel_values`
   should not be passed. Mutually exclusive with `pixel_values`.
 - **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -877,7 +890,7 @@ forwardtransformers.Sam3Model.forwardhttps://github.com/huggingface/transformers
 - **input_boxes_labels** (`torch.LongTensor` of shape `(batch_size, num_boxes)`, *optional*) --
   Labels for boxes: 1 (positive), 0 (negative).0`transformers.models.sam3.modeling_sam3.Sam3ImageSegmentationOutput` or `tuple(torch.FloatTensor)`A `transformers.models.sam3.modeling_sam3.Sam3ImageSegmentationOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Sam3Config](/docs/transformers/v5.0.0rc1/en/model_doc/sam3#transformers.Sam3Config)) and inputs.
+elements depending on the configuration ([Sam3Config](/docs/transformers/v5.0.0/en/model_doc/sam3#transformers.Sam3Config)) and inputs.
 
 - **pred_masks** (`torch.FloatTensor` of shape `(batch_size, num_queries, height, width)`) -- Predicted segmentation masks for each query.
 - **pred_boxes** (`torch.FloatTensor` of shape `(batch_size, num_queries, 4)`) -- Predicted bounding boxes in (x1, y1, x2, y2) format.
@@ -894,7 +907,7 @@ elements depending on the configuration ([Sam3Config](/docs/transformers/v5.0.0r
 - **detr_encoder_attentions** (`tuple[torch.FloatTensor]`, *optional*) -- Attention weights from DETR encoder layers.
 - **detr_decoder_attentions** (`tuple[torch.FloatTensor]`, *optional*) -- Attention weights from DETR decoder layers (self-attention and cross-attention).
 - **mask_decoder_attentions** (`tuple[torch.FloatTensor]`, *optional*) -- Attention weights from mask decoder layers.
-The [Sam3Model](/docs/transformers/v5.0.0rc1/en/model_doc/sam3#transformers.Sam3Model) forward method, overrides the `__call__` special method.
+The [Sam3Model](/docs/transformers/v5.0.0/en/model_doc/sam3#transformers.Sam3Model) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -904,16 +917,18 @@ Example:
 
 ```python
 >>> from PIL import Image
->>> import requests
+>>> import httpx
+>>> from io import BytesIO
 >>> from transformers import AutoModel, AutoProcessor
 
 >>> model = AutoModel.from_pretrained("facebook/sam3")
 >>> processor = AutoProcessor.from_pretrained("facebook/sam3")
 
->>> img_url = "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformers/model_doc/sam-car.png"
->>> raw_image = Image.open(requests.get(img_url, stream=True).raw).convert("RGB")
+>>> url = "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/transformers/model_doc/sam-car.png"
+>>> with httpx.stream("GET", url) as response:
+...     image = Image.open(BytesIO(response.read())).convert("RGB")
 >>> text = "car"
->>> inputs = processor(images=raw_image, text=text, return_tensors="pt")
+>>> inputs = processor(images=image, text=text, return_tensors="pt")
 
 >>> # Get segmentation output
 >>> outputs = model(**inputs)
@@ -923,11 +938,11 @@ Example:
 
 **Parameters:**
 
-pixel_values (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) : The tensors corresponding to the input images. Pixel values can be obtained using `image_processor_class`. See `image_processor_class.__call__` for details ([Sam3Processor](/docs/transformers/v5.0.0rc1/en/model_doc/sam3#transformers.Sam3Processor) uses `image_processor_class` for processing images).
+pixel_values (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) : The tensors corresponding to the input images. Pixel values can be obtained using [Sam3ImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/sam3#transformers.Sam3ImageProcessorFast). See [Sam3ImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([Sam3Processor](/docs/transformers/v5.0.0/en/model_doc/sam3#transformers.Sam3Processor) uses [Sam3ImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/sam3#transformers.Sam3ImageProcessorFast) for processing images).
 
 vision_embeds (`Sam3VisionEncoderOutput`, *optional*) : Pre-computed vision embeddings. Can be used to easily reuse vision embeddings. If provided, `pixel_values` should not be passed. Mutually exclusive with `pixel_values`.
 
-input_ids (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) : Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.  [What are input IDs?](../glossary#input-ids)
+input_ids (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) : Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.  [What are input IDs?](../glossary#input-ids)
 
 attention_mask (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) : Mask to avoid performing attention on padding token indices. Mask values selected in `[0, 1]`:  - 1 for tokens that are **not masked**, - 0 for tokens that are **masked**.  [What are attention masks?](../glossary#attention-mask)
 
@@ -943,7 +958,7 @@ input_boxes_labels (`torch.LongTensor` of shape `(batch_size, num_boxes)`, *opti
 
 A `transformers.models.sam3.modeling_sam3.Sam3ImageSegmentationOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Sam3Config](/docs/transformers/v5.0.0rc1/en/model_doc/sam3#transformers.Sam3Config)) and inputs.
+elements depending on the configuration ([Sam3Config](/docs/transformers/v5.0.0/en/model_doc/sam3#transformers.Sam3Config)) and inputs.
 
 - **pred_masks** (`torch.FloatTensor` of shape `(batch_size, num_queries, height, width)`) -- Predicted segmentation masks for each query.
 - **pred_boxes** (`torch.FloatTensor` of shape `(batch_size, num_queries, 4)`) -- Predicted bounding boxes in (x1, y1, x2, y2) format.
@@ -960,4 +975,59 @@ elements depending on the configuration ([Sam3Config](/docs/transformers/v5.0.0r
 - **detr_encoder_attentions** (`tuple[torch.FloatTensor]`, *optional*) -- Attention weights from DETR encoder layers.
 - **detr_decoder_attentions** (`tuple[torch.FloatTensor]`, *optional*) -- Attention weights from DETR decoder layers (self-attention and cross-attention).
 - **mask_decoder_attentions** (`tuple[torch.FloatTensor]`, *optional*) -- Attention weights from mask decoder layers.
+#### get_text_features[[transformers.Sam3Model.get_text_features]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/sam3/modeling_sam3.py#L2143)
+
+Example:
+
+```python
+>>> from transformers import Sam3Model, Sam3Processor
+>>> from PIL import Image
+>>> import httpx
+>>> from io import BytesIO
+
+>>> model = Sam3Model.from_pretrained("facebook/sam3")
+>>> processor = Sam3Processor.from_pretrained("facebook/sam3")
+
+>>> # Pre-compute text embeddings
+>>> text_inputs = processor(text="cat", return_tensors="pt")
+>>> text_embeds = model.get_text_features(**text_inputs).pooler_output
+
+>>> # Reuse text embeddings for multiple images
+>>> url = "http://images.cocodataset.org/val2017/000000077595.jpg"
+>>> with httpx.stream("GET", url) as response:
+...     image = Image.open(BytesIO(response.read()))
+>>> img_inputs = processor(images=image, return_tensors="pt")
+>>> outputs = model(pixel_values=img_inputs.pixel_values, text_embeds=text_embeds)
+```
+
+**Parameters:**
+
+input_ids (`torch.LongTensor` of shape `(batch_size, sequence_length)`) : Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.  [What are input IDs?](../glossary#input-ids)
+
+attention_mask (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) : Mask to avoid performing attention on padding token indices. Mask values selected in `[0, 1]`:  - 1 for tokens that are **not masked**, - 0 for tokens that are **masked**.  [What are attention masks?](../glossary#attention-mask)
+
+**Returns:**
+
+`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
+
+A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([Sam3Config](/docs/transformers/v5.0.0/en/model_doc/sam3#transformers.Sam3Config)) and inputs.
+
+- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
+- **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
+  through the layers used for the auxiliary pretraining task. E.g. for BERT-family of models, this returns
+  the classification token after processing through a linear layer and a tanh activation function. The linear
+  layer weights are trained from the next sentence prediction (classification) objective during pretraining.
+- **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
 

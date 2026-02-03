@@ -6,7 +6,6 @@ description: >-
   Configure LastPass as a SAML identity provider for Datadog authentication
   using the LastPass Datadog app integration.
 breadcrumbs: Docs > Account Management > Single Sign On With SAML > LastPass SAML IdP
-source_url: https://docs.datadoghq.com/saml/lastpass/index.html
 ---
 
 # LastPass SAML IdP

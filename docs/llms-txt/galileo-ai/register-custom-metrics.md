@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/how-to/register-custom-metrics.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Register Custom Metrics
 
 > Galileo GenAI Studio supports Custom Metrics (programmatic or GPT-based) for all your Evaluate and Observe projects. Depending on where, when, and how you want these metrics to be executed, you have the option to choose between **Custom Scorers** and **Registered Scorers**.
@@ -14,7 +18,7 @@ To define a registered scorer, create a Python file that has at least 2 function
 
 1. `scorer_fn`: The scorer function is provided the row-wise inputs and is expected to generate outputs for each response. The expected signature for this function is:
 
-```py
+```py  theme={null}
 
  def scorer_fn(*, index: Union[int, str], node_input: str, node_output: str, **kwargs: Any) -> Union[float, int, bool, str, None]:
     ...
@@ -24,7 +28,7 @@ We support output of a floating points, integers, boolean values, and strings. Y
 
 Here is an example with the full list of parameters supported currently. This example checks the output vs the ground truth and returns the absolute difference in length:
 
-```py
+```py  theme={null}
 
  def scorer_fn(*, index: Union[int, str], node_input: str, node_output: str, node_name: Optional[str], node_type: Optional[str], node_id: Optional[UUID], tools: Optional[List[Dict[str, Any]]], dataset_variables: Dict[str, str], **kwargs: Any) -> Union[float, int, bool, str, None]:
     ground_truth = dataset_variables.get("target", "") # ground truth for row if it was provided.
@@ -37,7 +41,7 @@ The `index` parameter is the index of the row in the dataset, `node_input` is th
 
 2. `aggregator_fn`: The aggregator function is only used in Evaluate, *not Observe*. The aggregator function takes in an array of the row-wise outputs from your scorer and allows you to generate aggregates from those. The expected signature for the aggregator function is:
 
-   ```py
+   ```py  theme={null}
 
        def aggregator_fn(*, scores: List[Union[float, int, bool, str, None]]) -> Dict[str, Union[float, int, bool, str, None]]:
            ...
@@ -47,7 +51,7 @@ The `index` parameter is the index of the row in the dataset, `node_input` is th
 
 3. (Optional, but recommended) `score_type`: The scorer\_type function is used to define the `Type` of the score that your scorer generates. The expected signature for this function is:
 
-   ```py
+   ```py  theme={null}
 
        def score_type() -> Type[float] | Type[int] | Type[str] | Type[bool]:
        ...
@@ -57,7 +61,7 @@ The `index` parameter is the index of the row in the dataset, `node_input` is th
 
 4. (Optional) `scoreable_node_types_fn`: If you want to restrict your scorer to only run on specific node types, you can define this function which returns a list of node types that your scorer should run on. The expected signature for this function is:
 
-   ```py
+   ```py  theme={null}
    def scoreable_node_types_fn() -> List[str]:
            ...
    ```
@@ -66,7 +70,7 @@ The `index` parameter is the index of the row in the dataset, `node_input` is th
 
    Here's an example of a `scoreable_node_types_fn` that restricts the scorer to only run on `retriever` nodes:
 
-   ```py
+   ```py  theme={null}
    def scoreable_node_types_fn() -> List[str]:
        return ["retriever"]
    ```
@@ -79,7 +83,7 @@ The `index` parameter is the index of the row in the dataset, `node_input` is th
 
    If you don't define this function, your scorer will not have access to the LLM credentials by default. If you do enable it, the credentials will be included in calls to `scorer_fn` at the keyword argument `credentials`. The credentials will be a dictionary with the keys as the name of the integration, if available, and values as the credentials. For example, if the user has an OpenAI integration, the credentials will be:
 
-   ```json
+   ```json  theme={null}
    {
      "openai": {
        "api_key": "foo", // str
@@ -90,7 +94,7 @@ The `index` parameter is the index of the row in the dataset, `node_input` is th
 
 6. (Optional) `chain_aggregation`: Set this field to one of `sum`, `average`, `first` or `last` to specify how the scores across each sub-node in a chain should be aggregated to the chain-level. The aggregation This is only applicable if your scorer is used in a multi-step chain. If not specified, the default is no aggregation.
 
-   ```py
+   ```py  theme={null}
    chain_aggregation = "average"
    ```
 
@@ -98,7 +102,7 @@ The `index` parameter is the index of the row in the dataset, `node_input` is th
 
 Once you've created your scorer file, you can register it with the name and the scorer file:
 
-```py
+```py  theme={null}
 
     registered_scorer = pq.register_scorer(scorer_name="my-scorer", scorer_file="/path/to/scorer/file.py")
 ```
@@ -109,14 +113,14 @@ The name you choose here will be the name with which the values for this scorer 
 
 To use your scorer during a prompt run (or sweep), simply pass it in alongside any of the other scorers:
 
-```py
+```py  theme={null}
 
     pq.run(..., scorers=[registered_scorer])
 ```
 
 If you created your registered scorer in a previous session, you can also just pass in the name to the scorer instead of the object as:
 
-```py
+```py  theme={null}
 
     pq.run(..., scorers=["my-scorer"])
 ```
@@ -127,7 +131,7 @@ For example, let's say we wanted to create a custom metric that measured the len
 
 1. Create a `scorer.py` file:
 
-```py
+```py  theme={null}
 from typing import List, Dict, Type
 
 
@@ -150,13 +154,13 @@ def scoreable_node_types_fn() -> List[str]:
 
 1. Register the scorer:
 
-   ```py
+   ```py  theme={null}
        pq.register_scorer("response_length", "scorer.py")
    ```
 
 2. Use the scorer in your prompt run:
 
-   ```py
+   ```py  theme={null}
        pq.run(..., scorers=["response_length"])
    ```
 
@@ -164,7 +168,7 @@ def scoreable_node_types_fn() -> List[str]:
 
 Your scorer will be executed in a Python 3.10 environment. You can arbitrarily add additional Python libraries with the following comment snippet at the top of your scorer, with the `openai` library as an example:
 
-```py
+```py  theme={null}
 # /// script
 # dependencies = [
 #   "openai",
@@ -200,7 +204,7 @@ For example, for that registered scorer we created to calculate response length,
 
 Note that the naming of the functions are different: they are `**executor**` and `**aggregator**` instead of `scorer_fn` and `aggregator_fn`.
 
-```py
+```py  theme={null}
 from typing import Dict, List
 from promptquality import PromptRow
 
@@ -213,13 +217,13 @@ def aggregator_fn(scores: float, indices: List[int]) -> Dict[str, float]:
             'Average Response Length': sum(scores)/len(scores)}
 ```
 
-```py
+```py  theme={null}
 my_scorer = pq.CustomScorer(name='Response Length', executor=executor, aggregator=aggregator_fn)
 ```
 
 To use your scorer, you can just pass it through your `scorers` parameter inside `pq.run` or `pq.run_sweep`, `pq.EvaluateRun`, or `pq.GalileoPromptCallback`:
 
-```py
+```py  theme={null}
 
 template = "Explain {{topic}} to me like I'm a 5 year old"
 

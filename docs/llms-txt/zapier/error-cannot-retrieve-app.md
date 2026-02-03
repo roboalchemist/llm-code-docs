@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/error-cannot-retrieve-app.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Error: Cannot retrieve App******CLIAPI@*** app
 
 ## Error shown
@@ -19,8 +23,3 @@ To resolve this, an integration admin would need to [share](/platform/manage/sha
 ***
 
 *Need help? [Tell us about your problem](https://developer.zapier.com/contact) and we'll connect you with the right resource or contact support.*
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.zapier.com/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/observability-guides/deploy-use-grafana.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to deploy and use Grafana
 
 > Learn how to deploy and use Aptible-hosted analytics and monitoring with Grafana

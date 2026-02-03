@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/integrations/build-integration/connect-your-users-to-pinecone.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Connect your users to Pinecone
 
 To reduce friction for users using your integration, you can create a [custom object](#custom-object), like a button or link, to trigger a **Connect to Pinecone** popup from your app, website, or [Colab](https://colab.google/) notebook. Within this popup, your users can sign up for or log in to Pinecone, select or create an organization and project to connect to, and generate an API key. The API key is then communicated back to the user to copy or directly sent to the hosting page, app, or notebook.
@@ -36,7 +40,7 @@ Create a unique `integrationId` to enable usage of the **Connect to Pinecone** [
 3. Click **Create**.
 
 <Note>
-  Anyone can create an integration, but [becoming an official Pinecone partner](/integrations/build-integration/become-a-partner) can help accelerate your go-to-market and add value to your customers.
+  Anyone can create an integration, but [becoming an official Pinecone partner](/integrations/build-integration/integration-ecosystem) can help accelerate your go-to-market and add value to your customers.
 </Note>
 
 ## Custom object

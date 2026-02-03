@@ -12,34 +12,6 @@
 
 # Source: https://platform.claude.com/docs/en/api/beta/files/upload.md
 
-# Source: https://platform.claude.com/docs/en/api/typescript/beta/files/upload.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/beta/files/upload.md
-
-# Source: https://platform.claude.com/docs/en/api/python/beta/files/upload.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/beta/files/upload.md
-
-# Source: https://platform.claude.com/docs/en/api/java/beta/files/upload.md
-
-# Source: https://platform.claude.com/docs/en/api/go/beta/files/upload.md
-
-# Source: https://platform.claude.com/docs/en/api/beta/files/upload.md
-
-# Source: https://platform.claude.com/docs/en/api/typescript/beta/files/upload.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/beta/files/upload.md
-
-# Source: https://platform.claude.com/docs/en/api/python/beta/files/upload.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/beta/files/upload.md
-
-# Source: https://platform.claude.com/docs/en/api/java/beta/files/upload.md
-
-# Source: https://platform.claude.com/docs/en/api/go/beta/files/upload.md
-
-# Source: https://platform.claude.com/docs/en/api/beta/files/upload.md
-
 ## Upload
 
 **post** `/v1/files`
@@ -137,6 +109,8 @@ Upload File
 ```http
 curl https://api.anthropic.com/v1/files \
     -H 'Content-Type: multipart/form-data' \
+    -H 'anthropic-version: 2023-06-01' \
+    -H 'anthropic-beta: files-api-2025-04-14' \
     -H "X-Api-Key: $ANTHROPIC_API_KEY" \
-    -F file=undefined
+    -F 'file=@/path/to/file'
 ```

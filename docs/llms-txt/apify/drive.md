@@ -10,7 +10,7 @@
 
 To use the Apify integration for Google Drive, you will need:
 
-* An https://console.apify.com/.
+* An [Apify account](https://console.apify.com/).
 * A Google account
 * A saved Actor Task
 
@@ -32,6 +32,6 @@ To use the Apify integration for Google Drive, you will need:
 
 Once this is done, run your Actor to test whether the integration is working.
 
-You can manage your connected accounts at **https://console.apify.com/settings/integrations**.
+You can manage your connected accounts at **[Settings > API & Integrations](https://console.apify.com/settings/integrations)**.
 
 ![Google Drive integration](/assets/images/google-integrations-accounts-95c33e6e7c658a29a5b87f4a4c65a653.png)

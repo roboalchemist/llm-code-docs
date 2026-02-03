@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/jest/prefer-to-have-length.md
 ---
-# jest/prefer-to-have-length&#x20;
 
 ### What it does
 

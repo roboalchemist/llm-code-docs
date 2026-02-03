@@ -258,7 +258,7 @@ In addition to the access log, one entry per connection is written to the connec
 | cipherSuite | string | Name of session cipher suite | no |
 | sniServerName | string | SNI server name | no |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

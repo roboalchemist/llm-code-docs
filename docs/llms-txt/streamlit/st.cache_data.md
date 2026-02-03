@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/caching-and-state/st.cache_data
+
 # st.cache_data
 
 Decorator to cache functions that return data (e.g. dataframe transforms, database queries, ML inference).

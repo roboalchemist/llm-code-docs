@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/enterprise/findings/
+
 # Findings and Reports
 
 Promptfoo Enterprise allows you to review findings and reports from scans within the Promptfoo application.

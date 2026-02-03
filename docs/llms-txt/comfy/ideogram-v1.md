@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/built-in-nodes/partner-node/image/ideogram/ideogram-v1.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Ideogram V1 - ComfyUI Native Node Documentation
 
 > Node for creating precise text rendering images using Ideogram API

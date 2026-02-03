@@ -26,5 +26,5 @@ $ docker run --detach --name vespa --hostname vespa-container \
   vespaengine/vespa-generic-intel-x86_64
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

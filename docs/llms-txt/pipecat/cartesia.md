@@ -2,13 +2,9 @@
 
 # Source: https://docs.pipecat.ai/server/services/stt/cartesia.md
 
-# Source: https://docs.pipecat.ai/server/services/tts/cartesia.md
-
-# Source: https://docs.pipecat.ai/server/services/stt/cartesia.md
-
-# Source: https://docs.pipecat.ai/server/services/tts/cartesia.md
-
-# Source: https://docs.pipecat.ai/server/services/stt/cartesia.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Cartesia
 
@@ -57,8 +53,3 @@ Before using Cartesia STT services, you need:
 ### Required Environment Variables
 
 * `CARTESIA_API_KEY`: Your Cartesia API key for authentication
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

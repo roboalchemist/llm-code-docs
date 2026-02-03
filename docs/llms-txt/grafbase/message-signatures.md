@@ -2,22 +2,6 @@
 
 # Source: https://grafbase.com/docs/gateway/security/message-signatures.md
 
-# Source: https://grafbase.com/docs/gateway/configuration/message-signatures.md
-
-# Source: https://grafbase.com/docs/gateway/security/message-signatures.md
-
-# Source: https://grafbase.com/docs/gateway/configuration/message-signatures.md
-
-# Source: https://grafbase.com/docs/gateway/security/message-signatures.md
-
-# Source: https://grafbase.com/docs/gateway/configuration/message-signatures.md
-
-# Source: https://grafbase.com/docs/gateway/security/message-signatures.md
-
-# Source: https://grafbase.com/docs/gateway/configuration/message-signatures.md
-
-# Source: https://grafbase.com/docs/gateway/security/message-signatures.md
-
 # Message Signatures
 
 The Grafbase Gateway can sign subgraph HTTP requests following [RFC 9421][rfc9421]. Read more on [configuring message signatures][config].

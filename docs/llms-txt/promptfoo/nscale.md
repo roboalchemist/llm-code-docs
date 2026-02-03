@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/nscale/
+
 # Nscale
 
 The Nscale provider enables you to use [Nscale's Serverless Inference API](https://nscale.com/serverless) models with promptfoo. Nscale offers cost-effective AI inference with up to 80% savings compared to other providers, zero rate limits, and no cold starts.

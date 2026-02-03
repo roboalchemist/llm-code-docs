@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/reference/inference-api/predict-endpoints/environments-run-remote.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Chains environment
 
 > Use this endpoint to call the deployment associated with the specified environment.
@@ -32,7 +36,7 @@ https://chain-{chain}.api.baseten.co/environments/{env_name}/run_remote"
 </ParamField>
 
 <RequestExample>
-  ```py Python theme={"system"}
+  ```python Python theme={"system"}
   import urllib3
   import os
 
@@ -57,7 +61,7 @@ https://chain-{chain}.api.baseten.co/environments/{env_name}/run_remote"
     -d '{}' # JSON-serializable chain input
   ```
 
-  ```js Node.js theme={"system"}
+  ```javascript Node.js theme={"system"}
   const fetch = require('node-fetch');
 
   const resp = await fetch(

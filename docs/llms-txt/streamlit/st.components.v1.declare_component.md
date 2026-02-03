@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/custom-components/st.components.v1.declare_component
+
 # st.components.v1.declare_component
 
 Create a custom component and register it if there is a `ScriptRunContext`.

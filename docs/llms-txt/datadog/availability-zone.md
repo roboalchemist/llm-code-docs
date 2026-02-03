@@ -4,7 +4,6 @@
 title: Availability Zone Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > AWS Components > Availability Zone Component
-source_url: https://docs.datadoghq.com/components-aws/availability-zone/index.html
 ---
 
 # Availability Zone Component

@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/get-started/installation/command-line
+
 # Install Streamlit using command line
 
 This page will walk you through creating an environment with `venv` and installing Streamlit with `pip`. These are our recommended tools, but if you are familiar with others you can use your favorite ones too. At the end, you'll build a simple "Hello world" app and run it. If you prefer to have a graphical interface to manage your Python environments, check out how to [Install Streamlit using Anaconda Distribution](/get-started/installation/anaconda-distribution).

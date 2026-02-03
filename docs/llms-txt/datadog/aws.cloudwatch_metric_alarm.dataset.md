@@ -4,8 +4,6 @@
 title: CloudWatch Alarm
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > CloudWatch Alarm
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.cloudwatch_metric_alarm.dataset/index.html
 ---
 
 # CloudWatch Alarm
@@ -47,7 +45,7 @@ aws.cloudwatch_metric_alarm
 | state_updated_timestamp               | core | timestamp     | The time stamp of the last update to the value of either the StateValue or EvaluationState parameters.                                                                                                                                                                                                           |
 | state_value                           | core | string        | The state value for the alarm.                                                                                                                                                                                                                                                                                   |
 | statistic                             | core | string        | The statistic for the metric associated with the alarm, other than percentile. For percentile statistics, use ExtendedStatistic.                                                                                                                                                                                 |
-| tags                                  | core | hstore        |
+| tags                                  | core | hstore_csv    |
 | threshold                             | core | float64       | The value to compare with the specified statistic.                                                                                                                                                                                                                                                               |
 | threshold_metric_id                   | core | string        | In an alarm based on an anomaly detection model, this is the ID of the ANOMALY_DETECTION_BAND function used as the threshold for the alarm.                                                                                                                                                                      |
 | treat_missing_data                    | core | string        | Sets how this alarm is to handle missing data points. The valid values are breaching, notBreaching, ignore, and missing. For more information, see Configuring how CloudWatch alarms treat missing data. If this parameter is omitted, the default behavior of missing is used.                                  |

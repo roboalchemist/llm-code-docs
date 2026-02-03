@@ -6,7 +6,6 @@ description: Connect your logs and traces to correlate them in Datadog.
 breadcrumbs: >-
   Docs > APM > Correlate APM Data with Other Telemetry > Correlate Logs and
   Traces
-source_url: https://docs.datadoghq.com/other_telemetry/connect_logs_and_traces/index.html
 ---
 
 # Correlate Logs and Traces
@@ -23,3 +22,11 @@ Before correlating traces with logs, ensure your logs are either sent as JSON, o
 
 To learn more about automatically or manually connecting your logs to your traces, select your language below:
 
+- [Java](java)
+- [Python](python)
+- [go](go)
+- [Ruby](ruby)
+- [Node.js](nodejs)
+- [.Net](dotnet)
+- [PHP](php)
+- [OpenTelemetry](opentelemetry)

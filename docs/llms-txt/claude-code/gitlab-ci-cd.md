@@ -1,5 +1,9 @@
 # Source: https://code.claude.com/docs/en/gitlab-ci-cd.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Claude Code GitLab CI/CD
 
 > Learn about integrating Claude Code into your development workflow with GitLab CI/CD
@@ -79,7 +83,7 @@ claude:
   before_script:
     - apk update
     - apk add --no-cache git curl bash
-    - npm install -g @anthropic-ai/claude-code
+    - curl -fsSL https://claude.ai/install.sh | bash
   script:
     # Optional: start a GitLab MCP server if your setup provides one
     - /bin/gitlab-mcp-server || true
@@ -89,7 +93,7 @@ claude:
       claude
       -p "${AI_FLOW_INPUT:-'Review this MR and implement the requested changes'}"
       --permission-mode acceptEdits
-      --allowedTools "Bash(*) Read(*) Edit(*) Write(*) mcp__gitlab"
+      --allowedTools "Bash Read Edit Write mcp__gitlab"
       --debug
 ```
 
@@ -257,14 +261,14 @@ claude:
   before_script:
     - apk update
     - apk add --no-cache git curl bash
-    - npm install -g @anthropic-ai/claude-code
+    - curl -fsSL https://claude.ai/install.sh | bash
   script:
     - /bin/gitlab-mcp-server || true
     - >
       claude
       -p "${AI_FLOW_INPUT:-'Summarize recent changes and suggest improvements'}"
       --permission-mode acceptEdits
-      --allowedTools "Bash(*) Read(*) Edit(*) Write(*) mcp__gitlab"
+      --allowedTools "Bash Read Edit Write mcp__gitlab"
       --debug
   # Claude Code will use ANTHROPIC_API_KEY from CI/CD variables
 ```
@@ -291,7 +295,7 @@ claude-bedrock:
   before_script:
     - apk add --no-cache bash curl jq git python3 py3-pip
     - pip install --no-cache-dir awscli
-    - npm install -g @anthropic-ai/claude-code
+    - curl -fsSL https://claude.ai/install.sh | bash
     # Exchange GitLab OIDC token for AWS credentials
     - export AWS_WEB_IDENTITY_TOKEN_FILE="${CI_JOB_JWT_FILE:-/tmp/oidc_token}"
     - if [ -n "${CI_JOB_JWT_V2}" ]; then printf "%s" "$CI_JOB_JWT_V2" > "$AWS_WEB_IDENTITY_TOKEN_FILE"; fi
@@ -310,7 +314,7 @@ claude-bedrock:
       claude
       -p "${AI_FLOW_INPUT:-'Implement the requested changes and open an MR'}"
       --permission-mode acceptEdits
-      --allowedTools "Bash(*) Read(*) Edit(*) Write(*) mcp__gitlab"
+      --allowedTools "Bash Read Edit Write mcp__gitlab"
       --debug
   variables:
     AWS_REGION: "us-west-2"
@@ -341,8 +345,8 @@ claude-vertex:
   rules:
     - if: '$CI_PIPELINE_SOURCE == "web"'
   before_script:
-    - apt-get update && apt-get install -y git nodejs npm && apt-get clean
-    - npm install -g @anthropic-ai/claude-code
+    - apt-get update && apt-get install -y git && apt-get clean
+    - curl -fsSL https://claude.ai/install.sh | bash
     # Authenticate to Google Cloud via WIF (no downloaded keys)
     - >
       gcloud auth login --cred-file=<(cat <<EOF
@@ -363,7 +367,7 @@ claude-vertex:
       claude
       -p "${AI_FLOW_INPUT:-'Review and update code as requested'}"
       --permission-mode acceptEdits
-      --allowedTools "Bash(*) Read(*) Edit(*) Write(*) mcp__gitlab"
+      --allowedTools "Bash Read Edit Write mcp__gitlab"
       --debug
   variables:
     CLOUD_ML_REGION: "us-east5"
@@ -462,8 +466,3 @@ You can guide Claude in two primary ways:
 
 1. **CLAUDE.md**: Define coding standards, security requirements, and project conventions. Claude reads this during runs and follows your rules.
 2. **Custom prompts**: Pass task-specific instructions via `prompt`/`prompt_file` in the job. Use different prompts for different jobs (for example, review, implement, refactor).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://code.claude.com/docs/llms.txt

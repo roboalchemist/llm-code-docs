@@ -20,58 +20,16 @@
 
 # Source: https://docs.pinecone.io/guides/assistant/overview.md
 
-# Source: https://docs.pinecone.io/reference/sdks/rust/overview.md
-
-# Source: https://docs.pinecone.io/reference/sdks/python/overview.md
-
-# Source: https://docs.pinecone.io/reference/sdks/node/overview.md
-
-# Source: https://docs.pinecone.io/reference/sdks/java/overview.md
-
-# Source: https://docs.pinecone.io/reference/sdks/go/overview.md
-
-# Source: https://docs.pinecone.io/reference/sdks/dotnet/overview.md
-
-# Source: https://docs.pinecone.io/reference/cli/overview.md
-
-# Source: https://docs.pinecone.io/models/overview.md
-
-# Source: https://docs.pinecone.io/integrations/overview.md
-
-# Source: https://docs.pinecone.io/guides/get-started/overview.md
-
-# Source: https://docs.pinecone.io/guides/assistant/overview.md
-
-# Source: https://docs.pinecone.io/reference/cli/overview.md
-
-# Source: https://docs.pinecone.io/models/overview.md
-
-# Source: https://docs.pinecone.io/integrations/overview.md
-
-# Source: https://docs.pinecone.io/guides/get-started/overview.md
-
-# Source: https://docs.pinecone.io/guides/assistant/overview.md
-
-# Source: https://docs.pinecone.io/guides/get-started/overview.md
-
-# Source: https://docs.pinecone.io/guides/assistant/overview.md
-
-# Source: https://docs.pinecone.io/reference/cli/overview.md
-
-# Source: https://docs.pinecone.io/models/overview.md
-
-# Source: https://docs.pinecone.io/integrations/overview.md
-
-# Source: https://docs.pinecone.io/guides/get-started/overview.md
-
-# Source: https://docs.pinecone.io/guides/assistant/overview.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Pinecone Assistant
 
 > Pinecone Assistant is a service that allow you to build production-grade chat and agent-based applications quickly.
 
 <CardGroup cols={2}>
-  <Card title="Assistant quickstart" icon="comments" href="/guides/assistant/quickstart">
+  <Card title="Assistant quickstart" icon="comments" href="/guides/assistant/quickstart/sdk-quickstart">
     Create an AI assistant that answers complex questions about your proprietary data
   </Card>
 
@@ -90,7 +48,7 @@ Pinecone Assistant is useful for a variety of tasks, especially for the followin
 
 ## SDK support
 
-You can use the [Assistant API](/reference/api/latest/assistant/) directly, through the [Pinecone Python SDK](/reference/python-sdk), or through the [Pinecone Node.js SDK](/reference/node-sdk).
+You can use the [Assistant API](/reference/api/latest/assistant/) directly, through the [Pinecone Python SDK](/reference/sdks/python/overview), or through the [Pinecone Node.js SDK](/reference/sdks/node/overview).
 
 ## Workflow
 
@@ -132,7 +90,7 @@ You can use the Pinecone Assistant through the [Pinecone console](https://app.pi
   </Tab>
 
   <Tab title="Code sample">
-    The following code samples outline the Pinecone Assistant workflow using either the [Pinecone Python SDK](/reference/python-sdk) and [Pinecone Assistant plugin](/reference/python-sdk#install-the-pinecone-assistant-python-plugin) or the [Pinecone Node.js SDK](/reference/node-sdk).
+    The following code samples outline the Pinecone Assistant workflow using either the [Pinecone Python SDK](/reference/sdks/python/overview) and [Pinecone Assistant plugin](/reference/sdks/python/overview#install-the-pinecone-assistant-python-plugin) or the [Pinecone Node.js SDK](/reference/sdks/node/overview).
 
     <CodeGroup>
       ```python Python theme={null}

@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/model-types/ranking.md
 
-# Source: https://docs.aporia.com/model-types/ranking.md
-
-# Source: https://docs.aporia.com/v1/model-types/ranking.md
-
 # Ranking
 
 Ranking models are often used in recommendation systems, ads, search engines, etc. In Aporia, these models are represented with the `ranking` model type.

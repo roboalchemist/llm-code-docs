@@ -4,11 +4,7 @@
 
 A step-by-step guide to transitioning from WorkOS to Better Auth.
 
-***
 
-title: Migrating from WorkOS to Better Auth
-description: A step-by-step guide to transitioning from WorkOS to Better Auth.
-------------------------------------------------------------------------------
 
 In this guide, weâll walk through how to migrate a project from WorkOS to Better Auth, covering how to move a basic WorkOS setup integrated with a Next.js app and the key considerations to keep in mind.
 
@@ -186,7 +182,7 @@ Before getting started, letâs review which WorkOS authentication features a
 
     Run the `migrate` command to create the schema for your Better Auth instance in the database.
 
-    <CodeBlockTabs defaultValue="npm">
+    <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
       <CodeBlockTabsList>
         <CodeBlockTabsTrigger value="npm">
           npm
@@ -234,7 +230,7 @@ Before getting started, letâs review which WorkOS authentication features a
 
     If youâre using a database adapter like Prisma or Drizzle, use the `generate` command to create the schema for your ORM. After that, run the migration with an external tool such as Drizzle Kit.
 
-    <CodeBlockTabs defaultValue="npm">
+    <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
       <CodeBlockTabsList>
         <CodeBlockTabsTrigger value="npm">
           npm
@@ -768,7 +764,7 @@ Before getting started, letâs review which WorkOS authentication features a
 
     After verifying everything works, remove WorkOS dependencies:
 
-    <CodeBlockTabs defaultValue="npm">
+    <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
       <CodeBlockTabsList>
         <CodeBlockTabsTrigger value="npm">
           npm
@@ -816,19 +812,27 @@ Before getting started, letâs review which WorkOS authentication features a
 
 ## Considerations
 
-<strong className="underline italic">Password hashes</strong>
+<strong className="underline italic">
+  Password hashes
+</strong>
 
 If youâve been managing users with an email + password system, WorkOS does not provide an export of password hashes at this time. After migration, users will need to reset their passwords within your authentication system. Make sure to notify them of this change with sufficient lead time both before and after the migration.
 
-<strong className="underline italic">Data syncing</strong>
+<strong className="underline italic">
+  Data syncing
+</strong>
 
 WorkOS is a managed service and keeps your data in sync with your server through APIs or Webhooks. With Better Auth, you fully own your authentication system and can manage data freely through the API. However, if you previously relied on Webhooks for synchronization, additional adjustments will be needed.
 
-<strong className="underline italic">Downtime</strong>
+<strong className="underline italic">
+  Downtime
+</strong>
 
 WorkOS exposes data through its API, but with limitations such as the inability to export password hashes. Because of these constraints, performing a migration with zero downtime is challenging. Plan the migration carefully, allow enough buffer time, and communicate the expected impact to your users.
 
-<strong className="underline italic">Active sessions</strong>
+<strong className="underline italic">
+  Active sessions
+</strong>
 
 Existing active sessions will not be migrated. After the migration, users will need to sign in again, so be sure to notify them in advance.
 

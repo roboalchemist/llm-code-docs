@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/vehicles-api-intro.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Vehicles API Overview
 
 > The Vehicles API is Smartcar’s core API for accessing standardized vehicle data and sending remote commands to connected vehicles. It enables you to build applications that interact with a wide range of makes and models through a single, unified interface.

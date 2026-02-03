@@ -2,25 +2,13 @@
 
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/devtools-extracting-data.md
 
-# Source: https://docs.apify.com/academy/scraping-basics-python/devtools-extracting-data.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript/devtools-extracting-data.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-python/devtools-extracting-data.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript/devtools-extracting-data.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-python/devtools-extracting-data.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript2/devtools-extracting-data.md
-
 # Extracting data from a web page with browser DevTools
 
 **In this lesson we'll use the browser tools for developers to manually extract product data from an e-commerce website.**
 
 ***
 
-In our pursuit to scrape products from the https://warehouse-theme-metal.myshopify.com/collections/sales, we've been able to locate parent elements containing relevant data. Now how do we extract the data?
+In our pursuit to scrape products from the [Sales page](https://warehouse-theme-metal.myshopify.com/collections/sales), we've been able to locate parent elements containing relevant data. Now how do we extract the data?
 
 ## Finding product details
 
@@ -53,7 +41,7 @@ We'll use the **Elements** tab of DevTools to inspect all child elements of the 
 
 ![Finding child elements](/assets/images/devtools-product-details-83a62a55f65911b057ec16c4c7cde7b6.png)
 
-Browser JavaScript represents HTML elements as https://developer.mozilla.org/en-US/docs/Web/API/Element objects. Among properties we've already played with, such as `textContent` or `outerHTML`, it also has the https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelector method. Here the method looks for matches only within children of the element:
+Browser JavaScript represents HTML elements as [Element](https://developer.mozilla.org/en-US/docs/Web/API/Element) objects. Among properties we've already played with, such as `textContent` or `outerHTML`, it also has the [querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelector) method. Here the method looks for matches only within children of the element:
 
 
 ```
@@ -97,15 +85,15 @@ These challenges are here to help you test what you’ve learned in this lesson.
 
 Real world
 
-You're about to touch the real web, which is practical and exciting! But websites change, so some exercises might break. If you run into any issues, please leave a comment below or https://github.com/apify/apify-docs/issues.
+You're about to touch the real web, which is practical and exciting! But websites change, so some exercises might break. If you run into any issues, please leave a comment below or [file a GitHub Issue](https://github.com/apify/apify-docs/issues).
 
 ### Extract the price of IKEA's most expensive artificial plant
 
-At IKEA's https://www.ikea.com/se/en/cat/artificial-plants-flowers-20492/, use CSS selectors and HTML elements manipulation in the **Console** to extract the price of the most expensive artificial plant (sold in Sweden, as you'll be browsing their Swedish offer). Before opening DevTools, use your judgment to adjust the page to make the task as straightforward as possible. Finally, use the https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt function to convert the price text into a number.
+At IKEA's [Artificial plants & flowers listing](https://www.ikea.com/se/en/cat/artificial-plants-flowers-20492/), use CSS selectors and HTML elements manipulation in the **Console** to extract the price of the most expensive artificial plant (sold in Sweden, as you'll be browsing their Swedish offer). Before opening DevTools, use your judgment to adjust the page to make the task as straightforward as possible. Finally, use the [parseInt()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt) function to convert the price text into a number.
 
 Solution
 
-1. Open the https://www.ikea.com/se/en/cat/artificial-plants-flowers-20492/.
+1. Open the [Artificial plants & flowers listing](https://www.ikea.com/se/en/cat/artificial-plants-flowers-20492/).
 2. Sort the products by price, from high to low, so the most expensive plant appears first in the listing.
 3. Activate the element selection tool in your DevTools.
 4. Click on the price of the first and most expensive plant.
@@ -113,17 +101,17 @@ Solution
 6. In the **Console**, execute `document.querySelector('.plp-price__integer')`. This returns the element representing the first price in the listing. Since `document.querySelector()` returns the first matching element, it directly selects the most expensive plant's price.
 7. Save the element in a variable by executing `price = document.querySelector('.plp-price__integer')`.
 8. Convert the price text into a number by executing `parseInt(price.textContent)`.
-9. At the time of writing, this returns `699`, meaning https://www.google.com/search?q=699%20sek.
+9. At the time of writing, this returns `699`, meaning [699 SEK](https://www.google.com/search?q=699%20sek).
 
 ### Extract the name of the top wiki on Fandom Movies
 
-On Fandom's https://www.fandom.com/topics/movies, use CSS selectors and HTML element manipulation in the **Console** to extract the name of the top wiki. Use the https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trim method to remove white space around the name.
+On Fandom's [Movies page](https://www.fandom.com/topics/movies), use CSS selectors and HTML element manipulation in the **Console** to extract the name of the top wiki. Use the [trim()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trim) method to remove white space around the name.
 
 ![Fandom\&#39;s Movies page](/assets/images/devtools-exercise-fandom-2ca7a8be3f2ec2f4cb54aeb459a20591.png)
 
 Solution
 
-1. Open the https://www.fandom.com/topics/movies.
+1. Open the [Movies page](https://www.fandom.com/topics/movies).
 2. Activate the element selection tool in your DevTools.
 3. Click on the list item for the top Fandom wiki in the category.
 4. Notice that it has a class `topic_explore-wikis__link`.
@@ -133,13 +121,13 @@ Solution
 
 ### Extract details about the first post on Guardian's F1 news
 
-On the Guardian's https://www.theguardian.com/sport/formulaone, use CSS selectors and HTML manipulation in the **Console** to extract details about the first post. Specifically, extract its title, lead paragraph, and URL of the associated photo.
+On the Guardian's [F1 news page](https://www.theguardian.com/sport/formulaone), use CSS selectors and HTML manipulation in the **Console** to extract details about the first post. Specifically, extract its title, lead paragraph, and URL of the associated photo.
 
 ![F1 news page](/assets/images/devtools-exercise-guardian2-387ac6e6789398edf8ec27dcf214d0a0.png)
 
 Solution
 
-1. Open the https://www.theguardian.com/sport/formulaone.
+1. Open the [F1 news page](https://www.theguardian.com/sport/formulaone).
 2. Activate the element selection tool in your DevTools.
 3. Click on the first post.
 4. Notice that the markup does not provide clear, reusable class names for this task. The structure uses generic tag names and randomized classes, requiring you to rely on the element hierarchy and order instead.

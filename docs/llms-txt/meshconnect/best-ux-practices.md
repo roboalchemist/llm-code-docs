@@ -1,5 +1,9 @@
 # Source: https://docs.meshconnect.com/advanced/best-ux-practices.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.meshconnect.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Best UX Practices & Examples
 
 Mesh provides a faster, safer, and more reliable way for users to move funds from exchanges and wallets directly into your platform. By replacing error-prone QR codes and manual address entry with a seamless, embedded flow, you can significantly increase conversion and user satisfaction.

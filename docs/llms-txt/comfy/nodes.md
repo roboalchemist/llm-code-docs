@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/development/core-concepts/nodes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Nodes
 
 > Understand the concept of a node in ComfyUI.
@@ -12,7 +16,7 @@ The combinations of different nodes create the unlimited possibilities of ComfyU
 For example, in the K-Sampler node, you can see it has multiple inputs and outputs, and also includes multiple parameter settings. These parameters determine the logic of node execution. Behind each node is well-written Python logic, allowing you to achieve corresponding functionality without having to write code yourself.
 
 <Note>
-  As ComfyUI is still in rapid iteration and development, we are continuously improving it every day. Therefore, some operations mentioned in this article may change or be omitted. Please refer to the actual interface. If you find changes in actual operations, it may be due to our iterative updates. You can also fork [this repo](https://github.com/Comfy-Org/docs) and help us improve this documentation.
+  ComfyUI is under active development, so some details here may be outdated. If you spot something that's changed, feel free to [help us update the docs](https://github.com/Comfy-Org/docs).
 </Note>
 
 ## Nodes perform operations
@@ -73,8 +77,7 @@ We provide various style settings for you to customize the appearance of nodes:
 
 * Modify styles
 * Double-click the node title to modify the node name
-* Switch node inputs between input sockets and widgets through the context menu
-* Resize the node using the bottom right corner
+* Resize the node by dragging any corner
 
 <video controls className="w-full aspect-video" src="https://mintcdn.com/dripart/CGWmMjlFmU7msQ5S/images/concepts/node/node_appearance.mp4?fit=max&auto=format&n=CGWmMjlFmU7msQ5S&q=85&s=2fb1ff4aac3396cb3e4ecbebd8db7b14" data-path="images/concepts/node/node_appearance.mp4" />
 
@@ -115,7 +118,6 @@ In the node's right-click context menu, you can:
 In this menu, besides appearance-related settings, the following menu operations are important:
 
 * **Mode**: Set the node's mode: Always, Never, Bypass
-* **Toggle between Widget and Input mode for node inputs**: Switch between widget and input mode for node inputs
 
 #### Mode
 
@@ -133,24 +135,6 @@ In this comparison example, you can see that both workflows apply two LoRA model
 
 * The node set to `Never` mode causes subsequent nodes to show errors because they don't receive any input data
 * The node set to `Bypass` mode still allows subsequent nodes to receive unprocessed data, so they load the output data from the first `Load LoRA` node, allowing the subsequent workflow to continue running normally
-
-#### Switching Between Widget and Input Mode for Node Inputs
-
-In some cases, we need to use output results from other nodes as input. In this case, we can switch between widget and input mode for node inputs.
-
-Here's a very simple example:
-
-<img src="https://mintcdn.com/dripart/CGWmMjlFmU7msQ5S/images/concepts/node/switch_widget.jpg?fit=max&auto=format&n=CGWmMjlFmU7msQ5S&q=85&s=de80d70f869e562667135ebc71f2e91c" alt="Switch Widget and Input Mode" data-og-width="1500" width="1500" data-og-height="694" height="694" data-path="images/concepts/node/switch_widget.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dripart/CGWmMjlFmU7msQ5S/images/concepts/node/switch_widget.jpg?w=280&fit=max&auto=format&n=CGWmMjlFmU7msQ5S&q=85&s=5e8061f8deb6078ff5b7f871021752cd 280w, https://mintcdn.com/dripart/CGWmMjlFmU7msQ5S/images/concepts/node/switch_widget.jpg?w=560&fit=max&auto=format&n=CGWmMjlFmU7msQ5S&q=85&s=2a556df1052139a92c4e9bfb431ece85 560w, https://mintcdn.com/dripart/CGWmMjlFmU7msQ5S/images/concepts/node/switch_widget.jpg?w=840&fit=max&auto=format&n=CGWmMjlFmU7msQ5S&q=85&s=f542d9157f6862975fa0900cc9cc6e3f 840w, https://mintcdn.com/dripart/CGWmMjlFmU7msQ5S/images/concepts/node/switch_widget.jpg?w=1100&fit=max&auto=format&n=CGWmMjlFmU7msQ5S&q=85&s=e0017f836d9a581ac9dd7c0028cbbc3a 1100w, https://mintcdn.com/dripart/CGWmMjlFmU7msQ5S/images/concepts/node/switch_widget.jpg?w=1650&fit=max&auto=format&n=CGWmMjlFmU7msQ5S&q=85&s=79bc8b9f5c8ede61d61c896cfbed4950 1650w, https://mintcdn.com/dripart/CGWmMjlFmU7msQ5S/images/concepts/node/switch_widget.jpg?w=2500&fit=max&auto=format&n=CGWmMjlFmU7msQ5S&q=85&s=139f05101a1b3f0682796d2ed099a194 2500w" />
-
-By switching the K-Sampler's Seed from widget to input mode, multiple nodes can share the same seed, achieving variable uniformity across multiple samplers.
-Comparing the first node with the subsequent two nodes, you can see that the seed in the latter two nodes is in input mode. You can also convert it back to widget mode:
-
-<img src="https://mintcdn.com/dripart/CGWmMjlFmU7msQ5S/images/concepts/node/convert_input.jpg?fit=max&auto=format&n=CGWmMjlFmU7msQ5S&q=85&s=4be72fd7768910bfc0c8a76196b1c39b" alt="Convert Input Mode" data-og-width="1000" width="1000" data-og-height="1112" height="1112" data-path="images/concepts/node/convert_input.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dripart/CGWmMjlFmU7msQ5S/images/concepts/node/convert_input.jpg?w=280&fit=max&auto=format&n=CGWmMjlFmU7msQ5S&q=85&s=42ff0a1cb530749966011c75fba0bbe0 280w, https://mintcdn.com/dripart/CGWmMjlFmU7msQ5S/images/concepts/node/convert_input.jpg?w=560&fit=max&auto=format&n=CGWmMjlFmU7msQ5S&q=85&s=f876e44bf7334acbae177a4af9e156ae 560w, https://mintcdn.com/dripart/CGWmMjlFmU7msQ5S/images/concepts/node/convert_input.jpg?w=840&fit=max&auto=format&n=CGWmMjlFmU7msQ5S&q=85&s=8459338ee2f090888f5dbc788303520d 840w, https://mintcdn.com/dripart/CGWmMjlFmU7msQ5S/images/concepts/node/convert_input.jpg?w=1100&fit=max&auto=format&n=CGWmMjlFmU7msQ5S&q=85&s=98d5cf040acd8c74303bead8e9a9bb2b 1100w, https://mintcdn.com/dripart/CGWmMjlFmU7msQ5S/images/concepts/node/convert_input.jpg?w=1650&fit=max&auto=format&n=CGWmMjlFmU7msQ5S&q=85&s=0a4a34447189cac5c03c491e321b17b0 1650w, https://mintcdn.com/dripart/CGWmMjlFmU7msQ5S/images/concepts/node/convert_input.jpg?w=2500&fit=max&auto=format&n=CGWmMjlFmU7msQ5S&q=85&s=de6c19d1632929a2102cfb87cecf7edb 2500w" />
-
-<Note>
-  After frontend version v1.16.0, we improved this feature. Now you only need to directly connect the input line to the corresponding widget to complete this process
-  <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Say goodbye to annoying widget \<> socket conversion starting from frontend version v1.16.0! Now each widget just always have an associated input socket by default <a href="https://twitter.com/hashtag/ComfyUI?src=hash&ref_src=twsrc%5Etfw">#ComfyUI</a> <a href="https://t.co/sP9HHKyGYW">pic.twitter.com/sP9HHKyGYW</a></p>— Chenlei Hu (@HclHno3) <a href="https://twitter.com/HclHno3/status/1909059259536375961?ref_src=twsrc%5Etfw">April 7, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8" />
-</Note>
 
 ### Input/Output Context Menu
 

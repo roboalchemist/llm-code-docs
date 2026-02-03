@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/bfla/
+
 # Broken Function Level Authorization (BFLA) Plugin
 
 The BFLA (Broken Function Level Authorization) red teaming plugin is designed to test an AI system's ability to maintain proper authorization controls for specific functions or actions ([OWASP API 5](https://owasp.org/www-project-api-security/)).

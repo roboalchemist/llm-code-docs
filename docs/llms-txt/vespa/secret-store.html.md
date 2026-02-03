@@ -130,7 +130,7 @@ Typically, store the `Secret` in your class, and when you want to use the secret
 
 Ensure that you do not store the `current` value itself - then the secret value will not be updated when the configuration is changed.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

@@ -1,6 +1,8 @@
 # Source: https://www.activepieces.com/docs/build-pieces/misc/dev-container.md
 
-# Source: https://www.activepieces.com/docs/developers/development-setup/dev-container.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Dev Containers
 
@@ -31,7 +33,7 @@ To use the dev container for the Activepieces project, follow these steps:
   `packages/server/api/.env` and add comma-separated list of pieces to make
   available.
 
-  For more details, check out the [Piece Development](/developers/development-setup/getting-started) section.
+  For more details, check out the [Piece Development](/build-pieces/building-pieces/development-setup#pieces-development) section.
 </Note>
 
 The login credentials are:\

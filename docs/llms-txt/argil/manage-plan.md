@@ -1,5 +1,9 @@
 # Source: https://docs.argil.ai/resources/manage-plan.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.argil.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Managing Your Subscription
 
 > How to upgrade, downgrade and cancel your subscription
@@ -41,3 +45,7 @@
 1. Go to "My workspace" on the top left corner of your screen.
 2. Go to "Settings"
 3. Go to "Cancel"
+
+### Can I pause my subscription ?
+
+No, but if you cancel and come back later, you will still have access to all your projects and avatars.

@@ -107,7 +107,45 @@ This is ideal for:
   ```
 
 
-See: [get_session_command_logs_async (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processget_session_command_logs_async), [getSessionCommandLogs (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#getsessioncommandlogs)
+  ```ruby
+  require 'daytona'
+
+  daytona = Daytona::Daytona.new
+  sandbox = daytona.create
+
+  session_id = 'streaming-session'
+  sandbox.process.create_session(session_id)
+
+  command = sandbox.process.execute_session_command(
+    session_id,
+    Daytona::SessionExecuteRequest.new(
+      command: 'for i in {1..5}; do echo "Step $i"; echo "Error $i" >&2; sleep 1; done',
+      var_async: true
+    )
+  )
+
+  # Stream logs using a thread
+  log_thread = Thread.new do
+    sandbox.process.get_session_command_logs_stream(
+      session_id,
+      command.cmd_id,
+      on_stdout: ->(stdout) { puts "[STDOUT]: #{stdout}" },
+      on_stderr: ->(stderr) { puts "[STDERR]: #{stderr}" }
+    )
+  end
+
+  puts 'Continuing execution while logs are streaming...'
+  sleep(3)
+  puts 'Other operations completed!'
+
+  # Wait for the logs to complete
+  log_thread.join
+
+  daytona.delete(sandbox)
+  ```
+
+
+See: [get_session_command_logs_async (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processget_session_command_logs_async), [getSessionCommandLogs (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#getsessioncommandlogs), [get_session_command_logs_stream (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/process.md#get_session_command_logs_stream)
 
 ## Retrieve All Existing Logs
 
@@ -190,4 +228,41 @@ periodically check all existing logs, you can use the following example to get t
   ```
 
 
-See: [get_session_command_logs_async (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processget_session_command_logs_async), [getSessionCommandLogs (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#getsessioncommandlogs)
+  ```ruby
+  require 'daytona'
+
+  daytona = Daytona::Daytona.new
+  sandbox = daytona.create
+  session_id = 'exec-session-1'
+  sandbox.process.create_session(session_id)
+
+  # Execute a blocking command and wait for the result
+  command = sandbox.process.execute_session_command(
+    session_id,
+    Daytona::SessionExecuteRequest.new(
+      command: 'echo "Hello from stdout" && echo "Hello from stderr" >&2'
+    )
+  )
+  puts "[STDOUT]: #{command.stdout}"
+  puts "[STDERR]: #{command.stderr}"
+  puts "[OUTPUT]: #{command.output}"
+
+  # Or execute command in the background and get the logs later
+  command = sandbox.process.execute_session_command(
+    session_id,
+    Daytona::SessionExecuteRequest.new(
+      command: 'while true; do if (( RANDOM % 2 )); then echo "All good at $(date)"; else echo "Oops, an error at $(date)" >&2; fi; sleep 1; done',
+      var_async: true
+    )
+  )
+  sleep(5)
+  # Get the logs up to the current point in time
+  logs = sandbox.process.get_session_command_logs(session_id, command.cmd_id)
+  puts "[STDOUT]: #{logs.stdout}"
+  puts "[STDERR]: #{logs.stderr}"
+  puts "[OUTPUT]: #{logs.output}"
+
+  daytona.delete(sandbox)
+  ```
+
+See: [get_session_command_logs_async (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processget_session_command_logs_async), [getSessionCommandLogs (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#getsessioncommandlogs), [get_session_command_logs (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/process.md#get_session_command_logs)

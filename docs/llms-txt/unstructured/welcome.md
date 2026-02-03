@@ -1,12 +1,31 @@
 # Source: https://docs.unstructured.io/welcome.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Welcome to Unstructured!
 
 <Tip>To start using Unstructured right away, skip ahead to the <Icon icon="desktop" /> [UI quickstart](#unstructured-ui-quickstart) or <Icon icon="rectangle-terminal" /> [API quickstart](#unstructured-api-quickstart) now!</Tip>
 
 ## What is Unstructured?
 
-Unstructured provides a platform and tools to ingest and process unstructured documents for [retrieval-augmented generation (RAG)](https://unstructured.io/blog/rag-whitepaper) and [agentic AI](https://unstructured.io/problems-we-solve#powering-agentic-ai).
+<Frame caption="Unstructured turns your organization's unstructured documents into structured, AI-ready data at scale with high performance, accuracy, and relevance">
+  <img src="https://mintcdn.com/unstructured-53/HIy1tdX-YgPq1b1H/img/welcome/conceptual-flow.png?fit=max&auto=format&n=HIy1tdX-YgPq1b1H&q=85&s=eda1bc5280bfd7a7ee9ae07d6058e9ed" alt="Unstructured conceptual data flow" data-og-width="768" width="768" data-og-height="182" height="182" data-path="img/welcome/conceptual-flow.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/unstructured-53/HIy1tdX-YgPq1b1H/img/welcome/conceptual-flow.png?w=280&fit=max&auto=format&n=HIy1tdX-YgPq1b1H&q=85&s=5434ec0887912432d07058a4494cc87e 280w, https://mintcdn.com/unstructured-53/HIy1tdX-YgPq1b1H/img/welcome/conceptual-flow.png?w=560&fit=max&auto=format&n=HIy1tdX-YgPq1b1H&q=85&s=3407069e35a8872f022fe2c3f110343e 560w, https://mintcdn.com/unstructured-53/HIy1tdX-YgPq1b1H/img/welcome/conceptual-flow.png?w=840&fit=max&auto=format&n=HIy1tdX-YgPq1b1H&q=85&s=8378838d3e06ca529ce742cc5d7db004 840w, https://mintcdn.com/unstructured-53/HIy1tdX-YgPq1b1H/img/welcome/conceptual-flow.png?w=1100&fit=max&auto=format&n=HIy1tdX-YgPq1b1H&q=85&s=90e34f0293f1a8301098c153788f2ae5 1100w, https://mintcdn.com/unstructured-53/HIy1tdX-YgPq1b1H/img/welcome/conceptual-flow.png?w=1650&fit=max&auto=format&n=HIy1tdX-YgPq1b1H&q=85&s=6d7f5b9585a2b09eeca0407d803c6a37 1650w, https://mintcdn.com/unstructured-53/HIy1tdX-YgPq1b1H/img/welcome/conceptual-flow.png?w=2500&fit=max&auto=format&n=HIy1tdX-YgPq1b1H&q=85&s=00fcaf9db899ad53b964c1e51d15823b 2500w" />
+</Frame>
+
+Unstructured provides a platform and tools to ingest and process your unstructured documents for:
+
+* [Enhancing retrieval-augmented generation (RAG)](https://unstructured.io/blog/rag-whitepaper): RAG boosts AI accuracy and relevance by working with the data that's most important to you, providing results that are more current, focused, and meaningful to your queries and tasks.
+* [Fueling agentic AI](https://unstructured.io/problems-we-solve#powering-agentic-ai): Agentic AI acts like virtual teammates that can plan, decide, and take action on their own to get things done on your behalf, freeing you up for bigger challenges.
+
+We empower your organization to take full advantage of RAG and agentic AI opportunities through:
+
+* [Rapid prototyping](https://unstructured.io/problems-we-solve#rapid-prototyping): Quickly iterating on AI experiences powered by enterprise data.
+* [Replacing do-it-yourself data transformation pipelines](https://unstructured.io/problems-we-solve#replacing-diy-pipelines): Building your own data transformation pipelines is time-consuming and error-prone.
+* [Unifying data silos](https://unstructured.io/problems-we-solve#unifying-data-silos): Eliminating data barriers and creating shared GenAI data layers.
+* [Continuous data delivery](https://unstructured.io/problems-we-solve#continuous-data-delivery): Scheduling jobs, routing documents, and optimizing every task.
+* [Business process automation](https://unstructured.io/problems-we-solve#business-process-automation): Report generation, automatic responses, decision-making, content analysis, and more!
 
 This 60-second video describes more about what Unstructured does and its benefits (no sound):
 
@@ -21,6 +40,14 @@ This 60-second video shows why using Unstructured is preferable to building your
 <iframe width="560" height="315" src="https://www.youtube.com/embed/P9HzldV72ho" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
 
 You can use Unstructured through a user interface (UI), an API, or both. Read on to learn more.
+
+<Frame caption="An example of the Unstructured user interface, showing a local file being partitioned">
+  <img src="https://mintcdn.com/unstructured-53/HIy1tdX-YgPq1b1H/img/welcome/user-interface.png?fit=max&auto=format&n=HIy1tdX-YgPq1b1H&q=85&s=ce845e77a23b31d82aa2d3eea405e07e" alt="Unstructured user interface example" data-og-width="847" width="847" data-og-height="454" height="454" data-path="img/welcome/user-interface.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/unstructured-53/HIy1tdX-YgPq1b1H/img/welcome/user-interface.png?w=280&fit=max&auto=format&n=HIy1tdX-YgPq1b1H&q=85&s=29a32b0aebc8f086cd7174f54664e26f 280w, https://mintcdn.com/unstructured-53/HIy1tdX-YgPq1b1H/img/welcome/user-interface.png?w=560&fit=max&auto=format&n=HIy1tdX-YgPq1b1H&q=85&s=14c13dd9265fca636177c76a76999d70 560w, https://mintcdn.com/unstructured-53/HIy1tdX-YgPq1b1H/img/welcome/user-interface.png?w=840&fit=max&auto=format&n=HIy1tdX-YgPq1b1H&q=85&s=2be1c444b6eea963c18db2d16760ab4f 840w, https://mintcdn.com/unstructured-53/HIy1tdX-YgPq1b1H/img/welcome/user-interface.png?w=1100&fit=max&auto=format&n=HIy1tdX-YgPq1b1H&q=85&s=86907d2abfaf06254d2d3d225f24ac53 1100w, https://mintcdn.com/unstructured-53/HIy1tdX-YgPq1b1H/img/welcome/user-interface.png?w=1650&fit=max&auto=format&n=HIy1tdX-YgPq1b1H&q=85&s=6c85afdb0f0c44ff8c90672c5d5a77e0 1650w, https://mintcdn.com/unstructured-53/HIy1tdX-YgPq1b1H/img/welcome/user-interface.png?w=2500&fit=max&auto=format&n=HIy1tdX-YgPq1b1H&q=85&s=ad9a607a5deda7a3d7bc071372fe08cb 2500w" />
+</Frame>
+
+<Frame caption="An example of the Unstructured API, showing the code to process a local file on demand">
+  <img src="https://mintcdn.com/unstructured-53/HIy1tdX-YgPq1b1H/img/welcome/api.png?fit=max&auto=format&n=HIy1tdX-YgPq1b1H&q=85&s=33a4944ecb1c94b25e5a70f0c4723089" alt="Unstructured API example" data-og-width="547" width="547" data-og-height="635" height="635" data-path="img/welcome/api.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/unstructured-53/HIy1tdX-YgPq1b1H/img/welcome/api.png?w=280&fit=max&auto=format&n=HIy1tdX-YgPq1b1H&q=85&s=04eca8e1293c949e2d1d70e837b1f423 280w, https://mintcdn.com/unstructured-53/HIy1tdX-YgPq1b1H/img/welcome/api.png?w=560&fit=max&auto=format&n=HIy1tdX-YgPq1b1H&q=85&s=b48a286058c01d0081b99bacdaee2d25 560w, https://mintcdn.com/unstructured-53/HIy1tdX-YgPq1b1H/img/welcome/api.png?w=840&fit=max&auto=format&n=HIy1tdX-YgPq1b1H&q=85&s=d11584bd2f75b3b446e16670421ac542 840w, https://mintcdn.com/unstructured-53/HIy1tdX-YgPq1b1H/img/welcome/api.png?w=1100&fit=max&auto=format&n=HIy1tdX-YgPq1b1H&q=85&s=dc2161e7726ac4b5ed81f39e6d37175b 1100w, https://mintcdn.com/unstructured-53/HIy1tdX-YgPq1b1H/img/welcome/api.png?w=1650&fit=max&auto=format&n=HIy1tdX-YgPq1b1H&q=85&s=990c1ff16459ef167c774021b16850e8 1650w, https://mintcdn.com/unstructured-53/HIy1tdX-YgPq1b1H/img/welcome/api.png?w=2500&fit=max&auto=format&n=HIy1tdX-YgPq1b1H&q=85&s=efe183400a78d8879edb5d09cbd94d47 2500w" />
+</Frame>
 
 ***
 
@@ -40,6 +67,15 @@ best-in-class transformation results for a single file that is stored on your lo
 If you do not already have an Unstructured account, [sign up for free](https://unstructured.io/?modal=try-for-free).
 After you sign up, you are automatically signed in to your new Unstructured **Let's Go** account, at [https://platform.unstructured.io](https://platform.unstructured.io).
 
+<Note>
+  If you already have an Unstructured **Pay-As-You-Go** or **Business SaaS** account, you are already signed up for Unstructured.
+  Sign in to your existing Unstructured **Pay-As-You-Go** or **Business SaaS** account, at [https://platform.unstructured.io](https://platform.unstructured.io).
+
+  If you already have an Unstructured **dedicated instance** or **in-VPC** deployment, your sign-in link will be unique to your deployment.
+  If you're not sure what your unique sign-in link is, see your Unstructured account administrator, or email Unstructured Support at
+  [support@unstructured.io](mailto:support@unstructured.io).
+</Note>
+
 Do the following:
 
 1. After you are signed in, the **Start** page appears.
@@ -49,7 +85,7 @@ Do the following:
    * Click one of the sample files, such as **realestate.pdf**, to have Unstructured parse and transform that sample file.
    * Click **Browse files**, or drag and drop a file onto **Drop file to test**, to have Unstructured parse and transform your own file.
 
-     If you choose to use your own file, the file must be 10 MB or less in size. Also, the file must one of the following supported file types:
+     If you choose to use your own file, the file must be 10 MB or less in size. Also, the file must be one of the following supported file types:
 
      | File extension |
      | -------------- |
@@ -100,14 +136,14 @@ Do the following:
 5. Unstructured's initial results are based on its **High Res** [partitioning strategy](/ui/partitioning), which
    begins processing the file's contents and converting these contents into a series of Unstructured
    [document elements and metadata](/ui/document-elements). This partitioning strategy provides good results overall, depending on the complexity of the file's contents.
-   This partioning strategy also generates a bounding box for each detected object in the file. A *bounding box* is
+   This partitioning strategy also generates a bounding box for each detected object in the file. A *bounding box* is
    an imaginary rectangular box drawn around the object to show its location and extent within the file.
 
    After the High Res partitioning results are shown, Unstructured begins improving these initial results by
    using vision language models (VLMs) to apply a series of generative refinements known as *enrichments*. These
    enrichments include:
 
-   * An [image description](ui/enriching/image-descriptions) enrichment, which uses a VLM to provide a text-based summary of the contents of the each detected image.
+   * An [image description](ui/enriching/image-descriptions) enrichment, which uses a VLM to provide a text-based summary of the contents of each detected image.
    * A [generative OCR](/ui/enriching/generative-ocr) enrichment, which uses a VLM to improve the accuracy of each block of initially-processed text.
    * A [table to HTML](/ui/enriching/table-to-html) enrichment, which uses a VLM to provide an HTML-structured representation of each detected table.
 
@@ -118,12 +154,12 @@ Do the following:
    To see these enrichments applied to the initial results, click **Update results** in the banner as soon as this button appears,
    which might take up to a minute or more.
 
-   <img src="https://mintcdn.com/unstructured-53/7V13mJi2iZBZVTP5/img/ui/single-file/apply-generative-refinement.png?fit=max&auto=format&n=7V13mJi2iZBZVTP5&q=85&s=c202060fb848a8d6b2f9e66d56f237e3" alt="Seeing the initial results udpated with the enrichments" data-og-width="780" width="780" data-og-height="136" height="136" data-path="img/ui/single-file/apply-generative-refinement.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/unstructured-53/7V13mJi2iZBZVTP5/img/ui/single-file/apply-generative-refinement.png?w=280&fit=max&auto=format&n=7V13mJi2iZBZVTP5&q=85&s=17e2c361e58150cc835104992fcc1f94 280w, https://mintcdn.com/unstructured-53/7V13mJi2iZBZVTP5/img/ui/single-file/apply-generative-refinement.png?w=560&fit=max&auto=format&n=7V13mJi2iZBZVTP5&q=85&s=807074d22044d67c874ed64905ff0bc2 560w, https://mintcdn.com/unstructured-53/7V13mJi2iZBZVTP5/img/ui/single-file/apply-generative-refinement.png?w=840&fit=max&auto=format&n=7V13mJi2iZBZVTP5&q=85&s=b51f77a1feb7c274c413b341864acb39 840w, https://mintcdn.com/unstructured-53/7V13mJi2iZBZVTP5/img/ui/single-file/apply-generative-refinement.png?w=1100&fit=max&auto=format&n=7V13mJi2iZBZVTP5&q=85&s=85191b797d7497912da2c307082fdd4a 1100w, https://mintcdn.com/unstructured-53/7V13mJi2iZBZVTP5/img/ui/single-file/apply-generative-refinement.png?w=1650&fit=max&auto=format&n=7V13mJi2iZBZVTP5&q=85&s=8a41a763664ec3b6838e2613770c6f7c 1650w, https://mintcdn.com/unstructured-53/7V13mJi2iZBZVTP5/img/ui/single-file/apply-generative-refinement.png?w=2500&fit=max&auto=format&n=7V13mJi2iZBZVTP5&q=85&s=1f9015b9a4aa1bb4837736cc05f62aac 2500w" />
+   <img src="https://mintcdn.com/unstructured-53/7V13mJi2iZBZVTP5/img/ui/single-file/apply-generative-refinement.png?fit=max&auto=format&n=7V13mJi2iZBZVTP5&q=85&s=c202060fb848a8d6b2f9e66d56f237e3" alt="Seeing the initial results updated with the enrichments" data-og-width="780" width="780" data-og-height="136" height="136" data-path="img/ui/single-file/apply-generative-refinement.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/unstructured-53/7V13mJi2iZBZVTP5/img/ui/single-file/apply-generative-refinement.png?w=280&fit=max&auto=format&n=7V13mJi2iZBZVTP5&q=85&s=17e2c361e58150cc835104992fcc1f94 280w, https://mintcdn.com/unstructured-53/7V13mJi2iZBZVTP5/img/ui/single-file/apply-generative-refinement.png?w=560&fit=max&auto=format&n=7V13mJi2iZBZVTP5&q=85&s=807074d22044d67c874ed64905ff0bc2 560w, https://mintcdn.com/unstructured-53/7V13mJi2iZBZVTP5/img/ui/single-file/apply-generative-refinement.png?w=840&fit=max&auto=format&n=7V13mJi2iZBZVTP5&q=85&s=b51f77a1feb7c274c413b341864acb39 840w, https://mintcdn.com/unstructured-53/7V13mJi2iZBZVTP5/img/ui/single-file/apply-generative-refinement.png?w=1100&fit=max&auto=format&n=7V13mJi2iZBZVTP5&q=85&s=85191b797d7497912da2c307082fdd4a 1100w, https://mintcdn.com/unstructured-53/7V13mJi2iZBZVTP5/img/ui/single-file/apply-generative-refinement.png?w=1650&fit=max&auto=format&n=7V13mJi2iZBZVTP5&q=85&s=8a41a763664ec3b6838e2613770c6f7c 1650w, https://mintcdn.com/unstructured-53/7V13mJi2iZBZVTP5/img/ui/single-file/apply-generative-refinement.png?w=2500&fit=max&auto=format&n=7V13mJi2iZBZVTP5&q=85&s=1f9015b9a4aa1bb4837736cc05f62aac 2500w" />
 
    <Warning>
      Each page that Unstructured processes by using this approach is counted as two pages for usage and billing purposes.
 
-     This is because Unstructured processes each page once with its **High Res** partitioning strategy and then reprocessess each
+     This is because Unstructured processes each page once with its **High Res** partitioning strategy and then reprocesses each
      page with a VLM to improve the quality, accuracy, and relevance of the initial partitioning results.
      The final results of these two processing passes for each page count as two pages for usage and billing purposes.
      This two-pass process happens regardless of whether you click **Update results** in the banner.
@@ -164,38 +200,56 @@ You can also do the following:
 
   <img src="https://mintcdn.com/unstructured-53/7V13mJi2iZBZVTP5/img/ui/single-file/workflow-editor.png?fit=max&auto=format&n=7V13mJi2iZBZVTP5&q=85&s=26be748d279c116a252e5b6c6f67a4d9" alt="Switching to the workflow editor" data-og-width="732" width="732" data-og-height="204" height="204" data-path="img/ui/single-file/workflow-editor.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/unstructured-53/7V13mJi2iZBZVTP5/img/ui/single-file/workflow-editor.png?w=280&fit=max&auto=format&n=7V13mJi2iZBZVTP5&q=85&s=642196362851e6712f147852b25f4c2e 280w, https://mintcdn.com/unstructured-53/7V13mJi2iZBZVTP5/img/ui/single-file/workflow-editor.png?w=560&fit=max&auto=format&n=7V13mJi2iZBZVTP5&q=85&s=ce9d1f294fcce62e765aa0eb779b7d6b 560w, https://mintcdn.com/unstructured-53/7V13mJi2iZBZVTP5/img/ui/single-file/workflow-editor.png?w=840&fit=max&auto=format&n=7V13mJi2iZBZVTP5&q=85&s=630afa312e041fe9108b4b2619b81b61 840w, https://mintcdn.com/unstructured-53/7V13mJi2iZBZVTP5/img/ui/single-file/workflow-editor.png?w=1100&fit=max&auto=format&n=7V13mJi2iZBZVTP5&q=85&s=0e0c3660d434f1cd0b4ec3105fc90220 1100w, https://mintcdn.com/unstructured-53/7V13mJi2iZBZVTP5/img/ui/single-file/workflow-editor.png?w=1650&fit=max&auto=format&n=7V13mJi2iZBZVTP5&q=85&s=95c8df27fd2134ec386f5a7f89f4a308 1650w, https://mintcdn.com/unstructured-53/7V13mJi2iZBZVTP5/img/ui/single-file/workflow-editor.png?w=2500&fit=max&auto=format&n=7V13mJi2iZBZVTP5&q=85&s=a258ffbc479e29cdeb6ded440a5e4e33 2500w" />
 
-<Icon icon="arrow-up" />  [Learn how to add chunking, embeddings, and additional enrichments to your results](/ui/walkthrough-2).
+What's next?
 
-<Icon icon="person-chalkboard" />  [Learn more about the Unstructured user interface](/ui/overview).
+* <Icon icon="plus" />  [Learn how to add chunking, embeddings, and additional enrichments to your local file results](/ui/walkthrough-2).
+* <Icon icon="database" />  [Learn how to do large-scale batch processing of multiple files and semi-structured data that are stored in remote locations instead](/ui/quickstart#remote-quickstart).
+* <Icon icon="desktop" />  [Learn more about the Unstructured user interface](/ui/overview).
 
 ***
 
 ## <Icon icon="rectangle-terminal" />    Unstructured API quickstart
 
 This quickstart shows how you can use the Unstructured API to quickly and easily see Unstructured's
-transformation results for a single file that is stored locally.
+transformation results for files that are stored locally.
 
-<Tip>
-  This quickstart uses the Unstructured API's [Partition Endpoint](/api-reference/partition/overview) and focuses on a single, local file for ease-of-use demonstration purposes. This quickstart also
-  focuses only on a limited set of Unstructured's full capabilities.
+<Note>
+  This quickstart is designed to work *only by processing local files*.
 
-  To unlock Unstructured's full feature set, as well as use Unstructured to do
-  large-scale batch processing of multiple files and semi-structured data that are stored in remote locations,
-  [skip over](/api-reference/workflow/overview#quickstart) to an expanded, advanced version of this quickstart that uses the
-  Unstructured API's [Workflow Endpoint](/api-reference/workflow/overview) instead.
-</Tip>
+  To process files (and data) in remote file and blob storage, databases, and vector stores, you must use
+  workflow operations in the Unstructured API other than the ones that are used in this quickstart. To learn how, see for example the notebook
+  [Dropbox-To-Pinecone Connector API Quickstart for Unstructured](https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/Dropbox_To_Pinecone_Connector_Quickstart.ipynb).
+</Note>
 
 1. If you do not already have an Unstructured account, [sign up for free](https://unstructured.io/?modal=try-for-free).
    After you sign up, you are automatically signed in to your Unstructured **Let's Go** account, at [https://platform.unstructured.io](https://platform.unstructured.io).
-2. Watch the following 3-minute video:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/0EogKNU_BPU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
+   <Note>
+     If you already have an Unstructured **Pay-As-You-Go** or **Business SaaS** account, you are already signed up for Unstructured.
+     Sign in to your existing Unstructured **Pay-As-You-Go** or **Business SaaS** account, at [https://platform.unstructured.io](https://platform.unstructured.io).
 
-<Icon icon="note-sticky" />  [Run this quickstart as a notebook on Google Colab instead](https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/Unstructured_Partition_Endpoint_Quickstart.ipynb).
+     If you already have an Unstructured **dedicated instance** or **in-VPC** deployment, your sign-in link will be unique to your deployment.
+     If you're not sure what your unique sign-in link is, see your Unstructured account administrator, or email Unstructured Support at
+     [support@unstructured.io](mailto:support@unstructured.io).
+   </Note>
 
-<Icon icon="code" />  [Get the sample code for this video](/api-reference/partition/quickstart#sample-code).
+2. Get your Unstructured API key:
 
-<Icon icon="gear" />  [Get the full setup instructions for this video](/api-reference/partition/quickstart).
+   a. After you sign in to your Unstructured account, click **API Keys** on the sidebar.<br />
+
+   <Note>
+     For a **Business** account, before you click **API Keys**, make sure you have selected the organizational workspace you want to create an API key
+     for. Each API key works with one and only one organizational workspace. [Learn more](/ui/account/workspaces#create-an-api-key-for-a-workspace).
+   </Note>
+
+   b. Click **Generate API Key**.<br />
+   c. Follow the on-screen instructions to finish generating the key.<br />
+   d. Click the **Copy** icon next to your new key to add the key to your system's clipboard. If you lose this key, simply return and click the **Copy** icon again.<br />
+
+3. Now that you have your Unstructured API key, choose one of the following options to continue:
+
+   * [Use a remote notebook](https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/Unstructured_API_On_Demand_Jobs_Quickstart.ipynb) - This option uses a remotely hosted Google Colab notebook. There are no additional setup steps required.
+   * [Use your local machine](/api-reference/quickstart) - This option requires you to install the Unstructured Python SDK on your local machine.
 
 <Icon icon="person-chalkboard" />  [Learn more](/api-reference/overview).
 
@@ -203,7 +257,7 @@ transformation results for a single file that is stored locally.
 
 ## <Icon icon="money-check-dollar" />    Pricing
 
-Unstructured offers differnt account types with different pricing plans:
+Unstructured offers different account types with different pricing plans:
 
 * <Icon icon="person" />  **Let's Go** and **Pay-As-You-Go** - A single user, with a single workspace, hosted alongside other accounts on Unstructured's cloud infrastructure.
 * <Icon icon="building" />  **Business** - Multiple users and workspaces, with three options:

@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Cloudcraft (Standalone) > Getting started > Connect your Azure Account
   with Cloudcraft
-source_url: >-
-  https://docs.datadoghq.com/getting-started/connect-azure-account-with-cloudcraft/index.html
 ---
 
 # Connect your Azure Account with Cloudcraft

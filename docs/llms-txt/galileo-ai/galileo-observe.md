@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-observe.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Overview of Galileo Observe
 
 > Monitor and analyze generative AI models with Galileo Observe, using real-time data insights to maintain performance and ensure quality outputs.
@@ -11,7 +15,7 @@ Galileo Observe helps you monitor your generative AI applications in production.
 your users are using your application and identify where things are going wrong. Keep tabs on your production system,
 instantly receive alerts when bad things happen, and perform deep root cause analysis though the Observe dashboard.
 
-<img src="https://mintlify.s3.us-west-1.amazonaws.com/galileo/images/observe-3-screenshots.svg" width="100%" height="480px" />
+<img src="https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/observe-3-screenshots.svg?fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=535a58b726a6295a2392b32afc3125de" width="100%" height="480px" data-og-width="960" data-og-height="540" data-path="images/observe-3-screenshots.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/observe-3-screenshots.svg?w=280&fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=abbeb3aa2de5f60cbadfc93e0ec08ede 280w, https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/observe-3-screenshots.svg?w=560&fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=603efaa42f114e6090772610d237de13 560w, https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/observe-3-screenshots.svg?w=840&fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=9ec5408e003f6d70acfb3741cdb53075 840w, https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/observe-3-screenshots.svg?w=1100&fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=7fc7805d8e909df42940e2ee87c6ad39 1100w, https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/observe-3-screenshots.svg?w=1650&fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=3b400592c12c914207f1c8cde85fb4ed 1650w, https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/observe-3-screenshots.svg?w=2500&fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=2566d5aa9ff2b0ba2e032004c64b5d9d 2500w" />
 
 ## Core features
 

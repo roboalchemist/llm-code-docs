@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/templates/payg/bigquery.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Clone Google BigQuery pricing
 
 > Replicate BigQuery's pay-as-you-go pricing model and offer free upfront credits with Lago.

@@ -6,9 +6,8 @@ description: >-
   Configure Kubernetes Horizontal Pod Autoscaler to use custom and external
   Datadog metrics with the Cluster Agent
 breadcrumbs: >-
-  Docs > Container Monitoring > Containers Guides > Autoscaling with Cluster
-  Agent Custom & External Metrics
-source_url: https://docs.datadoghq.com/guide/cluster_agent_autoscaling_metrics/index.html
+  Docs > Containers > Containers Guides > Autoscaling with Cluster Agent Custom
+  & External Metrics
 ---
 
 # Autoscaling with Cluster Agent Custom & External Metrics
@@ -153,7 +152,7 @@ Once enabled, the Cluster Agent is ready to fetch metrics for the HPA. There are
 - Autoscaling with DatadogMetric Queries
 - Autoscaling without DatadogMetric Queries
 
-Datadog recommends using the `DatadogMetric` option. While this does require an additional step of deploying the `DatadogMetric` CustomResourceDefinition (CRD), this provides a lot more flexibility in the queries performed. If you do not use `DatadogMetric` queries, your HPAs use the native Kubernetes external metrics format, which the Cluster Agent translates into a Datadog metric query.
+Datadog recommends using the `DatadogMetric` option. While this does require an additional step of deploying the `DatadogMetric` CustomResourceDefinition (CRD), this provides a lot more flexibility in the queries performed. For example, your query can use multiple metrics with arithmetic operations and functions. If you do not use `DatadogMetric` queries, your HPAs use the native Kubernetes external metrics format, which the Cluster Agent translates into a Datadog metric query.
 
 If you are dual-shipping your metrics to multiple Datadog organizations, you can configure the Cluster Agent to fetch from these multiple endpoints for high availability. For more information, see the [Dual Shipping](https://docs.datadoghq.com/agent/configuration/dual-shipping/?tab=helm#cluster-agent-metrics-provider) documentation.
 

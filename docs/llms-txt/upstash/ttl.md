@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/generic/ttl.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/ttl.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/ttl.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/ttl.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/ttl.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/ttl.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/ttl.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/ttl.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/generic/ttl.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/generic/ttl.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # TTL
 
@@ -26,18 +12,28 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key
 </ParamField>
 
 ## Response
 
-<ResponseField type="integer" required>
+<ResponseField type="int" required>
   The number of seconds until this expires, negative if the key does not exist or does not have an expiration set.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  const seconds = await redis.ttl(key);
+  ```py Example theme={"system"}
+  # Get the TTL of a key
+  redis.set("my-key", "value")
+
+  assert redis.ttl("my-key") == -1
+
+  redis.expire("my-key", 10)
+
+  assert redis.ttl("my-key") > 0
+
+  # Non existent key
+  assert redis.ttl("non-existent-key") == -2
   ```
 </RequestExample>

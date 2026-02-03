@@ -4,8 +4,6 @@
 title: Bedrock Agent Alias
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Bedrock Agent Alias
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.bedrock_agent_alias.dataset/index.html
 ---
 
 # Bedrock Agent Alias
@@ -34,5 +32,5 @@ aws.bedrock_agent_alias
 | description                | core | string        | The description of the alias of the agent.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | failure_reasons            | core | array<string> | Information on the failure of Provisioned Throughput assigned to an agent alias.                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | routing_configuration      | core | json          | Contains details about the routing configuration of the alias.                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-| tags                       | core | hstore        |
+| tags                       | core | hstore_csv    |
 | updated_at                 | core | timestamp     | The time at which the alias was last updated.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |

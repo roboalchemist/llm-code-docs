@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/guides/llama2-uncensored-benchmark-ollama/
+
 # How to benchmark Llama2 Uncensored vs. GPT-3.5 on your own inputs
 
 Most LLMs go through fine-tuning that prevents them from answering questions like "_How do you make Tylenol_", "_Who would win in a fist fight..._", and "_Write a recipe for dangerously spicy mayo_."

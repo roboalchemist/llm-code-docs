@@ -6,7 +6,6 @@ description: >-
   Learn how to read and interpret the Datadog Agent status page to troubleshoot
   issues and monitor Agent health.
 breadcrumbs: Docs > Agent > Agent Configuration > Agent Status Page
-source_url: https://docs.datadoghq.com/configuration/agent-status-page/index.html
 ---
 
 # Agent Status Page

@@ -1,111 +1,80 @@
 # Source: https://docs.comfy.org/api-reference/registry/delete-a-specific-node.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete a specific node
+
+
 
 ## OpenAPI
 
 ````yaml https://api.comfy.org/openapi delete /publishers/{publisherId}/nodes/{nodeId}
+openapi: 3.0.2
+info:
+  title: Comfy API
+  version: '1.0'
+servers:
+  - url: https://api.comfy.org
+security: []
 paths:
-  path: /publishers/{publisherId}/nodes/{nodeId}
-  method: delete
-  servers:
-    - url: https://api.comfy.org
-  request:
-    security:
-      - title: BearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path:
-        publisherId:
+  /publishers/{publisherId}/nodes/{nodeId}:
+    delete:
+      tags:
+        - Registry
+      summary: Delete a specific node
+      operationId: DeleteNode
+      parameters:
+        - in: path
+          name: publisherId
+          required: true
           schema:
-            - type: string
-              required: true
-        nodeId:
+            type: string
+        - in: path
+          name: nodeId
+          required: true
           schema:
-            - type: string
-              required: true
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '204':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Node deleted successfully
-        examples: {}
-        description: Node deleted successfully
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - &ref_0
-                    type: string
-              message:
-                allOf:
-                  - &ref_1
-                    type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: &ref_2
-              - error
-              - message
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Forbidden
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-              message:
-                allOf:
-                  - *ref_1
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Node not found
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-              message:
-                allOf:
-                  - *ref_1
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Internal server error
-  deprecated: false
-  type: path
+            type: string
+      responses:
+        '204':
+          description: Node deleted successfully
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Forbidden
+        '404':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Node not found
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
+      security:
+        - BearerAuth: []
 components:
-  schemas: {}
+  schemas:
+    ErrorResponse:
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+      required:
+        - error
+        - message
+      type: object
+  securitySchemes:
+    BearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http
 
 ````

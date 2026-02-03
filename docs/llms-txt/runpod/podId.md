@@ -4,6 +4,12 @@
 
 # Source: https://docs.runpod.io/api-reference/pods/DELETE/pods/podId.md
 
+# Source: https://docs.runpod.io/api-reference/pods/PATCH/pods/podId.md
+
+# Source: https://docs.runpod.io/api-reference/pods/GET/pods/podId.md
+
+# Source: https://docs.runpod.io/api-reference/pods/DELETE/pods/podId.md
+
 > ## Documentation Index
 > Fetch the complete documentation index at: https://docs.runpod.io/llms.txt
 > Use this file to discover all available pages before exploring further.

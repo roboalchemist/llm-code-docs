@@ -12,5 +12,5 @@ logd.processed.lines
 
  | item | Number of log lines processed |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

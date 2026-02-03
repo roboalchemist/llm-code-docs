@@ -592,6 +592,107 @@ model {
 }
 ```
 
+## Extend relation
+
+Similar to extending elements, you can extend relations to add metadata, tags, and links from separate files.
+
+<Aside type='caution'>
+**Deployment model limitation**: Extending relations is currently only supported for the logical model. Deployment model relations cannot be extended at this time.
+</Aside>
+
+Relations are uniquely identified by:
+- Source element
+- Target element
+- Relationship kind (if specified)
+- Title (if specified)
+
+```likec4
+// base.c4
+specification {
+  element component
+  relationship sync
+}
+
+model {
+  component frontend
+  component api
+  
+  // Untyped relation with title
+  frontend -> api "Makes requests"
+  
+  // Typed relation with same title (different relation!)
+  frontend -[sync]-> api "Makes requests"
+}
+
+// extend-ops.c4
+model {
+  // Extend the untyped relation
+  extend frontend -> api "Makes requests" {
+    metadata {
+      latency_p95 '150ms'
+      rate_limit '1000req/s'
+    }
+  }
+  
+  // Extend the sync relation (different from above!)
+  extend frontend -[sync]-> api "Makes requests" {
+    metadata {
+      latency_p95 '80ms'
+      cache_enabled 'true'
+    }
+  }
+}
+```
+
+<Aside type='note'>
+**Title normalization**: Relations without a title and relations with an empty string title (`""`) are treated identically. Both are normalized to an empty string internally. This means `extend a -> b` will match both `a -> b` and `a -> b ""`.
+</Aside>
+
+### Metadata merging
+
+Relation extends follow the same metadata merging rules as element extends:
+- New keys are added
+- Duplicate keys with different values become arrays
+- Duplicate keys with the same value are de-duplicated
+
+```likec4
+// base.c4
+model {
+  api -> database "Queries data" {
+    metadata {
+      protocol 'TCP'
+    }
+  }
+}
+
+// extend-1.c4
+model {
+  extend api -> database "Queries data" {
+    metadata {
+      protocol 'SSL'        // Creates array
+      timeout '5s'          // New key
+    }
+  }
+}
+
+// extend-2.c4
+model {
+  extend api -> database "Queries data" {
+    metadata {
+      protocol 'TLS'        // Adds to array
+      retry_policy 'exponential'  // New key
+    }
+  }
+}
+
+// Result:
+{
+  protocol: ['TCP', 'SSL', 'TLS'],
+  timeout: '5s',
+  retry_policy: 'exponential'
+}
+```
+
 # Introduction
 
 
@@ -1991,9 +2092,9 @@ specification {
 }
 ```
 
-Available shapes: `rectangle` (default), `storage`, `cylinder`, `browser`, `mobile`, `person`, `queue`.  
+Available shapes: `rectangle` (default), `storage`, `cylinder`, `browser`, `mobile`, `person`, `queue`, `bucket` and `document`.  
 
-<LikeC4ThemeView viewId="themecolor_primary"/>
+<LikeC4ThemeView viewId="allshapes"/>
 
 ### Color
 
@@ -2096,7 +2197,7 @@ specification {
 
 ```
 
-<LikeC4ThemeView viewId="multiple_example" interactive={false} fitViewPadding={0.2}/>
+<LikeC4ThemeView viewId="multiple_example" interactive={false} fitViewPadding={'16px'}/>
 
 ### Icon
 
@@ -2138,6 +2239,100 @@ pg = service 'PostgreSQL' {
 ```
 :::
 
+### Bundled icons
+
+LikeC4 includes icons (over 5,000 in total) from these packs:
+- `aws:` from <a href="https://aws-icons.com" target='_blank'>aws-icons.com</a>
+- `azure:` from <a href="https://learn.microsoft.com/en-us/azure/architecture/icons/" target='_blank'>microsoft.com</a>
+- `bootstrap:` from <a href="https://icons.getbootstrap.com/" target='_blank'>Bootstrap Icons</a> (2,000+ icons)
+- `gcp:` from <a href="https://gcpicons.com" target='_blank'>gcpicons.com</a>
+- `tech:` from <a href="https://techicons.dev" target='_blank'>techicons.dev</a> and <a href="https://svglogos.dev/" target='_blank'>svglogos.dev</a>
+
+Example:
+
+```likec4 copy
+model {
+  fn = service 'Lambda Function' {
+    icon aws:lambda
+  }
+  k8s = service 'K8s Service' {
+    icon gcp:google-kubernetes-engine
+  }
+  pg = storage 'PostgreSQL' {
+    icon tech:postgresql
+  }
+  ui = component 'User Interface' {
+    icon bootstrap:house
+  }
+}
+```
+
+<br/>
+
+<LikeC4ThemeView viewId="icons_example"/>
+
+<br/>
+
+:::tip
+Use VSCode code completion to explore available icons.
+:::
+
+
+### Icon color
+
+Use `iconColor` to override the icon color independently from the element fill:
+
+```likec4 copy
+model {
+  api = service 'API' {
+    style {
+      icon bootstrap:gear
+      iconColor indigo
+    }
+  }
+}
+```
+
+`iconColor` accepts theme colors or custom colors defined in [specification](/dsl/specification/#color).  
+Applies to external svg-icons and bundled `bootstrap:*` icons.
+
+### Icon size
+
+Use `iconSize` to resize the icon without changing the element size:
+
+```likec4 copy
+model {
+  api = service 'API' {
+    style {
+      icon tech:nodejs
+      iconSize sm
+    }
+  }
+}
+```
+
+`iconSize` uses the same values as [size](/dsl/styling/#size) and defaults to the element `size`.
+
+### Icon position
+
+Use `iconPosition` to place the icon around the element text:
+
+```likec4 copy
+model {
+  api = service 'API' {
+    style {
+      icon tech:nodejs
+      iconPosition top
+    }
+  }
+}
+```
+
+Supported values: `left` (default), `right`, `top`, `bottom`.
+
+
+<LikeC4ThemeView viewId="icons_position_example" style={{ '--likec4-view-max-height': '250px', minHeight: '250px' }}/>
+
 ### Aliased icons
 
 With `@` prefix, you can use aliased folders (learn more in [configuration](/dsl/config/#image-aliases)):
@@ -2153,39 +2348,6 @@ model {
 }
 ```
 
-### Bundled icons
-
-LikeC4 includes a set of icons from these packs:
-- `aws:` from <a href="https://aws-icons.com" target='_blank'>aws-icons.com</a>
-- `azure:` from <a href="https://learn.microsoft.com/en-us/azure/architecture/icons/" target='_blank'>microsoft.com</a>
-- `gcp:` from <a href="https://gcpicons.com" target='_blank'>gcpicons.com</a>
-- `tech:` from <a href="https://techicons.dev" target='_blank'>techicons.dev</a>
-
-Example:
-
-```likec4 copy
-model {
-  fn = service 'Lambda Function' {
-    icon aws:lambda
-  }
-  k8s = service 'K8s Service' {
-    icon gcp:google-kubernetes-engine
-  }
-  pg = storage 'PostgreSQL' {
-    icon tech:postgresql
-  }  
-}
-```
-
-<br/>
-
-<LikeC4ThemeView viewId="icons_example"/>
-
-<br/>
-
-:::tip
-Use VSCode code completion to explore available icons.
-:::
 
 ## Relationship
 
@@ -2297,6 +2459,71 @@ It builds and deploys static website to GitHub Pages
 [![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/~/github.com/likec4/template)
 :::
 
+## Use LikeC4 CLI
+
+Prefer to use [LikeC4 CLI](/tooling/cli) directly in your scripts, as it offers more control.  
+Example workflow (it uses `bun` for faster setup, but you can use your preferred runtime):
+
+```yaml
+# Sample workflow for building and deploying a website to GitHub Pages
+name: Deploy Pages
+
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_call:    
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  
+# Allow only one concurrent deployment, skipping runs queued between the run in progress and the latest queued.
+# However, do NOT cancel in-progress runs, as we want to allow these production deployments to be completed.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # Build job
+  build-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5    
+      - uses: oven-sh/setup-bun@v2        
+
+      - uses: actions/configure-pages@v4
+        id: pages        
+
+      - name: build
+        run: |
+          bunx likec4@latest build \
+            --base "${{ steps.pages.outputs.base_path || '/' }}" \
+            --output dist      
+          
+      - name: upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  # Deployment job
+  deploy-pages:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build-pages
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+```
 
 ## GitHub Actions workflow
 
@@ -2329,7 +2556,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4     
+        uses: actions/checkout@v5
 
       - name: Setup Pages
         id: pages
@@ -2361,37 +2588,6 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-```
-
-## Use LikeC4 CLI
-
-You can use [LikeC4 CLI](/tooling/cli), example of `build-pages` job:
-
-```yaml
-jobs:
-  build-pages:
-    runs-on: ubuntu-24.04-arm
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4     
-
-      - name: Setup node
-        uses: actions/setup-node@v4
-      
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v4
-        
-      - name: Build
-        run: |
-          npx likec4 build \
-            --base ${{ steps.pages.outputs.base_path }} \
-            --output dist
-          
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist
 ```
 
 # Embed to website
@@ -2590,410 +2786,6 @@ likec4test('Relationships should have metadata', ({ expect, likec4 }) => {
 This approach makes it easy to enforce custom constraints and validate your model consistency.  
 Running these checks in CI pipeline is fast and provides immediate feedback when the model breaks your rules.
 
-# Big Bank Example
-
-
-This is LikeC4 version of the <a href="https://structurizr.com/dsl?example=big-bank-plc" target='_blank'> Big Bank plc example</a> by Simon Brown, based around a fictional online banking system.
-
-It gives an overview of the LikeC4 syntax and how it compares to Structurizr DSL, what is similar and what is different.
-
-### System Landscape
-
-The landscape view is a high-level overview of the system, showing the major systems and how they relate to each other.
-Structurizr uses the `systemlandscape` for this view.
-
-There are no special view types in LikeC4.  
-Each view is defined by the [predicates](/dsl/views/predicates/) what to include/exclude, like `include *` below.
-
-<Tabs syncKey="label">
-  <Tab label='likec4'>
-    We create `index` view _"of bigbank"_, as this is the top-level system which landscape we want to visualize.
-    
-    ```likec4
-    views {
-      view index of bigbank {
-        title "Big Bank - Landscape"
-        include *
-      }
-    }
-    ```
-
-    Result:
-
-    <LikeC4View viewId="index"/>
-
-  </Tab>
-  <Tab label='structurizr'>
-    ```structurizr
-    views {
-      systemlandscape "SystemLandscape" {
-        include *
-        autoLayout
-      }
-    }
-    ```
-
-    Rendered with PlantUML:
-
-    ![](https://www.plantuml.com/plantuml/img/lPTVRzis4C3VzIaEpckQsK6QUe5ir2dIOS223dEsFYHzeAcJJPWYDHvT9olwtNUa9LlnfCpjiiX0uf2ykz_zfVAMl71-LUY4q0DXAPpmre6n1XEll4QOFf370duH9YCfIamIRqlm5cRMUrj0fXnAhwn94beg4pGKy2K14CxPzNjh_5JzXJ3eyrA6kLXfVuFtVgBLt1HeF4Z-WOvtrqwK7rNc5t3Q3wSBSN-DH6AEbOP-yZL95Yf3O2I7rZy4d9tL02BCN6EQJcwkn-E8SIdaSkxiocJlh6RNZdwC3-y4jcejZqyuRLs6hbezduKFhz92P7Qjp1noeGaPOsUqH4VMf6cmyo7FbSIf5td-mjRVhOYJWMwAxlCB8pIYVbK8fJS5y_B6VmvbPD1V2iFRywSn1eFpuImx1AC_EniEpmx7k1RAvBo61t7yJ-NmQ_mjTCLGLqSNHNzuTlfcTb0qNf_Yw_DMYcGR1EXTgZa4sr1gsOCq3TRAGML-X_jRBT6mqJXy9EFJBh95FLHWOsFg7qAMjYAPe0Lc2OjiOWUzqQWE5rJT1B6TxanAF8Sk1ltnxIQ-dz8VmihupjoPhGnLCXHaOAtyGXdm2uGPn-Ca1AEZLmL1syuZif0vs4oPGw0cMQ6C8iz3dGSqy0W7MfMbTVu9l7yECYRRMsIeHhP7estHGrLnrRNHn9lQtA-5gs-K9kUKxnma45g3pIEDv8M857InRkkAoeUPNV6TKGMAZa58oPNi-HkxQKZ4kuZ_GY-ZEvtzo5wrx-qxT_KgZBLly-Y6VL1n80aDrqewItmOhkxbWlKYu4OdHS78-NXsCbnZOP-8RxS3EIPQspNjuXKkxf3qp8arIAxzQ7jpMx9D_h9lgnwhtvVPDlkV5QvRSiffLoxcl97JKBA5M2AKuY6yBL3axHhrx47hLfXEkoQgX-FMexhj_gMPjbxKHHfOZsCugnPbdO_u8sptB6RSZiqawTY0azkZD_tmEUREbKl3BqYZqqydutR7uG9wgGnJyg8I6__1qQUQa76rC18RaQPjg655hAYNj6lk16blgXQIdz3lG9hra3jRF2DGev5QAAR8BxPrFrO6cXATQhiozBI9q06zRyzksytGOcb2Iu8_LqXn2B8fBkd79pOLFXpVtg36Si7l-NMDzv9M8_yzpxyJqdUupBEeHTd7QdXHd5vrmiBPvmBTk-gUJUzRhWB-J-jlZ)
-
-  </Tab>
-</Tabs>
-
-<br/>
-
-:::note[Try it online]
-Both LikeC4 and Structurizr have online playgrounds:
-
-<CardGrid>
-<LinkCard
-  title="LikeC4 playground"
-  description="Preview and play with this example in the LikeC4 playground"
-  href="https://playground.likec4.dev/w/bigbank/"
-  target="_blank"
-/>
-
-<LinkCard
-  title="Structurizr playground"
-  description="Preview and play with this example in the Structurizr playground"
-  href="https://structurizr.com/dsl?example=big-bank-plc"
-  target="_blank"
-/>
-</CardGrid>
-:::
-
-
-### System Context
-
-<Tabs syncKey="label">
-  <Tab label='likec4'>
-    ```likec4
-    views {
-
-      view context of bigbank {
-        title "Internet Banking System - SystemContext"
-
-        include
-          bigbank,
-          mainframe,
-          internetBankingSystem,
-          email,
-          customer
-
-        style * {
-          color secondary
-        }
-        style bigbank, internetBankingSystem {
-          color primary
-        }
-      }
-
-    }
-    ```
-
-    Result:
-
-    <LikeC4View viewId="context"/>
-
-  </Tab>
-  <Tab label='structurizr'>
-    ```structurizr
-    views {
-
-      systemcontext internetBankingSystem "SystemContext" {
-          include *
-          animation {
-            internetBankingSystem
-            customer
-            mainframe
-            email
-          }
-          autoLayout
-          description "The system context diagram for the Internet Banking System."
-          properties {
-            structurizr.groups false
-          }
-      }
-
-    }
-    ```
-
-    Rendered with PlantUML:
-
-    ![](https://www.plantuml.com/plantuml/img/hPPDRzim38Rl-XL4Ucsx9EX7LhX1Fz0DEnGObc8xj3tGDfq8aIL3KkPcnVxxACTEtS8kCg3E8GafaWyflKekd4VhLxaIZZmuAj2YDnQqqIIyz8hWc_PaDNklK2-bdiDixJpbSD1yk3QyuiaBuKq1ta1il3SvfD9IugNHGZYE2vbpU1O0QAqflt3GJFuX60tPb5A6A-NlECsbadETa_QGKAZCtj9YyKkcVW7ZOLYTuzCjEOTpgZCCnLyX5Z8bO21BngyBQbSD8AZdYgBe9aUfDk3JQOLpXSboRirAfzT6SUjxdwk7FO6njcNL4rORcvAjhITnUB7LBJ0rPHXEXieHutGMRqPPJ_9zZD7eP1Adks0CuwF9v6XtZ5kKEcCRxSJnmUCeo3gZe-XxzOwgPhXUEJuqPFieXfEZyMcyqpIEntHyqaaXjaE0mPMSLoSQ2fKC88f2jM9Kbt_1_T54j6gq5kybrTCTiaNTDM1JO-RNOPUs8Icw1QM2Grhuv-VRNNmZp0STEPR5sMWulP-Pp9TegNOzHf-2Q_gW7_ICPKuEK2am6VW5GS86YEjSdDlO78D-0MEpOZdME-Js0PE4jyRp9szHEwnapj_89uTXbhq731rq-zusTtCGTFf_7Trn3x9I62gubOarZXV3pLEouBm4jCdfgi2Ay_Lbm70jmrkYdcjmHxPBfKpfNcOOxidVaigEEVDMI5ljGslEg5E-zfO41Qx3vUWg_hxxX3lfT0K9RFGNEceKkEseqM2xfysYLwriksWEJc3TXrBo1LqqEL_nLx3zWcVS7gSGFGuulDyx7ORNlb_8PAdvz-1y_7WuxMuSpc0G9K6APtNOz2TFtpM4ZAjG9zIQjDkE6bQE4mr4T-PUaEw3ta7obVmBIFiyPDRa7mZKEjmT53FIgMiqKXTeH_IcxTkXzqi41Gp41LlupyS_)
-
-  </Tab>
-</Tabs>
-
-
-
-### Containers
-
-<Tabs syncKey="label">
-  <Tab label='likec4'>
-    ```likec4
-    views {
-
-      view ibsContainers of internetBankingSystem {
-        title "Internet Banking System - Containers"
-
-        include
-          *,
-          -> customer
-      }
-
-    }
-    ```
-
-    Result:
-
-    <LikeC4View viewId="ibsContainers"/>
-
-  </Tab>
-  <Tab label='structurizr'>
-    ```structurizr
-    views {
-
-      container internetBankingSystem "Containers" {
-        include *
-        animation {
-          customer mainframe email
-          webApplication
-          singlePageApplication
-          mobileApp
-          apiApplication
-          database
-        }
-        autoLayout
-        description "The container diagram for the Internet Banking System."
-      }
-
-    }
-    ```
-
-    Rendered with PlantUML:
-
-    ![](https://www.plantuml.com/plantuml/img/rLVVJnj747w_ls947lfYZEC28SXO8OIgYUB6xQ4a4kHXxcvihxZRFUtkOMZL_xspzuipt1aZA6hn0_B-cc--cVbc_CvOr3PBOi-G1KCfQhHAWrIIF2jiJF1HMjAITz-Zl1Ho3lwDiPJ0DfmeQL58qiRph4h1AWYKjIg1I6WAhL3IympVSQycy9S7W5ghvIzypnT_4hmUy594CynYUqRNzZWMSvcGj12IiygxIutfDn7P1Gm7xdI2rnCo1kTKlZ3m_lQyXOW869KcPMzIQbfrG53EOngDAazAHme_-iVJZyTf6eiG7U3nECVv7iFBkLQPZ4vKp7oysltv88hsUCU1BzTc-PyxhNH4kbmTqlxmhJjf5XYffMDiXh4XndcBAaAB0PfEK1_A_HU2qo3fD44H5oYwZB_D_pOnlX-up-R69vnECrwZ5JPU7aTxK2Og435nihnGL5AkB2L7esd-7-CIpKbckCP8Tw4O7EmEtmIRe1Zi3Mbl_wcq-CBjJhaaNxwE7WJtZOB_7geAnaeiWjs3WzrL2FNQVMDUaHomTNHKfKSjq5M2NCYHOP4yV3qOdnU7VenstChuGbx8OmZBSw1cO1S40T_lmLAmsARLcsuDC0oPB6lwMx0k6z50nwPNC-80rrL-fwKqyVfgPfUegTng0lUvGP41ZECAUCWBELBt5h-jT9A76p1GcQtzDBtQanvOZT9WtgJu6zamTwvJWDYtzhrLrqwtdNm-pfypza3aQS9yJqIebU73S7eTBlXT0YhUD4L2EvIh6itG6WjU4r17xzu0c3EpBdTNlEOYWqQLDP-lPuH3-8HN22WZy5Fji4o-dZHf-42nkE8WvH7biSIAa0FB47WSSBVSSkrF5MoJQm-aB3w0jmZwdV3l2mBJjyd9kpxpsF1qdwTQNV7eOkuxDijadfiO2ti3Lu9VWK_-bzzsVZqxc_h0rjVuU6-awVHnzQIRnih1mxbO3I4TldtH638NrIdmmmKbs5AfcM6DqJGNXeikhyj6ZVPWWMP14M364PQsX0AXfiXzPRtBovQ7FeZLl56h3qvEdLvNP-x6jEXaswwLRHXRFzGYBVBpMCwp67LhU1jQzK2aUOQkvIeFEzyH6fPSOG6Fpipa6j-xEd4d4QqNxh9IZ3sEa0uYlcE2dDtjdaCi4c4vlYOBt6-C9z6G550YkX8XhI6YEQbrEbyVSksqeQ3GFt_rPk0-FRiGuQNar3iQ_kYFkxeR7CBMA7Gj-x2yEFP9HgPKRbOqjULrtUqqjeaejLZ-Aeom1W8nTypsGvNiY81Ba9_WyAsUBQ9vC3xFHQMM_kV2sffThP1fQQhMp0aHe-Hox-LLbU0bPr6AD-vdeIdyU3Q0TGOy2wYD0lOlKNZRF5Kn4PMC_6IQqj65iTtA8w6kjf8MZ9ESDTStGzP31xKx8MzRtMrMFXJ3_mVUEsOV2RfkjlVX_a78aZFJAibpTAbPTTU3zd__l7DsCdqknEtpyHE9_Jxv_BoyDeL-lMvNTVsErx8a_WS0)
-
-  </Tab>
-</Tabs>
-
-### Components
-
-<Tabs syncKey="label">
-  <Tab label='likec4'>
-    ```likec4
-    views {
-
-      view apiApp of internetBankingSystem.apiApplication {
-        title "API Application - Components"
-
-        include *
-
-        style * {
-          color muted
-        }
-
-        style singlePageApplication, mobileApp {
-          color secondary
-        }
-
-        style apiApplication, apiApplication.* {
-          color primary
-        }
-      }
-
-    }
-    ```
-
-    Result:
-
-    <LikeC4View viewId="apiApp"/>
-
-  </Tab>
-  <Tab label='structurizr'>
-    ```structurizr
-    views {
-
-      component apiApplication "Components" {
-        include *
-        animation {
-          singlePageApplication mobileApp database email mainframe
-          signinController securityComponent
-          accountsSummaryController mainframeBankingSystemFacade
-          resetPasswordController emailComponent
-        }
-        autoLayout
-        description "The component diagram for the API Application."
-      }
-
-    }
-    ```
-
-    Rendered with PlantUML:
-
-    ![](https://www.plantuml.com/plantuml/img/rLXHKziu47xthzYXhn1IxcWf0va6ZixH8TSSfdUTWJviR2NHO4iPIIPmD_VVRsKxnZQsun0ADBmGMT9-twVLxkTyr0QLYSB0qSo0PZDKQAG28GLp33S1WrDXc1Bqz0Z5DHSJSE-qOI5iGNzu2ltPBE0U6Yu5ZHpBS4OhXT6EO-GCZ8IHD4Q6u7F5F3lBSJJjOkE4yAy3W4h9-ISfZCl_OV2sIqC-6sCKc0jsQ_e1duYGDWIFMHpqTAvmzZVtpHHskdPsYBS3fZLEMBf3r_dFSQRSPq0u5PFcRiRoKIqG59E07HmikANK4cOTufMZrUbxdeo8aXk58QgxOyAgP10mrUl538xGkvueck8Vou2qUxEtEngDBJHBAnthnXyxMogVgNHqrz_RmJqQrLFqvTogEyP0Cs9mZzT7WoFKjN1_Iv_NmVdrbptVtot26SUVCfmTzcxdm-uIEAlATn8Y3xB4U2RDSY3Z-0cqkk0VuayRXTwDx5_xu0FaOanZh23Hy-DeTLBLO3-XXpvx_dEhXZoG8numGlrAi_sSKI4TejPp2lNifM9Lj2xp8iNDtGjUptOugGkSYjSdfyljqo7rdXpQrvcP2rILSNA86c8xMKZOE3pCgaN965o90qsDUFzjjtVfoh6PesBfe-y7s_PHxqfS2PTi1jE0GG1o36RAmAC16ALxqTvIXOclm96Co014cem4KteJCEt8cs0K2esniQ1lp7YT3MYekgYX-bcHsicMxHchyRaW1Zm-1mnWm3qbDKs6arjlIlioOCcUEZaRYxBOc0XQRi1PD7qBPz7WyqZiNI0cJEt35uKUuLxC0jURiX0hj8uqKvGs4wv9jbZPdCgRC4KzPJvWH8SXpCBKUOhvzYlbG2myMIq8v2Idzb9NGjIQvnJLJoxLbhrLUNjPm_uptg3hAJupWCA7lfX40Qey-w6ID-G62xcMcTf5leqZ4MSH1bGEhM_DqWrkEDerNC6SZM14TfLqR61ULnHgPQXSKBfiSTkpSjJ8y0t9ct9HpHi27d93PwkZaVNvQuaG9b1yTiCzrY13lbFNKiyc5OfBwSMYuUJZCtTdog8V_7Mye5-Fgh8ebj9l8WWjt7UROloqK-xdmW9rVPDRa3-5VX1GmiHtJrj9jTsU2_jluGoAHRJJba5LQwnLUydIiXAB5nz8ttoUIf8iCU_JQyxfVGufFvD0IO9IijdCpCfzUr6QNjdQgbExHrccsFB1mlFzgBnHSPH4bLaQwrwtk8BOoV3r_AozJlLkjQrADJiyk5IfqRp_XQ1Pd2E6rRMiMA8K2z3MjVHU9SPX4-AMQxzaGYthLYrySUjRLLvRrgBEE47ofhMQC7roPtOLaFH9HGcpxHTbNQzOKfQy1xOLeccRiYQfutfaThXCq5r875PyMU9RqvxmWvyesb8iBhGMUOKE3vtBD--xzc_JJBbtBSXQ7Uvyx_GULxrX7pOEF6lYzzDjUmEyfYjZkwb7tiSgGxeMfoGox_KkFxjV_jZ-_U9Yw6PDz1d9r1RRdvfLJN5yDawPk_fPK-sf2BnyUZqLavTEgMMPiMQYbNjd1Q-lckcMwEgFVJsOJPrjFSHrn_kgPFqn88kzT3s43mclY2txCUKXZ7E6P3R6IeRno-USuh3cs-N-URPzSJnSyMer9bajdUfLQvQ7RuEpHrM7qf7MWixzy5M1DE_koDbHj0td8ur5OV0_)
-
-  </Tab>
-</Tabs>
-
-<br/>
-<br/>
-
-:::tip[More examples]
-LikeC4 has no view types and therefore any limits.  
-Check the following examples
-:::
-
-<br/>
-
-<Tabs>
-  <Tab label='Customer View'>    
-
-    
-    We may visualize how customers interact with the system.
-
-    ```likec4
-    views {
-
-      view customer of customer {
-        include
-          *,
-          customer -> internetBankingSystem.*,
-          customer -> bigbank.*
-          
-        exclude webApplication
-
-        style bigbank {
-          color muted
-        }
-        style customer {
-          color green
-        }
-      }
-
-    }
-    ```
-
-    > Structurizr does not have customer view.
-
-    Result:
-
-    <LikeC4View viewId='customer' />
-
-  </Tab>
-  <Tab label="Customer: MobileApp">
-
-    We may visualize interactions with the mobile application:
-
-    ```likec4
-    views {
-
-      view mobileApp of mobileApp {
-        include
-          *,
-          internetBankingSystem,
-          internetBankingSystem.apiApplication,
-          mobileApp -> internetBankingSystem.apiApplication.*
-
-        style * {
-          color secondary
-        }
-
-        style apiApplication, internetBankingSystem {
-          color muted
-        }
-
-        style mobileApp {
-          color green
-        }
-      }
-
-    }
-    ```
-
-    Result:
-
-    <LikeC4View viewId='mobileApp' />  
-  </Tab>
-  <Tab label="Customer: WebApp">
-    We may visualize interactions with the web application:
-
-    ```likec4
-    views {
-
-      view spa of singlePageApplication {
-        include
-          *,
-          apiApplication,
-          internetBankingSystem,
-          -> singlePageApplication ->
-
-        style * {
-          color secondary
-        }
-        style internetBankingSystem {
-          color muted
-        }
-        style singlePageApplication {
-          color green
-        }
-      }
-
-    }
-    ```
-
-    Result:
-
-    <LikeC4View viewId='spa' />
-  </Tab>
-</Tabs>
-
-# Visual Ops with LikeC4
-
-When you're dealing with thousands of scheduled jobs and complex workflows, it's easy to get lost in logs, IDs, and dashboards.  
-One of our community members recently shared a brilliant use case that shows how LikeC4 can make sense of it all - visually, clearly, and in real time.
-
-> _"My scheduling system defines ~1700 jobs, some of which are combined into complex workflows. The scheduler lacks visualization, so I used LikeC4 to generate interactive diagrams - live and linked to our systems."_
-
-## From Schedules to Systems Diagrams
-
-Guys shared their setup, which is clean and powerful:
-
-- A **Python script** pulls job/workflow definitions from a scheduler's REST API.
-- These are turned into **LikeC4 models and views**, automatically.
-- A WebSocket stream delivers *live status updates*: running, successful, failed, deactivated.
-- The script updates the model on the fly, likec4 picks up the changes and with HMR (hot module replacement) the diagram is updated in real time.
-- Each element in the diagram links directly back to the scheduler software UI.
-
-_**The result?**_
-
-A living, breathing map of workflows and job states  -  with errors, dependencies, and critical paths clearly visible at a glance.
-
-> _"We can immediately see where errors are, and jump straight from the graph to the job in our scheduler UI. This helps us immensely."_
-
-<br/>
-
-![Real-time visualization of scheduled jobs and workflows](./realtime-visualization.png)
-
-## What's Next? Visualizing More than Just Jobs
-
-This setup is already saving time for the team and reducing cognitive load.  
-But their roadmap is even more exciting:
-
-- **External dependencies:** Highlight which jobs interact with FTP servers, external APIs, or file systems.
-- **Data lineage:** Track which jobs feed data into others, forming real-time pipelines.
-- **Ownership & responsibility:** Annotate nodes with responsible teams or service owners.
-- **Audit trails:** Show historical changes in job structures and dependencies over time.
-- **Incident response:** Use live job status overlays for real-time troubleshooting dashboards.
-
-## Build Your Own Visual Operations Layer
-
-The power of LikeC4 lies in turning abstract system definitions into structured, visual models that update in real time.
-This isn't just architecture documentation - it's operational visibility.
-
-If you're managing workflow and jobs, Airflow DAGs, CI pipelines, or microservices with unpredictable interactions - LikeC4 might be the visibility layer you didn't know you needed.
-
 # LikeC4 CLI
 
 import { PackageManagers } from 'starlight-package-managers';
@@ -3166,6 +2958,12 @@ likec4 gen plantuml
   title="Generate components"
   description="Learn how to generate React and Web Components"
   href="/tooling/code-generation/react/"
+/>
+
+<LinkCard
+  title="Custom generators"
+  description="Learn how to define and use custom generators"
+  href="/tooling/code-generation/custom/"
 />
 
 ### Validate
@@ -3357,80 +3155,6 @@ LikeC4 has a JetBrains plugin for syntax highlighting and LSP integration with c
 
 The plugin is available in the [JetBrains Marketplace](https://plugins.jetbrains.com/plugin/26619-likec4-lsp-support) and GitHub - [likec4/jetbrains-plugin](https://github.com/likec4/jetbrains-plugin).
 
-# GitHub Actions
-
-
-![GitHub release](https://img.shields.io/github/release/likec4/actions.svg)
-
-This action wraps [CLI](/tooling/cli) as a GitHub Action.
-
-### Usage
-
-#### Build website
-
-```yaml
-steps:
-  - uses: actions/checkout@v4
-
-  - name: ⚙️ build
-    uses: likec4/actions@v1
-    with:
-      action: build
-      path: src/likec4
-      output: dist
-      base: /baseurl/
-
-  - name: upload artifacts
-    uses: actions/upload-artifact@v3
-    with:
-      name: likec4
-      path: dist
-```
-
-<Aside type='tip'>
-  Github repository [likec4/template](https://github.com/likec4/template) demonstrates how to deploy to github pages.
-</Aside>
-
-
-#### Export diagrams to PNG
-
-```yaml
-steps:
-  - name: export diagrams
-    uses: likec4/actions@v1
-    with:
-      export: png
-      path: src/likec4
-      output: out/images
-      use-dot-bin: 'true'
-```
-
-#### Code generation
-
-```yaml
-steps:
-  - name: code generation
-    uses: likec4/actions@v1
-    with:
-      codegen: react
-      output: __generated__/likec4.jsx
-```
-
-### Inputs
-
-| Name          | Description                                                                                           |
-| ------------- | ----------------------------------------------------------------------------------------------------- |
-| `action`      | Action to perform (`build` / `export` / `codegen`)                                                    |
-| `export`      | Can be used instead of `action: export`                                                               |
-| `codegen`     | Can be used instead of `action: codegen`, same values as in [cli](https://likec4.dev/docs/tools/cli/) |
-| `path`        | Path in repository to likec4 sources, root otherwise                                                  |
-| `output`      | Output directory/file                                                                                 |
-| `base`        | Custom baseUrl for website                                                                            |
-| `use-dot-bin` | if `'true'` will use `dot` binary of graphviz                                                         |
-
-> All inputs are optional.  
-> By default CLI builds a website to `dist` directory.
-
 # MCP Server
 
 
@@ -3578,6 +3302,127 @@ Disable watch mode with `--no-watch` to consume less resources, if you have stat
 :::
 
 Check out [README](https://github.com/likec4/likec4/blob/main/packages/mcp/README.md) for more details.
+
+# GitHub Actions
+
+
+![GitHub release](https://img.shields.io/github/release/likec4/actions.svg)
+
+This action wraps [LikeC4 CLI](/tooling/cli) as a GitHub Action.
+
+<Aside type='tip'>
+  Github repository [likec4/template](https://github.com/likec4/template) demonstrates how to deploy to github pages.
+
+  Also check [Deploying to GitHub Pages guide](/guides/deploy-github-pages/) for more details.
+</Aside>
+
+### Usage
+
+#### Build website
+
+```yaml
+steps:
+  - uses: actions/checkout@v4
+
+  - name: ⚙️ build
+    uses: likec4/actions@v1
+    with:
+      action: build
+      path: src/likec4
+      output: dist
+      base: /baseurl/
+
+  - name: upload artifacts
+    uses: actions/upload-artifact@v3
+    with:
+      name: likec4
+      path: dist
+```
+
+
+#### Export diagrams to PNG
+
+```yaml
+steps:
+  - name: export diagrams
+    uses: likec4/actions@v1
+    with:
+      export: png
+      path: src/likec4
+      output: out/images
+      use-dot-bin: 'true'
+```
+
+#### Code generation
+
+```yaml
+steps:
+  - name: code generation
+    uses: likec4/actions@v1
+    with:
+      codegen: react
+      output: __generated__/likec4.jsx
+```
+
+### Inputs
+
+| Name          | Description                                                                                           |
+| ------------- | ----------------------------------------------------------------------------------------------------- |
+| `action`      | Action to perform (`build` / `export` / `codegen`)                                                    |
+| `export`      | Can be used instead of `action: export`                                                               |
+| `codegen`     | Can be used instead of `action: codegen`, same values as in [cli](https://likec4.dev/docs/tools/cli/) |
+| `path`        | Path in repository to likec4 sources, root otherwise                                                  |
+| `output`      | Output directory/file                                                                                 |
+| `base`        | Custom baseUrl for website                                                                            |
+| `use-dot-bin` | if `'true'` will use `dot` binary of graphviz                                                         |
+
+> All inputs are optional.  
+> By default CLI builds a website to `dist` directory.
+
+# MkDocs plugin
+
+
+Colleagues (and our sponsors) from [doubleslash.de](https://doubleslash.de/) made the MkDocs plugin that allows to integrate LikeC4 diagrams 
+into MkDocs documentation. 
+
+<LinkButton
+  href="https://github.com/doubleSlashde/mkdocs-likec4"
+  variant="minimal"
+  icon="external"
+  iconPlacement="start"
+>
+  {'https://github.com/doubleSlashde/mkdocs-likec4'}
+</LinkButton>
+
+Check the project's [repository](https://github.com/doubleSlashde/mkdocs-likec4) and documentation website for examples and more details.
+
+<CardGrid>
+  <LinkCard title="Documentation" href="https://doubleslashde.github.io/mkdocs-likec4/" />
+</CardGrid>
+
+
+## Quick Start
+
+1. Ensure `likec4` and `graphviz` are available on the build system
+
+2. Install the `mkdocs-likec4` plugin via `pip`:
+  ```shell
+  pip install mkdocs-likec4
+  ```
+
+3. Add the plugin to your `mkdocs.yml`:
+  ```yaml
+  plugins:
+    - search
+    - mkdocs-likec4
+  ```
+
+4. Start embedding views in your markdown:
+  ````markdown
+  ```likec4-view
+  <your-view-id>
+  ```
+  ````
 
 # LikeC4 API
 
@@ -4495,7 +4340,7 @@ Here are the options:
    :::
 
 3. Font.\
-   LikeC4Diagram uses [`IBM Plex Sans`](https://fontsource.org/fonts/ibm-plex-sans) by default.\
+   LikeC4Diagram uses [`IBM Plex Sans Variable`](https://fontsource.org/fonts/ibm-plex-sans) by default.\
    You can bundle it, or import from [fontsource](https://fontsource.org/fonts/ibm-plex-sans), any other CDN or:
 
    ```css
@@ -5174,6 +5019,64 @@ You can also use these names:
 See [Programmatic config](/dsl/config/programmatic) for more information.
 :::
 
+## Include additional directories
+
+You can include LikeC4 source files from directories outside the project folder by adding an `include` configuration to the config file.
+This is useful for sharing specifications, common styles, or other model files across multiple projects.
+
+```json
+{
+  "$schema": "https://likec4.dev/schemas/config.json",
+  "name": "project-name",
+  "include": {
+    "paths": [
+      "../shared",
+      "../common/specs"
+    ]
+  }
+}
+```
+
+<FileTree>
+- shared
+  - specs.c4
+  - common-styles.c4
+- common
+  - specs
+    - base-elements.c4
+- my-project
+  - **likec4.config.json**
+  - model.c4
+  - ...
+</FileTree>
+
+Paths are relative to the project folder (the folder containing the config file).  
+LikeC4 recursively scans the included directories for `.c4` files.
+
+You can also configure the scanning behavior:
+
+```json
+{
+  "$schema": "https://likec4.dev/schemas/config.json",
+  "name": "project-name",
+  "include": {
+    "paths": ["../shared"],
+    "maxDepth": 5,
+    "fileThreshold": 50
+  }
+}
+```
+
+- **`paths`** - Array of relative directory paths (required)
+- **`maxDepth`** - Maximum directory depth to scan (default: 3, range: 1-20)
+- **`fileThreshold`** - Warn if more than this many files are loaded (default: 30)
+
+:::note
+Include paths must be relative paths. Absolute paths (like `/usr/share`), drive letters (like `C:\`), and URLs are not allowed.
+:::
+
+For more details on sharing files between projects, see [Multi-projects](/dsl/config/multi-projects#share-specification).
+
 ## Exclude files
 
 By default, LikeC4 recursively scans in the project folder.  
@@ -5460,7 +5363,95 @@ At the moment, the following limitations apply:
 
 ## Share specification
 
-At the moment, the only way to share specification (or any other parts of the model) is to use symlinks:
+You can share specification files (or any other LikeC4 sources) across multiple projects using the `include` configuration option.
+
+### Using include paths
+
+Add an `include` configuration to your project to include files from directories outside the project folder:
+
+```json
+{
+  "$schema": "https://likec4.dev/schemas/config.json",
+  "name": "cloud",
+  "include": {
+    "paths": ["../shared"]
+  }
+}
+```
+
+<FileTree>
+- shared
+  - specs.c4
+  - common-styles.c4
+- cloud
+  - likec4.config.json
+  - services.c4
+  - ...
+- externals
+  - likec4.config.json
+  - amazon.c4
+  - ...
+</FileTree>
+
+Both `cloud` and `externals` projects can include the shared specification:
+
+```json title="cloud/likec4.config.json"
+{
+  "$schema": "https://likec4.dev/schemas/config.json",
+  "name": "cloud",
+  "include": {
+    "paths": ["../shared"]
+  }
+}
+```
+
+```json title="externals/likec4.config.json"
+{
+  "$schema": "https://likec4.dev/schemas/config.json",
+  "name": "externals",
+  "include": {
+    "paths": ["../shared"]
+  }
+}
+```
+
+### Include configuration
+
+The `include` configuration accepts an object with the following properties:
+
+```json
+{
+  "$schema": "https://likec4.dev/schemas/config.json",
+  "name": "my-project",
+  "include": {
+    "paths": ["../shared", "../common/specs"],
+    "maxDepth": 5,
+    "fileThreshold": 50
+  }
+}
+```
+
+- **`paths`** - Array of relative directory paths (required)
+- **`maxDepth`** - Maximum directory depth to scan (default: 3, range: 1-20)
+- **`fileThreshold`** - Warn if more than this many files are loaded (default: 30)
+
+<Aside type='tip' title="Performance optimization">
+Use `maxDepth` to limit deep directory traversal, and `fileThreshold` to detect when you're accidentally including large directories.  
+If you see warnings about slow loading, consider reducing `maxDepth` or being more specific with your include paths.
+</Aside>
+
+<Aside type='tip' title="Path resolution">
+Include paths are relative to the project folder (the folder containing the config file).  
+LikeC4 recursively scans the included directories for `.c4` files.
+</Aside>
+
+<Aside type='caution' title="Path requirements">
+Include paths must be relative paths. Absolute paths, drive letters (like `C:\`), and URLs are not allowed.
+</Aside>
+
+### Using symlinks (alternative)
+
+Alternatively, you can use symlinks to share files:
 
 <FileTree>
 - shared
@@ -5474,6 +5465,10 @@ At the moment, the only way to share specification (or any other parts of the mo
   - likec4.config.json
   - ...
 </FileTree>
+
+<Aside type='note'>
+The `include` configuration is generally preferred over symlinks as it's more portable and easier to manage.
+</Aside>
 
 # TypeScript/JavaScript Config
 
@@ -5503,6 +5498,7 @@ export default defineConfig({
   name: 'my-project',
   title: 'My Project',
   exclude: ["**/node_modules/**", "**/.cache/**"],
+  include: ["../shared", "../common/specs"],
   imageAliases: {
     "@": "./images",
     "@root": "../../some-more-images"
@@ -5703,6 +5699,356 @@ export default defineConfig({
 
 
 <AdvancedCustomizationTip/>
+
+# Deployment Model
+
+
+Deployment Model represents another layer, _physical model_ with its own structure and elements (deployment nodes).   
+It references the [logical model](/dsl/model) and inherits its relationships.
+
+## Specification
+
+First, following the [same approach](/dsl/specification/#element-kind), deployment node kinds have to defined within the specification:
+
+```likec4
+specification {
+  deploymentNode environment
+  deploymentNode zone
+  deploymentNode kubernetes {
+    // Nodes have same styling options
+    style {
+      color blue
+      icon tech:kubernetes
+      multiple true
+    }
+  }
+  deploymentNode vm {
+    // Common properties for the kind
+    notation 'Virtual Machine'
+    technology 'VMware'
+  }
+}
+```
+
+You define whatever you need to represent your deployment model and your ubiquitous language.
+
+## Deployment nodes
+
+The deployment model is a set of nodes, organized in a hierarchical structure:
+
+```likec4
+deployment {
+  environment prod {
+    zone eu {
+      zone zone1 {
+        vm vm1
+        vm vm2
+      }
+      // You can also use '=' with the name coming first
+      zone2 = zone {        
+        vm1 = vm
+        vm2 = vm
+      }
+    }  
+  }
+}
+```
+
+Node names must be unique within its container (parent node); same rules as for element names in the logical model.
+
+Nodes may have properties just like [logical elements](/dsl/model/#element-properties).
+
+```likec4
+deployment {
+  environment prod 'Production' {
+    #live #sla-customer 
+    technology 'OpenTofu'
+    summary 'Production environment'
+    description '''
+      ## Detailed description
+      
+      With **Markdown** support
+
+    '''
+    
+    link https://likec4.dev
+
+    zone eu {
+      title 'EU Region' 
+      // ...
+    }
+  }
+}
+```
+
+### Extend nodes
+
+As in the logical model, you can [`extend`](/dsl/extend/#extend-element) deployment nodes:
+
+```likec4
+// File: 'deployments/prod.c4'
+deployment {
+  environment prod
+}
+
+// File: 'deployments/prod/zone-eu.c4'
+deployment {
+  extend prod {
+    zone eu
+  }
+}
+```
+
+Same [rules](/dsl/extend/#extend-element) apply for extending nodes:
+- extended node must be referenced by a fully qualified name.  
+- define [additional properties](/dsl/extend/#additional-properties).
+
+## Deployed instances
+
+Operator `instanceOf` _“deploys”_ elements from the logical model to deployment nodes:
+
+```likec4
+deployment {
+  environment prod {
+    zone eu {
+      zone zone1 {
+        // 'frontend.ui' is a logical element
+        // by default, instance has same name, 
+        // i.e. it becomes 'prod.eu.zone1.ui'
+        instanceOf frontend.ui
+        // this becomes 'prod.eu.zone1.api'
+        instanceOf backend.api
+      }
+
+      zone zone2 {
+        // or use '=' with the name coming first
+        ui = instanceOf frontend.ui
+
+        // two instances of same element
+        api1 = instanceOf backend.api
+        api2 = instanceOf backend.api
+      }
+
+      // Deploy to any level, not only leaf nodes
+      // Assume database shared between zones
+      db = instanceOf database
+    }    
+  }
+}
+```
+Deployed instance inherits properties and styling from the element.  
+It is possible to override:
+
+```likec4
+deployment {
+  environment prod {
+    zone eu { 
+      db = instanceOf database {
+        title 'Primary DB'
+        technology 'PostgreSQL with streaming replication'
+        icon tech:postgresql
+        style {
+          color red
+        }
+      }
+    }
+  }
+}
+```
+
+
+## Deployment relationships
+
+Deployment model inherits relationships from the logical model.  
+But also allows to define specific ones:
+
+```likec4
+deployment {
+  environment prod {
+    vm vm1 {          
+      db = instanceOf database 'Primary DB'
+    }
+    vm vm2 {
+      db = instanceOf database 'Standby DB'
+    }    
+    vm2.db -> vm1.db 'replicates' 
+  }
+}
+```
+As you see, relationship is between same logical element, but different instances.  
+Assume, we don't need this relationship in our logical model, but it makes sense for deployment.
+
+Deployment relationships can be "kinded", and have [same properties](/dsl/relationships/#relationship-properties) as logical ones:
+
+```likec4
+deployment {
+  environment prod {
+    vm2.db -[streaming]-> vm1.db {
+      #next, #live
+      title 'replicates'
+      description 'Streaming replication'
+    }
+  }
+}
+```
+
+:::tip
+Relationships can be defined for nested elements of deployed instances:
+
+```likec4
+model {
+  component database {
+    component repl_log
+  }
+}
+deployment {
+  vm vm1 {          
+    db = instanceOf database 'Primary DB'
+  }
+  vm vm2 {
+    db = instanceOf database 'Standby DB'
+  } 
+
+  // 'repl_log' is a nested element of deployed instance
+  vm2.db -> vm1.db.repl_log 'replicates'
+}
+```
+:::
+
+:::note
+Check this <a href="https://github.com/likec4/likec4/discussions/1269" target='_blank'>GitHub discussion</a> for further development.  
+Feel free to share your ideas.
+:::
+
+# Deployment views
+
+
+Deployment views allow you to visualize the deployment model, using same approach as [model views](/dsl/views/predicates) — predicates.
+
+## View definition
+
+```likec4 {17-23}
+deployment {
+  environment prod {
+    zone eu {
+      zone zone1 {
+        instanceOf frontend.ui
+        instanceOf backend.api
+      }
+      zone zone2 {
+        instanceOf frontend.ui
+        instanceOf backend.api
+      }
+      instanceOf database
+    }    
+  }
+}
+views {
+  deployment view index {
+    title 'Production Deployment'
+    link https://likec4.dev
+
+    include prod.**
+    // ...
+  }
+}
+```
+
+## View predicates
+
+Deployment views are based on same [predicates](/dsl/views/predicates) as model views.  
+But they refer to deployment nodes and instances.
+
+<Aside type='caution' title='In development'>
+  The following features are not supported yet or do not work as expected:
+ 
+  - `with` expressions
+  - Shared styles and predicates
+  - Relationships browser, Element and Relationship Details popups (work with logical model)
+
+  ```likec4
+  deployment view prod {
+    include *                                   // works
+    include * where tag is #next                // works (see details below)
+    include * with { color: red }               // does not work
+
+    include * -> *                              // works
+    include * -> * where tag is #next           // works
+    include * -> * where source.tag is #next    // works (see details below)
+    include * -> * with { color: red }          // does not work
+
+    global style applications                   // does not work    
+  }
+  ```
+</Aside>
+
+### Filtering
+Filtering in deployment views use the same principles as in normal views but takes into account deployment nodes, relations and tags defined in deployment model.
+When condition on element is checked the following rules are applied:
+- For a deployment instances tags are combined from tags defined in model and tags defined in deployment model
+- For a child of deployment instance the tags defined on child in model are used
+- For a deployment node the tags defined in deployment model are used
+- For a deployment instances the kind of the model element is used
+- For a child of deployment instance the kind of this child is used
+- For a deployment node the kind of this deployment node is used
+- Tags are not inherited from parent nodes/elements
+
+```likec4
+model {
+  element cloud {
+    element frontend {
+      #next
+      -> backend "rel1"
+    }
+    element backend {
+      #next
+      -> db "rel2"
+    }
+    element db
+  }
+}
+deployment {
+  environment prod { // Resulting tags: #alpha
+    #alpha
+    zone eu { // Resulting tags: #beta
+      #beta
+      instanceOf frontend { // Resulting tags: #next, #gamma
+          #gamma
+      }
+      instanceOf backend { // Resulting tags: #next, #sigma
+          #sigma
+      }
+      eu -> prod.db "rel3"
+    }
+    instanceOf db { // Resulting tags: #delta
+      #delta
+    }
+  }
+}
+views {
+  deployment view some {
+    include prod.eu.frontend -> prod.eu.backend
+      where source.tag is #next // includes relation "rel1"
+    include prod.eu.frontend -> prod.eu.backend
+      where source.tag is #gamma // includes relation "rel1"
+    include prod.eu -> prod.db
+      where source.tag is #beta // includes relation "rel3"
+    include prod.eu -> prod.db
+      where source.tag is #sigma // does not include any relations
+    include eu.* -> prod.db
+      where source.tag is #sigma // includes relations "rel2"
+  }
+}
+```
+
+<br/>
+<br/>
+  <LinkCard
+    title="Try it online"
+    description="Open deployment example in LikeC4 playground"
+    href="https://playground.likec4.dev/w/deployment/index/"
+    target="_blank"
+  />
 
 # Dynamic views
 
@@ -7005,356 +7351,42 @@ views {
 
 }
 ```
+## Rank constraints
 
-# Deployment Model
-
-
-Deployment Model represents another layer, _physical model_ with its own structure and elements (deployment nodes).   
-It references the [logical model](/dsl/model) and inherits its relationships.
-
-## Specification
-
-First, following the [same approach](/dsl/specification/#element-kind), deployment node kinds have to defined within the specification:
+You can keep specific elements on the same horizontal/vertical level (or push them to the beginning/end of the layout)
+by adding an explicit `rank` block to the view.
+These rank constraints are forwarded to the Graphviz layout engine to achieve the desired layout effects.
 
 ```likec4
-specification {
-  deploymentNode environment
-  deploymentNode zone
-  deploymentNode kubernetes {
-    // Nodes have same styling options
-    style {
-      color blue
-      icon tech:kubernetes
-      multiple true
-    }
+view checkoutFlow {
+  include *
+
+  // keep the API nodes aligned
+  rank same {
+    cloud.backend.api,
+    cloud.backend.billingApi,
   }
-  deploymentNode vm {
-    // Common properties for the kind
-    notation 'Virtual Machine'
-    technology 'VMware'
+
+  // make customers appear at the beginning of the diagram, exclusive of the elements
+  rank source {
+    customer
   }
-}
-```
 
-You define whatever you need to represent your deployment model and your ubiquitous language.
-
-## Deployment nodes
-
-The deployment model is a set of nodes, organized in a hierarchical structure:
-
-```likec4
-deployment {
-  environment prod {
-    zone eu {
-      zone zone1 {
-        vm vm1
-        vm vm2
-      }
-      // You can also use '=' with the name coming first
-      zone2 = zone {        
-        vm1 = vm
-        vm2 = vm
-      }
-    }  
+  // render reporting systems at the end, exclusive of the elements
+  rank sink {
+    analytics,
+    dataWarehouse
   }
 }
 ```
 
-Node names must be unique within its container (parent node); same rules as for element names in the logical model.
+- Allowed rank values: `same`, `min`, `max`, `source`, `sink`. If omitted, `same` is assumed.
+- Targets are regular `FqnRef`s, so you can reference nested elements just like in other rules. Non-existent or duplicate targets are ignored.
+- The constraint only affects elements that actually remain in the computed view. If a predicate later removes an element, it also disappears from the rank block.
+- Rank rules participate in manual tiling of compound nodes as well, so authored constraints combine with the automatic layout instead of fighting it.
 
-Nodes may have properties just like [logical elements](/dsl/model/#element-properties).
-
-```likec4
-deployment {
-  environment prod 'Production' {
-    #live #sla-customer 
-    technology 'OpenTofu'
-    summary 'Production environment'
-    description '''
-      ## Detailed description
-      
-      With **Markdown** support
-
-    '''
-    
-    link https://likec4.dev
-
-    zone eu {
-      title 'EU Region' 
-      // ...
-    }
-  }
-}
-```
-
-### Extend nodes
-
-As in the logical model, you can [`extend`](/dsl/extend/#extend-element) deployment nodes:
-
-```likec4
-// File: 'deployments/prod.c4'
-deployment {
-  environment prod
-}
-
-// File: 'deployments/prod/zone-eu.c4'
-deployment {
-  extend prod {
-    zone eu
-  }
-}
-```
-
-Same [rules](/dsl/extend/#extend-element) apply for extending nodes:
-- extended node must be referenced by a fully qualified name.  
-- define [additional properties](/dsl/extend/#additional-properties).
-
-## Deployed instances
-
-Operator `instanceOf` _“deploys”_ elements from the logical model to deployment nodes:
-
-```likec4
-deployment {
-  environment prod {
-    zone eu {
-      zone zone1 {
-        // 'frontend.ui' is a logical element
-        // by default, instance has same name, 
-        // i.e. it becomes 'prod.eu.zone1.ui'
-        instanceOf frontend.ui
-        // this becomes 'prod.eu.zone1.api'
-        instanceOf backend.api
-      }
-
-      zone zone2 {
-        // or use '=' with the name coming first
-        ui = instanceOf frontend.ui
-
-        // two instances of same element
-        api1 = instanceOf backend.api
-        api2 = instanceOf backend.api
-      }
-
-      // Deploy to any level, not only leaf nodes
-      // Assume database shared between zones
-      db = instanceOf database
-    }    
-  }
-}
-```
-Deployed instance inherits properties and styling from the element.  
-It is possible to override:
-
-```likec4
-deployment {
-  environment prod {
-    zone eu { 
-      db = instanceOf database {
-        title 'Primary DB'
-        technology 'PostgreSQL with streaming replication'
-        icon tech:postgresql
-        style {
-          color red
-        }
-      }
-    }
-  }
-}
-```
-
-
-## Deployment relationships
-
-Deployment model inherits relationships from the logical model.  
-But also allows to define specific ones:
-
-```likec4
-deployment {
-  environment prod {
-    vm vm1 {          
-      db = instanceOf database 'Primary DB'
-    }
-    vm vm2 {
-      db = instanceOf database 'Standby DB'
-    }    
-    vm2.db -> vm1.db 'replicates' 
-  }
-}
-```
-As you see, relationship is between same logical element, but different instances.  
-Assume, we don't need this relationship in our logical model, but it makes sense for deployment.
-
-Deployment relationships can be "kinded", and have [same properties](/dsl/relationships/#relationship-properties) as logical ones:
-
-```likec4
-deployment {
-  environment prod {
-    vm2.db -[streaming]-> vm1.db {
-      #next, #live
-      title 'replicates'
-      description 'Streaming replication'
-    }
-  }
-}
-```
-
-:::tip
-Relationships can be defined for nested elements of deployed instances:
-
-```likec4
-model {
-  component database {
-    component repl_log
-  }
-}
-deployment {
-  vm vm1 {          
-    db = instanceOf database 'Primary DB'
-  }
-  vm vm2 {
-    db = instanceOf database 'Standby DB'
-  } 
-
-  // 'repl_log' is a nested element of deployed instance
-  vm2.db -> vm1.db.repl_log 'replicates'
-}
-```
-:::
-
-:::note
-Check this <a href="https://github.com/likec4/likec4/discussions/1269" target='_blank'>GitHub discussion</a> for further development.  
-Feel free to share your ideas.
-:::
-
-# Deployment views
-
-
-Deployment views allow you to visualize the deployment model, using same approach as [model views](/dsl/views/predicates) — predicates.
-
-## View definition
-
-```likec4 {17-23}
-deployment {
-  environment prod {
-    zone eu {
-      zone zone1 {
-        instanceOf frontend.ui
-        instanceOf backend.api
-      }
-      zone zone2 {
-        instanceOf frontend.ui
-        instanceOf backend.api
-      }
-      instanceOf database
-    }    
-  }
-}
-views {
-  deployment view index {
-    title 'Production Deployment'
-    link https://likec4.dev
-
-    include prod.**
-    // ...
-  }
-}
-```
-
-## View predicates
-
-Deployment views are based on same [predicates](/dsl/views/predicates) as model views.  
-But they refer to deployment nodes and instances.
-
-<Aside type='caution' title='In development'>
-  The following features are not supported yet or do not work as expected:
- 
-  - `with` expressions
-  - Shared styles and predicates
-  - Relationships browser, Element and Relationship Details popups (work with logical model)
-
-  ```likec4
-  deployment view prod {
-    include *                                   // works
-    include * where tag is #next                // works (see details below)
-    include * with { color: red }               // does not work
-
-    include * -> *                              // works
-    include * -> * where tag is #next           // works
-    include * -> * where source.tag is #next    // works (see details below)
-    include * -> * with { color: red }          // does not work
-
-    global style applications                   // does not work    
-  }
-  ```
-</Aside>
-
-### Filtering
-Filtering in deployment views use the same principles as in normal views but takes into account deployment nodes, relations and tags defined in deployment model.
-When condition on element is checked the following rules are applied:
-- For a deployment instances tags are combined from tags defined in model and tags defined in deployment model
-- For a child of deployment instance the tags defined on child in model are used
-- For a deployment node the tags defined in deployment model are used
-- For a deployment instances the kind of the model element is used
-- For a child of deployment instance the kind of this child is used
-- For a deployment node the kind of this deployment node is used
-- Tags are not inherited from parent nodes/elements
-
-```likec4
-model {
-  element cloud {
-    element frontend {
-      #next
-      -> backend "rel1"
-    }
-    element backend {
-      #next
-      -> db "rel2"
-    }
-    element db
-  }
-}
-deployment {
-  environment prod { // Resulting tags: #alpha
-    #alpha
-    zone eu { // Resulting tags: #beta
-      #beta
-      instanceOf frontend { // Resulting tags: #next, #gamma
-          #gamma
-      }
-      instanceOf backend { // Resulting tags: #next, #sigma
-          #sigma
-      }
-      eu -> prod.db "rel3"
-    }
-    instanceOf db { // Resulting tags: #delta
-      #delta
-    }
-  }
-}
-views {
-  deployment view some {
-    include prod.eu.frontend -> prod.eu.backend
-      where source.tag is #next // includes relation "rel1"
-    include prod.eu.frontend -> prod.eu.backend
-      where source.tag is #gamma // includes relation "rel1"
-    include prod.eu -> prod.db
-      where source.tag is #beta // includes relation "rel3"
-    include prod.eu -> prod.db
-      where source.tag is #sigma // does not include any relations
-    include eu.* -> prod.db
-      where source.tag is #sigma // includes relations "rel2"
-  }
-}
-```
-
-<br/>
-<br/>
-  <LinkCard
-    title="Try it online"
-    description="Open deployment example in LikeC4 playground"
-    href="https://playground.likec4.dev/w/deployment/index/"
-    target="_blank"
-  />
+Use rank constraints sparingly—they are most helpful for anchoring critical columns/rows
+(e.g., ingress vs. egress nodes, semantic grouping in lieu of container) to achieve better layout.
 
 # Custom Generators
 
@@ -7549,7 +7581,7 @@ const App = () => {
 | -----------------   | --------------------------------------------------------------------------------------------------- |
 | `viewId`            | Typed enumeration of your views                                                                     |
 | `where`             | Optional, see [filter](#filter) |
-| `injectFontCss`     | Injects CSS with <a href='https://fontsource.org/fonts/ibm-plex-sans' target='_blank'>IBM Plex Sans</a> font from CDN.<br/>Default is `true` |
+| `injectFontCss`     | Injects CSS with <a href='https://fontsource.org/fonts/ibm-plex-sans' target='_blank'>IBM Plex Sans Variable</a> font from CDN.<br/>Default is `true` |
 
 :::tip
 Check <a href="https://github.com/likec4/likec4/blob/main/packages/diagram/src/bundle/LikeC4View.props.ts#L5-L156" target="_blank">source code</a> for all properties.

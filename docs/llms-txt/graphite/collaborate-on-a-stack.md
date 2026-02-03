@@ -1,5 +1,9 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/collaborate-on-a-stack.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Collaborate On A Stack
 
 > Learn how to work on shared collaborative stacks with other Graphite users.

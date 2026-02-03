@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hkeys.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hkeys.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hkeys.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hkeys.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hkeys.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hkeys.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hkeys.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hkeys.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hkeys.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hkeys.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # HKEYS
 
@@ -26,23 +12,23 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the hash.
 </ParamField>
 
 ## Response
 
-<ResponseField type="string[]" required>
+<ResponseField type="List[str]" required>
   The field names of the hash
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.hset("key", {
-    id: 1,
-    username: "chronark",
-    });
-  const fields = await redis.hkeys("key");
-  console.log(fields); // ["id", "username"]
+  ```py Example theme={"system"}
+  redis.hset("myhash", values={
+      "field1": "Hello",
+      "field2": "World"
+  })
+
+  assert redis.hkeys("myhash") == ["field1", "field2"]
   ```
 </RequestExample>

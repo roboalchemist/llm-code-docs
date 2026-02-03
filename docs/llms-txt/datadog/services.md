@@ -4,7 +4,6 @@
 title: Service Observability
 description: Use Datadog to monitor, troubleshoot, and manage your services
 breadcrumbs: Docs > APM > Service Observability
-source_url: https://docs.datadoghq.com/services/index.html
 ---
 
 # Service Observability

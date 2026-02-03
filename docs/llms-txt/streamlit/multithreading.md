@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/concepts/design/multithreading
+
 # Threading in Streamlit
 
 Multithreading is a type of concurrency, which improves the efficiency of computer programs. It's a way for processors to multitask. Streamlit uses threads within its architecture, which can make it difficult for app developers to include their own multithreaded processes. Streamlit does not officially support multithreading in app code, but this guide provides information on how it can be accomplished.

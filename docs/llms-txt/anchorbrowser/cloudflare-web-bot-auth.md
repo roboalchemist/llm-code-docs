@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/advanced/cloudflare-web-bot-auth.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Cloudflare Web Bot Auth
 
 > Authenticate browser sessions with Cloudflare Web Bot Auth

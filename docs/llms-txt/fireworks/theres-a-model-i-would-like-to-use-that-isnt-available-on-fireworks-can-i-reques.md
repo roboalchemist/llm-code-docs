@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/faq-new/models-inference/theres-a-model-i-would-like-to-use-that-isnt-available-on-fireworks-can-i-reques.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # There’s a model I would like to use that isn’t available on Fireworks. Can I request it?
 
 Fireworks supports a wide array of custom models and actively takes feature requests for new, popular models to add to the platform.

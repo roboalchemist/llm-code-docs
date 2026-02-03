@@ -2,10 +2,7 @@
 
 # Get SDK Key
 
-```
-GET 
-/v1/configs/:configId/environments/:environmentId
-```
+Copy page
 
 This endpoint returns the SDK Key for your Config in a specified Environment.
 

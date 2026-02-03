@@ -1,8 +1,12 @@
 # Source: https://docs.fireflies.ai/schema/user-group-member.md
 
-# User Group Member
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-> Schema for User Group Member
+# UserGroupMember
+
+> Schema for UserGroupMember
 
 <ResponseField name="user_id" type="String">
   Unique identifier for the user group member.
@@ -23,8 +27,8 @@
 ## Additional Resources
 
 <CardGroup cols={2}>
-  <Card title="User Groups" icon="link" href="/schema/user-groups">
-    Schema for User Groups
+  <Card title="UserGroups" icon="link" href="/schema/user-groups">
+    Schema for UserGroups
   </Card>
 
   <Card title="User" icon="link" href="/schema/user">

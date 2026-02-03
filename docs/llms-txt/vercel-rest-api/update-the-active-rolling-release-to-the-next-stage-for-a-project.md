@@ -1,102 +1,93 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/rolling-release/update-the-active-rolling-release-to-the-next-stage-for-a-project.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Update the active rolling release to the next stage for a project
 
 > Advance a rollout to the next stage. This is only needed when rolling releases is configured to require manual approval.
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples post /v1/projects/{idOrName}/rolling-release/approve-stage
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v1/projects/{idOrName}/rolling-release/approve-stage
-  method: post
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path:
-        idOrName:
+  /v1/projects/{idOrName}/rolling-release/approve-stage:
+    post:
+      tags:
+        - rolling-release
+      summary: Update the active rolling release to the next stage for a project
+      description: >-
+        Advance a rollout to the next stage. This is only needed when rolling
+        releases is configured to require manual approval.
+      operationId: approveRollingReleaseStage
+      parameters:
+        - name: idOrName
+          description: Project ID or project name (URL-encoded)
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: Project ID or project name (URL-encoded)
-      query:
-        teamId:
+            description: Project ID or project name (URL-encoded)
+            type: string
+        - description: The Team identifier to perform the request on behalf of.
+          in: query
+          name: teamId
           schema:
-            - type: string
-              description: The Team identifier to perform the request on behalf of.
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-        slug:
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        - description: The Team slug to perform the request on behalf of.
+          in: query
+          name: slug
           schema:
-            - type: string
-              description: The Team slug to perform the request on behalf of.
-              example: my-team-url-slug
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              nextStageIndex:
-                allOf:
-                  - description: The index of the stage to transition to
-                    type: number
-              canaryDeploymentId:
-                allOf:
-                  - description: >-
-                      The id of the canary deployment to approve for the next
-                      stage
-                    type: string
-            requiredProperties:
-              - nextStageIndex
-              - canaryDeploymentId
-        examples:
-          example:
-            value:
-              nextStageIndex: 123
-              canaryDeploymentId: <string>
-    codeSamples:
-      - label: approveRollingReleaseStage
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.rollingRelease.approveRollingReleaseStage({
-              idOrName: "<value>",
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-              slug: "my-team-url-slug",
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              rollingRelease:
-                allOf:
-                  - nullable: true
+            type: string
+            example: my-team-url-slug
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - nextStageIndex
+                - canaryDeploymentId
+              properties:
+                nextStageIndex:
+                  description: The index of the stage to transition to
+                  type: number
+                canaryDeploymentId:
+                  description: >-
+                    The id of the canary deployment to approve for the next
+                    stage
+                  type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                properties:
+                  rollingRelease:
+                    nullable: true
                     properties:
                       state:
                         type: string
@@ -109,10 +100,6 @@ paths:
                       currentDeployment:
                         nullable: true
                         properties:
-                          id:
-                            type: string
-                            description: A string holding the unique ID of the deployment
-                            example: dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ
                           name:
                             type: string
                             description: >-
@@ -120,42 +107,16 @@ paths:
                               deployment at the time that the deployment was
                               created
                             example: my-project
-                          url:
-                            type: string
-                            description: A string with the unique URL of the deployment
-                            example: my-instant-deployment-3ij3cxz9qr.now.sh
-                          target:
-                            nullable: true
-                            type: string
-                            enum:
-                              - staging
-                              - production
-                            description: >-
-                              If defined, either `staging` if a staging alias in
-                              the format `<project>.<team>.now.sh` was assigned
-                              upon creation, or `production` if the aliases from
-                              `alias` were assigned. `null` value indicates the
-                              "preview" deployment.
-                            example: null
-                          source:
-                            type: string
-                            enum:
-                              - api-trigger-git-deploy
-                              - cli
-                              - clone/repo
-                              - git
-                              - import
-                              - import/repo
-                              - redeploy
-                              - v0-web
-                            description: Where was the deployment created from
-                            example: cli
                           createdAt:
                             type: number
                             description: >-
                               A number containing the date when the deployment
                               was created in milliseconds
                             example: 1540257589405
+                          id:
+                            type: string
+                            description: A string holding the unique ID of the deployment
+                            example: dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ
                           readyState:
                             type: string
                             enum:
@@ -172,12 +133,42 @@ paths:
                             example: READY
                           readyStateAt:
                             type: number
+                          source:
+                            type: string
+                            enum:
+                              - import
+                              - api-trigger-git-deploy
+                              - cli
+                              - clone/repo
+                              - git
+                              - import/repo
+                              - redeploy
+                              - v0-web
+                            description: Where was the deployment created from
+                            example: cli
+                          target:
+                            nullable: true
+                            type: string
+                            enum:
+                              - staging
+                              - production
+                            description: >-
+                              If defined, either `staging` if a staging alias in
+                              the format `<project>.<team>.now.sh` was assigned
+                              upon creation, or `production` if the aliases from
+                              `alias` were assigned. `null` value indicates the
+                              "preview" deployment.
+                            example: null
+                          url:
+                            type: string
+                            description: A string with the unique URL of the deployment
+                            example: my-instant-deployment-3ij3cxz9qr.now.sh
                         required:
+                          - createdAt
                           - id
                           - name
-                          - url
-                          - createdAt
                           - readyState
+                          - url
                         type: object
                         description: The current deployment receiving production traffic
                         example:
@@ -192,10 +183,6 @@ paths:
                       canaryDeployment:
                         nullable: true
                         properties:
-                          id:
-                            type: string
-                            description: A string holding the unique ID of the deployment
-                            example: dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ
                           name:
                             type: string
                             description: >-
@@ -203,42 +190,16 @@ paths:
                               deployment at the time that the deployment was
                               created
                             example: my-project
-                          url:
-                            type: string
-                            description: A string with the unique URL of the deployment
-                            example: my-instant-deployment-3ij3cxz9qr.now.sh
-                          target:
-                            nullable: true
-                            type: string
-                            enum:
-                              - staging
-                              - production
-                            description: >-
-                              If defined, either `staging` if a staging alias in
-                              the format `<project>.<team>.now.sh` was assigned
-                              upon creation, or `production` if the aliases from
-                              `alias` were assigned. `null` value indicates the
-                              "preview" deployment.
-                            example: null
-                          source:
-                            type: string
-                            enum:
-                              - api-trigger-git-deploy
-                              - cli
-                              - clone/repo
-                              - git
-                              - import
-                              - import/repo
-                              - redeploy
-                              - v0-web
-                            description: Where was the deployment created from
-                            example: cli
                           createdAt:
                             type: number
                             description: >-
                               A number containing the date when the deployment
                               was created in milliseconds
                             example: 1540257589405
+                          id:
+                            type: string
+                            description: A string holding the unique ID of the deployment
+                            example: dpl_89qyp1cskzkLrVicDaZoDbjyHuDJ
                           readyState:
                             type: string
                             enum:
@@ -255,12 +216,42 @@ paths:
                             example: READY
                           readyStateAt:
                             type: number
+                          source:
+                            type: string
+                            enum:
+                              - import
+                              - api-trigger-git-deploy
+                              - cli
+                              - clone/repo
+                              - git
+                              - import/repo
+                              - redeploy
+                              - v0-web
+                            description: Where was the deployment created from
+                            example: cli
+                          target:
+                            nullable: true
+                            type: string
+                            enum:
+                              - staging
+                              - production
+                            description: >-
+                              If defined, either `staging` if a staging alias in
+                              the format `<project>.<team>.now.sh` was assigned
+                              upon creation, or `production` if the aliases from
+                              `alias` were assigned. `null` value indicates the
+                              "preview" deployment.
+                            example: null
+                          url:
+                            type: string
+                            description: A string with the unique URL of the deployment
+                            example: my-instant-deployment-3ij3cxz9qr.now.sh
                         required:
+                          - createdAt
                           - id
                           - name
-                          - url
-                          - createdAt
                           - readyState
+                          - url
                         type: object
                         description: The canary deployment being rolled out
                         example:
@@ -295,6 +286,9 @@ paths:
                               example: 0
                             isFinalStage:
                               type: boolean
+                              enum:
+                                - false
+                                - true
                               description: >-
                                 Whether or not this stage is the final stage
                                 (targetPercentage === 100)
@@ -307,6 +301,9 @@ paths:
                               example: 25
                             requireApproval:
                               type: boolean
+                              enum:
+                                - false
+                                - true
                               description: >-
                                 Whether or not this stage requires manual
                                 approval to proceed
@@ -319,16 +316,19 @@ paths:
                               example: null
                             linearShift:
                               type: boolean
+                              enum:
+                                - false
+                                - true
                               description: >-
                                 Whether to linearly shift traffic over the
                                 duration of this stage
                               example: false
                           required:
+                            - duration
                             - index
                             - isFinalStage
-                            - targetPercentage
                             - requireApproval
-                            - duration
+                            - targetPercentage
                           type: object
                           description: All stages configured for this rolling release
                           example:
@@ -384,6 +384,9 @@ paths:
                             example: 0
                           isFinalStage:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                             description: >-
                               Whether or not this stage is the final stage
                               (targetPercentage === 100)
@@ -396,6 +399,9 @@ paths:
                             example: 25
                           requireApproval:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                             description: >-
                               Whether or not this stage requires manual approval
                               to proceed
@@ -408,16 +414,19 @@ paths:
                             example: null
                           linearShift:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                             description: >-
                               Whether to linearly shift traffic over the
                               duration of this stage
                             example: false
                         required:
+                          - duration
                           - index
                           - isFinalStage
-                          - targetPercentage
                           - requireApproval
-                          - duration
+                          - targetPercentage
                         type: object
                         description: >-
                           The currently active stage, null if the rollout is
@@ -437,6 +446,9 @@ paths:
                             example: 0
                           isFinalStage:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                             description: >-
                               Whether or not this stage is the final stage
                               (targetPercentage === 100)
@@ -449,6 +461,9 @@ paths:
                             example: 25
                           requireApproval:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                             description: >-
                               Whether or not this stage requires manual approval
                               to proceed
@@ -461,16 +476,19 @@ paths:
                             example: null
                           linearShift:
                             type: boolean
+                            enum:
+                              - false
+                              - true
                             description: >-
                               Whether to linearly shift traffic over the
                               duration of this stage
                             example: false
                         required:
+                          - duration
                           - index
                           - isFinalStage
-                          - targetPercentage
                           - requireApproval
-                          - duration
+                          - targetPercentage
                         type: object
                         description: >-
                           The next stage to be activated, null if not in ACTIVE
@@ -494,116 +512,45 @@ paths:
                           release was last updated
                         example: 1716210600000
                     required:
-                      - state
-                      - currentDeployment
-                      - canaryDeployment
-                      - queuedDeploymentId
-                      - advancementType
-                      - stages
                       - activeStage
+                      - advancementType
+                      - canaryDeployment
+                      - currentDeployment
                       - nextStage
+                      - queuedDeploymentId
+                      - stages
                       - startedAt
+                      - state
                       - updatedAt
                     type: object
                     description: >-
                       Rolling release information including configuration and
                       document details, or null if no rolling release exists
-            description: >-
-              The response format for rolling release endpoints that return
-              rolling release information
-            requiredProperties:
-              - rollingRelease
-        examples:
-          example:
-            value:
-              rollingRelease:
-                state: ACTIVE
-                currentDeployment:
-                  id: dpl_abc123
-                  name: my-shop@main
-                  url: my-shop.vercel.app
-                  target: production
-                  source: git
-                  createdAt: 1716206500000
-                  readyState: READY
-                  readyStateAt: 1716206800000
-                canaryDeployment:
-                  id: dpl_def456
-                  name: my-shop@9c7e2f4
-                  url: 9c7e2f4-my-shop.vercel.app
-                  target: production
-                  source: git
-                  createdAt: 1716210100000
-                  readyState: READY
-                  readyStateAt: 1716210400000
-                queuedDeploymentId: dpl_ghi789
-                advancementType: manual-approval
-                stages:
-                  - index: 0
-                    isFinalStage: false
-                    targetPercentage: 5
-                    requireApproval: true
-                    duration: null
-                  - index: 1
-                    isFinalStage: false
-                    targetPercentage: 25
-                    requireApproval: true
-                    duration: null
-                  - index: 2
-                    isFinalStage: false
-                    targetPercentage: 60
-                    requireApproval: true
-                    duration: null
-                  - index: 3
-                    isFinalStage: true
-                    targetPercentage: 100
-                    requireApproval: false
-                    duration: null
-                activeStage:
-                  index: 1
-                  isFinalStage: false
-                  targetPercentage: 25
-                  requireApproval: true
-                  duration: null
-                nextStage:
-                  index: 2
-                  isFinalStage: false
-                  targetPercentage: 60
-                  requireApproval: true
-                  duration: null
-                startedAt: 1716210500000
-                updatedAt: 1716210600000
-        description: ''
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: |-
-              One of the provided values in the request body is invalid.
-              One of the provided values in the request query is invalid.
-        examples: {}
-        description: |-
-          One of the provided values in the request body is invalid.
-          One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-    '404': {}
-    '500': {}
-  deprecated: false
-  type: path
+                required:
+                  - rollingRelease
+                type: object
+                description: >-
+                  The response format for rolling release endpoints that return
+                  rolling release information
+        '400':
+          description: |-
+            One of the provided values in the request body is invalid.
+            One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+        '404':
+          description: ''
+        '500':
+          description: ''
+      security:
+        - bearerToken: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

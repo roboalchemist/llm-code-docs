@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/omdet-turbo.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/omdet-turbo.md
 
 # OmDet-Turbo
 
@@ -19,7 +19,7 @@ The original code can be found [here](https://github.com/om-ai-lab/OmDet).
 
 One unique property of OmDet-Turbo compared to other zero-shot object detection models, such as [Grounding DINO](grounding-dino), is the decoupled classes and prompt embedding structure that allows caching of text embeddings. This means that the model needs both classes and task as inputs, where classes is a list of objects we want to detect and task is the grounded text used to guide open-vocabulary detection. This approach limits the scope of the open-vocabulary detection and makes the decoding process faster.
 
-[OmDetTurboProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/omdet-turbo#transformers.OmDetTurboProcessor) is used to prepare the classes, task and image triplet. The task input is optional, and when not provided, it will default to `"Detect [class1], [class2], [class3], ..."`. To process the results from the model, one can use `post_process_grounded_object_detection` from [OmDetTurboProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/omdet-turbo#transformers.OmDetTurboProcessor). Notably, this function takes in the input classes, as unlike other zero-shot object detection models, the decoupling of classes and task embeddings means that no decoding of the predicted class embeddings is needed in the post-processing step, and the predicted classes can be matched to the inputted ones directly.
+[OmDetTurboProcessor](/docs/transformers/v5.0.0/en/model_doc/omdet-turbo#transformers.OmDetTurboProcessor) is used to prepare the classes, task and image triplet. The task input is optional, and when not provided, it will default to `"Detect [class1], [class2], [class3], ..."`. To process the results from the model, one can use `post_process_grounded_object_detection` from [OmDetTurboProcessor](/docs/transformers/v5.0.0/en/model_doc/omdet-turbo#transformers.OmDetTurboProcessor). Notably, this function takes in the input classes, as unlike other zero-shot object detection models, the decoupling of classes and task embeddings means that no decoding of the predicted class embeddings is needed in the post-processing step, and the predicted classes can be matched to the inputted ones directly.
 
 ## Usage example
 
@@ -140,15 +140,15 @@ Detected statue with confidence 0.2 at location [428.1, 205.5, 767.3, 759.5] in 
 
 #### transformers.OmDetTurboConfig[[transformers.OmDetTurboConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/omdet_turbo/configuration_omdet_turbo.py#L26)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/omdet_turbo/configuration_omdet_turbo.py#L25)
 
-This is the configuration class to store the configuration of a [OmDetTurboForObjectDetection](/docs/transformers/v5.0.0rc1/en/model_doc/omdet-turbo#transformers.OmDetTurboForObjectDetection).
+This is the configuration class to store the configuration of a [OmDetTurboForObjectDetection](/docs/transformers/v5.0.0/en/model_doc/omdet-turbo#transformers.OmDetTurboForObjectDetection).
 It is used to instantiate a OmDet-Turbo model according to the specified arguments, defining the model architecture
 Instantiating a configuration with the defaults will yield a similar configuration to that of the OmDet-Turbo
 [omlab/omdet-turbo-swin-tiny-hf](https://huggingface.co/omlab/omdet-turbo-swin-tiny-hf) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Examples:
 
@@ -169,7 +169,7 @@ Examples:
 
 text_config (`PreTrainedConfig`, *optional*) : The configuration of the text backbone.
 
-backbone_config (`PreTrainedConfig`, *optional*) : The configuration of the vision backbone.
+backbone_config (`Union[dict, "PreTrainedConfig"]`, *optional*, defaults to `SwinConfig()`) : The configuration of the vision backbone.
 
 use_timm_backbone (`bool`, *optional*, defaults to `True`) : Whether to use the timm for the vision backbone.
 
@@ -199,7 +199,7 @@ task_encoder_hidden_dim (`int`, *optional*, defaults to 1024) : The feedforward 
 
 class_embed_dim (`int`, *optional*, defaults to 512) : The dimension of the classes embeddings.
 
-class_distance_type (`str`, *optional*, defaults to `"cosine"`) : The type of of distance to compare predicted classes to projected classes embeddings. Can be `"cosine"` or `"dot"`.
+class_distance_type (`str`, *optional*, defaults to `"cosine"`) : The type of distance to compare predicted classes to projected classes embeddings. Can be `"cosine"` or `"dot"`.
 
 num_queries (`int`, *optional*, defaults to 900) : The number of queries.
 
@@ -261,38 +261,68 @@ kwargs (`dict[str, Any]`, *optional*) : Additional parameters from the architect
 
 #### transformers.OmDetTurboProcessor[[transformers.OmDetTurboProcessor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/omdet_turbo/processing_omdet_turbo.py#L202)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/omdet_turbo/processing_omdet_turbo.py#L190)
 
-Constructs a OmDet-Turbo processor which wraps a Deformable DETR image processor and an AutoTokenizer into a
-single processor.
+Constructs a OmDetTurboProcessor which wraps a image processor and a tokenizer into a single processor.
 
-[OmDetTurboProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/omdet-turbo#transformers.OmDetTurboProcessor) offers all the functionalities of [DetrImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/detr#transformers.DetrImageProcessor) and
-[AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See the docstring of `__call__()` and [decode()](/docs/transformers/v5.0.0rc1/en/main_classes/processors#transformers.ProcessorMixin.decode)
-for more information.
+[OmDetTurboProcessor](/docs/transformers/v5.0.0/en/model_doc/omdet-turbo#transformers.OmDetTurboProcessor) offers all the functionalities of [DetrImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/detr#transformers.DetrImageProcessorFast) and [CLIPTokenizer](/docs/transformers/v5.0.0/en/model_doc/clip#transformers.CLIPTokenizer). See the
+[~DetrImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/detr#transformers.DetrImageProcessorFast) and [~CLIPTokenizer](/docs/transformers/v5.0.0/en/model_doc/clip#transformers.CLIPTokenizer) for more information.
 
-post_process_grounded_object_detectiontransformers.OmDetTurboProcessor.post_process_grounded_object_detectionhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/omdet_turbo/processing_omdet_turbo.py#L310[{"name": "outputs", "val": ": OmDetTurboObjectDetectionOutput"}, {"name": "text_labels", "val": ": typing.Union[list[str], list[list[str]], NoneType] = None"}, {"name": "threshold", "val": ": float = 0.3"}, {"name": "nms_threshold", "val": ": float = 0.5"}, {"name": "target_sizes", "val": ": typing.Union[transformers.utils.generic.TensorType, list[tuple], NoneType] = None"}, {"name": "max_num_det", "val": ": typing.Optional[int] = None"}]- **outputs** (`OmDetTurboObjectDetectionOutput`) --
-  Raw outputs of the model.
-- **text_labels** (Union[list[str], list[list[str]]], *optional*) --
-  The input classes names. If not provided, `text_labels` will be set to `None` in `outputs`.
-- **threshold** (float, defaults to 0.3) --
-  Only return detections with a confidence score exceeding this threshold.
-- **nms_threshold** (float, defaults to 0.5) --
-  The threshold to use for box non-maximum suppression. Value in [0, 1].
-- **target_sizes** (`torch.Tensor` or `list[tuple[int, int]]`, *optional*) --
-  Tensor of shape `(batch_size, 2)` or list of tuples (`tuple[int, int]`) containing the target size
-  `(height, width)` of each image in the batch. If unset, predictions will not be resized.
-- **max_num_det** (`int`, *optional*) --
-  The maximum number of detections to return.0`list[Dict]`A list of dictionaries, each dictionary containing the scores, classes and boxes for an image
-in the batch as predicted by the model.
+__call__transformers.OmDetTurboProcessor.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/omdet_turbo/processing_omdet_turbo.py#L194[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "text", "val": ": list[str] | list[list[str]] | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.models.omdet_turbo.processing_omdet_turbo.OmDetTurboProcessorKwargs]"}]- **images** (`Union[PIL.Image.Image, numpy.ndarray, torch.Tensor, list, list, list]`, *optional*) --
+  Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If
+  passing in images with pixel values between 0 and 1, set `do_rescale=False`.
+- **text** (`Union[list, list]`, *optional*) --
+  The sequence or batch of sequences to be encoded. Each sequence can be a string or a list of strings
+  (pretokenized string). If you pass a pretokenized input, set `is_split_into_words=True` to avoid ambiguity with batched inputs.
+- **task** (`str`, `list[str]`, `TextInput`, or `PreTokenizedInput`, *optional*) --
+  The detection task description(s) to encode. If not provided, a default task description is generated
+  from the `text` input (e.g., "Detect {text}."). Can be a single string, a list of strings (one per image),
+  or pre-tokenized input. The task description guides the model on what objects to detect in the images.
+- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType), *optional*) --
+  If set, will return tensors of a particular framework. Acceptable values are:
 
-Converts the raw output of [OmDetTurboForObjectDetection](/docs/transformers/v5.0.0rc1/en/model_doc/omdet-turbo#transformers.OmDetTurboForObjectDetection) into final bounding boxes in (top_left_x, top_left_y,
+  - `'pt'`: Return PyTorch `torch.Tensor` objects.
+  - `'np'`: Return NumPy `np.ndarray` objects.0``- **data** (`dict`, *optional*) -- Dictionary of lists/arrays/tensors returned by the __call__/pad methods ('input_values', 'attention_mask',
+  etc.).
+- **tensor_type** (`Union[None, str, TensorType]`, *optional*) -- You can give a tensor_type here to convert the lists of integers in PyTorch/Numpy Tensors at
+  initialization.
+- **skip_tensor_conversion** (`list[str]` or `set[str]`, *optional*) -- List or set of keys that should NOT be converted to tensors, even when `tensor_type` is specified.
+
+**Parameters:**
+
+image_processor (`DetrImageProcessorFast`) : The image processor is a required input.
+
+tokenizer (`CLIPTokenizer`) : The tokenizer is a required input.
+
+**Returns:**
+
+````
+
+- **data** (`dict`, *optional*) -- Dictionary of lists/arrays/tensors returned by the __call__/pad methods ('input_values', 'attention_mask',
+  etc.).
+- **tensor_type** (`Union[None, str, TensorType]`, *optional*) -- You can give a tensor_type here to convert the lists of integers in PyTorch/Numpy Tensors at
+  initialization.
+- **skip_tensor_conversion** (`list[str]` or `set[str]`, *optional*) -- List or set of keys that should NOT be converted to tensors, even when `tensor_type` is specified.
+#### post_process_grounded_object_detection[[transformers.OmDetTurboProcessor.post_process_grounded_object_detection]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/omdet_turbo/processing_omdet_turbo.py#L264)
+
+Converts the raw output of [OmDetTurboForObjectDetection](/docs/transformers/v5.0.0/en/model_doc/omdet-turbo#transformers.OmDetTurboForObjectDetection) into final bounding boxes in (top_left_x, top_left_y,
 bottom_right_x, bottom_right_y) format and get the associated text class.
 
 **Parameters:**
 
-image_processor (`DetrImageProcessor`) : An instance of [DetrImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/detr#transformers.DetrImageProcessor). The image processor is a required input.
+outputs (`OmDetTurboObjectDetectionOutput`) : Raw outputs of the model.
 
-tokenizer (`AutoTokenizer`) : An instance of ['PreTrainedTokenizer`]. The tokenizer is a required input.
+text_labels (Union[list[str], list[list[str]]], *optional*) : The input classes names. If not provided, `text_labels` will be set to `None` in `outputs`.
+
+threshold (float, defaults to 0.3) : Only return detections with a confidence score exceeding this threshold.
+
+nms_threshold (float, defaults to 0.5) : The threshold to use for box non-maximum suppression. Value in [0, 1].
+
+target_sizes (`torch.Tensor` or `list[tuple[int, int]]`, *optional*) : Tensor of shape `(batch_size, 2)` or list of tuples (`tuple[int, int]`) containing the target size `(height, width)` of each image in the batch. If unset, predictions will not be resized.
+
+max_num_det (`int`, *optional*) : The maximum number of detections to return.
 
 **Returns:**
 
@@ -305,12 +335,12 @@ in the batch as predicted by the model.
 
 #### transformers.OmDetTurboForObjectDetection[[transformers.OmDetTurboForObjectDetection]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/omdet_turbo/modeling_omdet_turbo.py#L1466)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/omdet_turbo/modeling_omdet_turbo.py#L1468)
 
 OmDetTurbo Model (consisting of a vision and a text backbone, and encoder-decoder architecture) outputting
 bounding boxes and classes scores for tasks such as COCO detection.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -318,16 +348,16 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.OmDetTurboForObjectDetection.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/omdet_turbo/modeling_omdet_turbo.py#L1496[{"name": "pixel_values", "val": ": FloatTensor"}, {"name": "classes_input_ids", "val": ": LongTensor"}, {"name": "classes_attention_mask", "val": ": LongTensor"}, {"name": "tasks_input_ids", "val": ": LongTensor"}, {"name": "tasks_attention_mask", "val": ": LongTensor"}, {"name": "classes_structure", "val": ": LongTensor"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`) --
+forwardtransformers.OmDetTurboForObjectDetection.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/omdet_turbo/modeling_omdet_turbo.py#L1498[{"name": "pixel_values", "val": ": FloatTensor"}, {"name": "classes_input_ids", "val": ": LongTensor"}, {"name": "classes_attention_mask", "val": ": LongTensor"}, {"name": "tasks_input_ids", "val": ": LongTensor"}, {"name": "tasks_attention_mask", "val": ": LongTensor"}, {"name": "classes_structure", "val": ": LongTensor"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [DetrImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/detr#transformers.DetrImageProcessor). See [DetrImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([OmDetTurboProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/omdet-turbo#transformers.OmDetTurboProcessor) uses
-  [DetrImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/detr#transformers.DetrImageProcessor) for processing images).
+  [DetrImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/detr#transformers.DetrImageProcessorFast). See [DetrImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([OmDetTurboProcessor](/docs/transformers/v5.0.0/en/model_doc/omdet-turbo#transformers.OmDetTurboProcessor) uses
+  [DetrImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/detr#transformers.DetrImageProcessorFast) for processing images).
 - **classes_input_ids** (`torch.LongTensor` of shape `(total_classes (>= batch_size), sequence_length)`) --
   Indices of input classes sequence tokens in the vocabulary of the language model.
   Several classes can be provided for each tasks, thus the tokenized classes are flattened
   and the structure of the classes is provided in the `classes_structure` argument.
 
-  Indices can be obtained using [OmDetTurboProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/omdet-turbo#transformers.OmDetTurboProcessor). See `OmDetTurboProcessor.__call__()` for
+  Indices can be obtained using [OmDetTurboProcessor](/docs/transformers/v5.0.0/en/model_doc/omdet-turbo#transformers.OmDetTurboProcessor). See [OmDetTurboProcessor.__call__()](/docs/transformers/v5.0.0/en/model_doc/omdet-turbo#transformers.OmDetTurboProcessor.__call__) for
   details.
 
   [What are input IDs?](../glossary#input-ids)
@@ -337,7 +367,7 @@ forwardtransformers.OmDetTurboForObjectDetection.forwardhttps://github.com/huggi
 - **tasks_input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`) --
   Indices of input tasks sequence tokens in the vocabulary of the language model.
 
-  Indices can be obtained using [OmDetTurboProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/omdet-turbo#transformers.OmDetTurboProcessor). See `OmDetTurboProcessor.__call__()` for
+  Indices can be obtained using [OmDetTurboProcessor](/docs/transformers/v5.0.0/en/model_doc/omdet-turbo#transformers.OmDetTurboProcessor). See [OmDetTurboProcessor.__call__()](/docs/transformers/v5.0.0/en/model_doc/omdet-turbo#transformers.OmDetTurboProcessor.__call__) for
   details.
 
   [What are input IDs?](../glossary#input-ids)
@@ -357,18 +387,18 @@ forwardtransformers.OmDetTurboForObjectDetection.forwardhttps://github.com/huggi
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0`transformers.models.omdet_turbo.modeling_omdet_turbo.OmDetTurboObjectDetectionOutput` or `tuple(torch.FloatTensor)`A `transformers.models.omdet_turbo.modeling_omdet_turbo.OmDetTurboObjectDetectionOutput` or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0`transformers.models.omdet_turbo.modeling_omdet_turbo.OmDetTurboObjectDetectionOutput` or `tuple(torch.FloatTensor)`A `transformers.models.omdet_turbo.modeling_omdet_turbo.OmDetTurboObjectDetectionOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([OmDetTurboConfig](/docs/transformers/v5.0.0rc1/en/model_doc/omdet-turbo#transformers.OmDetTurboConfig)) and inputs.
+elements depending on the configuration ([OmDetTurboConfig](/docs/transformers/v5.0.0/en/model_doc/omdet-turbo#transformers.OmDetTurboConfig)) and inputs.
 
-- **loss** (`torch.FloatTensor`, *optional*, defaults to `None`) -- The loss value.
+- **loss** (`torch.FloatTensor | None.loss`, defaults to `None`) -- The loss value.
 - **decoder_coord_logits** (`torch.FloatTensor` of shape `(batch_size, num_queries, 4)`) -- The predicted coordinates logits of the objects.
 - **decoder_class_logits** (`torch.FloatTensor` of shape `(batch_size, num_queries, num_classes)`) -- The predicted class of the objects.
 - **init_reference_points** (`torch.FloatTensor` of shape `(batch_size, num_queries, 4)`) -- The initial reference points.
-- **intermediate_reference_points** (`tuple[tuple[torch.FloatTensor]]`, *optional*, defaults to `None`) -- The intermediate reference points.
+- **intermediate_reference_points** (`tuple[tuple[torch.FloatTensor]] | None.intermediate_reference_points`, defaults to `None`) -- The intermediate reference points.
 - **encoder_coord_logits** (`torch.FloatTensor` of shape `(batch_size, num_queries, 4)`) -- The predicted coordinates of the objects from the encoder.
-- **encoder_class_logits** (`tuple[torch.FloatTensor]`, *optional*, defaults to `None`) -- The predicted class of the objects from the encoder.
-- **encoder_extracted_states** (`torch.FloatTensor`, *optional*, defaults to `None`) -- The extracted states from the Feature Pyramid Network (FPN) and Path Aggregation Network (PAN) of the encoder.
+- **encoder_class_logits** (`tuple[torch.FloatTensor] | None.encoder_class_logits`, defaults to `None`) -- The predicted class of the objects from the encoder.
+- **encoder_extracted_states** (`torch.FloatTensor | None.encoder_extracted_states`, defaults to `None`) -- The extracted states from the Feature Pyramid Network (FPN) and Path Aggregation Network (PAN) of the encoder.
 - **decoder_hidden_states** (`tuple[torch.FloatTensor]`, *optional*) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings + one for the output of each layer) of shape
   `(batch_size, sequence_length, hidden_size)`. Hidden-states of the model at the output of each layer
   plus the initial embedding outputs.
@@ -382,7 +412,7 @@ elements depending on the configuration ([OmDetTurboConfig](/docs/transformers/v
   sequence_length, sequence_length)`. Attentions weights after the attention softmax, used to compute the
   weighted average in the self-attention, cross-attention and multi-scale deformable attention heads.
 - **classes_structure** (`torch.LongTensor`, *optional*) -- The number of queried classes for each image.
-The [OmDetTurboForObjectDetection](/docs/transformers/v5.0.0rc1/en/model_doc/omdet-turbo#transformers.OmDetTurboForObjectDetection) forward method, overrides the `__call__` special method.
+The [OmDetTurboForObjectDetection](/docs/transformers/v5.0.0/en/model_doc/omdet-turbo#transformers.OmDetTurboForObjectDetection) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -391,7 +421,8 @@ the latter silently ignores them.
 Examples:
 
 ```python
->>> import requests
+>>> import httpx
+>>> from io import BytesIO
 >>> from PIL import Image
 
 >>> from transformers import AutoProcessor, OmDetTurboForObjectDetection
@@ -400,7 +431,8 @@ Examples:
 >>> model = OmDetTurboForObjectDetection.from_pretrained("omlab/omdet-turbo-swin-tiny-hf")
 
 >>> url = "http://images.cocodataset.org/val2017/000000039769.jpg"
->>> image = Image.open(requests.get(url, stream=True).raw)
+>>> with httpx.stream("GET", url) as response:
+...     image = Image.open(BytesIO(response.read()))
 >>> classes = ["cat", "remote"]
 >>> task = "Detect {}.".format(", ".join(classes))
 >>> inputs = processor(image, text=classes, task=task, return_tensors="pt")
@@ -429,7 +461,7 @@ Detected remote with confidence 0.57 at location [333.4, 75.6, 370.7, 187.0]
 
 **Parameters:**
 
-config ([OmDetTurboConfig](/docs/transformers/v5.0.0rc1/en/model_doc/omdet-turbo#transformers.OmDetTurboConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([OmDetTurboConfig](/docs/transformers/v5.0.0/en/model_doc/omdet-turbo#transformers.OmDetTurboConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
@@ -437,16 +469,16 @@ config ([OmDetTurboConfig](/docs/transformers/v5.0.0rc1/en/model_doc/omdet-turbo
 
 A `transformers.models.omdet_turbo.modeling_omdet_turbo.OmDetTurboObjectDetectionOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([OmDetTurboConfig](/docs/transformers/v5.0.0rc1/en/model_doc/omdet-turbo#transformers.OmDetTurboConfig)) and inputs.
+elements depending on the configuration ([OmDetTurboConfig](/docs/transformers/v5.0.0/en/model_doc/omdet-turbo#transformers.OmDetTurboConfig)) and inputs.
 
-- **loss** (`torch.FloatTensor`, *optional*, defaults to `None`) -- The loss value.
+- **loss** (`torch.FloatTensor | None.loss`, defaults to `None`) -- The loss value.
 - **decoder_coord_logits** (`torch.FloatTensor` of shape `(batch_size, num_queries, 4)`) -- The predicted coordinates logits of the objects.
 - **decoder_class_logits** (`torch.FloatTensor` of shape `(batch_size, num_queries, num_classes)`) -- The predicted class of the objects.
 - **init_reference_points** (`torch.FloatTensor` of shape `(batch_size, num_queries, 4)`) -- The initial reference points.
-- **intermediate_reference_points** (`tuple[tuple[torch.FloatTensor]]`, *optional*, defaults to `None`) -- The intermediate reference points.
+- **intermediate_reference_points** (`tuple[tuple[torch.FloatTensor]] | None.intermediate_reference_points`, defaults to `None`) -- The intermediate reference points.
 - **encoder_coord_logits** (`torch.FloatTensor` of shape `(batch_size, num_queries, 4)`) -- The predicted coordinates of the objects from the encoder.
-- **encoder_class_logits** (`tuple[torch.FloatTensor]`, *optional*, defaults to `None`) -- The predicted class of the objects from the encoder.
-- **encoder_extracted_states** (`torch.FloatTensor`, *optional*, defaults to `None`) -- The extracted states from the Feature Pyramid Network (FPN) and Path Aggregation Network (PAN) of the encoder.
+- **encoder_class_logits** (`tuple[torch.FloatTensor] | None.encoder_class_logits`, defaults to `None`) -- The predicted class of the objects from the encoder.
+- **encoder_extracted_states** (`torch.FloatTensor | None.encoder_extracted_states`, defaults to `None`) -- The extracted states from the Feature Pyramid Network (FPN) and Path Aggregation Network (PAN) of the encoder.
 - **decoder_hidden_states** (`tuple[torch.FloatTensor]`, *optional*) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings + one for the output of each layer) of shape
   `(batch_size, sequence_length, hidden_size)`. Hidden-states of the model at the output of each layer
   plus the initial embedding outputs.

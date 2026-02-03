@@ -2,19 +2,30 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/class/LogClient.md
 
-# Source: https://docs.apify.com/api/client/python/reference/class/LogClient.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/LogClient.md
-
-# Source: https://docs.apify.com/api/client/python/reference/class/LogClient.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/LogClient.md
-
-# Source: https://docs.apify.com/api/client/python/reference/class/LogClient.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/LogClient.md
-
 # LogClient<!-- -->
+
+Client for accessing Actor run or build logs.
+
+Provides methods to retrieve logs as text or stream them in real-time. Logs can be accessed for both running and finished Actor runs and builds.
+
+* **@example**
+
+  ```
+  const client = new ApifyClient({ token: 'my-token' });
+  const runClient = client.run('my-run-id');
+
+  // Get the log content
+  const log = await runClient.log().get();
+  console.log(log);
+
+  // Stream the log in real-time
+  const stream = await runClient.log().stream();
+  stream.on('line', (line) => console.log(line));
+  ```
+
+* **@see**
+
+  <https://docs.apify.com/platform/actors/running/runs-and-builds#logging>
 
 ### Hierarchy
 
@@ -42,25 +53,25 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#apifyClient)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L35)inheritedapifyClient
+### [**](#apifyClient)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L36)inheritedapifyClient
 
 **apifyClient: [ApifyClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/ApifyClient.md)
 
 Inherited from ResourceClient.apifyClient
 
-### [**](#baseUrl)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L27)inheritedbaseUrl
+### [**](#baseUrl)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L28)inheritedbaseUrl
 
 **baseUrl: string
 
 Inherited from ResourceClient.baseUrl
 
-### [**](#httpClient)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L37)inheritedhttpClient
+### [**](#httpClient)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L38)inheritedhttpClient
 
 **httpClient: HttpClient
 
 Inherited from ResourceClient.httpClient
 
-### [**](#id)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L23)optionalinheritedid
+### [**](#id)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L24)optionalinheritedid
 
 **id?
 
@@ -70,7 +81,7 @@ Inherited from ResourceClient.httpClient
 
 Inherited from ResourceClient.id
 
-### [**](#params)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L39)optionalinheritedparams
+### [**](#params)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L40)optionalinheritedparams
 
 **params?
 
@@ -80,19 +91,19 @@ Inherited from ResourceClient.id
 
 Inherited from ResourceClient.params
 
-### [**](#publicBaseUrl)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L29)inheritedpublicBaseUrl
+### [**](#publicBaseUrl)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L30)inheritedpublicBaseUrl
 
 **publicBaseUrl: string
 
 Inherited from ResourceClient.publicBaseUrl
 
-### [**](#resourcePath)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L31)inheritedresourcePath
+### [**](#resourcePath)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L32)inheritedresourcePath
 
 **resourcePath: string
 
 Inherited from ResourceClient.resourcePath
 
-### [**](#safeId)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L25)optionalinheritedsafeId
+### [**](#safeId)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L26)optionalinheritedsafeId
 
 **safeId?
 
@@ -102,7 +113,7 @@ Inherited from ResourceClient.resourcePath
 
 Inherited from ResourceClient.safeId
 
-### [**](#url)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L33)inheritedurl
+### [**](#url)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L34)inheritedurl
 
 **url: string
 
@@ -110,22 +121,46 @@ Inherited from ResourceClient.url
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#get)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/log.ts#L23)get
+### [**](#get)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/log.ts#L56)get
 
-* ****get**(): Promise\<undefined | string>
+* ****get**(options): Promise\<undefined | string>
 
-- <https://docs.apify.com/api/v2#/reference/logs/log/get-log>
+- Retrieves the log as a string.
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/log-get>
 
   ***
+
+  #### Parameters
+
+  * ##### options: [LogOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/LogOptions.md) = <!-- -->{}
+
+    Log retrieval options.
 
   #### Returns Promise\<undefined | string>
 
-### [**](#stream)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/log.ts#L44)stream
+  The log content as a string, or `undefined` if it does not exist.
 
-* ****stream**(): Promise\<undefined | Readable>
+### [**](#stream)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/log.ts#L81)stream
 
-- Gets the log in a Readable stream format. Only works in Node.js. <https://docs.apify.com/api/v2#/reference/logs/log/get-log>
+* ****stream**(options): Promise\<undefined | Readable>
+
+- Retrieves the log as a Readable stream. Only works in Node.js.
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/log-get>
 
   ***
 
+  #### Parameters
+
+  * ##### options: [LogOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/LogOptions.md) = <!-- -->{}
+
+    Log retrieval options.
+
   #### Returns Promise\<undefined | Readable>
+
+  The log content as a Readable stream, or `undefined` if it does not exist.

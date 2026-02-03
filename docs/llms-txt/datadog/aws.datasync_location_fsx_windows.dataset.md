@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > DDSQL Reference > Data Directory > DataSync FSx for Windows File Server
   Location
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.datasync_location_fsx_windows.dataset/index.html
 ---
 
 # DataSync FSx for Windows File Server Location
@@ -29,5 +27,5 @@ aws.datasync_location_fsx_windows
 | location_arn        | core | string        | The ARN of the FSx for Windows File Server location.                                                                                                                                                                                     |
 | location_uri        | core | string        | The uniform resource identifier (URI) of the FSx for Windows File Server location.                                                                                                                                                       |
 | security_group_arns | core | array<string> | The ARNs of the Amazon EC2 security groups that provide access to your file system's preferred subnet. For information about configuring security groups for file system access, see the Amazon FSx for Windows File Server User Guide . |
-| tags                | core | hstore        |
+| tags                | core | hstore_csv    |
 | user                | core | string        | The user with the permissions to mount and access the FSx for Windows File Server file system.                                                                                                                                           |

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/system-prompt-override/
+
 # System Prompt Override Plugin
 
 System prompts serve as the foundation of LLM security and behavior control. They define how a model should behave, what content it should filter, what role it should play, and what ethical guidelines it should follow. These prompts are meant to be immutable instructions that keep the model operating safely and consistently.

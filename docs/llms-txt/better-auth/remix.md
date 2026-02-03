@@ -6,11 +6,7 @@
 
 Better Auth Remix example.
 
-***
 
-title: Remix Example
-description: Better Auth Remix example.
----------------------------------------
 
 This is an example of how to use Better Auth with Remix.
 

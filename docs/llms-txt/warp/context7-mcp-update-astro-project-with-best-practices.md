@@ -20,8 +20,7 @@ In the example, the agent updates an older **Astro** project to align with the l
 
 {% stepper %}
 {% step %}
-
-### Add the Context7 Server
+**Add the Context7 Server**
 
 * Open Warp’s **MCP Panel** via the Command Palette.
 * Add the **Context7 JSON config** and click **Save**.
@@ -44,8 +43,7 @@ In the example, the agent updates an older **Astro** project to align with the l
   {% endstep %}
 
 {% step %}
-
-### Run the Update Prompt
+**Run the Update Prompt**
 
 The developer issues this prompt:
 
@@ -59,8 +57,7 @@ Create a new git branch called update and in that branch update this Astro proje
 {% endstep %}
 
 {% step %}
-
-### Review the Automatic Code Changes
+**Review the Automatic Code Changes**
 
 The transcript shows that Warp automatically:
 
@@ -73,8 +70,7 @@ These edits happen across multiple files — without manually searching docs or 
 {% endstep %}
 
 {% step %}
-
-### Best Use Cases
+**Best Use Cases**
 
 * Migrating old Astro, React, or Vue projects
 * Refreshing codebases to reflect recent standards

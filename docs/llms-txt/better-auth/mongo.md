@@ -4,11 +4,7 @@
 
 Integrate Better Auth with MongoDB.
 
-***
 
-title: MongoDB Adapter
-description: Integrate Better Auth with MongoDB.
-------------------------------------------------
 
 MongoDB is a popular NoSQL database that is widely used for building scalable and flexible applications. It provides a flexible schema that allows for easy data modeling and querying.
 

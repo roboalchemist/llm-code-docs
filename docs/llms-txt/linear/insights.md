@@ -2,10 +2,10 @@
 
 # Insights
 
-Realtime analytics for all your Linear data. Visualize issue data to spot trends and remove blockers.
+Real-time analytics for all your Linear data. Visualize issue data to spot trends and remove blockers.
 
 > [!NOTE]
-> Available to workspaces on our [Business](https://linear.app/pricing) and [Enterprise](https://linear.app/pricing) plans.
+> Available to workspaces on the [Business](https://linear.app/pricing) and [Enterprise](https://linear.app/pricing) plans.
 
 ![Insights bar graph showing Issue count by Assignee. Bars are segmented by Status, so you can see what proportion of issues each assignee has completed, started, etc.](https://webassets.linear.app/images/ornj730p/production/c845c78338ca581e6794e8aa2731d02bdd5b058f-2160x1327.png?q=95&auto=format&dpr=2)
 

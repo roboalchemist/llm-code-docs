@@ -2,10 +2,6 @@
 
 # Source: https://docs.convex.dev/auth/clerk.md
 
-# Source: https://docs.convex.dev/client/tanstack/tanstack-start/clerk.md
-
-# Source: https://docs.convex.dev/auth/clerk.md
-
 # Convex & Clerk
 
 [Clerk](https://clerk.com) is an authentication platform providing login via passwords, social identity providers, one-time email or SMS access codes, and multi-factor authentication and user management.
@@ -199,7 +195,7 @@ This guide assumes you already have a working React app with Convex. If not foll
         }
         return await ctx.db
           .query("messages")
-          .filter((q) => q.eq(q.field("author"), identity.email))
+          .withIndex("by_author", (q) => q.eq("author", identity.email))
           .collect();
       },
     });
@@ -448,7 +444,7 @@ This guide assumes you already have a working Next.js app with Convex. If not fo
         }
         return await ctx.db
           .query("messages")
-          .filter((q) => q.eq(q.field("author"), identity.email))
+          .withIndex("by_author", (q) => q.eq("author", identity.email))
           .collect();
       },
     });

@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/integrations/github.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # GitHub
 
 > Run experiments in CI and get evaluation results directly in your pull requests
@@ -286,8 +290,3 @@ Run an experiment in your CI/CD pipeline with the Traceloop GitHub App integrati
     </Frame>
   </Step>
 </Steps>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

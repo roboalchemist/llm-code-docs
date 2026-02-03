@@ -1,3 +1,5 @@
+# Source: https://preactjs.com/guide/v10/debugging
+
 # Debugging Preact Apps
 
 Preact ships with a lot of tools to make debugging easier. They're packaged in a single import and can be included by importing `preact/debug`.

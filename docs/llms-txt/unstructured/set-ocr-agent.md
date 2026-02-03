@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/open-source/how-to/set-ocr-agent.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Set the OCR agent
 
 ## Task

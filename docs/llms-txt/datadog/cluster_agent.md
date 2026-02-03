@@ -5,8 +5,7 @@ title: Cluster Agent for Kubernetes
 description: >-
   Centralized approach to collecting cluster-level monitoring data with the
   Datadog Cluster Agent
-breadcrumbs: Docs > Container Monitoring > Cluster Agent for Kubernetes
-source_url: https://docs.datadoghq.com/cluster_agent/index.html
+breadcrumbs: Docs > Containers > Cluster Agent for Kubernetes
 ---
 
 # Cluster Agent for Kubernetes

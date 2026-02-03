@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/dashboard/audiences/properties.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Contact Properties
 
 > Learn how to work with Contact Properties with Resend.
@@ -28,7 +32,7 @@ Each Contact Property has a key, a value, and optional fallback value.
 You can also create Contact Properties [via the API or SDKs](/api-reference/contact-properties/create-contact-property).
 
 <CodeGroup>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -40,7 +44,7 @@ You can also create Contact Properties [via the API or SDKs](/api-reference/cont
   });
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->contactProperties->create([
@@ -50,7 +54,7 @@ You can also create Contact Properties [via the API or SDKs](/api-reference/cont
   ]);
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = 're_xxxxxxxxx'
@@ -64,7 +68,7 @@ You can also create Contact Properties [via the API or SDKs](/api-reference/cont
   contact_property = resend.ContactProperties.create(params)
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -76,7 +80,7 @@ You can also create Contact Properties [via the API or SDKs](/api-reference/cont
   })
   ```
 
-  ```go Go theme={null}
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   package main
 
   import (
@@ -106,7 +110,7 @@ You can also create Contact Properties [via the API or SDKs](/api-reference/cont
   }
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{
     types::{CreateContactPropertyOptions, PropertyType},
     Resend, Result,
@@ -125,7 +129,7 @@ You can also create Contact Properties [via the API or SDKs](/api-reference/cont
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -143,7 +147,7 @@ You can also create Contact Properties [via the API or SDKs](/api-reference/cont
   }
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -156,7 +160,7 @@ You can also create Contact Properties [via the API or SDKs](/api-reference/cont
   Console.WriteLine( "Prop Id={0}", resp.Content );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X POST 'https://api.resend.com/contact-properties' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json' \
@@ -174,7 +178,7 @@ When you create a Contact Property you can provide a fallback value. This value 
 
 To provide a custom value for a Contact, you can use the dashboard:
 
-1. Go to the [Contacts](/audiences) page.
+1. Go to the [Contacts](https://resend.com/audience) page.
 2. Click the **more options** <Icon icon="ellipsis" iconType="solid" /> button and then **Edit Contact**.
 3. Add the property key and value.
 4. Click on the **Save** button.
@@ -184,7 +188,7 @@ To provide a custom value for a Contact, you can use the dashboard:
 You can also add properties to a Contact when you [create a Contact](/api-reference/contacts/create-contact).
 
 <CodeGroup>
-  ```ts Node.js {10-12} theme={null}
+  ```ts Node.js {10-12} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -200,7 +204,7 @@ You can also add properties to a Contact when you [create a Contact](/api-refere
   });
   ```
 
-  ```php PHP {9-11} theme={null}
+  ```php PHP {9-11} theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->contacts->create(
@@ -216,7 +220,7 @@ You can also add properties to a Contact when you [create a Contact](/api-refere
   );
   ```
 
-  ```python Python {10-12} theme={null}
+  ```python Python {10-12} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
@@ -234,7 +238,7 @@ You can also add properties to a Contact when you [create a Contact](/api-refere
   resend.Contacts.create(params)
   ```
 
-  ```ruby Ruby {10-12} theme={null}
+  ```ruby Ruby {10-12} theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -252,7 +256,7 @@ You can also add properties to a Contact when you [create a Contact](/api-refere
   Resend::Contacts.create(params)
   ```
 
-  ```go Go {10-12} theme={null}
+  ```go Go {10-12} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import "github.com/resend/resend-go/v3"
 
   client := resend.NewClient("re_xxxxxxxxx")
@@ -270,7 +274,7 @@ You can also add properties to a Contact when you [create a Contact](/api-refere
   contact, err := client.Contacts.Create(params)
   ```
 
-  ```rust Rust {11-12} theme={null}
+  ```rust Rust {11-12} theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{types::CreateContactOptions, Resend, Result};
 
   #[tokio::main]
@@ -289,7 +293,7 @@ You can also add properties to a Contact when you [create a Contact](/api-refere
   }
   ```
 
-  ```java Java {12-13} theme={null}
+  ```java Java {12-13} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -309,7 +313,7 @@ You can also add properties to a Contact when you [create a Contact](/api-refere
   }
   ```
 
-  ```csharp .NET {12-14} theme={null}
+  ```csharp .NET {12-14} theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -329,7 +333,7 @@ You can also add properties to a Contact when you [create a Contact](/api-refere
   Console.WriteLine( "Contact Id={0}", resp.Content );
   ```
 
-  ```bash cURL {9-11} theme={null}
+  ```bash cURL {9-11} theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X POST 'https://api.resend.com/contacts' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json' \
@@ -348,7 +352,7 @@ You can also add properties to a Contact when you [create a Contact](/api-refere
 Or you can update a Contact to add or change a property value [using the update contact endpoint](/api-reference/contacts/update-contact).
 
 <CodeGroup>
-  ```ts Node.js {8-10, 16-18} theme={null}
+  ```ts Node.js {8-10, 16-18} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -370,7 +374,7 @@ Or you can update a Contact to add or change a property value [using the update 
   });
   ```
 
-  ```php PHP {7-9, 17-19} theme={null}
+  ```php PHP {7-9, 17-19} theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   // Update by contact id
@@ -394,7 +398,7 @@ Or you can update a Contact to add or change a property value [using the update 
   );
   ```
 
-  ```python Python {8-10, 18-20} theme={null}
+  ```python Python {8-10, 18-20} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
@@ -420,7 +424,7 @@ Or you can update a Contact to add or change a property value [using the update 
   resend.Contacts.update(params)
   ```
 
-  ```ruby Ruby {8-10, 18-20} theme={null}
+  ```ruby Ruby {8-10, 18-20} theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -446,7 +450,7 @@ Or you can update a Contact to add or change a property value [using the update 
   Resend::Contacts.update(params)
   ```
 
-  ```go Go {8-10, 19-21} theme={null}
+  ```go Go {8-10, 19-21} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import "github.com/resend/resend-go/v3"
 
   client := resend.NewClient("re_xxxxxxxxx")
@@ -474,7 +478,7 @@ Or you can update a Contact to add or change a property value [using the update 
   contact, err := client.Contacts.Update(params)
   ```
 
-  ```rust Rust {7} theme={null}
+  ```rust Rust {7} theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{types::ContactChanges, Resend, Result};
 
   #[tokio::main]
@@ -499,7 +503,7 @@ Or you can update a Contact to add or change a property value [using the update 
   }
   ```
 
-  ```java Java {10, 16} theme={null}
+  ```java Java {10, 16} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -523,7 +527,7 @@ Or you can update a Contact to add or change a property value [using the update 
   }
   ```
 
-  ```csharp .NET {12-14, 25-27} theme={null}
+  ```csharp .NET {12-14, 25-27} theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -555,7 +559,7 @@ Or you can update a Contact to add or change a property value [using the update 
   );
   ```
 
-  ```bash cURL {6-8, 16-18} theme={null}
+  ```bash cURL {6-8, 16-18} theme={"theme":{"light":"github-light","dark":"vesper"}}
   # Update by contact id
   curl -X PATCH 'https://api.resend.com/contacts/520784e2-887d-4c25-b53c-4ad46ad38100' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \

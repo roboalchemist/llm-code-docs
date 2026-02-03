@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/webhooks/events/vehicle-error.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # VEHICLE_ERROR Event
 
 > Error notifications and resolution tracking for signal retrieval issues
@@ -498,8 +502,3 @@ function handleErrorResolution(payload) {
     Understand retry policies
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://smartcar.com/docs/llms.txt

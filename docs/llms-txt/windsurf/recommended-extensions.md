@@ -1,8 +1,12 @@
 # Source: https://docs.windsurf.com/windsurf/recommended-extensions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Recommended Extensions
 
-> Recommended Extensions for Windsurf
+> Popular Open VSX extensions for Windsurf including Python, Java, C#, GitLens, and more. Replicate familiar IDE experiences from VS Code, Eclipse, or Visual Studio.
 
 # Windsurf: Embracing the Agentic VS Code OSS Experience
 

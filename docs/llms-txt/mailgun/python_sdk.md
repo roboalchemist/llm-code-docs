@@ -87,7 +87,7 @@ import os
 from pathlib import Path
 from mailgun.client import Client
 
-key: str = os.environ["APIKEY"]
+key: str = os.environ["MAILGUN_API_KEY"]
 domain: str = os.environ["DOMAIN"]
 client: Client = Client(auth=("api", key))
 

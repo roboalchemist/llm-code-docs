@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/generativeagent/integrate/twilio-streams.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Twilio Voice
 
 > Learn how to integrate GenerativeAgent into Twilio using Twilio Media Stream

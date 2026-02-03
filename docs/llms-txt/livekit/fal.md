@@ -1,6 +1,6 @@
 # Source: https://docs.livekit.io/agents/models/stt/plugins/fal.md
 
-LiveKit docs › Models › Speech-to-text (STT) › Plugins › fal
+LiveKit docs › Models › STT › Plugins › FAL
 
 ---
 
@@ -25,7 +25,7 @@ This section includes a basic usage example and some reference material. For lin
 Install the plugin from PyPI:
 
 ```shell
-uv add "livekit-agents[fal]~=1.2"
+uv add "livekit-agents[fal]~=1.3"
 
 ```
 
@@ -73,7 +73,7 @@ The following resources provide more information about using fal with LiveKit Ag
 
 ---
 
-This document was rendered at 2025-11-18T23:55:07.842Z.
+This document was rendered at 2026-02-03T03:25:03.279Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/stt/plugins/fal.md](https://docs.livekit.io/agents/models/stt/plugins/fal.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

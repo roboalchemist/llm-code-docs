@@ -2,14 +2,6 @@
 
 # Source: https://docs.vespa.ai/en/operations/self-managed/slobrok.html.md
 
-# Source: https://docs.vespa.ai/en/reference/operations/metrics/slobrok.html.md
-
-# Source: https://docs.vespa.ai/en/operations/self-managed/slobrok.html.md
-
-# Source: https://docs.vespa.ai/en/reference/operations/metrics/slobrok.html.md
-
-# Source: https://docs.vespa.ai/en/operations/self-managed/slobrok.html.md
-
 # Service location broker - slobrok
 
  
@@ -29,5 +21,5 @@ $ ps ax | grep vespa-slobrok
 ```
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

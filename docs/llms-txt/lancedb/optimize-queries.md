@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/search/optimize-queries.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Optimize Query Performance
 
 > Analyze and optimize query performance in LanceDB.
@@ -386,8 +390,3 @@ For vector search performance:
 
 * Create ANN index on your vector column(s) as described in the [index guide](/indexing/vector-index/)
 * If you often filter by metadata, create [scalar indices](/indexing/scalar-index/) on those columns
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

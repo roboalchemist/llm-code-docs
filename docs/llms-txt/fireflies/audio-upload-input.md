@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/schema/input/audio-upload-input.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AudioUploadInput
 
 > Schema for AudioUploadInput
@@ -35,4 +39,10 @@
 
 <ParamField path="save_video" type="Boolean">
   Boolean value that specifies whether the content video needs to be saved.
+</ParamField>
+
+<ParamField path="download_auth" type="DownloadAuthInput">
+  Authentication configuration for downloading the media file. Use this when your audio/video file requires authentication. Supports bearer token and basic authentication methods. If not provided, defaults to no authentication (publicly accessible URL).
+
+  See [DownloadAuthInput](/schema/input/download-auth-input) for the complete schema definition.
 </ParamField>

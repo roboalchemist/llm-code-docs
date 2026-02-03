@@ -1,3 +1,23 @@
+# Source: https://docs.datadoghq.com/security/workload_protection/setup/agent/kubernetes.md
+
+# Source: https://docs.datadoghq.com/security/cloud_security_management/setup/agent/kubernetes.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/python/kubernetes.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/php/kubernetes.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/nodejs/kubernetes.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/java/kubernetes.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/ruby/kubernetes.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/dotnet/kubernetes.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/kubernetes.md
+
+# Source: https://docs.datadoghq.com/data_observability/jobs_monitoring/kubernetes.md
+
 # Source: https://docs.datadoghq.com/containers/kubernetes.md
 
 # Source: https://docs.datadoghq.com/tracing/trace_collection/single-step-apm/kubernetes.md
@@ -8,8 +28,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > APM > Application Instrumentation > Single Step APM Instrumentation >
   Single Step APM Instrumentation on Kubernetes
-source_url: >-
-  https://docs.datadoghq.com/trace_collection/single-step-apm/kubernetes/index.html
 ---
 
 # Single Step APM Instrumentation on Kubernetes
@@ -55,11 +73,17 @@ SSI adds a small amount of startup time to instrumented applications. If this ov
 
 ## Configure Unified Service Tags{% #configure-unified-service-tags %}
 
-Unified Service Tags (USTs) apply consistent tags across traces, metrics, and logs, making it easier to navigate and correlate your observability data. You can configure USTs through label extraction (recommended) or in deployment manifests.
+Unified Service Tags (USTs) apply consistent tags across traces, metrics, and logs, making it easier to navigate and correlate your observability data. You can configure USTs through automatic label extraction (recommended), through explicit configuration with `ddTraceConfigs`, or in deployment manifests.
 
-### (Recommended) Configure USTs through label extraction{% #recommended-configure-usts-through-label-extraction %}
+{% alert level="warning" %}
+If you are using [Remote Configuration](https://docs.datadoghq.com/agent/remote_config/), automatic label extraction is not compatible. You must configure USTs explicitly using `ddTraceConfigs`.
+{% /alert %}
+
+### (Recommended) Configure USTs through automatic label extraction{% #recommended-configure-usts-through-automatic-label-extraction %}
 
 With SSI, you can automatically extract UST values from pod labels and metadata without modifying individual deployments. To do this, configure `kubernetesResourcesLabelsAsTags` to map your existing Kubernetes labels to Datadog service tags.
+
+**Note:** This method is not compatible with Remote Configuration. If you're using Remote Configuration, see Configure USTs explicitly with ddTraceConfigs.
 
 #### Prerequisites{% #prerequisites %}
 
@@ -69,7 +93,7 @@ With SSI, you can automatically extract UST values from pod labels and metadata 
 | `datadog-operator`   | 1.16.0          |
 | `datadog-helm-chart` | 3.120.0         |
 
-#### Automatic configuration{% #automatic-configuration %}
+#### Configuration{% #configuration %}
 
 Replace `app.kubernetes.io/name` in the following example with any label that contains your service name (for example, `service.kubernetes.io/name` or `component`). You can configure multiple labels this way.
 
@@ -95,7 +119,7 @@ datadog:
 
 With this configuration, Datadog automatically sets the `service` tag using the value of the `app.kubernetes.io/name` label for any instrumented workload that includes this label.
 
-#### Explicit control with ddTraceConfigs{% #explicit-control-with-ddtraceconfigs %}
+### Configure USTs explicitly with ddTraceConfigs{% #configure-usts-explicitly-with-ddtraceconfigs %}
 
 In most cases, automatic configuration is sufficient. However, if you need granular control over settings for specific workloads, use `ddTraceConfigs` to explicitly map labels to service configurations:
 

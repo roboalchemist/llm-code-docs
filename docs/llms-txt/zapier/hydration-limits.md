@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/hydration-limits.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Hydration/dehydration limits
 
 > [File dehydration](https://docs.zapier.com/platform/build-cli/overview#file-dehydration) is an extremely useful tool to remain within time and size constraints for Zapier triggers and actions. However, it does have its own limits.

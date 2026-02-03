@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/quickstart/ui-tutorial.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Platform UI tutorial
 
 > This tutorial walks you through the process of building an integration on Zapier with authentication, a trigger and an action using the Platform UI.

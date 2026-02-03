@@ -4,8 +4,6 @@
 title: API Gateway API Mapping
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > API Gateway API Mapping
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.apigatewayv2_api_mapping.dataset/index.html
 ---
 
 # API Gateway API Mapping
@@ -18,12 +16,12 @@ aws.apigatewayv2_api_mapping
 
 ## Fields
 
-| Title           | ID   | Type   | Data Type                   | Description |
-| --------------- | ---- | ------ | --------------------------- | ----------- |
-| _key            | core | string |
-| account_id      | core | string |
-| api_id          | core | string | The API identifier.         |
-| api_mapping_arn | core | string |
-| api_mapping_id  | core | string | The API mapping identifier. |
-| stage           | core | string | The API stage.              |
-| tags            | core | hstore |
+| Title           | ID   | Type       | Data Type                   | Description |
+| --------------- | ---- | ---------- | --------------------------- | ----------- |
+| _key            | core | string     |
+| account_id      | core | string     |
+| api_id          | core | string     | The API identifier.         |
+| api_mapping_arn | core | string     |
+| api_mapping_id  | core | string     | The API mapping identifier. |
+| stage           | core | string     | The API stage.              |
+| tags            | core | hstore_csv |

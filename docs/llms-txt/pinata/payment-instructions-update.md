@@ -1,126 +1,79 @@
 # Source: https://docs.pinata.cloud/api-reference/endpoint/x402/payment-instructions-update.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Update Payment Instruction
 
 > Updates an existing payment instruction
 
+
+
 ## OpenAPI
 
 ````yaml patch /x402/payment_instructions/{id}
+openapi: 3.0.0
+info:
+  title: Pinata x402 Payment Instructions API
+  description: API for managing x402 payment instructions and CID associations
+  version: 3.0.0
+servers:
+  - url: https://api.pinata.cloud/v3
+    description: Production server
+security: []
 paths:
-  path: /x402/payment_instructions/{id}
-  method: patch
-  servers:
-    - url: https://api.pinata.cloud/v3
-      description: Production server
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Pinata API JWT token
-          cookie: {}
-    parameters:
-      path:
-        id:
+  /x402/payment_instructions/{id}:
+    patch:
+      summary: Update Payment Instruction
+      description: Updates an existing payment instruction
+      operationId: updatePaymentInstruction
+      parameters:
+        - name: id
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: Payment instruction ID
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              name:
-                allOf:
-                  - type: string
-                    description: Name of the payment instruction
-              description:
-                allOf:
-                  - type: string
-                    description: Description of the payment instruction
-              payment_requirements:
-                allOf:
-                  - type: array
-                    minItems: 1
-                    items:
-                      $ref: '#/components/schemas/PaymentRequirement'
-            required: true
-            minProperties: 1
-        examples:
-          example:
-            value:
-              name: <string>
-              description: <string>
-              payment_requirements:
-                - asset: <string>
-                  pay_to: <string>
-                  network: base
-                  description: <string>
-                  max_amount_required: <string>
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - $ref: '#/components/schemas/PaymentInstruction'
-        examples:
-          example:
-            value:
-              data:
-                id: <string>
-                version: 123
+            type: string
+          description: Payment instruction ID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              minProperties: 1
+              properties:
+                name:
+                  type: string
+                  description: Name of the payment instruction
+                description:
+                  type: string
+                  description: Description of the payment instruction
                 payment_requirements:
-                  - asset: <string>
-                    pay_to: <string>
-                    network: base
-                    description: <string>
-                    max_amount_required: <string>
-                name: <string>
-                description: <string>
-                created_at: '2023-11-07T05:31:56Z'
-        description: Successful operation
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Bad request
-        examples: {}
-        description: Bad request
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Unauthorized
-        examples: {}
-        description: Unauthorized
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Forbidden
-        examples: {}
-        description: Forbidden
-    '404':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Not found
-        examples: {}
-        description: Not found
-  deprecated: false
-  type: path
+                  type: array
+                  minItems: 1
+                  items:
+                    $ref: '#/components/schemas/PaymentRequirement'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/PaymentInstruction'
+        '400':
+          description: Bad request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+      security:
+        - bearerAuth: []
 components:
   schemas:
     PaymentRequirement:
@@ -129,7 +82,7 @@ components:
         - asset
         - pay_to
         - network
-        - max_amount_required
+        - amount
       properties:
         asset:
           type: string
@@ -144,14 +97,16 @@ components:
           enum:
             - base
             - base-sepolia
-          description: Network for payment
+            - eip155:8453
+            - eip155:84532
+          description: Network for payment (accepts friendly names or EIP-155 chain IDs)
         description:
           type: string
           maxLength: 255
           description: Optional description
-        max_amount_required:
+        amount:
           type: string
-          description: Maximum amount required for payment
+          description: Amount required for payment in smallest token unit
     PaymentInstruction:
       type: object
       properties:
@@ -175,5 +130,11 @@ components:
           type: string
           format: date-time
           description: Creation timestamp
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Pinata API JWT token
 
 ````

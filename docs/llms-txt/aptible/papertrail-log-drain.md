@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/observability-guides/papertrail-log-drain.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to set up a Papertrail Log Drain
 
 > Learn how to set up a PaperTrail Log Drain on Aptible

@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/deployment-testing/getting-started/universal/no-code.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # No-Code
 
 > Set up Datafold's No-Code CI integration to create and manage Data Diffs without writing code.

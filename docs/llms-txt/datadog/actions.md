@@ -2,7 +2,6 @@
 
 ---
 breadcrumbs: Docs > Actions
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Actions

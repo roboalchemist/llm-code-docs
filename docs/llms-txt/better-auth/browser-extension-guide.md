@@ -4,11 +4,7 @@
 
 A step-by-step guide to creating a browser extension with Better Auth.
 
-***
 
-title: Browser Extension Guide
-description: A step-by-step guide to creating a browser extension with Better Auth.
------------------------------------------------------------------------------------
 
 In this guide, we'll walk you through the steps of creating a browser extension using <Link href="https://docs.plasmo.com/">Plasmo</Link> with Better Auth for authentication.
 

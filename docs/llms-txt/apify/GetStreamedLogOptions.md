@@ -2,6 +2,8 @@
 
 # GetStreamedLogOptions<!-- -->
 
+Options for getting a streamed log.
+
 ## Index[**](#Index)
 
 ### Properties
@@ -11,7 +13,7 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#fromStart)[**](https://github.com/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/src/resource_clients/run.ts#L302)optionalfromStart
+### [**](#fromStart)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/run.ts#L478)optionalfromStart
 
 **fromStart?
 
@@ -19,7 +21,7 @@
 
 : boolean
 
-### [**](#toLog)[**](https://github.com/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/src/resource_clients/run.ts#L301)optionaltoLog
+### [**](#toLog)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/run.ts#L477)optionaltoLog
 
 **toLog?
 

@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/get-dtcs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Diagnostic Trouble Codes
 
 > Provides a list of active Diagnostic Trouble Codes (DTCs) reported by the vehicle. Currently supporting GM brands including Chevrolet and GMC.

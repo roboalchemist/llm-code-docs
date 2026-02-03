@@ -6,7 +6,6 @@ description: >-
   Query infrastructure resources and telemetry data using natural language or
   DDSQL syntax with support for tags as table columns.
 breadcrumbs: Docs > DDSQL Editor
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # DDSQL Editor
@@ -14,18 +13,20 @@ source_url: https://docs.datadoghq.com/index.html
 {% callout %}
 ##### Advanced Data Sources
 
-If you want to query data sources not yet available, use this form to submit your request.
+If you want to query data sources not yet available, use the following form to submit your request. For a full list of supported data sources, see the [Data Directory](https://docs.datadoghq.com/ddsql_reference/data_directory/).
 
 [Request Access](https://www.datadoghq.com/product-preview/additional-advanced-querying-data-sources/)
 {% /callout %}
 
 ## Overview{% #overview %}
 
-With [DDSQL Editor](https://app.datadoghq.com/ddsql/editor), you can get deeper visibility into your infrastructure by querying your resources with natural language or with DDSQL, a dialect of SQL with additional support for querying tags.
+With [DDSQL Editor](https://app.datadoghq.com/ddsql/editor), you can get deeper visibility into your telemetry by querying your resources with natural language or with DDSQL, a dialect of SQL with additional support for querying tags.
+
+You can also export the results of a DDSQL query to visualize in a Dashboard or Notebook or to automate in a Datadog Workflow through DDSQL Action.
 
 {% image
-   source="https://datadog-docs.imgix.net/images/ddsql_editor/query-results-cloud-provider-host-count.84f58cf65c38fc78069fbe4b6b9f0632.png?auto=format"
-   alt="The result of a SQL query showing cloud provider host count on the DDSQL page in Datadog" /%}
+   source="https://datadog-docs.imgix.net/images/ddsql_editor/query-results-avg-cpu-usage-by-host.1eff5518135e1ba57f61251514e83e33.png?auto=format"
+   alt="The result of a SQL query showing average CPU usage by host on the DDSQL page in Datadog" /%}
 
 ## Query in natural language{% #query-in-natural-language %}
 
@@ -37,7 +38,7 @@ Type your question into the search box, and Datadog builds the SQL query for you
 
 ## Use SQL syntax (DDSQL){% #use-sql-syntax-ddsql %}
 
-DDSQL is a query language for Datadog data. It implements several standard SQL operations, such as `SELECT`, and allows queries against unstructured data, such as [tags](https://docs.datadoghq.com/ddsql_reference/ddsql_default/#tags). Get exactly the data you want by writing your own `SELECT` statement. Query tags as if they are standard table columns. For more information, see the [DDSQL Reference](https://docs.datadoghq.com/ddsql_reference/ddsql_default/).
+[DDSQL](https://docs.datadoghq.com/ddsql_reference/ddsql_default/) is a query language for Datadog data. It implements several standard SQL operations, such as `SELECT`, and allows queries against unstructured data, such as [tags](https://docs.datadoghq.com/ddsql_reference/ddsql_default/#tags). Get exactly the data you want by writing your own `SELECT` statement. Query tags as if they are standard table columns. For more information, see the [DDSQL Reference](https://docs.datadoghq.com/ddsql_reference/ddsql_default/).
 
 ```sql
 SELECT instance_type, count(instance_type)
@@ -48,16 +49,7 @@ GROUP BY instance_type
 
 ## Explore your telemetry{% #explore-your-telemetry %}
 
-{% alert level="danger" %}
-Querying Logs, Metrics, Spans, and RUM through DDSQL is in Preview. Use this [form](https://www.datadoghq.com/product-preview/logs-metrics-support-in-ddsql-editor/) to request access.
-If you want access to Spans, RUM, or other data sources not listed in the use cases section, mention them in the access request form.
-{% /alert %}
-
 View, filter, and built queries in the Data Explorer.
-
-{% image
-   source="https://datadog-docs.imgix.net/images/ddsql_editor/data-tab-available-tables.a4044e1502126fc4337c2bda8ecfee7c.png?auto=format"
-   alt="Side panel showing a list of available tables for querying in the DDSQL Editor" /%}
 
 Click a table name to view its columns and relationships:
 
@@ -69,15 +61,20 @@ For data sources such as Logs, use the query builder to generate table functions
 
 ## Save and share queries{% #save-and-share-queries %}
 
-Save useful queries for future reference or download the data as CSV.
+Save useful queries for future reference or download the data as CSV. Browse and re-run recent or saved queries in the side panel.
 
 {% image
-   source="https://datadog-docs.imgix.net/images/ddsql_editor/save_export.3bfe4fe562297fe245c3f13184a58717.png?auto=format"
-   alt="DDSQL Editor interface showing query results with save and export options highlighted" /%}
+   source="https://datadog-docs.imgix.net/images/ddsql_editor/save-and-actions.f11eaafcd68ac6d877d9c174b9800a98.png?auto=format"
+   alt="DDSQL Editor interface showing query results with save and actions downdown highlighted" /%}
 
-Export a saved query to a dashboard by clicking **Save to Dashboard**. From a dashboard you can visualize results and send Scheduled Reports.
+Export the results of a saved query to:
 
-Browse and re-run recent or saved queries in the side panel.
+- A Dashboard or Notebook for visualization and reporting
+- Automate using a [DDSQL Action](https://app.datadoghq.com/actions/action-catalog#com.datadoghq.dd/com.datadoghq.dd.ddsql/com.datadoghq.dd.ddsql.tableQuery) in a Datadog Workflow, with which you can:
+  - [Create a custom metric from a DDSQL query](https://app.datadoghq.com/workflow/blueprints/create-a-metric-from-a-ddsql-query)
+  - [Programmatically export the results of a DDSQL query](https://app.datadoghq.com/workflow/blueprints/export-ebs-volumes-not-in-ddsql-as-s3-csv)
+  - [Schedule a Slack message for checking compliance of resources](https://app.datadoghq.com/workflow/blueprints/idle-compute-check-via-ddsql-with-slack-updates)
+- Alert on a DDSQL query in Preview (Logs, Metrics, RUM, Spans, and Product Analytics only; [contact support](https://docs.datadoghq.com/help/) for access)
 
 {% image
    source="https://datadog-docs.imgix.net/images/ddsql_editor/queries-tab-recent-queries.5a67c8a87843a31fb80f4d2cb386c0c0.png?auto=format"

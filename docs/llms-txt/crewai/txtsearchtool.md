@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/file-document/txtsearchtool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # TXT RAG Search
 
 > The `TXTSearchTool` is designed to perform a RAG (Retrieval-Augmented Generation) search within the content of a text file.
@@ -66,9 +70,9 @@ tool = TXTSearchTool(
             "provider": "openai",  # or google-generativeai, cohere, ollama, ...
             "config": {
                 "model": "text-embedding-3-small",
-                # "api_key": "sk-...",  # optional if env var is set
+                # "api_key": "sk-...",  # optional if env var is set (e.g., OPENAI_API_KEY or EMBEDDINGS_OPENAI_API_KEY)
                 # Provider examples:
-                # Google → model: "models/embedding-001", task_type: "retrieval_document"
+                # Google → model_name: "gemini-embedding-001", task_type: "RETRIEVAL_DOCUMENT"
                 # Cohere → model: "embed-english-v3.0"
                 # Ollama → model: "nomic-embed-text"
             },

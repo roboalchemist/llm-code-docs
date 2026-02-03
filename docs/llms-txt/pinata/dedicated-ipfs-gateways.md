@@ -1,5 +1,9 @@
 # Source: https://docs.pinata.cloud/gateways/dedicated-ipfs-gateways.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Dedicated IPFS Gateways
 
 Dedicated Gateways are the fastest way to fetch content from IPFS, and are the ideal tool when building decentralized applications. When you create a Pinata account, you'll automatically have a Dedicated Gateway created for you! To see it, simply visit the [Gateways Page](https://app.pinata.cloud/gateway).

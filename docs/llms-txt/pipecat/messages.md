@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/client/js/api-reference/messages.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Custom Messaging
 
 The Pipecat JavaScript client can send and receive arbitrary messages to/from the server running the bot. This page outlines and demonstrates both client and server code for passing and responding to custom messages as well as providing arbitrary data at connection time.
@@ -107,7 +111,6 @@ Oftentimes clients need to provide configuration data to the server when startin
           DailyParams(
               audio_in_enabled=True,
               audio_out_enabled=True,
-              vad_analyzer=SileroVADAnalyzer(),
           ),
       )
 
@@ -122,31 +125,28 @@ Oftentimes clients need to provide configuration data to the server when startin
 
       messages = [ { role: "system", content: args.prompt } ]
       context = LLMContext(messages)
-      context_aggregator = LLMContextAggregatorPair(context)
-
-      # RTVI events for Pipecat client UI
-      rtvi = RTVIProcessor(config=RTVIConfig(config=[]), transport=daily_transport)
+      user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+          context,
+          user_params=LLMUserAggregatorParams(
+              vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.2)),
+          ),
+      )
 
       pipeline = Pipeline(
           [
               daily_transport.input(),
-              context_aggregator.user(),
-              rtvi,
+              user_aggregator,
               llm,
               daily_transport.output(),
-              context_aggregator.assistant(),
+              assistant_aggregator,
           ]
       )
 
-      task = PipelineTask(
-          pipeline,
-          params=PipelineParams(allow_interruptions=True),
-          observers=[RTVIObserver(rtvi)],
-      )
+      task = PipelineTask(pipeline)
 
       @rtvi.event_handler("on_client_ready")
       async def on_client_ready(rtvi):
-          await rtvi.set_bot_ready()
+          logger.debug("Client ready")
           # Kick off the conversation
           await task.queue_frames([LLMRunFrame()])
 
@@ -302,8 +302,3 @@ You can handle custom messages sent from the server using the `onServerMessage` 
           await self.push_frame(frame, direction)
   ```
 </CodeGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.oxla.com/sql-reference/sql-functions/boolean-functions/is-not-distinct-from-operator.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.oxla.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # IS NOT DISTINCT FROM Operator
 
 ## **Overview**

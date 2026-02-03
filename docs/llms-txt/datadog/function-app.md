@@ -4,7 +4,6 @@
 title: Function App Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: 'Docs > Cloudcraft (Standalone) > Components: Azure > Function App Component'
-source_url: https://docs.datadoghq.com/components-azure/function-app/index.html
 ---
 
 # Function App Component

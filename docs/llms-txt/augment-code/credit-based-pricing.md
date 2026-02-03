@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/models/credit-based-pricing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Credit-Based Pricing
 
 > Understand how credits work and how different models consume credits at different rates.
@@ -18,6 +22,7 @@ Each model consumes credits at different rates based on its capabilities and und
 | **Claude Opus 4.5**   | 488 credits        | 167% of Sonnet  | Most capable model. Best for the hardest tasks requiring deep reasoning, nuanced understanding, and exceptional quality. |
 | **Claude Haiku 4.5**  | 88 credits         | 30% of Sonnet   | Lightweight, fast reasoning. Best for quick edits and small tasks.                                                       |
 | **GPT-5.1**           | 219 credits        | 75% of Sonnet   | Advanced reasoning and context. Builds great plans and works well for medium-size tasks.                                 |
+| **GPT-5.2**           | 390 credits        | 133% of Sonnet  | Enhanced reasoning capabilities. Excellent for complex tasks requiring long chains of thought.                           |
 
 <Info>
   \*Based on a standard medium-complexity task. Actual credit consumption varies based on task complexity, context size, and response length.
@@ -37,6 +42,7 @@ To illustrate the credit differences, here are examples of tasks and how much th
 | :------------- | :---------- | :------------------- |
 | **Sonnet 4.5** | 293 credits | —                    |
 | **Opus 4.5**   | 488 credits | Use for harder tasks |
+| **GPT-5.2**    | 390 credits | Use for harder tasks |
 | **Haiku 4.5**  | 88 credits  | 205 credits saved    |
 | **GPT-5.1**    | 219 credits | 74 credits saved     |
 
@@ -72,13 +78,46 @@ Visit [app.augmentcode.com](https://app.augmentcode.com) to access detailed dash
 
 * Total credits used by your team
 * Credit usage per team member
-* Breakdown by model
+* Breakdown by model and activity
 * Usage trends over time
 * Remaining credits in your plan
 
 <Note>
   Team administrators can access more detailed analytics to help optimize team usage and identify opportunities to save credits by using more efficient models for appropriate tasks.
 </Note>
+
+## Understanding your usage breakdown
+
+When you view your usage analytics, you'll see credits organized by both **model** and **activity type**. Here's what each activity type means:
+
+### Session types
+
+These are the main session types you can use with Augment:
+
+| Activity        | What it is                               |
+| :-------------- | :--------------------------------------- |
+| **Chat**        | Conversational chat session              |
+| **Agent**       | Local agent session (in your IDE)        |
+| **RemoteAgent** | Cloud-based agent session (asynchronous) |
+| **CliAgent**    | Command-line agent session (Auggie CLI)  |
+
+### Optional features
+
+| Activity            | What it is                                                                                   |
+| :------------------ | :------------------------------------------------------------------------------------------- |
+| **Prompt Enhancer** | Appears when you use the Prompt Enhancer feature to improve your prompts before sending them |
+| **Code Review**     | Automated code review for pull requests (when enabled for your repository)                   |
+
+### Background activities
+
+Augment performs lightweight processing in the background to keep your experience smooth:
+
+| Activity                | What it does                                                              |
+| :---------------------- | :------------------------------------------------------------------------ |
+| **Context Compression** | Summarizes conversation history to keep long sessions fast and responsive |
+| **System**              | General background processing that helps Augment work smoothly            |
+
+These background activities use a small fraction of your total credit consumption. In most workflows, they're a minor part of overall usage.
 
 ## Tips for optimizing credit usage
 
@@ -123,8 +162,3 @@ Visit [app.augmentcode.com](https://app.augmentcode.com) to access detailed dash
     Read the full announcement about credit-based pricing
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.augmentcode.com/llms.txt

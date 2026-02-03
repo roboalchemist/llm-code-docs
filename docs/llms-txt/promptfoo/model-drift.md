@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/model-drift/
+
 # Detecting Model Drift with Red Teaming
 
 Model drift occurs when an LLM's behavior changes over time. This can happen due to provider model updates, fine-tuning changes, prompt modifications, or guardrail adjustments. From a security perspective, drift can mean your model becomes more vulnerable to attacks that previously failed—or that previously working attacks no longer succeed.

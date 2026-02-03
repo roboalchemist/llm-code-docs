@@ -4,6 +4,8 @@
 
 Lynx DevTool is a collection of performance and debugging tools for Lynx apps.
 
+You need to [integrate DevTool](/guide/start/integrate-lynx-devtool.md) into your Lynx pages, and then connect to the device via the [DevTool Desktop Application](#run-lynx-devtool-desktop-application) to debug the page.
+
 <video src="https://lf-lynx.tiktok-cdns.com/obj/lynx-artifacts-oss-sg/lynx-website/assets/devtool-overview.mp4" loop autoPlay muted />
 
 ## Experience Lynx DevTool
@@ -67,6 +69,10 @@ For Android devices, in addition to ensuring a data cable connection, you also n
 
 You can try launching Xcode or Android Studio to compile and run an application to verify that you can connect to the device properly.
 
+## Compatibility
+
+
+**Error:** No compatibility data found for `devtool.integration.connection`
 ## Provide Feedback
 
 Welcome to experience Lynx DevTool. If you need a hand, please file an issue in [Lynx Issues](https://github.com/lynx-family/lynx-devtool/issues). Thank you!

@@ -36,8 +36,8 @@ applications:
 
 See more information on the required minimal settings:
 - [Top-level properties](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#primary-application-properties).
-- [`web` property](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#web).
-- [`locations` properties](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#locations).
+- [`web` property](https://docs.upsun.com/create-apps/image-properties/web.md).
+- [`locations` properties](https://docs.upsun.com/create-apps/image-properties/web.md#locations).
 
 ## Add more features
 
@@ -64,7 +64,7 @@ applications:
           allow: true
 ```
 
-See more information on [`locations` properties](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#locations).
+See more information on [`locations` properties](https://docs.upsun.com/create-apps/image-properties/web.md#locations).
 
 ### Create cache rules
 
@@ -136,7 +136,7 @@ such as a [script to handle 404 errors](https://support.platform.sh/hc/en-us/com
 applications:
   myapp:
     # The type of the application to build.
-    type: "python:3.13"
+    type: "python:3.14"
     source:
       root: "/"
     web:

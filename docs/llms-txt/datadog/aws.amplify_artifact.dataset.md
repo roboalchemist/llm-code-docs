@@ -4,8 +4,6 @@
 title: Amplify Artifact
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Amplify Artifact
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.amplify_artifact.dataset/index.html
 ---
 
 # Amplify Artifact
@@ -18,10 +16,10 @@ aws.amplify_artifact
 
 ## Fields
 
-| Title              | ID   | Type   | Data Type                       | Description |
-| ------------------ | ---- | ------ | ------------------------------- | ----------- |
-| _key               | core | string |
-| account_id         | core | string |
-| artifact_file_name | core | string | The file name for the artifact. |
-| artifact_id        | core | string | The unique ID for the artifact. |
-| tags               | core | hstore |
+| Title              | ID   | Type       | Data Type                       | Description |
+| ------------------ | ---- | ---------- | ------------------------------- | ----------- |
+| _key               | core | string     |
+| account_id         | core | string     |
+| artifact_file_name | core | string     | The file name for the artifact. |
+| artifact_id        | core | string     | The unique ID for the artifact. |
+| tags               | core | hstore_csv |

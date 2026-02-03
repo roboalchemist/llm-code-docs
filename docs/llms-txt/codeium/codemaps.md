@@ -1,8 +1,12 @@
 # Source: https://docs.windsurf.com/windsurf/codemaps.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Codemaps (Beta)
 
-> Hierarchical maps for codebase understanding.
+> Create shareable hierarchical maps of your codebase to visualize code execution flow and component relationships. Navigate and share with teammates.
 
 Powered by a specialized agent, Codemaps are shareable artifacts that bridge the gap between human comprehension and AI reasoning, making it possible to navigate, discuss, and modify large codebases with precision and context.
 

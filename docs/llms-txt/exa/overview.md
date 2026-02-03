@@ -1,26 +1,12 @@
-# Source: https://docs.exa.ai/websets/overview.md
+# Source: https://exa.ai/docs/websets/overview.md
 
-# Source: https://docs.exa.ai/websets/api/websets/overview.md
+# Source: https://exa.ai/docs/websets/api/websets/overview.md
 
-# Source: https://docs.exa.ai/websets/api/overview.md
+# Source: https://exa.ai/docs/websets/api/overview.md
 
-# Source: https://docs.exa.ai/websets/overview.md
-
-# Source: https://docs.exa.ai/websets/api/websets/overview.md
-
-# Source: https://docs.exa.ai/websets/api/overview.md
-
-# Source: https://docs.exa.ai/websets/overview.md
-
-# Source: https://docs.exa.ai/websets/api/websets/overview.md
-
-# Source: https://docs.exa.ai/websets/api/overview.md
-
-# Source: https://docs.exa.ai/websets/overview.md
-
-# Source: https://docs.exa.ai/websets/api/websets/overview.md
-
-# Source: https://docs.exa.ai/websets/api/overview.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Overview
 
@@ -54,8 +40,3 @@ At its core, the API is:
 * Follow our [quickstart guide](/websets/api/get-started)
 * Learn more about [how it works](/websets/api/how-it-works)
 * Browse the [API reference](/websets/api/websets/create-a-webset)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

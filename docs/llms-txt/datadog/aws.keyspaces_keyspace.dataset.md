@@ -4,8 +4,6 @@
 title: Keyspaces Keyspace
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Keyspaces Keyspace
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.keyspaces_keyspace.dataset/index.html
 ---
 
 # Keyspaces Keyspace
@@ -26,4 +24,4 @@ aws.keyspaces_keyspace
 | replication_regions  | core | array<string> | If the replicationStrategy of the keyspace is MULTI_REGION, a list of replication Regions is returned.                                                |
 | replication_strategy | core | string        | This property specifies if a keyspace is a single Region keyspace or a multi-Region keyspace. The available values are SINGLE_REGION or MULTI_REGION. |
 | resource_arn         | core | string        | The unique identifier of the keyspace in the format of an Amazon Resource Name (ARN).                                                                 |
-| tags                 | core | hstore        |
+| tags                 | core | hstore_csv    |

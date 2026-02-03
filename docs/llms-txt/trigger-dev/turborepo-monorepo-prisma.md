@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/example-projects/turborepo-monorepo-prisma.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Turborepo monorepo with Prisma
 
 > Two example projects demonstrating how to use Prisma and Trigger.dev in a Turborepo monorepo setup.

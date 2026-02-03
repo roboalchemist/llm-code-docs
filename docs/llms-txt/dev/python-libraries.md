@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/agent-builder/python-libraries.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Python libraries installed in Agent Builder
 
 > View all Python packages available in Agent Builder including `aiohttp`, `boto3`, `pandas`, `requests`, and 50+ other libraries with version numbers.

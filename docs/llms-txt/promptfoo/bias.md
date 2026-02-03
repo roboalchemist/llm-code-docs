@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/bias/
+
 # Bias Detection Plugins
 
 Test whether your AI system produces or reinforces stereotypes, biases, or discrimination across different protected characteristics.

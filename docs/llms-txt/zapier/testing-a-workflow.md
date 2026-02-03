@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/powered-by-zapier/zap-creation/testing-a-workflow.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Testing a Workflow
 
 > Step testing allows for the validation of a configured step, by execiting the defined action.

@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/galileo-product-features/similarity-search.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Similarity Search
 
 > Similarity search provides out of the box ability to discover **similar samples** within your datasets.

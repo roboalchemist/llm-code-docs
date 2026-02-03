@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/data/st.column_config/st.column_config.numbercolumn
+
 # st.column_config.NumberColumn
 
 Configure a number column in `st.dataframe` or `st.data_editor`.

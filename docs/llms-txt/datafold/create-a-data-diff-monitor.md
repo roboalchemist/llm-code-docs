@@ -1,358 +1,177 @@
 # Source: https://docs.datafold.com/api-reference/monitors/create-a-data-diff-monitor.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create a Data Diff Monitor
+
+
 
 ## OpenAPI
 
 ````yaml openapi-public.json post /api/v1/monitors/create/diff
+openapi: 3.1.0
+info:
+  contact:
+    email: support@datafold.com
+    name: API Support
+  description: >-
+    The Datafold API reference is a guide to our available endpoints and
+    authentication methods.
+
+    If you're just getting started with Datafold, we recommend first checking
+    out our [documentation](https://docs.datafold.com).
+
+
+    :::info
+      To use the Datafold API, you should first create a Datafold API Key,
+      which should be stored as a local environment variable named DATAFOLD_API_KEY.
+      This can be set in your Datafold Cloud's Settings under the Account page.
+    :::
+  title: Datafold API
+  version: latest
+servers:
+  - description: Default server
+    url: https://app.datafold.com
+security:
+  - ApiKeyAuth: []
 paths:
-  path: /api/v1/monitors/create/diff
-  method: post
-  servers:
-    - url: https://app.datafold.com
-      description: Default server
-  request:
-    security:
-      - title: ApiKeyAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: apiKey
-              description: Use the 'Authorization' header with the format 'Key <api-key>'
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              alert:
-                allOf:
-                  - anyOf:
-                      - $ref: >-
-                          #/components/schemas/datafold__monitors__schemas__DiffAlertCondition
-                      - type: 'null'
-                    description: Condition for triggering alerts based on the data diff.
-              datadiff:
-                allOf:
-                  - description: Configuration for the data diff.
-                    discriminator:
-                      mapping:
-                        indb: '#/components/schemas/InDbDataDiffConfig'
-                        inmem: '#/components/schemas/InMemDataDiffConfig'
-                      propertyName: diff_type
-                    oneOf:
-                      - $ref: '#/components/schemas/InDbDataDiffConfig'
-                      - $ref: '#/components/schemas/InMemDataDiffConfig'
-              description:
-                allOf:
-                  - anyOf:
-                      - type: string
-                      - type: 'null'
-                    description: The description of the monitor.
-                    title: Description
-              enabled:
-                allOf:
-                  - default: true
-                    description: Indicates whether the monitor is enabled.
-                    title: Enabled
-                    type: boolean
-              name:
-                allOf:
-                  - description: The name of the monitor.
-                    title: Name
-                    type: string
-              notifications:
-                allOf:
-                  - description: Notification configuration for the monitor.
-                    items:
-                      discriminator:
-                        mapping:
-                          email: '#/components/schemas/EmailNotification'
-                          pagerduty: '#/components/schemas/PagerDutyNotification'
-                          slack: '#/components/schemas/SlackNotification'
-                          teams: '#/components/schemas/TeamsNotification'
-                          webhook: '#/components/schemas/WebhookNotification'
-                        propertyName: type
-                      oneOf:
-                        - $ref: '#/components/schemas/EmailNotification'
-                        - $ref: '#/components/schemas/PagerDutyNotification'
-                        - $ref: '#/components/schemas/WebhookNotification'
-                        - $ref: '#/components/schemas/SlackNotification'
-                        - $ref: '#/components/schemas/TeamsNotification'
-                    title: Notifications
-                    type: array
-              schedule:
-                allOf:
-                  - anyOf:
-                      - $ref: '#/components/schemas/IntervalSchedule'
-                      - $ref: '#/components/schemas/CronSchedule'
-                      - $ref: '#/components/schemas/NoneSchedule'
-                    description: The schedule at which the monitor runs.
-              tags:
-                allOf:
-                  - description: Tags associated with the monitor.
-                    items:
-                      type: string
-                    title: Tags
-                    type: array
-            required: true
-            title: DataDiffMonitorSpecPublic
-            refIdentifier: '#/components/schemas/DataDiffMonitorSpecPublic'
-            requiredProperties:
-              - schedule
-              - name
-              - datadiff
-        examples:
-          example:
-            value:
-              alert:
-                different_rows_count: 123
-                different_rows_percent: 123
-              datadiff:
-                column_remapping: {}
-                columns_to_compare:
-                  - <string>
-                dataset_a:
-                  connection_id: 123
-                  filter: <string>
-                  session_parameters: {}
-                  table: <string>
-                  time_travel_point: <string>
-                dataset_b:
-                  connection_id: 123
-                  filter: <string>
-                  session_parameters: {}
-                  table: <string>
-                  time_travel_point: <string>
-                ignore_string_case: false
-                materialize_results: false
-                primary_key:
-                  - <string>
-                sampling:
-                  confidence: 123
-                  threshold: 123
-                  tolerance: 123
-                timeseries_dimension_column: <string>
-                tolerance:
-                  float:
-                    column_tolerance: {}
-                    default:
-                      type: <string>
-                      value: <any>
-              description: <string>
-              enabled: true
-              name: <string>
-              notifications:
-                - features:
-                    - attach_csv
-                  recipients:
-                    - <string>
-                  type: email
-              schedule:
-                interval:
-                  every: <string>
-                  type: hourly
-              tags:
-                - <string>
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - description: Unique identifier for the monitor.
-                    title: Id
-                    type: integer
-            title: ApiPublicCreateMonitorOut
-            refIdentifier: '#/components/schemas/ApiPublicCreateMonitorOut'
-            requiredProperties:
-              - id
-        examples:
-          example:
-            value:
-              id: 123
-        description: Successful Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    title: Detail
-                    type: array
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+  /api/v1/monitors/create/diff:
+    post:
+      tags:
+        - Monitors
+      summary: Create a Data Diff Monitor
+      operationId: create_monitor_diff_api_v1_monitors_create_diff_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DataDiffMonitorSpecPublic'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiPublicCreateMonitorOut'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
 components:
   schemas:
-    AbsoluteColumnTolerance:
+    DataDiffMonitorSpecPublic:
       properties:
-        type:
-          const: absolute
-          default: absolute
-          description: The type of Column Tolerance.
-          title: Type
+        alert:
+          anyOf:
+            - $ref: >-
+                #/components/schemas/datafold__monitors__schemas__DiffAlertCondition
+            - type: 'null'
+          description: Condition for triggering alerts based on the data diff.
+        datadiff:
+          description: Configuration for the data diff.
+          discriminator:
+            mapping:
+              indb: '#/components/schemas/InDbDataDiffConfig'
+              inmem: '#/components/schemas/InMemDataDiffConfig'
+            propertyName: diff_type
+          oneOf:
+            - $ref: '#/components/schemas/InDbDataDiffConfig'
+            - $ref: '#/components/schemas/InMemDataDiffConfig'
+        description:
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: The description of the monitor.
+          title: Description
+        enabled:
+          default: true
+          description: Indicates whether the monitor is enabled.
+          title: Enabled
+          type: boolean
+        name:
+          description: The name of the monitor.
+          title: Name
           type: string
-        value:
-          description: Value of Column Tolerance.
-          title: Value
-          type: number
+        notifications:
+          description: Notification configuration for the monitor.
+          items:
+            discriminator:
+              mapping:
+                email: '#/components/schemas/EmailNotification'
+                pagerduty: '#/components/schemas/PagerDutyNotification'
+                slack: '#/components/schemas/SlackNotification'
+                teams: '#/components/schemas/TeamsNotification'
+                webhook: '#/components/schemas/WebhookNotification'
+              propertyName: type
+            oneOf:
+              - $ref: '#/components/schemas/EmailNotification'
+              - $ref: '#/components/schemas/PagerDutyNotification'
+              - $ref: '#/components/schemas/WebhookNotification'
+              - $ref: '#/components/schemas/SlackNotification'
+              - $ref: '#/components/schemas/TeamsNotification'
+          title: Notifications
+          type: array
+        schedule:
+          anyOf:
+            - $ref: '#/components/schemas/IntervalSchedule'
+            - $ref: '#/components/schemas/CronSchedule'
+            - $ref: '#/components/schemas/NoneSchedule'
+          description: The schedule at which the monitor runs.
+        tags:
+          description: Tags associated with the monitor.
+          items:
+            type: string
+          title: Tags
+          type: array
       required:
-        - value
-      title: Absolute
+        - schedule
+        - name
+        - datadiff
+      title: DataDiffMonitorSpecPublic
       type: object
-    ColumnToleranceConfig:
+    ApiPublicCreateMonitorOut:
       properties:
-        column_tolerance:
-          anyOf:
-            - additionalProperties:
-                discriminator:
-                  mapping:
-                    absolute: '#/components/schemas/AbsoluteColumnTolerance'
-                    relative: '#/components/schemas/RelativeColumnTolerance'
-                  propertyName: type
-                oneOf:
-                  - $ref: '#/components/schemas/RelativeColumnTolerance'
-                  - $ref: '#/components/schemas/AbsoluteColumnTolerance'
-              type: object
-            - type: 'null'
-          description: Specific tolerance per column.
-          title: Column Tolerance
-        default:
-          anyOf:
-            - discriminator:
-                mapping:
-                  absolute: '#/components/schemas/AbsoluteColumnTolerance'
-                  relative: '#/components/schemas/RelativeColumnTolerance'
-                propertyName: type
-              oneOf:
-                - $ref: '#/components/schemas/RelativeColumnTolerance'
-                - $ref: '#/components/schemas/AbsoluteColumnTolerance'
-            - type: 'null'
-          description: Default tolerance applied to all columns.
-          title: Default
-      title: ColumnToleranceConfig
-      type: object
-    CronSchedule:
-      properties:
-        cron:
-          description: The cron expression that defines the schedule.
-          title: Cron
-          type: string
-        type:
-          const: crontab
-          default: crontab
-          title: Type
-          type: string
+        id:
+          description: Unique identifier for the monitor.
+          title: Id
+          type: integer
       required:
-        - cron
-      title: Cron
+        - id
+      title: ApiPublicCreateMonitorOut
       type: object
-    DataDiffToleranceConfig:
+    HTTPValidationError:
       properties:
-        float:
-          anyOf:
-            - $ref: '#/components/schemas/ColumnToleranceConfig'
-            - type: 'null'
-          description: Configuration for float columns tolerance.
-      title: DataDiffToleranceConfig
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          title: Detail
+          type: array
+      title: HTTPValidationError
       type: object
-    DayIntervalSchedule:
+    datafold__monitors__schemas__DiffAlertCondition:
       properties:
-        every:
-          const: day
-          title: Every
-          type: string
-        hour:
+        different_rows_count:
           anyOf:
             - type: integer
             - type: 'null'
-          description: The hour at which the monitor should trigger. (0 - 23)
-          title: Hour
-        type:
-          const: daily
-          default: daily
-          title: Type
-          type: string
-        utc_at:
+          description: >-
+            Threshold for the number of different rows allowed between the
+            datasets.
+          title: Different Rows Count
+        different_rows_percent:
           anyOf:
-            - format: time
-              type: string
+            - type: integer
             - type: 'null'
-          description: The UTC time at which the monitor should trigger.
-          title: Utc At
-      required:
-        - every
-      title: Day
-      type: object
-    DestinationFeatures:
-      enum:
-        - attach_csv
-        - notify_first_triggered_only
-        - disable_recovery_notifications
-        - notify_every_run
-      title: DestinationFeatures
-      type: string
-    EmailNotification:
-      properties:
-        features:
-          anyOf:
-            - items:
-                $ref: '#/components/schemas/DestinationFeatures'
-              type: array
-            - type: 'null'
-          description: A list of features to enable for this notification.
-          title: Features
-        recipients:
-          description: A list of email addresses to receive the notification.
-          items:
-            type: string
-          title: Recipients
-          type: array
-        type:
-          const: email
-          default: email
-          title: Type
-          type: string
-      required:
-        - recipients
-      title: Email
-      type: object
-    HourIntervalSchedule:
-      properties:
-        every:
-          const: hour
-          title: Every
-          type: string
-        type:
-          const: hourly
-          default: hourly
-          title: Type
-          type: string
-      required:
-        - every
-      title: Hour
+          description: >-
+            Threshold for the percentage of different rows allowed between the
+            datasets.
+          title: Different Rows Percent
+      title: Diff Conditions
       type: object
     InDbDataDiffConfig:
       properties:
@@ -402,6 +221,7 @@ components:
           anyOf:
             - $ref: '#/components/schemas/ToleranceBasedSampling'
             - $ref: '#/components/schemas/PercentageSampling'
+            - $ref: '#/components/schemas/MaxRowsSampling'
             - type: 'null'
           description: Sampling configuration for the data comparison.
         timeseries_dimension_column:
@@ -420,70 +240,6 @@ components:
         - dataset_a
         - dataset_b
       title: In-Database
-      type: object
-    InDbQueryDataset:
-      properties:
-        connection_id:
-          description: The identifier for the data source configuration.
-          title: Connection Id
-          type: integer
-        query:
-          description: The SQL query to be evaluated.
-          title: Query
-          type: string
-        session_parameters:
-          anyOf:
-            - additionalProperties: true
-              type: object
-            - type: 'null'
-          description: Parameters for the database session.
-          title: Session Parameters
-        time_travel_point:
-          anyOf:
-            - type: string
-            - type: integer
-            - type: 'null'
-          description: Point in time for querying historical data.
-          title: Time Travel Point
-      required:
-        - connection_id
-        - query
-      title: Query
-      type: object
-    InDbTableDataset:
-      properties:
-        connection_id:
-          description: The identifier for the data source configuration.
-          title: Connection Id
-          type: integer
-        filter:
-          anyOf:
-            - type: string
-            - type: 'null'
-          description: Filter condition for querying the dataset.
-          title: Filter
-        session_parameters:
-          anyOf:
-            - additionalProperties: true
-              type: object
-            - type: 'null'
-          description: Session parameters for the database session.
-          title: Session Parameters
-        table:
-          description: The table in the format 'db.schema.table'.
-          title: Table
-          type: string
-        time_travel_point:
-          anyOf:
-            - type: string
-            - type: integer
-            - type: 'null'
-          description: Point in time for querying historical data.
-          title: Time Travel Point
-      required:
-        - connection_id
-        - table
-      title: Table
       type: object
     InMemDataDiffConfig:
       properties:
@@ -541,6 +297,7 @@ components:
           anyOf:
             - $ref: '#/components/schemas/ToleranceBasedSampling'
             - $ref: '#/components/schemas/PercentageSampling'
+            - $ref: '#/components/schemas/MaxRowsSampling'
             - type: 'null'
           description: Sampling configuration for the data comparison.
           title: Sampling
@@ -555,25 +312,30 @@ components:
         - dataset_b
       title: In-Memory
       type: object
-    IntervalSchedule:
+    EmailNotification:
       properties:
-        interval:
+        features:
           anyOf:
-            - $ref: '#/components/schemas/HourIntervalSchedule'
-            - $ref: '#/components/schemas/DayIntervalSchedule'
-          description: Specifies the scheduling interval.
-      required:
-        - interval
-      title: Interval
-      type: object
-    NoneSchedule:
-      properties:
+            - items:
+                $ref: '#/components/schemas/DestinationFeatures'
+              type: array
+            - type: 'null'
+          description: A list of features to enable for this notification.
+          title: Features
+        recipients:
+          description: A list of email addresses to receive the notification.
+          items:
+            type: string
+          title: Recipients
+          type: array
         type:
-          const: none
-          default: none
+          const: email
+          default: email
           title: Type
           type: string
-      title: None
+      required:
+        - recipients
+      title: Email
       type: object
     PagerDutyNotification:
       properties:
@@ -598,39 +360,28 @@ components:
         - integration
       title: PagerDuty
       type: object
-    PercentageSampling:
+    WebhookNotification:
       properties:
-        rate:
-          description: The sampling rate as a percentage.
-          title: Rate
-          type: number
-        threshold:
+        features:
           anyOf:
-            - type: integer
+            - items:
+                $ref: '#/components/schemas/DestinationFeatures'
+              type: array
             - type: 'null'
-          description: Threshold for triggering actions based on sampling.
-          title: Threshold
-      required:
-        - rate
-      title: Percentage
-      type: object
-    RelativeColumnTolerance:
-      properties:
+          description: A list of features to enable for this notification.
+          title: Features
+        integration:
+          description: The identifier for the integration.
+          title: Integration
+          type: integer
         type:
-          const: relative
-          default: relative
-          description: The type of Column Tolerance.
+          const: webhook
+          default: webhook
           title: Type
           type: string
-        value:
-          anyOf:
-            - type: number
-            - type: integer
-          description: Value of Column Tolerance.
-          title: Value
       required:
-        - value
-      title: Relative
+        - integration
+      title: Webhook
       type: object
     SlackNotification:
       properties:
@@ -700,26 +451,40 @@ components:
         - channel
       title: Teams
       type: object
-    ToleranceBasedSampling:
+    IntervalSchedule:
       properties:
-        confidence:
-          description: The confidence level for the sampling results.
-          title: Confidence
-          type: number
-        threshold:
+        interval:
           anyOf:
-            - type: integer
-            - type: 'null'
-          description: Threshold for triggering actions based on sampling.
-          title: Threshold
-        tolerance:
-          description: The allowable margin of error for sampling.
-          title: Tolerance
-          type: number
+            - $ref: '#/components/schemas/HourIntervalSchedule'
+            - $ref: '#/components/schemas/DayIntervalSchedule'
+          description: Specifies the scheduling interval.
       required:
-        - tolerance
-        - confidence
-      title: Tolerance
+        - interval
+      title: Interval
+      type: object
+    CronSchedule:
+      properties:
+        cron:
+          description: The cron expression that defines the schedule.
+          title: Cron
+          type: string
+        type:
+          const: crontab
+          default: crontab
+          title: Type
+          type: string
+      required:
+        - cron
+      title: Cron
+      type: object
+    NoneSchedule:
+      properties:
+        type:
+          const: none
+          default: none
+          title: Type
+          type: string
+      title: None
       type: object
     ValidationError:
       properties:
@@ -742,40 +507,47 @@ components:
         - type
       title: ValidationError
       type: object
-    WebhookNotification:
-      properties:
-        features:
-          anyOf:
-            - items:
-                $ref: '#/components/schemas/DestinationFeatures'
-              type: array
-            - type: 'null'
-          description: A list of features to enable for this notification.
-          title: Features
-        integration:
-          description: The identifier for the integration.
-          title: Integration
-          type: integer
-        type:
-          const: webhook
-          default: webhook
-          title: Type
-          type: string
-      required:
-        - integration
-      title: Webhook
-      type: object
-    XdbQueryDataset:
+    InDbTableDataset:
       properties:
         connection_id:
           description: The identifier for the data source configuration.
           title: Connection Id
           type: integer
-        materialize:
-          default: true
-          description: Indicates whether to materialize the dataset.
-          title: Materialize
-          type: boolean
+        filter:
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: Filter condition for querying the dataset.
+          title: Filter
+        session_parameters:
+          anyOf:
+            - additionalProperties: true
+              type: object
+            - type: 'null'
+          description: Session parameters for the database session.
+          title: Session Parameters
+        table:
+          description: The table in the format 'db.schema.table'.
+          title: Table
+          type: string
+        time_travel_point:
+          anyOf:
+            - type: string
+            - type: integer
+            - type: 'null'
+          description: Point in time for querying historical data.
+          title: Time Travel Point
+      required:
+        - connection_id
+        - table
+      title: Table
+      type: object
+    InDbQueryDataset:
+      properties:
+        connection_id:
+          description: The identifier for the data source configuration.
+          title: Connection Id
+          type: integer
         query:
           description: The SQL query to be evaluated.
           title: Query
@@ -787,10 +559,79 @@ components:
             - type: 'null'
           description: Parameters for the database session.
           title: Session Parameters
+        time_travel_point:
+          anyOf:
+            - type: string
+            - type: integer
+            - type: 'null'
+          description: Point in time for querying historical data.
+          title: Time Travel Point
       required:
         - connection_id
         - query
       title: Query
+      type: object
+    ToleranceBasedSampling:
+      properties:
+        confidence:
+          description: The confidence level for the sampling results.
+          title: Confidence
+          type: number
+        threshold:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Threshold for triggering actions based on sampling.
+          title: Threshold
+        tolerance:
+          description: The allowable margin of error for sampling.
+          title: Tolerance
+          type: number
+      required:
+        - tolerance
+        - confidence
+      title: Tolerance
+      type: object
+    PercentageSampling:
+      properties:
+        rate:
+          description: The sampling rate as a percentage.
+          title: Rate
+          type: number
+        threshold:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Threshold for triggering actions based on sampling.
+          title: Threshold
+      required:
+        - rate
+      title: Percentage
+      type: object
+    MaxRowsSampling:
+      properties:
+        max_rows:
+          description: The maximum number of rows to sample.
+          title: Max Rows
+          type: integer
+        threshold:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Threshold for triggering actions based on sampling.
+          title: Threshold
+      required:
+        - max_rows
+      title: MaxRows
+      type: object
+    DataDiffToleranceConfig:
+      properties:
+        float:
+          anyOf:
+            - $ref: '#/components/schemas/ColumnToleranceConfig'
+            - type: 'null'
+          description: Configuration for float columns tolerance.
+      title: DataDiffToleranceConfig
       type: object
     XdbTableDataset:
       properties:
@@ -825,25 +666,155 @@ components:
         - table
       title: Table
       type: object
-    datafold__monitors__schemas__DiffAlertCondition:
+    XdbQueryDataset:
       properties:
-        different_rows_count:
+        connection_id:
+          description: The identifier for the data source configuration.
+          title: Connection Id
+          type: integer
+        materialize:
+          default: true
+          description: Indicates whether to materialize the dataset.
+          title: Materialize
+          type: boolean
+        query:
+          description: The SQL query to be evaluated.
+          title: Query
+          type: string
+        session_parameters:
           anyOf:
-            - type: integer
+            - additionalProperties: true
+              type: object
             - type: 'null'
-          description: >-
-            Threshold for the number of different rows allowed between the
-            datasets.
-          title: Different Rows Count
-        different_rows_percent:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          description: >-
-            Threshold for the percentage of different rows allowed between the
-            datasets.
-          title: Different Rows Percent
-      title: Diff Conditions
+          description: Parameters for the database session.
+          title: Session Parameters
+      required:
+        - connection_id
+        - query
+      title: Query
       type: object
+    DestinationFeatures:
+      enum:
+        - attach_csv
+        - notify_first_triggered_only
+        - disable_recovery_notifications
+        - notify_every_run
+      title: DestinationFeatures
+      type: string
+    HourIntervalSchedule:
+      properties:
+        every:
+          const: hour
+          title: Every
+          type: string
+        type:
+          const: hourly
+          default: hourly
+          title: Type
+          type: string
+      required:
+        - every
+      title: Hour
+      type: object
+    DayIntervalSchedule:
+      properties:
+        every:
+          const: day
+          title: Every
+          type: string
+        hour:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: The hour at which the monitor should trigger. (0 - 23)
+          title: Hour
+        type:
+          const: daily
+          default: daily
+          title: Type
+          type: string
+        utc_at:
+          anyOf:
+            - format: time
+              type: string
+            - type: 'null'
+          description: The UTC time at which the monitor should trigger.
+          title: Utc At
+      required:
+        - every
+      title: Day
+      type: object
+    ColumnToleranceConfig:
+      properties:
+        column_tolerance:
+          anyOf:
+            - additionalProperties:
+                discriminator:
+                  mapping:
+                    absolute: '#/components/schemas/AbsoluteColumnTolerance'
+                    relative: '#/components/schemas/RelativeColumnTolerance'
+                  propertyName: type
+                oneOf:
+                  - $ref: '#/components/schemas/RelativeColumnTolerance'
+                  - $ref: '#/components/schemas/AbsoluteColumnTolerance'
+              type: object
+            - type: 'null'
+          description: Specific tolerance per column.
+          title: Column Tolerance
+        default:
+          anyOf:
+            - discriminator:
+                mapping:
+                  absolute: '#/components/schemas/AbsoluteColumnTolerance'
+                  relative: '#/components/schemas/RelativeColumnTolerance'
+                propertyName: type
+              oneOf:
+                - $ref: '#/components/schemas/RelativeColumnTolerance'
+                - $ref: '#/components/schemas/AbsoluteColumnTolerance'
+            - type: 'null'
+          description: Default tolerance applied to all columns.
+          title: Default
+      title: ColumnToleranceConfig
+      type: object
+    RelativeColumnTolerance:
+      properties:
+        type:
+          const: relative
+          default: relative
+          description: The type of Column Tolerance.
+          title: Type
+          type: string
+        value:
+          anyOf:
+            - type: number
+            - type: integer
+          description: Value of Column Tolerance.
+          title: Value
+      required:
+        - value
+      title: Relative
+      type: object
+    AbsoluteColumnTolerance:
+      properties:
+        type:
+          const: absolute
+          default: absolute
+          description: The type of Column Tolerance.
+          title: Type
+          type: string
+        value:
+          description: Value of Column Tolerance.
+          title: Value
+          type: number
+      required:
+        - value
+      title: Absolute
+      type: object
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use the 'Authorization' header with the format 'Key <api-key>'
+      in: header
+      name: Authorization
+      type: apiKey
 
 ````

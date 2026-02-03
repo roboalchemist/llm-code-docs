@@ -41,7 +41,7 @@ When Triage Intelligence determines there is a strong semantic similarity betwee
 
 ### Refine suggestion behavior
 
-In Triage Intelligence settings at any level (sub-team, parent team, or workspace) you can provide additional guidance to refine suggestion behavior. This is best used reactively (for example, if you're seeing persistent suggestion themes that are incorrect) rather than as part of initial configuration for Product Intelligence. When additional guidance is set at multiple levels like team and workspace, all are considered but the most local guidance is considered first and weighted most heavily.
+In Triage Intelligence settings at any level (sub-team, parent team, or workspace) you can provide additional guidance to refine suggestion behavior. This is best used reactively (for example, if you're seeing persistent suggestion themes that are incorrect) rather than as part of initial configuration for Triage Intelligence. When additional guidance is set at multiple levels like team and workspace, all are considered but the most local guidance is considered first and weighted most heavily.
 
 ### Triggering on issues outside Triage
 

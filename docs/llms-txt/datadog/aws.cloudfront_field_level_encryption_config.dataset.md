@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > DDSQL Reference > Data Directory > CloudFront Field-Level Encryption
   Configuration
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.cloudfront_field_level_encryption_config.dataset/index.html
 ---
 
 # CloudFront Field-Level Encryption Configuration
@@ -20,10 +18,10 @@ aws.cloudfront_field_level_encryption_config
 
 ## Fields
 
-| Title                         | ID   | Type   | Data Type                                                                                                  | Description |
-| ----------------------------- | ---- | ------ | ---------------------------------------------------------------------------------------------------------- | ----------- |
-| _key                          | core | string |
-| account_id                    | core | string |
-| e_tag                         | core | string | The current version of the field level encryption configuration. For example: <code>E2QWRUHAPOMQZL</code>. |
-| field_level_encryption_config | core | json   | Return the field-level encryption configuration information.                                               |
-| tags                          | core | hstore |
+| Title                         | ID   | Type       | Data Type                                                                                                  | Description |
+| ----------------------------- | ---- | ---------- | ---------------------------------------------------------------------------------------------------------- | ----------- |
+| _key                          | core | string     |
+| account_id                    | core | string     |
+| e_tag                         | core | string     | The current version of the field level encryption configuration. For example: <code>E2QWRUHAPOMQZL</code>. |
+| field_level_encryption_config | core | json       | Return the field-level encryption configuration information.                                               |
+| tags                          | core | hstore_csv |

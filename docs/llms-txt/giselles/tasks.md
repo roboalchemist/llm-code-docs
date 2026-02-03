@@ -1,5 +1,9 @@
 # Source: https://docs.giselles.ai/en/guides/tasks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.giselles.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tasks
 
 > View and manage your AI application execution history
@@ -79,8 +83,3 @@ From the task execution result page, you can run new tasks using the input area 
 * **Review failed tasks**: Check the error message and use "Edit in Studio" to debug your app
 * **Compare results**: Use task history to compare outputs from different runs
 * **Download important outputs**: Save generated content for later use
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.giselles.ai/llms.txt

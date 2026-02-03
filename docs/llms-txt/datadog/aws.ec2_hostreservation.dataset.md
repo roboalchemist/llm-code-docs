@@ -4,8 +4,6 @@
 title: EC2 Host Reservation
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > EC2 Host Reservation
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.ec2_hostreservation.dataset/index.html
 ---
 
 # EC2 Host Reservation
@@ -34,5 +32,5 @@ aws.ec2_hostreservation
 | payment_option      | core | string        | The payment option selected for this reservation.                                                                                                                      |
 | start               | core | timestamp     | The date and time that the reservation started.                                                                                                                        |
 | state               | core | string        | The state of the reservation.                                                                                                                                          |
-| tags                | core | hstore        |
+| tags                | core | hstore_csv    |
 | upfront_price       | core | string        | The upfront price of the reservation.                                                                                                                                  |

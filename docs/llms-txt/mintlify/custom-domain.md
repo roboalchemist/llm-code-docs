@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/customize/custom-domain.md
+# Source: https://www.mintlify.com/docs/customize/custom-domain.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Custom domain
 
@@ -11,7 +15,7 @@ To host your documentation on a custom domain:
 3. Allow time for DNS to propagate and TLS certificates to be automatically provisioned.
 
 <Info>
-  Looking to set up a custom subdirectory like `mintlify.com/docs`? See the [custom subdirectory](/deploy/cloudflare) docs.
+  Looking to set up a subpath like `example.com/docs`? See [/docs subpath](/deploy/docs-subpath).
 </Info>
 
 ## Add your custom domain
@@ -38,10 +42,6 @@ CNAME | docs | cname.mintlify-dns.com.
 <Tip>
   Each domain provider has different ways to add DNS records. Refer to your domain provider's documentation for specific instructions.
 </Tip>
-
-<Frame>
-  <img alt="Sample CNAME settings for a custom domain hosted on Vercel." src="https://mintlify-assets.b-cdn.net/mintlify-dns.png" />
-</Frame>
 
 ### DNS propagation
 

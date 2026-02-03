@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/manage/sharing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Share your integration
 
 > Once an integration is public, all users would have access to it when searching for an app's name in the Zap Editor, or in the [Zapier App Directory](https://zapier.com/apps).

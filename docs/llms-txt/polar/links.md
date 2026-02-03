@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/features/checkout/links.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Checkout Links
 
 > Sell your digital products with ease by sharing a checkout link to select products

@@ -1,6 +1,6 @@
 # Source: https://docs.livekit.io/agents/server/agent-dispatch.md
 
-LiveKit docs › Agent server › Agent dispatch
+LiveKit docs › Agent Server › Agent dispatch
 
 ---
 
@@ -10,7 +10,7 @@ LiveKit docs › Agent server › Agent dispatch
 
 ## Dispatching agents
 
-Dispatch is the process of assigning an agent to a room. LiveKit server manages this process as part of the [Agent server lifecycle](https://docs.livekit.io/agents/server.md). LiveKit optimizes dispatch for high concurrency and low latency, typically supporting hundred of thousands of new connections per second with a max dispatch time under 150 ms.
+Dispatch is the process of assigning an agent to a room. LiveKit server manages this process as part of the [Server lifecycle](https://docs.livekit.io/agents/server/lifecycle.md). LiveKit optimizes dispatch for high concurrency and low latency, typically supporting hundred of thousands of new connections per second with a max dispatch time under 150 ms.
 
 ## Automatic agent dispatch
 
@@ -152,7 +152,7 @@ For information on consuming job metadata in an agent, see the following guide:
 
 ### Dispatch from inbound SIP calls
 
-Agents can be explicitly dispatched for inbound SIP calls. [SIP dispatch rules](https://docs.livekit.io/sip/dispatch-rule.md) can define one or more agents using the `room_config.agents` field.
+Agents can be explicitly dispatched for inbound SIP calls. [SIP dispatch rules](https://docs.livekit.io/telephony/accepting-calls/dispatch-rule.md) can define one or more agents using the `room_config.agents` field.
 
 LiveKit recommends explicit agent dispatch for SIP inbound calls rather than automatic agent dispatch as it allows multiple agents within a single project.
 
@@ -255,7 +255,7 @@ func createTokenWithAgentDispatch() (string, error) {
 
 ---
 
-This document was rendered at 2025-11-18T23:55:17.170Z.
+This document was rendered at 2026-02-03T03:24:58.053Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/server/agent-dispatch.md](https://docs.livekit.io/agents/server/agent-dispatch.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

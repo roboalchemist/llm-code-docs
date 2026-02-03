@@ -8,7 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > Account Management > Account Management Guides > New CSV headers for
   Cost Chargebacks
-source_url: https://docs.datadoghq.com/guide/csv_headers/usage-trends/index.html
 ---
 
 # New CSV headers for Cost Chargebacks

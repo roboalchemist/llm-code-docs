@@ -1368,6 +1368,3 @@
   * ##### meta: [EntityMetadata](https://mikro-orm.io/api/core/class/EntityMetadata.md)\<any>
 
   #### Returns void
-.io/api/core/class/EntityMetadata.md)\<any>
-
-  #### Returns void

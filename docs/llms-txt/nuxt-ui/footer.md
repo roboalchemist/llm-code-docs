@@ -69,17 +69,12 @@ const items: NavigationMenuItem[] = [{
 </template>
 ```
 
-<note>
+> [!NOTE]
+> In this example, we use the [NavigationMenu](/docs/components/navigation-menu) component to render the footer links in the center.
 
-In this example, we use the [NavigationMenu](/docs/components/navigation-menu) component to render the footer links in the center.
-
-</note>
-
-<tip to="/docs/components/footer-columns">
-
-You can use the [FooterColumns](/docs/components/footer-columns) component to display a list of links inside the `top` slot.
-
-</tip>
+> [!TIP]
+> See: /docs/components/footer-columns
+> You can use the `FooterColumns` component to display a list of links inside the `top` slot.
 
 ## Examples
 
@@ -158,11 +153,8 @@ const items: NavigationMenuItem[] = [{
 </template>
 ```
 
-<note>
-
-In this example, we use the [Separator](/docs/components/separator) component to add a border above the footer.
-
-</note>
+> [!NOTE]
+> In this example, we use the [Separator](/docs/components/separator) component to add a border above the footer.
 
 ## API
 
@@ -219,8 +211,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

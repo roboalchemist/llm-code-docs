@@ -1,10 +1,11 @@
+# Source: https://docs.datadoghq.com/security/application_security/setup/aws/waf.md
+
 # Source: https://docs.datadoghq.com/cloudcraft/components-aws/waf.md
 
 ---
 title: WAF Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > AWS Components > WAF Component
-source_url: https://docs.datadoghq.com/components-aws/waf/index.html
 ---
 
 # WAF Component

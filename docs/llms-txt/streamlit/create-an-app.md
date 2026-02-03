@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/get-started/tutorials/create-an-app
+
 # Create an app
 
 If you've made it this far, chances are you've [installed Streamlit](/get-started/installation) and run through the basics in [Basic concepts](/get-started/fundamentals/main-concepts) and [Advanced concepts](/get-started/fundamentals/advanced-concepts). If not, now is a good time to take a look.

@@ -1,72 +1,337 @@
-# Source: https://mintlify.com/docs/insights/feedback.md
+# Source: https://www.mintlify.com/docs/optimize/feedback.md
 
-# Feedback
+# Source: https://www.mintlify.com/docs/api/analytics/feedback.md
 
-> Monitor user satisfaction and feedback on your documentation.
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-<Info>
-  To collect and view feedback, you must first enable feedback from the [Add-ons](https://dashboard.mintlify.com/products/addons) page in your dashboard.
-</Info>
+# Get user feedback
 
-The feedback tab displays quantitative thumbs up and thumbs down votes your docs have received and any qualitative feedback that users have provided. Use this information to gauge the quality of your docs and make improvements.
+> Returns paginated user feedback with optional filtering
 
-Access the feedback tab by navigating to the **Insights** page in your [dashboard](https://dashboard.mintlify.com/products/insights).
+## Usage
 
-## Feedback types
+Use this endpoint to export user feedback collected from your documentation. Feedback includes contextual feedback from page ratings and code snippet feedback.
 
-<Note>
-  Contextual and code snippet feedback are in beta. To enable them for your documentation site, [contact our sales team](mailto:hahnbee@mintlify.com).
-</Note>
+Paginate through results using the `cursor` parameter returned in the response. Continue fetching while `hasMore` is `true`.
 
-The feedback tab displays information according to the feedback add-ons that you enable.
+## Filtering
 
-Enable your preferred feedback types:
+Filter feedback by:
 
-<Frame>
-  <img className="block dark:hidden pointer-events-none" src="https://mintcdn.com/mintlify/HLPaFoXqJBOwTqBr/images/analytics/feedback-addons-light.png?fit=max&auto=format&n=HLPaFoXqJBOwTqBr&q=85&s=ff03c179eaddde9d4beaa34ad4442ed4" alt="Screenshot of the feedback toggles in the Add-ons page." data-og-width="1858" width="1858" data-og-height="1280" height="1280" data-path="images/analytics/feedback-addons-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/HLPaFoXqJBOwTqBr/images/analytics/feedback-addons-light.png?w=280&fit=max&auto=format&n=HLPaFoXqJBOwTqBr&q=85&s=5e00a3793a32cd57f8e7d5965e7b9adf 280w, https://mintcdn.com/mintlify/HLPaFoXqJBOwTqBr/images/analytics/feedback-addons-light.png?w=560&fit=max&auto=format&n=HLPaFoXqJBOwTqBr&q=85&s=36b5e00676f2606df9d8feeda8c9a6ca 560w, https://mintcdn.com/mintlify/HLPaFoXqJBOwTqBr/images/analytics/feedback-addons-light.png?w=840&fit=max&auto=format&n=HLPaFoXqJBOwTqBr&q=85&s=7a0503ac37a47cdce5bcae80bd825456 840w, https://mintcdn.com/mintlify/HLPaFoXqJBOwTqBr/images/analytics/feedback-addons-light.png?w=1100&fit=max&auto=format&n=HLPaFoXqJBOwTqBr&q=85&s=3693b70c35e6bfc8254ce374da3045e4 1100w, https://mintcdn.com/mintlify/HLPaFoXqJBOwTqBr/images/analytics/feedback-addons-light.png?w=1650&fit=max&auto=format&n=HLPaFoXqJBOwTqBr&q=85&s=1140090406ca56214c003bbd1dd9ece2 1650w, https://mintcdn.com/mintlify/HLPaFoXqJBOwTqBr/images/analytics/feedback-addons-light.png?w=2500&fit=max&auto=format&n=HLPaFoXqJBOwTqBr&q=85&s=0baaafdf02988dff15d2f46e3a3d6a05 2500w" />
+* **Date range**: Use `dateFrom` and `dateTo` to limit results to a specific time period
+* **Source**: Filter by `code_snippet` or `contextual` feedback types
+* **Status**: Filter by status values like `pending`, `in_progress`, `resolved`, or `dismissed`
 
-  <img className="hidden dark:block pointer-events-none" src="https://mintcdn.com/mintlify/HLPaFoXqJBOwTqBr/images/analytics/feedback-addons-dark.png?fit=max&auto=format&n=HLPaFoXqJBOwTqBr&q=85&s=56aba5d2a5f86e89d857246d381c989c" alt="Screenshot of the feedback toggles in the Add-ons page." data-og-width="1860" width="1860" data-og-height="1280" height="1280" data-path="images/analytics/feedback-addons-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/HLPaFoXqJBOwTqBr/images/analytics/feedback-addons-dark.png?w=280&fit=max&auto=format&n=HLPaFoXqJBOwTqBr&q=85&s=6a48d95143402a1cdbdc19da30c78c40 280w, https://mintcdn.com/mintlify/HLPaFoXqJBOwTqBr/images/analytics/feedback-addons-dark.png?w=560&fit=max&auto=format&n=HLPaFoXqJBOwTqBr&q=85&s=16b9d9396601be7910b6486014a97850 560w, https://mintcdn.com/mintlify/HLPaFoXqJBOwTqBr/images/analytics/feedback-addons-dark.png?w=840&fit=max&auto=format&n=HLPaFoXqJBOwTqBr&q=85&s=0da6416eee65f1c4fa882ff98fbf134d 840w, https://mintcdn.com/mintlify/HLPaFoXqJBOwTqBr/images/analytics/feedback-addons-dark.png?w=1100&fit=max&auto=format&n=HLPaFoXqJBOwTqBr&q=85&s=860259a0754cee019051a15882b0b0cf 1100w, https://mintcdn.com/mintlify/HLPaFoXqJBOwTqBr/images/analytics/feedback-addons-dark.png?w=1650&fit=max&auto=format&n=HLPaFoXqJBOwTqBr&q=85&s=b2646ff1791a72b4039b6ac2909073a8 1650w, https://mintcdn.com/mintlify/HLPaFoXqJBOwTqBr/images/analytics/feedback-addons-dark.png?w=2500&fit=max&auto=format&n=HLPaFoXqJBOwTqBr&q=85&s=047d5ef95c24ed367aeb2acc9fcb5002 2500w" />
-</Frame>
+## Response types
 
-* **Thumbs rating only**: Simple thumbs up/down voting to gauge overall satisfaction with pages.
-* **Code snippet feedback only**: Feedback specifically on code snippets.
-* **Thumbs rating and contextual feedback**: Page voting plus detailed comments and reasons for ratings.
-* **Thumbs rating and code snippet feedback**: Page voting plus feedback on code examples.
-* **Thumbs rating, contextual, and code snippet feedback**: Complete feedback system with page voting, detailed comments, and code snippet feedback.
+The response contains different feedback types based on the source:
 
-<Note>
-  If you disable telemetry in your `docs.json` file, feedback features will not appear on your documentation pages, even if you enable them in your dashboard.
-</Note>
+* **Contextual feedback**: Includes `helpful` boolean and optional `contact` email
+* **Code snippet feedback**: Includes `code`, `filename`, and `lang` fields
 
-## Managing feedback
 
-For contextual and code snippet feedback, you can set the status of a piece of feedback and add internal notes to track your work resolving user feedback.
+## OpenAPI
 
-### Changing feedback status
+````yaml analytics.openapi.json get /api/external/v1/analytics/{projectId}/feedback
+openapi: 3.1.0
+info:
+  title: Mintlify Analytics Export API
+  version: 1.0.0
+  description: API for exporting documentation analytics data
+servers:
+  - url: https://api.mintlify.com
+    description: Production
+security: []
+paths:
+  /api/external/v1/analytics/{projectId}/feedback:
+    get:
+      tags:
+        - Analytics
+      summary: Get user feedback
+      description: Returns paginated user feedback with optional filtering
+      parameters:
+        - $ref: '#/components/parameters/projectId'
+        - schema:
+            type: string
+            description: Date in ISO 8601 or YYYY-MM-DD format
+            example: '2024-01-01'
+          required: false
+          name: dateFrom
+          in: query
+        - schema:
+            type: string
+            description: Date in ISO 8601 or YYYY-MM-DD format
+            example: '2024-01-01'
+          required: false
+          name: dateTo
+          in: query
+        - schema:
+            type: string
+            enum:
+              - code_snippet
+              - contextual
+            description: Filter by feedback source
+          required: false
+          name: source
+          in: query
+        - schema:
+            type: string
+            description: Comma-separated list of statuses to filter by
+          required: false
+          name: status
+          in: query
+        - schema:
+            type: number
+            minimum: 1
+            maximum: 100
+            default: 50
+            description: Max results per page
+          required: false
+          name: limit
+          in: query
+        - schema:
+            type: string
+            description: Pagination cursor
+          required: false
+          name: cursor
+          in: query
+      responses:
+        '200':
+          description: Feedback data with pagination
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeedbackResponse'
+        '400':
+          description: Invalid query parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticsErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticsErrorResponse'
+      security:
+        - bearerAuth: []
+components:
+  parameters:
+    projectId:
+      schema:
+        $ref: '#/components/schemas/projectId'
+      required: true
+      name: projectId
+      in: path
+  schemas:
+    FeedbackResponse:
+      type: object
+      properties:
+        feedback:
+          type: array
+          description: List of feedback entries.
+          items:
+            anyOf:
+              - type: object
+                properties:
+                  id:
+                    type: string
+                    description: Unique feedback identifier.
+                  path:
+                    type: string
+                    description: The path or URL to the source document.
+                  comment:
+                    type:
+                      - string
+                      - 'null'
+                    description: Text of the user's feedback comment.
+                  createdAt:
+                    type:
+                      - string
+                      - 'null'
+                    description: Timestamp when the feedback was submitted.
+                  source:
+                    type: string
+                    enum:
+                      - code_snippet
+                      - contextual
+                    description: >-
+                      Where the feedback originated. `code_snippet` is feedback
+                      on a code block, `contextual` is page-level feedback.
+                  status:
+                    type: string
+                    enum:
+                      - pending
+                      - in_progress
+                      - resolved
+                      - dismissed
+                    description: Current review status of the feedback.
+                required:
+                  - id
+                  - path
+                  - comment
+                  - createdAt
+                  - source
+                  - status
+              - type: object
+                properties:
+                  id:
+                    type: string
+                    description: Unique feedback identifier.
+                  path:
+                    type: string
+                    description: The path or URL to the source document.
+                  comment:
+                    type:
+                      - string
+                      - 'null'
+                    description: Text of the user's feedback comment.
+                  createdAt:
+                    type:
+                      - string
+                      - 'null'
+                    description: Timestamp when the feedback was submitted.
+                  source:
+                    type: string
+                    enum:
+                      - code_snippet
+                      - contextual
+                    description: >-
+                      Where the feedback originated. `code_snippet` is feedback
+                      on a code block, `contextual` is page-level feedback.
+                  status:
+                    type: string
+                    enum:
+                      - pending
+                      - in_progress
+                      - resolved
+                      - dismissed
+                    description: Current review status of the feedback.
+                  helpful:
+                    type: boolean
+                    description: Whether the user found the content helpful.
+                  contact:
+                    type:
+                      - string
+                      - 'null'
+                    description: Email address the user provided for follow-up.
+                required:
+                  - id
+                  - path
+                  - comment
+                  - createdAt
+                  - source
+                  - status
+                  - helpful
+                  - contact
+              - type: object
+                properties:
+                  id:
+                    type: string
+                    description: Unique feedback identifier.
+                  path:
+                    type: string
+                    description: The path or URL to the source document.
+                  comment:
+                    type:
+                      - string
+                      - 'null'
+                    description: Text of the user's feedback comment.
+                  createdAt:
+                    type:
+                      - string
+                      - 'null'
+                    description: Timestamp when the feedback was submitted.
+                  source:
+                    type: string
+                    enum:
+                      - code_snippet
+                      - contextual
+                    description: >-
+                      Where the feedback originated. `code_snippet` is feedback
+                      on a code block, `contextual` is page-level feedback.
+                  status:
+                    type: string
+                    enum:
+                      - pending
+                      - in_progress
+                      - resolved
+                      - dismissed
+                    description: Current review status of the feedback.
+                  code:
+                    type: string
+                    description: The code snippet the feedback relates to.
+                  filename:
+                    type:
+                      - string
+                      - 'null'
+                    description: Filename associated with the code snippet.
+                  lang:
+                    type:
+                      - string
+                      - 'null'
+                    description: Programming language of the code snippet.
+                required:
+                  - id
+                  - path
+                  - comment
+                  - createdAt
+                  - source
+                  - status
+                  - code
+                  - filename
+                  - lang
+        nextCursor:
+          type:
+            - string
+            - 'null'
+          description: >-
+            Cursor to retrieve the next page of results. Null if no more
+            results.
+        hasMore:
+          type: boolean
+          description: Whether additional results are available beyond this page.
+      required:
+        - feedback
+        - nextCursor
+        - hasMore
+    AnalyticsErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message describing what went wrong.
+        details:
+          type: array
+          description: Additional details about the error.
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+                description: Description of a specific validation or processing error.
+            required:
+              - message
+      required:
+        - error
+    projectId:
+      type: string
+      description: >-
+        Your project ID. Can be copied from the [API
+        keys](https://dashboard.mintlify.com/settings/organization/api-keys)
+        page in your dashboard.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        The Authorization header expects a Bearer token. Use an admin API key
+        (prefixed with `mint_`). This is a server-side secret key. Generate one
+        on the [API keys
+        page](https://dashboard.mintlify.com/settings/organization/api-keys) in
+        your dashboard.
 
-Select the status beside a piece of feedback to mark it as **Pending**, **In Progress**, **Resolved**, or **Dismissed**.
-
-Best practices for setting feedback statuses:
-
-* **Pending**: Feedback is awaiting review.
-* **In Progress**: Feedback has been validated and is being worked on.
-* **Resolved**: Feedback has been resolved.
-* **Dismissed**: Feedback has been dismissed as not actionable, irrelevant, or inaccurate.
-
-### Filtering by status
-
-Use the status filter to control which feedback is displayed. Clear a status to hide all feedback with that status. By default, all feedback is displayed.
-
-### Adding internal notes
-
-Click on a piece of feedback to add an internal note. These notes are only visible to people with access to your dashboard.
-
-Use notes to add information for collaboration, link relevant support or engineering tickets, or remember any other useful information.
-
-## Using feedback data
-
-Review your feedback data to:
-
-* **Identify successful content**: Pages with the most positive feedback show what works well in your documentation.
-* **Prioritize improvements**: Pages with the most negative feedback indicate what content might need attention.
-* **Take action**: Make documentation updates based on direct user feedback.
+````

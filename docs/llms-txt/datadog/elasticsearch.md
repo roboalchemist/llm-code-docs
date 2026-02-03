@@ -4,7 +4,6 @@
 title: Elasticsearch Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > AWS Components > Elasticsearch Component
-source_url: https://docs.datadoghq.com/components-aws/elasticsearch/index.html
 ---
 
 # Elasticsearch Component

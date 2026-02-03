@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/monitors/model-staleness.md
 
-# Source: https://docs.aporia.com/monitors-and-alerts/model-staleness.md
-
-# Source: https://docs.aporia.com/v1/monitors/model-staleness.md
-
 # Model Staleness
 
 ### Why Monitor Model Staleness?

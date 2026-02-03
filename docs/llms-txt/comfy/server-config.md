@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/interface/settings/server-config.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Server Config
 
 > Detailed description of ComfyUI server configuration options

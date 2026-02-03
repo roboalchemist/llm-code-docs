@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/upgrading-packages.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to upgrade the Trigger.dev packages
 
 > When we release fixes and new features we recommend you upgrade your Trigger.dev packages.
@@ -8,7 +12,7 @@
 
 Run this command in your project:
 
-```sh  theme={null}
+```sh  theme={"theme":"css-variables"}
 npx trigger.dev@latest update
 ```
 
@@ -18,11 +22,11 @@ This will update all of the Trigger.dev packages in your project to the latest v
 
 When you run the CLI locally use the latest version for the `dev` and `deploy` commands:
 
-```sh  theme={null}
+```sh  theme={"theme":"css-variables"}
 npx trigger.dev@latest dev
 ```
 
-```sh  theme={null}
+```sh  theme={"theme":"css-variables"}
 npx trigger.dev@latest deploy
 ```
 
@@ -55,7 +59,7 @@ Instead of using `npx`, `pnpm dlx` or `yarn dlx` you can add the Trigger.dev CLI
 
 For example:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "devDependencies": {
     "trigger.dev": "3.0.0"
@@ -69,7 +73,7 @@ Once you have added the `trigger.dev` package to your `devDependencies`, you can
 
 But we recommend adding your dev and deploy commands to the `scripts` section of your `package.json` file:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "scripts": {
     "dev:trigger": "trigger dev",

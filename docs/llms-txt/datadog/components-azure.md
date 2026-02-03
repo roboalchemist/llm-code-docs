@@ -4,7 +4,6 @@
 title: 'Components: Azure'
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: 'Docs > Cloudcraft (Standalone) > Components: Azure'
-source_url: https://docs.datadoghq.com/components-azure/index.html
 ---
 
 # Components: Azure

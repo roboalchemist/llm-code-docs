@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/generativeagent/build/adding-a-use-case.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Adding a use case to GenerativeAgent
 
 > Learn how to add new use cases to GenerativeAgent by creating tasks and functions
@@ -17,7 +21,7 @@ Start by clearly defining the business scenario you want GenerativeAgent to hand
 * **Customer goal**: What does the customer want to accomplish?
 * **Business context**: What type of issue or request is this?
 * **Success criteria**: How do you know when the task is complete?
-* **Required actions**: What backend operations are needed?
+* **Required actions**: What backend operations does the task need?
 
 <AccordionGroup>
   <Accordion title="Example: Order Status Inquiry">
@@ -51,7 +55,7 @@ Navigate to the Tasks page and create a new task that represents your use case:
   </Step>
 
   <Step title="Create New Task">
-    Click "Create task" to start defining your use case.
+    Click "Create task" to start creating your task.
   </Step>
 
   <Step title="Define Task Details">
@@ -60,16 +64,23 @@ Navigate to the Tasks page and create a new task that represents your use case:
     * **Task name**: Clear, descriptive name for your use case
     * **Task selector description**: How GenerativeAgent identifies when to use this task
     * **Task message** (optional): Initial response when this task is selected
-    * **General Instructions**: Detailed guidance on how to handle this use case
-    * **Functions**: Select the functions this task should use
+    * **Channels**: Which channel(s) this task will support
 
     <Frame>
-      <img src="https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-91a26448-6a25-8ae7-594e-595572a8c258.png?fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=0d4afa4d118e7f2294a1a1a4670ba04e" alt="GenerativeAgent Task creation interface" data-og-width="512" width="512" data-og-height="407" height="407" data-path="image/uuid-91a26448-6a25-8ae7-594e-595572a8c258.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-91a26448-6a25-8ae7-594e-595572a8c258.png?w=280&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=4166d463c150cdffb2c96075e3df56e7 280w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-91a26448-6a25-8ae7-594e-595572a8c258.png?w=560&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=5765c62bd1aeeb16d334177efcacda56 560w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-91a26448-6a25-8ae7-594e-595572a8c258.png?w=840&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=cf8e272922148c8d0654d0ac463ee280 840w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-91a26448-6a25-8ae7-594e-595572a8c258.png?w=1100&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=230c50a6307ff4111e668ee8d0e25380 1100w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-91a26448-6a25-8ae7-594e-595572a8c258.png?w=1650&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=a2235c314c27229f541175fd7d0b0e99 1650w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-91a26448-6a25-8ae7-594e-595572a8c258.png?w=2500&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=1dfbd81bb18a92c5332d64d95ac0121d 2500w" />
+      <img src="https://mintcdn.com/asapp/Kzj5VCQ_oIdiaHM8/images/generativeagent/task-creation-interface.png?fit=max&auto=format&n=Kzj5VCQ_oIdiaHM8&q=85&s=3964240a13978fc936f76ac1f86bd3e5" alt="GenerativeAgent Task creation interface" data-og-width="494" width="494" data-og-height="702" height="702" data-path="images/generativeagent/task-creation-interface.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/Kzj5VCQ_oIdiaHM8/images/generativeagent/task-creation-interface.png?w=280&fit=max&auto=format&n=Kzj5VCQ_oIdiaHM8&q=85&s=901b117581ae90585ba33b66cda9b24a 280w, https://mintcdn.com/asapp/Kzj5VCQ_oIdiaHM8/images/generativeagent/task-creation-interface.png?w=560&fit=max&auto=format&n=Kzj5VCQ_oIdiaHM8&q=85&s=b4d58091c11715f141217714b57992a0 560w, https://mintcdn.com/asapp/Kzj5VCQ_oIdiaHM8/images/generativeagent/task-creation-interface.png?w=840&fit=max&auto=format&n=Kzj5VCQ_oIdiaHM8&q=85&s=8d7121e9eef876c5144ec05e1d02438c 840w, https://mintcdn.com/asapp/Kzj5VCQ_oIdiaHM8/images/generativeagent/task-creation-interface.png?w=1100&fit=max&auto=format&n=Kzj5VCQ_oIdiaHM8&q=85&s=547d2a6933b9bab63a68a1762439e8ac 1100w, https://mintcdn.com/asapp/Kzj5VCQ_oIdiaHM8/images/generativeagent/task-creation-interface.png?w=1650&fit=max&auto=format&n=Kzj5VCQ_oIdiaHM8&q=85&s=931166ab925623f475febd043889056e 1650w, https://mintcdn.com/asapp/Kzj5VCQ_oIdiaHM8/images/generativeagent/task-creation-interface.png?w=2500&fit=max&auto=format&n=Kzj5VCQ_oIdiaHM8&q=85&s=7d9ab5548a49da0aaef9e0878e955c3f 2500w" />
     </Frame>
   </Step>
 
   <Step title="Write Task Instructions">
     **This is the most critical part of creating a successful use case.** Your task instructions determine how GenerativeAgent behaves and whether it handles your use case correctly.
+
+    In the task configuration, provide:
+
+    * **Procedures**: Detailed guidance on how to handle this use case
+    * **Voice settings**: Policies and communication guidelines that are specific to the Voice channel
+    * **Chat settings**: Policies and communication guidelines that are specific to the Chat channel
+
+    When writing your procedures, reference the functions you'll need for this task. You'll create these functions in the next step and connect them back to this task.
 
     Effective task instructions should:
 
@@ -101,13 +112,13 @@ Navigate to the Tasks page and create a new task that represents your use case:
 
 ## Step 3: Create Required Functions
 
-Functions enable GenerativeAgent to perform actions similar to a live agent. For each action your use case requires, create the appropriate function.
+Functions enable GenerativeAgent to perform actions similar to a live agent. Based on the procedures you defined in your task instructions, create the functions needed to enable those actions.
 
 ### Available Function Types
 
 <CardGroup cols={2}>
   <Card title="API Functions" icon="link" href="/generativeagent/configuring/tasks-and-functions/api-functions">
-    Connect to your existing APIs to fetch data or perform actions. Most common function type for integrating with backend systems.
+    Connect to your existing APIs to fetch data or perform actions. The most common function type for integrating with backend systems.
   </Card>
 
   <Card title="Mock API Functions" icon="code" href="/generativeagent/configuring/tasks-and-functions/mock-api">
@@ -150,7 +161,7 @@ Functions enable GenerativeAgent to perform actions similar to a live agent. For
         For functions that need to interact with your live backend systems.
 
         1. Select an existing [API connection](/generativeagent/configuring/connect-apis)
-        2. Choose the API version if multiple are available
+        2. Choose the API version if the system offers multiple versions
         3. Save the function
 
         GenerativeAgent will call the real API during customer interactions.
@@ -214,7 +225,7 @@ Use the [Previewer](/generativeagent/configuring/previewer) tool to test your ne
   </Step>
 
   <Step title="Verify Function Execution">
-    Ensure all functions are called correctly and return expected results.
+    Ensure the system calls all functions correctly and they return expected results.
   </Step>
 
   <Step title="Refine as Needed">

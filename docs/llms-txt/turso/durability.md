@@ -1,5 +1,9 @@
 # Source: https://docs.turso.tech/cloud/durability.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Durability Guarantees
 
 The following are the durability guarantees provided by the Turso Cloud platform for users who registered or upgraded **after March 17, 2025**:

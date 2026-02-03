@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/getting-started/next-steps.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Continue Learning
 
 > Continue your Pipecat journey
@@ -79,8 +83,3 @@ Scale your bot with managed hosting or self-hosted infrastructure.
     Report bugs or request features
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

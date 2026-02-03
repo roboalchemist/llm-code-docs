@@ -6,7 +6,6 @@ description: Learn how to monitor deployments from CI Providers in Datadog CD Vi
 breadcrumbs: >-
   Docs > Continuous Delivery Visibility > CD Visibility in Datadog > Monitor CI
   Providers Deployments
-source_url: https://docs.datadoghq.com/deployments/ciproviders/index.html
 ---
 
 # Monitor CI Providers Deployments

@@ -4,12 +4,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/llamb/key-terms.md
 
-# Source: https://docs.avaamo.com/user-guide/how-to/build-agents/create-universal-agent/key-terms.md
-
-# Source: https://docs.avaamo.com/user-guide/llamb/llamb-filters/key-terms.md
-
-# Source: https://docs.avaamo.com/user-guide/llamb/key-terms.md
-
 # Key terms
 
 This article introduces a few key terms specific to the LLaMB product in the Avaamo Conversational AI Platform:

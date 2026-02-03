@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/integrations/sdk-integrations/cloudflare.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Cloudflare
 
 > Trace AI requests through Cloudflare AI Gateway with Braintrust
@@ -141,8 +145,3 @@ Cloudflare AI Gateway supports OpenAI, Anthropic, Google AI Studio, Groq, Mistra
 
 * [Cloudflare AI Gateway documentation](https://developers.cloudflare.com/ai-gateway/)
 * [Supported providers](https://developers.cloudflare.com/ai-gateway/usage/chat-completion/)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

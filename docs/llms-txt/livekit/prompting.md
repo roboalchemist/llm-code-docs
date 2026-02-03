@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/agents/start/prompting.md
 
-# Source: https://docs.livekit.io/agents/build/prompting.md
-
-LiveKit docs › Building voice agents › Prompting guide
+LiveKit docs › Get Started › Prompting guide
 
 ---
 
@@ -16,7 +14,7 @@ Effective instructions are a key part of any voice agent. In addition to the ins
 
 > 💡 **Workflows**
 > 
-> The following guidance applies to most voice agents, and is a good starting point. While it is possible to build some voice agents with a single set of good instructions, most use-cases require breaking the agent down into smaller components using [agent handoffs](https://docs.livekit.io/agents/build/agents-handoffs.md) and [tasks](https://docs.livekit.io/agents/build/tasks.md) to achieve consistent behavior in real-world interactions. See the [workflows](https://docs.livekit.io/agents/build/workflows.md) guide for more information.
+> The following guidance applies to most voice agents, and is a good starting point. While it is possible to build some voice agents with a single set of good instructions, most use-cases require breaking the agent down into smaller components using [agent handoffs](https://docs.livekit.io/agents/logic/agents-handoffs.md) and [tasks](https://docs.livekit.io/agents/logic/tasks.md) to achieve consistent behavior in real-world interactions. See the [workflows](https://docs.livekit.io/agents/logic/workflows.md) guide for more information.
 
 ## Prompt design
 
@@ -72,7 +70,7 @@ An example tools section for any general-purpose voice agent:
 
 ### Goals
 
-Include your agent's overall goal or objective. In many cases you should also design your voice agent to use a [workflow-based approach](https://docs.livekit.io/agents/build/workflows.md), where the main prompt contains general guidelines and an overarching goal, but each individual agent or [task](https://docs.livekit.io/agents/build/tasks.md) holds a more specific and immediate goal within the workflow.
+Include your agent's overall goal or objective. In many cases you should also design your voice agent to use a [workflow-based approach](https://docs.livekit.io/agents/logic/workflows.md), where the main prompt contains general guidelines and an overarching goal, but each individual agent or [task](https://docs.livekit.io/agents/logic/tasks.md) holds a more specific and immediate goal within the workflow.
 
 An example goal section for a travel agent. This prompt is used in the agent's base instructions, and is supplemented with more specific goals for each individual stage in the workflow.
 
@@ -166,17 +164,17 @@ Test and monitor your agent to ensure that the instructions produce the desired 
 
 ### Unit tests
 
-LiveKit Agents for Python includes a built-in testing feature designed to work with any Python testing framework, such as [pytest](https://docs.pytest.org/en/stable/). You can use this functionality to write conversational test cases for your agent, and validate its behavior in response to specific user inputs. See the [testing guide](https://docs.livekit.io/agents/build/testing.md) for more information.
+LiveKit Agents for Python includes a built-in testing feature designed to work with any Python testing framework, such as [pytest](https://docs.pytest.org/en/stable/). You can use this functionality to write conversational test cases for your agent, and validate its behavior in response to specific user inputs. See the [testing guide](https://docs.livekit.io/agents/start/testing.md) for more information.
 
 ### Real-world observability
 
 Monitor your agent's behavior in real-world sessions to see what your users are actually doing with it, and how your agent responds. This can help you identify issues with your agent's behavior, and iterate on your instructions to improve it. In many cases, you can use these sessions as inspiration for new test cases, then iterate your agent's instructions and workflows until it responds as expected.
 
-LiveKit Cloud includes built-in observability for agent sessions, including transcripts, observations, and audio recordings. You can use this data to monitor your agent's behavior in real-world sessions, and identify any issues or areas for improvement. See the [agent observability](https://docs.livekit.io/agents/observability.md) guide for more information.
+LiveKit Cloud includes built-in observability for agent sessions, including transcripts, observations, and audio recordings. You can use this data to monitor your agent's behavior in real-world sessions, and identify any issues or areas for improvement. See the [agent observability](https://docs.livekit.io/deploy/observability/insights.md) guide for more information.
 
 ---
 
-This document was rendered at 2025-11-18T23:55:04.018Z.
-For the latest version of this document, see [https://docs.livekit.io/agents/build/prompting.md](https://docs.livekit.io/agents/build/prompting.md).
+This document was rendered at 2026-02-03T03:24:54.496Z.
+For the latest version of this document, see [https://docs.livekit.io/agents/start/prompting.md](https://docs.livekit.io/agents/start/prompting.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

@@ -8,9 +8,8 @@ description: >-
   Configure automatic tag extraction from Docker container labels and
   environment variables
 breadcrumbs: >-
-  Docs > Container Monitoring > Docker Agent for Docker, containerd, and Podman
-  > Docker Tag Extraction
-source_url: https://docs.datadoghq.com/docker/tag/index.html
+  Docs > Containers > Docker Agent for Docker, containerd, and Podman > Docker
+  Tag Extraction
 ---
 
 # Docker Tag Extraction

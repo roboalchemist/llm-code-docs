@@ -23,14 +23,6 @@ You can apply the filters to all metrics, reports, and tables on the **Acceptanc
 
 Filters on the Acceptance page
 
-### Specify the currency 
-
-Apply a currency filter to display only payments made using the selected currency. If you don’t apply a currency filter, all payments appear in your default settlement currency, regardless of the payment currency.
-
-For example, your default settlement currency is USD, but you apply the EUR currency filter. The transactions that display only include payments made in EUR, and excludes payments made in all other currencies, such as USD.
-
-To specify the currency, click **More filters** > **Currency**, and select your preferred currency.
-
 ### Specify the account type
 
 If you use [Organizations](https://docs.stripe.com/get-started/account/orgs.md), you can see the acceptance analytics for each account:
@@ -72,7 +64,7 @@ To specify a payment success rate, click **Payment success rate**.
 
 #### Authorization rate
 
-The network authorization rate measures the success of payment attempts that reach the card networks. To calculate the rate, we divide the number of payments authorized by the card issuer by the number of unique payment attempts submitted to the card network for authorization. We exclude [invalid API calls](https://docs.stripe.com/declines.md#invalid-api-calls), payments that fail 3D Secure authentication, and [blocked payments](https://docs.stripe.com/declines.md#blocked-payments) in the denominator because these failures occur before Stripe sends the authorization request to the issuer.
+The authorization rate (also known as network authorization rate) measures the success of payment attempts that reach the card networks. To calculate the rate, we divide the number of payments authorized by the card issuer by the number of unique payment attempts submitted to the card network for authorization. We exclude [invalid API calls](https://docs.stripe.com/declines.md#invalid-api-calls), payments that fail 3D Secure authentication, and [blocked payments](https://docs.stripe.com/declines.md#blocked-payments) in the denominator because these failures occur before Stripe sends the authorization request to the issuer.
 
 The types of payment attempts include:
 
@@ -83,9 +75,11 @@ To specify an authorization rate, click **Authorization rate**.
 
 > You can’t specify an authorization rate if you set the processor filter to a non-Stripe processor. Stripe doesn’t have access to non-Stripe data.
 
+#### Example acceptance rate calculation
+
 #### Example rate calculation
 
-The following is an example authorization rate calculation for the payment success rate and the authorization rate:
+The following is an example calculation for payment success rate and authorization rate:
 
 | Calculation component                              | Component value           |
 | -------------------------------------------------- | ------------------------- |
@@ -97,7 +91,7 @@ The following is an example authorization rate calculation for the payment succe
 | Total payment attempts that reach the card network | 98,000                    |
 | Authorized payments                                | 93,000                    |
 | Payment success rate                               | 93% = (93,000 / 100,000)  |
-| Network authorization rate                         | 94.9% = (93,000 / 98,000) |
+| Authorization rate                                 | 94.9% = (93,000 / 98,000) |
 
 ### Specify the raw rate or the deduplicated rate  
 
@@ -108,17 +102,6 @@ Some payment attempts are repeat attempts of the same unique purchase. For examp
 The raw rate includes all payment attempts (including retries) to make the same purchase.
 
 To specify the raw rate, click **Raw**.
-
-#### Example rate calculation
-
-The following is an example calculation for the raw rate:
-
-| Calculation step                 | Result                                                      |
-| -------------------------------- | ----------------------------------------------------------- |
-| Payment A, attempt 1             | Failed                                                      |
-| Payment A, attempt 2             | Failed                                                      |
-| Payment A, attempt 3             | Authorized                                                  |
-| Raw rate *(Counts all attempts)* | 33.3% = (1 / 3) *(1 authorized attempt / 3 total attempts)* |
 
 #### Deduplicated rate
 
@@ -136,26 +119,41 @@ To specify the deduplicated rate, click **Deduplicated**.
 
 #### Example rate calculation
 
-The following is an example calculation for the deduplicated rate:
+#### Example rate calculation
 
-| Calculation step                                                  | Result                                                    |
-| ----------------------------------------------------------------- | --------------------------------------------------------- |
-| Payment A, attempt 1                                              | Failed                                                    |
-| Payment A, attempt 2                                              | Failed                                                    |
-| Payment A, attempt 3                                              | Authorized                                                |
-| Deduplicated rate *(Counts only the final attempt for payment A)* | 100% = (1 / 1) *(1 authorized attempt / 1 total attempt)* |
+The following is an example calculation showing the difference between raw and deduplicated rate:
 
-## Download acceptance data
+| Calculation step                                                  | Result                                                      |
+| ----------------------------------------------------------------- | ----------------------------------------------------------- |
+| Payment A, attempt 1                                              | Failed                                                      |
+| Payment A, attempt 2                                              | Failed                                                      |
+| Payment A, attempt 3                                              | Authorized                                                  |
+| Raw rate *(Counts all attempts)*                                  | 33.3% = (1 / 3) *(1 authorized attempt / 3 total attempts)* |
+| Deduplicated rate *(Counts only the final attempt for payment A)* | 100% = (1 / 1) *(1 authorized attempt / 1 total attempt)*   |
 
-You can download the acceptance data that’s generated for your report. This data includes all payments that match the filters you selected.
+### Specify the currency 
 
-To download the data, click **Download** :download: at the top of each report.
+Apply a currency filter to display only payments made using the selected currency. If you don’t apply a currency filter, all payments appear in your default settlement currency, regardless of the payment currency.
+
+For example, your default settlement currency is USD, but you apply the EUR currency filter. The transactions that display only include payments made in EUR, and excludes payments made in all other currencies, such as USD.
+
+To specify the currency, click **More filters** > **Currency**, and select your preferred currency.
+
+## Transaction detail page 
+
+You can view the underlying transaction data that populates the charts in each report. To access this detailed view, click the expander ↗ at the top of any report. This opens the transaction detail page.
+
+You can **Download** :download: the acceptance data that’s generated for your report. This data includes all payments that match the filters you selected.
+
+If you have an active [Sigma](https://docs.stripe.com/stripe-data/how-sigma-works.md) subscription, you can click **Explore** :explorer: to access templates for the queries that represent each chart. You can use this interface to perform custom analyses on the data that populates the charts.
 
 ## Key metrics report
 
 This report shows the key metrics for the filters you selected, including the rate, number of authorized payments, and authorized payment volume.
 
 The time series compares the rate to a `previous_period`, which you can customize. By default, the comparison period starts right before your chosen timeframe and represents the same length of time.
+
+You can explore trends using [Sigma](https://docs.stripe.com/stripe-data/how-sigma-works.md), or filter by available charge attributes using the itemized download. For example, [card testing](https://docs.stripe.com/disputes/prevention/card-testing.md) can lead to a reduction in the rate and a sudden spike in payment count.
 
 ## Card payments breakdown report
 
@@ -164,8 +162,6 @@ This report shows the card acceptance metrics across several common criteria tha
 Each top-level filter has a corresponding pivot report. You can pair the filtering capabilities with the pivot reports to monitor how different groups of payments perform over time. You can also analyze payments across options such as card brands, countries, or input methods your customers use to pay.
 
 Use the tabs to compare rates, payment count (in absolute numbers or as a share of payments), and payment volume. You can see how changes in the rate relate to changes in payment count or payment volume.
-
-You can explore trends using [Sigma](https://docs.stripe.com/stripe-data/how-sigma-works.md), or filter by available charge attributes using the itemized download. For example, [card testing](https://docs.stripe.com/disputes/prevention/card-testing.md) can lead to a reduction in the rate and a sudden spike in payment count.
 
 | Option               | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -198,15 +194,13 @@ You can explore trends using [Sigma](https://docs.stripe.com/stripe-data/how-sig
   - **Unchecked** - The postal code was sent to the card networks, but validation wasn’t performed.                                                                                                                                              |
 | Processor            | If your configuration includes multiple processors, you can use the [processor filter](https://docs.stripe.com/payments/analytics/acceptance.md#specify-processor) to view the Card payments breakdown report for the selected processor.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | Retry status         | View transactions based on whether a payment has been retried. This differs from [deduplication](https://docs.stripe.com/payments/analytics/acceptance.md#specify-raw-rate-deduplicated-rate), which is the final payment attempt and can be the first attempt with the final result.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| Other                | The Other category groups low volume data points that aren’t represented on the pivot report. For example, you might want to see the full set of card-issued countries in your data. To do so, you can view the data in Sigma or download the data.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+| Other                | The Other category groups low volume data points that aren’t represented on the pivot report. For example, you might want to see the full set of card-issued countries in your data. To do so, you can view the data in Sigma or download the data, both available in the [transaction detail page](https://docs.stripe.com/payments/analytics/acceptance.md#transaction-detail-page).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 
 ## Failed card payments report
 
 This report shows why payments failed or were declined.
 
 A payment attempt can fail at multiple stages, even before the payment is sent to the card network. For example, it might fail [3D Secure authentication](https://docs.stripe.com/payments/3d-secure.md) or get blocked by *Stripe Radar* (Stripe Radar helps detect and block fraud for any type of business using machine learning that trains on data across millions of global companies. It’s built into Stripe and requires no additional setup to get started). After the payment is sent to the card network, issuers can decline it for reasons such as insufficient funds on the card account or incorrect card information. Occasionally, issuers incorrectly decline legitimate payments for suspected fraud.
-
-If you have an active [Sigma](https://docs.stripe.com/stripe-data/how-sigma-works.md) subscription, click **View in Sigma** to access templates for the queries that represent each chart.
 
 ### Before the payment is sent to the card network
 
@@ -244,8 +238,6 @@ For the full list of potential reasons why card issuers decline payments, see [d
 ## Blocked card payments report 
 
 This report shows why payments were blocked.
-
-If you have an active [Sigma](https://docs.stripe.com/stripe-data/how-sigma-works.md) subscription, click **View in Sigma** to access templates for the queries that represent each chart.
 
 | Block reason                          | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

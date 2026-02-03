@@ -6,7 +6,6 @@ description: >-
   Learn about Bits AI, your agentic teammate in Datadog that automates
   development, security, and operational workflows.
 breadcrumbs: Docs > Bits AI
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Bits AI

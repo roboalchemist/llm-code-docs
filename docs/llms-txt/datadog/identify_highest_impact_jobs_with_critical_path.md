@@ -8,8 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > Continuous Integration Visibility > CI Visibility Guides > Identify CI
   Jobs on the Critical Path to Reduce the Pipeline Duration
-source_url: >-
-  https://docs.datadoghq.com/guides/identify_highest_impact_jobs_with_critical_path/index.html
 ---
 
 # Identify CI Jobs on the Critical Path to Reduce the Pipeline Duration

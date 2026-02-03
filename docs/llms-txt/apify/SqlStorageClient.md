@@ -39,7 +39,7 @@ Database schema is automatically created during initialization. SQLite databases
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#__aenter__)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/_sql/_storage_client.py#L85)\_\_aenter\_\_
+### [**](#__aenter__)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/_sql/_storage_client.py#L84)\_\_aenter\_\_
 
 * **async **\_\_aenter\_\_**(): [SqlStorageClient](https://crawlee.dev/python/api/class/SqlStorageClient)
 
@@ -49,7 +49,7 @@ Database schema is automatically created during initialization. SQLite databases
 
   #### Returns [SqlStorageClient](https://crawlee.dev/python/api/class/SqlStorageClient)
 
-### [**](#__aexit__)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/_sql/_storage_client.py#L89)\_\_aexit\_\_
+### [**](#__aexit__)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/_sql/_storage_client.py#L88)\_\_aexit\_\_
 
 * **async **\_\_aexit\_\_**(exc\_type, exc\_value, exc\_traceback): None
 
@@ -65,7 +65,7 @@ Database schema is automatically created during initialization. SQLite databases
 
   #### Returns None
 
-### [**](#__init__)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/_sql/_storage_client.py#L50)\_\_init\_\_
+### [**](#__init__)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/_sql/_storage_client.py#L49)\_\_init\_\_
 
 * ****\_\_init\_\_**(\*, connection\_string, engine): None
 
@@ -85,7 +85,7 @@ Database schema is automatically created during initialization. SQLite databases
 
   #### Returns None
 
-### [**](#close)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/_sql/_storage_client.py#L167)close
+### [**](#close)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/_sql/_storage_client.py#L166)close
 
 * **async **close**(): None
 
@@ -95,7 +95,7 @@ Database schema is automatically created during initialization. SQLite databases
 
   #### Returns None
 
-### [**](#create_dataset_client)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/_sql/_storage_client.py#L184)create\_dataset\_client
+### [**](#create_dataset_client)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/_sql/_storage_client.py#L183)create\_dataset\_client
 
 * **async **create\_dataset\_client**(\*, id, name, alias, configuration): [DatasetClient](https://crawlee.dev/python/api/class/DatasetClient)
 
@@ -114,7 +114,7 @@ Database schema is automatically created during initialization. SQLite databases
 
   #### Returns [DatasetClient](https://crawlee.dev/python/api/class/DatasetClient)
 
-### [**](#create_kvs_client)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/_sql/_storage_client.py#L206)create\_kvs\_client
+### [**](#create_kvs_client)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/_sql/_storage_client.py#L205)create\_kvs\_client
 
 * **async **create\_kvs\_client**(\*, id, name, alias, configuration): [KeyValueStoreClient](https://crawlee.dev/python/api/class/KeyValueStoreClient)
 
@@ -133,7 +133,7 @@ Database schema is automatically created during initialization. SQLite databases
 
   #### Returns [KeyValueStoreClient](https://crawlee.dev/python/api/class/KeyValueStoreClient)
 
-### [**](#create_rq_client)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/_sql/_storage_client.py#L228)create\_rq\_client
+### [**](#create_rq_client)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/_sql/_storage_client.py#L227)create\_rq\_client
 
 * **async **create\_rq\_client**(\*, id, name, alias, configuration): [RequestQueueClient](https://crawlee.dev/python/api/class/RequestQueueClient)
 
@@ -152,7 +152,7 @@ Database schema is automatically created during initialization. SQLite databases
 
   #### Returns [RequestQueueClient](https://crawlee.dev/python/api/class/RequestQueueClient)
 
-### [**](#create_session)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/_sql/_storage_client.py#L173)create\_session
+### [**](#create_session)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/_sql/_storage_client.py#L172)create\_session
 
 * ****create\_session**(): AsyncSession
 
@@ -162,7 +162,7 @@ Database schema is automatically created during initialization. SQLite databases
 
   #### Returns AsyncSession
 
-### [**](#get_accessed_modified_update_interval)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/_sql/_storage_client.py#L109)get\_accessed\_modified\_update\_interval
+### [**](#get_accessed_modified_update_interval)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/_sql/_storage_client.py#L108)get\_accessed\_modified\_update\_interval
 
 * ****get\_accessed\_modified\_update\_interval**(): timedelta
 
@@ -172,7 +172,7 @@ Database schema is automatically created during initialization. SQLite databases
 
   #### Returns timedelta
 
-### [**](#get_dialect_name)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/_sql/_storage_client.py#L105)get\_dialect\_name
+### [**](#get_dialect_name)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/_sql/_storage_client.py#L104)get\_dialect\_name
 
 * ****get\_dialect\_name**(): str | None
 
@@ -182,7 +182,7 @@ Database schema is automatically created during initialization. SQLite databases
 
   #### Returns str | None
 
-### [**](#get_rate_limit_errors)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/_base/_storage_client.py#L74)get\_rate\_limit\_errors
+### [**](#get_rate_limit_errors)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/_base/_storage_client.py#L74)get\_rate\_limit\_errors
 
 * ****get\_rate\_limit\_errors**(): dict\[int, int]
 
@@ -194,7 +194,7 @@ Database schema is automatically created during initialization. SQLite databases
 
   #### Returns dict\[int, int]
 
-### [**](#get_storage_client_cache_key)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/_base/_storage_client.py#L33)get\_storage\_client\_cache\_key
+### [**](#get_storage_client_cache_key)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/_base/_storage_client.py#L33)get\_storage\_client\_cache\_key
 
 * ****get\_storage\_client\_cache\_key**(configuration): Hashable
 
@@ -212,7 +212,7 @@ Database schema is automatically created during initialization. SQLite databases
 
   #### Returns Hashable
 
-### [**](#initialize)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/_sql/_storage_client.py#L113)initialize
+### [**](#initialize)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/_sql/_storage_client.py#L112)initialize
 
 * **async **initialize**(configuration): None
 
@@ -230,7 +230,7 @@ Database schema is automatically created during initialization. SQLite databases
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#engine)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/_sql/_storage_client.py#L99)engine
+### [**](#engine)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/_sql/_storage_client.py#L98)engine
 
 **engine: AsyncEngine
 

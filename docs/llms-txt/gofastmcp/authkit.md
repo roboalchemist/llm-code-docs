@@ -1,16 +1,17 @@
 # Source: https://gofastmcp.com/integrations/authkit.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AuthKit 🤝 FastMCP
 
 > Secure your FastMCP server with AuthKit by WorkOS
 
 export const VersionBadge = ({version}) => {
-  return <code className="version-badge-container">
-            <p className="version-badge">
-                <span className="version-badge-label">New in version:</span> 
-                <code className="version-badge-version">{version}</code>
-            </p>
-        </code>;
+  return <Badge stroke size="lg" icon="gift" iconType="regular" className="version-badge">
+            New in version <code>{version}</code>
+        </Badge>;
 };
 
 <VersionBadge version="2.11.0" />
@@ -83,57 +84,20 @@ if __name__ == "__main__":
     asyncio.run(main())
 ```
 
-## Environment Variables
+## Production Configuration
 
-<VersionBadge version="2.12.1" />
-
-For production deployments, use environment variables instead of hardcoding credentials.
-
-### Provider Selection
-
-Setting this environment variable allows the AuthKit provider to be used automatically without explicitly instantiating it in code.
-
-<Card>
-  <ParamField path="FASTMCP_SERVER_AUTH" default="Not set">
-    Set to `fastmcp.server.auth.providers.workos.AuthKitProvider` to use AuthKit authentication.
-  </ParamField>
-</Card>
-
-### AuthKit-Specific Configuration
-
-These environment variables provide default values for the AuthKit provider, whether it's instantiated manually or configured via `FASTMCP_SERVER_AUTH`.
-
-<Card>
-  <ParamField path="FASTMCP_SERVER_AUTH_AUTHKITPROVIDER_AUTHKIT_DOMAIN" required>
-    Your AuthKit domain (e.g., `https://your-project-12345.authkit.app`)
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_AUTHKITPROVIDER_BASE_URL" required>
-    Public URL of your FastMCP server (e.g., `https://your-server.com` or `http://localhost:8000` for development)
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_AUTHKITPROVIDER_REQUIRED_SCOPES" default="[]">
-    Comma-, space-, or JSON-separated list of required OAuth scopes (e.g., `openid profile email` or `["openid", "profile", "email"]`)
-  </ParamField>
-</Card>
-
-Example `.env` file:
-
-```bash  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-# Use the AuthKit provider
-FASTMCP_SERVER_AUTH=fastmcp.server.auth.providers.workos.AuthKitProvider
-
-# AuthKit configuration
-FASTMCP_SERVER_AUTH_AUTHKITPROVIDER_AUTHKIT_DOMAIN=https://your-project-12345.authkit.app
-FASTMCP_SERVER_AUTH_AUTHKITPROVIDER_BASE_URL=https://your-server.com
-FASTMCP_SERVER_AUTH_AUTHKITPROVIDER_REQUIRED_SCOPES=openid,profile,email
-```
-
-With environment variables set, your server code simplifies to:
+For production deployments, load sensitive configuration from environment variables:
 
 ```python server.py theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+import os
 from fastmcp import FastMCP
+from fastmcp.server.auth.providers.workos import AuthKitProvider
 
-# Authentication is automatically configured from environment
-mcp = FastMCP(name="AuthKit Secured App")
+# Load configuration from environment variables
+auth = AuthKitProvider(
+    authkit_domain=os.environ.get("AUTHKIT_DOMAIN"),
+    base_url=os.environ.get("BASE_URL", "https://your-server.com")
+)
+
+mcp = FastMCP(name="AuthKit Secured App", auth=auth)
 ```

@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/concepts/multipage-apps/pages-directory
+
 # Creating multipage apps using the `pages/` directory
 
 The most customizable method for declaring multipage apps is using [Page and navigation](/develop/concepts/multipage-apps/page-and-navigation). However, Streamlit also provides a frictionless way to create multipage apps where pages are automatically recognized and shown in a navigation widget inside your app's sidebar. This method uses the `pages/` directory.

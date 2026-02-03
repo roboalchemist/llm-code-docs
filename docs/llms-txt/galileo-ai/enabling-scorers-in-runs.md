@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/how-to/enabling-scorers-in-runs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Enabling Scorers in Runs
 
 > Learn how to turn on metrics when creating runs in your Python environment.
@@ -12,7 +16,7 @@ Galileo provides users the ability to tune which metrics to use for their evalua
 
 To use scorers during a prompt run, sweep, or even a more complex workflow, simply pass them in through the scorers argument:
 
-```py
+```py  theme={null}
 
 import promptquality as pq
 
@@ -23,7 +27,7 @@ pq.run(..., scorers=[pq.Scorers.correctness, pq.Scorers.context_adherence])
 
 By default, we turn on a few scorers for you (PII, Toxicity, BLEU, ROUGE). If you want to disable a default scorer you can pass in a ScorersConfiguration object.
 
-```py
+```py  theme={null}
 
 pq.run(...,
   scorers=[pq.Scorers.correctness,pq.Scorers.context_adherence],
@@ -33,7 +37,7 @@ pq.run(...,
 
 You can even use the ScorersConfiguration to turn on other scorers, rather than using the scorers argument.
 
-```py
+```py  theme={null}
   pq.run(..., scorers_config=pq.ScorersConfiguration(latency=False, groundedness=True))
 ```
 
@@ -41,7 +45,7 @@ You can even use the ScorersConfiguration to turn on other scorers, rather than 
 
 If you're logging workflows using [EvaluateRun](https://promptquality.docs.rungalileo.io/#promptquality.EvaluateRun), you can add your scorers similarly:
 
-```py
+```py  theme={null}
 evaluate_run = pq.EvaluateRun(run_name="my_run", project_name="my_project", scorers=[pq.Scorers.correctness, pq.Scorers.context_adherence])
 ```
 

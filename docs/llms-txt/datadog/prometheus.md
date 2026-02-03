@@ -1,3 +1,5 @@
+# Source: https://docs.datadoghq.com/developers/custom_checks/prometheus.md
+
 # Source: https://docs.datadoghq.com/containers/kubernetes/prometheus.md
 
 # Source: https://docs.datadoghq.com/containers/docker/prometheus.md
@@ -8,9 +10,8 @@ description: >-
   Collect Prometheus and OpenMetrics metrics from containerized Docker
   applications using the Datadog Agent
 breadcrumbs: >-
-  Docs > Container Monitoring > Docker Agent for Docker, containerd, and Podman
-  > Docker Prometheus and OpenMetrics metrics collection
-source_url: https://docs.datadoghq.com/docker/prometheus/index.html
+  Docs > Containers > Docker Agent for Docker, containerd, and Podman > Docker
+  Prometheus and OpenMetrics metrics collection
 ---
 
 # Docker Prometheus and OpenMetrics metrics collection

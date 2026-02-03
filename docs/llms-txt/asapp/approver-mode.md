@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/generativeagent/human-in-the-loop/approver-mode.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Approver Mode
 
 > Learn how human agents review and refine generated responses to ensure safe, accurate, and on-brand customer interactions.
@@ -30,22 +34,22 @@ Approver Mode works similarly to regular HILA: GenerativeAgent creates a ticket 
   </Step>
 
   <Step title="Enable Approver Mode">
-    Reach out to your ASAPP account team to enable Approver Mode for your account and configure the Administator
+    Reach out to your ASAPP account team to enable Approver Mode for your account and configure the Administrator settings.
   </Step>
 </Steps>
 
 <Note>
-  HILA in Approver Mode can not be tried out in Previewer.
+  HILA in Approver Mode cannot be tried out in Previewer.
 </Note>
 
 ### Administrator Controls
 
 There are several settings that can be configured, particularly to ensure end customers receive quick responses:
 
-* **Auto-accept Timeout:** Responses are automatically approved after a configurable timeout (default: 30 seconds) to ensure the customer remains engaged if the HILA is inactive
+* **Auto-accept Timeout:** The system automatically approves responses after a configurable timeout (default: 30 seconds) to ensure the customer remains engaged if the HILA is inactive
 * **Agent Assignment Timeout:** If no HILA is assigned within a configurable timeout (default: 60 seconds), the conversation escalates to a live agent
 * **Task-level Control:** Define which tasks require complete supervision through Approver Mode
-* **Escalation Message:** When HILA initiates an escalation, a configurable message is sent to the customer, informing them that their conversation will be handed over to a live agent
+* **Escalation Message:** When HILA initiates an escalation, the system sends a configurable message to the customer, informing them that their conversation will be handed over to a live agent
 
 <Warning>
   These safeguards ensure that customers never wait long and always receive a human-verified message.
@@ -57,11 +61,11 @@ The Approver Mode workflow follows the same process as regular HILA, with one ke
 
 <Steps>
   <Step title="Ticket Assignment">
-    HILAs are assigned tickets based on the routing and assignment configurations in your support platform. If no HILA is assigned within the configurable threshold (default: 60 seconds), the case is escalated to a live agent automatically.
+    Your support platform assigns tickets to HILAs based on the routing and assignment configurations. If the system does not assign a HILA within the configurable threshold (default: 60 seconds), the system automatically escalates the case to a live agent.
   </Step>
 
   <Step title="Ticket Review">
-    HILAs are presented with key information to help them answer the GenerativeAgent query:
+    The system presents HILAs with key information to help them answer GenerativeAgent query:
 
     <Frame>
       <img src="https://mintcdn.com/asapp/5vfIXwfnKhACH2a_/images/generativeagent/hila/ApproverMode.png?fit=max&auto=format&n=5vfIXwfnKhACH2a_&q=85&s=e47021fe80c98e638ac7a20bc93cf91e" alt="Approver Mode Interface" data-og-width="2536" width="2536" data-og-height="1582" height="1582" data-path="images/generativeagent/hila/ApproverMode.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/5vfIXwfnKhACH2a_/images/generativeagent/hila/ApproverMode.png?w=280&fit=max&auto=format&n=5vfIXwfnKhACH2a_&q=85&s=9efd782616f5da5388663af800bf240a 280w, https://mintcdn.com/asapp/5vfIXwfnKhACH2a_/images/generativeagent/hila/ApproverMode.png?w=560&fit=max&auto=format&n=5vfIXwfnKhACH2a_&q=85&s=ae428b01b8525347fea3eceed2766b29 560w, https://mintcdn.com/asapp/5vfIXwfnKhACH2a_/images/generativeagent/hila/ApproverMode.png?w=840&fit=max&auto=format&n=5vfIXwfnKhACH2a_&q=85&s=b5adbdf482e517a8a65b91d17f4e68fe 840w, https://mintcdn.com/asapp/5vfIXwfnKhACH2a_/images/generativeagent/hila/ApproverMode.png?w=1100&fit=max&auto=format&n=5vfIXwfnKhACH2a_&q=85&s=db98953bbbdd92b5a4d608da1f345e24 1100w, https://mintcdn.com/asapp/5vfIXwfnKhACH2a_/images/generativeagent/hila/ApproverMode.png?w=1650&fit=max&auto=format&n=5vfIXwfnKhACH2a_&q=85&s=3d657596785e6e0fb5f89fff10b15012 1650w, https://mintcdn.com/asapp/5vfIXwfnKhACH2a_/images/generativeagent/hila/ApproverMode.png?w=2500&fit=max&auto=format&n=5vfIXwfnKhACH2a_&q=85&s=94824f31f0fa8bf6fdf5862fe875450c 2500w" />
@@ -69,11 +73,11 @@ The Approver Mode workflow follows the same process as regular HILA, with one ke
 
     The HILA application includes:
 
-    * **Transcript:** Complete history of the customer interaction before the ticket was raised
+    * **Transcript:** Complete history of the customer interaction before GenerativeAgent raised the ticket
     * **Context:** Summarized view of key customer intents and topics for quick understanding
     * **Customer information:** Details such as customer name and account data if authenticated
     * **Conversation thread:** Real-time view of the approver phase showing all approved messages, edits, and system messages
-    * **Assignment timer:** Tracks how long the ticket has been with the assigned HILA
+    * **Assignment timer:** Tracks how long the assigned HILA has worked on the ticket
   </Step>
 
   <Step title="HILA Approval">
@@ -82,7 +86,7 @@ The Approver Mode workflow follows the same process as regular HILA, with one ke
     1. **Accept** the utterance as the most appropriate next response to the customer
     2. **Review** the utterance and make necessary changes before sending it to the customer
     3. **Transfer** if the situation requires escalation to a live agent for deeper support
-    4. **End** the ticket if the conversation is resolved or GenerativeAgent escalates
+    4. **End** the ticket if GenerativeAgent resolves the conversation or escalates
   </Step>
 
   <Step title="GenerativeAgent Continues the Conversation">

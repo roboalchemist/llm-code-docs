@@ -1,314 +1,320 @@
 # Source: https://getlago.com/docs/api-reference/coupons/get-all-applied.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List all applied coupons
 
 > This endpoint is used to list all applied coupons. You can filter by coupon status and by customer.
 
+<RequestExample>
+  ```bash cURL theme={"dark"}
+  LAGO_URL="https://api.getlago.com"
+  API_KEY="__YOUR_API_KEY__"
+
+  curl --location --request GET "$LAGO_URL/api/v1/applied_coupons?per_page=2&page=1" \
+    --header "Authorization: Bearer $API_KEY"
+  ```
+
+  ```python Python theme={"dark"}
+  from lago_python_client.client import Client
+  from lago_python_client.exceptions import LagoApiError
+
+  client = Client(api_key='__YOUR_API_KEY__')
+
+  try:
+      client.applied_coupons.find_all({'per_page': 2, 'page': 1})
+  except LagoApiError as e:
+      repair_broken_state(e)  # do something on error or raise your own exception
+  ```
+
+  ```ruby Ruby theme={"dark"}
+  require 'lago-ruby-client'
+
+  client = Lago::Api::Client.new(api_key: '__YOUR_API_KEY__')
+
+  client.applied_coupons.get_all({ per_page: 2, page: 3 })
+  ```
+
+  ```js Javascript theme={"dark"}
+  await client.appliedCoupons.findAllAppliedCoupons({ per_page: 2, page: 3 });
+  ```
+
+  ```go Go theme={"dark"}
+  import "fmt"
+  import "github.com/getlago/lago-go-client"
+
+  func main() {
+  lagoClient := lago.New().
+      SetApiKey("__YOUR_API_KEY__")
+
+  couponListInput := &lago.AppliedCouponListInput{
+      PerPage: 1,
+      Page: 1,
+  }
+
+  couponResult, err := lagoClient.AppliedCoupon().GetList(couponListInput)
+  if err != nil {
+      // Error is *lago.Error
+      panic(err)
+  }
+
+  // couponResult is *lago.CouponResult
+  fmt.Println(couponResult)
+  }
+  ```
+</RequestExample>
+
+
 ## OpenAPI
 
 ````yaml GET /applied_coupons
+openapi: 3.1.0
+info:
+  title: Lago API documentation
+  description: >-
+    Lago API allows your application to push customer information and metrics
+    (events) from your application to the billing application.
+  version: 1.41.0
+  license:
+    name: AGPLv3
+    identifier: AGPLv3
+  contact:
+    email: tech@getlago.com
+servers:
+  - url: https://api.getlago.com/api/v1
+    description: US Lago cluster
+  - url: https://api.eu.getlago.com/api/v1
+    description: EU Lago cluster
+security:
+  - bearerAuth: []
+tags:
+  - name: activity_logs
+    description: Everything about Activity logs
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/audit-logs/activity-logs-object
+  - name: analytics
+    description: Everything about Analytics
+  - name: api_logs
+    description: Everything about API logs
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/audit-logs/api-logs-object
+  - name: billable_metrics
+    description: Everything about Billable metric collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/billable-metrics/object
+  - name: features
+    description: Everything about Feature collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/features/object
+  - name: entitlements
+    description: Everything about Entitlement collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/entitlements/object
+  - name: billing_entities
+    description: Everything about Billing Entities
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/billing-entities/object
+  - name: customers
+    description: Everything about Customer collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/customers/object
+  - name: plans
+    description: Everything about Plan collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/plans/object
+  - name: subscriptions
+    description: Everything about Subscription collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/subscriptions/subscription-object
+  - name: events
+    description: Everything about Event collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/events/event-object
+  - name: organizations
+    description: Everything about Organization collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/organizations/organization-object
+  - name: taxes
+    description: Everything about Tax collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/taxes/tax-object
+  - name: coupons
+    description: Everything about Coupon collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/coupons/coupon-object
+  - name: add_ons
+    description: Everything about Add-on collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/add-ons/add-on-object
+  - name: fees
+    description: Everything about Fees
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/invoices/invoice-object#fee-object
+  - name: invoices
+    description: Everything about Invoice collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/invoices/invoice-object
+  - name: wallets
+    description: Everything about Wallet collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/wallets/wallet-object
+  - name: credit_notes
+    description: Everything about Credit notes collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/credit-notes/credit-note-object
+  - name: webhooks
+    description: Everything about Webhooks
+    externalDocs:
+      description: Find out more
+      url: >-
+        https://doc.getlago.com/api-reference/webhooks/format---signature#1-retrieve-the-public-key
+  - name: webhook_endpoints
+    description: Everything about Webhook Endpoints
+    externalDocs:
+      description: Find out more
+      url: >-
+        https://doc.getlago.com/api-reference/webhook-endpoints/webhook-endpoint-object
+  - name: payment_receipts
+    description: Everything about Payment receipts
+    externalDocs:
+      description: Find out more
+      url: >-
+        https://doc.getlago.com/api-reference/payment-receipts/payment-receipt-object
+  - name: payment_requests
+    description: Everything about PaymentRequests
+    externalDocs:
+      description: Find out more
+      url: >-
+        https://doc.getlago.com/api-reference/payment-requests/payment-request-object
+  - name: payments
+    description: Everything about Payments
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/payments/payment-object
+externalDocs:
+  description: Lago Github
+  url: https://github.com/getlago
 paths:
-  path: /applied_coupons
-  method: get
-  servers:
-    - url: https://api.getlago.com/api/v1
-      description: US Lago cluster
-    - url: https://api.eu.getlago.com/api/v1
-      description: EU Lago cluster
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        page:
-          schema:
-            - type: integer
-              required: false
-              description: Page number.
-              example: 1
+  /applied_coupons:
+    get:
+      tags:
+        - coupons
+      summary: List all applied coupons
+      description: >-
+        This endpoint is used to list all applied coupons. You can filter by
+        coupon status and by customer.
+      operationId: findAllAppliedCoupons
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/per_page'
+        - name: status
+          in: query
+          description: The status of the coupon. Can be either `active` or `terminated`.
+          required: false
           explode: true
-        per_page:
           schema:
-            - type: integer
-              required: false
-              description: Number of records per page.
-              example: 20
+            type: string
+            enum:
+              - active
+              - terminated
+            example: active
+        - name: external_customer_id
+          in: query
+          description: >-
+            The customer external unique identifier (provided by your own
+            application)
+          required: false
           explode: true
-        status:
           schema:
-            - type: enum<string>
-              enum:
-                - active
-                - terminated
-              required: false
-              description: >-
-                The status of the coupon. Can be either `active` or
-                `terminated`.
-              example: active
+            type: string
+            example: 5eb02857-a71e-4ea2-bcf9-57d3a41bc6ba
+        - name: coupon_code[]
+          in: query
+          description: >-
+            The code of the coupon applied to the customer. Use it to filter
+            applied coupons by their code.
+          required: false
           explode: true
-        external_customer_id:
           schema:
-            - type: string
-              required: false
-              description: >-
-                The customer external unique identifier (provided by your own
-                application)
-              example: 5eb02857-a71e-4ea2-bcf9-57d3a41bc6ba
-          explode: true
-        coupon_code[]:
-          schema:
-            - type: array
-              items:
-                allOf:
-                  - type: string
-              required: false
-              description: >-
-                The code of the coupon applied to the customer. Use it to filter
-                applied coupons by their code.
-              example:
-                - BLACK_FRIDAY_2024
-                - CHRISTMAS_2024
-          explode: true
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              applied_coupons:
-                allOf:
-                  - type: array
-                    items:
-                      $ref: '#/components/schemas/AppliedCouponObjectExtended'
-              meta:
-                allOf:
-                  - $ref: '#/components/schemas/PaginationMeta'
-            refIdentifier: '#/components/schemas/AppliedCouponsPaginated'
-            requiredProperties:
-              - applied_coupons
-              - meta
-        examples:
-          example:
-            value:
-              applied_coupons:
-                - lago_id: 1a901a90-1a90-1a90-1a90-1a901a901a90
-                  lago_coupon_id: 1a901a90-1a90-1a90-1a90-1a901a901a90
-                  coupon_code: startup_deal
-                  coupon_name: Startup Deal
-                  lago_customer_id: 1a901a90-1a90-1a90-1a90-1a901a901a90
-                  external_customer_id: 5eb02857-a71e-4ea2-bcf9-57d3a41bc6ba
-                  status: active
-                  amount_cents: 2000
-                  amount_cents_remaining: 50
-                  amount_currency: EUR
-                  percentage_rate: null
-                  frequency: recurring
-                  frequency_duration: 3
-                  frequency_duration_remaining: 1
-                  expiration_at: '2022-04-29T08:59:51Z'
-                  created_at: '2022-04-29T08:59:51Z'
-                  terminated_at: '2022-04-29T08:59:51Z'
-                  credits:
-                    - lago_id: 1a901a90-1a90-1a90-1a90-1a901a901a90
-                      amount_cents: 1200
-                      amount_currency: EUR
-                      before_taxes: false
-                      item:
-                        lago_item_id: 1a901a90-1a90-1a90-1a90-1a901a901a90
-                        type: coupon
-                        code: startup_deal
-                        name: Startup Deal
-                      invoice:
-                        lago_id: 1a901a90-1a90-1a90-1a90-1a901a901a90
-                        payment_status: succeeded
-              meta:
-                current_page: 2
-                next_page: 3
-                prev_page: 1
-                total_pages: 4
-                total_count: 70
-        description: Applied Coupons
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: integer
-                    format: int32
-                    example: 401
-              error:
-                allOf:
-                  - type: string
-                    example: Unauthorized
-            refIdentifier: '#/components/schemas/ApiErrorUnauthorized'
-            requiredProperties:
-              - status
-              - error
-        examples:
-          example:
-            value:
-              status: 401
-              error: Unauthorized
-        description: Unauthorized error
-  deprecated: false
-  type: path
+            type: array
+            items:
+              type: string
+            example:
+              - BLACK_FRIDAY_2024
+              - CHRISTMAS_2024
+      responses:
+        '200':
+          description: Applied Coupons
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppliedCouponsPaginated'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
 components:
+  parameters:
+    page:
+      name: page
+      in: query
+      description: Page number.
+      required: false
+      explode: true
+      schema:
+        type: integer
+        example: 1
+    per_page:
+      name: per_page
+      in: query
+      description: Number of records per page.
+      required: false
+      explode: true
+      schema:
+        type: integer
+        example: 20
   schemas:
-    Currency:
-      type: string
-      example: USD
-      enum:
-        - AED
-        - AFN
-        - ALL
-        - AMD
-        - ANG
-        - AOA
-        - ARS
-        - AUD
-        - AWG
-        - AZN
-        - BAM
-        - BBD
-        - BDT
-        - BGN
-        - BIF
-        - BMD
-        - BND
-        - BOB
-        - BRL
-        - BSD
-        - BWP
-        - BYN
-        - BZD
-        - CAD
-        - CDF
-        - CHF
-        - CLF
-        - CLP
-        - CNY
-        - COP
-        - CRC
-        - CVE
-        - CZK
-        - DJF
-        - DKK
-        - DOP
-        - DZD
-        - EGP
-        - ETB
-        - EUR
-        - FJD
-        - FKP
-        - GBP
-        - GEL
-        - GHS
-        - GIP
-        - GMD
-        - GNF
-        - GTQ
-        - GYD
-        - HKD
-        - HNL
-        - HRK
-        - HTG
-        - HUF
-        - IDR
-        - ILS
-        - INR
-        - ISK
-        - JMD
-        - JPY
-        - KES
-        - KGS
-        - KHR
-        - KMF
-        - KRW
-        - KYD
-        - KZT
-        - LAK
-        - LBP
-        - LKR
-        - LRD
-        - LSL
-        - MAD
-        - MDL
-        - MGA
-        - MKD
-        - MMK
-        - MNT
-        - MOP
-        - MRO
-        - MUR
-        - MVR
-        - MWK
-        - MXN
-        - MYR
-        - MZN
-        - NAD
-        - NGN
-        - NIO
-        - NOK
-        - NPR
-        - NZD
-        - PAB
-        - PEN
-        - PGK
-        - PHP
-        - PKR
-        - PLN
-        - PYG
-        - QAR
-        - RON
-        - RSD
-        - RUB
-        - RWF
-        - SAR
-        - SBD
-        - SCR
-        - SEK
-        - SGD
-        - SHP
-        - SLL
-        - SOS
-        - SRD
-        - STD
-        - SZL
-        - THB
-        - TJS
-        - TOP
-        - TRY
-        - TTD
-        - TWD
-        - TZS
-        - UAH
-        - UGX
-        - USD
-        - UYU
-        - UZS
-        - VND
-        - VUV
-        - WST
-        - XAF
-        - XCD
-        - XOF
-        - XPF
-        - YER
-        - ZAR
-        - ZMW
+    AppliedCouponsPaginated:
+      type: object
+      required:
+        - applied_coupons
+        - meta
+      properties:
+        applied_coupons:
+          type: array
+          items:
+            $ref: '#/components/schemas/AppliedCouponObjectExtended'
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+    AppliedCouponObjectExtended:
+      allOf:
+        - $ref: '#/components/schemas/AppliedCouponObject'
+        - type: object
+          required:
+            - credits
+          properties:
+            credits:
+              type: array
+              items:
+                $ref: '#/components/schemas/CreditObject'
     PaginationMeta:
       type: object
       required:
@@ -340,150 +346,19 @@ components:
           type: integer
           description: Total number of records.
           example: 70
-    CurrencyOrNull:
-      type:
-        - string
-        - 'null'
-      example: USD
-      enum:
-        - null
-        - AED
-        - AFN
-        - ALL
-        - AMD
-        - ANG
-        - AOA
-        - ARS
-        - AUD
-        - AWG
-        - AZN
-        - BAM
-        - BBD
-        - BDT
-        - BGN
-        - BIF
-        - BMD
-        - BND
-        - BOB
-        - BRL
-        - BSD
-        - BWP
-        - BYN
-        - BZD
-        - CAD
-        - CDF
-        - CHF
-        - CLF
-        - CLP
-        - CNY
-        - COP
-        - CRC
-        - CVE
-        - CZK
-        - DJF
-        - DKK
-        - DOP
-        - DZD
-        - EGP
-        - ETB
-        - EUR
-        - FJD
-        - FKP
-        - GBP
-        - GEL
-        - GIP
-        - GMD
-        - GNF
-        - GTQ
-        - GYD
-        - HKD
-        - HNL
-        - HRK
-        - HTG
-        - HUF
-        - IDR
-        - ILS
-        - INR
-        - ISK
-        - JMD
-        - JPY
-        - KES
-        - KGS
-        - KHR
-        - KMF
-        - KRW
-        - KYD
-        - KZT
-        - LAK
-        - LBP
-        - LKR
-        - LRD
-        - LSL
-        - MAD
-        - MDL
-        - MGA
-        - MKD
-        - MMK
-        - MNT
-        - MOP
-        - MRO
-        - MUR
-        - MVR
-        - MWK
-        - MXN
-        - MYR
-        - MZN
-        - NAD
-        - NGN
-        - NIO
-        - NOK
-        - NPR
-        - NZD
-        - PAB
-        - PEN
-        - PGK
-        - PHP
-        - PKR
-        - PLN
-        - PYG
-        - QAR
-        - RON
-        - RSD
-        - RUB
-        - RWF
-        - SAR
-        - SBD
-        - SCR
-        - SEK
-        - SGD
-        - SHP
-        - SLL
-        - SOS
-        - SRD
-        - STD
-        - SZL
-        - THB
-        - TJS
-        - TOP
-        - TRY
-        - TTD
-        - TWD
-        - TZS
-        - UAH
-        - UGX
-        - USD
-        - UYU
-        - UZS
-        - VND
-        - VUV
-        - WST
-        - XAF
-        - XCD
-        - XOF
-        - XPF
-        - YER
-        - ZAR
-        - ZMW
+    ApiErrorUnauthorized:
+      type: object
+      required:
+        - status
+        - error
+      properties:
+        status:
+          type: integer
+          format: int32
+          example: 401
+        error:
+          type: string
+          example: Unauthorized
     AppliedCouponObject:
       type: object
       required:
@@ -724,16 +599,302 @@ components:
                 - succeeded
                 - failed
               example: succeeded
-    AppliedCouponObjectExtended:
-      allOf:
-        - $ref: '#/components/schemas/AppliedCouponObject'
-        - type: object
-          required:
-            - credits
-          properties:
-            credits:
-              type: array
-              items:
-                $ref: '#/components/schemas/CreditObject'
+    CurrencyOrNull:
+      type:
+        - string
+        - 'null'
+      example: USD
+      enum:
+        - null
+        - AED
+        - AFN
+        - ALL
+        - AMD
+        - ANG
+        - AOA
+        - ARS
+        - AUD
+        - AWG
+        - AZN
+        - BAM
+        - BBD
+        - BDT
+        - BGN
+        - BIF
+        - BMD
+        - BND
+        - BOB
+        - BRL
+        - BSD
+        - BWP
+        - BYN
+        - BZD
+        - CAD
+        - CDF
+        - CHF
+        - CLF
+        - CLP
+        - CNY
+        - COP
+        - CRC
+        - CVE
+        - CZK
+        - DJF
+        - DKK
+        - DOP
+        - DZD
+        - EGP
+        - ETB
+        - EUR
+        - FJD
+        - FKP
+        - GBP
+        - GEL
+        - GIP
+        - GMD
+        - GNF
+        - GTQ
+        - GYD
+        - HKD
+        - HNL
+        - HRK
+        - HTG
+        - HUF
+        - IDR
+        - ILS
+        - INR
+        - ISK
+        - JMD
+        - JPY
+        - KES
+        - KGS
+        - KHR
+        - KMF
+        - KRW
+        - KYD
+        - KZT
+        - LAK
+        - LBP
+        - LKR
+        - LRD
+        - LSL
+        - MAD
+        - MDL
+        - MGA
+        - MKD
+        - MMK
+        - MNT
+        - MOP
+        - MRO
+        - MUR
+        - MVR
+        - MWK
+        - MXN
+        - MYR
+        - MZN
+        - NAD
+        - NGN
+        - NIO
+        - NOK
+        - NPR
+        - NZD
+        - PAB
+        - PEN
+        - PGK
+        - PHP
+        - PKR
+        - PLN
+        - PYG
+        - QAR
+        - RON
+        - RSD
+        - RUB
+        - RWF
+        - SAR
+        - SBD
+        - SCR
+        - SEK
+        - SGD
+        - SHP
+        - SLL
+        - SOS
+        - SRD
+        - STD
+        - SZL
+        - THB
+        - TJS
+        - TOP
+        - TRY
+        - TTD
+        - TWD
+        - TZS
+        - UAH
+        - UGX
+        - USD
+        - UYU
+        - UZS
+        - VND
+        - VUV
+        - WST
+        - XAF
+        - XCD
+        - XOF
+        - XPF
+        - YER
+        - ZAR
+        - ZMW
+    Currency:
+      type: string
+      example: USD
+      enum:
+        - AED
+        - AFN
+        - ALL
+        - AMD
+        - ANG
+        - AOA
+        - ARS
+        - AUD
+        - AWG
+        - AZN
+        - BAM
+        - BBD
+        - BDT
+        - BGN
+        - BIF
+        - BMD
+        - BND
+        - BOB
+        - BRL
+        - BSD
+        - BWP
+        - BYN
+        - BZD
+        - CAD
+        - CDF
+        - CHF
+        - CLF
+        - CLP
+        - CNY
+        - COP
+        - CRC
+        - CVE
+        - CZK
+        - DJF
+        - DKK
+        - DOP
+        - DZD
+        - EGP
+        - ETB
+        - EUR
+        - FJD
+        - FKP
+        - GBP
+        - GEL
+        - GHS
+        - GIP
+        - GMD
+        - GNF
+        - GTQ
+        - GYD
+        - HKD
+        - HNL
+        - HRK
+        - HTG
+        - HUF
+        - IDR
+        - ILS
+        - INR
+        - ISK
+        - JMD
+        - JPY
+        - KES
+        - KGS
+        - KHR
+        - KMF
+        - KRW
+        - KYD
+        - KZT
+        - LAK
+        - LBP
+        - LKR
+        - LRD
+        - LSL
+        - MAD
+        - MDL
+        - MGA
+        - MKD
+        - MMK
+        - MNT
+        - MOP
+        - MRO
+        - MUR
+        - MVR
+        - MWK
+        - MXN
+        - MYR
+        - MZN
+        - NAD
+        - NGN
+        - NIO
+        - NOK
+        - NPR
+        - NZD
+        - PAB
+        - PEN
+        - PGK
+        - PHP
+        - PKR
+        - PLN
+        - PYG
+        - QAR
+        - RON
+        - RSD
+        - RUB
+        - RWF
+        - SAR
+        - SBD
+        - SCR
+        - SEK
+        - SGD
+        - SHP
+        - SLL
+        - SOS
+        - SRD
+        - STD
+        - SZL
+        - THB
+        - TJS
+        - TOP
+        - TRY
+        - TTD
+        - TWD
+        - TZS
+        - UAH
+        - UGX
+        - USD
+        - UYU
+        - UZS
+        - VND
+        - VUV
+        - WST
+        - XAF
+        - XCD
+        - XOF
+        - XPF
+        - YER
+        - ZAR
+        - ZMW
+  responses:
+    Unauthorized:
+      description: Unauthorized error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiErrorUnauthorized'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
 
 ````

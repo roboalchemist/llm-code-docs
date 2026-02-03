@@ -1,12 +1,16 @@
 # Source: https://docs.asapp.com/getting-started/setup/manage-users.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Manage Users
 
 > Learn how to set up and manage users.
 
 You are in control of user management within ASAPP. This includes inviting users, granting access to applications, and assigning specific permissions for features and tooling.
 
-<Warning> Managing users for ASAPP dashboard is separate from the [Digital Agent Desk](/messaging-platform/digital-agent-desk/user-management)</Warning>
+<Warning> Managing users for ASAPP dashboard is separate from the [Digital Agent Desk](/agent-desk/digital-agent-desk/user-management)</Warning>
 
 Manage users from within the ASAPP dashboard, including [inviting users](#invite-users), deleting users, and managing [application access and permissions](#application-access-and-permissions).
 
@@ -55,7 +59,7 @@ If you are using SSO, you can map roles in your Identity Provider (IDP) to the r
 
 You must work with your ASAPP account team to determine which claim from your IDP contains the roles list.
 
-For each role in ASAPP, you specify one or more roles within your IDP that should be mapped to it. You can map multiple ASAPP roles to the same IDP role.
+For each role in ASAPP, you specify one or more roles within your IDP that the system should map to it. You can map multiple ASAPP roles to the same IDP role.
 
 <Frame>
   <img src="https://mintcdn.com/asapp/bSPknm73NAzIX3Ak/images/getting-started/idp-mapping.png?fit=max&auto=format&n=bSPknm73NAzIX3Ak&q=85&s=d66e7e6a40dc3a6fea9cf1430ad37183" data-og-width="1222" width="1222" data-og-height="283" height="283" data-path="images/getting-started/idp-mapping.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/bSPknm73NAzIX3Ak/images/getting-started/idp-mapping.png?w=280&fit=max&auto=format&n=bSPknm73NAzIX3Ak&q=85&s=db4b5058affe807b157240c8d1d850ef 280w, https://mintcdn.com/asapp/bSPknm73NAzIX3Ak/images/getting-started/idp-mapping.png?w=560&fit=max&auto=format&n=bSPknm73NAzIX3Ak&q=85&s=e42cd7b62cd03d7f2fda61e886384252 560w, https://mintcdn.com/asapp/bSPknm73NAzIX3Ak/images/getting-started/idp-mapping.png?w=840&fit=max&auto=format&n=bSPknm73NAzIX3Ak&q=85&s=d2c2601dd0b989a2ac9d714d1f53b737 840w, https://mintcdn.com/asapp/bSPknm73NAzIX3Ak/images/getting-started/idp-mapping.png?w=1100&fit=max&auto=format&n=bSPknm73NAzIX3Ak&q=85&s=218888fe87f5ac4d5353df2f4cd68cd6 1100w, https://mintcdn.com/asapp/bSPknm73NAzIX3Ak/images/getting-started/idp-mapping.png?w=1650&fit=max&auto=format&n=bSPknm73NAzIX3Ak&q=85&s=805b4c73ac55453726cbe7663a3dcba1 1650w, https://mintcdn.com/asapp/bSPknm73NAzIX3Ak/images/getting-started/idp-mapping.png?w=2500&fit=max&auto=format&n=bSPknm73NAzIX3Ak&q=85&s=78cd1aead7388b65b8d20e7f19ad021e 2500w" />

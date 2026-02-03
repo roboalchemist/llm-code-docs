@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/configuration/testing-llm-chains/
+
 # Testing LLM chains
 
 Prompt chaining is a common pattern used to perform more complex reasoning with LLMs. It's used by libraries like [LangChain](https://langchain.readthedocs.io/), and OpenAI has released built-in support via [OpenAI functions](https://openai.com/blog/function-calling-and-other-api-updates).

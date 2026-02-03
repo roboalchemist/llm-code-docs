@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/schema/active-meeting.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ActiveMeeting
 
 > Schema for ActiveMeeting
@@ -37,6 +41,13 @@
   * `teammates_and_participants`: Team members and participants can access
   * `participating_teammates`: Only teammates who participated can access
   * `teammates`: All team members can access
+</ResponseField>
+
+<ResponseField name="state" type="MeetingState">
+  Current state of the meeting. Possible values:
+
+  * `active`: Meeting is currently in progress
+  * `paused`: Meeting has been paused
 </ResponseField>
 
 ## Additional Resources

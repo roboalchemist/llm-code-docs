@@ -21,7 +21,7 @@ Status message is logged at fixed time intervals, and there is no guarantee that
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#__init__)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/log.py#L394)\_\_init\_\_
+### [**](#__init__)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/log.py#L394)\_\_init\_\_
 
 * ****\_\_init\_\_**(\*, to\_logger, check\_period): None
 

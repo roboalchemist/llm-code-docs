@@ -4,7 +4,6 @@
 title: CloudPrem Quickstart
 description: Get started with CloudPrem locally in less than 5 minutes
 breadcrumbs: Docs > CloudPrem > CloudPrem Quickstart
-source_url: https://docs.datadoghq.com/quickstart/index.html
 ---
 
 # CloudPrem Quickstart
@@ -28,7 +27,7 @@ Join the CloudPrem Preview to access new self-hosted log management features.
 
 ## Overview{% #overview %}
 
-This quickstart covers the following:
+Get started with CloudPrem locally in less than 5 minutes. This quickstart covers the following:
 
 1. Start CloudPrem locally using Docker.
 1. Verify the cluster status.
@@ -99,5 +98,5 @@ curl -X POST "http://localhost:7280/api/v2/logs" \
 
 With CloudPrem running, you can:
 
-- [Send logs with the Datadog Agent](https://docs.datadoghq.com/cloudprem/ingest_logs/datadog_agent) to automatically collect logs from your containers.
-- [Send logs with Observability Pipelines](https://docs.datadoghq.com/cloudprem/ingest_logs/observability_pipelines/).
+- [Send logs with the Datadog Agent](https://docs.datadoghq.com/cloudprem/ingest/agent/) to automatically collect logs from your containers.
+- [Send logs with Observability Pipelines](https://docs.datadoghq.com/cloudprem/ingest/observability_pipelines/).

@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/no-bitwise.md
 ---
-# eslint/no-bitwise&#x20;
 
 ### What it does
 

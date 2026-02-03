@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/tutorials/databases/postgresql
+
 # Connect Streamlit to PostgreSQL
 
 This guide explains how to securely access a **remote** PostgreSQL database from Streamlit Community Cloud. It uses [st.connection](/develop/api-reference/connections/st.connection) and Streamlit's [Secrets management](/develop/concepts/connections/secrets-management). The below example code will **only work on Streamlit version >= 1.28**, when `st.connection` was added.

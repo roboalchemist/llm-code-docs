@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zadd.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zadd.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zadd.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zadd.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zadd.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zadd.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zadd.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zadd.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zadd.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zadd.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # ZADD
 
@@ -26,31 +12,41 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the sorted set.
 </ParamField>
 
-<ParamField body="options">
-  <ParamField body="xx" type="boolean">
-    Only update elements that already exist. Never add elements.
-  </ParamField>
+<ParamField body="scores" type="Dict[str, float]" required>
+  A dictionary of elements and their scores.
+</ParamField>
 
-  <ParamField body="nx" type="boolean">
-    Only add new elements. Never update elements.
-  </ParamField>
+<ParamField body="xx" type="bool">
+  Only update elements that already exist. Never add elements.
+</ParamField>
 
-  <ParamField body="ch" type="boolean">
-    Return the number of elements added or updated.
-  </ParamField>
+<ParamField body="nx" type="bool">
+  Only add new elements. Never update elements.
+</ParamField>
 
-  <ParamField body="incr" type="boolean">
-    When this option is specified ZADD acts like ZINCRBY. Only one score-element pair can be specified in this mode.
-  </ParamField>
+<ParamField body="gt" type="bool">
+  Update scores if the new score is greater than the old score.
+</ParamField>
+
+<ParamField body="lt" type="bool">
+  Update scores if the new score is less than the old score.
+</ParamField>
+
+<ParamField body="ch" type="bool">
+  Return the number of elements changed instead.
+</ParamField>
+
+<ParamField body="incr" type="bool">
+  When this option is specified `ZADD` acts like `ZINCRBY`. Only one score-element pair can be specified in this mode.
 </ParamField>
 
 ## Response
 
-<ResponseField type="integer" required>
+<ResponseField type="int" required>
   The number of elements added to the sorted sets, not including elements already existing for which the score was updated.
 
   If `ch` was specified, the number of elements that were updated.
@@ -59,44 +55,34 @@
 </ResponseField>
 
 <RequestExample>
-  ```ts Simple theme={"system"}
+  ```py Simple theme={"system"}
+  # Add three elements
+  assert redis.zadd("myset", {
+      "one": 1,
+      "two": 2,
+      "three": 3
+  }) == 3
 
-  await redis.zadd(
-      "key", 
-      { score: 2, member: "member" }, 
-      { score: 3, member: "member2"},
-  );
-  ```
+  # No element is added since "one" and "two" already exist
+  assert redis.zadd("myset", {
+      "one": 1,
+      "two": 2
+  }, nx=True) == 0
 
-  ```ts XX  theme={"system"}
-  await redis.zadd(
-      "key",
-      { xx: true },
-      { score: 2, member: "member" },
-  )
-  ```
+  # New element is not added since it does not exist
+  assert redis.zadd("myset", {
+      "new-element": 1
+  }, xx=True) == 0
 
-  ```ts NX  theme={"system"}
-  await redis.zadd(
-      "key",
-      { nx: true },
-      { score: 2, member: "member" },
-  )
-  ```
+  # Only "three" is updated since new score was greater
+  assert redis.zadd("myset", {
+      "three": 10, "two": 0
+  }, gt=True) == 1
 
-  ```ts CH  theme={"system"}
-  await redis.zadd(
-      "key",
-      { ch: true },
-      { score: 2, member: "member" },
-  )
-  ```
-
-  ```ts INCR  theme={"system"}
-  await redis.zadd(
-      "key",
-      { cincrh: true },
-      { score: 2, member: "member" },
-  )
+  # Only "three" is updated since new score was greater
+  assert redis.zadd("myset", {
+      "three": 10,
+      "two": 0
+  }, gt=True) == 1
   ```
 </RequestExample>

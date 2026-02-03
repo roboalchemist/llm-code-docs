@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/guides/cookbooks/helicone-evals-with-ragas.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Helicone Evals with Ragas
 
 > Evaluate your LLM applications with Ragas and Helicone.

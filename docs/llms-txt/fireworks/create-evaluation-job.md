@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/api-reference/create-evaluation-job.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create Evaluation Job
 
 
@@ -10,7 +14,7 @@
 openapi: 3.1.0
 info:
   title: Gateway REST API
-  version: 4.15.25
+  version: 4.21.6
 servers:
   - url: https://api.fireworks.ai
 security:
@@ -119,7 +123,10 @@ components:
           format: date-time
           description: The update time for the evaluation job.
           readOnly: true
-      title: 'Next ID: 18'
+        awsS3Config:
+          $ref: '#/components/schemas/gatewayAwsS3Config'
+          description: The AWS configuration for S3 dataset access.
+      title: 'Next ID: 19'
       required:
         - evaluator
         - inputDataset
@@ -162,6 +169,29 @@ components:
       title: >-
         Mimics
         [https://github.com/googleapis/googleapis/blob/master/google/rpc/status.proto]
+    gatewayAwsS3Config:
+      type: object
+      properties:
+        credentialsSecret:
+          type: string
+          title: >-
+            Reference to a Secret resource containing AWS access key
+            credentials.
+
+            Format: accounts/{account_id}/secrets/{secret_id}
+
+            The secret value must be JSON: {"aws_access_key_id": "AKIA...",
+            "aws_secret_access_key": "..."}
+        iamRoleArn:
+          type: string
+          title: >-
+            IAM role ARN to assume for accessing S3 datasets via GCP OIDC
+            federation.
+
+            Format: arn:aws:iam::account-id:role/role-name
+      description: |-
+        AwsS3Config is the configuration for AWS S3 dataset access which
+        will be used by a training job.
     gatewayCode:
       type: string
       enum:
@@ -317,7 +347,3 @@ components:
       bearerFormat: API_KEY
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.fireworks.ai/llms.txt

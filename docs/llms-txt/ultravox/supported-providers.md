@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/telephony/supported-providers.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Supported Providers
 
 > Comprehensive guide to telephony providers that integrate with Ultravox.
@@ -351,8 +355,3 @@ In addition to the inbound scenario, you'll have to create a call that connects 
 ```
 
 For more details, see the [jambonz documentation](https://docs.jambonz.org/) and [example code](https://github.com/jambonz/ultravox-s2s-example).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

@@ -1,84 +1,96 @@
 # Source: https://docs.helicone.ai/rest/webhooks/delete-v1webhooks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete Webhook
 
 > Delete a webhook
 
+<Warning>
+  <strong>For users in the European Union:</strong> Please use `eu.api.helicone.ai` instead of
+  `api.helicone.ai`.
+</Warning>
+
+
 ## OpenAPI
 
 ````yaml delete /v1/webhooks/{webhookId}
+openapi: 3.0.0
+info:
+  title: helicone-api
+  version: 1.0.0
+  license:
+    name: MIT
+  contact: {}
+servers:
+  - url: https://api.helicone.ai/
+  - url: http://localhost:8585/
+security: []
 paths:
-  path: /v1/webhooks/{webhookId}
-  method: delete
-  servers:
-    - url: https://api.helicone.ai/
-    - url: http://localhost:8585/
-  request:
-    security:
-      - title: api key
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: apiKey
-              description: 'Bearer token authentication. Format: ''Bearer YOUR_API_KEY'''
-          cookie: {}
-    parameters:
-      path:
-        webhookId:
+  /v1/webhooks/{webhookId}:
+    delete:
+      tags:
+        - Webhooks
+      operationId: DeleteWebhook
+      parameters:
+        - in: path
+          name: webhookId
+          required: true
           schema:
-            - type: string
-              required: true
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: number
-                    enum:
-                      - null
-                    nullable: true
-              error:
-                allOf:
-                  - type: number
-                    enum:
-                      - null
-                    nullable: true
-            refIdentifier: '#/components/schemas/ResultSuccess_null_'
-            requiredProperties:
-              - data
-              - error
-            additionalProperties: false
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: number
-                    enum:
-                      - null
-                    nullable: true
-              error:
-                allOf:
-                  - type: string
-            refIdentifier: '#/components/schemas/ResultError_string_'
-            requiredProperties:
-              - data
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value: {}
-        description: Ok
-  deprecated: false
-  type: path
+            type: string
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Result_null.string_'
+      security:
+        - api_key: []
 components:
-  schemas: {}
+  schemas:
+    Result_null.string_:
+      anyOf:
+        - $ref: '#/components/schemas/ResultSuccess_null_'
+        - $ref: '#/components/schemas/ResultError_string_'
+    ResultSuccess_null_:
+      properties:
+        data:
+          type: number
+          enum:
+            - null
+          nullable: true
+        error:
+          type: number
+          enum:
+            - null
+          nullable: true
+      required:
+        - data
+        - error
+      type: object
+      additionalProperties: false
+    ResultError_string_:
+      properties:
+        data:
+          type: number
+          enum:
+            - null
+          nullable: true
+        error:
+          type: string
+      required:
+        - data
+        - error
+      type: object
+      additionalProperties: false
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: 'Bearer token authentication. Format: ''Bearer YOUR_API_KEY'''
 
 ````

@@ -80,14 +80,13 @@ Directly integrating with the Delegated Payment Spec involves directly handling 
 
 **Who is the merchant of record in an agentic checkout flow?**
 
-The merchant actually selling goods and taking payment directly from the customer is. OpenAI and other trusted payment service providers are not the merchant of record. Customers will see the Merchant’s name on their credit card statement, as if they bought directly from the merchant website. 
+The merchant actually selling goods and taking payment directly from the customer is. OpenAI and other trusted payment service providers are not the merchant of record. Customers will see the Merchant’s name on their credit card statement, as if they bought directly from the merchant website.
 
 **Who manages chargebacks and refunds?**
 
 The merchant does. Your platform is responsible for handling refunds and chargebacks, as you accepted the payment directly from the customer as the merchant of record.
 
 Use the `ORDER_UPDATE` webhook to notify ChatGPT (or any integrated partner) when a refund or chargeback status changes so order state stays synchronized.
-
 
 **Do we need to support multiple shipments?**
 

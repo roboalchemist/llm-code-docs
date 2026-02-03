@@ -1,3 +1,5 @@
+# Source: https://www.roc-lang.org/builtins/Bool#is_eq
+
 # Bool - Documentation
 
 Str. Utf8Problem : [ InvalidStartByte, UnexpectedEndOfSequence, ExpectedContinuation, OverlongEncoding, CodepointTooLarge, EncodesSurrogateHalf ]

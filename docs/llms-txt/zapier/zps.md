@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/publish/zps.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Zapier Partner Sandbox
 
 > Zapier Partner Sandbox is a workspace for people in your organization who are on your integration team.
@@ -137,7 +141,7 @@ Zapier Partner Sandbox is a benefit of our Developer Program which Zapier may, i
 6. Because Zapier Partner Sandbox may only be used for the Purpose, and the Zapier Partner Sandbox workspace is owned and operated by Zapier, you agree not to submit any production data through Zaps created within the Zapier Partner Sandbox workspace. You further agree that for program management purposes, the Zapier Partnerships team has access to Zaps created within the Zapier Partner Sandbox workspace and that you should not have the expectation of privacy that you would with a Zapier customer account.
 7. Zapier Partner Sandbox is provided on an “as-is” basis. Zapier reserves the right to modify, suspend, or discontinue this benefit at any time, with or without notice to you. Zapier may also update these Zapier Partner Sandbox terms at any time, and you can always find the most current version in our platform documentation.
 8. The provisions of Section 3(e) (Beta Release) are incorporated by reference. In particular, Zapier is not and will not be liable for any Zaps or data that run through the Zapier Partner Sandbox workspace. Users acknowledge and assume full responsibility for their Zaps and any associated data stored in the Zapier Partner Sandbox workspace.
-9. Zapier Partner Sandbox permits you to invite other users to the workspace. You may invite members of your integration team to the workspace (who will be asked to agree to these terms as well in order to maintain their access), but please do not add anyone who is not a member of your integration team. Zapier will be auditing membership in the workspace and any non-integration team members will be removed at Zapier's discretion.
+9. Other members of Integration Partner's team may apply for access to the workspace (and will be asked to agree to these terms as well in order to maintain their access). Zapier reserves the right to audit membership to the workspace and remove members at Zapier’s discretion.  Attempts to facilitate unauthorized access to the workspace may result in removal from ZPS.
 
 ***
 

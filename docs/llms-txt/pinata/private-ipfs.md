@@ -1,5 +1,9 @@
 # Source: https://docs.pinata.cloud/files/private-ipfs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Private IPFS
 
 IPFS has traditionally been a fully public network, so anything you pin can be accessed by anyone if they have the CID. While this is a benefit for a majority of blockchain applications, there are still cases where true privacy is needed. This is why Pinata has built Private IPFS, a new service that allows you to keep content private and only share when authorized.

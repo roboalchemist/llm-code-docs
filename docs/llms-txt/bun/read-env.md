@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/runtime/read-env.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Read environment variables
 
 The current environment variables can be accessed via `process.env`.
@@ -32,4 +36,4 @@ FOOBAR=aaaaaa
 
 ***
 
-See [Docs > Runtime > Environment variables](https://bun.com/docs/runtime/env) for more information on using environment variables with Bun.
+See [Docs > Runtime > Environment variables](/runtime/environment-variables) for more information on using environment variables with Bun.

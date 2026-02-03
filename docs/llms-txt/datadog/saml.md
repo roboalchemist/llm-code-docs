@@ -7,7 +7,6 @@ description: >-
   Directory, Auth0, Google, Okta, and Microsoft Entra ID for secure single
   sign-on.
 breadcrumbs: Docs > Account Management > Single Sign On With SAML
-source_url: https://docs.datadoghq.com/saml/index.html
 ---
 
 # Single Sign On With SAML

@@ -6,21 +6,9 @@
 
 # Source: https://docs.pipecat.ai/server/services/llm/aws.md
 
-# Source: https://docs.pipecat.ai/server/services/tts/aws.md
-
-# Source: https://docs.pipecat.ai/server/services/stt/aws.md
-
-# Source: https://docs.pipecat.ai/server/services/s2s/aws.md
-
-# Source: https://docs.pipecat.ai/server/services/llm/aws.md
-
-# Source: https://docs.pipecat.ai/server/services/tts/aws.md
-
-# Source: https://docs.pipecat.ai/server/services/stt/aws.md
-
-# Source: https://docs.pipecat.ai/server/services/s2s/aws.md
-
-# Source: https://docs.pipecat.ai/server/services/llm/aws.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # AWS Bedrock
 
@@ -73,8 +61,3 @@ Before using AWS Bedrock LLM services, you need:
 * `AWS_SECRET_ACCESS_KEY`: Your AWS secret access key
 * `AWS_SESSION_TOKEN`: Session token (if using temporary credentials)
 * `AWS_REGION`: AWS region (defaults to "us-east-1")
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

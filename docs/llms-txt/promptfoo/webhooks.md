@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/enterprise/webhooks/
+
 # Webhook Integration
 
 Promptfoo Enterprise provides webhooks to notify external systems when security vulnerabilities (issues) are created or updated.

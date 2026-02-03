@@ -55,7 +55,7 @@ In Stock
 [5V 10A switching power supply](https://www.adafruit.com/product/658)
 This is a beefy switching supply, for when you need a lot of power! It can supply 5V DC up to 10 Amps, running from 110V or 220V power (the plug it comes with is for US/Canada/Japan but you can use any plug adapter for your country, or just replace the cable with a standard computer/appliance...
 
-In Stock
+Out of Stock
 [Buy Now](https://www.adafruit.com/product/658)
 [Related Guides to the Product](https://learn.adafruit.com/products/658/guides)
 ### 5V 2A (2000mA) switching power supply - UL Listed
@@ -63,24 +63,24 @@ In Stock
 [5V 2A (2000mA) switching power supply - UL Listed](https://www.adafruit.com/product/276)
 This is an FCC/CE certified and UL listed power supply. Need a lot of 5V power? This switching supply gives a clean regulated 5V output at up to 2000mA. 110 or 240 input, so it works in any country. The plugs are "US 2-prong" style so you may need a plug adapter, but you can pick one...
 
-Out of Stock
+In Stock
 [Buy Now](https://www.adafruit.com/product/276)
 [Related Guides to the Product](https://learn.adafruit.com/products/276/guides)
 
 ## Related Guides
 
-- [WiFi Controlled Mobile Robot](https://learn.adafruit.com/wifi-controlled-mobile-robot.md)
-- [Bluetooth Controlled Motorized Camera Slider](https://learn.adafruit.com/bluetooth-motorized-camera-slider.md)
-- [TTL Serial Camera](https://learn.adafruit.com/ttl-serial-camera.md)
-- [Adafruit Ultimate GPS](https://learn.adafruit.com/adafruit-ultimate-gps.md)
-- [Ladyada's Learn Arduino - Lesson #1](https://learn.adafruit.com/ladyadas-learn-arduino-lesson-number-1.md)
-- [OLED TRON Clock](https://learn.adafruit.com/oled-tron-clock.md)
-- [Ladyada's Bento Box](https://learn.adafruit.com/lady-adas-bento-box.md)
-- [WiFi Weather Station](https://learn.adafruit.com/wifi-weather-station-arduino-cc3000.md)
+- [Animating Multiple LED Backpacks](https://learn.adafruit.com/animating-multiple-led-backpacks.md)
+- [How to Choose a Microcontroller](https://learn.adafruit.com/how-to-choose-a-microcontroller.md)
 - [Circuit Playground: D is for Diode](https://learn.adafruit.com/circuit-playground-d-is-for-diode.md)
-- [Wave Shield Talking Clock](https://learn.adafruit.com/wave-shield-talking-clock.md)
-- [How to program a Zumo Robot with Simulink](https://learn.adafruit.com/zumo-robot-control-with-simulink.md)
-- [8BitBox](https://learn.adafruit.com/8bitbox.md)
+- [Reverse Geocache Box](https://learn.adafruit.com/reverse-geocache-engagement-box.md)
+- [Sending an SMS with Temboo](https://learn.adafruit.com/sending-an-sms-with-temboo.md)
 - [Arduino "Hunt The Wumpus"](https://learn.adafruit.com/arduino-hunt-the-wumpus.md)
-- [36mm LED Pixels](https://learn.adafruit.com/36mm-led-pixels.md)
-- [Smart Measuring Cup](https://learn.adafruit.com/smart-measuring-cup.md)
+- [Arduino Lesson 13. DC Motors](https://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors.md)
+- [2.8" TFT Touch Shield](https://learn.adafruit.com/2-8-tft-touch-shield.md)
+- [Wave Shield Voice Changer](https://learn.adafruit.com/wave-shield-voice-changer.md)
+- [Using NeoPixels and Servos Together](https://learn.adafruit.com/neopixels-and-servos.md)
+- [Arduino Lesson 15. DC Motor Reversing](https://learn.adafruit.com/adafruit-arduino-lesson-15-dc-motor-reversing.md)
+- [Arduino Lesson 6. Digital Inputs](https://learn.adafruit.com/adafruit-arduino-lesson-6-digital-inputs.md)
+- [Skill Badge Requirements: Microcontrollers](https://learn.adafruit.com/skill-badge-requirements-microcontrollers.md)
+- [Arduino Lesson 8. Analog Inputs](https://learn.adafruit.com/adafruit-arduino-lesson-8-analog-inputs.md)
+- [8BitBox](https://learn.adafruit.com/8bitbox.md)

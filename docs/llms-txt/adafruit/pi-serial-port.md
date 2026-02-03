@@ -92,7 +92,7 @@ No Longer Stocked
 [13.56MHz RFID/NFC Clear Tag - Classic 1K](https://www.adafruit.com/product/361)
 This is a blank 13.56MHz Classic 'laundry' tag - often used for laundry or identification but also found in other systems where a small proximity card is desired. This one is clear! &nbsp;The tag contains a small RFID chip and an antenna, and is passively powered by the reader/writer...
 
-In Stock
+Out of Stock
 [Buy Now](https://www.adafruit.com/product/361)
 [Related Guides to the Product](https://learn.adafruit.com/products/361/guides)
 ### 13.56MHz RFID/NFC White Tag - Classic 1K
@@ -126,18 +126,18 @@ No Longer Stocked
 
 ## Related Guides
 
+- [I2C Addresses and Troublesome Chips](https://learn.adafruit.com/i2c-addresses.md)
 - [Collin's Lab: RFID](https://learn.adafruit.com/collins-lab-rfid.md)
 - [Mystery Box: Remote Chess Board Puzzle Lock](https://learn.adafruit.com/mystery-box-remote-chess-board-puzzle-lock.md)
 - [Raspberry Pi NFC Minecraft Blocks](https://learn.adafruit.com/raspberry-pi-nfc-minecraft-blocks.md)
-- [Adafruit PN532 RFID/NFC Breakout and Shield](https://learn.adafruit.com/adafruit-pn532-rfid-nfc.md)
 - [NFC Raspberry Pi Media Player](https://learn.adafruit.com/nfc-raspberry-pi-media-player.md)
-- [I2C Addresses and Troublesome Chips](https://learn.adafruit.com/i2c-addresses.md)
-- [Magic Band Teardown](https://learn.adafruit.com/magic-band-teardown.md)
-- [Adafruit DPI Display Kippah](https://learn.adafruit.com/adafruit-dpi-display-kippah-ttl-tft.md)
-- [Set up Home Assistant with a Raspberry Pi](https://learn.adafruit.com/set-up-home-assistant-with-a-raspberry-pi.md)
-- [Adafruit 2.4" PiTFT HAT with Resistive Touchscreen Mini Kit](https://learn.adafruit.com/adafruit-2-4-pitft-hat-with-resistive-touchscreen-mini-kit.md)
-- [Adafruit 16-Channel PWM/Servo HAT & Bonnet for Raspberry Pi](https://learn.adafruit.com/adafruit-16-channel-pwm-servo-hat-for-raspberry-pi.md)
-- [Mini Raspberry Pi Handheld Notebook](https://learn.adafruit.com/mini-raspberry-pi-handheld-notebook-palmtop.md)
-- [Bonjour (Zeroconf) Networking for Windows and Linux](https://learn.adafruit.com/bonjour-zeroconf-networking-for-windows-and-linux.md)
-- [Mini Smart Home with Huzzah, HASSio and Crickit](https://learn.adafruit.com/mini-smart-home-with-esp8266-huzzah-feather-raspberry-pi-hassio-crickit.md)
-- [Programming Microcontrollers using OpenOCD on a Raspberry Pi](https://learn.adafruit.com/programming-microcontrollers-using-openocd-on-raspberry-pi.md)
+- [Adafruit PN532 RFID/NFC Breakout and Shield](https://learn.adafruit.com/adafruit-pn532-rfid-nfc.md)
+- [Adafruit's Raspberry Pi Lesson 9. Controlling a DC Motor](https://learn.adafruit.com/adafruit-raspberry-pi-lesson-9-controlling-a-dc-motor.md)
+- [Adafruit's Raspberry Pi Lesson 5. Using a Console Cable](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-5-using-a-console-cable.md)
+- [Pi Box](https://learn.adafruit.com/pi-box.md)
+- [Piezo Ring Tones with Raspberry Pi](https://learn.adafruit.com/piezo-ring-tones-with-raspberry-pi.md)
+- [Cloud Cam: Internet-Connected Security Camera](https://learn.adafruit.com/cloud-cam-connected-raspberry-pi-security-camera.md)
+- [Set up and Blink - MATLAB and Simulink with Raspberry Pi](https://learn.adafruit.com/how-to-use-matlab-and-simulink-with-raspberry-pi.md)
+- [Battery Powered Raspberry Pi Displays w/RaspiRobot Shield](https://learn.adafruit.com/raspirobot-battery-powered-raspberry-pi-displays.md)
+- [Adafruit's Raspberry Pi Lesson 13. Power Control](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-13-power-control.md)
+- [Raspberry Pi Thermal Printer One Time Pads](https://learn.adafruit.com/raspberry-pi-thermal-printer-one-time-pads.md)

@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Cloudcraft (Standalone) > Getting started > Crafting Better Diagrams:
   Cloudcraft's Live Diagramming and Filtering
-source_url: https://docs.datadoghq.com/getting-started/crafting-better-diagrams/index.html
 ---
 
 # Crafting Better Diagrams: Cloudcraft's Live Diagramming and Filtering

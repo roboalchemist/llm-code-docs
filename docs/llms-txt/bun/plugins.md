@@ -2,17 +2,9 @@
 
 # Source: https://bun.com/docs/bundler/plugins.md
 
-# Source: https://bun.com/docs/runtime/plugins.md
-
-# Source: https://bun.com/docs/bundler/plugins.md
-
-# Source: https://bun.com/docs/runtime/plugins.md
-
-# Source: https://bun.com/docs/bundler/plugins.md
-
-# Source: https://bun.com/docs/runtime/plugins.md
-
-# Source: https://bun.com/docs/bundler/plugins.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Plugins
 

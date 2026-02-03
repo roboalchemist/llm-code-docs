@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/data-diff/how-datafold-diffs-data.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How Datafold Diffs Data
 
 > Data diffs allow you to perform value-level comparisons between any two datasets within the same database, across different databases, or even between files.

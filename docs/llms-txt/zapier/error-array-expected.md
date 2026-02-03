@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/error-array-expected.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Error: An array is expected
 
 > When you add a polling trigger or search action to your integration, the Zapier platform [expects a bare array of new or found items returned](/platform/build/response-types), sorted in reverse chronological order. An API may instead return a result _object_ that contains the array of items the trigger/search needs.

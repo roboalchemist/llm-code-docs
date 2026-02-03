@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/organization.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Organizations
 
 > Learn more and understand the concept of Infisical organizations.
@@ -57,7 +61,7 @@ To learn more about how permissions work in detail, refer to the [access control
 
 The *Usage & Billing* tab provides an overview of your organization's billing information and platform usage.
 
-Infisical calculates usage at the organization level—aggregating activity across all projects and product types (e.g., Secrets Management, SSH, PKI). From this tab, you can track usage, view billing details, and manage your Infisical Cloud subscription.
+Infisical calculates usage at the organization level—aggregating activity across all projects and product types (e.g., Secrets Management, PAM, PKI). From this tab, you can track usage, view billing details, and manage your Infisical Cloud subscription.
 
 <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/platform/organization/organization-billing.png" alt="organization billing" />
 

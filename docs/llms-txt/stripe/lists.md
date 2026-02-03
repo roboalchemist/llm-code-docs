@@ -4,7 +4,7 @@
 
 Create your own lists of information to block, allow, or review matching payments.
 
-Users of Stripe Radar for Fraud Teams can create lists of specific types of information and use them in [rules](https://docs.stripe.com/radar/rules.md). For example, you might want to create rules using a list of:
+Stripe Radar for Fraud Teams lets you create lists of specific types of information and use them in [rules](https://docs.stripe.com/radar/rules.md). For example, you might want to create rules using a list of:
 
 - **Customer IDs for trusted customers**. Use this list to automatically allow payments by these customers.
 - **Email addresses you tied to fraud**. Automatically block any payment with an email address on this list.

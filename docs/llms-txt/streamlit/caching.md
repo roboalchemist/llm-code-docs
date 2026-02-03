@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/concepts/architecture/caching
+
 # Caching overview
 
 Streamlit runs your script from top to bottom at every user interaction or code change. This execution model makes development super easy. But it comes with two major challenges:

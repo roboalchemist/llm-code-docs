@@ -1,3 +1,5 @@
+# Source: https://embednotionpages.com/notion-password-protect
+
 # Keep Notion Pages Private with Password Protection
 
 ## Restrict access to Your Notion Pages

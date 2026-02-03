@@ -2,13 +2,7 @@
 
 # Source: https://docs.livekit.io/transport/sdk-platforms/android.md
 
-# Source: https://docs.livekit.io/reference/components/android.md
-
-# Source: https://docs.livekit.io/transport/sdk-platforms/android.md
-
-# Source: https://docs.livekit.io/home/quickstarts/android.md
-
-LiveKit docs › LiveKit SDKs › Platform-specific quickstarts › Android
+LiveKit docs › Get Started › SDK platform quickstarts › Android
 
 ---
 
@@ -26,7 +20,7 @@ To build your first voice AI app for Android, use the following quickstart and t
 
 ## Getting started guide
 
-This guide is for Android apps using the traditional view-based system. If you are using Jetpack Compose, check out the [Compose quickstart guide](https://docs.livekit.io/home/quickstarts/android-compose.md).
+This guide is for Android apps using the traditional view-based system. If you are using Jetpack Compose, check out the [Compose quickstart guide](https://docs.livekit.io/transport/sdk-platforms/android-compose.md).
 
 ### Install LiveKit SDK
 
@@ -174,11 +168,11 @@ class MainActivity : AppCompatActivity() {
 
 The following resources are useful for getting started with LiveKit on Android.
 
-- **[Generating tokens](https://docs.livekit.io/home/server/generating-tokens.md)**: Guide to generating authentication tokens for your users.
+- **[Generating tokens](https://docs.livekit.io/frontends/authentication/tokens/generate.md)**: Guide to generating authentication tokens for your users.
 
-- **[Realtime media](https://docs.livekit.io/home/client/tracks.md)**: Complete documentation for live video and audio tracks.
+- **[Realtime media](https://docs.livekit.io/transport/media.md)**: Complete documentation for live video and audio tracks.
 
-- **[Realtime data](https://docs.livekit.io/home/client/data.md)**: Send and receive realtime data between clients.
+- **[Realtime data](https://docs.livekit.io/transport/data.md)**: Send and receive realtime data between clients.
 
 - **[Android SDK](https://github.com/livekit/client-sdk-android)**: LiveKit Android SDK on GitHub.
 
@@ -190,7 +184,7 @@ The following resources are useful for getting started with LiveKit on Android.
 
 ---
 
-This document was rendered at 2025-11-18T23:54:54.576Z.
-For the latest version of this document, see [https://docs.livekit.io/home/quickstarts/android.md](https://docs.livekit.io/home/quickstarts/android.md).
+This document was rendered at 2026-02-03T03:25:15.012Z.
+For the latest version of this document, see [https://docs.livekit.io/transport/sdk-platforms/android.md](https://docs.livekit.io/transport/sdk-platforms/android.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

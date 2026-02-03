@@ -4,8 +4,6 @@
 title: IoT Wireless Device Profile
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > IoT Wireless Device Profile
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.iotwireless_device_profile.dataset/index.html
 ---
 
 # IoT Wireless Device Profile
@@ -18,13 +16,13 @@ aws.iotwireless_device_profile
 
 ## Fields
 
-| Title      | ID   | Type   | Data Type                                                        | Description |
-| ---------- | ---- | ------ | ---------------------------------------------------------------- | ----------- |
-| _key       | core | string |
-| account_id | core | string |
-| arn        | core | string | The Amazon Resource Name of the resource.                        |
-| id         | core | string | The ID of the device profile.                                    |
-| lo_ra_wan  | core | json   | Information about the device profile.                            |
-| name       | core | string | The name of the resource.                                        |
-| sidewalk   | core | json   | Information about the Sidewalk parameters in the device profile. |
-| tags       | core | hstore |
+| Title      | ID   | Type       | Data Type                                                        | Description |
+| ---------- | ---- | ---------- | ---------------------------------------------------------------- | ----------- |
+| _key       | core | string     |
+| account_id | core | string     |
+| arn        | core | string     | The Amazon Resource Name of the resource.                        |
+| id         | core | string     | The ID of the device profile.                                    |
+| lo_ra_wan  | core | json       | Information about the device profile.                            |
+| name       | core | string     | The name of the resource.                                        |
+| sidewalk   | core | json       | Information about the Sidewalk parameters in the device profile. |
+| tags       | core | hstore_csv |

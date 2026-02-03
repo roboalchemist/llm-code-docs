@@ -1,10 +1,12 @@
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/crawling/filtering-links.md
 
-# Source: https://docs.apify.com/academy/web-scraping-for-beginners/crawling/filtering-links.md
-
 # Filtering links
 
 **When you extract links from a web page, you often end up with a lot of irrelevant URLs. Learn how to filter the links to only keep the ones you need.**
+
+Archived course
+
+This is an archive of our old course. Check out our new [Web scraping basics for JavaScript devs](https://docs.apify.com/academy/scraping-basics-javascript.md) course instead! We plan to completely retire this old course in a few months.
 
 ***
 
@@ -31,7 +33,7 @@ $('a');
 
 ### Attribute selector
 
-That's not the only way to do it, however. Since we're interested in the `href` attributes, a first very reasonable filter is to exclusively target the `<a>` tags that have the `href` attribute (yes, anchor tags without the attribute can and do exist). You can do that by using the https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors.
+That's not the only way to do it, however. Since we're interested in the `href` attributes, a first very reasonable filter is to exclusively target the `<a>` tags that have the `href` attribute (yes, anchor tags without the attribute can and do exist). You can do that by using the [CSS attribute selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Attribute_selectors).
 
 * DevTools
 * Node.js
@@ -52,7 +54,7 @@ Adding the `[href]` part of the selector will save you from nasty bug hunts on c
 
 ### Link specific selectors
 
-Let's go back to the https://warehouse-theme-metal.myshopify.com/collections/sales and see how we could capture only the links to product detail pages. After inspecting the product cards in DevTools, you'll find that the links are available together with the product's title. Getting them will therefore be very similar to getting the product titles in the previous section.
+Let's go back to the [Sales category of Warehouse](https://warehouse-theme-metal.myshopify.com/collections/sales) and see how we could capture only the links to product detail pages. After inspecting the product cards in DevTools, you'll find that the links are available together with the product's title. Getting them will therefore be very similar to getting the product titles in the previous section.
 
 ![product detail page link](/assets/images/filtering-product-detail-link-995bf048903e4b4205b52fd364719005.png)
 
@@ -91,7 +93,7 @@ If you try this in Node.js instead of DevTools, you will not get the full URLs, 
 
 Another common way to filter links (or any text, really) is by matching patterns with regular expressions.
 
-> https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions
+> [Learn more about regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions)
 
 When we inspect the product URLs, we'll find that they all look like the following:
 
@@ -121,9 +123,9 @@ https?:\/\/warehouse-theme-metal\.myshopify\.com\/products\/[\w\-]+
 
 This regular expression matches all URLs that use either `http` or `https` protocol and point to `warehouse-theme-metal.myshopify.com/products/` immediately followed with any number of letters or dashes `-`.
 
-> A great way to learn more about regular expression syntax and to test your expressions are tools like https://regex101.com/ or https://regexr.com/. It's okay if you don't get the hang of it right away!
+> A great way to learn more about regular expression syntax and to test your expressions are tools like [regex101.com](https://regex101.com/) or [regexr.com](https://regexr.com/). It's okay if you don't get the hang of it right away!
 
-To test our regular expression in the DevTools console, we'll first create a https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp object and then test the URLs with the https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test function.
+To test our regular expression in the DevTools console, we'll first create a [RegExp](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp) object and then test the URLs with the [regExp.test(string)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test) function.
 
 
 ```
@@ -137,7 +139,7 @@ for (const a of document.querySelectorAll('a')) {
 ```
 
 
-When you run this code in DevTools Console on the https://warehouse-theme-metal.myshopify.com/collections/sales, you'll see that it produces a slightly different set of URLs than the CSS filter did.
+When you run this code in DevTools Console on the [Sales category of Warehouse](https://warehouse-theme-metal.myshopify.com/collections/sales), you'll see that it produces a slightly different set of URLs than the CSS filter did.
 
 ![filtering-regex-urls.png](/assets/images/filtering-regex-urls-a4ac344fc73c37d7593ea276bca73872.png)
 
@@ -147,4 +149,4 @@ With that said, yes, filtering with CSS selectors is often the better and more r
 
 ## Next Up
 
-In the https://docs.apify.com/academy/web-scraping-for-beginners/crawling/relative-urls.md we'll see how rewriting this code to Node.js is not so simple and learn about absolute and relative URLs in the process.
+In the [next lesson](https://docs.apify.com/academy/scraping-basics-javascript/legacy/crawling/relative-urls.md) we'll see how rewriting this code to Node.js is not so simple and learn about absolute and relative URLs in the process.

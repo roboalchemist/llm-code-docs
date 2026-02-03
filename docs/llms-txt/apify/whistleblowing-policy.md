@@ -44,7 +44,7 @@ Apify may handle it differently, and you will not be entitled to protection unde
 
 ### Reporting at the Ministry of Justice
 
-Apart from the internal reporting system, the Whistleblower Protection Act provides additional reporting means. These external reporting avenues encompass: Utilizing the Czech Ministry of Justice reporting system, available at the following address: https://oznamovatel.justice.cz/. Making a report through public disclosure, such as in the media (limited to cases explicitly outlined in § 7 para. 1 letter (c) of the Whistleblower Protection Act).
+Apart from the internal reporting system, the Whistleblower Protection Act provides additional reporting means. These external reporting avenues encompass: Utilizing the Czech Ministry of Justice reporting system, available at the following address: [https://oznamovatel.justice.cz/](https://oznamovatel.justice.cz/). Making a report through public disclosure, such as in the media (limited to cases explicitly outlined in § 7 para. 1 letter (c) of the Whistleblower Protection Act).
 
 ## What happens after a report is submitted?
 
@@ -112,7 +112,7 @@ Pokud podáte oznámení jiným způsobem než prostřednictvím výše uvedený
 
 ### Oznámení na Ministerstvo spravedlnosti
 
-Apify je dále povinna Vás informovat o skutečnosti, že kromě interního oznamovacího systému implementovaného Apify existuje i možnost podat oznámení prostřednictvím systému Ministerstva spravedlnosti dostupného na následující adrese https://oznamovatel.justice.cz/. Veřejného zveřejnění, a to například v médiích. Tato možnost je však omezena na případy explicitně uvedené v § 7 odst. 1 písm. (c) zákona o ochraně oznamovatelů.
+Apify je dále povinna Vás informovat o skutečnosti, že kromě interního oznamovacího systému implementovaného Apify existuje i možnost podat oznámení prostřednictvím systému Ministerstva spravedlnosti dostupného na následující adrese [https://oznamovatel.justice.cz/](https://oznamovatel.justice.cz/). Veřejného zveřejnění, a to například v médiích. Tato možnost je však omezena na případy explicitně uvedené v § 7 odst. 1 písm. (c) zákona o ochraně oznamovatelů.
 
 ## Jak budou Vaše oznámení zpracována?
 

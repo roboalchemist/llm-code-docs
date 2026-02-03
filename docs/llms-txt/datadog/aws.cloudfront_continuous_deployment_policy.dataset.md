@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > DDSQL Reference > Data Directory > CloudFront Continuous Deployment
   Policy
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.cloudfront_continuous_deployment_policy.dataset/index.html
 ---
 
 # CloudFront Continuous Deployment Policy
@@ -20,10 +18,10 @@ aws.cloudfront_continuous_deployment_policy
 
 ## Fields
 
-| Title                        | ID   | Type   | Data Type                                                                           | Description |
-| ---------------------------- | ---- | ------ | ----------------------------------------------------------------------------------- | ----------- |
-| _key                         | core | string |
-| account_id                   | core | string |
-| continuous_deployment_policy | core | json   | A continuous deployment policy.                                                     |
-| e_tag                        | core | string | The version identifier for the current version of the continuous deployment policy. |
-| tags                         | core | hstore |
+| Title                        | ID   | Type       | Data Type                                                                           | Description |
+| ---------------------------- | ---- | ---------- | ----------------------------------------------------------------------------------- | ----------- |
+| _key                         | core | string     |
+| account_id                   | core | string     |
+| continuous_deployment_policy | core | json       | A continuous deployment policy.                                                     |
+| e_tag                        | core | string     | The version identifier for the current version of the continuous deployment policy. |
+| tags                         | core | hstore_csv |

@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/interface/features/template.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Templates - ComfyUI Built-in Workflow Templates
 
 > Templates provide model workflows natively supported by ComfyUI and example workflows from custom nodes. You can find and use workflows for currently supported models here.

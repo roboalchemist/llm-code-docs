@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/dynamic-field.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send or receive dynamic user-defined fields through your API
 
 > Dynamic fields are a type of field built from an API call. Custom code runs to show fields based on other input field data. These are especially useful with project management apps, CRM apps, databases, and any other app where users can add custom, user-defined fields.

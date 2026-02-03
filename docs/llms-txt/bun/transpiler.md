@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/runtime/transpiler.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Transpiler
 
 > Use Bun's transpiler to transpile JavaScript and TypeScript code
@@ -270,7 +274,7 @@ type Import = {
   // url() in CSS
   | "url-token"
   // The import was injected by Bun
-  | "internal" 
+  | "internal"
   // Entry point (not common)
   | "entry-point-build"
   | "entry-point-run"

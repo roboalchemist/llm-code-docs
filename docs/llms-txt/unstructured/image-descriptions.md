@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/ui/enriching/image-descriptions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Image descriptions
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/pMQm9ymM3N8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
@@ -9,31 +13,134 @@ After partitioning, you can have Unstructured generate text-based summaries of d
 This summarization is done by using models offered through various model providers.
 
 Here is an example of the output of a detected image using GPT-4o. Note specifically the `text` field that is added.
+In this `text` field, `type` indicates the kind of image that was detected (in this case, a `diagram`), and `description` is a summary of the image.
 Line breaks have been inserted here for readability. The output will not contain these line breaks.
+
+<img src="https://mintcdn.com/unstructured-53/8osKRiNz_JLtvBTP/img/enriching/Diagram-Example.png?fit=max&auto=format&n=8osKRiNz_JLtvBTP&q=85&s=16c8e1ac1fcbd00932c9f2b4ebfa2005" alt="Example of a diagram" data-og-width="1112" width="1112" data-og-height="842" height="842" data-path="img/enriching/Diagram-Example.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/unstructured-53/8osKRiNz_JLtvBTP/img/enriching/Diagram-Example.png?w=280&fit=max&auto=format&n=8osKRiNz_JLtvBTP&q=85&s=7a41102ba0d5a1d7824838935e7e0a69 280w, https://mintcdn.com/unstructured-53/8osKRiNz_JLtvBTP/img/enriching/Diagram-Example.png?w=560&fit=max&auto=format&n=8osKRiNz_JLtvBTP&q=85&s=1f0ed45c549623d0f5edab66e1fa4d7e 560w, https://mintcdn.com/unstructured-53/8osKRiNz_JLtvBTP/img/enriching/Diagram-Example.png?w=840&fit=max&auto=format&n=8osKRiNz_JLtvBTP&q=85&s=06b0dab8f7ba8be41463acc962957b77 840w, https://mintcdn.com/unstructured-53/8osKRiNz_JLtvBTP/img/enriching/Diagram-Example.png?w=1100&fit=max&auto=format&n=8osKRiNz_JLtvBTP&q=85&s=0523313f67193a0169705a9737f6cfc0 1100w, https://mintcdn.com/unstructured-53/8osKRiNz_JLtvBTP/img/enriching/Diagram-Example.png?w=1650&fit=max&auto=format&n=8osKRiNz_JLtvBTP&q=85&s=9cc970b99319944f0bf87e370080e9e9 1650w, https://mintcdn.com/unstructured-53/8osKRiNz_JLtvBTP/img/enriching/Diagram-Example.png?w=2500&fit=max&auto=format&n=8osKRiNz_JLtvBTP&q=85&s=e4d21ad523642bb60aac78be8b98e89d 2500w" />
 
 ```json  theme={null}
 {
-    "type": "Image",
-    "element_id": "3303aa13098f5a26b9845bd18ee8c881",
-    "text": "{\n  \"type\": \"graph\",\n  \"description\": \"The graph shows 
-        the relationship between Potential (V) and Current Density (A/cm2). 
-        The x-axis is labeled 'Current Density (A/cm2)' and ranges from 
-        0.0000001 to 0.1. The y-axis is labeled 'Potential (V)' and ranges 
-        from -2.5 to 1.5. There are six different data series represented 
-        by different colors: blue (10g), red (4g), green (6g), purple (2g), 
-        orange (Control), and light blue (8g). The data points for each series 
-        show how the potential changes with varying current density.\"\n}",
-    "metadata": {
-        "filetype": "application/pdf",
-        "languages": [
-            "eng"
-        ],
-        "page_number": 1,
-        "image_base64": "/9j...<full results omitted for brevity>...Q==",
-        "image_mime_type": "image/jpeg",
-        "filename": "7f239e1d4ef3556cc867a4bd321bbc41.pdf",
-        "data_source": {}
-    }
+  "type": "Image",
+  "element_id": "dd1fb72db7937725c9a781906098e6f8",
+  "text": "{\n    
+    \"type\": \"diagram\",\n    
+    \"description\": \"User uploads a flowchart image via a Web Browser, which is then 
+      converted to a Base64 Encoded Image. This image is sent to the Back-end System 
+      (Node.js) where it is processed by the AI Model Adapter. The output undergoes 
+      Validation and Rendering, resulting in Normalized Mermaid Code. AI Assisted 
+      Editing is available through an AI Assistant, which allows for the Regenerated 
+      Flowchart Image to be viewed again in the Web Browser.\\n\\n
+      Text in the image:\\n
+        - User\\n
+        - Upload flowchart image\\n
+        - Web Browser\\n
+        - Base64 Encoded Image\\n
+        - Back-end System (Node.js)\\n
+        - AI Model Adapter\\n
+        - Validation and Rendering\\n
+        - Normalized Mermaid Code\\n
+        - AI Assisted Editing\\n
+        - AI Assistant\\n
+        - Regenerated Flowchart Image\"\n
+  }",
+  "metadata": {
+    "filetype": "application/pdf",
+    "languages": [
+      "eng"
+    ],
+    "page_number": 1,
+    "image_base64": "/9j...<full results omitted for brevity>...Q==",
+    "image_mime_type": "image/jpeg",
+    "filename": "7f239e1d4ef3556cc867a4bd321bbc41.pdf",
+    "data_source": {}
+  }
+}
+```
+
+For technical drawings, the `text` field will contain a `type` of `technical drawing`; `description` with `texts` containing text strings found in the drawing,
+`tables` containing HTML representations of tables found in the drawing, and a `description` containing a summary of the drawing.
+Here is an example. Line breaks have been inserted here for readability. The output will not contain these line breaks.
+
+<img src="https://mintcdn.com/unstructured-53/8osKRiNz_JLtvBTP/img/enriching/Technical-Drawing-Example.png?fit=max&auto=format&n=8osKRiNz_JLtvBTP&q=85&s=e4d3fb249208b3166b0e79a9d54b4cdf" alt="Example of a technical drawing" data-og-width="1468" width="1468" data-og-height="782" height="782" data-path="img/enriching/Technical-Drawing-Example.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/unstructured-53/8osKRiNz_JLtvBTP/img/enriching/Technical-Drawing-Example.png?w=280&fit=max&auto=format&n=8osKRiNz_JLtvBTP&q=85&s=1dc71713c55e51adc75a04a4cb2f379e 280w, https://mintcdn.com/unstructured-53/8osKRiNz_JLtvBTP/img/enriching/Technical-Drawing-Example.png?w=560&fit=max&auto=format&n=8osKRiNz_JLtvBTP&q=85&s=45d530c526f19e4a297853089bccbc9f 560w, https://mintcdn.com/unstructured-53/8osKRiNz_JLtvBTP/img/enriching/Technical-Drawing-Example.png?w=840&fit=max&auto=format&n=8osKRiNz_JLtvBTP&q=85&s=1f7b15ac7c1927436daa9232be2a8944 840w, https://mintcdn.com/unstructured-53/8osKRiNz_JLtvBTP/img/enriching/Technical-Drawing-Example.png?w=1100&fit=max&auto=format&n=8osKRiNz_JLtvBTP&q=85&s=f610544e6d84ce84e88402549b66eca8 1100w, https://mintcdn.com/unstructured-53/8osKRiNz_JLtvBTP/img/enriching/Technical-Drawing-Example.png?w=1650&fit=max&auto=format&n=8osKRiNz_JLtvBTP&q=85&s=3137b95737ca36bf07f989c3f95b0cd7 1650w, https://mintcdn.com/unstructured-53/8osKRiNz_JLtvBTP/img/enriching/Technical-Drawing-Example.png?w=2500&fit=max&auto=format&n=8osKRiNz_JLtvBTP&q=85&s=53d8f2bd14dfff5c2c95dbd56994f7be 2500w" />
+
+```json  theme={null}
+{
+  "type": "Image",
+  "element_id": "7877acdd762f2afc65b193fa89d8ef46",
+  "text": "{\n  
+    \"type\": \"technical drawing\",\n  
+    \"description\": {\n    
+      \"texts\": [\n
+        \"RTD 1\",\n      
+        \"RTD 2\",\n      
+        \"01\",\n      
+        \"18.50\\\" Cable Length\",\n      
+        \"02\",\n      
+        \"1/4\\\" Heat Shrink\",\n      
+        \"6X Strip wires 0.100\\\" - 0.115\\\" before crimping\",\n      
+        \"2X 1.50\",\n      
+        \"22.25\\\" Cable Length\"\n    
+      ],\n    
+      \"tables\": "<table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Part Number</th>
+            <th>Description</th>
+            <th>Supplier</th>
+            <th>Supplier PN</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>6</td>
+            <td>002622</td>
+            <td>Conn Socket 20-24AWG Gold</td>
+            <td>Digikey</td>
+            <td>WM7082CT-ND</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>1</td>
+            <td>002647</td>
+            <td>Conn Recept 16pos 3mm Dual Row</td>
+            <td>Digikey</td>
+            <td>WM2490-ND</td>
+          </tr>
+          <tr>
+              <td>3</td>
+              <td>2</td>
+              <td>102961-01</td>
+              <td>M12 Q/D Cable, Elbow, 4-Pole, 5m</td>
+              <td>Automation Direct</td>
+              <td>EVT222</td>
+          </tr>
+        </tbody>
+      </table>",\n    
+      \"description\": \"The technical drawing depicts a wiring setup involving two 
+          RTDs (Resistance Temperature Detectors) labeled RTD 1 and RTD 2. Each RTD 
+          is connected via cables with specified lengths: RTD 1 has an 18.50-inch 
+          cable length, and RTD 2 has a 22.25-inch cable length. The drawing 
+          includes annotations for stripping wires, indicating that six wires should 
+          be stripped to a length between 0.100 inches and 0.115 inches before 
+          crimping. There is a section labeled '1/4\\\" Heat Shrink' and a dimension 
+          marked '2X 1.50'. The drawing uses numbered circles to reference specific 
+          parts or steps in the process.\"\n  
+      }\n
+  }",
+  "metadata": {
+    "filetype": "application/pdf",
+    "languages": [
+      "eng"
+    ],
+    "page_number": 1,
+    "image_base64": "/9j...<full results omitted for brevity>...Q==",
+    "image_mime_type": "image/jpeg",
+    "filename": "Material-Callouts-c4655c0c.pDF",
+    "data_source": {}
+  }
 }
 ```
 

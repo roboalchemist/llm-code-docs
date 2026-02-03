@@ -1,5 +1,9 @@
 # Source: https://gofastmcp.com/python-sdk/fastmcp-server-http.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # http
 
 # `fastmcp.server.http`
@@ -12,7 +16,7 @@
 set_http_request(request: Request) -> Generator[Request, None, None]
 ```
 
-### `create_base_app` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/http.py#L101" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `create_base_app` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/http.py#L110" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 create_base_app(routes: list[BaseRoute], middleware: list[Middleware], debug: bool = False, lifespan: Callable | None = None) -> StarletteWithLifespan
@@ -31,7 +35,7 @@ Create a base Starlette app with common middleware and routes.
 
 * A Starlette application
 
-### `create_sse_app` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/http.py#L129" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `create_sse_app` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/http.py#L139" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 create_sse_app(server: FastMCP[LifespanResultT], message_path: str, sse_path: str, auth: AuthProvider | None = None, debug: bool = False, routes: list[BaseRoute] | None = None, middleware: list[Middleware] | None = None) -> StarletteWithLifespan
@@ -52,10 +56,10 @@ Return an instance of the SSE server app.
 Returns:
 A Starlette application with RequestContextMiddleware
 
-### `create_streamable_http_app` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/http.py#L255" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `create_streamable_http_app` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/http.py#L266" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-create_streamable_http_app(server: FastMCP[LifespanResultT], streamable_http_path: str, event_store: EventStore | None = None, auth: AuthProvider | None = None, json_response: bool = False, stateless_http: bool = False, debug: bool = False, routes: list[BaseRoute] | None = None, middleware: list[Middleware] | None = None) -> StarletteWithLifespan
+create_streamable_http_app(server: FastMCP[LifespanResultT], streamable_http_path: str, event_store: EventStore | None = None, retry_interval: int | None = None, auth: AuthProvider | None = None, json_response: bool = False, stateless_http: bool = False, debug: bool = False, routes: list[BaseRoute] | None = None, middleware: list[Middleware] | None = None) -> StarletteWithLifespan
 ```
 
 Return an instance of the StreamableHTTP server app.
@@ -64,7 +68,10 @@ Return an instance of the StreamableHTTP server app.
 
 * `server`: The FastMCP server instance
 * `streamable_http_path`: Path for StreamableHTTP connections
-* `event_store`: Optional event store for session management
+* `event_store`: Optional event store for SSE polling/resumability
+* `retry_interval`: Optional retry interval in milliseconds for SSE polling.
+  Controls how quickly clients should reconnect after server-initiated
+  disconnections. Requires event\_store to be set. Defaults to SDK default.
 * `auth`: Optional authentication provider (AuthProvider)
 * `json_response`: Whether to use JSON response format
 * `stateless_http`: Whether to use stateless mode (new transport per request)
@@ -94,4 +101,4 @@ lifespan(self) -> Lifespan[Starlette]
 
 ### `RequestContextMiddleware` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/http.py#L85" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
-Middleware that stores each request in a ContextVar
+Middleware that stores each request in a ContextVar and sets transport type.

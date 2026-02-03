@@ -108,7 +108,7 @@ where title contains "madonna"
 
 | Annotation | Effect |
 | --- | --- |
-| [stem](#stem) | By default, the string literal is [tokenized](../../linguistics/linguistics.html#tokenization) to match the field(s) searched. Explicitly control tokenization by using [stem](#stem):
+| [stem](#stem) | By default, the string literal is [tokenized](../../linguistics/linguistics-opennlp.html#tokenization) to match the field(s) searched. Explicitly control tokenization by using [stem](#stem):
 ```
 where title contains ({stem: false}"madonna")
 ```
@@ -189,7 +189,11 @@ Negative terms must come after all positive terms. For multi-value fields, setti
  |
 | sameElement | 
 
-_sameElement()_ is an operator that requires the terms to match within the same struct element in an array or a map field. Example:
+The `sameElement()` operator lets you denote conditions that must match within the _same_ element in multivalue fields containing structs or strings.
+
+By default, sameElement uses `AND` to combine the conditions: _All_ the conditions must match in the same element to produce a match.
+
+For example, given this **struct**:
 
 ```
 struct person {
@@ -204,6 +208,19 @@ field persons type array<person> {
     struct-field last_name { indexing: attribute }
     struct-field year_of_birth { indexing: attribute }
 }
+```
+
+We can use this query:
+
+```
+where persons contains sameElement(first_name contains 'Joe', last_name contains 'Smith', year_of_birth < 1940)
+```
+
+to return all documents containing a Joe Smith born before 1940 in the `persons` array.
+
+Searching a **map** is done by treating it as an array of a struct with the field members `key` and `value`. For example, given this map:
+
+```
 field identities type map<string, person> {
     indexing: summary
     struct-field key { indexing: attribute }
@@ -213,56 +230,48 @@ field identities type map<string, person> {
 }
 ```
 
-With normal _AND_ the query `persons.first_name AND persons.last_name` will normally not give you what you want. It will match if a document has a _persons_ element with a matching _first\_name__AND_ any element with a matching _last\_name_. So you will get a lot of false positives since there is nothing limiting them to the same element. However, that is what _sameElement_ ensures. Note that _sameElement_ uses _AND_ to connect the operands. To use _OR_, use multiple sameElement operators using logical OR.
-
-```
-where persons contains sameElement(first_name contains 'Joe', last_name contains 'Smith', year_of_birth < 1940)
-```
-
-The above returns all documents containing Joe Smith born before 1940 in the _persons_ array.
-
-Searching in a map is similar to searching in an array of struct. The difference is that you have an extra synthetic struct with the field members _key_ and _value_. The above example with the _identities_ map looks like this:
+We can use this query:
 
 ```
 where identities contains sameElement(key contains 'father', value.first_name contains 'Joe', value.last_name contains 'Smith', value.year_of_birth < 1940)
 ```
 
-The above returns all documents that have tagged Joe Smith born before 1940 as a 'father'. The importance here is using the indirection of _key_ and _value_ to address the keys and the values of the map.
+to return all documents that have a Joe Smith born before 1940 keyed as a 'father'.
 
-* * *
+`sameElement()` may also be used to search **array of string** fields. Supported query operators inside sameElement() are `and`, `equiv`, `near`, `onear`, `or`, `rank` and `phrase`. `and` can be used with `!`.
 
-_sameElement()_ can also be used on an indexed array of string since Vespa 8.602.85
+For example given this field:
 
 ```
-field descriptions type array<string> {
+field chunks type array<string> {
     indexing: index | summary
 }
 ```
 
-Supported query operators inside _sameElement()_ are `and`, `equiv`, `near`, `onear`, `or`, `rank` and `phrase`. `and` can be used with `!`. Example _sameElement()_ queries:
+We can use these queries:
 
 ```
-where descriptions contains sameElement("one" and "two")
-where descriptions contains sameElement("one" and equiv("two","three"))
-where descriptions contains sameElement("one" and ({distance: 5}near("two","three",!"four")))
-where descriptions contains sameElement("one" and phrase("two","three"))
-where descriptions contains sameElement("one" and !"two")
-where descriptions contains sameElement("one" or "two")
-where descriptions contains sameElement(rank("one" and "two", "three"))
+where chunks contains sameElement("one" and "two")
+where chunks contains sameElement("one" and equiv("two","three"))
+where chunks contains sameElement("one" and ({distance: 5}near("two","three",!"four")))
+where chunks contains sameElement("one" and phrase("two","three"))
+where chunks contains sameElement("one" and !"two")
+where chunks contains sameElement("one" or "two")
+where chunks contains sameElement(rank("one" and "two", "three"))
 ```
 
-Features inside _sameElement()_ for indexed fields are filtered based on the matching elements, e.g. [_elementwise(bm25(descriptions),x,double)_](../ranking/rank-features.html#elementwise-bm25) will only contain tensor cells based on the matching elements.
+Features inside sameElement() for indexed fields are filtered based on the matching elements, e.g. [elementwise(bm25(descriptions),x,double)](../ranking/rank-features.html#elementwise-bm25) will only contain tensor cells based on the matching elements.
 
  |
 | equiv | 
 
-If two terms in the same field should give exactly the same behavior when matched, the `equiv()` operator behaves like a special case of `or`.
+For cases where two terms in the same field should produce exactly the same behavior when matched, the `equiv()` operator can be used. This behaves like a special case of `or`.
 
 ```
 where fieldName contains equiv("A","B")
 ```
 
-In many cases, the OR operator will give the same results as an EQUIV. The matching logic is exactly the same, and an OR does not have the limitations that EQUIV does (below). The difference is in how matches are visible to ranking functions. All words that are children of an OR count for ranking. When using an EQUIV however, it looks like a single word:
+The matching logic of equiv is the same as OR, and an OR does not have the limitations that EQUIV does (below). The difference is in how matches are visible to ranking functions. All words that are children of an OR count for ranking, while with EQUIV, they look like a single word to ranking:
 
 - Counts as only +1 for queryTermCount
 - Counts as 1 word for completeness measures
@@ -359,7 +368,9 @@ yql=select * from sources * where ({grammar.syntax:'none',grammar.tokenization:'
 | --- | --- |
 | [grammar](#grammar) | 
 
-How to parse the user input. For any value of `grammar` other than `raw` or `segment`, only the following annotations are applied:
+Sets the query parse type to apply when interpreting the user input text.
+
+For any value of `grammar` other than `raw` or `segment`, only the following annotations are applied:
 
 - [defaultIndex](#defaultindex)
 - [targetHits](#targethits)
@@ -834,7 +845,7 @@ Refer to [SelectTestCase.java](https://github.com/vespa-engine/vespa/blob/master
 | --- | --- | --- | --- |
 | accentDrop | true | boolean | 
 
-Remove accents from this term if it is the setting for this field. Refer to [linguistics](../../linguistics/linguistics.html#normalization).
+Remove accents from this term if it is the setting for this field. Refer to [linguistics](../../linguistics/linguistics-opennlp.html#normalization).
 
  |
 | allowEmpty | false | boolean | 
@@ -959,7 +970,7 @@ Raw byteorder is a simple and fast ordering based on memcmp of utf8 for strings 
 
 How to parse [userInput](#userinput). `raw` will treat the user input as a string to be matched without any processing, `segment` will do a first pass through the linguistic libraries, while the rest of the values will treat the string as a query to be parsed.
 
-The individual model.type settings can also be set, using `grammar.composite`, `grammar.tokenization`, and `grammar.syntax`, refer to the [model.type](../api/query.html#model.type) documentation.
+The individual model.type settings can also be set, using `grammar.composite`, `grammar.tokenization`, `grammar.syntax`, and `grammar.profile`—refer to the [model.type](../api/query.html#model.type) documentation.
 
 See also [userInput examples](../../querying/query-api.html#input-examples).
 
@@ -987,7 +998,7 @@ Unique ID used for e.g. [connectivity](#connectivity).
  |
 | implicitTransforms | true | boolean | 
 
-Implicit term transformations (field defaults). If `implicitTransforms` is true, the settings for the field in the schema will be honored in term transforms, e.g. if the field has stemming, this term will be stemmed. If `implicitTransforms` is false, the search backend will receive the term exactly as written in the initial YQL expression. This is in other words a top level switch to turn off all other [stemming](../../linguistics/linguistics.html#stemming), accent removal, Unicode [normalizations](../../linguistics/linguistics.html#normalization) and so on.
+Implicit term transformations (field defaults). If `implicitTransforms` is true, the settings for the field in the schema will be honored in term transforms, e.g. if the field has stemming, this term will be stemmed. If `implicitTransforms` is false, the search backend will receive the term exactly as written in the initial YQL expression. This is in other words a top level switch to turn off all other [stemming](../../linguistics/linguistics-opennlp.html#stemming), accent removal, Unicode [normalizations](../../linguistics/linguistics-opennlp.html#normalization) and so on.
 
  |
 | label | | string | 
@@ -1012,7 +1023,7 @@ Used in [fuzzy](#fuzzy). An inclusive upper bound of edit distance between query
  |
 | nfkc | true | boolean | 
 
-NFKC [normalization](../../linguistics/linguistics.html#normalization).
+NFKC [normalization](../../linguistics/linguistics-opennlp.html#normalization).
 
  |
 | normalizeCase | true | boolean | 
@@ -1168,7 +1179,7 @@ Group / aggregate results by adding a grouping expression after a `|` - [read mo
 select * from sources * where sddocname contains 'purchase' | all(group(customer) each(output(sum(price))))
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

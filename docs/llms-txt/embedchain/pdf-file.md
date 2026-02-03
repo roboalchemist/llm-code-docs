@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/components/data-sources/pdf-file.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 📰 PDF
 
 You can load any pdf file from your local file system or through a URL.
@@ -8,7 +12,7 @@ You can load any pdf file from your local file system or through a URL.
 
 ### Load from a local file
 
-```python
+```python  theme={null}
 from embedchain import App
 app = App()
 app.add('/path/to/file.pdf', data_type='pdf_file')
@@ -16,7 +20,7 @@ app.add('/path/to/file.pdf', data_type='pdf_file')
 
 ### Load from URL
 
-```python
+```python  theme={null}
 from embedchain import App
 app = App()
 app.add('https://arxiv.org/pdf/1706.03762.pdf', data_type='pdf_file')

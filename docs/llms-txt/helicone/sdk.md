@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/features/advanced-usage/prompts/sdk.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SDK Integration
 
 > Use prompts directly via SDK without the AI Gateway

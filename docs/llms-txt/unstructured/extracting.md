@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/open-source/core-functionality/extracting.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Extracting
 
 ## `extract_datetimetz`

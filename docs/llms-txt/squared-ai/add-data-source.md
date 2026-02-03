@@ -1,5 +1,9 @@
 # Source: https://docs.squared.ai/guides/add-data-source.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Adding a Data Source
 
 > How to connect and configure a business data source in AI Squared.

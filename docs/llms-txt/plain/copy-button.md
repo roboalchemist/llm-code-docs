@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/ui-components/copy-button.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # CopyButton
 
 > Useful if you have any IDs or other details you want to copy for use in messages or outside of Plain.

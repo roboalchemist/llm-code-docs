@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/runs/priority.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Priority
 
 > Specify a priority when triggering a run.
@@ -15,7 +19,7 @@ The value for priority is a time offset in seconds that determines the order of 
 
 If you specify a priority of `10` the run will dequeue before runs that were triggered with no priority 8 seconds ago, like in this example:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 // no priority = 0
 await myTask.trigger({ foo: "bar" });
 

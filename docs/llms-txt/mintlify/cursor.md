@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/guides/cursor.md
+# Source: https://www.mintlify.com/docs/guides/cursor.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Cursor
 
@@ -6,7 +10,7 @@
 
 Transform Cursor into a documentation expert that knows your components, style guide, and best practices.
 
-## Using Cursor with Mintlify
+## Use Cursor with Mintlify
 
 Cursor rules provide persistent context about your documentation, ensuring more consistent suggestions that fit your standards and style.
 
@@ -431,3 +435,9 @@ description: "Concise description explaining page purpose and value"
 - Use **ParamField** for API parameters, **ResponseField** for API responses
 - Use **Expandable** for nested object properties or hierarchical information
 ````
+
+## Enhance with MCP server
+
+Connect the Mintlify MCP server to Cursor to give it access to search the Mintlify documentation while helping you write. When you connect the MCP server, Cursor searches the up to date Mintlify documentation for context so you don't have to leave your IDE to reference documentation.
+
+See [Model Context Protocol](/ai/model-context-protocol#example%3A-connect-to-the-mintlify-mcp-server) for complete setup instructions.

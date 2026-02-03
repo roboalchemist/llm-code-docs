@@ -1,13 +1,17 @@
 # Source: https://docs.unstructured.io/examplecode/tools/crewai.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # CrewAI
 
 [CrewAI](https://www.crewai.com/) is a popular framework for building AI agents and multi-agent workflows.
 
 This article provides a hands-on, step-by-step walkthrough that uses [CrewAI open source](https://www.crewai.com/open-source),
-along with the [Unstructured Workflow Endpoint MCP Server](/examplecode/tools/mcp) and Python, to
+along with the [Unstructured API's workflow operations MCP Server](/examplecode/tools/mcp) and Python, to
 build a multi-agent workflow. This multi-agent workflow uses the MCP server to call various functions within the
-[Unstructured Workflow Endpoint](/api-reference/workflow/overview) to build Unstructured ETL+ workflows from connector creation all
+[Unstructured API's workflow operations](/api-reference/workflow/overview) to build Unstructured ETL+ workflows from connector creation all
 the way through to workflow job completion. This walkthrough uses an Amazon S3 bucket as both the workflow's source and destination. However, you can modify this multi-agent workflow
 later to use a different S3 bucket or even different sources and destinations, to have a collection of AI agents quickly build multiple Unstructured ETL+ workflows
 on your behalf with varying configurations.
@@ -85,7 +89,7 @@ This walkthrough uses Firecrawl to monitor job statuses. So, before you begin, y
 ### Python and CrewAI open-source toolchain and project setup
 
 Before you can start coding on your local machine, you must install Python, and you should also install a Python package and project manager to manage your project's code dependencies.
-This walkthrough uses the popular Python pacakge and project manager [uv](https://docs.astral.sh/uv/) (although `uv` is not required to use CrewAI or the Unstructured Workflow Endpoint MCP Server).
+This walkthrough uses the popular Python package and project manager [uv](https://docs.astral.sh/uv/) (although `uv` is not required to use CrewAI or the Unstructured API's workflow operations MCP Server).
 
 <Steps>
   <Step title="Install uv">
@@ -174,7 +178,7 @@ You are now ready to start coding.
 
   <Step title="Create a venv virtual environment">
     To isolate and manage your project's code dependencies, you should create a virtual environment. This walkthrough uses
-    the popular Python virtual environment manager [venv](https://docs.python.org/3/library/venv.html) (although `venv` is not required to use CrewAI or the Unstructured Workflow Endpoint MCP Server).
+    the popular Python virtual environment manager [venv](https://docs.python.org/3/library/venv.html) (although `venv` is not required to use CrewAI or the Unstructured API's workflow operations MCP Server).
     From the root of your project directory, use `uv` to create a virtual environment with `venv` by running the following command:
 
     ```bash  theme={null}
@@ -210,8 +214,8 @@ You are now ready to start coding.
     ```
   </Step>
 
-  <Step title="Get the Unstructured Workflow Endpoint MCP Server's source code">
-    The Unstructured Workflow Endpoint MCP Server is a Python package that provides an MCP server for the Unstructured Workflow Endpoint.
+  <Step title="Get the Unstructured API's workflow operations MCP Server's source code">
+    The Unstructured API's workflow operations MCP Server is a Python package that provides an MCP server for the Unstructured API's workflow operations.
     To get the MCP server's source code, run the following command from the root of your project directory:
 
     ```bash  theme={null}
@@ -219,8 +223,8 @@ You are now ready to start coding.
     ```
   </Step>
 
-  <Step title="Install the Unstructured Workflow Endpoint MCP Server's code dependencies">
-    From the root of your project directory, switch to the cloned Unstructured Workflow Endpoint MCP Server's source directory, and then use `uv` to install the MCP server's code dependencies, by running the following commands:
+  <Step title="Install the Unstructured API's workflow operations MCP Server's code dependencies">
+    From the root of your project directory, switch to the cloned Unstructured API's workflow operations MCP Server's source directory, and then use `uv` to install the MCP server's code dependencies, by running the following commands:
 
     ```bash  theme={null}
     cd UNS-MCP
@@ -532,8 +536,8 @@ You are now ready to start coding.
     ```
   </Step>
 
-  <Step title="Unstructured Workflow Endpoint MCP Server">
-    From the root of your project directory, switch to the Unstructured Workflow Endpoint MCP Server's source directory, and then use `make` to run the MCP server locally, by running the following commands:
+  <Step title="Unstructured API's workflow operations MCP Server">
+    From the root of your project directory, switch to the Unstructured API's workflow operations MCP Server's source directory, and then use `make` to run the MCP server locally, by running the following commands:
 
     ```bash  theme={null}
     cd UNS-MCP
@@ -639,6 +643,6 @@ You are now ready to start coding.
 
 ## Learn more
 
-* [Model Context Protocol (MCP) Hands-On Walkthrough for the Unstructured Workflow Endpoint](/examplecode/tools/mcp)
-* [Unstructured Workflow Endpoint Reference](/api-reference/workflow/overview)
+* [Model Context Protocol (MCP) Hands-On Walkthrough for the Unstructured API's workflow operations](/examplecode/tools/mcp)
+* [Unstructured API's workflow operations Reference](/api-reference/workflow/overview)
 * [CrewAI Documentation](https://docs.crewai.com/)

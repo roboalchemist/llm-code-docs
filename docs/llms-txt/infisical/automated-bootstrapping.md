@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/self-hosting/guides/automated-bootstrapping.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Programmatic Provisioning
 
 > Learn how to provision and configure Infisical instances programmatically without UI interaction
@@ -248,9 +252,9 @@ curl -X POST \
     "projectDescription": "A project created via API",
     "slug": "new-project-slug",
     "template": "default",
-    "type": "SECRET_MANAGER"
+    "type": "secret-manager"
   }' \
-  https://your-infisical-instance.com/api/v2/projects
+  https://your-infisical-instance.com/api/v1/projects
 ```
 
 ## Important Notes

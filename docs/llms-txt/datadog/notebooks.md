@@ -1,3 +1,7 @@
+# Source: https://docs.datadoghq.com/getting_started/notebooks.md
+
+# Source: https://docs.datadoghq.com/api/latest/notebooks.md
+
 # Source: https://docs.datadoghq.com/notebooks.md
 
 ---
@@ -6,7 +10,6 @@ description: >-
   Create collaborative rich text documents with live Datadog graphs for
   investigations, postmortems, runbooks, and data-driven storytelling.
 breadcrumbs: Docs > Notebooks
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Notebooks

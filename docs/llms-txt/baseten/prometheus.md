@@ -1,10 +1,12 @@
 # Source: https://docs.baseten.co/observability/export-metrics/prometheus.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Export to Prometheus
 
 > Export metrics from Baseten to Prometheus
-
-<Info> Exporting metrics is in beta mode. </Info>
 
 To integrate with Prometheus, specify the Baseten metrics endpoint in a scrape config. For example:
 

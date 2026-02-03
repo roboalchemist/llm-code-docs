@@ -10,7 +10,7 @@ This document contains all the access options that can be granted to resources o
 
 ## Actors
 
-To learn about Apify Actors, check out the https://docs.apify.com/platform/actors.md.
+To learn about Apify Actors, check out the [documentation](https://docs.apify.com/platform/actors.md).
 
 ### Actor
 
@@ -31,11 +31,11 @@ To learn about Apify Actors, check out the https://docs.apify.com/platform/actor
 | View runs            | View a list of Actor task runs and their details.          |
 | Manage access rights | Manage Actor task access rights.                           |
 
-To learn about Actor tasks, see the https://docs.apify.com/platform/actors/running/tasks.md.
+To learn about Actor tasks, see the [documentation](https://docs.apify.com/platform/actors/running/tasks.md).
 
 ## Storage
 
-For more information about Storage, see its https://docs.apify.com/platform/storage.md.
+For more information about Storage, see its [documentation](https://docs.apify.com/platform/storage.md).
 
 ### Dataset
 
@@ -45,7 +45,7 @@ For more information about Storage, see its https://docs.apify.com/platform/stor
 | Write                | Edit dataset settings, push data to it, and remove the dataset. |
 | Manage access rights | Manage dataset access rights.                                   |
 
-To learn about dataset storage, see its https://docs.apify.com/platform/storage/dataset.md.
+To learn about dataset storage, see its [documentation](https://docs.apify.com/platform/storage/dataset.md).
 
 ### Key-value-store
 
@@ -55,7 +55,7 @@ To learn about dataset storage, see its https://docs.apify.com/platform/storage/
 | Write                | Edit key-value store settings, add, update or remove its records, and delete the key-value store. |
 | Manage access rights | Manage key-value store access rights.                                                             |
 
-To learn about key-value stores, see the https://docs.apify.com/platform/storage/key-value-store.md.
+To learn about key-value stores, see the [documentation](https://docs.apify.com/platform/storage/key-value-store.md).
 
 ### Request queue
 
@@ -65,7 +65,7 @@ To learn about key-value stores, see the https://docs.apify.com/platform/storage
 | Write                | Edit request queue settings, add, update, or remove its records, and delete the request queue. |
 | Manage access rights | Manage request queue access rights.                                                            |
 
-To learn about request queue storage, see the https://docs.apify.com/platform/storage/request-queue.md.
+To learn about request queue storage, see the [documentation](https://docs.apify.com/platform/storage/request-queue.md).
 
 ## Proxy
 
@@ -73,11 +73,11 @@ To learn about request queue storage, see the https://docs.apify.com/platform/st
 | ---------- | ------------------------- |
 | Proxy      | Allow to use Apify Proxy. |
 
-To learn about Apify Proxy, see its https://docs.apify.com/platform/proxy.md.
+To learn about Apify Proxy, see its [documentation](https://docs.apify.com/platform/proxy.md).
 
 ## User permissions
 
-Permissions that can be granted to members of organizations. To learn about the organization account, see its https://docs.apify.com/platform/collaboration/organization-account.md.
+Permissions that can be granted to members of organizations. To learn about the organization account, see its [documentation](https://docs.apify.com/platform/collaboration/organization-account.md).
 
 | Permission          | Description                                                           |
 | ------------------- | --------------------------------------------------------------------- |

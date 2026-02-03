@@ -6,7 +6,6 @@ description: >-
   Learn essential APM terminology including services, resources, traces, spans,
   instrumentation, and other key concepts for distributed tracing.
 breadcrumbs: Docs > APM > APM Terms and Concepts
-source_url: https://docs.datadoghq.com/glossary/index.html
 ---
 
 # APM Terms and Concepts

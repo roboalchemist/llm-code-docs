@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/tools/custom/parameters.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tool Parameters
 
 > Learn about dynamic, static, and automatic tool parameters.
@@ -124,8 +128,3 @@ More details can be found in the [Tool Definition Schema →](/api-reference/sch
 Sometimes your tool will require a parameter to function that you need to have defined when the call is created instead of having the model come up with a value. In these cases, you can require that the parameter be overridden at call creation.  For example, the built-in `queryCorpus` tool requires the corpus id to be specified during call creation.
 
 More advanced information can be found in [Parameter Overrides →](/tools/custom/parameter-overrides)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

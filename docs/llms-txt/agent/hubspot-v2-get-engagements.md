@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/actions/hubspot-v2-get-engagements.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Engagements
 
 Retrieve calls, emails, meetings, notes, and tasks associated with any HubSpot record.

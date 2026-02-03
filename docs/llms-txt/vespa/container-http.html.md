@@ -186,5 +186,5 @@ Please open the following file : ~/tmp/gatling-charts-highcharts-2.0.0-M3a/resul
 
 The report gives graphs showing how the test progressed and summaries for failures and time spent.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

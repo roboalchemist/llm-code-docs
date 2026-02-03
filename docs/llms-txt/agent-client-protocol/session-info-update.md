@@ -1,5 +1,9 @@
 # Source: https://agentclientprotocol.com/rfds/session-info-update.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://agentclientprotocol.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Session Info Update
 
 * Author(s): [@ignatov](https://github.com/ignatov)
@@ -369,8 +373,3 @@ The proposed notification-based approach:
 ## Revision history
 
 * **2025-11-28**: Initial draft proposal
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://agentclientprotocol.com/llms.txt

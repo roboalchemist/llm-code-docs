@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/subscriptions/edit-subscription.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Edit a subscription
 
 > You can edit a subscription at any time, whether it's active or pending.

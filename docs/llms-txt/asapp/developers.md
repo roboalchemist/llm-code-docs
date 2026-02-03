@@ -1,12 +1,16 @@
 # Source: https://docs.asapp.com/getting-started/developers.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Developer Quickstart
 
 > Learn how to get started using ASAPPs APIs
 
 Most of ASAPP's products require a combination of configuration and implementation, and making API calls is part of a successful integration.
 
-<Warning> If you are **only** integrating ASAPP Messaging and **no other ASAPP product**, then you can skip this quickstart and go straight to [ASAPP Messaging](/messaging-platform) guide.</Warning>
+<Warning> If you are **only** integrating ASAPP Messaging and **no other ASAPP product**, then you can skip this quickstart and go straight to [ASAPP Messaging](/agent-desk) guide.</Warning>
 
 To get started making API calls, you need to:
 
@@ -34,7 +38,7 @@ The members of your team can have one of the following roles:
 * **App Admin**: These users are able to change the information on applications owned by the team.
 * **Viewers**: These users can view API credentials, but cannot change any settings.
 
-Apps represent access to all of ASAPP's products. Your team will already have an app created for you. One app can access all of ASAPP's products. There can be one or more keys for the app; by default, an initial API key will already be generated.
+Apps represent access to all of ASAPP's products. Your team will already have an app created for you. One app can access all of ASAPP's products. There can be one or more keys for the app; by default, the system already generates an initial API key.
 
 The ASAPP email login or SSO only grants access to the dev portal, all permission and team management must be done from within the developer portal tooling.
 
@@ -42,7 +46,7 @@ The ASAPP email login or SSO only grants access to the dev portal, all permissio
 
 Initially, you only have access to the sandbox environment and we will create a Sandbox team and app for you. The sandbox is where you can initially build your integration but also try out new features before launching in production.
 
-The different environments are represented in ASAPP's API Domains:
+The different environments appear in ASAPP's API Domains:
 
 | Environment | API Domain                      |
 | :---------- | :------------------------------ |
@@ -51,7 +55,7 @@ The different environments are represented in ASAPP's API Domains:
 
 ASAPP's sandbox environment uses the same machine learning models and services as the production environment in order to replicate expected behaviors when interacting with a given endpoint.
 
-<Warning>All requests to ASAPP sandbox and production APIs **must** use HTTPS protocol. Traffic using HTTP will not be redirected to HTTPS.</Warning>
+<Warning>All requests to ASAPP sandbox and production APIs **must** use HTTPS protocol. The system will not redirect traffic using HTTP to HTTPS.</Warning>
 
 ### Moving to Production
 

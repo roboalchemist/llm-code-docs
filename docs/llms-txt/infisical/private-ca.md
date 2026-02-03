@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/pki/ca/private-ca.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Internal CA
 
 > Learn how to create a Private CA hierarchy with Infisical.
@@ -121,7 +125,7 @@ consisting of an (optional) root CA and an intermediate CA.
         ### Sample request
 
         ```bash Request theme={"dark"}
-        curl --location --request POST 'https://app.infisical.com/api/v1/pki/ca' \
+        curl --location --request POST 'https://app.infisical.com/api/v1/cert-manager/ca/internal' \
           --header 'Authorization: Bearer <access-token>' \
           --header 'Content-Type: application/json' \
           --data-raw '{
@@ -154,7 +158,7 @@ consisting of an (optional) root CA and an intermediate CA.
         ### Sample request
 
         ```bash Request theme={"dark"}
-        curl --location --request POST 'https://app.infisical.com/api/v1/pki/ca' \
+        curl --location --request POST 'https://app.infisical.com/api/v1/cert-manager/ca/internal' \
           --header 'Authorization: Bearer <access-token>' \
           --header 'Content-Type: application/json' \
           --data-raw '{
@@ -182,7 +186,7 @@ consisting of an (optional) root CA and an intermediate CA.
         ### Sample request
 
         ```bash Request theme={"dark"}
-        curl --location --request GET 'https://app.infisical.com/api/v1/pki/ca/<intermediate-ca-id>/csr' \
+        curl --location --request GET 'https://app.infisical.com/api/v1/cert-manager/ca/internal/<intermediate-ca-id>/csr' \
           --header 'Authorization: Bearer <access-token>' \
           --data-raw ''
         ```
@@ -203,7 +207,7 @@ consisting of an (optional) root CA and an intermediate CA.
         ### Sample request
 
         ```bash Request theme={"dark"}
-        curl --location --request POST 'https://app.infisical.com/api/v1/pki/ca/<root-ca-id>/sign-intermediate' \
+        curl --location --request POST 'https://app.infisical.com/api/v1/cert-manager/ca/internal/<root-ca-id>/sign-intermediate' \
           --header 'Content-Type: application/json' \
           --data-raw '{
               "csr": "<csr>",
@@ -233,7 +237,7 @@ consisting of an (optional) root CA and an intermediate CA.
         ### Sample request
 
         ```bash Request theme={"dark"}
-        curl --location --request POST 'https://app.infisical.com/api/v1/pki/ca/<intermediate-ca-id>/import-certificate' \
+        curl --location --request POST 'https://app.infisical.com/api/v1/cert-manager/ca/internal/<intermediate-ca-id>/import-certificate' \
           --header 'Authorization: Bearer <access-token>' \
           --header 'Content-Type: application/json' \
           --data-raw '{
@@ -290,7 +294,7 @@ In the following steps, we explore how to renew a CA certificate.
     ### Sample request
 
     ```bash Request theme={"dark"}
-    curl --location --request POST 'https://app.infisical.com/api/v1/pki/ca/<ca-id>/renew' \
+    curl --location --request POST 'https://app.infisical.com/api/v1/cert-manager/ca/internal/<ca-id>/renew' \
       --header 'Authorization: Bearer <access-token>' \
       --header 'Content-Type: application/json' \
       --data-raw '{

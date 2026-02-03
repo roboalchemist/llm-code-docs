@@ -282,16 +282,14 @@ We offer a few hooks and components that makes working with React much simpler.
 const Stage = () => {
   const tracks = useTracks([Track.Source.Camera, Track.Source.ScreenShare]);
   return (
-    <LiveKitRoom
-      {/* ... */}
-    >
+    <SessionProvider session={/* ... */}>
       // Render all video
       {tracks.map((track) => {
         <VideoTrack trackRef={track} />;
       })}
       // ...and all audio tracks.
       <RoomAudioRenderer />
-    </LiveKitRoom>
+    </SessionProvider>
   );
 };
 
@@ -507,7 +505,7 @@ This table captures a consistent set of events that are available across platfor
 
 ---
 
-This document was rendered at 2025-12-31T18:29:32.306Z.
+This document was rendered at 2026-02-03T03:24:53.239Z.
 For the latest version of this document, see [https://docs.livekit.io/intro/basics/rooms-participants-tracks/webhooks-events.md](https://docs.livekit.io/intro/basics/rooms-participants-tracks/webhooks-events.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

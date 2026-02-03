@@ -10,7 +10,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > APM > Application Instrumentation > Add the Datadog Tracing Library >
   (Legacy) Tracing Ruby Applications
-source_url: https://docs.datadoghq.com/trace_collection/dd_libraries/ruby_v1/index.html
 ---
 
 # (Legacy) Tracing Ruby Applications

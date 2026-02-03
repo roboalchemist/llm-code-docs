@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/browser/
+
 # Browser Provider
 
 The Browser Provider enables automated web browser interactions for testing complex web applications and JavaScript-heavy websites where simpler providers are not sufficient.

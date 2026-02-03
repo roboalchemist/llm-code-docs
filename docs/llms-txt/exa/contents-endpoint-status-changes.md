@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/changelog/contents-endpoint-status-changes.md
+# Source: https://exa.ai/docs/changelog/contents-endpoint-status-changes.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Contents Endpoint Status Changes
 
@@ -73,8 +77,3 @@ for status in result.statuses:
 ## Need More Information?
 
 If you'd like more information about the status of a crawl or have specific use cases that require additional status details, please contact us at [hello@exa.ai](mailto:hello@exa.ai) with your use case.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/coppa/
+
 # COPPA
 
 The COPPA (Children's Online Privacy Protection Act) red teaming plugin tests whether AI systems properly protect children's privacy and comply with US federal regulations for users under 13 years old.

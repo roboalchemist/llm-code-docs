@@ -22,11 +22,8 @@ Use it inside the default slot of the [Page](/docs/components/page) component, a
 
 ## Examples
 
-<note>
-
-While these examples use [Nuxt Content](https://content.nuxt.com), the components can be integrated with any content management system.
-
-</note>
+> [!NOTE]
+> While these examples use [Nuxt Content](https://content.nuxt.com), the components can be integrated with any content management system.
 
 ### Within a page
 
@@ -68,11 +65,8 @@ const { data: surround } = await useAsyncData(`${route.path}-surround`, () => {
 </template>
 ```
 
-<note>
-
-In this example, we use the [`ContentRenderer`](https://content.nuxt.com/docs/components/content-renderer) component from `@nuxt/content` to render the content of the page.
-
-</note>
+> [!NOTE]
+> In this example, we use the [`ContentRenderer`](https://content.nuxt.com/docs/components/content-renderer) component from `@nuxt/content` to render the content of the page.
 
 ## API
 
@@ -115,8 +109,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

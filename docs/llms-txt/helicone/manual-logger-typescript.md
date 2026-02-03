@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/getting-started/integration-method/manual-logger-typescript.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Manual Logger - TypeScript
 
 > Integrate any custom LLM with Helicone using the TypeScript Manual Logger. Step-by-step guide for NodeJS implementation to connect your proprietary or open-source models.

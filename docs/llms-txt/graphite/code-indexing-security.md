@@ -1,10 +1,14 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/code-indexing-security.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Code Indexing Security
 
 > Graphite offers a secure code-indexing service which improves the performance of platform features. This feature is opt-in and no AI is trained on your data.
 
-Code Indexing connects to your code repositories to dramatically improve the speed and completeness of Graphite features. You can read more about the feature [here](/code-indexing). This feature is strictly **opt-in** and **is not used to train on your data**.
+Code Indexing connects to your code repositories to dramatically improve the speed and completeness of Graphite features. You can read more about the feature [here](/code-indexing). This feature is **opt-in** and **is not used to train on your data**.
 
 We know that your source code is one of your most valuable assets, which is why we handle it with the highest level of care:
 

@@ -20,30 +20,30 @@ Only internal structure.
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#count)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_models.py#L83)count
+### [**](#count)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_models.py#L83)count
 
 **count: int
 
-### [**](#exclusive_start_key)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_models.py#L87)exclusive\_start\_key
+### [**](#exclusive_start_key)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_models.py#L87)exclusive\_start\_key
 
 **exclusive\_start\_key: str | None
 
-### [**](#is_truncated)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_models.py#L85)is\_truncated
+### [**](#is_truncated)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_models.py#L85)is\_truncated
 
 **is\_truncated: bool
 
-### [**](#items)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_models.py#L86)items
+### [**](#items)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_models.py#L86)items
 
 **items: list\[[KeyValueStoreKeyInfo](https://docs.apify.com/sdk/python/sdk/python/reference/class/KeyValueStoreKeyInfo.md)]
 
-### [**](#limit)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_models.py#L84)limit
+### [**](#limit)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_models.py#L84)limit
 
 **limit: int
 
-### [**](#model_config)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_models.py#L81)model\_config
+### [**](#model_config)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_models.py#L81)model\_config
 
 **model\_config: Undefined
 
-### [**](#next_exclusive_start_key)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_models.py#L88)next\_exclusive\_start\_key
+### [**](#next_exclusive_start_key)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_models.py#L88)next\_exclusive\_start\_key
 
 **next\_exclusive\_start\_key: str | None

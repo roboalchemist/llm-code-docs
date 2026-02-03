@@ -1,82 +1,96 @@
 # Source: https://infisical.com/docs/api-reference/endpoints/groups/list-group-users.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Group Users
+
+
 
 ## OpenAPI
 
 ````yaml GET /api/v1/groups/{id}/users
+openapi: 3.0.3
+info:
+  title: Infisical API
+  description: List of all available APIs that can be consumed
+  version: 0.0.1
+servers:
+  - url: https://us.infisical.com
+    description: Production server (US)
+  - url: https://eu.infisical.com
+    description: Production server (EU)
+  - url: http://localhost:8080
+    description: Local server
+security: []
 paths:
-  path: /api/v1/groups/{id}/users
-  method: get
-  servers:
-    - url: https://us.infisical.com
-      description: Production server (US)
-    - url: https://eu.infisical.com
-      description: Production server (EU)
-    - url: http://localhost:8080
-      description: Local server
-  request:
-    security: []
-    parameters:
-      path:
-        id:
-          schema:
-            - type: string
-              required: true
-              description: The ID of the group to list users for.
-      query:
-        offset:
-          schema:
-            - type: number
-              required: false
-              description: >-
-                The offset to start from. If you enter 10, it will start from
-                the 10th user.
-              maximum: 100
-              minimum: 0
-              default: 0
-        limit:
-          schema:
-            - type: number
-              required: false
-              description: The number of users to return.
-              maximum: 100
-              minimum: 1
-              default: 10
-        username:
-          schema:
-            - type: string
-              required: false
-              description: The username to search for.
-        search:
-          schema:
-            - type: string
-              required: false
-              description: The text string that user email or name will be filtered by.
-        filter:
-          schema:
-            - type: enum<string>
-              enum:
-                - existingMembers
-                - nonMembers
-              required: false
-              description: >-
-                Whether to filter the list of returned users. 'existingMembers'
-                will only return existing users in the group, 'nonMembers' will
-                only return users not in the group, undefined will return all
-                users in the organization.
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              users:
-                allOf:
-                  - type: array
+  /api/v1/groups/{id}/users:
+    get:
+      tags:
+        - Groups
+      operationId: listGroupUsers
+      parameters:
+        - schema:
+            type: number
+            minimum: 0
+            default: 0
+          in: query
+          name: offset
+          required: false
+          description: >-
+            The offset to start from. If you enter 10, it will start from the
+            10th user.
+        - schema:
+            type: number
+            minimum: 1
+            maximum: 100
+            default: 10
+          in: query
+          name: limit
+          required: false
+          description: The number of users to return.
+        - schema:
+            type: string
+          in: query
+          name: username
+          required: false
+          description: The username to search for.
+        - schema:
+            type: string
+          in: query
+          name: search
+          required: false
+          description: The text string that user email or name will be filtered by.
+        - schema:
+            type: string
+            enum:
+              - existingMembers
+              - nonMembers
+          in: query
+          name: filter
+          required: false
+          description: >-
+            Whether to filter the list of returned users. 'existingMembers' will
+            only return existing users in the group, 'nonMembers' will only
+            return users not in the group, undefined will return all users in
+            the organization.
+        - schema:
+            type: string
+          in: path
+          name: id
+          required: true
+          description: The ID of the group to list users for.
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  users:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -106,230 +120,149 @@ paths:
                         - isPartOfGroup
                         - joinedGroupAt
                       additionalProperties: false
-              totalCount:
-                allOf:
-                  - type: number
-            requiredProperties:
-              - users
-              - totalCount
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              users:
-                - email: <string>
-                  username: <string>
-                  firstName: <string>
-                  lastName: <string>
-                  id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                  isPartOfGroup: true
-                  joinedGroupAt: '2023-11-07T05:31:56Z'
-              totalCount: 123
-        description: Default Response
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  totalCount:
+                    type: number
+                required:
+                  - users
+                  - totalCount
+                additionalProperties: false
+        '400':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 400
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 400
-              message: <string>
-              error: <string>
-        description: Default Response
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  error:
+                    type: string
+                  details: {}
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 401
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 401
-              message: <string>
-              error: <string>
-        description: Default Response
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '403':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 403
-              message:
-                allOf:
-                  - type: string
-              details:
-                allOf:
-                  - {}
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 403
-              message: <string>
-              details: <any>
-              error: <string>
-        description: Default Response
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  details: {}
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '404':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 404
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 404
-              message: <string>
-              error: <string>
-        description: Default Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '422':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 422
-              message:
-                allOf:
-                  - {}
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 422
-              message: <any>
-              error: <string>
-        description: Default Response
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message: {}
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - error
+                additionalProperties: false
+        '500':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 500
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 500
-              message: <string>
-              error: <string>
-        description: Default Response
-  deprecated: false
-  type: path
-components:
-  schemas: {}
+                  message:
+                    type: string
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
 
 ````

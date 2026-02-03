@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/test/snapshot.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Use snapshot testing in `bun test`
 
 Bun's test runner supports Jest-style snapshot testing via `.toMatchSnapshot()`.
@@ -47,7 +51,7 @@ test
 The `snap.test.ts.snap` file is a JavaScript file that exports a serialized version of the value passed into `expect()`. The `{foo: "bar"}` object has been serialized to JSON.
 
 ```js snap.test.ts.snap icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
-// Bun Snapshot v1, https://bun.sh/docs/test/snapshots
+// Bun Snapshot v1, https://bun.com/docs/test/snapshots
 
 exports[`snapshot 1`] = `
 {
@@ -65,7 +69,7 @@ bun test
 ```
 
 ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun test v1.3.2 (9c68abdb)
+bun test v1.3.3 (9c68abdb)
 test/snap.test.ts:
 ✓ snapshot [1.05ms]
 
@@ -84,7 +88,7 @@ bun test --update-snapshots
 ```
 
 ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun test v1.3.2 (9c68abdb)
+bun test v1.3.3 (9c68abdb)
 test/snap.test.ts:
 ✓ snapshot [0.86ms]
 
@@ -97,4 +101,4 @@ Ran 1 tests across 1 files. [102.00ms]
 
 ***
 
-See [Docs > Test Runner > Snapshots](https://bun.sh/docs/test/snapshots) for complete documentation on snapshots with the Bun test runner.
+See [Docs > Test Runner > Snapshots](/test/snapshots) for complete documentation on snapshots with the Bun test runner.

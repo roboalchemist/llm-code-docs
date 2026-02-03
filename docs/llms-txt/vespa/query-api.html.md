@@ -228,7 +228,7 @@ Applications can group _all_ documents (select all documents in YQL). Using `lim
 
 All fields are returned in results by default. To specify a subset of fields, use [document summaries](document-summaries.html). When searching text, having a static abstract of the document in a field, or using a [dynamic summary](../reference/schemas/schemas.html#summary)can both improve the visual relevance of the search, and cut bandwidth used.
 
-The default output format is [JSON](../reference/querying/default-result-format.html). Write a custom [Renderer](../applications/result-renderers.html) to generate results in other formats.
+The default output format is [JSON](../reference/querying/default-result-format.html). A binary [CBOR](https://cbor.io/) format is also available via[format=cbor](../reference/api/query.html#presentation.format) - responses are smaller and faster to render, especially for numeric data, and is a drop-in replacement that produces identical results when deserialized. Write a custom [Renderer](../applications/result-renderers.html) to generate results in other formats.
 
 Read more on [request-response](../applications/processing.html) processing - use this to write code to manipulate results.
 
@@ -794,7 +794,7 @@ Result for the grouping query `
 ```
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

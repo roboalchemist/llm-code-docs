@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/documentation/best-practices/api-key-management.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # API Key Management
 
 > Learn how to handle API key leaks and best practices for key rotation.
@@ -33,8 +37,3 @@ To rotate your keys without downtime:
 <Note>
   Never hardcode API keys in your source code. Always use environment variables or a secure secrets manager to store your credentials.
 </Note>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

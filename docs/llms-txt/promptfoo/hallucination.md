@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/hallucination/
+
 # Hallucination Plugin
 
 The Hallucination red teaming plugin is designed to test whether a large language model can be led to fabricate answers or generate false information.

@@ -6,7 +6,6 @@ description: Use the Datadog Agent to detect and aggregate multi-line logs autom
 breadcrumbs: >-
   Docs > Agent > Host Agent Log collection > Automatic Multi-line Detection and
   Aggregation
-source_url: https://docs.datadoghq.com/logs/auto_multiline_detection/index.html
 ---
 
 # Automatic Multi-line Detection and Aggregation

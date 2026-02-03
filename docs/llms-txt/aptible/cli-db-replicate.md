@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/reference/aptible-cli/cli-commands/cli-db-replicate.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # aptible db:replicate
 
 This command creates a [Database Replica](/core-concepts/managed-databases/managing-databases/replication-clustering). All new Replicas are created with General Purpose Container Profile, which is the [default Container Profile.](/core-concepts/scaling/container-profiles#default-container-profile)

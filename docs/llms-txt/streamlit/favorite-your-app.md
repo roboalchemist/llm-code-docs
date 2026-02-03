@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/deploy/streamlit-community-cloud/manage-your-app/favorite-your-app
+
 # Favorite your app
 
 Streamlit Community Cloud supports a "favorite" feature that lets you quickly access your apps from your workspace. Favorited apps appear at the top of their workspace with a yellow star (star) beside them. You can favorite and unfavorite apps in any workspace to which you have access as a developer or invited viewer.

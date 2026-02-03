@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > APM > Tracing Guides > Create a Dashboard to track and correlate APM
   metrics
-source_url: https://docs.datadoghq.com/guide/apm_dashboard/index.html
 ---
 
 # Create a Dashboard to track and correlate APM metrics

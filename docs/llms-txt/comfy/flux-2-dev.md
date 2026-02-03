@@ -1,8 +1,14 @@
 # Source: https://docs.comfy.org/tutorials/flux/flux-2-dev.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ComfyUI Flux.2 Dev Example
 
 > This guide provides a brief introduction to the Flux.2 model and guides you through using the Flux.2 Dev model for text-to-image generation in ComfyUI.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TzTS74Ii23A?si=f2NFmhNbU2VI3PwX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
 
 ## About FLUX.2
 
@@ -57,7 +63,7 @@
 </a>
 
 <a className="prose" target="_blank" href="https://cloud.comfy.org/?template=image_flux2&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28a745', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
-  <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Run on ComfyUI Cloud</p>
+  <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Run on Comfy Cloud</p>
 </a>
 
 ## Model links
@@ -86,8 +92,3 @@
 │   └── 📂 vae/
 │          └── flux2-vae.safetensors
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.comfy.org/llms.txt

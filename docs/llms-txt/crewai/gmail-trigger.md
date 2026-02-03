@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/enterprise/guides/gmail-trigger.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Gmail Trigger
 
 > Trigger automations when Gmail events occur (e.g., new emails, labels).
@@ -9,7 +13,8 @@
 Use the Gmail Trigger to kick off your deployed crews when Gmail events happen in connected accounts, such as receiving a new email or messages matching a label/filter.
 
 <Tip>
-  Make sure Gmail is connected in Tools & Integrations and the trigger is enabled for your deployment.
+  Make sure Gmail is connected in Tools & Integrations and the trigger is
+  enabled for your deployment.
 </Tip>
 
 ## Enabling the Gmail Trigger
@@ -61,13 +66,15 @@ Test your Gmail trigger integration locally using the CrewAI CLI:
 crewai triggers list
 
 # Simulate a Gmail trigger with realistic payload
-crewai triggers run gmail/new_email
+crewai triggers run gmail/new_email_received
 ```
 
 The `crewai triggers run` command will execute your crew with a complete Gmail payload, allowing you to test your parsing logic before deployment.
 
 <Warning>
-  Use `crewai triggers run gmail/new_email` (not `crewai run`) to simulate trigger execution during development. After deployment, your crew will automatically receive the trigger payload.
+  Use `crewai triggers run gmail/new_email_received` (not `crewai run`) to
+  simulate trigger execution during development. After deployment, your crew
+  will automatically receive the trigger payload.
 </Warning>
 
 ## Monitoring Executions
@@ -82,6 +89,6 @@ Track history and performance of triggered runs:
 
 * Ensure Gmail is connected in Tools & Integrations
 * Verify the Gmail Trigger is enabled on the Triggers tab
-* Test locally with `crewai triggers run gmail/new_email` to see the exact payload structure
+* Test locally with `crewai triggers run gmail/new_email_received` to see the exact payload structure
 * Check the execution logs and confirm the payload is passed as `crewai_trigger_payload`
 * Remember: use `crewai triggers run` (not `crewai run`) to simulate trigger execution

@@ -57,7 +57,7 @@ and add the plugin to the build instructions:
     <groupId>com.yahoo.vespa</groupId>
     <artifactId>bundle-plugin</artifactId>
     <!-- Find latest version at <a href="https://search.maven.org/search?q=g:com.yahoo.vespa%20a:bundle-plugin">search.maven.org/search?q=g:com.yahoo.vespa%20a:bundle-plugin</a> -->
-    <version>8.617.12</version>
+    <version>8.634.24</version>
     <extensions>true</extensions>
     <configuration>
         <failOnWarnings>true</failOnWarnings>
@@ -139,7 +139,7 @@ The minimal Maven _pom.xml_ configuration is:
 
     <properties>
         <!-- Find latest version at[search.maven.org/search?q=g:com.yahoo.vespa](https://search.maven.org/search?q=g:com.yahoo.vespa)-->
-        <vespa.version>8.617.12</vespa.version>
+        <vespa.version>8.634.24</vespa.version>
     </properties>
 
     <build>
@@ -649,7 +649,7 @@ One can make it work by managing this dependency explicitly - add this at POM to
 ```
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/security/single-sign-on/saml/examples/microsoft-entra-id-configuration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Microsoft Entra ID
 
 ## Azure AD / Entra ID as a SAML Identity Provider

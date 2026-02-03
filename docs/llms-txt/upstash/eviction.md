@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/features/eviction.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Eviction
 
 By default eviction is disabled, and Upstash Redis will reject write operations once the maximum data size

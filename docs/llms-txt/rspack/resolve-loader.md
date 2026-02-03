@@ -1,13 +1,11 @@
 # Source: https://rspack.dev/config/resolve-loader.md
 
-import { Tabs, Tab } from '@theme';
-
 # ResolveLoader
 
 This configuration item is consistent in type with [`resolve`](/config/resolve.md), but this setting only affects the resolution of [loaders](/guide/features/loader.md).
 
-* **Type:** Consistent with [`resolve`](/config/resolve.md)
-* **Default:**
+- **Type:** Consistent with [`resolve`](/config/resolve.md)
+- **Default:**
 
 ```js
 {
@@ -23,35 +21,36 @@ This configuration item is consistent in type with [`resolve`](/config/resolve.m
 
 For example, if you are developing a loader and want to showcase its usage from a user's perspective in an example, you can write:
 
-<Tabs>
-  <Tab label="ESM">
-    ```js title="rspack.config.mjs"
-    import { createRequire } from 'module';
 
-    const require = createRequire(import.meta.url);
+**ESM**
 
-    export default {
-      resolveLoader: {
-        alias: {
-          'amazing-loader': require.resolve('path-to-your-amazing-loader'),
-        },
-      },
-    };
-    ```
-  </Tab>
+```js title="rspack.config.mjs"
+import { createRequire } from 'module';
 
-  <Tab label="CJS">
-    ```js title="rspack.config.cjs"
-    module.exports = {
-      resolveLoader: {
-        alias: {
-          'amazing-loader': require.resolve('path-to-your-amazing-loader'),
-        },
-      },
-    };
-    ```
-  </Tab>
-</Tabs>
+const require = createRequire(import.meta.url);
+
+export default {
+  resolveLoader: {
+    alias: {
+      'amazing-loader': require.resolve('path-to-your-amazing-loader'),
+    },
+  },
+};
+```
+
+
+**CJS**
+
+```js title="rspack.config.cjs"
+module.exports = {
+  resolveLoader: {
+    alias: {
+      'amazing-loader': require.resolve('path-to-your-amazing-loader'),
+    },
+  },
+};
+```
+
 
 Then, in the example code, you can write:
 

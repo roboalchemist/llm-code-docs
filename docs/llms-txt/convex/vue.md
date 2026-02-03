@@ -2,10 +2,6 @@
 
 # Source: https://docs.convex.dev/quickstart/vue.md
 
-# Source: https://docs.convex.dev/client/vue.md
-
-# Source: https://docs.convex.dev/quickstart/vue.md
-
 # Vue Quickstart
 
 Learn how to query data from Convex in a Vue app.
@@ -32,7 +28,7 @@ This quickstart guide uses a [community-maintained](/client/vue.md) Vue client f
    To get started, install the `convex` package.
 
    ```
-   cd my-vue-app && npm install convex-vue
+   cd my-vue-app && npm install convex convex-vue
    ```
 
 3. Set up a Convex dev deployment

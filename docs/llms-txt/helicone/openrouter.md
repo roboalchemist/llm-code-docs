@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/getting-started/integration-method/openrouter.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # OpenRouter Integration
 
 > Integrate Helicone with OpenRouter, a unified API for accessing multiple LLM providers. Monitor and analyze AI interactions across various models through a single, streamlined interface.

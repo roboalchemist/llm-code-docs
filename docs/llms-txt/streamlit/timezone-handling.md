@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/concepts/design/timezone-handling
+
 # Working with timezones
 
 In general, working with timezones can be tricky. Your Streamlit app users are not necessarily in the same timezone as the server running your app. It is especially true of public apps, where anyone in the world (in any timezone) can access your app. As such, it is crucial to understand how Streamlit handles timezones, so you can avoid unexpected behavior when displaying `datetime` information.

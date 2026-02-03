@@ -4,8 +4,6 @@
 title: Iotanalytics Pipeline
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Iotanalytics Pipeline
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.iotanalytics_pipeline.dataset/index.html
 ---
 
 # Iotanalytics Pipeline
@@ -18,14 +16,14 @@ aws.iotanalytics_pipeline
 
 ## Fields
 
-| Title                  | ID   | Type      | Data Type                                                    | Description |
-| ---------------------- | ---- | --------- | ------------------------------------------------------------ | ----------- |
-| _key                   | core | string    |
-| account_id             | core | string    |
-| activities             | core | json      | The activities that perform transformations on the messages. |
-| arn                    | core | string    | The ARN of the pipeline.                                     |
-| creation_time          | core | timestamp | When the pipeline was created.                               |
-| last_update_time       | core | timestamp | The last time the pipeline was updated.                      |
-| name                   | core | string    | The name of the pipeline.                                    |
-| reprocessing_summaries | core | json      | A summary of information about the pipeline reprocessing.    |
-| tags                   | core | hstore    |
+| Title                  | ID   | Type       | Data Type                                                    | Description |
+| ---------------------- | ---- | ---------- | ------------------------------------------------------------ | ----------- |
+| _key                   | core | string     |
+| account_id             | core | string     |
+| activities             | core | json       | The activities that perform transformations on the messages. |
+| arn                    | core | string     | The ARN of the pipeline.                                     |
+| creation_time          | core | timestamp  | When the pipeline was created.                               |
+| last_update_time       | core | timestamp  | The last time the pipeline was updated.                      |
+| name                   | core | string     | The name of the pipeline.                                    |
+| reprocessing_summaries | core | json       | A summary of information about the pipeline reprocessing.    |
+| tags                   | core | hstore_csv |

@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/error-non-object-array.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Error: Got a non-object result in the array, expected only objects
 
 > When using a REST Hook trigger, the data returned by the perform must be an array.

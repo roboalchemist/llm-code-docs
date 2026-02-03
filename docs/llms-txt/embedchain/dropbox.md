@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/components/data-sources/dropbox.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 💾 Dropbox
 
 To load folders or files from your Dropbox account, configure the `data_type` parameter as `dropbox` and specify the path to the desired file or folder, starting from the root directory of your Dropbox account.
@@ -14,13 +18,13 @@ Ensure your app has the following settings activated:
 
 Install the `dropbox` pypi package:
 
-```bash
+```bash  theme={null}
 pip install dropbox
 ```
 
 Following is an example of how to use the dropbox loader:
 
-```python
+```python  theme={null}
 import os
 from embedchain import App
 

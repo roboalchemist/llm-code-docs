@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/codereview/user-access.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # User Access
 
 > Manage which GitHub users can trigger Augment Code Review with allowlist mode.
@@ -11,8 +15,3 @@ Enterprise Plan administrators are able to specify a list of GitHub users who ca
 When Allowlist Mode is active, only users in the allowlist will be able to trigger Augment Code Review. Automatic and manual reviews will be disabled for all other users. This is useful for organizations that want to limit access to the feature to a select group of users.
 
 Administrators can manage permissions at [User Access for Code Review](https://app.augmentcode.com/settings/code-review/user-access).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.augmentcode.com/llms.txt

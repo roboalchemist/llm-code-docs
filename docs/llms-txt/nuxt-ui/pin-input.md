@@ -32,11 +32,8 @@ Use the `type` prop to change the input type. Defaults to `text`.
 </template>
 ```
 
-<note>
-
-When `type` is set to `number`, it will only accept numeric characters.
-
-</note>
+> [!NOTE]
+> When `type` is set to `number`, it will only accept numeric characters.
 
 ### Mask
 
@@ -88,11 +85,8 @@ Use the `color` prop to change the ring color when the PinInput is focused.
 </template>
 ```
 
-<note>
-
-The `highlight` prop is used here to show the focus state. It's used internally when a validation error occurs.
-
-</note>
+> [!NOTE]
+> The `highlight` prop is used here to show the focus state. It's used internally when a validation error occurs.
 
 ### Variant
 
@@ -155,7 +149,7 @@ interface PinInputProps {
   /**
    * The default value of the pin inputs when it is initially rendered. Use when you do not need to control its checked state.
    */
-  defaultValue?: string[][] | undefined;
+  defaultValue?: PinInputValue<T> | undefined;
   /**
    * When `true`, prevents the user from interacting with the pin input
    */
@@ -171,7 +165,7 @@ interface PinInputProps {
   /**
    * The controlled checked state of the pin input. Can be binded as `v-model`.
    */
-  modelValue?: string[] | null | undefined;
+  modelValue?: PinInputValue<T> | null | undefined;
   /**
    * The name of the field. Submitted with its owning form as part of a name/value pair.
    */
@@ -192,7 +186,7 @@ interface PinInputProps {
    * Input type for the inputs.
    * @default "\"text\" as never"
    */
-  type?: PinInputType | undefined;
+  type?: T | undefined;
 }
 ```
 
@@ -203,8 +197,8 @@ interface PinInputProps {
  * Emitted events for the PinInput component
  */
 interface PinInputEmits {
-  update:modelValue: (payload: [value: string[]]) => void;
-  complete: (payload: [value: string[]]) => void;
+  update:modelValue: (payload: [value: PinInputValue<T>]) => void;
+  complete: (payload: [value: PinInputValue<T>]) => void;
   change: (payload: [event: Event]) => void;
   blur: (payload: [event: Event]) => void;
 }
@@ -420,8 +414,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

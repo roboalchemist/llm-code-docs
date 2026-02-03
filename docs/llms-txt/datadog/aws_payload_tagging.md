@@ -4,7 +4,6 @@
 title: Capture Requests and Responses From AWS Services
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > APM > Tracing Guides > Capture Requests and Responses From AWS Services
-source_url: https://docs.datadoghq.com/guide/aws_payload_tagging/index.html
 ---
 
 # Capture Requests and Responses From AWS Services

@@ -2,19 +2,7 @@
 
 # Source: https://docs.livekit.io/agents/models/llm/plugins/cerebras.md
 
-# Source: https://docs.livekit.io/agents/integrations/cerebras.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/cerebras.md
-
-# Source: https://docs.livekit.io/agents/integrations/cerebras.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/cerebras.md
-
-# Source: https://docs.livekit.io/agents/integrations/cerebras.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/cerebras.md
-
-LiveKit docs › Models › Large language models (LLM) › Plugins › Cerebras
+LiveKit docs › Models › LLM › Plugins › Cerebras
 
 ---
 
@@ -28,7 +16,7 @@ Available in:
 
 ## Overview
 
-This plugin allows you to use [Cerebras](https://www.cerebras.net/) as an LLM provider for your voice agents.
+This plugin allows you to use [Cerebras](https://www.cerebras.net/) as an LLM provider for your voice agents. Cerebras compatibility is provided by the OpenAI plugin using the Cerebras Chat Completions API.
 
 > 💡 **LiveKit Inference**
 > 
@@ -41,7 +29,7 @@ Install the OpenAI plugin to add Cerebras support:
 **Python**:
 
 ```shell
-uv add "livekit-agents[openai]~=1.2"
+uv add "livekit-agents[openai]~=1.3"
 
 ```
 
@@ -117,7 +105,7 @@ The following links provide more information about the Cerebras LLM integration.
 
 ---
 
-This document was rendered at 2025-11-18T23:55:10.774Z.
+This document was rendered at 2026-02-03T03:25:00.046Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/llm/plugins/cerebras.md](https://docs.livekit.io/agents/models/llm/plugins/cerebras.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

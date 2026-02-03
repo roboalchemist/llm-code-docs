@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/status/st.success
+
 # st.success
 
 Display a success message.

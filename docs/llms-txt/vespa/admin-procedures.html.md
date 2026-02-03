@@ -288,7 +288,7 @@ A cluster is typically sized to handle a given load. A given percentage of the c
 
  To configure what the minimal cluster size is, use [min-distributor-up-ratio](../../reference/applications/services/content.html#min-distributor-up-ratio) and [min-storage-up-ratio](../../reference/applications/services/content.html#min-storage-up-ratio). |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

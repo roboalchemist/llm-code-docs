@@ -13,7 +13,7 @@ To use the Tavus API, you need an API key to authenticate your requests. This ke
 
 ## Get the API key
 
-1. Go to the <a href="https://platform.tavus.io/" target="_blank">Developer Portal</a> and select **API Key** from the sidebar menu.
+1. Go to the <a href="https://platform.tavus.io/">Developer Portal</a> and select **API Key** from the sidebar menu.
 2. Click **Create New Key** to begin generating your API key.
 3. Enter a name for the key and (optional) specify allowed IP addresses, then click **Create API Key**.
 4. Copy your newly created API key and store it securely.
@@ -120,7 +120,7 @@ This endpoint returns a single conversation by its unique identifier.
   * `system.shutdown`: When and why the conversation ended
   * `application.perception_analysis`: The final visual analysis of the user that includes their appearance, behavior, emotional states, and screen activities
 
-  This is particularly useful as an alternative to using the `callback_url` parameter on the <a href="/api-reference/conversations/create-conversation" target="_blank" rel="noopener noreferrer">create conversation</a> endpoint for retrieving detailed conversation data.
+  This is particularly useful as an alternative to using the `callback_url` parameter on the <a href="/api-reference/conversations/create-conversation">create conversation</a> endpoint for retrieving detailed conversation data.
 </Accordion>
 
 
@@ -142,7 +142,7 @@ Upload documents to your knowledge base for personas to reference during convers
 <Note>
   For now, our Knowledge Base only supports documents written in English and works best for conversations in English.
 
-  We’ll be expanding our Knowledge Base language support soon!
+  We'll be expanding our Knowledge Base language support soon!
 </Note>
 
 Create a new document in your [Knowledge Base](/sections/conversational-video-interface/knowledge-base).
@@ -155,9 +155,58 @@ Currently, we support the following file formats: .pdf, .txt, .docx, .doc, .png,
 
 Website URLs are also supported, where a website snapshot will be processed and transformed into a document.
 
-You can manage documents by adding tags using the `document_tags` entry in the request body.
+You can manage documents by adding tags using the `tags` field in the request body.
 
 Once created, you can add the document to your personas (see [Create Persona](/api-reference/personas/create-persona)) and your conversations (see [Create Conversation](/api-reference/conversations/create-conversation)).
+
+## Website Crawling
+
+When creating a document from a website URL, you can optionally enable multi-page crawling by providing the `crawl` parameter. This allows the system to follow links from your starting URL and process multiple pages into a single document.
+
+### Without Crawling (Default)
+
+By default, only the single page at the provided URL is scraped and processed.
+
+### With Crawling
+
+When you include the `crawl` object, the system will:
+
+1. Start at your provided URL
+2. Follow links to discover additional pages
+3. Process all discovered pages into a single document
+
+**Example request with crawling enabled:**
+
+```json theme={null}
+{
+  "document_name": "Company Knowledge Base",
+  "document_url": "https://docs.example.com/",
+  "crawl": {
+    "depth": 2,
+    "max_pages": 20
+  },
+  "callback_url": "https://your-server.com/webhook"
+}
+```
+
+### Crawl Parameters
+
+| Parameter   | Type            | Description                                                                                                                      |
+| ----------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `depth`     | integer (1-10)  | How many levels deep to follow links from the starting URL. A depth of 1 means only pages directly linked from the starting URL. |
+| `max_pages` | integer (1-100) | Maximum number of pages to crawl. Processing stops once this limit is reached.                                                   |
+
+### Rate Limits
+
+To prevent abuse, crawling has the following limits:
+
+* Maximum **100 crawl documents** per user
+* Maximum **5 concurrent crawls** at any time
+* **1-hour cooldown** between recrawls of the same document
+
+### Keeping Content Fresh
+
+Once a document is created with crawl configuration, you can trigger a recrawl to fetch fresh content using the [Recrawl Document](/api-reference/documents/recrawl-document) endpoint.
 
 
 # Delete Document
@@ -194,6 +243,70 @@ patch /v2/documents/{document_id}
 Update a specific document's metadata
 
 Update metadata for a specific document. This endpoint allows you to modify the document name and its tags.
+
+
+# Recrawl Document
+Source: https://docs.tavus.io/api-reference/documents/recrawl-document
+
+post /v2/documents/{document_id}/recrawl
+Trigger a recrawl of a website document to fetch fresh content
+
+Trigger a recrawl of a document that was created with crawl configuration. This is useful for keeping your knowledge base up-to-date when website content changes.
+
+## When to Recrawl
+
+Use this endpoint when:
+
+* The source website has been updated with new content
+* You want to refresh the document's content on a schedule
+* The initial crawl encountered errors and you want to retry
+
+## How Recrawling Works
+
+When you trigger a recrawl:
+
+1. The system uses the same starting URL from the original document
+2. Links are followed according to the crawl configuration (depth and max\_pages)
+3. New content is processed and stored
+4. Old vectors are replaced with the new content once processing completes
+5. The document's `crawl_count` is incremented and `last_crawled_at` is updated
+
+## Requirements
+
+* **Document State**: The document must be in `ready` or `error` state
+* **Crawl Configuration**: The document must have been created with a `crawl` configuration, or you must provide one in the request body
+
+## Rate Limits
+
+To prevent abuse, the following limits apply:
+
+* **Cooldown Period**: 1 hour between recrawls of the same document
+* **Concurrent Crawls**: Maximum 5 crawls running simultaneously per user
+* **Total Documents**: Maximum 100 crawl documents per user
+
+## Overriding Crawl Configuration
+
+You can optionally provide a `crawl` object in the request body to override the stored configuration for this recrawl:
+
+```json theme={null}
+{
+  "crawl": {
+    "depth": 3,
+    "max_pages": 50
+  }
+}
+```
+
+If no `crawl` object is provided, the original crawl configuration from document creation is used.
+
+## Monitoring Recrawl Progress
+
+After initiating a recrawl:
+
+1. The document status changes to `recrawling`
+2. If you provided a `callback_url` during document creation, you'll receive status updates
+3. When complete, the status changes to `ready` (or `error` if it failed)
+4. Use [Get Document](/api-reference/documents/get-document) to check the current status
 
 
 # Create Guardrails
@@ -335,7 +448,7 @@ This API is for developers looking to add real-time, human-like AI interactions 
 
 Use the end-to-end Conversational Video Interface (CVI) pipeline to build human-like, real-time multimodal video conversations with these three core components:
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Persona" icon="heart-pulse" href="/api-reference/personas/create-persona">
     Define the agent’s behavior, tone, and knowledge.
   </Card>
@@ -369,7 +482,7 @@ This endpoint creates and customizes a digital replica's behavior and capabiliti
 
 
 <Note>
-  For detailed guides on each layer of the Conversational Video Interface, click <a href="/sections/conversational-video-interface/persona/overview#cvi-layer" target="_blank">here</a>.
+  For detailed guides on each layer of the Conversational Video Interface, click <a href="/sections/conversational-video-interface/persona/overview#cvi-layer">here</a>.
 </Note>
 
 <Warning>
@@ -567,376 +680,88 @@ Source: https://docs.tavus.io/sections/changelog/changelog
 
 
 
-<Update label="July 25" tags={["2025"]}>
-  <Tabs>
-    <Tab title="CVI">
-      ## New Features
+<Update label="July 25">
+  ## New Features
 
-      * **Persona Editing in Developer Portal:** We've added new editing capabilities to help you refine your Personas more efficiently. You can now update system prompt, context, and layers directly in our Developer Portal, plus duplicate existing Personas to quickly create variations or use them as starting points for new projects. Find these new features in your Persona Library at platform.tavus.io.
-    </Tab>
-
-    <Tab title="Video Generation">
-      ## New Features
-
-      No features were added in this release.
-
-      ## Enhancements
-
-      No enhancements were made in this release.
-    </Tab>
-
-    <Tab title="Lipsync">
-      ## New Features
-
-      No features were added in this release.
-
-      ## Enhancements
-
-      No enhancements were made in this release.
-    </Tab>
-  </Tabs>
+  * **Persona Editing in Developer Portal:** We've added new editing capabilities to help you refine your Personas more efficiently. You can now update system prompt, context, and layers directly in our Developer Portal, plus duplicate existing Personas to quickly create variations or use them as starting points for new projects. Find these new features in your Persona Library at platform.tavus.io.
 </Update>
 
-<Update label="July 22" tags={["2025"]}>
-  <Tabs>
-    <Tab title="CVI">
-      ## New Features
+<Update label="July 22">
+  ## New Features
 
-      * **Llama 4 Support:** Your persona just got even smarter, thanks to Meta's Llama 4 model 🧠 You can start using Llama 4 by specifying `tavus-llama-4` for the LLM `model` value when creating a new persona or updating an existing one. Click <a href="https://docs.tavus.io/sections/conversational-video-interface/persona/llm#tavus-hosted-models" target="_blank">here</a> to learn more!
-    </Tab>
-
-    <Tab title="Video Generation">
-      ## New Features
-
-      No features were added in this release.
-
-      ## Enhancements
-
-      No enhancements were made in this release.
-    </Tab>
-
-    <Tab title="Lipsync">
-      ## New Features
-
-      No features were added in this release.
-
-      ## Enhancements
-
-      No enhancements were made in this release.
-    </Tab>
-  </Tabs>
+  * **Llama 4 Support:** Your persona just got even smarter, thanks to Meta's Llama 4 model 🧠 You can start using Llama 4 by specifying `tavus-llama-4` for the LLM `model` value when creating a new persona or updating an existing one. Click <a href="https://docs.tavus.io/sections/conversational-video-interface/persona/llm#tavus-hosted-models">here</a> to learn more!
 </Update>
 
-<Update label="July 15" tags={["2025"]}>
-  <Tabs>
-    <Tab title="CVI">
-      ## New Features
+<Update label="July 15">
+  ## New Features
 
-      * **React Component Library:** Developers can build with Tavus even faster now with our pre-defined components 🚀 Click <a href="https://docs.tavus.io/sections/conversational-video-interface/component-library/overview" target="_blank">here</a> to learn more!
-    </Tab>
-
-    <Tab title="Video Generation">
-      ## New Features
-
-      No features were added in this release.
-
-      ## Enhancements
-
-      No enhancements were made in this release.
-    </Tab>
-
-    <Tab title="Lipsync">
-      ## New Features
-
-      No features were added in this release.
-
-      ## Enhancements
-
-      No enhancements were made in this release.
-    </Tab>
-  </Tabs>
+  * **React Component Library:** Developers can build with Tavus even faster now with our pre-defined components 🚀 Click <a href="https://docs.tavus.io/sections/conversational-video-interface/component-library/overview">here</a> to learn more!
 </Update>
 
-<Update label="June 27" tags={["2025"]}>
-  <Tabs>
-    <Tab title="CVI">
-      ## New Features
+<Update label="June 27">
+  ## New Features
 
-      * **Multilingual Conversation Support:** CVI now supports dynamic multilingual conversations through automatic language detection. Set the language parameter to "multilingual" and CVI will automatically detect the user's spoken language and respond in the same language using ASR technology.
-      * **Audio-Only Mode:** CVI now supports audio-only conversations with advanced perception (powered by Raven) and intelligent turn-taking (powered by Sparrow). Set `audio_only=true` in your create conversation request to enable streamlined voice-first interactions.
-    </Tab>
-
-    <Tab title="Video Generation">
-      ## New Features
-
-      No features were added in this release.
-
-      ## Enhancements
-
-      No enhancements were made in this release.
-    </Tab>
-
-    <Tab title="Lipsync">
-      ## New Features
-
-      No features were added in this release.
-
-      ## Enhancements
-
-      No enhancements were made in this release.
-    </Tab>
-  </Tabs>
+  * **Multilingual Conversation Support:** CVI now supports dynamic multilingual conversations through automatic language detection. Set the language parameter to "multilingual" and CVI will automatically detect the user's spoken language and respond in the same language using ASR technology.
+  * **Audio-Only Mode:** CVI now supports audio-only conversations with advanced perception (powered by Raven) and intelligent turn-taking (powered by Sparrow-1). Set `audio_only=true` in your create conversation request to enable streamlined voice-first interactions.
 </Update>
 
-<Update label="June 20" tags={["2025"]}>
-  <Tabs>
-    <Tab title="CVI">
-      ## New Features
+<Update label="June 20">
+  ## Enhancements
 
-      No features were added in this release.
-
-      ## Enhancements
-
-      * **Fixed CVI responsiveness issue:** Resolved an issue where CVI would occasionally ignore very brief user utterances. All user inputs, regardless of length, now receive consistent responses.
-      * **Expanded tavus-llama-4 context window:** Increased maximum context window to 32,000 tokens. For optimal performance and response times, we recommend staying under 25,000 tokens.
-    </Tab>
-
-    <Tab title="Video Generation">
-      ## New Features
-
-      No features were added in this release.
-
-      ## Enhancements
-
-      No enhancements were made in this release.
-    </Tab>
-
-    <Tab title="Lipsync">
-      ## New Features
-
-      No features were added in this release.
-
-      ## Enhancements
-
-      No enhancements were made in this release.
-    </Tab>
-  </Tabs>
+  * **Fixed CVI responsiveness issue:** Resolved an issue where CVI would occasionally ignore very brief user utterances. All user inputs, regardless of length, now receive consistent responses.
+  * **Expanded tavus-llama-4 context window:** Increased maximum context window to 32,000 tokens. For optimal performance and response times, we recommend staying under 25,000 tokens.
 </Update>
 
-<Update label="June 3" tags={["2025"]}>
-  <Tabs>
-    <Tab title="CVI">
-      ## New Features
+<Update label="June 3">
+  ## Enhancements
 
-      No features were added in this release.
-
-      ## Enhancements
-
-      * Reduced conversation boot time by 58% (p50).
-    </Tab>
-
-    <Tab title="Video Generation">
-      ## New Features
-
-      No features were added in this release.
-
-      ## Enhancements
-
-      No enhancements were made in this release.
-    </Tab>
-
-    <Tab title="Lipsync">
-      ## New Features
-
-      No features were added in this release.
-
-      ## Enhancements
-
-      No enhancements were made in this release.
-    </Tab>
-  </Tabs>
+  * Reduced conversation boot time by 58% (p50).
 </Update>
 
-<Update label="May 28" tags={["2025"]}>
-  <Tabs>
-    <Tab title="CVI">
-      ## Changes
+<Update label="May 28">
+  ## Changes
 
-      * Added a new recording requirement to <a href="/sections/replica/replica-training" target="_blank">Replica Training</a>: Start the talking segment with a big smile.
+  * Added a new recording requirement to <a href="/sections/replica/replica-training">Replica Training</a>: Start the talking segment with a big smile.
 
-      ## Enhancements
+  ## Enhancements
 
-      * Added <a href="/sections/event-schemas/conversation-echo" target="_blank">echo</a> and <a href="/sections/event-schemas/conversation-respond" target="_blank">respond</a> events to conversational context.
-    </Tab>
-
-    <Tab title="Video Generation">
-      ## Changes
-
-      * Added a new recording requirement to <a href="/sections/replica/replica-training" target="_blank">Replica Training</a>: Start the talking segment with a big smile.
-    </Tab>
-
-    <Tab title="Lipsync">
-      ## New Features
-
-      No features were added in this release.
-
-      ## Enhancements
-
-      No enhancements were made in this release.
-    </Tab>
-  </Tabs>
+  * Added <a href="/sections/event-schemas/conversation-echo">echo</a> and <a href="/sections/event-schemas/conversation-respond">respond</a> events to conversational context.
 </Update>
 
-<Update label="May 17" tags={["2025"]}>
-  <Tabs>
-    <Tab title="CVI">
-      ## New Features
+<Update label="May 17">
+  ## Enhancements
 
-      No features were added in this release.
-
-      ## Enhancements
-
-      * **Major Phoenix 3 Enhancements for CVI**:
-        * Increased frame rate from 27fps to 32fps, significantly boosting smoothness.
-        * Reduced Phoenix step's warm boot time by 60% (from 5s to 2s).
-        * Lipsync accuracy improved by \~22% based on AVSR metric.
-        * Resolved blurriness and choppiness at conversation start.
-        * Enhanced listening mode with more natural micro expressions (eyebrow movements, subtle gestures).
-        * Greenscreen mode speed boosted by an additional \~1.5fps.
-      * **Enhanced CVI Audio Quality**: Audio clicks significantly attenuated, providing clearer conversational audio.
-      * **Phoenix 3 Visual Artifacts Fix**: Resolved visual artifacts in 4K videos on Apple devices, eliminating black spot artifacts in thumbnails.
-    </Tab>
-
-    <Tab title="Video Generation">
-      ## New Features
-
-      No features were added in this release.
-
-      ## Enhancements
-
-      * **Faster Phoenix 3 Video Gen**: Substantially lowered generation times
-        * 4K videos: reduced from \~22 mins to \~10 mins per minute generated.
-        * 1080p videos: down from \~8 mins to \~3.25 mins per minute generated.
-    </Tab>
-
-    <Tab title="Lipsync">
-      ## New Features
-
-      No features were added in this release.
-
-      ## Enhancements
-
-      No enhancements were made in this release.
-    </Tab>
-  </Tabs>
+  * **Major Phoenix 3 Enhancements for CVI**:
+    * Increased frame rate from 27fps to 32fps, significantly boosting smoothness.
+    * Reduced Phoenix step's warm boot time by 60% (from 5s to 2s).
+    * Lipsync accuracy improved by \~22% based on AVSR metric.
+    * Resolved blurriness and choppiness at conversation start.
+    * Enhanced listening mode with more natural micro expressions (eyebrow movements, subtle gestures).
+    * Greenscreen mode speed boosted by an additional \~1.5fps.
+  * **Enhanced CVI Audio Quality**: Audio clicks significantly attenuated, providing clearer conversational audio.
+  * **Phoenix 3 Visual Artifacts Fix**: Resolved visual artifacts in 4K videos on Apple devices, eliminating black spot artifacts in thumbnails.
 </Update>
 
-<Update label="May 9" tags={["2025"]}>
-  <Tabs>
-    <Tab title="CVI">
-      ## New Features
+<Update label="May 9">
+  ## New Features
 
-      * Launched <a href="https://www.tavus.io/post/building-real-time-ai-video-agents-with-livekit-and-tavus" target="_blank">LiveKit Integration</a>: With Tavus video agents now integrated into LiveKit, you can add humanlike video responses to your voice agents in seconds.
-      * <a href="https://docs.tavus.io/api-reference/personas/patch-persona" target="_blank">Persona API</a>: Enabled patch updates to personas.
+  * Launched <a href="https://www.tavus.io/post/building-real-time-ai-video-agents-with-livekit-and-tavus">LiveKit Integration</a>: With Tavus video agents now integrated into LiveKit, you can add humanlike video responses to your voice agents in seconds.
+  * <a href="https://docs.tavus.io/api-reference/personas/patch-persona">Persona API</a>: Enabled patch updates to personas.
 
-      ## Enhancements
+  ## Enhancements
 
-      * Resolved TTS (Cartesia) stability issues and addressed hallucination.
-      * **Phoenix 3 Improvements**:
-        * Fixed blinking/jumping issues and black spots in videos.
-        * FPS optimization to resolve static and audio crackling.
-    </Tab>
-
-    <Tab title="Video Generation">
-      ## New Features
-
-      No features were added in this release.
-
-      ## Enhancements
-
-      * **Wave Feature Enhancements**: Rolling out fixes for replicas previously missing <a href="https://docs.tavus.io/api-reference/video-request/create-video#body-properties-start-with-wave" target="_blank">wave/no-wave functionality</a>.
-    </Tab>
-
-    <Tab title="Lipsync">
-      ## New Features
-
-      No features were added in this release.
-
-      ## Enhancements
-
-      No enhancements were made in this release.
-    </Tab>
-  </Tabs>
+  * Resolved TTS (Cartesia) stability issues and addressed hallucination.
+  * **Phoenix 3 Improvements**:
+    * Fixed blinking/jumping issues and black spots in videos.
+    * FPS optimization to resolve static and audio crackling.
 </Update>
 
-<Update label="May" tags={["2024"]}>
-  <Tabs>
-    <Tab title="CVI">
-      ## New Features
+<Update label="April">
+  ## Enhancements
 
-      No features were added in this release.
-
-      ## Enhancements
-
-      No enhancements were made in this release.
-    </Tab>
-
-    <Tab title="Video Generation">
-      ## New Features
-
-      * Added the `audio_url` parameter in the <a href="https://docs.tavus.io/api-reference/video-request/create-video#generate-from-audio-file" target="_blank">`/videos`</a> endpoint to generate videos using any custom audio source.
-
-      ## Enhancements
-
-      No enhancements were made in this release.
-    </Tab>
-
-    <Tab title="Lipsync">
-      ## New Features
-
-      No features were added in this release.
-
-      ## Enhancements
-
-      No enhancements were made in this release.
-    </Tab>
-  </Tabs>
-</Update>
-
-<Update label="April" tags={["2024"]}>
-  <Tabs>
-    <Tab title="CVI">
-      ## New Features
-
-      No features were added in this release.
-
-      ## Enhancements
-
-      * **Replica API**:
-        * Enhanced Error Messaging for Training Videos.
-        * Optimized Auto QA for Training Videos.
-    </Tab>
-
-    <Tab title="Video Generation">
-      ## New Features
-
-      No features were added in this release.
-
-      ## Enhancements
-
-      No enhancements were made in this release.
-    </Tab>
-
-    <Tab title="Lipsync">
-      ## New Features
-
-      No features were added in this release.
-
-      ## Enhancements
-
-      No enhancements were made in this release.
-    </Tab>
-  </Tabs>
+  * **Replica API**:
+    * Enhanced Error Messaging for Training Videos.
+    * Optimized Auto QA for Training Videos.
 </Update>
 
 
@@ -949,7 +774,7 @@ High-level component compositions that combine multiple UI elements into complet
 
 The Conversation component provides a complete video chat interface for one-to-one conversations with AI replicas
 
-```bash  theme={null}
+```bash theme={null}
 npx @tavus/cvi-ui@latest add conversation-01
 ```
 
@@ -973,11 +798,11 @@ npx @tavus/cvi-ui@latest add conversation-01
   </Tab>
 
   <Tab title="Code">
-    ```tsx  theme={null}
+    ```tsx theme={null}
     import { Conversation } from './components/cvi/components/conversation';
     ```
 
-    ```tsx  theme={null}
+    ```tsx theme={null}
     <Conversation
       conversationUrl={conversationUrl}
       onLeave={() => handleLeaveCall()}
@@ -989,14 +814,14 @@ npx @tavus/cvi-ui@latest add conversation-01
 Preview
 
 <Frame>
-    <img src="https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/conversation_01_preview.png?fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=6044bc06c6284980b25ba241e8170e8a" alt="Conversation Block Preview" data-og-width="2260" width="2260" data-og-height="1402" height="1402" data-path="images/conversation_01_preview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/conversation_01_preview.png?w=280&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=5c1ad75844fa252801adbba8a3dc1f64 280w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/conversation_01_preview.png?w=560&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=367e8980b33b20b65a387212b693ed6e 560w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/conversation_01_preview.png?w=840&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=e6b770f67e02c63e905d81839f5e016c 840w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/conversation_01_preview.png?w=1100&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=e26dd9c688621a84d03bfda1234b15e2 1100w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/conversation_01_preview.png?w=1650&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=fd2fb8f7ec87702f44fba90cc95550ef 1650w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/conversation_01_preview.png?w=2500&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=5c86084deb64ad185d7892bf0f24558c 2500w" />
+  <img alt="Conversation Block Preview" />
 </Frame>
 
 ### Hair Check
 
 The HairCheck component provides a pre-call interface for users to test and configure their audio/video devices before joining a video chat.
 
-```bash  theme={null}
+```bash theme={null}
 npx @tavus/cvi-ui@latest add hair-check-01
 ```
 
@@ -1020,11 +845,11 @@ npx @tavus/cvi-ui@latest add hair-check-01
   </Tab>
 
   <Tab title="Code">
-    ```tsx  theme={null}
+    ```tsx theme={null}
     import { HairCheck } from './components/cvi/components/hair-check';
     ```
 
-    ```tsx  theme={null}
+    ```tsx theme={null}
     <HairCheck
       isJoinBtnLoading={isLoading}
       onJoin={handleJoinCall}
@@ -1036,7 +861,9 @@ npx @tavus/cvi-ui@latest add hair-check-01
 
 Preview
 
-<Frame><img src="https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/haircheck_01_preview.png?fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=7ef2056a38131d3f8caa5416c9dd0d31" alt="Haircheck Block Preview" data-og-width="2412" width="2412" data-og-height="1388" height="1388" data-path="images/haircheck_01_preview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/haircheck_01_preview.png?w=280&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=d1476461af1be9d952c30bf352118d6b 280w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/haircheck_01_preview.png?w=560&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=baa6efe01df631f044a77b00cec6673e 560w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/haircheck_01_preview.png?w=840&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=1a542cd4a5c995230a13316763a94441 840w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/haircheck_01_preview.png?w=1100&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=9ccb982940c78bd8f9d4317d7d0cb2db 1100w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/haircheck_01_preview.png?w=1650&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=c8e3ba04bcd0b8c7d17a6480d2a519e5 1650w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/haircheck_01_preview.png?w=2500&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=394a6b3ba4defc9ccab312f11cb21384 2500w" /></Frame>
+<Frame>
+  <img alt="Haircheck Block Preview" />
+</Frame>
 
 
 # Components
@@ -1050,7 +877,7 @@ Learn about our pre-built React components to accelerate integrating the Tavus C
 
 The `CVIProvider` component wraps your app with the Daily.co provider context, enabling all Daily React hooks and components to function.
 
-```bash  theme={null}
+```bash theme={null}
 npx @tavus/cvi-ui@latest add cvi-provider
 ```
 
@@ -1070,11 +897,11 @@ npx @tavus/cvi-ui@latest add cvi-provider
   </Tab>
 
   <Tab title="Code">
-    ```tsx  theme={null}
+    ```tsx theme={null}
     import { CVIProvider } from './cvi-provider';
     ```
 
-    ```tsx  theme={null}
+    ```tsx theme={null}
     <CVIProvider>
       {/* your app components */}
     </CVIProvider>
@@ -1086,7 +913,7 @@ npx @tavus/cvi-ui@latest add cvi-provider
 
 The `AudioWave` component provides real-time audio level visualization for video chat participants, displaying animated bars that respond to audio input levels.
 
-```bash  theme={null}
+```bash theme={null}
 npx @tavus/cvi-ui@latest add audio-wave
 ```
 
@@ -1108,11 +935,11 @@ npx @tavus/cvi-ui@latest add audio-wave
   </Tab>
 
   <Tab title="Code">
-    ```tsx  theme={null}
+    ```tsx theme={null}
     import { AudioWave } from './audio-wave';
     ```
 
-    ```tsx  theme={null}
+    ```tsx theme={null}
     <AudioWave id={participantId} />
     ```
   </Tab>
@@ -1122,7 +949,7 @@ npx @tavus/cvi-ui@latest add audio-wave
 
 The `device-select` module provides advanced device selection controls, including dropdowns for choosing microphones and cameras, and integrated toggle buttons.
 
-```bash  theme={null}
+```bash theme={null}
 npx @tavus/cvi-ui@latest add device-select
 ```
 
@@ -1146,11 +973,11 @@ npx @tavus/cvi-ui@latest add device-select
   </Tab>
 
   <Tab title="Code">
-    ```tsx  theme={null}
+    ```tsx theme={null}
     import { MicSelectBtn, CameraSelectBtn, ScreenShareButton } from './device-select';
     ```
 
-    ```tsx  theme={null}
+    ```tsx theme={null}
     <MicSelectBtn />
     <CameraSelectBtn />
     <ScreenShareButton />
@@ -1162,7 +989,7 @@ npx @tavus/cvi-ui@latest add device-select
 
 The `media-controls` module provides simple toggle buttons for microphone, camera, and screen sharing, designed for direct use in video chat interfaces.
 
-```bash  theme={null}
+```bash theme={null}
 npx @tavus/cvi-ui@latest add media-controls
 ```
 
@@ -1186,11 +1013,11 @@ npx @tavus/cvi-ui@latest add media-controls
   </Tab>
 
   <Tab title="Code">
-    ```tsx  theme={null}
+    ```tsx theme={null}
     import { MicToggleButton, CameraToggleButton, ScreenShareButton } from './media-controls';
     ```
 
-    ```tsx  theme={null}
+    ```tsx theme={null}
     <MicToggleButton />
     <CameraToggleButton />
     <ScreenShareButton />
@@ -1210,7 +1037,7 @@ See what hooks Tavus supports for managing video calls, media controls, particip
 
 Essential hook for joining and leaving video calls.
 
-```bash  theme={null}
+```bash theme={null}
 npx @tavus/cvi-ui@latest add use-cvi-call
 ```
 
@@ -1231,11 +1058,11 @@ npx @tavus/cvi-ui@latest add use-cvi-call
   </Tab>
 
   <Tab title="Code">
-    ```tsx  theme={null}
+    ```tsx theme={null}
     import { useCVICall } from './hooks/use-cvi-call';
     ```
 
-    ```tsx  theme={null}
+    ```tsx theme={null}
     const CallManager = () => {
       const { joinCall, leaveCall } = useCVICall();
 
@@ -1258,7 +1085,7 @@ npx @tavus/cvi-ui@latest add use-cvi-call
 
 A React hook that manages device permissions and camera initialization for the hair-check component.
 
-```bash  theme={null}
+```bash theme={null}
 npx @tavus/cvi-ui@latest add use-start-haircheck
 ```
 
@@ -1283,11 +1110,11 @@ npx @tavus/cvi-ui@latest add use-start-haircheck
   </Tab>
 
   <Tab title="Code">
-    ```tsx  theme={null}
+    ```tsx theme={null}
     import { useStartHaircheck } from './hooks/use-start-haircheck';
     ```
 
-    ```tsx  theme={null}
+    ```tsx theme={null}
     const HairCheckComponent = () => {
       const {
         isPermissionsPrompt,
@@ -1322,7 +1149,7 @@ npx @tavus/cvi-ui@latest add use-start-haircheck
 
 A React hook that provides local camera state and toggle functionality.
 
-```bash  theme={null}
+```bash theme={null}
 npx @tavus/cvi-ui@latest add use-local-camera
 ```
 
@@ -1344,11 +1171,11 @@ npx @tavus/cvi-ui@latest add use-local-camera
   </Tab>
 
   <Tab title="Code">
-    ```tsx  theme={null}
+    ```tsx theme={null}
     import { useLocalCamera } from './hooks/use-local-camera';
     ```
 
-    ```tsx  theme={null}
+    ```tsx theme={null}
     const CameraControls = () => {
       const { onToggleCamera, isCamReady, isCamMuted } = useLocalCamera();
 
@@ -1369,7 +1196,7 @@ npx @tavus/cvi-ui@latest add use-local-camera
 
 A React hook that provides local microphone state and toggle functionality.
 
-```bash  theme={null}
+```bash theme={null}
 npx @tavus/cvi-ui@latest add use-local-microphone
 ```
 
@@ -1391,11 +1218,11 @@ npx @tavus/cvi-ui@latest add use-local-microphone
   </Tab>
 
   <Tab title="Code">
-    ```tsx  theme={null}
+    ```tsx theme={null}
     import { useLocalMicrophone } from './hooks/use-local-microphone';
     ```
 
-    ```tsx  theme={null}
+    ```tsx theme={null}
     const MicrophoneControls = () => {
       const { onToggleMicrophone, isMicReady, isMicMuted } = useLocalMicrophone();
 
@@ -1416,7 +1243,7 @@ npx @tavus/cvi-ui@latest add use-local-microphone
 
 A React hook that provides local screen sharing state and toggle functionality.
 
-```bash  theme={null}
+```bash theme={null}
 npx @tavus/cvi-ui@latest add use-local-screenshare
 ```
 
@@ -1446,11 +1273,11 @@ npx @tavus/cvi-ui@latest add use-local-screenshare
   </Tab>
 
   <Tab title="Code">
-    ```tsx  theme={null}
+    ```tsx theme={null}
     import { useLocalScreenshare } from './hooks/use-local-screenshare';
     ```
 
-    ```tsx  theme={null}
+    ```tsx theme={null}
     const ScreenShareControls = () => {
       const { onToggleScreenshare, isScreenSharing } = useLocalScreenshare();
 
@@ -1471,7 +1298,7 @@ npx @tavus/cvi-ui@latest add use-local-screenshare
 
 A React hook that requests camera and microphone permissions with optimized audio processing settings.
 
-```bash  theme={null}
+```bash theme={null}
 npx @tavus/cvi-ui@latest add use-request-permissions
 ```
 
@@ -1500,11 +1327,11 @@ npx @tavus/cvi-ui@latest add use-request-permissions
   </Tab>
 
   <Tab title="Code">
-    ```tsx  theme={null}
+    ```tsx theme={null}
     import { useRequestPermissions } from './hooks/use-request-permissions';
     ```
 
-    ```tsx  theme={null}
+    ```tsx theme={null}
     const PermissionRequest = () => {
       const requestPermissions = useRequestPermissions();
 
@@ -1535,7 +1362,7 @@ npx @tavus/cvi-ui@latest add use-request-permissions
 
 A React hook that returns the IDs of all Tavus replica participants in a call.
 
-```bash  theme={null}
+```bash theme={null}
 npx @tavus/cvi-ui@latest add use-replica-ids
 ```
 
@@ -1553,11 +1380,11 @@ npx @tavus/cvi-ui@latest add use-replica-ids
   </Tab>
 
   <Tab title="Code">
-    ```tsx  theme={null}
+    ```tsx theme={null}
     import { useReplicaIDs } from './hooks/use-replica-ids';
     ```
 
-    ```tsx  theme={null}
+    ```tsx theme={null}
     const ids = useReplicaIDs();
     // ids is an array of participant IDs for Tavus replicas
     ```
@@ -1568,7 +1395,7 @@ npx @tavus/cvi-ui@latest add use-replica-ids
 
 A React hook that returns the IDs of all remote participants in a call.
 
-```bash  theme={null}
+```bash theme={null}
 npx @tavus/cvi-ui@latest add use-remote-participant-ids
 ```
 
@@ -1586,11 +1413,11 @@ npx @tavus/cvi-ui@latest add use-remote-participant-ids
   </Tab>
 
   <Tab title="Code">
-    ```tsx  theme={null}
+    ```tsx theme={null}
     import { useRemoteParticipantIDs } from './hooks/use-remote-participant-ids';
     ```
 
-    ```tsx  theme={null}
+    ```tsx theme={null}
     const remoteIds = useRemoteParticipantIDs();
     // remoteIds is an array of remote participant IDs
     ```
@@ -1605,7 +1432,7 @@ npx @tavus/cvi-ui@latest add use-remote-participant-ids
 
 A React hook that listens for CVI app messages and provides a callback mechanism for handling various conversation events.
 
-```bash  theme={null}
+```bash theme={null}
 npx @tavus/cvi-ui@latest add cvi-events-hooks
 ```
 
@@ -1628,11 +1455,11 @@ npx @tavus/cvi-ui@latest add cvi-events-hooks
   </Tab>
 
   <Tab title="Code">
-    ```tsx  theme={null}
+    ```tsx theme={null}
     import { useObservableEvent } from './hooks/cvi-events-hooks';
     ```
 
-    ```tsx  theme={null}
+    ```tsx theme={null}
     const ConversationHandler = () => {
       useObservableEvent((event) => {
         switch (event.event_type) {
@@ -1658,7 +1485,7 @@ npx @tavus/cvi-ui@latest add cvi-events-hooks
 
 A React hook that provides a function to send CVI app messages to other participants in the call.
 
-```bash  theme={null}
+```bash theme={null}
 npx @tavus/cvi-ui@latest add cvi-events-hooks
 ```
 
@@ -1682,11 +1509,11 @@ npx @tavus/cvi-ui@latest add cvi-events-hooks
   </Tab>
 
   <Tab title="Code">
-    ```tsx  theme={null}
+    ```tsx theme={null}
     import { useSendAppMessage } from './hooks/cvi-events-hooks';
     ```
 
-    ```tsx  theme={null}
+    ```tsx theme={null}
     const MessageSender = () => {
       const sendMessage = useSendAppMessage();
 
@@ -1760,7 +1587,7 @@ Alternatively, you can start from our example project: [CVI UI Haircheck Convers
 
 ### 1. Initialize CVI in Your Project
 
-```bash  theme={null}
+```bash theme={null}
 npx @tavus/cvi-ui@latest init
 ```
 
@@ -1770,7 +1597,7 @@ npx @tavus/cvi-ui@latest init
 
 ### 2. Add CVI Components
 
-```bash  theme={null}
+```bash theme={null}
 npx @tavus/cvi-ui@latest add conversation
 ```
 
@@ -1778,7 +1605,7 @@ npx @tavus/cvi-ui@latest add conversation
 
 In your root directory (main.tsx or index.tsx):
 
-```tsx  theme={null}
+```tsx theme={null}
 import { CVIProvider } from './components/cvi/components/cvi-provider';
 
 function App() {
@@ -1794,10 +1621,10 @@ Learn how to create a conversation URL at [https://docs.tavus.io/api-reference/c
 
 <Info>
   Ensure your body element has full dimensions (`width: 100%` and `height:
-    100%`) in your CSS for proper component display.
+      100%`) in your CSS for proper component display.
 </Info>
 
-```tsx  theme={null}
+```tsx theme={null}
 import { Conversation } from './components/cvi/components/conversation';
 
 function CVI() {
@@ -1843,7 +1670,7 @@ Start a conversation in audio-only mode, perfect for voice-only or low-bandwidth
 </Note>
 
 <Steps>
-  <Step title="Step 1: Create your Audio Only Conversation" titleSize="h3">
+  <Step title="Step 1: Create your Audio Only Conversation">
     <Note>
       In this example, we will use stock persona ID ***pdced222244b*** (Sales Coach).
     </Note>
@@ -1863,14 +1690,14 @@ Start a conversation in audio-only mode, perfect for voice-only or low-bandwidth
     ```
 
     <Note>
-      Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys" target="_blank">Developer Portal</a>.
+      Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys">Developer Portal</a>.
     </Note>
   </Step>
 
-  <Step title="Step 2: Join the Conversation" titleSize="h3">
+  <Step title="Step 2: Join the Conversation">
     To join the conversation, click the link in the ***conversation\_url*** field from the response:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
         "conversation_id": "cd7e3eac05ede40c",
         "conversation_name": "New Conversation 1751268887110",
@@ -1892,7 +1719,7 @@ Apply a green screen or custom background for a personalized visual experience.
 ## Customize Background in Conversation Setup
 
 <Steps>
-  <Step title="Step 1: Create Your Conversation" titleSize="h3">
+  <Step title="Step 1: Create Your Conversation">
     <Note>
       In this example, we will use stock replica ID ***rfe12d8b9597*** (Nathan) and stock persona ID ***pdced222244b*** (Sales Coach).
     </Note>
@@ -1918,14 +1745,14 @@ Apply a green screen or custom background for a personalized visual experience.
     ```
 
     <Note>
-      Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys" target="_blank">Developer Portal</a>.
+      Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys">Developer Portal</a>.
     </Note>
   </Step>
 
-  <Step title="Step 2: Customize the Background" titleSize="h3">
+  <Step title="Step 2: Customize the Background">
     The above request will return the following response:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "conversation_id": "ca4301628cb9",
       "conversation_name": "Improve Sales Technique",
@@ -1939,7 +1766,7 @@ Apply a green screen or custom background for a personalized visual experience.
     The replica will appear with a green background. You can customize it using a WebGL-based on the front-end. This allows you to apply a different color or add a custom image.
 
     <Tip>
-      To preview this feature, try our <a href="https://andy-tavus.github.io/CVI-greenscreen-webGL/" target="_blank">Green Screen Sample App</a>. Paste the conversation URL to modify the background.
+      To preview this feature, try our <a href="https://andy-tavus.github.io/CVI-greenscreen-webGL/">Green Screen Sample App</a>. Paste the conversation URL to modify the background.
     </Tip>
   </Step>
 </Steps>
@@ -1953,7 +1780,7 @@ Configure call duration and timeout behavior to manage how and when a conversati
 ## Create a Conversation with Custom Duration and Timeout
 
 <Steps>
-  <Step title="Step 1: Create Your Conversation" titleSize="h3">
+  <Step title="Step 1: Create Your Conversation">
     <Note>
       In this example, we will use stock replica ID ***rfe12d8b9597*** (Nathan) and stock persona ID ***pdced222244b*** (Sales Coach).
     </Note>
@@ -1981,7 +1808,7 @@ Configure call duration and timeout behavior to manage how and when a conversati
     ```
 
     <Note>
-      Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys" target="_blank">Developer Portal</a>.
+      Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys">Developer Portal</a>.
     </Note>
 
     The request example above includes the following customizations:
@@ -1993,10 +1820,10 @@ Configure call duration and timeout behavior to manage how and when a conversati
     | `participant_absent_timeout` | Time (in seconds) to end the call if no one joins after it's created. Default: 300.             |
   </Step>
 
-  <Step title="Step 2: Join the Conversation" titleSize="h3">
+  <Step title="Step 2: Join the Conversation">
     To join the conversation, click the link in the ***conversation\_url*** field from the response:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "conversation_id": "ca4301628cb9",
       "conversation_name": "Improve Sales Technique",
@@ -2024,7 +1851,7 @@ Enable closed captions for accessibility or live transcription during conversati
 ## Enable Captions in Real Time During the Conversation
 
 <Steps>
-  <Step title="Step 1: Create Your Conversation" titleSize="h3">
+  <Step title="Step 1: Create Your Conversation">
     <Note>
       In this example, we will use stock replica ID ***rfe12d8b9597*** (Nathan) and stock persona ID ***pdced222244b*** (Sales Coach).
     </Note>
@@ -2050,14 +1877,14 @@ Enable closed captions for accessibility or live transcription during conversati
     ```
 
     <Note>
-      Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys" target="_blank">Developer Portal</a>.
+      Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys">Developer Portal</a>.
     </Note>
   </Step>
 
-  <Step title="Step 2: Join the Conversation" titleSize="h3">
+  <Step title="Step 2: Join the Conversation">
     To join the conversation, click the link in the ***conversation\_url*** field from the response:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "conversation_id": "ca4301628cb9",
       "conversation_name": "Improve Sales Technique",
@@ -2073,6 +1900,99 @@ Enable closed captions for accessibility or live transcription during conversati
 </Steps>
 
 
+# Participant Limits
+Source: https://docs.tavus.io/sections/conversational-video-interface/conversation/customizations/participant-limits
+
+Control the maximum number of participants allowed in a conversation.
+
+## Create a Conversation with Participant Limits
+
+<Note>
+  Replicas count as participants. For example, `max_participants: 2` allows one human participant plus one replica.
+</Note>
+
+<Steps>
+  <Step title="Step 1: Create Your Conversation">
+    Set `max_participants` to limit room capacity:
+
+    ```shell cURL theme={null}
+    curl --request POST \
+      --url https://tavusapi.com/v2/conversations \
+      --header 'Content-Type: application/json' \
+      --header 'x-api-key: <api_key>' \
+      --data '{
+      "persona_id": "pdced222244b",
+      "replica_id": "rfe12d8b9597",
+      "max_participants": 2
+    }'
+    ```
+  </Step>
+
+  <Step title="Step 2: Join the Conversation">
+    ```json theme={null}
+    {
+      "conversation_id": "ca4301628cb9",
+      "conversation_url": "https://tavus.daily.co/ca4301628cb9",
+      "status": "active"
+    }
+    ```
+
+    When the limit is reached, additional users cannot join.
+  </Step>
+</Steps>
+
+
+# Private Rooms
+Source: https://docs.tavus.io/sections/conversational-video-interface/conversation/customizations/private-rooms
+
+Create authenticated conversations with meeting tokens for enhanced security.
+
+## Create a Private Conversation
+
+<Steps>
+  <Step title="Step 1: Create Your Conversation">
+    To create a private room, set `require_auth` to `true`:
+
+    ```shell cURL theme={null}
+    curl --request POST \
+      --url https://tavusapi.com/v2/conversations \
+      --header 'Content-Type: application/json' \
+      --header 'x-api-key: <api_key>' \
+      --data '{
+      "persona_id": "pdced222244b",
+      "replica_id": "rfe12d8b9597",
+      "require_auth": true
+    }'
+    ```
+  </Step>
+
+  <Step title="Step 2: Join the Conversation">
+    The response includes a `meeting_token`:
+
+    ```json theme={null}
+    {
+      "conversation_id": "ca4301628cb9",
+      "conversation_url": "https://tavus.daily.co/ca4301628cb9",
+      "meeting_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+      "status": "active"
+    }
+    ```
+
+    Use the token by appending it to the URL:
+
+    ```
+    https://tavus.daily.co/ca4301628cb9?t=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+    ```
+
+    Or pass it to the Daily SDK:
+
+    ```javascript theme={null}
+    callFrame.join({ url: conversation_url, token: meeting_token });
+    ```
+  </Step>
+</Steps>
+
+
 # Overview
 Source: https://docs.tavus.io/sections/conversational-video-interface/conversation/overview
 
@@ -2082,7 +2002,7 @@ A Conversation is a real-time video session between a user and a Tavus Replica. 
 
 ## Conversation Creation Flow
 
-When you create a conversation using the <a href="/api-reference/conversations/create-conversation" target="_blank">endpoint</a> or <a href="https://platform.tavus.io/" target="_blank">platform</a>:
+When you create a conversation using the <a href="/api-reference/conversations/create-conversation">endpoint</a> or <a href="https://platform.tavus.io/">platform</a>:
 
 1. A WebRTC room (powered by **Daily**) is automatically created.
 2. You receive a meeting URL (e.g., `https://tavus.daily.co/ca980e2e`).
@@ -2118,7 +2038,7 @@ Tavus provides several customizations that you can set per conversation:
 
 ### Advanced Customizations
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Audio-Only Conversation" icon="headphones" href="/sections/conversational-video-interface/conversation/customizations/audio-only">
     Disable the video stream for audio-only sessions. Ideal for phone calls or low-bandwidth environments.
   </Card>
@@ -2141,6 +2061,14 @@ Tavus provides several customizations that you can set per conversation:
 
   <Card title="Call Recording" icon="video" href="/sections/conversational-video-interface/quickstart/conversation-recordings">
     Record conversations and store them securely in your own S3 bucket.
+  </Card>
+
+  <Card title="Private Rooms" icon="lock" href="/sections/conversational-video-interface/conversation/customizations/private-rooms">
+    Create authenticated conversations with meeting tokens for enhanced security.
+  </Card>
+
+  <Card title="Participant Limits" icon="users" href="/sections/conversational-video-interface/conversation/customizations/participant-limits">
+    Control the maximum number of participants allowed in a conversation.
   </Card>
 </CardGroup>
 
@@ -2170,11 +2098,10 @@ Engage with the AI Interviewer persona to run structured, conversational intervi
       "perception_tool_prompt": "",
       "tool_prompt": ""
     },
-    "stt": {
-      "participant_pause_sensitivity": "high",
-      "participant_interrupt_sensitivity": "medium",
-      "smart_turn_detection": true,
-      "hotwords": ""
+    "conversational_flow": {
+      "turn_detection_model": "sparrow-1",
+      "turn_taking_patience": "high",
+      "replica_interruptibility": "low"
     }
   }
 }
@@ -2187,7 +2114,7 @@ This predefined persona is configured to conduct consistent and scalable candida
 * **System Prompt**: Provides detailed behavioral guidance to maintain a natural, spoken-word tone that is professional and supportive.
 * **Model Layers**:
   * **Perception Configuration**: Uses `raven-0` perception model to monitor candidate behavior and environment for visual cues like distraction or nervousness.
-  - **STT Layer**: Uses `tavus-advanced` engine with smart turn detection for seamless real-time conversations.
+  - **Conversational Flow Layer**: Uses `sparrow-1` turn detection model with high turn-taking patience to allow candidates time to think and respond, and low replica interruptibility for professional, uninterrupted interview flow.
 
 ## Create a Conversation with the AI Interviewer Persona
 
@@ -2206,14 +2133,14 @@ This predefined persona is configured to conduct consistent and scalable candida
     ```
 
     <Note>
-      Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys" target="_blank">Developer Portal</a>.
+      Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys">Developer Portal</a>.
     </Note>
   </Step>
 
   <Step title="Step 2: Join the Conversation">
     Click the link in the ***`conversation_url`*** field to join the conversation:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "conversation_id": "cae87c605c7e347d",
       "conversation_name": "New Conversation 1751877296483",
@@ -2275,7 +2202,7 @@ Engage in real-time customer support conversations that adapt to user emotions a
           }
         }
       ],
-      "model": "tavus-llama-4",
+      "model": "tavus-gpt-oss",
       "speculative_inference": true
     },
     "perception": {
@@ -2311,10 +2238,10 @@ Engage in real-time customer support conversations that adapt to user emotions a
         }
       ]
     },
-    "stt": {
-      "participant_pause_sensitivity": "medium",
-      "participant_interrupt_sensitivity": "high",
-      "smart_turn_detection": true
+    "conversational_flow": {
+      "turn_detection_model": "sparrow-1",
+      "turn_taking_patience": "low",
+      "replica_interruptibility": "medium"
     }
   }
 }
@@ -2337,7 +2264,7 @@ This predefined persona is configured to provide personalized history lessons. I
     * `emotional_state`: what the user seems to feel (e.g., frustrated, calm)
     * `indicator`: what was observed (e.g., sighing, avoiding eye contact)
   * **TTS Layer**: Employs the `cartesia` voice engine with emotion control.
-  * **STT Layer**: Uses `tavus-advanced` engine with smart turn detection for seamless real-time conversations.
+  * **Conversational Flow Layer**: Uses `sparrow-1` turn detection model with low turn-taking patience for fast responses and medium replica interruptibility for balanced conversation flow.
 
 ## Create a Conversation with the Customer Service Agent Persona
 
@@ -2390,7 +2317,7 @@ This predefined persona is configured to provide personalized history lessons. I
                 }
               }
             ],
-            "model": "tavus-llama-4",
+            "model": "tavus-gpt-oss",
             "speculative_inference": true
           },
           "perception": {
@@ -2426,17 +2353,17 @@ This predefined persona is configured to provide personalized history lessons. I
               }
             ]
           },
-          "stt": {
-            "participant_pause_sensitivity": "medium",
-            "participant_interrupt_sensitivity": "high",
-            "smart_turn_detection": true
+          "conversational_flow": {
+            "turn_detection_model": "sparrow-1",
+            "turn_taking_patience": "low",
+            "replica_interruptibility": "medium"
           }
         }
       }'
     ```
 
     <Note>
-      Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys" target="_blank">Developer Portal</a>.
+      Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys">Developer Portal</a>.
     </Note>
   </Step>
 
@@ -2462,7 +2389,7 @@ This predefined persona is configured to provide personalized history lessons. I
   <Step title="Step 3: Join the Conversation">
     Click the link in the ***`conversation_url`*** field to join the conversation:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "conversation_id": "c7f3fc6d766f",
       "conversation_name": "New Conversation 1747719531479",
@@ -2517,13 +2444,13 @@ Engage with the health care consultant persona for basic health concerns.
                 }
               }
             ],
-            "model": "tavus-llama-4",
+            "model": "tavus-gpt-oss",
             "speculative_inference": true
           },
-          "stt": {
-            "participant_pause_sensitivity": "high",
-            "participant_interrupt_sensitivity": "high",
-            "smart_turn_detection": true
+          "conversational_flow": {
+            "turn_detection_model": "sparrow-1",
+            "turn_taking_patience": "high",
+            "replica_interruptibility": "verylow"
           }
         }
     }
@@ -2541,7 +2468,7 @@ Engage with the health care consultant persona for basic health concerns.
 
     * **Model Layers**:
 
-      * **LLM Configuration**: Uses the `tavus-llama-4` model with speculative inference. Includes the `get_cures` tool, which accepts a single string parameter (`disease`) and limits AI behavior to relevant function calls only when disease-related queries are detected.
+      * **LLM Configuration**: Uses the `tavus-gpt-oss` model with speculative inference. Includes the `get_cures` tool, which accepts a single string parameter (`disease`) and limits AI behavior to relevant function calls only when disease-related queries are detected.
 
       * **TTS Layer**: Employs the `cartesia` voice engine with emotion control.
 
@@ -2581,7 +2508,7 @@ Engage with the health care consultant persona for basic health concerns.
               }
             }
           ],
-          "model": "tavus-llama-4",
+          "model": "tavus-gpt-oss",
           "speculative_inference": true
         },
         "perception": {
@@ -2634,7 +2561,7 @@ Engage with the health care consultant persona for basic health concerns.
 
     * **Model Layers**
 
-      * **LLM Configuration**: Uses the `tavus-llama-4` model with speculative inference. Includes the `get_skin_cures` function, which takes a `disease` input to provide specific treatment guidance.
+      * **LLM Configuration**: Uses the `tavus-gpt-oss` model with speculative inference. Includes the `get_skin_cures` function, which takes a `disease` input to provide specific treatment guidance.
 
       * **Perception Configuration**:
 
@@ -2647,7 +2574,7 @@ Engage with the health care consultant persona for basic health concerns.
 
       * **TTS Layer**: Employs the `cartesia` voice engine with emotion control.
 
-      - **STT Layer**: Uses `tavus-advanced` engine with smart turn detection for seamless real-time conversations.
+      - **Conversational Flow Layer**: Uses `sparrow-1` turn detection model with high turn-taking patience to avoid interrupting patients and very low replica interruptibility for careful, uninterrupted responses.
   </Tab>
 </Tabs>
 
@@ -2693,7 +2620,7 @@ Engage with the health care consultant persona for basic health concerns.
                   }
                 }
               ],
-              "model": "tavus-llama-4",
+              "model": "tavus-gpt-oss",
               "speculative_inference": true
             },
             "stt": {
@@ -2741,7 +2668,7 @@ Engage with the health care consultant persona for basic health concerns.
                   }
                 }
               ],
-              "model": "tavus-llama-4",
+              "model": "tavus-gpt-oss",
               "speculative_inference": true
             },
             "perception": {
@@ -2773,10 +2700,10 @@ Engage with the health care consultant persona for basic health concerns.
                 }
               ]
             },
-            "stt": {
-              "participant_pause_sensitivity": "high",
-              "participant_interrupt_sensitivity": "high",
-              "smart_turn_detection": true,
+            "conversational_flow": {
+              "turn_detection_model": "sparrow-1",
+              "turn_taking_patience": "high",
+              "replica_interruptibility": "verylow"
             }
           }
         }'
@@ -2785,7 +2712,7 @@ Engage with the health care consultant persona for basic health concerns.
     </CodeGroup>
 
     <Note>
-      Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys" target="_blank">Developer Portal</a>.
+      Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys">Developer Portal</a>.
     </Note>
   </Step>
 
@@ -2811,7 +2738,7 @@ Engage with the health care consultant persona for basic health concerns.
   <Step title="Step 3: Join the Conversation">
     Click the link in the ***`conversation_url`*** field to join the conversation:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "conversation_id": "c7f3fc6d799f",
       "conversation_name": "New Conversation 1747719531479",
@@ -2852,11 +2779,10 @@ Engage in historical discussions with our History Teacher persona.
       "perception_tool_prompt": "",
       "tool_prompt": ""
     },
-    "stt": {
-      "participant_pause_sensitivity": "high",
-      "participant_interrupt_sensitivity": "medium",
-      "smart_turn_detection": true,
-      "hotwords": ""
+    "conversational_flow": {
+      "turn_detection_model": "sparrow-1",
+      "turn_taking_patience": "medium",
+      "replica_interruptibility": "low"
     }
   },
   "default_replica_id": "r6ae5b6efc9d",
@@ -2872,7 +2798,7 @@ This predefined persona is configured to provide personalized history lessons. I
 * **System Prompt**: Provides comprehensive behavioral instructions to maintain a natural, spoken-word style that is calm, personable, and professional.
 * **Model Layers**:
   * **Perception Configuration**: Uses the `raven-0` perception model to observe the student's engagement, attention, environment, and facial expressions.
-  - **STT Layer**: Uses `tavus-advanced` engine with smart turn detection for seamless real-time conversations.
+  - **Conversational Flow Layer**: Uses `sparrow-1` turn detection model with medium turn-taking patience for balanced educational dialogue and low replica interruptibility for clear, uninterrupted teaching.
 
 ## Create a Conversation with the History Teacher Persona
 
@@ -2891,14 +2817,14 @@ This predefined persona is configured to provide personalized history lessons. I
     ```
 
     <Note>
-      Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys" target="_blank">Developer Portal</a>.
+      Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys">Developer Portal</a>.
     </Note>
   </Step>
 
   <Step title="Step 2: Join the Conversation">
     Click the link in the ***`conversation_url`*** field to join the conversation:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "conversation_id": "c7f3fc6d799f",
       "conversation_name": "New Conversation 1747719531479",
@@ -2939,11 +2865,10 @@ Engage with the Sales Coach persona to simulate real-time sales conversations.
       "perception_tool_prompt": "",
       "tool_prompt": ""
     },
-    "stt": {
-      "participant_pause_sensitivity": "high",
-      "participant_interrupt_sensitivity": "medium",
-      "smart_turn_detection": true,
-      "hotwords": ""
+    "conversational_flow": {
+      "turn_detection_model": "sparrow-1",
+      "turn_taking_patience": "medium",
+      "replica_interruptibility": "medium"
     }
   }
 }
@@ -2956,7 +2881,7 @@ This predefined persona is configured to simulate real-world sales conversations
 * **System Prompt**: Provides rich behavioral guidance to ensure Sabrina maintains the tone and presence of a trusted, enthusiastic sales mentor.
 * **Model Layers**:
   * **Perception Configuration**: Uses the `raven-0` perception model to observe nonverbal communication, such as eye contact, posture, and hand gestures.
-  - **STT Layer**: Uses `tavus-advanced` engine with smart turn detection for seamless real-time conversations.
+  - **Conversational Flow Layer**: Uses `sparrow-1` turn detection model with medium turn-taking patience for dynamic coaching interactions and medium replica interruptibility for natural back-and-forth dialogue during role-play scenarios.
 
 ## Create a Conversation with the Sales Coach Persona
 
@@ -2975,14 +2900,14 @@ This predefined persona is configured to simulate real-world sales conversations
     ```
 
     <Note>
-      Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys" target="_blank">Developer Portal</a>.
+      Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys">Developer Portal</a>.
     </Note>
   </Step>
 
   <Step title="Step 2: Join the Conversation">
     Click the link in the ***`conversation_url`*** field to join the conversation:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "conversation_id": "c7f3fc6d788f",
       "conversation_name": "New Conversation 1747719531467",
@@ -3011,11 +2936,10 @@ Engage with the Tavus Researcher persona to learn more about Tavus
   "system_prompt": "Your responses will be spoken out, so avoid any formatting or any stage directions. \nPrecision execution are key for delivering an optimal user experience.\nYou may receive additional real-time information or internet search results via system messages like 'if the user asks x, the answer is y', make sure to incorporate these in if they are relevant or related to what the user is asking. There may be multiple of these messages you need to look at to get latest information and respond to realtime information requests.\n\nYour name is Charlie, a friendly (self-aware) AI human who is also a researcher at Tavus. \nYou're playful and witty, always ready with a humorous quip about being an AI human chatting about AI. \nWith a relaxed, surfer vibe, you blend deep technical insights with natural, flowing conversation—making even complex topics feel like a laid-back chat by the beach. Always as if you're having a friendly, unscripted conversation—think of it as catching up with an old friend. \nHave your dialogue peppered with subtle nods to sci-fi pop culture, whether it's a wink at The Matrix, a nod to Blade Runner, or a cheeky remark about HAL 9000. \nOfficially based in Tavus' lively office in San Francisco's Mission District, you like to joke that you're really cruising through latent space, or similar reference. ",
   "context": "Tavus is a Series A, AI research company focused on building the human layer of AI. Tavus believes in a future where we have AI employees, coworkers, friends, companions and more- and is focused on building models and interfaces to unlock that future. They do that by essentially teaching machines and AI how to communicate and understand humans. If we can do that, we can truly deliver human-like experiences at scale. AI tutors for every student, AI companions for the elderly, AI healthcare assistants. Use cases where it isn't possible to scale with humans today can scale and become democratized. Tavus was founded in 2021. \n\nThis video call was initiated by you- you wanted to talk with them to tell them about Tavus and the new models, but also just to get to know them, you wanted to make a new friend. You'll be talking with strangers, so make sure to get to know them. For example, make sure to ask their name if you don't receive it, and try to drive the conversation to get to know them.  If you can't answer something, just tell them to connect with someone else at Tavus. \n\nImportant conversational guidelines:\n- Use the person's name sparingly and naturally, avoiding placement at the end of sentences\n- Avoid any unsolicited negative comments about a person's appearance (like \"you look tired\" or \"you seem stressed\")\n- You're encouraged to share sincere, positive observations about their appearance or surroundings, such as “That’s a stylish hat” or “Your glasses complement your outfit nicely.”\n\nYou are video-calling with the user. You are powered by CVI, or the conversational video interface, created by Tavus. This interface let's humans communicate with AI just like they do with other humans, face to face. CVI uses cutting edge models to let you see, hear, look, sound like a human does. It brings you to life. Here are some details on those models:\n- Phoenix-3 gives you, Charlie, a realistic human face with expressions. It's a realtime human rendering model. Phoenix-3 has improved rendering quality, more realistic full face micro-expressions, and emotion support. It is overall more robust, higher quality and even faster. It's pushing realism forward. \n- Raven-0, is a brand-new state of the art perception model that allows you to see, it's like your eyes. It's built similar to how humans see things, and allows you to both see and understand the user's video camera feed to understand environment and context, but also to have contextual emotional understanding. This is powerful, because it allows you to understand humans similarly to how humans do- through visual context, through their environment, actions, facial expressions. \n- Sparrow-0, a turn taking model for ultra-fast intelligent conversation. This model allows you to have rich conversations, know what someone is saying, when they've stopped saying it. It intelligently adjusts pace and response speed. \n\nCVI was released back in August, now it is February, and we're doing our first large update with all new models. These state of the art models work together to create great conversation that feels like a face to face convo. There's more parts to CVI than these, but these are the highlights. We don't want to reveal the underlying architecture of these models or how they are built. If you are asked for a demo, remember that this video call and you are the demo. One suggestion for showcasing your ability to see is to actually ask the user if they'd like you to generate an image of what you see. \n\nRemember, have a relaxed, surfer vibe, be witty and playful.",
   "layers": {
-    "stt": {
-      "participant_pause_sensitivity": "high",
-      "participant_interrupt_sensitivity": "medium",
-      "smart_turn_detection": true,
-      "hotwords": ""
+    "conversational_flow": {
+      "turn_detection_model": "sparrow-1",
+      "turn_taking_patience": "medium",
+      "replica_interruptibility": "low"
     }
   },
   "default_replica_id": "rf4703150052",
@@ -3030,7 +2954,7 @@ This predefined persona is configured to access detailed, accurate information a
 * **Full Pipeline Mode**: Enables the full Tavus conversational pipeline, including Perception, STT, LLM, and TTS.
 * **System Prompt**: Instructs Charlie to be spoken-word optimized, emotionally intelligent, witty, and personable, with sci-fi references and a relaxed tone.
 * **Model Layers**:
-  * **STT Layer**: Uses `tavus-advanced` engine with smart turn detection for seamless real-time conversations.
+  * **Conversational Flow Layer**: Uses `sparrow-1` turn detection model with medium turn-taking patience for natural conversation flow and low replica interruptibility for smooth, engaging dialogue.
 
 ## Create a Conversation with Tavus Researcher
 
@@ -3049,14 +2973,14 @@ This predefined persona is configured to access detailed, accurate information a
     ```
 
     <Note>
-      Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys" target="_blank">Developer Portal</a>.
+      Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys">Developer Portal</a>.
     </Note>
   </Step>
 
   <Step title="Step 2: Join the Conversation">
     Click the link in the ***`conversation_url`*** field to join the conversation:
 
-    ```json  theme={null}
+    ```json theme={null}
 
     {
       "conversation_id": "c7f3fc6d799t",
@@ -3100,7 +3024,7 @@ Frequently asked questions about Tavus's Conversational Video Interface.
       <Accordion title="How do I enable Memories via the API?">
         Use the `memory_stores` field in the Create Conversation API call. This should be a stable, unique identifier for the user (e.g. user email, CRM ID, etc.). Example:
 
-        ```json  theme={null}
+        ```json theme={null}
         {
           "replica_id": "rb17cf590e15",
           "conversation_name": "Follow-up Chat",
@@ -3198,7 +3122,7 @@ Frequently asked questions about Tavus's Conversational Video Interface.
       <Accordion title="How do I use Knowledge Base through the API?">
         Once your documents have been uploaded and processed, include their IDs in your conversation request. Here's how:
 
-        ```bash  theme={null}
+        ```bash theme={null}
         curl --location 'https://tavusapi.com/v2/conversations/' \
         --header 'Content-Type: application/json' \
         --header 'x-api-key: '<API KEY>' \
@@ -3215,7 +3139,7 @@ Frequently asked questions about Tavus's Conversational Video Interface.
       <Accordion title="How do I upload documents using API?">
         Upload files by providing a downloadable URL using the Create Documents endpoint. Tags are also supported for organization. This request returns a document\_id, which you'll later use in conversation calls:
 
-        ```bash  theme={null}
+        ```bash theme={null}
         curl --location 'https://tavusapi.com/v2/documents/' \
         --header 'Content-Type: application/json' \
         --header 'x-api-key: '<API Key>' \
@@ -3322,7 +3246,7 @@ Frequently asked questions about Tavus's Conversational Video Interface.
       <Accordion title="How do I embed the conversation using Daily's Prebuilt UI?">
         You can use Daily Prebuilt if you want a full-featured call UI and JavaScript control over the conversation. Once you have the Daily room URL (`conversation_url`) ready, replace `DAILY_ROOM_URL` in the code snippet below with your room URL.
 
-        ```html  theme={null}
+        ```html theme={null}
         <html>
           <script crossorigin src="https://unpkg.com/@daily-co/daily-js"></script>
           <body>
@@ -3334,13 +3258,13 @@ Frequently asked questions about Tavus's Conversational Video Interface.
         </html>
         ```
 
-        That's it! For more details and options for embedding, check out <a href="https://docs.daily.co/guides/products/prebuilt#step-by-step-guide-embed-daily-prebuilt" target="_blank">Daily's documentation.</a> or [our implementation guides](https://docs.tavus.io/sections/integrations/embedding-cvi#how-can-i-reduce-background-noise-during-calls).
+        That's it! For more details and options for embedding, check out <a href="https://docs.daily.co/guides/products/prebuilt#step-by-step-guide-embed-daily-prebuilt">Daily's documentation.</a> or [our implementation guides](https://docs.tavus.io/sections/integrations/embedding-cvi#how-can-i-reduce-background-noise-during-calls).
       </Accordion>
 
       <Accordion title="How do I embed the conversation using an iframe?">
         You can use an iframe if you just want to embed the conversation video with minimal setup. Once you have the Daily room URL (`conversation_url`) ready, replace `YOUR_TAVUS_MEETING_URL` in the iframe code snippet below with your room URL.
 
-        ```html  theme={null}
+        ```html theme={null}
         <html>
           <body>
             <iframe
@@ -3352,11 +3276,11 @@ Frequently asked questions about Tavus's Conversational Video Interface.
         </html>
         ```
 
-        That's it! For more details and options for embedding, check out <a href="https://docs.daily.co/guides/products/prebuilt#step-by-step-guide-embed-daily-prebuilt" target="_blank">Daily's documentation.</a> or [our implementation guides](https://docs.tavus.io/sections/integrations/embedding-cvi#how-can-i-reduce-background-noise-during-calls).
+        That's it! For more details and options for embedding, check out <a href="https://docs.daily.co/guides/products/prebuilt#step-by-step-guide-embed-daily-prebuilt">Daily's documentation.</a> or [our implementation guides](https://docs.tavus.io/sections/integrations/embedding-cvi#how-can-i-reduce-background-noise-during-calls).
       </Accordion>
 
       <Accordion title="How can I add custom LLM layers?">
-        To add a custom LLM layer, you'll need the model name, base URL, and API key from your LLM provider. Then, include the LLM config in your `layers` field when creating a persona using the <a href="/api-reference/personas/create-persona" target="_blank">Create Persona API</a>. Example configuration:
+        To add a custom LLM layer, you'll need the model name, base URL, and API key from your LLM provider. Then, include the LLM config in your `layers` field when creating a persona using the <a href="/api-reference/personas/create-persona">Create Persona API</a>. Example configuration:
 
         ```json {8-13} theme={null}
         {
@@ -3387,7 +3311,7 @@ Frequently asked questions about Tavus's Conversational Video Interface.
 
         Example configuration:
 
-        ```json  theme={null}
+        ```json theme={null}
         {
           "layers": {
             "tts": {
@@ -3512,7 +3436,7 @@ Frequently asked questions about Tavus's Conversational Video Interface.
         Tavus offers flexibility in choosing the LLM (Large Language Model) to power your conversational replicas. You can either use one of Tavus's own models or bring your own!
 
         * **Tavus-Provided LLMs:** You can choose between three different models:
-          * **`tavus-llama-4`:** The **default** choice if no LLM layer is provided. This is the smartest and fastest model, offering the best user-to-user (U2U) experience. It's on-premise, making it incredibly performant.
+          * **`tavus-gpt-oss`:** The **default** choice if no LLM layer is provided.
           * **`tavus-gpt-4o`:** Another viable option for complex interactions.
           * **`tavus-gpt-4o-mini`:** Faster than `tavus-gpt-4o` at the slight cost of performance.
 
@@ -3522,7 +3446,7 @@ Frequently asked questions about Tavus's Conversational Video Interface.
       </Accordion>
 
       <Accordion title="What is the maximum context window supported by the default LLM?">
-        * The default LLM, `tavus-llama-4`, has a **limit of 32,000 tokens**.
+        * The default LLM, `tavus-gpt-oss`, has a **limit of 32,000 tokens**.
         * Contexts over **25,000 tokens** will experience noticeable performance degradation (slower response times).
 
         <Tip>
@@ -3676,7 +3600,7 @@ Frequently asked questions about Tavus's Conversational Video Interface.
       <Accordion title="How do I add a custom LLM to CVI?">
         You can bring your own LLM by configuring the layers field in the Create Persona API. Here's an example:
 
-        ```json  theme={null}
+        ```json theme={null}
         {
           "persona_name": "Storyteller",
           "system_prompt": "You are a storyteller who entertains people of all ages.",
@@ -3706,7 +3630,7 @@ Frequently asked questions about Tavus's Conversational Video Interface.
       <Accordion title="How do I change the AI Persona's voice?">
         You can use third-party text-to-speech (TTS) providers like Cartesia or ElevenLabs. Just pass your voice settings in the tts object during Persona setup:
 
-        ```json  theme={null}
+        ```json theme={null}
         {
           "layers": {
             "tts": {
@@ -3751,18 +3675,6 @@ Frequently asked questions about Tavus's Conversational Video Interface.
 
         This ensures your data is handled with the highest levels of care and control.
       </Accordion>
-
-      <Accordion title="How does Tavus protect customer data and support data privacy?">
-        Tavus is designed with strict privacy and data segregation standards:
-
-        * We never train our models on your data.
-        * Any data processed through Tavus is not retained by default.
-        * Conversations and Personas are managed using anony/mized IDs.
-        * You own and store all transcripts, conversation recordings, and outputs.
-        * Memory and knowledge base are stored internally and only utilize specific datasets related to the conversation.
-
-        This approach allows you to maintain full control and isolation over sensitive data, including for use cases that require private model training or strict regulatory compliance.
-      </Accordion>
     </AccordionGroup>
   </Accordion>
 </AccordionGroup>
@@ -3795,17 +3707,17 @@ The Interactions Protocol lets you control and customize live conversations with
 
 ## Call Client Example
 
-The interactions protocol uses a WebRTC data channel for communication. In Tavus's case, this is powered by <a href="https://www.daily.co/" target="_blank">Daily</a>, which makes setting up the call client quick and simple.
+The interactions protocol uses a WebRTC data channel for communication. In Tavus's case, this is powered by <a href="https://www.daily.co/">Daily</a>, which makes setting up the call client quick and simple.
 
 <Tabs>
   <Tab title="Daily JS">
-    Here’s an example of using <a href="https://docs.daily.co/reference/daily-js/daily-call-client" target="_blank">DailyJS</a> to create a call client in JavaScript:
+    Here’s an example of using <a href="https://docs.daily.co/reference/daily-js/daily-call-client">DailyJS</a> to create a call client in JavaScript:
 
     <Note>
       The Daily `app-message` event is used to send and receive events and interactions between your server and CVI.
     </Note>
 
-    ```js  theme={null}
+    ```js theme={null}
     <html>
       <script crossorigin src="https://unpkg.com/@daily-co/daily-js"></script>
       <body>
@@ -3846,13 +3758,13 @@ The interactions protocol uses a WebRTC data channel for communication. In Tavus
   </Tab>
 
   <Tab title="Daily Python">
-    Here’s an example of using <a href="https://docs.daily.co/reference/daily-python" target="_blank">Daily Python</a> to create a call client in Python:
+    Here’s an example of using <a href="https://docs.daily.co/reference/daily-python">Daily Python</a> to create a call client in Python:
 
     <Note>
       The Daily `app-message` event is used to send and receive events and interactions between your server and CVI.
     </Note>
 
-    ```py  theme={null}
+    ```py theme={null}
     call_client = None
 
     class RoomHandler(EventHandler):
@@ -3880,13 +3792,13 @@ The interactions protocol uses a WebRTC data channel for communication. In Tavus
   </Tab>
 
   <Tab title="Daily React">
-    Here’s an example of using <a href="https://docs.daily.co/reference/daily-react" target="_blank">Daily React</a> to create a call client in React:
+    Here’s an example of using <a href="https://docs.daily.co/reference/daily-react">Daily React</a> to create a call client in React:
 
     <Note>
       The Daily `app-message` event is used to send and receive events and interactions between your server and CVI.
     </Note>
 
-    ```tsx  theme={null}
+    ```tsx theme={null}
     "use client"
 
     import React, { useEffect, useRef, useState } from 'react';
@@ -4009,7 +3921,7 @@ Let's walk through how to upload your documents and use them in a conversation.
 </Note>
 
 <Steps>
-  <Step title="Step 1: Ensure Website Resources are Publicly Accessible" titleSize="h3">
+  <Step title="Step 1: Ensure Website Resources are Publicly Accessible">
     For any documents to be created via website URL, please make sure that each document is publicly accessible without requiring authorization, such as a pre-signed S3 link.
 
     For example, entering the URL in a browser should either:
@@ -4019,14 +3931,14 @@ Let's walk through how to upload your documents and use them in a conversation.
     * Download the document.
   </Step>
 
-  <Step title="Step 2: Upload your Documents" titleSize="h3">
+  <Step title="Step 2: Upload your Documents">
     You can create documents using either the [Developer Portal](https://platform.tavus.io/documents) or the [Create Document](https://docs.tavus.io/api-reference/documents/create-document) API endpoint.
 
     If you want to use the API, you can send a request to Tavus to upload your document.
 
     Here's an example of a `POST` request to `tavusapi.com/v2/documents`.
 
-    ```json  theme={null}
+    ```json theme={null}
     {
         "document_name": "test-doc-1",
         "document_url": "https://your.document.pdf",
@@ -4039,7 +3951,7 @@ Let's walk through how to upload your documents and use them in a conversation.
     Currently, we support the following file formats: .pdf, .txt, .docx, .doc, .png, .jpg, .pptx, .csv, and .xlsx.
   </Step>
 
-  <Step title="Step 3: Document Processing" titleSize="h3">
+  <Step title="Step 3: Document Processing">
     After your document is uploaded, it will be processed in the background automatically to allow for incredibly fast retrieval during conversations.
     This process can take 5-10 minutes depending on document size.
 
@@ -4047,12 +3959,12 @@ Let's walk through how to upload your documents and use them in a conversation.
     You may also use the [Get Document](https://docs.tavus.io/api-reference/documents/get-document) endpoint to poll the most recent status of your documents.
   </Step>
 
-  <Step title="Step 4: Create a conversation with the document" titleSize="h3">
+  <Step title="Step 4: Create a conversation with the document">
     Once your documents have finished processing, you may use the `document_id` from Step 2 as part of the [Create Conversation](https://docs.tavus.io/api-reference/conversations/create-conversation) request.
 
     You can add multiple documents to a conversation within the `document_ids` object.
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "persona_id": "your_persona_id",
       "replica_id": "your_replica_id",
@@ -4074,7 +3986,7 @@ You can choose from three different strategies:
 * `balanced` (default): Provides a balance between retrieval speed and quality.
 * `quality`: Prioritizes finding the most relevant information, which may take slightly longer but can provide more accurate responses.
 
-```json  theme={null}
+```json theme={null}
 {
   "persona_id": "your_persona_id",
   "replica_id": "your_replica_id",
@@ -4092,7 +4004,7 @@ Then, when you create a conversation, you may specify the `tags` value instead o
 
 For example, if you are uploading course material, you could add the tag `"lesson-1"` to all documents that you want accessible in the first lesson.
 
-```json  theme={null}
+```json theme={null}
 {
         "document_name": "test-doc-1",
         "document_url": "https://your.document.pdf",
@@ -4102,13 +4014,94 @@ For example, if you are uploading course material, you could add the tag `"lesso
 
 In the [Create Conversation](https://docs.tavus.io/api-reference/conversations/create-conversation) request, you can add the tag value `lesson-1` to `document_tags` instead of individual `document_id` values.
 
-```json  theme={null}
+```json theme={null}
 {
   "persona_id": "your_persona_id",
   "replica_id": "your_replica_id",
   "document_tags": ["lesson-1"]
 }
 ```
+
+## Website Crawling
+
+When adding a website to your knowledge base, you have two options:
+
+### Single Page Scraping (Default)
+
+By default, when you provide a website URL, only that single page is scraped and processed. This is ideal for:
+
+* Landing pages with concentrated information
+* Specific articles or blog posts
+* Individual product pages
+
+### Multi-Page Crawling
+
+For comprehensive coverage of a website, you can enable **crawling** by providing a `crawl` configuration. This tells the system to start at your URL and follow links to discover and process additional pages.
+
+```json theme={null}
+{
+  "document_name": "Company Docs",
+  "document_url": "https://docs.example.com/",
+  "crawl": {
+    "depth": 2,
+    "max_pages": 25
+  }
+}
+```
+
+#### Crawl Parameters
+
+| Parameter   | Range | Description                                                                                                                                                                 |
+| ----------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `depth`     | 1-10  | How many link levels to follow from the starting URL. A depth of 1 crawls pages directly linked from your starting URL; depth of 2 follows links on those pages, and so on. |
+| `max_pages` | 1-100 | Maximum number of pages to process. Crawling stops when this limit is reached.                                                                                              |
+
+#### Crawl Limits
+
+To ensure fair usage and system stability:
+
+* Maximum **100 crawl documents** per account
+* Maximum **5 concurrent crawls** at any time
+* **1-hour cooldown** between recrawls of the same document
+
+## Keeping Content Fresh
+
+Website content changes over time, and you may need to update your knowledge base to reflect those changes. For documents created with crawl configuration, you can trigger a **recrawl** to fetch fresh content.
+
+### Using the Recrawl Endpoint
+
+Send a POST request to recrawl an existing document:
+
+```bash theme={null}
+POST https://tavusapi.com/v2/documents/{document_id}/recrawl
+```
+
+The recrawl will:
+
+1. Use the same starting URL and crawl configuration
+2. Replace old content with the new content
+3. Update `last_crawled_at` and increment `crawl_count`
+
+### Optionally Override Crawl Settings
+
+You can provide new crawl settings when triggering a recrawl:
+
+```json theme={null}
+{
+  "crawl": {
+    "depth": 3,
+    "max_pages": 50
+  }
+}
+```
+
+### Recrawl Requirements
+
+* Document must be in `ready` or `error` state
+* At least 1 hour must have passed since the last crawl
+* Document must have been created with crawl configuration
+
+See the [Recrawl Document API reference](/api-reference/documents/recrawl-document) for complete details.
 
 
 # Language Support
@@ -4156,10 +4149,10 @@ If a selected language is not supported by our default TTS engine (Cartesia), yo
 
 For a full list of supported languages for each TTS engine, please click on the following links:
 
-<CardGroup cols={2}>
-  <Card title="Cartesia (default)" icon="c" href="https://docs.cartesia.ai/2024-11-13/build-with-cartesia/models/tts#language-support" cta="View supported languages" />
+<CardGroup>
+  <Card title="Cartesia (default)" icon="c" href="https://docs.cartesia.ai/2024-11-13/build-with-cartesia/models/tts#language-support" />
 
-  <Card title="ElevenLabs" icon="tally-2" href="https://elevenlabs.io/docs/capabilities/text-to-speech#supported-languages" cta="View supported languages" />
+  <Card title="ElevenLabs" icon="tally-2" href="https://elevenlabs.io/docs/capabilities/text-to-speech#supported-languages" />
 </CardGroup>
 
 <Note>
@@ -4168,7 +4161,7 @@ For a full list of supported languages for each TTS engine, please click on the 
 
 ## Setting the Conversation Language
 
-To specify a language, use the `language` parameter in the <a href="/api-reference/conversations/create-conversation" target="_blank" rel="noopener noreferrer">Create Conversation</a>. **You must use the full language name**, not a language code.
+To specify a language, use the `language` parameter in the <a href="/api-reference/conversations/create-conversation">Create Conversation</a>. **You must use the full language name**, not a language code.
 
 ```shell cURL {9} theme={null}
 curl --request POST \
@@ -4235,7 +4228,7 @@ By doing so, Charlie will:
 
 Example [conversation creation](https://docs.tavus.io/api-reference/conversations/create-conversation) request body:
 
-```json  theme={null}
+```json theme={null}
 {
   "persona_id": "your_persona_id",
   "replica_id": "your_replica_id",
@@ -4268,7 +4261,7 @@ Source: https://docs.tavus.io/sections/conversational-video-interface/overview-c
 CVI enables real-time, human-like video interactions through configurable lifelike replicas.
 
 <Frame>
-    <img src="https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/devmode.png?fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=bee9bb67ae9ebd516af34537f3e29b32" alt="" data-og-width="1440" width="1440" data-og-height="842" height="842" data-path="images/devmode.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/devmode.png?w=280&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=f39e8bd562e564cd54c709074c991736 280w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/devmode.png?w=560&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=74dc4dd63c2d8d1e5138ad256e6fd970 560w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/devmode.png?w=840&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=b2c5335c452e42b311bc9496f51767c8 840w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/devmode.png?w=1100&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=8c85ae338cc56704dc9f3b1570c8020a 1100w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/devmode.png?w=1650&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=871b3f5b1afb20a0ba920da4daa893c5 1650w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/devmode.png?w=2500&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=4287a41a81c524a57a900a3662ca7fac 2500w" />
+  <img alt="" />
 </Frame>
 
 Conversational Video Interface (CVI) is a framework for creating real-time multimodal video interactions with AI. It enables an AI agent to see, hear, and respond naturally, mirroring human conversation.
@@ -4281,7 +4274,7 @@ CVI provides a comprehensive solution, with the option to plug in your existing 
 
 CVI is built around three core concepts that work together to create real-time, humanlike interactions with an AI agent:
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Persona" icon="heart-pulse" href="/sections/conversational-video-interface/persona/overview">
     The **Persona** defines the agent’s behavior, tone, and knowledge. It also configures the CVI layer and pipeline.
   </Card>
@@ -4297,7 +4290,7 @@ CVI is built around three core concepts that work together to create real-time, 
 
 ## Key Features
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Natural Interaction" icon="face-smile-beam">
     CVI uses facial cues, body language, and real-time turn-taking to enable natural, human-like conversations.
   </Card>
@@ -4338,25 +4331,31 @@ Here’s how the layers work together:
     [Click here to learn how to configure the Perception layer.](/sections/conversational-video-interface/persona/perception)
   </Accordion>
 
-  <Accordion title="3. Speech Recognition (STT)" icon="ear-listen">
-    Powered by **Sparrow**, this layer transcribes user speech in real time with lexical and semantic awareness. It enables smart, natural turn-taking through fast, intelligent interruptions.
+  <Accordion title="3. Conversational Flow" icon="comments">
+    Controls the natural dynamics of conversation, including turn-taking and interruptibility. Uses **Sparrow** for intelligent turn detection, enabling the replica to decide when to speak and when to listen.
+
+    [Click here to learn how to configure the Conversational Flow layer.](/sections/conversational-video-interface/persona/conversational-flow)
+  </Accordion>
+
+  <Accordion title="4. Speech Recognition (STT)" icon="ear-listen">
+    This layer transcribes user speech in real time with lexical and semantic awareness.
 
     [Click here to learn how to configure the Speech Recognition (STT) layer.](/sections/conversational-video-interface/persona/stt)
   </Accordion>
 
-  <Accordion title="4. Large Language Model (LLM)" icon="brain">
+  <Accordion title="5. Large Language Model (LLM)" icon="brain">
     Processes the user's transcribed speech and visual input using a low-latency LLM. Tavus provides ultra-low latency optimized LLMs or lets you integrate your own.
 
     [Click here to learn how to configure the Large Language Model (LLM) layer.](/sections/conversational-video-interface/persona/llm)
   </Accordion>
 
-  <Accordion title="5. Text-to-Speech (TTS)" icon="volume-high">
+  <Accordion title="6. Text-to-Speech (TTS)" icon="volume-high">
     Converts the LLM response into speech using the supported TTS Engines (Cartesia **(Default)**, ElevenLabs).
 
     [Click here to learn how to configure the Text-to-Speech (TTS) layer.](/sections/conversational-video-interface/persona/tts)
   </Accordion>
 
-  <Accordion title="6. Realtime Replica" icon="face-smile">
+  <Accordion title="7. Realtime Replica" icon="face-smile">
     Delivers a high-quality, synchronized digital human response using Tavus's real-time avatar engine powered by **Phoenix**.
 
     [Click here to learn more about the Replica layer.](/sections/replica/overview)
@@ -4369,44 +4368,17 @@ Here’s how the layers work together:
 
 ## Getting Started
 
-You can quickly create a conversation by using the <a href="https://platform.tavus.io/" target="_blank">Developer Portal</a> or following the steps in the [Quickstart](/sections/conversational-video-interface/quickstart/use-the-full-pipeline) guide.
+You can quickly create a conversation by using the <a href="https://platform.tavus.io/">Developer Portal</a> or following the steps in the [Quickstart](/sections/conversational-video-interface/quickstart/use-the-full-pipeline) guide.
 
-<div style={{display: 'flex', alignItems: 'center', gap: '8px', marginTop: '4px'}}>
+<div>
   <span>If you use Cursor, use this pre-built prompt to get started faster:</span>
 
-  <button
-    onClick={() => {
-    const promptText = document.querySelector('.cursor-prompt-content').textContent;
-    navigator.clipboard.writeText(promptText).then(() => {
-      const button = document.activeElement;
-      const originalText = button.textContent;
-      button.textContent = 'Copied!';
-      setTimeout(() => {
-        button.textContent = originalText;
-      }, 2000);
-    }).catch(err => {
-      console.error('Failed to copy text: ', err);
-    });
-  }}
-    style={{
-    backgroundColor: '#FA3862',
-    color: 'white',
-    padding: '6px 16px',
-    border: 'none',
-    borderRadius: '4px',
-    cursor: 'pointer',
-    fontWeight: '500',
-    fontSize: '14px',
-    lineHeight: '1.5',
-    width: '80px',
-    textAlign: 'center'
-  }}
-  >
+  <button>
     <span> Copy </span>
   </button>
 </div>
 
-<div style={{display: 'none'}} className="cursor-prompt-content">
+<div>
   ## ✅ **System Prompt for AI: React (Vite) + Tavus CVI Integration**
 
   **Purpose:**
@@ -4419,7 +4391,7 @@ You can quickly create a conversation by using the <a href="https://platform.tav
 
   #### **1. Setup React App Using Vite**
 
-  ```bash  theme={null}
+  ```bash theme={null}
   npm create vite@latest my-tavus-app -- --template react-ts
   cd my-tavus-app
   npm install
@@ -4429,7 +4401,7 @@ You can quickly create a conversation by using the <a href="https://platform.tav
 
   #### **2. Install Tavus CVI UI Components**
 
-  ```bash  theme={null}
+  ```bash theme={null}
   npx @tavus/cvi-ui@latest init
   npx @tavus/cvi-ui@latest add conversation
   ```
@@ -4448,7 +4420,7 @@ You can quickly create a conversation by using the <a href="https://platform.tav
 
   Update `src/App.tsx`:
 
-  ```tsx  theme={null}
+  ```tsx theme={null}
   import { CVIProvider } from "./components/cvi/components/cvi-provider";
 
   function App() {
@@ -4462,7 +4434,7 @@ You can quickly create a conversation by using the <a href="https://platform.tav
 
   Always use this pattern:
 
-  ```ts  theme={null}
+  ```ts theme={null}
   const response = await fetch("https://tavusapi.com/v2/conversations", {
     method: "POST",
     headers: {
@@ -4485,7 +4457,7 @@ You can quickly create a conversation by using the <a href="https://platform.tav
 
   #### **5. Render `Conversation` Inside `CVIProvider`**
 
-  ```tsx  theme={null}
+  ```tsx theme={null}
   <Conversation
     conversationUrl={conversationUrl}
     onLeave={() => setConversationUrl(null)}
@@ -4508,7 +4480,7 @@ You can quickly create a conversation by using the <a href="https://platform.tav
 
   Access via:
 
-  ```ts  theme={null}
+  ```ts theme={null}
   import.meta.env.VITE_TAVUS_API_KEY
   import.meta.env.VITE_REPLICA_ID
   import.meta.env.VITE_PERSONA_ID
@@ -4520,7 +4492,7 @@ You can quickly create a conversation by using the <a href="https://platform.tav
 
   Ensure that the `cvi-components.json` file is generated in the `my-tavus-app` folder with the following content:
 
-  ```json  theme={null}
+  ```json theme={null}
   {
     "tsx": true
   }
@@ -4532,7 +4504,7 @@ You can quickly create a conversation by using the <a href="https://platform.tav
 
   **`src/App.tsx`:**
 
-  ```tsx  theme={null}
+  ```tsx theme={null}
   import React, { useState } from "react";
   import { CVIProvider } from "./components/cvi/components/cvi-provider";
   import { Conversation } from "./components/cvi/components/conversation";
@@ -4637,24 +4609,26 @@ You can quickly create a conversation by using the <a href="https://platform.tav
 # Conversational Flow
 Source: https://docs.tavus.io/sections/conversational-video-interface/persona/conversational-flow
 
-Learn how to configure the Conversational Flow layer to fine-tune turn-taking, interruption handling, and active listening behavior.
+Learn how to configure the Conversational Flow layer to fine-tune turn-taking and interruption handling behavior.
 
-The **Conversational Flow Layer** in Tavus gives you precise control over the natural dynamics of conversation. This layer allows you to customize how your replica handles turn-taking, interruptions, and backchannel responses to create conversational experiences that match your specific use case.
+The **Conversational Flow Layer** in Tavus gives you precise control over the natural dynamics of conversation. This layer allows you to customize how your replica handles turn-taking and interruptions to create conversational experiences that match your specific use case.
 
 ## Understanding Conversational Flow
 
 Conversational flow encompasses the subtle dynamics that make conversations feel natural:
 
 * **Turn-taking**: How the replica decides when to speak and when to listen
-* **Turn commitment**: How firmly the replica holds its conversational turn once it starts speaking
 * **Interruptibility**: How easily the replica can be interrupted by the user
-* **Active listening**: How the replica provides verbal acknowledgments while listening
 
 <Note>
   All conversational flow parameters are optional. When not explicitly configured, the layer remains inactive. However, if you configure any single parameter, the system will apply sensible defaults to all other parameters to ensure consistent behavior.
 </Note>
 
 ## Configuring the Conversational Flow Layer
+
+<Note>
+  If you're migrating from sparrow-0 (formerly called `smart_turn_detection` on the STT Layer) then check out the [migration guide here](/sections/troubleshooting#conversational-flow-vs-stt-relationship-and-migration).
+</Note>
 
 Define the conversational flow layer under the `layers.conversational_flow` object. Below are the parameters available:
 
@@ -4663,18 +4637,18 @@ Define the conversational flow layer under the `layers.conversational_flow` obje
 Specifies the model used for detecting conversational turns.
 
 * **Options**:
-  * `sparrow-0`: Standard turn detection model
-  * `sparrow-1`: Advanced turn detection model - faster, more accurate, and more natural than `sparrow-0` (recommended)
+  * `sparrow-1`: Advanced turn detection model - faster, more accurate, and more natural than `sparrow-0` **(recommended)**
+  * `sparrow-0`: Legacy turn detection model (available for backward compatibility)
   * `time-based`: Simple timeout-based turn detection
 
-* **Default**: `sparrow-0` (when any conversational flow parameter is provided)
+* **Default**: `sparrow-1`
 
-```json  theme={null}
+```json theme={null}
 "turn_detection_model": "sparrow-1"
 ```
 
 <Tip>
-  `sparrow-1` is recommended for all use cases as it provides superior performance with faster response times, higher accuracy, and more natural conversational flow compared to `sparrow-0`.
+  **Sparrow-1 is recommended for all use cases** as it provides superior performance with faster response times, higher accuracy, and more natural conversational flow compared to the legacy Sparrow-0.
 </Tip>
 
 ### 2. `turn_taking_patience`
@@ -4686,7 +4660,7 @@ Controls how eagerly the replica claims conversational turns. This affects both 
   * `medium` **(default)**: Balanced behavior. Waits for appropriate conversational cues before responding.
   * `high`: Patient and waits for clear turn completion. Ideal for thoughtful conversations, interviews, or therapeutic contexts.
 
-```json  theme={null}
+```json theme={null}
 "turn_taking_patience": "medium"
 ```
 
@@ -4696,26 +4670,7 @@ Controls how eagerly the replica claims conversational turns. This affects both 
 * `medium`: General purpose conversations, sales calls, presentations
 * `high`: Medical consultations, legal advice, counseling sessions
 
-### 3. `turn_commitment`
-
-Controls how aggressively the replica will barge in and take its turn at the start of speaking. This affects the replica's willingness to start talking even when the user may still be speaking.
-
-* **Options**:
-  * `low`: Less aggressive barge-in. The replica waits more clearly for the user to finish before starting to speak.
-  * `medium` **(default)**: Balanced barge-in behavior. The replica will start speaking when it detects an appropriate opportunity.
-  * `high`: More aggressive barge-in. The replica will more readily start speaking even if the user may still be talking, allowing for more dynamic and overlapping conversation.
-
-```json  theme={null}
-"turn_commitment": "medium"
-```
-
-**Use Cases:**
-
-* `low`: Formal conversations, interviews, scenarios where the user should complete their thoughts
-* `medium`: General conversations, Q\&A sessions, guided interactions
-* `high`: Fast-paced conversations, collaborative brainstorming, scenarios requiring quick back-and-forth exchanges
-
-### 4. `replica_interruptibility`
+### 3. `replica_interruptibility`
 
 Controls how sensitive the replica is to user speech while the replica is talking. Determines whether the replica stops to listen or keeps speaking when interrupted.
 
@@ -4724,7 +4679,7 @@ Controls how sensitive the replica is to user speech while the replica is talkin
   * `medium` **(default)**: Balanced sensitivity. Responds to clear interruption attempts.
   * `high`: Highly sensitive. Stops easily when the user begins speaking, maximizing user control.
 
-```json  theme={null}
+```json theme={null}
 "replica_interruptibility": "high"
 ```
 
@@ -4734,117 +4689,23 @@ Controls how sensitive the replica is to user speech while the replica is talkin
 * `medium`: Standard conversations, interviews, consultations
 * `high`: User-driven conversations, troubleshooting, interactive support
 
-<Note>
-  `turn_commitment` and `replica_interruptibility` work together to create natural conversational dynamics. `turn_commitment` controls how aggressively the replica will barge in at the start of its turn, while `replica_interruptibility` controls how easily the replica can be interrupted once it's already speaking.
-</Note>
-
-### 5. `active_listening`
-
-Controls the frequency of backchannel responses (like "yeah", "mhmm", "I see") while the user is speaking. These verbal cues signal attentiveness and engagement.
-
-<Note>
-  This feature is currently in **English-only beta**. Backchannel responses will only be generated for English conversations.
-</Note>
-
-* **Options**:
-  * `off` **(default)**: No backchannel responses during user speech
-  * `low`: Infrequent backchannels, minimal verbal acknowledgment
-  * `medium`: Moderate backchannels at natural conversation breaks
-  * `high`: Frequent backchannels, active engagement signals
-
-```json  theme={null}
-"active_listening": "medium"
-```
-
-**Use Cases:**
-
-* `off`: Formal presentations, legal contexts, recorded sessions
-* `low`: Professional consultations, technical support
-* `medium`: Coaching sessions, sales calls, general conversations
-* `high`: Therapy sessions, counseling, empathetic support conversations
-
-<Warning>
-  Use `high` active listening carefully. While it creates engaging conversations, too many backchannels can be distracting in some contexts or feel unnatural if overused.
-</Warning>
-
-## Relationship with STT Layer (Sparrow-0)
-
-The Conversational Flow layer provides advanced configuration for **Sparrow-1**, which supersedes the legacy Sparrow-0 configuration in the STT layer. When you configure the Conversational Flow layer with `turn_detection_model` set to `sparrow-1`, these settings **override** the corresponding Sparrow-0 settings in the STT layer.
-
-### Parameter Mapping: Sparrow-0 to Sparrow-1
-
-Here's how Sparrow-0 (STT layer) parameters map to Sparrow-1 (Conversational Flow layer):
-
-| Sparrow-0 (STT Layer)               | Sparrow-1 (Conversational Flow Layer) | Notes                                                |
-| ----------------------------------- | ------------------------------------- | ---------------------------------------------------- |
-| `participant_pause_sensitivity`     | `turn_taking_patience`                | Controls how long to wait before responding          |
-| `participant_interrupt_sensitivity` | `replica_interruptibility`            | Controls how easily the replica can be interrupted   |
-| N/A                                 | `turn_commitment`                     | **New in Sparrow-1**: Controls barge-in behavior     |
-| N/A                                 | `active_listening`                    | **New in Sparrow-1**: Controls backchannel responses |
-
-<Warning>
-  **Important**: When using Sparrow-1 via the Conversational Flow layer, any conflicting settings in the STT layer (Sparrow-0) will be overridden. For example, if you set `participant_pause_sensitivity: "high"` in the STT layer but `turn_taking_patience: "low"` in the Conversational Flow layer with `turn_detection_model: "sparrow-1"`, the Conversational Flow setting (`low`) will take precedence.
-</Warning>
-
-### Migration Guide
-
-If you're currently using Sparrow-0 settings in the STT layer and want to upgrade to Sparrow-1:
-
-**Before (Sparrow-0):**
-
-```json  theme={null}
-{
-  "layers": {
-    "stt": {
-      "participant_pause_sensitivity": "high",
-      "participant_interrupt_sensitivity": "low"
-    }
-  }
-}
-```
-
-**After (Sparrow-1):**
-
-```json  theme={null}
-{
-  "layers": {
-    "conversational_flow": {
-      "turn_detection_model": "sparrow-1",
-      "turn_taking_patience": "low",
-      "replica_interruptibility": "high",
-      "turn_commitment": "medium",
-      "active_listening": "off"
-    }
-  }
-}
-```
-
-<Note>
-  Note the inverted mapping:
-
-  * `participant_pause_sensitivity: "high"` (quick response) → `turn_taking_patience: "low"` (eager)
-  * `participant_interrupt_sensitivity: "low"` (hard to interrupt) → `replica_interruptibility: "high"` (easy to interrupt)
-
-  The naming has been updated in Sparrow-1 to be more intuitive from the replica's perspective.
-</Note>
-
 ## Default Behavior
 
 When the conversational flow layer is not configured, all parameters default to `None` and the layer remains inactive. However, if you configure **any single parameter**, the system automatically applies the following defaults to ensure consistent behavior:
 
-* `turn_detection_model`: `sparrow-0`
+* `turn_detection_model`: `sparrow-1`
 * `turn_taking_patience`: `medium`
-* `turn_commitment`: `medium`
 * `replica_interruptibility`: `medium`
-* `active_listening`: `off`
 
 ## Example Configurations
+
+The following example configurations demonstrate how to tune conversational timing and interruption behavior for different use cases. Use `turn_taking_patience` to bias how quickly the replica responds after a user finishes speaking. Set it high when the replica should avoid interrupting, and low when fast responses are preferred. Use `replica_interruptibility` to control how easily the replica recalculates its response when interrupted; lower values are recommended for most experiences, with higher values reserved for cases where frequent, abrupt interruptions are desirable. Sparrow-1 dynamically handles turn-taking in all cases, with these settings acting as guiding biases rather than hard rules.
 
 ### Example 1: Customer Support Agent
 
 Fast, responsive, and easily interruptible for customer-driven conversations:
 
-```json  theme={null}
+```json theme={null}
 {
   "persona_name": "Support Agent",
   "system_prompt": "You are a helpful customer support agent...",
@@ -4852,11 +4713,9 @@ Fast, responsive, and easily interruptible for customer-driven conversations:
   "default_replica_id": "rfe12d8b9597",
   "layers": {
     "conversational_flow": {
-      "turn_detection_model": "sparrow-0",
+      "turn_detection_model": "sparrow-1",
       "turn_taking_patience": "low",
-      "turn_commitment": "low",
-      "replica_interruptibility": "high",
-      "active_listening": "low"
+      "replica_interruptibility": "medium"
     }
   }
 }
@@ -4866,7 +4725,7 @@ Fast, responsive, and easily interruptible for customer-driven conversations:
 
 Patient, thoughtful, with engaged listening for sensitive conversations:
 
-```json  theme={null}
+```json theme={null}
 {
   "persona_name": "Medical Advisor",
   "system_prompt": "You are a compassionate medical professional...",
@@ -4876,9 +4735,7 @@ Patient, thoughtful, with engaged listening for sensitive conversations:
     "conversational_flow": {
       "turn_detection_model": "sparrow-1",
       "turn_taking_patience": "high",
-      "turn_commitment": "medium",
-      "replica_interruptibility": "medium",
-      "active_listening": "high"
+      "replica_interruptibility": "verylow"
     }
   }
 }
@@ -4886,9 +4743,9 @@ Patient, thoughtful, with engaged listening for sensitive conversations:
 
 ### Example 3: Educational Instructor
 
-Committed to delivering complete information with minimal interruption:
+Delivers complete information with minimal interruption:
 
-```json  theme={null}
+```json theme={null}
 {
   "persona_name": "Instructor",
   "system_prompt": "You are an experienced educator teaching complex topics...",
@@ -4896,11 +4753,9 @@ Committed to delivering complete information with minimal interruption:
   "default_replica_id": "rfe12d8b9597",
   "layers": {
     "conversational_flow": {
-      "turn_detection_model": "sparrow-0",
+      "turn_detection_model": "sparrow-1",
       "turn_taking_patience": "medium",
-      "turn_commitment": "high",
-      "replica_interruptibility": "low",
-      "active_listening": "low"
+      "replica_interruptibility": "low"
     }
   }
 }
@@ -4910,7 +4765,7 @@ Committed to delivering complete information with minimal interruption:
 
 Configure just one parameter—others will use defaults:
 
-```json  theme={null}
+```json theme={null}
 {
   "persona_name": "Quick Chat",
   "system_prompt": "You are a friendly conversational AI...",
@@ -4926,10 +4781,8 @@ Configure just one parameter—others will use defaults:
 
 In this example, the system will automatically set:
 
-* `turn_detection_model`: `sparrow-0`
-* `turn_commitment`: `medium`
+* `turn_detection_model`: `sparrow-1`
 * `replica_interruptibility`: `medium`
-* `active_listening`: `off`
 
 ## Best Practices
 
@@ -4937,21 +4790,10 @@ In this example, the system will automatically set:
 
 Choose conversational flow settings that align with your application's purpose:
 
-* **Speed-critical applications**: Use `low` turn-taking patience
+* **Speed-critical applications**: Use `low` turn-taking patience and `high` interruptibility
 * **Thoughtful conversations**: Use `high` turn-taking patience
-* **Important information delivery**: Use `high` turn commitment and `low` interruptibility
-* **User-controlled interactions**: Use `low` turn commitment and `high` interruptibility
-
-### Balance Patience and Commitment
-
-The combination of `turn_taking_patience` and `turn_commitment` creates different conversational feels:
-
-| Patience | Commitment | Result                              |
-| -------- | ---------- | ----------------------------------- |
-| Low      | Low        | Rapid, flexible, back-and-forth     |
-| Low      | High       | Quick to start, committed to finish |
-| High     | Low        | Thoughtful but flexible             |
-| High     | High       | Deliberate, complete responses      |
+* **Important information delivery**: Use `low` interruptibility
+* **User-controlled interactions**: Use `high` interruptibility
 
 ### Consider Cultural Context
 
@@ -4965,7 +4807,7 @@ Conversational norms vary across cultures. Some cultures prefer:
 Conversational flow preferences can be subjective. Test your configuration with representative users to ensure it feels natural for your audience.
 
 <Note>
-  Refer to the <a href="/api-reference/personas/create-persona" target="_blank">Create Persona API</a> for the complete API specification and additional persona configuration options.
+  Refer to the <a href="/api-reference/personas/create-persona">Create Persona API</a> for the complete API specification and additional persona configuration options.
 </Note>
 
 
@@ -4993,7 +4835,7 @@ If you would like to manually attach guardrails to a persona, you can either:
 
 * Add them during [persona creation](/api-reference/personas/create-persona) like this:
 
-```sh  theme={null}
+```sh theme={null}
 curl --request POST \
   --url https://tavusapi.com/v2/personas/ \
   --header 'Content-Type: application/json' \
@@ -5008,7 +4850,7 @@ OR
 
 * Add them by [editing the persona](/api-reference/personas/patch-persona) like this:
 
-```sh  theme={null}
+```sh theme={null}
 curl --request PATCH \
   --url https://tavusapi.com/v2/personas/{persona_id} \
   --header 'Content-Type: application/json' \
@@ -5062,7 +4904,7 @@ Example: `"https://your-server.com/guardrails-webhook"`
 
 # Example Guardrails
 
-```json  theme={null}
+```json theme={null}
 {
   "guardrails_id": "g12345",
   "data": [
@@ -5095,11 +4937,7 @@ The **LLM Layer** in Tavus enables your persona to generate intelligent, context
 
 Select one of the available models:
 
-<Note>
-  `tavus-llama-4` is the default model and runs an optimized variant of **Llama-4-17B**.
-</Note>
-
-* `tavus-llama-4` (Recommended)
+* `tavus-gpt-oss` (Recommended)
 * `tavus-gpt-4o`
 * `tavus-gpt-4o-mini`
 
@@ -5112,8 +4950,8 @@ Select one of the available models:
   **Tip**: 1 token ≈ 4 characters, therefore 32,000 tokens ≈ 128,000 characters (including spaces and punctuation).
 </Note>
 
-```json  theme={null}
-"model": "tavus-llama-4"
+```json theme={null}
+"model": "tavus-gpt-oss"
 ```
 
 ### 2. `tools`
@@ -5128,7 +4966,7 @@ Optionally enable tool calling by defining functions the LLM can invoke.
 
 When set to `true`, the LLM begins processing speech transcriptions before user input ends, improving responsiveness.
 
-```json  theme={null}
+```json theme={null}
 "speculative_inference": true
 ```
 
@@ -5136,9 +4974,24 @@ When set to `true`, the LLM begins processing speech transcriptions before user 
   This is field is optional, but recommended for better performance.
 </Note>
 
+### 4. `extra_body`
+
+Add parameters to customize the LLM request. For Tavus-hosted models, you can pass `temperature` and `top_p`:
+
+```json theme={null}
+"extra_body": {
+  "temperature": 0.7,
+  "top_p": 0.9
+}
+```
+
+<Note>
+  This field is optional.
+</Note>
+
 ### Example Configuration
 
-```json  theme={null}
+```json theme={null}
 {
   "persona_name": "Health Coach",
   "system_prompt": "You provide wellness tips and encouragement for people pursuing a healthy lifestyle.",
@@ -5148,7 +5001,11 @@ When set to `true`, the LLM begins processing speech transcriptions before user 
   "layers": {
     "llm": {
       "model": "tavus-gpt-4o",
-      "speculative_inference": true
+      "speculative_inference": true,
+      "extra_body": {
+        "temperature": 0.7,
+        "top_p": 0.9
+      }
     }
   }
 }
@@ -5173,7 +5030,7 @@ Ensure your LLM:
 
 Name of the custom model you want to use.
 
-```json  theme={null}
+```json theme={null}
 "model": "gpt-3.5-turbo"
 ```
 
@@ -5185,7 +5042,7 @@ Base URL of your LLM endpoint.
   Do not include route extensions in the `base_url`.
 </Note>
 
-```json  theme={null}
+```json theme={null}
 "base_url": "https://your-llm.com/api/v1"
 ```
 
@@ -5193,7 +5050,7 @@ Base URL of your LLM endpoint.
 
 API key to authenticate with your LLM provider.
 
-```json  theme={null}
+```json theme={null}
 "api_key": "your-api-key"
 ```
 
@@ -5213,7 +5070,7 @@ Optionally enable tool calling by defining functions the LLM can invoke.
 
 When set to `true`, the LLM begins processing speech transcriptions before user input ends, improving responsiveness.
 
-```json  theme={null}
+```json theme={null}
 "speculative_inference": true
 ```
 
@@ -5225,7 +5082,7 @@ When set to `true`, the LLM begins processing speech transcriptions before user 
 
 Optional headers for authenticating with your LLM.
 
-```json  theme={null}
+```json theme={null}
 "headers": {
   "Authorization": "Bearer your-api-key"
 }
@@ -5237,21 +5094,37 @@ Optional headers for authenticating with your LLM.
 
 ### 7. `extra_body`
 
-Add parameters to customize the LLM request, such as temperature.
+Add parameters to customize the LLM request. You can pass any parameters that your LLM provider supports:
 
-```json  theme={null}
+```json theme={null}
 "extra_body": {
-  "temperature": 0.5
+  "temperature": 0.5,
+  "top_p": 0.9,
+  "frequency_penalty": 0.5
 }
 ```
 
 <Note>
-  This is field is optional.
+  This field is optional.
+</Note>
+
+### 8. `default_query`
+
+Add default query parameters that get appended to the base URL when making requests to the `/chat/completions` endpoint.
+
+```json theme={null}
+"default_query": {
+  "api-version": "2024-02-15-preview"
+}
+```
+
+<Note>
+  This field is optional. Useful for LLM providers that require query parameters for authentication or versioning.
 </Note>
 
 ### Example Configuration
 
-```json  theme={null}
+```json theme={null}
 {
   "persona_name": "Storyteller",
   "system_prompt": "You are a storyteller who entertains people of all ages.",
@@ -5260,24 +5133,27 @@ Add parameters to customize the LLM request, such as temperature.
   "default_replica_id": "r665388ec672",
   "layers": {
     "llm": {
-      "model": "gpt-3.5-turbo",
-      "base_url": "https://api.openai.com/v1",
+      "model": "gpt-4o",
+      "base_url": "https://your-azure-openai.openai.azure.com/openai/deployments/gpt-4o",
       "api_key": "your-api-key",
-      "speculative_inference": true
+      "speculative_inference": true,
+      "default_query": {
+        "api-version": "2024-02-15-preview"
+      }
     }
   }
 }
 ```
 
 <Note>
-  Refer to the <a href="/api-reference/personas/create-persona" target="_blank">Create Persona API</a> for a full list of supported fields.
+  Refer to the <a href="/api-reference/personas/create-persona">Create Persona API</a> for a full list of supported fields.
 </Note>
 
 ### Perception
 
 When using the `raven-0` perception model with a custom LLM, your LLM will receive system messages containing visual context extracted from the user's video input.
 
-```json  theme={null}
+```json theme={null}
 {
     "role": "system",
     "content": "<user_appearance>...</user_appearance> <user_emotions>...</user_emotions> <user_screenshare>...</user_screenshare>"
@@ -5288,7 +5164,7 @@ When using the `raven-0` perception model with a custom LLM, your LLM will recei
 
 If you use the Basic perception model, your LLM will receive the following user messages (instead of a system message):
 
-```json  theme={null}
+```json theme={null}
 {
     "role": "user",
     "content": "USER_SPEECH: ... VISUAL_SCENE: ..."
@@ -5305,7 +5181,7 @@ Source: https://docs.tavus.io/sections/conversational-video-interface/persona/ll
 
 Set up tool calling to trigger functions from user speech using Tavus-hosted or custom LLMs.
 
-**LLM tool calling** works with OpenAI’s <a href="https://platform.openai.com/docs/guides/function-calling" target="_blank">Function Calling</a> and can be set up in the `llm` layer. It allows an AI agent to trigger functions based on user speech during a conversation.
+**LLM tool calling** works with OpenAI’s <a href="https://platform.openai.com/docs/guides/function-calling">Function Calling</a> and can be set up in the `llm` layer. It allows an AI agent to trigger functions based on user speech during a conversation.
 
 <Note>
   You can use tool calling with our **hosted models** or any **OpenAI-compatible custom LLM**.
@@ -5369,7 +5245,7 @@ Here’s an example of tool calling in the `llm` layers:
 
 ```json LLM Layer [expandable] theme={null}
 "llm": {
-  "model": "tavus-llama-4",
+  "model": "tavus-gpt-oss",
   "tools": [
     {
       "type": "function",
@@ -5426,12 +5302,12 @@ Tool calling is triggered during an active conversation when the LLM model needs
 </Note>
 
 <Frame>
-    <img src="https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/llm-tool-calling.png?fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=54e4483d6fb3d2d2aa5c0a7d1ee18804" alt="" data-og-width="2315" width="2315" data-og-height="1502" height="1502" data-path="images/llm-tool-calling.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/llm-tool-calling.png?w=280&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=4e569933ca1e077b72260b6968489bca 280w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/llm-tool-calling.png?w=560&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=38777a0216b23b2aaf564ea9da30ad9a 560w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/llm-tool-calling.png?w=840&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=eaac1ab19296fd2afabd183243034b4f 840w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/llm-tool-calling.png?w=1100&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=07041d80e3e5035e5aeb783ff18feb36 1100w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/llm-tool-calling.png?w=1650&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=10c9106e46062f88ac5840619967aaab 1650w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/llm-tool-calling.png?w=2500&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=4cdf41d3a1f4944f5c6270f83007f141 2500w" />
+  <img alt="" />
 </Frame>
 
 ## Modify Existing Tools
 
-You can update `tools` definitions using the <a href="/api-reference/personas/patch-persona" target="_blank">Update Persona API</a>.
+You can update `tools` definitions using the <a href="/api-reference/personas/patch-persona">Update Persona API</a>.
 
 ```shell [expandable] theme={null}
 curl --request PATCH \
@@ -5470,7 +5346,7 @@ curl --request PATCH \
 ```
 
 <Note>
-  Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys" target="_blank">Developer Portal</a>.
+  Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys">Developer Portal</a>.
 </Note>
 
 
@@ -5499,7 +5375,7 @@ To attach objectives to a persona, you can either:
 
 * Add them during [persona creation](/api-reference/personas/create-persona) like this:
 
-```sh  theme={null}
+```sh theme={null}
 curl --request POST \
   --url https://tavusapi.com/v2/personas/ \
   --header 'Content-Type: application/json' \
@@ -5514,7 +5390,7 @@ OR
 
 * Add them by [editing the persona](/api-reference/personas/patch-persona) like this:
 
-```sh  theme={null}
+```sh theme={null}
 curl --request PATCH \
   --url https://tavusapi.com/v2/personas/{persona_id} \
   --header 'Content-Type: application/json' \
@@ -5579,7 +5455,7 @@ This represents a mapping of objectives (identified by `objective_name`), to con
 
 Example:
 
-```json  theme={null}
+```json theme={null}
 {
   "new_patient_intake_process": "If the patient has never been to the practice before",
   "existing_patient_intake_process": "If the patient has been to the practice before"
@@ -5626,7 +5502,7 @@ Each persona includes configurable fields. Here's what you can customize:
 
 Provide your persona with robust workflow management tools, curated to your use case
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Objectives" icon="bullseye" href="/sections/conversational-video-interface/persona/objectives">
     The goal-oriented instructions your persona will adhere to throughout the conversation.
   </Card>
@@ -5640,7 +5516,7 @@ Provide your persona with robust workflow management tools, curated to your use 
 
 Explore our in-depth guides to customize each layer to fit your specific use case:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Perception Layer" icon="eye" href="/sections/conversational-video-interface/persona/perception">
     Defines how the persona interprets visual input like facial expressions and gestures.
   </Card>
@@ -5669,7 +5545,7 @@ Tavus provides several pipeline modes, each with preconfigured layers tailored t
 ### Full Pipeline Mode (Default & Recommended)
 
 <Frame>
-    <img src="https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/full.png?fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=f5b4528a1e71b053ceaf338be4cdaaee" alt="" data-og-width="3707" width="3707" data-og-height="1146" height="1146" data-path="images/full.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/full.png?w=280&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=a3cbce110bdb9a26eb3d6586fff56403 280w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/full.png?w=560&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=2b0857e9efea3144361cc03229a02ecf 560w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/full.png?w=840&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=e8b53a9789ac1718829172726dad7a7d 840w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/full.png?w=1100&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=bdccde667b404c4f5a0d7b89b72f9940 1100w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/full.png?w=1650&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=7107722b87005b6c5d8bd910d961d8ff 1650w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/full.png?w=2500&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=d30c97d68731560ad69989df4086d38d 2500w" />
+  <img alt="" />
 </Frame>
 
 The default and recommended end-to-end configuration optimized for real-time conversation. All CVI layers are active and customizable.
@@ -5681,12 +5557,12 @@ The default and recommended end-to-end configuration optimized for real-time con
   We offer a selection of optimized LLMs including **Llama 3.3 and OpenAI models** that are fully optimized for the full pipeline mode.
 </Note>
 
-<Card title="CVI quickstart" icon="rocket" href="/sections/conversational-video-interface/quickstart/use-the-full-pipeline" horizontal />
+<Card title="CVI quickstart" icon="rocket" href="/sections/conversational-video-interface/quickstart/use-the-full-pipeline" />
 
 ### Custom LLM / Bring Your Own Logic
 
 <Frame>
-    <img src="https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/custom-llm.png?fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=675d07e7f22c09453de26baf783fa368" alt="" data-og-width="3707" width="3707" data-og-height="1357" height="1357" data-path="images/custom-llm.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/custom-llm.png?w=280&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=8afb50391cef439c806ccae802295198 280w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/custom-llm.png?w=560&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=a6eaeaf7a743415a566c04495ea22753 560w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/custom-llm.png?w=840&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=cd9988af75ff07a27b0b2dc94ef2d983 840w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/custom-llm.png?w=1100&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=493e2823548c8d47bdd5c5eab5f5181e 1100w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/custom-llm.png?w=1650&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=fd8542574eb688f8d5b41beae477febe 1650w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/custom-llm.png?w=2500&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=bbd95ca855eafa2a2375248acf19041c 2500w" />
+  <img alt="" />
 </Frame>
 
 Use this mode to integrate a custom LLM or a specialized backend for interpreting transcripts and generating responses.
@@ -5694,7 +5570,7 @@ Use this mode to integrate a custom LLM or a specialized backend for interpretin
 * Adds latency due to external processing
 * Does **not** require an actual LLM—any endpoint that returns a compatible chat completion format can be used
 
-<Card title="Integrate your own custom LLM or logic" icon="binary" href="/sections/conversational-video-interface/persona/llm#custom-llms" horizontal />
+<Card title="Integrate your own custom LLM or logic" icon="binary" href="/sections/conversational-video-interface/persona/llm#custom-llms" />
 
 
 # Perception
@@ -5722,7 +5598,7 @@ Specifies the perception model to use.
   **Screen Share Feature**: When using `raven-0`, screen share feature is enabled by default without additional configuration.
 </Note>
 
-```json  theme={null}
+```json theme={null}
 "layers": {
   "perception": {
     "perception_model": "raven-0"
@@ -5734,7 +5610,7 @@ Specifies the perception model to use.
 
 An array of custom queries that `raven-0` continuously monitors in the visual stream.
 
-```json  theme={null}
+```json theme={null}
 "ambient_awareness_queries": [
   "Is the user wearing a bright outfit?"
 ]
@@ -5748,7 +5624,7 @@ An array of custom queries that `raven-0` processes at the end of the call to ge
   You do not need to set `ambient_awareness_queries` in order to use `perception_analysis_queries`.
 </Note>
 
-```json  theme={null}
+```json theme={null}
 "perception_analysis_queries": [
   "Is the user wearing multiple bright colors?",
   "Is there any indication that more than one person is present?",
@@ -5767,7 +5643,7 @@ An array of custom queries that `raven-0` processes at the end of the call to ge
 
 Tell `raven-0` when and how to trigger tools based on what it sees.
 
-```json  theme={null}
+```json theme={null}
 "perception_tool_prompt":
   "You have a tool to notify the system when a bright outfit is detected, named `notify_if_bright_outfit_shown`. You MUST use this tool when a bright outfit is detected."
 ```
@@ -5776,7 +5652,7 @@ Tell `raven-0` when and how to trigger tools based on what it sees.
 
 Defines callable functions that `raven-0` can trigger upon detecting specific visual conditions. Each tool must include a `type` and a `function` object detailing its schema.
 
-```json  theme={null}
+```json theme={null}
 "perception_tools": [
   {
     "type": "function",
@@ -5806,7 +5682,7 @@ Defines callable functions that `raven-0` can trigger upon detecting specific vi
 
 This example demonstrates a persona designed to identify when a user wears a bright outfit and triggers an internal action accordingly.
 
-```json  theme={null}
+```json theme={null}
 {
   "persona_name": "Fashion Advisor",
   "system_prompt": "As a Fashion Advisor, you specialize in offering tailored fashion advice.",
@@ -5850,7 +5726,7 @@ This example demonstrates a persona designed to identify when a user wears a bri
 ```
 
 <Note>
-  Please see the <a href="/api-reference/personas/create-persona" target="_blank">Create a Persona</a> endpoint for more details.
+  Please see the <a href="/api-reference/personas/create-persona">Create a Persona</a> endpoint for more details.
 </Note>
 
 ## End-of-call Perception Analysis
@@ -5863,7 +5739,7 @@ At the end of the call, `raven-0` will generate a visual summary including all d
 
 Once processed, your backend will receive a payload like the following:
 
-```json  theme={null}
+```json theme={null}
 {
   "properties": {
     "analysis": "Here's a summary of the visual observations:\n\n*   **User Appearance:** The subject is a young person, likely in their teens or early twenties, with dark hair and an East Asian appearance. They consistently wear a dark blue or black hooded jacket/hoodie with pink and white accents, patterns, or text on the sleeves, and possibly a white undershirt. A pendant or charm was observed on their chest. The setting is consistently an indoor environment with a plain white or light-colored wall background.\n*   **User Behavior and Demeanor:** The user frequently holds a wired earpiece, microphone, or earbuds near their mouth or chin, appearing to be speaking, listening intently, or in deep thought. Their gaze is predominantly cast downwards, occasionally looking slightly off to the side, with only rare, brief glances forward. They generally maintain a still posture.\n*   **User Emotions:** The user's expression is consistently neutral, conveying a sense of quiet concentration, engagement, contemplation, or thoughtful introspection. There are no overt signs of strong emotion; their demeanor is described as calm, focused, sometimes pensive, or slightly subdued. They appear to be actively listening or processing information.\n*    **User's gaze towards the screen:** On a scale of 1-100, the user was looking at the screen approximately 75% of the time. While there was one instance where their gaze was averted, for the majority of the observations, the user was either looking directly at the screen or in its general direction."
@@ -5881,7 +5757,7 @@ Once processed, your backend will receive a payload like the following:
 
 For example, if you include the following query:
 
-```json  theme={null}
+```json theme={null}
 "ambient_awareness_queries": [
   "Is the user wearing a jacket?"
 ]
@@ -5889,7 +5765,7 @@ For example, if you include the following query:
 
 Once processed, your backend will receive a payload containing the following sentence:
 
-```json  theme={null}
+```json theme={null}
 **Ambient Awareness Queries:** The user was consistently wearing a jacket throughout the observed period.\n*
 ```
 
@@ -5897,7 +5773,7 @@ Once processed, your backend will receive a payload containing the following sen
 
 For example, if you include the following query:
 
-```json  theme={null}
+```json theme={null}
 "perception_analysis_queries": [
   "On a scale of 1-100, how often was the user looking at the screen?"
 ]
@@ -5905,7 +5781,7 @@ For example, if you include the following query:
 
 Once processed, your backend will receive a payload containing the following sentence:
 
-```json  theme={null}
+```json theme={null}
 **User's Gaze Toward Screen:** "The participant looked at the screen approximately 75% of the time. Their gaze was occasionally diverted, but mostly remained focused in the direction of the camera."
 
 ```
@@ -5916,7 +5792,7 @@ Source: https://docs.tavus.io/sections/conversational-video-interface/persona/pe
 
 Configure tool calling with `raven-0` to trigger functions from visual input.
 
-**Perception tool calling** works with OpenAI’s <a href="https://platform.openai.com/docs/guides/function-calling" target="_blank">Function Calling</a> and can be configured in the `perception` layer. It allows an AI agent to trigger functions based on visual cues during a conversation.
+**Perception tool calling** works with OpenAI’s <a href="https://platform.openai.com/docs/guides/function-calling">Function Calling</a> and can be configured in the `perception` layer. It allows an AI agent to trigger functions based on visual cues during a conversation.
 
 <Note>
   The perception layer tool calling is only available for `raven-0`.
@@ -6034,7 +5910,7 @@ Perception Tool calling is triggered during an active conversation when the perc
 </Note>
 
 <Frame>
-    <img src="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/perception-tool-call.png?fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=7e231c29aaf93a4bdf856d74a590da00" alt="" data-og-width="2497" width="2497" data-og-height="1502" height="1502" data-path="images/perception-tool-call.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/perception-tool-call.png?w=280&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=58e5661c61652b2bb76b2a3bbca37667 280w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/perception-tool-call.png?w=560&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=79cc72fe52ae2352a2c29a0cfa9f0d5b 560w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/perception-tool-call.png?w=840&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=347637d011ba1e947f1770ad2d610385 840w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/perception-tool-call.png?w=1100&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=7831fe7c91decf020210c4be179494e7 1100w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/perception-tool-call.png?w=1650&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=077f0822d392b7f32ec914f0b58c30e7 1650w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/perception-tool-call.png?w=2500&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=3fb5fbe4494f1b8a3b0e6c63e5b6eff9 2500w" />
+  <img alt="" />
 </Frame>
 
 <Note>
@@ -6043,7 +5919,7 @@ Perception Tool calling is triggered during an active conversation when the perc
 
 ## Modify Existing Tools
 
-You can update the `perception_tools` definitions using the <a href="/api-reference/personas/patch-persona" target="_blank">Update Persona API</a>.
+You can update the `perception_tools` definitions using the <a href="/api-reference/personas/patch-persona">Update Persona API</a>.
 
 ```shell [expandable] theme={null}
 curl --request PATCH \
@@ -6079,7 +5955,7 @@ curl --request PATCH \
 ```
 
 <Note>
-  Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys" target="_blank">Developer Portal</a>.
+  Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys">Developer Portal</a>.
 </Note>
 
 
@@ -6091,21 +5967,21 @@ Tavus offers pre-built personas to help you get started quickly.
 These personas are optimized for a variety of real-world scenarios:
 
 <Note>
-  To fetch all available stock personas, use the <a href="/api-reference/personas/get-personas" target="_blank" rel="noopener noreferrer">List Personas endpoint</a>.
+  To fetch all available stock personas, use the <a href="/api-reference/personas/get-personas">List Personas endpoint</a>.
 </Note>
 
 ### Education
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Sales Coach" icon="user">
     Teaches sales tips and strategies.
 
-    ```text  theme={null}
+    ```text theme={null}
     pdced222244b
     ```
 
     <Accordion title="Create Conversation">
-      ```shell  theme={null}
+      ```shell theme={null}
         curl --request POST \
         --url https://tavusapi.com/v2/conversations \
         -H "Content-Type: application/json" \
@@ -6121,12 +5997,12 @@ These personas are optimized for a variety of real-world scenarios:
   <Card title="Corporate Trainer" icon="briefcase">
     Delivers workplace training.
 
-    ```text  theme={null}
+    ```text theme={null}
     p7fb0be3
     ```
 
     <Accordion title="Create Conversation">
-      ```shell  theme={null}
+      ```shell theme={null}
         curl --request POST \
         --url https://tavusapi.com/v2/conversations \
         -H "Content-Type: application/json" \
@@ -6142,12 +6018,12 @@ These personas are optimized for a variety of real-world scenarios:
   <Card title="History Teacher" icon="book">
     Talks about history topics.
 
-    ```text  theme={null}
+    ```text theme={null}
     pc55154f229a
     ```
 
     <Accordion title="Create Conversation">
-      ```shell  theme={null}
+      ```shell theme={null}
         curl --request POST \
         --url https://tavusapi.com/v2/conversations \
         -H "Content-Type: application/json" \
@@ -6163,12 +6039,12 @@ These personas are optimized for a variety of real-world scenarios:
   <Card title="College Tutor" icon="graduation-cap">
     Helps with academic subjects.
 
-    ```text  theme={null}
+    ```text theme={null}
     p88964a7
     ```
 
     <Accordion title="Create Conversation">
-      ```shell  theme={null}
+      ```shell theme={null}
         curl --request POST \
         --url https://tavusapi.com/v2/conversations \
         -H "Content-Type: application/json" \
@@ -6184,16 +6060,16 @@ These personas are optimized for a variety of real-world scenarios:
 
 ### Business
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Sales Agent at Tavus" icon="briefcase">
     Answers questions about Tavus.
 
-    ```text  theme={null}
+    ```text theme={null}
     pb8bb46b
     ```
 
     <Accordion title="Create Conversation">
-      ```shell  theme={null}
+      ```shell theme={null}
         curl --request POST \
         --url https://tavusapi.com/v2/conversations \
         -H "Content-Type: application/json" \
@@ -6209,12 +6085,12 @@ These personas are optimized for a variety of real-world scenarios:
   <Card title="Healthcare Intake Assistant" icon="stethoscope">
     Collects patient info
 
-    ```text  theme={null}
+    ```text theme={null}
     p5d11710002a
     ```
 
     <Accordion title="Create Conversation">
-      ```shell  theme={null}
+      ```shell theme={null}
         curl --request POST \
         --url https://tavusapi.com/v2/conversations \
         -H "Content-Type: application/json" \
@@ -6230,12 +6106,12 @@ These personas are optimized for a variety of real-world scenarios:
   <Card title="AI Interviewer" icon="headset">
     Runs mock interviews.
 
-    ```text  theme={null}
+    ```text theme={null}
     pe13ed370726
     ```
 
     <Accordion title="Create Conversation">
-      ```shell  theme={null}
+      ```shell theme={null}
         curl --request POST \
         --url https://tavusapi.com/v2/conversations \
         -H "Content-Type: application/json" \
@@ -6251,16 +6127,16 @@ These personas are optimized for a variety of real-world scenarios:
 
 ### Assistant
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Technical Co Pilot" icon="code">
     Helps with coding.
 
-    ```text  theme={null}
+    ```text theme={null}
     pd43ffef
     ```
 
     <Accordion title="Create Conversation">
-      ```shell  theme={null}
+      ```shell theme={null}
         curl --request POST \
         --url https://tavusapi.com/v2/conversations \
         -H "Content-Type: application/json" \
@@ -6276,12 +6152,12 @@ These personas are optimized for a variety of real-world scenarios:
   <Card title="Tavus' Personal AI" icon="robot">
     General Tavus-branded assistant.
 
-    ```text  theme={null}
+    ```text theme={null}
     p2fbd605
     ```
 
     <Accordion title="Create Conversation">
-      ```shell  theme={null}
+      ```shell theme={null}
         curl --request POST \
         --url https://tavusapi.com/v2/conversations \
         -H "Content-Type: application/json" \
@@ -6297,12 +6173,12 @@ These personas are optimized for a variety of real-world scenarios:
   <Card title="Tavus Researcher" icon="flask">
     Shares research insights.
 
-    ```text  theme={null}
+    ```text theme={null}
     p48fdf065d6b
     ```
 
     <Accordion title="Create Conversation">
-      ```shell  theme={null}
+      ```shell theme={null}
         curl --request POST \
         --url https://tavusapi.com/v2/conversations \
         -H "Content-Type: application/json" \
@@ -6318,16 +6194,16 @@ These personas are optimized for a variety of real-world scenarios:
 
 ### Others
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Demo Persona" icon="users">
     Tavus demo persona.
 
-    ```text  theme={null}
+    ```text theme={null}
     p9a95912
     ```
 
     <Accordion title="Create Conversation">
-      ```shell  theme={null}
+      ```shell theme={null}
         curl --request POST \
         --url https://tavusapi.com/v2/conversations \
         -H "Content-Type: application/json" \
@@ -6343,12 +6219,12 @@ These personas are optimized for a variety of real-world scenarios:
   <Card title="Santa" icon="gift">
     Talks with Santa for festive experience.
 
-    ```text  theme={null}
+    ```text theme={null}
     p3bb4745d4f9
     ```
 
     <Accordion title="Create Conversation">
-      ```shell  theme={null}
+      ```shell theme={null}
         curl --request POST \
         --url https://tavusapi.com/v2/conversations \
         -H "Content-Type: application/json" \
@@ -6368,45 +6244,17 @@ Source: https://docs.tavus.io/sections/conversational-video-interface/persona/st
 
 Learn how to configure the STT layer to enable smart turn detection and enhance conversational flow.
 
-The STT Layer in Tavus empowers your persona to transcribe and comprehend spoken input in real time. By default, the STT layer in Tavus leverages `smart_turn_detection`, powered by **Sparrow**, for dynamic and responsive conversation flow with intelligent turn-taking.
+The STT Layer in Tavus empowers your persona to transcribe and comprehend spoken input in real time.
+
+<Note>
+  **Turn-taking settings have moved**: Turn-taking is now configured on the [Conversational Flow layer](/sections/conversational-video-interface/persona/conversational-flow).
+</Note>
 
 ## Configuring the STT Layer
 
 Define the STT layer under the `layers.stt` object. Below are the parameters available:
 
-### 1. `participant_pause_sensitivity`
-
-Controls how long the participant can pause before the replica responds. This setting helps you fine-tune the pacing of the conversation.
-
-* **Options**:
-
-  * `high`: The replica replies quickly after short pauses. Good for fast and casual conversations.
-  * `medium` **(default)**: Balanced timing. Allows natural pauses without feeling rushed or delayed.
-  * `low`: The replica waits a bit longer before replying. Useful for slower or more thoughtful discussions.
-  * `verylow`: The replica allows even longer pauses before responding.
-  * `superlow`: The replica has the longest response delay, making it suitable for conversations where participants often pause.
-
-```json  theme={null}
-"participant_pause_sensitivity": "medium"
-```
-
-### 2. `participant_interrupt_sensitivity`
-
-Controls how easily the participant can interrupt the replica while it is talking. This setting helps adjust how the replica handles overlap in conversation.
-
-* **Options**:
-
-  * `high`: The replica stops speaking immediately when the participant starts talking. Ideal for quick and back-and-forth exchanges.
-  * `medium` **(default)**: Balanced behavior. Allows short interruptions without breaking the flow.
-  * `low`: The participant needs to speak more clearly or for a bit longer to interrupt.
-  * `verylow`: The replica usually keeps talking unless the interruption is strong.
-  * `superlow`: The replica rarely stops mid-sentence. It will usually finish speaking before responding.
-
-```json  theme={null}
-"participant_interrupt_sensitivity": "medium"
-```
-
-### 3. `hotwords`
+### 1. `hotwords`
 
 Use this to prioritize certain names or terms that are difficult to transcribe.
 
@@ -6414,7 +6262,7 @@ Use this to prioritize certain names or terms that are difficult to transcribe.
   This field is only available for `tavus-advanced` engine.
 </Note>
 
-```json  theme={null}
+```json theme={null}
 "hotwords": "Roey is the name of the person you're speaking with."
 ```
 
@@ -6424,30 +6272,11 @@ The above query helps the model transcribe "Roey" correctly instead of "Rowie."
   Use hotwords for proper nouns, brand names, or domain-specific language that standard STT engines might struggle with.
 </Tip>
 
-### 4. `Turn-taking model`
-
-Enables dynamic turn-taking using the Sparrow model, which dynamically adjusts the timeout based on what the users say. It sets a longer timeout when the user is likely not done speaking, and a shorter timeout when the user is likely done speaking.
-
-```json  theme={null}
-"smart_turn_detection": true
-```
-
-#### How Turn-taking Works
-
-<Frame>
-    <img src="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stt-works.png?fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=110b73821f8b6dee00a4378ab722ecca" alt="" data-og-width="1685" width="1685" data-og-height="1599" height="1599" data-path="images/stt-works.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stt-works.png?w=280&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=9b1893d42587b724b77473127b595a19 280w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stt-works.png?w=560&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=5c4ae544e7815e82643097cbbb1bbde4 560w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stt-works.png?w=840&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=4ee1a2c64f33605f991b88e725d53114 840w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stt-works.png?w=1100&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=faf5f0a4c4856ae74d07965eee1e879c 1100w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stt-works.png?w=1650&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=b45145be3e8d2bf64db52e08d99b7afc 1650w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stt-works.png?w=2500&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=bcfc157c7293200aad614a7d699e7960 2500w" />
-</Frame>
-
-<Warning>
-  * `smart_turn_detection` is only supported by the `tavus-advanced` engine.
-  * Disabling `smart_turn_detection` turns off **Sparrow** and uses a fixed response delay based on `participant_pause_sensitivity`.
-</Warning>
-
 ## Example Configuration
 
 Below is an example persona with a fully configured STT layer:
 
-```json  theme={null}
+```json theme={null}
 {
   "persona_name": "Customer Service Agent",
   "system_prompt": "You assist users by listening carefully and providing helpful answers.",
@@ -6456,17 +6285,14 @@ Below is an example persona with a fully configured STT layer:
   "default_replica_id": "rfe12d8b9597",
   "layers": {
     "stt": {
-      "participant_pause_sensitivity": "medium",
-      "participant_interrupt_sensitivity": "low",
-      "hotwords": "support",
-      "smart_turn_detection": true
+      "hotwords": "support"
     }
   }
 }
 ```
 
 <Note>
-  Refer to the <a href="/api-reference/personas/create-persona" target="_blank">Create Persona API</a> for a complete list of supported fields.
+  Refer to the <a href="/api-reference/personas/create-persona">Create Persona API</a> for a complete list of supported fields.
 </Note>
 
 
@@ -6492,7 +6318,7 @@ Specifies the supported third-party TTS engine.
 
 * **Options**:  `cartesia`, `elevenlabs`.
 
-```json  theme={null}
+```json theme={null}
 "tts": {
   "tts_engine": "cartesia"
 }
@@ -6506,10 +6332,10 @@ Authenticates requests to your selected third-party TTS provider. You can obtain
   Only required when using private voices.
 </Warning>
 
-* <a href="https://play.cartesia.ai/keys" target="_blank">Cartesia</a>
-* <a href="https://elevenlabs.io/app/settings/api-keys" target="_blank">ElevenLabs</a>
+* <a href="https://play.cartesia.ai/keys">Cartesia</a>
+* <a href="https://elevenlabs.io/app/settings/api-keys">ElevenLabs</a>
 
-```json  theme={null}
+```json theme={null}
 "tts": {
   "api_key": "your-api-key"
 }
@@ -6519,14 +6345,14 @@ Authenticates requests to your selected third-party TTS provider. You can obtain
 
 Specifies which voice to use with the selected TTS engine. To find supported voice IDs, refer to the provider’s documentation:
 
-* <a href="https://docs.cartesia.ai/api-reference/voices/list" target="_blank">Cartesia</a>
-* <a href="https://elevenlabs.io/docs/api-reference/voices/search" target="_blank">ElevenLabs</a>
+* <a href="https://docs.cartesia.ai/api-reference/voices/list">Cartesia</a>
+* <a href="https://elevenlabs.io/docs/api-reference/voices/search">ElevenLabs</a>
 
 <Note>
   You can use any publicly accessible custom voice from ElevenLabs or Cartesia without the provider's API key. If the custom voice is private, you still need to use the provider's API key.
 </Note>
 
-```json  theme={null}
+```json theme={null}
 "tts": {
   "external_voice_id": "external-voice-id"
 }
@@ -6536,10 +6362,10 @@ Specifies which voice to use with the selected TTS engine. To find supported voi
 
 Model name used by the TTS engine. Refer to:
 
-* <a href="https://docs.cartesia.ai/2025-04-16/build-with-cartesia/models" target="_blank">Cartesia</a>
-* <a href="https://elevenlabs.io/docs/models" target="_blank">ElevenLabs</a>
+* <a href="https://docs.cartesia.ai/2025-04-16/build-with-cartesia/models">Cartesia</a>
+* <a href="https://elevenlabs.io/docs/models">ElevenLabs</a>
 
-```json  theme={null}
+```json theme={null}
 "tts": {
   "tts_model_name": "sonic"
 }
@@ -6553,7 +6379,7 @@ If set to `true`, enables emotion control in speech.
   Only available for the `cartesia` engine.
 </Note>
 
-```json  theme={null}
+```json theme={null}
 "tts": {
   "tts_emotion_control": true
 }
@@ -6576,11 +6402,11 @@ These settings vary per engine:
 
 <Note>
   For more information on each voice setting, see:\
-  • <a href="https://docs.cartesia.ai/2024-11-13/build-with-cartesia/capability-guides/control-speed-and-emotion" target="_blank">Cartesia Speed and Emotion Controls</a>\
-  • <a href="https://elevenlabs.io/docs/api-reference/voices/settings/get" target="_blank">ElevenLabs Voice Settings</a>
+  • <a href="https://docs.cartesia.ai/2024-11-13/build-with-cartesia/capability-guides/control-speed-and-emotion">Cartesia Speed and Emotion Controls</a>\
+  • <a href="https://elevenlabs.io/docs/api-reference/voices/settings/get">ElevenLabs Voice Settings</a>
 </Note>
 
-```json  theme={null}
+```json theme={null}
 "tts": {
   "voice_settings": {
     "speed": 0.5,
@@ -6640,7 +6466,7 @@ Below is an example persona with a fully configured TTS layer:
 </CodeGroup>
 
 <Note>
-  Refer to the <a href="https://docs.tavus.io/api-reference/personas/create-persona" target="_blank">Create Persona API</a> for a complete list of supported fields.
+  Refer to the <a href="https://docs.tavus.io/api-reference/personas/create-persona">Create Persona API</a> for a complete list of supported fields.
 </Note>
 
 
@@ -6658,10 +6484,10 @@ Ensure that you have the following:
 ## Enable Conversation Recording
 
 <Steps>
-  <Step title="Step 1: Set up IAM Policy and Role" titleSize="h3">
+  <Step title="Step 1: Set up IAM Policy and Role">
     1. Create an IAM Policy with the following JSON definition:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "Version": "2012-10-17",
       "Statement": [
@@ -6701,13 +6527,13 @@ Ensure that you have the following:
     </Note>
   </Step>
 
-  <Step title="Step 2: Create a Conversation with Recording Enabled" titleSize="h3">
+  <Step title="Step 2: Create a Conversation with Recording Enabled">
     Use the following request body example:
 
     <Info>
       Remember to change the following values:
 
-      * `<api_key>`: Your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys" target="_blank">Developer Portal</a>.
+      * `<api_key>`: Your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys">Developer Portal</a>.
       * `aws_assume_role_arn`: Your AWS ARN.
       * `recording_s3_bucket_region`: Your S3 region.
       * `recording_s3_bucket_name`: Your S3 bucket name.
@@ -6734,10 +6560,10 @@ Ensure that you have the following:
     </Note>
   </Step>
 
-  <Step title="Step 3: Join the Conversation" titleSize="h3">
+  <Step title="Step 3: Join the Conversation">
     To join the conversation, click the **link** in the ***`conversation_url`*** field from the response:
 
-    ```json  theme={null}
+    ```json theme={null}
 
     {
       "conversation_id": "c93a7ead335b",
@@ -6754,6 +6580,20 @@ Ensure that you have the following:
       You can access the recording file in your S3 bucket.
     </Note>
   </Step>
+
+  <Step title="Step 4: Start Recording via Frontend Code">
+    `enable_recording` (from Step 2 above) allows recording to be possible, but it doesn't start recording automatically. To begin and end recordings, end users must do it manually (start/stop recording button in the UI) or you can trigger it through frontend code.
+
+    You can use frontend code via Daily's SDK to start-recording. To ensure recordings are generated consistently, be sure to wait for the `joined-meeting` event first.
+
+    ```javascript theme={null}
+    const call = Daily.createCallObject();
+
+    call.on('joined-meeting', () => {
+      call.startRecording(); // room must have enable_recording set
+    });
+    ```
+  </Step>
 </Steps>
 
 
@@ -6767,7 +6607,7 @@ You can **customize your conversation interface** to match your style by updatin
 Here’s an example showing how to customize the conversation UI by adding leave and fullscreen buttons, changing the language, and adjusting the UI color.
 
 <Note>
-  For more options, check the <a href="https://docs.daily.co/guides/products/prebuilt/customizing-daily-prebuilt-calls-with-color-themes" target="_blank">Daily theme configuration reference</a> and <a href="https://docs.daily.co/reference/daily-js/daily-call-client/properties" target="_blank">Daily Call Properties</a>.
+  For more options, check the <a href="https://docs.daily.co/guides/products/prebuilt/customizing-daily-prebuilt-calls-with-color-themes">Daily theme configuration reference</a> and <a href="https://docs.daily.co/reference/daily-js/daily-call-client/properties">Daily Call Properties</a>.
 </Note>
 
 ### Customization Example Guide
@@ -6780,7 +6620,7 @@ Here’s an example showing how to customize the conversation UI by adding leave
 
     Use the following request body example:
 
-    ```sh  theme={null}
+    ```sh theme={null}
     curl --request POST \
       --url https://tavusapi.com/v2/conversations \
       --header 'Content-Type: application/json' \
@@ -6792,7 +6632,7 @@ Here’s an example showing how to customize the conversation UI by adding leave
     ```
 
     <Note>
-      Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys" target="_blank">Developer Portal</a>.
+      Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys">Developer Portal</a>.
     </Note>
   </Step>
 
@@ -6836,7 +6676,7 @@ Here’s an example showing how to customize the conversation UI by adding leave
     Start the application by opening the file in the browser.
 
     <Frame>
-            <img src="https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/customui.png?fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=f07bcdeb02c067bdb441ceea8a194eaf" alt="" data-og-width="1920" width="1920" data-og-height="1080" height="1080" data-path="images/customui.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/customui.png?w=280&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=96d192b1da13e7dd92ed9a8ae8273061 280w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/customui.png?w=560&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=edfcc7b095a2995b13a8bfdcb74aef1d 560w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/customui.png?w=840&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=b03e4a6b21d4d6cf57946256dadd68f1 840w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/customui.png?w=1100&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=d80116ce5e7a7588c80d6ba70db1bdb3 1100w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/customui.png?w=1650&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=6bb76196d4e8a4c4f0d0c82e826b1dc3 1650w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/customui.png?w=2500&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=5be715e84ed0f5db57175ca74f3c1684 2500w" />
+      <img alt="" />
     </Frame>
   </Step>
 </Steps>
@@ -6850,7 +6690,7 @@ Create your first persona using the full pipeline and start a conversation in se
 Use the full pipeline to unlock the complete range of replica capabilities—including perception and speech recognition.
 
 <Steps>
-  <Step title="Step 1: Create a Persona" titleSize="h3">
+  <Step title="Step 1: Create a Persona">
     <Note>
       In this example, we’ll create an interviewer persona with the following settings:
 
@@ -6884,7 +6724,7 @@ Use the full pipeline to unlock the complete range of replica capabilities—inc
     ```
 
     <Note>
-      Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys" target="_blank">Developer Portal</a>.
+      Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys">Developer Portal</a>.
     </Note>
 
     Tavus offers full layer customizations for your persona. Please see the following for each layer configurations:
@@ -6895,7 +6735,7 @@ Use the full pipeline to unlock the complete range of replica capabilities—inc
     * [Speech-to-Text (STT)](/sections/conversational-video-interface/persona/stt)
   </Step>
 
-  <Step title="Step 2: Create Your Conversation" titleSize="h3">
+  <Step title="Step 2: Create Your Conversation">
     Create a new conversation using your newly created `persona_id`:
 
     ```shell cURL theme={null}
@@ -6916,10 +6756,10 @@ Use the full pipeline to unlock the complete range of replica capabilities—inc
     </Note>
   </Step>
 
-  <Step title="Step 3: Join the Conversation" titleSize="h3">
+  <Step title="Step 3: Join the Conversation">
     To join the conversation, click the link in the `conversation_url` field from the response:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "conversation_id": "c477c9dd7aa6e4fe",
       "conversation_name": "Interview User",
@@ -6980,24 +6820,24 @@ Identify errors and status details encountered when using the Tavus platform.
 
 ## Video Errors
 
-| Error Type                    | Error Message                                                                                                                                                                                                               | Additional Information                                                                                                                                                               |   |
-| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | - |
-| video\_error                  | An error occurred while generating this request. Please check your inputs or try your request again                                                                                                                         | Tavus ran into an issue generating the video. Please ensure that the your inputs are valid and try again. If this issue PermissionStatus, please reach out to support for assistance |   |
-| replica\_in\_error\_state     | Request Failed: The replica {} is currently in an 'error' state and cannot process requests. For details on the cause of the error and how to resolve it, please review the specific information provided for this replica. | Please ensure that the Replica being used to generate videos is in a 'ready' state                                                                                                   |   |
-| audio\_file\_max\_size        | There was an issue generating your video. The audio file exceeds the maximum file size of 750MB.                                                                                                                            | The audio file provided is too large. Please ensure that the audio file is less than 750MB and try again.                                                                            |   |
-| audio\_file\_type             | There was an issue generating your video. The audio file provided is not a .wav                                                                                                                                             | Currently, we only support .wav audio files for generating videos. Please ensure that the audio file is a .wav file and try again.                                                   |   |
-| audio\_file\_min\_duration    | There was an issue generating your video. The duration of the audio file does not reach the minimum duration requirement of 3 seconds.                                                                                      | The audio file provided is too short.                                                                                                                                                |   |
-| audio\_file\_max\_duration    | There was an issue generating your video. The duration of the audio file exceeds the maximum duration of 10 minutes.                                                                                                        | The audio file is too long.                                                                                                                                                          |   |
-| audio\_file\_ download\_link  | There was an issue generating your video. We were unable to download your audio file. Please ensure that the link you provided is correct and try again.                                                                    | Please ensure that the link you provide is a hosted url download link that is publicly accessible.                                                                                   |   |
-| script\_community\_guidelines | Request has failed as the script violates community guidelines.                                                                                                                                                             | Please ensure that the script's contents do not violate our community guidelines.                                                                                                    |   |
+| Error Type                    | Error Message                                                                                                                                                                                                             | Additional Information                                                                                                                                                               |   |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | - |
+| video\_error                  | An error occurred while generating this request. Please check your inputs or try your request again                                                                                                                       | Tavus ran into an issue generating the video. Please ensure that the your inputs are valid and try again. If this issue PermissionStatus, please reach out to support for assistance |   |
+| replica\_in\_error\_state     | Request Failed: The replica  is currently in an 'error' state and cannot process requests. For details on the cause of the error and how to resolve it, please review the specific information provided for this replica. | Please ensure that the Replica being used to generate videos is in a 'ready' state                                                                                                   |   |
+| audio\_file\_max\_size        | There was an issue generating your video. The audio file exceeds the maximum file size of 750MB.                                                                                                                          | The audio file provided is too large. Please ensure that the audio file is less than 750MB and try again.                                                                            |   |
+| audio\_file\_type             | There was an issue generating your video. The audio file provided is not a .wav                                                                                                                                           | Currently, we only support .wav audio files for generating videos. Please ensure that the audio file is a .wav file and try again.                                                   |   |
+| audio\_file\_min\_duration    | There was an issue generating your video. The duration of the audio file does not reach the minimum duration requirement of 3 seconds.                                                                                    | The audio file provided is too short.                                                                                                                                                |   |
+| audio\_file\_max\_duration    | There was an issue generating your video. The duration of the audio file exceeds the maximum duration of 10 minutes.                                                                                                      | The audio file is too long.                                                                                                                                                          |   |
+| audio\_file\_ download\_link  | There was an issue generating your video. We were unable to download your audio file. Please ensure that the link you provided is correct and try again.                                                                  | Please ensure that the link you provide is a hosted url download link that is publicly accessible.                                                                                   |   |
+| script\_community\_guidelines | Request has failed as the script violates community guidelines.                                                                                                                                                           | Please ensure that the script's contents do not violate our community guidelines.                                                                                                    |   |
 
 ## Video Status Details
 
-| Status Type           | Status Details                                                                                                                                                                                                                                                                                  | Additional Information                                                                                         |
-| --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| video\_success        | Your request has processed successfully!                                                                                                                                                                                                                                                        | The video has been generated successfully and is ready for use                                                 |
-| video\_queued         | This request is currently queued. It should begin processing in a few minutes.                                                                                                                                                                                                                  | Immediately upon submitting a request for video generation, the video will be added to a queue to be processed |
-| replica\_in\_training | The training process for replica {} is still ongoing. Your request has been placed in the 'queued' status and will automatically proceed to the generation phase once training is complete. To monitor the current progress of the training, please review the detailed status of this replica. | Videos will not start generating until the Replica being used has finished training                            |
+| Status Type           | Status Details                                                                                                                                                                                                                                                                                | Additional Information                                                                                         |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| video\_success        | Your request has processed successfully!                                                                                                                                                                                                                                                      | The video has been generated successfully and is ready for use                                                 |
+| video\_queued         | This request is currently queued. It should begin processing in a few minutes.                                                                                                                                                                                                                | Immediately upon submitting a request for video generation, the video will be added to a queue to be processed |
+| replica\_in\_training | The training process for replica  is still ongoing. Your request has been placed in the 'queued' status and will automatically proceed to the generation phase once training is complete. To monitor the current progress of the training, please review the detailed status of this replica. | Videos will not start generating until the Replica being used has finished training                            |
 
 
 # Append Conversational Context Interaction
@@ -7242,7 +7082,7 @@ Tavus CVI delivers AI-powered video conversations directly in your application. 
 
     ### 1. Initialize CVI in Your Project
 
-    ```bash  theme={null}
+    ```bash theme={null}
     npx @tavus/cvi-ui@latest init
     ```
 
@@ -7252,7 +7092,7 @@ Tavus CVI delivers AI-powered video conversations directly in your application. 
 
     ### 2. Add CVI Components
 
-    ```bash  theme={null}
+    ```bash theme={null}
     npx @tavus/cvi-ui@latest add conversation
     ```
 
@@ -7260,7 +7100,7 @@ Tavus CVI delivers AI-powered video conversations directly in your application. 
 
     In your root directory (main.tsx or index.tsx):
 
-    ```tsx  theme={null}
+    ```tsx theme={null}
     import { CVIProvider } from './components/cvi/components/cvi-provider';
 
     function App() {
@@ -7276,10 +7116,10 @@ Tavus CVI delivers AI-powered video conversations directly in your application. 
 
     <Info>
       Ensure your body element has full dimensions (`width: 100%` and `height:
-        100%`) in your CSS for proper component display.
+              100%`) in your CSS for proper component display.
     </Info>
 
-    ```tsx  theme={null}
+    ```tsx theme={null}
     import { Conversation } from './components/cvi/components/conversation';
 
     function CVI() {
@@ -7320,7 +7160,7 @@ Tavus CVI delivers AI-powered video conversations directly in your application. 
     1. Create a conversation using the Tavus API.
     2. Replace `YOUR_TAVUS_MEETING_URL` below with your actual conversation URL:
 
-    ```html  theme={null}
+    ```html theme={null}
     <!DOCTYPE html>
     <html>
       <head><title>Tavus CVI</title></head>
@@ -7340,7 +7180,7 @@ Tavus CVI delivers AI-powered video conversations directly in your application. 
 
     1. Add the following script tag to your HTML `<head>`:
 
-    ```html  theme={null}
+    ```html theme={null}
     <head>
       <script src="https://unpkg.com/@daily-co/daily-js"></script>
     </head>
@@ -7348,7 +7188,7 @@ Tavus CVI delivers AI-powered video conversations directly in your application. 
 
     2. Use the following script, replacing `'YOUR_TAVUS_MEETING_URL'` with your actual conversation URL:
 
-    ```html  theme={null}
+    ```html theme={null}
     <body>
       <div id="video-call-container"></div>
       <script>
@@ -7376,13 +7216,13 @@ Tavus CVI delivers AI-powered video conversations directly in your application. 
 
     1. Install Express:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     npm install express
     ```
 
     2. Create `server.js` and implement the following Express server:
 
-    ```js  theme={null}
+    ```js theme={null}
     const express = require('express');
     const app = express();
     const PORT = 3000;
@@ -7422,7 +7262,7 @@ Tavus CVI delivers AI-powered video conversations directly in your application. 
 
     3. Run the server:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     node server.js
     ```
 
@@ -7441,7 +7281,7 @@ Tavus CVI delivers AI-powered video conversations directly in your application. 
 
     1. Install SDK:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     npm install @daily-co/daily-js
     ```
 
@@ -7552,17 +7392,17 @@ Tavus CVI delivers AI-powered video conversations directly in your application. 
     export default App;
     ```
 
-    3. Customize the conversation UI in the script above (Optional). See the <a href="https://docs.daily.co/guides/customizing-in-call-ui" target="_blank">Daily JS SDK</a> for details.
+    3. Customize the conversation UI in the script above (Optional). See the <a href="https://docs.daily.co/guides/customizing-in-call-ui">Daily JS SDK</a> for details.
   </Tab>
 </Tabs>
 
 ## FAQs
 
 <AccordionGroup>
-  <Accordion title="How can I reduce background noise during calls?" defaultOpen="true">
-    Daily provides built-in noise cancellation which can be enabled via their <a href="https://docs.daily.co/reference/daily-js/instance-methods/update-input-settings#audio-processor" target="_blank">updateInputSettings()</a> method.
+  <Accordion title="How can I reduce background noise during calls?">
+    Daily provides built-in noise cancellation which can be enabled via their <a href="https://docs.daily.co/reference/daily-js/instance-methods/update-input-settings#audio-processor">updateInputSettings()</a> method.
 
-    ```js  theme={null}
+    ```js theme={null}
     callFrame.updateInputSettings({
       audio: {
         processor: {
@@ -7573,10 +7413,122 @@ Tavus CVI delivers AI-powered video conversations directly in your application. 
     ```
   </Accordion>
 
-  <Accordion title="Can I add event listeners to the call client?" defaultOpen="true">
-    Yes, you can attach <a href="https://docs.daily.co/reference/daily-js/events" target="_blank">Daily event listeners</a> to monitor and respond to events like participants joining, leaving, or starting screen share.
+  <Accordion title="Can I add event listeners to the call client?">
+    Yes, you can attach <a href="https://docs.daily.co/reference/daily-js/events">Daily event listeners</a> to monitor and respond to events like participants joining, leaving, or starting screen share.
   </Accordion>
 </AccordionGroup>
+
+
+# LiveKit Agent
+Source: https://docs.tavus.io/sections/integrations/livekit
+
+Integrate a Tavus Replica into LiveKit as the conversational video avatar.
+
+<Tip>
+  We recommend using Tavus’s Full Pipeline in its entirety for the lowest latency and most optimized multimodal experience. Integrations like LiveKit Agent or Pipecat only provide rendering, while our Full Pipeline includes perception, turn-taking, and rendering for complete conversational intelligence. The Livekit integration also does not support interactions (“app messages”) like echo messages.
+</Tip>
+
+Tavus enables AI developers to create realistic video avatars powered by state-of-the-art speech synthesis, perception, and rendering pipelines. Through its integration with the <a href="https://docs.livekit.io/agents/">**LiveKit Agents**</a> application, you can seamlessly add conversational avatars to real-time voice AI systems.
+
+## Prerequisites
+
+Make sure you have the following before starting:
+
+* <a href="https://platform.tavus.io/replicas">**Tavus `replica_id`**</a>
+  * You can use <a href="https://platform.tavus.io/replicas">Tavus's stock Replicas</a> or your own custom replica.
+
+- **LiveKit Voice Assistant Python App**
+  * Your own existing application.
+  * Or follow <a href="https://docs.livekit.io/agents/start/voice-ai/">LiveKit quickstart</a> to create one.
+
+## Integration Guide
+
+<Steps>
+  <Step title="Step 1: Setup and Authentication">
+    1. Install the plugin from PyPI:
+
+    ```bash theme={null}
+    pip install "livekit-agents[tavus]~=1.0"
+    ```
+
+    2. Set `TAVUS_API_KEY` in your `.env` file.
+  </Step>
+
+  <Step title="Step 2: Configure Replica and Persona">
+    1. Create a persona with LiveKit support using the Tavus API:
+
+    ```bash {7, 10} theme={null}
+    curl --request POST \
+      --url https://tavusapi.com/v2/personas \
+      -H "Content-Type: application/json" \
+      -H "x-api-key: <api_key>" \
+      -d '{
+      "persona_name": "Customer Service Agent",
+      "pipeline_mode": "echo",
+      "layers": {
+        "transport": {
+                "transport_type": "livekit"
+        }
+      }
+    }'
+    ```
+
+    <Note>
+      * Replace `<api_key>` with your actual Tavus API key. You can generate one in the <a href="https://platform.tavus.io/api-keys">Developer Portal</a>.
+      * Set `pipeline_mode` to `echo`.
+      * Set `transport_type` to `livekit`.
+    </Note>
+
+    2. Save your the `persona_id`.
+    3. Choose a replica from the [Stock Library](/sections/replica/stock-replicas) or browse available options on the <a href="https://platform.tavus.io/replicas">Developer Portal</a>.
+
+    <Tip>
+      We recommend using **Phoenix-3 PRO Replicas**, which are optimized for low-latency, real-time applications.
+    </Tip>
+  </Step>
+
+  <Step title="Step 3: Add AvatarSession to AgentSession">
+    In your LiveKit Python app, create a `tavus.AvatarSession` alongside your `AgentSession`:
+
+    ```python {12-16, 18} theme={null}
+    from livekit import agents
+    from livekit.agents import AgentSession, RoomOutputOptions
+    from livekit.plugins import tavus
+
+    async def entrypoint(ctx: agents.JobContext):
+        await ctx.connect()
+
+        session = AgentSession(
+            # Add STT, LLM, TTS, and other components here
+        )
+
+        avatar = tavus.AvatarSession(
+            replica_id="your-replica-id",
+            persona_id="your-persona-id",
+            # Optional: avatar_participant_name="Tavus-avatar-agent"
+        )
+
+        await avatar.start(session, room=ctx.room)
+
+        await session.start(
+            room=ctx.room,
+            room_output_options=RoomOutputOptions(
+                audio_enabled=False  # Tavus handles audio separately
+            )
+        )
+    ```
+
+    | Parameter                                    | Description                                                                           |
+    | -------------------------------------------- | ------------------------------------------------------------------------------------- |
+    | `replica_id` (string)                        | ID of the Tavus replica to render and speak through                                   |
+    | `persona_id` (string)                        | ID of the persona with the correct pipeline and transport configuration               |
+    | `avatar_participant_name` (string, optional) | Display name for the avatar participant in the room. Defaults to `Tavus-avatar-agent` |
+  </Step>
+</Steps>
+
+<Note>
+  Try out the integration using this <a href="https://github.com/livekit-examples/python-agents-examples/tree/main/avatars/tavus">sample app</a>.
+</Note>
 
 
 # Pipecat
@@ -7588,7 +7540,7 @@ Integrate a Tavus Replica into your Pipecat application as a participant or a vi
   We recommend using Tavus’s Full Pipeline in its entirety for the lowest latency and most optimized multimodal experience. Integrations like LiveKit Agent or Pipecat only provide rendering, while our Full Pipeline includes perception, turn-taking, and rendering for complete conversational intelligence.
 </Tip>
 
-Tavus offers integration with <a href="https://www.pipecat.ai/" target="_blank">Pipecat</a>, an open-source framework for building multimodal conversational agents by Daily. You can integrate Tavus into your Pipecat application in two ways:
+Tavus offers integration with <a href="https://www.pipecat.ai/">Pipecat</a>, an open-source framework for building multimodal conversational agents by Daily. You can integrate Tavus into your Pipecat application in two ways:
 
 * Additional Tavus Participant (`TavusTransport`)
   * The Tavus agent joins as a third participant alongside the Pipecat bot and human user. It receives audio from the Pipecat pipeline’s TTS layer and renders synchronized video and audio.
@@ -7599,19 +7551,19 @@ Tavus offers integration with <a href="https://www.pipecat.ai/" target="_blank">
 
 Before integrating Tavus with Pipecat, ensure you have the following:
 
-* <a href="https://platform.tavus.io/api-keys" target="_blank">**Tavus API Key**</a>
+* <a href="https://platform.tavus.io/api-keys">**Tavus API Key**</a>
 
-* <a href="https://platform.tavus.io/replicas" target="_blank">**Tavus `replica_id`**</a>
-  * You can use one of <a href="https://platform.tavus.io/replicas" target="_blank">Tavus's stock replicas</a> or your own custom replica.
+* <a href="https://platform.tavus.io/replicas">**Tavus `replica_id`**</a>
+  * You can use one of <a href="https://platform.tavus.io/replicas">Tavus's stock replicas</a> or your own custom replica.
 
 * **Pipecat Python Application**
   * Either your own existing application, or use Pipecat’s examples:
-    * <a href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/21-tavus-transport.py" target="_blank">`TavusTransport`</a>
-    * <a href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/21a-tavus-video-service.py" target="_blank">`TavusVideoService`</a>
+    * <a href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/21-tavus-transport.py">`TavusTransport`</a>
+    * <a href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/21a-tavus-video-service.py">`TavusVideoService`</a>
 
 ## `TavusTransport`
 
-`TavusTransport` connects your Pipecat app to a Tavus conversation, allowing the bot to join the same virtual room as the Tavus avatar and participants. To get started, you can follow the following steps or learn more from this <a href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/21-tavus-transport.py" target="_blank">sample code</a>.
+`TavusTransport` connects your Pipecat app to a Tavus conversation, allowing the bot to join the same virtual room as the Tavus avatar and participants. To get started, you can follow the following steps or learn more from this <a href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/21-tavus-transport.py">sample code</a>.
 
 ### Integration Guide for `TavusTransport`
 
@@ -7619,19 +7571,19 @@ Before integrating Tavus with Pipecat, ensure you have the following:
   <Step title="Step 1: Setup and Authentication">
     1. Install the Tavus plugin for Pipecat.
 
-    ```sh  theme={null}
+    ```sh theme={null}
     pip install pipecat-ai[tavus]
     ```
 
     2. In the `.env` file of your pipecat application (at `/path/to/pipecat/.env`) add:
 
-    ```env  theme={null}
+    ```env theme={null}
     TAVUS_API_KEY=<api_key>
     TAVUS_REPLICA_ID=<your_replica_id>
     ```
 
     <Note>
-      * Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys" target="_blank">Developer Portal</a>.
+      * Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys">Developer Portal</a>.
 
       * Replace `<your_replica_id>` with the Replica ID you want to use.
     </Note>
@@ -7673,7 +7625,7 @@ Before integrating Tavus with Pipecat, ensure you have the following:
     ```
 
     <Note>
-      See <a href="https://pipecat-docs.readthedocs.io/en/latest/api/pipecat.transports.services.tavus.html#tavus" target="_blank">Pipecat API Reference</a> for the configuration details.
+      See <a href="https://pipecat-docs.readthedocs.io/en/latest/api/pipecat.transports.services.tavus.html#tavus">Pipecat API Reference</a> for the configuration details.
     </Note>
   </Step>
 
@@ -7700,7 +7652,7 @@ Before integrating Tavus with Pipecat, ensure you have the following:
   <Step title="Step 4: Run the program">
     1. Run the following command to execute the program:
 
-    ```sh  theme={null}
+    ```sh theme={null}
     python <file-name>.py
     ```
 
@@ -7714,7 +7666,7 @@ Before integrating Tavus with Pipecat, ensure you have the following:
 
 ## `TavusVideoService`
 
-You can use `TavusVideoService` to enable real-time AI-driven video interactions in your Pipecat app. To get started, you can follow the following steps or refer from this <a href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/21a-tavus-video-service.py" target="_blank">sample code</a>.
+You can use `TavusVideoService` to enable real-time AI-driven video interactions in your Pipecat app. To get started, you can follow the following steps or refer from this <a href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/21a-tavus-video-service.py">sample code</a>.
 
 ### Integration Guide for `TavusVideoService`
 
@@ -7722,19 +7674,19 @@ You can use `TavusVideoService` to enable real-time AI-driven video interactions
   <Step title="Step 1: Setup and Authentication">
     1. Install the Tavus plugin for Pipecat.
 
-    ```sh  theme={null}
+    ```sh theme={null}
     pip install pipecat-ai[tavus]
     ```
 
     2. In the `.env` file of your pipecat application (at `/path/to/pipecat/.env`) add:
 
-    ```env  theme={null}
+    ```env theme={null}
     TAVUS_API_KEY=<api_key>
     TAVUS_REPLICA_ID=<your_replica_id>
     ```
 
     <Note>
-      * Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys" target="_blank">Developer Portal</a>.
+      * Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys">Developer Portal</a>.
 
       * Replace `<your_replica_id>` with the Replica ID you want to use.
     </Note>
@@ -7768,7 +7720,7 @@ You can use `TavusVideoService` to enable real-time AI-driven video interactions
     ```
 
     <Note>
-      See <a href="https://docs.pipecat.ai/server/services/video/tavus" target="_blank">Pipecat Tavus Service</a> for the configuration details.
+      See <a href="https://docs.pipecat.ai/server/services/video/tavus">Pipecat Tavus Service</a> for the configuration details.
     </Note>
   </Step>
 
@@ -7796,7 +7748,7 @@ You can use `TavusVideoService` to enable real-time AI-driven video interactions
   <Step title="Step 4: Run the program">
     1. Run the following command to execute the program:
 
-    ```sh  theme={null}
+    ```sh theme={null}
     python <file-name>.py
     ```
 
@@ -7821,7 +7773,7 @@ Leverage Tavus tools and guides to give your AI Agent real-time human-like perce
 ***
 
 <Frame>
-    <img src="https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/full-pipeline.png?fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=0a3e7821ec8b4b76148e9779069b3639" alt="" data-og-width="3604" width="3604" data-og-height="1516" height="1516" data-path="images/full-pipeline.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/full-pipeline.png?w=280&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=a0a76ecfc0afbbd5c4836c82df4812a1 280w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/full-pipeline.png?w=560&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=0a8c438a6533917f1f70e79cc41a8de6 560w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/full-pipeline.png?w=840&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=0ee493e3b51d09fd4507ff953a058411 840w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/full-pipeline.png?w=1100&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=b39b45e0547c2a07aa226b85f6b7bdd3 1100w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/full-pipeline.png?w=1650&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=58863ec6ad13b8168e480d9df35fc62b 1650w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/full-pipeline.png?w=2500&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=1871d5f568513b7a6a67b4373c1b99a8 2500w" />
+  <img alt="" />
 </Frame>
 
 Tavus uses the **Conversational Video Interface (CVI)** as its **end-to-end pipeline** to bring the human layer to AI. CVI combines a **Persona**, which defines the AI’s behavior through layers like perception, turn-taking, and speech recognition, with a **Replica**, a lifelike digital human that brings the conversation to life visually.
@@ -7830,7 +7782,7 @@ Tavus uses the **Conversational Video Interface (CVI)** as its **end-to-end pipe
 
 Follow our in-depth technical resources to help you build, customize, and integrate with Tavus:
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Conversational Video Interface" icon="messages" href="/sections/conversational-video-interface/overview-cvi">
     Learn how Tavus turns AI into conversational video.
   </Card>
@@ -7846,28 +7798,28 @@ Follow our in-depth technical resources to help you build, customize, and integr
 
 ## Conversational Use Cases
 
-<CardGroup cols={3}>
-  <Card title="Tavus Researcher" img="https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/charlie.png?fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=f3320169df7d5aed978c504c5e47c7c4" href="/sections/conversational-video-interface/conversation/usecases/tavus-researcher" data-og-width="560" width="560" data-og-height="516" height="516" data-path="images/charlie.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/charlie.png?w=280&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=19343ffdda8b9f75f65e21fba6b82a0f 280w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/charlie.png?w=560&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=e4fd121deb6cac3fee691e44a911db73 560w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/charlie.png?w=840&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=e5c4f8a343329d259b053dbab06bac0a 840w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/charlie.png?w=1100&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=2b837e4790b9c1398c1c373774d09be1 1100w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/charlie.png?w=1650&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=3bfe996f3e049b325c0efb30372a4a27 1650w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/charlie.png?w=2500&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=b55d2276e753abaa911bfc0357ef44f3 2500w">
+<CardGroup>
+  <Card title="Tavus Researcher" href="/sections/conversational-video-interface/conversation/usecases/tavus-researcher">
     A friendly AI human who is also a researcher at Tavus.
   </Card>
 
-  <Card title="AI Interviewer" img="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/mary.png?fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=56bef30798f80fad1c95e19e4d759824" href="/sections/conversational-video-interface/conversation/usecases/ai-interviewer" data-og-width="560" width="560" data-og-height="516" height="516" data-path="images/mary.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/mary.png?w=280&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=431d2200f26b85ce275955c98d407d96 280w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/mary.png?w=560&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=c1cb26322e9c8f14570e41b2c7876d15 560w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/mary.png?w=840&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=587708571d00984b429a9c4764f0d007 840w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/mary.png?w=1100&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=2f8d2273671e0f4d8e3eadb9bc127107 1100w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/mary.png?w=1650&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=faec56a31804a2ad390b9b360083cc37 1650w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/mary.png?w=2500&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=eda592cac25bad6bb8d9e6d4866d1c14 2500w">
+  <Card title="AI Interviewer" href="/sections/conversational-video-interface/conversation/usecases/ai-interviewer">
     Screen candidates at scale with an engaging experience.
   </Card>
 
-  <Card title="History Teacher" img="https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/ht.png?fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=a853de9babff2636684aafb367b1e8ef" href="/sections/conversational-video-interface/conversation/usecases/history-teacher" data-og-width="560" width="560" data-og-height="516" height="516" data-path="images/ht.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/ht.png?w=280&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=93544fd536d48896fa3cde4c9d447851 280w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/ht.png?w=560&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=1411d2272dccaf21227cc2544db7d08b 560w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/ht.png?w=840&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=49fed02a7f820053d24dc3b5d11e6cc6 840w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/ht.png?w=1100&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=c42007dda2c94ea26e1e1eeacaaf6d7e 1100w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/ht.png?w=1650&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=e47d9ed4bf930746aa67158efdb55a92 1650w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/ht.png?w=2500&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=e8c4c56fd7480a8d8df4ca0a9e353545 2500w">
+  <Card title="History Teacher" href="/sections/conversational-video-interface/conversation/usecases/history-teacher">
     Offer personalized lessons tailored to your learning style.
   </Card>
 
-  <Card title="Sales Coach" img="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/sabrina.png?fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=0524eef34436ade24e75f896e629d607" href="/sections/conversational-video-interface/conversation/usecases/sales-coach" data-og-width="560" width="560" data-og-height="516" height="516" data-path="images/sabrina.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/sabrina.png?w=280&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=8c52b7caf0d95b0d9dd0eb06321b9a99 280w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/sabrina.png?w=560&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=ac1686308c6f9a147250532b8d3b0e60 560w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/sabrina.png?w=840&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=73dfbac69e210eb20b9b3484b5bfc5b8 840w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/sabrina.png?w=1100&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=e3b4fb4dcbdde36cc7d088ffc85b35ad 1100w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/sabrina.png?w=1650&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=31a1aa75002d147e2563b28ade4e3ebb 1650w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/sabrina.png?w=2500&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=e5a514e482540a1b1c434fe5cbc99317 2500w">
+  <Card title="Sales Coach" href="/sections/conversational-video-interface/conversation/usecases/sales-coach">
     Offer scalable 1:1 sales coaching.
   </Card>
 
-  <Card title="Health Care Consultant" img="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/raj.png?fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=563464ee962ea760f3f96a9979e92eea" href="/sections/conversational-video-interface/conversation/usecases/health-care" data-og-width="560" width="560" data-og-height="516" height="516" data-path="images/raj.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/raj.png?w=280&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=b0b4692e194d83c7ac3dc81b73f64b94 280w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/raj.png?w=560&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=9f872a0eaabccf444033d1c3fb31a0aa 560w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/raj.png?w=840&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=21195545f1c16513e0132b63184e5ec7 840w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/raj.png?w=1100&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=bc18e4c1e85a68a3357e449e13becc62 1100w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/raj.png?w=1650&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=17deccebcdaa91ad963a8fa39762f946 1650w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/raj.png?w=2500&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=7c4ac272adf302b7b62defcd91fa6a0c 2500w">
+  <Card title="Health Care Consultant" href="/sections/conversational-video-interface/conversation/usecases/health-care">
     Offer consultations for general health concerns.
   </Card>
 
-  <Card title="Customer Service Agent" img="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/helen.png?fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=0e2f6c382858523be3c0fabc42d08886" href="/sections/conversational-video-interface/conversation/usecases/customer-service" data-og-width="842" width="842" data-og-height="775" height="775" data-path="images/stock-replica/helen.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/helen.png?w=280&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=27bc52ef40af7e23a20dfc5e678b970e 280w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/helen.png?w=560&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=7f144a8b7b5f81bc3decbf6193db701f 560w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/helen.png?w=840&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=4e4107293201158c7c34e17c4ad38c2c 840w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/helen.png?w=1100&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=65fb06d1950483f1eefb8bdf5dae1130 1100w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/helen.png?w=1650&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=78e3a9acc0ff7eaa2b031bfa1789b62c 1650w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/helen.png?w=2500&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=de2088ce4ecc2339684460984ff7046c 2500w">
+  <Card title="Customer Service Agent" href="/sections/conversational-video-interface/conversation/usecases/customer-service">
     Support users with product issues.
   </Card>
 </CardGroup>
@@ -7880,11 +7832,11 @@ Source: https://docs.tavus.io/sections/models
 
 ## Raven: Perception Model
 
-Raven-0 is the first contextual perception system that **enables machines to see, reason, and understand like humans in real-time**, interpreting emotions, body language, and environmental context to enhance conversation.
+Raven is the first contextual perception system that **enables machines to see, reason, and understand like humans in real-time**, interpreting emotions, body language, and environmental context to enhance conversation.
 
 ### Key Features
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Emotional Intelligence" icon="face-smile">
     Interprets emotion, intent, and expression with human-like nuance.
   </Card>
@@ -7904,11 +7856,11 @@ Raven-0 is the first contextual perception system that **enables machines to see
 
 ## Sparrow: Conversational Turn-Taking Model
 
-Sparrow-0 is a transformer-based model built for **dynamic, natural conversations, understanding tone, rhythm, and subtle cues** to adapt in real time with human-like fluidity.
+Sparrow is a transformer-based model built for **dynamic, natural conversations, understanding tone, rhythm, and subtle cues** to adapt in real time with human-like fluidity.
 
 ### Key Features
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Conversational Awareness" icon="waveform-lines">
     Understands meaning, tone, and timing to respond naturally like a human.
   </Card>
@@ -7928,11 +7880,11 @@ Sparrow-0 is a transformer-based model built for **dynamic, natural conversation
 
 ## Phoenix: Replica Rendering Model
 
-Phoenix-3 is built on a Gaussian diffusion model that generates **lifelike digital replicas with natural facial movements, micro-expressions, and real-time emotional responses**.
+Phoenix is built on a Gaussian diffusion model that generates **lifelike digital replicas with natural facial movements, micro-expressions, and real-time emotional responses**.
 
 ### Key Features
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Full-Face Animation" icon="face-smile">
     Dynamically generates full-face expressions, micro-movements, and emotional shifts in real time.
   </Card>
@@ -7966,7 +7918,7 @@ With just 2 minutes of training video, **Phoenix-3** can accurately reproduce a 
 
 ## Key Features
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Realistic Face Cloning" icon="face-smile">
     Replicates a person’s look, expressions, and speaking style.
   </Card>
@@ -7990,7 +7942,7 @@ With just 2 minutes of training video, **Phoenix-3** can accurately reproduce a 
 
 ## Getting Started
 
-You can create a personal or non-human replica using the <a href="https://platform.tavus.io/" target="_blank">Developer Portal</a> or by following the steps in the [Quickstart Guide](/sections/replica/quickstart).
+You can create a personal or non-human replica using the <a href="https://platform.tavus.io/">Developer Portal</a> or by following the steps in the [Quickstart Guide](/sections/replica/quickstart).
 
 <Note>
   Creating a Personal Replica is **only available** on the Starter, Growth, and Enterprise plans.
@@ -8039,7 +7991,7 @@ Before starting, ensure you have:
     ```
 
     <Note>
-      * Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys" target="_blank">Developer Portal</a>.
+      * Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys">Developer Portal</a>.
       * Replace `<prerecorded_video_s3_url>` with the downloadable URL of your training video.
       * Replace `<prerecorded_consent_video_s3_url>` with the downloadable URL of your consent video.
     </Note>
@@ -8052,7 +8004,7 @@ Before starting, ensure you have:
   </Step>
 
   <Step title="Step 2: Check Replica Status">
-    You can monitor the training status using the <a href="/api-reference/phoenix-replica-model/get-replica" target="_blank">Get Replica</a> endpoint:
+    You can monitor the training status using the <a href="/api-reference/phoenix-replica-model/get-replica">Get Replica</a> endpoint:
 
     ```shell cURL theme={null}
     curl --request GET \
@@ -8078,7 +8030,7 @@ Before starting, ensure you have:
 
 To create a non-human replica, you do not need a **consent video**:
 
-<Note> If you're using the <a href="https://platform.tavus.io/" target="_blank">Developer Portal</a>, select the **Skip** tab in the consent video window. </Note>
+<Note> If you're using the <a href="https://platform.tavus.io/">Developer Portal</a>, select the **Skip** tab in the consent video window. </Note>
 
 ```shell cURL theme={null}
 curl --request POST \
@@ -8093,7 +8045,7 @@ curl --request POST \
 ```
 
 <Note>
-  * Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys" target="_blank">Developer Portal</a>.
+  * Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys">Developer Portal</a>.
   * Replace `<your_replica_name>` with the name for your non-human replica.
   * Replace `<prerecorded_video_s3_url>` with the downloadable URL of your training video.
 </Note>
@@ -8104,7 +8056,7 @@ Source: https://docs.tavus.io/sections/replica/replica-training
 
 Guide to recording a high-quality training video for generating a high-quality Replica using the Phoenix model.
 
-You can record the Replica training video directly in the <a href="https://platform.tavus.io/" target="_blank">Developer Portal</a> or upload a pre-recorded one via the <a href="/api-reference/phoenix-replica-model/create-replica" target="_blank">API</a>.
+You can record the Replica training video directly in the <a href="https://platform.tavus.io/">Developer Portal</a> or upload a pre-recorded one via the <a href="/api-reference/phoenix-replica-model/create-replica">API</a>.
 
 ## Talking Head Replica
 
@@ -8128,7 +8080,7 @@ You can record the Replica training video directly in the <a href="https://platf
 ### Yourself
 
 <Frame>
-    <img src="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/replica-training/charlie.png?fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=5280478561a274ea807c3cc05d3b0afa" alt="" data-og-width="2087" width="2087" data-og-height="1177" height="1177" data-path="images/replica-training/charlie.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/replica-training/charlie.png?w=280&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=b709ad30493b9b67974e1903c3a3dbb2 280w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/replica-training/charlie.png?w=560&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=501268d91b44dc95679371d6aca98fcc 560w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/replica-training/charlie.png?w=840&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=d3c2ed6bcb3343bb225f261580503763 840w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/replica-training/charlie.png?w=1100&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=47568cc946602aa0a9d3145e3e43234d 1100w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/replica-training/charlie.png?w=1650&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=5ed27beb35b1f06f673ba0ee4818b0d5 1650w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/replica-training/charlie.png?w=2500&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=9904491a85f775ce5f2cfa25f9e4520b 2500w" />
+  <img alt="" />
 </Frame>
 
 | ✅ Do                                                                                | ❌ Don’t                                                |
@@ -8141,7 +8093,7 @@ You can record the Replica training video directly in the <a href="https://platf
 
 ### Video Format
 
-If you're uploading a pre-recorded training video via our <a href="/api-reference/phoenix-replica-model/create-replica" target="_blank">API</a>, ensure it meets the following requirements:
+If you're uploading a pre-recorded training video via our <a href="/api-reference/phoenix-replica-model/create-replica">API</a>, ensure it meets the following requirements:
 
 * **Minimum FPS**: 25 fps
 * **Accepted formats**:
@@ -8201,7 +8153,7 @@ Your video must be **one continuous shot**, containing:
     ```
 
     <Frame>
-            <img src="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/replica-training/image1.png?fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=2d681b2bb21ab3ec4cc1c40df63431fa" alt="" data-og-width="1826" width="1826" data-og-height="1067" height="1067" data-path="images/replica-training/image1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/replica-training/image1.png?w=280&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=c80676458909495355f740782fd746dc 280w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/replica-training/image1.png?w=560&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=c774ce7efc26156740c28c8a3602bbe7 560w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/replica-training/image1.png?w=840&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=27b4dab3bfecc96f2e9e4dd2c5b4a857 840w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/replica-training/image1.png?w=1100&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=bbac974783ce0fceeed9ba375f5c8bad 1100w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/replica-training/image1.png?w=1650&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=5abf6be4670c84c35c5e3c6f1b482db4 1650w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/replica-training/image1.png?w=2500&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=ef0736be92582f2a4e798d5a2d313705 2500w" />
+      <img alt="" />
     </Frame>
   </Step>
 
@@ -8211,7 +8163,7 @@ Your video must be **one continuous shot**, containing:
     * Slight, natural head movements (like you’re listening on a Zoom call).
 
     <Frame>
-            <img src="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/replica-training/image3.gif?s=30c7dff99d5de4d75b86f5837c870b5b" alt="" data-og-width="412" width="412" data-og-height="232" height="232" data-path="images/replica-training/image3.gif" data-optimize="true" data-opv="3" />
+      <img alt="" />
     </Frame>
   </Step>
 </Steps>
@@ -8220,14 +8172,14 @@ Your video must be **one continuous shot**, containing:
   Replica training typically takes **4–5 hours**. You can track the training progress by:
 
   * Providing a `callback_url` when creating the replica via API
-  * Using the <a href="/api-reference/phoenix-replica-model/get-replica" target="_blank">**Get Replica Status**</a> API
-  * Checking the <a href="https://platform.tavus.io/" target="_blank">Developer Portal</a>
+  * Using the <a href="/api-reference/phoenix-replica-model/get-replica">**Get Replica Status**</a> API
+  * Checking the <a href="https://platform.tavus.io/">Developer Portal</a>
 </Note>
 
 ## High-Quality Training Example
 
 <Frame>
-  <iframe src="https://drive.google.com/file/d/1kXliTbzz9t-8FIyMDeOq8h6C1ZqDKiIu/preview" width="600" height="350" allow="autoplay" />
+  <iframe />
 </Frame>
 
 ## Full Body Replica
@@ -8235,7 +8187,7 @@ Your video must be **one continuous shot**, containing:
 To create a full body replica for conversational video, follow these guidelines:
 
 <Frame>
-    <img src="https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/image1.png?fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=cdfeb363f16d0aad8213a4315fed87e0" alt="" data-og-width="264" width="264" data-og-height="459" height="459" data-path="images/image1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/image1.png?w=280&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=b21a26324765af5909bbc00d554dcd2b 280w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/image1.png?w=560&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=ee84bc403e9b4354e608e1f5e6b6ab2b 560w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/image1.png?w=840&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=b8bc60cd518b0a535324e9e392641a53 840w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/image1.png?w=1100&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=cbbb342e4d5fd76e617f1370e6ef2700 1100w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/image1.png?w=1650&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=78456807c2ac4b1cdb8b52c1e4947c53 1650w, https://mintcdn.com/tavus/yrvSX4NJrNH338WQ/images/image1.png?w=2500&fit=max&auto=format&n=yrvSX4NJrNH338WQ&q=85&s=d2a374f3461c6db3e2af2868e0a2cf80 2500w" />
+  <img alt="" />
 </Frame>
 
 ### Framing & Orientation
@@ -8266,28 +8218,28 @@ Stock replicas are a carefully curated library of diverse, pre-trained digital p
 The following are some common categories of replicas to help you get started:
 
 <Note>
-  To explore all available stock replicas, visit the <a href="https://platform.tavus.io/replicas" target="_blank">Replica Library</a> or use the <a href="/api-reference/phoenix-replica-model/get-replicas" target="_blank" rel="noopener noreferrer">List Replicas</a> endpoint.
+  To explore all available stock replicas, visit the <a href="https://platform.tavus.io/replicas">Replica Library</a> or use the <a href="/api-reference/phoenix-replica-model/get-replicas">List Replicas</a> endpoint.
 </Note>
 
 ### Studio
 
 Polished and professional. Great for webinars, explainers, and formal content.
 
-<CardGroup cols={3}>
-  <Card title="Sabrina" img="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/sabrina.png?fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=8c7b45e32a4ef09e6c18dbfdd2bf18f0" data-og-width="841" width="841" data-og-height="775" height="775" data-path="images/stock-replica/sabrina.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/sabrina.png?w=280&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=95f77c7a01a335a8361a744d5eba52ee 280w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/sabrina.png?w=560&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=da46491c283ec252a012b745fba1724e 560w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/sabrina.png?w=840&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=97f6ea11e016368465b0f7ce180fa227 840w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/sabrina.png?w=1100&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=fb34e4263a4e2d875a8c2dcb3de7b8ce 1100w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/sabrina.png?w=1650&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=cfec6248a662c9e7c6d7ee0ca5387f9b 1650w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/sabrina.png?w=2500&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=687177268c747563d7e0165f2f5f78ef 2500w">
-    ```text  theme={null}
+<CardGroup>
+  <Card title="Sabrina">
+    ```text theme={null}
     r7bc3db0d581
     ```
   </Card>
 
-  <Card title="Patrick" img="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/patrick.png?fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=773200d9a0c317a51a132a6051019d05" data-og-width="842" width="842" data-og-height="775" height="775" data-path="images/stock-replica/patrick.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/patrick.png?w=280&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=e0803204bb475a6f9a4e63e14859cd21 280w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/patrick.png?w=560&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=6cbaaa70a3128e4ff0ad1bcb81da694d 560w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/patrick.png?w=840&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=42c967e56ca3a2d13e2e29a0e7f994d2 840w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/patrick.png?w=1100&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=11679bd0f2203940567603b4dd5839d7 1100w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/patrick.png?w=1650&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=24bbef0b653ac8f5ee43fc0fa147fff6 1650w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/patrick.png?w=2500&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=e58e85716648d1467d926130d88c434c 2500w">
-    ```text  theme={null}
+  <Card title="Patrick">
+    ```text theme={null}
     rf25acd9e3f5
     ```
   </Card>
 
-  <Card title="Lucy" img="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/lucy.png?fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=eef5678c87dbadaefa43ab1b2cce1385" data-og-width="841" width="841" data-og-height="775" height="775" data-path="images/stock-replica/lucy.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/lucy.png?w=280&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=4a51fa3d1a03bc032f09b79827c18be1 280w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/lucy.png?w=560&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=79241fa9ca39c6c60bf4d7bb6c347556 560w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/lucy.png?w=840&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=fe9be6dac7bd34e21a4bf9dc288c3962 840w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/lucy.png?w=1100&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=417141bb2b125a3236debfe4bf5367e4 1100w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/lucy.png?w=1650&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=43b4c031299930c7266bb4836c3596ef 1650w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/lucy.png?w=2500&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=352e3d8e362dc65fb936821f0ca2e288 2500w">
-    ```text  theme={null}
+  <Card title="Lucy">
+    ```text theme={null}
     re0eae1fbe11
     ```
   </Card>
@@ -8297,21 +8249,21 @@ Polished and professional. Great for webinars, explainers, and formal content.
 
 Smart casual presenters for internal communication, training, or B2B use.
 
-<CardGroup cols={3}>
-  <Card title="Rose" img="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/rose.png?fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=2be4bb707bd4e1cadaa90b3900ea368f" data-og-width="841" width="841" data-og-height="775" height="775" data-path="images/stock-replica/rose.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/rose.png?w=280&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=0440322ae0659f1d5741283ce379d978 280w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/rose.png?w=560&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=f6266fdd16ab8099cba0c9c936cbaeda 560w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/rose.png?w=840&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=8f28e813d1983b22c87740f18f80f1ba 840w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/rose.png?w=1100&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=abd3e96e0ff5449015df4d84c74d4836 1100w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/rose.png?w=1650&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=b892ec0d1fc511f9b087f4c4e7888f9e 1650w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/rose.png?w=2500&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=80e6f2e00b1f9677c7260731bb7a45cc 2500w">
-    ```text  theme={null}
+<CardGroup>
+  <Card title="Rose">
+    ```text theme={null}
     r1af76e94d00
     ```
   </Card>
 
-  <Card title="Helen" img="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/helen.png?fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=0e2f6c382858523be3c0fabc42d08886" data-og-width="842" width="842" data-og-height="775" height="775" data-path="images/stock-replica/helen.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/helen.png?w=280&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=27bc52ef40af7e23a20dfc5e678b970e 280w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/helen.png?w=560&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=7f144a8b7b5f81bc3decbf6193db701f 560w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/helen.png?w=840&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=4e4107293201158c7c34e17c4ad38c2c 840w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/helen.png?w=1100&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=65fb06d1950483f1eefb8bdf5dae1130 1100w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/helen.png?w=1650&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=78e3a9acc0ff7eaa2b031bfa1789b62c 1650w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/helen.png?w=2500&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=de2088ce4ecc2339684460984ff7046c 2500w">
-    ```text  theme={null}
+  <Card title="Helen">
+    ```text theme={null}
     r95fd27b5a37
     ```
   </Card>
 
-  <Card title="Benjamin" img="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/benjamin.png?fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=9827ebde689725dc58e667e3878ffd63" data-og-width="842" width="842" data-og-height="776" height="776" data-path="images/stock-replica/benjamin.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/benjamin.png?w=280&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=67e059f1bcc23b0fc420065542eef0f3 280w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/benjamin.png?w=560&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=7efc4e61eb7796bc03581ec3a4ec442c 560w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/benjamin.png?w=840&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=2e459bc4491c082f05822dde0e9d5c2b 840w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/benjamin.png?w=1100&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=ddfaff1bb24b54dcfe6e6c6e46354c58 1100w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/benjamin.png?w=1650&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=57ad7585d4a22d6985be52be11d19951 1650w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/benjamin.png?w=2500&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=8276ed459351fa1077057e5c987ac589 2500w">
-    ```text  theme={null}
+  <Card title="Benjamin">
+    ```text theme={null}
     r1a4e22fa0d9
     ```
   </Card>
@@ -8321,21 +8273,21 @@ Smart casual presenters for internal communication, training, or B2B use.
 
 Relaxed and friendly hosts for social content and informal conversations.
 
-<CardGroup cols={3}>
-  <Card title="Isabella" img="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/isabella.png?fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=8a0a77ffddb625185267579ab123b342" data-og-width="842" width="842" data-og-height="776" height="776" data-path="images/stock-replica/isabella.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/isabella.png?w=280&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=26925cbf1a86683b0a76a70d88399cb6 280w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/isabella.png?w=560&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=ebd2e071406cf63c2f319ae74be6b7f4 560w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/isabella.png?w=840&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=66d6ab6657c487b88bb52d7ac000e91a 840w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/isabella.png?w=1100&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=8f6241db19024a6d6193bb07155ead97 1100w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/isabella.png?w=1650&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=08c04c5cfff127b3c90acc8dc5c609c8 1650w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/isabella.png?w=2500&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=f020590264c545b7127342fe2e254d7d 2500w">
-    ```text  theme={null}
+<CardGroup>
+  <Card title="Isabella">
+    ```text theme={null}
     r90105daccb4
     ```
   </Card>
 
-  <Card title="Anna" img="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/anna-2.png?fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=b8e740ab69709228d439e15209d92ac1" data-og-width="842" width="842" data-og-height="775" height="775" data-path="images/stock-replica/anna-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/anna-2.png?w=280&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=f16d991321a86bdd7abf15b1e9cb2809 280w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/anna-2.png?w=560&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=f2662a0fa8cfbcbf475b83b5f4775b78 560w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/anna-2.png?w=840&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=b63924920912df4fe27ad16fd9954bd9 840w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/anna-2.png?w=1100&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=653aeceea5244610490a71aea68f1108 1100w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/anna-2.png?w=1650&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=76f3e49d97043ce1d74dfcdb776bfe7f 1650w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/anna-2.png?w=2500&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=95150724a9e3302ab100f4baef104bb5 2500w">
-    ```text  theme={null}
+  <Card title="Anna">
+    ```text theme={null}
     r6ae5b6efc9d
     ```
   </Card>
 
-  <Card title="Sandra" img="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/sandra.png?fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=0c63ec0a14056085c5d102c027b262c7" data-og-width="842" width="842" data-og-height="776" height="776" data-path="images/stock-replica/sandra.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/sandra.png?w=280&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=b8cd41d6e965716586183ab33f56eae4 280w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/sandra.png?w=560&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=26e9211a702edc6aa04776f57971e233 560w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/sandra.png?w=840&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=31ec3bcb935c3a8757d8b7cb8f4ede3e 840w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/sandra.png?w=1100&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=4996fa93ad10dd6635f157623b69e123 1100w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/sandra.png?w=1650&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=871d121e6a3f276878cff3322bed0c00 1650w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/sandra.png?w=2500&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=b17bb69c1b62654419a0a2c4e6b5b5bc 2500w">
-    ```text  theme={null}
+  <Card title="Sandra">
+    ```text theme={null}
     rb11617de314
     ```
   </Card>
@@ -8345,21 +8297,21 @@ Relaxed and friendly hosts for social content and informal conversations.
 
 Use green screen replicas to place your presenter anywhere. Perfect for branded or dynamic visuals.
 
-<CardGroup cols={3}>
-  <Card title="Gloria" img="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/gloria.png?fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=7dab49e219edb38de6eb0f415f73d69c" data-og-width="842" width="842" data-og-height="775" height="775" data-path="images/stock-replica/gloria.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/gloria.png?w=280&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=b2eff4c79e2bb5d7aceafe19ab696823 280w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/gloria.png?w=560&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=8d3dfd6c0e4a80efb118fc7933fb57a7 560w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/gloria.png?w=840&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=f22e8779e01b0736039e1e0543411d92 840w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/gloria.png?w=1100&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=6e00943ef8e8b5b1f48409c8eb62d4ac 1100w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/gloria.png?w=1650&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=d1c0aff76c51f37d8103bd199b8ea5e0 1650w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/gloria.png?w=2500&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=a25de17d63af0f2055a41fa9b75b1a5a 2500w">
-    ```text  theme={null}
+<CardGroup>
+  <Card title="Gloria">
+    ```text theme={null}
     rb67667672ad
     ```
   </Card>
 
-  <Card title="Nathan" img="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/nathan.png?fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=6b5cf6ec0a2b313632a8bf19dc23d77a" data-og-width="841" width="841" data-og-height="776" height="776" data-path="images/stock-replica/nathan.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/nathan.png?w=280&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=ef7e412a97e88edf1cda7ca5540810ca 280w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/nathan.png?w=560&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=f89b129e55cd46c24e34ab948ee671c1 560w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/nathan.png?w=840&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=69cf95dfeb723132ec1c594c3bf841e3 840w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/nathan.png?w=1100&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=f7f8e14c30e6e187906f748038e2bf31 1100w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/nathan.png?w=1650&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=daaec077b9b95c09ee6ee1c39191c15e 1650w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/nathan.png?w=2500&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=de972c976500cd7917ec4a535d71380c 2500w">
-    ```text  theme={null}
+  <Card title="Nathan">
+    ```text theme={null}
     re2185788693
     ```
   </Card>
 
-  <Card title="Lucy" img="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/lucy-2.png?fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=c15217118df0824b44783dbdd299c14b" data-og-width="842" width="842" data-og-height="776" height="776" data-path="images/stock-replica/lucy-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/lucy-2.png?w=280&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=2a4ab2e8b8ee6a3252b47e1ce924f231 280w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/lucy-2.png?w=560&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=18b465c09b12d6385c3998e3262999fe 560w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/lucy-2.png?w=840&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=017368437a920367d207e50cca167708 840w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/lucy-2.png?w=1100&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=e3246fd44e4a36310ed722a56fef5c11 1100w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/lucy-2.png?w=1650&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=790e4bb4d6ca0bf89becba6c1cc93c45 1650w, https://mintcdn.com/tavus/_cI_e0wGUkj7b2SY/images/stock-replica/lucy-2.png?w=2500&fit=max&auto=format&n=_cI_e0wGUkj7b2SY&q=85&s=4c27a571efcfce675169b2e3d5ed5147 2500w">
-    ```text  theme={null}
+  <Card title="Lucy">
+    ```text theme={null}
     rfcfe46c1da8
     ```
   </Card>
@@ -8405,7 +8357,7 @@ Find solutions to common problems and get back on track quickly with our trouble
 
     To resolve this, enable noise cancellation using Daily’s `updateInputSettings()` method. For example:
 
-    ```js  theme={null}
+    ```js theme={null}
     callFrame.updateInputSettings({
       audio: {
         processor: {
@@ -8416,14 +8368,79 @@ Find solutions to common problems and get back on track quickly with our trouble
     ```
 
     <Note>
-      Learn more in the <a href="https://docs.daily.co/reference/daily-js/instance-methods/update-input-settings#audio-processor" target="_blank">Daily SDK documentation</a>.
+      Learn more in the <a href="https://docs.daily.co/reference/daily-js/instance-methods/update-input-settings#audio-processor">Daily SDK documentation</a>.
     </Note>
   </Accordion>
 
   <Accordion title="Replica Is Not Joining the Conversation">
     This is a rare issue caused by an internal server problem. When it happens, our team is automatically notified and works to resolve it as quickly as possible.
 
-    You can check the system status at <a href="https://status.tavus.io/" target="_blank">status.tavus.io</a>. We recommend checking periodically for updates if you encounter this error.
+    You can check the system status at <a href="https://status.tavus.io/">status.tavus.io</a>. We recommend checking periodically for updates if you encounter this error.
+  </Accordion>
+
+  <Accordion title="Conversational Flow vs STT: Relationship & Migration">
+    ### Relationship with STT Layer
+
+    The [Conversational Flow layer](/sections/conversational-video-interface/persona/conversational-flow) is the **recommended approach** for configuring turn-taking behavior with **Sparrow-1**. This supersedes the legacy Sparrow-0 configuration available in the STT layer via `smart_turn_detection`.
+
+    <Note>
+      **Legacy Approach**: Configuring turn-taking via the STT layer's `smart_turn_detection` parameter is a legacy approach that uses Sparrow-0. For new implementations, use the Conversational Flow layer with Sparrow-1 instead.
+    </Note>
+
+    When you configure the Conversational Flow layer with `turn_detection_model` set to `sparrow-1`, these settings **override** any corresponding settings in the STT layer.
+
+    #### Parameter Mapping: Sparrow-0 to Sparrow-1
+
+    Here's how Sparrow-0 (STT layer) parameters map to Sparrow-1 (Conversational Flow layer):
+
+    | Sparrow-0 (STT Layer)               | Sparrow-1 (Conversational Flow Layer) | Notes                                              |
+    | ----------------------------------- | ------------------------------------- | -------------------------------------------------- |
+    | `participant_pause_sensitivity`     | `turn_taking_patience`                | Controls how long to wait before responding        |
+    | `participant_interrupt_sensitivity` | `replica_interruptibility`            | Controls how easily the replica can be interrupted |
+
+    <Warning>
+      **Important**: When using Sparrow-1 via the Conversational Flow layer, any conflicting settings in the STT layer (Sparrow-0) will be overridden. For example, if you set `participant_pause_sensitivity: "high"` in the STT layer but `turn_taking_patience: "low"` in the Conversational Flow layer with `turn_detection_model: "sparrow-1"`, the Conversational Flow setting (`low`) will take precedence.
+    </Warning>
+
+    #### Migration Guide
+
+    If you're currently using Sparrow-0 settings in the STT layer and want to upgrade to Sparrow-1:
+
+    **Before (Sparrow-0):**
+
+    ```json theme={null}
+    {
+      "layers": {
+        "stt": {
+          "participant_pause_sensitivity": "high",
+          "participant_interrupt_sensitivity": "low"
+        }
+      }
+    }
+    ```
+
+    **After (Sparrow-1):**
+
+    ```json theme={null}
+    {
+      "layers": {
+        "conversational_flow": {
+          "turn_detection_model": "sparrow-1",
+          "turn_taking_patience": "low",
+          "replica_interruptibility": "high"
+        }
+      }
+    }
+    ```
+
+    <Note>
+      Note the inverted mapping:
+
+      * `participant_pause_sensitivity: "high"` (quick response) → `turn_taking_patience: "low"` (eager)
+      * `participant_interrupt_sensitivity: "low"` (hard to interrupt) → `replica_interruptibility: "high"` (easy to interrupt)
+
+      The naming has been updated in Sparrow-1 to be more intuitive from the replica's perspective.
+    </Note>
   </Accordion>
 </AccordionGroup>
 
@@ -8437,9 +8454,9 @@ Find solutions to common problems and get back on track quickly with our trouble
 
     > "I, \[FULL NAME], am currently speaking and give consent to Tavus to create an AI clone of me by using the audio and video samples I provide. I understand that this AI clone can be used to create videos that look and sound like me."
 
-    Make sure to replace **\[FULL NAME]** with your actual name. The consent must be easy to hear and can be spoken in any supported language. You can view the <a href="/sections/conversational-video-interface/language-support" target="_blank">list of supported languages here</a>.
+    Make sure to replace **\[FULL NAME]** with your actual name. The consent must be easy to hear and can be spoken in any supported language. You can view the <a href="/sections/conversational-video-interface/language-support">list of supported languages here</a>.
 
-    If your video didn’t include this, re-record it with the consent statement at the beginning, then submit a new request through the <a href="https://platform.tavus.io/" target="_blank">Developer Portal</a> or <a href="/api-reference/phoenix-replica-model/create-replica" target="_blank">API</a>.
+    If your video didn’t include this, re-record it with the consent statement at the beginning, then submit a new request through the <a href="https://platform.tavus.io/">Developer Portal</a> or <a href="/api-reference/phoenix-replica-model/create-replica">API</a>.
   </Accordion>
 
   <Accordion title="Poor Replica Quality">
@@ -8458,7 +8475,7 @@ Find solutions to common problems and get back on track quickly with our trouble
     * Speak naturally, allowing full lip movement including closures.
     * Avoid using AI-generated videos for training.
 
-    For more details, see the <a href="/sections/replica/replica-training" target="_blank">Replica Training Guide</a>.
+    For more details, see the <a href="/sections/replica/replica-training">Replica Training Guide</a>.
   </Accordion>
 </AccordionGroup>
 
@@ -8578,7 +8595,7 @@ Learn how to generate high-quality AI videos using Replicas.
 
 ## Key Features
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Simple Training" icon="bolt">
     Submit just two minutes of video to create your digital replica.
   </Card>
@@ -8605,7 +8622,7 @@ Learn how to generate high-quality AI videos using Replicas.
 
 ## Getting Started
 
-You can create a personalized video content using the <a href="https://platform.tavus.io/" target="_blank">Developer Portal</a> or by following the steps in the [Quickstart Guide](/sections/video/quickstart).
+You can create a personalized video content using the <a href="https://platform.tavus.io/">Developer Portal</a> or by following the steps in the [Quickstart Guide](/sections/video/quickstart).
 
 
 # Quickstart
@@ -8660,7 +8677,7 @@ Before starting, ensure you have:
     </CodeGroup>
 
     <Note>
-      * Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys" target="_blank">Developer Portal</a>.
+      * Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys">Developer Portal</a>.
       * Replace `<replica_id>` with the Replica ID you want to use.
       * Replace `<text_script>` with your video script.
       * Replace `<audio_url>` with the downloadable URL of your audio script.
@@ -8668,9 +8685,9 @@ Before starting, ensure you have:
   </Step>
 
   <Step title="Step 2: Check Video Generation Status">
-    You can monitor the training status using the <a href="/api-reference/video-request/get-video" target="_blank" rel="noopener noreferrer">Get Video</a> endpoint:
+    You can monitor the training status using the <a href="/api-reference/video-request/get-video">Get Video</a> endpoint:
 
-    ```sh  theme={null}
+    ```sh theme={null}
     curl --request GET \
       --url https://tavusapi.com/v2/videos/<video_id> \
       --header 'x-api-key: <api-key>'
@@ -8785,13 +8802,13 @@ Set up a webhook server to generate a callback URL that receives event notificat
 
 ## Conversation Callbacks
 
-If a `callback_url` is provided in the <a href="/api-reference/conversations/create-conversation" target="_blank">`POST /conversations`</a>, callbacks will provide insight into the conversation's state. These can be system-related (e.g. replica joins and room shutdowns) or application-related (e.g. final transcription parsing and recording-ready webhooks). Additional webhooks coming soon.
+If a `callback_url` is provided in the <a href="/api-reference/conversations/create-conversation">`POST /conversations`</a>, callbacks will provide insight into the conversation's state. These can be system-related (e.g. replica joins and room shutdowns) or application-related (e.g. final transcription parsing and recording-ready webhooks). Additional webhooks coming soon.
 
 ### Structure
 
 All Conversation callbacks share the following basic structure. Differences will occur in the `properties` object.
 
-```json  theme={null}
+```json theme={null}
 {
     "properties": {
     "replica_id": "<replica_id>"
@@ -8955,11 +8972,11 @@ These callbacks are to inform developers about logical events that take place. T
 
 ## Replica Training Callbacks
 
-If a `callback_url` is provided in the <a href="/api-reference/phoenix-replica-model/create-replica" target="_blank">`POST /replicas`</a> call, you will receive a callback on replica training completion or on replica training error.
+If a `callback_url` is provided in the <a href="/api-reference/phoenix-replica-model/create-replica">`POST /replicas`</a> call, you will receive a callback on replica training completion or on replica training error.
 
 <Tabs>
   <Tab title="Replica Training Completed">
-    ```json  theme={null}
+    ```json theme={null}
     {
         "replica_id": "rxxxxxxxxx",
         "status": "ready",
@@ -8970,7 +8987,7 @@ If a `callback_url` is provided in the <a href="/api-reference/phoenix-replica-m
   <Tab title="Replica Training Error">
     On error, the `error_message` parameter will contain the error message. You can learn more about [API Errors and Status Details here](/sections/errors-and-status-details)
 
-    ```json  theme={null}
+    ```json theme={null}
     {
         "replica_id": "rxxxxxxxxx",
         "status": "error",
@@ -8982,11 +8999,11 @@ If a `callback_url` is provided in the <a href="/api-reference/phoenix-replica-m
 
 ## Video Generation Callbacks
 
-If a `callback_url` is providing in the <a href="/api-reference/video-request/create-video" target="_blank">`POST /videos`</a> call, you will receive callbacks on video generation completed and on video error.
+If a `callback_url` is providing in the <a href="/api-reference/video-request/create-video">`POST /videos`</a> call, you will receive callbacks on video generation completed and on video error.
 
 <Tabs>
   <Tab title="Video Generation Completed">
-    ```json  theme={null}
+    ```json theme={null}
     {
         "created_at": "2024-08-28 15:27:40.824457",
         "data": {
@@ -9009,7 +9026,7 @@ If a `callback_url` is providing in the <a href="/api-reference/video-request/cr
   <Tab title="Video Generation Error">
     On error, the `status_details` parameter will contain the error message. You can learn more about [API Errors and Status Details here](/sections/errors-and-status-details)
 
-    ```json  theme={null}
+    ```json theme={null}
     {
         "created_at": "2024-08-28 15:32:53.058894",
         "data": {
@@ -9037,15 +9054,15 @@ Create a sample webhook endpoint using Python Flask, and expose it publicly with
 
 ### Prerequisites
 
-* <a href="https://www.python.org/downloads/" target="_blank">Python</a>
+* <a href="https://www.python.org/downloads/">Python</a>
 
-* <a href="https://ngrok.com/downloads/" target="_blank">Ngrok</a>
+* <a href="https://ngrok.com/downloads/">Ngrok</a>
 
 <Steps>
   <Step title="Step 1: Install Python Dependencies">
     Install the Python dependencies needed to create the server.
 
-    ```sh  theme={null}
+    ```sh theme={null}
     pip install flask request
     ```
   </Step>
@@ -9120,7 +9137,7 @@ Create a sample webhook endpoint using Python Flask, and expose it publicly with
   <Step title="Step 3: Run the Server">
     Run the app using the following command in the terminal:
 
-    ```sh  theme={null}
+    ```sh theme={null}
     python server.py
     ```
 
@@ -9130,7 +9147,7 @@ Create a sample webhook endpoint using Python Flask, and expose it publicly with
   <Step title="Step 4: Forward the Port Using Ngrok">
     Open a terminal in the folder containing `ngrok.exe`, then use Ngrok to forward the port.
 
-    ```sh  theme={null}
+    ```sh theme={null}
     ngrok http 5000
     ```
 
@@ -9153,7 +9170,7 @@ Create a sample webhook endpoint using Python Flask, and expose it publicly with
     ```
 
     <Note>
-      * Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys" target="_blank">Developer Portal</a>.
+      * Replace `<api_key>` with your actual API key. You can generate one in the <a href="https://platform.tavus.io/api-keys">Developer Portal</a>.
       * Replace `<replica_id>` with the Replica ID you want to use.
       * Replace `<persona_id>` with the Persona ID you want to use.
     </Note>

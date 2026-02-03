@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/custom-nodes/help_page.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add node docs for your ComfyUI custom node
 
 > How to create rich documentation for your custom nodes

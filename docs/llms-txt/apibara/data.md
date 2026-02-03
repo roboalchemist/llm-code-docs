@@ -1,3 +1,25 @@
+# Source: https://www.apibara.com/docs/networks/starknet/data#transaction-receipt
+
+# Source: https://www.apibara.com/docs/networks/starknet/data#transaction
+
+# Source: https://www.apibara.com/docs/networks/starknet/data
+
+# Source: https://www.apibara.com/docs/networks/evm/data
+
+# Source: https://www.apibara.com/docs/networks/beaconchain/data
+
+# Source: https://www.apibara.com/docs/networks/starknet/data
+
+# Source: https://www.apibara.com/docs/networks/evm/data
+
+# Source: https://www.apibara.com/docs/networks/beaconchain/data
+
+# Source: https://www.apibara.com/docs/networks/starknet/data
+
+# Source: https://www.apibara.com/docs/networks/evm/data
+
+# Source: https://www.apibara.com/docs/networks/beaconchain/data
+
 # Beacon Chain data reference
 
 This page contains reference about the available data in Beacon Chain DNA streams.

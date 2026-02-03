@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/image/newbie-image/newbie-image-exp-0-1.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ComfyUI NewBie-image-Exp0.1 Workflow Example
 
 > NewBie-image-Exp0.1 is a 3.5B parameter anime-style text-to-image generation model based on Next-DiT architecture, optimized for high-quality anime image generation with XML structured prompts.
@@ -151,8 +155,3 @@ For multi-character scenes, using XML structured prompts typically leads to more
 | `<quality>`    | Quality tags                              |
 | `<objects>`    | Objects in the scene                      |
 | `<other>`      | Additional tags                           |
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.comfy.org/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/errors/connect-errors/no-vehicles.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # No Vehicles
 
 > This error occurs when a vehicle owner has a connected services account, but there are no vehicles associated with the account.

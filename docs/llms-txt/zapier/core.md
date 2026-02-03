@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build-cli/core.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Core reference
 
 > Reference for `zapier-platform-core`
@@ -104,7 +108,7 @@ Content-Type: application/json
 {"foo":"bar"}
 ```
 
-> We recommend using `bundle.meta.isLoadingSample` to determine if the execution is happening in the foreground (IE: during Zap setup) as using `z.generateCallbackUrl()` can be inappropriate given the disconnect. Instead, wait for the long running request without generating a callback, or if you must, return stubbed data.
+> Callbacks are fully supported during sample testing in the Zap Editor, including `performResume` execution. However, when possible, it's preferable to avoid using callbacks during sampling (check `bundle.meta.isLoadingSample`) for a better testing experience.
 
 By default the payload `POST`ed to the callback URL will augment the data returned from the initial `perform` to compose the final value.
 
@@ -126,8 +130,6 @@ const performResume = async (z, bundle) => {
 ```
 
 > The app will have a maximum of 30 days to `POST` to the callback URL. If a user deletes or modifies the Zap or Task in the meantime, we will not resume the task.
-
-> `performResume` will only run when the Zap runs live, and cannot be tested in the Zap Editor when configuring the Zap. It is possible to use `bundle.meta.isLoadingSample` to load a fixed sample to allow users to test a step that includes `performResume`.
 
 Some considerations:
 

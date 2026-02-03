@@ -2,14 +2,6 @@
 
 # Source: https://docs.vespa.ai/ja/overview.html.md
 
-# Source: https://docs.vespa.ai/en/learn/overview.html.md
-
-# Source: https://docs.vespa.ai/ja/overview.html.md
-
-# Source: https://docs.vespa.ai/en/learn/overview.html.md
-
-# Source: https://docs.vespa.ai/ja/overview.html.md
-
 # Vespaの概要
 
  
@@ -74,7 +66,7 @@ Vespaは以下のオペレーションを受け付けます:
 
 Vespaを使うことで、低レベルの複雑さに開発者が悩むことなく、スケーラブルで高い基準に従う、リッチに機能して高い可用性のあるアプリケーションを構築することができます。 開発者は時間の経過とともに、システムをオフラインにすることなくアプリケーションを進化させ、また成長させることができます。 そして、データを陳腐化させてパーソナライズできなくするような、複雑なデータやページの事前計算を避けることができます。なぜならそれは、同時かつ定期的に変化するユーザーのデータに対する複雑なクエリーをしばしば必要とするからです。
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

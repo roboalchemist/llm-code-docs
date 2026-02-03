@@ -1,3 +1,9 @@
+# Directory Documentation
+
+Source: https://directory.llmstxt.cloud/llms-full.txt
+
+---
+
 # llms.txt directory
 
 A curated directory of products and companies leading the adoption of the [llms.txt](https://llmstxt.org/) standard.

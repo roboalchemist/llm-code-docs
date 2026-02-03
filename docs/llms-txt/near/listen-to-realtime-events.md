@@ -129,15 +129,50 @@ After we finish initializing the indexer, and configuring it, we can start it by
       ```
     </TabItem>
 </Tabs>
+
+<details>
+<summary>How it works</summary>
+
+- The command initializes the indexer's configuration: home directory, sync mode, streaming mode, finality, etc.
+- Creates a Tokio runtime on a dedicated thread.
+- Creates an instance of the Indexer using the provided configuration, starts it, and streams blocks to our handler. Within the handler (`listen_blocks` method), there is an infinite loop that parses block data for each new block received.
+
+```
+        SubCommand::Run => {
+            let indexer_config = near_indexer::IndexerConfig {
+                home_dir,
+                sync_mode: near_indexer::SyncModeEnum::FromInterruption,
+                await_for_node_synced: near_indexer::AwaitForNodeSyncedEnum::WaitForFullSync,
+                finality: near_primitives::types::Finality::Final,
+                validate_genesis: true,
+            };
+            let tokio_runtime = tokio::runtime::Builder::new_current_thread()
+                .enable_all()
+                .build()
+                .expect("Failed to create Tokio runtime");
+            tokio_runtime.block_on(async move {
+                let indexer =
+                    near_indexer::Indexer::new(indexer_config).await.expect("Indexer::new()");
+                let stream = indexer.streamer();
+                listen_blocks(stream).await;
+            });
+        }
+        SubCommand::Init(config) => near_indexer::indexer_init_configs(&home_dir, config.into())?,
+```
+
+</details>
+
 #### Run into an Error?
 - If your indexer cannot find `boot nodes`, check the [boot nodes](#boot-nodes) section
 ---
 
 ## Parsing the Block Data
 
-From the block data, we can access the transactions, their receipts and actions. See the code below for an example of how to parse the block data:
+Within the `listen_blocks` method, we can parse the block data as it flows from the stream. From the block data, we can access the transactions, their receipts, and actions. See the code below for an example of how to parse the block data:
 
 ```
+async fn listen_blocks(mut stream: mpsc::Receiver<near_indexer::StreamerMessage>) {
+    while let Some(streamer_message) = stream.recv().await {
         // TODO: handle data as you need
         // Example of `StreamerMessage` with all the data (the data is synthetic)
         //
@@ -369,7 +404,19 @@ From the block data, we can access the transactions, their receipts and actions.
         //         },
         //     ],
         // }
-        info!(
+        tracing::info!(
+            target: "indexer_example",
+            height = %streamer_message.block.header.height,
+            hash = ?streamer_message.block.header.hash,
+            num_shards = %streamer_message.shards.len(),
+            num_transactions = %streamer_message.shards.iter().map(|shard| if let Some(chunk) = &shard.chunk { chunk.transactions.len() } else { 0usize }).sum::<usize>(),
+            num_receipts = %streamer_message.shards.iter().map(|shard| if let Some(chunk) = &shard.chunk { chunk.receipts.len() } else { 0usize }).sum::<usize>(),
+            num_execution_outcomes = %streamer_message.shards.iter().map(|shard| shard.receipt_execution_outcomes.len()).sum::<usize>(),
+            "block processed"
+        );
+    }
+}
+
 ```
 
 ---
@@ -415,8 +462,8 @@ You can choose Indexer Framework sync mode by setting what to stream:
 - BlockHeight(u64) - Specific block height to start syncing from.
 
 ```
-                .collect();
-
+                sync_mode: near_indexer::SyncModeEnum::FromInterruption,
+                await_for_node_synced: near_indexer::AwaitForNodeSyncedEnum::WaitForFullSync,
 ```
 
 <hr class="subsection" />
@@ -428,8 +475,8 @@ You can choose Indexer Framework streaming mode by setting what to stream:
 - WaitForFullSync - Don't stream until the node is fully synced
 
 ```
-
-            let sync_mode = if let Some(block_height) = args.block_height {
+                await_for_node_synced: near_indexer::AwaitForNodeSyncedEnum::WaitForFullSync,
+                finality: near_primitives::types::Finality::Final,
 ```
 
 <hr class="subsection" />
@@ -442,8 +489,8 @@ You can choose finality level at which blocks are streamed:
 - Final - `final`, the block is final and irreversible.
 
 ```
-            let sync_mode = if let Some(block_height) = args.block_height {
-                near_indexer::SyncModeEnum::BlockHeight(block_height)
+                finality: near_primitives::types::Finality::Final,
+                validate_genesis: true,
 ```
 
 <hr class="subsection" />
@@ -520,11 +567,11 @@ You can also use NEAR Indexer Framework as a dependency in your own Rust project
 
 ```toml
 [dependencies]
-near-indexer = { git = "https://github.com/near/nearcore", tag = "2.8.0" }
-near-indexer-primitives = { git = "https://github.com/near/nearcore", tag = "2.8.0" }
-near-config-utils = { git = "https://github.com/near/nearcore", tag = "2.8.0" }
-near-o11y = { git = "https://github.com/near/nearcore", tag = "2.8.0" }
-near-primitives = { git = "https://github.com/near/nearcore", tag = "2.8.0" }
+near-indexer = { git = "https://github.com/near/nearcore", tag = "2.9.1" }
+near-indexer-primitives = { git = "https://github.com/near/nearcore", tag = "2.9.1" }
+near-config-utils = { git = "https://github.com/near/nearcore", tag = "2.9.1" }
+near-o11y = { git = "https://github.com/near/nearcore", tag = "2.9.1" }
+near-primitives = { git = "https://github.com/near/nearcore", tag = "2.9.1" }
 ```
 
 <MovingForwardSupportSection />

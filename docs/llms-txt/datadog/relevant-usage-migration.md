@@ -8,7 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > Account Management > Account Management Guides > Migrate Indexed Logs
   and RUM in the Hourly Usage and Summary Usage APIs
-source_url: https://docs.datadoghq.com/guide/relevant-usage-migration/index.html
 ---
 
 # Migrate Indexed Logs and RUM in the Hourly Usage and Summary Usage APIs

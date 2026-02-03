@@ -1,12 +1,6 @@
 # Source: https://gitbook.com/docs/help-center/integrations/integrations-troubleshooting/git-sync.md
 
-# Source: https://gitbook.com/docs/documentation/zh/getting-started/git-sync.md
-
-# Source: https://gitbook.com/docs/documentation/fr/getting-started/git-sync.md
-
-# Source: https://gitbook.com/docs/getting-started/git-sync.md
-
-# Source: https://gitbook.com/docs/help-center/integrations/integrations-troubleshooting/git-sync.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/getting-started/git-sync.md
 
 # Source: https://gitbook.com/docs/documentation/zh/getting-started/git-sync.md
 
@@ -27,3 +21,7 @@ Git Sync is bi-directional, so changes you make directly in GitBook’s editor a
 {% hint style="info" %}
 Only [administrators and creators](https://gitbook.com/docs/account-management/member-management/roles) can enable and configure Git Sync.
 {% endhint %}
+
+### skill.md
+
+When working on your docs locally with Git Sync, you can use GitBook's [skill.md file](https://gitbook.com/docs/creating-content/ai-coding-assistants-and-skill.md) to provide an AI coding assistant with context about GitBook's blocks, features, and best practices.&#x20;

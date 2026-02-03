@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/howto/failures.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Handle Failed Runs
 
 This guide shows you how to **gracefully handle failed workflow runs**. This involves best practices on resolving runtime errors, logging and manually retrying runs that have failed multiple times.

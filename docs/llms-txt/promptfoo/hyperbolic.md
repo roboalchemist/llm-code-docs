@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/hyperbolic/
+
 # Hyperbolic
 
 The `hyperbolic` provider supports [Hyperbolic's API](https://docs.hyperbolic.xyz/), which provides access to various LLM, image generation, audio generation, and vision-language models through an [OpenAI-compatible API format](/docs/providers/openai/). This makes it easy to integrate into existing applications that use the OpenAI SDK.

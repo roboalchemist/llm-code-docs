@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/insights.md
-
-# Source: https://gitbook.com/docs/documentation/fr/publishing-documentation/insights.md
-
-# Source: https://gitbook.com/docs/publishing-documentation/insights.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/publishing-documentation/insights.md
 
 # Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/insights.md
 
@@ -22,7 +18,7 @@ You can see a top-level overview of your insights on the **Overview** tab of you
 
 Click the **Insights** tab in the site header to find more detailed insights for your site.
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2Fp2ytevUaxD0kXKzLq5qC%2F18_07_25_publishing-documentation-advanced-site-insights.svg?alt=media&#x26;token=27059941-01fd-489e-9129-73e1b5c8fdf2" alt="A GitBook screenshot showing the site insights dashboard"><figcaption><p>The site insights dashboard.</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FTtY3VZjH8K9e3nweJUM5%2F26_01_06_insights%402x.png?alt=media&#x26;token=1b721e07-e689-4ee5-bc67-05387609d6ae" alt="A GitBook screenshot showing the site insights dashboard"><figcaption><p>The site insights dashboard.</p></figcaption></figure>
 
 ### Filters & groups
 
@@ -32,7 +28,7 @@ By combining filters and groups, you can drill down in to precise analytics data
 
 ### View by custom time periods
 
-You can use the drop-down menu on the right of the Insights screen to change the time period between the last 24 hours, 7 days, 30 days or 3 months.&#x20;
+You can use the drop-down menu on the right of the Insights screen to change the time period between the last 24 hours, 7 days, 30 days or 3 months.
 
 To view the data over a custom time period, click the **Select custom date range** button <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FkEJhwhMBwOZZGpDTRFku%2Fcalendar-dark.svg?alt=media&#x26;token=68119227-578c-4b03-920c-71c74fa2842b" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2F1g9fFv9V674Y7JGjHOGw%2Fcalendar.svg?alt=media&#x26;token=d21fbc59-ac2a-46ab-82cc-2085e7d295df" alt=""></picture> to the right of the menu and choose your custom time period using the calendar that appears.
 

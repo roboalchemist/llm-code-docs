@@ -2,7 +2,7 @@
 
 # Templates
 
-Mailgun allows you to store predefined email templates and use them to send messages by simply referencing the template name. Each domain supports up to 100 templates, with each template allowing up to 10 versions.
+Mailgun allows you to store predefined email templates and use them to send messages by simply referencing the template name. Each domain supports up to 100 templates, with each template allowing up to 40 versions.
 
 For comprehensive information about templates, refer to the [Template API documentation](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/templates). To learn about creating templates using the Template Builder interface, see [Email Templates](https://help.mailgun.com/hc/en-us/articles/360021380793-Email-Templates).
 

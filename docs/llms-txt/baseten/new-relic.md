@@ -1,10 +1,12 @@
 # Source: https://docs.baseten.co/observability/export-metrics/new-relic.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Export to New Relic
 
 > Export metrics from Baseten to New Relic
-
-<Info> Exporting metrics is in beta mode. </Info>
 
 Export Baseten metrics to New Relic by integrating with [OpenTelemetry Collector](https://opentelemetry.io/docs/collector/). This involves configuring a Prometheus receiver that scrapes Baseten's metrics endpoint and configuring a New Relic exporter to send the metrics to your observability backend.
 

@@ -2,14 +2,6 @@
 
 # Source: https://docs.vespa.ai/en/reference/applications/deployment.html.md
 
-# Source: https://docs.vespa.ai/en/applications/deployment.html.md
-
-# Source: https://docs.vespa.ai/en/reference/applications/deployment.html.md
-
-# Source: https://docs.vespa.ai/en/applications/deployment.html.md
-
-# Source: https://docs.vespa.ai/en/reference/applications/deployment.html.md
-
 # deployment.xml reference
 
  
@@ -448,7 +440,7 @@ The deadline of this BCP group. See deadline on the BCP element.
 
  |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

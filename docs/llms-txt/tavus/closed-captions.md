@@ -1,5 +1,9 @@
 # Source: https://docs.tavus.io/sections/conversational-video-interface/conversation/customizations/closed-captions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Closed Captions
 
 > Enable closed captions for accessibility or live transcription during conversations.

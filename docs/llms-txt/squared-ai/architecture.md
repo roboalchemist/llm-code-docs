@@ -1,5 +1,9 @@
 # Source: https://docs.squared.ai/sparx/architecture.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How Sparx Works
 
 > System architecture and technical components

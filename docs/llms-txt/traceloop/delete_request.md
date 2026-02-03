@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/api-reference/privacy/delete_request.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete specific user data
 
 You can delete traces data for a specific user of yours by specifying their association properties.
@@ -29,8 +33,3 @@ You can delete traces data for a specific user of yours by specifying their asso
 
 ```
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

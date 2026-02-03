@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/introduction/support.md
 
-# Source: https://docs.aporia.com/introduction/support.md
-
-# Source: https://docs.aporia.com/v1/introduction/support.md
-
 # Support
 
 Need help? Want something more? Reach out! 📧

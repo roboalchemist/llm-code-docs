@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/telephony/twilio-websocket.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Twilio Websocket Transport
 
 > Using Twilio's WebSocket Transport for your Pipecat Cloud agents
@@ -101,8 +105,3 @@ To test your integration, simply dial your Twilio phone number from any phone. T
 ## Next Steps
 
 For complete implementation details including dial-out, custom parameters, caller personalization, and advanced call control features, see the [Twilio WebSocket Integration guide](/guides/telephony/twilio-websockets).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/data/st.column_config/st.column_config.areachartcolumn
+
 # st.column_config.AreaChartColumn
 
 Configure an area chart column in `st.dataframe` or `st.data_editor`.

@@ -1,176 +1,134 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/access-groups/create-an-access-group-project.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create an access group project
 
 > Allows creation of an access group project
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples post /v1/access-groups/{accessGroupIdOrName}/projects
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v1/access-groups/{accessGroupIdOrName}/projects
-  method: post
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path:
-        accessGroupIdOrName:
+  /v1/access-groups/{accessGroupIdOrName}/projects:
+    post:
+      tags:
+        - access-groups
+      summary: Create an access group project
+      description: Allows creation of an access group project
+      operationId: createAccessGroupProject
+      parameters:
+        - name: accessGroupIdOrName
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-      query:
-        teamId:
+            type: string
+        - description: The Team identifier to perform the request on behalf of.
+          in: query
+          name: teamId
           schema:
-            - type: string
-              description: The Team identifier to perform the request on behalf of.
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-        slug:
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        - description: The Team slug to perform the request on behalf of.
+          in: query
+          name: slug
           schema:
-            - type: string
-              description: The Team slug to perform the request on behalf of.
-              example: my-team-url-slug
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              projectId:
-                allOf:
-                  - type: string
-                    maxLength: 256
-                    example: prj_ndlgr43fadlPyCtREAqxxdyFK
-                    description: The ID of the project.
-              role:
-                allOf:
-                  - type: string
-                    enum:
-                      - ADMIN
-                      - PROJECT_VIEWER
-                      - PROJECT_DEVELOPER
-                    example: ADMIN
-                    description: The project role that will be added to this Access Group.
-            required: true
-            requiredProperties:
-              - role
-              - projectId
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              projectId: prj_ndlgr43fadlPyCtREAqxxdyFK
-              role: ADMIN
-    codeSamples:
-      - label: createAccessGroupProject
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.accessGroups.createAccessGroupProject({
-              accessGroupIdOrName: "<value>",
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-              slug: "my-team-url-slug",
-              requestBody: {
-                projectId: "prj_ndlgr43fadlPyCtREAqxxdyFK",
-                role: "ADMIN",
-              },
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              teamId:
-                allOf:
-                  - type: string
-              accessGroupId:
-                allOf:
-                  - type: string
-              projectId:
-                allOf:
-                  - type: string
-              role:
-                allOf:
-                  - type: string
+            type: string
+            example: my-team-url-slug
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required:
+                - role
+                - projectId
+              properties:
+                projectId:
+                  type: string
+                  maxLength: 256
+                  example: prj_ndlgr43fadlPyCtREAqxxdyFK
+                  description: The ID of the project.
+                role:
+                  type: string
+                  example: ADMIN
+                  description: The project role that will be added to this Access Group.
+                  enum:
+                    - ADMIN
+                    - PROJECT_VIEWER
+                    - PROJECT_DEVELOPER
+        required: true
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                properties:
+                  teamId:
+                    type: string
+                  accessGroupId:
+                    type: string
+                  projectId:
+                    type: string
+                  role:
+                    type: string
                     enum:
                       - ADMIN
                       - PROJECT_DEVELOPER
                       - PROJECT_VIEWER
-              createdAt:
-                allOf:
-                  - type: string
-              updatedAt:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - teamId
-              - accessGroupId
-              - projectId
-              - role
-              - createdAt
-              - updatedAt
-        examples:
-          example:
-            value:
-              teamId: <string>
-              accessGroupId: <string>
-              projectId: <string>
-              role: ADMIN
-              createdAt: <string>
-              updatedAt: <string>
-        description: ''
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: |-
-              One of the provided values in the request body is invalid.
-              One of the provided values in the request query is invalid.
-        examples: {}
-        description: |-
-          One of the provided values in the request body is invalid.
-          One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-  deprecated: false
-  type: path
+                      - PROJECT_GUEST
+                  createdAt:
+                    type: string
+                  updatedAt:
+                    type: string
+                required:
+                  - accessGroupId
+                  - createdAt
+                  - projectId
+                  - role
+                  - teamId
+                  - updatedAt
+                type: object
+        '400':
+          description: |-
+            One of the provided values in the request body is invalid.
+            One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+      security:
+        - bearerToken: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

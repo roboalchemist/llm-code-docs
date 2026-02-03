@@ -60,10 +60,6 @@ For each group, choose the rate type that most closely aligns with what you're *
 
 #### **Threshold Only**: You are testing a free shipping threshold but want to keep your existing rates for those that do not reach the threshold
 
-{% hint style="danger" %}
-Thresholds in a shipping test are based on the **pre-discount subtotal**. This means that discount codes and automatic discounts applied at checkout may put the shopper below the threshold but still give them free shipping. This is a limitation of Shopify's Third Party Rate Carrier feature.
-{% endhint %}
-
 <figure><img src="https://hs.intelligems.io/hs-fs/hubfs/4.png?width=449&#x26;height=92&#x26;name=4.png" alt=""><figcaption><p>Example 4: Testing a free threshold with rates under threshold provided by third party app</p></figcaption></figure>
 
 <figure><img src="https://hs.intelligems.io/hs-fs/hubfs/5.png?width=448&#x26;height=118&#x26;name=5.png" alt=""><figcaption><p>Example 5: Testing a free threshold with weight-based rates under threshold configured in Shopify</p></figcaption></figure>

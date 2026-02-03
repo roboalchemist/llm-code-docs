@@ -9,8 +9,6 @@ description: >-
 breadcrumbs: >-
   Docs > Agent > Agent Guides > Why should I install the Datadog Agent on my
   cloud instances?
-source_url: >-
-  https://docs.datadoghq.com/guide/why-should-i-install-the-agent-on-my-cloud-instances/index.html
 ---
 
 # Why should I install the Datadog Agent on my cloud instances?

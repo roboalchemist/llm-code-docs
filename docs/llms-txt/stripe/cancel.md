@@ -89,10 +89,9 @@ const subscription = await stripe.subscriptions.cancel('{{SUBSCRIPTION_ID}}');
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.SubscriptionCancelParams{
-  SubscriptionExposedID: stripe.String("{{SUBSCRIPTION_ID}}"),
-}
-result, err := sc.V1Subscriptions.Cancel(context.TODO(), params)
+params := &stripe.SubscriptionCancelParams{}
+result, err := sc.V1Subscriptions.Cancel(
+  context.TODO(), "{{SUBSCRIPTION_ID}}", params)
 ```
 
 ```dotnet
@@ -195,11 +194,9 @@ const subscription = await stripe.subscriptions.update(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.SubscriptionUpdateParams{
-  CancelAtPeriodEnd: stripe.Bool(true),
-  SubscriptionExposedID: stripe.String("{{SUBSCRIPTION_ID}}"),
-}
-result, err := sc.V1Subscriptions.Update(context.TODO(), params)
+params := &stripe.SubscriptionUpdateParams{CancelAtPeriodEnd: stripe.Bool(true)}
+result, err := sc.V1Subscriptions.Update(
+  context.TODO(), "{{SUBSCRIPTION_ID}}", params)
 ```
 
 ```dotnet
@@ -351,11 +348,9 @@ const subscription = await stripe.subscriptions.update(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.SubscriptionUpdateParams{
-  CancelAtPeriodEnd: stripe.Bool(false),
-  SubscriptionExposedID: stripe.String("{{SUBSCRIPTION_ID}}"),
-}
-result, err := sc.V1Subscriptions.Update(context.TODO(), params)
+params := &stripe.SubscriptionUpdateParams{CancelAtPeriodEnd: stripe.Bool(false)}
+result, err := sc.V1Subscriptions.Update(
+  context.TODO(), "{{SUBSCRIPTION_ID}}", params)
 ```
 
 ```dotnet
@@ -448,11 +443,9 @@ const subscription = await stripe.subscriptions.update(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.SubscriptionUpdateParams{
-  CancelAt: stripe.Int64(1723766400),
-  SubscriptionExposedID: stripe.String("{{SUBSCRIPTION_ID}}"),
-}
-result, err := sc.V1Subscriptions.Update(context.TODO(), params)
+params := &stripe.SubscriptionUpdateParams{CancelAt: stripe.Int64(1723766400)}
+result, err := sc.V1Subscriptions.Update(
+  context.TODO(), "{{SUBSCRIPTION_ID}}", params)
 ```
 
 ```dotnet
@@ -494,6 +487,6 @@ Adding a cancel date or moving an existing one closer to the current time shorte
 
 ## See also
 
-- [Using trial periods](https://docs.stripe.com/billing/subscriptions/trials.md)
+- [Use trial periods](https://docs.stripe.com/billing/subscriptions/trials.md)
 - [Update subscription](https://docs.stripe.com/api.md#update_subscription)
 - [Cancel subscription](https://docs.stripe.com/api.md#cancel_subscription)

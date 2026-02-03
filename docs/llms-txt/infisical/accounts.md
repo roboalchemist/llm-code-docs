@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/pam/getting-started/accounts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # PAM Account
 
 > Learn how to create and manage accounts in PAM to control access to resources like databases and servers.
@@ -46,8 +50,3 @@ Clicking **Create Account** will trigger a validation check. Infisical will atte
 Infisical supports automated credential rotation for some accounts on select resources, allowing you to automatically change passwords at set intervals to enhance security.
 
 To learn more about how to configure this, please refer to the [Credential Rotation guide](/documentation/platform/pam/product-reference/credential-rotation).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://infisical.com/docs/llms.txt

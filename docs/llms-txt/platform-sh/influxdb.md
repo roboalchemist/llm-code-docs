@@ -25,6 +25,10 @@ but they're at their end of life and are no longer receiving security updates fr
 
    - 2.2
 
+   - 2.1
+
+   - 2.0
+
    - 1.8
 
    - 1.7
@@ -119,11 +123,11 @@ applications:
 
 You can define ``<SERVICE_NAME>`` as you like, so long as it’s unique between all defined services
 and matches in both the application and services configuration.
-The example above leverages [default endpoint](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
-That is, it uses default endpoints behind-the-scenes, providing a [relationship](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships)
+The example above leverages [default endpoint](https://docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
+That is, it uses default endpoints behind the scenes, providing a [relationship](https://docs.upsun.com/create-apps/image-properties/relationships.md)
 (the network address a service is accessible from) that is identical to the name of that service.
 Depending on your needs, instead of default endpoint configuration,
-you can use [explicit endpoint configuration](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [explicit endpoint configuration](https://docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<SERVICE_NAME>`` and its corresponding [service environment variables](https://docs.upsun.com/development/variables.md#service-environment-variables).
 
     .upsun/config.yaml
@@ -143,9 +147,9 @@ applications:
 
 You can define ``<SERVICE_NAME>`` and ``<RELATIONSHIP_NAME>`` as you like, so long as it’s unique between all defined services and relationships
 and matches in both the application and services configuration.
-The example above leverages [explicit endpoint](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships.
+The example above leverages [explicit endpoint](https://docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships.
 Depending on your needs, instead of explicit endpoint configuration,
-you can use [default endpoint configuration](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships).
+you can use [default endpoint configuration](https://docs.upsun.com/create-apps/image-properties/relationships.md).
 With the above definition, the application container now has [access to the service](#use-in-app) via the relationship ``<RELATIONSHIP_NAME>`` and its corresponding [service environment variables](https://docs.upsun.com/development/variables.md#service-environment-variables).
 
 ### Example configuration
@@ -236,7 +240,7 @@ service:
 
 This configuration defines a single application (`myapp`), whose source code exists in the `<PROJECT_ROOT>/myapp` directory. 
 `myapp` has access to the `influxdb` service, via a relationship whose name is [identical to the service name](#2-define-the-relationship)
-(as per [default endpoint](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#relationships) configuration for relationships).
+(as per [default endpoint](https://docs.upsun.com/create-apps/image-properties/relationships.md) configuration for relationships).
 
 From this, ``myapp`` can retrieve access credentials to the service through the [relationship environment variables](#relationship-reference).
 

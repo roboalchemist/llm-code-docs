@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/platform-guides/upgrade-downgrade-plan.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to upgrade or downgrade my plan
 
 > Learn how to upgrade and downgrade your Aptible plan

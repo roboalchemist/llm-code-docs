@@ -4,8 +4,6 @@
 title: EventBridge Archive
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > EventBridge Archive
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.eventbridge_archive.dataset/index.html
 ---
 
 # EventBridge Archive
@@ -18,16 +16,16 @@ aws.eventbridge_archive
 
 ## Fields
 
-| Title            | ID   | Type      | Data Type                                                                                                      | Description |
-| ---------------- | ---- | --------- | -------------------------------------------------------------------------------------------------------------- | ----------- |
-| _key             | core | string    |
-| account_id       | core | string    |
-| archive_name     | core | string    | The name of the archive.                                                                                       |
-| creation_time    | core | timestamp | The time stamp for the time that the archive was created.                                                      |
-| event_count      | core | int64     | The number of events in the archive.                                                                           |
-| event_source_arn | core | string    | The ARN of the event bus associated with the archive. Only events from this event bus are sent to the archive. |
-| retention_days   | core | int64     | The number of days to retain events in the archive before they are deleted.                                    |
-| size_bytes       | core | int64     | The size of the archive, in bytes.                                                                             |
-| state            | core | string    | The current state of the archive.                                                                              |
-| state_reason     | core | string    | A description for the reason that the archive is in the current state.                                         |
-| tags             | core | hstore    |
+| Title            | ID   | Type       | Data Type                                                                                                      | Description |
+| ---------------- | ---- | ---------- | -------------------------------------------------------------------------------------------------------------- | ----------- |
+| _key             | core | string     |
+| account_id       | core | string     |
+| archive_name     | core | string     | The name of the archive.                                                                                       |
+| creation_time    | core | timestamp  | The time stamp for the time that the archive was created.                                                      |
+| event_count      | core | int64      | The number of events in the archive.                                                                           |
+| event_source_arn | core | string     | The ARN of the event bus associated with the archive. Only events from this event bus are sent to the archive. |
+| retention_days   | core | int64      | The number of days to retain events in the archive before they are deleted.                                    |
+| size_bytes       | core | int64      | The size of the archive, in bytes.                                                                             |
+| state            | core | string     | The current state of the archive.                                                                              |
+| state_reason     | core | string     | A description for the reason that the archive is in the current state.                                         |
+| tags             | core | hstore_csv |

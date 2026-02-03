@@ -6,9 +6,8 @@ description: >-
   Guide for migrating from v1alpha1 to v2alpha1 of the DatadogAgent custom
   resource using conversion webhook
 breadcrumbs: >-
-  Docs > Container Monitoring > Containers Guides > Migrating to version 1.0 of
-  the Datadog Operator
-source_url: https://docs.datadoghq.com/guide/datadogoperator_migration/index.html
+  Docs > Containers > Containers Guides > Migrating to version 1.0 of the
+  Datadog Operator
 ---
 
 # Migrating to version 1.0 of the Datadog Operator

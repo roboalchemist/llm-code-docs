@@ -20,13 +20,16 @@ Stripe Tax enables businesses to calculate, collect, and file indirect taxes in 
 
 Use this guide if your platform is responsible for collecting, filing, and reporting taxes.
 
-> We use the platform’s head office location, preset tax code, and tax registrations to calculate taxes. However, we don’t use the connected account information for tax purposes.
-
 1. [Configure your platform account for tax collection](https://docs.stripe.com/tax/tax-for-marketplaces.md#set-up)
 1. (Optional) [Assign tax codes to product catalog](https://docs.stripe.com/tax/tax-for-marketplaces.md#assign-product-tax-codes)
 1. [Integrate tax calculation and collection](https://docs.stripe.com/tax/tax-for-marketplaces.md#enable-tax-collection)
 1. [Withhold the collected tax amount](https://docs.stripe.com/tax/tax-for-marketplaces.md#tax-withholding)
 1. [Access Stripe Tax reports](https://docs.stripe.com/tax/tax-for-marketplaces.md#access-reports)
+
+Since your connected accounts don’t collect or file taxes:
+
+- Their tax status columns (tax settings status, tax threshold status and tax registration status) in your [Dashboard](https://dashboard.stripe.com/connect/accounts/overview) appear empty.
+- We calculate taxes based on your platform’s head office location, preset tax code, and tax registrations. We don’t use the connected account information for tax purposes.
 
 ## Configure your platform account for tax collection
 
@@ -4699,9 +4702,8 @@ params := &stripe.InvoiceUpdateParams{
     Destination: stripe.String("{{CONNECTEDACCOUNT_ID}}"),
     Amount: stripe.Int64(1000),
   },
-  Invoice: stripe.String("{{INVOICE_ID}}"),
 }
-result, err := sc.V1Invoices.Update(context.TODO(), params)
+result, err := sc.V1Invoices.Update(context.TODO(), "{{INVOICE_ID}}", params)
 ```
 
 ```dotnet
@@ -4800,11 +4802,8 @@ const invoice = await stripe.invoices.update(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.InvoiceUpdateParams{
-  ApplicationFeeAmount: stripe.Int64(1000),
-  Invoice: stripe.String("{{INVOICE_ID}}"),
-}
-result, err := sc.V1Invoices.Update(context.TODO(), params)
+params := &stripe.InvoiceUpdateParams{ApplicationFeeAmount: stripe.Int64(1000)}
+result, err := sc.V1Invoices.Update(context.TODO(), "{{INVOICE_ID}}", params)
 ```
 
 ```dotnet
@@ -5277,9 +5276,8 @@ params := &stripe.InvoiceUpdateParams{
     Destination: stripe.String("{{CONNECTEDACCOUNT_ID}}"),
     Amount: stripe.Int64(1000),
   },
-  Invoice: stripe.String("{{INVOICE_ID}}"),
 }
-result, err := sc.V1Invoices.Update(context.TODO(), params)
+result, err := sc.V1Invoices.Update(context.TODO(), "{{INVOICE_ID}}", params)
 ```
 
 ```dotnet
@@ -5475,11 +5473,8 @@ const invoice = await stripe.invoices.update(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.InvoiceUpdateParams{
-  ApplicationFeeAmount: stripe.Int64(1000),
-  Invoice: stripe.String("{{INVOICE_ID}}"),
-}
-result, err := sc.V1Invoices.Update(context.TODO(), params)
+params := &stripe.InvoiceUpdateParams{ApplicationFeeAmount: stripe.Int64(1000)}
+result, err := sc.V1Invoices.Update(context.TODO(), "{{INVOICE_ID}}", params)
 ```
 
 ```dotnet

@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/gateway/integrations/dpsy.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # DSPy
 
 > Integrate Helicone AI Gateway with DSPy to access 100+ LLM providers with unified observability and optimization.
@@ -337,8 +341,3 @@ response3 = qa(question="Do you ship internationally?")
     Reduce costs and latency with intelligent caching
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.helicone.ai/llms.txt

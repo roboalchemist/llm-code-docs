@@ -1,223 +1,143 @@
 # Source: https://dev.writer.com/api-reference/kg-api/list-graphs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List graphs
 
 > Retrieve a list of Knowledge Graphs.
 
+
+
 ## OpenAPI
 
 ````yaml get /v1/graphs
+openapi: 3.0.3
+info:
+  title: API
+  version: '1.0'
+servers:
+  - url: https://api.writer.com
+security:
+  - bearerAuth: []
 paths:
-  path: /v1/graphs
-  method: get
-  servers:
-    - url: https://api.writer.com
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: >-
-                Bearer authentication header of the form `Bearer <token>`, where
-                `<token>` is your [Writer API
-                key](https://dev.writer.com/api-reference/api-keys).
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        order:
+  /v1/graphs:
+    get:
+      tags:
+        - KG API
+      summary: List graphs
+      description: Retrieve a list of Knowledge Graphs.
+      operationId: findGraphsWithFileStatus
+      parameters:
+        - name: order
+          in: query
+          required: false
           schema:
-            - type: enum<string>
-              enum:
-                - asc
-                - desc
-              required: false
-              description: >-
-                Specifies the order of the results. Valid values are asc for
-                ascending and desc for descending.
-              default: desc
-        before:
+            type: string
+            default: desc
+            enum:
+              - asc
+              - desc
+          description: >-
+            Specifies the order of the results. Valid values are asc for
+            ascending and desc for descending.
+        - name: before
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-              description: >-
-                The ID of the first object in the previous page. This parameter
-                instructs the API to return the previous page of results.
-              format: uuid
-        after:
+            type: string
+            format: uuid
+          description: >-
+            The ID of the first object in the previous page. This parameter
+            instructs the API to return the previous page of results.
+        - name: after
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-              description: >-
-                The ID of the last object in the previous page. This parameter
-                instructs the API to return the next page of results.
-              format: uuid
-        limit:
+            type: string
+            format: uuid
+          description: >-
+            The ID of the last object in the previous page. This parameter
+            instructs the API to return the next page of results.
+        - name: limit
+          in: query
+          required: false
           schema:
-            - type: integer
-              required: false
-              description: >-
-                Specifies the maximum number of objects returned in a page. The
-                default value is 50. The minimum value is 1, and the maximum
-                value is 100.
-              default: 50
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - lang: cURL
-        source: |-
-          curl --location --request GET https://api.writer.com/v1/graphs \
-           --header "Authorization: Bearer <token>"
-      - lang: JavaScript
-        source: |-
-          import Writer from 'writer-sdk';
-
-          const client = new Writer({
-            apiKey: process.env['WRITER_API_KEY'], // This is the default and can be omitted
-          });
-
-          async function main() {
-            // Automatically fetches more pages as needed.
-            for await (const graph of client.graphs.list()) {
-              console.log(graph.id);
-            }
-          }
-
-          main();
-      - lang: Python
-        source: |-
-          import os
-          from writerai import Writer
-
-          client = Writer(
-              # This is the default and can be omitted
-              api_key=os.environ.get("WRITER_API_KEY"),
-          )
-          page = client.graphs.list()
-          page = page.data[0]
-          print(page.id)
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: array
-                    items:
-                      $ref: '#/components/schemas/graph'
-              first_id:
-                allOf:
-                  - type: string
-                    format: uuid
-                    description: >-
-                      The ID of the first Knowledge Graph in the current
-                      response.
-              last_id:
-                allOf:
-                  - type: string
-                    format: uuid
-                    description: >-
-                      The ID of the last Knowledge Graph in the current
-                      response.
-              has_more:
-                allOf:
-                  - type: boolean
-                    description: >-
-                      Indicates if there are more Knowledge Graphs available
-                      beyond the current page.
-            title: graphs_response
-            refIdentifier: '#/components/schemas/graphs_response'
-            requiredProperties:
-              - data
-              - has_more
-        examples:
-          example:
-            value:
-              data:
-                - id: 50daa3d0-e7d9-44a4-be42-b53e2379ebf7
-                  created_at: '2024-07-10T15:03:48.785843Z'
-                  name: Example Knowledge Graph
-                  description: Example description
-                  file_status:
-                    in_progress: 0
-                    completed: 0
-                    failed: 0
-                    total: 11
-                  type: manual
-                  urls: null
-                - id: e7392337-1c4e-4bc9-aaf5-b719bf1e938a
-                  created_at: '2024-07-10T15:03:39.881370Z'
-                  name: Another example Knowledge Graph
-                  description: Another example description
-                  file_status:
-                    in_progress: 0
-                    completed: 0
-                    failed: 0
-                    total: 0
-                  type: web
-                  urls:
-                    - url: https://docs.example.com
-                      status:
-                        status: success
-                        error_type: null
-                      type: single_page
-              first_id: 50daa3d0-e7d9-44a4-be42-b53e2379ebf7
-              last_id: e7392337-1c4e-4bc9-aaf5-b719bf1e938a
-              has_more: true
-        description: ''
-  deprecated: false
-  type: path
+            type: integer
+            format: int32
+            default: 50
+          description: >-
+            Specifies the maximum number of objects returned in a page. The
+            default value is 50. The minimum value is 1, and the maximum value
+            is 100.
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/graphs_response'
+              example:
+                data:
+                  - id: 50daa3d0-e7d9-44a4-be42-b53e2379ebf7
+                    created_at: '2024-07-10T15:03:48.785843Z'
+                    name: Example Knowledge Graph
+                    description: Example description
+                    file_status:
+                      in_progress: 0
+                      completed: 0
+                      failed: 0
+                      total: 11
+                    type: manual
+                    urls: null
+                  - id: e7392337-1c4e-4bc9-aaf5-b719bf1e938a
+                    created_at: '2024-07-10T15:03:39.881370Z'
+                    name: Another example Knowledge Graph
+                    description: Another example description
+                    file_status:
+                      in_progress: 0
+                      completed: 0
+                      failed: 0
+                      total: 0
+                    type: web
+                    urls:
+                      - url: https://docs.example.com
+                        status:
+                          status: success
+                          error_type: null
+                        type: single_page
+                first_id: 50daa3d0-e7d9-44a4-be42-b53e2379ebf7
+                last_id: e7392337-1c4e-4bc9-aaf5-b719bf1e938a
+                has_more: true
+      security:
+        - bearerAuth: []
 components:
   schemas:
-    graph_type:
-      title: graph_type
-      description: >-
-        The type of Knowledge Graph:
-
-
-        - `manual`: files are uploaded via UI or API
-
-        - `connector`: files are uploaded via a data connector such as Google
-        Drive or Confluence
-
-        - `web`: URLs are connected to the Knowledge Graph
-      type: string
-      enum:
-        - manual
-        - connector
-        - web
-    graph_file_status:
-      title: graph_file_status
+    graphs_response:
+      title: graphs_response
       required:
-        - in_progress
-        - completed
-        - failed
-        - total
+        - data
+        - has_more
       type: object
       properties:
-        in_progress:
-          type: integer
-          format: int64
-          description: The number of files currently being processed.
-        completed:
-          type: integer
-          format: int64
-          description: The number of files that have been successfully processed.
-        failed:
-          type: integer
-          format: int64
-          description: The number of files that failed to process.
-        total:
-          type: integer
-          format: int64
-          description: The total number of files associated with the Knowledge Graph.
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/graph'
+        first_id:
+          type: string
+          format: uuid
+          description: The ID of the first Knowledge Graph in the current response.
+        last_id:
+          type: string
+          format: uuid
+          description: The ID of the last Knowledge Graph in the current response.
+        has_more:
+          type: boolean
+          description: >-
+            Indicates if there are more Knowledge Graphs available beyond the
+            current page.
     graph:
       title: graph
       required:
@@ -262,6 +182,48 @@ components:
           description: An array of web connector URLs associated with this Knowledge Graph.
           items:
             $ref: '#/components/schemas/web_connector_url'
+    graph_file_status:
+      title: graph_file_status
+      required:
+        - in_progress
+        - completed
+        - failed
+        - total
+      type: object
+      properties:
+        in_progress:
+          type: integer
+          format: int64
+          description: The number of files currently being processed.
+        completed:
+          type: integer
+          format: int64
+          description: The number of files that have been successfully processed.
+        failed:
+          type: integer
+          format: int64
+          description: The number of files that failed to process.
+        total:
+          type: integer
+          format: int64
+          description: The total number of files associated with the Knowledge Graph.
+    graph_type:
+      title: graph_type
+      description: >-
+        The type of Knowledge Graph:
+
+
+        - `manual`: files are uploaded via UI or API
+
+        - `connector`: files are uploaded via a data connector such as Google
+        Drive or Confluence
+
+        - `web`: URLs are connected to the Knowledge Graph
+      type: string
+      enum:
+        - manual
+        - connector
+        - web
     web_connector_url:
       title: web_connector_url
       required:
@@ -306,6 +268,14 @@ components:
       enum:
         - single_page
         - sub_pages
+    web_connector_url_status:
+      title: web_connector_url_status
+      description: The status of web connector URL processing.
+      type: string
+      enum:
+        - validating
+        - success
+        - error
     web_connector_url_error_type:
       title: web_connector_url_error_type
       description: The type of error that can occur during web connector URL processing.
@@ -316,13 +286,14 @@ components:
         - not_found
         - paywall_or_login_page
         - unexpected_error
-    web_connector_url_status:
-      title: web_connector_url_status
-      description: The status of web connector URL processing.
-      type: string
-      enum:
-        - validating
-        - success
-        - error
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: >-
+        Bearer authentication header of the form `Bearer <token>`, where
+        `<token>` is your [Writer API
+        key](https://dev.writer.com/api-reference/api-keys).
 
 ````

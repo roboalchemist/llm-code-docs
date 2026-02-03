@@ -1,5 +1,9 @@
 # Source: https://dub.co/docs/conversions/sales/stripe.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dub.co/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Stripe
 
 > Learn how to track sale conversion events with Stripe and Dub
@@ -32,7 +36,7 @@ Here's how you can install the Dub Stripe integration:
     Navigate to the [Dub Stripe Integration](https://d.to/stripe/app) on the Stripe App Marketplace.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-marketplace.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=e7cce5cca6ef3da4612678c1ea1b4171" alt="The Dub integration page on the Stripe App Marketplace" data-og-width="1340" width="1340" data-og-height="993" height="993" data-path="images/stripe/stripe-app-marketplace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-marketplace.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=7f2636abdc3b10e9e1fc9e39cf4fa4ee 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-marketplace.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=205db0d24d21987178fd6d8e0e8bffae 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-marketplace.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=84fb60be555a40840186e8fa9e51c357 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-marketplace.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=d566c4c6a61de3c33fec1bb9c1cbe860 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-marketplace.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=13094b4ce82c3dd3374b4a4896416034 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-marketplace.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=1306cc653c2d9b795c39f1edca32964f 2500w" />
+      <img src="https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-marketplace.png?fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=ac43cb50d81677dbf96b05bb87616096" alt="The Dub integration page on the Stripe App Marketplace" data-og-width="2632" width="2632" data-og-height="1960" height="1960" data-path="images/stripe/stripe-app-marketplace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-marketplace.png?w=280&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=9d959078b6fd4566de544d56a11fcd50 280w, https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-marketplace.png?w=560&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=e0d80b5eb1c20f5d3f2c14711926a633 560w, https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-marketplace.png?w=840&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=83163af2dbd1e1ba65936c3563e6b434 840w, https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-marketplace.png?w=1100&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=8c039b4d54e767f9b107520a3fa2de6e 1100w, https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-marketplace.png?w=1650&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=696e61c8dbf177d94c5e57e182d74446 1650w, https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-marketplace.png?w=2500&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=e08ef8e19731d452414bafc039320c0e 2500w" />
     </Frame>
   </Step>
 
@@ -40,18 +44,19 @@ Here's how you can install the Dub Stripe integration:
     On the top right, click on **Install app** to install the Dub app on your Stripe account.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-install.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=e80d6bf163cc6d2516997dca0557c776" alt="The Stripe integration installation flow" data-og-width="1325" width="1325" data-og-height="964" height="964" data-path="images/stripe/stripe-app-install.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-install.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=93181a1a975aec3403291374209ed785 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-install.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=64cfc0d3d2bc7916c46fd30d33a5bc10 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-install.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=fb76783214e1b02a6f968a5035770b14 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-install.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=709dba497ab89b9390805cce8c4e1982 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-install.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=a6f7170dca388594f6418c6ce0cd334e 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-install.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=99f0dd9b1f951948c4aecb786c1bce1f 2500w" />
+      <img src="https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-install.png?fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=a4cfd0ca21ead504258089f0ce8d5d7b" alt="The Stripe integration installation flow" data-og-width="2560" width="2560" data-og-height="1950" height="1950" data-path="images/stripe/stripe-app-install.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-install.png?w=280&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=6ef9a14d41f5f909c9d110b17725a96c 280w, https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-install.png?w=560&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=27306f241da3c682506d8661df3fa227 560w, https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-install.png?w=840&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=1fb08c2fce7406cb5cf43ec424273574 840w, https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-install.png?w=1100&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=51bfbc4349d06948c900612d8f28562f 1100w, https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-install.png?w=1650&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=7c86181c1534b6a603848a0a34f75dd0 1650w, https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-install.png?w=2500&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=9571823c356e38ae90666d62526138ac 2500w" />
     </Frame>
 
     <Tip>
-      Alternatively, you can also install the Stripe app in a [Stripe sandbox](https://docs.stripe.com/sandboxes) first to test
-      your end-to-end flow without involving real money.
+      Alternatively, you can also install the Stripe app in a [Stripe
+      sandbox](https://docs.stripe.com/sandboxes) first to test your end-to-end flow
+      without involving real money.
     </Tip>
 
     Once the app is installed, click on **Continue to app settings** to finish the installation.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-install-continue.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=02df497eb3dce3cc474865305f727652" alt="Continue to app settings" data-og-width="1264" width="1264" data-og-height="855" height="855" data-path="images/stripe/stripe-app-install-continue.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-install-continue.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=3a9b16306215e3054a3c433ffe744dd2 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-install-continue.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=26eae0ab46c075d5e6a9bc2a0a84cfa3 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-install-continue.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=db4ed3ce4dfd87a56e4ae26300289ebb 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-install-continue.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=647202cdab9fc3b1d2242394cbe9c033 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-install-continue.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=ff35f11d9cd7006160b9e820a7174047 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-install-continue.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=a69b1fcc97665ea903ae4f75caf0dd78 2500w" />
+      <img src="https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-install-continue.png?fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=779b38f857dd437d4b060c99be96284e" alt="Continue to app settings" data-og-width="2568" width="2568" data-og-height="1950" height="1950" data-path="images/stripe/stripe-app-install-continue.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-install-continue.png?w=280&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=7ed6f974a815e81deff792bc11f1a3e7 280w, https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-install-continue.png?w=560&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=0ad758fa5743f3fc772e0fd19c884812 560w, https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-install-continue.png?w=840&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=c5dace68a6ca2d7489c24b2595533479 840w, https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-install-continue.png?w=1100&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=ba4792423debcaf49347de597863ce40 1100w, https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-install-continue.png?w=1650&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=33fe844813182530f23535fadfb9759e 1650w, https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-install-continue.png?w=2500&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=10be037f25547551dfbffc3233197071 2500w" />
     </Frame>
   </Step>
 
@@ -59,19 +64,19 @@ Here's how you can install the Dub Stripe integration:
     In the app settings page, click on **Connect workspace** to connect your Stripe account with your Dub workspace.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-connect-workspace.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=e2a8612e59068a456bcbb8873d7b9a0d" alt="Connect Stripe to Dub" data-og-width="1712" width="1712" data-og-height="845" height="845" data-path="images/stripe/stripe-app-connect-workspace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-connect-workspace.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=156067c801c43c268b49cc58a17c24e9 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-connect-workspace.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=6a74dcebd4ffeadbefd352666c547973 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-connect-workspace.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=379e1750ddc85fe46c5b66c68a328c31 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-connect-workspace.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=46e7913f145fb710546e4f3457fde4ed 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-connect-workspace.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=bdfbf2b8a9f73a448395001bb8b1875e 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-connect-workspace.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=a8c4c559547d0f2a3f97bb5116b14e9e 2500w" />
+      <img src="https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-connect-workspace.png?fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=5fb5b64b7f1e3d4202276b608aa75263" alt="Connect Stripe to Dub" data-og-width="2206" width="2206" data-og-height="1490" height="1490" data-path="images/stripe/stripe-app-connect-workspace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-connect-workspace.png?w=280&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=d47ac51df0b6485634e68136cf247015 280w, https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-connect-workspace.png?w=560&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=e8babdccc479ca6c0c18414af6ea93ab 560w, https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-connect-workspace.png?w=840&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=c711e2c11d3f67ba905d7de67d255c79 840w, https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-connect-workspace.png?w=1100&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=18e2f4a5fdba22a66a67dd26c9cacfd8 1100w, https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-connect-workspace.png?w=1650&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=af87b9750925ceba2c91858790e76878 1650w, https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-connect-workspace.png?w=2500&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=7faabbbccf9e3ff976ce8a5b1e0f9af8 2500w" />
     </Frame>
 
     This will redirect you to the [Dub OAuth flow](/integrations/quickstart), where you can select the Dub workspace you want to connect to your Stripe account.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/select-dub-workspace.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=507a2f6a329b10b0f3362fed30b45a09" alt="Select the Dub workspace you want to connect to your Stripe account" data-og-width="1084" width="1084" data-og-height="771" height="771" data-path="images/stripe/select-dub-workspace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/select-dub-workspace.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=ea14fdaffbec53a73ec97f1709266102 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/select-dub-workspace.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=1df2007387e1be63e6995db483dc8258 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/select-dub-workspace.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=d60eff5c7e4412135145ec9289ac405d 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/select-dub-workspace.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=b4d52c066cea9eb96bc525eca0726d47 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/select-dub-workspace.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=f19c67d0498a229868f159678b35594e 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/select-dub-workspace.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=a1fb74026172f2906ddf1b859c187bf3 2500w" />
+      <img src="https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/select-dub-workspace.png?fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=b986d20c9ee907d984cc87cc3b6dd20b" alt="Select the Dub workspace you want to connect to your Stripe account" data-og-width="2396" width="2396" data-og-height="1632" height="1632" data-path="images/stripe/select-dub-workspace.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/select-dub-workspace.png?w=280&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=bea4ba44bfcd00f590689dd06dc5a932 280w, https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/select-dub-workspace.png?w=560&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=7bbbe9b621c656b47d8584cb1a149a7c 560w, https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/select-dub-workspace.png?w=840&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=52dd368651984177b702fe5f52de1f4c 840w, https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/select-dub-workspace.png?w=1100&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=1874b4a923c0a8d3ce3b5f8469c2adac 1100w, https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/select-dub-workspace.png?w=1650&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=1eb9bcfc8997f8636ad858946716514d 1650w, https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/select-dub-workspace.png?w=2500&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=ddb59fde05ed4dd14e484faf4b009b00 2500w" />
     </Frame>
 
     Once you click on **Authorize**, you will be redirected back to the Dub app settings page on Stripe, where you should see that the integration is now installed.
 
     <Frame>
-      <img src="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-installed.png?fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=f51caac85233a51918084c10962a4f33" alt="The Stripe integration is now installed" data-og-width="1057" width="1057" data-og-height="558" height="558" data-path="images/stripe/stripe-app-installed.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-installed.png?w=280&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=00c157698e1348fff6ceb734bdca8df6 280w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-installed.png?w=560&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=62dec831f32d81857bebd303b4468319 560w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-installed.png?w=840&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=5b6bd7596a3c48e274b4c47ba228b075 840w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-installed.png?w=1100&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=7d9d59cf969f93994a77054ff4093c54 1100w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-installed.png?w=1650&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=3e25e3100d51970498cebe3e7a6e39b9 1650w, https://mintcdn.com/dub/S5CJNHicyu5NWQ7r/images/stripe/stripe-app-installed.png?w=2500&fit=max&auto=format&n=S5CJNHicyu5NWQ7r&q=85&s=bbeb91808eb821ca8d3e5a098b93f9ea 2500w" />
+      <img src="https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-installed.png?fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=c745f70375a01b7630995938192eea7a" alt="The Stripe integration is now installed" data-og-width="1874" width="1874" data-og-height="1300" height="1300" data-path="images/stripe/stripe-app-installed.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-installed.png?w=280&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=d7ef733d19eac38b59c208a814eec25d 280w, https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-installed.png?w=560&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=ea85b2c6ef826ccc18f7c6916abe71ea 560w, https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-installed.png?w=840&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=d9ac7911238f9508ad6844a9fa4673df 840w, https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-installed.png?w=1100&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=963290b55b20e7bfcad27e95201fa439 1100w, https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-installed.png?w=1650&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=b381b589ef4417280aa8dd3e0827b266 1650w, https://mintcdn.com/dub/ndS7bf_otKoJnZYr/images/stripe/stripe-app-installed.png?w=2500&fit=max&auto=format&n=ndS7bf_otKoJnZYr&q=85&s=10d4a808d1dfcda19d82c33718a79a6b 2500w" />
     </Frame>
   </Step>
 </Steps>
@@ -103,7 +108,9 @@ Depending on your setup, there are a few ways you can track sales with the Dub S
 </Tip>
 
 <Note>
-  When using Stripe Payment Links, lead webhooks and [lead rewards](https://dub.co/help/article/partner-rewards#configuring-reward-types) are not created. Only sale events will be tracked.
+  When using Stripe Payment Links, lead and sale events are tracked but lead webhooks and [lead
+  rewards](https://dub.co/help/article/partner-rewards#configuring-reward-types)
+  will not be generated.
 </Note>
 
 If you're using [Stripe Payment Links](https://docs.stripe.com/payment-links), simply add a `?dub_client_reference_id=1` query parameter to your Stripe Payment Link when shortening it on Dub.
@@ -270,7 +277,7 @@ First, you'll need to complete the following prerequisites:
 3. [Install the @dub/analytics client-side SDK](/sdks/client-side/introduction)
 4. [Install the Dub server-side SDK](/sdks/overview#server-side-sdks)
 
-Then, when you [create a checkout session](https://docs.stripe.com/api/checkout/sessions/create), pass your customer's unique user ID in your database as the `dubCustomerId` value in the `metadata` field.
+Then, when you [create a checkout session](https://docs.stripe.com/api/checkout/sessions/create), pass your customer's unique user ID in your database as the `dubCustomerExternalId` value in the `metadata` field.
 
 ```javascript Node.js theme={null}
 import { stripe } from "@/lib/stripe";
@@ -290,14 +297,33 @@ const stripeSession = await stripe.checkout.sessions.create({
   mode: "subscription",
   client_reference_id: user.teamId,
   metadata: {
-    dubCustomerId: user.id, // the unique user ID of the customer in your database
+    dubCustomerExternalId: user.id, // the unique user ID of the customer in your database
   },
 });
 ```
 
 This way, when the customer completes their checkout session, Dub will automatically associate the checkout session details (invoice amount, currency, etc.) with the customer – and by extension, the original click event.
 
+<Warning>
+  If you're using [guest checkout](https://docs.stripe.com/payments/checkout/guest-customers) (e.g. with `mode: "payment"`), the `customer` field in the `checkout.session.completed` webhook event will be `null`, and sales won't be tracked on Dub.
+
+  To fix this, set `customer_creation` to `always` when [creating your checkout session](https://docs.stripe.com/api/checkout/sessions/create#create_checkout_session-customer_creation):
+
+  ```javascript Node.js theme={null}
+  const stripeSession = await stripe.checkout.sessions.create({
+    // ... other options
+    customer_creation: "always", // ensures a Stripe customer is created
+  });
+  ```
+</Warning>
+
 ### Option 3: Using Stripe Customers
+
+<Note>
+  When using Stripe Customers, lead and sale events are tracked but [lead
+  rewards](https://dub.co/help/article/partner-rewards#configuring-reward-types)
+  will not be generated.
+</Note>
 
 Alternatively, if you don't use Stripe's [checkout session creation flow](#option-2%3A-using-stripe-checkout-recommended), you can also pass the user ID and the click event ID (`dub_id`) in the [Stripe customer creation flow](https://docs.stripe.com/api/customers/create).
 
@@ -307,7 +333,7 @@ First, you'll need to complete the following prerequisites:
 2. [Enable conversion tracking for your links](/conversions/quickstart#step-1%3A-enable-conversion-tracking-for-your-links)
 3. [Install the @dub/analytics client-side SDK](/sdks/client-side/introduction)
 
-Then, when you [create a Stripe customer](https://docs.stripe.com/api/customers/create), pass the user's unique user ID in your database as the `dubCustomerId` value in the `metadata` field.
+Then, when you [create a Stripe customer](https://docs.stripe.com/api/customers/create), pass the user's unique user ID in your database as the `dubCustomerExternalId` value in the `metadata` field.
 
 ```javascript Node.js theme={null}
 import { stripe } from "@/lib/stripe";
@@ -324,13 +350,13 @@ await stripe.customers.create({
   email: user.email,
   name: user.name,
   metadata: {
-    dubCustomerId: user.id,
+    dubCustomerExternalId: user.id,
     dubClickId: dub_id,
   },
 });
 ```
 
-Alternatively, you can also pass the `dubCustomerId` and `dubClickId` values in the `metadata` field of the [Stripe customer update flow](https://docs.stripe.com/api/customers/update):
+Alternatively, you can also pass the `dubCustomerExternalId` and `dubClickId` values in the `metadata` field of the [Stripe customer update flow](https://docs.stripe.com/api/customers/update):
 
 ```javascript Node.js theme={null}
 import { stripe } from "@/lib/stripe";
@@ -345,13 +371,35 @@ const dub_id = req.headers.get("dub_id");
 
 await stripe.customers.update(user.id, {
   metadata: {
-    dubCustomerId: user.id,
+    dubCustomerExternalId: user.id,
     dubClickId: dub_id,
   },
 });
 ```
 
 This way, when the customer makes a purchase, Dub will automatically associate the purchase details (invoice amount, currency, etc.) with the original click event.
+
+## Tracking free trials
+
+Dub supports tracking [subscription free trials](https://docs.stripe.com/billing/subscriptions/trials) as lead events on Dub. This is useful for products with free trials since you might want to track trial activations as part of your attribution flow.
+
+To enable free trial tracking, go to your Stripe integration settings and enable the **Track Free Trials** option:
+
+<Frame>
+  <img src="https://mintcdn.com/dub/6rN5iSUCyHVhamFj/images/stripe/stripe-integration-settings.png?fit=max&auto=format&n=6rN5iSUCyHVhamFj&q=85&s=72035e5a76c4cf39cfb163b3ebb80846" alt="The Stripe integration settings page" data-og-width="1556" width="1556" data-og-height="774" height="774" data-path="images/stripe/stripe-integration-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/6rN5iSUCyHVhamFj/images/stripe/stripe-integration-settings.png?w=280&fit=max&auto=format&n=6rN5iSUCyHVhamFj&q=85&s=aac17b1763b88ade48e5379b7f3b8a1f 280w, https://mintcdn.com/dub/6rN5iSUCyHVhamFj/images/stripe/stripe-integration-settings.png?w=560&fit=max&auto=format&n=6rN5iSUCyHVhamFj&q=85&s=7fab354db3a790489feabfab2b7022e1 560w, https://mintcdn.com/dub/6rN5iSUCyHVhamFj/images/stripe/stripe-integration-settings.png?w=840&fit=max&auto=format&n=6rN5iSUCyHVhamFj&q=85&s=7613cb6507fdfba39bc99a064ddc3036 840w, https://mintcdn.com/dub/6rN5iSUCyHVhamFj/images/stripe/stripe-integration-settings.png?w=1100&fit=max&auto=format&n=6rN5iSUCyHVhamFj&q=85&s=e2ee07c452f809d5c7120be76de4e2a4 1100w, https://mintcdn.com/dub/6rN5iSUCyHVhamFj/images/stripe/stripe-integration-settings.png?w=1650&fit=max&auto=format&n=6rN5iSUCyHVhamFj&q=85&s=d4ecc21e01625138d4e727fe6a955904 1650w, https://mintcdn.com/dub/6rN5iSUCyHVhamFj/images/stripe/stripe-integration-settings.png?w=2500&fit=max&auto=format&n=6rN5iSUCyHVhamFj&q=85&s=5e8ec24f5bbfaa85f4d92cb2a87ca329 2500w" />
+</Frame>
+
+Optionally, you can also configure the integration to track the [provisioned quantity](https://docs.stripe.com/billing/subscriptions/quantities) in the subscription as separate lead events.
+
+This is useful if you have a [lead-based reward](https://dub.co/help/article/partner-rewards#configuring-reward-types) for your [partner program](https://dub.co/partners) and want to reward partners for each unit of the subscription that their customers purchase (e.g. \$50 per lead/provisioned seat).
+
+<Tip>
+  To differentiate between [manually tracked lead events](/conversions/leads/introduction) and free trial lead events for lead reward types, use the `Customer` `Source` [reward condition](https://dub.co/help/article/partner-rewards#adding-reward-conditions) to filter for `free trial` lead events:
+
+  <Frame>
+    <img src="https://mintcdn.com/dub/6rN5iSUCyHVhamFj/images/stripe/lead-reward-free-trials.png?fit=max&auto=format&n=6rN5iSUCyHVhamFj&q=85&s=5b82fa83f75ea165b0b1c6ca726b8c4b" alt="The lead reward free trial condition" data-og-width="2014" width="2014" data-og-height="1158" height="1158" data-path="images/stripe/lead-reward-free-trials.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/dub/6rN5iSUCyHVhamFj/images/stripe/lead-reward-free-trials.png?w=280&fit=max&auto=format&n=6rN5iSUCyHVhamFj&q=85&s=99e7162d36299682fc350753b3ed80ff 280w, https://mintcdn.com/dub/6rN5iSUCyHVhamFj/images/stripe/lead-reward-free-trials.png?w=560&fit=max&auto=format&n=6rN5iSUCyHVhamFj&q=85&s=973a8325bce280637d6d1a6972e8ff23 560w, https://mintcdn.com/dub/6rN5iSUCyHVhamFj/images/stripe/lead-reward-free-trials.png?w=840&fit=max&auto=format&n=6rN5iSUCyHVhamFj&q=85&s=8ca2781234118978c340926abf56178f 840w, https://mintcdn.com/dub/6rN5iSUCyHVhamFj/images/stripe/lead-reward-free-trials.png?w=1100&fit=max&auto=format&n=6rN5iSUCyHVhamFj&q=85&s=936940d37370a6bb414d5a1522875295 1100w, https://mintcdn.com/dub/6rN5iSUCyHVhamFj/images/stripe/lead-reward-free-trials.png?w=1650&fit=max&auto=format&n=6rN5iSUCyHVhamFj&q=85&s=3cc7cd833cb27e20d5f34c41c9626057 1650w, https://mintcdn.com/dub/6rN5iSUCyHVhamFj/images/stripe/lead-reward-free-trials.png?w=2500&fit=max&auto=format&n=6rN5iSUCyHVhamFj&q=85&s=9856dc3d61ab6cbd09644e8a12dc3999 2500w" />
+  </Frame>
+</Tip>
 
 ## Currency conversion support
 
@@ -414,14 +462,14 @@ For **checkout sessions**, Dub calculates the sale amount by subtracting the tax
 
 ```javascript  theme={null}
 // Sale amount calculation for checkout sessions
-saleAmount = amount_total - total_details.amount_tax
+saleAmount = amount_total - total_details.amount_tax;
 ```
 
 For **invoices**, Dub uses the `total_excluding_tax` field when available:
 
 ```javascript  theme={null}
 // Sale amount calculation for invoices
-saleAmount = total_excluding_tax ?? amount_paid
+saleAmount = total_excluding_tax ?? amount_paid;
 ```
 
 This ensures that the sale amounts recorded in Dub reflect the actual revenue before taxes, providing more accurate metrics for:
@@ -431,18 +479,10 @@ This ensures that the sale amounts recorded in Dub reflect the actual revenue be
 * Analytics and conversion metrics
 
 <Note>
-  Tax amounts are automatically excluded from all sale events tracked through the Stripe integration, including one-time purchases, subscriptions, and recurring invoices.
+  Tax amounts are automatically excluded from all sale events tracked through
+  the Stripe integration, including one-time purchases, subscriptions, and
+  recurring invoices.
 </Note>
-
-## Free trials and \$0 sales
-
-Dub does not track free trials or \$0 sale events from Stripe. This means:
-
-* Checkout sessions with `amount_total` of `0` will not be recorded as sale events
-* Invoices with `amount_paid` of `0` will not be tracked
-* Free trial periods will not generate sale events until the first paid invoice
-
-Sale events will only be tracked when actual revenue is generated (i.e., when the customer is charged a non-zero amount).
 
 ## View conversion results
 

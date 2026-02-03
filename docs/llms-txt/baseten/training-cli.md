@@ -1,200 +1,510 @@
 # Source: https://docs.baseten.co/reference/cli/training/training-cli.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Training CLI reference
 
 > Deploy, manage, and monitor training jobs using the Truss CLI.
 
-# Initialize Training Jobs
+The `truss train` command provides subcommands for managing the full training job lifecycle.
 
-## `init`
+```sh  theme={"system"}
+truss train [COMMAND] [OPTIONS]
+```
+
+### Universal options
+
+The following options are available for all `truss train` commands:
+
+* `--help`: Show help message and exit.
+* `--non-interactive`: Disable interactive prompts (for CI/automated environments).
+* `--remote TEXT`: Name of the remote in `.trussrc`.
+
+***
+
+## init
+
+Initialize a training project from templates or create an empty project.
 
 ```sh  theme={"system"}
 truss train init [OPTIONS]
 ```
 
-Initializes files needed to launch a training job. If no options passed, initializes an empty training project.
+### Options
 
-**Options:**
+<ParamField body="--examples" type="string">
+  Template name or comma-separated list of templates to initialize. See the [ML Cookbook](https://github.com/basetenlabs/ml-cookbook) for available examples.
+</ParamField>
 
-* `--examples`: A single example or comma separated list of verified [examples](https://github.com/basetenlabs/ml-cookbook/tree/main/examples).
-* `--target-directory`: Location to initialize the example/s or empty training project.
+<ParamField body="--target-directory" type="string">
+  Directory to initialize the project in. Defaults to current directory.
+</ParamField>
+
+<ParamField body="--list-examples">
+  List all available example templates.
+</ParamField>
+
+### Examples
+
+Initialize a project from a template:
+
+```sh  theme={"system"}
+truss train init --examples llama-8b-lora-unsloth
+```
+
+Initialize multiple templates:
+
+```sh  theme={"system"}
+truss train init --examples llama-8b-lora-unsloth,qwen3-8b-lora-dpo-trl
+```
+
+List available templates:
+
+```sh  theme={"system"}
+truss train init --list-examples
+```
+
+Create an empty training project:
+
+```sh  theme={"system"}
+truss train init
+```
 
 ***
 
-# Deploy Training Jobs
+## push
 
-## `push`
+Submit and run a training job.
 
 ```sh  theme={"system"}
 truss train push [OPTIONS] CONFIG
 ```
 
-Deploys and runs a training job.
+### Arguments
 
-* `CONFIG`: Path to a training configuration file.
+<ParamField body="CONFIG" type="string" required>
+  Path to the training configuration file (e.g., `config.py`).
+</ParamField>
 
-**Options:**
+### Options
 
-* `--tail`: Tail status and logs after pushing the training job.
-* `--help`: Show this message and exit.
-* `--remote` (TEXT): Name of the remote in .trussrc to push to.
+<ParamField body="--tail">
+  Stream status and logs after submitting the job.
+</ParamField>
+
+<ParamField body="--job-name" type="string">
+  Name for the training job.
+</ParamField>
+
+<ParamField body="--team" type="string">
+  Team name for the training project. If not specified, Truss infers the team or prompts for selection.
+</ParamField>
+
+<Note>
+  The `--team` flag is only available if your organization has teams enabled. [Contact us](mailto:support@baseten.co) to enable teams, or see [Teams](/organization/teams) for more information.
+</Note>
+
+### Examples
+
+Submit a training job:
+
+```sh  theme={"system"}
+truss train push config.py
+```
+
+Submit and stream logs:
+
+```sh  theme={"system"}
+truss train push config.py --tail
+```
+
+Submit to a specific team:
+
+```sh  theme={"system"}
+truss train push config.py --team my-team-name
+```
+
+Submit with a custom job name:
+
+```sh  theme={"system"}
+truss train push config.py --job-name fine-tune-v1
+```
 
 ***
 
-# Monitor Training Jobs
+## logs
 
-## `logs`
+Fetch and stream logs from a training job.
 
 ```sh  theme={"system"}
 truss train logs [OPTIONS]
 ```
 
-Fetch and display logs for a training job.
+### Options
 
-**Options:**
+<ParamField body="--job-id" type="string">
+  Job ID to fetch logs from.
+</ParamField>
 
-* `--job-id` (TEXT): Job ID to fetch logs from.
-* `--tail`: Continuously stream new logs.
-* `--help`: Show this message and exit.
-* `--remote` (TEXT): Name of the remote in .trussrc.
+<ParamField body="--project" type="string">
+  Project name or project ID.
+</ParamField>
 
-## `metrics`
+<ParamField body="--project-id" type="string">
+  Project ID.
+</ParamField>
+
+<ParamField body="--tail">
+  Continuously stream new logs.
+</ParamField>
+
+### Examples
+
+Stream logs for a specific job:
+
+```sh  theme={"system"}
+truss train logs --job-id abc123 --tail
+```
+
+View logs for a job without streaming:
+
+```sh  theme={"system"}
+truss train logs --job-id abc123
+```
+
+***
+
+## metrics
+
+View real-time metrics for a training job including CPU, GPU, and storage usage.
 
 ```sh  theme={"system"}
 truss train metrics [OPTIONS]
 ```
 
-Get metrics for a training job.
+### Options
 
-**Options:**
+<ParamField body="--job-id" type="string">
+  Job ID to fetch metrics from.
+</ParamField>
 
-* `--job-id` (TEXT): Job ID to fetch metrics from.
-* `--help`: Show this message and exit.
-* `--remote` (TEXT): Name of the remote in .trussrc.
+<ParamField body="--project" type="string">
+  Project name or project ID.
+</ParamField>
 
-## `view`
+<ParamField body="--project-id" type="string">
+  Project ID.
+</ParamField>
+
+### Examples
+
+View metrics for a specific job:
+
+```sh  theme={"system"}
+truss train metrics --job-id abc123
+```
+
+***
+
+## view
+
+List training projects and jobs, or view details for a specific job.
 
 ```sh  theme={"system"}
 truss train view [OPTIONS]
 ```
 
-List and view training jobs.
+### Options
 
-**Options:**
+<ParamField body="--job-id" type="string">
+  View details for a specific training job.
+</ParamField>
 
-* `--project` (TEXT): View training jobs for a specific project (ID or name).
-* `--job-id` (TEXT): View details of a specific training job.
-* `--help`: Show this message and exit.
-* `--remote` (TEXT): Name of the remote in .trussrc.
+<ParamField body="--project" type="string">
+  View jobs for a specific project (name or ID).
+</ParamField>
+
+<ParamField body="--project-id" type="string">
+  View jobs for a specific project ID.
+</ParamField>
+
+### Examples
+
+List all training projects:
+
+```sh  theme={"system"}
+truss train view
+```
+
+View jobs in a specific project:
+
+```sh  theme={"system"}
+truss train view --project my-project
+```
+
+View details for a specific job:
+
+```sh  theme={"system"}
+truss train view --job-id abc123
+```
 
 ***
 
-# Manage Training Jobs
+## stop
 
-## `stop`
+Stop a running training job.
 
 ```sh  theme={"system"}
 truss train stop [OPTIONS]
 ```
 
-Stop a running training job.
+### Options
 
-**Options:**
+<ParamField body="--job-id" type="string">
+  Job ID to stop.
+</ParamField>
 
-* `--project` (TEXT): Specify the project (ID or name) to stop a training job from.
-* `--job-id` (TEXT): ID of the job to stop.
-* `--all`: Stop all running jobs.
-* `--help`: Show this message and exit.
-* `--remote` (TEXT): Name of the remote in .trussrc.
+<ParamField body="--project" type="string">
+  Project name or project ID.
+</ParamField>
 
-# Manage Training Cache
+<ParamField body="--project-id" type="string">
+  Project ID.
+</ParamField>
 
-The training cache is scoped to a specific training project. The CLI allows you to see a summary of the contents in the cache to
-help you manage your storage.
+<ParamField body="--all">
+  Stop all running jobs. Prompts for confirmation.
+</ParamField>
 
-## `cache summarize`
+### Examples
 
-```sh  theme={"system"}
-truss train cache summarize <project_name or project_id> [OPTIONS]
-```
-
-View the contents of the training cache in a table. Optionally sort by different column names (e.g. modified, size, etc.)
-
-**Options:**
-
-* `--sort` (TEXT): column to sort by
-* `--order` (TEXT): Ascending (asc) or descending (desc) order for sorting
-* `--remote` (TEXT): Name of the remote in .trussrc.
-
-# Manage Checkpoints
-
-## `deploy_checkpoints`
+Stop a specific job:
 
 ```sh  theme={"system"}
-truss train deploy_checkpoints [OPTIONS]
+truss train stop --job-id abc123
 ```
 
-Deploy model checkpoints from a training job.
-
-## `get_checkpoint_urls`
+Stop all running jobs:
 
 ```sh  theme={"system"}
-truss train get_checkpoint_urls [OPTIONS]
+truss train stop --all
 ```
 
-Get a list of URL's to checkpoint artifacts for a training job
+***
 
-**Options:**
+## recreate
 
-* `--job-id` (TEXT): Job ID containing the checkpoints.
-* `--help`: Show this message and exit.
-* `--remote` (TEXT): Name of the remote in .trussrc.
-
-**Options:**
-
-* `--project` (TEXT): Project (ID or name) name containing the checkpoints.
-* `--job-id` (TEXT): Job ID containing the checkpoints.
-* `--config` (TEXT): Path to a Python file defining a DeployCheckpointsConfig.
-* `--dry-run`: Generate a truss config without deploying.
-* `--help`: Show this message and exit.
-* `--remote` (TEXT): Name of the remote in .trussrc.
-
-## `recreate`
+Recreate an existing training job with the same configuration.
 
 ```sh  theme={"system"}
 truss train recreate [OPTIONS]
 ```
 
-Recreate an existing training job from an existing job ID. If no job ID is provided, it will default to the last created active training job and ask for confirmation first.
+### Options
 
-**Options:**
+<ParamField body="--job-id" type="string">
+  Job ID of the training job to recreate. If not provided, defaults to the last created job.
+</ParamField>
 
-* `--job-id` (TEXT): Existing Job ID of Training Job to recreate.
-* `--tail`: Tail status and logs after recreation.
-* `--help`: Show this message and exit.
-* `--remote` (TEXT): Name of the remote in .trussrc.
+<ParamField body="--tail">
+  Stream status and logs after recreating the job.
+</ParamField>
 
-## `download`
+### Examples
+
+Recreate a specific job:
+
+```sh  theme={"system"}
+truss train recreate --job-id abc123
+```
+
+Recreate and stream logs:
+
+```sh  theme={"system"}
+truss train recreate --job-id abc123 --tail
+```
+
+***
+
+## download
+
+Download training job artifacts to your local machine.
 
 ```sh  theme={"system"}
 truss train download [OPTIONS]
 ```
 
-Download training job artifacts.
+### Options
 
-**Options:**
+<ParamField body="--job-id" type="string" required>
+  Job ID to download artifacts from.
+</ParamField>
 
-* `--job-id` (TEXT): Job ID to download artifacts from. (Required)
-* `--target-directory` (PATH): Directory where the file should be downloaded. Defaults to current directory.
-* `--no-unzip`: Instructs truss to not unzip the compressed file upon download.
-* `--help`: Show this message and exit.
-* `--remote` (TEXT): Name of the remote in .trussrc.
+<ParamField body="--target-directory" type="path">
+  Directory to download files to. Defaults to current directory.
+</ParamField>
 
-# Ignoring files and folders
+<ParamField body="--no-unzip">
+  Keep the compressed archive without extracting.
+</ParamField>
 
-To ignore specific files or folders, place a `.truss_ignore` file in the root directory of your project. Define the files or folders you want `truss` to ignore.
+### Examples
 
-These can be absolute paths or paths relative to the location of the `.truss_ignore`
+Download artifacts to current directory:
+
+```sh  theme={"system"}
+truss train download --job-id abc123
+```
+
+Download to a specific directory:
+
+```sh  theme={"system"}
+truss train download --job-id abc123 --target-directory ./downloads
+```
+
+Download without extracting:
+
+```sh  theme={"system"}
+truss train download --job-id abc123 --no-unzip
+```
+
+***
+
+## deploy\_checkpoints
+
+Deploy a trained model checkpoint to Baseten's inference platform.
+
+```sh  theme={"system"}
+truss train deploy_checkpoints [OPTIONS]
+```
+
+### Options
+
+<ParamField body="--job-id" type="string">
+  Job ID containing the checkpoints to deploy.
+</ParamField>
+
+<ParamField body="--project" type="string">
+  Project name or project ID.
+</ParamField>
+
+<ParamField body="--project-id" type="string">
+  Project ID.
+</ParamField>
+
+<ParamField body="--config" type="string">
+  Path to a Python file defining a `DeployCheckpointsConfig`.
+</ParamField>
+
+<ParamField body="--dry-run">
+  Generate a Truss config without deploying. Useful for previewing the deployment configuration.
+</ParamField>
+
+<ParamField body="--truss-config-output-dir" type="string">
+  Path to output the generated Truss config. Defaults to `truss_configs/<model_version_name>_<model_version_id>`.
+</ParamField>
+
+### Examples
+
+Deploy checkpoints interactively:
+
+```sh  theme={"system"}
+truss train deploy_checkpoints
+```
+
+Deploy checkpoints from a specific job:
+
+```sh  theme={"system"}
+truss train deploy_checkpoints --job-id abc123
+```
+
+Preview deployment without deploying:
+
+```sh  theme={"system"}
+truss train deploy_checkpoints --job-id abc123 --dry-run
+```
+
+***
+
+## get\_checkpoint\_urls
+
+Get presigned URLs for checkpoint artifacts.
+
+```sh  theme={"system"}
+truss train get_checkpoint_urls [OPTIONS]
+```
+
+### Options
+
+<ParamField body="--job-id" type="string">
+  Job ID containing the checkpoints.
+</ParamField>
+
+### Examples
+
+Get checkpoint URLs for a job:
+
+```sh  theme={"system"}
+truss train get_checkpoint_urls --job-id abc123
+```
+
+***
+
+## cache summarize
+
+View a summary of the training cache for a project.
+
+```sh  theme={"system"}
+truss train cache summarize [OPTIONS] PROJECT
+```
+
+### Arguments
+
+<ParamField body="PROJECT" type="string" required>
+  Project name or project ID.
+</ParamField>
+
+### Options
+
+<ParamField body="--sort" type="string">
+  Sort files by column. Options: `filepath`, `size`, `modified`, `type`, `permissions`.
+</ParamField>
+
+<ParamField body="--order" type="string">
+  Sort order: `asc` (ascending) or `desc` (descending).
+</ParamField>
+
+<ParamField body="--output-format, -o" type="string">
+  Output format: `cli-table` (default), `csv`, or `json`.
+</ParamField>
+
+### Examples
+
+View cache summary:
+
+```sh  theme={"system"}
+truss train cache summarize my-project
+```
+
+Sort by size descending:
+
+```sh  theme={"system"}
+truss train cache summarize my-project --sort size --order desc
+```
+
+Export as JSON:
+
+```sh  theme={"system"}
+truss train cache summarize my-project --output-format json
+```
+
+***
+
+## Ignore files and folders
+
+Create a `.truss_ignore` file in your project root to exclude files from upload. Uses `.gitignore` syntax.
 
 ```plaintext .truss_ignore theme={"system"}
 # Python cache files
@@ -205,9 +515,11 @@ __pycache__/
 
 # Type checking
 .mypy_cache/
+
 # Testing
 .pytest_cache/
 
-# Some large files
+# Large data files
 data/
+*.bin
 ```

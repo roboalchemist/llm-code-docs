@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/write-magic
+
 # st.write and magic commands
 
 Streamlit has two easy ways to display information into your app, which should typically be the first thing you try: `st.write` and magic.

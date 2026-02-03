@@ -1,8 +1,42 @@
 # Source: https://docs.asapp.com/changelog/generativeagent.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # GenerativeAgent Updates
 
-> New updates and improvements for the GenerativeAgent
+> New updates and improvements for GenerativeAgent
+
+<Update label="2025-12-12 - Bricks">
+  ## Bricks
+
+  **Bricks** enable you to create reusable prompt content that stays synchronized across your GenerativeAgent configuration.
+
+  With Bricks, you can:
+
+  * Author and reuse modular prompts across multiple tasks
+  * Update prompt content without redeploying tasks
+  * Maintain consistency across customer interactions
+
+  <Frame>
+    <img width="500px" src="https://mintcdn.com/asapp/aWb0zjKB3QGaXsPi/images/generativeagent/bricks-overview.png?fit=max&auto=format&n=aWb0zjKB3QGaXsPi&q=85&s=584c5a111ef6f407af12e3d5a222f0c5" alt="Bricks overview showing reusable prompt fragments" data-og-width="2893" data-og-height="1803" data-path="images/generativeagent/bricks-overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/aWb0zjKB3QGaXsPi/images/generativeagent/bricks-overview.png?w=280&fit=max&auto=format&n=aWb0zjKB3QGaXsPi&q=85&s=ce9504aaaa52c5b74ddfef81b82c866f 280w, https://mintcdn.com/asapp/aWb0zjKB3QGaXsPi/images/generativeagent/bricks-overview.png?w=560&fit=max&auto=format&n=aWb0zjKB3QGaXsPi&q=85&s=664b1b4aed9c8ca61d06eb77a9363885 560w, https://mintcdn.com/asapp/aWb0zjKB3QGaXsPi/images/generativeagent/bricks-overview.png?w=840&fit=max&auto=format&n=aWb0zjKB3QGaXsPi&q=85&s=6d8e3cabffe8dd3abc9c61fc4add18ea 840w, https://mintcdn.com/asapp/aWb0zjKB3QGaXsPi/images/generativeagent/bricks-overview.png?w=1100&fit=max&auto=format&n=aWb0zjKB3QGaXsPi&q=85&s=7b55fc8874c7631801864d3fa6a64bbb 1100w, https://mintcdn.com/asapp/aWb0zjKB3QGaXsPi/images/generativeagent/bricks-overview.png?w=1650&fit=max&auto=format&n=aWb0zjKB3QGaXsPi&q=85&s=c872c30cab4ddc048c091ea0b589c418 1650w, https://mintcdn.com/asapp/aWb0zjKB3QGaXsPi/images/generativeagent/bricks-overview.png?w=2500&fit=max&auto=format&n=aWb0zjKB3QGaXsPi&q=85&s=63c97f8d9c1197903f23f3e18cb2d514 2500w" />
+  </Frame>
+
+  <Card title="Bricks" href="/generativeagent/configuring/tasks-and-functions/bricks">
+    Learn how to create, configure, and use Bricks in your GenerativeAgent tasks.
+  </Card>
+</Update>
+
+<Update label="2025-11-06 - Zendesk KB Import">
+  ## Zendesk KB Import
+
+  **Zendesk KB Import** allows you to import articles from your Zendesk Knowledge Base into your GenerativeAgent Knowledge Base.
+
+  <Card title="Zendesk KB Import" href="/generativeagent/configuring/connecting-your-knowledge-base#import-from-zendesk-kb">
+    Learn how to import articles from your Zendesk Knowledge Base into your GenerativeAgent Knowledge Base.
+  </Card>
+</Update>
 
 <Update label="2025-06-17 - Evaluation for Scenario Testing">
   ## Evaluation for Scenario Testing

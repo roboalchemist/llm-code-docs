@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/pm/cli/audit.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # bun audit
 
 > Check your installed packages for known security vulnerabilities

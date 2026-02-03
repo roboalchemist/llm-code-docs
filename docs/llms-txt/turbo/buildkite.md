@@ -1,9 +1,6 @@
 # Source: https://turbo.build/guides/ci-vendors/buildkite.md
 
 # Buildkite
-Description: Learn how to use Buildkite with Turborepo.
-
-import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
 
 The following example shows how to use Turborepo with [Buildkite](https://buildkite.com/).
 
@@ -26,7 +23,7 @@ And a `turbo.json`:
 
 ```json title="./turbo.json"
 {
-  "$schema": "https://turborepo.com/schema.json",
+  "$schema": "https://turborepo.dev/schema.json",
   "tasks": {
     "build": {
       "outputs": [".next/**", "!.next/cache/**"],
@@ -41,7 +38,7 @@ And a `turbo.json`:
 
 Create a file called `.buildkite/pipeline.yml` in your repository with the following contents:
 
-<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
+<PackageManagerTabs>
   <Tab value="pnpm">
     ```yaml title=".buildkite/pipeline.yml"
     steps:
@@ -101,7 +98,7 @@ Create a file called `.buildkite/pipeline.yml` in your repository with the follo
           bun run build
     ```
   </Tab>
-</Tabs>
+</PackageManagerTabs>
 
 ## Create a Pipeline
 
@@ -117,7 +114,7 @@ To create your pipeline in the Buildkite dashboard, you'll need to first upload 
 
 ```yaml title=".buildkite/pipeline.yml"
 steps:
-  - label: ':pipeline:'
+  - label: ":pipeline:"
     command: buildkite-agent pipeline upload
 ```
 
@@ -136,7 +133,7 @@ To use Vercel Remote Caching, you can get the value of these variables in a few 
 
 1. Create a Scoped Access Token to your account in the [Vercel Dashboard](https://vercel.com/account/tokens). Copy the value to a safe place. You'll need it in a moment.
 
-   ![Vercel Access Tokens](/images/docs/vercel-create-token.png)
+   <img alt="Vercel Access Tokens" src={__img0} placeholder="blur" />
 
 2. Obtain [your Team URL](https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fsettings\&title=Find+Team+URL) and copy its value as well. Both values will be used in the next step.
 
@@ -146,7 +143,7 @@ To use Vercel Remote Caching, you can get the value of these variables in a few 
 
    ```yaml title=".buildkite/pipeline.yml"
    steps:
-     - label: ':test_tube: Test'
+     - label: ":test_tube: Test"
        command: |
          npm install
          npm test
@@ -156,7 +153,7 @@ To use Vercel Remote Caching, you can get the value of these variables in a few 
                TURBO_TOKEN: TURBO_TOKEN
                TURBO_TEAM: TURBO_TEAM
 
-     - label: ':hammer: Build'
+     - label: ":hammer: Build"
        command: |
          npm install
          npm run build
@@ -168,3 +165,7 @@ To use Vercel Remote Caching, you can get the value of these variables in a few 
    ```
 
    Commit and push these changes to your repository, and on the next pipeline run, the secrets will be applied and Vercel Remote Caching will be active.
+
+---
+
+[View full sitemap](/sitemap.md)

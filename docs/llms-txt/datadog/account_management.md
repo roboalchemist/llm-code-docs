@@ -4,7 +4,6 @@
 title: Account Management
 description: Manage your Datadog account and organization
 breadcrumbs: Docs > Account Management
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Account Management

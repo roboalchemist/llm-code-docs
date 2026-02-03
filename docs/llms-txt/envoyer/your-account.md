@@ -1,5 +1,9 @@
 # Source: https://docs.envoyer.io/accounts/your-account.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.envoyer.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Your Account
 
 > Learn how to manage your Envoyer account.
@@ -20,9 +24,9 @@ You can add Two-Factor Authentication (2FA) to your account from the [Account pa
 
 You can sign up to any one of Envoyer's three subscription plans:
 
-*   **Basic:** 10 Projects, 10 Minute Deploy Time
-*   **Plus:** 20 Projects, 10 Minute Deploy Time
-*   **Premium:** Unlimited Projects, 15 Minute Deploy Time
+* **Basic:** 10 Projects, 10 Minute Deploy Time
+* **Plus:** 20 Projects, 10 Minute Deploy Time
+* **Premium:** Unlimited Projects, 15 Minute Deploy Time
 
 You may join Envoyer for free as a collaborator on other projects. If you need to manage your own projects in the future, you can upgrade your account at any time.
 

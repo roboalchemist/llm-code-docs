@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/runtime/templating/create.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # bun create
 
 > Create a new Bun project from a React component, a `create-<template>` npm package, a GitHub repo, or a local template
@@ -13,14 +17,14 @@
 
 Template a new Bun project with `bun create`. This is a flexible command that can be used to create a new project from a React component, a `create-<template>` npm package, a GitHub repo, or a local template.
 
-If you're looking to create a brand new empty project, use [`bun init`](https://bun.com/docs/cli/init).
+If you're looking to create a brand new empty project, use [`bun init`](/runtime/templating/init).
 
 ## From a React component
 
 `bun create ./MyComponent.tsx` turns an existing React component into a complete dev environment with hot reload and production builds in one command.
 
 ```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
-$ bun create ./MyComponent.jsx # .tsx also supported
+bun create ./MyComponent.jsx # .tsx also supported
 ```
 
 <Frame>
@@ -37,11 +41,11 @@ $ bun create ./MyComponent.jsx # .tsx also supported
 
 When you run `bun create <component>`, Bun:
 
-1. Uses [Bun's JavaScript bundler](https://bun.com/docs/bundler) to analyze your module graph.
+1. Uses [Bun's JavaScript bundler](/bundler) to analyze your module graph.
 2. Collects all the dependencies needed to run the component.
 3. Scans the exports of the entry point for a React component.
 4. Generates a `package.json` file with the dependencies and scripts needed to run the component.
-5. Installs any missing dependencies using [`bun install --only-missing`](https://bun.com/docs/cli/install).
+5. Installs any missing dependencies using [`bun install --only-missing`](/pm/cli/install).
 6. Generates the following files:
    * `${component}.html`
    * `${component}.client.tsx` (entry point for the frontend)
@@ -54,7 +58,7 @@ When you run `bun create <component>`, Bun:
 
 When you run `bun create <component>`, Bun scans your JSX/TSX file for TailwindCSS class names (and any files it imports). If it detects TailwindCSS class names, it will add the following dependencies to your `package.json`:
 
-```json package.json icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```json package.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
   "dependencies": {
     "tailwindcss": "^4",

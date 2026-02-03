@@ -2,340 +2,217 @@
 
 # Source: https://docs.pinecone.io/reference/api/2025-10/admin-assistant/get_token.md
 
-# Source: https://docs.pinecone.io/reference/api/2025-10/admin/get_token.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.pinecone.io/reference/api/2025-10/admin-assistant/get_token.md
-
-# Source: https://docs.pinecone.io/reference/api/2025-10/admin/get_token.md
-
-# Source: https://docs.pinecone.io/reference/api/2025-10/admin-assistant/get_token.md
-
-# Source: https://docs.pinecone.io/reference/api/2025-04/admin/get_token.md
-
-# Source: https://docs.pinecone.io/reference/api/2025-04/admin-assistant/get_token.md
-
-# Get an access token
+# Create an access token
 
 > Obtain an access token for a service account using the OAuth2 client credentials flow. An access token is needed to authorize requests to the Pinecone Admin API.
 The host domain for OAuth endpoints is `login.pinecone.io`.
 
 
+<RequestExample>
+  ```bash curl theme={null}
+  curl "https://login.pinecone.io/oauth/token" \ # Note: Base URL is login.pinecone.io
+  	-H "Content-Type: application/json" \
+  	-d '{
+  		"grant_type": "client_credentials",
+  		"client_id": "YOUR_CLIENT_ID",
+  		"client_secret": "YOUR_CLIENT_SECRET",
+  		"audience": "https://api.pinecone.io/"
+  	}'
+  ```
+</RequestExample>
+
+<ResponseExample>
+  ```json curl theme={null}
+  {
+      "access_token":"YOUR_ACCESS_TOKEN",
+      "expires_in":86400,
+      "token_type":"Bearer"
+  }
+  ```
+</ResponseExample>
+
+
 ## OpenAPI
 
-````yaml https://raw.githubusercontent.com/pinecone-io/pinecone-api/refs/heads/main/2025-04/oauth_2025-04.oas.yaml post /oauth/token
+````yaml https://raw.githubusercontent.com/pinecone-io/pinecone-api/refs/heads/main/2025-10/oauth_2025-10.oas.yaml post /oauth/token
+openapi: 3.0.3
+info:
+  title: Pinecone OAuth API
+  description: |
+    Provides an API for authenticating with Pinecone.
+  contact:
+    name: Pinecone Support
+    url: https://support.pinecone.io
+    email: support@pinecone.io
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  version: 2025-10
+servers:
+  - url: https://login.pinecone.io
+security: []
+tags:
+  - name: OAuth
+    description: Authentication using the OAuth2 protocol.
 paths:
-  path: /oauth/token
-  method: post
-  servers:
-    - url: https://login.pinecone.io
-  request:
-    security: []
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              client_id:
-                allOf:
-                  - description: |
-                      The service account's client ID.
-                    type: string
-              client_secret:
-                allOf:
-                  - description: |
-                      The service account's client secret.
-                    type: string
-              grant_type:
-                allOf:
-                  - description: |
-                      The type of grant to use.
-                    type: string
-                    enum:
-                      - client_credentials
-              audience:
-                allOf:
-                  - description: |
-                      The audience for the token.
-                    type: string
-                    enum:
-                      - https://api.pinecone.io/
-            required: true
-            description: A request to obtain an access token.
-            refIdentifier: '#/components/schemas/TokenRequest'
-            requiredProperties:
-              - client_id
-              - client_secret
-              - grant_type
-              - audience
-            example:
-              audience: https://api.pinecone.io/
-              client_id: I1r8m4i6jX9JTFYk0t3q85HWzciEgcA5
-              client_secret: EriX...j2ci
-              grant_type: client_credentials
-        examples:
-          example:
-            value:
-              audience: https://api.pinecone.io/
-              client_id: I1r8m4i6jX9JTFYk0t3q85HWzciEgcA5
-              client_secret: EriX...j2ci
-              grant_type: client_credentials
+  /oauth/token:
+    post:
+      tags:
+        - OAuth
+      summary: Create an access token
+      description: >
+        Obtain an access token for a service account using the OAuth2 client
+        credentials flow. An access token is needed to authorize requests to the
+        Pinecone Admin API.
+
+        The host domain for OAuth endpoints is `login.pinecone.io`.
+      operationId: get_token
+      parameters:
+        - in: header
+          name: X-Pinecone-Api-Version
+          description: Required date-based version header
+          required: true
+          schema:
+            default: 2025-10
+            type: string
+          style: simple
+      requestBody:
         description: |
           A request to exchange client credentials for an access token.
-      application/x-www-form-urlencoded:
-        schemaArray:
-          - type: object
-            properties:
-              client_id:
-                allOf:
-                  - description: |
-                      The service account's client ID.
-                    type: string
-              client_secret:
-                allOf:
-                  - description: |
-                      The service account's client secret.
-                    type: string
-              grant_type:
-                allOf:
-                  - description: |
-                      The type of grant to use.
-                    type: string
-                    enum:
-                      - client_credentials
-              audience:
-                allOf:
-                  - description: |
-                      The audience for the token.
-                    type: string
-                    enum:
-                      - https://api.pinecone.io/
-            required: true
-            description: A request to obtain an access token.
-            requiredProperties:
-              - client_id
-              - client_secret
-              - grant_type
-              - audience
-            example:
-              audience: https://api.pinecone.io/
-              client_id: I1r8m4i6jX9JTFYk0t3q85HWzciEgcA5
-              client_secret: EriX...j2ci
-              grant_type: client_credentials
-        examples:
-          example:
-            value:
-              audience: https://api.pinecone.io/
-              client_id: I1r8m4i6jX9JTFYk0t3q85HWzciEgcA5
-              client_secret: EriX...j2ci
-              grant_type: client_credentials
-        description: |
-          A request to exchange client credentials for an access token.
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              access_token:
-                allOf:
-                  - description: The access token.
-                    type: string
-              token_type:
-                allOf:
-                  - description: The type of token.
-                    type: string
-                    enum:
-                      - Bearer
-              expires_in:
-                allOf:
-                  - description: The number of seconds until the token expires.
-                    type: integer
-            description: A response that contains the access token.
-            refIdentifier: '#/components/schemas/TokenResponse'
-            requiredProperties:
-              - access_token
-              - token_type
-              - expires_in
-            example:
-              access_token: eyJz93a...k4laUWw
-              expires_in: 1800
-              token_type: Bearer
-        examples:
-          example:
-            value:
-              access_token: eyJz93a...k4laUWw
-              expires_in: 1800
-              token_type: Bearer
-        description: A response that contains the access token.
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - description: A code identifying the error that occurred.
-                    type: string
-              error_description:
-                allOf:
-                  - description: A human-readable description of the error.
-                    type: string
-            description: A response indicating that an error occurred.
-            example:
-              error: access_denied
-              error_description: Unauthorized
-        examples:
-          example:
-            value:
-              error: access_denied
-              error_description: Unauthorized
-        description: Invalid request.
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - description: A code identifying the error that occurred.
-                    type: string
-              error_description:
-                allOf:
-                  - description: A human-readable description of the error.
-                    type: string
-            description: A response indicating that an error occurred.
-            example:
-              error: access_denied
-              error_description: Unauthorized
-        examples:
-          example:
-            value:
-              error: access_denied
-              error_description: Unauthorized
-        description: Unauthorized.
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - description: A code identifying the error that occurred.
-                    type: string
-              error_description:
-                allOf:
-                  - description: A human-readable description of the error.
-                    type: string
-            description: A response indicating that an error occurred.
-            example:
-              error: access_denied
-              error_description: Unauthorized
-        examples:
-          example:
-            value:
-              error: access_denied
-              error_description: Unauthorized
-        description: Forbidden.
-    '429':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - description: A code identifying the error that occurred.
-                    type: string
-              error_description:
-                allOf:
-                  - description: A human-readable description of the error.
-                    type: string
-            description: A response indicating that an error occurred.
-            example:
-              error: access_denied
-              error_description: Unauthorized
-        examples:
-          example:
-            value:
-              error: access_denied
-              error_description: Unauthorized
-        description: Too many requests.
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - description: A code identifying the error that occurred.
-                    type: string
-              error_description:
-                allOf:
-                  - description: A human-readable description of the error.
-                    type: string
-            description: A response indicating that an error occurred.
-            example:
-              error: access_denied
-              error_description: Unauthorized
-        examples:
-          example:
-            value:
-              error: access_denied
-              error_description: Unauthorized
-        description: Internal server error.
-    '501':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - description: A code identifying the error that occurred.
-                    type: string
-              error_description:
-                allOf:
-                  - description: A human-readable description of the error.
-                    type: string
-            description: A response indicating that an error occurred.
-            example:
-              error: access_denied
-              error_description: Unauthorized
-        examples:
-          example:
-            value:
-              error: access_denied
-              error_description: Unauthorized
-        description: Not implemented.
-    '503':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - description: A code identifying the error that occurred.
-                    type: string
-              error_description:
-                allOf:
-                  - description: A human-readable description of the error.
-                    type: string
-            description: A response indicating that an error occurred.
-            example:
-              error: access_denied
-              error_description: Unauthorized
-        examples:
-          example:
-            value:
-              error: access_denied
-              error_description: Unauthorized
-        description: Service unavailable.
-  deprecated: false
-  type: path
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenRequest'
+        required: true
+      responses:
+        '200':
+          description: A response that contains the access token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '400':
+          description: Invalid request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Forbidden.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '429':
+          description: Too many requests.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '501':
+          description: Not implemented.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '503':
+          description: Service unavailable.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
 components:
-  schemas: {}
+  schemas:
+    TokenRequest:
+      example:
+        audience: https://api.pinecone.io/
+        client_id: I1r8m4i6jX9JTFYk0t3q85HWzciEgcA5
+        client_secret: EriX...j2ci
+        grant_type: client_credentials
+      description: A request to obtain an access token.
+      type: object
+      properties:
+        client_id:
+          description: |
+            The service account's client ID.
+          type: string
+        client_secret:
+          description: |
+            The service account's client secret.
+          type: string
+        grant_type:
+          description: |
+            The type of grant to use.
+          x-enum:
+            - client_credentials
+          type: string
+        audience:
+          description: |
+            The audience for the token.
+          x-enum:
+            - https://api.pinecone.io/
+          type: string
+      required:
+        - client_id
+        - client_secret
+        - grant_type
+        - audience
+    TokenResponse:
+      example:
+        access_token: eyJz93a...k4laUWw
+        expires_in: 1800
+        token_type: Bearer
+      description: A response that contains the access token.
+      type: object
+      properties:
+        access_token:
+          description: The access token.
+          type: string
+        token_type:
+          description: |-
+            The type of token.
+            Possible values: `Bearer`.
+          x-enum:
+            - Bearer
+          type: string
+        expires_in:
+          description: The number of seconds until the token expires.
+          type: integer
+      required:
+        - access_token
+        - token_type
+        - expires_in
+    ErrorResponse:
+      example:
+        error: access_denied
+        error_description: Unauthorized
+      description: A response indicating that an error occurred.
+      type: object
+      properties:
+        error:
+          description: A code identifying the error that occurred.
+          type: string
+        error_description:
+          description: A human-readable description of the error.
+          type: string
 
 ````

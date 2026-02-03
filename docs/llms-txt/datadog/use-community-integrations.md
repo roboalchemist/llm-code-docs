@@ -6,7 +6,6 @@ description: >-
   Installation and configuration guide for community-developed and Marketplace
   integrations with the Datadog Agent across different environments.
 breadcrumbs: Docs > Agent > Agent Guides > Use Community and Marketplace Integrations
-source_url: https://docs.datadoghq.com/guide/use-community-integrations/index.html
 ---
 
 # Use Community and Marketplace Integrations

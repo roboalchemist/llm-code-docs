@@ -31,7 +31,7 @@ As the user progresses through the checkout flow the Checkout session will be up
 
 The response to update calls, should return all checkout options, messages, and errors to be displayed to the user. Once the customer clicks “Buy”, the checkout session is completed with a selected payment method.
 
-![State diagram showing order states](/images/commerce/commerce-order-states.png)
+![State diagram showing order states](https://developers.openai.com/images/commerce/commerce-order-states.png)
 
 ## REST endpoints
 
@@ -82,20 +82,20 @@ This is the initial call to create a checkout session. The call will contain inf
 
 #### Response
 
-| Field                 | Type                    | Required | Description                                                                                                                | Validation                                        |
-| :-------------------- | :---------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------ |
-| id                    | String                  | Yes      | Unique id that identifies the checkout session. This id will be used to update the checkout session in subsequent calls.   | None                                              |
-| buyer                 | Buyer                   | No       | Buyer information, if provided                                                                                             | None                                              |
-| payment_provider      | PaymentProvider         | Yes      | Payment provider that will be used to complete this transaction.                                                           | None                                              |
+| Field                 | Type                    | Required | Description                                                                                                                     | Validation                                        |
+| :-------------------- | :---------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------ |
+| id                    | String                  | Yes      | Unique id that identifies the checkout session. This id will be used to update the checkout session in subsequent calls.        | None                                              |
+| buyer                 | Buyer                   | No       | Buyer information, if provided                                                                                                  | None                                              |
+| payment_provider      | PaymentProvider         | Yes      | Payment provider that will be used to complete this transaction.                                                                | None                                              |
 | status                | String enum             | Yes      | Current status of the checkout session. Possible values are: `not_ready_for_payment` `ready_for_payment` `completed` `canceled` | None                                              |
-| currency              | String                  | Yes      | Currency code as per the ISO 4217 standard                                                                                 | Should follow the ISO 4217 standard in lower case |
-| line_items            | List[LineItem]          | Yes      | List of items and computed costs.                                                                                          | None                                              |
-| fulfillment_address   | Address                 | No       | Address to ship items to.                                                                                                  | None                                              |
-| fulfillment_options   | List[FulfillmentOption] | Yes      | All available fulfillment options and associated costs.                                                                    | None                                              |
-| fulfillment_option_id | String                  | No       | Id of the selected fulfillment option.                                                                                     | None                                              |
-| totals                | List[Total]             | Yes      | List of totals.                                                                                                            | None                                              |
-| messages              | List[Message]           | Yes      | List of informational and error messages to be displayed to the customer.                                                  | None                                              |
-| links                 | List[Link]              | Yes      | List of links (e.g. ToS/privacy policy/etc.) to be displayed to the customer.                                              | None                                              |
+| currency              | String                  | Yes      | Currency code as per the ISO 4217 standard                                                                                      | Should follow the ISO 4217 standard in lower case |
+| line_items            | List[LineItem]          | Yes      | List of items and computed costs.                                                                                               | None                                              |
+| fulfillment_address   | Address                 | No       | Address to ship items to.                                                                                                       | None                                              |
+| fulfillment_options   | List[FulfillmentOption] | Yes      | All available fulfillment options and associated costs.                                                                         | None                                              |
+| fulfillment_option_id | String                  | No       | Id of the selected fulfillment option.                                                                                          | None                                              |
+| totals                | List[Total]             | Yes      | List of totals.                                                                                                                 | None                                              |
+| messages              | List[Message]           | Yes      | List of informational and error messages to be displayed to the customer.                                                       | None                                              |
+| links                 | List[Link]              | Yes      | List of links (e.g. ToS/privacy policy/etc.) to be displayed to the customer.                                                   | None                                              |
 
 #### Examples
 
@@ -320,19 +320,19 @@ This endpoint will be called on checkout session updates, such as a change in fu
 
 #### Response
 
-| Field                 | Type                    | Required | Description                                                                                                                 | Validation                                        |
-| :-------------------- | :---------------------- | :------- | :-------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------ |
-| id                    | String                  | Yes      | Unique id that identifies the checkout session. This id will be used to update the checkout session in subsequent calls.    | None                                              |
-| buyer                 | Buyer                   | No       | Buyer information, if provided                                                                                              | None                                              |
+| Field                 | Type                    | Required | Description                                                                                                                     | Validation                                        |
+| :-------------------- | :---------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------ |
+| id                    | String                  | Yes      | Unique id that identifies the checkout session. This id will be used to update the checkout session in subsequent calls.        | None                                              |
+| buyer                 | Buyer                   | No       | Buyer information, if provided                                                                                                  | None                                              |
 | status                | String enum             | Yes      | Current status of the checkout session. Possible values are: `not_ready_for_payment` `ready_for_payment` `completed` `canceled` | None                                              |
-| currency              | String                  | Yes      | Currency code as per the ISO 4217 standard                                                                                  | Should follow the ISO 4217 standard in lower case |
-| line_items            | List[LineItem]          | Yes      | List of items and computed costs.                                                                                           | None                                              |
-| fulfillment_address   | Address                 | No       | Address to ship items to.                                                                                                  | None                                              |
-| fulfillment_options   | List[FulfillmentOption] | Yes      | All available fulfillment options and associated costs.                                                                     | None                                              |
-| fulfillment_option_id | String                  | No       | Id of the selected fulfillment option.                                                                                      | None                                              |
-| totals                | List[Total]             | Yes      | List of totals.                                                                                                             | None                                              |
-| messages              | List[Message]           | Yes      | List of informational and error messages to be displayed to the customer.                                                   | None                                              |
-| links                 | List[Link]              | Yes      | List of links (e.g. ToS/privacy policy/etc.) to be displayed to the customer.                                               | None                                              |
+| currency              | String                  | Yes      | Currency code as per the ISO 4217 standard                                                                                      | Should follow the ISO 4217 standard in lower case |
+| line_items            | List[LineItem]          | Yes      | List of items and computed costs.                                                                                               | None                                              |
+| fulfillment_address   | Address                 | No       | Address to ship items to.                                                                                                       | None                                              |
+| fulfillment_options   | List[FulfillmentOption] | Yes      | All available fulfillment options and associated costs.                                                                         | None                                              |
+| fulfillment_option_id | String                  | No       | Id of the selected fulfillment option.                                                                                          | None                                              |
+| totals                | List[Total]             | Yes      | List of totals.                                                                                                                 | None                                              |
+| messages              | List[Message]           | Yes      | List of informational and error messages to be displayed to the customer.                                                       | None                                              |
+| links                 | List[Link]              | Yes      | List of links (e.g. ToS/privacy policy/etc.) to be displayed to the customer.                                                   | None                                              |
 
 #### Example
 
@@ -455,20 +455,20 @@ The endpoint will be called with the payment method to complete the purchase. It
 
 #### Response
 
-| Field                 | Type                    | Required | Description                                                                                                                | Validation                                        |
-| :-------------------- | :---------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------ |
-| id                    | String                  | Yes      | Unique id that identifies the checkout session. This id will be used to update the checkout session in subsequent calls.   | None                                              |
-| buyer                 | Buyer                   | Yes      | Buyer information                                                                                                          | None                                              |
+| Field                 | Type                    | Required | Description                                                                                                                     | Validation                                        |
+| :-------------------- | :---------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------ |
+| id                    | String                  | Yes      | Unique id that identifies the checkout session. This id will be used to update the checkout session in subsequent calls.        | None                                              |
+| buyer                 | Buyer                   | Yes      | Buyer information                                                                                                               | None                                              |
 | status                | String enum             | Yes      | Current status of the checkout session. Possible values are: `not_ready_for_payment` `ready_for_payment` `completed` `canceled` | None                                              |
-| currency              | String                  | Yes      | Currency code as per the ISO 4217 standard                                                                                 | Should follow the ISO 4217 standard in lower case |
-| line_items            | List[LineItem]          | Yes      | List of items and computed costs.                                                                                          | None                                              |
-| fulfillment_address   | Address                 | No       | Address to ship items to.                                                                                               | None                                              |
-| fulfillment_options   | List[FulfillmentOption] | Yes      | All available fulfillment options and associated costs.                                                                    | None                                              |
-| fulfillment_option_id | String                  | No       | Id of the selected fulfillment option.                                                                                     | None                                              |
-| totals                | List[Total]             | Yes      | List of totals.                                                                                                            | None                                              |
-| order                 | Order                   | No       | Order that is created after the checkout session completes.                                                                | None                                              |
-| messages              | List[Message]           | Yes      | List of informational and error messages to be displayed to the customer.                                                  | None                                              |
-| links                 | List[Link]              | Yes      | List of links (e.g. ToS/privacy policy/etc.) to be displayed to the customer.                                              | None                                              |
+| currency              | String                  | Yes      | Currency code as per the ISO 4217 standard                                                                                      | Should follow the ISO 4217 standard in lower case |
+| line_items            | List[LineItem]          | Yes      | List of items and computed costs.                                                                                               | None                                              |
+| fulfillment_address   | Address                 | No       | Address to ship items to.                                                                                                       | None                                              |
+| fulfillment_options   | List[FulfillmentOption] | Yes      | All available fulfillment options and associated costs.                                                                         | None                                              |
+| fulfillment_option_id | String                  | No       | Id of the selected fulfillment option.                                                                                          | None                                              |
+| totals                | List[Total]             | Yes      | List of totals.                                                                                                                 | None                                              |
+| order                 | Order                   | No       | Order that is created after the checkout session completes.                                                                     | None                                              |
+| messages              | List[Message]           | Yes      | List of informational and error messages to be displayed to the customer.                                                       | None                                              |
+| links                 | List[Link]              | Yes      | List of links (e.g. ToS/privacy policy/etc.) to be displayed to the customer.                                                   | None                                              |
 
 #### Example
 
@@ -479,8 +479,7 @@ POST Request to /checkout_sessions/checkout_session_123/complete
 
 {
    "buyer": {
-       "first_name": "John",
-       "last_name": "Smith",
+       "name": "John Smith",
        "email": "johnsmith@mail.com",
        "phone_number": "+15552003434"
    },
@@ -508,8 +507,7 @@ Response
 {
    "id": "checkout_session_123",
    "buyer": {
-       "first_name": "John",
-       "last_name": "Smith",
+       "name": "John Smith",
        "email": "johnsmith@mail.com",
        "phone_number": "+15552003434"
    },
@@ -612,19 +610,19 @@ None
 
 #### Response
 
-| Field                 | Type                    | Required | Description                                                                                                                | Validation                                        |
-| :-------------------- | :---------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------ |
-| id                    | String                  | Yes      | Unique id that identifies the checkout session. This id will be used to update the checkout session in subsequent calls.   | None                                              |
-| buyer                 | Buyer                   | No       | Buyer information, if provided                                                                                             | None                                              |
+| Field                 | Type                    | Required | Description                                                                                                                     | Validation                                        |
+| :-------------------- | :---------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------ |
+| id                    | String                  | Yes      | Unique id that identifies the checkout session. This id will be used to update the checkout session in subsequent calls.        | None                                              |
+| buyer                 | Buyer                   | No       | Buyer information, if provided                                                                                                  | None                                              |
 | status                | String enum             | Yes      | Current status of the checkout session. Possible values are: `not_ready_for_payment` `ready_for_payment` `completed` `canceled` | None                                              |
-| currency              | String                  | Yes      | Currency code as per the ISO 4217 standard                                                                                 | Should follow the ISO 4217 standard in lower case |
-| line_items            | List[LineItem]          | Yes      | List of items and computed costs.                                                                                          | None                                              |
-| fulfillment_address   | Address                 | No       | Address to ship items to.                                                                                              | None                                              |
-| fulfillment_options   | List[FulfillmentOption] | Yes      | All available fulfillment options and associated costs.                                                                    | None                                              |
-| fulfillment_option_id | String                  | No       | Id of the selected fulfillment option.                                                                                     | None                                              |
-| totals                | List[Total]             | Yes      | List of totals.                                                                                                            | None                                              |
-| messages              | List[Message]           | Yes      | List of informational and error messages to be displayed to the customer.                                                  | None                                              |
-| links                 | List[Link]              | Yes      | List of links (e.g. ToS/privacy policy/etc.) to be displayed to the customer.                                              | None                                              |
+| currency              | String                  | Yes      | Currency code as per the ISO 4217 standard                                                                                      | Should follow the ISO 4217 standard in lower case |
+| line_items            | List[LineItem]          | Yes      | List of items and computed costs.                                                                                               | None                                              |
+| fulfillment_address   | Address                 | No       | Address to ship items to.                                                                                                       | None                                              |
+| fulfillment_options   | List[FulfillmentOption] | Yes      | All available fulfillment options and associated costs.                                                                         | None                                              |
+| fulfillment_option_id | String                  | No       | Id of the selected fulfillment option.                                                                                          | None                                              |
+| totals                | List[Total]             | Yes      | List of totals.                                                                                                                 | None                                              |
+| messages              | List[Message]           | Yes      | List of informational and error messages to be displayed to the customer.                                                       | None                                              |
+| links                 | List[Link]              | Yes      | List of links (e.g. ToS/privacy policy/etc.) to be displayed to the customer.                                                   | None                                              |
 
 ### GET `/checkout_sessions/{checkout_session_id}`
 
@@ -636,19 +634,19 @@ None
 
 #### Response
 
-| Field                 | Type                    | Required | Description                                                                                                                | Validation                                        |
-| :-------------------- | :---------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------ |
-| id                    | String                  | Yes      | Unique id that identifies the checkout session. This id will be used to update the checkout session in subsequent calls.   | None                                              |
-| buyer                 | Buyer                   | No       | Buyer information, if provided                                                                                             | None                                              |
+| Field                 | Type                    | Required | Description                                                                                                                     | Validation                                        |
+| :-------------------- | :---------------------- | :------- | :------------------------------------------------------------------------------------------------------------------------------ | :------------------------------------------------ |
+| id                    | String                  | Yes      | Unique id that identifies the checkout session. This id will be used to update the checkout session in subsequent calls.        | None                                              |
+| buyer                 | Buyer                   | No       | Buyer information, if provided                                                                                                  | None                                              |
 | status                | String enum             | Yes      | Current status of the checkout session. Possible values are: `not_ready_for_payment` `ready_for_payment` `completed` `canceled` | None                                              |
-| currency              | String                  | Yes      | Currency code as per the ISO 4217 standard                                                                                 | Should follow the ISO 4217 standard in lower case |
-| line_items            | List[LineItem]          | Yes      | List of items and computed costs.                                                                                          | None                                              |
-| fulfillment_address   | Address                 | No       | Address to ship items to.                                                                                           | None                                              |
-| fulfillment_options   | List[FulfillmentOption] | Yes      | All available fulfillment options and associated costs.                                                                    | None                                              |
-| fulfillment_option_id | String                  | No       | Id of the selected fulfillment option.                                                                                     | None                                              |
-| totals                | List[Total]             | Yes      | List of totals.                                                                                                            | None                                              |
-| messages              | List[Message]           | Yes      | List of informational and error messages to be displayed to the customer.                                                  | None                                              |
-| links                 | List[Link]              | Yes      | List of links (e.g. ToS/privacy policy/etc.) to be displayed to the customer.                                              | None                                              |
+| currency              | String                  | Yes      | Currency code as per the ISO 4217 standard                                                                                      | Should follow the ISO 4217 standard in lower case |
+| line_items            | List[LineItem]          | Yes      | List of items and computed costs.                                                                                               | None                                              |
+| fulfillment_address   | Address                 | No       | Address to ship items to.                                                                                                       | None                                              |
+| fulfillment_options   | List[FulfillmentOption] | Yes      | All available fulfillment options and associated costs.                                                                         | None                                              |
+| fulfillment_option_id | String                  | No       | Id of the selected fulfillment option.                                                                                          | None                                              |
+| totals                | List[Total]             | Yes      | List of totals.                                                                                                                 | None                                              |
+| messages              | List[Message]           | Yes      | List of informational and error messages to be displayed to the customer.                                                       | None                                              |
+| links                 | List[Link]              | Yes      | List of links (e.g. ToS/privacy policy/etc.) to be displayed to the customer.                                                   | None                                              |
 
 ### Response Errors
 
@@ -687,10 +685,10 @@ If the server is unable to return a 201 response, then it should return an error
 
 ### PaymentProvider
 
-| Field                     | Type              | Required | Description                                                                                 | Validation |
-| :------------------------ | :---------------- | :------- | :------------------------------------------------------------------------------------------ | :--------- |
-| provider                  | String enum       | Yes      | String value representing payment processor. Possible values are: `stripe` `adyen`            | None       |
-| supported_payment_methods | List[String enum] | Yes      | List of payment methods that the merchant is willing to accept. Possible values are: `card` | None       |
+| Field                     | Type              | Required | Description                                                                                    | Validation |
+| :------------------------ | :---------------- | :------- | :--------------------------------------------------------------------------------------------- | :--------- |
+| provider                  | String enum       | Yes      | String value representing payment processor. Possible values are: `stripe` `adyen` `braintree` | None       |
+| supported_payment_methods | List[String enum] | Yes      | List of payment methods that the merchant is willing to accept. Possible values are: `card`    | None       |
 
 ### Message (type = info)
 
@@ -698,7 +696,7 @@ If the server is unable to return a 201 response, then it should return an error
 | :----------- | :---------- | :------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------- |
 | type         | String      | Yes      | String value representing the type of message. For an informational message, the type should be `info.`                                                                                              | None       |
 | param        | String      | Yes      | RFC 9535 JSONPath to the component of the checkout session that the message is referring to. For instance, if the message is referring to the second line item, the path would be `$.line_items[1]`. | None       |
-| content_type | String enum | Yes      | Type of the message content for rendering purposes. Possible values are: `plain` `markdown`                                                                                                            | None       |
+| content_type | String enum | Yes      | Type of the message content for rendering purposes. Possible values are: `plain` `markdown`                                                                                                          | None       |
 | content      | String      | Yes      | Raw message content.                                                                                                                                                                                 | None       |
 
 ### Message (type = error)
@@ -706,25 +704,25 @@ If the server is unable to return a 201 response, then it should return an error
 | Field        | Type        | Required | Description                                                                                                                                                                                          | Validation |
 | :----------- | :---------- | :------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------- |
 | type         | String      | Yes      | String value representing the type of message. For an error message, the type should be `error.`                                                                                                     | None       |
-| code         | String enum | Yes      | Error code. Possible values are: `missing` `invalid` `out_of_stock` `payment_declined` `requires_sign_in` `requires_3ds`                                                                                       | None       |
+| code         | String enum | Yes      | Error code. Possible values are: `missing` `invalid` `out_of_stock` `payment_declined` `requires_sign_in` `requires_3ds`                                                                             | None       |
 | param        | String      | No       | RFC 9535 JSONPath to the component of the checkout session that the message is referring to. For instance, if the message is referring to the second line item, the path would be `$.line_items[1]`. | None       |
-| content_type | String enum | Yes      | Type of the message content for rendering purposes. Possible values are: `plain` `markdown`                                                                                                            | None       |
+| content_type | String enum | Yes      | Type of the message content for rendering purposes. Possible values are: `plain` `markdown`                                                                                                          | None       |
 | content      | String      | Yes      | Raw message content.                                                                                                                                                                                 | None       |
 
 ### Link
 
-| Field | Type         | Required | Description                                                                               | Validation |
-| :---- | :----------- | :------- | :---------------------------------------------------------------------------------------- | :--------- |
+| Field | Type         | Required | Description                                                                                   | Validation |
+| :---- | :----------- | :------- | :-------------------------------------------------------------------------------------------- | :--------- |
 | type  | Enum(String) | Yes      | Type of the link. Possible values are: `terms_of_use` `privacy_policy` `seller_shop_policies` | None       |
-| value | String       | Yes      | Link content specified as a URL.                                                          | None       |
+| url   | String       | Yes      | Link content specified as a URL.                                                              | None       |
 
 ### Buyer
 
-| Field        | Type   | Required | Description                                          | Validation                 |
-| :----------- | :----- | :------- | :--------------------------------------------------- | :------------------------- |
-| first_name   | String | Yes      | First name of buyer.                                 | Max. length is 256         |
-| email        | String | Yes      | Email address of buyer to be used for communication. | Max. length is 256         |
-| phone_number | String | No       | Optional phone number of the buyer.                  | Follows the E.164 standard |
+| Field        | Type   | Required | Description                                              | Validation                 |
+| :----------- | :----- | :------- | :------------------------------------------------------- | :------------------------- |
+| name         | String | Yes      | Name of the buyer.                                       | Max. length is 256         |
+| email        | String | Yes      | Email address of the buyer to be used for communication. | Max. length is 256         |
+| phone_number | String | No       | Optional phone number of the buyer.                      | Follows the E.164 standard |
 
 ### Line Item
 
@@ -740,11 +738,11 @@ If the server is unable to return a 201 response, then it should return an error
 
 ### Total
 
-| Field        | Type        | Required | Description                                                                                                                                      | Validation                                                                                                                                                                                           |
-| :----------- | :---------- | :------- | :----------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Field        | Type        | Required | Description                                                                                                                                                    | Validation                                                                                                                                                                                           |
+| :----------- | :---------- | :------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | type         | String enum | Yes      | String value representing the type of total. Possible values are: `items_base_amount` `items_discount` `subtotal` `discount` `fulfillment` `tax` `fee` `total` | None                                                                                                                                                                                                 |
-| display_text | String      | Yes      | The text displayed to the customer for this total.                                                                                               | None                                                                                                                                                                                                 |
-| amount       | int         | Yes      | Integer representing total amount in minor units.                                                                                                | If type == `subtotal`, should sum to `items_base_amount - items_discount` If type == `total`, should sum to `items_base_amount - items_discount - discount + fulfillment + tax + fee` Should be >= 0 |
+| display_text | String      | Yes      | The text displayed to the customer for this total.                                                                                                             | None                                                                                                                                                                                                 |
+| amount       | int         | Yes      | Integer representing total amount in minor units.                                                                                                              | If type == `subtotal`, should sum to `items_base_amount - items_discount` If type == `total`, should sum to `items_base_amount - items_discount - discount + fulfillment + tax + fee` Should be >= 0 |
 
 ### FulfillmentOption (type = shipping)
 
@@ -754,9 +752,9 @@ If the server is unable to return a 201 response, then it should return an error
 | id                     | String | Yes      | Unique ID that represents the shipping option. Unique across all fulfillment options.                            | Unique across all fulfillment options. |
 | title                  | String | Yes      | Title of the shipping option to display to the customer.                                                         | None                                   |
 | subtitle               | String | Yes      | Text content describing the estimated timeline for shipping to display to the customer.                          | None                                   |
-| carrier_info           | String | Yes      | Name of the shipping carrier.                                                                                    | None                                   |
+| carrier                | String | Yes      | Name of the shipping carrier.                                                                                    | None                                   |
 | earliest_delivery_time | String | Yes      | Estimated earliest delivery time, formatted as an RFC 3339 string.                                               | Formatted as an RFC 3339 string.       |
-| latest_deliver y_time  | String | Yes      | Estimated latest delivery time, formatted as an RFC 3339 string.                                                 | Formatted as an RFC 3339 string.       |
+| latest_delivery_time   | String | Yes      | Estimated latest delivery time, formatted as an RFC 3339 string.                                                 | Formatted as an RFC 3339 string.       |
 | subtotal               | int    | Yes      | Integer subtotal cost of the shipping option, formatted as a string.                                             | Should be >= 0                         |
 | tax                    | int    | Yes      | Integer representing tax amount.                                                                                 | Should be >= 0                         |
 | total                  | int    | Yes      | Integer total cost of the shipping option, formatted as a string.                                                | Should sum to `subtotal + tax`         |
@@ -775,11 +773,11 @@ If the server is unable to return a 201 response, then it should return an error
 
 ### PaymentData
 
-| Field           | Type        | Required | Description                                                                            | Validation |
-| :-------------- | :---------- | :------- | :------------------------------------------------------------------------------------- | :--------- |
-| token           | String      | Yes      | Token that represents the payment method.                                              | None       |
-| provider        | String enum | Yes      | String value representing the payment processor. Possible values are: `stripe` `adyen` | None       |
-| billing_address | Address     | No       | Optional billing address associated with the payment method                            | None       |
+| Field           | Type        | Required | Description                                                                                        | Validation |
+| :-------------- | :---------- | :------- | :------------------------------------------------------------------------------------------------- | :--------- |
+| token           | String      | Yes      | Token that represents the payment method.                                                          | None       |
+| provider        | String enum | Yes      | String value representing the payment processor. Possible values are: `stripe` `adyen` `braintree` | None       |
+| billing_address | Address     | No       | Optional billing address associated with the payment method                                        | None       |
 
 ### Order
 
@@ -802,13 +800,13 @@ The merchant sends OpenAI webhook events on order creation and update events. Th
 
 ### EventData (type = order)
 
-| Field               | Type         | Required | Description                                                                                                                             | Validation |
-| :------------------ | :----------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------- | :--------- |
-| type                | String       | Yes      | String value representing the type of event data. For order data, the value should be `order`                                           | None       |
-| checkout_session_id | String       | Yes      | ID that identifies the checkout session that created this order.                                                                        | None       |
-| permalink_url       | String       | Yes      | URL that points to the order. Customers should be able to visit this URL and provide at most their email address to view order details. | None       |
-| status              | String enum  | Yes      | String representing the latest status of the order. Possible values are: `created` `manual_review` `confirmed` `canceled` `shipped` `fulfilled`   | None       |
-| refunds             | List[Refund] | Yes      | List of refunds that have been issued for the order.                                                                                    | None       |
+| Field               | Type         | Required | Description                                                                                                                                     | Validation |
+| :------------------ | :----------- | :------- | :---------------------------------------------------------------------------------------------------------------------------------------------- | :--------- |
+| type                | String       | Yes      | String value representing the type of event data. For order data, the value should be `order`                                                   | None       |
+| checkout_session_id | String       | Yes      | ID that identifies the checkout session that created this order.                                                                                | None       |
+| permalink_url       | String       | Yes      | URL that points to the order. Customers should be able to visit this URL and provide at most their email address to view order details.         | None       |
+| status              | String enum  | Yes      | String representing the latest status of the order. Possible values are: `created` `manual_review` `confirmed` `canceled` `shipped` `fulfilled` | None       |
+| refunds             | List[Refund] | Yes      | List of refunds that have been issued for the order.                                                                                            | None       |
 
 ### Refund
 

@@ -35,7 +35,7 @@ Provides subcommands to inspect various things in more detail
 - [vespa](vespa.html) - The command-line tool for Vespa.ai
 - [vespa inspect profile](vespa_inspect_profile.html) - Inspect profiling results
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

@@ -1,5 +1,9 @@
 # Source: https://docs.openpipe.ai/features/caching.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.openpipe.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Caching
 
 >  Improve performance and reduce costs by caching previously generated responses.
@@ -21,7 +25,7 @@ If you are making requests through our proxy, add the `op-cache` header to your 
 
 <Tabs>
   <Tab title="cURL Request">
-    ```bash
+    ```bash  theme={null}
     curl --request POST \
       --url https://api.openpipe.ai/api/v1/chat/completions \
       --header "Authorization: Bearer YOUR_OPENPIPE_API_KEY" \
@@ -40,7 +44,7 @@ If you are making requests through our proxy, add the `op-cache` header to your 
   </Tab>
 
   <Tab title="Python">
-    ```python
+    ```python  theme={null}
     from openpipe import OpenAI
 
     client = OpenAI()
@@ -57,7 +61,7 @@ If you are making requests through our proxy, add the `op-cache` header to your 
   </Tab>
 
   <Tab title="NodeJS">
-    ```typescript
+    ```typescript  theme={null}
     import OpenAI from "openpipe/openai";
 
     const openai = new OpenAI();

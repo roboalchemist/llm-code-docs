@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/smolvlm.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/smolvlm.md
 
 # SmolVLM
 
@@ -152,15 +152,15 @@ print(generated_texts[0])
 
 #### transformers.SmolVLMConfig[[transformers.SmolVLMConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/smolvlm/configuration_smolvlm.py#L115)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/smolvlm/configuration_smolvlm.py#L115)
 
-This is the configuration class to store the configuration of a [SmolVLMModel](/docs/transformers/v5.0.0rc1/en/model_doc/smolvlm#transformers.SmolVLMModel). It is used to instantiate a
+This is the configuration class to store the configuration of a [SmolVLMModel](/docs/transformers/v5.0.0/en/model_doc/smolvlm#transformers.SmolVLMModel). It is used to instantiate a
 SmolVLM model according to the specified arguments, defining the model architecture. Instantiating a
 configuration with the defaults will yield a similar configuration to that of the model of the SmolVLM
 [HuggingFaceTB/SmolVLM2-2.2B-Instruct](https://huggingface.co/HuggingFaceTB/SmolVLM2-2.2B-Instruct) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 ```python
@@ -193,7 +193,7 @@ pad_token_id (`int`, *optional*, defaults to 128002) : The id of the padding tok
 
 #### transformers.SmolVLMVisionConfig[[transformers.SmolVLMVisionConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/smolvlm/configuration_smolvlm.py#L30)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/smolvlm/configuration_smolvlm.py#L30)
 
 This is the configuration class to store the configuration of a `SmolVLMVisionModel`. It is used to instantiate a
 SmolVLM vision encoder according to the specified arguments, defining the model architecture. Instantiating a
@@ -201,8 +201,8 @@ configuration with the defaults will yield a similar configuration to that of th
 [google/siglip-so400m-patch14-384](https://huggingface.co/google/siglip-so400m-patch14-384) used in SmolVLM
 [HuggingFaceTB/SmolVLM2-2.2B-Instruct](https://huggingface.co/HuggingFaceTB/SmolVLM2-2.2B-Instruct).
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -248,11 +248,11 @@ initializer_range (`float`, *optional*, defaults to 0.02) : The standard deviati
 
 #### transformers.SmolVLMVisionTransformer[[transformers.SmolVLMVisionTransformer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/smolvlm/modeling_smolvlm.py#L313)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/smolvlm/modeling_smolvlm.py#L317)
 
 The SmolVLM Vision Transformer Model outputting raw image embedding.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -262,17 +262,17 @@ and behavior.
 
 **Parameters:**
 
-config ([SmolVLMVisionConfig](/docs/transformers/v5.0.0rc1/en/model_doc/smolvlm#transformers.SmolVLMVisionConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([SmolVLMVisionConfig](/docs/transformers/v5.0.0/en/model_doc/smolvlm#transformers.SmolVLMVisionConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 ## SmolVLMModel[[transformers.SmolVLMModel]]
 
 #### transformers.SmolVLMModel[[transformers.SmolVLMModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/smolvlm/modeling_smolvlm.py#L451)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/smolvlm/modeling_smolvlm.py#L457)
 
 SmolVLM model consisting of a SIGLIP vision encoder and Llama3 language decoder
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -280,11 +280,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.SmolVLMModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/smolvlm/modeling_smolvlm.py#L569[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "pixel_values", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "pixel_attention_mask", "val": ": typing.Optional[torch.BoolTensor] = None"}, {"name": "image_hidden_states", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.modeling_flash_attention_utils.FlashAttentionKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.SmolVLMModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/smolvlm/modeling_smolvlm.py#L583[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "pixel_values", "val": ": torch.FloatTensor | None = None"}, {"name": "pixel_attention_mask", "val": ": torch.BoolTensor | None = None"}, {"name": "image_hidden_states", "val": ": torch.FloatTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.modeling_flash_attention_utils.FlashAttentionKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -303,8 +303,8 @@ forwardtransformers.SmolVLMModel.forwardhttps://github.com/huggingface/transform
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -317,8 +317,8 @@ forwardtransformers.SmolVLMModel.forwardhttps://github.com/huggingface/transform
   model's internal embedding lookup matrix.
 - **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [SmolVLMImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/smolvlm#transformers.SmolVLMImageProcessor). See [SmolVLMImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([SmolVLMProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/smolvlm#transformers.SmolVLMProcessor) uses
-  [SmolVLMImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/smolvlm#transformers.SmolVLMImageProcessor) for processing images).
+  [SmolVLMImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/smolvlm#transformers.SmolVLMImageProcessorFast). See [SmolVLMImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([SmolVLMProcessor](/docs/transformers/v5.0.0/en/model_doc/smolvlm#transformers.SmolVLMProcessor) uses
+  [SmolVLMImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/smolvlm#transformers.SmolVLMImageProcessorFast) for processing images).
 - **pixel_attention_mask** (`torch.Tensor` of shape `(batch_size, image_size, image_size)`, *optional*) --
   Mask to avoid performing attention on padding pixel indices.
 - **image_hidden_states** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`) --
@@ -333,27 +333,27 @@ forwardtransformers.SmolVLMModel.forwardhttps://github.com/huggingface/transform
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 - **cache_position** (`torch.LongTensor` of shape `(sequence_length)`, *optional*) --
   Indices depicting the position of the input sequence tokens in the sequence. Contrarily to `position_ids`,
   this tensor is not affected by padding. It is used to update the cache in the correct position and to infer
   the complete sequence length.0`transformers.models.smolvlm.modeling_smolvlm.SmolVLMBaseModelOutputWithPast` or `tuple(torch.FloatTensor)`A `transformers.models.smolvlm.modeling_smolvlm.SmolVLMBaseModelOutputWithPast` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([SmolVLMConfig](/docs/transformers/v5.0.0rc1/en/model_doc/smolvlm#transformers.SmolVLMConfig)) and inputs.
+elements depending on the configuration ([SmolVLMConfig](/docs/transformers/v5.0.0/en/model_doc/smolvlm#transformers.SmolVLMConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
   If `past_key_values` is used only the last hidden-state of the sequences of shape `(batch_size, 1,
   hidden_size)` is output.
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and optionally if
   `config.is_encoder_decoder=True` in the cross-attention blocks) that can be used (see `past_key_values`
   input) to speed up sequential decoding.
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
@@ -372,7 +372,7 @@ image_batch_size would be 7 when num_images_per_sample=[1, 3, 1, 2] and max_num_
 
 **Parameters:**
 
-config ([SmolVLMConfig](/docs/transformers/v5.0.0rc1/en/model_doc/smolvlm#transformers.SmolVLMConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([SmolVLMConfig](/docs/transformers/v5.0.0/en/model_doc/smolvlm#transformers.SmolVLMConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
@@ -380,21 +380,21 @@ config ([SmolVLMConfig](/docs/transformers/v5.0.0rc1/en/model_doc/smolvlm#transf
 
 A `transformers.models.smolvlm.modeling_smolvlm.SmolVLMBaseModelOutputWithPast` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([SmolVLMConfig](/docs/transformers/v5.0.0rc1/en/model_doc/smolvlm#transformers.SmolVLMConfig)) and inputs.
+elements depending on the configuration ([SmolVLMConfig](/docs/transformers/v5.0.0/en/model_doc/smolvlm#transformers.SmolVLMConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
   If `past_key_values` is used only the last hidden-state of the sequences of shape `(batch_size, 1,
   hidden_size)` is output.
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and optionally if
   `config.is_encoder_decoder=True` in the cross-attention blocks) that can be used (see `past_key_values`
   input) to speed up sequential decoding.
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
@@ -402,16 +402,50 @@ elements depending on the configuration ([SmolVLMConfig](/docs/transformers/v5.0
 - **image_hidden_states** (`tuple(torch.FloatTensor)`, *optional*) -- Tuple of `torch.FloatTensor` (one for the output of the image embeddings, `(batch_size, num_images,
   sequence_length, hidden_size)`.
   image_hidden_states of the model produced by the vision encoder
+#### get_image_features[[transformers.SmolVLMModel.get_image_features]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/smolvlm/modeling_smolvlm.py#L527)
+
+Encodes images into continuous embeddings that can be forwarded to the language model.
+
+**Parameters:**
+
+pixel_values (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`) : The tensors corresponding to the input images.
+
+pixel_attention_mask (`torch.LongTensor`, *optional*) : The attention mask indicating padded regions in the image.
+
+**Returns:**
+
+`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
+
+A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([SmolVLMConfig](/docs/transformers/v5.0.0/en/model_doc/smolvlm#transformers.SmolVLMConfig)) and inputs.
+
+- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
+- **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
+  through the layers used for the auxiliary pretraining task. E.g. for BERT-family of models, this returns
+  the classification token after processing through a linear layer and a tanh activation function. The linear
+  layer weights are trained from the next sentence prediction (classification) objective during pretraining.
+- **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
 
 ## SmolVLMForConditionalGeneration[[transformers.SmolVLMForConditionalGeneration]]
 
 #### transformers.SmolVLMForConditionalGeneration[[transformers.SmolVLMForConditionalGeneration]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/smolvlm/modeling_smolvlm.py#L707)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/smolvlm/modeling_smolvlm.py#L724)
 
 The SmolVLM Model with a language modeling head. It is made up a SigLIP vision encoder, with a language modeling head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -419,11 +453,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.SmolVLMForConditionalGeneration.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/smolvlm/modeling_smolvlm.py#L732[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "pixel_values", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "pixel_attention_mask", "val": ": typing.Optional[torch.BoolTensor] = None"}, {"name": "image_hidden_states", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "logits_to_keep", "val": ": typing.Union[int, torch.Tensor] = 0"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.SmolVLMForConditionalGeneration.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/smolvlm/modeling_smolvlm.py#L761[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "pixel_values", "val": ": torch.FloatTensor | None = None"}, {"name": "pixel_attention_mask", "val": ": torch.BoolTensor | None = None"}, {"name": "image_hidden_states", "val": ": torch.FloatTensor | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "logits_to_keep", "val": ": int | torch.Tensor = 0"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -442,8 +476,8 @@ forwardtransformers.SmolVLMForConditionalGeneration.forwardhttps://github.com/hu
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -456,8 +490,8 @@ forwardtransformers.SmolVLMForConditionalGeneration.forwardhttps://github.com/hu
   model's internal embedding lookup matrix.
 - **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [SmolVLMImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/smolvlm#transformers.SmolVLMImageProcessor). See [SmolVLMImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([SmolVLMProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/smolvlm#transformers.SmolVLMProcessor) uses
-  [SmolVLMImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/smolvlm#transformers.SmolVLMImageProcessor) for processing images).
+  [SmolVLMImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/smolvlm#transformers.SmolVLMImageProcessorFast). See [SmolVLMImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([SmolVLMProcessor](/docs/transformers/v5.0.0/en/model_doc/smolvlm#transformers.SmolVLMProcessor) uses
+  [SmolVLMImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/smolvlm#transformers.SmolVLMImageProcessorFast) for processing images).
 - **pixel_attention_mask** (`torch.Tensor` of shape `(batch_size, image_size, image_size)`, *optional*) --
   Mask to avoid performing attention on padding pixel indices.
 - **image_hidden_states** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`) --
@@ -480,27 +514,27 @@ forwardtransformers.SmolVLMForConditionalGeneration.forwardhttps://github.com/hu
   this tensor is not affected by padding. It is used to update the cache in the correct position and to infer
   the complete sequence length.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
-- **logits_to_keep** (`Union[int, torch.Tensor]`, defaults to `0`) --
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+- **logits_to_keep** (`Union[int, torch.Tensor]`, *optional*, defaults to `0`) --
   If an `int`, compute logits for the last `logits_to_keep` tokens. If `0`, calculate logits for all
   `input_ids` (special case). Only last token logits are needed for generation, and calculating them only for that
   token can save memory, which becomes pretty significant for long sequences or large vocabulary size.
   If a `torch.Tensor`, must be 1D corresponding to the indices to keep in the sequence length dimension.
   This is useful when using packed tensor format (single dimension for batch and sequence length).0`transformers.models.smolvlm.modeling_smolvlm.SmolVLMCausalLMOutputWithPast` or `tuple(torch.FloatTensor)`A `transformers.models.smolvlm.modeling_smolvlm.SmolVLMCausalLMOutputWithPast` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([SmolVLMConfig](/docs/transformers/v5.0.0rc1/en/model_doc/smolvlm#transformers.SmolVLMConfig)) and inputs.
+elements depending on the configuration ([SmolVLMConfig](/docs/transformers/v5.0.0/en/model_doc/smolvlm#transformers.SmolVLMConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
@@ -508,7 +542,7 @@ elements depending on the configuration ([SmolVLMConfig](/docs/transformers/v5.0
 - **image_hidden_states** (`tuple(torch.FloatTensor)`, *optional*) -- Tuple of `torch.FloatTensor` (one for the output of the image embeddings, `(batch_size, num_images,
   sequence_length, hidden_size)`.
   image_hidden_states of the model produced by the vision encoder
-The [SmolVLMForConditionalGeneration](/docs/transformers/v5.0.0rc1/en/model_doc/smolvlm#transformers.SmolVLMForConditionalGeneration) forward method, overrides the `__call__` special method.
+The [SmolVLMForConditionalGeneration](/docs/transformers/v5.0.0/en/model_doc/smolvlm#transformers.SmolVLMForConditionalGeneration) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -517,7 +551,8 @@ the latter silently ignores them.
 Example:
 
 ```python
->>> import requests
+>>> import httpx
+>>> from io import BytesIO
 >>> import torch
 >>> from PIL import Image
 >>> from io import BytesIO
@@ -555,7 +590,7 @@ Example:
 
 **Parameters:**
 
-config ([SmolVLMForConditionalGeneration](/docs/transformers/v5.0.0rc1/en/model_doc/smolvlm#transformers.SmolVLMForConditionalGeneration)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([SmolVLMForConditionalGeneration](/docs/transformers/v5.0.0/en/model_doc/smolvlm#transformers.SmolVLMForConditionalGeneration)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
@@ -563,19 +598,19 @@ config ([SmolVLMForConditionalGeneration](/docs/transformers/v5.0.0rc1/en/model_
 
 A `transformers.models.smolvlm.modeling_smolvlm.SmolVLMCausalLMOutputWithPast` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([SmolVLMConfig](/docs/transformers/v5.0.0rc1/en/model_doc/smolvlm#transformers.SmolVLMConfig)) and inputs.
+elements depending on the configuration ([SmolVLMConfig](/docs/transformers/v5.0.0/en/model_doc/smolvlm#transformers.SmolVLMConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
@@ -583,16 +618,78 @@ elements depending on the configuration ([SmolVLMConfig](/docs/transformers/v5.0
 - **image_hidden_states** (`tuple(torch.FloatTensor)`, *optional*) -- Tuple of `torch.FloatTensor` (one for the output of the image embeddings, `(batch_size, num_images,
   sequence_length, hidden_size)`.
   image_hidden_states of the model produced by the vision encoder
+#### get_image_features[[transformers.SmolVLMForConditionalGeneration.get_image_features]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/smolvlm/modeling_smolvlm.py#L744)
+
+Example:
+
+```python
+>>> from PIL import Image
+>>> from transformers import AutoProcessor, SmolVLMForConditionalGeneration
+
+>>> model = SmolVLMForConditionalGeneration.from_pretrained("HuggingFaceTB/SmolVLM2-2.2B-Instruct")
+>>> processor = AutoProcessor.from_pretrained("HuggingFaceTB/SmolVLM2-2.2B-Instruct")
+
+>>> messages = [
+...     {
+...         "role": "user", "content": [
+...             {"type": "image", "url": "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/pipeline-cat-chonk.jpeg"},
+...             {"type": "text", "text": "Where is the cat standing?"},
+...         ]
+...     },
+... ]
+
+>>> inputs = processor.apply_chat_template(
+...     messages,
+...     tokenize=True,
+...     return_dict=True,
+...     return_tensors="pt",
+...     add_generation_prompt=True
+... )
+>>> # Generate
+>>> generate_ids = model.generate(**inputs)
+>>> processor.batch_decode(generate_ids, skip_special_tokens=True)[0]
+```
+
+**Parameters:**
+
+pixel_values (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`) : The tensors corresponding to the input images.
+
+pixel_attention_mask (`torch.LongTensor`, *optional*) : The attention mask indicating padded regions in the image.
+
+**Returns:**
+
+`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
+
+A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([SmolVLMConfig](/docs/transformers/v5.0.0/en/model_doc/smolvlm#transformers.SmolVLMConfig)) and inputs.
+
+- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
+- **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
+  through the layers used for the auxiliary pretraining task. E.g. for BERT-family of models, this returns
+  the classification token after processing through a linear layer and a tanh activation function. The linear
+  layer weights are trained from the next sentence prediction (classification) objective during pretraining.
+- **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
 
 ## SmolVLMImageProcessor[[transformers.SmolVLMImageProcessor]]
 
 #### transformers.SmolVLMImageProcessor[[transformers.SmolVLMImageProcessor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/smolvlm/image_processing_smolvlm.py#L268)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/smolvlm/image_processing_smolvlm.py#L267)
 
 Constructs a SmolVLM image processor.
 
-preprocesstransformers.SmolVLMImageProcessor.preprocesshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/smolvlm/image_processing_smolvlm.py#L620[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]"}, {"name": "do_convert_rgb", "val": ": typing.Optional[bool] = None"}, {"name": "do_resize", "val": ": typing.Optional[bool] = None"}, {"name": "size", "val": ": typing.Optional[dict[str, int]] = None"}, {"name": "resample", "val": ": typing.Optional[PIL.Image.Resampling] = None"}, {"name": "do_image_splitting", "val": ": typing.Optional[bool] = None"}, {"name": "do_rescale", "val": ": typing.Optional[bool] = None"}, {"name": "max_image_size", "val": ": typing.Optional[dict[str, int]] = None"}, {"name": "rescale_factor", "val": ": typing.Optional[float] = None"}, {"name": "do_normalize", "val": ": typing.Optional[bool] = None"}, {"name": "image_mean", "val": ": typing.Union[float, list[float], NoneType] = None"}, {"name": "image_std", "val": ": typing.Union[float, list[float], NoneType] = None"}, {"name": "do_pad", "val": ": typing.Optional[bool] = None"}, {"name": "return_tensors", "val": ": typing.Union[str, transformers.utils.generic.TensorType, NoneType] = None"}, {"name": "return_row_col_info", "val": ": bool = False"}, {"name": "data_format", "val": ": typing.Optional[transformers.image_utils.ChannelDimension] = "}, {"name": "input_data_format", "val": ": typing.Union[str, transformers.image_utils.ChannelDimension, NoneType] = None"}]- **images** (`ImageInput`) --
+preprocesstransformers.SmolVLMImageProcessor.preprocesshttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/smolvlm/image_processing_smolvlm.py#L619[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]"}, {"name": "do_convert_rgb", "val": ": bool | None = None"}, {"name": "do_resize", "val": ": bool | None = None"}, {"name": "size", "val": ": dict[str, int] | None = None"}, {"name": "resample", "val": ": PIL.Image.Resampling | None = None"}, {"name": "do_image_splitting", "val": ": bool | None = None"}, {"name": "do_rescale", "val": ": bool | None = None"}, {"name": "max_image_size", "val": ": dict[str, int] | None = None"}, {"name": "rescale_factor", "val": ": float | None = None"}, {"name": "do_normalize", "val": ": bool | None = None"}, {"name": "image_mean", "val": ": float | list[float] | None = None"}, {"name": "image_std", "val": ": float | list[float] | None = None"}, {"name": "do_pad", "val": ": bool | None = None"}, {"name": "return_tensors", "val": ": str | transformers.utils.generic.TensorType | None = None"}, {"name": "return_row_col_info", "val": ": bool = False"}, {"name": "data_format", "val": ": transformers.image_utils.ChannelDimension | None = "}, {"name": "input_data_format", "val": ": str | transformers.image_utils.ChannelDimension | None = None"}]- **images** (`ImageInput`) --
   A list of images to preprocess.
 - **do_convert_rgb** (`bool`, *optional*, defaults to `self.do_convert_rgb`) --
   Whether to convert the image to RGB.
@@ -647,39 +744,23 @@ Preprocess a batch of images.
 
 do_convert_rgb (`bool`, *optional*, defaults to `True`) : Whether to convert the image to RGB. This is useful if the input image is of a different format e.g. RGBA. Only has an effect if the input image is in the PIL format.
 
-do_resize (`bool`, *optional*, defaults to `True`) : Whether to resize the image. The longest edge of the image is resized to  be >> import requests
->>> from transformers import SmolVLMProcessor
->>> from transformers.image_utils import load_image
+do_resize (`bool`, *optional*, defaults to `True`) : Whether to resize the image. The longest edge of the image is resized to  be  tokens per image in the input. This parameter is used to build the string from the input prompt and image tokens and should match the value the model used. It is computed as: image_seq_len = int(((image_size // patch_size) ** 2) / (scale_factor**2))
 
->>> processor = SmolVLMProcessor.from_pretrained("HuggingFaceM4/SmolVLM2-256M-Video-Instruct")
->>> processor.image_processor.do_image_splitting = False  # Force as False to simplify the example
+chat_template (`str`, *optional*) : A Jinja template to convert lists of messages in a chat into a tokenizable string.
 
->>> url1 = "https://cdn.britannica.com/61/93061-050-99147DCE/Statue-of-Liberty-Island-New-York-Bay.jpg"
->>> url2 = "https://cdn.britannica.com/59/94459-050-DBA42467/Skyline-Chicago.jpg"
+**Returns:**
 
->>> image1, image2 = load_image(url1), load_image(url2)
->>> images = [[image1], [image2]]
+````
 
->>> text = [
-...     "In this image, we see",
-...     "bla bla bla",
-... ]
->>> outputs = processor(images=images, text=text, return_tensors="pt", padding=True)
->>> input_ids = outputs.input_ids
->>> input_tokens = processor.tokenizer.batch_decode(input_ids)
->>> print(input_tokens)
-['(()*169) In this image, we see', 'bla bla bla(()*169)']
-```
-
-**Parameters:**
-
-image_processor (`SmolVLMImageProcessor`) : An instance of [SmolVLMImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/smolvlm#transformers.SmolVLMImageProcessor). The image processor is a required input.
-
-tokenizer (`PreTrainedTokenizerBase`) : An instance of [PreTrainedTokenizerBase](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase). This should correspond with the model's text model. The tokenizer is a required input.
-
-video_processor (`SmolVLMImageProcessor`) : n instance of [SmolVLMImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/smolvlm#transformers.SmolVLMImageProcessor). The video processor is a required input.
-
-image_seq_len (`int`, *optional*, defaults to 169) : The length of the image sequence i.e. the number of  tokens per image in the input. This parameter is used to build the string from the input prompt and image tokens and should match the value the model used. It is computed as: image_seq_len = int(((image_size // patch_size) ** 2) / (scale_factor**2))
-
-chat_template (`str`, *optional*) : A Jinja template which will be used to convert lists of messages in a chat into a tokenizable string.
+- **data** (`dict`, *optional*) -- Dictionary of lists/arrays/tensors returned by the `__call__`/`encode_plus`/`batch_encode_plus` methods
+  ('input_ids', 'attention_mask', etc.).
+- **encoding** (`tokenizers.Encoding` or `Sequence[tokenizers.Encoding]`, *optional*) -- If the tokenizer is a fast tokenizer which outputs additional information like mapping from word/character
+  space to token space the `tokenizers.Encoding` instance or list of instance (for batches) hold this
+  information.
+- **tensor_type** (`Union[None, str, TensorType]`, *optional*) -- You can give a tensor_type here to convert the lists of integers in PyTorch/Numpy Tensors at
+  initialization.
+- **prepend_batch_axis** (`bool`, *optional*, defaults to `False`) -- Whether or not to add a batch axis when converting to tensors (see `tensor_type` above). Note that this
+  parameter has an effect if the parameter `tensor_type` is set, *otherwise has no effect*.
+- **n_sequences** (`Optional[int]`, *optional*) -- You can give a tensor_type here to convert the lists of integers in PyTorch/Numpy Tensors at
+  initialization.
 

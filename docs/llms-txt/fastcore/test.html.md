@@ -23,8 +23,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### test_fail
 
->  test_fail (f, msg='', contains='', exc=<class 'Exception'>, args=None,
->                 kwargs=None)
+``` python
+
+def test_fail(
+    f, msg:str='', contains:str='', exc:type=Exception, args:NoneType=None, kwargs:NoneType=None
+):
+
+```
 
 *Fails with `msg` unless `f()` raises an exception of type `exc` and
 (optionally) has `contains` in `e.args`*
@@ -60,7 +65,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### test
 
->  test (a, b, cmp, cname=None)
+``` python
+
+def test(
+    a, b, cmp, cname:NoneType=None
+):
+
+```
 
 *`assert` that `cmp(a,b)`; display inputs and `cname or cmp.__name__` if
 it fails*
@@ -76,7 +87,13 @@ test_fail(lambda: test([1,2],[1,2], operator.ne))
 
 ### all_equal
 
->  all_equal (a, b)
+``` python
+
+def all_equal(
+    a, b
+):
+
+```
 
 *Compares whether `a` and `b` are the same length and have the same
 contents*
@@ -90,7 +107,13 @@ test_fail(lambda: test(['abc'],['cab'], all_equal))
 
 ### equals
 
->  equals (a, b)
+``` python
+
+def equals(
+    a, b
+):
+
+```
 
 *Compares `a` and `b` for equality; supports sublists, tensors and
 arrays too*
@@ -108,7 +131,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### nequals
 
->  nequals (a, b)
+``` python
+
+def nequals(
+    a, b
+):
+
+```
 
 *Compares `a` and `b` for `not equals`*
 
@@ -133,7 +162,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### test_eq
 
->  test_eq (a, b)
+``` python
+
+def test_eq(
+    a, b
+):
+
+```
 
 *[`test`](https://fastcore.fast.ai/test.html#test) that `a==b`*
 
@@ -176,7 +211,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### test_eq_type
 
->  test_eq_type (a, b)
+``` python
+
+def test_eq_type(
+    a, b
+):
+
+```
 
 *[`test`](https://fastcore.fast.ai/test.html#test) that `a==b` and are
 same type*
@@ -197,7 +238,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### test_ne
 
->  test_ne (a, b)
+``` python
+
+def test_ne(
+    a, b
+):
+
+```
 
 *[`test`](https://fastcore.fast.ai/test.html#test) that `a!=b`*
 
@@ -221,7 +268,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### is_close
 
->  is_close (a, b, eps=1e-05)
+``` python
+
+def is_close(
+    a, b, eps:float=1e-05
+):
+
+```
 
 *Is `a` within `eps` of `b`*
 
@@ -233,7 +286,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### test_close
 
->  test_close (a, b, eps=1e-05)
+``` python
+
+def test_close(
+    a, b, eps:float=1e-05
+):
+
+```
 
 *[`test`](https://fastcore.fast.ai/test.html#test) that `a` is within
 `eps` of `b`*
@@ -254,7 +313,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### test_is
 
->  test_is (a, b)
+``` python
+
+def test_is(
+    a, b
+):
+
+```
 
 *[`test`](https://fastcore.fast.ai/test.html#test) that `a is b`*
 
@@ -273,7 +338,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### test_shuffled
 
->  test_shuffled (a, b)
+``` python
+
+def test_shuffled(
+    a, b
+):
+
+```
 
 *[`test`](https://fastcore.fast.ai/test.html#test) that `a` and `b` are
 shuffled versions of the same sequence of items*
@@ -306,7 +377,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### test_stdout
 
->  test_stdout (f, exp, regex=False)
+``` python
+
+def test_stdout(
+    f, exp, regex:bool=False
+):
+
+```
 
 *Test that `f` prints `exp` to stdout, optionally checking as `regex`*
 
@@ -325,7 +402,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### test_warns
 
->  test_warns (f, show=False)
+``` python
+
+def test_warns(
+    f, show:bool=False
+):
+
+```
 
 ``` python
 test_warns(lambda: warnings.warn("Oh no!"))
@@ -358,7 +441,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### test_fig_exists
 
->  test_fig_exists (ax)
+``` python
+
+def test_fig_exists(
+    ax
+):
+
+```
 
 *Test there is a figure displayed in `ax`*
 
@@ -381,7 +470,13 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### ExceptionExpected
 
->  ExceptionExpected (ex=<class 'Exception'>, regex='')
+``` python
+
+def ExceptionExpected(
+    ex:type=Exception, regex:str=''
+):
+
+```
 
 *Context manager that tests if an exception is raised*
 

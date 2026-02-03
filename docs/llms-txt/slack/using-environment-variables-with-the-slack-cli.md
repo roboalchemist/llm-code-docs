@@ -1,3 +1,5 @@
+# Source: https://docs.slack.dev/tools/slack-cli/guides/using-environment-variables-with-the-slack-cli
+
 # Using environment variables with the Slack CLI
 
 Storing and using environment variables in an application allows for certain variables to be maintained outside of the code of the application. You can use environment variables from within Slack [functions](/tools/deno-slack-sdk/guides/creating-custom-functions), [triggers](/tools/deno-slack-sdk/guides/using-triggers), and [manifests](/tools/deno-slack-sdk/guides/using-the-app-manifest).

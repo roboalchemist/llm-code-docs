@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/indexes/pods/scale-pod-based-indexes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Scale pod-based indexes
 
 > Scale indexes vertically or horizontally as needed
@@ -143,7 +147,7 @@ You can increase the pod size in the Pinecone console or using the API.
       curl -s -X PATCH "https://api.pinecone.io/indexes/docs-example-curl" \
         -H "Content-Type: application/json" \
         -H "Api-Key: $PINECONE_API_KEY" \
-        -H "X-Pinecone-API-Version: 2025-04" \
+        -H "X-Pinecone-Api-Version: 2025-10" \
         -d '{
                "pod_type": "s1.x2"
             }'
@@ -248,7 +252,7 @@ The following example uses `describe_index` to get the index status of the index
 
   curl -s -X GET "https://api.pinecone.io/indexes/docs-example-curl" \
     -H "Api-Key: $PINECONE_API_KEY" \
-    -H "X-Pinecone-API-Version: 2025-04"
+    -H "X-Pinecone-Api-Version: 2025-10"
   ```
 </CodeGroup>
 
@@ -382,7 +386,7 @@ To add replicas, use the `configure_index` endpoint to increase the number of re
   curl -s -X PATCH "https://api.pinecone.io/indexes/docs-example-curl" \
     -H "Content-Type: application/json" \
     -H "Api-Key: $PINECONE_API_KEY" \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
            "replicas": 4
         }'

@@ -7,7 +7,6 @@ description: >-
   Collectors at scale with configuration views, upgrades, flare collection, and
   API key rotation.
 breadcrumbs: Docs > Agent > Fleet Automation
-source_url: https://docs.datadoghq.com/fleet_automation/index.html
 ---
 
 # Fleet Automation

@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/import/no-duplicates.md
 ---
-# import/no-duplicates&#x20;
 
 ### What it does
 
@@ -43,6 +42,23 @@ import type { d } from "foo"; // `prefer-inline` is true
 ## Configuration
 
 This rule accepts a configuration object with the following properties:
+
+### considerQueryString
+
+type: `boolean`
+
+default: `false`
+
+When set to `true`, the rule will consider the query string part of the import path
+when determining if imports are duplicates. This is useful when using loaders like
+webpack that use query strings to configure how a module should be loaded.
+
+Examples of **correct** code with this option set to `true`:
+
+```javascript
+import x from "./bar?optionX";
+import y from "./bar?optionY";
+```
 
 ### preferInline
 

@@ -4,8 +4,6 @@
 title: DMS Event Subscription
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > DMS Event Subscription
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.dms_event_subscription.dataset/index.html
 ---
 
 # DMS Event Subscription
@@ -31,4 +29,4 @@ aws.dms_event_subscription
 | source_type                | core | string        | The type of DMS resource that generates events. Valid values: replication-instance | replication-server | security-group | replication-task                                                                                                                                                                                                                                        |
 | status                     | core | string        | The status of the DMS event notification subscription. Constraints: Can be one of the following: creating | modifying | deleting | active | no-permission | topic-not-exist The status "no-permission" indicates that DMS no longer has permission to post to the SNS topic. The status "topic-not-exist" indicates that the topic was deleted after the subscription was created. |
 | subscription_creation_time | core | string        | The time the DMS event notification subscription was created.                                                                                                                                                                                                                                                                                                                      |
-| tags                       | core | hstore        |
+| tags                       | core | hstore_csv    |

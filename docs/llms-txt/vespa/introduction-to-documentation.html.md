@@ -31,5 +31,5 @@ _イタリック文字_は以下の用途に用いられます:
 $ export PATH=$VESPA_HOME/bin:$PATH
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

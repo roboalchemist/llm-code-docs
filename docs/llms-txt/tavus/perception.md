@@ -1,5 +1,9 @@
 # Source: https://docs.tavus.io/sections/conversational-video-interface/persona/perception.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Perception
 
 > Learn how to configure the perception layer with Raven to enable the real-time visual understanding.

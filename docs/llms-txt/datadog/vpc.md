@@ -4,7 +4,6 @@
 title: VPC Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > AWS Components > VPC Component
-source_url: https://docs.datadoghq.com/components-aws/vpc/index.html
 ---
 
 # VPC Component

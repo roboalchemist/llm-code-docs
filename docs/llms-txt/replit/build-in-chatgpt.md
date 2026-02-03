@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/getting-started/quickstarts/build-in-chatgpt.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Replit App in ChatGPT
 
 > Learn how to build a Replit App directly from ChatGPT.
@@ -76,8 +80,3 @@ Now that you've built your first app in ChatGPT, explore more possibilities:
 * **[Replit Agent](/replitai/agent)**: Continue building and refining your app with Agent in the Workspace
 * **[Fast mode](/replitai/fast-mode)**: Make targeted improvements with AI-powered code assistance
 * **[Publish your app](/category/replit-deployments)**: Share your creation with the world
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.replit.com/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.frigade.com/guides/form-video-demo.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.frigade.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Guide: Building Slack-Integrated Forms
 
 > In this video, we show you how to build a Form with React, Frigade, and Next.js and how to send the form data to Slack.

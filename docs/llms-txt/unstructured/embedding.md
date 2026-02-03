@@ -4,21 +4,9 @@
 
 # Source: https://docs.unstructured.io/open-source/core-functionality/embedding.md
 
-# Source: https://docs.unstructured.io/open-source/best-practices/embedding.md
-
-# Source: https://docs.unstructured.io/ui/embedding.md
-
-# Source: https://docs.unstructured.io/open-source/how-to/embedding.md
-
-# Source: https://docs.unstructured.io/open-source/core-functionality/embedding.md
-
-# Source: https://docs.unstructured.io/open-source/best-practices/embedding.md
-
-# Source: https://docs.unstructured.io/ui/embedding.md
-
-# Source: https://docs.unstructured.io/open-source/how-to/embedding.md
-
-# Source: https://docs.unstructured.io/open-source/core-functionality/embedding.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Embedding
 

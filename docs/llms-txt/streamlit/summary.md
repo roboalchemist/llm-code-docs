@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/get-started/fundamentals/summary
+
 # App model summary
 
 Now that you know a little more about all the individual pieces, let's close the loop and review how it works together:

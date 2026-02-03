@@ -4,8 +4,6 @@
 title: IoT FleetWise Vehicle
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > IoT FleetWise Vehicle
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.iotfleetwise_vehicle.dataset/index.html
 ---
 
 # IoT FleetWise Vehicle
@@ -18,16 +16,16 @@ aws.iotfleetwise_vehicle
 
 ## Fields
 
-| Title                  | ID   | Type      | Data Type                                                                                            | Description |
-| ---------------------- | ---- | --------- | ---------------------------------------------------------------------------------------------------- | ----------- |
-| _key                   | core | string    |
-| account_id             | core | string    |
-| arn                    | core | string    | The Amazon Resource Name (ARN) of the vehicle to retrieve information about.                         |
-| attributes             | core | hstore    | Static information about a vehicle in a key-value pair. For example: "engineType" : "1.3 L R2"       |
-| creation_time          | core | timestamp | The time the vehicle was created in seconds since epoch (January 1, 1970 at midnight UTC time).      |
-| decoder_manifest_arn   | core | string    | The ARN of a decoder manifest associated with the vehicle.                                           |
-| last_modification_time | core | timestamp | The time the vehicle was last updated in seconds since epoch (January 1, 1970 at midnight UTC time). |
-| model_manifest_arn     | core | string    | The ARN of a vehicle model (model manifest) associated with the vehicle.                             |
-| state_templates        | core | json      | State templates associated with the vehicle.                                                         |
-| tags                   | core | hstore    |
-| vehicle_name           | core | string    | The ID of the vehicle.                                                                               |
+| Title                  | ID   | Type       | Data Type                                                                                            | Description |
+| ---------------------- | ---- | ---------- | ---------------------------------------------------------------------------------------------------- | ----------- |
+| _key                   | core | string     |
+| account_id             | core | string     |
+| arn                    | core | string     | The Amazon Resource Name (ARN) of the vehicle to retrieve information about.                         |
+| attributes             | core | hstore     | Static information about a vehicle in a key-value pair. For example: "engineType" : "1.3 L R2"       |
+| creation_time          | core | timestamp  | The time the vehicle was created in seconds since epoch (January 1, 1970 at midnight UTC time).      |
+| decoder_manifest_arn   | core | string     | The ARN of a decoder manifest associated with the vehicle.                                           |
+| last_modification_time | core | timestamp  | The time the vehicle was last updated in seconds since epoch (January 1, 1970 at midnight UTC time). |
+| model_manifest_arn     | core | string     | The ARN of a vehicle model (model manifest) associated with the vehicle.                             |
+| state_templates        | core | json       | State templates associated with the vehicle.                                                         |
+| tags                   | core | hstore_csv |
+| vehicle_name           | core | string     | The ID of the vehicle.                                                                               |

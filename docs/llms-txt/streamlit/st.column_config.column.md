@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/data/st.column_config/st.column_config.column
+
 # st.column_config.Column
 
 Configure a generic column in `st.dataframe` or `st.data_editor`.

@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/internal/modeling_utils.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/internal/modeling_utils.md
 
 # Custom Layers and Utilities
 
@@ -6,11 +6,56 @@ This page lists all the custom layers used by the library, as well as the utilit
 
 Most of those are only useful if you are studying the code of the models in the library.
 
+## WeightConverter[[transformers.WeightConverter]]
+
+#### transformers.WeightConverter[[transformers.WeightConverter]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/core_model_loading.py#L728)
+
+### Conversion operations[[transformers.ConversionOps]]
+
+#### transformers.ConversionOps[[transformers.ConversionOps]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/core_model_loading.py#L116)
+
+Base class for weight conversion operations.
+
+#### transformers.Chunk[[transformers.Chunk]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/core_model_loading.py#L136)
+
+Split a tensor along `dim` into equally sized chunks.
+
+#### transformers.Concatenate[[transformers.Concatenate]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/core_model_loading.py#L164)
+
+Concatenate tensors along `dim`.
+
+#### transformers.MergeModulelist[[transformers.MergeModulelist]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/core_model_loading.py#L201)
+
+Merge a list of tensors into a single tensor along the first dimension.
+We explicitly define this because for EP or TP you want to make sure you know what you are doing!
+
+#### transformers.SplitModulelist[[transformers.SplitModulelist]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/core_model_loading.py#L241)
+
+Inverse of [MergeModulelist](/docs/transformers/v5.0.0/en/internal/modeling_utils#transformers.MergeModulelist) using explicit split sizes per group.
+
+#### transformers.PermuteForRope[[transformers.PermuteForRope]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/core_model_loading.py#L318)
+
+Applies the permutation required to convert complex RoPE weights to the split sin/cos format.
+
 ## Layers[[transformers.GradientCheckpointingLayer]]
 
 #### transformers.GradientCheckpointingLayer[[transformers.GradientCheckpointingLayer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/modeling_layers.py#L35)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/modeling_layers.py#L34)
 
 Base class for layers with gradient checkpointing.
 
@@ -37,27 +82,27 @@ Example:
 
 #### transformers.AttentionInterface[[transformers.AttentionInterface]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/modeling_utils.py#L4658)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/modeling_utils.py#L4765)
 
 Dict-like object keeping track of allowed attention functions. You can easily add a new attention function
 with a call to `register()`. If a model needs to locally overwrite an existing attention function, say `sdpa`,
 it needs to declare a new instance of this class inside the `modeling_.py`, and declare it on that instance.
 
-registertransformers.AttentionInterface.registerhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/utils/generic.py#L1029[{"name": "key", "val": ": str"}, {"name": "value", "val": ": Callable"}]
+registertransformers.AttentionInterface.registerhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/utils/generic.py#L1086[{"name": "key", "val": ": str"}, {"name": "value", "val": ": Callable"}]
 
 ## Attention Mask Functions[[transformers.AttentionMaskInterface]]
 
 #### transformers.AttentionMaskInterface[[transformers.AttentionMaskInterface]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/masking_utils.py#L631)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/masking_utils.py#L627)
 
-registertransformers.AttentionMaskInterface.registerhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/utils/generic.py#L1029[{"name": "key", "val": ": str"}, {"name": "value", "val": ": Callable"}]
+registertransformers.AttentionMaskInterface.registerhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/utils/generic.py#L1086[{"name": "key", "val": ": str"}, {"name": "value", "val": ": Callable"}]
 
 ## Rotary Position Embedding Functions[[transformers.dynamic_rope_update]]
 
 #### transformers.dynamic_rope_update[[transformers.dynamic_rope_update]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/modeling_rope_utils.py#L33)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/modeling_rope_utils.py#L33)
 
 Decorator function to update the RoPE parameters in the forward pass, if the model is using a dynamic RoPE
 (i.e. a RoPE implementation that may recompute its frequencies in the forward pass).
@@ -74,7 +119,7 @@ The decorated forward pass.
 
 #### transformers.Conv1D[[transformers.Conv1D]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/pytorch_utils.py#L97)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/pytorch_utils.py#L97)
 
 1D-convolutional layer as defined by Radford et al. for OpenAI GPT (and also used in GPT-2).
 
@@ -90,7 +135,7 @@ nx (`int`) : The number of input features.
 
 #### transformers.apply_chunking_to_forward[[transformers.apply_chunking_to_forward]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/pytorch_utils.py#L126)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/pytorch_utils.py#L126)
 
 This function chunks the `input_tensors` into smaller input tensor parts of size `chunk_size` over the dimension
 `chunk_dim`. It then applies a layer `forward_fn` to each chunk independently to save memory.
@@ -129,7 +174,7 @@ A tensor with the same shape as the `forward_fn` would have given if applied`.
 
 #### transformers.pytorch_utils.prune_linear_layer[[transformers.pytorch_utils.prune_linear_layer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/pytorch_utils.py#L63)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/pytorch_utils.py#L63)
 
 Prune a linear layer to keep only entries in index.
 

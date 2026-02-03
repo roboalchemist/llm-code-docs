@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/features/conversations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Chats & Threads
 
 Record and replay chat conversations in your chatbot app. Helps you understand where your chatbot falls short and how to improve it.
@@ -267,8 +271,3 @@ If you're using LangChain or agents behind your chatbot, you can inject the curr
 </Tabs>
 
 Note that *it's safe* to pass the message ID from your frontend to your backend, if you're tracking chats directly on the frontend for example.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

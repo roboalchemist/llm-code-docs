@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/account/create-account.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create a Comfy account
 
 > Learn how to create a new Comfy account for ComfyUI to access all features and services.

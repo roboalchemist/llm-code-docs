@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/integrations/azure-pipelines/
+
 # Azure Pipelines Integration
 
 This guide demonstrates how to set up promptfoo with Azure Pipelines to run evaluations as part of your CI pipeline.

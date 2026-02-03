@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/github/
+
 # GitHub Models
 
 [GitHub Models](https://github.com/marketplace/models/) provides access to industry-leading AI models from OpenAI, Anthropic, Google, and xAI through a unified API interface.

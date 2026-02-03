@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/customers/customer-management.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Customer management
 
 ## Create and update a customer[](#create-and-update-a-customer "Direct link to heading")
@@ -189,7 +193,7 @@ If you do so:
 * The customer's active [wallet](/guide/wallet-and-prepaid-credits) will be immediately terminated and all remaining credits will be voided; and
 * All `draft` invoices associated with this customer account will be immediately finalized.
 
-`finalized` invoices and [credit notes](/guide/credit-notes) associated with the deleted customer remain available in the **"Invoices"** section of the user interface and can also be retrieved via the API.
+`finalized` invoices and [credit notes](/guide/invoicing/credit-notes/overview) associated with the deleted customer remain available in the **"Invoices"** section of the user interface and can also be retrieved via the API.
 
 It is possible to generate new credit notes and process refunds after the deletion of the customer.
 

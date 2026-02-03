@@ -6,7 +6,6 @@ description: >-
   Understand where the Datadog Agent stores its log files and how to configure
   log rotation settings.
 breadcrumbs: Docs > Agent > Agent Configuration > Agent Log Files
-source_url: https://docs.datadoghq.com/configuration/agent-log-files/index.html
 ---
 
 # Agent Log Files

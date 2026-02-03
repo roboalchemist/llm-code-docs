@@ -4,8 +4,6 @@
 title: Fraud Detector Rule
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Fraud Detector Rule
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.frauddetector_rule.dataset/index.html
 ---
 
 # Fraud Detector Rule
@@ -32,4 +30,4 @@ aws.frauddetector_rule
 | outcomes          | core | array<string> | The rule outcomes.                               |
 | rule_id           | core | string        | The rule ID.                                     |
 | rule_version      | core | string        | The rule version.                                |
-| tags              | core | hstore        |
+| tags              | core | hstore_csv    |

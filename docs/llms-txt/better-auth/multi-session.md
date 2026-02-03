@@ -4,11 +4,7 @@
 
 Learn how to use multi-session plugin in Better Auth.
 
-***
 
-title: Multi Session
-description: Learn how to use multi-session plugin in Better Auth.
-------------------------------------------------------------------
 
 The multi-session plugin allows users to maintain multiple active sessions across different accounts in the same browser. This plugin is useful for applications that require users to switch between multiple accounts without logging out.
 
@@ -56,6 +52,7 @@ Whenever a user logs in, the plugin will add additional cookie to the browser. T
 
 To list all active sessions for the current user, you can call the `listDeviceSessions` method.
 
+
 ### Client Side
 
 ```ts
@@ -76,13 +73,15 @@ const data = await auth.api.listDeviceSessions({
 
 ```ts
 type listDeviceSessions = {
-
+  
 }
 ```
+
 
 ### Set active session
 
 To set the active session, you can call the `setActive` method.
+
 
 ### Client Side
 
@@ -108,17 +107,19 @@ const data = await auth.api.setActiveSession({
 
 ```ts
 type setActiveSession = {
-    /**
-     * The session token to set as active. 
-     */
-    sessionToken: string = "some-session-token"
-
+      /**
+       * The session token to set as active. 
+       */
+      sessionToken: string = "some-session-token"
+  
 }
 ```
+
 
 ### Revoke a session
 
 To revoke a session, you can call the `revoke` method.
+
 
 ### Client Side
 
@@ -144,13 +145,14 @@ const data = await auth.api.revokeDeviceSession({
 
 ```ts
 type revokeDeviceSession = {
-    /**
-     * The session token to revoke. 
-     */
-    sessionToken: string = "some-session-token"
-
+      /**
+       * The session token to revoke. 
+       */
+      sessionToken: string = "some-session-token"
+  
 }
 ```
+
 
 ### Signout and Revoke all sessions
 

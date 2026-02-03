@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/features/benefits/license-keys.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Automate Customer License Key Management
 
 > Sell license key access to your service, software or APIs with ease
@@ -60,7 +64,7 @@ In case you've setup license keys to have a maximum amount of activation instanc
 
 **No activation limit?** You can skip this step.
 
-```bash  theme={null}
+```bash Terminal theme={null}
 curl -X POST https://api.polar.sh/v1/customer-portal/license-keys/activate
 -H "Content-Type: application/json"
 -d '{
@@ -127,7 +131,7 @@ curl -X POST https://api.polar.sh/v1/customer-portal/license-keys/activate
 For each session of your premium app, library or API, we recommend you validate the users license key via the
 [`/v1/customer-portal/license-keys/validate`](/api-reference/customer-portal/license-keys/validate) endpoint.
 
-```bash  theme={null}
+```bash Terminal theme={null}
 curl -X POST https://api.polar.sh/v1/customer-portal/license-keys/validate
 -H "Content-Type: application/json"
 -d '{

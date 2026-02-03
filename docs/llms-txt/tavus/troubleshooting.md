@@ -1,5 +1,9 @@
 # Source: https://docs.tavus.io/sections/troubleshooting.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Troubleshooting
 
 > Find solutions to common problems and get back on track quickly with our troubleshooting guides.
@@ -48,6 +52,71 @@
     This is a rare issue caused by an internal server problem. When it happens, our team is automatically notified and works to resolve it as quickly as possible.
 
     You can check the system status at <a href="https://status.tavus.io/" target="_blank">status.tavus.io</a>. We recommend checking periodically for updates if you encounter this error.
+  </Accordion>
+
+  <Accordion title="Conversational Flow vs STT: Relationship & Migration">
+    ### Relationship with STT Layer
+
+    The [Conversational Flow layer](/sections/conversational-video-interface/persona/conversational-flow) is the **recommended approach** for configuring turn-taking behavior with **Sparrow-1**. This supersedes the legacy Sparrow-0 configuration available in the STT layer via `smart_turn_detection`.
+
+    <Note>
+      **Legacy Approach**: Configuring turn-taking via the STT layer's `smart_turn_detection` parameter is a legacy approach that uses Sparrow-0. For new implementations, use the Conversational Flow layer with Sparrow-1 instead.
+    </Note>
+
+    When you configure the Conversational Flow layer with `turn_detection_model` set to `sparrow-1`, these settings **override** any corresponding settings in the STT layer.
+
+    #### Parameter Mapping: Sparrow-0 to Sparrow-1
+
+    Here's how Sparrow-0 (STT layer) parameters map to Sparrow-1 (Conversational Flow layer):
+
+    | Sparrow-0 (STT Layer)               | Sparrow-1 (Conversational Flow Layer) | Notes                                              |
+    | ----------------------------------- | ------------------------------------- | -------------------------------------------------- |
+    | `participant_pause_sensitivity`     | `turn_taking_patience`                | Controls how long to wait before responding        |
+    | `participant_interrupt_sensitivity` | `replica_interruptibility`            | Controls how easily the replica can be interrupted |
+
+    <Warning>
+      **Important**: When using Sparrow-1 via the Conversational Flow layer, any conflicting settings in the STT layer (Sparrow-0) will be overridden. For example, if you set `participant_pause_sensitivity: "high"` in the STT layer but `turn_taking_patience: "low"` in the Conversational Flow layer with `turn_detection_model: "sparrow-1"`, the Conversational Flow setting (`low`) will take precedence.
+    </Warning>
+
+    #### Migration Guide
+
+    If you're currently using Sparrow-0 settings in the STT layer and want to upgrade to Sparrow-1:
+
+    **Before (Sparrow-0):**
+
+    ```json  theme={null}
+    {
+      "layers": {
+        "stt": {
+          "participant_pause_sensitivity": "high",
+          "participant_interrupt_sensitivity": "low"
+        }
+      }
+    }
+    ```
+
+    **After (Sparrow-1):**
+
+    ```json  theme={null}
+    {
+      "layers": {
+        "conversational_flow": {
+          "turn_detection_model": "sparrow-1",
+          "turn_taking_patience": "low",
+          "replica_interruptibility": "high"
+        }
+      }
+    }
+    ```
+
+    <Note>
+      Note the inverted mapping:
+
+      * `participant_pause_sensitivity: "high"` (quick response) → `turn_taking_patience: "low"` (eager)
+      * `participant_interrupt_sensitivity: "low"` (hard to interrupt) → `replica_interruptibility: "high"` (easy to interrupt)
+
+      The naming has been updated in Sparrow-1 to be more intuitive from the replica's perspective.
+    </Note>
   </Accordion>
 </AccordionGroup>
 

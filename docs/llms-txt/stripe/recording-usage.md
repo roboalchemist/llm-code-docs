@@ -12,8 +12,8 @@ To record usage in Stripe, first [configure your meter](https://docs.stripe.com/
 
 Stripe processes meter events asynchronously, so aggregated usage in meter event summaries and on upcoming invoices might not immediately reflect recently received meter events.
 
-[Using the API](https://docs.stripe.com/billing/subscriptions/usage-based/recording-usage-api.md): Use the Stripe API to record customer usage data.
+[Use the API](https://docs.stripe.com/billing/subscriptions/usage-based/recording-usage-api.md): Use the Stripe API to record customer usage data.
 
-[Using the Stripe Dashboard](https://docs.stripe.com/billing/subscriptions/usage-based/recording-usage-in-bulk-dashboard.md): Use the Dashboard to upload a CSV file with usage data.
+[Use the Stripe Dashboard](https://docs.stripe.com/billing/subscriptions/usage-based/recording-usage-in-bulk-dashboard.md): Use the Dashboard to upload a CSV file with usage data.
 
-[Using Amazon S3](https://docs.stripe.com/billing/subscriptions/usage-based/recording-usage-in-bulk.md): Use Amazon S3 to add customer usage data in bulk.
+[Use Amazon S3](https://docs.stripe.com/billing/subscriptions/usage-based/recording-usage-in-bulk.md): Use Amazon S3 to add customer usage data in bulk.

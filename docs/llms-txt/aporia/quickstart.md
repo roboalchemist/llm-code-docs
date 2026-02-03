@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/introduction/quickstart.md
 
-# Source: https://docs.aporia.com/introduction/quickstart.md
-
-# Source: https://docs.aporia.com/v1/introduction/quickstart.md
-
 # Quickstart
 
 With just a few lines of code, any Machine Learning model can be integrated and monitored in production with Aporia.

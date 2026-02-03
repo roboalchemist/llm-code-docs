@@ -6,7 +6,7 @@
 
 ***
 
-The Actor output schema builds upon the schemas for the https://docs.apify.com/platform/actors/development/actor-definition/dataset-schema.md and https://docs.apify.com/platform/actors/development/actor-definition/key-value-store-schema.md. It specifies where an Actor stores its output and defines templates for accessing that output. Apify Console uses these output definitions to display run results, and the Actor run's `GET` endpoint includes them in the output property.
+The Actor output schema builds upon the schemas for the [dataset](https://docs.apify.com/platform/actors/development/actor-definition/dataset-schema.md) and [key-value store](https://docs.apify.com/platform/actors/development/actor-definition/key-value-store-schema.md). It specifies where an Actor stores its output and defines templates for accessing that output. Apify Console uses these output definitions to display run results, and the Actor run's `GET` endpoint includes them in the output property.
 
 ## Structure
 
@@ -73,9 +73,9 @@ The output schema defines the collections of keys and their properties. It allow
 | `actorOutputSchemaVersion` | integer | true     | Specifies the version of output schema structure document.<br />Currently only version 1 is available. |
 | `title`                    | string  | true     | Title of the schema                                                                                    |
 | `description`              | string  | false    | Description of the schema                                                                              |
-| `properties`               | Object  | true     | An object where each key is an output ID and its value is an output object definition (see below).     |
+| `properties`               | Object  | true     | An object where each key is an output ID and its value is an Output object definition (see below).     |
 
-### Property object definition
+### Output object definition
 
 | Property      | Type   | Required | Description                                                                                                                     |
 | ------------- | ------ | -------- | ------------------------------------------------------------------------------------------------------------------------------- |

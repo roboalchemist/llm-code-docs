@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/controlnet/pose-controlnet-2-pass.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ComfyUI Pose ControlNet Usage Example
 
 > This guide will introduce you to the basic concepts of Pose ControlNet, and demonstrate how to generate large-sized images in ComfyUI using a two-pass generation approach

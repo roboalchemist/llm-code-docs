@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/guides/phi-vs-llama/
+
 # Phi vs Llama: Benchmark on your own data
 
 When choosing between LLMs like Phi 3 and Llama 3.1, it's important to benchmark them on your specific use cases rather than relying solely on public benchmarks. When models are in the same ballpark, the specific application makes a big difference.

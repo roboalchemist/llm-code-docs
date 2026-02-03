@@ -1,5 +1,9 @@
 # Source: https://www.activepieces.com/docs/embedding/navigation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Navigation
 
 By default, navigating within your embedded instance of Activepieces doesn't affect the client's browser history or viewed URL. Activepieces only provide a **handler**, that trigger on every route change in the **iframe**.

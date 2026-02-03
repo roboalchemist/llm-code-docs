@@ -6,7 +6,7 @@
 
 ***
 
-With Apify integration for https://www.keboola.com/, you can extract data from various sources using your Apify Actors and load it into Keboola for further processing, transformation, and integration with other platforms.
+With Apify integration for [Keboola](https://www.keboola.com/), you can extract data from various sources using your Apify Actors and load it into Keboola for further processing, transformation, and integration with other platforms.
 
 The Keboola integration allows you to run your Actors, fetch items from datasets, and retrieve results, all within the Keboola platform.
 
@@ -14,8 +14,8 @@ The Keboola integration allows you to run your Actors, fetch items from datasets
 
 To use the Apify integration on Keboola, you will need to:
 
-* Have an https://console.apify.com/.
-* Have a https://www.keboola.com/.
+* Have an [Apify account](https://console.apify.com/).
+* Have a [Keboola account](https://www.keboola.com/).
 
 ### Step 1: Create a new Data Source in Keboola
 
@@ -82,12 +82,12 @@ Once the run finishes successfully, you can find the results by following the li
 
 ## Next steps
 
-With your data now in Keboola, you can integrate it with dozens of other services that Keboola supports. Check out the https://www.keboola.com/product/integrations to explore your options.
+With your data now in Keboola, you can integrate it with dozens of other services that Keboola supports. Check out the [complete list of integrations](https://www.keboola.com/product/integrations) to explore your options.
 
-You can set up a writer for a selected service using Keboola Writer or create https://help.keboola.com/orchestrator/ to transform, merge, or split your data.
+You can set up a writer for a selected service using Keboola Writer or create [orchestrations](https://help.keboola.com/orchestrator/) to transform, merge, or split your data.
 
 Keboola Helper
 
-In Apify Store, you'll find the https://apify.com/drobnikj/keboola-input-mapping, designed to streamline the integration between Apify and Keboola. This helper Actor parses the input table received from the Apify <> Keboola Data Source and maps the data into the required input format for another task or Actor within the Keboola platform.
+In Apify Store, you'll find the [Keboola Input Mapping Actor](https://apify.com/drobnikj/keboola-input-mapping), designed to streamline the integration between Apify and Keboola. This helper Actor parses the input table received from the Apify <> Keboola Data Source and maps the data into the required input format for another task or Actor within the Keboola platform.
 
-If you have any questions or need assistance, feel free to contact us at mailto:info@apify.com, through our live chat, or in our https://discord.com/invite/jyEM2PRvMU.
+If you have any questions or need assistance, feel free to contact us at [info@apify.com](mailto:info@apify.com), through our live chat, or in our [developer community on Discord](https://discord.com/invite/jyEM2PRvMU).

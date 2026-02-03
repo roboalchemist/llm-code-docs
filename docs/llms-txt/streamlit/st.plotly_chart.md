@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/charts/st.plotly_chart
+
 # st.plotly_chart
 
 Display an interactive Plotly chart.

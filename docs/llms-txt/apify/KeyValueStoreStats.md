@@ -2,6 +2,8 @@
 
 # KeyValueStoreStats<!-- -->
 
+Statistics about Key-Value Store usage and storage.
+
 ## Index[**](#Index)
 
 ### Properties
@@ -14,7 +16,7 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#deleteCount)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/key_value_store.ts#L345)optionaldeleteCount
+### [**](#deleteCount)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/key_value_store.ts#L538)optionaldeleteCount
 
 **deleteCount?
 
@@ -22,7 +24,7 @@
 
 : number
 
-### [**](#listCount)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/key_value_store.ts#L346)optionallistCount
+### [**](#listCount)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/key_value_store.ts#L539)optionallistCount
 
 **listCount?
 
@@ -30,7 +32,7 @@
 
 : number
 
-### [**](#readCount)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/key_value_store.ts#L343)optionalreadCount
+### [**](#readCount)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/key_value_store.ts#L536)optionalreadCount
 
 **readCount?
 
@@ -38,7 +40,7 @@
 
 : number
 
-### [**](#storageBytes)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/key_value_store.ts#L347)optionalstorageBytes
+### [**](#storageBytes)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/key_value_store.ts#L540)optionalstorageBytes
 
 **storageBytes?
 
@@ -46,7 +48,7 @@
 
 : number
 
-### [**](#writeCount)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/key_value_store.ts#L344)optionalwriteCount
+### [**](#writeCount)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/key_value_store.ts#L537)optionalwriteCount
 
 **writeCount?
 

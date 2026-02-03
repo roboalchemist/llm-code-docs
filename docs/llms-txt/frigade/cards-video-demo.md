@@ -1,5 +1,9 @@
 # Source: https://docs.frigade.com/guides/cards-video-demo.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.frigade.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Guide: Cards and Banners
 
 > In this video, we show you how to build a GitHub style embedded card.

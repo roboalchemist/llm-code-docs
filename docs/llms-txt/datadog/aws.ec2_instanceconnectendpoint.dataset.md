@@ -4,8 +4,6 @@
 title: EC2 Instance Connect Endpoint
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > EC2 Instance Connect Endpoint
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.ec2_instanceconnectendpoint.dataset/index.html
 ---
 
 # EC2 Instance Connect Endpoint
@@ -35,5 +33,5 @@ aws.ec2_instanceconnectendpoint
 | state                         | core | string        | The current state of the EC2 Instance Connect Endpoint.                                                                                                                                                                                                                                                                                                                                 |
 | state_message                 | core | string        | The message for the current state of the EC2 Instance Connect Endpoint. Can include a failure message.                                                                                                                                                                                                                                                                                  |
 | subnet_id                     | core | string        | The ID of the subnet in which the EC2 Instance Connect Endpoint was created.                                                                                                                                                                                                                                                                                                            |
-| tags                          | core | hstore        |
+| tags                          | core | hstore_csv    |
 | vpc_id                        | core | string        | The ID of the VPC in which the EC2 Instance Connect Endpoint was created.                                                                                                                                                                                                                                                                                                               |

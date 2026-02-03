@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > DDSQL Reference > Data Directory > EC2 Local Gateway Virtual Interface
   Group
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.ec2_local_gateway_virtual_interface_group.dataset/index.html
 ---
 
 # EC2 Local Gateway Virtual Interface Group
@@ -28,4 +26,4 @@ aws.ec2_local_gateway_virtual_interface_group
 | local_gateway_virtual_interface_group_id | core | string        | The ID of the virtual interface group.                                                         |
 | local_gateway_virtual_interface_ids      | core | array<string> | The IDs of the virtual interfaces.                                                             |
 | owner_id                                 | core | string        | The ID of the Amazon Web Services account that owns the local gateway virtual interface group. |
-| tags                                     | core | hstore        |
+| tags                                     | core | hstore_csv    |

@@ -1,5 +1,9 @@
 # Source: https://docs.giselles.ai/en/guides/settings/account/authentication.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.giselles.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Authentication
 
 > Connect your Giselle account with third-party services to simplify login.

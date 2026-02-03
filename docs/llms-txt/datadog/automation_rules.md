@@ -3,8 +3,7 @@
 ---
 title: Case automation rules
 description: Datadog, the leading service for cloud-scale monitoring.
-breadcrumbs: Docs > Case Management > Case automation rules
-source_url: https://docs.datadoghq.com/case_management/automation_rules/index.html
+breadcrumbs: Docs > Incident Response > Case Management > Case automation rules
 ---
 
 # Case automation rules

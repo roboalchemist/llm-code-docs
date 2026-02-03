@@ -1,6 +1,6 @@
 # Source: https://docs.livekit.io/agents/models/avatar/plugins/simli.md
 
-LiveKit docs › Models › Virtual avatars › Plugins › Simli
+LiveKit docs › Models › Virtual avatar › Plugins › Simli
 
 ---
 
@@ -25,7 +25,7 @@ This section includes a basic usage example and some reference material. For lin
 Install the plugin from PyPI:
 
 ```shell
-uv add "livekit-agents[simli]~=1.2"
+uv add "livekit-agents[simli]~=1.3"
 
 ```
 
@@ -41,7 +41,7 @@ Use the plugin in an `AgentSession`. For example, you can use this avatar in the
 
 ```python
 from livekit import agents
-from livekit.agents import AgentServer, AgentSession, RoomOutputOptions
+from livekit.agents import AgentServer, AgentSession
 from livekit.plugins import simli
 
 server = AgentServer()
@@ -64,7 +64,7 @@ async def my_agent(ctx: agents.JobContext):
 
    # Start your agent session with the user
    await session.start(
-      # ... room, agent, room_input_options, etc....
+      # ... room, agent, room_options, etc....
    )
 
 ```
@@ -110,7 +110,7 @@ The following resources provide more information about using Simli with LiveKit 
 
 ---
 
-This document was rendered at 2025-11-18T23:55:16.626Z.
+This document was rendered at 2026-02-03T03:25:07.826Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/avatar/plugins/simli.md](https://docs.livekit.io/agents/models/avatar/plugins/simli.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

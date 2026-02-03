@@ -25,6 +25,13 @@ Download the HTMLHint extension for Visual Studio Code to get real-time feedback
 
 > The release notes for HTMLHint, see what's changed with each new version.
 
+## 1.8.0 *(2025-11-25)*
+
+[Section titled “1.8.0 (2025-11-25)”](#180-2025-11-25)
+
+* Feat Add support for disabling rules via HTML comments [#1767](https://github.com/htmlhint/HTMLHint/issues/1767)
+* Feat Add ‘allow-non-blocking’ option to [`head-script-disabled`](/rules/head-script-disabled/) rule [#1765](https://github.com/htmlhint/HTMLHint/issues/1765)
+
 ## 1.7.1 *(2025-09-17)*
 
 [Section titled “1.7.1 (2025-09-17)”](#171-2025-09-17)
@@ -458,6 +465,86 @@ Finally, rules can be specified inline directly in the HTML document:
 </html>
 ```
 
+## Disabling Rules Inline
+
+[Section titled “Disabling Rules Inline”](#disabling-rules-inline)
+
+You can disable specific rules or all rules for specific lines in your HTML using HTML comments. This is useful when you need to temporarily disable linting for a particular section of code.
+
+### Disable All Rules
+
+[Section titled “Disable All Rules”](#disable-all-rules)
+
+To disable all HTMLHint rules for the following lines until re-enabled:
+
+<!-- prettier-ignore -->
+
+```html
+<!-- htmlhint-disable -->
+<div class="foo">Lorem</div>
+<div class="bar">Ipsum</div>
+<!-- htmlhint-enable -->
+<div class="baz">Dolor</div>
+```
+
+### Disable for Next Line
+
+[Section titled “Disable for Next Line”](#disable-for-next-line)
+
+To disable all rules for just the next line:
+
+<!-- prettier-ignore -->
+
+```html
+<!-- htmlhint-disable-next-line -->
+<div class="foo">Lorem</div>
+<div class="bar">Ipsum</div>
+```
+
+### Disable Specific Rules
+
+[Section titled “Disable Specific Rules”](#disable-specific-rules)
+
+To disable specific rules for the following lines:
+
+<!-- prettier-ignore -->
+
+```html
+<!-- htmlhint-disable attr-lowercase -->
+<div CLASS="foo">Lorem</div>
+<div CLASS="bar">Ipsum</div>
+<!-- htmlhint-enable -->
+<div class="baz">Dolor</div>
+```
+
+### Disable Specific Rules for Next Line
+
+[Section titled “Disable Specific Rules for Next Line”](#disable-specific-rules-for-next-line)
+
+To disable specific rules for just the next line:
+
+<!-- prettier-ignore -->
+
+```html
+<!-- htmlhint-disable-next-line attr-lowercase -->
+<div CLASS="foo">Lorem</div>
+<div class="bar">Ipsum</div>
+```
+
+### Disable Multiple Rules
+
+[Section titled “Disable Multiple Rules”](#disable-multiple-rules)
+
+You can disable multiple rules by listing them separated by spaces:
+
+<!-- prettier-ignore -->
+
+```html
+<!-- htmlhint-disable attr-lowercase tagname-lowercase -->
+<DIV CLASS="foo">Lorem</DIV>
+<div class="bar">Ipsum</div>
+```
+
 ## Example configuration file
 
 [Section titled “Example configuration file”](#example-configuration-file)
@@ -554,6 +641,7 @@ Note: if you have the [VS Code extension](/vs-code-extension/) installed, it wil
   "attr-lowercase": true,
   "attr-no-duplication": true,
   "attr-value-double-quotes": true,
+  "attr-value-no-duplication": true,
   "button-type-require": true,
   "doctype-first": true,
   "doctype-html5": true,
@@ -561,6 +649,7 @@ Note: if you have the [VS Code extension](/vs-code-extension/) installed, it wil
   "h1-require": true,
   "html-lang-require": true,
   "id-unique": true,
+  "input-requires-label": true,
   "main-require": true,
   "meta-charset-require": true,
   "meta-description-require": true,
@@ -1476,12 +1565,17 @@ Level: Warning
 
 [Section titled “Config value”](#config-value)
 
-* `true`: enable rule
+* `true`: enable rule (disallow all scripts in head)
 * `false`: disable rule
+* `"allow-non-blocking"`: allow non-blocking scripts (modules, deferred, and async scripts) in head
 
 ### The following patterns are **not** considered rule violations
 
 [Section titled “The following patterns are not considered rule violations”](#the-following-patterns-are-not-considered-rule-violations)
+
+#### Default behavior (`true`)
+
+[Section titled “Default behavior (true)”](#default-behavior-true)
 
 ```html
 <body>
@@ -1489,15 +1583,95 @@ Level: Warning
 </body>
 ```
 
-### The following pattern is considered a rule violation:
+```html
+<head>
+  <script type="text/template">
+    <div>Template content</div>
+  </script>
+</head>
+```
 
-[Section titled “The following pattern is considered a rule violation:”](#the-following-pattern-is-considered-a-rule-violation)
+#### With `"allow-non-blocking"` option
+
+[Section titled “With "allow-non-blocking" option”](#with-allow-non-blocking-option)
+
+```html
+<head>
+  <script type="module" src="module.js"></script>
+</head>
+```
+
+```html
+<head>
+  <script defer src="deferred.js"></script>
+</head>
+```
+
+```html
+<head>
+  <script async src="analytics.js"></script>
+</head>
+```
+
+```html
+<head>
+  <script type="module">
+    import { init } from './app.js';
+    init();
+  </script>
+</head>
+```
+
+### The following patterns are considered rule violations
+
+[Section titled “The following patterns are considered rule violations”](#the-following-patterns-are-considered-rule-violations)
+
+#### Default behavior (`true`)
+
+[Section titled “Default behavior (true)”](#default-behavior-true-1)
 
 ```html
 <head>
   <script src="test.js"></script>
 </head>
 ```
+
+```html
+<head>
+  <script type="module" src="module.js"></script>
+</head>
+```
+
+#### With `"allow-non-blocking"` option
+
+[Section titled “With "allow-non-blocking" option”](#with-allow-non-blocking-option-1)
+
+```html
+<head>
+  <script src="test.js"></script>
+</head>
+```
+
+```html
+<head>
+  <script type="text/javascript">
+    console.log('blocking script');
+  </script>
+</head>
+```
+
+## Why this rule is important
+
+[Section titled “Why this rule is important”](#why-this-rule-is-important)
+
+Scripts in the `<head>` section traditionally block HTML parsing and rendering, which can negatively impact page load performance. However, modern JavaScript features like ES6 modules (`type="module"`), the `defer` attribute, and the `async` attribute allow scripts to be non-blocking, making them safe to place in the head without performance penalties.
+
+For more information, see:
+
+* [MDN: Script element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script)
+* [MDN: defer attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#defer)
+* [MDN: async attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script#async)
+* [MDN: JavaScript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
 
 # href-abs-or-rel
 
@@ -1674,6 +1848,8 @@ Level: Error
 
 Duplicate ID attributes can cause unexpected behavior and make the code harder to read and maintain.
 
+Further reading: [Axe Rules - duplicate-id](https://dequeuniversity.com/rules/axe/4.1/duplicate-id)
+
 # inline-script-disabled
 
 > Disallows the use of inline JavaScript in HTML elements for improved security and maintainability.
@@ -1768,6 +1944,8 @@ Level: Warning
 [Section titled “Why this rule is important”](#why-this-rule-is-important)
 
 This rule ensures that the input element has a corresponding label element for accessibility compliance.
+
+Further reading: [Axe Rules - input elements must have labels](https://dequeuniversity.com/rules/axe/4.1/label)
 
 # link-rel-canonical-require
 
@@ -2351,7 +2529,7 @@ Level: Error
 
 * `true`: enable rule
 * `false`: disable rule
-* `['clipPath', 'data-Test']`: Ignore some tagname name
+* `['clipPath', 'data-Test']`: enable rule except for the given tag names. All SVG camelCase elements are included, for example `linearGradient`, `foreignObject`
 
 ### The following patterns are **not** considered rule violations
 
@@ -2359,6 +2537,12 @@ Level: Error
 
 ```html
 <span><div>
+```
+
+SVG elements with camelCase names (e.g. `linearGradient`, `foreignObject`) are allowed:
+
+```html
+<svg><linearGradient /><foreignObject /><textPath /></svg>
 ```
 
 ### The following pattern is considered a rule violation:
@@ -2926,13 +3110,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
         with:
           persist-credentials: false
 
 
       - name: Set up Node.js
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@6044e13b5dc448c55e2357c09f80417699197238 # v6.2.0
 
 
       # If you need a website build script, include the steps here
@@ -2944,7 +3128,7 @@ jobs:
 
 
       - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@b20883b0cd1f46c72ae0ba6d1090936928f9fa30 # v4.32.0
         with:
           sarif_file: website/htmlhint.sarif
           category: HTMLHint
@@ -3101,7 +3285,7 @@ For detailed information on creating custom rules, see the [Custom Rules documen
 
 Get realtime linting feedback in Visual Studio Code with the HTMLHint extension. This extension provides a seamless integration of HTMLHint into your development workflow, allowing you to catch HTML issues as you type.
 
-The HTMLHint extension will attempt to use the locally installed HTMLHint module (the project-specific module if present, or a globally installed HTMLHint module). If a locally installed HTMLHint isn’t available, the extension will use the embedded version (current version 1.7.0).
+The HTMLHint extension will attempt to use the locally installed HTMLHint module (the project-specific module if present, or a globally installed HTMLHint module). If a locally installed HTMLHint isn’t available, the extension will use the embedded version (current version 1.8.0).
 
 ## Download
 

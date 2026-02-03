@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/guides/authentication.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Authentication and Authorization
 
 > Complete guide to authenticating with Flatfile using API keys, Personal Access Tokens, and managing roles and permissions
@@ -178,7 +182,7 @@ Data Clips can provide granular guest access to a specific [sheet](/core-concept
 
 <Info>This role can only be configured using code. See code example.</Info>
 
-```js
+```js  theme={null}
 const createGuest = await api.guests.create({
   environmentId: "us_env_hVXkXs0b",
   email: "guest@example.com",

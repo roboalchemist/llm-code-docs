@@ -4,7 +4,6 @@
 title: Real-Time Costs
 description: View and analyze cloud spend in real time.
 breadcrumbs: Docs > Cloud Cost Management > Cost Changes > Real-Time Costs
-source_url: https://docs.datadoghq.com/cost_changes/real_time_costs/index.html
 ---
 
 # Real-Time Costs

@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/caching-and-state/st.query_params
+
 # st.query_params
 
 `st.query_params` provides a dictionary-like interface to access query parameters in your app's URL and is available as of Streamlit 1.30.0. It behaves similarly to `st.session_state` with the notable exception that keys may be repeated in an app's URL. Handling of repeated keys requires special consideration as explained below.

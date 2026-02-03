@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/components/banner.md
+# Source: https://www.mintlify.com/docs/components/banner.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Banner
 
@@ -31,6 +35,10 @@ To add a banner, use the `banner` property in your `docs.json`:
   ```
 </CodeGroup>
 
+<Note>
+  You can also configure banners per language by setting `banner` in `navigation.languages`. See [Language-specific banners](#language-specific-banners).
+</Note>
+
 ## Properties
 
 <ResponseField name="content" type="string" required>
@@ -40,3 +48,53 @@ To add a banner, use the `banner` property in your `docs.json`:
 <ResponseField name="dismissible" type="boolean">
   Whether users can dismiss the banner. When `true`, users can close the banner and it won't reappear for their session. Defaults to `false`.
 </ResponseField>
+
+## Language-specific banners
+
+Configure different banner content for each language in your documentation. Define language-specific banners in the `navigation.languages` array in your `docs.json`.
+
+```json  theme={null}
+{
+  "navigation": {
+    "languages": [
+      {
+        "language": "en",
+        "banner": {
+          "content": "🚀 Version 2.0 is now live! See our [changelog](/en/changelog) for details.",
+          "dismissible": true
+        },
+        "groups": [
+          {
+            "group": "Getting started",
+            "pages": ["en/overview", "en/quickstart"]
+          }
+        ]
+      },
+      {
+        "language": "es",
+        "banner": {
+          "content": "🚀 ¡La versión 2.0 ya está disponible! Consulta nuestro [registro de cambios](/es/changelog) para más detalles.",
+          "dismissible": true
+        },
+        "groups": [
+          {
+            "group": "Getting started",
+            "pages": ["es/overview", "es/quickstart"]
+          }
+        ]
+      }
+    ]
+  },
+  "banner": {
+    "content": "🚀 Version 2.0 is now live!",
+    "dismissible": true
+  }
+}
+```
+
+### Fallback behavior
+
+Banners follow a priority order when determining which content to display:
+
+1. **Language-specific banner**: If the current language has a `banner` configuration, it takes priority.
+2. **Global banner**: If no language-specific banner exists, display the global `banner`.

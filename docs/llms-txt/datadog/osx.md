@@ -4,7 +4,6 @@
 title: macOS
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Agent > Supported Platforms > macOS
-source_url: https://docs.datadoghq.com/supported_platforms/osx/index.html
 ---
 
 # macOS
@@ -78,7 +77,7 @@ To remove the Agent and all Agent configuration files:
    ```
 1. Reboot your machine for the changes to take effect.
 
-## Uninstall the Agent{% #uninstall-the-agent-1 %}
+### System-wide LaunchDaemon installation{% #system-wide-launchdaemon-installation %}
 
 To remove the Agent and all Agent configuration files:
 

@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/experiments/running-from-code.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Run via SDK
 
 > Learn how to run experiments programmatically using the Traceloop SDK
@@ -334,8 +338,3 @@ For complete, working examples that you can run and modify:
 
   <Card title="TypeScript Example" icon="js" href="https://github.com/traceloop/openllmetry-js/blob/main/packages/sample-app/src/sample_experiment.ts" />
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

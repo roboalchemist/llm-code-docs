@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/custom-nodes/js/javascript_bottom_panel_tabs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Bottom Panel Tabs
 
 The Bottom Panel Tabs API allows extensions to add custom tabs to the bottom panel of the ComfyUI interface. This is useful for adding features like logs, debugging tools, or custom panels.

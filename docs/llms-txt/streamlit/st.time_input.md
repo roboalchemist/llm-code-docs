@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/widgets/st.time_input
+
 # st.time_input
 
 Display a time input widget.

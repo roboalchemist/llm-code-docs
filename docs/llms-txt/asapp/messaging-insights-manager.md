@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/changelog/messaging-insights-manager.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ASAPP Messaging Updates - Insights Manager
 
 > New updates and improvements for ASAPP Messaging - Insights Manager

@@ -2,10 +2,7 @@
 
 # List Flags
 
-```
-GET 
-/v1/configs/:configId/settings
-```
+Copy page
 
 This endpoint returns the list of the Feature Flags and Settings defined in a specified Config, identified by the `configId` parameter.
 

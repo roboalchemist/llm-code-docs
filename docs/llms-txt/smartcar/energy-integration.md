@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/help/oem-integrations/bmw/energy-integration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # BMW Energy APIs for European Markets
 
 > Access charging data and remote charge control for BMW and MINI EVs in Europe through Smartcar's BMW Energy API integration.
@@ -86,8 +90,3 @@ Vehicle owners grant consent through the BMW Connected Drive Portal as part of t
 * **Charge stop rate limit** — BMW enforces a rolling 30-day limit of 80 charge stop commands per vehicle.
 
 If you have any questions about these limitations or need additional capabilities, please our support team. We're continuously working with BMW to expand the integration's features and coverage.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://smartcar.com/docs/llms.txt

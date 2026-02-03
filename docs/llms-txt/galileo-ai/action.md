@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-protect/concepts/action.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Action
 
 > Galileo will provide a set of action types (override, passthrough), that the user can use, along with a configuration for each action type.
@@ -8,7 +12,7 @@ Actions are user-defined actions that are taken as a result of the [ruleset](/ga
 
 An Action can be defined as:
 
-```python
+```python  theme={null}
 gp.OverrideAction(
     choices=["Sorry, I cannot answer that question."]
 )
@@ -16,7 +20,7 @@ gp.OverrideAction(
 
 The action would be included in the ruleset definition as:
 
-```py
+```py  theme={null}
 gp.Ruleset(
     rules=[
         gp.Rule(

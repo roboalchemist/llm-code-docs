@@ -1,194 +1,87 @@
 # Source: https://developers.notion.com/reference/page.md
 
-# Notion API
-
-## Objects
-
-### Block
-- [Rich text](/reference/rich-text)
-
-### Page
-- [Page properties](/reference/page-property-values)
-  - [Page property items](/reference/property-item-object)
-
-### Database
-- [Database](/reference/database)
-
-### Data source
-- [Data source properties](/reference/property-object)
-
-### Comment
-- [Comment attachment](/reference/comment-attachment)
-- [Comment display name](/reference/comment-display-name)
-
-### File
-- [File Upload](/reference/file-upload)
-
-### User
-- [User](/reference/user)
-
-### Parent
-- [Parent](/reference/parent-object)
-
-### Emoji
-- [Emoji](/reference/emoji-object)
-
-### Unfurl attribute (Link Previews)
-- [Unfurl attribute (Link Previews)](/reference/unfurl-attribute-object)
-
-## Endpoints
-
-### Authentication
-- [Create a token](/reference/create-a-token) (post)
-- [Introspect token](/reference/introspect-token) (post)
-- [Revoke token](/reference/revoke-token) (post)
-- [Refresh a token](/reference/refresh-a-token) (post)
-
-### Blocks
-- [Append block children](/reference/append-block-children) (patch)
-- [Retrieve a block](/reference/retrieve-a-block) (get)
-- [Retrieve block children](/reference/retrieve-block-children) (get)
-- [Update a block](/reference/update-a-block) (patch)
-- [Delete a block](/reference/delete-a-block) (del)
-
-### Pages
-- [Create a page](/reference/create-a-page) (post)
-- [Retrieve a page](/reference/retrieve-a-page) (get)
-- [Retrieve a page property item](/reference/retrieve-a-page-property) (get)
-- [Update page](/reference/update-page)
-  - [Trash a page](/reference/trash-a-page)
-
-```
-
-# API Reference
-
-## Database Operations
-
-- [Create a database](https://docs.nestbase.com/reference/database-create)
-- [Update a database](https://docs.nestbase.com/reference/database-update)
-- [Retrieve a database](https://docs.nestbase.com/reference/database-retrieve)
-
-## Data Sources
-
-### Create a Data Source
-
-- [Create a data source](https://docs.nestbase.com/reference/create-a-data-source)
-- [Update a data source](https://docs.nestbase.com/reference/update-a-data-source)
-  - [Update data source properties](https://docs.nestbase.com/reference/update-data-source-properties)
-- [Retrieve a data source](https://docs.nestbase.com/reference/retrieve-a-data-source)
-- [Query a data source](https://docs.nestbase.com/reference/query-a-data-source)
-  - [Filter data source entries](https://docs.nestbase.com/reference/filter-data-source-entries)
-  - [Sort data source entries](https://docs.nestbase.com/reference/sort-data-source-entries)
-- [List data source templates](https://docs.nestbase.com/reference/list-data-source-templates)
-
-### Databases (deprecated)
-
-#### Create a Database
-
-- [Create a database](https://docs.nestbase.com/reference/create-a-database)
-- [Query a database](https://docs.nestbase.com/reference/post-database-query)
-  - [Filter database entries](https://docs.nestbase.com/reference/post-database-query-filter)
-  - [Sort database entries](https://docs.nestbase.com/reference/post-database-query-sort)
-- [Retrieve a database](https://docs.nestbase.com/reference/retrieve-a-database)
-- [Update a database](https://docs.nestbase.com/reference/update-a-database)
-  - [Update database properties](https://docs.nestbase.com/reference/update-property-schema-object)
-- [List databases (deprecated)](https://docs.nestbase.com/reference/get-databases)
-
-### Comments
-
-- [Create comment](https://docs.nestbase.com/reference/create-a-comment)
-- [Retrieve a comment](https://docs.nestbase.com/reference/retrieve-comment)
-- [List comments](https://docs.nestbase.com/reference/list-comments)
-
-### File Uploads
-
-- [Create a file upload](https://docs.nestbase.com/reference/create-a-file-upload)
-- [Send a file upload](https://docs.nestbase.com/reference/send-a-file-upload)
-- [Complete a file upload](https://docs.nestbase.com/reference/complete-a-file-upload)
-- [Retrieve a file upload](https://docs.nestbase.com/reference/retrieve-a-file-upload)
-- [List file uploads](https://docs.nestbase.com/reference/list-file-uploads)
-
-### Search
-
-- [Search](https://docs.nestbase.com/reference/post-search)
-```
+> ## Documentation Index
+> Fetch the complete documentation index at: https://developers.notion.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Page
 
-The Page object contains the [page property values](/reference/page-property-values) of a single Notion page.
+> The Page object contains the [page property values](/reference/page-property-values) of a single Notion page.
 
-```json
-{
-    "object": "page",
-    "id": "be633bf1-dfa0-436d-b259-571129a590e5",
-    "created_time": "2022-10-24T22:54:00.000Z",
-    "last_edited_time": "2023-03-08T18:25:00.000Z",
-    "created_by": {
-        "object": "user",
-        "id": "c2f20311-9e54-4d11-8c79-7398424ae41e"
-    },
-    "last_edited_by": {
-        "object": "user",
-        "id": "9188c6a5-7381-452f-b3dc-d4865aa89bdf"
-    },
-    "cover": null,
-    "icon": {
-        "type": "emoji",
-        "emoji": "🐞"
-    },
-    "parent": {
-        "type": "data_source_id",
-        "data_source_id": "a1d8501e-1ac1-43e9-a6bd-ea9fe6c8822b"
-    },
-    "archived": true,
-    "in_trash": true,
-    "properties": {
-        "Due date": {
-            "id": "M%3BBw",
-            "type": "date",
-            "date": {
-                "start": "2023-02-23",
-                "end": null,
-                "time_zone": null
-            }
-        },
-        "Status": {
-            "id": "Z%3ClH",
-            "type": "status",
-            "status": {
-                "id": "86ddb6ec-0627-47f8-800d-b65afd28be13",
-                "name": "Not started",
-                "color": "default"
-            }
-        },
-        "Title": {
-            "id": "title",
-            "type": "title",
-            "title": [
-                {
-                    "type": "text",
-                    "text": {
-                        "content": "Bug bash",
-                        "link": null
-                    },
-                    "annotations": {
-                        "bold": false,
-                        "italic": false,
-                        "strikethrough": false,
-                        "underline": false,
-                        "code": false,
-                        "color": "default"
-                    },
-                    "plain_text": "Bug bash",
-                    "href": null
-                }
-            ]
-        }
-    },
-    "url": "https://www.notion.so/Bug-bash-be633bf1dfa0436db259571129a590e5",
-		"public_url": "https://jm-testing.notion.site/p1-6df2c07bfc6b4c46815ad205d132e22d"
-}
-```
+<CodeGroup>
+  ```json Example page object expandable theme={null}
+  {
+      "object": "page",
+      "id": "be633bf1-dfa0-436d-b259-571129a590e5",
+      "created_time": "2022-10-24T22:54:00.000Z",
+      "last_edited_time": "2023-03-08T18:25:00.000Z",
+      "created_by": {
+          "object": "user",
+          "id": "c2f20311-9e54-4d11-8c79-7398424ae41e"
+      },
+      "last_edited_by": {
+          "object": "user",
+          "id": "9188c6a5-7381-452f-b3dc-d4865aa89bdf"
+      },
+      "cover": null,
+      "icon": {
+          "type": "emoji",
+          "emoji": "🐞"
+      },
+      "parent": {
+          "type": "database_id",
+          "database_id": "a1d8501e-1ac1-43e9-a6bd-ea9fe6c8822b"
+      },
+      "archived": true,
+      "in_trash": true,
+      "properties": {
+          "Due date": {
+              "id": "M%3BBw",
+              "type": "date",
+              "date": {
+                  "start": "2023-02-23",
+                  "end": null,
+                  "time_zone": null
+              }
+          },
+          "Status": {
+              "id": "Z%3ClH",
+              "type": "status",
+              "status": {
+                  "id": "86ddb6ec-0627-47f8-800d-b65afd28be13",
+                  "name": "Not started",
+                  "color": "default"
+              }
+          },
+          "Title": {
+              "id": "title",
+              "type": "title",
+              "title": [
+                  {
+                      "type": "text",
+                      "text": {
+                          "content": "Bug bash",
+                          "link": null
+                      },
+                      "annotations": {
+                          "bold": false,
+                          "italic": false,
+                          "strikethrough": false,
+                          "underline": false,
+                          "code": false,
+                          "color": "default"
+                      },
+                      "plain_text": "Bug bash",
+                      "href": null
+                  }
+              ]
+          }
+      },
+      "url": "https://www.notion.so/Bug-bash-be633bf1dfa0436db259571129a590e5",
+  		"public_url": "https://jm-testing.notion.site/p1-6df2c07bfc6b4c46815ad205d132e22d"
+  }
+  ```
+</CodeGroup>
 
 All pages have a [Parent](/reference/parent-object). If the parent is a [data source](/reference/data-source), the property values conform to the schema laid out in the data source's [properties](/reference/property-object). Otherwise, the only property value is the `title`.
 
@@ -196,5 +89,23 @@ Page content is available as [blocks](/reference/block). The content can be read
 
 ## Page object properties
 
-> Properties marked with an * are available to integrations with any capabilities. Other properties require read content capabilities in order to be returned from the Notion API. For more information on integration capabilities, see the [capabilities guide](/reference/capabilities).
-```
+<Note>
+  Properties marked with an \* are available to integrations with any capabilities. Other properties require read content capabilities in order to be returned from the Notion API. For more information on integration capabilities, see the [capabilities guide](/reference/capabilities).
+</Note>
+
+| Property           | Type                                                                                                                                       | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | Example value                                                                            |
+| :----------------- | :----------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :--------------------------------------------------------------------------------------- |
+| `object`\*         | `string`                                                                                                                                   | Always `"page"`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | `"page"`                                                                                 |
+| `id`\*             | `string` (UUIDv4)                                                                                                                          | Unique identifier of the page.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | `"45ee8d13-687b-47ce-a5ca-6e2e45548c4b"`                                                 |
+| `created_time`     | `string` ([ISO 8601 date and time](https://en.wikipedia.org/wiki/ISO_8601))                                                                | Date and time when this page was created. Formatted as an [ISO 8601 date time](https://en.wikipedia.org/wiki/ISO_8601) string.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | `"2020-03-17T19:10:04.968Z"`                                                             |
+| `created_by`       | [Partial User](/reference/user)                                                                                                            | User who created the page.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | `{"object": "user","id": "45ee8d13-687b-47ce-a5ca-6e2e45548c4b"}`                        |
+| `last_edited_time` | `string` ([ISO 8601 date and time](https://en.wikipedia.org/wiki/ISO_8601))                                                                | Date and time when this page was updated. Formatted as an [ISO 8601 date time](https://en.wikipedia.org/wiki/ISO_8601) string.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | `"2020-03-17T19:10:04.968Z"`                                                             |
+| `last_edited_by`   | [Partial User](/reference/user)                                                                                                            | User who last edited the page.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | `{"object": "user","id": "45ee8d13-687b-47ce-a5ca-6e2e45548c4b"}`                        |
+| `archived`         | `boolean`                                                                                                                                  | The archived status of the page.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | `false`                                                                                  |
+| `in_trash`         | `boolean`                                                                                                                                  | Whether the page is in Trash.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | `false`                                                                                  |
+| `icon`             | [File Object](/reference/file-object) (`type` of `"external"` or `"file_upload"` are supported) or [Emoji object](/reference/emoji-object) | Page icon.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |                                                                                          |
+| `cover`            | [File object](/reference/file-object) (`type` of `"external"` or `"file_upload"` are supported)                                            | Page cover image.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |                                                                                          |
+| `properties`       | `object`                                                                                                                                   | Property values of this page. As of version `2022-06-28`, `properties` only contains the ID of the property; in prior versions `properties` contained the values as well. <br /> <br /> If `parent.type` is `"page_id"` or `"workspace"`, then the only valid key is `title`. <br /> <br /> If `parent.type` is `"data_source_id"`, then the keys and values of this field are determined by the [`properties`](/reference/property-object) of the [data source](/reference/data-source) this page belongs to.<br /> <br /> `key` string Name of a property as it appears in Notion.<br /> <br /> `value` object See [Property value object](/reference/property-value-object). | `{ "id": "A%40Hk" }`                                                                     |
+| `parent`           | `object`                                                                                                                                   | Information about the page's parent. See [Parent object](/reference/parent-object).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | `{ "type": "data_source_id", "data_source_id": "d9824bdc-8445-4327-be8b-5b47500af6ce" }` |
+| `url`              | `string`                                                                                                                                   | The URL of the Notion page.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     | `"https://www.notion.so/Avocado-d093f1d200464ce78b36e58a3f0d8043"`                       |
+| `public_url`       | `string`                                                                                                                                   | The public page URL if the page has been published to the web. Otherwise, `null`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | `"https://jm-testing.notion.site/p1-6df2c07bfc6b4c46815ad205d132e22d"1`                  |

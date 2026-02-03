@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/api/playground-endpoints/delete-a-playground-endpoint.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete a playground endpoint
 
 > Delete a playground endpoint
@@ -38,7 +42,3 @@ paths:
           description: Endpoint not found
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

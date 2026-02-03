@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/faq-new/deployment-infrastructure/how-does-billing-and-scaling-work-for-on-demand-gpu-deployments.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How does billing and scaling work for on-demand GPU deployments?
 
 On-demand GPU deployments have unique billing and scaling characteristics compared to serverless deployments:

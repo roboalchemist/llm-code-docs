@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/fal/
+
 # fal.ai
 
 The `fal` provider supports the [fal.ai](https://fal.ai/) inference API using the [fal-js](https://github.com/fal-ai/fal-js) client, providing a native experience for using fal.ai models in your evaluations.

@@ -27,5 +27,5 @@ sentinel.running
 
  | instance | Number of services the sentinel has running currently |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

@@ -7,7 +7,7 @@
 Global Styles is your centralized design system for managing component defaults across all Tests and Experiences. Create consistent, branded components with the flexibility to override them per offer when needed.
 
 {% hint style="warning" %}
-**Important:** To add these components to your site, please follow [these installation instructions](https://docs.intelligems.io/offer-experiences/offers-integrating-widgets)
+**Important:** To add these components to your site, please follow [these installation instructions](https://docs.intelligems.io/offer-personalizations/offers-integrating-widgets)
 {% endhint %}
 
 <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-f377382f83589d954c2d795ad5eac4bcb5efe98c%2FGlobal%20styles%20-%20Quantity%20buttons.png?alt=media" alt=""><figcaption></figcaption></figure>
@@ -34,15 +34,15 @@ Global Styles serve as templates for each component type:
 
 Global Styles can be configured for each component style type:
 
-* [**Quantity Buttons**](https://docs.intelligems.io/offer-experiences/quantity-buttons)
-* [**Progress Bars**](https://docs.intelligems.io/offer-experiences/progress-bars)
+* [**Quantity Buttons**](https://docs.intelligems.io/offer-personalizations/quantity-buttons)
+* [**Progress Bars**](https://docs.intelligems.io/offer-personalizations/progress-bars)
 * [**Shipping Progress Bars**](https://docs.intelligems.io/shipping-testing/shipping-progress-bar-integration)
-* [**Offer Messages**](https://docs.intelligems.io/offer-experiences/offer-modifications)
+* [**Offer Messages**](https://docs.intelligems.io/offer-personalizations/offer-modifications)
 
 Each component type allows you to set default styling, content templates, and layout preferences that will automatically apply to new components.
 
 {% hint style="warning" %}
-Note: In order to use Quantity Buttons, Progress Bars, and Shipping Progress Bars in an Offer, you need to [complete the installation](https://docs.intelligems.io/offer-experiences/offers-integrating-widgets) by adding a snippet to your Theme code.
+Note: In order to use Quantity Buttons, Progress Bars, and Shipping Progress Bars in an Offer, you need to [complete the installation](https://docs.intelligems.io/offer-personalizations/offers-integrating-widgets) by adding a snippet to your Theme code.
 {% endhint %}
 
 {% hint style="info" %}

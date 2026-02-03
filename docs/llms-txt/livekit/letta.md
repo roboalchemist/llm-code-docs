@@ -1,6 +1,6 @@
 # Source: https://docs.livekit.io/agents/models/llm/plugins/letta.md
 
-LiveKit docs › Models › Large language models (LLM) › Plugins › Letta
+LiveKit docs › Models › LLM › Plugins › Letta
 
 ---
 
@@ -14,7 +14,7 @@ Available in:
 
 ## Overview
 
-This plugin allows you to use [Letta](https://docs.letta.com/overview) as an LLM provider for your voice agents.
+This plugin allows you to use [Letta](https://docs.letta.com/overview) as an LLM provider for your voice agents. Letta compatibility is provided by the OpenAI plugin using the Letta Chat Completions API.
 
 ## Quick reference
 
@@ -25,7 +25,7 @@ This section includes a basic usage example and some reference material. For lin
 Install the OpenAI plugin to add Letta support:
 
 ```shell
-uv add "livekit-agents[openai]~=1.2"
+uv add "livekit-agents[openai]~=1.3"
 
 ```
 
@@ -75,7 +75,7 @@ The following links provide more information about the Letta LLM plugin.
 
 ---
 
-This document was rendered at 2025-11-18T23:55:11.333Z.
+This document was rendered at 2026-02-03T03:25:00.676Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/llm/plugins/letta.md](https://docs.livekit.io/agents/models/llm/plugins/letta.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

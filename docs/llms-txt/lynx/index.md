@@ -4,6 +4,8 @@
 
 # Source: https://lynxjs.org/help/index.md
 
+# Source: https://lynxjs.org/ai/index.md
+
 # Source: https://lynxjs.org/blog/index.md
 
 # Source: https://lynxjs.org/guide/ui/layout/index.md

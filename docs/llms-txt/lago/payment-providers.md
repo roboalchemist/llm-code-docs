@@ -1,8 +1,12 @@
 # Source: https://getlago.com/docs/guide/payments/payment-providers.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Payment providers integrations
 
-> Automatically collect payments from Payement Providers by using native integrations or webhook messages.
+> Automatically collect payments from Payment Providers by using native integrations or webhook messages.
 
 ## Native payment providers integrations
 

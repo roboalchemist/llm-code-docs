@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/jest/prefer-to-contain.md
 ---
-# jest/prefer-to-contain&#x20;
 
 ### What it does
 

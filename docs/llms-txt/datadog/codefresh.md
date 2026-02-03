@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Continuous Integration Visibility > CI Pipeline Visibility in Datadog >
   Codefresh Setup for CI Visibility
-source_url: https://docs.datadoghq.com/pipelines/codefresh/index.html
 ---
 
 # Codefresh Setup for CI Visibility

@@ -1,6 +1,16 @@
+# Source: https://docs.datadoghq.com/getting_started/logs.md
+
+# Source: https://docs.datadoghq.com/error_tracking/frontend/logs.md
+
+# Source: https://docs.datadoghq.com/error_tracking/backend/logs.md
+
+# Source: https://docs.datadoghq.com/developers/ide_plugins/idea/logs.md
+
 # Source: https://docs.datadoghq.com/containers/amazon_ecs/logs.md
 
 # Source: https://docs.datadoghq.com/agent/logs.md
+
+# Source: https://docs.datadoghq.com/api/latest/logs.md
 
 # Source: https://docs.datadoghq.com/logs.md
 
@@ -10,7 +20,6 @@ description: >-
   Configure your Datadog Agent to gather logs from your host, containers &
   services.
 breadcrumbs: Docs > Log Management
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Log Management

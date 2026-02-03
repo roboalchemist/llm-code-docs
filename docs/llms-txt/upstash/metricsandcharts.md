@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/howto/metricsandcharts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Metrics and Charts
 
 There are many metrics and charts in Upstash console. In this document, we will

@@ -81,6 +81,7 @@ import { GridApi } from '@mui/x-data-grid'
 | hideHeaderFilterMenu | `() => void` | - | Yes |  |
 | hidePreferences | `() => void` | - | Yes |  |
 | hideSidebar | `() => void` | - | Yes |  |
+| history | `{ /** * Undo the last action. * @returns {Promise<boolean>} True if the operation was successful, false otherwise. */ undo: () => Promise<boolean> /** * Redo the last undone action. * @returns {Promise<boolean>} True if the operation was successful, false otherwise. */ redo: () => Promise<boolean> /** * Clear the entire history. */ clear: () => void /** * @returns {boolean} True if there are undo steps available, false otherwise. */ canUndo: () => boolean /** * @returns {boolean} True if there are redo steps available, false otherwise. */ canRedo: () => boolean }` | - | Yes |  |
 | ignoreDiacritics | `DataGridProcessedProps['ignoreDiacritics']` | - | Yes |  |
 | isCellEditable | `(params: GridCellParams) => boolean` | - | Yes |  |
 | isCellSelected | `(id: GridRowId, field: GridColDef['field']) => boolean` | - | Yes |  |

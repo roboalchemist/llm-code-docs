@@ -4,7 +4,6 @@
 title: Transit Gateway Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > AWS Components > Transit Gateway Component
-source_url: https://docs.datadoghq.com/components-aws/transit-gateway/index.html
 ---
 
 # Transit Gateway Component

@@ -19,13 +19,13 @@ This scheduler requires the asyncio Twisted reactor to be installed.
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#__init__)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/scrapy/scheduler.py#L30)\_\_init\_\_
+### [**](#__init__)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/scrapy/scheduler.py#L30)\_\_init\_\_
 
 * ****\_\_init\_\_**(): None
 
 - #### Returns None
 
-### [**](#close)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/scrapy/scheduler.py#L69)close
+### [**](#close)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/scrapy/scheduler.py#L69)close
 
 * ****close**(reason): None
 
@@ -43,7 +43,7 @@ This scheduler requires the asyncio Twisted reactor to be installed.
 
   #### Returns None
 
-### [**](#enqueue_request)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/scrapy/scheduler.py#L107)enqueue\_request
+### [**](#enqueue_request)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/scrapy/scheduler.py#L107)enqueue\_request
 
 * ****enqueue\_request**(request): bool
 
@@ -61,7 +61,7 @@ This scheduler requires the asyncio Twisted reactor to be installed.
 
   #### Returns bool
 
-### [**](#has_pending_requests)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/scrapy/scheduler.py#L90)has\_pending\_requests
+### [**](#has_pending_requests)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/scrapy/scheduler.py#L90)has\_pending\_requests
 
 * ****has\_pending\_requests**(): bool
 
@@ -71,7 +71,7 @@ This scheduler requires the asyncio Twisted reactor to be installed.
 
   #### Returns bool
 
-### [**](#next_request)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/scrapy/scheduler.py#L141)next\_request
+### [**](#next_request)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/scrapy/scheduler.py#L141)next\_request
 
 * ****next\_request**(): Request | None
 
@@ -81,7 +81,7 @@ This scheduler requires the asyncio Twisted reactor to be installed.
 
   #### Returns Request | None
 
-### [**](#open)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/scrapy/scheduler.py#L43)open
+### [**](#open)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/scrapy/scheduler.py#L43)open
 
 * ****open**(spider): Deferred\[None] | None
 

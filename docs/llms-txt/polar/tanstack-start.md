@@ -1,17 +1,52 @@
 # Source: https://polar.sh/docs/integrate/sdk/adapters/tanstack-start.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # TanStack Start
 
 > Payments and Checkouts made dead simple with TanStack Start
 
-<CodeGroup>`npm install @polar-sh/tanstack-start`</CodeGroup>
+## Examples
+
+* [With TanStack Start](https://github.com/polarsource/examples/tree/main/with-tanstack-start)
+
+## Installation
+
+Install the required Polar packages using the following command:
+
+<Tabs>
+  <Tab title="npm">
+    ```bash Terminal theme={null}
+    npm install zod @polar-sh/tanstack-start
+    ```
+  </Tab>
+
+  <Tab title="yarn">
+    ```bash Terminal theme={null}
+    yarn add zod @polar-sh/tanstack-start
+    ```
+  </Tab>
+
+  <Tab title="pnpm">
+    ```bash Terminal theme={null}
+    pnpm add zod @polar-sh/tanstack-start
+    ```
+  </Tab>
+
+  <Tab title="bun">
+    ```bash Terminal theme={null}
+    bun add zod @polar-sh/tanstack-start
+    ```
+  </Tab>
+</Tabs>
 
 ## Checkout
 
 Create a Checkout handler which takes care of redirections.
 
-```typescript  theme={null}
-// routes/api/checkout.ts
+```typescript icon="square-js" routes/api/checkout.ts theme={null}
 import { Checkout } from "@polar-sh/tanstack-start";
 import { createFileRoute } from "@tanstack/react-start";
 
@@ -45,8 +80,7 @@ Pass query params to this route.
 
 Create a customer portal where your customer can view orders and subscriptions.
 
-```typescript  theme={null}
-// routes/api/portal.ts
+```typescript icon="square-js" routes/api/portal.ts theme={null}
 import { CustomerPortal } from "@polar-sh/tanstack-start";
 import { createFileRoute } from "@tanstack/react-start";
 import { getSupabaseServerClient } from "~/servers/supabase-server";
@@ -69,8 +103,7 @@ export const Route = createFileRoute("/api/portal")({
 
 A simple utility which resolves incoming webhook payloads by signing the webhook secret properly.
 
-```typescript  theme={null}
-// routes/api/webhook/polar.ts
+```typescript icon="square-js" routes/api/webhook/polar.ts theme={null}
 import { Webhooks } from "@polar-sh/tanstack-start";
 import { createFileRoute } from "@tanstack/react-router";
 

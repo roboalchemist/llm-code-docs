@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/
+
 # Red Team Plugins
 
 ## What are Plugins?

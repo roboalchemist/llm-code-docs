@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/common/account/createaccount.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create an Account
 
 You can sign up for <a href="https://console.upstash.com" target="_blank">Upstash</a> using your Amazon, Github or Google accounts. Alternatively, if you prefer not to use these authentication providers or want to sign up with a corporate email address, you can also sign up using email and password.

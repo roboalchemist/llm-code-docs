@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/pliny/
+
 # Pliny prompt injections for LLMs
 
 ## Overview

@@ -3,10 +3,7 @@
 ---
 title: Migrate DatadogAgent CRDs to v2alpha1
 description: Datadog, the leading service for cloud-scale monitoring.
-breadcrumbs: >-
-  Docs > Container Monitoring > Containers Guides > Migrate DatadogAgent CRDs to
-  v2alpha1
-source_url: https://docs.datadoghq.com/guide/v2alpha1_migration/index.html
+breadcrumbs: Docs > Containers > Containers Guides > Migrate DatadogAgent CRDs to v2alpha1
 ---
 
 # Migrate DatadogAgent CRDs to v2alpha1

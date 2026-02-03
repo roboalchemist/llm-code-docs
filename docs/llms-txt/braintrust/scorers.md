@@ -1,6 +1,8 @@
-# Source: https://braintrust.dev/docs/core/functions/scorers.md
-
 # Source: https://braintrust.dev/docs/best-practices/scorers.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Writing scorers
 
@@ -297,8 +299,3 @@ By following a structured evaluation cycle (define, implement, evaluate, refine)
 * Scale evaluations without manual overhead
 
 Reliable scorers are the backbone of high‑quality, user‑aligned AI products.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

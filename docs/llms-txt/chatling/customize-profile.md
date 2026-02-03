@@ -1,6 +1,8 @@
 # Source: https://docs.chatling.ai/whatsapp/customize-profile.md
 
-# Source: https://docs.chatling.ai/chatbot/whatsapp/customize-profile.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Customize profile
 

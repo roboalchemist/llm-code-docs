@@ -2,6 +2,10 @@
 
 # ActorDefinition<!-- -->
 
+Actor definition from the `.actor/actor.json` file.
+
+Contains the Actor's configuration, input schema, and other metadata.
+
 ## Index[**](#Index)
 
 ### Properties
@@ -23,11 +27,11 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#actorSpecification)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L523)actorSpecification
+### [**](#actorSpecification)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L826)actorSpecification
 
 **actorSpecification: number
 
-### [**](#buildTag)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L526)optionalbuildTag
+### [**](#buildTag)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L829)optionalbuildTag
 
 **buildTag?
 
@@ -35,7 +39,7 @@
 
 : string
 
-### [**](#changelog)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L532)optionalchangelog
+### [**](#changelog)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L835)optionalchangelog
 
 **changelog?
 
@@ -43,7 +47,7 @@
 
 : null | string
 
-### [**](#dockerContextDir)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L529)optionaldockerContextDir
+### [**](#dockerContextDir)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L832)optionaldockerContextDir
 
 **dockerContextDir?
 
@@ -51,7 +55,7 @@
 
 : string
 
-### [**](#dockerfile)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L528)optionaldockerfile
+### [**](#dockerfile)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L831)optionaldockerfile
 
 **dockerfile?
 
@@ -59,7 +63,7 @@
 
 : string
 
-### [**](#environmentVariables)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L527)optionalenvironmentVariables
+### [**](#environmentVariables)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L830)optionalenvironmentVariables
 
 **environmentVariables?
 
@@ -67,7 +71,7 @@
 
 : Record\<string, string>
 
-### [**](#input)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L531)optionalinput
+### [**](#input)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L834)optionalinput
 
 **input?
 
@@ -75,7 +79,7 @@
 
 : null | object
 
-### [**](#maxMemoryMbytes)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L537)optionalmaxMemoryMbytes
+### [**](#maxMemoryMbytes)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L840)optionalmaxMemoryMbytes
 
 **maxMemoryMbytes?
 
@@ -83,7 +87,7 @@
 
 : number
 
-### [**](#minMemoryMbytes)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L536)optionalminMemoryMbytes
+### [**](#minMemoryMbytes)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L839)optionalminMemoryMbytes
 
 **minMemoryMbytes?
 
@@ -91,11 +95,11 @@
 
 : number
 
-### [**](#name)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L524)name
+### [**](#name)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L827)name
 
 **name: string
 
-### [**](#readme)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L530)optionalreadme
+### [**](#readme)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L833)optionalreadme
 
 **readme?
 
@@ -103,7 +107,7 @@
 
 : null | string
 
-### [**](#storages)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L533)optionalstorages
+### [**](#storages)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L836)optionalstorages
 
 **storages?
 
@@ -119,7 +123,7 @@
 
 * ##### optionaldataset?<!-- -->: object
 
-### [**](#usesStandbyMode)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L538)optionalusesStandbyMode
+### [**](#usesStandbyMode)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L841)optionalusesStandbyMode
 
 **usesStandbyMode?
 
@@ -127,6 +131,6 @@
 
 : boolean
 
-### [**](#version)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor.ts#L525)version
+### [**](#version)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor.ts#L828)version
 
 **version: string

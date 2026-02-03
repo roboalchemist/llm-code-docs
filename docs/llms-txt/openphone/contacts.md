@@ -1,22 +1,38 @@
 # Source: https://www.quo.com/docs/mdx/guides/contacts.md
 
-# Integration contacts
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.quo.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-> Learn more about working with contacts via the Quo API.
+# External contacts
 
-## Understanding integration contacts
+> Learn about working with contacts imported via the Quo API or native integrations.
 
-Integration contacts are contacts that are created and managed through the Quo API. They provide a programmatic way to import contact records from external sources into your Quo workspace.
+## Understanding external contacts
+
+External contacts are contacts that originate from outside the Quo app: either created through the Quo API or synced via native integrations (such as CRM or other connected platforms). These contacts allow you to centralize contact records from multiple sources within your Quo workspace.
 
 ### Key characteristics
 
 <CardGroup cols={1}>
-  <Card title="Distinct from app contacts">
-    Integration contacts are separate from contacts created directly in the Quo app, with their own specific behaviors and management flow.
+  <Card title="Distinct from app-created contacts">
+    External contacts are separate from contacts created directly in the Quo app, with their own specific behaviors depending on how they were created.
   </Card>
 
-  <Card title="API-first management">
-    These contacts are designed to be managed exclusively through API endpoints, enabling automated contact management and integration with your existing systems. They cannot be modified or deleted within Quo.
+  <Card title="Two sources, different behaviors">
+    External contacts can come from two sources: the Quo API or native integrations and each has different editability rules within the Quo app.
+  </Card>
+</CardGroup>
+
+### Editability by source
+
+<CardGroup cols={2}>
+  <Card title="API-created contacts" icon="code">
+    Contacts created via the Quo API can be updated directly within the Quo app. You can also continue managing them programmatically through API endpoints.
+  </Card>
+
+  <Card title="Native integration contacts" icon="plug">
+    Contacts synced from native integrations remain read-only within Quo. Any changes must be made in the source system and synced back to Quo.
   </Card>
 </CardGroup>
 
@@ -24,15 +40,11 @@ Integration contacts are contacts that are created and managed through the Quo A
 
 <CardGroup cols={1}>
   <Card title="Preserving contact IDs">
-    When you create an integration contact using the `POST /contacts` endpoint, it's essential to save the `id` returned in the response. This `id` will be required for all future operations involving the contact.
+    When you create a contact using the `POST /contacts` endpoint, it's essential to save the `id` returned in the response. This `id` will be required for all future API operations involving the contact.
   </Card>
 
   <Card title="Visibility in the Quo app">
-    After creating an integration contact, it will only appear in the Quo app—whether in the conversation list, contact list, or search results—if there's an associated conversation with a matching phone number.
-  </Card>
-
-  <Card title="Read-only status">
-    At present, integration contacts are read-only within the Quo app. To make any updates or changes to an integration contact, you will need to use the `PATCH /contacts/:id` endpoint.
+    After creating an API contact, it will only appear in the Quo app—whether in the conversation list, contact list, or search results—if there's an associated conversation with a matching phone number.
   </Card>
 </CardGroup>
 
@@ -41,7 +53,7 @@ Integration contacts are contacts that are created and managed through the Quo A
 Quo organizes contact information using two distinct field types. Understanding these is crucial for effective contact management.
 
 <AccordionGroup>
-  <Accordion title="Default fields" defaultOpen={true}>
+  <Accordion title="Default fields" defaultOpen="true">
     Every contact in Quo includes these predefined fields:
 
     * First Name
@@ -71,7 +83,7 @@ Quo organizes contact information using two distinct field types. Understanding 
   </Accordion>
 </AccordionGroup>
 
-## Creating and managing contacts
+## Creating and managing contacts via API
 
 Follow these steps to effectively create and manage contacts through the API:
 
@@ -107,7 +119,7 @@ Follow these steps to effectively create and manage contacts through the API:
   </Step>
 
   <Step title="Manage the contact">
-    Use the saved contact ID with the `PATCH /contacts/:id` endpoint for any future updates to the contact's information.
+    Update contacts either within the Quo app or programmatically using the `PATCH /contacts/:id` endpoint with the saved contact ID.
   </Step>
 </Steps>
 

@@ -4,8 +4,6 @@
 title: DataSync HDFS Location
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > DataSync HDFS Location
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.datasync_location_hdfs.dataset/index.html
 ---
 
 # DataSync HDFS Location
@@ -34,4 +32,4 @@ aws.datasync_location_hdfs
 | qop_configuration    | core | json          | The Quality of Protection (QOP) configuration, which specifies the Remote Procedure Call (RPC) and data transfer protection settings configured on the HDFS cluster. |
 | replication_factor   | core | int64         | The number of DataNodes to replicate the data to when writing to the HDFS cluster.                                                                                   |
 | simple_user          | core | string        | The user name to identify the client on the host operating system. This parameter is used if the AuthenticationType is defined as SIMPLE.                            |
-| tags                 | core | hstore        |
+| tags                 | core | hstore_csv    |

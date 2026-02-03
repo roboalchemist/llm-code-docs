@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/examples/imageProcessing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Image Processing
 
 <Note>
@@ -57,10 +61,10 @@ Our workflow will:
             // endpoint which returns ImageResult type in response
             url: "https://image-processing-service.com/resize",
             method: "POST",
-            body: {
+            body: JSON.stringify({
               imageUrl,
               width: resolution,
-            }
+            })
           }
         )
       ))
@@ -77,10 +81,10 @@ Our workflow will:
               // endpoint which returns ImageResult type in response
               url: "https://image-processing-service.com/filter",
               method: "POST",
-              body: {
+              body: JSON.stringify({
                 imageUrl: resizedImage.body.imageUrl,
                 filter,
-              }
+              })
             }
           )
           processedImagePromises.push(processedImagePromise)
@@ -216,10 +220,10 @@ We call `context.call` for each resolution and use `Promise.all` to run them par
         // endpoint which returns ImageResult type in response
         url: "https://image-processing-service.com/resize",
         method: "POST",
-        body: {
+        body: JSON.stringify({
           imageUrl,
           width: resolution,
-        }
+        })
       }
     )
   ))

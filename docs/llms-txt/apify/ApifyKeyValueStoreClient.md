@@ -22,7 +22,7 @@ An Apify platform implementation of the key-value store client.
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#__init__)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_key_value_store_client.py#L29)\_\_init\_\_
+### [**](#__init__)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_key_value_store_client.py#L29)\_\_init\_\_
 
 * ****\_\_init\_\_**(\*, api\_client, api\_public\_base\_url, lock): None
 
@@ -40,7 +40,7 @@ An Apify platform implementation of the key-value store client.
 
   #### Returns None
 
-### [**](#delete_value)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_key_value_store_client.py#L132)delete\_value
+### [**](#delete_value)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_key_value_store_client.py#L132)delete\_value
 
 * **async **delete\_value**(\*, key): None
 
@@ -50,19 +50,19 @@ An Apify platform implementation of the key-value store client.
 
   #### Returns None
 
-### [**](#drop)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_key_value_store_client.py#L113)drop
+### [**](#drop)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_key_value_store_client.py#L113)drop
 
 * **async **drop**(): None
 
 - #### Returns None
 
-### [**](#get_metadata)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_key_value_store_client.py#L55)get\_metadata
+### [**](#get_metadata)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_key_value_store_client.py#L55)get\_metadata
 
 * **async **get\_metadata**(): [ApifyKeyValueStoreMetadata](https://docs.apify.com/sdk/python/sdk/python/reference/class/ApifyKeyValueStoreMetadata.md)
 
 - #### Returns [ApifyKeyValueStoreMetadata](https://docs.apify.com/sdk/python/sdk/python/reference/class/ApifyKeyValueStoreMetadata.md)
 
-### [**](#get_public_url)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_key_value_store_client.py#L174)get\_public\_url
+### [**](#get_public_url)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_key_value_store_client.py#L174)get\_public\_url
 
 * **async **get\_public\_url**(\*, key): str
 
@@ -78,7 +78,7 @@ An Apify platform implementation of the key-value store client.
 
   #### Returns str
 
-### [**](#get_value)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_key_value_store_client.py#L118)get\_value
+### [**](#get_value)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_key_value_store_client.py#L118)get\_value
 
 * **async **get\_value**(\*, key): KeyValueStoreRecord | None
 
@@ -88,7 +88,7 @@ An Apify platform implementation of the key-value store client.
 
   #### Returns KeyValueStoreRecord | None
 
-### [**](#iterate_keys)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_key_value_store_client.py#L137)iterate\_keys
+### [**](#iterate_keys)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_key_value_store_client.py#L137)iterate\_keys
 
 * **async **iterate\_keys**(\*, exclusive\_start\_key, limit): AsyncIterator\[KeyValueStoreRecordMetadata]
 
@@ -99,7 +99,7 @@ An Apify platform implementation of the key-value store client.
 
   #### Returns AsyncIterator\[KeyValueStoreRecordMetadata]
 
-### [**](#open)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_key_value_store_client.py#L60)open
+### [**](#open)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_key_value_store_client.py#L60)open
 
 * **async **open**(\*, id, name, alias, configuration): [ApifyKeyValueStoreClient](https://docs.apify.com/sdk/python/sdk/python/reference/class/ApifyKeyValueStoreClient.md)
 
@@ -129,13 +129,13 @@ An Apify platform implementation of the key-value store client.
 
   #### Returns [ApifyKeyValueStoreClient](https://docs.apify.com/sdk/python/sdk/python/reference/class/ApifyKeyValueStoreClient.md)
 
-### [**](#purge)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_key_value_store_client.py#L106)purge
+### [**](#purge)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_key_value_store_client.py#L106)purge
 
 * **async **purge**(): None
 
 - #### Returns None
 
-### [**](#record_exists)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_key_value_store_client.py#L170)record\_exists
+### [**](#record_exists)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_key_value_store_client.py#L170)record\_exists
 
 * **async **record\_exists**(\*, key): bool
 
@@ -145,7 +145,7 @@ An Apify platform implementation of the key-value store client.
 
   #### Returns bool
 
-### [**](#set_value)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_key_value_store_client.py#L123)set\_value
+### [**](#set_value)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_key_value_store_client.py#L123)set\_value
 
 * **async **set\_value**(\*, key, value, content\_type): None
 

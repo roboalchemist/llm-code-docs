@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/organizations/manage-billing/standard-trial.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Standard trial
 
 > Get $300 credits for 21 days with the Standard plan trial.
@@ -19,18 +23,28 @@ The Standard trial lets you evaluate Pinecone without requiring any up-front pay
   * [RBAC (role-based access control)](/guides/production/security-overview#role-based-access-control)
 * [Higher limits](/reference/api/database-limits) for testing at scale
 * Access to all [cloud regions](/guides/index-data/create-an-index#cloud-regions)
-* Access to [Developer Support](https://www.pinecone.io/pricing/?plans=support\&scrollTo=product-pricing-modal-section)
+* Access to [Developer Support](https://www.pinecone.io/pricing/?plans=support)
 
 ## Expiration
 
-At the end of the trial, or when you've used up all your credits, you can add a payment method and continue on with the Standard plan, or you can upgrade to an Enterprise plan. Learn more about [pricing](https://www.pinecone.io/pricing/).
+At the end of a Standard trial, or when you've used all of your credits, you can take one of the following actions:
 
-Before your Standard trial expires, you can downgrade to a Starter plan. To do so, you must first bring your usage within Starter plan limits:
+* Add a payment method and continue on with the Standard plan.
+* Upgrade to the Enterprise plan.
+* [Downgrade to a Starter plan](#downgrading-to-the-starter-plan) (you can also do this before your trial expires, if you choose).
+
+<Note>
+  Learn more about [pricing](https://www.pinecone.io/pricing/).
+</Note>
+
+## Downgrading to the Starter plan
+
+To downgrade from a Standard trial to the Starter plan, you'll need to bring your usage within Starter plan limits.
 
 * No more than 5 indexes, all serverless and in the `us-east-1` region of AWS
   * If you have serverless indexes in a region other than `us-east-1`, [create a new serverless index](/guides/index-data/create-an-index#create-a-serverless-index) in `us-east-1`, [re-upsert your data](/guides/index-data/upsert-data) into the new index, and [delete the old index](/guides/manage-data/manage-indexes#delete-an-index).
   * If you have more than 5 serverless indexes, [delete indexes](/guides/manage-data/manage-indexes#delete-an-index) until you have 5 or fewer.
-  * If you have pod-based indexes, [save them as collections](/guides/manage-data/back-up-an-index#create-a-backup-using-a-collection) and then [delete them](/guides/manage-data/manage-indexes#delete-an-index).
+  * If you have pod-based indexes, [delete them](/guides/manage-data/manage-indexes#delete-an-index).
 * No more than 1 project
   * If you have more than 1 project, [delete all but 1 project](/guides/projects/manage-projects#delete-a-project).
   * Before you can delete a project, you must [delete all indexes](/guides/manage-data/manage-indexes#delete-an-index) and [delete all collections](/guides/manage-data/back-up-an-index#delete-a-collection) in the project.
@@ -44,17 +58,15 @@ Before your Standard trial expires, you can downgrade to a Starter plan. To do s
   * If you have more than 10 files uploaded to an assistant, [delete files](/guides/assistant/manage-files#delete-a-file) until the assistant has 10 or fewer.
 * No more than 1 GB of assistant storage
   * If you have more than 1 GB of assistant storage, [delete files](https://docs.pinecone.io/guides/assistant/manage-files#delete-a-file) until you're storing less than 1 GB.
-
-After your Standard trial expires, you can downgrade to a Starter plan **only if** your account is already within Starter plan limits (that is, if you already reduced your usage to within Starter plan limits **before** the trial expired). Otherwise, you'll need to upgrade your account to a paid plan, or let it get deleted.
+* No more than 2 users
+* No collections or backups (these are automatically deleted as part of the downgrade process)
 
 If you have questions, [contact Support](https://www.pinecone.io/contact/support/).
 
 ## Limits
 
 * Each organization is allowed only one trial.
-* To activate a Standard plan trial, you must select the trial when registering your account on [https://pinecone.io](https://pinecone.io).
-* You cannot activate a Standard trial in the following cases:
-  * You already signed up for an account on [https://pinecone.io](https://pinecone.io), and you selected another type of plan (Starter, Standard, or Enterprise).
-  * Before registering your account on [https://pinecone.io](https://pinecone.io), your organization subscribed through marketplace partners.
+* Organizations already on a Standard or Enterprise plan cannot activate a Standard plan trial.
+* Organizations that initially subscribed to Pinecone through marketplace partners cannot activate a Standard plan trial.
 
 If you have any questions, [contact Support](https://www.pinecone.io/contact/support/).

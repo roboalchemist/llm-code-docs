@@ -6,7 +6,6 @@ description: >-
   Troubleshoot hostname resolution errors in containerized Datadog Agent
   deployments on Kubernetes, Docker, and cloud platforms.
 breadcrumbs: Docs > Agent > Agent Troubleshooting > Hostname Detection in Containers
-source_url: https://docs.datadoghq.com/troubleshooting/hostname_containers/index.html
 ---
 
 # Hostname Detection in Containers

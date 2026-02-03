@@ -4,8 +4,6 @@
 title: IoT FleetWise Fleet
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > IoT FleetWise Fleet
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.iotfleetwise_fleet.dataset/index.html
 ---
 
 # IoT FleetWise Fleet
@@ -18,14 +16,14 @@ aws.iotfleetwise_fleet
 
 ## Fields
 
-| Title                  | ID   | Type      | Data Type                                                                                          | Description |
-| ---------------------- | ---- | --------- | -------------------------------------------------------------------------------------------------- | ----------- |
-| _key                   | core | string    |
-| account_id             | core | string    |
-| arn                    | core | string    | The Amazon Resource Name (ARN) of the fleet.                                                       |
-| creation_time          | core | timestamp | The time the fleet was created, in seconds since epoch (January 1, 1970 at midnight UTC time).     |
-| description            | core | string    | A brief description of the fleet.                                                                  |
-| id                     | core | string    | The unique ID of the fleet.                                                                        |
-| last_modification_time | core | timestamp | The time the fleet was last updated in seconds since epoch (January 1, 1970 at midnight UTC time). |
-| signal_catalog_arn     | core | string    | The ARN of the signal catalog associated with the fleet.                                           |
-| tags                   | core | hstore    |
+| Title                  | ID   | Type       | Data Type                                                                                          | Description |
+| ---------------------- | ---- | ---------- | -------------------------------------------------------------------------------------------------- | ----------- |
+| _key                   | core | string     |
+| account_id             | core | string     |
+| arn                    | core | string     | The Amazon Resource Name (ARN) of the fleet.                                                       |
+| creation_time          | core | timestamp  | The time the fleet was created, in seconds since epoch (January 1, 1970 at midnight UTC time).     |
+| description            | core | string     | A brief description of the fleet.                                                                  |
+| id                     | core | string     | The unique ID of the fleet.                                                                        |
+| last_modification_time | core | timestamp  | The time the fleet was last updated in seconds since epoch (January 1, 1970 at midnight UTC time). |
+| signal_catalog_arn     | core | string     | The ARN of the signal catalog associated with the fleet.                                           |
+| tags                   | core | hstore_csv |

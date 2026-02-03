@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/deploy/streamlit-community-cloud/manage-your-app/app-settings
+
 # App settings
 
 This page is about your app settings on Streamlit Community Cloud. From your app settings you can [view or change your app's URL](/deploy/streamlit-community-cloud/manage-your-app/app-settings#view-or-change-your-apps-url), manage [public or private access to your app](/deploy/streamlit-community-cloud/share-your-app), and update your saved [secrets for your apps](/deploy/streamlit-community-cloud/deploy-your-app/secrets-management).

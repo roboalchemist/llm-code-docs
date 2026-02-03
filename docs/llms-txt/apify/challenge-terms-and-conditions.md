@@ -6,7 +6,7 @@ Effective date: November 3, 2025
 
 Apify Technologies s.r.o., a company registered in the Czech Republic, with its registered office at Vodičkova 704/36, 110 00 Prague 1, Czech Republic, Company ID No.: 04788290 ("**Apify**", "**we**", "**us**") offers you (also referred to as "**participant**") the opportunity to enroll in the "Apify $1M Challenge" ("**Challenge**"), which is subject to the following "Apify 1M Challenge Terms and Conditions" ("**Challenge Terms**").
 
-As part of the Challenge requires publishing Actors in Apify Store, the Challenge is further governed by https://docs.apify.com/legal/store-publishing-terms-and-conditions.md ("**Store Publishing Terms**"), which are incorporated herein by reference. In case of a conflict, these Challenge Terms shall prevail.
+As part of the Challenge requires publishing Actors in Apify Store, the Challenge is further governed by [Apify Store Publishing Terms and Conditions](https://docs.apify.com/legal/store-publishing-terms-and-conditions.md) ("**Store Publishing Terms**"), which are incorporated herein by reference. In case of a conflict, these Challenge Terms shall prevail.
 
 Terms starting with a capital letter used in these Challenge Terms have the meaning defined either here or in Store Publishing Terms.
 
@@ -18,7 +18,7 @@ Participation in this Challenge is free and does not require the purchase of any
 
 1.1. The Challenge is open to all Apify Users, regardless of whether they are new to Apify or have an existing account. Notwithstanding the foregoing, Apify employees, individual contractors, and their immediate family members, as well as those in close relationships with Apify employees or individual contractors (a "close person" as defined by the Czech Civil Code), are not eligible to participate.
 
-1.2. To participate in the Challenge, you must register at https://apify.com/challenge and agree to these Challenge Terms.
+1.2. To participate in the Challenge, you must register at [https://apify.com/challenge](https://apify.com/challenge) and agree to these Challenge Terms.
 
 1.3. You will be disqualified from the Challenge if you do not comply with Store Publishing Terms or if you conduct any of the following activities:
 
@@ -30,7 +30,7 @@ Participation in this Challenge is free and does not require the purchase of any
 
 ## 2. Actor Requirements
 
-2.1. Only the first five (5) of your Actors published in Apify Store following your registration for the Challenge will be enrolled in the Challenge. Any exceptions to this rule are at our sole discretion.
+2.1. Actors published in Apify Store following your registration for the Challenge will be enrolled in the Challenge. Any exceptions to this rule are at our sole discretion.
 
 2.2. Actors must meet a set of "hygienic" criteria, which will be evaluated by us at our sole discretion, such as a unique, legitimate README, a well-defined input and output schema (or using the standby mode), and a minimum "Actor Quality score" of 65/100 as further described in the Documentation. Actor Quality score will be visible in your Insights tab in Apify Console.
 
@@ -52,6 +52,8 @@ Participation in this Challenge is free and does not require the purchase of any
 3.1.3. On January 31, 2026, a final usage snapshot will be taken. We will create a list of all submitted Actors that meet all Challenge requirements (Sections 2 and 3), ranked by the highest number of Monthly Active Users.
 
 3.1.4. Payouts will be distributed sequentially, starting with the highest-ranked Actor on the list, and continuing down the list until the total distributed rewards reach the Challenge Bonus Pool of $920,000. Once the Challenge Bonus Pool is depleted, no further Actors will receive this reward, regardless of their Monthly Active User count.
+
+3.1.5. Every participant can be rewarded in this way for a maximum of 5 Actors.
 
 3.2. **Weekly Spotlight Reward**. Every week starting from November 17, 2025, we will select one exceptional Actor to receive a one-time $2,000 reward. There are no hard criteria for this reward; it will be either based on the Apify jury's or industry expert's assessment of the Actor's concept, technical solution, or user experience, and/or Apify Community vote. For the avoidance of doubt, Actor requirements and other general conditions according to these Challenge Terms still apply.
 
@@ -77,7 +79,7 @@ There are no hard criteria for this reward. For the avoidance of doubt, Actor re
 
 5.1. By participating in the Challenge, you grant us the right to use your name and likeness, Apify public profile information, or statements relating to your submitted Actors for advertising and promotional purposes, and promote your submitted Actors, display them on a leaderboard, and use them for marketing purposes related to the Challenge, without any additional compensation.
 
-5.2. By submitting an Actor to the Challenge, you grant us a worldwide, perpetual, royalty-free, transferable, and sublicensable license to modify, publicly perform, and display the Actor (in whole or in part) for purposes of promotion, marketing, evaluation, and operation of the Challenge. Actors will be enrolled automatically. If you want to withdraw your Actor from the Challenge, contact us at mailto:support@apify.com.
+5.2. By submitting an Actor to the Challenge, you grant us a worldwide, perpetual, royalty-free, transferable, and sublicensable license to modify, publicly perform, and display the Actor (in whole or in part) for purposes of promotion, marketing, evaluation, and operation of the Challenge. Actors will be enrolled automatically. If you want to withdraw your Actor from the Challenge, contact us at [support@apify.com](mailto:support@apify.com).
 
 5.3. We will use the personal information you provide to facilitate your participation in the Challenge.
 

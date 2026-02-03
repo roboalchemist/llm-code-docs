@@ -4,8 +4,6 @@
 title: Bedrock Knowledge Base
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Bedrock Knowledge Base
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.bedrock_knowledge_base.dataset/index.html
 ---
 
 # Bedrock Knowledge Base
@@ -32,5 +30,5 @@ aws.bedrock_knowledge_base
 | role_arn                     | core | string        | The Amazon Resource Name (ARN) of the IAM role with permissions to invoke API operations on the knowledge base.                                                                                                                                                                                                                                                                                |
 | status                       | core | string        | The status of the knowledge base. The following statuses are possible: <ul> <li> CREATING â The knowledge base is being created. </li> <li> ACTIVE â The knowledge base is ready to be queried. </li> <li> DELETING â The knowledge base is being deleted. </li> <li> UPDATING â The knowledge base is being updated. </li> <li> FAILED â The knowledge base API operation failed. </li> </ul> |
 | storage_configuration        | core | json          | Contains details about the storage configuration of the knowledge base.                                                                                                                                                                                                                                                                                                                        |
-| tags                         | core | hstore        |
+| tags                         | core | hstore_csv    |
 | updated_at                   | core | timestamp     | The time the knowledge base was last updated.                                                                                                                                                                                                                                                                                                                                                  |

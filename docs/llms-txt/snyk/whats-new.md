@@ -2,7 +2,70 @@
 
 # What's new?
 
-The most recent updates include significant changes to the user docs, such as features added or removed, structure changes that affect how you find relevant information, and other improvements aimed at enhancing your interaction with the Snyk knowledge base.
+The most recent updates include significant changes to the user docs, such as features added or removed, structural changes that affect how you find relevant information, and other improvements to enhance your interaction with the Snyk knowledge base.
+
+## January 2026
+
+### Snyk Code
+
+* The [Snyk Code Security policies](https://docs.snyk.io/manage-risk/prioritize-issues-for-fixing/ignore-issues/consistent-ignores-for-snyk-code#manage-ignores-at-the-group-level-through-snyk-code-security-policies) documentation has been updated to clarify that Snyk Code Security policies are different to Snyk Security Policies.
+* The [Enable Snyk Agent Fix](https://docs.snyk.io/scan-with-snyk/snyk-code/manage-code-vulnerabilities/fix-code-vulnerabilities-automatically#enable-snyk-agent-fix) section has been enhanced with more details and clear configuration steps.
+
+### Snyk CLI&#x20;
+
+* [SBOM test](https://docs.snyk.io/developer-tools/snyk-cli/commands/sbom-test) command is now in Early Access.
+* The latest [Snyk CLI version](https://docs.snyk.io/developer-tools/snyk-cli/install-or-update-the-snyk-cli) available is v1.1302.1.
+* The [debugging mode of the Snyk CLI](https://docs.snyk.io/developer-tools/snyk-cli/debugging-the-snyk-cli) has been enhanced with error catalog codes and exit codes.
+
+### Snyk IDE
+
+* You can now use the Issue View Options in [Eclipse](https://docs.snyk.io/developer-tools/snyk-ide-plugins-and-extensions/eclipse-plugin/use-the-snyk-plugin-to-secure-your-eclipse-projects#issue-view-options), [JetBrains](https://docs.snyk.io/developer-tools/snyk-ide-plugins-and-extensions/jetbrains-plugin/configuration-for-the-snyk-jetbrains-plugin-and-ide-proxy#general-settings), and [Visual Studio Code ](https://docs.snyk.io/developer-tools/snyk-ide-plugins-and-extensions/visual-studio-code-extension/visual-studio-code-extension-configuration-environment-variables-and-proxy#scan-configuration)to filter issues by their Code Consistent Ignores status.
+* The Risk Score Threshold option has been added to the [Visual Studio Code ](https://docs.snyk.io/developer-tools/snyk-ide-plugins-and-extensions/visual-studio-code-extension/visual-studio-code-extension-configuration-environment-variables-and-proxy#scan-configuration)extension to allow you to filter Open Source issues by their risk score.
+
+### Snyk Studio
+
+* The [Agentic security with Snyk Studio](https://docs.snyk.io/integrations/snyk-studio-agentic-integrations) documentation has been restructured to accurately reflect the workflow you would go through when using Snyk Studio for the first time, and using the available [Quickstart guides](https://docs.snyk.io/integrations/snyk-studio-agentic-integrations/quickstart-guides-for-snyk-studio).
+* The [Snyk Studio Adoption](https://docs.snyk.io/integrations/snyk-studio-agentic-integrations/usage-analytics) report is now available under [Redesigned analytics](https://docs.snyk.io/manage-risk/analytics/redesigned-analytics#snyk-studio-adoption).
+* The [supported tools list](https://docs.snyk.io/integrations/snyk-studio-agentic-integrations#mcp-server-supported-tools) was updated to clarify that Snyk supports `snyk_send_feedback`.
+
+### Snyk supported languages
+
+* [PHP](https://docs.snyk.io/supported-languages/supported-languages-list/php) has been updated to include support for PHP version 8.5.
+* [JavaScript](https://docs.snyk.io/supported-languages/supported-languages-list/javascript) was updated with support for Yarn 4.
+* [Ruby](https://docs.snyk.io/supported-languages/supported-languages-list/ruby) was updated with support for Ruby 4.
+* [Python](https://docs.snyk.io/supported-languages/supported-languages-list/python) has been updated to remove the limitation note for Projects with downloaded dependencies.
+* [Go](https://docs.snyk.io/supported-languages/supported-languages-list/go) has been updated to include support for Go standard library, for Go with Open Source.
+* Several supported language pages and their rules have been updated with Code analysis support in Early Access:  [Rust](https://docs.snyk.io/supported-languages/supported-languages-list/rust), [Swift and Objective-C](https://docs.snyk.io/supported-languages/supported-languages-list/swift-and-objective-c), [Dart and Flutter](https://docs.snyk.io/supported-languages/supported-languages-list/dart-and-flutter), [Groovy](https://docs.snyk.io/supported-languages/supported-languages-list/groovy), [Rust rules](https://docs.snyk.io/scan-with-snyk/snyk-code/snyk-code-security-rules/rust-rules), [Objective-C rules](https://docs.snyk.io/scan-with-snyk/snyk-code/snyk-code-security-rules/objective-c-rules), [Dart and Flutter rules](https://docs.snyk.io/scan-with-snyk/snyk-code/snyk-code-security-rules/dart-and-flutter-rules), [Groovy rules](https://docs.snyk.io/scan-with-snyk/snyk-code/snyk-code-security-rules/groovy-rules).
+
+### Other updates
+
+* [Container monitor](https://docs.snyk.io/developer-tools/snyk-cli/commands/container-monitor) has been updated to include a new CLI option `--prune-repeated-subdependencies` to prune depgraphs for large container scans.&#x20;
+* The [redesigned Snyk Analytics experience](https://docs.snyk.io/manage-risk/analytics/redesigned-analytics) is now in General Availability.
+* The [Bitbucket Cloud documentation](https://docs.snyk.io/developer-tools/scm-integrations/organization-level-integrations/bitbucket-cloud) has been updated to make it clear that scopeless API tokens are not supported for this integration.
+
+## December 2025
+
+### **Snyk API**
+
+* The API docs navigation was enhanced with additional package-related reference pages (including `ContainerRegistryImagePolicy`).&#x20;
+
+### **Snyk integrations**
+
+* The [Partner integrations](https://docs.snyk.io/integrations/partner-integrations) page has been updated, including additional coverage for Coding Assistants and how they can use Snyk Studio (MCP) in agentic workflows.
+* [JavaScript](https://docs.snyk.io/supported-languages/supported-languages-list/javascript) navigation has been enhanced with better redirect and routing features.&#x20;
+
+### **Snyk Studio**
+
+* The [Snyk Studio - Agentic integrations](https://docs.snyk.io/integrations/snyk-studio-agentic-integrations) documentation has been updated to provide a clearer explanation of MCP usage and the available Snyk Studio tools.
+* The [Quickstart guides for Snyk Studio](https://docs.snyk.io/integrations/snyk-studio-agentic-integrations/quickstart-guides-for-snyk-studio) were updated with new and refreshed setup guidance, including [Cursor](https://docs.snyk.io/integrations/snyk-studio-agentic-integrations/quickstart-guides-for-snyk-studio/cursor-guide) and [Windsurf](https://docs.snyk.io/integrations/snyk-studio-agentic-integrations/quickstart-guides-for-snyk-studio/windsurf-guide).
+
+### **Other updates**
+
+* GitHub Cloud App and GitHub Server App have been added to the list of [supported SCMs for Dockerfile analysis](https://docs.snyk.io/scan-with-snyk/snyk-container/scan-your-dockerfile#supported-scms-for-dockerfile-analysis).
+* The `snyk-scm-contributors-count` docs were updated with prerequisites and setup notes. See [snyk-scm-contributors-count](https://docs.snyk.io/developer-tools/snyk-cli/scan-and-maintain-projects-using-the-cli/cli-tools/snyk-scm-contributors-count).
+* The Declining Balance documentation from the [Snyk Declining Balance of Hours Service Description](https://docs.snyk.io/snyk-data-and-governance/snyk-terms-of-support-and-services-glossary/declining-balance) page was updated with service description and expiration details.&#x20;
+* The IaC issue-reporting walkthrough from the 'Getting started with Snyk IaC' page was updated to remove outdated screenshots and copy.&#x20;
+* PR template variables were updated on the [Variables list and description](https://docs.snyk.io/scan-with-snyk/pull-requests/snyk-pull-or-merge-requests/customize-pr-templates/variables-list-and-description) page with a new container base image `short name` values for cleaner PR titles and messages.&#x20;
 
 ## November 2025
 
@@ -285,7 +348,7 @@ Information has been added about Snyk support for the Model Context Protocol (MC
 
 ### **Other updates**
 
-* The [PCI-DSS v4.0.1 report](https://docs.snyk.io/manage-risk/reporting/available-snyk-reports#pci-dss-v4.0.1-report) is now available in Early Access. This report leverages Snyk scan results to assess, prove, and improve readiness for PCI-DSS AppSec compliance regarding SCA and SAST vulnerabilities.
+* The PCI-DSS v4.0.1 report is now available in Early Access. This report leverages Snyk scan results to assess, prove, and improve readiness for PCI-DSS AppSec compliance regarding SCA and SAST vulnerabilities.
 * The [Repositories Tested in CI/CD report](https://docs.snyk.io/manage-risk/reporting/available-snyk-reports#repositories-tested-in-ci-cd-report) is available in Early Access. This report tracks Snyk CI/CD testing to prevent vulnerable production deployments.
 * [Severity levels](https://docs.snyk.io/manage-risk/prioritize-issues-for-fixing/severity-levels#why-are-there-multiple-cvss-scores-for-the-same-vulnerability) now provide more details about the CVSS v4.0.
 

@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/api-reference/segments/get-segment.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Retrieve Segment
 
 > Retrieve a single segment.
@@ -41,7 +45,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </ResendParamField>
 
 <RequestExample>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -51,13 +55,13 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   );
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->segments->get('78261eea-8f8b-4381-83c6-79fa7120f1cf');
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = 're_xxxxxxxxx'
@@ -65,7 +69,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   segment = resend.Segments.get('78261eea-8f8b-4381-83c6-79fa7120f1cf')
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -73,7 +77,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   segment = Resend::Segments.get("78261eea-8f8b-4381-83c6-79fa7120f1cf")
   ```
 
-  ```go Go theme={null}
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   package main
 
   import (
@@ -85,9 +89,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 
   func main() {
   	ctx := context.TODO()
-  	apiKey := "re_xxxxxxxxx"
-
-  	client := resend.NewClient(apiKey)
+  	client := resend.NewClient("re_xxxxxxxxx")
 
   	segment, err := client.Segments.GetWithContext(ctx, "78261eea-8f8b-4381-83c6-79fa7120f1cf")
   	if err != nil {
@@ -97,7 +99,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   }
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{Resend, Result};
 
   #[tokio::main]
@@ -113,7 +115,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -125,7 +127,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   }
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -134,14 +136,14 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   Console.WriteLine( "Segment Id={0}", resp.Content.Id );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X GET 'https://api.resend.com/segments/78261eea-8f8b-4381-83c6-79fa7120f1cf' \
        -H 'Authorization: Bearer re_xxxxxxxxx'
   ```
 </RequestExample>
 
 <ResponseExample>
-  ```json Response theme={null}
+  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "object": "segment",
     "id": "78261eea-8f8b-4381-83c6-79fa7120f1cf",

@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/tracing/versions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Versioning
 
 > Learn how to enrich your traces by versioning your workflows and prompts
@@ -61,8 +65,3 @@ You can enrich your prompt traces by providing data about the prompt's version, 
   )
   ```
 </CodeGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

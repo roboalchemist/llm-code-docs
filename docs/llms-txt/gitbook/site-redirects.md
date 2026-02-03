@@ -1,12 +1,6 @@
 # Source: https://gitbook.com/docs/developers/gitbook-api/api-reference/docs-sites/site-redirects.md
 
-# Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/site-redirects.md
-
-# Source: https://gitbook.com/docs/documentation/fr/publishing-documentation/site-redirects.md
-
-# Source: https://gitbook.com/docs/publishing-documentation/site-redirects.md
-
-# Source: https://gitbook.com/docs/developers/gitbook-api/api-reference/docs-sites/site-redirects.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/publishing-documentation/site-redirects.md
 
 # Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/site-redirects.md
 
@@ -20,7 +14,7 @@
 This feature is available on [Premium and Ultimate site plans](https://www.gitbook.com/pricing).
 {% endhint %}
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FG4YuVeNPaMd8T5hsuudf%2FRedirects.svg?alt=media&#x26;token=b0de74e3-8610-442e-ba12-2a980b15425c" alt="A GitBook screenshot showing site redirects"><figcaption><p>Site redirects are useful when migrating documentation or restructuring content to avoid broken links, which can impact SEO.</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FSOD2dR0Bb3RtX6Avb7vg%2F26_01_06_redirects%402x.png?alt=media&#x26;token=7e2bf0a2-947c-46d7-96ff-a4e6b54e60b2" alt="A GitBook screenshot showing site redirects"><figcaption><p>Site redirects are useful when migrating documentation or restructuring content to avoid broken links, which can impact SEO.</p></figcaption></figure>
 
 Redirects are commonly used when you are migrating your documentation from one provider to another — like when you just moved docs to GitBook. Broken links can impact SEO so we recommend setting up redirects where needed.
 

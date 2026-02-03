@@ -4,8 +4,8 @@
 
 ## Related PRs
 
-* [rspack#2780](https://github.com/web-infra-dev/rspack/pull/2789)
-* [rspack#2808](https://github.com/web-infra-dev/rspack/pull/2808)
+- [rspack#2780](https://github.com/web-infra-dev/rspack/pull/2789)
+- [rspack#2808](https://github.com/web-infra-dev/rspack/pull/2808)
 
 The old architecture is a quite simple version, which only supports loaders for normal stage.
 Pitching loader does not put into consideration. The basic concept of the old version is to

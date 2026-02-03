@@ -2138,8 +2138,6 @@ The `relations` method serves as a specialized repository, tightly associated wi
 
 Remult's repository methods empower you to seamlessly manage and interact with related data, making it easier to work with complex data structures and relationships in your applications. Whether you need to insert related records or load unfetched relations, these tools provide the flexibility and control you need to handle your data efficiently.
 
-Certainly, here's an extension of the "Loading Unfetched Relations" section that covers the topic of fetching unloaded `toOne` relations using the `findOne` function:
-
 ---
 
 ### Fetching Unloaded `toOne` Relations with `findOne`
@@ -2317,8 +2315,6 @@ Here's an explanation of what's happening in this code:
 
 **2. Retrieving Tags for a Customer:**
 To fetch the tags associated with a specific customer:
-
-Certainly, here's a shorter explanation:
 
 ```ts
 const customer = await customerRepo.findFirst(
@@ -2851,7 +2847,6 @@ To enable automatic generation of migration scripts, follow these steps:
 1. **Create the Migrations Folder:** In your `src/server` directory, create a new folder named `migrations`. This folder will hold all your migration scripts.
 
 2. **Create the Migration Generator File:** Inside the `migrations` folder, create a file named `generate-migrations.ts`. This file will contain the script that generates migration scripts based on changes in your entities.
-   Here's the revised section:
 
 3. **Populate the Generator File:** Add the following code to `generate-migrations.ts`:
 
@@ -3051,8 +3046,6 @@ const localDb = new JsonDataProvider(new JsonEntityOpfsStorage())
 ```
 
 Using OPFS with Remult's `JsonDataProvider` provides a robust solution for storing entities in the frontend, especially for applications requiring more complex data handling than what `localStorage` or `sessionStorage` can offer.
-
-Certainly! Here's the adjusted section on `sql.js` with an enriched code sample:
 
 ## `sql.js`: A SQLite Implementation for the Frontend
 
@@ -7617,6 +7610,60 @@ To add swagger UI to a `NextJs` application follow these steps:
 4. Navigate to `http://localhost:3000/api-doc` to see the Swagger UI.
 
    ![Remult Admin](../public/example_remult-next-swagger-ui-page.png)
+
+## Adding Scalar UI to SvelteKit
+
+1. Install [Scalar](https://scalar.com) to get a modern OpenAPI UI with a built-in interactive playground:
+
+   ```sh
+   npm i @scalar/sveltekit
+   ```
+
+2. Export OpenAPI document schema from your Remult API in `src/server/api.ts` file:
+
+   ```ts{8-11}
+   import { Planet } from '$lib/entities';
+   import { remultApi } from 'remult/remult-sveltekit';
+
+   export const api = remultApi({
+     entities: [Planet]
+   });
+
+   export const openApiDocument = api.openApiDoc({
+    title: 'remult-planets',
+    version: '1.0.0'
+   });
+   ```
+
+3. Add a SvelteKit server route in `src/routes/api/[...remult]/openapi.json/+server.ts` to handle OpenAPI json file:
+
+   ```ts
+   import { json } from '@sveltejs/kit';
+   import { openApiDocument } from '../../../../server/api';
+
+   export const GET = () => {
+    return json(openApiDocument);
+   };
+   ```
+
+4. And finally create an endpoint for Scalar OpenAPI at `src/routes/api/[...remult]/docs/+server.ts`
+
+   ```ts
+   import { ScalarApiReference } from '@scalar/sveltekit'
+   import type { RequestHandler } from './$types'
+   
+
+   const render = ScalarApiReference({
+     url: '/api/openapi.json' // the above endpoint where the openapi spec is located
+   });
+
+   export const GET: RequestHandler = () => {
+     return render();
+   };
+
+   ```
+
+In this case the UI will be available at [http://localhost:5173/api/docs](http://localhost:5173/api/docs)
 
 # Adding open api specific field options
 
@@ -21785,10 +21832,6 @@ With the current state of the `setAllCompleted` function, each modified task bei
 
 In the next lesson, we'll refactor this code to address these performance challenges by moving the logic to the server.
 
----
-
-Would you like to proceed with another section or make further adjustments?
-
 
 # Interactive Tutorial - Basics - Backend Methods - Refactor to Backend
 
@@ -22451,10 +22494,6 @@ This ensures that your code uses `customerId` while mapping it correctly to the 
 ---
 
 By using ID-based relations, you have greater control over your data models and can optimize performance by limiting unnecessary entity loading. This approach also provides a clean and efficient way to manage relations in your Remult applications.
-
----
-
-Let me know if this works!
 
 
 # Interactive Tutorial - In Depth - Relations - Many to Many
@@ -23928,7 +23967,7 @@ Create a new entity that extends the base entity and add the new fields to it.
   - It's to really differentiate between the two entities for remult.
   - It will also create two different entries in Admin UI.
 - You need to set the `dbName` option to point to the right database name (same as the base entity).
-  - Yes, by default, remult will use the entity key as the database name.
+  - By default, remult will use the entity key as the database name.
 
 ### Try it out
 

@@ -8,7 +8,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > APM > Tracing Guides > Tutorial - Enabling Tracing for a Java
   Application and Datadog Agent in Containers
-source_url: https://docs.datadoghq.com/guide/tutorial-enable-java-containers/index.html
 ---
 
 # Tutorial - Enabling Tracing for a Java Application and Datadog Agent in Containers

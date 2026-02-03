@@ -49,7 +49,7 @@ In Stock
 [In-line wire 1-to-4 splitter](https://www.adafruit.com/product/402)
 If you want to connect multiple EL wires/strips/panels up to one inverter, these splitters are quite useful. There is one male connector (goes to the inverter) and then 4 female connectors (which will connect to each wire/strip/panel. You can even cascade them! Only thing to watch for is make...
 
-Out of Stock
+In Stock
 [Buy Now](https://www.adafruit.com/product/402)
 [Related Guides to the Product](https://learn.adafruit.com/products/402/guides)
 ### EL wire starter pack - Blue 2.5 meter (8.2 ft)
@@ -59,24 +59,24 @@ A little bundle to get you started! This project pack contains:
 
 - [2.5 meters (over 8 ft) of high-brightness, long-life EL wire in Blue](http://www.adafruit.com/products/408). 2.5 meters is the maximum amount for the pocket driver - it is cut and soldered so it's ready...
 
-In Stock
+Out of Stock
 [Buy Now](https://www.adafruit.com/product/583)
 [Related Guides to the Product](https://learn.adafruit.com/products/583/guides)
 
 ## Related Guides
 
-- [DIY Rechargeable LED Makeup Compact](https://learn.adafruit.com/diy-rechargeable-led-makeup-compact.md)
-- [ISS Pin](https://learn.adafruit.com/iss-pin.md)
-- [CLUE Custom CircuitPython Badge](https://learn.adafruit.com/clue-custom-circuit-python-badge.md)
-- [Space Face LED Galaxy Makeup](https://learn.adafruit.com/space-face-led-galaxy-makeup.md)
-- [Digital LED Belt](https://learn.adafruit.com/digital-led-belt.md)
-- [Mystical LED Halloween Hood](https://learn.adafruit.com/mystical-led-halloween-hood.md)
-- [No-Sew Cotton Face Mask with a Window](https://learn.adafruit.com/no-sew-cotton-face-mask-with-a-window.md)
-- [Clockwork Goggles](https://learn.adafruit.com/gemma-m0-clockwork-goggles.md)
-- [Trinket / Gemma Space Invader Pendant](https://learn.adafruit.com/trinket-slash-gemma-space-invader-pendant.md)
-- [3D Printed Heel Clips](https://learn.adafruit.com/3d-printed-heel-clips.md)
-- [Laugh Track Jacket](https://learn.adafruit.com/laugh-track-jacket.md)
-- [Jewel Hair Stick](https://learn.adafruit.com/jewel-hair-stick.md)
-- [Citi Bike Helmet](https://learn.adafruit.com/citi-bike-helmet.md)
-- [Haptic Headband](https://learn.adafruit.com/haptic-headband.md)
-- [Color-sensor Driven NeoPixel Dress](https://learn.adafruit.com/color-sensor-driven-neopixel-dress.md)
+- [Battery Powering Wearable Electronics](https://learn.adafruit.com/battery-powering-wearable-electronics.md)
+- [3D Printed Daft Punk Helmet with Bluetooth ](https://learn.adafruit.com/3d-printed-daft-punk-helmet-with-bluetooth.md)
+- [3D Printed Wearable Video Goggles](https://learn.adafruit.com/3d-printed-wearable-video-goggles.md)
+- [Decorative Pointy Elf Ear Bud Holders](https://learn.adafruit.com/elf-ears.md)
+- [LED Friendship Bracelet](https://learn.adafruit.com/nautical-led-bracelet.md)
+- [Make a Zelda Master Sword with the RP2040 Prop-Maker Feather](https://learn.adafruit.com/master-sword-rp2040.md)
+- [USB Locket](https://learn.adafruit.com/usb-locket.md)
+- [Light Up your Costume with Noods](https://learn.adafruit.com/light-up-your-costume-with-noods.md)
+- [Pac Man Pixel Suspenders](https://learn.adafruit.com/pac-man-pixel-suspenders.md)
+- [3D Printed LED Buckle](https://learn.adafruit.com/3d-printed-led-buckle.md)
+- [Adafruit Flora Bluefruit LE](https://learn.adafruit.com/adafruit-flora-bluefruit-le.md)
+- [Textile Potentiometer Hoodie](https://learn.adafruit.com/textile-potentiometer-hoodie.md)
+- [Cynaps Bone Conduction Headset Teardown](https://learn.adafruit.com/cynaps-bone-conduction-headset-teardown.md)
+- [Glowing Bean Bags with EL Wire](https://learn.adafruit.com/glowing-bean-bags-with-el-wire.md)
+- [3D Printed Gunblade](https://learn.adafruit.com/3d-printed-gunblade.md)

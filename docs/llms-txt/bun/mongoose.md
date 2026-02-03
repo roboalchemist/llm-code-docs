@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/ecosystem/mongoose.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Read and write data to MongoDB using Mongoose and Bun
 
 MongoDB and Mongoose work out of the box with Bun. This guide assumes you've already installed MongoDB and are running it as background process/service on your development machine. Follow [this guide](https://www.mongodb.com/docs/manual/installation/) for details.
@@ -87,4 +91,4 @@ Moo!
 
 ***
 
-This is a simple introduction to using Mongoose with TypeScript and Bun. As you build your application, refer to the official [MongoDB](https://docs.mongodb.com/) and [Mongoose](https://mongoosejs.com/docs/) sites for complete documentation.
+This is a simple introduction to using Mongoose with TypeScript and Bun. As you build your application, refer to the official [MongoDB](https://www.mongodb.com/docs) and [Mongoose](https://mongoosejs.com/docs/) sites for complete documentation.

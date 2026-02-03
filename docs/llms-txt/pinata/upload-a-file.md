@@ -1,94 +1,87 @@
 # Source: https://docs.pinata.cloud/api-reference/endpoint/upload-a-file.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Upload a File
 
 > `org:files:write`
 
 
+<Note>
+  The V3 Upload endpoint currently does not support folder uploads. Please use the legacy [pinFileToIPFS endpoint](/api-reference/endpoint/ipfs/pin-file-to-ipfs)
+</Note>
+
+
 ## OpenAPI
 
 ````yaml post /files
+openapi: 3.0.0
+info:
+  title: Private IPFS API
+  version: 1.0.0
+servers:
+  - url: https://uploads.pinata.cloud/v3
+security:
+  - bearerAuth: []
 paths:
-  path: /files
-  method: post
-  servers:
-    - url: https://uploads.pinata.cloud/v3
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      multipart/form-data:
-        schemaArray:
-          - type: object
-            properties:
-              network:
-                allOf:
-                  - type: string
-                    enum:
-                      - public
-                      - private
-                    description: >-
-                      Determine if the file should be uploaded to either the
-                      public or private IPFS network. If not designated it will
-                      default to private.
-                    default: private
-              file:
-                allOf:
-                  - type: string
-                    format: binary
-                    description: File object you want to upload
-              name:
-                allOf:
-                  - type: string
-                    description: Add a custom name for the file
-              group_id:
-                allOf:
-                  - type: string
-                    description: ID of the group you would like to upload
-              keyvalues:
-                allOf:
-                  - type: object
-                    description: Add additional key value metadata to files upon upload
-                    additionalProperties:
-                      type: string
-              car:
-                allOf:
-                  - type: boolean
-                    description: >-
-                      Upload a file as a raw CAR file (only supported for public
-                      network)
-            requiredProperties:
-              - file
-              - network
-        examples:
-          example:
-            value:
-              network: private
-              name: <string>
-              group_id: <string>
-              keyvalues: {}
-              car: true
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: object
+  /files:
+    post:
+      tags:
+        - default
+      summary: Upload a File
+      description: |
+        `org:files:write`
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - file
+                - network
+              properties:
+                network:
+                  type: string
+                  enum:
+                    - public
+                    - private
+                  description: >-
+                    Determine if the file should be uploaded to either the
+                    public or private IPFS network. If not designated it will
+                    default to private.
+                  default: private
+                file:
+                  type: string
+                  format: binary
+                  description: File object you want to upload
+                name:
+                  type: string
+                  description: Add a custom name for the file
+                group_id:
+                  type: string
+                  description: ID of the group you would like to upload
+                keyvalues:
+                  type: object
+                  description: Add additional key value metadata to files upon upload
+                  additionalProperties:
+                    type: string
+                car:
+                  type: boolean
+                  description: >-
+                    Upload a file as a raw CAR file (only supported for public
+                    network)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
                     properties:
                       id:
                         type: string
@@ -110,24 +103,10 @@ paths:
                         type: string
                       is_duplicate:
                         type: boolean
-        examples:
-          example:
-            value:
-              data:
-                id: <string>
-                name: <string>
-                cid: <string>
-                created_at: <string>
-                size: 123
-                number_of_files: 123
-                mime_type: <string>
-                user_id: <string>
-                group_id: <string>
-                is_duplicate: true
-        description: Successful response
-  deprecated: false
-  type: path
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
 
 ````

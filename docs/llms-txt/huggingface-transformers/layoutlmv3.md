@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/layoutlmv3.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/layoutlmv3.md
 
 # LayoutLMv3
 
@@ -21,27 +21,27 @@ This model was contributed by [nielsr](https://huggingface.co/nielsr). The origi
 - In terms of data processing, LayoutLMv3 is identical to its predecessor [LayoutLMv2](layoutlmv2), except that:
   - images need to be resized and normalized with channels in regular RGB format. LayoutLMv2 on the other hand normalizes the images internally and expects the channels in BGR format.
   - text is tokenized using byte-pair encoding (BPE), as opposed to WordPiece.
-  Due to these differences in data preprocessing, one can use [LayoutLMv3Processor](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3Processor) which internally combines a [LayoutLMv3ImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3ImageProcessor) (for the image modality) and a [LayoutLMv3Tokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3Tokenizer)/[LayoutLMv3TokenizerFast](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3Tokenizer) (for the text modality) to prepare all data for the model.
-- Regarding usage of [LayoutLMv3Processor](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3Processor), we refer to the [usage guide](layoutlmv2#usage-layoutlmv2processor) of its predecessor.
+  Due to these differences in data preprocessing, one can use [LayoutLMv3Processor](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3Processor) which internally combines a [LayoutLMv3ImageProcessor](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3ImageProcessor) (for the image modality) and a [LayoutLMv3Tokenizer](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3Tokenizer)/[LayoutLMv3TokenizerFast](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3Tokenizer) (for the text modality) to prepare all data for the model.
+- Regarding usage of [LayoutLMv3Processor](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3Processor), we refer to the [usage guide](layoutlmv2#usage-layoutlmv2processor) of its predecessor.
 
 ## Resources
 
 A list of official Hugging Face and community (indicated by 🌎) resources to help you get started with LayoutLMv3. If you're interested in submitting a resource to be included here, please feel free to open a Pull Request and we'll review it! The resource should ideally demonstrate something new instead of duplicating an existing resource.
 
-LayoutLMv3 is nearly identical to LayoutLMv2, so we've also included LayoutLMv2 resources you can adapt for LayoutLMv3 tasks. For these notebooks, take care to use [LayoutLMv2Processor](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv2#transformers.LayoutLMv2Processor) instead when preparing data for the model!
+LayoutLMv3 is nearly identical to LayoutLMv2, so we've also included LayoutLMv2 resources you can adapt for LayoutLMv3 tasks. For these notebooks, take care to use [LayoutLMv2Processor](/docs/transformers/v5.0.0/en/model_doc/layoutlmv2#transformers.LayoutLMv2Processor) instead when preparing data for the model!
 
 - Demo notebooks for LayoutLMv3 can be found [here](https://github.com/NielsRogge/Transformers-Tutorials/tree/master/LayoutLMv3).
 - Demo scripts can be found [here](https://github.com/huggingface/transformers-research-projects/tree/main/layoutlmv3).
 
-- [LayoutLMv2ForSequenceClassification](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv2#transformers.LayoutLMv2ForSequenceClassification) is supported by this [notebook](https://colab.research.google.com/github/NielsRogge/Transformers-Tutorials/blob/master/LayoutLMv2/RVL-CDIP/Fine_tuning_LayoutLMv2ForSequenceClassification_on_RVL_CDIP.ipynb).
+- [LayoutLMv2ForSequenceClassification](/docs/transformers/v5.0.0/en/model_doc/layoutlmv2#transformers.LayoutLMv2ForSequenceClassification) is supported by this [notebook](https://colab.research.google.com/github/NielsRogge/Transformers-Tutorials/blob/master/LayoutLMv2/RVL-CDIP/Fine_tuning_LayoutLMv2ForSequenceClassification_on_RVL_CDIP.ipynb).
 - [Text classification task guide](../tasks/sequence_classification)
 
-- [LayoutLMv3ForTokenClassification](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3ForTokenClassification) is supported by this [example script](https://github.com/huggingface/transformers-research-projects/tree/main/layoutlmv3) and [notebook](https://colab.research.google.com/github/NielsRogge/Transformers-Tutorials/blob/master/LayoutLMv3/Fine_tune_LayoutLMv3_on_FUNSD_(HuggingFace_Trainer).ipynb).
-- A [notebook](https://colab.research.google.com/github/NielsRogge/Transformers-Tutorials/blob/master/LayoutLMv2/FUNSD/Inference_with_LayoutLMv2ForTokenClassification.ipynb) for how to perform inference with [LayoutLMv2ForTokenClassification](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv2#transformers.LayoutLMv2ForTokenClassification) and a [notebook](https://colab.research.google.com/github/NielsRogge/Transformers-Tutorials/blob/master/LayoutLMv2/FUNSD/True_inference_with_LayoutLMv2ForTokenClassification_%2B_Gradio_demo.ipynb) for how to perform inference when no labels are available with [LayoutLMv2ForTokenClassification](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv2#transformers.LayoutLMv2ForTokenClassification).
-- A [notebook](https://colab.research.google.com/github/NielsRogge/Transformers-Tutorials/blob/master/LayoutLMv2/FUNSD/Fine_tuning_LayoutLMv2ForTokenClassification_on_FUNSD_using_HuggingFace_Trainer.ipynb) for how to finetune [LayoutLMv2ForTokenClassification](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv2#transformers.LayoutLMv2ForTokenClassification) with the 🤗 Trainer.
+- [LayoutLMv3ForTokenClassification](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3ForTokenClassification) is supported by this [example script](https://github.com/huggingface/transformers-research-projects/tree/main/layoutlmv3) and [notebook](https://colab.research.google.com/github/NielsRogge/Transformers-Tutorials/blob/master/LayoutLMv3/Fine_tune_LayoutLMv3_on_FUNSD_(HuggingFace_Trainer).ipynb).
+- A [notebook](https://colab.research.google.com/github/NielsRogge/Transformers-Tutorials/blob/master/LayoutLMv2/FUNSD/Inference_with_LayoutLMv2ForTokenClassification.ipynb) for how to perform inference with [LayoutLMv2ForTokenClassification](/docs/transformers/v5.0.0/en/model_doc/layoutlmv2#transformers.LayoutLMv2ForTokenClassification) and a [notebook](https://colab.research.google.com/github/NielsRogge/Transformers-Tutorials/blob/master/LayoutLMv2/FUNSD/True_inference_with_LayoutLMv2ForTokenClassification_%2B_Gradio_demo.ipynb) for how to perform inference when no labels are available with [LayoutLMv2ForTokenClassification](/docs/transformers/v5.0.0/en/model_doc/layoutlmv2#transformers.LayoutLMv2ForTokenClassification).
+- A [notebook](https://colab.research.google.com/github/NielsRogge/Transformers-Tutorials/blob/master/LayoutLMv2/FUNSD/Fine_tuning_LayoutLMv2ForTokenClassification_on_FUNSD_using_HuggingFace_Trainer.ipynb) for how to finetune [LayoutLMv2ForTokenClassification](/docs/transformers/v5.0.0/en/model_doc/layoutlmv2#transformers.LayoutLMv2ForTokenClassification) with the 🤗 Trainer.
 - [Token classification task guide](../tasks/token_classification)
 
-- [LayoutLMv2ForQuestionAnswering](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv2#transformers.LayoutLMv2ForQuestionAnswering) is supported by this [notebook](https://colab.research.google.com/github/NielsRogge/Transformers-Tutorials/blob/master/LayoutLMv2/DocVQA/Fine_tuning_LayoutLMv2ForQuestionAnswering_on_DocVQA.ipynb).
+- [LayoutLMv2ForQuestionAnswering](/docs/transformers/v5.0.0/en/model_doc/layoutlmv2#transformers.LayoutLMv2ForQuestionAnswering) is supported by this [notebook](https://colab.research.google.com/github/NielsRogge/Transformers-Tutorials/blob/master/LayoutLMv2/DocVQA/Fine_tuning_LayoutLMv2ForQuestionAnswering_on_DocVQA.ipynb).
 - [Question answering task guide](../tasks/question_answering)
 
 **Document question answering**
@@ -52,15 +52,15 @@ LayoutLMv3 is nearly identical to LayoutLMv2, so we've also included LayoutLMv2 
 
 #### transformers.LayoutLMv3Config[[transformers.LayoutLMv3Config]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/layoutlmv3/configuration_layoutlmv3.py#L24)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/layoutlmv3/configuration_layoutlmv3.py#L23)
 
-This is the configuration class to store the configuration of a [LayoutLMv3Model](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3Model). It is used to instantiate an
+This is the configuration class to store the configuration of a [LayoutLMv3Model](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3Model). It is used to instantiate an
 LayoutLMv3 model according to the specified arguments, defining the model architecture. Instantiating a
 configuration with the defaults will yield a similar configuration to that of the LayoutLMv3
 [microsoft/layoutlmv3-base](https://huggingface.co/microsoft/layoutlmv3-base) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -79,7 +79,7 @@ Example:
 
 **Parameters:**
 
-vocab_size (`int`, *optional*, defaults to 50265) : Vocabulary size of the LayoutLMv3 model. Defines the number of different tokens that can be represented by the `inputs_ids` passed when calling [LayoutLMv3Model](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3Model).
+vocab_size (`int`, *optional*, defaults to 50265) : Vocabulary size of the LayoutLMv3 model. Defines the number of different tokens that can be represented by the `inputs_ids` passed when calling [LayoutLMv3Model](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3Model).
 
 hidden_size (`int`, *optional*, defaults to 768) : Dimension of the encoder layers and the pooler layer.
 
@@ -97,7 +97,7 @@ attention_probs_dropout_prob (`float`, *optional*, defaults to 0.1) : The dropou
 
 max_position_embeddings (`int`, *optional*, defaults to 512) : The maximum sequence length that this model might ever be used with. Typically set this to something large just in case (e.g., 512 or 1024 or 2048).
 
-type_vocab_size (`int`, *optional*, defaults to 2) : The vocabulary size of the `token_type_ids` passed when calling [LayoutLMv3Model](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3Model).
+type_vocab_size (`int`, *optional*, defaults to 2) : The vocabulary size of the `token_type_ids` passed when calling [LayoutLMv3Model](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3Model).
 
 initializer_range (`float`, *optional*, defaults to 0.02) : The standard deviation of the truncated_normal_initializer for initializing all weight matrices.
 
@@ -135,11 +135,11 @@ classifier_dropout (`float`, *optional*) : The dropout ratio for the classificat
 
 #### transformers.LayoutLMv3ImageProcessor[[transformers.LayoutLMv3ImageProcessor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/layoutlmv3/image_processing_layoutlmv3.py#L126)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/layoutlmv3/image_processing_layoutlmv3.py#L124)
 
 Constructs a LayoutLMv3 image processor.
 
-preprocesstransformers.LayoutLMv3ImageProcessor.preprocesshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/layoutlmv3/image_processing_layoutlmv3.py#L250[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]"}, {"name": "do_resize", "val": ": typing.Optional[bool] = None"}, {"name": "size", "val": ": typing.Optional[dict[str, int]] = None"}, {"name": "resample", "val": " = None"}, {"name": "do_rescale", "val": ": typing.Optional[bool] = None"}, {"name": "rescale_factor", "val": ": typing.Optional[float] = None"}, {"name": "do_normalize", "val": ": typing.Optional[bool] = None"}, {"name": "image_mean", "val": ": typing.Union[float, collections.abc.Iterable[float], NoneType] = None"}, {"name": "image_std", "val": ": typing.Union[float, collections.abc.Iterable[float], NoneType] = None"}, {"name": "apply_ocr", "val": ": typing.Optional[bool] = None"}, {"name": "ocr_lang", "val": ": typing.Optional[str] = None"}, {"name": "tesseract_config", "val": ": typing.Optional[str] = None"}, {"name": "return_tensors", "val": ": typing.Union[str, transformers.utils.generic.TensorType, NoneType] = None"}, {"name": "data_format", "val": ": ChannelDimension = "}, {"name": "input_data_format", "val": ": typing.Union[str, transformers.image_utils.ChannelDimension, NoneType] = None"}]- **images** (`ImageInput`) --
+preprocesstransformers.LayoutLMv3ImageProcessor.preprocesshttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/layoutlmv3/image_processing_layoutlmv3.py#L248[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]"}, {"name": "do_resize", "val": ": bool | None = None"}, {"name": "size", "val": ": dict[str, int] | None = None"}, {"name": "resample", "val": " = None"}, {"name": "do_rescale", "val": ": bool | None = None"}, {"name": "rescale_factor", "val": ": float | None = None"}, {"name": "do_normalize", "val": ": bool | None = None"}, {"name": "image_mean", "val": ": float | collections.abc.Iterable[float] | None = None"}, {"name": "image_std", "val": ": float | collections.abc.Iterable[float] | None = None"}, {"name": "apply_ocr", "val": ": bool | None = None"}, {"name": "ocr_lang", "val": ": str | None = None"}, {"name": "tesseract_config", "val": ": str | None = None"}, {"name": "return_tensors", "val": ": str | transformers.utils.generic.TensorType | None = None"}, {"name": "data_format", "val": ": ChannelDimension = "}, {"name": "input_data_format", "val": ": str | transformers.image_utils.ChannelDimension | None = None"}]- **images** (`ImageInput`) --
   Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If
   passing in images with pixel values between 0 and 1, set `do_rescale=False`.
 - **do_resize** (`bool`, *optional*, defaults to `self.do_resize`) --
@@ -214,47 +214,47 @@ tesseract_config (`str`, *optional*) : Any additional custom configuration flags
 
 #### transformers.LayoutLMv3ImageProcessorFast[[transformers.LayoutLMv3ImageProcessorFast]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/layoutlmv3/image_processing_layoutlmv3_fast.py#L39)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/layoutlmv3/image_processing_layoutlmv3_fast.py#L38)
 
 Constructs a fast Layoutlmv3 image processor.
 
-preprocesstransformers.LayoutLMv3ImageProcessorFast.preprocesshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/layoutlmv3/image_processing_layoutlmv3_fast.py#L55[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.models.layoutlmv3.image_processing_layoutlmv3.LayoutLMv3ImageProcessorKwargs]"}]- **images** (`Union[PIL.Image.Image, numpy.ndarray, torch.Tensor, list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]`) --
+preprocesstransformers.LayoutLMv3ImageProcessorFast.preprocesshttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/layoutlmv3/image_processing_layoutlmv3_fast.py#L54[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.models.layoutlmv3.image_processing_layoutlmv3.LayoutLMv3ImageProcessorKwargs]"}]- **images** (`Union[PIL.Image.Image, numpy.ndarray, torch.Tensor, list, list, list]`) --
   Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If
   passing in images with pixel values between 0 and 1, set `do_rescale=False`.
-- **do_convert_rgb** (`bool`, *optional*) --
+- **do_convert_rgb** (`bool | None.do_convert_rgb`) --
   Whether to convert the image to RGB.
-- **do_resize** (`bool`, *optional*) --
+- **do_resize** (`bool | None.do_resize`) --
   Whether to resize the image.
-- **size** (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) --
+- **size** (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) --
   Describes the maximum input dimensions to the model.
-- **crop_size** (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) --
+- **crop_size** (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) --
   Size of the output image after applying `center_crop`.
 - **resample** (`Annotated[Union[PILImageResampling, int, NoneType], None]`) --
   Resampling filter to use if resizing the image. This can be one of the enum `PILImageResampling`. Only
   has an effect if `do_resize` is set to `True`.
-- **do_rescale** (`bool`, *optional*) --
+- **do_rescale** (`bool | None.do_rescale`) --
   Whether to rescale the image.
-- **rescale_factor** (`float`, *optional*) --
+- **rescale_factor** (`float | None.rescale_factor`) --
   Rescale factor to rescale the image by if `do_rescale` is set to `True`.
-- **do_normalize** (`bool`, *optional*) --
+- **do_normalize** (`bool | None.do_normalize`) --
   Whether to normalize the image.
-- **image_mean** (`Union[float, list[float], tuple[float, ...], NoneType]`) --
+- **image_mean** (`float | list[float] | tuple[float, ...] | None.image_mean`) --
   Image mean to use for normalization. Only has an effect if `do_normalize` is set to `True`.
-- **image_std** (`Union[float, list[float], tuple[float, ...], NoneType]`) --
+- **image_std** (`float | list[float] | tuple[float, ...] | None.image_std`) --
   Image standard deviation to use for normalization. Only has an effect if `do_normalize` is set to
   `True`.
-- **do_pad** (`bool`, *optional*) --
+- **do_pad** (`bool | None.do_pad`) --
   Whether to pad the image. Padding is done either to the largest size in the batch
   or to a fixed square size per image. The exact padding strategy depends on the model.
-- **pad_size** (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) --
+- **pad_size** (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) --
   The size in `{"height": int, "width" int}` to pad the images to. Must be larger than any image size
   provided for preprocessing. If `pad_size` is not provided, images will be padded to the largest
   height and width in the batch. Applied only when `do_pad=True.`
-- **do_center_crop** (`bool`, *optional*) --
+- **do_center_crop** (`bool | None.do_center_crop`) --
   Whether to center crop the image.
-- **data_format** (`Union[~image_utils.ChannelDimension, str, NoneType]`) --
+- **data_format** (`str | ~image_utils.ChannelDimension | None.data_format`) --
   Only `ChannelDimension.FIRST` is supported. Added for compatibility with slow processors.
-- **input_data_format** (`Union[~image_utils.ChannelDimension, str, NoneType]`) --
+- **input_data_format** (`str | ~image_utils.ChannelDimension | None.input_data_format`) --
   The channel dimension format for the input image. If unset, the channel dimension format is inferred
   from the input image. Can be one of:
   - `"channels_first"` or `ChannelDimension.FIRST`: image in (num_channels, height, width) format.
@@ -262,13 +262,13 @@ preprocesstransformers.LayoutLMv3ImageProcessorFast.preprocesshttps://github.com
   - `"none"` or `ChannelDimension.NONE`: image in (height, width) format.
 - **device** (`Annotated[Union[str, torch.device, NoneType], None]`) --
   The device to process the images on. If unset, the device is inferred from the input images.
-- **return_tensors** (`Annotated[Union[str, ~utils.generic.TensorType, NoneType], None]`) --
+- **return_tensors** (`Annotated[str | ~utils.generic.TensorType | None, None]`) --
   Returns stacked tensors if set to `pt, otherwise returns a list of tensors.
-- **disable_grouping** (`bool`, *optional*) --
+- **disable_grouping** (`bool | None.disable_grouping`) --
   Whether to disable grouping of images by size to process them individually and not in batches.
   If None, will be set to True if the images are on CPU, and False otherwise. This choice is based on
   empirical observations, as detailed here: https://github.com/huggingface/transformers/pull/38157
-- **image_seq_length** (`int`, *optional*) --
+- **image_seq_length** (`int | None.image_seq_length`) --
   The number of image tokens to be used for each image in the input.
   Added for backward compatibility but this should be set as a processor attribute in future models.
 - **apply_ocr** (`bool`, *optional*, defaults to `True`) --
@@ -286,45 +286,45 @@ preprocesstransformers.LayoutLMv3ImageProcessorFast.preprocesshttps://github.com
 
 **Parameters:**
 
-images (`Union[PIL.Image.Image, numpy.ndarray, torch.Tensor, list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]`) : Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If passing in images with pixel values between 0 and 1, set `do_rescale=False`.
+images (`Union[PIL.Image.Image, numpy.ndarray, torch.Tensor, list, list, list]`) : Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If passing in images with pixel values between 0 and 1, set `do_rescale=False`.
 
-do_convert_rgb (`bool`, *optional*) : Whether to convert the image to RGB.
+do_convert_rgb (`bool | None.do_convert_rgb`) : Whether to convert the image to RGB.
 
-do_resize (`bool`, *optional*) : Whether to resize the image.
+do_resize (`bool | None.do_resize`) : Whether to resize the image.
 
-size (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) : Describes the maximum input dimensions to the model.
+size (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) : Describes the maximum input dimensions to the model.
 
-crop_size (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) : Size of the output image after applying `center_crop`.
+crop_size (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) : Size of the output image after applying `center_crop`.
 
 resample (`Annotated[Union[PILImageResampling, int, NoneType], None]`) : Resampling filter to use if resizing the image. This can be one of the enum `PILImageResampling`. Only has an effect if `do_resize` is set to `True`.
 
-do_rescale (`bool`, *optional*) : Whether to rescale the image.
+do_rescale (`bool | None.do_rescale`) : Whether to rescale the image.
 
-rescale_factor (`float`, *optional*) : Rescale factor to rescale the image by if `do_rescale` is set to `True`.
+rescale_factor (`float | None.rescale_factor`) : Rescale factor to rescale the image by if `do_rescale` is set to `True`.
 
-do_normalize (`bool`, *optional*) : Whether to normalize the image.
+do_normalize (`bool | None.do_normalize`) : Whether to normalize the image.
 
-image_mean (`Union[float, list[float], tuple[float, ...], NoneType]`) : Image mean to use for normalization. Only has an effect if `do_normalize` is set to `True`.
+image_mean (`float | list[float] | tuple[float, ...] | None.image_mean`) : Image mean to use for normalization. Only has an effect if `do_normalize` is set to `True`.
 
-image_std (`Union[float, list[float], tuple[float, ...], NoneType]`) : Image standard deviation to use for normalization. Only has an effect if `do_normalize` is set to `True`.
+image_std (`float | list[float] | tuple[float, ...] | None.image_std`) : Image standard deviation to use for normalization. Only has an effect if `do_normalize` is set to `True`.
 
-do_pad (`bool`, *optional*) : Whether to pad the image. Padding is done either to the largest size in the batch or to a fixed square size per image. The exact padding strategy depends on the model.
+do_pad (`bool | None.do_pad`) : Whether to pad the image. Padding is done either to the largest size in the batch or to a fixed square size per image. The exact padding strategy depends on the model.
 
-pad_size (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) : The size in `{"height": int, "width" int}` to pad the images to. Must be larger than any image size provided for preprocessing. If `pad_size` is not provided, images will be padded to the largest height and width in the batch. Applied only when `do_pad=True.`
+pad_size (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) : The size in `{"height": int, "width" int}` to pad the images to. Must be larger than any image size provided for preprocessing. If `pad_size` is not provided, images will be padded to the largest height and width in the batch. Applied only when `do_pad=True.`
 
-do_center_crop (`bool`, *optional*) : Whether to center crop the image.
+do_center_crop (`bool | None.do_center_crop`) : Whether to center crop the image.
 
-data_format (`Union[~image_utils.ChannelDimension, str, NoneType]`) : Only `ChannelDimension.FIRST` is supported. Added for compatibility with slow processors.
+data_format (`str | ~image_utils.ChannelDimension | None.data_format`) : Only `ChannelDimension.FIRST` is supported. Added for compatibility with slow processors.
 
-input_data_format (`Union[~image_utils.ChannelDimension, str, NoneType]`) : The channel dimension format for the input image. If unset, the channel dimension format is inferred from the input image. Can be one of: - `"channels_first"` or `ChannelDimension.FIRST`: image in (num_channels, height, width) format. - `"channels_last"` or `ChannelDimension.LAST`: image in (height, width, num_channels) format. - `"none"` or `ChannelDimension.NONE`: image in (height, width) format.
+input_data_format (`str | ~image_utils.ChannelDimension | None.input_data_format`) : The channel dimension format for the input image. If unset, the channel dimension format is inferred from the input image. Can be one of: - `"channels_first"` or `ChannelDimension.FIRST`: image in (num_channels, height, width) format. - `"channels_last"` or `ChannelDimension.LAST`: image in (height, width, num_channels) format. - `"none"` or `ChannelDimension.NONE`: image in (height, width) format.
 
 device (`Annotated[Union[str, torch.device, NoneType], None]`) : The device to process the images on. If unset, the device is inferred from the input images.
 
-return_tensors (`Annotated[Union[str, ~utils.generic.TensorType, NoneType], None]`) : Returns stacked tensors if set to `pt, otherwise returns a list of tensors.
+return_tensors (`Annotated[str | ~utils.generic.TensorType | None, None]`) : Returns stacked tensors if set to `pt, otherwise returns a list of tensors.
 
-disable_grouping (`bool`, *optional*) : Whether to disable grouping of images by size to process them individually and not in batches. If None, will be set to True if the images are on CPU, and False otherwise. This choice is based on empirical observations, as detailed here: https://github.com/huggingface/transformers/pull/38157
+disable_grouping (`bool | None.disable_grouping`) : Whether to disable grouping of images by size to process them individually and not in batches. If None, will be set to True if the images are on CPU, and False otherwise. This choice is based on empirical observations, as detailed here: https://github.com/huggingface/transformers/pull/38157
 
-image_seq_length (`int`, *optional*) : The number of image tokens to be used for each image in the input. Added for backward compatibility but this should be set as a processor attribute in future models.
+image_seq_length (`int | None.image_seq_length`) : The number of image tokens to be used for each image in the input. Added for backward compatibility but this should be set as a processor attribute in future models.
 
 apply_ocr (`bool`, *optional*, defaults to `True`) : Whether to apply the Tesseract OCR engine to get words + normalized bounding boxes. Can be overridden by the `apply_ocr` parameter in the `preprocess` method.
 
@@ -344,14 +344,14 @@ tesseract_config (`str`, *optional*) : Any additional custom configuration flags
 
 #### transformers.LayoutLMv3Tokenizer[[transformers.LayoutLMv3Tokenizer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/layoutlmv3/tokenization_layoutlmv3.py#L117)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/layoutlmv3/tokenization_layoutlmv3.py#L114)
 
 Construct a LayoutLMv3 tokenizer (backed by HuggingFace's *tokenizers* library). Based on byte-level BPE.
 
-This tokenizer inherits from [TokenizersBackend](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should
+This tokenizer inherits from [TokenizersBackend](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should
 refer to this superclass for more information regarding those methods.
 
-__call__transformers.LayoutLMv3Tokenizer.__call__https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/layoutlmv3/tokenization_layoutlmv3.py#L243[{"name": "text", "val": ": typing.Union[str, list[str], list[list[str]]]"}, {"name": "text_pair", "val": ": typing.Union[list[str], list[list[str]], NoneType] = None"}, {"name": "boxes", "val": ": typing.Union[list[list[int]], list[list[list[int]]], NoneType] = None"}, {"name": "word_labels", "val": ": typing.Union[list[int], list[list[int]], NoneType] = None"}, {"name": "add_special_tokens", "val": ": bool = True"}, {"name": "padding", "val": ": typing.Union[bool, str, transformers.utils.generic.PaddingStrategy] = False"}, {"name": "truncation", "val": ": typing.Union[bool, str, transformers.tokenization_utils_base.TruncationStrategy] = None"}, {"name": "max_length", "val": ": typing.Optional[int] = None"}, {"name": "stride", "val": ": int = 0"}, {"name": "pad_to_multiple_of", "val": ": typing.Optional[int] = None"}, {"name": "padding_side", "val": ": typing.Optional[str] = None"}, {"name": "return_tensors", "val": ": typing.Union[str, transformers.utils.generic.TensorType, NoneType] = None"}, {"name": "return_token_type_ids", "val": ": typing.Optional[bool] = None"}, {"name": "return_attention_mask", "val": ": typing.Optional[bool] = None"}, {"name": "return_overflowing_tokens", "val": ": bool = False"}, {"name": "return_special_tokens_mask", "val": ": bool = False"}, {"name": "return_offsets_mapping", "val": ": bool = False"}, {"name": "return_length", "val": ": bool = False"}, {"name": "verbose", "val": ": bool = True"}, {"name": "**kwargs", "val": ""}]- **text** (`str`, `List[str]`, `List[List[str]]`) --
+__call__transformers.LayoutLMv3Tokenizer.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/layoutlmv3/tokenization_layoutlmv3.py#L240[{"name": "text", "val": ": str | list[str] | list[list[str]]"}, {"name": "text_pair", "val": ": list[str] | list[list[str]] | None = None"}, {"name": "boxes", "val": ": list[list[int]] | list[list[list[int]]] | None = None"}, {"name": "word_labels", "val": ": list[int] | list[list[int]] | None = None"}, {"name": "add_special_tokens", "val": ": bool = True"}, {"name": "padding", "val": ": bool | str | transformers.utils.generic.PaddingStrategy = False"}, {"name": "truncation", "val": ": bool | str | transformers.tokenization_utils_base.TruncationStrategy = None"}, {"name": "max_length", "val": ": int | None = None"}, {"name": "stride", "val": ": int = 0"}, {"name": "pad_to_multiple_of", "val": ": int | None = None"}, {"name": "padding_side", "val": ": str | None = None"}, {"name": "return_tensors", "val": ": str | transformers.utils.generic.TensorType | None = None"}, {"name": "return_token_type_ids", "val": ": bool | None = None"}, {"name": "return_attention_mask", "val": ": bool | None = None"}, {"name": "return_overflowing_tokens", "val": ": bool = False"}, {"name": "return_special_tokens_mask", "val": ": bool = False"}, {"name": "return_offsets_mapping", "val": ": bool = False"}, {"name": "return_length", "val": ": bool = False"}, {"name": "verbose", "val": ": bool = True"}, {"name": "**kwargs", "val": ""}]- **text** (`str`, `List[str]`, `List[List[str]]`) --
   The sequence or batch of sequences to be encoded. Each sequence can be a string, a list of strings
   (words of a single example or questions of a batch of examples) or a list of list of strings (batch of
   words).
@@ -365,7 +365,7 @@ __call__transformers.LayoutLMv3Tokenizer.__call__https://github.com/huggingface/
 
 - **add_special_tokens** (`bool`, *optional*, defaults to `True`) --
   Whether or not to encode the sequences with the special tokens relative to their model.
-- **padding** (`bool`, `str` or [PaddingStrategy](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `False`) --
+- **padding** (`bool`, `str` or [PaddingStrategy](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `False`) --
   Activates and controls padding. Accepts the following values:
 
   - `True` or `'longest'`: Pad to the longest sequence in the batch (or no padding if only a single
@@ -374,7 +374,7 @@ __call__transformers.LayoutLMv3Tokenizer.__call__https://github.com/huggingface/
     acceptable input length for the model if that argument is not provided.
   - `False` or `'do_not_pad'` (default): No padding (i.e., can output a batch with sequences of different
     lengths).
-- **truncation** (`bool`, `str` or [TruncationStrategy](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.tokenization_utils_base.TruncationStrategy), *optional*, defaults to `False`) --
+- **truncation** (`bool`, `str` or [TruncationStrategy](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.tokenization_utils_base.TruncationStrategy), *optional*, defaults to `False`) --
   Activates and controls truncation. Accepts the following values:
 
   - `True` or `'longest_first'`: Truncate to a maximum length specified with the argument `max_length` or
@@ -423,7 +423,7 @@ __call__transformers.LayoutLMv3Tokenizer.__call__https://github.com/huggingface/
 - **return_offsets_mapping** (`bool`, *optional*, defaults to `False`) --
   Whether or not to return `(char_start, char_end)` for each token.
 
-  This is only available on fast tokenizers inheriting from [PreTrainedTokenizerFast](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.TokenizersBackend), if using
+  This is only available on fast tokenizers inheriting from [PreTrainedTokenizerFast](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.TokenizersBackend), if using
   Python's tokenizer, this method will raise `NotImplementedError`.
 - **return_length**  (`bool`, *optional*, defaults to `False`) --
   Whether or not to return the lengths of the encoded inputs.
@@ -469,20 +469,20 @@ vocab (`str` or `dict[str, int]`, *optional*) : Custom vocabulary dictionary. If
 merges (`str` or `list[str]`, *optional*) : Custom merges list. If not provided, merges are loaded from `merges_file` when using `from_pretrained`.
 #### save_vocabulary[[transformers.LayoutLMv3Tokenizer.save_vocabulary]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_tokenizers.py#L384)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_tokenizers.py#L408)
 
 ## LayoutLMv3TokenizerFast[[transformers.LayoutLMv3Tokenizer]]
 
 #### transformers.LayoutLMv3Tokenizer[[transformers.LayoutLMv3Tokenizer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/layoutlmv3/tokenization_layoutlmv3.py#L117)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/layoutlmv3/tokenization_layoutlmv3.py#L114)
 
 Construct a LayoutLMv3 tokenizer (backed by HuggingFace's *tokenizers* library). Based on byte-level BPE.
 
-This tokenizer inherits from [TokenizersBackend](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should
+This tokenizer inherits from [TokenizersBackend](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should
 refer to this superclass for more information regarding those methods.
 
-__call__transformers.LayoutLMv3Tokenizer.__call__https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/layoutlmv3/tokenization_layoutlmv3.py#L243[{"name": "text", "val": ": typing.Union[str, list[str], list[list[str]]]"}, {"name": "text_pair", "val": ": typing.Union[list[str], list[list[str]], NoneType] = None"}, {"name": "boxes", "val": ": typing.Union[list[list[int]], list[list[list[int]]], NoneType] = None"}, {"name": "word_labels", "val": ": typing.Union[list[int], list[list[int]], NoneType] = None"}, {"name": "add_special_tokens", "val": ": bool = True"}, {"name": "padding", "val": ": typing.Union[bool, str, transformers.utils.generic.PaddingStrategy] = False"}, {"name": "truncation", "val": ": typing.Union[bool, str, transformers.tokenization_utils_base.TruncationStrategy] = None"}, {"name": "max_length", "val": ": typing.Optional[int] = None"}, {"name": "stride", "val": ": int = 0"}, {"name": "pad_to_multiple_of", "val": ": typing.Optional[int] = None"}, {"name": "padding_side", "val": ": typing.Optional[str] = None"}, {"name": "return_tensors", "val": ": typing.Union[str, transformers.utils.generic.TensorType, NoneType] = None"}, {"name": "return_token_type_ids", "val": ": typing.Optional[bool] = None"}, {"name": "return_attention_mask", "val": ": typing.Optional[bool] = None"}, {"name": "return_overflowing_tokens", "val": ": bool = False"}, {"name": "return_special_tokens_mask", "val": ": bool = False"}, {"name": "return_offsets_mapping", "val": ": bool = False"}, {"name": "return_length", "val": ": bool = False"}, {"name": "verbose", "val": ": bool = True"}, {"name": "**kwargs", "val": ""}]- **text** (`str`, `List[str]`, `List[List[str]]`) --
+__call__transformers.LayoutLMv3Tokenizer.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/layoutlmv3/tokenization_layoutlmv3.py#L240[{"name": "text", "val": ": str | list[str] | list[list[str]]"}, {"name": "text_pair", "val": ": list[str] | list[list[str]] | None = None"}, {"name": "boxes", "val": ": list[list[int]] | list[list[list[int]]] | None = None"}, {"name": "word_labels", "val": ": list[int] | list[list[int]] | None = None"}, {"name": "add_special_tokens", "val": ": bool = True"}, {"name": "padding", "val": ": bool | str | transformers.utils.generic.PaddingStrategy = False"}, {"name": "truncation", "val": ": bool | str | transformers.tokenization_utils_base.TruncationStrategy = None"}, {"name": "max_length", "val": ": int | None = None"}, {"name": "stride", "val": ": int = 0"}, {"name": "pad_to_multiple_of", "val": ": int | None = None"}, {"name": "padding_side", "val": ": str | None = None"}, {"name": "return_tensors", "val": ": str | transformers.utils.generic.TensorType | None = None"}, {"name": "return_token_type_ids", "val": ": bool | None = None"}, {"name": "return_attention_mask", "val": ": bool | None = None"}, {"name": "return_overflowing_tokens", "val": ": bool = False"}, {"name": "return_special_tokens_mask", "val": ": bool = False"}, {"name": "return_offsets_mapping", "val": ": bool = False"}, {"name": "return_length", "val": ": bool = False"}, {"name": "verbose", "val": ": bool = True"}, {"name": "**kwargs", "val": ""}]- **text** (`str`, `List[str]`, `List[List[str]]`) --
   The sequence or batch of sequences to be encoded. Each sequence can be a string, a list of strings
   (words of a single example or questions of a batch of examples) or a list of list of strings (batch of
   words).
@@ -496,7 +496,7 @@ __call__transformers.LayoutLMv3Tokenizer.__call__https://github.com/huggingface/
 
 - **add_special_tokens** (`bool`, *optional*, defaults to `True`) --
   Whether or not to encode the sequences with the special tokens relative to their model.
-- **padding** (`bool`, `str` or [PaddingStrategy](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `False`) --
+- **padding** (`bool`, `str` or [PaddingStrategy](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `False`) --
   Activates and controls padding. Accepts the following values:
 
   - `True` or `'longest'`: Pad to the longest sequence in the batch (or no padding if only a single
@@ -505,7 +505,7 @@ __call__transformers.LayoutLMv3Tokenizer.__call__https://github.com/huggingface/
     acceptable input length for the model if that argument is not provided.
   - `False` or `'do_not_pad'` (default): No padding (i.e., can output a batch with sequences of different
     lengths).
-- **truncation** (`bool`, `str` or [TruncationStrategy](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.tokenization_utils_base.TruncationStrategy), *optional*, defaults to `False`) --
+- **truncation** (`bool`, `str` or [TruncationStrategy](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.tokenization_utils_base.TruncationStrategy), *optional*, defaults to `False`) --
   Activates and controls truncation. Accepts the following values:
 
   - `True` or `'longest_first'`: Truncate to a maximum length specified with the argument `max_length` or
@@ -554,7 +554,7 @@ __call__transformers.LayoutLMv3Tokenizer.__call__https://github.com/huggingface/
 - **return_offsets_mapping** (`bool`, *optional*, defaults to `False`) --
   Whether or not to return `(char_start, char_end)` for each token.
 
-  This is only available on fast tokenizers inheriting from [PreTrainedTokenizerFast](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.TokenizersBackend), if using
+  This is only available on fast tokenizers inheriting from [PreTrainedTokenizerFast](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.TokenizersBackend), if using
   Python's tokenizer, this method will raise `NotImplementedError`.
 - **return_length**  (`bool`, *optional*, defaults to `False`) --
   Whether or not to return the lengths of the encoded inputs.
@@ -603,46 +603,143 @@ merges (`str` or `list[str]`, *optional*) : Custom merges list. If not provided,
 
 #### transformers.LayoutLMv3Processor[[transformers.LayoutLMv3Processor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/layoutlmv3/processing_layoutlmv3.py#L26)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/layoutlmv3/processing_layoutlmv3.py#L24)
 
-Constructs a LayoutLMv3 processor which combines a LayoutLMv3 image processor and a LayoutLMv3 tokenizer into a
-single processor.
+Constructs a LayoutLMv3Processor which wraps a image processor and a tokenizer into a single processor.
 
-[LayoutLMv3Processor](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3Processor) offers all the functionalities you need to prepare data for the model.
+[LayoutLMv3Processor](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3Processor) offers all the functionalities of [LayoutLMv3ImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3ImageProcessorFast) and [LayoutLMv3Tokenizer](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3Tokenizer). See the
+[~LayoutLMv3ImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3ImageProcessorFast) and [~LayoutLMv3Tokenizer](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3Tokenizer) for more information.
 
-It first uses [LayoutLMv3ImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3ImageProcessor) to resize and normalize document images, and optionally applies OCR to
-get words and normalized bounding boxes. These are then provided to [LayoutLMv3Tokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3Tokenizer) or
-[LayoutLMv3TokenizerFast](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3Tokenizer), which turns the words and bounding boxes into token-level `input_ids`,
-`attention_mask`, `token_type_ids`, `bbox`. Optionally, one can provide integer `word_labels`, which are turned
-into token-level `labels` for token classification tasks (such as FUNSD, CORD).
+__call__transformers.LayoutLMv3Processor.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/layoutlmv3/processing_layoutlmv3.py#L28[{"name": "images", "val": ""}, {"name": "text", "val": ": str | list[str] | list[list[str]] = None"}, {"name": "text_pair", "val": ": list[str] | list[list[str]] | None = None"}, {"name": "boxes", "val": ": list[list[int]] | list[list[list[int]]] | None = None"}, {"name": "word_labels", "val": ": list[int] | list[list[int]] | None = None"}, {"name": "add_special_tokens", "val": ": bool = True"}, {"name": "padding", "val": ": bool | str | transformers.utils.generic.PaddingStrategy = False"}, {"name": "truncation", "val": ": bool | str | transformers.tokenization_utils_base.TruncationStrategy = None"}, {"name": "max_length", "val": ": int | None = None"}, {"name": "stride", "val": ": int = 0"}, {"name": "pad_to_multiple_of", "val": ": int | None = None"}, {"name": "return_token_type_ids", "val": ": bool | None = None"}, {"name": "return_attention_mask", "val": ": bool | None = None"}, {"name": "return_overflowing_tokens", "val": ": bool = False"}, {"name": "return_special_tokens_mask", "val": ": bool = False"}, {"name": "return_offsets_mapping", "val": ": bool = False"}, {"name": "return_length", "val": ": bool = False"}, {"name": "verbose", "val": ": bool = True"}, {"name": "return_tensors", "val": ": str | transformers.utils.generic.TensorType | None = None"}, {"name": "**kwargs", "val": ""}]- **images** (``) --
+  Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If
+  passing in images with pixel values between 0 and 1, set `do_rescale=False`.
+- **text** (`Union[str, list, list]`, *optional*) --
+  The sequence or batch of sequences to be encoded. Each sequence can be a string or a list of strings
+  (pretokenized string). If you pass a pretokenized input, set `is_split_into_words=True` to avoid ambiguity with batched inputs.
+- **text_pair** (`str, list[str] or list[int]`, *optional*) --
+  Optional second sequence to be encoded. This can be a string, a list of strings (tokenized string using
+  the `tokenize` method) or a list of integers (tokenized string ids using the `convert_tokens_to_ids`
+  method).
+- **boxes** (`list[list[int]] or list[list[list[int]]]`, *optional*) --
+  Word-level bounding boxes. Each bounding box should be normalized to be on a 0-1000 scale.
+- **word_labels** (`list[int] or list[list[int]]`, *optional*) --
+  Word-level integer labels (for token classification tasks such as FUNSD, CORD).
+- **add_special_tokens** (`bool`, *optional*, defaults to `True`) --
+  Whether or not to add special tokens when encoding the sequences. This will use the underlying
+  `PretrainedTokenizerBase.build_inputs_with_special_tokens` function, which defines which tokens are
+  automatically added to the input ids. This is useful if you want to add `bos` or `eos` tokens
+  automatically.
+- **padding** (bool, str or [PaddingStrategy](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.utils.PaddingStrategy), *optional*, defaults to `False`) --
+  Activates and controls padding. Accepts the following values:
 
-__call__transformers.LayoutLMv3Processor.__call__https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/layoutlmv3/processing_layoutlmv3.py#L49[{"name": "images", "val": ""}, {"name": "text", "val": ": typing.Union[str, list[str], list[list[str]]] = None"}, {"name": "text_pair", "val": ": typing.Union[list[str], list[list[str]], NoneType] = None"}, {"name": "boxes", "val": ": typing.Union[list[list[int]], list[list[list[int]]], NoneType] = None"}, {"name": "word_labels", "val": ": typing.Union[list[int], list[list[int]], NoneType] = None"}, {"name": "add_special_tokens", "val": ": bool = True"}, {"name": "padding", "val": ": typing.Union[bool, str, transformers.utils.generic.PaddingStrategy] = False"}, {"name": "truncation", "val": ": typing.Union[bool, str, transformers.tokenization_utils_base.TruncationStrategy] = None"}, {"name": "max_length", "val": ": typing.Optional[int] = None"}, {"name": "stride", "val": ": int = 0"}, {"name": "pad_to_multiple_of", "val": ": typing.Optional[int] = None"}, {"name": "return_token_type_ids", "val": ": typing.Optional[bool] = None"}, {"name": "return_attention_mask", "val": ": typing.Optional[bool] = None"}, {"name": "return_overflowing_tokens", "val": ": bool = False"}, {"name": "return_special_tokens_mask", "val": ": bool = False"}, {"name": "return_offsets_mapping", "val": ": bool = False"}, {"name": "return_length", "val": ": bool = False"}, {"name": "verbose", "val": ": bool = True"}, {"name": "return_tensors", "val": ": typing.Union[str, transformers.utils.generic.TensorType, NoneType] = None"}, {"name": "**kwargs", "val": ""}]
+  - `True` or `'longest'`: Pad to the longest sequence in the batch (or no padding if only a single
+    sequence is provided).
+  - `'max_length'`: Pad to a maximum length specified with the argument `max_length` or to the maximum
+    acceptable input length for the model if that argument is not provided.
+  - `False` or `'do_not_pad'` (default): No padding (i.e., can output a batch with sequences of different
+    lengths).
+- **truncation** (bool, str or [TruncationStrategy](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.tokenization_utils_base.TruncationStrategy), *optional*) --
+  Activates and controls truncation. Accepts the following values:
 
-This method first forwards the `images` argument to [__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__). In case
-[LayoutLMv3ImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3ImageProcessor) was initialized with `apply_ocr` set to `True`, it passes the obtained words and
-bounding boxes along with the additional arguments to [__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3Tokenizer.__call__) and returns the output,
-together with resized and normalized `pixel_values`. In case [LayoutLMv3ImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3ImageProcessor) was initialized with
-`apply_ocr` set to `False`, it passes the words (`text`/``text_pair`) and `boxes` specified by the user along
-with the additional arguments to [__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3Tokenizer.__call__) and returns the output, together with
-resized and normalized `pixel_values`.
+  - `True` or `'longest_first'`: Truncate to a maximum length specified with the argument `max_length` or
+    to the maximum acceptable input length for the model if that argument is not provided. This will
+    truncate token by token, removing a token from the longest sequence in the pair if a pair of
+    sequences (or a batch of pairs) is provided.
+  - `'only_first'`: Truncate to a maximum length specified with the argument `max_length` or to the
+    maximum acceptable input length for the model if that argument is not provided. This will only
+    truncate the first sequence of a pair if a pair of sequences (or a batch of pairs) is provided.
+  - `'only_second'`: Truncate to a maximum length specified with the argument `max_length` or to the
+    maximum acceptable input length for the model if that argument is not provided. This will only
+    truncate the second sequence of a pair if a pair of sequences (or a batch of pairs) is provided.
+  - `False` or `'do_not_truncate'` (default): No truncation (i.e., can output batch with sequence lengths
+    greater than the model maximum admissible input size).
+- **max_length** (`int`, *optional*) --
+  Controls the maximum length to use by one of the truncation/padding parameters.
 
-Please refer to the docstring of the above two methods for more information.
+  If left unset or set to `None`, this will use the predefined model maximum length if a maximum length
+  is required by one of the truncation/padding parameters. If the model has no specific maximum input
+  length (like XLNet) truncation/padding to a maximum length will be deactivated.
+- **stride** (`int`, *optional*, defaults to `0`) --
+  If set to a number along with `max_length`, the overflowing tokens returned when
+  `return_overflowing_tokens=True` will contain some tokens from the end of the truncated sequence
+  returned to provide some overlap between truncated and overflowing sequences. The value of this
+  argument defines the number of overlapping tokens.
+- **pad_to_multiple_of** (`int`, *optional*) --
+  If set will pad the sequence to a multiple of the provided value. Requires `padding` to be activated.
+  This is especially useful to enable using Tensor Cores on NVIDIA hardware with compute capability
+  `>= 7.5` (Volta).
+- **return_token_type_ids** (`bool`, *optional*) --
+  Whether to return token type IDs. If left to the default, will return the token type IDs according to
+  the specific tokenizer's default, defined by the `return_outputs` attribute.
+
+  [What are token type IDs?](../glossary#token-type-ids)
+- **return_attention_mask** (`bool`, *optional*) --
+  Whether to return the attention mask. If left to the default, will return the attention mask according
+  to the specific tokenizer's default, defined by the `return_outputs` attribute.
+
+  [What are attention masks?](../glossary#attention-mask)
+- **return_overflowing_tokens** (`bool`, *optional*, defaults to `False`) --
+  Whether or not to return overflowing token sequences. If a pair of sequences of input ids (or a batch
+  of pairs) is provided with `truncation_strategy = longest_first` or `True`, an error is raised instead
+  of returning overflowing tokens.
+- **return_special_tokens_mask** (`bool`, *optional*, defaults to `False`) --
+  Whether or not to return special tokens mask information.
+- **return_offsets_mapping** (`bool`, *optional*, defaults to `False`) --
+  Whether or not to return `(char_start, char_end)` for each token.
+
+  This is only available on fast tokenizers inheriting from [PreTrainedTokenizerFast](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.TokenizersBackend), if using
+  Python's tokenizer, this method will raise `NotImplementedError`.
+- **return_length** (`bool`, *optional*, defaults to `False`) --
+  Whether or not to return the lengths of the encoded inputs.
+- **verbose** (`bool`, *optional*, defaults to `True`) --
+  Whether or not to print more information and warnings.
+- **return_tensors** (`Union[str, ~utils.generic.TensorType]`, *optional*) --
+  If set, will return tensors of a particular framework. Acceptable values are:
+
+  - `'pt'`: Return PyTorch `torch.Tensor` objects.
+  - `'np'`: Return NumPy `np.ndarray` objects.0``- **data** (`dict`, *optional*) -- Dictionary of lists/arrays/tensors returned by the `__call__`/`encode_plus`/`batch_encode_plus` methods
+  ('input_ids', 'attention_mask', etc.).
+- **encoding** (`tokenizers.Encoding` or `Sequence[tokenizers.Encoding]`, *optional*) -- If the tokenizer is a fast tokenizer which outputs additional information like mapping from word/character
+  space to token space the `tokenizers.Encoding` instance or list of instance (for batches) hold this
+  information.
+- **tensor_type** (`Union[None, str, TensorType]`, *optional*) -- You can give a tensor_type here to convert the lists of integers in PyTorch/Numpy Tensors at
+  initialization.
+- **prepend_batch_axis** (`bool`, *optional*, defaults to `False`) -- Whether or not to add a batch axis when converting to tensors (see `tensor_type` above). Note that this
+  parameter has an effect if the parameter `tensor_type` is set, *otherwise has no effect*.
+- **n_sequences** (`Optional[int]`, *optional*) -- You can give a tensor_type here to convert the lists of integers in PyTorch/Numpy Tensors at
+  initialization.
 
 **Parameters:**
 
-image_processor (`LayoutLMv3ImageProcessor`, *optional*) : An instance of [LayoutLMv3ImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3ImageProcessor). The image processor is a required input.
+image_processor (`LayoutLMv3ImageProcessorFast`) : The image processor is a required input.
 
-tokenizer (`LayoutLMv3Tokenizer` or `LayoutLMv3TokenizerFast`, *optional*) : An instance of [LayoutLMv3Tokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3Tokenizer) or [LayoutLMv3TokenizerFast](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3Tokenizer). The tokenizer is a required input.
+tokenizer (`LayoutLMv3Tokenizer`) : The tokenizer is a required input.
+
+**Returns:**
+
+````
+
+- **data** (`dict`, *optional*) -- Dictionary of lists/arrays/tensors returned by the `__call__`/`encode_plus`/`batch_encode_plus` methods
+  ('input_ids', 'attention_mask', etc.).
+- **encoding** (`tokenizers.Encoding` or `Sequence[tokenizers.Encoding]`, *optional*) -- If the tokenizer is a fast tokenizer which outputs additional information like mapping from word/character
+  space to token space the `tokenizers.Encoding` instance or list of instance (for batches) hold this
+  information.
+- **tensor_type** (`Union[None, str, TensorType]`, *optional*) -- You can give a tensor_type here to convert the lists of integers in PyTorch/Numpy Tensors at
+  initialization.
+- **prepend_batch_axis** (`bool`, *optional*, defaults to `False`) -- Whether or not to add a batch axis when converting to tensors (see `tensor_type` above). Note that this
+  parameter has an effect if the parameter `tensor_type` is set, *otherwise has no effect*.
+- **n_sequences** (`Optional[int]`, *optional*) -- You can give a tensor_type here to convert the lists of integers in PyTorch/Numpy Tensors at
+  initialization.
 
 ## LayoutLMv3Model[[transformers.LayoutLMv3Model]]
 
 #### transformers.LayoutLMv3Model[[transformers.LayoutLMv3Model]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/layoutlmv3/modeling_layoutlmv3.py#L566)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/layoutlmv3/modeling_layoutlmv3.py#L568)
 
 The bare Layoutlmv3 Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -650,14 +747,14 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.LayoutLMv3Model.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/layoutlmv3/modeling_layoutlmv3.py#L647[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "bbox", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "token_type_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "pixel_values", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, token_sequence_length)`) --
+forwardtransformers.LayoutLMv3Model.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/layoutlmv3/modeling_layoutlmv3.py#L651[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "bbox", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.FloatTensor | None = None"}, {"name": "token_type_ids", "val": ": torch.LongTensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "pixel_values", "val": ": torch.FloatTensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, token_sequence_length)`) --
   Indices of input sequence tokens in the vocabulary.
 
   Note that `sequence_length = token_sequence_length + patch_sequence_length + 1` where `1` is for [CLS]
   token. See `pixel_values` for `patch_sequence_length`.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **bbox** (`torch.LongTensor` of shape `(batch_size, token_sequence_length, 4)`, *optional*) --
@@ -700,8 +797,8 @@ forwardtransformers.LayoutLMv3Model.forwardhttps://github.com/huggingface/transf
   model's internal embedding lookup matrix.
 - **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [LayoutLMv3ImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3ImageProcessor). See [LayoutLMv3ImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([LayoutLMv3Processor](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3Processor) uses
-  [LayoutLMv3ImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3ImageProcessor) for processing images).
+  [LayoutLMv3ImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3ImageProcessorFast). See [LayoutLMv3ImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([LayoutLMv3Processor](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3Processor) uses
+  [LayoutLMv3ImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3ImageProcessorFast) for processing images).
 - **output_attentions** (`bool`, *optional*) --
   Whether or not to return the attentions tensors of all attention layers. See `attentions` under returned
   tensors for more detail.
@@ -709,9 +806,9 @@ forwardtransformers.LayoutLMv3Model.forwardhttps://github.com/huggingface/transf
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([LayoutLMv3Config](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3Config)) and inputs.
+elements depending on the configuration ([LayoutLMv3Config](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3Config)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
@@ -723,7 +820,7 @@ elements depending on the configuration ([LayoutLMv3Config](/docs/transformers/v
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [LayoutLMv3Model](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3Model) forward method, overrides the `__call__` special method.
+The [LayoutLMv3Model](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3Model) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -752,15 +849,15 @@ Examples:
 
 **Parameters:**
 
-config ([LayoutLMv3Model](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3Model)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([LayoutLMv3Model](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3Model)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or a tuple of
+A [transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([LayoutLMv3Config](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3Config)) and inputs.
+elements depending on the configuration ([LayoutLMv3Config](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3Config)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
@@ -777,13 +874,13 @@ elements depending on the configuration ([LayoutLMv3Config](/docs/transformers/v
 
 #### transformers.LayoutLMv3ForSequenceClassification[[transformers.LayoutLMv3ForSequenceClassification]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/layoutlmv3/modeling_layoutlmv3.py#L1097)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/layoutlmv3/modeling_layoutlmv3.py#L1113)
 
 LayoutLMv3 Model with a sequence classification head on top (a linear layer on top of the final hidden state of the
 [CLS] token) e.g. for document image classification tasks such as the
 [RVL-CDIP](https://www.cs.cmu.edu/~aharley/rvl-cdip/) dataset.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -791,11 +888,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.LayoutLMv3ForSequenceClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/layoutlmv3/modeling_layoutlmv3.py#L1107[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "token_type_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "bbox", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "pixel_values", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.LayoutLMv3ForSequenceClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/layoutlmv3/modeling_layoutlmv3.py#L1129[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.FloatTensor | None = None"}, {"name": "token_type_ids", "val": ": torch.LongTensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "bbox", "val": ": torch.LongTensor | None = None"}, {"name": "pixel_values", "val": ": torch.LongTensor | None = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -831,7 +928,7 @@ forwardtransformers.LayoutLMv3ForSequenceClassification.forwardhttps://github.co
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 - **bbox** (`torch.LongTensor` of shape `(batch_size, sequence_length, 4)`, *optional*) --
   Bounding boxes of each input sequence tokens. Selected in the range `[0,
   config.max_2d_position_embeddings-1]`. Each bounding box should be a normalized version in (x0, y0, x1, y1)
@@ -839,10 +936,10 @@ forwardtransformers.LayoutLMv3ForSequenceClassification.forwardhttps://github.co
   y1) represents the position of the lower right corner.
 - **pixel_values** (`torch.LongTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [LayoutLMv3ImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3ImageProcessor). See [LayoutLMv3ImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([LayoutLMv3Processor](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3Processor) uses
-  [LayoutLMv3ImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3ImageProcessor) for processing images).0[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
+  [LayoutLMv3ImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3ImageProcessorFast). See [LayoutLMv3ImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([LayoutLMv3Processor](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3Processor) uses
+  [LayoutLMv3ImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3ImageProcessorFast) for processing images).0[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([LayoutLMv3Config](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3Config)) and inputs.
+elements depending on the configuration ([LayoutLMv3Config](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3Config)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).
@@ -855,7 +952,7 @@ elements depending on the configuration ([LayoutLMv3Config](/docs/transformers/v
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [LayoutLMv3ForSequenceClassification](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3ForSequenceClassification) forward method, overrides the `__call__` special method.
+The [LayoutLMv3ForSequenceClassification](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3ForSequenceClassification) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -887,15 +984,15 @@ Examples:
 
 **Parameters:**
 
-config ([LayoutLMv3ForSequenceClassification](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3ForSequenceClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([LayoutLMv3ForSequenceClassification](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3ForSequenceClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
+A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([LayoutLMv3Config](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3Config)) and inputs.
+elements depending on the configuration ([LayoutLMv3Config](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3Config)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).
@@ -913,14 +1010,14 @@ elements depending on the configuration ([LayoutLMv3Config](/docs/transformers/v
 
 #### transformers.LayoutLMv3ForTokenClassification[[transformers.LayoutLMv3ForTokenClassification]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/layoutlmv3/modeling_layoutlmv3.py#L873)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/layoutlmv3/modeling_layoutlmv3.py#L877)
 
 LayoutLMv3 Model with a token classification head on top (a linear layer on top of the final hidden states) e.g.
 for sequence labeling (information extraction) tasks such as [FUNSD](https://guillaumejaume.github.io/FUNSD/),
 [SROIE](https://rrc.cvc.uab.es/?ch=13), [CORD](https://github.com/clovaai/cord) and
 [Kleister-NDA](https://github.com/applicaai/kleister-nda).
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -928,11 +1025,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.LayoutLMv3ForTokenClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/layoutlmv3/modeling_layoutlmv3.py#L887[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "bbox", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "token_type_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "pixel_values", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.LayoutLMv3ForTokenClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/layoutlmv3/modeling_layoutlmv3.py#L897[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "bbox", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.FloatTensor | None = None"}, {"name": "token_type_ids", "val": ": torch.LongTensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "pixel_values", "val": ": torch.LongTensor | None = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **bbox** (`torch.LongTensor` of shape `(batch_size, sequence_length, 4)`, *optional*) --
@@ -971,13 +1068,13 @@ forwardtransformers.LayoutLMv3ForTokenClassification.forwardhttps://github.com/h
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 - **pixel_values** (`torch.LongTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [LayoutLMv3ImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3ImageProcessor). See [LayoutLMv3ImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([LayoutLMv3Processor](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3Processor) uses
-  [LayoutLMv3ImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3ImageProcessor) for processing images).0[transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or a tuple of
+  [LayoutLMv3ImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3ImageProcessorFast). See [LayoutLMv3ImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([LayoutLMv3Processor](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3Processor) uses
+  [LayoutLMv3ImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3ImageProcessorFast) for processing images).0[transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([LayoutLMv3Config](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3Config)) and inputs.
+elements depending on the configuration ([LayoutLMv3Config](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3Config)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided)  -- Classification loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.num_labels)`) -- Classification scores (before SoftMax).
@@ -990,7 +1087,7 @@ elements depending on the configuration ([LayoutLMv3Config](/docs/transformers/v
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [LayoutLMv3ForTokenClassification](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3ForTokenClassification) forward method, overrides the `__call__` special method.
+The [LayoutLMv3ForTokenClassification](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3ForTokenClassification) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -1021,15 +1118,15 @@ Examples:
 
 **Parameters:**
 
-config ([LayoutLMv3ForTokenClassification](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3ForTokenClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([LayoutLMv3ForTokenClassification](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3ForTokenClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or a tuple of
+A [transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([LayoutLMv3Config](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3Config)) and inputs.
+elements depending on the configuration ([LayoutLMv3Config](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3Config)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided)  -- Classification loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.num_labels)`) -- Classification scores (before SoftMax).
@@ -1047,12 +1144,12 @@ elements depending on the configuration ([LayoutLMv3Config](/docs/transformers/v
 
 #### transformers.LayoutLMv3ForQuestionAnswering[[transformers.LayoutLMv3ForQuestionAnswering]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/layoutlmv3/modeling_layoutlmv3.py#L977)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/layoutlmv3/modeling_layoutlmv3.py#L987)
 
 The Layoutlmv3 transformer with a span classification head on top for extractive question-answering tasks like
 SQuAD (a linear layer on top of the hidden-states output to compute `span start logits` and `span end logits`).
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -1060,11 +1157,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.LayoutLMv3ForQuestionAnswering.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/layoutlmv3/modeling_layoutlmv3.py#L987[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "token_type_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "start_positions", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "end_positions", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "bbox", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "pixel_values", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.LayoutLMv3ForQuestionAnswering.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/layoutlmv3/modeling_layoutlmv3.py#L1003[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.FloatTensor | None = None"}, {"name": "token_type_ids", "val": ": torch.LongTensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "start_positions", "val": ": torch.LongTensor | None = None"}, {"name": "end_positions", "val": ": torch.LongTensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "bbox", "val": ": torch.LongTensor | None = None"}, {"name": "pixel_values", "val": ": torch.LongTensor | None = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -1104,7 +1201,7 @@ forwardtransformers.LayoutLMv3ForQuestionAnswering.forwardhttps://github.com/hug
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 - **bbox** (`torch.LongTensor` of shape `(batch_size, sequence_length, 4)`, *optional*) --
   Bounding boxes of each input sequence tokens. Selected in the range `[0,
   config.max_2d_position_embeddings-1]`. Each bounding box should be a normalized version in (x0, y0, x1, y1)
@@ -1112,10 +1209,10 @@ forwardtransformers.LayoutLMv3ForQuestionAnswering.forwardhttps://github.com/hug
   y1) represents the position of the lower right corner.
 - **pixel_values** (`torch.LongTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [LayoutLMv3ImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3ImageProcessor). See [LayoutLMv3ImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([LayoutLMv3Processor](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3Processor) uses
-  [LayoutLMv3ImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3ImageProcessor) for processing images).0[transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or a tuple of
+  [LayoutLMv3ImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3ImageProcessorFast). See [LayoutLMv3ImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([LayoutLMv3Processor](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3Processor) uses
+  [LayoutLMv3ImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3ImageProcessorFast) for processing images).0[transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([LayoutLMv3Config](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3Config)) and inputs.
+elements depending on the configuration ([LayoutLMv3Config](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3Config)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Total span extraction loss is the sum of a Cross-Entropy for the start and end positions.
 - **start_logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`) -- Span-start scores (before SoftMax).
@@ -1129,7 +1226,7 @@ elements depending on the configuration ([LayoutLMv3Config](/docs/transformers/v
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [LayoutLMv3ForQuestionAnswering](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3ForQuestionAnswering) forward method, overrides the `__call__` special method.
+The [LayoutLMv3ForQuestionAnswering](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3ForQuestionAnswering) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -1164,15 +1261,15 @@ Examples:
 
 **Parameters:**
 
-config ([LayoutLMv3ForQuestionAnswering](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3ForQuestionAnswering)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([LayoutLMv3ForQuestionAnswering](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3ForQuestionAnswering)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or a tuple of
+A [transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([LayoutLMv3Config](/docs/transformers/v5.0.0rc1/en/model_doc/layoutlmv3#transformers.LayoutLMv3Config)) and inputs.
+elements depending on the configuration ([LayoutLMv3Config](/docs/transformers/v5.0.0/en/model_doc/layoutlmv3#transformers.LayoutLMv3Config)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Total span extraction loss is the sum of a Cross-Entropy for the start and end positions.
 - **start_logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`) -- Span-start scores (before SoftMax).

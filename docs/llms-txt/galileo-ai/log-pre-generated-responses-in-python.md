@@ -1,12 +1,16 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/how-to/log-pre-generated-responses-in-python.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Log Pre-generated Responses in Python
 
 > If you already have a dataset of requests and application responses, and you want to log and evaluate these on Galileo without re-generating the responses, you can do so via our worflows.
 
 First, log in to Galileo:
 
-```py
+```py  theme={null}
 import promptquality as pq
 
 pq.login()
@@ -14,7 +18,7 @@ pq.login()
 
 Now you can take your previously generated data and log it to Galileo.
 
-```py
+```py  theme={null}
 from promptquality import EvaluateRun
 
 metrics = [pq.Scorers.context_adherence_plus, pq.Scorers.prompt_injection]
@@ -22,7 +26,7 @@ metrics = [pq.Scorers.context_adherence_plus, pq.Scorers.prompt_injection]
 evaluate_run = EvaluateRun(run_name="my_run", project_name="my_project", scorers=metrics)
 ```
 
-```py
+```py  theme={null}
 # Your previously generated requests & responses
 data = [
     {
@@ -53,7 +57,7 @@ for row in data:
 
 Finally, log your Evaluate run to Galileo:
 
-```py
+```py  theme={null}
 evaluate_run.finish()
 ```
 
@@ -63,7 +67,7 @@ Once complete, this step will display the link to access the run from your Galil
 
 To log the above dataset as a RAG workflow, you can modify the code snippet as follows:
 
-```py
+```py  theme={null}
 for row in data:
     template = "Given the following context answer the question. \n Context: {context} \n Question: {question}"
     wf = evaluate_run.add_workflow(input=row["request"], output=row["response"])

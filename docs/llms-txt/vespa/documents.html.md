@@ -49,6 +49,24 @@ field shortid type string {
 
 This enables using a [document-summary](../querying/document-summaries.html) with only in-memory fields while still getting the identifier you actually care about. If the "user-specified-identifier" is just a simple number you could even use "type int" for this field for minimal memory overhead.
 
+The Document ID is stored on disk in the document summary. To return this value in search results, configure the schema like this:
+
+```
+schema music {
+    document music {
+        field ...
+    }
+    document-summary empty-summary {
+        summary documentid {
+            source: documentid
+        }
+        from-disk
+    }
+    ...
+```
+
+... and use `presentation.summary=empty-summary` in the query API. The `from-disk` setting mutes a warning for document summary disk access; Use a higher query timeout when requesting many IDs like this.
+
 ### Namespace
 
 The namespace in document ids is useful when you have multiple document collections that you want to be sure never end up with the same document id. It has no function in Vespa beyond this, and can just be set to any short constant value like for example "doc". Consider also letting synthetic documents used for testing use namespace "test" so it's easy to detect and remove them if they are present outside the test by mistake.
@@ -170,7 +188,7 @@ The sample app [vespa-documentation-search](https://github.com/vespa-cloud/vespa
 
 Both sample apps also use the Document API to GET/PUT/UPDATE other documents as part of processing, using asynchronous [DocumentAccess](https://github.com/vespa-engine/vespa/blob/master/documentapi/src/main/java/com/yahoo/documentapi/DocumentAccess.java). Use this as a starting point for applications that enrich data when writing.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

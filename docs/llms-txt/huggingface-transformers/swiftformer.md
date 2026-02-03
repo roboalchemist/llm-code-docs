@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/swiftformer.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/swiftformer.md
 
 # SwiftFormer
 
@@ -18,15 +18,15 @@ This model was contributed by [shehan97](https://huggingface.co/shehan97). The o
 
 #### transformers.SwiftFormerConfig[[transformers.SwiftFormerConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/swiftformer/configuration_swiftformer.py#L24)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/swiftformer/configuration_swiftformer.py#L23)
 
-This is the configuration class to store the configuration of a [SwiftFormerModel](/docs/transformers/v5.0.0rc1/en/model_doc/swiftformer#transformers.SwiftFormerModel). It is used to instantiate an
+This is the configuration class to store the configuration of a [SwiftFormerModel](/docs/transformers/v5.0.0/en/model_doc/swiftformer#transformers.SwiftFormerModel). It is used to instantiate an
 SwiftFormer model according to the specified arguments, defining the model architecture. Instantiating a
 configuration with the defaults will yield a similar configuration to that of the SwiftFormer
 [MBZUAI/swiftformer-xs](https://huggingface.co/MBZUAI/swiftformer-xs) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -81,11 +81,11 @@ batch_norm_eps (`float`, *optional*, defaults to 1e-05) : The epsilon used by th
 
 #### transformers.SwiftFormerModel[[transformers.SwiftFormerModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/swiftformer/modeling_swiftformer.py#L414)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/swiftformer/modeling_swiftformer.py#L416)
 
 The bare Swiftformer Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -93,24 +93,24 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.SwiftFormerModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/swiftformer/modeling_swiftformer.py#L425[{"name": "pixel_values", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
+forwardtransformers.SwiftFormerModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/swiftformer/modeling_swiftformer.py#L427[{"name": "pixel_values", "val": ": torch.Tensor | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [ViTImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/vit#transformers.ViTImageProcessor). See [ViTImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details (`processor_class` uses
-  [ViTImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/vit#transformers.ViTImageProcessor) for processing images).
+  [ViTImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/vit#transformers.ViTImageProcessorFast). See [ViTImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details (`processor_class` uses
+  [ViTImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/vit#transformers.ViTImageProcessorFast) for processing images).
 - **output_hidden_states** (`bool`, *optional*) --
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0`transformers.modeling_outputs.BaseModelOutputWithNoAttention` or `tuple(torch.FloatTensor)`A `transformers.modeling_outputs.BaseModelOutputWithNoAttention` or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0`transformers.modeling_outputs.BaseModelOutputWithNoAttention` or `tuple(torch.FloatTensor)`A `transformers.modeling_outputs.BaseModelOutputWithNoAttention` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([SwiftFormerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/swiftformer#transformers.SwiftFormerConfig)) and inputs.
+elements depending on the configuration ([SwiftFormerConfig](/docs/transformers/v5.0.0/en/model_doc/swiftformer#transformers.SwiftFormerConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, num_channels, height, width)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, num_channels, height, width)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-The [SwiftFormerModel](/docs/transformers/v5.0.0rc1/en/model_doc/swiftformer#transformers.SwiftFormerModel) forward method, overrides the `__call__` special method.
+The [SwiftFormerModel](/docs/transformers/v5.0.0/en/model_doc/swiftformer#transformers.SwiftFormerModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -123,7 +123,7 @@ Example:
 
 **Parameters:**
 
-config ([SwiftFormerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/swiftformer#transformers.SwiftFormerConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([SwiftFormerConfig](/docs/transformers/v5.0.0/en/model_doc/swiftformer#transformers.SwiftFormerConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
@@ -131,7 +131,7 @@ config ([SwiftFormerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/swiftforme
 
 A `transformers.modeling_outputs.BaseModelOutputWithNoAttention` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([SwiftFormerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/swiftformer#transformers.SwiftFormerConfig)) and inputs.
+elements depending on the configuration ([SwiftFormerConfig](/docs/transformers/v5.0.0/en/model_doc/swiftformer#transformers.SwiftFormerConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, num_channels, height, width)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
@@ -143,11 +143,11 @@ elements depending on the configuration ([SwiftFormerConfig](/docs/transformers/
 
 #### transformers.SwiftFormerForImageClassification[[transformers.SwiftFormerForImageClassification]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/swiftformer/modeling_swiftformer.py#L458)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/swiftformer/modeling_swiftformer.py#L460)
 
 The Swiftformer Model with an image classification head on top e.g. for ImageNet.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -155,10 +155,10 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.SwiftFormerForImageClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/swiftformer/modeling_swiftformer.py#L475[{"name": "pixel_values", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
+forwardtransformers.SwiftFormerForImageClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/swiftformer/modeling_swiftformer.py#L477[{"name": "pixel_values", "val": ": torch.Tensor | None = None"}, {"name": "labels", "val": ": torch.Tensor | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [ViTImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/vit#transformers.ViTImageProcessor). See [ViTImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details (`processor_class` uses
-  [ViTImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/vit#transformers.ViTImageProcessor) for processing images).
+  [ViTImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/vit#transformers.ViTImageProcessorFast). See [ViTImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details (`processor_class` uses
+  [ViTImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/vit#transformers.ViTImageProcessorFast) for processing images).
 - **labels** (`torch.LongTensor` of shape `(batch_size,)`, *optional*) --
   Labels for computing the image classification/regression loss. Indices should be in `[0, ...,
   config.num_labels - 1]`. If `config.num_labels == 1` a regression loss is computed (Mean-Square loss), If
@@ -167,16 +167,16 @@ forwardtransformers.SwiftFormerForImageClassification.forwardhttps://github.com/
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.ImageClassifierOutputWithNoAttention](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutputWithNoAttention) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.ImageClassifierOutputWithNoAttention](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutputWithNoAttention) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.ImageClassifierOutputWithNoAttention](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutputWithNoAttention) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.ImageClassifierOutputWithNoAttention](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutputWithNoAttention) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([SwiftFormerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/swiftformer#transformers.SwiftFormerConfig)) and inputs.
+elements depending on the configuration ([SwiftFormerConfig](/docs/transformers/v5.0.0/en/model_doc/swiftformer#transformers.SwiftFormerConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).
 - **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each stage) of shape `(batch_size, num_channels, height, width)`. Hidden-states (also
   called feature maps) of the model at the output of each stage.
-The [SwiftFormerForImageClassification](/docs/transformers/v5.0.0rc1/en/model_doc/swiftformer#transformers.SwiftFormerForImageClassification) forward method, overrides the `__call__` special method.
+The [SwiftFormerForImageClassification](/docs/transformers/v5.0.0/en/model_doc/swiftformer#transformers.SwiftFormerForImageClassification) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -208,15 +208,15 @@ Example:
 
 **Parameters:**
 
-config ([SwiftFormerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/swiftformer#transformers.SwiftFormerConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([SwiftFormerConfig](/docs/transformers/v5.0.0/en/model_doc/swiftformer#transformers.SwiftFormerConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.ImageClassifierOutputWithNoAttention](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutputWithNoAttention) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.ImageClassifierOutputWithNoAttention](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutputWithNoAttention) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.ImageClassifierOutputWithNoAttention](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutputWithNoAttention) or a tuple of
+A [transformers.modeling_outputs.ImageClassifierOutputWithNoAttention](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutputWithNoAttention) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([SwiftFormerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/swiftformer#transformers.SwiftFormerConfig)) and inputs.
+elements depending on the configuration ([SwiftFormerConfig](/docs/transformers/v5.0.0/en/model_doc/swiftformer#transformers.SwiftFormerConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).

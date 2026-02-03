@@ -5,11 +5,16 @@ title: Amazon ECS Managed Instances
 description: >-
   Install and configure the Datadog Agent on Amazon Elastic Container Service
   Managed Instances
-breadcrumbs: Docs > Container Monitoring > Amazon ECS > Amazon ECS Managed Instances
-source_url: https://docs.datadoghq.com/amazon_ecs/managed_instances/index.html
+breadcrumbs: Docs > Containers > Amazon ECS > Amazon ECS Managed Instances
 ---
 
 # Amazon ECS Managed Instances
+
+{% callout %}
+##### ECS Managed Instances is in Preview
+
+Amazon ECS Managed Instances monitoring is in Preview.
+{% /callout %}
 
 Datadog Container Monitoring enables visibility into applications running on [Amazon ECS Managed Instances](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ManagedInstances.html).
 

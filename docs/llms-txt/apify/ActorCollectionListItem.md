@@ -14,22 +14,22 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#createdAt)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_collection.ts#L63)createdAt
+### [**](#createdAt)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_collection.ts#L105)createdAt
 
 **createdAt: Date
 
-### [**](#id)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_collection.ts#L62)id
+### [**](#id)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_collection.ts#L104)id
 
 **id: string
 
-### [**](#modifiedAt)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_collection.ts#L64)modifiedAt
+### [**](#modifiedAt)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_collection.ts#L106)modifiedAt
 
 **modifiedAt: Date
 
-### [**](#name)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_collection.ts#L65)name
+### [**](#name)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_collection.ts#L107)name
 
 **name: string
 
-### [**](#username)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_collection.ts#L66)username
+### [**](#username)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_collection.ts#L108)username
 
 **username: string

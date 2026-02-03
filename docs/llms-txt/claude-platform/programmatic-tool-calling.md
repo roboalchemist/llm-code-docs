@@ -12,6 +12,8 @@ Programmatic tool calling is currently in public beta.
 To use this feature, add the `"advanced-tool-use-2025-11-20"` [beta header](/docs/en/api/beta-headers) to your API requests.
 
 This feature requires the code execution tool to be enabled.
+
+Please reach out through our [feedback form](https://forms.gle/MVGTnrHe73HpMiho8) to share your feedback on this feature.
 </Note>
 
 ## Model compatibility
@@ -826,8 +828,5 @@ We recommend using Anthropic's managed solution if you're using the Claude API.
   </Card>
   <Card title="Implement Tool Use" icon="hammer" href="/docs/en/agents-and-tools/tool-use/implement-tool-use">
     Step-by-step guide for implementing tools.
-  </Card>
-  <Card title="Token-Efficient Tool Use" icon="bolt" href="/docs/en/agents-and-tools/tool-use/token-efficient-tool-use">
-    Optimize your tool implementations for better performance.
   </Card>
 </CardGroup>

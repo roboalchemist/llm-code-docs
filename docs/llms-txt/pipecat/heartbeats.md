@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/pipeline/heartbeats.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Pipeline Heartbeats
 
 > Monitor pipeline health with heartbeat frames
@@ -61,8 +65,3 @@ The heartbeat system uses two key timing constants:
 <Note>
   These values are currently fixed but may be configurable in future versions.
 </Note>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/deploy/streamlit-community-cloud/get-started/connect-your-github-account
+
 # Connect your GitHub account
 
 Connecting GitHub to your Streamlit Community Cloud account allows you to deploy apps directly from the files you store in your repositories. It also lets the system check for updates to those files and automatically update your apps. When you first connect your GitHub account to your Community Cloud account, you'll be able to deploy apps from your public repositories to Community Cloud. If you want to deploy from private repositories, you can give Community Cloud additional permissions to do so. For more information about these permissions, see [GitHub OAuth scope](https://docs.streamlit.io/deploy/streamlit-community-cloud/status#github-oauth-scope).

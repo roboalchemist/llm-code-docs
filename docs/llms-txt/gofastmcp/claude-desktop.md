@@ -1,5 +1,9 @@
 # Source: https://gofastmcp.com/integrations/claude-desktop.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Claude Desktop 🤝 FastMCP
 
 > Connect FastMCP servers to Claude Desktop
@@ -11,17 +15,14 @@ export const LocalFocusTip = () => {
 };
 
 export const VersionBadge = ({version}) => {
-  return <code className="version-badge-container">
-            <p className="version-badge">
-                <span className="version-badge-label">New in version:</span> 
-                <code className="version-badge-version">{version}</code>
-            </p>
-        </code>;
+  return <Badge stroke size="lg" icon="gift" iconType="regular" className="version-badge">
+            New in version <code>{version}</code>
+        </Badge>;
 };
 
 <LocalFocusTip />
 
-Claude Desktop supports MCP servers through local STDIO connections and remote servers (beta), allowing you to extend Claude's capabilities with custom tools, resources, and prompts from your FastMCP servers.
+[Claude Desktop](https://www.claude.com/download) supports MCP servers through local STDIO connections and remote servers (beta), allowing you to extend Claude's capabilities with custom tools, resources, and prompts from your FastMCP servers.
 
 <Note>
   Remote MCP server support is currently in beta and available for users on Claude Pro, Max, Team, and Enterprise plans (as of June 2025). Most users will still need to use local STDIO connections.
@@ -272,11 +273,11 @@ Users on Claude Pro, Max, Team, and Enterprise plans have first-class remote ser
 Create a proxy server that connects to a remote HTTP server:
 
 ```python proxy_server.py theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-from fastmcp import FastMCP
+from fastmcp.server import create_proxy
 
 # Create a proxy to a remote server
-proxy = FastMCP.as_proxy(
-    "https://example.com/mcp/sse", 
+proxy = create_proxy(
+    "https://example.com/mcp/sse",
     name="Remote Server Proxy"
 )
 
@@ -289,8 +290,9 @@ if __name__ == "__main__":
 For authenticated remote servers, create an authenticated client following the guidance in the [client auth documentation](/clients/auth/bearer) and pass it to the proxy:
 
 ```python auth_proxy_server.py {7} theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-from fastmcp import FastMCP, Client
+from fastmcp import Client
 from fastmcp.client.auth import BearerAuth
+from fastmcp.server import create_proxy
 
 # Create authenticated client
 client = Client(
@@ -299,7 +301,7 @@ client = Client(
 )
 
 # Create proxy using the authenticated client
-proxy = FastMCP.as_proxy(client, name="Authenticated Proxy")
+proxy = create_proxy(client, name="Authenticated Proxy")
 
 if __name__ == "__main__":
     proxy.run()

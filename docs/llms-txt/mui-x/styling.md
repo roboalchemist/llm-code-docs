@@ -1094,4 +1094,4 @@ import { axisClasses } from '@mui/x-charts/ChartsAxis';
 const labels: string[] = ['Group A', 'Group B', 'Group C', 'Group D', 'Group E'];
 const lData: number[] = [42, 24, 56, 45, 3];
 const rData: number[] = [57, 7, 19, 16, 22];
-const colors: string[] = ['#00
+const colors:

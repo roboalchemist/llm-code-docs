@@ -6,237 +6,434 @@
 
 # Source: https://ui.nuxt.com/raw/docs/getting-started/installation/nuxt.md
 
-# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/i18n/nuxt.md
+# Installation
 
-# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/color-mode/nuxt.md
+> Learn how to install and configure Nuxt UI in your Nuxt application.
 
-# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/icons/nuxt.md
+> [!NOTE]
+> See: /docs/getting-started/installation/vue
+> Looking for the Vue version?
 
-# Source: https://ui.nuxt.com/raw/docs/getting-started/installation/nuxt.md
+## Setup
 
-# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/i18n/nuxt.md
+### Add to a Nuxt project
 
-# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/color-mode/nuxt.md
+Install the Nuxt UI package
+```bash
+pnpm add @nuxt/ui tailwindcss
 
-# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/icons/nuxt.md
-
-# Source: https://ui.nuxt.com/raw/docs/getting-started/installation/nuxt.md
-
-# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/i18n/nuxt.md
-
-# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/color-mode/nuxt.md
-
-# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/icons/nuxt.md
-
-# Source: https://ui.nuxt.com/raw/docs/getting-started/installation/nuxt.md
-
-# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/i18n/nuxt.md
-
-# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/color-mode/nuxt.md
-
-# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/icons/nuxt.md
-
-# Source: https://ui.nuxt.com/raw/docs/getting-started/installation/nuxt.md
-
-# Source: https://ui.nuxt.com/raw/docs/getting-started/integrations/i18n/nuxt.md
-
-# Internationalization (i18n)
-
-> Nuxt UI supports 50+ locales and multi-directional (LTR/RTL) internationalization.
-
-<callout className="hidden" icon="i-logos-vue" to="/docs/getting-started/integrations/i18n/vue">
-
-Looking for the **Vue** version?
-
-</callout>
-
-## Usage
-
-<note to="/docs/components/app">
-
-Nuxt UI provides an **App** component that wraps your app to provide global configurations.
-
-</note>
-
-### Locale
-
-Use the `locale` prop with the locale you want to use from `@nuxt/ui/locale`:
-
-```vue [app.vue]
-<script setup lang="ts">
-import { fr } from '@nuxt/ui/locale'
-</script>
-
-<template>
-  <UApp :locale="fr">
-    <NuxtPage />
-  </UApp>
-</template>
 ```
 
-### Custom locale
+```bash
+yarn add @nuxt/ui tailwindcss
 
-You can create your own locale using the `defineLocale` composable:
+```
 
-```vue [app.vue]
-<script setup lang="ts">
-import type { Messages } from '@nuxt/ui'
+```bash
+npm install @nuxt/ui tailwindcss
 
-const locale = defineLocale<Messages>({
-  name: 'My custom locale',
-  code: 'en',
-  dir: 'ltr',
-  messages: {
-    // implement pairs
-  }
+```
+
+```bash
+bun add @nuxt/ui tailwindcss
+
+```
+Add the Nuxt UI module in your nuxt.config.ts
+```ts
+export default defineNuxtConfig({
+  modules: ['@nuxt/ui']
 })
-</script>
 
-<template>
-  <UApp :locale="locale">
-    <NuxtPage />
-  </UApp>
-</template>
+```
+Import Tailwind CSS and Nuxt UI in your CSS
+```css
+@import "tailwindcss";
+@import "@nuxt/ui";
+
 ```
 
-<tip>
-
-Look at the `code` parameter, there you need to pass the iso code of the language. Example:
-
-- `hi` Hindi (language)
-- `de-AT`: German (language) as used in Austria (region)
-
-</tip>
-
-### Extend locale
-
-You can customize an existing locale by overriding its `messages` or `code` using the `extendLocale` composable:
-
-```vue [app.vue]
-<script setup lang="ts">
-import { en } from '@nuxt/ui/locale'
-
-const locale = extendLocale(en, {
-  code: 'en-GB',
-  messages: {
-    commandPalette: {
-      placeholder: 'Search a component...'
-    }
-  }
+```ts
+export default defineNuxtConfig({
+  modules: ['@nuxt/ui'],
+  css: ['~/assets/css/main.css']
 })
-</script>
 
+```
+> [!TIP]
+> See: https://nuxt.com/docs/getting-started/layers
+> When using [Nuxt Layers](https://nuxt.com/docs/getting-started/layers), the module automatically generates [`@source`](https://tailwindcss.com/docs/functions-and-directives#source-directive) directives for each layer directory, ensuring Tailwind CSS scans all your layer source files for utility classes.
+
+> [!NOTE]
+> It's recommended to install the [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss) extension for VSCode and add the following settings:
+> ```json
+> {
+>   "files.associations": {
+>     "*.css": "tailwindcss"
+>   },
+>   "editor.quickSuggestions": {
+>     "strings": "on"
+>   },
+>   "tailwindCSS.classAttributes": ["class", "ui"],
+>   "tailwindCSS.experimental.classRegex": [
+>     ["ui:\\s*{([^)]*)\\s*}", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+>   ]
+> }
+> 
+> ```
+
+Wrap your app with App component
+```vue
 <template>
-  <UApp :locale="locale">
+  <UApp>
     <NuxtPage />
   </UApp>
 </template>
+
+```
+> [!NOTE]
+> See: /docs/components/app
+> The `App` component provides global configurations and is required for Toast, Tooltip components to work as well as Programmatic Overlays.
+
+### Use a Nuxt template
+
+To quickly get started with Nuxt UI, you can use the [starter template](https://github.com/nuxt-ui-templates/starter) by running:
+
+```bash [Terminal]
+npm create nuxt@latest -- -t ui
 ```
 
-### Dynamic locale
+You can also get started with one of our [official templates](/templates):
 
-To dynamically switch between languages, you can use the [Nuxt I18n](https://i18n.nuxtjs.org/) module.
+**Starter**
+A minimal template to get started with Nuxt UI.
 
-<steps level="4">
+**Landing**
+A modern landing page template powered by Nuxt Content.
 
-#### Install the Nuxt I18n package
+**Docs**
+A documentation template powered by Nuxt Content.
 
-<code-group sync="pm">
+**SaaS**
+A SaaS template with landing, pricing, docs and blog powered by Nuxt Content.
 
-```bash [pnpm]
-pnpm add @nuxtjs/i18n
+**Dashboard**
+A dashboard template with multi-column layout for building sophisticated admin interfaces.
+
+**Chat**
+An AI chatbot template to build your own chatbot powered by Nuxt MDC and Vercel AI SDK.
+
+**Portfolio**
+A sleek portfolio template to showcase your work, skills and blog powered by Nuxt Content.
+
+**Changelog**
+A changelog template to display your repository releases notes from GitHub powered by Nuxt MDC.
+
+**Editor**
+A rich text editor template powered by TipTap with support for markdown, HTML, and JSON content types.
+
+You can use the `Use this template` button on GitHub to create a new repository or use the CLI:
+
+```bash
+npm create nuxt@latest -- -t ui
+
 ```
 
-```bash [yarn]
-yarn add @nuxtjs/i18n
+```bash
+npm create nuxt@latest -- -t ui/landing
+
 ```
 
-```bash [npm]
-npm install @nuxtjs/i18n
+```bash
+npm create nuxt@latest -- -t ui/docs
+
 ```
 
-```bash [bun]
-bun add @nuxtjs/i18n
+```bash
+npm create nuxt@latest -- -t ui/saas
+
 ```
 
-</code-group>
+```bash
+npm create nuxt@latest -- -t ui/dashboard
 
-#### Add the Nuxt I18n module in your `nuxt.config.ts`
+```
+
+```bash
+npm create nuxt@latest -- -t ui/chat
+
+```
+
+```bash
+npm create nuxt@latest -- -t ui/portfolio
+
+```
+
+```bash
+npm create nuxt@latest -- -t ui/changelog
+
+```
+
+```bash
+npm create nuxt@latest -- -t ui/editor
+
+```
+
+## Options
+
+You can customize Nuxt UI by providing options in your `nuxt.config.ts`.
+
+### `prefix`
+
+Use the `prefix` option to change the prefix of the components.
+
+- Default: `U`
 
 ```ts [nuxt.config.ts]
 export default defineNuxtConfig({
-  modules: [
-    '@nuxt/ui',
-    '@nuxtjs/i18n'
-  ],
+  modules: ['@nuxt/ui'],
   css: ['~/assets/css/main.css'],
-  i18n: {
-    locales: [{
-      code: 'de',
-      name: 'Deutsch'
-    }, {
-      code: 'en',
-      name: 'English'
-    }, {
-      code: 'fr',
-      name: 'Français'
-    }]
+  ui: {
+    prefix: 'Nuxt'
   }
 })
 ```
 
-#### Set the `locale` prop using `useI18n`
+### `fonts`
 
-```vue [app.vue]
-<script setup lang="ts">
-import * as locales from '@nuxt/ui/locale'
+Use the `fonts` option to enable or disable the [`@nuxt/fonts`](https://github.com/nuxt/fonts) module.
 
-const { locale } = useI18n()
-</script>
+- Default: `true`
 
-<template>
-  <UApp :locale="locales[locale]">
-    <NuxtPage />
-  </UApp>
-</template>
-```
-
-</steps>
-
-### Dynamic direction
-
-Each locale has a `dir` property which will be used by the `App` component to set the directionality of all components.
-
-In a multilingual application, you might want to set the `lang` and `dir` attributes on the `<html>` element dynamically based on the user's locale, which you can do with the [useHead](https://nuxt.com/docs/api/composables/use-head) composable:
-
-```vue [app.vue]
-<script setup lang="ts">
-import * as locales from '@nuxt/ui/locale'
-
-const { locale } = useI18n()
-
-const lang = computed(() => locales[locale.value].code)
-const dir = computed(() => locales[locale.value].dir)
-
-useHead({
-  htmlAttrs: {
-    lang,
-    dir
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+  modules: ['@nuxt/ui'],
+  css: ['~/assets/css/main.css'],
+  ui: {
+    fonts: false
   }
 })
-</script>
-
-<template>
-  <UApp :locale="locales[locale]">
-    <NuxtPage />
-  </UApp>
-</template>
 ```
 
-## Supported languages
+### `colorMode`
 
-<supported-languages>
+Use the `colorMode` option to enable or disable the [`@nuxt/color-mode`](https://github.com/nuxt-modules/color-mode) module.
 
+- Default: `true`
 
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+  modules: ['@nuxt/ui'],
+  css: ['~/assets/css/main.css'],
+  ui: {
+    colorMode: false
+  }
+})
+```
 
-</supported-languages>
+### `theme.colors`
+
+Use the `theme.colors` option to define the dynamic color aliases used to generate components theme.
+
+- Default: `['primary', 'secondary', 'success', 'info', 'warning', 'error']`
+
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+  modules: ['@nuxt/ui'],
+  css: ['~/assets/css/main.css'],
+  ui: {
+    theme: {
+      colors: ['primary', 'error']
+    }
+  }
+})
+```
+
+> [!TIP]
+> See: /docs/getting-started/theme/design-system#colors
+> Learn more about color customization and theming in the Theme section.
+
+### `theme.transitions`
+
+Use the `theme.transitions` option to enable or disable transitions on components.
+
+- Default: `true`
+
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+  modules: ['@nuxt/ui'],
+  css: ['~/assets/css/main.css'],
+  ui: {
+    theme: {
+      transitions: false
+    }
+  }
+})
+```
+
+> [!NOTE]
+> This option adds the `transition-colors` class on components with hover or active states.
+
+### `theme.defaultVariants`
+
+Use the `theme.defaultVariants` option to override the default `color` and `size` variants for components.
+
+- Default: `{ color: 'primary', size: 'md' }`
+
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+  modules: ['@nuxt/ui'],
+  css: ['~/assets/css/main.css'],
+  ui: {
+    theme: {
+      defaultVariants: {
+        color: 'neutral',
+        size: 'sm'
+      }
+    }
+  }
+})
+```
+
+### `theme.prefix` `4.2+`
+
+Use the `theme.prefix` option to configure the same prefix you set on your Tailwind CSS import. This ensures Nuxt UI components use the correct prefixed utility classes and CSS variables.
+
+```ts
+export default defineNuxtConfig({
+  modules: ['@nuxt/ui'],
+  css: ['~/assets/css/main.css'],
+  ui: {
+    theme: {
+      prefix: 'tw'
+    }
+  }
+})
+
+```
+
+```css
+@import "tailwindcss" prefix(tw);
+@import "@nuxt/ui";
+
+```
+
+> [!WARNING]
+> See: https://fonts.nuxt.com/get-started/configuration#processcssvariables
+> You might need to enable `fonts.processCSSVariables` to use the prefix option with the `@nuxt/fonts` module:
+> ```ts
+> export default defineNuxtConfig({
+>   modules: ['@nuxt/ui'],
+>   css: ['~/assets/css/main.css'],
+>   ui: {
+>     theme: {
+>       prefix: 'tw'
+>     }
+>   },
+>   fonts: {
+>     processCSSVariables: true
+>   }
+> })
+> 
+> ```
+
+This will automatically prefix all Tailwind utility classes and CSS variables in Nuxt UI component themes:
+
+```html
+<!-- Without prefix -->
+<button class="px-2 py-1 text-xs hover:bg-primary/75">Button</button>
+
+<!-- With prefix: tw -->
+<button class="tw:px-2 tw:py-1 tw:text-xs tw:hover:bg-primary/75">Button</button>
+```
+
+> [!NOTE]
+> See: https://tailwindcss.com/docs/styling-with-utility-classes#using-the-prefix-option
+> Learn more about using a prefix in the Tailwind CSS documentation.
+
+### `mdc`
+
+Use the `mdc` option to force the import of Nuxt UI `<Prose>` components even if `@nuxtjs/mdc` or `@nuxt/content` is not installed.
+
+- Default: `false`
+
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+  modules: ['@nuxt/ui'],
+  css: ['~/assets/css/main.css'],
+  ui: {
+    mdc: true
+  }
+})
+```
+
+### `content`
+
+Use the `content` option to force the import of Nuxt UI `<Prose>` and `<UContent>` components even if `@nuxt/content` is not installed (`@nuxtjs/mdc` is installed by `@nuxt/content`).
+
+- Default: `false`
+
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+  modules: ['@nuxt/ui'],
+  css: ['~/assets/css/main.css'],
+  ui: {
+    content: true
+  }
+})
+```
+
+### `experimental.componentDetection` `4.1+`
+
+Use the `experimental.componentDetection` option to enable automatic component detection for tree-shaking. This feature scans your source code to detect which components are actually used and only generates the necessary CSS for those components (including their dependencies).
+
+- Default: `false`
+- Type: `boolean | string[]`
+
+**Enable automatic detection:**
+
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+  modules: ['@nuxt/ui'],
+  css: ['~/assets/css/main.css'],
+  ui: {
+    experimental: {
+      componentDetection: true
+    }
+  }
+})
+```
+
+**Include additional components for dynamic usage:**
+
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+  modules: ['@nuxt/ui'],
+  css: ['~/assets/css/main.css'],
+  ui: {
+    experimental: {
+      componentDetection: ['Modal', 'Dropdown', 'Popover']
+    }
+  }
+})
+```
+
+> [!NOTE]
+> When providing an array of component names, automatic detection is enabled and these components (along with their dependencies) are guaranteed to be included. This is useful for dynamic components like `<component :is="..." />` that can't be statically analyzed.
+
+## Continuous releases
+
+Nuxt UI uses [pkg.pr.new](https://github.com/stackblitz-labs/pkg.pr.new) for continuous preview releases, providing developers with instant access to the latest features and bug fixes without waiting for official releases.
+
+Automatic preview releases are created for all commits and PRs to the `v4` branch. Use them by replacing your package version with the specific commit hash or PR number.
+
+```diff [package.json]
+{
+  "dependencies": {
+-   "@nuxt/ui": "^4.0.0",
++   "@nuxt/ui": "https://pkg.pr.new/@nuxt/ui@4c96909",
+  }
+}
+```
+
+> [!NOTE]
+> pkg.pr.new will automatically comment on PRs with the installation URL, making it easy to test changes.

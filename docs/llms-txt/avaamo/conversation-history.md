@@ -2,10 +2,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/debug/conversation-history.md
 
-# Source: https://docs.avaamo.com/user-guide/how-to/build-agents/debug-agents/conversation-history.md
-
-# Source: https://docs.avaamo.com/user-guide/debug/conversation-history.md
-
 # Conversation history
 
 The **Conversation history** page displays the records of the agent and all of its user interactions for the selected agent.

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/write-for-promptfoo/
+
 # Write for Promptfoo
 
 If you enjoy Promptfoo, want to help others learn it, and would like to build your reputation as a writer, this is for you.

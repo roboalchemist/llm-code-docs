@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/api-reference/servicetokens/create-service_token.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create service_token
 
 > Create a new service_token. It is possible to have multiple API keys with the same name. There is no de-duplication
@@ -59,7 +63,13 @@ paths:
                     the Service token belongs in.
                 service_account_id:
                   type: string
-                  description: The service account ID this service token should belong to.
+                  description: >-
+                    The service account ID this service token should belong to.
+                    You can create a service account in the Braintrust
+                    [organization settings
+                    page](https://www.braintrustdata.com/app/settings?subroute=service-tokens)
+                    or using the [modify organization membership
+                    endpoint](https://www.braintrust.dev/docs/api-reference/organizations/modify-organization-membership)
               required:
                 - name
                 - service_account_id
@@ -181,7 +191,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

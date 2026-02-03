@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/test/mock-functions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Mock functions in `bun test`
 
 Create mocks with the `mock` function from `bun:test`.
@@ -58,11 +62,11 @@ test("random", async () => {
 
   expect(random).toHaveBeenCalled();
   expect(random).toHaveBeenCalledTimes(3);
-  expect(random.mock.args).toEqual([[1], [2], [3]]);
+  expect(random.mock.calls).toEqual([[1], [2], [3]]);
   expect(random.mock.results[0]).toEqual({ type: "return", value: a });
 });
 ```
 
 ***
 
-See [Docs > Test Runner > Mocks](https://bun.sh/docs/test/mocks) for complete documentation on mocking with the Bun test runner.
+See [Docs > Test Runner > Mocks](/test/mocks) for complete documentation on mocking with the Bun test runner.

@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/api-reference/pagination.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Pagination
 
 > Learn how pagination works in the Resend API.
@@ -41,7 +45,7 @@ Existing list endpoints can optionally return paginated results:
 
 Newer list endpoints always return paginated results:
 
-* [List Emails](/api-reference/emails/receiving/list-emails)
+* [List Emails](/api-reference/emails/list-emails)
 * [List Templates](/api-reference/templates/list-templates)
 * [List Topics](/api-reference/topics/list-topics)
 
@@ -74,7 +78,7 @@ All paginated endpoints support the following query parameters:
 
 Paginated endpoints return responses in the following format:
 
-```json Response Format theme={null}
+```json Response Format theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
   "object": "list",
   "has_more": true,
@@ -103,7 +107,7 @@ Paginated endpoints return responses in the following format:
 To paginate forward through results (newer to older items), use the `after` parameter with the ID of the **last item** from the current page:
 
 <CodeGroup>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   const resend = new Resend('re_xxxxxxxxx');
 
   // First page
@@ -119,7 +123,7 @@ To paginate forward through results (newer to older items), use the `after` para
   }
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   // First page
@@ -135,7 +139,7 @@ To paginate forward through results (newer to older items), use the `after` para
   }
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
@@ -149,7 +153,7 @@ To paginate forward through results (newer to older items), use the `after` para
       second_page = resend.Contacts.list(limit=50, after=last_id)
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   Resend.api_key = "re_xxxxxxxxx"
 
   # First page
@@ -162,27 +166,31 @@ To paginate forward through results (newer to older items), use the `after` para
   end
   ```
 
-  ```go Go theme={null}
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
+
   import "github.com/resend/resend-go/v3"
 
-  client := resend.NewClient("re_xxxxxxxxx")
+  func main() {
+  	client := resend.NewClient("re_xxxxxxxxx")
 
-  // First page
-  firstPage, err := client.Contacts.List(&resend.ListContactsRequest{
-      Limit: 50,
-  })
+  	// First page
+  	firstPage, err := client.Contacts.List(&resend.ListContactsRequest{
+  		Limit: 50,
+  	})
 
-  // Second page (if has_more is true)
-  if firstPage.HasMore {
-      lastId := firstPage.Data[len(firstPage.Data)-1].ID
-      secondPage, err := client.Contacts.List(&resend.ListContactsRequest{
-          Limit: 50,
-          After: lastId,
-      })
+  	// Second page (if has_more is true)
+  	if firstPage.HasMore {
+  		lastId := firstPage.Data[len(firstPage.Data)-1].ID
+  		client.Contacts.List(&resend.ListContactsRequest{
+  			Limit: 50,
+  			After: lastId,
+  		})
+  	}
   }
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{Resend, Result, types::ListContactOptions};
 
   #[tokio::main]
@@ -206,7 +214,7 @@ To paginate forward through results (newer to older items), use the `after` para
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -225,7 +233,7 @@ To paginate forward through results (newer to older items), use the `after` para
   }
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
   using System.Linq;
 
@@ -247,7 +255,7 @@ To paginate forward through results (newer to older items), use the `after` para
   }
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   # First page
   curl -X GET 'https://api.resend.com/contacts?limit=50' \
        -H 'Authorization: Bearer re_xxxxxxxxx'
@@ -263,7 +271,7 @@ To paginate forward through results (newer to older items), use the `after` para
 To paginate backward through results (older to newer items), use the `before` parameter with the ID of the **first item** from the current page (or the most recent ID you have in your system):
 
 <CodeGroup>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   const resend = new Resend('re_xxxxxxxxx');
 
   // Start from a specific point and go backward
@@ -281,7 +289,7 @@ To paginate backward through results (older to newer items), use the `before` pa
   }
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   // Start from a specific point and go backward
@@ -299,7 +307,7 @@ To paginate backward through results (older to newer items), use the `before` pa
   }
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
@@ -312,7 +320,7 @@ To paginate backward through results (older to newer items), use the `before` pa
       previous_page = resend.Contacts.list(limit=50, before=first_id)
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   Resend.api_key = "re_xxxxxxxxx"
 
   # Start from a specific point and go backward
@@ -324,27 +332,31 @@ To paginate backward through results (older to newer items), use the `before` pa
   end
   ```
 
-  ```go Go theme={null}
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
+
   import "github.com/resend/resend-go/v3"
 
-  client := resend.NewClient("re_xxxxxxxxx")
+  func main() {
+  	client := resend.NewClient("re_xxxxxxxxx")
 
-  // Start from a specific point and go backward
-  page, err := client.Contacts.List(&resend.ListContactsRequest{
-      Limit:  resend.Int(50),
-      Before: resend.String("some-contact-id"),
-  })
+  	// Start from a specific point and go backward
+  	page, err := client.Contacts.List(&resend.ListContactsRequest{
+  		Limit:  resend.Int(50),
+  		Before: resend.String("some-contact-id"),
+  	})
 
-  if page.HasMore {
-      firstId := page.Data[0].ID
-      previousPage, err := client.Contacts.List(&resend.ListContactsRequest{
-          Limit:  resend.Int(50),
-          Before: resend.String(firstId),
-      })
+  	if page.HasMore {
+  		firstId := page.Data[0].ID
+  		client.Contacts.List(&resend.ListContactsRequest{
+  			Limit:  resend.Int(50),
+  			Before: resend.String(firstId),
+  		})
+  	}
   }
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{Resend, Result, types::ListContactOptions};
 
   #[tokio::main]
@@ -369,7 +381,7 @@ To paginate backward through results (older to newer items), use the `before` pa
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -387,7 +399,7 @@ To paginate backward through results (older to newer items), use the `before` pa
   }
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
   using System.Linq;
 
@@ -409,7 +421,7 @@ To paginate backward through results (older to newer items), use the `before` pa
   }
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X GET 'https://api.resend.com/contacts?limit=50&before=some-contact-id' \
        -H 'Authorization: Bearer re_xxxxxxxxx'
   ```
@@ -447,7 +459,7 @@ Pagination requests may return the following validation errors:
 
 Example error response:
 
-```json Error Response theme={null}
+```json Error Response theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
   "name": "validation_error",
   "statusCode": 422,

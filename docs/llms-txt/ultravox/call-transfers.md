@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/telephony/call-transfers.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Call Transfers
 
 > Transfer calls between AI agents and human operators.
@@ -125,8 +129,3 @@ The attended transfer process involves:
 ## Conclusion
 
 Call transfers are essential for creating robust AI-powered voice applications that can seamlessly escalate to human operators when needed. By implementing both blind and attended transfer capabilities, you can ensure customers receive the appropriate level of service while maintaining a smooth experience throughout the conversation.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

@@ -478,7 +478,7 @@ Key functions:
 - [Struct Fields in Schemas](../../reference/schemas/schemas.html#struct-field)
 - [Search Chains](../../applications/searchers.html#search-chains)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

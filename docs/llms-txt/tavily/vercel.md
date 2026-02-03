@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/documentation/integrations/vercel.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Vercel AI SDK
 
 > Integrate Tavily with Vercel AI SDK to enhance your AI agents with powerful web search, content extraction, crawling, and site mapping capabilities.
@@ -247,8 +251,3 @@ const marketResult = await generateText({
 * **Easy Integration:** Works seamlessly with Vercel AI SDK v5
 * **Flexible Configuration:** Extensive configuration options for all tools
 * **Production-Ready:** Built on the reliable Tavily API infrastructure
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

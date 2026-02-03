@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/concepts/configuration/serving-static-files
+
 # Static file serving
 
 Streamlit apps can host and serve small, static media files to support media embedding use cases that won't work with the normal [media elements](/develop/api-reference/media).

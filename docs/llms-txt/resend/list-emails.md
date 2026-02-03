@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/api-reference/emails/list-emails.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Sent Emails
 
 > Retrieve a list of emails sent by your team.
@@ -71,7 +75,7 @@ You can list all emails sent by your team. The list returns references to indivi
 <QueryParams type="emails" isRequired={true} />
 
 <RequestExample>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -79,58 +83,53 @@ You can list all emails sent by your team. The list returns references to indivi
   const { data, error } = await resend.emails.list();
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->emails->list();
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
   resend.Emails.list()
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   Resend.api_key = "re_xxxxxxxxx"
   emails = Resend::Emails.list
   puts emails
   ```
 
-  ```go Go theme={null}
-  import (
-    "context"
-    "fmt"
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
 
-    "github.com/resend/resend-go/v3"
+  import (
+  	"context"
+
+  	"github.com/resend/resend-go/v3"
   )
 
-  ctx := context.TODO()
-  client := resend.NewClient("re_xxxxxxxxx")
+  func main() {
+  	ctx := context.TODO()
+  	client := resend.NewClient("re_xxxxxxxxx")
 
-  paginatedResp, err := client.Emails.ListWithOptions(ctx, nil)
-  if err != nil {
-    panic(err)
-  }
+  	paginatedResp, err := client.Emails.ListWithOptions(ctx, nil)
+  	if err != nil {
+  		panic(err)
+  	}
 
-  fmt.Printf("Found %d emails\n", len(paginatedResp.Data))
-
-  if paginatedResp.HasMore {
-    opts := &resend.ListOptions{
-      After: &paginatedResp.Data[len(paginatedResp.Data)-1].ID,
-    }
-    paginatedResp, err = client.Emails.ListWithOptions(ctx, opts)
-
-    if err != nil {
-      panic(err)
-    }
-
-    fmt.Printf("Found %d more emails in next page\n", len(paginatedResp.Data))
+  	if paginatedResp.HasMore {
+  		opts := &resend.ListOptions{
+  			After: &paginatedResp.Data[len(paginatedResp.Data)-1].ID,
+  		}
+  		client.Emails.ListWithOptions(ctx, opts)
+  	}
   }
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{list_opts::ListOptions, Resend, Result};
 
   #[tokio::main]
@@ -143,7 +142,7 @@ You can list all emails sent by your team. The list returns references to indivi
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -155,7 +154,7 @@ You can list all emails sent by your team. The list returns references to indivi
   }
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -164,14 +163,14 @@ You can list all emails sent by your team. The list returns references to indivi
   Console.WriteLine( "Count={0}", resp.Content.Data.Count );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X GET 'https://api.resend.com/emails' \
        -H 'Authorization: Bearer re_xxxxxxxxx'
   ```
 </RequestExample>
 
 <ResponseExample>
-  ```json Response theme={null}
+  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "object": "list",
     "has_more": false,

@@ -4,7 +4,6 @@
 title: Cache for Redis Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: 'Docs > Cloudcraft (Standalone) > Components: Azure > Cache for Redis Component'
-source_url: https://docs.datadoghq.com/components-azure/cache-for-redis/index.html
 ---
 
 # Cache for Redis Component

@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/reference/create-workflow.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create Agent
 
 Create a new Agent or a new version of an existing Agent programmatically. This endpoint allows you to define the complete agent configuration including nodes, edges (conditional connections), input variables, and release labels.
@@ -104,17 +108,19 @@ Agents use the same node types as evaluation pipelines. For the complete list of
 
 Common node types include:
 
-| Node Type            | Description                        |
-| -------------------- | ---------------------------------- |
-| `VARIABLE`           | Static value                       |
-| `CODE_EXECUTION`     | Run Python or JavaScript code      |
-| `PROMPT_TEMPLATE`    | Call an LLM with a prompt template |
-| `ENDPOINT`           | Make an HTTP request               |
-| `COMPARE`            | Compare two values                 |
-| `CONTAINS`           | Check if string contains value     |
-| `LLM_ASSERTION`      | LLM-based evaluation               |
-| `AI_DATA_EXTRACTION` | Extract structured data            |
-| `CODING_AGENT`       | Claude Code sandbox                |
+| Node Type            | Description                                                                                          |
+| -------------------- | ---------------------------------------------------------------------------------------------------- |
+| `VARIABLE`           | Static value                                                                                         |
+| `CODE_EXECUTION`     | Run Python or JavaScript code                                                                        |
+| `PROMPT_TEMPLATE`    | Call an LLM with a prompt template                                                                   |
+| `ENDPOINT`           | Make an HTTP request                                                                                 |
+| `FOR_LOOP`           | Iterate over a collection ([details](/features/evaluations/column-types#for-loop-for_loop))          |
+| `WHILE_LOOP`         | Execute until condition is met ([details](/features/evaluations/column-types#while-loop-while_loop)) |
+| `COMPARE`            | Compare two values                                                                                   |
+| `CONTAINS`           | Check if string contains value                                                                       |
+| `LLM_ASSERTION`      | LLM-based evaluation                                                                                 |
+| `AI_DATA_EXTRACTION` | Extract structured data                                                                              |
+| `CODING_AGENT`       | Claude Code sandbox                                                                                  |
 
 ## Response
 
@@ -586,7 +592,3 @@ components:
         - right_config
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

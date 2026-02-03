@@ -1,8 +1,12 @@
 # Source: https://docs.asapp.com/reporting/send-s3.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Transmitting Data via S3
 
-S3 is the supported mechanism for ongoing data transmissions, though can also be used for one-time transfers where needed. ASAPP customers can transmit the following types of data to S3:
+S3 supports ongoing data transmissions, though you can also use it for one-time transfers where needed. ASAPP customers can transmit the following types of data to S3:
 
 * Call center data attributes
 * Conversation transcripts from messaging or voice interactions
@@ -73,7 +77,7 @@ Values for `env` and `aws-region` are set in the same way as above. As an exampl
 
 ### Encryption
 
-ASAPP ensures that the data you write to your dedicated S3 buckets is encrypted in transit using TLS/SSL and encrypted at rest using AES256.
+ASAPP ensures that TLS/SSL encrypts the data you write to your dedicated S3 buckets in transit and AES256 encrypts it at rest.
 
 ### Your Dedicated Export AWS Credentials
 
@@ -101,8 +105,8 @@ The file itself will be encrypted using your public GPG key. Once you decrypt th
 
 **General Requirements:**
 
-* Files should be UTF-8 encoded.
-* Control characters should be escaped.
+* Encode files in UTF-8.
+* Escape control characters.
 * You may provide files as CSV or JSONL format, but we strongly recommend JSONL where possible. (CSV files are just too fragile.)
 * If you send a CSV file, ASAPP recommends that you include a header. Otherwise, your CSV must provide columns in the exact order listed below.
 * When providing a CSV file, you must provide an explicit null value (as the unquoted string: `NULL` ) for missing or empty values.

@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/bitsandbytes/v0.49.0/reference/optim/lion.md
+# Source: https://huggingface.co/docs/bitsandbytes/v0.49.1/reference/optim/lion.md
 
 # Lion
 
@@ -8,9 +8,9 @@
 
 #### bitsandbytes.optim.Lion[[bitsandbytes.optim.Lion]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/lion.py#L8)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/lion.py#L8)
 
-__init__bitsandbytes.optim.Lion.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/lion.py#L9[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.0001"}, {"name": "betas", "val": " = (0.9, 0.99)"}, {"name": "weight_decay", "val": " = 0"}, {"name": "optim_bits", "val": " = 32"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}, {"name": "is_paged", "val": " = False"}]- **params** (`torch.tensor`) --
+__init__bitsandbytes.optim.Lion.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/lion.py#L9[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.0001"}, {"name": "betas", "val": " = (0.9, 0.99)"}, {"name": "weight_decay", "val": " = 0"}, {"name": "optim_bits", "val": " = 32"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}, {"name": "is_paged", "val": " = False"}]- **params** (`torch.tensor`) --
   The input parameters to optimize.
 - **lr** (`float`, defaults to 1e-4) --
   The learning rate.
@@ -59,9 +59,9 @@ is_paged (`bool`, defaults to `False`) : Whether the optimizer is a paged optimi
 
 #### bitsandbytes.optim.Lion8bit[[bitsandbytes.optim.Lion8bit]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/lion.py#L63)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/lion.py#L63)
 
-__init__bitsandbytes.optim.Lion8bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/lion.py#L64[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.0001"}, {"name": "betas", "val": " = (0.9, 0.99)"}, {"name": "weight_decay", "val": " = 0"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}, {"name": "is_paged", "val": " = False"}]- **params** (`torch.tensor`) --
+__init__bitsandbytes.optim.Lion8bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/lion.py#L64[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.0001"}, {"name": "betas", "val": " = (0.9, 0.99)"}, {"name": "weight_decay", "val": " = 0"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}, {"name": "is_paged", "val": " = False"}]- **params** (`torch.tensor`) --
   The input parameters to optimize.
 - **lr** (`float`, defaults to 1e-4) --
   The learning rate.
@@ -106,9 +106,9 @@ is_paged (`bool`, defaults to `False`) : Whether the optimizer is a paged optimi
 
 #### bitsandbytes.optim.Lion32bit[[bitsandbytes.optim.Lion32bit]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/lion.py#L115)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/lion.py#L115)
 
-__init__bitsandbytes.optim.Lion32bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/lion.py#L116[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.0001"}, {"name": "betas", "val": " = (0.9, 0.99)"}, {"name": "weight_decay", "val": " = 0"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}, {"name": "is_paged", "val": " = False"}]- **params** (`torch.tensor`) --
+__init__bitsandbytes.optim.Lion32bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/lion.py#L116[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.0001"}, {"name": "betas", "val": " = (0.9, 0.99)"}, {"name": "weight_decay", "val": " = 0"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}, {"name": "is_paged", "val": " = False"}]- **params** (`torch.tensor`) --
   The input parameters to optimize.
 - **lr** (`float`, defaults to 1e-4) --
   The learning rate.
@@ -153,9 +153,9 @@ is_paged (`bool`, defaults to `False`) : Whether the optimizer is a paged optimi
 
 #### bitsandbytes.optim.PagedLion[[bitsandbytes.optim.PagedLion]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/lion.py#L167)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/lion.py#L167)
 
-__init__bitsandbytes.optim.PagedLion.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/lion.py#L168[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.0001"}, {"name": "betas", "val": " = (0.9, 0.99)"}, {"name": "weight_decay", "val": " = 0"}, {"name": "optim_bits", "val": " = 32"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}]- **params** (`torch.tensor`) --
+__init__bitsandbytes.optim.PagedLion.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/lion.py#L168[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.0001"}, {"name": "betas", "val": " = (0.9, 0.99)"}, {"name": "weight_decay", "val": " = 0"}, {"name": "optim_bits", "val": " = 32"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}]- **params** (`torch.tensor`) --
   The input parameters to optimize.
 - **lr** (`float`, defaults to 1e-4) --
   The learning rate.
@@ -200,9 +200,9 @@ block_wise (`bool`, defaults to `True`) : Whether to independently quantize each
 
 #### bitsandbytes.optim.PagedLion8bit[[bitsandbytes.optim.PagedLion8bit]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/lion.py#L219)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/lion.py#L219)
 
-__init__bitsandbytes.optim.PagedLion8bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/lion.py#L220[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.0001"}, {"name": "betas", "val": " = (0.9, 0.99)"}, {"name": "weight_decay", "val": " = 0"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}]- **params** (`torch.tensor`) --
+__init__bitsandbytes.optim.PagedLion8bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/lion.py#L220[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.0001"}, {"name": "betas", "val": " = (0.9, 0.99)"}, {"name": "weight_decay", "val": " = 0"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}]- **params** (`torch.tensor`) --
   The input parameters to optimize.
 - **lr** (`float`, defaults to 1e-4) --
   The learning rate.
@@ -247,9 +247,9 @@ block_wise (`bool`, defaults to `True`) : Whether to independently quantize each
 
 #### bitsandbytes.optim.PagedLion32bit[[bitsandbytes.optim.PagedLion32bit]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/lion.py#L270)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/lion.py#L270)
 
-__init__bitsandbytes.optim.PagedLion32bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/optim/lion.py#L271[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.0001"}, {"name": "betas", "val": " = (0.9, 0.99)"}, {"name": "weight_decay", "val": " = 0"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}]- **params** (`torch.tensor`) --
+__init__bitsandbytes.optim.PagedLion32bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/optim/lion.py#L271[{"name": "params", "val": ""}, {"name": "lr", "val": " = 0.0001"}, {"name": "betas", "val": " = (0.9, 0.99)"}, {"name": "weight_decay", "val": " = 0"}, {"name": "args", "val": " = None"}, {"name": "min_8bit_size", "val": " = 4096"}, {"name": "percentile_clipping", "val": " = 100"}, {"name": "block_wise", "val": " = True"}]- **params** (`torch.tensor`) --
   The input parameters to optimize.
 - **lr** (`float`, defaults to 1e-4) --
   The learning rate.

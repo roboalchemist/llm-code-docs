@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/integrations/langfuse/
+
 # Langfuse integration
 
 [Langfuse](https://langfuse.com/) is an open-source LLM engineering platform that includes collaborative prompt management, tracing, and evaluation capabilities.

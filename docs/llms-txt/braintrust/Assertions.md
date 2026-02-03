@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/Assertions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How Zapier uses assertions to evaluate tool usage in chatbots
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/Assertions/Assertions.ipynb) by [Vítor Balocco](https://twitter.com/vitorbal) on 2024-02-13</div>
@@ -581,8 +585,3 @@ However, we now halucinate and ask for the weather in NYC. Getting to 100% will 
 <img src="https://mintcdn.com/braintrust/miepTDmD0QMRaWQF/cookbook/assets/Assertions/bad-tool-call.png?fit=max&auto=format&n=miepTDmD0QMRaWQF&q=85&s=9ae8487c4ede3327623d92200ce1107e" alt="bad tool call" data-og-width="892" width="892" data-og-height="1078" height="1078" data-path="cookbook/assets/Assertions/bad-tool-call.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/miepTDmD0QMRaWQF/cookbook/assets/Assertions/bad-tool-call.png?w=280&fit=max&auto=format&n=miepTDmD0QMRaWQF&q=85&s=ce96307c44464ddf64452f894a548a11 280w, https://mintcdn.com/braintrust/miepTDmD0QMRaWQF/cookbook/assets/Assertions/bad-tool-call.png?w=560&fit=max&auto=format&n=miepTDmD0QMRaWQF&q=85&s=dedd36597ba8972ae36c6628672da9ac 560w, https://mintcdn.com/braintrust/miepTDmD0QMRaWQF/cookbook/assets/Assertions/bad-tool-call.png?w=840&fit=max&auto=format&n=miepTDmD0QMRaWQF&q=85&s=93a409acae650d8bbd16e932eb08c793 840w, https://mintcdn.com/braintrust/miepTDmD0QMRaWQF/cookbook/assets/Assertions/bad-tool-call.png?w=1100&fit=max&auto=format&n=miepTDmD0QMRaWQF&q=85&s=0cb6b09aef74e89428df46394e1f0667 1100w, https://mintcdn.com/braintrust/miepTDmD0QMRaWQF/cookbook/assets/Assertions/bad-tool-call.png?w=1650&fit=max&auto=format&n=miepTDmD0QMRaWQF&q=85&s=10fe66a804a6c0d8b2fdd75ec12df845 1650w, https://mintcdn.com/braintrust/miepTDmD0QMRaWQF/cookbook/assets/Assertions/bad-tool-call.png?w=2500&fit=max&auto=format&n=miepTDmD0QMRaWQF&q=85&s=c14632152eb1d30c34aa3cfd2d149a0b 2500w" />
 
 Now that you have a solid evaluation framework in place, you can continue experimenting and try to solve this problem. Happy evaling!
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

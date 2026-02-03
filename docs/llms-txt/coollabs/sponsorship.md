@@ -1,5 +1,9 @@
 # Source: https://docs.coollabs.io/sponsorship.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.coollabs.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Sponsorship
 
 > Learn how to sponsor coolLabs
@@ -16,4 +20,4 @@ The truth is, we already said no to 30+ inquiries, because we believe we can ach
 
 All of our projects will be open-source & self-hostable, no matter what. But to be financially sustainable:
 
-*   We have some products that will have a hosted, but paid version.
+* We have some products that will have a hosted, but paid version.

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/strategies/tree/
+
 # Tree-based Jailbreaks Strategy
 
 The Tree-based Jailbreaks strategy is an advanced technique designed to systematically explore and potentially bypass an AI system's constraints by creating a branching structure of single-shot prompts.

@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/rollout.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Rollout: Automatic Workbook Updates
 
 > Automatically apply schema changes to existing, live workbooks when a new version of a Flatfile Agent is deployed
@@ -12,7 +16,7 @@ This plugin should be deployed in a server-side listener.
 
 ## Installation
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-rollout
 ```
 
@@ -39,7 +43,7 @@ The rollout plugin accepts a configuration object with the following parameters:
 ## Usage Examples
 
 <CodeGroup>
-  ```javascript JavaScript - Basic Usage
+  ```javascript JavaScript - Basic Usage theme={null}
   import { FlatfileListener } from '@flatfile/listener'
   import { rollout } from '@flatfile/plugin-rollout'
   import { FlatfileClient } from '@flatfile/api'
@@ -73,7 +77,7 @@ The rollout plugin accepts a configuration object with the following parameters:
   listener.use(rolloutPlugin.root)
   ```
 
-  ```typescript TypeScript - Basic Usage
+  ```typescript TypeScript - Basic Usage theme={null}
   import { FlatfileListener } from '@flatfile/listener'
   import { rollout } from '@flatfile/plugin-rollout'
   import { FlatfileClient } from '@flatfile/api'
@@ -110,7 +114,7 @@ The rollout plugin accepts a configuration object with the following parameters:
 </CodeGroup>
 
 <CodeGroup>
-  ```javascript JavaScript - Advanced Configuration
+  ```javascript JavaScript - Advanced Configuration theme={null}
   import { FlatfileListener } from '@flatfile/listener'
   import { rollout } from '@flatfile/plugin-rollout'
   import { FlatfileClient } from '@flatfile/api'
@@ -156,7 +160,7 @@ The rollout plugin accepts a configuration object with the following parameters:
   listener.use(rolloutPluginWithConfig.root)
   ```
 
-  ```typescript TypeScript - Advanced Configuration
+  ```typescript TypeScript - Advanced Configuration theme={null}
   import { FlatfileListener } from '@flatfile/listener'
   import { rollout } from '@flatfile/plugin-rollout'
   import { FlatfileClient } from '@flatfile/api'
@@ -221,7 +225,7 @@ Initializes the rollout plugin. It sets up listeners for agent deployment events
 A listener callback function with a `.root` property (also a listener callback). The main callback handles the `space:auto-update` job, while the `.root` callback handles `agent:created` and `agent:updated` events.
 
 <CodeGroup>
-  ```javascript JavaScript - Error Handling
+  ```javascript JavaScript - Error Handling theme={null}
   const rolloutWithErrorHandling = rollout({
     namespace: 'workbook:my-app',
     dev: true,
@@ -244,7 +248,7 @@ A listener callback function with a `.root` property (also a listener callback).
   })
   ```
 
-  ```typescript TypeScript - Error Handling
+  ```typescript TypeScript - Error Handling theme={null}
   const rolloutWithErrorHandling = rollout({
     namespace: 'workbook:my-app',
     dev: true,

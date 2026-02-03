@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/examples/libreoffice-pdf-conversion.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Convert documents to PDF using LibreOffice
 
 > This example demonstrates how to convert documents to PDF using LibreOffice with Trigger.dev.
@@ -16,7 +20,7 @@ export const packages_0 = "libreoffice"
 
 To deploy this task, you'll need to add LibreOffice to your project configuration, like this:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { aptGet } from "@trigger.dev/build/extensions/core";
 import { defineConfig } from "@trigger.dev/sdk";
 
@@ -53,7 +57,7 @@ This task demonstrates how to use LibreOffice to convert a document (.doc or .do
 
 ### Task code
 
-```ts trigger/libreoffice-pdf-convert.ts theme={null}
+```ts trigger/libreoffice-pdf-convert.ts theme={"theme":"css-variables"}
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { task } from "@trigger.dev/sdk";
 import libreoffice from "libreoffice-convert";
@@ -124,7 +128,7 @@ export const libreOfficePdfConvert = task({
 
 To test this task, use this payload structure:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "documentUrl": "<a-document-url>" // Replace <a-document-url> with the URL of the document you want to convert
 }

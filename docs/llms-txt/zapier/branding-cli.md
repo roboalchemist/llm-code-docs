@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/publish/branding-cli.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add integration branding in Platform CLI
 
 > When you make a new integration in Zapier CLI, you can add the app's name, description, and homepage to the `package.json` file.

@@ -1,10 +1,14 @@
 # Source: https://docs.embedchain.ai/components/data-sources/postgres.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 🐘 Postgres
 
 1. Setup the Postgres loader by configuring the postgres db.
 
-```Python
+```Python  theme={null}
 from embedchain.loaders.postgres import PostgresLoader
 
 config = {
@@ -32,7 +36,7 @@ NOTE: if you provide the `url` field in config, all other fields will be ignored
 
 2. Once you setup the loader, you can create an app and load data using the above postgres loader
 
-```Python
+```Python  theme={null}
 import os
 from embedchain.pipeline import Pipeline as App
 
@@ -55,7 +59,7 @@ NOTE: The `add` function of the app will accept any executable query to load dat
 
 3. We automatically create a chunker to chunk your postgres data, however if you wish to provide your own chunker class. Here is how you can do that:
 
-```Python
+```Python  theme={null}
 
 from embedchain.chunkers.postgres import PostgresChunker
 from embedchain.config.add_config import ChunkerConfig

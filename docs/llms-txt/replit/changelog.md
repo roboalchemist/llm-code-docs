@@ -1,112 +1,12 @@
-# Source: https://docs.replit.com/updates/2025/12/26/changelog.md
+# Source: https://docs.replit.com/updates/2026/01/30/changelog.md
 
-# Source: https://docs.replit.com/updates/2025/12/19/changelog.md
+# Source: https://docs.replit.com/updates/2026/01/23/changelog.md
 
-# Source: https://docs.replit.com/updates/2025/12/12/changelog.md
+# Source: https://docs.replit.com/updates/2026/01/16/changelog.md
 
-# Source: https://docs.replit.com/updates/2025/12/05/changelog.md
+# Source: https://docs.replit.com/updates/2026/01/09/changelog.md
 
-# Source: https://docs.replit.com/updates/2025/11/26/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/11/21/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/11/16/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/11/07/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/10/31/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/10/24/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/10/17/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/10/10/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/10/03/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/09/26/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/09/19/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/09/12/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/09/05/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/08/29/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/08/22/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/08/15/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/08/08/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/08/01/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/07/25/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/07/18/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/07/11/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/07/04/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/06/27/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/06/20/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/06/13/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/06/06/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/05/30/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/05/23/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/05/16/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/05/09/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/05/02/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/04/25/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/04/18/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/04/11/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/04/04/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/03/28/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/03/21/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/03/14/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/03/07/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/02/28/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/02/21/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/02/14/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/02/07/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/01/31/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/01/24/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/01/17/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/01/10/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/01/03/changelog.md
-
-# Source: https://docs.replit.com/updates/2024/12/27/changelog.md
-
-# Source: https://docs.replit.com/updates/2024/12/20/changelog.md
-
-# Source: https://docs.replit.com/updates/2024/12/13/changelog.md
+# Source: https://docs.replit.com/updates/2026/01/02/changelog.md
 
 # Source: https://docs.replit.com/updates/2025/12/26/changelog.md
 
@@ -218,212 +118,16 @@
 
 # Source: https://docs.replit.com/updates/2024/12/13/changelog.md
 
-# Source: https://docs.replit.com/updates/2025/11/21/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/11/16/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/11/07/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/10/31/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/10/24/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/10/17/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/10/10/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/10/03/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/09/26/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/09/19/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/09/12/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/09/05/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/08/29/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/08/22/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/08/15/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/08/08/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/08/01/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/07/25/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/07/18/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/07/11/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/07/04/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/06/27/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/06/20/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/06/13/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/06/06/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/05/30/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/05/23/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/05/16/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/05/09/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/05/02/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/04/25/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/04/18/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/04/11/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/04/04/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/03/28/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/03/21/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/03/14/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/03/07/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/02/28/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/02/21/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/02/14/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/02/07/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/01/31/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/01/24/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/01/17/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/01/10/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/01/03/changelog.md
-
-# Source: https://docs.replit.com/updates/2024/12/27/changelog.md
-
-# Source: https://docs.replit.com/updates/2024/12/20/changelog.md
-
-# Source: https://docs.replit.com/updates/2024/12/13/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/11/21/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/11/16/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/11/07/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/10/31/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/10/24/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/10/17/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/10/10/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/10/03/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/09/26/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/09/19/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/09/12/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/09/05/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/08/29/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/08/22/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/08/15/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/08/08/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/08/01/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/07/25/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/07/18/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/07/11/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/07/04/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/06/27/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/06/20/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/06/13/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/06/06/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/05/30/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/05/23/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/05/16/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/05/09/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/05/02/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/04/25/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/04/18/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/04/11/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/04/04/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/03/28/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/03/21/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/03/14/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/03/07/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/02/28/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/02/21/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/02/14/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/02/07/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/01/31/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/01/24/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/01/17/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/01/10/changelog.md
-
-# Source: https://docs.replit.com/updates/2025/01/03/changelog.md
-
-# Source: https://docs.replit.com/updates/2024/12/27/changelog.md
-
-# Source: https://docs.replit.com/updates/2024/12/20/changelog.md
-
-# Source: https://docs.replit.com/updates/2024/12/13/changelog.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # December 13, 2024
 
 > Assistant launch, improved Agent, usage updates, and more.
 
 export const AuthorCard = ({img = "https://replit.com/cdn-cgi/image/width=256,quality=80,format=auto/https://storage.googleapis.com/replit/images/1730840970400_e885f16578bbbb227adbfeb7b979be34.jpeg", href = "https://youtube.com/@mattpalmer", name = "Matt Palmer", role = "Head of Developer Relations"}) => {
-  return <a href={href} target="_blank" className="card block not-prose font-normal group relative my-2 ring-2 ring-transparent rounded-xl bg-white/50 dark:bg-codeblock/50 border border-gray-100 shadow-md dark:shadow-none shadow-gray-300/10 dark:border-gray-800/50 overflow-hidden cursor-pointer hover:!border-primary dark:hover:!border-primary-light">
+  return <a href={href} target="_blank" className="card block not-prose font-normal group relative my-2 ring-2 ring-transparent rounded-xl border border-gray-100 shadow-md dark:shadow-none shadow-gray-300/10 dark:border-gray-800/50 overflow-hidden cursor-pointer hover:!border-primary dark:hover:!border-primary-light">
       <div className="flex items-center gap-2 p-4">
         <div className="flex-shrink-0">
           <img src={img} alt={name} className="w-12 h-12 rounded-full object-cover" />
@@ -451,6 +155,10 @@ export const AuthorCard = ({img = "https://replit.com/cdn-cgi/image/width=256,qu
 </Frame>
 
 This week, we launched Assistant, a new AI tool that allows you to edit multiple files and apply changes directly.
+
+<Note>
+  **Update (December 2025):** Assistant has been deprecated. For quick, targeted edits, use [Fast mode in Agent](/replitai/fast-mode). For discussions and planning, use [Plan mode in Agent](/replitai/plan-mode).
+</Note>
 
 Assistant is optimized for chat and quick edits. Often, we find ourselves creating an MVP with Agent, then performing quick edits with Assistant.
 

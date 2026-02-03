@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/api-reference/functions/invoke-function.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Invoke function
 
 > Invoke a function.
@@ -117,6 +121,16 @@ components:
                 type: string
                 description: The OAuth token to use
           description: Map of MCP server URL to auth credentials
+        overrides:
+          type: object
+          nullable: true
+          additionalProperties:
+            nullable: true
+          description: >-
+            Partial function definition to merge with the function being
+            invoked. Fields are validated against the function type's schema at
+            runtime. For facets: { preprocessor?, prompt?, model? }. For
+            prompts: { model?, ... }.
         version:
           type: string
           description: The version of the function
@@ -329,6 +343,8 @@ components:
       enum:
         - auto
         - parallel
+        - json
+        - text
         - null
       description: The mode format of the returned value (defaults to 'auto')
     ChatCompletionContentPartText:
@@ -482,7 +498,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

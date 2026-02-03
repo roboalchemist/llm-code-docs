@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/examples/chains-audio-transcription.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Transcribe audio with Chains
 
 > Process hours of audio in seconds using efficient chunking, distributed inference, and optimized GPU resources.
@@ -110,7 +114,7 @@ Example speedup:
 }
 ```
 
-# 5. Deploy & Run the Chain
+# 5. Deploy and run the Chain
 
 ## Deploy WhisperModel first:
 

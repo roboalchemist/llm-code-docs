@@ -36,11 +36,11 @@ Here is how to directly interact with the factory contract through your applicat
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
     ```js
-    import { useWalletSelector } from "@near-wallet-selector/react-hook";
+    import { useNearWallet } from "near-connect-hooks";
 
     const TOKEN_FACTORY_ADDRESS = 'token.primitives.near';
 
-    const { callMethod } = useWalletSelector();
+    const { callFunction } = useNearWallet();
 
     const args = {
       args: {
@@ -57,7 +57,7 @@ Here is how to directly interact with the factory contract through your applicat
       account_id: 'bob.near',
     };
 
-    await callMethod({
+    await callFunction({
       contractId: TOKEN_FACTORY_ADDRESS,
       method: 'create_token',
       args,
@@ -66,13 +66,13 @@ Here is how to directly interact with the factory contract through your applicat
     });
     ```
 
-   Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+   Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
     ```bash
-    near call token.primitives.near create_token '{"args":{"owner_id": "bob.near","total_supply": "1000000000","metadata":{"spec": "ft-1.0.0","name": "Test Token","symbol": "TTTEST","icon": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7","decimals": 18}},"account_id": "bob.near"}' --gas 300000000000000 --depositYocto 2234830000000000000000000 --accountId bob.near
+    near call token.primitives.near create_token '{"args":{"owner_id": "bob.near","total_supply": "1000000000","metadata":{"spec": "ft-1.0.0","name": "Test Token","symbol": "TTTEST","icon": "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7","decimals": 18}},"account_id": "bob.near"}' --gas 300000000000000 --depositYocto 2234830000000000000000000 --useAccount bob.near
     ```
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
@@ -170,13 +170,13 @@ You can query the FT's metadata by calling the `ft_metadata`.
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
   ```js
-  import { useWalletSelector } from "@near-wallet-selector/react-hook";
+  import { useNearWallet } from "near-connect-hooks";
 
   const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
 
-  const { viewMethod } = useWalletSelector();
+  const { viewFunction } = useNearWallet();
 
-  await viewMethod({
+  await viewFunction({
     method: 'ft_metadata',
     args: {},
     contractId: TOKEN_CONTRACT_ADDRESS,
@@ -202,7 +202,7 @@ You can query the FT's metadata by calling the `ft_metadata`.
   </p>
   </details>
 
-  Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+  Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
   
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -247,13 +247,13 @@ To know how many coins a user has you will need to query the method `ft_balance_
   :::
 
   ```js
-  import { useWalletSelector } from "@near-wallet-selector/react-hook";
+  import { useNearWallet } from "near-connect-hooks";
 
   const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
 
-  const { viewMethod } = useWalletSelector();
+  const { viewFunction } = useNearWallet();
 
-  await viewMethod({
+  await viewFunction({
     method: 'ft_balance_of',
     args: {
       account_id: 'bob.near',
@@ -273,7 +273,7 @@ To know how many coins a user has you will need to query the method `ft_balance_
   </p>
   </details>
 
-  Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+  Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
@@ -308,13 +308,13 @@ By calling this `storage_deposit` the user can register themselves or **register
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
   ```js
-  import { useWalletSelector } from "@near-wallet-selector/react-hook";
+  import { useNearWallet } from "near-connect-hooks";
 
   const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
 
-  const { callMethod } = useWalletSelector();
+  const { callFunction } = useNearWallet();
 
-  await callMethod({
+  await callFunction({
     contractId: TOKEN_CONTRACT_ADDRESS,
     method: 'storage_deposit',
     args: {
@@ -324,13 +324,13 @@ By calling this `storage_deposit` the user can register themselves or **register
   });
   ```
 
-  Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+  Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
   ```bash
-  near call token.v2.ref-finance.near storage_deposit '{"account_id": "alice.near"}' --depositYocto 1250000000000000000000 --accountId bob.near
+  near call token.v2.ref-finance.near storage_deposit '{"account_id": "alice.near"}' --depositYocto 1250000000000000000000 --useAccount bob.near
   ```
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
@@ -355,13 +355,13 @@ To send FT to another account you will use the `ft_transfer` method, indicating 
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
     
   ```js
-  import { useWalletSelector } from "@near-wallet-selector/react-hook";
+  import { useNearWallet } from "near-connect-hooks";
 
   const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
 
-  const { callMethod } = useWalletSelector();
+  const { callFunction } = useNearWallet();
 
-  await callMethod({
+  await callFunction({
     contractId: TOKEN_CONTRACT_ADDRESS,
     method: 'ft_transfer',
     args: {
@@ -372,13 +372,13 @@ To send FT to another account you will use the `ft_transfer` method, indicating 
   });
   ```
 
-  Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+  Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
     ```bash
-    near call token.v2.ref-finance.near ft_transfer '{"receiver_id": "alice.near", "amount": "100000000000000000"}' --depositYocto 1 --accountId bob.near
+    near call token.v2.ref-finance.near ft_transfer '{"receiver_id": "alice.near", "amount": "100000000000000000"}' --depositYocto 1 --useAccount bob.near
     ```
   </TabItem>
   <TabItem value="Lantstool" label={<LantstoolLabel />}>
@@ -432,13 +432,13 @@ Let's assume that you need to deposit FTs on [Ref Finance](https://rhea.finance/
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
 
   ```js
-  import { useWalletSelector } from "@near-wallet-selector/react-hook";
+  import { useNearWallet } from "near-connect-hooks";
 
   const TOKEN_CONTRACT_ADDRESS = 'token.v2.ref-finance.near';
 
-  const { callMethod } = useWalletSelector();
+  const { callFunction } = useNearWallet();
 
-  await callMethod({
+  await callFunction({
     contractId: TOKEN_CONTRACT_ADDRESS,
     method: 'ft_transfer_call',
     args: {
@@ -462,13 +462,13 @@ Let's assume that you need to deposit FTs on [Ref Finance](https://rhea.finance/
   </p>
   </details>
 
-  Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+  Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
   ```bash
-  near call token.v2.ref-finance.near ft_transfer_call '{"receiver_id": "v2.ref-finance.near", "amount": "100000000000000000", "msg": ""}' --gas 300000000000000 --depositYocto 1 --accountId bob.near
+  near call token.v2.ref-finance.near ft_transfer_call '{"receiver_id": "v2.ref-finance.near", "amount": "100000000000000000", "msg": ""}' --gas 300000000000000 --depositYocto 1 --useAccount bob.near
   ```
 
   <details>
@@ -532,6 +532,7 @@ The `ft_on_transfer` must return how many FT tokens have to **be refunded**, so 
 Here is an example from our [auctions tutorial](../../tutorials/auction/3.2-ft.md) where we implement `ft_on_transfer` to handle bids in FTs:
 
 ```
+    #[allow(unused_variables, unused_must_use)]
     pub fn ft_on_transfer(&mut self, sender_id: AccountId, amount: U128, msg: String) -> U128 {
         require!(
             env::block_timestamp() < self.auction_end_time.into(),
@@ -564,7 +565,6 @@ Here is an example from our [auctions tutorial](../../tutorials/auction/3.2-ft.m
 
         U128(0)
     }
-
 ```
 
 _Note: The [`near_contract_standards::fungible_token::receiver`](https://docs.rs/near-contract-standards/latest/near_contract_standards/fungible_token/receiver/trait.FungibleTokenReceiver.html) module exposes a `FungibleTokenReceiver` trait that you could implement on your contract_
@@ -579,11 +579,11 @@ While the FT standard does not define a `burn` method, you can simply transfer t
   <TabItem value="🌐 WebApp" label="🌐 WebApp">
     
   ```js
-  import { useWalletSelector } from "@near-wallet-selector/react-hook";
+  import { useNearWallet } from "near-connect-hooks";
 
-  const { callMethod } = useWalletSelector();
+  const { callFunction } = useNearWallet();
 
-  await callMethod({
+  await callFunction({
     contractId: 'token.v2.ref-finance.near',
     method: 'ft_transfer',
     args: {
@@ -594,13 +594,13 @@ While the FT standard does not define a `burn` method, you can simply transfer t
   });
   ```
 
-  Learn more about adding the [Wallet Selector Hooks](../../web3-apps/tutorials/web-login/wallet-selector.md) to your application
+  Learn more about adding [Near Connect](../../web3-apps/tutorials/wallet-login) to your application
 
   </TabItem>
   <TabItem value="🖥️ CLI" label="🖥️ CLI">
 
     ```bash
-    near call token.v2.ref-finance.near ft_transfer '{"receiver_id": "0000000000000000000000000000000000000000000000000000000000000000", "amount": "100000000000000000"}' --depositYocto 1 --accountId bob.near
+    near call token.v2.ref-finance.near ft_transfer '{"receiver_id": "0000000000000000000000000000000000000000000000000000000000000000", "amount": "100000000000000000"}' --depositYocto 1 --useAccount bob.near
     ```
   </TabItem>
 </Tabs>

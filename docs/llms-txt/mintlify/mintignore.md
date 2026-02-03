@@ -1,10 +1,14 @@
-# Source: https://mintlify.com/docs/organize/mintignore.md
+# Source: https://www.mintlify.com/docs/organize/mintignore.md
 
-# Mintignore
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-> Exclude specific files and directories from your published documentation.
+# Exclude files from publishing
 
-The `.mintignore` file allows you to exclude specific files and directories from being processed and published to your documentation site.
+> Exclude specific files and directories from your published documentation with a `.mintignore` file.
+
+The `.mintignore` file allows you to exclude specific files and directories in your documentation repository from being processed and published to your documentation site.
 
 Use `.mintignore` to keep drafts, internal notes, and source files out of your public documentation while maintaining them in your repository.
 
@@ -35,7 +39,7 @@ Excluded files:
 
 ## Default ignored patterns
 
-Mintlify automatically ignores the following directories without requiring any configuration:
+Mintlify automatically ignores the following directories and files without requiring any configuration:
 
 * `.git`
 * `.github`
@@ -43,6 +47,10 @@ Mintlify automatically ignores the following directories without requiring any c
 * `.agents`
 * `.idea`
 * `node_modules`
+* `README.md`
+* `LICENSE.md`
+* `CHANGELOG.md`
+* `CONTRIBUTING.md`
 
 You don't need to add these to your `.mintignore` file.
 
@@ -62,8 +70,3 @@ The `.mintignore` file follows `.gitignore` syntax. Some common patterns include
 | `private-notes.md` | Excludes a specific file                       |
 | `**/internal/**`   | Excludes any `internal` directory at any level |
 | `!important.mdx`   | Negates a previous pattern (includes the file) |
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://mintlify.com/docs/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/features/evaluations/examples.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Eval Examples
 
 ## Building & Evaluating a RAG Chatbot
@@ -29,8 +33,3 @@ The key steps include:
 3. Seamlessly updating the prompt template to use the new model (Mistral) if the migration is beneficial.
 
 This example highlights PromptLayer's capabilities for efficient prompt iteration and evaluation across different language models, facilitating the adoption of open-source alternatives like Mistral.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

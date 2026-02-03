@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/cometapi/
+
 # CometAPI
 
 The `cometapi` provider lets you use [CometAPI](https://www.cometapi.com/?utm_source=promptfoo&utm_campaign=integration&utm_medium=integration&utm_content=integration) via OpenAI-compatible endpoints. It supports hundreds of models across vendors.

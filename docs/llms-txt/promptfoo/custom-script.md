@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/custom-script/
+
 # Custom Scripts
 
 You may use any shell command as an API provider. This is particularly useful when you want to use a language or framework that is not directly supported by promptfoo.

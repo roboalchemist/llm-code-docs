@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/get-started/installation/streamlit-in-snowflake
+
 # Use Streamlit in Snowflake
 
 Snowflake is a single, global platform that powers the Data Cloud. If you want to use a secure platform with role-based access control, this is the option for you! This page walks you through creating a trial Snowflake account and building a "Hello world" app. Your trial account comes with an account credit so you can try out the service without entering any payment information.

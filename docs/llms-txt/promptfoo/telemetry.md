@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/configuration/telemetry/
+
 # Telemetry
 
 `promptfoo` collects basic anonymous telemetry by default. This telemetry helps us decide how to spend time on development.

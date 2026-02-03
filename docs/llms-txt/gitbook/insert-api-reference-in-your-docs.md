@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/api-references/openapi/insert-api-reference-in-your-docs.md
-
-# Source: https://gitbook.com/docs/documentation/fr/api-references/openapi/insert-api-reference-in-your-docs.md
-
-# Source: https://gitbook.com/docs/api-references/openapi/insert-api-reference-in-your-docs.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/api-references/openapi/insert-api-reference-in-your-docs.md
 
 # Source: https://gitbook.com/docs/documentation/zh/api-references/openapi/insert-api-reference-in-your-docs.md
 
@@ -26,8 +22,7 @@ After you’ve [added your OpenAPI spec](https://gitbook.com/docs/api-references
 
 {% stepper %}
 {% step %}
-
-#### Generate pages from OpenAPI
+**Generate pages from OpenAPI**
 
 In the space you’d like to generate endpoint pages, click the **Add new\...** button from the bottom of your space’s [table of contents](https://gitbook.com/docs/resources/gitbook-ui#table-of-contents).
 
@@ -35,15 +30,13 @@ From here, click **OpenAPI Reference**.
 {% endstep %}
 
 {% step %}
-
-#### Choose your OpenAPI spec
+**Choose your OpenAPI spec**
 
 Choose your previously uploaded OpenAPI spec, and click **Insert** to automatically add your endpoints to your space. You can optionally choose to add a models page referencing all your OpenAPI schemas.
 {% endstep %}
 
 {% step %}
-
-#### Manage your API operations
+**Manage your API operations**
 
 GitBook will automatically generate pages based on your OpenAPI spec and the tags set inside it’s definition.
 
@@ -57,22 +50,19 @@ Alternatively, you can add OpenAPI operations or schemas from your spec individu
 
 {% stepper %}
 {% step %}
-
-#### Add a new OpenAPI block
+**Add a new OpenAPI block**
 
 Open the block selector by pressing **/**, and search for OpenAPI.
 {% endstep %}
 
 {% step %}
-
-#### Choose your OpenAPI spec
+**Choose your OpenAPI spec**
 
 Choose your previously uploaded OpenAPI spec, and click **Continue** to choose your the endpoints you’d like to use.
 {% endstep %}
 
 {% step %}
-
-#### Choose the operations or schemas you’d like to insert
+**Choose the operations or schemas you’d like to insert**
 
 Pick the operations and the schemas you want to insert in your docs and click **Insert**.
 {% endstep %}

@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/powered-by-zapier/running-actions/create-action-run.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Creating Action Runs
 
 ## Prerequisites

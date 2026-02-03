@@ -4,11 +4,7 @@
 
 Integrate Better Auth with Elysia.
 
-***
 
-title: Elysia Integration
-description: Integrate Better Auth with Elysia.
------------------------------------------------
 
 This integration guide is assuming you are using Elysia with bun server.
 

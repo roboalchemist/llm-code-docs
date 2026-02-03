@@ -1,6 +1,17 @@
 # Source: https://docs.windsurf.com/troubleshooting/plugins-enterprise/visualstudio.md
 
-# Visual Studio
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Visual Studio Troubleshooting
+
+> Troubleshoot Visual Studio plugin issues including IntelliCode conflicts, Tab key bindings, and marketplace visibility problems.
+
+<Note>
+  We strongly recommend using the native Windsurf Editor or the JetBrains local plugin for their advanced agentic AI capabilities and cutting-edge features.
+  The Visual Studio plugin is under maintenance mode.
+</Note>
 
 # Supported Versions
 

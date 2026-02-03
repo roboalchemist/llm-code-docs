@@ -2,10 +2,7 @@
 
 # Delete Reference reports
 
-```
-POST 
-/v1/code-references/delete-reports
-```
+Copy page
 
 ## Request[​](#request "Direct link to Request")
 

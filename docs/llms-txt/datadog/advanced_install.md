@@ -3,10 +3,7 @@
 ---
 title: Installing the Datadog Operator
 description: Datadog, the leading service for cloud-scale monitoring.
-breadcrumbs: >-
-  Docs > Container Monitoring > Datadog Operator > Installing the Datadog
-  Operator
-source_url: https://docs.datadoghq.com/datadog_operator/advanced_install/index.html
+breadcrumbs: Docs > Containers > Datadog Operator > Installing the Datadog Operator
 ---
 
 # Installing the Datadog Operator

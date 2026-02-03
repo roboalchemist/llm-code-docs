@@ -9,6 +9,27 @@ url: /mod.md
 
 ## Modules
 
+- [<span class="flex items-center justify-between gap-1"><span>x gram</span> <span class="text-x-brand">🔥</span></span>](/mod/gram.md): Forcefully terminate all agent processes, archive their memory data, and clean up the original files.
+- [<span class="flex items-center justify-between gap-1"><span>x openclaw</span> <span class="text-x-brand">🔥</span></span>](/mod/openclaw.md): Enhanced command-line module for OpenClaw
+- [x openai](/mod/openai.md): Integrate OpenAI API to provide powerful AI capabilities, including ChatGPT conversations, text generation, image creation, speech conversion, and more
+- [x gemini](/mod/gemini.md): Use Gemini AI models
+- [x deepseek](/mod/deepseek.md): Use DeepSeek AI Model
+- [x moonshot](/mod/moonshot.md): Use the AI services provided by Moonshot, the large model from Moonshot is called Kimi
+- [x mistral](/mod/mistral.md): Use the AI services provided by Mistral
+- [x grok](/mod/grok.md): Use xAI grok Model
+- [x codex](/mod/codex.md): Enhanced command-line module for Codex
+- [x claude](/mod/claude.md): Enhanced command-line module for Claude Code
+- [x crush](/mod/crush.md): Enhanced command-line module for crush
+- [x aider](/mod/aider.md): Enhanced command-line module for aider
+- [x speckit](/mod/speckit.md): An enhancement module for Spec Kit
+- [x openspec](/mod/openspec.md): openspec command enhancements
+- [x lms](/mod/lms.md): LM Studio CLI
+- [x llmf](/mod/llmf.md): Run the local model
+- [x ollama](/mod/ollama.md): The command-line client tool for Ollama, an open-source framework for running large language models locally.
+- [x whisper](/mod/whisper.md): Enhanced modules for whisper.cpp
+- [x jina](/mod/jina.md): CLI for jina.ai, providing functions to get website content, generate vector data, etc.
+- [x buse](/mod/buse.md): Enhanced modules for browser-use
+- [x writer](/mod/writer.md): The AI text processing module
 - [x mac](/mod/mac.md): utilities for MacOs
 - [x termux](/mod/termux.md): Termux Utility
 - [x cd](/mod/cd.md): Enhanced cd command
@@ -42,25 +63,6 @@ url: /mod.md
 - [x host](/mod/host.md): Host table management based on `/etc/hosts` file
 - [x route](/mod/route.md): Retrieving the ROUTE table
 - [x proxy](/mod/proxy.md): Setting proxy
-- [x openai](/mod/openai.md): Integrate OpenAI API to provide powerful AI capabilities, including ChatGPT conversations, text generation, image creation, speech conversion, and more
-- [x gemini](/mod/gemini.md): Use Gemini AI models
-- [x deepseek](/mod/deepseek.md): Use DeepSeek AI Model
-- [x moonshot](/mod/moonshot.md): Use the AI services provided by Moonshot, the large model from Moonshot is called Kimi
-- [x mistral](/mod/mistral.md): Use the AI services provided by Mistral
-- [x grok](/mod/grok.md): Use xAI grok Model
-- [x codex](/mod/codex.md): Enhanced command-line module for Codex
-- [x claude](/mod/claude.md): Enhanced command-line module for Claude Code
-- [x crush](/mod/crush.md): Enhanced command-line module for crush
-- [x aider](/mod/aider.md): Enhanced command-line module for aider
-- [x speckit](/mod/speckit.md): An enhancement module for Spec Kit
-- [x openspec](/mod/openspec.md): openspec command enhancements
-- [x lms](/mod/lms.md): LM Studio CLI
-- [x llmf](/mod/llmf.md): Run the local model
-- [x ollama](/mod/ollama.md): The command-line client tool for Ollama, an open-source framework for running large language models locally.
-- [x whisper](/mod/whisper.md): Enhanced modules for whisper.cpp
-- [x jina](/mod/jina.md): CLI for jina.ai, providing functions to get website content, generate vector data, etc.
-- [x buse](/mod/buse.md): Enhanced modules for browser-use
-- [x writer](/mod/writer.md): The AI text processing module
 - [x mirror](/mod/mirror.md): Setting mirror source for development
 - [x hub](/mod/hub.md): Securely upload, store, and share scripts in the cloud
 - [x ws](/mod/ws.md): workspace management tool

@@ -50,5 +50,5 @@ Also, remember Windows 1252 is _not_ the same as ISO-8859-1.
 
 Use proper JSON - a common error is not stripping ASCII control characters from feed data. See [stripInvalidCharacters](https://github.com/vespa-engine/vespa/blob/master/vespajlib/src/main/java/com/yahoo/text/Text.java) for a utility function.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

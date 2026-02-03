@@ -36,11 +36,8 @@ Use the `mode` prop to change the mode of the Popover. Defaults to `click`.
 </template>
 ```
 
-<note>
-
-When using the `hover` mode, the Reka UI [`HoverCard`](https://reka-ui.com/docs/components/hover-card) component is used instead of the [`Popover`](https://reka-ui.com/docs/components/popover).
-
-</note>
+> [!NOTE]
+> When using the `hover` mode, the Reka UI [`HoverCard`](https://reka-ui.com/docs/components/hover-card) component is used instead of the [`Popover`](https://reka-ui.com/docs/components/popover).
 
 ### Delay
 
@@ -106,11 +103,8 @@ Use the `modal` prop to control whether the Popover blocks interaction with outs
 
 Use the `dismissible` prop to control whether the Popover is dismissible when clicking outside of it or pressing escape. Defaults to `true`.
 
-<note>
-
-A `close:prevent` event will be emitted when the user tries to close it.
-
-</note>
+> [!NOTE]
+> A `close:prevent` event will be emitted when the user tries to close it.
 
 ```vue [PopoverDismissibleExample.vue]
 <template>
@@ -158,17 +152,8 @@ defineShortcuts({
 </template>
 ```
 
-<note>
-
-In this example, leveraging [`defineShortcuts`](/docs/composables/define-shortcuts), you can toggle the Popover by pressing <kbd value="O">
-
-
-
-</kbd>
-
-.
-
-</note>
+> [!NOTE]
+> In this example, leveraging [`defineShortcuts`](/docs/composables/define-shortcuts), you can toggle the Popover by pressing .
 
 ### With command palette
 
@@ -176,29 +161,32 @@ You can use a [CommandPalette](/docs/components/command-palette) component insid
 
 ```vue [PopoverCommandPaletteExample.vue]
 <script setup lang="ts">
+import type { CommandPaletteItem } from '@nuxt/ui'
+
 const items = ref([
   {
     label: 'bug',
     value: 'bug',
     chip: {
-      color: 'error' as const
+      color: 'error'
     }
   },
   {
     label: 'feature',
     value: 'feature',
     chip: {
-      color: 'success' as const
+      color: 'success'
     }
   },
   {
     label: 'enhancement',
     value: 'enhancement',
     chip: {
-      color: 'info' as const
+      color: 'info'
     }
   }
-])
+] satisfies CommandPaletteItem[])
+
 const label = ref([])
 </script>
 
@@ -257,7 +245,7 @@ const reference = computed(() => ({
       class="flex items-center justify-center rounded-md border border-dashed border-accented text-sm aspect-video w-72"
       @pointerenter="open = true"
       @pointerleave="open = false"
-      @pointermove="(ev) => {
+      @pointermove="(ev: PointerEvent) => {
         anchor.x = ev.clientX
         anchor.y = ev.clientY
       }"
@@ -278,11 +266,8 @@ const reference = computed(() => ({
 
 You can use the `#anchor` slot to position the Popover against a custom element.
 
-<warning>
-
-This slot only works when `mode` is `click`.
-
-</warning>
+> [!WARNING]
+> This slot only works when `mode` is `click`.
 
 ```vue [PopoverAnchorSlotExample.vue]
 <script lang="ts" setup>
@@ -319,7 +304,7 @@ interface PopoverProps {
    * The display mode of the popover.
    * @default "\"click\" as never"
    */
-  mode?: PopoverMode | undefined;
+  mode?: M | undefined;
   /**
    * The content of the popover.
    */
@@ -383,11 +368,8 @@ interface PopoverSlots {
 }
 ```
 
-<note>
-
-The `close` function is only available when `mode` is set to `click` because Reka UI exposes this for [`Popover`](https://reka-ui.com/docs/components/popover#close-using-slot-props) but not for [`HoverCard`](https://reka-ui.com/docs/components/hover-card).
-
-</note>
+> [!NOTE]
+> The `close` function is only available when `mode` is set to `click` because Reka UI exposes this for [`Popover`](https://reka-ui.com/docs/components/popover#close-using-slot-props) but not for [`HoverCard`](https://reka-ui.com/docs/components/hover-card).
 
 ### Emits
 
@@ -418,8 +400,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

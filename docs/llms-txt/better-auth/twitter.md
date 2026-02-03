@@ -4,11 +4,7 @@
 
 Twitter provider setup and usage.
 
-***
 
-title: Twitter (X)
-description: Twitter provider setup and usage.
-----------------------------------------------
 
 <Steps>
   <Step>

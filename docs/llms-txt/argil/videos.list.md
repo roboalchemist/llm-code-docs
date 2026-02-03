@@ -1,143 +1,107 @@
 # Source: https://docs.argil.ai/api-reference/endpoint/videos.list.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.argil.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Paginated list of Videos
 
 > Returns a paginated array of Videos
 
+
+
 ## OpenAPI
 
 ````yaml get /videos
+openapi: 3.0.1
+info:
+  title: Argil API
+  description: API for AI clone video generation
+  version: 1.0.0
+  license:
+    name: MIT
+servers:
+  - url: https://api.argil.ai/v1
+security:
+  - ApiKeyAuth: []
 paths:
-  path: /videos
-  method: get
-  servers:
-    - url: https://api.argil.ai/v1
-  request:
-    security:
-      - title: ApiKeyAuth
-        parameters:
-          query: {}
-          header:
-            x-api-key:
-              type: apiKey
-              description: API key to be included in the x-api-key header
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        page:
+  /videos:
+    get:
+      summary: Paginated list of Videos
+      description: Returns a paginated array of Videos
+      parameters:
+        - name: page
+          in: query
+          description: Page number of the video list
+          required: false
           schema:
-            - type: integer
-              required: false
-              description: Page number of the video list
-              default: 1
-        limit:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          description: Number of videos per page
+          required: false
           schema:
-            - type: integer
-              required: false
-              description: Number of videos per page
-              default: 10
-        nameSearchQuery:
+            type: integer
+            default: 10
+        - name: nameSearchQuery
+          in: query
+          description: Filter videos by name, case-insensitive substring match.
+          required: false
           schema:
-            - type: string
-              required: false
-              description: Filter videos by name, case-insensitive substring match.
-        avatarId:
+            type: string
+        - name: avatarId
+          in: query
+          description: Filter videos by avatar ID.
+          required: false
           schema:
-            - type: string
-              required: false
-              description: Filter videos by avatar ID.
-        voiceId:
+            type: string
+        - name: voiceId
+          in: query
+          description: Filter videos by voice ID.
+          required: false
           schema:
-            - type: string
-              required: false
-              description: Filter videos by voice ID.
-        extrasFilter:
+            type: string
+        - name: extrasFilter
+          in: query
+          description: >-
+            A JSON string representing filters to apply on the extras JSON
+            field. Must be a valid JSON object as a string, specifying
+            properties and values to match.
+          required: false
           schema:
-            - type: string
-              required: false
-              description: >-
-                A JSON string representing filters to apply on the extras JSON
-                field. Must be a valid JSON object as a string, specifying
-                properties and values to match.
-              example: '{"X_ID": "YOUR_CUSTOM_ID"}'
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              totalItems:
-                allOf:
-                  - type: integer
+            type: string
+            example: '{"X_ID": "YOUR_CUSTOM_ID"}'
+      responses:
+        '200':
+          description: A paginated list of Videos
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  totalItems:
+                    type: integer
                     description: Total number of videos available
-              totalPages:
-                allOf:
-                  - type: integer
+                  totalPages:
+                    type: integer
                     description: Total number of pages
-              currentPage:
-                allOf:
-                  - type: integer
+                  currentPage:
+                    type: integer
                     description: Current page number
-              itemsPerPage:
-                allOf:
-                  - type: integer
+                  itemsPerPage:
+                    type: integer
                     description: Number of items per page
-              videos:
-                allOf:
-                  - type: array
+                  videos:
+                    type: array
                     items:
                       $ref: '#/components/schemas/Video'
-        examples:
-          example:
-            value:
-              totalItems: 123
-              totalPages: 123
-              currentPage: 123
-              itemsPerPage: 123
-              videos:
-                - id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                  name: <string>
-                  createdAt: '2023-11-07T05:31:56Z'
-                  updatedAt: '2023-11-07T05:31:56Z'
-                  status: <string>
-                  moments:
-                    - transcript: <string>
-                      avatarId: <string>
-                      voiceId: <string>
-                      audioUrl: <string>
-                      videoUrl: <string>
-                      gestureSlug: <string>
-                  videoUrl: <string>
-                  videoUrlSubtitled: <string>
-                  subtitles:
-                    enable: true
-                  extras: {}
-        description: A paginated list of Videos
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              code:
-                allOf:
-                  - type: integer
-                    format: int32
-              message:
-                allOf:
-                  - type: string
-            refIdentifier: '#/components/schemas/Error'
-        examples:
-          example:
-            value:
-              code: 123
-              message: <string>
-        description: Unexpected error
-  deprecated: false
-  type: path
+        '400':
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
     Video:
@@ -200,6 +164,18 @@ components:
           description: >-
             The url of the final avatar rendering video with subtitles. Only
             available if subtitles are enabled.
+        previewUrl:
+          type: string
+          description: >-
+            Url to the embedable preview of the video. Can be watched from web
+            browsers or integrated in other websites before launching the
+            generation. For embedable mode, add ?embed=true to the url.
+        aspectRatio:
+          type: string
+          enum:
+            - '16:9'
+            - '9:16'
+          description: 'The aspect ratio of the video output: 16:9 or 9:16.'
         subtitles:
           type: object
           properties:
@@ -214,5 +190,19 @@ components:
           additionalProperties:
             type: string
           maxProperties: 10
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API key to be included in the x-api-key header
 
 ````

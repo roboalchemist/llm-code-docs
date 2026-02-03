@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build-cli/input-fields.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Input Field Configuration
 
 On each trigger, search, or create in the `operation` directive, you can provide fields as an array of objects under `inputFields`.
@@ -240,7 +244,7 @@ const App = {
         inputFields: [fetchStringOrDatetimeFields],
         perform: async (z, bundle) => {
           for (const [key, value] of Object.entries(bundle.inputData)) {
-            const fieldMeta = bundle.meta[key] || {};
+            const fieldMeta = bundle.meta.inputFields[key] || {};
 
             if (fieldMeta.internalType === "datetime") {
               // process value as a datetime

@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/speech_to_text.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/speech_to_text.md
 
 # Speech2Text
 
@@ -19,9 +19,9 @@ Speech2Text is a speech model that accepts a float tensor of log-mel filter-bank
 signal. It's a transformer-based seq2seq model, so the transcripts/translations are generated autoregressively. The
 `generate()` method can be used for inference.
 
-The [Speech2TextFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/speech_to_text#transformers.Speech2TextFeatureExtractor) class is responsible for extracting the log-mel filter-bank
-features. The [Speech2TextProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/speech_to_text#transformers.Speech2TextProcessor) wraps [Speech2TextFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/speech_to_text#transformers.Speech2TextFeatureExtractor) and
-[Speech2TextTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/speech_to_text#transformers.Speech2TextTokenizer) into a single instance to both extract the input features and decode the
+The [Speech2TextFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/speech_to_text#transformers.Speech2TextFeatureExtractor) class is responsible for extracting the log-mel filter-bank
+features. The [Speech2TextProcessor](/docs/transformers/v5.0.0/en/model_doc/speech_to_text#transformers.Speech2TextProcessor) wraps [Speech2TextFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/speech_to_text#transformers.Speech2TextFeatureExtractor) and
+[Speech2TextTokenizer](/docs/transformers/v5.0.0/en/model_doc/speech_to_text#transformers.Speech2TextTokenizer) into a single instance to both extract the input features and decode the
 predicted token ids.
 
 The feature extractor depends on `torchaudio` and the tokenizer depends on `sentencepiece` so be sure to
@@ -85,15 +85,15 @@ See the [model hub](https://huggingface.co/models?filter=speech_to_text) to look
 
 #### transformers.Speech2TextConfig[[transformers.Speech2TextConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/speech_to_text/configuration_speech_to_text.py#L24)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/speech_to_text/configuration_speech_to_text.py#L23)
 
-This is the configuration class to store the configuration of a [Speech2TextModel](/docs/transformers/v5.0.0rc1/en/model_doc/speech_to_text#transformers.Speech2TextModel). It is used to instantiate a
+This is the configuration class to store the configuration of a [Speech2TextModel](/docs/transformers/v5.0.0/en/model_doc/speech_to_text#transformers.Speech2TextModel). It is used to instantiate a
 Speech2Text model according to the specified arguments, defining the model architecture. Instantiating a
 configuration with the defaults will yield a similar configuration to that of the Speech2Text
 [facebook/s2t-small-librispeech-asr](https://huggingface.co/facebook/s2t-small-librispeech-asr) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -112,7 +112,7 @@ Example:
 
 **Parameters:**
 
-vocab_size (`int`, *optional*, defaults to 10000) : Vocabulary size of the Speech2Text model. Defines the number of different tokens that can be represented by the `inputs_ids` passed when calling [Speech2TextModel](/docs/transformers/v5.0.0rc1/en/model_doc/speech_to_text#transformers.Speech2TextModel)
+vocab_size (`int`, *optional*, defaults to 10000) : Vocabulary size of the Speech2Text model. Defines the number of different tokens that can be represented by the `inputs_ids` passed when calling [Speech2TextModel](/docs/transformers/v5.0.0/en/model_doc/speech_to_text#transformers.Speech2TextModel)
 
 encoder_layers (`int`, *optional*, defaults to 12) : Number of encoder layers.
 
@@ -170,18 +170,20 @@ input_feat_per_channel (`int`, *optional*, defaults to 80) : An integer specifyi
 
 input_channels (`int`, *optional*, defaults to 1) : An integer specifying number of input channels of the input feature vector.
 
+tie_word_embeddings (`bool`, *optional*, defaults to `True`) : Whether to tie weight embeddings
+
 ## Speech2TextTokenizer[[transformers.Speech2TextTokenizer]]
 
 #### transformers.Speech2TextTokenizer[[transformers.Speech2TextTokenizer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/speech_to_text/tokenization_speech_to_text.py#L50)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/speech_to_text/tokenization_speech_to_text.py#L49)
 
 Construct an Speech2Text tokenizer.
 
-This tokenizer inherits from [PreTrainedTokenizer](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.PythonBackend) which contains some of the main methods. Users should refer to
+This tokenizer inherits from [PreTrainedTokenizer](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.PythonBackend) which contains some of the main methods. Users should refer to
 the superclass for more information regarding such methods.
 
-build_inputs_with_special_tokenstransformers.Speech2TextTokenizer.build_inputs_with_special_tokenshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/speech_to_text/tokenization_speech_to_text.py#L206[{"name": "token_ids_0", "val": ""}, {"name": "token_ids_1", "val": " = None"}]
+build_inputs_with_special_tokenstransformers.Speech2TextTokenizer.build_inputs_with_special_tokenshttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/speech_to_text/tokenization_speech_to_text.py#L205[{"name": "token_ids_0", "val": ""}, {"name": "token_ids_1", "val": " = None"}]
 Build model inputs from a sequence by appending eos_token_id.
 
 **Parameters:**
@@ -218,7 +220,7 @@ sp_model_kwargs (`dict`, *optional*) : Will be passed to the `SentencePieceProce
 
   
 
-- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.TensorType), *optional*) --
+- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType), *optional*) --
   If set, will return tensors instead of list of python integers. Acceptable values are:
 
   - `'pt'`: Return PyTorch `torch.Tensor` objects.
@@ -253,54 +255,50 @@ normalize_vars (`bool`, *optional*, defaults to `True`) : Whether or not to unit
 
 #### transformers.Speech2TextProcessor[[transformers.Speech2TextProcessor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/speech_to_text/processing_speech_to_text.py#L24)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/speech_to_text/processing_speech_to_text.py#L23)
 
-Constructs a Speech2Text processor which wraps a Speech2Text feature extractor and a Speech2Text tokenizer into a
-single processor.
+Constructs a Speech2TextProcessor which wraps a feature extractor and a tokenizer into a single processor.
 
-[Speech2TextProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/speech_to_text#transformers.Speech2TextProcessor) offers all the functionalities of [Speech2TextFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/speech_to_text#transformers.Speech2TextFeatureExtractor) and
-[Speech2TextTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/speech_to_text#transformers.Speech2TextTokenizer). See the [__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/speech_to_text#transformers.Speech2TextProcessor.__call__) and [decode()](/docs/transformers/v5.0.0rc1/en/main_classes/processors#transformers.ProcessorMixin.decode) for more
-information.
+[Speech2TextProcessor](/docs/transformers/v5.0.0/en/model_doc/speech_to_text#transformers.Speech2TextProcessor) offers all the functionalities of [Speech2TextFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/speech_to_text#transformers.Speech2TextFeatureExtractor) and [Speech2TextTokenizer](/docs/transformers/v5.0.0/en/model_doc/speech_to_text#transformers.Speech2TextTokenizer). See the
+[~Speech2TextFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/speech_to_text#transformers.Speech2TextFeatureExtractor) and [~Speech2TextTokenizer](/docs/transformers/v5.0.0/en/model_doc/speech_to_text#transformers.Speech2TextTokenizer) for more information.
 
-__call__transformers.Speech2TextProcessor.__call__https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/speech_to_text/processing_speech_to_text.py#L43[{"name": "*args", "val": ""}, {"name": "**kwargs", "val": ""}]
+__call__transformers.Speech2TextProcessor.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/speech_to_text/processing_speech_to_text.py#L27[{"name": "*args", "val": ""}, {"name": "**kwargs", "val": ""}]- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType), *optional*) --
+  If set, will return tensors of a particular framework. Acceptable values are:
 
-When used in normal mode, this method forwards all its arguments to Speech2TextFeatureExtractor's
-[__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/speech_to_text#transformers.Speech2TextFeatureExtractor.__call__) and returns its output. If used in the context
-`~Speech2TextProcessor.as_target_processor` this method forwards all its arguments to Speech2TextTokenizer's
-[__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__). Please refer to the docstring of the above two methods for more
-information.
+  - `'pt'`: Return PyTorch `torch.Tensor` objects.
+  - `'np'`: Return NumPy `np.ndarray` objects.0
 
 **Parameters:**
 
-feature_extractor (`Speech2TextFeatureExtractor`) : An instance of [Speech2TextFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/speech_to_text#transformers.Speech2TextFeatureExtractor). The feature extractor is a required input.
+feature_extractor (`Speech2TextFeatureExtractor`) : The feature extractor is a required input.
 
-tokenizer (`Speech2TextTokenizer`) : An instance of [Speech2TextTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/speech_to_text#transformers.Speech2TextTokenizer). The tokenizer is a required input.
+tokenizer (`Speech2TextTokenizer`) : The tokenizer is a required input.
 #### from_pretrained[[transformers.Speech2TextProcessor.from_pretrained]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/processing_utils.py#L1349)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/processing_utils.py#L1364)
 
 Instantiate a processor associated with a pretrained model.
 
 This class method is simply calling the feature extractor
-[from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/feature_extractor#transformers.FeatureExtractionMixin.from_pretrained), image processor
-[ImageProcessingMixin](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#transformers.ImageProcessingMixin) and the tokenizer
+[from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/feature_extractor#transformers.FeatureExtractionMixin.from_pretrained), image processor
+[ImageProcessingMixin](/docs/transformers/v5.0.0/en/internal/image_processing_utils#transformers.ImageProcessingMixin) and the tokenizer
 `~tokenization_utils_base.PreTrainedTokenizer.from_pretrained` methods. Please refer to the docstrings of the
 methods above for more information.
 
 **Parameters:**
 
-pretrained_model_name_or_path (`str` or `os.PathLike`) : This can be either:  - a string, the *model id* of a pretrained feature_extractor hosted inside a model repo on huggingface.co. - a path to a *directory* containing a feature extractor file saved using the [save_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/feature_extractor#transformers.FeatureExtractionMixin.save_pretrained) method, e.g., `./my_model_directory/`. - a path or url to a saved feature extractor JSON *file*, e.g., `./my_model_directory/preprocessor_config.json`.
+pretrained_model_name_or_path (`str` or `os.PathLike`) : This can be either:  - a string, the *model id* of a pretrained feature_extractor hosted inside a model repo on huggingface.co. - a path to a *directory* containing a feature extractor file saved using the [save_pretrained()](/docs/transformers/v5.0.0/en/main_classes/feature_extractor#transformers.FeatureExtractionMixin.save_pretrained) method, e.g., `./my_model_directory/`. - a path or url to a saved feature extractor JSON *file*, e.g., `./my_model_directory/preprocessor_config.json`.
 
-- ****kwargs** : Additional keyword arguments passed along to both [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/feature_extractor#transformers.FeatureExtractionMixin.from_pretrained) and `~tokenization_utils_base.PreTrainedTokenizer.from_pretrained`.
+- ****kwargs** : Additional keyword arguments passed along to both [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/feature_extractor#transformers.FeatureExtractionMixin.from_pretrained) and `~tokenization_utils_base.PreTrainedTokenizer.from_pretrained`.
 #### save_pretrained[[transformers.Speech2TextProcessor.save_pretrained]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/processing_utils.py#L778)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/processing_utils.py#L792)
 
 Saves the attributes of this processor (feature extractor, tokenizer...) in the specified directory so that it
-can be reloaded using the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/processors#transformers.ProcessorMixin.from_pretrained) method.
+can be reloaded using the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/processors#transformers.ProcessorMixin.from_pretrained) method.
 
-This class method is simply calling [save_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/feature_extractor#transformers.FeatureExtractionMixin.save_pretrained) and
-[save_pretrained()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.save_pretrained). Please refer to the docstrings of the
+This class method is simply calling [save_pretrained()](/docs/transformers/v5.0.0/en/main_classes/feature_extractor#transformers.FeatureExtractionMixin.save_pretrained) and
+[save_pretrained()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.save_pretrained). Please refer to the docstrings of the
 methods above for more information.
 
 **Parameters:**
@@ -309,29 +307,29 @@ save_directory (`str` or `os.PathLike`) : Directory where the feature extractor 
 
 push_to_hub (`bool`, *optional*, defaults to `False`) : Whether or not to push your model to the Hugging Face model hub after saving it. You can specify the repository you want to push to with `repo_id` (will default to the name of `save_directory` in your namespace).
 
-kwargs (`dict[str, Any]`, *optional*) : Additional key word arguments passed along to the [push_to_hub()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.utils.PushToHubMixin.push_to_hub) method.
+kwargs (`dict[str, Any]`, *optional*) : Additional key word arguments passed along to the [push_to_hub()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.utils.PushToHubMixin.push_to_hub) method.
 #### batch_decode[[transformers.Speech2TextProcessor.batch_decode]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/processing_utils.py#L1520)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/processing_utils.py#L1593)
 
-This method forwards all its arguments to PreTrainedTokenizer's [batch_decode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.batch_decode). Please
+This method forwards all its arguments to PreTrainedTokenizer's [batch_decode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.batch_decode). Please
 refer to the docstring of this method for more information.
 #### decode[[transformers.Speech2TextProcessor.decode]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/processing_utils.py#L1529)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/processing_utils.py#L1602)
 
-This method forwards all its arguments to PreTrainedTokenizer's [decode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.decode). Please refer to
+This method forwards all its arguments to PreTrainedTokenizer's [decode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.decode). Please refer to
 the docstring of this method for more information.
 
 ## Speech2TextModel[[transformers.Speech2TextModel]]
 
 #### transformers.Speech2TextModel[[transformers.Speech2TextModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/speech_to_text/modeling_speech_to_text.py#L873)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/speech_to_text/modeling_speech_to_text.py#L881)
 
 The bare Speech To Text Text Model outputting raw hidden-states without any specific head on to.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -339,10 +337,10 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Speech2TextModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/speech_to_text/modeling_speech_to_text.py#L889[{"name": "input_features", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "decoder_input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "decoder_attention_mask", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "encoder_outputs", "val": ": typing.Optional[tuple[tuple[torch.FloatTensor]]] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "decoder_inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "**kwargs", "val": ""}]- **input_features** (`torch.LongTensor` of shape `(batch_size, sequence_length, feature_dim)`, *optional*) --
+forwardtransformers.Speech2TextModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/speech_to_text/modeling_speech_to_text.py#L897[{"name": "input_features", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "decoder_input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "decoder_attention_mask", "val": ": torch.LongTensor | None = None"}, {"name": "encoder_outputs", "val": ": tuple[tuple[torch.FloatTensor]] | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "decoder_inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.Tensor | None = None"}, {"name": "**kwargs", "val": ""}]- **input_features** (`torch.LongTensor` of shape `(batch_size, sequence_length, feature_dim)`, *optional*) --
   The tensors corresponding to the input audio features. Audio features can be obtained using
-  [Speech2TextFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/speech_to_text#transformers.Speech2TextFeatureExtractor). See [Speech2TextFeatureExtractor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/speech_to_text#transformers.Speech2TextFeatureExtractor.__call__) for details ([Speech2TextProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/speech_to_text#transformers.Speech2TextProcessor) uses
-  [Speech2TextFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/speech_to_text#transformers.Speech2TextFeatureExtractor) for processing audios).
+  [Speech2TextFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/speech_to_text#transformers.Speech2TextFeatureExtractor). See [Speech2TextFeatureExtractor.__call__()](/docs/transformers/v5.0.0/en/model_doc/speech_to_text#transformers.Speech2TextFeatureExtractor.__call__) for details ([Speech2TextProcessor](/docs/transformers/v5.0.0/en/model_doc/speech_to_text#transformers.Speech2TextProcessor) uses
+  [Speech2TextFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/speech_to_text#transformers.Speech2TextFeatureExtractor) for processing audios).
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Mask to avoid performing attention on padding token indices. Mask values selected in `[0, 1]`:
 
@@ -353,8 +351,8 @@ forwardtransformers.Speech2TextModel.forwardhttps://github.com/huggingface/trans
 - **decoder_input_ids** (`torch.LongTensor` of shape `(batch_size, target_sequence_length)`, *optional*) --
   Indices of decoder input sequence tokens in the vocabulary.
 
-  Indices can be obtained using `SpeechToTextTokenizer`. See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using `SpeechToTextTokenizer`. See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are decoder input IDs?](../glossary#decoder-input-ids)
 
@@ -368,7 +366,7 @@ forwardtransformers.Speech2TextModel.forwardhttps://github.com/huggingface/trans
   If you want to change padding behavior, you should read
   `modeling_speech_to_text._prepare_decoder_attention_mask` and modify to your needs. See diagram 1 in [the
   paper](https://huggingface.co/papers/1910.13461) for more information on the default strategy.
-- **encoder_outputs** (`tuple[tuple[torch.FloatTensor]]`, *optional*) --
+- **encoder_outputs** (`tuple`, *optional*) --
   Tuple consists of (`last_hidden_state`, *optional*: `hidden_states`, *optional*: `attentions`)
   `last_hidden_state` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) is a sequence of
   hidden-states at the output of the last layer of the encoder. Used in the cross-attention of the decoder.
@@ -377,8 +375,8 @@ forwardtransformers.Speech2TextModel.forwardhttps://github.com/huggingface/trans
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -403,17 +401,17 @@ forwardtransformers.Speech2TextModel.forwardhttps://github.com/huggingface/trans
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 - **cache_position** (`torch.Tensor` of shape `(sequence_length)`, *optional*) --
   Indices depicting the position of the input sequence tokens in the sequence. Contrarily to `position_ids`,
   this tensor is not affected by padding. It is used to update the cache in the correct position and to infer
-  the complete sequence length.0[transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or a tuple of
+  the complete sequence length.0[transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Speech2TextConfig](/docs/transformers/v5.0.0rc1/en/model_doc/speech_to_text#transformers.Speech2TextConfig)) and inputs.
+elements depending on the configuration ([Speech2TextConfig](/docs/transformers/v5.0.0/en/model_doc/speech_to_text#transformers.Speech2TextConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
-- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and in the cross-attention
   blocks) that can be used (see `past_key_values` input) to speed up sequential decoding.
@@ -441,7 +439,7 @@ elements depending on the configuration ([Speech2TextConfig](/docs/transformers/
 
   Attentions weights of the encoder, after the attention softmax, used to compute the weighted average in the
   self-attention heads.
-The [Speech2TextModel](/docs/transformers/v5.0.0rc1/en/model_doc/speech_to_text#transformers.Speech2TextModel) forward method, overrides the `__call__` special method.
+The [Speech2TextModel](/docs/transformers/v5.0.0/en/model_doc/speech_to_text#transformers.Speech2TextModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -469,19 +467,19 @@ Example:
 
 **Parameters:**
 
-config ([Speech2TextConfig](/docs/transformers/v5.0.0rc1/en/model_doc/speech_to_text#transformers.Speech2TextConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Speech2TextConfig](/docs/transformers/v5.0.0/en/model_doc/speech_to_text#transformers.Speech2TextConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or a tuple of
+A [transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Speech2TextConfig](/docs/transformers/v5.0.0rc1/en/model_doc/speech_to_text#transformers.Speech2TextConfig)) and inputs.
+elements depending on the configuration ([Speech2TextConfig](/docs/transformers/v5.0.0/en/model_doc/speech_to_text#transformers.Speech2TextConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
-- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and in the cross-attention
   blocks) that can be used (see `past_key_values` input) to speed up sequential decoding.
@@ -514,11 +512,11 @@ elements depending on the configuration ([Speech2TextConfig](/docs/transformers/
 
 #### transformers.Speech2TextForConditionalGeneration[[transformers.Speech2TextForConditionalGeneration]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/speech_to_text/modeling_speech_to_text.py#L1012)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/speech_to_text/modeling_speech_to_text.py#L1020)
 
 The Speech2Text Model with a language modeling head. Can be used for summarization.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -526,10 +524,10 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Speech2TextForConditionalGeneration.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/speech_to_text/modeling_speech_to_text.py#L1025[{"name": "input_features", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "decoder_input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "decoder_attention_mask", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "encoder_outputs", "val": ": typing.Optional[tuple[tuple[torch.FloatTensor]]] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "decoder_inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "**kwargs", "val": ""}]- **input_features** (`torch.LongTensor` of shape `(batch_size, sequence_length, feature_dim)`, *optional*) --
+forwardtransformers.Speech2TextForConditionalGeneration.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/speech_to_text/modeling_speech_to_text.py#L1033[{"name": "input_features", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "decoder_input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "decoder_attention_mask", "val": ": torch.LongTensor | None = None"}, {"name": "encoder_outputs", "val": ": tuple[tuple[torch.FloatTensor]] | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "decoder_inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.Tensor | None = None"}, {"name": "**kwargs", "val": ""}]- **input_features** (`torch.LongTensor` of shape `(batch_size, sequence_length, feature_dim)`, *optional*) --
   The tensors corresponding to the input audio features. Audio features can be obtained using
-  [Speech2TextFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/speech_to_text#transformers.Speech2TextFeatureExtractor). See [Speech2TextFeatureExtractor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/speech_to_text#transformers.Speech2TextFeatureExtractor.__call__) for details ([Speech2TextProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/speech_to_text#transformers.Speech2TextProcessor) uses
-  [Speech2TextFeatureExtractor](/docs/transformers/v5.0.0rc1/en/model_doc/speech_to_text#transformers.Speech2TextFeatureExtractor) for processing audios).
+  [Speech2TextFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/speech_to_text#transformers.Speech2TextFeatureExtractor). See [Speech2TextFeatureExtractor.__call__()](/docs/transformers/v5.0.0/en/model_doc/speech_to_text#transformers.Speech2TextFeatureExtractor.__call__) for details ([Speech2TextProcessor](/docs/transformers/v5.0.0/en/model_doc/speech_to_text#transformers.Speech2TextProcessor) uses
+  [Speech2TextFeatureExtractor](/docs/transformers/v5.0.0/en/model_doc/speech_to_text#transformers.Speech2TextFeatureExtractor) for processing audios).
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Mask to avoid performing attention on padding token indices. Mask values selected in `[0, 1]`:
 
@@ -540,8 +538,8 @@ forwardtransformers.Speech2TextForConditionalGeneration.forwardhttps://github.co
 - **decoder_input_ids** (`torch.LongTensor` of shape `(batch_size, target_sequence_length)`, *optional*) --
   Indices of decoder input sequence tokens in the vocabulary.
 
-  Indices can be obtained using `SpeechToTextTokenizer`. See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using `SpeechToTextTokenizer`. See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are decoder input IDs?](../glossary#decoder-input-ids)
 
@@ -555,7 +553,7 @@ forwardtransformers.Speech2TextForConditionalGeneration.forwardhttps://github.co
   If you want to change padding behavior, you should read
   `modeling_speech_to_text._prepare_decoder_attention_mask` and modify to your needs. See diagram 1 in [the
   paper](https://huggingface.co/papers/1910.13461) for more information on the default strategy.
-- **encoder_outputs** (`tuple[tuple[torch.FloatTensor]]`, *optional*) --
+- **encoder_outputs** (`tuple`, *optional*) --
   Tuple consists of (`last_hidden_state`, *optional*: `hidden_states`, *optional*: `attentions`)
   `last_hidden_state` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) is a sequence of
   hidden-states at the output of the last layer of the encoder. Used in the cross-attention of the decoder.
@@ -564,8 +562,8 @@ forwardtransformers.Speech2TextForConditionalGeneration.forwardhttps://github.co
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -594,17 +592,17 @@ forwardtransformers.Speech2TextForConditionalGeneration.forwardhttps://github.co
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 - **cache_position** (`torch.Tensor` of shape `(sequence_length)`, *optional*) --
   Indices depicting the position of the input sequence tokens in the sequence. Contrarily to `position_ids`,
   this tensor is not affected by padding. It is used to update the cache in the correct position and to infer
-  the complete sequence length.0[transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or a tuple of
+  the complete sequence length.0[transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Speech2TextConfig](/docs/transformers/v5.0.0rc1/en/model_doc/speech_to_text#transformers.Speech2TextConfig)) and inputs.
+elements depending on the configuration ([Speech2TextConfig](/docs/transformers/v5.0.0/en/model_doc/speech_to_text#transformers.Speech2TextConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
-- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and in the cross-attention
   blocks) that can be used (see `past_key_values` input) to speed up sequential decoding.
@@ -632,7 +630,7 @@ elements depending on the configuration ([Speech2TextConfig](/docs/transformers/
 
   Attentions weights of the encoder, after the attention softmax, used to compute the weighted average in the
   self-attention heads.
-The [Speech2TextForConditionalGeneration](/docs/transformers/v5.0.0rc1/en/model_doc/speech_to_text#transformers.Speech2TextForConditionalGeneration) forward method, overrides the `__call__` special method.
+The [Speech2TextForConditionalGeneration](/docs/transformers/v5.0.0/en/model_doc/speech_to_text#transformers.Speech2TextForConditionalGeneration) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -664,19 +662,19 @@ Example:
 
 **Parameters:**
 
-config ([Speech2TextConfig](/docs/transformers/v5.0.0rc1/en/model_doc/speech_to_text#transformers.Speech2TextConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Speech2TextConfig](/docs/transformers/v5.0.0/en/model_doc/speech_to_text#transformers.Speech2TextConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or a tuple of
+A [transformers.modeling_outputs.Seq2SeqLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.Seq2SeqLMOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Speech2TextConfig](/docs/transformers/v5.0.0rc1/en/model_doc/speech_to_text#transformers.Speech2TextConfig)) and inputs.
+elements depending on the configuration ([Speech2TextConfig](/docs/transformers/v5.0.0/en/model_doc/speech_to_text#transformers.Speech2TextConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
-- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`EncoderDecoderCache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [EncoderDecoderCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.EncoderDecoderCache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and in the cross-attention
   blocks) that can be used (see `past_key_values` input) to speed up sequential decoding.

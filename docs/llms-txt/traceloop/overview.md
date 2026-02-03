@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/contributing/overview.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Overview
 
 > We welcome any contributions to  OpenLLMetry, big or small.
@@ -34,8 +38,3 @@ Anyone can contribute code to OpenLLMetry. To get started, check out the local d
 All of OpenLLMetry's code is under the Apache 2.0 license.
 
 Any third party components incorporated into our code are licensed under the original license provided by the applicable component owner.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

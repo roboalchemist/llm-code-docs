@@ -1,3 +1,5 @@
+# Source: https://bun.com/docs/guides/runtime/import-html.md
+
 # Import a HTML file as text
 
 To import a `.html` file in Bun as a text file, use the `type: "text"` attribute in the import statement.

@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/architecture/containers/container-recovery.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Container Recovery
 
 When [Containers](/core-concepts/architecture/containers/overview) on Aptible exit unexpectedly (i.e., Aptible did not terminate them as part of a deploy or restart), they are automatically restarted. This feature is called Container Recovery. For most apps, Aptible will automatically restart containers in the event of a crash without requiring user action.

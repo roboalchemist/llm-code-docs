@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/transport/media/screenshare.md
 
-# Source: https://docs.livekit.io/home/client/tracks/screenshare.md
-
-LiveKit docs › LiveKit SDKs › Realtime media › Screen sharing
+LiveKit docs › Media › Screen sharing
 
 ---
 
@@ -176,7 +174,7 @@ room.getParticipantByIdentity('<participant_id>').getTrackPublication('screen_sh
 
 ---
 
-This document was rendered at 2025-11-18T23:54:50.679Z.
-For the latest version of this document, see [https://docs.livekit.io/home/client/tracks/screenshare.md](https://docs.livekit.io/home/client/tracks/screenshare.md).
+This document was rendered at 2026-02-03T03:25:15.893Z.
+For the latest version of this document, see [https://docs.livekit.io/transport/media/screenshare.md](https://docs.livekit.io/transport/media/screenshare.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

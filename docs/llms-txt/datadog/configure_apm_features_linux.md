@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > APM > Application Instrumentation > Enable SDK-dependent products on
   Linux
-source_url: >-
-  https://docs.datadoghq.com/trace_collection/configure_apm_features_linux/index.html
 ---
 
 # Enable SDK-dependent products on Linux
@@ -52,7 +50,7 @@ The following table lists the products and their respective configuration keys:
 | [Data Streams Monitoring](https://www.datadoghq.com/product/data-streams-monitoring/)                  | `DD_DATA_STREAMS_ENABLED` |
 | [App and API Protection (AAP)](https://www.datadoghq.com/dg/security/application-security-management/) | `DD_APPSEC_ENABLED`       |
 | [Code Security (IAST)](https://www.datadoghq.com/dg/security/code-security/)                           | `DD_IAST_ENABLED`         |
-| [Data Jobs Monitoring](https://www.datadoghq.com/product/data-jobs-monitoring/)                        | `DD_DATA_JOBS_ENABLED`    |
+| [Data Observability: Jobs Monitoring](https://www.datadoghq.com/product/data-jobs-monitoring/)         | `DD_DATA_JOBS_ENABLED`    |
 | [Software Composition Analysis](https://www.datadoghq.com/product/software-composition-analysis/)      | `DD_APPSEC_SCA_ENABLED`   |
 
 ## SDK version requirements{% #sdk-version-requirements %}

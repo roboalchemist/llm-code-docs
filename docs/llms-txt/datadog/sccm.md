@@ -4,7 +4,6 @@
 title: SCCM
 description: SCCM (Systems Center Configuration Manager)
 breadcrumbs: Docs > Agent > Supported Platforms > SCCM
-source_url: https://docs.datadoghq.com/supported_platforms/sccm/index.html
 ---
 
 # SCCM

@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/currency.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Currency Conversion Plugin
 
 > Automatically converts currency values from a source currency to a target currency using Open Exchange Rates API with support for historical exchange rates.
@@ -12,7 +16,7 @@ The primary use case is for processing financial data, such as transaction logs 
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-convert-currency
 ```
 
@@ -43,7 +47,7 @@ The plugin requires a configuration object with the following parameters:
 ### Basic Usage
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from "@flatfile/listener";
   import { currencyConverterPlugin } from "@flatfile/plugin-convert-currency";
 
@@ -60,7 +64,7 @@ The plugin requires a configuration object with the following parameters:
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from "@flatfile/listener";
   import { currencyConverterPlugin } from "@flatfile/plugin-convert-currency";
 
@@ -81,7 +85,7 @@ The plugin requires a configuration object with the following parameters:
 ### Full Configuration with Historical Rates
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from "@flatfile/listener";
   import { currencyConverterPlugin } from "@flatfile/plugin-convert-currency";
 
@@ -101,7 +105,7 @@ The plugin requires a configuration object with the following parameters:
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from "@flatfile/listener";
   import { currencyConverterPlugin } from "@flatfile/plugin-convert-currency";
 
@@ -125,7 +129,7 @@ The plugin requires a configuration object with the following parameters:
 ### Using Utility Functions
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { 
     validateAmount, 
     validateDate, 
@@ -150,7 +154,7 @@ The plugin requires a configuration object with the following parameters:
   // Returns: 0.869565
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { 
     validateAmount, 
     validateDate, 

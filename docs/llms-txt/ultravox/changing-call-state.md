@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/tools/custom/changing-call-state.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Changing Call State
 
 > Learn how to programmatically end calls or transition between call stages using special tool response types.
@@ -18,8 +22,3 @@ These tool actions require setting a special response type.
 How you set the response type depends on your tool implementation.
 HTTP tools set the response type via the `X-Ultravox-Response-Type` header.
 Client and data connection tools should set the responseType field in their tool result message.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

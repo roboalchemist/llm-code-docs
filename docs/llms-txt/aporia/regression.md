@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/model-types/regression.md
 
-# Source: https://docs.aporia.com/model-types/regression.md
-
-# Source: https://docs.aporia.com/v1/model-types/regression.md
-
 # Regression
 
 Regression models predict a `numeric` value. In Aporia, these models are represented with the `regression` model type.

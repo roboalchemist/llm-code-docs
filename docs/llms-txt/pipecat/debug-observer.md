@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/utilities/observers/debug-observer.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Debug Log Observer
 
 > Comprehensive frame logging with configurable filtering in Pipecat
@@ -108,8 +112,3 @@ The `FrameEndpoint` enum is used for source/destination filtering:
 
 * `FrameEndpoint.SOURCE`: Filter by source component
 * `FrameEndpoint.DESTINATION`: Filter by destination component
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

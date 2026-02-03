@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/blueprints/if-else.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # If-Else
 
 Evaluate custom Python code and redirect to 'true' or 'false' branch. Useful for conditional logic.
@@ -175,8 +179,3 @@ Below are the possible end states of the block call.
     </tr>
   </tbody>
 </table>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://dev.writer.com/llms.txt

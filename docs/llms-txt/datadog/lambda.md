@@ -1,10 +1,11 @@
+# Source: https://docs.datadoghq.com/security/application_security/setup/aws/lambda.md
+
 # Source: https://docs.datadoghq.com/cloudcraft/components-aws/lambda.md
 
 ---
 title: Lambda Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > AWS Components > Lambda Component
-source_url: https://docs.datadoghq.com/components-aws/lambda/index.html
 ---
 
 # Lambda Component

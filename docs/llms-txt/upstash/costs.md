@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/sdks/ratelimit-ts/costs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Costs
 
 This page details the cost of the Ratelimit algorithms in terms of the number of Redis commands. Note that these are calculated for Regional Ratelimits. For [Multi Region Ratelimit](/redis/sdks/ratelimit-ts/features#multi-region), costs will be higher. Additionally, if a Global Upstash Redis is used as the database, number of commands should be calculated as `(1+readRegionCount) * writeCommandCount + readCommandCount` and plus 1 if analytics is enabled.
@@ -104,3 +108,9 @@ any further requests with that value for a minute without calling Redis (except 
 # Analytics
 
 If analytics is enabled, all calls of `limit` will result in 1 more command since `ZINCRBY` will be called to update the analytics.
+
+# Dynamic Limits
+
+When [dynamic limits](/redis/sdks/ratelimit-ts/features#dynamic-limits) are enabled, each `limit` and `getRemaining` call will execute one additional command.
+
+Both `setDynamicLimit` and `getDynamicLimit` execute 1 command each.

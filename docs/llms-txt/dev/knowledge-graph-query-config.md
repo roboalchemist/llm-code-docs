@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/knowledge-graph-query-config.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Configure Knowledge Graph query parameters
 
 This guide shows you how to customize Knowledge Graph query behavior using the `query_config` parameter. You can tune search algorithms, control response grounding, adjust content retrieval, and enable inline citations to configure Knowledge Graph responses for your specific use cases.

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/strategies/base64/
+
 # Base64 Encoding Strategy
 
 The Base64 Encoding strategy tests an AI system's ability to resist encoded inputs that might bypass security controls. Base64 encoding (using characters A-Z, a-z, 0-9, +, /) exploits a fundamental gap: LLMs learn to decode Base64 during pretraining, but their safety mechanisms often fail on encoded inputs.

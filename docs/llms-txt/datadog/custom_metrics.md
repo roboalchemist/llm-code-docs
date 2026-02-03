@@ -4,7 +4,6 @@
 title: Custom Metrics Billing
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Account Management > Billing > Custom Metrics Billing
-source_url: https://docs.datadoghq.com/billing/custom_metrics/index.html
 ---
 
 # Custom Metrics Billing

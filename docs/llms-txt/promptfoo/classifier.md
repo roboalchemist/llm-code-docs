@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/configuration/expected-outputs/classifier/
+
 # Classifier grading
 
 Use the `classifier` assert type to run the LLM output through any [HuggingFace text classifier](https://huggingface.co/docs/transformers/tasks/sequence_classification).

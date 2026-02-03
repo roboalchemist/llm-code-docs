@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/web-scraping/oxylabsscraperstool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Oxylabs Scrapers
 
 > Oxylabs Scrapers allow to easily access the information from the respective sources. Please see the list of available sources below:

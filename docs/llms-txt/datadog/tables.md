@@ -6,7 +6,6 @@ description: >-
   Advanced table component features including client-side filtering, server-side
   filtering, loading indicators, and dynamic values.
 breadcrumbs: Docs > App Builder > Components > Tables
-source_url: https://docs.datadoghq.com/app_builder/components/tables/index.html
 ---
 
 # Tables

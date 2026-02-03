@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/blueprints/addtoknowledgegraph.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add to Knowledge Graph
 
 Adds structured information to the knowledge graph. Use for storing facts AI can reference.
@@ -137,14 +141,14 @@ Below are the possible end states of the block call.
       <td>Success</td>
       <td>-</td>
       <td>success</td>
-      <td>If the execution was successful.</td>
+      <td>Content was added to the knowledge graph.</td>
     </tr>
 
     <tr>
       <td>Error</td>
       <td>-</td>
       <td>error</td>
-      <td>If the function raises an Exception.</td>
+      <td>There was an error adding content to the knowledge graph.</td>
     </tr>
   </tbody>
 </table>

@@ -4,11 +4,7 @@
 
 Anonymous plugin for Better Auth.
 
-***
 
-title: Anonymous\
-description: Anonymous plugin for Better Auth.
-----------------------------------------------
 
 The Anonymous plugin allows users to have an authenticated experience without requiring them to provide an email address, password, OAuth provider, or any other Personally Identifiable Information (PII). Users can later link an authentication method to their account when ready.
 
@@ -40,7 +36,7 @@ The Anonymous plugin allows users to have an authenticated experience without re
 
     <Tabs items={["migrate", "generate"]}>
       <Tab value="migrate">
-        <CodeBlockTabs defaultValue="npm">
+        <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
           <CodeBlockTabsList>
             <CodeBlockTabsTrigger value="npm">
               npm
@@ -86,7 +82,7 @@ The Anonymous plugin allows users to have an authenticated experience without re
       </Tab>
 
       <Tab value="generate">
-        <CodeBlockTabs defaultValue="npm">
+        <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
           <CodeBlockTabsList>
             <CodeBlockTabsTrigger value="npm">
               npm
@@ -165,7 +161,8 @@ const user = await authClient.signIn.anonymous()
 
 ### Link Account
 
-If a user is already signed in anonymously and tries to `signIn` or `signUp` with another method, their anonymous activities can be linked to the new account.
+If a user is already signed in anonymously and tries to `signIn` or `signUp` with another method,
+their anonymous activities can be linked to the new account.
 
 To do that you first need to provide `onLinkAccount` callback to the plugin.
 
@@ -189,6 +186,39 @@ const user = await authClient.signIn.email({
     email,
 })
 ```
+
+### Delete Anonymous User
+
+To delete an anonymous user, you can call the `/delete-anonymous-user` endpoint.
+
+
+### Client Side
+
+```ts
+const { data, error } = await authClient.deleteAnonymousUser({});
+```
+
+### Server Side
+
+```ts
+await auth.api.deleteAnonymousUser({});
+```
+
+### Type Definition
+
+```ts
+type deleteAnonymousUser = {
+  
+}
+```
+
+
+<Callout type="info">
+  **Notes:**
+
+  * The anonymous user is deleted by default when the account is linked to a new authentication method.
+  * Setting `disableDeleteAnonymousUser` to `true` will prevent the anonymous user from being able to call the `/delete-anonymous-user` endpoint.
+</Callout>
 
 ## Options
 
@@ -240,7 +270,10 @@ A callback function that is called when an anonymous user links their account to
 
 ### `disableDeleteAnonymousUser`
 
-By default, the anonymous user is deleted when the account is linked to a new authentication method. Set this option to `true` to disable this behavior.
+By default, when an anonymous user links their account to a new authentication method,
+the anonymous user record is automatically deleted.
+If you set this option to `true`, this automatic deletion will be disabled,
+and the `/delete-anonymous-user` endpoint will no longer be accessible to anonymous users.
 
 ### `generateName`
 

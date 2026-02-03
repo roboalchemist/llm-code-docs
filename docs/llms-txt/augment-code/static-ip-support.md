@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/setup-augment/static-ip-support.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Allow Augment traffic from static IPs
 
 > Locate Augment static IP addresses and configure firewalls, allowlists, and network policies for Augment Agent and its integrations.

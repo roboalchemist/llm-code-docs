@@ -2,113 +2,58 @@
 
 # Source: https://docs.chatling.ai/ai-agent/actions/http-request.md
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/action/http-request.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.chatling.ai/ai-agent/actions/http-request.md
+# HTTP Request
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/action/http-request.md
+The HTTP Request action allows the AI Agent to connect to external APIs and services during the chat and perform an action.
 
-# Source: https://docs.chatling.ai/ai-agent/actions/http-request.md
+The Agent can collect the needed inputs from the user, pull values from chat history, or use saved contact data—then send the request and use the result to respond or take the next step.
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/action/http-request.md
+## Configuration
 
-# Source: https://docs.chatling.ai/ai-agent/actions/http-request.md
+### `Action Name`
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/action/http-request.md
+A short, specific identifier that tells the Agent what this action does (e.g. check\_order\_status, create\_support\_ticket).
 
-# Source: https://docs.chatling.ai/ai-agent/actions/http-request.md
+### `When to Use`
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/action/http-request.md
+A detailed description of what the action does and when it must be used.
 
-# HTTP Request Block
+When applicable, you can specify one or more of the following:
 
-> Learn about the HTTP Request block and how to set it up in the Builder.
+* **Positive cues/phrases**: Example utterances and keywords that signal this action (include a few variations).
+* **Preconditions**: What must be true before running.
+* **Do not use when**: Explicit exclusions to avoid false triggers.
 
-The HTTP Request block is used to send HTTP requests to external APIs and services. You can use it to fetch data, send data, or perform other actions by interacting with APIs.
+### `Frequency`
 
-The block consists of the following components:
+Specify how often the Agent can invoke this action to avoid overusing it, e.g `Once per chat` or `Whenever applicable`.
 
-* **Request method**: The HTTP method to use for the request, such as GET, POST, PUT, PATCH, and DELETE.
-* **URL**: The URL of the API endpoint to send the request to.
-* **Request options**: You can configure additional options for the request, such as headers, query parameters, and request body.
-* **Capture Response**: You can capture the responses from the API and store them a variable. The response must be in JSON format.
+### `Input parameters`
 
-## Method and URL
+Define the parameters the Agent must gather before sending the request. The Agent can capture these from user input, existing chat context, or saved contact data.
 
-In order to send a request, you must provide the endpoint URL and select the appropriate request method. The following request methods are supported:
+For each parameter, you can specify the following:
 
-* **GET**: Retrieve data from the server.
-* **POST**: Send data to the server.
-* **PUT**: Update data on the server.
-* **PATCH**: Partially update data on the server.
-* **DELETE**: Delete data from the server.
+* **Name**: The name of the parameter. Must start with a letter and contain only letters, numbers, and underscores.
+* **Description** (optional): A description of the parameter to indicate what it is and if applicable, the formatting rules and min/max length.
+* **Save to variable** (optional): The variable where the data can be saved. Applicable when you want to use the data in the HTTP request's parameters, such as URL, body, headers, etc.
 
-As an example, an endpoint URL might look like this:
+### `Request`
 
-`https://openlibrary.org/works/OL45804W.json`
+Configure how the HTTP call is made.
 
-## Request Options
+* **Method**: GET, POST, PUT, PATCH, DELETE
+* **URL**: Enter the request URL, such as an API endpoint.
+* **Query Params** (optional): Key-value pairs appended to the URL.
+* **Body** (optional): The request payload which can be passed as form data, form URL encoded, or raw JSON.
+* **Headers** (optional): Data to be sent as the headers of the request, such as Content-Type and Authorization.
 
-When sending requests to external APIs, you may need to provide additional options such as headers, query parameters, and request body. Here are the available options:
+### `Test Request`
 
-* **Headers**: You can set headers for the request, such as Content-Type, Authorization, and Accept.
-* **Query Params**: The URL query parameters to include for the request.
-* **Request Body**: The request payload which can be passed as form data, form URL encoded, or raw JSON.
+Run a live test with sample input values to confirm that it's working.
 
-### How to use variables in JSON payload
-
-To use variables in the request payload, you must enclose the variable's name in double curly braces within quotes. Here's an example:
-
-```json  theme={null}
-{
-    "name": "{{contact_name}}",
-    "age": 21,
-    "email": "{{contact_email}}"
-}
-```
-
-Some points to note:
-
-* Make sure that the variables exist and that their name is correct. Otherwise, they will not be replaced with the actual value.
-* If you change a variable's name, you must also update the JSON payload to reflect the change.
-* Variables must be enclosed in double curly braces as shown in the example above.
-
-## Capture Response
-
-Responses from the API can be captured and stored in one or more variables. In order for this to work, the response from the endpoint must be in JSON format.
-
-Click the `Add` button to add a new row for capturing a value. You must specify the key and the variable where the value will be stored.
-
-The naming convention for the key is as follows:
-
-* **Top level data**: use the key, such as name or age.
-* **Nested data**: use dot notation, such as user.name or profile.address.city.
-* **Array data**: use the index, such as users\[0].name or countries\[1].cities\[0].population.
-
-Let's take a look at an example. Below is a sample JSON response from an API endpoint:
-
-```json  theme={null}
-{
-    "title": "Fantastic Mr Fox",
-    "permalink": "/works/OL45804W",
-    "authors": [
-    {
-        "author": {
-            "name": "Roald Dahl"
-        },
-    }
-    ],
-    "description": "The main character of Fantastic Mr. Fox is an extremely clever anthropomorphized fox named Mr. Fox. He lives with his wife and four little foxes. In order to feed his family, he steals food from the cruel, brutish farmers named Boggis, Bunce, and Bean every night.\r\n\r\nFinally tired of being constantly outwitted by Mr. Fox, the farmers attempt to capture and kill him. The foxes escape in time by burrowing deep into the ground. The farmers decide to wait outside the hole for the foxes to emerge. Unable to leave the hole and steal food, Mr. Fox and his family begin to starve. Mr. Fox devises a plan to steal food from the farmers by tunneling into the ground and borrowing into the farmer's houses.\r\n\r\nAided by a friendly Badger, the animals bring the stolen food back and Mrs. Fox prepares a great celebratory banquet attended by the other starving animals and their families. Mr. Fox invites all the animals to live with him underground and says that he will provide food for them daily thanks to his underground passages. All the animals live happily and safely, while the farmers remain waiting outside in vain for Mr. Fox to show up.",
-    "meta": {
-        "published_at": "1970-06-01"
-    },
-}
-```
-
-To capture the title, date of publication, and author name from the response, you would use the following keys:
-
-* **Title**: `title`
-* **Published date**: `meta.published_at`
-* **Author Name**: `authors[0].author.name`
-
-<img src="https://chatling-assets.b-cdn.net/http-request-capture-response-example.png" alt="HTTP Request capture response example" width="300" />
+The request must succeed before the action can be created. A request is considered successful if it returns a 2xx status code and a valid JSON response.

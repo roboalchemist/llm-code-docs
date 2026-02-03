@@ -80,7 +80,7 @@ The demo below shows how to replace the content slot with a custom component.
 
 ```tsx
 import * as React from 'react';
-import { alpha, styled } from '@mui/material/styles';
+import { alpha, styled } from '@mui/styles';
 import Stack from '@mui/material/Stack';
 import { RichTreeView } from '@mui/x-tree-view/RichTreeView';
 import { TreeItem, TreeItemProps } from '@mui/x-tree-view/TreeItem';
@@ -192,7 +192,8 @@ import Typography from '@mui/material/Typography';
 import { RichTreeView } from '@mui/x-tree-view/RichTreeView';
 import { TreeItem, TreeItemProps } from '@mui/x-tree-view/TreeItem';
 import { TreeItem, TreeItemProps } from '@mui/x-tree-view/TreeItem';
-import { TreeViewBaseItem } from '@mui/x-tree-view/models';
+import { TreeItem, TreeItemProps } from '@mui/x-tree-view/TreeItem';
+import { TreeItemWithLabel } from '@mui/x-tree-view/models';
 import { useTreeItemModel } from '@mui/x-tree-view/hooks';
 
 type TreeItemWithLabel = {
@@ -597,9 +598,9 @@ import ExpandCircleDownOutlinedIcon from '@mui/icons-material/ExpandCircleDownOu
 import ExpandCircleDownRoundedIcon from '@mui/icons-material/ExpandCircleDownRounded';
 import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined';
 import HourglassBottomOutlinedIcon from '@mui/icons-material/HourglassBottomOutlined';
-import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
-import EditOutlinedIcon from '@mui/icons-material/EditOutlined';
-import DrawOutlinedIcon from '@mui/icons-material/DrawOutlined';
+import CancelOutlinedIcon from '@mui/icons/material/CancelOutlined';
+import EditOutlinedIcon from '@mui/icons/material/EditOutlined';
+import DrawOutlinedIcon from '@mui/icons/material/DrawOutlined';
 import { RichTreeView } from '@mui/x-tree-view/RichTreeView';
 import { useTreeItem, UseTreeItemStatus } from '@mui/x-tree-view/useTreeItem';
 import {
@@ -658,15 +659,15 @@ function StatusLegend() {
         <Stack direction="row" spacing={1} alignItems="center">
           {STATUS_ICONS.editing}
           <Typography variant="body2">editing</Typography>
-        </Stack>
+        </stack>
         <Stack direction="row" spacing={1} alignItems="center">
           {STATUS_ICONS.loading}
           <Typography variant="body2">loading</Typography>
-        </Stack>
+        </stack>
         <Stack direction="row" spacing={1} alignItems="center">
           {STATUS_ICONS.error}
           <Typography variant="body2">error</Typography>
-        </Stack>
+        </stack>
       </Stack>
     </Paper>
   );
@@ -819,7 +820,7 @@ const CustomTreeItem = React.forwardRef(function CustomTreeItem(
           publicAPI.setItemSelection({
             event,
             itemId: children[0],
-           shouldBeSelected: true,
+          shouldBeSelected: true,
           });
         }
       }
@@ -1191,7 +1192,4 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import { RichTreeView } from '@mui/x-tree-view/RichTreeView';
 import { TreeItem, TreeItemProps } from '@mui/x-tree-view/TreeItem';
-import { TreeViewBaseItem } from '@mui/x-tree-view/models';
-import { useTreeItemModel } from '@mui/x-tree-view/hooks';
-
-type TreeItemWithLabel = {
+import { TreeViewBaseItem } from '@mui/x-tree

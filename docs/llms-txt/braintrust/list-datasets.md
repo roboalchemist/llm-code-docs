@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/api-reference/datasets/list-datasets.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List datasets
 
 > List out all datasets. The datasets are sorted by creation date, with the most recently-created datasets coming first
@@ -230,10 +234,14 @@ components:
           additionalProperties:
             nullable: true
           description: User-controlled metadata about the dataset
+        url_slug:
+          type: string
+          description: URL slug for the dataset. used to construct dataset URLs
       required:
         - id
         - project_id
         - name
+        - url_slug
     AppLimitParam:
       type: integer
       nullable: true
@@ -295,7 +303,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

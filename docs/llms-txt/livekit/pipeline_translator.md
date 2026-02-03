@@ -168,7 +168,7 @@ async def entrypoint(ctx: JobContext):
 
     session = AgentSession(
         stt=deepgram.STT(),
-        llm=openai.LLM(),
+        llm=openai.responses.LLM(),
         tts=elevenlabs.TTS(model="eleven_multilingual_v2"),
         vad=ctx.proc.userdata["vad"],
         preemptive_generation=True,
@@ -224,7 +224,7 @@ async def entrypoint(ctx: JobContext):
 
     session = AgentSession(
         stt=deepgram.STT(),
-        llm=openai.LLM(),
+        llm=openai.responses.LLM(),
         tts=elevenlabs.TTS(model="eleven_multilingual_v2"),
         vad=ctx.proc.userdata["vad"],
         preemptive_generation=True,
@@ -295,7 +295,7 @@ async def entrypoint(ctx: JobContext):
 
     session = AgentSession(
         stt=deepgram.STT(),
-        llm=openai.LLM(),
+        llm=openai.responses.LLM(),
         tts=elevenlabs.TTS(model="eleven_multilingual_v2"),
         vad=ctx.proc.userdata["vad"],
         preemptive_generation=True,
@@ -311,7 +311,7 @@ if __name__ == "__main__":
 
 ---
 
-This document was rendered at 2025-12-31T18:29:44.228Z.
+This document was rendered at 2026-02-03T03:25:30.881Z.
 For the latest version of this document, see [https://docs.livekit.io/recipes/pipeline_translator.md](https://docs.livekit.io/recipes/pipeline_translator.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

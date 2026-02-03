@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/fuyu.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/fuyu.md
 
 # Fuyu
 
@@ -78,15 +78,15 @@ The `LlamaTokenizer` is used as it is a standard wrapper around sentencepiece.
 
 #### transformers.FuyuConfig[[transformers.FuyuConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/fuyu/configuration_fuyu.py#L28)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/fuyu/configuration_fuyu.py#L25)
 
-This is the configuration class to store the configuration of a [FuyuForCausalLM](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuForCausalLM). It is used to instantiate an
+This is the configuration class to store the configuration of a [FuyuForCausalLM](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuForCausalLM). It is used to instantiate an
 Fuyu model according to the specified arguments, defining the model architecture. Instantiating a configuration
 with the defaults will yield a similar configuration to that of the
 [adept/fuyu-8b](https://huggingface.co/adept/fuyu-8b).
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 ```python
 >>> from transformers import FuyuConfig
@@ -97,7 +97,7 @@ documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_class
 
 **Parameters:**
 
-vocab_size (`int`, *optional*, defaults to 262144) : Vocabulary size of the Fuyu model. Defines the number of different tokens that can be represented by the `inputs_ids` passed when calling [FuyuForCausalLM](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuForCausalLM)
+vocab_size (`int`, *optional*, defaults to 262144) : Vocabulary size of the Fuyu model. Defines the number of different tokens that can be represented by the `inputs_ids` passed when calling [FuyuForCausalLM](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuForCausalLM)
 
 hidden_size (`int`, *optional*, defaults to 4096) : Dimension of the hidden representations.
 
@@ -147,11 +147,11 @@ text_config (`dict`, *optional*) : Dictionary of configuration options used to i
 
 #### transformers.FuyuModel[[transformers.FuyuModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/fuyu/modeling_fuyu.py#L53)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/fuyu/modeling_fuyu.py#L51)
 
 The Fuyu model which consists of a vision backbone and a language model, without a language modeling head.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -159,11 +159,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.FuyuModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/fuyu/modeling_fuyu.py#L157[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "image_patches", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "image_patches_indices", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.FuyuModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/fuyu/modeling_fuyu.py#L153[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "image_patches", "val": ": torch.Tensor | None = None"}, {"name": "image_patches_indices", "val": ": torch.Tensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **image_patches** (`torch.FloatTensor` of shape `(batch_size, num_total_patches, patch_size_ x patch_size x num_channels)`, *optional*) --
@@ -187,8 +187,8 @@ forwardtransformers.FuyuModel.forwardhttps://github.com/huggingface/transformers
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -209,13 +209,13 @@ forwardtransformers.FuyuModel.forwardhttps://github.com/huggingface/transformers
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([FuyuConfig](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuConfig)) and inputs.
+elements depending on the configuration ([FuyuConfig](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.
@@ -228,7 +228,7 @@ elements depending on the configuration ([FuyuConfig](/docs/transformers/v5.0.0r
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [FuyuModel](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuModel) forward method, overrides the `__call__` special method.
+The [FuyuModel](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -236,19 +236,19 @@ the latter silently ignores them.
 
 **Parameters:**
 
-config ([FuyuConfig](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([FuyuConfig](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or a tuple of
+A [transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([FuyuConfig](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuConfig)) and inputs.
+elements depending on the configuration ([FuyuConfig](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.
@@ -263,7 +263,7 @@ elements depending on the configuration ([FuyuConfig](/docs/transformers/v5.0.0r
   heads.
 #### gather_continuous_embeddings[[transformers.FuyuModel.gather_continuous_embeddings]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/fuyu/modeling_fuyu.py#L75)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/fuyu/modeling_fuyu.py#L73)
 
 This function places the continuous_embeddings into the word_embeddings at the locations
 indicated by image_patch_input_indices. Different batch elements can have different numbers of continuous
@@ -278,16 +278,37 @@ continuous_embeddings (`torch.FloatTensor` of shape `(batch_size, num_patches, h
 image_patch_input_indices (`torch.LongTensor` of shape `(batch_size, sequence_length)`) : Tensor of indices of the image patches in the input_ids tensor.
 #### get_image_features[[transformers.FuyuModel.get_image_features]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/fuyu/modeling_fuyu.py#L119)
-
-Encodes images into continuous embeddings that can be forwarded to the language model.
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/fuyu/modeling_fuyu.py#L117)
 
 **Parameters:**
 
 pixel_values (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`) : The tensors corresponding to the input images.
+
+**Returns:**
+
+`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
+
+A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([FuyuConfig](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuConfig)) and inputs.
+
+- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
+- **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
+  through the layers used for the auxiliary pretraining task. E.g. for BERT-family of models, this returns
+  the classification token after processing through a linear layer and a tanh activation function. The linear
+  layer weights are trained from the next sentence prediction (classification) objective during pretraining.
+- **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
 #### get_placeholder_mask[[transformers.FuyuModel.get_placeholder_mask]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/fuyu/modeling_fuyu.py#L133)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/fuyu/modeling_fuyu.py#L129)
 
 Obtains multimodal placeholder mask from `input_ids` or `inputs_embeds`, and checks that the placeholder token count is
 equal to the length of multimodal features. If the lengths are different, an error is raised.
@@ -296,11 +317,11 @@ equal to the length of multimodal features. If the lengths are different, an err
 
 #### transformers.FuyuForCausalLM[[transformers.FuyuForCausalLM]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/fuyu/modeling_fuyu.py#L237)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/fuyu/modeling_fuyu.py#L233)
 
 Fuyu Model with a language modeling head on top for causal language model conditioned on image patches and text.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -308,11 +329,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.FuyuForCausalLM.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/fuyu/modeling_fuyu.py#L257[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "image_patches", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "image_patches_indices", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "labels", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "logits_to_keep", "val": ": typing.Optional[int] = 0"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.FuyuForCausalLM.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/fuyu/modeling_fuyu.py#L253[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "image_patches", "val": ": torch.Tensor | None = None"}, {"name": "image_patches_indices", "val": ": torch.Tensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "labels", "val": ": torch.Tensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "logits_to_keep", "val": ": int | None = 0"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **image_patches** (`torch.FloatTensor` of shape `(batch_size, num_total_patches, patch_size_ x patch_size x num_channels)`, *optional*) --
@@ -336,8 +357,8 @@ forwardtransformers.FuyuForCausalLM.forwardhttps://github.com/huggingface/transf
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -362,19 +383,19 @@ forwardtransformers.FuyuForCausalLM.forwardhttps://github.com/huggingface/transf
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 - **logits_to_keep** (`int`, *optional*, defaults to `0`) --
   If an `int`, compute logits for the last `logits_to_keep` tokens. If `0`, calculate logits for all
   `input_ids` (special case). Only last token logits are needed for generation, and calculating them only for that
   token can save memory, which becomes pretty significant for long sequences or large vocabulary size.
   If a `torch.Tensor`, must be 1D corresponding to the indices to keep in the sequence length dimension.
-  This is useful when using packed tensor format (single dimension for batch and sequence length).0[transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or a tuple of
+  This is useful when using packed tensor format (single dimension for batch and sequence length).0[transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([FuyuConfig](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuConfig)) and inputs.
+elements depending on the configuration ([FuyuConfig](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.
@@ -387,7 +408,7 @@ elements depending on the configuration ([FuyuConfig](/docs/transformers/v5.0.0r
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [FuyuForCausalLM](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuForCausalLM) forward method, overrides the `__call__` special method.
+The [FuyuForCausalLM](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuForCausalLM) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -398,13 +419,15 @@ Examples:
 ```python
 >>> from transformers import FuyuProcessor, FuyuForCausalLM
 >>> from PIL import Image
->>> import requests
+>>> import httpx
+>>> from io import BytesIO
 
 >>> processor = FuyuProcessor.from_pretrained("adept/fuyu-8b")
 >>> model = FuyuForCausalLM.from_pretrained("adept/fuyu-8b")
 
 >>> url = "https://huggingface.co/datasets/hf-internal-testing/fixtures-captioning/resolve/main/bus.png"
->>> image = Image.open(requests.get(url, stream=True).raw)
+>>> with httpx.stream("GET", url) as response:
+...     image = Image.open(BytesIO(response.read()))
 >>> prompt = "Generate a coco-style caption.\n"
 
 >>> inputs = processor(images=image, text=prompt, return_tensors="pt")
@@ -418,19 +441,19 @@ A blue bus parked on the side of a road.
 
 **Parameters:**
 
-config ([FuyuConfig](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([FuyuConfig](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or a tuple of
+A [transformers.modeling_outputs.CausalLMOutputWithPast](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithPast) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([FuyuConfig](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuConfig)) and inputs.
+elements depending on the configuration ([FuyuConfig](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.
@@ -448,7 +471,7 @@ elements depending on the configuration ([FuyuConfig](/docs/transformers/v5.0.0r
 
 #### transformers.FuyuImageProcessor[[transformers.FuyuImageProcessor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/fuyu/image_processing_fuyu.py#L199)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/fuyu/image_processing_fuyu.py#L197)
 
 This class should handle the image processing part before the main FuyuForCausalLM. In particular, it should
 handle:
@@ -466,7 +489,7 @@ handle:
 - Image Patch Indices:
   For each image patch, the code maintains an index where these patches should be inserted in a token stream.
 
-__call__transformers.FuyuImageProcessor.__call__https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_utils.py#L52[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]"}, {"name": "*args", "val": ""}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.processing_utils.ImagesKwargs]"}]
+__call__transformers.FuyuImageProcessor.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_utils.py#L48[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]"}, {"name": "*args", "val": ""}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.processing_utils.ImagesKwargs]"}]
 Preprocess an image or a batch of images.
 
 **Parameters:**
@@ -499,31 +522,35 @@ patch_size (`dict[str, int]`, *optional*, defaults to `{"height" : 30, "width": 
 
 #### transformers.FuyuImageProcessorFast[[transformers.FuyuImageProcessorFast]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/fuyu/image_processing_fuyu_fast.py#L51)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/fuyu/image_processing_fuyu_fast.py#L50)
 
 Constructs a fast Fuyu image processor.
 
-__call__transformers.FuyuImageProcessorFast.__call__https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/image_processing_utils.py#L52[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]"}, {"name": "*args", "val": ""}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.processing_utils.ImagesKwargs]"}]
+__call__transformers.FuyuImageProcessorFast.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/image_processing_utils.py#L48[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]"}, {"name": "*args", "val": ""}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.processing_utils.ImagesKwargs]"}]
 Preprocess an image or a batch of images.
 
 ## FuyuProcessor[[transformers.FuyuProcessor]]
 
 #### transformers.FuyuProcessor[[transformers.FuyuProcessor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/fuyu/processing_fuyu.py#L336)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/fuyu/processing_fuyu.py#L336)
 
-Constructs a Fuyu processor which wraps a Fuyu image processor and a Llama tokenizer into a single processor.
+Constructs a FuyuProcessor which wraps a image processor and a tokenizer into a single processor.
 
-[FuyuProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuProcessor) offers all the functionalities of [FuyuImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor) and [TokenizersBackend](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.TokenizersBackend). See the
-[__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuProcessor.__call__) and [decode()](/docs/transformers/v5.0.0rc1/en/main_classes/processors#transformers.ProcessorMixin.decode) for more information.
+[FuyuProcessor](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuProcessor) offers all the functionalities of [FuyuImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessorFast) and `tokenizer_class`. See the
+[~FuyuImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessorFast) and `~tokenizer_class` for more information.
 
-__call__transformers.FuyuProcessor.__call__https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/fuyu/processing_fuyu.py#L481[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "text", "val": ": typing.Union[str, list[str], NoneType] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.models.fuyu.processing_fuyu.FuyuProcessorKwargs]"}]- **images** (`PIL.Image.Image`, `list[PIL.Image.Image]`) --
-  The image or batch of images to be prepared. Each image can be a PIL image, NumPy array or PyTorch
-  tensor. Both channels-first and channels-last formats are supported.
-- **text** (`str`, `list[str]`) --
+__call__transformers.FuyuProcessor.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/fuyu/processing_fuyu.py#L484[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "text", "val": ": str | list[str] | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.models.fuyu.processing_fuyu.FuyuProcessorKwargs]"}]- **images** (`Union[PIL.Image.Image, numpy.ndarray, torch.Tensor, list, list, list]`, *optional*) --
+  Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If
+  passing in images with pixel values between 0 and 1, set `do_rescale=False`.
+- **text** (`Union[str, list]`, *optional*) --
   The sequence or batch of sequences to be encoded. Each sequence can be a string or a list of strings
-  (pretokenized string). If the sequences are provided as list of strings (pretokenized), you must set
-  `is_split_into_words=True` (to lift the ambiguity with a batch of sequences).0`FuyuBatchEncoding`A `FuyuBatchEncoding` with the following fields:
+  (pretokenized string). If you pass a pretokenized input, set `is_split_into_words=True` to avoid ambiguity with batched inputs.
+- **return_tensors** (`str` or [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType), *optional*) --
+  If set, will return tensors of a particular framework. Acceptable values are:
+
+  - `'pt'`: Return PyTorch `torch.Tensor` objects.
+  - `'np'`: Return NumPy `np.ndarray` objects.0`FuyuBatchEncoding`A `FuyuBatchEncoding` with the following fields:
 
 - **input_ids** -- Tensor of token ids to be fed to a model. Returned when `text` is not `None`.
 - **image_patches** -- List of Tensor of image patches. Returned when `images` is not `None`.
@@ -531,17 +558,11 @@ __call__transformers.FuyuProcessor.__call__https://github.com/huggingface/transf
 - **attention_mask** -- List of indices specifying which tokens should be attended to by the model when
   `return_attention_mask=True`.
 
-Main method to prepare for the model one or several sequences(s) and image(s). This method forwards the `text`
-and `kwargs` arguments to TokenizersBackend's [__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) if `text` is not `None` to
-encode the text. To prepare the image(s), this method forwards the `images` and `kwargs` arguments to
-FuyuImageProcessor's [__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) if `images` is not `None`. Please refer to the docstring
-of the above two methods for more information.
-
 **Parameters:**
 
-image_processor ([FuyuImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor)) : The image processor is a required input.
+image_processor (`FuyuImageProcessorFast`) : The image processor is a required input.
 
-tokenizer ([TokenizersBackend](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.TokenizersBackend)) : The tokenizer is a required input.
+tokenizer (`tokenizer_class`) : The tokenizer is a required input.
 
 **Returns:**
 

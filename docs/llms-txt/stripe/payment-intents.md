@@ -453,7 +453,7 @@ namespace StripeExampleApi.Controllers
 
 After the client confirms the payment, it is a best practice for your server to [monitor webhooks](https://docs.stripe.com/payments/payment-intents/verifying-status.md#webhooks) to detect when the payment successfully completes or fails.
 
-A `PaymentIntent` might have more than one [Charge](https://docs.stripe.com/api/charges.md) object associated with it if there were multiple payment attempts, for examples retries. For each charge you can inspect the [outcome](https://docs.stripe.com/api/charges/object.md#charge_object-outcome) and [details of the payment method](https://docs.stripe.com/api/charges/object.md#charge_object-payment_method_details) used.
+A `PaymentIntent` might have more than one [Charge](https://docs.stripe.com/api/charges.md) object associated with it if there were multiple payment attempts. For example, retries can create multiple `Charges`. For each charge you can inspect the [outcome](https://docs.stripe.com/api/charges/object.md#charge_object-outcome) and [details of the payment method](https://docs.stripe.com/api/charges/object.md#charge_object-payment_method_details) used.
 
 ## Optimizing payment methods for future payments 
 
@@ -832,6 +832,6 @@ PaymentIntent paymentIntent = service.Create(options);
 ## See also
 
 - [Accept a payment online](https://docs.stripe.com/payments/accept-a-payment.md?platform=web)
-- [Accept a payment in an iOS app](https://docs.stripe.com/payments/accept-a-payment.md?platform=ios)
-- [Accept a payment in an Android app](https://docs.stripe.com/payments/accept-a-payment.md?platform=android)
+- [Accept a payment in an iOS app](https://docs.stripe.com/payments/accept-a-payment.md?payment-ui=mobile&platform=ios)
+- [Accept a payment in an Android app](https://docs.stripe.com/payments/accept-a-payment.md?payment-ui=mobile&platform=android)
 - [Set up future payments](https://docs.stripe.com/payments/save-and-reuse.md)

@@ -1,15 +1,27 @@
 # Source: https://docs.frigade.com/component/checklist/collapsible.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.frigade.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Collapsible
 
 > A condensed checklist component that can be used inline or in a modal
 
 <Frame className="h-120 items-center px-4">
   <img
-    src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/components/collapsible.svg"
+    src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/collapsible.svg?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=06f4d1092cd12b7d2c1d515c67a18562"
     style={{
     width: "350px",
   }}
+    data-og-width="540"
+    width="540"
+    data-og-height="825"
+    height="825"
+    data-path="images/components/collapsible.svg"
+    data-optimize="true"
+    data-opv="3"
+    srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/collapsible.svg?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=acf8c16ec6af5c259834016167f85680 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/collapsible.svg?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=1600ecd0eb31341dfe2ac87ed69be884 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/collapsible.svg?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=e40640c171b27daa749085b0cef825e2 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/collapsible.svg?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=60b2cb6f5848c4425646d62e80ae657e 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/collapsible.svg?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=41ae7d2ace378d3721a587f4299db909 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/collapsible.svg?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=94a1ea62d1af4114d43118ac00bddb74 2500w"
   />
 </Frame>
 
@@ -50,7 +62,7 @@ The `Checklist` component is one of Frigade’s most popular tools, especially f
 
 <Tabs>
   <Tab title="Code">
-    ```tsx
+    ```tsx  theme={"system"}
     import * as Frigade from '@frigade/react';
 
     const App = () => {

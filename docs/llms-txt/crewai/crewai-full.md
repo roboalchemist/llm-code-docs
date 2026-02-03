@@ -21,13 +21,16 @@ In the CrewAI framework, an `Agent` is an autonomous unit that can:
 * Delegate tasks when allowed
 
 <Tip>
-  Think of an agent as a specialized team member with specific skills, expertise, and responsibilities. For example, a `Researcher` agent might excel at gathering and analyzing information, while a `Writer` agent might be better at creating content.
+  Think of an agent as a specialized team member with specific skills,
+  expertise, and responsibilities. For example, a `Researcher` agent might excel
+  at gathering and analyzing information, while a `Writer` agent might be better
+  at creating content.
 </Tip>
 
 <Note type="info" title="Enterprise Enhancement: Visual Agent Builder">
   CrewAI AMP includes a Visual Agent Builder that simplifies agent creation and configuration without writing code. Design your agents visually and test them in real-time.
 
-    <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-studio-interface.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=c4f5428b111816273b3b53d9cef14fad" alt="Visual Agent Builder Screenshot" data-og-width="2654" width="2654" data-og-height="1710" height="1710" data-path="images/enterprise/crew-studio-interface.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-studio-interface.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=35ea9140f0b9e57da5f45adbc7e2f166 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-studio-interface.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=ae6f0c18ef3679b5466177710fbc4a94 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-studio-interface.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=6c3e2fe013ab4826da90c937a9855635 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-studio-interface.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=7f1474dd7f983532dc910363b96f783a 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-studio-interface.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=f1a6d7e744e6862af5e72dce4deb0fd1 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-studio-interface.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=74aeb1ccd8e2c8f84d4247b8d0259737 2500w" />
+  <img alt="Visual Agent Builder Screenshot" />
 
   The Visual Agent Builder enables:
 
@@ -144,7 +147,8 @@ class LatestAiDevelopmentCrew():
 ```
 
 <Note>
-  The names you use in your YAML files (`agents.yaml`) should match the method names in your Python code.
+  The names you use in your YAML files (`agents.yaml`) should match the method
+  names in your Python code.
 </Note>
 
 ### Direct Code Definition
@@ -315,8 +319,9 @@ multimodal_agent = Agent(
   * `"unsafe"`: Direct execution (use only in trusted environments)
 
 <Note>
-  This runs a default Docker image. If you want to configure the docker image, the checkout the Code Interpreter Tool in the tools section.
-  Add the code interpreter tool as a tool in the agent as a tool parameter.
+  This runs a default Docker image. If you want to configure the docker image,
+  the checkout the Code Interpreter Tool in the tools section. Add the code
+  interpreter tool as a tool in the agent as a tool parameter.
 </Note>
 
 #### Advanced Features
@@ -332,11 +337,15 @@ multimodal_agent = Agent(
 * `response_template`: Formats agent responses
 
 <Note>
-  When using custom templates, ensure that both `system_template` and `prompt_template` are defined. The `response_template` is optional but recommended for consistent output formatting.
+  When using custom templates, ensure that both `system_template` and
+  `prompt_template` are defined. The `response_template` is optional but
+  recommended for consistent output formatting.
 </Note>
 
 <Note>
-  When using custom templates, you can use variables like `{role}`, `{goal}`, and `{backstory}` in your templates. These will be automatically populated during execution.
+  When using custom templates, you can use variables like `{role}`, `{goal}`,
+  and `{backstory}` in your templates. These will be automatically populated
+  during execution.
 </Note>
 
 ## Agent Tools
@@ -381,7 +390,8 @@ analyst = Agent(
 ```
 
 <Note>
-  When `memory` is enabled, the agent will maintain context across multiple interactions, improving its ability to handle complex, multi-step tasks.
+  When `memory` is enabled, the agent will maintain context across multiple
+  interactions, improving its ability to handle complex, multi-step tasks.
 </Note>
 
 ## Context Window Management
@@ -553,7 +563,10 @@ agent = Agent(
 ```
 
 <Note>
-  The context window management feature works automatically in the background. You don't need to call any special functions - just set `respect_context_window` to your preferred behavior and CrewAI handles the rest!
+  The context window management feature works automatically in the background.
+  You don't need to call any special functions - just set
+  `respect_context_window` to your preferred behavior and CrewAI handles the
+  rest!
 </Note>
 
 ## Direct Agent Interaction with `kickoff()`
@@ -650,7 +663,9 @@ asyncio.run(main())
 ```
 
 <Note>
-  The `kickoff()` method uses a `LiteAgent` internally, which provides a simpler execution flow while preserving all of the agent's configuration (role, goal, backstory, tools, etc.).
+  The `kickoff()` method uses a `LiteAgent` internally, which provides a simpler
+  execution flow while preserving all of the agent's configuration (role, goal,
+  backstory, tools, etc.).
 </Note>
 
 ## Important Considerations and Best Practices
@@ -706,16 +721,19 @@ asyncio.run(main())
 ## Troubleshooting Common Issues
 
 1. **Rate Limiting**: If you're hitting API rate limits:
+
    * Implement appropriate `max_rpm`
    * Use caching for repetitive operations
    * Consider batching requests
 
 2. **Context Window Errors**: If you're exceeding context limits:
+
    * Enable `respect_context_window`
    * Use more efficient prompts
    * Clear agent memory periodically
 
 3. **Code Execution Issues**: If code execution fails:
+
    * Verify Docker is installed for safe mode
    * Check execution permissions
    * Review code sandbox settings
@@ -732,7 +750,12 @@ Source: https://docs.crewai.com/en/concepts/cli
 
 Learn how to use the CrewAI CLI to interact with CrewAI.
 
-<Warning>Since release 0.140.0, CrewAI AMP started a process of migrating their login provider. As such, the authentication flow via CLI was updated. Users that use Google to login, or that created their account after July 3rd, 2025 will be unable to log in with older versions of the `crewai` library.</Warning>
+<Warning>
+  Since release 0.140.0, CrewAI AMP started a process of migrating their login
+  provider. As such, the authentication flow via CLI was updated. Users that use
+  Google to login, or that created their account after July 3rd, 2025 will be
+  unable to log in with older versions of the `crewai` library.
+</Warning>
 
 ## Overview
 
@@ -881,12 +904,16 @@ crewai run
 ```
 
 <Note>
-  Starting from version 0.103.0, the `crewai run` command can be used to run both standard crews and flows. For flows, it automatically detects the type from pyproject.toml and runs the appropriate command. This is now the recommended way to run both crews and flows.
+  Starting from version 0.103.0, the `crewai run` command can be used to run
+  both standard crews and flows. For flows, it automatically detects the type
+  from pyproject.toml and runs the appropriate command. This is now the
+  recommended way to run both crews and flows.
 </Note>
 
 <Note>
-  Make sure to run these commands from the directory where your CrewAI project is set up.
-  Some commands may require additional configuration or setup within your project structure.
+  Make sure to run these commands from the directory where your CrewAI project
+  is set up. Some commands may require additional configuration or setup within
+  your project structure.
 </Note>
 
 ### 9. Chat
@@ -906,7 +933,7 @@ crewai chat
 <Note>
   IMPORTANT: Set the `chat_llm` property in your `crew.py` file to enable this command.
 
-  ```python  theme={null}
+  ```python theme={null}
   @crew
   def crew(self) -> Crew:
       return Crew(
@@ -925,6 +952,7 @@ Deploy the crew or flow to [CrewAI AMP](https://app.crewai.com).
 
 * **Authentication**: You need to be authenticated to deploy to CrewAI AMP.
   You can login or create an account with:
+
   ```shell Terminal theme={null}
   crewai login
   ```
@@ -965,41 +993,53 @@ crewai org switch <organization_id>
 ```
 
 <Note>
-  You must be authenticated to CrewAI AMP to use these organization management commands.
+  You must be authenticated to CrewAI AMP to use these organization management
+  commands.
 </Note>
 
 * **Create a deployment** (continued):
+
   * Links the deployment to the corresponding remote GitHub repository (it usually detects this automatically).
 
 * **Deploy the Crew**: Once you are authenticated, you can deploy your crew or flow to CrewAI AMP.
+
   ```shell Terminal theme={null}
   crewai deploy push
   ```
+
   * Initiates the deployment process on the CrewAI AMP platform.
   * Upon successful initiation, it will output the Deployment created successfully! message along with the Deployment Name and a unique Deployment ID (UUID).
 
 * **Deployment Status**: You can check the status of your deployment with:
+
   ```shell Terminal theme={null}
   crewai deploy status
   ```
+
   This fetches the latest deployment status of your most recent deployment attempt (e.g., `Building Images for Crew`, `Deploy Enqueued`, `Online`).
 
 * **Deployment Logs**: You can check the logs of your deployment with:
+
   ```shell Terminal theme={null}
   crewai deploy logs
   ```
+
   This streams the deployment logs to your terminal.
 
 * **List deployments**: You can list all your deployments with:
+
   ```shell Terminal theme={null}
   crewai deploy list
   ```
+
   This lists all your deployments.
 
 * **Delete a deployment**: You can delete a deployment with:
+
   ```shell Terminal theme={null}
   crewai deploy remove
   ```
+
   This deletes the deployment from the CrewAI AMP platform.
 
 * **Help Command**: You can get help with the CLI with:
@@ -1010,7 +1050,7 @@ crewai org switch <organization_id>
 
 Watch this video tutorial for a step-by-step demonstration of deploying your crew to [CrewAI AMP](http://app.crewai.com) using the CLI.
 
-<iframe className="w-full aspect-video rounded-xl" src="https://www.youtube.com/embed/3EqSV-CYDZA" title="CrewAI Deployment Guide" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+<iframe title="CrewAI Deployment Guide" />
 
 ### 11. Login
 
@@ -1177,19 +1217,23 @@ crewai traces status
 Trace collection is controlled by checking three settings in priority order:
 
 1. **Explicit flag in code** (highest priority - can enable OR disable):
-   ```python  theme={null}
+
+   ```python theme={null}
    crew = Crew(agents=[...], tasks=[...], tracing=True)   # Always enable
    crew = Crew(agents=[...], tasks=[...], tracing=False)  # Always disable
    crew = Crew(agents=[...], tasks=[...])                 # Check lower priorities (default)
    ```
+
    * `tracing=True` will **always enable** tracing (overrides everything)
    * `tracing=False` will **always disable** tracing (overrides everything)
    * `tracing=None` or omitted will check lower priority settings
 
 2. **Environment variable** (second priority):
-   ```env  theme={null}
+
+   ```env theme={null}
    CREWAI_TRACING_ENABLED=true
    ```
+
    * Checked only if `tracing` is not explicitly set to `True` or `False` in code
    * Set to `true` or `1` to enable tracing
 
@@ -1217,15 +1261,22 @@ Trace collection is controlled by checking three settings in priority order:
 </Note>
 
 <Tip>
-  For more information about tracing, see the [Tracing documentation](/observability/tracing).
+  For more information about tracing, see the [Tracing
+  documentation](/observability/tracing).
 </Tip>
 
 <Tip>
-  CrewAI CLI handles authentication to the Tool Repository automatically when adding packages to your project. Just append `crewai` before any `uv` command to use it. E.g. `crewai uv add requests`. For more information, see [Tool Repository](https://docs.crewai.com/enterprise/features/tool-repository) docs.
+  CrewAI CLI handles authentication to the Tool Repository automatically when
+  adding packages to your project. Just append `crewai` before any `uv` command
+  to use it. E.g. `crewai uv add requests`. For more information, see [Tool
+  Repository](https://docs.crewai.com/enterprise/features/tool-repository) docs.
 </Tip>
 
 <Note>
-  Configuration settings are stored in `~/.config/crewai/settings.json`. Some settings like organization name and UUID are read-only and managed through authentication and organization commands. Tool repository related settings are hidden and cannot be set directly by users.
+  Configuration settings are stored in `~/.config/crewai/settings.json`. Some
+  settings like organization name and UUID are read-only and managed through
+  authentication and organization commands. Tool repository related settings are
+  hidden and cannot be set directly by users.
 </Note>
 
 
@@ -1240,7 +1291,7 @@ Collaboration in CrewAI enables agents to work together as a team by delegating 
 
 ## Quick Start: Enable Collaboration
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Crew, Task
 
 # Enable collaboration for agents
@@ -1276,7 +1327,7 @@ When `allow_delegation=True`, CrewAI automatically provides agents with two powe
 
 Allows agents to assign tasks to teammates with specific expertise.
 
-```python  theme={null}
+```python theme={null}
 # Agent automatically gets this tool:
 # Delegate work to coworker(task: str, context: str, coworker: str)
 ```
@@ -1285,7 +1336,7 @@ Allows agents to assign tasks to teammates with specific expertise.
 
 Enables agents to ask specific questions to gather information from colleagues.
 
-```python  theme={null}
+```python theme={null}
 # Agent automatically gets this tool:
 # Ask question to coworker(question: str, context: str, coworker: str)
 ```
@@ -1294,7 +1345,7 @@ Enables agents to ask specific questions to gather information from colleagues.
 
 Here's a complete example showing agents collaborating on a content creation task:
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Crew, Task, Process
 
 # Create collaborative agents
@@ -1355,7 +1406,7 @@ result = crew.kickoff()
 
 ### Pattern 1: Research → Write → Edit
 
-```python  theme={null}
+```python theme={null}
 research_task = Task(
     description="Research the latest developments in quantum computing",
     expected_output="Comprehensive research summary with key findings and sources",
@@ -1379,7 +1430,7 @@ editing_task = Task(
 
 ### Pattern 2: Collaborative Single Task
 
-```python  theme={null}
+```python theme={null}
 collaborative_task = Task(
     description="""Create a marketing strategy for a new AI product.
     
@@ -1396,7 +1447,7 @@ collaborative_task = Task(
 
 For complex projects, use a hierarchical process with a manager agent:
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Crew, Task, Process
 
 # Manager agent coordinates the team
@@ -1446,7 +1497,7 @@ crew = Crew(
 
 ### 1. **Clear Role Definition**
 
-```python  theme={null}
+```python theme={null}
 # ✅ Good: Specific, complementary roles
 researcher = Agent(role="Market Research Analyst", ...)
 writer = Agent(role="Technical Content Writer", ...)
@@ -1458,7 +1509,7 @@ agent2 = Agent(role="Helper", ...)
 
 ### 2. **Strategic Delegation Enabling**
 
-```python  theme={null}
+```python theme={null}
 # ✅ Enable delegation for coordinators and generalists
 lead_agent = Agent(
     role="Content Lead",
@@ -1476,7 +1527,7 @@ specialist_agent = Agent(
 
 ### 3. **Context Sharing**
 
-```python  theme={null}
+```python theme={null}
 # ✅ Use context parameter for task dependencies
 writing_task = Task(
     description="Write article based on research",
@@ -1488,7 +1539,7 @@ writing_task = Task(
 
 ### 4. **Clear Task Descriptions**
 
-```python  theme={null}
+```python theme={null}
 # ✅ Specific, actionable descriptions
 Task(
     description="""Research competitors in the AI chatbot space.
@@ -1507,7 +1558,7 @@ Task(description="Do some research about chatbots", ...)
 
 **Symptoms:** Agents work in isolation, no delegation occurs
 
-```python  theme={null}
+```python theme={null}
 # ✅ Solution: Ensure delegation is enabled
 agent = Agent(
     role="...",
@@ -1520,7 +1571,7 @@ agent = Agent(
 
 **Symptoms:** Agents ask excessive questions, slow progress
 
-```python  theme={null}
+```python theme={null}
 # ✅ Solution: Provide better context and specific roles
 Task(
     description="""Write a technical blog post about machine learning.
@@ -1538,7 +1589,7 @@ Task(
 
 **Symptoms:** Agents delegate back and forth indefinitely
 
-```python  theme={null}
+```python theme={null}
 # ✅ Solution: Clear hierarchy and responsibilities
 manager = Agent(role="Manager", allow_delegation=True)
 specialist1 = Agent(role="Specialist A", allow_delegation=False)  # No re-delegation
@@ -1549,7 +1600,7 @@ specialist2 = Agent(role="Specialist B", allow_delegation=False)
 
 ### Custom Collaboration Rules
 
-```python  theme={null}
+```python theme={null}
 # Set specific collaboration guidelines in agent backstory
 agent = Agent(
     role="Senior Developer",
@@ -1566,7 +1617,7 @@ agent = Agent(
 
 ### Monitoring Collaboration
 
-```python  theme={null}
+```python theme={null}
 def track_collaboration(output):
     """Track collaboration patterns"""
     if "Delegate work to coworker" in output.raw:
@@ -1586,7 +1637,7 @@ crew = Crew(
 
 Enable agents to remember past collaborations:
 
-```python  theme={null}
+```python theme={null}
 agent = Agent(
     role="Content Lead",
     memory=True,  # Remembers past interactions
@@ -1641,6 +1692,7 @@ A crew in crewAI represents a collaborative group of agents working together to 
 | **Planning** *(optional)*             | `planning`             | Adds planning ability to the Crew. When activated before each Crew iteration, all Crew data is sent to an AgentPlanner that will plan the tasks and this plan will be added to each task description. |   |
 | **Planning LLM** *(optional)*         | `planning_llm`         | The language model used by the AgentPlanner in a planning process.                                                                                                                                    |   |
 | **Knowledge Sources** *(optional)*    | `knowledge_sources`    | Knowledge sources available at the crew level, accessible to all the agents.                                                                                                                          |   |
+| **Stream** *(optional)*               | `stream`               | Enable streaming output to receive real-time updates during crew execution. Returns a `CrewStreamingOutput` object that can be iterated for chunks. Defaults to `False`.                              |   |
 
 <Tip>
   **Crew Max RPM**: The `max_rpm` attribute sets the maximum number of requests per minute the crew can perform to avoid rate limits and will override individual agents' `max_rpm` settings if you set it.
@@ -1913,12 +1965,27 @@ print(result)
 
 ### Different Ways to Kick Off a Crew
 
-Once your crew is assembled, initiate the workflow with the appropriate kickoff method. CrewAI provides several methods for better control over the kickoff process: `kickoff()`, `kickoff_for_each()`, `kickoff_async()`, and `kickoff_for_each_async()`.
+Once your crew is assembled, initiate the workflow with the appropriate kickoff method. CrewAI provides several methods for better control over the kickoff process.
+
+#### Synchronous Methods
 
 * `kickoff()`: Starts the execution process according to the defined process flow.
 * `kickoff_for_each()`: Executes tasks sequentially for each provided input event or item in the collection.
-* `kickoff_async()`: Initiates the workflow asynchronously.
-* `kickoff_for_each_async()`: Executes tasks concurrently for each provided input event or item, leveraging asynchronous processing.
+
+#### Asynchronous Methods
+
+CrewAI offers two approaches for async execution:
+
+| Method                     | Type         | Description                                            |
+| -------------------------- | ------------ | ------------------------------------------------------ |
+| `akickoff()`               | Native async | True async/await throughout the entire execution chain |
+| `akickoff_for_each()`      | Native async | Native async execution for each input in a list        |
+| `kickoff_async()`          | Thread-based | Wraps synchronous execution in `asyncio.to_thread`     |
+| `kickoff_for_each_async()` | Thread-based | Thread-based async for each input in a list            |
+
+<Note>
+  For high-concurrency workloads, `akickoff()` and `akickoff_for_each()` are recommended as they use native async for task execution, memory operations, and knowledge retrieval.
+</Note>
 
 ```python Code theme={null}
 # Start the crew's task execution
@@ -1931,19 +1998,53 @@ results = my_crew.kickoff_for_each(inputs=inputs_array)
 for result in results:
     print(result)
 
-# Example of using kickoff_async
+# Example of using native async with akickoff
+inputs = {'topic': 'AI in healthcare'}
+async_result = await my_crew.akickoff(inputs=inputs)
+print(async_result)
+
+# Example of using native async with akickoff_for_each
+inputs_array = [{'topic': 'AI in healthcare'}, {'topic': 'AI in finance'}]
+async_results = await my_crew.akickoff_for_each(inputs=inputs_array)
+for async_result in async_results:
+    print(async_result)
+
+# Example of using thread-based kickoff_async
 inputs = {'topic': 'AI in healthcare'}
 async_result = await my_crew.kickoff_async(inputs=inputs)
 print(async_result)
 
-# Example of using kickoff_for_each_async
+# Example of using thread-based kickoff_for_each_async
 inputs_array = [{'topic': 'AI in healthcare'}, {'topic': 'AI in finance'}]
 async_results = await my_crew.kickoff_for_each_async(inputs=inputs_array)
 for async_result in async_results:
     print(async_result)
 ```
 
-These methods provide flexibility in how you manage and execute tasks within your crew, allowing for both synchronous and asynchronous workflows tailored to your needs.
+These methods provide flexibility in how you manage and execute tasks within your crew, allowing for both synchronous and asynchronous workflows tailored to your needs. For detailed async examples, see the [Kickoff Crew Asynchronously](/en/learn/kickoff-async) guide.
+
+### Streaming Crew Execution
+
+For real-time visibility into crew execution, you can enable streaming to receive output as it's generated:
+
+```python Code theme={null}
+# Enable streaming
+crew = Crew(
+    agents=[researcher],
+    tasks=[task],
+    stream=True
+)
+
+# Iterate over streaming output
+streaming = crew.kickoff(inputs={"topic": "AI"})
+for chunk in streaming:
+    print(chunk.content, end="", flush=True)
+
+# Access final result
+result = streaming.result
+```
+
+Learn more about streaming in the [Streaming Crew Execution](/en/learn/streaming-crew-execution) guide.
 
 ### Replaying from a Specific Task
 
@@ -1963,13 +2064,13 @@ To use the replay feature, follow these steps:
 
 To view the latest kickoff task IDs, use:
 
-```shell  theme={null}
+```shell theme={null}
 crewai log-tasks-outputs
 ```
 
 Then, to replay from a specific task, use:
 
-```shell  theme={null}
+```shell theme={null}
 crewai replay -t <task_id>
 ```
 
@@ -1998,7 +2099,7 @@ When specific actions occur in CrewAI (like a Crew starting execution, an Agent 
 <Note type="info" title="Enterprise Enhancement: Prompt Tracing">
   CrewAI AMP provides a built-in Prompt Tracing feature that leverages the event system to track, store, and visualize all prompts, completions, and associated metadata. This provides powerful debugging capabilities and transparency into your agent operations.
 
-    <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/traces-overview.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=9c02d5b7306bf7adaeadd77a018f8fea" alt="Prompt Tracing Dashboard" data-og-width="2244" width="2244" data-og-height="1422" height="1422" data-path="images/enterprise/traces-overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/traces-overview.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=e66e7c56a8848b69266563ea8cddfc4e 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/traces-overview.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=f590b3901aaa5994042c79426d78bd6c 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/traces-overview.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=0ecb9dcb307e8f130f53393bd3abc12d 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/traces-overview.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=5fc6fcfc51c4e8f4ce16d237228043d6 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/traces-overview.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=253eaed4ec34a35798dad42e9a388859 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/traces-overview.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=ec818e09bc20b3f72b1bcf1970804d13 2500w" />
+  <img alt="Prompt Tracing Dashboard" />
 
   With Prompt Tracing you can:
 
@@ -2021,7 +2122,7 @@ To create a custom event listener, you need to:
 
 Here's a simple example of a custom event listener class:
 
-```python  theme={null}
+```python theme={null}
 from crewai.events import (
     CrewKickoffStartedEvent,
     CrewKickoffCompletedEvent,
@@ -2065,7 +2166,7 @@ The most important thing is to create an instance of your listener in the file w
 
 Create and import your listener at the top of your Crew implementation file:
 
-```python  theme={null}
+```python theme={null}
 # In your crew.py file
 from crewai import Agent, Crew, Task
 from my_listeners import MyCustomListener
@@ -2088,7 +2189,7 @@ class MyCustomCrew:
 
 Create and import your listener at the top of your Flow implementation file:
 
-```python  theme={null}
+```python theme={null}
 # In your main.py or flow.py file
 from crewai.flow import Flow, listen, start
 from my_listeners import MyCustomListener
@@ -2122,7 +2223,7 @@ my_project/
 
 2. In `my_custom_listener.py`, define your listener class and create an instance:
 
-```python  theme={null}
+```python theme={null}
 # my_custom_listener.py
 from crewai.events import BaseEventListener
 # ... import events ...
@@ -2136,7 +2237,7 @@ my_custom_listener = MyCustomListener()
 
 3. In `__init__.py`, import the listener instances to ensure they're loaded:
 
-```python  theme={null}
+```python theme={null}
 # __init__.py
 from .my_custom_listener import my_custom_listener
 from .another_listener import another_listener
@@ -2147,7 +2248,7 @@ __all__ = ['my_custom_listener', 'another_listener']
 
 4. Import your listeners package in your Crew or Flow file:
 
-```python  theme={null}
+```python theme={null}
 # In your crew.py or flow.py file
 import my_project.listeners  # This loads all your listeners
 
@@ -2255,7 +2356,7 @@ Additional fields vary by event type. For example, `CrewKickoffCompletedEvent` i
 
 For temporary event handling (useful for testing or specific operations), you can use the `scoped_handlers` context manager:
 
-```python  theme={null}
+```python theme={null}
 from crewai.events import crewai_event_bus, CrewKickoffStartedEvent
 
 with crewai_event_bus.scoped_handlers():
@@ -2287,6 +2388,278 @@ Event listeners can be used for a variety of purposes:
 5. **Testing**: Test your event listeners in isolation to ensure they behave as expected
 
 By leveraging CrewAI's event system, you can extend its functionality and integrate it seamlessly with your existing infrastructure.
+
+
+# Files
+Source: https://docs.crewai.com/en/concepts/files
+
+Pass images, PDFs, audio, video, and text files to your agents for multimodal processing.
+
+## Overview
+
+CrewAI supports native multimodal file inputs, allowing you to pass images, PDFs, audio, video, and text files directly to your agents. Files are automatically formatted for each LLM provider's API requirements.
+
+<Note type="info" title="Optional Dependency">
+  File support requires the optional `crewai-files` package. Install it with:
+
+  ```bash theme={null}
+  uv add 'crewai[file-processing]'
+  ```
+</Note>
+
+<Note type="warning" title="Early Access">
+  The file processing API is currently in early access.
+</Note>
+
+## File Types
+
+CrewAI supports five specific file types plus a generic `File` class that auto-detects the type:
+
+| Type        | Class       | Use Cases                             |
+| :---------- | :---------- | :------------------------------------ |
+| **Image**   | `ImageFile` | Photos, screenshots, diagrams, charts |
+| **PDF**     | `PDFFile`   | Documents, reports, papers            |
+| **Audio**   | `AudioFile` | Voice recordings, podcasts, meetings  |
+| **Video**   | `VideoFile` | Screen recordings, presentations      |
+| **Text**    | `TextFile`  | Code files, logs, data files          |
+| **Generic** | `File`      | Auto-detect type from content         |
+
+```python theme={null}
+from crewai_files import File, ImageFile, PDFFile, AudioFile, VideoFile, TextFile
+
+image = ImageFile(source="screenshot.png")
+pdf = PDFFile(source="report.pdf")
+audio = AudioFile(source="meeting.mp3")
+video = VideoFile(source="demo.mp4")
+text = TextFile(source="data.csv")
+
+file = File(source="document.pdf")
+```
+
+## File Sources
+
+The `source` parameter accepts multiple input types and auto-detects the appropriate handler:
+
+### From Path
+
+```python theme={null}
+from crewai_files import ImageFile
+
+image = ImageFile(source="./images/chart.png")
+```
+
+### From URL
+
+```python theme={null}
+from crewai_files import ImageFile
+
+image = ImageFile(source="https://example.com/image.png")
+```
+
+### From Bytes
+
+```python theme={null}
+from crewai_files import ImageFile, FileBytes
+
+image_bytes = download_image_from_api()
+image = ImageFile(source=FileBytes(data=image_bytes, filename="downloaded.png"))
+image = ImageFile(source=image_bytes)
+```
+
+## Using Files
+
+Files can be passed at multiple levels, with more specific levels taking precedence.
+
+### With Crews
+
+Pass files when kicking off a crew:
+
+```python theme={null}
+from crewai import Crew
+from crewai_files import ImageFile
+
+crew = Crew(agents=[analyst], tasks=[analysis_task])
+
+result = crew.kickoff(
+    inputs={"topic": "Q4 Sales"},
+    input_files={
+        "chart": ImageFile(source="sales_chart.png"),
+        "report": PDFFile(source="quarterly_report.pdf"),
+    }
+)
+```
+
+### With Tasks
+
+Attach files to specific tasks:
+
+```python theme={null}
+from crewai import Task
+from crewai_files import ImageFile
+
+task = Task(
+    description="Analyze the sales chart and identify trends in {chart}",
+    expected_output="A summary of key trends",
+    input_files={
+        "chart": ImageFile(source="sales_chart.png"),
+    }
+)
+```
+
+### With Flows
+
+Pass files to flows, which automatically inherit to crews:
+
+```python theme={null}
+from crewai.flow.flow import Flow, start
+from crewai_files import ImageFile
+
+class AnalysisFlow(Flow):
+    @start()
+    def analyze(self):
+        return self.analysis_crew.kickoff()
+
+flow = AnalysisFlow()
+result = flow.kickoff(
+    input_files={"image": ImageFile(source="data.png")}
+)
+```
+
+### With Standalone Agents
+
+Pass files directly to agent kickoff:
+
+```python theme={null}
+from crewai import Agent
+from crewai_files import ImageFile
+
+agent = Agent(
+    role="Image Analyst",
+    goal="Analyze images",
+    backstory="Expert at visual analysis",
+    llm="gpt-4o",
+)
+
+result = agent.kickoff(
+    messages="What's in this image?",
+    input_files={"photo": ImageFile(source="photo.jpg")},
+)
+```
+
+## File Precedence
+
+When files are passed at multiple levels, more specific levels override broader ones:
+
+```
+Flow input_files < Crew input_files < Task input_files
+```
+
+For example, if both Flow and Task define a file named `"chart"`, the Task's version is used.
+
+## Provider Support
+
+Different providers support different file types. CrewAI automatically formats files for each provider's API.
+
+| Provider                                 | Image | PDF | Audio | Video | Text |
+| :--------------------------------------- | :---: | :-: | :---: | :---: | :--: |
+| **OpenAI** (completions API)             |   ✓   |     |       |       |      |
+| **OpenAI** (responses API)               |   ✓   |  ✓  |   ✓   |       |      |
+| **Anthropic** (claude-3.x)               |   ✓   |  ✓  |       |       |      |
+| **Google Gemini** (gemini-1.5, 2.0, 2.5) |   ✓   |  ✓  |   ✓   |   ✓   |   ✓  |
+| **AWS Bedrock** (claude-3)               |   ✓   |  ✓  |       |       |      |
+| **Azure OpenAI** (gpt-4o)                |   ✓   |     |   ✓   |       |      |
+
+<Note type="info" title="Gemini for Maximum File Support">
+  Google Gemini models support all file types including video (up to 1 hour, 2GB). Use Gemini when you need to process video content.
+</Note>
+
+<Note type="warning" title="Unsupported File Types">
+  If you pass a file type that the provider doesn't support (e.g., video to OpenAI), you'll receive an `UnsupportedFileTypeError`. Choose your provider based on the file types you need to process.
+</Note>
+
+## How Files Are Sent
+
+CrewAI automatically chooses the optimal method to send files to each provider:
+
+| Method              | Description                                | Used When                         |
+| :------------------ | :----------------------------------------- | :-------------------------------- |
+| **Inline Base64**   | File embedded directly in the request      | Small files (\< 5MB typically)    |
+| **File Upload API** | File uploaded separately, referenced by ID | Large files that exceed threshold |
+| **URL Reference**   | Direct URL passed to the model             | File source is already a URL      |
+
+### Provider Transmission Methods
+
+| Provider          | Inline Base64 | File Upload API | URL References |
+| :---------------- | :-----------: | :-------------: | :------------: |
+| **OpenAI**        |       ✓       |    ✓ (> 5 MB)   |        ✓       |
+| **Anthropic**     |       ✓       |    ✓ (> 5 MB)   |        ✓       |
+| **Google Gemini** |       ✓       |   ✓ (> 20 MB)   |        ✓       |
+| **AWS Bedrock**   |       ✓       |                 |   ✓ (S3 URIs)  |
+| **Azure OpenAI**  |       ✓       |                 |        ✓       |
+
+<Note type="info" title="Automatic Optimization">
+  You don't need to manage this yourself. CrewAI automatically uses the most efficient method based on file size and provider capabilities. Providers without file upload APIs use inline base64 for all files.
+</Note>
+
+## File Handling Modes
+
+Control how files are processed when they exceed provider limits:
+
+```python theme={null}
+from crewai_files import ImageFile, PDFFile
+
+image = ImageFile(source="large.png", mode="strict")
+image = ImageFile(source="large.png", mode="auto")
+image = ImageFile(source="large.png", mode="warn")
+pdf = PDFFile(source="large.pdf", mode="chunk")
+```
+
+## Provider Constraints
+
+Each provider has specific limits for file sizes and dimensions:
+
+### OpenAI
+
+* **Images**: Max 20 MB, up to 10 images per request
+* **PDFs**: Max 32 MB, up to 100 pages
+* **Audio**: Max 25 MB, up to 25 minutes
+
+### Anthropic
+
+* **Images**: Max 5 MB, max 8000x8000 pixels, up to 100 images
+* **PDFs**: Max 32 MB, up to 100 pages
+
+### Google Gemini
+
+* **Images**: Max 100 MB
+* **PDFs**: Max 50 MB
+* **Audio**: Max 100 MB, up to 9.5 hours
+* **Video**: Max 2 GB, up to 1 hour
+
+### AWS Bedrock
+
+* **Images**: Max 4.5 MB, max 8000x8000 pixels
+* **PDFs**: Max 3.75 MB, up to 100 pages
+
+## Referencing Files in Prompts
+
+Use the file's key name in your task descriptions to reference files:
+
+```python theme={null}
+task = Task(
+    description="""
+    Analyze the provided materials:
+    1. Review the chart in {sales_chart}
+    2. Cross-reference with data in {quarterly_report}
+    3. Summarize key findings
+    """,
+    expected_output="Analysis summary with key insights",
+    input_files={
+        "sales_chart": ImageFile(source="chart.png"),
+        "quarterly_report": PDFFile(source="report.pdf"),
+    }
+)
+```
 
 
 # Flows
@@ -2371,7 +2744,8 @@ result = flow.kickoff()
 print(f"Generated fun fact: {result}")
 ```
 
-<img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-1.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=18b381277b7b017abf7cb19bc5e03923" alt="Flow Visual image" data-og-width="1913" width="1913" data-og-height="989" height="989" data-path="images/crewai-flow-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-1.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=78864d97e0fc7f225a5313c9fb650900 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-1.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=3d87938c680e7aa201798075fe19dcf8 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-1.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=36448790f7ca45e69ffdd3ceb2b2e713 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-1.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=4d10a3f4f9ea1c9b0428fbb66f0fca17 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-1.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=928a75232235b73e9308d4d9cfeaf0e8 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-1.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=fa7022034285d0022ff07f97f6b675f7 2500w" />
+<img alt="Flow Visual image" />
+
 In the above example, we have created a simple Flow that generates a random city using OpenAI and then generates a fun fact about that city. The Flow consists of two tasks: `generate_city` and `generate_fun_fact`. The `generate_city` task is the starting point of the Flow, and the `generate_fun_fact` task listens for the output of the `generate_city` task.
 
 Each Flow instance automatically receives a unique identifier (UUID) in its state, which helps track and manage flow executions. The state can also store additional data (like the generated city and fun fact) that persists throughout the flow's execution.
@@ -2458,7 +2832,7 @@ Here's how you can access the final output:
   ```
 </CodeGroup>
 
-<img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-2.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=3d987994d2c99a06a3cf149c71831fd5" alt="Flow Visual image" data-og-width="2015" width="2015" data-og-height="1040" height="1040" data-path="images/crewai-flow-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-2.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=e6b4e913cd2d4bf4dc67bdcb2e59cceb 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-2.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=245303e4f6e5bc30819aa9357561e7b3 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-2.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=32155410f336267e29c64407e22ae57e 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-2.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=5dc414bc338e0475ae40aa3eedea0bd8 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-2.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=cfdf47937eb1f0a1f7e9ffdaab866e5a 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-2.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=ef7d71c39b8ea4ad865c514420df28d1 2500w" />
+<img alt="Flow Visual image" />
 
 In this example, the `second_method` is the last method to complete, so its output will be the final output of the Flow.
 The `kickoff()` method will return the final output, which is then printed to the console. The `plot()` method will generate the HTML file, which will help you understand the flow.
@@ -2506,7 +2880,7 @@ Here's an example of how to update and access the state:
   ```
 </CodeGroup>
 
-<img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-2.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=3d987994d2c99a06a3cf149c71831fd5" alt="Flow Visual image" data-og-width="2015" width="2015" data-og-height="1040" height="1040" data-path="images/crewai-flow-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-2.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=e6b4e913cd2d4bf4dc67bdcb2e59cceb 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-2.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=245303e4f6e5bc30819aa9357561e7b3 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-2.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=32155410f336267e29c64407e22ae57e 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-2.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=5dc414bc338e0475ae40aa3eedea0bd8 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-2.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=cfdf47937eb1f0a1f7e9ffdaab866e5a 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-2.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=ef7d71c39b8ea4ad865c514420df28d1 2500w" />
+<img alt="Flow Visual image" />
 
 In this example, the state is updated by both `first_method` and `second_method`.
 After the Flow has run, you can access the final state to see the updates made by these methods.
@@ -2555,7 +2929,7 @@ flow.plot("my_flow_plot")
 flow.kickoff()
 ```
 
-<img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-3.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=1d64a80a490430f29b7fa1085a3062c4" alt="Flow Visual image" data-og-width="1974" width="1974" data-og-height="1058" height="1058" data-path="images/crewai-flow-3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-3.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=192f7a8605d3a5c12b6b61aa4a23917f 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-3.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=f41cbc9a268ba4bbb466fa2e2a1c2c1e 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-3.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=4d2315a6e69d8125e7e144f04180529f 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-3.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=02eb5ffde3ef5936b2cf172160c72f72 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-3.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=3fc5bb51802a4a5d641834e19d24e565 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-3.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=85414106ada4d15dcb7bccc086194b84 2500w" />
+<img alt="Flow Visual image" />
 
 **Note:** The `id` field is automatically generated and preserved throughout the flow's execution. You don't need to manage or set it manually, and it will be maintained even when updating the state with new data.
 
@@ -2607,7 +2981,7 @@ flow = StructuredExampleFlow()
 flow.kickoff()
 ```
 
-<img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-3.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=1d64a80a490430f29b7fa1085a3062c4" alt="Flow Visual image" data-og-width="1974" width="1974" data-og-height="1058" height="1058" data-path="images/crewai-flow-3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-3.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=192f7a8605d3a5c12b6b61aa4a23917f 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-3.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=f41cbc9a268ba4bbb466fa2e2a1c2c1e 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-3.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=4d2315a6e69d8125e7e144f04180529f 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-3.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=02eb5ffde3ef5936b2cf172160c72f72 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-3.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=3fc5bb51802a4a5d641834e19d24e565 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-3.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=85414106ada4d15dcb7bccc086194b84 2500w" />
+<img alt="Flow Visual image" />
 
 **Key Points:**
 
@@ -2638,7 +3012,7 @@ The @persist decorator enables automatic state persistence in CrewAI Flows, allo
 
 When applied at the class level, the @persist decorator automatically persists all flow method states:
 
-```python  theme={null}
+```python theme={null}
 @persist  # Using SQLiteFlowPersistence by default
 class MyFlow(Flow[MyState]):
     @start()
@@ -2658,7 +3032,7 @@ class MyFlow(Flow[MyState]):
 
 For more granular control, you can apply @persist to specific methods:
 
-```python  theme={null}
+```python theme={null}
 class AnotherFlow(Flow[dict]):
     @persist  # Persists only this method's state
     @start()
@@ -2752,7 +3126,7 @@ The `or_` function in Flows allows you to listen to multiple methods and trigger
   ```
 </CodeGroup>
 
-<img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-4.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=88ce9c9f10781b835f170847bc541a13" alt="Flow Visual image" data-og-width="2026" width="2026" data-og-height="1016" height="1016" data-path="images/crewai-flow-4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-4.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=796ce622251faa461b481eb5d7cdcf70 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-4.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=260fcd89a5b3a6a42a25dd4f41e7c5c6 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-4.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=b9268adb3abef93c7cce693a424a78ba 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-4.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=75f3ad392bfd6b72bd29d701675899d6 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-4.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=dd771250338648e1f22c1463cb8e2ff0 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-4.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=b8e6fd63ec2ba23d9fa4f1dc2fd87143 2500w" />
+<img alt="Flow Visual image" />
 
 When you run this Flow, the `logger` method will be triggered by the output of either the `start_method` or the `second_method`.
 The `or_` function is used to listen to multiple methods and trigger the listener method when any of the specified methods emit an output.
@@ -2791,7 +3165,7 @@ The `and_` function in Flows allows you to listen to multiple methods and trigge
   ```
 </CodeGroup>
 
-<img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-5.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=104318219be9d3502ac57ebb513aded7" alt="Flow Visual image" data-og-width="2062" width="2062" data-og-height="987" height="987" data-path="images/crewai-flow-5.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-5.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=6e9cb9d2b1ec2cb2aee2df008d3696c9 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-5.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=07cbcc6de6e8c8ae5da6c02a6fe4b457 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-5.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=afc6aad8f7276be4918527e553b5aa81 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-5.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=e026919d9dff7ce0b0e592f4f2c0c4fd 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-5.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=03ea50c8681de2b8ea8cada6c0150e2c 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-5.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=61f9c7b0aceb69df6346ab2af321b779 2500w" />
+<img alt="Flow Visual image" />
 
 When you run this Flow, the `logger` method will be triggered only when both the `start_method` and the `second_method` emit an output.
 The `and_` function is used to listen to multiple methods and trigger the listener method only when all the specified methods emit an output.
@@ -2846,7 +3220,7 @@ You can specify different routes based on the output of the method, allowing you
   ```
 </CodeGroup>
 
-<img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-6.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=f8cad73f073b4e936ef68d88545f1777" alt="Flow Visual image" data-og-width="1951" width="1951" data-og-height="1101" height="1101" data-path="images/crewai-flow-6.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-6.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=9a8462f42a9d9e14748d35312553ec6c 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-6.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=78e66eabae15099e2ef1d0c314d3cb04 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-6.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=a144377de810ed24f1d1aed1ba54d2d7 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-6.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=2b17ebb2dd4eee4d086a8d0126a36c0d 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-6.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=4536b83aa7ff7e897f1193709ace944f 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-6.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=3b89cff817f7b4d05338f4a3a028f974 2500w" />
+<img alt="Flow Visual image" />
 
 In the above example, the `start_method` generates a random boolean value and sets it in the state.
 The `second_method` uses the `@router()` decorator to define conditional routing logic based on the value of the boolean.
@@ -2855,11 +3229,64 @@ The `third_method` and `fourth_method` listen to the output of the `second_metho
 
 When you run this Flow, the output will change based on the random boolean value generated by the `start_method`.
 
+### Human in the Loop (human feedback)
+
+<Note>
+  The `@human_feedback` decorator requires **CrewAI version 1.8.0 or higher**.
+</Note>
+
+The `@human_feedback` decorator enables human-in-the-loop workflows by pausing flow execution to collect feedback from a human. This is useful for approval gates, quality review, and decision points that require human judgment.
+
+```python Code theme={null}
+from crewai.flow.flow import Flow, start, listen
+from crewai.flow.human_feedback import human_feedback, HumanFeedbackResult
+
+class ReviewFlow(Flow):
+    @start()
+    @human_feedback(
+        message="Do you approve this content?",
+        emit=["approved", "rejected", "needs_revision"],
+        llm="gpt-4o-mini",
+        default_outcome="needs_revision",
+    )
+    def generate_content(self):
+        return "Content to be reviewed..."
+
+    @listen("approved")
+    def on_approval(self, result: HumanFeedbackResult):
+        print(f"Approved! Feedback: {result.feedback}")
+
+    @listen("rejected")
+    def on_rejection(self, result: HumanFeedbackResult):
+        print(f"Rejected. Reason: {result.feedback}")
+```
+
+When `emit` is specified, the human's free-form feedback is interpreted by an LLM and collapsed into one of the specified outcomes, which then triggers the corresponding `@listen` decorator.
+
+You can also use `@human_feedback` without routing to simply collect feedback:
+
+```python Code theme={null}
+@start()
+@human_feedback(message="Any comments on this output?")
+def my_method(self):
+    return "Output for review"
+
+@listen(my_method)
+def next_step(self, result: HumanFeedbackResult):
+    # Access feedback via result.feedback
+    # Access original output via result.output
+    pass
+```
+
+Access all feedback collected during a flow via `self.last_human_feedback` (most recent) or `self.human_feedback_history` (all feedback as a list).
+
+For a complete guide on human feedback in flows, including **async/non-blocking feedback** with custom providers (Slack, webhooks, etc.), see [Human Feedback in Flows](/en/learn/human-feedback-in-flows).
+
 ## Adding Agents to Flows
 
 Agents can be seamlessly integrated into your flows, providing a lightweight alternative to full Crews when you need simpler, focused task execution. Here's an example of how to use an Agent within a flow to perform market research:
 
-```python  theme={null}
+```python theme={null}
 import asyncio
 from typing import Any, Dict, List
 
@@ -2961,7 +3388,7 @@ if __name__ == "__main__":
     asyncio.run(run_flow())
 ```
 
-<img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-7.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=6c60457e1a2b9bc0ef957c373a88359b" alt="Flow Visual image" data-og-width="1933" width="1933" data-og-height="959" height="959" data-path="images/crewai-flow-7.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-7.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=4e6a743b2b19cd86dadbbd015d0a0393 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-7.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=740f254bb03d60cd011911dab702ca77 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-7.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=b93c5bde69019cdc34c143bcc0885743 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-7.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=4eabe8d3536d6588a14157b60bc7a1e0 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-7.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=e76b5df7821722a59d3267f3a0eff3ed 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-7.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=3a9775e3f5798ccb73e5feb7e53319fd 2500w" />
+<img alt="Flow Visual image" />
 
 This example demonstrates several key features of using Agents in flows:
 
@@ -2977,7 +3404,7 @@ Creating a flow with multiple crews in CrewAI is straightforward.
 
 You can generate a new CrewAI project that includes all the scaffolding needed to create a flow with multiple crews by running the following command:
 
-```bash  theme={null}
+```bash theme={null}
 crewai create flow name_of_flow
 ```
 
@@ -3068,31 +3495,31 @@ if __name__ == "__main__":
 
 In this example, the `PoemFlow` class defines a flow that generates a sentence count, uses the `PoemCrew` to generate a poem, and then saves the poem to a file. The flow is kicked off by calling the `kickoff()` method. The PoemFlowPlot will be generated by `plot()` method.
 
-<img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-8.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=5321ca5d1f3c662dc7cff6950ba46000" alt="Flow Visual image" data-og-width="1901" width="1901" data-og-height="1032" height="1032" data-path="images/crewai-flow-8.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-8.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=5179beeb8c5b02eafdc1fce722004529 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-8.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=994b487041be812c1df343b23b5da9f2 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-8.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=244859a74e398490fa313beb91a3b9a7 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-8.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=7ab59d8b176f60f2ba882eca41100ce1 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-8.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=c817c66b2d016c0b1bc203c32413d08e 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crewai-flow-8.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=f5936902cb8e9e405a65ab3e1adbbd43 2500w" />
+<img alt="Flow Visual image" />
 
 ### Running the Flow
 
 (Optional) Before running the flow, you can install the dependencies by running:
 
-```bash  theme={null}
+```bash theme={null}
 crewai install
 ```
 
 Once all of the dependencies are installed, you need to activate the virtual environment by running:
 
-```bash  theme={null}
+```bash theme={null}
 source .venv/bin/activate
 ```
 
 After activating the virtual environment, you can run the flow by executing one of the following commands:
 
-```bash  theme={null}
+```bash theme={null}
 crewai flow kickoff
 ```
 
 or
 
-```bash  theme={null}
+```bash theme={null}
 uv run kickoff
 ```
 
@@ -3125,7 +3552,7 @@ This will generate a file named `my_flow_plot.html` in your current directory. Y
 
 If you are working within a structured CrewAI project, you can generate a plot using the command line. This is particularly useful for larger projects where you want to visualize the entire flow setup.
 
-```bash  theme={null}
+```bash theme={null}
 crewai flow plot
 ```
 
@@ -3157,7 +3584,7 @@ By exploring these examples, you can gain insights into how to leverage CrewAI F
 
 Also, check out our YouTube video on how to use flows in CrewAI below!
 
-<iframe className="w-full aspect-video rounded-xl" src="https://www.youtube.com/embed/MTb5my6VOT8" title="CrewAI Flows overview" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen />
+<iframe title="CrewAI Flows overview" />
 
 ## Running Flows
 
@@ -3167,16 +3594,41 @@ There are two ways to run a flow:
 
 You can run a flow programmatically by creating an instance of your flow class and calling the `kickoff()` method:
 
-```python  theme={null}
+```python theme={null}
 flow = ExampleFlow()
 result = flow.kickoff()
 ```
+
+### Streaming Flow Execution
+
+For real-time visibility into flow execution, you can enable streaming to receive output as it's generated:
+
+```python theme={null}
+class StreamingFlow(Flow):
+    stream = True  # Enable streaming
+
+    @start()
+    def research(self):
+        # Your flow implementation
+        pass
+
+# Iterate over streaming output
+flow = StreamingFlow()
+streaming = flow.kickoff()
+for chunk in streaming:
+    print(chunk.content, end="", flush=True)
+
+# Access final result
+result = streaming.result
+```
+
+Learn more about streaming in the [Streaming Flow Execution](/en/learn/streaming-flow-execution) guide.
 
 ### Using the CLI
 
 Starting from version 0.103.0, you can run flows using the `crewai run` command:
 
-```shell  theme={null}
+```shell theme={null}
 crewai run
 ```
 
@@ -3184,7 +3636,7 @@ This command automatically detects if your project is a flow (based on the `type
 
 For backward compatibility, you can also use:
 
-```shell  theme={null}
+```shell theme={null}
 crewai flow kickoff
 ```
 
@@ -3347,7 +3799,7 @@ result = crew.kickoff(
 
 CrewAI supports various types of knowledge sources out of the box:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Text Sources" icon="text">
     * Raw strings
     * Text files (.txt)
@@ -3363,7 +3815,7 @@ CrewAI supports various types of knowledge sources out of the box:
 
 ### Text File Knowledge Source
 
-```python  theme={null}
+```python theme={null}
 from crewai.knowledge.source.text_file_knowledge_source import TextFileKnowledgeSource
 
 text_source = TextFileKnowledgeSource(
@@ -3373,7 +3825,7 @@ text_source = TextFileKnowledgeSource(
 
 ### PDF Knowledge Source
 
-```python  theme={null}
+```python theme={null}
 from crewai.knowledge.source.pdf_knowledge_source import PDFKnowledgeSource
 
 pdf_source = PDFKnowledgeSource(
@@ -3383,7 +3835,7 @@ pdf_source = PDFKnowledgeSource(
 
 ### CSV Knowledge Source
 
-```python  theme={null}
+```python theme={null}
 from crewai.knowledge.source.csv_knowledge_source import CSVKnowledgeSource
 
 csv_source = CSVKnowledgeSource(
@@ -3393,7 +3845,7 @@ csv_source = CSVKnowledgeSource(
 
 ### Excel Knowledge Source
 
-```python  theme={null}
+```python theme={null}
 from crewai.knowledge.source.excel_knowledge_source import ExcelKnowledgeSource
 
 excel_source = ExcelKnowledgeSource(
@@ -3403,7 +3855,7 @@ excel_source = ExcelKnowledgeSource(
 
 ### JSON Knowledge Source
 
-```python  theme={null}
+```python theme={null}
 from crewai.knowledge.source.json_knowledge_source import JSONKnowledgeSource
 
 json_source = JSONKnowledgeSource(
@@ -3427,7 +3879,7 @@ Here's exactly what happens when you use knowledge:
 
 #### Agent-Level Knowledge (Independent)
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 from crewai.knowledge.source.string_knowledge_source import StringKnowledgeSource
 
@@ -3462,7 +3914,7 @@ result = crew.kickoff()  # Agent knowledge works independently
 
 When you call `crew.kickoff()`, here's the exact sequence:
 
-```python  theme={null}
+```python theme={null}
 # During kickoff
 for agent in self.agents:
     agent.crew = self  # Agent gets reference to crew
@@ -3474,7 +3926,7 @@ for agent in self.agents:
 
 Each knowledge level uses independent storage collections:
 
-```python  theme={null}
+```python theme={null}
 # Agent knowledge storage
 agent_collection_name = agent.role  # e.g., "Technical Specialist"
 
@@ -3492,7 +3944,7 @@ crew_collection_name = "crew"
 
 #### Example 1: Agent-Only Knowledge
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 from crewai.knowledge.source.string_knowledge_source import StringKnowledgeSource
 
@@ -3525,7 +3977,7 @@ result = crew.kickoff()  # Works perfectly
 
 #### Example 2: Both Agent and Crew Knowledge
 
-```python  theme={null}
+```python theme={null}
 # Crew-wide knowledge (shared by all agents)
 crew_knowledge = StringKnowledgeSource(
     content="Company policies and general information for all agents"
@@ -3563,7 +4015,7 @@ crew = Crew(
 
 #### Example 3: Multiple Agents with Different Knowledge
 
-```python  theme={null}
+```python theme={null}
 # Different knowledge for different agents
 sales_knowledge = StringKnowledgeSource(content="Sales procedures and pricing")
 tech_knowledge = StringKnowledgeSource(content="Technical documentation")
@@ -3591,8 +4043,8 @@ crew = Crew(
     agents=[sales_agent, tech_agent, support_agent],
     tasks=[...],
     embedder={  # Fallback embedder for agents without their own
-        "provider": "google",
-        "config": {"model": "text-embedding-004"}
+        "provider": "google-generativeai",
+        "config": {"model_name": "gemini-embedding-001"}
     }
 )
 
@@ -3631,15 +4083,15 @@ agent = Agent(
 
 ## Supported Knowledge Parameters
 
-<ParamField body="sources" type="List[BaseKnowledgeSource]" required="Yes">
+<ParamField type="List[BaseKnowledgeSource]">
   List of knowledge sources that provide content to be stored and queried. Can include PDF, CSV, Excel, JSON, text files, or string content.
 </ParamField>
 
-<ParamField body="collection_name" type="str">
+<ParamField type="str">
   Name of the collection where the knowledge will be stored. Used to identify different sets of knowledge. Defaults to "knowledge" if not provided.
 </ParamField>
 
-<ParamField body="storage" type="Optional[KnowledgeStorage]">
+<ParamField type="Optional[KnowledgeStorage]">
   Custom storage configuration for managing how the knowledge is stored and retrieved. If not provided, a default storage will be created.
 </ParamField>
 
@@ -3689,7 +4141,7 @@ C:\Users\{username}\AppData\Local\CrewAI\{project_name}\
 
 To see exactly where CrewAI is storing your knowledge files:
 
-```python  theme={null}
+```python theme={null}
 from crewai.utilities.paths import db_storage_path
 import os
 
@@ -3720,7 +4172,7 @@ else:
 
 #### Option 1: Environment Variable (Recommended)
 
-```python  theme={null}
+```python theme={null}
 import os
 from crewai import Crew
 
@@ -3737,7 +4189,7 @@ crew = Crew(
 
 #### Option 2: Custom Knowledge Storage
 
-```python  theme={null}
+```python theme={null}
 from crewai.knowledge.storage.knowledge_storage import KnowledgeStorage
 from crewai.knowledge.source.string_knowledge_source import StringKnowledgeSource
 
@@ -3759,7 +4211,7 @@ knowledge_source.storage = custom_storage
 
 #### Option 3: Project-Specific Knowledge Storage
 
-```python  theme={null}
+```python theme={null}
 import os
 from pathlib import Path
 
@@ -3780,7 +4232,7 @@ os.environ["CREWAI_STORAGE_DIR"] = str(knowledge_dir)
 
 #### Understanding Default Behavior
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Crew, LLM
 from crewai.knowledge.source.string_knowledge_source import StringKnowledgeSource
 
@@ -3806,7 +4258,7 @@ crew = Crew(
 
 #### Customizing Knowledge Embedding Providers
 
-```python  theme={null}
+```python theme={null}
 # Option 1: Use Voyage AI (recommended by Anthropic for Claude users)
 crew = Crew(
     agents=[agent],
@@ -3842,9 +4294,9 @@ agent = Agent(
     backstory="Expert researcher",
     knowledge_sources=[knowledge_source],
     embedder={
-        "provider": "google",
+        "provider": "google-generativeai",
         "config": {
-            "model": "models/text-embedding-004",
+            "model_name": "gemini-embedding-001",
             "api_key": "your-google-key"
         }
     }
@@ -3858,7 +4310,7 @@ When using Azure OpenAI embeddings:
 1. Make sure you deploy the embedding model in Azure platform first
 2. Then you need to use the following configuration:
 
-```python  theme={null}
+```python theme={null}
 agent = Agent(
     role="Researcher",
     goal="Research topics",
@@ -3890,7 +4342,7 @@ CrewAI implements an intelligent query rewriting mechanism to optimize knowledge
 
 #### Benefits of Query Rewriting
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Improved Retrieval Accuracy" icon="bullseye-arrow">
     By focusing on key concepts and removing irrelevant content, query rewriting helps retrieve more relevant information.
   </Card>
@@ -3902,7 +4354,7 @@ CrewAI implements an intelligent query rewriting mechanism to optimize knowledge
 
 #### Example
 
-```python  theme={null}
+```python theme={null}
 # Original task prompt
 task_prompt = "Answer the following questions about the user's favorite movies: What movie did John watch last week? Format your answer in JSON."
 
@@ -3931,7 +4383,7 @@ CrewAI emits events during the knowledge retrieval process that you can listen f
 
 #### Example: Monitoring Knowledge Retrieval
 
-```python  theme={null}
+```python theme={null}
 from crewai.events import (
     KnowledgeRetrievalStartedEvent,
     KnowledgeRetrievalCompletedEvent,
@@ -4084,7 +4536,7 @@ CrewAI allows you to create custom knowledge sources for any type of data by ext
 
 #### Check Agent Knowledge Initialization
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Crew, Task
 from crewai.knowledge.source.string_knowledge_source import StringKnowledgeSource
 
@@ -4112,7 +4564,7 @@ print(f"Number of sources: {len(agent.knowledge.sources)}")
 
 #### Verify Knowledge Storage Locations
 
-```python  theme={null}
+```python theme={null}
 import os
 from crewai.utilities.paths import db_storage_path
 
@@ -4133,7 +4585,7 @@ if os.path.exists(knowledge_path):
 
 #### Test Knowledge Retrieval
 
-```python  theme={null}
+```python theme={null}
 # Test agent knowledge retrieval
 if hasattr(agent, 'knowledge') and agent.knowledge:
     test_query = ["test query"]
@@ -4148,7 +4600,7 @@ if hasattr(agent, 'knowledge') and agent.knowledge:
 
 #### Inspect Knowledge Collections
 
-```python  theme={null}
+```python theme={null}
 import chromadb
 from crewai.utilities.paths import db_storage_path
 import os
@@ -4174,7 +4626,7 @@ else:
 
 #### Check Knowledge Processing
 
-```python  theme={null}
+```python theme={null}
 from crewai.knowledge.source.string_knowledge_source import StringKnowledgeSource
 
 # Create a test knowledge source
@@ -4200,7 +4652,7 @@ for i, chunk in enumerate(test_source.chunks[:3]):  # Show first 3 chunks
 
 **"File not found" errors:**
 
-```python  theme={null}
+```python theme={null}
 # Ensure files are in the correct location
 from crewai.utilities.constants import KNOWLEDGE_DIRECTORY
 import os
@@ -4216,7 +4668,7 @@ if not os.path.exists(file_path):
 
 **"Embedding dimension mismatch" errors:**
 
-```python  theme={null}
+```python theme={null}
 # This happens when switching embedding providers
 # Reset knowledge storage to clear old embeddings
 crew.reset_memories(command_type='knowledge')
@@ -4232,14 +4684,14 @@ crew = Crew(
 
 **"ChromaDB permission denied" errors:**
 
-```bash  theme={null}
+```bash theme={null}
 # Fix storage permissions
 chmod -R 755 ~/.local/share/CrewAI/
 ```
 
 **Knowledge not persisting between runs:**
 
-```python  theme={null}
+```python theme={null}
 # Verify storage location consistency
 import os
 from crewai.utilities.paths import db_storage_path
@@ -4251,7 +4703,7 @@ print("Knowledge path:", os.path.join(db_storage_path(), "knowledge"))
 
 ### Knowledge Reset Commands
 
-```python  theme={null}
+```python theme={null}
 # Reset only agent-specific knowledge
 crew.reset_memories(command_type='agent_knowledge')
 
@@ -4330,7 +4782,7 @@ CrewAI integrates with multiple LLM providers through providers native sdks, giv
 
 Large Language Models (LLMs) are the core intelligence behind CrewAI agents. They enable agents to understand context, make decisions, and generate human-like responses. Here's what you need to know:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="LLM Basics" icon="brain">
     Large Language Models are AI systems trained on vast amounts of text data. They power the intelligence of your CrewAI agents, enabling them to understand and generate human-like text.
   </Card>
@@ -4535,9 +4987,41 @@ In this section, you'll find detailed examples that help you select, configure, 
     | o3-mini      | 200,000 tokens | Lightweight reasoning model                 |
     | o4-mini      | 200,000 tokens | Next-gen efficient reasoning                |
 
+    **Responses API:**
+
+    OpenAI offers two APIs: Chat Completions (default) and the newer Responses API. The Responses API was designed from the ground up with native multimodal support—text, images, audio, and function calls are all first-class citizens. It provides better performance with reasoning models and supports additional features like auto-chaining and built-in tools.
+
+    ```python Code theme={null}
+    from crewai import LLM
+
+    # Use the Responses API instead of Chat Completions
+    llm = LLM(
+        model="openai/gpt-4o",
+        api="responses",  # Enable Responses API
+        store=True,  # Store responses for multi-turn (optional)
+        auto_chain=True,  # Auto-chain for reasoning models (optional)
+    )
+    ```
+
+    **Responses API Parameters:**
+
+    * `api`: Set to `"responses"` to use the Responses API (default: `"completions"`)
+    * `instructions`: System-level instructions (Responses API only)
+    * `store`: Whether to store responses for multi-turn conversations
+    * `previous_response_id`: ID of previous response for multi-turn
+    * `include`: Additional data to include in response (e.g., `["reasoning.encrypted_content"]`)
+    * `builtin_tools`: List of OpenAI built-in tools: `"web_search"`, `"file_search"`, `"code_interpreter"`, `"computer_use"`
+    * `parse_tool_outputs`: Return structured `ResponsesAPIResult` with parsed built-in tool outputs
+    * `auto_chain`: Automatically track and use response IDs for multi-turn conversations
+    * `auto_chain_reasoning`: Track encrypted reasoning items for ZDR (Zero Data Retention) compliance
+
+    <Tip>
+      Use the Responses API for new projects, especially when working with reasoning models (o1, o3, o4) or when you need native multimodal support for [files](/en/concepts/files).
+    </Tip>
+
     **Note:** To use OpenAI, install the required dependencies:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     uv add "crewai[openai]"
     ```
   </Accordion>
@@ -4615,6 +5099,51 @@ In this section, you'll find detailed examples that help you select, configure, 
     )
     ```
 
+    **Extended Thinking (Claude Sonnet 4 and Beyond):**
+
+    CrewAI supports Anthropic's Extended Thinking feature, which allows Claude to think through problems in a more human-like way before responding. This is particularly useful for complex reasoning, analysis, and problem-solving tasks.
+
+    ```python Code theme={null}
+    from crewai import LLM
+
+    # Enable extended thinking with default settings
+    llm = LLM(
+        model="anthropic/claude-sonnet-4",
+        thinking={"type": "enabled"},
+        max_tokens=10000
+    )
+
+    # Configure thinking with budget control
+    llm = LLM(
+        model="anthropic/claude-sonnet-4",
+        thinking={
+            "type": "enabled",
+            "budget_tokens": 5000  # Limit thinking tokens
+        },
+        max_tokens=10000
+    )
+    ```
+
+    **Thinking Configuration Options:**
+
+    * `type`: Set to `"enabled"` to activate extended thinking mode
+    * `budget_tokens` (optional): Maximum tokens to use for thinking (helps control costs)
+
+    **Models Supporting Extended Thinking:**
+
+    * `claude-sonnet-4` and newer models
+    * `claude-3-7-sonnet` (with extended thinking capabilities)
+
+    **When to Use Extended Thinking:**
+
+    * Complex reasoning and multi-step problem solving
+    * Mathematical calculations and proofs
+    * Code analysis and debugging
+    * Strategic planning and decision making
+    * Research and analytical tasks
+
+    **Note:** Extended thinking consumes additional tokens but can significantly improve response quality for complex tasks.
+
     **Supported Environment Variables:**
 
     * `ANTHROPIC_API_KEY`: Your Anthropic API key (required)
@@ -4622,6 +5151,7 @@ In this section, you'll find detailed examples that help you select, configure, 
     **Features:**
 
     * Native tool use support for Claude 3+ models
+    * Extended Thinking support for Claude Sonnet 4+
     * Streaming support for real-time responses
     * Automatic system message handling
     * Stop sequences for controlled output
@@ -4638,21 +5168,22 @@ In this section, you'll find detailed examples that help you select, configure, 
 
     **Supported Models:**
 
-    | Model                      | Context Window | Best For                                 |
-    | -------------------------- | -------------- | ---------------------------------------- |
-    | claude-3-7-sonnet          | 200,000 tokens | Advanced reasoning and agentic tasks     |
-    | claude-3-5-sonnet-20241022 | 200,000 tokens | Latest Sonnet with best performance      |
-    | claude-3-5-haiku           | 200,000 tokens | Fast, compact model for quick responses  |
-    | claude-3-opus              | 200,000 tokens | Most capable for complex tasks           |
-    | claude-3-sonnet            | 200,000 tokens | Balanced intelligence and speed          |
-    | claude-3-haiku             | 200,000 tokens | Fastest for simple tasks                 |
-    | claude-2.1                 | 200,000 tokens | Extended context, reduced hallucinations |
-    | claude-2                   | 100,000 tokens | Versatile model for various tasks        |
-    | claude-instant             | 100,000 tokens | Fast, cost-effective for everyday tasks  |
+    | Model                      | Context Window | Best For                                   |
+    | -------------------------- | -------------- | ------------------------------------------ |
+    | claude-sonnet-4            | 200,000 tokens | Latest with extended thinking capabilities |
+    | claude-3-7-sonnet          | 200,000 tokens | Advanced reasoning and agentic tasks       |
+    | claude-3-5-sonnet-20241022 | 200,000 tokens | Latest Sonnet with best performance        |
+    | claude-3-5-haiku           | 200,000 tokens | Fast, compact model for quick responses    |
+    | claude-3-opus              | 200,000 tokens | Most capable for complex tasks             |
+    | claude-3-sonnet            | 200,000 tokens | Balanced intelligence and speed            |
+    | claude-3-haiku             | 200,000 tokens | Fastest for simple tasks                   |
+    | claude-2.1                 | 200,000 tokens | Extended context, reduced hallucinations   |
+    | claude-2                   | 100,000 tokens | Versatile model for various tasks          |
+    | claude-instant             | 100,000 tokens | Fast, cost-effective for everyday tasks    |
 
     **Note:** To use Anthropic, install the required dependencies:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     uv add "crewai[anthropic]"
     ```
   </Accordion>
@@ -4667,10 +5198,13 @@ In this section, you'll find detailed examples that help you select, configure, 
     GOOGLE_API_KEY=<your-api-key>
     GEMINI_API_KEY=<your-api-key>
 
-    # Optional - for Vertex AI
+    # For Vertex AI Express mode (API key authentication)
+    GOOGLE_GENAI_USE_VERTEXAI=true
+    GOOGLE_API_KEY=<your-api-key>
+
+    # For Vertex AI with service account
     GOOGLE_CLOUD_PROJECT=<your-project-id>
     GOOGLE_CLOUD_LOCATION=<location>  # Defaults to us-central1
-    GOOGLE_GENAI_USE_VERTEXAI=true  # Set to use Vertex AI
     ```
 
     **Basic Usage:**
@@ -4706,7 +5240,38 @@ In this section, you'll find detailed examples that help you select, configure, 
     )
     ```
 
-    **Vertex AI Configuration:**
+    **Vertex AI Express Mode (API Key Authentication):**
+
+    Vertex AI Express mode allows you to use Vertex AI with simple API key authentication instead of service account credentials. This is the quickest way to get started with Vertex AI.
+
+    To enable Express mode, set both environment variables in your `.env` file:
+
+    ```toml .env theme={null}
+    GOOGLE_GENAI_USE_VERTEXAI=true
+    GOOGLE_API_KEY=<your-api-key>
+    ```
+
+    Then use the LLM as usual:
+
+    ```python Code theme={null}
+    from crewai import LLM
+
+    llm = LLM(
+        model="gemini/gemini-2.0-flash",
+        temperature=0.7
+    )
+    ```
+
+    <Info>
+      To get an Express mode API key:
+
+      * New Google Cloud users: Get an [express mode API key](https://cloud.google.com/vertex-ai/generative-ai/docs/start/quickstart?usertype=apikey)
+      * Existing Google Cloud users: Get a [Google Cloud API key bound to a service account](https://cloud.google.com/docs/authentication/api-keys)
+
+      For more details, see the [Vertex AI Express mode documentation](https://docs.cloud.google.com/vertex-ai/generative-ai/docs/start/quickstart?usertype=apikey).
+    </Info>
+
+    **Vertex AI Configuration (Service Account):**
 
     ```python Code theme={null}
     from crewai import LLM
@@ -4720,10 +5285,10 @@ In this section, you'll find detailed examples that help you select, configure, 
 
     **Supported Environment Variables:**
 
-    * `GOOGLE_API_KEY` or `GEMINI_API_KEY`: Your Google API key (required for Gemini API)
-    * `GOOGLE_CLOUD_PROJECT`: Google Cloud project ID (for Vertex AI)
+    * `GOOGLE_API_KEY` or `GEMINI_API_KEY`: Your Google API key (required for Gemini API and Vertex AI Express mode)
+    * `GOOGLE_GENAI_USE_VERTEXAI`: Set to `true` to use Vertex AI (required for Express mode)
+    * `GOOGLE_CLOUD_PROJECT`: Google Cloud project ID (for Vertex AI with service account)
     * `GOOGLE_CLOUD_LOCATION`: GCP location (defaults to `us-central1`)
-    * `GOOGLE_GENAI_USE_VERTEXAI`: Set to `true` to use Vertex AI
 
     **Features:**
 
@@ -4764,7 +5329,7 @@ In this section, you'll find detailed examples that help you select, configure, 
 
     **Note:** To use Google Gemini, install the required dependencies:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     uv add "crewai[google-genai]"
     ```
 
@@ -4882,7 +5447,7 @@ In this section, you'll find detailed examples that help you select, configure, 
 
     **Note:** To use Azure AI Inference, install the required dependencies:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     uv add "crewai[azure-ai-inference]"
     ```
   </Accordion>
@@ -4998,7 +5563,7 @@ In this section, you'll find detailed examples that help you select, configure, 
 
     **Note:** To use AWS Bedrock, install the required dependencies:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     uv add "crewai[bedrock]"
     ```
   </Accordion>
@@ -5385,7 +5950,7 @@ CrewAI supports streaming responses from LLMs, allowing your application to rece
   <Tab title="Basic Setup">
     Enable streaming by setting the `stream` parameter to `True` when initializing your LLM:
 
-    ```python  theme={null}
+    ```python theme={null}
     from crewai import LLM
 
     # Create an LLM with streaming enabled
@@ -5401,7 +5966,7 @@ CrewAI supports streaming responses from LLMs, allowing your application to rece
   <Tab title="Event Handling">
     CrewAI emits events for each chunk received during streaming:
 
-    ```python  theme={null}
+    ```python theme={null}
     from crewai.events import (
       LLMStreamChunkEvent
     )
@@ -5425,7 +5990,7 @@ CrewAI supports streaming responses from LLMs, allowing your application to rece
   <Tab title="Agent & Task Tracking">
     All LLM events in CrewAI include agent and task information, allowing you to track and filter LLM interactions by specific agents or tasks:
 
-    ```python  theme={null}
+    ```python theme={null}
     from crewai import LLM, Agent, Task, Crew
     from crewai.events import LLMStreamChunkEvent
     from crewai.events import BaseEventListener
@@ -5473,6 +6038,50 @@ CrewAI supports streaming responses from LLMs, allowing your application to rece
   </Tab>
 </Tabs>
 
+## Async LLM Calls
+
+CrewAI supports asynchronous LLM calls for improved performance and concurrency in your AI workflows. Async calls allow you to run multiple LLM requests concurrently without blocking, making them ideal for high-throughput applications and parallel agent operations.
+
+<Tabs>
+  <Tab title="Basic Usage">
+    Use the `acall` method for asynchronous LLM requests:
+
+    ```python theme={null}
+    import asyncio
+    from crewai import LLM
+
+    async def main():
+        llm = LLM(model="openai/gpt-4o")
+
+        # Single async call
+        response = await llm.acall("What is the capital of France?")
+        print(response)
+
+    asyncio.run(main())
+    ```
+
+    The `acall` method supports all the same parameters as the synchronous `call` method, including messages, tools, and callbacks.
+  </Tab>
+
+  <Tab title="With Streaming">
+    Combine async calls with streaming for real-time concurrent responses:
+
+    ```python theme={null}
+    import asyncio
+    from crewai import LLM
+
+    async def stream_async():
+        llm = LLM(model="openai/gpt-4o", stream=True)
+
+        response = await llm.acall("Write a short story about AI")
+
+        print(response)
+
+    asyncio.run(stream_async())
+    ```
+  </Tab>
+</Tabs>
+
 ## Structured LLM Calls
 
 CrewAI supports structured responses from LLM calls by allowing you to define a `response_format` using a Pydantic model. This enables the framework to automatically parse and validate the output, making it easier to integrate the response into your application without manual post-processing.
@@ -5508,7 +6117,7 @@ Learn how to get the most out of your LLM configuration:
   <Accordion title="Context Window Management">
     CrewAI includes smart context management features:
 
-    ```python  theme={null}
+    ```python theme={null}
     from crewai import LLM
 
     # CrewAI automatically handles:
@@ -5541,7 +6150,7 @@ Learn how to get the most out of your LLM configuration:
         * Medium tasks (between 4K-32K): Enhanced models
         * Large tasks (over 32K): Large context models
 
-        ```python  theme={null}
+        ```python theme={null}
         # Configure model with appropriate settings
         llm = LLM(
             model="openai/gpt-4-turbo-preview",
@@ -5574,7 +6183,7 @@ Learn how to get the most out of your LLM configuration:
     CrewAI internally uses native sdks for LLM calls, which allows you to drop additional parameters that are not needed for your specific use case. This can help simplify your code and reduce the complexity of your LLM configuration.
     For example, if you don't need to send the <code>stop</code> parameter, you can simply omit it from your LLM call:
 
-    ```python  theme={null}
+    ```python theme={null}
     from crewai import LLM
     import os
 
@@ -5598,7 +6207,7 @@ Learn how to get the most out of your LLM configuration:
 
     **Basic Usage:**
 
-    ```python  theme={null}
+    ```python theme={null}
     import httpx
     from crewai import LLM
     from crewai.llms.hooks import BaseInterceptor
@@ -5647,7 +6256,7 @@ Learn how to get the most out of your LLM configuration:
       Most authentication issues can be resolved by checking API key format and environment variable names.
     </Warning>
 
-    ```bash  theme={null}
+    ```bash theme={null}
     # OpenAI
     OPENAI_API_KEY=sk-...
 
@@ -5661,7 +6270,7 @@ Learn how to get the most out of your LLM configuration:
       Always include the provider prefix in model names
     </Check>
 
-    ```python  theme={null}
+    ```python theme={null}
     # Correct
     llm = LLM(model="openai/gpt-4")
 
@@ -5675,7 +6284,7 @@ Learn how to get the most out of your LLM configuration:
       Use larger context models for extensive tasks
     </Tip>
 
-    ```python  theme={null}
+    ```python theme={null}
     # Large context model
     llm = LLM(model="openai/gpt-4o")  # 128K tokens
     ```
@@ -5710,7 +6319,7 @@ The simplest and most commonly used approach. Enable memory for your crew with a
 
 ### Quick Start
 
-```python  theme={null}
+```python theme={null}
 from crewai import Crew, Agent, Task, Process
 
 # Enable basic memory system
@@ -5780,7 +6389,7 @@ C:\Users\{username}\AppData\Local\CrewAI\{project_name}\
 
 To see exactly where CrewAI is storing files on your system:
 
-```python  theme={null}
+```python theme={null}
 from crewai.utilities.paths import db_storage_path
 import os
 
@@ -5809,7 +6418,7 @@ else:
 
 #### Option 1: Environment Variable (Recommended)
 
-```python  theme={null}
+```python theme={null}
 import os
 from crewai import Crew
 
@@ -5826,7 +6435,7 @@ crew = Crew(
 
 #### Option 2: Custom Storage Paths
 
-```python  theme={null}
+```python theme={null}
 import os
 from crewai import Crew
 from crewai.memory import LongTermMemory
@@ -5848,7 +6457,7 @@ crew = Crew(
 
 #### Option 3: Project-Specific Storage
 
-```python  theme={null}
+```python theme={null}
 import os
 from pathlib import Path
 
@@ -5869,7 +6478,7 @@ os.environ["CREWAI_STORAGE_DIR"] = str(storage_dir)
 
 #### Understanding Default Behavior
 
-```python  theme={null}
+```python theme={null}
 # When using Claude as your LLM...
 from crewai import Agent, LLM
 
@@ -5886,7 +6495,7 @@ agent = Agent(
 
 #### Customizing Embedding Providers
 
-```python  theme={null}
+```python theme={null}
 from crewai import Crew
 
 # Option 1: Match your LLM provider
@@ -5919,7 +6528,7 @@ crew = Crew(
 
 #### Check Storage Permissions
 
-```python  theme={null}
+```python theme={null}
 import os
 from crewai.utilities.paths import db_storage_path
 
@@ -5936,7 +6545,7 @@ if not os.path.exists(storage_path):
 
 #### Inspect ChromaDB Collections
 
-```python  theme={null}
+```python theme={null}
 import chromadb
 from crewai.utilities.paths import db_storage_path
 
@@ -5957,7 +6566,7 @@ else:
 
 #### Reset Storage (Debugging)
 
-```python  theme={null}
+```python theme={null}
 from crewai import Crew
 
 # Reset all memory storage
@@ -5983,14 +6592,14 @@ crew.reset_memories(command_type='knowledge') # Knowledge storage
 
 **"ChromaDB permission denied" errors:**
 
-```bash  theme={null}
+```bash theme={null}
 # Fix permissions
 chmod -R 755 ~/.local/share/CrewAI/
 ```
 
 **"Database is locked" errors:**
 
-```python  theme={null}
+```python theme={null}
 # Ensure only one CrewAI instance accesses storage
 import fcntl
 import os
@@ -6005,7 +6614,7 @@ with open(lock_file, 'w') as f:
 
 **Storage not persisting between runs:**
 
-```python  theme={null}
+```python theme={null}
 # Verify storage location is consistent
 import os
 print("CREWAI_STORAGE_DIR:", os.getenv("CREWAI_STORAGE_DIR"))
@@ -6029,7 +6638,7 @@ CrewAI supports multiple embedding providers to give you flexibility in choosing
 
 OpenAI provides reliable, high-quality embeddings that work well for most use cases.
 
-```python  theme={null}
+```python theme={null}
 from crewai import Crew
 
 # Basic OpenAI configuration (uses environment OPENAI_API_KEY)
@@ -6040,7 +6649,7 @@ crew = Crew(
     embedder={
         "provider": "openai",
         "config": {
-            "model": "text-embedding-3-small"  # or "text-embedding-3-large"
+            "model_name": "text-embedding-3-small"  # or "text-embedding-3-large"
         }
     }
 )
@@ -6052,7 +6661,7 @@ crew = Crew(
         "provider": "openai",
         "config": {
             "api_key": "your-openai-api-key",  # Optional: override env var
-            "model": "text-embedding-3-large",
+            "model_name": "text-embedding-3-large",
             "dimensions": 1536,  # Optional: reduce dimensions for smaller storage
             "organization_id": "your-org-id"  # Optional: for organization accounts
         }
@@ -6064,7 +6673,7 @@ crew = Crew(
 
 For enterprise users with Azure OpenAI deployments.
 
-```python  theme={null}
+```python theme={null}
 crew = Crew(
     memory=True,
     embedder={
@@ -6074,7 +6683,7 @@ crew = Crew(
             "api_base": "https://your-resource.openai.azure.com/",
             "api_type": "azure",
             "api_version": "2023-05-15",
-            "model": "text-embedding-3-small",
+            "model_name": "text-embedding-3-small",
             "deployment_id": "your-deployment-name"  # Azure deployment name
         }
     }
@@ -6085,14 +6694,14 @@ crew = Crew(
 
 Use Google's text embedding models for integration with Google Cloud services.
 
-```python  theme={null}
+```python theme={null}
 crew = Crew(
     memory=True,
     embedder={
-        "provider": "google",
+        "provider": "google-generativeai",
         "config": {
             "api_key": "your-google-api-key",
-            "model": "text-embedding-004"  # or "text-embedding-preview-0409"
+            "model_name": "gemini-embedding-001"  # or "text-embedding-005", "text-multilingual-embedding-002"
         }
     }
 )
@@ -6100,28 +6709,64 @@ crew = Crew(
 
 ### Vertex AI Embeddings
 
-For Google Cloud users with Vertex AI access.
+For Google Cloud users with Vertex AI access. Supports both legacy and new embedding models with automatic SDK selection.
 
-```python  theme={null}
+<Note>
+  **Deprecation Notice:** Legacy models (`textembedding-gecko*`) use the deprecated `vertexai.language_models` SDK which will be removed after June 24, 2026. Consider migrating to newer models like `gemini-embedding-001`. See the [Google migration guide](https://docs.cloud.google.com/vertex-ai/generative-ai/docs/deprecations/genai-vertexai-sdk) for details.
+</Note>
+
+```python theme={null}
+# Recommended: Using new models with google-genai SDK
 crew = Crew(
     memory=True,
     embedder={
-        "provider": "vertexai",
+        "provider": "google-vertex",
         "config": {
             "project_id": "your-gcp-project-id",
-            "region": "us-central1",  # or your preferred region
-            "api_key": "your-service-account-key",
-            "model_name": "textembedding-gecko"
+            "location": "us-central1",
+            "model_name": "gemini-embedding-001",  # or "text-embedding-005", "text-multilingual-embedding-002"
+            "task_type": "RETRIEVAL_DOCUMENT",  # Optional
+            "output_dimensionality": 768  # Optional
+        }
+    }
+)
+
+# Using API key authentication (Exp)
+crew = Crew(
+    memory=True,
+    embedder={
+        "provider": "google-vertex",
+        "config": {
+            "api_key": "your-google-api-key",
+            "model_name": "gemini-embedding-001"
+        }
+    }
+)
+
+# Legacy models (backwards compatible, emits deprecation warning)
+crew = Crew(
+    memory=True,
+    embedder={
+        "provider": "google-vertex",
+        "config": {
+            "project_id": "your-gcp-project-id",
+            "region": "us-central1",  # or "location" (region is deprecated)
+            "model_name": "textembedding-gecko"  # Legacy model
         }
     }
 )
 ```
 
+**Available models:**
+
+* **New SDK models** (recommended): `gemini-embedding-001`, `text-embedding-005`, `text-multilingual-embedding-002`
+* **Legacy models** (deprecated): `textembedding-gecko`, `textembedding-gecko@001`, `textembedding-gecko-multilingual`
+
 ### Ollama Embeddings (Local)
 
 Run embeddings locally for privacy and cost savings.
 
-```python  theme={null}
+```python theme={null}
 # First, install and run Ollama locally, then pull an embedding model:
 # ollama pull mxbai-embed-large
 
@@ -6153,14 +6798,14 @@ crew = Crew(
 
 Use Cohere's embedding models for multilingual support.
 
-```python  theme={null}
+```python theme={null}
 crew = Crew(
     memory=True,
     embedder={
         "provider": "cohere",
         "config": {
             "api_key": "your-cohere-api-key",
-            "model": "embed-english-v3.0"  # or "embed-multilingual-v3.0"
+            "model_name": "embed-english-v3.0"  # or "embed-multilingual-v3.0"
         }
     }
 )
@@ -6170,14 +6815,14 @@ crew = Crew(
 
 High-performance embeddings optimized for retrieval tasks.
 
-```python  theme={null}
+```python theme={null}
 crew = Crew(
     memory=True,
     embedder={
         "provider": "voyageai",
         "config": {
             "api_key": "your-voyage-api-key",
-            "model": "voyage-large-2",  # or "voyage-code-2" for code
+            "model": "voyage-3",  # or "voyage-3-lite", "voyage-code-3"
             "input_type": "document"  # or "query"
         }
     }
@@ -6188,7 +6833,7 @@ crew = Crew(
 
 For AWS users with Bedrock access.
 
-```python  theme={null}
+```python theme={null}
 crew = Crew(
     memory=True,
     embedder={
@@ -6207,15 +6852,14 @@ crew = Crew(
 
 Use open-source models from Hugging Face.
 
-```python  theme={null}
+```python theme={null}
 crew = Crew(
     memory=True,
     embedder={
         "provider": "huggingface",
         "config": {
             "api_key": "your-hf-token",  # Optional for public models
-            "model": "sentence-transformers/all-MiniLM-L6-v2",
-            "api_url": "https://api-inference.huggingface.co"  # or your custom endpoint
+            "model": "sentence-transformers/all-MiniLM-L6-v2"
         }
     }
 )
@@ -6225,7 +6869,7 @@ crew = Crew(
 
 For IBM Cloud users.
 
-```python  theme={null}
+```python theme={null}
 crew = Crew(
     memory=True,
     embedder={
@@ -6243,7 +6887,7 @@ crew = Crew(
 
 Short-Term Memory and Entity Memory both supports a tight integration with both Mem0 OSS and Mem0 Client as a provider. Here is how you can use Mem0 as a provider.
 
-```python  theme={null}
+```python theme={null}
 from crewai.memory.short_term.short_term_memory import ShortTermMemory
 from crewai.memory.entity_entity_memory import EntityMemory
 
@@ -6269,7 +6913,7 @@ mem0_client_embedder_config = {
             "project_id": "my_project_id", # Optional
             "api_key": "custom-api-key"    # Optional - overrides env var
             "run_id": "my_run_id",        # Optional - for short-term memory
-            "includes": "include1",       # Optional 
+            "includes": "include1",       # Optional
             "excludes": "exclude1",       # Optional
             "infer": True                 # Optional defaults to True
             "custom_categories": new_categories  # Optional - custom categories for user memory
@@ -6291,7 +6935,7 @@ crew = Crew(
 
 ### Choosing the Right Embedding Provider
 
-When selecting an embedding provider, consider factors like performance, privacy, cost, and integration needs.\
+When selecting an embedding provider, consider factors like performance, privacy, cost, and integration needs.
 Below is a comparison to help you decide:
 
 | Provider         | Best For                        | Pros                                | Cons                              |
@@ -6308,7 +6952,7 @@ Below is a comparison to help you decide:
 
 For security, store API keys in environment variables:
 
-```python  theme={null}
+```python theme={null}
 import os
 
 # Set environment variables
@@ -6333,7 +6977,7 @@ crew = Crew(
 
 Compare embedding providers for your specific use case:
 
-```python  theme={null}
+```python theme={null}
 from crewai import Crew
 from crewai.utilities.paths import db_storage_path
 
@@ -6375,7 +7019,7 @@ for provider in providers_to_test:
 
 **Model not found errors:**
 
-```python  theme={null}
+```python theme={null}
 # Verify model availability
 from crewai.rag.embeddings.configurator import EmbeddingConfigurator
 
@@ -6392,7 +7036,7 @@ except Exception as e:
 
 **API key issues:**
 
-```python  theme={null}
+```python theme={null}
 import os
 
 # Check if API keys are set
@@ -6406,7 +7050,7 @@ for key in required_keys:
 
 **Performance comparison:**
 
-```python  theme={null}
+```python theme={null}
 import time
 
 def test_embedding_performance(embedder_config, test_text="This is a test document"):
@@ -6457,7 +7101,7 @@ External Memory provides a standalone memory system that operates independently 
 
 ### Basic External Memory with Mem0
 
-```python  theme={null}
+```python theme={null}
 import os
 from crewai import Agent, Crew, Process, Task
 from crewai.memory.external.external_memory import ExternalMemory
@@ -6501,7 +7145,7 @@ crew = Crew(
 When using Mem0 Client, you can customize the memory configuration further, by using parameters like 'includes', 'excludes', 'custom\_categories', 'infer' and 'run\_id' (this is only for short-term memory).
 You can find more details in the [Mem0 documentation](https://docs.mem0.ai/).
 
-```python  theme={null}
+```python theme={null}
 import os
 from crewai import Agent, Crew, Process, Task
 from crewai.memory.external.external_memory import ExternalMemory
@@ -6524,7 +7168,7 @@ external_memory = ExternalMemory(
             "project_id": "my_project_id", # Optional
             "api_key": "custom-api-key"    # Optional - overrides env var
             "run_id": "my_run_id",        # Optional - for short-term memory
-            "includes": "include1",       # Optional 
+            "includes": "include1",       # Optional
             "excludes": "exclude1",       # Optional
             "infer": True                 # Optional defaults to True
             "custom_categories": new_categories  # Optional - custom categories for user memory
@@ -6543,7 +7187,7 @@ crew = Crew(
 
 ### Custom Storage Implementation
 
-```python  theme={null}
+```python theme={null}
 from crewai.memory.external.external_memory import ExternalMemory
 from crewai.memory.storage.interface import Storage
 
@@ -6591,7 +7235,7 @@ crew = Crew(
 
 ### OpenAI (Default)
 
-```python  theme={null}
+```python theme={null}
 crew = Crew(
     memory=True,
     embedder={
@@ -6603,7 +7247,7 @@ crew = Crew(
 
 ### Ollama
 
-```python  theme={null}
+```python theme={null}
 crew = Crew(
     memory=True,
     embedder={
@@ -6615,14 +7259,14 @@ crew = Crew(
 
 ### Google AI
 
-```python  theme={null}
+```python theme={null}
 crew = Crew(
     memory=True,
     embedder={
-        "provider": "google",
+        "provider": "google-generativeai",
         "config": {
             "api_key": "your-api-key",
-            "model": "text-embedding-004"
+            "model_name": "gemini-embedding-001"
         }
     }
 )
@@ -6630,7 +7274,7 @@ crew = Crew(
 
 ### Azure OpenAI
 
-```python  theme={null}
+```python theme={null}
 crew = Crew(
     memory=True,
     embedder={
@@ -6647,7 +7291,7 @@ crew = Crew(
 
 ### Vertex AI
 
-```python  theme={null}
+```python theme={null}
 crew = Crew(
     memory=True,
     embedder={
@@ -6666,7 +7310,7 @@ crew = Crew(
 
 ### Environment Variables
 
-```python  theme={null}
+```python theme={null}
 import os
 from crewai import Crew
 
@@ -6685,7 +7329,7 @@ crew = Crew(
 
 ### Storage Security
 
-```python  theme={null}
+```python theme={null}
 import os
 from crewai import Crew
 from crewai.memory import LongTermMemory
@@ -6766,7 +7410,7 @@ CrewAI emits the following memory-related events:
 
 Track memory operation timing to optimize your application:
 
-```python  theme={null}
+```python theme={null}
 from crewai.events import (
     BaseEventListener,
     MemoryQueryCompletedEvent,
@@ -6801,7 +7445,7 @@ memory_monitor = MemoryPerformanceMonitor()
 
 Log memory operations for debugging and insights:
 
-```python  theme={null}
+```python theme={null}
 from crewai.events import (
     BaseEventListener,
     MemorySaveStartedEvent,
@@ -6842,7 +7486,7 @@ memory_logger = MemoryLogger()
 
 Capture and respond to memory errors:
 
-```python  theme={null}
+```python theme={null}
 from crewai.events import (
     BaseEventListener,
     MemorySaveFailedEvent,
@@ -6892,7 +7536,7 @@ error_tracker = MemoryErrorTracker(notify_email="admin@example.com")
 
 Memory events can be forwarded to analytics and monitoring platforms to track performance metrics, detect anomalies, and visualize memory usage patterns:
 
-```python  theme={null}
+```python theme={null}
 from crewai.events import (
     BaseEventListener,
     MemoryQueryCompletedEvent,
@@ -7122,7 +7766,7 @@ Processes enable individual agents to operate as a cohesive unit, streamlining t
 
 To assign a process to a crew, specify the process type upon crew creation to set the execution strategy. For a hierarchical process, ensure to define `manager_llm` or `manager_agent` for the manager agent.
 
-```python  theme={null}
+```python theme={null}
 from crewai import Crew, Process
 
 # Example: Creating a crew with a sequential process
@@ -7166,6 +7810,169 @@ The structured collaboration facilitated by processes within CrewAI is crucial f
 This documentation has been updated to reflect the latest features, enhancements, and the planned integration of the Consensual Process, ensuring users have access to the most current and comprehensive information.
 
 
+# Production Architecture
+Source: https://docs.crewai.com/en/concepts/production-architecture
+
+Best practices for building production-ready AI applications with CrewAI
+
+# The Flow-First Mindset
+
+When building production AI applications with CrewAI, **we recommend starting with a Flow**.
+
+While it's possible to run individual Crews or Agents, wrapping them in a Flow provides the necessary structure for a robust, scalable application.
+
+## Why Flows?
+
+1. **State Management**: Flows provide a built-in way to manage state across different steps of your application. This is crucial for passing data between Crews, maintaining context, and handling user inputs.
+2. **Control**: Flows allow you to define precise execution paths, including loops, conditionals, and branching logic. This is essential for handling edge cases and ensuring your application behaves predictably.
+3. **Observability**: Flows provide a clear structure that makes it easier to trace execution, debug issues, and monitor performance. We recommend using [CrewAI Tracing](/en/observability/tracing) for detailed insights. Simply run `crewai login` to enable free observability features.
+
+## The Architecture
+
+A typical production CrewAI application looks like this:
+
+```mermaid theme={null}
+graph TD
+    Start((Start)) --> Flow[Flow Orchestrator]
+    Flow --> State{State Management}
+    State --> Step1[Step 1: Data Gathering]
+    Step1 --> Crew1[Research Crew]
+    Crew1 --> State
+    State --> Step2{Condition Check}
+    Step2 -- "Valid" --> Step3[Step 3: Execution]
+    Step3 --> Crew2[Action Crew]
+    Step2 -- "Invalid" --> End((End))
+    Crew2 --> End
+```
+
+### 1. The Flow Class
+
+Your `Flow` class is the entry point. It defines the state schema and the methods that execute your logic.
+
+```python theme={null}
+from crewai.flow.flow import Flow, listen, start
+from pydantic import BaseModel
+
+class AppState(BaseModel):
+    user_input: str = ""
+    research_results: str = ""
+    final_report: str = ""
+
+class ProductionFlow(Flow[AppState]):
+    @start()
+    def gather_input(self):
+        # ... logic to get input ...
+        pass
+
+    @listen(gather_input)
+    def run_research_crew(self):
+        # ... trigger a Crew ...
+        pass
+```
+
+### 2. State Management
+
+Use Pydantic models to define your state. This ensures type safety and makes it clear what data is available at each step.
+
+* **Keep it minimal**: Store only what you need to persist between steps.
+* **Use structured data**: Avoid unstructured dictionaries when possible.
+
+### 3. Crews as Units of Work
+
+Delegate complex tasks to Crews. A Crew should be focused on a specific goal (e.g., "Research a topic", "Write a blog post").
+
+* **Don't over-engineer Crews**: Keep them focused.
+* **Pass state explicitly**: Pass the necessary data from the Flow state to the Crew inputs.
+
+```python theme={null}
+    @listen(gather_input)
+    def run_research_crew(self):
+        crew = ResearchCrew()
+        result = crew.kickoff(inputs={"topic": self.state.user_input})
+        self.state.research_results = result.raw
+```
+
+## Control Primitives
+
+Leverage CrewAI's control primitives to add robustness and control to your Crews.
+
+### 1. Task Guardrails
+
+Use [Task Guardrails](/en/concepts/tasks#task-guardrails) to validate task outputs before they are accepted. This ensures that your agents produce high-quality results.
+
+```python theme={null}
+def validate_content(result: TaskOutput) -> Tuple[bool, Any]:
+    if len(result.raw) < 100:
+        return (False, "Content is too short. Please expand.")
+    return (True, result.raw)
+
+task = Task(
+    ...,
+    guardrail=validate_content
+)
+```
+
+### 2. Structured Outputs
+
+Always use structured outputs (`output_pydantic` or `output_json`) when passing data between tasks or to your application. This prevents parsing errors and ensures type safety.
+
+```python theme={null}
+class ResearchResult(BaseModel):
+    summary: str
+    sources: List[str]
+
+task = Task(
+    ...,
+    output_pydantic=ResearchResult
+)
+```
+
+### 3. LLM Hooks
+
+Use [LLM Hooks](/en/learn/llm-hooks) to inspect or modify messages before they are sent to the LLM, or to sanitize responses.
+
+```python theme={null}
+@before_llm_call
+def log_request(context):
+    print(f"Agent {context.agent.role} is calling the LLM...")
+```
+
+## Deployment Patterns
+
+When deploying your Flow, consider the following:
+
+### CrewAI Enterprise
+
+The easiest way to deploy your Flow is using CrewAI Enterprise. It handles the infrastructure, authentication, and monitoring for you.
+
+Check out the [Deployment Guide](/en/enterprise/guides/deploy-crew) to get started.
+
+```bash theme={null}
+crewai deploy create
+```
+
+### Async Execution
+
+For long-running tasks, use `kickoff_async` to avoid blocking your API.
+
+### Persistence
+
+Use the `@persist` decorator to save the state of your Flow to a database. This allows you to resume execution if the process crashes or if you need to wait for human input.
+
+```python theme={null}
+@persist
+class ProductionFlow(Flow[AppState]):
+    # ...
+```
+
+## Summary
+
+* **Start with a Flow.**
+* **Define a clear State.**
+* **Use Crews for complex tasks.**
+* **Deploy with an API and persistence.**
+
+
 # Reasoning
 Source: https://docs.crewai.com/en/concepts/reasoning
 
@@ -7179,7 +7986,7 @@ Agent reasoning is a feature that allows agents to reflect on a task and create 
 
 To enable reasoning for an agent, simply set `reasoning=True` when creating the agent:
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent
 
 agent = Agent(
@@ -7204,11 +8011,11 @@ This process helps the agent break down complex tasks into manageable steps and 
 
 ## Configuration Options
 
-<ParamField body="reasoning" type="bool" default="False">
+<ParamField type="bool">
   Enable or disable reasoning
 </ParamField>
 
-<ParamField body="max_reasoning_attempts" type="int" default="None">
+<ParamField type="int">
   Maximum number of attempts to refine the plan before proceeding with execution. If None (default), the agent will continue refining until it's ready.
 </ParamField>
 
@@ -7216,7 +8023,7 @@ This process helps the agent break down complex tasks into manageable steps and 
 
 Here's a complete example:
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create an agent with reasoning enabled
@@ -7248,7 +8055,7 @@ The reasoning process is designed to be robust, with error handling built in. If
 
 Here's how to handle potential errors in your code:
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task
 import logging
 
@@ -7330,7 +8137,7 @@ Tasks within CrewAI can be collaborative, requiring multiple agents to work toge
 <Note type="info" title="Enterprise Enhancement: Visual Task Builder">
   CrewAI AMP includes a Visual Task Builder in Crew Studio that simplifies complex task creation and chaining. Design your task flows visually and test them in real-time without writing code.
 
-    <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-studio-interface.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=c4f5428b111816273b3b53d9cef14fad" alt="Task Builder Screenshot" data-og-width="2654" width="2654" data-og-height="1710" height="1710" data-path="images/enterprise/crew-studio-interface.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-studio-interface.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=35ea9140f0b9e57da5f45adbc7e2f166 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-studio-interface.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=ae6f0c18ef3679b5466177710fbc4a94 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-studio-interface.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=6c3e2fe013ab4826da90c937a9855635 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-studio-interface.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=7f1474dd7f983532dc910363b96f783a 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-studio-interface.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=f1a6d7e744e6862af5e72dce4deb0fd1 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-studio-interface.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=74aeb1ccd8e2c8f84d4247b8d0259737 2500w" />
+  <img alt="Task Builder Screenshot" />
 
   The Visual Task Builder enables:
 
@@ -7359,30 +8166,31 @@ crew = Crew(
 
 ## Task Attributes
 
-| Attribute                              | Parameters              | Type                        | Description                                                                                                     |                                                                            |
-| :------------------------------------- | :---------------------- | :-------------------------- | :-------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| **Description**                        | `description`           | `str`                       | A clear, concise statement of what the task entails.                                                            |                                                                            |
-| **Expected Output**                    | `expected_output`       | `str`                       | A detailed description of what the task's completion looks like.                                                |                                                                            |
-| **Name** *(optional)*                  | `name`                  | `Optional[str]`             | A name identifier for the task.                                                                                 |                                                                            |
-| **Agent** *(optional)*                 | `agent`                 | `Optional[BaseAgent]`       | The agent responsible for executing the task.                                                                   |                                                                            |
-| **Tools** *(optional)*                 | `tools`                 | `List[BaseTool]`            | The tools/resources the agent is limited to use for this task.                                                  |                                                                            |
-| **Context** *(optional)*               | `context`               | `Optional[List["Task"]]`    | Other tasks whose outputs will be used as context for this task.                                                |                                                                            |
-| **Async Execution** *(optional)*       | `async_execution`       | `Optional[bool]`            | Whether the task should be executed asynchronously. Defaults to False.                                          |                                                                            |
-| **Human Input** *(optional)*           | `human_input`           | `Optional[bool]`            | Whether the task should have a human review the final answer of the agent. Defaults to False.                   |                                                                            |
-| **Markdown** *(optional)*              | `markdown`              | `Optional[bool]`            | Whether the task should instruct the agent to return the final answer formatted in Markdown. Defaults to False. |                                                                            |
-| **Config** *(optional)*                | `config`                | `Optional[Dict[str, Any]]`  | Task-specific configuration parameters.                                                                         |                                                                            |
-| **Output File** *(optional)*           | `output_file`           | `Optional[str]`             | File path for storing the task output.                                                                          |                                                                            |
-| **Create Directory** *(optional)*      | `create_directory`      | `Optional[bool]`            | Whether to create the directory for output\_file if it doesn't exist. Defaults to True.                         |                                                                            |
-| **Output JSON** *(optional)*           | `output_json`           | `Optional[Type[BaseModel]]` | A Pydantic model to structure the JSON output.                                                                  |                                                                            |
-| **Output Pydantic** *(optional)*       | `output_pydantic`       | `Optional[Type[BaseModel]]` | A Pydantic model for task output.                                                                               |                                                                            |
-| **Callback** *(optional)*              | `callback`              | `Optional[Any]`             | Function/object to be executed after task completion.                                                           |                                                                            |
-| **Guardrail** *(optional)*             | `guardrail`             | `Optional[Callable]`        | Function to validate task output before proceeding to next task.                                                |                                                                            |
-| **Guardrails** *(optional)*            | `guardrails`            | \`Optional\[List\[Callable] | List\[str]]\`                                                                                                   | List of guardrails to validate task output before proceeding to next task. |
-| **Guardrail Max Retries** *(optional)* | `guardrail_max_retries` | `Optional[int]`             | Maximum number of retries when guardrail validation fails. Defaults to 3.                                       |                                                                            |
+\| Attribute                              | Parameters              | Type                        | Description                                                                                                     |
+\| :------------------------------------- | :---------------------- | :-------------------------- | :-------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+\| **Description**                        | `description`           | `str`                       | A clear, concise statement of what the task entails.                                                            |
+\| **Expected Output**                    | `expected_output`       | `str`                       | A detailed description of what the task's completion looks like.                                                |
+\| **Name** *(optional)*                  | `name`                  | `Optional[str]`             | A name identifier for the task.                                                                                 |
+\| **Agent** *(optional)*                 | `agent`                 | `Optional[BaseAgent]`       | The agent responsible for executing the task.                                                                   |
+\| **Tools** *(optional)*                 | `tools`                 | `List[BaseTool]`            | The tools/resources the agent is limited to use for this task.                                                  |
+\| **Context** *(optional)*               | `context`               | `Optional[List["Task"]]`    | Other tasks whose outputs will be used as context for this task.                                                |
+\| **Async Execution** *(optional)*       | `async_execution`       | `Optional[bool]`            | Whether the task should be executed asynchronously. Defaults to False.                                          |
+\| **Human Input** *(optional)*           | `human_input`           | `Optional[bool]`            | Whether the task should have a human review the final answer of the agent. Defaults to False.                   |
+\| **Markdown** *(optional)*              | `markdown`              | `Optional[bool]`            | Whether the task should instruct the agent to return the final answer formatted in Markdown. Defaults to False. |
+\| **Config** *(optional)*                | `config`                | `Optional[Dict[str, Any]]`  | Task-specific configuration parameters.                                                                         |
+\| **Output File** *(optional)*           | `output_file`           | `Optional[str]`             | File path for storing the task output.                                                                          |
+\| **Create Directory** *(optional)*      | `create_directory`      | `Optional[bool]`            | Whether to create the directory for output\_file if it doesn't exist. Defaults to True.                          |
+\| **Output JSON** *(optional)*           | `output_json`           | `Optional[Type[BaseModel]]` | A Pydantic model to structure the JSON output.                                                                  |
+\| **Output Pydantic** *(optional)*       | `output_pydantic`       | `Optional[Type[BaseModel]]` | A Pydantic model for task output.                                                                               |
+\| **Callback** *(optional)*              | `callback`              | `Optional[Any]`             | Function/object to be executed after task completion.                                                           |
+\| **Guardrail** *(optional)*             | `guardrail`             | `Optional[Callable]`        | Function to validate task output before proceeding to next task.                                                |
+\| **Guardrails** *(optional)*            | `guardrails`            | `Optional[List[Callable]    | List[str]]`                                                                                                     | List of guardrails to validate task output before proceeding to next task. |
+\| **Guardrail Max Retries** *(optional)* | `guardrail_max_retries` | `Optional[int]`             | Maximum number of retries when guardrail validation fails. Defaults to 3.                                       |
 
 <Note type="warning" title="Deprecated: max_retries">
   The task attribute `max_retries` is deprecated and will be removed in v1.0.0.
-  Use `guardrail_max_retries` instead to control retry attempts when a guardrail fails.
+  Use `guardrail_max_retries` instead to control retry attempts when a guardrail
+  fails.
 </Note>
 
 ## Creating Tasks
@@ -7483,7 +8291,8 @@ class LatestAiDevelopmentCrew():
 ```
 
 <Note>
-  The names you use in your YAML files (`agents.yaml` and `tasks.yaml`) should match the method names in your Python code.
+  The names you use in your YAML files (`agents.yaml` and `tasks.yaml`) should
+  match the method names in your Python code.
 </Note>
 
 ### Direct Code Definition (Alternative)
@@ -7520,7 +8329,8 @@ reporting_task = Task(
 ```
 
 <Tip>
-  Directly specify an `agent` for assignment or let the `hierarchical` CrewAI's process decide based on roles, availability, etc.
+  Directly specify an `agent` for assignment or let the `hierarchical` CrewAI's
+  process decide based on roles, availability, etc.
 </Tip>
 
 ## Task Output
@@ -7622,7 +8432,7 @@ analysis_task:
   expected_output: >
     A comprehensive analysis with charts and key findings
   agent: analyst
-  markdown: true  # Enable markdown formatting
+  markdown: true # Enable markdown formatting
   output_file: analysis.md
 ```
 
@@ -7634,7 +8444,9 @@ analysis_task:
 * **Cross-Platform Compatibility**: Markdown is universally supported
 
 <Note>
-  The markdown formatting instructions are automatically added to the task prompt when `markdown=True`, so you don't need to specify formatting requirements in your task description.
+  The markdown formatting instructions are automatically added to the task
+  prompt when `markdown=True`, so you don't need to specify formatting
+  requirements in your task description.
 </Note>
 
 ## Task Dependencies and Context
@@ -7846,6 +8658,7 @@ This approach combines the precision of programmatic validation with the flexibi
 ### Guardrail Function Requirements
 
 1. **Function Signature**:
+
    * Must accept exactly one parameter (the task output)
    * Should return a tuple of `(bool, Any)`
    * Type hints are recommended but optional
@@ -7873,6 +8686,7 @@ def validate_with_context(result: TaskOutput) -> Tuple[bool, Any]:
 ```
 
 2. **Error Categories**:
+
    * Use specific error codes
    * Include relevant context
    * Provide actionable feedback
@@ -7939,7 +8753,8 @@ task = Task(
 ## Getting Structured Consistent Outputs from Tasks
 
 <Note>
-  It's also important to note that the output of the final task of a crew becomes the final output of the actual crew itself.
+  It's also important to note that the output of the final task of a crew
+  becomes the final output of the actual crew itself.
 </Note>
 
 ### Using `output_pydantic`
@@ -8332,7 +9147,7 @@ analysis_task:
     A comprehensive financial report with quarterly insights
   agent: financial_analyst
   output_file: reports/quarterly/q4_2024_analysis.pdf
-  create_directory: true  # Automatically create 'reports/quarterly/' directory
+  create_directory: true # Automatically create 'reports/quarterly/' directory
 
 audit_task:
   description: >
@@ -8341,7 +9156,7 @@ audit_task:
     A compliance audit report
   agent: auditor
   output_file: audit/compliance_report.md
-  create_directory: false  # Directory must already exist
+  create_directory: false # Directory must already exist
 ```
 
 ### Use Cases
@@ -8375,7 +9190,7 @@ except RuntimeError as e:
 
 Check out the video below to see how to use structured outputs in CrewAI:
 
-<iframe className="w-full aspect-video rounded-xl" src="https://www.youtube.com/embed/dNpKQk5uxHw" title="Structured outputs in CrewAI" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen />
+<iframe title="Structured outputs in CrewAI" />
 
 ## Conclusion
 
@@ -8398,19 +9213,19 @@ Testing is a crucial part of the development process, and it is essential to ens
 
 We added the CLI command `crewai test` to make it easy to test your crew. This command will run your crew for a specified number of iterations and provide detailed performance metrics. The parameters are `n_iterations` and `model`, which are optional and default to 2 and `gpt-4o-mini` respectively. For now, the only provider available is OpenAI.
 
-```bash  theme={null}
+```bash theme={null}
 crewai test
 ```
 
 If you want to run more iterations or use a different model, you can specify the parameters like this:
 
-```bash  theme={null}
+```bash theme={null}
 crewai test --n_iterations 5 --model gpt-4o
 ```
 
 or using the short forms:
 
-```bash  theme={null}
+```bash theme={null}
 crewai test -n 5 -m gpt-4o
 ```
 
@@ -8474,7 +9289,7 @@ enabling everything from simple searches to complex interactions and effective t
 
 To enhance your agents' capabilities with crewAI tools, begin by installing our extra tools package:
 
-```bash  theme={null}
+```bash theme={null}
 pip install 'crewai[tools]'
 ```
 
@@ -8742,7 +9557,7 @@ To use the training feature, follow these steps:
 2. Navigate to the directory where your CrewAI project is located.
 3. Run the following command:
 
-```shell  theme={null}
+```shell theme={null}
 crewai train -n <n_iterations> -f <filename.pkl>
 ```
 
@@ -8784,7 +9599,7 @@ CrewAI uses the training artifacts in two ways: during training to incorporate y
 
 ### Training data flow
 
-```mermaid  theme={null}
+```mermaid theme={null}
 flowchart TD
   A["Start training<br/>CLI: crewai train -n -f<br/>or Python: crew.train(...)"] --> B["Setup training mode<br/>- task.human_input = true<br/>- disable delegation<br/>- init training_data.pkl + trained file"]
 
@@ -8846,7 +9661,7 @@ flowchart TD
 
 ### Limitations of Small Models in Training Evaluation
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="JSON Output Accuracy" icon="triangle-exclamation">
     Smaller models often struggle with producing valid JSON responses needed for structured training evaluations, leading to parsing errors and incomplete data.
   </Card>
@@ -8870,7 +9685,7 @@ flowchart TD
   <Tab title="Best Practice">
     For optimal training quality and reliable evaluations, we strongly recommend using models with at least 7B parameters or larger:
 
-    ```python  theme={null}
+    ```python theme={null}
     from crewai import Agent, Crew, Task, LLM
 
     # Recommended minimum for training evaluation
@@ -8896,7 +9711,7 @@ flowchart TD
   <Tab title="Small Model Usage">
     If you must use smaller models for training evaluation, be aware of these constraints:
 
-    ```python  theme={null}
+    ```python theme={null}
     # Using a smaller model (expect some limitations)
     llm = LLM(model="huggingface/microsoft/Phi-3-mini-4k-instruct")
     ```
@@ -8965,13 +9780,13 @@ Based on your agent configuration, CrewAI adds different default instructions:
 
 #### For Agents Without Tools
 
-```text  theme={null}
+```text theme={null}
 "I MUST use these formats, my job depends on it!"
 ```
 
 #### For Agents With Tools
 
-```text  theme={null}
+```text theme={null}
 "IMPORTANT: Use the following format in your response:
 
 Thought: you should always think about what to do
@@ -8981,7 +9796,7 @@ Action Input: the input to the action, just a simple JSON object...
 
 #### For Structured Outputs (JSON/Pydantic)
 
-````text  theme={null}
+````text theme={null}
 "Ensure your final answer contains only the content in the following format: {output_format}
 Ensure the final output does not include any code block markers like ```json or ```python."
 ````
@@ -8990,7 +9805,7 @@ Ensure the final output does not include any code block markers like ```json or 
 
 To see exactly what prompt is being sent to your LLM, you can inspect the generated prompt:
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Crew, Task
 from crewai.utilities.prompts import Prompts
 
@@ -9041,7 +9856,7 @@ You have several options to gain full control over the prompts:
 
 #### Option 1: Custom Templates (Recommended)
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent
 
 # Define your own system template without default instructions
@@ -9068,7 +9883,7 @@ agent = Agent(
 
 Create a `custom_prompts.json` file to override specific prompt slices:
 
-```json  theme={null}
+```json theme={null}
 {
   "slices": {
     "no_tools": "\nProvide your best answer in a natural, conversational way.",
@@ -9080,7 +9895,7 @@ Create a `custom_prompts.json` file to override specific prompt slices:
 
 Then use it in your crew:
 
-```python  theme={null}
+```python theme={null}
 crew = Crew(
     agents=[agent],
     tasks=[task],
@@ -9091,7 +9906,7 @@ crew = Crew(
 
 #### Option 3: Disable System Prompts for o1 Models
 
-```python  theme={null}
+```python theme={null}
 agent = Agent(
     role="Analyst",
     goal="Analyze data",
@@ -9141,7 +9956,7 @@ CrewAI then merges your customizations with the defaults, so you don't have to r
 
 Create a `custom_prompts.json` file with the prompts you want to modify. Ensure you list all top-level prompts it should contain, not just your changes:
 
-```json  theme={null}
+```json theme={null}
 {
   "slices": {
     "format": "When responding, follow this structure:\n\nTHOUGHTS: Your step-by-step thinking\nACTION: Any tool you're using\nRESULT: Your final answer or conclusion"
@@ -9151,7 +9966,7 @@ Create a `custom_prompts.json` file with the prompts you want to modify. Ensure 
 
 Then integrate it like so:
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Crew, Task, Process
 
 # Create agents and tasks as normal
@@ -9193,7 +10008,7 @@ For instance, when dealing with Meta's Llama 3.3, deeper-level customization may
 
 Here's an example to highlight how you might fine-tune an Agent to leverage Llama 3.3 in code:
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Crew, Task, Process
 from crewai_tools import DirectoryReadTool, FileReadTool
 
@@ -9276,7 +10091,7 @@ Fingerprints are automatically generated and assigned when a component is create
 
 ### Accessing Fingerprints
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Crew, Task
 
 # Create components - fingerprints are automatically generated
@@ -9312,7 +10127,7 @@ print(f"Task fingerprint: {task_fingerprint.uuid_str}")
 
 You can add metadata to fingerprints for additional context:
 
-```python  theme={null}
+```python theme={null}
 # Add metadata to the agent's fingerprint
 agent.security_config.fingerprint.metadata = {
     "version": "1.0",
@@ -9328,7 +10143,7 @@ print(f"Agent metadata: {agent.fingerprint.metadata}")
 
 Fingerprints are designed to persist and remain unchanged throughout a component's lifecycle. If you modify a component, the fingerprint remains the same:
 
-```python  theme={null}
+```python theme={null}
 original_fingerprint = agent.fingerprint.uuid_str
 
 # Modify the agent
@@ -9342,7 +10157,7 @@ assert agent.fingerprint.uuid_str == original_fingerprint
 
 While you cannot directly set the UUID and creation timestamp, you can create deterministic fingerprints using the `generate` method with a seed:
 
-```python  theme={null}
+```python theme={null}
 from crewai.security import Fingerprint
 
 # Create a deterministic fingerprint using a seed string
@@ -9365,7 +10180,7 @@ custom_fingerprint = Fingerprint.generate(
 
 Each fingerprint has the following structure:
 
-```python  theme={null}
+```python theme={null}
 from crewai.security import Fingerprint
 
 fingerprint = agent.fingerprint
@@ -9432,7 +10247,7 @@ The role defines what the agent does and their area of expertise. When crafting 
 
 **Examples of effective roles:**
 
-```yaml  theme={null}
+```yaml theme={null}
 role: "Senior UX Researcher specializing in user interview analysis"
 role: "Full-Stack Software Architect with expertise in distributed systems"
 role: "Corporate Communications Director specializing in crisis management"
@@ -9448,7 +10263,7 @@ The goal directs the agent's efforts and shapes their decision-making process. E
 
 **Examples of effective goals:**
 
-```yaml  theme={null}
+```yaml theme={null}
 goal: "Uncover actionable user insights by analyzing interview data and identifying recurring patterns, unmet needs, and improvement opportunities"
 goal: "Design robust, scalable system architectures that balance performance, maintainability, and cost-effectiveness"
 goal: "Craft clear, empathetic crisis communications that address stakeholder concerns while protecting organizational reputation"
@@ -9464,7 +10279,7 @@ The backstory gives depth to the agent, influencing how they approach problems a
 
 **Examples of effective backstories:**
 
-```yaml  theme={null}
+```yaml theme={null}
 backstory: "You have spent 15 years conducting and analyzing user research for top tech companies. You have a talent for reading between the lines and identifying patterns that others miss. You believe that good UX is invisible and that the best insights come from listening to what users don't say as much as what they do say."
 
 backstory: "With 20+ years of experience building distributed systems at scale, you've developed a pragmatic approach to software architecture. You've seen both successful and failed systems and have learned valuable lessons from each. You balance theoretical best practices with practical constraints and always consider the maintenance and operational aspects of your designs."
@@ -9478,13 +10293,13 @@ Agents perform significantly better when given specialized roles rather than gen
 
 **Generic (Less Effective):**
 
-```yaml  theme={null}
+```yaml theme={null}
 role: "Writer"
 ```
 
 **Specialized (More Effective):**
 
-```yaml  theme={null}
+```yaml theme={null}
 role: "Technical Blog Writer specializing in explaining complex AI concepts to non-technical audiences"
 ```
 
@@ -9522,7 +10337,7 @@ Let's look at some examples of agent definitions before and after applying these
 
 **Before:**
 
-```yaml  theme={null}
+```yaml theme={null}
 role: "Writer"
 goal: "Write good content"
 backstory: "You are a writer who creates content for websites."
@@ -9530,7 +10345,7 @@ backstory: "You are a writer who creates content for websites."
 
 **After:**
 
-```yaml  theme={null}
+```yaml theme={null}
 role: "B2B Technology Content Strategist"
 goal: "Create compelling, technically accurate content that explains complex topics in accessible language while driving reader engagement and supporting business objectives"
 backstory: "You have spent a decade creating content for leading technology companies, specializing in translating technical concepts for business audiences. You excel at research, interviewing subject matter experts, and structuring information for maximum clarity and impact. You believe that the best B2B content educates first and sells second, building trust through genuine expertise rather than marketing hype."
@@ -9540,7 +10355,7 @@ backstory: "You have spent a decade creating content for leading technology comp
 
 **Before:**
 
-```yaml  theme={null}
+```yaml theme={null}
 role: "Researcher"
 goal: "Find information"
 backstory: "You are good at finding information online."
@@ -9548,7 +10363,7 @@ backstory: "You are good at finding information online."
 
 **After:**
 
-```yaml  theme={null}
+```yaml theme={null}
 role: "Academic Research Specialist in Emerging Technologies"
 goal: "Discover and synthesize cutting-edge research, identifying key trends, methodologies, and findings while evaluating the quality and reliability of sources"
 backstory: "With a background in both computer science and library science, you've mastered the art of digital research. You've worked with research teams at prestigious universities and know how to navigate academic databases, evaluate research quality, and synthesize findings across disciplines. You're methodical in your approach, always cross-referencing information and tracing claims to primary sources before drawing conclusions."
@@ -9588,13 +10403,13 @@ Tasks perform best when focused on one clear objective:
 
 **Bad Example (Too Broad):**
 
-```yaml  theme={null}
+```yaml theme={null}
 task_description: "Research market trends, analyze the data, and create a visualization."
 ```
 
 **Good Example (Focused):**
 
-```yaml  theme={null}
+```yaml theme={null}
 # Task 1
 research_task:
   description: "Research the top 5 market trends in the AI industry for 2024."
@@ -9617,7 +10432,7 @@ Always clearly specify what inputs the task will use and what the output should 
 
 **Example:**
 
-```yaml  theme={null}
+```yaml theme={null}
 analysis_task:
   description: >
     Analyze the customer feedback data from the CSV file.
@@ -9636,7 +10451,7 @@ Explain why the task matters and how it fits into the larger workflow:
 
 **Example:**
 
-```yaml  theme={null}
+```yaml theme={null}
 competitor_analysis_task:
   description: >
     Analyze our three main competitors' pricing strategies.
@@ -9651,7 +10466,7 @@ For machine-readable outputs, specify the format clearly:
 
 **Example:**
 
-```yaml  theme={null}
+```yaml theme={null}
 data_extraction_task:
   description: "Extract key metrics from the quarterly report."
   expected_output: "JSON object with the following keys: revenue, growth_rate, customer_acquisition_cost, and retention_rate."
@@ -9667,7 +10482,7 @@ Based on lessons learned from real-world implementations, here are the most comm
 
 **Example of Poor Design:**
 
-```yaml  theme={null}
+```yaml theme={null}
 research_task:
   description: "Research AI trends."
   expected_output: "A report on AI trends."
@@ -9675,7 +10490,7 @@ research_task:
 
 **Improved Version:**
 
-```yaml  theme={null}
+```yaml theme={null}
 research_task:
   description: >
     Research the top emerging AI trends for 2024 with a focus on:
@@ -9698,7 +10513,7 @@ research_task:
 
 **Example of Poor Design:**
 
-```yaml  theme={null}
+```yaml theme={null}
 comprehensive_task:
   description: "Research market trends, analyze competitor strategies, create a marketing plan, and design a launch timeline."
 ```
@@ -9706,7 +10521,7 @@ comprehensive_task:
 **Improved Version:**
 Break this into sequential, focused tasks:
 
-```yaml  theme={null}
+```yaml theme={null}
 # Task 1: Research
 market_research_task:
   description: "Research current market trends in the SaaS project management space."
@@ -9727,7 +10542,7 @@ competitor_analysis_task:
 
 **Example of Poor Design:**
 
-```yaml  theme={null}
+```yaml theme={null}
 analysis_task:
   description: "Analyze customer feedback to find areas of improvement."
   expected_output: "A marketing plan for the next quarter."
@@ -9735,7 +10550,7 @@ analysis_task:
 
 **Improved Version:**
 
-```yaml  theme={null}
+```yaml theme={null}
 analysis_task:
   description: "Analyze customer feedback to identify the top 3 areas for product improvement."
   expected_output: "A report listing the 3 priority improvement areas with supporting customer quotes and data points."
@@ -9763,7 +10578,7 @@ analysis_task:
 
 **Example of Poor Design:**
 
-```yaml  theme={null}
+```yaml theme={null}
 agent:
   role: "Business Analyst"
   goal: "Analyze business data"
@@ -9772,7 +10587,7 @@ agent:
 
 **Improved Version:**
 
-```yaml  theme={null}
+```yaml theme={null}
 agent:
   role: "SaaS Metrics Specialist focusing on growth-stage startups"
   goal: "Identify actionable insights from business data that can directly impact customer retention and revenue growth"
@@ -9791,7 +10606,7 @@ When creating agents that will work together in a crew, consider:
 
 For example, a content creation crew might include:
 
-```yaml  theme={null}
+```yaml theme={null}
 # Research Agent
 role: "Research Specialist for technical topics"
 goal: "Gather comprehensive, accurate information from authoritative sources"
@@ -9812,7 +10627,7 @@ backstory: "With years of experience in publishing, you have a keen eye for deta
 
 Some agents can be designed specifically to leverage certain tools effectively:
 
-```yaml  theme={null}
+```yaml theme={null}
 role: "Data Analysis Specialist"
 goal: "Derive meaningful insights from complex datasets through statistical analysis"
 backstory: "With a background in data science, you excel at working with structured and unstructured data..."
@@ -9823,7 +10638,7 @@ tools: [PythonREPLTool, DataVisualizationTool, CSVAnalysisTool]
 
 Different LLMs have different strengths. Design your agents with these capabilities in mind:
 
-```yaml  theme={null}
+```yaml theme={null}
 # For complex reasoning tasks
 analyst:
   role: "Data Insights Analyst"
@@ -9877,8 +10692,8 @@ When building AI applications with CrewAI, one of the most important decisions y
 
 At the heart of this decision is understanding the relationship between **complexity** and **precision** in your application:
 
-<Frame caption="Complexity vs. Precision Matrix for CrewAI Applications">
-  <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/complexity_precision.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=ba6f265da6ac72075285b5008735be82" alt="Complexity vs. Precision Matrix" data-og-width="615" width="615" data-og-height="392" height="392" data-path="images/complexity_precision.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/complexity_precision.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=48c8a451aaef57f3f152ccb921dac715 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/complexity_precision.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=780bae03e53c2fcfd4dce5e3c8672372 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/complexity_precision.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=364f719dfe67f2ae8a54ffce0a7544a8 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/complexity_precision.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=535a75d70cd4109123adf1d34e1316a0 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/complexity_precision.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=4f42346c0b66928bf27b3c3a78a3a6ff 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/complexity_precision.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=832ce0a91bf333433801bca1d1832527 2500w" />
+<Frame>
+  <img alt="Complexity vs. Precision Matrix" />
 </Frame>
 
 This matrix helps visualize how different approaches align with varying requirements for complexity and precision. Let's explore what each quadrant means and how it guides your architectural choices.
@@ -9991,7 +10806,7 @@ Crews are ideal when:
 4. **You value adaptability over strict structure** - The workflow can benefit from agent autonomy
 5. **The output format can be somewhat flexible** - Some variation in output structure is acceptable
 
-```python  theme={null}
+```python theme={null}
 # Example: Research Crew for market analysis
 from crewai import Agent, Crew, Process, Task
 
@@ -10044,7 +10859,7 @@ Flows are ideal when:
 4. **The workflow involves conditional logic** - Different paths need to be taken based on intermediate results
 5. **You need to combine AI with procedural code** - The solution requires both AI capabilities and traditional programming
 
-```python  theme={null}
+```python theme={null}
 # Example: Customer Support Flow with structured processing
 from crewai.flow.flow import Flow, listen, router, start
 from pydantic import BaseModel
@@ -10131,7 +10946,7 @@ The most sophisticated applications often benefit from combining Crews and Flows
 2. **Applications requiring both creativity and structure** - Use Crews for creative tasks and Flows for structured processing
 3. **Enterprise-grade AI applications** - Use Flows to manage state and process flow while leveraging Crews for specialized work
 
-```python  theme={null}
+```python theme={null}
 # Example: Content Production Pipeline combining Crews and Flows
 from crewai.flow.flow import Flow, listen, start
 from crewai import Agent, Crew, Process, Task
@@ -10420,7 +11235,7 @@ Before starting, make sure you have:
 
 First, let's create a new CrewAI project using the CLI. This command will set up a complete project structure with all the necessary files, allowing you to focus on defining your agents and their tasks rather than setting up boilerplate code.
 
-```bash  theme={null}
+```bash theme={null}
 crewai create crew research_crew
 cd research_crew
 ```
@@ -10432,8 +11247,8 @@ This will generate a project with the basic structure needed for your crew. The 
 * A basic crew implementation
 * A main script to run the crew
 
-<Frame caption="CrewAI Framework Overview">
-  <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crews.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=514fd0b06e4128e62f10728d44601975" alt="CrewAI Framework Overview" data-og-width="634" width="634" data-og-height="473" height="473" data-path="images/crews.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crews.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=279c5c26c77fc9acc8411677716fa5ee 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crews.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=92b76be34b84b36771e0a8eed8976966 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crews.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=3ef573e6215967af1bb2975a58d0d859 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crews.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=1af6e6a337b70ca2ce238d8e40f49218 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crews.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=c5da01705f1373446f8582ac582ff244 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crews.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=96464aab7bb5efe4213a7b80f58038aa 2500w" />
+<Frame>
+  <img alt="CrewAI Framework Overview" />
 </Frame>
 
 ## Step 2: Explore the Project Structure
@@ -10473,7 +11288,7 @@ For our research crew, we'll create two agents:
 Let's modify the `agents.yaml` file to define these specialized agents. Be sure
 to set `llm` to the provider you are using.
 
-```yaml  theme={null}
+```yaml theme={null}
 # src/research_crew/config/agents.yaml
 researcher:
   role: >
@@ -10515,7 +11330,7 @@ For our research crew, we'll define two main tasks:
 
 Let's modify the `tasks.yaml` file:
 
-```yaml  theme={null}
+```yaml theme={null}
 # src/research_crew/config/tasks.yaml
 research_task:
   description: >
@@ -10560,7 +11375,7 @@ Now it's time to bring everything together by configuring our crew. The crew is 
 
 Let's modify the `crew.py` file:
 
-```python  theme={null}
+```python theme={null}
 # src/research_crew/crew.py
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
@@ -10627,7 +11442,7 @@ This is where the magic happens - with just a few lines of code, we've defined a
 
 Now, let's set up the main script that will run our crew. This is where we provide the specific topic we want our crew to research.
 
-```python  theme={null}
+```python theme={null}
 #!/usr/bin/env python
 # src/research_crew/main.py
 import os
@@ -10663,7 +11478,7 @@ This script prepares the environment, specifies our research topic, and kicks of
 
 Create a `.env` file in your project root with your API keys:
 
-```sh  theme={null}
+```sh theme={null}
 SERPER_API_KEY=your_serper_api_key
 # Add your provider's API key here too.
 ```
@@ -10674,7 +11489,7 @@ See the [LLM Setup guide](/en/concepts/llms#setting-up-your-llm) for details on 
 
 Install the required dependencies using the CrewAI CLI:
 
-```bash  theme={null}
+```bash theme={null}
 crewai install
 ```
 
@@ -10688,7 +11503,7 @@ This command will:
 
 Now for the exciting moment - it's time to run your crew and see AI collaboration in action!
 
-```bash  theme={null}
+```bash theme={null}
 crewai run
 ```
 
@@ -10709,7 +11524,7 @@ Take a moment to appreciate what you've accomplished - you've created a system w
 
 CrewAI offers several other useful CLI commands for working with crews:
 
-```bash  theme={null}
+```bash theme={null}
 # View all available commands
 crewai --help
 
@@ -10833,15 +11648,15 @@ Before starting, make sure you have:
 
 First, let's create a new CrewAI Flow project using the CLI. This command sets up a scaffolded project with all the necessary directories and template files for your flow.
 
-```bash  theme={null}
+```bash theme={null}
 crewai create flow guide_creator_flow
 cd guide_creator_flow
 ```
 
 This will generate a project with the basic structure needed for your flow.
 
-<Frame caption="CrewAI Framework Overview">
-  <img src="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/flows.png?fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=82ea168de2f004553dcea21410cd7d8a" alt="CrewAI Framework Overview" data-og-width="669" width="669" data-og-height="464" height="464" data-path="images/flows.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/flows.png?w=280&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=4a6177acae3789dd8e4467b791c8966e 280w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/flows.png?w=560&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=7900e4cdad93fd37bbcd2f1f2f38b40b 560w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/flows.png?w=840&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=a83fa78165e93bc1d988a30ebc33889a 840w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/flows.png?w=1100&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=540eb3d8d8f256d6d703aa5e6111a4cd 1100w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/flows.png?w=1650&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=04fbb8e23728b87efa78a0a776e2d194 1650w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/flows.png?w=2500&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=ff06d73f5d4aa911154c66becf14d732 2500w" />
+<Frame>
+  <img alt="CrewAI Framework Overview" />
 </Frame>
 
 ## Step 2: Understanding the Project Structure
@@ -10877,7 +11692,7 @@ We'll modify this structure to create our guide creator flow, which will orchest
 
 Our flow will need a specialized crew to handle the content creation process. Let's use the CrewAI CLI to add a content writer crew:
 
-```bash  theme={null}
+```bash theme={null}
 crewai flow add-crew content-crew
 ```
 
@@ -10891,7 +11706,7 @@ Now, let's modify the generated files for the content writer crew. We'll set up 
 
    Remember to set `llm` to the provider you are using.
 
-```yaml  theme={null}
+```yaml theme={null}
 # src/guide_creator_flow/crews/content_crew/config/agents.yaml
 content_writer:
   role: >
@@ -10923,7 +11738,7 @@ These agent definitions establish the specialized roles and perspectives that wi
 
 2. Next, update the tasks configuration file to define the specific writing and reviewing tasks:
 
-```yaml  theme={null}
+```yaml theme={null}
 # src/guide_creator_flow/crews/content_crew/config/tasks.yaml
 write_section_task:
   description: >
@@ -10983,7 +11798,7 @@ These task definitions provide detailed instructions to our agents, ensuring the
 
 3. Now, update the crew implementation file to define how our agents and tasks work together:
 
-```python  theme={null}
+```python theme={null}
 # src/guide_creator_flow/crews/content_crew/content_crew.py
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
@@ -11050,7 +11865,7 @@ Our flow will:
 
 Let's create our flow in the `main.py` file:
 
-```python  theme={null}
+```python theme={null}
 #!/usr/bin/env python
 import json
 import os
@@ -11241,7 +12056,7 @@ ANTHROPIC_API_KEY=your_anthropic_api_key
 
 Install the required dependencies:
 
-```bash  theme={null}
+```bash theme={null}
 crewai install
 ```
 
@@ -11249,7 +12064,7 @@ crewai install
 
 Now it's time to see your flow in action! Run it using the CrewAI CLI:
 
-```bash  theme={null}
+```bash theme={null}
 crewai flow kickoff
 ```
 
@@ -11266,7 +12081,7 @@ This demonstrates the power of flows to orchestrate complex processes involving 
 
 One of the powerful features of flows is the ability to visualize their structure:
 
-```bash  theme={null}
+```bash theme={null}
 crewai flow plot
 ```
 
@@ -11341,7 +12156,7 @@ Let's break down the key components of flows to help you understand how to build
 
 Flows allow you to make direct calls to language models when you need simple, structured responses:
 
-```python  theme={null}
+```python theme={null}
 llm = LLM(
     model="model-id-here",  # gpt-4o, gemini-2.0-flash, anthropic/claude...
     response_format=GuideOutline
@@ -11355,7 +12170,7 @@ This is more efficient than using a crew when you need a specific, structured ou
 
 Flows use decorators to establish relationships between components:
 
-```python  theme={null}
+```python theme={null}
 @start()
 def get_user_input(self):
     # First step in the flow
@@ -11373,7 +12188,7 @@ This creates a clear, declarative structure for your application.
 
 Flows maintain state across steps, making it easy to share data:
 
-```python  theme={null}
+```python theme={null}
 class GuideCreatorState(BaseModel):
     topic: str = ""
     audience_level: str = ""
@@ -11387,7 +12202,7 @@ This provides a type-safe way to track and transform data throughout your flow.
 
 Flows can seamlessly integrate with crews for complex collaborative tasks:
 
-```python  theme={null}
+```python theme={null}
 result = ContentCrew().crew().kickoff(inputs={
     "section_title": section.title,
     # ...
@@ -11474,7 +12289,7 @@ With unstructured state:
 
 Here's a simple example of unstructured state management:
 
-```python  theme={null}
+```python theme={null}
 from crewai.flow.flow import Flow, listen, start
 
 class UnstructuredStateFlow(Flow):
@@ -11560,7 +12375,7 @@ With structured state:
 
 Here's how to implement structured state management:
 
-```python  theme={null}
+```python theme={null}
 from crewai.flow.flow import Flow, listen, start
 from pydantic import BaseModel, Field
 from typing import List, Dict, Optional
@@ -11661,7 +12476,7 @@ Regardless of whether you're using structured or unstructured state, you can upd
 
 Flow methods can return values that are then passed as arguments to listening methods:
 
-```python  theme={null}
+```python theme={null}
 from crewai.flow.flow import Flow, listen, start
 
 class DataPassingFlow(Flow):
@@ -11701,7 +12516,7 @@ The `@persist()` decorator automates state persistence, saving your flow's state
 
 When applied at the class level, `@persist()` saves state after every method execution:
 
-```python  theme={null}
+```python theme={null}
 from crewai.flow.flow import Flow, listen, start
 from crewai.flow.persistence import persist
 from pydantic import BaseModel
@@ -11738,7 +12553,7 @@ print(f"Second run result: {result2}")  # Will be higher due to persisted state
 
 For more granular control, you can apply `@persist()` to specific methods:
 
-```python  theme={null}
+```python theme={null}
 from crewai.flow.flow import Flow, listen, start
 from crewai.flow.persistence import persist
 
@@ -11767,7 +12582,7 @@ class SelectivePersistFlow(Flow):
 
 Flows support conditional `@start()` and resumable execution for HITL/cyclic scenarios:
 
-```python  theme={null}
+```python theme={null}
 from crewai.flow.flow import Flow, start, listen, and_, or_
 
 class ResumableFlow(Flow):
@@ -11792,7 +12607,7 @@ class ResumableFlow(Flow):
 
 You can use state to implement complex conditional logic in your flows:
 
-```python  theme={null}
+```python theme={null}
 from crewai.flow.flow import Flow, listen, router, start
 from pydantic import BaseModel
 
@@ -11838,7 +12653,7 @@ class PaymentFlow(Flow[PaymentState]):
 
 For complex state transformations, you can create dedicated methods:
 
-```python  theme={null}
+```python theme={null}
 from crewai.flow.flow import Flow, listen, start
 from pydantic import BaseModel
 from typing import List, Dict
@@ -11905,7 +12720,7 @@ One of the most powerful patterns in CrewAI is combining flow state management w
 
 You can use flow state to parameterize crews:
 
-```python  theme={null}
+```python theme={null}
 from crewai.flow.flow import Flow, listen, start
 from crewai import Agent, Crew, Process, Task
 from pydantic import BaseModel
@@ -11977,7 +12792,7 @@ class ResearchFlow(Flow[ResearchState]):
 
 When a crew completes, you can process its output and store it in your flow state:
 
-```python  theme={null}
+```python theme={null}
 @listen(execute_crew)
 def process_crew_results(self, _):
     # Parse the raw results (assuming JSON output)
@@ -12001,7 +12816,7 @@ def process_crew_results(self, _):
 
 Design your state to contain only what's necessary:
 
-```python  theme={null}
+```python theme={null}
 # Too broad
 class BloatedState(BaseModel):
     user_data: Dict = {}
@@ -12021,7 +12836,7 @@ class FocusedState(BaseModel):
 
 As your flows grow in complexity, structured state becomes increasingly valuable:
 
-```python  theme={null}
+```python theme={null}
 # Simple flow can use unstructured state
 class SimpleGreetingFlow(Flow):
     @start()
@@ -12045,7 +12860,7 @@ class RegistrationFlow(Flow[UserRegistrationState]):
 
 For complex flows, document how state changes throughout the execution:
 
-```python  theme={null}
+```python theme={null}
 @start()
 def initialize_order(self):
     """
@@ -12064,7 +12879,7 @@ def initialize_order(self):
 
 Implement error handling for state access:
 
-```python  theme={null}
+```python theme={null}
 @listen(previous_step)
 def process_data(self, _):
     try:
@@ -12083,7 +12898,7 @@ def process_data(self, _):
 
 Leverage state to track progress in long-running flows:
 
-```python  theme={null}
+```python theme={null}
 class ProgressTrackingFlow(Flow):
     @start()
     def initialize(self):
@@ -12114,7 +12929,7 @@ class ProgressTrackingFlow(Flow):
 
 Especially with structured state, prefer immutable operations for clarity:
 
-```python  theme={null}
+```python theme={null}
 # Instead of modifying lists in place:
 self.state.items.append(new_item)  # Mutable operation
 
@@ -12139,7 +12954,7 @@ class ImmutableFlow(Flow[ItemState]):
 
 When developing, add logging to track state changes:
 
-```python  theme={null}
+```python theme={null}
 import logging
 logging.basicConfig(level=logging.INFO)
 
@@ -12164,7 +12979,7 @@ class LoggingFlow(Flow):
 
 You can add methods to visualize your state for debugging:
 
-```python  theme={null}
+```python theme={null}
 def visualize_state(self):
     """Create a simple visualization of the current state"""
     import json
@@ -12220,7 +13035,7 @@ Get started with CrewAI - Install, configure, and build your first AI crew
 
 Watch this video tutorial for a step-by-step demonstration of the installation process:
 
-<iframe className="w-full aspect-video rounded-xl" src="https://www.youtube.com/embed/-kSOTtYzgEw" title="CrewAI Installation Guide" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+<iframe title="CrewAI Installation Guide" />
 
 ## Text Tutorial
 
@@ -12229,7 +13044,7 @@ Watch this video tutorial for a step-by-step demonstration of the installation p
 
   CrewAI requires `Python >=3.10 and <3.14`. Here's how to check your version:
 
-  ```bash  theme={null}
+  ```bash theme={null}
   python3 --version
   ```
 
@@ -12252,13 +13067,13 @@ If you haven't installed `uv` yet, follow **step 1** to quickly get it set up on
 
       Use `curl` to download the script and execute it with `sh`:
 
-      ```shell  theme={null}
+      ```shell theme={null}
       curl -LsSf https://astral.sh/uv/install.sh | sh
       ```
 
       If your system doesn't have `curl`, you can use `wget`:
 
-      ```shell  theme={null}
+      ```shell theme={null}
       wget -qO- https://astral.sh/uv/install.sh | sh
       ```
 
@@ -12266,7 +13081,7 @@ If you haven't installed `uv` yet, follow **step 1** to quickly get it set up on
 
       Use `irm` to download the script and `iex` to execute it:
 
-      ```shell  theme={null}
+      ```shell theme={null}
       powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
       ```
 
@@ -12276,14 +13091,14 @@ If you haven't installed `uv` yet, follow **step 1** to quickly get it set up on
   <Step title="Install CrewAI 🚀">
     * Run the following command to install `crewai` CLI:
 
-      ```shell  theme={null}
+      ```shell theme={null}
       uv tool install crewai
       ```
 
       <Warning>
         If you encounter a `PATH` warning, run this command to update your shell:
 
-        ```shell  theme={null}
+        ```shell theme={null}
         uv tool update-shell
         ```
       </Warning>
@@ -12293,18 +13108,18 @@ If you haven't installed `uv` yet, follow **step 1** to quickly get it set up on
       </Warning>
 
     * To verify that `crewai` is installed, run:
-      ```shell  theme={null}
+      ```shell theme={null}
       uv tool list
       ```
 
     * You should see something like:
-      ```shell  theme={null}
+      ```shell theme={null}
       crewai v0.102.0
       - crewai
       ```
 
     * If you need to update `crewai`, run:
-      ```shell  theme={null}
+      ```shell theme={null}
       uv tool install crewai --upgrade
       ```
 
@@ -12319,7 +13134,7 @@ We recommend using the `YAML` template scaffolding for a structured approach to 
 <Steps>
   <Step title="Generate Project Scaffolding">
     * Run the `crewai` CLI command:
-      ```shell  theme={null}
+      ```shell theme={null}
       crewai create crew <your_project_name>
       ```
 
@@ -12364,15 +13179,15 @@ We recommend using the `YAML` template scaffolding for a structured approach to 
 
   <Step title="Run your Crew">
     * Before you run your crew, make sure to run:
-      ```bash  theme={null}
+      ```bash theme={null}
       crewai install
       ```
     * If you need to install additional packages, use:
-      ```shell  theme={null}
+      ```shell theme={null}
       uv add <package-name>
       ```
     * To run your crew, execute the following command in the root of your project:
-      ```bash  theme={null}
+      ```bash theme={null}
       crewai run
       ```
   </Step>
@@ -12403,9 +13218,10 @@ We recommend using the `YAML` template scaffolding for a structured approach to 
 
 ## Next Steps
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Build Your First Agent" icon="code" href="/en/quickstart">
-    Follow our quickstart guide to create your first CrewAI agent and get hands-on experience.
+    Follow our quickstart guide to create your first CrewAI agent and get
+    hands-on experience.
   </Card>
 
   <Card title="Join the Community" icon="comments" href="https://community.crewai.com">
@@ -12421,115 +13237,94 @@ Build AI agent teams that work together to tackle complex tasks
 
 # What is CrewAI?
 
-**CrewAI is a lean, lightning-fast Python framework built entirely from scratch—completely independent of LangChain or other agent frameworks.**
+**CrewAI is the leading open-source framework for orchestrating autonomous AI agents and building complex workflows.**
 
-CrewAI empowers developers with both high-level simplicity and precise low-level control, ideal for creating autonomous AI agents tailored to any scenario:
+It empowers developers to build production-ready multi-agent systems by combining the collaborative intelligence of **Crews** with the precise control of **Flows**.
 
-* **[CrewAI Crews](/en/guides/crews/first-crew)**: Optimize for autonomy and collaborative intelligence, enabling you to create AI teams where each agent has specific roles, tools, and goals.
-* **[CrewAI Flows](/en/guides/flows/first-flow)**: Enable granular, event-driven control, single LLM calls for precise task orchestration and supports Crews natively.
+* **[CrewAI Flows](/en/guides/flows/first-flow)**: The backbone of your AI application. Flows allow you to create structured, event-driven workflows that manage state and control execution. They provide the scaffolding for your AI agents to work within.
+* **[CrewAI Crews](/en/guides/crews/first-crew)**: The units of work within your Flow. Crews are teams of autonomous agents that collaborate to solve specific tasks delegated to them by the Flow.
 
-With over 100,000 developers certified through our community courses, CrewAI is rapidly becoming the standard for enterprise-ready AI automation.
+With over 100,000 developers certified through our community courses, CrewAI is the standard for enterprise-ready AI automation.
 
-## How Crews Work
+## The CrewAI Architecture
+
+CrewAI's architecture is designed to balance autonomy with control.
+
+### 1. Flows: The Backbone
 
 <Note>
-  Just like a company has departments (Sales, Engineering, Marketing) working together under leadership to achieve business goals, CrewAI helps you create an organization of AI agents with specialized roles collaborating to accomplish complex tasks.
+  Think of a Flow as the "manager" or the "process definition" of your application. It defines the steps, the logic, and how data moves through your system.
 </Note>
 
-<Frame caption="CrewAI Framework Overview">
-  <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crews.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=514fd0b06e4128e62f10728d44601975" alt="CrewAI Framework Overview" data-og-width="634" width="634" data-og-height="473" height="473" data-path="images/crews.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crews.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=279c5c26c77fc9acc8411677716fa5ee 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crews.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=92b76be34b84b36771e0a8eed8976966 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crews.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=3ef573e6215967af1bb2975a58d0d859 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crews.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=1af6e6a337b70ca2ce238d8e40f49218 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crews.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=c5da01705f1373446f8582ac582ff244 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crews.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=96464aab7bb5efe4213a7b80f58038aa 2500w" />
+<Frame>
+  <img alt="CrewAI Framework Overview" />
 </Frame>
 
-| Component     |         Description        | Key Features                                                                                                                      |
-| :------------ | :------------------------: | :-------------------------------------------------------------------------------------------------------------------------------- |
-| **Crew**      | The top-level organization | • Manages AI agent teams<br />• Oversees workflows<br />• Ensures collaboration<br />• Delivers outcomes                          |
-| **AI Agents** |  Specialized team members  | • Have specific roles (researcher, writer)<br />• Use designated tools<br />• Can delegate tasks<br />• Make autonomous decisions |
-| **Process**   | Workflow management system | • Defines collaboration patterns<br />• Controls task assignments<br />• Manages interactions<br />• Ensures efficient execution  |
-| **Tasks**     |   Individual assignments   | • Have clear objectives<br />• Use specific tools<br />• Feed into larger process<br />• Produce actionable results               |
+Flows provide:
 
-### How It All Works Together
+* **State Management**: Persist data across steps and executions.
+* **Event-Driven Execution**: Trigger actions based on events or external inputs.
+* **Control Flow**: Use conditional logic, loops, and branching.
 
-1. The **Crew** organizes the overall operation
-2. **AI Agents** work on their specialized tasks
-3. The **Process** ensures smooth collaboration
-4. **Tasks** get completed to achieve the goal
+### 2. Crews: The Intelligence
+
+<Note>
+  Crews are the "teams" that do the heavy lifting. Within a Flow, you can trigger a Crew to tackle a complex problem requiring creativity and collaboration.
+</Note>
+
+<Frame>
+  <img alt="CrewAI Framework Overview" />
+</Frame>
+
+Crews provide:
+
+* **Role-Playing Agents**: Specialized agents with specific goals and tools.
+* **Autonomous Collaboration**: Agents work together to solve tasks.
+* **Task Delegation**: Tasks are assigned and executed based on agent capabilities.
+
+## How It All Works Together
+
+1. **The Flow** triggers an event or starts a process.
+2. **The Flow** manages the state and decides what to do next.
+3. **The Flow** delegates a complex task to a **Crew**.
+4. **The Crew**'s agents collaborate to complete the task.
+5. **The Crew** returns the result to the **Flow**.
+6. **The Flow** continues execution based on the result.
 
 ## Key Features
 
-<CardGroup cols={2}>
-  <Card title="Role-Based Agents" icon="users">
-    Create specialized agents with defined roles, expertise, and goals - from researchers to analysts to writers
+<CardGroup>
+  <Card title="Production-Grade Flows" icon="arrow-progress">
+    Build reliable, stateful workflows that can handle long-running processes and complex logic.
+  </Card>
+
+  <Card title="Autonomous Crews" icon="users">
+    Deploy teams of agents that can plan, execute, and collaborate to achieve high-level goals.
   </Card>
 
   <Card title="Flexible Tools" icon="screwdriver-wrench">
-    Equip agents with custom tools and APIs to interact with external services and data sources
+    Connect your agents to any API, database, or local tool.
   </Card>
 
-  <Card title="Intelligent Collaboration" icon="people-arrows">
-    Agents work together, sharing insights and coordinating tasks to achieve complex objectives
-  </Card>
-
-  <Card title="Task Management" icon="list-check">
-    Define sequential or parallel workflows, with agents automatically handling task dependencies
-  </Card>
-</CardGroup>
-
-## How Flows Work
-
-<Note>
-  While Crews excel at autonomous collaboration, Flows provide structured automations, offering granular control over workflow execution. Flows ensure tasks are executed reliably, securely, and efficiently, handling conditional logic, loops, and dynamic state management with precision. Flows integrate seamlessly with Crews, enabling you to balance high autonomy with exacting control.
-</Note>
-
-<Frame caption="CrewAI Framework Overview">
-  <img src="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/flows.png?fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=82ea168de2f004553dcea21410cd7d8a" alt="CrewAI Framework Overview" data-og-width="669" width="669" data-og-height="464" height="464" data-path="images/flows.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/flows.png?w=280&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=4a6177acae3789dd8e4467b791c8966e 280w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/flows.png?w=560&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=7900e4cdad93fd37bbcd2f1f2f38b40b 560w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/flows.png?w=840&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=a83fa78165e93bc1d988a30ebc33889a 840w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/flows.png?w=1100&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=540eb3d8d8f256d6d703aa5e6111a4cd 1100w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/flows.png?w=1650&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=04fbb8e23728b87efa78a0a776e2d194 1650w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/flows.png?w=2500&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=ff06d73f5d4aa911154c66becf14d732 2500w" />
-</Frame>
-
-| Component        |            Description            | Key Features                                                                                                                                                         |
-| :--------------- | :-------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Flow**         | Structured workflow orchestration | • Manages execution paths<br />• Handles state transitions<br />• Controls task sequencing<br />• Ensures reliable execution                                         |
-| **Events**       |   Triggers for workflow actions   | • Initiate specific processes<br />• Enable dynamic responses<br />• Support conditional branching<br />• Allow for real-time adaptation                             |
-| **States**       |    Workflow execution contexts    | • Maintain execution data<br />• Enable persistence<br />• Support resumability<br />• Ensure execution integrity                                                    |
-| **Crew Support** |    Enhances workflow automation   | • Injects pockets of agency when needed<br />• Complements structured workflows<br />• Balances automation with intelligence<br />• Enables adaptive decision-making |
-
-### Key Capabilities
-
-<CardGroup cols={2}>
-  <Card title="Event-Driven Orchestration" icon="bolt">
-    Define precise execution paths responding dynamically to events
-  </Card>
-
-  <Card title="Fine-Grained Control" icon="sliders">
-    Manage workflow states and conditional execution securely and efficiently
-  </Card>
-
-  <Card title="Native Crew Integration" icon="puzzle-piece">
-    Effortlessly combine with Crews for enhanced autonomy and intelligence
-  </Card>
-
-  <Card title="Deterministic Execution" icon="route">
-    Ensure predictable outcomes with explicit control flow and error handling
+  <Card title="Enterprise Security" icon="lock">
+    Designed with security and compliance in mind for enterprise deployments.
   </Card>
 </CardGroup>
 
 ## When to Use Crews vs. Flows
 
-<Note>
-  Understanding when to use [Crews](/en/guides/crews/first-crew) versus [Flows](/en/guides/flows/first-flow) is key to maximizing the potential of CrewAI in your applications.
-</Note>
+**The short answer: Use both.**
 
-| Use Case                | Recommended Approach                 | Why?                                                                                                                                        |
-| :---------------------- | :----------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Open-ended research** | [Crews](/en/guides/crews/first-crew) | When tasks require creative thinking, exploration, and adaptation                                                                           |
-| **Content generation**  | [Crews](/en/guides/crews/first-crew) | For collaborative creation of articles, reports, or marketing materials                                                                     |
-| **Decision workflows**  | [Flows](/en/guides/flows/first-flow) | When you need predictable, auditable decision paths with precise control                                                                    |
-| **API orchestration**   | [Flows](/en/guides/flows/first-flow) | For reliable integration with multiple external services in a specific sequence                                                             |
-| **Hybrid applications** | Combined approach                    | Use [Flows](/en/guides/flows/first-flow) to orchestrate overall process with [Crews](/en/guides/crews/first-crew) handling complex subtasks |
+For any production-ready application, **start with a Flow**.
 
-### Decision Framework
+* **Use a Flow** to define the overall structure, state, and logic of your application.
+* **Use a Crew** within a Flow step when you need a team of agents to perform a specific, complex task that requires autonomy.
 
-* **Choose [Crews](/en/guides/crews/first-crew) when:** You need autonomous problem-solving, creative collaboration, or exploratory tasks
-* **Choose [Flows](/en/guides/flows/first-flow) when:** You require deterministic outcomes, auditability, or precise control over execution
-* **Combine both when:** Your application needs both structured processes and pockets of autonomous intelligence
+| Use Case                | Architecture                                                               |
+| :---------------------- | :------------------------------------------------------------------------- |
+| **Simple Automation**   | Single Flow with Python tasks                                              |
+| **Complex Research**    | Flow managing state -> Crew performing research                            |
+| **Application Backend** | Flow handling API requests -> Crew generating content -> Flow saving to DB |
 
 ## Why Choose CrewAI?
 
@@ -12542,17 +13337,17 @@ With over 100,000 developers certified through our community courses, CrewAI is 
 
 ## Ready to Start Building?
 
-<CardGroup cols={2}>
-  <Card title="Build Your First Crew" icon="users-gear" href="/en/guides/crews/first-crew">
-    Step-by-step tutorial to create a collaborative AI team that works together to solve complex problems.
-  </Card>
-
+<CardGroup>
   <Card title="Build Your First Flow" icon="diagram-project" href="/en/guides/flows/first-flow">
     Learn how to create structured, event-driven workflows with precise control over execution.
   </Card>
+
+  <Card title="Build Your First Crew" icon="users-gear" href="/en/guides/crews/first-crew">
+    Step-by-step tutorial to create a collaborative AI team that works together to solve complex problems.
+  </Card>
 </CardGroup>
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Install CrewAI" icon="wrench" href="/en/installation">
     Get started with CrewAI in your development environment.
   </Card>
@@ -12577,14 +13372,16 @@ Learn how to use CrewAI's simple DSL syntax to integrate MCP servers directly wi
 CrewAI's MCP DSL (Domain Specific Language) integration provides the **simplest way** to connect your agents to MCP (Model Context Protocol) servers. Just add an `mcps` field to your agent and CrewAI handles all the complexity automatically.
 
 <Info>
-  This is the **recommended approach** for most MCP use cases. For advanced scenarios requiring manual connection management, see [MCPServerAdapter](/en/mcp/overview#advanced-mcpserveradapter).
+  This is the **recommended approach** for most MCP use cases. For advanced
+  scenarios requiring manual connection management, see
+  [MCPServerAdapter](/en/mcp/overview#advanced-mcpserveradapter).
 </Info>
 
 ## Basic Usage
 
 Add MCP servers to your agent using the `mcps` field:
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent
 
 agent = Agent(
@@ -12604,7 +13401,7 @@ agent = Agent(
 
 ### External MCP Remote Servers
 
-```python  theme={null}
+```python theme={null}
 # Basic HTTPS server
 "https://api.example.com/mcp"
 
@@ -12619,7 +13416,7 @@ agent = Agent(
 
 Use the `#` syntax to select specific tools from a server:
 
-```python  theme={null}
+```python theme={null}
 # Get only the forecast tool from weather server
 "https://weather.api.com/mcp#get_forecast"
 
@@ -12631,7 +13428,7 @@ Use the `#` syntax to select specific tools from a server:
 
 Access tools from the CrewAI AMP marketplace:
 
-```python  theme={null}
+```python theme={null}
 # Full service with all tools
 "crewai-amp:financial-data"
 
@@ -12650,7 +13447,7 @@ mcps=[
 
 Here's a complete example using multiple MCP servers:
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew, Process
 
 # Create agent with multiple MCP sources
@@ -12701,7 +13498,7 @@ print(f"Research completed with {len(multi_source_agent.mcps)} MCP data sources"
 
 CrewAI automatically handles tool naming to prevent conflicts:
 
-```python  theme={null}
+```python theme={null}
 # Original MCP server has tools: "search", "analyze"
 # CrewAI creates tools: "mcp_exa_ai_search", "mcp_exa_ai_analyze"
 
@@ -12726,7 +13523,7 @@ The MCP DSL is designed to be robust and user-friendly:
 
 ### Graceful Server Failures
 
-```python  theme={null}
+```python theme={null}
 agent = Agent(
     role="Resilient Researcher",
     goal="Research despite server issues",
@@ -12754,7 +13551,7 @@ All MCP operations have built-in timeouts:
 * **Tool execution timeout**: 30 seconds
 * **Discovery timeout**: 15 seconds
 
-```python  theme={null}
+```python theme={null}
 # These servers will timeout gracefully if unresponsive
 mcps=[
     "https://slow-server.com/mcp",        # Will timeout after 10s if unresponsive
@@ -12768,7 +13565,7 @@ mcps=[
 
 Tool schemas are cached for 5 minutes to improve performance:
 
-```python  theme={null}
+```python theme={null}
 # First agent creation - discovers tools from server
 agent1 = Agent(role="First", goal="Test", backstory="Test",
                mcps=["https://api.example.com/mcp"])
@@ -12782,7 +13579,7 @@ agent2 = Agent(role="Second", goal="Test", backstory="Test",
 
 Tool connections are established only when tools are actually used:
 
-```python  theme={null}
+```python theme={null}
 # Agent creation is fast - no MCP connections made yet
 agent = Agent(
     role="On-Demand Agent",
@@ -12799,7 +13596,7 @@ agent = Agent(
 
 MCP tools work seamlessly with other CrewAI features:
 
-```python  theme={null}
+```python theme={null}
 from crewai.tools import BaseTool
 
 class CustomTool(BaseTool):
@@ -12831,7 +13628,7 @@ agent = Agent(
 
 ### 1. Use Specific Tools When Possible
 
-```python  theme={null}
+```python theme={null}
 # Good - only get the tools you need
 mcps=["https://weather.api.com/mcp#get_forecast"]
 
@@ -12841,7 +13638,7 @@ mcps=["https://weather.api.com/mcp"]
 
 ### 2. Handle Authentication Securely
 
-```python  theme={null}
+```python theme={null}
 import os
 
 # Store API keys in environment variables
@@ -12858,7 +13655,7 @@ agent = Agent(
 
 ### 3. Plan for Server Failures
 
-```python  theme={null}
+```python theme={null}
 # Always include backup options
 mcps=[
     "https://primary-api.com/mcp",       # Primary choice
@@ -12869,7 +13666,7 @@ mcps=[
 
 ### 4. Use Descriptive Agent Roles
 
-```python  theme={null}
+```python theme={null}
 agent = Agent(
     role="Weather-Enhanced Market Analyst",
     goal="Analyze markets considering weather impacts",
@@ -12887,7 +13684,7 @@ agent = Agent(
 
 **No tools discovered:**
 
-```python  theme={null}
+```python theme={null}
 # Check your MCP server URL and authentication
 # Verify the server is running and accessible
 mcps=["https://mcp.example.com/mcp?api_key=valid_key"]
@@ -12895,7 +13692,7 @@ mcps=["https://mcp.example.com/mcp?api_key=valid_key"]
 
 **Connection timeouts:**
 
-```python  theme={null}
+```python theme={null}
 # Server may be slow or overloaded
 # CrewAI will log warnings and continue with other servers
 # Check server status or try backup servers
@@ -12903,7 +13700,7 @@ mcps=["https://mcp.example.com/mcp?api_key=valid_key"]
 
 **Authentication failures:**
 
-```python  theme={null}
+```python theme={null}
 # Verify API keys and credentials
 # Check server documentation for required parameters
 # Ensure query parameters are properly URL encoded
@@ -12929,7 +13726,7 @@ To connect to multiple servers, you provide a list of server parameter dictionar
 
 Supported transport types for each server in the list include `stdio`, `sse`, and `streamable-http`.
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew, Process
 from crewai_tools import MCPServerAdapter
 from mcp import StdioServerParameters # Needed for Stdio example
@@ -12998,7 +13795,7 @@ Use the `mcps` field directly on agents for seamless MCP tool integration. The D
 
 Perfect for remote HTTPS servers and CrewAI AMP marketplace:
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent
 
 agent = Agent(
@@ -13019,7 +13816,7 @@ agent = Agent(
 
 For complete control over connection settings, tool filtering, and all transport types:
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent
 from crewai.mcp import MCPServerStdio, MCPServerHTTP, MCPServerSSE
 from crewai.mcp.filters import create_static_tool_filter
@@ -13069,13 +13866,13 @@ We currently support the following transport mechanisms:
 
 Watch this video tutorial for a comprehensive guide on MCP integration with CrewAI:
 
-<iframe className="w-full aspect-video rounded-xl" src="https://www.youtube.com/embed/TpQ45lAZh48" title="CrewAI MCP Integration Guide" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+<iframe title="CrewAI MCP Integration Guide" />
 
 ## Installation
 
 CrewAI MCP integration requires the `mcp` library:
 
-```shell  theme={null}
+```shell theme={null}
 # For Simple DSL Integration (Recommended)
 uv add mcp
 
@@ -13089,7 +13886,7 @@ The easiest way to integrate MCP servers is using the `mcps` field on your agent
 
 ### Quick Start with String References
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create agent with MCP tools using string references
@@ -13117,7 +13914,7 @@ result = crew.kickoff()
 
 ### Quick Start with Structured Configurations
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 from crewai.mcp import MCPServerStdio, MCPServerHTTP, MCPServerSSE
 
@@ -13163,7 +13960,7 @@ The `mcps` field supports both **string references** (for quick setup) and **str
 
 #### External MCP Servers
 
-```python  theme={null}
+```python theme={null}
 mcps=[
     # Full server - get all available tools
     "https://mcp.example.com/api",
@@ -13178,7 +13975,7 @@ mcps=[
 
 #### CrewAI AMP Marketplace
 
-```python  theme={null}
+```python theme={null}
 mcps=[
     # Full AMP MCP service - get all available tools
     "crewai-amp:financial-data",
@@ -13198,7 +13995,7 @@ mcps=[
 
 Perfect for local MCP servers that run as processes:
 
-```python  theme={null}
+```python theme={null}
 from crewai.mcp import MCPServerStdio
 from crewai.mcp.filters import create_static_tool_filter
 
@@ -13225,7 +14022,7 @@ mcps=[
 
 For remote MCP servers over HTTP/HTTPS:
 
-```python  theme={null}
+```python theme={null}
 from crewai.mcp import MCPServerHTTP
 
 mcps=[
@@ -13249,7 +14046,7 @@ mcps=[
 
 For remote servers using Server-Sent Events:
 
-```python  theme={null}
+```python theme={null}
 from crewai.mcp import MCPServerSSE
 
 mcps=[
@@ -13265,7 +14062,7 @@ mcps=[
 
 You can combine string references and structured configurations:
 
-```python  theme={null}
+```python theme={null}
 from crewai.mcp import MCPServerStdio, MCPServerHTTP
 
 mcps=[
@@ -13289,7 +14086,7 @@ mcps=[
 
 Structured configurations support advanced tool filtering:
 
-```python  theme={null}
+```python theme={null}
 from crewai.mcp import MCPServerStdio
 from crewai.mcp.filters import create_static_tool_filter, create_dynamic_tool_filter, ToolFilterContext
 
@@ -13369,7 +14166,7 @@ All transport types support:
 
 The MCP DSL integration is designed to be resilient and handles failures gracefully:
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent
 from crewai.mcp import MCPServerStdio, MCPServerHTTP
 
@@ -13413,14 +14210,14 @@ The `MCPServerAdapter` supports several configuration options to customize the c
 
 * **`connect_timeout`** (optional): Maximum time in seconds to wait for establishing a connection to the MCP server. Defaults to 30 seconds if not specified. This is particularly useful for remote servers that may have variable response times.
 
-```python  theme={null}
+```python theme={null}
 # Example with custom connection timeout
 with MCPServerAdapter(server_params, connect_timeout=60) as tools:
     # Connection will timeout after 60 seconds if not established
     pass
 ```
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent
 from crewai_tools import MCPServerAdapter
 from mcp import StdioServerParameters # For Stdio Server
@@ -13471,7 +14268,7 @@ There are two ways to filter tools:
 
 ### Accessing a specific tool using dictionary-style indexing.
 
-```python  theme={null}
+```python theme={null}
 with MCPServerAdapter(server_params, connect_timeout=60) as mcp_tools:
     print(f"Available tools: {[tool.name for tool in mcp_tools]}")
 
@@ -13488,7 +14285,7 @@ with MCPServerAdapter(server_params, connect_timeout=60) as mcp_tools:
 
 ### Pass a list of tool names to the `MCPServerAdapter` constructor.
 
-```python  theme={null}
+```python theme={null}
 with MCPServerAdapter(server_params, "tool_name", connect_timeout=60) as mcp_tools:
     print(f"Available tools: {[tool.name for tool in mcp_tools]}")
 
@@ -13507,7 +14304,7 @@ with MCPServerAdapter(server_params, "tool_name", connect_timeout=60) as mcp_too
 
 To use MCPServer tools within a CrewBase class, use the `get_mcp_tools` method. Server configurations should be provided via the `mcp_server_params` attribute. You can pass either a single configuration or a list of multiple server configurations.
 
-```python  theme={null}
+```python theme={null}
 @CrewBase
 class CrewWithMCP:
   # ... define your agents and tasks config file ...
@@ -13552,7 +14349,7 @@ class CrewWithMCP:
 
 You can configure the connection timeout for MCP servers by setting the `mcp_connect_timeout` class attribute. If no timeout is specified, it defaults to 30 seconds.
 
-```python  theme={null}
+```python theme={null}
 @CrewBase
 class CrewWithMCP:
   mcp_server_params = [...]
@@ -13563,7 +14360,7 @@ class CrewWithMCP:
       return Agent(config=self.agents_config["your_agent"], tools=self.get_mcp_tools())
 ```
 
-```python  theme={null}
+```python theme={null}
 @CrewBase
 class CrewWithDefaultTimeout:
   mcp_server_params = [...]
@@ -13578,7 +14375,7 @@ class CrewWithDefaultTimeout:
 
 You can filter which tools are available to your agent by passing a list of tool names to the `get_mcp_tools` method.
 
-```python  theme={null}
+```python theme={null}
 @agent
 def another_agent(self):
     return Agent(
@@ -13589,7 +14386,7 @@ def another_agent(self):
 
 The timeout configuration applies to all MCP tool calls within the crew:
 
-```python  theme={null}
+```python theme={null}
 @CrewBase
 class CrewWithCustomTimeout:
   mcp_server_params = [...]
@@ -13605,43 +14402,47 @@ class CrewWithCustomTimeout:
 
 ## Explore MCP Integrations
 
-<CardGroup cols={2}>
-  <Card title="Simple DSL Integration" icon="code" href="/en/mcp/dsl-integration" color="#3B82F6">
-    **Recommended**: Use the simple `mcps=[]` field syntax for effortless MCP integration.
+<CardGroup>
+  <Card title="Simple DSL Integration" icon="code" href="/en/mcp/dsl-integration">
+    **Recommended**: Use the simple `mcps=[]` field syntax for effortless MCP
+    integration.
   </Card>
 
-  <Card title="Stdio Transport" icon="server" href="/en/mcp/stdio" color="#10B981">
-    Connect to local MCP servers via standard input/output. Ideal for scripts and local executables.
+  <Card title="Stdio Transport" icon="server" href="/en/mcp/stdio">
+    Connect to local MCP servers via standard input/output. Ideal for scripts
+    and local executables.
   </Card>
 
-  <Card title="SSE Transport" icon="wifi" href="/en/mcp/sse" color="#F59E0B">
-    Integrate with remote MCP servers using Server-Sent Events for real-time data streaming.
+  <Card title="SSE Transport" icon="wifi" href="/en/mcp/sse">
+    Integrate with remote MCP servers using Server-Sent Events for real-time
+    data streaming.
   </Card>
 
-  <Card title="Streamable HTTP Transport" icon="globe" href="/en/mcp/streamable-http" color="#8B5CF6">
-    Utilize flexible Streamable HTTP for robust communication with remote MCP servers.
+  <Card title="Streamable HTTP Transport" icon="globe" href="/en/mcp/streamable-http">
+    Utilize flexible Streamable HTTP for robust communication with remote MCP
+    servers.
   </Card>
 
-  <Card title="Connecting to Multiple Servers" icon="layer-group" href="/en/mcp/multiple-servers" color="#EF4444">
-    Aggregate tools from several MCP servers simultaneously using a single adapter.
+  <Card title="Connecting to Multiple Servers" icon="layer-group" href="/en/mcp/multiple-servers">
+    Aggregate tools from several MCP servers simultaneously using a single
+    adapter.
   </Card>
 
-  <Card title="Security Considerations" icon="lock" href="/en/mcp/security" color="#DC2626">
-    Review important security best practices for MCP integration to keep your agents safe.
+  <Card title="Security Considerations" icon="lock" href="/en/mcp/security">
+    Review important security best practices for MCP integration to keep your
+    agents safe.
   </Card>
 </CardGroup>
 
 Checkout this repository for full demos and examples of MCP integration with CrewAI! 👇
 
-<Card title="GitHub Repository" icon="github" href="https://github.com/tonykipkemboi/crewai-mcp-demo" target="_blank">
+<Card title="GitHub Repository" icon="github" href="https://github.com/tonykipkemboi/crewai-mcp-demo">
   CrewAI MCP Demo
 </Card>
 
 ## Staying Safe with MCP
 
-<Warning>
-  Always ensure that you trust an MCP Server before using it.
-</Warning>
+<Warning>Always ensure that you trust an MCP Server before using it.</Warning>
 
 #### Security Warning: DNS Rebinding Attacks
 
@@ -13855,7 +14656,7 @@ You can connect to an SSE-based MCP server using two main approaches for managin
 
 Using a Python context manager (`with` statement) is the recommended approach. It automatically handles establishing and closing the connection to the SSE MCP server.
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew, Process
 from crewai_tools import MCPServerAdapter
 
@@ -13917,7 +14718,7 @@ If you need finer-grained control, you can manage the `MCPServerAdapter` connect
   You **MUST** call `mcp_server_adapter.stop()` to ensure the connection is closed and resources are released. Using a `try...finally` block is highly recommended.
 </Info>
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew, Process
 from crewai_tools import MCPServerAdapter
 
@@ -14006,7 +14807,7 @@ You can connect to an Stdio-based MCP server using two main approaches for manag
 
 Using a Python context manager (`with` statement) is the recommended approach. It automatically handles starting the MCP server process and stopping it when the context is exited.
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew, Process
 from crewai_tools import MCPServerAdapter
 from mcp import StdioServerParameters
@@ -14059,7 +14860,7 @@ If you need finer-grained control over when the Stdio MCP server process is star
   You **MUST** call `mcp_server_adapter.stop()` to ensure the server process is terminated and resources are released. Using a `try...finally` block is highly recommended.
 </Info>
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew, Process
 from crewai_tools import MCPServerAdapter
 from mcp import StdioServerParameters
@@ -14142,7 +14943,7 @@ You have two primary methods for managing the connection lifecycle with a Stream
 
 The recommended approach is to use a Python context manager (`with` statement), which handles the connection's setup and teardown automatically.
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew, Process
 from crewai_tools import MCPServerAdapter
 
@@ -14195,7 +14996,7 @@ For scenarios requiring more explicit control, you can manage the `MCPServerAdap
   It is **critical** to call `mcp_server_adapter.stop()` when you are done to close the connection and free up resources. A `try...finally` block is the safest way to ensure this.
 </Info>
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew, Process
 from crewai_tools import MCPServerAdapter
 
@@ -14487,7 +15288,7 @@ Follow the steps below to get Crewing! 🚣‍♂️
     4. Create your tasks visually and connect them in sequence
     5. Configure your inputs and click "Download Code" or "Deploy"
 
-        <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-studio-interface.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=c4f5428b111816273b3b53d9cef14fad" alt="Crew Studio Quickstart" data-og-width="2654" width="2654" data-og-height="1710" height="1710" data-path="images/enterprise/crew-studio-interface.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-studio-interface.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=35ea9140f0b9e57da5f45adbc7e2f166 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-studio-interface.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=ae6f0c18ef3679b5466177710fbc4a94 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-studio-interface.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=6c3e2fe013ab4826da90c937a9855635 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-studio-interface.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=7f1474dd7f983532dc910363b96f783a 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-studio-interface.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=f1a6d7e744e6862af5e72dce4deb0fd1 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-studio-interface.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=74aeb1ccd8e2c8f84d4247b8d0259737 2500w" />
+       <img alt="Crew Studio Quickstart" />
 
     <Card title="Try CrewAI AMP" icon="rocket" href="https://app.crewai.com">
       Start your free account at CrewAI AMP
@@ -14579,34 +15380,38 @@ This naming consistency allows CrewAI to automatically link your configurations 
 #### Example References
 
 <Tip>
-  Note how we use the same name for the agent in the `agents.yaml` (`email_summarizer`) file as the method name in the `crew.py` (`email_summarizer`) file.
+  Note how we use the same name for the agent in the `agents.yaml`
+  (`email_summarizer`) file as the method name in the `crew.py`
+  (`email_summarizer`) file.
 </Tip>
 
 ```yaml agents.yaml theme={null}
 email_summarizer:
-    role: >
-      Email Summarizer
-    goal: >
-      Summarize emails into a concise and clear summary
-    backstory: >
-      You will create a 5 bullet point summary of the report
-    llm: provider/model-id  # Add your choice of model here
+  role: >
+    Email Summarizer
+  goal: >
+    Summarize emails into a concise and clear summary
+  backstory: >
+    You will create a 5 bullet point summary of the report
+  llm: provider/model-id # Add your choice of model here
 ```
 
 <Tip>
-  Note how we use the same name for the task in the `tasks.yaml` (`email_summarizer_task`) file as the method name in the `crew.py` (`email_summarizer_task`) file.
+  Note how we use the same name for the task in the `tasks.yaml`
+  (`email_summarizer_task`) file as the method name in the `crew.py`
+  (`email_summarizer_task`) file.
 </Tip>
 
 ```yaml tasks.yaml theme={null}
 email_summarizer_task:
-    description: >
-      Summarize the email into a 5 bullet point summary
-    expected_output: >
-      A 5 bullet point summary of the email
-    agent: email_summarizer
-    context:
-      - reporting_task
-      - research_task
+  description: >
+    Summarize the email into a 5 bullet point summary
+  expected_output: >
+    A 5 bullet point summary of the email
+  agent: email_summarizer
+  context:
+    - reporting_task
+    - research_task
 ```
 
 ## Deploying Your Crew
@@ -14615,15 +15420,17 @@ The easiest way to deploy your crew to production is through [CrewAI AMP](http:/
 
 Watch this video tutorial for a step-by-step demonstration of deploying your crew to [CrewAI AMP](http://app.crewai.com) using the CLI.
 
-<iframe className="w-full aspect-video rounded-xl" src="https://www.youtube.com/embed/3EqSV-CYDZA" title="CrewAI Deployment Guide" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+<iframe title="CrewAI Deployment Guide" />
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Deploy on Enterprise" icon="rocket" href="http://app.crewai.com">
-    Get started with CrewAI AMP and deploy your crew in a production environment with just a few clicks.
+    Get started with CrewAI AMP and deploy your crew in a production environment
+    with just a few clicks.
   </Card>
 
   <Card title="Join the Community" icon="comments" href="https://community.crewai.com">
-    Join our open source community to discuss ideas, share your projects, and connect with other CrewAI developers.
+    Join our open source community to discuss ideas, share your projects, and
+    connect with other CrewAI developers.
   </Card>
 </CardGroup>
 
@@ -14649,7 +15456,7 @@ Minds are AI systems that work similarly to large language models (LLMs) but go 
 
 To incorporate this tool into your project, you need to install the Minds SDK:
 
-```shell  theme={null}
+```shell theme={null}
 uv add minds-sdk
 ```
 
@@ -14784,7 +15591,7 @@ The `CodeInterpreterTool` logs the selected execution strategy to STDOUT
 
 To use this tool, you need to install the CrewAI tools package:
 
-```shell  theme={null}
+```shell theme={null}
 pip install 'crewai[tools]'
 ```
 
@@ -14974,7 +15781,7 @@ This tool allows the Agent to generate images based on the text input provided b
 
 Install the crewai\_tools package
 
-```shell  theme={null}
+```shell theme={null}
 pip install 'crewai[tools]'
 ```
 
@@ -15085,7 +15892,7 @@ The `LlamaIndexTool` is designed to be a general wrapper around LlamaIndex tools
 
 To use this tool, you need to install LlamaIndex:
 
-```shell  theme={null}
+```shell theme={null}
 uv add llama-index
 ```
 
@@ -15226,7 +16033,7 @@ These tools integrate with AI and machine learning services to enhance your agen
 
 ## **Available Tools**
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="DALL-E Tool" icon="image" href="/en/tools/ai-ml/dalletool">
     Generate AI images using OpenAI's DALL-E model.
   </Card>
@@ -15264,7 +16071,7 @@ These tools integrate with AI and machine learning services to enhance your agen
 * **Computer Vision**: Process and understand visual content
 * **AI Safety**: Implement content moderation and safety checks
 
-```python  theme={null}
+```python theme={null}
 from crewai_tools import DallETool, VisionTool, CodeInterpreterTool
 
 # Create AI tools
@@ -15358,7 +16165,7 @@ The `RagTool` accepts the following parameters:
 
 * **summarize**: Optional. Whether to summarize the retrieved content. Default is `False`.
 * **adapter**: Optional. A custom adapter for the knowledge base. If not provided, a CrewAIRagAdapter will be used.
-* **config**: Optional. Configuration for the underlying CrewAI RAG system.
+* **config**: Optional. Configuration for the underlying CrewAI RAG system. Accepts a `RagToolConfig` TypedDict with optional `embedding_model` (ProviderSpec) and `vectordb` (VectorDbConfig) keys. All configuration values provided programmatically take precedence over environment variables.
 
 ## Adding Content
 
@@ -15408,25 +16215,563 @@ You can customize the behavior of the `RagTool` by providing a configuration dic
 
 ```python Code theme={null}
 from crewai_tools import RagTool
+from crewai_tools.tools.rag import RagToolConfig, VectorDbConfig, ProviderSpec
 
 # Create a RAG tool with custom configuration
-config = {
-    "vectordb": {
-        "provider": "qdrant",
-        "config": {
-            "collection_name": "my-collection"
-        }
-    },
-    "embedding_model": {
-        "provider": "openai",
-        "config": {
-            "model": "text-embedding-3-small"
-        }
+
+vectordb: VectorDbConfig = {
+    "provider": "qdrant",
+    "config": {
+        "collection_name": "my-collection"
     }
+}
+
+embedding_model: ProviderSpec = {
+    "provider": "openai",
+    "config": {
+        "model_name": "text-embedding-3-small"
+    }
+}
+
+config: RagToolConfig = {
+    "vectordb": vectordb,
+    "embedding_model": embedding_model
 }
 
 rag_tool = RagTool(config=config, summarize=True)
 ```
+
+## Embedding Model Configuration
+
+The `embedding_model` parameter accepts a `crewai.rag.embeddings.types.ProviderSpec` dictionary with the structure:
+
+```python theme={null}
+{
+    "provider": "provider-name",  # Required
+    "config": {                    # Optional
+        # Provider-specific configuration
+    }
+}
+```
+
+### Supported Providers
+
+<AccordionGroup>
+  <Accordion title="OpenAI">
+    ```python main.py theme={null}
+    from crewai.rag.embeddings.providers.openai.types import OpenAIProviderSpec
+
+    embedding_model: OpenAIProviderSpec = {
+        "provider": "openai",
+        "config": {
+            "api_key": "your-api-key",
+            "model_name": "text-embedding-ada-002",
+            "dimensions": 1536,
+            "organization_id": "your-org-id",
+            "api_base": "https://api.openai.com/v1",
+            "api_version": "v1",
+            "default_headers": {"Custom-Header": "value"}
+        }
+    }
+    ```
+
+    **Config Options:**
+
+    * `api_key` (str): OpenAI API key
+    * `model_name` (str): Model to use. Default: `text-embedding-ada-002`. Options: `text-embedding-3-small`, `text-embedding-3-large`, `text-embedding-ada-002`
+    * `dimensions` (int): Number of dimensions for the embedding
+    * `organization_id` (str): OpenAI organization ID
+    * `api_base` (str): Custom API base URL
+    * `api_version` (str): API version
+    * `default_headers` (dict): Custom headers for API requests
+
+    **Environment Variables:**
+
+    * `OPENAI_API_KEY` or `EMBEDDINGS_OPENAI_API_KEY`: `api_key`
+    * `OPENAI_ORGANIZATION_ID` or `EMBEDDINGS_OPENAI_ORGANIZATION_ID`: `organization_id`
+    * `OPENAI_MODEL_NAME` or `EMBEDDINGS_OPENAI_MODEL_NAME`: `model_name`
+    * `OPENAI_API_BASE` or `EMBEDDINGS_OPENAI_API_BASE`: `api_base`
+    * `OPENAI_API_VERSION` or `EMBEDDINGS_OPENAI_API_VERSION`: `api_version`
+    * `OPENAI_DIMENSIONS` or `EMBEDDINGS_OPENAI_DIMENSIONS`: `dimensions`
+  </Accordion>
+
+  <Accordion title="Cohere">
+    ```python main.py theme={null}
+    from crewai.rag.embeddings.providers.cohere.types import CohereProviderSpec
+
+    embedding_model: CohereProviderSpec = {
+        "provider": "cohere",
+        "config": {
+            "api_key": "your-api-key",
+            "model_name": "embed-english-v3.0"
+        }
+    }
+    ```
+
+    **Config Options:**
+
+    * `api_key` (str): Cohere API key
+    * `model_name` (str): Model to use. Default: `large`. Options: `embed-english-v3.0`, `embed-multilingual-v3.0`, `large`, `small`
+
+    **Environment Variables:**
+
+    * `COHERE_API_KEY` or `EMBEDDINGS_COHERE_API_KEY`: `api_key`
+    * `EMBEDDINGS_COHERE_MODEL_NAME`: `model_name`
+  </Accordion>
+
+  <Accordion title="VoyageAI">
+    ```python main.py theme={null}
+    from crewai.rag.embeddings.providers.voyageai.types import VoyageAIProviderSpec
+
+    embedding_model: VoyageAIProviderSpec = {
+        "provider": "voyageai",
+        "config": {
+            "api_key": "your-api-key",
+            "model": "voyage-3",
+            "input_type": "document",
+            "truncation": True,
+            "output_dtype": "float32",
+            "output_dimension": 1024,
+            "max_retries": 3,
+            "timeout": 60.0
+        }
+    }
+    ```
+
+    **Config Options:**
+
+    * `api_key` (str): VoyageAI API key
+    * `model` (str): Model to use. Default: `voyage-2`. Options: `voyage-3`, `voyage-3-lite`, `voyage-code-3`, `voyage-large-2`
+    * `input_type` (str): Type of input. Options: `document` (for storage), `query` (for search)
+    * `truncation` (bool): Whether to truncate inputs that exceed max length. Default: `True`
+    * `output_dtype` (str): Output data type
+    * `output_dimension` (int): Dimension of output embeddings
+    * `max_retries` (int): Maximum number of retry attempts. Default: `0`
+    * `timeout` (float): Request timeout in seconds
+
+    **Environment Variables:**
+
+    * `VOYAGEAI_API_KEY` or `EMBEDDINGS_VOYAGEAI_API_KEY`: `api_key`
+    * `VOYAGEAI_MODEL` or `EMBEDDINGS_VOYAGEAI_MODEL`: `model`
+    * `VOYAGEAI_INPUT_TYPE` or `EMBEDDINGS_VOYAGEAI_INPUT_TYPE`: `input_type`
+    * `VOYAGEAI_TRUNCATION` or `EMBEDDINGS_VOYAGEAI_TRUNCATION`: `truncation`
+    * `VOYAGEAI_OUTPUT_DTYPE` or `EMBEDDINGS_VOYAGEAI_OUTPUT_DTYPE`: `output_dtype`
+    * `VOYAGEAI_OUTPUT_DIMENSION` or `EMBEDDINGS_VOYAGEAI_OUTPUT_DIMENSION`: `output_dimension`
+    * `VOYAGEAI_MAX_RETRIES` or `EMBEDDINGS_VOYAGEAI_MAX_RETRIES`: `max_retries`
+    * `VOYAGEAI_TIMEOUT` or `EMBEDDINGS_VOYAGEAI_TIMEOUT`: `timeout`
+  </Accordion>
+
+  <Accordion title="Ollama">
+    ```python main.py theme={null}
+    from crewai.rag.embeddings.providers.ollama.types import OllamaProviderSpec
+
+    embedding_model: OllamaProviderSpec = {
+        "provider": "ollama",
+        "config": {
+            "model_name": "llama2",
+            "url": "http://localhost:11434/api/embeddings"
+        }
+    }
+    ```
+
+    **Config Options:**
+
+    * `model_name` (str): Ollama model name (e.g., `llama2`, `mistral`, `nomic-embed-text`)
+    * `url` (str): Ollama API endpoint URL. Default: `http://localhost:11434/api/embeddings`
+
+    **Environment Variables:**
+
+    * `OLLAMA_MODEL` or `EMBEDDINGS_OLLAMA_MODEL`: `model_name`
+    * `OLLAMA_URL` or `EMBEDDINGS_OLLAMA_URL`: `url`
+  </Accordion>
+
+  <Accordion title="Amazon Bedrock">
+    ```python main.py theme={null}
+    from crewai.rag.embeddings.providers.aws.types import BedrockProviderSpec
+
+    embedding_model: BedrockProviderSpec = {
+        "provider": "amazon-bedrock",
+        "config": {
+            "model_name": "amazon.titan-embed-text-v2:0",
+            "session": boto3_session
+        }
+    }
+    ```
+
+    **Config Options:**
+
+    * `model_name` (str): Bedrock model ID. Default: `amazon.titan-embed-text-v1`. Options: `amazon.titan-embed-text-v1`, `amazon.titan-embed-text-v2:0`, `cohere.embed-english-v3`, `cohere.embed-multilingual-v3`
+    * `session` (Any): Boto3 session object for AWS authentication
+
+    **Environment Variables:**
+
+    * `AWS_ACCESS_KEY_ID`: AWS access key
+    * `AWS_SECRET_ACCESS_KEY`: AWS secret key
+    * `AWS_REGION`: AWS region (e.g., `us-east-1`)
+  </Accordion>
+
+  <Accordion title="Azure OpenAI">
+    ```python main.py theme={null}
+    from crewai.rag.embeddings.providers.microsoft.types import AzureProviderSpec
+
+    embedding_model: AzureProviderSpec = {
+        "provider": "azure",
+        "config": {
+            "deployment_id": "your-deployment-id",
+            "api_key": "your-api-key",
+            "api_base": "https://your-resource.openai.azure.com",
+            "api_version": "2024-02-01",
+            "model_name": "text-embedding-ada-002",
+            "api_type": "azure"
+        }
+    }
+    ```
+
+    **Config Options:**
+
+    * `deployment_id` (str): **Required** - Azure OpenAI deployment ID
+    * `api_key` (str): Azure OpenAI API key
+    * `api_base` (str): Azure OpenAI resource endpoint
+    * `api_version` (str): API version. Example: `2024-02-01`
+    * `model_name` (str): Model name. Default: `text-embedding-ada-002`
+    * `api_type` (str): API type. Default: `azure`
+    * `dimensions` (int): Output dimensions
+    * `default_headers` (dict): Custom headers
+
+    **Environment Variables:**
+
+    * `AZURE_OPENAI_API_KEY` or `EMBEDDINGS_AZURE_API_KEY`: `api_key`
+    * `AZURE_OPENAI_ENDPOINT` or `EMBEDDINGS_AZURE_API_BASE`: `api_base`
+    * `EMBEDDINGS_AZURE_DEPLOYMENT_ID`: `deployment_id`
+    * `EMBEDDINGS_AZURE_API_VERSION`: `api_version`
+    * `EMBEDDINGS_AZURE_MODEL_NAME`: `model_name`
+    * `EMBEDDINGS_AZURE_API_TYPE`: `api_type`
+    * `EMBEDDINGS_AZURE_DIMENSIONS`: `dimensions`
+  </Accordion>
+
+  <Accordion title="Google Generative AI">
+    ```python main.py theme={null}
+    from crewai.rag.embeddings.providers.google.types import GenerativeAiProviderSpec
+
+    embedding_model: GenerativeAiProviderSpec = {
+        "provider": "google-generativeai",
+        "config": {
+            "api_key": "your-api-key",
+            "model_name": "gemini-embedding-001",
+            "task_type": "RETRIEVAL_DOCUMENT"
+        }
+    }
+    ```
+
+    **Config Options:**
+
+    * `api_key` (str): Google AI API key
+    * `model_name` (str): Model name. Default: `gemini-embedding-001`. Options: `gemini-embedding-001`, `text-embedding-005`, `text-multilingual-embedding-002`
+    * `task_type` (str): Task type for embeddings. Default: `RETRIEVAL_DOCUMENT`. Options: `RETRIEVAL_DOCUMENT`, `RETRIEVAL_QUERY`
+
+    **Environment Variables:**
+
+    * `GOOGLE_API_KEY`, `GEMINI_API_KEY`, or `EMBEDDINGS_GOOGLE_API_KEY`: `api_key`
+    * `EMBEDDINGS_GOOGLE_GENERATIVE_AI_MODEL_NAME`: `model_name`
+    * `EMBEDDINGS_GOOGLE_GENERATIVE_AI_TASK_TYPE`: `task_type`
+  </Accordion>
+
+  <Accordion title="Google Vertex AI">
+    ```python main.py theme={null}
+    from crewai.rag.embeddings.providers.google.types import VertexAIProviderSpec
+
+    embedding_model: VertexAIProviderSpec = {
+        "provider": "google-vertex",
+        "config": {
+            "model_name": "text-embedding-004",
+            "project_id": "your-project-id",
+            "region": "us-central1",
+            "api_key": "your-api-key"
+        }
+    }
+    ```
+
+    **Config Options:**
+
+    * `model_name` (str): Model name. Default: `textembedding-gecko`. Options: `text-embedding-004`, `textembedding-gecko`, `textembedding-gecko-multilingual`
+    * `project_id` (str): Google Cloud project ID. Default: `cloud-large-language-models`
+    * `region` (str): Google Cloud region. Default: `us-central1`
+    * `api_key` (str): API key for authentication
+
+    **Environment Variables:**
+
+    * `GOOGLE_APPLICATION_CREDENTIALS`: Path to service account JSON file
+    * `GOOGLE_CLOUD_PROJECT` or `EMBEDDINGS_GOOGLE_VERTEX_PROJECT_ID`: `project_id`
+    * `EMBEDDINGS_GOOGLE_VERTEX_MODEL_NAME`: `model_name`
+    * `EMBEDDINGS_GOOGLE_VERTEX_REGION`: `region`
+    * `EMBEDDINGS_GOOGLE_VERTEX_API_KEY`: `api_key`
+  </Accordion>
+
+  <Accordion title="Jina AI">
+    ```python main.py theme={null}
+    from crewai.rag.embeddings.providers.jina.types import JinaProviderSpec
+
+    embedding_model: JinaProviderSpec = {
+        "provider": "jina",
+        "config": {
+            "api_key": "your-api-key",
+            "model_name": "jina-embeddings-v3"
+        }
+    }
+    ```
+
+    **Config Options:**
+
+    * `api_key` (str): Jina AI API key
+    * `model_name` (str): Model name. Default: `jina-embeddings-v2-base-en`. Options: `jina-embeddings-v3`, `jina-embeddings-v2-base-en`, `jina-embeddings-v2-small-en`
+
+    **Environment Variables:**
+
+    * `JINA_API_KEY` or `EMBEDDINGS_JINA_API_KEY`: `api_key`
+    * `EMBEDDINGS_JINA_MODEL_NAME`: `model_name`
+  </Accordion>
+
+  <Accordion title="HuggingFace">
+    ```python main.py theme={null}
+    from crewai.rag.embeddings.providers.huggingface.types import HuggingFaceProviderSpec
+
+    embedding_model: HuggingFaceProviderSpec = {
+        "provider": "huggingface",
+        "config": {
+            "url": "https://api-inference.huggingface.co/models/sentence-transformers/all-MiniLM-L6-v2"
+        }
+    }
+    ```
+
+    **Config Options:**
+
+    * `url` (str): Full URL to HuggingFace inference API endpoint
+
+    **Environment Variables:**
+
+    * `HUGGINGFACE_URL` or `EMBEDDINGS_HUGGINGFACE_URL`: `url`
+  </Accordion>
+
+  <Accordion title="Instructor">
+    ```python main.py theme={null}
+    from crewai.rag.embeddings.providers.instructor.types import InstructorProviderSpec
+
+    embedding_model: InstructorProviderSpec = {
+        "provider": "instructor",
+        "config": {
+            "model_name": "hkunlp/instructor-xl",
+            "device": "cuda",
+            "instruction": "Represent the document"
+        }
+    }
+    ```
+
+    **Config Options:**
+
+    * `model_name` (str): HuggingFace model ID. Default: `hkunlp/instructor-base`. Options: `hkunlp/instructor-xl`, `hkunlp/instructor-large`, `hkunlp/instructor-base`
+    * `device` (str): Device to run on. Default: `cpu`. Options: `cpu`, `cuda`, `mps`
+    * `instruction` (str): Instruction prefix for embeddings
+
+    **Environment Variables:**
+
+    * `EMBEDDINGS_INSTRUCTOR_MODEL_NAME`: `model_name`
+    * `EMBEDDINGS_INSTRUCTOR_DEVICE`: `device`
+    * `EMBEDDINGS_INSTRUCTOR_INSTRUCTION`: `instruction`
+  </Accordion>
+
+  <Accordion title="Sentence Transformer">
+    ```python main.py theme={null}
+    from crewai.rag.embeddings.providers.sentence_transformer.types import SentenceTransformerProviderSpec
+
+    embedding_model: SentenceTransformerProviderSpec = {
+        "provider": "sentence-transformer",
+        "config": {
+            "model_name": "all-mpnet-base-v2",
+            "device": "cuda",
+            "normalize_embeddings": True
+        }
+    }
+    ```
+
+    **Config Options:**
+
+    * `model_name` (str): Sentence Transformers model name. Default: `all-MiniLM-L6-v2`. Options: `all-mpnet-base-v2`, `all-MiniLM-L6-v2`, `paraphrase-multilingual-MiniLM-L12-v2`
+    * `device` (str): Device to run on. Default: `cpu`. Options: `cpu`, `cuda`, `mps`
+    * `normalize_embeddings` (bool): Whether to normalize embeddings. Default: `False`
+
+    **Environment Variables:**
+
+    * `EMBEDDINGS_SENTENCE_TRANSFORMER_MODEL_NAME`: `model_name`
+    * `EMBEDDINGS_SENTENCE_TRANSFORMER_DEVICE`: `device`
+    * `EMBEDDINGS_SENTENCE_TRANSFORMER_NORMALIZE_EMBEDDINGS`: `normalize_embeddings`
+  </Accordion>
+
+  <Accordion title="ONNX">
+    ```python main.py theme={null}
+    from crewai.rag.embeddings.providers.onnx.types import ONNXProviderSpec
+
+    embedding_model: ONNXProviderSpec = {
+        "provider": "onnx",
+        "config": {
+            "preferred_providers": ["CUDAExecutionProvider", "CPUExecutionProvider"]
+        }
+    }
+    ```
+
+    **Config Options:**
+
+    * `preferred_providers` (list\[str]): List of ONNX execution providers in order of preference
+
+    **Environment Variables:**
+
+    * `EMBEDDINGS_ONNX_PREFERRED_PROVIDERS`: `preferred_providers` (comma-separated list)
+  </Accordion>
+
+  <Accordion title="OpenCLIP">
+    ```python main.py theme={null}
+    from crewai.rag.embeddings.providers.openclip.types import OpenCLIPProviderSpec
+
+    embedding_model: OpenCLIPProviderSpec = {
+        "provider": "openclip",
+        "config": {
+            "model_name": "ViT-B-32",
+            "checkpoint": "laion2b_s34b_b79k",
+            "device": "cuda"
+        }
+    }
+    ```
+
+    **Config Options:**
+
+    * `model_name` (str): OpenCLIP model architecture. Default: `ViT-B-32`. Options: `ViT-B-32`, `ViT-B-16`, `ViT-L-14`
+    * `checkpoint` (str): Pretrained checkpoint name. Default: `laion2b_s34b_b79k`. Options: `laion2b_s34b_b79k`, `laion400m_e32`, `openai`
+    * `device` (str): Device to run on. Default: `cpu`. Options: `cpu`, `cuda`
+
+    **Environment Variables:**
+
+    * `EMBEDDINGS_OPENCLIP_MODEL_NAME`: `model_name`
+    * `EMBEDDINGS_OPENCLIP_CHECKPOINT`: `checkpoint`
+    * `EMBEDDINGS_OPENCLIP_DEVICE`: `device`
+  </Accordion>
+
+  <Accordion title="Text2Vec">
+    ```python main.py theme={null}
+    from crewai.rag.embeddings.providers.text2vec.types import Text2VecProviderSpec
+
+    embedding_model: Text2VecProviderSpec = {
+        "provider": "text2vec",
+        "config": {
+            "model_name": "shibing624/text2vec-base-multilingual"
+        }
+    }
+    ```
+
+    **Config Options:**
+
+    * `model_name` (str): Text2Vec model name from HuggingFace. Default: `shibing624/text2vec-base-chinese`. Options: `shibing624/text2vec-base-multilingual`, `shibing624/text2vec-base-chinese`
+
+    **Environment Variables:**
+
+    * `EMBEDDINGS_TEXT2VEC_MODEL_NAME`: `model_name`
+  </Accordion>
+
+  <Accordion title="Roboflow">
+    ```python main.py theme={null}
+    from crewai.rag.embeddings.providers.roboflow.types import RoboflowProviderSpec
+
+    embedding_model: RoboflowProviderSpec = {
+        "provider": "roboflow",
+        "config": {
+            "api_key": "your-api-key",
+            "api_url": "https://infer.roboflow.com"
+        }
+    }
+    ```
+
+    **Config Options:**
+
+    * `api_key` (str): Roboflow API key. Default: `""` (empty string)
+    * `api_url` (str): Roboflow inference API URL. Default: `https://infer.roboflow.com`
+
+    **Environment Variables:**
+
+    * `ROBOFLOW_API_KEY` or `EMBEDDINGS_ROBOFLOW_API_KEY`: `api_key`
+    * `ROBOFLOW_API_URL` or `EMBEDDINGS_ROBOFLOW_API_URL`: `api_url`
+  </Accordion>
+
+  <Accordion title="WatsonX (IBM)">
+    ```python main.py theme={null}
+    from crewai.rag.embeddings.providers.ibm.types import WatsonXProviderSpec
+
+    embedding_model: WatsonXProviderSpec = {
+        "provider": "watsonx",
+        "config": {
+            "model_id": "ibm/slate-125m-english-rtrvr",
+            "url": "https://us-south.ml.cloud.ibm.com",
+            "api_key": "your-api-key",
+            "project_id": "your-project-id",
+            "batch_size": 100,
+            "concurrency_limit": 10,
+            "persistent_connection": True
+        }
+    }
+    ```
+
+    **Config Options:**
+
+    * `model_id` (str): WatsonX model identifier
+    * `url` (str): WatsonX API endpoint
+    * `api_key` (str): IBM Cloud API key
+    * `project_id` (str): WatsonX project ID
+    * `space_id` (str): WatsonX space ID (alternative to project\_id)
+    * `batch_size` (int): Batch size for embeddings. Default: `100`
+    * `concurrency_limit` (int): Maximum concurrent requests. Default: `10`
+    * `persistent_connection` (bool): Use persistent connections. Default: `True`
+    * Plus 20+ additional authentication and configuration options
+
+    **Environment Variables:**
+
+    * `WATSONX_API_KEY` or `EMBEDDINGS_WATSONX_API_KEY`: `api_key`
+    * `WATSONX_URL` or `EMBEDDINGS_WATSONX_URL`: `url`
+    * `WATSONX_PROJECT_ID` or `EMBEDDINGS_WATSONX_PROJECT_ID`: `project_id`
+    * `EMBEDDINGS_WATSONX_MODEL_ID`: `model_id`
+    * `EMBEDDINGS_WATSONX_SPACE_ID`: `space_id`
+    * `EMBEDDINGS_WATSONX_BATCH_SIZE`: `batch_size`
+    * `EMBEDDINGS_WATSONX_CONCURRENCY_LIMIT`: `concurrency_limit`
+    * `EMBEDDINGS_WATSONX_PERSISTENT_CONNECTION`: `persistent_connection`
+  </Accordion>
+
+  <Accordion title="Custom">
+    ```python main.py theme={null}
+    from crewai.rag.core.base_embeddings_callable import EmbeddingFunction
+    from crewai.rag.embeddings.providers.custom.types import CustomProviderSpec
+
+    class MyEmbeddingFunction(EmbeddingFunction):
+        def __call__(self, input):
+            # Your custom embedding logic
+            return embeddings
+
+    embedding_model: CustomProviderSpec = {
+        "provider": "custom",
+        "config": {
+            "embedding_callable": MyEmbeddingFunction
+        }
+    }
+    ```
+
+    **Config Options:**
+
+    * `embedding_callable` (type\[EmbeddingFunction]): Custom embedding function class
+
+    **Note:** Custom embedding functions must implement the `EmbeddingFunction` protocol defined in `crewai.rag.core.base_embeddings_callable`. The `__call__` method should accept input data and return embeddings as a list of numpy arrays (or compatible format that will be normalized). The returned embeddings are automatically normalized and validated.
+  </Accordion>
+</AccordionGroup>
+
+### Notes
+
+* All config fields are optional unless marked as **Required**
+* API keys can typically be provided via environment variables instead of config
+* Default values are shown where applicable
 
 ## Conclusion
 
@@ -15449,7 +16794,7 @@ The URL or the PATH of the image should be passed to the Agent.
 
 Install the crewai\_tools package
 
-```shell  theme={null}
+```shell theme={null}
 pip install 'crewai[tools]'
 ```
 
@@ -15483,177 +16828,6 @@ The VisionTool requires the following arguments:
 | **image\_path\_url** | `string` | **Mandatory**. The path to the image file from which text needs to be extracted. |
 
 
-# Bedrock Knowledge Base Retriever
-Source: https://docs.crewai.com/en/tools/cloud-storage/bedrockkbretriever
-
-Retrieve information from Amazon Bedrock Knowledge Bases using natural language queries
-
-# `BedrockKBRetrieverTool`
-
-The `BedrockKBRetrieverTool` enables CrewAI agents to retrieve information from Amazon Bedrock Knowledge Bases using natural language queries.
-
-## Installation
-
-```bash  theme={null}
-uv pip install 'crewai[tools]'
-```
-
-## Requirements
-
-* AWS credentials configured (either through environment variables or AWS CLI)
-* `boto3` and `python-dotenv` packages
-* Access to Amazon Bedrock Knowledge Base
-
-## Usage
-
-Here's how to use the tool with a CrewAI agent:
-
-```python {2, 4-17} theme={null}
-from crewai import Agent, Task, Crew
-from crewai_tools.aws.bedrock.knowledge_base.retriever_tool import BedrockKBRetrieverTool
-
-# Initialize the tool
-kb_tool = BedrockKBRetrieverTool(
-    knowledge_base_id="your-kb-id",
-    number_of_results=5
-)
-
-# Create a CrewAI agent that uses the tool
-researcher = Agent(
-    role='Knowledge Base Researcher',
-    goal='Find information about company policies',
-    backstory='I am a researcher specialized in retrieving and analyzing company documentation.',
-    tools=[kb_tool],
-    verbose=True
-)
-
-# Create a task for the agent
-research_task = Task(
-    description="Find our company's remote work policy and summarize the key points.",
-    agent=researcher
-)
-
-# Create a crew with the agent
-crew = Crew(
-    agents=[researcher],
-    tasks=[research_task],
-    verbose=2
-)
-
-# Run the crew
-result = crew.kickoff()
-print(result)   
-```
-
-## Tool Arguments
-
-| Argument                     | Type   | Required | Default | Description                                                                |
-| :--------------------------- | :----- | :------- | :------ | :------------------------------------------------------------------------- |
-| **knowledge\_base\_id**      | `str`  | Yes      | None    | The unique identifier of the knowledge base (0-10 alphanumeric characters) |
-| **number\_of\_results**      | `int`  | No       | 5       | Maximum number of results to return                                        |
-| **retrieval\_configuration** | `dict` | No       | None    | Custom configurations for the knowledge base query                         |
-| **guardrail\_configuration** | `dict` | No       | None    | Content filtering settings                                                 |
-| **next\_token**              | `str`  | No       | None    | Token for pagination                                                       |
-
-## Environment Variables
-
-```bash  theme={null}
-BEDROCK_KB_ID=your-knowledge-base-id  # Alternative to passing knowledge_base_id
-AWS_REGION=your-aws-region            # Defaults to us-east-1
-AWS_ACCESS_KEY_ID=your-access-key     # Required for AWS authentication
-AWS_SECRET_ACCESS_KEY=your-secret-key # Required for AWS authentication
-```
-
-## Response Format
-
-The tool returns results in JSON format:
-
-```json  theme={null}
-{
-  "results": [
-    {
-      "content": "Retrieved text content",
-      "content_type": "text",
-      "source_type": "S3",
-      "source_uri": "s3://bucket/document.pdf",
-      "score": 0.95,
-      "metadata": {
-        "additional": "metadata"
-      }
-    }
-  ],
-  "nextToken": "pagination-token",
-  "guardrailAction": "NONE"
-}
-```
-
-## Advanced Usage
-
-### Custom Retrieval Configuration
-
-```python  theme={null}
-kb_tool = BedrockKBRetrieverTool(
-    knowledge_base_id="your-kb-id",
-    retrieval_configuration={
-        "vectorSearchConfiguration": {
-            "numberOfResults": 10,
-            "overrideSearchType": "HYBRID"
-        }
-    }
-)
-
-policy_expert = Agent(
-    role='Policy Expert',
-    goal='Analyze company policies in detail',
-    backstory='I am an expert in corporate policy analysis with deep knowledge of regulatory requirements.',
-    tools=[kb_tool]
-)
-```
-
-## Supported Data Sources
-
-* Amazon S3
-* Confluence
-* Salesforce
-* SharePoint
-* Web pages
-* Custom document locations
-* Amazon Kendra
-* SQL databases
-
-## Use Cases
-
-### Enterprise Knowledge Integration
-
-* Enable CrewAI agents to access your organization's proprietary knowledge without exposing sensitive data
-* Allow agents to make decisions based on your company's specific policies, procedures, and documentation
-* Create agents that can answer questions based on your internal documentation while maintaining data security
-
-### Specialized Domain Knowledge
-
-* Connect CrewAI agents to domain-specific knowledge bases (legal, medical, technical) without retraining models
-* Leverage existing knowledge repositories that are already maintained in your AWS environment
-* Combine CrewAI's reasoning with domain-specific information from your knowledge bases
-
-### Data-Driven Decision Making
-
-* Ground CrewAI agent responses in your actual company data rather than general knowledge
-* Ensure agents provide recommendations based on your specific business context and documentation
-* Reduce hallucinations by retrieving factual information from your knowledge bases
-
-### Scalable Information Access
-
-* Access terabytes of organizational knowledge without embedding it all into your models
-* Dynamically query only the relevant information needed for specific tasks
-* Leverage AWS's scalable infrastructure to handle large knowledge bases efficiently
-
-### Compliance and Governance
-
-* Ensure CrewAI agents provide responses that align with your company's approved documentation
-* Create auditable trails of information sources used by your agents
-* Maintain control over what information sources your agents can access
-
-
 # Overview
 Source: https://docs.crewai.com/en/tools/cloud-storage/overview
 
@@ -15663,7 +16837,7 @@ These tools enable your agents to interact with cloud services, access cloud sto
 
 ## **Available Tools**
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="S3 Reader Tool" icon="cloud" href="/en/tools/cloud-storage/s3readertool">
     Read files and data from Amazon S3 buckets.
   </Card>
@@ -15689,7 +16863,7 @@ These tools enable your agents to interact with cloud services, access cloud sto
 * **Knowledge Retrieval**: Query cloud-hosted knowledge bases
 * **Scalable Operations**: Leverage cloud infrastructure for processing
 
-```python  theme={null}
+```python theme={null}
 from crewai_tools import S3ReaderTool, S3WriterTool, BedrockInvokeAgentTool
 
 # Create cloud tools
@@ -15721,7 +16895,7 @@ The `S3ReaderTool` is designed to read files from Amazon S3 buckets. This tool a
 
 To use this tool, you need to install the required dependencies:
 
-```shell  theme={null}
+```shell theme={null}
 uv add boto3
 ```
 
@@ -15851,157 +17025,6 @@ class S3ReaderTool(BaseTool):
 The `S3ReaderTool` provides a straightforward way to read files from Amazon S3 buckets. By enabling agents to access content stored in S3, it facilitates workflows that require cloud-based file access. This tool is particularly useful for data processing, configuration management, and any task that involves retrieving information from AWS S3 storage.
 
 
-# S3 Writer Tool
-Source: https://docs.crewai.com/en/tools/cloud-storage/s3writertool
-
-The `S3WriterTool` enables CrewAI agents to write content to files in Amazon S3 buckets.
-
-# `S3WriterTool`
-
-## Description
-
-The `S3WriterTool` is designed to write content to files in Amazon S3 buckets. This tool allows CrewAI agents to create or update files in S3, making it ideal for workflows that require storing data, saving configuration files, or persisting any other content to AWS S3 storage.
-
-## Installation
-
-To use this tool, you need to install the required dependencies:
-
-```shell  theme={null}
-uv add boto3
-```
-
-## Steps to Get Started
-
-To effectively use the `S3WriterTool`, follow these steps:
-
-1. **Install Dependencies**: Install the required packages using the command above.
-2. **Configure AWS Credentials**: Set up your AWS credentials as environment variables.
-3. **Initialize the Tool**: Create an instance of the tool.
-4. **Specify S3 Path and Content**: Provide the S3 path where you want to write the file and the content to be written.
-
-## Example
-
-The following example demonstrates how to use the `S3WriterTool` to write content to a file in an S3 bucket:
-
-```python Code theme={null}
-from crewai import Agent, Task, Crew
-from crewai_tools.aws.s3 import S3WriterTool
-
-# Initialize the tool
-s3_writer_tool = S3WriterTool()
-
-# Define an agent that uses the tool
-file_writer_agent = Agent(
-    role="File Writer",
-    goal="Write content to files in S3 buckets",
-    backstory="An expert in storing and managing files in cloud storage.",
-    tools=[s3_writer_tool],
-    verbose=True,
-)
-
-# Example task to write a report
-write_task = Task(
-    description="Generate a summary report of the quarterly sales data and save it to {my_bucket}.",
-    expected_output="Confirmation that the report was successfully saved to S3.",
-    agent=file_writer_agent,
-)
-
-# Create and run the crew
-crew = Crew(agents=[file_writer_agent], tasks=[write_task])
-result = crew.kickoff(inputs={"my_bucket": "s3://my-bucket/reports/quarterly-summary.txt"})
-```
-
-## Parameters
-
-The `S3WriterTool` accepts the following parameters when used by an agent:
-
-* **file\_path**: Required. The S3 file path in the format `s3://bucket-name/file-name`.
-* **content**: Required. The content to write to the file.
-
-## AWS Credentials
-
-The tool requires AWS credentials to access S3 buckets. You can configure these credentials using environment variables:
-
-* **CREW\_AWS\_REGION**: The AWS region where your S3 bucket is located. Default is `us-east-1`.
-* **CREW\_AWS\_ACCESS\_KEY\_ID**: Your AWS access key ID.
-* **CREW\_AWS\_SEC\_ACCESS\_KEY**: Your AWS secret access key.
-
-## Usage
-
-When using the `S3WriterTool` with an agent, the agent will need to provide both the S3 file path and the content to write:
-
-```python Code theme={null}
-# Example of using the tool with an agent
-file_writer_agent = Agent(
-    role="File Writer",
-    goal="Write content to files in S3 buckets",
-    backstory="An expert in storing and managing files in cloud storage.",
-    tools=[s3_writer_tool],
-    verbose=True,
-)
-
-# Create a task for the agent to write a specific file
-write_config_task = Task(
-    description="""
-    Create a configuration file with the following database settings:
-    - host: db.example.com
-    - port: 5432
-    - username: app_user
-    - password: secure_password
-    
-    Save this configuration as JSON to {my_bucket}.
-    """,
-    expected_output="Confirmation that the configuration file was successfully saved to S3.",
-    agent=file_writer_agent,
-)
-
-# Run the task
-crew = Crew(agents=[file_writer_agent], tasks=[write_config_task])
-result = crew.kickoff(inputs={"my_bucket": "s3://my-bucket/config/db-config.json"})
-```
-
-## Error Handling
-
-The `S3WriterTool` includes error handling for common S3 issues:
-
-* Invalid S3 path format
-* Permission issues (e.g., no write access to the bucket)
-* AWS credential problems
-* Bucket does not exist
-
-When an error occurs, the tool will return an error message that includes details about the issue.
-
-## Implementation Details
-
-The `S3WriterTool` uses the AWS SDK for Python (boto3) to interact with S3:
-
-```python Code theme={null}
-class S3WriterTool(BaseTool):
-    name: str = "S3 Writer Tool"
-    description: str = "Writes content to a file in Amazon S3 given an S3 file path"
-    
-    def _run(self, file_path: str, content: str) -> str:
-        try:
-            bucket_name, object_key = self._parse_s3_path(file_path)
-
-            s3 = boto3.client(
-                's3',
-                region_name=os.getenv('CREW_AWS_REGION', 'us-east-1'),
-                aws_access_key_id=os.getenv('CREW_AWS_ACCESS_KEY_ID'),
-                aws_secret_access_key=os.getenv('CREW_AWS_SEC_ACCESS_KEY')
-            )
-
-            s3.put_object(Bucket=bucket_name, Key=object_key, Body=content.encode('utf-8'))
-            return f"Successfully wrote content to {file_path}"
-        except ClientError as e:
-            return f"Error writing file to S3: {str(e)}"
-```
-
-## Conclusion
-
-The `S3WriterTool` provides a straightforward way to write content to files in Amazon S3 buckets. By enabling agents to create and update files in S3, it facilitates workflows that require cloud-based file storage. This tool is particularly useful for data persistence, configuration management, report generation, and any task that involves storing information in AWS S3 storage.
-
-
 # MongoDB Vector Search Tool
 Source: https://docs.crewai.com/en/tools/database-data/mongodbvectorsearchtool
 
@@ -16020,13 +17043,13 @@ MongoDB Atlas supports native vector search. Learn more:
 
 Install with the MongoDB extra:
 
-```shell  theme={null}
+```shell theme={null}
 pip install crewai-tools[mongodb]
 ```
 
 or
 
-```shell  theme={null}
+```shell theme={null}
 uv add crewai-tools --extra mongodb
 ```
 
@@ -16185,7 +17208,7 @@ to perform advanced queries on extensive datasets within a MySQL database.
 
 To install the `crewai_tools` package and utilize the MySQLSearchTool, execute the following command in your terminal:
 
-```shell  theme={null}
+```shell theme={null}
 pip install 'crewai[tools]'
 ```
 
@@ -16227,10 +17250,10 @@ tool = MySQLSearchTool(
             ),
         ),
         embedder=dict(
-            provider="google",
+            provider="google-generativeai",
             config=dict(
-                model="models/embedding-001",
-                task_type="retrieval_document",
+                model_name="gemini-embedding-001",
+                task_type="RETRIEVAL_DOCUMENT",
                 # title="Embeddings",
             ),
         ),
@@ -16262,7 +17285,7 @@ Along with that provides the ability for the Agent to update the database based 
 
 Install the crewai\_tools package
 
-```shell  theme={null}
+```shell theme={null}
 pip install 'crewai[tools]'
 ```
 
@@ -16314,7 +17337,7 @@ This is a simple example of how the NL2SQLTool can be used to interact with the 
 
 The Tool provides endless possibilities on the logic of the Agent and how it can interact with the database.
 
-```md  theme={null}
+```md theme={null}
  DB -> Agent -> ... -> Agent -> DB
 ```
 
@@ -16328,7 +17351,7 @@ These tools enable your agents to interact with various database systems, from t
 
 ## **Available Tools**
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="MySQL Tool" icon="database" href="/en/tools/database-data/mysqltool">
     Connect to and query MySQL databases with SQL operations.
   </Card>
@@ -16369,7 +17392,7 @@ These tools enable your agents to interact with various database systems, from t
 * **ETL Operations**: Extract, transform, and load data between systems
 * **Real-time Analytics**: Access live data for decision making
 
-```python  theme={null}
+```python theme={null}
 from crewai_tools import MySQLTool, QdrantVectorSearchTool, NL2SQLTool
 
 # Create database tools
@@ -16409,7 +17432,7 @@ extensive datasets within a PostgreSQL environment.
 
 The `crewai_tools` package, which will include the PGSearchTool upon its release, can be installed using the following command:
 
-```shell  theme={null}
+```shell theme={null}
 pip install 'crewai[tools]'
 ```
 
@@ -16457,10 +17480,10 @@ tool = PGSearchTool(
             ),
         ),
         embedder=dict(
-            provider="google", # or openai, ollama, ...
+            provider="google-generativeai", # or openai, ollama, ...
             config=dict(
-                model="models/embedding-001",
-                task_type="retrieval_document",
+                model_name="gemini-embedding-001",
+                task_type="RETRIEVAL_DOCUMENT",
                 # title="Embeddings",
             ),
         ),
@@ -16482,7 +17505,7 @@ The Qdrant Vector Search Tool enables semantic search capabilities in your CrewA
 
 Install the required packages:
 
-```bash  theme={null}
+```bash theme={null}
 uv add qdrant-client
 ```
 
@@ -16490,7 +17513,7 @@ uv add qdrant-client
 
 Here's a minimal example of how to use the tool:
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent
 from crewai_tools import QdrantVectorSearchTool, QdrantConfig
 
@@ -16523,7 +17546,7 @@ Here's a complete example showing how to:
 3. Store in Qdrant
 4. Create a CrewAI agentic RAG workflow for semantic search
 
-```python  theme={null}
+```python theme={null}
 import os
 import uuid
 import pdfplumber
@@ -16682,7 +17705,7 @@ The QdrantVectorSearchTool supports powerful filtering capabilities to refine yo
 
 Use `filter_by` and `filter_value` parameters in your search to filter results on-the-fly:
 
-```python  theme={null}
+```python theme={null}
 # Agent will use these parameters when calling the tool
 # The tool schema accepts filter_by and filter_value
 # Example: search with category filter
@@ -16693,7 +17716,7 @@ Use `filter_by` and `filter_value` parameters in your search to filter results o
 
 For complex filtering, use Qdrant Filter instances in your configuration:
 
-```python  theme={null}
+```python theme={null}
 from qdrant_client.http import models as qmodels
 from crewai_tools import QdrantVectorSearchTool, QdrantConfig
 
@@ -16726,7 +17749,7 @@ qdrant_tool = QdrantVectorSearchTool(
 
 The tool automatically combines preset filters from `QdrantConfig` with dynamic filters from `filter_by` and `filter_value`:
 
-```python  theme={null}
+```python theme={null}
 # If QdrantConfig has a preset filter for category="research"
 # And the search uses filter_by="year", filter_value=2024
 # Both filters will be combined (AND logic)
@@ -16744,7 +17767,7 @@ The tool accepts these parameters in its schema:
 
 The tool returns results in JSON format:
 
-```json  theme={null}
+```json theme={null}
 [
   {
     "metadata": {
@@ -16773,7 +17796,7 @@ Instead of using the default embedding model, you might want to use your own emb
 
 Here's an example using a HuggingFace model:
 
-```python  theme={null}
+```python theme={null}
 from transformers import AutoTokenizer, AutoModel
 import torch
 
@@ -16817,7 +17840,7 @@ The tool handles these specific errors:
 
 Required environment variables:
 
-```bash  theme={null}
+```bash theme={null}
 export QDRANT_URL="your_qdrant_url"  # If not provided in constructor
 export QDRANT_API_KEY="your_api_key"  # If not provided in constructor
 export OPENAI_API_KEY="your_openai_key"  # If using default embeddings
@@ -16837,7 +17860,7 @@ Execute read‑only queries (`SELECT`/`SHOW`) against SingleStore with connectio
 
 ## Installation
 
-```shell  theme={null}
+```shell theme={null}
 uv add crewai-tools[singlestore]
 ```
 
@@ -16899,13 +17922,13 @@ The `SnowflakeSearchTool` is designed to connect to Snowflake data warehouses an
 
 To use this tool, you need to install the required dependencies:
 
-```shell  theme={null}
+```shell theme={null}
 uv add cryptography snowflake-connector-python snowflake-sqlalchemy
 ```
 
 Or alternatively:
 
-```shell  theme={null}
+```shell theme={null}
 uv sync --extra snowflake
 ```
 
@@ -17102,7 +18125,7 @@ The `WeaviateVectorSearchTool` is specifically crafted for conducting semantic s
 
 To incorporate this tool into your project, you need to install the Weaviate client:
 
-```shell  theme={null}
+```shell theme={null}
 uv add weaviate-client
 ```
 
@@ -17276,7 +18299,7 @@ are RAG tools designed for searching different sources of data.
 
 Install the crewai\_tools package
 
-```shell  theme={null}
+```shell theme={null}
 pip install 'crewai[tools]'
 ```
 
@@ -17354,7 +18377,7 @@ This tool is crucial for tasks that require a thorough inventory of directory st
 
 To utilize the DirectoryReadTool in your project, install the `crewai_tools` package. If this package is not yet part of your environment, you can install it using pip with the command below:
 
-```shell  theme={null}
+```shell theme={null}
 pip install 'crewai[tools]'
 ```
 
@@ -17406,7 +18429,7 @@ The DirectorySearchTool enables semantic search within the content of specified 
 
 To use the DirectorySearchTool, begin by installing the crewai\_tools package. Execute the following command in your terminal:
 
-```shell  theme={null}
+```shell theme={null}
 pip install 'crewai[tools]'
 ```
 
@@ -17479,7 +18502,7 @@ streamlining the process of finding specific information within large document c
 
 Install the crewai\_tools package by running the following command in your terminal:
 
-```shell  theme={null}
+```shell theme={null}
 uv pip install docx2txt 'crewai[tools]'
 ```
 
@@ -17557,7 +18580,7 @@ such as converting JSON content into a Python dictionary for ease of use.
 
 To utilize the functionalities previously attributed to the FileReadTool, install the crewai\_tools package:
 
-```shell  theme={null}
+```shell theme={null}
 pip install 'crewai[tools]'
 ```
 
@@ -17599,7 +18622,7 @@ This tool handles path differences across operating systems, supports UTF-8 enco
 
 Install the crewai\_tools package to use the `FileWriterTool` in your projects:
 
-```shell  theme={null}
+```shell theme={null}
 pip install 'crewai[tools]'
 ```
 
@@ -17655,7 +18678,7 @@ The JSONSearchTool is designed to facilitate efficient and precise searches with
 
 To install the JSONSearchTool, use the following pip command:
 
-```shell  theme={null}
+```shell theme={null}
 pip install 'crewai[tools]'
 ```
 
@@ -17697,10 +18720,10 @@ tool = JSONSearchTool(
             },
         },
         "embedding_model": {
-            "provider": "google", # or openai, ollama, ...
+            "provider": "google-generativeai", # or openai, ollama, ...
             "config": {
-                "model": "models/embedding-001",
-                "task_type": "retrieval_document",
+                "model_name": "gemini-embedding-001",
+                "task_type": "RETRIEVAL_DOCUMENT",
                 # Further customization options can be added here.
             },
         },
@@ -17728,7 +18751,7 @@ The MDX Search Tool is a component of the `crewai_tools` package aimed at facili
 
 Before using the MDX Search Tool, ensure the `crewai_tools` package is installed. If it is not, you can install it with the following command:
 
-```shell  theme={null}
+```shell theme={null}
 pip install 'crewai[tools]'
 ```
 
@@ -17878,7 +18901,7 @@ These tools enable your agents to work with various file formats and document ty
 
 ## **Available Tools**
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="File Read Tool" icon="folders" href="/en/tools/file-document/filereadtool">
     Read content from any file type including text, markdown, and more.
   </Card>
@@ -17942,7 +18965,7 @@ These tools enable your agents to work with various file formats and document ty
 
 ## **Quick Start Example**
 
-```python  theme={null}
+```python theme={null}
 from crewai_tools import FileReadTool, PDFSearchTool, JSONSearchTool
 
 # Create tools
@@ -18061,7 +19084,7 @@ This capability makes it especially useful for extracting specific information f
 
 To get started with the PDFSearchTool, first, ensure the crewai\_tools package is installed with the following command:
 
-```shell  theme={null}
+```shell theme={null}
 pip install 'crewai[tools]'
 ```
 
@@ -18105,15 +19128,15 @@ tool = PDFSearchTool(
             "config": {
                 # Model identifier for the chosen provider. "model" will be auto-mapped to "model_name" internally.
                 "model": "text-embedding-3-small",
-                # Optional: API key. If omitted, the tool will use provider-specific env vars when available
-                # (e.g., OPENAI_API_KEY for provider="openai").
+                # Optional: API key. If omitted, the tool will use provider-specific env vars
+                # (e.g., OPENAI_API_KEY or EMBEDDINGS_OPENAI_API_KEY for OpenAI).
                 # "api_key": "sk-...",
 
                 # Provider-specific examples:
                 # --- Google Generative AI ---
                 # (Set provider="google-generativeai" above)
-                # "model": "models/embedding-001",
-                # "task_type": "retrieval_document",
+                # "model_name": "gemini-embedding-001",
+                # "task_type": "RETRIEVAL_DOCUMENT",
                 # "title": "Embeddings",
 
                 # --- Cohere ---
@@ -18171,7 +19194,7 @@ To use the `TXTSearchTool`, you first need to install the `crewai_tools` package
 This can be done using pip, a package manager for Python.
 Open your terminal or command prompt and enter the following command:
 
-```shell  theme={null}
+```shell theme={null}
 pip install 'crewai[tools]'
 ```
 
@@ -18217,9 +19240,9 @@ tool = TXTSearchTool(
             "provider": "openai",  # or google-generativeai, cohere, ollama, ...
             "config": {
                 "model": "text-embedding-3-small",
-                # "api_key": "sk-...",  # optional if env var is set
+                # "api_key": "sk-...",  # optional if env var is set (e.g., OPENAI_API_KEY or EMBEDDINGS_OPENAI_API_KEY)
                 # Provider examples:
-                # Google → model: "models/embedding-001", task_type: "retrieval_document"
+                # Google → model_name: "gemini-embedding-001", task_type: "RETRIEVAL_DOCUMENT"
                 # Cohere → model: "embed-english-v3.0"
                 # Ollama → model: "nomic-embed-text"
             },
@@ -18269,7 +19292,7 @@ By specifying an XML path, users can target their search more precisely to the c
 
 To start using the XMLSearchTool, you must first install the crewai\_tools package. This can be easily done with the following command:
 
-```shell  theme={null}
+```shell theme={null}
 pip install 'crewai[tools]'
 ```
 
@@ -18335,36 +19358,36 @@ CrewAI provides an extensive library of pre-built tools to enhance your agents' 
 
 ## **Tool Categories**
 
-<CardGroup cols={2}>
-  <Card title="File & Document" icon="folder-open" href="/en/tools/file-document/overview" color="#3B82F6">
+<CardGroup>
+  <Card title="File & Document" icon="folder-open" href="/en/tools/file-document/overview">
     Read, write, and search through various file formats including PDF, DOCX, JSON, CSV, and more. Perfect for document processing workflows.
   </Card>
 
-  <Card title="Web Scraping & Browsing" icon="globe" href="/en/tools/web-scraping/overview" color="#10B981">
+  <Card title="Web Scraping & Browsing" icon="globe" href="/en/tools/web-scraping/overview">
     Extract data from websites, automate browser interactions, and scrape content at scale with tools like Firecrawl, Selenium, and more.
   </Card>
 
-  <Card title="Search & Research" icon="magnifying-glass" href="/en/tools/search-research/overview" color="#F59E0B">
+  <Card title="Search & Research" icon="magnifying-glass" href="/en/tools/search-research/overview">
     Perform web searches, find code repositories, research YouTube content, and discover information across the internet.
   </Card>
 
-  <Card title="Database & Data" icon="database" href="/en/tools/database-data/overview" color="#8B5CF6">
+  <Card title="Database & Data" icon="database" href="/en/tools/database-data/overview">
     Connect to SQL databases, vector stores, and data warehouses. Query MySQL, PostgreSQL, Snowflake, Qdrant, and Weaviate.
   </Card>
 
-  <Card title="AI & Machine Learning" icon="brain" href="/en/tools/ai-ml/overview" color="#EF4444">
+  <Card title="AI & Machine Learning" icon="brain" href="/en/tools/ai-ml/overview">
     Generate images with DALL-E, process vision tasks, integrate with LangChain, build RAG systems, and leverage code interpreters.
   </Card>
 
-  <Card title="Cloud & Storage" icon="cloud" href="/en/tools/cloud-storage/overview" color="#06B6D4">
+  <Card title="Cloud & Storage" icon="cloud" href="/en/tools/cloud-storage/overview">
     Interact with cloud services including AWS S3, Amazon Bedrock, and other cloud storage and AI services.
   </Card>
 
-  <Card title="Automation" icon="bolt" href="/en/tools/automation/overview" color="#84CC16">
+  <Card title="Automation" icon="bolt" href="/en/tools/automation/overview">
     Automate workflows with Apify, Composio, and other platforms to connect your agents with external services.
   </Card>
 
-  <Card title="Integrations" icon="plug" href="/en/tools/tool-integrations/overview" color="#0891B2">
+  <Card title="Integrations" icon="plug" href="/en/tools/tool-integrations/overview">
     Integrate CrewAI with external systems like Amazon Bedrock and the CrewAI Automation toolkit.
   </Card>
 </CardGroup>
@@ -18373,7 +19396,7 @@ CrewAI provides an extensive library of pre-built tools to enhance your agents' 
 
 Need a specific tool? Here are some popular choices:
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="RAG Tool" icon="image" href="/en/tools/ai-ml/ragtool">
     Implement Retrieval-Augmented Generation
   </Card>
@@ -18407,7 +19430,7 @@ To use any tool in your CrewAI project:
 2. **Add** it to your agent's tools list
 3. **Configure** any required API keys or settings
 
-```python  theme={null}
+```python theme={null}
 from crewai_tools import FileReadTool, SerperDevTool
 
 # Add tools to your agent
@@ -18423,7 +19446,7 @@ agent = Agent(
 You can set a maximum usage count for a tool to prevent it from being used more than a certain number of times.
 By default, the max usage count is unlimited.
 
-```python  theme={null}
+```python theme={null}
 from crewai_tools import FileReadTool
 
 tool = FileReadTool(max_usage_count=5, ...)
@@ -18447,7 +19470,7 @@ The `ArxivPaperTool` queries the arXiv API for academic papers and returns compa
 
 This tool has no special installation beyond `crewai-tools`.
 
-```shell  theme={null}
+```shell theme={null}
 uv add crewai-tools
 ```
 
@@ -18559,7 +19582,7 @@ This tool is designed to perform web searches using the Brave Search API. It all
 
 To incorporate this tool into your project, follow the installation instructions below:
 
-```shell  theme={null}
+```shell theme={null}
 pip install 'crewai[tools]'
 ```
 
@@ -18663,7 +19686,7 @@ it searches across a wide array of code documentation known or discovered throug
 
 To start using the CodeDocsSearchTool, first, install the crewai\_tools package via pip:
 
-```shell  theme={null}
+```shell theme={null}
 pip install 'crewai[tools]'
 ```
 
@@ -18715,10 +19738,10 @@ tool = CodeDocsSearchTool(
             ),
         ),
         embedder=dict(
-            provider="google", # or openai, ollama, ...
+            provider="google-generativeai", # or openai, ollama, ...
             config=dict(
-                model="models/embedding-001",
-                task_type="retrieval_document",
+                model_name="gemini-embedding-001",
+                task_type="RETRIEVAL_DOCUMENT",
                 # title="Embeddings",
             ),
         ),
@@ -18740,7 +19763,7 @@ Run SQL against Databricks workspace tables with either CLI profile or direct ho
 
 ## Installation
 
-```shell  theme={null}
+```shell theme={null}
 uv add crewai-tools[databricks-sdk]
 ```
 
@@ -18822,7 +19845,7 @@ It utilizes the [exa.ai](https://exa.ai/) API to fetch and display the most rele
 
 To incorporate this tool into your project, follow the installation instructions below:
 
-```shell  theme={null}
+```shell theme={null}
 pip install 'crewai[tools]'
 ```
 
@@ -18880,7 +19903,7 @@ The GithubSearchTool is a Retrieval-Augmented Generation (RAG) tool specifically
 
 To use the GithubSearchTool, first ensure the crewai\_tools package is installed in your Python environment:
 
-```shell  theme={null}
+```shell theme={null}
 pip install 'crewai[tools]'
 ```
 
@@ -18936,10 +19959,10 @@ tool = GithubSearchTool(
             ),
         ),
         embedder=dict(
-            provider="google", # or openai, ollama, ...
+            provider="google-generativeai", # or openai, ollama, ...
             config=dict(
-                model="models/embedding-001",
-                task_type="retrieval_document",
+                model_name="gemini-embedding-001",
+                task_type="RETRIEVAL_DOCUMENT",
                 # title="Embeddings",
             ),
         ),
@@ -18963,7 +19986,7 @@ The `LinkupSearchTool` provides the ability to query the Linkup API for contextu
 
 To use this tool, you need to install the Linkup SDK:
 
-```shell  theme={null}
+```shell theme={null}
 uv add linkup-sdk
 ```
 
@@ -19031,7 +20054,7 @@ results = linkup_tool.run(
 
 The tool returns results in the following format:
 
-```json  theme={null}
+```json theme={null}
 {
   "success": true,
   "results": [
@@ -19047,7 +20070,7 @@ The tool returns results in the following format:
 
 If an error occurs, the response will be:
 
-```json  theme={null}
+```json theme={null}
 {
   "success": false,
   "error": "Error message"
@@ -19072,7 +20095,7 @@ These tools enable your agents to search the web, research topics, and find info
 
 ## **Available Tools**
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Serper Dev Tool" icon="google" href="/en/tools/search-research/serperdevtool">
     Google search API integration for comprehensive web search capabilities.
   </Card>
@@ -19138,7 +20161,7 @@ These tools enable your agents to search the web, research topics, and find info
 * **Lead Generation**: Research companies and individuals
 * **Academic Research**: Find scholarly articles and technical papers
 
-```python  theme={null}
+```python theme={null}
 from crewai_tools import SerperDevTool, GitHubSearchTool, YoutubeVideoSearchTool, TavilySearchTool, TavilyExtractorTool
 
 # Create research tools
@@ -19170,7 +20193,7 @@ Use the `SerpApiGoogleSearchTool` to run Google searches with SerpApi and retrie
 
 ## Installation
 
-```shell  theme={null}
+```shell theme={null}
 uv add crewai-tools[serpapi]
 ```
 
@@ -19234,7 +20257,7 @@ Leverage `SerpApiGoogleShoppingTool` to query Google Shopping via SerpApi and re
 
 ## Installation
 
-```shell  theme={null}
+```shell theme={null}
 uv add crewai-tools[serpapi]
 ```
 
@@ -19303,7 +20326,7 @@ To effectively use the `SerperDevTool`, follow these steps:
 
 To incorporate this tool into your project, follow the installation instructions below:
 
-```shell  theme={null}
+```shell theme={null}
 pip install 'crewai[tools]'
 ```
 
@@ -19402,13 +20425,13 @@ The `TavilyExtractorTool` allows CrewAI agents to extract structured content fro
 
 To use the `TavilyExtractorTool`, you need to install the `tavily-python` library:
 
-```shell  theme={null}
+```shell theme={null}
 pip install 'crewai[tools]' tavily-python
 ```
 
 You also need to set your Tavily API key as an environment variable:
 
-```bash  theme={null}
+```bash theme={null}
 export TAVILY_API_KEY='your-tavily-api-key'
 ```
 
@@ -19416,7 +20439,7 @@ export TAVILY_API_KEY='your-tavily-api-key'
 
 Here's how to initialize and use the `TavilyExtractorTool` within a CrewAI agent:
 
-```python  theme={null}
+```python theme={null}
 import os
 from crewai import Agent, Task, Crew
 from crewai_tools import TavilyExtractorTool
@@ -19467,7 +20490,7 @@ The `TavilyExtractorTool` accepts the following arguments:
 
 ### Multiple URLs with Advanced Extraction
 
-```python  theme={null}
+```python theme={null}
 # Example with multiple URLs and advanced extraction
 multi_extract_task = Task(
     description='Extract content from https://example.com and https://anotherexample.org using advanced extraction.',
@@ -19493,7 +20516,7 @@ agent_with_custom_tool = Agent(
 
 You can customize the tool's behavior by setting parameters during initialization:
 
-```python  theme={null}
+```python theme={null}
 # Initialize with custom configuration
 extractor_tool = TavilyExtractorTool(
     extract_depth='advanced',  # More comprehensive extraction
@@ -19543,7 +20566,7 @@ The `TavilySearchTool` provides an interface to the Tavily Search API, enabling 
 
 To use the `TavilySearchTool`, you need to install the `tavily-python` library:
 
-```shell  theme={null}
+```shell theme={null}
 pip install 'crewai[tools]' tavily-python
 ```
 
@@ -19551,7 +20574,7 @@ pip install 'crewai[tools]' tavily-python
 
 Ensure your Tavily API key is set as an environment variable:
 
-```bash  theme={null}
+```bash theme={null}
 export TAVILY_API_KEY='your_tavily_api_key'
 ```
 
@@ -19561,7 +20584,7 @@ Get an API key at [https://app.tavily.com/](https://app.tavily.com/) (sign up, t
 
 Here's how to initialize and use the `TavilySearchTool` within a CrewAI agent:
 
-```python  theme={null}
+```python theme={null}
 import os
 from crewai import Agent, Task, Crew
 from crewai_tools import TavilySearchTool
@@ -19620,7 +20643,7 @@ The `TavilySearchTool` accepts the following arguments during initialization or 
 
 You can configure the tool with custom parameters:
 
-```python  theme={null}
+```python theme={null}
 # Example: Initialize with specific parameters
 custom_tavily_tool = TavilySearchTool(
     search_depth='advanced',
@@ -19680,7 +20703,7 @@ Please note, the current implementation details of the WebsiteSearchTool are und
 
 To prepare your environment for when the WebsiteSearchTool becomes available, you can install the foundational package with:
 
-```shell  theme={null}
+```shell theme={null}
 pip install 'crewai[tools]'
 ```
 
@@ -19723,10 +20746,10 @@ tool = WebsiteSearchTool(
             ),
         ),
         embedder=dict(
-            provider="google", # or openai, ollama, ...
+            provider="google-generativeai", # or openai, ollama, ...
             config=dict(
-                model="models/embedding-001",
-                task_type="retrieval_document",
+                model_name="gemini-embedding-001",
+                task_type="RETRIEVAL_DOCUMENT",
                 # title="Embeddings",
             ),
         ),
@@ -19757,7 +20780,7 @@ It streamlines the search process within Youtube channels, catering to researche
 
 To utilize the YoutubeChannelSearchTool, the `crewai_tools` package must be installed. Execute the following command in your shell to install:
 
-```shell  theme={null}
+```shell theme={null}
 pip install 'crewai[tools]'
 ```
 
@@ -19841,10 +20864,10 @@ youtube_channel_tool = YoutubeChannelSearchTool(
             ),
         ),
         embedder=dict(
-            provider="google", # or openai, ollama, ...
+            provider="google-generativeai", # or openai, ollama, ...
             config=dict(
-                model="models/embedding-001",
-                task_type="retrieval_document",
+                model_name="gemini-embedding-001",
+                task_type="RETRIEVAL_DOCUMENT",
                 # title="Embeddings",
             ),
         ),
@@ -19954,7 +20977,7 @@ To utilize the `YoutubeVideoSearchTool`, you must first install the `crewai_tool
 This package contains the `YoutubeVideoSearchTool` among other utilities designed to enhance your data analysis and processing tasks.
 Install the package by executing the following command in your terminal:
 
-```shell  theme={null}
+```shell theme={null}
 pip install 'crewai[tools]'
 ```
 
@@ -20038,10 +21061,10 @@ youtube_search_tool = YoutubeVideoSearchTool(
             ),
         ),
         embedder=dict(
-            provider="google", # or openai, ollama, ...
+            provider="google-generativeai", # or openai, ollama, ...
             config=dict(
-                model="models/embedding-001",
-                task_type="retrieval_document",
+                model_name="gemini-embedding-001",
+                task_type="RETRIEVAL_DOCUMENT",
                 # title="Embeddings",
             ),
         ),
@@ -20129,7 +21152,7 @@ This set of tools integrates Bright Data services for web extraction.
 
 ## Installation
 
-```shell  theme={null}
+```shell theme={null}
 uv add crewai-tools requests aiohttp
 ```
 
@@ -20251,7 +21274,7 @@ Power your AI data retrievals with:
 * Get an API key and Project ID from [browserbase.com](https://browserbase.com) and set it in environment variables (`BROWSERBASE_API_KEY`, `BROWSERBASE_PROJECT_ID`).
 * Install the [Browserbase SDK](http://github.com/browserbase/python-sdk) along with `crewai[tools]` package:
 
-```shell  theme={null}
+```shell theme={null}
 pip install browserbase 'crewai[tools]'
 ```
 
@@ -20295,7 +21318,7 @@ The `FirecrawlCrawlWebsiteTool` is designed to crawl and convert websites into c
 * Get an API key from [firecrawl.dev](https://firecrawl.dev) and set it in environment variables (`FIRECRAWL_API_KEY`).
 * Install the [Firecrawl SDK](https://github.com/mendableai/firecrawl) along with `crewai[tools]` package:
 
-```shell  theme={null}
+```shell theme={null}
 pip install firecrawl-py 'crewai[tools]'
 ```
 
@@ -20343,7 +21366,7 @@ The `FirecrawlScrapeWebsiteTool` is designed to scrape websites and convert them
 * Get an API key from [firecrawl.dev](https://firecrawl.dev) and set it in environment variables (`FIRECRAWL_API_KEY`).
 * Install the [Firecrawl SDK](https://github.com/mendableai/firecrawl) along with `crewai[tools]` package:
 
-```shell  theme={null}
+```shell theme={null}
 pip install firecrawl-py 'crewai[tools]'
 ```
 
@@ -20393,7 +21416,7 @@ Key Features:
 
 To use this tool, you need to install the Hyperbrowser SDK:
 
-```shell  theme={null}
+```shell theme={null}
 uv add hyperbrowser
 ```
 
@@ -20471,7 +21494,7 @@ These tools enable your agents to interact with the web, extract data from websi
 
 ## **Available Tools**
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Scrape Website Tool" icon="globe" href="/en/tools/web-scraping/scrapewebsitetool">
     General-purpose web scraping tool for extracting content from any website.
   </Card>
@@ -20540,7 +21563,7 @@ These tools enable your agents to interact with the web, extract data from websi
 
 ## **Quick Start Example**
 
-```python  theme={null}
+```python theme={null}
 from crewai_tools import ScrapeWebsiteTool, FirecrawlScrapeWebsiteTool, SeleniumScrapingTool
 
 # Create scraping tools
@@ -20588,7 +21611,7 @@ Oxylabs Scrapers allow to easily access the information from the respective sour
 
 Get the credentials by creating an Oxylabs Account [here](https://oxylabs.io).
 
-```shell  theme={null}
+```shell theme={null}
 pip install 'crewai[tools]' oxylabs
 ```
 
@@ -20598,7 +21621,7 @@ Check [Oxylabs Documentation](https://developers.oxylabs.io/scraping-solutions/w
 
 ### Example
 
-```python  theme={null}
+```python theme={null}
 from crewai_tools import OxylabsAmazonProductScraperTool
 
 # make sure OXYLABS_USERNAME and OXYLABS_PASSWORD variables are set
@@ -20623,7 +21646,7 @@ print(result)
 
 ### Advanced example
 
-```python  theme={null}
+```python theme={null}
 from crewai_tools import OxylabsAmazonProductScraperTool
 
 # make sure OXYLABS_USERNAME and OXYLABS_PASSWORD variables are set
@@ -20649,7 +21672,7 @@ print(result)
 
 ### Example
 
-```python  theme={null}
+```python theme={null}
 from crewai_tools import OxylabsAmazonSearchScraperTool
 
 # make sure OXYLABS_USERNAME and OXYLABS_PASSWORD variables are set
@@ -20676,7 +21699,7 @@ print(result)
 
 ### Advanced example
 
-```python  theme={null}
+```python theme={null}
 from crewai_tools import OxylabsAmazonSearchScraperTool
 
 # make sure OXYLABS_USERNAME and OXYLABS_PASSWORD variables are set
@@ -20701,7 +21724,7 @@ print(result)
 
 ### Example
 
-```python  theme={null}
+```python theme={null}
 from crewai_tools import OxylabsGoogleSearchScraperTool
 
 # make sure OXYLABS_USERNAME and OXYLABS_PASSWORD variables are set
@@ -20730,7 +21753,7 @@ print(result)
 
 ### Advanced example
 
-```python  theme={null}
+```python theme={null}
 from crewai_tools import OxylabsGoogleSearchScraperTool
 
 # make sure OXYLABS_USERNAME and OXYLABS_PASSWORD variables are set
@@ -20751,7 +21774,7 @@ print(result)
 
 ### Example
 
-```python  theme={null}
+```python theme={null}
 from crewai_tools import OxylabsUniversalScraperTool
 
 # make sure OXYLABS_USERNAME and OXYLABS_PASSWORD variables are set
@@ -20775,7 +21798,7 @@ print(result)
 
 ### Advanced example
 
-```python  theme={null}
+```python theme={null}
 from crewai_tools import OxylabsUniversalScraperTool
 
 # make sure OXYLABS_USERNAME and OXYLABS_PASSWORD variables are set
@@ -20827,7 +21850,7 @@ The `ScrapeElementFromWebsiteTool` is designed to extract specific elements from
 
 To use this tool, you need to install the required dependencies:
 
-```shell  theme={null}
+```shell theme={null}
 uv add requests beautifulsoup4
 ```
 
@@ -20967,13 +21990,13 @@ The `ScrapegraphScrapeTool` is designed to leverage Scrapegraph AI's SmartScrape
 
 To use this tool, you need to install the Scrapegraph Python client:
 
-```shell  theme={null}
+```shell theme={null}
 uv add scrapegraph-py
 ```
 
 You'll also need to set up your Scrapegraph API key as an environment variable:
 
-```shell  theme={null}
+```shell theme={null}
 export SCRAPEGRAPH_API_KEY="your_api_key"
 ```
 
@@ -21169,13 +22192,13 @@ This tool can be particularly useful for web scraping tasks, data collection, or
 
 Install the crewai\_tools package
 
-```shell  theme={null}
+```shell theme={null}
 pip install 'crewai[tools]'
 ```
 
 ## Example
 
-```python  theme={null}
+```python theme={null}
 from crewai_tools import ScrapeWebsiteTool
 
 # To enable scrapping any website it finds during it's execution
@@ -21212,7 +22235,7 @@ The `ScrapflyScrapeWebsiteTool` is designed to leverage [Scrapfly](https://scrap
 
 To use this tool, you need to install the Scrapfly SDK:
 
-```shell  theme={null}
+```shell theme={null}
 uv add scrapfly-sdk
 ```
 
@@ -21440,7 +22463,7 @@ Its design caters to a wide range of scraping needs, offering flexibility to wor
 
 To use this tool, you need to install the CrewAI tools package and Selenium:
 
-```shell  theme={null}
+```shell theme={null}
 pip install 'crewai[tools]'
 uv add selenium webdriver-manager
 ```
@@ -21633,7 +22656,7 @@ It converts any website into pure HTML, markdown, metadata or text while enablin
 To use the `SpiderTool` you need to download the [Spider SDK](https://pypi.org/project/spider-client/)
 and the `crewai[tools]` SDK too:
 
-```shell  theme={null}
+```shell theme={null}
 pip install spider-client 'crewai[tools]'
 ```
 
@@ -21745,7 +22768,7 @@ Before using this tool, ensure you have:
 
 Install the required dependency:
 
-```bash  theme={null}
+```bash theme={null}
 pip install stagehand-py
 ```
 
@@ -21761,7 +22784,7 @@ The StagehandTool can be implemented in two ways:
   The context manager approach is recommended as it ensures proper cleanup of resources even if exceptions occur.
 </Tip>
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 from crewai_tools import StagehandTool
 from stagehand.schemas import AvailableModel
@@ -21801,7 +22824,7 @@ with StagehandTool(
 
 #### 2. Manual Resource Management
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 from crewai_tools import StagehandTool
 from stagehand.schemas import AvailableModel
@@ -21852,7 +22875,7 @@ The StagehandTool supports three different command types for specific web automa
 
 The `act` command type (default) enables webpage interactions like clicking buttons, filling forms, and navigation.
 
-```python  theme={null}
+```python theme={null}
 # Perform an action (default behavior)
 result = stagehand_tool.run(
     instruction="Click the login button", 
@@ -21871,7 +22894,7 @@ result = stagehand_tool.run(
 
 The `extract` command type retrieves structured data from webpages.
 
-```python  theme={null}
+```python theme={null}
 # Extract all product information
 result = stagehand_tool.run(
     instruction="Extract all product names, prices, and descriptions", 
@@ -21892,7 +22915,7 @@ result = stagehand_tool.run(
 
 The `observe` command type identifies and analyzes webpage elements.
 
-```python  theme={null}
+```python theme={null}
 # Find interactive elements
 result = stagehand_tool.run(
     instruction="Find all interactive elements in the navigation menu", 
@@ -21913,7 +22936,7 @@ result = stagehand_tool.run(
 
 Customize the StagehandTool behavior with these parameters:
 
-```python  theme={null}
+```python theme={null}
 stagehand_tool = StagehandTool(
     api_key="your-browserbase-api-key",
     project_id="your-browserbase-project-id",
@@ -21958,41 +22981,29 @@ Source: https://docs.crewai.com/index
 
 Build collaborative AI agents, crews, and flows — production ready from day one.
 
-<div
-  style={{
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  gap: 20,
-  textAlign: 'center',
-  padding: '48px 24px',
-  borderRadius: 16,
-  background: 'linear-gradient(180deg, rgba(235,102,88,0.12) 0%, rgba(201,76,60,0.08) 100%)',
-  border: '1px solid rgba(235,102,88,0.18)'
-}}
->
-  <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crew_only_logo.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=439ca5dc63a1768cad7196005ff5636f" alt="CrewAI" width="250" height="100" data-og-width="375" data-og-height="114" data-path="images/crew_only_logo.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crew_only_logo.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=ea0aa43c49a743b0e50cdc8e453f9150 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crew_only_logo.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=3025604ad4e1a40cda55cbb4ec726f14 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crew_only_logo.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=26b82b135ed2768dbb95a4f0ba4cd871 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crew_only_logo.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=77d06e853a60d4a862cbceecf1dd3e93 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crew_only_logo.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=da76ce1913c6086278df262cd9ad684a 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/crew_only_logo.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=7b7cb283aa3588d52cdf6ed4c2e09d30 2500w" />
+<div>
+  <img alt="CrewAI" />
 
-  <div style={{ maxWidth: 720 }}>
-    <h1 style={{ marginBottom: 12 }}>Ship multi‑agent systems with confidence</h1>
+  <div>
+    <h1>Ship multi‑agent systems with confidence</h1>
 
-    <p style={{ color: 'var(--mint-text-2)' }}>
+    <p>
       Design agents, orchestrate crews, and automate flows with guardrails, memory, knowledge, and observability baked in.
     </p>
   </div>
 
-  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center' }}>
-    <a className="button button-primary" href="/en/quickstart">Get started</a>
-    <a className="button" href="/en/changelog">View changelog</a>
-    <a className="button" href="/en/api-reference/introduction">API Reference</a>
+  <div>
+    <a href="/en/quickstart">Get started</a>
+    <a href="/en/changelog">View changelog</a>
+    <a href="/en/api-reference/introduction">API Reference</a>
   </div>
 </div>
 
-<div style={{ marginTop: 32 }} />
+<div />
 
 ## Get started
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Introduction" href="/en/introduction" icon="sparkles">
     Overview of CrewAI concepts, architecture, and what you can build with agents, crews, and flows.
   </Card>
@@ -22008,7 +23019,7 @@ Build collaborative AI agents, crews, and flows — production ready from day on
 
 ## Build the basics
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Agents" href="/en/concepts/agents" icon="users">
     Compose agents with tools, memory, knowledge, and structured outputs using Pydantic. Includes templates and best practices.
   </Card>
@@ -22024,7 +23035,7 @@ Build collaborative AI agents, crews, and flows — production ready from day on
 
 ## Enterprise journey
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Deploy automations" href="/en/enterprise/features/automations" icon="server">
     Manage environments, redeploy safely, and monitor live runs directly from the Enterprise console.
   </Card>
@@ -22040,7 +23051,7 @@ Build collaborative AI agents, crews, and flows — production ready from day on
 
 ## What’s new
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Triggers overview" href="/en/enterprise/guides/automation-triggers" icon="sparkles">
     Unified overview for Gmail, Drive, Outlook, Teams, OneDrive, HubSpot, and more — now with sample payloads and crews.
   </Card>
@@ -22056,7 +23067,7 @@ Build collaborative AI agents, crews, and flows — production ready from day on
 
 ## Stay connected
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Star us on GitHub" href="https://github.com/crewAIInc/crewAI" icon="star">
     If CrewAI helps you ship faster, give us a star and share your builds with the community.
   </Card>
@@ -22075,7 +23086,7 @@ Learn how to use Agent Repositories to share and reuse your agents across teams 
 Agent Repositories allow enterprise users to store, share, and reuse agent definitions across teams and projects. This feature enables organizations to maintain a centralized library of standardized agents, promoting consistency and reducing duplication of effort.
 
 <Frame>
-    <img src="https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/agent-repositories.png?fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=c2064b8fc57a99dfb8124909b64e0f9d" alt="Agent Repositories" data-og-width="2826" width="2826" data-og-height="1804" height="1804" data-path="images/enterprise/agent-repositories.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/agent-repositories.png?w=280&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=7757e2436d6e4e78349c5116b86ab130 280w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/agent-repositories.png?w=560&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=e9a1e9ed00dd1bcbba6f6fb132877c3c 560w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/agent-repositories.png?w=840&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=ff4130e977495a27747b10d1591d36da 840w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/agent-repositories.png?w=1100&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=8579f5426a73f5fdc9fc9cb8e27b48c1 1100w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/agent-repositories.png?w=1650&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=823d4391f0bc0f6e6dd110d1ad1a0936 1650w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/agent-repositories.png?w=2500&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=3f7c480281557b5878d469cdb554bc8d 2500w" />
+  <img alt="Agent Repositories" />
 </Frame>
 
 ## Benefits of Agent Repositories
@@ -22093,14 +23104,14 @@ Agent Repositories allow enterprise users to store, share, and reuse agent defin
 4. Deploy agents across projects via visual interface or API integration.
 
 <Frame>
-    <img src="https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/create-agent-repository.png?fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=837a5d30ad32f8cd5e0bda08638c4c4d" alt="Agent Repositories" data-og-width="3434" width="3434" data-og-height="2266" height="2266" data-path="images/enterprise/create-agent-repository.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/create-agent-repository.png?w=280&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=e9c4e5cb3e880f3fb28aa098d06eec7b 280w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/create-agent-repository.png?w=560&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=1710435d332fcd75ac8ee3dc0fe37a0b 560w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/create-agent-repository.png?w=840&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=ccba8e2687317ebbf5aee8e29832d5eb 840w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/create-agent-repository.png?w=1100&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=f7f51e57c76fea4f276be1c70e868620 1100w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/create-agent-repository.png?w=1650&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=0b74c722fb36c470635d3ade22c53cde 1650w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/create-agent-repository.png?w=2500&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=f69253ad1472a9f6bad48c3627f7b5d1 2500w" />
+  <img alt="Agent Repositories" />
 </Frame>
 
 ### Loading Agents from Repositories
 
 You can load agents from repositories in your code using the `from_repository` parameter to run locally:
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent
 
 # Create an agent by loading it from a repository
@@ -22114,7 +23125,7 @@ researcher = Agent(
 
 You can override specific settings from the repository by providing them in the configuration:
 
-```python  theme={null}
+```python theme={null}
 researcher = Agent(
     from_repository="market-research-agent",
     goal="Research the latest trends in AI development",  # Override the repository goal
@@ -22124,7 +23135,7 @@ researcher = Agent(
 
 ### Example: Creating a Crew with Repository Agents
 
-```python  theme={null}
+```python theme={null}
 from crewai import Crew, Agent, Task
 
 # Load agents from repositories
@@ -22162,7 +23173,7 @@ result = crew.kickoff()
 
 You can also use repository agents directly with the `kickoff()` method for simpler interactions:
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent
 from pydantic import BaseModel
 from typing import List
@@ -22205,7 +23216,7 @@ print(f"Recommendation: {structured_result.pydantic.recommendation}")
 
 To switch between organizations or see your current organization, use the CrewAI CLI:
 
-```bash  theme={null}
+```bash theme={null}
 # View current organization
 crewai org current
 
@@ -22231,7 +23242,7 @@ Manage, deploy, and monitor your live crews (automations) in one place.
 Automations is the live operations hub for your deployed crews. Use it to deploy from GitHub or a ZIP file, manage environment variables, re‑deploy when needed, and monitor the status of each automation.
 
 <Frame>
-    <img src="https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/automations-overview.png?fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=a7d0655da82c70b0ca152715cb8253f4" alt="Automations Overview" data-og-width="3648" width="3648" data-og-height="2266" height="2266" data-path="images/enterprise/automations-overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/automations-overview.png?w=280&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=18456289664a18d4b83b2acdae616a44 280w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/automations-overview.png?w=560&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=4737cb32db15d7f121a1366ae5c80c0e 560w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/automations-overview.png?w=840&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=69473aff76b3ea16974be8226590d114 840w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/automations-overview.png?w=1100&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=a742c3a1f81537f0a2d9668e5671c1aa 1100w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/automations-overview.png?w=1650&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=6a9aed77a2491e2dc3da8f511f391487 1650w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/automations-overview.png?w=2500&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=c64e992c5464916085b9114abab0d7c0 2500w" />
+  <img alt="Automations Overview" />
 </Frame>
 
 ## Deployment Methods
@@ -22263,7 +23274,7 @@ Use this for version‑controlled projects and continuous deployment.
 </Steps>
 
 <Frame>
-    <img src="https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/deploy-from-github.png?fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=4fb72dc68799d5a0c35e2e74f1a7cc6c" alt="GitHub Deployment" data-og-width="3648" width="3648" data-og-height="2266" height="2266" data-path="images/enterprise/deploy-from-github.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/deploy-from-github.png?w=280&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=b15575b0b30c64e8b7a20de9e97468e5 280w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/deploy-from-github.png?w=560&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=c041da5b5b79d38cb2a3f8d6f00e14a7 560w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/deploy-from-github.png?w=840&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=0783c12a6f83d09ce83e66aa34edcacd 840w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/deploy-from-github.png?w=1100&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=d703da835283f7e73079ef66f664587c 1100w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/deploy-from-github.png?w=1650&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=f73b6afc4c3c3075ded4da6559676fa3 1650w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/deploy-from-github.png?w=2500&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=c3d82425923c1f57264b7cb5af9004b3 2500w" />
+  <img alt="GitHub Deployment" />
 </Frame>
 
 ### Deploy from ZIP
@@ -22285,7 +23296,7 @@ Ship quickly without Git—upload a compressed package of your project.
 </Steps>
 
 <Frame>
-    <img src="https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/deploy-from-zip.png?fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=8cea74868a553d34b0aa182ad5489099" alt="ZIP Deployment" data-og-width="3648" width="3648" data-og-height="2266" height="2266" data-path="images/enterprise/deploy-from-zip.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/deploy-from-zip.png?w=280&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=961637aa95a2795071b4a54e921f3f03 280w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/deploy-from-zip.png?w=560&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=62994bfdf5667fc17880ed33c32a7aa6 560w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/deploy-from-zip.png?w=840&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=b0c4ef28de74989c1fdbf1076d12ba3c 840w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/deploy-from-zip.png?w=1100&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=19fe8b770051a0426f120d6b661a6f40 1100w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/deploy-from-zip.png?w=1650&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=a80e4bf6e8befdf57a5ea79840b45136 1650w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/deploy-from-zip.png?w=2500&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=61e870a88f47df3e282a134e754fc09d 2500w" />
+  <img alt="ZIP Deployment" />
 </Frame>
 
 ## Automations Dashboard
@@ -22307,7 +23318,7 @@ Use the top‑right controls to filter and search:
 Once deployed, you can view the automation details and have the **Options** dropdown menu to `chat with this crew`, `Export React Component` and `Export as MCP`.
 
 <Frame>
-    <img src="https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/automations-table.png?fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=f7fb571e8473f5cb7940c3e3bb34f95c" alt="Automations Table" data-og-width="2874" width="2874" data-og-height="932" height="932" data-path="images/enterprise/automations-table.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/automations-table.png?w=280&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=5833733acf6f2e07d0a39abffe87de40 280w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/automations-table.png?w=560&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=858a8b93744d4f23e07e9ec58227aac0 560w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/automations-table.png?w=840&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=e0fe6df6d821e1edc729681e8d314d22 840w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/automations-table.png?w=1100&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=cb68b81e23a169714985d93bb0913170 1100w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/automations-table.png?w=1650&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=401736c16a6074de6b60de8234cbe206 1650w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/automations-table.png?w=2500&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=1b9a5f852f474d6a68a5cf4dda5a0021 2500w" />
+  <img alt="Automations Table" />
 </Frame>
 
 ## Best Practices
@@ -22317,7 +23328,7 @@ Once deployed, you can view the automation details and have the **Options** drop
 
 ## Related
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Deploy a Crew" href="/en/enterprise/guides/deploy-crew" icon="rocket">
     Deploy a Crew from GitHub or ZIP file.
   </Card>
@@ -22342,7 +23353,7 @@ Build new automations with AI assistance, a visual editor, and integrated testin
 Crew Studio is an interactive, AI‑assisted workspace for creating new automations from scratch using natural language and a visual workflow editor.
 
 <Frame>
-    <img src="https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/crew-studio-overview.png?fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=78db59d2d246ccbc7a5c53c8dc2ac9b2" alt="Crew Studio Overview" data-og-width="3648" width="3648" data-og-height="2350" height="2350" data-path="images/enterprise/crew-studio-overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/crew-studio-overview.png?w=280&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=c383766e8765b6d4182d2c1662918460 280w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/crew-studio-overview.png?w=560&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=60a7e0e707a8c0d31c9eb93a368269de 560w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/crew-studio-overview.png?w=840&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=d50594b48c0fdcbd3540f8aee66d4344 840w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/crew-studio-overview.png?w=1100&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=aaf07d2cc2dd54085f7eb1d21bf8cfa7 1100w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/crew-studio-overview.png?w=1650&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=5d2139c2bcb6daa7a3a36ebf00534a98 1650w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/crew-studio-overview.png?w=2500&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=339e61bee7c9c7ae23cd9b66fdd900a9 2500w" />
+  <img alt="Crew Studio Overview" />
 </Frame>
 
 ## Prompt‑based Creation
@@ -22352,7 +23363,7 @@ Crew Studio is an interactive, AI‑assisted workspace for creating new automati
 * Start from built‑in prompts for common use cases.
 
 <Frame>
-    <img src="https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/crew-studio-prompt.png?fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=10394b6192b729f9e861a43515e2c636" alt="Prompt Builder" data-og-width="3648" width="3648" data-og-height="2266" height="2266" data-path="images/enterprise/crew-studio-prompt.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/crew-studio-prompt.png?w=280&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=7d31c1d1bca45744f4d5e055d86cbdd7 280w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/crew-studio-prompt.png?w=560&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=cbae3cfede1a4722288dc1c29fc97d3f 560w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/crew-studio-prompt.png?w=840&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=bed1346b603a0a18843143956871ee33 840w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/crew-studio-prompt.png?w=1100&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=eb225f848d28fc964429dc5987c1b876 1100w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/crew-studio-prompt.png?w=1650&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=67453056d7e4f061fcbb31761de175ef 1650w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/crew-studio-prompt.png?w=2500&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=53e224201427d7d1c7d8d5307e53f91f 2500w" />
+  <img alt="Prompt Builder" />
 </Frame>
 
 ## Visual Editor
@@ -22366,7 +23377,7 @@ You can use the drag-and-drop functionality to add agents, tasks, and tools to t
 * **Resources (right)**: drag‑and‑drop components (agents, tasks, tools)
 
 <Frame>
-    <img src="https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/crew-studio-canvas.png?fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=b112618b6609ddabc984955706b8365f" alt="Visual Canvas" data-og-width="3648" width="3648" data-og-height="2266" height="2266" data-path="images/enterprise/crew-studio-canvas.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/crew-studio-canvas.png?w=280&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=5e67364f58e62f56c3dd83d19adf17ac 280w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/crew-studio-canvas.png?w=560&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=fe27e9cd021d667c2bc0f7efac754e07 560w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/crew-studio-canvas.png?w=840&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=10fdf0d907b6f1e0e70964ee50124830 840w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/crew-studio-canvas.png?w=1100&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=0475255f908f761ed829d2f6290ee18a 1100w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/crew-studio-canvas.png?w=1650&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=e93640b30b1fd9ee5a041ba382c29eda 1650w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/crew-studio-canvas.png?w=2500&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=62f10184fe117cfa557a8d20b4fc1a0c 2500w" />
+  <img alt="Visual Canvas" />
 </Frame>
 
 ## Execution & Debugging
@@ -22378,7 +23389,7 @@ Switch to the <b>Execution</b> view to run and observe the workflow:
 * Local test runs before publishing
 
 <Frame>
-    <img src="https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/crew-studio-execution.png?fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=6dc19227c8ad45cf3fed625a7b8ef47e" alt="Execution View" data-og-width="3648" width="3648" data-og-height="2266" height="2266" data-path="images/enterprise/crew-studio-execution.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/crew-studio-execution.png?w=280&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=e4288a0a00bd999f45e32df6f800007d 280w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/crew-studio-execution.png?w=560&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=43e7e0181a7a129cfff5b667e991b288 560w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/crew-studio-execution.png?w=840&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=56527f1e66944e4c8c11862f8dd933c5 840w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/crew-studio-execution.png?w=1100&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=c8e92593c0fb55e7f7460fb8275fe305 1100w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/crew-studio-execution.png?w=1650&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=3fda256e5dc998b10226886c169acb05 1650w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/crew-studio-execution.png?w=2500&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=17c70892ffc922c9c08d2c32adeef311 2500w" />
+  <img alt="Execution View" />
 </Frame>
 
 ## Publish & Export
@@ -22387,13 +23398,13 @@ Switch to the <b>Execution</b> view to run and observe the workflow:
 * <b>Download</b> source as a ZIP for local development or customization
 
 <Frame>
-    <img src="https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/crew-studio-publish.png?fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=576d6e2759a7289c0b5adf4e4511ec65" alt="Publish & Download" data-og-width="3648" width="3648" data-og-height="2266" height="2266" data-path="images/enterprise/crew-studio-publish.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/crew-studio-publish.png?w=280&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=946fdf9e05a3babe469dcac52fefc425 280w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/crew-studio-publish.png?w=560&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=96e6b2614e47505918958ac78ba08f14 560w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/crew-studio-publish.png?w=840&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=e956451644e619fd33da509b19359cde 840w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/crew-studio-publish.png?w=1100&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=ab89721410f81fbb5ae83a3fb10ed642 1100w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/crew-studio-publish.png?w=1650&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=4c9013c037ab344ff5cf4686fad22af3 1650w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/crew-studio-publish.png?w=2500&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=3a2a86194b24bd4522f581623bd262c0 2500w" />
+  <img alt="Publish & Download" />
 </Frame>
 
 Once published, you can view the automation details and have the **Options** dropdown menu to `chat with this crew`, `Export React Component` and `Export as MCP`.
 
 <Frame>
-    <img src="https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/crew-studio-published.png?fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=8c5d967e43092ee26185f391b0554c46" alt="Published Automation" data-og-width="3648" width="3648" data-og-height="2266" height="2266" data-path="images/enterprise/crew-studio-published.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/crew-studio-published.png?w=280&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=3bb1203eaf51478df59d39bd963b15ad 280w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/crew-studio-published.png?w=560&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=652849fcad1c2315395571f15900ffbb 560w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/crew-studio-published.png?w=840&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=21d1501b536a80102b737886bd2c2497 840w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/crew-studio-published.png?w=1100&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=796e6b18972515c9410e855bed167e25 1100w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/crew-studio-published.png?w=1650&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=120a7f63e6e03ab3f5d25d98ae9e7eea 1650w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/crew-studio-published.png?w=2500&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=162ac4e5c227172b73ad4445585be713 2500w" />
+  <img alt="Published Automation" />
 </Frame>
 
 ## Best Practices
@@ -22404,7 +23415,7 @@ Once published, you can view the automation details and have the **Options** dro
 
 ## Related
 
-<CardGroup cols={4}>
+<CardGroup>
   <Card title="Enable Crew Studio" href="/en/enterprise/guides/enable-crew-studio" icon="palette">
     Enable Crew Studio.
   </Card>
@@ -22419,6 +23430,586 @@ Once published, you can view the automation details and have the **Options** dro
 
   <Card title="Export a React Component" href="/en/enterprise/guides/react-component-export" icon="download">
     Export a React Component.
+  </Card>
+</CardGroup>
+
+
+# Flow HITL Management
+Source: https://docs.crewai.com/en/enterprise/features/flow-hitl-management
+
+Enterprise-grade human review for Flows with email-first notifications, routing rules, and auto-response capabilities
+
+<Note>
+  Flow HITL Management features require the `@human_feedback` decorator, available in **CrewAI version 1.8.0 or higher**. These features apply specifically to **Flows**, not Crews.
+</Note>
+
+CrewAI Enterprise provides a comprehensive Human-in-the-Loop (HITL) management system for Flows that transforms AI workflows into collaborative human-AI processes. The platform uses an **email-first architecture** that enables anyone with an email address to respond to review requests—no platform account required.
+
+## Overview
+
+<CardGroup>
+  <Card title="Email-First Design" icon="envelope">
+    Responders can reply directly to notification emails to provide feedback
+  </Card>
+
+  <Card title="Flexible Routing" icon="route">
+    Route requests to specific emails based on method patterns or flow state
+  </Card>
+
+  <Card title="Auto-Response" icon="clock">
+    Configure automatic fallback responses when no human replies in time
+  </Card>
+</CardGroup>
+
+### Key Benefits
+
+* **Simple mental model**: Email addresses are universal; no need to manage platform users or roles
+* **External responders**: Anyone with an email can respond, even non-platform users
+* **Dynamic assignment**: Pull assignee email directly from flow state (e.g., `sales_rep_email`)
+* **Reduced configuration**: Fewer settings to configure, faster time to value
+* **Email as primary channel**: Most users prefer responding via email over logging into a dashboard
+
+## Setting Up Human Review Points in Flows
+
+Configure human review checkpoints within your Flows using the `@human_feedback` decorator. When execution reaches a review point, the system pauses, notifies the assignee via email, and waits for a response.
+
+```python theme={null}
+from crewai.flow.flow import Flow, start, listen
+from crewai.flow.human_feedback import human_feedback, HumanFeedbackResult
+
+class ContentApprovalFlow(Flow):
+    @start()
+    def generate_content(self):
+        # AI generates content
+        return "Generated marketing copy for Q1 campaign..."
+
+    @listen(generate_content)
+    @human_feedback(
+        message="Please review this content for brand compliance:",
+        emit=["approved", "rejected", "needs_revision"],
+    )
+    def review_content(self, content):
+        return content
+
+    @listen("approved")
+    def publish_content(self, result: HumanFeedbackResult):
+        print(f"Publishing approved content. Reviewer notes: {result.feedback}")
+
+    @listen("rejected")
+    def archive_content(self, result: HumanFeedbackResult):
+        print(f"Content rejected. Reason: {result.feedback}")
+
+    @listen("needs_revision")
+    def revise_content(self, result: HumanFeedbackResult):
+        print(f"Revision requested: {result.feedback}")
+```
+
+For complete implementation details, see the [Human Feedback in Flows](/en/learn/human-feedback-in-flows) guide.
+
+### Decorator Parameters
+
+| Parameter | Type        | Description                                         |
+| --------- | ----------- | --------------------------------------------------- |
+| `message` | `str`       | The message displayed to the human reviewer         |
+| `emit`    | `list[str]` | Valid response options (displayed as buttons in UI) |
+
+## Platform Configuration
+
+Access HITL configuration from: **Deployment → Settings → Human in the Loop Configuration**
+
+<Frame>
+  <img alt="HITL Configuration Settings" />
+</Frame>
+
+### Email Notifications
+
+Toggle to enable or disable email notifications for HITL requests.
+
+| Setting             | Default | Description                            |
+| ------------------- | ------- | -------------------------------------- |
+| Email Notifications | Enabled | Send emails when feedback is requested |
+
+<Note>
+  When disabled, responders must use the dashboard UI or you must configure webhooks for custom notification systems.
+</Note>
+
+### SLA Target
+
+Set a target response time for tracking and metrics purposes.
+
+| Setting              | Description                                                       |
+| -------------------- | ----------------------------------------------------------------- |
+| SLA Target (minutes) | Target response time. Used for dashboard metrics and SLA tracking |
+
+Leave empty to disable SLA tracking.
+
+## Email Notifications & Responses
+
+The HITL system uses an email-first architecture where responders can reply directly to notification emails.
+
+### How Email Responses Work
+
+<Steps>
+  <Step title="Notification Sent">
+    When a HITL request is created, an email is sent to the assigned responder with the review content and context.
+  </Step>
+
+  <Step title="Reply-To Address">
+    The email includes a special reply-to address with a signed token for authentication.
+  </Step>
+
+  <Step title="User Replies">
+    The responder simply replies to the email with their feedback—no login required.
+  </Step>
+
+  <Step title="Token Validation">
+    The platform receives the reply, verifies the signed token, and matches the sender email.
+  </Step>
+
+  <Step title="Flow Resumes">
+    The feedback is recorded and the flow continues with the human's input.
+  </Step>
+</Steps>
+
+### Response Format
+
+Responders can reply with:
+
+* **Emit option**: If the reply matches an `emit` option (e.g., "approved"), it's used directly
+* **Free-form text**: Any text response is passed to the flow as feedback
+* **Plain text**: The first line of the reply body is used as feedback
+
+### Confirmation Emails
+
+After processing a reply, the responder receives a confirmation email indicating whether the feedback was successfully submitted or if an error occurred.
+
+### Email Token Security
+
+* Tokens are cryptographically signed for security
+* Tokens expire after 7 days
+* Sender email must match the token's authorized email
+* Confirmation/error emails are sent after processing
+
+## Routing Rules
+
+Route HITL requests to specific email addresses based on method patterns.
+
+<Frame>
+  <img alt="HITL Routing Rules Configuration" />
+</Frame>
+
+### Rule Structure
+
+```json theme={null}
+{
+  "name": "Approvals to Finance",
+  "match": {
+    "method_name": "approve_*"
+  },
+  "assign_to_email": "finance@company.com",
+  "assign_from_input": "manager_email"
+}
+```
+
+### Matching Patterns
+
+| Pattern            | Description          | Example Match                       |
+| ------------------ | -------------------- | ----------------------------------- |
+| `approve_*`        | Wildcard (any chars) | `approve_payment`, `approve_vendor` |
+| `review_?`         | Single char          | `review_a`, `review_1`              |
+| `validate_payment` | Exact match          | `validate_payment` only             |
+
+### Assignment Priority
+
+1. **Dynamic assignment** (`assign_from_input`): If configured, pulls email from flow state
+2. **Static email** (`assign_to_email`): Falls back to configured email
+3. **Deployment creator**: If no rule matches, the deployment creator's email is used
+
+### Dynamic Assignment Example
+
+If your flow state contains `{"sales_rep_email": "alice@company.com"}`, configure:
+
+```json theme={null}
+{
+  "name": "Route to Sales Rep",
+  "match": {
+    "method_name": "review_*"
+  },
+  "assign_from_input": "sales_rep_email"
+}
+```
+
+The request will be assigned to `alice@company.com` automatically.
+
+<Tip>
+  **Use Case**: Pull the assignee from your CRM, database, or previous flow step to dynamically route reviews to the right person.
+</Tip>
+
+## Auto-Response
+
+Automatically respond to HITL requests if no human responds within a timeout. This ensures flows don't hang indefinitely.
+
+### Configuration
+
+| Setting           | Description                                      |
+| ----------------- | ------------------------------------------------ |
+| Enabled           | Toggle to enable auto-response                   |
+| Timeout (minutes) | Time to wait before auto-responding              |
+| Default Outcome   | The response value (must match an `emit` option) |
+
+<Frame>
+  <img alt="HITL Auto-Response Configuration" />
+</Frame>
+
+### Use Cases
+
+* **SLA compliance**: Ensure flows don't hang indefinitely
+* **Default approval**: Auto-approve low-risk requests after timeout
+* **Graceful degradation**: Continue with a safe default when reviewers are unavailable
+
+<Warning>
+  Use auto-response carefully. Only enable it for non-critical reviews where a default response is acceptable.
+</Warning>
+
+## Review Process
+
+### Dashboard Interface
+
+The HITL review interface provides a clean, focused experience for reviewers:
+
+* **Markdown Rendering**: Rich formatting for review content with syntax highlighting
+* **Context Panel**: View flow state, execution history, and related information
+* **Feedback Input**: Provide detailed feedback and comments with your decision
+* **Quick Actions**: One-click emit option buttons with optional comments
+
+<Frame>
+  <img alt="HITL Pending Requests List" />
+</Frame>
+
+### Response Methods
+
+Reviewers can respond via three channels:
+
+| Method          | Description                              |
+| --------------- | ---------------------------------------- |
+| **Email Reply** | Reply directly to the notification email |
+| **Dashboard**   | Use the Enterprise dashboard UI          |
+| **API/Webhook** | Programmatic response via API            |
+
+### History & Audit Trail
+
+Every HITL interaction is tracked with a complete timeline:
+
+* Decision history (approve/reject/revise)
+* Reviewer identity and timestamp
+* Feedback and comments provided
+* Response method (email/dashboard/API)
+* Response time metrics
+
+## Analytics & Monitoring
+
+Track HITL performance with comprehensive analytics.
+
+### Performance Dashboard
+
+<Frame>
+  <img alt="HITL Metrics Dashboard" />
+</Frame>
+
+<CardGroup>
+  <Card title="Response Times" icon="stopwatch">
+    Monitor average and median response times by reviewer or flow.
+  </Card>
+
+  <Card title="Volume Trends" icon="chart-bar">
+    Analyze review volume patterns to optimize team capacity.
+  </Card>
+
+  <Card title="Decision Distribution" icon="chart-pie">
+    View approval/rejection rates across different review types.
+  </Card>
+
+  <Card title="SLA Tracking" icon="chart-line">
+    Track percentage of reviews completed within SLA targets.
+  </Card>
+</CardGroup>
+
+### Audit & Compliance
+
+Enterprise-ready audit capabilities for regulatory requirements:
+
+* Complete decision history with timestamps
+* Reviewer identity verification
+* Immutable audit logs
+* Export capabilities for compliance reporting
+
+## Common Use Cases
+
+<AccordionGroup>
+  <Accordion title="Security Reviews" icon="shield-halved">
+    **Use Case**: Internal security questionnaire automation with human validation
+
+    * AI generates responses to security questionnaires
+    * Security team reviews and validates accuracy via email
+    * Approved responses are compiled into final submission
+    * Full audit trail for compliance
+  </Accordion>
+
+  <Accordion title="Content Approval" icon="file-lines">
+    **Use Case**: Marketing content requiring legal/brand review
+
+    * AI generates marketing copy or social media content
+    * Route to brand team email for voice/tone review
+    * Automatic publishing upon approval
+  </Accordion>
+
+  <Accordion title="Financial Approvals" icon="money-bill">
+    **Use Case**: Expense reports, contract terms, budget allocations
+
+    * AI pre-processes and categorizes financial requests
+    * Route based on amount thresholds using dynamic assignment
+    * Maintain complete audit trail for financial compliance
+  </Accordion>
+
+  <Accordion title="Dynamic Assignment from CRM" icon="database">
+    **Use Case**: Route reviews to account owners from your CRM
+
+    * Flow fetches account owner email from CRM
+    * Store email in flow state (e.g., `account_owner_email`)
+    * Use `assign_from_input` to route to the right person automatically
+  </Accordion>
+
+  <Accordion title="Quality Assurance" icon="magnifying-glass">
+    **Use Case**: AI output validation before customer delivery
+
+    * AI generates customer-facing content or responses
+    * QA team reviews via email notification
+    * Feedback loops improve AI performance over time
+  </Accordion>
+</AccordionGroup>
+
+## Webhooks API
+
+When your Flows pause for human feedback, you can configure webhooks to send request data to your own application. This enables:
+
+* Building custom approval UIs
+* Integrating with internal tools (Jira, ServiceNow, custom dashboards)
+* Routing approvals to third-party systems
+* Mobile app notifications
+* Automated decision systems
+
+<Frame>
+  <img alt="HITL Webhook Configuration" />
+</Frame>
+
+### Configuring Webhooks
+
+<Steps>
+  <Step title="Navigate to Settings">
+    Go to your **Deployment** → **Settings** → **Human in the Loop**
+  </Step>
+
+  <Step title="Expand Webhooks Section">
+    Click to expand the **Webhooks** configuration
+  </Step>
+
+  <Step title="Add Your Webhook URL">
+    Enter your webhook URL (must be HTTPS in production)
+  </Step>
+
+  <Step title="Save Configuration">
+    Click **Save Configuration** to activate
+  </Step>
+</Steps>
+
+You can configure multiple webhooks. Each active webhook receives all HITL events.
+
+### Webhook Events
+
+Your endpoint will receive HTTP POST requests for these events:
+
+| Event Type    | When Triggered                            |
+| ------------- | ----------------------------------------- |
+| `new_request` | A flow pauses and requests human feedback |
+
+### Webhook Payload
+
+All webhooks receive a JSON payload with this structure:
+
+```json theme={null}
+{
+  "event": "new_request",
+  "request": {
+    "id": "550e8400-e29b-41d4-a716-446655440000",
+    "flow_id": "flow_abc123",
+    "method_name": "review_article",
+    "message": "Please review this article for publication.",
+    "emit_options": ["approved", "rejected", "request_changes"],
+    "state": {
+      "article_id": 12345,
+      "author": "john@example.com",
+      "category": "technology"
+    },
+    "metadata": {},
+    "created_at": "2026-01-14T12:00:00Z"
+  },
+  "deployment": {
+    "id": 456,
+    "name": "Content Review Flow",
+    "organization_id": 789
+  },
+  "callback_url": "https://api.crewai.com/...",
+  "assigned_to_email": "reviewer@company.com"
+}
+```
+
+### Responding to Requests
+
+To submit feedback, **POST to the `callback_url`** included in the webhook payload.
+
+```http theme={null}
+POST {callback_url}
+Content-Type: application/json
+
+{
+  "feedback": "Approved. Great article!",
+  "source": "my_custom_app"
+}
+```
+
+### Security
+
+<Info>
+  All webhook requests are cryptographically signed using HMAC-SHA256 to ensure authenticity and prevent tampering.
+</Info>
+
+#### Webhook Security
+
+* **HMAC-SHA256 signatures**: Every webhook includes a cryptographic signature
+* **Per-webhook secrets**: Each webhook has its own unique signing secret
+* **Encrypted at rest**: Signing secrets are encrypted in our database
+* **Timestamp verification**: Prevents replay attacks
+
+#### Signature Headers
+
+Each webhook request includes these headers:
+
+| Header        | Description                                  |
+| ------------- | -------------------------------------------- |
+| `X-Signature` | HMAC-SHA256 signature: `sha256=<hex_digest>` |
+| `X-Timestamp` | Unix timestamp when the request was signed   |
+
+#### Verification
+
+Verify by computing:
+
+```python theme={null}
+import hmac
+import hashlib
+
+expected = hmac.new(
+    signing_secret.encode(),
+    f"{timestamp}.{payload}".encode(),
+    hashlib.sha256
+).hexdigest()
+
+if hmac.compare_digest(expected, signature):
+    # Valid signature
+```
+
+### Error Handling
+
+Your webhook endpoint should return a 2xx status code to acknowledge receipt:
+
+| Your Response | Our Behavior                   |
+| ------------- | ------------------------------ |
+| 2xx           | Webhook delivered successfully |
+| 4xx/5xx       | Logged as failed, no retry     |
+| Timeout (30s) | Logged as failed, no retry     |
+
+## Security & RBAC
+
+### Dashboard Access
+
+HITL access is controlled at the deployment level:
+
+| Permission                  | Capability                                  |
+| --------------------------- | ------------------------------------------- |
+| `manage_human_feedback`     | Configure HITL settings, view all requests  |
+| `respond_to_human_feedback` | Respond to requests, view assigned requests |
+
+### Email Response Authorization
+
+For email replies:
+
+1. The reply-to token encodes the authorized email
+2. Sender email must match the token's email
+3. Token must not be expired (7-day default)
+4. Request must still be pending
+
+### Audit Trail
+
+All HITL actions are logged:
+
+* Request creation
+* Assignment changes
+* Response submission (with source: dashboard/email/API)
+* Flow resume status
+
+## Troubleshooting
+
+### Emails Not Sending
+
+1. Check "Email Notifications" is enabled in configuration
+2. Verify routing rules match the method name
+3. Verify assignee email is valid
+4. Check deployment creator fallback if no routing rules match
+
+### Email Replies Not Processing
+
+1. Check token hasn't expired (7-day default)
+2. Verify sender email matches assigned email
+3. Ensure request is still pending (not already responded)
+
+### Flow Not Resuming
+
+1. Check request status in dashboard
+2. Verify callback URL is accessible
+3. Ensure deployment is still running
+
+## Best Practices
+
+<Tip>
+  **Start Simple**: Begin with email notifications to deployment creator, then add routing rules as your workflows mature.
+</Tip>
+
+1. **Use Dynamic Assignment**: Pull assignee emails from your flow state for flexible routing.
+
+2. **Configure Auto-Response**: Set up a fallback for non-critical reviews to prevent flows from hanging.
+
+3. **Monitor Response Times**: Use analytics to identify bottlenecks and optimize your review process.
+
+4. **Keep Review Messages Clear**: Write clear, actionable messages in the `@human_feedback` decorator.
+
+5. **Test Email Flow**: Send test requests to verify email delivery before going to production.
+
+## Related Resources
+
+<CardGroup>
+  <Card title="Human Feedback in Flows" icon="code" href="/en/learn/human-feedback-in-flows">
+    Implementation guide for the `@human_feedback` decorator
+  </Card>
+
+  <Card title="Flow HITL Workflow Guide" icon="route" href="/en/enterprise/guides/human-in-the-loop">
+    Step-by-step guide for setting up HITL workflows
+  </Card>
+
+  <Card title="RBAC Configuration" icon="shield-check" href="/en/enterprise/features/rbac">
+    Configure role-based access control for your organization
+  </Card>
+
+  <Card title="Webhook Streaming" icon="bolt" href="/en/enterprise/features/webhook-streaming">
+    Set up real-time event notifications
   </Card>
 </CardGroup>
 
@@ -22445,7 +24036,7 @@ AI hallucinations occur when language models generate content that appears plaus
 
 ### Setting Up the Guardrail
 
-```python  theme={null}
+```python theme={null}
 from crewai.tasks.hallucination_guardrail import HallucinationGuardrail
 from crewai import LLM
 
@@ -22463,7 +24054,7 @@ context_guardrail = HallucinationGuardrail(
 
 ### Adding to Tasks
 
-```python  theme={null}
+```python theme={null}
 from crewai import Task
 
 # Create your task with the guardrail
@@ -22481,7 +24072,7 @@ task = Task(
 
 For stricter validation, you can set a custom faithfulness threshold (0-10 scale):
 
-```python  theme={null}
+```python theme={null}
 # Strict guardrail requiring high faithfulness score
 strict_guardrail = HallucinationGuardrail(
     context="Quantum computing uses qubits that exist in superposition states.",
@@ -22494,7 +24085,7 @@ strict_guardrail = HallucinationGuardrail(
 
 When your task uses tools, you can include tool responses for more accurate validation:
 
-```python  theme={null}
+```python theme={null}
 # Guardrail with tool response context
 weather_guardrail = HallucinationGuardrail(
     context="Current weather information for the requested location",
@@ -22523,7 +24114,7 @@ weather_guardrail = HallucinationGuardrail(
 
 The guardrail returns structured results indicating validation status:
 
-```python  theme={null}
+```python theme={null}
 # Example of guardrail result structure
 {
     "valid": False,
@@ -22545,7 +24136,7 @@ The guardrail returns structured results indicating validation status:
 
 When a guardrail is added to a task, it automatically validates the output before the task is marked as complete:
 
-```python  theme={null}
+```python theme={null}
 # Task output validation flow
 task_output = agent.execute_task(task)
 validation_result = guardrail(task_output)
@@ -22574,7 +24165,7 @@ The guardrail integrates with CrewAI's event system to provide observability:
   <Step title="Provide Comprehensive Context">
     Include all relevant factual information that the AI should base its output on:
 
-    ```python  theme={null}
+    ```python theme={null}
     context = """
     Company XYZ was founded in 2020 and specializes in renewable energy solutions.
     They have 150 employees and generated $50M revenue in 2023.
@@ -22586,7 +24177,7 @@ The guardrail integrates with CrewAI's event system to provide observability:
   <Step title="Keep Context Relevant">
     Only include information directly related to the task to avoid confusion:
 
-    ```python  theme={null}
+    ```python theme={null}
     # Good: Focused context
     context = "The current weather in New York is 18°C with light rain."
 
@@ -22690,7 +24281,7 @@ Discover, install, and govern reusable assets for your enterprise crews.
 The Marketplace provides a curated surface for discovering integrations, internal tools, and reusable assets that accelerate crew development.
 
 <Frame>
-    <img src="https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/marketplace-overview.png?fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=77786aca40c58c31775cb4de35b26d54" alt="Marketplace Overview" data-og-width="3040" width="3040" data-og-height="2266" height="2266" data-path="images/enterprise/marketplace-overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/marketplace-overview.png?w=280&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=ae939d5b2f6f4d087498ec8a3a342ea7 280w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/marketplace-overview.png?w=560&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=6113d807f99c7de5a4ac3012518dbfcc 560w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/marketplace-overview.png?w=840&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=9e21e42a266f06cb864455b8935f54fc 840w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/marketplace-overview.png?w=1100&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=41b47b8f0c3694766edfffe121f81402 1100w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/marketplace-overview.png?w=1650&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=b8d75afbe1aeb98abc3cfd55d90ebce0 1650w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/marketplace-overview.png?w=2500&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=a798183edcdfddb19e6ae6b7ab0ab76b 2500w" />
+  <img alt="Marketplace Overview" />
 </Frame>
 
 ## Discoverability
@@ -22705,7 +24296,7 @@ The Marketplace provides a curated surface for discovering integrations, interna
 * Configure required environment variables and scopes
 
 <Frame>
-    <img src="https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/marketplace-install.png?fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=cc15b069d1d4da8555e9630e1e874346" alt="Install & Configure" data-og-width="2672" width="2672" data-og-height="2266" height="2266" data-path="images/enterprise/marketplace-install.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/marketplace-install.png?w=280&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=cfdaa8690cb6651c51c5ba579364fb7a 280w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/marketplace-install.png?w=560&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=2ddf18661fb7c7ad08e3f1029311813f 560w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/marketplace-install.png?w=840&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=b0c3ee1f87a674b1ae31956a201e4b10 840w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/marketplace-install.png?w=1100&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=cedd73cab5194bd1381d594d0b102e2a 1100w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/marketplace-install.png?w=1650&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=acfc5d304485f464f7bb5780c97ab237 1650w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/marketplace-install.png?w=2500&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=1ea74be846d2c2eaf37cd372273f6347 2500w" />
+  <img alt="Install & Configure" />
 </Frame>
 
 You can also download the templates directly from the marketplace by clicking on the `Download` button so
@@ -22713,7 +24304,7 @@ you can use them locally or refine them to your needs.
 
 ## Related
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Tools & Integrations" href="/en/enterprise/features/tools-and-integrations" icon="wrench">
     Connect external apps and manage internal tools your agents can use.
   </Card>
@@ -22728,6 +24319,350 @@ you can use them locally or refine them to your needs.
 </CardGroup>
 
 
+# PII Redaction for Traces
+Source: https://docs.crewai.com/en/enterprise/features/pii-trace-redactions
+
+Automatically redact sensitive data from crew and flow execution traces
+
+## Overview
+
+PII Redaction is a CrewAI AMP feature that automatically detects and masks Personally Identifiable Information (PII) in your crew and flow execution traces. This ensures sensitive data like credit card numbers, social security numbers, email addresses, and names are not exposed in your CrewAI AMP traces. You can also create custom recognizers to protect organization-specific data.
+
+<Info>
+  PII Redaction is available on the Enterprise plan.
+  Deployment must be version 1.8.0 or higher.
+</Info>
+
+<Frame>
+  <img alt="PII Redaction Overview" />
+</Frame>
+
+## Why PII Redaction Matters
+
+When running AI agents in production, sensitive information often flows through your crews:
+
+* Customer data from CRM integrations
+* Financial information from payment processors
+* Personal details from form submissions
+* Internal employee data
+
+Without proper redaction, this data appears in traces, making compliance with regulations like GDPR, HIPAA, and PCI-DSS challenging. PII Redaction solves this by automatically masking sensitive data before it's stored in traces.
+
+## How It Works
+
+1. **Detect** - Scan trace event data for known PII patterns
+2. **Classify** - Identify the type of sensitive data (credit card, SSN, email, etc.)
+3. **Mask/Redact** - Replace the sensitive data with masked values based on your configuration
+
+```
+Original: "Contact john.doe@company.com or call 555-123-4567"
+Redacted: "Contact <EMAIL_ADDRESS> or call <PHONE_NUMBER>"
+```
+
+## Enabling PII Redaction
+
+<Info>
+  You must be on the Enterprise plan and your deployment must be version 1.8.0 or higher to use this feature.
+</Info>
+
+<Steps>
+  <Step title="Navigate to Crew Settings">
+    In the CrewAI AMP dashboard, select your deployed crew and go to one of your deployments/automations, then navigate to **Settings** → **PII Protection**.
+  </Step>
+
+  <Step title="Enable PII Protection">
+    Toggle on **PII Redaction for Traces**. This will enable automatic scanning and redaction of trace data.
+
+    <Info>
+      You need to manually enable PII Redaction for each deployment.
+    </Info>
+
+    <Frame>
+      <img alt="Enable PII Redaction" />
+    </Frame>
+  </Step>
+
+  <Step title="Configure Entity Types">
+    Select which types of PII to detect and redact. Each entity can be individually enabled or disabled.
+
+    <Frame>
+      <img alt="Configure Entities" />
+    </Frame>
+  </Step>
+
+  <Step title="Save">
+    Save your configuration. PII redaction will be active on all subsequent crew executions, no redeployment is needed.
+  </Step>
+</Steps>
+
+## Supported Entity Types
+
+CrewAI supports the following PII entity types, organized by category.
+
+### Global Entities
+
+| Entity            | Description                                   | Example                                       |
+| ----------------- | --------------------------------------------- | --------------------------------------------- |
+| `CREDIT_CARD`     | Credit/debit card numbers                     | "4111-1111-1111-1111"                         |
+| `CRYPTO`          | Cryptocurrency wallet addresses               | "bc1qxy2kgd..."                               |
+| `DATE_TIME`       | Dates and times                               | "January 15, 2024"                            |
+| `EMAIL_ADDRESS`   | Email addresses                               | "[john@example.com](mailto:john@example.com)" |
+| `IBAN_CODE`       | International bank account numbers            | "DE89 3704 0044 0532 0130 00"                 |
+| `IP_ADDRESS`      | IPv4 and IPv6 addresses                       | "192.168.1.1"                                 |
+| `LOCATION`        | Geographic locations                          | "New York City"                               |
+| `MEDICAL_LICENSE` | Medical license numbers                       | "MD12345"                                     |
+| `NRP`             | Nationalities, religious, or political groups | -                                             |
+| `PERSON`          | Personal names                                | "John Doe"                                    |
+| `PHONE_NUMBER`    | Phone numbers in various formats              | "+1 (555) 123-4567"                           |
+| `URL`             | Web URLs                                      | "[https://example.com](https://example.com)"  |
+
+### US-Specific Entities
+
+| Entity              | Description                 | Example       |
+| ------------------- | --------------------------- | ------------- |
+| `US_BANK_NUMBER`    | US Bank account numbers     | "1234567890"  |
+| `US_DRIVER_LICENSE` | US Driver's license numbers | "D1234567"    |
+| `US_ITIN`           | Individual Taxpayer ID      | "900-70-0000" |
+| `US_PASSPORT`       | US Passport numbers         | "123456789"   |
+| `US_SSN`            | Social Security Numbers     | "123-45-6789" |
+
+## Redaction Actions
+
+For each enabled entity, you can configure how the data is redacted:
+
+| Action   | Description                        | Example Output  |
+| -------- | ---------------------------------- | --------------- |
+| `mask`   | Replace with the entity type label | `<CREDIT_CARD>` |
+| `redact` | Completely remove the text         | *(empty)*       |
+
+## Custom Recognizers
+
+In addition to built-in entities, you can create **custom recognizers** to detect organization-specific PII patterns.
+
+<Frame>
+  <img alt="Custom Recognizers" />
+</Frame>
+
+### Recognizer Types
+
+You have two options for custom recognizers:
+
+| Type                      | Best For                                 | Example Use Case                                  |
+| ------------------------- | ---------------------------------------- | ------------------------------------------------- |
+| **Pattern-based (Regex)** | Structured data with predictable formats | Salary amounts, employee IDs, project codes       |
+| **Deny-list**             | Exact string matches                     | Company names, internal codenames, specific terms |
+
+### Creating a Custom Recognizer
+
+<Steps>
+  <Step title="Navigate to Custom Recognizers">
+    Go to your Organization **Settings** → **Organization** → **Add Recognizer**.
+  </Step>
+
+  <Step title="Configure the Recognizer">
+    <Frame>
+      <img alt="Configure Recognizer" />
+    </Frame>
+
+    Configure the following fields:
+
+    * **Name**: A descriptive name for the recognizer
+    * **Entity Type**: The entity label that will appear in redacted output (e.g., `EMPLOYEE_ID`, `SALARY`)
+    * **Type**: Choose between Regex Pattern or Deny List
+    * **Pattern/Values**: Regex pattern or list of strings to match
+    * **Confidence Threshold**: Minimum score (0.0-1.0) required for a match to trigger redaction. Higher values (e.g., 0.8) reduce false positives but may miss some matches. Lower values (e.g., 0.5) catch more matches but may over-redact. Default is 0.8.
+    * **Context Words** (optional): Words that increase detection confidence when found nearby
+  </Step>
+
+  <Step title="Save">
+    Save the recognizer. It will be available to enable on your deployments.
+  </Step>
+</Steps>
+
+### Understanding Entity Types
+
+The **Entity Type** determines how matched content appears in redacted traces:
+
+```
+Entity Type: SALARY
+Pattern: salary:\s*\$\s*\d+
+Input: "Employee salary: $50,000"
+Output: "Employee <SALARY>"
+```
+
+### Using Context Words
+
+Context words improve accuracy by increasing confidence when specific terms appear near the matched pattern:
+
+```
+Context Words: "project", "code", "internal"
+Entity Type: PROJECT_CODE
+Pattern: PRJ-\d{4}
+```
+
+When "project" or "code" appears near "PRJ-1234", the recognizer has higher confidence it's a true match, reducing false positives.
+
+## Viewing Redacted Traces
+
+Once PII redaction is enabled, your traces will show redacted values in place of sensitive data:
+
+```
+Task Output: "Customer <PERSON> placed order #12345.
+Contact email: <EMAIL_ADDRESS>, phone: <PHONE_NUMBER>.
+Payment processed for card ending in <CREDIT_CARD>."
+```
+
+Redacted values are clearly marked with angle brackets and the entity type label (e.g., `<EMAIL_ADDRESS>`), making it easy to understand what data was protected while still allowing you to debug and monitor crew behavior.
+
+## Best Practices
+
+### Performance Considerations
+
+<Steps>
+  <Step title="Enable Only Needed Entities">
+    Each enabled entity adds processing overhead. Only enable entities relevant to your data.
+  </Step>
+
+  <Step title="Use Specific Patterns">
+    For custom recognizers, use specific patterns to reduce false positives and improve performance. Regex patterns are best when identifying specific patterns in the traces such as salary, employee id, project code, etc. Deny-list recognizers are best when identifying exact strings in the traces such as company names, internal codenames, etc.
+  </Step>
+
+  <Step title="Leverage Context Words">
+    Context words improve accuracy by only triggering detection when surrounding text matches.
+  </Step>
+</Steps>
+
+## Troubleshooting
+
+<Accordion title="PII Not Being Redacted">
+  **Possible Causes:**
+
+  * Entity type not enabled in configuration
+  * Pattern doesn't match the data format
+  * Custom recognizer has syntax errors
+
+  **Solutions:**
+
+  * Verify entity is enabled in Settings → Security
+  * Test regex patterns with sample data
+  * Check logs for configuration errors
+</Accordion>
+
+<Accordion title="Too Much Data Being Redacted">
+  **Possible Causes:**
+
+  * Overly broad entity types enabled (e.g., `DATE_TIME` catches dates everywhere)
+  * Custom recognizer patterns are too general
+
+  **Solutions:**
+
+  * Disable entities that cause false positives
+  * Make custom patterns more specific
+  * Add context words to improve accuracy
+</Accordion>
+
+<Accordion title="Performance Issues">
+  **Possible Causes:**
+
+  * Too many entities enabled
+  * NLP-based entities (`PERSON`, `LOCATION`, `NRP`) are computationally expensive as they use machine learning models
+
+  **Solutions:**
+
+  * Only enable entities you actually need
+  * Consider using pattern-based alternatives where possible
+  * Monitor trace processing times in the dashboard
+</Accordion>
+
+***
+
+## Practical Example: Salary Pattern Matching
+
+This example demonstrates how to create a custom recognizer to detect and mask salary information in your traces.
+
+### Use Case
+
+Your crew processes employee or financial data that includes salary information in formats like:
+
+* `salary: $50,000`
+* `salary: $125,000.00`
+* `salary:$1,500.50`
+
+You want to automatically mask these values to protect sensitive compensation data.
+
+### Configuration
+
+<Frame>
+  <img alt="Salary Recognizer Configuration" />
+</Frame>
+
+| Field                    | Value                                       |
+| ------------------------ | ------------------------------------------- |
+| **Name**                 | `SALARY`                                    |
+| **Entity Type**          | `SALARY`                                    |
+| **Type**                 | Regex Pattern                               |
+| **Regex Pattern**        | `salary:\s*\$\s*\d{1,3}(,\d{3})*(\.\d{2})?` |
+| **Action**               | Mask                                        |
+| **Confidence Threshold** | `0.8`                                       |
+| **Context Words**        | `salary, compensation, pay, wage, income`   |
+
+### Regex Pattern Breakdown
+
+| Pattern Component | Meaning                                                      |
+| ----------------- | ------------------------------------------------------------ |
+| `salary:`         | Matches the literal text "salary:"                           |
+| `\s*`             | Matches zero or more whitespace characters                   |
+| `\$`              | Matches the dollar sign (escaped)                            |
+| `\s*`             | Matches zero or more whitespace characters after \$          |
+| `\d{1,3}`         | Matches 1-3 digits (e.g., "1", "50", "125")                  |
+| `(,\d{3})*`       | Matches comma-separated thousands (e.g., ",000", ",500,000") |
+| `(\.\d{2})?`      | Optionally matches cents (e.g., ".00", ".50")                |
+
+### Example Results
+
+```
+Original: "Employee record shows salary: $125,000.00 annually"
+Redacted: "Employee record shows <SALARY> annually"
+
+Original: "Base salary:$50,000 with bonus potential"
+Redacted: "Base <SALARY> with bonus potential"
+```
+
+<Tip>
+  Adding context words like "salary", "compensation", "pay", "wage", and "income" helps increase detection confidence when these terms appear near the matched pattern, reducing false positives.
+</Tip>
+
+### Enable the Recognizer for Your Deployments
+
+<Warning>
+  Creating a custom recognizer at the organization level does not automatically enable it for your deployments. You must manually enable each recognizer for every deployment where you want it applied.
+</Warning>
+
+After creating your custom recognizer, enable it for each deployment:
+
+<Steps>
+  <Step title="Navigate to Your Deployment">
+    Go to your deployment/automation and open **Settings** → **PII Protection**.
+  </Step>
+
+  <Step title="Select Custom Recognizers">
+    Under **Mask Recognizers**, you'll see your organization-defined recognizers. Check the box next to the recognizers you want to enable.
+
+    <Frame>
+      <img alt="Enable Custom Recognizer" />
+    </Frame>
+  </Step>
+
+  <Step title="Save Configuration">
+    Save your changes. The recognizer will be active on all subsequent executions for this deployment.
+  </Step>
+</Steps>
+
+<Info>
+  Repeat this process for each deployment where you need the custom recognizer. This gives you granular control over which recognizers are active in different environments (e.g., development vs. production).
+</Info>
+
+
 # Role-Based Access Control (RBAC)
 Source: https://docs.crewai.com/en/enterprise/features/rbac
 
@@ -22738,7 +24673,7 @@ Control access to crews, tools, and data with roles, scopes, and granular permis
 RBAC in CrewAI AMP enables secure, scalable access management through a combination of organization‑level roles and automation‑level visibility controls.
 
 <Frame>
-  <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/users_and_roles.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=31b2661025e9813f32938f9d583228b5" alt="RBAC overview in CrewAI AMP" data-og-width="1365" width="1365" data-og-height="1044" height="1044" data-path="images/enterprise/users_and_roles.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/users_and_roles.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=c3863373e71e9e7190b4e68024e82ad6 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/users_and_roles.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=e9bfbec405004555d4a862a97e29945e 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/users_and_roles.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=8b3c5a5d5a1ba5417537c6ae6cae8f1c 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/users_and_roles.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=50ba9cfdd73790c67ed3a7cce74d4f39 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/users_and_roles.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=aed9da1d5c9044e026f1674463f9adc2 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/users_and_roles.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=64a041f4e9ee05456c86d7259cef7e61 2500w" />
+  <img alt="RBAC overview in CrewAI AMP" />
 </Frame>
 
 ## Users and Roles
@@ -22759,7 +24694,8 @@ You can configure users and roles in Settings → Roles.
   </Step>
 
   <Step title="Choose a role type">
-    Use a predefined role (<b>Owner</b>, <b>Member</b>) or click <b>Create role</b> to define a custom one.
+    Use a predefined role (<b>Owner</b>, <b>Member</b>) or click
+    <b>Create role</b> to define a custom one.
   </Step>
 
   <Step title="Assign to members">
@@ -22800,15 +24736,18 @@ You can configure automation‑level access control in Automation → Settings �
   </Step>
 
   <Step title="Set visibility">
-    Choose <b>Private</b> to restrict access. The organization owner always retains access.
+    Choose <b>Private</b> to restrict access. The organization owner always
+    retains access.
   </Step>
 
   <Step title="Whitelist access">
-    Add specific users and roles allowed to view, run, and access logs/metrics/settings.
+    Add specific users and roles allowed to view, run, and access
+    logs/metrics/settings.
   </Step>
 
   <Step title="Save and verify">
-    Save changes, then confirm that non‑whitelisted users cannot view or run the automation.
+    Save changes, then confirm that non‑whitelisted users cannot view or run the
+    automation.
   </Step>
 </Steps>
 
@@ -22821,11 +24760,12 @@ You can configure automation‑level access control in Automation → Settings �
 | Access logs/metrics/settings | ✓     | ✓                     | ✗               |
 
 <Tip>
-  The organization owner always has access. In private mode, only whitelisted users and roles can view, run, and access logs/metrics/settings.
+  The organization owner always has access. In private mode, only whitelisted
+  users and roles can view, run, and access logs/metrics/settings.
 </Tip>
 
 <Frame>
-  <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/visibility.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=48e3dd12b9d55da6f7adc82ea80be56d" alt="Automation Visibility settings in CrewAI AMP" data-og-width="2028" width="2028" data-og-height="1498" height="1498" data-path="images/enterprise/visibility.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/visibility.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=382d272d44871f509846140dc972592e 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/visibility.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=6d6ba4cf2fcc360c7ce05266f5cc27e9 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/visibility.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=b9fff488a36423a05ccb3f8e592ffd07 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/visibility.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=00471ecc85192b53abbcd64416e2b624 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/visibility.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=9008ee6b24abd22593938021d2093174 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/visibility.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=27fde319cbc6fae3e4c1e0a9044c264f 2500w" />
+  <img alt="Automation Visibility settings in CrewAI AMP" />
 </Frame>
 
 <Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
@@ -22843,7 +24783,7 @@ Connect external apps and manage internal tools your agents can use.
 Tools & Integrations is the central hub for connecting third‑party apps and managing internal tools that your agents can use at runtime.
 
 <Frame>
-    <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew_connectors.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=c31a4b9031f0f517fdce3baa48471f58" alt="Tools & Integrations Overview" data-og-width="1024" width="1024" data-og-height="1024" height="1024" data-path="images/enterprise/crew_connectors.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew_connectors.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=9e592d155e388bb67d003b26884dc081 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew_connectors.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=0c8aa20b2dc82de9ea3d2da6920e4195 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew_connectors.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=782fe13ea53120f6d2f8e643a7a7b838 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew_connectors.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=780cd735280c569e6e93caa8262b12d1 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew_connectors.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=08bfe86a58ca08ec36ae67dca4aa5cf9 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew_connectors.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=e2bbe3b0fe0234001e030b501fa4d76c 2500w" />
+  <img alt="Tools & Integrations Overview" />
 </Frame>
 
 ## Explore
@@ -22869,7 +24809,7 @@ Tools & Integrations is the central hub for connecting third‑party apps and ma
     </Steps>
 
     <Frame>
-            <img src="https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/agent-apps.png?fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=43abfc4eae390e308bed0b8e15238a54" alt="Integrations Grid" data-og-width="3648" width="3648" data-og-height="2266" height="2266" data-path="images/enterprise/agent-apps.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/agent-apps.png?w=280&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=e5e30bd3d904891d5c2c4d9d6182002a 280w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/agent-apps.png?w=560&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=a146a0d69ff2309e7eac8d2f07da1cba 560w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/agent-apps.png?w=840&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=c85a4a7ebe043fc6819957ff51f3ef0d 840w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/agent-apps.png?w=1100&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=4ea77f15a4fe2671267f7e3668615970 1100w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/agent-apps.png?w=1650&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=7835e5d197251834d83a6dd7c7813d0a 1650w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/agent-apps.png?w=2500&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=06cea3ae58b49b925566a7962585b148 2500w" />
+      <img alt="Integrations Grid" />
     </Frame>
 
     ### Connect your Account
@@ -22880,24 +24820,26 @@ Tools & Integrations is the central hub for connecting third‑party apps and ma
     4. Copy your Enterprise Token from <Link href="https://app.crewai.com/crewai_plus/settings/integrations">Integration Settings</Link>
 
     <Frame>
-            <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/enterprise_action_auth_token.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=4e7388bcb76f3f8aa6c6802dd0a98956" alt="Enterprise Token" data-og-width="2264" width="2264" data-og-height="540" height="540" data-path="images/enterprise/enterprise_action_auth_token.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/enterprise_action_auth_token.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=f3d1bd9cd9783d3e83f42ab6ee42d26c 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/enterprise_action_auth_token.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=df1514f746270a9ae5fc252c07806761 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/enterprise_action_auth_token.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=a16c5c7986003435afad4106ccbaa7c5 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/enterprise_action_auth_token.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=81dabefb14a7f604a68c74eff26dff90 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/enterprise_action_auth_token.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=2833c9f202a291f2cf022026db261793 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/enterprise_action_auth_token.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=eeece6b187aebd0ec9e8af29d8bfc889 2500w" />
+      <img alt="Enterprise Token" />
     </Frame>
 
     ### Install Integration Tools
 
     To use the integrations locally, you need to install the latest `crewai-tools` package.
 
-    ```bash  theme={null}
+    ```bash theme={null}
     uv add crewai-tools
     ```
 
     ### Environment Variable Setup
 
     <Note>
-      To use integrations with `Agent(apps=[])`, you must set the `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise Token.
+      To use integrations with `Agent(apps=[])`, you must set the
+      `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise
+      Token.
     </Note>
 
-    ```bash  theme={null}
+    ```bash theme={null}
     export CREWAI_PLATFORM_INTEGRATION_TOKEN="your_enterprise_token"
     ```
 
@@ -22910,10 +24852,11 @@ Tools & Integrations is the central hub for connecting third‑party apps and ma
     ### Usage Example
 
     <Tip>
-      Use the new streamlined approach to integrate enterprise apps. Simply specify the app and its actions directly in the Agent configuration.
+      Use the new streamlined approach to integrate enterprise apps. Simply specify
+      the app and its actions directly in the Agent configuration.
     </Tip>
 
-    ```python  theme={null}
+    ```python theme={null}
     from crewai import Agent, Task, Crew
 
     # Create an agent with Gmail capabilities
@@ -22943,7 +24886,7 @@ Tools & Integrations is the central hub for connecting third‑party apps and ma
 
     ### Filtering Tools
 
-    ```python  theme={null}
+    ```python theme={null}
     from crewai import Agent, Task, Crew
 
     # Create agent with specific Gmail actions only
@@ -22969,24 +24912,22 @@ Tools & Integrations is the central hub for connecting third‑party apps and ma
     On a deployed crew, you can specify which actions are available for each integration from the service settings page.
 
     <Frame>
-            <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/filtering_enterprise_action_tools.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=2e689397eabeacd23d0c226ff40566fd" alt="Filter Actions" data-og-width="3680" width="3680" data-og-height="2382" height="2382" data-path="images/enterprise/filtering_enterprise_action_tools.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/filtering_enterprise_action_tools.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=a6045a09da61d593e04098a4627777c9 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/filtering_enterprise_action_tools.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=257b1eea0bca2def5d43df960a4171ef 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/filtering_enterprise_action_tools.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=6b9b8686a4fec0c0cdd8c7aa9acd4695 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/filtering_enterprise_action_tools.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=e16c10384300b96d4962e2847f6633bf 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/filtering_enterprise_action_tools.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=6de59b5409513b100c5cd36a69701e5f 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/filtering_enterprise_action_tools.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=32ed2ecc611c989e0fe9d8cb351740fa 2500w" />
+      <img alt="Filter Actions" />
     </Frame>
 
     ### Scoped Deployments (multi‑user orgs)
 
     You can scope each integration to a specific user. For example, a crew that connects to Google can use a specific user’s Gmail account.
 
-    <Tip>
-      Useful when different teams/users must keep data access separated.
-    </Tip>
+    <Tip>Useful when different teams/users must keep data access separated.</Tip>
 
     Use the `user_bearer_token` to scope authentication to the requesting user. If the user isn’t logged in, the crew won’t use connected integrations. Otherwise it falls back to the default bearer token configured for the deployment.
 
     <Frame>
-            <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/user_bearer_token.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=d62aed15392f304cfc16bfa38ab91a54" alt="User Bearer Token" data-og-width="532" width="532" data-og-height="732" height="732" data-path="images/enterprise/user_bearer_token.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/user_bearer_token.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=efe731a753ab7efb10a65f648fba75a7 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/user_bearer_token.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=232d8d25cd253f071856f53425cc40c2 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/user_bearer_token.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=df7b4956ab7668c23380394d8ce0f6c1 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/user_bearer_token.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=523850a6b69b5dd47ceaca3681f0ac35 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/user_bearer_token.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=561dcfa07461ecc8c39cd80865802d5e 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/user_bearer_token.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=06fbc44278b7d23fd2befd6b745622e7 2500w" />
+      <img alt="User Bearer Token" />
     </Frame>
 
-    <div id="catalog" />
+    <div />
 
     ### Catalog
 
@@ -23031,40 +24972,27 @@ Tools & Integrations is the central hub for connecting third‑party apps and ma
     Create custom tools locally, publish them on CrewAI AMP Tool Repository and use them in your agents.
 
     <Tip>
-      Before running the commands below, make sure you log in to your CrewAI AMP account by running this command:
-
-      ```bash  theme={null}
-      crewai login
-      ```
+      Before running the commands below, make sure you log in to your CrewAI AMP
+      account by running this command: `bash crewai login `
     </Tip>
 
     <Frame>
-            <img src="https://mintcdn.com/crewai/VGZ5vPOL3DPMThlg/images/enterprise/tools-integrations-internal.png?fit=max&auto=format&n=VGZ5vPOL3DPMThlg&q=85&s=b31a82341fb4dcd784c2ecfc1c3d576c" alt="Internal Tool Detail" data-og-width="3648" width="3648" data-og-height="2266" height="2266" data-path="images/enterprise/tools-integrations-internal.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/VGZ5vPOL3DPMThlg/images/enterprise/tools-integrations-internal.png?w=280&fit=max&auto=format&n=VGZ5vPOL3DPMThlg&q=85&s=4b7ea6075327365b2486b405db715126 280w, https://mintcdn.com/crewai/VGZ5vPOL3DPMThlg/images/enterprise/tools-integrations-internal.png?w=560&fit=max&auto=format&n=VGZ5vPOL3DPMThlg&q=85&s=857f73fdff530aa6c7d801267e3cbc8a 560w, https://mintcdn.com/crewai/VGZ5vPOL3DPMThlg/images/enterprise/tools-integrations-internal.png?w=840&fit=max&auto=format&n=VGZ5vPOL3DPMThlg&q=85&s=2e844aa05d5c5367f9f8c14deeb78ad7 840w, https://mintcdn.com/crewai/VGZ5vPOL3DPMThlg/images/enterprise/tools-integrations-internal.png?w=1100&fit=max&auto=format&n=VGZ5vPOL3DPMThlg&q=85&s=fd26df60df1b528fc1644e08289738da 1100w, https://mintcdn.com/crewai/VGZ5vPOL3DPMThlg/images/enterprise/tools-integrations-internal.png?w=1650&fit=max&auto=format&n=VGZ5vPOL3DPMThlg&q=85&s=11d2cd7d7e38cb9cfeed2e23c4e3fe87 1650w, https://mintcdn.com/crewai/VGZ5vPOL3DPMThlg/images/enterprise/tools-integrations-internal.png?w=2500&fit=max&auto=format&n=VGZ5vPOL3DPMThlg&q=85&s=cba0837b7f2039f9c59cdafb81cc53b9 2500w" />
+      <img alt="Internal Tool Detail" />
     </Frame>
 
     <Steps>
       <Step title="Create">
-        Create a new tool locally.
-
-        ```bash  theme={null}
-        crewai tool create your-tool
-        ```
+        Create a new tool locally. `bash crewai tool create your-tool `
       </Step>
 
       <Step title="Publish">
-        Publish the tool to the CrewAI AMP Tool Repository.
-
-        ```bash  theme={null}
-        crewai tool publish
-        ```
+        Publish the tool to the CrewAI AMP Tool Repository. `bash crewai tool
+                    publish `
       </Step>
 
       <Step title="Install">
-        Install the tool from the CrewAI AMP Tool Repository.
-
-        ```bash  theme={null}
-        crewai tool install your-tool
-        ```
+        Install the tool from the CrewAI AMP Tool Repository. `bash crewai tool
+                    install your-tool `
       </Step>
     </Steps>
 
@@ -23077,14 +25005,14 @@ Tools & Integrations is the central hub for connecting third‑party apps and ma
     * Team and role access
 
     <Frame>
-            <img src="https://mintcdn.com/crewai/VGZ5vPOL3DPMThlg/images/enterprise/tool-configs.png?fit=max&auto=format&n=VGZ5vPOL3DPMThlg&q=85&s=1896ebecec784bc15411a0309a0cf973" alt="Internal Tool Detail" data-og-width="3648" width="3648" data-og-height="2266" height="2266" data-path="images/enterprise/tool-configs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/VGZ5vPOL3DPMThlg/images/enterprise/tool-configs.png?w=280&fit=max&auto=format&n=VGZ5vPOL3DPMThlg&q=85&s=fa0c14f9439ebad25474aa422f8b1bd7 280w, https://mintcdn.com/crewai/VGZ5vPOL3DPMThlg/images/enterprise/tool-configs.png?w=560&fit=max&auto=format&n=VGZ5vPOL3DPMThlg&q=85&s=d135d69d85a0ccb8d99403def21c8529 560w, https://mintcdn.com/crewai/VGZ5vPOL3DPMThlg/images/enterprise/tool-configs.png?w=840&fit=max&auto=format&n=VGZ5vPOL3DPMThlg&q=85&s=f65ac1de79956f4178a610be29c6e212 840w, https://mintcdn.com/crewai/VGZ5vPOL3DPMThlg/images/enterprise/tool-configs.png?w=1100&fit=max&auto=format&n=VGZ5vPOL3DPMThlg&q=85&s=3b13a8181819dbf6b07ed52f239f588a 1100w, https://mintcdn.com/crewai/VGZ5vPOL3DPMThlg/images/enterprise/tool-configs.png?w=1650&fit=max&auto=format&n=VGZ5vPOL3DPMThlg&q=85&s=0dc0e377941d126e06fa76cb176b70e2 1650w, https://mintcdn.com/crewai/VGZ5vPOL3DPMThlg/images/enterprise/tool-configs.png?w=2500&fit=max&auto=format&n=VGZ5vPOL3DPMThlg&q=85&s=53bf0fa4215eb47d5959d1c46a232db1 2500w" />
+      <img alt="Internal Tool Detail" />
     </Frame>
   </Tab>
 </Tabs>
 
 ## Related
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Tool Repository" href="/en/enterprise/guides/tool-repository#tool-repository" icon="toolbox">
     Create, publish, and version custom tools for your organization.
   </Card>
@@ -23116,7 +25044,7 @@ Traces in CrewAI AMP are detailed execution records that capture every aspect of
 * Cost estimates
 
 <Frame>
-    <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/traces-overview.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=9c02d5b7306bf7adaeadd77a018f8fea" alt="Traces Overview" data-og-width="2244" width="2244" data-og-height="1422" height="1422" data-path="images/enterprise/traces-overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/traces-overview.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=e66e7c56a8848b69266563ea8cddfc4e 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/traces-overview.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=f590b3901aaa5994042c79426d78bd6c 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/traces-overview.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=0ecb9dcb307e8f130f53393bd3abc12d 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/traces-overview.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=5fc6fcfc51c4e8f4ce16d237228043d6 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/traces-overview.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=253eaed4ec34a35798dad42e9a388859 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/traces-overview.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=ec818e09bc20b3f72b1bcf1970804d13 2500w" />
+  <img alt="Traces Overview" />
 </Frame>
 
 ## Accessing Traces
@@ -23147,7 +25075,7 @@ The top section displays high-level metrics about the execution:
 * **Estimated Cost**: Approximate cost based on token usage
 
 <Frame>
-    <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trace-summary.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=a6a26eda2add26a6f649b1727bf90d8d" alt="Execution Summary" data-og-width="2576" width="2576" data-og-height="916" height="916" data-path="images/enterprise/trace-summary.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trace-summary.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=52f47a0c5d9f2dc1d0c93d1c2446cb10 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trace-summary.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=584cdc9fded1e3875799da73e60cdebd 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trace-summary.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=2e4f500438545badfa9b3bb3704786ce 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trace-summary.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=c3e0987a95638f9512ba6c64a5927eda 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trace-summary.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=d80e2d9de9db7449368151ccaac8106b 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trace-summary.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=39ccb1a6b12aecd0f6863f2783b1bfc6 2500w" />
+  <img alt="Execution Summary" />
 </Frame>
 
 ### 2. Tasks & Agents
@@ -23160,7 +25088,7 @@ This section shows all tasks and agents that were part of the crew execution:
 * Individual execution time of the task
 
 <Frame>
-    <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trace-tasks.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=f0358b4a17e78532500b4a14964bc30c" alt="Task List" data-og-width="1778" width="1778" data-og-height="594" height="594" data-path="images/enterprise/trace-tasks.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trace-tasks.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=a775268b18c71e0ffa497c9a4e1ad179 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trace-tasks.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=3dadaad60870c3841f859857d5d6f53d 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trace-tasks.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=a0a1d24573dd32cb9d5a3f089536c547 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trace-tasks.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=2ccc370f5e0b6b38521a5ed39e02b062 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trace-tasks.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=4d717a70fd61ce713f7d5d91ccf867fe 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trace-tasks.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=2c577a5f8e1acea3942de29c5ca49343 2500w" />
+  <img alt="Task List" />
 </Frame>
 
 ### 3. Final Output
@@ -23168,7 +25096,7 @@ This section shows all tasks and agents that were part of the crew execution:
 Displays the final result produced by the crew after all tasks are completed.
 
 <Frame>
-    <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/final-output.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=5ca9ef8e4071ee570c3e0c8f93ff4253" alt="Final Output" data-og-width="2212" width="2212" data-og-height="1572" height="1572" data-path="images/enterprise/final-output.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/final-output.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=ab97b6b386304f03fe21c6ba2393c683 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/final-output.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=3839e312b2a9caa45f3f4b72345ea87b 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/final-output.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=b032c2c57ffcd5fb558c43915d385f9a 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/final-output.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=63390d70d70f1a2265a224e8c20d0204 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/final-output.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=abc4a7b81c51049ca606130a0dd543f7 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/final-output.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=9fc40fc5f8ad52996aba482d62348f0f 2500w" />
+  <img alt="Final Output" />
 </Frame>
 
 ### 4. Execution Timeline
@@ -23176,7 +25104,7 @@ Displays the final result produced by the crew after all tasks are completed.
 A visual representation of when each task started and ended, helping you identify bottlenecks or parallel execution patterns.
 
 <Frame>
-    <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trace-timeline.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=c860975d3e15e3a6988bedc7d1bf6ba4" alt="Execution Timeline" data-og-width="2210" width="2210" data-og-height="1406" height="1406" data-path="images/enterprise/trace-timeline.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trace-timeline.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=b74d67bda34ce88ea23c30c580dfb2fc 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trace-timeline.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=99c6688c1d290548cc480232bb13b0e0 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trace-timeline.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=4876c794ddde894e1e2cf15f1926efcb 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trace-timeline.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=c44f7eec8f0998e488bc951eee8961ea 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trace-timeline.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=c25e4827f5a83172483c38f40e6685de 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trace-timeline.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=b3b2f72954e565f7177b5175d89dfe79 2500w" />
+  <img alt="Execution Timeline" />
 </Frame>
 
 ### 5. Detailed Task View
@@ -23184,7 +25112,7 @@ A visual representation of when each task started and ended, helping you identif
 When you click on a specific task in the timeline or task list, you'll see:
 
 <Frame>
-    <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trace-detailed-task.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=74f5e92354196325edca8d62c29363c7" alt="Detailed Task View" data-og-width="2036" width="2036" data-og-height="1572" height="1572" data-path="images/enterprise/trace-detailed-task.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trace-detailed-task.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=d260407501639bcd1a45da51762f488e 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trace-detailed-task.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=e577e06eb7658f045e56f2e40e03cf94 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trace-detailed-task.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=fcafbac3507eb800e08153352016bf14 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trace-detailed-task.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=9b2b0decb758802aaa2d8b0b2bd39e6f 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trace-detailed-task.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=66a9362f6d8f2edd5a2dad353700e440 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trace-detailed-task.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=faadd7f3c9e9176060e21c2987c3d8c9 2500w" />
+  <img alt="Detailed Task View" />
 </Frame>
 
 * **Task Key**: Unique identifier for the task
@@ -23213,7 +25141,7 @@ Traces are invaluable for troubleshooting issues with your crews:
     * Misinterpreted instructions
 
     <Frame>
-            <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/failure.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=c892a75b7a22a57949a2641a0fe45bfa" alt="Failure Points" data-og-width="820" width="820" data-og-height="924" height="924" data-path="images/enterprise/failure.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/failure.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=ecbcbd312dd467cb5cc1dae4a443c56d 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/failure.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=c0452a9db1f339e63686941a533d8946 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/failure.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=ded3f2fff055c8d16bcad99ad537da46 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/failure.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=f871feb85f88ba397a259ee8392aef3e 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/failure.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=2acf042b2e6b185f1fbc41100751e03f 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/failure.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=1e9fc9104e6b55b586a9b13e120de908 2500w" />
+      <img alt="Failure Points" />
     </Frame>
   </Step>
 
@@ -23247,7 +25175,8 @@ CrewAI batches trace uploads to reduce overhead on high-volume runs:
 This yields more stable tracing under load while preserving detailed task/agent telemetry.
 
 <Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-  Contact our support team for assistance with trace analysis or any other CrewAI AMP features.
+  Contact our support team for assistance with trace analysis or any other
+  CrewAI AMP features.
 </Card>
 
 
@@ -23265,9 +25194,9 @@ CrewAI AMP, such as model calls, tool usage, and flow steps.
 
 When using the Kickoff API, include a `webhooks` object to your request, for example:
 
-```json  theme={null}
+```json theme={null}
 {
-  "inputs": {"foo": "bar"},
+  "inputs": { "foo": "bar" },
   "webhooks": {
     "events": ["crew_kickoff_started", "llm_call_started"],
     "url": "https://your.endpoint/webhook",
@@ -23286,7 +25215,7 @@ If `realtime` is set to `true`, each event is delivered individually and immedia
 
 Each webhook sends a list of events:
 
-```json  theme={null}
+```json theme={null}
 {
   "events": [
     {
@@ -23297,8 +25226,8 @@ Each webhook sends a list of events:
       "data": {
         "model": "gpt-4",
         "messages": [
-          {"role": "system", "content": "You are an assistant."},
-          {"role": "user", "content": "Summarize this article."}
+          { "role": "system", "content": "You are an assistant." },
+          { "role": "user", "content": "Summarize this article." }
         ]
       }
     }
@@ -23306,7 +25235,7 @@ Each webhook sends a list of events:
 }
 ```
 
-The `data` object structure varies by event type. Refer to the [event list](https://github.com/crewAIInc/crewAI/tree/main/src/crewai/utilities/events) on GitHub.
+The `data` object structure varies by event type. Refer to the [event list](https://github.com/crewAIInc/crewAI/tree/main/lib/crewai/src/crewai/events/types) on GitHub.
 
 As requests are sent over HTTP, the order of events can't be guaranteed. If you need ordering, use the `timestamp` field.
 
@@ -23415,7 +25344,8 @@ You can emit your own custom events, and they will be delivered through the webh
   </Card>
 
   <Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-    Contact our support team for assistance with webhook integration or troubleshooting.
+    Contact our support team for assistance with webhook integration or
+    troubleshooting.
   </Card>
 </CardGroup>
 
@@ -23428,48 +25358,64 @@ Understand how CrewAI AMP triggers work, how to manage them, and where to find i
 CrewAI AMP triggers connect your automations to real-time events across the tools your teams already use. Instead of polling systems or relying on manual kickoffs, triggers listen for changes—new emails, calendar updates, CRM status changes—and immediately launch the crew or flow you specify.
 
 <Frame>
-    <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew_connectors.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=c31a4b9031f0f517fdce3baa48471f58" alt="Automation Triggers Overview" data-og-width="1024" width="1024" data-og-height="1024" height="1024" data-path="images/enterprise/crew_connectors.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew_connectors.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=9e592d155e388bb67d003b26884dc081 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew_connectors.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=0c8aa20b2dc82de9ea3d2da6920e4195 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew_connectors.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=782fe13ea53120f6d2f8e643a7a7b838 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew_connectors.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=780cd735280c569e6e93caa8262b12d1 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew_connectors.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=08bfe86a58ca08ec36ae67dca4aa5cf9 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew_connectors.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=e2bbe3b0fe0234001e030b501fa4d76c 2500w" />
+  <img alt="Automation Triggers Overview" />
 </Frame>
 
 ### Integration Playbooks
 
 Deep-dive guides walk through setup and sample workflows for each integration:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Gmail Trigger" icon="envelope">
     <a href="/en/enterprise/guides/gmail-trigger">Enable crews when emails arrive or threads update.</a>
   </Card>
 
   <Card title="Google Calendar Trigger" icon="calendar-days">
-    <a href="/en/enterprise/guides/google-calendar-trigger">React to calendar events as they are created, updated, or cancelled.</a>
+    <a href="/en/enterprise/guides/google-calendar-trigger">
+      React to calendar events as they are created, updated, or cancelled.
+    </a>
   </Card>
 
   <Card title="Google Drive Trigger" icon="folder-open">
-    <a href="/en/enterprise/guides/google-drive-trigger">Handle Drive file uploads, edits, and deletions.</a>
+    <a href="/en/enterprise/guides/google-drive-trigger">
+      Handle Drive file uploads, edits, and deletions.
+    </a>
   </Card>
 
   <Card title="Outlook Trigger" icon="envelope-open">
-    <a href="/en/enterprise/guides/outlook-trigger">Automate responses to new Outlook messages and calendar updates.</a>
+    <a href="/en/enterprise/guides/outlook-trigger">
+      Automate responses to new Outlook messages and calendar updates.
+    </a>
   </Card>
 
   <Card title="OneDrive Trigger" icon="cloud">
-    <a href="/en/enterprise/guides/onedrive-trigger">Audit file activity and sharing changes in OneDrive.</a>
+    <a href="/en/enterprise/guides/onedrive-trigger">
+      Audit file activity and sharing changes in OneDrive.
+    </a>
   </Card>
 
   <Card title="Microsoft Teams Trigger" icon="comments">
-    <a href="/en/enterprise/guides/microsoft-teams-trigger">Kick off workflows when new Teams chats start.</a>
+    <a href="/en/enterprise/guides/microsoft-teams-trigger">
+      Kick off workflows when new Teams chats start.
+    </a>
   </Card>
 
   <Card title="HubSpot Trigger" icon="hubspot">
-    <a href="/en/enterprise/guides/hubspot-trigger">Launch automations from HubSpot workflows and lifecycle events.</a>
+    <a href="/en/enterprise/guides/hubspot-trigger">
+      Launch automations from HubSpot workflows and lifecycle events.
+    </a>
   </Card>
 
   <Card title="Salesforce Trigger" icon="salesforce">
-    <a href="/en/enterprise/guides/salesforce-trigger">Connect Salesforce processes to CrewAI for CRM automation.</a>
+    <a href="/en/enterprise/guides/salesforce-trigger">
+      Connect Salesforce processes to CrewAI for CRM automation.
+    </a>
   </Card>
 
   <Card title="Slack Trigger" icon="slack">
-    <a href="/en/enterprise/guides/slack-trigger">Start crews directly from Slack slash commands.</a>
+    <a href="/en/enterprise/guides/slack-trigger">
+      Start crews directly from Slack slash commands.
+    </a>
   </Card>
 
   <Card title="Zapier Trigger" icon="bolt">
@@ -23495,8 +25441,8 @@ To access and manage your automation triggers:
 1. Navigate to your deployment in the CrewAI dashboard
 2. Click on the **Triggers** tab to view all available trigger integrations
 
-<Frame caption="Example of available automation triggers for a Gmail deployment">
-  <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-available-triggers.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=5de0e753bcb9db2e7f2e126354741de8" alt="List of available automation triggers" data-og-width="2012" width="2012" data-og-height="862" height="862" data-path="images/enterprise/list-available-triggers.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-available-triggers.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=0b860cce01d60455055d5de942eaf93d 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-available-triggers.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=10d7cb945ddb53606092a0206e415e2e 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-available-triggers.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=f522f52cf2749038b5654ece72450589 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-available-triggers.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=f5d89c0da9816cf78e15004f0c82018f 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-available-triggers.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=bc4ed659f02b96f8312170a00a7ee7f0 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-available-triggers.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=18ed2c13e60731bfb784abd2f403ef01 2500w" />
+<Frame>
+  <img alt="List of available automation triggers" />
 </Frame>
 
 This view shows all the trigger integrations available for your deployment, along with their current connection status.
@@ -23505,8 +25451,8 @@ This view shows all the trigger integrations available for your deployment, alon
 
 Each trigger can be easily enabled or disabled using the toggle switch:
 
-<Frame caption="Enable or disable triggers with toggle">
-  <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trigger-selected.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=10b3ee6296f323168473593b64a1e4c8" alt="Enable or disable triggers with toggle" data-og-width="1984" width="1984" data-og-height="866" height="866" data-path="images/enterprise/trigger-selected.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trigger-selected.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=27137c8d8c072ece3319e9f4c8ee0185 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trigger-selected.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=842109fa147a6a91b9f9480e450a8ee0 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trigger-selected.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=5f2cbab1be7662c99854f88496f42b4b 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trigger-selected.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=5fa4240b233d980059d3db96c493fda4 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trigger-selected.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=37f3001a39aab6400b8df45fad9b5cfa 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trigger-selected.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=b2959938cb0f239a6113c9a8b7aa0356 2500w" />
+<Frame>
+  <img alt="Enable or disable triggers with toggle" />
 </Frame>
 
 * **Enabled (blue toggle)**: The trigger is active and will automatically execute your deployment when the specified events occur
@@ -23518,8 +25464,8 @@ Simply click the toggle to change the trigger state. Changes take effect immedia
 
 Track the performance and history of your triggered executions:
 
-<Frame caption="List of executions triggered by automation">
-  <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-executions.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=be7efd03eb810139e42a10815402158d" alt="List of executions triggered by automation" data-og-width="1950" width="1950" data-og-height="1358" height="1358" data-path="images/enterprise/list-executions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-executions.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=dbc5685ae07d5239fea0fbd03b24655b 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-executions.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=b9f8787d340f3d310e37251ac78beab2 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-executions.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=45d7e191c11f9fa36e7efd63702b0369 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-executions.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=7ecd2e3076b92d3d697788cd607bb4a8 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-executions.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=d7537721cb056fc8782ce423ea7bcde8 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-executions.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=5e74d26f3f7807001bac975af3fe38af 2500w" />
+<Frame>
+  <img alt="List of executions triggered by automation" />
 </Frame>
 
 ## Building Trigger-Driven Automations
@@ -23545,7 +25491,7 @@ The CrewAI CLI provides powerful commands to help you develop and test trigger-d
 
 View all available triggers for your connected integrations:
 
-```bash  theme={null}
+```bash theme={null}
 crewai triggers list
 ```
 
@@ -23559,13 +25505,13 @@ This command displays all triggers available based on your connected integration
 
 Test your crew with realistic trigger payloads before deployment:
 
-```bash  theme={null}
+```bash theme={null}
 crewai triggers run <trigger_name>
 ```
 
 For example:
 
-```bash  theme={null}
+```bash theme={null}
 crewai triggers run microsoft_onedrive/file_changed
 ```
 
@@ -23588,7 +25534,7 @@ This command:
 
 Your existing crew definitions work seamlessly with triggers, you just need to have a task to parse the received payload:
 
-```python  theme={null}
+```python theme={null}
 @CrewBase
 class MyAutomatedCrew:
     @agent
@@ -23615,11 +25561,12 @@ class MyAutomatedCrew:
 The crew will automatically receive and can access the trigger payload through the standard CrewAI context mechanisms.
 
 <Note>
-  Crew and Flow inputs can include `crewai_trigger_payload`. CrewAI automatically injects this payload:
-
-  * Tasks: appended to the first task's description by default ("Trigger Payload: {crewai_trigger_payload}")
-  * Control via `allow_crewai_trigger_context`: set `True` to always inject, `False` to never inject
-  * Flows: any `@start()` method that accepts a `crewai_trigger_payload` parameter will receive it
+  Crew and Flow inputs can include `crewai_trigger_payload`. CrewAI
+  automatically injects this payload: - Tasks: appended to the first task's
+  description by default ("Trigger Payload: ") - Control
+  via `allow_crewai_trigger_context`: set `True` to always inject, `False` to
+  never inject - Flows: any `@start()` method that accepts a
+  `crewai_trigger_payload` parameter will receive it
 </Note>
 
 ### Integration with Flows
@@ -23630,7 +25577,7 @@ For flows, you have more control over how trigger data is handled:
 
 All `@start()` methods in your flows will accept an additional parameter called `crewai_trigger_payload`:
 
-```python  theme={null}
+```python theme={null}
 from crewai.flow import Flow, start, listen
 
 class MyAutomatedFlow(Flow):
@@ -23665,7 +25612,7 @@ class MyAutomatedFlow(Flow):
 
 When kicking off a crew within a flow that was triggered, pass the trigger payload as it:
 
-```python  theme={null}
+```python theme={null}
 @start()
 def delegate_to_crew(self, crewai_trigger_payload: dict = None):
     """
@@ -23709,321 +25656,6 @@ def delegate_to_crew(self, crewai_trigger_payload: dict = None):
 Automation triggers transform your CrewAI deployments into responsive, event-driven systems that can seamlessly integrate with your existing business processes and tools.
 
 
-# Build Crew
-Source: https://docs.crewai.com/en/enterprise/guides/build-crew
-
-A Crew is a group of agents that work together to complete a task.
-
-## Overview
-
-[CrewAI AMP](https://app.crewai.com) streamlines the process of **creating**, **deploying**, and **managing** your AI agents in production environments.
-
-## Getting Started
-
-<iframe className="w-full aspect-video rounded-xl" src="https://www.youtube.com/embed/-kSOTtYzgEw" title="Building crews with the CrewAI CLI" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
-
-### Installation and Setup
-
-<Card title="Follow Standard Installation" icon="wrench" href="/en/installation">
-  Follow our standard installation guide to set up CrewAI CLI and create your first project.
-</Card>
-
-### Building Your Crew
-
-<Card title="Quickstart Tutorial" icon="rocket" href="/en/quickstart">
-  Follow our quickstart guide to create your first agent crew using YAML configuration.
-</Card>
-
-## Support and Resources
-
-For Enterprise-specific support or questions, contact our dedicated support team at [support@crewai.com](mailto:support@crewai.com).
-
-<Card title="Schedule a Demo" icon="calendar" href="mailto:support@crewai.com">
-  Book time with our team to learn more about Enterprise features and how they can benefit your organization.
-</Card>
-
-
-# Deploy Crew
-Source: https://docs.crewai.com/en/enterprise/guides/deploy-crew
-
-Deploying a Crew on CrewAI AMP
-
-<Note>
-  After creating a crew locally or through Crew Studio, the next step is deploying it to the CrewAI AMP platform. This guide covers multiple deployment methods to help you choose the best approach for your workflow.
-</Note>
-
-## Prerequisites
-
-<CardGroup cols={2}>
-  <Card title="Crew Ready for Deployment" icon="users">
-    You should have a working crew either built locally or created through Crew Studio
-  </Card>
-
-  <Card title="GitHub Repository" icon="github">
-    Your crew code should be in a GitHub repository (for GitHub integration method)
-  </Card>
-</CardGroup>
-
-## Option 1: Deploy Using CrewAI CLI
-
-The CLI provides the fastest way to deploy locally developed crews to the Enterprise platform.
-
-<Steps>
-  <Step title="Install CrewAI CLI">
-    If you haven't already, install the CrewAI CLI:
-
-    ```bash  theme={null}
-    pip install crewai[tools]
-    ```
-
-    <Tip>
-      The CLI comes with the main CrewAI package, but the `[tools]` extra ensures you have all deployment dependencies.
-    </Tip>
-  </Step>
-
-  <Step title="Authenticate with the Enterprise Platform">
-    First, you need to authenticate your CLI with the CrewAI AMP platform:
-
-    ```bash  theme={null}
-    # If you already have a CrewAI AMP account, or want to create one:
-    crewai login
-    ```
-
-    When you run either command, the CLI will:
-
-    1. Display a URL and a unique device code
-    2. Open your browser to the authentication page
-    3. Prompt you to confirm the device
-    4. Complete the authentication process
-
-    Upon successful authentication, you'll see a confirmation message in your terminal!
-  </Step>
-
-  <Step title="Create a Deployment">
-    From your project directory, run:
-
-    ```bash  theme={null}
-    crewai deploy create
-    ```
-
-    This command will:
-
-    1. Detect your GitHub repository information
-    2. Identify environment variables in your local `.env` file
-    3. Securely transfer these variables to the Enterprise platform
-    4. Create a new deployment with a unique identifier
-
-    On successful creation, you'll see a message like:
-
-    ```shell  theme={null}
-    Deployment created successfully!
-    Name: your_project_name
-    Deployment ID: 01234567-89ab-cdef-0123-456789abcdef
-    Current Status: Deploy Enqueued
-    ```
-  </Step>
-
-  <Step title="Monitor Deployment Progress">
-    Track the deployment status with:
-
-    ```bash  theme={null}
-    crewai deploy status
-    ```
-
-    For detailed logs of the build process:
-
-    ```bash  theme={null}
-    crewai deploy logs
-    ```
-
-    <Tip>
-      The first deployment typically takes 10-15 minutes as it builds the container images. Subsequent deployments are much faster.
-    </Tip>
-  </Step>
-</Steps>
-
-## Additional CLI Commands
-
-The CrewAI CLI offers several commands to manage your deployments:
-
-```bash  theme={null}
-# List all your deployments
-crewai deploy list
-
-# Get the status of your deployment
-crewai deploy status
-
-# View the logs of your deployment
-crewai deploy logs
-
-# Push updates after code changes
-crewai deploy push
-
-# Remove a deployment
-crewai deploy remove <deployment_id>
-```
-
-## Option 2: Deploy Directly via Web Interface
-
-You can also deploy your crews directly through the CrewAI AMP web interface by connecting your GitHub account. This approach doesn't require using the CLI on your local machine.
-
-<Steps>
-  <Step title="Pushing to GitHub">
-    You need to push your crew to a GitHub repository. If you haven't created a crew yet, you can [follow this tutorial](/en/quickstart).
-  </Step>
-
-  <Step title="Connecting GitHub to CrewAI AMP">
-    1. Log in to [CrewAI AMP](https://app.crewai.com)
-    2. Click on the button "Connect GitHub"
-
-    <Frame>
-            <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/connect-github.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=e622053d392d9ca0033bb88b34d82f8d" alt="Connect GitHub Button" data-og-width="1021" width="1021" data-og-height="327" height="327" data-path="images/enterprise/connect-github.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/connect-github.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=67a2ba40e2c5dabacfafcb2359e569cf 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/connect-github.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=533ddd0da6106dc71b9cbcd010f89a5c 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/connect-github.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=d8a3f55321172ab1e4179c6d05f30b4d 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/connect-github.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=5dc5f7c278ecc22125a1f641454cec2d 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/connect-github.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=1d8f3da31bd39d97f37b7f405ef3b048 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/connect-github.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=7ce7bda27a7f94bb173f25fe9845a1cb 2500w" />
-    </Frame>
-  </Step>
-
-  <Step title="Select the Repository">
-    After connecting your GitHub account, you'll be able to select which repository to deploy:
-
-    <Frame>
-            <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/select-repo.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=937cf62f283090f134e299aa157aad22" alt="Select Repository" data-og-width="3366" width="3366" data-og-height="956" height="956" data-path="images/enterprise/select-repo.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/select-repo.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=3f5167362c6836f644ab356b61c7f8db 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/select-repo.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=c1293a61ff1fba1b19b8669b942595da 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/select-repo.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=8ac1c94be313ab5c3c3f64741e3696be 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/select-repo.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=7991df0620583adeb443551dfbf8eeb8 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/select-repo.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=1bf91d7875849fb251fa92c24c1564aa 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/select-repo.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=17ab305443f30d6f4796b2415564a3dc 2500w" />
-    </Frame>
-  </Step>
-
-  <Step title="Set Environment Variables">
-    Before deploying, you'll need to set up your environment variables to connect to your LLM provider or other services:
-
-    1. You can add variables individually or in bulk
-    2. Enter your environment variables in `KEY=VALUE` format (one per line)
-
-    <Frame>
-            <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/set-env-variables.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=84aa7644b9a1e20eb2e38309ce274ccb" alt="Set Environment Variables" data-og-width="3386" width="3386" data-og-height="606" height="606" data-path="images/enterprise/set-env-variables.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/set-env-variables.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=c5521837a0ea86776e2ac13883f72750 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/set-env-variables.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=98882c7ba545f4a09bc2248af54bc1ac 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/set-env-variables.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=884ffc4ddc80104657dd60429f262254 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/set-env-variables.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=6f811c643a2268d264d95a3701a4d151 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/set-env-variables.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=efd5564b6b4ffe6d68654cbdc8e515cc 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/set-env-variables.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=51fb85358802539cb78c5dc7cf997b92 2500w" />
-    </Frame>
-  </Step>
-
-  <Step title="Deploy Your Crew">
-    1. Click the "Deploy" button to start the deployment process
-    2. You can monitor the progress through the progress bar
-    3. The first deployment typically takes around 10-15 minutes; subsequent deployments will be faster
-
-    <Frame>
-            <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/deploy-progress.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=2eb5fa4cf040c65462a372b6667adc60" alt="Deploy Progress" data-og-width="3386" width="3386" data-og-height="1170" height="1170" data-path="images/enterprise/deploy-progress.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/deploy-progress.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=91d47e6e3edc1df183acb360cbc6af1f 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/deploy-progress.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=f917ef44ece66ef051db174b4dea47d8 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/deploy-progress.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=dfc99edd2ff1678afa564ae33cb9c784 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/deploy-progress.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=522b1ce917f9ecd15aee60c0e2241965 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/deploy-progress.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=62ab85baa7a80d6fb98c50fdb7d588c7 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/deploy-progress.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=3190fa0b08cfbcdc75d385bde06535fa 2500w" />
-    </Frame>
-
-    Once deployment is complete, you'll see:
-
-    * Your crew's unique URL
-    * A Bearer token to protect your crew API
-    * A "Delete" button if you need to remove the deployment
-  </Step>
-</Steps>
-
-## ⚠️ Environment Variable Security Requirements
-
-<Warning>
-  **Important**: CrewAI AMP has security restrictions on environment variable names that can cause deployment failures if not followed.
-</Warning>
-
-### Blocked Environment Variable Patterns
-
-For security reasons, the following environment variable naming patterns are **automatically filtered** and will cause deployment issues:
-
-**Blocked Patterns:**
-
-* Variables ending with `_TOKEN` (e.g., `MY_API_TOKEN`)
-* Variables ending with `_PASSWORD` (e.g., `DB_PASSWORD`)
-* Variables ending with `_SECRET` (e.g., `API_SECRET`)
-* Variables ending with `_KEY` in certain contexts
-
-**Specific Blocked Variables:**
-
-* `GITHUB_USER`, `GITHUB_TOKEN`
-* `AWS_REGION`, `AWS_DEFAULT_REGION`
-* Various internal CrewAI system variables
-
-### Allowed Exceptions
-
-Some variables are explicitly allowed despite matching blocked patterns:
-
-* `AZURE_AD_TOKEN`
-* `AZURE_OPENAI_AD_TOKEN`
-* `ENTERPRISE_ACTION_TOKEN`
-* `CREWAI_ENTEPRISE_TOOLS_TOKEN`
-
-### How to Fix Naming Issues
-
-If your deployment fails due to environment variable restrictions:
-
-```bash  theme={null}
-# ❌ These will cause deployment failures
-OPENAI_TOKEN=sk-...
-DATABASE_PASSWORD=mypassword
-API_SECRET=secret123
-
-# ✅ Use these naming patterns instead
-OPENAI_API_KEY=sk-...
-DATABASE_CREDENTIALS=mypassword
-API_CONFIG=secret123
-```
-
-### Best Practices
-
-1. **Use standard naming conventions**: `PROVIDER_API_KEY` instead of `PROVIDER_TOKEN`
-2. **Test locally first**: Ensure your crew works with the renamed variables
-3. **Update your code**: Change any references to the old variable names
-4. **Document changes**: Keep track of renamed variables for your team
-
-<Tip>
-  If you encounter deployment failures with cryptic environment variable errors, check your variable names against these patterns first.
-</Tip>
-
-### Interact with Your Deployed Crew
-
-Once deployment is complete, you can access your crew through:
-
-1. **REST API**: The platform generates a unique HTTPS endpoint with these key routes:
-   * `/inputs`: Lists the required input parameters
-   * `/kickoff`: Initiates an execution with provided inputs
-   * `/status/{kickoff_id}`: Checks the execution status
-
-2. **Web Interface**: Visit [app.crewai.com](https://app.crewai.com) to access:
-   * **Status tab**: View deployment information, API endpoint details, and authentication token
-   * **Run tab**: Visual representation of your crew's structure
-   * **Executions tab**: History of all executions
-   * **Metrics tab**: Performance analytics
-   * **Traces tab**: Detailed execution insights
-
-### Trigger an Execution
-
-From the Enterprise dashboard, you can:
-
-1. Click on your crew's name to open its details
-2. Select "Trigger Crew" from the management interface
-3. Enter the required inputs in the modal that appears
-4. Monitor progress as the execution moves through the pipeline
-
-### Monitoring and Analytics
-
-The Enterprise platform provides comprehensive observability features:
-
-* **Execution Management**: Track active and completed runs
-* **Traces**: Detailed breakdowns of each execution
-* **Metrics**: Token usage, execution times, and costs
-* **Timeline View**: Visual representation of task sequences
-
-### Advanced Features
-
-The Enterprise platform also offers:
-
-* **Environment Variables Management**: Securely store and manage API keys
-* **LLM Connections**: Configure integrations with various LLM providers
-* **Custom Tools Repository**: Create, share, and install tools
-* **Crew Studio**: Build crews through a chat interface without writing code
-
-<Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-  Contact our support team for assistance with deployment issues or questions about the Enterprise platform.
-</Card>
-
-
 # Gmail Trigger
 Source: https://docs.crewai.com/en/enterprise/guides/gmail-trigger
 
@@ -24034,7 +25666,8 @@ Trigger automations when Gmail events occur (e.g., new emails, labels).
 Use the Gmail Trigger to kick off your deployed crews when Gmail events happen in connected accounts, such as receiving a new email or messages matching a label/filter.
 
 <Tip>
-  Make sure Gmail is connected in Tools & Integrations and the trigger is enabled for your deployment.
+  Make sure Gmail is connected in Tools & Integrations and the trigger is
+  enabled for your deployment.
 </Tip>
 
 ## Enabling the Gmail Trigger
@@ -24044,14 +25677,14 @@ Use the Gmail Trigger to kick off your deployed crews when Gmail events happen i
 3. Locate **Gmail** and switch the toggle to enable
 
 <Frame>
-  <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trigger-selected.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=10b3ee6296f323168473593b64a1e4c8" alt="Enable or disable triggers with toggle" data-og-width="1984" width="1984" data-og-height="866" height="866" data-path="images/enterprise/trigger-selected.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trigger-selected.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=27137c8d8c072ece3319e9f4c8ee0185 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trigger-selected.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=842109fa147a6a91b9f9480e450a8ee0 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trigger-selected.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=5f2cbab1be7662c99854f88496f42b4b 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trigger-selected.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=5fa4240b233d980059d3db96c493fda4 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trigger-selected.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=37f3001a39aab6400b8df45fad9b5cfa 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/trigger-selected.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=b2959938cb0f239a6113c9a8b7aa0356 2500w" />
+  <img alt="Enable or disable triggers with toggle" />
 </Frame>
 
 ## Example: Process new emails
 
 When a new email arrives, the Gmail Trigger will send the payload to your Crew or Flow. Below is a Crew example that parses and processes the trigger payload.
 
-```python  theme={null}
+```python theme={null}
 @CrewBase
 class GmailProcessingCrew:
     @agent
@@ -24081,18 +25714,20 @@ The Gmail payload will be available via the standard context mechanisms.
 
 Test your Gmail trigger integration locally using the CrewAI CLI:
 
-```bash  theme={null}
+```bash theme={null}
 # View all available triggers
 crewai triggers list
 
 # Simulate a Gmail trigger with realistic payload
-crewai triggers run gmail/new_email
+crewai triggers run gmail/new_email_received
 ```
 
 The `crewai triggers run` command will execute your crew with a complete Gmail payload, allowing you to test your parsing logic before deployment.
 
 <Warning>
-  Use `crewai triggers run gmail/new_email` (not `crewai run`) to simulate trigger execution during development. After deployment, your crew will automatically receive the trigger payload.
+  Use `crewai triggers run gmail/new_email_received` (not `crewai run`) to
+  simulate trigger execution during development. After deployment, your crew
+  will automatically receive the trigger payload.
 </Warning>
 
 ## Monitoring Executions
@@ -24100,14 +25735,14 @@ The `crewai triggers run` command will execute your crew with a complete Gmail p
 Track history and performance of triggered runs:
 
 <Frame>
-  <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-executions.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=be7efd03eb810139e42a10815402158d" alt="List of executions triggered by automation" data-og-width="1950" width="1950" data-og-height="1358" height="1358" data-path="images/enterprise/list-executions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-executions.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=dbc5685ae07d5239fea0fbd03b24655b 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-executions.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=b9f8787d340f3d310e37251ac78beab2 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-executions.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=45d7e191c11f9fa36e7efd63702b0369 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-executions.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=7ecd2e3076b92d3d697788cd607bb4a8 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-executions.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=d7537721cb056fc8782ce423ea7bcde8 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-executions.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=5e74d26f3f7807001bac975af3fe38af 2500w" />
+  <img alt="List of executions triggered by automation" />
 </Frame>
 
 ## Troubleshooting
 
 * Ensure Gmail is connected in Tools & Integrations
 * Verify the Gmail Trigger is enabled on the Triggers tab
-* Test locally with `crewai triggers run gmail/new_email` to see the exact payload structure
+* Test locally with `crewai triggers run gmail/new_email_received` to see the exact payload structure
 * Check the execution logs and confirm the payload is passed as `crewai_trigger_payload`
 * Remember: use `crewai triggers run` (not `crewai run`) to simulate trigger execution
 
@@ -24122,7 +25757,8 @@ Kick off crews when Google Calendar events are created, updated, or cancelled
 Use the Google Calendar trigger to launch automations whenever calendar events change. Common use cases include briefing a team before a meeting, notifying stakeholders when a critical event is cancelled, or summarizing daily schedules.
 
 <Tip>
-  Make sure Google Calendar is connected in **Tools & Integrations** and enabled for the deployment you want to automate.
+  Make sure Google Calendar is connected in **Tools & Integrations** and enabled
+  for the deployment you want to automate.
 </Tip>
 
 ## Enabling the Google Calendar Trigger
@@ -24132,14 +25768,14 @@ Use the Google Calendar trigger to launch automations whenever calendar events c
 3. Locate **Google Calendar** and switch the toggle to enable
 
 <Frame>
-  <img src="https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/calendar-trigger.png?fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=e6594f439112ba76a399585e3e69e166" alt="Enable or disable triggers with toggle" data-og-width="2228" width="2228" data-og-height="1000" height="1000" data-path="images/enterprise/calendar-trigger.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/calendar-trigger.png?w=280&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=fa2e4f7da20c86c5ad7a6b7e2ab96116 280w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/calendar-trigger.png?w=560&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=c3f8a6638774eadefa5a5924328d5787 560w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/calendar-trigger.png?w=840&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=a2b8c83efc9a11a156877a8f061ca39c 840w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/calendar-trigger.png?w=1100&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=c772c71eda91c64d2db474c2ecb74159 1100w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/calendar-trigger.png?w=1650&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=35c5f5fe2de12a82aa0f1f798380def1 1650w, https://mintcdn.com/crewai/Grq_Qb7_m8o-TQ5O/images/enterprise/calendar-trigger.png?w=2500&fit=max&auto=format&n=Grq_Qb7_m8o-TQ5O&q=85&s=1fefaff8a0a2cf8e9d7d4c11203ed0eb 2500w" />
+  <img alt="Enable or disable triggers with toggle" />
 </Frame>
 
 ## Example: Summarize meeting details
 
 The snippet below mirrors the `calendar-event-crew.py` example in the trigger repository. It parses the payload, analyses the attendees and timing, and produces a meeting brief for downstream tools.
 
-```python  theme={null}
+```python theme={null}
 from calendar_event_crew import GoogleCalendarEventTrigger
 
 crew = GoogleCalendarEventTrigger().crew()
@@ -24155,7 +25791,7 @@ Use `crewai_trigger_payload` exactly as it is delivered by the trigger so the cr
 
 Test your Google Calendar trigger integration locally using the CrewAI CLI:
 
-```bash  theme={null}
+```bash theme={null}
 # View all available triggers
 crewai triggers list
 
@@ -24166,7 +25802,9 @@ crewai triggers run google_calendar/event_changed
 The `crewai triggers run` command will execute your crew with a complete Calendar payload, allowing you to test your parsing logic before deployment.
 
 <Warning>
-  Use `crewai triggers run google_calendar/event_changed` (not `crewai run`) to simulate trigger execution during development. After deployment, your crew will automatically receive the trigger payload.
+  Use `crewai triggers run google_calendar/event_changed` (not `crewai run`) to
+  simulate trigger execution during development. After deployment, your crew
+  will automatically receive the trigger payload.
 </Warning>
 
 ## Monitoring Executions
@@ -24174,7 +25812,7 @@ The `crewai triggers run` command will execute your crew with a complete Calenda
 The **Executions** list in the deployment dashboard tracks every triggered run and surfaces payload metadata, output summaries, and errors.
 
 <Frame>
-  <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-executions.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=be7efd03eb810139e42a10815402158d" alt="List of executions triggered by automation" data-og-width="1950" width="1950" data-og-height="1358" height="1358" data-path="images/enterprise/list-executions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-executions.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=dbc5685ae07d5239fea0fbd03b24655b 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-executions.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=b9f8787d340f3d310e37251ac78beab2 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-executions.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=45d7e191c11f9fa36e7efd63702b0369 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-executions.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=7ecd2e3076b92d3d697788cd607bb4a8 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-executions.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=d7537721cb056fc8782ce423ea7bcde8 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-executions.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=5e74d26f3f7807001bac975af3fe38af 2500w" />
+  <img alt="List of executions triggered by automation" />
 </Frame>
 
 ## Troubleshooting
@@ -24196,7 +25834,8 @@ Respond to Google Drive file events with automated crews
 Trigger your automations when files are created, updated, or removed in Google Drive. Typical workflows include summarizing newly uploaded content, enforcing sharing policies, or notifying owners when critical files change.
 
 <Tip>
-  Connect Google Drive in **Tools & Integrations** and confirm the trigger is enabled for the automation you want to monitor.
+  Connect Google Drive in **Tools & Integrations** and confirm the trigger is
+  enabled for the automation you want to monitor.
 </Tip>
 
 ## Enabling the Google Drive Trigger
@@ -24206,14 +25845,14 @@ Trigger your automations when files are created, updated, or removed in Google D
 3. Locate **Google Drive** and switch the toggle to enable
 
 <Frame>
-  <img src="https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/gdrive-trigger.png?fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=caef65990821bbc38454b46ca8f7bc46" alt="Enable or disable triggers with toggle" data-og-width="2208" width="2208" data-og-height="1540" height="1540" data-path="images/enterprise/gdrive-trigger.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/gdrive-trigger.png?w=280&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=26fc4c3542735f7ff2f8723a7bec0265 280w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/gdrive-trigger.png?w=560&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=67b08f32c76c711734916902a4df35a3 560w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/gdrive-trigger.png?w=840&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=5d0695c5d0f5ebd51d6413c0334a0ce6 840w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/gdrive-trigger.png?w=1100&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=6b2600ca253c042e06f2108c68d5cff3 1100w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/gdrive-trigger.png?w=1650&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=62541a717c8dee05cee7310561882f58 1650w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/gdrive-trigger.png?w=2500&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=ac92f2d61bf065c81a2ce6f02cac5d9d 2500w" />
+  <img alt="Enable or disable triggers with toggle" />
 </Frame>
 
 ## Example: Summarize file activity
 
 The drive example crews parse the payload to extract file metadata, evaluate permissions, and publish a summary.
 
-```python  theme={null}
+```python theme={null}
 from drive_file_crew import GoogleDriveFileTrigger
 
 crew = GoogleDriveFileTrigger().crew()
@@ -24226,7 +25865,7 @@ crew.kickoff({
 
 Test your Google Drive trigger integration locally using the CrewAI CLI:
 
-```bash  theme={null}
+```bash theme={null}
 # View all available triggers
 crewai triggers list
 
@@ -24237,7 +25876,9 @@ crewai triggers run google_drive/file_changed
 The `crewai triggers run` command will execute your crew with a complete Drive payload, allowing you to test your parsing logic before deployment.
 
 <Warning>
-  Use `crewai triggers run google_drive/file_changed` (not `crewai run`) to simulate trigger execution during development. After deployment, your crew will automatically receive the trigger payload.
+  Use `crewai triggers run google_drive/file_changed` (not `crewai run`) to
+  simulate trigger execution during development. After deployment, your crew
+  will automatically receive the trigger payload.
 </Warning>
 
 ## Monitoring Executions
@@ -24245,7 +25886,7 @@ The `crewai triggers run` command will execute your crew with a complete Drive p
 Track history and performance of triggered runs with the **Executions** list in the deployment dashboard.
 
 <Frame>
-  <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-executions.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=be7efd03eb810139e42a10815402158d" alt="List of executions triggered by automation" data-og-width="1950" width="1950" data-og-height="1358" height="1358" data-path="images/enterprise/list-executions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-executions.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=dbc5685ae07d5239fea0fbd03b24655b 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-executions.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=b9f8787d340f3d310e37251ac78beab2 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-executions.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=45d7e191c11f9fa36e7efd63702b0369 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-executions.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=7ecd2e3076b92d3d697788cd607bb4a8 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-executions.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=d7537721cb056fc8782ce423ea7bcde8 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/list-executions.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=5e74d26f3f7807001bac975af3fe38af 2500w" />
+  <img alt="List of executions triggered by automation" />
 </Frame>
 
 ## Troubleshooting
@@ -24255,248 +25896,6 @@ Track history and performance of triggered runs with the **Executions** list in 
 * If a payload is missing permission data, ensure the connected account has access to the file or folder
 * The trigger sends file IDs only; use the Drive API if you need to fetch binary content during the crew run
 * Remember: use `crewai triggers run` (not `crewai run`) to simulate trigger execution
-
-
-# HubSpot Trigger
-Source: https://docs.crewai.com/en/enterprise/guides/hubspot-trigger
-
-Trigger CrewAI crews directly from HubSpot Workflows
-
-This guide provides a step-by-step process to set up HubSpot triggers for CrewAI AMP, enabling you to initiate crews directly from HubSpot Workflows.
-
-## Prerequisites
-
-* A CrewAI AMP account
-* A HubSpot account with the [HubSpot Workflows](https://knowledge.hubspot.com/workflows/create-workflows) feature
-
-## Setup Steps
-
-<Steps>
-  <Step title="Connect your HubSpot account with CrewAI AMP">
-    * Log in to your `CrewAI AMP account > Triggers`
-    * Select `HubSpot` from the list of available triggers
-    * Choose the HubSpot account you want to connect with CrewAI AMP
-    * Follow the on-screen prompts to authorize CrewAI AMP access to your HubSpot account
-    * A confirmation message will appear once HubSpot is successfully connected with CrewAI AMP
-  </Step>
-
-  <Step title="Create a HubSpot Workflow">
-    * Log in to your `HubSpot account > Automations > Workflows > New workflow`
-    * Select the workflow type that fits your needs (e.g., Start from scratch)
-    * In the workflow builder, click the Plus (+) icon to add a new action.
-    * Choose `Integrated apps > CrewAI > Kickoff a Crew`.
-    * Select the Crew you want to initiate.
-    * Click `Save` to add the action to your workflow
-
-    <Frame>
-      <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/hubspot-workflow-1.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=d53acad518d2e330bd4a69ca76808b11" alt="HubSpot Workflow 1" data-og-width="670" width="670" data-og-height="556" height="556" data-path="images/enterprise/hubspot-workflow-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/hubspot-workflow-1.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=54aa0bc6e1080e9dfbd5184e23ebefe3 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/hubspot-workflow-1.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=b9eaec24db82ba8a59ac9c43047ce2d1 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/hubspot-workflow-1.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=f100f688d3f1961f0328d4141f04ad99 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/hubspot-workflow-1.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=c2147f9de1f60270ef81c5d271acd272 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/hubspot-workflow-1.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=aec4cc0e27775dd21cbfb35fad7c6634 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/hubspot-workflow-1.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=24d1d4bb9cc84719f78166c6bfa5de81 2500w" />
-    </Frame>
-  </Step>
-
-  <Step title="Use Crew results with other actions">
-    * After the Kickoff a Crew step, click the Plus (+) icon to add a new action.
-    * For example, to send an internal email notification, choose `Communications > Send internal email notification`
-    * In the Body field, click `Insert data`, select `View properties or action outputs from > Action outputs > Crew Result` to include Crew data in the email
-      <Frame>
-        <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/hubspot-workflow-2.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=a096e4d667b63a65b1061bdc5f659199" alt="HubSpot Workflow 2" data-og-width="670" width="670" data-og-height="437" height="437" data-path="images/enterprise/hubspot-workflow-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/hubspot-workflow-2.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=ffe8190dbfdc46039f7ddfb586566ac2 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/hubspot-workflow-2.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=066a379f6f677a48a07d66a61b192722 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/hubspot-workflow-2.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=871c51f5376163d894e0945665a17b37 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/hubspot-workflow-2.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=eb6be36a9c8432789077b82465038c16 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/hubspot-workflow-2.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=448437694af0fd88f3d0667ecd6e9ef9 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/hubspot-workflow-2.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=0a1ef821542f93d1d51601eb3954273a 2500w" />
-      </Frame>
-    * Configure any additional actions as needed
-    * Review your workflow steps to ensure everything is set up correctly
-    * Activate the workflow
-      <Frame>
-        <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/hubspot-workflow-3.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=b8e6f426200408867d0a09526a93f32f" alt="HubSpot Workflow 3" data-og-width="670" width="670" data-og-height="647" height="647" data-path="images/enterprise/hubspot-workflow-3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/hubspot-workflow-3.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=0b59d6e2251da148d974ec0605a78acd 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/hubspot-workflow-3.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=04629b326d956c53658267c418818165 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/hubspot-workflow-3.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=eae451ae67430e9283936cd3d06edb26 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/hubspot-workflow-3.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=389235975e0ca14bbb3a6b1b307d7508 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/hubspot-workflow-3.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=0863f7fdf8ef41628ab5b2093700f25f 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/hubspot-workflow-3.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=89186e6b7ebc362512ea3dc05407dcec 2500w" />
-      </Frame>
-  </Step>
-</Steps>
-
-For more detailed information on available actions and customization options, refer to the [HubSpot Workflows Documentation](https://knowledge.hubspot.com/workflows/create-workflows).
-
-
-# Kickoff Crew
-Source: https://docs.crewai.com/en/enterprise/guides/kickoff-crew
-
-Kickoff a Crew on CrewAI AMP
-
-## Overview
-
-Once you've deployed your crew to the CrewAI AMP platform, you can kickoff executions through the web interface or the API. This guide covers both approaches.
-
-## Method 1: Using the Web Interface
-
-### Step 1: Navigate to Your Deployed Crew
-
-1. Log in to [CrewAI AMP](https://app.crewai.com)
-2. Click on the crew name from your projects list
-3. You'll be taken to the crew's detail page
-
-<Frame>
-    <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-dashboard.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=6dfd552914d3ed5ec24abb1ba606ff7d" alt="Crew Dashboard" data-og-width="1492" width="1492" data-og-height="872" height="872" data-path="images/enterprise/crew-dashboard.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-dashboard.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=1739393031a256a20e480601b516f166 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-dashboard.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=d771e6e346daa641591c5dfaed250526 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-dashboard.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=249cdd195f22e4e1be51481394cd6429 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-dashboard.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=9495b452ab0adaf89ae863017ee4a263 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-dashboard.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=af151b37c275e4a2b1bdcab7c58912b3 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-dashboard.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=678a00a07d5d341e7c96fb540838ed7c 2500w" />
-</Frame>
-
-### Step 2: Initiate Execution
-
-From your crew's detail page, you have two options to kickoff an execution:
-
-#### Option A: Quick Kickoff
-
-1. Click the `Kickoff` link in the Test Endpoints section
-2. Enter the required input parameters for your crew in the JSON editor
-3. Click the `Send Request` button
-
-<Frame>
-    <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-endpoint.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=39603fac859ca2a602c51c585c2a4861" alt="Kickoff Endpoint" data-og-width="2794" width="2794" data-og-height="1390" height="1390" data-path="images/enterprise/kickoff-endpoint.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-endpoint.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=97c5cbd4f5479503aaa9e84cf6887999 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-endpoint.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=b619f306030ded60e9ff407427f55eef 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-endpoint.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=8ab157bd45c1e0ce88a7d0c88a77b4be 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-endpoint.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=8547e269937b1ff517e39bd12e331b3e 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-endpoint.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=193d48bee71f83154abfde44a5ddc832 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-endpoint.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=867e83c10f3c141d710eb364928fea1d 2500w" />
-</Frame>
-
-#### Option B: Using the Visual Interface
-
-1. Click the `Run` tab in the crew detail page
-2. Enter the required inputs in the form fields
-3. Click the `Run Crew` button
-
-<Frame>
-    <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/run-crew.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=87b09919c9210c7ca8fb0b0952d99005" alt="Run Crew" data-og-width="2808" width="2808" data-og-height="1764" height="1764" data-path="images/enterprise/run-crew.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/run-crew.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=b12804d306d40eb61e4e4652f6ccc92e 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/run-crew.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=2a2654d625865e0b52f70b55c544c160 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/run-crew.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=8df82b35aff39cedda1db84dab9f1218 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/run-crew.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=1f3beb1e779c5335e7e2ab5b001977a9 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/run-crew.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=414273765a6d9e1c440f17528b016117 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/run-crew.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=d68137f3cfc9d6596a47522bd1598c93 2500w" />
-</Frame>
-
-### Step 3: Monitor Execution Progress
-
-After initiating the execution:
-
-1. You'll receive a response containing a `kickoff_id` - **copy this ID**
-2. This ID is essential for tracking your execution
-
-<Frame>
-    <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/copy-task-id.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=f5d6e458d4773fb94590d7accdde8499" alt="Copy Task ID" data-og-width="2790" width="2790" data-og-height="1040" height="1040" data-path="images/enterprise/copy-task-id.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/copy-task-id.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=106491ef8ba9b0bac48212d837ff222b 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/copy-task-id.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=dc3c8d2d45b6ab8cfc725cbd633b80b1 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/copy-task-id.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=ce1dbcd4aef6f2e2a8b26aa1159b0901 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/copy-task-id.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=3856219b389380be1edb4c44780af528 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/copy-task-id.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=77fe0191cc30085da4d0c219066cae40 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/copy-task-id.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=c92039468d636c655e0db602bab300ff 2500w" />
-</Frame>
-
-### Step 4: Check Execution Status
-
-To monitor the progress of your execution:
-
-1. Click the "Status" endpoint in the Test Endpoints section
-2. Paste the `kickoff_id` into the designated field
-3. Click the "Get Status" button
-
-<Frame>
-    <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/get-status.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=f8c8f553fd5797fab5fbec2993f5d745" alt="Get Status" data-og-width="2774" width="2774" data-og-height="452" height="452" data-path="images/enterprise/get-status.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/get-status.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=594fac15c90f574d250a4fafa6d641be 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/get-status.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=995fac2247e5db9ec52c24ab65e39e8e 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/get-status.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=d16d09a460213237b0210c3bc0b19b06 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/get-status.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=18907b2ed5c2dac72f9136f372c10e0a 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/get-status.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=0592dce31df3bbb19fe62461066ed72a 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/get-status.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=fc2f61587694f6a8045894c0a72dbdb7 2500w" />
-</Frame>
-
-The status response will show:
-
-* Current execution state (`running`, `completed`, etc.)
-* Details about which tasks are in progress
-* Any outputs produced so far
-
-### Step 5: View Final Results
-
-Once execution is complete:
-
-1. The status will change to `completed`
-2. You can view the full execution results and outputs
-3. For a more detailed view, check the `Executions` tab in the crew detail page
-
-## Method 2: Using the API
-
-You can also kickoff crews programmatically using the CrewAI AMP REST API.
-
-### Authentication
-
-All API requests require a bearer token for authentication:
-
-```bash  theme={null}
-curl -H "Authorization: Bearer YOUR_CREW_TOKEN" https://your-crew-url.crewai.com
-```
-
-Your bearer token is available on the Status tab of your crew's detail page.
-
-### Checking Crew Health
-
-Before executing operations, you can verify that your crew is running properly:
-
-```bash  theme={null}
-curl -H "Authorization: Bearer YOUR_CREW_TOKEN" https://your-crew-url.crewai.com
-```
-
-A successful response will return a message indicating the crew is operational:
-
-```
-Healthy%
-```
-
-### Step 1: Retrieve Required Inputs
-
-First, determine what inputs your crew requires:
-
-```bash  theme={null}
-curl -X GET \
-  -H "Authorization: Bearer YOUR_CREW_TOKEN" \
-  https://your-crew-url.crewai.com/inputs
-```
-
-The response will be a JSON object containing an array of required input parameters, for example:
-
-```json  theme={null}
-{"inputs":["topic","current_year"]}
-```
-
-This example shows that this particular crew requires two inputs: `topic` and `current_year`.
-
-### Step 2: Kickoff Execution
-
-Initiate execution by providing the required inputs:
-
-```bash  theme={null}
-curl -X POST \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer YOUR_CREW_TOKEN" \
-  -d '{"inputs": {"topic": "AI Agent Frameworks", "current_year": "2025"}}' \
-  https://your-crew-url.crewai.com/kickoff
-```
-
-The response will include a `kickoff_id` that you'll need for tracking:
-
-```json  theme={null}
-{"kickoff_id":"abcd1234-5678-90ef-ghij-klmnopqrstuv"}
-```
-
-### Step 3: Check Execution Status
-
-Monitor the execution progress using the kickoff\_id:
-
-```bash  theme={null}
-curl -X GET \
-  -H "Authorization: Bearer YOUR_CREW_TOKEN" \
-  https://your-crew-url.crewai.com/status/abcd1234-5678-90ef-ghij-klmnopqrstuv
-```
-
-## Handling Executions
-
-### Long-Running Executions
-
-For executions that may take a long time:
-
-1. Consider implementing a polling mechanism to check status periodically
-2. Use webhooks (if available) for notification when execution completes
-3. Implement error handling for potential timeouts
-
-### Execution Context
-
-The execution context includes:
-
-* Inputs provided at kickoff
-* Environment variables configured during deployment
-* Any state maintained between tasks
-
-### Debugging Failed Executions
-
-If an execution fails:
-
-1. Check the "Executions" tab for detailed logs
-2. Review the "Traces" tab for step-by-step execution details
-3. Look for LLM responses and tool usage in the trace details
-
-<Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-  Contact our support team for assistance with execution issues or questions about the Enterprise platform.
-</Card>
 
 
 # Microsoft Teams Trigger
@@ -24509,7 +25908,8 @@ Kick off crews from Microsoft Teams chat activity
 Use the Microsoft Teams trigger to start automations whenever a new chat is created. Common patterns include summarizing inbound requests, routing urgent messages to support teams, or creating follow-up tasks in other systems.
 
 <Tip>
-  Confirm Microsoft Teams is connected under **Tools & Integrations** and enabled in the **Triggers** tab for your deployment.
+  Confirm Microsoft Teams is connected under **Tools & Integrations** and
+  enabled in the **Triggers** tab for your deployment.
 </Tip>
 
 ## Enabling the Microsoft Teams Trigger
@@ -24518,13 +25918,13 @@ Use the Microsoft Teams trigger to start automations whenever a new chat is crea
 2. Go to the **Triggers** tab
 3. Locate **Microsoft Teams** and switch the toggle to enable
 
-<Frame caption="Microsoft Teams trigger connection">
-  <img src="https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/msteams-trigger.png?fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=21eced4a8a635d17e32dccbeaf4ac217" alt="Enable or disable triggers with toggle" data-og-width="2192" width="2192" data-og-height="492" height="492" data-path="images/enterprise/msteams-trigger.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/msteams-trigger.png?w=280&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=3acc624c7b67651b5cd41df314902c41 280w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/msteams-trigger.png?w=560&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=1270b8fb54dc348f6cd242d2f3fd6480 560w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/msteams-trigger.png?w=840&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=76c96b3b169dd164c31e7bf88d4fdd8c 840w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/msteams-trigger.png?w=1100&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=04b9e72848e035c107a0857ae708a0f3 1100w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/msteams-trigger.png?w=1650&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=bee29617f472e6d4709d74c764d201c8 1650w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/msteams-trigger.png?w=2500&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=c73be9f59015ab22173857ce635a2be9 2500w" />
+<Frame>
+  <img alt="Enable or disable triggers with toggle" />
 </Frame>
 
 ## Example: Summarize a new chat thread
 
-```python  theme={null}
+```python theme={null}
 from teams_chat_created_crew import MicrosoftTeamsChatTrigger
 
 crew = MicrosoftTeamsChatTrigger().crew()
@@ -24540,7 +25940,7 @@ The crew parses thread metadata (subject, created time, roster) and generates an
 
 Test your Microsoft Teams trigger integration locally using the CrewAI CLI:
 
-```bash  theme={null}
+```bash theme={null}
 # View all available triggers
 crewai triggers list
 
@@ -24551,7 +25951,9 @@ crewai triggers run microsoft_teams/teams_message_created
 The `crewai triggers run` command will execute your crew with a complete Teams payload, allowing you to test your parsing logic before deployment.
 
 <Warning>
-  Use `crewai triggers run microsoft_teams/teams_message_created` (not `crewai run`) to simulate trigger execution during development. After deployment, your crew will automatically receive the trigger payload.
+  Use `crewai triggers run microsoft_teams/teams_message_created` (not `crewai
+      run`) to simulate trigger execution during development. After deployment, your
+  crew will automatically receive the trigger payload.
 </Warning>
 
 ## Troubleshooting
@@ -24573,7 +25975,8 @@ Automate responses to OneDrive file activity
 Start automations when files change inside OneDrive. You can generate audit summaries, notify security teams about external sharing, or update downstream line-of-business systems with new document metadata.
 
 <Tip>
-  Connect OneDrive in **Tools & Integrations** and toggle the trigger on for your deployment.
+  Connect OneDrive in **Tools & Integrations** and toggle the trigger on for
+  your deployment.
 </Tip>
 
 ## Enabling the OneDrive Trigger
@@ -24582,13 +25985,13 @@ Start automations when files change inside OneDrive. You can generate audit summ
 2. Go to the **Triggers** tab
 3. Locate **OneDrive** and switch the toggle to enable
 
-<Frame caption="Microsoft OneDrive trigger connection">
-  <img src="https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/onedrive-trigger.png?fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=55774f3aee2c024ee81e8d543d9391be" alt="Enable or disable triggers with toggle" data-og-width="2166" width="2166" data-og-height="478" height="478" data-path="images/enterprise/onedrive-trigger.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/onedrive-trigger.png?w=280&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=82cf038f92dfd9771c87ff44d364c42b 280w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/onedrive-trigger.png?w=560&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=d79a78258619bcc517c9bcbf0e1b42f4 560w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/onedrive-trigger.png?w=840&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=6e5fc33aaebcffe573195b7b7a85986e 840w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/onedrive-trigger.png?w=1100&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=bbd2f96f33f12988c8c52f36e178e553 1100w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/onedrive-trigger.png?w=1650&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=ef16d274ea3fe359655c8ac163b3c97a 1650w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/onedrive-trigger.png?w=2500&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=0efecea63f338e2cdf7372a627993bac 2500w" />
+<Frame>
+  <img alt="Enable or disable triggers with toggle" />
 </Frame>
 
 ## Example: Audit file permissions
 
-```python  theme={null}
+```python theme={null}
 from onedrive_file_crew import OneDriveFileTrigger
 
 crew = OneDriveFileTrigger().crew()
@@ -24603,7 +26006,7 @@ The crew inspects file metadata, user activity, and permission changes to produc
 
 Test your OneDrive trigger integration locally using the CrewAI CLI:
 
-```bash  theme={null}
+```bash theme={null}
 # View all available triggers
 crewai triggers list
 
@@ -24614,7 +26017,9 @@ crewai triggers run microsoft_onedrive/file_changed
 The `crewai triggers run` command will execute your crew with a complete OneDrive payload, allowing you to test your parsing logic before deployment.
 
 <Warning>
-  Use `crewai triggers run microsoft_onedrive/file_changed` (not `crewai run`) to simulate trigger execution during development. After deployment, your crew will automatically receive the trigger payload.
+  Use `crewai triggers run microsoft_onedrive/file_changed` (not `crewai run`)
+  to simulate trigger execution during development. After deployment, your crew
+  will automatically receive the trigger payload.
 </Warning>
 
 ## Troubleshooting
@@ -24636,7 +26041,8 @@ Launch automations from Outlook emails and calendar updates
 Automate responses when Outlook delivers a new message or when an event is removed from the calendar. Teams commonly route escalations, file tickets, or alert attendees of cancellations.
 
 <Tip>
-  Connect Outlook in **Tools & Integrations** and ensure the trigger is enabled for your deployment.
+  Connect Outlook in **Tools & Integrations** and ensure the trigger is enabled
+  for your deployment.
 </Tip>
 
 ## Enabling the Outlook Trigger
@@ -24645,13 +26051,13 @@ Automate responses when Outlook delivers a new message or when an event is remov
 2. Go to the **Triggers** tab
 3. Locate **Outlook** and switch the toggle to enable
 
-<Frame caption="Microsoft Outlook trigger connection">
-  <img src="https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/outlook-trigger.png?fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=f8a739ad0963ccddafeed60f21366628" alt="Enable or disable triggers with toggle" data-og-width="2186" width="2186" data-og-height="508" height="508" data-path="images/enterprise/outlook-trigger.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/outlook-trigger.png?w=280&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=03b5121587c619936c87f05e15992f08 280w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/outlook-trigger.png?w=560&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=651d2efd933f7109b216d343e6d6a6ce 560w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/outlook-trigger.png?w=840&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=a7a27424bf507c739280376fd57ea80d 840w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/outlook-trigger.png?w=1100&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=481164952ea35f62566b09d392a0910b 1100w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/outlook-trigger.png?w=1650&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=f4d3db361e699578e9ce44bde1e683fd 1650w, https://mintcdn.com/crewai/oMMe1eXJrzmWf3MN/images/enterprise/outlook-trigger.png?w=2500&fit=max&auto=format&n=oMMe1eXJrzmWf3MN&q=85&s=aaabf7a26259291cf3b8545a4c3a996d 2500w" />
+<Frame>
+  <img alt="Enable or disable triggers with toggle" />
 </Frame>
 
 ## Example: Summarize a new email
 
-```python  theme={null}
+```python theme={null}
 from outlook_message_crew import OutlookMessageTrigger
 
 crew = OutlookMessageTrigger().crew()
@@ -24666,7 +26072,7 @@ The crew extracts sender details, subject, body preview, and attachments before 
 
 Test your Outlook trigger integration locally using the CrewAI CLI:
 
-```bash  theme={null}
+```bash theme={null}
 # View all available triggers
 crewai triggers list
 
@@ -24677,7 +26083,9 @@ crewai triggers run microsoft_outlook/email_received
 The `crewai triggers run` command will execute your crew with a complete Outlook payload, allowing you to test your parsing logic before deployment.
 
 <Warning>
-  Use `crewai triggers run microsoft_outlook/email_received` (not `crewai run`) to simulate trigger execution during development. After deployment, your crew will automatically receive the trigger payload.
+  Use `crewai triggers run microsoft_outlook/email_received` (not `crewai run`)
+  to simulate trigger execution during development. After deployment, your crew
+  will automatically receive the trigger payload.
 </Warning>
 
 ## Troubleshooting
@@ -24687,49 +26095,6 @@ The `crewai triggers run` command will execute your crew with a complete Outlook
 * If attachments are missing, confirm the webhook subscription includes the `includeResourceData` flag
 * Review execution logs when events fail to match—cancellation payloads lack attendee lists by design and the crew should account for that
 * Remember: use `crewai triggers run` (not `crewai run`) to simulate trigger execution
-
-
-# Salesforce Trigger
-Source: https://docs.crewai.com/en/enterprise/guides/salesforce-trigger
-
-Trigger CrewAI crews from Salesforce workflows for CRM automation
-
-CrewAI AMP can be triggered from Salesforce to automate customer relationship management workflows and enhance your sales operations.
-
-## Overview
-
-Salesforce is a leading customer relationship management (CRM) platform that helps businesses streamline their sales, service, and marketing operations. By setting up CrewAI triggers from Salesforce, you can:
-
-* Automate lead scoring and qualification
-* Generate personalized sales materials
-* Enhance customer service with AI-powered responses
-* Streamline data analysis and reporting
-
-## Demo
-
-<iframe className="w-full aspect-video rounded-xl" src="https://www.youtube.com/embed/oJunVqjjfu4" title="CrewAI + Salesforce trigger demo" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
-
-## Getting Started
-
-To set up Salesforce triggers:
-
-1. **Contact Support**: Reach out to CrewAI AMP support for assistance with Salesforce trigger setup
-2. **Review Requirements**: Ensure you have the necessary Salesforce permissions and API access
-3. **Configure Connection**: Work with the support team to establish the connection between CrewAI and your Salesforce instance
-4. **Test Triggers**: Verify the triggers work correctly with your specific use cases
-
-## Use Cases
-
-Common Salesforce + CrewAI trigger scenarios include:
-
-* **Lead Processing**: Automatically analyze and score incoming leads
-* **Proposal Generation**: Create customized proposals based on opportunity data
-* **Customer Insights**: Generate analysis reports from customer interaction history
-* **Follow-up Automation**: Create personalized follow-up messages and recommendations
-
-## Next Steps
-
-For detailed setup instructions and advanced configuration options, please contact CrewAI AMP support who can provide tailored guidance for your specific Salesforce environment and business needs.
 
 
 # Slack Trigger
@@ -24751,7 +26116,7 @@ This guide explains how to start a crew directly from Slack using CrewAI trigger
     In the CrewAI dashboard, navigate to the **Triggers** section.
 
     <Frame>
-      <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/slack-integration.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=6d976bf9516d737af0b7ea3a77aa2b2a" alt="CrewAI Slack Integration" data-og-width="1962" width="1962" data-og-height="1052" height="1052" data-path="images/enterprise/slack-integration.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/slack-integration.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=8ce8a2090ccca8027450db4f447f65cd 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/slack-integration.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=72063bc9e37d7ca4f495cb4dcac4fd04 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/slack-integration.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=bfb09bbf40fa85cff58485d75d6d2e55 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/slack-integration.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=30e1149f8bbe585c443d9b57c33d3888 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/slack-integration.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=c6b943586531c6fab7eab1b9c2f61092 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/slack-integration.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=106a0fe6ed7e2f3a69b5bde02f21d860 2500w" />
+      <img alt="CrewAI Slack Integration" />
     </Frame>
 
     Verify that Slack is listed and is connected.
@@ -24762,7 +26127,7 @@ This guide explains how to start a crew directly from Slack using CrewAI trigger
     * Type the slash command "**/kickoff**" to initiate the crew kickoff process.
     * You should see a  "**Kickoff crew**" appear as you type:
       <Frame>
-        <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-slack-crew.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=cf16579e88e59903af9ac3f2ef374555" alt="Kickoff crew" data-og-width="601" width="601" data-og-height="157" height="157" data-path="images/enterprise/kickoff-slack-crew.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-slack-crew.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=f43ffa15817823e76313f33c889f5708 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-slack-crew.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=bd173c20d88c0bf4466f1af1098bb285 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-slack-crew.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=00d64ee5b69f4c9497f32dd18335f53e 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-slack-crew.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=6a38124f5f963b15b1cc0d6acaa1996f 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-slack-crew.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=94c6909651b61ec2b4de17687d1ce95a 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-slack-crew.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=47df98421d2a98e3fbc19015d2cb48ee 2500w" />
+        <img alt="Kickoff crew" />
       </Frame>
     * Press Enter or select the "**Kickoff crew**" option. A dialog box titled "**Kickoff an AI Crew**" will appear.
   </Step>
@@ -24771,7 +26136,7 @@ This guide explains how to start a crew directly from Slack using CrewAI trigger
     * In the dropdown menu labeled "**Select of the crews online:**", choose the crew you want to start.
     * In the example below, "**prep-for-meeting**" is selected:
       <Frame>
-        <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-slack-crew-dropdown.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=7c92f688fcd7f1f0251cd90670014e34" alt="Kickoff crew dropdown" data-og-width="631" width="631" data-og-height="333" height="333" data-path="images/enterprise/kickoff-slack-crew-dropdown.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-slack-crew-dropdown.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=7efe2a1a20f23311e914b0fdedf7532a 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-slack-crew-dropdown.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=2bb784762404d9d7713743e8da6f0057 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-slack-crew-dropdown.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=5aa472c131ee27c39c925b555f6d451d 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-slack-crew-dropdown.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=18b84066d96edbacc103e57e99be592e 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-slack-crew-dropdown.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=208d754df14ea8bcd287990df3d6bd55 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-slack-crew-dropdown.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=98efd80f079ee57494997f45e03455ed 2500w" />
+        <img alt="Kickoff crew dropdown" />
       </Frame>
     * If your crew requires any inputs, click the "**Add Inputs**" button to provide them.
       <Note>
@@ -24782,11 +26147,11 @@ This guide explains how to start a crew directly from Slack using CrewAI trigger
   <Step title="Click Kickoff and wait for the crew to complete">
     * Once you've selected the crew and added any necessary inputs, click "**Kickoff**" to start the crew.
       <Frame>
-        <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-slack-crew-kickoff.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=e5bebbf61fb92832dc1ebef0a77d5654" alt="Kickoff crew" data-og-width="628" width="628" data-og-height="771" height="771" data-path="images/enterprise/kickoff-slack-crew-kickoff.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-slack-crew-kickoff.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=3c04a8e5c5f45211135c3b31423b3baf 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-slack-crew-kickoff.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=a6d444a78f6991956f03eb92c8e83de0 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-slack-crew-kickoff.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=789ad738a8dd10a4e9ad83de0be5faf3 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-slack-crew-kickoff.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=a1fec0a13f00082ab70c7c12744d2954 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-slack-crew-kickoff.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=2d7e271cf05848aaebdd7445923f6daf 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-slack-crew-kickoff.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=912bf7b4abb0d51b46ddf3f9d02230c2 2500w" />
+        <img alt="Kickoff crew" />
       </Frame>
     * The crew will start executing and you will see the results in the Slack channel.
       <Frame>
-        <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-slack-crew-results.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=a3d451c03c3ff7ebf64eb9bb1b41c18c" alt="Kickoff crew results" data-og-width="653" width="653" data-og-height="678" height="678" data-path="images/enterprise/kickoff-slack-crew-results.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-slack-crew-results.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=fcaf9677647222c1a7c716ed197c9c60 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-slack-crew-results.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=bf3ff58196c634ebbaa545ad815593ba 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-slack-crew-results.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=34fd1fcef59569b7503b47587e29b31b 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-slack-crew-results.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=ceeb582a0ea6ce7c4ce86080c5f09506 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-slack-crew-results.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=7b1bac2cd281b5770f3ad33d13fc3e22 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-slack-crew-results.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=1bef274ced3f62e923578f882cc36fc8 2500w" />
+        <img alt="Kickoff crew results" />
       </Frame>
   </Step>
 </Steps>
@@ -24795,203 +26160,6 @@ This guide explains how to start a crew directly from Slack using CrewAI trigger
 
 * Make sure you have the necessary permissions to use the `/kickoff` command in your Slack workspace.
 * If you don't see your desired crew in the dropdown, ensure it's properly configured and online in CrewAI.
-
-
-# Update Crew
-Source: https://docs.crewai.com/en/enterprise/guides/update-crew
-
-Updating a Crew on CrewAI AMP
-
-<Note>
-  After deploying your crew to CrewAI AMP, you may need to make updates to the code, security settings, or configuration.
-  This guide explains how to perform these common update operations.
-</Note>
-
-## Why Update Your Crew?
-
-CrewAI won't automatically pick up GitHub updates by default, so you'll need to manually trigger updates, unless you checked the `Auto-update` option when deploying your crew.
-
-There are several reasons you might want to update your crew deployment:
-
-* You want to update the code with a latest commit you pushed to GitHub
-* You want to reset the bearer token for security reasons
-* You want to update environment variables
-
-## 1. Updating Your Crew Code for a Latest Commit
-
-When you've pushed new commits to your GitHub repository and want to update your deployment:
-
-1. Navigate to your crew in the CrewAI AMP platform
-2. Click on the `Re-deploy` button on your crew details page
-
-<Frame>
-    <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/redeploy-button.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=1dc96ae0dd8f0dc2f5f62f58ebd6e5d0" alt="Re-deploy Button" data-og-width="980" width="980" data-og-height="852" height="852" data-path="images/enterprise/redeploy-button.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/redeploy-button.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=8d240851abcc6a015002a129ac12274b 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/redeploy-button.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=2655800484e20180df0d3bc88e563ef8 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/redeploy-button.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=f8d7850c288577c99242ada871e5eb7c 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/redeploy-button.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=d5c4dd51e512466df9209fa6218bbb9e 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/redeploy-button.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=15e03da40d3e92fe0c9615b28f4efce8 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/redeploy-button.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=8d29aa1f4ac64a30a01c449b2f31aead 2500w" />
-</Frame>
-
-This will trigger an update that you can track using the progress bar. The system will pull the latest code from your repository and rebuild your deployment.
-
-## 2. Resetting Bearer Token
-
-If you need to generate a new bearer token (for example, if you suspect the current token might have been compromised):
-
-1. Navigate to your crew in the CrewAI AMP platform
-2. Find the `Bearer Token` section
-3. Click the `Reset` button next to your current token
-
-<Frame>
-    <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/reset-token.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=c38b0a22de7a192a1962b4b371e03119" alt="Reset Token" data-og-width="980" width="980" data-og-height="840" height="840" data-path="images/enterprise/reset-token.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/reset-token.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=759453ab874cffd228bbbc91db2cbe3c 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/reset-token.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=365f3075be71ad8ed85e1a9ba7cbe9b5 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/reset-token.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=7b689e67e67abb1e39cd6e98efa1e562 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/reset-token.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=7dfbd9d08e16bb16de00d6e7fde00a6d 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/reset-token.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=900c92322f9cd90732ccdfa1f8d9ea42 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/reset-token.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=000718aaaa645b109514bc72c2f0b70e 2500w" />
-</Frame>
-
-<Warning>
-  Resetting your bearer token will invalidate the previous token immediately. Make sure to update any applications or scripts that are using the old token.
-</Warning>
-
-## 3. Updating Environment Variables
-
-To update the environment variables for your crew:
-
-1. First access the deployment page by clicking on your crew's name
-
-<Frame>
-    <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/env-vars-button.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=740ad7bcf5b860f35fe9fddd7a707271" alt="Environment Variables Button" data-og-width="1216" width="1216" data-og-height="598" height="598" data-path="images/enterprise/env-vars-button.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/env-vars-button.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=a4bdc54aee3c54cedc4c25f0b0e28aaa 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/env-vars-button.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=f3012e2c4257313f080afeb2ab0c690b 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/env-vars-button.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=9532e4a7281391aacacc1faaf14e6f74 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/env-vars-button.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=ea0aaee0f92be7b9ef4b62cc64e12877 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/env-vars-button.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=ca4a47c02e4761b05b83af8fb118e915 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/env-vars-button.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=542188110b78b31121abba738a28019d 2500w" />
-</Frame>
-
-2. Locate the `Environment Variables` section (you will need to click the `Settings` icon to access it)
-3. Edit the existing variables or add new ones in the fields provided
-4. Click the `Update` button next to each variable you modify
-
-<Frame>
-    <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/update-env-vars.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=461ca7ce61dd14a4344f6237c584b891" alt="Update Environment Variables" data-og-width="2888" width="2888" data-og-height="1914" height="1914" data-path="images/enterprise/update-env-vars.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/update-env-vars.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=9afc7b7e194a371365d7b69edc0ddac6 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/update-env-vars.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=8ccb5b296eab23dd57cc241f7f445589 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/update-env-vars.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=374a4a1f02dd73e7eb7e30e4de59b0ac 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/update-env-vars.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=23357a7c2e61f08b456e20450eaa255f 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/update-env-vars.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=bb82e60664a74c99ae0fa88dae8366a8 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/update-env-vars.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=1d764223f3032607fd6d2577452c021a 2500w" />
-</Frame>
-
-5. Finally, click the `Update Deployment` button at the bottom of the page to apply the changes
-
-<Note>
-  Updating environment variables will trigger a new deployment, but this will only update the environment configuration and not the code itself.
-</Note>
-
-## After Updating
-
-After performing any update:
-
-1. The system will rebuild and redeploy your crew
-2. You can monitor the deployment progress in real-time
-3. Once complete, test your crew to ensure the changes are working as expected
-
-<Tip>
-  If you encounter any issues after updating, you can view deployment logs in the platform or contact support for assistance.
-</Tip>
-
-<Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-  Contact our support team for assistance with updating your crew or troubleshooting deployment issues.
-</Card>
-
-
-# Zapier Trigger
-Source: https://docs.crewai.com/en/enterprise/guides/zapier-trigger
-
-Trigger CrewAI crews from Zapier workflows to automate cross-app workflows
-
-This guide will walk you through the process of setting up Zapier triggers for CrewAI AMP, allowing you to automate workflows between CrewAI AMP and other applications.
-
-## Prerequisites
-
-* A CrewAI AMP account
-* A Zapier account
-* A Slack account (for this specific example)
-
-## Step-by-Step Setup
-
-<Steps>
-  <Step title="Set Up the Slack Trigger">
-    * In Zapier, create a new Zap.
-
-    <Frame>
-      <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-1.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=d7602ce90ddcd4f0365fd821f4ff1ff2" alt="Zapier 1" data-og-width="621" width="621" data-og-height="463" height="463" data-path="images/enterprise/zapier-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-1.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=3682030aedc56484321e678fe075bd97 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-1.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=cf755fd940ed2e79378b91369e620cd9 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-1.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=e2fc3de247c9054220b0255a1544b160 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-1.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=6f10592fc96a7ea63bbd8548328c8cea 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-1.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=ab8d3cce86244b055400ad4ecf60d51d 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-1.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=37b9df91c5efb53fd1d6c9a7fc34c624 2500w" />
-    </Frame>
-  </Step>
-
-  <Step title="Choose Slack as your trigger app">
-    <Frame>
-      <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-2.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=e5cdc5705b87b4e06178fa12fb5ef64b" alt="Zapier 2" data-og-width="670" width="670" data-og-height="684" height="684" data-path="images/enterprise/zapier-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-2.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=f5d12f107504be7a7521ddf91d9ec413 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-2.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=bebe1ccb4e8d4b4d077d4039b5a8c419 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-2.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=edb0a91b6ed81fc58470f998b3329978 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-2.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=262296a5be2e6762da49b77fcd9bd5e2 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-2.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=40b91cfb93939c2dd0b3f6222b376f90 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-2.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=18bd414e6d18ec375cf94d94d2510775 2500w" />
-    </Frame>
-
-    * Select `New Pushed Message` as the Trigger Event.
-    * Connect your Slack account if you haven't already.
-  </Step>
-
-  <Step title="Configure the CrewAI AMP Action">
-    * Add a new action step to your Zap.
-    * Choose CrewAI+ as your action app and Kickoff as the Action Event
-
-    <Frame>
-      <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-3.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=e52e2404a73623df30d125873bd8ff42" alt="Zapier 5" data-og-width="670" width="670" data-og-height="670" height="670" data-path="images/enterprise/zapier-3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-3.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=786eec1ccf1fa275c710cd3f35d7c955 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-3.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=bffb3ef5cd02ccd103a070893842ce2a 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-3.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=20c3a2004d6186a7217d6492f093dde5 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-3.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=3563e2fede93f6c678e6e25269a4781f 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-3.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=1641552fd6d8e6b477875ab53bd6f401 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-3.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=6c227ade8128df087cd958a98a398605 2500w" />
-    </Frame>
-  </Step>
-
-  <Step title="Connect your CrewAI AMP account">
-    * Connect your CrewAI AMP account.
-    * Select the appropriate Crew for your workflow.
-
-    <Frame>
-      <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-4.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=13aac37fdb67ee1c9f841a602ac3abf5" alt="Zapier 6" data-og-width="670" width="670" data-og-height="657" height="657" data-path="images/enterprise/zapier-4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-4.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=ad12e0febda29f3e6b68a245b83f17bd 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-4.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=08ff0773ed36f8fbb1c33acd90a50f79 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-4.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=cf788ee6daea3ef786b456c7a80d79a5 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-4.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=b5a14e7f332b6ebef8131f6a26835417 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-4.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=f0b27340ce1a510f990a305674d53107 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-4.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=061132e0ca03b82737f62cd4a113b12c 2500w" />
-    </Frame>
-
-    * Configure the inputs for the Crew using the data from the Slack message.
-  </Step>
-
-  <Step title="Format the CrewAI AMP Output">
-    * Add another action step to format the text output from CrewAI AMP.
-    * Use Zapier's formatting tools to convert the Markdown output to HTML.
-
-    <Frame>
-      <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-5.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=e772b4803dfffe4de12d9a7ea21484ce" alt="Zapier 8" data-og-width="670" width="670" data-og-height="674" height="674" data-path="images/enterprise/zapier-5.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-5.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=d3de75f0a0d65af30620c7d9b89a1802 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-5.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=42ec43489c3e07aea4f64790efad63ef 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-5.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=68f473bd4c78acb0422d724a8dc9ac27 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-5.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=d3149ba4fc03d00e00f81e6774dd4253 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-5.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=ea05c3790b67091e18e32291c2ecceae 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-5.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=a7519c4547a79061828c08d71091ac18 2500w" />
-    </Frame>
-
-    <Frame>
-      <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-6.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=9fa4a34d5c511b6bb76f276348928699" alt="Zapier 9" data-og-width="670" width="670" data-og-height="675" height="675" data-path="images/enterprise/zapier-6.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-6.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=722c246b4c43b099734105a8c57e094c 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-6.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=91bfde61dfceb3998b85a0fd947b8f1b 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-6.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=d56af89fb61384149deef33e22b57bfe 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-6.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=d9097a2e0d8ddf13f0d17c7f65d4a263 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-6.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=59e5ad6b6f94117c4bdb264cde97a5ff 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-6.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=edf53161c63e0daf6e3e61abf1b1a265 2500w" />
-    </Frame>
-  </Step>
-
-  <Step title="Send the Output via Email">
-    * Add a final action step to send the formatted output via email.
-    * Choose your preferred email service (e.g., Gmail, Outlook).
-    * Configure the email details, including recipient, subject, and body.
-    * Insert the formatted CrewAI AMP output into the email body.
-
-    <Frame>
-      <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-7.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=f3d2a0c67b29888cfdc5b0d81ba5c29b" alt="Zapier 7" data-og-width="670" width="670" data-og-height="673" height="673" data-path="images/enterprise/zapier-7.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-7.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=399cf0c5f81cbf170a3c8d4d8557b37f 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-7.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=8b6c488f27b8797c575a711f9b257b81 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-7.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=f905970cb40554fe1c3674afa7f2209e 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-7.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=92ee968916226d374826eb358c264f66 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-7.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=1853357f43dd7032c890fd3a57fbd99e 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-7.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=9c5e507725c754d90937f0b7b1ee7699 2500w" />
-    </Frame>
-  </Step>
-
-  <Step title="Kick Off the crew from Slack">
-    * Enter the text in your Slack channel
-
-    <Frame>
-      <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-7b.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=916dbdffd171dc52c40ebc74cc39a38f" alt="Zapier 10" data-og-width="509" width="509" data-og-height="85" height="85" data-path="images/enterprise/zapier-7b.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-7b.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=fce126149004d422a866d0e9ae00b9b0 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-7b.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=c051b11bd9e2fd2db9a0fbd0997043cd 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-7b.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=2f14112b9c9551239a1b82bd220b85fa 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-7b.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=f302f0da373ef859e49ca1b4a7540b94 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-7b.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=386dfa4b1f1f4005e705771b39c1ec33 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-7b.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=57c6a7727031de0aebbdbeb65a03e27c 2500w" />
-    </Frame>
-
-    * Select the 3 ellipsis button and then chose Push to Zapier
-
-    <Frame>
-      <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-8.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=a6a6e2fd0b0b239af4c17ae1f34ad720" alt="Zapier 11" data-og-width="405" width="405" data-og-height="260" height="260" data-path="images/enterprise/zapier-8.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-8.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=e9bb5078ea66e8e7774b262caea53295 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-8.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=ec7f588235922fd96b8aea884cba1221 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-8.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=d82c4c5d979814febba30bbfdeb2831d 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-8.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=7a8f97770f17f96b4585c1b38b000fb8 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-8.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=e8bae8057f2a294c977f7d568660f915 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/zapier-8.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=301cbedee7d42601db44f3710755653c 2500w" />
-    </Frame>
-  </Step>
-
-  <Step title="Select the crew and then Push to Kick Off">
-    <Frame>
-      <img src="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/enterprise/zapier-9.png?fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=eda865381d7121d38025c2b13abeccdf" alt="Zapier 12" data-og-width="659" width="659" data-og-height="531" height="531" data-path="images/enterprise/zapier-9.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/enterprise/zapier-9.png?w=280&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=283165c2ef289340b66aa9ed1719f97d 280w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/enterprise/zapier-9.png?w=560&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=d28641bc16596826f13a9d14ac0a2f2b 560w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/enterprise/zapier-9.png?w=840&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=e68731bab42671ec59dfd179c210bd80 840w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/enterprise/zapier-9.png?w=1100&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=234f5bffd3865f2a15d744455fef0c90 1100w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/enterprise/zapier-9.png?w=1650&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=d59b16a7bfbdf3b07d696ef70be0a31a 1650w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/enterprise/zapier-9.png?w=2500&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=1669d1af7e28868e5f260df18b36dd49 2500w" />
-    </Frame>
-  </Step>
-</Steps>
-
-## Tips for Success
-
-* Ensure that your CrewAI AMP inputs are correctly mapped from the Slack message.
-* Test your Zap thoroughly before turning it on to catch any potential issues.
-* Consider adding error handling steps to manage potential failures in the workflow.
-
-By following these steps, you'll have successfully set up Zapier triggers for CrewAI AMP, allowing for automated workflows triggered by Slack messages and resulting in email notifications with CrewAI AMP output.
 
 
 # Asana Integration
@@ -25023,17 +26191,19 @@ Before using the Asana integration, ensure you have:
 
 ### 2. Install Required Package
 
-```bash  theme={null}
+```bash theme={null}
 uv add crewai-tools
 ```
 
 ### 3. Environment Variable Setup
 
 <Note>
-  To use integrations with `Agent(apps=[])`, you must set the `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise Token.
+  To use integrations with `Agent(apps=[])`, you must set the
+  `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise
+  Token.
 </Note>
 
-```bash  theme={null}
+```bash theme={null}
 export CREWAI_PLATFORM_INTEGRATION_TOKEN="your_enterprise_token"
 ```
 
@@ -25171,7 +26341,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
 ### Basic Asana Agent Setup
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create an agent with Asana capabilities
@@ -25200,7 +26370,7 @@ crew.kickoff()
 
 ### Filtering Specific Asana Tools
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create agent with specific Asana actions only
@@ -25232,7 +26402,7 @@ crew.kickoff()
 
 ### Advanced Project Management
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 project_coordinator = Agent(
@@ -25292,17 +26462,19 @@ Before using the Box integration, ensure you have:
 
 ### 2. Install Required Package
 
-```bash  theme={null}
+```bash theme={null}
 uv add crewai-tools
 ```
 
 ### 3. Environment Variable Setup
 
 <Note>
-  To use integrations with `Agent(apps=[])`, you must set the `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise Token.
+  To use integrations with `Agent(apps=[])`, you must set the
+  `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise
+  Token.
 </Note>
 
-```bash  theme={null}
+```bash theme={null}
 export CREWAI_PLATFORM_INTEGRATION_TOKEN="your_enterprise_token"
 ```
 
@@ -25321,7 +26493,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
     **Parameters:**
 
     * `fileAttributes` (object, required): Attributes - File metadata including name, parent folder, and timestamps.
-      ```json  theme={null}
+      ```json theme={null}
       {
         "content_created_at": "2012-12-12T10:53:43-08:00",
         "content_modified_at": "2012-12-12T10:53:43-08:00",
@@ -25357,7 +26529,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
     * `folderId` (string, required): Folder ID - The unique identifier that represents a folder. (example: "0").
     * `filterFormula` (object, optional): A filter in disjunctive normal form - OR of AND groups of single conditions.
-      ```json  theme={null}
+      ```json theme={null}
       {
         "operator": "OR",
         "conditions": [
@@ -25383,7 +26555,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
     * `folderName` (string, required): Name - The name for the new folder. (example: "New Folder").
     * `folderParent` (object, required): Parent Folder - The parent folder where the new folder will be created.
-      ```json  theme={null}
+      ```json theme={null}
       {
         "id": "123456"
       }
@@ -25398,7 +26570,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
     * `folderId` (string, required): Folder ID - The unique identifier that represents a folder. (example: "0").
     * `folderName` (string, required): Name - The name for the folder. (example: "New Folder").
     * `folderParent` (object, required): Parent Folder - The new parent folder destination.
-      ```json  theme={null}
+      ```json theme={null}
       {
         "id": "123456"
       }
@@ -25420,7 +26592,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
     * `folderId` (string, required): Folder ID - The folder to search within.
     * `filterFormula` (object, optional): A filter in disjunctive normal form - OR of AND groups of single conditions.
-      ```json  theme={null}
+      ```json theme={null}
       {
         "operator": "OR",
         "conditions": [
@@ -25453,7 +26625,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
 ### Basic Box Agent Setup
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 from crewai import Agent, Task, Crew
 
@@ -25483,7 +26655,7 @@ crew.kickoff()
 
 ### Filtering Specific Box Tools
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create agent with specific Box actions only
@@ -25511,7 +26683,7 @@ crew.kickoff()
 
 ### Advanced File Management
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 file_manager = Agent(
@@ -25571,17 +26743,19 @@ Before using the ClickUp integration, ensure you have:
 
 ### 2. Install Required Package
 
-```bash  theme={null}
+```bash theme={null}
 uv add crewai-tools
 ```
 
 ### 3. Environment Variable Setup
 
 <Note>
-  To use integrations with `Agent(apps=[])`, you must set the `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise Token.
+  To use integrations with `Agent(apps=[])`, you must set the
+  `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise
+  Token.
 </Note>
 
-```bash  theme={null}
+```bash theme={null}
 export CREWAI_PLATFORM_INTEGRATION_TOKEN="your_enterprise_token"
 ```
 
@@ -25600,7 +26774,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
     **Parameters:**
 
     * `taskFilterFormula` (object, optional): A filter in disjunctive normal form - OR of AND groups of single conditions.
-      ```json  theme={null}
+      ```json theme={null}
       {
         "operator": "OR",
         "conditions": [
@@ -25717,7 +26891,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
 ### Basic ClickUp Agent Setup
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 from crewai import Agent, Task, Crew
 
@@ -25747,7 +26921,7 @@ crew.kickoff()
 
 ### Filtering Specific ClickUp Tools
 
-```python  theme={null}
+```python theme={null}
 
 task_coordinator = Agent(
     role="Task Coordinator",
@@ -25773,7 +26947,7 @@ crew.kickoff()
 
 ### Advanced Project Management
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 project_manager = Agent(
@@ -25805,7 +26979,7 @@ crew.kickoff()
 
 ### Task Search and Management
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 task_analyst = Agent(
@@ -25836,7 +27010,8 @@ crew.kickoff()
 ### Getting Help
 
 <Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-  Contact our support team for assistance with ClickUp integration setup or troubleshooting.
+  Contact our support team for assistance with ClickUp integration setup or
+  troubleshooting.
 </Card>
 
 
@@ -25869,17 +27044,19 @@ Before using the GitHub integration, ensure you have:
 
 ### 2. Install Required Package
 
-```bash  theme={null}
+```bash theme={null}
 uv add crewai-tools
 ```
 
 ### 3. Environment Variable Setup
 
 <Note>
-  To use integrations with `Agent(apps=[])`, you must set the `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise Token.
+  To use integrations with `Agent(apps=[])`, you must set the
+  `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise
+  Token.
 </Note>
 
-```bash  theme={null}
+```bash theme={null}
 export CREWAI_PLATFORM_INTEGRATION_TOKEN="your_enterprise_token"
 ```
 
@@ -25949,7 +27126,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
     * `owner` (string, required): Owner - Specify the name of the account owner of the associated repository for this Issue. (example: "abc").
     * `repo` (string, required): Repository - Specify the name of the associated repository for this Issue.
     * `filter` (object, required): A filter in disjunctive normal form - OR of AND groups of single conditions.
-      ```json  theme={null}
+      ```json theme={null}
       {
         "operator": "OR",
         "conditions": [
@@ -26043,7 +27220,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
 ### Basic GitHub Agent Setup
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 from crewai import Agent, Task, Crew
 
@@ -26073,7 +27250,7 @@ crew.kickoff()
 
 ### Filtering Specific GitHub Tools
 
-```python  theme={null}
+```python theme={null}
 
 issue_manager = Agent(
     role="Issue Manager",
@@ -26099,7 +27276,7 @@ crew.kickoff()
 
 ### Release Management
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 release_manager = Agent(
@@ -26131,7 +27308,7 @@ crew.kickoff()
 
 ### Issue Tracking and Management
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 project_coordinator = Agent(
@@ -26164,7 +27341,8 @@ crew.kickoff()
 ### Getting Help
 
 <Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-  Contact our support team for assistance with GitHub integration setup or troubleshooting.
+  Contact our support team for assistance with GitHub integration setup or
+  troubleshooting.
 </Card>
 
 
@@ -26197,17 +27375,19 @@ Before using the Gmail integration, ensure you have:
 
 ### 2. Install Required Package
 
-```bash  theme={null}
+```bash theme={null}
 uv add crewai-tools
 ```
 
 ### 3. Environment Variable Setup
 
 <Note>
-  To use integrations with `Agent(apps=[])`, you must set the `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise Token.
+  To use integrations with `Agent(apps=[])`, you must set the
+  `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise
+  Token.
 </Note>
 
-```bash  theme={null}
+```bash theme={null}
 export CREWAI_PLATFORM_INTEGRATION_TOKEN="your_enterprise_token"
 ```
 
@@ -26334,7 +27514,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
 ### Basic Gmail Agent Setup
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create an agent with Gmail capabilities
@@ -26363,7 +27543,7 @@ crew.kickoff()
 
 ### Filtering Specific Gmail Tools
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create agent with specific Gmail actions only
@@ -26395,7 +27575,7 @@ crew.kickoff()
 
 ### Email Search and Analysis
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create agent with Gmail search and analysis capabilities
@@ -26427,7 +27607,7 @@ crew.kickoff()
 
 ### Thread Management
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create agent with Gmail thread management capabilities
@@ -26464,7 +27644,8 @@ crew.kickoff()
 ### Getting Help
 
 <Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-  Contact our support team for assistance with Gmail integration setup or troubleshooting.
+  Contact our support team for assistance with Gmail integration setup or
+  troubleshooting.
 </Card>
 
 
@@ -26497,17 +27678,19 @@ Before using the Google Calendar integration, ensure you have:
 
 ### 2. Install Required Package
 
-```bash  theme={null}
+```bash theme={null}
 uv add crewai-tools
 ```
 
 ### 3. Environment Variable Setup
 
 <Note>
-  To use integrations with `Agent(apps=[])`, you must set the `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise Token.
+  To use integrations with `Agent(apps=[])`, you must set the
+  `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise
+  Token.
 </Note>
 
-```bash  theme={null}
+```bash theme={null}
 export CREWAI_PLATFORM_INTEGRATION_TOKEN="your_enterprise_token"
 ```
 
@@ -26528,7 +27711,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
     * `timeMin` (string, required): Start time (RFC3339 format)
     * `timeMax` (string, required): End time (RFC3339 format)
     * `items` (array, required): Calendar IDs to check
-      ```json  theme={null}
+      ```json theme={null}
       [
         {
           "id": "calendar_id"
@@ -26553,7 +27736,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
     * `timeZone` (string, optional): Time zone (e.g., America/Los\_Angeles)
     * `location` (string, optional): Geographic location of the event as free-form text.
     * `attendees` (array, optional): List of attendees for the event.
-      ```json  theme={null}
+      ```json theme={null}
       [
         {
           "email": "attendee@example.com",
@@ -26563,7 +27746,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
       ]
       ```
     * `reminders` (object, optional): Information about the event's reminders.
-      ```json  theme={null}
+      ```json theme={null}
       {
         "useDefault": true,
         "overrides": [
@@ -26575,7 +27758,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
       }
       ```
     * `conferenceData` (object, optional): The conference-related information, such as details of a Google Meet conference.
-      ```json  theme={null}
+      ```json theme={null}
       {
         "createRequest": {
           "requestId": "unique-request-id",
@@ -26648,7 +27831,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
 ### Basic Calendar Agent Setup
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create an agent with Google Calendar capabilities
@@ -26677,7 +27860,7 @@ crew.kickoff()
 
 ### Filtering Specific Calendar Tools
 
-```python  theme={null}
+```python theme={null}
 meeting_coordinator = Agent(
     role="Meeting Coordinator",
     goal="Coordinate meetings and check availability",
@@ -26702,7 +27885,7 @@ crew.kickoff()
 
 ### Event Management and Updates
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 event_manager = Agent(
@@ -26733,7 +27916,7 @@ crew.kickoff()
 
 ### Availability and Calendar Management
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 availability_coordinator = Agent(
@@ -26765,7 +27948,7 @@ crew.kickoff()
 
 ### Automated Scheduling Workflows
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 scheduling_automator = Agent(
@@ -26828,7 +28011,8 @@ crew.kickoff()
 ### Getting Help
 
 <Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-  Contact our support team for assistance with Google Calendar integration setup or troubleshooting.
+  Contact our support team for assistance with Google Calendar integration setup
+  or troubleshooting.
 </Card>
 
 
@@ -26861,17 +28045,19 @@ Before using the Google Contacts integration, ensure you have:
 
 ### 2. Install Required Package
 
-```bash  theme={null}
+```bash theme={null}
 uv add crewai-tools
 ```
 
 ### 3. Environment Variable Setup
 
 <Note>
-  To use integrations with `Agent(apps=[])`, you must set the `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise Token.
+  To use integrations with `Agent(apps=[])`, you must set the
+  `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise
+  Token.
 </Note>
 
-```bash  theme={null}
+```bash theme={null}
 export CREWAI_PLATFORM_INTEGRATION_TOKEN="your_enterprise_token"
 ```
 
@@ -26968,7 +28154,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
     **Parameters:**
 
     * `names` (array, optional): Person's names
-      ```json  theme={null}
+      ```json theme={null}
       [
         {
           "givenName": "John",
@@ -26978,7 +28164,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
       ]
       ```
     * `emailAddresses` (array, optional): Email addresses
-      ```json  theme={null}
+      ```json theme={null}
       [
         {
           "value": "john.doe@example.com",
@@ -26987,7 +28173,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
       ]
       ```
     * `phoneNumbers` (array, optional): Phone numbers
-      ```json  theme={null}
+      ```json theme={null}
       [
         {
           "value": "+1234567890",
@@ -26996,7 +28182,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
       ]
       ```
     * `addresses` (array, optional): Postal addresses
-      ```json  theme={null}
+      ```json theme={null}
       [
         {
           "formattedValue": "123 Main St, City, State 12345",
@@ -27005,7 +28191,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
       ]
       ```
     * `organizations` (array, optional): Organizations/companies
-      ```json  theme={null}
+      ```json theme={null}
       [
         {
           "name": "Company Name",
@@ -27060,7 +28246,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
 ### Basic Google Contacts Agent Setup
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create an agent with Google Contacts capabilities
@@ -27089,7 +28275,7 @@ crew.kickoff()
 
 ### Directory Search and Management
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 directory_manager = Agent(
@@ -27120,7 +28306,7 @@ crew.kickoff()
 
 ### Contact Creation and Updates
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 contact_curator = Agent(
@@ -27152,7 +28338,7 @@ crew.kickoff()
 
 ### Contact Group Management
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 group_organizer = Agent(
@@ -27184,7 +28370,7 @@ crew.kickoff()
 
 ### Comprehensive Contact Management
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 contact_specialist = Agent(
@@ -27265,7 +28451,8 @@ crew.kickoff()
 ### Getting Help
 
 <Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-  Contact our support team for assistance with Google Contacts integration setup or troubleshooting.
+  Contact our support team for assistance with Google Contacts integration setup
+  or troubleshooting.
 </Card>
 
 
@@ -27298,17 +28485,19 @@ Before using the Google Docs integration, ensure you have:
 
 ### 2. Install Required Package
 
-```bash  theme={null}
+```bash theme={null}
 uv add crewai-tools
 ```
 
 ### 3. Environment Variable Setup
 
 <Note>
-  To use integrations with `Agent(apps=[])`, you must set the `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise Token.
+  To use integrations with `Agent(apps=[])`, you must set the
+  `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise
+  Token.
 </Note>
 
-```bash  theme={null}
+```bash theme={null}
 export CREWAI_PLATFORM_INTEGRATION_TOKEN="your_enterprise_token"
 ```
 
@@ -27405,7 +28594,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
 ### Basic Google Docs Agent Setup
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create an agent with Google Docs capabilities
@@ -27434,7 +28623,7 @@ crew.kickoff()
 
 ### Text Editing and Content Management
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create an agent focused on text editing
@@ -27462,7 +28651,7 @@ crew.kickoff()
 
 ### Advanced Document Operations
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create an agent for advanced document operations
@@ -27522,7 +28711,8 @@ crew.kickoff()
 ### Getting Help
 
 <Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-  Contact our support team for assistance with Google Docs integration setup or troubleshooting.
+  Contact our support team for assistance with Google Docs integration setup or
+  troubleshooting.
 </Card>
 
 
@@ -27555,17 +28745,19 @@ Before using the Google Drive integration, ensure you have:
 
 ### 2. Install Required Package
 
-```bash  theme={null}
+```bash theme={null}
 uv add crewai-tools
 ```
 
 ### 3. Environment Variable Setup
 
 <Note>
-  To use integrations with `Agent(apps=[])`, you must set the `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise Token.
+  To use integrations with `Agent(apps=[])`, you must set the
+  `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise
+  Token.
 </Note>
 
-```bash  theme={null}
+```bash theme={null}
 export CREWAI_PLATFORM_INTEGRATION_TOKEN="your_enterprise_token"
 ```
 
@@ -27670,7 +28862,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
 ### Basic Google Drive Agent Setup
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create an agent with Google Drive capabilities
@@ -27699,7 +28891,7 @@ crew.kickoff()
 
 ### Filtering Specific Google Drive Tools
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create agent with specific Google Drive actions only
@@ -27731,7 +28923,7 @@ crew.kickoff()
 
 ### Advanced File Management
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 file_organizer = Agent(
@@ -27793,17 +28985,19 @@ Before using the Google Sheets integration, ensure you have:
 
 ### 2. Install Required Package
 
-```bash  theme={null}
+```bash theme={null}
 uv add crewai-tools
 ```
 
 ### 3. Environment Variable Setup
 
 <Note>
-  To use integrations with `Agent(apps=[])`, you must set the `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise Token.
+  To use integrations with `Agent(apps=[])`, you must set the
+  `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise
+  Token.
 </Note>
 
-```bash  theme={null}
+```bash theme={null}
 export CREWAI_PLATFORM_INTEGRATION_TOKEN="your_enterprise_token"
 ```
 
@@ -27847,7 +29041,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
     * `spreadsheetId` (string, required): The ID of the spreadsheet to update.
     * `range` (string, required): The A1 notation of the range to update.
     * `values` (array, required): The data to be written. Each array represents a row.
-      ```json  theme={null}
+      ```json theme={null}
       [
         ["Value1", "Value2", "Value3"],
         ["Value4", "Value5", "Value6"]
@@ -27864,7 +29058,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
     * `spreadsheetId` (string, required): The ID of the spreadsheet to update.
     * `range` (string, required): The A1 notation of a range to search for a logical table of data.
     * `values` (array, required): The data to append. Each array represents a row.
-      ```json  theme={null}
+      ```json theme={null}
       [
         ["Value1", "Value2", "Value3"],
         ["Value4", "Value5", "Value6"]
@@ -27881,7 +29075,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
     * `title` (string, required): The title of the new spreadsheet.
     * `sheets` (array, optional): The sheets that are part of the spreadsheet.
-      ```json  theme={null}
+      ```json theme={null}
       [
         {
           "properties": {
@@ -27897,7 +29091,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
 ### Basic Google Sheets Agent Setup
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create an agent with Google Sheets capabilities
@@ -27926,7 +29120,7 @@ crew.kickoff()
 
 ### Filtering Specific Google Sheets Tools
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create agent with specific Google Sheets actions only
@@ -27957,7 +29151,7 @@ crew.kickoff()
 
 ### Data Analysis and Reporting
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 data_analyst = Agent(
@@ -27988,7 +29182,7 @@ crew.kickoff()
 
 ### Spreadsheet Creation and Management
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 spreadsheet_manager = Agent(
@@ -28019,7 +29213,7 @@ crew.kickoff()
 
 ### Automated Data Updates
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 data_updater = Agent(
@@ -28051,7 +29245,7 @@ crew.kickoff()
 
 ### Complex Data Management Workflow
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 workflow_manager = Agent(
@@ -28125,7 +29319,8 @@ crew.kickoff()
 ### Getting Help
 
 <Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-  Contact our support team for assistance with Google Sheets integration setup or troubleshooting.
+  Contact our support team for assistance with Google Sheets integration setup
+  or troubleshooting.
 </Card>
 
 
@@ -28158,17 +29353,19 @@ Before using the Google Slides integration, ensure you have:
 
 ### 2. Install Required Package
 
-```bash  theme={null}
+```bash theme={null}
 uv add crewai-tools
 ```
 
 ### 3. Environment Variable Setup
 
 <Note>
-  To use integrations with `Agent(apps=[])`, you must set the `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise Token.
+  To use integrations with `Agent(apps=[])`, you must set the
+  `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise
+  Token.
 </Note>
 
-```bash  theme={null}
+```bash theme={null}
 export CREWAI_PLATFORM_INTEGRATION_TOKEN="your_enterprise_token"
 ```
 
@@ -28205,7 +29402,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
     * `presentationId` (string, required): The ID of the presentation to update.
     * `requests` (array, required): A list of updates to apply to the presentation.
-      ```json  theme={null}
+      ```json theme={null}
       [
         {
           "insertText": {
@@ -28216,7 +29413,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
       ]
       ```
     * `writeControl` (object, optional): Provides control over how write requests are executed.
-      ```json  theme={null}
+      ```json theme={null}
       {
         "requiredRevisionId": "revision_id_string"
       }
@@ -28291,7 +29488,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
 ### Basic Google Slides Agent Setup
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create an agent with Google Slides capabilities
@@ -28320,7 +29517,7 @@ crew.kickoff()
 
 ### Presentation Content Management
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 content_manager = Agent(
@@ -28351,7 +29548,7 @@ crew.kickoff()
 
 ### Data Integration and Visualization
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 data_visualizer = Agent(
@@ -28383,7 +29580,7 @@ crew.kickoff()
 
 ### Presentation Library Management
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 library_manager = Agent(
@@ -28415,7 +29612,7 @@ crew.kickoff()
 
 ### Automated Presentation Workflows
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 presentation_automator = Agent(
@@ -28449,7 +29646,7 @@ crew.kickoff()
 
 ### Template and Content Creation
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 template_creator = Agent(
@@ -28529,7 +29726,8 @@ crew.kickoff()
 ### Getting Help
 
 <Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-  Contact our support team for assistance with Google Slides integration setup or troubleshooting.
+  Contact our support team for assistance with Google Slides integration setup
+  or troubleshooting.
 </Card>
 
 
@@ -28562,17 +29760,19 @@ Before using the HubSpot integration, ensure you have:
 
 ### 2. Install Required Package
 
-```bash  theme={null}
+```bash theme={null}
 uv add crewai-tools
 ```
 
 ### 3. Environment Variable Setup
 
 <Note>
-  To use integrations with `Agent(apps=[])`, you must set the `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise Token.
+  To use integrations with `Agent(apps=[])`, you must set the
+  `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise
+  Token.
 </Note>
 
-```bash  theme={null}
+```bash theme={null}
 export CREWAI_PLATFORM_INTEGRATION_TOKEN="your_enterprise_token"
 ```
 
@@ -29056,7 +30256,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
 ### Basic HubSpot Agent Setup
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create an agent with HubSpot capabilities
@@ -29085,7 +30285,7 @@ crew.kickoff()
 
 ### Filtering Specific HubSpot Tools
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create agent with specific HubSpot actions only
@@ -29113,7 +30313,7 @@ crew.kickoff()
 
 ### Contact Management
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create agent with HubSpot contact management capabilities
@@ -29142,7 +30342,8 @@ crew.kickoff()
 ### Getting Help
 
 <Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-  Contact our support team for assistance with HubSpot integration setup or troubleshooting.
+  Contact our support team for assistance with HubSpot integration setup or
+  troubleshooting.
 </Card>
 
 
@@ -29175,17 +30376,19 @@ Before using the Jira integration, ensure you have:
 
 ### 2. Install Required Package
 
-```bash  theme={null}
+```bash theme={null}
 uv add crewai-tools
 ```
 
 ### 3. Environment Variable Setup
 
 <Note>
-  To use integrations with `Agent(apps=[])`, you must set the `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise Token.
+  To use integrations with `Agent(apps=[])`, you must set the
+  `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise
+  Token.
 </Note>
 
-```bash  theme={null}
+```bash theme={null}
 export CREWAI_PLATFORM_INTEGRATION_TOKEN="your_enterprise_token"
 ```
 
@@ -29212,7 +30415,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
       * Options: `description`, `descriptionJSON`
     * `description` (string, optional): Description - A detailed description of the issue. This field appears only when 'descriptionType' = 'description'.
     * `additionalFields` (string, optional): Additional Fields - Specify any other fields that should be included in JSON format. Use Connect Portal Workflow Settings to allow users to select which Issue Fields to update.
-      ```json  theme={null}
+      ```json theme={null}
       {
         "customfield_10001": "value"
       }
@@ -29249,7 +30452,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
     **Parameters:**
 
     * `jqlQuery` (object, optional): A filter in disjunctive normal form - OR of AND groups of single conditions.
-      ```json  theme={null}
+      ```json theme={null}
       {
         "operator": "OR",
         "conditions": [
@@ -29277,7 +30480,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
     * `jqlQuery` (string, required): JQL Query (example: "project = PROJECT").
     * `paginationParameters` (object, optional): Pagination parameters for paginated results.
-      ```json  theme={null}
+      ```json theme={null}
       {
         "pageCursor": "cursor_string"
       }
@@ -29306,7 +30509,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
     **Parameters:**
 
     * `paginationParameters` (object, optional): Pagination Parameters.
-      ```json  theme={null}
+      ```json theme={null}
       {
         "pageCursor": "cursor_string"
       }
@@ -29348,7 +30551,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
 ### Basic Jira Agent Setup
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 from crewai import Agent, Task, Crew
 
@@ -29378,7 +30581,7 @@ crew.kickoff()
 
 ### Filtering Specific Jira Tools
 
-```python  theme={null}
+```python theme={null}
 
 issue_coordinator = Agent(
     role="Issue Coordinator",
@@ -29404,7 +30607,7 @@ crew.kickoff()
 
 ### Project Analysis and Reporting
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 project_analyst = Agent(
@@ -29436,7 +30639,7 @@ crew.kickoff()
 
 ### Automated Issue Management
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 automation_manager = Agent(
@@ -29469,7 +30672,7 @@ crew.kickoff()
 
 ### Advanced Schema-Based Operations
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 schema_specialist = Agent(
@@ -29542,7 +30745,8 @@ crew.kickoff()
 ### Getting Help
 
 <Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-  Contact our support team for assistance with Jira integration setup or troubleshooting.
+  Contact our support team for assistance with Jira integration setup or
+  troubleshooting.
 </Card>
 
 
@@ -29575,17 +30779,19 @@ Before using the Linear integration, ensure you have:
 
 ### 2. Install Required Package
 
-```bash  theme={null}
+```bash theme={null}
 uv add crewai-tools
 ```
 
 ### 3. Environment Variable Setup
 
 <Note>
-  To use integrations with `Agent(apps=[])`, you must set the `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise Token.
+  To use integrations with `Agent(apps=[])`, you must set the
+  `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise
+  Token.
 </Note>
 
-```bash  theme={null}
+```bash theme={null}
 export CREWAI_PLATFORM_INTEGRATION_TOKEN="your_enterprise_token"
 ```
 
@@ -29611,7 +30817,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
     * `dueDate` (string, optional): Due Date - Specify the due date of this issue in ISO 8601 format.
     * `cycleId` (string, optional): Cycle ID - Specify the cycle associated with this issue.
     * `additionalFields` (object, optional): Additional Fields.
-      ```json  theme={null}
+      ```json theme={null}
       {
         "assigneeId": "a70bdf0f-530a-4887-857d-46151b52b47c",
         "labelIds": ["a70bdf0f-530a-4887-857d-46151b52b47c"]
@@ -29632,7 +30838,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
     * `dueDate` (string, optional): Due Date - Specify the due date of this issue in ISO 8601 format.
     * `cycleId` (string, optional): Cycle ID - Specify the cycle associated with this issue.
     * `additionalFields` (object, optional): Additional Fields.
-      ```json  theme={null}
+      ```json theme={null}
       {
         "assigneeId": "a70bdf0f-530a-4887-857d-46151b52b47c",
         "labelIds": ["a70bdf0f-530a-4887-857d-46151b52b47c"]
@@ -29663,7 +30869,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
     * `queryTerm` (string, required): Query Term - The search term to look for.
     * `issueFilterFormula` (object, optional): A filter in disjunctive normal form - OR of AND groups of single conditions.
-      ```json  theme={null}
+      ```json theme={null}
       {
         "operator": "OR",
         "conditions": [
@@ -29710,7 +30916,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
     * `title` (string, required): Title - Specify a title for this issue.
     * `description` (string, optional): Description - Specify a description for this issue.
     * `additionalFields` (object, optional): Additional Fields.
-      ```json  theme={null}
+      ```json theme={null}
       {
         "lead": "linear_user_id"
       }
@@ -29723,7 +30929,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
     **Parameters:**
 
     * `teamIds` (object, required): Team ID - Specify the team ID(s) this project is associated with as a string or a JSON array. Use Connect Portal User Settings to allow your user to select a Team ID.
-      ```json  theme={null}
+      ```json theme={null}
       [
         "a70bdf0f-530a-4887-857d-46151b52b47c",
         "4ac7..."
@@ -29732,7 +30938,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
     * `projectName` (string, required): Project Name - Specify the name of the project. (example: "My Linear Project").
     * `description` (string, optional): Project Description - Specify a description for this project.
     * `additionalFields` (object, optional): Additional Fields.
-      ```json  theme={null}
+      ```json theme={null}
       {
         "state": "planned",
         "description": ""
@@ -29749,7 +30955,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
     * `projectName` (string, optional): Project Name - Specify the name of the project to update. (example: "My Linear Project").
     * `description` (string, optional): Project Description - Specify a description for this project.
     * `additionalFields` (object, optional): Additional Fields.
-      ```json  theme={null}
+      ```json theme={null}
       {
         "state": "planned",
         "description": ""
@@ -29779,7 +30985,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
     **Parameters:**
 
     * `teamFilterFormula` (object, optional): A filter in disjunctive normal form - OR of AND groups of single conditions.
-      ```json  theme={null}
+      ```json theme={null}
       {
         "operator": "OR",
         "conditions": [
@@ -29804,7 +31010,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
 ### Basic Linear Agent Setup
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 from crewai import Agent, Task, Crew
 
@@ -29834,7 +31040,7 @@ crew.kickoff()
 
 ### Filtering Specific Linear Tools
 
-```python  theme={null}
+```python theme={null}
 
 issue_manager = Agent(
     role="Issue Manager",
@@ -29860,7 +31066,7 @@ crew.kickoff()
 
 ### Project and Team Management
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 project_coordinator = Agent(
@@ -29892,7 +31098,7 @@ crew.kickoff()
 
 ### Issue Hierarchy and Sub-task Management
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 task_organizer = Agent(
@@ -29924,7 +31130,7 @@ crew.kickoff()
 
 ### Automated Development Workflow
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 workflow_automator = Agent(
@@ -30005,7 +31211,8 @@ crew.kickoff()
 ### Getting Help
 
 <Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-  Contact our support team for assistance with Linear integration setup or troubleshooting.
+  Contact our support team for assistance with Linear integration setup or
+  troubleshooting.
 </Card>
 
 
@@ -30038,17 +31245,19 @@ Before using the Microsoft Excel integration, ensure you have:
 
 ### 2. Install Required Package
 
-```bash  theme={null}
+```bash theme={null}
 uv add crewai-tools
 ```
 
 ### 3. Environment Variable Setup
 
 <Note>
-  To use integrations with `Agent(apps=[])`, you must set the `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise Token.
+  To use integrations with `Agent(apps=[])`, you must set the
+  `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise
+  Token.
 </Note>
 
-```bash  theme={null}
+```bash theme={null}
 export CREWAI_PLATFORM_INTEGRATION_TOKEN="your_enterprise_token"
 ```
 
@@ -30068,7 +31277,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
     * `file_path` (string, required): Path where to create the workbook (e.g., 'MyWorkbook.xlsx')
     * `worksheets` (array, optional): Initial worksheets to create
-      ```json  theme={null}
+      ```json theme={null}
       [
         {
           "name": "Sheet1"
@@ -30133,7 +31342,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
     * `worksheet_name` (string, required): Name of the worksheet
     * `range` (string, required): Range address (e.g., 'A1:C10')
     * `values` (array, required): 2D array of values to set in the range
-      ```json  theme={null}
+      ```json theme={null}
       [
         ["Name", "Age", "City"],
         ["John", 30, "New York"],
@@ -30171,7 +31380,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
     * `worksheet_name` (string, required): Name of the worksheet
     * `table_name` (string, required): Name of the table
     * `values` (array, required): Array of values for the new row
-      ```json  theme={null}
+      ```json theme={null}
       ["John Doe", 35, "Manager", "Sales"]
       ```
   </Accordion>
@@ -30249,7 +31458,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
 ### Basic Excel Agent Setup
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create an agent with Excel capabilities
@@ -30278,7 +31487,7 @@ crew.kickoff()
 
 ### Data Analysis and Reporting
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 data_analyst = Agent(
@@ -30310,7 +31519,7 @@ crew.kickoff()
 
 ### Workbook Creation and Structure
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 workbook_creator = Agent(
@@ -30342,7 +31551,7 @@ crew.kickoff()
 
 ### Data Manipulation and Updates
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 data_manipulator = Agent(
@@ -30375,7 +31584,7 @@ crew.kickoff()
 
 ### Advanced Excel Automation
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 excel_automator = Agent(
@@ -30409,7 +31618,7 @@ crew.kickoff()
 
 ### Financial Modeling and Analysis
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 financial_modeler = Agent(
@@ -30490,7 +31699,8 @@ crew.kickoff()
 ### Getting Help
 
 <Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-  Contact our support team for assistance with Microsoft Excel integration setup or troubleshooting.
+  Contact our support team for assistance with Microsoft Excel integration setup
+  or troubleshooting.
 </Card>
 
 
@@ -30523,17 +31733,19 @@ Before using the Microsoft OneDrive integration, ensure you have:
 
 ### 2. Install Required Package
 
-```bash  theme={null}
+```bash theme={null}
 uv add crewai-tools
 ```
 
 ### 3. Environment Variable Setup
 
 <Note>
-  To use integrations with `Agent(apps=[])`, you must set the `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise Token.
+  To use integrations with `Agent(apps=[])`, you must set the
+  `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise
+  Token.
 </Note>
 
-```bash  theme={null}
+```bash theme={null}
 export CREWAI_PLATFORM_INTEGRATION_TOKEN="your_enterprise_token"
 ```
 
@@ -30649,7 +31861,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
 ### Basic Microsoft OneDrive Agent Setup
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create an agent with Microsoft OneDrive capabilities
@@ -30678,7 +31890,7 @@ crew.kickoff()
 
 ### File Upload and Management
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create an agent focused on file operations
@@ -30706,7 +31918,7 @@ crew.kickoff()
 
 ### File Organization and Sharing
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create an agent for file organization and sharing
@@ -30773,7 +31985,8 @@ crew.kickoff()
 ### Getting Help
 
 <Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-  Contact our support team for assistance with Microsoft OneDrive integration setup or troubleshooting.
+  Contact our support team for assistance with Microsoft OneDrive integration
+  setup or troubleshooting.
 </Card>
 
 
@@ -30806,17 +32019,19 @@ Before using the Microsoft Outlook integration, ensure you have:
 
 ### 2. Install Required Package
 
-```bash  theme={null}
+```bash theme={null}
 uv add crewai-tools
 ```
 
 ### 3. Environment Variable Setup
 
 <Note>
-  To use integrations with `Agent(apps=[])`, you must set the `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise Token.
+  To use integrations with `Agent(apps=[])`, you must set the
+  `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise
+  Token.
 </Note>
 
-```bash  theme={null}
+```bash theme={null}
 export CREWAI_PLATFORM_INTEGRATION_TOKEN="your_enterprise_token"
 ```
 
@@ -30914,7 +32129,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
 ### Basic Microsoft Outlook Agent Setup
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create an agent with Microsoft Outlook capabilities
@@ -30943,7 +32158,7 @@ crew.kickoff()
 
 ### Email Management and Search
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create an agent focused on email management
@@ -30971,7 +32186,7 @@ crew.kickoff()
 
 ### Calendar and Contact Management
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create an agent for calendar and contact management
@@ -31032,7 +32247,8 @@ crew.kickoff()
 ### Getting Help
 
 <Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-  Contact our support team for assistance with Microsoft Outlook integration setup or troubleshooting.
+  Contact our support team for assistance with Microsoft Outlook integration
+  setup or troubleshooting.
 </Card>
 
 
@@ -31065,17 +32281,19 @@ Before using the Microsoft SharePoint integration, ensure you have:
 
 ### 2. Install Required Package
 
-```bash  theme={null}
+```bash theme={null}
 uv add crewai-tools
 ```
 
 ### 3. Environment Variable Setup
 
 <Note>
-  To use integrations with `Agent(apps=[])`, you must set the `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise Token.
+  To use integrations with `Agent(apps=[])`, you must set the
+  `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise
+  Token.
 </Note>
 
-```bash  theme={null}
+```bash theme={null}
 export CREWAI_PLATFORM_INTEGRATION_TOKEN="your_enterprise_token"
 ```
 
@@ -31147,7 +32365,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
     * `site_id` (string, required): The ID of the SharePoint site
     * `list_id` (string, required): The ID of the list
     * `fields` (object, required): The field values for the new item
-      ```json  theme={null}
+      ```json theme={null}
       {
         "Title": "New Item Title",
         "Description": "Item description",
@@ -31165,7 +32383,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
     * `list_id` (string, required): The ID of the list
     * `item_id` (string, required): The ID of the item to update
     * `fields` (object, required): The field values to update
-      ```json  theme={null}
+      ```json theme={null}
       {
         "Title": "Updated Title",
         "Status": "Completed"
@@ -31215,7 +32433,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
 ### Basic SharePoint Agent Setup
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create an agent with SharePoint capabilities
@@ -31244,7 +32462,7 @@ crew.kickoff()
 
 ### List Management and Data Operations
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 list_manager = Agent(
@@ -31276,7 +32494,7 @@ crew.kickoff()
 
 ### Document Library Management
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 document_manager = Agent(
@@ -31308,7 +32526,7 @@ crew.kickoff()
 
 ### Site Administration and Analysis
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 site_administrator = Agent(
@@ -31340,7 +32558,7 @@ crew.kickoff()
 
 ### Automated Content Workflows
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 workflow_automator = Agent(
@@ -31374,7 +32592,7 @@ crew.kickoff()
 
 ### Data Integration and Reporting
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 data_integrator = Agent(
@@ -31454,7 +32672,8 @@ crew.kickoff()
 ### Getting Help
 
 <Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-  Contact our support team for assistance with Microsoft SharePoint integration setup or troubleshooting.
+  Contact our support team for assistance with Microsoft SharePoint integration
+  setup or troubleshooting.
 </Card>
 
 
@@ -31487,17 +32706,19 @@ Before using the Microsoft Teams integration, ensure you have:
 
 ### 2. Install Required Package
 
-```bash  theme={null}
+```bash theme={null}
 uv add crewai-tools
 ```
 
 ### 3. Environment Variable Setup
 
 <Note>
-  To use integrations with `Agent(apps=[])`, you must set the `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise Token.
+  To use integrations with `Agent(apps=[])`, you must set the
+  `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise
+  Token.
 </Note>
 
-```bash  theme={null}
+```bash theme={null}
 export CREWAI_PLATFORM_INTEGRATION_TOKEN="your_enterprise_token"
 ```
 
@@ -31570,7 +32791,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
 ### Basic Microsoft Teams Agent Setup
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create an agent with Microsoft Teams capabilities
@@ -31599,7 +32820,7 @@ crew.kickoff()
 
 ### Messaging and Communication
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create an agent focused on messaging
@@ -31627,7 +32848,7 @@ crew.kickoff()
 
 ### Meeting Management
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create an agent for meeting management
@@ -31694,7 +32915,8 @@ crew.kickoff()
 ### Getting Help
 
 <Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-  Contact our support team for assistance with Microsoft Teams integration setup or troubleshooting.
+  Contact our support team for assistance with Microsoft Teams integration setup
+  or troubleshooting.
 </Card>
 
 
@@ -31727,17 +32949,19 @@ Before using the Microsoft Word integration, ensure you have:
 
 ### 2. Install Required Package
 
-```bash  theme={null}
+```bash theme={null}
 uv add crewai-tools
 ```
 
 ### 3. Environment Variable Setup
 
 <Note>
-  To use integrations with `Agent(apps=[])`, you must set the `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise Token.
+  To use integrations with `Agent(apps=[])`, you must set the
+  `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise
+  Token.
 </Note>
 
-```bash  theme={null}
+```bash theme={null}
 export CREWAI_PLATFORM_INTEGRATION_TOKEN="your_enterprise_token"
 ```
 
@@ -31800,7 +33024,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
 ### Basic Microsoft Word Agent Setup
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create an agent with Microsoft Word capabilities
@@ -31829,7 +33053,7 @@ crew.kickoff()
 
 ### Reading and Managing Documents
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create an agent focused on document operations
@@ -31857,7 +33081,7 @@ crew.kickoff()
 
 ### Document Cleanup and Organization
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create an agent for document management
@@ -31911,7 +33135,8 @@ crew.kickoff()
 ### Getting Help
 
 <Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-  Contact our support team for assistance with Microsoft Word integration setup or troubleshooting.
+  Contact our support team for assistance with Microsoft Word integration setup
+  or troubleshooting.
 </Card>
 
 
@@ -31944,17 +33169,19 @@ Before using the Notion integration, ensure you have:
 
 ### 2. Install Required Package
 
-```bash  theme={null}
+```bash theme={null}
 uv add crewai-tools
 ```
 
 ### 3. Environment Variable Setup
 
 <Note>
-  To use integrations with `Agent(apps=[])`, you must set the `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise Token.
+  To use integrations with `Agent(apps=[])`, you must set the
+  `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise
+  Token.
 </Note>
 
-```bash  theme={null}
+```bash theme={null}
 export CREWAI_PLATFORM_INTEGRATION_TOKEN="your_enterprise_token"
 ```
 
@@ -31990,21 +33217,21 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
     **Parameters:**
 
     * `parent` (object, required): The parent page or discussion to comment on.
-      ```json  theme={null}
+      ```json theme={null}
       {
         "type": "page_id",
         "page_id": "PAGE_ID_HERE"
       }
       ```
       or
-      ```json  theme={null}
+      ```json theme={null}
       {
         "type": "discussion_id",
         "discussion_id": "DISCUSSION_ID_HERE"
       }
       ```
     * `rich_text` (array, required): The rich text content of the comment.
-      ```json  theme={null}
+      ```json theme={null}
       [
         {
           "type": "text",
@@ -32021,7 +33248,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
 ### Basic Notion Agent Setup
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create an agent with Notion capabilities
@@ -32050,7 +33277,7 @@ crew.kickoff()
 
 ### Filtering Specific Notion Tools
 
-```python  theme={null}
+```python theme={null}
 comment_manager = Agent(
     role="Comment Manager",
     goal="Create and manage comments on Notion pages",
@@ -32075,7 +33302,7 @@ crew.kickoff()
 
 ### User Information and Team Management
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 team_coordinator = Agent(
@@ -32106,7 +33333,7 @@ crew.kickoff()
 
 ### Collaboration and Communication
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 collaboration_facilitator = Agent(
@@ -32137,7 +33364,7 @@ crew.kickoff()
 
 ### Automated Team Communication
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 communication_automator = Agent(
@@ -32204,7 +33431,8 @@ crew.kickoff()
 ### Getting Help
 
 <Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-  Contact our support team for assistance with Notion integration setup or troubleshooting.
+  Contact our support team for assistance with Notion integration setup or
+  troubleshooting.
 </Card>
 
 
@@ -32237,17 +33465,19 @@ Before using the Salesforce integration, ensure you have:
 
 ### 2. Install Required Package
 
-```bash  theme={null}
+```bash theme={null}
 uv add crewai-tools
 ```
 
 ### 3. Environment Variable Setup
 
 <Note>
-  To use integrations with `Agent(apps=[])`, you must set the `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise Token.
+  To use integrations with `Agent(apps=[])`, you must set the
+  `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise
+  Token.
 </Note>
 
-```bash  theme={null}
+```bash theme={null}
 export CREWAI_PLATFORM_INTEGRATION_TOKEN="your_enterprise_token"
 ```
 
@@ -32761,7 +33991,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
 ### Basic Salesforce Agent Setup
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 from crewai import Agent, Task, Crew
 
@@ -32791,7 +34021,7 @@ crew.kickoff()
 
 ### Filtering Specific Salesforce Tools
 
-```python  theme={null}
+```python theme={null}
 
 sales_manager = Agent(
     role="Sales Manager",
@@ -32817,7 +34047,7 @@ crew.kickoff()
 
 ### Contact and Account Management
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 account_manager = Agent(
@@ -32848,7 +34078,7 @@ crew.kickoff()
 
 ### Advanced SOQL Queries and Reporting
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 data_analyst = Agent(
@@ -32883,7 +34113,8 @@ This comprehensive documentation covers all the Salesforce tools organized by fu
 ### Getting Help
 
 <Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-  Contact our support team for assistance with Salesforce integration setup or troubleshooting.
+  Contact our support team for assistance with Salesforce integration setup or
+  troubleshooting.
 </Card>
 
 
@@ -32916,17 +34147,19 @@ Before using the Shopify integration, ensure you have:
 
 ### 2. Install Required Package
 
-```bash  theme={null}
+```bash theme={null}
 uv add crewai-tools
 ```
 
 ### 3. Environment Variable Setup
 
 <Note>
-  To use integrations with `Agent(apps=[])`, you must set the `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise Token.
+  To use integrations with `Agent(apps=[])`, you must set the
+  `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise
+  Token.
 </Note>
 
-```bash  theme={null}
+```bash theme={null}
 export CREWAI_PLATFORM_INTEGRATION_TOKEN="your_enterprise_token"
 ```
 
@@ -33169,7 +34402,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
 ### Basic Shopify Agent Setup
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 from crewai import Agent, Task, Crew
 
@@ -33199,7 +34432,7 @@ crew.kickoff()
 
 ### Filtering Specific Shopify Tools
 
-```python  theme={null}
+```python theme={null}
 
 store_manager = Agent(
     role="Store Manager",
@@ -33225,7 +34458,7 @@ crew.kickoff()
 
 ### Product Management with GraphQL
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 product_manager = Agent(
@@ -33257,7 +34490,7 @@ crew.kickoff()
 
 ### Order and Customer Analytics
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 analytics_agent = Agent(
@@ -33290,7 +34523,8 @@ crew.kickoff()
 ### Getting Help
 
 <Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-  Contact our support team for assistance with Shopify integration setup or troubleshooting.
+  Contact our support team for assistance with Shopify integration setup or
+  troubleshooting.
 </Card>
 
 
@@ -33323,17 +34557,19 @@ Before using the Slack integration, ensure you have:
 
 ### 2. Install Required Package
 
-```bash  theme={null}
+```bash theme={null}
 uv add crewai-tools
 ```
 
 ### 3. Environment Variable Setup
 
 <Note>
-  To use integrations with `Agent(apps=[])`, you must set the `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise Token.
+  To use integrations with `Agent(apps=[])`, you must set the
+  `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise
+  Token.
 </Note>
 
-```bash  theme={null}
+```bash theme={null}
 export CREWAI_PLATFORM_INTEGRATION_TOKEN="your_enterprise_token"
 ```
 
@@ -33443,7 +34679,7 @@ Slack's Block Kit allows you to create rich, interactive messages. Here are some
 
 ### Simple Text with Attachment
 
-```json  theme={null}
+```json theme={null}
 [
   {
     "text": "I am a test message",
@@ -33458,7 +34694,7 @@ Slack's Block Kit allows you to create rich, interactive messages. Here are some
 
 ### Rich Formatting with Sections
 
-```json  theme={null}
+```json theme={null}
 [
   {
     "type": "section",
@@ -33484,7 +34720,7 @@ Slack's Block Kit allows you to create rich, interactive messages. Here are some
 
 ### Basic Slack Agent Setup
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create an agent with Slack capabilities
@@ -33513,7 +34749,7 @@ crew.kickoff()
 
 ### Filtering Specific Slack Tools
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create agent with specific Slack actions only
@@ -33545,7 +34781,7 @@ crew.kickoff()
 
 ### Advanced Messaging with Block Kit
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create agent with Slack messaging capabilities
@@ -33577,7 +34813,7 @@ crew.kickoff()
 
 ### Message Search and Analytics
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create agent with Slack search and user management capabilities
@@ -33615,7 +34851,8 @@ crew.kickoff()
 ## Contact Support
 
 <Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-  Contact our support team for assistance with Slack integration setup or troubleshooting.
+  Contact our support team for assistance with Slack integration setup or
+  troubleshooting.
 </Card>
 
 
@@ -33648,17 +34885,19 @@ Before using the Stripe integration, ensure you have:
 
 ### 2. Install Required Package
 
-```bash  theme={null}
+```bash theme={null}
 uv add crewai-tools
 ```
 
 ### 3. Environment Variable Setup
 
 <Note>
-  To use integrations with `Agent(apps=[])`, you must set the `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise Token.
+  To use integrations with `Agent(apps=[])`, you must set the
+  `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise
+  Token.
 </Note>
 
-```bash  theme={null}
+```bash theme={null}
 export CREWAI_PLATFORM_INTEGRATION_TOKEN="your_enterprise_token"
 ```
 
@@ -33800,7 +35039,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
 ### Basic Stripe Agent Setup
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 from crewai import Agent, Task, Crew
 
@@ -33830,7 +35069,7 @@ crew.kickoff()
 
 ### Filtering Specific Stripe Tools
 
-```python  theme={null}
+```python theme={null}
 
 billing_manager = Agent(
     role="Billing Manager",
@@ -33856,7 +35095,7 @@ crew.kickoff()
 
 ### Subscription Management
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 subscription_manager = Agent(
@@ -33888,7 +35127,7 @@ crew.kickoff()
 
 ### Financial Analytics and Reporting
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 financial_analyst = Agent(
@@ -33934,7 +35173,7 @@ Understanding subscription statuses:
 
 Metadata allows you to store additional information about customers, subscriptions, and products:
 
-```json  theme={null}
+```json theme={null}
 {
   "customer_segment": "enterprise",
   "acquisition_source": "google_ads",
@@ -33975,17 +35214,19 @@ Before using the Zendesk integration, ensure you have:
 
 ### 2. Install Required Package
 
-```bash  theme={null}
+```bash theme={null}
 uv add crewai-tools
 ```
 
 ### 3. Environment Variable Setup
 
 <Note>
-  To use integrations with `Agent(apps=[])`, you must set the `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise Token.
+  To use integrations with `Agent(apps=[])`, you must set the
+  `CREWAI_PLATFORM_INTEGRATION_TOKEN` environment variable with your Enterprise
+  Token.
 </Note>
 
-```bash  theme={null}
+```bash theme={null}
 export CREWAI_PLATFORM_INTEGRATION_TOKEN="your_enterprise_token"
 ```
 
@@ -34161,7 +35402,7 @@ CREWAI_PLATFORM_INTEGRATION_TOKEN=your_enterprise_token
 
 Custom fields allow you to store additional information specific to your organization:
 
-```json  theme={null}
+```json theme={null}
 [
   { "id": 27642, "value": "745" },
   { "id": 27648, "value": "yes" }
@@ -34192,7 +35433,7 @@ Standard ticket status progression:
 
 ### Basic Zendesk Agent Setup
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 from crewai import Agent, Task, Crew
 
@@ -34222,7 +35463,7 @@ crew.kickoff()
 
 ### Filtering Specific Zendesk Tools
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create agent with specific Zendesk actions only
@@ -34250,7 +35491,7 @@ crew.kickoff()
 
 ### Advanced Ticket Management
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 ticket_manager = Agent(
@@ -34282,7 +35523,7 @@ crew.kickoff()
 
 ### Support Analytics and Reporting
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 support_analyst = Agent(
@@ -34323,20 +35564,21 @@ Deploy, monitor, and scale your AI agent workflows
 CrewAI AMP(Agent Management Platform) provides a platform for deploying, monitoring, and scaling your crews and agents in a production environment.
 
 <Frame>
-  <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crewai-enterprise-dashboard.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=f3c686c946a4843a9093f21c0d1a420f" alt="CrewAI AMP Dashboard" data-og-width="3648" width="3648" data-og-height="2248" height="2248" data-path="images/enterprise/crewai-enterprise-dashboard.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crewai-enterprise-dashboard.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=a58dd6da8e1de0056bc26152476114c9 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crewai-enterprise-dashboard.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=3cbeb2e4972fe106a8fdf256539c965a 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crewai-enterprise-dashboard.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=c81d9773136e4d33a8853457690bc14d 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crewai-enterprise-dashboard.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=d5a21be80d159c6041ebfeb51f948b5e 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crewai-enterprise-dashboard.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=326a6f4e11c1091dca20d98384eeb0ad 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crewai-enterprise-dashboard.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=2d799c4a99363505252df6a3553fc248 2500w" />
+  <img alt="CrewAI AMP Dashboard" />
 </Frame>
 
 CrewAI AMP extends the power of the open-source framework with features designed for production deployments, collaboration, and scalability. Deploy your crews to a managed infrastructure and monitor their execution in real-time.
 
 ## Key Features
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Crew Deployments" icon="rocket">
     Deploy your crews to a managed infrastructure with a few clicks
   </Card>
 
   <Card title="API Access" icon="code">
-    Access your deployed crews via REST API for integration with existing systems
+    Access your deployed crews via REST API for integration with existing
+    systems
   </Card>
 
   <Card title="Observability" icon="chart-line">
@@ -34358,7 +35600,7 @@ CrewAI AMP extends the power of the open-source framework with features designed
 
 ## Deployment Options
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="GitHub Integration" icon="github">
     Connect directly to your GitHub repositories to deploy code
   </Card>
@@ -34666,6 +35908,56 @@ def my_cache_strategy(arguments: dict, result: str) -> bool:
 cached_tool.cache_function = my_cache_strategy
 ```
 
+### Creating Async Tools
+
+CrewAI supports async tools for non-blocking I/O operations. This is useful when your tool needs to make HTTP requests, database queries, or other I/O-bound operations.
+
+#### Using the `@tool` Decorator with Async Functions
+
+The simplest way to create an async tool is using the `@tool` decorator with an async function:
+
+```python Code theme={null}
+import aiohttp
+from crewai.tools import tool
+
+@tool("Async Web Fetcher")
+async def fetch_webpage(url: str) -> str:
+    """Fetch content from a webpage asynchronously."""
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url) as response:
+            return await response.text()
+```
+
+#### Subclassing `BaseTool` with Async Support
+
+For more control, subclass `BaseTool` and implement both `_run` (sync) and `_arun` (async) methods:
+
+```python Code theme={null}
+import requests
+import aiohttp
+from crewai.tools import BaseTool
+from pydantic import BaseModel, Field
+
+class WebFetcherInput(BaseModel):
+    """Input schema for WebFetcher."""
+    url: str = Field(..., description="The URL to fetch")
+
+class WebFetcherTool(BaseTool):
+    name: str = "Web Fetcher"
+    description: str = "Fetches content from a URL"
+    args_schema: type[BaseModel] = WebFetcherInput
+
+    def _run(self, url: str) -> str:
+        """Synchronous implementation."""
+        return requests.get(url).text
+
+    async def _arun(self, url: str) -> str:
+        """Asynchronous implementation for non-blocking I/O."""
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url) as response:
+                return await response.text()
+```
+
 By adhering to these guidelines and incorporating new functionalities and collaboration tools into your tool creation and management processes,
 you can leverage the full capabilities of the CrewAI framework, enhancing both the development experience and the efficiency of your AI agents.
 
@@ -34683,7 +35975,7 @@ CrewAI supports custom LLM implementations through the `BaseLLM` abstract base c
 
 Here's a minimal custom LLM implementation:
 
-```python  theme={null}
+```python theme={null}
 from crewai import BaseLLM
 from typing import Any, Dict, List, Optional, Union
 import requests
@@ -34745,7 +36037,7 @@ class CustomLLM(BaseLLM):
 
 ## Using Your Custom LLM
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Assuming you have the CustomLLM class defined above
@@ -34782,7 +36074,7 @@ result = crew.kickoff()
 
 **Critical**: You must call `super().__init__(model, temperature)` with the required parameters:
 
-```python  theme={null}
+```python theme={null}
 def __init__(self, model: str, api_key: str, temperature: Optional[float] = None):
     # REQUIRED: Call parent constructor with model and temperature
     super().__init__(model=model, temperature=temperature)
@@ -34802,7 +36094,7 @@ The `call()` method is the heart of your LLM implementation. It must:
 
 ### Optional Methods
 
-```python  theme={null}
+```python theme={null}
 def supports_function_calling(self) -> bool:
     """Return True if your LLM supports function calling."""
     return True  # Default is True
@@ -34820,7 +36112,7 @@ def get_context_window_size(self) -> int:
 
 ### Error Handling
 
-```python  theme={null}
+```python theme={null}
 import requests
 
 def call(self, messages, tools=None, callbacks=None, available_functions=None):
@@ -34844,7 +36136,7 @@ def call(self, messages, tools=None, callbacks=None, available_functions=None):
 
 ### Custom Authentication
 
-```python  theme={null}
+```python theme={null}
 from crewai import BaseLLM
 from typing import Optional
 
@@ -34866,7 +36158,7 @@ class CustomAuthLLM(BaseLLM):
 
 CrewAI automatically adds `"\nObservation:"` as a stop word to control agent behavior. If your LLM supports stop words:
 
-```python  theme={null}
+```python theme={null}
 def call(self, messages, tools=None, callbacks=None, available_functions=None):
     payload = {
         "model": self.model,
@@ -34881,7 +36173,7 @@ def supports_stop_words(self) -> bool:
 
 If your LLM doesn't support stop words natively:
 
-```python  theme={null}
+```python theme={null}
 def call(self, messages, tools=None, callbacks=None, available_functions=None):
     response = self._make_api_call(messages, tools)
     content = response["choices"][0]["message"]["content"]
@@ -34903,7 +36195,7 @@ def supports_stop_words(self) -> bool:
 
 If your LLM supports function calling, implement the complete flow:
 
-```python  theme={null}
+```python theme={null}
 import json
 
 def call(self, messages, tools=None, callbacks=None, available_functions=None):
@@ -34958,7 +36250,7 @@ def _handle_function_calls(self, tool_calls, messages, tools, available_function
 
 **Constructor Errors**
 
-```python  theme={null}
+```python theme={null}
 # ❌ Wrong - missing required parameters
 def __init__(self, api_key: str):
     super().__init__()
@@ -34988,7 +36280,7 @@ def __init__(self, model: str, api_key: str, temperature: Optional[float] = None
 
 ## Testing Your Custom LLM
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 def test_custom_llm():
@@ -35174,7 +36466,7 @@ The default value is set to 25, providing a balance between thoroughness and eff
 Agents are customized by defining their attributes and tools during initialization. Tools are critical for an agent's functionality, enabling them to perform specialized tasks.
 The `tools` attribute should be an array of tools the agent can utilize, and it's initialized as an empty list by default. Tools can be added or modified post-agent initialization to adapt to new requirements.
 
-```shell  theme={null}
+```shell theme={null}
 pip install 'crewai[tools]'
 ```
 
@@ -35244,13 +36536,13 @@ CrewAI supports integration with OpenAI's DALL-E, allowing your AI agents to gen
 
 <Steps>
   <Step title="Import the DALL-E tool">
-    ```python  theme={null}
+    ```python theme={null}
     from crewai_tools import DallETool
     ```
   </Step>
 
   <Step title="Add the DALL-E tool to your agent configuration">
-    ```python  theme={null}
+    ```python theme={null}
     @agent
     def researcher(self) -> Agent:
         return Agent(
@@ -35269,7 +36561,7 @@ Once you've added the DALL-E tool to your agent, it can generate images based on
 
 ### Example Agent Configuration
 
-```yaml  theme={null}
+```yaml theme={null}
 role: >
     LinkedIn Profile Senior Data Researcher
 goal: >
@@ -35286,7 +36578,7 @@ backstory: >
 The agent with the DALL-E tool will be able to generate the image and provide a URL in its response. You can then download the image.
 
 <Frame>
-  <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/dall-e-image.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=7b6378a1ee0aad5d3941193c6802312c" alt="DALL-E Image" data-og-width="670" width="670" data-og-height="670" height="670" data-path="images/enterprise/dall-e-image.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/dall-e-image.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=95b3ae8ec53f789746846831fa981b32 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/dall-e-image.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=f880f86fa3b648a257ac74fcc7838dce 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/dall-e-image.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=c98e8fd36d462d3806c398c1f074efb2 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/dall-e-image.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=68af7edd51913d04723c0fbae774ea1d 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/dall-e-image.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=07c15be8399f83239d49e28f6667a28d 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/dall-e-image.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=619edc0ffc57a1eddd3cd7f9715b6b0a 2500w" />
+  <img alt="DALL-E Image" />
 </Frame>
 
 ## Best Practices
@@ -35355,7 +36647,7 @@ Control and monitor tool execution:
 
 The cleanest and most Pythonic way to register hooks:
 
-```python  theme={null}
+```python theme={null}
 from crewai.hooks import before_llm_call, after_llm_call, before_tool_call, after_tool_call
 
 @before_llm_call
@@ -35390,7 +36682,7 @@ def log_tool_result(context):
 
 Apply hooks only to specific crew instances:
 
-```python  theme={null}
+```python theme={null}
 from crewai import CrewBase
 from crewai.project import crew
 from crewai.hooks import before_llm_call_crew, after_tool_call_crew
@@ -35478,7 +36770,7 @@ Final result returned
 
 Provides access to LLM execution state:
 
-```python  theme={null}
+```python theme={null}
 class LLMCallHookContext:
     executor: CrewAgentExecutor  # Full executor access
     messages: list               # Mutable message list
@@ -35494,7 +36786,7 @@ class LLMCallHookContext:
 
 Provides access to tool execution state:
 
-```python  theme={null}
+```python theme={null}
 class ToolCallHookContext:
     tool_name: str               # Tool being called
     tool_input: dict             # Mutable input parameters
@@ -35509,7 +36801,7 @@ class ToolCallHookContext:
 
 ### Safety and Validation
 
-```python  theme={null}
+```python theme={null}
 @before_tool_call
 def safety_check(context):
     """Block destructive operations."""
@@ -35530,7 +36822,7 @@ def iteration_limit(context):
 
 ### Human-in-the-Loop
 
-```python  theme={null}
+```python theme={null}
 @before_tool_call
 def require_approval(context):
     """Require approval for sensitive operations."""
@@ -35550,7 +36842,7 @@ def require_approval(context):
 
 ### Monitoring and Analytics
 
-```python  theme={null}
+```python theme={null}
 from collections import defaultdict
 import time
 
@@ -35580,7 +36872,7 @@ def print_metrics():
 
 ### Response Sanitization
 
-```python  theme={null}
+```python theme={null}
 import re
 
 @after_llm_call
@@ -35610,7 +36902,7 @@ def sanitize_tool_result(context):
 
 ### Clearing All Hooks
 
-```python  theme={null}
+```python theme={null}
 from crewai.hooks import clear_all_global_hooks
 
 # Clear all hooks at once
@@ -35621,7 +36913,7 @@ print(f"Cleared {result['total']} hooks")
 
 ### Clearing Specific Hook Types
 
-```python  theme={null}
+```python theme={null}
 from crewai.hooks import (
     clear_before_llm_call_hooks,
     clear_after_llm_call_hooks,
@@ -35636,7 +36928,7 @@ tool_after_count = clear_after_tool_call_hooks()
 
 ### Unregistering Individual Hooks
 
-```python  theme={null}
+```python theme={null}
 from crewai.hooks import (
     unregister_before_llm_call_hook,
     unregister_after_tool_call_hook
@@ -35659,7 +36951,7 @@ print(f"Unregistered: {success}")
 
 Each hook should have a single, clear responsibility:
 
-```python  theme={null}
+```python theme={null}
 # ✅ Good - focused responsibility
 @before_tool_call
 def validate_file_path(context):
@@ -35677,7 +36969,7 @@ def do_everything(context):
 
 ### 2. Handle Errors Gracefully
 
-```python  theme={null}
+```python theme={null}
 @before_llm_call
 def safe_hook(context):
     try:
@@ -35691,7 +36983,7 @@ def safe_hook(context):
 
 ### 3. Modify Context In-Place
 
-```python  theme={null}
+```python theme={null}
 # ✅ Correct - modify in-place
 @before_llm_call
 def add_context(context):
@@ -35705,7 +36997,7 @@ def wrong_approach(context):
 
 ### 4. Use Type Hints
 
-```python  theme={null}
+```python theme={null}
 from crewai.hooks import LLMCallHookContext, ToolCallHookContext
 
 def my_llm_hook(context: LLMCallHookContext) -> bool | None:
@@ -35718,7 +37010,7 @@ def my_tool_hook(context: ToolCallHookContext) -> str | None:
 
 ### 5. Clean Up in Tests
 
-```python  theme={null}
+```python theme={null}
 import pytest
 from crewai.hooks import clear_all_global_hooks
 
@@ -35760,7 +37052,7 @@ Building comprehensive observability, safety, or approval systems that need to m
 
 For dynamic hook registration or when you need to register hooks programmatically:
 
-```python  theme={null}
+```python theme={null}
 from crewai.hooks import (
     register_before_llm_call_hook,
     register_after_tool_call_hook
@@ -35792,7 +37084,7 @@ register_before_llm_call_hook(my_hook)
 
 ### Enable Debug Logging
 
-```python  theme={null}
+```python theme={null}
 import logging
 
 logging.basicConfig(level=logging.DEBUG)
@@ -35808,7 +37100,7 @@ def debug_hook(context):
 
 Hooks execute in registration order. If a before hook returns `False`, subsequent hooks don't execute:
 
-```python  theme={null}
+```python theme={null}
 # Register order matters!
 register_before_tool_call_hook(hook1)  # Executes first
 register_before_tool_call_hook(hook2)  # Executes second
@@ -35963,7 +37255,7 @@ project_crew = Crew(
 
 Alternatively, you can create a custom manager agent with specific attributes tailored to your project's management needs. This gives you more control over the manager's behavior and capabilities.
 
-```python  theme={null}
+```python theme={null}
 # Define a custom manager agent
 manager = Agent(
     role="Project Manager",
@@ -35998,21 +37290,618 @@ Adopting the hierarchical process in CrewAI, with the correct configurations and
 Utilize the advanced features and customizations to tailor the workflow to your specific needs, ensuring optimal task execution and project success.
 
 
+# Human Feedback in Flows
+Source: https://docs.crewai.com/en/learn/human-feedback-in-flows
+
+Learn how to integrate human feedback directly into your CrewAI Flows using the @human_feedback decorator
+
+## Overview
+
+<Note>
+  The `@human_feedback` decorator requires **CrewAI version 1.8.0 or higher**. Make sure to update your installation before using this feature.
+</Note>
+
+The `@human_feedback` decorator enables human-in-the-loop (HITL) workflows directly within CrewAI Flows. It allows you to pause flow execution, present output to a human for review, collect their feedback, and optionally route to different listeners based on the feedback outcome.
+
+This is particularly valuable for:
+
+* **Quality assurance**: Review AI-generated content before it's used downstream
+* **Decision gates**: Let humans make critical decisions in automated workflows
+* **Approval workflows**: Implement approve/reject/revise patterns
+* **Interactive refinement**: Collect feedback to improve outputs iteratively
+
+```mermaid theme={null}
+flowchart LR
+    A[Flow Method] --> B[Output Generated]
+    B --> C[Human Reviews]
+    C --> D{Feedback}
+    D -->|emit specified| E[LLM Collapses to Outcome]
+    D -->|no emit| F[HumanFeedbackResult]
+    E --> G["@listen('approved')"]
+    E --> H["@listen('rejected')"]
+    F --> I[Next Listener]
+```
+
+## Quick Start
+
+Here's the simplest way to add human feedback to a flow:
+
+```python Code theme={null}
+from crewai.flow.flow import Flow, start, listen
+from crewai.flow.human_feedback import human_feedback
+
+class SimpleReviewFlow(Flow):
+    @start()
+    @human_feedback(message="Please review this content:")
+    def generate_content(self):
+        return "This is AI-generated content that needs review."
+
+    @listen(generate_content)
+    def process_feedback(self, result):
+        print(f"Content: {result.output}")
+        print(f"Human said: {result.feedback}")
+
+flow = SimpleReviewFlow()
+flow.kickoff()
+```
+
+When this flow runs, it will:
+
+1. Execute `generate_content` and return the string
+2. Display the output to the user with the request message
+3. Wait for the user to type feedback (or press Enter to skip)
+4. Pass a `HumanFeedbackResult` object to `process_feedback`
+
+## The @human\_feedback Decorator
+
+### Parameters
+
+| Parameter         | Type                    | Required              | Description                                                                                                     |
+| ----------------- | ----------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `message`         | `str`                   | Yes                   | The message shown to the human alongside the method output                                                      |
+| `emit`            | `Sequence[str]`         | No                    | List of possible outcomes. Feedback is collapsed to one of these, which triggers `@listen` decorators           |
+| `llm`             | `str \| BaseLLM`        | When `emit` specified | LLM used to interpret feedback and map to an outcome                                                            |
+| `default_outcome` | `str`                   | No                    | Outcome to use if no feedback provided. Must be in `emit`                                                       |
+| `metadata`        | `dict`                  | No                    | Additional data for enterprise integrations                                                                     |
+| `provider`        | `HumanFeedbackProvider` | No                    | Custom provider for async/non-blocking feedback. See [Async Human Feedback](#async-human-feedback-non-blocking) |
+
+### Basic Usage (No Routing)
+
+When you don't specify `emit`, the decorator simply collects feedback and passes a `HumanFeedbackResult` to the next listener:
+
+```python Code theme={null}
+@start()
+@human_feedback(message="What do you think of this analysis?")
+def analyze_data(self):
+    return "Analysis results: Revenue up 15%, costs down 8%"
+
+@listen(analyze_data)
+def handle_feedback(self, result):
+    # result is a HumanFeedbackResult
+    print(f"Analysis: {result.output}")
+    print(f"Feedback: {result.feedback}")
+```
+
+### Routing with emit
+
+When you specify `emit`, the decorator becomes a router. The human's free-form feedback is interpreted by an LLM and collapsed into one of the specified outcomes:
+
+```python Code theme={null}
+@start()
+@human_feedback(
+    message="Do you approve this content for publication?",
+    emit=["approved", "rejected", "needs_revision"],
+    llm="gpt-4o-mini",
+    default_outcome="needs_revision",
+)
+def review_content(self):
+    return "Draft blog post content here..."
+
+@listen("approved")
+def publish(self, result):
+    print(f"Publishing! User said: {result.feedback}")
+
+@listen("rejected")
+def discard(self, result):
+    print(f"Discarding. Reason: {result.feedback}")
+
+@listen("needs_revision")
+def revise(self, result):
+    print(f"Revising based on: {result.feedback}")
+```
+
+<Tip>
+  The LLM uses structured outputs (function calling) when available to guarantee the response is one of your specified outcomes. This makes routing reliable and predictable.
+</Tip>
+
+## HumanFeedbackResult
+
+The `HumanFeedbackResult` dataclass contains all information about a human feedback interaction:
+
+```python Code theme={null}
+from crewai.flow.human_feedback import HumanFeedbackResult
+
+@dataclass
+class HumanFeedbackResult:
+    output: Any              # The original method output shown to the human
+    feedback: str            # The raw feedback text from the human
+    outcome: str | None      # The collapsed outcome (if emit was specified)
+    timestamp: datetime      # When the feedback was received
+    method_name: str         # Name of the decorated method
+    metadata: dict           # Any metadata passed to the decorator
+```
+
+### Accessing in Listeners
+
+When a listener is triggered by a `@human_feedback` method with `emit`, it receives the `HumanFeedbackResult`:
+
+```python Code theme={null}
+@listen("approved")
+def on_approval(self, result: HumanFeedbackResult):
+    print(f"Original output: {result.output}")
+    print(f"User feedback: {result.feedback}")
+    print(f"Outcome: {result.outcome}")  # "approved"
+    print(f"Received at: {result.timestamp}")
+```
+
+## Accessing Feedback History
+
+The `Flow` class provides two attributes for accessing human feedback:
+
+### last\_human\_feedback
+
+Returns the most recent `HumanFeedbackResult`:
+
+```python Code theme={null}
+@listen(some_method)
+def check_feedback(self):
+    if self.last_human_feedback:
+        print(f"Last feedback: {self.last_human_feedback.feedback}")
+```
+
+### human\_feedback\_history
+
+A list of all `HumanFeedbackResult` objects collected during the flow:
+
+```python Code theme={null}
+@listen(final_step)
+def summarize(self):
+    print(f"Total feedback collected: {len(self.human_feedback_history)}")
+    for i, fb in enumerate(self.human_feedback_history):
+        print(f"{i+1}. {fb.method_name}: {fb.outcome or 'no routing'}")
+```
+
+<Warning>
+  Each `HumanFeedbackResult` is appended to `human_feedback_history`, so multiple feedback steps won't overwrite each other. Use this list to access all feedback collected during the flow.
+</Warning>
+
+## Complete Example: Content Approval Workflow
+
+Here's a full example implementing a content review and approval workflow:
+
+<CodeGroup>
+  ```python Code theme={null}
+  from crewai.flow.flow import Flow, start, listen
+  from crewai.flow.human_feedback import human_feedback, HumanFeedbackResult
+  from pydantic import BaseModel
+
+
+  class ContentState(BaseModel):
+      topic: str = ""
+      draft: str = ""
+      final_content: str = ""
+      revision_count: int = 0
+
+
+  class ContentApprovalFlow(Flow[ContentState]):
+      """A flow that generates content and gets human approval."""
+
+      @start()
+      def get_topic(self):
+          self.state.topic = input("What topic should I write about? ")
+          return self.state.topic
+
+      @listen(get_topic)
+      def generate_draft(self, topic):
+          # In real use, this would call an LLM
+          self.state.draft = f"# {topic}\n\nThis is a draft about {topic}..."
+          return self.state.draft
+
+      @listen(generate_draft)
+      @human_feedback(
+          message="Please review this draft. Reply 'approved', 'rejected', or provide revision feedback:",
+          emit=["approved", "rejected", "needs_revision"],
+          llm="gpt-4o-mini",
+          default_outcome="needs_revision",
+      )
+      def review_draft(self, draft):
+          return draft
+
+      @listen("approved")
+      def publish_content(self, result: HumanFeedbackResult):
+          self.state.final_content = result.output
+          print("\n✅ Content approved and published!")
+          print(f"Reviewer comment: {result.feedback}")
+          return "published"
+
+      @listen("rejected")
+      def handle_rejection(self, result: HumanFeedbackResult):
+          print("\n❌ Content rejected")
+          print(f"Reason: {result.feedback}")
+          return "rejected"
+
+      @listen("needs_revision")
+      def revise_content(self, result: HumanFeedbackResult):
+          self.state.revision_count += 1
+          print(f"\n📝 Revision #{self.state.revision_count} requested")
+          print(f"Feedback: {result.feedback}")
+
+          # In a real flow, you might loop back to generate_draft
+          # For this example, we just acknowledge
+          return "revision_requested"
+
+
+  # Run the flow
+  flow = ContentApprovalFlow()
+  result = flow.kickoff()
+  print(f"\nFlow completed. Revisions requested: {flow.state.revision_count}")
+  ```
+
+  ```text Output theme={null}
+  What topic should I write about? AI Safety
+
+  ==================================================
+  OUTPUT FOR REVIEW:
+  ==================================================
+  # AI Safety
+
+  This is a draft about AI Safety...
+  ==================================================
+
+  Please review this draft. Reply 'approved', 'rejected', or provide revision feedback:
+  (Press Enter to skip, or type your feedback)
+
+  Your feedback: Looks good, approved!
+
+  ✅ Content approved and published!
+  Reviewer comment: Looks good, approved!
+
+  Flow completed. Revisions requested: 0
+  ```
+</CodeGroup>
+
+## Combining with Other Decorators
+
+The `@human_feedback` decorator works with other flow decorators. Place it as the innermost decorator (closest to the function):
+
+```python Code theme={null}
+# Correct: @human_feedback is innermost (closest to the function)
+@start()
+@human_feedback(message="Review this:")
+def my_start_method(self):
+    return "content"
+
+@listen(other_method)
+@human_feedback(message="Review this too:")
+def my_listener(self, data):
+    return f"processed: {data}"
+```
+
+<Tip>
+  Place `@human_feedback` as the innermost decorator (last/closest to the function) so it wraps the method directly and can capture the return value before passing to the flow system.
+</Tip>
+
+## Best Practices
+
+### 1. Write Clear Request Messages
+
+The `request` parameter is what the human sees. Make it actionable:
+
+```python Code theme={null}
+# ✅ Good - clear and actionable
+@human_feedback(message="Does this summary accurately capture the key points? Reply 'yes' or explain what's missing:")
+
+# ❌ Bad - vague
+@human_feedback(message="Review this:")
+```
+
+### 2. Choose Meaningful Outcomes
+
+When using `emit`, pick outcomes that map naturally to human responses:
+
+```python Code theme={null}
+# ✅ Good - natural language outcomes
+emit=["approved", "rejected", "needs_more_detail"]
+
+# ❌ Bad - technical or unclear
+emit=["state_1", "state_2", "state_3"]
+```
+
+### 3. Always Provide a Default Outcome
+
+Use `default_outcome` to handle cases where users press Enter without typing:
+
+```python Code theme={null}
+@human_feedback(
+    message="Approve? (press Enter to request revision)",
+    emit=["approved", "needs_revision"],
+    llm="gpt-4o-mini",
+    default_outcome="needs_revision",  # Safe default
+)
+```
+
+### 4. Use Feedback History for Audit Trails
+
+Access `human_feedback_history` to create audit logs:
+
+```python Code theme={null}
+@listen(final_step)
+def create_audit_log(self):
+    log = []
+    for fb in self.human_feedback_history:
+        log.append({
+            "step": fb.method_name,
+            "outcome": fb.outcome,
+            "feedback": fb.feedback,
+            "timestamp": fb.timestamp.isoformat(),
+        })
+    return log
+```
+
+### 5. Handle Both Routed and Non-Routed Feedback
+
+When designing flows, consider whether you need routing:
+
+| Scenario                                            | Use        |
+| --------------------------------------------------- | ---------- |
+| Simple review, just need the feedback text          | No `emit`  |
+| Need to branch to different paths based on response | Use `emit` |
+| Approval gates with approve/reject/revise           | Use `emit` |
+| Collecting comments for logging only                | No `emit`  |
+
+## Async Human Feedback (Non-Blocking)
+
+By default, `@human_feedback` blocks execution waiting for console input. For production applications, you may need **async/non-blocking** feedback that integrates with external systems like Slack, email, webhooks, or APIs.
+
+### The Provider Abstraction
+
+Use the `provider` parameter to specify a custom feedback collection strategy:
+
+```python Code theme={null}
+from crewai.flow import Flow, start, human_feedback, HumanFeedbackProvider, HumanFeedbackPending, PendingFeedbackContext
+
+class WebhookProvider(HumanFeedbackProvider):
+    """Provider that pauses flow and waits for webhook callback."""
+
+    def __init__(self, webhook_url: str):
+        self.webhook_url = webhook_url
+
+    def request_feedback(self, context: PendingFeedbackContext, flow: Flow) -> str:
+        # Notify external system (e.g., send Slack message, create ticket)
+        self.send_notification(context)
+
+        # Pause execution - framework handles persistence automatically
+        raise HumanFeedbackPending(
+            context=context,
+            callback_info={"webhook_url": f"{self.webhook_url}/{context.flow_id}"}
+        )
+
+class ReviewFlow(Flow):
+    @start()
+    @human_feedback(
+        message="Review this content:",
+        emit=["approved", "rejected"],
+        llm="gpt-4o-mini",
+        provider=WebhookProvider("https://myapp.com/api"),
+    )
+    def generate_content(self):
+        return "AI-generated content..."
+
+    @listen("approved")
+    def publish(self, result):
+        return "Published!"
+```
+
+<Tip>
+  The flow framework **automatically persists state** when `HumanFeedbackPending` is raised. Your provider only needs to notify the external system and raise the exception—no manual persistence calls required.
+</Tip>
+
+### Handling Paused Flows
+
+When using an async provider, `kickoff()` returns a `HumanFeedbackPending` object instead of raising an exception:
+
+```python Code theme={null}
+flow = ReviewFlow()
+result = flow.kickoff()
+
+if isinstance(result, HumanFeedbackPending):
+    # Flow is paused, state is automatically persisted
+    print(f"Waiting for feedback at: {result.callback_info['webhook_url']}")
+    print(f"Flow ID: {result.context.flow_id}")
+else:
+    # Normal completion
+    print(f"Flow completed: {result}")
+```
+
+### Resuming a Paused Flow
+
+When feedback arrives (e.g., via webhook), resume the flow:
+
+```python Code theme={null}
+# Sync handler:
+def handle_feedback_webhook(flow_id: str, feedback: str):
+    flow = ReviewFlow.from_pending(flow_id)
+    result = flow.resume(feedback)
+    return result
+
+# Async handler (FastAPI, aiohttp, etc.):
+async def handle_feedback_webhook(flow_id: str, feedback: str):
+    flow = ReviewFlow.from_pending(flow_id)
+    result = await flow.resume_async(feedback)
+    return result
+```
+
+### Key Types
+
+| Type                     | Description                                              |
+| ------------------------ | -------------------------------------------------------- |
+| `HumanFeedbackProvider`  | Protocol for custom feedback providers                   |
+| `PendingFeedbackContext` | Contains all info needed to resume a paused flow         |
+| `HumanFeedbackPending`   | Returned by `kickoff()` when flow is paused for feedback |
+| `ConsoleProvider`        | Default blocking console input provider                  |
+
+### PendingFeedbackContext
+
+The context contains everything needed to resume:
+
+```python Code theme={null}
+@dataclass
+class PendingFeedbackContext:
+    flow_id: str           # Unique identifier for this flow execution
+    flow_class: str        # Fully qualified class name
+    method_name: str       # Method that triggered feedback
+    method_output: Any     # Output shown to the human
+    message: str           # The request message
+    emit: list[str] | None # Possible outcomes for routing
+    default_outcome: str | None
+    metadata: dict         # Custom metadata
+    llm: str | None        # LLM for outcome collapsing
+    requested_at: datetime
+```
+
+### Complete Async Flow Example
+
+```python Code theme={null}
+from crewai.flow import (
+    Flow, start, listen, human_feedback,
+    HumanFeedbackProvider, HumanFeedbackPending, PendingFeedbackContext
+)
+
+class SlackNotificationProvider(HumanFeedbackProvider):
+    """Provider that sends Slack notifications and pauses for async feedback."""
+
+    def __init__(self, channel: str):
+        self.channel = channel
+
+    def request_feedback(self, context: PendingFeedbackContext, flow: Flow) -> str:
+        # Send Slack notification (implement your own)
+        slack_thread_id = self.post_to_slack(
+            channel=self.channel,
+            message=f"Review needed:\n\n{context.method_output}\n\n{context.message}",
+        )
+
+        # Pause execution - framework handles persistence automatically
+        raise HumanFeedbackPending(
+            context=context,
+            callback_info={
+                "slack_channel": self.channel,
+                "thread_id": slack_thread_id,
+            }
+        )
+
+class ContentPipeline(Flow):
+    @start()
+    @human_feedback(
+        message="Approve this content for publication?",
+        emit=["approved", "rejected", "needs_revision"],
+        llm="gpt-4o-mini",
+        default_outcome="needs_revision",
+        provider=SlackNotificationProvider("#content-reviews"),
+    )
+    def generate_content(self):
+        return "AI-generated blog post content..."
+
+    @listen("approved")
+    def publish(self, result):
+        print(f"Publishing! Reviewer said: {result.feedback}")
+        return {"status": "published"}
+
+    @listen("rejected")
+    def archive(self, result):
+        print(f"Archived. Reason: {result.feedback}")
+        return {"status": "archived"}
+
+    @listen("needs_revision")
+    def queue_revision(self, result):
+        print(f"Queued for revision: {result.feedback}")
+        return {"status": "revision_needed"}
+
+
+# Starting the flow (will pause and wait for Slack response)
+def start_content_pipeline():
+    flow = ContentPipeline()
+    result = flow.kickoff()
+
+    if isinstance(result, HumanFeedbackPending):
+        return {"status": "pending", "flow_id": result.context.flow_id}
+
+    return result
+
+
+# Resuming when Slack webhook fires (sync handler)
+def on_slack_feedback(flow_id: str, slack_message: str):
+    flow = ContentPipeline.from_pending(flow_id)
+    result = flow.resume(slack_message)
+    return result
+
+
+# If your handler is async (FastAPI, aiohttp, Slack Bolt async, etc.)
+async def on_slack_feedback_async(flow_id: str, slack_message: str):
+    flow = ContentPipeline.from_pending(flow_id)
+    result = await flow.resume_async(slack_message)
+    return result
+```
+
+<Warning>
+  If you're using an async web framework (FastAPI, aiohttp, Slack Bolt async mode), use `await flow.resume_async()` instead of `flow.resume()`. Calling `resume()` from within a running event loop will raise a `RuntimeError`.
+</Warning>
+
+### Best Practices for Async Feedback
+
+1. **Check the return type**: `kickoff()` returns `HumanFeedbackPending` when paused—no try/except needed
+2. **Use the right resume method**: Use `resume()` in sync code, `await resume_async()` in async code
+3. **Store callback info**: Use `callback_info` to store webhook URLs, ticket IDs, etc.
+4. **Implement idempotency**: Your resume handler should be idempotent for safety
+5. **Automatic persistence**: State is automatically saved when `HumanFeedbackPending` is raised and uses `SQLiteFlowPersistence` by default
+6. **Custom persistence**: Pass a custom persistence instance to `from_pending()` if needed
+
+## Related Documentation
+
+* [Flows Overview](/en/concepts/flows) - Learn about CrewAI Flows
+* [Flow State Management](/en/guides/flows/mastering-flow-state) - Managing state in flows
+* [Flow Persistence](/en/concepts/flows#persistence) - Persisting flow state
+* [Routing with @router](/en/concepts/flows#router) - More about conditional routing
+* [Human Input on Execution](/en/learn/human-input-on-execution) - Task-level human input
+
+
 # Human-in-the-Loop (HITL) Workflows
 Source: https://docs.crewai.com/en/learn/human-in-the-loop
 
 Learn how to implement Human-in-the-Loop workflows in CrewAI for enhanced decision-making
 
-Human-in-the-Loop (HITL) is a powerful approach that combines artificial intelligence with human expertise to enhance decision-making and improve task outcomes. This guide shows you how to implement HITL within CrewAI.
+Human-in-the-Loop (HITL) is a powerful approach that combines artificial intelligence with human expertise to enhance decision-making and improve task outcomes. CrewAI provides multiple ways to implement HITL depending on your needs.
 
-## Setting Up HITL Workflows
+## Choosing Your HITL Approach
+
+CrewAI offers two main approaches for implementing human-in-the-loop workflows:
+
+| Approach                                     | Best For                                                                            | Integration                                                  | Version    |
+| -------------------------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------------------ | ---------- |
+| **Flow-based** (`@human_feedback` decorator) | Local development, console-based review, synchronous workflows                      | [Human Feedback in Flows](/en/learn/human-feedback-in-flows) | **1.8.0+** |
+| **Webhook-based** (Enterprise)               | Production deployments, async workflows, external integrations (Slack, Teams, etc.) | This guide                                                   | -          |
+
+<Tip>
+  If you're building flows and want to add human review steps with routing based on feedback, check out the [Human Feedback in Flows](/en/learn/human-feedback-in-flows) guide for the `@human_feedback` decorator.
+</Tip>
+
+## Setting Up Webhook-Based HITL Workflows
 
 <Steps>
   <Step title="Configure Your Task">
     Set up your task with human input enabled:
 
     <Frame>
-      <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-human-input.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=cb2e2bab131e9eff86b0c51dceb16e11" alt="Crew Human Input" data-og-width="624" width="624" data-og-height="165" height="165" data-path="images/enterprise/crew-human-input.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-human-input.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=1bc2a85e5aa6e736a118fe2c91452dc6 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-human-input.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=137c8e9c09c9a93ba1b683ad3e247e0d 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-human-input.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=79c8be91790b117c1498568ca48f4287 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-human-input.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=4da8411c0c26ee98c0dcdde6117353fe 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-human-input.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=1b24b707df7ec697db2652d80ed3ff8f 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-human-input.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=39a7543043c397cf4ff84582216ddb65 2500w" />
+      <img alt="Crew Human Input" />
     </Frame>
   </Step>
 
@@ -36020,12 +37909,12 @@ Human-in-the-Loop (HITL) is a powerful approach that combines artificial intelli
     When kicking off your crew, include a webhook URL for human input:
 
     <Frame>
-      <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-webhook-url.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=f2d298c0b4c7b3a62e1dee4e2e6f1bb3" alt="Crew Webhook URL" data-og-width="624" width="624" data-og-height="259" height="259" data-path="images/enterprise/crew-webhook-url.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-webhook-url.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=80f52cbe2cd1c6a2a4cd3e2039c22971 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-webhook-url.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=6496d6f5e1fe13fec8be8a406e635b26 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-webhook-url.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=27cfbbf1fecdab2540df4aeb7ddd15b6 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-webhook-url.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=57d3439e96917a0627189bfd188af4a0 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-webhook-url.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=cad1f034d8fd4113f08df6bf1a58f3fa 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-webhook-url.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=fba10cd375c57bcd9b2a216067b5bd44 2500w" />
+      <img alt="Crew Webhook URL" />
     </Frame>
 
     Example with Bearer authentication:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     curl -X POST {BASE_URL}/kickoff \
       -H "Authorization: Bearer YOUR_API_TOKEN" \
       -H "Content-Type: application/json" \
@@ -36045,7 +37934,7 @@ Human-in-the-Loop (HITL) is a powerful approach that combines artificial intelli
 
     Or with Basic authentication:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     curl -X POST {BASE_URL}/kickoff \
       -H "Authorization: Bearer YOUR_API_TOKEN" \
       -H "Content-Type: application/json" \
@@ -36081,7 +37970,7 @@ Human-in-the-Loop (HITL) is a powerful approach that combines artificial intelli
     Call the resume endpoint of your crew with the following information:
 
     <Frame>
-      <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-resume-endpoint.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=1e1c2ca22a2d674426f8e663fed33eca" alt="Crew Resume Endpoint" data-og-width="624" width="624" data-og-height="261" height="261" data-path="images/enterprise/crew-resume-endpoint.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-resume-endpoint.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=09014207ae06e6522303b77e4648f0d4 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-resume-endpoint.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=1ad53990ab04014e622b3acdb37ca604 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-resume-endpoint.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=afb11308edffa03de969712505cf95ab 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-resume-endpoint.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=9bd69f0d75ec47ac2c6280f24a550bff 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-resume-endpoint.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=f81e1ebcdc8a9348133503eb5eb4e37a 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-resume-endpoint.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=b12843fa2b80cc86580220766a1f4cc4 2500w" />
+      <img alt="Crew Resume Endpoint" />
     </Frame>
 
     <Warning>
@@ -36091,7 +37980,7 @@ Human-in-the-Loop (HITL) is a powerful approach that combines artificial intelli
 
     Example resume call with webhooks:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     curl -X POST {BASE_URL}/resume \
       -H "Authorization: Bearer YOUR_API_TOKEN" \
       -H "Content-Type: application/json" \
@@ -36149,6 +38038,12 @@ HITL workflows are particularly valuable for:
 * Creative tasks requiring human judgment
 * Compliance and regulatory reviews
 
+## Enterprise Features
+
+<Card title="Flow HITL Management Platform" icon="users-gear" href="/en/enterprise/features/flow-hitl-management">
+  CrewAI Enterprise provides a comprehensive HITL management system for Flows with in-platform review, responder assignment, permissions, escalation policies, SLA management, dynamic routing, and full analytics. [Learn more →](/en/enterprise/features/flow-hitl-management)
+</Card>
+
 
 # Human Input on Execution
 Source: https://docs.crewai.com/en/learn/human-input-on-execution
@@ -36167,7 +38062,7 @@ This input can provide extra context, clarify ambiguities, or validate the agent
 
 ### Example:
 
-```shell  theme={null}
+```shell theme={null}
 pip install crewai
 ```
 
@@ -36259,14 +38154,25 @@ Kickoff a Crew Asynchronously
 CrewAI provides the ability to kickoff a crew asynchronously, allowing you to start the crew execution in a non-blocking manner.
 This feature is particularly useful when you want to run multiple crews concurrently or when you need to perform other tasks while the crew is executing.
 
-## Asynchronous Crew Execution
+CrewAI offers two approaches for async execution:
 
-To kickoff a crew asynchronously, use the `kickoff_async()` method. This method initiates the crew execution in a separate thread, allowing the main thread to continue executing other tasks.
+| Method            | Type         | Description                                            |
+| ----------------- | ------------ | ------------------------------------------------------ |
+| `akickoff()`      | Native async | True async/await throughout the entire execution chain |
+| `kickoff_async()` | Thread-based | Wraps synchronous execution in `asyncio.to_thread`     |
+
+<Note>
+  For high-concurrency workloads, `akickoff()` is recommended as it uses native async for task execution, memory operations, and knowledge retrieval.
+</Note>
+
+## Native Async Execution with `akickoff()`
+
+The `akickoff()` method provides true native async execution, using async/await throughout the entire execution chain including task execution, memory operations, and knowledge queries.
 
 ### Method Signature
 
 ```python Code theme={null}
-def kickoff_async(self, inputs: dict) -> CrewOutput:
+async def akickoff(self, inputs: dict) -> CrewOutput:
 ```
 
 ### Parameters
@@ -36277,23 +38183,13 @@ def kickoff_async(self, inputs: dict) -> CrewOutput:
 
 * `CrewOutput`: An object representing the result of the crew execution.
 
-## Potential Use Cases
-
-* **Parallel Content Generation**: Kickoff multiple independent crews asynchronously, each responsible for generating content on different topics. For example, one crew might research and draft an article on AI trends, while another crew generates social media posts about a new product launch. Each crew operates independently, allowing content production to scale efficiently.
-
-* **Concurrent Market Research Tasks**: Launch multiple crews asynchronously to conduct market research in parallel. One crew might analyze industry trends, while another examines competitor strategies, and yet another evaluates consumer sentiment. Each crew independently completes its task, enabling faster and more comprehensive insights.
-
-* **Independent Travel Planning Modules**: Execute separate crews to independently plan different aspects of a trip. One crew might handle flight options, another handles accommodation, and a third plans activities. Each crew works asynchronously, allowing various components of the trip to be planned simultaneously and independently for faster results.
-
-## Example: Single Asynchronous Crew Execution
-
-Here's an example of how to kickoff a crew asynchronously using asyncio and awaiting the result:
+### Example: Native Async Crew Execution
 
 ```python Code theme={null}
 import asyncio
 from crewai import Crew, Agent, Task
 
-# Create an agent with code execution enabled
+# Create an agent
 coding_agent = Agent(
     role="Python Data Analyst",
     goal="Analyze data and provide insights using Python",
@@ -36301,37 +38197,35 @@ coding_agent = Agent(
     allow_code_execution=True
 )
 
-# Create a task that requires code execution
+# Create a task
 data_analysis_task = Task(
     description="Analyze the given dataset and calculate the average age of participants. Ages: {ages}",
     agent=coding_agent,
     expected_output="The average age of the participants."
 )
 
-# Create a crew and add the task
+# Create a crew
 analysis_crew = Crew(
     agents=[coding_agent],
     tasks=[data_analysis_task]
 )
 
-# Async function to kickoff the crew asynchronously
-async def async_crew_execution():
-    result = await analysis_crew.kickoff_async(inputs={"ages": [25, 30, 35, 40, 45]})
+# Native async execution
+async def main():
+    result = await analysis_crew.akickoff(inputs={"ages": [25, 30, 35, 40, 45]})
     print("Crew Result:", result)
 
-# Run the async function
-asyncio.run(async_crew_execution())
+asyncio.run(main())
 ```
 
-## Example: Multiple Asynchronous Crew Executions
+### Example: Multiple Native Async Crews
 
-In this example, we'll show how to kickoff multiple crews asynchronously and wait for all of them to complete using `asyncio.gather()`:
+Run multiple crews concurrently using `asyncio.gather()` with native async:
 
 ```python Code theme={null}
 import asyncio
 from crewai import Crew, Agent, Task
 
-# Create an agent with code execution enabled
 coding_agent = Agent(
     role="Python Data Analyst",
     goal="Analyze data and provide insights using Python",
@@ -36339,7 +38233,136 @@ coding_agent = Agent(
     allow_code_execution=True
 )
 
-# Create tasks that require code execution
+task_1 = Task(
+    description="Analyze the first dataset and calculate the average age. Ages: {ages}",
+    agent=coding_agent,
+    expected_output="The average age of the participants."
+)
+
+task_2 = Task(
+    description="Analyze the second dataset and calculate the average age. Ages: {ages}",
+    agent=coding_agent,
+    expected_output="The average age of the participants."
+)
+
+crew_1 = Crew(agents=[coding_agent], tasks=[task_1])
+crew_2 = Crew(agents=[coding_agent], tasks=[task_2])
+
+async def main():
+    results = await asyncio.gather(
+        crew_1.akickoff(inputs={"ages": [25, 30, 35, 40, 45]}),
+        crew_2.akickoff(inputs={"ages": [20, 22, 24, 28, 30]})
+    )
+
+    for i, result in enumerate(results, 1):
+        print(f"Crew {i} Result:", result)
+
+asyncio.run(main())
+```
+
+### Example: Native Async for Multiple Inputs
+
+Use `akickoff_for_each()` to execute your crew against multiple inputs concurrently with native async:
+
+```python Code theme={null}
+import asyncio
+from crewai import Crew, Agent, Task
+
+coding_agent = Agent(
+    role="Python Data Analyst",
+    goal="Analyze data and provide insights using Python",
+    backstory="You are an experienced data analyst with strong Python skills.",
+    allow_code_execution=True
+)
+
+data_analysis_task = Task(
+    description="Analyze the dataset and calculate the average age. Ages: {ages}",
+    agent=coding_agent,
+    expected_output="The average age of the participants."
+)
+
+analysis_crew = Crew(
+    agents=[coding_agent],
+    tasks=[data_analysis_task]
+)
+
+async def main():
+    datasets = [
+        {"ages": [25, 30, 35, 40, 45]},
+        {"ages": [20, 22, 24, 28, 30]},
+        {"ages": [30, 35, 40, 45, 50]}
+    ]
+
+    results = await analysis_crew.akickoff_for_each(datasets)
+
+    for i, result in enumerate(results, 1):
+        print(f"Dataset {i} Result:", result)
+
+asyncio.run(main())
+```
+
+## Thread-Based Async with `kickoff_async()`
+
+The `kickoff_async()` method provides async execution by wrapping the synchronous `kickoff()` in a thread. This is useful for simpler async integration or backward compatibility.
+
+### Method Signature
+
+```python Code theme={null}
+async def kickoff_async(self, inputs: dict) -> CrewOutput:
+```
+
+### Parameters
+
+* `inputs` (dict): A dictionary containing the input data required for the tasks.
+
+### Returns
+
+* `CrewOutput`: An object representing the result of the crew execution.
+
+### Example: Thread-Based Async Execution
+
+```python Code theme={null}
+import asyncio
+from crewai import Crew, Agent, Task
+
+coding_agent = Agent(
+    role="Python Data Analyst",
+    goal="Analyze data and provide insights using Python",
+    backstory="You are an experienced data analyst with strong Python skills.",
+    allow_code_execution=True
+)
+
+data_analysis_task = Task(
+    description="Analyze the given dataset and calculate the average age of participants. Ages: {ages}",
+    agent=coding_agent,
+    expected_output="The average age of the participants."
+)
+
+analysis_crew = Crew(
+    agents=[coding_agent],
+    tasks=[data_analysis_task]
+)
+
+async def async_crew_execution():
+    result = await analysis_crew.kickoff_async(inputs={"ages": [25, 30, 35, 40, 45]})
+    print("Crew Result:", result)
+
+asyncio.run(async_crew_execution())
+```
+
+### Example: Multiple Thread-Based Async Crews
+
+```python Code theme={null}
+import asyncio
+from crewai import Crew, Agent, Task
+
+coding_agent = Agent(
+    role="Python Data Analyst",
+    goal="Analyze data and provide insights using Python",
+    backstory="You are an experienced data analyst with strong Python skills.",
+    allow_code_execution=True
+)
+
 task_1 = Task(
     description="Analyze the first dataset and calculate the average age of participants. Ages: {ages}",
     agent=coding_agent,
@@ -36352,25 +38375,79 @@ task_2 = Task(
     expected_output="The average age of the participants."
 )
 
-# Create two crews and add tasks
 crew_1 = Crew(agents=[coding_agent], tasks=[task_1])
 crew_2 = Crew(agents=[coding_agent], tasks=[task_2])
 
-# Async function to kickoff multiple crews asynchronously and wait for all to finish
 async def async_multiple_crews():
-    # Create coroutines for concurrent execution
     result_1 = crew_1.kickoff_async(inputs={"ages": [25, 30, 35, 40, 45]})
     result_2 = crew_2.kickoff_async(inputs={"ages": [20, 22, 24, 28, 30]})
 
-    # Wait for both crews to finish
     results = await asyncio.gather(result_1, result_2)
 
     for i, result in enumerate(results, 1):
         print(f"Crew {i} Result:", result)
 
-# Run the async function
 asyncio.run(async_multiple_crews())
 ```
+
+## Async Streaming
+
+Both async methods support streaming when `stream=True` is set on the crew:
+
+```python Code theme={null}
+import asyncio
+from crewai import Crew, Agent, Task
+
+agent = Agent(
+    role="Researcher",
+    goal="Research and summarize topics",
+    backstory="You are an expert researcher."
+)
+
+task = Task(
+    description="Research the topic: {topic}",
+    agent=agent,
+    expected_output="A comprehensive summary of the topic."
+)
+
+crew = Crew(
+    agents=[agent],
+    tasks=[task],
+    stream=True  # Enable streaming
+)
+
+async def main():
+    streaming_output = await crew.akickoff(inputs={"topic": "AI trends in 2024"})
+
+    # Async iteration over streaming chunks
+    async for chunk in streaming_output:
+        print(f"Chunk: {chunk.content}")
+
+    # Access final result after streaming completes
+    result = streaming_output.result
+    print(f"Final result: {result.raw}")
+
+asyncio.run(main())
+```
+
+## Potential Use Cases
+
+* **Parallel Content Generation**: Kickoff multiple independent crews asynchronously, each responsible for generating content on different topics. For example, one crew might research and draft an article on AI trends, while another crew generates social media posts about a new product launch.
+
+* **Concurrent Market Research Tasks**: Launch multiple crews asynchronously to conduct market research in parallel. One crew might analyze industry trends, while another examines competitor strategies, and yet another evaluates consumer sentiment.
+
+* **Independent Travel Planning Modules**: Execute separate crews to independently plan different aspects of a trip. One crew might handle flight options, another handles accommodation, and a third plans activities.
+
+## Choosing Between `akickoff()` and `kickoff_async()`
+
+| Feature             | `akickoff()`                          | `kickoff_async()`        |
+| ------------------- | ------------------------------------- | ------------------------ |
+| Execution model     | Native async/await                    | Thread-based wrapper     |
+| Task execution      | Async with `aexecute_sync()`          | Sync in thread pool      |
+| Memory operations   | Async                                 | Sync in thread pool      |
+| Knowledge retrieval | Async                                 | Sync in thread pool      |
+| Best for            | High-concurrency, I/O-bound workloads | Simple async integration |
+| Streaming support   | Yes                                   | Yes                      |
 
 
 # Kickoff Crew for Each
@@ -36667,7 +38744,7 @@ Executed before every LLM call, these hooks can:
 
 **Signature:**
 
-```python  theme={null}
+```python theme={null}
 def before_hook(context: LLMCallHookContext) -> bool | None:
     # Return False to block execution
     # Return True or None to allow execution
@@ -36686,7 +38763,7 @@ Executed after every LLM call, these hooks can:
 
 **Signature:**
 
-```python  theme={null}
+```python theme={null}
 def after_hook(context: LLMCallHookContext) -> str | None:
     # Return modified response string
     # Return None to keep original response
@@ -36697,7 +38774,7 @@ def after_hook(context: LLMCallHookContext) -> str | None:
 
 The `LLMCallHookContext` object provides comprehensive access to execution state:
 
-```python  theme={null}
+```python theme={null}
 class LLMCallHookContext:
     executor: CrewAgentExecutor  # Full executor reference
     messages: list               # Mutable message list
@@ -36713,7 +38790,7 @@ class LLMCallHookContext:
 
 **Important:** Always modify messages in-place:
 
-```python  theme={null}
+```python theme={null}
 # ✅ Correct - modify in-place
 def add_context(context: LLMCallHookContext) -> None:
     context.messages.append({"role": "system", "content": "Be concise"})
@@ -36729,7 +38806,7 @@ def wrong_approach(context: LLMCallHookContext) -> None:
 
 Register hooks that apply to all LLM calls across all crews:
 
-```python  theme={null}
+```python theme={null}
 from crewai.hooks import register_before_llm_call_hook, register_after_llm_call_hook
 
 def log_llm_call(context):
@@ -36743,7 +38820,7 @@ register_before_llm_call_hook(log_llm_call)
 
 Use decorators for cleaner syntax:
 
-```python  theme={null}
+```python theme={null}
 from crewai.hooks import before_llm_call, after_llm_call
 
 @before_llm_call
@@ -36764,7 +38841,7 @@ def sanitize_response(context):
 
 Register hooks for a specific crew instance:
 
-```python  theme={null}
+```python theme={null}
 @CrewBase
 class MyProjCrew:
     @before_llm_call_crew
@@ -36794,7 +38871,7 @@ class MyProjCrew:
 
 ### 1. Iteration Limiting
 
-```python  theme={null}
+```python theme={null}
 @before_llm_call
 def limit_iterations(context: LLMCallHookContext) -> bool | None:
     max_iterations = 15
@@ -36806,7 +38883,7 @@ def limit_iterations(context: LLMCallHookContext) -> bool | None:
 
 ### 2. Human Approval Gate
 
-```python  theme={null}
+```python theme={null}
 @before_llm_call
 def require_approval(context: LLMCallHookContext) -> bool | None:
     if context.iterations > 5:
@@ -36822,7 +38899,7 @@ def require_approval(context: LLMCallHookContext) -> bool | None:
 
 ### 3. Adding System Context
 
-```python  theme={null}
+```python theme={null}
 @before_llm_call
 def add_guardrails(context: LLMCallHookContext) -> None:
     # Add safety guidelines to every LLM call
@@ -36835,7 +38912,7 @@ def add_guardrails(context: LLMCallHookContext) -> None:
 
 ### 4. Response Sanitization
 
-```python  theme={null}
+```python theme={null}
 @after_llm_call
 def sanitize_sensitive_data(context: LLMCallHookContext) -> str | None:
     if not context.response:
@@ -36852,7 +38929,7 @@ def sanitize_sensitive_data(context: LLMCallHookContext) -> str | None:
 
 ### 5. Cost Tracking
 
-```python  theme={null}
+```python theme={null}
 import tiktoken
 
 @before_llm_call
@@ -36876,7 +38953,7 @@ def track_response_tokens(context: LLMCallHookContext) -> None:
 
 ### 6. Debug Logging
 
-```python  theme={null}
+```python theme={null}
 @before_llm_call
 def debug_request(context: LLMCallHookContext) -> None:
     print(f"""
@@ -36900,7 +38977,7 @@ def debug_response(context: LLMCallHookContext) -> None:
 
 ### Unregistering Hooks
 
-```python  theme={null}
+```python theme={null}
 from crewai.hooks import (
     unregister_before_llm_call_hook,
     unregister_after_llm_call_hook
@@ -36917,7 +38994,7 @@ unregister_before_llm_call_hook(my_hook)  # Returns True if found
 
 ### Clearing Hooks
 
-```python  theme={null}
+```python theme={null}
 from crewai.hooks import (
     clear_before_llm_call_hooks,
     clear_after_llm_call_hooks,
@@ -36935,7 +39012,7 @@ print(f"Cleared {before_count} before and {after_count} after hooks")
 
 ### Listing Registered Hooks
 
-```python  theme={null}
+```python theme={null}
 from crewai.hooks import (
     get_before_llm_call_hooks,
     get_after_llm_call_hooks
@@ -36952,7 +39029,7 @@ print(f"Registered: {len(before_hooks)} before, {len(after_hooks)} after")
 
 ### Conditional Hook Execution
 
-```python  theme={null}
+```python theme={null}
 @before_llm_call
 def conditional_blocking(context: LLMCallHookContext) -> bool | None:
     # Only block for specific agents
@@ -36968,7 +39045,7 @@ def conditional_blocking(context: LLMCallHookContext) -> bool | None:
 
 ### Context-Aware Modifications
 
-```python  theme={null}
+```python theme={null}
 @before_llm_call
 def adaptive_prompting(context: LLMCallHookContext) -> None:
     # Add different context based on iteration
@@ -36987,7 +39064,7 @@ def adaptive_prompting(context: LLMCallHookContext) -> None:
 
 ### Chaining Hooks
 
-```python  theme={null}
+```python theme={null}
 # Multiple hooks execute in registration order
 
 @before_llm_call
@@ -37022,7 +39099,7 @@ def blocking_hook(context):
 
 ## Error Handling
 
-```python  theme={null}
+```python theme={null}
 @before_llm_call
 def safe_hook(context: LLMCallHookContext) -> bool | None:
     try:
@@ -37037,7 +39114,7 @@ def safe_hook(context: LLMCallHookContext) -> bool | None:
 
 ## Type Safety
 
-```python  theme={null}
+```python theme={null}
 from crewai.hooks import LLMCallHookContext, BeforeLLMCallHookType, AfterLLMCallHookType
 
 # Explicit type annotations
@@ -37085,26 +39162,38 @@ Strategic framework for choosing the right LLM for your CrewAI AI agents and wri
 Rather than prescriptive model recommendations, we advocate for a **thinking framework** that helps you make informed decisions based on your specific use case, constraints, and requirements. The LLM landscape evolves rapidly, with new models emerging regularly and existing ones being updated frequently. What matters most is developing a systematic approach to evaluation that remains relevant regardless of which specific models are available.
 
 <Note>
-  This guide focuses on strategic thinking rather than specific model recommendations, as the LLM landscape evolves rapidly.
+  This guide focuses on strategic thinking rather than specific model
+  recommendations, as the LLM landscape evolves rapidly.
 </Note>
 
 ## Quick Decision Framework
 
 <Steps>
   <Step title="Analyze Your Tasks">
-    Begin by deeply understanding what your tasks actually require. Consider the cognitive complexity involved, the depth of reasoning needed, the format of expected outputs, and the amount of context the model will need to process. This foundational analysis will guide every subsequent decision.
+    Begin by deeply understanding what your tasks actually require. Consider the
+    cognitive complexity involved, the depth of reasoning needed, the format of
+    expected outputs, and the amount of context the model will need to process.
+    This foundational analysis will guide every subsequent decision.
   </Step>
 
   <Step title="Map Model Capabilities">
-    Once you understand your requirements, map them to model strengths. Different model families excel at different types of work; some are optimized for reasoning and analysis, others for creativity and content generation, and others for speed and efficiency.
+    Once you understand your requirements, map them to model strengths.
+    Different model families excel at different types of work; some are
+    optimized for reasoning and analysis, others for creativity and content
+    generation, and others for speed and efficiency.
   </Step>
 
   <Step title="Consider Constraints">
-    Factor in your real-world operational constraints including budget limitations, latency requirements, data privacy needs, and infrastructure capabilities. The theoretically best model may not be the practically best choice for your situation.
+    Factor in your real-world operational constraints including budget
+    limitations, latency requirements, data privacy needs, and infrastructure
+    capabilities. The theoretically best model may not be the practically best
+    choice for your situation.
   </Step>
 
   <Step title="Test and Iterate">
-    Start with reliable, well-understood models and optimize based on actual performance in your specific use case. Real-world results often differ from theoretical benchmarks, so empirical testing is crucial.
+    Start with reliable, well-understood models and optimize based on actual
+    performance in your specific use case. Real-world results often differ from
+    theoretical benchmarks, so empirical testing is crucial.
   </Step>
 </Steps>
 
@@ -37191,7 +39280,8 @@ Understanding model capabilities requires looking beyond marketing claims and be
 ### a. Multi-Model Approach
 
 <Tip>
-  Use different models for different purposes within the same crew to optimize both performance and cost.
+  Use different models for different purposes within the same crew to optimize
+  both performance and cost.
 </Tip>
 
 The most sophisticated CrewAI implementations often employ multiple models strategically, assigning different models to different agents based on their specific roles and requirements. This approach allows teams to optimize for both performance and cost by using the most appropriate model for each type of work.
@@ -37200,7 +39290,7 @@ Planning agents benefit from reasoning models that can handle complex strategic 
 
 **Example: Research and Analysis Crew**
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew, LLM
 
 # High-capability reasoning model for strategic planning
@@ -37323,7 +39413,8 @@ Effective task definition is often more important than model selection in determ
 ### a. Role-Driven LLM Selection
 
 <Warning>
-  Generic agent roles make it impossible to select the right LLM. Specific roles enable targeted model optimization.
+  Generic agent roles make it impossible to select the right LLM. Specific roles
+  enable targeted model optimization.
 </Warning>
 
 The specificity of your agent roles directly determines which LLM capabilities matter most for optimal performance. This creates a strategic opportunity to match precise model strengths with agent responsibilities.
@@ -37332,7 +39423,7 @@ The specificity of your agent roles directly determines which LLM capabilities m
 
 When defining roles, think about the specific domain knowledge, working style, and decision-making frameworks that would be most valuable for the tasks the agent will handle. The more specific and contextual the role definition, the better the model can embody that role effectively.
 
-```python  theme={null}
+```python theme={null}
 # ✅ Specific role - clear LLM requirements
 specific_agent = Agent(
     role="SaaS Revenue Operations Analyst",  # Clear domain expertise needed
@@ -37352,14 +39443,15 @@ specific_agent = Agent(
 ### b. Backstory as Model Context Amplifier
 
 <Info>
-  Strategic backstories multiply your chosen LLM's effectiveness by providing domain-specific context that generic prompting cannot achieve.
+  Strategic backstories multiply your chosen LLM's effectiveness by providing
+  domain-specific context that generic prompting cannot achieve.
 </Info>
 
 A well-crafted backstory transforms your LLM choice from generic capability to specialized expertise. This is especially crucial for cost optimization - a well-contextualized efficient model can outperform a premium model without proper context.
 
 **Context-Driven Performance Example:**
 
-```python  theme={null}
+```python theme={null}
 # Context amplifies model effectiveness
 domain_expert = Agent(
     role="B2B SaaS Marketing Strategist",
@@ -37391,7 +39483,7 @@ The most effective agent configurations create synergy between role specificity,
 
 **Optimization Framework:**
 
-```python  theme={null}
+```python theme={null}
 # Example: Technical Documentation Agent
 tech_writer = Agent(
     role="API Documentation Specialist",  # Specific role for clear LLM requirements
@@ -37440,7 +39532,7 @@ Rather than repeating the strategic framework, here's a tactical checklist for i
   <Step title="Implement Crew-Level Strategy" icon="users-gear">
     **Set Your Baseline:**
 
-    ```python  theme={null}
+    ```python theme={null}
     # Start with a reliable default for the crew
     default_crew_llm = LLM(model="gpt-4o-mini")  # Cost-effective baseline
 
@@ -37457,7 +39549,7 @@ Rather than repeating the strategic framework, here's a tactical checklist for i
   <Step title="Optimize High-Impact Agents" icon="star">
     **Identify and Upgrade Key Agents:**
 
-    ```python  theme={null}
+    ```python theme={null}
     # Manager or coordination agents
     manager_agent = Agent(
         role="Project Manager",
@@ -37534,7 +39626,7 @@ Rather than repeating the strategic framework, here's a tactical checklist for i
 
     **CrewAI Solution**: Leverage agent-specific LLM configuration to match model capabilities with agent roles:
 
-    ```python  theme={null}
+    ```python theme={null}
     # Strategic agent gets premium model
     manager = Agent(role="Strategy Manager", llm=LLM(model="gpt-4o"))
 
@@ -37550,7 +39642,7 @@ Rather than repeating the strategic framework, here's a tactical checklist for i
 
     **CrewAI Solution**: Plan your LLM hierarchy strategically:
 
-    ```python  theme={null}
+    ```python theme={null}
     crew = Crew(
         agents=[agent1, agent2],
         tasks=[task1, task2],
@@ -37570,7 +39662,7 @@ Rather than repeating the strategic framework, here's a tactical checklist for i
 
     **CrewAI Solution**: Prioritize function calling capabilities for tool-heavy agents:
 
-    ```python  theme={null}
+    ```python theme={null}
     # For agents that use many tools
     tool_agent = Agent(
         role="API Integration Specialist",
@@ -37589,7 +39681,7 @@ Rather than repeating the strategic framework, here's a tactical checklist for i
 
     **CrewAI Solution**: Start simple, then optimize based on real performance data:
 
-    ```python  theme={null}
+    ```python theme={null}
     # Start with this
     crew = Crew(agents=[...], tasks=[...], llm=LLM(model="gpt-4o-mini"))
 
@@ -37611,24 +39703,38 @@ Rather than repeating the strategic framework, here's a tactical checklist for i
 
 <Steps>
   <Step title="Start Simple" icon="play">
-    Begin with reliable, general-purpose models that are well-understood and widely supported. This provides a stable foundation for understanding your specific requirements and performance expectations before optimizing for specialized needs.
+    Begin with reliable, general-purpose models that are well-understood and
+    widely supported. This provides a stable foundation for understanding your
+    specific requirements and performance expectations before optimizing for
+    specialized needs.
   </Step>
 
   <Step title="Measure What Matters" icon="chart-line">
-    Develop metrics that align with your specific use case and business requirements rather than relying solely on general benchmarks. Focus on measuring outcomes that directly impact your success rather than theoretical performance indicators.
+    Develop metrics that align with your specific use case and business
+    requirements rather than relying solely on general benchmarks. Focus on
+    measuring outcomes that directly impact your success rather than theoretical
+    performance indicators.
   </Step>
 
   <Step title="Iterate Based on Results" icon="arrows-rotate">
-    Make model changes based on observed performance in your specific context rather than theoretical considerations or general recommendations. Real-world performance often differs significantly from benchmark results or general reputation.
+    Make model changes based on observed performance in your specific context
+    rather than theoretical considerations or general recommendations.
+    Real-world performance often differs significantly from benchmark results or
+    general reputation.
   </Step>
 
   <Step title="Consider Total Cost" icon="calculator">
-    Evaluate the complete cost of ownership including model costs, development time, maintenance overhead, and operational complexity. The cheapest model per token may not be the most cost-effective choice when considering all factors.
+    Evaluate the complete cost of ownership including model costs, development
+    time, maintenance overhead, and operational complexity. The cheapest model
+    per token may not be the most cost-effective choice when considering all
+    factors.
   </Step>
 </Steps>
 
 <Tip>
-  Focus on understanding your requirements first, then select models that best match those needs. The best LLM choice is the one that consistently delivers the results you need within your operational constraints.
+  Focus on understanding your requirements first, then select models that best
+  match those needs. The best LLM choice is the one that consistently delivers
+  the results you need within your operational constraints.
 </Tip>
 
 ### Enterprise-Grade Model Validation
@@ -37636,7 +39742,7 @@ Rather than repeating the strategic framework, here's a tactical checklist for i
 For teams serious about optimizing their LLM selection, the **CrewAI AMP platform** provides sophisticated testing capabilities that go far beyond basic CLI testing. The platform enables comprehensive model evaluation that helps you make data-driven decisions about your LLM strategy.
 
 <Frame>
-    <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/enterprise-testing.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=08580e93186b6563adca8b75da805805" alt="Enterprise Testing Interface" data-og-width="2238" width="2238" data-og-height="1700" height="1700" data-path="images/enterprise/enterprise-testing.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/enterprise-testing.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=d7ced6158ec4dd0b5a9928edcfc4a38d 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/enterprise-testing.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=0bf0f3d7110c1ac4ae4139a80e28b9c2 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/enterprise-testing.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=27a38bf115431233bfb9849629dc125e 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/enterprise-testing.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=5d73aad5c4af3e62a82044f80add8ac1 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/enterprise-testing.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=a91a7198392462683371a28e799943a0 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/enterprise-testing.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=78aaf8869525c5633d5f06655cc46c5e 2500w" />
+  <img alt="Enterprise Testing Interface" />
 </Frame>
 
 **Advanced Testing Features:**
@@ -37654,22 +39760,26 @@ For teams serious about optimizing their LLM selection, the **CrewAI AMP platfor
 Go to [app.crewai.com](https://app.crewai.com) to get started!
 
 <Info>
-  The Enterprise platform transforms model selection from guesswork into a data-driven process, enabling you to validate the principles in this guide with your actual use cases and requirements.
+  The Enterprise platform transforms model selection from guesswork into a
+  data-driven process, enabling you to validate the principles in this guide
+  with your actual use cases and requirements.
 </Info>
 
 ## Key Principles Summary
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Task-Driven Selection" icon="bullseye">
     Choose models based on what the task actually requires, not theoretical capabilities or general reputation.
   </Card>
 
   <Card title="Capability Matching" icon="puzzle-piece">
-    Align model strengths with agent roles and responsibilities for optimal performance.
+    Align model strengths with agent roles and responsibilities for optimal
+    performance.
   </Card>
 
   <Card title="Strategic Consistency" icon="link">
-    Maintain coherent model selection strategy across related components and workflows.
+    Maintain coherent model selection strategy across related components and
+    workflows.
   </Card>
 
   <Card title="Practical Testing" icon="flask">
@@ -37686,13 +39796,20 @@ Go to [app.crewai.com](https://app.crewai.com) to get started!
 </CardGroup>
 
 <Check>
-  Remember: The best LLM choice is the one that consistently delivers the results you need within your operational constraints. Focus on understanding your requirements first, then select models that best match those needs.
+  Remember: The best LLM choice is the one that consistently delivers the
+  results you need within your operational constraints. Focus on understanding
+  your requirements first, then select models that best match those needs.
 </Check>
 
 ## Current Model Landscape (June 2025)
 
 <Warning>
-  **Snapshot in Time**: The following model rankings represent current leaderboard standings as of June 2025, compiled from [LMSys Arena](https://arena.lmsys.org/), [Artificial Analysis](https://artificialanalysis.ai/), and other leading benchmarks. LLM performance, availability, and pricing change rapidly. Always conduct your own evaluations with your specific use cases and data.
+  **Snapshot in Time**: The following model rankings represent current
+  leaderboard standings as of June 2025, compiled from [LMSys
+  Arena](https://arena.lmsys.org/), [Artificial
+  Analysis](https://artificialanalysis.ai/), and other leading benchmarks. LLM
+  performance, availability, and pricing change rapidly. Always conduct your own
+  evaluations with your specific use cases and data.
 </Warning>
 
 ### Leading Models by Category
@@ -37700,7 +39817,10 @@ Go to [app.crewai.com](https://app.crewai.com) to get started!
 The tables below show a representative sample of current top-performing models across different categories, with guidance on their suitability for CrewAI agents:
 
 <Note>
-  These tables/metrics showcase selected leading models in each category and are not exhaustive. Many excellent models exist beyond those listed here. The goal is to illustrate the types of capabilities to look for rather than provide a complete catalog.
+  These tables/metrics showcase selected leading models in each category and are
+  not exhaustive. Many excellent models exist beyond those listed here. The goal
+  is to illustrate the types of capabilities to look for rather than provide a
+  complete catalog.
 </Note>
 
 <Tabs>
@@ -37798,7 +39918,10 @@ The tables below show a representative sample of current top-performing models a
 * **Open Source Viability**: The gap between open-source and proprietary models continues to narrow, with models like Llama 4 Maverick and DeepSeek V3 offering competitive performance at attractive price points. Fast inference providers particularly shine with open-source models, often delivering better speed-to-cost ratios than proprietary alternatives.
 
 <Info>
-  **Testing is Essential**: Leaderboard rankings provide general guidance, but your specific use case, prompting style, and evaluation criteria may produce different results. Always test candidate models with your actual tasks and data before making final decisions.
+  **Testing is Essential**: Leaderboard rankings provide general guidance, but
+  your specific use case, prompting style, and evaluation criteria may produce
+  different results. Always test candidate models with your actual tasks and
+  data before making final decisions.
 </Info>
 
 ### Practical Implementation Strategy
@@ -37809,11 +39932,16 @@ The tables below show a representative sample of current top-performing models a
   </Step>
 
   <Step title="Identify Specialized Needs">
-    Determine if your crew has specific requirements (coding, reasoning, speed) that would benefit from specialized models like **Claude 4 Sonnet** for development or **o3** for complex analysis. For speed-critical applications, consider fast inference providers like **Groq** alongside model selection.
+    Determine if your crew has specific requirements (coding, reasoning, speed)
+    that would benefit from specialized models like **Claude 4 Sonnet** for
+    development or **o3** for complex analysis. For speed-critical applications,
+    consider fast inference providers like **Groq** alongside model selection.
   </Step>
 
   <Step title="Implement Multi-Model Strategy">
-    Use different models for different agents based on their roles. High-capability models for managers and complex tasks, efficient models for routine operations.
+    Use different models for different agents based on their roles.
+    High-capability models for managers and complex tasks, efficient models for
+    routine operations.
   </Step>
 
   <Step title="Monitor and Optimize">
@@ -37835,7 +39963,7 @@ CrewAI supports multimodal agents that can process both text and non-text conten
 
 To create a multimodal agent, simply set the `multimodal` parameter to `True` when initializing your agent:
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent
 
 agent = Agent(
@@ -37854,7 +39982,7 @@ The multimodal agent comes pre-configured with the `AddImageTool`, which allows 
 
 Here's a complete example showing how to use a multimodal agent to analyze an image:
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create a multimodal agent
@@ -37885,7 +40013,7 @@ result = crew.kickoff()
 
 You can provide additional context or specific questions about the image when creating tasks for multimodal agents. The task description can include specific aspects you want the agent to focus on:
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 # Create a multimodal agent for detailed analysis
@@ -37922,7 +40050,7 @@ result = crew.kickoff()
 
 When working with multimodal agents, the `AddImageTool` is automatically configured with the following schema:
 
-```python  theme={null}
+```python theme={null}
 class AddImageToolSchema:
     image_url: str  # Required: The URL or path of the image to process
     action: Optional[str] = None  # Optional: Additional context or specific questions about the image
@@ -37977,7 +40105,7 @@ This section provides comprehensive guides and tutorials to help you master Crew
 
 ### Core Concepts
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Sequential Process" icon="list-ol" href="/en/learn/sequential-process">
     Learn how to execute tasks in a sequential order for structured workflows.
   </Card>
@@ -37997,7 +40125,7 @@ This section provides comprehensive guides and tutorials to help you master Crew
 
 ### Agent Development
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Customizing Agents" icon="user-gear" href="/en/learn/customizing-agents">
     Learn how to customize agent behavior, roles, and capabilities.
   </Card>
@@ -38019,7 +40147,7 @@ This section provides comprehensive guides and tutorials to help you master Crew
 
 ### Workflow Control
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Human in the Loop" icon="user-check" href="/en/learn/human-in-the-loop">
     Integrate human oversight and intervention into agent workflows.
   </Card>
@@ -38039,7 +40167,7 @@ This section provides comprehensive guides and tutorials to help you master Crew
 
 ### Customization & Integration
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Custom LLM" icon="brain" href="/en/learn/custom-llm">
     Integrate custom language models and providers with CrewAI.
   </Card>
@@ -38061,7 +40189,7 @@ This section provides comprehensive guides and tutorials to help you master Crew
 
 ### Content & Media
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="DALL-E Image Generation" icon="image" href="/en/learn/dalle-image-generation">
     Generate images using DALL-E integration with your agents.
   </Card>
@@ -38073,7 +40201,7 @@ This section provides comprehensive guides and tutorials to help you master Crew
 
 ### Tool Management
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Force Tool Output as Result" icon="hammer" href="/en/learn/force-tool-output-as-result">
     Configure tools to return their output directly as task results.
   </Card>
@@ -38163,13 +40291,13 @@ To use the replay feature, follow these steps:
   <Step title="Run the following commands:">
     To view the latest kickoff task\_ids use:
 
-    ```shell  theme={null}
+    ```shell theme={null}
     crewai log-tasks-outputs
     ```
 
     Once you have your `task_id` to replay, use:
 
-    ```shell  theme={null}
+    ```shell theme={null}
     crewai replay -t <task_id>
     ```
   </Step>
@@ -38374,7 +40502,7 @@ Executed before every tool execution, these hooks can:
 
 **Signature:**
 
-```python  theme={null}
+```python theme={null}
 def before_hook(context: ToolCallHookContext) -> bool | None:
     # Return False to block execution
     # Return True or None to allow execution
@@ -38393,7 +40521,7 @@ Executed after every tool execution, these hooks can:
 
 **Signature:**
 
-```python  theme={null}
+```python theme={null}
 def after_hook(context: ToolCallHookContext) -> str | None:
     # Return modified result string
     # Return None to keep original result
@@ -38404,7 +40532,7 @@ def after_hook(context: ToolCallHookContext) -> str | None:
 
 The `ToolCallHookContext` object provides comprehensive access to tool execution state:
 
-```python  theme={null}
+```python theme={null}
 class ToolCallHookContext:
     tool_name: str                    # Name of the tool being called
     tool_input: dict[str, Any]        # Mutable tool input parameters
@@ -38419,7 +40547,7 @@ class ToolCallHookContext:
 
 **Important:** Always modify tool inputs in-place:
 
-```python  theme={null}
+```python theme={null}
 # ✅ Correct - modify in-place
 def sanitize_input(context: ToolCallHookContext) -> None:
     context.tool_input['query'] = context.tool_input['query'].lower()
@@ -38435,7 +40563,7 @@ def wrong_approach(context: ToolCallHookContext) -> None:
 
 Register hooks that apply to all tool calls across all crews:
 
-```python  theme={null}
+```python theme={null}
 from crewai.hooks import register_before_tool_call_hook, register_after_tool_call_hook
 
 def log_tool_call(context):
@@ -38450,7 +40578,7 @@ register_before_tool_call_hook(log_tool_call)
 
 Use decorators for cleaner syntax:
 
-```python  theme={null}
+```python theme={null}
 from crewai.hooks import before_tool_call, after_tool_call
 
 @before_tool_call
@@ -38472,7 +40600,7 @@ def sanitize_results(context):
 
 Register hooks for a specific crew instance:
 
-```python  theme={null}
+```python theme={null}
 @CrewBase
 class MyProjCrew:
     @before_tool_call_crew
@@ -38504,7 +40632,7 @@ class MyProjCrew:
 
 ### 1. Safety Guardrails
 
-```python  theme={null}
+```python theme={null}
 @before_tool_call
 def safety_check(context: ToolCallHookContext) -> bool | None:
     # Block tools that could cause harm
@@ -38529,7 +40657,7 @@ def safety_check(context: ToolCallHookContext) -> bool | None:
 
 ### 2. Human Approval Gate
 
-```python  theme={null}
+```python theme={null}
 @before_tool_call
 def require_approval_for_actions(context: ToolCallHookContext) -> bool | None:
     approval_required = [
@@ -38554,7 +40682,7 @@ def require_approval_for_actions(context: ToolCallHookContext) -> bool | None:
 
 ### 3. Input Validation and Sanitization
 
-```python  theme={null}
+```python theme={null}
 @before_tool_call
 def validate_and_sanitize_inputs(context: ToolCallHookContext) -> bool | None:
     # Validate search queries
@@ -38579,7 +40707,7 @@ def validate_and_sanitize_inputs(context: ToolCallHookContext) -> bool | None:
 
 ### 4. Result Sanitization
 
-```python  theme={null}
+```python theme={null}
 @after_tool_call
 def sanitize_sensitive_data(context: ToolCallHookContext) -> str | None:
     if not context.tool_result:
@@ -38615,7 +40743,7 @@ def sanitize_sensitive_data(context: ToolCallHookContext) -> str | None:
 
 ### 5. Tool Usage Analytics
 
-```python  theme={null}
+```python theme={null}
 import time
 from collections import defaultdict
 
@@ -38649,7 +40777,7 @@ def track_tool_usage(context: ToolCallHookContext) -> None:
 
 ### 6. Rate Limiting
 
-```python  theme={null}
+```python theme={null}
 from collections import defaultdict
 from datetime import datetime, timedelta
 
@@ -38678,7 +40806,7 @@ def rate_limit_tools(context: ToolCallHookContext) -> bool | None:
 
 ### 7. Caching Tool Results
 
-```python  theme={null}
+```python theme={null}
 import hashlib
 import json
 
@@ -38709,7 +40837,7 @@ def cache_result(context: ToolCallHookContext) -> None:
 
 ### 8. Debug Logging
 
-```python  theme={null}
+```python theme={null}
 @before_tool_call
 def debug_tool_call(context: ToolCallHookContext) -> None:
     print(f"""
@@ -38735,7 +40863,7 @@ def debug_tool_result(context: ToolCallHookContext) -> None:
 
 ### Unregistering Hooks
 
-```python  theme={null}
+```python theme={null}
 from crewai.hooks import (
     unregister_before_tool_call_hook,
     unregister_after_tool_call_hook
@@ -38753,7 +40881,7 @@ print(f"Unregistered: {success}")
 
 ### Clearing Hooks
 
-```python  theme={null}
+```python theme={null}
 from crewai.hooks import (
     clear_before_tool_call_hooks,
     clear_after_tool_call_hooks,
@@ -38771,7 +40899,7 @@ print(f"Cleared {before_count} before and {after_count} after hooks")
 
 ### Listing Registered Hooks
 
-```python  theme={null}
+```python theme={null}
 from crewai.hooks import (
     get_before_tool_call_hooks,
     get_after_tool_call_hooks
@@ -38788,7 +40916,7 @@ print(f"Registered: {len(before_hooks)} before, {len(after_hooks)} after")
 
 ### Conditional Hook Execution
 
-```python  theme={null}
+```python theme={null}
 @before_tool_call
 def conditional_blocking(context: ToolCallHookContext) -> bool | None:
     # Only block for specific agents
@@ -38808,7 +40936,7 @@ def conditional_blocking(context: ToolCallHookContext) -> bool | None:
 
 ### Context-Aware Input Modification
 
-```python  theme={null}
+```python theme={null}
 @before_tool_call
 def enhance_tool_inputs(context: ToolCallHookContext) -> None:
     # Add context based on agent role
@@ -38827,7 +40955,7 @@ def enhance_tool_inputs(context: ToolCallHookContext) -> None:
 
 ### Tool Chain Monitoring
 
-```python  theme={null}
+```python theme={null}
 tool_call_chain = []
 
 @before_tool_call
@@ -38861,7 +40989,7 @@ def track_tool_chain(context: ToolCallHookContext) -> None:
 
 ## Error Handling
 
-```python  theme={null}
+```python theme={null}
 @before_tool_call
 def safe_validation(context: ToolCallHookContext) -> bool | None:
     try:
@@ -38876,7 +41004,7 @@ def safe_validation(context: ToolCallHookContext) -> bool | None:
 
 ## Type Safety
 
-```python  theme={null}
+```python theme={null}
 from crewai.hooks import ToolCallHookContext, BeforeToolCallHookType, AfterToolCallHookType
 
 # Explicit type annotations
@@ -38895,7 +41023,7 @@ register_after_tool_call_hook(my_after_hook)
 
 ### Wrapping Existing Validation
 
-```python  theme={null}
+```python theme={null}
 def existing_validator(tool_name: str, inputs: dict) -> bool:
     """Your existing validation function."""
     # Your validation logic
@@ -38911,7 +41039,7 @@ def integrate_validator(context: ToolCallHookContext) -> bool | None:
 
 ### Logging to External Systems
 
-```python  theme={null}
+```python theme={null}
 import logging
 
 logger = logging.getLogger(__name__)
@@ -38988,7 +41116,7 @@ Let's go through examples of how to use these annotations:
 
 ### 1. Crew Base Class
 
-```python  theme={null}
+```python theme={null}
 @CrewBase
 class LinkedinProfileCrew():
     """LinkedinProfile crew"""
@@ -39009,7 +41137,7 @@ The `@CrewBase` annotation is used to decorate the main crew class. This class t
 
 ### 2. Tool Definition
 
-```python  theme={null}
+```python theme={null}
 @tool
 def myLinkedInProfileTool(self):
     return LinkedInProfileTool()
@@ -39019,7 +41147,7 @@ The `@tool` annotation is used to decorate methods that return tool objects. The
 
 ### 3. LLM Definition
 
-```python  theme={null}
+```python theme={null}
 @llm
 def groq_llm(self):
     api_key = os.getenv('api_key')
@@ -39030,7 +41158,7 @@ The `@llm` annotation is used to decorate methods that initialize and return Lan
 
 ### 4. Agent Definition
 
-```python  theme={null}
+```python theme={null}
 @agent
 def researcher(self) -> Agent:
     return Agent(
@@ -39042,7 +41170,7 @@ The `@agent` annotation is used to decorate methods that define and return Agent
 
 ### 5. Task Definition
 
-```python  theme={null}
+```python theme={null}
 @task
 def research_task(self) -> Task:
     return Task(
@@ -39055,7 +41183,7 @@ The `@task` annotation is used to decorate methods that define and return Task o
 
 ### 6. Crew Creation
 
-```python  theme={null}
+```python theme={null}
 @crew
 def crew(self) -> Crew:
     """Creates the LinkedinProfile crew"""
@@ -39073,7 +41201,7 @@ The `@crew` annotation is used to decorate the method that creates and returns t
 
 The agent configurations are typically stored in a YAML file. Here's an example of how the `agents.yaml` file might look for the researcher agent:
 
-```yaml  theme={null}
+```yaml theme={null}
 researcher:
     role: >
         LinkedIn Profile Senior Data Researcher
@@ -39128,7 +41256,7 @@ You can also access this guide on [Google Colab](https://colab.research.google.c
 
 ### Step 1: Install Dependencies
 
-```bash  theme={null}
+```bash theme={null}
 pip install openinference-instrumentation-crewai crewai crewai-tools arize-phoenix-otel
 ```
 
@@ -39138,7 +41266,7 @@ Setup Phoenix Cloud API keys and configure OpenTelemetry to send traces to Phoen
 
 You can get your free Serper API key [here](https://serper.dev/).
 
-```python  theme={null}
+```python theme={null}
 import os
 from getpass import getpass
 
@@ -39160,7 +41288,7 @@ os.environ["SERPER_API_KEY"] = SERPER_API_KEY
 
 Initialize the OpenInference OpenTelemetry instrumentation SDK to start capturing traces and send them to Phoenix.
 
-```python  theme={null}
+```python theme={null}
 from phoenix.otel import register
 
 tracer_provider = register(
@@ -39173,7 +41301,7 @@ tracer_provider = register(
 
 We'll create a CrewAI application where two agents collaborate to research and write a blog post about AI advancements.
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Crew, Process, Task
 from crewai_tools import SerperDevTool
 from openinference.instrumentation.crewai import CrewAIInstrumentor
@@ -39276,7 +41404,7 @@ We'll walk through a simple example of using CrewAI and integrating it with Brai
 
 ### Step 1: Install Dependencies
 
-```bash  theme={null}
+```bash theme={null}
 uv add braintrust[otel] crewai crewai-tools opentelemetry-instrumentation-openai opentelemetry-instrumentation-crewai python-dotenv
 ```
 
@@ -39284,7 +41412,7 @@ uv add braintrust[otel] crewai crewai-tools opentelemetry-instrumentation-openai
 
 Setup Braintrust API keys and configure OpenTelemetry to send traces to Braintrust. You'll need a Braintrust API key and your OpenAI API key.
 
-```python  theme={null}
+```python theme={null}
 import os
 from getpass import getpass
 
@@ -39304,7 +41432,7 @@ os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
 
 Initialize the Braintrust OpenTelemetry instrumentation to start capturing traces and send them to Braintrust.
 
-```python  theme={null}
+```python theme={null}
 import os
 from typing import Any, Dict
 
@@ -39337,7 +41465,7 @@ setup_tracing()
 
 We'll create a CrewAI application where two agents collaborate to research and write a blog post about AI advancements, with comprehensive tracing enabled.
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Crew, Process, Task
 from crewai_tools import SerperDevTool
 
@@ -39417,19 +41545,19 @@ After running your crew, you can view comprehensive traces in Braintrust through
 <Tabs>
   <Tab title="Trace">
     <Frame>
-      <img src="https://mintcdn.com/crewai/sTI-JqU6hicMPzD1/images/braintrust-trace-view.png?fit=max&auto=format&n=sTI-JqU6hicMPzD1&q=85&s=311f727eeadf1c39380c08e992278dd0" alt="Braintrust Trace View" data-og-width="1446" width="1446" data-og-height="1117" height="1117" data-path="images/braintrust-trace-view.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/sTI-JqU6hicMPzD1/images/braintrust-trace-view.png?w=280&fit=max&auto=format&n=sTI-JqU6hicMPzD1&q=85&s=897e860f9b8d3493999f62a9a19c8fb8 280w, https://mintcdn.com/crewai/sTI-JqU6hicMPzD1/images/braintrust-trace-view.png?w=560&fit=max&auto=format&n=sTI-JqU6hicMPzD1&q=85&s=a5f185d667eac4272b983878a6851206 560w, https://mintcdn.com/crewai/sTI-JqU6hicMPzD1/images/braintrust-trace-view.png?w=840&fit=max&auto=format&n=sTI-JqU6hicMPzD1&q=85&s=a633e5f94ed2b81419c17894d803342a 840w, https://mintcdn.com/crewai/sTI-JqU6hicMPzD1/images/braintrust-trace-view.png?w=1100&fit=max&auto=format&n=sTI-JqU6hicMPzD1&q=85&s=941454a8d9339cb1873525af08a3278c 1100w, https://mintcdn.com/crewai/sTI-JqU6hicMPzD1/images/braintrust-trace-view.png?w=1650&fit=max&auto=format&n=sTI-JqU6hicMPzD1&q=85&s=9617559998fb4906d5c81d7a77803077 1650w, https://mintcdn.com/crewai/sTI-JqU6hicMPzD1/images/braintrust-trace-view.png?w=2500&fit=max&auto=format&n=sTI-JqU6hicMPzD1&q=85&s=413a16f22e69897e63d899ac77601ab7 2500w" />
+      <img alt="Braintrust Trace View" />
     </Frame>
   </Tab>
 
   <Tab title="Timeline">
     <Frame>
-      <img src="https://mintcdn.com/crewai/sTI-JqU6hicMPzD1/images/braintrust-timeline-view.png?fit=max&auto=format&n=sTI-JqU6hicMPzD1&q=85&s=03090206aecd3a7b2f21a24af2514b08" alt="Braintrust Timeline View" data-og-width="1449" width="1449" data-og-height="950" height="950" data-path="images/braintrust-timeline-view.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/sTI-JqU6hicMPzD1/images/braintrust-timeline-view.png?w=280&fit=max&auto=format&n=sTI-JqU6hicMPzD1&q=85&s=0795dce3045c51b3f954282196e21189 280w, https://mintcdn.com/crewai/sTI-JqU6hicMPzD1/images/braintrust-timeline-view.png?w=560&fit=max&auto=format&n=sTI-JqU6hicMPzD1&q=85&s=73c0b619f3b04b19b0efb255157a4ef5 560w, https://mintcdn.com/crewai/sTI-JqU6hicMPzD1/images/braintrust-timeline-view.png?w=840&fit=max&auto=format&n=sTI-JqU6hicMPzD1&q=85&s=e28b62d2fb6da5cc43c770796a1cf3ca 840w, https://mintcdn.com/crewai/sTI-JqU6hicMPzD1/images/braintrust-timeline-view.png?w=1100&fit=max&auto=format&n=sTI-JqU6hicMPzD1&q=85&s=7ccb443569f6a8e9bd6ae267fd0d83b3 1100w, https://mintcdn.com/crewai/sTI-JqU6hicMPzD1/images/braintrust-timeline-view.png?w=1650&fit=max&auto=format&n=sTI-JqU6hicMPzD1&q=85&s=94b8fecd6f45755faf0d6ced848a7da1 1650w, https://mintcdn.com/crewai/sTI-JqU6hicMPzD1/images/braintrust-timeline-view.png?w=2500&fit=max&auto=format&n=sTI-JqU6hicMPzD1&q=85&s=0fb8a89b44b1c5bcc16886d3bd61f8f0 2500w" />
+      <img alt="Braintrust Timeline View" />
     </Frame>
   </Tab>
 
   <Tab title="Thread">
     <Frame>
-      <img src="https://mintcdn.com/crewai/sTI-JqU6hicMPzD1/images/braintrust-thread-view.png?fit=max&auto=format&n=sTI-JqU6hicMPzD1&q=85&s=1bc0a6842a5dd9e6d7c2dd742417e79b" alt="Braintrust Thread View" data-og-width="1452" width="1452" data-og-height="989" height="989" data-path="images/braintrust-thread-view.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/sTI-JqU6hicMPzD1/images/braintrust-thread-view.png?w=280&fit=max&auto=format&n=sTI-JqU6hicMPzD1&q=85&s=1a7d95a7eeee928ea1ee0e84d4f172f7 280w, https://mintcdn.com/crewai/sTI-JqU6hicMPzD1/images/braintrust-thread-view.png?w=560&fit=max&auto=format&n=sTI-JqU6hicMPzD1&q=85&s=8414267a22466d638441e87588c0c3b5 560w, https://mintcdn.com/crewai/sTI-JqU6hicMPzD1/images/braintrust-thread-view.png?w=840&fit=max&auto=format&n=sTI-JqU6hicMPzD1&q=85&s=7695d8fe70972f93f69201a7f9e4f19f 840w, https://mintcdn.com/crewai/sTI-JqU6hicMPzD1/images/braintrust-thread-view.png?w=1100&fit=max&auto=format&n=sTI-JqU6hicMPzD1&q=85&s=2d5051293c140b63ae391cd0879aa313 1100w, https://mintcdn.com/crewai/sTI-JqU6hicMPzD1/images/braintrust-thread-view.png?w=1650&fit=max&auto=format&n=sTI-JqU6hicMPzD1&q=85&s=69bf97bbeb0e0b1a323cc535666d0517 1650w, https://mintcdn.com/crewai/sTI-JqU6hicMPzD1/images/braintrust-thread-view.png?w=2500&fit=max&auto=format&n=sTI-JqU6hicMPzD1&q=85&s=e0b50e3d14fad48ca9a48795c3d36bc9 2500w" />
+      <img alt="Braintrust Thread View" />
     </Frame>
   </Tab>
 </Tabs>
@@ -39438,7 +41566,7 @@ After running your crew, you can view comprehensive traces in Braintrust through
 
 You can also run evaluations using Braintrust's Eval SDK. This is useful for comparing versions or scoring outputs offline. Below is a Python example using the `Eval` class with the crew we created above:
 
-```python  theme={null}
+```python theme={null}
 # eval_crew.py
 from braintrust import Eval
 from autoevals import Levenshtein
@@ -39465,7 +41593,7 @@ Eval(
 
 Setup your API key and run:
 
-```bash  theme={null}
+```bash theme={null}
 export BRAINTRUST_API_KEY="YOUR_API_KEY"
 braintrust eval eval_crew.py
 ```
@@ -39515,7 +41643,7 @@ This guide will demonstrate how to integrate **[Datadog LLM Observability](https
 
 ### Install Dependencies
 
-```shell  theme={null}
+```shell theme={null}
 pip install ddtrace crewai crewai-tools
 ```
 
@@ -39525,7 +41653,7 @@ If you do not have a Datadog API key, you can [create an account](https://www.da
 
 You will also need to specify an ML Application name in the following environment variables. An ML Application is a grouping of LLM Observability traces associated with a specific LLM-based application. See [ML Application Naming Guidelines](https://docs.datadoghq.com/llm_observability/instrumentation/sdk?tab=python#application-naming-guidelines) for more information on limitations with ML Application names.
 
-```shell  theme={null}
+```shell theme={null}
 export DD_API_KEY=<YOUR_DD_API_KEY>
 export DD_SITE=<YOUR_DD_SITE>
 export DD_LLMOBS_ENABLED=true
@@ -39536,7 +41664,7 @@ export DD_APM_TRACING_ENABLED=false
 
 Additionally, configure any LLM provider API keys
 
-```shell  theme={null}
+```shell theme={null}
 export OPENAI_API_KEY=<YOUR_OPENAI_API_KEY>
 export ANTHROPIC_API_KEY=<YOUR_ANTHROPIC_API_KEY>
 export GEMINI_API_KEY=<YOUR_GEMINI_API_KEY>
@@ -39545,7 +41673,7 @@ export GEMINI_API_KEY=<YOUR_GEMINI_API_KEY>
 
 ### Create a CrewAI Agent Application
 
-```python  theme={null}
+```python theme={null}
 # crewai_agent.py
 from crewai import Agent, Task, Crew
 
@@ -39581,7 +41709,7 @@ output = crew.kickoff(dict(multiplication="2 * 2"))
 
 With the [environment variables](#set-environment-variables) set, you can now run the application with Datadog auto-instrumentation.
 
-```shell  theme={null}
+```shell theme={null}
 ddtrace-run python crewai_agent.py
 ```
 
@@ -39592,19 +41720,134 @@ After running the application, you can view the traces in [Datadog LLM Observabi
 Clicking on a trace will show you the details of the trace, including total tokens used, number of LLM calls, models used, and estimated cost. Clicking into a specific span will narrow down these details, and show related input, output, and metadata.
 
 <Frame>
-  <img src="https://mintcdn.com/crewai/YHPIyIjbLg-0Yd_V/images/datadog-llm-observability-1.png?fit=max&auto=format&n=YHPIyIjbLg-0Yd_V&q=85&s=12b76bf2631c8b24ed6828053b125074" alt="Datadog LLM Observability Trace View" data-og-width="2678" width="2678" data-og-height="1572" height="1572" data-path="images/datadog-llm-observability-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/YHPIyIjbLg-0Yd_V/images/datadog-llm-observability-1.png?w=280&fit=max&auto=format&n=YHPIyIjbLg-0Yd_V&q=85&s=1862b54dec692db71de36087c425b3e6 280w, https://mintcdn.com/crewai/YHPIyIjbLg-0Yd_V/images/datadog-llm-observability-1.png?w=560&fit=max&auto=format&n=YHPIyIjbLg-0Yd_V&q=85&s=a3d32811584412edba3c66c1024c28d2 560w, https://mintcdn.com/crewai/YHPIyIjbLg-0Yd_V/images/datadog-llm-observability-1.png?w=840&fit=max&auto=format&n=YHPIyIjbLg-0Yd_V&q=85&s=fc6ed7c46b781e9c4a6f393150c99399 840w, https://mintcdn.com/crewai/YHPIyIjbLg-0Yd_V/images/datadog-llm-observability-1.png?w=1100&fit=max&auto=format&n=YHPIyIjbLg-0Yd_V&q=85&s=2488ea5cbb8b2b852f03efa9f58de19c 1100w, https://mintcdn.com/crewai/YHPIyIjbLg-0Yd_V/images/datadog-llm-observability-1.png?w=1650&fit=max&auto=format&n=YHPIyIjbLg-0Yd_V&q=85&s=9f541b37cbd11c65251eeaf2e91259aa 1650w, https://mintcdn.com/crewai/YHPIyIjbLg-0Yd_V/images/datadog-llm-observability-1.png?w=2500&fit=max&auto=format&n=YHPIyIjbLg-0Yd_V&q=85&s=31fb1902fd6a4c3703167674644f4a8a 2500w" />
+  <img alt="Datadog LLM Observability Trace View" />
 </Frame>
 
 Additionally, you can view the execution graph view of the trace, which shows the control and data flow of the trace, which will scale with larger agents to show handoffs and relationships between LLM calls, tool calls, and agent interactions.
 
 <Frame>
-  <img src="https://mintcdn.com/crewai/YHPIyIjbLg-0Yd_V/images/datadog-llm-observability-2.png?fit=max&auto=format&n=YHPIyIjbLg-0Yd_V&q=85&s=01a94c3f9f162ce0b918fa6039f6fa8e" alt="Datadog LLM Observability Agent Execution Flow View" data-og-width="4774" width="4774" data-og-height="2566" height="2566" data-path="images/datadog-llm-observability-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/YHPIyIjbLg-0Yd_V/images/datadog-llm-observability-2.png?w=280&fit=max&auto=format&n=YHPIyIjbLg-0Yd_V&q=85&s=68d556845570e0aa0df070d1de7067ce 280w, https://mintcdn.com/crewai/YHPIyIjbLg-0Yd_V/images/datadog-llm-observability-2.png?w=560&fit=max&auto=format&n=YHPIyIjbLg-0Yd_V&q=85&s=f5b67e3fb8beb9acd769042e188d04a6 560w, https://mintcdn.com/crewai/YHPIyIjbLg-0Yd_V/images/datadog-llm-observability-2.png?w=840&fit=max&auto=format&n=YHPIyIjbLg-0Yd_V&q=85&s=3d045e43cc2846acaae17fd0d741ef90 840w, https://mintcdn.com/crewai/YHPIyIjbLg-0Yd_V/images/datadog-llm-observability-2.png?w=1100&fit=max&auto=format&n=YHPIyIjbLg-0Yd_V&q=85&s=b1802677a2e3403247a3b789c65cf9b6 1100w, https://mintcdn.com/crewai/YHPIyIjbLg-0Yd_V/images/datadog-llm-observability-2.png?w=1650&fit=max&auto=format&n=YHPIyIjbLg-0Yd_V&q=85&s=9bbcb20ebbad420307e1f4cdb836c1c8 1650w, https://mintcdn.com/crewai/YHPIyIjbLg-0Yd_V/images/datadog-llm-observability-2.png?w=2500&fit=max&auto=format&n=YHPIyIjbLg-0Yd_V&q=85&s=2d98c2f8224f78bfe8bc2a3ee99464f1 2500w" />
+  <img alt="Datadog LLM Observability Agent Execution Flow View" />
 </Frame>
 
 ## References
 
 * [Datadog LLM Observability](https://www.datadoghq.com/product/llm-observability/)
 * [Datadog LLM Observability CrewAI Auto-Instrumentation](https://docs.datadoghq.com/llm_observability/instrumentation/auto_instrumentation?tab=python#crew-ai)
+
+
+# Galileo
+Source: https://docs.crewai.com/en/observability/galileo
+
+Galileo integration for CrewAI tracing and evaluation
+
+## Overview
+
+This guide demonstrates how to integrate **Galileo** with **CrewAI**
+for comprehensive tracing and Evaluation Engineering.
+By the end of this guide, you will be able to trace your CrewAI agents,
+monitor their performance, and evaluate their behaviour with
+Galileo's powerful observability platform.
+
+> **What is Galileo?** [Galileo](https://galileo.ai) is AI evaluation and observability
+> platform that delivers end-to-end tracing, evaluation,
+> and monitoring for AI applications. It enables teams to capture ground truth,
+> create robust guardrails, and run systematic experiments with
+> built-in experiment tracking and performance analytics—ensuring reliability,
+> transparency, and continuous improvement across the AI lifecycle.
+
+## Getting started
+
+This tutorial follows the [CrewAI quickstart](/en/quickstart) and shows how to add
+Galileo's [CrewAIEventListener](https://v2docs.galileo.ai/sdk-api/python/reference/handlers/crewai/handler),
+an event handler.
+For more information, see Galileo’s
+[Add Galileo to a CrewAI Application](https://v2docs.galileo.ai/how-to-guides/third-party-integrations/add-galileo-to-crewai/add-galileo-to-crewai)
+how-to guide.
+
+> **Note** This tutorial assumes you have completed the [CrewAI quickstart](/en/quickstart).
+> If you want a completed comprehensive example, see the Galileo
+> [CrewAI sdk-example repo](https://github.com/rungalileo/sdk-examples/tree/main/python/agent/crew-ai).
+
+### Step 1: Install dependencies
+
+Install the required dependencies for your app.
+Create a virtual environment using your preferred method,
+then install dependencies inside that environment using your
+preferred tool:
+
+```bash theme={null}
+uv add galileo 
+```
+
+### Step 2: Add to the .env file from the [CrewAI quickstart](/en/quickstart)
+
+```bash theme={null}
+# Your Galileo API key
+GALILEO_API_KEY="your-galileo-api-key"
+
+# Your Galileo project name
+GALILEO_PROJECT="your-galileo-project-name"
+
+# The name of the Log stream you want to use for logging
+GALILEO_LOG_STREAM="your-galileo-log-stream "
+```
+
+### Step 3: Add the Galileo event listener
+
+To enable logging with Galileo, you need to create an instance of the `CrewAIEventListener`.
+Import the Galileo CrewAI handler package by
+adding the following code at the top of your main.py file:
+
+```python theme={null}
+from galileo.handlers.crewai.handler import CrewAIEventListener
+```
+
+At the start of your run function, create the event listener:
+
+```python theme={null}
+def run():
+    # Create the event listener
+    CrewAIEventListener()
+    # The rest of your existing code goes here
+```
+
+When you create the listener instance, it is automatically
+registered with CrewAI.
+
+### Step 4: Run your crew
+
+Run your crew with the CrewAI CLI:
+
+```bash theme={null}
+crewai run
+```
+
+### Step 5: View the traces in Galileo
+
+Once your crew has finished, the traces will be flushed and appear in Galileo.
+
+<img alt="Galileo trace view" />
+
+## Understanding the Galileo Integration
+
+Galileo integrates with CrewAI by registering an event listener
+that captures Crew execution events (e.g., agent actions, tool calls, model responses)
+and forwards them to Galileo for observability and evaluation.
+
+### Understanding the event listener
+
+Creating a `CrewAIEventListener()` instance is all that’s
+required to enable Galileo for a CrewAI run. When instantiated, the listener:
+
+* Automatically registers itself with CrewAI
+* Reads Galileo configuration from environment variables
+* Logs all run data to the Galileo project and log stream specified by
+  `GALILEO_PROJECT` and `GALILEO_LOG_STREAM`
+
+No additional configuration or code changes are required.
+All data from this run is logged to the Galileo project and
+log stream specified by your environment configuration
+(for example, GALILEO\_PROJECT and GALILEO\_LOG\_STREAM).
 
 
 # LangDB Integration
@@ -39616,8 +41859,8 @@ Govern, secure, and optimize your CrewAI workflows with LangDB AI Gateway—acce
 
 [LangDB AI Gateway](https://langdb.ai) provides OpenAI-compatible APIs to connect with multiple Large Language Models and serves as an observability platform that makes it effortless to trace CrewAI workflows end-to-end while providing access to 350+ language models. With a single `init()` call, all agent interactions, task executions, and LLM calls are captured, providing comprehensive observability and production-ready AI infrastructure for your applications.
 
-<Frame caption="LangDB CrewAI Trace Example">
-  <img src="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langdb-1.png?fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=6303d15055c19a7a6ec9d0c664f15c9f" alt="LangDB CrewAI trace example" data-og-width="1576" width="1576" data-og-height="892" height="892" data-path="images/langdb-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langdb-1.png?w=280&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=da34c5dce0a82022f85feda11af459d4 280w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langdb-1.png?w=560&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=902f87462033e4874e3d373953158a39 560w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langdb-1.png?w=840&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=74c605bfb1a201c0f663d1c04b8daf60 840w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langdb-1.png?w=1100&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=880a223bb40e9c94724c6047b7a2e966 1100w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langdb-1.png?w=1650&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=2c3dd2cac11506d6cc1aeba11c79759d 1650w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langdb-1.png?w=2500&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=a6d52809351409222de871b2f8018715 2500w" />
+<Frame>
+  <img alt="LangDB CrewAI trace example" />
 </Frame>
 
 **Checkout:** [View the live trace example](https://app.langdb.ai/sharing/threads/3becbfed-a1be-ae84-ea3c-4942867a3e22)
@@ -39647,7 +41890,7 @@ Govern, secure, and optimize your CrewAI workflows with LangDB AI Gateway—acce
   <Step title="Install LangDB">
     Install the LangDB client with CrewAI feature flag:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     pip install 'pylangdb[crewai]'
     ```
   </Step>
@@ -39655,7 +41898,7 @@ Govern, secure, and optimize your CrewAI workflows with LangDB AI Gateway—acce
   <Step title="Set Environment Variables">
     Configure your LangDB credentials:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     export LANGDB_API_KEY="<your_langdb_api_key>"
     export LANGDB_PROJECT_ID="<your_langdb_project_id>"
     export LANGDB_API_BASE_URL='https://api.us-east-1.langdb.ai'
@@ -39665,7 +41908,7 @@ Govern, secure, and optimize your CrewAI workflows with LangDB AI Gateway—acce
   <Step title="Initialize Tracing">
     Import and initialize LangDB before configuring your CrewAI code:
 
-    ```python  theme={null}
+    ```python theme={null}
     from pylangdb.crewai import init
     # Initialize LangDB
     init()
@@ -39675,7 +41918,7 @@ Govern, secure, and optimize your CrewAI workflows with LangDB AI Gateway—acce
   <Step title="Configure CrewAI with LangDB">
     Set up your LLM with LangDB headers:
 
-    ```python  theme={null}
+    ```python theme={null}
     from crewai import Agent, Task, Crew, LLM
     import os
 
@@ -39694,7 +41937,7 @@ Govern, secure, and optimize your CrewAI workflows with LangDB AI Gateway—acce
 
 Here's a simple example to get you started with LangDB and CrewAI:
 
-```python  theme={null}
+```python theme={null}
 import os
 from pylangdb.crewai import init
 from crewai import Agent, Task, Crew, LLM
@@ -39738,13 +41981,13 @@ This comprehensive example demonstrates a multi-agent workflow with research and
 
 ### Prerequisites
 
-```bash  theme={null}
+```bash theme={null}
 pip install crewai 'pylangdb[crewai]' crewai_tools setuptools python-dotenv
 ```
 
 ### Environment Setup
 
-```bash  theme={null}
+```bash theme={null}
 # LangDB credentials
 export LANGDB_API_KEY="<your_langdb_api_key>"
 export LANGDB_PROJECT_ID="<your_langdb_project_id>"
@@ -39756,7 +41999,7 @@ export SERPER_API_KEY="<your_serper_api_key>"  # For web search capabilities
 
 ### Complete Implementation
 
-```python  theme={null}
+```python theme={null}
 #!/usr/bin/env python3
 
 import os
@@ -39840,7 +42083,7 @@ if __name__ == "__main__":
 
 ### Running the Example
 
-```bash  theme={null}
+```bash theme={null}
 python main.py "Sustainable Energy Solutions"
 ```
 
@@ -39848,8 +42091,8 @@ python main.py "Sustainable Energy Solutions"
 
 After running your CrewAI application, you can view detailed traces in the LangDB dashboard:
 
-<Frame caption="LangDB Trace Dashboard">
-  <img src="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langdb-2.png?fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=74a88afefce3f84fb6f9482a1790b413" alt="LangDB trace dashboard showing CrewAI workflow" data-og-width="1627" width="1627" data-og-height="890" height="890" data-path="images/langdb-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langdb-2.png?w=280&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=8e43fd482dc80800788d7092a8e51f1c 280w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langdb-2.png?w=560&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=02e4ddf9b1499b19d1e221628f5c21a4 560w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langdb-2.png?w=840&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=31e9c94a264d2b33fc9bfbb6a744dc15 840w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langdb-2.png?w=1100&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=5de66fecea56248c974a91c918135e52 1100w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langdb-2.png?w=1650&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=e03d206dd7c466cc5b9de55bab46daf1 1650w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langdb-2.png?w=2500&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=4c16c2587ec6b48bf8cff71b9df17d07 2500w" />
+<Frame>
+  <img alt="LangDB trace dashboard showing CrewAI workflow" />
 </Frame>
 
 ### What You'll See
@@ -39869,7 +42112,7 @@ After running your CrewAI application, you can view detailed traces in the LangD
 
 ## Resources
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="LangDB Documentation" icon="book" href="https://docs.langdb.ai">
     Official LangDB documentation and guides
   </Card>
@@ -39925,7 +42168,7 @@ We'll walk through a simple example of using CrewAI and integrating it with Lang
 
 ### Step 1: Install Dependencies
 
-```python  theme={null}
+```python theme={null}
 %pip install langfuse openlit crewai crewai_tools
 ```
 
@@ -39933,7 +42176,7 @@ We'll walk through a simple example of using CrewAI and integrating it with Lang
 
 Set your Langfuse API keys and configure OpenTelemetry export settings to send traces to Langfuse. Please refer to the [Langfuse OpenTelemetry Docs](https://langfuse.com/docs/opentelemetry/get-started) for more information on the Langfuse OpenTelemetry endpoint `/api/public/otel` and authentication.
 
-```python  theme={null}
+```python theme={null}
 import os
  
 # Get keys for your project from the project settings page: https://cloud.langfuse.com
@@ -39949,7 +42192,7 @@ os.environ["OPENAI_API_KEY"] = "sk-proj-..."
 
 With the environment variables set, we can now initialize the Langfuse client. get\_client() initializes the Langfuse client using the credentials provided in the environment variables.
 
-```python  theme={null}
+```python theme={null}
 from langfuse import get_client
  
 langfuse = get_client()
@@ -39965,7 +42208,7 @@ else:
 
 Initialize the OpenLit OpenTelemetry instrumentation SDK to start capturing OpenTelemetry traces.
 
-```python  theme={null}
+```python theme={null}
 import openlit
 
 openlit.init()
@@ -39975,7 +42218,7 @@ openlit.init()
 
 We'll create a simple CrewAI application where multiple agents collaborate to answer a user's question.
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 
 from crewai_tools import (
@@ -40026,9 +42269,11 @@ Langtrace is an open-source, external tool that helps you set up observability a
 While not built directly into CrewAI, Langtrace can be used alongside CrewAI to gain deep visibility into the cost, latency, and performance of your CrewAI Agents.
 This integration allows you to log hyperparameters, monitor performance regressions, and establish a process for continuous improvement of your Agents.
 
-<img src="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langtrace1.png?fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=85b67e42028ca9383087737279f8931f" alt="Overview of a select series of agent session runs" data-og-width="1717" width="1717" data-og-height="1299" height="1299" data-path="images/langtrace1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langtrace1.png?w=280&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=ba769f765ef36edf033e2caf8c7df4c7 280w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langtrace1.png?w=560&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=9e24743472c91a4b42dc235c8b16691a 560w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langtrace1.png?w=840&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=f70296efa8dd1619670008b9af8d7e78 840w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langtrace1.png?w=1100&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=c8281aea8f979aa38ff1b6519e3fb840 1100w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langtrace1.png?w=1650&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=c55eafbe3e6fee44aaa208f8ce988847 1650w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langtrace1.png?w=2500&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=677e866fb2e110afc4e7f6800abafdc3 2500w" />
-<img src="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langtrace2.png?fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=24f08e5c56b6200e386d305a7bee347c" alt="Overview of agent traces" data-og-width="1725" width="1725" data-og-height="1094" height="1094" data-path="images/langtrace2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langtrace2.png?w=280&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=9182a51d34df98e5a5b7b994b6d11d4d 280w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langtrace2.png?w=560&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=fa10f203c90f5394c5a3fe5b96b52685 560w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langtrace2.png?w=840&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=1a1d34a1ac4c2d2d5a4748e4a4a46c97 840w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langtrace2.png?w=1100&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=81bb4d002d59c63f80c2cff7f2afbadd 1100w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langtrace2.png?w=1650&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=de0fe6458f4595f73615ce7acb6b5d37 1650w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langtrace2.png?w=2500&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=1cf56b30d10a0ef841aa762fa27c74a2 2500w" />
-<img src="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langtrace3.png?fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=f1a8624e0c05d59deded640e4751a986" alt="Overview of llm traces in details" data-og-width="1710" width="1710" data-og-height="1217" height="1217" data-path="images/langtrace3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langtrace3.png?w=280&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=3483f588b90a032d4919847e6e63772a 280w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langtrace3.png?w=560&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=c638c41d0e0e156c2c2e0ed1e80bfde1 560w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langtrace3.png?w=840&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=6d2b588d0a6c176a8fd80e4d3844d955 840w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langtrace3.png?w=1100&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=611c9167a54facb43c95a2239bba6a39 1100w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langtrace3.png?w=1650&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=62a6bfc0052934c423ce245ddef1a28e 1650w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/langtrace3.png?w=2500&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=726ee5e7feed10e6f507233807e70ae9 2500w" />
+<img alt="Overview of a select series of agent session runs" />
+
+<img alt="Overview of agent traces" />
+
+<img alt="Overview of llm traces in details" />
 
 ## Setup Instructions
 
@@ -40044,7 +42289,7 @@ This integration allows you to log hyperparameters, monitor performance regressi
   <Step title="Install Langtrace in your CrewAI project">
     Use the following command:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     pip install langtrace-python-sdk
     ```
   </Step>
@@ -40052,7 +42297,7 @@ This integration allows you to log hyperparameters, monitor performance regressi
   <Step title="Import Langtrace">
     Import and initialize Langtrace at the beginning of your script, before any CrewAI imports:
 
-    ```python  theme={null}
+    ```python theme={null}
     from langtrace_python_sdk import langtrace
     langtrace.init(api_key='<LANGTRACE_API_KEY>')
 
@@ -40112,13 +42357,13 @@ Maxim's Prompt Management capabilities enable you to create, organize, and optim
 
     Easily experiment across models by [**configuring models**](https://www.getmaxim.ai/docs/introduction/quickstart/setting-up-workspace#add-model-api-keys) and selecting the relevant model from the dropdown at the top of the prompt playground.
 
-    <img src="https://raw.githubusercontent.com/akmadan/crewAI/docs_maxim_observability/docs/images/maxim_playground.png" />
+    <img />
   </Tab>
 
   <Tab title="Prompt Versions">
     As teams build their AI applications, a big part of experimentation is iterating on the prompt structure. In order to collaborate effectively and organize your changes clearly, Maxim allows prompt versioning and comparison runs across versions.
 
-    <img src="https://raw.githubusercontent.com/akmadan/crewAI/docs_maxim_observability/docs/images/maxim_versions.png" />
+    <img />
   </Tab>
 
   <Tab title="Prompt Comparisons">
@@ -40143,7 +42388,7 @@ Maxim AI provides comprehensive observability & evaluation for your CrewAI agent
   <Tab title="Agent Tracing">
     Track your agent’s complete lifecycle, including tool calls, agent trajectories, and decision flows effortlessly.
 
-    <img src="https://raw.githubusercontent.com/akmadan/crewAI/docs_maxim_observability/docs/images/maxim_agent_tracking.png" />
+    <img />
   </Tab>
 
   <Tab title="Analytics + Evals">
@@ -40153,9 +42398,9 @@ Maxim AI provides comprehensive observability & evaluation for your CrewAI agent
     * Session Level Evaluations
     * Simulations for real-world testing
 
-    <img src="https://raw.githubusercontent.com/akmadan/crewAI/docs_maxim_observability/docs/images/maxim_trace_eval.png" />
+    <img />
 
-    <CardGroup cols={3}>
+    <CardGroup>
       <Card title="Auto Evals on Logs" icon="e" href="https://www.getmaxim.ai/docs/observe/how-to/evaluate-logs/auto-evaluation">
         <p>
           Evaluate captured logs automatically from the UI based on filters and sampling
@@ -40181,13 +42426,13 @@ Maxim AI provides comprehensive observability & evaluation for your CrewAI agent
   <Tab title="Alerting">
     Set thresholds on **error**, **cost, token usage, user feedback, latency** and get real-time alerts via Slack or PagerDuty.
 
-    <img src="https://raw.githubusercontent.com/akmadan/crewAI/docs_maxim_observability/docs/images/maxim_alerts_1.png" />
+    <img />
   </Tab>
 
   <Tab title="Dashboards">
     Visualize Traces over time, usage metrics, latency & error rates with ease.
 
-    <img src="https://raw.githubusercontent.com/akmadan/crewAI/docs_maxim_observability/docs/images/maxim_dashboard_1.png" />
+    <img />
   </Tab>
 </Tabs>
 
@@ -40204,7 +42449,7 @@ Maxim AI provides comprehensive observability & evaluation for your CrewAI agent
 
 Install the Maxim SDK via pip:
 
-```python  theme={null}
+```python theme={null}
 pip install maxim-py
 ```
 
@@ -40218,7 +42463,7 @@ maxim-py
 
 ### 1. Set up environment variables
 
-```python  theme={null}
+```python theme={null}
 ### Environment Variables Setup
 
 # Create a `.env` file in your project root:
@@ -40230,7 +42475,7 @@ MAXIM_LOG_REPO_ID=your_repo_id_here
 
 ### 2. Import the required packages
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew, Process
 from maxim import Maxim
 from maxim.logger.crewai import instrument_crewai
@@ -40245,7 +42490,7 @@ instrument_crewai(Maxim().logger())
 
 ### 4. Create and run your CrewAI application as usual
 
-```python  theme={null}
+```python theme={null}
 # Create your agent
 researcher = Agent(
     role='Senior Research Analyst',
@@ -40292,7 +42537,7 @@ After running your CrewAI application:
    * Performance metrics
    * Cost analytics
 
-   <img src="https://raw.githubusercontent.com/akmadan/crewAI/docs_maxim_observability/docs/images/crewai_traces.gif" />
+   <img />
 
 ## Troubleshooting
 
@@ -40302,19 +42547,19 @@ After running your CrewAI application:
 * Ensure you've **`called instrument_crewai()`** ***before*** running your crew. This initializes logging hooks correctly.
 * Set `debug=True` in your `instrument_crewai()` call to surface any internal errors:
 
-  ```python  theme={null}
+  ```python theme={null}
   instrument_crewai(logger, debug=True)
   ```
 * Configure your agents with `verbose=True` to capture detailed logs:
 
-  ```python  theme={null}
+  ```python theme={null}
   agent = CrewAgent(..., verbose=True)
   ```
 * Double-check that `instrument_crewai()` is called **before** creating or executing agents. This might be obvious, but it's a common oversight.
 
 ## Resources
 
-<CardGroup cols="3">
+<CardGroup>
   <Card title="CrewAI Docs" icon="book" href="https://docs.crewai.com/">
     Official CrewAI documentation
   </Card>
@@ -40341,7 +42586,7 @@ Quickly start monitoring your Agents with MLflow.
 It provides a tracing feature that enhances LLM observability in your Generative AI applications by capturing detailed information about the execution of your application’s services.
 Tracing provides a way to record the inputs, outputs, and metadata associated with each intermediate step of a request, enabling you to easily pinpoint the source of bugs and unexpected behaviors.
 
-<img src="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/mlflow-tracing.gif?s=be88ff36aec776c005102164d804322a" alt="Overview of MLflow crewAI tracing usage" data-og-width="1144" width="1144" data-og-height="720" height="720" data-path="images/mlflow-tracing.gif" data-optimize="true" data-opv="3" />
+<img alt="Overview of MLflow crewAI tracing usage" />
 
 ### Features
 
@@ -40357,14 +42602,14 @@ Tracing provides a way to record the inputs, outputs, and metadata associated wi
 
 <Steps>
   <Step title="Install MLflow package">
-    ```shell  theme={null}
+    ```shell theme={null}
     # The crewAI integration is available in mlflow>=2.19.0
     pip install mlflow
     ```
   </Step>
 
   <Step title="Start MFflow tracking server">
-    ```shell  theme={null}
+    ```shell theme={null}
     # This process is optional, but it is recommended to use MLflow tracking server for better visualization and broader features.
     mlflow server
     ```
@@ -40373,7 +42618,7 @@ Tracing provides a way to record the inputs, outputs, and metadata associated wi
   <Step title="Initialize MLflow in Your Application">
     Add the following two lines to your application code:
 
-    ```python  theme={null}
+    ```python theme={null}
     import mlflow
 
     mlflow.crewai.autolog()
@@ -40385,7 +42630,7 @@ Tracing provides a way to record the inputs, outputs, and metadata associated wi
 
     Example Usage for tracing CrewAI Agents:
 
-    ```python  theme={null}
+    ```python theme={null}
     from crewai import Agent, Crew, Task
     from crewai.knowledge.source.string_knowledge_source import StringKnowledgeSource
     from crewai_tools import SerperDevTool, WebsiteSearchTool
@@ -40533,8 +42778,8 @@ Tracing provides a way to record the inputs, outputs, and metadata associated wi
 
     Open `127.0.0.1:5000` on your browser to visit MLflow tracking server.
 
-    <Frame caption="MLflow Tracing Dashboard">
-      <img src="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/mlflow1.png?fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=0685aeb79319ad21ff842053ce5303c9" alt="MLflow tracing example with crewai" data-og-width="3024" width="3024" data-og-height="1712" height="1712" data-path="images/mlflow1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/mlflow1.png?w=280&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=f45f73922d8ea58f0e72c16c0e22d977 280w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/mlflow1.png?w=560&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=5025f431d9c88bb7a094ab032aeaa753 560w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/mlflow1.png?w=840&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=385879dd49ee957a4c25c5f94a9766e1 840w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/mlflow1.png?w=1100&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=c779a19494038367ecb7f1caefe1014c 1100w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/mlflow1.png?w=1650&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=ff45740a0aaab934952c2928edbdcbc6 1650w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/mlflow1.png?w=2500&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=af14478b932df5a9f9261514f38d5e14 2500w" />
+    <Frame>
+      <img alt="MLflow tracing example with crewai" />
     </Frame>
   </Step>
 </Steps>
@@ -40567,14 +42812,17 @@ All in one place.
 
 Manage your traces effortlessly
 
-<img src="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-1.png?fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=d01a5ce64066c6c7387b238068e71369" alt="Traces" data-og-width="1999" width="1999" data-og-height="763" height="763" data-path="images/neatlogs-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-1.png?w=280&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=ee62fda86fa566c25c133bcab4749395 280w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-1.png?w=560&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=5cb6eaca0429f7e70bb5c8d98a489a97 560w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-1.png?w=840&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=cb664845151f8e54c0e0b9fba753f383 840w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-1.png?w=1100&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=fb471833d13ba8718ebd37cc6f557697 1100w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-1.png?w=1650&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=e470693ab78a2cce5b34570b328c6939 1650w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-1.png?w=2500&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=2211c7cdbf87f4e96de3aa5a51927b1d 2500w" />
-<img src="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-2.png?fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=5b737699468781be25098c33040d2125" alt="Trace Response" data-og-width="1999" width="1999" data-og-height="1128" height="1128" data-path="images/neatlogs-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-2.png?w=280&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=020336c536f38ce54dfc04854acac7d4 280w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-2.png?w=560&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=8a40138ff848d453607b8e4cf6d0af31 560w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-2.png?w=840&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=411d496952511260f03dcf703cf40402 840w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-2.png?w=1100&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=ce7a99a7d6752ae77706cde411104694 1100w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-2.png?w=1650&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=e943a0308341c59d6b4d17e29e17126c 1650w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-2.png?w=2500&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=61b95cdb68c4c5cbdd349e802db3f2cb 2500w" />
+<img alt="Traces" />
+
+<img alt="Trace Response" />
 
 The best UX to view a CrewAI trace. Post comments anywhere you want. Use AI to debug.
 
-<img src="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-3.png?fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=43cda9bcd83376dda4523ff0596b2043" alt="Trace Details" data-og-width="1999" width="1999" data-og-height="1125" height="1125" data-path="images/neatlogs-3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-3.png?w=280&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=b412fc1111d110fba24398449f86c8a6 280w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-3.png?w=560&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=bc9a8210c617335893a0b9e94b9dcede 560w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-3.png?w=840&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=bca4c7758110744a457e3e635ba86e1c 840w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-3.png?w=1100&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=c259898ac4cbe4835a0df33f161c7840 1100w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-3.png?w=1650&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=74f03053e7cc5b98b3e568417de3a319 1650w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-3.png?w=2500&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=b90e2b8fcadb097c82a60e6522533386 2500w" />
-<img src="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-4.png?fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=c9e7ad0653cae7bfaad2dd448d90eda0" alt="Ai Chat Bot With A Trace" data-og-width="1999" width="1999" data-og-height="751" height="751" data-path="images/neatlogs-4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-4.png?w=280&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=eb0debf5272db5db3729d8b4b4634d94 280w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-4.png?w=560&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=9ebccf5654ad590f1d231118b4a29037 560w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-4.png?w=840&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=a7987df251bd7085c86535c31c3bc8fe 840w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-4.png?w=1100&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=113e589438936a55df794a60faec5ff7 1100w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-4.png?w=1650&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=469f0ab2f09cdd65c18e925ebd88be11 1650w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-4.png?w=2500&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=55115f959b3f2e49231e9ed273e6d11c 2500w" />
-<img src="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-5.png?fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=a977655abb8cd26d9ed4cef5fdd7d859" alt="Comments Drawer" data-og-width="1999" width="1999" data-og-height="1388" height="1388" data-path="images/neatlogs-5.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-5.png?w=280&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=51ad567b077e31082ed8f2a1c53be446 280w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-5.png?w=560&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=b4c663fe1527dc74a13e8c7a7ae955d2 560w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-5.png?w=840&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=fdddfe615d4098db90f694707d70ec87 840w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-5.png?w=1100&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=15cefd5838432e622844dced45f2f6b6 1100w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-5.png?w=1650&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=18b726e6b4bf38ee419f2a50be1e748a 1650w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/neatlogs-5.png?w=2500&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=52fcf26f16e0d4177dbcb9c0da5d1bb9 2500w" />
+<img alt="Trace Details" />
+
+<img alt="Ai Chat Bot With A Trace" />
+
+<img alt="Comments Drawer" />
 
 ## Core Features
 
@@ -40594,7 +42842,7 @@ The best UX to view a CrewAI trace. Post comments anywhere you want. Use AI to d
   </Step>
 
   <Step title="Install SDK">
-    ```bash  theme={null}
+    ```bash theme={null}
     pip install neatlogs
     ```
 
@@ -40604,7 +42852,7 @@ The best UX to view a CrewAI trace. Post comments anywhere you want. Use AI to d
   <Step title="Initialize Neatlogs">
     Before starting Crew agents, add:
 
-    ```python  theme={null}
+    ```python theme={null}
     import neatlogs
     neatlogs.init("YOUR_PROJECT_API_KEY")
     ```
@@ -40626,11 +42874,11 @@ All with just two lines of code.
 
 ### 🔍 Full Demo (4 min)
 
-<iframe className="w-full aspect-video rounded-xl" src="https://www.youtube.com/embed/8KDme9T2I7Q?si=b8oHteaBwFNs_Duk" title="NeatLogs overview" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+<iframe title="NeatLogs overview" />
 
 ### ⚙️ CrewAI Integration (30 s)
 
-<iframe className="w-full aspect-video rounded-xl" src="https://www.loom.com/embed/9c78b552af43452bb3e4783cb8d91230?sid=e9d7d370-a91a-49b0-809e-2f375d9e801d" title="Loom video player" frameBorder="0" allowFullScreen />
+<iframe title="Loom video player" />
 
 ## Links & Support
 
@@ -40644,7 +42892,7 @@ All with just two lines of code.
 
 With just:
 
-```bash  theme={null}
+```bash theme={null}
 pip install neatlogs
 
 import neatlogs
@@ -40667,12 +42915,12 @@ Quickly start monitoring your Agents in just a single line of code with OpenTele
 It provides OpenTelemetry-native tracing and metrics to track important parameters like cost, latency, interactions and task sequences.
 This setup enables you to track hyperparameters and monitor for performance issues, helping you find ways to enhance and fine-tune your agents over time.
 
-<Frame caption="OpenLIT Dashboard">
-  <img src="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit1.png?fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=2b7fe9d84e9ec2b33c5eae6fa5668bee" alt="Overview Agent usage including cost and tokens" data-og-width="3024" width="3024" data-og-height="1720" height="1720" data-path="images/openlit1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit1.png?w=280&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=c971bf515a852fd31020a8b1324f1c1c 280w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit1.png?w=560&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=84c289d1cb65df00729c0265b937953d 560w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit1.png?w=840&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=a2f16c0fff510b112190d86e4d660f57 840w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit1.png?w=1100&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=d16913f544b0bab3b1b6df63f9d221eb 1100w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit1.png?w=1650&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=f3fb2555418f5a64d567b5ab2c16da87 1650w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit1.png?w=2500&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=58ca748851de32f75bfeb36bb2cbdcfa 2500w" />
+<Frame>
+  <img alt="Overview Agent usage including cost and tokens" />
 
-  <img src="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit2.png?fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=74bb57f622b6eeb67fd33d93d682df26" alt="Overview of agent otel traces and metrics" data-og-width="3024" width="3024" data-og-height="1728" height="1728" data-path="images/openlit2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit2.png?w=280&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=5f8faf220f9d7a5660652ec531dd07f9 280w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit2.png?w=560&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=a02410c4bf920c9aafe972416e52a400 560w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit2.png?w=840&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=21b69af51e7ed46fb5b38a932a64471b 840w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit2.png?w=1100&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=b32ebaa0e210ff7151bb831d4e2fd5fc 1100w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit2.png?w=1650&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=c360d0388bd1af92dedde1967e41017f 1650w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit2.png?w=2500&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=9f14c8d65a0ca1177c2aa848c7a57aaa 2500w" />
+  <img alt="Overview of agent otel traces and metrics" />
 
-  <img src="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit3.png?fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=734cbc0c8fee538986d74b063c20cef6" alt="Overview of agent traces in details" data-og-width="3024" width="3024" data-og-height="1720" height="1720" data-path="images/openlit3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit3.png?w=280&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=37d3f6eb4f5b66f6466fba0c02137aec 280w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit3.png?w=560&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=9769fd3fdadf6acd8eadb2f80b4cc352 560w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit3.png?w=840&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=0f3367e37d8642fe4aa81f444c17b03d 840w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit3.png?w=1100&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=a2c9c17452fde4610823a981d60ce226 1100w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit3.png?w=1650&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=bf6526be4832980353137d0e19e38768 1650w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit3.png?w=2500&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=a0c09334de9c7d1bb7f90a7ea636379f 2500w" />
+  <img alt="Overview of agent traces in details" />
 </Frame>
 
 ### Features
@@ -40693,7 +42941,7 @@ This setup enables you to track hyperparameters and monitor for performance issu
   <Step title="Deploy OpenLIT">
     <Steps>
       <Step title="Git Clone OpenLIT Repository">
-        ```shell  theme={null}
+        ```shell theme={null}
         git clone git@github.com:openlit/openlit.git
         ```
       </Step>
@@ -40701,7 +42949,7 @@ This setup enables you to track hyperparameters and monitor for performance issu
       <Step title="Start Docker Compose">
         From the root directory of the [OpenLIT Repo](https://github.com/openlit/openlit), Run the below command:
 
-        ```shell  theme={null}
+        ```shell theme={null}
         docker compose up -d
         ```
       </Step>
@@ -40709,7 +42957,7 @@ This setup enables you to track hyperparameters and monitor for performance issu
   </Step>
 
   <Step title="Install OpenLIT SDK">
-    ```shell  theme={null}
+    ```shell theme={null}
     pip install openlit
     ```
   </Step>
@@ -40719,14 +42967,14 @@ This setup enables you to track hyperparameters and monitor for performance issu
 
     <Tabs>
       <Tab title="Setup using function arguments">
-        ```python  theme={null}
+        ```python theme={null}
         import openlit
         openlit.init(otlp_endpoint="http://127.0.0.1:4318")
         ```
 
         Example Usage for monitoring a CrewAI Agent:
 
-        ```python  theme={null}
+        ```python theme={null}
         from crewai import Agent, Task, Crew, Process
         import openlit
 
@@ -40774,7 +43022,7 @@ This setup enables you to track hyperparameters and monitor for performance issu
       <Tab title="Setup using Environment Variables">
         Add the following two lines to your application code:
 
-        ```python  theme={null}
+        ```python theme={null}
         import openlit
 
         openlit.init()
@@ -40782,13 +43030,13 @@ This setup enables you to track hyperparameters and monitor for performance issu
 
         Run the following command to configure the OTEL export endpoint:
 
-        ```shell  theme={null}
+        ```shell theme={null}
         export OTEL_EXPORTER_OTLP_ENDPOINT = "http://127.0.0.1:4318"
         ```
 
         Example Usage for monitoring a CrewAI Async Agent:
 
-        ```python  theme={null}
+        ```python theme={null}
         import asyncio
         from crewai import Crew, Agent, Task
         import openlit
@@ -40839,10 +43087,10 @@ This setup enables you to track hyperparameters and monitor for performance issu
     * **Email**: `user@openlit.io`
     * **Password**: `openlituser`
 
-    <Frame caption="OpenLIT Dashboard">
-      <img src="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit1.png?fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=2b7fe9d84e9ec2b33c5eae6fa5668bee" alt="Overview Agent usage including cost and tokens" data-og-width="3024" width="3024" data-og-height="1720" height="1720" data-path="images/openlit1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit1.png?w=280&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=c971bf515a852fd31020a8b1324f1c1c 280w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit1.png?w=560&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=84c289d1cb65df00729c0265b937953d 560w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit1.png?w=840&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=a2f16c0fff510b112190d86e4d660f57 840w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit1.png?w=1100&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=d16913f544b0bab3b1b6df63f9d221eb 1100w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit1.png?w=1650&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=f3fb2555418f5a64d567b5ab2c16da87 1650w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit1.png?w=2500&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=58ca748851de32f75bfeb36bb2cbdcfa 2500w" />
+    <Frame>
+      <img alt="Overview Agent usage including cost and tokens" />
 
-      <img src="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit2.png?fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=74bb57f622b6eeb67fd33d93d682df26" alt="Overview of agent otel traces and metrics" data-og-width="3024" width="3024" data-og-height="1728" height="1728" data-path="images/openlit2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit2.png?w=280&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=5f8faf220f9d7a5660652ec531dd07f9 280w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit2.png?w=560&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=a02410c4bf920c9aafe972416e52a400 560w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit2.png?w=840&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=21b69af51e7ed46fb5b38a932a64471b 840w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit2.png?w=1100&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=b32ebaa0e210ff7151bb831d4e2fd5fc 1100w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit2.png?w=1650&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=c360d0388bd1af92dedde1967e41017f 1650w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/openlit2.png?w=2500&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=9f14c8d65a0ca1177c2aa848c7a57aaa 2500w" />
+      <img alt="Overview of agent otel traces and metrics" />
     </Frame>
   </Step>
 </Steps>
@@ -40857,8 +43105,8 @@ Learn how to use Comet Opik to debug, evaluate, and monitor your CrewAI applicat
 
 With [Comet Opik](https://www.comet.com/docs/opik/), debug, evaluate, and monitor your LLM applications, RAG systems, and agentic workflows with comprehensive tracing, automated evaluations, and production-ready dashboards.
 
-<Frame caption="Opik Agent Dashboard">
-  <img src="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/opik-crewai-dashboard.png?fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=6b313c7d767211f2287d7dd074f9dfeb" alt="Opik agent monitoring example with CrewAI" data-og-width="1538" width="1538" data-og-height="877" height="877" data-path="images/opik-crewai-dashboard.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/opik-crewai-dashboard.png?w=280&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=b0fd3eca42762838a806dc0d38d0313f 280w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/opik-crewai-dashboard.png?w=560&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=ba1166f8b42afee86b3cd88532002fde 560w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/opik-crewai-dashboard.png?w=840&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=d7905602ba2ac1dbca66a008be49ca26 840w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/opik-crewai-dashboard.png?w=1100&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=51c2c8ce83af0d81fdf851dd378fe6f6 1100w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/opik-crewai-dashboard.png?w=1650&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=5184c8370b92c51a03d970a01c7daba5 1650w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/opik-crewai-dashboard.png?w=2500&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=80d3fb638cd8ace74953775242cb68cd 2500w" />
+<Frame>
+  <img alt="Opik agent monitoring example with CrewAI" />
 </Frame>
 
 Opik provides comprehensive support for every stage of your CrewAI application development:
@@ -40880,13 +43128,13 @@ For this guide we will use CrewAI’s quickstart example.
 
 <Steps>
   <Step title="Install required packages">
-    ```shell  theme={null}
+    ```shell theme={null}
     pip install crewai crewai-tools opik --upgrade
     ```
   </Step>
 
   <Step title="Configure Opik">
-    ```python  theme={null}
+    ```python theme={null}
     import opik
     opik.configure(use_local=False)
     ```
@@ -40895,7 +43143,7 @@ For this guide we will use CrewAI’s quickstart example.
   <Step title="Prepare environment">
     First, we set up our API keys for our LLM-provider as environment variables:
 
-    ```python  theme={null}
+    ```python theme={null}
     import os
     import getpass
 
@@ -40907,7 +43155,7 @@ For this guide we will use CrewAI’s quickstart example.
   <Step title="Using CrewAI">
     The first step is to create our project. We will use an example from CrewAI’s documentation:
 
-    ```python  theme={null}
+    ```python theme={null}
     from crewai import Agent, Crew, Task, Process
 
 
@@ -40956,7 +43204,7 @@ For this guide we will use CrewAI’s quickstart example.
 
     Now we can import Opik’s tracker and run our crew:
 
-    ```python  theme={null}
+    ```python theme={null}
     from opik.integrations.crewai import track_crewai
 
     track_crewai(project_name="crewai-integration-demo")
@@ -41005,7 +43253,7 @@ Observability is crucial for understanding how your CrewAI agents perform, ident
 
 ### Monitoring & Tracing Platforms
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="LangDB" icon="database" href="/en/observability/langdb">
     End-to-end tracing for CrewAI workflows with automatic agent interaction capture.
   </Card>
@@ -41045,7 +43293,7 @@ Observability is crucial for understanding how your CrewAI agents perform, ident
 
 ### Evaluation & Quality Assurance
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Patronus AI" icon="shield-check" href="/en/observability/patronus-evaluation">
     Comprehensive evaluation platform for LLM outputs and agent behaviors.
   </Card>
@@ -41140,13 +43388,13 @@ Patronus provides three main evaluation tools for different use cases:
 
 To use these tools, you need to install the Patronus package:
 
-```shell  theme={null}
+```shell theme={null}
 uv add patronus
 ```
 
 You'll also need to set up your Patronus API key as an environment variable:
 
-```shell  theme={null}
+```shell theme={null}
 export PATRONUS_API_KEY="your_patronus_api_key"
 ```
 
@@ -41320,7 +43568,7 @@ Source: https://docs.crewai.com/en/observability/portkey
 
 How to use Portkey with CrewAI
 
-<img src="https://raw.githubusercontent.com/siddharthsambharia-portkey/Portkey-Product-Images/main/Portkey-CrewAI.png" alt="Portkey CrewAI Header Image" width="70%" />
+<img alt="Portkey CrewAI Header Image" />
 
 ## Introduction
 
@@ -41337,7 +43585,7 @@ Portkey enhances CrewAI with production-readiness features, turning your experim
 
 <Steps>
   <Step title="Install the required packages">
-    ```bash  theme={null}
+    ```bash theme={null}
     pip install -U crewai portkey-ai
     ```
   </Step>
@@ -41349,7 +43597,7 @@ Portkey enhances CrewAI with production-readiness features, turning your experim
   <Step title="Configure CrewAI with Portkey">
     The integration is simple - you just need to update the LLM configuration in your CrewAI setup:
 
-    ```python  theme={null}
+    ```python theme={null}
     from crewai import LLM
     from portkey_ai import createHeaders, PORTKEY_GATEWAY_URL
 
@@ -41393,12 +43641,12 @@ Portkey provides comprehensive observability for your CrewAI agents, helping you
 <Tabs>
   <Tab title="Traces">
     <Frame>
-      <img src="https://raw.githubusercontent.com/siddharthsambharia-portkey/Portkey-Product-Images/refs/heads/main/CrewAI%20Product%2011.1.webp" />
+      <img />
     </Frame>
 
     Traces provide a hierarchical view of your crew's execution, showing the sequence of LLM calls, tool invocations, and state transitions.
 
-    ```python  theme={null}
+    ```python theme={null}
     # Add trace_id to enable hierarchical tracing in Portkey
     portkey_llm = LLM(
         model="gpt-4o",
@@ -41415,7 +43663,7 @@ Portkey provides comprehensive observability for your CrewAI agents, helping you
 
   <Tab title="Logs">
     <Frame>
-      <img src="https://raw.githubusercontent.com/siddharthsambharia-portkey/Portkey-Product-Images/refs/heads/main/CrewAI%20Portkey%20Docs%20Metadata.png" />
+      <img />
     </Frame>
 
     Portkey logs every interaction with LLMs, including:
@@ -41430,7 +43678,7 @@ Portkey provides comprehensive observability for your CrewAI agents, helping you
 
   <Tab title="Metrics & Dashboards">
     <Frame>
-      <img src="https://raw.githubusercontent.com/siddharthsambharia-portkey/Portkey-Product-Images/refs/heads/main/CrewAI%20Dashboard.png" />
+      <img />
     </Frame>
 
     Portkey provides built-in dashboards that help you:
@@ -41445,12 +43693,12 @@ Portkey provides comprehensive observability for your CrewAI agents, helping you
 
   <Tab title="Metadata Filtering">
     <Frame>
-      <img src="https://raw.githubusercontent.com/siddharthsambharia-portkey/Portkey-Product-Images/refs/heads/main/Metadata%20Filters%20from%20CrewAI.png" alt="Analytics with metadata filters" />
+      <img alt="Analytics with metadata filters" />
     </Frame>
 
     Add custom metadata to your CrewAI LLM configuration to enable powerful filtering and segmentation:
 
-    ```python  theme={null}
+    ```python theme={null}
     portkey_llm = LLM(
         model="gpt-4o",
         base_url=PORTKEY_GATEWAY_URL,
@@ -41478,7 +43726,7 @@ When running crews in production, things can go wrong - API rate limits, network
 
 It's simple to enable fallback in your CrewAI setup by using a Portkey Config:
 
-```python  theme={null}
+```python theme={null}
 from crewai import LLM
 from portkey_ai import createHeaders, PORTKEY_GATEWAY_URL
 
@@ -41515,7 +43763,7 @@ portkey_llm = LLM(
 
 This configuration will automatically try Claude if the GPT-4o request fails, ensuring your crew can continue operating.
 
-<CardGroup cols="2">
+<CardGroup>
   <Card title="Automatic Retries" icon="rotate" href="https://portkey.ai/docs/product/ai-gateway/automatic-retries">
     Handles temporary failures automatically. If an LLM call fails, Portkey will retry the same request for the specified number of times - perfect for rate limits or network blips.
   </Card>
@@ -41541,7 +43789,7 @@ This configuration will automatically try Claude if the GPT-4o request fails, en
 
 Portkey's Prompt Engineering Studio helps you create, manage, and optimize the prompts used in your CrewAI agents. Instead of hardcoding prompts or instructions, use Portkey's prompt rendering API to dynamically fetch and apply your versioned prompts.
 
-<Frame caption="Manage prompts in Portkey's Prompt Library">
+<Frame>
   ![Prompt Playground Interface](https://raw.githubusercontent.com/siddharthsambharia-portkey/Portkey-Product-Images/refs/heads/main/CrewAI%20Portkey%20Docs.webp)
 </Frame>
 
@@ -41560,7 +43808,7 @@ Portkey's Prompt Engineering Studio helps you create, manage, and optimize the p
   <Tab title="Using Prompt Templates">
     The Prompt Render API retrieves your prompt templates with all parameters configured:
 
-    ```python  theme={null}
+    ```python theme={null}
     from crewai import Agent, LLM
     from portkey_ai import createHeaders, PORTKEY_GATEWAY_URL, Portkey
 
@@ -41608,7 +43856,7 @@ Portkey's Prompt Engineering Studio helps you create, manage, and optimize the p
     * Roll back to previous versions if needed
     * Specify which version to use in your code:
 
-    ```python  theme={null}
+    ```python theme={null}
     # Use a specific prompt version
     prompt_data = portkey_admin.prompts.render(
         prompt_id="YOUR_PROMPT_ID@version_number",
@@ -41634,7 +43882,7 @@ Portkey's Prompt Engineering Studio helps you create, manage, and optimize the p
 
     When rendering, simply pass the variables:
 
-    ```python  theme={null}
+    ```python theme={null}
     prompt_data = portkey_admin.prompts.render(
         prompt_id="YOUR_PROMPT_ID",
         variables={
@@ -41670,7 +43918,7 @@ Portkey's guardrails add protections for both inputs and outputs.
 
 **Implementing Guardrails**
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, LLM
 from portkey_ai import createHeaders, PORTKEY_GATEWAY_URL
 
@@ -41719,7 +43967,7 @@ Track individual users through your CrewAI agents using Portkey's metadata syste
 
 Metadata allows you to associate custom data with each request, enabling filtering, segmentation, and analytics. The special `_user` field is specifically designed for user tracking.
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, LLM
 from portkey_ai import createHeaders, PORTKEY_GATEWAY_URL
 
@@ -41754,8 +44002,8 @@ researcher = Agent(
 
 With metadata in place, you can filter analytics by user and analyze performance metrics on a per-user basis:
 
-<Frame caption="Filter analytics by user">
-  <img src="https://raw.githubusercontent.com/siddharthsambharia-portkey/Portkey-Product-Images/refs/heads/main/Metadata%20Filters%20from%20CrewAI.png" />
+<Frame>
+  <img />
 </Frame>
 
 This enables:
@@ -41775,7 +44023,7 @@ Implement caching to make your CrewAI agents more efficient and cost-effective:
 
 <Tabs>
   <Tab title="Simple Caching">
-    ```python  theme={null}
+    ```python theme={null}
     from crewai import Agent, LLM
     from portkey_ai import createHeaders, PORTKEY_GATEWAY_URL
 
@@ -41809,7 +44057,7 @@ Implement caching to make your CrewAI agents more efficient and cost-effective:
   </Tab>
 
   <Tab title="Semantic Caching">
-    ```python  theme={null}
+    ```python theme={null}
     from crewai import Agent, LLM
     from portkey_ai import createHeaders, PORTKEY_GATEWAY_URL
 
@@ -41847,7 +44095,7 @@ Implement caching to make your CrewAI agents more efficient and cost-effective:
 
 CrewAI supports multiple LLM providers, and Portkey extends this capability by providing access to over 200 LLMs through a unified interface. You can easily switch between different models without changing your core agent logic:
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, LLM
 from portkey_ai import createHeaders, PORTKEY_GATEWAY_URL
 
@@ -41922,7 +44170,7 @@ Portkey adds a comprehensive governance layer to address these enterprise needs.
     Go to [Virtual Keys](https://app.portkey.ai/virtual-keys) in the Portkey App. Save and copy the virtual key ID
 
     <Frame>
-      <img src="https://raw.githubusercontent.com/siddharthsambharia-portkey/Portkey-Product-Images/refs/heads/main/Virtual%20Key%20from%20Portkey%20Docs.png" width="500" />
+      <img />
     </Frame>
 
     <Note>
@@ -41937,7 +44185,7 @@ Portkey adds a comprehensive governance layer to address these enterprise needs.
 
     1. Go to [Configs](https://app.portkey.ai/configs) in Portkey dashboard
     2. Create new config with:
-       ```json  theme={null}
+       ```json theme={null}
        {
            "virtual_key": "YOUR_VIRTUAL_KEY_FROM_STEP1",
           	"override_params": {
@@ -41948,7 +44196,7 @@ Portkey adds a comprehensive governance layer to address these enterprise needs.
     3. Save and note the Config name for the next step
 
     <Frame>
-      <img src="https://raw.githubusercontent.com/siddharthsambharia-portkey/Portkey-Product-Images/refs/heads/main/CrewAI%20Portkey%20Docs%20Config.png" width="500" />
+      <img />
     </Frame>
   </Step>
 
@@ -41960,14 +44208,14 @@ Portkey adds a comprehensive governance layer to address these enterprise needs.
     3. Generate and save your API key
 
     <Frame>
-      <img src="https://raw.githubusercontent.com/siddharthsambharia-portkey/Portkey-Product-Images/refs/heads/main/CrewAI%20API%20Key.png" width="500" />
+      <img />
     </Frame>
   </Step>
 
   <Step title="Connect to CrewAI">
     After setting up your Portkey API key with the attached config, connect it to your CrewAI agents:
 
-    ```python  theme={null}
+    ```python theme={null}
     from crewai import Agent, LLM
     from portkey_ai import PORTKEY_GATEWAY_URL
 
@@ -42007,7 +44255,7 @@ Portkey adds a comprehensive governance layer to address these enterprise needs.
     3. Configure department-specific limits
 
     <Frame>
-      <img src="https://raw.githubusercontent.com/siddharthsambharia-portkey/Portkey-Product-Images/refs/heads/main/Virtual%20Key%20from%20Portkey%20Docs.png" width="500" />
+      <img />
     </Frame>
   </Accordion>
 
@@ -42026,7 +44274,7 @@ Portkey adds a comprehensive governance layer to address these enterprise needs.
 
     Here's a basic configuration to route requests to OpenAI, specifically using GPT-4o:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
     	"strategy": {
     		"mode": "single"
@@ -42063,7 +44311,7 @@ Portkey adds a comprehensive governance layer to address these enterprise needs.
 
     Example using Python SDK:
 
-    ```python  theme={null}
+    ```python theme={null}
     from portkey_ai import Portkey
 
     portkey = Portkey(api_key="YOUR_ADMIN_API_KEY")
@@ -42142,7 +44390,7 @@ Portkey adds a comprehensive governance layer to address these enterprise needs.
 
 ## Resources
 
-<CardGroup cols="3">
+<CardGroup>
   <Card title="CrewAI Docs" icon="book" href="https://docs.crewai.com/">
     <p>Official CrewAI documentation</p>
   </Card>
@@ -42164,7 +44412,7 @@ CrewAI provides built-in tracing capabilities that allow you to monitor and debu
 
 > **What is CrewAI Tracing?** CrewAI's built-in tracing provides comprehensive observability for your AI agents, including agent decisions, task execution timelines, tool usage, and LLM calls - all accessible through the [CrewAI AMP platform](https://app.crewai.com).
 
-<img src="https://mintcdn.com/crewai/xsUWvx-8zGU3Skk0/images/crewai-tracing.png?fit=max&auto=format&n=xsUWvx-8zGU3Skk0&q=85&s=b7e95a8f56ed3c459699acf641b4ae5a" alt="CrewAI Tracing Interface" data-og-width="3680" width="3680" data-og-height="2382" height="2382" data-path="images/crewai-tracing.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/xsUWvx-8zGU3Skk0/images/crewai-tracing.png?w=280&fit=max&auto=format&n=xsUWvx-8zGU3Skk0&q=85&s=432b91fbee9d71f0c152a097c1b87773 280w, https://mintcdn.com/crewai/xsUWvx-8zGU3Skk0/images/crewai-tracing.png?w=560&fit=max&auto=format&n=xsUWvx-8zGU3Skk0&q=85&s=62b6417d4f5289617124df196c0a9c94 560w, https://mintcdn.com/crewai/xsUWvx-8zGU3Skk0/images/crewai-tracing.png?w=840&fit=max&auto=format&n=xsUWvx-8zGU3Skk0&q=85&s=fb115418f8fb1c0bb79e9ac647158996 840w, https://mintcdn.com/crewai/xsUWvx-8zGU3Skk0/images/crewai-tracing.png?w=1100&fit=max&auto=format&n=xsUWvx-8zGU3Skk0&q=85&s=bb955f30c027461597f15dbe436fc068 1100w, https://mintcdn.com/crewai/xsUWvx-8zGU3Skk0/images/crewai-tracing.png?w=1650&fit=max&auto=format&n=xsUWvx-8zGU3Skk0&q=85&s=d891852f83abfd576cc6b2c3eb83749c 1650w, https://mintcdn.com/crewai/xsUWvx-8zGU3Skk0/images/crewai-tracing.png?w=2500&fit=max&auto=format&n=xsUWvx-8zGU3Skk0&q=85&s=67cbde03f418d19d66d4273df9427db2 2500w" />
+<img alt="CrewAI Tracing Interface" />
 
 ## Prerequisites
 
@@ -42173,7 +44421,7 @@ Before you can use CrewAI tracing, you need:
 1. **CrewAI AMP Account**: Sign up for a free account at [app.crewai.com](https://app.crewai.com)
 2. **CLI Authentication**: Use the CrewAI CLI to authenticate your local environment
 
-```bash  theme={null}
+```bash theme={null}
 crewai login
 ```
 
@@ -42187,13 +44435,13 @@ Visit [app.crewai.com](https://app.crewai.com) and create your free account. Thi
 
 If you haven't already, install CrewAI with the CLI tools:
 
-```bash  theme={null}
+```bash theme={null}
 uv add crewai[tools]
 ```
 
 Then authenticate your CLI with your CrewAI AMP account:
 
-```bash  theme={null}
+```bash theme={null}
 crewai login
 ```
 
@@ -42208,7 +44456,7 @@ This command will:
 
 You can enable tracing for your Crew by setting the `tracing` parameter to `True`:
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Crew, Process, Task
 from crewai_tools import SerperDevTool
 
@@ -42264,7 +44512,7 @@ result = crew.kickoff()
 
 Similarly, you can enable tracing for CrewAI Flows:
 
-```python  theme={null}
+```python theme={null}
 from crewai.flow.flow import Flow, listen, start
 from pydantic import BaseModel
 
@@ -42305,19 +44553,20 @@ result = flow.kickoff()
 
 After running the crew or flow, you can view the traces generated by your CrewAI application in the CrewAI AMP dashboard. You should see detailed steps of the agent interactions, tool usages, and LLM calls.
 Just click on the link below to view the traces or head over to the traces tab in the dashboard [here](https://app.crewai.com/crewai_plus/trace_batches)
-<img src="https://mintcdn.com/crewai/iG0g1htk7RWkFuad/images/view-traces.png?fit=max&auto=format&n=iG0g1htk7RWkFuad&q=85&s=72981ddafcda030270c059f08b98db03" alt="CrewAI Tracing Interface" data-og-width="3272" width="3272" data-og-height="162" height="162" data-path="images/view-traces.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/iG0g1htk7RWkFuad/images/view-traces.png?w=280&fit=max&auto=format&n=iG0g1htk7RWkFuad&q=85&s=ccd01161e9258840e74ef1c451f84269 280w, https://mintcdn.com/crewai/iG0g1htk7RWkFuad/images/view-traces.png?w=560&fit=max&auto=format&n=iG0g1htk7RWkFuad&q=85&s=d8feaccbddc300723769a977ca3e0ff9 560w, https://mintcdn.com/crewai/iG0g1htk7RWkFuad/images/view-traces.png?w=840&fit=max&auto=format&n=iG0g1htk7RWkFuad&q=85&s=2b404956f27d32dd38b0a5d4bf48ab58 840w, https://mintcdn.com/crewai/iG0g1htk7RWkFuad/images/view-traces.png?w=1100&fit=max&auto=format&n=iG0g1htk7RWkFuad&q=85&s=8bc1f5f99f4289ee1dd7ebe2e60bb189 1100w, https://mintcdn.com/crewai/iG0g1htk7RWkFuad/images/view-traces.png?w=1650&fit=max&auto=format&n=iG0g1htk7RWkFuad&q=85&s=1ab7e96c4017cf1cbab719c695884969 1650w, https://mintcdn.com/crewai/iG0g1htk7RWkFuad/images/view-traces.png?w=2500&fit=max&auto=format&n=iG0g1htk7RWkFuad&q=85&s=3ab9ea0309e81741969db86307657b90 2500w" />
+
+<img alt="CrewAI Tracing Interface" />
 
 ### Alternative: Environment Variable Configuration
 
 You can also enable tracing globally by setting an environment variable:
 
-```bash  theme={null}
+```bash theme={null}
 export CREWAI_TRACING_ENABLED=true
 ```
 
 Or add it to your `.env` file:
 
-```env  theme={null}
+```env theme={null}
 CREWAI_TRACING_ENABLED=true
 ```
 
@@ -42386,7 +44635,7 @@ TrueFoundry provides an enterprise-ready [AI Gateway](https://www.truefoundry.co
 
 <Steps>
   <Step title="Install CrewAI">
-    ```bash  theme={null}
+    ```bash theme={null}
     pip install crewai
     ```
   </Step>
@@ -42397,9 +44646,9 @@ TrueFoundry provides an enterprise-ready [AI Gateway](https://www.truefoundry.co
   </Step>
 
   <Step title="Configure CrewAI with TrueFoundry">
-        <img src="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/new-code-snippet.png?fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=746c0bd23a77535f35b0b2bcf3320bf5" alt="TrueFoundry Code Configuration" data-og-width="2940" width="2940" data-og-height="1664" height="1664" data-path="images/new-code-snippet.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/new-code-snippet.png?w=280&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=1d7f4e8883760766aa1ae1274fba2ffe 280w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/new-code-snippet.png?w=560&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=4604432c1e1121d24c3fa6ad93bc0bd9 560w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/new-code-snippet.png?w=840&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=8dd95282de37aa70090ac61a00b6e1bb 840w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/new-code-snippet.png?w=1100&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=920a67bee38e979c770d775195b60864 1100w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/new-code-snippet.png?w=1650&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=4173b6e99ed12b00b54bf3f222589863 1650w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/new-code-snippet.png?w=2500&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=176dd84222c8c1a6f40af3e0adb88e37 2500w" />
+    <img alt="TrueFoundry Code Configuration" />
 
-    ```python  theme={null}
+    ```python theme={null}
     from crewai import LLM
 
     # Create an LLM instance with TrueFoundry AI Gateway
@@ -42425,7 +44674,7 @@ TrueFoundry provides an enterprise-ready [AI Gateway](https://www.truefoundry.co
 
 ### Complete CrewAI Example
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew, LLM
 
 # Configure LLM with TrueFoundry
@@ -42479,7 +44728,8 @@ result = crew.kickoff()
 ### Observability and Governance
 
 Monitor your CrewAI agents through TrueFoundry's metrics tab:
-<img src="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/gateway-metrics.png?fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=33755ff848cb457e162e806c20c98216" alt="TrueFoundry metrics" data-og-width="3840" width="3840" data-og-height="1984" height="1984" data-path="images/gateway-metrics.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/gateway-metrics.png?w=280&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=49a01b5e5bcc0429efd529860c020c10 280w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/gateway-metrics.png?w=560&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=3f47f171146339690e3516a892020626 560w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/gateway-metrics.png?w=840&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=857541d282cce3557f796ade097be01c 840w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/gateway-metrics.png?w=1100&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=2f2b883b00e823ceb25ae1b747c656a4 1100w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/gateway-metrics.png?w=1650&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=9ddee789557bdbaacec42fd405180458 1650w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/gateway-metrics.png?w=2500&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=e9097f84b482e5c4da153d2d0271e6bf 2500w" />
+
+<img alt="TrueFoundry metrics" />
 
 With Truefoundry's AI gateway, you can monitor and analyze:
 
@@ -42493,11 +44743,11 @@ With Truefoundry's AI gateway, you can monitor and analyze:
 For a more detailed understanding on tracing, please see [getting-started-tracing](https://docs.truefoundry.com/docs/tracing/tracing-getting-started).For tracing, you can add the Traceloop SDK:
 For tracing, you can add the Traceloop SDK:
 
-```bash  theme={null}
+```bash theme={null}
 pip install traceloop-sdk
 ```
 
-```python  theme={null}
+```python theme={null}
 from traceloop.sdk import Traceloop
 
 # Initialize enhanced tracing
@@ -42511,7 +44761,8 @@ Traceloop.init(
 ```
 
 This provides additional trace correlation across your entire CrewAI workflow.
-<img src="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/tracing_crewai.png?fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=90623834e0ba9f4ccb09890f6824912d" alt="TrueFoundry CrewAI Tracing" data-og-width="3024" width="3024" data-og-height="1720" height="1720" data-path="images/tracing_crewai.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/tracing_crewai.png?w=280&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=d05099079060dfd1588ac0c8de28e07b 280w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/tracing_crewai.png?w=560&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=645362e069e687f7dc6fd6c44a97a4ef 560w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/tracing_crewai.png?w=840&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=aac6d42bbd2f457b59f6a4b22d6a7be1 840w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/tracing_crewai.png?w=1100&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=7f166e1329cef8da8c1e07a38dc75506 1100w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/tracing_crewai.png?w=1650&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=6e91cffda555b8cc7ce1800ed1b508b1 1650w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/tracing_crewai.png?w=2500&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=bf6296110bd62d9bb30ae2d0822d4b8d 2500w" />
+
+<img alt="TrueFoundry CrewAI Tracing" />
 
 
 # Weave Integration
@@ -42523,7 +44774,7 @@ Learn how to use Weights & Biases (W&B) Weave to track, experiment with, evaluat
 
 [Weights & Biases (W\&B) Weave](https://weave-docs.wandb.ai/) is a framework for tracking, experimenting with, evaluating, deploying, and improving LLM-based applications.
 
-<img src="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/weave-tracing.gif?s=4a933830e3e3cf146c4c87cb44d46475" alt="Overview of W&B Weave CrewAI tracing usage" data-og-width="852" width="852" data-og-height="480" height="480" data-path="images/weave-tracing.gif" data-optimize="true" data-opv="3" />
+<img alt="Overview of W&B Weave CrewAI tracing usage" />
 
 Weave provides comprehensive support for every stage of your CrewAI application development:
 
@@ -42538,7 +44789,7 @@ Weave automatically captures traces for your CrewAI applications, enabling you t
 
 <Steps>
   <Step title="Install required packages">
-    ```shell  theme={null}
+    ```shell theme={null}
     pip install crewai weave
     ```
   </Step>
@@ -42550,7 +44801,7 @@ Weave automatically captures traces for your CrewAI applications, enabling you t
   <Step title="Initialize Weave in Your Application">
     Add the following code to your application:
 
-    ```python  theme={null}
+    ```python theme={null}
     import weave
 
     # Initialize Weave with your project name
@@ -42561,7 +44812,7 @@ Weave automatically captures traces for your CrewAI applications, enabling you t
   </Step>
 
   <Step title="Create your Crews/Flows">
-    ```python  theme={null}
+    ```python theme={null}
     from crewai import Agent, Task, Crew, LLM, Process
 
     # Create an LLM with a temperature of 0 to ensure deterministic outputs
@@ -42621,8 +44872,8 @@ Weave automatically captures traces for your CrewAI applications, enabling you t
     * Performance metrics like latency and token usage
     * Any errors or issues that occurred during execution
 
-    <Frame caption="Weave Tracing Dashboard">
-      <img src="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/weave-tracing.png?fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=f59e556fcc0ac8fcca8eaeef4c0551ae" alt="Weave tracing example with CrewAI" data-og-width="3456" width="3456" data-og-height="1986" height="1986" data-path="images/weave-tracing.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/weave-tracing.png?w=280&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=42efb320cedff3209765027d4f47e187 280w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/weave-tracing.png?w=560&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=85318181f2afd6237c71cecedfda8104 560w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/weave-tracing.png?w=840&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=6124c3113060320d39847c47faa02ac4 840w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/weave-tracing.png?w=1100&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=e04300ff38ddf3624acc078bacf6712e 1100w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/weave-tracing.png?w=1650&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=c0ba473c3fa41c2939df4e28bc1098b5 1650w, https://mintcdn.com/crewai/qVjgZHKAyEOgSSUS/images/weave-tracing.png?w=2500&fit=max&auto=format&n=qVjgZHKAyEOgSSUS&q=85&s=6d860d735bc5a42fb68085fc4ef01b2c 2500w" />
+    <Frame>
+      <img alt="Weave tracing example with CrewAI" />
     </Frame>
   </Step>
 </Steps>
@@ -42671,7 +44922,7 @@ Users can disable telemetry by setting the environment variable `CREWAI_DISABLE_
 
 ### Examples:
 
-```python  theme={null}
+```python theme={null}
 # Disable CrewAI telemetry only
 os.environ['CREWAI_DISABLE_TELEMETRY'] = 'true'
 
@@ -42750,7 +45001,7 @@ For details, see the [Apify CrewAI integration](https://docs.apify.com/platform/
 
 Use the `ApifyActorsTool` manually to run the [RAG Web Browser Actor](https://apify.com/apify/rag-web-browser) to perform a web search:
 
-```python  theme={null}
+```python theme={null}
 from crewai_tools import ApifyActorsTool
 
 # Initialize the tool with an Apify Actor
@@ -42769,7 +45020,7 @@ for result in results:
 
 Here is the output from running the code above:
 
-```text  theme={null}
+```text theme={null}
 URL: https://www.example.com/crewai-intro
 Content: CrewAI is a framework for building AI-powered workflows...
 URL: https://docs.crewai.com/
@@ -42778,7 +45029,7 @@ Content: Official documentation for CrewAI...
 
 The `ApifyActorsTool` automatically fetches the Actor definition and input schema from Apify using the provided `actor_name` and then constructs the tool description and argument schema. This means you need to specify only a valid `actor_name`, and the tool handles the rest when used with agents—no need to specify the `run_input`. Here's how it works:
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent
 from crewai_tools import ApifyActorsTool
 
@@ -42833,7 +45084,7 @@ Composio is an integration platform that allows you to connect your AI agents to
 
 To incorporate Composio tools into your project, follow the instructions below:
 
-```shell  theme={null}
+```shell theme={null}
 pip install composio-crewai
 pip install crewai
 ```
@@ -42956,7 +45207,7 @@ The `MultiOnTool` is designed to wrap [MultiOn's](https://docs.multion.ai/welcom
 
 To use this tool, you need to install the MultiOn package:
 
-```shell  theme={null}
+```shell theme={null}
 uv add multion
 ```
 
@@ -43079,7 +45330,7 @@ These tools enable your agents to automate workflows, integrate with external pl
 
 ## **Available Tools**
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Apify Actor Tool" icon="spider" href="/en/tools/automation/apifyactorstool">
     Run Apify actors for web scraping and automation tasks.
   </Card>
@@ -43105,7 +45356,7 @@ These tools enable your agents to automate workflows, integrate with external pl
 * **Process Orchestration**: Coordinate complex multi-step workflows
 * **Third-party Services**: Leverage external tools and platforms
 
-```python  theme={null}
+```python theme={null}
 from crewai_tools import ApifyActorTool, ComposioTool, MultiOnTool
 
 # Create automation tools
@@ -43187,6 +45438,328 @@ result = crew.kickoff()
 * The adapter fetches available actions and generates `BaseTool` wrappers dynamically.
 
 
+# Bedrock Knowledge Base Retriever
+Source: https://docs.crewai.com/en/tools/cloud-storage/bedrockkbretriever
+
+Retrieve information from Amazon Bedrock Knowledge Bases using natural language queries
+
+# `BedrockKBRetrieverTool`
+
+The `BedrockKBRetrieverTool` enables CrewAI agents to retrieve information from Amazon Bedrock Knowledge Bases using natural language queries.
+
+## Installation
+
+```bash theme={null}
+uv pip install 'crewai[tools]'
+```
+
+## Requirements
+
+* AWS credentials configured (either through environment variables or AWS CLI)
+* `boto3` and `python-dotenv` packages
+* Access to Amazon Bedrock Knowledge Base
+
+## Usage
+
+Here's how to use the tool with a CrewAI agent:
+
+```python {2, 4-17} theme={null}
+from crewai import Agent, Task, Crew
+from crewai_tools.aws.bedrock.knowledge_base.retriever_tool import BedrockKBRetrieverTool
+
+# Initialize the tool
+kb_tool = BedrockKBRetrieverTool(
+    knowledge_base_id="your-kb-id",
+    number_of_results=5
+)
+
+# Create a CrewAI agent that uses the tool
+researcher = Agent(
+    role='Knowledge Base Researcher',
+    goal='Find information about company policies',
+    backstory='I am a researcher specialized in retrieving and analyzing company documentation.',
+    tools=[kb_tool],
+    verbose=True
+)
+
+# Create a task for the agent
+research_task = Task(
+    description="Find our company's remote work policy and summarize the key points.",
+    agent=researcher
+)
+
+# Create a crew with the agent
+crew = Crew(
+    agents=[researcher],
+    tasks=[research_task],
+    verbose=2
+)
+
+# Run the crew
+result = crew.kickoff()
+print(result)   
+```
+
+## Tool Arguments
+
+| Argument                     | Type   | Required | Default | Description                                                                |
+| :--------------------------- | :----- | :------- | :------ | :------------------------------------------------------------------------- |
+| **knowledge\_base\_id**      | `str`  | Yes      | None    | The unique identifier of the knowledge base (0-10 alphanumeric characters) |
+| **number\_of\_results**      | `int`  | No       | 5       | Maximum number of results to return                                        |
+| **retrieval\_configuration** | `dict` | No       | None    | Custom configurations for the knowledge base query                         |
+| **guardrail\_configuration** | `dict` | No       | None    | Content filtering settings                                                 |
+| **next\_token**              | `str`  | No       | None    | Token for pagination                                                       |
+
+## Environment Variables
+
+```bash theme={null}
+BEDROCK_KB_ID=your-knowledge-base-id  # Alternative to passing knowledge_base_id
+AWS_REGION=your-aws-region            # Defaults to us-east-1
+AWS_ACCESS_KEY_ID=your-access-key     # Required for AWS authentication
+AWS_SECRET_ACCESS_KEY=your-secret-key # Required for AWS authentication
+```
+
+## Response Format
+
+The tool returns results in JSON format:
+
+```json theme={null}
+{
+  "results": [
+    {
+      "content": "Retrieved text content",
+      "content_type": "text",
+      "source_type": "S3",
+      "source_uri": "s3://bucket/document.pdf",
+      "score": 0.95,
+      "metadata": {
+        "additional": "metadata"
+      }
+    }
+  ],
+  "nextToken": "pagination-token",
+  "guardrailAction": "NONE"
+}
+```
+
+## Advanced Usage
+
+### Custom Retrieval Configuration
+
+```python theme={null}
+kb_tool = BedrockKBRetrieverTool(
+    knowledge_base_id="your-kb-id",
+    retrieval_configuration={
+        "vectorSearchConfiguration": {
+            "numberOfResults": 10,
+            "overrideSearchType": "HYBRID"
+        }
+    }
+)
+
+policy_expert = Agent(
+    role='Policy Expert',
+    goal='Analyze company policies in detail',
+    backstory='I am an expert in corporate policy analysis with deep knowledge of regulatory requirements.',
+    tools=[kb_tool]
+)
+```
+
+## Supported Data Sources
+
+* Amazon S3
+* Confluence
+* Salesforce
+* SharePoint
+* Web pages
+* Custom document locations
+* Amazon Kendra
+* SQL databases
+
+## Use Cases
+
+### Enterprise Knowledge Integration
+
+* Enable CrewAI agents to access your organization's proprietary knowledge without exposing sensitive data
+* Allow agents to make decisions based on your company's specific policies, procedures, and documentation
+* Create agents that can answer questions based on your internal documentation while maintaining data security
+
+### Specialized Domain Knowledge
+
+* Connect CrewAI agents to domain-specific knowledge bases (legal, medical, technical) without retraining models
+* Leverage existing knowledge repositories that are already maintained in your AWS environment
+* Combine CrewAI's reasoning with domain-specific information from your knowledge bases
+
+### Data-Driven Decision Making
+
+* Ground CrewAI agent responses in your actual company data rather than general knowledge
+* Ensure agents provide recommendations based on your specific business context and documentation
+* Reduce hallucinations by retrieving factual information from your knowledge bases
+
+### Scalable Information Access
+
+* Access terabytes of organizational knowledge without embedding it all into your models
+* Dynamically query only the relevant information needed for specific tasks
+* Leverage AWS's scalable infrastructure to handle large knowledge bases efficiently
+
+### Compliance and Governance
+
+* Ensure CrewAI agents provide responses that align with your company's approved documentation
+* Create auditable trails of information sources used by your agents
+* Maintain control over what information sources your agents can access
+
+
+# S3 Writer Tool
+Source: https://docs.crewai.com/en/tools/cloud-storage/s3writertool
+
+The `S3WriterTool` enables CrewAI agents to write content to files in Amazon S3 buckets.
+
+# `S3WriterTool`
+
+## Description
+
+The `S3WriterTool` is designed to write content to files in Amazon S3 buckets. This tool allows CrewAI agents to create or update files in S3, making it ideal for workflows that require storing data, saving configuration files, or persisting any other content to AWS S3 storage.
+
+## Installation
+
+To use this tool, you need to install the required dependencies:
+
+```shell theme={null}
+uv add boto3
+```
+
+## Steps to Get Started
+
+To effectively use the `S3WriterTool`, follow these steps:
+
+1. **Install Dependencies**: Install the required packages using the command above.
+2. **Configure AWS Credentials**: Set up your AWS credentials as environment variables.
+3. **Initialize the Tool**: Create an instance of the tool.
+4. **Specify S3 Path and Content**: Provide the S3 path where you want to write the file and the content to be written.
+
+## Example
+
+The following example demonstrates how to use the `S3WriterTool` to write content to a file in an S3 bucket:
+
+```python Code theme={null}
+from crewai import Agent, Task, Crew
+from crewai_tools.aws.s3 import S3WriterTool
+
+# Initialize the tool
+s3_writer_tool = S3WriterTool()
+
+# Define an agent that uses the tool
+file_writer_agent = Agent(
+    role="File Writer",
+    goal="Write content to files in S3 buckets",
+    backstory="An expert in storing and managing files in cloud storage.",
+    tools=[s3_writer_tool],
+    verbose=True,
+)
+
+# Example task to write a report
+write_task = Task(
+    description="Generate a summary report of the quarterly sales data and save it to {my_bucket}.",
+    expected_output="Confirmation that the report was successfully saved to S3.",
+    agent=file_writer_agent,
+)
+
+# Create and run the crew
+crew = Crew(agents=[file_writer_agent], tasks=[write_task])
+result = crew.kickoff(inputs={"my_bucket": "s3://my-bucket/reports/quarterly-summary.txt"})
+```
+
+## Parameters
+
+The `S3WriterTool` accepts the following parameters when used by an agent:
+
+* **file\_path**: Required. The S3 file path in the format `s3://bucket-name/file-name`.
+* **content**: Required. The content to write to the file.
+
+## AWS Credentials
+
+The tool requires AWS credentials to access S3 buckets. You can configure these credentials using environment variables:
+
+* **CREW\_AWS\_REGION**: The AWS region where your S3 bucket is located. Default is `us-east-1`.
+* **CREW\_AWS\_ACCESS\_KEY\_ID**: Your AWS access key ID.
+* **CREW\_AWS\_SEC\_ACCESS\_KEY**: Your AWS secret access key.
+
+## Usage
+
+When using the `S3WriterTool` with an agent, the agent will need to provide both the S3 file path and the content to write:
+
+```python Code theme={null}
+# Example of using the tool with an agent
+file_writer_agent = Agent(
+    role="File Writer",
+    goal="Write content to files in S3 buckets",
+    backstory="An expert in storing and managing files in cloud storage.",
+    tools=[s3_writer_tool],
+    verbose=True,
+)
+
+# Create a task for the agent to write a specific file
+write_config_task = Task(
+    description="""
+    Create a configuration file with the following database settings:
+    - host: db.example.com
+    - port: 5432
+    - username: app_user
+    - password: secure_password
+    
+    Save this configuration as JSON to {my_bucket}.
+    """,
+    expected_output="Confirmation that the configuration file was successfully saved to S3.",
+    agent=file_writer_agent,
+)
+
+# Run the task
+crew = Crew(agents=[file_writer_agent], tasks=[write_config_task])
+result = crew.kickoff(inputs={"my_bucket": "s3://my-bucket/config/db-config.json"})
+```
+
+## Error Handling
+
+The `S3WriterTool` includes error handling for common S3 issues:
+
+* Invalid S3 path format
+* Permission issues (e.g., no write access to the bucket)
+* AWS credential problems
+* Bucket does not exist
+
+When an error occurs, the tool will return an error message that includes details about the issue.
+
+## Implementation Details
+
+The `S3WriterTool` uses the AWS SDK for Python (boto3) to interact with S3:
+
+```python Code theme={null}
+class S3WriterTool(BaseTool):
+    name: str = "S3 Writer Tool"
+    description: str = "Writes content to a file in Amazon S3 given an S3 file path"
+    
+    def _run(self, file_path: str, content: str) -> str:
+        try:
+            bucket_name, object_key = self._parse_s3_path(file_path)
+
+            s3 = boto3.client(
+                's3',
+                region_name=os.getenv('CREW_AWS_REGION', 'us-east-1'),
+                aws_access_key_id=os.getenv('CREW_AWS_ACCESS_KEY_ID'),
+                aws_secret_access_key=os.getenv('CREW_AWS_SEC_ACCESS_KEY')
+            )
+
+            s3.put_object(Bucket=bucket_name, Key=object_key, Body=content.encode('utf-8'))
+            return f"Successfully wrote content to {file_path}"
+        except ClientError as e:
+            return f"Error writing file to S3: {str(e)}"
+```
+
+## Conclusion
+
+The `S3WriterTool` provides a straightforward way to write content to files in Amazon S3 buckets. By enabling agents to create and update files in S3, it facilitates workflows that require cloud-based file storage. This tool is particularly useful for data persistence, configuration management, report generation, and any task that involves storing information in AWS S3 storage.
+
+
 # Bedrock Invoke Agent Tool
 Source: https://docs.crewai.com/en/tools/integration/bedrockinvokeagenttool
 
@@ -43198,7 +45771,7 @@ The `BedrockInvokeAgentTool` enables CrewAI agents to invoke Amazon Bedrock Agen
 
 ## Installation
 
-```bash  theme={null}
+```bash theme={null}
 uv pip install 'crewai[tools]'
 ```
 
@@ -43262,7 +45835,7 @@ print(result)
 
 ## Environment Variables
 
-```bash  theme={null}
+```bash theme={null}
 BEDROCK_AGENT_ID=your-agent-id           # Alternative to passing agent_id
 BEDROCK_AGENT_ALIAS_ID=your-agent-alias-id # Alternative to passing agent_alias_id
 AWS_REGION=your-aws-region               # Defaults to us-west-2
@@ -43391,7 +45964,7 @@ The `InvokeCrewAIAutomationTool` provides CrewAI Platform API integration with e
 
 ## Installation
 
-```bash  theme={null}
+```bash theme={null}
 uv pip install 'crewai[tools]'
 ```
 
@@ -43458,7 +46031,7 @@ print(result)
 
 ## Environment Variables
 
-```bash  theme={null}
+```bash theme={null}
 CREWAI_API_URL=https://your-crew-automation.crewai.com  # Alternative to passing crew_api_url
 CREWAI_BEARER_TOKEN=your_bearer_token_here              # Alternative to passing crew_bearer_token
 ```
@@ -43626,7 +46199,7 @@ result = crew.kickoff()
 
 When defining `crew_inputs`, use Pydantic Field objects to specify the input parameters:
 
-```python  theme={null}
+```python theme={null}
 from pydantic import Field
 
 crew_inputs = {
@@ -43662,6 +46235,378 @@ The tool interacts with two main API endpoints:
 * Custom input schemas must be compatible with the target crew automation's expected parameters
 
 
+# Merge Agent Handler Tool
+Source: https://docs.crewai.com/en/tools/integration/mergeagenthandlertool
+
+Enables CrewAI agents to securely access third-party integrations like Linear, GitHub, Slack, and more through Merge's Agent Handler platform
+
+# `MergeAgentHandlerTool`
+
+The `MergeAgentHandlerTool` enables CrewAI agents to securely access third-party integrations through [Merge's Agent Handler](https://www.merge.dev/products/merge-agent-handler) platform. Agent Handler provides pre-built, secure connectors to popular tools like Linear, GitHub, Slack, Notion, and hundreds more—all with built-in authentication, permissions, and monitoring.
+
+## Installation
+
+```bash theme={null}
+uv pip install 'crewai[tools]'
+```
+
+## Requirements
+
+* Merge Agent Handler account with a configured Tool Pack
+* Agent Handler API key
+* At least one registered user linked to your Tool Pack
+* Third-party integrations configured in your Tool Pack
+
+## Getting Started with Agent Handler
+
+1. **Sign up** for a Merge Agent Handler account at [ah.merge.dev/signup](https://ah.merge.dev/signup)
+2. **Create a Tool Pack** and configure the integrations you need
+3. **Register users** who will authenticate with the third-party services
+4. **Get your API key** from the Agent Handler dashboard
+5. **Set environment variable**: `export AGENT_HANDLER_API_KEY='your-key-here'`
+6. **Start building** with the MergeAgentHandlerTool in CrewAI
+
+## Notes
+
+* Tool Pack IDs and Registered User IDs can be found in your Agent Handler dashboard or created via API
+* The tool uses the Model Context Protocol (MCP) for communication with Agent Handler
+* Session IDs are automatically generated but can be customized for context persistence
+* All tool calls are logged and auditable through the Agent Handler platform
+* Tool parameters are dynamically discovered from the Agent Handler API and validated automatically
+
+## Usage
+
+### Single Tool Usage
+
+Here's how to use a specific tool from your Tool Pack:
+
+```python {2, 4-9} theme={null}
+from crewai import Agent, Task, Crew
+from crewai_tools import MergeAgentHandlerTool
+
+# Create a tool for Linear issue creation
+linear_create_tool = MergeAgentHandlerTool.from_tool_name(
+    tool_name="linear__create_issue",
+    tool_pack_id="134e0111-0f67-44f6-98f0-597000290bb3",
+    registered_user_id="91b2b905-e866-40c8-8be2-efe53827a0aa"
+)
+
+# Create a CrewAI agent that uses the tool
+project_manager = Agent(
+    role='Project Manager',
+    goal='Manage project tasks and issues efficiently',
+    backstory='I am an expert at tracking project work and creating actionable tasks.',
+    tools=[linear_create_tool],
+    verbose=True
+)
+
+# Create a task for the agent
+create_issue_task = Task(
+    description="Create a new high-priority issue in Linear titled 'Implement user authentication' with a detailed description of the requirements.",
+    agent=project_manager,
+    expected_output="Confirmation that the issue was created with its ID"
+)
+
+# Create a crew with the agent
+crew = Crew(
+    agents=[project_manager],
+    tasks=[create_issue_task],
+    verbose=True
+)
+
+# Run the crew
+result = crew.kickoff()
+print(result)
+```
+
+### Loading Multiple Tools from a Tool Pack
+
+You can load all available tools from your Tool Pack at once:
+
+```python {2, 4-8} theme={null}
+from crewai import Agent, Task, Crew
+from crewai_tools import MergeAgentHandlerTool
+
+# Load all tools from the Tool Pack
+tools = MergeAgentHandlerTool.from_tool_pack(
+    tool_pack_id="134e0111-0f67-44f6-98f0-597000290bb3",
+    registered_user_id="91b2b905-e866-40c8-8be2-efe53827a0aa"
+)
+
+# Create an agent with access to all tools
+automation_expert = Agent(
+    role='Automation Expert',
+    goal='Automate workflows across multiple platforms',
+    backstory='I can work with any tool in the toolbox to get things done.',
+    tools=tools,
+    verbose=True
+)
+
+automation_task = Task(
+    description="Check for any high-priority issues in Linear and post a summary to Slack.",
+    agent=automation_expert
+)
+
+crew = Crew(
+    agents=[automation_expert],
+    tasks=[automation_task],
+    verbose=True
+)
+
+result = crew.kickoff()
+```
+
+### Loading Specific Tools Only
+
+Load only the tools you need:
+
+```python {2, 4-10} theme={null}
+from crewai import Agent, Task, Crew
+from crewai_tools import MergeAgentHandlerTool
+
+# Load specific tools from the Tool Pack
+selected_tools = MergeAgentHandlerTool.from_tool_pack(
+    tool_pack_id="134e0111-0f67-44f6-98f0-597000290bb3",
+    registered_user_id="91b2b905-e866-40c8-8be2-efe53827a0aa",
+    tool_names=["linear__create_issue", "linear__get_issues", "slack__post_message"]
+)
+
+developer_assistant = Agent(
+    role='Developer Assistant',
+    goal='Help developers track and communicate about their work',
+    backstory='I help developers stay organized and keep the team informed.',
+    tools=selected_tools,
+    verbose=True
+)
+
+daily_update_task = Task(
+    description="Get all issues assigned to the current user in Linear and post a summary to the #dev-updates Slack channel.",
+    agent=developer_assistant
+)
+
+crew = Crew(
+    agents=[developer_assistant],
+    tasks=[daily_update_task],
+    verbose=True
+)
+
+result = crew.kickoff()
+```
+
+## Tool Arguments
+
+### `from_tool_name()` Method
+
+| Argument                 | Type  | Required | Default                                                | Description                                                        |
+| :----------------------- | :---- | :------- | :----------------------------------------------------- | :----------------------------------------------------------------- |
+| **tool\_name**           | `str` | Yes      | None                                                   | Name of the specific tool to use (e.g., "linear\_\_create\_issue") |
+| **tool\_pack\_id**       | `str` | Yes      | None                                                   | UUID of your Agent Handler Tool Pack                               |
+| **registered\_user\_id** | `str` | Yes      | None                                                   | UUID or origin\_id of the registered user                          |
+| **base\_url**            | `str` | No       | "[https://ah-api.merge.dev](https://ah-api.merge.dev)" | Base URL for Agent Handler API                                     |
+| **session\_id**          | `str` | No       | Auto-generated                                         | MCP session ID for maintaining context                             |
+
+### `from_tool_pack()` Method
+
+| Argument                 | Type        | Required | Default                                                | Description                                                     |
+| :----------------------- | :---------- | :------- | :----------------------------------------------------- | :-------------------------------------------------------------- |
+| **tool\_pack\_id**       | `str`       | Yes      | None                                                   | UUID of your Agent Handler Tool Pack                            |
+| **registered\_user\_id** | `str`       | Yes      | None                                                   | UUID or origin\_id of the registered user                       |
+| **tool\_names**          | `list[str]` | No       | None                                                   | Specific tool names to load. If None, loads all available tools |
+| **base\_url**            | `str`       | No       | "[https://ah-api.merge.dev](https://ah-api.merge.dev)" | Base URL for Agent Handler API                                  |
+
+## Environment Variables
+
+```bash theme={null}
+AGENT_HANDLER_API_KEY=your_api_key_here  # Required for authentication
+```
+
+## Advanced Usage
+
+### Multi-Agent Workflow with Different Tool Access
+
+```python {2, 4-20} theme={null}
+from crewai import Agent, Task, Crew, Process
+from crewai_tools import MergeAgentHandlerTool
+
+# Create specialized tools for different agents
+github_tools = MergeAgentHandlerTool.from_tool_pack(
+    tool_pack_id="134e0111-0f67-44f6-98f0-597000290bb3",
+    registered_user_id="91b2b905-e866-40c8-8be2-efe53827a0aa",
+    tool_names=["github__create_pull_request", "github__get_pull_requests"]
+)
+
+linear_tools = MergeAgentHandlerTool.from_tool_pack(
+    tool_pack_id="134e0111-0f67-44f6-98f0-597000290bb3",
+    registered_user_id="91b2b905-e866-40c8-8be2-efe53827a0aa",
+    tool_names=["linear__create_issue", "linear__update_issue"]
+)
+
+slack_tool = MergeAgentHandlerTool.from_tool_name(
+    tool_name="slack__post_message",
+    tool_pack_id="134e0111-0f67-44f6-98f0-597000290bb3",
+    registered_user_id="91b2b905-e866-40c8-8be2-efe53827a0aa"
+)
+
+# Create specialized agents
+code_reviewer = Agent(
+    role='Code Reviewer',
+    goal='Review pull requests and ensure code quality',
+    backstory='I am an expert at reviewing code changes and providing constructive feedback.',
+    tools=github_tools
+)
+
+task_manager = Agent(
+    role='Task Manager',
+    goal='Track and update project tasks based on code changes',
+    backstory='I keep the project board up to date with the latest development progress.',
+    tools=linear_tools
+)
+
+communicator = Agent(
+    role='Team Communicator',
+    goal='Keep the team informed about important updates',
+    backstory='I make sure everyone knows what is happening in the project.',
+    tools=[slack_tool]
+)
+
+# Create sequential tasks
+review_task = Task(
+    description="Review all open pull requests in the 'api-service' repository and identify any that need attention.",
+    agent=code_reviewer,
+    expected_output="List of pull requests that need review or have issues"
+)
+
+update_task = Task(
+    description="Update Linear issues based on the pull request review findings. Mark completed PRs as done.",
+    agent=task_manager,
+    expected_output="Summary of updated Linear issues"
+)
+
+notify_task = Task(
+    description="Post a summary of today's code review and task updates to the #engineering Slack channel.",
+    agent=communicator,
+    expected_output="Confirmation that the message was posted"
+)
+
+# Create a crew with sequential processing
+crew = Crew(
+    agents=[code_reviewer, task_manager, communicator],
+    tasks=[review_task, update_task, notify_task],
+    process=Process.sequential,
+    verbose=True
+)
+
+result = crew.kickoff()
+```
+
+### Custom Session Management
+
+Maintain context across multiple tool calls using session IDs:
+
+```python {2, 4-17} theme={null}
+from crewai import Agent, Task, Crew
+from crewai_tools import MergeAgentHandlerTool
+
+# Create tools with the same session ID to maintain context
+session_id = "project-sprint-planning-2024"
+
+create_tool = MergeAgentHandlerTool(
+    name="linear_create_issue",
+    description="Creates a new issue in Linear",
+    tool_name="linear__create_issue",
+    tool_pack_id="134e0111-0f67-44f6-98f0-597000290bb3",
+    registered_user_id="91b2b905-e866-40c8-8be2-efe53827a0aa",
+    session_id=session_id
+)
+
+update_tool = MergeAgentHandlerTool(
+    name="linear_update_issue",
+    description="Updates an existing issue in Linear",
+    tool_name="linear__update_issue",
+    tool_pack_id="134e0111-0f67-44f6-98f0-597000290bb3",
+    registered_user_id="91b2b905-e866-40c8-8be2-efe53827a0aa",
+    session_id=session_id
+)
+
+sprint_planner = Agent(
+    role='Sprint Planner',
+    goal='Plan and organize sprint tasks',
+    backstory='I help teams plan effective sprints with well-defined tasks.',
+    tools=[create_tool, update_tool],
+    verbose=True
+)
+
+planning_task = Task(
+    description="Create 5 sprint tasks for the authentication feature and set their priorities based on dependencies.",
+    agent=sprint_planner
+)
+
+crew = Crew(
+    agents=[sprint_planner],
+    tasks=[planning_task],
+    verbose=True
+)
+
+result = crew.kickoff()
+```
+
+## Use Cases
+
+### Unified Integration Access
+
+* Access hundreds of third-party tools through a single unified API without managing multiple SDKs
+* Enable agents to work with Linear, GitHub, Slack, Notion, Jira, Asana, and more from one integration point
+* Reduce integration complexity by letting Agent Handler manage authentication and API versioning
+
+### Secure Enterprise Workflows
+
+* Leverage built-in authentication and permission management for all third-party integrations
+* Maintain enterprise security standards with centralized access control and audit logging
+* Enable agents to access company tools without exposing API keys or credentials in code
+
+### Cross-Platform Automation
+
+* Build workflows that span multiple platforms (e.g., create GitHub issues from Linear tasks, sync Notion pages to Slack)
+* Enable seamless data flow between different tools in your tech stack
+* Create intelligent automation that understands context across different platforms
+
+### Dynamic Tool Discovery
+
+* Load all available tools at runtime without hardcoding integration logic
+* Enable agents to discover and use new tools as they're added to your Tool Pack
+* Build flexible agents that can adapt to changing tool availability
+
+### User-Specific Tool Access
+
+* Different users can have different tool permissions and access levels
+* Enable multi-tenant workflows where agents act on behalf of specific users
+* Maintain proper attribution and permissions for all tool actions
+
+## Available Integrations
+
+Merge Agent Handler supports hundreds of integrations across multiple categories:
+
+* **Project Management**: Linear, Jira, Asana, Monday.com, ClickUp
+* **Code Management**: GitHub, GitLab, Bitbucket
+* **Communication**: Slack, Microsoft Teams, Discord
+* **Documentation**: Notion, Confluence, Google Docs
+* **CRM**: Salesforce, HubSpot, Pipedrive
+* **And many more...**
+
+Visit the [Merge Agent Handler documentation](https://docs.ah.merge.dev/) for a complete list of available integrations.
+
+## Error Handling
+
+The tool provides comprehensive error handling:
+
+* **Authentication Errors**: Invalid or missing API keys
+* **Permission Errors**: User lacks permission for the requested action
+* **API Errors**: Issues communicating with Agent Handler or third-party services
+* **Validation Errors**: Invalid parameters passed to tool methods
+
+All errors are wrapped in `MergeAgentHandlerToolError` for consistent error handling.
+
+
 # Overview
 Source: https://docs.crewai.com/en/tools/integration/overview
 
@@ -43671,7 +46616,11 @@ Integration tools let your agents hand off work to other automation platforms an
 
 ## **Available Tools**
 
-<CardGroup cols={2}>
+<CardGroup>
+  <Card title="Merge Agent Handler Tool" icon="diagram-project" href="/en/tools/integration/mergeagenthandlertool">
+    Securely access hundreds of third-party tools like Linear, GitHub, Slack, and more through Merge's unified API.
+  </Card>
+
   <Card title="CrewAI Run Automation Tool" icon="robot" href="/en/tools/integration/crewaiautomationtool">
     Invoke live CrewAI Platform automations, pass custom inputs, and poll for results directly from your agent.
   </Card>
@@ -43690,7 +46639,7 @@ Integration tools let your agents hand off work to other automation platforms an
 
 ## **Quick Start Example**
 
-```python  theme={null}
+```python theme={null}
 from crewai import Agent, Task, Crew
 from crewai_tools import InvokeCrewAIAutomationTool
 from crewai_tools.aws.bedrock.agents.invoke_agent_tool import BedrockInvokeAgentTool
@@ -43763,11 +46712,12 @@ Welcome to the CrewAI AMP API reference. This API allows you to programmatically
   </Step>
 
   <Step title="Start a Crew Execution">
-    Call `POST /kickoff` with your inputs to start the crew execution and receive a `kickoff_id`.
+    Call `POST /kickoff` with your inputs to start the crew execution and receive
+    a `kickoff_id`.
   </Step>
 
   <Step title="Monitor Progress">
-    Use `GET /status/{kickoff_id}` to check execution status and retrieve results.
+    Use `GET /{kickoff_id}/status` to check execution status and retrieve results.
   </Step>
 </Steps>
 
@@ -43775,7 +46725,7 @@ Welcome to the CrewAI AMP API reference. This API allows you to programmatically
 
 All API requests require authentication using a Bearer token. Include your token in the `Authorization` header:
 
-```bash  theme={null}
+```bash theme={null}
 curl -H "Authorization: Bearer YOUR_CREW_TOKEN" \
   https://your-crew-url.crewai.com/inputs
 ```
@@ -43788,7 +46738,8 @@ curl -H "Authorization: Bearer YOUR_CREW_TOKEN" \
 | **User Bearer Token** | User-scoped access        | Limited permissions, suitable for user-specific operations   |
 
 <Tip>
-  You can find both token types in the Status tab of your crew's detail page in the CrewAI AMP dashboard.
+  You can find both token types in the Status tab of your crew's detail page in
+  the CrewAI AMP dashboard.
 </Tip>
 
 ## Base URL
@@ -43805,7 +46756,7 @@ Replace `your-crew-name` with your actual crew's URL from the dashboard.
 
 1. **Discovery**: Call `GET /inputs` to understand what your crew needs
 2. **Execution**: Submit inputs via `POST /kickoff` to start processing
-3. **Monitoring**: Poll `GET /status/{kickoff_id}` until completion
+3. **Monitoring**: Poll `GET /{kickoff_id}/status` until completion
 4. **Results**: Extract the final output from the completed response
 
 ## Error Handling
@@ -43824,7 +46775,10 @@ The API uses standard HTTP status codes:
 ## Interactive Testing
 
 <Info>
-  **Why no "Send" button?** Since each CrewAI AMP user has their own unique crew URL, we use **reference mode** instead of an interactive playground to avoid confusion. This shows you exactly what the requests should look like without non-functional send buttons.
+  **Why no "Send" button?** Since each CrewAI AMP user has their own unique crew
+  URL, we use **reference mode** instead of an interactive playground to avoid
+  confusion. This shows you exactly what the requests should look like without
+  non-functional send buttons.
 </Info>
 
 Each endpoint page shows you:
@@ -43836,7 +46790,7 @@ Each endpoint page shows you:
 
 ### **To Test Your Actual API:**
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Copy cURL Examples" icon="terminal">
     Copy the cURL examples and replace the URL + token with your real values
   </Card>
@@ -43855,7 +46809,7 @@ Each endpoint page shows you:
 
 ## Need Help?
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Enterprise Support" icon="headset" href="mailto:support@crewai.com">
     Get help with API integration and troubleshooting
   </Card>
@@ -43882,10 +46836,10 @@ Resume crew execution with human feedback
 
 
 
-# GET /status/{kickoff_id}
+# GET /{kickoff_id}/status
 Source: https://docs.crewai.com/en/api-reference/status
 
-enterprise-api.en.yaml get /status/{kickoff_id}
+enterprise-api.en.yaml get /{kickoff_id}/status
 Get execution status
 
 
@@ -43894,6 +46848,640 @@ Get execution status
 Source: https://docs.crewai.com/en/changelog
 
 Product updates, improvements, and bug fixes for CrewAI
+
+<Update label="Jan 26, 2026">
+  ## v1.9.0
+
+  [View release on GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.9.0)
+
+  ## What's Changed
+
+  ### Features
+
+  * Add structured outputs and response\_format support across providers
+  * Add response ID to streaming responses
+  * Add event ordering with parent-child hierarchies
+  * Add Keycloak SSO authentication support
+  * Add multimodal file handling capabilities
+  * Add native OpenAI responses API support
+  * Add A2A task execution utilities
+  * Add A2A server configuration and agent card generation
+  * Enhance event system and expand transport options
+  * Improve tool calling mechanisms
+
+  ### Bug Fixes
+
+  * Enhance file store with fallback memory cache when aiocache is not available
+  * Ensure document list is not empty
+  * Handle Bedrock stop sequences properly
+  * Add Google Vertex API key support
+  * Enhance Azure model stop word detection
+  * Improve error handling for HumanFeedbackPending in flow execution
+  * Fix execution span task unlinking
+
+  ### Documentation
+
+  * Add native file handling documentation
+  * Add OpenAI responses API documentation
+  * Add agent card implementation guidance
+  * Refine A2A documentation
+  * Update changelog for v1.8.0
+
+  ### Contributors
+
+  @Anaisdg, @GininDenis, @Vidit-Ostwal, @greysonlalonde, @heitorado, @joaomdmoura, @koushiv777, @lorenzejay, @nicoferdi96, @vinibrsl
+</Update>
+
+<Update label="Jan 15, 2026">
+  ## v1.8.1
+
+  [View release on GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.8.1)
+
+  ## What's Changed
+
+  ### Features
+
+  * Add A2A task execution utilities
+  * Add A2A server configuration and agent card generation
+  * Add additional transport mechanisms
+  * Add Galileo integration support
+
+  ### Bug Fixes
+
+  * Improve Azure model compatibility
+  * Expand frame inspection depth to detect parent\_flow
+  * Resolve task execution span management issues
+  * Enhance error handling for human feedback scenarios during flow execution
+
+  ### Documentation
+
+  * Add A2A agent card documentation
+  * Add PII redaction feature documentation
+
+  ### Contributors
+
+  @Anaisdg, @GininDenis, @greysonlalonde, @joaomdmoura, @koushiv777, @lorenzejay, @vinibrsl
+</Update>
+
+<Update label="Jan 08, 2026">
+  ## v1.8.0
+
+  [View release on GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.8.0)
+
+  ## What's Changed
+
+  ### Features
+
+  * Add native async chain for a2a
+  * Add a2a update mechanisms (poll/stream/push) with handlers and config
+  * Introduce global flow configuration for human-in-the-loop feedback
+  * Add streaming tool call events and fix provider ID tracking
+  * Introduce production-ready Flows and Crews architecture
+  * Add HITL for Flows
+  * Improve EventListener and TraceCollectionListener for enhanced event handling
+
+  ### Bug Fixes
+
+  * Handle missing a2a dependency as optional
+  * Correct error fetching for WorkOS login polling
+  * Fix wrong trigger name in sample documentation
+
+  ### Documentation
+
+  * Update webhook-streaming documentation
+  * Adjust AOP to AMP documentation language
+
+  ### Contributors
+
+  @Vidit-Ostwal, @greysonlalonde, @heitorado, @joaomdmoura, @lorenzejay, @lucasgomide, @mplachta
+</Update>
+
+<Update label="Dec 19, 2025">
+  ## v1.7.2
+
+  [View release on GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.7.2)
+
+  ## What's Changed
+
+  ### Bug Fixes
+
+  * Resolve connection issues
+
+  ### Documentation
+
+  * Update api-reference/status docs page
+
+  ### Contributors
+
+  @greysonlalonde, @heitorado, @lorenzejay, @lucasgomide
+</Update>
+
+<Update label="Dec 16, 2025">
+  ## v1.7.1
+
+  [View release on GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.7.1)
+
+  ## What's Changed
+
+  ### Improvements
+
+  * Add `--no-commit` flag to bump command
+  * Use JSON schema for tool argument serialization
+
+  ### Bug Fixes
+
+  * Fix error message display from response when tool repository login fails
+  * Fix graceful termination of future when executing a task asynchronously
+  * Fix task ordering by adding index
+  * Fix platform compatibility checks for Windows signals
+  * Fix RPM controller timer to prevent process hang
+  * Fix token usage recording and validate response model on stream
+
+  ### Documentation
+
+  * Add translated documentation for async
+  * Add documentation for AOP Deploy API
+  * Add documentation for the agent handler connector
+  * Add documentation on native async
+
+  ### Contributors
+
+  @Llamrei, @dragosmc, @gilfeig, @greysonlalonde, @heitorado, @lorenzejay, @mattatcha, @vinibrsl
+</Update>
+
+<Update label="Dec 09, 2025">
+  ## v1.7.0
+
+  [View release on GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.7.0)
+
+  ## What's Changed
+
+  ### Features
+
+  * Add async flow kickoff
+  * Add async crew support
+  * Add async task support
+  * Add async knowledge support
+  * Add async memory support
+  * Add async support for tools and agent executor; improve typing and docs
+  * Implement a2a extensions API and async agent card caching; fix task propagation & streaming
+  * Add native async tool support
+  * Add async llm support
+  * Create sys event types and handler
+
+  ### Bug Fixes
+
+  * Fix issue to ensure nonetypes are not passed to otel
+  * Fix deadlock in token store file operations
+  * Fix to ensure otel span is closed
+  * Use HuggingFaceEmbeddingFunction for embeddings, update keys and add tests
+  * Fix to ensure supports\_tools is true for all supported anthropic models
+  * Ensure hooks work with lite agents flows
+
+  ### Contributors
+
+  @greysonlalonde, @lorenzejay
+</Update>
+
+<Update label="Nov 29, 2025">
+  ## v1.6.1
+
+  [View release on GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.6.1)
+
+  ## What's Changed
+
+  ### Bug Fixes
+
+  * Fix ChatCompletionsClient call to ensure proper functionality
+  * Ensure async methods are executable for annotations
+  * Fix parameters in RagTool.add, add typing, and tests
+  * Remove invalid parameter from SSE client
+  * Erase 'oauth2\_extra' setting on 'crewai config reset' command
+
+  ### Refactoring
+
+  * Enhance model validation and provider inference in LLM class
+
+  ### Contributors
+
+  @Vidit-Ostwal, @greysonlalonde, @heitorado, @lorenzejay
+</Update>
+
+<Update label="Nov 25, 2025">
+  ## v1.6.0
+
+  [View release on GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.6.0)
+
+  ## What's Changed
+
+  ### Features
+
+  * Add streaming result support to flows and crews
+  * Add gemini-3-pro-preview
+  * Support CLI login with Entra ID
+  * Add Merge Agent Handler tool
+  * Enhance flow event state management
+
+  ### Bug Fixes
+
+  * Ensure custom rag store persist path is set if passed
+  * Ensure fuzzy returns are more strict and show type warning
+  * Re-add openai response\_format parameter and add test
+  * Fix rag tool embeddings configuration
+  * Ensure flow execution start panel is not shown on plot
+
+  ### Documentation
+
+  * Update references from AMP to AOP in documentation
+  * Update AMP to AOP
+
+  ### Contributors
+
+  @Vidit-Ostwal, @gilfeig, @greysonlalonde, @heitorado, @joaomdmoura, @lorenzejay, @markmcd
+</Update>
+
+<Update label="Nov 22, 2025">
+  ## v0.203.2
+
+  [View release on GitHub](https://github.com/crewAIInc/crewAI/releases/tag/0.203.2)
+
+  ## What's Changed
+
+  * Hotfix version bump from 0.203.1 to 0.203.2
+</Update>
+
+<Update label="Nov 16, 2025">
+  ## v1.5.0
+
+  [View release on GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.5.0)
+
+  ## What's Changed
+
+  ### Features
+
+  * Add a2a trust remote completion status flag
+  * Fetch and store more data about Okta authorization server
+  * Implement before and after LLM call hooks in CrewAgentExecutor
+  * Expose messages to TaskOutput and LiteAgentOutputs
+  * Enhance schema description of QdrantVectorSearchTool
+
+  ### Bug Fixes
+
+  * Ensure tracing instrumentation flags are correctly applied
+  * Fix custom tool documentation links and add Mintlify broken links action
+
+  ### Documentation
+
+  * Enhance task guardrail documentation with LLM-based validation support
+
+  ### Contributors
+
+  @danielfsbarreto, @greysonlalonde, @heitorado, @lorenzejay, @theCyberTech
+</Update>
+
+<Update label="Nov 07, 2025">
+  ## v1.4.1
+
+  [View release on GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.4.1)
+
+  ## What's Changed
+
+  ### Bug Fixes
+
+  * Fix handling of agent max iterations
+  * Resolve routing issues for LLM model syntax to respected providers
+
+  ### Contributors
+
+  @greysonlalonde
+</Update>
+
+<Update label="Nov 07, 2025">
+  ## v1.4.0
+
+  [View release on GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.4.0)
+
+  ## What's Changed
+
+  ### Features
+
+  * Add support for non-AST plot routes
+  * Implement first-class support for MCP
+  * Add Pydantic validation dunder to BaseInterceptor
+  * Add support for LLM message interceptor hooks
+  * Cache i18n prompts for efficient use
+  * Enhance QdrantVectorSearchTool
+
+  ### Bug Fixes
+
+  * Fix issues with keeping stopwords updated
+  * Resolve unpickleable values in flow state
+  * Ensure lite agents course-correct on validation errors
+  * Fix callback argument hashing to ensure caching works
+  * Allow adding RAG source content from valid URLs
+  * Make plot node selection smoother
+  * Fix duplicating document IDs for knowledge
+
+  ### Refactoring
+
+  * Improve MCP tool execution handling with concurrent futures
+  * Simplify flow handling, typing, and logging; update UI and tests
+  * Refactor stop word management to a property
+
+  ### Documentation
+
+  * Migrate embedder to embedding\_model and require vectordb across tool docs; add provider examples (en/ko/pt-BR)
+
+  ### Contributors
+
+  @danielfsbarreto, @greysonlalonde, @lorenzejay, @lucasgomide, @tonykipkemboi
+</Update>
+
+<Update label="Nov 01, 2025">
+  ## v1.3.0
+
+  [View release on GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.3.0)
+
+  ## What's Changed
+
+  ### Features
+
+  * Refactor flow handling, typing, and logging
+  * Enhance QdrantVectorSearchTool
+
+  ### Bug Fixes
+
+  * Fix Firecrawl tools and add tests
+  * Refactor use\_stop\_words to property and add check for stop words
+
+  ### Documentation
+
+  * Migrate embedder to embedding\_model and require vectordb across tool docs
+  * Add provider examples in English, Korean, and Portuguese
+
+  ### Refactoring
+
+  * Improve flow handling and UI updates
+
+  ### Contributors
+
+  @danielfsbarreto, @greysonlalonde, @lorenzejay, @lucasgomide, @tonykipkemboi
+</Update>
+
+<Update label="Oct 27, 2025">
+  ## v1.2.1
+
+  [View release on GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.2.1)
+
+  ## What's Changed
+
+  ### Features
+
+  * Add support for Datadog integration
+  * Support apps and mcps in liteagent
+
+  ### Documentation
+
+  * Describe mandatory environment variable for calling Platform tools for each integration
+  * Add Datadog integration documentation
+
+  ### Contributors
+
+  @barieom, @lorenzejay, @lucasgomide, @sabrenner
+</Update>
+
+<Update label="Oct 24, 2025">
+  ## v1.2.0
+
+  [View release on GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.2.0)
+
+  ## What's Changed
+
+  ### Bug Fixes
+
+  * Update default LLM model and improve error logging in LLM utilities
+  * Change flow visualization directory and method inspection
+
+  ### Dropping Unused
+
+  * Remove aisuite
+
+  ### Contributors
+
+  @greysonlalonde, @lorenzejay
+</Update>
+
+<Update label="Oct 21, 2025">
+  ## v1.1.0
+
+  [View release on GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.1.0)
+
+  ## What's Changed
+
+  ### Features
+
+  * Enhance InternalInstructor to support multiple LLM providers
+  * Implement mypy plugin base
+  * Improve QdrantVectorSearchTool
+
+  ### Bug Fixes
+
+  * Correct broken integration documentation links
+  * Fix double trace call and add types
+  * Pin template versions to latest
+
+  ### Documentation
+
+  * Update LLM integration details and examples
+
+  ### Refactoring
+
+  * Improve CrewBase typing
+
+  ### Contributors
+
+  @cwarre33, @danielfsbarreto, @greysonlalonde, @lorenzejay
+</Update>
+
+<Update label="Oct 20, 2025">
+  ## v1.0.0
+
+  [View release on GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.0.0)
+
+  ## What's Changed
+
+  ### Features
+
+  * Bump versions to 1.0.0
+  * Enhance knowledge and guardrail event handling in Agent class
+  * Inject tool repository credentials in crewai run command
+
+  ### Bug Fixes
+
+  * Preserve nested condition structure in Flow decorators
+  * Add standard print parameters to Printer.print method
+  * Fix errors when there is no input() available
+  * Add a leeway of 10s when decoding JWT
+  * Revert bad cron schedule
+  * Correct cron schedule to run every 5 days at specific dates
+  * Use system PATH for Docker binary instead of hardcoded path
+  * Add CodeQL configuration to properly exclude template directories
+
+  ### Documentation
+
+  * Update security policy for vulnerability reporting
+  * Add guide for capturing telemetry logs in CrewAI AMP
+  * Add missing /resume files
+  * Clarify webhook URL parameter in HITL workflows
+
+  ### Contributors
+
+  @Vidit-Ostwal, @greysonlalonde, @heitorado, @joaomdmoura, @lorenzejay, @lucasgomide, @mplachta, @theCyberTech
+</Update>
+
+<Update label="Oct 18, 2025">
+  ## v1.0.0b3 (Pre-release)
+
+  [View release on GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.0.0b3)
+
+  ## What's Changed
+
+  ### Features
+
+  * Enhance task guardrail functionality and validation
+  * Improve support for importing native SDK
+  * Add Azure native tests
+  * Enhance BedrockCompletion class with advanced features
+  * Enhance GeminiCompletion class with client parameter support
+  * Enhance AnthropicCompletion class with additional client parameters
+
+  ### Bug Fixes
+
+  * Preserve nested condition structure in Flow decorators
+  * Add standard print parameters to Printer.print method
+  * Remove stdout prints and improve test determinism
+
+  ### Refactoring
+
+  * Convert project module to metaclass with full typing
+
+  ### Contributors
+
+  @greysonlalonde, @lorenzejay
+</Update>
+
+<Update label="Oct 16, 2025">
+  ## v1.0.0b2 (Pre-release)
+
+  [View release on GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.0.0b2)
+
+  ## What's Changed
+
+  ### Features
+
+  * Enhance OpenAICompletion class with additional client parameters
+  * Improve event bus thread safety and async support
+  * Inject tool repository credentials in crewai run command
+
+  ### Bug Fixes
+
+  * Fix issue where it errors out if there is no input() available
+  * Add a leeway of 10s when decoding JWT
+  * Fix copying and adding NOT\_SPECIFIED check in task.py
+
+  ### Documentation
+
+  * Ensure CREWAI\_PLATFORM\_INTEGRATION\_TOKEN is mentioned in documentation
+  * Update triggers documentation
+
+  ### Contributors
+
+  @Vidit-Ostwal, @greysonlalonde, @heitorado, @joaomdmoura, @lorenzejay, @lucasgomide
+</Update>
+
+<Update label="Oct 14, 2025">
+  ## v1.0.0b1 (Pre-release)
+
+  [View release on GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.0.0b1)
+
+  ## What's Changed
+
+  ### Features
+
+  * Enhance OpenAICompletion class with additional client parameters
+  * Improve event bus thread safety and async support
+  * Implement Bedrock LLM integration
+
+  ### Bug Fixes
+
+  * Fix issue with missing input() availability
+  * Resolve JWT decoding error by adding a leeway of 10 seconds
+  * Inject tool repository credentials in crewai run command
+  * Fix copy and add NOT\_SPECIFIED check in task.py
+
+  ### Documentation
+
+  * Ensure CREWAI\_PLATFORM\_INTEGRATION\_TOKEN is mentioned in documentation
+  * Update triggers documentation
+
+  ### Contributors
+
+  @Vidit-Ostwal, @greysonlalonde, @heitorado, @joaomdmoura, @lorenzejay, @lucasgomide
+</Update>
+
+<Update label="Oct 13, 2025">
+  ## v0.203.1
+
+  [View release on GitHub](https://github.com/crewAIInc/crewAI/releases/tag/0.203.1)
+
+  ## What's Changed
+
+  ### Core Improvements & Fixes
+
+  * Fixed injection of tool repository credentials into the `crewai run` command
+  * Added a 10-second leeway when decoding JWTs to reduce token validation errors
+  * Corrected (then reverted) cron schedule fix intended to run jobs every 5 days at specific dates
+
+  ### Documentation & Guides
+
+  * Updated security policy to clarify the process for vulnerability reporting
+</Update>
+
+<Update label="Oct 09, 2025">
+  ## v1.0.0a4 (Pre-release)
+
+  [View release on GitHub](https://github.com/crewAIInc/crewAI/releases/tag/1.0.0a4)
+
+  ## What's Changed
+
+  ### Features
+
+  * Enhance knowledge and guardrail event handling in Agent class
+  * Introduce trigger listing and execution commands for local development
+  * Update documentation with new approach to consume Platform Actions
+  * Add guide for capturing telemetry logs in CrewAI AMP
+
+  ### Bug Fixes
+
+  * Revert bad cron schedule
+  * Correct cron schedule to run every 5 days at specific dates
+  * Remove duplicate line and add explicit environment variable
+  * Resolve linting errors across the codebase
+  * Replace print statements with logger in agent and memory handling
+  * Use system PATH for Docker binary instead of hardcoded path
+  * Allow failed PyPI publish
+  * Match tag and release title, ignore devtools build for PyPI
+
+  ### Documentation
+
+  * Update security policy for vulnerability reporting
+  * Add missing /resume files
+  * Clarify webhook URL parameter in HITL workflows
+
+  ### Contributors
+
+  @Vidit-Ostwal, @greysonlalonde, @lorenzejay, @lucasgomide, @theCyberTech
+</Update>
 
 <Update label="Sep 30, 2025">
   ## v1.0.0a1
@@ -45795,7 +49383,7 @@ This guide walks you through connecting Azure OpenAI with Crew Studio for seamle
     2. On the left menu, click `Deployments`. If you don't have one, create a deployment with your desired model.
     3. Once created, select your deployment and locate the `Target URI` and `Key` on the right side of the page. Keep this page open, as you'll need this information.
        <Frame>
-         <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/azure-openai-studio.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=a7136eae05529c674ddbda6e8f58eee8" alt="Azure AI Foundry" data-og-width="670" width="670" data-og-height="502" height="502" data-path="images/enterprise/azure-openai-studio.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/azure-openai-studio.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=79abbdeb76fa4f38ef6614438651744c 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/azure-openai-studio.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=c60da2c7f702a15162111d45996d97ff 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/azure-openai-studio.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=46d5ab75f601b9a14c53c93e51aa57b4 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/azure-openai-studio.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=67e2c20ec9785d24bf69279102f564a7 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/azure-openai-studio.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=342a5e6abe1f0a4b1dadf7865ac4cf27 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/azure-openai-studio.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=44d5e6cf8120262a1637a4e24858dfcb 2500w" />
+         <img alt="Azure AI Foundry" />
        </Frame>
   </Step>
 
@@ -45833,6 +49421,43 @@ If you encounter issues:
 * Confirm the deployment model matches what you've configured in CrewAI
 
 
+# Build Crew
+Source: https://docs.crewai.com/en/enterprise/guides/build-crew
+
+A Crew is a group of agents that work together to complete a task.
+
+## Overview
+
+[CrewAI AMP](https://app.crewai.com) streamlines the process of **creating**, **deploying**, and **managing** your AI agents in production environments.
+
+## Getting Started
+
+<iframe title="Building crews with the CrewAI CLI" />
+
+### Installation and Setup
+
+<Card title="Follow Standard Installation" icon="wrench" href="/en/installation">
+  Follow our standard installation guide to set up CrewAI CLI and create your
+  first project.
+</Card>
+
+### Building Your Crew
+
+<Card title="Quickstart Tutorial" icon="rocket" href="/en/quickstart">
+  Follow our quickstart guide to create your first agent crew using YAML
+  configuration.
+</Card>
+
+## Support and Resources
+
+For Enterprise-specific support or questions, contact our dedicated support team at [support@crewai.com](mailto:support@crewai.com).
+
+<Card title="Schedule a Demo" icon="calendar" href="mailto:support@crewai.com">
+  Book time with our team to learn more about Enterprise features and how they
+  can benefit your organization.
+</Card>
+
+
 # Open Telemetry Logs
 Source: https://docs.crewai.com/en/enterprise/guides/capture_telemetry_logs
 
@@ -45842,13 +49467,14 @@ CrewAI AMP provides a powerful way to capture telemetry logs from your deploymen
 
 ## Prerequisites
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="ENTERPRISE OTEL SETUP enabled" icon="users">
     Your organization should have ENTERPRISE OTEL SETUP enabled
   </Card>
 
   <Card title="OTEL collector setup" icon="server">
-    Your organization should have an OTEL collector setup or a provider like Datadog log intake setup
+    Your organization should have an OTEL collector setup or a provider like
+    Datadog log intake setup
   </Card>
 </CardGroup>
 
@@ -45861,8 +49487,428 @@ CrewAI AMP provides a powerful way to capture telemetry logs from your deploymen
 Example to setup OTEL log collection capture to Datadog.
 
 <Frame>
-    <img src="https://mintcdn.com/crewai/oe9EA0HJn5xQ9z71/images/crewai-otel-export.png?fit=max&auto=format&n=oe9EA0HJn5xQ9z71&q=85&s=5bb359765661a61f7012824fe35b0978" alt="Capture Telemetry Logs" data-og-width="3680" width="3680" data-og-height="2382" height="2382" data-path="images/crewai-otel-export.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/oe9EA0HJn5xQ9z71/images/crewai-otel-export.png?w=280&fit=max&auto=format&n=oe9EA0HJn5xQ9z71&q=85&s=2bee9ddb6077fca900cc42e98c1c1c77 280w, https://mintcdn.com/crewai/oe9EA0HJn5xQ9z71/images/crewai-otel-export.png?w=560&fit=max&auto=format&n=oe9EA0HJn5xQ9z71&q=85&s=ceae34948ba9b7daeff1a277d78f8991 560w, https://mintcdn.com/crewai/oe9EA0HJn5xQ9z71/images/crewai-otel-export.png?w=840&fit=max&auto=format&n=oe9EA0HJn5xQ9z71&q=85&s=3e86994eb05fe4c9005a8a62f272b618 840w, https://mintcdn.com/crewai/oe9EA0HJn5xQ9z71/images/crewai-otel-export.png?w=1100&fit=max&auto=format&n=oe9EA0HJn5xQ9z71&q=85&s=3b498ed5c28cb90d415721f636e16ac3 1100w, https://mintcdn.com/crewai/oe9EA0HJn5xQ9z71/images/crewai-otel-export.png?w=1650&fit=max&auto=format&n=oe9EA0HJn5xQ9z71&q=85&s=35463fcfaa322eacbb1e862ce638a093 1650w, https://mintcdn.com/crewai/oe9EA0HJn5xQ9z71/images/crewai-otel-export.png?w=2500&fit=max&auto=format&n=oe9EA0HJn5xQ9z71&q=85&s=fa9f64fe474823fedc93cfdf66d36b4b 2500w" />
+  <img alt="Capture Telemetry Logs" />
 </Frame>
+
+
+# Deploy to AMP
+Source: https://docs.crewai.com/en/enterprise/guides/deploy-to-amp
+
+Deploy your Crew or Flow to CrewAI AMP
+
+<Note>
+  After creating a Crew or Flow locally (or through Crew Studio), the next step is
+  deploying it to the CrewAI AMP platform. This guide covers multiple deployment
+  methods to help you choose the best approach for your workflow.
+</Note>
+
+## Prerequisites
+
+<CardGroup>
+  <Card title="Project Ready for Deployment" icon="check-circle">
+    You should have a working Crew or Flow that runs successfully locally.
+    Follow our [preparation guide](/en/enterprise/guides/prepare-for-deployment) to verify your project structure.
+  </Card>
+
+  <Card title="GitHub Repository" icon="github">
+    Your code should be in a GitHub repository (for GitHub integration
+    method)
+  </Card>
+</CardGroup>
+
+<Info>
+  **Crews vs Flows**: Both project types can be deployed as "automations" on CrewAI AMP.
+  The deployment process is the same, but they have different project structures.
+  See [Prepare for Deployment](/en/enterprise/guides/prepare-for-deployment) for details.
+</Info>
+
+## Option 1: Deploy Using CrewAI CLI
+
+The CLI provides the fastest way to deploy locally developed Crews or Flows to the AMP platform.
+The CLI automatically detects your project type from `pyproject.toml` and builds accordingly.
+
+<Steps>
+  <Step title="Install CrewAI CLI">
+    If you haven't already, install the CrewAI CLI:
+
+    ```bash theme={null}
+    pip install crewai[tools]
+    ```
+
+    <Tip>
+      The CLI comes with the main CrewAI package, but the `[tools]` extra ensures you have all deployment dependencies.
+    </Tip>
+  </Step>
+
+  <Step title="Authenticate with the Enterprise Platform">
+    First, you need to authenticate your CLI with the CrewAI AMP platform:
+
+    ```bash theme={null}
+    # If you already have a CrewAI AMP account, or want to create one:
+    crewai login
+    ```
+
+    When you run either command, the CLI will:
+
+    1. Display a URL and a unique device code
+    2. Open your browser to the authentication page
+    3. Prompt you to confirm the device
+    4. Complete the authentication process
+
+    Upon successful authentication, you'll see a confirmation message in your terminal!
+  </Step>
+
+  <Step title="Create a Deployment">
+    From your project directory, run:
+
+    ```bash theme={null}
+    crewai deploy create
+    ```
+
+    This command will:
+
+    1. Detect your GitHub repository information
+    2. Identify environment variables in your local `.env` file
+    3. Securely transfer these variables to the Enterprise platform
+    4. Create a new deployment with a unique identifier
+
+    On successful creation, you'll see a message like:
+
+    ```shell theme={null}
+    Deployment created successfully!
+    Name: your_project_name
+    Deployment ID: 01234567-89ab-cdef-0123-456789abcdef
+    Current Status: Deploy Enqueued
+    ```
+  </Step>
+
+  <Step title="Monitor Deployment Progress">
+    Track the deployment status with:
+
+    ```bash theme={null}
+    crewai deploy status
+    ```
+
+    For detailed logs of the build process:
+
+    ```bash theme={null}
+    crewai deploy logs
+    ```
+
+    <Tip>
+      The first deployment typically takes 10-15 minutes as it builds the container images. Subsequent deployments are much faster.
+    </Tip>
+  </Step>
+</Steps>
+
+## Additional CLI Commands
+
+The CrewAI CLI offers several commands to manage your deployments:
+
+```bash theme={null}
+# List all your deployments
+crewai deploy list
+
+# Get the status of your deployment
+crewai deploy status
+
+# View the logs of your deployment
+crewai deploy logs
+
+# Push updates after code changes
+crewai deploy push
+
+# Remove a deployment
+crewai deploy remove <deployment_id>
+```
+
+## Option 2: Deploy Directly via Web Interface
+
+You can also deploy your Crews or Flows directly through the CrewAI AMP web interface by connecting your GitHub account. This approach doesn't require using the CLI on your local machine. The platform automatically detects your project type and handles the build appropriately.
+
+<Steps>
+  <Step title="Pushing to GitHub">
+    You need to push your crew to a GitHub repository. If you haven't created a crew yet, you can [follow this tutorial](/en/quickstart).
+  </Step>
+
+  <Step title="Connecting GitHub to CrewAI AMP">
+    1. Log in to [CrewAI AMP](https://app.crewai.com)
+    2. Click on the button "Connect GitHub"
+
+    <Frame>
+      <img alt="Connect GitHub Button" />
+    </Frame>
+  </Step>
+
+  <Step title="Select the Repository">
+    After connecting your GitHub account, you'll be able to select which repository to deploy:
+
+    <Frame>
+      <img alt="Select Repository" />
+    </Frame>
+  </Step>
+
+  <Step title="Set Environment Variables">
+    Before deploying, you'll need to set up your environment variables to connect to your LLM provider or other services:
+
+    1. You can add variables individually or in bulk
+    2. Enter your environment variables in `KEY=VALUE` format (one per line)
+
+    <Frame>
+      <img alt="Set Environment Variables" />
+    </Frame>
+  </Step>
+
+  <Step title="Deploy Your Crew">
+    1. Click the "Deploy" button to start the deployment process
+    2. You can monitor the progress through the progress bar
+    3. The first deployment typically takes around 10-15 minutes; subsequent deployments will be faster
+
+    <Frame>
+      <img alt="Deploy Progress" />
+    </Frame>
+
+    Once deployment is complete, you'll see:
+
+    * Your crew's unique URL
+    * A Bearer token to protect your crew API
+    * A "Delete" button if you need to remove the deployment
+  </Step>
+</Steps>
+
+## Option 3: Redeploy Using API (CI/CD Integration)
+
+For automated deployments in CI/CD pipelines, you can use the CrewAI API to trigger redeployments of existing crews. This is particularly useful for GitHub Actions, Jenkins, or other automation workflows.
+
+<Steps>
+  <Step title="Get Your Personal Access Token">
+    Navigate to your CrewAI AMP account settings to generate an API token:
+
+    1. Go to [app.crewai.com](https://app.crewai.com)
+    2. Click on **Settings** → **Account** → **Personal Access Token**
+    3. Generate a new token and copy it securely
+    4. Store this token as a secret in your CI/CD system
+  </Step>
+
+  <Step title="Find Your Automation UUID">
+    Locate the unique identifier for your deployed crew:
+
+    1. Go to **Automations** in your CrewAI AMP dashboard
+    2. Select your existing automation/crew
+    3. Click on **Additional Details**
+    4. Copy the **UUID** - this identifies your specific crew deployment
+  </Step>
+
+  <Step title="Trigger Redeployment via API">
+    Use the Deploy API endpoint to trigger a redeployment:
+
+    ```bash theme={null}
+    curl -i -X POST \
+         -H "Authorization: Bearer YOUR_PERSONAL_ACCESS_TOKEN" \
+         https://app.crewai.com/crewai_plus/api/v1/crews/YOUR-AUTOMATION-UUID/deploy
+
+    # HTTP/2 200
+    # content-type: application/json
+    #
+    # {
+    #   "uuid": "your-automation-uuid",
+    #   "status": "Deploy Enqueued",
+    #   "public_url": "https://your-crew-deployment.crewai.com",
+    #   "token": "your-bearer-token"
+    # }
+    ```
+
+    <Info>
+      If your automation was first created connected to Git, the API will automatically pull the latest changes from your repository before redeploying.
+    </Info>
+  </Step>
+
+  <Step title="GitHub Actions Integration Example">
+    Here's a GitHub Actions workflow with more complex deployment triggers:
+
+    ```yaml theme={null}
+    name: Deploy CrewAI Automation
+
+    on:
+      push:
+        branches: [ main ]
+      pull_request:
+        types: [ labeled ]
+      release:
+        types: [ published ]
+
+    jobs:
+      deploy:
+        runs-on: ubuntu-latest
+        if: |
+          (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
+          (github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'deploy')) ||
+          (github.event_name == 'release')
+        steps:
+          - name: Trigger CrewAI Redeployment
+            run: |
+              curl -X POST \
+                   -H "Authorization: Bearer ${{ secrets.CREWAI_PAT }}" \
+                   https://app.crewai.com/crewai_plus/api/v1/crews/${{ secrets.CREWAI_AUTOMATION_UUID }}/deploy
+    ```
+
+    <Tip>
+      Add `CREWAI_PAT` and `CREWAI_AUTOMATION_UUID` as repository secrets. For PR deployments, add a "deploy" label to trigger the workflow.
+    </Tip>
+  </Step>
+</Steps>
+
+## Interact with Your Deployed Automation
+
+Once deployment is complete, you can access your crew through:
+
+1. **REST API**: The platform generates a unique HTTPS endpoint with these key routes:
+
+   * `/inputs`: Lists the required input parameters
+   * `/kickoff`: Initiates an execution with provided inputs
+   * `/status/{kickoff_id}`: Checks the execution status
+
+2. **Web Interface**: Visit [app.crewai.com](https://app.crewai.com) to access:
+   * **Status tab**: View deployment information, API endpoint details, and authentication token
+   * **Run tab**: Visual representation of your crew's structure
+   * **Executions tab**: History of all executions
+   * **Metrics tab**: Performance analytics
+   * **Traces tab**: Detailed execution insights
+
+### Trigger an Execution
+
+From the Enterprise dashboard, you can:
+
+1. Click on your crew's name to open its details
+2. Select "Trigger Crew" from the management interface
+3. Enter the required inputs in the modal that appears
+4. Monitor progress as the execution moves through the pipeline
+
+### Monitoring and Analytics
+
+The Enterprise platform provides comprehensive observability features:
+
+* **Execution Management**: Track active and completed runs
+* **Traces**: Detailed breakdowns of each execution
+* **Metrics**: Token usage, execution times, and costs
+* **Timeline View**: Visual representation of task sequences
+
+### Advanced Features
+
+The Enterprise platform also offers:
+
+* **Environment Variables Management**: Securely store and manage API keys
+* **LLM Connections**: Configure integrations with various LLM providers
+* **Custom Tools Repository**: Create, share, and install tools
+* **Crew Studio**: Build crews through a chat interface without writing code
+
+## Troubleshooting Deployment Failures
+
+If your deployment fails, check these common issues:
+
+### Build Failures
+
+#### Missing uv.lock File
+
+**Symptom**: Build fails early with dependency resolution errors
+
+**Solution**: Generate and commit the lock file:
+
+```bash theme={null}
+uv lock
+git add uv.lock
+git commit -m "Add uv.lock for deployment"
+git push
+```
+
+<Warning>
+  The `uv.lock` file is required for all deployments. Without it, the platform
+  cannot reliably install your dependencies.
+</Warning>
+
+#### Wrong Project Structure
+
+**Symptom**: "Could not find entry point" or "Module not found" errors
+
+**Solution**: Verify your project matches the expected structure:
+
+* **Both Crews and Flows**: Must have entry point at `src/project_name/main.py`
+* **Crews**: Use a `run()` function as entry point
+* **Flows**: Use a `kickoff()` function as entry point
+
+See [Prepare for Deployment](/en/enterprise/guides/prepare-for-deployment) for detailed structure diagrams.
+
+#### Missing CrewBase Decorator
+
+**Symptom**: "Crew not found", "Config not found", or agent/task configuration errors
+
+**Solution**: Ensure **all** crew classes use the `@CrewBase` decorator:
+
+```python theme={null}
+from crewai.project import CrewBase, agent, crew, task
+
+@CrewBase  # This decorator is REQUIRED
+class YourCrew():
+    """Your crew description"""
+
+    @agent
+    def my_agent(self) -> Agent:
+        return Agent(
+            config=self.agents_config['my_agent'],  # type: ignore[index]
+            verbose=True
+        )
+
+    # ... rest of crew definition
+```
+
+<Info>
+  This applies to standalone Crews AND crews embedded inside Flow projects.
+  Every crew class needs the decorator.
+</Info>
+
+#### Incorrect pyproject.toml Type
+
+**Symptom**: Build succeeds but runtime fails, or unexpected behavior
+
+**Solution**: Verify the `[tool.crewai]` section matches your project type:
+
+```toml theme={null}
+# For Crew projects:
+[tool.crewai]
+type = "crew"
+
+# For Flow projects:
+[tool.crewai]
+type = "flow"
+```
+
+### Runtime Failures
+
+#### LLM Connection Failures
+
+**Symptom**: API key errors, "model not found", or authentication failures
+
+**Solution**:
+
+1. Verify your LLM provider's API key is correctly set in environment variables
+2. Ensure the environment variable names match what your code expects
+3. Test locally with the exact same environment variables before deploying
+
+#### Crew Execution Errors
+
+**Symptom**: Crew starts but fails during execution
+
+**Solution**:
+
+1. Check the execution logs in the AMP dashboard (Traces tab)
+2. Verify all tools have required API keys configured
+3. Ensure agent configurations in `agents.yaml` are valid
+4. Check task configurations in `tasks.yaml` for syntax errors
+
+<Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
+  Contact our support team for assistance with deployment issues or questions
+  about the AMP platform.
+</Card>
 
 
 # Enable Crew Studio
@@ -45871,7 +49917,8 @@ Source: https://docs.crewai.com/en/enterprise/guides/enable-crew-studio
 Enabling Crew Studio on CrewAI AMP
 
 <Tip>
-  Crew Studio is a powerful **no-code/low-code** tool that allows you to quickly scaffold or build Crews through a conversational interface.
+  Crew Studio is a powerful **no-code/low-code** tool that allows you to quickly
+  scaffold or build Crews through a conversational interface.
 </Tip>
 
 ## What is Crew Studio?
@@ -45879,7 +49926,7 @@ Enabling Crew Studio on CrewAI AMP
 Crew Studio is an innovative way to create AI agent crews without writing code.
 
 <Frame>
-    <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-studio-interface.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=c4f5428b111816273b3b53d9cef14fad" alt="Crew Studio Interface" data-og-width="2654" width="2654" data-og-height="1710" height="1710" data-path="images/enterprise/crew-studio-interface.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-studio-interface.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=35ea9140f0b9e57da5f45adbc7e2f166 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-studio-interface.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=ae6f0c18ef3679b5466177710fbc4a94 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-studio-interface.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=6c3e2fe013ab4826da90c937a9855635 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-studio-interface.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=7f1474dd7f983532dc910363b96f783a 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-studio-interface.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=f1a6d7e744e6862af5e72dce4deb0fd1 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-studio-interface.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=74aeb1ccd8e2c8f84d4247b8d0259737 2500w" />
+  <img alt="Crew Studio Interface" />
 </Frame>
 
 With Crew Studio, you can:
@@ -45915,7 +49962,7 @@ Before you can start using Crew Studio, you need to configure your LLM connectio
     * Click `Add Connection` to save your configuration
 
     <Frame>
-            <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/llm-connection-config.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=c06fcdb008733c7e1d6ec7fcd055ff2c" alt="LLM Connection Configuration" data-og-width="2526" width="2526" data-og-height="1794" height="1794" data-path="images/enterprise/llm-connection-config.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/llm-connection-config.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=929f529b52c50511a773f2ec0791cd9a 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/llm-connection-config.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=3f922308dfa3d65a392d5ebecec593dd 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/llm-connection-config.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=df92dce860921dac542382ca3882decb 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/llm-connection-config.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=1772f4775c3f02e17d152bc00a08ba45 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/llm-connection-config.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=508cb4812120d6bc6b3010415f118a4a 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/llm-connection-config.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=2eb75a3247fbc61ab727978b8a6ce371 2500w" />
+      <img alt="LLM Connection Configuration" />
     </Frame>
   </Step>
 
@@ -45923,7 +49970,7 @@ Before you can start using Crew Studio, you need to configure your LLM connectio
     Once you complete the setup, you'll see your new connection added to the list of available connections.
 
     <Frame>
-            <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/connection-added.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=3726ffaa33f0bfdf221dd542ae729f69" alt="Connection Added" data-og-width="1966" width="1966" data-og-height="532" height="532" data-path="images/enterprise/connection-added.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/connection-added.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=4acf6c926c288b5d32f9c537329b4611 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/connection-added.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=9bdfd3df0a3d3f3ba1d2f91472471ba0 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/connection-added.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=1658dc464f8869ad3f0eb0595faf4048 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/connection-added.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=a0e1b1b559acc03bfbc3a40f17920e40 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/connection-added.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=837c27260c5c258d9da4c306e4d16ae0 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/connection-added.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=649700c55072c94135d7a44e07b5f0df 2500w" />
+      <img alt="Connection Added" />
     </Frame>
   </Step>
 
@@ -45936,7 +49983,7 @@ Before you can start using Crew Studio, you need to configure your LLM connectio
     Click `Save Settings` to apply your changes.
 
     <Frame>
-            <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/llm-defaults.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=b773c2d7e8338e8dbf609ff45ce16eda" alt="LLM Defaults Configuration" data-og-width="2534" width="2534" data-og-height="1128" height="1128" data-path="images/enterprise/llm-defaults.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/llm-defaults.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=b08470ddaeb12d378083dff2e852934b 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/llm-defaults.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=e58e547acb63b13b01fdf52c1771d42d 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/llm-defaults.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=c9b45ef41f6b3068580a4085c5c914cf 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/llm-defaults.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=4366e6bb2207f83d10b825a6e5393743 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/llm-defaults.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=1a48e293ccbcb1c990cfb0a56d386b32 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/llm-defaults.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=f11e748fbc1d3ef89abfef88b95ba9fb 2500w" />
+      <img alt="LLM Defaults Configuration" />
     </Frame>
   </Step>
 </Steps>
@@ -45953,7 +50000,7 @@ Now that you've configured your LLM connection and default settings, you're read
   <Step title="Start a Conversation">
     Start a conversation with the Crew Assistant by describing the problem you want to solve:
 
-    ```md  theme={null}
+    ```md theme={null}
     I need a crew that can research the latest AI developments and create a summary report.
     ```
 
@@ -45985,7 +50032,9 @@ Now that you've configured your LLM connection and default settings, you're read
 </Steps>
 
 <Tip>
-  For best results, provide clear, detailed descriptions of what you want your crew to accomplish. Include specific inputs and expected outputs in your description.
+  For best results, provide clear, detailed descriptions of what you want your
+  crew to accomplish. Include specific inputs and expected outputs in your
+  description.
 </Tip>
 
 ## Example Workflow
@@ -45996,13 +50045,14 @@ Here's a typical workflow for creating a crew with Crew Studio:
   <Step title="Describe Your Problem">
     Start by describing your problem:
 
-    ```md  theme={null}
+    ```md theme={null}
     I need a crew that can analyze financial news and provide investment recommendations
     ```
   </Step>
 
   <Step title="Answer Questions">
-    Respond to clarifying questions from the Crew Assistant to refine your requirements.
+    Respond to clarifying questions from the Crew Assistant to refine your
+    requirements.
   </Step>
 
   <Step title="Review the Plan">
@@ -46027,8 +50077,66 @@ Here's a typical workflow for creating a crew with Crew Studio:
 </Steps>
 
 <Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-  Contact our support team for assistance with Crew Studio or any other CrewAI AMP features.
+  Contact our support team for assistance with Crew Studio or any other CrewAI
+  AMP features.
 </Card>
+
+
+# HubSpot Trigger
+Source: https://docs.crewai.com/en/enterprise/guides/hubspot-trigger
+
+Trigger CrewAI crews directly from HubSpot Workflows
+
+This guide provides a step-by-step process to set up HubSpot triggers for CrewAI AMP, enabling you to initiate crews directly from HubSpot Workflows.
+
+## Prerequisites
+
+* A CrewAI AMP account
+* A HubSpot account with the [HubSpot Workflows](https://knowledge.hubspot.com/workflows/create-workflows) feature
+
+## Setup Steps
+
+<Steps>
+  <Step title="Connect your HubSpot account with CrewAI AMP">
+    * Log in to your `CrewAI AMP account > Triggers` - Select `HubSpot` from the
+      list of available triggers - Choose the HubSpot account you want to connect
+      with CrewAI AMP - Follow the on-screen prompts to authorize CrewAI AMP
+      access to your HubSpot account - A confirmation message will appear once
+      HubSpot is successfully connected with CrewAI AMP
+  </Step>
+
+  <Step title="Create a HubSpot Workflow">
+    * Log in to your `HubSpot account > Automations > Workflows > New workflow`
+    * Select the workflow type that fits your needs (e.g., Start from scratch) -
+      In the workflow builder, click the Plus (+) icon to add a new action. -
+      Choose `Integrated apps > CrewAI > Kickoff a Crew`. - Select the Crew you
+      want to initiate. - Click `Save` to add the action to your workflow
+
+    <Frame>
+      <img alt="HubSpot Workflow 1" />
+    </Frame>
+  </Step>
+
+  <Step title="Use Crew results with other actions">
+    * After the Kickoff a Crew step, click the Plus (+) icon to add a new
+      action. - For example, to send an internal email notification, choose
+      `Communications > Send internal email notification` - In the Body field,
+      click `Insert data`, select `View properties or action outputs from > Action
+          outputs > Crew Result` to include Crew data in the email
+
+    <Frame>
+      <img alt="HubSpot Workflow 2" />
+    </Frame>
+
+    * Configure any additional actions as needed - Review your workflow
+      steps to ensure everything is set up correctly - Activate the workflow
+      <Frame>
+        <img alt="HubSpot Workflow 3" />
+      </Frame>
+  </Step>
+</Steps>
+
+For more detailed information on available actions and customization options, refer to the [HubSpot Workflows Documentation](https://knowledge.hubspot.com/workflows/create-workflows).
 
 
 # HITL Workflows
@@ -46036,16 +50144,64 @@ Source: https://docs.crewai.com/en/enterprise/guides/human-in-the-loop
 
 Learn how to implement Human-In-The-Loop workflows in CrewAI for enhanced decision-making
 
-Human-In-The-Loop (HITL) is a powerful approach that combines artificial intelligence with human expertise to enhance decision-making and improve task outcomes. This guide shows you how to implement HITL within CrewAI.
+Human-In-The-Loop (HITL) is a powerful approach that combines artificial intelligence with human expertise to enhance decision-making and improve task outcomes. This guide shows you how to implement HITL within CrewAI Enterprise.
 
-## Setting Up HITL Workflows
+## HITL Approaches in CrewAI
+
+CrewAI offers two approaches for implementing human-in-the-loop workflows:
+
+| Approach                                     | Best For                                                                     | Version      |
+| -------------------------------------------- | ---------------------------------------------------------------------------- | ------------ |
+| **Flow-based** (`@human_feedback` decorator) | Production with Enterprise UI, email-first workflows, full platform features | **1.8.0+**   |
+| **Webhook-based**                            | Custom integrations, external systems (Slack, Teams, etc.), legacy setups    | All versions |
+
+## Flow-Based HITL with Enterprise Platform
+
+<Note>
+  The `@human_feedback` decorator requires **CrewAI version 1.8.0 or higher**.
+</Note>
+
+When using the `@human_feedback` decorator in your Flows, CrewAI Enterprise provides an **email-first HITL system** that enables anyone with an email address to respond to review requests:
+
+<CardGroup>
+  <Card title="Email-First Design" icon="envelope">
+    Responders receive email notifications and can reply directly—no login required.
+  </Card>
+
+  <Card title="Dashboard Review" icon="desktop">
+    Review and respond to HITL requests in the Enterprise dashboard when preferred.
+  </Card>
+
+  <Card title="Flexible Routing" icon="route">
+    Route requests to specific emails based on method patterns or pull from flow state.
+  </Card>
+
+  <Card title="Auto-Response" icon="clock">
+    Configure automatic fallback responses when no human replies within the timeout.
+  </Card>
+</CardGroup>
+
+### Key Benefits
+
+* **External responders**: Anyone with an email can respond, even non-platform users
+* **Dynamic assignment**: Pull assignee email from flow state (e.g., `account_owner_email`)
+* **Simple configuration**: Email-based routing is easier to set up than user/role management
+* **Deployment creator fallback**: If no routing rule matches, the deployment creator is notified
+
+<Tip>
+  For implementation details on the `@human_feedback` decorator, see the [Human Feedback in Flows](/en/learn/human-feedback-in-flows) guide.
+</Tip>
+
+## Setting Up Webhook-Based HITL Workflows
+
+For custom integrations with external systems like Slack, Microsoft Teams, or your own applications, you can use the webhook-based approach:
 
 <Steps>
   <Step title="Configure Your Task">
     Set up your task with human input enabled:
 
     <Frame>
-      <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-human-input.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=cb2e2bab131e9eff86b0c51dceb16e11" alt="Crew Human Input" data-og-width="624" width="624" data-og-height="165" height="165" data-path="images/enterprise/crew-human-input.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-human-input.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=1bc2a85e5aa6e736a118fe2c91452dc6 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-human-input.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=137c8e9c09c9a93ba1b683ad3e247e0d 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-human-input.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=79c8be91790b117c1498568ca48f4287 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-human-input.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=4da8411c0c26ee98c0dcdde6117353fe 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-human-input.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=1b24b707df7ec697db2652d80ed3ff8f 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-human-input.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=39a7543043c397cf4ff84582216ddb65 2500w" />
+      <img alt="Crew Human Input" />
     </Frame>
   </Step>
 
@@ -46053,7 +50209,7 @@ Human-In-The-Loop (HITL) is a powerful approach that combines artificial intelli
     When kicking off your crew, include a webhook URL for human input:
 
     <Frame>
-      <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-webhook-url.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=f2d298c0b4c7b3a62e1dee4e2e6f1bb3" alt="Crew Webhook URL" data-og-width="624" width="624" data-og-height="259" height="259" data-path="images/enterprise/crew-webhook-url.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-webhook-url.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=80f52cbe2cd1c6a2a4cd3e2039c22971 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-webhook-url.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=6496d6f5e1fe13fec8be8a406e635b26 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-webhook-url.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=27cfbbf1fecdab2540df4aeb7ddd15b6 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-webhook-url.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=57d3439e96917a0627189bfd188af4a0 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-webhook-url.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=cad1f034d8fd4113f08df6bf1a58f3fa 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-webhook-url.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=fba10cd375c57bcd9b2a216067b5bd44 2500w" />
+      <img alt="Crew Webhook URL" />
     </Frame>
   </Step>
 
@@ -46073,7 +50229,7 @@ Human-In-The-Loop (HITL) is a powerful approach that combines artificial intelli
     Call the resume endpoint of your crew with the following information:
 
     <Frame>
-      <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-resume-endpoint.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=1e1c2ca22a2d674426f8e663fed33eca" alt="Crew Resume Endpoint" data-og-width="624" width="624" data-og-height="261" height="261" data-path="images/enterprise/crew-resume-endpoint.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-resume-endpoint.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=09014207ae06e6522303b77e4648f0d4 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-resume-endpoint.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=1ad53990ab04014e622b3acdb37ca604 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-resume-endpoint.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=afb11308edffa03de969712505cf95ab 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-resume-endpoint.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=9bd69f0d75ec47ac2c6280f24a550bff 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-resume-endpoint.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=f81e1ebcdc8a9348133503eb5eb4e37a 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/crew-resume-endpoint.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=b12843fa2b80cc86580220766a1f4cc4 2500w" />
+      <img alt="Crew Resume Endpoint" />
     </Frame>
 
     <Warning>
@@ -46083,7 +50239,7 @@ Human-In-The-Loop (HITL) is a powerful approach that combines artificial intelli
 
     Example resume call with webhooks:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     curl -X POST {BASE_URL}/resume \
       -H "Authorization: Bearer YOUR_API_TOKEN" \
       -H "Content-Type: application/json" \
@@ -46141,6 +50297,514 @@ HITL workflows are particularly valuable for:
 * Creative tasks requiring human judgment
 * Compliance and regulatory reviews
 
+## Learn More
+
+<CardGroup>
+  <Card title="Flow HITL Management" icon="users-gear" href="/en/enterprise/features/flow-hitl-management">
+    Explore the full Enterprise Flow HITL platform capabilities including email notifications, routing rules, auto-response, and analytics.
+  </Card>
+
+  <Card title="Human Feedback in Flows" icon="code" href="/en/learn/human-feedback-in-flows">
+    Implementation guide for the `@human_feedback` decorator in your Flows.
+  </Card>
+</CardGroup>
+
+
+# Kickoff Crew
+Source: https://docs.crewai.com/en/enterprise/guides/kickoff-crew
+
+Kickoff a Crew on CrewAI AMP
+
+## Overview
+
+Once you've deployed your crew to the CrewAI AMP platform, you can kickoff executions through the web interface or the API. This guide covers both approaches.
+
+## Method 1: Using the Web Interface
+
+### Step 1: Navigate to Your Deployed Crew
+
+1. Log in to [CrewAI AMP](https://app.crewai.com)
+2. Click on the crew name from your projects list
+3. You'll be taken to the crew's detail page
+
+<Frame>
+  <img alt="Crew Dashboard" />
+</Frame>
+
+### Step 2: Initiate Execution
+
+From your crew's detail page, you have two options to kickoff an execution:
+
+#### Option A: Quick Kickoff
+
+1. Click the `Kickoff` link in the Test Endpoints section
+2. Enter the required input parameters for your crew in the JSON editor
+3. Click the `Send Request` button
+
+<Frame>
+  <img alt="Kickoff Endpoint" />
+</Frame>
+
+#### Option B: Using the Visual Interface
+
+1. Click the `Run` tab in the crew detail page
+2. Enter the required inputs in the form fields
+3. Click the `Run Crew` button
+
+<Frame>
+  <img alt="Run Crew" />
+</Frame>
+
+### Step 3: Monitor Execution Progress
+
+After initiating the execution:
+
+1. You'll receive a response containing a `kickoff_id` - **copy this ID**
+2. This ID is essential for tracking your execution
+
+<Frame>
+  <img alt="Copy Task ID" />
+</Frame>
+
+### Step 4: Check Execution Status
+
+To monitor the progress of your execution:
+
+1. Click the "Status" endpoint in the Test Endpoints section
+2. Paste the `kickoff_id` into the designated field
+3. Click the "Get Status" button
+
+<Frame>
+  <img alt="Get Status" />
+</Frame>
+
+The status response will show:
+
+* Current execution state (`running`, `completed`, etc.)
+* Details about which tasks are in progress
+* Any outputs produced so far
+
+### Step 5: View Final Results
+
+Once execution is complete:
+
+1. The status will change to `completed`
+2. You can view the full execution results and outputs
+3. For a more detailed view, check the `Executions` tab in the crew detail page
+
+## Method 2: Using the API
+
+You can also kickoff crews programmatically using the CrewAI AMP REST API.
+
+### Authentication
+
+All API requests require a bearer token for authentication:
+
+```bash theme={null}
+curl -H "Authorization: Bearer YOUR_CREW_TOKEN" https://your-crew-url.crewai.com
+```
+
+Your bearer token is available on the Status tab of your crew's detail page.
+
+### Checking Crew Health
+
+Before executing operations, you can verify that your crew is running properly:
+
+```bash theme={null}
+curl -H "Authorization: Bearer YOUR_CREW_TOKEN" https://your-crew-url.crewai.com
+```
+
+A successful response will return a message indicating the crew is operational:
+
+```
+Healthy%
+```
+
+### Step 1: Retrieve Required Inputs
+
+First, determine what inputs your crew requires:
+
+```bash theme={null}
+curl -X GET \
+  -H "Authorization: Bearer YOUR_CREW_TOKEN" \
+  https://your-crew-url.crewai.com/inputs
+```
+
+The response will be a JSON object containing an array of required input parameters, for example:
+
+```json theme={null}
+{ "inputs": ["topic", "current_year"] }
+```
+
+This example shows that this particular crew requires two inputs: `topic` and `current_year`.
+
+### Step 2: Kickoff Execution
+
+Initiate execution by providing the required inputs:
+
+```bash theme={null}
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer YOUR_CREW_TOKEN" \
+  -d '{"inputs": {"topic": "AI Agent Frameworks", "current_year": "2025"}}' \
+  https://your-crew-url.crewai.com/kickoff
+```
+
+The response will include a `kickoff_id` that you'll need for tracking:
+
+```json theme={null}
+{ "kickoff_id": "abcd1234-5678-90ef-ghij-klmnopqrstuv" }
+```
+
+### Step 3: Check Execution Status
+
+Monitor the execution progress using the kickoff\_id:
+
+```bash theme={null}
+curl -X GET \
+  -H "Authorization: Bearer YOUR_CREW_TOKEN" \
+  https://your-crew-url.crewai.com/status/abcd1234-5678-90ef-ghij-klmnopqrstuv
+```
+
+## Handling Executions
+
+### Long-Running Executions
+
+For executions that may take a long time:
+
+1. Consider implementing a polling mechanism to check status periodically
+2. Use webhooks (if available) for notification when execution completes
+3. Implement error handling for potential timeouts
+
+### Execution Context
+
+The execution context includes:
+
+* Inputs provided at kickoff
+* Environment variables configured during deployment
+* Any state maintained between tasks
+
+### Debugging Failed Executions
+
+If an execution fails:
+
+1. Check the "Executions" tab for detailed logs
+2. Review the "Traces" tab for step-by-step execution details
+3. Look for LLM responses and tool usage in the trace details
+
+<Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
+  Contact our support team for assistance with execution issues or questions
+  about the Enterprise platform.
+</Card>
+
+
+# Prepare for Deployment
+Source: https://docs.crewai.com/en/enterprise/guides/prepare-for-deployment
+
+Ensure your Crew or Flow is ready for deployment to CrewAI AMP
+
+<Note>
+  Before deploying to CrewAI AMP, it's crucial to verify your project is correctly structured.
+  Both Crews and Flows can be deployed as "automations," but they have different project structures
+  and requirements that must be met for successful deployment.
+</Note>
+
+## Understanding Automations
+
+In CrewAI AMP, **automations** is the umbrella term for deployable Agentic AI projects. An automation can be either:
+
+* **A Crew**: A standalone team of AI agents working together on tasks
+* **A Flow**: An orchestrated workflow that can combine multiple crews, direct LLM calls, and procedural logic
+
+Understanding which type you're deploying is essential because they have different project structures and entry points.
+
+## Crews vs Flows: Key Differences
+
+<CardGroup>
+  <Card title="Crew Projects" icon="users">
+    Standalone AI agent teams with `crew.py` defining agents and tasks. Best for focused, collaborative tasks.
+  </Card>
+
+  <Card title="Flow Projects" icon="diagram-project">
+    Orchestrated workflows with embedded crews in a `crews/` folder. Best for complex, multi-stage processes.
+  </Card>
+</CardGroup>
+
+| Aspect                      | Crew                               | Flow                                       |
+| --------------------------- | ---------------------------------- | ------------------------------------------ |
+| **Project structure**       | `src/project_name/` with `crew.py` | `src/project_name/` with `crews/` folder   |
+| **Main logic location**     | `src/project_name/crew.py`         | `src/project_name/main.py` (Flow class)    |
+| **Entry point function**    | `run()` in `main.py`               | `kickoff()` in `main.py`                   |
+| **pyproject.toml type**     | `type = "crew"`                    | `type = "flow"`                            |
+| **CLI create command**      | `crewai create crew name`          | `crewai create flow name`                  |
+| **Config location**         | `src/project_name/config/`         | `src/project_name/crews/crew_name/config/` |
+| **Can contain other crews** | No                                 | Yes (in `crews/` folder)                   |
+
+## Project Structure Reference
+
+### Crew Project Structure
+
+When you run `crewai create crew my_crew`, you get this structure:
+
+```
+my_crew/
+├── .gitignore
+├── pyproject.toml          # Must have type = "crew"
+├── README.md
+├── .env
+├── uv.lock                  # REQUIRED for deployment
+└── src/
+    └── my_crew/
+        ├── __init__.py
+        ├── main.py          # Entry point with run() function
+        ├── crew.py          # Crew class with @CrewBase decorator
+        ├── tools/
+        │   ├── custom_tool.py
+        │   └── __init__.py
+        └── config/
+            ├── agents.yaml  # Agent definitions
+            └── tasks.yaml   # Task definitions
+```
+
+<Warning>
+  The nested `src/project_name/` structure is critical for Crews.
+  Placing files at the wrong level will cause deployment failures.
+</Warning>
+
+### Flow Project Structure
+
+When you run `crewai create flow my_flow`, you get this structure:
+
+```
+my_flow/
+├── .gitignore
+├── pyproject.toml          # Must have type = "flow"
+├── README.md
+├── .env
+├── uv.lock                  # REQUIRED for deployment
+└── src/
+    └── my_flow/
+        ├── __init__.py
+        ├── main.py          # Entry point with kickoff() function + Flow class
+        ├── crews/           # Embedded crews folder
+        │   └── poem_crew/
+        │       ├── __init__.py
+        │       ├── poem_crew.py  # Crew with @CrewBase decorator
+        │       └── config/
+        │           ├── agents.yaml
+        │           └── tasks.yaml
+        └── tools/
+            ├── __init__.py
+            └── custom_tool.py
+```
+
+<Info>
+  Both Crews and Flows use the `src/project_name/` structure.
+  The key difference is that Flows have a `crews/` folder for embedded crews,
+  while Crews have `crew.py` directly in the project folder.
+</Info>
+
+## Pre-Deployment Checklist
+
+Use this checklist to verify your project is ready for deployment.
+
+### 1. Verify pyproject.toml Configuration
+
+Your `pyproject.toml` must include the correct `[tool.crewai]` section:
+
+<Tabs>
+  <Tab title="For Crews">
+    ```toml theme={null}
+    [tool.crewai]
+    type = "crew"
+    ```
+  </Tab>
+
+  <Tab title="For Flows">
+    ```toml theme={null}
+    [tool.crewai]
+    type = "flow"
+    ```
+  </Tab>
+</Tabs>
+
+<Warning>
+  If the `type` doesn't match your project structure, the build will fail or
+  the automation won't run correctly.
+</Warning>
+
+### 2. Ensure uv.lock File Exists
+
+CrewAI uses `uv` for dependency management. The `uv.lock` file ensures reproducible builds and is **required** for deployment.
+
+```bash theme={null}
+# Generate or update the lock file
+uv lock
+
+# Verify it exists
+ls -la uv.lock
+```
+
+If the file doesn't exist, run `uv lock` and commit it to your repository:
+
+```bash theme={null}
+uv lock
+git add uv.lock
+git commit -m "Add uv.lock for deployment"
+git push
+```
+
+### 3. Validate CrewBase Decorator Usage
+
+**Every crew class must use the `@CrewBase` decorator.** This applies to:
+
+* Standalone crew projects
+* Crews embedded inside Flow projects
+
+```python theme={null}
+from crewai import Agent, Crew, Process, Task
+from crewai.project import CrewBase, agent, crew, task
+from crewai.agents.agent_builder.base_agent import BaseAgent
+from typing import List
+
+@CrewBase  # This decorator is REQUIRED
+class MyCrew():
+    """My crew description"""
+
+    agents: List[BaseAgent]
+    tasks: List[Task]
+
+    @agent
+    def my_agent(self) -> Agent:
+        return Agent(
+            config=self.agents_config['my_agent'],  # type: ignore[index]
+            verbose=True
+        )
+
+    @task
+    def my_task(self) -> Task:
+        return Task(
+            config=self.tasks_config['my_task']  # type: ignore[index]
+        )
+
+    @crew
+    def crew(self) -> Crew:
+        return Crew(
+            agents=self.agents,
+            tasks=self.tasks,
+            process=Process.sequential,
+            verbose=True,
+        )
+```
+
+<Warning>
+  If you forget the `@CrewBase` decorator, your deployment will fail with
+  errors about missing agents or tasks configurations.
+</Warning>
+
+### 4. Check Project Entry Points
+
+Both Crews and Flows have their entry point in `src/project_name/main.py`:
+
+<Tabs>
+  <Tab title="For Crews">
+    The entry point uses a `run()` function:
+
+    ```python theme={null}
+    # src/my_crew/main.py
+    from my_crew.crew import MyCrew
+
+    def run():
+        """Run the crew."""
+        inputs = {'topic': 'AI in Healthcare'}
+        result = MyCrew().crew().kickoff(inputs=inputs)
+        return result
+
+    if __name__ == "__main__":
+        run()
+    ```
+  </Tab>
+
+  <Tab title="For Flows">
+    The entry point uses a `kickoff()` function with a Flow class:
+
+    ```python theme={null}
+    # src/my_flow/main.py
+    from crewai.flow import Flow, listen, start
+    from my_flow.crews.poem_crew.poem_crew import PoemCrew
+
+    class MyFlow(Flow):
+        @start()
+        def begin(self):
+            # Flow logic here
+            result = PoemCrew().crew().kickoff(inputs={...})
+            return result
+
+    def kickoff():
+        """Run the flow."""
+        MyFlow().kickoff()
+
+    if __name__ == "__main__":
+        kickoff()
+    ```
+  </Tab>
+</Tabs>
+
+### 5. Prepare Environment Variables
+
+Before deployment, ensure you have:
+
+1. **LLM API keys** ready (OpenAI, Anthropic, Google, etc.)
+2. **Tool API keys** if using external tools (Serper, etc.)
+
+<Tip>
+  Test your project locally with the same environment variables before deploying
+  to catch configuration issues early.
+</Tip>
+
+## Quick Validation Commands
+
+Run these commands from your project root to quickly verify your setup:
+
+```bash theme={null}
+# 1. Check project type in pyproject.toml
+grep -A2 "\[tool.crewai\]" pyproject.toml
+
+# 2. Verify uv.lock exists
+ls -la uv.lock || echo "ERROR: uv.lock missing! Run 'uv lock'"
+
+# 3. Verify src/ structure exists
+ls -la src/*/main.py 2>/dev/null || echo "No main.py found in src/"
+
+# 4. For Crews - verify crew.py exists
+ls -la src/*/crew.py 2>/dev/null || echo "No crew.py (expected for Crews)"
+
+# 5. For Flows - verify crews/ folder exists
+ls -la src/*/crews/ 2>/dev/null || echo "No crews/ folder (expected for Flows)"
+
+# 6. Check for CrewBase usage
+grep -r "@CrewBase" . --include="*.py"
+```
+
+## Common Setup Mistakes
+
+| Mistake                         | Symptom                                  | Fix                               |
+| ------------------------------- | ---------------------------------------- | --------------------------------- |
+| Missing `uv.lock`               | Build fails during dependency resolution | Run `uv lock` and commit          |
+| Wrong `type` in pyproject.toml  | Build succeeds but runtime fails         | Change to correct type            |
+| Missing `@CrewBase` decorator   | "Config not found" errors                | Add decorator to all crew classes |
+| Files at root instead of `src/` | Entry point not found                    | Move to `src/project_name/`       |
+| Missing `run()` or `kickoff()`  | Cannot start automation                  | Add correct entry function        |
+
+## Next Steps
+
+Once your project passes all checklist items, you're ready to deploy:
+
+<Card title="Deploy to AMP" icon="rocket" href="/en/enterprise/guides/deploy-to-amp">
+  Follow the deployment guide to deploy your Crew or Flow to CrewAI AMP using
+  the CLI, web interface, or CI/CD integration.
+</Card>
+
 
 # React Component Export
 Source: https://docs.crewai.com/en/enterprise/guides/react-component-export
@@ -46156,7 +50820,7 @@ This guide explains how to export CrewAI AMP crews as React components and integ
     Click on the ellipsis (three dots on the right of your deployed crew) and select the export option and save the file locally. We will be using `CrewLead.jsx` for our example.
 
     <Frame>
-      <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/export-react-component.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=e0c72184b57eeae414674023197fca1b" alt="Export React Component" data-og-width="493" width="493" data-og-height="359" height="359" data-path="images/enterprise/export-react-component.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/export-react-component.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=8493fbf39305d5f66dea0f19af860363 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/export-react-component.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=77698a5cf65d840dc81de4bd72bb4db1 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/export-react-component.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=fe2f4ee4cf620354f6413726983a33fb 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/export-react-component.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=c817314a4164f7c55ecd424ab5de61cf 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/export-react-component.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=6d982c3772ec31c866bcdcabaa8a6b5e 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/export-react-component.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=0b9e48143a23435526cf924906aac876 2500w" />
+      <img alt="Export React Component" />
     </Frame>
   </Step>
 </Steps>
@@ -46176,18 +50840,18 @@ To run this React component locally, you'll need to set up a React development e
     * Navigate to the directory where you want to create your project
     * Run the following command to create a new React project:
 
-      ```bash  theme={null}
+      ```bash theme={null}
       npx create-react-app my-crew-app
       ```
     * Change into the project directory:
 
-      ```bash  theme={null}
+      ```bash theme={null}
       cd my-crew-app
       ```
   </Step>
 
   <Step title="Install necessary dependencies">
-    ```bash  theme={null}
+    ```bash theme={null}
     npm install react-dom
     ```
   </Step>
@@ -46200,7 +50864,7 @@ To run this React component locally, you'll need to set up a React development e
     * Open `src/App.js`
     * Replace its contents with something like this:
 
-    ```jsx  theme={null}
+    ```jsx theme={null}
     import React from 'react';
     import CrewLead from './CrewLead';
 
@@ -46221,7 +50885,7 @@ To run this React component locally, you'll need to set up a React development e
   <Step title="Start the development server">
     * In your project directory, run:
 
-      ```bash  theme={null}
+      ```bash theme={null}
       npm start
       ```
     * This will start the development server, and your default web browser should open automatically to [http://localhost:3000](http://localhost:3000), where you'll see your React app running.
@@ -46233,11 +50897,11 @@ To run this React component locally, you'll need to set up a React development e
 You can then customise the `CrewLead.jsx` to add color, title etc
 
 <Frame>
-  <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/customise-react-component.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=4673fd3ac9eedc1c83b777afb8cf09c9" alt="Customise React Component" data-og-width="1119" width="1119" data-og-height="939" height="939" data-path="images/enterprise/customise-react-component.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/customise-react-component.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=551606e5340b4eb48fa2ca617486ab17 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/customise-react-component.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=4861d2caa401af697527bbafe3cfdb8a 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/customise-react-component.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=ce6d2304d336e487c9bfbd8e1fde5eaf 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/customise-react-component.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=1b2d7f443f10ff21f73e14ef42f91063 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/customise-react-component.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=af6ddc00aa79e8b1606d74b587336a5d 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/customise-react-component.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=997057d8f5ed2b15166ea3cec704a4f3 2500w" />
+  <img alt="Customise React Component" />
 </Frame>
 
 <Frame>
-  <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/customise-react-component-2.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=714c15d129b3db4bd96cdc55e80916dd" alt="Customise React Component" data-og-width="1058" width="1058" data-og-height="427" height="427" data-path="images/enterprise/customise-react-component-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/customise-react-component-2.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=5c589ec079cd09f29551136ee607d0a5 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/customise-react-component-2.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=059851daaaf939d0a5bb2aa1598940cf 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/customise-react-component-2.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=3bad7a6f0f18aff57419ded53c398f15 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/customise-react-component-2.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=6753c201e535c8fcebd1d949436003c7 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/customise-react-component-2.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=352df6d7283212880ef271a8fb673098 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/customise-react-component-2.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=725cfe8688b8135dd25290296d787dbf 2500w" />
+  <img alt="Customise React Component" />
 </Frame>
 
 ## Next Steps
@@ -46246,6 +50910,49 @@ You can then customise the `CrewLead.jsx` to add color, title etc
 * Add additional props for configuration
 * Integrate with your application's state management
 * Add error handling and loading states
+
+
+# Salesforce Trigger
+Source: https://docs.crewai.com/en/enterprise/guides/salesforce-trigger
+
+Trigger CrewAI crews from Salesforce workflows for CRM automation
+
+CrewAI AMP can be triggered from Salesforce to automate customer relationship management workflows and enhance your sales operations.
+
+## Overview
+
+Salesforce is a leading customer relationship management (CRM) platform that helps businesses streamline their sales, service, and marketing operations. By setting up CrewAI triggers from Salesforce, you can:
+
+* Automate lead scoring and qualification
+* Generate personalized sales materials
+* Enhance customer service with AI-powered responses
+* Streamline data analysis and reporting
+
+## Demo
+
+<iframe title="CrewAI + Salesforce trigger demo" />
+
+## Getting Started
+
+To set up Salesforce triggers:
+
+1. **Contact Support**: Reach out to CrewAI AMP support for assistance with Salesforce trigger setup
+2. **Review Requirements**: Ensure you have the necessary Salesforce permissions and API access
+3. **Configure Connection**: Work with the support team to establish the connection between CrewAI and your Salesforce instance
+4. **Test Triggers**: Verify the triggers work correctly with your specific use cases
+
+## Use Cases
+
+Common Salesforce + CrewAI trigger scenarios include:
+
+* **Lead Processing**: Automatically analyze and score incoming leads
+* **Proposal Generation**: Create customized proposals based on opportunity data
+* **Customer Insights**: Generate analysis reports from customer interaction history
+* **Follow-up Automation**: Create personalized follow-up messages and recommendations
+
+## Next Steps
+
+For detailed setup instructions and advanced configuration options, please contact CrewAI AMP support who can provide tailored guidance for your specific Salesforce environment and business needs.
 
 
 # Team Management
@@ -46259,32 +50966,33 @@ As an administrator of a CrewAI AMP account, you can easily invite new team memb
 
 <Steps>
   <Step title="Access the Settings Page">
-    * Log in to your CrewAI AMP account
-    * Look for the gear icon (⚙️) in the top right corner of the dashboard
-    * Click on the gear icon to access the **Settings** page:
-      <Frame caption="Settings page">
-        <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/settings-page.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=653e24490c30fcff10fc2ef5042d57b5" alt="Settings Page" data-og-width="2440" width="2440" data-og-height="2044" height="2044" data-path="images/enterprise/settings-page.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/settings-page.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=5dd534e2ee3191105cce9b9d1bdb2de1 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/settings-page.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=a625efac4036f8ebb4b56ed174463d01 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/settings-page.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=16c1adb548a03f91453fa33ea538552a 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/settings-page.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=f5da68f5f68dfa9032d554c4cf56d042 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/settings-page.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=b24f3dad06913a3a7aa0ab5451a68bd6 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/settings-page.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=ffca84b5da9556e36be14de5d9c3925f 2500w" />
-      </Frame>
+    * Log in to your CrewAI AMP account - Look for the gear icon (⚙️) in the top
+      right corner of the dashboard - Click on the gear icon to access the
+      **Settings** page:
+
+    <Frame>
+      <img alt="Settings Page" />
+    </Frame>
   </Step>
 
   <Step title="Navigate to the Members Section">
-    * On the Settings page, you'll see a `Members` tab
-    * Click on the `Members` tab to access the **Members** page:
-      <Frame caption="Members tab">
-        <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/members-tab.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=6300791208df8044b9356292f0f90b84" alt="Members Tab" data-og-width="2266" width="2266" data-og-height="1568" height="1568" data-path="images/enterprise/members-tab.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/members-tab.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=9e6b2851af3c3c551d5cbc07711f804e 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/members-tab.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=79eb83eee1ba2aeb08818f0a89113072 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/members-tab.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=c354d52c3bc15f1ca192203764cb2a86 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/members-tab.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=a2543eb5fa2a89d078fd84a84f2ef0ae 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/members-tab.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=460fcdf8c613c7e43f8e5cb194ac8ca5 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/members-tab.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=9619532673f11815bb5a867cbe535b2b 2500w" />
-      </Frame>
+    * On the Settings page, you'll see a `Members` tab - Click on the `Members`
+      tab to access the **Members** page:
+
+    <Frame>
+      <img alt="Members Tab" />
+    </Frame>
   </Step>
 
   <Step title="Invite New Members">
-    * In the Members section, you'll see a list of current members (including yourself)
-    * Locate the `Email` input field
-    * Enter the email address of the person you want to invite
-    * Click the `Invite` button to send the invitation
+    * In the Members section, you'll see a list of current members (including
+      yourself) - Locate the `Email` input field - Enter the email address of the
+      person you want to invite - Click the `Invite` button to send the invitation
   </Step>
 
   <Step title="Repeat as Needed">
-    * You can repeat this process to invite multiple team members
-    * Each invited member will receive an email invitation to join your organization
+    * You can repeat this process to invite multiple team members - Each invited
+      member will receive an email invitation to join your organization
   </Step>
 </Steps>
 
@@ -46294,40 +51002,48 @@ You can add roles to your team members to control their access to different part
 
 <Steps>
   <Step title="Access the Settings Page">
-    * Log in to your CrewAI AMP account
-    * Look for the gear icon (⚙️) in the top right corner of the dashboard
-    * Click on the gear icon to access the **Settings** page:
-      <Frame>
-        <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/settings-page.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=653e24490c30fcff10fc2ef5042d57b5" alt="Settings Page" data-og-width="2440" width="2440" data-og-height="2044" height="2044" data-path="images/enterprise/settings-page.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/settings-page.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=5dd534e2ee3191105cce9b9d1bdb2de1 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/settings-page.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=a625efac4036f8ebb4b56ed174463d01 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/settings-page.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=16c1adb548a03f91453fa33ea538552a 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/settings-page.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=f5da68f5f68dfa9032d554c4cf56d042 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/settings-page.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=b24f3dad06913a3a7aa0ab5451a68bd6 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/settings-page.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=ffca84b5da9556e36be14de5d9c3925f 2500w" />
-      </Frame>
+    * Log in to your CrewAI AMP account - Look for the gear icon (⚙️) in the top
+      right corner of the dashboard - Click on the gear icon to access the
+      **Settings** page:
+
+    <Frame>
+      <img alt="Settings Page" />
+    </Frame>
   </Step>
 
   <Step title="Navigate to the Members Section">
-    * On the Settings page, you'll see a `Roles` tab
-    * Click on the `Roles` tab to access the **Roles** page.
-      <Frame>
-        <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/roles-tab.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=a6fe232e80a2847d38a7a8b241fa6367" alt="Roles Tab" data-og-width="2266" width="2266" data-og-height="1568" height="1568" data-path="images/enterprise/roles-tab.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/roles-tab.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=9151a748a0b813913a1db095787a236d 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/roles-tab.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=2e33bbb1239f9c09f759fdc43ac2e8d5 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/roles-tab.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=780675e2b73479ef37ee1ac010da2fc9 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/roles-tab.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=0ff1e19a7ccb68da5375c282324ed372 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/roles-tab.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=d7907fbdf9025b144b5e9c32f22d8dd4 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/roles-tab.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=d3e3e99b2c37971d24e69034d10ca41d 2500w" />
-      </Frame>
-    * Click on the `Add Role` button to add a new role.
-    * Enter the details and permissions of the role and click the `Create Role` button to create the role.
-      <Frame>
-        <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/add-role-modal.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=01221413ecbd749554bf1b21389d6e83" alt="Add Role Modal" data-og-width="1089" width="1089" data-og-height="740" height="740" data-path="images/enterprise/add-role-modal.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/add-role-modal.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=502efd71790a7ff840858e5b8cdf8db6 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/add-role-modal.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=f69f27f5f2f60a1d0751e837b7d39d44 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/add-role-modal.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=81c64b134693b2d04be0ccdac117bcf6 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/add-role-modal.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=173c927d19260fbdd2398b469cab2a86 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/add-role-modal.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=f2626654b54ecc7313ccd5c116dce371 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/add-role-modal.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=45aded7f512ab0ebcbf40110221d0ff9 2500w" />
-      </Frame>
+    * On the Settings page, you'll see a `Roles` tab - Click on the `Roles` tab
+      to access the **Roles** page.
+
+    <Frame>
+      <img alt="Roles Tab" />
+    </Frame>
+
+    * Click on the `Add Role` button to add a new role. - Enter the
+      details and permissions of the role and click the `Create Role` button to
+      create the role.
+
+    <Frame>
+      <img alt="Add Role Modal" />
+    </Frame>
   </Step>
 
   <Step title="Add Roles to Members">
-    * In the Members section, you'll see a list of current members (including yourself)
-      <Frame>
-        <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/member-accepted-invitation.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=497ce238ef4c9c0e14bcab8c5012cdf7" alt="Member Accepted Invitation" data-og-width="802" width="802" data-og-height="439" height="439" data-path="images/enterprise/member-accepted-invitation.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/member-accepted-invitation.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=312c550867a18ee1c588c6150658da40 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/member-accepted-invitation.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=4c935bd30619ac0714c2d15a9d8eda1a 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/member-accepted-invitation.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=a02ae896ec83b62799559b68ffabb4ca 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/member-accepted-invitation.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=f8baa0a16a75617a52cbedeb30f9b24e 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/member-accepted-invitation.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=3a82363bf75772081fb57cf08171c8a7 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/member-accepted-invitation.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=76443aa62000c66b23851e36d758b03d 2500w" />
-      </Frame>
-    * Once the member has accepted the invitation, you can add a role to them.
-    * Navigate back to `Roles` tab
-    * Go to the member you want to add a role to and under the `Role` column, click on the dropdown
-    * Select the role you want to add to the member
-    * Click the `Update` button to save the role
-      <Frame>
-        <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/assign-role.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=144a2270814fc581f54faf23887fad4b" alt="Add Role to Member" data-og-width="1061" width="1061" data-og-height="457" height="457" data-path="images/enterprise/assign-role.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/assign-role.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=f5938f4c809943fba433a1c76a2d877f 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/assign-role.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=b02b0b85806f90179cdf6fd3c71ffc9e 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/assign-role.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=dc4604b1e0b96fa0dcc77ca0d66f3ddb 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/assign-role.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=5cfab685d6dc99ec42ee8be8b85609a2 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/assign-role.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=5f15bdec547894f5d8b9bce821993f37 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/assign-role.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=67adee0bce471a7e5f4f50413f09dfea 2500w" />
-      </Frame>
+    * In the Members section, you'll see a list of current members (including
+      yourself)
+
+    <Frame>
+      <img alt="Member Accepted Invitation" />
+    </Frame>
+
+    * Once the member has accepted the invitation, you can add a role to
+      them. - Navigate back to `Roles` tab - Go to the member you want to add a
+      role to and under the `Role` column, click on the dropdown - Select the role
+      you want to add to the member - Click the `Update` button to save the role
+
+    <Frame>
+      <img alt="Add Role to Member" />
+    </Frame>
   </Step>
 </Steps>
 
@@ -46371,7 +51087,7 @@ Before using the Tool Repository, ensure you have:
 
 To install a tool:
 
-```bash  theme={null}
+```bash theme={null}
 crewai tool install <tool-name>
 ```
 
@@ -46379,7 +51095,7 @@ This installs the tool and adds it to `pyproject.toml`.
 
 You can use the tool by importing it and adding it to your agents:
 
-```python  theme={null}
+```python theme={null}
 from your_tool.tool import YourTool
 
 custom_tool = YourTool()
@@ -46401,23 +51117,23 @@ Any `uv` command can be used with the `crewai uv` command, making it a powerful 
 
 Say that you have installed a custom tool from the CrewAI AMP Tool Repository called "my-tool":
 
-```bash  theme={null}
+```bash theme={null}
 crewai tool install my-tool
 ```
 
 And now you want to add another package to your project, you can use the following command:
 
-```bash  theme={null}
+```bash theme={null}
 crewai uv add requests
 ```
 
 Other commands like `uv sync` or `uv remove` can also be used with the `crewai uv` command:
 
-```bash  theme={null}
+```bash theme={null}
 crewai uv sync
 ```
 
-```bash  theme={null}
+```bash theme={null}
 crewai uv remove requests
 ```
 
@@ -46427,7 +51143,7 @@ This will add the package to your project and update `pyproject.toml` accordingl
 
 To create a new tool project:
 
-```bash  theme={null}
+```bash theme={null}
 crewai tool create <tool-name>
 ```
 
@@ -46435,7 +51151,7 @@ This generates a scaffolded tool project locally.
 
 After making changes, initialize a Git repository and commit the code:
 
-```bash  theme={null}
+```bash theme={null}
 git init
 git add .
 git commit -m "Initial version"
@@ -46443,13 +51159,13 @@ git commit -m "Initial version"
 
 To publish the tool:
 
-```bash  theme={null}
+```bash theme={null}
 crewai tool publish
 ```
 
 By default, tools are published as private. To make a tool public:
 
-```bash  theme={null}
+```bash theme={null}
 crewai tool publish --public
 ```
 
@@ -46463,7 +51179,7 @@ To update a published tool:
 2. Update the version in `pyproject.toml` (e.g., from `0.1.0` to `0.1.1`)
 3. Commit the changes and publish
 
-```bash  theme={null}
+```bash theme={null}
 git commit -m "Update version to 0.1.1"
 crewai tool publish
 ```
@@ -46490,7 +51206,103 @@ You can check the security check status of a tool at:
 `CrewAI AMP > Tools > Your Tool > Versions`
 
 <Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-  Contact our support team for assistance with API integration or troubleshooting.
+  Contact our support team for assistance with API integration or
+  troubleshooting.
+</Card>
+
+
+# Update Crew
+Source: https://docs.crewai.com/en/enterprise/guides/update-crew
+
+Updating a Crew on CrewAI AMP
+
+<Note>
+  After deploying your crew to CrewAI AMP, you may need to make updates to the
+  code, security settings, or configuration. This guide explains how to perform
+  these common update operations.
+</Note>
+
+## Why Update Your Crew?
+
+CrewAI won't automatically pick up GitHub updates by default, so you'll need to manually trigger updates, unless you checked the `Auto-update` option when deploying your crew.
+
+There are several reasons you might want to update your crew deployment:
+
+* You want to update the code with a latest commit you pushed to GitHub
+* You want to reset the bearer token for security reasons
+* You want to update environment variables
+
+## 1. Updating Your Crew Code for a Latest Commit
+
+When you've pushed new commits to your GitHub repository and want to update your deployment:
+
+1. Navigate to your crew in the CrewAI AMP platform
+2. Click on the `Re-deploy` button on your crew details page
+
+<Frame>
+  <img alt="Re-deploy Button" />
+</Frame>
+
+This will trigger an update that you can track using the progress bar. The system will pull the latest code from your repository and rebuild your deployment.
+
+## 2. Resetting Bearer Token
+
+If you need to generate a new bearer token (for example, if you suspect the current token might have been compromised):
+
+1. Navigate to your crew in the CrewAI AMP platform
+2. Find the `Bearer Token` section
+3. Click the `Reset` button next to your current token
+
+<Frame>
+  <img alt="Reset Token" />
+</Frame>
+
+<Warning>
+  Resetting your bearer token will invalidate the previous token immediately.
+  Make sure to update any applications or scripts that are using the old token.
+</Warning>
+
+## 3. Updating Environment Variables
+
+To update the environment variables for your crew:
+
+1. First access the deployment page by clicking on your crew's name
+
+<Frame>
+  <img alt="Environment Variables Button" />
+</Frame>
+
+2. Locate the `Environment Variables` section (you will need to click the `Settings` icon to access it)
+3. Edit the existing variables or add new ones in the fields provided
+4. Click the `Update` button next to each variable you modify
+
+<Frame>
+  <img alt="Update Environment Variables" />
+</Frame>
+
+5. Finally, click the `Update Deployment` button at the bottom of the page to apply the changes
+
+<Note>
+  Updating environment variables will trigger a new deployment, but this will
+  only update the environment configuration and not the code itself.
+</Note>
+
+## After Updating
+
+After performing any update:
+
+1. The system will rebuild and redeploy your crew
+2. You can monitor the deployment progress in real-time
+3. Once complete, test your crew to ensure the changes are working as expected
+
+<Tip>
+  If you encounter any issues after updating, you can view deployment logs in
+  the platform or contact support for assistance.
+</Tip>
+
+<Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
+  Contact our support team for assistance with updating your crew or
+  troubleshooting deployment issues.
 </Card>
 
 
@@ -46508,7 +51320,7 @@ CrewAI AMP allows you to automate your workflow using webhooks. This article wil
     * Navigate to the CrewAI AMP dashboard
     * Look for the `/kickoff` section, which is used to start the crew execution
       <Frame>
-        <img src="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-interface.png?fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=4e6a4b1f098388c7f76e91c25ed4b077" alt="Kickoff Interface" data-og-width="670" width="670" data-og-height="358" height="358" data-path="images/enterprise/kickoff-interface.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-interface.png?w=280&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=31eccbe3c20da734c90a1b2dd681261d 280w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-interface.png?w=560&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=b8f8311eeece00d69760069cf8f218cf 560w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-interface.png?w=840&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=cd690e83cafc2b4675f5343d779fd413 840w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-interface.png?w=1100&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=640bf42c471ed898f434ff1b837aaf3f 1100w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-interface.png?w=1650&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=2ea591f56996cddcd1ab99a6ca951050 1650w, https://mintcdn.com/crewai/Tp3HEbbp9mp-dy3H/images/enterprise/kickoff-interface.png?w=2500&fit=max&auto=format&n=Tp3HEbbp9mp-dy3H&q=85&s=c76d12bbd6580f8211a0c75c58105f41 2500w" />
+        <img alt="Kickoff Interface" />
       </Frame>
   </Step>
 
@@ -46533,7 +51345,7 @@ CrewAI AMP allows you to automate your workflow using webhooks. This article wil
 
     2. Add a trigger (e.g., `Every Day` schedule)
        <Frame>
-         <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-trigger.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=1a52fc1bb47bef6228955360d00f190f" alt="ActivePieces Trigger" data-og-width="595" width="595" data-og-height="773" height="773" data-path="images/enterprise/activepieces-trigger.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-trigger.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=a08bb69bed1a61d5e8febbfe10ca5e7f 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-trigger.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=b1b5e3f75dc328b09023661ce318b68b 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-trigger.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=a64f6e3cfd68c9c66e4248cf92e2f7f1 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-trigger.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=aedf530314a9542c8f217ba77feec4e8 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-trigger.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=95f0dc03528daddca61ad04822e7ba7c 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-trigger.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=48e52a1d3960d50b027f8c92f4a62e11 2500w" />
+         <img alt="ActivePieces Trigger" />
        </Frame>
 
     3. Add an HTTP action step
@@ -46545,12 +51357,12 @@ CrewAI AMP allows you to automate your workflow using webhooks. This article wil
 
        * Add necessary headers (e.g., `Bearer Token`)
          <Frame>
-           <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-headers.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=602a5ed1aa2b462b0a81a122a5e2d35f" alt="ActivePieces Headers" data-og-width="449" width="449" data-og-height="572" height="572" data-path="images/enterprise/activepieces-headers.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-headers.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=fb1852f1834f3ca324d88201890454c2 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-headers.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=3ac86c364aa02800cb7563d6f7a0cc4b 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-headers.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=1433e902dc31e3c5bba03cea45fca103 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-headers.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=9ca4bc723b91d7681c7798019f933e00 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-headers.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=d6efc61f86f20c2d850bbc6e43057084 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-headers.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=508d671fe743548d52b5fa6f70d8c6f1 2500w" />
+           <img alt="ActivePieces Headers" />
          </Frame>
 
        * In the body, include the JSON content as configured in step 2
          <Frame>
-           <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-body.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=f238e1630f7be667cce2d208315ddc75" alt="ActivePieces Body" data-og-width="670" width="670" data-og-height="401" height="401" data-path="images/enterprise/activepieces-body.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-body.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=184acb105d21412a7a2cb184d57b067e 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-body.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=2820fd618992f3299a713701cf6d3a3e 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-body.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=988d687157f7dea236e152edb382ac4f 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-body.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=9c7603e394ffb44676be999c9bfd8843 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-body.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=84b3aa1d756e36d3578c11a81a1bba03 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-body.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=f8ca588c964165c10b66d26478b1201a 2500w" />
+           <img alt="ActivePieces Body" />
          </Frame>
 
        * The crew will then kickoff at the pre-defined time.
@@ -46559,7 +51371,7 @@ CrewAI AMP allows you to automate your workflow using webhooks. This article wil
   <Step title="Setting Up the Webhook">
     1. Create a new flow in ActivePieces and name it
        <Frame>
-         <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-flow.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=c23af88ea2df7919f680706318eb1506" alt="ActivePieces Flow" data-og-width="544" width="544" data-og-height="683" height="683" data-path="images/enterprise/activepieces-flow.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-flow.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=3efbff7b8131db3e87a41b0885447729 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-flow.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=1993b2b3ba57a859e42efcf21737c351 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-flow.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=3f46a4b1b2a17fcb0c0f3a9373699b5a 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-flow.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=3eff0450a0f63e2ed5b00797ee1295ea 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-flow.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=f3ca2cd9eb16b9f4642a27df234b191c 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-flow.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=ffa10bab192e9b54be9ad3df31ce9036 2500w" />
+         <img alt="ActivePieces Flow" />
        </Frame>
 
     2. Add a webhook step as the trigger:
@@ -46567,12 +51379,12 @@ CrewAI AMP allows you to automate your workflow using webhooks. This article wil
 
        * This will generate a unique URL that will receive HTTP requests and trigger your flow
          <Frame>
-           <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-webhook.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=8236fd9a97149eff4fd86f1c9a9b0f1a" alt="ActivePieces Webhook" data-og-width="451" width="451" data-og-height="488" height="488" data-path="images/enterprise/activepieces-webhook.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-webhook.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=67e441a99da496ffc5c7267f7a9edf38 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-webhook.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=bd59361f9c3c3cc590116b69ae938e62 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-webhook.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=6baa9171275b63542d4518d517def191 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-webhook.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=d2ca4c48d4c27d35f86634a8cff980aa 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-webhook.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=791a725473ebaa655f55060dc60ba4a2 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-webhook.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=c84dd08fd3ec706b43868a9a7b5629a8 2500w" />
+           <img alt="ActivePieces Webhook" />
          </Frame>
 
        * Configure the email to use crew webhook body text
          <Frame>
-           <img src="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-email.png?fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=484c8d88ed96322d21894e9663f5fc4a" alt="ActivePieces Email" data-og-width="461" width="461" data-og-height="518" height="518" data-path="images/enterprise/activepieces-email.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-email.png?w=280&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=619ef405e48854a83bfdfcc2d6ef44ec 280w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-email.png?w=560&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=43448b60f1c1686da67239865b31586c 560w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-email.png?w=840&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=79a570bad87d3beeebe8f87437823cac 840w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-email.png?w=1100&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=180ce65773e5fd6007f08fa159f21dfb 1100w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-email.png?w=1650&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=80df8a27d8ba193f531db980a9697f6a 1650w, https://mintcdn.com/crewai/5SZbe87tsCWZY09V/images/enterprise/activepieces-email.png?w=2500&fit=max&auto=format&n=5SZbe87tsCWZY09V&q=85&s=a8e77053f8fed779ccff7474435f3cc8 2500w" />
+           <img alt="ActivePieces Email" />
          </Frame>
   </Step>
 </Steps>
@@ -46585,7 +51397,7 @@ CrewAI AMP allows you to automate your workflow using webhooks. This article wil
   <Tab title="Step Webhook">
     `stepWebhookUrl` - Callback that will be executed upon each agent inner thought
 
-    ```json  theme={null}
+    ```json theme={null}
     {
         "prompt": "Research the financial industry for potential AI solutions",
         "thought": "I need to conduct preliminary research on the financial industry",
@@ -46604,7 +51416,7 @@ CrewAI AMP allows you to automate your workflow using webhooks. This article wil
   <Tab title="Task Webhook">
     `taskWebhookUrl` - Callback that will be executed upon the end of each task
 
-    ```json  theme={null}
+    ```json theme={null}
     {
         "description": "Using the information gathered from the lead's data, conduct preliminary research on the lead's industry, company background, and potential use cases for crewai. Focus on finding relevant data that can aid in scoring the lead and planning a strategy to pitch them crewai.",
         "name": "Industry Research Task",
@@ -46628,7 +51440,7 @@ CrewAI AMP allows you to automate your workflow using webhooks. This article wil
   <Tab title="Crew Webhook">
     `crewWebhookUrl` - Callback that will be executed upon the end of the crew execution
 
-    ```json  theme={null}
+    ```json theme={null}
     {
         "kickoff_id": "97eba64f-958c-40a0-b61c-625fe635a3c0",
         "result": "**Final Analysis Report**\n\nLead Score: Customer service enhancement and compliance are particularly relevant.\n\nTalking Points:\n- Highlight how crewai's AI solutions can transform customer service\n- Discuss crewai's potential for sustainability goals\n- Emphasize compliance capabilities\n- Stress adaptability for various operation scales",
@@ -46654,6 +51466,113 @@ CrewAI AMP allows you to automate your workflow using webhooks. This article wil
     ```
   </Tab>
 </Tabs>
+
+
+# Zapier Trigger
+Source: https://docs.crewai.com/en/enterprise/guides/zapier-trigger
+
+Trigger CrewAI crews from Zapier workflows to automate cross-app workflows
+
+This guide will walk you through the process of setting up Zapier triggers for CrewAI AMP, allowing you to automate workflows between CrewAI AMP and other applications.
+
+## Prerequisites
+
+* A CrewAI AMP account
+* A Zapier account
+* A Slack account (for this specific example)
+
+## Step-by-Step Setup
+
+<Steps>
+  <Step title="Set Up the Slack Trigger">
+    * In Zapier, create a new Zap.
+
+    <Frame>
+      <img alt="Zapier 1" />
+    </Frame>
+  </Step>
+
+  <Step title="Choose Slack as your trigger app">
+    <Frame>
+      <img alt="Zapier 2" />
+    </Frame>
+
+    * Select `New Pushed Message` as the Trigger Event.
+    * Connect your Slack account if you haven't already.
+  </Step>
+
+  <Step title="Configure the CrewAI AMP Action">
+    * Add a new action step to your Zap.
+    * Choose CrewAI+ as your action app and Kickoff as the Action Event
+
+    <Frame>
+      <img alt="Zapier 5" />
+    </Frame>
+  </Step>
+
+  <Step title="Connect your CrewAI AMP account">
+    * Connect your CrewAI AMP account.
+    * Select the appropriate Crew for your workflow.
+
+    <Frame>
+      <img alt="Zapier 6" />
+    </Frame>
+
+    * Configure the inputs for the Crew using the data from the Slack message.
+  </Step>
+
+  <Step title="Format the CrewAI AMP Output">
+    * Add another action step to format the text output from CrewAI AMP.
+    * Use Zapier's formatting tools to convert the Markdown output to HTML.
+
+    <Frame>
+      <img alt="Zapier 8" />
+    </Frame>
+
+    <Frame>
+      <img alt="Zapier 9" />
+    </Frame>
+  </Step>
+
+  <Step title="Send the Output via Email">
+    * Add a final action step to send the formatted output via email.
+    * Choose your preferred email service (e.g., Gmail, Outlook).
+    * Configure the email details, including recipient, subject, and body.
+    * Insert the formatted CrewAI AMP output into the email body.
+
+    <Frame>
+      <img alt="Zapier 7" />
+    </Frame>
+  </Step>
+
+  <Step title="Kick Off the crew from Slack">
+    * Enter the text in your Slack channel
+
+    <Frame>
+      <img alt="Zapier 10" />
+    </Frame>
+
+    * Select the 3 ellipsis button and then chose Push to Zapier
+
+    <Frame>
+      <img alt="Zapier 11" />
+    </Frame>
+  </Step>
+
+  <Step title="Select the crew and then Push to Kick Off">
+    <Frame>
+      <img alt="Zapier 12" />
+    </Frame>
+  </Step>
+</Steps>
+
+## Tips for Success
+
+* Ensure that your CrewAI AMP inputs are correctly mapped from the Slack message.
+* Test your Zap thoroughly before turning it on to catch any potential issues.
+* Consider adding error handling steps to manage potential failures in the workflow.
+
+By following these steps, you'll have successfully set up Zapier triggers for CrewAI AMP, allowing for automated workflows triggered by Slack messages and resulting in email notifications with CrewAI AMP output.
 
 
 # FAQs
@@ -46751,7 +51670,7 @@ Frequently asked questions about CrewAI AMP
 
     <Steps>
       <Step title="Define a Pydantic model">
-        ```python  theme={null}
+        ```python theme={null}
         from pydantic import BaseModel
 
         class User(BaseModel):
@@ -46761,7 +51680,7 @@ Frequently asked questions about CrewAI AMP
       </Step>
 
       <Step title="Create a task with Output Pydantic">
-        ```python  theme={null}
+        ```python theme={null}
         from crewai import Task, Crew, Agent
         from my_models import User
 
@@ -46775,7 +51694,7 @@ Frequently asked questions about CrewAI AMP
       </Step>
 
       <Step title="Set the output_pydantic attribute in your agent">
-        ```python  theme={null}
+        ```python theme={null}
         from crewai import Agent
         from my_models import User
 
@@ -46792,7 +51711,7 @@ Frequently asked questions about CrewAI AMP
 
     Here's a tutorial on how to consistently get structured outputs from your agents:
 
-    <iframe className="w-full aspect-video rounded-xl" src="https://www.youtube.com/embed/dNpKQk5uxHw" title="Structured outputs in CrewAI" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+    <iframe title="Structured outputs in CrewAI" />
   </Accordion>
 
   <Accordion title="How can I create custom tools for my CrewAI agents?">
@@ -46814,7 +51733,7 @@ Feature-focused quickstarts and notebooks for learning patterns fast.
 
 ## Quickstarts & Demos
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Collaboration" icon="people-arrows" href="https://github.com/crewAIInc/crewAI-quickstarts/blob/main/Collaboration/crewai_collaboration.ipynb">
     Coordinate multiple agents on shared tasks. Includes notebook with end-to-end collaboration pattern.
   </Card>
@@ -46828,7 +51747,7 @@ Feature-focused quickstarts and notebooks for learning patterns fast.
   </Card>
 </CardGroup>
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Structured Guardrails" icon="shield-check" href="https://github.com/crewAIInc/crewAI-quickstarts/blob/main/Guardrails/task_guardrails.ipynb">
     Apply task-level guardrails with retries, validation functions, and safe fallbacks.
   </Card>
@@ -46842,7 +51761,7 @@ Feature-focused quickstarts and notebooks for learning patterns fast.
   </Card>
 </CardGroup>
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Browse Quickstarts" icon="bolt" href="https://github.com/crewAIInc/crewAI-quickstarts">
     View all notebooks and feature demos showcasing specific CrewAI capabilities.
   </Card>
@@ -46864,7 +51783,7 @@ Explore curated examples organized by Crews, Flows, Integrations, and Notebooks.
 
 ## Crews
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Marketing Strategy" icon="bullhorn" href="https://github.com/crewAIInc/crewAI-examples/tree/main/crews/marketing_strategy">
     Multi‑agent marketing campaign planning.
   </Card>
@@ -46896,7 +51815,7 @@ Explore curated examples organized by Crews, Flows, Integrations, and Notebooks.
 
 ## Flows
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Content Creator Flow" icon="pen" href="https://github.com/crewAIInc/crewAI-examples/tree/main/flows/content_creator_flow">
     Multi‑crew content generation with routing.
   </Card>
@@ -46928,7 +51847,7 @@ Explore curated examples organized by Crews, Flows, Integrations, and Notebooks.
 
 ## Integrations
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="CrewAI ↔ LangGraph" icon="link" href="https://github.com/crewAIInc/crewAI-examples/tree/main/integrations/crewai-langgraph">
     Integration with LangGraph framework.
   </Card>
@@ -46948,7 +51867,7 @@ Explore curated examples organized by Crews, Flows, Integrations, and Notebooks.
 
 ## Notebooks
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Simple QA Crew + Flow" icon="book" href="https://github.com/crewAIInc/crewAI-examples/tree/main/Notebooks/Simple%20QA%20Crew%20%2B%20Flow">
     Simple QA Crew + Flow.
   </Card>

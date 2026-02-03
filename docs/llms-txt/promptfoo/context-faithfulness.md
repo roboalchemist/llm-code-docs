@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/configuration/expected-outputs/model-graded/context-faithfulness/
+
 # Context faithfulness
 
 Checks if the LLM's response only makes claims that are supported by the provided context.

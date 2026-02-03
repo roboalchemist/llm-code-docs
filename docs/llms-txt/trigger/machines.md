@@ -1,12 +1,16 @@
 # Source: https://trigger.dev/docs/machines.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Machines
 
 > Configure the number of vCPUs and GBs of RAM you want the task to use.
 
 The `machine` configuration is optional. Using higher spec machines will increase the cost of running the task but can also improve the performance of the task if it is CPU or memory bound.
 
-```ts /trigger/heavy-task.ts theme={null}
+```ts /trigger/heavy-task.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 export const heavyTask = task({
@@ -20,7 +24,7 @@ export const heavyTask = task({
 
 The default machine is `small-1x` which has 0.5 vCPU and 0.5 GB of RAM. You can change the default machine in your `trigger.config.ts` file:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import type { TriggerConfig } from "@trigger.dev/sdk";
 
 export const config: TriggerConfig = {
@@ -47,7 +51,7 @@ You can view the Trigger.dev cloud pricing for these machines [here](https://tri
 
 You can also override the task machine when you [trigger](/triggering) it:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 await tasks.trigger<typeof heavyTask>(
   "heavy-task",
   { message: "hello world" },
@@ -76,7 +80,7 @@ To better understand why an OOM error occurred, we've published a helper class t
 First, add this `ResourceMonitor` class to your project:
 
 <Accordion title="View ResourceMonitor class">
-  ```ts /src/resourceMonitor.ts theme={null}
+  ```ts /src/resourceMonitor.ts theme={"theme":"css-variables"}
   import { promisify } from "node:util";
   import { exec } from "node:child_process";
   import os from "node:os";
@@ -849,7 +853,7 @@ First, add this `ResourceMonitor` class to your project:
 
 Then, in your task, you can create an instance of the `ResourceMonitor` class and start monitoring memory, disk, and CPU usage:
 
-```ts /src/trigger/example.ts theme={null}
+```ts /src/trigger/example.ts theme={"theme":"css-variables"}
 import { task, logger, wait } from "@trigger.dev/sdk";
 import { ResourceMonitor } from "../resourceMonitor.js";
 
@@ -891,7 +895,7 @@ This will produce logs that look like this:
 
 If you are spawning a child process and you want to monitor its memory usage, you can pass the `processName` option to the `ResourceMonitor` class:
 
-```ts /src/trigger/example.ts theme={null}
+```ts /src/trigger/example.ts theme={"theme":"css-variables"}
 const resourceMonitor = new ResourceMonitor({
   ctx,
   processName: "ffmpeg",
@@ -906,7 +910,7 @@ This will produce logs that includes the memory and CPU usage of the `ffmpeg` pr
 
 You can explicitly throw an Out Of Memory error in your task. This can be useful if you use a native package that detects it's going to run out of memory and then stops before it runs out. If you can detect this, you can then throw this error.
 
-```ts /trigger/heavy-task.ts theme={null}
+```ts /trigger/heavy-task.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 import { OutOfMemoryError } from "@trigger.dev/sdk";
 
@@ -927,7 +931,7 @@ If OOM errors happen regularly you need to either optimize the memory-efficiency
 
 If you are seeing rare OOM errors, it might make sense to add a setting to your task to retry with a large machine when an OOM happens:
 
-```ts /trigger/heavy-task.ts theme={null}
+```ts /trigger/heavy-task.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 
 export const yourTask = task({

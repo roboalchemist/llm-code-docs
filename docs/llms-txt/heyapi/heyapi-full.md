@@ -802,8 +802,7 @@ A single function is generated for each endpoint. It returns a result from [`htt
 ::: code-group
 
 ```ts [example]
-export const addPetResource = (options) =>
-  httpResource(() => addPetRequest(options()));
+export const addPetResource = (options) => httpResource(() => addPetRequest(options()));
 ```
 
 ```js [config]
@@ -1168,8 +1167,7 @@ A single function is generated for each endpoint. It returns a result from [`htt
 ::: code-group
 
 ```ts [example]
-export const addPetResource = (options) =>
-  httpResource(() => addPetRequest(options()));
+export const addPetResource = (options) => httpResource(() => addPetRequest(options()));
 ```
 
 ```js [config]
@@ -1801,7 +1799,7 @@ src/
 
 ## API
 
-You can view the complete list of options in the [UserConfig](https://github.com/hey-api/openapi-ts/blob/main/packages/openapi-ts/src/types/config.d.ts) interface.
+You can view the complete list of options in the [UserConfig](https://github.com/hey-api/openapi-ts/blob/main/packages/openapi-ts/src/config/types.d.ts) interface.
 
 ## Examples
 
@@ -2050,10 +2048,7 @@ export const handler: MyPlugin['Handler'] = ({ plugin }) => {
   );
   const node = ts.factory.createVariableStatement(
     [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
-    ts.factory.createVariableDeclarationList(
-      [variableDeclaration],
-      ts.NodeFlags.Const,
-    ),
+    ts.factory.createVariableDeclarationList([variableDeclaration], ts.NodeFlags.Const),
   );
 
   // add a node to our file
@@ -2741,15 +2736,9 @@ bun add @hey-api/openapi-ts -D -E
 
 ### Versioning
 
-This package does NOT follow the [semantic versioning](https://semver.org/) strategy. Please pin an exact version so you can safely upgrade when you're ready.
+This package is in [initial development](https://semver.org/#spec-item-4). Please pin an exact version so you can safely upgrade when you're ready.
 
-Due to the nature of the package, we use the following versioning strategy.
-
-* `1.x.x`: significant breaking changes, reserved for v1 release
-* `x.1.x`: breaking changes
-* `x.x.1`: new features, bug fixes, and non-breaking changes
-
-We publish [migration notes](/openapi-ts/migrating) for every breaking release. You might not be impacted by a breaking release if you don't use the affected plugin(s).
+We publish [migration notes](/openapi-ts/migrating) for every breaking release. You might not be impacted by a breaking change if you don't use the affected features.
 
 ## Usage
 
@@ -3687,6 +3676,32 @@ description: Migrating to @hey-api/openapi-ts.
 # Migrating
 
 While we try to avoid breaking changes, sometimes it's unavoidable in order to offer you the latest features. This page lists changes that require updates to your code. If you run into a problem with migration, please [open an issue](https://github.com/hey-api/openapi-ts/issues).
+
+## v0.91.0
+
+### Removed CommonJS (CJS) support
+
+`@hey-api/openapi-ts` is now ESM-only. This change simplifies the codebase, improves tree-shaking, and enables better integration with modern bundlers and TypeScript tooling.
+
+CommonJS entry points (`require()`, `module.exports`) are no longer supported. If you are in a CJS environment, you can still load the package dynamically using `import()` like:
+
+```js
+const { defineConfig } = await import('@hey-api/openapi-ts');
+```
+
+If you have previously written:
+
+```js
+const { defineConfig } = require('@hey-api/openapi-ts');
+```
+
+Migrate by updating your static imports:
+
+```js
+import { defineConfig } from '@hey-api/openapi-ts';
+```
+
+If your environment cannot use ESM, pin to a previous version.
 
 ## v0.90.0
 
@@ -5185,7 +5200,7 @@ This command is now called `openapi-ts`.
 
 ### Removed `indent`
 
-This config option has been removed. Use a [code formatter](/openapi-ts/configuration#formatting) to modify the generated files code style according to your preferences.
+This config option has been removed. Use a [code formatter](/openapi-ts/configuration/output#post-process) to modify the generated files code style according to your preferences.
 
 ## v0.27.24
 
@@ -6425,58 +6440,34 @@ export default {
 };
 ```
 
-## Format
+## Post Process
 
-To format your output folder contents, set `format` to a valid formatter.
+Post-processing allows you to run commands on the generated output folder after files are written. This is typically used to run formatters, linters, or other cleanup tools.
 
-::: code-group
+Commands are executed in order, and each command receives the output path via the `path` placeholder.
 
-```js [disabled]
-export default {
-  input: 'hey-api/backend', // sign up at app.heyapi.dev
-  output: {
-    format: null, // [!code ++]
-    path: 'src/client',
-  },
-};
-```
+### Presets
 
-```js [prettier]
-export default {
-  input: 'hey-api/backend', // sign up at app.heyapi.dev
-  output: {
-    format: 'prettier', // [!code ++]
-    path: 'src/client',
-  },
-};
-```
-
-```js [biome]
-export default {
-  input: 'hey-api/backend', // sign up at app.heyapi.dev
-  output: {
-    format: 'biome', // [!code ++]
-    path: 'src/client',
-  },
-};
-```
-
-:::
-
-You can also prevent your output from being formatted by adding your output path to the formatter's ignore file.
-
-## Lint
-
-To lint your output folder contents, set `lint` to a valid linter.
+You can use built-in presets for common tools:
 
 ::: code-group
 
-```js [disabled]
+```js [biome:format]
 export default {
   input: 'hey-api/backend', // sign up at app.heyapi.dev
   output: {
-    lint: null, // [!code ++]
     path: 'src/client',
+    postProcess: ['biome:format'], // [!code ++]
+  },
+};
+```
+
+```js [biome:lint]
+export default {
+  input: 'hey-api/backend', // sign up at app.heyapi.dev
+  output: {
+    path: 'src/client',
+    postProcess: ['biome:lint'], // [!code ++]
   },
 };
 ```
@@ -6485,18 +6476,18 @@ export default {
 export default {
   input: 'hey-api/backend', // sign up at app.heyapi.dev
   output: {
-    lint: 'eslint', // [!code ++]
     path: 'src/client',
+    postProcess: ['eslint'], // [!code ++]
   },
 };
 ```
 
-```js [biome]
+```js [oxfmt]
 export default {
   input: 'hey-api/backend', // sign up at app.heyapi.dev
   output: {
-    lint: 'biome', // [!code ++]
     path: 'src/client',
+    postProcess: ['oxfmt'], // [!code ++]
   },
 };
 ```
@@ -6505,15 +6496,42 @@ export default {
 export default {
   input: 'hey-api/backend', // sign up at app.heyapi.dev
   output: {
-    lint: 'oxlint', // [!code ++]
     path: 'src/client',
+    postProcess: ['oxlint'], // [!code ++]
+  },
+};
+```
+
+```js [prettier]
+export default {
+  input: 'hey-api/backend', // sign up at app.heyapi.dev
+  output: {
+    path: 'src/client',
+    postProcess: ['prettier'], // [!code ++]
   },
 };
 ```
 
 :::
 
-You can also prevent your output from being linted by adding your output path to the linter's ignore file.
+### Custom
+
+You can also provide custom post processors:
+
+```js
+export default {
+  input: 'hey-api/backend', // sign up at app.heyapi.dev
+  output: {
+    path: 'src/client',
+    postProcess: [{ // [!code ++]
+      command: 'dprint', // [!code ++]
+      args: ['fmt', '{{path}}'], // [!code ++]
+    }], // [!code ++]
+  },
+};
+```
+
+You can skip processing by adding the output path to the tool’s ignore file (for example `.eslintignore` or `.prettierignore`).
 
 ## Name Conflicts
 
@@ -7662,6 +7680,7 @@ This page demonstrates resolvers through a few common scenarios.
 1. [Handle arbitrary schema formats](#example-1)
 2. [Validate high precision numbers](#example-2)
 3. [Replace default base](#example-3)
+4. [Create permissive enums](#example-4)
 
 ## Terminology
 
@@ -7816,6 +7835,54 @@ export const vUser = v.looseObject({
 export const vUser = v.object({
   age: v.number(),
 });
+```
+
+:::
+
+## Example 4
+
+### Create permissive enums
+
+By default, enum schemas are strict and will reject unknown values.
+
+```js
+export const zStatus = z.enum(['active', 'inactive', 'pending']);
+```
+
+You might want to accept unknown enum values, for example when the API adds new values that haven't been added to the spec yet. You can use the enum resolver to create a permissive union.
+
+```js
+{
+  name: 'zod',
+  '~resolvers': {
+    enum(ctx) {
+      const { $, symbols } = ctx;
+      const { z } = symbols;
+      const { allStrings, enumMembers, literalMembers } = ctx.nodes.items(ctx);
+
+      if (!allStrings || !enumMembers.length) {
+        return;
+      }
+
+      const enumSchema = $(z).attr('enum').call($.array(...enumMembers));
+      return $(z).attr('union').call(
+        $.array(enumSchema, $(z).attr('string').call())
+      );
+    }
+  }
+}
+```
+
+This resolver creates a union that accepts both the known enum values and any other string.
+
+::: code-group
+
+```js [after]
+export const zStatus = z.union([z.enum(['active', 'inactive', 'pending']), z.string()]);
+```
+
+```js [before]
+export const zStatus = z.enum(['active', 'inactive', 'pending']);
 ```
 
 :::
@@ -8288,9 +8355,7 @@ export default {
         importKind: 'default', // [!code ++]
         importName: 'CatStore', // [!code ++]
         importSetup: ({ $, node }) =>
-          $(node.name).call(
-            $.object().pretty().prop('apiKey', $.literal('YOUR_API_KEY')),
-          ),
+          $(node.name).call($.object().pretty().prop('apiKey', $.literal('YOUR_API_KEY'))),
         moduleName: '@petstore/client',
         setupName: 'client',
       },
@@ -8433,6 +8498,7 @@ The complete list of contributors to Hey API.
 * [Jacob Cohen](https://github.com/jacobinu)
 * [Jan](https://github.com/JanST123)
 * [Jason Lee](https://github.com/LeeChSien)
+* [Jeff James](https://github.com/jsjames)
 * [Jianqi Pan](https://github.com/Jannchie)
 * [John Gozde](https://github.com/jgoz)
 * [Jordan Shatford](https://github.com/jordanshatford)
@@ -8450,6 +8516,7 @@ The complete list of contributors to Hey API.
 * [Leo Developer](https://github.com/Le0Developer)
 * [Louis Duchemin](https://github.com/lsdch)
 * [Lubos](https://github.com/mrlubos)
+* [Luke Rohde](https://github.com/thyming)
 * [Maarten Knijnenberg](https://github.com/mknijnenberg)
 * [Mads Hougesen](https://github.com/hougesen)
 * [Malcolm Kee](https://github.com/malcolm-kee)
@@ -8484,6 +8551,7 @@ The complete list of contributors to Hey API.
 * [Will Mitchell](https://github.com/wn-mitch)
 * [a1mer](https://github.com/a1mersnow)
 * [carson](https://github.com/carson2222)
+* [chrg1001](https://github.com/chrg1001)
 * [johnny kim](https://github.com/johnny-mh)
 * [0xfurai](https://github.com/0xfurai)
 * [9M6](https://github.com/9M6)
@@ -9334,9 +9402,7 @@ const bazSchemaResponseTransformer = (data: any) => {
   return data;
 };
 
-export const getFooResponseTransformer = async (
-  data: any,
-): Promise<GetFooResponse> => {
+export const getFooResponseTransformer = async (data: any): Promise<GetFooResponse> => {
   data = bazSchemaResponseTransformer(data);
   return data;
 };
@@ -9578,6 +9644,7 @@ url: /partials/contributors-list.md
 * [Jacob Cohen](https://github.com/jacobinu)
 * [Jan](https://github.com/JanST123)
 * [Jason Lee](https://github.com/LeeChSien)
+* [Jeff James](https://github.com/jsjames)
 * [Jianqi Pan](https://github.com/Jannchie)
 * [John Gozde](https://github.com/jgoz)
 * [Jordan Shatford](https://github.com/jordanshatford)
@@ -9595,6 +9662,7 @@ url: /partials/contributors-list.md
 * [Leo Developer](https://github.com/Le0Developer)
 * [Louis Duchemin](https://github.com/lsdch)
 * [Lubos](https://github.com/mrlubos)
+* [Luke Rohde](https://github.com/thyming)
 * [Maarten Knijnenberg](https://github.com/mknijnenberg)
 * [Mads Hougesen](https://github.com/hougesen)
 * [Malcolm Kee](https://github.com/malcolm-kee)
@@ -9629,6 +9697,7 @@ url: /partials/contributors-list.md
 * [Will Mitchell](https://github.com/wn-mitch)
 * [a1mer](https://github.com/a1mersnow)
 * [carson](https://github.com/carson2222)
+* [chrg1001](https://github.com/chrg1001)
 * [johnny kim](https://github.com/johnny-mh)
 * [0xfurai](https://github.com/0xfurai)
 * [9M6](https://github.com/9M6)

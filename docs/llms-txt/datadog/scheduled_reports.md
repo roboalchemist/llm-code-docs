@@ -1,10 +1,11 @@
+# Source: https://docs.datadoghq.com/dashboards/sharing/scheduled_reports.md
+
 # Source: https://docs.datadoghq.com/cloud_cost_management/reporting/scheduled_reports.md
 
 ---
 title: Scheduled Reports
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloud Cost Management > Cost Reports > Scheduled Reports
-source_url: https://docs.datadoghq.com/reporting/scheduled_reports/index.html
 ---
 
 # Scheduled Reports

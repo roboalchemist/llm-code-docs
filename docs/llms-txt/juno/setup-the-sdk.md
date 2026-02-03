@@ -40,7 +40,7 @@ yarn add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
 pnpm add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
 ```
 
-2.  Initialize your satellite in your web app:
+2.  Initialize your Satellite in your web app:
 
 ```
 import { initSatellite } from "@junobuild/core";await initSatellite();

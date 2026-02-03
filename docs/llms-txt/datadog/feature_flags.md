@@ -1,3 +1,5 @@
+# Source: https://docs.datadoghq.com/getting_started/feature_flags.md
+
 # Source: https://docs.datadoghq.com/change_tracking/feature_flags.md
 
 # Source: https://docs.datadoghq.com/feature_flags.md
@@ -6,7 +8,6 @@
 title: Feature Flags
 description: Learn about feature flags in Datadog.
 breadcrumbs: Docs > Feature Flags
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Feature Flags

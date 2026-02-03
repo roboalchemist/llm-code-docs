@@ -2,10 +2,6 @@
 
 # Source: https://mui.com/x/react-date-pickers/date-field.md
 
-# Source: https://mui.com/x/api/date-pickers/date-field.md
-
-# Source: https://mui.com/x/react-date-pickers/date-field.md
-
 ---
 productId: x-date-pickers
 title: React Date Field component

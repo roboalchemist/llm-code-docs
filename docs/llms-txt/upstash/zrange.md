@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zrange.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zrange.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zrange.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # ZRANGE
 
@@ -26,80 +12,72 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key to get.
 </ParamField>
 
-<ParamField body="min" type="number | string" required>
-  The lower bound of the range.
+<ParamField body="min" type="float | str" required>
+  The minimum value to include.
 </ParamField>
 
-<ParamField body="max" type="number | string" required>
-  The upper bound of the range.
+<ParamField body="max" type="float | str" required>
+  The maximum value to include.
 </ParamField>
 
-<ParamField body="options">
-  <Expandable>
-    <ParamField body="withScores" type="boolean">
-      Whether to include the scores in the response.
-    </ParamField>
+"-inf" and "+inf" are also valid values for the ranges
 
-    <ParamField body="rev" type="boolean">
-      Whether to reverse the order of the response.
-    </ParamField>
+<ParamField body="withscores" type="bool">
+  Whether to include the scores in the response.
+</ParamField>
 
-    <ParamField body="byScore" type="boolean">
-      Whether to use the score as the sort order.
-    </ParamField>
+<ParamField body="rev" type="bool">
+  Whether to reverse the order of the response.
+</ParamField>
 
-    <ParamField body="byLex" type="boolean">
-      Whether to use lexicographical ordering.
-    </ParamField>
+<ParamField body="sortby" type="&#x22;BYSCORE&#x22; | &#x22;BYLEX&#x22;">
+  If bylex
+</ParamField>
 
-    <ParamField body="offset" type="number">
-      The offset to start from.
-    </ParamField>
+<ParamField body="offset" type="int">
+  The offset to start from.
+</ParamField>
 
-    <ParamField body="count" type="number">
-      The number of elements to return.
-    </ParamField>
-  </Expandable>
+<ParamField body="count" type="int">
+  The number of elements to return.
 </ParamField>
 
 ## Response
 
-<ResponseField type="TMember[]">
+<ResponseField type="List[str] | List[Tuple[str, float]]">
   The values in the specified range.
 
-  If `withScores` is true, the response will have interleaved members and scores: `[TMember, number, TMember, number, ...]`
+  If `withscores` is true, the members will be tuples of the form `(member, score)`.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.zadd("key", 
-      { score: 1, member: "m1" },
-      { score: 2, member: "m2" },
-  )
-  const res = await redis.zrange("key", 1, 3)
-  console.log(res) // ["m2"]
+  ```py Example theme={"system"}
+  redis.zadd("myset", {"a": 1, "b": 2, "c": 3})
+
+  assert redis.zrange("myset", 0, 1) == ["a", "b"]
   ```
 
-  ```ts WithScores theme={"system"}
-  await redis.zadd("key", 
-      { score: 1, member: "m1" },
-      { score: 2, member: "m2" },
-  )
-  const res = await redis.zrange("key", 1, 3, { withScores: true })
-  console.log(res) // ["m2", 2]
+  ```py Reverse theme={"system"}
+  redis.zadd("myset", {"a": 1, "b": 2, "c": 3})
+
+  assert redis.zrange("myset", 0, 1, rev=True) == ["c", "b"]
+
   ```
 
-  ```ts ByScore theme={"system"}
-  await redis.zadd("key", 
-      { score: 1, member: "m1" },
-      { score: 2, member: "m2" },
-      { score: 3, member: "m3" },
-  )
-  const res = await redis.zrange("key", 1, 2, { byScore: true })
-  console.log(res) // ["m1", "m2"]
+  ```py Sorted theme={"system"}
+  redis.zadd("myset", {"a": 1, "b": 2, "c": 3})
+
+  assert redis.zrange("myset", 0, 1, sortby="BYSCORE") == ["a", "b"]
+
+  ```
+
+  ```py With scores theme={"system"}
+  redis.zadd("myset", {"a": 1, "b": 2, "c": 3})
+
+  assert redis.zrange("myset", 0, 1, withscores=True) == [("a", 1), ("b", 2)]
   ```
 </RequestExample>

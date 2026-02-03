@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/deploy/streamlit-community-cloud/manage-your-account/update-your-email
+
 # Update your email
 
 To update your email on Streamlit Community Cloud, you have two options: You can create a new account and merge your existing account into it, or you can use your GitHub account to update your email.

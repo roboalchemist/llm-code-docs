@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/ecosystem/pm2.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Run Bun as a daemon with PM2
 
 [PM2](https://pm2.keymetrics.io/) is a popular process manager that manages and runs your applications as daemons (background processes).
@@ -31,7 +35,7 @@ Alternatively, you can create a PM2 configuration file. Create a file named `pm2
 
 ```js pm2.config.js icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 module.exports = {
-  title: "app", // Name of your application
+  name: "app", // Name of your application
   script: "index.ts", // Entry point of your application
   interpreter: "bun", // Bun interpreter
   env: {

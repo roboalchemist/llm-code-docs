@@ -619,6 +619,7 @@ The following are the native column types with their required value types:
 | Column type          | Value type                 |
 | :------------------- | :------------------------- |
 | `'string'` (default) | `string`                   |
+| `'longText'`         | `string`                   |
 | `'number'`           | `number`                   |
 | `'date'`             | `Date() object`            |
 | `'dateTime'`         | `Date() object`            |
@@ -651,6 +652,7 @@ const initialRows = [
     isAdmin: true,
     country: 'Spain',
     discount: '',
+    bio: 'Damien is a software engineer with 5 years of experience in web development. He specializes in React and Node.js.',
   },
   {
     id: 2,
@@ -661,6 +663,7 @@ const initialRows = [
     isAdmin: false,
     country: 'France',
     discount: '',
+    bio: 'Nicolas is a product manager who loves building user-centric products. He has led multiple successful product launches.',
   },
   {
     id: 3,
@@ -671,6 +674,7 @@ const initialRows = [
     isAdmin: false,
     country: 'Brazil',
     discount: 'junior',
+    bio: 'Kate is a junior developer passionate about learning new technologies. She is currently focused on frontend development.',
   },
 ];
 
@@ -717,6 +721,11 @@ function ActionsCell(props: GridRenderCellParams) {
 
 const columns: GridColDef<Row>[] = [
   { field: 'name', type: 'string' },
+  {
+    field: 'bio',
+    type: 'longText',
+    width: 200,
+  },
   { field: 'age', type: 'number' },
   { field: 'dateCreated', type: 'date', width: 130 },
   { field: 'lastLogin', type: 'dateTime', width: 180 },
@@ -804,6 +813,21 @@ export default function ColumnTypesGrid() {
 }
 
 ```
+
+### Long text keyboard interactions
+
+The `'longText'` column type supports keyboard interactions to expand, collapse, and edit content when the cell is focused via click or keyboard navigation.
+
+View mode (expand button focused):
+
+- <kbd class="key">Space</kbd> – Toggle popup
+- <kbd class="key">Escape</kbd> – Close popup
+
+Edit mode (textarea focused):
+
+- <kbd><kbd class="key">Shift</kbd>+<kbd class="key">Enter</kbd></kbd> – Insert newline
+- <kbd class="key">Enter</kbd> – Commit changes
+- <kbd class="key">Escape</kbd> – Cancel editing
 
 ### Converting types
 

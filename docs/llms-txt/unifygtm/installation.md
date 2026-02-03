@@ -1,5 +1,9 @@
 # Source: https://docs.unifygtm.com/reference/browser-extension/installation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Introduction
 
 > Get started with the Unify Chrome extension.
@@ -35,7 +39,7 @@ export const ChromeLogo = () => <svg xmlns="http://www.w3.org/2000/svg" viewBox=
     <path d="M13.6086,30.0031,3.218,12.006A23.994,23.994,0,0,0,24.0025,48L34.3931,30.0029l-.0067-.0068a11.9852,11.9852,0,0,1-20.7778.007Z" fill="url(#c)" />
   </svg>;
 
-<img src="https://mintcdn.com/unify-19/Y_pp7r30tEdafKDG/images/reference/browser-extension/hero.png?fit=max&auto=format&n=Y_pp7r30tEdafKDG&q=85&s=f990892daf71c67b7ff98ea46770ad9e" data-og-width="1280" width="1280" data-og-height="800" height="800" data-path="images/reference/browser-extension/hero.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/unify-19/Y_pp7r30tEdafKDG/images/reference/browser-extension/hero.png?w=280&fit=max&auto=format&n=Y_pp7r30tEdafKDG&q=85&s=b91d69edbe4322fc83db42c308e0dc8d 280w, https://mintcdn.com/unify-19/Y_pp7r30tEdafKDG/images/reference/browser-extension/hero.png?w=560&fit=max&auto=format&n=Y_pp7r30tEdafKDG&q=85&s=d8c4a9feac84738886f169e94e685751 560w, https://mintcdn.com/unify-19/Y_pp7r30tEdafKDG/images/reference/browser-extension/hero.png?w=840&fit=max&auto=format&n=Y_pp7r30tEdafKDG&q=85&s=031efba30ac7e556c2e3023805ee6f76 840w, https://mintcdn.com/unify-19/Y_pp7r30tEdafKDG/images/reference/browser-extension/hero.png?w=1100&fit=max&auto=format&n=Y_pp7r30tEdafKDG&q=85&s=e9c310c8485d8dab977114fe1992b7f1 1100w, https://mintcdn.com/unify-19/Y_pp7r30tEdafKDG/images/reference/browser-extension/hero.png?w=1650&fit=max&auto=format&n=Y_pp7r30tEdafKDG&q=85&s=b8dffbb42e6a4d75406498a4bfa92c46 1650w, https://mintcdn.com/unify-19/Y_pp7r30tEdafKDG/images/reference/browser-extension/hero.png?w=2500&fit=max&auto=format&n=Y_pp7r30tEdafKDG&q=85&s=b434d4053440f61e80d2eaaad64f6bd2 2500w" />
+<img src="https://mintcdn.com/unify-19/5ofVWQAKPdYyQU9S/images/reference/browser-extension/default.png?fit=max&auto=format&n=5ofVWQAKPdYyQU9S&q=85&s=1e5360969e77406e8c2e1847c8c9fb9a" data-og-width="1280" width="1280" data-og-height="800" height="800" data-path="images/reference/browser-extension/default.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/unify-19/5ofVWQAKPdYyQU9S/images/reference/browser-extension/default.png?w=280&fit=max&auto=format&n=5ofVWQAKPdYyQU9S&q=85&s=899ab171a08903723adc7e9874a69e0e 280w, https://mintcdn.com/unify-19/5ofVWQAKPdYyQU9S/images/reference/browser-extension/default.png?w=560&fit=max&auto=format&n=5ofVWQAKPdYyQU9S&q=85&s=b4abba6bfb9ef8182ec6d6d2b5d630fb 560w, https://mintcdn.com/unify-19/5ofVWQAKPdYyQU9S/images/reference/browser-extension/default.png?w=840&fit=max&auto=format&n=5ofVWQAKPdYyQU9S&q=85&s=aef32b8fec97bed18fc0d6907f904edd 840w, https://mintcdn.com/unify-19/5ofVWQAKPdYyQU9S/images/reference/browser-extension/default.png?w=1100&fit=max&auto=format&n=5ofVWQAKPdYyQU9S&q=85&s=268dfd48f382f4b3523fd66f502a734e 1100w, https://mintcdn.com/unify-19/5ofVWQAKPdYyQU9S/images/reference/browser-extension/default.png?w=1650&fit=max&auto=format&n=5ofVWQAKPdYyQU9S&q=85&s=4d79b3cbe7f4943c3e03657cf84bee2b 1650w, https://mintcdn.com/unify-19/5ofVWQAKPdYyQU9S/images/reference/browser-extension/default.png?w=2500&fit=max&auto=format&n=5ofVWQAKPdYyQU9S&q=85&s=f58cc861ecd24615c4ef2c6c269cd209 2500w" />
 
 Unify offers a native Chrome extension.
 Some notable features of the extension include the ability to:

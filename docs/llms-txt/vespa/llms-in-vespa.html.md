@@ -370,7 +370,7 @@ The above example uses the `LLMSearcher`[class](https://github.com/vespa-engine/
 
 Note that it should not be necessary to create your own components in Java to use this functionality.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

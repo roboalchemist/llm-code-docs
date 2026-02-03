@@ -35,52 +35,107 @@ Explore the available Admin UIs to learn more about each of their capabilities:
 
 Containing user management functionality for creating & modifying users, assigning Roles & Permissions, locking or updating passwords:
 
-<a href="/admin-ui-users">
+<a href="/admin-ui-identity-roles" class="not-prose">
     <div class="block p-4 rounded shadow hover:shadow-lg">
-        <img src="/img/pages/admin-ui/users.png">
+        <img src="/img/pages/admin-ui/identityauth-roles.webp">
     </div>
 </a>
+
+Quick start:
+
+Create a new [ASP.NET Identity Auth Template](https://servicestack.net/start).
 
 ### [Profiling & Logging UI](/admin-ui-profiling)
 
 Enables invaluable observability into your App, from being able to quickly inspect and browse incoming requests, to tracing their behavior:
 
-<a href="/admin-ui-profiling">
+<a href="/admin-ui-profiling" class="not-prose">
     <div class="block p-4 rounded shadow hover:shadow-lg">
         <img src="/img/pages/admin-ui/admin-ui-logging.png">
     </div>
 </a>
 
+Enable Profiling:
+
+:::copy
+npx add-in profiling
+:::
+
+Enable RDBMS Request Logging:
+
+:::copy
+npx add-in db-requestlogs
+:::
+
+Enable SQLite Request Logging:
+
+:::copy
+npx add-in sqlitelogs
+:::
+
 ### [Redis Admin](/admin-ui-redis)
 
 Manage your App's configured Redis Server, query & edit core Redis data types and execute custom redis commands:
 
-<a href="/admin-ui-redis">
+<a href="/admin-ui-redis" class="not-prose">
     <div class="block p-4 rounded shadow hover:shadow-lg">
         <img src="/img/pages/admin-ui/admin-ui-redis.png">
     </div>
 </a>
 
+Quick start:
+
+:::copy
+npx add-in redis
+:::
+
 ### [Database Admin](/admin-ui-database)
 
 Quickly browse and navigate your App's configured RDBMS schemas and tables:
 
-<a href="/admin-ui-database">
+<a href="/admin-ui-database" class="not-prose">
     <div class="block p-4 rounded shadow hover:shadow-lg">
         <img src="/img/pages/admin-ui/admin-ui-database.png">
     </div>
 </a>
 
+Quick start:
+
+```csharp
+services.AddPlugin(new AdminDatabaseFeature());
+```
+
 ### [DB Validation UI](/admin-ui-validation)
 
 Leverages the existing Declarative Validation infrastructure to enable dynamically managing Request DTO Type and Property Validators from a RDBMS data source
 
-<a href="/admin-ui-validation">
+<a href="/admin-ui-validation" class="not-prose">
     <div class="block p-4 rounded shadow hover:shadow-lg">
         <img src="/img/pages/admin-ui/admin-ui-validation.png">
     </div>
 </a>
 
+Quick start:
+
+:::copy
+npx add-in validation-source
+:::
+
+### [AI Chat UI](/ai-chat-analytics)
+
+A unified API for integrating multiple local and cloud LLMs into your applications providing financial visibility into your AI operations with interactive visualizations showing spending distribution across providers and models.
+
+<a href="/ai-chat-analytics" class="not-prose">
+    <div class="block p-4 rounded shadow hover:shadow-lg">
+        <img src="/img/pages/ai-chat/admin-chat-costs.webp">
+    </div>
+</a>
+
+Quick start:
+
+:::copy
+npx add-in chat
+:::
 
 ### Feedback
 

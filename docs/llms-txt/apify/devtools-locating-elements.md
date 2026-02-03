@@ -2,18 +2,6 @@
 
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/devtools-locating-elements.md
 
-# Source: https://docs.apify.com/academy/scraping-basics-python/devtools-locating-elements.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript/devtools-locating-elements.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-python/devtools-locating-elements.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript/devtools-locating-elements.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-python/devtools-locating-elements.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript2/devtools-locating-elements.md
-
 # Locating HTML elements on a web page with browser DevTools
 
 **In this lesson we'll use the browser tools for developers to manually find products on an e-commerce website.**
@@ -24,7 +12,7 @@ Inspecting Wikipedia and tweaking its subtitle is fun, but let's shift gears and
 
 ## Meeting the Warehouse store
 
-Instead of artificial scraping playgrounds or sandboxes, we'll scrape a real e-commerce site. Shopify, a major e-commerce platform, has a demo store at https://warehouse-theme-metal.myshopify.com/. It strikes a good balance between being realistic and stable enough for a tutorial. Our scraper will track prices for all products listed on the https://warehouse-theme-metal.myshopify.com/collections/sales.
+Instead of artificial scraping playgrounds or sandboxes, we'll scrape a real e-commerce site. Shopify, a major e-commerce platform, has a demo store at [warehouse-theme-metal.myshopify.com](https://warehouse-theme-metal.myshopify.com/). It strikes a good balance between being realistic and stable enough for a tutorial. Our scraper will track prices for all products listed on the [Sales page](https://warehouse-theme-metal.myshopify.com/collections/sales).
 
 Balancing authenticity and stability
 
@@ -34,7 +22,7 @@ That said, we designed all the additional exercises to work with live websites. 
 
 ## Finding a product card
 
-As mentioned in the previous lesson, before building a scraper, we need to understand structure of the target page and identify the specific elements our program should extract. Let's figure out how to select details for each product on the https://warehouse-theme-metal.myshopify.com/collections/sales.
+As mentioned in the previous lesson, before building a scraper, we need to understand structure of the target page and identify the specific elements our program should extract. Let's figure out how to select details for each product on the [Sales page](https://warehouse-theme-metal.myshopify.com/collections/sales).
 
 ![Warehouse store with DevTools open](/assets/images/devtools-warehouse-193f0152a0cd14df5068bc13512c31ee.png)
 
@@ -50,7 +38,7 @@ In the **Elements** tab, we'll move our cursor up from the `a` element containin
 
 At this stage, we could use the **Store as global variable** option to send the element to the **Console**. While helpful for manual inspection, this isn't something a program can do.
 
-Scrapers typically rely on https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors to locate elements on a page, and these selectors often target elements based on their `class` attributes. The product card we highlighted has markup like this:
+Scrapers typically rely on [CSS selectors](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_selectors) to locate elements on a page, and these selectors often target elements based on their `class` attributes. The product card we highlighted has markup like this:
 
 
 ```
@@ -64,7 +52,7 @@ The `class` attribute can hold multiple values separated by whitespace. This par
 
 ## Programmatically locating a product card
 
-Let's jump into the **Console** and write some code. In browsers, JavaScript represents the current page as the https://developer.mozilla.org/en-US/docs/Web/API/Document object, accessible via `document`. This object offers many useful methods, including https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector. This method takes a CSS selector as a string and returns the first HTML element that matches. We'll try typing this into the **Console**:
+Let's jump into the **Console** and write some code. In browsers, JavaScript represents the current page as the [Document](https://developer.mozilla.org/en-US/docs/Web/API/Document) object, accessible via `document`. This object offers many useful methods, including [querySelector()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelector). This method takes a CSS selector as a string and returns the first HTML element that matches. We'll try typing this into the **Console**:
 
 
 ```
@@ -78,7 +66,7 @@ It will return the HTML element for the first product card in the listing:
 
 CSS selectors can get quite complex, but the basics are enough to scrape most of the Warehouse store. Let's cover two simple types and how they can combine.
 
-The https://developer.mozilla.org/en-US/docs/Web/CSS/Type_selectors matches elements by tag name. For example, `h1` would match the highlighted element:
+The [type selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Type_selectors) matches elements by tag name. For example, `h1` would match the highlighted element:
 
 
 ```
@@ -89,7 +77,7 @@ The https://developer.mozilla.org/en-US/docs/Web/CSS/Type_selectors matches elem
 ```
 
 
-The https://developer.mozilla.org/en-US/docs/Web/CSS/Class_selectors matches elements based on their class attribute. For instance, `.heading` (note the dot) would match the following:
+The [class selector](https://developer.mozilla.org/en-US/docs/Web/CSS/Class_selectors) matches elements based on their class attribute. For instance, `.heading` (note the dot) would match the following:
 
 
 ```
@@ -134,7 +122,7 @@ In the **Console**, hovering our cursor over objects representing HTML elements 
 
 ![Highlighting a querySelector() result](/assets/images/devtools-hover-queryselector-747bedb6133e1d9919c10bdb0e6cc599.png)
 
-But what if we want to scrape details about the Sony subwoofer we inspected earlier? For that, we need a method that selects more than just the first match: https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll. As the name suggests, it takes a CSS selector string and returns all matching HTML elements. Let's type this into the **Console**:
+But what if we want to scrape details about the Sony subwoofer we inspected earlier? For that, we need a method that selects more than just the first match: [querySelectorAll()](https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll). As the name suggests, it takes a CSS selector string and returns all matching HTML elements. Let's type this into the **Console**:
 
 
 ```
@@ -142,7 +130,7 @@ document.querySelectorAll('.product-item');
 ```
 
 
-The returned value is a https://developer.mozilla.org/en-US/docs/Web/API/NodeList, a collection of nodes. Browsers understand an HTML document as a tree of nodes. Most nodes are HTML elements, but there are also text nodes for plain text, and others.
+The returned value is a [NodeList](https://developer.mozilla.org/en-US/docs/Web/API/NodeList), a collection of nodes. Browsers understand an HTML document as a tree of nodes. Most nodes are HTML elements, but there are also text nodes for plain text, and others.
 
 We'll expand the result by clicking the small arrow, then hover our cursor over the third element in the list. Indexing starts at 0, so the third element is at index 2. There it is—the product card for the subwoofer!
 
@@ -167,17 +155,17 @@ These challenges are here to help you test what you’ve learned in this lesson.
 
 Real world
 
-You're about to touch the real web, which is practical and exciting! But websites change, so some exercises might break. If you run into any issues, please leave a comment below or https://github.com/apify/apify-docs/issues.
+You're about to touch the real web, which is practical and exciting! But websites change, so some exercises might break. If you run into any issues, please leave a comment below or [file a GitHub Issue](https://github.com/apify/apify-docs/issues).
 
 ### Locate headings on Wikipedia's Main Page
 
-On English Wikipedia's https://en.wikipedia.org/wiki/Main_Page, use CSS selectors in the **Console** to list the HTML elements representing headings of the colored boxes (including the grey ones).
+On English Wikipedia's [Main Page](https://en.wikipedia.org/wiki/Main_Page), use CSS selectors in the **Console** to list the HTML elements representing headings of the colored boxes (including the grey ones).
 
 ![Wikipedia\&#39;s Main Page headings](/assets/images/devtools-exercise-wikipedia-5d47de5c50985ec7cc87b3a220f9d14c.png)
 
 Solution
 
-1. Open the https://en.wikipedia.org/wiki/Main_Page.
+1. Open the [Main Page](https://en.wikipedia.org/wiki/Main_Page).
 2. Activate the element selection tool in your DevTools.
 3. Click on several headings to examine the markup.
 4. Notice that all headings are `h2` elements with the `mp-h2` class.
@@ -186,13 +174,13 @@ Solution
 
 ### Locate products on Shein
 
-Go to Shein's https://shein.com/RecommendSelection/Jewelry-Accessories-sc-017291431.html category. In the **Console**, use CSS selectors to list all HTML elements representing the products.
+Go to Shein's [Jewelry & Accessories](https://shein.com/RecommendSelection/Jewelry-Accessories-sc-017291431.html) category. In the **Console**, use CSS selectors to list all HTML elements representing the products.
 
 ![Products in Shein\&#39;s Jewelry \&amp; Accessories category](/assets/images/devtools-exercise-shein-e289fb63ac18c6aa8ea8ed48e6ffd805.png)
 
 Solution
 
-1. Visit the https://shein.com/RecommendSelection/Jewelry-Accessories-sc-017291431.html page. Close any pop-ups or promotions.
+1. Visit the [Jewelry & Accessories](https://shein.com/RecommendSelection/Jewelry-Accessories-sc-017291431.html) page. Close any pop-ups or promotions.
 2. Activate the element selection tool in your DevTools.
 3. Click on the first product to inspect its markup. Repeat with a few others.
 4. Observe that all products are `section` elements with multiple classes, including `product-card`.
@@ -202,17 +190,17 @@ Solution
 
 ### Locate articles on Guardian
 
-Go to Guardian's https://www.theguardian.com/sport/formulaone. Use the **Console** to find all HTML elements representing the articles.
+Go to Guardian's [page about F1](https://www.theguardian.com/sport/formulaone). Use the **Console** to find all HTML elements representing the articles.
 
 Need a nudge?
 
-Learn about the https://developer.mozilla.org/en-US/docs/Web/CSS/Descendant_combinator.
+Learn about the [descendant combinator](https://developer.mozilla.org/en-US/docs/Web/CSS/Descendant_combinator).
 
 ![Articles on Guardian\&#39;s page about F1](/assets/images/devtools-exercise-guardian1-f3587204f6314c9a25a1955f94420ebc.png)
 
 Solution
 
-1. Open the https://www.theguardian.com/sport/formulaone.
+1. Open the [page about F1](https://www.theguardian.com/sport/formulaone).
 2. Activate the element selection tool in your DevTools.
 3. Click on an article to inspect its structure. Check several articles, including the ones with smaller cards.
 4. Note that all articles are `li` elements, but their classes (e.g., `dcr-1qmyfxi`) are dynamically generated and unreliable.

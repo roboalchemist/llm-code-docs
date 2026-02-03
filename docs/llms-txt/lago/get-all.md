@@ -28,230 +28,401 @@
 
 # Source: https://getlago.com/docs/api-reference/add-ons/get-all.md
 
-# Source: https://getlago.com/docs/api-reference/webhook-endpoints/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/wallets/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/taxes/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/subscriptions/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/payments/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/payment-requests/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/payment-receipts/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/invoices/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/customers/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/credit-notes/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/coupons/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/billing-entities/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/billable-metrics/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/alerts/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/add-ons/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/webhook-endpoints/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/wallets/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/taxes/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/subscriptions/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/payments/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/payment-requests/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/payment-receipts/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/invoices/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/customers/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/credit-notes/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/coupons/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/billing-entities/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/billable-metrics/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/alerts/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/add-ons/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/invoices/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/customers/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/credit-notes/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/coupons/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/billing-entities/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/billable-metrics/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/alerts/get-all.md
-
-# Source: https://getlago.com/docs/api-reference/add-ons/get-all.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # List all add-ons
 
 > This endpoint is used to list all existing add-ons.
 
+<RequestExample>
+  ```bash cURL theme={"dark"}
+  LAGO_URL="https://api.getlago.com"
+  API_KEY="__YOUR_API_KEY__"
+
+  curl --location --request GET "$LAGO_URL/api/v1/add_ons?per_page=2&page=1" \
+    --header "Authorization: Bearer $API_KEY"
+  ```
+
+  ```python Python theme={"dark"}
+  from lago_python_client.client import Client
+  from lago_python_client.exceptions import LagoApiError
+
+  client = Client(api_key='__YOUR_API_KEY__')
+
+  try:
+      client.add_ons.find_all({'per_page': 2, 'page': 1})
+  except LagoApiError as e:
+      repair_broken_state(e)  # do something on error or raise your own exception
+  ```
+
+  ```ruby Ruby theme={"dark"}
+  require 'lago-ruby-client'
+
+  client = Lago::Api::Client.new(api_key: '__YOUR_API_KEY__')
+
+  client.add_ons.get_all({ per_page: 2, page: 3 })
+  ```
+
+  ```js Javascript theme={"dark"}
+  await client.addOns.findAllAddOns({ per_page: 2, page: 3 });
+  ```
+
+  ```go Go theme={"dark"}
+  import "fmt"
+  import "github.com/getlago/lago-go-client"
+
+  func main() {
+  lagoClient := lago.New().
+      SetApiKey("__YOUR_API_KEY__")
+
+  addOnListInput := &lago.AddOnListInput{
+      PerPage: 1,
+      Page: 1,
+  }
+
+  addOnResult, err := lagoClient.AddOn().GetList(addOnListInput)
+  if err != nil {
+      // Error is *lago.Error
+      panic(err)
+  }
+
+  // addOnResult is *lago.AddOnResult
+  fmt.Println(addOnResult)
+  }
+  ```
+</RequestExample>
+
+
 ## OpenAPI
 
 ````yaml GET /add_ons
+openapi: 3.1.0
+info:
+  title: Lago API documentation
+  description: >-
+    Lago API allows your application to push customer information and metrics
+    (events) from your application to the billing application.
+  version: 1.41.0
+  license:
+    name: AGPLv3
+    identifier: AGPLv3
+  contact:
+    email: tech@getlago.com
+servers:
+  - url: https://api.getlago.com/api/v1
+    description: US Lago cluster
+  - url: https://api.eu.getlago.com/api/v1
+    description: EU Lago cluster
+security:
+  - bearerAuth: []
+tags:
+  - name: activity_logs
+    description: Everything about Activity logs
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/audit-logs/activity-logs-object
+  - name: analytics
+    description: Everything about Analytics
+  - name: api_logs
+    description: Everything about API logs
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/audit-logs/api-logs-object
+  - name: billable_metrics
+    description: Everything about Billable metric collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/billable-metrics/object
+  - name: features
+    description: Everything about Feature collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/features/object
+  - name: entitlements
+    description: Everything about Entitlement collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/entitlements/object
+  - name: billing_entities
+    description: Everything about Billing Entities
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/billing-entities/object
+  - name: customers
+    description: Everything about Customer collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/customers/object
+  - name: plans
+    description: Everything about Plan collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/plans/object
+  - name: subscriptions
+    description: Everything about Subscription collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/subscriptions/subscription-object
+  - name: events
+    description: Everything about Event collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/events/event-object
+  - name: organizations
+    description: Everything about Organization collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/organizations/organization-object
+  - name: taxes
+    description: Everything about Tax collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/taxes/tax-object
+  - name: coupons
+    description: Everything about Coupon collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/coupons/coupon-object
+  - name: add_ons
+    description: Everything about Add-on collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/add-ons/add-on-object
+  - name: fees
+    description: Everything about Fees
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/invoices/invoice-object#fee-object
+  - name: invoices
+    description: Everything about Invoice collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/invoices/invoice-object
+  - name: wallets
+    description: Everything about Wallet collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/wallets/wallet-object
+  - name: credit_notes
+    description: Everything about Credit notes collection
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/credit-notes/credit-note-object
+  - name: webhooks
+    description: Everything about Webhooks
+    externalDocs:
+      description: Find out more
+      url: >-
+        https://doc.getlago.com/api-reference/webhooks/format---signature#1-retrieve-the-public-key
+  - name: webhook_endpoints
+    description: Everything about Webhook Endpoints
+    externalDocs:
+      description: Find out more
+      url: >-
+        https://doc.getlago.com/api-reference/webhook-endpoints/webhook-endpoint-object
+  - name: payment_receipts
+    description: Everything about Payment receipts
+    externalDocs:
+      description: Find out more
+      url: >-
+        https://doc.getlago.com/api-reference/payment-receipts/payment-receipt-object
+  - name: payment_requests
+    description: Everything about PaymentRequests
+    externalDocs:
+      description: Find out more
+      url: >-
+        https://doc.getlago.com/api-reference/payment-requests/payment-request-object
+  - name: payments
+    description: Everything about Payments
+    externalDocs:
+      description: Find out more
+      url: https://doc.getlago.com/api-reference/payments/payment-object
+externalDocs:
+  description: Lago Github
+  url: https://github.com/getlago
 paths:
-  path: /add_ons
-  method: get
-  servers:
-    - url: https://api.getlago.com/api/v1
-      description: US Lago cluster
-    - url: https://api.eu.getlago.com/api/v1
-      description: EU Lago cluster
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        page:
-          schema:
-            - type: integer
-              required: false
-              description: Page number.
-              example: 1
-          explode: true
-        per_page:
-          schema:
-            - type: integer
-              required: false
-              description: Number of records per page.
-              example: 20
-          explode: true
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              add_ons:
-                allOf:
-                  - type: array
-                    items:
-                      $ref: '#/components/schemas/AddOnObject'
-              meta:
-                allOf:
-                  - $ref: '#/components/schemas/PaginationMeta'
-            refIdentifier: '#/components/schemas/AddOnsPaginated'
-            requiredProperties:
-              - add_ons
-              - meta
-        examples:
-          example:
-            value:
-              add_ons:
-                - lago_id: 1a901a90-1a90-1a90-1a90-1a901a901a90
-                  name: Setup Fee
-                  invoice_display_name: Setup Fee (SF1)
-                  code: setup_fee
-                  amount_cents: 50000
-                  amount_currency: USD
-                  description: Implementation fee for new customers.
-                  created_at: '2022-04-29T08:59:51Z'
-                  taxes:
-                    - lago_id: 1a901a90-1a90-1a90-1a90-1a901a901a90
-                      name: TVA
-                      code: french_standard_vat
-                      description: French standard VAT
-                      rate: 20
-                      applied_to_organization: true
-                      created_at: '2023-07-06T14:35:58Z'
-              meta:
-                current_page: 2
-                next_page: 3
-                prev_page: 1
-                total_pages: 4
-                total_count: 70
-        description: Add-ons
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: integer
-                    format: int32
-                    example: 401
-              error:
-                allOf:
-                  - type: string
-                    example: Unauthorized
-            refIdentifier: '#/components/schemas/ApiErrorUnauthorized'
-            requiredProperties:
-              - status
-              - error
-        examples:
-          example:
-            value:
-              status: 401
-              error: Unauthorized
-        description: Unauthorized error
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              status:
-                allOf:
-                  - type: integer
-                    format: int32
-                    example: 403
-              error:
-                allOf:
-                  - type: string
-                    example: Forbidden
-              code:
-                allOf:
-                  - type: string
-                    example: feature_unavailable
-            refIdentifier: '#/components/schemas/ApiErrorForbidden'
-            requiredProperties:
-              - status
-              - error
-              - code
-        examples:
-          example:
-            value:
-              status: 403
-              error: Forbidden
-              code: feature_unavailable
-        description: Forbidden
-  deprecated: false
-  type: path
+  /add_ons:
+    get:
+      tags:
+        - add_ons
+      summary: List all add-ons
+      description: This endpoint is used to list all existing add-ons.
+      operationId: findAllAddOns
+      parameters:
+        - $ref: '#/components/parameters/page'
+        - $ref: '#/components/parameters/per_page'
+      responses:
+        '200':
+          description: Add-ons
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddOnsPaginated'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
 components:
+  parameters:
+    page:
+      name: page
+      in: query
+      description: Page number.
+      required: false
+      explode: true
+      schema:
+        type: integer
+        example: 1
+    per_page:
+      name: per_page
+      in: query
+      description: Number of records per page.
+      required: false
+      explode: true
+      schema:
+        type: integer
+        example: 20
   schemas:
+    AddOnsPaginated:
+      type: object
+      required:
+        - add_ons
+        - meta
+      properties:
+        add_ons:
+          type: array
+          items:
+            $ref: '#/components/schemas/AddOnObject'
+        meta:
+          $ref: '#/components/schemas/PaginationMeta'
+    AddOnObject:
+      type: object
+      required:
+        - lago_id
+        - name
+        - invoice_display_name
+        - code
+        - amount_cents
+        - amount_currency
+        - description
+        - created_at
+      properties:
+        lago_id:
+          type: string
+          format: uuid
+          description: Unique identifier of the add-on, created by Lago.
+          example: 1a901a90-1a90-1a90-1a90-1a901a901a90
+        name:
+          type: string
+          description: The name of the add-on.
+          example: Setup Fee
+        invoice_display_name:
+          type:
+            - string
+            - 'null'
+          description: >-
+            Specifies the name that will be displayed on an invoice. If no value
+            is set for this field, the name of the actual charge will be used as
+            the default display name.
+          example: Setup Fee (SF1)
+        code:
+          type: string
+          description: Unique code used to identify the add-on.
+          example: setup_fee
+        amount_cents:
+          type: integer
+          description: >-
+            The cost of the add-on in cents, excluding any applicable taxes,
+            that is billed to a customer. By creating a one-off invoice, you
+            will be able to override this value.
+          example: 50000
+        amount_currency:
+          $ref: '#/components/schemas/Currency'
+          description: The currency of the add-on.
+          example: USD
+        description:
+          type:
+            - string
+            - 'null'
+          description: The description of the add-on.
+          example: Implementation fee for new customers.
+        created_at:
+          type: string
+          format: date-time
+          description: >-
+            The date and time when the add-on was created. It is expressed in
+            UTC format according to the ISO 8601 datetime standard. This field
+            provides the timestamp for the exact moment when the add-on was
+            initially created.
+          example: '2022-04-29T08:59:51Z'
+        taxes:
+          type: array
+          description: All taxes applied to the add-on.
+          items:
+            $ref: '#/components/schemas/TaxObject'
+    PaginationMeta:
+      type: object
+      required:
+        - current_page
+        - total_pages
+        - total_count
+      properties:
+        current_page:
+          type: integer
+          description: Current page.
+          example: 2
+        next_page:
+          type:
+            - integer
+            - 'null'
+          description: Next page.
+          example: 3
+        prev_page:
+          type:
+            - integer
+            - 'null'
+          description: Previous page.
+          example: 1
+        total_pages:
+          type: integer
+          description: Total number of pages.
+          example: 4
+        total_count:
+          type: integer
+          description: Total number of records.
+          example: 70
+    ApiErrorUnauthorized:
+      type: object
+      required:
+        - status
+        - error
+      properties:
+        status:
+          type: integer
+          format: int32
+          example: 401
+        error:
+          type: string
+          example: Unauthorized
+    ApiErrorForbidden:
+      type: object
+      required:
+        - status
+        - error
+        - code
+      properties:
+        status:
+          type: integer
+          format: int32
+          example: 403
+        error:
+          type: string
+          example: Forbidden
+        code:
+          type: string
+          example: feature_unavailable
     Currency:
       type: string
       example: USD
@@ -444,101 +615,22 @@ components:
           format: date-time
           description: Creation date of the tax.
           example: '2023-07-06T14:35:58Z'
-    PaginationMeta:
-      type: object
-      required:
-        - current_page
-        - total_pages
-        - total_count
-      properties:
-        current_page:
-          type: integer
-          description: Current page.
-          example: 2
-        next_page:
-          type:
-            - integer
-            - 'null'
-          description: Next page.
-          example: 3
-        prev_page:
-          type:
-            - integer
-            - 'null'
-          description: Previous page.
-          example: 1
-        total_pages:
-          type: integer
-          description: Total number of pages.
-          example: 4
-        total_count:
-          type: integer
-          description: Total number of records.
-          example: 70
-    AddOnObject:
-      type: object
-      required:
-        - lago_id
-        - name
-        - invoice_display_name
-        - code
-        - amount_cents
-        - amount_currency
-        - description
-        - created_at
-      properties:
-        lago_id:
-          type: string
-          format: uuid
-          description: Unique identifier of the add-on, created by Lago.
-          example: 1a901a90-1a90-1a90-1a90-1a901a901a90
-        name:
-          type: string
-          description: The name of the add-on.
-          example: Setup Fee
-        invoice_display_name:
-          type:
-            - string
-            - 'null'
-          description: >-
-            Specifies the name that will be displayed on an invoice. If no value
-            is set for this field, the name of the actual charge will be used as
-            the default display name.
-          example: Setup Fee (SF1)
-        code:
-          type: string
-          description: Unique code used to identify the add-on.
-          example: setup_fee
-        amount_cents:
-          type: integer
-          description: >-
-            The cost of the add-on in cents, excluding any applicable taxes,
-            that is billed to a customer. By creating a one-off invoice, you
-            will be able to override this value.
-          example: 50000
-        amount_currency:
-          $ref: '#/components/schemas/Currency'
-          description: The currency of the add-on.
-          example: USD
-        description:
-          type:
-            - string
-            - 'null'
-          description: The description of the add-on.
-          example: Implementation fee for new customers.
-        created_at:
-          type: string
-          format: date-time
-          description: >-
-            The date and time when the add-on was created. It is expressed in
-            UTC format according to the ISO 8601 datetime standard. This field
-            provides the timestamp for the exact moment when the add-on was
-            initially created.
-          example: '2022-04-29T08:59:51Z'
-        taxes:
-          type: array
-          description: All taxes applied to the add-on.
-          items:
-            $ref: '#/components/schemas/TaxObject'
+  responses:
+    Unauthorized:
+      description: Unauthorized error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiErrorUnauthorized'
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiErrorForbidden'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
 
 ````

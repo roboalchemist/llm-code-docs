@@ -42,5 +42,5 @@ The `.vespaignore` format is a subset of the `.gitignore` format, where:
 
 Complex rules, such as negated patterns and recursive globbing (`**`) are not supported.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

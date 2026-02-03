@@ -87,7 +87,7 @@ When toggled, this setting will hide groupings without any issues.
 
 Choose what issue properties are displayed on individual issues on lists or the board. This is different from filters; filters will refine the list to only issues with certain properties while display options show all issues in the list but hide or show data on the issue item or board card.
 
-Display properties include _Issue ID_, _Priority_, _Status, Labels, Project, Cycle, Created, Updated, Assignee, Estimate, Links, Sentry issues,_ and _Pull Request_s _and Commits._ On Business and Enterprise plans, _SLA_ is also a supported Display property.
+Display properties include _Issue ID_, _Priority_, _Status, Labels, Project, Cycle, Created, Updated, Assignee, Estimate, Links, Time in status, Sentry issues,_ and _Pull Request_s _and Commits._ On Business and Enterprise plans, _SLA_ is also a supported Display property.
 
 ## Initiatives and project views
 

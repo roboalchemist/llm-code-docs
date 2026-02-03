@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/chatbot/contacts/identify-users.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Identify users across multiple chats
 
 When you save a contact, it's associated with the user and persists across multiple chat sessions. This information can be used to personalize the conversation, skip repetitive questions, and tailor the flow accordingly.

@@ -2,21 +2,13 @@
 
 # Source: https://docs.windsurf.com/plugins/accounts/api-reference/analytics-api-introduction.md
 
-# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/analytics-api-introduction.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/api-reference/analytics-api-introduction.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/analytics-api-introduction.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/api-reference/analytics-api-introduction.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/analytics-api-introduction.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/api-reference/analytics-api-introduction.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Analytics API
 
-> Enterprise analytics API for querying Windsurf usage data
+> Enterprise analytics API for querying Windsurf usage data including autocomplete, chat, command, and Cascade metrics.
 
 ## Overview
 

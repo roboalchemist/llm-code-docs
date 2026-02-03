@@ -20,7 +20,7 @@ can access the deployed environment via SSH:
 ```yaml {}
 applications:
   <APP_NAME>:
-    type: "python:3.13"
+    type: "python:3.14"
     source:
       root: "/"
     access:
@@ -34,7 +34,7 @@ applications:
   <APP_NAME>:
     type: "composable:25.11"
     stack: 
-      runtimes: [ "python@3.13" ]
+      runtimes: [ "python@3.14" ]
     source:
       root: "/"
     access:

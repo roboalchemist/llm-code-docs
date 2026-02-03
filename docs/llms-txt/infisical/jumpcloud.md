@@ -6,29 +6,9 @@
 
 # Source: https://infisical.com/docs/documentation/platform/identities/ldap-auth/jumpcloud.md
 
-# Source: https://infisical.com/docs/documentation/platform/sso/jumpcloud.md
-
-# Source: https://infisical.com/docs/documentation/platform/scim/jumpcloud.md
-
-# Source: https://infisical.com/docs/documentation/platform/ldap/jumpcloud.md
-
-# Source: https://infisical.com/docs/documentation/platform/identities/ldap-auth/jumpcloud.md
-
-# Source: https://infisical.com/docs/documentation/platform/sso/jumpcloud.md
-
-# Source: https://infisical.com/docs/documentation/platform/scim/jumpcloud.md
-
-# Source: https://infisical.com/docs/documentation/platform/ldap/jumpcloud.md
-
-# Source: https://infisical.com/docs/documentation/platform/identities/ldap-auth/jumpcloud.md
-
-# Source: https://infisical.com/docs/documentation/platform/sso/jumpcloud.md
-
-# Source: https://infisical.com/docs/documentation/platform/scim/jumpcloud.md
-
-# Source: https://infisical.com/docs/documentation/platform/ldap/jumpcloud.md
-
-# Source: https://infisical.com/docs/documentation/platform/identities/ldap-auth/jumpcloud.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # JumpCloud
 

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/strategies/authoritative-markup-injection/
+
 # Authoritative Markup Injection Strategy
 
 The Authoritative Markup Injection strategy tests whether AI systems are more susceptible to harmful requests when they're presented with authoritative-looking formatting or structured markup.

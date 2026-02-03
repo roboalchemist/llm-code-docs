@@ -2,21 +2,9 @@
 
 # Source: https://docs.unifygtm.com/reference/integrations/hubspot/default-values.md
 
-# Source: https://docs.unifygtm.com/reference/integrations/salesforce/default-values.md
-
-# Source: https://docs.unifygtm.com/reference/integrations/hubspot/default-values.md
-
-# Source: https://docs.unifygtm.com/reference/integrations/salesforce/default-values.md
-
-# Source: https://docs.unifygtm.com/reference/integrations/hubspot/default-values.md
-
-# Source: https://docs.unifygtm.com/reference/integrations/salesforce/default-values.md
-
-# Source: https://docs.unifygtm.com/reference/integrations/hubspot/default-values.md
-
-# Source: https://docs.unifygtm.com/reference/integrations/salesforce/default-values.md
-
-# Source: https://docs.unifygtm.com/reference/integrations/hubspot/default-values.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Configure Default Values
 

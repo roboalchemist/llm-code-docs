@@ -4,8 +4,6 @@
 title: Amplify App
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Amplify App
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.amplify_app.dataset/index.html
 ---
 
 # Amplify App
@@ -46,7 +44,7 @@ aws.amplify_app
 | production_branch             | core | json          | Describes the information about a production branch of the Amplify app.                                                                                                                                                                                                                                                                                                                  |
 | repository                    | core | string        | The Git repository for the Amplify app.                                                                                                                                                                                                                                                                                                                                                  |
 | repository_clone_method       | core | string        | This is for internal use. The Amplify service uses this parameter to specify the authentication protocol to use to access the Git repository for an Amplify app. Amplify specifies TOKEN for a GitHub repository, SIGV4 for an Amazon Web Services CodeCommit repository, and SSH for GitLab and Bitbucket repositories.                                                                 |
-| tags                          | core | hstore        |
+| tags                          | core | hstore_csv    |
 | update_time                   | core | timestamp     | A timestamp of when Amplify updated the application.                                                                                                                                                                                                                                                                                                                                     |
 | waf_configuration             | core | json          | Describes the Firewall configuration for the Amplify app. Firewall support enables you to protect your hosted applications with a direct integration with WAF.                                                                                                                                                                                                                           |
 | webhook_create_time           | core | timestamp     | A timestamp of when Amplify created the webhook in your Git repository.                                                                                                                                                                                                                                                                                                                  |

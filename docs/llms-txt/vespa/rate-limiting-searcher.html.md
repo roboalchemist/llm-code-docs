@@ -91,7 +91,7 @@ In a shared service scenario, you may want to assign different quota based on a 
 
 The searcher will emit the [count metric](../operations/metrics.html)`requestsOverQuota` with the dimension `[rate.idDimension=rate.id]`.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

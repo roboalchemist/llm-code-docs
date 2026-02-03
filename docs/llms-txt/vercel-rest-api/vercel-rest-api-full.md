@@ -228,6 +228,78 @@ During the autorization process, Vercel sends the user to the provider [redirect
 
 
 
+# List FOCUS billing charges
+Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/billing/list-focus-billing-charges
+
+https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v1/billing/charges
+Returns the billing charge data in FOCUS v1.3 JSONL format for a specified Vercel team, within a date range specified by `from` and `to` query parameters. Supports 1-day granularity with a maximum date range of 1 year. The response is streamed as newline-delimited JSON (JSONL) and can be optionally compressed with gzip if the `Accept-Encoding: gzip` header is provided.
+
+
+
+# List FOCUS contract commitments
+Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/billing/list-focus-contract-commitments
+
+https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v1/billing/contract-commitments
+Returns commitment allocations per contract period in FOCUS v1.3 JSONL format for a specified Vercel team. The response is streamed as newline-delimited JSON (JSONL). This endpoint is only applicable to Enterprise Vercel customers. An empty response is returned for non-Enterprise (Pro/Flex) customers.
+
+
+
+# Delete project-level redirects.
+Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/bulk-redirects/delete-project-level-redirects
+
+https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples delete /v1/bulk-redirects
+Deletes the provided redirects from the latest version of the projects' bulk redirects. Stages a new change with the new redirects and returns the alias for the new version in the response.
+
+
+
+# Edit a project-level redirect.
+Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/bulk-redirects/edit-a-project-level-redirect
+
+https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples patch /v1/bulk-redirects
+Edits a single redirect identified by its source path. Stages a new change with the modified redirect and returns the alias for the new version in the response.
+
+
+
+# Get the version history for a project's redirects.
+Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/bulk-redirects/get-the-version-history-for-a-projects-redirects
+
+https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v1/bulk-redirects/versions
+Get the version history for a project's bulk redirects
+
+
+
+# Gets project-level redirects.
+Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/bulk-redirects/gets-project-level-redirects
+
+https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v1/bulk-redirects
+Get the version history for a project's bulk redirects
+
+
+
+# Promote a staging version to production or restore a previous production version.
+Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/bulk-redirects/promote-a-staging-version-to-production-or-restore-a-previous-production-version
+
+https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples post /v1/bulk-redirects/versions
+Update a version by promoting staging to production or restoring a previous production version
+
+
+
+# Restore staged project-level redirects to their production version.
+Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/bulk-redirects/restore-staged-project-level-redirects-to-their-production-version
+
+https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples post /v1/bulk-redirects/restore
+Restores the provided redirects in the staging version to the value in the production version. If no production version exists, removes the redirects from staging.
+
+
+
+# Stages new redirects for a project.
+Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/bulk-redirects/stages-new-redirects-for-a-project
+
+https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples put /v1/bulk-redirects
+Stages new redirects for a project and returns the new version.
+
+
+
 # Get cert by id
 Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/certs/get-cert-by-id
 
@@ -305,6 +377,46 @@ Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/refere
 
 https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples patch /v1/projects/{idOrName}/shared-connect-links
 Allows configuring Static IPs for a project
+
+
+
+# Create a Secure Compute network
+Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/connect/create-a-secure-compute-network
+
+https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples post /v1/connect/networks
+Allows to create a Secure Compute network.
+
+
+
+# Delete a Secure Compute network
+Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/connect/delete-a-secure-compute-network
+
+https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples delete /v1/connect/networks/{networkId}
+Allows to delete a Secure Compute network.
+
+
+
+# List Secure Compute networks
+Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/connect/list-secure-compute-networks
+
+https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v1/connect/networks
+Allows to list Secure Compute networks.
+
+
+
+# Read a Secure Compute network
+Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/connect/read-a-secure-compute-network
+
+https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v1/connect/networks/{networkId}
+Allows to read a Secure Compute network.
+
+
+
+# Update a Secure Compute network
+Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/connect/update-a-secure-compute-network
+
+https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples patch /v1/connect/networks/{networkId}
+Allows to update a Secure Compute network.
 
 
 
@@ -548,35 +660,11 @@ This endpoint is used for adding a new apex domain name with Vercel for the auth
 
 
 
-# Check a Domain Availability (deprecated)
-Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/domains/check-a-domain-availability-deprecated
-
-https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v4/domains/status
-This endpoint is deprecated and replaced with the endpoint [Get availability for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-availability-for-a-domain). Check if a domain name is available for purchase.
-
-
-
-# Check the price for a domain (deprecated)
-Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/domains/check-the-price-for-a-domain-deprecated
-
-https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v4/domains/price
-This endpoint is deprecated and replaced with the endpoint [Get price data for a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-price-data-for-a-domain). Check the price to purchase a domain and how long a single purchase period is.
-
-
-
 # Get a Domain's configuration
 Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/domains/get-a-domains-configuration
 
 https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v6/domains/{domain}/config
 Get a Domain's configuration.
-
-
-
-# Get domain transfer info (deprecated)
-Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/domains/get-domain-transfer-info-deprecated
-
-https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v1/domains/{domain}/registry
-This endpoint is deprecated and replaced with the endpoint [Get a domain's transfer status](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/get-a-domains-transfer-status). Fetch domain transfer availability or transfer status if a transfer is in progress.
 
 
 
@@ -593,14 +681,6 @@ Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/refere
 
 https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v5/domains
 Retrieves a list of domains registered for the authenticated user or team. By default it returns the last 20 domains if no limit is provided.
-
-
-
-# Purchase a domain (deprecated)
-Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/domains/purchase-a-domain-deprecated
-
-https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples post /v5/domains/buy
-This endpoint is deprecated and replaced with the endpoint [Buy a domain](https://vercel.com/docs/rest-api/reference/endpoints/domains-registrar/buy-a-domain). Purchases the specified domain.
 
 
 
@@ -668,11 +748,27 @@ Validate the delivery configuration of a Drain using sample events.
 
 
 
+# Dangerously delete by source image
+Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/edge-cache/dangerously-delete-by-source-image
+
+https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples post /v1/edge-cache/dangerously-delete-by-src-images
+Marks a source image as deleted, causing cache entries associated with that source image to be revalidated in the foreground on the next request. Use this method with caution because one source image can be associated with many paths and deleting the cache can cause many concurrent requests to the origin leading to cache stampede problem. This method is for advanced use cases and is not recommended; prefer using `invalidateBySrcImage` instead.
+
+
+
 # Dangerously delete by tag
 Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/edge-cache/dangerously-delete-by-tag
 
 https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples post /v1/edge-cache/dangerously-delete-by-tags
-Marks a cache tag as deleted, causing cache entries associated with that tag to be revalidated in the foreground on the next request. Use this method with caution because one tag can be associated with many paths and deleting the cache can cause many concurrent requests to the origin leading to cache stampede problem. A good use case for deleting the cache is when the origin has also been deleted, for example it returns a 404 or 410 status code.
+Marks a cache tag as deleted, causing cache entries associated with that tag to be revalidated in the foreground on the next request. Use this method with caution because one tag can be associated with many paths and deleting the cache can cause many concurrent requests to the origin leading to cache stampede problem. This method is for advanced use cases and is not recommended; prefer using `invalidateByTag` instead.
+
+
+
+# Invalidate by source image
+Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/edge-cache/invalidate-by-source-image
+
+https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples post /v1/edge-cache/invalidate-by-src-images
+Marks a source image as stale, causing its corresponding transformed images to be revalidated in the background on the next request.
 
 
 
@@ -920,7 +1016,7 @@ Connects an integration resource to a Vercel project. This endpoint establishes 
 Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/integrations/create-integration-store-free-and-paid-plans
 
 https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples post /v1/storage/stores/integration/direct
-Creates an integration store for both FREE and PAID billing plans. This simplified endpoint automatically provisions real integration storage resources while handling billing complexity behind the scenes. It supports both free and paid billing plans with automatic authorization creation for paid resources. ## How it works 1. Validates the integration configuration and product 2. For free resources: Auto-discovers available free billing plans 3. For paid resources: Creates billing authorization inline using provided billingPlanId 4. Provisions real resources through the Vercel Marketplace 5. Returns the created store with connection details ## Workflow Before using this endpoint, discover available products and billing plans: 1. List your configurations: `GET /v1/integrations/configurations` 2. Get products for a configuration: `GET /v1/integrations/configuration/{id}/products` 3. Get billing plans for a product: `GET /integrations/integration/{integrationId}/products/{productId}/plans` 4. Review the `metadataSchema` for each product to understand required metadata 5. Create storage with discovered product: `POST /v1/storage/stores/integration/direct` ## Usage Patterns - **Free resources**: Omit `billingPlanId` - endpoint will auto-discover free plans - **Paid resources**: Provide `billingPlanId` from billing plans discovery - **Prepayment plans**: Also provide `prepaymentAmountCents` for variable amount plans ## Limitations - **Admin access required**: Only integration configuration admins can create stores - **Storage limits apply**: Subject to your team's storage quotas - **Payment method required**: For paid plans, ensure valid payment method is configured ## Error Responses - `400 Bad Request`: Invalid input, no plans available, or billing issues - `403 Forbidden`: Insufficient permissions (non-admin users) - `404 Not Found`: Integration configuration or product not found - `429 Too Many Requests`: Rate limit exceeded
+Creates an integration store with automatic billing plan handling. For free resources, omit `billingPlanId` to auto-discover free plans. For paid resources, provide a `billingPlanId` from the billing plans endpoint.
 
 
 
@@ -940,6 +1036,22 @@ Allows to retrieve all configurations for an authenticated integration. When the
 
 
 
+# List git namespaces by provider
+Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/integrations/list-git-namespaces-by-provider
+
+https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v1/integrations/git-namespaces
+Lists git namespaces for a supported provider. Supported providers are `github`, `gitlab` and `bitbucket`. If the provider is not provided, it will try to obtain it from the user that authenticated the request.
+
+
+
+# List git repositories linked to namespace by provider
+Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/integrations/list-git-repositories-linked-to-namespace-by-provider
+
+https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v1/integrations/search-repo
+Lists git repositories linked to a namespace `id` for a supported provider. A specific namespace `id` can be obtained via the `git-namespaces`  endpoint. Supported providers are `github`, `gitlab` and `bitbucket`. If the provider or namespace is not provided, it will try to obtain it from the user that authenticated the request.
+
+
+
 # List integration billing plans
 Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/integrations/list-integration-billing-plans
 
@@ -952,7 +1064,7 @@ Get a list of billing plans for an integration and product.
 Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/integrations/list-products-for-integration-configuration
 
 https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v1/integrations/configuration/{id}/products
-Lists all products available for an integration configuration. Use this endpoint to discover what integration products are available for your integration configuration. The returned product IDs or slugs can then be used with storage provisioning endpoints like `POST /v1/storage/stores/integration/direct`. ## Workflow 1. Get your integration configurations: `GET /v1/integrations/configurations` 2. **Use this endpoint**: Get products for a configuration: `GET /v1/integrations/configuration/{id}/products` 3. Create storage resource: `POST /v1/storage/stores/integration/direct` ## Response Returns an array of products with their IDs, slugs, names, supported protocols, and metadata requirements. Each product represents a different type of resource you can provision. The `metadataSchema` field contains a JSON Schema that defines: - **Required metadata**: Fields that must be provided during storage creation - **Optional metadata**: Fields that can be provided but are not mandatory - **Field validation**: Data types, allowed values, and constraints Use this schema to validate metadata before calling the storage creation endpoint.
+Returns products available for an integration configuration. Each product includes a `metadataSchema` field with the JSON Schema for required and optional metadata fields.
 
 
 
@@ -1102,6 +1214,14 @@ Returns the member role and other information for a given member ID ("user_id" c
 
 # Get the data of a user-provided Edge Config
 Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/marketplace/get-the-data-of-a-user-provided-edge-config
+
+https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config
+When the user enabled Edge Config syncing, then this endpoint can be used by the partner to fetch the contents of the Edge Config.
+
+
+
+# Get the data of a user-provided Edge Config
+Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/marketplace/get-the-data-of-a-user-provided-edge-config-1
 
 https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples head /v1/installations/{integrationConfigurationId}/resources/{resourceId}/experimentation/edge-config
 When the user enabled Edge Config syncing, then this endpoint can be used by the partner to fetch the contents of the Edge Config.
@@ -1300,14 +1420,6 @@ Get project domain by project id/name and domain name.
 
 
 
-# Get client certificates for a project
-Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/projects/get-client-certificates-for-a-project
-
-https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v1/projects/{idOrName}/client-cert
-Retrieve client certificates configured for a project's mTLS egress authentication.
-
-
-
 # Gets a list of aliases with status for the current promote
 Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/projects/gets-a-list-of-aliases-with-status-for-the-current-promote
 
@@ -1334,6 +1446,14 @@ Pause a project by passing its project `id` in the URL. If the project does not 
 
 # Points all production domains for a project to the given deploy
 Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/projects/points-all-production-domains-for-a-project-to-the-given-deploy
+
+https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples post /v1/projects/{projectId}/rollback/{deploymentId}
+Allows users to rollback to a deployment.
+
+
+
+# Points all production domains for a project to the given deploy
+Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/projects/points-all-production-domains-for-a-project-to-the-given-deploy-1
 
 https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples post /v10/projects/{projectId}/promote/{deploymentId}
 Allows users to promote a deployment to production. Note: This does NOT rebuild the deployment. If you need that, then call create-deployments endpoint.
@@ -1420,22 +1540,6 @@ Update the deployment protection automation bypass for a project
 
 
 
-# Update the data cache feature
-Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/projects/update-the-data-cache-feature
-
-https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples patch /v1/data-cache/projects/{projectId}
-Update the data cache feature on a project.
-
-
-
-# Upload client certificate for egress mTLS
-Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/projects/upload-client-certificate-for-egress-mtls
-
-https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples post /v1/projects/{idOrName}/client-cert
-Upload a client certificate for mTLS authentication to external origins.
-
-
-
 # Verify project domain
 Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/projects/verify-project-domain
 
@@ -1496,7 +1600,7 @@ Advance a rollout to the next stage. This is only needed when rolling releases i
 Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/rolling-release/update-the-rolling-release-settings-for-the-project
 
 https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples patch /v1/projects/{idOrName}/rolling-release/config
-Update (or disable) Rolling Releases for a project. Changing the config never alters a rollout that's already in-flight. It only affects the next production deployment. This also applies to disabling Rolling Releases. If you want to also stop the current rollout, call this endpoint to disable the feature, and then call either the /complete or /abort endpoint. Note: Enabling Rolling Releases automatically enables skew protection on the project with the default value if it wasn't configured already.
+Update (or disable) Rolling Releases for a project. When disabling with the resolve-on-disable feature flag enabled, any active rolling release document is resolved using the disableRolloutAction parameter: "abort" to roll back (default), or "complete" to promote the canary to production. When enabling or updating config, changes only affect the next production deployment and do not alter a rollout that's already in-flight. Note: Enabling Rolling Releases automatically enables skew protection on the project with the default value if it wasn't configured already.
 
 
 
@@ -1615,7 +1719,7 @@ Check the status of a join request. It'll respond with a 404 if the request has 
 # Invite a user
 Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/teams/invite-a-user
 
-https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples post /v1/teams/{teamId}/members
+https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples post /v2/teams/{teamId}/members
 Invite a user to join the team specified in the URL. The authenticated user needs to be an `OWNER` in order to successfully invoke this endpoint. The user to be invited must be specified by email.
 
 
@@ -1673,6 +1777,22 @@ Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/refere
 
 https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples patch /v1/teams/{teamId}/members/{uid}
 Update the membership of a Team Member on the Team specified by `teamId`, such as changing the _role_ of the member, or confirming a request to join the Team for an unconfirmed member. The authenticated user must be an `OWNER` of the Team.
+
+
+
+# Update Team Directory Sync Role Mappings
+Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/teams/update-team-directory-sync-role-mappings
+
+https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples post /v1/teams/{teamId}/dsync-roles
+Update the Directory Sync role mappings for a Team. This endpoint allows updating the mapping between directory groups and team roles or access groups.
+
+
+
+# Updates the description for a rollback
+Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/updates-the-description-for-a-rollback
+
+https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples patch /v1/projects/{projectId}/rollback/{deploymentId}/update-description
+Updates the reason for a rollback, without changing the rollback status itself.
 
 
 
@@ -2608,6 +2728,68 @@ async function manageEnvironmentVariables() {
 manageEnvironmentVariables();
 ```
 
+## Add variables to custom environments
+
+In this example, you will add environment variables to a [custom environment](https://vercel.com/docs/deployments/environments#custom-environments) in a project. You can find the project name from the [project settings page](https://vercel.com/d?to=%2F%5Bteam%5D%2F%5Bproject%5D%2Fsettings\&title=Find+your+project+name) and the custom environment slug from the [custom environments page](https://vercel.com/d?to=%2F%5Bteam%5D%2F%5Bproject%5D%2Fsettings%2Fenvironments\&title=Find+your+project+environments).
+
+```ts run.ts theme={"system"}
+import { Vercel } from '@vercel/sdk';
+
+const vercel = new Vercel({
+  bearerToken: process.env.VERCEL_TOKEN,
+});
+
+const projectName = 'my-project'; // The project name that you find in the project settings page
+const customEnvironmentSlug = 'staging'; // The custom environment slug that you want to add the variable to
+
+async function addEnvToCustomEnvironment() {
+  try {
+    // Get custom environments for the project
+    const customEnvs = await vercel.environment.getV9ProjectsIdOrNameCustomEnvironments({
+      idOrName: projectName,
+    });
+
+    console.log('Custom environments:', customEnvs);
+
+    // Find the staging environment
+    const stagingEnv = customEnvs.environments.find(
+      (env) => env.slug === customEnvironmentSlug,
+    );
+    const stagingEnvId = stagingEnv?.id; // This will be in format "env_xxx"
+
+    console.log(`Staging environment ID: ${stagingEnvId || 'not found'}`);
+
+    if (stagingEnvId) {
+      // Create/upsert an environment variable for the custom environment
+      console.log('Creating project environment variable...');
+      const createEnvResult = await vercel.projects.createProjectEnv({
+        idOrName: projectName,
+        upsert: 'true', // Upsert the variable if it already exists
+        requestBody: {
+          key: 'TEST_VAR',
+          value: 'test-value',
+          type: 'plain', // or "encrypted", "sensitive"
+          customEnvironmentIds: [stagingEnvId], // Array of custom environment IDs
+          comment: 'Test variable created via SDK',
+        },
+      });
+
+      console.log('Environment variable created:', createEnvResult);
+    } else {
+      console.log(
+        'Staging environment not found, skipping environment variable creation',
+      );
+    }
+  } catch (error) {
+    console.error(
+      error instanceof Error ? `Error: ${error.message}` : String(error),
+    );
+  }
+}
+
+addEnvToCustomEnvironment();
+```
+
 
 # Vercel WAF Management
 Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/examples/firewall-management
@@ -3539,7 +3721,7 @@ All requests must be encoded as JSON with the Content-Type: application/json hea
 
 Vercel Access Tokens are required to authenticate and use the Vercel API.
 
-```js  theme={"system"}
+```js theme={"system"}
   Authorization: Bearer <TOKEN>
 ```
 
@@ -3547,13 +3729,9 @@ Vercel Access Tokens are required to authenticate and use the Vercel API.
 
 Access Tokens can be created and managed from inside your [account settings](https://vercel.com/account/tokens).
 
-<img className="block dark:hidden" src="https://assets.vercel.com/image/upload/v1701697368/docs-assets/static/docs/rest-api/create-token-light.png" />
-
-<img className="hidden  dark:block" src="https://assets.vercel.com/image/upload/v1701697369/docs-assets/static/docs/rest-api/create-token-dark.png" />
-
-1. In the upper-right corner of your [dashboard](https://vercel.com/dashboard), click your profile picture, then select **Settings**
+1. In the upper-right corner of your [dashboard](https://vercel.com/dashboard), click your profile picture, then select **Account Settings** or go to the [Tokens page directly](https://vercel.com/account/settings/tokens)
 2. Select **Tokens** from the sidebar
-3. Enter a descriptive name for the token
+3. From **Create Token** section, enter a descriptive name for the token
 4. Choose the scope from the list of Teams in the drop-down menu. The scope ensures that only your specified Team(s) can use an Access Token
 5. From the drop-down, select an expiration date for the Token
 6. Click **Create Token**
@@ -3571,7 +3749,7 @@ To access resources owned by a team, or create a project for a *specific* team, 
 
 After you obtained the Team ID, append it as a query string at the end of the API endpoint URL:
 
-```js  theme={"system"}
+```js theme={"system"}
 https://api.vercel.com/v6/deployments?teamId=[teamID]
 ```
 

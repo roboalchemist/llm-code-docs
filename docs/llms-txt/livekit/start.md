@@ -1,10 +1,4 @@
-# Source: https://docs.livekit.io/deploy/agents/cloud/start.md
-
-# Source: https://docs.livekit.io/transport/encryption/start.md
-
-# Source: https://docs.livekit.io/intro/basics/cli/start.md
-
-# Source: https://docs.livekit.io/deploy/agents/cloud/start.md
+# Source: https://docs.livekit.io/deploy/agents/start.md
 
 # Source: https://docs.livekit.io/transport/encryption/start.md
 
@@ -220,7 +214,7 @@ This command publishes a looped demo video to `my-first-room`. Due to how the fi
 
 ---
 
-This document was rendered at 2025-12-31T18:29:31.635Z.
+This document was rendered at 2026-02-03T03:24:51.775Z.
 For the latest version of this document, see [https://docs.livekit.io/intro/basics/cli/start.md](https://docs.livekit.io/intro/basics/cli/start.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

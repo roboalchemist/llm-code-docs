@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/guides/learn/text-to-speech.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Text to Speech
 
 > Learn how to configure speech synthesis to convert text into natural-sounding audio in your voice AI pipeline
@@ -174,7 +178,11 @@ For TTS-specific text preprocessing, you can provide custom text transforms that
 Text transforms are registered directly on the TTS service instance via the `add_text_transformer()` method or during initialization using the `text_transforms` parameter.
 
 <Note>
-  The intentions of text transforms are meant to be TTS-specific modifications that do not affect the underlying LLM text or context. That said, since the context aggregator attempts to base its context on what was actually spoken, for services that support word timestamps, like Cartesia, ElevenLabs, and Rime,these transforms will modify the context as they modify what is spoken.
+  The intentions of text transforms are meant to be TTS-specific modifications
+  that do not affect the underlying LLM text or context. That said, since the
+  context aggregator attempts to base its context on what was actually spoken,
+  for services that support word timestamps, like Cartesia, ElevenLabs, and
+  Rime,these transforms will modify the context as they modify what is spoken.
 </Note>
 
 ```python  theme={null}
@@ -220,7 +228,11 @@ tts.add_text_transformer(replace_acronyms, "*")  # Apply to all text
 
 ### Text Filters
 
-<Warning>Text filters are no longer the preferred method for text preprocessing and will be deprecated in future releases. Instead, you should use one of the methods described above.</Warning>
+<Warning>
+  Text filters are no longer the preferred method for text preprocessing and
+  will be deprecated in future releases. Instead, you should use one of the
+  methods described above.
+</Warning>
 
 Apply preprocessing to text before synthesis:
 
@@ -284,8 +296,3 @@ You've now learned how to build a complete voice AI pipeline! Let's explore some
 <Card title="Pipeline Termination" icon="arrow-right" href="/guides/learn/pipeline-termination">
   Learn how to terminate your voice AI pipeline at the end of a conversation
 </Card>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/transport/sdk-platforms/swift.md
 
-# Source: https://docs.livekit.io/home/quickstarts/swift.md
-
-LiveKit docs › LiveKit SDKs › Platform-specific quickstarts › Swift
+LiveKit docs › Get Started › SDK platform quickstarts › Swift
 
 ---
 
@@ -91,7 +89,7 @@ Your `Info.plist` should have the following entries:
 
 ### Connecting to LiveKit
 
-This simple example uses a hardcoded token that expires in 2 hours. In a real app, you’ll need to [generate a token](https://docs.livekit.io/home/server/generating-tokens.md) with your server.
+This simple example uses a hardcoded token that expires in 2 hours. In a real app, you’ll need to [generate a token](https://docs.livekit.io/frontends/authentication/tokens/generate.md) with your server.
 
 ** Filename: `ContentView.swift`**
 
@@ -157,11 +155,11 @@ For more details, you can reference [the components example app](https://github.
 
 The following resources are useful for getting started with LiveKit on iOS.
 
-- **[Generating tokens](https://docs.livekit.io/home/server/generating-tokens.md)**: Guide to generating authentication tokens for your users.
+- **[Generating tokens](https://docs.livekit.io/frontends/authentication/tokens/generate.md)**: Guide to generating authentication tokens for your users.
 
-- **[Realtime media](https://docs.livekit.io/home/client/tracks.md)**: Complete documentation for live video and audio tracks.
+- **[Realtime media](https://docs.livekit.io/transport/media.md)**: Complete documentation for live video and audio tracks.
 
-- **[Realtime data](https://docs.livekit.io/home/client/data.md)**: Send and receive realtime data between clients.
+- **[Realtime data](https://docs.livekit.io/transport/data.md)**: Send and receive realtime data between clients.
 
 - **[Swift SDK](https://github.com/livekit/client-sdk-swift)**: LiveKit Swift SDK on GitHub.
 
@@ -173,7 +171,7 @@ The following resources are useful for getting started with LiveKit on iOS.
 
 ---
 
-This document was rendered at 2025-11-18T23:54:54.230Z.
-For the latest version of this document, see [https://docs.livekit.io/home/quickstarts/swift.md](https://docs.livekit.io/home/quickstarts/swift.md).
+This document was rendered at 2026-02-03T03:25:14.614Z.
+For the latest version of this document, see [https://docs.livekit.io/transport/sdk-platforms/swift.md](https://docs.livekit.io/transport/sdk-platforms/swift.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

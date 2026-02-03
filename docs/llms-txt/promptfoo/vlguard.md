@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/vlguard/
+
 # VLGuard Plugin
 
 The VLGuard plugin tests multi-modal models with potentially unsafe images from the [VLGuard dataset](https://huggingface.co/datasets/ys-zong/VLGuard), a safety evaluation benchmark for Vision Large Language Models published at ICML 2024.

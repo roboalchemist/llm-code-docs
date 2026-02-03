@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/embedding/implementation/nodejs.md
-
-# Source: https://gitbook.com/docs/documentation/fr/publishing-documentation/embedding/implementation/nodejs.md
-
-# Source: https://gitbook.com/docs/publishing-documentation/embedding/implementation/nodejs.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/publishing-documentation/embedding/implementation/nodejs.md
 
 # Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/embedding/implementation/nodejs.md
 

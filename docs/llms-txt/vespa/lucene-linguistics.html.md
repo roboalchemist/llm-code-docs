@@ -73,12 +73,21 @@ The Lucene [StandardAnalyzer](https://lucene.apache.org/core/9_8_0/core/org/apac
 
 ## Linguistics key
 
-Linguistics keys identify a configuration of text analysis. A key has 2 parts: a mandatory [language code](https://github.com/vespa-engine/vespa/blob/master/linguistics/src/main/java/com/yahoo/language/Language.java) and an optional stemming mode. The format is `LANGUAGE_CODE[/STEM_MODE]`. There are 5 stemming modes: `NONE, DEFAULT, ALL, SHORTEST, BEST` (they can be specified in the [field schema](../reference/schemas/schemas.html#stemming)).
+Linguistics keys identify a configuration of text analysis. It can be made of two parts, separated by a semicolon, though you can omit one or the other. The two parts are:
+
+- A [linguistics profile](linguistics.html#linguistics-profiles). 
+- A language key. 
+
+The language key, in turn, has 2 parts: a mandatory [language code](https://github.com/vespa-engine/vespa/blob/master/linguistics/src/main/java/com/yahoo/language/Language.java) and an optional stemming mode. The format is `LANGUAGE_CODE[/STEM_MODE]`. There are 5 stemming modes: `NONE, DEFAULT, ALL, SHORTEST, BEST` (they can be specified in the [field schema](../reference/schemas/schemas.html#stemming)).
 
 Examples of linguistics key:
 
-- `en`: English language. 
-- `en/BEST`: English language with the `BEST` stemming mode. 
+- `profile=whitespaceLowercase`: a profile that applies to all languages. You can bind it to different fields by specifying their [linguistics profiles](linguistics.html#linguistics-profiles) in the schema. 
+- `profile=whitespaceLowercase;language=en`: a profile that applies to the English language. You'd still bind it to fields via their [linguistics profiles](linguistics.html#linguistics-profiles) in the schema, but it will only be applied to the English texts (either at indexing or query time). 
+- `en`: English language: applies to all English texts where no profile is specified (in the schema or [in the query](linguistics.html#overriding-profile-for-query-strings)). 
+- `en/BEST`: English language with the `BEST` stemming mode. Like the previous example, but only applies when [stemming](../reference/schemas/schemas.html#stemming) is set to `BEST`. 
+
+ **Note:** You can use different profiles for document fields and query strings. See [Different processing for query strings](linguistics.html#different-processing-for-query-strings) and the[multiple-profiles sample app](https://github.com/vespa-engine/sample-apps/tree/master/examples/lucene-linguistics/multiple-profiles) for more information.
 
 ## Customizing text analysis
 
@@ -92,13 +101,14 @@ Lucene linguistics provides multiple ways to customize text analysis per languag
 In `services.xml` it is possible to construct an analyzer by providing [configuration for the](https://github.com/vespa-engine/vespa/blob/master/lucene-linguistics/src/main/resources/configdefinitions/lucene-analysis.def)`LuceneLinguistics` component (from all text analysis components that are available on the classpath). Example for the English language:
 
 ```
+```
 <component id="linguistics"
              class="com.yahoo.language.lucene.LuceneLinguistics"
              bundle="your-bundle-name">
-    <config name="com.yahoo.language.lucene.lucene-analysis"/>
+    <config name="com.yahoo.language.lucene.lucene-analysis">
       <configDir>lucene-linguistics</configDir>
       <analysis>
-        <item key="en">
+        <item key="profile=standardStopStem;language=en">
           <tokenizer>
             <name>standard</name>
           </tokenizer>
@@ -116,24 +126,29 @@ In `services.xml` it is possible to construct an analyzer by providing [configur
           </tokenFilters>
         </item>
       </analysis>
+    </config>
   </component>
+```
 ```
 
 Notes:
 
-- `item key="en"` value is a [linguistics key](#linguistics-key). 
-- the `en/stopwords.txt` file must be placed in your application package under the `lucene-linguistics` directory. 
-- If the `configDir` is not provided the files must be on the classpath. 
+- `item key="profile=standardStopStem;language=en"` value is a [linguistics key](#linguistics-key). 
+- `name` values are the [SPI names](https://docs.oracle.com/en/java/javase/17/docs/api/java.naming/javax/naming/spi/package-summary.html) of the text analysis components. You'll typically find them in the [Lucene analysis JavaDocs](https://lucene.apache.org/core/9_11_1/analysis/common/allclasses-index.html). For example, the name `stop` along with other options can be found in the [StopFilterFactory JavaDoc](https://lucene.apache.org/core/9_11_1/analysis/common/org/apache/lucene/analysis/core/StopFilterFactory.html). 
+- The `en/stopwords.txt` file must be placed in your application package under the `lucene-linguistics` directory, which is referenced by the `configDir` option. 
+- If `configDir` is not provided the files must be on the classpath. 
 
 ### Components registry
 
 The [ComponentsRegistry](../applications/dependency-injection.html#depending-on-all-components-of-a-specific-type) mechanism can be used to set a Lucene Analyzer for a language.
 
 ```
+```
 <component
     id="en"
     class="org.apache.lucene.analysis.core.SimpleAnalyzer"
     bundle="your-bundle-name" />
+```
 ```
 
 Where:
@@ -161,7 +176,48 @@ In case you need to create a custom component the steps are:
 
 Lucene Linguistics doesn't provide language detection. This means that for both feeding and searching you should provide a [language parameter](../reference/api/query.html#model.language).
 
- Copyright © 2025 - [Cookie Preferences](#)
+## Indexing all stems
+
+Some analyzers expand the input text into multiple tokens on the same position. For example, those based on the [NGramTokenFilter](https://lucene.apache.org/core/9_11_1/analysis/common/org/apache/lucene/analysis/ngram/NGramTokenFilter.html). Here's a sample analyzer configuration:
+
+```
+```
+<item key="profile=ngram;language=en">
+  <tokenizer>
+    <name>whitespace</name>
+  </tokenizer>
+  <tokenFilters>
+    <item>
+      <name>nGram</name>
+      <conf>
+        <item key="minGramSize">2</item>
+        <item key="maxGramSize">2</item>
+      </conf>
+    </item>
+  </tokenFilters>
+</item>
+```
+```
+
+This will take a text like `dog` and produce `do` and `og` as tokens, plus (by default) the original `dog`. However, Vespa only takes the first token (`do`) and writes it to the index, ignoring the other "stems". As a result, a search for `og` will not match documents that contain `dog`, which is the whole point of using letter n-grams.
+
+To index all stems, you can use the [stemming](../reference/schemas/schemas.html#stemming) parameter in the schema definition of your field:
+
+```
+field title_grams type string {
+  indexing: summary | index
+  linguistics {
+      profile: ngram
+  }
+  stemming: multiple
+}
+```
+
+Now, Vespa will index all stems, and a search for `og` will match documents that contain `dog`.
+
+ **Note:** Queries look for all stems by default (regardless of the schema configuration). For example, a search for`dog` would expand to `do` and `og` as well, looking for all three terms.
+
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 
@@ -173,4 +229,5 @@ Lucene Linguistics doesn't provide language detection. This means that for both 
 - [Components registry](#components-registry)
 - [Custom text analysis components](#adding-custom-analysis-component)
 - [Language Detection](#language-detection)
+- [Indexing all stems](#indexing-all-stemmed-words)
 

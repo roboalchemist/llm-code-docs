@@ -1,10 +1,17 @@
 # Source: https://rspack.dev/plugins/webpack/module-federation-plugin.md
 
-import { Stability, ApiMeta } from '@components/ApiMeta';
-
 # ModuleFederationPlugin
 
 This plugin implements [Module Federation 1.5](https://github.com/module-federation/universe/tree/main/packages/enhanced).
+
+:::tip
+This plugin requires `@module-federation/runtime-tools`. Please install it manually:
+
+```bash
+npm install @module-federation/runtime-tools
+```
+
+:::
 
 ## Example
 
@@ -28,65 +35,65 @@ export default {
 
 ### implementation
 
-* Type: `string`
+- Type: `string`
 
 Provide a path as the implementation for Module Federation 1.5 runtime, which defaults to [@module-federation/runtime-tools](https://github.com/module-federation/universe/tree/main/packages/runtime-tools).
 
 ### runtimePlugins
 
-* Type: `string[]`
+- Type: `string[]`
 
 Provide the plugin required to run Module Federation 1.5, which can extend the behavior and capabilities of Module Federation.
 
 ### name
 
-* Type: `string`
+- Type: `string`
 
 Define the unique name exposed to other containers in the current build. This name will exist as a global variable for the remote container.
 
 ### filename
 
-* Type: `string`
+- Type: `string`
 
 Specify the filename of the remote container entry file. Other containers will load the exposed modules through this file.
 
 ### runtime
 
-* Type: `string | false`
+- Type: `string | false`
 
 Define the runtime chunk for remote container entry.
 
 ### library
 
-* Type: [`LibraryOptions`](/config/output.md#outputlibrary)
+- Type: [`LibraryOptions`](/config/output.md#outputlibrary)
 
 Define the output format of remote container entry. The default libraryType is "var".
 
 ### shareScope
 
-* Type: `string`
+- Type: `string`
 
 Define the namespace for shared dependencies in the current container. By configuring share scopes between different containers, the sharing behavior of modules can be controlled, including determining which modules are shared between different containers. The default share scope is `"default"`.
 
 ### shareStrategy
 
-* Type: `'version-first' | 'loaded-first'`
+- Type: `'version-first' | 'loaded-first'`
 
 Control the loading strategy of shared dependencies:
 
-* `'version-first'`: Version takes precedence. After setting, all *remotes* entry files will be automatically loaded and **register** the corresponding shared dependencies to ensure that all shared dependency versions can be obtained. This strategy is recommended when there are strict version requirements.
+- `'version-first'`: Version takes precedence. After setting, all _remotes_ entry files will be automatically loaded and **register** the corresponding shared dependencies to ensure that all shared dependency versions can be obtained. This strategy is recommended when there are strict version requirements.
 
-* `'loaded-first'`: reuse first. After setting, the *remotes* entry file will not be automatically loaded (it will only be loaded when needed), and registered shared dependencies will be reused first. This strategy is recommended when there are no strict requirements on the version and performance is required.
+- `'loaded-first'`: reuse first. After setting, the _remotes_ entry file will not be automatically loaded (it will only be loaded when needed), and registered shared dependencies will be reused first. This strategy is recommended when there are no strict requirements on the version and performance is required.
 
 ### remoteType
 
-* Type: [`ExternalsType`](/config/externals.md#externalstype)
+- Type: [`ExternalsType`](/config/externals.md#externalstype)
 
 Defines how to load remote containers, defaulting to `"script"`, which loads via the `<script />` tag.
 
 ### remotes
 
-* Type:
+- Type:
   ```ts
   type Remotes = (RemotesItem | RemotesObject)[] | RemotesObject;
   type RemotesItem = string;
@@ -104,7 +111,7 @@ Definition of the modules and their addresses that will be loaded remotely. The 
 
 ### exposes
 
-* Type:
+- Type:
   ```ts
   type Exposes = (ExposesItem | ExposesObject)[] | ExposesObject;
   type ExposesItem = string;
@@ -122,7 +129,7 @@ Define how local modules can be referenced by remote containers. The key is the 
 
 ### shared
 
-* Type:
+- Type:
   ```ts
   type Shared = (SharedItem | SharedObject)[] | SharedObject;
   type SharedItem = string;
@@ -146,21 +153,20 @@ Specify which dependencies should be shared dependencies. This allows multiple m
 
 The SharedConfig can include the following sub-options:
 
-* import: Module that should be placed in the share scope of the shared module. If the shared module cannot be found in the share scope of the shared module or the version is invalid, this provided module can be used as a fallback module.
-* eager: If set to `true`, the shared module will be loaded in the initial chunk instead of being dynamically loaded when used. This means that the shared module will be loaded together with the main entry point regardless of whether it has been used. This can eliminate the delay caused by dynamic loading, but it will increase the size of the initial package. Also, please note that when this configuration is enabled, all provided modules and fallback modules will always be downloaded.
-* packageName: Used to determine the package name and required version from `package.json`. Configuration is only necessary when the package name cannot be automatically determined based on the request.
-* requiredVersion: Accepts semantic version number. For example, `"^1.2.3"`. Used to set the version range of shared modules. If the module version of the remote container does not meet this range, the module will not be loaded.
-* shareKey: Use this key to search for the requested shared module in the share scope of the shared module. The default is the name of the shared module.
-* shareScope: Define the share scope of the shared module. This allows different builds to use their own share scope independently without conflict. The default share scope is `"default"`.
-* singleton: Ensure that shared modules are only loaded once between different versions, following the singleton pattern. This is necessary for libraries designed to run as singletons, such as React, as it can prevent various issues caused by instantiating multiple library instances.
-* strictVersion: Used to strengthen `requiredVersion`. If set to `true`, the shared module must match the version specified in requiredVersion exactly, otherwise an error will be reported and the module will not be loaded. If set to `false`, it can tolerate imprecise matching.
-* version: Explicitly set the version of the shared module. By default, the version in `package.json` will be used.
+- import: Module that should be placed in the share scope of the shared module. If the shared module cannot be found in the share scope of the shared module or the version is invalid, this provided module can be used as a fallback module.
+- eager: If set to `true`, the shared module will be loaded in the initial chunk instead of being dynamically loaded when used. This means that the shared module will be loaded together with the main entry point regardless of whether it has been used. This can eliminate the delay caused by dynamic loading, but it will increase the size of the initial package. Also, please note that when this configuration is enabled, all provided modules and fallback modules will always be downloaded.
+- packageName: Used to determine the package name and required version from `package.json`. Configuration is only necessary when the package name cannot be automatically determined based on the request.
+- requiredVersion: Accepts semantic version number. For example, `"^1.2.3"`. Used to set the version range of shared modules. If the module version of the remote container does not meet this range, the module will not be loaded.
+- shareKey: Use this key to search for the requested shared module in the share scope of the shared module. The default is the name of the shared module.
+- shareScope: Define the share scope of the shared module. This allows different builds to use their own share scope independently without conflict. The default share scope is `"default"`.
+- singleton: Ensure that shared modules are only loaded once between different versions, following the singleton pattern. This is necessary for libraries designed to run as singletons, such as React, as it can prevent various issues caused by instantiating multiple library instances.
+- strictVersion: Used to strengthen `requiredVersion`. If set to `true`, the shared module must match the version specified in requiredVersion exactly, otherwise an error will be reported and the module will not be loaded. If set to `false`, it can tolerate imprecise matching.
+- version: Explicitly set the version of the shared module. By default, the version in `package.json` will be used.
 
 ### manifest
 
-<ApiMeta addedVersion="1.6.0-beta.0" />
-
-* Type:
+[Added in v1.6.0-beta.0](https://github.com/web-infra-dev/rspack/releases/tag/v1.6.0-beta.0)
+- Type:
   ```ts
   type Manifest = boolean | ManifestConfig;
   interface ManifestConfig {
@@ -174,18 +180,18 @@ Used to control whether to generate a manifest and the corresponding generation 
 
 When enabled, the plugin emits both `mf-manifest.json` and `mf-stats.json` (you can customize the base name through `fileName`) on every build and writes them into the build output so other tooling can read them during the `processAssets` hook or from the final artifacts.
 
-* `mf-stats.json`: Contains full build statistics, including the asset lists for exposes/shared/remotes, `metaData` (plugin version, build info, `remoteEntry`, etc.), and extra asset analysis data, making it suitable for later aggregation or diagnostics.
-* `mf-manifest.json`: A runtime manifest distilled from the stats file. The structure stays stable and can be consumed by Module Federation clients when loading remote modules. The exposes/shared/remotes sections describe what is publicly exposed.
+- `mf-stats.json`: Contains full build statistics, including the asset lists for exposes/shared/remotes, `metaData` (plugin version, build info, `remoteEntry`, etc.), and extra asset analysis data, making it suitable for later aggregation or diagnostics.
+- `mf-manifest.json`: A runtime manifest distilled from the stats file. The structure stays stable and can be consumed by Module Federation clients when loading remote modules. The exposes/shared/remotes sections describe what is publicly exposed.
 
 `ManifestConfig` provides the following options:
 
-* `filePath`: Target directory for the manifest files. Applies to both manifest and stats outputs.
-* `fileName`: Manifest file name. When set, the stats file automatically appends a `-stats` suffix (for example, `fileName: 'mf.json'` produces `mf.json` and `mf-stats.json`). All files are emitted into the directory defined by `filePath` (if provided).
-* `disableAssetsAnalyze`: Disables asset analysis. When `true`, the manifest omits the `shared` and `exposes` fields, and the `remotes` entries will not include asset information.
+- `filePath`: Target directory for the manifest files. Applies to both manifest and stats outputs.
+- `fileName`: Manifest file name. When set, the stats file automatically appends a `-stats` suffix (for example, `fileName: 'mf.json'` produces `mf.json` and `mf-stats.json`). All files are emitted into the directory defined by `filePath` (if provided).
+- `disableAssetsAnalyze`: Disables asset analysis. When `true`, the manifest omits the `shared` and `exposes` fields, and the `remotes` entries will not include asset information.
 
 ## FAQ
 
-* Found non-downgraded syntax in the build output?
+- Found non-downgraded syntax in the build output?
 
   If you need to be compatible with legacy browsers, please add [builtin:swc-loader](/guide/features/builtin-swc-loader.md) for syntax downgrade, and make sure it matches packages under `@module-federation` scope. Here is an example:
 
@@ -209,6 +215,6 @@ When enabled, the plugin emits both `mf-manifest.json` and `mf-stats.json` (you 
   };
   ```
 
-* Multiple assets emit different content to the same filename mf-manifest.json
+- Multiple assets emit different content to the same filename mf-manifest.json
 
   Upgrade the `@module-federation` scoped npm package to `0.21.0` or above.

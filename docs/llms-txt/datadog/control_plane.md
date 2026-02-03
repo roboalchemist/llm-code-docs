@@ -5,8 +5,7 @@ title: Kubernetes Control Plane Monitoring
 description: >-
   Monitor Kubernetes control plane components including API server, etcd,
   controller manager, and scheduler
-breadcrumbs: Docs > Container Monitoring > Kubernetes > Kubernetes Control Plane Monitoring
-source_url: https://docs.datadoghq.com/kubernetes/control_plane/index.html
+breadcrumbs: Docs > Containers > Kubernetes > Kubernetes Control Plane Monitoring
 ---
 
 # Kubernetes Control Plane Monitoring

@@ -30,6 +30,7 @@ import { BarLabel } from '@mui/x-charts-premium';
 | xOrigin | `number` | - | Yes |  |
 | y | `number` | - | Yes |  |
 | yOrigin | `number` | - | Yes |  |
+| hidden | `bool` | - | No |  |
 | placement | `'center' \| 'outside'` | `'center'` | No |  |
 
 > **Note**: The `ref` is forwarded to the root element.

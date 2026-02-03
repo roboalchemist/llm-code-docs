@@ -36,5 +36,5 @@ We also provide [llms-full.txt](../../llms-full.txt) which contains the _full_ c
 
 We don't provide any official MCP server at this time, but will update this page as soon as we do.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

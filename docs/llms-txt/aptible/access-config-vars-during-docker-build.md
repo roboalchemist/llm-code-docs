@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/app-guides/access-config-vars-during-docker-build.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to access configuration variables during Docker build
 
 By design (for better or worse), Docker doesn't allow setting arbitrary environment variables during the Docker build process: that is only possible when running [Containers](/core-concepts/architecture/containers/overview) after the [Image](/core-concepts/apps/deploying-apps/image/overview) is built.

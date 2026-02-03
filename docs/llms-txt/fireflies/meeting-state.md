@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/schema/enum/meeting-state.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # MeetingState
 
 > Enum for MeetingState - possible states for active meetings
@@ -54,8 +58,3 @@ query ActiveMeetings {
 * [ActiveMeeting](/schema/active-meeting) - Schema containing the state field
 * [GetActiveMeetingsInput](/schema/input/active-meetings-input) - Input type using this enum for filtering
 * [Active Meetings Query](/graphql-api/query/active-meetings) - Query documentation
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.fireflies.ai/llms.txt

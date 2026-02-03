@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/layout/st.empty
+
 # st.empty
 
 Insert a single-element container.

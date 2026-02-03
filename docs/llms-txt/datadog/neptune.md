@@ -4,7 +4,6 @@
 title: Neptune Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > AWS Components > Neptune Component
-source_url: https://docs.datadoghq.com/components-aws/neptune/index.html
 ---
 
 # Neptune Component

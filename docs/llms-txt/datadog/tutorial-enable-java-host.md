@@ -8,7 +8,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > APM > Tracing Guides > Tutorial - Enabling Tracing for a Java
   Application on the Same Host as the Datadog Agent
-source_url: https://docs.datadoghq.com/guide/tutorial-enable-java-host/index.html
 ---
 
 # Tutorial - Enabling Tracing for a Java Application on the Same Host as the Datadog Agent

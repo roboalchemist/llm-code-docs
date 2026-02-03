@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/reasoning-dos/
+
 # Reasoning DoS Plugin
 
 Reasoning DoS (Denial of Service) is a new vulnerability introduced by reasoning models.

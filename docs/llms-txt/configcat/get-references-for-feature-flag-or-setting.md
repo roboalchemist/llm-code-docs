@@ -2,10 +2,7 @@
 
 # Get References for Feature Flag or Setting
 
-```
-GET 
-/v1/settings/:settingId/code-references
-```
+Copy page
 
 ## Request[​](#request "Direct link to Request")
 

@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/agents/multimodality/audio.md
 
-# Source: https://docs.livekit.io/agents/build/audio.md
-
-LiveKit docs › Building voice agents › Speech & audio
+LiveKit docs › Multimodality › Speech & audio
 
 ---
 
@@ -100,20 +98,18 @@ try {
 
 ## Preemptive speech generation
 
-Available in:
-- [ ] Node.js
-- [x] Python
-
 **Preemptive generation** allows the agent to begin generating a response before the user's end of turn is committed. The response is based on partial transcription or early signals from user input, helping reduce perceived response delay and improving conversational flow.
 
 When enabled, the agent starts generating a response as soon as the final transcript is available. If the chat context or tools change in the `on_user_turn_completed` [node](https://docs.livekit.io/agents/build/nodes.md#on_user_turn_completed), the preemptive response is canceled and replaced with a new one based on the final transcript.
 
 This feature reduces latency when the following are true:
 
-- [STT node](https://docs.livekit.io/agents/build/nodes.md#stt_node) returns the final transcript faster than [VAD](https://docs.livekit.io/agents/build/turns/vad.md) emits the `end_of_speech` event.
-- [Turn detection model](https://docs.livekit.io/agents/build/turns/turn-detector.md) is enabled.
+- [STT node](https://docs.livekit.io/agents/build/nodes.md#stt_node) returns the final transcript faster than [VAD](https://docs.livekit.io/agents/logic/turns/vad.md) emits the `end_of_speech` event.
+- [Turn detection model](https://docs.livekit.io/agents/logic/turns/turn-detector.md) is enabled.
 
 You can enable this feature for STT-LLM-TTS pipeline agents using the `preemptive_generation` parameter for AgentSession:
+
+**Python**:
 
 ```python
 session = AgentSession(
@@ -123,9 +119,23 @@ session = AgentSession(
 
 ```
 
+---
+
+**Node.js**:
+
+```typescript
+const session = new voice.AgentSession({
+    // ... llm, stt, etc.
+    voiceOptions: {
+      preemptiveGeneration: true,
+    },  
+});
+
+```
+
 > ℹ️ **Note**
 > 
-> Preemptive generation doesn't guarantee reduced latency. Use [Agent observability](https://docs.livekit.io/agents/observability.md) to validate and fine tune agent performance.
+> Preemptive generation doesn't guarantee reduced latency. Use [Agent observability](https://docs.livekit.io/deploy/observability/insights.md) to validate and fine tune agent performance.
 
 ## Initiating speech
 
@@ -189,7 +199,7 @@ Returns a [`SpeechHandle`](#speechhandle) object.
 
 #### Events
 
-This method triggers a [`speech_created`](https://docs.livekit.io/agents/build/events.md#speech_created) event.
+This method triggers a [`speech_created`](https://docs.livekit.io/reference/other/events.md#speech_created) event.
 
 ### generate_reply
 
@@ -260,7 +270,7 @@ Returns a [`SpeechHandle`](#speechhandle) object.
 
 #### Events
 
-This method triggers a [`speech_created`](https://docs.livekit.io/agents/build/events.md#speech_created) event.
+This method triggers a [`speech_created`](https://docs.livekit.io/reference/other/events.md#speech_created) event.
 
 ## Controlling agent speech
 
@@ -553,7 +563,7 @@ The following table lists the SSML tags supported by most TTS providers:
 
 ## Adjusting speech volume
 
-To adjust the volume of the agent's speech, add a processor to the `tts_node` or the `realtime_audio_output_node`.  Alternative, you can also [adjust the volume of playback](https://docs.livekit.io/home/client/tracks/subscribe.md#volume) in the frontend SDK.
+To adjust the volume of the agent's speech, add a processor to the `tts_node` or the `realtime_audio_output_node`.  Alternative, you can also [adjust the volume of playback](https://docs.livekit.io/transport/media/subscribe.md#volume) in the frontend SDK.
 
 The following example agent has an adjustable volume between 0 and 100, and offers a [tool call](https://docs.livekit.io/agents/build/tools.md) to change it.
 
@@ -736,15 +746,13 @@ import { ReadableStream } from 'stream/web';
 
 ## Adding background audio
 
-Available in:
-- [ ] Node.js
-- [x] Python
-
 To add more realism to your agent, or add additional sound effects, publish background audio. This audio is played on a separate audio track. The `BackgroundAudioPlayer` class supports on-demand playback of custom audio as well as automatic ambient and thinking sounds synchronized to the agent lifecycle.
 
-For a complete example in Python, see the following recipe:
+For a complete example, see the following recipes:
 
-- **[Background Audio](https://github.com/livekit/agents/blob/main/examples/voice_agents/background_audio.py)**: A voice AI agent with background audio for thinking states and ambiance.
+- **[Background audio](https://github.com/livekit/agents/blob/main/examples/voice_agents/background_audio.py)**: A voice AI agent with background audio for thinking states and ambiance.
+
+- **[Background audio example in Node.js](https://github.com/livekit/agents-js/blob/main/examples/src/background_audio.ts)**: A voice AI agent with background audio for ambiance.
 
 ### Create the player
 
@@ -752,9 +760,11 @@ The `BackgroundAudioPlayer` class manages audio playback to a room. It can also 
 
 - **`ambient_sound`** _(AudioSource | AudioConfig | list[AudioConfig])_ (optional): Ambient sound plays on a loop in the background during the agent session. See [Supported audio sources](#audio-sources) and [Multiple audio clips](#multiple-audio-clips) for more details.
 
-- **`thinking_sound`** _(AudioSource | AudioConfig | list[AudioConfig])_ (optional): Thinking sound plays while the agent is in the "thinking" state. See [Supported audio sources](#audio-sources) and [Multiple audio clips](#multiple-audio-clips) for more details.
+- **`thinking_sound`** _(AudioSource | AudioConfig | list[AudioConfig])_ (optional): Thinking sound plays while the agent is in the "thinking" state. See [Supported audio sources](#audio-sources) and [Multiple audio clips](#multiple-audio-clips) for more details. This parameter is currently [only supported](#background-audio-limitations) in Python.
 
 Create the player within your entrypoint function:
+
+**Python**:
 
 ```python
 from livekit.agents import BackgroundAudioPlayer, AudioConfig, BuiltinAudioClip
@@ -778,6 +788,31 @@ background_audio = BackgroundAudioPlayer()
 
 ```
 
+---
+
+**Node.js**:
+
+```typescript
+import { voice } from '@livekit/agents';
+
+const backgroundAudio = new voice.BackgroundAudioPlayer({
+    ambientSound: { 
+            source: voice.BuiltinAudioClip.OFFICE_AMBIENCE,
+            volume: 0.8,
+    },
+    // Thinking sounds are not yet supported in Node.js
+});
+
+# An audio player with a custom ambient sound played on a loop
+backgroundAudio = new voice.BackgroundAudioPlayer({
+    ambientSound: "/path/to/my-custom-sound.mp3",
+})
+
+# An audio player for on-demand playback only
+backgroundAudio = new voice.BackgroundAudioPlayer()
+
+```
+
 ### Start and stop the player
 
 Call the `start` method after room connection and after starting the agent session. Ambient sounds, if any, begin playback immediately.
@@ -785,15 +820,37 @@ Call the `start` method after room connection and after starting the agent sessi
 - `room`: The room to publish the audio to.
 - `agent_session`: The agent session to publish the audio to.
 
+**Python**:
+
 ```python
 await background_audio.start(room=ctx.room, agent_session=session)
 
 ```
 
-To stop and dispose the player, call the `aclose` method. You must create a new player instance if you want to start again.
+---
+
+**Node.js**:
+
+```typescript
+await backgroundAudio.start({ room: ctx.room, agentSession: session });
+
+```
+
+To stop and clean up the player, call the `aclose` (or `close` in Node.js) method. You must create a new player instance if you want to start again.
+
+**Python**:
 
 ```python
 await background_audio.aclose()
+
+```
+
+---
+
+**Node.js**:
+
+```typescript
+await backgroundAudio.close();
 
 ```
 
@@ -807,8 +864,19 @@ You can play audio at any time, after starting the player, with the `play` metho
 
 For example, if you created `background_audio` in the [previous example](#publishing-background-audio), you can play an audio file like this:
 
+**Python**:
+
 ```python
 background_audio.play("/path/to/my-custom-sound.mp3")
+
+```
+
+---
+
+**Node.js**:
+
+```typescript
+backgroundAudio.play("/path/to/my-custom-sound.mp3");
 
 ```
 
@@ -816,18 +884,42 @@ The `play` method returns a `PlayHandle` which you can use to await or cancel th
 
 The following example uses the handle to await playback completion:
 
+**Python**:
+
 ```python
 # Wait for playback to complete
 await background_audio.play("/path/to/my-custom-sound.mp3")
 
 ```
 
+---
+
+**Node.js**:
+
+```typescript
+const handle = await backgroundAudio.play("/path/to/my-custom-sound.mp3");
+
+```
+
 The next example shows the handle's `stop` method, which stops playback early:
+
+**Python**:
 
 ```python
 handle = background_audio.play("/path/to/my-custom-sound.mp3")
 await(asyncio.sleep(1))
 handle.stop() # Stop playback early
+
+```
+
+---
+
+**Node.js**:
+
+```typescript
+const handle = backgroundAudio.play("/path/to/my-custom-sound.mp3");
+await new Promise(resolve => setTimeout(resolve, 1000));
+handle.stop(); // Stop playback early
 
 ```
 
@@ -843,11 +935,26 @@ You can pass a list of audio sources to any of `play`, `ambient_sound`, or `thin
 
 - **`probability`** _(float)_ (optional) - Default: `1`: The relative probability of selecting this audio source from the list.
 
+**Python**:
+
 ```python
 # Play the KEYBOARD_TYPING sound with an 80% probability and the KEYBOARD_TYPING2 sound with a 20% probability
 background_audio.play([
     AudioConfig(BuiltinAudioClip.KEYBOARD_TYPING, volume=0.8, probability=0.8),
     AudioConfig(BuiltinAudioClip.KEYBOARD_TYPING2, volume=0.7, probability=0.2),
+])
+
+```
+
+---
+
+**Node.js**:
+
+```typescript
+// Play the KEYBOARD_TYPING sound with an 80% probability and the KEYBOARD_TYPING2 sound with a 20% probability
+backgroundAudio.play([
+    { source: voice.BuiltinAudioClip.KEYBOARD_TYPING, volume: 0.8, probability: 0.8 },
+    { source: voice.BuiltinAudioClip.KEYBOARD_TYPING2, volume: 0.7, probability: 0.2 },
 ])
 
 ```
@@ -876,6 +983,10 @@ The following built-in audio clips are available by default for common sound eff
 
 Pass an `AsyncIterator[rtc.AudioFrame]` to play raw audio frames from any source.
 
+#### Limitations
+
+Thinking sounds are not yet supported in Node.js.
+
 ## Additional resources
 
 To learn more, see the following resources.
@@ -884,9 +995,11 @@ To learn more, see the following resources.
 
 - **[Speech related event](https://docs.livekit.io/agents/build/events.md#speech_created)**: Learn more about the `speech_created` event, triggered when new agent speech is created.
 
-- **[LiveKit SDK](https://docs.livekit.io/home/client/tracks/publish.md#publishing-audio-tracks)**: Learn how to use the LiveKit SDK to play audio tracks.
+- **[LiveKit SDK](https://docs.livekit.io/transport/media/publish.md#publishing-audio-tracks)**: Learn how to use the LiveKit SDK to play audio tracks.
 
-- **[Background audio example](https://github.com/livekit/agents/blob/main/examples/voice_agents/background_audio.py)**: A Python example of using the `BackgroundAudioPlayer` class to play ambient office noise and thinking sounds.
+- **[Background audio](https://github.com/livekit/agents/blob/main/examples/voice_agents/background_audio.py)**: A voice AI agent with background audio for thinking states and ambiance.
+
+- **[Background audio example in Node.js](https://github.com/livekit/agents-js/blob/main/examples/src/background_audio.ts)**: A voice AI agent with background audio for ambiance.
 
 - **[Text-to-speech (TTS)](https://docs.livekit.io/agents/models/tts.md)**: TTS models for pipeline agents.
 
@@ -894,7 +1007,7 @@ To learn more, see the following resources.
 
 ---
 
-This document was rendered at 2025-11-18T23:55:03.614Z.
-For the latest version of this document, see [https://docs.livekit.io/agents/build/audio.md](https://docs.livekit.io/agents/build/audio.md).
+This document was rendered at 2026-02-03T03:24:55.092Z.
+For the latest version of this document, see [https://docs.livekit.io/agents/multimodality/audio.md](https://docs.livekit.io/agents/multimodality/audio.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

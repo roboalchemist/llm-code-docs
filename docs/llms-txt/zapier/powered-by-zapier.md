@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/embed/powered-by-zapier.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Powered by Zapier Documentation
 
 > Powered by Zapier is the easiest ways to embed Zapier and surface integrations within your product.

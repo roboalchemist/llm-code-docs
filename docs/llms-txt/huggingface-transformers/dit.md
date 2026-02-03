@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/dit.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/dit.md
 
 # DiT
 
@@ -9,7 +9,7 @@ You can find all the original DiT checkpoints under the [Microsoft](https://hugg
 > [!TIP]
 > Refer to the [BEiT](./beit) docs for more examples of how to apply DiT to different vision tasks.
 
-The example below demonstrates how to classify an image with [Pipeline](/docs/transformers/v5.0.0rc1/en/main_classes/pipelines#transformers.Pipeline) or the [AutoModel](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoModel) class.
+The example below demonstrates how to classify an image with [Pipeline](/docs/transformers/v5.0.0/en/main_classes/pipelines#transformers.Pipeline) or the [AutoModel](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoModel) class.
 
 ```py
 import torch

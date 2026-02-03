@@ -2,7 +2,7 @@
 
 # Product Hunt
 
-Product Hunt is one of the best platforms for introducing new tools, especially in the tech community. It attracts a crowd of early adopters, startup enthusiasts, and developers eager to discover the latest innovations. Even https://www.producthunt.com/products/apify was on PH.
+Product Hunt is one of the best platforms for introducing new tools, especially in the tech community. It attracts a crowd of early adopters, startup enthusiasts, and developers eager to discover the latest innovations. Even [Apify itself](https://www.producthunt.com/products/apify) was on PH.
 
 If you're looking to build awareness and generate short-term traffic, Product Hunt can be a powerful tool in your marketing strategy. It's a chance to attract a wide audience, including developers, startups, and businesses looking for automation. If your Actor solves a common problem, automates a tedious process, or enhances productivity, it's a perfect candidate for Product Hunt.
 
@@ -45,7 +45,7 @@ If possible, have team members or collaborators available to help respond to com
 
 Leverage Apify
 
-You can also give a shoutout to Apify, this way your Actor will also notified to the community of Apify on Product Hunt: https://www.producthunt.com/stories/introducing-shoutouts
+You can also give a shoutout to Apify, this way your Actor will also notified to the community of Apify on Product Hunt: [https://www.producthunt.com/stories/introducing-shoutouts](https://www.producthunt.com/stories/introducing-shoutouts)
 
 ## Expectations and results
 
@@ -53,7 +53,7 @@ Launching on Product Hunt can provide a massive spike in short-term traffic and 
 
 * *Short-term traffic boost*. Your Actor might see a surge in visitors, especially on the day of the launch. If your Actor resonates with users, this traffic may extend for a few more days.
 * *Potential long-term benefits*. While the short-term traffic is exciting, the long-term value lies in the relationships you build with early users. Some of them may convert into paying customers or become advocates for your Actor.
-* *SEO boost*. Product Hunt is a high-authority site with a 91 https://help.ahrefs.com/en/articles/1409408-what-is-domain-rating-dr. Having your product listed can provide an SEO boost and help your Actor's page rank higher in search engines.
+* *SEO boost*. Product Hunt is a high-authority site with a 91 [domain rating](https://help.ahrefs.com/en/articles/1409408-what-is-domain-rating-dr). Having your product listed can provide an SEO boost and help your Actor's page rank higher in search engines.
 * *User feedback*. Product Hunt is a great place to gather feedback. Users may point out bugs, request features, or suggest improvements.
 
 ## Tricks for a successful launch

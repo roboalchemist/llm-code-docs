@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/installation/comfyui_portable_windows.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ComfyUI(portable) Windows
 
 > This tutorial will guide you on how to download and start using ComfyUI Portable and run the corresponding programs
@@ -105,7 +109,7 @@ Suppose you want to add the following model paths to ComfyUI:
 ```
 📁 YOUR_PATH/
   ├── 📁models/
-  |   ├── 📁 lora/
+  |   ├── 📁 loras/
   |   │   └── xxxxx.safetensors
   |   ├── 📁 checkpoints/
   |   │   └── xxxxx.safetensors

@@ -1,10 +1,12 @@
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/crawling/exporting-data.md
 
-# Source: https://docs.apify.com/academy/web-scraping-for-beginners/crawling/exporting-data.md
-
 # Exporting data
 
 **Learn how to export the data you scraped using Crawlee to CSV or JSON.**
+
+Archived course
+
+This is an archive of our old course. Check out our new [Web scraping basics for JavaScript devs](https://docs.apify.com/academy/scraping-basics-javascript.md) course instead! We plan to completely retire this old course in a few months.
 
 ***
 
@@ -17,7 +19,7 @@ But when we look inside the folder, we see that there are a lot of files, and we
 
 ## Exporting data to CSV
 
-Crawlee's `Dataset` provides a way to export all your scraped data into one big CSV file. You can then open it in Excel or any other data processor. To do that, you need to call https://crawlee.dev/api/core/class/Dataset#exportToCSV after collecting all the data. That means, after your crawler run finishes.
+Crawlee's `Dataset` provides a way to export all your scraped data into one big CSV file. You can then open it in Excel or any other data processor. To do that, you need to call [Dataset.exportToCSV()](https://crawlee.dev/api/core/class/Dataset#exportToCSV) after collecting all the data. That means, after your crawler run finishes.
 
 
 ```
@@ -38,11 +40,11 @@ After you add this one line and run the code, you'll find your CSV with all the 
 
 info
 
-https://crawlee.dev/docs/guides/result-storage#key-value-store is another of Crawlee's storages. It's best for saving files like CSVs, PDFs or images, but also large JSONs or crawler statistics.
+[Key-value store](https://crawlee.dev/docs/guides/result-storage#key-value-store) is another of Crawlee's storages. It's best for saving files like CSVs, PDFs or images, but also large JSONs or crawler statistics.
 
 ## Exporting data to JSON
 
-Exporting to JSON is very similar to exporting to CSV, but we'll use a different function: https://crawlee.dev/api/core/class/Dataset#exportToJSON. Exporting to JSON is useful when you don't want to work with each item separately, but would rather have one big JSON file with all the results.
+Exporting to JSON is very similar to exporting to CSV, but we'll use a different function: [Dataset.exportToJSON](https://crawlee.dev/api/core/class/Dataset#exportToJSON). Exporting to JSON is useful when you don't want to work with each item separately, but would rather have one big JSON file with all the results.
 
 
 ```
@@ -114,4 +116,4 @@ await Dataset.exportToCSV('results');
 
 ## Next up
 
-And this is it for the https://docs.apify.com/academy/web-scraping-for-beginners/crawling.md section of the https://docs.apify.com/academy/web-scraping-for-beginners.md course. If you want to learn more, test your knowledge of the methods and concepts you learned in this course by moving forward with the https://docs.apify.com/academy/web-scraping-for-beginners/challenge.md.
+And this is it for the [Basics of crawling](https://docs.apify.com/academy/scraping-basics-javascript/legacy/crawling.md) section of the [Web scraping basics for JavaScript devs](https://docs.apify.com/academy/scraping-basics-javascript/legacy.md) course. If you want to learn more, test your knowledge of the methods and concepts you learned in this course by moving forward with the [challenge](https://docs.apify.com/academy/scraping-basics-javascript/legacy/challenge.md).

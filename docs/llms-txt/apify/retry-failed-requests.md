@@ -6,11 +6,11 @@
 
 ***
 
-Requests of a scraper can fail for many reasons. The most common causes are different page layouts or proxy blocking issues (https://docs.apify.com/academy/node-js/analyzing-pages-and-fixing-errors). Both https://apify.com and https://crawlee.dev/ allow you to restart your scraper run from the point where it ended, but there is no native functionality to re-scrape only failed requests. Usually, you also want to first analyze the problem, update the code, and build it before trying again.
+Requests of a scraper can fail for many reasons. The most common causes are different page layouts or proxy blocking issues ([check here on how to effectively analyze errors](https://docs.apify.com/academy/node-js/analyzing-pages-and-fixing-errors)). Both [Apify](https://apify.com) and [Crawlee](https://crawlee.dev/) allow you to restart your scraper run from the point where it ended, but there is no native functionality to re-scrape only failed requests. Usually, you also want to first analyze the problem, update the code, and build it before trying again.
 
-If you attempt to restart an already finished run, it will likely immediately finish because all the requests in the https://crawlee.dev/docs/guides/request-storage are marked as handled. You need to update the failed requests in the queue to be marked as pending again.
+If you attempt to restart an already finished run, it will likely immediately finish because all the requests in the [request queue](https://crawlee.dev/docs/guides/request-storage) are marked as handled. You need to update the failed requests in the queue to be marked as pending again.
 
-The additional complication is that the https://crawlee.dev/api/core/class/Request object doesn't have anything like the `isFailed` property. We have to approximate it using other fields. Fortunately, we can use the `errorMessages` and `retryCount` properties to identify failed requests. Unless the user explicitly has overridden these properties, we can identify failed requests with a larger amount of `errorMessages` than `retryCount`. That happens because the last error that doesn't cause a retry anymore is added to `errorMessages`.
+The additional complication is that the [Request](https://crawlee.dev/api/core/class/Request) object doesn't have anything like the `isFailed` property. We have to approximate it using other fields. Fortunately, we can use the `errorMessages` and `retryCount` properties to identify failed requests. Unless the user explicitly has overridden these properties, we can identify failed requests with a larger amount of `errorMessages` than `retryCount`. That happens because the last error that doesn't cause a retry anymore is added to `errorMessages`.
 
 A simplified code example can look like this:
 
@@ -57,4 +57,4 @@ for (const request of failedRequests) {
 
 ## Resurrect automatically with a free public Actor
 
-Fortunately, you don't need to implement this code into your workflow. https://apify.com/store provides the https://apify.com/lukaskrivka/rebirth-failed-requests Actor (that is https://github.com/metalwarrior665/rebirth-failed-requests) that does this and more. The Actor can automatically scan multiple runs of your Actors based on filters like `date started`. It can also automatically resurrect the runs after renewing the failed requests. That means you will finish your scrape into the final successful state with a single click on the Run button.
+Fortunately, you don't need to implement this code into your workflow. [Apify Store](https://apify.com/store) provides the [Rebirth Failed Requests](https://apify.com/lukaskrivka/rebirth-failed-requests) Actor (that is [open-source](https://github.com/metalwarrior665/rebirth-failed-requests)) that does this and more. The Actor can automatically scan multiple runs of your Actors based on filters like `date started`. It can also automatically resurrect the runs after renewing the failed requests. That means you will finish your scrape into the final successful state with a single click on the Run button.

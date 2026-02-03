@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/opencode-sdk/
+
 # OpenCode SDK
 
 This provider integrates [OpenCode](https://opencode.ai/), an open-source AI coding agent for the terminal with support for 75+ LLM providers.

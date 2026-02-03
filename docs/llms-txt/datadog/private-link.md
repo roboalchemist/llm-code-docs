@@ -6,7 +6,6 @@ description: >-
   Configure AWS PrivateLink endpoints to send telemetry data to Datadog securely
   through internal VPC connections, including cross-region setups.
 breadcrumbs: Docs > Agent > Agent Guides > Connect to Datadog over AWS PrivateLink
-source_url: https://docs.datadoghq.com/guide/private-link/index.html
 ---
 
 # Connect to Datadog over AWS PrivateLink

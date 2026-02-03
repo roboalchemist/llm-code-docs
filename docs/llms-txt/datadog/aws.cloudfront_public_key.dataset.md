@@ -4,8 +4,6 @@
 title: CloudFront Public Key
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > CloudFront Public Key
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.cloudfront_public_key.dataset/index.html
 ---
 
 # CloudFront Public Key
@@ -18,13 +16,13 @@ aws.cloudfront_public_key
 
 ## Fields
 
-| Title                     | ID   | Type      | Data Type                                                                               | Description |
-| ------------------------- | ---- | --------- | --------------------------------------------------------------------------------------- | ----------- |
-| _key                      | core | string    |
-| account_id                | core | string    |
-| cloudfront_public_key_arn | core | string    |
-| comment                   | core | string    | A comment to describe the public key. The comment cannot be longer than 128 characters. |
-| created_time              | core | timestamp | The date and time when the public key was uploaded.                                     |
-| id                        | core | string    | The identifier of the public key.                                                       |
-| name                      | core | string    | A name to help identify the public key.                                                 |
-| tags                      | core | hstore    |
+| Title                     | ID   | Type       | Data Type                                                                               | Description |
+| ------------------------- | ---- | ---------- | --------------------------------------------------------------------------------------- | ----------- |
+| _key                      | core | string     |
+| account_id                | core | string     |
+| cloudfront_public_key_arn | core | string     |
+| comment                   | core | string     | A comment to describe the public key. The comment cannot be longer than 128 characters. |
+| created_time              | core | timestamp  | The date and time when the public key was uploaded.                                     |
+| id                        | core | string     | The identifier of the public key.                                                       |
+| name                      | core | string     | A name to help identify the public key.                                                 |
+| tags                      | core | hstore_csv |

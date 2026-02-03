@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/realtime/run-object.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # The run object
 
 > The run object schema for Realtime subscriptions
@@ -123,7 +127,7 @@ Type-safety is supported for the run object, so you can infer the types of the r
 
 You can infer the types of the run's payload and output by passing the type of the task to the `subscribeToRun` function. This will give you type-safe access to the run's payload and output.
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { runs, tasks } from "@trigger.dev/sdk";
 import type { myTask } from "./trigger/my-task";
 
@@ -145,7 +149,7 @@ async function myBackend() {
 
 When using `subscribeToRunsWithTag`, you can pass a union of task types for all the possible tasks that can have the tag.
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 import type { myTask, myOtherTask } from "./trigger/my-task";
 

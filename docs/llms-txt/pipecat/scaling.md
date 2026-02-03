@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/deployment/pipecat-cloud/fundamentals/scaling.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Scaling
 
 > Production-ready agent deployment and scaling strategies
@@ -77,7 +81,7 @@ pipecat cloud deploy [agent-name] --min-agents 1
 </Frame>
 
 <Note>
-  During beta, each deployment made to Pipecat Cloud has a maximum allowed pool
+  Each deployment made to Pipecat Cloud has a maximum allowed pool
   size of 50. Please contact us at [help@daily.co](mailto:help@daily.co) or via
   [Discord](https://discord.gg/dailyco) if you require more capacity.
 </Note>
@@ -244,8 +248,3 @@ Reserved session minutes are optional and controlled by setting `--min-agents` i
   Both active and reserved session time is measured to the second and billed in
   minutes.
 </Note>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

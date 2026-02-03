@@ -17,7 +17,7 @@ from pprint import pprint
     'gpt-5 gpt-5-mini gpt-5-nano o1-preview o1-mini gpt-4o gpt-4o-mini gpt-4-turbo gpt-4 gpt-4-32k gpt-3.5-turbo gpt-3.5-turbo-instruct o1 o3-mini chatgpt-4o-latest o1-pro o3 o4-mini gpt-4.1 gpt-4.1-mini gpt-4.1-nano'
 
 ``` python
-model = models[1]
+model = first(m for m in models if 'mini' in m)
 model
 ```
 
@@ -91,8 +91,8 @@ Hello! How can I help you today?
 
 <details>
 
-- id: resp_6897e0de4c348190bf1946e354518b8b0c0dd261ca702a77
-- created_at: 1754783966.0
+- id: resp_0610e51711a17c8b006943fce162a0819396584fc43c687fba
+- created_at: 1766063329.0
 - error: None
 - incomplete_details: None
 - instructions: None
@@ -100,10 +100,10 @@ Hello! How can I help you today?
 - model: gpt-5-mini-2025-08-07
 - object: response
 - output:
-  \[ResponseReasoningItem(id=‘rs_6897e0def4188190ac0593dbdac886be0c0dd261ca702a77’,
+  \[ResponseReasoningItem(id=‘rs_0610e51711a17c8b006943fce1b7e08193a742dd433b62cbcb’,
   summary=\[\], type=‘reasoning’, content=None, encrypted_content=None,
   status=None),
-  ResponseOutputMessage(id=‘msg_6897e0df0d088190954040dcc2c7f18c0c0dd261ca702a77’,
+  ResponseOutputMessage(id=‘msg_0610e51711a17c8b006943fce1dfc081939b2f726e067bd88c’,
   content=\[ResponseOutputText(annotations=\[\], text=‘Hello! How can I
   help you today?’, type=‘output_text’, logprobs=\[\])\],
   role=‘assistant’, status=‘completed’, type=‘message’)\]
@@ -128,11 +128,13 @@ Hello! How can I help you today?
   order ID:- type: boolean’)\]
 - top_p: 1.0
 - background: False
+- conversation: None
 - max_output_tokens: 4096
 - max_tool_calls: None
 - previous_response_id: None
 - prompt: None
 - prompt_cache_key: None
+- prompt_cache_retention: None
 - reasoning: Reasoning(effort=‘minimal’, generate_summary=None,
   summary=None)
 - safety_identifier: None
@@ -148,6 +150,7 @@ Hello! How can I help you today?
   output_tokens_details=OutputTokensDetails(reasoning_tokens=0),
   total_tokens=151)
 - user: None
+- billing: {‘payer’: ‘openai’}
 - store: True
 
 </details>
@@ -159,15 +162,15 @@ r.output
 
     - Retrieving customer C2
 
-    [ResponseReasoningItem(id='rs_6897e0f0949c8190af24da7373614a300c0dd261ca702a77', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
-     ResponseFunctionToolCall(arguments='{"customer_id":"C2"}', call_id='call_7qPUHLapCRWKcPqdoFkRYChc', name='get_customer_info', type='function_call', id='fc_6897e0f0c5248190b17036339c4be62a0c0dd261ca702a77', status='completed')]
+    [ResponseReasoningItem(id='rs_0610e51711a17c8b006943fce2fb408193a0298d1762a4b19e', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
+     ResponseFunctionToolCall(arguments='{"customer_id":"C2"}', call_id='call_1iQyH2m7zBT6AxtxpVfgOARS', name='get_customer_info', type='function_call', id='fc_0610e51711a17c8b006943fce34518819385d6cbeb29b1f63f', status='completed')]
 
 ``` python
 r = chat()
 r.output
 ```
 
-    [ResponseOutputMessage(id='msg_6897e0f5a8b48190b648cb12f43898240c0dd261ca702a77', content=[ResponseOutputText(annotations=[], text='The email for customer C2 is jane@example.com.', type='output_text', logprobs=[])], role='assistant', status='completed', type='message')]
+    [ResponseOutputMessage(id='msg_0610e51711a17c8b006943fce4a59c8193b7914069038e07b0', content=[ResponseOutputText(annotations=[], text='The email address for customer C2 is jane@example.com.', type='output_text', logprobs=[])], role='assistant', status='completed', type='message')]
 
 ``` python
 chat = Chat(model, tools=tools)
@@ -177,8 +180,8 @@ r.output
 
     - Retrieving customer C1
 
-    [ResponseReasoningItem(id='rs_6897e0f99ddc8191b8f2fafa74dc06d40913d9b020597909', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
-     ResponseFunctionToolCall(arguments='{"customer_id":"C1"}', call_id='call_LwrqtbAyvJshnZo2a6MIG8GK', name='get_customer_info', type='function_call', id='fc_6897e0fb1f648191b15ad2d73156e6260913d9b020597909', status='completed')]
+    [ResponseReasoningItem(id='rs_067a83d17b75c4ea006943fce594008194904f7f4b1710ab11', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
+     ResponseFunctionToolCall(arguments='{"customer_id":"C1"}', call_id='call_5MXLQEl4LdzFyRHIR3DynD9I', name='get_customer_info', type='function_call', id='fc_067a83d17b75c4ea006943fce6c9848194b442cb73ffe02035', status='completed')]
 
 ``` python
 r = chat()
@@ -188,9 +191,9 @@ r.output
     - Cancelling order O1
     - Cancelling order O2
 
-    [ResponseReasoningItem(id='rs_6897e0fd41e0819189fc599d98d476280913d9b020597909', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
-     ResponseFunctionToolCall(arguments='{"order_id":"O1"}', call_id='call_q8Xfu230VPo7EtebReDFkXQW', name='cancel_order', type='function_call', id='fc_6897e0fec5fc8191989ee1c6f5456bf90913d9b020597909', status='completed'),
-     ResponseFunctionToolCall(arguments='{"order_id":"O2"}', call_id='call_eyVUvcqHfbLPdRluohRibIC1', name='cancel_order', type='function_call', id='fc_6897e0fee2c48191be1350e29034816a0913d9b020597909', status='completed')]
+    [ResponseReasoningItem(id='rs_067a83d17b75c4ea006943fce7b6648194aa8afa477dc81c42', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
+     ResponseFunctionToolCall(arguments='{"order_id":"O1"}', call_id='call_y3LWRVEn8X80nCQf50EOVOu5', name='cancel_order', type='function_call', id='fc_067a83d17b75c4ea006943fce992f88194b8de77d411f78e44', status='completed'),
+     ResponseFunctionToolCall(arguments='{"order_id":"O2"}', call_id='call_oPiTCOxwXjo8uac0mzXK3rEv', name='cancel_order', type='function_call', id='fc_067a83d17b75c4ea006943fce9f498819495f077de035b7454', status='completed')]
 
 ## `toolloop` implementation
 
@@ -202,305 +205,51 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### Chat.toolloop
 
->  Chat.toolloop (pr, max_steps=10, cont_func:<built-
->                     infunctioncallable>=<function noop>, final_prompt='You
->                     have no more tool uses. Please summarize your findings. If
->                     you did not complete your goal please tell the user what
->                     further work needs to be done so they can choose how best
->                     to proceed.', stream:bool=False, tools=None,
->                     tool_choice=None,
->                     background:Optional[bool]|Omit=<openai.Omit object at
->                     0x7f5b558ffdc0>, conversation:Optional[response_create_par
->                     ams.Conversation]|Omit=<openai.Omit object at
->                     0x7f5b558ffdc0>, include:Optional[List[ResponseIncludable]
->                     ]|Omit=<openai.Omit object at 0x7f5b558ffdc0>,
->                     input:Union[str,ResponseInputParam]|Omit=<openai.Omit
->                     object at 0x7f5b558ffdc0>,
->                     instructions:Optional[str]|Omit=<openai.Omit object at
->                     0x7f5b558ffdc0>,
->                     max_output_tokens:Optional[int]|Omit=<openai.Omit object
->                     at 0x7f5b558ffdc0>,
->                     max_tool_calls:Optional[int]|Omit=<openai.Omit object at
->                     0x7f5b558ffdc0>,
->                     metadata:Optional[Metadata]|Omit=<openai.Omit object at
->                     0x7f5b558ffdc0>, model:ResponsesModel|Omit=<openai.Omit
->                     object at 0x7f5b558ffdc0>,
->                     parallel_tool_calls:Optional[bool]|Omit=<openai.Omit
->                     object at 0x7f5b558ffdc0>,
->                     previous_response_id:Optional[str]|Omit=<openai.Omit
->                     object at 0x7f5b558ffdc0>,
->                     prompt:Optional[ResponsePromptParam]|Omit=<openai.Omit
->                     object at 0x7f5b558ffdc0>,
->                     prompt_cache_key:str|Omit=<openai.Omit object at
->                     0x7f5b558ffdc0>,
->                     prompt_cache_retention:"Optional[Literal['in-
->                     memory','24h']]|Omit"=<openai.Omit object at
->                     0x7f5b558ffdc0>,
->                     reasoning:Optional[Reasoning]|Omit=<openai.Omit object at
->                     0x7f5b558ffdc0>, safety_identifier:str|Omit=<openai.Omit
->                     object at 0x7f5b558ffdc0>, service_tier:"Optional[Literal[
->                     'auto','default','flex','scale','priority']]|Omit"=<openai
->                     .Omit object at 0x7f5b558ffdc0>,
->                     store:Optional[bool]|Omit=<openai.Omit object at
->                     0x7f5b558ffdc0>, stream_options:Optional[response_create_p
->                     arams.StreamOptions]|Omit=<openai.Omit object at
->                     0x7f5b558ffdc0>,
->                     temperature:Optional[float]|Omit=<openai.Omit object at
->                     0x7f5b558ffdc0>,
->                     text:ResponseTextConfigParam|Omit=<openai.Omit object at
->                     0x7f5b558ffdc0>,
->                     top_logprobs:Optional[int]|Omit=<openai.Omit object at
->                     0x7f5b558ffdc0>, top_p:Optional[float]|Omit=<openai.Omit
->                     object at 0x7f5b558ffdc0>, truncation:"Optional[Literal['a
->                     uto','disabled']]|Omit"=<openai.Omit object at
->                     0x7f5b558ffdc0>, user:str|Omit=<openai.Omit object at
->                     0x7f5b558ffdc0>, extra_headers:Headers|None=None,
->                     extra_query:Query|None=None, extra_body:Body|None=None,
->                     timeout:float|httpx.Timeout|None|NotGiven=NOT_GIVEN)
+``` python
+
+def toolloop(
+    pr, # Prompt to pass to Claude
+    max_steps:int=10, # Maximum number of tool requests to loop through
+    cont_func:callable=noop, # Function that stops loop if returns False
+    final_prompt:str='You have no more tool uses. Please summarize your findings. If you did not complete your goal please tell the user what further work needs to be done so they can choose how best to proceed.', # Prompt to add if last message is a tool call
+    stream:bool=False, # Stream response?
+    tools:NoneType=None, # Tools to use
+    tool_choice:NoneType=None, # Required tools to use
+    background:Optional[bool] | Omit=<openai.Omit object at 0x7f58df64bd40>,
+    conversation:Optional[response_create_params.Conversation] | Omit=<openai.Omit object at 0x7f58df64bd40>,
+    include:Optional[List[ResponseIncludable]] | Omit=<openai.Omit object at 0x7f58df64bd40>,
+    input:Union[str, ResponseInputParam] | Omit=<openai.Omit object at 0x7f58df64bd40>,
+    instructions:Optional[str] | Omit=<openai.Omit object at 0x7f58df64bd40>,
+    max_output_tokens:Optional[int] | Omit=<openai.Omit object at 0x7f58df64bd40>,
+    max_tool_calls:Optional[int] | Omit=<openai.Omit object at 0x7f58df64bd40>,
+    metadata:Optional[Metadata] | Omit=<openai.Omit object at 0x7f58df64bd40>,
+    model:ResponsesModel | Omit=<openai.Omit object at 0x7f58df64bd40>,
+    parallel_tool_calls:Optional[bool] | Omit=<openai.Omit object at 0x7f58df64bd40>,
+    previous_response_id:Optional[str] | Omit=<openai.Omit object at 0x7f58df64bd40>,
+    prompt:Optional[ResponsePromptParam] | Omit=<openai.Omit object at 0x7f58df64bd40>,
+    prompt_cache_key:str | Omit=<openai.Omit object at 0x7f58df64bd40>,
+    prompt_cache_retention:Optional[Literal['in-memory', '24h']] | Omit=<openai.Omit object at 0x7f58df64bd40>,
+    reasoning:Optional[Reasoning] | Omit=<openai.Omit object at 0x7f58df64bd40>,
+    safety_identifier:str | Omit=<openai.Omit object at 0x7f58df64bd40>,
+    service_tier:Optional[Literal['auto', 'default', 'flex', 'scale', 'priority']] | Omit=<openai.Omit object at 0x7f58df64bd40>,
+    store:Optional[bool] | Omit=<openai.Omit object at 0x7f58df64bd40>,
+    stream_options:Optional[response_create_params.StreamOptions] | Omit=<openai.Omit object at 0x7f58df64bd40>,
+    temperature:Optional[float] | Omit=<openai.Omit object at 0x7f58df64bd40>,
+    text:ResponseTextConfigParam | Omit=<openai.Omit object at 0x7f58df64bd40>,
+    top_logprobs:Optional[int] | Omit=<openai.Omit object at 0x7f58df64bd40>,
+    top_p:Optional[float] | Omit=<openai.Omit object at 0x7f58df64bd40>,
+    truncation:Optional[Literal['auto', 'disabled']] | Omit=<openai.Omit object at 0x7f58df64bd40>,
+    user:str | Omit=<openai.Omit object at 0x7f58df64bd40>,
+    extra_headers:Headers | None=None, # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+The extra values given here take precedence over values defined on the client or passed to this method.
+    extra_query:Query | None=None, extra_body:Body | None=None,
+    timeout:float | httpx.Timeout | None | NotGiven=NOT_GIVEN
+):
+
+```
 
 *Add prompt `pr` to dialog and get a response from Claude, automatically
 following up with `tool_use` messages*
-
-<table>
-<colgroup>
-<col style="width: 6%" />
-<col style="width: 25%" />
-<col style="width: 34%" />
-<col style="width: 34%" />
-</colgroup>
-<thead>
-<tr>
-<th></th>
-<th><strong>Type</strong></th>
-<th><strong>Default</strong></th>
-<th><strong>Details</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>pr</td>
-<td></td>
-<td></td>
-<td>Prompt to pass to Claude</td>
-</tr>
-<tr>
-<td>max_steps</td>
-<td>int</td>
-<td>10</td>
-<td>Maximum number of tool requests to loop through</td>
-</tr>
-<tr>
-<td>cont_func</td>
-<td>callable</td>
-<td>noop</td>
-<td>Function that stops loop if returns False</td>
-</tr>
-<tr>
-<td>final_prompt</td>
-<td>str</td>
-<td>You have no more tool uses. Please summarize your findings. If you
-did not complete your goal please tell the user what further work needs
-to be done so they can choose how best to proceed.</td>
-<td>Prompt to add if last message is a tool call</td>
-</tr>
-<tr>
-<td>stream</td>
-<td>bool</td>
-<td>False</td>
-<td>Stream response?</td>
-</tr>
-<tr>
-<td>tools</td>
-<td>NoneType</td>
-<td>None</td>
-<td>Tools to use</td>
-</tr>
-<tr>
-<td>tool_choice</td>
-<td>NoneType</td>
-<td>None</td>
-<td>Required tools to use</td>
-</tr>
-<tr>
-<td>background</td>
-<td>Optional[bool] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f5b558ffdc0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>conversation</td>
-<td>Optional[response_create_params.Conversation] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f5b558ffdc0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>include</td>
-<td>Optional[List[ResponseIncludable]] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f5b558ffdc0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>input</td>
-<td>Union[str, ResponseInputParam] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f5b558ffdc0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>instructions</td>
-<td>Optional[str] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f5b558ffdc0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>max_output_tokens</td>
-<td>Optional[int] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f5b558ffdc0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>max_tool_calls</td>
-<td>Optional[int] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f5b558ffdc0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>metadata</td>
-<td>Optional[Metadata] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f5b558ffdc0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>model</td>
-<td>ResponsesModel | Omit</td>
-<td>&lt;openai.Omit object at 0x7f5b558ffdc0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>parallel_tool_calls</td>
-<td>Optional[bool] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f5b558ffdc0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>previous_response_id</td>
-<td>Optional[str] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f5b558ffdc0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>prompt</td>
-<td>Optional[ResponsePromptParam] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f5b558ffdc0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>prompt_cache_key</td>
-<td>str | Omit</td>
-<td>&lt;openai.Omit object at 0x7f5b558ffdc0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>prompt_cache_retention</td>
-<td>Optional[Literal[‘in-memory’, ‘24h’]] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f5b558ffdc0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>reasoning</td>
-<td>Optional[Reasoning] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f5b558ffdc0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>safety_identifier</td>
-<td>str | Omit</td>
-<td>&lt;openai.Omit object at 0x7f5b558ffdc0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>service_tier</td>
-<td>Optional[Literal[‘auto’, ‘default’, ‘flex’, ‘scale’, ‘priority’]] |
-Omit</td>
-<td>&lt;openai.Omit object at 0x7f5b558ffdc0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>store</td>
-<td>Optional[bool] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f5b558ffdc0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>stream_options</td>
-<td>Optional[response_create_params.StreamOptions] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f5b558ffdc0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>temperature</td>
-<td>Optional[float] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f5b558ffdc0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>text</td>
-<td>ResponseTextConfigParam | Omit</td>
-<td>&lt;openai.Omit object at 0x7f5b558ffdc0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>top_logprobs</td>
-<td>Optional[int] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f5b558ffdc0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>top_p</td>
-<td>Optional[float] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f5b558ffdc0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>truncation</td>
-<td>Optional[Literal[‘auto’, ‘disabled’]] | Omit</td>
-<td>&lt;openai.Omit object at 0x7f5b558ffdc0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>user</td>
-<td>str | Omit</td>
-<td>&lt;openai.Omit object at 0x7f5b558ffdc0&gt;</td>
-<td></td>
-</tr>
-<tr>
-<td>extra_headers</td>
-<td>Optional</td>
-<td>None</td>
-<td>Use the following arguments if you need to pass additional
-parameters to the API that aren’t available via kwargs.<br>The extra
-values given here take precedence over values defined on the client or
-passed to this method.</td>
-</tr>
-<tr>
-<td>extra_query</td>
-<td>Query | None</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>extra_body</td>
-<td>Body | None</td>
-<td>None</td>
-<td></td>
-</tr>
-<tr>
-<td>timeout</td>
-<td>float | httpx.Timeout | None | NotGiven</td>
-<td>NOT_GIVEN</td>
-<td></td>
-</tr>
-</tbody>
-</table>
 
 <details open class="code-fold">
 <summary>Exported source</summary>
@@ -562,13 +311,12 @@ for o in r: show(o)
 
     - Retrieving customer C1
 
-The email for customer C1 is john@example.com. Need anything else about
-this customer?
+The email address for customer C1 (John Doe) is john@example.com.
 
 <details>
 
-- id: resp_6897e128b4448193bf249ab92f1de8780e7bd7a6ca08f04c
-- created_at: 1754784041.0
+- id: resp_0787bac936d9204f006943fcee2ba48195ad60e3c1ec52d1d7
+- created_at: 1766063342.0
 - error: None
 - incomplete_details: None
 - instructions: None
@@ -576,288 +324,12 @@ this customer?
 - model: gpt-5-mini-2025-08-07
 - object: response
 - output:
-  \[ResponseReasoningItem(id=‘rs_6897e12998dc8193b861f1ead58b702e0e7bd7a6ca08f04c’,
+  \[ResponseReasoningItem(id=‘rs_0787bac936d9204f006943fcee7cd881959b82edf88db5e70d’,
   summary=\[\], type=‘reasoning’, content=None, encrypted_content=None,
   status=None),
-  ResponseOutputMessage(id=‘msg_6897e12a73f4819387e6321b9d3acbd90e7bd7a6ca08f04c’,
-  content=\[ResponseOutputText(annotations=\[\], text=‘The email for
-  customer C1 is john@example.com. Need anything else about this
-  customer?’, type=‘output_text’, logprobs=\[\])\], role=‘assistant’,
-  status=‘completed’, type=‘message’)\]
-- parallel_tool_calls: True
-- temperature: 1.0
-- tool_choice: auto
-- tools: \[FunctionTool(name=‘get_customer_info’, parameters={‘type’:
-  ‘object’, ‘properties’: {‘customer_id’: {‘type’: ‘string’,
-  ‘description’: ‘ID of the customer’}}, ‘required’: \[‘customer_id’\],
-  ‘additionalProperties’: False}, strict=True, type=‘function’,
-  description=“Retrieves a customer’s information and their orders based
-  on the customer ID”), FunctionTool(name=‘get_order_details’,
-  parameters={‘type’: ‘object’, ‘properties’: {‘order_id’: {‘type’:
-  ‘string’, ‘description’: ‘ID of the order’}}, ‘required’:
-  \[‘order_id’\], ‘additionalProperties’: False}, strict=True,
-  type=‘function’, description=‘Retrieves the details of a specific
-  order based on the order ID’), FunctionTool(name=‘cancel_order’,
-  parameters={‘type’: ‘object’, ‘properties’: {‘order_id’: {‘type’:
-  ‘string’, ‘description’: ‘ID of the order to cancel’}}, ‘required’:
-  \[‘order_id’\], ‘additionalProperties’: False}, strict=True,
-  type=‘function’, description=‘Cancels an order based on the provided
-  order ID:- type: boolean’)\]
-- top_p: 1.0
-- background: False
-- max_output_tokens: 4096
-- max_tool_calls: None
-- previous_response_id: None
-- prompt: None
-- prompt_cache_key: None
-- reasoning: Reasoning(effort=‘medium’, generate_summary=None,
-  summary=None)
-- safety_identifier: None
-- service_tier: default
-- status: completed
-- text: ResponseTextConfig(format=ResponseFormatText(type=‘text’),
-  verbosity=‘medium’)
-- top_logprobs: 0
-- truncation: disabled
-- usage: ResponseUsage(input_tokens=327,
-  input_tokens_details=InputTokensDetails(cached_tokens=0),
-  output_tokens=24,
-  output_tokens_details=OutputTokensDetails(reasoning_tokens=0),
-  total_tokens=351)
-- user: None
-- store: True
-
-</details>
-
-    ResponseOutputMessage(id='msg_6897e12a73f4819387e6321b9d3acbd90e7bd7a6ca08f04c', content=[ResponseOutputText(annotations=[], text='The email for customer C1 is john@example.com. Need anything else about this customer?', type='output_text', logprobs=[])], role='assistant', status='completed', type='message')
-
-------------------------------------------------------------------------
-
-<a
-href="https://github.com/AnswerDotAI/cosette/blob/main/cosette/toolloop.py#L42"
-target="_blank" style="float:right; font-size:smaller">source</a>
-
-### loop_outputs
-
->  loop_outputs (res)
-
-<details open class="code-fold">
-<summary>Exported source</summary>
-
-``` python
-def loop_outputs(res):
-    return [dict(p) for o in res for p in ([o] if isinstance(o,dict) else getattr(o,'output',[]))]
-```
-
-</details>
-
-``` python
-cl = loop_outputs(res)
-cl
-```
-
-    [{'id': 'rs_6897e1248f908193a6cf91c7b9d24f180e7bd7a6ca08f04c',
-      'summary': [],
-      'type': 'reasoning',
-      'content': None,
-      'encrypted_content': None,
-      'status': None},
-     {'arguments': '{"customer_id":"C1"}',
-      'call_id': 'call_iSsBtRfj1j7BrbBfilN81sWt',
-      'name': 'get_customer_info',
-      'type': 'function_call',
-      'id': 'fc_6897e12505408193898876b3915318c40e7bd7a6ca08f04c',
-      'status': 'completed'},
-     {'type': 'function_call_output',
-      'call_id': 'call_iSsBtRfj1j7BrbBfilN81sWt',
-      'output': "{'name': 'John Doe', 'email': 'john@example.com', 'phone': '123-456-7890', 'orders': [{'id': 'O1', 'product': 'Widget A', 'quantity': 2, 'price': 19.99, 'status': 'Cancelled'}, {'id': 'O2', 'product': 'Gadget B', 'quantity': 1, 'price': 49.99, 'status': 'Cancelled'}]}"},
-     {'id': 'rs_6897e1268cb48193aeec6139bf6891d20e7bd7a6ca08f04c',
-      'summary': [],
-      'type': 'reasoning',
-      'content': None,
-      'encrypted_content': None,
-      'status': None},
-     {'id': 'msg_6897e1275b4c8193b2b2e8505b757b470e7bd7a6ca08f04c',
-      'content': [ResponseOutputText(annotations=[], text='The email address for customer C1 is john@example.com. Would you like any other details (phone number, orders, etc.)?', type='output_text', logprobs=[])],
-      'role': 'assistant',
-      'status': 'completed',
-      'type': 'message'}]
-
-``` python
-def disp_tc(x):
-    if x['type']=='function_call': return f"- `{x['name']}({x['arguments']})`\n"
-    elif x['type']=='function_call_output': return f"  - `{x['output']}`\n\n"
-    else: return ''.join(o.text for o in x['content'])
-```
-
-``` python
-# Markdown(''.join(map(disp_tc, cl)))
-```
-
-``` python
-pprint(r.value)
-```
-
-    [ResponseReasoningItem(id='rs_6897e12998dc8193b861f1ead58b702e0e7bd7a6ca08f04c', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
-     ResponseOutputMessage(id='msg_6897e12a73f4819387e6321b9d3acbd90e7bd7a6ca08f04c', content=[ResponseOutputText(annotations=[], text='The email for customer C1 is john@example.com. Need anything else about this customer?', type='output_text', logprobs=[])], role='assistant', status='completed', type='message')]
-
-``` python
-orders, customers = _get_orders_customers()
-```
-
-``` python
-chat = Chat(model, tools=tools)
-r = chat.toolloop('What is the status of order O2?')
-for o in r: display(getattr(o,'output',o))
-```
-
-    - Retrieving order O2
-
-    [ResponseReasoningItem(id='rs_6897e152296c81938b18183a7b3a3f2b070371bcef68a1b8', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
-     ResponseFunctionToolCall(arguments='{"order_id":"O2"}', call_id='call_nO3ZOyxkiOtKQTY6UMwDsp9d', name='get_order_details', type='function_call', id='fc_6897e152a24881938ecb7209c4408013070371bcef68a1b8', status='completed')]
-
-    ResponseFunctionToolCall(arguments='{"order_id":"O2"}', call_id='call_nO3ZOyxkiOtKQTY6UMwDsp9d', name='get_order_details', type='function_call', id='fc_6897e152a24881938ecb7209c4408013070371bcef68a1b8', status='completed')
-
-    {'type': 'function_call_output',
-     'call_id': 'call_nO3ZOyxkiOtKQTY6UMwDsp9d',
-     'output': "{'id': 'O2', 'product': 'Gadget B', 'quantity': 1, 'price': 49.99, 'status': 'Processing'}"}
-
-    [ResponseOutputMessage(id='msg_6897e155231c8193946aeae2f3c7bf85070371bcef68a1b8', content=[ResponseOutputText(annotations=[], text='Order O2 (Gadget B, qty 1) is currently: Processing.', type='output_text', logprobs=[])], role='assistant', status='completed', type='message')]
-
-``` python
-r = chat.toolloop('Please cancel all orders for customer C1 for me.')
-res = list(r)
-for o in res: display(getattr(o,'output',o))
-```
-
-    - Retrieving customer C1
-    - Cancelling order O1
-    - Cancelling order O2
-
-    [ResponseReasoningItem(id='rs_6897e15728f4819396207358d0b5ff31070371bcef68a1b8', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
-     ResponseFunctionToolCall(arguments='{"customer_id":"C1"}', call_id='call_pfwlNfsFTJxcwhO5MiDnKFCc', name='get_customer_info', type='function_call', id='fc_6897e15a33c481938b60a80c6c9c6e75070371bcef68a1b8', status='completed')]
-
-    ResponseFunctionToolCall(arguments='{"customer_id":"C1"}', call_id='call_pfwlNfsFTJxcwhO5MiDnKFCc', name='get_customer_info', type='function_call', id='fc_6897e15a33c481938b60a80c6c9c6e75070371bcef68a1b8', status='completed')
-
-    {'type': 'function_call_output',
-     'call_id': 'call_pfwlNfsFTJxcwhO5MiDnKFCc',
-     'output': "{'name': 'John Doe', 'email': 'john@example.com', 'phone': '123-456-7890', 'orders': [{'id': 'O1', 'product': 'Widget A', 'quantity': 2, 'price': 19.99, 'status': 'Shipped'}, {'id': 'O2', 'product': 'Gadget B', 'quantity': 1, 'price': 49.99, 'status': 'Processing'}]}"}
-
-    [ResponseReasoningItem(id='rs_6897e15c06048193a117eba237950a60070371bcef68a1b8', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
-     ResponseFunctionToolCall(arguments='{"order_id":"O1"}', call_id='call_pGZ7LfguiTY7pTpE8IPPZDW3', name='cancel_order', type='function_call', id='fc_6897e15e276c8193a8bb5668615cb96d070371bcef68a1b8', status='completed'),
-     ResponseFunctionToolCall(arguments='{"order_id":"O2"}', call_id='call_TqGkkG2TRTXlXvoiBTgwJlZx', name='cancel_order', type='function_call', id='fc_6897e15e5ef88193b8678bd20f6d0104070371bcef68a1b8', status='completed')]
-
-    ResponseFunctionToolCall(arguments='{"order_id":"O1"}', call_id='call_pGZ7LfguiTY7pTpE8IPPZDW3', name='cancel_order', type='function_call', id='fc_6897e15e276c8193a8bb5668615cb96d070371bcef68a1b8', status='completed')
-
-    ResponseFunctionToolCall(arguments='{"order_id":"O2"}', call_id='call_TqGkkG2TRTXlXvoiBTgwJlZx', name='cancel_order', type='function_call', id='fc_6897e15e5ef88193b8678bd20f6d0104070371bcef68a1b8', status='completed')
-
-    {'type': 'function_call_output',
-     'call_id': 'call_pGZ7LfguiTY7pTpE8IPPZDW3',
-     'output': 'True'}
-
-    {'type': 'function_call_output',
-     'call_id': 'call_TqGkkG2TRTXlXvoiBTgwJlZx',
-     'output': 'True'}
-
-    [ResponseReasoningItem(id='rs_6897e15fd9388193acca7aca2463bb9d070371bcef68a1b8', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
-     ResponseOutputMessage(id='msg_6897e16302e48193ad31367b6139e859070371bcef68a1b8', content=[ResponseOutputText(annotations=[], text='I cancelled all orders for customer C1 (John Doe, john@example.com).\n\nResults:\n- Order O1 (Widget A, qty 2): Cancelled successfully.\n- Order O2 (Gadget B, qty 1): Cancelled successfully.\n\nWould you like me to start refunds, send a cancellation confirmation email, or do anything else for John Doe?', type='output_text', logprobs=[])], role='assistant', status='completed', type='message')]
-
-    ResponseOutputMessage(id='msg_6897e16302e48193ad31367b6139e859070371bcef68a1b8', content=[ResponseOutputText(annotations=[], text='I cancelled all orders for customer C1 (John Doe, john@example.com).\n\nResults:\n- Order O1 (Widget A, qty 2): Cancelled successfully.\n- Order O2 (Gadget B, qty 1): Cancelled successfully.\n\nWould you like me to start refunds, send a cancellation confirmation email, or do anything else for John Doe?', type='output_text', logprobs=[])], role='assistant', status='completed', type='message')
-
-``` python
-# cl = loop_outputs(res)
-# Markdown('\n'.join(map(disp_tc, cl)))
-```
-
-``` python
-for o in chat.toolloop('What is the status of order O2?'): display(o)
-```
-
-    - Retrieving order O2
-
-- id: resp_6897e16824308193863428bf4240a87c070371bcef68a1b8
-- created_at: 1754784104.0
-- error: None
-- incomplete_details: None
-- instructions: None
-- metadata: {}
-- model: gpt-5-mini-2025-08-07
-- object: response
-- output:
-  \[ResponseReasoningItem(id=‘rs_6897e168e56c8193a92dbe9d9ac28d8c070371bcef68a1b8’,
-  summary=\[\], type=‘reasoning’, content=None, encrypted_content=None,
-  status=None), ResponseFunctionToolCall(arguments=‘{“order_id”:“O2”}’,
-  call_id=‘call_s79z5383Uxatc6sNpm33VEl1’, name=‘get_order_details’,
-  type=‘function_call’,
-  id=‘fc_6897e16a30708193a4f46fa44c3bb203070371bcef68a1b8’,
-  status=‘completed’)\]
-- parallel_tool_calls: True
-- temperature: 1.0
-- tool_choice: auto
-- tools: \[FunctionTool(name=‘get_customer_info’, parameters={‘type’:
-  ‘object’, ‘properties’: {‘customer_id’: {‘type’: ‘string’,
-  ‘description’: ‘ID of the customer’}}, ‘required’: \[‘customer_id’\],
-  ‘additionalProperties’: False}, strict=True, type=‘function’,
-  description=“Retrieves a customer’s information and their orders based
-  on the customer ID”), FunctionTool(name=‘get_order_details’,
-  parameters={‘type’: ‘object’, ‘properties’: {‘order_id’: {‘type’:
-  ‘string’, ‘description’: ‘ID of the order’}}, ‘required’:
-  \[‘order_id’\], ‘additionalProperties’: False}, strict=True,
-  type=‘function’, description=‘Retrieves the details of a specific
-  order based on the order ID’), FunctionTool(name=‘cancel_order’,
-  parameters={‘type’: ‘object’, ‘properties’: {‘order_id’: {‘type’:
-  ‘string’, ‘description’: ‘ID of the order to cancel’}}, ‘required’:
-  \[‘order_id’\], ‘additionalProperties’: False}, strict=True,
-  type=‘function’, description=‘Cancels an order based on the provided
-  order ID:- type: boolean’)\]
-- top_p: 1.0
-- background: False
-- max_output_tokens: 4096
-- max_tool_calls: None
-- previous_response_id: None
-- prompt: None
-- prompt_cache_key: None
-- reasoning: Reasoning(effort=‘medium’, generate_summary=None,
-  summary=None)
-- safety_identifier: None
-- service_tier: default
-- status: completed
-- text: ResponseTextConfig(format=ResponseFormatText(type=‘text’),
-  verbosity=‘medium’)
-- top_logprobs: 0
-- truncation: disabled
-- usage: ResponseUsage(input_tokens=532,
-  input_tokens_details=InputTokensDetails(cached_tokens=0),
-  output_tokens=87,
-  output_tokens_details=OutputTokensDetails(reasoning_tokens=64),
-  total_tokens=619)
-- user: None
-- store: True
-
-<!-- -->
-
-    ResponseFunctionToolCall(arguments='{"order_id":"O2"}', call_id='call_s79z5383Uxatc6sNpm33VEl1', name='get_order_details', type='function_call', id='fc_6897e16a30708193a4f46fa44c3bb203070371bcef68a1b8', status='completed')
-
-    {'type': 'function_call_output',
-     'call_id': 'call_s79z5383Uxatc6sNpm33VEl1',
-     'output': "{'id': 'O2', 'product': 'Gadget B', 'quantity': 1, 'price': 49.99, 'status': 'Cancelled'}"}
-
-Order O2 (Gadget B, qty 1) is currently: Cancelled.
-
-<details>
-
-- id: resp_6897e16b5fa88193b00c69f98e9dd053070371bcef68a1b8
-- created_at: 1754784107.0
-- error: None
-- incomplete_details: None
-- instructions: None
-- metadata: {}
-- model: gpt-5-mini-2025-08-07
-- object: response
-- output:
-  \[ResponseOutputMessage(id=‘msg_6897e16be6248193aa6c8c7968793ee4070371bcef68a1b8’,
-  content=\[ResponseOutputText(annotations=\[\], text=‘Order O2 (Gadget
-  B, qty 1) is currently: Cancelled.’, type=‘output_text’,
+  ResponseOutputMessage(id=‘msg_0787bac936d9204f006943fcef3ee88195832b056ec436b34f’,
+  content=\[ResponseOutputText(annotations=\[\], text=‘The email address
+  for customer C1 (John Doe) is john@example.com.’, type=‘output_text’,
   logprobs=\[\])\], role=‘assistant’, status=‘completed’,
   type=‘message’)\]
 - parallel_tool_calls: True
@@ -881,11 +353,13 @@ Order O2 (Gadget B, qty 1) is currently: Cancelled.
   order ID:- type: boolean’)\]
 - top_p: 1.0
 - background: False
+- conversation: None
 - max_output_tokens: 4096
 - max_tool_calls: None
 - previous_response_id: None
 - prompt: None
 - prompt_cache_key: None
+- prompt_cache_retention: None
 - reasoning: Reasoning(effort=‘medium’, generate_summary=None,
   summary=None)
 - safety_identifier: None
@@ -895,12 +369,300 @@ Order O2 (Gadget B, qty 1) is currently: Cancelled.
   verbosity=‘medium’)
 - top_logprobs: 0
 - truncation: disabled
-- usage: ResponseUsage(input_tokens=685,
-  input_tokens_details=InputTokensDetails(cached_tokens=535),
-  output_tokens=22,
-  output_tokens_details=OutputTokensDetails(reasoning_tokens=0),
-  total_tokens=707)
+- usage: ResponseUsage(input_tokens=316,
+  input_tokens_details=InputTokensDetails(cached_tokens=0),
+  output_tokens=86,
+  output_tokens_details=OutputTokensDetails(reasoning_tokens=64),
+  total_tokens=402)
 - user: None
+- billing: {‘payer’: ‘openai’}
+- store: True
+
+</details>
+
+    ResponseOutputMessage(id='msg_0787bac936d9204f006943fcef3ee88195832b056ec436b34f', content=[ResponseOutputText(annotations=[], text='The email address for customer C1 (John Doe) is john@example.com.', type='output_text', logprobs=[])], role='assistant', status='completed', type='message')
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/cosette/blob/main/cosette/toolloop.py#L42"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### loop_outputs
+
+``` python
+
+def loop_outputs(
+    res
+):
+
+```
+
+<details open class="code-fold">
+<summary>Exported source</summary>
+
+``` python
+def loop_outputs(res):
+    return [dict(p) for o in res for p in ([o] if isinstance(o,dict) else getattr(o,'output',[]))]
+```
+
+</details>
+
+``` python
+cl = loop_outputs(res)
+cl
+```
+
+    [{'id': 'rs_0787bac936d9204f006943fceb6f088195a44ade2155966909',
+      'summary': [],
+      'type': 'reasoning',
+      'content': None,
+      'encrypted_content': None,
+      'status': None},
+     {'arguments': '{"customer_id":"C1"}',
+      'call_id': 'call_wqbYqGHnvgMg8lSY9JMUrwzU',
+      'name': 'get_customer_info',
+      'type': 'function_call',
+      'id': 'fc_0787bac936d9204f006943fcebe6d08195b9cd3ca97a01b7d2',
+      'status': 'completed'},
+     {'type': 'function_call_output',
+      'call_id': 'call_wqbYqGHnvgMg8lSY9JMUrwzU',
+      'output': "{'name': 'John Doe', 'email': 'john@example.com', 'phone': '123-456-7890', 'orders': [{'id': 'O1', 'product': 'Widget A', 'quantity': 2, 'price': 19.99, 'status': 'Cancelled'}, {'id': 'O2', 'product': 'Gadget B', 'quantity': 1, 'price': 49.99, 'status': 'Cancelled'}]}"},
+     {'id': 'rs_0787bac936d9204f006943fcec9c108195b41ad9735c482bc4',
+      'summary': [],
+      'type': 'reasoning',
+      'content': None,
+      'encrypted_content': None,
+      'status': None},
+     {'id': 'msg_0787bac936d9204f006943fced6e3c8195b5b4c9710ecb6485',
+      'content': [ResponseOutputText(annotations=[], text='The email address for customer C1 (John Doe) is john@example.com.', type='output_text', logprobs=[])],
+      'role': 'assistant',
+      'status': 'completed',
+      'type': 'message'}]
+
+``` python
+def disp_tc(x):
+    if x['type']=='function_call': return f"- `{x['name']}({x['arguments']})`\n"
+    elif x['type']=='function_call_output': return f"  - `{x['output']}`\n\n"
+    else: return ''.join(o.text for o in x['content'])
+```
+
+``` python
+# Markdown(''.join(map(disp_tc, cl)))
+```
+
+``` python
+pprint(r.value)
+```
+
+    [ResponseReasoningItem(id='rs_0787bac936d9204f006943fcee7cd881959b82edf88db5e70d', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
+     ResponseOutputMessage(id='msg_0787bac936d9204f006943fcef3ee88195832b056ec436b34f', content=[ResponseOutputText(annotations=[], text='The email address for customer C1 (John Doe) is john@example.com.', type='output_text', logprobs=[])], role='assistant', status='completed', type='message')]
+
+``` python
+orders, customers = _get_orders_customers()
+```
+
+``` python
+chat = Chat(model, tools=tools)
+r = chat.toolloop('What is the status of order O2?')
+for o in r: display(getattr(o,'output',o))
+```
+
+    - Retrieving order O2
+
+    [ResponseReasoningItem(id='rs_080cc194cfa17c94006943fcf092688194adde78fdb74e90d3', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
+     ResponseFunctionToolCall(arguments='{"order_id":"O2"}', call_id='call_ARnBd6xSrlcAfn3wBQGdLtiu', name='get_order_details', type='function_call', id='fc_080cc194cfa17c94006943fcf1ed8c8194adc4f0474afe98cc', status='completed')]
+
+    ResponseFunctionToolCall(arguments='{"order_id":"O2"}', call_id='call_ARnBd6xSrlcAfn3wBQGdLtiu', name='get_order_details', type='function_call', id='fc_080cc194cfa17c94006943fcf1ed8c8194adc4f0474afe98cc', status='completed')
+
+    {'type': 'function_call_output',
+     'call_id': 'call_ARnBd6xSrlcAfn3wBQGdLtiu',
+     'output': "{'id': 'O2', 'product': 'Gadget B', 'quantity': 1, 'price': 49.99, 'status': 'Processing'}"}
+
+    [ResponseOutputMessage(id='msg_080cc194cfa17c94006943fcf3101081948ac3faafe2dcac65', content=[ResponseOutputText(annotations=[], text='Order O2 is currently: Processing.', type='output_text', logprobs=[])], role='assistant', status='completed', type='message')]
+
+``` python
+r = chat.toolloop('Please cancel all orders for customer C1 for me.')
+res = list(r)
+for o in res: display(getattr(o,'output',o))
+```
+
+    - Retrieving customer C1
+    - Cancelling order O1
+    - Cancelling order O2
+
+    [ResponseReasoningItem(id='rs_080cc194cfa17c94006943fcf412208194a4c7b87ce81c4736', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
+     ResponseFunctionToolCall(arguments='{"customer_id":"C1"}', call_id='call_Btl5F6UrkBoJJaDQzke1VvVN', name='get_customer_info', type='function_call', id='fc_080cc194cfa17c94006943fcf82ba08194a65b676e302e9aa6', status='completed')]
+
+    ResponseFunctionToolCall(arguments='{"customer_id":"C1"}', call_id='call_Btl5F6UrkBoJJaDQzke1VvVN', name='get_customer_info', type='function_call', id='fc_080cc194cfa17c94006943fcf82ba08194a65b676e302e9aa6', status='completed')
+
+    {'type': 'function_call_output',
+     'call_id': 'call_Btl5F6UrkBoJJaDQzke1VvVN',
+     'output': "{'name': 'John Doe', 'email': 'john@example.com', 'phone': '123-456-7890', 'orders': [{'id': 'O1', 'product': 'Widget A', 'quantity': 2, 'price': 19.99, 'status': 'Shipped'}, {'id': 'O2', 'product': 'Gadget B', 'quantity': 1, 'price': 49.99, 'status': 'Processing'}]}"}
+
+    [ResponseReasoningItem(id='rs_080cc194cfa17c94006943fcf913188194ab017b95ba08a13e', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
+     ResponseFunctionToolCall(arguments='{"order_id":"O1"}', call_id='call_4yaVagsUWe86YMk25kyCU9x2', name='cancel_order', type='function_call', id='fc_080cc194cfa17c94006943fcfa8bd081949731f7da8c5adc86', status='completed'),
+     ResponseFunctionToolCall(arguments='{"order_id":"O2"}', call_id='call_Vy0mCP8ocOYR31qk4sbVgRw5', name='cancel_order', type='function_call', id='fc_080cc194cfa17c94006943fcfab9688194a97ce8bb7ff46706', status='completed')]
+
+    ResponseFunctionToolCall(arguments='{"order_id":"O1"}', call_id='call_4yaVagsUWe86YMk25kyCU9x2', name='cancel_order', type='function_call', id='fc_080cc194cfa17c94006943fcfa8bd081949731f7da8c5adc86', status='completed')
+
+    ResponseFunctionToolCall(arguments='{"order_id":"O2"}', call_id='call_Vy0mCP8ocOYR31qk4sbVgRw5', name='cancel_order', type='function_call', id='fc_080cc194cfa17c94006943fcfab9688194a97ce8bb7ff46706', status='completed')
+
+    {'type': 'function_call_output',
+     'call_id': 'call_4yaVagsUWe86YMk25kyCU9x2',
+     'output': 'True'}
+
+    {'type': 'function_call_output',
+     'call_id': 'call_Vy0mCP8ocOYR31qk4sbVgRw5',
+     'output': 'True'}
+
+    [ResponseReasoningItem(id='rs_080cc194cfa17c94006943fcfbd120819490c3ad1d75350865', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
+     ResponseOutputMessage(id='msg_080cc194cfa17c94006943fd043f948194ad1bb58d51d2de71', content=[ResponseOutputText(annotations=[], text='Done — I canceled all orders for customer C1 (John Doe).\n\nSummary:\n- O1 — Widget A — previous status: Shipped — cancellation: Success\n- O2 — Gadget B — previous status: Processing — cancellation: Success\n\nWould you like me to check refund status, send a confirmation to john@example.com, or do anything else?', type='output_text', logprobs=[])], role='assistant', status='completed', type='message')]
+
+    ResponseOutputMessage(id='msg_080cc194cfa17c94006943fd043f948194ad1bb58d51d2de71', content=[ResponseOutputText(annotations=[], text='Done — I canceled all orders for customer C1 (John Doe).\n\nSummary:\n- O1 — Widget A — previous status: Shipped — cancellation: Success\n- O2 — Gadget B — previous status: Processing — cancellation: Success\n\nWould you like me to check refund status, send a confirmation to john@example.com, or do anything else?', type='output_text', logprobs=[])], role='assistant', status='completed', type='message')
+
+``` python
+# cl = loop_outputs(res)
+# Markdown('\n'.join(map(disp_tc, cl)))
+```
+
+``` python
+for o in chat.toolloop('What is the status of order O2?'): display(o)
+```
+
+    - Retrieving order O2
+
+- id: resp_080cc194cfa17c94006943fd06606c8194acbf56e9291c70ca
+- created_at: 1766063366.0
+- error: None
+- incomplete_details: None
+- instructions: None
+- metadata: {}
+- model: gpt-5-mini-2025-08-07
+- object: response
+- output:
+  \[ResponseReasoningItem(id=‘rs_080cc194cfa17c94006943fd06bbd4819499041c0e2a896d43’,
+  summary=\[\], type=‘reasoning’, content=None, encrypted_content=None,
+  status=None), ResponseFunctionToolCall(arguments=‘{“order_id”:“O2”}’,
+  call_id=‘call_47iqPnLAFKxbJ4JJ9EQwWw71’, name=‘get_order_details’,
+  type=‘function_call’,
+  id=‘fc_080cc194cfa17c94006943fd07c3308194a643843cb1720a9e’,
+  status=‘completed’)\]
+- parallel_tool_calls: True
+- temperature: 1.0
+- tool_choice: auto
+- tools: \[FunctionTool(name=‘get_customer_info’, parameters={‘type’:
+  ‘object’, ‘properties’: {‘customer_id’: {‘type’: ‘string’,
+  ‘description’: ‘ID of the customer’}}, ‘required’: \[‘customer_id’\],
+  ‘additionalProperties’: False}, strict=True, type=‘function’,
+  description=“Retrieves a customer’s information and their orders based
+  on the customer ID”), FunctionTool(name=‘get_order_details’,
+  parameters={‘type’: ‘object’, ‘properties’: {‘order_id’: {‘type’:
+  ‘string’, ‘description’: ‘ID of the order’}}, ‘required’:
+  \[‘order_id’\], ‘additionalProperties’: False}, strict=True,
+  type=‘function’, description=‘Retrieves the details of a specific
+  order based on the order ID’), FunctionTool(name=‘cancel_order’,
+  parameters={‘type’: ‘object’, ‘properties’: {‘order_id’: {‘type’:
+  ‘string’, ‘description’: ‘ID of the order to cancel’}}, ‘required’:
+  \[‘order_id’\], ‘additionalProperties’: False}, strict=True,
+  type=‘function’, description=‘Cancels an order based on the provided
+  order ID:- type: boolean’)\]
+- top_p: 1.0
+- background: False
+- conversation: None
+- max_output_tokens: 4096
+- max_tool_calls: None
+- previous_response_id: None
+- prompt: None
+- prompt_cache_key: None
+- prompt_cache_retention: None
+- reasoning: Reasoning(effort=‘medium’, generate_summary=None,
+  summary=None)
+- safety_identifier: None
+- service_tier: default
+- status: completed
+- text: ResponseTextConfig(format=ResponseFormatText(type=‘text’),
+  verbosity=‘medium’)
+- top_logprobs: 0
+- truncation: disabled
+- usage: ResponseUsage(input_tokens=521,
+  input_tokens_details=InputTokensDetails(cached_tokens=0),
+  output_tokens=87,
+  output_tokens_details=OutputTokensDetails(reasoning_tokens=64),
+  total_tokens=608)
+- user: None
+- billing: {‘payer’: ‘openai’}
+- store: True
+
+<!-- -->
+
+    ResponseFunctionToolCall(arguments='{"order_id":"O2"}', call_id='call_47iqPnLAFKxbJ4JJ9EQwWw71', name='get_order_details', type='function_call', id='fc_080cc194cfa17c94006943fd07c3308194a643843cb1720a9e', status='completed')
+
+    {'type': 'function_call_output',
+     'call_id': 'call_47iqPnLAFKxbJ4JJ9EQwWw71',
+     'output': "{'id': 'O2', 'product': 'Gadget B', 'quantity': 1, 'price': 49.99, 'status': 'Cancelled'}"}
+
+Order O2 is now: Cancelled.
+
+<details>
+
+- id: resp_080cc194cfa17c94006943fd0841e88194b12aa8c8f30b4e64
+- created_at: 1766063368.0
+- error: None
+- incomplete_details: None
+- instructions: None
+- metadata: {}
+- model: gpt-5-mini-2025-08-07
+- object: response
+- output:
+  \[ResponseOutputMessage(id=‘msg_080cc194cfa17c94006943fd08ad488194a093653ee36021db’,
+  content=\[ResponseOutputText(annotations=\[\], text=‘Order O2 is now:
+  Cancelled.’, type=‘output_text’, logprobs=\[\])\], role=‘assistant’,
+  status=‘completed’, type=‘message’)\]
+- parallel_tool_calls: True
+- temperature: 1.0
+- tool_choice: auto
+- tools: \[FunctionTool(name=‘get_customer_info’, parameters={‘type’:
+  ‘object’, ‘properties’: {‘customer_id’: {‘type’: ‘string’,
+  ‘description’: ‘ID of the customer’}}, ‘required’: \[‘customer_id’\],
+  ‘additionalProperties’: False}, strict=True, type=‘function’,
+  description=“Retrieves a customer’s information and their orders based
+  on the customer ID”), FunctionTool(name=‘get_order_details’,
+  parameters={‘type’: ‘object’, ‘properties’: {‘order_id’: {‘type’:
+  ‘string’, ‘description’: ‘ID of the order’}}, ‘required’:
+  \[‘order_id’\], ‘additionalProperties’: False}, strict=True,
+  type=‘function’, description=‘Retrieves the details of a specific
+  order based on the order ID’), FunctionTool(name=‘cancel_order’,
+  parameters={‘type’: ‘object’, ‘properties’: {‘order_id’: {‘type’:
+  ‘string’, ‘description’: ‘ID of the order to cancel’}}, ‘required’:
+  \[‘order_id’\], ‘additionalProperties’: False}, strict=True,
+  type=‘function’, description=‘Cancels an order based on the provided
+  order ID:- type: boolean’)\]
+- top_p: 1.0
+- background: False
+- conversation: None
+- max_output_tokens: 4096
+- max_tool_calls: None
+- previous_response_id: None
+- prompt: None
+- prompt_cache_key: None
+- prompt_cache_retention: None
+- reasoning: Reasoning(effort=‘medium’, generate_summary=None,
+  summary=None)
+- safety_identifier: None
+- service_tier: default
+- status: completed
+- text: ResponseTextConfig(format=ResponseFormatText(type=‘text’),
+  verbosity=‘medium’)
+- top_logprobs: 0
+- truncation: disabled
+- usage: ResponseUsage(input_tokens=676,
+  input_tokens_details=InputTokensDetails(cached_tokens=0),
+  output_tokens=13,
+  output_tokens_details=OutputTokensDetails(reasoning_tokens=0),
+  total_tokens=689)
+- user: None
+- billing: {‘payer’: ‘openai’}
 - store: True
 
 </details>
@@ -924,39 +686,33 @@ r = chat.toolloop(pr)
 for o in r: show(o)
 ```
 
-    [ResponseReasoningItem(id='rs_6897e18c5388819190a54e0ce1441bdb015feb53bd0dd55d', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
-     ResponseFunctionToolCall(arguments='{"x":1258585825128,"y":34959234595}', call_id='call_ueQGOLD99pG6r2sGdgsVKlw6', name='add', type='function_call', id='fc_6897e18e8f88819191645a755cda603e015feb53bd0dd55d', status='completed')]
+    [ResponseReasoningItem(id='rs_02621606c3b513dc006943fd09ad40819781fb7b32d5e5996a', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
+     ResponseFunctionToolCall(arguments='{"x":1258585825128,"y":34959234595}', call_id='call_Fg3v2kfgWIogSl1IEB0w1Y0K', name='add', type='function_call', id='fc_02621606c3b513dc006943fd09fdf881979ba71de45af8d588', status='completed')]
 
-    ResponseFunctionToolCall(arguments='{"x":1258585825128,"y":34959234595}', call_id='call_ueQGOLD99pG6r2sGdgsVKlw6', name='add', type='function_call', id='fc_6897e18e8f88819191645a755cda603e015feb53bd0dd55d', status='completed')
+    ResponseFunctionToolCall(arguments='{"x":1258585825128,"y":34959234595}', call_id='call_Fg3v2kfgWIogSl1IEB0w1Y0K', name='add', type='function_call', id='fc_02621606c3b513dc006943fd09fdf881979ba71de45af8d588', status='completed')
 
     {'type': 'function_call_output',
-     'call_id': 'call_ueQGOLD99pG6r2sGdgsVKlw6',
+     'call_id': 'call_Fg3v2kfgWIogSl1IEB0w1Y0K',
      'output': '1293545059723'}
 
-    [ResponseReasoningItem(id='rs_6897e19014fc81919b186f766cb9b0b7015feb53bd0dd55d', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
-     ResponseFunctionToolCall(arguments='{"x":1293545059723,"y":93}', call_id='call_3bMfuqmgxtFi73cSXwFpypFP', name='mul', type='function_call', id='fc_6897e190e7b88191a01ac2531eb232a4015feb53bd0dd55d', status='completed')]
-
-    ResponseFunctionToolCall(arguments='{"x":1293545059723,"y":93}', call_id='call_3bMfuqmgxtFi73cSXwFpypFP', name='mul', type='function_call', id='fc_6897e190e7b88191a01ac2531eb232a4015feb53bd0dd55d', status='completed')
+    [ResponseFunctionToolCall(arguments='{"x":1293545059723,"y":93}', call_id='call_9rimpAnaVInF4ssbHosAfTi8', name='mul', type='function_call', id='fc_02621606c3b513dc006943fd0bae9c81978026c7bfaae4a759', status='completed')]
 
     {'type': 'function_call_output',
-     'call_id': 'call_3bMfuqmgxtFi73cSXwFpypFP',
+     'call_id': 'call_9rimpAnaVInF4ssbHosAfTi8',
      'output': '120299690554239'}
 
-    [ResponseReasoningItem(id='rs_6897e192bbbc8191bf48ca20d003dfc1015feb53bd0dd55d', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
-     ResponseFunctionToolCall(arguments='{"x":120299690554239,"y":-12439149}', call_id='call_ildkWrO6EHnC0jtBFXAq93P5', name='add', type='function_call', id='fc_6897e1935f7481918b1d79751e99aede015feb53bd0dd55d', status='completed')]
-
-    ResponseFunctionToolCall(arguments='{"x":120299690554239,"y":-12439149}', call_id='call_ildkWrO6EHnC0jtBFXAq93P5', name='add', type='function_call', id='fc_6897e1935f7481918b1d79751e99aede015feb53bd0dd55d', status='completed')
+    [ResponseFunctionToolCall(arguments='{"x":120299690554239,"y":-12439149}', call_id='call_OS43dlWKEYtYAocZpHJ94RXM', name='add', type='function_call', id='fc_02621606c3b513dc006943fd0c9f5c8197a11bc188b0174d6d', status='completed')]
 
     {'type': 'function_call_output',
-     'call_id': 'call_ildkWrO6EHnC0jtBFXAq93P5',
+     'call_id': 'call_OS43dlWKEYtYAocZpHJ94RXM',
      'output': '120299678115090'}
 
-120,299,678,115,090
+120299678115090
 
 <details>
 
-- id: resp_6897e19438d081919b9c36459cc8cd50015feb53bd0dd55d
-- created_at: 1754784148.0
+- id: resp_02621606c3b513dc006943fd0d30f48197a911787dca9e5d00
+- created_at: 1766063373.0
 - error: None
 - incomplete_details: None
 - instructions: None
@@ -964,13 +720,10 @@ for o in r: show(o)
 - model: gpt-5-mini-2025-08-07
 - object: response
 - output:
-  \[ResponseReasoningItem(id=‘rs_6897e194c62481918b6ac433e9648d01015feb53bd0dd55d’,
-  summary=\[\], type=‘reasoning’, content=None, encrypted_content=None,
-  status=None),
-  ResponseOutputMessage(id=‘msg_6897e195ccbc8191806147fc7db8fe8e015feb53bd0dd55d’,
-  content=\[ResponseOutputText(annotations=\[\],
-  text=‘120,299,678,115,090’, type=‘output_text’, logprobs=\[\])\],
-  role=‘assistant’, status=‘completed’, type=‘message’)\]
+  \[ResponseOutputMessage(id=‘msg_02621606c3b513dc006943fd0d80f88197b58e845951e295e1’,
+  content=\[ResponseOutputText(annotations=\[\], text=‘120299678115090’,
+  type=‘output_text’, logprobs=\[\])\], role=‘assistant’,
+  status=‘completed’, type=‘message’)\]
 - parallel_tool_calls: True
 - temperature: 1.0
 - tool_choice: auto
@@ -985,31 +738,32 @@ for o in r: show(o)
   type=‘function’, description=‘multiplies x and y.:- type: integer’)\]
 - top_p: 1.0
 - background: False
+- conversation: None
 - max_output_tokens: 4096
 - max_tool_calls: None
 - previous_response_id: None
 - prompt: None
 - prompt_cache_key: None
-- reasoning: Reasoning(effort=‘medium’, generate_summary=None,
+- prompt_cache_retention: None
+- reasoning: Reasoning(effort=‘minimal’, generate_summary=None,
   summary=None)
 - safety_identifier: None
 - service_tier: default
 - status: completed
 - text: ResponseTextConfig(format=ResponseFormatText(type=‘text’),
-  verbosity=‘medium’)
+  verbosity=‘low’)
 - top_logprobs: 0
 - truncation: disabled
-- usage: ResponseUsage(input_tokens=496,
+- usage: ResponseUsage(input_tokens=250,
   input_tokens_details=InputTokensDetails(cached_tokens=0),
-  output_tokens=79,
-  output_tokens_details=OutputTokensDetails(reasoning_tokens=64),
-  total_tokens=575)
+  output_tokens=9,
+  output_tokens_details=OutputTokensDetails(reasoning_tokens=0),
+  total_tokens=259)
 - user: None
+- billing: {‘payer’: ‘openai’}
 - store: True
 
 </details>
-
-    ResponseOutputMessage(id='msg_6897e195ccbc8191806147fc7db8fe8e015feb53bd0dd55d', content=[ResponseOutputText(annotations=[], text='120,299,678,115,090', type='output_text', logprobs=[])], role='assistant', status='completed', type='message')
 
 ``` python
 (1258585825128 + 34959234595) * 93 - 12439149
@@ -1027,28 +781,26 @@ for o in r:
         if hasattr(o, 'value'): show(o.value)
 ```
 
-    [ResponseReasoningItem(id='rs_6897e1c5d79081a3ae88e03578f661a90c8460ccb833b112', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
-     ResponseFunctionToolCall(arguments='{"x":1258585825128,"y":34959234595}', call_id='call_SdIaAHdmOEYB4tAU7E6vh3p4', name='add', type='function_call', id='fc_6897e1c6170081a3b97d0966c86325730c8460ccb833b112', status='completed')]
+    [ResponseReasoningItem(id='rs_0944024f48105103006943fd116be8819483df3a9f25e3d328', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
+     ResponseFunctionToolCall(arguments='{"x":1258585825128,"y":34959234595}', call_id='call_B6xGJDpQJm5GrS2hnngybWTe', name='add', type='function_call', id='fc_0944024f48105103006943fd11abcc81949200a4eabf12e97b', status='completed')]
 
-    ('arguments', '{"x":1258585825128,"y":34959234595}')('call_id', 'call_SdIaAHdmOEYB4tAU7E6vh3p4')('name', 'add')('type', 'function_call')('id', 'fc_6897e1c6170081a3b97d0966c86325730c8460ccb833b112')('status', 'completed')-  {'type': 'function_call_output', 'call_id': 'call_SdIaAHdmOEYB4tAU7E6vh3p4', 'output': '1293545059723'}
+    ('arguments', '{"x":1258585825128,"y":34959234595}')('call_id', 'call_B6xGJDpQJm5GrS2hnngybWTe')('name', 'add')('type', 'function_call')('id', 'fc_0944024f48105103006943fd11abcc81949200a4eabf12e97b')('status', 'completed')-  {'type': 'function_call_output', 'call_id': 'call_B6xGJDpQJm5GrS2hnngybWTe', 'output': '1293545059723'}
 
-    [ResponseReasoningItem(id='rs_6897e1c72d0481a38ffd9daf156d758e0c8460ccb833b112', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
-     ResponseFunctionToolCall(arguments='{"x":1293545059723,"y":93}', call_id='call_kjtm1Q8cccNUleOw1msfEgmK', name='mul', type='function_call', id='fc_6897e1c77bac81a3baf3e35799923fc80c8460ccb833b112', status='completed')]
+    [ResponseFunctionToolCall(arguments='{"x":1293545059723,"y":93}', call_id='call_Vb3v1awZxvoZuUjbq9RRZrfM', name='mul', type='function_call', id='fc_0944024f48105103006943fd1402188194a2adccf222c76591', status='completed')]
 
-    ('arguments', '{"x":1293545059723,"y":93}')('call_id', 'call_kjtm1Q8cccNUleOw1msfEgmK')('name', 'mul')('type', 'function_call')('id', 'fc_6897e1c77bac81a3baf3e35799923fc80c8460ccb833b112')('status', 'completed')-  {'type': 'function_call_output', 'call_id': 'call_kjtm1Q8cccNUleOw1msfEgmK', 'output': '120299690554239'}
+    -  {'type': 'function_call_output', 'call_id': 'call_Vb3v1awZxvoZuUjbq9RRZrfM', 'output': '120299690554239'}
 
-    [ResponseReasoningItem(id='rs_6897e1c87c7081a38c9faf505ed5e29a0c8460ccb833b112', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
-     ResponseFunctionToolCall(arguments='{"x":120299690554239,"y":-12439149}', call_id='call_cuKZQ6Oa3Lc2P75mDEx0jugE', name='add', type='function_call', id='fc_6897e1c8c5e481a3a9bb8a58bda392740c8460ccb833b112', status='completed')]
+    [ResponseFunctionToolCall(arguments='{"x":120299690554239,"y":-12439149}', call_id='call_Dd1Uzt8rMfWJCH0irbMa5OVV', name='add', type='function_call', id='fc_0944024f48105103006943fd14e54481948906bd955b405418', status='completed')]
 
-    ('arguments', '{"x":120299690554239,"y":-12439149}')('call_id', 'call_cuKZQ6Oa3Lc2P75mDEx0jugE')('name', 'add')('type', 'function_call')('id', 'fc_6897e1c8c5e481a3a9bb8a58bda392740c8460ccb833b112')('status', 'completed')-  {'type': 'function_call_output', 'call_id': 'call_cuKZQ6Oa3Lc2P75mDEx0jugE', 'output': '120299678115090'}
-    120,299,678,115,090
+    -  {'type': 'function_call_output', 'call_id': 'call_Dd1Uzt8rMfWJCH0irbMa5OVV', 'output': '120299678115090'}
+    120299678115090
 
-120,299,678,115,090
+120299678115090
 
 <details>
 
-- id: resp_6897e1c9821081a3a1f3648c7b2bf4320c8460ccb833b112
-- created_at: 1754784201.0
+- id: resp_0944024f48105103006943fd1583ec8194863012f06a95bb9a
+- created_at: 1766063381.0
 - error: None
 - incomplete_details: None
 - instructions: None
@@ -1056,10 +808,10 @@ for o in r:
 - model: gpt-5-mini-2025-08-07
 - object: response
 - output:
-  \[ResponseOutputMessage(id=‘msg_6897e1ca77d081a3b2636d387eea6f370c8460ccb833b112’,
-  content=\[ResponseOutputText(annotations=\[\],
-  text=‘120,299,678,115,090’, type=‘output_text’, logprobs=\[\])\],
-  role=‘assistant’, status=‘completed’, type=‘message’)\]
+  \[ResponseOutputMessage(id=‘msg_0944024f48105103006943fd16463c81949df34dd0158af4c1’,
+  content=\[ResponseOutputText(annotations=\[\], text=‘120299678115090’,
+  type=‘output_text’, logprobs=\[\])\], role=‘assistant’,
+  status=‘completed’, type=‘message’)\]
 - parallel_tool_calls: True
 - temperature: 1.0
 - tool_choice: auto
@@ -1074,11 +826,13 @@ for o in r:
   type=‘function’, description=‘multiplies x and y.:- type: integer’)\]
 - top_p: 1.0
 - background: False
+- conversation: None
 - max_output_tokens: 4096
 - max_tool_calls: None
 - previous_response_id: None
 - prompt: None
 - prompt_cache_key: None
+- prompt_cache_retention: None
 - reasoning: Reasoning(effort=‘minimal’, generate_summary=None,
   summary=None)
 - safety_identifier: None
@@ -1088,11 +842,11 @@ for o in r:
   verbosity=‘low’)
 - top_logprobs: 0
 - truncation: disabled
-- usage: ResponseUsage(input_tokens=278,
+- usage: ResponseUsage(input_tokens=250,
   input_tokens_details=InputTokensDetails(cached_tokens=0),
-  output_tokens=13,
+  output_tokens=9,
   output_tokens_details=OutputTokensDetails(reasoning_tokens=0),
-  total_tokens=291)
+  total_tokens=259)
 - user: None
 - store: True
 
@@ -1112,57 +866,54 @@ r = chat.toolloop('Please calculate this sequence using your tools: 43/23454; 65
 for o in r: show(o)
 ```
 
-    [ResponseReasoningItem(id='rs_6897e1e3f7d08190819e22b16bd62a6b047a40cd4df49f91', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
-     ResponseFunctionToolCall(arguments='{"a":43,"b":23454}', call_id='call_1EchGcZOxUCwzWFmPG6ZbagQ', name='mydiv', type='function_call', id='fc_6897e1e44ac08190819052abd2ee034a047a40cd4df49f91', status='completed'),
-     ResponseFunctionToolCall(arguments='{"a":652,"b":0}', call_id='call_VzY6kLA8EYBQWLQyM1P7Uu39', name='mydiv', type='function_call', id='fc_6897e1e4736c819093be6536512c13f8047a40cd4df49f91', status='completed'),
-     ResponseFunctionToolCall(arguments='{"a":6843,"b":0}', call_id='call_Ifuh3smqGl5gBCHuqPOyAwWC', name='mydiv', type='function_call', id='fc_6897e1e499788190adcc563eb10050d6047a40cd4df49f91', status='completed'),
-     ResponseFunctionToolCall(arguments='{"a":321,"b":0}', call_id='call_Ib36ay9PqhAms1U200xMh3AB', name='mydiv', type='function_call', id='fc_6897e1e4c6f48190b4715a9fcfc33d4e047a40cd4df49f91', status='completed')]
+    [ResponseReasoningItem(id='rs_02f9e0725e9fb6a5006943fd16f3dc81979a3aa89dfcb98aca', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
+     ResponseFunctionToolCall(arguments='{"a":43,"b":23454}', call_id='call_Fnsc5iNP8rMuj0rqeBLzXVsO', name='mydiv', type='function_call', id='fc_02f9e0725e9fb6a5006943fd177c6c8197a5ad34f31755933a', status='completed'),
+     ResponseFunctionToolCall(arguments='{"a":652,"b":0}', call_id='call_k7APDmfK4dy57LeiHYhBCNq6', name='mydiv', type='function_call', id='fc_02f9e0725e9fb6a5006943fd17b4d08197ada7efed9792c679', status='completed'),
+     ResponseFunctionToolCall(arguments='{"a":6843,"b":0}', call_id='call_ZpzLBH2zM3Wcy9aoFCbnZ0mN', name='mydiv', type='function_call', id='fc_02f9e0725e9fb6a5006943fd17e5bc8197b3e6f2903db6ce9d', status='completed'),
+     ResponseFunctionToolCall(arguments='{"a":321,"b":0}', call_id='call_JGS2KeOU7ku3n56kqbSrvEGy', name='mydiv', type='function_call', id='fc_02f9e0725e9fb6a5006943fd181dd88197bd6492c3465327ea', status='completed')]
 
-    ResponseFunctionToolCall(arguments='{"a":43,"b":23454}', call_id='call_1EchGcZOxUCwzWFmPG6ZbagQ', name='mydiv', type='function_call', id='fc_6897e1e44ac08190819052abd2ee034a047a40cd4df49f91', status='completed')
+    ResponseFunctionToolCall(arguments='{"a":43,"b":23454}', call_id='call_Fnsc5iNP8rMuj0rqeBLzXVsO', name='mydiv', type='function_call', id='fc_02f9e0725e9fb6a5006943fd177c6c8197a5ad34f31755933a', status='completed')
 
-    ResponseFunctionToolCall(arguments='{"a":652,"b":0}', call_id='call_VzY6kLA8EYBQWLQyM1P7Uu39', name='mydiv', type='function_call', id='fc_6897e1e4736c819093be6536512c13f8047a40cd4df49f91', status='completed')
+    ResponseFunctionToolCall(arguments='{"a":652,"b":0}', call_id='call_k7APDmfK4dy57LeiHYhBCNq6', name='mydiv', type='function_call', id='fc_02f9e0725e9fb6a5006943fd17b4d08197ada7efed9792c679', status='completed')
 
-    ResponseFunctionToolCall(arguments='{"a":6843,"b":0}', call_id='call_Ifuh3smqGl5gBCHuqPOyAwWC', name='mydiv', type='function_call', id='fc_6897e1e499788190adcc563eb10050d6047a40cd4df49f91', status='completed')
+    ResponseFunctionToolCall(arguments='{"a":6843,"b":0}', call_id='call_ZpzLBH2zM3Wcy9aoFCbnZ0mN', name='mydiv', type='function_call', id='fc_02f9e0725e9fb6a5006943fd17e5bc8197b3e6f2903db6ce9d', status='completed')
 
-    ResponseFunctionToolCall(arguments='{"a":321,"b":0}', call_id='call_Ib36ay9PqhAms1U200xMh3AB', name='mydiv', type='function_call', id='fc_6897e1e4c6f48190b4715a9fcfc33d4e047a40cd4df49f91', status='completed')
+    ResponseFunctionToolCall(arguments='{"a":321,"b":0}', call_id='call_JGS2KeOU7ku3n56kqbSrvEGy', name='mydiv', type='function_call', id='fc_02f9e0725e9fb6a5006943fd181dd88197bd6492c3465327ea', status='completed')
 
     {'type': 'function_call_output',
-     'call_id': 'call_1EchGcZOxUCwzWFmPG6ZbagQ',
+     'call_id': 'call_Fnsc5iNP8rMuj0rqeBLzXVsO',
      'output': '0.001833375969983798'}
 
     {'type': 'function_call_output',
-     'call_id': 'call_VzY6kLA8EYBQWLQyM1P7Uu39',
-     'output': 'Traceback (most recent call last):\n  File "/Users/jhoward/aai-ws/toolslm/toolslm/funccall.py", line 203, in call_func\n    try: return func(**fc_inputs)\n                ^^^^^^^^^^^^^^^^^\n  File "/var/folders/51/b2_szf2945n072c0vj2cyty40000gn/T/ipykernel_23490/246724137.py", line 3, in mydiv\n    return a / b\n           ~~^~~\nZeroDivisionError: division by zero\n'}
+     'call_id': 'call_k7APDmfK4dy57LeiHYhBCNq6',
+     'output': 'Traceback (most recent call last):\n  File "/usr/local/lib/python3.12/site-packages/toolslm/funccall.py", line 215, in call_func\n    try: return func(**inps)\n                ^^^^^^^^^^^^\n  File "/tmp/ipykernel_5385/246724137.py", line 3, in mydiv\n    return a / b\n           ~~^~~\nZeroDivisionError: division by zero\n'}
 
     {'type': 'function_call_output',
-     'call_id': 'call_Ifuh3smqGl5gBCHuqPOyAwWC',
-     'output': 'Traceback (most recent call last):\n  File "/Users/jhoward/aai-ws/toolslm/toolslm/funccall.py", line 203, in call_func\n    try: return func(**fc_inputs)\n                ^^^^^^^^^^^^^^^^^\n  File "/var/folders/51/b2_szf2945n072c0vj2cyty40000gn/T/ipykernel_23490/246724137.py", line 3, in mydiv\n    return a / b\n           ~~^~~\nZeroDivisionError: division by zero\n'}
+     'call_id': 'call_ZpzLBH2zM3Wcy9aoFCbnZ0mN',
+     'output': 'Traceback (most recent call last):\n  File "/usr/local/lib/python3.12/site-packages/toolslm/funccall.py", line 215, in call_func\n    try: return func(**inps)\n                ^^^^^^^^^^^^\n  File "/tmp/ipykernel_5385/246724137.py", line 3, in mydiv\n    return a / b\n           ~~^~~\nZeroDivisionError: division by zero\n'}
 
     {'type': 'function_call_output',
-     'call_id': 'call_Ib36ay9PqhAms1U200xMh3AB',
-     'output': 'Traceback (most recent call last):\n  File "/Users/jhoward/aai-ws/toolslm/toolslm/funccall.py", line 203, in call_func\n    try: return func(**fc_inputs)\n                ^^^^^^^^^^^^^^^^^\n  File "/var/folders/51/b2_szf2945n072c0vj2cyty40000gn/T/ipykernel_23490/246724137.py", line 3, in mydiv\n    return a / b\n           ~~^~~\nZeroDivisionError: division by zero\n'}
+     'call_id': 'call_JGS2KeOU7ku3n56kqbSrvEGy',
+     'output': 'Traceback (most recent call last):\n  File "/usr/local/lib/python3.12/site-packages/toolslm/funccall.py", line 215, in call_func\n    try: return func(**inps)\n                ^^^^^^^^^^^^\n  File "/tmp/ipykernel_5385/246724137.py", line 3, in mydiv\n    return a / b\n           ~~^~~\nZeroDivisionError: division by zero\n'}
 
-I successfully computed the first division: - 43 / 23454 =
+I computed the first division successfully: - 43 / 23454 =
 0.001833375969983798
 
-I was then instructed to divide 652 by the “previous result” and
-continue chaining divisions, but my subsequent tool calls failed because
-I attempted to divide by zero (the tool calls were given invalid b=0),
-so I could not complete the remaining steps.
+I attempted the next steps but they failed because I tried to divide by
+zero (I passed 0 as the “previous result” for subsequent operations),
+causing errors. To complete the sequence you want, I need to perform
+these successive calculations using the preceding result each time: 1.
+652 / (43/23454) 2. 6843 / (result of step 2) 3. 321 / (result of step
+3)
 
-To finish the sequence you want, the next steps are: 1) Compute 652 /
-0.001833375969983798 = 355,554.879… (approx) 2) Compute 6843 / (result
-of step 1) = 0.019247… (approx) 3) Compute 321 / (result of step 2) =
-16,683.6… (approx)
-
-If you want, I can now compute those three remaining divisions directly
-(no tools required) and give exact or rounded results. Which would you
-prefer?
+If you want, I can now: - Recompute the chain without tool limits and
+give all four results, or - Compute them step-by-step here directly (no
+tools needed). Which do you prefer?
 
 <details>
 
-- id: resp_6897e1e562908190a3ecc40a07d57645047a40cd4df49f91
-- created_at: 1754784229.0
+- id: resp_02f9e0725e9fb6a5006943fd18bff081979e13bb5930ee32b7
+- created_at: 1766063384.0
 - error: None
 - incomplete_details: None
 - instructions: None
@@ -1170,95 +921,20 @@ prefer?
 - model: gpt-5-mini-2025-08-07
 - object: response
 - output:
-  \[ResponseReasoningItem(id=‘rs_6897e1e5fafc81909e1cbc28898ba791047a40cd4df49f91’,
+  \[ResponseReasoningItem(id=‘rs_02f9e0725e9fb6a5006943fd19334c8197b4b20beb1ae09493’,
   summary=\[\], type=‘reasoning’, content=None, encrypted_content=None,
   status=None),
-  ResponseOutputMessage(id=‘msg_6897e1e61cdc81909f47e73a5337ebec047a40cd4df49f91’,
-  content=\[ResponseOutputText(annotations=\[\], text=‘I successfully
-  computed the first division:- 43 / 23454 = 0.001833375969983798was
-  then instructed to divide 652 by the “previous result” and continue
-  chaining divisions, but my subsequent tool calls failed because I
-  attempted to divide by zero (the tool calls were given invalid b=0),
-  so I could not complete the remaining steps.finish the sequence you
-  want, the next steps are:) Compute 652 / 0.001833375969983798 =
-  355,554.879… (approx)) Compute 6843 / (result of step 1) = 0.019247…
-  (approx)) Compute 321 / (result of step 2) = 16,683.6… (approx)you
-  want, I can now compute those three remaining divisions directly (no
-  tools required) and give exact or rounded results. Which would you
-  prefer?’, type=‘output_text’, logprobs=\[\])\], role=‘assistant’,
-  status=‘completed’, type=‘message’)\]
-- parallel_tool_calls: True
-- temperature: 1.0
-- tool_choice: auto
-- tools: \[FunctionTool(name=‘mydiv’, parameters={‘type’: ‘object’,
-  ‘properties’: {‘a’: {‘type’: ‘number’, ‘description’: ’‘}, ’b’:
-  {‘type’: ‘number’, ‘description’: ’‘}}, ’required’: \[‘a’, ‘b’\],
-  ‘additionalProperties’: False}, strict=True, type=‘function’,
-  description=‘Divide two numbers’)\]
-- top_p: 1.0
-- background: False
-- max_output_tokens: 4096
-- max_tool_calls: None
-- previous_response_id: None
-- prompt: None
-- prompt_cache_key: None
-- reasoning: Reasoning(effort=‘minimal’, generate_summary=None,
-  summary=None)
-- safety_identifier: None
-- service_tier: default
-- status: completed
-- text: ResponseTextConfig(format=ResponseFormatText(type=‘text’),
-  verbosity=‘low’)
-- top_logprobs: 0
-- truncation: disabled
-- usage: ResponseUsage(input_tokens=603,
-  input_tokens_details=InputTokensDetails(cached_tokens=0),
-  output_tokens=199,
-  output_tokens_details=OutputTokensDetails(reasoning_tokens=0),
-  total_tokens=802)
-- user: None
-- store: True
-
-</details>
-
-    ResponseOutputMessage(id='msg_6897e1e61cdc81909f47e73a5337ebec047a40cd4df49f91', content=[ResponseOutputText(annotations=[], text='I successfully computed the first division:\n- 43 / 23454 = 0.001833375969983798\n\nI was then instructed to divide 652 by the "previous result" and continue chaining divisions, but my subsequent tool calls failed because I attempted to divide by zero (the tool calls were given invalid b=0), so I could not complete the remaining steps.\n\nTo finish the sequence you want, the next steps are:\n1) Compute 652 / 0.001833375969983798 = 355,554.879... (approx)\n2) Compute 6843 / (result of step 1) = 0.019247... (approx)\n3) Compute 321 / (result of step 2) = 16,683.6... (approx)\n\nIf you want, I can now compute those three remaining divisions directly (no tools required) and give exact or rounded results. Which would you prefer?', type='output_text', logprobs=[])], role='assistant', status='completed', type='message')
-
-This tests `raise_on_err=False` change to `toolslm.call_func`
-invocation. We should see this return an error as a string instead of
-crash:
-
-``` python
-chat = Chat(model, tools=[mydiv], **chatkw)
-r = chat.toolloop('Try dividing 1 by 0 and see what the error result is')
-for o in r: show(o)
-```
-
-    [ResponseReasoningItem(id='rs_6897e1e939d48193a63805a335b1a33304d3e564186ebe0a', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
-     ResponseFunctionToolCall(arguments='{"a":1,"b":0}', call_id='call_dxZkdTpNuZH6tWjycwgHZeo9', name='mydiv', type='function_call', id='fc_6897e1e999a08193b7f7af1bc2c213ec04d3e564186ebe0a', status='completed')]
-
-    ResponseFunctionToolCall(arguments='{"a":1,"b":0}', call_id='call_dxZkdTpNuZH6tWjycwgHZeo9', name='mydiv', type='function_call', id='fc_6897e1e999a08193b7f7af1bc2c213ec04d3e564186ebe0a', status='completed')
-
-    {'type': 'function_call_output',
-     'call_id': 'call_dxZkdTpNuZH6tWjycwgHZeo9',
-     'output': 'Traceback (most recent call last):\n  File "/Users/jhoward/aai-ws/toolslm/toolslm/funccall.py", line 203, in call_func\n    try: return func(**fc_inputs)\n                ^^^^^^^^^^^^^^^^^\n  File "/var/folders/51/b2_szf2945n072c0vj2cyty40000gn/T/ipykernel_23490/246724137.py", line 3, in mydiv\n    return a / b\n           ~~^~~\nZeroDivisionError: division by zero\n'}
-
-The function raised a ZeroDivisionError with message: “division by
-zero”.
-
-<details>
-
-- id: resp_6897e1eac59c81938b9c646c2a8c34ef04d3e564186ebe0a
-- created_at: 1754784234.0
-- error: None
-- incomplete_details: None
-- instructions: None
-- metadata: {}
-- model: gpt-5-mini-2025-08-07
-- object: response
-- output:
-  \[ResponseOutputMessage(id=‘msg_6897e1eb389081939fdcfd37dbf877e404d3e564186ebe0a’,
-  content=\[ResponseOutputText(annotations=\[\], text=‘The function
-  raised a ZeroDivisionError with message: “division by zero”.’,
+  ResponseOutputMessage(id=‘msg_02f9e0725e9fb6a5006943fd195a9c81978fb9bcca07f80c87’,
+  content=\[ResponseOutputText(annotations=\[\], text=‘I computed the
+  first division successfully:- 43 / 23454 =
+  0.001833375969983798attempted the next steps but they failed because I
+  tried to divide by zero (I passed 0 as the “previous result” for
+  subsequent operations), causing errors. To complete the sequence you
+  want, I need to perform these successive calculations using the
+  preceding result each time:. 652 / (43/23454). 6843 / (result of step
+  2). 321 / (result of step 3)you want, I can now:- Recompute the chain
+  without tool limits and give all four results, or- Compute them
+  step-by-step here directly (no tools needed). Which do you prefer?’,
   type=‘output_text’, logprobs=\[\])\], role=‘assistant’,
   status=‘completed’, type=‘message’)\]
 - parallel_tool_calls: True
@@ -1271,11 +947,13 @@ zero”.
   description=‘Divide two numbers’)\]
 - top_p: 1.0
 - background: False
+- conversation: None
 - max_output_tokens: 4096
 - max_tool_calls: None
 - previous_response_id: None
 - prompt: None
 - prompt_cache_key: None
+- prompt_cache_retention: None
 - reasoning: Reasoning(effort=‘minimal’, generate_summary=None,
   summary=None)
 - safety_identifier: None
@@ -1285,12 +963,89 @@ zero”.
   verbosity=‘low’)
 - top_logprobs: 0
 - truncation: disabled
-- usage: ResponseUsage(input_tokens=220,
+- usage: ResponseUsage(input_tokens=537,
   input_tokens_details=InputTokensDetails(cached_tokens=0),
-  output_tokens=19,
+  output_tokens=163,
   output_tokens_details=OutputTokensDetails(reasoning_tokens=0),
-  total_tokens=239)
+  total_tokens=700)
 - user: None
+- billing: {‘payer’: ‘openai’}
+- store: True
+
+</details>
+
+    ResponseOutputMessage(id='msg_02f9e0725e9fb6a5006943fd195a9c81978fb9bcca07f80c87', content=[ResponseOutputText(annotations=[], text='I computed the first division successfully:\n- 43 / 23454 = 0.001833375969983798\n\nI attempted the next steps but they failed because I tried to divide by zero (I passed 0 as the “previous result” for subsequent operations), causing errors. To complete the sequence you want, I need to perform these successive calculations using the preceding result each time:\n1. 652 / (43/23454)\n2. 6843 / (result of step 2)\n3. 321 / (result of step 3)\n\nIf you want, I can now:\n- Recompute the chain without tool limits and give all four results, or\n- Compute them step-by-step here directly (no tools needed). Which do you prefer?', type='output_text', logprobs=[])], role='assistant', status='completed', type='message')
+
+This tests `raise_on_err=False` change to `toolslm.call_func`
+invocation. We should see this return an error as a string instead of
+crash:
+
+``` python
+chat = Chat(model, tools=[mydiv], **chatkw)
+r = chat.toolloop('Try dividing 1 by 0 and see what the error result is')
+for o in r: show(o)
+```
+
+    [ResponseReasoningItem(id='rs_0af57bb05fb6f746006943fd1bd07c81958a319ad4cb70eae8', summary=[], type='reasoning', content=None, encrypted_content=None, status=None),
+     ResponseFunctionToolCall(arguments='{"a":1,"b":0}', call_id='call_0FGtqnXi4rLuPC0ivZcaRw24', name='mydiv', type='function_call', id='fc_0af57bb05fb6f746006943fd1c29a08195989bf0c4f670baca', status='completed')]
+
+    ResponseFunctionToolCall(arguments='{"a":1,"b":0}', call_id='call_0FGtqnXi4rLuPC0ivZcaRw24', name='mydiv', type='function_call', id='fc_0af57bb05fb6f746006943fd1c29a08195989bf0c4f670baca', status='completed')
+
+    {'type': 'function_call_output',
+     'call_id': 'call_0FGtqnXi4rLuPC0ivZcaRw24',
+     'output': 'Traceback (most recent call last):\n  File "/usr/local/lib/python3.12/site-packages/toolslm/funccall.py", line 215, in call_func\n    try: return func(**inps)\n                ^^^^^^^^^^^^\n  File "/tmp/ipykernel_5385/246724137.py", line 3, in mydiv\n    return a / b\n           ~~^~~\nZeroDivisionError: division by zero\n'}
+
+ZeroDivisionError: division by zero
+
+<details>
+
+- id: resp_0af57bb05fb6f746006943fd1cbdac8195b5d480c66c146b06
+- created_at: 1766063388.0
+- error: None
+- incomplete_details: None
+- instructions: None
+- metadata: {}
+- model: gpt-5-mini-2025-08-07
+- object: response
+- output:
+  \[ResponseOutputMessage(id=‘msg_0af57bb05fb6f746006943fd1d335881958929318eb6ad6c40’,
+  content=\[ResponseOutputText(annotations=\[\],
+  text=‘ZeroDivisionError: division by zero’, type=‘output_text’,
+  logprobs=\[\])\], role=‘assistant’, status=‘completed’,
+  type=‘message’)\]
+- parallel_tool_calls: True
+- temperature: 1.0
+- tool_choice: auto
+- tools: \[FunctionTool(name=‘mydiv’, parameters={‘type’: ‘object’,
+  ‘properties’: {‘a’: {‘type’: ‘number’, ‘description’: ’‘}, ’b’:
+  {‘type’: ‘number’, ‘description’: ’‘}}, ’required’: \[‘a’, ‘b’\],
+  ‘additionalProperties’: False}, strict=True, type=‘function’,
+  description=‘Divide two numbers’)\]
+- top_p: 1.0
+- background: False
+- conversation: None
+- max_output_tokens: 4096
+- max_tool_calls: None
+- previous_response_id: None
+- prompt: None
+- prompt_cache_key: None
+- prompt_cache_retention: None
+- reasoning: Reasoning(effort=‘minimal’, generate_summary=None,
+  summary=None)
+- safety_identifier: None
+- service_tier: default
+- status: completed
+- text: ResponseTextConfig(format=ResponseFormatText(type=‘text’),
+  verbosity=‘low’)
+- top_logprobs: 0
+- truncation: disabled
+- usage: ResponseUsage(input_tokens=198,
+  input_tokens_details=InputTokensDetails(cached_tokens=0),
+  output_tokens=11,
+  output_tokens_details=OutputTokensDetails(reasoning_tokens=0),
+  total_tokens=209)
+- user: None
+- billing: {‘payer’: ‘openai’}
 - store: True
 
 </details>

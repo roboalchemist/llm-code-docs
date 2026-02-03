@@ -154,7 +154,7 @@ var service = client.V1.BalanceSettings;
 BalanceSettings balanceSettings = service.Update(options, requestOptions);
 ```
 
-> Use the [Balance Settings](https://docs.stripe.com/api/balance-settings.md) API to manage payout settings for both Accounts v1 and Accounts v2. The Balance Settings object follows a similar structure and behavior to the [settings.payouts](https://docs.stripe.com/api/accounts/object.md?api-version=preview#account_object-settings-payouts) hash in Accounts v1. If your Account v1 is currently using `settings.payouts`, you don’t need to migrate.
+> This guide shows how to configure payouts using the Balance Settings API. Use [Balance Settings](https://docs.stripe.com/api/balance-settings.md) to manage payout settings for Accounts v2. The Balance Settings object follows similar structure and behavior to the Accounts v1 `settings.payouts` hash. If you’re currently using `settings.payouts` on Accounts v1, you can continue to do so.
 
 To trigger a payout of these funds, use the [Payouts API](https://docs.stripe.com/api/payouts/create.md). The Payouts API is only for moving funds from a connected Stripe account’s balance into their external account. To move funds between the platform and a connected account, use [separate charges and transfers](https://docs.stripe.com/connect/separate-charges-and-transfers.md) or [destination charges](https://docs.stripe.com/connect/destination-charges.md).
 

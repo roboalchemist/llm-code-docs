@@ -1,6 +1,8 @@
 # Source: https://www.activepieces.com/docs/build-pieces/piece-reference/properties.md
 
-# Source: https://www.activepieces.com/docs/developers/piece-reference/properties.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Props
 
@@ -275,6 +277,7 @@ Property.Dropdown({
   displayName: 'Options',
   description: 'Select an option',
   required: true,
+  auth: yourPieceAuth,
   refreshers: ['auth'],
   refreshOnSearch: false,
   options: async ({ auth }, { searchValue }) => {
@@ -317,6 +320,7 @@ Property.MultiSelectDropdown({
   description: 'Select one or more options',
   required: true,
   refreshers: ['auth'],
+  auth: yourPieceAuth,
   options: async ({ auth }) => {
     if (!auth) {
       return {
@@ -362,13 +366,14 @@ Property.DynamicProperties({
   description: 'Dynamic Form',
   displayName: 'Dynamic Form',
   required: true,
-  refreshers: ['authentication'],
-  props: async (propsValue) => {
-    const authentication = propsValue['authentication'];
+  refreshers: ['auth'],
+  auth: yourPieceAuth,
+  props: async ({auth}) => {
     const apiEndpoint = 'https://someapi.com';
     const response = await httpClient.sendRequest<{ values: [string[]][] }>({
         method: HttpMethod.GET,
-        url: apiEndpoint 
+        url: apiEndpoint ,
+        //you can add the auth value to the headers
 	  });
 
     const properties = {

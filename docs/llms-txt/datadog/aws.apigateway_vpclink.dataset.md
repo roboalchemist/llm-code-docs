@@ -4,8 +4,6 @@
 title: API Gateway VPC Link
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > API Gateway VPC Link
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.apigateway_vpclink.dataset/index.html
 ---
 
 # API Gateway VPC Link
@@ -27,5 +25,5 @@ aws.apigateway_vpclink
 | name           | core | string        | The name used to label and identify the VPC link.                                                                                                                                                                                                                    |
 | status         | core | string        | The status of the VPC link. The valid values are <code>AVAILABLE</code>, <code>PENDING</code>, <code>DELETING</code>, or <code>FAILED</code>. Deploying an API will wait if the status is <code>PENDING</code> and will fail if the status is <code>DELETING</code>. |
 | status_message | core | string        | A description about the VPC link status.                                                                                                                                                                                                                             |
-| tags           | core | hstore        |
+| tags           | core | hstore_csv    |
 | target_arns    | core | array<string> | The ARN of the network load balancer of the VPC targeted by the VPC link. The network load balancer must be owned by the same Amazon Web Services account of the API owner.                                                                                          |

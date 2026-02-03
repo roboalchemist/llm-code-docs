@@ -1,18 +1,52 @@
 # Source: https://polar.sh/docs/integrate/sdk/adapters/remix.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Remix
 
 > Payments and Checkouts made dead simple with Remix
 
-```bash  theme={null}
-pnpm install @polar-sh/remix zod
-```
+## Examples
+
+* [With Remix](https://github.com/polarsource/examples/tree/main/with-remix)
+
+## Installation
+
+Install the required Polar packages using the following command:
+
+<Tabs>
+  <Tab title="npm">
+    ```bash Terminal theme={null}
+    npm install zod @polar-sh/remix
+    ```
+  </Tab>
+
+  <Tab title="yarn">
+    ```bash Terminal theme={null}
+    yarn add zod @polar-sh/remix
+    ```
+  </Tab>
+
+  <Tab title="pnpm">
+    ```bash Terminal theme={null}
+    pnpm add zod @polar-sh/remix
+    ```
+  </Tab>
+
+  <Tab title="bun">
+    ```bash Terminal theme={null}
+    bun add zod @polar-sh/remix
+    ```
+  </Tab>
+</Tabs>
 
 ## Checkout
 
 Create a Checkout handler which takes care of redirections.
 
-```typescript  theme={null}
+```typescript icon="square-js" app/routes/checkout.tsx theme={null}
 import { Checkout } from "@polar-sh/remix";
 
 export const loader = Checkout({
@@ -39,7 +73,7 @@ Pass query params to this route.
 
 Create a customer portal where your customer can view orders and subscriptions.
 
-```typescript  theme={null}
+```typescript icon="square-js" app/routes/customer-portal.tsx theme={null}
 import { CustomerPortal } from "@polar-sh/remix";
 
 export const loader = CustomerPortal({
@@ -54,7 +88,7 @@ export const loader = CustomerPortal({
 
 A simple utility which resolves incoming webhook payloads by signing the webhook secret properly.
 
-```typescript  theme={null}
+```typescript icon="square-js" app/routes/webhook.tsx theme={null}
 import { Webhooks } from "@polar-sh/remix";
 
 export const action = Webhooks({

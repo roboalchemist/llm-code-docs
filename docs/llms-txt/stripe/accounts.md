@@ -6,9 +6,11 @@ Learn about older connected account configurations.
 
 When using *Connect* (Connect is Stripe's solution for multi-party businesses, such as marketplace or software platforms, to route payments between sellers, customers, and other recipients), you create a *connected account* (A person or business accepting payments or receiving payouts on a Connect platform) for each business or individual that signs up to access your platform’s services. You can configure your platform and connected accounts to fit your business model, distributing specific responsibilities between your platform, Stripe, and your connected accounts.
 
-If you’re setting up a new Connect platform, see [Design an integration](https://docs.stripe.com/connect/design-an-integration.md) to learn about configuring connected accounts. The information on this page applies only to less flexible connected account types, which are mainly used by existing platforms.
+> #### Newer Connect integrations
+> 
+> The information on this page applies only to platforms that already use legacy connected account types. If you’re setting up a new Connect platform, or your integration uses the Accounts v2 API, see the [Interactive platform guide](https://docs.stripe.com/connect/interactive-platform-guide.md). If your existing integration uses the Accounts v1 API, see [Design an advanced integration](https://docs.stripe.com/connect/design-an-integration.md).
 
-> If your existing connected accounts are configured as a type, you can still [migrate your platform to support new connected accounts that are configured without types](https://docs.stripe.com/connect/migrate-to-controller-properties.md). During and after migration, your platform can continue to support your existing connected accounts without interruption.
+If your existing connected accounts are configured as a type, you can migrate your platform to support new connected accounts using [the Accounts v2 API](https://docs.stripe.com/connect/accounts-v2/migrate-integration.md) or [v1 Accounts with controller properties](https://docs.stripe.com/connect/migrate-to-controller-properties.md). During and after migration, your platform can continue to support your existing connected accounts without interruption.
 
 Connect supports the following account types:
 

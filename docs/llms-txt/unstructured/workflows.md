@@ -2,17 +2,13 @@
 
 # Source: https://docs.unstructured.io/api-reference/workflow/workflows.md
 
-# Source: https://docs.unstructured.io/ui/workflows.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/workflows.md
-
-# Source: https://docs.unstructured.io/ui/workflows.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/workflows.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Workflows
 
-To use the [Unstructured Workflow Endpoint](/api-reference/workflow/overview) to manage workflows, do the following:
+To use the [Unstructured API's workflow operations](/api-reference/workflow/overview) to manage workflows, do the following:
 
 * To get a list of available workflows, use the `UnstructuredClient` object's `workflows.list_workflows` function (for the Python SDK) or
   the `GET` method to call the `/workflows` endpoint (for `curl` or Postman). [Learn more](/api-reference/workflow/overview#list-workflows).
@@ -26,14 +22,24 @@ To use the [Unstructured Workflow Endpoint](/api-reference/workflow/overview) to
   the `PUT` method to call the `/workflows/<workflow-id>` endpoint (for `curl` or Postman). [Learn more](#update-a-workflow).
 * To delete a workflow, use the `UnstructuredClient` object's `workflows.delete_workflow` function (for the Python SDK) or
   the `DELETE` method to call the `/workflows/<workflow-id>` endpoint (for `curl` or Postman). [Learn more](/api-reference/workflow/overview#delete-a-workflow).
+* To get a list of available workflow templates, use the `GET` method to call the `/templates` endpoint (for `curl` or Postman).
+  [Learn more](#list-templates).
+* To get information about a workflow template, use the `GET` method to call the `/templates/<template-id>` endpoint (for `curl` or Postman).
+  [Learn more](#get-a-template).
 
 The following examples assume that you have already met the [requirements](/api-reference/workflow/overview#requirements) and
-understand the [basics](/api-reference/workflow/overview#basics) of working with the Unstructured Workflow Endpoint.
+understand the [basics](/api-reference/workflow/overview#basics) of working with the Unstructured API's workflow operations.
 
 ## Create a workflow
 
 To create a workflow, use the `UnstructuredClient` object's `workflows.create_workflow` function (for the Python SDK) or
 the `POST` method to call the `/workflows` endpoint (for `curl` or Postman).
+
+<Note>
+  The following instructions create a workflow that exists until it is explicitly deleted (also known as a *long-lived workflow*).
+  To create a workflow that exists only for the duration of
+  that workflow's associated job run, and that job run's temporary workflow takes one or more local files only as input, see [Run an on-demand job](/api-reference/workflow/overview#run-an-on-demand-job).
+</Note>
 
 In the `CreateWorkflow` object (for the Python SDK) or
 the request body (for `curl` or Postman),
@@ -82,7 +88,9 @@ specify the settings for the workflow, as follows:
         name="<name>",
         source_id="<source-connector-id>",
         destination_id="<destination-connector-id>",
-        workflow_type=WorkflowType.<TYPE>,
+        workflow_type=WorkflowType.<workflow-type>,
+        reprocess_all=True|False,
+        template_id="<workflow-template-id>",
         workflow_nodes=[
             workflow_node,
             another_workflow_node
@@ -330,7 +338,9 @@ specify the settings for the workflow, as follows:
             name="<name>",
             source_id="<source-connector-id>",
             destination_id="<destination-connector-id>",
-            workflow_type=WorkflowType.<TYPE>,
+            workflow_type=WorkflowType.<workflow-type>,
+            reprocess_all=True|False,
+            template_id="<workflow-template-id>",
             workflow_nodes=[
                 workflow_node,
                 another_workflow_node
@@ -556,7 +566,9 @@ specify the settings for the workflow, as follows:
         "name": "<name>",
         "source_id": "<source-connector-id>",
         "destination_id": "<destination-connector-id>",
-        "workflow_type": "<type>",
+        "workflow_type": "<workflow-type>",
+        "reprocess_all": "true"|"false",
+        "template_id": "<workflow-template-id>",
         "workflow_nodes": [
             {
                 "name": "<node-name>",
@@ -596,6 +608,7 @@ specify the settings for the workflow, as follows:
     '{
         "name": "<name>",
         "workflow_type": "custom",
+        "template_id": "<workflow-template-id>",
         "workflow_nodes": [
             {
                 "name": "<node-name>",
@@ -635,6 +648,7 @@ specify the settings for the workflow, as follows:
         "name": "<name>",
         "destination_id": "<destination-connector-id>",
         "workflow_type": "custom",
+        "template_id": "<workflow-template-id>",
         "workflow_nodes": [
             {
                 "name": "<node-name>",
@@ -673,7 +687,9 @@ specify the settings for the workflow, as follows:
            "name": "<name>",
            "source_id": "<source-connector-id>",
            "destination_id": "<destination-connector-id>",
-           "workflow_type": "<type>",
+           "workflow_type": "<workflow-type>",
+           "reprocess_all": "true"|"false",
+           "template_id": "<workflow-template-id>",
            "workflow_nodes": [
                {
                    "name": "<node-name>",
@@ -725,6 +741,7 @@ specify the settings for the workflow, as follows:
        {
            "name": "<name>",
            "workflow_type": "custom",
+           "template_id": "<workflow-template-id>",
            "workflow_nodes": [
                {
                    "name": "<node-name>",
@@ -775,6 +792,7 @@ specify the settings for the workflow, as follows:
        {
            "name": "<name>",
            "workflow_type": "custom",
+           "template_id": "<workflow-template-id>",
            "workflow_nodes": [
                {
                    "name": "<node-name>",
@@ -808,9 +826,10 @@ Replace the preceding placeholders as follows:
   use the `UnstructuredClient` object's `destinations.list_destinations` function (for the Python SDK) or
   the `GET` method to call the `/destinations` endpoint (for `curl` or Postman). [Learn more](/api-reference/workflow/overview#list-destination-connectors).
 
-* `<TYPE>` (for the Python SDK) or `<type>` (for `curl` or Postman) (*required*) - The workflow type. Available values include `CUSTOM` (for the Python SDK) and `custom` (for `curl` or Postman).
+* `<workflow-type>` (*required*) - The workflow type. Available values include:
 
-  If `<TYPE>` is set to `CUSTOM` (for the Python SDK), or if `<type>` is set to `custom` (for `curl` or Postman), you must add a `workflow_nodes` array. For instructions, see [Custom workflow DAG nodes](#custom-workflow-dag-nodes).
+  * `CUSTOM` (for the Python SDK) and `custom` (for `curl` or Postman) - This workflow's nodes are manually specified in the `workflow_nodes` array. For instructions, see [Custom workflow DAG nodes](#custom-workflow-dag-nodes).
+  * `TEMPLATE` (for the Python SDK) and `template` (for `curl` or Postman) - This workflow's nodes are specified by a workflow template. In this case, you would not add a `workflow_nodes` array. Instead, you must specify the workflow template's unique ID in the `template_id` field. For instructions, see [List workflow templates](#get-a-template).
 
   <Note>
     The previously-available workflow optimization types `ADVANCED`, `BASIC`, and `PLATINUM` (for the Python SDK) and
@@ -818,6 +837,11 @@ Replace the preceding placeholders as follows:
 
     The ability to create an [automatic workflow](/ui/workflows#create-an-automatic-workflow) type is currently not available but is planned to be added in a future release.
   </Note>
+
+* `reprocess_all`: *Optional*. If set to true (the default), the workflow will reprocess all documents in the source location on every workflow run.
+  If set to `false`, the workflow will only process new documents that are added to the source location, or existing documents that are updated in the
+  source location (as determined by checking whether the file's version has changed), since the last workflow run. This setting applies only to blob storage
+  connectors such as the Amazon S3, Azure Blob Storage, and Google Cloud Storage source connectors.
 
 * `<schedule-timeframe>` - The repeating automatic run schedule, specified as a predefined phrase. The available predefined phrases are:
 
@@ -842,6 +866,12 @@ Replace the preceding placeholders as follows:
 To update information about a workflow, use the `UnstructuredClient` object's `workflows.update_workflow` function (for the Python SDK) or
 the `PUT` method to call the `/workflows/<workflow-id>` endpoint (for `curl` or Postman), replacing
 `<workflow-id>` with the workflow's unique ID. To get this ID, see [List workflows](#list-workflows).
+
+<Note>
+  The following instructions can be used only to update a long-lived workflow (a workflow that exists until it is explicitly deleted).
+  A workflow that exists only for the duration of a running [on-demand job](/api-reference/workflow/overview#run-an-on-demand-job)
+  cannot be updated.
+</Note>
 
 In the request body, specify the settings for the workflow. For the specific settings to include, see
 [Create a workflow](/api-reference/workflow/workflows#create-a-workflow).
@@ -1129,8 +1159,6 @@ A **Partitioner** node has a `type` of `partition`.
 
 Fields for `settings` include:
 
-* `strategy`: *Required*. The partitioning strategy to use. This field must be set to `auto`.
-
 * `provider`: *Optional*. If the Auto partitioning strategy needs to use the VLM partitioning strategy, then use the specified VLM provider. Allowed values include `anthropic`, `auto`, `bedrock`, `openai`, and `vertexai`. The default value is `anthropic`.
 
 * `provider_api_key`: *Optional*. If specified, use a non-default API key for calls to the specified VLM provider as needed. The default is none, which means to rely on using Unstructured's internal default API key for the VLM provider.
@@ -1150,6 +1178,14 @@ Fields for `settings` include:
 
     Workflows that attempt to use any of these models on or after its associated date will return errors.
   </Warning>
+
+  <Note>
+    The following list applies only to Unstructured **Let's Go** and **Pay-As-You-Go** accounts.
+
+    For Unstructured **Business** accounts, to get your current list of available models, contact your
+    Unstructured account administrator or Unstructured sales representative, or email Unstructured Support at
+    [support@unstructured.io](mailto:support@unstructured.io).
+  </Note>
 
   * For `anthropic`, available values for `model` are:
 
@@ -1252,8 +1288,17 @@ Fields for `settings` include:
     Workflows that attempt to use any of these models on or after its associated date will return errors.
   </Warning>
 
+  <Note>
+    The following list applies only to Unstructured **Let's Go** and **Pay-As-You-Go** accounts.
+
+    For Unstructured **Business** accounts, to get your current list of available models, contact your
+    Unstructured account administrator or Unstructured sales representative, or email Unstructured Support at
+    [support@unstructured.io](mailto:support@unstructured.io).
+  </Note>
+
   * For `anthropic`, available values for `model` are:
 
+    * `claude-opus-4-5-20251101`
     * `claude-3-7-sonnet-20250219`
     * `claude-sonnet-4-20250514`
     * `claude-sonnet-4-5-20250929`
@@ -1315,6 +1360,7 @@ Fields for `settings` include:
                 "table"
             ],
             "infer_table_structure": <True|False>,
+            "coordinates": <True|False>
         }
     )
     ```
@@ -1345,6 +1391,7 @@ Fields for `settings` include:
                 "table"
             ],
             "infer_table_structure": <true|false>,
+            "coordinates": <true|false>
         }
     }
     ```
@@ -1359,19 +1406,19 @@ Fields for `settings` include:
 
 * `exclude_elements`: *Optional*. A list of any Unstructured element types to exclude from the output. The default is none. Available values include:
 
-  * `FigureCaption`
-  * `NarrativeText`
-  * `ListItem`
-  * `Title`
   * `Address`
-  * `Table`
-  * `PageBreak`
-  * `Header`
-  * `Footer`
-  * `UncategorizedText`
-  * `Image`
-  * `Formula`
   * `EmailAddress`
+  * `FigureCaption`
+  * `Footer`
+  * `Formula`
+  * `Header`
+  * `Image`
+  * `ListItem`
+  * `NarrativeText`
+  * `PageBreak`
+  * `Table`
+  * `Title`
+  * `UncategorizedText`
 
 * `xml_keep_tags`: *Optional*. True to retain any XML tags in the output. False (the default) to just extract the text from any XML tags instead.
 
@@ -1379,9 +1426,35 @@ Fields for `settings` include:
 
 * `ocr_languages`: *Optional*. A list of languages present in the input, for use in partitioning, OCR, or both. Multiple languages indicate that the text could be in any of the specified languages. The default is `[ 'eng' ]`. [See the language codes list](https://github.com/Unstructured-IO/unstructured/blob/main/unstructured/partition/common/lang.py).
 
-* `extract_image_block_types`: *Optional*. A list of the Unstructured element types for use in extracting image blocks as Base64 encoded data stored in `metadata` fields. Available values include `Image` and `Table`. The default is `[ 'Image', 'Table' ]`.
+* `extract_image_block_types`: *Optional*. A list of the Unstructured element types for use in extracting image blocks as Base64 encoded data stored in `metadata` fields. Available values include:
+
+  * `Abstract`
+  * `BulletedText`
+  * `Caption`
+  * `CodeSnippet`
+  * `CompositeElement`
+  * `Figure`
+  * `FigureCaption`
+  * `Form`
+  * `FormKeysValues`
+  * `Formula`
+  * `Header`
+  * `Image`
+  * `List`
+  * `List-item`
+  * `ListItem`
+  * `NarrativeText`
+  * `Paragraph`
+  * `Picture`
+  * `Table`
+  * `Text`
+  * `Threading`
+  * `Title`
+  * `UncategorizedText`
 
 * `infer_table_structure`: *Optional*. True to have any table elements extracted from a PDF to include an additional `metadata` field named `text_as_html`, containing an HTML `<table>` transformation. The default is false.
+
+* `coordinates`: *Optional*. True to have each element extracted from a PDF to include information about that element's position relative to its corresponding page. The default is false.
 
 #### Fast strategy
 
@@ -1410,7 +1483,8 @@ Fields for `settings` include:
                 "image",
                 "table"
             ],
-            "infer_table_structure": <True|False>
+            "infer_table_structure": <True|False>,
+            "coordinates": <True|False>
         }
     )
     ```
@@ -1440,7 +1514,8 @@ Fields for `settings` include:
                 "image",
                 "table"
             ],
-            "infer_table_structure": <true|false>
+            "infer_table_structure": <true|false>,
+            "coordinates": <true|false>
         }
     }
     ```
@@ -1457,19 +1532,19 @@ Fields for `settings` include:
 
 * `exclude_elements`: *Optional*. A list of any Unstructured element types to exclude from the output. The default is none. Available values include:
 
-  * `FigureCaption`
-  * `NarrativeText`
-  * `ListItem`
-  * `Title`
   * `Address`
-  * `Table`
-  * `PageBreak`
-  * `Header`
-  * `Footer`
-  * `UncategorizedText`
-  * `Image`
-  * `Formula`
   * `EmailAddress`
+  * `FigureCaption`
+  * `Footer`
+  * `Formula`
+  * `Header`
+  * `Image`
+  * `ListItem`
+  * `NarrativeText`
+  * `PageBreak`
+  * `Table`
+  * `Title`
+  * `UncategorizedText`
 
 * `xml_keep_tags`: *Optional*. True to retain any XML tags in the output. False (the default) to just extract the text from any XML tags instead.
 
@@ -1477,9 +1552,35 @@ Fields for `settings` include:
 
 * `ocr_languages`: *Optional*. A list of languages present in the input, for use in partitioning, OCR, or both. Multiple languages indicate that the text could be in any of the specified languages. The default is `[ 'eng' ]`. [See the language codes list](https://github.com/Unstructured-IO/unstructured/blob/main/unstructured/partition/common/lang.py).
 
-* `extract_image_block_types`: *Optional*. A list of the Unstructured element types for use in extracting image blocks as Base64 encoded data stored in `metadata` fields. Available values include `Image` and `Table`. The default is `[ 'Image', 'Table' ]`.
+* `extract_image_block_types`: *Optional*. A list of the Unstructured element types for use in extracting image blocks as Base64 encoded data stored in `metadata` fields. Available values include:
+
+  * `Abstract`
+  * `BulletedText`
+  * `Caption`
+  * `CodeSnippet`
+  * `CompositeElement`
+  * `Figure`
+  * `FigureCaption`
+  * `Form`
+  * `FormKeysValues`
+  * `Formula`
+  * `Header`
+  * `Image`
+  * `List`
+  * `List-item`
+  * `ListItem`
+  * `NarrativeText`
+  * `Paragraph`
+  * `Picture`
+  * `Table`
+  * `Text`
+  * `Threading`
+  * `Title`
+  * `UncategorizedText`
 
 * `infer_table_structure`: *Optional*. True to have any table elements extracted from a PDF to include an additional `metadata` field named `text_as_html`, containing an HTML `<table>` transformation. The default is false.
+
+* `coordinates`: *Optional*. True to have each element extracted from a PDF to include information about that element's position relative to its corresponding page. The default is false.
 
 ### Enrichment node
 
@@ -1534,7 +1635,10 @@ An **Enrichment** node has a `type` of `prompter`.
         name="Enrichment",
         subtype="<subtype>",
         type="prompter",
-        settings={}
+        settings={
+            "provider_type": "<provider-type>",
+            "model": "<model>"
+        }
     )
     ```
   </Accordion>
@@ -1545,17 +1649,52 @@ An **Enrichment** node has a `type` of `prompter`.
         "name": "Enrichment",
         "type": "prompter",
         "subtype": "<subtype>",
-        "settings": {}
+        "settings": {
+            "provider_type": "<provider-type>",
+            "model": "<model>"
+        }
     }
     ```
   </Accordion>
 </AccordionGroup>
 
-Allowed values for `<subtype>` include:
+Allowed values for `<subtype>`, `<provider-type>`, and `<model>` include, respectively:
 
-* `openai_image_description`
-* `anthropic_image_description`
-* `bedrock_image_description`
+* `anthropic_image_description`, `anthropic`, and:
+
+  * `claude-opus-4-5-20251101`
+  * `claude-3-7-sonnet-20250219`
+  * `claude-sonnet-4-20250514`
+  * `claude-sonnet-4-5-20250929`
+
+* `bedrock_image_description`, `bedrock`, and:
+
+  * `us.amazon.nova-lite-v1:0`
+  * `us.amazon.nova-pro-v1:0`
+  * `us.anthropic.claude-3-haiku-20240307-v1:0`
+  * `us.anthropic.claude-3-opus-20240229-v1:0`
+  * `us.anthropic.claude-3-sonnet-20240229-v1:0`
+  * `us.anthropic.claude-3-7-sonnet-20250219-v1:0`
+  * `us.anthropic.claude-sonnet-4-20250514-v1:0`
+  * `us.anthropic.claude-sonnet-4-5-20250929-v1:0`
+
+* `openai_image_description`, `openai`, and:
+
+  * `gpt-4o`
+  * `gpt-4o-mini`
+  * `gpt-5-mini`
+
+* `vertexai_image_description`, `vertexai`, and:
+
+  * `gemini-2.0-flash-001`
+
+<Note>
+  The preceding list applies only to Unstructured **Let's Go** and **Pay-As-You-Go** accounts.
+
+  For Unstructured **Business** accounts, to get your current list of available `<subtype>` values, contact your
+  Unstructured account administrator or Unstructured sales representative, or email Unstructured Support at
+  [support@unstructured.io](mailto:support@unstructured.io).
+</Note>
 
 #### Table Description task
 
@@ -1584,7 +1723,10 @@ Allowed values for `<subtype>` include:
         name="Enrichment",
         subtype="<subtype>",
         type="prompter",
-        settings={}
+        settings={
+            "provider_type": "<provider-type>",
+            "model": "<model>"
+        }
     )
     ```
   </Accordion>
@@ -1595,17 +1737,52 @@ Allowed values for `<subtype>` include:
         "name": "Enrichment",
         "type": "prompter",
         "subtype": "<subtype>",
-        "settings": {}
+        "settings": {
+            "provider_type": "<provider-type>",
+            "model": "<model>"
+        }
     }
     ```
   </Accordion>
 </AccordionGroup>
 
-Allowed values for `<subtype>` include:
+Allowed values for `<subtype>`, `<provider-type>`, and `<model>` include, respectively:
 
-* `openai_table_description`
-* `anthropic_table_description`
-* `bedrock_table_description`
+* `anthropic_table_description`, `anthropic`, and:
+
+  * `claude-opus-4-5-20251101`
+  * `claude-3-7-sonnet-20250219`
+  * `claude-sonnet-4-20250514`
+  * `claude-sonnet-4-5-20250929`
+
+* `bedrock_table_description`, `bedrock`, and:
+
+  * `us.amazon.nova-lite-v1:0`
+  * `us.amazon.nova-pro-v1:0`
+  * `us.anthropic.claude-3-haiku-20240307-v1:0`
+  * `us.anthropic.claude-3-opus-20240229-v1:0`
+  * `us.anthropic.claude-3-sonnet-20240229-v1:0`
+  * `us.anthropic.claude-3-7-sonnet-20250219-v1:0`
+  * `us.anthropic.claude-sonnet-4-20250514-v1:0`
+  * `us.anthropic.claude-sonnet-4-5-20250929-v1:0`
+
+* `openai_table_description`, `openai`, and:
+
+  * `gpt-4o`
+  * `gpt-4o-mini`
+  * `gpt-5-mini`
+
+* `vertexai_table_description`, `vertexai`, and:
+
+  * `gemini-2.0-flash-001`
+
+<Note>
+  The preceding list applies only to Unstructured **Let's Go** and **Pay-As-You-Go** accounts.
+
+  For Unstructured **Business** accounts, to get your current list of available `<subtype>` values, contact your
+  Unstructured account administrator or Unstructured sales representative, or email Unstructured Support at
+  [support@unstructured.io](mailto:support@unstructured.io).
+</Note>
 
 #### Table to HTML task
 
@@ -1632,9 +1809,12 @@ Allowed values for `<subtype>` include:
     ```python  theme={null}
     table_to_html_enrichment_workflow_node = WorkflowNode(
         name="Enrichment",
-        subtype="openai_table2html",
+        subtype="<subtype>",
         type="prompter",
-        settings={}
+        settings={
+            "provider_type": "<provider-type>",
+            "model": "<model>"
+        }
     )
     ```
   </Accordion>
@@ -1644,12 +1824,40 @@ Allowed values for `<subtype>` include:
     {
         "name": "Enrichment",
         "type": "prompter",
-        "subtype": "openai_table2html",
-        "settings": {}
+        "subtype": "<subtype>",
+        "settings": {
+            "provider_type": "<provider-type>",
+            "model": "<model>"
+        }
     }
     ```
   </Accordion>
 </AccordionGroup>
+
+Allowed values for `<subtype>`, `<provider-type>`, and `<model>` include, respectively:
+
+* `twopass_table2html` for agentic AI table-to-HTML output. Do not specify a `<provider-type>` or `<model>` for this subtype.
+
+* `anthropic_table2html` for VLM table-to-HTML output by using Anthropic, `anthropic`, and:
+
+  * `claude-opus-4-5-20251101`
+  * `claude-3-7-sonnet-20250219`
+  * `claude-sonnet-4-20250514`
+  * `claude-sonnet-4-5-20250929`
+
+* `openai_table2html` for VLM table-to-HTML output by using OpenAI, `openai`, and:
+
+  * `gpt-4o`
+  * `gpt-4o-mini`
+  * `gpt-5-mini`
+
+<Note>
+  The preceding `subtype` value applies only to Unstructured **Let's Go** and **Pay-As-You-Go** accounts.
+
+  For Unstructured **Business** accounts, to get your current list of available `subtype` values, contact your
+  Unstructured account administrator or Unstructured sales representative, or email Unstructured Support at
+  [support@unstructured.io](mailto:support@unstructured.io).
+</Note>
 
 #### Named Entity Recognition (NER) task
 
@@ -1661,6 +1869,8 @@ Allowed values for `<subtype>` include:
         subtype="<subtype>",
         type="prompter",
         settings={
+            "provider_type": "<provider-type>",
+            "model": "<model>",
             "prompt_interface_overrides": {
                 "prompt": {
                     "user": "<user-prompt-override>"
@@ -1678,6 +1888,8 @@ Allowed values for `<subtype>` include:
         "type": "prompter",
         "subtype": "<subtype>",
         "settings": {
+            "provider_type": "<provider-type>",
+            "model": "<model>",
             "prompt_interface_overrides": {
                 "prompt": {
                     "user": "<user-prompt-override>"
@@ -1690,6 +1902,21 @@ Allowed values for `<subtype>` include:
 </AccordionGroup>
 
 Fields for settings include:
+
+* Allowed values for `<subtype>`, `<provider-type>`, and `<model>` include, respectively:
+
+  * `anthropic_ner`, `anthropic`, and:
+
+    * `claude-opus-4-5-20251101`
+    * `claude-3-7-sonnet-20250219`
+    * `claude-sonnet-4-20250514`
+    * `claude-sonnet-4-5-20250929`
+
+  * `openai_ner`, `openai`, and:
+
+    * `gpt-4o`
+    * `gpt-4o-mini`
+    * `gpt-5-mini`
 
 * `prompt_interface_overrides.prompt.user`: *Optional*. Any alternative prompt to use with the underlying NER model. The default is none, which means to rely on using Unstructured's internal default prompt when calling the NER model.
   The internal default prompt is as follows, which you can override by providing an alternative prompt:
@@ -1772,6 +1999,14 @@ Allowed values for `<subtype>` include:
 * `openai_ner`
 * `anthropic_ner`
 
+<Note>
+  The preceding list applies only to Unstructured **Let's Go** and **Pay-As-You-Go** accounts.
+
+  For Unstructured **Business** accounts, to get your current list of available `<subtype>` values, contact your
+  Unstructured account administrator or Unstructured sales representative, or email Unstructured Support at
+  [support@unstructured.io](mailto:support@unstructured.io).
+</Note>
+
 #### Generative OCR task
 
 <Warning>
@@ -1802,7 +2037,10 @@ Allowed values for `<subtype>` include:
         name="Enrichment",
         subtype="<subtype>",
         type="prompter",
-        settings={}
+        settings={
+            "provider_type": "<provider-type>",
+            "model": "<model>"
+        }
     )
     ```
   </Accordion>
@@ -1813,17 +2051,48 @@ Allowed values for `<subtype>` include:
         "name": "Enrichment",
         "type": "prompter",
         "subtype": "<subtype>",
-        "settings": {}
+        "settings": {
+            "provider_type": "<provider-type>",
+            "model": "<model>"
+        }
     }
     ```
   </Accordion>
 </AccordionGroup>
 
-Allowed values for `<subtype>` include:
+Allowed values for `<subtype>`, `<provider-type>`, and `<model>` include, respectively:
 
-* `anthropic_ocr`
-* `openai_ocr`
-* `vertexai_ocr`
+* `anthropic_ocr`, `anthropic`, and:
+
+  * `claude-opus-4-5-20251101`
+  * `claude-3-7-sonnet-20250219`
+  * `claude-sonnet-4-20250514`
+  * `claude-sonnet-4-5-20250929`
+
+* `bedrock_ocr`, `bedrock`, and:
+
+  * `us.amazon.nova-lite-v1:0`
+  * `us.amazon.nova-pro-v1:0`
+  * `us.anthropic.claude-3-haiku-20240307-v1:0`
+  * `us.anthropic.claude-3-opus-20240229-v1:0`
+  * `us.anthropic.claude-3-sonnet-20240229-v1:0`
+  * `us.anthropic.claude-3-7-sonnet-20250219-v1:0`
+  * `us.anthropic.claude-sonnet-4-20250514-v1:0`
+  * `us.anthropic.claude-sonnet-4-5-20250929-v1:0`
+
+* `openai_ocr`, `openai`, and:
+
+  * `gpt-4o`
+  * `gpt-4o-mini`
+  * `gpt-5-mini`
+
+<Note>
+  The preceding list applies only to Unstructured **Let's Go** and **Pay-As-You-Go** accounts.
+
+  For Unstructured **Business** accounts, to get your current list of available `<subtype>` values, contact your
+  Unstructured account administrator or Unstructured sales representative, or email Unstructured Support at
+  [support@unstructured.io](mailto:support@unstructured.io).
+</Note>
 
 ### Chunker node
 
@@ -2098,7 +2367,15 @@ An **Embedder** node has a `type` of `embed`.
   </Accordion>
 </AccordionGroup>
 
-Allowed values for `subtype` and `model_name` include:
+Allowed values for `subtype` and `model_name` include the following:
+
+<Note>
+  The following list applies only to Unstructured **Let's Go** and **Pay-As-You-Go** accounts.
+
+  For Unstructured **Business** accounts, to get your current list of available models, contact your
+  Unstructured account administrator or Unstructured sales representative, or email Unstructured Support at
+  [support@unstructured.io](mailto:support@unstructured.io).
+</Note>
 
 * `"subtype": "azure_openai"`
 
@@ -2114,6 +2391,14 @@ Allowed values for `subtype` and `model_name` include:
   * `"model_name": "cohere.embed-english-v3"`
   * `"model_name": "cohere.embed-multilingual-v3"`
 
+* `"subtype": "ibm"`
+
+  * `"model_name": "sentence-transformers/all-minilm-l6-v2"`
+  * `"model_name": "ibm/granite-embedding-278m-multilingual"`
+  * `"model_name": "intfloat/multilingual-e5-large"`
+  * `"model_name": "ibm/slate-125m-english-rtrvr-v2"`
+  * `"model_name": "ibm/slate-125m-multilingual-rtrvr-v2"`
+
 * `"subtype": "togetherai"`
 
   * `"model_name": "togethercomputer/m2-bert-80M-32k-retrieval"`
@@ -2128,3 +2413,161 @@ Allowed values for `subtype` and `model_name` include:
   * `"model_name": "voyage-law-2"`
   * `"model_name": "voyage-code-2"`
   * `"model_name": "voyage-multimodal-3"`
+
+## List templates
+
+To list templates, use the `UnstructuredClient` object's `templates.list_templates` function (for the Python SDK) or the `GET` method to call the `/templates` endpoint (for `curl` or Postman).
+
+<AccordionGroup>
+  <Accordion title="Python SDK">
+    ```python  theme={null}
+    import os
+    import json
+
+    from unstructured_client import UnstructuredClient
+    from unstructured_client.models.operations import ListTemplatesRequest
+
+    client = UnstructuredClient(
+        api_key_auth=os.getenv("UNSTRUCTURED_API_KEY")
+    )
+
+    response = client.templates.list_templates(
+        request=ListTemplatesRequest()
+    )
+
+    print(json.dumps(response.response_list_templates, indent=4))
+    ```
+  </Accordion>
+
+  <Accordion title="Python SDK (async)">
+    ```python  theme={null}
+    import os
+    import json
+    import asyncio
+
+    from unstructured_client import UnstructuredClient
+    from unstructured_client.models.operations import ListTemplatesRequest
+
+    async def list_templates():
+        client = UnstructuredClient(
+            api_key_auth=os.getenv("UNSTRUCTURED_API_KEY")
+        )
+
+        response = client.templates.list_templates(
+            request=ListTemplatesRequest()
+        )
+
+        print(json.dumps(response.response_list_templates, indent=4))
+
+    asyncio.run(list_templates())
+    ```
+  </Accordion>
+
+  <Accordion title="curl">
+    ```bash  theme={null}
+    curl --request 'GET' --location \
+    "$UNSTRUCTURED_API_URL/templates" \
+    --header "unstructured-api-key: $UNSTRUCTURED_API_KEY" \
+    --header 'accept: application/json'
+    ```
+  </Accordion>
+
+  <Accordion title="Postman">
+    1. In the method drop-down list, select **GET**.
+
+    2. In the address box, enter the following URL:
+
+       ```text  theme={null}
+       {{UNSTRUCTURED_API_URL}}/templates
+       ```
+
+    3. On the **Headers** tab, enter the following headers:
+
+       * **Key**: `unstructured-api-key`, **Value**: `{{UNSTRUCTURED_API_KEY}}`
+       * **Key**: `accept`, **Value**: `application/json`
+
+    4. Click **Send**.
+  </Accordion>
+</AccordionGroup>
+
+## Get a template
+
+To get information about a template, use the `UnstructuredClient` object's `templates.get_template` function (for the Python SDK) or the `GET` method to call the
+`/templates/<template-id>` endpoint (for `curl` or Postman), replacing `<template-id>` with the
+template's unique ID. To get this ID, see [List templates](#list-templates).
+
+<AccordionGroup>
+  <Accordion title="Python SDK">
+    ```python  theme={null}
+    import os
+    import json
+
+    from unstructured_client import UnstructuredClient
+    from unstructured_client.models.operations import GetTemplateRequest
+
+    client = UnstructuredClient(
+        api_key_auth=os.getenv("UNSTRUCTURED_API_KEY")
+    )
+
+    response = client.templates.get_template(
+        request=GetTemplateRequest(
+            template_id="<template-id>"
+        )
+    )
+
+    print(json.dumps(response.response_get_template, indent=4))
+    ```
+  </Accordion>
+
+  <Accordion title="Python SDK (async)">
+    ```python  theme={null}
+    import os
+    import json
+    import asyncio
+
+    from unstructured_client import UnstructuredClient
+    from unstructured_client.models.operations import GetTemplateRequest
+
+    async def get_template():
+        client = UnstructuredClient(
+            api_key_auth=os.getenv("UNSTRUCTURED_API_KEY")
+        )
+
+        response = client.templates.get_template(
+            request=GetTemplateRequest(
+                template_id="<template-id>"
+            )
+        )
+
+        print(json.dumps(response.response_get_template, indent=4))
+
+    asyncio.run(get_template())
+    ```
+  </Accordion>
+
+  <Accordion title="curl">
+    ```bash  theme={null}
+    curl --request 'GET' --location \
+    "$UNSTRUCTURED_API_URL/templates/<template-id>" \
+    --header "unstructured-api-key: $UNSTRUCTURED_API_KEY" \
+    --header 'accept: application/json'
+    ```
+  </Accordion>
+
+  <Accordion title="Postman">
+    1. In the method drop-down list, select **GET**.
+
+    2. In the address box, enter the following URL:
+
+       ```text  theme={null}
+       {{UNSTRUCTURED_API_URL}}/templates/<template-id>
+       ```
+
+    3. On the **Headers** tab, enter the following headers:
+
+       * **Key**: `unstructured-api-key`, **Value**: `{{UNSTRUCTURED_API_KEY}}`
+       * **Key**: `accept`, **Value**: `application/json`
+
+    4. Click **Send**.
+  </Accordion>
+</AccordionGroup>

@@ -2,18 +2,6 @@
 
 # Source: https://docs.apify.com/sdk/js/reference/class/ChargingManager.md
 
-# Source: https://docs.apify.com/sdk/python/reference/class/ChargingManager.md
-
-# Source: https://docs.apify.com/sdk/js/reference/class/ChargingManager.md
-
-# Source: https://docs.apify.com/sdk/python/reference/class/ChargingManager.md
-
-# Source: https://docs.apify.com/sdk/js/reference/class/ChargingManager.md
-
-# Source: https://docs.apify.com/sdk/python/reference/class/ChargingManager.md
-
-# Source: https://docs.apify.com/sdk/js/reference/class/ChargingManager.md
-
 # ChargingManager<!-- -->
 
 Handles pay-per-event charging.

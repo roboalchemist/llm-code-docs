@@ -6,7 +6,7 @@
 
 ***
 
-https://www.pinecone.io is a managed vector database that allows users to store and query dense vectors for AI applications such as recommendation systems, semantic search, and retrieval augmented generation (RAG).
+[Pinecone](https://www.pinecone.io) is a managed vector database that allows users to store and query dense vectors for AI applications such as recommendation systems, semantic search, and retrieval augmented generation (RAG).
 
 The Apify integration for Pinecone enables you to export results from Apify Actors and Dataset items into a specific Pinecone vector index.
 
@@ -14,10 +14,10 @@ The Apify integration for Pinecone enables you to export results from Apify Acto
 
 Before you begin, ensure that you have the following:
 
-* A https://www.pinecone.io/ and index set up.
+* A [Pinecone database](https://www.pinecone.io/) and index set up.
 * A Pinecone index created & Pinecone API token obtained.
-* An https://openai.com/index/openai-api/ to compute text embeddings.
-* An https://docs.apify.com/platform/integrations/api#api-token to access https://apify.com/store.
+* An [OpenAI API key](https://openai.com/index/openai-api/) to compute text embeddings.
+* An [Apify API token](https://docs.apify.com/platform/integrations/api#api-token) to access [Apify Actors](https://apify.com/store).
 
 ### How to setup Pinecone database and create an index
 
@@ -39,13 +39,13 @@ The examples utilize the Website Content Crawler Actor, which deeply crawls webs
 
 #### Apify Console
 
-1. Set up the https://apify.com/apify/website-content-crawler Actor in the https://console.apify.com. Refer to this guide on how to set up https://blog.apify.com/talk-to-your-website-with-large-language-models/.
+1. Set up the [Website Content Crawler](https://apify.com/apify/website-content-crawler) Actor in the [Apify Console](https://console.apify.com). Refer to this guide on how to set up [website content crawl for your project](https://blog.apify.com/talk-to-your-website-with-large-language-models/).
 
 2. Once you have the crawler ready, navigate to the integration section and add Apify’s Pinecone integration.
 
    ![Website Content Crawler with Pinecone integration](/assets/images/pinecone-wcc-integration-d5b8e8b5f86645e4a32ac9e1a3f3732e.png)
 
-3. Select when to trigger this integration (typically when a run succeeds) and fill in all the required fields for the Pinecone integration. You can learn more about the input parameters at the https://apify.com/apify/pinecone-integration/input-schema.
+3. Select when to trigger this integration (typically when a run succeeds) and fill in all the required fields for the Pinecone integration. You can learn more about the input parameters at the [Pinecone integration input schema](https://apify.com/apify/pinecone-integration/input-schema).
 
    ![Pinecone integration configuration](/assets/images/pinecone-integration-setup-f054e98ba2a9bf2f31afa32ee5151d51.png)
 
@@ -53,13 +53,13 @@ Pinecone index configuration
 
 You need to ensure that your embedding model in the Pinecone index configuration matches the Actor settings. For example, the `text-embedding-3-small` model from OpenAI generates vectors of size `1536`, so your Pinecone index should be configured for vectors of the same size.
 
-* For a detailed explanation of the input parameters, including dataset settings, incremental updates, and examples, see the https://apify.com/apify/pinecone-integration.
+* For a detailed explanation of the input parameters, including dataset settings, incremental updates, and examples, see the [Pinecone integration description](https://apify.com/apify/pinecone-integration).
 
-* For an explanation on how to combine Actors to accomplish more complex tasks, refer to the guide on https://blog.apify.com/connecting-scrapers-apify-integration/ integrations.
+* For an explanation on how to combine Actors to accomplish more complex tasks, refer to the guide on [Actor-to-Actor](https://blog.apify.com/connecting-scrapers-apify-integration/) integrations.
 
 #### Python
 
-Another way to interact with Pinecone is through the https://docs.apify.com/sdk/python/.
+Another way to interact with Pinecone is through the [Apify Python SDK](https://docs.apify.com/sdk/python/).
 
 1. Install the Apify Python SDK by running the following command:
 
@@ -80,7 +80,7 @@ Another way to interact with Pinecone is through the https://docs.apify.com/sdk/
    ```
 
 
-3. Call the https://apify.com/apify/website-content-crawler Actor to crawl the Pinecone documentation and extract text content from the web pages:
+3. Call the [Website Content Crawler](https://apify.com/apify/website-content-crawler) Actor to crawl the Pinecone documentation and extract text content from the web pages:
 
 
    ```
@@ -93,7 +93,7 @@ Another way to interact with Pinecone is through the https://docs.apify.com/sdk/
    ```
 
 
-4. Use Apify's https://apify.com/apify/pinecone-integration to store all the selected data from the dataset (provided by `datasetId` from the Actor call) into the Pinecone vector database.
+4. Use Apify's [Pinecone integration](https://apify.com/apify/pinecone-integration) to store all the selected data from the dataset (provided by `datasetId` from the Actor call) into the Pinecone vector database.
 
 
    ```
@@ -123,6 +123,6 @@ You have successfully integrated Apify with Pinecone and the data is now stored 
 
 ## Additional Resources
 
-* https://apify.com/apify/pinecone-integration
-* https://blog.apify.com/what-is-pinecone-why-use-it-with-llms/
-* https://docs.pinecone.io/
+* [Apify Pinecone integration](https://apify.com/apify/pinecone-integration)
+* [What is Pinecone and why use it with your LLMs?](https://blog.apify.com/what-is-pinecone-why-use-it-with-llms/)
+* [Pinecone documentation](https://docs.pinecone.io/)

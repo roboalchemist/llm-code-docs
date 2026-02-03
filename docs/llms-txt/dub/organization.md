@@ -1,5 +1,9 @@
 # Source: https://dub.co/docs/concepts/links/organization.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dub.co/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Organizing links
 
 > Learn how to associate links with users, campaigns, teams, and other entities within your system.

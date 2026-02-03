@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/codereview/enterprise-features.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Code Review Enterprise Features
 
 > Advanced features and capabilities available to Enterprise plan customers for Augment Code Review.
@@ -87,8 +91,3 @@ Enterprise customers can enable Code Review on an unlimited number of repositori
 To upgrade to Enterprise or learn more about Enterprise features, visit [augmentcode.com/pricing](https://augmentcode.com/pricing) or contact our sales team.
 
 If you're already an Enterprise customer, visit your [Code Review Settings](https://app.augmentcode.com/settings/code-review) to configure these features.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.augmentcode.com/llms.txt

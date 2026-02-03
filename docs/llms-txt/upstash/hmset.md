@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hmset.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # HMSET
 
 > Write multiple fields to a hash.

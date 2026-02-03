@@ -2,13 +2,13 @@
 
 # Add prompt
 
-The `Prompt Input` field allows you to configure the agent’s behavior by defining custom instructions or responses. This section is used to specify how the agent should handle interactions, including responses to user queries, system messages, or specific actions. You can enter a structured prompt incorporating variables to dynamically personalize the agent's responses.
+The `Prompt Input` field allows you to configure the agent’s behavior by defining custom instructions or responses. This section specifies how the agent should handle interactions, including responses to user queries, system messages, and specific actions. You can enter a structured prompt incorporating variables to dynamically personalize the agent's responses.
 
 Additionally, `built-in prompts` can be utilized for common scenarios, ensuring consistency and ease of setup.&#x20;
 
 You can also use the [Functions](https://docs.avaamo.com/user-guide/skills/prompt-skill/functions) in the prompt that enable the agent to interact with external systems, process data, or execute predefined tasks.
 
-<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FfkluNNT2CTuyC7llFyMq%2FScreenshot%202025-03-29%20at%204.05.02%E2%80%AFPM.png?alt=media&#x26;token=386f2f28-3424-41f4-b96d-5416b716deb6" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FmaiHAED3kou5w46DZ05d%2FScreenshot%202026-01-28%20at%2012.00.05%E2%80%AFPM.png?alt=media&#x26;token=5a2898d3-ad1e-4dc8-855b-c730526bd353" alt=""><figcaption></figcaption></figure>
 
 When designing a Prompt Skill for an AI agent, it is essential to structure the prompt thoughtfully to guide the Agent's behavior effectively. A well-structured prompt ensures that the Agent understands its role, communicates in the desired tone, handles user interactions appropriately, and respects all operational guardrails.
 

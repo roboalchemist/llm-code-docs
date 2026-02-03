@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/guides/mistral-vs-llama/
+
 # Mistral vs Llama: benchmark on your own data
 
 When Mistral was released, it was the "best 7B model to date" based on a [number of evals](https://mistral.ai/news/announcing-mistral-7b/). Mixtral, a mixture-of-experts model based on Mistral, was recently [announced](https://mistral.ai/news/mixtral-of-experts/) with even more impressive eval performance.

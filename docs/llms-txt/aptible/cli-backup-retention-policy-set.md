@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/reference/aptible-cli/cli-commands/cli-backup-retention-policy-set.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # aptible backup_retention_policy:set
 
 This command changes the

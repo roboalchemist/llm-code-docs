@@ -1,4 +1,8 @@
+# Source: https://docs.datadoghq.com/getting_started/synthetics.md
+
 # Source: https://docs.datadoghq.com/tracing/other_telemetry/synthetics.md
+
+# Source: https://docs.datadoghq.com/api/latest/synthetics.md
 
 # Source: https://docs.datadoghq.com/synthetics.md
 
@@ -8,7 +12,6 @@ description: >-
   Use automated testing to ensure the most critical parts of your systems and
   applications are up and running from various locations around the world.
 breadcrumbs: Docs > Synthetic Testing and Monitoring
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Synthetic Testing and Monitoring

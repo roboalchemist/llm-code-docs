@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/getting-started/ondemand-quickstart.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deployments Quickstart
 
 > Deploy models on dedicated GPUs in minutes
@@ -75,7 +79,7 @@ firectl signin
 This command will create a deployment of GPT OSS 120B optimized for speed. It will take a few minutes to complete. The resulting deployment will scale up to 1 replica.
 
 ```bash  theme={null}
-firectl create deployment accounts/fireworks/models/gpt-oss-120b \
+firectl deployment create accounts/fireworks/models/gpt-oss-120b \
         --deployment-shape fast \
         --scale-down-window 5m \
         --scale-up-window 30s \
@@ -128,7 +132,47 @@ Take note of the `Name:` field in the response, as it will be used in the next s
 Now you can query your on-demand deployment using the same API as serverless models, but using your dedicated deployment. Replace `<DEPLOYMENT_NAME>` in the below snippets with the value from the `Name:` field in the previous step:
 
 <Tabs>
-  <Tab title="Python">
+  <Tab title="Python (Fireworks SDK)">
+    Install the [Fireworks Python SDK](/tools-sdks/python-sdk):
+
+    <Note>
+      The SDK is currently in alpha. Use the `--pre` flag when installing to get the latest version.
+    </Note>
+
+    <CodeGroup>
+      ```bash pip theme={null}
+      pip install --pre fireworks-ai
+      ```
+
+      ```bash poetry theme={null}
+      poetry add --pre fireworks-ai
+      ```
+
+      ```bash uv theme={null}
+      uv add --pre fireworks-ai
+      ```
+    </CodeGroup>
+
+    Then make your first on-demand API call:
+
+    ```python  theme={null}
+    from fireworks import Fireworks
+
+    client = Fireworks()
+
+    response = client.chat.completions.create(
+        model="accounts/fireworks/models/gpt-oss-120b#<DEPLOYMENT_NAME>",
+        messages=[{
+            "role": "user",
+            "content": "Explain quantum computing in simple terms",
+        }],
+    )
+
+    print(response.choices[0].message.content)
+    ```
+  </Tab>
+
+  <Tab title="Python (OpenAI SDK)">
     ```python  theme={null}
     import os
     from openai import OpenAI
@@ -139,7 +183,7 @@ Now you can query your on-demand deployment using the same API as serverless mod
     )
 
     response = client.chat.completions.create(
-        model="accounts/fireworks/models/gpt-oss-120b#<DEPLOYMENT_NAME>",
+        model="<DEPLOYMENT_NAME>",
         messages=[{
             "role": "user",
             "content": "Explain quantum computing in simple terms",
@@ -160,7 +204,7 @@ Now you can query your on-demand deployment using the same API as serverless mod
     });
 
     const response = await client.chat.completions.create({
-      model: "accounts/fireworks/models/gpt-oss-120b#<DEPLOYMENT_NAME>",
+      model: "<DEPLOYMENT_NAME>",
       messages: [
         {
           role: "user",
@@ -179,7 +223,7 @@ Now you can query your on-demand deployment using the same API as serverless mod
       -H "Content-Type: application/json" \
       -H "Authorization: Bearer $FIREWORKS_API_KEY" \
       -d '{
-        "model": "accounts/fireworks/models/gpt-oss-120b#<DEPLOYMENT_NAME>",
+        "model": "<DEPLOYMENT_NAME>",
         "messages": [
           {
             "role": "user",
@@ -200,7 +244,7 @@ The examples from the Serverless quickstart will work with this deployment as we
 ### Autoscale based on requests per second
 
 ```bash  theme={null}
-firectl create deployment accounts/fireworks/models/gpt-oss-120b \
+firectl deployment create accounts/fireworks/models/gpt-oss-120b \
         --deployment-shape fast \
         --scale-down-window 5m \
         --scale-up-window 30s \
@@ -214,7 +258,7 @@ firectl create deployment accounts/fireworks/models/gpt-oss-120b \
 ### Autoscale based on concurrent requests
 
 ```bash  theme={null}
-firectl create deployment accounts/fireworks/models/gpt-oss-120b \
+firectl deployment create accounts/fireworks/models/gpt-oss-120b \
         --deployment-shape fast \
         --scale-down-window 5m \
         --scale-up-window 30s \

@@ -2,6 +2,8 @@
 
 # RequestQueueClientAddRequestResult<!-- -->
 
+Result of adding a request to the queue.
+
 ## Index[**](#Index)
 
 ### Properties
@@ -12,14 +14,14 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#requestId)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L677)requestId
+### [**](#requestId)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L969)requestId
 
 **requestId: string
 
-### [**](#wasAlreadyHandled)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L679)wasAlreadyHandled
+### [**](#wasAlreadyHandled)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L971)wasAlreadyHandled
 
 **wasAlreadyHandled: boolean
 
-### [**](#wasAlreadyPresent)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/request_queue.ts#L678)wasAlreadyPresent
+### [**](#wasAlreadyPresent)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/request_queue.ts#L970)wasAlreadyPresent
 
 **wasAlreadyPresent: boolean

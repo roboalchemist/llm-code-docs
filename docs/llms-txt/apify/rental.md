@@ -6,7 +6,7 @@
 
 ***
 
-With the rental model, you can specify a free trial period and a monthly rental price. After the trial, users with an https://apify.com/pricing can continue using your Actor by paying the monthly fee. You can receive 80% of the total rental fees collected each month.
+With the rental model, you can specify a free trial period and a monthly rental price. After the trial, users with an [Apify paid plan](https://apify.com/pricing) can continue using your Actor by paying the monthly fee. You can receive 80% of the total rental fees collected each month.
 
 ## How is profit computed
 
@@ -32,11 +32,11 @@ The rental model, while easy to set up, is less profitable because its pricing d
 
 ### AI compatibility limitations
 
-The growing limitation is AI compatibility. https://docs.apify.com/platform/integrations/mcp.md explicitly excludes rental Actors from search results, making them invisible to AI systems that dynamically select and execute tools. This significantly reduces your Actor's discoverability in AI workflows.
+The growing limitation is AI compatibility. [Apify's MCP server](https://docs.apify.com/platform/integrations/mcp.md) explicitly excludes rental Actors from search results, making them invisible to AI systems that dynamically select and execute tools. This significantly reduces your Actor's discoverability in AI workflows.
 
 ## Consider pay-per-result or pay-per-event pricing models
 
-We recommend using the https://docs.apify.com/platform/actors/publishing/monetize/pay-per-result.md or https://docs.apify.com/platform/actors/publishing/monetize/pay-per-event.md models instead.
+We recommend using the [pay-per-result](https://docs.apify.com/platform/actors/publishing/monetize/pay-per-result.md) or [pay-per-event](https://docs.apify.com/platform/actors/publishing/monetize/pay-per-event.md) models instead.
 
 ## Example of a rental pricing model
 

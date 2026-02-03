@@ -12,13 +12,11 @@ Alternatively, you can integrate Stripe Tax with [Payment Links](https://docs.st
 
 Stripe Tax APIs enable you to calculate tax in custom payment flows. After your customer completes their payment, record the transaction so it appears in Stripe Tax reporting. The examples in this guide use Stripe payments APIs, but you can use the Tax API with any payment processor, or multiple payment processors.
 
-If your custom payment flow uses the [Payment Intents API](https://docs.stripe.com/api/payment_intents.md), see [Calculate tax in your custom payment flows](https://docs.stripe.com/tax/payment-intent.md). This integration is in [public preview](https://docs.stripe.com/release-phases.md) and offers receipts and Dashboard support.
+If your custom payment flow uses the [Payment Intents API](https://docs.stripe.com/api/payment_intents.md), see [Calculate tax in your custom payment flows](https://docs.stripe.com/tax/payment-intent.md). This integration offers automatic liability tracking, receipts and Dashboard support. We also offer a public preview feature that lets you use the [Tax ID Element](https://docs.stripe.com/elements/tax-id-element.md) to collect tax IDs from customers. See [Collect customer tax IDs](https://docs.stripe.com/tax/custom.md#collect-customer-tax-ids) below for more information.
 
 Alternatively, you can integrate Stripe Tax with [Payment Links](https://docs.stripe.com/tax/payment-links.md), [Checkout](https://docs.stripe.com/tax/checkout.md), [Billing](https://docs.stripe.com/tax/subscriptions.md), and [Invoicing](https://docs.stripe.com/tax/invoicing.md) with no or low code setups.
 A diagram providing a high-level overview of the Tax API integration (See full diagram at https://docs.stripe.com/tax/custom)
-## Get started 
-
-This short video walks through a Stripe Tax API integration that uses the Payment Intents API and the Payment Element.
+This video walks through a Stripe Tax API integration that uses the Payment Intents API and the Payment Element.
 [Watch on YouTube](https://www.youtube.com/watch?v=OfHJiC9Iek0)
 ## Add registrations
 
@@ -1648,17 +1646,11 @@ var options = new Stripe.Tax.CalculationCreateOptions
         },
         AddressSource = "billing",
     },
-    ShipFromDetails = new Stripe.Tax.CalculationShipFromDetailsOptions
-    {
-        Address = new AddressOptions
-        {
-            City = "Naperville",
-            State = "IL",
-            PostalCode = "60540",
-            Country = "US",
-        },
-    },
 };
+options.AddExtraParam("ship_from_details[address][city]", "Naperville");
+options.AddExtraParam("ship_from_details[address][state]", "IL");
+options.AddExtraParam("ship_from_details[address][postal_code]", "60540");
+options.AddExtraParam("ship_from_details[address][country]", "US");
 var client = new StripeClient("<<YOUR_SECRET_KEY>>");
 var service = client.V1.Tax.Calculations;
 Stripe.Tax.Calculation calculation = service.Create(options);
@@ -1904,11 +1896,10 @@ const paymentIntent = await stripe.paymentIntents.update(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.PaymentIntentUpdateParams{
-  Intent: stripe.String("{{PAYMENTINTENT_ID}}"),
-}
+params := &stripe.PaymentIntentUpdateParams{}
 params.AddMetadata("tax_transaction", "{{TAX_TRANSACTION}}")
-result, err := sc.V1PaymentIntents.Update(context.TODO(), params)
+result, err := sc.V1PaymentIntents.Update(
+  context.TODO(), "{{PAYMENTINTENT_ID}}", params)
 ```
 
 ```dotnet
@@ -2417,7 +2408,7 @@ How `amount` and `amount_tax` are determined depends on your situation:
 
 #### Tax reports with partial refunds
 
-If you refund a tax amount such that the total tax is no longer proportional to the subtotal, your tax reporting can be unreliable. It won’t automatically adjust the taxable and nontaxable amounts, and won’t reflect the reason for the tax reversal (such as product exempt, customer exempt, or reverse charge). We recommend not refunding partial line item tax amounts. Instead, void the transaction and create a new one with appropriate inputs for an accurate tax calculation.
+If you refund a tax amount such that the total tax is no longer proportional to the subtotal, your tax reporting can be unreliable. It won’t automatically adjust the taxable and nontaxable amounts, and won’t reflect the reason for the tax reversal (such as product exempt, customer exempt, or reverse charge). We recommend not refunding partial line item tax amounts. Instead, fully reverse the transaction and create a new one with appropriate inputs for an accurate tax calculation.
 
 ### Partially refund a sale by a flat amount 
 
@@ -3308,7 +3299,7 @@ You can view all tax transactions for your account on the [Tax Transactions](htt
 
 ## Optional: Integration examples
 
-You can calculate tax for your customer before collecting payment method details and [creating a PaymentIntent](https://docs.stripe.com/payments/accept-a-payment.md?platform=web&ui=elements#web-create-intent). For example, you can display a shopping cart total when the customer provides their postal code.
+You can calculate tax for your customer before collecting payment method details and [creating a PaymentIntent](https://docs.stripe.com/payments/accept-a-payment.md?payment-ui=elements&api-integration=paymentintents#web-create-intent). For example, you can display a shopping cart total when the customer provides their postal code.
 
 In the example below, your server defines a `/preview-cart` endpoint, where the customer’s address is sent from your client-side form. The server combines the cart’s line items and the customer’s address to calculate tax.
 
@@ -3787,7 +3778,7 @@ namespace server.Controllers
 
 When you’re ready to take payment, create a PaymentIntent from the tax calculation result. Store the tax calculation ID in the PaymentIntent’s [metadata](https://docs.stripe.com/api/payment_intents/create.md#create_payment_intent-metadata) or in your own database, so you can create a tax transaction when your customer completes payment.
 
-The example below shows a server endpoint that calculates tax, creates (or updates) a PaymentIntent, and returns the result to the client. You can then display the tax to your customer. Use the `client_secret` to [take the payment](https://docs.stripe.com/payments/accept-a-payment.md?platform=web&ui=elements#web-collect-payment-details).
+The example below shows a server endpoint that calculates tax, creates (or updates) a PaymentIntent, and returns the result to the client. You can then display the tax to your customer. Use the `client_secret` to [take the payment](https://docs.stripe.com/payments/accept-a-payment.md?payment-ui=elements&api-integration=paymentintents#web-collect-payment-details).
 
 #### Node.js
 
@@ -4246,7 +4237,7 @@ namespace server.Controllers
 }
 ```
 
-If your integration uses the Payment Element, [fetch updates from the server](https://docs.stripe.com/payments/accept-a-payment.md?platform=web&ui=elements#fetch-updates) after updating the PaymentIntent.
+If your integration uses the Payment Element, [fetch updates from the server](https://docs.stripe.com/payments/accept-a-payment.md?payment-ui=elements&api-integration=paymentintents#fetch-updates) after updating the PaymentIntent.
 
 ## Optional: Calculate tax on shipping costs [Server-side]
 
@@ -6382,17 +6373,11 @@ var options = new Stripe.Tax.CalculationCreateOptions
         },
         AddressSource = "billing",
     },
-    ShipFromDetails = new Stripe.Tax.CalculationShipFromDetailsOptions
-    {
-        Address = new AddressOptions
-        {
-            City = "Naperville",
-            State = "IL",
-            PostalCode = "60540",
-            Country = "US",
-        },
-    },
 };
+options.AddExtraParam("ship_from_details[address][city]", "Naperville");
+options.AddExtraParam("ship_from_details[address][state]", "IL");
+options.AddExtraParam("ship_from_details[address][postal_code]", "60540");
+options.AddExtraParam("ship_from_details[address][country]", "US");
 var client = new StripeClient("<<YOUR_SECRET_KEY>>");
 var service = client.V1.Tax.Calculations;
 Stripe.Tax.Calculation calculation = service.Create(options);
@@ -7579,6 +7564,842 @@ If you receive an `Invalid tax code` error, refer to the [Product tax codes](htt
 For more accurate tax calculations, use the most specific tax code that applies to your product or service. If you’re unsure which tax code to use, consult the [tax codes documentation](https://docs.stripe.com/tax/tax-codes.md).
 
 If you continue to experience issues, review the [Tax Settings API documentation](https://docs.stripe.com/api/tax/settings.md).
+
+## Collect customer tax IDs
+
+Displaying a customer’s tax ID and legal business name on *invoices* (Invoices are statements of amounts owed by a customer. They track the status of payments from draft through paid or otherwise finalized. Subscriptions automatically generate invoices, or you can manually create a one-off invoice) is a common requirement. You can use the [Tax ID Element](https://docs.stripe.com/elements/tax-id-element.md) to collect this information. This feature is in [public preview](https://docs.stripe.com/release-phases.md).
+
+> #### Disclaimer
+> 
+> The Payment Intents API is designed to collect business tax IDs, which might have formats similar to personal tax IDs in certain jurisdictions. You must make sure that only business tax IDs, as designated for this field, are provided when using this feature.
+
+### Enable the beta
+
+The Tax ID Element with the Payment Intents API requires you to enable the `elements_tax_id_1` beta. Add the beta to your Stripe.js initialization:
+
+```javascript
+const stripe = Stripe('<<YOUR_PUBLISHABLE_KEY>>', {
+  betas: ['elements_tax_id_1'],
+});
+```
+
+### Create a CustomerSession (optional)
+
+If you want to save tax IDs to a *Customer* (Customer objects represent customers of your business. They let you reuse payment methods and give you the ability to track multiple payments) and redisplay them for returning customers, you need to create a [CustomerSession](https://docs.stripe.com/api/customer_sessions.md). The CustomerSession provides secure, temporary access to customer data without exposing your secret API key to the client.
+
+If you don’t use CustomerSession, the Tax ID Element still works but without save and redisplay functionality. You can use [getValue](https://docs.stripe.com/js/elements_object/get_value_tax_id_element) to read the tax ID values from the element and handle them manually.
+
+First, create or retrieve a Customer:
+
+```curl
+curl https://api.stripe.com/v1/customers \
+  -u "<<YOUR_SECRET_KEY>>:" \
+  --data-urlencode email="customer@example.com" \
+  -d name="Jenny Rosen"
+```
+
+```cli
+stripe customers create  \
+  --email="customer@example.com" \
+  --name="Jenny Rosen"
+```
+
+```ruby
+# Set your secret key. Remember to switch to your live secret key in production.
+# See your keys here: https://dashboard.stripe.com/apikeys
+client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
+
+customer = client.v1.customers.create({
+  email: 'customer@example.com',
+  name: 'Jenny Rosen',
+})
+```
+
+```python
+# Set your secret key. Remember to switch to your live secret key in production.
+# See your keys here: https://dashboard.stripe.com/apikeys
+client = StripeClient("<<YOUR_SECRET_KEY>>")
+
+# For SDK versions 12.4.0 or lower, remove '.v1' from the following line.
+customer = client.v1.customers.create({
+  "email": "customer@example.com",
+  "name": "Jenny Rosen",
+})
+```
+
+```php
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+$stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
+
+$customer = $stripe->customers->create([
+  'email' => 'customer@example.com',
+  'name' => 'Jenny Rosen',
+]);
+```
+
+```java
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
+
+CustomerCreateParams params =
+  CustomerCreateParams.builder()
+    .setEmail("customer@example.com")
+    .setName("Jenny Rosen")
+    .build();
+
+// For SDK versions 29.4.0 or lower, remove '.v1()' from the following line.
+Customer customer = client.v1().customers().create(params);
+```
+
+```node
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
+
+const customer = await stripe.customers.create({
+  email: 'customer@example.com',
+  name: 'Jenny Rosen',
+});
+```
+
+```go
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
+params := &stripe.CustomerCreateParams{
+  Email: stripe.String("customer@example.com"),
+  Name: stripe.String("Jenny Rosen"),
+}
+result, err := sc.V1Customers.Create(context.TODO(), params)
+```
+
+```dotnet
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+var options = new CustomerCreateOptions
+{
+    Email = "customer@example.com",
+    Name = "Jenny Rosen",
+};
+var client = new StripeClient("<<YOUR_SECRET_KEY>>");
+var service = client.V1.Customers;
+Customer customer = service.Create(options);
+```
+
+Create a CustomerSession with the Tax ID Element component enabled:
+
+```curl
+curl https://api.stripe.com/v1/customer_sessions \
+  -u "<<YOUR_SECRET_KEY>>:" \
+  -d customer="{{CUSTOMER_ID}}" \
+  -d "components[tax_id_element][enabled]"=true \
+  -d "components[tax_id_element][features][tax_id_redisplay]"=enabled \
+  -d "components[tax_id_element][features][tax_id_save]"=enabled
+```
+
+```cli
+stripe customer_sessions create  \
+  --customer="{{CUSTOMER_ID}}" \
+  -d "components[tax_id_element][enabled]"=true \
+  -d "components[tax_id_element][features][tax_id_redisplay]"=enabled \
+  -d "components[tax_id_element][features][tax_id_save]"=enabled
+```
+
+```ruby
+# Set your secret key. Remember to switch to your live secret key in production.
+# See your keys here: https://dashboard.stripe.com/apikeys
+client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
+
+customer_session = client.v1.customer_sessions.create({
+  customer: '{{CUSTOMER_ID}}',
+  components: {
+    tax_id_element: {
+      enabled: true,
+      features: {
+        tax_id_redisplay: 'enabled',
+        tax_id_save: 'enabled',
+      },
+    },
+  },
+})
+```
+
+```python
+# Set your secret key. Remember to switch to your live secret key in production.
+# See your keys here: https://dashboard.stripe.com/apikeys
+# This example uses the beta SDK. See https://github.com/stripe/stripe-python#public-preview-sdks
+client = StripeClient("<<YOUR_SECRET_KEY>>")
+
+# For SDK versions 12.4.0 or lower, remove '.v1' from the following line.
+customer_session = client.v1.customer_sessions.create({
+  "customer": "{{CUSTOMER_ID}}",
+  "components": {
+    "tax_id_element": {
+      "enabled": True,
+      "features": {"tax_id_redisplay": "enabled", "tax_id_save": "enabled"},
+    },
+  },
+})
+```
+
+```php
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+// This example uses the beta SDK. See https://github.com/stripe/stripe-php#public-preview-sdks
+$stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
+
+$customerSession = $stripe->customerSessions->create([
+  'customer' => '{{CUSTOMER_ID}}',
+  'components' => [
+    'tax_id_element' => [
+      'enabled' => true,
+      'features' => [
+        'tax_id_redisplay' => 'enabled',
+        'tax_id_save' => 'enabled',
+      ],
+    ],
+  ],
+]);
+```
+
+```java
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+// This example uses the beta SDK. See https://github.com/stripe/stripe-java#public-preview-sdks
+StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
+
+CustomerSessionCreateParams params =
+  CustomerSessionCreateParams.builder()
+    .setCustomer("{{CUSTOMER_ID}}")
+    .setComponents(
+      CustomerSessionCreateParams.Components.builder()
+        .setTaxIdElement(
+          CustomerSessionCreateParams.Components.TaxIdElement.builder()
+            .setEnabled(true)
+            .setFeatures(
+              CustomerSessionCreateParams.Components.TaxIdElement.Features.builder()
+                .setTaxIdRedisplay(
+                  CustomerSessionCreateParams.Components.TaxIdElement.Features.TaxIdRedisplay.ENABLED
+                )
+                .setTaxIdSave(
+                  CustomerSessionCreateParams.Components.TaxIdElement.Features.TaxIdSave.ENABLED
+                )
+                .build()
+            )
+            .build()
+        )
+        .build()
+    )
+    .build();
+
+// For SDK versions 29.4.0 or lower, remove '.v1()' from the following line.
+CustomerSession customerSession = client.v1().customerSessions().create(params);
+```
+
+```node
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+// This example uses the beta SDK. See https://github.com/stripe/stripe-node#public-preview-sdks
+const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
+
+const customerSession = await stripe.customerSessions.create({
+  customer: '{{CUSTOMER_ID}}',
+  components: {
+    tax_id_element: {
+      enabled: true,
+      features: {
+        tax_id_redisplay: 'enabled',
+        tax_id_save: 'enabled',
+      },
+    },
+  },
+});
+```
+
+```go
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+// This example uses the beta SDK. See https://github.com/stripe/stripe-go#public-preview-sdks
+sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
+params := &stripe.CustomerSessionCreateParams{
+  Customer: stripe.String("{{CUSTOMER_ID}}"),
+  Components: &stripe.CustomerSessionCreateComponentsParams{
+    TaxIDElement: &stripe.CustomerSessionCreateComponentsTaxIDElementParams{
+      Enabled: stripe.Bool(true),
+      Features: &stripe.CustomerSessionCreateComponentsTaxIDElementFeaturesParams{
+        TaxIDRedisplay: stripe.String("enabled"),
+        TaxIDSave: stripe.String("enabled"),
+      },
+    },
+  },
+}
+result, err := sc.V1CustomerSessions.Create(context.TODO(), params)
+```
+
+```dotnet
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+// This example uses the beta SDK. See https://github.com/stripe/stripe-dotnet#public-preview-sdks
+var options = new CustomerSessionCreateOptions
+{
+    Customer = "{{CUSTOMER_ID}}",
+    Components = new CustomerSessionComponentsOptions
+    {
+        TaxIdElement = new CustomerSessionComponentsTaxIdElementOptions
+        {
+            Enabled = true,
+            Features = new CustomerSessionComponentsTaxIdElementFeaturesOptions
+            {
+                TaxIdRedisplay = "enabled",
+                TaxIdSave = "enabled",
+            },
+        },
+    },
+};
+var client = new StripeClient("<<YOUR_SECRET_KEY>>");
+var service = client.V1.CustomerSessions;
+CustomerSession customerSession = service.Create(options);
+```
+
+The CustomerSession returns a `client_secret` that you’ll pass to the client side.
+
+### Create a PaymentIntent or SetupIntent
+
+Create a [PaymentIntent](https://docs.stripe.com/api/payment_intents.md) or [SetupIntent](https://docs.stripe.com/api/setup_intents.md) on your server. When using CustomerSession, include the `customer` parameter to enable tax ID save and redisplay functionality:
+
+```curl
+curl https://api.stripe.com/v1/payment_intents \
+  -u "<<YOUR_SECRET_KEY>>:" \
+  -d amount=1099 \
+  -d currency=usd \
+  -d customer="{{CUSTOMER_ID}}"
+```
+
+```cli
+stripe payment_intents create  \
+  --amount=1099 \
+  --currency=usd \
+  --customer="{{CUSTOMER_ID}}"
+```
+
+```ruby
+# Set your secret key. Remember to switch to your live secret key in production.
+# See your keys here: https://dashboard.stripe.com/apikeys
+client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
+
+payment_intent = client.v1.payment_intents.create({
+  amount: 1099,
+  currency: 'usd',
+  customer: '{{CUSTOMER_ID}}',
+})
+```
+
+```python
+# Set your secret key. Remember to switch to your live secret key in production.
+# See your keys here: https://dashboard.stripe.com/apikeys
+client = StripeClient("<<YOUR_SECRET_KEY>>")
+
+# For SDK versions 12.4.0 or lower, remove '.v1' from the following line.
+payment_intent = client.v1.payment_intents.create({
+  "amount": 1099,
+  "currency": "usd",
+  "customer": "{{CUSTOMER_ID}}",
+})
+```
+
+```php
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+$stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
+
+$paymentIntent = $stripe->paymentIntents->create([
+  'amount' => 1099,
+  'currency' => 'usd',
+  'customer' => '{{CUSTOMER_ID}}',
+]);
+```
+
+```java
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
+
+PaymentIntentCreateParams params =
+  PaymentIntentCreateParams.builder()
+    .setAmount(1099L)
+    .setCurrency("usd")
+    .setCustomer("{{CUSTOMER_ID}}")
+    .build();
+
+// For SDK versions 29.4.0 or lower, remove '.v1()' from the following line.
+PaymentIntent paymentIntent = client.v1().paymentIntents().create(params);
+```
+
+```node
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
+
+const paymentIntent = await stripe.paymentIntents.create({
+  amount: 1099,
+  currency: 'usd',
+  customer: '{{CUSTOMER_ID}}',
+});
+```
+
+```go
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
+params := &stripe.PaymentIntentCreateParams{
+  Amount: stripe.Int64(1099),
+  Currency: stripe.String(stripe.CurrencyUSD),
+  Customer: stripe.String("{{CUSTOMER_ID}}"),
+}
+result, err := sc.V1PaymentIntents.Create(context.TODO(), params)
+```
+
+```dotnet
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+var options = new PaymentIntentCreateOptions
+{
+    Amount = 1099,
+    Currency = "usd",
+    Customer = "{{CUSTOMER_ID}}",
+};
+var client = new StripeClient("<<YOUR_SECRET_KEY>>");
+var service = client.V1.PaymentIntents;
+PaymentIntent paymentIntent = service.Create(options);
+```
+
+> You don’t need to include any tax-ID-specific parameters when creating the PaymentIntent or SetupIntent. The Tax ID Element automatically handles tax ID collection and saves it to the Customer when a CustomerSession with the appropriate permissions is present.
+
+### Initialize Elements
+
+Create an Elements instance using the `clientSecret` from your PaymentIntent or SetupIntent.
+
+To enable saving tax IDs to a Customer and redisplaying them for returning customers, include the `customerSessionClientSecret`:
+
+```javascript
+const stripe = Stripe('<<YOUR_PUBLISHABLE_KEY>>', {
+  betas: ['elements_tax_id_1'],
+});
+
+// Fetch the clientSecret from your server
+const {clientSecret} = await fetch('/create-payment-intent', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+}).then((res) => res.json());
+
+// Fetch the customerSessionClientSecret from your server
+const {customerSessionClientSecret} = await fetch('/create-customer-session', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+}).then((res) => res.json());
+
+const elements = stripe.elements({
+  clientSecret,customerSessionClientSecret,
+  appearance: { /* ... */ }
+});
+```
+
+### Create and mount the Tax ID Element
+
+Create an instance of the Tax ID Element and mount it to your page:
+
+```html
+<form id="payment-form">
+  <div id="tax-id-element">
+    <!--Stripe.js injects the Tax ID Element-->
+  </div>
+  <button type="submit">Pay</button>
+</form>
+```
+
+```javascript
+const taxIdElement = elements.create('taxId', {
+  visibility: 'auto', // 'auto' | 'always' | 'never'
+});
+taxIdElement.mount('#tax-id-element');
+```
+
+You can customize the Tax ID Element with options such as `visibility`, `fields`, and `validation`. See [Create a Tax ID Element](https://docs.stripe.com/js/elements_object/create_tax_id_element) for more details.
+
+### Use with Address Element (optional)
+
+When you use the Tax ID Element with the [Address Element](https://docs.stripe.com/elements/address-element.md), Stripe automatically determines the tax ID type and element visibility based on the customer’s address.
+
+### Complete the payment
+
+When the customer submits the payment form, call [confirmPayment](https://docs.stripe.com/js/payment_intents/confirm_payment) or [confirmSetup](https://docs.stripe.com/js/setup_intents/confirm_setup). Stripe automatically includes the tax ID information and saves it to the Customer if the payment succeeds:
+
+```javascript
+const form = document.getElementById('payment-form');
+
+form.addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  const {error} = await stripe.confirmPayment({
+    elements,
+    confirmParams: {
+      return_url: 'https://example.com/order/complete',
+    },
+  });
+
+  if (error) {
+    // Handle error
+    console.error(error.message);
+  }
+  // Customer gets redirected to return_url if successful
+});
+```
+
+You can also use [getValue](https://docs.stripe.com/js/elements_object/get_value_tax_id_element) on the client side to read the tax ID values before submitting the payment.
+
+### Test your integration
+
+In testing environments, you can enter any alphanumeric string that is in the correct format of a supported tax ID type (for example, `DE123456789` for `eu_vat`). For a full list of example tax IDs you can reference our [Customer Tax ID guide](https://docs.stripe.com/billing/customer/tax-ids.md#supported-tax-id). You can also use our [test tax IDs](https://docs.stripe.com/connect/testing.md#test-business-tax-ids) to test various verification state flows.
+
+### Tax ID validation
+
+During payment or setup confirmation, Stripe verifies that the provided tax IDs are formatted correctly, but not that they’re valid. You’re responsible for ensuring the validity of customer information. To help, Stripe automatically performs asynchronous validation against government databases for [European Value Added Tax](https://docs.stripe.com/billing/customer/tax-ids.md#eu-vat) (EU VAT) and [United Kingdom Value Added Tax](https://docs.stripe.com/billing/customer/tax-ids.md#gb-vat) (GB VAT) numbers. Learn more about the [validation we perform](https://docs.stripe.com/tax/invoicing/tax-ids.md#validation), and how to consume the status of those checks.
+
+### Supported Tax ID types
+
+The Tax ID Element supports tax ID collection in the following countries and regions:
+
+| Country | Enum       | Description                                                                 | Example              | Impact in Tax Calculation* |
+| ------- | ---------- | --------------------------------------------------------------------------- | -------------------- | -------------------------- |
+| AE      | ae_trn     | United Arab Emirates TRN                                                    | 123456789012345      | Yes                        |
+| AL      | al_tin     | Albania Tax Identification Number                                           | J12345678N           | Yes                        |
+| AM      | am_tin     | Armenia Tax Identification Number                                           | 02538904             | Yes                        |
+| AO      | ao_tin     | Angola Tax Identification Number                                            | 5123456789           | No                         |
+| AT      | eu_vat     | European VAT number                                                         | ATU12345678          | Yes                        |
+| AU      | au_abn     | Australian Business Number (AU ABN)                                         | 12345678912          | Yes                        |
+| AW      | aw_tin     | Aruba Tax Identification Number                                             | 12345678             | Yes                        |
+| AZ      | az_tin     | Azerbaijan Tax Identification Number                                        | 0123456789           | Yes                        |
+| BA      | ba_tin     | Bosnia and Herzegovina Tax Identification Number                            | 123456789012         | Yes                        |
+| BB      | bb_tin     | Barbados Tax Identification Number                                          | 1123456789012        | No                         |
+| BD      | bd_bin     | Bangladesh Business Identification Number                                   | 123456789-0123       | Yes                        |
+| BE      | eu_vat     | European VAT number                                                         | BE0123456789         | Yes                        |
+| BF      | bf_ifu     | Burkina Faso Tax Identification Number (Numéro d'Identifiant Fiscal Unique) | 12345678A            | Yes                        |
+| BG      | eu_vat     | European VAT number                                                         | BG0123456789         | Yes                        |
+| BH      | bh_vat     | Bahraini VAT Number                                                         | 123456789012345      | Yes                        |
+| BJ      | bj_ifu     | Benin Tax Identification Number (Identifiant Fiscal Unique)                 | 1234567890123        | Yes                        |
+| BS      | bs_tin     | Bahamas Tax Identification Number                                           | 123.456.789          | No                         |
+| BY      | by_tin     | Belarus TIN Number                                                          | 123456789            | Yes                        |
+| CA      | ca_bn      | Canadian BN                                                                 | 123456789            | No                         |
+| CA      | ca_gst_hst | Canadian GST/HST number                                                     | 123456789RT0002      | Yes                        |
+| CA      | ca_pst_bc  | Canadian PST number (British Columbia)                                      | PST-1234-5678        | No                         |
+| CA      | ca_pst_mb  | Canadian PST number (Manitoba)                                              | 123456-7             | No                         |
+| CA      | ca_pst_sk  | Canadian PST number (Saskatchewan)                                          | 1234567              | No                         |
+| CA      | ca_qst     | Canadian QST number (Québec)                                                | 1234567890TQ1234     | Yes                        |
+| CD      | cd_nif     | Congo (DR) Tax Identification Number (Número de Identificação Fiscal)       | A0123456M            | No                         |
+| CH      | ch_vat     | Switzerland VAT number                                                      | CHE-123.456.789 MWST | Yes                        |
+| CL      | cl_tin     | Chilean TIN                                                                 | 12.345.678-K         | Yes                        |
+| CM      | cm_niu     | Cameroon Tax Identification Number (Numéro d'Identifiant fiscal Unique)     | M123456789000L       | No                         |
+| CR      | cr_tin     | Costa Rican tax ID                                                          | 1-234-567890         | No                         |
+| CV      | cv_nif     | Cape Verde Tax Identification Number (Número de Identificação Fiscal)       | 213456789            | No                         |
+| CY      | eu_vat     | European VAT number                                                         | CY12345678Z          | Yes                        |
+| CZ      | eu_vat     | European VAT number                                                         | CZ1234567890         | Yes                        |
+| DE      | eu_vat     | European VAT number                                                         | DE123456789          | Yes                        |
+| DK      | eu_vat     | European VAT number                                                         | DK12345678           | Yes                        |
+| EC      | ec_ruc     | Ecuadorian RUC number                                                       | 1234567890001        | No                         |
+| EE      | eu_vat     | European VAT number                                                         | EE123456789          | Yes                        |
+| EG      | eg_tin     | Egyptian Tax Identification Number                                          | 123456789            | Yes                        |
+| ES      | es_cif     | Spanish NIF number (previously Spanish CIF number)                          | A12345678            | No                         |
+| ES      | eu_vat     | European VAT number                                                         | ESA1234567Z          | Yes                        |
+| ET      | et_tin     | Ethiopia Tax Identification Number                                          | 1234567890           | Yes                        |
+| FI      | eu_vat     | European VAT number                                                         | FI12345678           | Yes                        |
+| FR      | eu_vat     | European VAT number                                                         | FRAB123456789        | Yes                        |
+| GB      | eu_vat     | Northern Ireland VAT number                                                 | XI123456789          | Yes                        |
+| GB      | gb_vat     | United Kingdom VAT number                                                   | GB123456789          | Yes                        |
+| GE      | ge_vat     | Georgian VAT                                                                | 123456789            | Yes                        |
+| GN      | gn_nif     | Guinea Tax Identification Number (Número de Identificação Fiscal)           | 123456789            | Yes                        |
+| GR      | eu_vat     | European VAT number                                                         | EL123456789          | Yes                        |
+| HR      | eu_vat     | European VAT number                                                         | HR12345678912        | Yes                        |
+| HU      | eu_vat     | European VAT number                                                         | HU12345678           | Yes                        |
+| HU      | hu_tin     | Hungary tax number (adószám)                                                | 12345678-1-23        | No                         |
+| IE      | eu_vat     | European VAT number                                                         | IE1234567AB          | Yes                        |
+| IN      | in_gst     | Indian GST number                                                           | 12ABCDE3456FGZH      | Yes                        |
+| IS      | is_vat     | Icelandic VAT                                                               | 123456               | Yes                        |
+| IT      | eu_vat     | European VAT number                                                         | IT12345678912        | Yes                        |
+| KE      | ke_pin     | Kenya Revenue Authority Personal Identification Number                      | P000111111A          | No                         |
+| KG      | kg_tin     | Kyrgyzstan Tax Identification Number                                        | 12345678901234       | No                         |
+| KH      | kh_tin     | Cambodia Tax Identification Number                                          | 1001-123456789       | Yes                        |
+| KR      | kr_brn     | Korean BRN                                                                  | 123-45-67890         | Yes                        |
+| KZ      | kz_bin     | Kazakhstani Business Identification Number                                  | 123456789012         | Yes                        |
+| LA      | la_tin     | Laos Tax Identification Number                                              | 123456789-000        | No                         |
+| LI      | li_vat     | Liechtensteinian VAT number                                                 | 12345                | Yes                        |
+| LT      | eu_vat     | European VAT number                                                         | LT123456789123       | Yes                        |
+| LU      | eu_vat     | European VAT number                                                         | LU12345678           | Yes                        |
+| LV      | eu_vat     | European VAT number                                                         | LV12345678912        | Yes                        |
+| MA      | ma_vat     | Morocco VAT Number                                                          | 12345678             | Yes                        |
+| MD      | md_vat     | Moldova VAT Number                                                          | 1234567              | Yes                        |
+| ME      | me_pib     | Montenegro PIB Number                                                       | 12345678             | No                         |
+| MK      | mk_vat     | North Macedonia VAT Number                                                  | MK1234567890123      | Yes                        |
+| MR      | mr_nif     | Mauritania Tax Identification Number (Número de Identificação Fiscal)       | 12345678             | No                         |
+| MT      | eu_vat     | European VAT number                                                         | MT12345678           | Yes                        |
+| MX      | mx_rfc     | Mexican RFC number                                                          | ABC010203AB9         | No                         |
+| NG      | ng_tin     | Nigerian Tax Identification Number                                          | 12345678-0001        | No                         |
+| NL      | eu_vat     | European VAT number                                                         | NL123456789B12       | Yes                        |
+| NO      | no_vat     | Norwegian VAT number                                                        | 123456789MVA         | Yes                        |
+| NP      | np_pan     | Nepal PAN Number                                                            | 123456789            | Yes                        |
+| NZ      | nz_gst     | New Zealand GST number                                                      | 123456789            | Yes                        |
+| OM      | om_vat     | Omani VAT Number                                                            | OM1234567890         | Yes                        |
+| PE      | pe_ruc     | Peruvian RUC number                                                         | 12345678901          | Yes                        |
+| PH      | ph_tin     | Philippines Tax Identification Number                                       | 123456789012         | Yes                        |
+| PL      | eu_vat     | European VAT number                                                         | PL1234567890         | Yes                        |
+| PL      | pl_nip     | Polish NIP number                                                           | 1234567890           | No                         |
+| PT      | eu_vat     | European VAT number                                                         | PT123456789          | Yes                        |
+| RO      | eu_vat     | European VAT number                                                         | RO1234567891         | Yes                        |
+| RS      | rs_pib     | Serbian PIB number                                                          | 123456789            | No                         |
+| RU      | ru_inn     | Russian INN                                                                 | 1234567891           | Yes                        |
+| RU      | ru_kpp     | Russian KPP                                                                 | 123456789            | Yes                        |
+| SA      | sa_vat     | Saudi Arabia VAT                                                            | 123456789012345      | Yes                        |
+| SE      | eu_vat     | European VAT number                                                         | SE123456789123       | Yes                        |
+| SG      | sg_gst     | Singaporean GST                                                             | M12345678X           | Yes                        |
+| SI      | eu_vat     | European VAT number                                                         | SI12345678           | Yes                        |
+| SK      | eu_vat     | European VAT number                                                         | SK1234567891         | Yes                        |
+| SN      | sn_ninea   | Senegal NINEA Number                                                        | 12345672A2           | No                         |
+| SR      | sr_fin     | Suriname FIN Number                                                         | 1234567890           | Yes                        |
+| TH      | th_vat     | Thai VAT                                                                    | 1234567891234        | Yes                        |
+| TJ      | tj_tin     | Tajikistan Tax Identification Number                                        | 123456789            | Yes                        |
+| TR      | tr_tin     | Turkish Tax Identification Number                                           | 0123456789           | Yes                        |
+| TW      | tw_vat     | Taiwanese VAT                                                               | 12345678             | Yes                        |
+| TZ      | tz_vat     | Tanzania VAT Number                                                         | 12345678A            | Yes                        |
+| UA      | ua_vat     | Ukrainian VAT                                                               | 123456789            | Yes                        |
+| UG      | ug_tin     | Uganda Tax Identification Number                                            | 1014751879           | Yes                        |
+| UY      | uy_ruc     | Uruguayan RUC number                                                        | 123456789012         | Yes                        |
+| UZ      | uz_tin     | Uzbekistan TIN Number                                                       | 123456789            | No                         |
+| UZ      | uz_vat     | Uzbekistan VAT Number                                                       | 123456789012         | Yes                        |
+| ZA      | za_vat     | South African VAT number                                                    | 4123456789           | Yes                        |
+| ZM      | zm_tin     | Zambia Tax Identification Number                                            | 1004751879           | No                         |
+| ZW      | zw_tin     | Zimbabwe Tax Identification Number                                          | 1234567890           | No                         |
+
+\*Stripe Tax won't apply tax if this tax ID is provided, in line with the relevant laws.
+
+### Use tax IDs in calculations (optional)
+
+In some cases, such as the cross-border supply of services, your customer might need to account for tax on a [reverse charge](https://docs.stripe.com/tax/zero-tax.md#reverse-charges) basis. Instead of collecting the tax, you must issue an invoice with the text, “Tax to be paid on reverse charge basis.”
+
+When you provide your customer’s [tax IDs](https://docs.stripe.com/api/tax/calculations/create.md#calculate_tax-customer_details-tax_ids) to Stripe Tax, we automatically determine when reverse charge applies:
+
+```curl
+curl https://api.stripe.com/v1/tax/calculations \
+  -u "<<YOUR_SECRET_KEY>>:" \
+  -d currency=usd \
+  -d "line_items[0][amount]"=1000 \
+  -d "line_items[0][reference]"=L1 \
+  -d "customer_details[address][country]"=IE \
+  -d "customer_details[address_source]"=billing \
+  -d "customer_details[tax_ids][0][type]"=eu_vat \
+  -d "customer_details[tax_ids][0][value]"=DE123456789
+```
+
+```cli
+stripe tax calculations create  \
+  --currency=usd \
+  -d "line_items[0][amount]"=1000 \
+  -d "line_items[0][reference]"=L1 \
+  -d "customer_details[address][country]"=IE \
+  -d "customer_details[address_source]"=billing \
+  -d "customer_details[tax_ids][0][type]"=eu_vat \
+  -d "customer_details[tax_ids][0][value]"=DE123456789
+```
+
+```ruby
+# Set your secret key. Remember to switch to your live secret key in production.
+# See your keys here: https://dashboard.stripe.com/apikeys
+client = Stripe::StripeClient.new("<<YOUR_SECRET_KEY>>")
+
+calculation = client.v1.tax.calculations.create({
+  currency: 'usd',
+  line_items: [
+    {
+      amount: 1000,
+      reference: 'L1',
+    },
+  ],
+  customer_details: {
+    address: {country: 'IE'},
+    address_source: 'billing',
+    tax_ids: [
+      {
+        type: 'eu_vat',
+        value: 'DE123456789',
+      },
+    ],
+  },
+})
+```
+
+```python
+# Set your secret key. Remember to switch to your live secret key in production.
+# See your keys here: https://dashboard.stripe.com/apikeys
+client = StripeClient("<<YOUR_SECRET_KEY>>")
+
+# For SDK versions 12.4.0 or lower, remove '.v1' from the following line.
+calculation = client.v1.tax.calculations.create({
+  "currency": "usd",
+  "line_items": [{"amount": 1000, "reference": "L1"}],
+  "customer_details": {
+    "address": {"country": "IE"},
+    "address_source": "billing",
+    "tax_ids": [{"type": "eu_vat", "value": "DE123456789"}],
+  },
+})
+```
+
+```php
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+$stripe = new \Stripe\StripeClient('<<YOUR_SECRET_KEY>>');
+
+$calculation = $stripe->tax->calculations->create([
+  'currency' => 'usd',
+  'line_items' => [
+    [
+      'amount' => 1000,
+      'reference' => 'L1',
+    ],
+  ],
+  'customer_details' => [
+    'address' => ['country' => 'IE'],
+    'address_source' => 'billing',
+    'tax_ids' => [
+      [
+        'type' => 'eu_vat',
+        'value' => 'DE123456789',
+      ],
+    ],
+  ],
+]);
+```
+
+```java
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+StripeClient client = new StripeClient("<<YOUR_SECRET_KEY>>");
+
+CalculationCreateParams params =
+  CalculationCreateParams.builder()
+    .setCurrency("usd")
+    .addLineItem(
+      CalculationCreateParams.LineItem.builder()
+        .setAmount(1000L)
+        .setReference("L1")
+        .build()
+    )
+    .setCustomerDetails(
+      CalculationCreateParams.CustomerDetails.builder()
+        .setAddress(
+          CalculationCreateParams.CustomerDetails.Address.builder()
+            .setCountry("IE")
+            .build()
+        )
+        .setAddressSource(CalculationCreateParams.CustomerDetails.AddressSource.BILLING)
+        .addTaxId(
+          CalculationCreateParams.CustomerDetails.TaxId.builder()
+            .setType(CalculationCreateParams.CustomerDetails.TaxId.Type.EU_VAT)
+            .setValue("DE123456789")
+            .build()
+        )
+        .build()
+    )
+    .build();
+
+// For SDK versions 29.4.0 or lower, remove '.v1()' from the following line.
+Calculation calculation = client.v1().tax().calculations().create(params);
+```
+
+```node
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+const stripe = require('stripe')('<<YOUR_SECRET_KEY>>');
+
+const calculation = await stripe.tax.calculations.create({
+  currency: 'usd',
+  line_items: [
+    {
+      amount: 1000,
+      reference: 'L1',
+    },
+  ],
+  customer_details: {
+    address: {
+      country: 'IE',
+    },
+    address_source: 'billing',
+    tax_ids: [
+      {
+        type: 'eu_vat',
+        value: 'DE123456789',
+      },
+    ],
+  },
+});
+```
+
+```go
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
+params := &stripe.TaxCalculationCreateParams{
+  Currency: stripe.String(stripe.CurrencyUSD),
+  LineItems: []*stripe.TaxCalculationCreateLineItemParams{
+    &stripe.TaxCalculationCreateLineItemParams{
+      Amount: stripe.Int64(1000),
+      Reference: stripe.String("L1"),
+    },
+  },
+  CustomerDetails: &stripe.TaxCalculationCreateCustomerDetailsParams{
+    Address: &stripe.AddressParams{Country: stripe.String("IE")},
+    AddressSource: stripe.String(stripe.TaxCalculationCustomerDetailsAddressSourceBilling),
+    TaxIDs: []*stripe.TaxCalculationCreateCustomerDetailsTaxIDParams{
+      &stripe.TaxCalculationCreateCustomerDetailsTaxIDParams{
+        Type: stripe.String(stripe.TaxCalculationCustomerDetailsTaxIDTypeEUVAT),
+        Value: stripe.String("DE123456789"),
+      },
+    },
+  },
+}
+result, err := sc.V1TaxCalculations.Create(context.TODO(), params)
+```
+
+```dotnet
+// Set your secret key. Remember to switch to your live secret key in production.
+// See your keys here: https://dashboard.stripe.com/apikeys
+var options = new Stripe.Tax.CalculationCreateOptions
+{
+    Currency = "usd",
+    LineItems = new List<Stripe.Tax.CalculationLineItemOptions>
+    {
+        new Stripe.Tax.CalculationLineItemOptions { Amount = 1000, Reference = "L1" },
+    },
+    CustomerDetails = new Stripe.Tax.CalculationCustomerDetailsOptions
+    {
+        Address = new AddressOptions { Country = "IE" },
+        AddressSource = "billing",
+        TaxIds = new List<Stripe.Tax.CalculationCustomerDetailsTaxIdOptions>
+        {
+            new Stripe.Tax.CalculationCustomerDetailsTaxIdOptions
+            {
+                Type = "eu_vat",
+                Value = "DE123456789",
+            },
+        },
+    },
+};
+var client = new StripeClient("<<YOUR_SECRET_KEY>>");
+var service = client.V1.Tax.Calculations;
+Stripe.Tax.Calculation calculation = service.Create(options);
+```
+
+If you provide a tax ID with an invalid format, the calculation returns a `tax_id_invalid` error code.
 
 ## See also
 

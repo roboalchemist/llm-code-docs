@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/perplexity/
+
 # Perplexity
 
 The [Perplexity API](https://blog.perplexity.ai/blog/introducing-pplx-api) provides chat completion models with built-in search capabilities, citations, and structured output support. Perplexity models retrieve information from the web in real-time, enabling up-to-date responses with source citations.

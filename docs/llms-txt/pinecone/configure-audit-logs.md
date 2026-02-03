@@ -2,27 +2,15 @@
 
 # Source: https://docs.pinecone.io/guides/assistant/admin/configure-audit-logs.md
 
-# Source: https://docs.pinecone.io/guides/production/configure-audit-logs.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/configure-audit-logs.md
-
-# Source: https://docs.pinecone.io/guides/production/configure-audit-logs.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/configure-audit-logs.md
-
-# Source: https://docs.pinecone.io/guides/production/configure-audit-logs.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/configure-audit-logs.md
-
-# Source: https://docs.pinecone.io/guides/production/configure-audit-logs.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/configure-audit-logs.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Configure audit logs
 
 > Track user and API actions with audit log configuration.
 
-This page describes how to configure audit logs in Pinecone. Audit logs provide a detailed record of user, service account, and API actions that occur within Pinecone. Pinecone supports Amazon S3 as a destination for audit logs.
+This page describes how to configure audit logs in Pinecone. Audit logs provide a detailed record of user, service account, and API actions that occur on the management and [control plane](/guides/get-started/database-architecture#control-plane) within Pinecone. Pinecone supports Amazon S3 as a destination for audit logs.
 
 <Note>
   To enable and manage audit logs, you must be an [organization owner](/guides/assistant/admin/organizations-overview#organization-roles). This feature is in [public preview](/assistant-release-notes/feature-availability) and available only on [Enterprise plans](https://www.pinecone.io/pricing/).

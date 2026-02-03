@@ -4,7 +4,6 @@
 title: Account
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Account
-source_url: https://docs.datadoghq.com/data_directory/aws/aws.account.dataset/index.html
 ---
 
 # Account
@@ -17,11 +16,13 @@ aws.account
 
 ## Fields
 
-| Title               | ID   | Type   | Data Type                                                                                               | Description |
-| ------------------- | ---- | ------ | ------------------------------------------------------------------------------------------------------- | ----------- |
-| _key                | core | string |
-| account_arn         | core | string |
-| account_id          | core | string |
-| alternate_contacts  | core | json   | A structure that contains the details for the specified alternate contact.                              |
-| contact_information | core | json   | Contains the details of the primary contact information associated with an Amazon Web Services account. |
-| tags                | core | hstore |
+| Title               | ID   | Type       | Data Type                                                                                               | Description |
+| ------------------- | ---- | ---------- | ------------------------------------------------------------------------------------------------------- | ----------- |
+| _key                | core | string     |
+| account_arn         | core | string     |
+| account_id          | core | string     |
+| alternate_contact   | core | json       | A structure that contains the details for the specified alternate contact.                              |
+| alternate_contacts  | core | json       | A structure that contains the details for the specified alternate contact.                              |
+| contact_information | core | json       | Contains the details of the primary contact information associated with an Amazon Web Services account. |
+| primary_email       | core | string     | Retrieves the primary email address associated with the specified account.                              |
+| tags                | core | hstore_csv |

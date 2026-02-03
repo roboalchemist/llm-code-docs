@@ -1,5 +1,9 @@
 # Source: https://gofastmcp.com/python-sdk/fastmcp-server-auth-providers-github.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # github
 
 # `fastmcp.server.auth.providers.github`
@@ -27,11 +31,7 @@ mcp = FastMCP("My Protected Server", auth=auth)
 
 ## Classes
 
-### `GitHubProviderSettings` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/providers/github.py#L40" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
-
-Settings for GitHub OAuth provider.
-
-### `GitHubTokenVerifier` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/providers/github.py#L65" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `GitHubTokenVerifier` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/providers/github.py#L37" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 Token verifier for GitHub OAuth tokens.
 
@@ -40,7 +40,7 @@ by calling GitHub's API to check if they're valid and get user info.
 
 **Methods:**
 
-#### `verify_token` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/providers/github.py#L87" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `verify_token` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/providers/github.py#L59" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 verify_token(self, token: str) -> AccessToken | None
@@ -48,7 +48,7 @@ verify_token(self, token: str) -> AccessToken | None
 
 Verify GitHub OAuth token by calling GitHub API.
 
-### `GitHubProvider` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/providers/github.py#L170" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+### `GitHubProvider` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/providers/github.py#L142" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 Complete GitHub OAuth provider for FastMCP.
 

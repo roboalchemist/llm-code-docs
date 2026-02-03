@@ -101,5 +101,5 @@ Note: Always set `RequestPayer: "requester"` to access the objects - transfer co
 
 Once the above lists the log files from S3, review [access-log-lambda](https://github.com/vespa-cloud/vespa-documentation-search/blob/main/access-log-lambda/README.md)for how to write a function to decompress and handle the log data.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

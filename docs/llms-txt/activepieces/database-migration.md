@@ -1,5 +1,9 @@
 # Source: https://www.activepieces.com/docs/handbook/engineering/playbooks/database-migration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Database Migrations
 
 > Guide for creating database migrations in Activepieces
@@ -16,54 +20,28 @@ The database migration files contain both what to do to migrate (up method) and 
 ## Database Support
 
 * PostgreSQL
-* SQLite
+* PGlite
 
 <Tip>
-  **Why Do we have SQLite?**
-  We support SQLite to simplify development and self-hosting. It's particularly helpful for:
+  **Why Do we have PGlite?**
+  We support PGlite to simplify development and self-hosting. It's particularly helpful for:
 
   * Developers creating pieces who want a quick setup
   * Self-hosters using platforms to manage docker images but doesn't support docker compose.
+
+  PGlite is a lightweight PostgreSQL implementation that runs embedded, so migrations are compatible with PostgreSQL.
 </Tip>
 
 ## Editions
 
 * **Enterprise & Cloud Edition** (Must use PostgreSQL)
-* **Community Edition** (Can use PostgreSQL or SQLite)
-
-<Tip>
-  If you are generating a migration for an entity that will only be used in Cloud & Enterprise editions, you only need to create the PostgreSQL migration file. You can skip generating the SQLite migration.
-</Tip>
+* **Community Edition** (Can use PostgreSQL or PGlite)
 
 ### How To Generate
 
 <Steps>
-  <Step title="Uncomment Database Connection Export">
-    Uncomment the following line in `packages/server/api/src/app/database/database-connection.ts`:
-
-    ```typescript  theme={null}
-    export const exportedConnection = databaseConnection()
-    ```
-  </Step>
-
-  <Step title="Configure Database Type">
-    Edit your `.env` file to set the database type:
-
-    ```env  theme={null}
-    # For SQLite migrations (default)
-    AP_DATABASE_TYPE=SQLITE
-    ```
-
-    For PostgreSQL migrations:
-
-    ```env  theme={null}
-    AP_DB_TYPE=POSTGRES
-    AP_POSTGRES_DATABASE=activepieces
-    AP_POSTGRES_HOST=db
-    AP_POSTGRES_PORT=5432
-    AP_POSTGRES_USERNAME=postgres
-    AP_POSTGRES_PASSWORD=password
-    ```
+  <Step title="Setup AP_DB_TYPE">
+    Set the `AP_DB_TYPE` environment variable to `POSTGRES` after making sure have latest state by running Activepieces first.
   </Step>
 
   <Step title="Generate Migration">
@@ -76,22 +54,50 @@ The database migration files contain both what to do to migrate (up method) and 
     Replace `<MIGRATION_NAME>` with a descriptive name for your migration.
   </Step>
 
-  <Step title="Move Migration File">
-    The command will generate a new migration file in `packages/server/api/src/app/database/migrations`.
-    Review the generated file and:
+  <Step title="Review Migration File">
+    The command will generate a new migration file in `packages/server/api/src/app/database/migration/postgres/`.
 
-    * For PostgreSQL migrations: Move it to `postgres-connection.ts`
-    * For SQLite migrations: Move it to `sqlite-connection.ts`
-  </Step>
-
-  <Step title="Re-comment Export">
-    After moving the file, remember to re-comment the line from step 1:
-
-    ```typescript  theme={null}
-    // export const exportedConnection = databaseConnection()
-    ```
+    Review the generated file and register it in `postgres-connection.ts`.
   </Step>
 </Steps>
+
+## PGlite Compatibility
+
+While PGlite is mostly PostgreSQL-compatible, some features are not supported. When using features like `CONCURRENTLY` for index operations, you need to conditionally handle PGlite:
+
+```typescript  theme={null}
+import { AppSystemProp } from '@activepieces/server-shared'
+import { MigrationInterface, QueryRunner } from 'typeorm'
+import { DatabaseType, system } from '../../../helper/system/system'
+
+const databaseType = system.get(AppSystemProp.DB_TYPE)
+const isPGlite = databaseType === DatabaseType.PGLITE
+
+export class AddMyIndex1234567890 implements MigrationInterface {
+    name = 'AddMyIndex1234567890'
+    transaction = false // Required when using CONCURRENTLY
+
+    public async up(queryRunner: QueryRunner): Promise<void> {
+        if (isPGlite) {
+            await queryRunner.query(`CREATE INDEX "idx_name" ON "table" ("column")`)
+        } else {
+            await queryRunner.query(`CREATE INDEX CONCURRENTLY "idx_name" ON "table" ("column")`)
+        }
+    }
+
+    public async down(queryRunner: QueryRunner): Promise<void> {
+        if (isPGlite) {
+            await queryRunner.query(`DROP INDEX "idx_name"`)
+        } else {
+            await queryRunner.query(`DROP INDEX CONCURRENTLY "idx_name"`)
+        }
+    }
+}
+```
+
+<Warning>
+  `CREATE INDEX CONCURRENTLY` and `DROP INDEX CONCURRENTLY` are not supported in PGlite because PGLite is a single user/connection database. Always add a check for PGlite when using these operations.
+</Warning>
 
 <Tip>
   Always test your migrations by running them both up and down to ensure they work as expected.

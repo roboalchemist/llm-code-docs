@@ -2,10 +2,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/llamb/regression-testing.md
 
-# Source: https://docs.avaamo.com/user-guide/how-to/build-agents/test-agents/regression-testing.md
-
-# Source: https://docs.avaamo.com/user-guide/llamb/regression-testing.md
-
 # Regression Testing
 
 - [Get started](/user-guide/llamb/regression-testing/get-started.md)

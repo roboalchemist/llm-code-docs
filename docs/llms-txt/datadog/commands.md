@@ -6,9 +6,8 @@ description: >-
   Reference guide for Datadog Cluster Agent command-line interface and
   environment variables
 breadcrumbs: >-
-  Docs > Container Monitoring > Cluster Agent for Kubernetes > Cluster Agent
-  Commands and Options
-source_url: https://docs.datadoghq.com/cluster_agent/commands/index.html
+  Docs > Containers > Cluster Agent for Kubernetes > Cluster Agent Commands and
+  Options
 ---
 
 # Cluster Agent Commands and Options

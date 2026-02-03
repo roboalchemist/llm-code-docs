@@ -1,5 +1,9 @@
 # Source: https://docs.unifygtm.com/reference/sequences/send-schedules/using-send-schedules.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Using a Custom Send Schedule
 
 > Learn how to view and apply Custom Send Schedules for Sequences.

@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/api-reference/views/create-view.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create view
 
 > Create a new view. If there is an existing view with the same name as the one specified in the request, will return the existing view unmodified
@@ -129,10 +133,12 @@ components:
             - prompts
             - tools
             - scorers
+            - classifiers
             - logs
-            - agents
             - monitor
-            - for_review
+            - for_review_project_log
+            - for_review_experiments
+            - for_review_datasets
             - null
           description: Type of object that the view corresponds to.
         name:
@@ -183,10 +189,12 @@ components:
             - prompts
             - tools
             - scorers
+            - classifiers
             - logs
-            - agents
             - monitor
-            - for_review
+            - for_review_project_log
+            - for_review_experiments
+            - for_review_datasets
             - null
           description: Type of object that the view corresponds to.
         name:
@@ -473,7 +481,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

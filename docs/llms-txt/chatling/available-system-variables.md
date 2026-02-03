@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/chatbot/builder/variables/available-system-variables.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Available system variables
 
 > List of all the system variables available and what they do.

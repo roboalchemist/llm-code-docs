@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/basic/upscale.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ComfyUI Image Upscale Workflow
 
 > This guide explains the concept of image upscaling in AI drawing and demonstrates how to implement an image upscaling workflow in ComfyUI

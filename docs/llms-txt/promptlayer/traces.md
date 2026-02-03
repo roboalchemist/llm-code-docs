@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/running-requests/traces.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Traces
 
 Traces are a powerful feature in PromptLayer that allow you to monitor and analyze the execution flow of your applications, including LLM requests. Built on OpenTelemetry, Traces provide detailed insights into function calls, their durations, inputs, and outputs.
@@ -181,6 +185,8 @@ def main():
 
 @pl_client.traceable()
 def openai_call():
+    # Note: llm_kwargs structure is provider-specific and may change.
+    # See https://docs.promptlayer.com/features/prompt-registry/overview#setting-execution-parameters
     OpenAI = pl_client.openai.OpenAI
     openai = OpenAI()
     template = pl_client.templates.get("simple-greeting")
@@ -216,8 +222,3 @@ if __name__ == "__main__":
 ```
 
 <img src="https://mintcdn.com/promptlayer/jUVR1Bx755pIFGwB/images/traces/nested-spans.png?fit=max&auto=format&n=jUVR1Bx755pIFGwB&q=85&s=23eb15c063fd12669988911e9b044090" alt="Group nests spans" data-og-width="2732" width="2732" data-og-height="1404" height="1404" data-path="images/traces/nested-spans.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/promptlayer/jUVR1Bx755pIFGwB/images/traces/nested-spans.png?w=280&fit=max&auto=format&n=jUVR1Bx755pIFGwB&q=85&s=4f8d2faffcd3fbf5924b5cda138f6c85 280w, https://mintcdn.com/promptlayer/jUVR1Bx755pIFGwB/images/traces/nested-spans.png?w=560&fit=max&auto=format&n=jUVR1Bx755pIFGwB&q=85&s=3dcb0258bb5d9cdaacde309ed840830c 560w, https://mintcdn.com/promptlayer/jUVR1Bx755pIFGwB/images/traces/nested-spans.png?w=840&fit=max&auto=format&n=jUVR1Bx755pIFGwB&q=85&s=6bec685e17aa626196898e5bc88b972b 840w, https://mintcdn.com/promptlayer/jUVR1Bx755pIFGwB/images/traces/nested-spans.png?w=1100&fit=max&auto=format&n=jUVR1Bx755pIFGwB&q=85&s=dd3e9012d46a0aab1683f324fca7e09d 1100w, https://mintcdn.com/promptlayer/jUVR1Bx755pIFGwB/images/traces/nested-spans.png?w=1650&fit=max&auto=format&n=jUVR1Bx755pIFGwB&q=85&s=1c721f05dc895ddded7431c0626a9217 1650w, https://mintcdn.com/promptlayer/jUVR1Bx755pIFGwB/images/traces/nested-spans.png?w=2500&fit=max&auto=format&n=jUVR1Bx755pIFGwB&q=85&s=2f6e48946fa621c999a0801999674312 2500w" />
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/legal-and-security-info/security.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Security
 
 > Your code, applications, and data are important. We're committed to protecting them—Replit's security is our security, too.

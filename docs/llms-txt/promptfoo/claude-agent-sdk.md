@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/claude-agent-sdk/
+
 # Claude Agent SDK
 
 This provider makes [Claude Agent SDK](https://docs.claude.com/en/api/agent-sdk/overview) available for evals through its [TypeScript SDK](https://docs.claude.com/en/api/agent-sdk/typescript).

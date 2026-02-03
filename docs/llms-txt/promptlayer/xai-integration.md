@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/features/xai-integration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # xAI (Grok)
 
 [xAI](https://x.ai/) provides the Grok family of large language models that can be integrated with PromptLayer through custom providers. Grok models offer advanced reasoning capabilities and real-time knowledge through X (Twitter) integration.
@@ -109,8 +113,3 @@ print(f"Request ID: {response['request_id']}")
 * [Custom Providers](/features/custom-providers)
 * [Supported Providers](/features/supported-providers)
 * [xAI Official Documentation](https://docs.x.ai/docs/models)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

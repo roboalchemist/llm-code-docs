@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/deploy/streamlit-community-cloud/get-started/explore-your-workspace
+
 # Explore your workspace
 
 If you just [created your account](/deploy/streamlit-community-cloud/get-started/create-your-account) and [connected your GitHub account](/deploy/streamlit-community-cloud/get-started/connect-your-github-account), congrats! You are now signed in and ready to go. If you are joining someone else's workspace you may already see some apps.

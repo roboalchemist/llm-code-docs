@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/configuration/st.set_page_config
+
 # st.set_page_config
 
 Configure the default settings of the page.

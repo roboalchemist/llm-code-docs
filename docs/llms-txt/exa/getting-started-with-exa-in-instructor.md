@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/examples/getting-started-with-exa-in-instructor.md
+# Source: https://exa.ai/docs/examples/getting-started-with-exa-in-instructor.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Structured Outputs with Instructor
 
@@ -335,8 +339,3 @@ Algorithmic Bias in AI Systems,"This research explores the misconception that al
 Instructor has enabled the creation of structured data that can as such be stored in tabular format, e.g.in a CRM or similar.
 
 By combining Exa’s powerful search capabilities with Instructor’s predictable output generation, you can extract and analyze information from web content efficiently and accurately.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

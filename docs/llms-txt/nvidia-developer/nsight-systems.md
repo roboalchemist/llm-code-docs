@@ -1,7 +1,8 @@
 # Source: https://developer.nvidia.com/nsight-systems.md
 
 1. [Home](/)
-[Developer Tools ](https://developer.nvidia.com/tools-overview)[Nsight Systems](https://developer.nvidia.com/nsight-systems)
+[Developer Tools ](/tools-overview)
+Nsight Systems
 
  ![Nsight Compute](https://developer.download.nvidia.com/images/nvidia-nsight-systems-icon-gbp-shaded-256.png)
 
@@ -11,7 +12,7 @@ NVIDIA Nsight™ Systems is a system-wide performance analysis tool designed to 
 
 [Get Started](https://developer.nvidia.com/nsight-systems/get-started)
 
-Nsight Systems 2025.6.1 is available now.
+Nsight Systems 2026.1.1 is available now.
 
  ![Nsight Systems can make high-performance games with beautiful graphics](https://d29g4g2dyqv443.cloudfront.net/sites/default/files/akamai/nsight-systems-850x480.jpg)
  
@@ -222,7 +223,7 @@ Ready to get started with NVIDIA Nsight Systems?
 
 Quick Links
 
-- [Download](https://developer.nvidia.com/nsight-systems/get-started)
+- [Download](/nsight-systems/get-started)
 - [Documentation](https://docs.nvidia.com/nsight-systems/index.html)
 
 * * *

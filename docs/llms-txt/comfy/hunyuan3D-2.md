@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/3d/hunyuan3D-2.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ComfyUI Hunyuan3D-2 Examples
 
 > This guide will demonstrate how to use Hunyuan3D-2 in ComfyUI to generate 3D assets.
@@ -63,12 +67,16 @@ In the Hunyuan3D-2mv workflow, we'll use multi-view images to generate a 3D mode
 
     <Tab title="Desktop or Cloud users">
       * The Desktop is base on ComfyUI stable release, it will auto-update when there is a new Desktop stable release available.
-      * [Cloud](https://cloud.comfy.org) will update after ComfyUI stable release, we will update the Cloud after ComfyUI stable release.
+      * [Cloud](https://cloud.comfy.org) will update after ComfyUI stable release.
 
       So, if you find any core node missing in this document, it might be because the new core nodes have not yet been released in the latest stable version. Please wait for the next stable release.
     </Tab>
   </Tabs>
 </Tip>
+
+<a className="prose" target="_blank" href="https://cloud.comfy.org/?template=3d_hunyuan3d_multiview_to_model&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28A745', color: '#FFFFFF', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
+  <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Run on Comfy Cloud</p>
+</a>
 
 ### 1. Workflow
 
@@ -112,6 +120,10 @@ If you need to add more views, make sure to load other view images in the `Hunyu
 
 In the Hunyuan3D-2mv-turbo workflow, we'll use the Hunyuan3D-2mv-turbo model to generate 3D models. This model is a step distillation version of Hunyuan3D-2mv, allowing for faster 3D model generation. In this version of the workflow, we set `cfg` to 1.0 and add a `flux guidance` node to control the `distilled cfg` generation.
 
+<a className="prose" target="_blank" href="https://cloud.comfy.org/?template=3d_hunyuan3d_multiview_to_model_turbo&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28A745', color: '#FFFFFF', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
+  <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Run on Comfy Cloud</p>
+</a>
+
 ### 1. Workflow
 
 Please download the images below and drag into ComfyUI to load the workflow.
@@ -147,6 +159,10 @@ ComfyUI/
 ## Hunyuan3D-2 Single View Workflow
 
 In the Hunyuan3D-2 workflow, we'll use the Hunyuan3D-2 model to generate 3D models. This model is not a multi-view model. In this workflow, we use the `Hunyuan3Dv2Conditioning` node instead of the `Hunyuan3Dv2ConditioningMultiView` node.
+
+<a className="prose" target="_blank" href="https://cloud.comfy.org/?template=3d_hunyuan3d_image_to_model&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28A745', color: '#FFFFFF', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
+  <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Run on Comfy Cloud</p>
+</a>
 
 ### 1. Workflow
 

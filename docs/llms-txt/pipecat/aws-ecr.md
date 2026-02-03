@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/container-registries/aws-ecr.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AWS ECR
 
 > Deploy Pipecat Cloud agents using Amazon Elastic Container Registry
@@ -117,8 +121,3 @@ Schedule this script to run every 6-8 hours using cron or your preferred schedul
   Ensure your AWS credentials have the necessary permissions to access ECR,
   including `ecr:GetAuthorizationToken` and `ecr:BatchGetImage` policies.
 </Note>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

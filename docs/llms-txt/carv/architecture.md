@@ -2,10 +2,6 @@
 
 # Source: https://docs.carv.io/svm-ai-agentic-chain/introduction/architecture.md
 
-# Source: https://docs.carv.io/d.a.t.a.-ai-framework/architecture.md
-
-# Source: https://docs.carv.io/svm-ai-agentic-chain/introduction/architecture.md
-
 # Architecture
 
 CARV SVM Chain is an **SVM Layer 2 solution** built on Ethereum Layer 1, leveraging **Decoupled SVM Rollup Architecture** to achieve unparalleled scalability, security, and cross-layer operability. This architecture redefines the integration of SVM into non-Solana ecosystems, enabling a seamless, high-performance environment for AI agents.

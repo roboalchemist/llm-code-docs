@@ -14,38 +14,6 @@
 
 # Source: https://platform.claude.com/docs/en/agent-sdk/skills.md
 
-# Source: https://platform.claude.com/docs/en/api/typescript/beta/skills.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/beta/skills.md
-
-# Source: https://platform.claude.com/docs/en/api/python/beta/skills.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/beta/skills.md
-
-# Source: https://platform.claude.com/docs/en/api/java/beta/skills.md
-
-# Source: https://platform.claude.com/docs/en/api/go/beta/skills.md
-
-# Source: https://platform.claude.com/docs/en/api/beta/skills.md
-
-# Source: https://platform.claude.com/docs/en/agent-sdk/skills.md
-
-# Source: https://platform.claude.com/docs/en/api/typescript/beta/skills.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/beta/skills.md
-
-# Source: https://platform.claude.com/docs/en/api/python/beta/skills.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/beta/skills.md
-
-# Source: https://platform.claude.com/docs/en/api/java/beta/skills.md
-
-# Source: https://platform.claude.com/docs/en/api/go/beta/skills.md
-
-# Source: https://platform.claude.com/docs/en/api/beta/skills.md
-
-# Source: https://platform.claude.com/docs/en/agent-sdk/skills.md
-
 # Agent Skills in the SDK
 
 Extend Claude with specialized capabilities using Agent Skills in the Claude Agent SDK
@@ -349,7 +317,7 @@ For general Skills troubleshooting (YAML syntax, debugging, etc.), see the [Clau
 - [Agent Skills in Claude Code](https://code.claude.com/docs/en/skills): Complete Skills guide with creation, examples, and troubleshooting
 - [Agent Skills Overview](/docs/en/agents-and-tools/agent-skills/overview): Conceptual overview, benefits, and architecture
 - [Agent Skills Best Practices](/docs/en/agents-and-tools/agent-skills/best-practices): Authoring guidelines for effective Skills
-- [Agent Skills Cookbook](https://github.com/anthropics/claude-cookbooks/tree/main/skills): Example Skills and templates
+- [Agent Skills Cookbook](https://platform.claude.com/cookbook/skills-notebooks-01-skills-introduction): Example Skills and templates
 
 ### SDK Resources
 - [Subagents in the SDK](/docs/en/agent-sdk/subagents): Similar filesystem-based agents with programmatic options

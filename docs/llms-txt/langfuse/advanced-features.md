@@ -73,6 +73,8 @@ const shouldExportSpan: ShouldExportSpan = ({ otelSpan }) =>
 </Tab>
 </LangTabs>
 
+You can read more about using Langfuse with an existing OpenTelemetry setup [here](/faq/all/existing-otel-setup).
+
 ## Mask sensitive data
 
 If your trace data (inputs, outputs, metadata) might contain sensitive information (PII, secrets), you can provide a mask function during client initialization. This function will be applied to all relevant data before it’s sent to Langfuse.
@@ -240,7 +242,7 @@ export LANGFUSE_SAMPLE_RATE="0.2"
 </Tab>
 </LangTabs>
 
-## Isolated TracerProvider
+## Isolated TracerProvider [#isolated-tracer-provider]
 
 You can configure a separate OpenTelemetry TracerProvider for use with Langfuse. This creates isolation between Langfuse tracing and your other observability systems.
 
@@ -283,9 +285,9 @@ import { setLangfuseTracerProvider } from "@langfuse/tracing";
  
 // Create a new TracerProvider and register the LangfuseSpanProcessor
 // do not set this TracerProvider as the global TracerProvider
-const langfuseTracerProvider = new NodeTracerProvider(
+const langfuseTracerProvider = new NodeTracerProvider({
   spanProcessors: [new LangfuseSpanProcessor()],
-)
+})
  
 // Register the isolated TracerProvider
 setLangfuseTracerProvider(langfuseTracerProvider)
@@ -293,6 +295,8 @@ setLangfuseTracerProvider(langfuseTracerProvider)
 
 </Tab>
 </LangTabs>
+
+You can read more about using Langfuse with an existing OpenTelemetry setup [here](/faq/all/existing-otel-setup).
 
 ## Multi-project setups [#multi-project-setup-experimental]
 
@@ -556,44 +560,9 @@ httpx_client = httpx.Client(verify=os.environ["OTEL_EXPORTER_OTLP_TRACES_CERTIFI
 langfuse = Langfuse(httpx_client=httpx_client)
 ```
 
-## Langfuse + Sentry
+## Setup with Sentry
 
-<LangTabs items={["JS/TS SDK"]}>
-<Tab title="TypeScript">
-
-```ts filename="instrumentation.ts"
-import * as Sentry from "@sentry/node";
-import { LangfuseSpanProcessor } from "@langfuse/otel";
-import { NodeTracerProvider } from "@opentelemetry/sdk-trace-node";
-import {
-  SentryPropagator,
-  SentrySampler,
-  SentrySpanProcessor,
-} from "@sentry/opentelemetry";
-
-const sentryClient = Sentry.init({
-  dsn: "<your dsn>",
-  skipOpenTelemetrySetup: true,
-  tracesSampleRate: 1,
-});
-
-const provider = new NodeTracerProvider({
-  sampler: sentryClient ? new SentrySampler(sentryClient) : undefined,
-  spanProcessors: [new LangfuseSpanProcessor(), new SentrySpanProcessor()],
-});
-
-provider.register({
-  propagator: new SentryPropagator(),
-  contextManager: new Sentry.SentryContextManager(),
-});
-```
-
-<Callout type="info">
-If you only use Sentry for error monitoring, omit `tracesSampleRate` and the `SentrySpanProcessor` so its sampling rules don't affect Langfuse traces.
-</Callout>
-
-</Tab>
-</LangTabs>
+If you’re using both Sentry and Langfuse in your application, you’ll need to configure a custom OpenTelemetry setup since both tools use OpenTelemetry for tracing. [This guide shows how to send error monitoring data to Sentry while simultaneously capturing LLM observability traces in Langfuse](/faq/all/existing-sentry-setup).
 
 ## Thread pools and multiprocessing
 

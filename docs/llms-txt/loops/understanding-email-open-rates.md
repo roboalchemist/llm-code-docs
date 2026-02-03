@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/deliverability/understanding-email-open-rates.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Email open rates
 
 > Understand how open rates can be affected by clients and networks.

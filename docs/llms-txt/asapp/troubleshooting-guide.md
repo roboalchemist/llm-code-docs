@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/support/troubleshooting-guide.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Troubleshooting Guide
 
 This document outlines some preliminary checks to determine the health and status of the connection between the customer or agent's browser and an ASAPP backend host prior to escalating to the ASAPP Support Team.
@@ -33,7 +37,7 @@ To view HTTP return codes:
 1. Open **Dev Tools** and navigate to the **Network** tab.
 2. Reload the page or navigate to a page with ASAPP chat enabled.
 3. Filter network traffic to **ASAPP**.
-4. Look at the "Status" for each call. Failed calls are highlighted in red.
+4. Look at the "Status" for each call. The system highlights failed calls in red.
 5. For non-200 status codes, denote what the call is by the "Request URL" and the return status. You can find other helpful information in context in the "Request Payload".
 
 <Frame>
@@ -42,7 +46,7 @@ To view HTTP return codes:
 
 ### Environment Targeting
 
-To determine the ASAPP environment targeted by the front-end, you can look at the network traffic and note what hostname is referenced. For instance, ...something-demo01.test.asapp.com is the demo environment for that implementation. You will see this on every call to the ASAPP backend and it may be helpful to filter the network traffic to "ASAPP".
+To determine the ASAPP environment targeted by the front-end, you can look at the network traffic and note what hostname the traffic references. For instance, ...something-demo01.test.asapp.com is the demo environment for that implementation. You will see this on every call to the ASAPP backend and it may be helpful to filter the network traffic to "ASAPP".
 
 1. Open **Dev Tools** and navigate to the **Network** tab.
 2. Reload the page or navigate to a page with ASAPP chat enabled.
@@ -56,7 +60,7 @@ To determine the ASAPP environment targeted by the front-end, you can look at th
 
 ### WebSocket Status
 
-In addition to looking at the API calls, it is important to look at the WebSocket connections in use. You should also be able to inspect the frames within the WebSocket to ensure messages are received properly.
+In addition to looking at the API calls, it is important to look at the WebSocket connections in use. You should also be able to inspect the frames within the WebSocket to ensure the system receives messages properly.
 
 <Frame>
   <img src="https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-9e750335-dd43-9b01-7c8c-abbe0d089f5a.png?fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=247347509abf2a8f2523ffb19e78a408" data-og-width="1999" width="1999" data-og-height="482" height="482" data-path="image/uuid-9e750335-dd43-9b01-7c8c-abbe0d089f5a.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-9e750335-dd43-9b01-7c8c-abbe0d089f5a.png?w=280&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=d406f6ab0e2d180e27880199d1f90d1b 280w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-9e750335-dd43-9b01-7c8c-abbe0d089f5a.png?w=560&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=75dac38f4e0ad0f21cd138c5e6f73dee 560w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-9e750335-dd43-9b01-7c8c-abbe0d089f5a.png?w=840&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=847d9fe7cc2e300950d23db95b0051e9 840w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-9e750335-dd43-9b01-7c8c-abbe0d089f5a.png?w=1100&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=d4f3c68428567ce62246f34ddb81ba2e 1100w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-9e750335-dd43-9b01-7c8c-abbe0d089f5a.png?w=1650&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=6c32e4b5361f99eaecdf9eba5e74858c 1650w, https://mintcdn.com/asapp/COy3KdZUtsAnzs_4/image/uuid-9e750335-dd43-9b01-7c8c-abbe0d089f5a.png?w=2500&fit=max&auto=format&n=COy3KdZUtsAnzs_4&q=85&s=e1e7d3073ec21e5c1af5111c9131bcc9 2500w" />
@@ -68,7 +72,7 @@ In addition to looking at the API calls, it is important to look at the WebSocke
 
 ### Should Display Web Chat
 
-If chat does not display on the desired web page, the first place to check is ASAPP's call for `ShouldDisplayWebChat` via the **Chrome Developer Tool Network** tab. A successful API call response should contain a `DisplayCustomerSupport` field with a value of `true`. If this value is `false` for a page that should display chat, please reach out to the ASAPP Support Team. Superusers can access the Triggers section of ASAPP Admin. This will enable them to determine if the URL visited is set to display chat.
+If chat does not display on the desired web page, the first place to check is ASAPP's call for `ShouldDisplayWebChat` via the **Chrome Developer Tool Network** tab. A successful API call response should contain a `DisplayCustomerSupport` field with a value of `true`. If this value is `false` for a page that should display chat, please reach out to the ASAPP Support Team. Superusers can access the Triggers section of ASAPP Admin. This will enable them to determine if the visited URL displays chat.
 
 To troubleshoot:
 
@@ -90,7 +94,7 @@ To view the context provided to the SDK, you can look at the request payload of 
 * Customer info parameters
 * External session IDs
 
-<Card title="Web SDK Context Provider" href="/messaging-platform/integrations/web-sdk/web-contextprovider"> Review the ASAPP SDK Web Context Provider page</Card>
+<Card title="Web SDK Context Provider" href="/agent-desk/integrations/web-sdk/web-contextprovider"> Review the ASAPP SDK Web Context Provider page</Card>
 
 To view the context:
 
@@ -113,7 +117,7 @@ For authenticated customer chat sessions, you can see the Auth key within the co
 
 The values passed into the Auth context will depend on the integration.
 
-<Card title="Web SDK Context Provider" href="/messaging-platform/integrations/web-sdk/web-contextprovider"> Review the ASAPP SDK Web Context Provider page for the complete use of this key</Card>
+<Card title="Web SDK Context Provider" href="/agent-desk/integrations/web-sdk/web-contextprovider"> Review the ASAPP SDK Web Context Provider page for the complete use of this key</Card>
 
 ## Troubleshooting Agent Chat from Agent Desk
 
@@ -178,7 +182,7 @@ If you see one of these pairs of echoes missing, it is most likely because Agent
   <img src="https://mintcdn.com/asapp/9jlDT2iVQhMOPce8/image/uuid-0e90bcea-cc88-8f78-fd2f-99cbcea61c19.png?fit=max&auto=format&n=9jlDT2iVQhMOPce8&q=85&s=55cffe2ff9914a76d962cb87779db4de" data-og-width="1999" width="1999" data-og-height="978" height="978" data-path="image/uuid-0e90bcea-cc88-8f78-fd2f-99cbcea61c19.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/9jlDT2iVQhMOPce8/image/uuid-0e90bcea-cc88-8f78-fd2f-99cbcea61c19.png?w=280&fit=max&auto=format&n=9jlDT2iVQhMOPce8&q=85&s=e9d2dd53d9367cceca0186ef8be6fd15 280w, https://mintcdn.com/asapp/9jlDT2iVQhMOPce8/image/uuid-0e90bcea-cc88-8f78-fd2f-99cbcea61c19.png?w=560&fit=max&auto=format&n=9jlDT2iVQhMOPce8&q=85&s=703982752afb507e87e58edbefd1aa24 560w, https://mintcdn.com/asapp/9jlDT2iVQhMOPce8/image/uuid-0e90bcea-cc88-8f78-fd2f-99cbcea61c19.png?w=840&fit=max&auto=format&n=9jlDT2iVQhMOPce8&q=85&s=e7a7d17fdfa9f4b12013044ba4f7ff5d 840w, https://mintcdn.com/asapp/9jlDT2iVQhMOPce8/image/uuid-0e90bcea-cc88-8f78-fd2f-99cbcea61c19.png?w=1100&fit=max&auto=format&n=9jlDT2iVQhMOPce8&q=85&s=b198ce21d4443168cfa6353114898c50 1100w, https://mintcdn.com/asapp/9jlDT2iVQhMOPce8/image/uuid-0e90bcea-cc88-8f78-fd2f-99cbcea61c19.png?w=1650&fit=max&auto=format&n=9jlDT2iVQhMOPce8&q=85&s=e37a312de21aee046de29524e6af9a55 1650w, https://mintcdn.com/asapp/9jlDT2iVQhMOPce8/image/uuid-0e90bcea-cc88-8f78-fd2f-99cbcea61c19.png?w=2500&fit=max&auto=format&n=9jlDT2iVQhMOPce8&q=85&s=296b06a06b3c41e2f6c59e553d26f361 2500w" />
 </Frame>
 
-If you loose network connectivity and then re-establish it, there will be multiple WebSocket entries visible when you click on **WS**.
+If you lose network connectivity and then re-establish it, there will be multiple WebSocket entries visible when you click on **WS**.
 
 <Frame>
   <img src="https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-7840633a-5eaf-b4ce-a6b5-70f04a5ae40e.png?fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=365596038e0a44a530d64036cbb90728" data-og-width="1999" width="1999" data-og-height="519" height="519" data-path="image/uuid-7840633a-5eaf-b4ce-a6b5-70f04a5ae40e.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-7840633a-5eaf-b4ce-a6b5-70f04a5ae40e.png?w=280&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=14482f955b133e8718cd3cc0dd0533fc 280w, https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-7840633a-5eaf-b4ce-a6b5-70f04a5ae40e.png?w=560&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=48f0d2fa842e5dc583a2d05431c62517 560w, https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-7840633a-5eaf-b4ce-a6b5-70f04a5ae40e.png?w=840&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=5d93f5257f8563b140c2d05a951f109c 840w, https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-7840633a-5eaf-b4ce-a6b5-70f04a5ae40e.png?w=1100&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=118a586e3a1b3fc3c342d0a717331126 1100w, https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-7840633a-5eaf-b4ce-a6b5-70f04a5ae40e.png?w=1650&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=67a37910a7007c1935213f9ebb547164 1650w, https://mintcdn.com/asapp/aK0YOQVZSULmKYJl/image/uuid-7840633a-5eaf-b4ce-a6b5-70f04a5ae40e.png?w=2500&fit=max&auto=format&n=aK0YOQVZSULmKYJl&q=85&s=580617d33a7bf3c51e4218da1b246267 2500w" />

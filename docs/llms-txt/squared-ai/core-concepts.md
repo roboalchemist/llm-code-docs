@@ -1,5 +1,9 @@
 # Source: https://docs.squared.ai/guides/core-concepts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Introduction
 
 The core concepts of data movement in AI Squared are the foundation of your data journey. They include Sources, Destinations, Models, and Syncs. Understanding these concepts is crucial to building a robust data pipeline.

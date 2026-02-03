@@ -1,4 +1,28 @@
+# Source: https://docs.datadoghq.com/deployment_gates/setup.md
+
+# Source: https://docs.datadoghq.com/security/workload_protection/setup.md
+
+# Source: https://docs.datadoghq.com/security/sensitive_data_scanner/setup.md
+
+# Source: https://docs.datadoghq.com/security/code_security/static_analysis/setup.md
+
+# Source: https://docs.datadoghq.com/security/code_security/iast/setup.md
+
+# Source: https://docs.datadoghq.com/security/code_security/iac_security/setup.md
+
+# Source: https://docs.datadoghq.com/security/cloud_security_management/setup.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/go/setup.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup.md
+
+# Source: https://docs.datadoghq.com/data_streams/setup.md
+
+# Source: https://docs.datadoghq.com/dora_metrics/setup.md
+
 # Source: https://docs.datadoghq.com/containers/cluster_agent/setup.md
+
+# Source: https://docs.datadoghq.com/code_coverage/setup.md
 
 # Source: https://docs.datadoghq.com/cloud_cost_management/setup.md
 
@@ -12,7 +36,6 @@ description: >-
   Set up the Datadog MCP server to instrument your frontend applications with
   coding agents like Cursor or Claude Code.
 breadcrumbs: Docs > Agentic Onboarding Setup
-source_url: https://docs.datadoghq.com/setup/index.html
 ---
 
 # Agentic Onboarding Setup

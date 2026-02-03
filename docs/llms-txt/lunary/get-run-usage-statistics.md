@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/api/runs/get-run-usage-statistics.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get run usage statistics
 
 > Retrieve usage statistics for runs
@@ -68,7 +72,3 @@ paths:
           description: Invalid query parameters
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

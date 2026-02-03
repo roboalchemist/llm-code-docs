@@ -8,19 +8,15 @@
 
 The ChatMessage component renders an `<article>` element for a `user` or `assistant` chat message.
 
-<code-preview>
-<u-chat-message :avatar="{"src":"https://github.com/benjamincanac.png"}" :parts="[{"type":"text","id":"1","text":"Hello! Tell me more about building AI chatbots with Nuxt UI."}]" id="1" role="user" side="right" variant="soft">
+```vue
+<template>
+  <u-chat-message :avatar={"src":"https://github.com/benjamincanac.png"} :parts=[{"type":"text","id":"1","text":"Hello! Tell me more about building AI chatbots with Nuxt UI."}] id=1 role=user side=right variant=soft />
+</template>
+```
 
-
-
-</u-chat-message>
-</code-preview>
-
-<tip to="/docs/components/chat-messages">
-
-Use the [`ChatMessages`](/docs/components/chat-messages) component to display a list of chat messages.
-
-</tip>
+> [!TIP]
+> See: /docs/components/chat-messages
+> Use the `ChatMessages` component to display a list of chat messages.
 
 ### Parts
 
@@ -32,11 +28,8 @@ Use the `parts` prop to display the message content using the AI SDK v5 format.
 </template>
 ```
 
-<note>
-
-The `parts` prop is the recommended format for AI SDK v5. Each part has a `type` (e.g., 'text') and corresponding content. The ChatMessage component also supports the deprecated `content` prop for backward compatibility.
-
-</note>
+> [!NOTE]
+> The `parts` prop is the recommended format for AI SDK v5. Each part has a `type` (e.g., 'text') and corresponding content. The ChatMessage component also supports the deprecated `content` prop for backward compatibility.
 
 ### Side
 
@@ -48,11 +41,8 @@ Use the `side` prop to display the message on the left or right.
 </template>
 ```
 
-<note>
-
-When using the [`ChatMessages`](/docs/components/chat-messages) component, the `side` prop is set to `left` for `assistant` messages and `right` for `user` messages.
-
-</note>
+> [!NOTE]
+> When using the [`ChatMessages`](/docs/components/chat-messages) component, the `side` prop is set to `left` for `assistant` messages and `right` for `user` messages.
 
 ### Variant
 
@@ -64,11 +54,8 @@ Use the `variant` prop to change style of the message.
 </template>
 ```
 
-<note>
-
-When using the [`ChatMessages`](/docs/components/chat-messages) component, the `variant` prop is set to `naked` for `assistant` messages and `soft` for `user` messages.
-
-</note>
+> [!NOTE]
+> When using the [`ChatMessages`](/docs/components/chat-messages) component, the `variant` prop is set to `naked` for `assistant` messages and `soft` for `user` messages.
 
 ### Icon
 
@@ -103,6 +90,10 @@ You can also use the `avatar.icon` prop to display an icon as the avatar.
 Use the `actions` prop to display actions below the message that will be displayed when hovering over the message.
 
 ```vue
+<script setup lang="ts">
+import type { ButtonProps } from '@nuxt/ui'
+</script>
+
 <template>
   <UChatMessage role="user" id="1" />
 </template>
@@ -141,7 +132,7 @@ interface ChatMessageProps {
    * @default "\"article\""
    */
   as?: any;
-  icon?: string | object | undefined;
+  icon?: any;
   avatar?: (AvatarProps & { [key: string]: any; }) | undefined;
   variant?: "solid" | "outline" | "soft" | "subtle" | "naked" | undefined;
   side?: "left" | "right" | undefined;
@@ -312,8 +303,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

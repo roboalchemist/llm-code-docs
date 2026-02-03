@@ -1,8 +1,12 @@
 # Source: https://dev.writer.com/blueprints/httprequest.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # HTTP Request
 
-Sends a HTTP request to an API endpoint. Used to fetch data or send data.
+Sends an HTTP request to an API endpoint. Used to fetch or send data.
 
 <img src="https://mintcdn.com/writer/KruNpIclsgQbhj82/images/agent-builder/blueprints/http-request-block.png?fit=max&auto=format&n=KruNpIclsgQbhj82&q=85&s=f16580b0da0799d3e2e7b634b0ae5ad3" alt="" data-og-width="2310" width="2310" data-og-height="1490" height="1490" data-path="images/agent-builder/blueprints/http-request-block.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/writer/KruNpIclsgQbhj82/images/agent-builder/blueprints/http-request-block.png?w=280&fit=max&auto=format&n=KruNpIclsgQbhj82&q=85&s=2ebc880428b61323734d9252705adb1d 280w, https://mintcdn.com/writer/KruNpIclsgQbhj82/images/agent-builder/blueprints/http-request-block.png?w=560&fit=max&auto=format&n=KruNpIclsgQbhj82&q=85&s=b59d2c22fa8f19372400a76cecfbb39a 560w, https://mintcdn.com/writer/KruNpIclsgQbhj82/images/agent-builder/blueprints/http-request-block.png?w=840&fit=max&auto=format&n=KruNpIclsgQbhj82&q=85&s=9a827d81ce58fda7004c533c277b4ffe 840w, https://mintcdn.com/writer/KruNpIclsgQbhj82/images/agent-builder/blueprints/http-request-block.png?w=1100&fit=max&auto=format&n=KruNpIclsgQbhj82&q=85&s=432b8fe8efbd99c5c439ce49b738ea70 1100w, https://mintcdn.com/writer/KruNpIclsgQbhj82/images/agent-builder/blueprints/http-request-block.png?w=1650&fit=max&auto=format&n=KruNpIclsgQbhj82&q=85&s=205505cd825b9a46c0f2934b4a7e7115 1650w, https://mintcdn.com/writer/KruNpIclsgQbhj82/images/agent-builder/blueprints/http-request-block.png?w=2500&fit=max&auto=format&n=KruNpIclsgQbhj82&q=85&s=0b4a5458a3feecf5600c8b752bff346b 2500w" />
 
@@ -94,7 +98,7 @@ This workflow enables integration with external APIs to enhance your agent's cap
       </td>
 
       <td>
-        Allowed values: GET, POST, PUT, PATCH, DELETE
+        Allowed values: GET, POST, PUT, PATCH, DELETE,
       </td>
     </tr>
 

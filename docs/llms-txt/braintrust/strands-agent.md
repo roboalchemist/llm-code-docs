@@ -1,4 +1,8 @@
-# Source: https://braintrust.dev/docs/integrations/sdk-integrations/strands-agent.md
+# Source: https://braintrust.dev/docs/integrations/agent-frameworks/strands-agent.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Strands Agent SDK
 
@@ -111,8 +115,3 @@ if __name__ == "__main__":
 
 * [Strands Agent SDK documentation](https://strandsagents.com/)
 * [Braintrust OpenTelemetry guide](/integrations/sdk-integrations/opentelemetry)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/agent-desk/integrations/web-sdk/web-authentication.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Web Authentication
 
 This section details the process for authenticating your users to the ASAPP Chat SDK.
@@ -59,7 +63,7 @@ ASAPP('load', {
 
 The sample above initializes the ASAPP Chat SDK with your user's `CustomerId` and a `ContextProvider` incorporating that user's `Auth`.
 
-When a user opens the ASAPP Chat SDK, they will already be authenticated to the chat client and can access account information within the chat without being asked to login again.
+When a user opens the ASAPP Chat SDK, they are already authenticated to the chat client and can access account information within the chat without being asked to login again.
 
 ## Authenticating Asynchronously
 
@@ -87,7 +91,7 @@ ASAPP('setCustomer', {
 </script>
 ```
 
-Once you call the [SetCustomer](/agent-desk/integrations/web-sdk/web-javascript-api#setcustomer "'setCustomer'") method is called, and as long as the provided `Auth` information remains valid on your backend, any ASAPP Chat SDK actions that require authentication will be properly authenticated.
+Once you call the [SetCustomer](/agent-desk/integrations/web-sdk/web-javascript-api#setcustomer "'setCustomer'") method, and as long as the provided `Auth` information remains valid on your backend, any ASAPP Chat SDK actions that require authentication authenticate properly.
 
 <Note>
   The SetCustomer method is typically called as part of the [UserLoginHandler](/agent-desk/integrations/web-sdk/web-app-settings#userloginhandler-11877 "UserLoginHandler").

@@ -2,18 +2,6 @@
 
 # Source: https://docs.apify.com/academy/deploying-your-code/inputs-outputs.md
 
-# Source: https://docs.apify.com/academy/getting-started/inputs-outputs.md
-
-# Source: https://docs.apify.com/academy/deploying-your-code/inputs-outputs.md
-
-# Source: https://docs.apify.com/academy/getting-started/inputs-outputs.md
-
-# Source: https://docs.apify.com/academy/deploying-your-code/inputs-outputs.md
-
-# Source: https://docs.apify.com/academy/getting-started/inputs-outputs.md
-
-# Source: https://docs.apify.com/academy/deploying-your-code/inputs-outputs.md
-
 # Managing Actor inputs and outputs
 
 **Learn to accept input into your Actor, process it, and return output. This concept applies to Actors in any language.**
@@ -30,13 +18,13 @@ Understanding inputs and outputs is essential because they are read/written diff
 
 ## A bit about storage
 
-You can read/write your inputs/outputs: to the https://docs.apify.com/platform/storage/key-value-store.md, or to the https://docs.apify.com/platform/storage/dataset.md. The key-value store can be used to store any sort of unorganized/unrelated data in any format, while the data pushed to a dataset typically resembles a table with columns (fields) and rows (items). Each Actor's run is allocated both a default dataset and a default key-value store.
+You can read/write your inputs/outputs: to the [key-value store](https://docs.apify.com/platform/storage/key-value-store.md), or to the [dataset](https://docs.apify.com/platform/storage/dataset.md). The key-value store can be used to store any sort of unorganized/unrelated data in any format, while the data pushed to a dataset typically resembles a table with columns (fields) and rows (items). Each Actor's run is allocated both a default dataset and a default key-value store.
 
 When running locally, these storages are accessible through the **storage** folder within your project's root directory, while on the platform they are accessible via Apify's API.
 
 ## Accepting input
 
-You can utilize multiple ways to accept input into your project. The option you go with depends on the language you have written your project in. If you are using Node.js for your repo's code, you can use the https://www.npmjs.com/package/apify package. Otherwise, you can use the useful environment variables automatically set up for you by Apify to write utility functions which read the Actor's input and return it.
+You can utilize multiple ways to accept input into your project. The option you go with depends on the language you have written your project in. If you are using Node.js for your repo's code, you can use the [apify](https://www.npmjs.com/package/apify) package. Otherwise, you can use the useful environment variables automatically set up for you by Apify to write utility functions which read the Actor's input and return it.
 
 ### Accepting input with the Apify SDK
 
@@ -105,24 +93,24 @@ Cool! When we run `node index.js`, we see **20**.
 
 ### Accepting input without the Apify SDK
 
-Alternatively, when writing in a language other than JavaScript, we can create our own `get_input()` function which utilizes the Apify API when the Actor is running on the platform. For this example, we are using the https://docs.apify.com/academy/getting-started/apify-client.md for Python to access the API.
+Alternatively, when writing in a language other than JavaScript, we can create our own `get_input()` function which utilizes the Apify API when the Actor is running on the platform. For this example, we are using the [Apify Client](https://docs.apify.com/academy/getting-started/apify-client.md) for Python to access the API.
 
 
 ```
 # index.py
-from apify_client import ApifyClient
-from os import environ
 import json
+from os import environ
+from apify_client import ApifyClient
 
 client = ApifyClient(token='YOUR_TOKEN')
 
 # If being run on the platform, the "APIFY_IS_AT_HOME" environment variable
 # will be "1". Otherwise, it will be undefined/None
-def is_on_apify ():
+def is_on_apify():
     return 'APIFY_IS_AT_HOME' in environ
 
 # Get the input
-def get_input ():
+def get_input():
     if not is_on_apify():
         with open('./apify_storage/key_value_stores/default/INPUT.json') as actor_input:
             return json.load(actor_input)
@@ -130,7 +118,7 @@ def get_input ():
     kv_store = client.key_value_store(environ.get('APIFY_DEFAULT_KEY_VALUE_STORE_ID'))
     return kv_store.get_record('INPUT')['value']
 
-def add_all_numbers (nums):
+def add_all_numbers(nums):
     total = 0
 
     for num in nums:
@@ -139,14 +127,12 @@ def add_all_numbers (nums):
     return total
 
 actor_input = get_input()['numbers']
-
 solution = add_all_numbers(actor_input)
-
 print(solution)
 ```
 
 
-> For a better understanding of the API endpoints for reading and modifying key-value stores, check the https://docs.apify.com/api/v2/storage-key-value-stores.md.
+> For a better understanding of the API endpoints for reading and modifying key-value stores, check the [official API reference](https://docs.apify.com/api/v2/storage-key-value-stores.md).
 
 ## Writing output
 
@@ -190,16 +176,16 @@ You can read and write your output anywhere; however, it is standard practice to
 
 ```
 # index.py
-from apify_client import ApifyClient
-from os import environ
 import json
+from os import environ
+from apify_client import ApifyClient
 
 client = ApifyClient(token='YOUR_TOKEN')
 
-def is_on_apify ():
+def is_on_apify():
     return 'APIFY_IS_AT_HOME' in environ
 
-def get_input ():
+def get_input():
     if not is_on_apify():
         with open('./apify_storage/key_value_stores/default/INPUT.json') as actor_input:
             return json.load(actor_input)
@@ -208,15 +194,15 @@ def get_input ():
     return kv_store.get_record('INPUT')['value']
 
 # Push the solution to the dataset
-def set_output (data):
+def set_output(data):
     if not is_on_apify():
         with open('./apify_storage/datasets/default/solution.json', 'w') as output:
             return output.write(json.dumps(data, indent=2))
 
     dataset = client.dataset(environ.get('APIFY_DEFAULT_DATASET_ID'))
-    dataset.push_items('OUTPUT', value=[json.dumps(data, indent=4)])
+    dataset.push_items([json.dumps(data, indent=4)])
 
-def add_all_numbers (nums):
+def add_all_numbers(nums):
     total = 0
 
     for num in nums:
@@ -225,10 +211,8 @@ def add_all_numbers (nums):
     return total
 
 actor_input = get_input()['numbers']
-
 solution = add_all_numbers(actor_input)
-
-set_output({ 'solution': solution })
+set_output({'solution': solution})
 ```
 
 
@@ -248,4 +232,4 @@ After running our script, there should be a single item in the default dataset t
 
 ## Next up
 
-That's it! We've now added all of the files and code necessary to convert our software into an Actor. In the https://docs.apify.com/academy/deploying-your-code/input-schema.md, we'll be learning how to generate a user interface for our Actor's input so that users don't have to provide the input in raw JSON format.
+That's it! We've now added all of the files and code necessary to convert our software into an Actor. In the [next lesson](https://docs.apify.com/academy/deploying-your-code/input-schema.md), we'll be learning how to generate a user interface for our Actor's input so that users don't have to provide the input in raw JSON format.

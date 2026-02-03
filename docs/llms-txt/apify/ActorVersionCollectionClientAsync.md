@@ -27,7 +27,7 @@ Async sub-client for manipulating Actor versions.
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#__init__)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/actor_version_collection.py#L87)\_\_init\_\_
+### [**](#__init__)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/actor_version_collection.py#L87)\_\_init\_\_
 
 * ****\_\_init\_\_**(\*, base\_url, root\_client, http\_client, resource\_id, resource\_path, params): None
 
@@ -65,7 +65,7 @@ Async sub-client for manipulating Actor versions.
 
   #### Returns None
 
-### [**](#create)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/actor_version_collection.py#L101)create
+### [**](#create)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/actor_version_collection.py#L101)create
 
 * **async **create**(\*, version\_number, build\_tag, env\_vars, apply\_env\_vars\_to\_build, source\_type, source\_files, git\_repo\_url, tarball\_url, github\_gist\_url): dict
 
@@ -115,7 +115,7 @@ Async sub-client for manipulating Actor versions.
 
   #### Returns dict
 
-### [**](#list)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/actor_version_collection.py#L91)list
+### [**](#list)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/actor_version_collection.py#L91)list
 
 * **async **list**(): [ListPage](https://docs.apify.com/api/client/python/api/client/python/reference/class/ListPage.md)\[dict]
 
@@ -129,7 +129,7 @@ Async sub-client for manipulating Actor versions.
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#http_client)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/base/base_client.py#L94)http\_client
+### [**](#http_client)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/base/base_client.py#L94)http\_client
 
 **http\_client: [HTTPClient](https://docs.apify.com/api/client/python/api/client/python/reference/class/HTTPClient.md) | [HTTPClientAsync](https://docs.apify.com/api/client/python/api/client/python/reference/class/HTTPClientAsync.md)
 
@@ -137,19 +137,19 @@ Inherited from [BaseClientAsync.http\_client](https://docs.apify.com/api/client/
 
 Overrides [\_BaseBaseClient.http\_client](https://docs.apify.com/api/client/python/api/client/python/reference/class/_BaseBaseClient.md#http_client)
 
-### [**](#params)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/base/base_client.py#L17)params
+### [**](#params)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/base/base_client.py#L17)params
 
 **params: dict
 
 Inherited from [\_BaseBaseClient.params](https://docs.apify.com/api/client/python/api/client/python/reference/class/_BaseBaseClient.md#params)
 
-### [**](#resource_id)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/base/base_client.py#L15)resource\_id
+### [**](#resource_id)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/base/base_client.py#L15)resource\_id
 
 **resource\_id: str | None
 
 Inherited from [\_BaseBaseClient.resource\_id](https://docs.apify.com/api/client/python/api/client/python/reference/class/_BaseBaseClient.md#resource_id)
 
-### [**](#root_client)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/base/base_client.py#L95)root\_client
+### [**](#root_client)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/base/base_client.py#L95)root\_client
 
 **root\_client: [ApifyClient](https://docs.apify.com/api/client/python/api/client/python/reference/class/ApifyClient.md) | [ApifyClientAsync](https://docs.apify.com/api/client/python/api/client/python/reference/class/ApifyClientAsync.md)
 
@@ -157,7 +157,7 @@ Inherited from [BaseClientAsync.root\_client](https://docs.apify.com/api/client/
 
 Overrides [\_BaseBaseClient.root\_client](https://docs.apify.com/api/client/python/api/client/python/reference/class/_BaseBaseClient.md#root_client)
 
-### [**](#url)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/base/base_client.py#L16)url
+### [**](#url)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/base/base_client.py#L16)url
 
 **url: str
 

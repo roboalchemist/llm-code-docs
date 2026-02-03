@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/security/soc.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SOC 2 Type 2
 
 > Keeping your data secure.

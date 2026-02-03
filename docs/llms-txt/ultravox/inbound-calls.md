@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/telephony/inbound-calls.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Inbound Calls
 
 > Configure AI agents to answer incoming phone calls.
@@ -55,8 +59,3 @@ For more see [Template Context →](/agents/making-calls#template-context-and-va
 
 * Check out the [Inbound Call Quickstart](/gettingstarted/quickstart/telephony-inbound)
 * Learn about [Call Transfers](/telephony/call-transfers) to escalate calls to human agents
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

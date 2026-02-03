@@ -2,6 +2,8 @@
 
 # Auth0 Identity Provider
 
+Copy page
+
 Connect ConfigCat with Auth0 via SAML.
 
 ## Introduction[​](#introduction "Direct link to Introduction")
@@ -44,7 +46,7 @@ The next step will guide you on how to collect the information required for the 
   * `Assertion Consumer Service` -> `Application Callback URL`
   * For `Settings`, use the following JSON value:
 
-  ```
+  ```text
   {
     "audience": "<paste-your-entity-id-here>",
     "signatureAlgorithm": "rsa-sha256",
@@ -52,6 +54,7 @@ The next step will guide you on how to collect the information required for the 
       "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"
     ]
   }
+
   ```
 
   ![ConfigCat ACS configuration](/docs/assets/saml/dashboard/acs_entity_id_1.png) ![Auth0 ACS configuration](/docs/assets/saml/auth0/auth0_acs_eid.png)
@@ -91,7 +94,7 @@ You can choose one of the following options to configure ConfigCat with SAML Ide
 
 ## 4. Sign In[​](#4-sign-in "Direct link to 4. Sign In")
 
-* Go to the [ConfigCat Log In](https://app.configcat.com/auth/login) page, and click `COMPANY ACCOUNT - SAML`.
+* Go to the [ConfigCat Log In](https://app.configcat.com) page, and click `COMPANY ACCOUNT - SAML`.
 
   ![ConfigCat SAML login](/docs/assets/saml/dashboard/saml_login.png)
 
@@ -107,4 +110,4 @@ You can choose one of the following options to configure ConfigCat with SAML Ide
 
 ## 5. Next Steps[​](#5-next-steps "Direct link to 5. Next Steps")
 
-* Configure the [auto-assignment of users](https://configcat.com/docs/docs/advanced/team-management/auto-assign-users/.md).
+* Configure the [auto-assignment of users](https://configcat.com/docs/advanced/team-management/auto-assign-users.md).

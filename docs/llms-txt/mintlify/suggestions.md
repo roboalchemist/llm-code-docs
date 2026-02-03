@@ -1,14 +1,18 @@
-# Source: https://mintlify.com/docs/ai/suggestions.md
+# Source: https://www.mintlify.com/docs/agent/suggestions.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Agent suggestions
 
 > Monitor Git repositories for changes and receive suggested documentation updates.
 
 <Note>
-  Agent suggestions are available on [Custom plans](https://mintlify.com/pricing?ref=autopilot). To enable suggestions for your organization, [contact our sales team](mailto:gtm@mintlify.com).
+  Agent suggestions are available on [Enterprise plans](https://mintlify.com/pricing?ref=autopilot). To enable suggestions for your organization, [contact our sales team](mailto:gtm@mintlify.com).
 </Note>
 
-You can allow the [agent](/ai/agent) to suggest documentation updates from two sources.
+You can allow the agent to suggest documentation updates from two sources.
 
 * **Pull request changes**: Monitor selected Git repositories for code changes that require documentation updates.
 * **Assistant conversations**: Analyze questions that users ask the assistant on your documentation site to identify content gaps.
@@ -37,7 +41,7 @@ To access the agent settings:
 
 ### Monitor repositories
 
-The agent monitors the default branch (typically `main`) for each repository that you enable. A GitHub check named **Mintlify Autopilot** runs on pull requests in monitored repositories to analyze them for potential documentation updates. When you merge a pull request that requires documentation updates, the agent creates a suggestion in your dashboard.
+The agent monitors all merged pull requests for each repository that you enable, regardless of which branch they're merged into. A GitHub check named **Mintlify Autopilot** runs on pull requests in monitored repositories to analyze them for potential documentation updates. When you merge a pull request that requires documentation updates, the agent creates a suggestion in your dashboard.
 
 <Note>
   When you first enable monitoring for a repository, the agent creates suggestions for pull requests merged in the last seven days. This backfill only occurs if no suggestions already exist for that repository. You may see multiple suggestions appear immediately after enabling monitoring.
@@ -47,9 +51,9 @@ If you disable monitoring, the agent immediately stops monitoring the repository
 
 ### Conversation insights
 
-Enable conversation insights to receive suggestions based on common questions users ask the assistant.
+If you have access to the agent and the assistant, the agent creates suggestions from conversations that your users have with the assistant.
 
-When enabled, the agent periodically analyzes assistant conversations and creates suggestions when it identifies patterns of questions that indicate missing or unclear documentation.
+The agent periodically analyzes assistant conversations and creates suggestions when it identifies patterns of questions that indicate missing or unclear documentation.
 
 ### Notifications
 
@@ -87,8 +91,3 @@ If a suggestion doesn't require documentation updates or you've already addresse
 2. Click the **Dismiss** button next to any suggestions that you want to dismiss.
 
 The suggestion is immediately removed from your dashboard. You cannot retrieve dismissed suggestions.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://mintlify.com/docs/llms.txt

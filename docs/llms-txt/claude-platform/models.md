@@ -26,62 +26,6 @@
 
 # Source: https://platform.claude.com/docs/en/api/models.md
 
-# Source: https://platform.claude.com/docs/en/api/typescript/models.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/models.md
-
-# Source: https://platform.claude.com/docs/en/api/python/models.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/models.md
-
-# Source: https://platform.claude.com/docs/en/api/java/models.md
-
-# Source: https://platform.claude.com/docs/en/api/go/models.md
-
-# Source: https://platform.claude.com/docs/en/api/typescript/beta/models.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/beta/models.md
-
-# Source: https://platform.claude.com/docs/en/api/python/beta/models.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/beta/models.md
-
-# Source: https://platform.claude.com/docs/en/api/java/beta/models.md
-
-# Source: https://platform.claude.com/docs/en/api/go/beta/models.md
-
-# Source: https://platform.claude.com/docs/en/api/beta/models.md
-
-# Source: https://platform.claude.com/docs/en/api/models.md
-
-# Source: https://platform.claude.com/docs/en/api/typescript/models.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/models.md
-
-# Source: https://platform.claude.com/docs/en/api/python/models.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/models.md
-
-# Source: https://platform.claude.com/docs/en/api/java/models.md
-
-# Source: https://platform.claude.com/docs/en/api/go/models.md
-
-# Source: https://platform.claude.com/docs/en/api/typescript/beta/models.md
-
-# Source: https://platform.claude.com/docs/en/api/ruby/beta/models.md
-
-# Source: https://platform.claude.com/docs/en/api/python/beta/models.md
-
-# Source: https://platform.claude.com/docs/en/api/kotlin/beta/models.md
-
-# Source: https://platform.claude.com/docs/en/api/java/beta/models.md
-
-# Source: https://platform.claude.com/docs/en/api/go/beta/models.md
-
-# Source: https://platform.claude.com/docs/en/api/beta/models.md
-
-# Source: https://platform.claude.com/docs/en/api/models.md
-
 # Models
 
 ## List
@@ -196,6 +140,7 @@ The Models API response can be used to determine which models are available for 
 
 ```http
 curl https://api.anthropic.com/v1/models \
+    -H 'anthropic-version: 2023-06-01' \
     -H "X-Api-Key: $ANTHROPIC_API_KEY"
 ```
 
@@ -289,6 +234,7 @@ The Models API response can be used to determine information about a specific mo
 
 ```http
 curl https://api.anthropic.com/v1/models/$MODEL_ID \
+    -H 'anthropic-version: 2023-06-01' \
     -H "X-Api-Key: $ANTHROPIC_API_KEY"
 ```
 

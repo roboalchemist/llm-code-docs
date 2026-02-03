@@ -6,11 +6,11 @@
 
 ***
 
-https://haystack.deepset.ai/ is an open source framework for building production-ready LLM applications, agents, advanced retrieval-augmented generative pipelines, and state-of-the-art search systems that work intelligently over large document collections. For more information on Haystack, visit its https://docs.haystack.deepset.ai/docs/intro.
+[Haystack](https://haystack.deepset.ai/) is an open source framework for building production-ready LLM applications, agents, advanced retrieval-augmented generative pipelines, and state-of-the-art search systems that work intelligently over large document collections. For more information on Haystack, visit its [documentation](https://docs.haystack.deepset.ai/docs/intro).
 
-In this example, we'll use the https://apify.com/apify/website-content-crawler Actor, which can deeply crawl websites such as documentation sites, knowledge bases, or blogs, and extract text content from the web pages. Then, we'll use the `OpenAIDocumentEmbedder` to compute text embeddings and the `InMemoryDocumentStore` to store documents in a temporary in-memory database. The last step will be to retrieve the most similar documents.
+In this example, we'll use the [Website Content Crawler](https://apify.com/apify/website-content-crawler) Actor, which can deeply crawl websites such as documentation sites, knowledge bases, or blogs, and extract text content from the web pages. Then, we'll use the `OpenAIDocumentEmbedder` to compute text embeddings and the `InMemoryDocumentStore` to store documents in a temporary in-memory database. The last step will be to retrieve the most similar documents.
 
-This example uses the Apify-Haystack Python integration published on https://pypi.org/project/apify-haystack/. Before we start with the integration, we need to install all dependencies:
+This example uses the Apify-Haystack Python integration published on [PyPi](https://pypi.org/project/apify-haystack/). Before we start with the integration, we need to install all dependencies:
 
 
 ```
@@ -34,7 +34,7 @@ from apify_haystack import ApifyDatasetFromActorCall
 ```
 
 
-Find your https://console.apify.com/account/integrations and https://platform.openai.com/account/api-keys and initialize these into environment variable:
+Find your [Apify API token](https://console.apify.com/account/integrations) and [OpenAI API key](https://platform.openai.com/account/api-keys) and initialize these into environment variable:
 
 
 ```
@@ -60,9 +60,9 @@ document_loader = ApifyDatasetFromActorCall(
 ```
 
 
-You can learn more about input parameters on the https://apify.com/apify/website-content-crawler/input-schema. The dataset mapping function is described in more detail in the https://colab.research.google.com/github/deepset-ai/haystack-cookbook/blob/main/notebooks/apify_haystack_rag.ipynb.
+You can learn more about input parameters on the [Website Content Crawler inputs page](https://apify.com/apify/website-content-crawler/input-schema). The dataset mapping function is described in more detail in the [Retrieval augmented generation example](https://colab.research.google.com/github/deepset-ai/haystack-cookbook/blob/main/notebooks/apify_haystack_rag.ipynb).
 
-Next, you can utilize the https://docs.haystack.deepset.ai/docs/pipelines, which helps you connect several processing components together. I n this example, we connect the document loader with the document splitter, document embedder, and document writer components.
+Next, you can utilize the [Haystack pipeline](https://docs.haystack.deepset.ai/docs/pipelines), which helps you connect several processing components together. I n this example, we connect the document loader with the document splitter, document embedder, and document writer components.
 
 
 ```
@@ -186,8 +186,8 @@ To run it, you can use the following command: `python apify_integration.py`
 
 ## Resources
 
-* https://haystack.deepset.ai/integrations/apify
-* https://github.com/apify/apify-haystack
-* https://haystack.deepset.ai/cookbook/apify_haystack_rag
-* https://haystack.deepset.ai/cookbook/apify_haystack_rag_web_browser
-* https://haystack.deepset.ai/cookbook/apify_haystack_instagram_comments_analysis
+* [Apify-haystack integration documentation](https://haystack.deepset.ai/integrations/apify)
+* [Apify-haystack integration source code](https://github.com/apify/apify-haystack)
+* [Example: RAG - Extract and use website content for question answering](https://haystack.deepset.ai/cookbook/apify_haystack_rag)
+* [Example: RAG: Web Search and Analysis with Apify and Haystack](https://haystack.deepset.ai/cookbook/apify_haystack_rag_web_browser)
+* [Example: Analyze Your Instagram Comments’ Vibe](https://haystack.deepset.ai/cookbook/apify_haystack_instagram_comments_analysis)

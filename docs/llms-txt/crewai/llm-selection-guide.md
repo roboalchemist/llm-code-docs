@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/learn/llm-selection-guide.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Strategic LLM Selection Guide
 
 > Strategic framework for choosing the right LLM for your CrewAI AI agents and writing effective task and agent definitions
@@ -9,26 +13,38 @@
 Rather than prescriptive model recommendations, we advocate for a **thinking framework** that helps you make informed decisions based on your specific use case, constraints, and requirements. The LLM landscape evolves rapidly, with new models emerging regularly and existing ones being updated frequently. What matters most is developing a systematic approach to evaluation that remains relevant regardless of which specific models are available.
 
 <Note>
-  This guide focuses on strategic thinking rather than specific model recommendations, as the LLM landscape evolves rapidly.
+  This guide focuses on strategic thinking rather than specific model
+  recommendations, as the LLM landscape evolves rapidly.
 </Note>
 
 ## Quick Decision Framework
 
 <Steps>
   <Step title="Analyze Your Tasks">
-    Begin by deeply understanding what your tasks actually require. Consider the cognitive complexity involved, the depth of reasoning needed, the format of expected outputs, and the amount of context the model will need to process. This foundational analysis will guide every subsequent decision.
+    Begin by deeply understanding what your tasks actually require. Consider the
+    cognitive complexity involved, the depth of reasoning needed, the format of
+    expected outputs, and the amount of context the model will need to process.
+    This foundational analysis will guide every subsequent decision.
   </Step>
 
   <Step title="Map Model Capabilities">
-    Once you understand your requirements, map them to model strengths. Different model families excel at different types of work; some are optimized for reasoning and analysis, others for creativity and content generation, and others for speed and efficiency.
+    Once you understand your requirements, map them to model strengths.
+    Different model families excel at different types of work; some are
+    optimized for reasoning and analysis, others for creativity and content
+    generation, and others for speed and efficiency.
   </Step>
 
   <Step title="Consider Constraints">
-    Factor in your real-world operational constraints including budget limitations, latency requirements, data privacy needs, and infrastructure capabilities. The theoretically best model may not be the practically best choice for your situation.
+    Factor in your real-world operational constraints including budget
+    limitations, latency requirements, data privacy needs, and infrastructure
+    capabilities. The theoretically best model may not be the practically best
+    choice for your situation.
   </Step>
 
   <Step title="Test and Iterate">
-    Start with reliable, well-understood models and optimize based on actual performance in your specific use case. Real-world results often differ from theoretical benchmarks, so empirical testing is crucial.
+    Start with reliable, well-understood models and optimize based on actual
+    performance in your specific use case. Real-world results often differ from
+    theoretical benchmarks, so empirical testing is crucial.
   </Step>
 </Steps>
 
@@ -115,7 +131,8 @@ Understanding model capabilities requires looking beyond marketing claims and be
 ### a. Multi-Model Approach
 
 <Tip>
-  Use different models for different purposes within the same crew to optimize both performance and cost.
+  Use different models for different purposes within the same crew to optimize
+  both performance and cost.
 </Tip>
 
 The most sophisticated CrewAI implementations often employ multiple models strategically, assigning different models to different agents based on their specific roles and requirements. This approach allows teams to optimize for both performance and cost by using the most appropriate model for each type of work.
@@ -247,7 +264,8 @@ Effective task definition is often more important than model selection in determ
 ### a. Role-Driven LLM Selection
 
 <Warning>
-  Generic agent roles make it impossible to select the right LLM. Specific roles enable targeted model optimization.
+  Generic agent roles make it impossible to select the right LLM. Specific roles
+  enable targeted model optimization.
 </Warning>
 
 The specificity of your agent roles directly determines which LLM capabilities matter most for optimal performance. This creates a strategic opportunity to match precise model strengths with agent responsibilities.
@@ -276,7 +294,8 @@ specific_agent = Agent(
 ### b. Backstory as Model Context Amplifier
 
 <Info>
-  Strategic backstories multiply your chosen LLM's effectiveness by providing domain-specific context that generic prompting cannot achieve.
+  Strategic backstories multiply your chosen LLM's effectiveness by providing
+  domain-specific context that generic prompting cannot achieve.
 </Info>
 
 A well-crafted backstory transforms your LLM choice from generic capability to specialized expertise. This is especially crucial for cost optimization - a well-contextualized efficient model can outperform a premium model without proper context.
@@ -535,24 +554,38 @@ Rather than repeating the strategic framework, here's a tactical checklist for i
 
 <Steps>
   <Step title="Start Simple" icon="play">
-    Begin with reliable, general-purpose models that are well-understood and widely supported. This provides a stable foundation for understanding your specific requirements and performance expectations before optimizing for specialized needs.
+    Begin with reliable, general-purpose models that are well-understood and
+    widely supported. This provides a stable foundation for understanding your
+    specific requirements and performance expectations before optimizing for
+    specialized needs.
   </Step>
 
   <Step title="Measure What Matters" icon="chart-line">
-    Develop metrics that align with your specific use case and business requirements rather than relying solely on general benchmarks. Focus on measuring outcomes that directly impact your success rather than theoretical performance indicators.
+    Develop metrics that align with your specific use case and business
+    requirements rather than relying solely on general benchmarks. Focus on
+    measuring outcomes that directly impact your success rather than theoretical
+    performance indicators.
   </Step>
 
   <Step title="Iterate Based on Results" icon="arrows-rotate">
-    Make model changes based on observed performance in your specific context rather than theoretical considerations or general recommendations. Real-world performance often differs significantly from benchmark results or general reputation.
+    Make model changes based on observed performance in your specific context
+    rather than theoretical considerations or general recommendations.
+    Real-world performance often differs significantly from benchmark results or
+    general reputation.
   </Step>
 
   <Step title="Consider Total Cost" icon="calculator">
-    Evaluate the complete cost of ownership including model costs, development time, maintenance overhead, and operational complexity. The cheapest model per token may not be the most cost-effective choice when considering all factors.
+    Evaluate the complete cost of ownership including model costs, development
+    time, maintenance overhead, and operational complexity. The cheapest model
+    per token may not be the most cost-effective choice when considering all
+    factors.
   </Step>
 </Steps>
 
 <Tip>
-  Focus on understanding your requirements first, then select models that best match those needs. The best LLM choice is the one that consistently delivers the results you need within your operational constraints.
+  Focus on understanding your requirements first, then select models that best
+  match those needs. The best LLM choice is the one that consistently delivers
+  the results you need within your operational constraints.
 </Tip>
 
 ### Enterprise-Grade Model Validation
@@ -578,7 +611,9 @@ For teams serious about optimizing their LLM selection, the **CrewAI AMP platfor
 Go to [app.crewai.com](https://app.crewai.com) to get started!
 
 <Info>
-  The Enterprise platform transforms model selection from guesswork into a data-driven process, enabling you to validate the principles in this guide with your actual use cases and requirements.
+  The Enterprise platform transforms model selection from guesswork into a
+  data-driven process, enabling you to validate the principles in this guide
+  with your actual use cases and requirements.
 </Info>
 
 ## Key Principles Summary
@@ -588,17 +623,27 @@ Go to [app.crewai.com](https://app.crewai.com) to get started!
     Choose models based on what the task actually requires, not theoretical capabilities or general reputation.
   </Card>
 
+  {" "}
+
   <Card title="Capability Matching" icon="puzzle-piece">
-    Align model strengths with agent roles and responsibilities for optimal performance.
+    Align model strengths with agent roles and responsibilities for optimal
+    performance.
   </Card>
 
+  {" "}
+
   <Card title="Strategic Consistency" icon="link">
-    Maintain coherent model selection strategy across related components and workflows.
+    Maintain coherent model selection strategy across related components and
+    workflows.
   </Card>
+
+  {" "}
 
   <Card title="Practical Testing" icon="flask">
     Validate choices through real-world usage rather than benchmarks alone.
   </Card>
+
+  {" "}
 
   <Card title="Iterative Improvement" icon="arrow-up">
     Start simple and optimize based on actual performance and needs.
@@ -610,13 +655,20 @@ Go to [app.crewai.com](https://app.crewai.com) to get started!
 </CardGroup>
 
 <Check>
-  Remember: The best LLM choice is the one that consistently delivers the results you need within your operational constraints. Focus on understanding your requirements first, then select models that best match those needs.
+  Remember: The best LLM choice is the one that consistently delivers the
+  results you need within your operational constraints. Focus on understanding
+  your requirements first, then select models that best match those needs.
 </Check>
 
 ## Current Model Landscape (June 2025)
 
 <Warning>
-  **Snapshot in Time**: The following model rankings represent current leaderboard standings as of June 2025, compiled from [LMSys Arena](https://arena.lmsys.org/), [Artificial Analysis](https://artificialanalysis.ai/), and other leading benchmarks. LLM performance, availability, and pricing change rapidly. Always conduct your own evaluations with your specific use cases and data.
+  **Snapshot in Time**: The following model rankings represent current
+  leaderboard standings as of June 2025, compiled from [LMSys
+  Arena](https://arena.lmsys.org/), [Artificial
+  Analysis](https://artificialanalysis.ai/), and other leading benchmarks. LLM
+  performance, availability, and pricing change rapidly. Always conduct your own
+  evaluations with your specific use cases and data.
 </Warning>
 
 ### Leading Models by Category
@@ -624,7 +676,10 @@ Go to [app.crewai.com](https://app.crewai.com) to get started!
 The tables below show a representative sample of current top-performing models across different categories, with guidance on their suitability for CrewAI agents:
 
 <Note>
-  These tables/metrics showcase selected leading models in each category and are not exhaustive. Many excellent models exist beyond those listed here. The goal is to illustrate the types of capabilities to look for rather than provide a complete catalog.
+  These tables/metrics showcase selected leading models in each category and are
+  not exhaustive. Many excellent models exist beyond those listed here. The goal
+  is to illustrate the types of capabilities to look for rather than provide a
+  complete catalog.
 </Note>
 
 <Tabs>
@@ -722,7 +777,10 @@ The tables below show a representative sample of current top-performing models a
 * **Open Source Viability**: The gap between open-source and proprietary models continues to narrow, with models like Llama 4 Maverick and DeepSeek V3 offering competitive performance at attractive price points. Fast inference providers particularly shine with open-source models, often delivering better speed-to-cost ratios than proprietary alternatives.
 
 <Info>
-  **Testing is Essential**: Leaderboard rankings provide general guidance, but your specific use case, prompting style, and evaluation criteria may produce different results. Always test candidate models with your actual tasks and data before making final decisions.
+  **Testing is Essential**: Leaderboard rankings provide general guidance, but
+  your specific use case, prompting style, and evaluation criteria may produce
+  different results. Always test candidate models with your actual tasks and
+  data before making final decisions.
 </Info>
 
 ### Practical Implementation Strategy
@@ -732,12 +790,21 @@ The tables below show a representative sample of current top-performing models a
     Begin with well-established models like **GPT-4.1**, **Claude 3.7 Sonnet**, or **Gemini 2.0 Flash** that offer good performance across multiple dimensions and have extensive real-world validation.
   </Step>
 
+  {" "}
+
   <Step title="Identify Specialized Needs">
-    Determine if your crew has specific requirements (coding, reasoning, speed) that would benefit from specialized models like **Claude 4 Sonnet** for development or **o3** for complex analysis. For speed-critical applications, consider fast inference providers like **Groq** alongside model selection.
+    Determine if your crew has specific requirements (coding, reasoning, speed)
+    that would benefit from specialized models like **Claude 4 Sonnet** for
+    development or **o3** for complex analysis. For speed-critical applications,
+    consider fast inference providers like **Groq** alongside model selection.
   </Step>
 
+  {" "}
+
   <Step title="Implement Multi-Model Strategy">
-    Use different models for different agents based on their roles. High-capability models for managers and complex tasks, efficient models for routine operations.
+    Use different models for different agents based on their roles.
+    High-capability models for managers and complex tasks, efficient models for
+    routine operations.
   </Step>
 
   <Step title="Monitor and Optimize">

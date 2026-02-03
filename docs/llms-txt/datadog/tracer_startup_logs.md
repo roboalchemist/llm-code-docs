@@ -6,7 +6,6 @@ description: >-
   Configure and analyze tracer startup logs to troubleshoot configuration issues
   and Agent connectivity.
 breadcrumbs: Docs > APM > APM Troubleshooting > Tracer Startup Logs
-source_url: https://docs.datadoghq.com/troubleshooting/tracer_startup_logs/index.html
 ---
 
 # Tracer Startup Logs

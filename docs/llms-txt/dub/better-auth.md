@@ -1,5 +1,9 @@
 # Source: https://dub.co/docs/conversions/leads/better-auth.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dub.co/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Better Auth
 
 > Learn how to track lead conversion events with Better Auth and Dub

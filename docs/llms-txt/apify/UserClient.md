@@ -2,19 +2,31 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/class/UserClient.md
 
-# Source: https://docs.apify.com/api/client/python/reference/class/UserClient.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/UserClient.md
-
-# Source: https://docs.apify.com/api/client/python/reference/class/UserClient.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/UserClient.md
-
-# Source: https://docs.apify.com/api/client/python/reference/class/UserClient.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/UserClient.md
-
 # UserClient<!-- -->
+
+Client for managing user account information.
+
+Provides methods to retrieve user details, monthly usage statistics, and account limits. When using an API token, you can access your own user information or public information about other users.
+
+* **@example**
+
+  ```
+  const client = new ApifyClient({ token: 'my-token' });
+  const userClient = client.user('my-user-id');
+
+  // Get user information
+  const user = await userClient.get();
+
+  // Get monthly usage
+  const usage = await userClient.monthlyUsage();
+
+  // Get account limits
+  const limits = await userClient.limits();
+  ```
+
+* **@see**
+
+  <https://docs.apify.com/platform/actors/running>
 
 ### Hierarchy
 
@@ -44,25 +56,25 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#apifyClient)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L35)inheritedapifyClient
+### [**](#apifyClient)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L36)inheritedapifyClient
 
 **apifyClient: [ApifyClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/ApifyClient.md)
 
 Inherited from ResourceClient.apifyClient
 
-### [**](#baseUrl)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L27)inheritedbaseUrl
+### [**](#baseUrl)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L28)inheritedbaseUrl
 
 **baseUrl: string
 
 Inherited from ResourceClient.baseUrl
 
-### [**](#httpClient)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L37)inheritedhttpClient
+### [**](#httpClient)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L38)inheritedhttpClient
 
 **httpClient: HttpClient
 
 Inherited from ResourceClient.httpClient
 
-### [**](#id)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L23)optionalinheritedid
+### [**](#id)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L24)optionalinheritedid
 
 **id?
 
@@ -72,7 +84,7 @@ Inherited from ResourceClient.httpClient
 
 Inherited from ResourceClient.id
 
-### [**](#params)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L39)optionalinheritedparams
+### [**](#params)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L40)optionalinheritedparams
 
 **params?
 
@@ -82,19 +94,19 @@ Inherited from ResourceClient.id
 
 Inherited from ResourceClient.params
 
-### [**](#publicBaseUrl)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L29)inheritedpublicBaseUrl
+### [**](#publicBaseUrl)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L30)inheritedpublicBaseUrl
 
 **publicBaseUrl: string
 
 Inherited from ResourceClient.publicBaseUrl
 
-### [**](#resourcePath)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L31)inheritedresourcePath
+### [**](#resourcePath)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L32)inheritedresourcePath
 
 **resourcePath: string
 
 Inherited from ResourceClient.resourcePath
 
-### [**](#safeId)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L25)optionalinheritedsafeId
+### [**](#safeId)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L26)optionalinheritedsafeId
 
 **safeId?
 
@@ -104,7 +116,7 @@ Inherited from ResourceClient.resourcePath
 
 Inherited from ResourceClient.safeId
 
-### [**](#url)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L33)inheritedurl
+### [**](#url)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L34)inheritedurl
 
 **url: string
 
@@ -112,46 +124,72 @@ Inherited from ResourceClient.url
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#get)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/user.ts#L23)get
+### [**](#get)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/user.ts#L51)get
 
 * ****get**(): Promise<[User](https://docs.apify.com/api/client/js/api/client/js/reference/interface/User.md)>
 
-- Depending on whether ApifyClient was created with a token, the method will either return public or private user data. <https://docs.apify.com/api/v2#/reference/users>
+- Retrieves the user data.
+
+  Depending on whether ApifyClient was created with a token, the method will either return public or private user data.
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/user-get>
 
   ***
 
   #### Returns Promise<[User](https://docs.apify.com/api/client/js/api/client/js/reference/interface/User.md)>
 
-### [**](#limits)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/user.ts#L55)limits
+  The user object.
+
+### [**](#limits)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/user.ts#L89)limits
 
 * ****limits**(): Promise\<undefined | [AccountAndUsageLimits](https://docs.apify.com/api/client/js/api/client/js/reference/interface/AccountAndUsageLimits.md)>
 
-- <https://docs.apify.com/api/v2/#/reference/users/account-and-usage-limits>
+- Retrieves the user's account and usage limits.
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/user-limits-get>
 
   ***
 
   #### Returns Promise\<undefined | [AccountAndUsageLimits](https://docs.apify.com/api/client/js/api/client/js/reference/interface/AccountAndUsageLimits.md)>
 
-### [**](#monthlyUsage)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/user.ts#L30)monthlyUsage
+  The account and usage limits object, or `undefined` if it does not exist.
+
+### [**](#monthlyUsage)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/user.ts#L61)monthlyUsage
 
 * ****monthlyUsage**(): Promise\<undefined | [MonthlyUsage](https://docs.apify.com/api/client/js/api/client/js/reference/interface/MonthlyUsage.md)>
 
-- <https://docs.apify.com/api/v2/#/reference/users/monthly-usage>
+- Retrieves the user's monthly usage data.
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/user-usage-monthly-get>
 
   ***
 
   #### Returns Promise\<undefined | [MonthlyUsage](https://docs.apify.com/api/client/js/api/client/js/reference/interface/MonthlyUsage.md)>
 
-### [**](#updateLimits)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/user.ts#L74)updateLimits
+  The monthly usage object, or `undefined` if it does not exist.
+
+### [**](#updateLimits)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/user.ts#L111)updateLimits
 
 * ****updateLimits**(options): Promise\<void>
 
-- <https://docs.apify.com/api/v2/#/reference/users/account-and-usage-limits>
+- Updates the user's account and usage limits.
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/user-limits-put>
 
   ***
 
   #### Parameters
 
   * ##### options: [LimitsUpdateOptions](https://docs.apify.com/api/client/js/api/client/js/reference.md#LimitsUpdateOptions)
+
+    The new limits to set.
 
   #### Returns Promise\<void>

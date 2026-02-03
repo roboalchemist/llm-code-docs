@@ -1,3 +1,5 @@
+# Source: https://embednotionpages.com/blog/templates-to-run-your-life-with-notion
+
 # Use these Notion Templates to Run Your Life
 
 Notion is a versatile tool that can be used for a variety of purposes, from taking notes and tracking to-dos to managing a blog editorial calendar. And while it's great for more traditional uses, there are also many unconventional ways to use Notion.

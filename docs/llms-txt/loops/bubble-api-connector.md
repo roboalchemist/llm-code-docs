@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/guides/bubble-api-connector.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Bubble API Connector
 
 > Send data to Loops from Bubble using the API Connector plugin.

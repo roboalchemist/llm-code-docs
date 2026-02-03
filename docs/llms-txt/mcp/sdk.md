@@ -1,10 +1,14 @@
 # Source: https://modelcontextprotocol.io/docs/sdk.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://modelcontextprotocol.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SDKs
 
 > Official SDKs for building with Model Context Protocol
 
-Build MCP servers and clients using our official SDKs. All SDKs provide the same core functionality and full protocol support.
+Build MCP servers and clients using our official SDKs. SDKs are classified into tiers based on feature completeness, protocol support, and maintenance commitment. Learn more about [SDK tiers](/community/sdk-tiers).
 
 ## Available SDKs
 

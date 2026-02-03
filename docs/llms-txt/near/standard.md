@@ -4,30 +4,6 @@
 
 # Source: https://docs.near.org/primitives/ft/standard.md
 
-# Source: https://docs.near.org/primitives/nft/standard.md
-
-# Source: https://docs.near.org/primitives/linkdrop/standard.md
-
-# Source: https://docs.near.org/primitives/ft/standard.md
-
-# Source: https://docs.near.org/primitives/nft/standard.md
-
-# Source: https://docs.near.org/primitives/linkdrop/standard.md
-
-# Source: https://docs.near.org/primitives/ft/standard.md
-
-# Source: https://docs.near.org/primitives/nft/standard.md
-
-# Source: https://docs.near.org/primitives/linkdrop/standard.md
-
-# Source: https://docs.near.org/primitives/ft/standard.md
-
-# Source: https://docs.near.org/primitives/nft/standard.md
-
-# Source: https://docs.near.org/primitives/linkdrop/standard.md
-
-# Source: https://docs.near.org/primitives/ft/standard.md
-
 ---
 id: standard
 title: The Standard

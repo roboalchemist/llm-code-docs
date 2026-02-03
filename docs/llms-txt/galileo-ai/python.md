@@ -4,29 +4,9 @@
 
 # Source: https://docs.galileo.ai/client-reference/evaluate/python.md
 
-# Source: https://docs.galileo.ai/client-reference/protect/python.md
-
-# Source: https://docs.galileo.ai/client-reference/observe/python.md
-
-# Source: https://docs.galileo.ai/client-reference/evaluate/python.md
-
-# Source: https://docs.galileo.ai/client-reference/protect/python.md
-
-# Source: https://docs.galileo.ai/client-reference/observe/python.md
-
-# Source: https://docs.galileo.ai/client-reference/evaluate/python.md
-
-# Source: https://docs.galileo.ai/client-reference/protect/python.md
-
-# Source: https://docs.galileo.ai/client-reference/observe/python.md
-
-# Source: https://docs.galileo.ai/client-reference/evaluate/python.md
-
-# Source: https://docs.galileo.ai/client-reference/protect/python.md
-
-# Source: https://docs.galileo.ai/client-reference/observe/python.md
-
-# Source: https://docs.galileo.ai/client-reference/evaluate/python.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Python Client Reference | Galileo Evaluate
 
@@ -42,7 +22,7 @@
 
 ## Evaluate
 
-```py
+```py  theme={null}
 import promptquality as pq
 
 pq.login({YOUR_GALILEO_URL})

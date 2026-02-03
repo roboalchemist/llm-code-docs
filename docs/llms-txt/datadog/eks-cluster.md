@@ -4,7 +4,6 @@
 title: EKS Cluster Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > AWS Components > EKS Cluster Component
-source_url: https://docs.datadoghq.com/components-aws/eks-cluster/index.html
 ---
 
 # EKS Cluster Component

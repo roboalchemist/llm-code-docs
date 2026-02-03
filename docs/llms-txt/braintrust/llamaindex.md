@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/integrations/sdk-integrations/llamaindex.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LlamaIndex
 
 [LlamaIndex](https://docs.llamaindex.ai/) is a data framework for connecting LLMs with external data sources. Braintrust traces LlamaIndex applications using OpenTelemetry to capture queries, retrievals, and LLM interactions.
@@ -62,8 +66,3 @@ print(result)
 * [LlamaIndex documentation](https://docs.llamaindex.ai/)
 * [LlamaIndex observability guide](https://docs.llamaindex.ai/en/stable/module_guides/observability/)
 * [Braintrust OpenTelemetry guide](/integrations/sdk-integrations/opentelemetry)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

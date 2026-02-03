@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/registry/publishing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Publishing Nodes
 
 ## Set up a Registry Account

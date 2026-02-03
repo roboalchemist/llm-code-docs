@@ -10,7 +10,7 @@
 - [Full-screen Apps](/terminal/more-features/full-screen-apps.md): Warp runs alt-grid apps like Vim and Emacs in full-screen mode. Warp also supports sending mouse and scroll events directly to the alt-grid or adjusting the padding surrounding the apps.
 - [Desktop Notifications](/terminal/more-features/notifications.md): Warp can send you customizable desktop notifications when you are away from the app and quickly re-focus when something meaningful happens in your terminal sessions.
 - [Audible Bell](/terminal/more-features/audible-bell.md)
-- [Settings Sync (Beta)](/terminal/more-features/settings-sync.md): Settings Sync is a cloud feature in Warp that makes it convenient to use Warp on multiple devices or on a single device using both the Desktop and Web versions of Warp.
+- [Settings Sync (Beta)](/terminal/more-features/settings-sync.md): Settings Sync is a cloud feature that keeps your Warp settings and configuration consistent across devices and sessions, including the desktop app and the browser.
 - [Quit Warning](/terminal/more-features/quit-warning.md): Warp's quit warning feature is a valuable precaution to prevent unintentional data loss or lost progress on long-running jobs.
 - [URI Scheme](/terminal/more-features/uri-scheme.md): Warps URI scheme enables you to programmatically open new windows, tabs, or launch configurations with ease.
 - [Linux](/terminal/more-features/linux.md): Linux specific features.

@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/app-guides/use-domain-apex-with-endpoints/domain-apex-alias.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Domain Apex ALIAS
 
 Setting up an ALIAS record lets you serve your App from your [domain apex](/how-to-guides/app-guides/use-domain-apex-with-endpoints/overview) directly, but there are significant tradeoffs involved in this approach:

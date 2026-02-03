@@ -1,10 +1,11 @@
+# Source: https://docs.datadoghq.com/getting_started/workflow_automation.md
+
 # Source: https://docs.datadoghq.com/account_management/billing/workflow_automation.md
 
 ---
 title: Workflow Automation
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Account Management > Billing > Workflow Automation
-source_url: https://docs.datadoghq.com/billing/workflow_automation/index.html
 ---
 
 # Workflow Automation

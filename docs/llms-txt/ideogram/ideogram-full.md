@@ -14,14 +14,14 @@ Ideogram (*pronounced "eye-dee-oh-gram"*) is a free-to-use AI tool that turns yo
 
 ## Why Ideogram?
 
-<table data-card-size="large" data-view="cards"><thead><tr><th></th><th data-hidden data-card-cover data-type="files"></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><h3><strong>Ideogram 3.0</strong></h3><p>Our latest model boasts the best-in-class photorealism, prompt fidelity, and crystal-clear typography. </p></td><td><a href="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FPuJbv9kRx1j2dBoU8XbR%2FDoc%20landing%20-%20Model.png?alt=media&#x26;token=83f75b14-a00f-4b09-b39e-1449d25377c0">Doc landing - Model.png</a></td><td><a href="https://about.ideogram.ai/3.0">https://about.ideogram.ai/3.0</a></td></tr><tr><td><h3><strong>Character Reference</strong></h3><p>Our character consistency model that works with just one reference image. Works perfectly with <a href="canvas-and-editing/canvas/magic-fill">Magic Fill</a> and <a href="using-ideogram/features-and-tools/remix">Remix</a>.</p></td><td><a href="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FcLU2b6HRw1RZRElNGvhX%2FDoc%20landing%20-%20Character.png?alt=media&#x26;token=d3f0205e-93b5-496e-8b71-f39af83a379d">Doc landing - Character.png</a></td><td><a href="using-ideogram/generation-settings/character-reference">character-reference</a></td></tr><tr><td><h3><strong>Typography</strong></h3><p>Ideogram excels at integrating text into images for logos, branding, POD  or design layouts.</p></td><td><a href="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F0pwE6BdkRXoKXvY4CYf4%2FDoc%20landing%20-%20Typography.png?alt=media&#x26;token=8f5699a4-302a-4c5c-a495-5af68bf60cfa">Doc landing - Typography.png</a></td><td><a href="using-ideogram/prompting-guide/2-prompting-fundamentals/text-and-typography">text-and-typography</a></td></tr><tr><td><h3><strong>Canvas</strong></h3><p>Organise, iterate, in-paint with <a href="canvas-and-editing/canvas/magic-fill">Magic Fill</a> or out-paint with <a href="canvas-and-editing/canvas/extend">Extend</a> directly on an infinite Canvas</p></td><td><a href="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FgVLS6MnJE7XKX6P7f5ss%2FDoc%20landing%20-%20Canvas.png?alt=media&#x26;token=405ac65d-764a-4543-ad4f-e1ccd57a4142">Doc landing - Canvas.png</a></td><td><a href="canvas-and-editing/canvas/canvas-overview">canvas-overview</a></td></tr></tbody></table>
+<table data-card-size="large" data-view="cards"><thead><tr><th></th><th data-hidden data-card-cover data-type="files"></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><h3><strong>Ideogram 3.0</strong></h3><p>Our latest model boasts the best-in-class photorealism, prompt fidelity, and crystal-clear typography. </p></td><td><a href="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FPuJbv9kRx1j2dBoU8XbR%2FDoc%20landing%20-%20Model.png?alt=media&#x26;token=83f75b14-a00f-4b09-b39e-1449d25377c0">Doc landing - Model.png</a></td><td><a href="https://about.ideogram.ai/3.0">https://about.ideogram.ai/3.0</a></td></tr><tr><td><h3><strong>Character Reference</strong></h3><p>Our character consistency model that works with just one reference image. Works perfectly with <a href="canvas-and-editing/canvas/magic-fill">Magic Fill</a> and <a href="using-ideogram/features-and-tools/remix">Remix</a>.</p></td><td><a href="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FcLU2b6HRw1RZRElNGvhX%2FDoc%20landing%20-%20Character.png?alt=media&#x26;token=d3f0205e-93b5-496e-8b71-f39af83a379d">Doc landing - Character.png</a></td><td><a href="using-ideogram/features-and-tools/reference-features/character-reference">character-reference</a></td></tr><tr><td><h3><strong>Typography</strong></h3><p>Ideogram excels at integrating text into images for logos, branding, POD  or design layouts.</p></td><td><a href="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F0pwE6BdkRXoKXvY4CYf4%2FDoc%20landing%20-%20Typography.png?alt=media&#x26;token=8f5699a4-302a-4c5c-a495-5af68bf60cfa">Doc landing - Typography.png</a></td><td><a href="using-ideogram/prompting-guide/2-prompting-fundamentals/text-and-typography">text-and-typography</a></td></tr><tr><td><h3><strong>Canvas</strong></h3><p>Organise, iterate, in-paint with <a href="canvas-and-editing/canvas/magic-fill">Magic Fill</a> or out-paint with <a href="canvas-and-editing/canvas/extend">Extend</a> directly on an infinite Canvas</p></td><td><a href="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FgVLS6MnJE7XKX6P7f5ss%2FDoc%20landing%20-%20Canvas.png?alt=media&#x26;token=405ac65d-764a-4543-ad4f-e1ccd57a4142">Doc landing - Canvas.png</a></td><td><a href="canvas-and-editing/canvas/canvas-overview">canvas-overview</a></td></tr></tbody></table>
 
 ## A Few Other Features
 
 * [**Magic Prompt**](https://docs.ideogram.ai/using-ideogram/generation-settings/magic-prompt)**:** Transforms a brief idea into a rich, detailed prompt, ensuring striking visuals.
 * [**Batch Generation**](https://docs.ideogram.ai/using-ideogram/features-and-tools/batch-generation): Save time with this CSV-driven feature and generate up to 500 prompts at once (Pro & Team plans).
-* [**Background Control**](https://docs.ideogram.ai/using-ideogram/features-and-tools/replace-remove-background): Remove or replace backgrounds to isolate subjects or craft new scenes.
-* [**Aspect Ratios**](https://docs.ideogram.ai/using-ideogram/generation-settings/aspect-ratios-and-resolutions): Choose from many presets (vertical, square, horizontal) between 1:3 and 3:1.
+* [**Background Control**](https://docs.ideogram.ai/using-ideogram/features-and-tools/replace-or-remove-background): Remove or replace backgrounds to isolate subjects or craft new scenes.
+* [**Aspect Ratios**](https://docs.ideogram.ai/using-ideogram/generation-settings/aspect-ratio-and-dimensions): Choose from many presets (vertical, square, horizontal) between 1:3 and 3:1.
 * [**API Access**](https://developer.ideogram.ai): Integrate Ideogram into your workflow or app with our powerful API.
 
 And much more to discover!
@@ -334,7 +334,7 @@ At the moment, we do not support SVG or any other vector image formats. However,
 
 <summary>Can I remove the background on my generated images?</summary>
 
-You can use the [Background Removal](https://docs.ideogram.ai/using-ideogram/features-and-tools/replace-remove-background) feature to remove the background from an image.
+You can use the [Background Removal](https://docs.ideogram.ai/using-ideogram/features-and-tools/replace-or-remove-background) feature to remove the background from an image.
 
 </details>
 
@@ -429,7 +429,7 @@ To cancel your subscription plan, please follow these steps:
 2. Click on **Manage billing** at the top right corner of the screen
 3. Click **Cancel Plan**
 
-[managing-your-subscription](https://docs.ideogram.ai/using-ideogram/account-settings/managing-your-subscription "mention")
+[Broken link](https://docs.ideogram.ai/broken-reference "mention")
 
 </details>
 
@@ -469,7 +469,7 @@ To view and update billing information, please follow these steps:
 2. Click on **Manage billing** at the top right corner of the screen
 3. View and update your billing information as needed.&#x20;
 
-[managing-your-subscription](https://docs.ideogram.ai/using-ideogram/account-settings/managing-your-subscription "mention")
+[Broken link](https://docs.ideogram.ai/broken-reference "mention")
 
 <img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FZOExVaZZWZmZXYzxoDl9%2Fideogram-invoice-history.png?alt=media&#x26;token=995d8590-6f75-4ac4-839d-00aba316b5e7" alt="" data-size="original">
 
@@ -481,7 +481,7 @@ To view and update billing information, please follow these steps:
 
 We automatically prorate the subscription price for you when you are upgrading to a higher tier plan or changing from monthly to annual billing. You will only pay the difference between the new price and the unused portion of your current subscription. Please review the final amount on the confirmation screen.
 
-[managing-your-subscription](https://docs.ideogram.ai/using-ideogram/account-settings/managing-your-subscription "mention")
+[Broken link](https://docs.ideogram.ai/broken-reference "mention")
 
 </details>
 
@@ -491,7 +491,7 @@ We automatically prorate the subscription price for you when you are upgrading t
 
 Our monthly subscription plans auto-renew at the end of each period to ensure uninterrupted access to premium features and benefits. If you no longer want to subscribe, please cancel your plan before the renewal date to avoid being charged for another month.
 
-[managing-your-subscription](https://docs.ideogram.ai/using-ideogram/account-settings/managing-your-subscription "mention")
+[Broken link](https://docs.ideogram.ai/broken-reference "mention")
 
 </details>
 
@@ -528,8 +528,8 @@ If you are experiencing billing issues such as an unexpected charge, difficulty 
   * [Downloading Images](https://docs.ideogram.ai/using-ideogram/getting-started/downloading-images)
   * [Sharing Images](https://docs.ideogram.ai/using-ideogram/getting-started/sharing-images)
 * Account Settings
-  * [User Management](https://docs.ideogram.ai/using-ideogram/account-settings/user-management)
-  * [Managing Your Subscription](https://docs.ideogram.ai/using-ideogram/account-settings/managing-your-subscription)
+  * [User Management](https://docs.ideogram.ai/broken-reference)
+  * [Managing Your Subscription](https://docs.ideogram.ai/broken-reference)
 * Prompting Guide
   * [In a Nutshell](https://docs.ideogram.ai/using-ideogram/prompting-guide/in-a-nutshell)
   * [What is Prompting](https://docs.ideogram.ai/using-ideogram/prompting-guide/1-what-is-prompting)
@@ -550,7 +550,7 @@ If you are experiencing billing issues such as an unexpected charge, difficulty 
     * [Angle of View and Perspective](https://docs.ideogram.ai/using-ideogram/prompting-guide/9-prompting-references/angle-of-view-and-perspective)
     * [Describing Age and Life Stage](https://docs.ideogram.ai/using-ideogram/prompting-guide/9-prompting-references/describing-age-and-life-stage)
 * Generation Settings
-  * [Aspect Ratios & Resolutions](https://docs.ideogram.ai/using-ideogram/generation-settings/aspect-ratios-and-resolutions)
+  * [Aspect Ratios & Resolutions](https://docs.ideogram.ai/using-ideogram/generation-settings/aspect-ratio-and-dimensions)
   * [Available Models](https://docs.ideogram.ai/using-ideogram/generation-settings/available-models)
   * [Color Palette](https://docs.ideogram.ai/using-ideogram/generation-settings/color-palette)
   * [Magic Prompt](https://docs.ideogram.ai/using-ideogram/generation-settings/magic-prompt)
@@ -558,13 +558,13 @@ If you are experiencing billing issues such as an unexpected charge, difficulty 
   * [Private Generations](https://docs.ideogram.ai/using-ideogram/generation-settings/private-generations)
   * [Render Speed](https://docs.ideogram.ai/using-ideogram/generation-settings/render-speed)
   * [Seed Number](https://docs.ideogram.ai/using-ideogram/generation-settings/seed-number)
-  * [Style](https://docs.ideogram.ai/using-ideogram/generation-settings/styles/styles-in-older-models)
+  * [Style](https://docs.ideogram.ai/using-ideogram/features-and-tools/reference-features/style-reference/styles-in-older-models)
   * [Tile](https://docs.ideogram.ai/using-ideogram/generation-settings/tile)
 * Features & Tools
   * [Batch Generation](https://docs.ideogram.ai/using-ideogram/features-and-tools/batch-generation)
   * [Describe](https://docs.ideogram.ai/using-ideogram/features-and-tools/describe)
   * [Remix](https://docs.ideogram.ai/using-ideogram/features-and-tools/remix)
-  * [Replace/Remove Background](https://docs.ideogram.ai/using-ideogram/features-and-tools/replace-remove-background)
+  * [Replace/Remove Background](https://docs.ideogram.ai/using-ideogram/features-and-tools/replace-or-remove-background)
   * [Search](https://docs.ideogram.ai/using-ideogram/features-and-tools/search)
   * [Upscale](https://docs.ideogram.ai/using-ideogram/features-and-tools/upscale)
 * Canvas & Editing
@@ -617,7 +617,7 @@ If you are experiencing billing issues such as an unexpected charge, difficulty 
 # Getting Started
 
 
-# Signup & Registration
+# Signup and Registration
 
 Experience the magic of turning a text description into visual form in a matter of seconds, using Ideogram!
 
@@ -637,7 +637,7 @@ Once you log in, you will be prompted to choose a username that will be associat
 
 To get access to priority generation, private generation, image upload, and other premium features, you'll need to subscribe to one of our plans. Please visit [<mark style="color:blue;">ideogram.ai/pricing</mark>](https://ideogram.ai/pricing) for more information and to purchase a plan.
 
-<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td><h2>Free plan</h2></td><td><h3>Free</h3></td><td><ul><li><strong>10 Slow credits</strong>** per week (up to 10 prompts / 40 images per week)</li><li>2 canvases</li><li>Be inspired by Ideogram community</li><li>No access to priority queue or premium features</li><li>All generated images are public</li></ul></td></tr><tr><td><h2>Basic plan</h2></td><td><h3>$8/month</h3></td><td><ul><li><strong>400 Priority credits</strong>* per month (up to 400 prompts / 1,600 images per month)</li><li><strong>100 Slow credits</strong>** per day (up to 100 prompts / 400 images per day) </li><li>Unlimited canvases</li><li>Ideogram Editor</li><li>Download original quality in PNG</li><li>Early access to new features</li><li>All generated images are public</li></ul></td></tr><tr><td><h2>Plus plan</h2></td><td><h3>$20/month</h3></td><td><ul><li><strong>1000 Priority credits</strong>* per month (up to 1000 prompts / 4,000 images per month)</li><li><strong>Unlimited Slow credits</strong>**</li><li>Private generation</li><li>Image upload for Remix and Describe</li><li>Unlimited canvases</li><li>Ideogram Editor</li><li>Download original quality in PNG</li><li>Early access to new features</li></ul></td></tr><tr><td><h2>Pro plan</h2></td><td><h3>$60/month</h3></td><td><ul><li><strong>3500 Priority credits</strong>* per month (up to 3500 prompts / 14,000 images per month)</li><li><strong>Unlimited Slow credits</strong>**</li><li><strong>Batch Generation</strong> with CSV upload</li><li>Private generation</li><li>Image upload for Remix and Describe</li><li>Unlimited canvases</li><li>Ideogram Editor</li><li>Download original quality in PNG</li><li>Early access to new features</li></ul></td></tr></tbody></table>
+<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td><h2>Free plan</h2></td><td><h3>Free</h3></td><td><ul><li><strong>10 Slow credits</strong>** per week (up to 10 prompts / 40 images per week)</li><li>2 canvases</li><li>Be inspired by Ideogram community</li><li>No access to priority queue or premium features</li><li>All generated images are public</li></ul></td></tr><tr><td><h2>Plus plan</h2></td><td><h3>$20/month</h3></td><td><ul><li><strong>1000 Priority credits</strong>* per month (up to 1000 prompts / 4,000 images per month)</li><li><strong>Unlimited Slow credits</strong>**</li><li>Private generation</li><li>Image upload for Remix and Describe</li><li>Unlimited canvases</li><li>Ideogram Editor</li><li>Download original quality in PNG</li><li>Early access to new features</li></ul></td></tr><tr><td><h2>Pro plan</h2></td><td><h3>$60/month</h3></td><td><ul><li><strong>3500 Priority credits</strong>* per month (up to 3500 prompts / 14,000 images per month)</li><li><strong>Unlimited Slow credits</strong>**</li><li><strong>Batch Generation</strong> with CSV upload</li><li>Private generation</li><li>Image upload for Remix and Describe</li><li>Unlimited canvases</li><li>Ideogram Editor</li><li>Download original quality in PNG</li><li>Early access to new features</li></ul></td></tr></tbody></table>
 
 {% hint style="danger" %} <mark style="color:red;">Any unused Priority credits awarded through the monthly plan will expire at the end of each monthly billing cycle</mark>. However, **Priority credits** purchased as a top-up will roll over to the next month and will only be used after your monthly **Priority credits** are depleted.\
 \
@@ -659,7 +659,7 @@ Ideogram is a web application that allows you to browse and generate images from
 
 ### Generation
 
-To create an image in the simplest way, type the description of what you want to see in the prompt box, then hit **Generate**.
+To create an image in the simplest way, type the description of what you want to see in the [Prompt Box](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/prompt-box), then hit **Generate**. On a mobile device, click on the&#x20;
 
 {% tabs %}
 {% tab title="Desktop" %}
@@ -758,9 +758,9 @@ The <mark style="color:green;">text in green</mark> means this text is new or wa
 {% hint style="warning" %}
 For all examples below, we'll use the following settings:\
 • [Magic Prompt](https://docs.ideogram.ai/using-ideogram/generation-settings/magic-prompt) set to OFF\
-• [Aspect ratio](https://docs.ideogram.ai/using-ideogram/generation-settings/aspect-ratios-and-resolutions) of 1:1\
+• [Aspect ratio](https://docs.ideogram.ai/using-ideogram/generation-settings/aspect-ratio-and-dimensions) of 1:1\
 • [Model](https://docs.ideogram.ai/using-ideogram/generation-settings/available-models) v2.0 (unless otherwise stated)\
-• [Style](https://docs.ideogram.ai/using-ideogram/generation-settings/styles/styles-in-older-models) Realistic (unless otherwise stated)
+• [Style](https://docs.ideogram.ai/using-ideogram/features-and-tools/reference-features/style-reference/styles-in-older-models) Realistic (unless otherwise stated)
 {% endhint %}
 
 ## 1- A Very Basic Prompt
@@ -822,7 +822,7 @@ The addition of an environment contributes greatly to the atmosphere of a pictur
 
 ## 6- Using Available Pptions
 
-As you may have noticed, Ideogram provides several options for generating images. From [Aspect ratio](https://docs.ideogram.ai/using-ideogram/generation-settings/aspect-ratios-and-resolutions) and [Style](https://docs.ideogram.ai/using-ideogram/generation-settings/styles/styles-in-older-models) to [Color palette](https://docs.ideogram.ai/using-ideogram/generation-settings/color-palette) and other features, these options are invaluable for creating unique and diverse visuals.
+As you may have noticed, Ideogram provides several options for generating images. From [Aspect ratio](https://docs.ideogram.ai/using-ideogram/generation-settings/aspect-ratio-and-dimensions) and [Style](https://docs.ideogram.ai/using-ideogram/features-and-tools/reference-features/style-reference/styles-in-older-models) to [Color palette](https://docs.ideogram.ai/using-ideogram/generation-settings/color-palette) and other features, these options are invaluable for creating unique and diverse visuals.
 
 Let’s explore some of these possibilities to create various outputs.
 
@@ -835,7 +835,7 @@ Let’s explore some of these possibilities to create various outputs.
 
 **In v2.0, the different styles utilize slightly different models to generate the images.** It is as though you are using a model better suited to the style you want, rather than relying on a generic AI model.
 
-For more information, refer to the [Style](https://docs.ideogram.ai/using-ideogram/generation-settings/styles/styles-in-older-models) section of this documentation.
+For more information, refer to the [Style](https://docs.ideogram.ai/using-ideogram/features-and-tools/reference-features/style-reference/styles-in-older-models) section of this documentation.
 {% endhint %}
 
 ## 7- Add Some Text
@@ -872,18 +872,14 @@ You shouldn't download images using a right-click in browser or by any other mea
 
 ## Single-Image Download
 
-When browsing images from any page, you can access the download function simply by hovering your cursor above the image. You will then see the **Download** icon <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F17QQkV8mxayfk2IvQIUN%2FCleanShot%202024-07-19%20at%2007.36.31%402x.png?alt=media&#x26;token=ed676281-683d-4fc7-9087-f420dde50dce" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3guIOcClDSxISyo2A3T7%2FCleanShot%202024-07-19%20at%2007.35.19%402x.png?alt=media&#x26;token=1cdf7a07-5e8f-4b71-a47c-7c6b1e15cd1c" alt="" data-size="line"></picture> that you can click to download the image. Alternatively, you can also click the **More** icon  <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3Ks1Q3ZANIcb52iR6lgs%2FCleanShot%202024-07-18%20at%2016.45.56%402x.png?alt=media&#x26;token=548d57b2-b767-419d-9107-63c173c74315" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FQv2bkEyP7H3Ox3wbdrXJ%2Fimage.png?alt=media&#x26;token=ddf39952-d74d-4c02-854d-3bbb2ebf5637" alt="" data-size="line"></picture>  and chose **Download JPEG/PNG**.
+When browsing images in the [**Image Gallery**](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/image-gallery) of any page, you can quickly download an image by hovering your cursor over it. A **Download icon**  <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FDhsN8Ova8a1J0MvpsP8b%2FDownload%20-%20Dark%2020px.svg?alt=media&#x26;token=339fabeb-5409-45d6-b1b6-3abba85a68f5" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F9eO0r1aVyx0g2Ir1TRi2%2FDownload%20-%20Light%2020px.svg?alt=media&#x26;token=e3d2ac2d-edbe-4c39-8561-5dd736c9d34f" alt="" data-size="original"></picture>  will appear — click it to save the image directly to your device.
 
-Below are the location of the **Download** icon/button and the **More** icon when browsing image or when viewing an image in details.
+Alternatively, click the image to open it in **Image View**, then click the **Download** button in the **Details Panel**. The button is a **split button**: clicking the main area downloads the image immediately, while clicking the **arrow icon** on the right opens a **dropdown menu** with additional download options:
 
-<div><figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FlZGqJVTmwf4OLdgg4i1v%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=113f3576-6cce-475c-9670-3604c78c1e70" alt="" width="260"><figcaption><p>When browsing images.</p></figcaption></figure> <figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FHQkoN46cgGjzAbq6cT4e%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=8e0df0e1-1b61-4966-bb68-dbf3da216d50" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F7IVW62HotZsHKPJScGM8%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=04194b7a-de4e-4bf5-afa6-ca643c68ac02" alt="" width="370"></picture><figcaption><p>When viewing an image in details.</p></figcaption></figure></div>
+* **JPEG (70% quality)** – Available to all users. A compressed format offering smaller file sizes. The 70% quality setting may introduce minor compression artifacts, typically visible only at the pixel level and not noticeable during normal viewing.
+* **PNG (100%)** – Available to **Basic Plan** users and higher. An uncompressed format that preserves the exact generated image, ensuring maximum visual quality with no compression artifacts.
 
-You will have two options:
-
-1. **JPEG (70% quality)**\
-   This format is **available to everyone**. It is a compressed image format that provides smaller file sizes. The 70% quality means the compression might introduce some artifacts, usually visible only at the pixel level. These shouldn’t be noticeable when viewing the image normally.
-2. **PNG (100%)**\
-   This format is available for **Basic Plan users and up**. It is an uncompressed image format that provides the best quality with no artifacts, as it is the exact image that was generated. This ensures the highest quality possible.
+***
 
 <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FHBDd90ni8rjAivTCczRl%2Fimage.png?alt=media&#x26;token=cf3da4bb-e7e8-49f9-bed2-eb28832c0c56" alt=""><figcaption><p>Let's zoom in on the butterfly's wing to compare both image details.</p></figcaption></figure>
 
@@ -895,8 +891,6 @@ When viewing images in your Creations or in your Pinned, Public, or Private prof
 
 1. Use the select tool in the upper right area:
 2. Simply drag from an area outside the images to select the images you want to download.
-
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FKkf93BrnDIi4uBOyn5ho%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=7f554fa0-df33-4a73-80b8-7aa9d7b428eb" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FjczA13nmG14ycOlrqkwg%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=e1950cde-924d-4f32-bd22-d0815f211bfd" alt=""></picture><figcaption><p>The Select button allows you to choose multiple images and provides several options, including a Download button.</p></figcaption></figure>
 
 <figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FMT83FaB3HXxtjlwFDGmo%2FIdeogram-BatchDL-Dark.webp?alt=media&#x26;token=06aa994b-193f-4181-82f1-3f76c0a5be5a" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FOUq1ObJYrDpO5BMpRO5n%2FIdeogram-BatchDL-Light.webp?alt=media&#x26;token=abb6de37-a99f-48e8-92f1-287cd1e8c9a9" alt=""></picture><figcaption><p>Select individual images or entire sets of four images (like shown above) by dragging.</p></figcaption></figure>
 
@@ -928,96 +922,474 @@ A popup window will appear where you can choose which social media platform you 
 
 # Account Settings
 
+This section covers all the actions and pages related to your user account — profile access, subscription management, account deletion, and more.
 
-# User Management
+You access most of these features through the [User Menu](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/user-menu), which appears when you click the **Profile** icon <img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FBixpYAyw4un01rlAsPLt%2Fdefault_profile_image-20px.svg?alt=media&#x26;token=086e266b-7fbf-4bbe-8ac4-eef7b69b6243" alt="" data-size="line"> located at the bottom of the [Navigation Sidebar](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/navigation-bar) on a desktop computer, or at the bottom-right corner on mobile or the iOS app.&#x20;
 
-## The Profile Panel
+***
 
-To access options and other settings for your profile, click your **Profile icon** located at the bottom of the left-side panel on a desktop computer, or at the bottom-right corner on mobile or the iOS app.
+## User Menu
 
-You will then be presented with the **Profile panel** offering different options.
+Below is a view of the [User Menu](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/user-menu) — *click the link to see a detailed description.*
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FJYsaszjCxFS6rJMxipZA%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=83cc3477-8ced-4353-957a-df5f187d2fbe" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FijjHmsrlbGmn901dmtqf%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=bcfb8456-f0a8-4489-b93a-1e5a6e667c05" alt="" width="272"></picture><figcaption><p>The Profile panel.</p></figcaption></figure>
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FlQGucboUeMR5muRmPwo0%2FUser%20Menu%20Simple%20-%20Dark%402x.png?alt=media&#x26;token=c8425d38-f3a9-4732-99ac-04dc5d5d7633" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FtEPPOjVGbVA8Xh7yx7vr%2FUser%20Meni%20Simple%20-%20Light%402x.png?alt=media&#x26;token=4b460b63-8530-4db6-ad61-949ca000250d" alt="" width="273"></picture><figcaption></figcaption></figure>
 
-From this panel, you can:
+This menu consists of multiple sections and actions, which map to the functional features described below.
 
-* Go to your **Profile page**.
-* [<mark style="color:blue;">Manage an Ideogram subscription</mark>](https://docs.ideogram.ai/using-ideogram/account-settings/managing-your-subscription), including purchasing a new subscription<mark style="color:blue;">.</mark>
-* Access this help and documentation page.
-* Manage users you have muted.
-* [<mark style="color:blue;">Delete your account</mark>](#deleting-your-account)
-* Subscribe to or manage your Ideogram API
-* Log out from Ideogram
-* Set the mode for the website: Light, Dark or automatically based on your computer or device system preferences.
+Key elements include:
 
-In addition, you can also:
+* **Profile / User info area**
+* **Subscription Info**
+* **List of actionable menu items**
+  * **View profile** — Opens your public Ideogram [Profile page](https://docs.ideogram.ai/using-ideogram/ui-overview/pages-ui/profile-page).
+  * **Manage subscription** — Redirects to your billing and subscription settings.
+  * **Help & documentation** — Opens Ideogram documentation.
+  * **Manage muted users** — Lists and manages users you’ve muted.
+  * **Delete account** — Permanently deletes your account (with confirmation).
+  * **API** — Opens the API management page.
+  * **Log out** — Signs you out of your current session.
+* **Theme selector** (Light / Dark / Auto)
+* **Footer links** (Terms of Service, Privacy Policy, Social Media)
 
-* Access the [TOS](https://about.ideogram.ai/tos) (Terms Of Service) and [Privacy Policy Page](https://ideogram.ai/privacy).
-* Follow Ideogram on different social media sites.
-
-On your **Profile page**, you can also look at your past generations, your pinned generations, and your liked images.
-
-## Deleting Your Account
-
-After clicking **Delete account** from the [user management menu](#user-management-menu), you'll be prompted to confirm you want to delete your account. Type "**delete**" into the text box and click **Yes** when you are ready to proceed. Once confirmed, the process takes a few minutes to complete.
-
-<mark style="color:red;">**This process is permanent and not reversible, so please consider carefully before proceeding.**</mark>
-
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FMFniUyPkqTwp1XlJr0Qs%2FCleanShot%202024-07-18%20at%2011.00.27%402x.png?alt=media&#x26;token=ac9e5da3-db92-46e2-bd9e-9e8af1312bf5" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F2k4LW1JaY0K2ktZ003kY%2FCleanShot%202024-07-18%20at%2010.51.54%402x.png?alt=media&#x26;token=19927d81-0c89-42aa-a598-7aac53736c47" alt="" width="563"></picture><figcaption><p>The prompt that is shown when you choose to delete your account.</p></figcaption></figure>
-
-{% hint style="warning" %}
-If you have an Ideogram subscription plan, your recurring subscription will be cancelled **at the end of the current subscription period**.
-{% endhint %}
-
-{% hint style="info" %}
-When you delete your Ideogram account, all your generations, prompts and user data will be deleted from Ideogram servers. Your previous generations will no longer be visible to other users.
-{% endhint %}
-
-
-# Managing Your Subscription
+***
 
 ## Subscription Management
 
-Click your **Profile icon** located at the bottom of the left-side panel of the page to open the **Profile panel**. Then, select **Manage subscription** to visit the Ideogram subscriptions page.
+The subscription section allows you to view, modify, or cancel your Ideogram plan and manage billing or credit top-ups.
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FJYsaszjCxFS6rJMxipZA%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=83cc3477-8ced-4353-957a-df5f187d2fbe" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FijjHmsrlbGmn901dmtqf%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=bcfb8456-f0a8-4489-b93a-1e5a6e667c05" alt="" width="272"></picture><figcaption><p>The Profile panel.</p></figcaption></figure>
+### Accessing Subscription Page
 
-You will land on the Ideogram pricing page, as shown below. From there, you can review the features and benefits of your current plan, upgrade to a higher-tier plan, and purchase top-ups.
+* From the *User Menu*, select **Manage Subscription** to open the subscription dashboard.
+* You’ll be redirected to Ideogram’s **Pricing** page.
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FliSHJYl4DNWwEtChtzFo%2FIdeogram%20Subscription%20Plans%20-%20Light%20Dark%402x.png?alt=media&#x26;token=1c2c5320-0b1a-4db9-9524-bc68ed8fafa1" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FOujem6OqhWU2wxRuht2i%2FIdeogram%20Subscription%20Plans%20-%20Light%20Dark%402x.png?alt=media&#x26;token=c497f794-747b-4869-98fe-89c9a71b1b69" alt=""></picture><figcaption><p>Ideogram subscriptions page as seen for an Ideogram Plus user.</p></figcaption></figure>
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FRpjXhgenKd8F1qEhsKyd%2FPlans%20and%20Pricing%20-%20Dark%402x.png?alt=media&#x26;token=06dec1a0-3456-498c-affa-177da87ec879" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FP47cbvf0TT5SEcOCEp9J%2FPlans%20and%20Pricing%20-%20Light%402x.png?alt=media&#x26;token=aa2ab439-3256-4847-a060-cac13beaf85c" alt=""></picture><figcaption></figcaption></figure>
 
-To manage your subscription, click the **Manage billing** button <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FX8Jis2pCTdw1S7J1sB0M%2FCleanShot%202024-07-19%20at%2016.57.35%402x.png?alt=media&#x26;token=e6d6c232-41cf-4dda-817b-0706cb6f27ab" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FK7ULpdV6l7FEKHiTdX1Q%2FCleanShot%202024-07-19%20at%2016.57.03%402x.png?alt=media&#x26;token=740ab099-0437-429b-af97-d53afd532850" alt="" data-size="line"></picture> in the upper-right corner of this page to be redirected to Stripe.
+1. **Account Type** — Toggle between *Personal* and *Business* account modes.
+2. **Top up credits** — Purchase additional *Priority Credits* when your monthly allocation is low or depleted.
+3. **Manage billing** — Opens your billing page where you can view payment information, update your payment method, and download invoices.
+4. **Billing cycle toggle** — Switch between *Yearly* and *Monthly* billing options.
+5. **Credit top-up box** — Option to buy additional *Priority Credits* (same as #2).
+6. **Plan options** — Displays the available subscription tiers with their respective prices, features, and discounts.
+7. **Additional Information** — Scrolling further down reveals information about different features, credit costs per model, and a Frequently Asked Questions section.
 
-<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FzM6EqHx1MsTvJEzho6Uu%2Fideogram-subscription-cancel-redacted.png?alt=media&#x26;token=89f60372-8c28-4388-8f5b-8b706c97025e" alt="" width="375"><figcaption><p>Subscription management page example for an Ideogram Plus user.<br>The price shown is for display purpose only.</p></figcaption></figure>
+## Manage Billing
 
-On this subscription management page, you will find details on:
+This is the page where all the information about your billing can be found.
 
-* Your current plan
-* Your monthly price
-* When your plan renews
-* Your payment method
-* Your billing information
-* Your invoice history
+<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FzUUOIMcBvbcd10eJONlL%2FManage%20Billing%20%402x.png?alt=media&#x26;token=39a34932-d4c3-42cf-b555-ff31026cf6c3" alt="" width="563"><figcaption></figcaption></figure>
 
-On this page, you can:
+Here are the actions you can take:
 
-* Cancel your Ideogram subscription
-* Update your payment method
-* Update your billing information
+* **Cancel subscription** — Select **Cancel subscription** at least five (5) days before renewal to prevent the next charge.
+* **Update payment method** and **billing information.**
+* **View billing history** and **print invoices.**
+
+***
 
 ## Cancel Your Subscription
 
 {% hint style="danger" %}
-**IMPORTANT**
+
+### **Important**
 
 You must cancel your subscription **at least five (5) days** before the subscription period renewal date to allow the cancellation process to fully take place and to avoid future subscription charges.
 {% endhint %}
 
-Follow the instructions above to reach the subscription management page. Click **Cancel Plan** at the top of the page to cancel your Ideogram subscription. You will be asked to confirm before you cancel.
+Click **Cancel subscription** at the top of the page to proceed with cancellation. You will be asked to confirm before you cancel.
 
 When you cancel your Ideogram subscription, you will still retain access to the features and benefits of your plan until the end of your current billing period. **There are no refunds for any unused periods remaining on your subscription**. If you change your mind about cancelling, you can always renew your subscription later.
 
-<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FS39hFLBozWtsjYUxLtQ5%2Fideogram-subscription-cancel-details.png?alt=media&#x26;token=9e781016-59ab-4d99-9d33-888bb67955b0" alt="" width="375"><figcaption></figcaption></figure>
+***
+
+## Deleting Your Account
+
+This section explains how deletion works and what to expect.
+
+1. **Initiating deletion**
+   * In the [User Menu](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/user-menu), select **Delete account**.
+   * A confirmation prompt appears, asking you to type a specific word (e.g. “delete”) to confirm.
+2. **Deletion process**
+   * Once confirmed, the process may take a few minutes to start.
+   * &#x20;<mark style="color:red;background-color:$danger;">**The deletion is permanent and irreversible**</mark>  — all your images (generated or uploaded), prompts, and history will be removed.
+   * The full deletion process usually takes up to 48 hours, during which you cannot re-register with the same Google or Apple account.
+3. **Effect on subscriptions**
+   * Any active subscription linked to your Ideogram account will be canceled automatically. You will not be charged for any renewal payments in the future.
+   * Any prepayments made for future periods, such as the remaining time on a monthly or annual subscription plan, are forfeit and non-refundable.
+   * After account deletion, your subscription data cannot be restored. We are not able to transfer the subscription plan to another Ideogram account.
+
+{% hint style="info" %}
+When you delete your Ideogram account, all your generations, prompts, and user data will be deleted from Ideogram servers. Your previous generations will no longer be visible to other users.
+{% endhint %}
+
+***
+
+
+# UI Overview
+
+To come
+
+
+# Pages UI
+
+
+# Home Page
+
+The Home page is where you explore the creative world of Ideogram. It features a feed of recent and popular images from the community, along with tools to search, browse by subject, or discover top creations. From here, you can easily start generating your own images or explore what others have created.
+
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FjlPLwsISszv7xqPZqXBN%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=467a0629-9d2f-4f22-912f-c9394842fe2c" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FDdHcl4gYqpNtAmUxkxMM%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=a6f2f116-8c79-4673-9d12-03178262f965" alt=""></picture><figcaption></figcaption></figure>
+
+1. [Prompt Box](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/prompt-box) – The main area to enter your text prompt for image generation. It also includes various configuration options (Style, Aspect Ratio, Character, Color Palette, etc.) and the controls to start generating.
+2. [Navigation Tabs](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/navigation-tabs) – Tabs that let you browse different content categories (Explore, Top, People, Product, Nature, etc.). They act as filters to explore existing creations. It also has a search tool.
+3. [Image Gallery](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/image-gallery) – The central section of the page where generated images are displayed, either from the community or your own images, depending on the page. You can browse, like, or take inspiration from these creations.
+4. [Navigation Bar](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/navigation-bar) – This left-hand sidebar provides quick access to the main sections and pages of the platform (Home, Creations, Canvas, Batch, Character, etc.) as well as the user's Profile page and notifications.
+
+
+# Image View
+
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FW5ho9dNIcTvQI2xqH6t8%2FImage%20View%20-%20Dark%402x.png?alt=media&#x26;token=5aef869a-af76-4f76-87f5-54f2d603fe61" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FddLYuvFOwhbZg1sAplRR%2FImage%20View%20-%20LIght%402x.png?alt=media&#x26;token=355c23cc-7bb9-49d2-9e4e-ee0ec14cddf7" alt=""></picture><figcaption></figcaption></figure>
+
+1. [Prompt Box](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/prompt-box) – The main area to enter your text prompt for image generation. It also includes various configuration options (Style, Aspect Ratio, Character, Color Palette, etc.) and the controls to start generating.
+2. **Main Image Display –** Shows the selected image in large format at the center of the screen. The image automatically fits within the available space in the Image View, maintaining its original aspect ratio. It cannot be zoomed or panned, but always adjusts to fill the central area for an optimal view.
+3. [Details Panel](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/details-panel) – The central section of the page where generated images are displayed, either from the community or your own images, depending on the page. You can browse, like, or take inspiration from these creations.
+4. [Navigation Bar](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/navigation-bar) – The left-hand sidebar provides quick access to the main sections of the platform (Home, Creations, Canvas, Batch, Character, etc.) as well as the user's profile page and notifications.
+5. **Thumbnail Strip** – Lets you quickly navigate between images using your mouse, keyboard arrows, or touch gestures. Images separated by a small gap belong to the same generation set (up to four images.
+
+
+# Profile Page
+
+The Profile page displays all information related to a user account, including the username, bio, social media links, and gallery of pinned and public images. From here, you can edit your profile, view your followers or users you follow.
+
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FT4mj99mOBXYSMFhpb4cw%2FUI%20-%20Profile%20Page%20-%20Dark%402x.png?alt=media&#x26;token=78dee3a9-4b0e-4077-b8bc-01d52000fb98" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FPM4SOzZpA4shs1ntbAIS%2FUI%20-%20Profile%20Page%20-%20Light%402x%402x.png?alt=media&#x26;token=1099d2f6-7dd5-4edb-a448-d429593db929" alt=""></picture><figcaption></figcaption></figure>
+
+1. [Prompt Box](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/prompt-box) **–** The main area where you enter your text prompt for image generation. It includes various configuration options (Style, Aspect Ratio, Character, Color Palette, etc.) and the controls to start generating.
+2. **Profile Picture** – This is the image other users will see as your profile photo. You can set it from any of your images by clicking the **More** icon (<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FPYS9T78uhmDmuEqNWvcb%2FMore%20-%20White%2020px.svg?alt=media&#x26;token=cba9b268-f5f2-4895-bef0-fa43e5ae3724" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FqhNBoUUnrp0grTzHJonA%2FMore%20-%20Black%2020px.svg?alt=media&#x26;token=dee426ba-09fe-4735-bdd3-81c5ecb71035" alt=""></picture>) and selecting **Set as profile photo**.
+3. **Username** – The first line displays your Ideogram username, visible to everyone. You can add your real name or another identifier below it if you wish.
+4. **Statistics** – Displays your number of followers, the users you follow, and your total likes received. You can view detailed lists by clicking on the **followers** or **following** labels.
+5. **Bio** – A short personal description about yourself. Optional.
+6. **Date Joined** – Shows when your account was created.
+7. **Location** – Indicates where you are located. Optional.
+8. **More menu** – Available only when viewing another user’s profile. Provides options to:
+   * **Mute creator** – Hides all creations from this user.
+   * **Report creator** – Report the user for inappropriate content.
+9. **Edit Profile / Follow / Following** – When viewing your own profile, this button is labeled **Edit Profile**, allowing you to modify your profile information. On another user’s page, it shows either **Follow** or **Following**, letting you follow or unfollow them.
+10. **Social Media** – Add links to your social media accounts to share with the community. Optional.
+11. **Navigation Tabs** – Control how your image gallery is displayed:
+    1. **Default** – Shows pinned images first, followed by public images, both from newest to oldest. This is the default view other users see.
+    2. **Latest** – Displays all public images, pinned or not, from newest to oldest.
+    3. **Oldest** – Displays all public images, pinned or not, from oldest to newest.
+12. **Image Gallery** – Displays public and pinned images, visible to all users.
+13. [Navigation Bar](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/navigation-bar) – Provides quick access to the main sections of Ideogram, including Home, Creations, Canvas, Notifications, and your Profile.
+
+
+# UI Components
+
+
+# Details Panel
+
+The Details panel appears on the right (desktops computers and large tablets) or bottom (devices such as smartphones) when viewing a single image. It provides all generation information, including prompts, model settings, and available actions.
+
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FYJyU90Di2WfaL7Wv37uF%2FImage%20Details%20-%20Dark%402x.png?alt=media&#x26;token=dcd29b02-5409-4b3e-9b58-91a4232bfaf2" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FgUa1bh4tyh1vgqXkER2T%2FImage%20Details%20-%20Light%402x.png?alt=media&#x26;token=67e678e4-ea44-4f11-8e3a-4623f5b90f80" alt="" width="372"></picture><figcaption></figcaption></figure>
+
+1. **Download** – Download the image to your device or computer.
+2. **Like** – Click to add a like. Also shows the number of people who liked the image.
+3. **Share** – Share the image on a website or social network of your choice.
+4. **More** – Displays the [More menu](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/more-menu-...) containing several additional options.
+5. **Username & Creation** – Creator’s username and profile picture, a link to their profile, and the time when the image was generated.
+6. **Generation** – (This section is visible only for your images)
+   1. **Retry** – Generate the image again with the same or adjusted settings.
+   2. **Pin / Unpin** – Keep or remove the image from the top of your profile.
+   3. **Private / Public** – Make the image visible only to you or to everyone.
+7. **Rate Generation** (visible only for your images) – Provide feedback on the quality of the result.
+8. **Edit Image** – Fast access to the most popular editing features:
+   1. **Remix** – Create a new image variation starting from this one.
+   2. **Magic Fill** – Replace or fill areas of the image using AI.
+   3. **Upscale** – Increase the image resolution up to 2×.
+   4. **Remove Background** – Remove the background around the main subject. Click the dropdown menu to replace the background instead.
+   5. **Open in Canvas** – Launch the image in the advanced editing workspace.
+9. **Reference** – Use the image as reference for your next generation:
+   1. **Character** – Use the image as a character reference.
+   2. **Style** – Use the image as a style reference.
+   3. **Describe** – Generate a text description of the image.
+10. **Prompt** – The original prompt as it was written in the prompt box before clicking Generate.
+11. <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FbCv5lQMTvadbmphufvPK%2FCopy%20-%20Dark%2020px.svg?alt=media&#x26;token=6bec1388-1eeb-4d3b-9475-68bb6f903c72" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FQ7698FoSut6TT9kvywhL%2FCopy%20-%20Light%2020px.svg?alt=media&#x26;token=66fc2c09-b103-4e6d-822f-bece2d5df963" alt="" data-size="original"></picture>  **Copy  /**  <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FHnDzGdlrhWlADuj2ejrd%2FUse%20-%20Dark%2020px.svg?alt=media&#x26;token=2b3d9e3e-609e-49fa-b6eb-71d70001501c" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FYnJ1cm8M8MZo3quBXr7y%2FUse%20-%20Light%2020px.svg?alt=media&#x26;token=325f9629-8a82-466e-a3f2-dc6dd3eeeb63" alt=""></picture>  **Use** – Copy or use the prompt or setting in your next generation. Also available for other settings described below.
+12. **Magic Prompt** – The Magic Prompt text if the image was generated with that feature.
+13. **Description** – The text prompt that was generated if you used Describe on the image.
+14. **Negative Prompt** – The text used as the negative prompt.
+15. **Color Palette** – The color palette used when generating the image.
+16. **Parent Image** – The parent image used when the generation was a Remix or an Upscale.
+17. **Style** – The style used to generate the image. It can be a generic or a custom one.
+18. **Other Information** – In this section, you will see various details such as the **Model** and Character **Reference** used to generate the image, the **dimensions** and **aspect ratio**, the **Rendering speed**, the **Seed number**, and the **date and time** the image was created.
+
+
+# Image Gallery
+
+The Image Gallery is the central section of the page where generated images are displayed, either from the community or from the user.
+
+When moving the cursor over an image in the gallery, different informations and options appear and become available:
+
+<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FMRseqwIenCPiaAp6XMvJ%2FIdeogram%20-%20LIght%20Dark%402x.png?alt=media&#x26;token=134b38d5-dace-4c7f-b2c9-bca3b93627a1" alt="" width="467"><figcaption><p>Image in the gallery when the cursor is over it.</p></figcaption></figure>
+
+1. **More button** – Display the [More menu](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/more-menu-...) containing several additional options.
+2. **Download** – Download the image to your device or computer.
+3. **Share** – Share the image on a site or a social network of your choice.
+4. **User/image info** – The creator's name, a link to their profile and when the image was generated.
+5. **Likes** – Number of people who liked the image. Click to add a like.
+
+### Image Gallery in the Creations Page
+
+When browsing images in the Creations page — unlike the Home page or your Profile page — you can select multiple images to perform batch actions. Once multiple images are selected, a panel will appear at the bottom of the gallery where you can download them, or, if you click the **More** button  <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FPYS9T78uhmDmuEqNWvcb%2FMore%20-%20White%2020px.svg?alt=media&#x26;token=cba9b268-f5f2-4895-bef0-fa43e5ae3724" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FqhNBoUUnrp0grTzHJonA%2FMore%20-%20Black%2020px.svg?alt=media&#x26;token=dee426ba-09fe-4735-bdd3-81c5ecb71035" alt=""></picture> , you can make them Public or Private, or delete them.
+
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FTmYdeibd2v0gEfoYoN26%2FCreations%20Page%20-%20Multiple%20Selection%20Panel%20-%20Dark.png?alt=media&#x26;token=ec65dcec-3e0b-49db-a647-eab8664a6dd6" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FoeiatHOMra7oFd04LFjY%2FCreations%20Page%20-%20Multiple%20Selection%20Panel%20-%20Light.png?alt=media&#x26;token=c6771895-54aa-4768-9e52-2952e120c04b" alt="" width="375"></picture><figcaption><p>The panel at the bottom of the gallery.</p></figcaption></figure>
+
+
+# Navigation Bar
+
+The Navigation Bar provides quick access to the main sections of Ideogram. Its icons change depending on the page you are on, giving you direct navigation to features such as Creations, the Canvas, Batch generation, Notifications, and more.
+
+### On Home, Creations, Batch and Character Pages
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FX1tzbuWcmkhl20FUaRTD%2FHome%20-%20Dark%2020px.svg?alt=media&#x26;token=35ffbc3a-b242-4ada-89f7-f006c4a351fc" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F820v6qS5jPlpkU7i65xo%2FHome%20-%20Light%2020px.svg?alt=media&#x26;token=8c24d82b-73f8-4fd7-a7a1-d8b3778081a6" alt=""></picture>  **Home** – Return to the homepage.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FTeHNdvxlp3hHIoP4UflW%2FCreations%20-%20Dark%2020px.svg?alt=media&#x26;token=16327b40-5803-48d2-9093-de7e4bfc1375" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F8tFoN5tL9JrvUuEEqk1f%2FCreations%20-%20Light%2020px.svg?alt=media&#x26;token=d8008cee-76a2-4da6-a88b-14843d2c1824" alt=""></picture>  **Creations** – Access all the images you have generated and those you liked.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FfuCsXCatZuMSkQzwvlom%2FCanvas%20-%20Dark%2020px.svg?alt=media&#x26;token=95e10466-3654-4769-959e-275b160b76ee" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FAPNFzE4v9iHVAi9ynhO4%2FCanvas%20-%20Light%2020px.svg?alt=media&#x26;token=39f3c8d6-5f33-47b7-a9df-b7288d6d1cd8" alt=""></picture>  **Canvas** – Open the Canvas workspace for advanced image manipulation.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FMP8QEqQZ3XWlVM5BFZXj%2FBatch%20-%20Dark%2020px.svg?alt=media&#x26;token=ea6cf9eb-9e66-492f-8a28-9b222a226b46" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FcANgCWqkv8mkNrmznSWu%2FBatch%20-%20Light%2020px.svg?alt=media&#x26;token=31807bee-0c9f-4531-8b4b-5ace78d3f3f7" alt=""></picture>  **Batch** – Generate multiple images at once using a CSV file.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FdlePgI9eRA6RqsV4doHb%2FCharacter%20-%20Dark%2020px.svg?alt=media&#x26;token=b5c1859d-f143-4ae3-9e3a-82ab5e37c316" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FgzasJUhVATpQJ3SwqjR8%2FCharacter%20-%20Light%2020px.svg?alt=media&#x26;token=90d20bb9-31dc-48a0-9c89-e0b2dca2b1af" alt=""></picture>  **Character** – Apply or customize character consistency in your generations.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FXrRfpMDiJ5YKogvYa0yE%2FNotification%20-%20Dark%2020px.svg?alt=media&#x26;token=6da0168f-8119-4413-b7d1-7193dc7895bd" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FJUrk5nI8iWJdtvDewbZ2%2FNotification%20-%20Light%2020px.svg?alt=media&#x26;token=a461121c-abad-493d-a3ba-8e4a17a8d841" alt=""></picture>  **Notifications** – View updates such as likes, remixes, and follows.
+
+**Profile** – Go to your profile, view your credits left, manage your subscription.
+
+***
+
+### On the Canvas Page
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FkBpztsyQqMQHt7DTXUYE%2FIdeogram%20-%20White%2020px.svg?alt=media&#x26;token=3c645353-7884-40f3-bbf5-17d925d5fd56" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fkl6wYWPaia5Mtfyiic24%2FIdeogram%20-%20Black%2020px.svg?alt=media&#x26;token=cc7990ac-3abc-4a6d-8c0c-2ee5d91230bc" alt=""></picture>  **Home page (Ideogram logo)** – Return to the Home page from Canvas.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FtpTm6OlvPozksbuOqFxF%2FGenerate%20-%20Dark%2020px.svg?alt=media&#x26;token=74a294b6-a05d-4fd9-8f70-e555fada4a40" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fz1V6vzE2xg7TOZ0VKg8C%2FGenerate%20-%20Light%2020px.svg?alt=media&#x26;token=f6a630e3-b256-4547-866e-1e1853de932c" alt=""></picture>  **Generate** – Create new prompt based images as usual, but on the canvas.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FtCLnLOWljii2tTF00r3g%2FMagic%20Fill%20-%20Dark%2020px.svg?alt=media&#x26;token=03b2bc1c-b395-43e3-a4a9-86b52a121f58" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FsA6pHKWnxpGzBcnT7Da7%2FMagic%20Fill%20-%20Light%2020px.svg?alt=media&#x26;token=7085f6bb-a156-4a6f-a359-24d9c0462f9e" alt=""></picture>  **Magic Fill** – Fill selected areas of the image using AI.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fe2kkaNW3rd43PTtRYrHG%2FExtend%20-%20Dark%2020px.svg?alt=media&#x26;token=ec53089e-3b5c-4bcd-be70-0de99fb4ec73" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F09jVgzP0X27I5M4ihb5V%2FExtend%20-%20Light%2020px.svg?alt=media&#x26;token=4bb72c59-694e-4d8f-8258-2170c62d50a4" alt=""></picture>  **Extend** – Expand the selected image by generating new areas around the image.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FXEPrVMOTiqQYvjaByGzN%2FRemix%20-%20Dark%2020px.svg?alt=media&#x26;token=c5ceddba-7716-45d7-8d58-d9ccdbb0f113" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FWdxQ94TMVtyYXI1mVQbM%2FRemix%20-%20Light%2020px.svg?alt=media&#x26;token=24e6538c-df26-4281-b710-f1834f9a583d" alt=""></picture>  **Remix** – Generate a new variation of the selected image using it as a basis for the next generation.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FIoLnodzLiSl0gzphaN3r%2FSelect%20-%20Dark%2020px.svg?alt=media&#x26;token=e0f461f5-178b-4f73-839d-43b7a8736db6" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F9FJNvaKu0Tt7X17pxo6d%2FSelect%20-%20Light%2020px.svg?alt=media&#x26;token=da40b99f-25e1-4277-b3d7-49481c77c86e" alt=""></picture>  **Select** – Select and move elements on the canvas.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FcTLBEhNl10UmLu3mGgDH%2FHand%20-%20Dark%2020px.svg?alt=media&#x26;token=da2e2805-f4f9-47c0-a05a-9de1a026c42f" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FiqiXNdGPl8oorEBAaKYD%2FHand%20-%20Light%2020px.svg?alt=media&#x26;token=1b501f7c-fa9e-47eb-b71c-baf4bf7e069b" alt=""></picture>  **Hand** – Pan and navigate across the canvas.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FVxw0m9z5zhGM96kCHbHu%2FText%20-%20Dark%2020px.svg?alt=media&#x26;token=da3284a6-43cc-474c-a130-1485279cb099" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FcJ0sVGqAPBfMothVbBav%2FText%20-%20Light%2020px.svg?alt=media&#x26;token=a46b6fe6-4158-4885-b859-431227f83e83" alt=""></picture>  **Text** – Add or edit text directly in the canvas.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FQMChYI4BqPBNFRJtRJDp%2FAdd%20Image%20-%20Dark%2020px.svg?alt=media&#x26;token=2dcb361a-faf0-4f7a-82e3-0e9bb19f63e4" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FRx93NZ8tXnTF8mVQK2Uk%2FAdd%20Image%20-%20Light%2020px.svg?alt=media&#x26;token=d8bf053a-9bb7-40be-a031-124050d3b267" alt=""></picture>  **Add Image** – Insert another image into the canvas.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FDhsN8Ova8a1J0MvpsP8b%2FDownload%20-%20Dark%2020px.svg?alt=media&#x26;token=339fabeb-5409-45d6-b1b6-3abba85a68f5" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F9eO0r1aVyx0g2Ir1TRi2%2FDownload%20-%20Light%2020px.svg?alt=media&#x26;token=e3d2ac2d-edbe-4c39-8561-5dd736c9d34f" alt=""></picture>  **Download** – Save the selection as an image to your device.
+
+
+# More Menu (...)
+
+When associated with a single image, the More menu <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FPYS9T78uhmDmuEqNWvcb%2FMore%20-%20White%2020px.svg?alt=media&#x26;token=cba9b268-f5f2-4895-bef0-fa43e5ae3724" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FqhNBoUUnrp0grTzHJonA%2FMore%20-%20Black%2020px.svg?alt=media&#x26;token=dee426ba-09fe-4735-bdd3-81c5ecb71035" alt=""></picture> presents different options, depending on where you are in the interface. For example:
+
+* While browsing other users’ images.
+* While viewing a user’s image in detail.
+* While browsing your Creations.
+* While viewing a single image in details.
+
+Below are two sample snapshots of these menus:
+
+<div><figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fiv5AlufeTpWTgMKmWlKc%2FMore%20Menu%20-%20Creations%20-%20Dark.png?alt=media&#x26;token=556e8489-5e3b-438e-a6eb-be8856c3328f" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FHJlqjNrprsYppXgrOGdi%2FMore%20Menu%20-%20Creations%20-%20Light.png?alt=media&#x26;token=50757f70-1171-4aad-a6ed-857503bc9dc3" alt="" width="207"></picture><figcaption></figcaption></figure> <figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FH0i0OAbsNsA82yuH2H9I%2FMore%20Menu%20-%20Creations%20Detail%20-%20Dark.png?alt=media&#x26;token=1239515d-d105-4030-a88f-7924942a4a77" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FYrMKbs3o0IBjkGsfrOMM%2FMore%20Menu%20-%20Creations%20Detail%20-%20Light.png?alt=media&#x26;token=e2da878b-5914-45fe-abd5-06b4cba85f95" alt="" width="251"></picture><figcaption></figcaption></figure></div>
+
+Here are the items you might encounter in the More menu, in alphabetical order:
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FdlePgI9eRA6RqsV4doHb%2FCharacter%20-%20Dark%2020px.svg?alt=media&#x26;token=b5c1859d-f143-4ae3-9e3a-82ab5e37c316" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FgzasJUhVATpQJ3SwqjR8%2FCharacter%20-%20Light%2020px.svg?alt=media&#x26;token=90d20bb9-31dc-48a0-9c89-e0b2dca2b1af" alt=""></picture>  **Character** – Use the image as a character.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FIA2wB5gCYriGxJMQwZjR%2FDelete%20-%20Dark%2020px.svg?alt=media&#x26;token=7bef6b71-63f1-4321-9152-f3d70f02c6b2" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FdxiRYvjnE2yutN2eKDvQ%2FDelete%20-%20Light%2020px.svg?alt=media&#x26;token=a2e0f216-bbcd-422b-a52e-b80ebed01a3d" alt=""></picture>  **Delete** – Permanently remove the selected image.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FVe7nL6F0pvuL3og7lmri%2FDescribe%20-%20Dark%2020px.svg?alt=media&#x26;token=30556f7c-438b-4236-8bae-38caa319a619" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FdTguThBAaHtuwyRzz1QM%2FDescribe%20-%20Light%2020px.svg?alt=media&#x26;token=041f67fc-c96a-4be5-8973-3051557890d5" alt=""></picture>  **Describe** – Generate a text description of the image.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fbm1q3IdHVj6uYk7Hgz2C%2FEdit%20in%20Editor%20-%20Dark%2020px.svg?alt=media&#x26;token=af86e24c-a353-456d-8d1d-d10a2f59e38f" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fdh5Dp0kDcpMAZTadoVA4%2FEdit%20in%20Editor%20-%20Light%2020px.svg?alt=media&#x26;token=4db7e776-093a-4b94-b149-587e02cac496" alt=""></picture>  **Edit in Editor** – Open the image in the Editor.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fe2kkaNW3rd43PTtRYrHG%2FExtend%20-%20Dark%2020px.svg?alt=media&#x26;token=ec53089e-3b5c-4bcd-be70-0de99fb4ec73" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F09jVgzP0X27I5M4ihb5V%2FExtend%20-%20Light%2020px.svg?alt=media&#x26;token=4bb72c59-694e-4d8f-8258-2170c62d50a4" alt=""></picture>  **Extend** – Expand the image beyond its current borders.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FtCLnLOWljii2tTF00r3g%2FMagic%20Fill%20-%20Dark%2020px.svg?alt=media&#x26;token=03b2bc1c-b395-43e3-a4a9-86b52a121f58" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FsA6pHKWnxpGzBcnT7Da7%2FMagic%20Fill%20-%20Light%2020px.svg?alt=media&#x26;token=7085f6bb-a156-4a6f-a359-24d9c0462f9e" alt=""></picture>  **Magic Fill** – Replace or fill areas of the image using AI.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FSbEyniXCxe8M2ZBgN5Zw%2FMake%20Private%20-%20Dark%2020px.svg?alt=media&#x26;token=ba945d8d-604a-4625-b432-50b91deaab07" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FAXZi83LLgc29kpK4Vmc1%2FMake%20Private%20-%20Light%2020px.svg?alt=media&#x26;token=c2a3ae26-6af3-4082-8686-d7d68e4eee93" alt=""></picture>  **Make Private** / <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FNBaTwwZLxA8g8u0E3EaD%2FMake%20Public%20-%20Dark%2020px.svg?alt=media&#x26;token=612bd4b5-201c-4416-b512-15d6f131ee42" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FUPBVkJe3K2mYOcG7BvSs%2FMake%20Public%20-%20Light%2020px.svg?alt=media&#x26;token=cf2579eb-4ed6-4de0-bdb5-00d8c3a3e286" alt=""></picture>  **Make Public** – Make the image visible only to you or to everyone.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F6FutOtMHAIy3Ngxo3gDc%2FMute%20creator%20-%20Dark%2020px.svg?alt=media&#x26;token=fc5fde64-10b6-427b-8cef-149bc23d205b" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FyK9UoAHVi3YEvtEUi9xd%2FMute%20creator%20-%20Light%2020px.svg?alt=media&#x26;token=ac29d825-9a1e-4685-889d-43e24824a85b" alt=""></picture>  **Mute creator** – Hide posts from a specific creator.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FQSi3HjteD8vqaRHCbnK0%2FOpen%20in%20Canvas%20-%20Dark%2020px.svg?alt=media&#x26;token=748b00e7-57e9-4364-8f31-72eb746a8612" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F03qTPfe1nt5H1whs4YMP%2FOpen%20in%20Canvas%20-%20Light%2020px.svg?alt=media&#x26;token=6abee60a-c491-4ff7-aa51-20903b6a7045" alt=""></picture>  **Open in Canvas** – Launch the image in the advanced editing workspace.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FmyAoVCXY52M7skE5ixbS%2FPin%20-%20Dark%2020px.svg?alt=media&#x26;token=9f5a8491-aa4f-46fb-b741-a757ad1289d9" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FIVqyQKCpXM704a2MLnh7%2FPin%20-%20Light%2020px.svg?alt=media&#x26;token=143c9137-2a7e-42fa-a932-bf38678de3ba" alt=""></picture>  **Pin** / <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FRzqd97RxvZb6wcojnPOX%2FUnpin%20-%20Dark%2020px.svg?alt=media&#x26;token=e5bb5992-53d7-4a9f-a4da-a7840803c8e0" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FH5XISV4QbUSTpmCnIo1y%2FUnpin%20-%20Light%2020px.svg?alt=media&#x26;token=af9c0b2d-7a27-4732-9e0b-06bcf03a5fcb" alt=""></picture>  **Unpin** – Keep or remove the image at the top of your profile.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FPlIflFrYMeziypKYQ7pw%2FRate%20Generation%20UP%20%20-%20White%2020px.svg?alt=media&#x26;token=f10de20a-f15d-4d77-8087-5d77a56cdbfc" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FcAt7QMFeOcuRm7zWyZ1c%2FRate%20Generation%20UP%20%20-%20Black%2020px.svg?alt=media&#x26;token=23a27fd0-2e27-42cf-b467-733b664a990e" alt=""></picture>  <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FRCHEIA1lkk9e2mwkvu4i%2FRate%20Generation%20DOWN%20%20-%20White%2020px.svg?alt=media&#x26;token=22029f8f-7fbb-4636-918a-7c7781b3bf4e" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FTkd0cdhgceX9cNjsWPFZ%2FRate%20Generation%20DOWN%20%20-%20Black%2020px.svg?alt=media&#x26;token=d8c5d504-aec0-4b46-8a66-c3999dca590d" alt=""></picture>  **Rate Generation** – Provide feedback on the quality of the result.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FXEPrVMOTiqQYvjaByGzN%2FRemix%20-%20Dark%2020px.svg?alt=media&#x26;token=c5ceddba-7716-45d7-8d58-d9ccdbb0f113" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FWdxQ94TMVtyYXI1mVQbM%2FRemix%20-%20Light%2020px.svg?alt=media&#x26;token=24e6538c-df26-4281-b710-f1834f9a583d" alt=""></picture>  **Remix** – Create a new image variation starting from this image.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FpEZUkKiXYUXEYxuPvYOo%2FRemove%20BG%20-%20Dark%2020px.svg?alt=media&#x26;token=e23a5bcc-d339-4446-9a06-f5e60bd9b9bb" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FBGnqNxmHDs61eiW3LBXa%2FRemove%20BG%20-%20Light%2020px.svg?alt=media&#x26;token=0b46336d-20df-4982-9c97-6e772503d928" alt=""></picture>  **Remove background** – Delete the background around the main subject of the image.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FgCnkyYBIW9NQx6VrPKju%2FReplace%20BG%20-%20Dark%2020px.svg?alt=media&#x26;token=110eb700-8048-4a64-aa84-a14fe2b55146" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FBY0Pri3CFlO087n01uJr%2FReplace%20BG%20-%20Light%2020px.svg?alt=media&#x26;token=0dd62b42-08ed-4a71-b32c-d81149c8dcc0" alt=""></picture>  **Replace background** – Swap the background with a new generated one.
+
+![](https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FZE4IjFJso6S1cQMBaLIX%2FReport%20-%20Red%2020px.svg?alt=media\&token=b4567713-cd9f-46dd-aaf8-b127b5b9b03f)  **Report** – Report a poor image quality or an inappropriate image/prompt.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FbpD5TVoNlxoapsj7SVMl%2FRetry%20-%20Dark%2020px.svg?alt=media&#x26;token=b75a05ad-1e05-444c-8009-44aa90639037" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F1i4BPnpvWc8T4qxM3eUd%2FRetry%20-%20Light%2020px.svg?alt=media&#x26;token=4bcac738-fd06-4446-a43d-614240ef2a91" alt=""></picture>  **Retry** – Generate the image again with the same settings or with adjusted settings.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FcsfagHzdvOel2O8yW3rm%2FSet%20as%20profile%20photo%20-%20Dark%2020px.svg?alt=media&#x26;token=e177e45a-7011-4025-aed4-0790fc0b6d45" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FhUotZCEqCKufhJF1rkC1%2FSet%20as%20profile%20photo%20-%20Light%2020px.svg?alt=media&#x26;token=ac8cbaa9-dd6c-4cd3-a4ac-ff72db4f9a3b" alt=""></picture>  **Set as profile photo** – Use the image as your account profile picture.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F0nQFm8kSKWBIb0wPrbst%2FStyle%20-%20Dark%2020px.svg?alt=media&#x26;token=418425ee-3568-41e8-ba24-e4086ba228ac" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FYGhDGoSUwKn1XCxbpt1w%2FStyle%20-%20Light%2020px.svg?alt=media&#x26;token=045abfcb-25e6-4d6f-928e-a34a52cd70d2" alt=""></picture>  **Style** – Use the image as a style reference.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FTDEcQu03wYxoZdQMJcYs%2FUpscale%20-%20Dark%2020px.svg?alt=media&#x26;token=346c1839-8058-40eb-8470-50dbb3c65b17" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FopkVVo0JhVuuF3bvlrdP%2FUpscale%20-%20Light%2020px.svg?alt=media&#x26;token=b5406c39-ff5a-409b-9e7b-ba79d3aca96b" alt=""></picture>  **Upscale** – Increase the image resolution up to 2x.
+
+<picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FoGwYi0LfMLyvkt0XuMn3%2FUse%20prompt%20-%20Dark%2020px.svg?alt=media&#x26;token=a4671f9b-1e49-4772-800b-dd0e7d1dd8fb" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F4Duk1UnoVUM9cw3hWRXd%2FUse%20prompt%20-%20Light%2020px.svg?alt=media&#x26;token=735cd4c6-cc6e-41cd-b76d-25f5865af9d4" alt=""></picture>  **Use prompt** – Reuse the exact prompt that generated the image.
+
+{% hint style="info" %}
+Some other kind of More menus are available in other locations and features. These menus are described directly in the feature in question.
+{% endhint %}
+
+
+# Navigation Tabs
+
+Ideogram's homepage features a navigation section that allows you to explore, search, and filter the community’s creations. Here’s a breakdown of each element:
+
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FHQlyvH8M7xMF99JvHVjv%2FCleanShot%202025-09-23%20at%2013.59.43%402x.png?alt=media&#x26;token=3612b610-baf3-4b6f-9128-a87714992380" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fy2EaCJq3FgjkkTWv8ewi%2FCleanShot%202025-09-23%20at%2014.00.13%402x.png?alt=media&#x26;token=837b1f91-4545-4b7c-a36a-03ca3e68cb9d" alt=""></picture><figcaption></figcaption></figure>
+
+1. **Search Icon** - Use this to [search](https://docs.ideogram.ai/using-ideogram/features-and-tools/search) for public images using keywords used in prompts. Great for quickly locating content created by others on a particular subject or style. When clicking the icon, the entire navigation tab transforms into a text field where you can enter your search terms.
+
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FCXnbi6DRDfz9hKDdtjDo%2FCleanShot%202025-09-23%20at%2013.54.28%402x.png?alt=media&#x26;token=c94d315e-9e5b-4fc4-9914-1a472a73c08b" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FkRWI9eABCnvf1S6B4Z5G%2FCleanShot%202025-09-23%20at%2013.54.22%402x.png?alt=media&#x26;token=41bac3af-36eb-4734-8992-da75a0e63ffe" alt=""></picture><figcaption></figcaption></figure>
+
+2. **Explore Tab** – This is the default view when accessing the homepage. Displays the most recent public image generations from the Ideogram community.
+3. **Top Tab** – Displays the most popular images based on community engagement — including likes, remixes, and usage — over selectable time periods. When clicking the Top tab, a scroll down menu appear on the right where you can choose from the following views:<br>
+
+   <div align="center"><figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FdkfISCHZzMgZV7jIjq18%2FIdeogram%20-%20LIght%20Dark%402x.png?alt=media&#x26;token=e402e610-a4bb-4138-abb8-a7de42343d04" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FtQLGBAl0mWylTREFhQut%2FIdeogram%20-%20LIght%20Dark%402x.png?alt=media&#x26;token=a050857b-6c53-45c9-95f0-bc16a7c80949" alt="" width="124"></picture><figcaption></figcaption></figure></div>
+
+   1. **Hour**: Top trending images in the past 60 minutes.
+   2. **Day**: Top images today.
+   3. **Week**: Most popular from the past 7 days.
+   4. **Month**: High-performing images over the past 30 days.
+   5. **All-Time**: Most popular images ever created on Ideogram.
+4. **Subjects Filter** – A list of image categories such as: People, Product, Nature, Poster, Logo, T-shirt, and more. Quickly filter the image feed by subject matter to match your interests or your intended use.
+
+
+# Prompt Box
+
+## Prompt Box Overview
+
+The Prompt Bo**x** is the main area where you describe what you want to see in your generated image. It also gives you access to various settings that let you control the visual style, subject consistency, aspect ratio, colors, and more.
+
+<div data-full-width="false"><figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FIs2vfJSTIbX64W8Vkboj%2FPrompt%20Box%20Numbered%20-%20Dark%402x.png?alt=media&#x26;token=5044db19-a083-49e8-b315-c1d356ef4f97" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FcHWLfMLkhwDVRwIBhNVE%2FPrompt%20Box%20Numbered%20-%20Light%402x.png?alt=media&#x26;token=897a051e-3e24-475d-abaa-ad7c954525b4" alt=""></picture><figcaption><p>Prompt Box in its default state.</p></figcaption></figure></div>
+
+## Elements of the Prompt Box
+
+1. **Prompt Field** – Where you type your text prompt — a description of what you want the AI to generate.
+2. **Image Upload** – Lets you upload an image to use in these different situations:
+   1. As a [Character](https://docs.ideogram.ai/using-ideogram/features-and-tools/reference-features/character-reference) or [Style](https://docs.ideogram.ai/using-ideogram/features-and-tools/reference-features/style-reference) reference, or to [Describe](https://docs.ideogram.ai/using-ideogram/features-and-tools/describe) the content of the uploaded image.
+   2. To edit the image in various ways such as [Magic Fill](https://docs.ideogram.ai/canvas-and-editing/canvas/magic-fill), [Remix](https://docs.ideogram.ai/using-ideogram/features-and-tools/remix), [Upscale](https://docs.ideogram.ai/using-ideogram/features-and-tools/upscale), [Remove or Replace](https://docs.ideogram.ai/using-ideogram/features-and-tools/replace-or-remove-background) the background, or edit it in [Canvas](https://docs.ideogram.ai/canvas-and-editing/canvas/canvas-overview).
+3. [**Model**](https://docs.ideogram.ai/using-ideogram/generation-settings/available-models) **/** [**Render Speed**](https://docs.ideogram.ai/using-ideogram/generation-settings/render-speed) **/ Number of Images** – Lets you select which AI model/version to use (e.g., Ideogram 3.0 vs earlier versions), the quality/rendering speed, and how many output images are generated per prompt.
+
+<div align="center"><figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FijUmX3eji0i3uaYYZrG7%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=98a5a47e-f828-4ff1-a7db-e0eabae524ac" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FHkijKKrju5R9vnllp28P%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=d56f9942-4369-426b-a3b0-818f7b06ab23" alt="The Model + variations menu." width="274"></picture><figcaption><p>The Model + variations menu.</p></figcaption></figure></div>
+
+4. [**Aspect Ratio**](https://docs.ideogram.ai/using-ideogram/generation-settings/aspect-ratio-and-dimensions) – Select the format of your image (e.g. square, portrait or landscape.)
+
+<div align="center"><figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F1NuMk3xZ2FVkRpXeFYX4%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=4dd9c5cf-d2b4-45c7-9da6-b21909d5a940" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FoivLBYh9pD0HNcY8KlWd%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=3e7d42ed-1b52-415c-8c78-c874a64ed6c6" alt="The Aspect ratio menu." width="375"></picture><figcaption><p>The Aspect ratio menu.</p></figcaption></figure></div>
+
+5. [**Style**](https://docs.ideogram.ai/using-ideogram/features-and-tools/reference-features/style-reference) – Choose a visual style or a Style Reference to guide the overall look. You can pick from global mode (like Realistic, Design, General), from a list of specific built-in presets or use/create a custom one.
+
+<div align="center"><figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FYi8DKlQ7N9Xo0K3k8kFk%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=1e6806b9-85f5-4441-a24b-7b0e152d9224" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F8fogVwlvHeO1mo4FdZBl%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=c83fec26-33a1-4336-8830-16cdc497a524" alt="" width="563"></picture><figcaption><p>The Style popup window.</p></figcaption></figure></div>
+
+6. [**Character Reference**](https://docs.ideogram.ai/using-ideogram/features-and-tools/reference-features/character-reference) – Use a reference image to guide how a person or character looks across multiple generations.
+7. [**Color Palette**](https://docs.ideogram.ai/using-ideogram/generation-settings/color-palette) – Choose a color palette for the generated image. Guides overall color tones.
+
+<div align="center"><figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FX94GnAk04jlZ4PrQHcA2%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=e26a7e98-c10e-41d1-adcd-3034702b4d84" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FKhiKRnu1oS5xkxPTzmRU%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=7bc6d1e0-049a-47e7-afc5-ff3e9691fe34" alt="The Color palette menu." width="292"></picture><figcaption><p>The Color palette menu.</p></figcaption></figure></div>
+
+8. **More Options** – Click the More icon <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FsULvZOcJ9KEtw0cwW7Em%2FPB%20-%20More%20Button%20-%20Dark.png?alt=media&#x26;token=ee8e8a50-c3b7-42de-bdb3-31b87a7c336e" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FQMg6DKTYV1xcFS8gwDal%2FPB%20-%20More%20Button%20-%20Light.png?alt=media&#x26;token=883b737c-c2c6-4c15-86cc-378824550c3c" alt="" data-size="line"></picture> to access more settings:
+   1. [Tile](https://docs.ideogram.ai/using-ideogram/generation-settings/tile) – Generate seamless tiles *(Model 1.0 only)*
+   2. [Seed Number](https://docs.ideogram.ai/using-ideogram/generation-settings/seed-number) – Reproduce the same image output that was done before.&#x20;
+   3. [Negative Prompt](https://docs.ideogram.ai/using-ideogram/generation-settings/negative-prompt) – Tell the AI what to avoid.&#x20;
+
+<div align="center"><figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FkTeNkzDK6oJy62Ap53nk%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=078775c5-018b-4dc8-9d74-888eaccbef4f" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FwotY61OmqKhOisAXD0Gs%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=475cdec6-ba36-42ec-858d-48bef841e64f" alt="The More menu." width="375"></picture><figcaption><p>The More menu.</p></figcaption></figure></div>
+
+9. [**Magic Prompt**](https://docs.ideogram.ai/using-ideogram/generation-settings/magic-prompt) – A tool/setting that optimizes and embellishes the original prompt (when needed), to maximize the variety and add more details to the images generated.
+
+<div align="center"><figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FmFNugB2DGAQMyfSy6zLU%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=71350c70-f678-4e2e-80ba-5a007a87b5db" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FX1rNq3EMyougiSH9ajhh%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=6f694713-ba9c-4e99-b824-84b487a8a1ee" alt="The Magic Prompt menu." width="262"></picture><figcaption><p>The Magic Prompt menu.</p></figcaption></figure></div>
+
+10. [**Private Generation**](https://docs.ideogram.ai/using-ideogram/generation-settings/private-generations) – A visibility toggle that makes your image visible only to you or to the public. Requires a Plus plan or higher to generate images privately.
+
+<div align="center"><figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fy29D0102tcQIq6GZjmdF%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=35f06c27-722a-4139-b390-6c4c5cf3deb4" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fipn6OKANYNKcrwelQL50%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=ac3b19d8-4b77-4f95-90eb-ea8df0dd1b74" alt="The Visibility menu." width="232"></picture><figcaption><p>The Visibility menu.</p></figcaption></figure></div>
+
+11. **Generate** – Button that starts the generation process based on your prompt and selected settings.
+
+***
+
+## Prompt Box in Different Modes
+
+When you select a Style or a Character Reference, or Remix an image, a small thumbnail appears inside the Prompt Box. These thumbnails visually represent the current selections applied to your prompt.
+
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fl2DzBvEmgIivpNtX7wcm%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=6cc3d8e1-c72d-4e35-b89c-48ed80cb3fa7" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F1STaMNlOgqHgcmEri9a4%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=3b6ef17e-e0a1-4f24-9f38-4056eec1ef21" alt=""></picture><figcaption><p>Prompt Box with option thumbnails such as Remix, Style, or Character references.</p></figcaption></figure>
+
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FjQi79cZFzxbAU1DOfVEZ%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=6fd6f5a9-fe8c-4f7a-a722-d1ccc1f8efa4" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FqGHs3VRu1C2uuBa0arX4%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=607bd330-7028-4952-88a7-2ae3242b9569" alt=""></picture><figcaption><p>Collapsed Prompt Box showing option thumbnails grouped on the right side.</p></figcaption></figure>
+
+12. [**Style Reference**](https://docs.ideogram.ai/using-ideogram/features-and-tools/reference-features/style-reference) thumbnail – Shows that a custom style reference image is selected and active.
+13. [**Character Reference**](https://docs.ideogram.ai/using-ideogram/features-and-tools/reference-features/character-reference) thumbnail  – Indicates that a character image reference is selected.&#x20;
+14. [**Remix**](https://docs.ideogram.ai/using-ideogram/features-and-tools/remix) thumbnail  – Shows the image being remixed and an image weight (e.g., 50).
+15. **Grouped thumbnails** – In some views, the *Prompt Box* collapses and shows only the prompt and thumbnails of your selected style, character, or remix image.
+
+#### Other Possible Thumbnails
+
+* [**Upscale**](https://docs.ideogram.ai/using-ideogram/features-and-tools/upscale) thumbnail – Shows that a custom style reference image is selected and active.
+
+You can click on the **Character** or **Remix** thumbnail to bring options in a dropdown menu, or on the **Style** thumbnail to bring up the Style popup window.
+
+***
+
+## **Importing an Image**
+
+When you import an image—either by clicking the **Image Upload** icon <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FJgPGgIapPmeBqKWygNoc%2FUpload%20-%20White%2020px.svg?alt=media&#x26;token=76e1d227-dd1b-4573-8e17-920ca9f73852" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FiTBQsVPPw1QtLMHRMYib%2FUpload%20-%20Black%2020px.svg?alt=media&#x26;token=fb5180c6-6ed9-4ba7-95da-f47a350367cc" alt="" data-size="original"></picture> , pasting an image directly into the prompt field, or dragging it onto the page—a popup window appears with several options for how to use or edit the image.
+
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F18pkDmSrmy3GKyFVSWae%2FImport%20Image%20Popup%20-%20Dark.png?alt=media&#x26;token=358f8d03-198c-478c-8a90-75da3c5095aa" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FoSvJBA6eJYE1PvsRSe3v%2FImport%20Image%20Popup%20-%20Light.png?alt=media&#x26;token=219f2375-6d69-4b96-92e4-a83f5fb4a175" alt="The available options when importing an image."></picture><figcaption><p>The available options when importing an image.</p></figcaption></figure>
+
+#### **Available actions**
+
+* **Character** – Use the uploaded image to create a [Character Reference](https://docs.ideogram.ai/using-ideogram/features-and-tools/reference-features/character-reference), preserving the subject’s identity and facial features across multiple generations.
+* **Style** – Use the image as a [Style Reference](https://docs.ideogram.ai/using-ideogram/features-and-tools/reference-features/style-reference), capturing its aesthetic, color scheme, and visual tone to influence future generations.
+* [**Describe**](https://docs.ideogram.ai/using-ideogram/features-and-tools/describe) – Automatically generate a detailed text prompt that describes the uploaded image. Useful for re-creating similar content.
+* [**Magic Fil**l](https://docs.ideogram.ai/canvas-and-editing/canvas/magic-fill) – Edit the image by removing or replacing areas intelligently. The AI fills the masked region based on your text prompt.
+* [**Remix**](https://docs.ideogram.ai/using-ideogram/features-and-tools/remix) – Reimagine the uploaded image while preserving its composition. Adjust the **Remix weight** to balance between originality and stylistic influence.
+* [**Upscale**](https://docs.ideogram.ai/using-ideogram/features-and-tools/upscale) – Enhance the resolution and details of the image for sharper, higher-quality results.
+* **Open in Canvas** – Launch the image in [Canvas](https://docs.ideogram.ai/canvas-and-editing/canvas/canvas-overview) for manual editing, masking, and combining multiple assets.
+* [**Replace BG**](https://docs.ideogram.ai/using-ideogram/features-and-tools/replace-or-remove-background) – Automatically detect and remove the background, replacing it with a new scene or color based on your prompt. You can click on the right end **dropdown arrow** to select **Remove BG** which removes the background and make it transparent (PNG).
+
+{% hint style="info" %}
+**Tip:** Choosing any of these options will transfer you to the corresponding feature page or editor view automatically, depending on the selected action.
+{% endhint %}
+
+***
+
+
+# User Menu
+
+## Overview
+
+The User Menu opens when you click your **Profile** icon <img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FBixpYAyw4un01rlAsPLt%2Fdefault_profile_image-20px.svg?alt=media&#x26;token=086e266b-7fbf-4bbe-8ac4-eef7b69b6243" alt="" data-size="line"> at the bottom of the [Navigation Bar](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/navigation-bar).\
+It provides quick access to your account information, subscription settings, theme preferences, and other options.
+
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FooCx7N2dVZQM54DRDSTY%2FLeft%20Sidebar%20-%20User%20Menu%20-%20Dark%402x.png?alt=media&#x26;token=f9e4968b-8612-44c8-ba5f-042923001852" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FLu7WukXkOx7iXRP83MrA%2FLeft%20Sidebar%20-%20User%20Menu%20-%20Light%402x.png?alt=media&#x26;token=b87dd451-f2bf-45b0-897e-77593e8926c5" alt="" width="273"></picture><figcaption></figcaption></figure>
+
+## Elements
+
+1. **User Info** — Displays your username and registered email address. Click to access your [Profile Page](https://docs.ideogram.ai/using-ideogram/ui-overview/pages-ui/profile-page).
+2. **Plan & Credits** — Shows your current plan (for example, Plus Plan, Free Plan, etc) and remaining priority credits. Click on it to show more details.
+3. **Top Up Credits** — Shortcut to add more Priority credits.
+4. **View Profile** — Opens your public Ideogram Profile page.
+5. **Manage Subscription** — Redirects to your billing and subscription settings.
+6. **Help & Documentation** — Opens Ideogram documentation.
+7. **Manage Muted Users** — Lists and manages users you’ve muted.
+8. **Delete Account** — Permanently deletes your account (with confirmation).
+9. **API** — Opens the API management page.
+10. **Log Out** — Signs you out of your current session.
+11. **Theme Selector** — Switch between Light, Dark, or Auto[^1] appearance modes.
+12. **Footer Links** — Quick links to Terms of Service, Privacy Policy, and Ideogram’s community channels.
+
+[^1]: Based on your system settings.
 
 
 # Prompting Guide
@@ -1396,7 +1768,7 @@ As you will see in the examples below, Ideogram can easily integrate text in jus
 <table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td><strong>Simple text</strong></td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FcY7xFQIEaUD7bjny8MHH%2Fimage.png?alt=media&#x26;token=c5e02db6-9595-47fd-8f2b-acb1a61eb548" alt="" data-size="original"></td><td><strong>Prompt</strong>:<br>A striking image split in three, where on the left part, a minimalist set of three black geometric forms are arranged vertically on a light grey background. The center and right parts are united as a black background, a block of geometric text emphasizes the essence of minimalism: "Keep it simple, experience minimalism."</td></tr><tr><td><strong>Text as logo</strong></td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FC6lAE62FuEls12ZKFfRL%2Fimage.png?alt=media&#x26;token=7215aa35-82ba-4b30-9ccb-a3f35e98df2c" alt="" data-size="original"></td><td><strong>Prompt</strong>:<br>A striking photograph in which a jug of orange juice is placed on a patio table with a glass of orange juice next to it and a few oranges placed neatly on the table some cut in half. At the bottom of the image, the side of a wooden crate full of oranges shows the brand logo, which consists of a big orange in the background of the word 'Biorange' in stylish juicy/liquid lettering, which forms the logo for the orange juice brand. The background is blurred and a little dark, but it looks as though the photo was taken outside, in the garden of a house, on a sunny day.</td></tr><tr><td><strong>Text formed by objects</strong></td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FGhPsG86LABMnmApvuUVp%2Fimage.png?alt=media&#x26;token=7ae55472-2dd4-49ff-ab55-40dfddf455d0" alt="" data-size="original"></td><td><strong>Prompt</strong>:<br>A striking photograph in which a glass of milk is placed on a wooden table. A splash of milk comes out of the glass, forming the word "Milk" in a swirly manner just above the glass. The background is blurred but looks like a homely kitchen.</td></tr><tr><td><strong>Text as part of an object</strong></td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F6p6jS2kTbBoz7pAY9mXx%2Fimage.png?alt=media&#x26;token=a10ce708-ea64-415b-85ee-bc375840c849" alt="" data-size="original"></td><td>Prompt:<br>A close-up detailed product photo of a vibrant and energetic baseball cap, featuring a stylish red panda embroidered emblem that exudes vitality. The cap is embroidered with the team's name, "Red Panda," displayed boldly in white bold script font below the sleek red panda design. The dynamic perspective and intense focus on the cap create a sense of high-spirited enthusiasm and team spirit.</td></tr><tr><td><strong>Text as design</strong></td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FCqHvblJMf9HjjtSdJiwx%2Fimage.png?alt=media&#x26;token=31e00de6-072a-47de-96a6-349d646e057d" alt="" data-size="original"></td><td><p><strong>Prompt</strong>:<br>A vibrant and playful illustration of "Summer Lifestyle" set against a dark backdrop. The words are rendered in a whimsical, multi-colored font with splashes of pink, yellow, and green, perfectly capturing the essence of the season. Surrounding the text, a tropical paradise unfolds with palm trees swaying gently, a surfboard catching a wave, and a beach umbrella providing shade. A cocktail glass filled with a refreshing drink and a slice of lemon sits on the sand, while a beach ball and sunny skies complete the scene. The overall design exudes a laid-back, beach-themed vibe, with the bright colors and tropical motifs emphasizing the fun and carefree spirit of summer.</p><p><br></p></td></tr><tr><td><strong>Text as logo or design</strong></td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F6AxVSGvmqQcB8j1WAm3S%2Fimage.png?alt=media&#x26;token=7afc30c7-b1bc-4c23-8cad-a5c3b5429bf0" alt="" data-size="original"></td><td>A captivating vintage-style calligraphy artwork featuring a woman's silhouette with intricately crafted hair, made up of elegant script that reads "Take care of your hair naturally." The brand name "Herbal Shampoo" is gracefully written in a fine sans-serif font below the main text, with the word shampoo being smaller, adding a touch of elegance to the design. The soft off-white background enhances the rich, vintage feel of the piece, while the seamless flow of the text emphasizes the message and the silhouette's feminine grace.</td></tr></tbody></table>
 
 {% hint style="info" %}
-Note how, in the examples above, there was no need to use [Style Tags](https://docs.ideogram.ai/using-ideogram/generation-settings/styles/styles-in-older-models), not even the Typography one. Everything was indicated in the prompt.
+Note how, in the examples above, there was no need to use [Style Tags](https://docs.ideogram.ai/using-ideogram/features-and-tools/reference-features/style-reference/styles-in-older-models), not even the Typography one. Everything was indicated in the prompt.
 {% endhint %}
 
 ## Fonts and styles
@@ -1420,7 +1792,7 @@ Although Ideogram excels at generating text in images, an image can sometimes co
 * Simply generate your prompt again a few times and see if you get the text you want.
 * Change some of the longer, more complex words for shorter synonyms.
 * Use the [Editor](https://docs.ideogram.ai/canvas-and-editing/editor) to modify the text, adding or deleting parts and then remix the image.
-* Use the Typographic [Style Tag](https://docs.ideogram.ai/using-ideogram/generation-settings/styles/styles-in-older-models) with version 1.0 as it helps to achieve better results.
+* Use the Typographic [Style Tag](https://docs.ideogram.ai/using-ideogram/features-and-tools/reference-features/style-reference/styles-in-older-models) with version 1.0 as it helps to achieve better results.
 * Upload an image containing the desired text, which will serve as a starting point and composition source for the image to be created by remixing it.
 
 {% hint style="info" %}
@@ -1575,9 +1947,7 @@ This might feel less intuitive at first, but it gets easier with practice and is
 ***
 
 
-# 5- Common Pitfalls & Fixes
-
-##
+# 5- Common Pitfalls and Fixes
 
 Even with a good understanding of prompting, it’s easy to make small mistakes that lead to strange or disappointing results—especially when you're trying to get a very specific image from the AI. This section highlights some of the most common issues users run into when they want precise results and shows how to fix them with simple changes.
 
@@ -1735,7 +2105,7 @@ Due to the complexity of the text and visual composition, this image needed more
 {% endhint %}
 
 
-# 6- Prompt Iteration & Refinement
+# 6- Prompt Iteration and Refinement
 
 Even with a well-structured prompt, the first image you generate might not be exactly what you envisioned. That's perfectly normal. Refining your prompt through small, thoughtful changes can help you get closer to your desired result.
 
@@ -2178,15 +2548,13 @@ Even with a well-structured prompt, the AI may not always interpret your intent 
 **Possible Causes:**
 
 * Style or mood not specified or vague (*“artistic,” “modern”*).
-
-- Contradictions between subject and style.
+* Contradictions between subject and style.
 
 **Fixes:**
 
 * Mention specific style and moods: *“watercolor,” “digital painting,” “dreamy,*” etc.
-
-- Use a visually grounded detailed description for the style and mood you want.
-- Try **Magic Prompt** to explore or **Style Reference** to better control styles and moods.
+* Use a visually grounded detailed description for the style and mood you want.
+* Try **Magic Prompt** to explore or **Style Reference** to better control styles and moods.
 
 → **See:** [Visually Grounded vs. Abstract Prompts](https://docs.ideogram.ai/using-ideogram/2-prompting-fundamentals#visually-grounded-vs.-abstract-prompts), [Creative Tools in Ideogram](https://docs.ideogram.ai/using-ideogram/prompting-guide/7-creative-tools-in-ideogram)
 
@@ -2525,914 +2893,634 @@ These descriptive modifiers can enhance the emotional tone, physical appearance,
 # Generation Settings
 
 
-# Aspect Ratios & Resolutions
+# Aspect Ratio and Dimensions
 
-Depending on the version of Ideogram you choose to use when generating images, you’ll have access to a different selection of aspect ratios.
+Aspect Ratio controls the proportions of your generated images. Depending on the Ideogram model version, you can choose from different preset and custom ratio options. See [Available Models](https://docs.ideogram.ai/using-ideogram/generation-settings/available-models) for version-specific capabilities.
 
-To select a specific **Aspect ratio**, simply click or tap the prompt box to reveal the options at the bottom, then click the **second tab** to open a popup menu with the available choices.
+To select a specific aspect ratio:
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FstDS3zXP3yM1QjHRl2o5%2FUI%20v3%20-%20Promptbox%20-%20Dark%402x.png?alt=media&#x26;token=be50b78f-4a7a-4745-bfd2-a3ac63dd57ba" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FZbUz2CoqziR544005SJ7%2FUI%20v3%20-%20Promptbox%20-%20Light%402x.png?alt=media&#x26;token=296ef5b2-2b2b-4ac9-a6ad-e3359c3c42e7" alt=""></picture><figcaption><p>Prompt box and location of the Aspect Ratio tab.</p></figcaption></figure>
+1. Select the [Prompt Box](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/prompt-box) to expand it (if not already expanded) and display the generation settings.
+2. Select  **Aspect Ratio** (displayed as the actual aspect ratio, such as <kbd>**1:1**</kbd>) to view the available formats.
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FpqPJlXdGwOrRfrhgoZPW%2FPB%20v3%20-%20Aspect%20Ratio%20-%20Dark%402x.png?alt=media&#x26;token=7faa5a61-0da0-4c1d-9eed-e0c1ccf84ec3" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fq7TorINT1Mg7enCAi7KX%2FPB%20v3%20-%20Aspect%20Ratio%20-%20Light%402x.png?alt=media&#x26;token=0c70609f-6ceb-40f0-a3d2-e8bb581f8010" alt="" width="563"></picture><figcaption><p>Popup menu for Aspect ratios.</p></figcaption></figure>
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FpqPJlXdGwOrRfrhgoZPW%2FPB%20v3%20-%20Aspect%20Ratio%20-%20Dark%402x.png?alt=media&#x26;token=7faa5a61-0da0-4c1d-9eed-e0c1ccf84ec3" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fq7TorINT1Mg7enCAi7KX%2FPB%20v3%20-%20Aspect%20Ratio%20-%20Light%402x.png?alt=media&#x26;token=0c70609f-6ceb-40f0-a3d2-e8bb581f8010" alt="Aspect Ratio dropdown showing available preset formats." width="563"></picture><figcaption><p>Aspect ratio dropdown showing the available format options.</p></figcaption></figure>
 
-## Defaults Aspect Ratios and Sizes
+## Default Aspect Ratios and Sizes
 
-The table below shows the available default aspect ratios for each model and the size of the generated images they will produce respectively.
+The table below shows the available default aspect ratios for each model and the size of the generated images they produce.
 
-| Aspect Ratio | Dimension for v1.0 | Sizes for v2.0, v2a and v3.0 |
-| ------------ | ------------------ | ---------------------------- |
-| `1:3`        | 512 x 1536         | 512 x 1536                   |
-| `1:2`        | -                  | 704 x 1408                   |
-| `9:16`       | 720 x 1280         | 736 x 1312                   |
-| `10:16`      | 768 x 1232         | 800 x 1280                   |
-| `2:3`        | 768 x 1152         | 832 x 1248                   |
-| `3:4`        | 768 x 1024         | 864 x 1152                   |
-| `4:5`        | -                  | 896 x 1120                   |
-| `1:1`        | 1024 x 1024        | 1024 x 1024                  |
-| `5:4`        | -                  | 1120 x 896                   |
-| `4:3`        | 1024 x 768         | 1152 x 864                   |
-| `3:2`        | 1152 x 768         | 1248 x 832                   |
-| `16:10`      | 1232 x 768         | 1280 x 800                   |
-| `16:9`       | 1280 x 720         | 1312 x 736                   |
-| `2:1`        | -                  | 1408 x 704                   |
-| `3:1`        | 1536 x 512         | 1536 x 512                   |
+|     Aspect Ratio     | Dimensions (v1.0) | Dimensions (v2.0, v2a, v3.0) |
+| :------------------: | :---------------: | :--------------------------: |
+|  <kbd>**1:3**</kbd>  |     512 x 1536    |          512 x 1536          |
+|  <kbd>**1:2**</kbd>  |      — N/A —      |          704 x 1408          |
+|  <kbd>**9:16**</kbd> |     720 x 1280    |          736 x 1312          |
+| <kbd>**10:16**</kbd> |     768 x 1232    |          800 x 1280          |
+|  <kbd>**2:3**</kbd>  |     768 x 1152    |          832 x 1248          |
+|  <kbd>**3:4**</kbd>  |     768 x 1024    |          864 x 1152          |
+|  <kbd>**4:5**</kbd>  |      — N/A —      |          896 x 1120          |
+|  <kbd>**1:1**</kbd>  |    1024 x 1024    |          1024 x 1024         |
+|  <kbd>**5:4**</kbd>  |      — N/A —      |          1120 x 896          |
+|  <kbd>**4:3**</kbd>  |     1024 x 768    |          1152 x 864          |
+|  <kbd>**3:2**</kbd>  |     1152 x 768    |          1248 x 832          |
+| <kbd>**16:10**</kbd> |     1232 x 768    |          1280 x 800          |
+|  <kbd>**16:9**</kbd> |     1280 x 720    |          1312 x 736          |
+|  <kbd>**2:1**</kbd>  |      — N/A —      |          1408 x 704          |
+|  <kbd>**3:1**</kbd>  |     1536 x 512    |          1536 x 512          |
 
-## Common Presets and Description
+## Common Presets
 
-### Vertical presets
+### Vertical
 
-* `1:3` – Very tall banner.
-* `1:2` *– version 2.0 only* Tall vertical format. Sometimes used in arts.
-* `9:16` *–* Ideal for vertical display on smartphones and some social networking sites.
-* `10:16` *–* Portrait format originally used in now retired Ideogram versions 0.1 and 0.2.
-* `2:3` *–* Portrait format mainly used in digital photography and poster printing.
-* `3:4` *–* Portrait aspect ratio mainly used in film photography.
-* `4:5` *–* Portrait aspect ratio mainly used in film photography.
+* <kbd>**1:3**</kbd> – Very tall banner.
+* <kbd>**1:2**</kbd> – Tall vertical format. Sometimes used in artworks or creative compositions. *Version 2.0 and higher.*
+* <kbd>**9:16**</kbd> *–* Ideal for vertical display on smartphones and some social networking sites.
+* <kbd>**10:16**</kbd> *–* Portrait format originally used in early Ideogram versions 0.1 and 0.2.
+* <kbd>**2:3**</kbd> *–* Portrait format mainly used in digital photography and poster printing.
+* <kbd>**3:4**</kbd> *–* Portrait aspect ratio mainly used in film photography.
+* <kbd>**4:5**</kbd> *–* Common portrait ratio used in film photography.
 
-### Square Preset
+### Square
 
-* `1:1` *–* A square format, often used in social media and image sites.
+* <kbd>**1:1**</kbd> *–* A square format, often used in social media and image sites.
 
-### Horizontal Presets
+### Horizontal
 
-* `5:4` *–* Landscape aspect ratio mainly used in film photography.
-* `4:3` *–* Landscape format, used by old traditional standard definition television. Also used in film photography.
-* `3:2` *–* Popular landscape format used in digital photography and printing.
-* `16:10` *–* Landscape format originally used in now retired Ideogram versions 0.1 and 0.2.
-* `16:9` *–* Landscape format used in today's horizontal screens, such as your TV.
-* `2:1` *–* Large banner. Format used in 360° equirectangular panoramas.
-* `3:1` *–* Very large banner.
+* <kbd>**5:4**</kbd> *–* Landscape aspect ratio mainly used in film photography.
+* <kbd>**4:3**</kbd> *–* Landscape format, used by old traditional standard definition television. Also used in film photography.
+* <kbd>**3:2**</kbd> *–* Popular landscape format used in digital photography and printing.
+* <kbd>**16:10**</kbd> *–* Landscape format originally used in now retired Ideogram versions 0.1 and 0.2.
+* <kbd>**16:9**</kbd> *–* Landscape format commonly used in modern horizontal screens, including TV.
+* <kbd>**2:1**</kbd> *–* Large banner. Commonly used for 360° equirectangular panoramas.
+* <kbd>**3:1**</kbd> *–* Very large banner.
 
 ## Custom Aspect Ratios
 
-In version 2.0 and up, users with Plus and Plus subscriptions have access to customized aspect ratios (in addition to predefined ratios) in two different ways:
+You can create a custom aspect ratio when the default options don’t meet your needs.
 
-1. By using the slider under the Aspect Ratio preview. This allows access to many custom sizes that are not available as presets.
-2. By clicking the Custom button and manually entering the desired aspect ratio or width and height in pixels. The interface will then resize the format to the nearest supported size and ratio, anywhere between 1:3 and 3:1.
+In versions 2.0 and later, users on the **Basic Plan** or higher can use custom aspect ratios in two ways:
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FdBh1W6VCHkqceDWIFCG9%2FPB%20v3%20-%20Aspect%20Ratio%20-%20Dark%402x.png?alt=media&#x26;token=35636dbb-9b25-4bd6-907c-3bb6195a4f0d" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FiMRsyZ4T4QzImryUMsjm%2FPB%20v3%20-%20Aspect%20Ratio%20-%20Light%402x.png?alt=media&#x26;token=e1749e40-ea4e-4b4d-8bc0-11ecce241fca" alt="" width="563"></picture><figcaption></figcaption></figure>
+1. Use the **Slider** under the *aspect ratio preview* to access continuous ratio values beyond the presets.
+2. Select **Custom** to manually enter the desired aspect ratio or pixel dimensions. The interface automatically adjusts to the nearest supported ratio between <kbd>**1:3**</kbd> and <kbd>**3:1**</kbd>.
 
-The table below displays each custom aspect ratio along with its size in pixels, arranged from the widest to the tallest.
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FdBh1W6VCHkqceDWIFCG9%2FPB%20v3%20-%20Aspect%20Ratio%20-%20Dark%402x.png?alt=media&#x26;token=35636dbb-9b25-4bd6-907c-3bb6195a4f0d" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FiMRsyZ4T4QzImryUMsjm%2FPB%20v3%20-%20Aspect%20Ratio%20-%20Light%402x.png?alt=media&#x26;token=e1749e40-ea4e-4b4d-8bc0-11ecce241fca" alt="Screenshot of the Aspect Ratio slider with numeric entry fields." width="563"></picture><figcaption><p>Aspect Ratio preview with the slider control and custom entry fields.</p></figcaption></figure>
 
-<table><thead><tr><th align="center" valign="top">Aspect Ratio</th><th align="center" valign="top">Pixel dimensions</th></tr></thead><tbody><tr><td align="center" valign="top">3:1</td><td align="center" valign="top">1536 x 512</td></tr><tr><td align="center" valign="top">8:3</td><td align="center" valign="top">1536 x 576</td></tr><tr><td align="center" valign="top">23:9</td><td align="center" valign="top">1472 x 576</td></tr><tr><td align="center" valign="top">22:9</td><td align="center" valign="top">1408 x 576</td></tr><tr><td align="center" valign="top">12:5</td><td align="center" valign="top">1536 x 640</td></tr><tr><td align="center" valign="top">23:10</td><td align="center" valign="top">1472 x 640</td></tr><tr><td align="center" valign="top">11:5</td><td align="center" valign="top">1408 x 640</td></tr><tr><td align="center" valign="top">21:10</td><td align="center" valign="top">1344 x 640</td></tr><tr><td align="center" valign="top">23:11</td><td align="center" valign="top">1472 x 704</td></tr><tr><td align="center" valign="top">2:1</td><td align="center" valign="top">1408 x 704</td></tr><tr><td align="center" valign="top">21:11</td><td align="center" valign="top">1344 x 704</td></tr><tr><td align="center" valign="top">20:11</td><td align="center" valign="top">1280 x 704</td></tr><tr><td align="center" valign="top">16:9</td><td align="center" valign="top">1312 x 736</td></tr><tr><td align="center" valign="top">7:4</td><td align="center" valign="top">1344 x 768</td></tr><tr><td align="center" valign="top">19:11</td><td align="center" valign="top">1216 x 704</td></tr><tr><td align="center" valign="top">5:3</td><td align="center" valign="top">1280 x 768</td></tr><tr><td align="center" valign="top">18:11</td><td align="center" valign="top">1152 x 704</td></tr><tr><td align="center" valign="top">16:10</td><td align="center" valign="top">1280 x 800</td></tr><tr><td align="center" valign="top">19:12</td><td align="center" valign="top">1216 x 768</td></tr><tr><td align="center" valign="top">3:2</td><td align="center" valign="top">1248 x 832</td></tr><tr><td align="center" valign="top">19:13</td><td align="center" valign="top">1216 x 832</td></tr><tr><td align="center" valign="top">17:12</td><td align="center" valign="top">1088 x 768</td></tr><tr><td align="center" valign="top">18:13</td><td align="center" valign="top">1152 x 832</td></tr><tr><td align="center" valign="top">4:3</td><td align="center" valign="top">1152 x 864</td></tr><tr><td align="center" valign="top">17:13</td><td align="center" valign="top">1088 x 832</td></tr><tr><td align="center" valign="top">9:7</td><td align="center" valign="top">1152 x 896</td></tr><tr><td align="center" valign="top">5:4</td><td align="center" valign="top">1120 x 896</td></tr><tr><td align="center" valign="top">16:13</td><td align="center" valign="top">1024 x 832</td></tr><tr><td align="center" valign="top">17:14</td><td align="center" valign="top">1088 x 896</td></tr><tr><td align="center" valign="top">15:13</td><td align="center" valign="top">960 x 832</td></tr><tr><td align="center" valign="top">8:7</td><td align="center" valign="top">1024 x 896</td></tr><tr><td align="center" valign="top">17:15</td><td align="center" valign="top">1088 x 960</td></tr><tr><td align="center" valign="top">15:14</td><td align="center" valign="top">960 x 896</td></tr><tr><td align="center" valign="top">16:15</td><td align="center" valign="top">1024 x 960</td></tr><tr><td align="center" valign="top">1:1</td><td align="center" valign="top">1024 x 1024</td></tr><tr><td align="center" valign="top">15:16</td><td align="center" valign="top">960 x 1024</td></tr><tr><td align="center" valign="top">14:15</td><td align="center" valign="top">896 x 960</td></tr><tr><td align="center" valign="top">15:17</td><td align="center" valign="top">960 x 1088</td></tr><tr><td align="center" valign="top">7:8</td><td align="center" valign="top">896 x 1024</td></tr><tr><td align="center" valign="top">13:15</td><td align="center" valign="top">832 x 960</td></tr><tr><td align="center" valign="top">14:17</td><td align="center" valign="top">896 x 1088</td></tr><tr><td align="center" valign="top">13:16</td><td align="center" valign="top">832 x 1024</td></tr><tr><td align="center" valign="top">4:5</td><td align="center" valign="top">896 x 1120</td></tr><tr><td align="center" valign="top">7:9</td><td align="center" valign="top">896 x 1152</td></tr><tr><td align="center" valign="top">13:17</td><td align="center" valign="top">832 x 1088</td></tr><tr><td align="center" valign="top">3:4</td><td align="center" valign="top">864 x 1152</td></tr><tr><td align="center" valign="top">13:18</td><td align="center" valign="top">832 x 1152</td></tr><tr><td align="center" valign="top">12:17</td><td align="center" valign="top">768 x 1088</td></tr><tr><td align="center" valign="top">13:19</td><td align="center" valign="top">832 x 1216</td></tr><tr><td align="center" valign="top">2:3</td><td align="center" valign="top">832 x 1248</td></tr><tr><td align="center" valign="top">12:19</td><td align="center" valign="top">768 x 1216</td></tr><tr><td align="center" valign="top">10:16</td><td align="center" valign="top">800 x 1280</td></tr><tr><td align="center" valign="top">11:18</td><td align="center" valign="top">704 x 1152</td></tr><tr><td align="center" valign="top">3:5</td><td align="center" valign="top">768 x 1280</td></tr><tr><td align="center" valign="top">11:19</td><td align="center" valign="top">704 x 1216</td></tr><tr><td align="center" valign="top">4:7</td><td align="center" valign="top">768 x 1344</td></tr><tr><td align="center" valign="top">9:16</td><td align="center" valign="top">736 x 1312</td></tr><tr><td align="center" valign="top">11:20</td><td align="center" valign="top">704 x 1280</td></tr><tr><td align="center" valign="top">11:21</td><td align="center" valign="top">704 x 1344</td></tr><tr><td align="center" valign="top">1:2</td><td align="center" valign="top">704 x 1408</td></tr><tr><td align="center" valign="top">11:23</td><td align="center" valign="top">704 x 1472</td></tr><tr><td align="center" valign="top">10:21</td><td align="center" valign="top">640 x 1344</td></tr><tr><td align="center" valign="top">5:11</td><td align="center" valign="top">640 x 1408</td></tr><tr><td align="center" valign="top">10:23</td><td align="center" valign="top">640 x 1472</td></tr><tr><td align="center" valign="top">5:12</td><td align="center" valign="top">640 x 1536</td></tr><tr><td align="center" valign="top">9:22</td><td align="center" valign="top">576 x 1408</td></tr><tr><td align="center" valign="top">9:23</td><td align="center" valign="top">576 x 1472</td></tr><tr><td align="center" valign="top">3:8</td><td align="center" valign="top">576 x 1536</td></tr><tr><td align="center" valign="top">1:3</td><td align="center" valign="top">512 x 1536</td></tr></tbody></table>
+The table below lists all supported custom aspect ratios and their corresponding pixel dimensions, arranged from the widest to the tallest.
+
+|     Aspect Ratio     | Pixel dimensions |
+| :------------------: | :--------------: |
+|  <kbd>**3:1**</kbd>  |    1536 x 512    |
+|  <kbd>**8:3**</kbd>  |    1536 x 576    |
+|  <kbd>**23:9**</kbd> |    1472 x 576    |
+|  <kbd>**22:9**</kbd> |    1408 x 576    |
+|  <kbd>**12:5**</kbd> |    1536 x 640    |
+| <kbd>**23:10**</kbd> |    1472 x 640    |
+|  <kbd>**11:5**</kbd> |    1408 x 640    |
+| <kbd>**21:10**</kbd> |    1344 x 640    |
+| <kbd>**23:11**</kbd> |    1472 x 704    |
+|  <kbd>**2:1**</kbd>  |    1408 x 704    |
+| <kbd>**21:11**</kbd> |    1344 x 704    |
+| <kbd>**20:11**</kbd> |    1280 x 704    |
+|  <kbd>**16:9**</kbd> |    1312 x 736    |
+|  <kbd>**7:4**</kbd>  |    1344 x 768    |
+| <kbd>**19:11**</kbd> |    1216 x 704    |
+|  <kbd>**5:3**</kbd>  |    1280 x 768    |
+| <kbd>**18:11**</kbd> |    1152 x 704    |
+| <kbd>**16:10**</kbd> |    1280 x 800    |
+| <kbd>**19:12**</kbd> |    1216 x 768    |
+|  <kbd>**3:2**</kbd>  |    1248 x 832    |
+| <kbd>**19:13**</kbd> |    1216 x 832    |
+| <kbd>**17:12**</kbd> |    1088 x 768    |
+| <kbd>**18:13**</kbd> |    1152 x 832    |
+|  <kbd>**4:3**</kbd>  |    1152 x 864    |
+| <kbd>**17:13**</kbd> |    1088 x 832    |
+|  <kbd>**9:7**</kbd>  |    1152 x 896    |
+|  <kbd>**5:4**</kbd>  |    1120 x 896    |
+| <kbd>**16:13**</kbd> |    1024 x 832    |
+| <kbd>**17:14**</kbd> |    1088 x 896    |
+| <kbd>**15:13**</kbd> |     960 x 832    |
+|  <kbd>**8:7**</kbd>  |    1024 x 896    |
+| <kbd>**17:15**</kbd> |    1088 x 960    |
+| <kbd>**15:14**</kbd> |     960 x 896    |
+| <kbd>**16:15**</kbd> |    1024 x 960    |
+|  <kbd>**1:1**</kbd>  |    1024 x 1024   |
+| <kbd>**15:16**</kbd> |    960 x 1024    |
+| <kbd>**14:15**</kbd> |     896 x 960    |
+| <kbd>**15:17**</kbd> |    960 x 1088    |
+|  <kbd>**7:8**</kbd>  |    896 x 1024    |
+| <kbd>**13:15**</kbd> |     832 x 960    |
+| <kbd>**14:17**</kbd> |    896 x 1088    |
+| <kbd>**13:16**</kbd> |    832 x 1024    |
+|  <kbd>**4:5**</kbd>  |    896 x 1120    |
+|  <kbd>**7:9**</kbd>  |    896 x 1152    |
+| <kbd>**13:17**</kbd> |    832 x 1088    |
+|  <kbd>**3:4**</kbd>  |    864 x 1152    |
+| <kbd>**13:18**</kbd> |    832 x 1152    |
+| <kbd>**12:17**</kbd> |    768 x 1088    |
+| <kbd>**13:19**</kbd> |    832 x 1216    |
+|  <kbd>**2:3**</kbd>  |    832 x 1248    |
+| <kbd>**12:19**</kbd> |    768 x 1216    |
+| <kbd>**10:16**</kbd> |    800 x 1280    |
+| <kbd>**11:18**</kbd> |    704 x 1152    |
+|  <kbd>**3:5**</kbd>  |    768 x 1280    |
+| <kbd>**11:19**</kbd> |    704 x 1216    |
+|  <kbd>**4:7**</kbd>  |    768 x 1344    |
+|  <kbd>**9:16**</kbd> |    736 x 1312    |
+| <kbd>**11:20**</kbd> |    704 x 1280    |
+| <kbd>**11:21**</kbd> |    704 x 1344    |
+|  <kbd>**1:2**</kbd>  |    704 x 1408    |
+| <kbd>**11:23**</kbd> |    704 x 1472    |
+| <kbd>**10:21**</kbd> |    640 x 1344    |
+|  <kbd>**5:11**</kbd> |    640 x 1408    |
+| <kbd>**10:23**</kbd> |    640 x 1472    |
+|  <kbd>**5:12**</kbd> |    640 x 1536    |
+|  <kbd>**9:22**</kbd> |    576 x 1408    |
+|  <kbd>**9:23**</kbd> |    576 x 1472    |
+|  <kbd>**3:8**</kbd>  |    576 x 1536    |
+|  <kbd>**1:3**</kbd>  |    512 x 1536    |
 
 
 # Available Models
 
-When generating images with Ideogram, you can choose between different models. To select a specific model, click or tap the prompt box to reveal the options at the bottom, then click the **third tab** to open a popup menu with the available choices.
+When generating images with Ideogram, you can choose between different *model versions*. Each version offers distinct characteristics that determine image quality, style fidelity, and performance.
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FUXwG8hWKjP2ohLbXMlTL%2FUI%20v3%20-%20Promptbox%20-%20Dark%402x.png?alt=media&#x26;token=4d74ea33-db5a-441c-ae8e-d48183caa2cb" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F2vmxhajgJ2Rn9XPT2LrH%2FUI%20v3%20-%20Promptbox%20-%20Light%402x.png?alt=media&#x26;token=29c36f7f-080a-4342-a5ed-a7e246dc1042" alt=""></picture><figcaption><p>Prompt box and location of the Model tab.</p></figcaption></figure>
+Your selected model affects how Ideogram interprets your prompt, the level of detail in the output, and the consistency across generations.
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FdMyAf74HLp4I0jzUNrRo%2FPB%20v3%20-%20Model%20%2B%20Render%20Speed%20-%20Dark%402x.png?alt=media&#x26;token=a2370f34-89ba-4264-9784-396e6d1fa345" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F0xSUzzbHrN7Y5beUWGD5%2FPB%20v3%20-%20Model%20%2B%20Render%20Speed%20-%20Light%402x.png?alt=media&#x26;token=a864744f-b81b-493c-8217-222517a6df7e" alt="" width="271"></picture><figcaption><p>Popup menu for the Model and Render speed.</p></figcaption></figure>
+To select a model:
 
-Note that while selecting a model, you can also choose the **Number of images** to generate and the [**Render speed**](https://docs.ideogram.ai/using-ideogram/generation-settings/render-speed), as both options are located in the same popup menu.
+1. Select the [Prompt Box](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/prompt-box) to expand it (if not already expanded) and display the generation settings.
+2. Select **Model + variations** (displayed as the actual model and number of images, for example, **3.0 Default x 4**)  to open the dropdown menu.
+3. Choose the **Model**, **Number of images** (1–4), and [Render speed](https://docs.ideogram.ai/using-ideogram/generation-settings/render-speed).
 
-## Version 3.0
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FEG8m1G17dpQYPKARaeh2%2FModel%20%2B%20Variations%20-%20Dark.png?alt=media&#x26;token=9a881837-5d54-4001-b93f-22ef156675e3" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FWSPJwKblvpiy6YqLZ2zB%2FModel%20%2B%20Variations%20-%20Light.png?alt=media&#x26;token=5f31d5e1-5eeb-48c1-8af3-aa4313b41c3f" alt="Model and image count selection menu." width="272"></picture><figcaption><p>Number of images, Model, and Render speed menu.</p></figcaption></figure>
 
-The latest version, released on March 26, 2025
+## Model Versions
 
-## Version 2a
-
-The fifth version, released on February 27, 2025
-
-## Version 2.0
-
-The forth version, released on August 21, 2024.
-
-## Version 1.0
-
-The third version, released on February 28, 2024.
-
-## Version 0.2 (retired)
-
-The second version, released on November 2, 2023, was retired in January 2025 and is **no longer available**.
-
-## Version 0.1 (retired)
-
-The first version of Ideogram, launched on August 29, 2023, has been retired and is **no longer available**.
-
-
-# Character Reference
-
-Creating visually consistent characters across multiple images has always been a challenge in AI image generation—until now. With **Character references**, you can define and reuse distinctive characters, ensuring that facial features, hairstyles, and other key traits remain consistent from one image to the next.
-
-This powerful feature gives you greater creative control and continuity, whether you’re illustrating a story or simply exploring different settings with the same character. Once defined, your characters can be easily customized and reused with new prompts, helping you build cohesive image series with ease.
-
-In the sections below, you’ll learn how to create, manage, and use your Character references effectively, along with tips for combining them with other features like Remix and Magic Fill to achieve your desired results.
-
-## Accessing Character Reference
-
-### From the Prompt Box
-
-1. **Tap or click the prompt box** to reveal the options at the bottom. &#x20;
-2. **Select the Character tab** to access existing character references or create a new one.
-
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FdeRdzMV5IDFizUwDioxb%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=b3466667-3524-4adf-a91a-5d293d735eec" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F7JX9zz2AHTHMY5mshmB5%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=69689561-f8bc-4c7e-8b3d-7a613e742d79" alt=""></picture><figcaption></figcaption></figure>
-
-3. If you choose an already-made character you will see the corresponding Character tab appear in the prompt box below the prompt.
-
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FMGi4AXJhc1gRJqn6EInf%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=392021c3-2946-46c7-ab63-0c5930e60290" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fm2Vgl1AVIqKTHz8iviiP%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=2b68c808-ba29-4e95-89f4-e0643c98c015" alt=""></picture><figcaption></figcaption></figure>
-
-When you create a new character, you will be taken to the Character page.
-
-### From Other Places
-
-You can also open the Character page from several locations:
-
-1. The **Left-Side Panel**.
-2. The **Right-Side Panel** when viewing image details.
-3. The **More icon** (...) when browsing images.
-
-<div><figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FGS7StzaTxh3qjvUylCzw%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=fc3f6e7f-6b1d-4508-8cca-f7b4f6624d8d" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FRRE3NAJOTlYwu3upsT8W%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=ceb689b3-5488-4432-b72b-96fa58cf1829" alt="" width="82"></picture><figcaption><p>1</p></figcaption></figure> <figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3is1E2MEuYXTqLGpDX5B%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=d3b5e30d-1ee8-4449-ba25-3b66ad36de48" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FhN3M3Ah2JtTRMgvWoReg%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=fe3d490d-4f0e-4292-94b7-9600d240fc2c" alt="" width="373"></picture><figcaption><p>2</p></figcaption></figure> <figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FmWKaDTcJiyREGgvgQ2CN%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=d39ddbd4-0480-4dfa-8ac2-3decceed85ce" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FG1mrcUa8QkjYW2PVGavo%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=07fba44a-af9e-41e4-a257-998ee7962784" alt="" width="181"></picture><figcaption><p>3</p></figcaption></figure></div>
-
-## How to Use a Character Reference?
-
-### Create or Choose a Character
-
-On the Character page, click the button in the upper-right corner to create a character.
-
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fakp2008wU14N6qMcMUw6%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=e46636bb-5b75-428d-8efd-460eb7bfc1bb" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FHKt7GiXbrD2pnDZmqvWI%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=b16d26da-4259-4314-86a5-0e129c030984" alt="" width="563"></picture><figcaption></figcaption></figure>
-
-You can add a character reference image in 3 ways
-
-1. **Camera**: This enables you to take a picture with your device/computer and use it as a character reference. Please note that you may need to authorize your browser or app to access your camera.
-2. **Upload**: Browse images from your device or computer and upload one.
-3. **Creations**: Browse your creations on Ideogram and select one as a reference.
-
-Alternatively, you can select an already created character.
-
-Your chosen image will appear in the top-left corner of the prompt box.
-
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FeySDC90u066zGExJa0SC%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=30df5e65-8245-4cdd-b4fb-fd3d4fd306fc" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fiu6EmE7ClhLc4uUXH29Y%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=01f890b7-7b98-48fd-b0ff-a0442bda8f4a" alt=""></picture><figcaption><p>Preview of the prompt box on the Character page after selecting a Character reference.</p></figcaption></figure>
-
-{% hint style="success" %}
-**Tip:** A headshot or portrait-style image with a clear face and slight angle typically yields the best results.
-{% endhint %}
-
-When a character reference is present in the prompt box **on the homepage**, clicking on it and hovering your cursor over the image will display two icons:
-
-* Describe icon: This icon will activate the Describe function, which will add a description of the image to the prompt box.
-* Edit Mask icon: This icon allows you to modify the mask used by the AI for the selected character. *(More information on masking is provided below.)*
-
-Clicking on the X icon will remove the character from the prompt box.
-
-<div><figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FMGi4AXJhc1gRJqn6EInf%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=392021c3-2946-46c7-ab63-0c5930e60290" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fm2Vgl1AVIqKTHz8iviiP%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=2b68c808-ba29-4e95-89f4-e0643c98c015" alt=""></picture><figcaption><p>Preview of the prompt box on the Home page after selecting a Character reference.</p></figcaption></figure> <figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Flv0Ue1uK5VaTB3CLCP9l%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=774d82a1-2d8e-4ab6-bd24-5e577d445d8d" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FgcMFKrqacBQ7bfZ58JPL%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=6bf4dcab-1047-4758-903e-16a38b2bb7b7" alt="" width="243"></picture><figcaption><p>Describe and Edit Mask icons</p></figcaption></figure></div>
-
-When you’re on the **Character page**, hovering over the selected Character image at the top of the prompt box will reveal the **More Icon** <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3Ks1Q3ZANIcb52iR6lgs%2FCleanShot%202024-07-18%20at%2016.45.56%402x.png?alt=media&#x26;token=548d57b2-b767-419d-9107-63c173c74315" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FASmJIf2Iinfih7gkJRNF%2FCleanShot%202024-07-18%20at%2016.46.07%402x.png?alt=media&#x26;token=a347c007-cd25-4e9e-a9cf-9d2b9893500c" alt="" data-size="line"></picture>  and clicking on it will give you two options: **Edit Image Mask** or **Remove Image**. Alternatively, clicking on the image itself will bring you directly into the Edit Image Mask function.
-
-### Personalizing Your Character
-
-Now that you have your character reference image, here are the steps to generate an image with it:
-
-1. Choose how you want to describe the image to be generated:
-   1. **Write a prompt** describing in detail your character and the background, **or**
-   2. **Choose a template** from the wide selection of predefined ones for a quick start.\
-      \&#xNAN;*(Templates are available below the prompt box when you are in the Character page. If needed, you can access them again by clicking the Templates button located next to the Generate button in the prompt box.)*
-2. Select the desired style:
-   1. **Auto**: automatically selects the optimal style based on your prompt.
-   2. **Realistic**: creates lifelike photography with authentic colors, textures, and lighting.
-   3. **Fiction**: creates unique characters with a mix of imaginative and fictional elements.
-
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FnBA8Pc5TBVZMfaCwupwv%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=023d83c2-c1f4-4a61-80a2-f32c54c5134f" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FZP8txgJCW6csYOtgcZq0%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=12a70bb6-3087-47b6-9256-9412c063d6ac" alt="" width="509"></picture><figcaption></figcaption></figure>
-
-3. Apply the other generation options such as **Public/Private**, **Aspect Ratio**, and others, except:
-   1. **Unavailable options**: Color Palette, Negative Prompt, Seed Number.
-   2. Any previously selected Style reference **will not be effective** when using character reference
-4. Once ready, click **Generate** to create your image.
-
-Here are a few examples:
-
-<div><figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FgwCzC8ujTAiZElzftzYb%2FChar%20demo%201a.png?alt=media&#x26;token=cf729718-4574-45e9-9634-c02a5c3f0ce0" alt=""><figcaption><p>Original image.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fu67Hf6zqMsDEv7ZvkOwP%2FChar%20demo%201b.png?alt=media&#x26;token=d702392f-fd83-4852-aa05-dfd4fc564b0d" alt=""><figcaption><p>Generated with the Fiction style.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FudiQI2xj0SXIDYBQGLhA%2Fa-candid-photo-of-a-woman-enjoying-a-lei__tlhAxhBRIaTNlArsoNMvg_ekuVCcRmQgSOa9sL4kv-Zg.png?alt=media&#x26;token=306f7dec-f281-46f2-8048-267a31eb983d" alt=""><figcaption><p>Generated with the Realistic style.</p></figcaption></figure></div>
-
-## How Masking Works
-
-When you choose an image as a Character reference, the AI automatically select the face and hair from that image.
-
-Sometimes, it can be helpful to modify or adjust the mask to achieve better results—such as changing the character’s hairstyle.
-
-For example, consider the following prompt:
-
-> *A woman with vibrant blue pixie cut hair.*
-
-With the default mask, the generated image doesn’t reflect the requested hairstyle, and only a small amount of color is applied over the original hair.
-
-<div><figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FidbSGEHTPD8zEQOSBZ5X%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=2015ccc5-7000-4f37-b277-d8e1a5d4ba82" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FxtGwXaCiLj1T6iiwTwWn%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=992a0cbc-9542-4177-93ad-b0cfe0281516" alt="" width="563"></picture><figcaption><p>Default mask.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fi2OKi15TSspTVDNTvYdD%2Fpixie-1.png?alt=media&#x26;token=4c03c230-62c7-42be-b182-a6714562484e" alt="" width="563"><figcaption><p>Generated image using the default mask.</p></figcaption></figure></div>
-
-By excluding the hair from the default mask, it was possible to replace the hairstyle and achieve a uniform color more easily.
-
-<div><figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FQEUSBmRezBAofsT02vFk%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=acf24912-02a4-4ae1-b487-c70c72991018" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FpE7HS5o2OQdy5Of1Ihfy%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=91c1ac94-2790-4a00-8cf8-a5f4227a5a68" alt="" width="563"></picture><figcaption><p>Modified mask.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F0LxhhyvF4WelQGmKGMNA%2Fpixie-2.png?alt=media&#x26;token=1ba0ed7a-90a1-4a1b-9025-8ad5ab195805" alt="" width="563"><figcaption><p>Generated image using the modified mask.</p></figcaption></figure></div>
-
-Conversely, you can also keep a larger portion of the image to better preserve certain elements—for example, a cap, a piece of jewelry, and so on.
-
-Consider the following prompt:
-
-> *A woman wearing a red ruby pendant and a red evening gown.*
-
-With the default AI mask, the generated image doesn’t preserve the look of the pendant and generates one with a different appearance.
-
-<div><figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FkH1kzdhpTAz8qZJWSixR%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=5b5c1982-5f48-4d36-8740-9bcb171fbf4e" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FPGG2cUE9aP1fDOUEuYTA%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=11e7bbe1-d61c-48bd-897d-cdbbad4008bc" alt="" width="563"></picture><figcaption><p>Default mask.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F0pIG5Y81ifM79rckdL47%2FCharacter%20Reference%20%E2%80%93%20Pendant%201.png?alt=media&#x26;token=0614e3ac-6f06-4b00-bdcb-32900726a75a" alt="" width="563"><figcaption><p>Generated image using the default mask.</p></figcaption></figure></div>
-
-By modifying the default mask to include the pendant, it was possible to produce a result where the pendant resembled the original one.
-
-<div><figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FLQyow4sHGSGo0bgFkoMj%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=1242f459-d80b-4edd-946b-082ddda721fe" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F1tGvkJDkUSyOd6pcJqdm%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=298585fc-a52e-497e-9b0e-9158a953b4f2" alt="" width="563"></picture><figcaption><p>Modified mask.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F8Q0mc2beeHFZpwQ4sE7A%2FCharacter%20Reference%20%E2%80%93%20Pendant%202.png?alt=media&#x26;token=2c948b33-c34b-4943-9e1d-0693c458a4b6" alt="" width="563"><figcaption><p>Generated image using the modified mask.</p></figcaption></figure></div>
-
-## Using a Character Reference with Other Features
-
-While **Character reference** is a powerful feature on its own, combining it with tools like [Magic Fill](https://docs.ideogram.ai/canvas-and-editing/canvas/magic-fill) and [Remix](https://docs.ideogram.ai/using-ideogram/features-and-tools/remix) help you create the exact image you have in mind.
-
-For example, you might have already generated an image that meets most of your requirements—except for the character depicted in it. Below are two methods you can use, depending on your needs.
-
-### Using a Character Reference with Remix
-
-If you just need to preserve the overall look of the environment and the composition of the original image, [**Remix**](https://docs.ideogram.ai/using-ideogram/features-and-tools/remix) can be an excellent solution. Here's how:
-
-1. **Select the image** you want to remix and click **Remix** in the right-side panel.
-2. In the prompt box, **click the Character tab** to access existing characters or create a new one.
-3. **Provide a detailed prompt** describing the character’s physical appearance and the environment.
-4. **Adjust the image weight** for the remixed image (usually between 60–80; some experimentation may be needed to find the optimal value).
-5. **Set the other options** to your liking (it’s recommended to turn off Magic Prompt to preserve the intended character and environment).
-6. Click **Remix** to generate the images.
-
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F4M0LP3aocRGoZSl7phFv%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=95813550-169f-473b-a2e7-11afff051fdf" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FxPJWbB7IgI1Wu7CL2M1z%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=0f376446-5181-4292-9ae6-7dfd32aef8c2" alt=""></picture><figcaption></figcaption></figure>
-
-<div><figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FPdPhBwl4SeIhaRiSDwJf%2FCharacter%20Remix%201.png?alt=media&#x26;token=29cd864d-a865-4ab1-8aac-80ccc3271323" alt=""><figcaption><p>Image to Remix.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FdrXDjTLr67JktbroZEHr%2FCharacter%20Remix%202.png?alt=media&#x26;token=850f9d0b-387b-4c4f-9b34-fd9a4dc7dd2c" alt=""><figcaption><p>Character reference.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F7WgBvHOoqwKI7n7nfzq0%2FCharacter%20Remix%203.png?alt=media&#x26;token=40c86834-9887-4675-b8d8-c842ae9fadf3" alt=""><figcaption><p>Result using Remix.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F2n1ilw4uljmzWiny8xgv%2FCharacter%20Remix%204.png?alt=media&#x26;token=f52ce7a3-cf4e-4333-96db-afbadaf87f78" alt=""><figcaption><p>Result with prompt only.</p></figcaption></figure></div>
-
-### Using a Character Reference with Magic Fill
-
-If you need to preserve as much of the background and environment as possible, [**Magic Fill**](https://docs.ideogram.ai/canvas-and-editing/canvas/magic-fill) can be an excellent solution. There are many ways to proceed—here’s one of them:
-
-1. **Click on an original image** of your choice where you want to change the character.
-2. **Click Open in Canvas** in the right-side panel.
-3. **Click Magic Fill** in the left-side panel.
-4. **Mask** the area of the character you want to replace.
-5. **Click Next**.
-6. **Click Character** at the bottom of the prompt box.
-7. **Select or create** a Character reference.
-8. **Write a detailed prompt** describing the new character’s physical features and the environment.
-9. **Click Magic Fill** to generate the images.
-
-<div><figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FPdPhBwl4SeIhaRiSDwJf%2FCharacter%20Remix%201.png?alt=media&#x26;token=29cd864d-a865-4ab1-8aac-80ccc3271323" alt="" width="563"><figcaption><p>Original image.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fbh9RgeIlUa1o9m0fIenN%2FA%20medium%20close-up%20photo%20of%20a%20man%20drinking%20beer%20in%E2%80%A6%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=d69d3347-ea21-416c-b19b-57b9dede7846" alt="" width="563"><figcaption><p>Magic Fill mask, Character and prompt.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F2r2HGySEYmvwzVddqvCw%2FCharacter%20Canvas%203.png?alt=media&#x26;token=6ba11fd2-8a36-45de-930a-4de4ea8cdc32" alt="" width="563"><figcaption><p>Result of Character and Magic Fill.</p></figcaption></figure></div>
-
-{% hint style="info" %}
-Click [Remix](https://docs.ideogram.ai/using-ideogram/features-and-tools/remix) and [Magic Fill](https://docs.ideogram.ai/canvas-and-editing/canvas/magic-fill) to learn more about how to use each feature.
-{% endhint %}
+* **Version 3.0 (latest)** — The most recent iteration of Model 3.0, released on May 1, 2025.
+* **Version 3.0 (March 26)** — Released on March 26, 2025.
+* **Version 2a** — Released on February 27, 2025.
+* **Version 2.0** — Released on August 21, 2024.
+* **Version 1.0** — Released on February 28, 2024.
+* **Version 0.2 (retired)** — Released on November 2, 2023, and retired in January 2025 and is no longer available.
+* **Version 0.1 (retired)** — The first Ideogram model, launched on August 29, 2023, has been retired and is no longer available.
 
 
 # Color Palette
 
-Available to all users, the **Color palette** function allows you to set the overall color scheme for your image generation. Think of this function more as a way to influence the outcome rather than as a precise tool for achieving exact color matching. When used in conjunction with detailed color descriptions in your prompts, this function can produce stunning and color-consistent images.
+Available to all users, the Color Palette setting lets you guide the overall color tone of your image generations. It’s best used as a creative direction tool rather than for precise color matching. When combined with descriptive color terms in your prompt, Color Palette produces more consistent and visually cohesive results.
 
-To access the **Color palette** popup menu, click or tap the prompt box to reveal the options at the bottom, then click the **Color tab** to open a popup menu with the available choices.
+To access the Color Palette menu:
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FTgtL9MIuoCGuwzg7lX7Y%2FUI%20v3%20-%20Promptbox%20-%20Dark%402x.png?alt=media&#x26;token=cbb298e6-795f-4bad-8375-d689e4ea73c0" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3BJoTlEuFKm5I3gAeXA5%2FUI%20v3%20-%20Promptbox%20-%20Light%402x.png?alt=media&#x26;token=a82bbc11-bb4e-4c3a-a4b6-566718209401" alt=""></picture><figcaption><p>Prompt box and location of the Color palette tab.</p></figcaption></figure>
+1. Select the [Prompt Box](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/prompt-box) to expand it (if not already expanded) and display the generation settings.
+2. Select **Color** (or the already used color palette thumbnail), to open the **Color palette** menu.
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fn32zeoDlmGkD77Axtb1D%2FPB%20v3%20-%20Color%20Palette%20-%20Dark%402x.png?alt=media&#x26;token=d537d644-a06f-45bd-bf8d-5916a63d67e4" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FPMR7jjq1F3OmThxYy19x%2FPB%20v3%20-%20Color%20Palette%20-%20Light%402x.png?alt=media&#x26;token=3f0bc96b-7339-45ad-bf0f-91e4389b9945" alt="" width="290"></picture><figcaption><p>The Color palette menu and options.</p></figcaption></figure>
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fn32zeoDlmGkD77Axtb1D%2FPB%20v3%20-%20Color%20Palette%20-%20Dark%402x.png?alt=media&#x26;token=d537d644-a06f-45bd-bf8d-5916a63d67e4" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FPMR7jjq1F3OmThxYy19x%2FPB%20v3%20-%20Color%20Palette%20-%20Light%402x.png?alt=media&#x26;token=3f0bc96b-7339-45ad-bf0f-91e4389b9945" alt="Color button in the Prompt Box showing palette icon" width="290"></picture><figcaption><p>Color Palette menu showing preset options and the Custom section.</p></figcaption></figure>
+
+{% hint style="warning" %}
+The Color Palette option is hidden when a **Character Reference** is active. If you previously selected a palette, it’s temporarily disabled and automatically restored once the Character Reference is removed.
+{% endhint %}
+
+Once selected, the chosen palette replaces the text label of the **Color** button, showing the active palette.
 
 ## Examples
 
-Here are a few examples of how applying a color palette might affect the outcome of a prompt:
+The following examples show how different color palettes can influence the tone and color expression of generated images.
 
-Prompt:\
-\&#xNAN;*A photo of the moon rising above the tree line near a lake at night. The moon is partially obscured by clouds. A wooden cabin is located near the lakeshore. The lake is calm, reflecting the sky and the trees. The ground is covered with pine needles. The background contains mountains.*
+> **Prompt**:\
+> \&#xNAN;*A photo of the moon rising above the tree line near a lake at night. The moon is partially obscured by clouds. A wooden cabin is located near the lakeshore. The lake is calm, reflecting the sky and the trees. The ground is covered with pine needles. The background contains mountains.*
 
 <table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td>No color palette</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FDmickR7KKoRDyEUbm2jg%2Fimage.png?alt=media&#x26;token=a7732947-3122-4a58-a2ef-3b42c004f916" alt="" data-size="original"></td><td></td></tr><tr><td>Using the <strong>Ultramarine</strong> color palette</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FmExrgqoe4nbAMNaCFkIV%2Fimage.png?alt=media&#x26;token=48b07af2-9473-4f1f-95de-d937a73410a8" alt="" data-size="original"></td><td></td></tr></tbody></table>
 
-Prompt:\
-\&#xNAN;*A dynamic abstract expressionist painting of a mother and child embracing. The mother and child's forms are overlapping brushstrokes, inspired by expressive painting techniques. The background is a radiant glow with vibrant warm hues. The painting exudes profound nurturing love.*
+> **Prompt**:\
+> \&#xNAN;*A dynamic abstract expressionist painting of a mother and child embracing. The mother and child's forms are overlapping brushstrokes, inspired by expressive painting techniques. The background is a radiant glow with vibrant warm hues. The painting exudes profound nurturing love.*
 
 <table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td>Using the <strong>Ember</strong> color palette</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F6hxxgkofcqBGviZZrMru%2Fimage.png?alt=media&#x26;token=f1f3875d-ab83-4f6e-86f5-b63a4fa40a34" alt="" data-size="original"></td><td></td></tr><tr><td>Using the <strong>Jungle</strong> color palette</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FbOjVjUkwTSJzYFnTkza4%2Fimage.png?alt=media&#x26;token=e45ec487-36d8-4872-a310-84edbe8ad778" alt="" data-size="original"></td><td></td></tr></tbody></table>
 
 ## Custom Color Palette
 
-Users with a Plus or Pro subscription can create their own custom color palette. To do so, simply go to the bottom of the color palette menu and select "Custom." You can then enter up to five colors to use in your custom palette.
+Users with a **Plus Plan** or higher can create their own custom color palette.
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FlYOHDlxIJBDHeA9ZxXPL%2FCleanShot%202024-08-20%20at%2015.53.48%402x.png?alt=media&#x26;token=1db61aa7-4f73-40a9-83af-1f200639b30f" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FaAxUCs6ezIQGTouiBezb%2FCleanShot%202024-08-20%20at%2015.53.12%402x.png?alt=media&#x26;token=d972d20e-7b22-46e9-94d6-41b9becef2c0" alt="" width="375"></picture><figcaption><p>Choosing the colors to use in a custom color palette</p></figcaption></figure>
+To create one:
 
-You can choose a color using the convenient color selector, by entering the hexadecimal RGB values below it or directly below the custom color palette. Make sure to place a “#” in front of each hexadecimal number and separate them with a space.
+1. Scroll to the bottom of the **Color palette** menu and select **Custom**.
+2. Enter up to five colors in your palette.
+3. Choose colors using the color picker or type hexadecimal RGB values (starting with “#”). Separate multiple values with a space.
+
+<div><figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FjZKyOeaNd6U9X5XiOROk%2FPB%20-%20Color%20Palette%20Custom%20-%20Dark.png?alt=media&#x26;token=d623f95a-4583-4dba-8d32-340fb5c299fc" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FWe4LcHRHeMgLtJl0YlJK%2FPB%20-%20Color%20Palette%20Custom%20-%20Light.png?alt=media&#x26;token=f17b3929-aca1-4a62-aa50-3e2699a1e6e0" alt="Defining custom colors using hexadecimal values."></picture><figcaption><p>Defining custom colors using hexadecimal values.</p></figcaption></figure> <figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F1pduINlezeaiE4XTSPqc%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=42b1e3c6-ef14-4d38-aa3d-120cfe351cc3" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FwBHBufRn0sJbuVpEGZ3g%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=3338b291-4e1d-48cf-9989-099c80c0cbe8" alt="Defining custom colors using the color picker."></picture><figcaption><p>Defining custom colors using the color picker.</p></figcaption></figure></div>
 
 ## Creativity and Experimentation
 
-Using the Color Palette not only affects the overall color but also impacts the visual aspect and composition of the generated image. Here’s a good example:
+Using Color Palette not only refines the overall color tone but also influences the composition and atmosphere of the generated image. It encourages experimentation and creative exploration.
 
-Prompt:\
-\&#xNAN;*A minimalist single-line cat design in gold on a black background*
+> **Prompt**:\
+> \&#xNAN;*A minimalist single-line cat design in gold on a black background*
 
-<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FEspxttIpO4JI2x211frS%2Fimage.png?alt=media&#x26;token=e2f335a9-568c-47d3-90b9-1714235de1d8" alt="" data-size="original"></td><td>Normal prompt using v2.0 Design style.</td><td></td></tr><tr><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FyvS7S9dSbkNv3uzCch7b%2Fimage.png?alt=media&#x26;token=1a91e48e-7d24-4ba7-8c97-c0a837a207e1" alt="" data-size="original"></td><td>Using v2.0 Design style with a 2 colors custom color palette: #000000 #f1c859</td><td><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FMw7iBfLEJ20m8rIaMHzh%2FCleanShot%202024-08-20%20at%2016.24.15%402x.png?alt=media&#x26;token=978b25c3-0ef2-4b50-904a-b07085fd1ae2" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FU5Rnw5aL0gSQFNHs8poT%2FCleanShot%202024-08-20%20at%2016.23.56%402x.png?alt=media&#x26;token=db677820-d07e-4ec4-bdb3-0188d0bc05f2" alt="" data-size="original"></picture></td></tr></tbody></table>
-
-The Color Palette function adds more than just color to your images; it also opens up new avenues for experimentation and exploration of the possibilities available to you.
+<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FEspxttIpO4JI2x211frS%2Fimage.png?alt=media&#x26;token=e2f335a9-568c-47d3-90b9-1714235de1d8" alt="" data-size="original"></td><td>Normal prompt using v2.0 Design style.</td><td></td></tr><tr><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FyvS7S9dSbkNv3uzCch7b%2Fimage.png?alt=media&#x26;token=1a91e48e-7d24-4ba7-8c97-c0a837a207e1" alt="" data-size="original"></td><td>Using v2.0 Design style with a two-color custom color palette: #000000 #f1c859</td><td><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FMw7iBfLEJ20m8rIaMHzh%2FCleanShot%202024-08-20%20at%2016.24.15%402x.png?alt=media&#x26;token=978b25c3-0ef2-4b50-904a-b07085fd1ae2" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FU5Rnw5aL0gSQFNHs8poT%2FCleanShot%202024-08-20%20at%2016.23.56%402x.png?alt=media&#x26;token=db677820-d07e-4ec4-bdb3-0188d0bc05f2" alt="" data-size="original"></picture></td></tr></tbody></table>
 
 
 # Magic Prompt
 
-**Magic Prompt** uses a locally hosted LLM (Large Language Model AI) as your personal prompt assistant. It interprets your original prompt then optimizes and embellishes it (when needed), to maximize the variety and beauty of the images generated.
-
-This feature also allows you to write your prompts in your native language for greater accuracy and ease of use by users worldwide.
+Magic Prompt helps you craft better prompts effortlessly. It uses Ideogram’s built-in language model to interpret, refine, or expand your text to increase variety and visual quality in the generated images. You can also write in your native language — Magic Prompt translates and enhances it for you.
 
 ## Magic Prompt Options
 
-To select one of the **Magic Prompt** options, simply click or tap the prompt box to reveal the options at the bottom, then click the **forth tab** to open a popup menu with the available choices.
+To access the Magic Prompt options:
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FZGIHjyscAWrkNg3lMm1D%2FUI%20v3%20-%20Promptbox%20-%20Dark%402x.png?alt=media&#x26;token=e9e4414d-87bc-4364-8317-5a9b3c5b56ff" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FIm4nStnBhoHsMbT9bdd6%2FUI%20v3%20-%20Promptbox%20-%20Light%402x.png?alt=media&#x26;token=cd32ff79-c3ad-4d3d-a16f-9f410835daa3" alt=""></picture><figcaption><p>Prompt box and location of the Magic Prompt tab.</p></figcaption></figure>
+1. Select the [Prompt Box](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/prompt-box) to reveal the generation settings (if not already visible).
+2. Select **Magic Prompt** (displayed as the selected option such as <kbd>**Auto**</kbd>) to open the dropdown menu.
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fqa6DD94qeCp4ur0gIdaq%2FPB%20v3%20-%20Magic%20Prompt%20-%20Dark%402x.png?alt=media&#x26;token=a7cccf18-d63a-4f78-9f01-705d352302a6" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F5gtarCQG3sxhejLgoxEA%2FPB%20v3%20-%20Magic%20Prompt%20-%20Light%402x.png?alt=media&#x26;token=6e68c7b7-d88f-4f58-b273-f70ce151b9b8" alt="" width="253"></picture><figcaption><p>Magic Prompt popup menu</p></figcaption></figure>
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fqa6DD94qeCp4ur0gIdaq%2FPB%20v3%20-%20Magic%20Prompt%20-%20Dark%402x.png?alt=media&#x26;token=a7cccf18-d63a-4f78-9f01-705d352302a6" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F5gtarCQG3sxhejLgoxEA%2FPB%20v3%20-%20Magic%20Prompt%20-%20Light%402x.png?alt=media&#x26;token=6e68c7b7-d88f-4f58-b273-f70ce151b9b8" alt="Magic Prompt dropdown menu showing Auto, On, and Off options." width="253"></picture><figcaption><p>Magic Prompt menu.</p></figcaption></figure>
 
-* **Auto**: When set to “Auto,” Magic Prompt will decide how many of the images will use the enhanced prompts based on the length of your initial prompt.
-* **On:** When set to “On,” each of the four images generated by Ideogram will benefit from the enhanced prompt provided by Magic Prompt.
-* **Off**: When set to “Off,” the four images generated by Ideogram will exclusively use your original prompt as-is.
+### Magic Prompt Modes
+
+* **Auto** — Lets Ideogram decide how many images use enhanced prompts based on the length of your original prompt.
+* **On** — Applies the enhanced prompt to all four generated images.
+* **Off** — Uses your original prompt without any modification.
+
+***
 
 ## Examples
 
-Here are a few examples of the Magic Prompt feature in action, along with the prompts it generates and the resulting images.
+Here are a few examples of Magic Prompt in action, showing the enhanced prompts and resulting images.
 
-**Original Prompt:** `A cat on the right side of a beach ball on a sunny beach`
+### Example 1 — Cat and Beach Ball
 
-#### With Magic prompt off:
+> **Original Prompt:**&#x20;
+>
+> *A cat on the right side of a beach ball on a sunny beach.*
 
-With the Magic Prompt disabled, the AI generated four images in a photographic style, adhering to the instructions provided in the original prompt.
+#### With Magic Prompt Off:
 
-<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fqwq1jbLVksOgYAarolPu%2FOFF%20images.jpg?alt=media&#x26;token=37b42cd8-a10f-46cf-8f63-617c52156fcb" alt=""><figcaption><p>When Magic Prompt is turned off, your original prompt is used as is.</p></figcaption></figure>
+With Magic Prompt set to **Off**, Ideogram generated four images that follow the instructions from your original prompt.
 
-#### With Magic Prompt set to auto
+<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fqwq1jbLVksOgYAarolPu%2FOFF%20images.jpg?alt=media&#x26;token=37b42cd8-a10f-46cf-8f63-617c52156fcb" alt="Images generated with Magic Prompt set to Off, using the original prompt."><figcaption><p>With Magic Prompt set to Off, your original prompt is used without modification.</p></figcaption></figure>
 
-In this example, Magic Prompt used the original prompt as is for two images, while enhancing the other two. For those two enhanced images, it added elements commonly seen at the beach and introduced some artistic flair and a humorous atmosphere.
+#### With Magic Prompt On
 
-<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fw0gpByPrFQAeiKb4OMmm%2F2024-04-11_06-03-46.033.png?alt=media&#x26;token=e3837209-5284-4abe-81e6-fe700b8da44a" alt=""><figcaption><p>When Magic Prompt is set to auto, it will decide how many images will use enhanced prompts.</p></figcaption></figure>
+In this example, Magic Prompt generated an enhanced version of the prompt, adding common beach elements and introducing artistic and playful details
 
-When you select an image, certain information will appear either on the right side of your screen (on desktop) or below the image (on mobile devices). When Magic Prompt is used, you can see both the original prompt and the enhanced prompt. In the example above, you can see the Magic Prompt used to generate the first image:
+<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fw0gpByPrFQAeiKb4OMmm%2F2024-04-11_06-03-46.033.png?alt=media&#x26;token=e3837209-5284-4abe-81e6-fe700b8da44a" alt="Images generated with Magic Prompt set to On, showing enhanced prompts with artistic variations."><figcaption><p>With Magic Prompt set to On, the feature enhances your prompt to produce more interesting images.</p></figcaption></figure>
 
-<div align="center"><figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FM0pxmcLcJFSTlO7iIQgf%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=24e29b33-78cf-49ff-b58a-59ef2643aa13" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FPTwxMturQGlIrMcDxApK%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=b4d2bacd-0e8e-460d-896e-c1b8f1cfef06" alt="" width="370"></picture><figcaption><p>The original and generated Magic Prompt</p></figcaption></figure></div>
+In the example above, the first image was generated by the AI according to the enhanced *Magic Prompt* prompt below:
 
-The image was generated by the AI according to the enhanced prompt below:
+> **Magic Prompt:**
+>
+> *A playful cat is sitting on the right side of a vibrant beach ball, situated on a sunny, sandy beach. The beach is dotted with sunbathers and colorful umbrellas. Waves gently lap at the shore, and a pristine blue sky is adorned with a few fluffy white clouds. Seagulls soar overhead, adding to the lively and carefree atmosphere.*
 
-`A playful cat is sitting on the right side of a vibrant beach ball, situated on a sunny, sandy beach. The beach is dotted with sunbathers and colorful umbrellas. Waves gently lap at the shore, and a pristine blue sky is adorned with a few fluffy white clouds. Seagulls soar overhead, adding to the lively and carefree atmosphere.`
+{% hint style="info" %}
+**Tip:** When you select an image, the [Details Panel](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/details-panel) shows both the original and enhanced prompts if *Magic Prompt* was active when generating that image.
+{% endhint %}
 
-To copy one of the prompts, simply click or tap the icon to the right of it.
+Below are a few other examples of images generated with and without Magic Prompt.
 
-***
+### Example 2 — Cupcake and Strawberries
 
-Here are a few other examples of images generated with and without Magic Prompt.
+> **Original Prompt:**&#x20;
+>
+> *Photo of cupcake and strawberries.*
 
-**Original Prompt:** `Photo of cupcake and strawberries`
+<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FxArbjXW2Puk0yppN8aI3%2FCupcake%20OFF.png?alt=media&#x26;token=6a65b17c-2e30-4a4a-bd83-06c7c501aeb6" alt="Photo of a cupcake and strawberries generated with Magic Prompt Off." width="375"><figcaption><p>Photo of a cupcake and strawberries as asked in the prompt.</p></figcaption></figure>
 
-<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FxArbjXW2Puk0yppN8aI3%2FCupcake%20OFF.png?alt=media&#x26;token=6a65b17c-2e30-4a4a-bd83-06c7c501aeb6" alt="" width="375"><figcaption><p>Photo of a cupcake and strawberries as asked in the prompt.</p></figcaption></figure>
+> **Magic Prompt:**&#x20;
+>
+> *A delectable photo of a scrumptious cupcake adorned with fresh, vibrant strawberries. The cupcake features a soft, fluffy frosting covered in colorful sprinkles, while the strawberries add a touch of natural sweetness and elegance. The background evokes a sense of warmth and comfort, with a rustic, vintage feel, and a hint of a sunlit afternoon.*
 
-**Magic Prompt:** `A delectable photo of a scrumptious cupcake adorned with fresh, vibrant strawberries. The cupcake features a soft, fluffy frosting covered in colorful sprinkles, while the strawberries add a touch of natural sweetness and elegance. The background evokes a sense of warmth and comfort, with a rustic, vintage feel, and a hint of a sunlit afternoon.`
+<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FzcUHxECHYSf8DbP1PcSF%2FCupcake%20ON.png?alt=media&#x26;token=ae061257-04f8-4bed-a09e-0022cecf872b" alt="Enhanced cupcake and strawberries image generated with Magic Prompt On." width="375"><figcaption><p>Image generated from the enhanced prompt.</p></figcaption></figure>
 
-<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FzcUHxECHYSf8DbP1PcSF%2FCupcake%20ON.png?alt=media&#x26;token=ae061257-04f8-4bed-a09e-0022cecf872b" alt="" width="375"><figcaption><p>Photo from the enhanced prompt.</p></figcaption></figure>
+### Example 3 — Summer Camp Logo
 
-***
+> **Original Prompt:**&#x20;
+>
+> *Make a logo for a summer camp named "Pinecrest Pioneers Camp."*
 
-**Original Prompt:** `Make a logo for a summer camp named "Pinecrest Pioneers Camp"`
+<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FqIPDvEgkIKPdiSMaHe5R%2FLogo%20OFF.png?alt=media&#x26;token=d75b8bc5-9e23-49b7-9565-8aa7e72a5643" alt="Logo created from the original prompt for Pinecrest Pioneers Camp." width="375"><figcaption><p>Logo made from the original prompt.</p></figcaption></figure>
 
-<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FqIPDvEgkIKPdiSMaHe5R%2FLogo%20OFF.png?alt=media&#x26;token=d75b8bc5-9e23-49b7-9565-8aa7e72a5643" alt="" width="375"><figcaption><p>Logo made from the original prompt</p></figcaption></figure>
+> **Magic Prompt:**&#x20;
+>
+> *A vibrant and colorful logo for the "Pinecrest Pioneers Camp" summer camp. It features a pioneer-style wooden cabin nestled among tall pine trees, with a bright yellow sun shining overhead and a blue sky. In the background, there's a lake surrounded by lush green grass. The camp's name is written in bold, playful letters in a mix of red, orange, and yellow, evoking the warmth and excitement of summer. The logo exudes an atmosphere of adventure and friendship.*
 
-**Magic Prompt:** `A vibrant and colorful logo for the "Pinecrest Pioneers Camp" summer camp. It features a pioneer-style wooden cabin nestled among tall pine trees, with a bright yellow sun shining overhead and a blue sky. In the background, there's a lake surrounded by lush green grass. The camp's name is written in bold, playful letters in a mix of red, orange, and yellow, evoking the warmth and excitement of summer. The logo exudes an atmosphere of adventure and friendship.`
-
-<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FgT8FT7NhF8ozMBqwsfiI%2FLogo%20ON%202.png?alt=media&#x26;token=b16a41b9-3151-40dd-9536-985ca9c8945a" alt="" width="375"><figcaption><p>Logo made from the Magic Prompt</p></figcaption></figure>
+<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FgT8FT7NhF8ozMBqwsfiI%2FLogo%20ON%202.png?alt=media&#x26;token=b16a41b9-3151-40dd-9536-985ca9c8945a" alt="Logo created with Magic Prompt enabled, showing a colorful camp scene." width="375"><figcaption><p>Logo generated from the enhanced prompt.</p></figcaption></figure>
 
 
 # Negative Prompt
 
-The **Negative prompt** feature guides the AI away from generating specific types of images or content. It essentially instructs the AI on what to avoid or exclude in the generated image.
+The Negative Prompt feature guides the AI away from generating specific types of images or content. It instructs the AI on what to avoid or exclude in the generated images.
 
-For example, if you’re using an AI to create landscape images but want to avoid beaches, you could use a negative prompt like "beach" or "beach, sand, water, ocean." This helps the AI understand your preferences and constraints, allowing it to produce images that more closely match your intended outcome.
+For example, if you’re using an AI to create landscape images but want to avoid beaches, you could use a negative prompt like "beach" or "beach, sand, water, ocean." This helps the AI understand your preferences and constraints so it can generate images that more closely match your intended outcome.
 
-To access **Negative prompt**, click or tap the prompt box to reveal the options at the bottom and click the **More** icon <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3Ks1Q3ZANIcb52iR6lgs%2FCleanShot%202024-07-18%20at%2016.45.56%402x.png?alt=media&#x26;token=548d57b2-b767-419d-9107-63c173c74315" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FASmJIf2Iinfih7gkJRNF%2FCleanShot%202024-07-18%20at%2016.46.07%402x.png?alt=media&#x26;token=a347c007-cd25-4e9e-a9cf-9d2b9893500c" alt="" data-size="line"></picture>  located at the end of the prompt box option tabs to open a popup menu with the available choices.
+To access the Negative Prompt feature:
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F7oPO07BjE1eBdXWNjoya%2FUI%20v3%20-%20Promptbox%20-%20Dark%402x.png?alt=media&#x26;token=aca1369a-8f65-45b1-9352-faa2e1920273" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FDjN2tjrQvCi7JzFp364E%2FUI%20v3%20-%20Promptbox%20-%20Light%402x.png?alt=media&#x26;token=bef36b5c-0a21-4d0d-b60a-ff2f8a6141c1" alt=""></picture><figcaption><p>Prompt box and location of the More tab to access the Negative prompt feature.</p></figcaption></figure>
+1. Select the [Prompt Box](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/prompt-box) to reveal the generation settings (if not already visible).
+2. Select the **More** button <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FsULvZOcJ9KEtw0cwW7Em%2FPB%20-%20More%20Button%20-%20Dark.png?alt=media&#x26;token=ee8e8a50-c3b7-42de-bdb3-31b87a7c336e" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FQMg6DKTYV1xcFS8gwDal%2FPB%20-%20More%20Button%20-%20Light.png?alt=media&#x26;token=883b737c-c2c6-4c15-86cc-378824550c3c" alt="More button in the Prompt Box." data-size="line"></picture> to open a dropdown menu where you can enter the terms or concepts you want the AI to avoid.
+3. In the **Negative prompt** field, enter the terms or concepts you want the AI to avoid. Separate multiple items with commas (for example: green, green candies, cheese, cheddar.)
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FjwA4Yq8jzqNtE2g8je0U%2FPB%20v3%20-%20More%20-%20Dark%402x.png?alt=media&#x26;token=5d789950-7d28-46ae-91c5-e231d71fb7c5" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FzoIRPwiEH5Qb7HqLVMp3%2FPB%20v3%20-%20More%20-%20Light%402x.png?alt=media&#x26;token=74ebc3eb-4276-4db7-aa52-36f7f141d954" alt="" width="375"></picture><figcaption><p>Popup menu where a negative prompt can be entered.</p></figcaption></figure>
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FwfZVVlo6qx1FfTqkOc4J%2FPB%20-%20Negative%20Prompt%20Field%20-%20Dark.png?alt=media&#x26;token=9773e15f-d85a-4cc0-bd50-1b7c95bc5dac" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FXHpHxRfhdZhP4pAdr09a%2FPB%20-%20Negative%20Prompt%20Field%20-%20Light.png?alt=media&#x26;token=70c4c358-82aa-4573-852e-b634d9cedb10" alt="Negative Prompt input field inside the Prompt Box." width="375"></picture><figcaption><p>The Negative prompt field in the More menu of the Prompt Box</p></figcaption></figure>
 
-Here are some examples of negative prompt usage:
+Here are examples showing how *Negative Prompt* changes image results:
 
-<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F1JbUNnLkmvBsMCDrzDIA%2Fimage.png?alt=media&#x26;token=4a3d8c99-d5c4-464e-935e-c6165f289643" alt="" data-size="original"></td><td><strong>Prompt</strong>:<br>An assortment of colourful candies like Smarties or M&#x26;Ms, neatly arranged on a rustic wooden table.</td><td><strong>Negative prompt</strong>:<br>–</td></tr><tr><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FWXmqqXYiFB49UZLekUkB%2Fimage.png?alt=media&#x26;token=8efb2b98-5163-499f-a1dc-bef7aa636728" alt="" data-size="original"></td><td><strong>Prompt</strong>:<br>An assortment of colourful candies like Smarties or M&#x26;Ms, neatly arranged on a rustic wooden table.</td><td><strong>Negative prompt</strong>:<br>green, green color, green candies,</td></tr><tr><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FESmTA1pDWlGLqtpzUiSw%2Fimage.png?alt=media&#x26;token=d1139e8e-97a9-4e17-8eb9-cf40bfc1a295" alt="" data-size="original"></td><td><strong>Prompt</strong>:<br>Food photography picture of a delicious gourmet burger with a side of french fries and a beverage in the background.</td><td><strong>Negative prompt</strong>:<br>–</td></tr><tr><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FQkiMjXQUkL7Ifkk513o7%2Fimage.png?alt=media&#x26;token=11f3bbc2-f6fe-4c16-b86f-53b3e1198aff" alt="" data-size="original"></td><td><strong>Prompt</strong>:<br>Food photography picture of a delicious gourmet burger with a side of french fries and a beverage in the background.</td><td><strong>Negative prompt</strong>:<br>cheese, cheeseburger, cheddar cheese</td></tr></tbody></table>
+<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F1JbUNnLkmvBsMCDrzDIA%2Fimage.png?alt=media&#x26;token=4a3d8c99-d5c4-464e-935e-c6165f289643" alt="Colorful candies including all colors, generated without a negative prompt." data-size="original"></td><td><strong>Prompt</strong>:<br>An assortment of colorful candies like Smarties or M&#x26;Ms, neatly arranged on a rustic wooden table.</td><td><strong>Negative prompt</strong>:<br>–</td></tr><tr><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FWXmqqXYiFB49UZLekUkB%2Fimage.png?alt=media&#x26;token=8efb2b98-5163-499f-a1dc-bef7aa636728" alt="Colorful candies with green candies removed using a negative prompt." data-size="original"></td><td><strong>Prompt</strong>:<br>An assortment of colorful candies like Smarties or M&#x26;Ms, neatly arranged on a rustic wooden table.</td><td><strong>Negative prompt</strong>:<br>green, green color, green candies</td></tr><tr><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FESmTA1pDWlGLqtpzUiSw%2Fimage.png?alt=media&#x26;token=d1139e8e-97a9-4e17-8eb9-cf40bfc1a295" alt="Gourmet burger with cheese and fries, generated without a negative prompt." data-size="original"></td><td><strong>Prompt</strong>:<br>Food photography picture of a delicious gourmet burger with a side of french fries and a beverage in the background.</td><td><strong>Negative prompt</strong>:<br>–</td></tr><tr><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FQkiMjXQUkL7Ifkk513o7%2Fimage.png?alt=media&#x26;token=11f3bbc2-f6fe-4c16-b86f-53b3e1198aff" alt="Gourmet burger without cheese, generated using a negative prompt for cheese." data-size="original"></td><td><strong>Prompt</strong>:<br>Food photography picture of a delicious gourmet burger with a side of french fries and a beverage in the background.</td><td><strong>Negative prompt</strong>:<br>cheese, cheeseburger, cheddar cheese</td></tr></tbody></table>
 
 {% hint style="info" %}
+
+#### Tips:
+
 Here are some tips to get the most out of the feature:
 
-* Try to use more than one keyword to describe what you don't want.
+* Use multiple keywords to describe what you don't want.
 * Be as precise as possible without providing excessive detail.
-* It's often simpler and more effective to design prompts that avoid using negative prompts, rather than the opposite approach.
+* It is often simpler and more effective to write prompts that naturally exclude unwanted elements instead of relying heavily on negative prompts. See the [Handling Negatives](https://docs.ideogram.ai/using-ideogram/prompting-guide/4-handling-negatives) section of the *Prompting Guide* for more details.
   {% endhint %}
 
 {% hint style="warning" %}
-If your negative prompt doesn't seem to be working, check if there’s anything in the prompt that might interfere with or contradict your negative prompt. The content of the regular prompt will always be favored over the negative prompt. For example, a prompt asking for a classical guitar will almost always imply a guitar with strings. Trying to generate a guitar without strings could prove difficult.
+**Important tip:** If your negative prompt does not seem to work, check whether something in your main prompt interferes with or contradicts it. The content of the regular prompt will always be favored over the negative prompt. For example, a prompt asking for a classical guitar will almost always imply a guitar with strings. Trying to generate a guitar without strings may be difficult because the model usually interprets “guitar” as an object with strings.
 {% endhint %}
 
 
 # Private Generations
 
-With an Ideogram Plus plan or higher, you can generate images privately. When an image is marked as private, only you can see it. Any privately generated images will remain private even after your subscription ends. You will still have access to them, but you will only be able to download them in JPG format unless you resubscribe to a Plus plan or higher.
+With an Ideogram **Plus Plan** or higher, you can generate private images that only you can view.\
+Private images remain private even after your subscription ends — you can still access and download them in JPG format. To unlock all download options again, resubscribe to a *Plus Plan* or higher.
 
-For more details about purchasing an Ideogram subscription, visit our [Plans & Pricing](https://docs.ideogram.ai/plans-and-pricing) page.
+For more details about purchasing, upgrading, or managing your subscription, visit the [Plans and Pricing](https://docs.ideogram.ai/plans-and-pricing) page.
 
 ## Generating Private Images
 
-You can choose whether you want your generation to be private or public by using the **Visibility** toggle in the Prompt box.
+You can set your generation visibility using the **Visibility** button.
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FVt9AWaKCK6zwY25RoKWQ%2FUI%20v3%20-%20Promptbox%20-%20Dark%402x.png?alt=media&#x26;token=7452e5ba-dca0-442a-814a-961cc4cfae90" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F6lbjZaDleLtUC15zGnqA%2FUI%20v3%20-%20Promptbox%20-%20Light%402x.png?alt=media&#x26;token=a1ee7fd5-4d65-4c06-bc09-6969db328868" alt=""></picture><figcaption><p>The visibility toggle button in the Prompt box.</p></figcaption></figure>
+1. Select the [Prompt Box](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/prompt-box) to show the generation settings (if not already visible).
+2. Select **Visibility** (displayed as the current visibility such as <kbd>**Private**</kbd> or <kbd>**Public**</kbd>) to open the dropdown and select your preferred visibility for the next generated image.
+
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FeXxqRBZJcJtc9Q6ZSpfI%2FPB%20-%20Visibility%20Menu%20-%20Dark.png?alt=media&#x26;token=7ccb8031-5b46-4a22-a767-56f2c62888a2" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F9ig6pvKmyxJfXeajoFYG%2FPB%20-%20Visibility%20Menu%20-%20Light.png?alt=media&#x26;token=768475a8-7ed8-41c7-8c19-e45715d8c59b" alt="The Visibility menu showing Public and Private options." width="230"></picture><figcaption><p>The Visibility menu showing Public and Private options.</p></figcaption></figure>
 
 ## Viewing Your Private Generations
 
-To view your private generations, select **Creations** on the left-side panel and then select the **Private** tab.
+To view your private generations, select the **Creations** icon <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FTeHNdvxlp3hHIoP4UflW%2FCreations%20-%20Dark%2020px.svg?alt=media&#x26;token=16327b40-5803-48d2-9093-de7e4bfc1375" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F8tFoN5tL9JrvUuEEqk1f%2FCreations%20-%20Light%2020px.svg?alt=media&#x26;token=d8008cee-76a2-4da6-a88b-14843d2c1824" alt="Creations icon on the Left Sidebar."></picture> located on the [Navigation Bar](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/navigation-bar) to go to the **Creations** page, and then select the **Private** tab.
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FNBjQt0DAKUOTGI7w4LPV%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=d5c87391-2cb4-414a-a94b-dc5846aa7eaa" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FrNMQZkiOtudLsSMZAMtq%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=21718b00-6c37-4271-9983-fba023d1cc74" alt=""></picture><figcaption><p>Viewing private generations from the Creations page.</p></figcaption></figure>
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F6hOWJn0DniGE7X7kMQWN%2FCreation%20Page%20-%20Private%20Tab%20-%20Dark.png?alt=media&#x26;token=b640de82-2e1e-434f-a7f6-889d55d8144c" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FBXTFefNNN2qpEIYUgdMm%2FCreation%20Page%20-%20Private%20Tab%20-%20Light.png?alt=media&#x26;token=26696235-52c2-41e4-b112-a51f8a99c6dc" alt="Part of the Creations page showing the Private tab selected." width="344"></picture><figcaption><p>Private tab selected on the Creations page.</p></figcaption></figure>
 
-Alternatively, navigate to your profile page using the **Profile** button at the bottom of the left-side panel, select **View profile** and click on the **Private** tab on the profile page.
-
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FW2WESU2hAY3LZKknnZeg%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=54c2cc42-6b94-4d42-8d0f-2ee76b4320e1" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FZASkPtOJ6PzeuvSb8mVj%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=74f470e9-6b79-48c9-996e-96850ce67150" alt=""></picture><figcaption><p>Viewing private generations from the profile page.</p></figcaption></figure>
-
-***
-
-## Changing the Visibility of Images
+## Changing Image Visibility
 
 To make a private image public or a public image private, you can:
 
-1. When viewing an image in detail, use the **Public/Private** toggle button located in the right-side panel.
-2. While browsing or viewing an image in detail, click the **More** icon <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3Ks1Q3ZANIcb52iR6lgs%2FCleanShot%202024-07-18%20at%2016.45.56%402x.png?alt=media&#x26;token=548d57b2-b767-419d-9107-63c173c74315" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FASmJIf2Iinfih7gkJRNF%2FCleanShot%202024-07-18%20at%2016.46.07%402x.png?alt=media&#x26;token=a347c007-cd25-4e9e-a9cf-9d2b9893500c" alt="" data-size="line"></picture> and select **Make private** or **Make public** from the popup menu.
-3. To update multiple images from the Creations page or your profile page, select the images, click the **More** icon <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3Ks1Q3ZANIcb52iR6lgs%2FCleanShot%202024-07-18%20at%2016.45.56%402x.png?alt=media&#x26;token=548d57b2-b767-419d-9107-63c173c74315" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FASmJIf2Iinfih7gkJRNF%2FCleanShot%202024-07-18%20at%2016.46.07%402x.png?alt=media&#x26;token=a347c007-cd25-4e9e-a9cf-9d2b9893500c" alt="" data-size="line"></picture> in the bottom panel, and choose **Make private** or **Make public** from the popup menu.
+1. When viewing an image in detail, select the **Public/Private** button located in the [Details Panel](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/details-panel) on the right and select the desired option from the dropdown menu.
+2. To update multiple images at once, go to the **Creations** page, select the images, select the **More** icon <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FPYS9T78uhmDmuEqNWvcb%2FMore%20-%20White%2020px.svg?alt=media&#x26;token=cba9b268-f5f2-4895-bef0-fa43e5ae3724" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FqhNBoUUnrp0grTzHJonA%2FMore%20-%20Black%2020px.svg?alt=media&#x26;token=dee426ba-09fe-4735-bdd3-81c5ecb71035" alt="More icon in the Image Gallery action bar."></picture>  in the panel below the [Image Gallery](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/image-gallery), and select **Make private** or **Make public** from the menu.
 
 
 # Render Speed
 
-The **Render speed** option, available to any paid subscription user, is used to tell the AI to spend more or less time generating an image, which also have an effect on the overall amount of details and quality of the image.
+The Render Speed setting, available to all paid plan users, lets you control how long the AI spends generating an image, which also affects image detail and overall quality.
 
-To select a specific **Render speed**, click or tap the prompt box to reveal the options at the bottom, then click the **third tab** to open a popup menu with the available choices. The available options are located at the bottom of the popup menu.
+To select a specific Render Speed:
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FUXwG8hWKjP2ohLbXMlTL%2FUI%20v3%20-%20Promptbox%20-%20Dark%402x.png?alt=media&#x26;token=4d74ea33-db5a-441c-ae8e-d48183caa2cb" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F2vmxhajgJ2Rn9XPT2LrH%2FUI%20v3%20-%20Promptbox%20-%20Light%402x.png?alt=media&#x26;token=29c36f7f-080a-4342-a5ed-a7e246dc1042" alt=""></picture><figcaption><p>Prompt box and location of the Model tab.</p></figcaption></figure>
+1. Select the [Prompt Box](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/prompt-box) to expand it (if not already expanded) and show the available options.
+2. Select **Model + variations** (displayed as the actual model and number of images, for example, **3.0 Default x 4**)  to open the dropdown menu.
+3. Use the **Render speed** selector at the bottom of the menu to choose your desired speed.
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FdMyAf74HLp4I0jzUNrRo%2FPB%20v3%20-%20Model%20%2B%20Render%20Speed%20-%20Dark%402x.png?alt=media&#x26;token=a2370f34-89ba-4264-9784-396e6d1fa345" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F0xSUzzbHrN7Y5beUWGD5%2FPB%20v3%20-%20Model%20%2B%20Render%20Speed%20-%20Light%402x.png?alt=media&#x26;token=a864744f-b81b-493c-8217-222517a6df7e" alt="" width="271"></picture><figcaption><p>Popup menu for the Model and Render speed.</p></figcaption></figure>
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FX8eQYMcIPS9P9sNUZRrW%2FRender%20Speed%20-%20Dark%402x.png?alt=media&#x26;token=3e1cc572-a0d8-49d2-8d9a-013a9005c925" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Frk4WHHEZoGX2v4vWq8U4%2FRender%20Speed%20-%20Light%402x.png?alt=media&#x26;token=b3de861e-bc41-4002-8efa-e2e7a19c4701" alt="Render speed portion of the Model + variations menu." width="272"></picture><figcaption><p>Render speed portion of the Model + variations menu.</p></figcaption></figure>
 
-The **Render speed** settings allows you to adjust the amount of time the AI spends fine-tuning the requested image. There are three possible render speeds:
+The *Render Speed* setting adjusts how long the AI spends refining the requested image. There are three available render speeds:
 
-**Turbo**: Generates images quickly and is best used for ideation when you want a quick look at the composition. Sometimes useful for achieving a sketchy look.
-
-**Default**: The standard render speed used by default.
-
-**Quality**: Offers better detail and overall image quality. It can sometimes correct imperfections that might be visible in the Default mode.
+* **Turbo** — Generates images quickly, ideal for brainstorming or testing ideas. Results may appear rougher or more sketch-like.
+* **Default** — Balanced speed and quality; the standard mode for most generations.
+* **Quality** — Produces more detailed and refined results. It can correct small imperfections that may appear in faster modes.
 
 {% hint style="info" %}
-Speed will vary between different models. For example, Model 2a is faster than Model 2.0 when using equivalent rendering settings.
+**Note:** Render speed varies between models. For example, **Model 2a** is faster than **Model 2.0** when using the same rendering settings.
 {% endhint %}
 
-Here are some examples, using model 2.0:
+Here are examples generated with **Model 2.0**:
 
-<table data-view="cards"><thead><tr><th></th><th></th><th></th><th></th><th></th></tr></thead><tbody><tr><td>Turbo</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FmEaSVU8a2tAiIsIsZWIW%2FChaton%20-%201%20Turbo.png?alt=media&#x26;token=f6022219-980c-4597-bfef-fcb838498ba4" alt="" data-size="original"></td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FKOsAq7GVZZOVbN4L2Uiq%2FMarchand%20-%201%20Turbo.png?alt=media&#x26;token=7d003f96-39f2-46c2-8d1a-27d3bafe1ccd" alt="" data-size="original"></td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fp20qpG2Sc7USxaLOx25K%2FSow%20-%201%20Turbo.png?alt=media&#x26;token=716db5ca-25e7-4baf-b03a-49997b282df2" alt="" data-size="original"></td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FF6ywz3Bf6L2brShditoO%2FSeashells%20-%201%20Turbo.png?alt=media&#x26;token=382fc2fc-5406-4a54-a5c6-847cbf01d5da" alt="" data-size="original"></td></tr><tr><td>Default</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FXPpswEKQLIyWEDdURPnr%2FChaton%20-%202%20Default.png?alt=media&#x26;token=b972b24e-6ff2-4b9e-8294-ad9ef8b94dae" alt="" data-size="original"></td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F6bTSJ30GYPmOu7aAlLNO%2FMarchand%20-%202%20Default.png?alt=media&#x26;token=0bbc4d7f-d195-4182-9882-9d740f4ca69a" alt="" data-size="original"></td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FL1apRin3CjZaVz0GJvEg%2FSow%20-%202%20Default.png?alt=media&#x26;token=cbf3ee28-f3c8-4ffc-93b3-e6f18cc8d9ba" alt="" data-size="original"></td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FW1vBnlMiOxIyX6azEQrW%2FSeashells%20-%202%20Default.png?alt=media&#x26;token=438081f8-e39d-46db-9336-796f1c752e34" alt="" data-size="original"></td></tr><tr><td>Quality</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F5KXPRYNzWCPZydbMnbiy%2FChaton%20-%203%20Quality.png?alt=media&#x26;token=33d971cb-7e2f-477a-86af-76ec9d3ad961" alt="" data-size="original"></td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FIVG3lpQmcJ5gLFKvDmEa%2FMarchand%20-%203%20Quality.png?alt=media&#x26;token=8060fa9d-9727-4e84-91bf-702885682d0b" alt="" data-size="original"></td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fc12estTRyv73QAr19mCu%2FSow%20-%203%20Quality.png?alt=media&#x26;token=66195284-8ed6-42bc-acb8-154e5c073fb4" alt="" data-size="original"></td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FGIKyVxdattzN9eaxnxbD%2FSeashells%20-%203%20Quality.png?alt=media&#x26;token=d9d28478-9a14-4344-b1ca-7da77765dd2d" alt="" data-size="original"></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th></th><th></th><th></th><th></th></tr></thead><tbody><tr><td>Turbo</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FmEaSVU8a2tAiIsIsZWIW%2FChaton%20-%201%20Turbo.png?alt=media&#x26;token=f6022219-980c-4597-bfef-fcb838498ba4" alt="Image generated with Turbo render speed — lower detail, faster output" data-size="original"></td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FKOsAq7GVZZOVbN4L2Uiq%2FMarchand%20-%201%20Turbo.png?alt=media&#x26;token=7d003f96-39f2-46c2-8d1a-27d3bafe1ccd" alt="Image generated with Turbo render speed — lower detail, faster output" data-size="original"></td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fp20qpG2Sc7USxaLOx25K%2FSow%20-%201%20Turbo.png?alt=media&#x26;token=716db5ca-25e7-4baf-b03a-49997b282df2" alt="Image generated with Turbo render speed — lower detail, faster output" data-size="original"></td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FF6ywz3Bf6L2brShditoO%2FSeashells%20-%201%20Turbo.png?alt=media&#x26;token=382fc2fc-5406-4a54-a5c6-847cbf01d5da" alt="Image generated with Turbo render speed — lower detail, faster output" data-size="original"></td></tr><tr><td>Default</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FXPpswEKQLIyWEDdURPnr%2FChaton%20-%202%20Default.png?alt=media&#x26;token=b972b24e-6ff2-4b9e-8294-ad9ef8b94dae" alt="Image generated with Default render speed — balanced detail and speed" data-size="original"></td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F6bTSJ30GYPmOu7aAlLNO%2FMarchand%20-%202%20Default.png?alt=media&#x26;token=0bbc4d7f-d195-4182-9882-9d740f4ca69a" alt="Image generated with Default render speed — balanced detail and speed" data-size="original"></td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FL1apRin3CjZaVz0GJvEg%2FSow%20-%202%20Default.png?alt=media&#x26;token=cbf3ee28-f3c8-4ffc-93b3-e6f18cc8d9ba" alt="Image generated with Default render speed — balanced detail and speed" data-size="original"></td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FW1vBnlMiOxIyX6azEQrW%2FSeashells%20-%202%20Default.png?alt=media&#x26;token=438081f8-e39d-46db-9336-796f1c752e34" alt="Image generated with Default render speed — balanced detail and speed" data-size="original"></td></tr><tr><td>Quality</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F5KXPRYNzWCPZydbMnbiy%2FChaton%20-%203%20Quality.png?alt=media&#x26;token=33d971cb-7e2f-477a-86af-76ec9d3ad961" alt="Image generated with Quality render speed — higher detail, slower generation" data-size="original"></td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FIVG3lpQmcJ5gLFKvDmEa%2FMarchand%20-%203%20Quality.png?alt=media&#x26;token=8060fa9d-9727-4e84-91bf-702885682d0b" alt="Image generated with Quality render speed — higher detail, slower generation" data-size="original"></td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fc12estTRyv73QAr19mCu%2FSow%20-%203%20Quality.png?alt=media&#x26;token=66195284-8ed6-42bc-acb8-154e5c073fb4" alt="Image generated with Quality render speed — higher detail, slower generation" data-size="original"></td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FGIKyVxdattzN9eaxnxbD%2FSeashells%20-%203%20Quality.png?alt=media&#x26;token=d9d28478-9a14-4344-b1ca-7da77765dd2d" alt="Image generated with Quality render speed — higher detail, slower generation" data-size="original"></td></tr></tbody></table>
 
-These two animated versions from the images above help to better appreciate the differences between the three renderings:
+The animations below highlight the differences between the **Turbo**, **Default**, and **Quality** render speeds:
 
-<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FZtqBrAqIdxEVeoP7WeFB%2FChaton%20Anim.webp?alt=media&#x26;token=ba6701c9-c7f9-4335-a1a2-0106e04844d1" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FZtqBrAqIdxEVeoP7WeFB%2FChaton%20Anim.webp?alt=media&#x26;token=ba6701c9-c7f9-4335-a1a2-0106e04844d1" alt="Animation comparing Turbo, Default, and Quality render speeds"><figcaption></figcaption></figure>
 
-<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FwEFc2nIv0XVtlEVTgCoV%2FMarchand%20Anim.webp?alt=media&#x26;token=5cbfd78e-f68c-47e7-b148-8af677aacd0d" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FwEFc2nIv0XVtlEVTgCoV%2FMarchand%20Anim.webp?alt=media&#x26;token=5cbfd78e-f68c-47e7-b148-8af677aacd0d" alt="Animation comparing Turbo, Default, and Quality render speeds"><figcaption></figcaption></figure>
 
 
 # Seed Number
 
-The **Seed number** functionality acts as a unique numerical identifier or starting point for image generation within the AI model. Think of it as a special code or number that establishes the initial conditions used by the AI to create an image. It is typically used to produce the same image output, ensuring consistency in results for reproducibility.
+The Seed Number feature serves as a unique numerical identifier or starting point for image generation. Think of it as a special code that sets the initial conditions the AI uses to create an image. It’s primarily used to reproduce the same result and ensure consistency across generations.
 
-## How to Use the Seed Number
+To access Seed Number:
 
-To access the **Seed number** functionality, click or tap the prompt box to reveal the options at the bottom and click the **More** icon <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3Ks1Q3ZANIcb52iR6lgs%2FCleanShot%202024-07-18%20at%2016.45.56%402x.png?alt=media&#x26;token=548d57b2-b767-419d-9107-63c173c74315" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FASmJIf2Iinfih7gkJRNF%2FCleanShot%202024-07-18%20at%2016.46.07%402x.png?alt=media&#x26;token=a347c007-cd25-4e9e-a9cf-9d2b9893500c" alt="" data-size="line"></picture>  located at the end of the prompt box option tabs to open a popup menu with the available choices.
+1. Select the [Prompt Box](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/prompt-box) to expand it (if not already expanded) and show the available options.
+2. Select the **More** button <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FsULvZOcJ9KEtw0cwW7Em%2FPB%20-%20More%20Button%20-%20Dark.png?alt=media&#x26;token=ee8e8a50-c3b7-42de-bdb3-31b87a7c336e" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FQMg6DKTYV1xcFS8gwDal%2FPB%20-%20More%20Button%20-%20Light.png?alt=media&#x26;token=883b737c-c2c6-4c15-86cc-378824550c3c" alt="" data-size="line"></picture> to open the dropdown menu.
+3. In the **Seed number** field, enter the number you want to use for the next generation.
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FP9sGxLlf1eY1xtC7e9QV%2FUI%20v3%20-%20Promptbox%20-%20Dark%402x.png?alt=media&#x26;token=a9d8199a-7df7-4ca9-9fc5-636ea3ec435f" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FjIpuIFfKDz9fgUYiAxOR%2FUI%20v3%20-%20Promptbox%20-%20Light%402x.png?alt=media&#x26;token=ca0ab230-9e9c-4731-a45c-8a61d00a62db" alt=""></picture><figcaption><p>Prompt box and location of the More tab to access the Seed number feature.</p></figcaption></figure>
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FY3PP3O7UckdZyUlKaRFe%2FPB%20-%20Seed%20Number%20Field%20-%20Dark.png?alt=media&#x26;token=392fef66-ce83-4356-8d2d-d9feedff5576" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FGEn8NHZBeYTPJa6bXYsT%2FPB%20-%20Seed%20Number%20Field%20-%20Light.png?alt=media&#x26;token=17a53773-6c56-46c2-9682-e0ddb3f06a4e" alt="Seed number field in the More menu." width="375"></picture><figcaption><p>Seed number field in the More menu.</p></figcaption></figure>
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FjwA4Yq8jzqNtE2g8je0U%2FPB%20v3%20-%20More%20-%20Dark%402x.png?alt=media&#x26;token=5d789950-7d28-46ae-91c5-e231d71fb7c5" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FzoIRPwiEH5Qb7HqLVMp3%2FPB%20v3%20-%20More%20-%20Light%402x.png?alt=media&#x26;token=74ebc3eb-4276-4db7-aa52-36f7f141d954" alt="" width="375"></picture><figcaption><p>Popup menu where a seed number can be entered.</p></figcaption></figure>
+If no Seed Number is entered, the AI will automatically assign a random value. You can enter any number to act as a seed for generation.
 
-If you dont enter any seed number in the field, the AI will use a random one and generate the image based on that seed number. You can enter any number to serve as a seed number in the corresponding field.
-
-When you click on a particular image, its seed number can be found in the panel on the right (on PC) or below the image (on mobile devices).
-
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3p65oavWigTCOUPXvzLN%2FSeed%20Value%20-%20Dark%402x.png?alt=media&#x26;token=e2f479b5-6ebc-4a26-91b9-969b47c567a5" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FQCvxiWZemSOjx7ui2JgU%2FSeed%20Value%20-%20Light%402x.png?alt=media&#x26;token=f6d47bdf-8627-41a2-a3c5-fc6fd09fae05" alt="" width="362"></picture><figcaption><p>The Seed Number that was used to generate the image.</p></figcaption></figure>
+When viewing an image, its Seed Number appears in the [Details Panel](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/details-panel) on the right (desktop) or below the image (mobile).
 
 {% hint style="warning" %}
-The Seed number feature won’t produce the exact same image when changing the Render speed in Ideogram version 3.0, as it did in older models. However, the image will be similar if the same prompt is used.
+**Warning:** In Ideogram **Model v3.0**, using the same Seed Number with different [Render Speeds](https://docs.ideogram.ai/using-ideogram/generation-settings/render-speed) won’t generate identical images as in earlier versions. However, the results will remain visually similar if the same prompt is used.
 {% endhint %}
 
-## Seed Number Use Case
+## Seed Number Use Cases
 
-One use case would be to keep the same seed number and generate an image from the same prompt with different renderings. For example:
+One example is to keep the same Seed Number and generate the same prompt using different Render speeds, as shown below:
 
-<table data-view="cards"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td>Seed: 406220<br>Rendering: Fast</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FYz0LcGrTj58en9FZ3CQe%2Fimage.png?alt=media&#x26;token=a3abb3de-b326-4ce9-97a7-bde06f325253" alt="" data-size="original"></td><td></td></tr><tr><td>Seed: 406220<br>Rendering: Default</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F0ZxfLbi2t3aum0amBSeN%2Fimage.png?alt=media&#x26;token=b2d4ed15-8b50-4d20-87d0-85ba83e45c44" alt="" data-size="original"></td><td></td></tr><tr><td>Seed: 406220<br>Rendering: Quality</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F8hugIeBdZcmhoUJlChvI%2Fimage.png?alt=media&#x26;token=57d209e3-405a-4431-8591-c4042f3d2747" alt="" data-size="original"></td><td></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>Seed: 406220<br>Rendering: Turbo</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FYz0LcGrTj58en9FZ3CQe%2Fimage.png?alt=media&#x26;token=a3abb3de-b326-4ce9-97a7-bde06f325253" alt="Image generated with Turbo render speed using Seed 406220" data-size="original"></td></tr><tr><td>Seed: 406220<br>Rendering: Default</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F0ZxfLbi2t3aum0amBSeN%2Fimage.png?alt=media&#x26;token=b2d4ed15-8b50-4d20-87d0-85ba83e45c44" alt="Image generated with Default render speed using Seed 406220" data-size="original"></td></tr><tr><td>Seed: 406220<br>Rendering: Quality</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F8hugIeBdZcmhoUJlChvI%2Fimage.png?alt=media&#x26;token=57d209e3-405a-4431-8591-c4042f3d2747" alt="Image generated with Quality render speed using Seed 406220" data-size="original"></td></tr></tbody></table>
 
-This feature can also be used to make small modifications to a prompt while keeping most of the image the same as before.
+You can also use the Seed Number to make small prompt adjustments while preserving most of the original composition.
 
 <table data-view="cards"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td><strong>Prompt</strong>: <em>... The background is a dark <mark style="color:green;">blue</mark> gradient, ...</em><br><strong>Seed</strong>: 406220<br><strong>Rendering</strong>: Default</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FWxQSzpQIymJVeZEYveZF%2Fimage.png?alt=media&#x26;token=59f180f6-fd6e-4665-a80c-1775773e9b0b" alt="" data-size="original"></td><td></td></tr><tr><td><strong>Prompt</strong>: <em>... The background is a dark <mark style="color:green;">purple</mark> gradient, ...</em><br><strong>Seed</strong>: 406220<br><strong>Rendering</strong>: Default</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FiE9QLnl1TvtGYfq9ZSxb%2Fimage.png?alt=media&#x26;token=0983b08c-a332-4529-abf6-2d3488384ff4" alt="" data-size="original"></td><td></td></tr><tr><td><strong>Prompt</strong>: <em>... The background is a dark <mark style="color:green;">red</mark> gradient, ...</em><br><strong>Seed</strong>: 406220<br><strong>Rendering</strong>: Default</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FdoCz9dSrZ6R0nDkFIjFA%2Fimage.png?alt=media&#x26;token=6c7f08c2-077f-4bdc-a623-027b340148c2" alt="" data-size="original"></td><td></td></tr></tbody></table>
 
-As you can see, the images are not identical, but they have the same composition and general appearance, with only the background modified as requested.
+The images aren’t identical, but they maintain the same composition and overall appearance. Only the background changes as specified.
 
 {% hint style="warning" %}
-By using this technique and modifying the prompt—for example, by replacing the word "photography" with "painting" or changing the AI model—you’ll generate different images even when using the same seed number.
+**Warning:** Even when using the same *Seed Number*, changing a key concept in the prompt — for example, replacing “photography” with “painting,” or switching to another **model** — will generate different images.
 {% endhint %}
-
-
-# Styles
-
-**Ideogram Styles** helps you create visually consistent and appealing images quickly from a simple prompt. Choose from a curated library of ready‑made styles, or upload up to three reference images to design your own custom style. Reuse your styles anytime to keep your creations cohesive and polished.
-
-## Using Styles
-
-To generate with a style:
-
-1. Click **Style** in the prompt box. *(The word may vary depending on the currently selected style, such as **General**, **Realistic,** or **Design.**)*
-
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FFyaFbLbUMgTXx6JNRRp6%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=b3938d84-34f4-44a7-b001-c722f50868db" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FCuKkNDg1V4zo8XkKCZYS%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=ed629b07-c241-4cea-b4fa-69485bf5d982" alt=""></picture><figcaption></figcaption></figure>
-
-2. Select a preset from the list or create a custom style.
-
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3D94yymz9vX5rdziK8hy%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=2af12cfc-0d44-448b-a7ca-1a555ad946b2" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FlcENI00ND1U1H0FbQOCz%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=f55145b5-fcc5-459b-89a3-a6e7e5e7b743" alt=""></picture><figcaption></figcaption></figure>
-
-3. Enter your prompt as usual and adjust other options if needed.
-4. Click **Generate**.
-
-### Available Modes
-
-* **Auto** – The AI analyzes your prompt and automatically selects the most suitable style.
-* **General** – Best for most prompts, especially abstract art, sketches, and digital illustrations.
-* **Realistic** – Designed to produce lifelike, photorealistic images.
-* **Design** – Ideal for graphic design work like logos, posters, and flyers.
-
-### Style Presets
-
-* **Explore** – Select a style from a curated library of popular aesthetics.
-* **Recent** – Reuse a style from your most recently used styles.
-* **My styles** – Choose one of the styles you previously created.
-* **Quick reference** – Upload or select up to three images to define a **temporary custom style**.
-
-{% hint style="warning" %}
-
-### Deprecated mode
-
-#### The **Random** style mode has been **deprecated** and is no longer available.
-
-{% endhint %}
-
-### Examples
-
-Here are some examples of the style presets used to reimagine Grant Wood’s American Gothic using the exact same prompt for each style.
-
-**Prompt:**&#x20;
-
-> *A stern couple in front of a white church with a Gothic-style window. The woman wears a brown polka-dotted dress with a white lace collar and a large brown brooch, while the man holds a pitchfork and wears a black suit with a light blue shirt, white collar, and round wire-rimmed glasses. The church's white exterior features vertical siding, and the background includes green trees and a red barn.*
-
-<div><figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FHaW2GRznEUssePW0R15a%2FAbstract%20Organic%202.png?alt=media&#x26;token=2b5d6502-c235-4583-9b1b-94fdd50f4e59" alt=""><figcaption><p>Abstract Organic</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FLqEHjJk1DBvr7GXWpx47%2FAnalog%20Nostalgia%202.png?alt=media&#x26;token=1f9ef99d-92c7-4eb5-972d-e8002314a1dc" alt=""><figcaption><p>Analog Nostalgia</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FAYJmYXEdp7BZGoYVBdkL%2FChildren&#x27;s%20Book%202.png?alt=media&#x26;token=98030d47-ec21-40ba-b90d-a87b4a07766b" alt=""><figcaption><p>Children's Book</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FXTDX8w7B32SLVdALoico%2FGolden%20Hour2.png?alt=media&#x26;token=63bd1b5f-0c08-4738-8ee0-aa04d4f0e42c" alt=""><figcaption><p>Golden Hour</p></figcaption></figure></div>
-
-{% hint style="success" %}
-
-### Tips & Tricks
-
-#### Tips to generate the best images using Styles:
-
-* Turn **Magic Prompt** off to avoid unintended stylistic additions to your original prompt.
-* Avoid adding style keywords in your prompt to give the model stylistic freedom.
-* Avoid including **style-related keywords** in your prompt that may contradict the intended style.
-* Shorter, focused prompts typically work best when using styles.
-  {% endhint %}
-
-### Creating Your Own Style
-
-In addition to using preset styles, you can also create your own custom styles to achieve a personalized aesthetic.
-
-How to create a style:
-
-1. Click **Style** in the prompt box.
-2. Open the **My styles** tab.
-3. Click **Create new style**
-4. Upload or select **up to three images** to use as style references.
-5. Name your style and click **Create**.
-
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FXt2jfUTagZxFmZM9B5Xb%2FUntitled%20Aug%2020%20204%20PM%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=9bdea57c-68a2-45be-aa2b-3e4df4ef007c" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FpUBvumQW1wmJuNZOW3Ph%2FUntitled%20Aug%2020%20204%20PM%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=8b5c6473-0741-4746-8b00-db8442b78736" alt="" width="375"></picture><figcaption></figcaption></figure>
-
-Your custom style will appear under **My Styles** and can be reused in any prompt.
-
-{% hint style="success" %}
-
-### Tips & Tricks
-
-#### **Tips for selecting the best images for custom styles:**
-
-* **For a strong, unified style:** Choose images that share a similar look, mood, aesthetic and composition.
-* **For creative, unexpected results:** Mix diverse references to let the AI blend aesthetics to experiment and be surprized.
-* **Using gradients to control color:** Upload gradient-based image as one of your three references to influence overall tone.
-  {% endhint %}
-
-{% hint style="warning" %}
-Source images from your created styles **can't be changed after creation**. This ensures that anyone who uses your style in the future will see consistent results based on the images you originally uploaded.
-{% endhint %}
-
-## Combine Styles With Other Features
-
-**Ideogram Styles** becomes even more powerful when combined with other features:
-
-* [**Describe**](https://docs.ideogram.ai/using-ideogram/features-and-tools/describe): Generate prompts from existing images and apply a style to them.
-* [**Remix**](#remix): Reimagine existing images with a chosen style.
-* [**Character**](https://docs.ideogram.ai/using-ideogram/generation-settings/character-reference): Maintain a consistent subject across different aesthetics.
-* [**Color Palette**](https://docs.ideogram.ai/using-ideogram/generation-settings/color-palette): Match your prompt to a specific mood or tone.
-
-### Describe + Styles
-
-Use **Describe** to generate detailed text prompts from existing images, then apply a style to create a fresh version.
-
-{% hint style="success" %}
-Remove any stylistic keywords from Describe results for cleaner, more controlled outputs.
-{% endhint %}
-
-Example using the image below:&#x20;
-
-<div align="center"><figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FfleZYHu1wg2HK6Hcsz0h%2FGuitarist%20original.png?alt=media&#x26;token=bb026913-ded1-401b-9991-b4413d33944a" alt="" width="375"><figcaption><p>Original image.</p></figcaption></figure></div>
-
-**Original Describe prompt:**
-
-> A dynamic ~~indoor photograph~~ of a young man playing an electric guitar with intense emotion. The musician wears a <mark style="color:green;">burgundy red</mark> hoodie and <mark style="color:green;">light blue</mark> jeans, displaying an enthusiastic expression with eyes closed and mouth open in a passionate singing pose. He holds a <mark style="color:green;">cream-colored</mark> Fender electric guitar with a <mark style="color:green;">black</mark> pickguard. The setting features a <mark style="color:green;">dark green</mark> wall with two black and white framed photographs visible in the background. A <mark style="color:green;">brown</mark> leather couch is partially visible in the lower portion of the frame. ~~The lighting creates a warm, indoor atmosphere, highlighting the musician's features and the guitar's cream finish. The composition captures a moment of musical expression, with the subject positioned slightly left of center in the frame.~~
-
-~~Strikethrough~~ words and sentences, of stylistic nature, were removed or replaced to optimize how the AI interprets and applies **Styles**. Additionally, any words highlighted in <mark style="color:green;">green</mark> — which indicated the colors of elements in the image — have also been removed.
-
-**Describe adjusted prompt:**
-
-> A dynamic image of a young man playing an electric guitar with intense emotion. The musician wears a hoodie and jeans, displaying an enthusiastic expression with eyes closed and mouth open in a passionate singing pose. He holds a Fender electric guitar with a pickguard. The setting features a wall with two black and white framed photographs visible in the background. A leather couch is partially visible in the lower portion of the frame.
-
-<div><figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FX6kkVStsMXLH7hCNussA%2FGuitarist%20-%20C4D%20Cartoon.png?alt=media&#x26;token=65c9705f-c60c-4148-ba8a-6c70ddf2aaa6" alt=""><figcaption><p>Style: C4D Cartoon</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FiRvu0BGOmN4Z8bQeqqiE%2FGuitarist%20-%20Coloring%20Book%20I.png?alt=media&#x26;token=4ffd49fa-0f70-41fe-9762-1e5ce389f360" alt=""><figcaption><p>Style: Coloring Book I</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FWWtTDfn9ur56kpcXgO1i%2FGuitarist%20-%20Nightlife.png?alt=media&#x26;token=5c908f89-c77b-4f1d-b2e9-154a42d62fd1" alt=""><figcaption><p>Style: Nightlife</p></figcaption></figure></div>
-
-### Remix + Styles
-
-Use **Remix** with **Styles** to bring new life to existing images while preserving their structure. This method usually matches the composition better than using **Describe** alone.
-
-* **Higher remix weight** → Keeps composition closer to the original.
-* **Lower remix weight** → Leans more heavily into the chosen style.
-
-Example using Remix with a weight of 60% with the same original image and same Describe adjusted prompt:
-
-<div><figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FfleZYHu1wg2HK6Hcsz0h%2FGuitarist%20original.png?alt=media&#x26;token=bb026913-ded1-401b-9991-b4413d33944a" alt=""><figcaption><p>Original image.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FOAw5JOsEkU1bB3mPsuoN%2FGuitarist%20-%2080s%20Illustration%20-%20Remix%2060.png?alt=media&#x26;token=a4ae4f56-58ad-4d3e-8a59-34d51605eaa2" alt=""><figcaption><p>Style: 80s Illustration - Remix at 60%.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FMopzC9GOL4LXyFQ4jIAV%2FGuitariste%20-%20Avant%20Garde%20-%20Remix%2060.png?alt=media&#x26;token=35eae76e-0009-48a7-a6dd-33620896c757" alt=""><figcaption><p>Style: Avant Garde - Remix at 60%.</p></figcaption></figure></div>
-
-### Character + Styles
-
-Combine **Character** with **Style** to maintain a consistent subject across multiple images while experimenting with different looks and aesthetics. Perfect for creating variations while maintaining consistency
-
-Example using the same adjusted prompt with a Character reference:
-
-<div><figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FYEiB3w9wMPmUzI2tLWlC%2FGuitarist%20-%20Character.png?alt=media&#x26;token=4d86382c-c8eb-4928-837f-75ed21f95cdb" alt=""><figcaption><p>Character reference.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F2m9YPVgBKInEQaTeakwB%2FMixed%20media.png?alt=media&#x26;token=24c97361-b0b4-428f-a0eb-557cc28e5dbf" alt=""><figcaption><p>Style: Mixed Media.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F72ZZFLwhbTLFoKG57nmE%2FGuitarist%20-%20Monochrome.png?alt=media&#x26;token=26a76238-8895-42d8-9097-1661a5dd161c" alt=""><figcaption><p>Style: Monochrome.</p></figcaption></figure></div>
-
-### Color Palette + Styles
-
-Pair **Styles** with **Color palette** to influence the overall tone and mood of your image. When a palette is applied, the selected colors are incorporated while maintaining the style visual identity.
-
-The examples below show the color palette used in the lower-left corner of the images:
-
-<div><figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3KzcFd5vOBVoz22sAN6u%2FGuitarist%20-%20Original%20colors.png?alt=media&#x26;token=f7607314-19f6-4665-98e5-89864534a2e8" alt=""><figcaption><p>Style: Analog Nostalgia</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FSdF5aPyvgFstlM8fozY2%2FGuitarist%20-%20Pastel%20colors.png?alt=media&#x26;token=b4ca6794-8e46-4149-a7c9-915733a81c10" alt=""><figcaption><p>Analog Nostalgia with Pastel.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FBSzML0fiuHjbONZyCA62%2FGuitarist%20-%20Aquamarine%20colors.png?alt=media&#x26;token=74de8659-5860-429f-a308-5b0ed4d259b1" alt=""><figcaption><p>Analog Nostalgia with Aquamarine.</p></figcaption></figure></div>
-
-
-# Styles in Older Models
-
-## Styles in Version 2.0 and 2a
-
-To access the **Style** functionality and its options, click or tap the prompt box to reveal the options at the bottom. Then, click the **fifth tab** to open a popup with the available style choices.
-
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F7t5R1GPRTg00aUIbCJCN%2FUI%20v3%20-%20Promptbox%20-%20Dark%402x.png?alt=media&#x26;token=2b49b461-086d-4691-bdb7-45bd585b8d51" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fh3TTZkdFc2R8jgfLVN8G%2FUI%20v3%20-%20Promptbox%20-%20Light%402x.png?alt=media&#x26;token=9bab3241-ce74-4ba3-aadc-976aaad8b64b" alt=""></picture><figcaption><p>Prompt box and location of the Style tab.</p></figcaption></figure>
-
-The styles shown will vary depending on the model you have selected.
-
-<div><figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3jEWRwzL4qNYGfXz9480%2FPB%20v3%20-%20Style%20%2B%20Ref%20v2.0%20-%20Dark%402x.png?alt=media&#x26;token=e2ae2850-a619-49e8-b630-b3e0fd4f1698" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FQhUmzHme2WuV2IUTRdvY%2FPB%20v3%20-%20Style%20%2B%20Ref%20v2.0%20-%20Light%402x.png?alt=media&#x26;token=a845e2c8-d940-4062-9aab-67177b50933e" alt=""></picture><figcaption><p>Styles available in v2.0 and 2a.</p></figcaption></figure> <figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FPX3tTdkn8ROFrgFq2Rks%2FPB%20v3%20-%20Style%20%2B%20Ref%20v1.0%20-%20Dark%402x.png?alt=media&#x26;token=b71b832f-a1df-4c58-9052-e095681020a2" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F9lbH6PvHfV60Xrvt4Qw3%2FPB%20v3%20-%20Style%20%2B%20Ref%20v1.0%20-%20Light%402x.png?alt=media&#x26;token=b377e47c-a6e9-41c4-81a5-601260f8b17c" alt=""></picture><figcaption><p>Styles available in v1.0</p></figcaption></figure></div>
-
-***
-
-The styles available in version 2.0 and 2a are specialized AI models and will not add anything extra to your prompt, unlike version 1.0.
-
-Here are the available styles:
-
-* The **Auto**, **General**, **Realistic** and **Design** styles just like their counterpart in v3.0.
-* **3D**: This style is perfect for generating images of characters, various objects, and other creations with a 3D visual appeal.
-* **Anime**: This style is ideal for creating images and characters in the likeness of your favorite anime.
-
-### Example Styles in 2.0
-
-Here are some examples of the 2.0 styles with the prompt: `Portrait of a fireman` :
-
-<table data-view="cards"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FKGG1KQupsPCKVcZgwmSI%2Fimage.png?alt=media&#x26;token=c68b3153-9868-44b3-a578-4f253267c676" alt="" data-size="original"></td><td>General</td><td></td></tr><tr><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FmlCFQEpEq5CgBWOySyon%2Fimage.png?alt=media&#x26;token=1a457b9e-7b4b-4c4c-b8a0-86ee3aa99c29" alt="" data-size="original"></td><td>Realistic</td><td></td></tr><tr><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3CZaufwNkQAJ4ftfezMn%2Fimage.png?alt=media&#x26;token=08d14310-f66a-4754-8d72-14f7cdcfc43b" alt="" data-size="original"></td><td>Design</td><td></td></tr><tr><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FU7NoahfnRc8zTSmaynZH%2Fimage.png?alt=media&#x26;token=c30fd246-2688-4d08-8212-951e7cf6357e" alt="" data-size="original"></td><td>3D</td><td></td></tr><tr><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FDTRQSfgudU7t9fVY5yY4%2Fimage.png?alt=media&#x26;token=bd709693-1932-4a88-b234-7afb6b288c12" alt="" data-size="original"></td><td>Anime</td><td></td></tr></tbody></table>
-
-{% hint style="info" %}
-Pro tip: Try experimenting with the same prompt in different styles. You’ll be amazed at how each style can produce impressive images, even if the style in question wasn’t originally intended for what you were looking for.
-{% endhint %}
-
-***
-
-## Styles in Version 1.0
-
-{% tabs %}
-{% tab title="Desktop" %}
-
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fm5JMBa9kBvyGhXDaS77N%2FPrompt%20Area%20-%201.0%20Full%20-%20Dark%402x.png?alt=media&#x26;token=cae5936b-ffbe-4dd3-afdb-4dde24ffa3e5" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fj70nDaAwXEQTwbShWbgM%2FPrompt%20Area%20-%201.0%20Full%20-%20Light%402x.png?alt=media&#x26;token=30feaf87-4336-4a66-b420-46a841e4b306" alt=""></picture><figcaption></figcaption></figure>
-{% endtab %}
-
-{% tab title="Mobile" %}
-
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fv7sj02UUVCXpjoVREYEw%2FPrompt%20Area%20-%20Mobile%201.0%20Full%20-%20Dark%402x.png?alt=media&#x26;token=44c3f284-b470-489c-9572-5626cf357582" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FVxWyqhkDiRtvFjHp47FS%2FPrompt%20Area%20-%20Mobile%201.0%20Full%20-%20Light%402x.png?alt=media&#x26;token=23119f90-4f64-405e-856a-9601abfaa6ed" alt="" width="375"></picture><figcaption></figcaption></figure>
-{% endtab %}
-{% endtabs %}
-
-In version 1.0, using a **Style** effectively adds the corresponding keywords to the end of your prompt just before generating the image, ensuring that the AI understands the type of image you are looking for.
-
-Click on a style to apply it. With Version 1.0, you can select and apply multiple styles at once.
-
-### Example Styles in 1.0
-
-<table data-view="cards"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td>3d render</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Ff10qSNI7EeFN6b7xnXmm%2Fimage.png?alt=media&#x26;token=e019ef2b-bcd6-4d92-b919-cc410210a3aa" alt="" data-size="original"></td><td>Prompt:<br>A fireman</td></tr><tr><td>Anime</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FSnUZDvGwAizkrkFNcaTx%2Fimage.png?alt=media&#x26;token=4f0a2f54-05eb-4238-85af-da9a53a8bda4" alt="" data-size="original"></td><td>Prompt:<br>A fireman</td></tr><tr><td>Architecture</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F0R3Q6b9okl5Vdx3EtzLe%2Fimage.png?alt=media&#x26;token=cf6f0c1c-f0c6-4dc2-aad1-cde26c433208" alt="" data-size="original"></td><td>Prompt:<br>A fire station</td></tr><tr><td>Cinematic</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FHOXkkqVSxMPosxNBkryR%2Fimage.png?alt=media&#x26;token=3812c203-1f4f-4a00-ba75-c716576ddf1a" alt="" data-size="original"></td><td>Prompt:<br>A fireman</td></tr><tr><td>Conceptual Art</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fb3SgTEUtePmOOvatb0jR%2Fimage.png?alt=media&#x26;token=5edd3ba0-c9d1-419a-b581-0166425dea2a" alt="" data-size="original"></td><td>Prompt:<br>A fireman</td></tr><tr><td>Dark Fantasy</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FgcegeUtlyD4LTAhydZA9%2Fimage.png?alt=media&#x26;token=de2c3c29-0d64-429c-b5de-064c1684d420" alt="" data-size="original"></td><td>Prompt:<br>A fireman</td></tr><tr><td>Fashion</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FHIYMMR4ZtObjJSvYw0FZ%2Fimage.png?alt=media&#x26;token=5a2ab6f9-8f99-42d7-b307-e7d6c19e68c8" alt="" data-size="original"></td><td>Prompt:<br>A fireman</td></tr><tr><td>Graffiti</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FqNIJTREtvBcGkhuiqlME%2Fimage.png?alt=media&#x26;token=ad177874-0fd1-4002-87f8-2b8acdd3d392" alt="" data-size="original"></td><td>Prompt:<br>A fireman</td></tr><tr><td>Illustration</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fk95gjiHUSweLQC9vhkeV%2Fimage.png?alt=media&#x26;token=ebf57197-4911-4d58-a096-5a65d17110fa" alt="" data-size="original"></td><td>Prompt:<br>A fireman</td></tr><tr><td>Painting</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FdNCTQZe8Y7RNzwpZqST2%2Fimage.png?alt=media&#x26;token=a6c56b09-b741-4b0f-ad4f-044a6c394971" alt="" data-size="original"></td><td>Prompt:<br>A fire truck</td></tr><tr><td>Photo</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FTY2vcisCBFe1vRomXWqe%2Fimage.png?alt=media&#x26;token=9fe29718-c3a4-43da-a015-3a01990cb488" alt="" data-size="original"></td><td>Prompt:<br>A fireman</td></tr><tr><td>Portrait photography</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FQJzwuhsQ3o7N4osiXvIQ%2Fimage.png?alt=media&#x26;token=9deea93b-a62a-46fd-b21f-85661f470eec" alt="" data-size="original"></td><td>Prompt:<br>A fireman</td></tr><tr><td>Poster</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fxsscfw42acbvBtsIbIUq%2Fimage.png?alt=media&#x26;token=d21a1e65-860b-4acd-ab3f-ef1c369c2f18" alt="" data-size="original"></td><td>Prompt:<br>A fireman</td></tr><tr><td>Product</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FwU8FJOjeNBO87Pa0ait3%2Fimage.png?alt=media&#x26;token=6083e7bb-597a-43ed-95da-dfa75885a095" alt="" data-size="original"></td><td>Prompt:<br>A fire truck</td></tr><tr><td>Typography</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FNB94pJLGAtVjFe1pt1RP%2Fimage.png?alt=media&#x26;token=7624f000-c1ca-4e57-91d0-b04188b58cdf" alt="" data-size="original"></td><td>Prompt:<br>A fire truck</td></tr><tr><td>Ukiyo-e</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FLFIhZWtEi4VzmVbwZI9V%2Fimage.png?alt=media&#x26;token=0fbacf1f-153b-4383-ab85-8f19a8744f63" alt="" data-size="original"></td><td>Prompt:<br>A fireman</td></tr><tr><td>Vibrant</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FH0CihB1EXRyV9ITBD3FS%2Fimage.png?alt=media&#x26;token=b98b59de-9859-468e-8f23-a6f559f99b3b" alt="" data-size="original"></td><td>Prompt:<br>A fireman</td></tr><tr><td>Wildlife Photography</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FtT0eJOWVp9qkQuJMX6i4%2Fimage.png?alt=media&#x26;token=66d1aa44-2d52-47a4-8bd0-89e8b5e88c0a" alt="" data-size="original"></td><td>Prompt:<br>A fire truck</td></tr></tbody></table>
 
 
 # Tile
 
-## What is the Tile Function
+## Using the Tile Feature
 
-The **Tile** feature, available to any paid subscription user, allows you to create images that can be seamlessly tiled without visible borders or interruptions. This can be particularly useful for image creators, providing an easy way to generate seamless backgrounds, textures, and patterns directly from a prompt.
+The Tile feature lets you generate images that repeat seamlessly without visible borders or interruptions. It’s available to **all paid users** and is ideal for creating backgrounds, textures, and repeating patterns directly from a prompt.
+
+To access Tile:
+
+1. Select the [Prompt Box](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/prompt-box) to expand it (if not already open) and display the generation settings.
+2. Ensure **Model version 1.0** is selected under [Models + variations](https://docs.ideogram.ai/using-ideogram/generation-settings/available-models) — the Tile option is greyed out and unavailable when using any other model version.
+3. Select the **More** button <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FsULvZOcJ9KEtw0cwW7Em%2FPB%20-%20More%20Button%20-%20Dark.png?alt=media&#x26;token=ee8e8a50-c3b7-42de-bdb3-31b87a7c336e" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FQMg6DKTYV1xcFS8gwDal%2FPB%20-%20More%20Button%20-%20Light.png?alt=media&#x26;token=883b737c-c2c6-4c15-86cc-378824550c3c" alt="" data-size="line"></picture>  to open a dropdown menu.&#x20;
+
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FPDQ99C2FnkHbKikP7k0U%2FPB%20v3%20-%20More%20-%20Dark%402x.png?alt=media&#x26;token=d5ffc9ae-cd74-440b-8478-37a8da23f08b" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FUJBqrsrxNrRtBAehxJOC%2FPB%20v3%20-%20More%20-%20Light%402x.png?alt=media&#x26;token=f9cfae58-95bd-4a1d-8465-a2d65b193413" alt="" width="375"></picture><figcaption><p>The More dropdown menu.</p></figcaption></figure>
 
 {% hint style="warning" %}
-The **Tile** function is only available in Ideogram version 1.0. Make sure the 1.0 model is selected; otherwise, the Tile option in the More menu will be greyed out.
+**Important note:** The Tile feature is available only in **Ideogram model version 1.0**.
 {% endhint %}
 
-To access the **Tile** function and select a specific tiling pattern,  or tap the prompt box to reveal the options at the bottom and make sure that version 1.0 is selected. Then, click the **More** icon <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3Ks1Q3ZANIcb52iR6lgs%2FCleanShot%202024-07-18%20at%2016.45.56%402x.png?alt=media&#x26;token=548d57b2-b767-419d-9107-63c173c74315" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FASmJIf2Iinfih7gkJRNF%2FCleanShot%202024-07-18%20at%2016.46.07%402x.png?alt=media&#x26;token=a347c007-cd25-4e9e-a9cf-9d2b9893500c" alt="" data-size="line"></picture>  located at the end of the prompt box option tabs to open a popup menu with the available choices.&#x20;
+4. Select the **dropdown arrow** at the right end of the **Tile** option to display a list of available tiling styles.
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FS7wernLx2Dzwo4R0sTUo%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=29e8c5fb-5bc8-4e28-8514-fdbf7868b09a" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fab4HwoBpQZzGCZjM1Q4y%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=1d75c699-f788-4e28-8754-6ed4fc4fb276" alt=""></picture><figcaption><p>Prompt box, location of the Model tab and More tab.</p></figcaption></figure>
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3XpEs2mcUbIwqAXrX9ca%2FTile%20Animation%20-%20Dark.webp?alt=media&#x26;token=2f0831d5-c212-49ce-b9fa-2148f737a992" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FCGHOWv0OxRdupdLonLdC%2FTile%20Animation%20-%20Light.webp?alt=media&#x26;token=5ec6db30-1935-4d1d-9e85-62524dab1010" alt="" width="375"></picture><figcaption><p>Available grid options.</p></figcaption></figure>
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FPDQ99C2FnkHbKikP7k0U%2FPB%20v3%20-%20More%20-%20Dark%402x.png?alt=media&#x26;token=d5ffc9ae-cd74-440b-8478-37a8da23f08b" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FUJBqrsrxNrRtBAehxJOC%2FPB%20v3%20-%20More%20-%20Light%402x.png?alt=media&#x26;token=f9cfae58-95bd-4a1d-8465-a2d65b193413" alt="" width="375"></picture><figcaption><p>Popup menu for the More option.</p></figcaption></figure>
+#### Grid Styles
 
-From there, you can click on the arrow to the right of the tab  <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FyXehtUMbab9nqHMMFGeI%2FTile%20Grid%20Selection%20Button%20-%20Dark%402x.png?alt=media&#x26;token=e1205a4c-b60e-482a-aee0-bda474dbf3f1" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fdh9sWDMPAJhPLoUiDlvj%2FTile%20Grid%20Selection%20Button%20-%20Light%402x.png?alt=media&#x26;token=6b5f167d-aeb1-43f7-b51b-e60fb57c72ef" alt="" data-size="line"></picture> to access a selection of available tile styles.
+These options define how your image repeats:
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3XpEs2mcUbIwqAXrX9ca%2FTile%20Animation%20-%20Dark.webp?alt=media&#x26;token=2f0831d5-c212-49ce-b9fa-2148f737a992" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FCGHOWv0OxRdupdLonLdC%2FTile%20Animation%20-%20Light.webp?alt=media&#x26;token=5ec6db30-1935-4d1d-9e85-62524dab1010" alt="" width="375"></picture><figcaption><p>The grid options that are available.</p></figcaption></figure>
-
-Here are the available tile arrangments:
-
-* **Off**:
-  * This option will not use the tile functionality.
-* **Grid**
-  * The images will be arranged in a checkered grid.
-* **Vertical brick**
-  * Each image in a column will be offset vertically by half the height of the image in relation to the adjacent ones on the left and right.
-* **Horizontal brick**
-  * Each image in a row will be offset horizontally by half the width of the image in relation to the adjacent ones above or below.
-* **Column**
-  * This option will tile the images in a single column.
-* **Row**
-  * This option will tile the images in a single row, which is useful for creating banners.
+* **Off** — Disables the tiling feature.
+* **Grid** — Arranges images in a regular checkered grid.
+* **Vertical brick** — Offsets each column by half its height relative to the one beside it.
+* **Horizontal brick** — Offsets each row by half its width relative to the one above or below.
+* **Column** — Tiles images in a single vertical column.
+* **Row** — Tiles images in a single horizontal row, ideal for banners.
 
 Here are some visual examples of each grid style:
 
-<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td>No tile (generated without tile)</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fvqbh2aY693HfXUUngr5C%2Fimage.png?alt=media&#x26;token=01293803-41c4-457b-b4e4-7c26eb18dc54" alt="" data-size="original"></td><td>This is the image that will be remixed to generate the tile examples.</td></tr><tr><td>Grid (4x4)</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FibQmZH2MvVXBimO9xp7i%2F4x4%20Grid.png?alt=media&#x26;token=97c53e0a-b6e3-4765-9642-26081a37a801" alt="" data-size="original"></td><td>This is the most common type of tile, arranged in a chequered grid.</td></tr><tr><td>Vertical brick (4x4)</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FITLDTVxEMNhgSI0rvYjF%2F4x4%20Vertical%20brick.png?alt=media&#x26;token=5a076506-3d82-4597-bc90-1028f5eefe45" alt="" data-size="original"></td><td>Here you can see that the columns are aligned but the rows alternate.</td></tr><tr><td>Horizontal brick (4x4)</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fv36xMTO3OY8UYkQIIKK8%2F4x4%20Horizontal%20brick.png?alt=media&#x26;token=e9d76752-afb1-4d8a-875d-9d38d6ccc012" alt="" data-size="original"></td><td>Here, on the contrary, you can see that the rows are aligned but the columns alternate.</td></tr><tr><td>Column (1x1)</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FrctLijkBLydkjCLRo5Si%2F1x1%20Column.png?alt=media&#x26;token=a9aac7eb-ddff-40de-ab83-359581523994" alt="" data-size="original"></td><td>It's often a good idea to create your image in the same direction of the column (or row) to minimize the effect of repetition.</td></tr><tr><td>Column (2x1)</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FKGmzxMa6UnKMyJfxAEPm%2F2x1%20Columnpng.png?alt=media&#x26;token=f2bf5288-1ffe-4abf-aeaa-7d4cc213c1b8" alt="" data-size="original"></td><td></td></tr></tbody></table>
+<table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td>No tile (generated without tiling)</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fvqbh2aY693HfXUUngr5C%2Fimage.png?alt=media&#x26;token=01293803-41c4-457b-b4e4-7c26eb18dc54" alt="Original image to be remixed." data-size="original"></td><td>This is the image that will be remixed to generate the tile examples.</td></tr><tr><td>Grid (4x4)</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FibQmZH2MvVXBimO9xp7i%2F4x4%20Grid.png?alt=media&#x26;token=97c53e0a-b6e3-4765-9642-26081a37a801" alt="Example of the Grid tiling style (4×4)" data-size="original"></td><td>This is the most common type of tile, arranged in a checkered grid.</td></tr><tr><td>Vertical brick (4x4)</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FITLDTVxEMNhgSI0rvYjF%2F4x4%20Vertical%20brick.png?alt=media&#x26;token=5a076506-3d82-4597-bc90-1028f5eefe45" alt="" data-size="original"></td><td>In this example, you can see that the columns are aligned but the rows alternate.</td></tr><tr><td>Horizontal brick (4x4)</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fv36xMTO3OY8UYkQIIKK8%2F4x4%20Horizontal%20brick.png?alt=media&#x26;token=e9d76752-afb1-4d8a-875d-9d38d6ccc012" alt="" data-size="original"></td><td>Here, in contrast, you can see that the rows are aligned but the columns alternate.</td></tr><tr><td>Column (1x1)</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FrctLijkBLydkjCLRo5Si%2F1x1%20Column.png?alt=media&#x26;token=a9aac7eb-ddff-40de-ab83-359581523994" alt="" data-size="original"></td><td>It's often a good idea to create your image in the same direction of the column (or row) to minimize the effect of repetition.</td></tr><tr><td>Column (2x1)</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FKGmzxMa6UnKMyJfxAEPm%2F2x1%20Columnpng.png?alt=media&#x26;token=f2bf5288-1ffe-4abf-aeaa-7d4cc213c1b8" alt="" data-size="original"></td><td></td></tr></tbody></table>
 
 Row (1x1)
 
-<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FbqSsg1Dhr4eXOJasZnNg%2F1x1_a-captivating-snapshot-of-a-bar-counter-filled-wit-iXKpRJF7S_OO_EdLgLXxJw-FxdKHOhYT2iMvvSZKLV26w.png?alt=media&#x26;token=fc974dcb-d59a-4adc-a66d-aa9f697a1fb5" alt=""><figcaption><p>Here, the image was generated horizontally to get the maximum number of bottle and avoid the effect of repetition.</p></figcaption></figure>
+<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FbqSsg1Dhr4eXOJasZnNg%2F1x1_a-captivating-snapshot-of-a-bar-counter-filled-wit-iXKpRJF7S_OO_EdLgLXxJw-FxdKHOhYT2iMvvSZKLV26w.png?alt=media&#x26;token=fc974dcb-d59a-4adc-a66d-aa9f697a1fb5" alt=""><figcaption><p>Here, the image was generated horizontally to get the maximum number of bottle and minimize visible repetition.</p></figcaption></figure>
 
 Row (2x1)
 
 <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FuAYkJzRyQExySvwj7Qhu%2F2x1_a-captivating-snapshot-of-a-bar-counter-filled-wit-iXKpRJF7S_OO_EdLgLXxJw-FxdKHOhYT2iMvvSZKLV26w-tiled.png?alt=media&#x26;token=a04ca5bd-cc92-40da-b504-33c7a5d355d9" alt=""><figcaption></figcaption></figure>
 
-When viewing the generated images, you can toggle the tile’s animation by clicking the play <img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FjvD4iLxfhZcJLAuX1KCz%2FPlay%20Button%20Grey%402x.png?alt=media&#x26;token=db346b7d-f655-41cf-854f-92e8a26f4334" alt="" data-size="line"> or pause <img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FWNcfHEsNJm1goSmBHWJY%2FPause%20Button%20-%20Grey%402x.png?alt=media&#x26;token=4518c3b8-15da-4dc0-923e-79ca846b021f" alt="" data-size="line"> button in the upper corner, depending on the current state of the animation.
+### Viewing and Adjusting Tiles
 
-You can also adjust the on-screen tile pattern’s size using the tile scale slider located at the top right, just below the play/pause button.
+When viewing the generated images, you can toggle the tile’s animation by selecting the **Play** <img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FjvD4iLxfhZcJLAuX1KCz%2FPlay%20Button%20Grey%402x.png?alt=media&#x26;token=db346b7d-f655-41cf-854f-92e8a26f4334" alt="" data-size="line"> or **Pause** <img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FWNcfHEsNJm1goSmBHWJY%2FPause%20Button%20-%20Grey%402x.png?alt=media&#x26;token=4518c3b8-15da-4dc0-923e-79ca846b021f" alt="" data-size="line"> buttons in the upper corner, depending on the current animation state.
+
+You can adjust the on-screen tile pattern’s size using the **Tile scale slider** located at the top right...
 
 <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FpOVgj4ibfjgiGEyMgnGM%2FTile%20Magnification%20Slider%20-%20Grey%402x.png?alt=media&#x26;token=9d66ce0b-9010-422d-9e17-d2bdb1de02d8" alt="" width="118"><figcaption></figcaption></figure>
 
 ## Downloading Tiles
 
-You can download your seamless tile images in two different ways:
+You can export your seamless Tile images in two ways:
 
-1. While viewing the image, you can click on the more icon <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3Ks1Q3ZANIcb52iR6lgs%2FCleanShot%202024-07-18%20at%2016.45.56%402x.png?alt=media&#x26;token=548d57b2-b767-419d-9107-63c173c74315" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FcW1tQmz9r6RkVb43F2k0%2Fimage.png?alt=media&#x26;token=e22278f6-0ea6-45da-885f-6528c9ddcc4a" alt="" data-size="line"></picture> to bring up the menu, then select **Download**. You will then have multiple choices on how many repetitions you want of the tile, horizontally and vertically, in the final image.
+1. From the [Details Panel](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/details-panel) — While viewing a tile image, select the **dropdown arrow** at the right end of the **Download** button, then choose a format. Available formats vary depending on the tile type generated.
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fj6b3pNdOlCcdZ8nE2kBh%2FCleanShot%202024-08-28%20at%2013.38.09%402x.png?alt=media&#x26;token=2e1ac105-6ba9-4a9d-9680-959e71617124" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FgzexGCQa3auNdrRP9xkC%2FCleanShot%202024-08-28%20at%2013.37.49%402x.png?alt=media&#x26;token=a1c3bd5a-e77e-4388-9d12-283227c5bf79" alt="" width="375"></picture><figcaption><p>The available formats that can be downloaded. The column and row tile formats will contain different values.</p></figcaption></figure>
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FwXhYwAzWS1XqD1nwXQYn%2FDownload%20-%20Tile%20Formats%20-%20Dark%402x.png?alt=media&#x26;token=34c65114-d3d0-4f5f-a85e-3d3c0d625133" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FvNWUwHO8d5ah5FHx4HaD%2FDownload%20-%20Tile%20Formats%20-%20Light%402x.png?alt=media&#x26;token=131d4e5f-a811-4877-a3b0-340967f6500a" alt="" width="160"></picture><figcaption><p>Menu showing the available download Tile formats.</p></figcaption></figure>
 
-2. While viewing the images in your feed, you can use the "Select" tool <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FlB9jbRmJk2DVVEgr357e%2FCleanShot%202024-07-24%20at%2016.10.53%402x.png?alt=media&#x26;token=d0d691d5-5a47-45c8-9f48-1bc8c00f462f" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F0EQz1ynwHcRYFsUDNas4%2FCleanShot%202024-07-24%20at%2016.09.43%402x.png?alt=media&#x26;token=4026c866-8167-425c-8734-81f3bb145894" alt="" data-size="line"></picture> or drag over the images to choose the ones you want to download. When you click the "Download" button, the 1x1 and 2x2 tile images will be automatically downloaded in a .ZIP file.
+2. From the **Creations** page — When one or more tiles are selected, click **Download** below the image gallery. The **2×2** (or **2×1 / 1×2**, depending on the tile type) versions are automatically packaged in a **ZIP** file and downloaded to your computer.
 
-{% hint style="info" %}
-Sometimes you come across a beautiful image that you think you could use as a banner, gift wrap or website background. In such cases, it can be a good idea to use the [Remix](https://docs.ideogram.ai/using-ideogram/features-and-tools/remix) function in conjunction with the [Tile](https://docs.ideogram.ai/using-ideogram/generation-settings/tile) function to obtain the perfect image you’re looking for. Here are a few examples:
+## Combining Remix and Tile
 
-Image from a normal prompt:\
+You can combine [Remix](https://docs.ideogram.ai/using-ideogram/features-and-tools/remix) and Tile to refine or extend an image for use as a banner, pattern, or background. This combination helps you generate exactly the composition and repetition you want.
+
+Here are some examples:
+
+### Example 1
+
+Image generated from a normal prompt:\
 ![](https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FTL9Lo2d4XnZRRk3ue8dt%2Fimage.png?alt=media\&token=731a74e6-6660-4f0a-8af7-245a3f92e12e)
 
-2x2 Tile from a remix of the image above:\
+2x2 Tile generated from a Remix of the image above:\
 ![](https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FwJxEJC0Pc14jevsmX1r7%2F2x2-tiled.png?alt=media\&token=499cafe9-5df7-42c8-b651-8435b03f9d15)
 
-Image from a normal prompt:\
+### Example 2
+
+Image generated from a normal prompt:\
 ![](https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Ft7KrYNZBrUgpXGeokTWy%2Fimage.png?alt=media\&token=84c1363b-6a28-4385-98ae-0ed9445c07b2)
 
-2x1 Tile from a remix of the image above:\ <img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Ftc5OX1mAA5koOe8rMGik%2F2x1-tiled.png?alt=media&#x26;token=6edd5446-2882-435f-bb86-608ac9c2ea28" alt="" data-size="original">
-{% endhint %}
+2x1 Tile generated from a Remix of the image above:\ <img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Ftc5OX1mAA5koOe8rMGik%2F2x1-tiled.png?alt=media&#x26;token=6edd5446-2882-435f-bb86-608ac9c2ea28" alt="" data-size="original">
 
 
-# Features & Tools
+# Features and Tools
 
 
 # Batch Generation
 
-Save time and create images in bulk with **Batch generation**. Simply upload a spreadsheet with your prompts and settings, then come back to finished images. Only available on [**Ideogram Pro**](https://docs.ideogram.ai/plans-and-pricing/available-plans) and  [**Ideogram Team**](https://docs.ideogram.ai/plans-and-pricing).
+Create multiple images at once with Batch Generation. Upload a spreadsheet that contains your prompts and settings, then return later to find all your generated images ready.
+
+{% hint style="info" %}
+**Note:** Batch Generation is available only with the **Pro Plan** and **Team Plan**.
+{% endhint %}
 
 ## Using Batch Generation
 
-1. Click the **Batch** icon in the left-side panel.
-2. Click **Download template** to download a simple template that you can fill out. You can download the full template instead by clicking on the right-arrow to reveal a dropdown.&#x20;
+Follow these steps to generate images in bulk:
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FlK3k11vH9WKhClICZW6k%2FBatch%20Generation%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=e07a481d-4785-4caf-a765-1c09358036ff" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fb8v1HkvMQSBQGiOsB0Xh%2FBatch%20Generation%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=111f4986-5c2c-4ba6-991b-31068432afed" alt=""></picture><figcaption><p>Select which template you want to download.</p></figcaption></figure>
+1. Select the **Batch** icon <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FMP8QEqQZ3XWlVM5BFZXj%2FBatch%20-%20Dark%2020px.svg?alt=media&#x26;token=ea6cf9eb-9e66-492f-8a28-9b222a226b46" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FcANgCWqkv8mkNrmznSWu%2FBatch%20-%20Light%2020px.svg?alt=media&#x26;token=31807bee-0c9f-4531-8b4b-5ace78d3f3f7" alt="" data-size="original"></picture> in the [Navigation Bar](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/navigation-bar).
+2. Select **Download template** to get a sample spreadsheet.
+   * To access the complete version, open the dropdown and choose **Full template**.
 
-3. Following the template, fill in the rows of the spreadsheet with your prompts and parameters, using the [expected values](#expected-values) for each column. Be sure to remove the example rows.
+<div align="center"><figure><picture><source srcset="https://docs.ideogram.ai/~gitbook/image?url=https%3A%2F%2F1799634369-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FzjhNby3LLsIikYuvxAJP%252Fuploads%252FlK3k11vH9WKhClICZW6k%252FBatch%2520Generation%2520%25E2%2580%2593%2520Ideogram%2520-%2520Light%2520Dark%25402x.png%3Falt%3Dmedia%26token%3De07a481d-4785-4caf-a765-1c09358036ff&#x26;width=768&#x26;dpr=4&#x26;quality=100&#x26;sign=f1dd58fa&#x26;sv=2" media="(prefers-color-scheme: dark)"><img src="https://docs.ideogram.ai/~gitbook/image?url=https%3A%2F%2F1799634369-files.gitbook.io%2F%7E%2Ffiles%2Fv0%2Fb%2Fgitbook-x-prod.appspot.com%2Fo%2Fspaces%252FzjhNby3LLsIikYuvxAJP%252Fuploads%252Fb8v1HkvMQSBQGiOsB0Xh%252FBatch%2520Generation%2520%25E2%2580%2593%2520Ideogram%2520-%2520Light%2520Dark%25402x.png%3Falt%3Dmedia%26token%3D111f4986-5c2c-4ba6-991b-31068432afed&#x26;width=768&#x26;dpr=4&#x26;quality=100&#x26;sign=d6564a2a&#x26;sv=2" alt="Batch Generation interface showing upload and status areas"></picture><figcaption><p><em>Batch Generation interface showing upload and status areas.</em></p></figcaption></figure></div>
 
-{% hint style="danger" %}
-There is a limit of <mark style="color:red;">500</mark> <mark style="color:red;"></mark><mark style="color:red;">**rows**</mark> per uploaded file, <mark style="color:red;">**including the header row**</mark>.
+3. Fill out the spreadsheet using the expected values for each column.
+   * Remove the example rows before editing.
+
+{% hint style="warning" %}
+**Warning:** Each uploaded file has a limit of <mark style="color:red;">**500 rows**</mark>, including the header row.
 {% endhint %}
 
-4. When finished, save the file. If possible, save it in the CSV UTF-8 (comma delimited) format. This will help with errors in case your file contains special characters.
-5. Upload it to Ideogram by clicking **Upload spreadsheet** in the Batch Generation page. We accept .csv, .xls, and .xlsx formats.
-6. Check for error messages. If any appear, make the necessary changes and upload the file again.
+4. Save the file as `CSV UTF-8 (comma-delimited)` to prevent encoding issues.
+5. Select **Upload spreadsheet** on the Batch Generation page.
+   * Accepted formats: `.csv`, `.xls`, `.xlsx`.
+6. If any errors appear, fix them in your file and upload it again.
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FhbzQh9gdZ52dwLIEsAPn%2FBatch%20Generation%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=c67f33cc-8739-4713-8540-ec89327d49d1" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FUyxzqac0qX3ElKoPrPnM%2FBatch%20Generation%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=592b07bd-92ad-481e-bc2f-2276e6b25cf9" alt=""></picture><figcaption><p>Example of an error message.</p></figcaption></figure>
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FhbzQh9gdZ52dwLIEsAPn%2FBatch%20Generation%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=c67f33cc-8739-4713-8540-ec89327d49d1" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FUyxzqac0qX3ElKoPrPnM%2FBatch%20Generation%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=592b07bd-92ad-481e-bc2f-2276e6b25cf9" alt=""></picture><figcaption><p>Example of an error message during file upload.</p></figcaption></figure>
 
-6. Once there are no errors, review the details of your uploaded CSV file. You will see:
-   1. A textual preview of the first row.
-   2. The number of rows and images to be generated.
-   3. **The number of Priority credits required to generate all the images**.&#x20;
-   4. The amount of Priority credits available.
+7. When your file uploads successfully, review the Batch Generation details section. You’ll see:
+   * A preview of the first row
+   * The total number of rows and images
+   * The **Priority Credits** required and available\
+     If needed, select **Replace** (top-right) to upload a different file.
 
-If needed, click the **Replace** button in the upper right corner to upload a different file.
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FJ5zOtLwBpQk4DQFEtNYH%2FBatch%20Generation%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=78a679c8-1e1f-4573-b13d-f4b944a5abee" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F7XqGFiDZ3Mjm7ARnrlQp%2FBatch%20Generation%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=a622d293-631b-4cc4-858c-1f6a46f6d01d" alt=""></picture><figcaption><p>Batch Generation interface showing uploaded file details and Replace option.</p></figcaption></figure>
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FJ5zOtLwBpQk4DQFEtNYH%2FBatch%20Generation%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=78a679c8-1e1f-4573-b13d-f4b944a5abee" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F7XqGFiDZ3Mjm7ARnrlQp%2FBatch%20Generation%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=a622d293-631b-4cc4-858c-1f6a46f6d01d" alt=""></picture><figcaption></figcaption></figure>
+8. Select **Start batch generation** to begin. A progress list shows the batch status. You can continue using Ideogram while the generation runs.
+9. When processing completes, you’ll receive a notification confirming that the batch is complete.
 
-7. Click **Start batch generation** to begin generating the images. The status and progress will appear in a list below. Since the process may take some time, you can continue using Ideogram or come back later. A notification will be sent once the generation is complete.
-
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FzJtUChe2gqK8LyTCx1pl%2FBatch%20Generation%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=e6a14456-bec1-4628-a7be-c6c81f3cb100" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FlHSEVKAAxuKHU0RRVCLC%2FBatch%20Generation%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=464523ed-5370-40b5-a8e5-2fa00a2ed89a" alt="" width="563"></picture><figcaption><p>The notification message when the Batch Generation is complete.</p></figcaption></figure>
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FzJtUChe2gqK8LyTCx1pl%2FBatch%20Generation%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=e6a14456-bec1-4628-a7be-c6c81f3cb100" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FlHSEVKAAxuKHU0RRVCLC%2FBatch%20Generation%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=464523ed-5370-40b5-a8e5-2fa00a2ed89a" alt="" width="563"></picture><figcaption><p>Notification shown when Batch Generation completes successfully.</p></figcaption></figure>
 
 {% hint style="info" %}
-You can stop the generation at any time by clicking the Stop icon at the right end of the status row. If you have a batch that was stopped before being completed, you can resume it by clicking the "Resume" button. You can also download the images that were already generated in the process by clicking the "Download" button. The images will be downloaded as a compressed .zip file.
+To stop a running batch, select the **Stop** icon at the end of the status row.\
+Later, select **Resume** to continue or **Download** to save all images as a compressed **ZIP** file.
 {% endhint %}
 
 <figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FWg9RUVWmoRxhVebEVPRA%2FBatch%20%E2%80%93%20Stop%20-%20Dark%402x.webp?alt=media&#x26;token=0d138f8a-4f79-46a6-99e4-f0d6db541206" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FIWdp1vT5DT9m1kNvO2mv%2FBatch%20%E2%80%93%20Stop%20-%20Light%402x.webp?alt=media&#x26;token=a54d5020-314a-4834-8967-ba27cfe2fa0c" alt=""></picture><figcaption></figcaption></figure>
 
-8. Once the process is complete, you can download all generated images by clicking the **Download** icon at the right end of the status row. The images will be downloaded as a compressed .zip file. There should be 4 images generated for every row in the CSV file.\\
+11. When the process completes, select the **Download** icon at the right end of the status row to get all images as a **ZIP** file.
 
-   Alternatively, you can view all the generated images in the Creations section of the website.
+Alternatively, you can view all generated images in the **Creations** page.
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FtGg61yIKYADOEZY6ukt0%2FBatch%20Generation%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=33e85c08-dced-4676-b29c-1e10d1d1d94e" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FFjxwbN9lGrrBZWYQpAD5%2FBatch%20Generation%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=430ba5f5-4679-420a-a4df-7960d59fee84" alt=""></picture><figcaption><p>The download icon is located at the right end of the status row.</p></figcaption></figure>
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FtGg61yIKYADOEZY6ukt0%2FBatch%20Generation%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=33e85c08-dced-4676-b29c-1e10d1d1d94e" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FFjxwbN9lGrrBZWYQpAD5%2FBatch%20Generation%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=430ba5f5-4679-420a-a4df-7960d59fee84" alt=""></picture><figcaption><p>The <strong>Download</strong> icon is located at the right end of the status row.</p></figcaption></figure>
 
 ## Expected Values
 
-The expected values are shown below:
+The table below lists all recognized column names, valid inputs, and default settings for Batch Generation.
 
-<table><thead><tr><th width="150.58203125">Column</th><th width="463.984375">Expected values</th><th>Default value</th></tr></thead><tbody><tr><td>prompt</td><td>Any text  <mark style="color:red;">*</mark><em><mark style="color:red;">Required</mark></em></td><td></td></tr><tr><td>visibility</td><td><code>public</code>, <code>private</code>  <mark style="color:red;">*</mark><em><mark style="color:red;">Required</mark></em></td><td></td></tr><tr><td>aspect_ratio</td><td>Pre-defined aspect ratio, ex.: <code>16:9</code>. <br>See <a href="../../generation-settings/aspect-ratios-and-resolutions#defaults-aspect-ratios-and-sizes">Aspect Ratios</a> </td><td><code>1:1</code></td></tr><tr><td>magic_prompt</td><td><code>on</code>, <code>off</code></td><td><code>on</code></td></tr><tr><td>model</td><td><code>3.0</code>, <code>2.0</code>, <code>2a</code>, <code>1.0</code></td><td><code>2.0</code></td></tr><tr><td>num_images</td><td>Any whole number from <code>1</code> to <code>4</code></td><td><code>4</code></td></tr><tr><td>seed_number</td><td>Any whole number from <code>0</code> to <code>2147483647</code></td><td></td></tr><tr><td>rendering</td><td><code>default</code>, <code>turbo</code>, <code>quality</code></td><td><code>default</code></td></tr><tr><td>negative_prompt</td><td>Any keywords separated by commas</td><td></td></tr><tr><td>style</td><td><p>3.0: <code>auto</code>, <code>general</code>, <code>realistic</code>, <code>design</code></p><p>2.0: <code>auto</code>, <code>general</code>, <code>realistic</code>, <code>design</code>, <code>3d</code>, <code>anime</code><br>1.0: <em>Same as 2.0. Write v1.0 keywords in the prompt.</em></p></td><td><code>auto</code></td></tr><tr><td>color_palette</td><td><p><em>*Only for model 2.0 and higher</em></p><p></p><p>Up to 5 hexadecimal RGB values separated with spaces. Ex.: <code>#CBA324 #F86C14 #C71E71</code></p><p></p><p>or any pre-defined <a href="../generation-settings/color-palette">Color palette</a> name:<br><code>ember</code>, <code>fresh</code>, <code>jungle</code>, <code>magic</code>, <code>melon</code>, <code>mosaic</code>, <code>pastel</code>, <code>ultramarine</code></p></td><td></td></tr></tbody></table>
+<table><thead><tr><th width="150.58203125">Column</th><th width="463.984375">Valid values</th><th>Default</th></tr></thead><tbody><tr><td><code>prompt</code></td><td>Any text  <mark style="color:red;">*</mark><em><mark style="color:red;">Required</mark></em></td><td>—</td></tr><tr><td><code>visibility</code></td><td><code>public</code>, <code>private</code>  <mark style="color:red;">*</mark><em><mark style="color:red;">Required</mark></em></td><td>—</td></tr><tr><td><code>aspect_ratio</code></td><td>Predefined aspect ratio, (e.g., <code>16:9</code>). See <a href="../../generation-settings/aspect-ratio-and-dimensions#defaults-aspect-ratios-and-sizes">Aspect Ratios</a></td><td><code>1:1</code></td></tr><tr><td><code>magic_prompt</code></td><td><code>on</code>, <code>off</code></td><td><code>on</code></td></tr><tr><td><code>model</code></td><td><code>3.0</code>, <code>2.0</code>, <code>2a</code>, <code>1.0</code></td><td><code>2.0</code></td></tr><tr><td><code>num_images</code></td><td>Any whole number from <code>1</code> to <code>4</code></td><td><code>4</code></td></tr><tr><td><code>seed_number</code></td><td>Any whole number from <code>0</code> to <code>2147483647</code></td><td>—</td></tr><tr><td><code>rendering</code></td><td><code>default</code>, <code>turbo</code>, <code>quality</code></td><td><code>default</code></td></tr><tr><td><code>negative_prompt</code></td><td>Any keywords separated by commas</td><td>—</td></tr><tr><td><code>style</code></td><td><p>3.0: <code>auto</code>, <code>general</code>, <code>realistic</code>, <code>design</code> </p><p>2.0: <code>auto</code>, <code>general</code>, <code>realistic</code>, <code>design</code>, <code>3d</code>, <code>anime</code>    <br><br><br>1.0: <em>Same as 2.0. Use v1.0 keywords in the prompt.</em></p></td><td><code>auto</code></td></tr><tr><td><code>color_palette</code></td><td><p>Up to five (5) hexadecimal RGB values separated with spaces. Ex.: <code>#CBA324 #F86C14 #C71E71</code></p><p></p><p>or any preset <a href="../generation-settings/color-palette">Color palette</a> name:<br><code>ember</code>, <code>fresh</code>, <code>jungle</code>, <code>magic</code>, <code>melon</code>, <code>mosaic</code>, <code>pastel</code>, <code>ultramarine</code></p><p></p><p>Only available in <strong>Model 2.0</strong> or later.</p></td><td>—</td></tr></tbody></table>
 
-If there is a defined default value for a specific column, this value will automatically be applied if nothing is entered.
-
-## Useful Tips
+If a column includes a defined default, that value is applied automatically when no entry is provided.
 
 {% hint style="info" %}
 
-1. If you are seeing a general "Sorry, something went wrong" error when uploading your CSV file, try saving your file in the CSV UTF-8 (comma delimited) format.
-2. Make sure the names in the header row (first row) are entered exactly as in the template file or as described above. Do not change the capitalization.
-3. The capitalization of words (except the header row) does not matter.
-4. The order of the columns does not matter.
-5. When editing the file, make sure the cells are in text format. The automatic formatting might interfere with writing some values. For example, entering a new aspect ratio might be interpreted as a date/time format, causing the value to be rewritten and invalidated. For instance, 2:3 might be rewritten as 2:03.
-   {% endhint %}
+## Formatting Tips
 
-## Combining Ideogram Batch Generation With Other AI Tools
+* Re-save your file as `CSV UTF-8 (comma-delimited)` if a **“Sorry, something went wrong”** error appears.
+* Ensure all column headers match the template exactly (case-sensitive).
+* The order of columns is flexible.
+* In Excel, format cells **as Text** to avoid unwanted conversions (e.g., `2:3` → date).
+  {% endhint %}
 
-Did you know that you can combine the power of Ideogram Batch Generation with other AI tools to efficiently iterate and inspire new design concepts?
+## Combining *Batch Generation* with Other AI Tools
 
-Here’s an example:
+You can pair Batch Generation with external tools like ChatGPT to automatically fill your CSV with creative prompts.
 
-#### Goal: Generate a variety of Christmas stickers.
+**Example workflow:**
 
-Let’s pretend you want to create nice-looking Christmas sticker designs. We will use ChatGPT in this example.
+1. Download the CSV template from the Batch Generation page.
+2. Provide that template to ChatGPT and ask it to fill a CSV file following the same structure.
+3. Include instructions such as:
+   * Design goal
+   * Example prompts that worked well for you
+   * Desired settings (*aspect ratio*, *visibility*, *model*, *style*, *rendering*)
+4. Upload the ChatGPT-generated CSV file to Ideogram to create all images automatically.
 
-1. Download a CSV template file from the Batch Generation page.
-2. Ask ChatGPT to produce a CSV file following the same structure.
-3. Provide instructions to ChatGPT, including:
-   1. A clear design task.
-   2. A few effective prompt examples that work for you.
-   3. The settings you want/need (the other column values).
-4. Upload the template to ChatGPT along with your instructions (see the example below).
-5. Download the CSV file generated by ChatGPT.
-6. Upload it to the Batch Generation page. Ideogram will handle the rest.
+For instance, here’s a simplified ChatGPT instruction:
 
-Here’s an example of what can be sent to ChatGPT as instructions:
+{% code overflow="wrap" fullWidth="false" %}
 
-<pre data-overflow="wrap" data-full-width="false"><code>Task: Generate a CSV file with 20 prompts following the template of the provided CSV file.
-<strong>
-</strong><strong>Context: The prompts will be used to create sticker designs for the Christmas Holidays. Ensure the prompts are diverse, creative, and engaging.
-</strong>
+```
+Task: Generate a CSV file with 20 prompts following the template of the provided CSV file.
+
+Context: The prompts will be used to create sticker designs for the Christmas Holidays. Ensure the prompts are diverse, creative, and engaging.
+
 Settings: Use 1:1 aspect ratio, set visibility to private, model to 2.0, rendering to "default", magic prompt to "on" and use "design" as style.
 
 Please follow the language style of the following examples:
@@ -3449,317 +3537,719 @@ Please follow the language style of the following examples:
 
 6- A vibrant, retro-inspired sticker with bold white outlines. The motivational phrase "NEVER GIVE UP!" is written in a dynamic, flowing cursive font reminiscent of 1950s Americana signage. The text has a subtle neon glow. The phrase is surrounded by playful, abstract shapes and vintage-inspired patterns. The overall design is bright, cheerful, and evokes energy and optimism.
 
-</code></pre>
+```
 
-Here are some of the resulting images for this example:
+{% endcode %}
+
+Here are some results showing Christmas sticker designs generated via Batch + ChatGPT workflow.
 
 <div><figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FNN6X3Nmp5HsGLbLbs3Sa%2F0016_4_a-sticker-design-of-a-cheerful-santa-cla_vGcBcowbTYm2RyjQECbEVA_azoXyMmuQVmLlRZnOaUiog.png?alt=media&#x26;token=7f29b64c-b6e0-4a96-a583-2e7acc2cc592" alt=""><figcaption></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FSEldxJKbwlk9oSq6yAop%2F0007_4_a-sticker-design-of-a-sleigh-filled-with_d3TmMb-aSku89AdkRIu0Xg_zSBmHGwiTt6G84dy275c2w_cover.png?alt=media&#x26;token=7834d10d-b2e6-4521-a962-8658868c8545" alt=""><figcaption></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Ffh1Q0UnPnCkcVFt7TJC4%2F0004_4_a-sticker-design-of-a-whimsical-christma_obdGyJaxTvyBCiRL_mVFpQ_v1t_Zv7OTEKwZBMPjYfvIw_cover.png?alt=media&#x26;token=e09df7c5-5415-446f-beef-ebfa183ce606" alt=""><figcaption></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fkk5fCvNhx5v65z2oiKzw%2F0003_4_a-sticker-design-of-a-joyful-puppy-weari_e4ENPhHMRtKqSEW89XsT5g_uUMoGRJIQLqvh3YyBW-Xfw_cover.png?alt=media&#x26;token=dee30029-95a1-4a82-b12e-cd31e5d98704" alt=""><figcaption></figcaption></figure></div>
 
-You can find more powerful examples and other information in our blog post [here](https://about.ideogram.ai/batch).
+For other advanced use cases, see the [Batch Generaion](https://about.ideogram.ai/batch) blog post.
 
 
 # Describe
 
-Describe is a powerful feature that allows you to detail the content of an image, whether it is uploaded or generated by Ideogram. This feature is particularly useful when you want to determine the kind of wording that could be used in a prompt to generate a similar image.
+The Describe feature analyzes any image — uploaded[^1] or generated — and produces a detailed text description. Use it to understand how Ideogram interprets visual elements and to identify the type of prompt wording that would recreate a similar result.
 
 ## How to Access the Feature
 
-1. **When viewing images in feeds.**
+You can access Describe in several ways:
 
-While browsing images in any section, hover on an image and click on the "More" icon <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3Ks1Q3ZANIcb52iR6lgs%2FCleanShot%202024-07-18%20at%2016.45.56%402x.png?alt=media&#x26;token=548d57b2-b767-419d-9107-63c173c74315" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FQuB5iS76grJZgzrCRuSw%2Fimage.png?alt=media&#x26;token=b3eb6ffc-e838-4dde-924e-e3c7943405f6" alt="" data-size="line"></picture> located at the bottom right of the image and select Describe.
+1. From image feeds *(Home and Creations pages)* –\
+   Hover over any image in the [Image Gallery](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/image-gallery), select the **More** icon <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FPYS9T78uhmDmuEqNWvcb%2FMore%20-%20White%2020px.svg?alt=media&#x26;token=cba9b268-f5f2-4895-bef0-fa43e5ae3724" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FqhNBoUUnrp0grTzHJonA%2FMore%20-%20Black%2020px.svg?alt=media&#x26;token=dee426ba-09fe-4735-bdd3-81c5ecb71035" alt=""></picture> at the top of the image, and choose **Describe** from the [More menu](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/more-menu-...).
+2. From image details –\
+   In the [Details Panel](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/details-panel), select the **Describe** button.\
+   Alternatively, select the **More** icon <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FPYS9T78uhmDmuEqNWvcb%2FMore%20-%20White%2020px.svg?alt=media&#x26;token=cba9b268-f5f2-4895-bef0-fa43e5ae3724" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FqhNBoUUnrp0grTzHJonA%2FMore%20-%20Black%2020px.svg?alt=media&#x26;token=dee426ba-09fe-4735-bdd3-81c5ecb71035" alt=""></picture> in the upper-right corner and choose **Describe** from the More menu.
+3. When [importing an image](https://docs.ideogram.ai/ui-overview/ui-components/prompt-box#importing-an-image) into the [Prompt Box](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/prompt-box) –\
+   In the popup window, select **Describe** to generate an automatic description.
+4. When using [Remix](https://docs.ideogram.ai/using-ideogram/features-and-tools/remix) or [Character Reference](https://docs.ideogram.ai/using-ideogram/features-and-tools/reference-features/character-reference) –\
+   Click the Remix or Character Reference thumbnail at the bottom of the Prompt Box, then select **Describe** from the dropdown.
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FWEQjePS41gEuvDlfk4h0%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=b7b5955b-1be3-4f59-b061-70d3d0b24030" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FgdNpYyhPuz48kisPWb1i%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=df4385bb-f9ee-4d2f-9433-a16565491065" alt="" width="248"></picture><figcaption></figcaption></figure>
+<div><figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FcpU28XwfAXOGURcOMgnS%2FPB%20-%20Remix%20Thumb%20Dropdown%20-%20Dark.png?alt=media&#x26;token=16365405-e2dc-4d87-8998-5419f55f541b" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FXTr1kB6GjpyEmsLz4npT%2FPB%20-%20Remix%20Thumb%20Dropdown%20-%20Light.png?alt=media&#x26;token=eacd8f63-4d73-4e09-944e-1c7caa8388ca" alt="Remix dropdown" width="220"></picture><figcaption><p>Remix dropdown.</p></figcaption></figure> <figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FmRFOOS6JgYWzWMJ2oaCA%2FPB%20-%20Character%20Thumb%20Dropdown%20-%20Dark.png?alt=media&#x26;token=59f36c25-4498-413e-bc83-667072f1273b" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FB0h6dobi9JVBe4by3h1Z%2FPB%20-%20Character%20Thumb%20Dropdown%20-%20Light.png?alt=media&#x26;token=132c1268-3cbe-4600-a145-4d385f825aa9" alt="Character Reference dropdown" width="220"></picture><figcaption><p>Character Reference dropdown.</p></figcaption></figure></div>
 
-2. **When viewing an image in details.**
-
-When viewing an image in details, click the Describe butto . Alternatively, click on the "More" icon <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3Ks1Q3ZANIcb52iR6lgs%2FCleanShot%202024-07-18%20at%2016.45.56%402x.png?alt=media&#x26;token=548d57b2-b767-419d-9107-63c173c74315" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FQuB5iS76grJZgzrCRuSw%2Fimage.png?alt=media&#x26;token=b3eb6ffc-e838-4dde-924e-e3c7943405f6" alt="" data-size="line"></picture> in the upper right corner.
-
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F8Qr3rMmgRNTN052RWMM8%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=4f2a8ef0-589c-4770-bec0-f68785f69924" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fg9r4U9nxrwJoGxcyf61Q%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=731c669a-31a2-416c-b51e-887906fcefa6" alt="" width="370"></picture><figcaption></figcaption></figure>
-
-3. **When using Remix on an image.**
-
-When remixing an image, click the **Remix** tab at the bottom of the prompt box, hover your mouse on the image, then click on the **Describe** icon <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FI9C5cWpFvSdluOTbFIoD%2FCleanShot%202024-07-19%20at%2007.24.27%402x.png?alt=media&#x26;token=e761bb57-2b13-463a-9d8d-1be03154d2df" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fgwb9RCnLriJTEabKqTFg%2Fimage.png?alt=media&#x26;token=e5e4ebe6-e41d-467c-a6f0-9bd449a2d93e" alt="" data-size="line"></picture> in the popup menu.
-
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FT84DnCjshSnX75Hx9Zbg%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=1d77eb02-0d05-47c5-81ad-d1f2286cb31d" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Ft6IA8RijS3nqkP2f6ZTj%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=bb923f96-b0f6-4833-ac5f-57cf228011af" alt="" width="375"></picture><figcaption></figcaption></figure>
-
-4. **When uploading or pasting an image in the prompt box.**
-
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FFMgof9FxGH1cbzZ77aDx%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=4786c553-94eb-4a04-8b94-d9765ed10add" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FwB1Yr51DQgki1bq7uKFT%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=3aa268b6-ef17-495e-b033-6caa0227a866" alt="" width="375"></picture><figcaption></figcaption></figure>
+***
 
 ## Examples of Descriptions
 
-When you activate the Describe function, the AI will analyze your image and generate a suitable prompt that describes the content of the submitted image.
+When you activate **Describe**, Ideogram analyzes your image and generates a prompt that describes its visual content.
 
-Below are examples of real photographs where the Describe function was used, and Ideogram’s AI was asked to generate the corresponding images **without** using the [Remix](https://docs.ideogram.ai/using-ideogram/features-and-tools/remix) or [Magic Prompt](https://docs.ideogram.ai/using-ideogram/generation-settings/magic-prompt) features.&#x20;
+{% hint style="info" %}
+
+## Tips
+
+The description output depends on the **Model version** you selected.
+
+* **Model version 3.0** produces more detailed and slightly longer prompts.
+* **Model versions 2.0**, **2a**, and **1.0** return shorter, simpler descriptions.
+
+If the result isn’t what you expected, crop or zoom in on your image using the [Editor](https://docs.ideogram.ai/canvas-and-editing/editor). Adjusting the framing can generate a different prompt and improve the results.
+{% endhint %}
+
+The following examples show how Describe converts real photos into text prompts. Each prompt was then used to generate new images, **without** [Remix](https://docs.ideogram.ai/using-ideogram/features-and-tools/remix) or [Magic Prompt](https://docs.ideogram.ai/using-ideogram/generation-settings/magic-prompt) enabled.
 
 <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FRWTMdPCrShqpJsgqIR2l%2Fimage.png?alt=media&#x26;token=805829cd-ed37-46ce-8e09-8361dea5c854" alt=""><figcaption><p>Original photo.</p></figcaption></figure>
 
-#### **Prompt from Describe v3.0:**
+> **Prompt from Describe v3.0:**
+>
+> *A close-up photograph of an American Goldfinch perched on a dark brown tree branch. The bird has vibrant yellow plumage on its head, back, and wings, with distinctive black and white wing bars. The goldfinch's beak is bright orange-yellow, and its eye is dark and alert. The bird is positioned facing right, gripping the rough-textured branch with its feet. In the background, there are green leaves visible, slightly out of focus, creating a natural bokeh effect. The lighting is bright and natural, highlighting the bird's bright yellow feathers. The composition is sharp and detailed, with the goldfinch positioned in the left two-thirds of the frame. The background has a blue-green tint, suggesting a summer or late spring setting.*
 
-A close-up photograph of an American Goldfinch perched on a dark brown tree branch. The bird has vibrant yellow plumage on its head, back, and wings, with distinctive black and white wing bars. The goldfinch's beak is bright orange-yellow, and its eye is dark and alert. The bird is positioned facing right, gripping the rough-textured branch with its feet. In the background, there are green leaves visible, slightly out of focus, creating a natural bokeh effect. The lighting is bright and natural, highlighting the bird's bright yellow feathers. The composition is sharp and detailed, with the goldfinch positioned in the left two-thirds of the frame. The background has a blue-green tint, suggesting a summer or late spring setting.
+> **Prompt from Describe v2.0:**
+>
+> *A vibrant yellow bird perched on a slender brown branch. The bird has black and white markings on its wings and tail. The backdrop consists of green leaves, suggesting that the bird is in a tree. The blue sky forms the upper portion of the image, providing a serene backdrop to the bird's bright plumage.*
 
-#### **Prompt from Describe v2.0:**
+<div><figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FdfxnhLDJtK0YM3Qhnj5t%2Fimage.png?alt=media&#x26;token=75df9720-dd69-4550-b108-773b6abec8eb" alt=""><figcaption><p>Generated with v3.0, Realistic style, using Describe 3.0.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F8Y1ucZ7zIxakYQUcPRJc%2Fimage.png?alt=media&#x26;token=92c88dec-3ff2-43cc-92e9-daf0577d96c6" alt=""><figcaption><p>Generated with v2.0, Realistic style, using Describe 3.0.</p></figcaption></figure></div>
 
-A vibrant yellow bird perched on a slender brown branch. The bird has black and white markings on its wings and tail. The backdrop consists of green leaves, suggesting that the bird is in a tree. The blue sky forms the upper portion of the image, providing a serene backdrop to the bird's bright plumage.
-
-<div><figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FdfxnhLDJtK0YM3Qhnj5t%2Fimage.png?alt=media&#x26;token=75df9720-dd69-4550-b108-773b6abec8eb" alt=""><figcaption><p>Image generated with v3.0, Realistic style, using Describe 3.0.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F8Y1ucZ7zIxakYQUcPRJc%2Fimage.png?alt=media&#x26;token=92c88dec-3ff2-43cc-92e9-daf0577d96c6" alt=""><figcaption><p>Image generated with v2.0, Realistic style, using Describe 3.0.</p></figcaption></figure></div>
-
-<div><figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FDvZI1cSltJaR2cnjau8r%2Fimage.png?alt=media&#x26;token=df6dc029-59c5-4562-ad89-49f195b7d4b8" alt=""><figcaption><p>Image generated with v3.0, Realistic style, using Describe 2.0.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fcb2vZ91ChwR8WRv5x6n2%2Fimage.png?alt=media&#x26;token=51ea49fe-c6c8-4f38-9eae-eecdabfc2805" alt=""><figcaption><p>Image generated with v2.0, Realistic style, using Describe 2.0.</p></figcaption></figure></div>
+<div><figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FDvZI1cSltJaR2cnjau8r%2Fimage.png?alt=media&#x26;token=df6dc029-59c5-4562-ad89-49f195b7d4b8" alt=""><figcaption><p>Generated with v3.0, Realistic style, using Describe 2.0.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fcb2vZ91ChwR8WRv5x6n2%2Fimage.png?alt=media&#x26;token=51ea49fe-c6c8-4f38-9eae-eecdabfc2805" alt=""><figcaption><p>Generated with v2.0, Realistic style, using Describe 2.0.</p></figcaption></figure></div>
 
 ***
 
 <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FOcWgUKppRLfGNb32GMK2%2Fimage.png?alt=media&#x26;token=46e46758-8ed6-4572-a26f-6868397b98dd" alt=""><figcaption><p>Original drone photo.</p></figcaption></figure>
 
-#### **Prompt from Describe v3.0:**
+> **Prompt from Describe v3.0:**
+>
+> *An aerial photograph of a small town during autumn, captured from a high drone perspective. The main road runs through the center of the image, a two-lane asphalt road with yellow center lines. The town is nestled between dense forested hills covered in vibrant fall foliage featuring orange, yellow, and red leaves. The buildings are predominantly white and gray residential homes with pitched roofs, scattered along both sides of the main road. A large body of water, a lake, is visible on the right side of the image, with dark blue water and a rocky shoreline. The sky is bright blue with wispy white cirrus clouds stretching across it. The landscape shows a mix of deciduous and evergreen trees, with the foliage displaying various shades of autumn colors. The terrain rises from the town toward the hills in the background. The image has natural lighting from a clear day, creating strong contrast between the bright foliage and the deep blue sky. The photograph captures the entire town layout, from the dense residential area to the waterfront, showing the natural integration between the town and its surrounding natural landscape.*
 
-An aerial photograph of a small town during autumn, captured from a high drone perspective. The main road runs through the center of the image, a two-lane asphalt road with yellow center lines. The town is nestled between dense forested hills covered in vibrant fall foliage featuring orange, yellow, and red leaves. The buildings are predominantly white and gray residential homes with pitched roofs, scattered along both sides of the main road. A large body of water, a lake, is visible on the right side of the image, with dark blue water and a rocky shoreline. The sky is bright blue with wispy white cirrus clouds stretching across it. The landscape shows a mix of deciduous and evergreen trees, with the foliage displaying various shades of autumn colors. The terrain rises from the town toward the hills in the background. The image has natural lighting from a clear day, creating strong contrast between the bright foliage and the deep blue sky. The photograph captures the entire town layout, from the dense residential area to the waterfront, showing the natural integration
-
-#### **Prompt from Describe v2.0:**
-
-A picturesque town nestled between a dense forest and a serene lake. The town is characterized by a main road that runs through it, flanked by houses on both sides. The houses vary in size and color, with some having red roofs. The forest is ablaze with autumn colors, ranging from golden yellows to fiery reds and deep oranges. In the background, majestic mountains rise, partially obscured by the mist. The sky above is clear with a few wispy clouds, suggesting a bright and sunny day.
+> **Prompt from Describe v2.0:**
+>
+> *A picturesque town nestled between a dense forest and a serene lake. The town is characterized by a main road that runs through it, flanked by houses on both sides. The houses vary in size and color, with some having red roofs. The forest is ablaze with autumn colors, ranging from golden yellows to fiery reds and deep oranges. In the background, majestic mountains rise, partially obscured by the mist. The sky above is clear with a few wispy clouds, suggesting a bright and sunny day.*
 
 <div><figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FmRIk8kSEPpEKszoEFyfu%2Fimage.png?alt=media&#x26;token=57603668-9e96-44c5-8038-db355b00efb1" alt=""><figcaption><p>Image generated with v3.0, General style, using Describe 3.0.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FT80RaQn9389S0nhnlE1u%2Fimage.png?alt=media&#x26;token=f6c40648-bde7-43cc-b887-bed11e7332ba" alt=""><figcaption><p>Image generated with v2.0, General style, using Describe 3.0.</p></figcaption></figure></div>
 
 <div><figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FWqzvmVURWPdOo9M3CX2u%2Fimage.png?alt=media&#x26;token=c1b2fa78-f75c-4377-b250-a95d17194eb7" alt=""><figcaption><p>Image generated with v3.0, General style, using Describe 2.0.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FaZxpYCM3ZoWqUBDohQlM%2Fimage.png?alt=media&#x26;token=a42450a0-dc35-4c7b-8234-2bc61533eab6" alt=""><figcaption><p>Image generated with v2.0, General style, using Describe 2.0.</p></figcaption></figure></div>
 
-{% hint style="info" %}
+{% hint style="warning" %}
+**Note:** The Describe feature is available to all users and supports images generated or uploaded through Ideogram. A **Plus Plan** or higher is required to upload an image.
+{% endhint %}
 
-1. Describe will give you a different result depending on which model version you previously selected. Version 3.0 will generate a more detailed and slightly longer prompt, while versions 2.0, 2a, and 1.0 will all produce the exact same slightly shorter description.
-2. If the result you get from Describe doesn’t meet your expectations, try using the [Editor](https://docs.ideogram.ai/canvas-and-editing/editor) to crop your original image to a different [aspect ratio](https://docs.ideogram.ai/using-ideogram/generation-settings/aspect-ratios-and-resolutions) or zoom in on the main subject. This may generate a slightly different prompt that could lead to a better image.
-   {% endhint %}
+[^1]: You need a **Plus Plan** or higher to upload images.
+
+
+# Reference Features
+
+
+# Character Reference
+
+Creating visually consistent characters across multiple images has long been a challenge in AI image generation—until now.&#x20;
+
+With Character Reference, you can define and reuse distinctive characters so that facial features, hairstyles, and other key traits remain consistent from one image to the next.
+
+This feature gives you greater creative control and continuity, whether you’re illustrating a story or  exploring different settings with the same character.
+
+Once defined, your characters can be customized and reused with new prompts, helping you build cohesive image series quickly.
+
+In the sections below, you’ll learn how to create, manage, and use Character References effectively, along with tips for combining them with other features such as [Remix](https://docs.ideogram.ai/using-ideogram/features-and-tools/remix) and [Magic Fill](https://docs.ideogram.ai/canvas-and-editing/canvas/magic-fill).
+
+## Accessing Character Reference
+
+### From the Prompt Box
+
+Click or tap inside the [Prompt Box](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/prompt-box) to reveal the option bar (if it isn’t already visible). Then select the **Character** button to open a popup where you can access your existing Character References or create a new one.
+
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FRHcmXz2h1OCwhdorEtjb%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=7ab392b1-b349-4dbc-baca-46c4db611f50" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F0lhQZyJpdNvvk5D18bnz%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=226aff5a-177b-4958-8122-236d6d37cd34" alt="Popup showing your Character References."></picture><figcaption><p>Popup showing your Character References.</p></figcaption></figure>
+
+If you select an existing character, its thumbnail appears in one of two locations depending on context. In standard views, it appears below your prompt in the Prompt Box. On the Character Page, the thumbnail appears larger at the top left of the Prompt Box.
+
+<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FN9BYxfb0NOFN6lxkpMkM%2FPB%20-%20Character%20Image%20-%20Light.png?alt=media&#x26;token=a126aee5-7aba-44ae-8dcf-0de96e211f87" alt="Character thumbnail in the Prompt Box."><figcaption><p>Character thumbnail in the Prompt Box.</p></figcaption></figure>
+
+Selecting **New Character** opens the dedicated **Character** page, where you can define and manage your custom Character References.
+
+### From Other Locations
+
+You can also access the Character feature from several other locations:
+
+1. Select the **Character** icon <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FdlePgI9eRA6RqsV4doHb%2FCharacter%20-%20Dark%2020px.svg?alt=media&#x26;token=b5c1859d-f143-4ae3-9e3a-82ab5e37c316" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FgzasJUhVATpQJ3SwqjR8%2FCharacter%20-%20Light%2020px.svg?alt=media&#x26;token=90d20bb9-31dc-48a0-9c89-e0b2dca2b1af" alt="Character icon"></picture> on the [Navigation Bar](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/navigation-bar) to open the Character page.
+2. Click or tap the **Character** button in the [Details Panel](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/details-panel) when viewing a single image to use that image as a Character Reference.
+3. Click the **More** icon  <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FPYS9T78uhmDmuEqNWvcb%2FMore%20-%20White%2020px.svg?alt=media&#x26;token=cba9b268-f5f2-4895-bef0-fa43e5ae3724" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FqhNBoUUnrp0grTzHJonA%2FMore%20-%20Black%2020px.svg?alt=media&#x26;token=dee426ba-09fe-4735-bdd3-81c5ecb71035" alt="More icon"></picture>  while hovering over an image in the [Image Gallery](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/image-gallery), then choose **Character** from the [More menu](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/more-menu-...).
+
+## How to Use a Character Reference
+
+### Create or Choose a Character
+
+On the Character page, click or tap the **New Character** button in the upper-right corner to create a new Character Reference.
+
+You can add an image as a Character Reference in one of three ways:
+
+1. **Camera** — This enables you to take a picture with your device/computer and use it as a character reference. You may need to authorize your browser or app to access your camera.
+2. **Upload** — Browse images from your device or computer and upload one.
+3. **Creations** — Browse your creations on Ideogram and select one as a reference.
+
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fakp2008wU14N6qMcMUw6%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=e46636bb-5b75-428d-8efd-460eb7bfc1bb" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FHKt7GiXbrD2pnDZmqvWI%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=b16d26da-4259-4314-86a5-0e129c030984" alt="Options to add a Character Reference using Camera, Upload, or Creations." width="563"></picture><figcaption><p>Options to add a Character Reference using Camera, Upload, or Creations.</p></figcaption></figure>
+
+Alternatively, you can select an existing *Character Reference*.
+
+Your selected image appears in the top-left corner of the *Prompt Box*.
+
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F7gttFbaADKgznMlatC6d%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=1bd4b8e7-9694-435c-bf49-45b151872951" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FLYyY57A1ZxLiz37dxNpd%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=1f928a0a-5cf4-4948-923a-c62c9ad3ad0e" alt=""></picture><figcaption><p>*Prompt Box on the Character Page showing a selected Character Reference.*</p></figcaption></figure>
+
+{% hint style="success" %}
+**Tip:** A portrait-style image with a clear, well-lit face (preferably at a slight angle) yields the best results.
+{% endhint %}
+
+#### When on the Home Page
+
+If a Character Reference is active in the [Prompt Box](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/prompt-box), selecting on it will display two buttons:
+
+* **Describe** — Activates the Describe function, which adds a description of the image to the Prompt Box.
+* **Edit Mask** — Opens the mask editor, allowing you to modify how the AI interprets the selected Character Reference. (See [How Masking Works](#how-masking-works) below for details.)
+
+Selecting the **X** icon removes the Character Reference from the Prompt Box.
+
+#### When on the Character Page
+
+Hovering over the Character thumbnail at the top of the prompt box will reveal the **More** Icon  <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FPYS9T78uhmDmuEqNWvcb%2FMore%20-%20White%2020px.svg?alt=media&#x26;token=cba9b268-f5f2-4895-bef0-fa43e5ae3724" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FqhNBoUUnrp0grTzHJonA%2FMore%20-%20Black%2020px.svg?alt=media&#x26;token=dee426ba-09fe-4735-bdd3-81c5ecb71035" alt="More icon"></picture>  and clicking on it will give you two options:
+
+* **Edit character mask** — Opens the mask editor so you can adjust which areas of the image are used by the AI.
+* **Remove image** — Deletes the image from the Character Reference. Once removed, <mark style="background-color:$danger;">the reference will no longer have an associated image</mark>. You can select or upload a new one to replace it.
+
+Alternatively, selecting the image itself opens the Edit Character Mask function directly.
+
+### Personalizing Your Character
+
+Now that you’ve selected a Character Reference image, follow these steps to generate an image with it:
+
+1. Choose how you want to describe the image to be generated:
+   * **Write a prompt** that details your character and background, or
+   * **Choose a template** from the available predefined options for a quick start.\
+     (Templates appear below the Prompt Box on the Character Page. You can reopen them by selecting the **Templates** button next to **Generate**.)
+2. Select a **Style**:
+   * **Auto** — Automatically selects the optimal style based on your prompt.
+   * **Realistic** — Creates lifelike photography with natural colors, textures, and lighting.
+   * **Fiction** — Creates imaginative characters with artistic variation.
+
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FnBA8Pc5TBVZMfaCwupwv%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=023d83c2-c1f4-4a61-80a2-f32c54c5134f" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FZP8txgJCW6csYOtgcZq0%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=12a70bb6-3087-47b6-9256-9412c063d6ac" alt="Style selection interface showing Auto, Realistic, and Fiction options." width="509"></picture><figcaption><p>Style selection interface showing Auto, Realistic, and Fiction options.</p></figcaption></figure>
+
+3. Apply the other generation options such as **Public/Private**, **Aspect Ratio**, and others, except:
+   1. **Unavailable options**: *Color Palette, Negative Prompt, Seed Number.*
+   2. Any previously selected Style Reference is disabled when using a Character Reference.
+4. Once ready, click **Generate** to create your image.
+
+Here are a few examples:
+
+<div><figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FgwCzC8ujTAiZElzftzYb%2FChar%20demo%201a.png?alt=media&#x26;token=cf729718-4574-45e9-9634-c02a5c3f0ce0" alt=""><figcaption><p>Original image.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fu67Hf6zqMsDEv7ZvkOwP%2FChar%20demo%201b.png?alt=media&#x26;token=d702392f-fd83-4852-aa05-dfd4fc564b0d" alt=""><figcaption><p>Generated with the Fiction style.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FudiQI2xj0SXIDYBQGLhA%2Fa-candid-photo-of-a-woman-enjoying-a-lei__tlhAxhBRIaTNlArsoNMvg_ekuVCcRmQgSOa9sL4kv-Zg.png?alt=media&#x26;token=306f7dec-f281-46f2-8048-267a31eb983d" alt=""><figcaption><p>Generated with the Realistic style.</p></figcaption></figure></div>
+
+## How Masking Works
+
+When you select an image as a Character Reference, the AI automatically identifies and masks the face and hair from that image.
+
+You can adjust the mask to refine results—for example, to modify a character’s hairstyle or preserve accessories.
+
+For instance, consider the following prompt:
+
+> *A woman with vibrant blue pixie-cut hair.*
+
+With the default mask, the generated image doesn’t fully reflect the requested hairstyle, only a small color overlay appears on the original hair.
+
+<div><figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FidbSGEHTPD8zEQOSBZ5X%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=2015ccc5-7000-4f37-b277-d8e1a5d4ba82" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FxtGwXaCiLj1T6iiwTwWn%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=992a0cbc-9542-4177-93ad-b0cfe0281516" alt="Default mask highlighting the face and hair." width="563"></picture><figcaption><p>Default mask highlighting the face and hair.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fi2OKi15TSspTVDNTvYdD%2Fpixie-1.png?alt=media&#x26;token=4c03c230-62c7-42be-b182-a6714562484e" alt="Generated image using the default mask." width="563"><figcaption><p>Generated image using the default mask.</p></figcaption></figure></div>
+
+By erasing the hair area from the default mask, the AI can replace the hairstyle and apply a consistent color more effectively.
+
+<div><figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FQEUSBmRezBAofsT02vFk%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=acf24912-02a4-4ae1-b487-c70c72991018" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FpE7HS5o2OQdy5Of1Ihfy%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=91c1ac94-2790-4a00-8cf8-a5f4227a5a68" alt="Modified mask excluding hair." width="563"></picture><figcaption><p>Modified mask excluding hair.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F0LxhhyvF4WelQGmKGMNA%2Fpixie-2.png?alt=media&#x26;token=1ba0ed7a-90a1-4a1b-9025-8ad5ab195805" alt="Result showing new hairstyle with uniform color." width="563"><figcaption><p>Result showing new hairstyle with uniform color.</p></figcaption></figure></div>
+
+Conversely, you can preserve more of the original image to maintain specific details, such as a hat, jewelry, or other distinctive elements.
+
+Consider the following prompt:
+
+> *A woman wearing a red ruby pendant and a red evening gown.*
+
+With the default AI mask, the generated image doesn’t preserve the look of the pendant and generates one with a different appearance.
+
+<div><figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FkH1kzdhpTAz8qZJWSixR%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=5b5c1982-5f48-4d36-8740-9bcb171fbf4e" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FPGG2cUE9aP1fDOUEuYTA%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=11e7bbe1-d61c-48bd-897d-cdbbad4008bc" alt="Default mask excluding pendant area." width="563"></picture><figcaption><p>Default mask excluding pendant area.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F0pIG5Y81ifM79rckdL47%2FCharacter%20Reference%20%E2%80%93%20Pendant%201.png?alt=media&#x26;token=0614e3ac-6f06-4b00-bdcb-32900726a75a" alt="Generated image showing altered pendant design." width="563"><figcaption><p>Generated image showing altered pendant design.</p></figcaption></figure></div>
+
+By editing the default mask to include the pendant, the generated image successfully preserved the pendant’s original appearance.
+
+<div><figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FLQyow4sHGSGo0bgFkoMj%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=1242f459-d80b-4edd-946b-082ddda721fe" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F1tGvkJDkUSyOd6pcJqdm%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=298585fc-a52e-497e-9b0e-9158a953b4f2" alt="Modified mask including pendant." width="563"></picture><figcaption><p>Modified mask including pendant.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F8Q0mc2beeHFZpwQ4sE7A%2FCharacter%20Reference%20%E2%80%93%20Pendant%202.png?alt=media&#x26;token=2c948b33-c34b-4943-9e1d-0693c458a4b6" alt="Generated image with original pendant preserved." width="563"><figcaption><p>Generated image with original pendant preserved.</p></figcaption></figure></div>
+
+{% hint style="info" %}
+**Tip:** Use the mask editor to fine-tune which details the AI preserves or replaces. Small adjustments often lead to noticeably improved results.
+{% endhint %}
+
+## Using a Character Reference with Other Features
+
+While Character Reference is a powerful feature on its own, combining it with tools like [Magic Fill](https://docs.ideogram.ai/canvas-and-editing/canvas/magic-fill) and [Remix](https://docs.ideogram.ai/using-ideogram/features-and-tools/remix) allows you to create exactly the image you have in mind.
+
+For example, you might already have generated an image that meets most of your requirements. However, the image may not fully match your vision. Below are two methods you can use, depending on your needs.
+
+### Using Remix
+
+To preserve the overall composition and environment of the original image, Remix is an excellent solution. Here’s how:
+
+1. Select the image you want to remix, then click **Remix** in the right-side panel.
+2. In the Prompt Box, click the **Character** tab to access existing Character References or create a new one.
+3. Provide a detailed prompt describing the character’s physical appearance and the environment.
+4. Adjust the image weight for the remixed image (usually between 60–80; some experimentation may be needed to find the optimal value).
+5. Set the other options to your liking. It’s recommended to turn Magic Prompt **Off** to preserve the intended character and environment.
+6. Click **Remix** to generate the images.
+
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F4M0LP3aocRGoZSl7phFv%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=95813550-169f-473b-a2e7-11afff051fdf" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FxPJWbB7IgI1Wu7CL2M1z%2FCharacter%20Reference%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=0f376446-5181-4292-9ae6-7dfd32aef8c2" alt=""></picture><figcaption></figcaption></figure>
+
+<div><figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FPdPhBwl4SeIhaRiSDwJf%2FCharacter%20Remix%201.png?alt=media&#x26;token=29cd864d-a865-4ab1-8aac-80ccc3271323" alt=""><figcaption><p>Image to Remix.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FdrXDjTLr67JktbroZEHr%2FCharacter%20Remix%202.png?alt=media&#x26;token=850f9d0b-387b-4c4f-9b34-fd9a4dc7dd2c" alt=""><figcaption><p>Character reference.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F7WgBvHOoqwKI7n7nfzq0%2FCharacter%20Remix%203.png?alt=media&#x26;token=40c86834-9887-4675-b8d8-c842ae9fadf3" alt=""><figcaption><p>Result using Remix.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F2n1ilw4uljmzWiny8xgv%2FCharacter%20Remix%204.png?alt=media&#x26;token=f52ce7a3-cf4e-4333-96db-afbadaf87f78" alt=""><figcaption><p>Result with prompt only.</p></figcaption></figure></div>
+
+### Using Magic Fill
+
+If you need to preserve as much of the background and environment as possible, Magic Fill can be an excellent solution. There are many ways to proceed, here’s one of them:
+
+1. Select the original image where you want to change the character.
+2. Click **Open** in Canvas in the [Details Panel](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/details-panel).
+3. Select the **Magic Fill** icon in the Left Sidebar.
+4. Mask the area of the character you want to replace.
+5. Click or tap **Next**.
+6. Click **Character** at the bottom of the Prompt Box.
+7. Select or create a Character Reference.
+8. Write a detailed prompt describing the new character’s physical features and the environment.
+9. Click **Magic Fill** to generate the images.
+
+<div><figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FPdPhBwl4SeIhaRiSDwJf%2FCharacter%20Remix%201.png?alt=media&#x26;token=29cd864d-a865-4ab1-8aac-80ccc3271323" alt="" width="563"><figcaption><p>Original image.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fbh9RgeIlUa1o9m0fIenN%2FA%20medium%20close-up%20photo%20of%20a%20man%20drinking%20beer%20in%E2%80%A6%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=d69d3347-ea21-416c-b19b-57b9dede7846" alt="" width="563"><figcaption><p>Magic Fill mask, Character and prompt.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F2r2HGySEYmvwzVddqvCw%2FCharacter%20Canvas%203.png?alt=media&#x26;token=6ba11fd2-8a36-45de-930a-4de4ea8cdc32" alt="" width="563"><figcaption><p>Result of Character and Magic Fill.</p></figcaption></figure></div>
+
+{% hint style="info" %}
+See [Remix](https://docs.ideogram.ai/using-ideogram/features-and-tools/remix) and [Magic Fill](https://docs.ideogram.ai/canvas-and-editing/canvas/magic-fill) to learn more about how to use each feature.
+{% endhint %}
+
+
+# Style Reference
+
+The Style Reference feature helps you create visually consistent and appealing images from a prompt. Choose from a curated library of ready‑made styles, or upload up to three reference images to design your own custom style. Reuse your styles anytime to keep your creations cohesive and polished.
+
+## Using Style Reference
+
+To generate an image with a selected Style:
+
+1. Click or tap inside the [Prompt Box](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/prompt-box) to reveal the option bar (if not already visible).&#x20;
+2. Select **Style** to open the Styles popup.\
+   (v3.0 models only. See [Styles in Older Models](https://docs.ideogram.ai/using-ideogram/features-and-tools/reference-features/style-reference/styles-in-older-models) for older models.)
+3. Select one of the available options (see details below).
+4. Enter your prompt and adjust any generation settings as needed.
+5. Click or tap **Generate**.
+
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3D94yymz9vX5rdziK8hy%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=2af12cfc-0d44-448b-a7ca-1a555ad946b2" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FlcENI00ND1U1H0FbQOCz%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=f55145b5-fcc5-459b-89a3-a6e7e5e7b743" alt="Styles popup showing Explore, Recents, My styles, and available modes"></picture><figcaption><p>The Styles popup showing the available options.</p></figcaption></figure>
+
+### Available Modes
+
+* **Auto** – Automatically selects the most suitable style based on your prompt.
+* **General** – A flexible mode suitable for most uses, including artistic and abstract work.
+* **Realistic** – Produces lifelike photography with authentic colors, textures, and lighting.
+* **Design** – Ideal for clean, vector-style images such as logos, posters, and other design assets.
+
+{% hint style="warning" %}
+**Warning:** The **Random** mode is **deprecated** and no longer available.
+{% endhint %}
+
+#### While Using a Character Reference
+
+If a [Character Reference](https://docs.ideogram.ai/using-ideogram/features-and-tools/reference-features/character-reference) is present in the [Prompt Box](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/prompt-box), the available modes adapt automatically. The selected Mode applies to the next generated image and incorporates the active Character Reference:
+
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FY7CqxALNEOFoqEAZuGYQ%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=fcc673b6-a99d-43bf-b05d-f8f32047a913" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FxpmyiNK91j0w1eAB3MLN%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=d31cacba-f3d1-49ab-9326-a2f4d6a496e0" alt="Modes available when a Character Reference is active."></picture><figcaption><p>Modes available when a Character Reference is active.</p></figcaption></figure>
+
+* **Auto** – Automatically determines the most suitable rendering style based on your prompt and the referenced character.
+* **Realistic** – Generates lifelike results, preserving the character’s facial features, colors, and textures as faithfully as possible.
+* **Fiction** – Interprets the character creatively, blending stylized elements while keeping key traits recognizable.
+
+### Style Presets
+
+The following preset options are always available, regardless of whether you are generating normally or using a Character Reference.
+
+* **Explore** – Select a style from a curated library of popular aesthetics.
+* **Recents** – Reuse a style from your most recently used styles.
+* **My styles** – Choose one of your custom styles.
+* **Quick reference** – Upload or select up to three images to define a **temporary custom style** that will not be saved.
+
+### Examples
+
+These examples show how different style presets reimagine Grant Wood’s *American Gothic* using the same prompt.
+
+> **Prompt:**
+>
+> *A stern couple in front of a white church with a Gothic-style window. The woman wears a brown polka-dotted dress with a white lace collar and a large brown brooch, while the man holds a pitchfork and wears a black suit with a light blue shirt, white collar, and round wire-rimmed glasses. The church's white exterior features vertical siding, and the background includes green trees and a red barn.*
+
+The following images show the output produced by a few preset styles.
+
+<div><figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FHaW2GRznEUssePW0R15a%2FAbstract%20Organic%202.png?alt=media&#x26;token=2b5d6502-c235-4583-9b1b-94fdd50f4e59" alt=""><figcaption><p>Abstract Organic.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FLqEHjJk1DBvr7GXWpx47%2FAnalog%20Nostalgia%202.png?alt=media&#x26;token=1f9ef99d-92c7-4eb5-972d-e8002314a1dc" alt=""><figcaption><p>Analog Nostalgia.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FAYJmYXEdp7BZGoYVBdkL%2FChildren&#x27;s%20Book%202.png?alt=media&#x26;token=98030d47-ec21-40ba-b90d-a87b4a07766b" alt=""><figcaption><p>Children's Book.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FXTDX8w7B32SLVdALoico%2FGolden%20Hour2.png?alt=media&#x26;token=63bd1b5f-0c08-4738-8ee0-aa04d4f0e42c" alt=""><figcaption><p>Golden Hour.</p></figcaption></figure></div>
+
+{% hint style="success" %}
+
+### Tips & Tricks
+
+#### To generate the best images using Styles:
+
+* **Turn** Magic Prompt **off** to avoid unintended stylistic additions to your original prompt.
+* **Avoid** adding **style-related keywords** in your prompt, especially those that may conflict with the selected style.
+* Short, focused prompts usually yield the best results.
+  {% endhint %}
+
+### Creating Your Own Style
+
+In addition to using preset styles, you can also create your own custom styles to achieve a personalized aesthetic.
+
+How to create a style:
+
+1. Select **Style** in the *Prompt Box*.
+2. Open the **My styles** tab.
+3. Select **Create new style**.
+4. Upload or choose **up to three images** as visual references for your style.
+5. Name your style.
+6. Click or tap **Create**.
+
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FXt2jfUTagZxFmZM9B5Xb%2FUntitled%20Aug%2020%20204%20PM%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=9bdea57c-68a2-45be-aa2b-3e4df4ef007c" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FpUBvumQW1wmJuNZOW3Ph%2FUntitled%20Aug%2020%20204%20PM%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=8b5c6473-0741-4746-8b00-db8442b78736" alt="" width="375"></picture><figcaption></figcaption></figure>
+
+Your custom style appears under **My styles** and can be reused in any prompt.
+
+{% hint style="success" %}
+
+### Tips & Tricks
+
+#### **Selecting the best images for custom styles:**
+
+* **For a strong, unified style:** Choose images that share a similar look, mood, aesthetic, and composition.
+* **For creative, unexpected results:** Mix diverse references to let the AI blend aesthetics and produce surprising outcomes.
+* **Using gradients to control color:** Upload a gradient-based image as one of your three references to influence the overall tone.
+  {% endhint %}
+
+{% hint style="warning" %}
+The reference images for your custom styles **cannot be changed after creation**. This ensures that anyone who uses your style in the future will see consistent results based on the images you originally uploaded.
+{% endhint %}
+
+## Combine Style Reference With Other Features
+
+Style Reference integrates seamlessly with other Ideogram features to expand creative possibilities:
+
+* [Describe](https://docs.ideogram.ai/using-ideogram/features-and-tools/describe) – Generate prompts from existing images and apply a style.
+* [Remix](#remix) – Reimagine existing images with a chosen style.
+* [Character Reference](https://docs.ideogram.ai/using-ideogram/features-and-tools/reference-features/character-reference) – Maintain a consistent subject across different aesthetics.
+* [Color Palette](https://docs.ideogram.ai/using-ideogram/generation-settings/color-palette) – Match your prompt to a specific mood or tone.
+
+### Describe + Style Reference
+
+Use Describe to generate detailed text prompts from existing images, then apply a style to create a new version.
+
+{% hint style="success" %}
+Remove any stylistic keywords from Describe results for cleaner, more controlled outputs.
+{% endhint %}
+
+Example using the image below:&#x20;
+
+<div align="center"><figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FfleZYHu1wg2HK6Hcsz0h%2FGuitarist%20original.png?alt=media&#x26;token=bb026913-ded1-401b-9991-b4413d33944a" alt="" width="375"><figcaption><p>Original image.</p></figcaption></figure></div>
+
+> **Original Describe prompt:**
+>
+> A dynamic ~~indoor photograph~~ of a young man playing an electric guitar with intense emotion. The musician wears a <mark style="color:green;">burgundy red</mark> hoodie and <mark style="color:green;">light blue</mark> jeans, displaying an enthusiastic expression with eyes closed and mouth open in a passionate singing pose. He holds a <mark style="color:green;">cream-colored</mark> Fender electric guitar with a <mark style="color:green;">black</mark> pickguard. The setting features a <mark style="color:green;">dark green</mark> wall with two black and white framed photographs visible in the background. A <mark style="color:green;">brown</mark> leather couch is partially visible in the lower portion of the frame. ~~The lighting creates a warm, indoor atmosphere, highlighting the musician's features and the guitar's cream finish. The composition captures a moment of musical expression, with the subject positioned slightly left of center in the frame.~~
+
+Stylistic words and sentences shown with ~~strikethrough~~ were removed or replaced to optimize how the AI interprets and applies styles. Additionally, any words highlighted in <mark style="color:green;">green</mark> — which indicated the colors of elements in the image — have also been removed.
+
+> **Adjusted Describe prompt:**
+>
+> A dynamic image of a young man playing an electric guitar with intense emotion. The musician wears a hoodie and jeans, displaying an enthusiastic expression with eyes closed and mouth open in a passionate singing pose. He holds a Fender electric guitar with a pickguard. The setting features a wall with two black and white framed photographs visible in the background. A leather couch is partially visible in the lower portion of the frame.
+
+The images below show how different styles reinterpret the adjusted prompt.
+
+<div><figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FX6kkVStsMXLH7hCNussA%2FGuitarist%20-%20C4D%20Cartoon.png?alt=media&#x26;token=65c9705f-c60c-4148-ba8a-6c70ddf2aaa6" alt=""><figcaption><p>Style: C4D Cartoon.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FiRvu0BGOmN4Z8bQeqqiE%2FGuitarist%20-%20Coloring%20Book%20I.png?alt=media&#x26;token=4ffd49fa-0f70-41fe-9762-1e5ce389f360" alt=""><figcaption><p>Style: Coloring Book I.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FWWtTDfn9ur56kpcXgO1i%2FGuitarist%20-%20Nightlife.png?alt=media&#x26;token=5c908f89-c77b-4f1d-b2e9-154a42d62fd1" alt=""><figcaption><p>Style: Nightlife.</p></figcaption></figure></div>
+
+### Remix + Style Reference
+
+Add a Style Reference to [Remix](https://docs.ideogram.ai/using-ideogram/features-and-tools/remix) to refresh existing images while preserving their structure. This method usually matches the composition better than using Describe alone.
+
+* **Higher Remix weight** → Keeps composition closer to the original image.
+* **Lower Remix weight** → Produces results more influenced by the selected style.
+
+The example below uses Remix at 60% with the same original image and adjusted Describe prompt:
+
+<div><figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FfleZYHu1wg2HK6Hcsz0h%2FGuitarist%20original.png?alt=media&#x26;token=bb026913-ded1-401b-9991-b4413d33944a" alt=""><figcaption><p>Original image.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FOAw5JOsEkU1bB3mPsuoN%2FGuitarist%20-%2080s%20Illustration%20-%20Remix%2060.png?alt=media&#x26;token=a4ae4f56-58ad-4d3e-8a59-34d51605eaa2" alt=""><figcaption><p>Style: 80s Illustration - Remix at 60%.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FMopzC9GOL4LXyFQ4jIAV%2FGuitariste%20-%20Avant%20Garde%20-%20Remix%2060.png?alt=media&#x26;token=35eae76e-0009-48a7-a6dd-33620896c757" alt=""><figcaption><p>Style: Avant Garde - Remix at 60%.</p></figcaption></figure></div>
+
+### Character Reference + Style Reference
+
+Combine a Character Reference with Style Reference to maintain a consistent subject across multiple images while exploring different aesthetics. Perfect for creating variations while maintaining consistency.
+
+The following example shows how combining a character reference with different styles affects the final output.
+
+<div><figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FYEiB3w9wMPmUzI2tLWlC%2FGuitarist%20-%20Character.png?alt=media&#x26;token=4d86382c-c8eb-4928-837f-75ed21f95cdb" alt=""><figcaption><p>Character Reference.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F2m9YPVgBKInEQaTeakwB%2FMixed%20media.png?alt=media&#x26;token=24c97361-b0b4-428f-a0eb-557cc28e5dbf" alt=""><figcaption><p>Style: Mixed Media.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F72ZZFLwhbTLFoKG57nmE%2FGuitarist%20-%20Monochrome.png?alt=media&#x26;token=26a76238-8895-42d8-9097-1661a5dd161c" alt=""><figcaption><p>Style: Monochrome.</p></figcaption></figure></div>
+
+### Color Palette + Style Reference
+
+Use them together to influence the overall tone and mood of your image. When a [Color Palette](https://docs.ideogram.ai/using-ideogram/generation-settings/color-palette) is applied, the selected colors are incorporated while maintaining the style’s visual identity.
+
+The images below show how different color palettes influence a single style. The selected palette appears in the lower-left corner of each image.
+
+<div><figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3KzcFd5vOBVoz22sAN6u%2FGuitarist%20-%20Original%20colors.png?alt=media&#x26;token=f7607314-19f6-4665-98e5-89864534a2e8" alt=""><figcaption><p>Style: Analog Nostalgia</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FSdF5aPyvgFstlM8fozY2%2FGuitarist%20-%20Pastel%20colors.png?alt=media&#x26;token=b4ca6794-8e46-4149-a7c9-915733a81c10" alt=""><figcaption><p>Analog Nostalgia — Pastel.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FBSzML0fiuHjbONZyCA62%2FGuitarist%20-%20Aquamarine%20colors.png?alt=media&#x26;token=74de8659-5860-429f-a308-5b0ed4d259b1" alt=""><figcaption><p>Analog Nostalgia — Aquamarine.</p></figcaption></figure></div>
+
+{% hint style="info" %}
+**Tip:** For the best results, choose palettes that enhance, rather than compete with, the style’s dominant tones.
+{% endhint %}
+
+
+# Styles in Older Models
+
+Older Ideogram models (versions 1.0, 2.0, and 2a) use styles differently from Model 3.0. This page explains how Style work in these earlier models and how they affect your prompts.
+
+## Styles in Version 2.0 and 2a
+
+To access the Style options:
+
+* Click or tap inside the [Prompt Box](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/prompt-box) to reveal the option bar (if not already visible).&#x20;
+* Select **Style** to open the dropdown.
+
+The examples below compare the Style options available in versions 2.0/2a and 1.0 as they vary depending on the model you select
+
+<div><figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3jEWRwzL4qNYGfXz9480%2FPB%20v3%20-%20Style%20%2B%20Ref%20v2.0%20-%20Dark%402x.png?alt=media&#x26;token=e2ae2850-a619-49e8-b630-b3e0fd4f1698" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FQhUmzHme2WuV2IUTRdvY%2FPB%20v3%20-%20Style%20%2B%20Ref%20v2.0%20-%20Light%402x.png?alt=media&#x26;token=a845e2c8-d940-4062-9aab-67177b50933e" alt=""></picture><figcaption><p>Styles available in version 2.0 and 2a.</p></figcaption></figure> <figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FPX3tTdkn8ROFrgFq2Rks%2FPB%20v3%20-%20Style%20%2B%20Ref%20v1.0%20-%20Dark%402x.png?alt=media&#x26;token=b71b832f-a1df-4c58-9052-e095681020a2" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F9lbH6PvHfV60Xrvt4Qw3%2FPB%20v3%20-%20Style%20%2B%20Ref%20v1.0%20-%20Light%402x.png?alt=media&#x26;token=b377e47c-a6e9-41c4-81a5-601260f8b17c" alt=""></picture><figcaption><p>Styles available in version 1.0.</p></figcaption></figure></div>
+
+The styles available in version 2.0 and 2a are specialized AI models and do not add any extra text to your prompt, unlike styles in version 1.0.
+
+Here are the available styles:
+
+* **Auto**, **General**, **Realistic** and **Design** are just like their counterparts in [Version 3.0](https://docs.ideogram.ai/using-ideogram/features-and-tools/reference-features/style-reference/..#available-modes).
+* **3D** – Generates characters, objects, and other creations with a 3D visual look.
+* **Anime** – Creates images and characters inspired by anime-style artwork.
+
+### Example Styles in 2.0
+
+Here are some examples of the 2.0 styles.
+
+> **Prompt:**
+>
+> Portrait of a fireman.
+
+<table data-view="cards"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FKGG1KQupsPCKVcZgwmSI%2Fimage.png?alt=media&#x26;token=c68b3153-9868-44b3-a578-4f253267c676" alt="" data-size="original"></td><td>Style: General</td><td></td></tr><tr><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FmlCFQEpEq5CgBWOySyon%2Fimage.png?alt=media&#x26;token=1a457b9e-7b4b-4c4c-b8a0-86ee3aa99c29" alt="" data-size="original"></td><td>Style: Realistic</td><td></td></tr><tr><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3CZaufwNkQAJ4ftfezMn%2Fimage.png?alt=media&#x26;token=08d14310-f66a-4754-8d72-14f7cdcfc43b" alt="" data-size="original"></td><td>Style: Design</td><td></td></tr><tr><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FU7NoahfnRc8zTSmaynZH%2Fimage.png?alt=media&#x26;token=c30fd246-2688-4d08-8212-951e7cf6357e" alt="" data-size="original"></td><td>Style: 3D</td><td></td></tr><tr><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FDTRQSfgudU7t9fVY5yY4%2Fimage.png?alt=media&#x26;token=bd709693-1932-4a88-b234-7afb6b288c12" alt="" data-size="original"></td><td>Style: Anime</td><td></td></tr></tbody></table>
+
+{% hint style="info" %}
+**Pro tip**: Experiment with the same prompt in different Styles. Each one can produce distinct and sometimes unexpected results, even when it was not originally designed for your use case.
+{% endhint %}
+
+***
+
+## Styles in Version 1.0
+
+In version 1.0, using a style adds the corresponding keywords to the end of your prompt just before the image is generated. This helps the AI understand the type of image you want.
+
+Select a Style to apply it. You can select and apply multiple Styles at once.
+
+### Example Styles in 1.0
+
+<table data-view="cards"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td>3d render</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Ff10qSNI7EeFN6b7xnXmm%2Fimage.png?alt=media&#x26;token=e019ef2b-bcd6-4d92-b919-cc410210a3aa" alt="" data-size="original"></td><td>Prompt:<br>A fireman</td></tr><tr><td>Anime</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FSnUZDvGwAizkrkFNcaTx%2Fimage.png?alt=media&#x26;token=4f0a2f54-05eb-4238-85af-da9a53a8bda4" alt="" data-size="original"></td><td>Prompt:<br>A fireman</td></tr><tr><td>Architecture</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F0R3Q6b9okl5Vdx3EtzLe%2Fimage.png?alt=media&#x26;token=cf6f0c1c-f0c6-4dc2-aad1-cde26c433208" alt="" data-size="original"></td><td>Prompt:<br>A fire station</td></tr><tr><td>Cinematic</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FHOXkkqVSxMPosxNBkryR%2Fimage.png?alt=media&#x26;token=3812c203-1f4f-4a00-ba75-c716576ddf1a" alt="" data-size="original"></td><td>Prompt:<br>A fireman</td></tr><tr><td>Conceptual Art</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fb3SgTEUtePmOOvatb0jR%2Fimage.png?alt=media&#x26;token=5edd3ba0-c9d1-419a-b581-0166425dea2a" alt="" data-size="original"></td><td>Prompt:<br>A fireman</td></tr><tr><td>Dark Fantasy</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FgcegeUtlyD4LTAhydZA9%2Fimage.png?alt=media&#x26;token=de2c3c29-0d64-429c-b5de-064c1684d420" alt="" data-size="original"></td><td>Prompt:<br>A fireman</td></tr><tr><td>Fashion</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FHIYMMR4ZtObjJSvYw0FZ%2Fimage.png?alt=media&#x26;token=5a2ab6f9-8f99-42d7-b307-e7d6c19e68c8" alt="" data-size="original"></td><td>Prompt:<br>A fireman</td></tr><tr><td>Graffiti</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FqNIJTREtvBcGkhuiqlME%2Fimage.png?alt=media&#x26;token=ad177874-0fd1-4002-87f8-2b8acdd3d392" alt="" data-size="original"></td><td>Prompt:<br>A fireman</td></tr><tr><td>Illustration</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fk95gjiHUSweLQC9vhkeV%2Fimage.png?alt=media&#x26;token=ebf57197-4911-4d58-a096-5a65d17110fa" alt="" data-size="original"></td><td>Prompt:<br>A fireman</td></tr><tr><td>Painting</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FdNCTQZe8Y7RNzwpZqST2%2Fimage.png?alt=media&#x26;token=a6c56b09-b741-4b0f-ad4f-044a6c394971" alt="" data-size="original"></td><td>Prompt:<br>A fire truck</td></tr><tr><td>Photo</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FTY2vcisCBFe1vRomXWqe%2Fimage.png?alt=media&#x26;token=9fe29718-c3a4-43da-a015-3a01990cb488" alt="" data-size="original"></td><td>Prompt:<br>A fireman</td></tr><tr><td>Portrait photography</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FQJzwuhsQ3o7N4osiXvIQ%2Fimage.png?alt=media&#x26;token=9deea93b-a62a-46fd-b21f-85661f470eec" alt="" data-size="original"></td><td>Prompt:<br>A fireman</td></tr><tr><td>Poster</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fxsscfw42acbvBtsIbIUq%2Fimage.png?alt=media&#x26;token=d21a1e65-860b-4acd-ab3f-ef1c369c2f18" alt="" data-size="original"></td><td>Prompt:<br>A fireman</td></tr><tr><td>Product</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FwU8FJOjeNBO87Pa0ait3%2Fimage.png?alt=media&#x26;token=6083e7bb-597a-43ed-95da-dfa75885a095" alt="" data-size="original"></td><td>Prompt:<br>A fire truck</td></tr><tr><td>Typography</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FNB94pJLGAtVjFe1pt1RP%2Fimage.png?alt=media&#x26;token=7624f000-c1ca-4e57-91d0-b04188b58cdf" alt="" data-size="original"></td><td>Prompt:<br>A fire truck</td></tr><tr><td>Ukiyo-e</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FLFIhZWtEi4VzmVbwZI9V%2Fimage.png?alt=media&#x26;token=0fbacf1f-153b-4383-ab85-8f19a8744f63" alt="" data-size="original"></td><td>Prompt:<br>A fireman</td></tr><tr><td>Vibrant</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FH0CihB1EXRyV9ITBD3FS%2Fimage.png?alt=media&#x26;token=b98b59de-9859-468e-8f23-a6f559f99b3b" alt="" data-size="original"></td><td>Prompt:<br>A fireman</td></tr><tr><td>Wildlife Photography</td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FtT0eJOWVp9qkQuJMX6i4%2Fimage.png?alt=media&#x26;token=66d1aa44-2d52-47a4-8bd0-89e8b5e88c0a" alt="" data-size="original"></td><td>Prompt:<br>A fire truck</td></tr></tbody></table>
 
 
 # Remix
 
-The **Remix** tool is invaluable for making changes to an existing image, whether it was generated in Ideogram or uploaded. The AI uses the original image as a basis to generate a new one, allowing you to control how much influence the original image has on the final result.
+The Remix tool lets you modify an existing image, whether it was generated in Ideogram or uploaded. The AI uses the original image as a base for the new one, letting you control how much it influences the final result.
 
 ## How to Use Remix
 
-When viewing or uploading an image, you can access the Remix feature in different ways:
+You can access Remix in several ways:
 
-* Click the **Remix** button in the image details panel when viewing an image.
-* When browsing images, hover the cursor over the image and click the **More** icon <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3Ks1Q3ZANIcb52iR6lgs%2FCleanShot%202024-07-18%20at%2016.45.56%402x.png?alt=media&#x26;token=548d57b2-b767-419d-9107-63c173c74315" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FQv2bkEyP7H3Ox3wbdrXJ%2Fimage.png?alt=media&#x26;token=ddf39952-d74d-4c02-854d-3bbb2ebf5637" alt="" data-size="line"></picture> and select **Remix** from the popup menu.
+1. **From image feeds** (Home and Creations pages) –\
+   Hover over any image in the [Image Gallery](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/image-gallery), select the **More** icon <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FPYS9T78uhmDmuEqNWvcb%2FMore%20-%20White%2020px.svg?alt=media&#x26;token=cba9b268-f5f2-4895-bef0-fa43e5ae3724" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FqhNBoUUnrp0grTzHJonA%2FMore%20-%20Black%2020px.svg?alt=media&#x26;token=dee426ba-09fe-4735-bdd3-81c5ecb71035" alt=""></picture> at the top of the image, and choose **Remix** from the [More menu](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/more-menu-...).
+2. **From image details** –\
+   In the [Details Panel](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/details-panel), select the **Remix** button.\
+   Alternatively, select the **More** icon <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FPYS9T78uhmDmuEqNWvcb%2FMore%20-%20White%2020px.svg?alt=media&#x26;token=cba9b268-f5f2-4895-bef0-fa43e5ae3724" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FqhNBoUUnrp0grTzHJonA%2FMore%20-%20Black%2020px.svg?alt=media&#x26;token=dee426ba-09fe-4735-bdd3-81c5ecb71035" alt=""></picture> in the upper-right corner and choose **Remix** from the More menu.
+3. **When importing an image into the** [Prompt Box](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/prompt-box) –\
+   In the popup window, select **Remix** to use the feature on that image.
 
-<div><figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FAOd7qIXRfmeRwkY4W04z%2FRemix%20-%20Ideogram%20Documentation%20-%20Light%20Dark%402x.png?alt=media&#x26;token=69f53e7a-aeb0-46ff-90a5-9e153134abf3" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FAxD4Etlu3sLXJhZeqBTa%2FRemix%20-%20Ideogram%20Documentation%20-%20Light%20Dark%402x.png?alt=media&#x26;token=e139170f-422f-4f66-8aa7-093495c7ec24" alt="" width="370"></picture><figcaption><p>Remix location in the image details panel. </p></figcaption></figure> <figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FHgWCNr0sTBdqfX5TxzTZ%2FBrowsing%20-%20More%20Menu%20-%20Dark%402x.png?alt=media&#x26;token=9b42faa6-47d1-4561-ae5e-a4069be9e89e" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F52oBSGA6O3ZFuFxwDKbJ%2FBrowsing%20-%20More%20Menu%20-%20Light%402x.png?alt=media&#x26;token=b209ae3a-1c53-4f0a-ac40-b241927594aa" alt="" width="248"></picture><figcaption><p>Remix location in the More menu.</p></figcaption></figure></div>
+When using Remix, the original prompt — or the auto-generated description from an uploaded image — automatically fills the Prompt Box. The parent image’s [Aspect Ratio](https://docs.ideogram.ai/using-ideogram/generation-settings/aspect-ratio-and-dimensions) (or the closest available ratio) is applied automatically.
 
-When using **Remix**, the prompt used to generate the **parent image** or the automatically generated description from the **Describe** function of an uploaded image will automatically populate the prompt box. Additionally, any style tags or other settings from the parent image will be reused. You can modify these elements to adjust and refine the parent image when generating the remixed image.
+You can edit the prompt and settings, except for the aspect rati&#x6F;*.*\
+To change it, use the [Editor](https://docs.ideogram.ai/canvas-and-editing/editor) to crop, resize, or adjust the image before launching Remix.
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FXVfenS5UYNPBRoI6JGBQ%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=47eccd22-9f9b-4c48-8bc2-40ae8ae78473" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F6w142k6bdCQelIVDbCBm%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=f16992b8-8100-40f3-b537-e2171c5cac30" alt=""></picture><figcaption><p>Remixing an image will add the parent image as the basis for generating the next image.</p></figcaption></figure>
+## Adjusting the Strength
 
-**Remix** allows you to specify how much influence, or **Image weight**, the parent image should have on the newly generated image. Clink on the Remix tab in the prompt box to reveal the available options. You can adjust this weight by moving the **Image weight** slider left or right. Alternatively, you can manually enter a value ranging from 1 to 100. The higher the value, the more significantly the parent image will influence the generated images. You also have the option to remove the parent image entirely, relying solely on the prompt and style tags to create a new image, just like a normal image generation.
+Remix lets you control how much influence (called **Strength**) the parent image has on the new one.\
+Click the **Remix** thumbnail in the [Prompt Box](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/prompt-box) to open its options.
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FmUPxzwA3nbnZsDiX6dqq%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=0309effa-2347-44dd-aef2-7d919e6d2563" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FT9OmLXMF4emYko5fTizm%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=40040c2b-07a9-43ba-a10a-7df2101012d2" alt="" width="361"></picture><figcaption><p>The image weight slider.</p></figcaption></figure>
+* Use the **Strength** slider or enter a value between 1 and 100.
+* Higher values make the new image closer to the original.
+* Set the **Strength** to 0 to remove the parent image entirely and generate a new one based only on the prompt and style tags.
+
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FcpU28XwfAXOGURcOMgnS%2FPB%20-%20Remix%20Thumb%20Dropdown%20-%20Dark.png?alt=media&#x26;token=16365405-e2dc-4d87-8998-5419f55f541b" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FXTr1kB6GjpyEmsLz4npT%2FPB%20-%20Remix%20Thumb%20Dropdown%20-%20Light.png?alt=media&#x26;token=eacd8f63-4d73-4e09-944e-1c7caa8388ca" alt="Remix tab in the Prompt Box" width="220"></picture><figcaption><p>Remix tab in the Prompt Box.</p></figcaption></figure>
+
+To remove the parent image from the Prompt Box, hover over the Remix thumbnail and select the "X" icon in its top-right corner.
 
 
-# Replace/Remove Background
+# Replace or Remove Background
 
-The **Replace/Remove background** feature lets you easily isolate the main subject of an image by removing or changing its background.
+The Replace Background or Remove Background features let you isolate the main subject of an image by either removing the existing background or replacing it with a new one.
 
 This feature is available to all paid plans:
 
-* **Remove background** makes the background transparent, leaving only the main subject. This is free (no credits used).
-* **Replace background** generates a new background based on your prompt. This uses credits, depending on:
+* **Remove Background** makes the background transparent, leaving only the main subject. This is free (no credits used).
+* **Replace Background** generates a new background based on your prompt. This uses credits, depending on:
   * The **Model** you selected.
   * The **Number of images** generated.
-  * The **Render speed.**
+  * The **Render Speed.**
 
-## **How to Access Replace/Remove Background**
+## How to Access the Feature
 
-There are a few different ways to access the **Replace/Remove background:**
+You can access Replace or Remove Background in several ways:
 
-1. When viewing an image in detail, click the **Replace bg** button or the dropdown arrow to access **Remove bg**.
-2. When browsing images, click the More menu <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3Ks1Q3ZANIcb52iR6lgs%2FCleanShot%202024-07-18%20at%2016.45.56%402x.png?alt=media&#x26;token=548d57b2-b767-419d-9107-63c173c74315" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FASmJIf2Iinfih7gkJRNF%2FCleanShot%202024-07-18%20at%2016.46.07%402x.png?alt=media&#x26;token=a347c007-cd25-4e9e-a9cf-9d2b9893500c" alt="" data-size="line"></picture> and select the desired function.
-3. When importing/pasting an image, click the **Replace bg** button or the dropdown arrow to access **Remove bg**.
-
-<div><figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FhJdVpuT6FIFmF4PlDqsH%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=d9c7270f-a4d5-41cb-9dc5-74344ac09541" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fgl2T70pNzJK4yrHPlYIj%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=f237fe07-0bca-4b78-8cd8-ea67c42402d3" alt=""></picture><figcaption><p>Replace bg location in detailed view.</p></figcaption></figure> <figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FEYoAUaI0ZxJtVALxH177%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=208bfeef-6850-4966-b00d-5ef4fdd47094" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FKN2TC4WYKTprSPHvJ9lW%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=97194169-5e81-4c98-adb8-43d2d9ae0513" alt=""></picture><figcaption><p>Remove bg location in detailed view.</p></figcaption></figure></div>
-
-<div><figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FKABWFk6Fo16WOdwf6xp7%2FIdeogram%20%E2%80%93%20phil_ozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=e795f75a-1344-4590-8c91-bd3474d0e7f1" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FTSgq0AZdliB4ilBkraIp%2FIdeogram%20%E2%80%93%20phil_ozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=8c07e5fd-2c5c-4f17-85a8-978376cf5e75" alt=""></picture><figcaption><p>Location in the More menu.</p></figcaption></figure> <figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FAkb3h4pMdzQ1pidKcrn6%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=10d9308c-cf97-4849-9f0a-9d2631f1aacf" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F2d7zLLCWL7TISBUxWrSo%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=1f0ab3ba-edd4-4c97-aeb4-176589f5da63" alt=""></picture><figcaption><p>Location when importing/pasting an image.</p></figcaption></figure></div>
+1. **From image details** –\
+   When viewing an image in the [Details panel](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/details-panel), select the **Remove BG** button or the dropdown arrow to access **Replace BG**.\
+   Alternatively, select the **More** icon <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FPYS9T78uhmDmuEqNWvcb%2FMore%20-%20White%2020px.svg?alt=media&#x26;token=cba9b268-f5f2-4895-bef0-fa43e5ae3724" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FqhNBoUUnrp0grTzHJonA%2FMore%20-%20Black%2020px.svg?alt=media&#x26;token=dee426ba-09fe-4735-bdd3-81c5ecb71035" alt=""></picture> in the upper-right corner and choose **Remove Background** or **Replace Background** from the [More menu](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/more-menu-...).
+2. **When importing or pasting an image** –\
+   In the popup window, select **Replace BG** or use the dropdown arrow to access **Remove BG**.
 
 ## Remove Background
 
-There are two slightly different ways to use "Background Removal": either directly while viewing an image or by using the Canvas feature. Each behaves a bit differently.
+You can remove the background of an image either directly from the Details panel while viewing a single image or while working in the Canvas. Each method behaves slightly differently.
 
 ### When Viewing an Image
 
-* On the right-side panel, click the down arrow right next to the **Replace bg** button to access the popup menu and select **Remove bg**.
+* In the [Details panel](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/details-panel), select the **Remove BG** button.
+* The image updates automatically with a transparent background and is saved to your Creations.&#x20;
+* You can preview the before-and-after comparison by selecting the **Split View** button at the top right.
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FwVgq1PMwuwASNEGppYym%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=d641724f-cbeb-4cbd-b955-1efc149ec0a4" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FouCFK7CrfYBjIYQPAT2Y%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=e24ea367-1d5a-40f8-af6f-6b7b9866a94a" alt="" width="370"></picture><figcaption></figcaption></figure>
+<div><figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FkoHyFcAnlBPCfKeVLgcU%2FBackground%20removed%20-%20Dark.webp?alt=media&#x26;token=9a98e593-67d1-4556-bfcf-2634cc34a1ec" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FThlpkeF6xfskspvpfPXT%2FBackground%20removed%20-%20Light.webp?alt=media&#x26;token=59772058-f421-43c9-8c53-d734a4db3c5c" alt="Resulting image with transparent background after using Remove Background." width="375"></picture><figcaption><p>Resulting image with transparent background after using Remove Background.</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FTJV4yddkJzUPV9ux07jY%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark.gif?alt=media&#x26;token=03521f22-394c-411f-959a-2b90702ad641" alt="" width="375"><figcaption><p>Split View when clicking the button at top-right of the image.</p></figcaption></figure></div>
 
-* The window will update with the new image, now with the background removed and transparent. This image is automatically saved in your Creations.
-
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FkoHyFcAnlBPCfKeVLgcU%2FBackground%20removed%20-%20Dark.webp?alt=media&#x26;token=9a98e593-67d1-4556-bfcf-2634cc34a1ec" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FThlpkeF6xfskspvpfPXT%2FBackground%20removed%20-%20Light.webp?alt=media&#x26;token=59772058-f421-43c9-8c53-d734a4db3c5c" alt="" width="375"></picture><figcaption></figcaption></figure>
-
-* The image is available for download as is.
-
-The right-side panel will change to reflect the new options and information. To further refine the transparent background, click the **Edit background** button that has now replaced the former **Remove bg** button. You will then be transferred to the Canvas in [Edit Background mode](#edit-background-mode).
+The Details panel updates to show new options. To refine the result, select **Edit Background** to open the image in [Edit Background mode](#edit-background-mode) within the Canvas.
 
 ### When in Canvas
 
-If you clicked **Open in Canvas** or if you were already in **Canvas** then:
+If you opened the image in Canvas or were already editing there:
 
 * Select the image for which you want the background to be removed.
-* Click on **Remove bg** on the right-side panel.
+* Click on **Remove BG** on the right-side panel.
 * You will enter [Edit Background mode](#edit-background-mode).&#x20;
 
 ### Edit Background Mode
 
-When in **Edit background** mode, you have access to different tools to refine the background’s masked/transparent areas:
+In Edit Background mode, you can refine the transparent or masked areas of your image using several tools:
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F4IumTg2N87sASDHw53Uu%2FUntitled%20Apr%2014%20951%20AM%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=f18fc58e-7ea2-4ba2-b6ae-24f5f4db64bb" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FIxfq7kj5qATaDtZt682u%2FUntitled%20Apr%2014%20952%20AM%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=cac837db-f7c5-4e36-b820-94586938c00f" alt="" width="353"></picture><figcaption></figcaption></figure>
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F4IumTg2N87sASDHw53Uu%2FUntitled%20Apr%2014%20951%20AM%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=f18fc58e-7ea2-4ba2-b6ae-24f5f4db64bb" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FIxfq7kj5qATaDtZt682u%2FUntitled%20Apr%2014%20952%20AM%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=cac837db-f7c5-4e36-b820-94586938c00f" alt="Toolbar in Edit Background mode showing masking tools and icons." width="353"></picture><figcaption><p>Toolbar in Edit Background mode showing masking tools and icons.</p></figcaption></figure>
 
-1. **Rectangle Mask**: Create a mask from a rectangular shape.
-2. **Lasso Mask**: Create a mask from a freeform shape.
-3. **Brush Mask**: Create a mask from a freeform round brush. You can increase or decrease the brush size using the bracket keys \[  ] or by clicking the dropdown menu (the little down arrow on the right) to access the size slider.
-4. **Erase**: Toggle the erase mode, allowing you to restore parts of the deleted background using the mask tools.
-5. **Invert**: Invert the selection, making the background visible while hiding the visible subject.
-
-On can also view the before and after by clicking the **Split view** button <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F36Jh4M0FRnunflWKDBaM%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=1acd75e8-1588-498b-ac87-771878db45da" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FA9guuvwMzWjD4BtloxOa%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=85a5bc35-0e50-4f40-8279-4d87b8d0c0db" alt="" data-size="line"></picture> at the top right.
-
-<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FTJV4yddkJzUPV9ux07jY%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark.gif?alt=media&#x26;token=03521f22-394c-411f-959a-2b90702ad641" alt="" width="375"><figcaption></figcaption></figure>
+1. **Rectangle Mask** – Create a rectangular mask.
+2. **Lasso Mask** – Draw a freeform mask shape.
+3. **Brush Mask** – Paint a mask using a round brush. Adjust size with the bracket keys <kbd>\[</kbd>  <kbd>]</kbd> or the size slider accessible from the dropdown arrow.
+4. **Erase** – Toggle erase mode to restore areas of the background using mask tools.
+5. **Invert** – Invert the selection to swap visible and hidden areas.
 
 When done editing the background, you can:
 
-1. **Cancel**: Cancel any background removal or refinement and revert to the original image.
-2. **Save**: Click to save the current image with the background removed. Alternatively, click the drop-down menu (the little down arrow on the right) and select "Save copy" to save a copy of the image with the background removed while keeping the original image intact.
+1. **Cancel** – Revert all background edits and restore the previous image.
+2. **Save** – Save the current image with the background removed.\
+   Alternatively, clic or tap the dropdown arrow next to **Save** and select **Save Copy** to keep both the original and the edited version in the current Canvas.
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FBlCIAGRlTDDV4VBelbBm%2FUntitled%20Apr%2014%20951%20AM%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=3c15f57c-9b1f-4682-bdd1-f109a948e884" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Frc3AeD9hQpZHcdVql7JY%2FUntitled%20Apr%2014%20949%20AM%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=38a5f1a8-9cf4-4fad-8249-81cb882c4810" alt="" width="563"></picture><figcaption></figcaption></figure>
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FBlCIAGRlTDDV4VBelbBm%2FUntitled%20Apr%2014%20951%20AM%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=3c15f57c-9b1f-4682-bdd1-f109a948e884" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Frc3AeD9hQpZHcdVql7JY%2FUntitled%20Apr%2014%20949%20AM%20%E2%80%93%20Ideogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=38a5f1a8-9cf4-4fad-8249-81cb882c4810" alt="Save and Cancel options available in Edit Background mode." width="563"></picture><figcaption><p>Save and Cancel options available in Edit Background mode.</p></figcaption></figure>
 
-Once the background has been removed, you can either download the image using the "Download" function in the left-hand panel, or continue working with the image in Canvas. In either case, the image will also be available in your Creations tab.
+After removing the background, you can download the image using the **Download** option in the left panel or continue editing it in the Canvas. In both cases, the image is also saved in your Creations.
 
 {% hint style="info" %}
-You can achieve better results with "Background Removal" by enlarging your images using the "Upscale" feature beforehand. The outcome will be sharper and more precise with an image that has a higher number of pixels to begin with.
+**Tip**: For sharper and more precise results, use *Upscale* before removing the background. Higher-resolution images produce cleaner edges and better transparency.
 {% endhint %}
 
 ***
 
 ## Replace Background
 
-The **Replace background** feature provides a quick and easy way to replace the background behind the main subject of an image with a new one based on a prompt.
+The Replace Background feature lets you replace the background behind the main subject with a new one generated from your text prompt.
 
-For example, the background of a studio photo featuring a perfume bottle can be replaced with a more visually appealing scene, such as cascading water.
+For example, you can replace the background of a studio photo featuring a perfume bottle with a more dynamic scene, such as cascading water.
 
-<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fn2Td1GACxg5dYM897wah%2FR-BG%20Original%20image.png?alt=media&#x26;token=9a917dd9-a243-4780-9d7f-37ca5343320d" alt="" width="375"><figcaption><p>Original image.</p></figcaption></figure>
+<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fn2Td1GACxg5dYM897wah%2FR-BG%20Original%20image.png?alt=media&#x26;token=9a917dd9-a243-4780-9d7f-37ca5343320d" alt="Original studio image before background replacement." width="375"><figcaption><p>Original studio image before background replacement.</p></figcaption></figure>
 
-After clicking **Remove bg**, you’ll be prompted to describe the new background you’d like to apply to the image in the prompt box.
+1. After selecting **Replace BG**, describe the new background you want to generate in the [Prompt Box](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/prompt-box).
+2. Select **Replace** to generate the new images. Results appear in your Creations or directly in the Canvas, depending on where the action was performed.
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F7T1LbqUUcUvNLUaMYYBI%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=605b7e86-4fb8-41cc-ae22-dd2c6e1158f4" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FBBvMAB0PEQuDKSelZMCD%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=3766466a-e709-429d-bc3b-3801ea8b2552" alt=""></picture><figcaption><p>Prompt box with details for the new background.</p></figcaption></figure>
-
-Click **Replace**. The generated images will be available either in the Creations page of the website or directly in Canvas, depending on where the action was performed.
-
-<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FLx5Dn46eJbPa1d1oU2Ww%2FR-BG%20Final%20image.png?alt=media&#x26;token=065c89e9-4c37-4743-90b4-e5964c9f4243" alt="" width="375"><figcaption><p>Resulting image.</p></figcaption></figure>
+<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FLx5Dn46eJbPa1d1oU2Ww%2FR-BG%20Final%20image.png?alt=media&#x26;token=065c89e9-4c37-4743-90b4-e5964c9f4243" alt="Final image after Replace Background applied." width="375"><figcaption><p>Final image after Replace Background applied.</p></figcaption></figure>
 
 {% hint style="warning" %}
-As the Ai will try to integrate the image into the new background as harmoniously as possible, it may make a few minor modifications to the image's edges.
+**Important:** When integrating the subject into the new background, the AI may slightly adjust the image’s edges for a smoother blend.
 {% endhint %}
 
 
 # Search
 
-With Ideogram, you can search for your own images or those generated by other users that are publicly available, by searching for specific words that would have been used in the prompts.
+With Ideogram, you can search for your own images or publicly available creations generated by other users. Use keywords that would typically appear in the image prompts.
 
-Users with a paid subscription can search for publicly available images across the entire website, while free users can only search their own images.
+Users with a paid subscription can search across all publicly available images on the platform, while Free Plan users can search only within their own creations.
 
 ## Search in the Home Page
 
-To perform a search, simply click the **Search** icon <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3htmsC0Qd7PHF1U2unCh%2FCleanShot%202024-08-21%20at%2007.46.33%402x.png?alt=media&#x26;token=b4295286-9aec-4596-9083-a4165b44cc89" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F2y45zyFhni3Xx4wjInO8%2FCleanShot%202024-08-21%20at%2007.46.46%402x.png?alt=media&#x26;token=85c30471-9468-4c38-9295-a3f931215bc7" alt="" data-size="line"></picture> at the top left, just above the image area.
+To perform a search, select the **Search** icon <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FWEjpg75ohrLqumV8GMfI%2FSearch%20-%20Dark%2020px.svg?alt=media&#x26;token=cc080c5d-cb6b-4725-bc06-1ad61d34d2db" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FCgpxudgqxawgUv4i49Fw%2FSearch%20-%20Light%2020px.svg?alt=media&#x26;token=61a083eb-6efa-4e6b-a38c-bf933e1bd4ee" alt="" data-size="original"></picture> located at the top-left of the [Image Gallery](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/image-gallery).
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FQqHRDyEMuzjmP05uIdaa%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=0d400e90-43b6-463d-9a2a-5a4c4ef810d3" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fgls9sVPngt061KeY4iXX%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=f2d1ac9e-3a8d-4bd3-a087-3a2718f2bc5f" alt=""></picture><figcaption><p>Location of the search icon on the home page.</p></figcaption></figure>
+1. Select the **Search** icon to open the search box.
+2. Type your keywords, then press <kbd>**Enter**</kbd> or <kbd>**Return**</kbd> to start the search.
 
-Clicking on the **Search** icon will make the search box appear. Type in your search keywords and press **Enter** or **Return** to launch the search.
+<div><figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fy1scirJHCKlF3qnTgZRP%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=a1604c57-5c23-432f-a838-3e3a59b9e16d" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F6F9YoUeLJwCI2f44o4fQ%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=1e9bd207-d68f-46de-860b-313b4410fcfc" alt="Search box on the Home page." width="302"></picture><figcaption><p>Search box on the Home page.</p></figcaption></figure> <figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FNw2xHBTAVHXM8dpyVxJD%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=3594a9a4-de8f-4d68-b021-101a457ce64c" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FroZqXHuXSr9FHCs6TqJd%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=6ac528f9-53e7-4bc0-ba8c-40b90e45f7b9" alt="Search box on the Creations page." width="302"></picture><figcaption><p>Search box on the Creations page.</p></figcaption></figure></div>
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fy1scirJHCKlF3qnTgZRP%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=a1604c57-5c23-432f-a838-3e3a59b9e16d" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F6F9YoUeLJwCI2f44o4fQ%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=1e9bd207-d68f-46de-860b-313b4410fcfc" alt="" width="302"></picture><figcaption></figcaption></figure>
-
-The images matching your search from your own generated images will then be displayed in the image area right below.
-
-## Search in Your Creations
-
-Click the **Search** icon <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3htmsC0Qd7PHF1U2unCh%2FCleanShot%202024-08-21%20at%2007.46.33%402x.png?alt=media&#x26;token=b4295286-9aec-4596-9083-a4165b44cc89" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F2y45zyFhni3Xx4wjInO8%2FCleanShot%202024-08-21%20at%2007.46.46%402x.png?alt=media&#x26;token=85c30471-9468-4c38-9295-a3f931215bc7" alt="" data-size="line"></picture> located at the top-left, just above the image area.
-
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FToVO2RiVRwmRJzINyfeB%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=74cf5a0a-8829-41e3-a458-2fce21805ee9" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F83Aw289Zl6cbTBjHydoN%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=67ebc528-e288-42e6-b616-5076c2fe288c" alt=""></picture><figcaption></figcaption></figure>
-
-Clicking on the **Search** icon will make the search box appear. Type in your search keywords and press **Enter** or **Return** to launch the search.
-
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FNw2xHBTAVHXM8dpyVxJD%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=3594a9a4-de8f-4d68-b021-101a457ce64c" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FroZqXHuXSr9FHCs6TqJd%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=6ac528f9-53e7-4bc0-ba8c-40b90e45f7b9" alt="" width="302"></picture><figcaption></figcaption></figure>
-
-The images matching your search from your own generated images will then be displayed in the image area right below.
-
-## Search in Your Profile Page
-
-Click the **Search** icon <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3htmsC0Qd7PHF1U2unCh%2FCleanShot%202024-08-21%20at%2007.46.33%402x.png?alt=media&#x26;token=b4295286-9aec-4596-9083-a4165b44cc89" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F2y45zyFhni3Xx4wjInO8%2FCleanShot%202024-08-21%20at%2007.46.46%402x.png?alt=media&#x26;token=85c30471-9468-4c38-9295-a3f931215bc7" alt="" data-size="line"></picture> at the top right just over the image area while in the Public or Private pages.
-
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FqkBL4kbEkrQEAKceduWc%2FCleanShot%202024-08-21%20at%2010.36.34%402x.png?alt=media&#x26;token=c36621ec-7408-4ca0-b4c4-3a733a8d0d86" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FQQjNdfMM6NRitJM1hoS2%2FCleanShot%202024-08-21%20at%2010.35.21%402x.png?alt=media&#x26;token=f7e11cb2-8616-4c74-930b-8842d3746062" alt="" width="563"></picture><figcaption><p>Search button location on the Profile Page.</p></figcaption></figure>
-
-Clicking on the **Search** icon will make the search box appear. Type in your search keywords and press **Enter** or **Return** to launch the search.
-
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FHQs8zgBLf5AvxQVU5EXH%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=546d42d0-b7a0-4449-86a8-165ca193c350" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FiktV5fp4ayxDC4e6eYed%2FIdeogram%20%E2%80%93%20philozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=b176bad0-2559-46a6-933b-9b4af8075ad3" alt="" width="302"></picture><figcaption></figcaption></figure>
-
-The images matching your search from your own generated images will then be displayed in the image area right below. You can also switch between Public and Private (available with Plus subscription and above) to display images corresponding to that category without having to launch a new search.
+Matching images appear directly in the Image Gallery below the Search box.
 
 
 # Upscale
 
-The Upscale feature, available to users with a Basic subscription plan or higher, enlarges the resolution of your Ideogram-generated images, as well as those you’ve uploaded using the [Image Upload](https://docs.ideogram.ai/canvas-and-editing/image-upload) function (available with the Plus subscription plan or higher), by up to two times (up to 2x).
+The Upscale feature, available to users on the **Basic Plan** or higher, increases the resolution of your Ideogram-generated images, and of any images you’ve uploaded using the [Image Upload](https://docs.ideogram.ai/canvas-and-editing/image-upload) function (available on the **Plus Plan** or higher), by up to **2×**.
 
 {% hint style="warning" %}
-The Upscale function will crop any image to the nearest possible aspect ratio from the default values shown in the table below. This includes both default and custom aspect ratios available in Ideogram v2.0.
+**Important:** Upscale **crops** images to the nearest supported aspect ratio listed in the table below. This behavior applies to all images, including both default and custom aspect ratios used in Ideogram v2.0 and later.
 {% endhint %}
 
-<table><thead><tr><th width="165">Aspect Ratio</th><th>Final dimension in pixels</th></tr></thead><tbody><tr><td><code>1:3</code></td><td>1024 x 3072</td></tr><tr><td><code>9:16</code></td><td>1440 x 2560</td></tr><tr><td><code>10:16</code></td><td>1536 x 2464</td></tr><tr><td><code>2:3</code></td><td>1536 x 2304</td></tr><tr><td><code>3:4</code></td><td>1536 x 2048</td></tr><tr><td><code>1:1</code></td><td>2048 x 2048</td></tr><tr><td><code>4:3</code></td><td>2048 x 1536</td></tr><tr><td><code>3:2</code></td><td>2304 x 1536</td></tr><tr><td><code>16:10</code></td><td>2464 x 1536</td></tr><tr><td><code>16:9</code></td><td>2560 x 1440</td></tr><tr><td><code>3:1</code></td><td>3072 x 1024</td></tr></tbody></table>
+Aspect ratios and their final pixel dimensions after upscaling:
 
-For example, if you upload an image that is 1500 pixels by 1500 pixels, which has an aspect ratio of 1:1, the upscale will result in a 2048 pixels by 2048 pixels image. Another example would be if you generate an image with a custom aspect ratio of 17:12 (1088 pixels x 768 pixels), the Upscale function will crop it to the nearest available aspect ratio, which is 3:2, and the final image will be 2304 pixels by 1536 pixels.
+| Aspect ratio | Final dimensions (pixels) |
+| :----------: | :-----------------------: |
+|   **`1:3`**  |        1024 x 3072        |
+|  **`9:16`**  |        1440 x 2560        |
+|  **`10:16`** |        1536 x 2464        |
+|   **`2:3`**  |        1536 x 2304        |
+|   **`3:4`**  |        1536 x 2048        |
+|   **`1:1`**  |        2048 x 2048        |
+|   **`4:3`**  |        2048 x 1536        |
+|   **`3:2`**  |        2304 x 1536        |
+|  **`16:10`** |        2464 x 1536        |
+|  **`16:9`**  |        2560 x 1440        |
+|   **`3:1`**  |        3072 x 1024        |
+
+**Example 1** — If you upload an image that is 1500 pixels by 1500 pixels, which has an aspect ratio of 1:1, the upscale will result in a 2048 pixels by 2048 pixels image.&#x20;
+
+**Example 2** — If you generate an image with a custom aspect ratio of 17:12 (1088 × 768 pixels) and then use *Upscale*, the image will be cropped it to the nearest available aspect ratio, which is 3:2, and the final image will be 2304 pixels by 1536 pixels.
 
 ## Upscaling an Image
 
-The upscale function can be accessed when viewing an image feed by clicking on the "More" icon  <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3Ks1Q3ZANIcb52iR6lgs%2FCleanShot%202024-07-18%20at%2016.45.56%402x.png?alt=media&#x26;token=548d57b2-b767-419d-9107-63c173c74315" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FQv2bkEyP7H3Ox3wbdrXJ%2Fimage.png?alt=media&#x26;token=ddf39952-d74d-4c02-854d-3bbb2ebf5637" alt="" data-size="line"></picture>  at the bottom of the image, then selecting "Upscale" <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3ZVoqEGQmj4Adv2z4dvt%2FCleanShot%202024-07-19%20at%2007.15.19%402x.png?alt=media&#x26;token=9872adbe-0c9d-4d3a-9d30-8cc99f2ca034" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F7Z0L4hN2wzhCXyyU6JNE%2Fimage.png?alt=media&#x26;token=d775e252-076a-40fd-aded-0ddaee80c318" alt="" data-size="line"></picture>  from the menu.
+You can access Upscale in several ways:
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FmSYIVqxC65GHr6OpII6e%2FBrowsing%20-%20More%20Menu%20-%20Dark%402x.png?alt=media&#x26;token=30758ddf-e57c-409f-aa98-54debdaded4d" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FD7TocEEe5jc0hUjzoRoS%2FBrowsing%20-%20More%20Menu%20-%20Light%402x.png?alt=media&#x26;token=541ae055-933a-43b1-aee8-5f0bb6e81b32" alt="" width="248"></picture><figcaption><p>Location of Upscale in the More menu.</p></figcaption></figure>
-
-... or when viewing an image in detail.
-
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F8CySyxtnxSXnVl14AK28%2FPrivate%20Generations%20-%20Ideogram%20Documentation%20-%20Light%20Dark%402x.png?alt=media&#x26;token=482f4376-297e-4b10-86d1-94dcccfbcd01" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fr9ltYYSkNo7BaglgLEf0%2FPrivate%20Generations%20-%20Ideogram%20Documentation%20-%20Light%20Dark%402x.png?alt=media&#x26;token=321653d3-10e7-46b8-b8e6-96fac047b180" alt="" width="370"></picture><figcaption><p>Location of the Upscale button.</p></figcaption></figure>
+1. **From image feeds** (Home and Creations pages) –\
+   Hover over any image in the [Image Gallery](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/image-gallery), select the **More** icon <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FPYS9T78uhmDmuEqNWvcb%2FMore%20-%20White%2020px.svg?alt=media&#x26;token=cba9b268-f5f2-4895-bef0-fa43e5ae3724" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FqhNBoUUnrp0grTzHJonA%2FMore%20-%20Black%2020px.svg?alt=media&#x26;token=dee426ba-09fe-4735-bdd3-81c5ecb71035" alt=""></picture> at the top of the image, and select **Upscale** from the [More menu](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/more-menu-...).
+2. **From image details** –\
+   In the [Details Panel](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/details-panel), select the **Upscale** button.\
+   Alternatively, select the **More** icon <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FPYS9T78uhmDmuEqNWvcb%2FMore%20-%20White%2020px.svg?alt=media&#x26;token=cba9b268-f5f2-4895-bef0-fa43e5ae3724" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FqhNBoUUnrp0grTzHJonA%2FMore%20-%20Black%2020px.svg?alt=media&#x26;token=dee426ba-09fe-4735-bdd3-81c5ecb71035" alt=""></picture> in the upper-right corner and choose **Upscale** from the More menu.
+3. **When** [importing an image](https://docs.ideogram.ai/ui-overview/ui-components/prompt-box#importing-an-image) **into the** [Prompt Box](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/prompt-box) –\
+   In the popup window, select **Upscale** to generate an automatic description.
 
 ## Parameters
 
-To adjust the **Upscale** settings, click the Upscale tab in the Prompt box. A popup window will appear to let you adjust the Resemblance and Detail parameters.
+To adjust settings, select the Upscale thumbnail in the [Prompt Box](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/prompt-box). A pop-up window appears, allowing you to fine-tune the **Resemblance** and **Detail** parameters. You also have the option to [Describe](https://docs.ideogram.ai/using-ideogram/features-and-tools/describe) the image or to edit it in the [Editor](https://docs.ideogram.ai/canvas-and-editing/editor) before applying the upscale.
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fn5zWNduzibNks1aqWTV6%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=deecbb92-bb96-4ffa-8206-2ef6f9c569e5" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FEy8pbe14Kq94DUbOHVlg%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=56788a34-97db-4f19-8759-0d8575301bc9" alt="" width="563"></picture><figcaption><p>Two parameters that you can adjust when upscaling an image.</p></figcaption></figure>
+Upscale lets you control how much **Resemblance** the new image retains from the original, and how much **Detail** the AI adds during generation.
 
-### 1- Resemblance
+Select the **Upscale** thumbnail in the Prompt Box to open its options.
+
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FFAmj1AsrRSLOGR96oWDA%2FPB%20-%20Upscale%20Settings%20-%20Dark%402x.png?alt=media&#x26;token=d24a7786-2677-48c9-814a-18a56ddee104" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FI8NpPdJ9jKtSw6xAeeI1%2FPB%20-%20Upscale%20Settings%20-%20Light%402x.png?alt=media&#x26;token=93271bf2-c168-4054-b54f-e6e942fbb169" alt="Adjustable Upscale parameters: Resemblance and Detail." width="220"></picture><figcaption><p>Adjustable Upscale parameters: Resemblance and Detail.</p></figcaption></figure>
+
+### Resemblance
 
 This parameter determines how closely you want the enlarged image to resemble the original. A value of 1 allows the AI more freedom to be creative with the image, which can be useful for correcting certain defects or enhancing specific details. On the other hand, a value of 100 will produce a result that is as close as possible to the original image while still enlarging it and maintaining optimal sharpness.
 
-#### Original vs a Resemblance value of 1
+<div><figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FzIZIacsLta0mNNbsTpmR%2FDog-Orig-vs-1.webp?alt=media&#x26;token=44085eff-d01d-4a3a-a8e5-ba40e015738e" alt=""><figcaption><p>Original compared to an upscaled image with a Resemblance value of 1</p></figcaption></figure> <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F18wFFYfgSJiUxTR6N1iy%2FDog-Orig-vs-100.webp?alt=media&#x26;token=f985c250-9cae-4d91-b068-1f9a59afd4c0" alt=""><figcaption><p>Animation of the original image compared to an upscaled image generated with a Resemblance value of 100</p></figcaption></figure></div>
 
-<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FzIZIacsLta0mNNbsTpmR%2FDog-Orig-vs-1.webp?alt=media&#x26;token=44085eff-d01d-4a3a-a8e5-ba40e015738e" alt=""><figcaption><p>Original compared to an upscaled image with a Resemblance value of 1</p></figcaption></figure>
-
-#### Original vs a Resemblance value of 100
-
-<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F18wFFYfgSJiUxTR6N1iy%2FDog-Orig-vs-100.webp?alt=media&#x26;token=f985c250-9cae-4d91-b068-1f9a59afd4c0" alt=""><figcaption><p>Animation of the original image compared to an upscaled image generated with a Resemblance value of 100</p></figcaption></figure>
-
-### 2- Detail Slider
+### Detail Slider
 
 This slider allows you to adjust the level of detail in the enlarged image. A higher value will increase the visibility of details, while a lower value will reduce them.
 
-#### Detail value of 1 vs 100
+**Detail value: 1 vs 100**
 
-<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FbPhj4woVM1DnAbUnEiN0%2FDog%20Detail%20Compare.webp?alt=media&#x26;token=1ff00210-115a-47ce-9df8-e1703a74470b" alt=""><figcaption><p>Animation of two upscaled images generated with a Detail value of 1 compared to the same generated with a value of 100.</p></figcaption></figure>
+<figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FbPhj4woVM1DnAbUnEiN0%2FDog%20Detail%20Compare.webp?alt=media&#x26;token=1ff00210-115a-47ce-9df8-e1703a74470b" alt="" width="563"><figcaption><p>Animation of two upscaled images generated with a Detail value of 1 compared to the same generated with a value of 100.</p></figcaption></figure>
 
-After setting the two sliders to your desired values, simply press the ‘Upscale’ button to initiate the process. Once the upscaling is complete, you can click on the image preview to get a more detailed view of the upscaled image. Notice the "Split view" icon <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FJoAos3gnSf8M9FaBjAEN%2FCleanShot%202024-08-28%20at%2009.02.04%402x.png?alt=media&#x26;token=4149822b-d30d-4a76-86c3-8964ba55b0d3" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fx2MCrvCWTkPKb35JpXQe%2FCleanShot%202024-08-28%20at%2009.01.52%402x.png?alt=media&#x26;token=1ed2bfac-d233-43ad-9399-0b33dedb7521" alt="" data-size="line"></picture> in the upper right corner. Clicking this will toggle a comparison view where you can compare the original image with the upscaled one using a split view slider.
+After adjusting both sliders to your desired values, click or tap the **Upscale** button to begin the process.
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FYG9pnXfadqH4Ke7OmpRN%2FSplit%20View%20-%20Dark%402x.png?alt=media&#x26;token=d8abfafd-7de6-4fa8-9503-29f86b458dbe" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FSi13evIMsHkKfAuLhzwa%2FSplit%20View%20Button%20-%20Light%402x.png?alt=media&#x26;token=3248715b-93de-461d-84ba-6cb94c1e9fa6" alt="" width="218"></picture><figcaption><p>The split view icon.</p></figcaption></figure>
+Once the upscaling is complete, you can click on the image preview to get a more detailed view of the upscaled image.
+
+Select the **Split View** icon <picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FZHGC1o58ae969aXjN28C%2FSplit%20View%20Icon%20-%20Dark%2020px.svg?alt=media&#x26;token=0a61b006-2ad0-4949-8605-733b325000b7" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FTBn5uHVNf7Yx6KWPRYuA%2FSplit%20View%20Icon%20-%20Light%2020px.svg?alt=media&#x26;token=7d574d18-4539-43d6-a171-dc4f1a38fee0" alt=""></picture> in the upper-right corner to open an interactive comparison slider between the original and upscaled images.
 
 <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FdlVV1ZYOAO9ftZgltiTj%2FDog-Split.webp?alt=media&#x26;token=b35deb9a-1fdd-485e-af99-39b44866915a" alt=""><figcaption><p>Using the split view function.</p></figcaption></figure>
 
-You can also view valuable information, such as the final resolution of the upscaled image and the parameters used to generate it.
+You can view the final image dimensions and the parameters used during upscaling in the [Details panel](https://docs.ideogram.ai/using-ideogram/ui-overview/ui-components/details-panel).&#x20;
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F8kb7YuXNLWRW9UJHYyGT%2FImage%20Info%20-%20Dark%402x.png?alt=media&#x26;token=26b60b6a-644f-4db1-b4b2-593c4a96fe7c" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fi8FgDf5EPeF8F5sEBPNm%2FImage%20Info%20-%20Light%402x.png?alt=media&#x26;token=83818b9d-2a9e-4007-a7c0-cb11c02bf243" alt="" width="352"></picture><figcaption><p>Information available when viewing an upscaled image.</p></figcaption></figure>
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F8kb7YuXNLWRW9UJHYyGT%2FImage%20Info%20-%20Dark%402x.png?alt=media&#x26;token=26b60b6a-644f-4db1-b4b2-593c4a96fe7c" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fi8FgDf5EPeF8F5sEBPNm%2FImage%20Info%20-%20Light%402x.png?alt=media&#x26;token=83818b9d-2a9e-4007-a7c0-cb11c02bf243" alt="" width="352"></picture><figcaption><p>Information availableIn the Details panel when viewing an upscaled image.</p></figcaption></figure>
 
 {% hint style="info" %}
-Currently, it is only possible to upscale an image up to a factor of 2x. Additional upscaling options may be added in the future.
+**Note:** Images can currently be upscaled up to **2×**. Additional scaling options may be introduced in future updates.
 {% endhint %}
 
 
-# Canvas & Editing
+# Canvas and Editing
 
 
 # Canvas
@@ -4011,7 +4501,7 @@ The options are:
 7. **Load previous mask**: Restores the last mask used.
 
 {% hint style="warning" %}
-If you’re a new user or simply new to Canvas, consider experimenting with the [**Generate**](https://docs.ideogram.ai/using-ideogram/getting-started/generating-images) and [**Remix**](https://docs.ideogram.ai/using-ideogram/features-and-tools/remix) functions outside of Canvas to familiarize yourself with their features. Additionally, explore key features such as [**Private Generations**](https://docs.ideogram.ai/using-ideogram/generation-settings/private-generations), [**Aspect Ratios**](https://docs.ideogram.ai/using-ideogram/generation-settings/aspect-ratios-and-resolutions), [**Style**](https://docs.ideogram.ai/using-ideogram/generation-settings/styles/styles-in-older-models), [**Magic Prompt**](https://docs.ideogram.ai/using-ideogram/generation-settings/magic-prompt) and [**Color Palettes**](https://docs.ideogram.ai/using-ideogram/generation-settings/color-palette), as they play an integral role in the generative tools within Canvas.
+If you’re a new user or simply new to Canvas, consider experimenting with the [**Generate**](https://docs.ideogram.ai/using-ideogram/getting-started/generating-images) and [**Remix**](https://docs.ideogram.ai/using-ideogram/features-and-tools/remix) functions outside of Canvas to familiarize yourself with their features. Additionally, explore key features such as [**Private Generations**](https://docs.ideogram.ai/using-ideogram/generation-settings/private-generations), [**Aspect Ratios**](https://docs.ideogram.ai/using-ideogram/generation-settings/aspect-ratio-and-dimensions), [**Style**](https://docs.ideogram.ai/using-ideogram/features-and-tools/reference-features/style-reference/styles-in-older-models), [**Magic Prompt**](https://docs.ideogram.ai/using-ideogram/generation-settings/magic-prompt) and [**Color Palettes**](https://docs.ideogram.ai/using-ideogram/generation-settings/color-palette), as they play an integral role in the generative tools within Canvas.
 {% endhint %}
 
 ***
@@ -4053,7 +4543,7 @@ To import an image from your computer, use one of the following methods:
 **Resizing generation windows**:
 
 * **By corners**: Preserves the actual aspect ratio.
-* **By sides**: Snaps to the nearest supported [aspect ratio](https://docs.ideogram.ai/using-ideogram/generation-settings/aspect-ratios-and-resolutions#defaults-aspect-ratios-and-sizes).&#x20;
+* **By sides**: Snaps to the nearest supported [aspect ratio](https://docs.ideogram.ai/using-ideogram/generation-settings/aspect-ratio-and-dimensions#defaults-aspect-ratios-and-sizes).&#x20;
 
 <figure><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FmLFfqlfbRGG6cyPVwzyU%2FIdeogram%20-%20Light%20Dark%402x.png?alt=media&#x26;token=9d096858-3c39-407b-92fd-9d9e3e44526a" alt="" width="152"><figcaption><p>A generation window</p></figcaption></figure>
 
@@ -4114,7 +4604,7 @@ Consider the following aspects regarding image sizes on the canvas:
 * **Download dimensions**: The Download tool uses the canvas grid to define the size of the image to be downloaded.
 
 {% hint style="info" %}
-The most common aspect ratios and their corresponding sizes can be found in the[Aspect Ratios & Resolutions](https://docs.ideogram.ai/using-ideogram/generation-settings/aspect-ratios-and-resolutions#defaults-aspect-ratios-and-sizes) section of the documentation.
+The most common aspect ratios and their corresponding sizes can be found in the[Aspect Ratios & Resolutions](https://docs.ideogram.ai/using-ideogram/generation-settings/aspect-ratio-and-dimensions#defaults-aspect-ratios-and-sizes) section of the documentation.
 {% endhint %}
 
 ### Example
@@ -4861,7 +5351,7 @@ You will then be presented with three options:
 5. Open in [**Canvas**](https://docs.ideogram.ai/canvas-and-editing/canvas/canvas-overview): Open image in Canvas. You can alternatively click on the down arrow to:
    1. Select [**Magic Fill**](https://docs.ideogram.ai/canvas-and-editing/canvas/magic-fill) to set-up Magic Fill with the image in Canvas.
    2. Select [**Extend**](https://docs.ideogram.ai/canvas-and-editing/canvas/extend) to use Extend with the image in Canvas.
-6. [**Remove bg**](https://docs.ideogram.ai/using-ideogram/features-and-tools/replace-remove-background): This option will remove the background from the main subject of the image.
+6. [**Remove bg**](https://docs.ideogram.ai/using-ideogram/features-and-tools/replace-or-remove-background): This option will remove the background from the main subject of the image.
 
 <figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FTO8sVJHwj93khBYls0Iw%2FIdeogram%20%E2%80%93%20phil_ozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=a1cc7afe-71fb-481d-abdb-3a99075d2431" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FTlgpSmymILapD5qsACo1%2FIdeogram%20%E2%80%93%20phil_ozoff%20-%20Light%20Dark%402x.png?alt=media&#x26;token=e6c28925-da68-40c7-bb84-e0ba7b32b365" alt="" width="563"></picture><figcaption></figcaption></figure>
 
@@ -4886,7 +5376,7 @@ The following examples demonstrate how image prompting can influence the positio
 <table data-card-size="large" data-view="cards"><thead><tr><th></th><th></th><th></th></tr></thead><tbody><tr><td><strong>Original image</strong></td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FkdM691zkt5byvnlHpmXe%2FRoad-Original.png?alt=media&#x26;token=5242bbac-fe5d-40c5-a83a-4915e0709e74" alt="" data-size="original"></td><td>This is the original image that was uploaded as the basis for the remixes presented in the next three images. Note that these images maintain visual consistency with the original, while adhering to their respective prompts.</td></tr><tr><td><strong>Output A</strong></td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FZmrs3TVANgCgBBuaKvoI%2FRoad-1.png?alt=media&#x26;token=d138a71d-1071-46e3-a320-223636f69e42" alt="" data-size="original"></td><td>[Traffic Havoc] A dystopian cityscape, gridlocked streets with a foreboding road sign declaring "Road Rage - Next 5 hours." Agitated drivers amidst polluted air, inspired by the cyberpunk style. Stark neon lights, dark atmosphere, and a gritty, ultra-realistic portrayal., typography, photo, cinematic</td></tr><tr><td><strong>Output B</strong></td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FUnarDkJMdnp0nA4gkBaE%2FRoad-2.png?alt=media&#x26;token=de83c9b2-5abd-4bbd-be00-b9ab3160feac" alt="" data-size="original"></td><td>[Rush Hour Havoc] Overcrowded urban road, perpetual traffic, ominous "Road Rage - Next 5 hours" sign. Infused with cyberpunk aesthetics, neon-lit surroundings, rain-soaked streets, a Blade Runner vibe, intense lighting, gritty realism, sharp details., typography, photo, cinematic</td></tr><tr><td><strong>Output C</strong></td><td><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FAqDzWAsfniYpvj4QvjsU%2FRoad-3.png?alt=media&#x26;token=86905858-37b9-4121-b8ea-715d206e2496" alt="" data-size="original"></td><td>[Timeless Journey] Expansive countryside, a winding road leading into the unknown. The road sign, "Road is yours - Next 5 hours," under a vast sky. An homage to the simplicity of Grant Wood's style, subtle realism, muted color palette, capturing the essence of a timeless and leisurely journey., typography, photo, cinematic</td></tr></tbody></table>
 
 
-# Community & Social
+# Community and Social
 
 
 # Creator Titles
@@ -4966,13 +5456,25 @@ Get more out of Ideogram
 
 ## Pricing
 
-<table data-full-width="true"><thead><tr><th valign="middle">Plans and pricing</th><th valign="middle">Free Plan</th><th valign="middle">Basic Plan</th><th valign="middle">Plus Plan</th><th valign="middle">Pro Plan</th><th>Team Plan</th></tr></thead><tbody><tr><td valign="middle">Monthly Price</td><td valign="middle">Free</td><td valign="middle">$8 USD per month</td><td valign="middle">$20 USD per month</td><td valign="middle">$60 USD per month</td><td>$30 USD per month per member (Minimum 2)</td></tr><tr><td valign="middle">Annual Price<br>(save up to 20%)</td><td valign="middle">Free</td><td valign="middle"><p>$84 USD</p><p>($7 USD/month)</p></td><td valign="middle"><p>$180 USD</p><p>($15 USD/month)</p></td><td valign="middle">$504 USD ($42 USD/month)</td><td>$240 USD ($20 USD/month per member, min. 2)</td></tr><tr><td valign="middle">Priority credits *</td><td valign="middle">–</td><td valign="middle"><p>400 credits/month</p><p>(up to 3,200 images/month **)</p></td><td valign="middle"><p>1,000 credits/month</p><p>(up to 8,000 images/month **)</p></td><td valign="middle"><p>3,500 credits/month</p><p>(up to 28,000 images/month **)</p></td><td>1,500 credits/month per member (up to 12,000 images/month per member **)</td></tr><tr><td valign="middle">Slow credits *</td><td valign="middle"><p>10 credits/week ‡</p><p>(Up to 40 images/week)</p></td><td valign="middle"><p>100 credits/day</p><p>(Up to 800 images/day **)</p></td><td valign="middle">Unlimited</td><td valign="middle">Unlimited</td><td>Unlimited</td></tr><tr><td valign="middle">Priority credits * top-up</td><td valign="middle">–</td><td valign="middle">$4 USD / 100 credits</td><td valign="middle">$4 USD / 150 credits</td><td valign="middle">$4 USD / 250 credits</td><td>$4 USD / 250 credits per member</td></tr><tr><td valign="middle">Concurrent generations in queues †</td><td valign="middle">1<br>(up to 4 images)</td><td valign="middle">2<br>(up to 8 images)</td><td valign="middle">8<br>(up to 32 images)</td><td valign="middle">32<br>(up to 128 images)</td><td>32<br>(up to 128 images)</td></tr><tr><td valign="middle">Usage rights</td><td valign="middle">We do not restrict your rights in your output.</td><td valign="middle">We do not restrict your rights in your output.</td><td valign="middle">We do not restrict your rights in your output.</td><td valign="middle">We do not restrict your rights in your output.</td><td>We do not restrict your rights in your output.</td></tr></tbody></table>
+{% hint style="warning" %}
+
+### The Basic plan is now a legacy plan
+
+Please note that the Basic plan is no longer available for purchase.
+
+* If you already have a Basic plan (legacy), you can continue to keep it until a future deadline (which will be communicated at a later date) or until you cancel — whichever comes first.
+* If you cancel, you keep all Basic benefits and privileges until the end of your current billing cycle.
+* After cancellation (or once the deadline is reached), the Basic plan can’t be purchased again.
+* Existing Basic subscribers will still see the Basic plan on the website’s pricing page, but the plan won’t be visible to anyone else.
+  {% endhint %}
+
+<table data-full-width="true"><thead><tr><th valign="middle">Plans and pricing</th><th valign="middle">Free Plan</th><th valign="middle">Basic Plan - ⚠️ Legacy</th><th valign="middle">Plus Plan</th><th valign="middle">Pro Plan</th><th>Team Plan</th></tr></thead><tbody><tr><td valign="middle">Monthly Price</td><td valign="middle">Free</td><td valign="middle"><em>$8 USD per month</em></td><td valign="middle">$20 USD per month</td><td valign="middle">$60 USD per month</td><td>$30 USD per month per member (Minimum 2)</td></tr><tr><td valign="middle">Annual Price<br>(save up to 20%)</td><td valign="middle">Free</td><td valign="middle"><p><em>$84 USD</em></p><p><em>($7 USD/month)</em></p></td><td valign="middle"><p>$180 USD</p><p>($15 USD/month)</p></td><td valign="middle">$504 USD ($42 USD/month)</td><td>$240 USD ($20 USD/month per member, min. 2)</td></tr><tr><td valign="middle">Priority credits *</td><td valign="middle">–</td><td valign="middle"><p><em>400 credits/month</em></p><p><em>(up to 3,200 images/month **)</em></p></td><td valign="middle"><p>1,000 credits/month</p><p>(up to 8,000 images/month **)</p></td><td valign="middle"><p>3,500 credits/month</p><p>(up to 28,000 images/month **)</p></td><td>1,500 credits/month per member (up to 12,000 images/month per member **)</td></tr><tr><td valign="middle">Slow credits *</td><td valign="middle"><p>10 credits/week ‡</p><p>(Up to 40 images/week)</p></td><td valign="middle"><p><em>100 credits/day</em></p><p><em>(Up to 800 images/day **)</em></p></td><td valign="middle">Unlimited</td><td valign="middle">Unlimited</td><td>Unlimited</td></tr><tr><td valign="middle">Priority credits * top-up</td><td valign="middle">–</td><td valign="middle"><em>$4 USD / 100 credits</em></td><td valign="middle">$4 USD / 150 credits</td><td valign="middle">$4 USD / 250 credits</td><td>$4 USD / 250 credits per member</td></tr><tr><td valign="middle">Concurrent generations in queues †</td><td valign="middle">1<br>(up to 4 images)</td><td valign="middle"><em>2</em><br><em>(up to 8 images)</em></td><td valign="middle">8<br>(up to 32 images)</td><td valign="middle">32<br>(up to 128 images)</td><td>32<br>(up to 128 images)</td></tr><tr><td valign="middle">Usage rights</td><td valign="middle">We do not restrict your rights in your output.</td><td valign="middle"><em>We do not restrict your rights in your output.</em></td><td valign="middle">We do not restrict your rights in your output.</td><td valign="middle">We do not restrict your rights in your output.</td><td>We do not restrict your rights in your output.</td></tr></tbody></table>
 
 All Ideogram subscriptions are subject to the Ideogram Terms of Service available at [<mark style="color:blue;">https://ideogram.ai/tos</mark>](https://ideogram.ai/tos). Please reference these Terms for additional conditions.
 
 {% hint style="danger" %} <mark style="color:red;">Any unused Priority credits awarded through the monthly plan will expire at the end of each monthly billing cycle</mark>. However, **Priority credits** purchased as a top-up will roll over to the next month and will only be used after your monthly **Priority credits** are depleted.
 
-If you cancel your subscription, any unused credits will expire at the end of the current billing period. The same applies to Slow credits for Basic plan subscribers.
+If you cancel your subscription, any unused credits will expire at the end of the current billing period. The same applies to Slow credits for existing subscribers on the legacy Basic plan.
 {% endhint %}
 
 {% hint style="info" %}
@@ -4987,7 +5489,7 @@ If you cancel your subscription, any unused credits will expire at the end of th
 
 ## Features & Tools
 
-<table data-full-width="true"><thead><tr><th valign="middle">Features &#x26; tools</th><th valign="middle">Free Plan</th><th valign="middle">Basic Plan</th><th valign="middle">Plus Plan</th><th valign="middle">Pro Plan</th><th>Team Plan</th></tr></thead><tbody><tr><td valign="middle"><a href="../using-ideogram/generation-settings/private-generations">Private generation</a></td><td valign="middle">–</td><td valign="middle">–</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../using-ideogram/features-and-tools/search">Search images</a></td><td valign="middle">✓ Own images only</td><td valign="middle">✓ Own + site wide</td><td valign="middle">✓ Own + site wide</td><td valign="middle">✓ Own + site wide</td><td>✓ Own + site wide</td></tr><tr><td valign="middle">Delete images</td><td valign="middle">–</td><td valign="middle">–</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../canvas-and-editing/image-upload">Image upload</a></td><td valign="middle">–</td><td valign="middle">–</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../using-ideogram/getting-started/downloading-images">Image download</a> ‡</td><td valign="middle">JPG only</td><td valign="middle">PNG and JPG</td><td valign="middle">PNG and JPG</td><td valign="middle">PNG and JPG</td><td>PNG and JPG</td></tr><tr><td valign="middle"><a href="../using-ideogram/features-and-tools/remix">Remix</a></td><td valign="middle">✓</td><td valign="middle">✓</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../using-ideogram/generation-settings/magic-prompt">Magic Prompt</a></td><td valign="middle">✓</td><td valign="middle">✓</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../using-ideogram/generation-settings/render-speed">Rendering</a></td><td valign="middle">Default</td><td valign="middle">Turbo, Default, Quality</td><td valign="middle">Turbo, Default, Quality</td><td valign="middle">Turbo, Default, Quality</td><td>Turbo, Default, Quality</td></tr><tr><td valign="middle"><a href="../using-ideogram/generation-settings/styles/styles-in-older-models">Style</a></td><td valign="middle">✓</td><td valign="middle">✓</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../using-ideogram/generation-settings/styles/styles-in-older-models">Style Reference</a></td><td valign="middle">–</td><td valign="middle">–</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../using-ideogram/generation-settings/character-reference">Character Reference</a></td><td valign="middle">Trial – 10 uses</td><td valign="middle">Trial – 10 uses</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../using-ideogram/generation-settings/tile">Tile</a> (v1.0)</td><td valign="middle">–</td><td valign="middle">✓</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../using-ideogram/generation-settings/negative-prompt">Negative Prompt</a></td><td valign="middle">–</td><td valign="middle">✓</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../using-ideogram/generation-settings/seed-number">Seed Number</a></td><td valign="middle">–</td><td valign="middle">✓</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../using-ideogram/generation-settings/aspect-ratios-and-resolutions">Aspect Ratios</a></td><td valign="middle">✓ Presets only</td><td valign="middle">✓ Presets + Custom</td><td valign="middle">✓ Presets + Custom</td><td valign="middle">✓ Presets + Custom</td><td>✓ Presets + Custom</td></tr><tr><td valign="middle"><a href="../using-ideogram/generation-settings/color-palette">Color Palettes</a></td><td valign="middle">✓ Presets only</td><td valign="middle">✓ Presets only</td><td valign="middle">✓ Presets + Custom</td><td valign="middle">✓ Presets + Custom</td><td>✓ Presets + Custom</td></tr><tr><td valign="middle"><a href="../using-ideogram/features-and-tools/describe">Describe</a></td><td valign="middle">✓ (1 priority credit)</td><td valign="middle">✓</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../canvas-and-editing/editor">Editor</a></td><td valign="middle">–</td><td valign="middle">✓</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../canvas-and-editing/canvas/canvas-overview">Canvas</a></td><td valign="middle">2 canvases</td><td valign="middle">Unlimited</td><td valign="middle">Unlimited</td><td valign="middle">Unlimited</td><td>Unlimited</td></tr><tr><td valign="middle"><a href="../../canvas-and-editing/canvas/canvas-overview#magic-fill">Magic Fill</a></td><td valign="middle">–</td><td valign="middle">–</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../../canvas-and-editing/canvas/canvas-overview#extend">Extend</a></td><td valign="middle">–</td><td valign="middle">–</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../using-ideogram/features-and-tools/upscale">Upscale</a></td><td valign="middle">–</td><td valign="middle">✓</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../using-ideogram/features-and-tools/replace-remove-background">Background removal</a></td><td valign="middle">–</td><td valign="middle">✓</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../using-ideogram/features-and-tools/batch-generation">Batch Generation</a> with CSV upload</td><td valign="middle">–</td><td valign="middle">–</td><td valign="middle">–</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle">Priority access to new features and improvements</td><td valign="middle">–</td><td valign="middle">✓</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr></tbody></table>
+<table data-full-width="true"><thead><tr><th valign="middle">Features &#x26; tools</th><th valign="middle">Free Plan</th><th valign="middle">Basic Plan - ⚠️ Legacy</th><th valign="middle">Plus Plan</th><th valign="middle">Pro Plan</th><th>Team Plan</th></tr></thead><tbody><tr><td valign="middle"><a href="../using-ideogram/generation-settings/private-generations">Private generation</a></td><td valign="middle">–</td><td valign="middle">–</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../using-ideogram/features-and-tools/search">Search images</a></td><td valign="middle">✓ Own images only</td><td valign="middle"><em>✓ Own + site wide</em></td><td valign="middle">✓ Own + site wide</td><td valign="middle">✓ Own + site wide</td><td>✓ Own + site wide</td></tr><tr><td valign="middle">Delete images</td><td valign="middle">–</td><td valign="middle">–</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../canvas-and-editing/image-upload">Image upload</a></td><td valign="middle">–</td><td valign="middle">–</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../using-ideogram/getting-started/downloading-images">Image download</a> ‡</td><td valign="middle">JPG only</td><td valign="middle"><em>PNG and JPG</em></td><td valign="middle">PNG and JPG</td><td valign="middle">PNG and JPG</td><td>PNG and JPG</td></tr><tr><td valign="middle"><a href="../using-ideogram/features-and-tools/remix">Remix</a></td><td valign="middle">✓</td><td valign="middle">✓</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../using-ideogram/generation-settings/magic-prompt">Magic Prompt</a></td><td valign="middle">✓</td><td valign="middle">✓</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../using-ideogram/generation-settings/render-speed">Rendering</a></td><td valign="middle">Default</td><td valign="middle"><em>Turbo, Default, Quality</em></td><td valign="middle">Turbo, Default, Quality</td><td valign="middle">Turbo, Default, Quality</td><td>Turbo, Default, Quality</td></tr><tr><td valign="middle"><a href="../using-ideogram/features-and-tools/reference-features/style-reference/styles-in-older-models">Style</a></td><td valign="middle">✓</td><td valign="middle">✓</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../using-ideogram/features-and-tools/reference-features/style-reference/styles-in-older-models">Style Reference</a></td><td valign="middle">–</td><td valign="middle">–</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../using-ideogram/features-and-tools/reference-features/character-reference">Character Reference</a></td><td valign="middle">Trial – 10 uses</td><td valign="middle"><em>Trial – 10 uses</em></td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../using-ideogram/generation-settings/tile">Tile</a> (v1.0)</td><td valign="middle">–</td><td valign="middle">✓</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../using-ideogram/generation-settings/negative-prompt">Negative Prompt</a></td><td valign="middle">–</td><td valign="middle">✓</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../using-ideogram/generation-settings/seed-number">Seed Number</a></td><td valign="middle">–</td><td valign="middle">✓</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../using-ideogram/generation-settings/aspect-ratio-and-dimensions">Aspect Ratios</a></td><td valign="middle">✓ Presets only</td><td valign="middle"><em>✓ Presets + Custom</em></td><td valign="middle">✓ Presets + Custom</td><td valign="middle">✓ Presets + Custom</td><td>✓ Presets + Custom</td></tr><tr><td valign="middle"><a href="../using-ideogram/generation-settings/color-palette">Color Palettes</a></td><td valign="middle">✓ Presets only</td><td valign="middle"><em>✓ Presets only</em></td><td valign="middle">✓ Presets + Custom</td><td valign="middle">✓ Presets + Custom</td><td>✓ Presets + Custom</td></tr><tr><td valign="middle"><a href="../using-ideogram/features-and-tools/describe">Describe</a></td><td valign="middle">✓ (1 priority credit)</td><td valign="middle">✓</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../canvas-and-editing/editor">Editor</a></td><td valign="middle">–</td><td valign="middle">✓</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../canvas-and-editing/canvas/canvas-overview">Canvas</a></td><td valign="middle">2 canvases</td><td valign="middle"><em>Unlimited</em></td><td valign="middle">Unlimited</td><td valign="middle">Unlimited</td><td>Unlimited</td></tr><tr><td valign="middle"><a href="../../canvas-and-editing/canvas/canvas-overview#magic-fill">Magic Fill</a></td><td valign="middle">–</td><td valign="middle">–</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../../canvas-and-editing/canvas/canvas-overview#extend">Extend</a></td><td valign="middle">–</td><td valign="middle">–</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../using-ideogram/features-and-tools/upscale">Upscale</a></td><td valign="middle">–</td><td valign="middle">✓</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../using-ideogram/features-and-tools/replace-or-remove-background">Background removal</a></td><td valign="middle">–</td><td valign="middle">✓</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle"><a href="../using-ideogram/features-and-tools/batch-generation">Batch Generation</a> with CSV upload</td><td valign="middle">–</td><td valign="middle">–</td><td valign="middle">–</td><td valign="middle">✓</td><td>✓</td></tr><tr><td valign="middle">Priority access to new features and improvements</td><td valign="middle">–</td><td valign="middle">✓</td><td valign="middle">✓</td><td valign="middle">✓</td><td>✓</td></tr></tbody></table>
 
 {% hint style="info" %}
 ‡  *JPG images are compressed at 70% quality. PNG are original images at 100% quality.*
@@ -5025,7 +5527,7 @@ Generations that are made with **Slow credits** may have wait times of up to sev
 
 {% hint style="danger" %} <mark style="color:red;">Any unused Priority credits awarded through the monthly plan will expire at the end of each monthly billing cycle</mark>. However, **Priority credits** purchased as a top-up will roll over to the next month and will only be used after your monthly **Priority credits** are depleted.
 
-If you cancel your subscription, any unused credits will expire at the end of the current billing period. The same applies to **Slow credits** for Basic plan subscribers.
+If you cancel your subscription, any unused credits will expire at the end of the current billing period. The same applies to Slow credits for existing subscribers on the legacy Basic plan.
 {% endhint %}
 
 ## Priority Credits Top-Up
@@ -5034,7 +5536,7 @@ When you exhaust your monthly allocation of Priority credits, you automatically 
 
 #### Benefits:
 
-* Top-up credit packs cost $4 USD each. One pack adds 100 credits to Basic, 150 credits to Plus, or 250 credits to Pro/Team, making the cost per credit lowest for Pro/Team users. You may purchase up to 10 packs per transaction.
+* Top-up credit packs cost $4 USD each. One pack adds 100 credits to users of the legacy Basic plan, 150 credits to Plus, or 250 credits to Pro/Team, making the cost per credit lowest for Pro/Team users. You may purchase up to 10 packs per transaction.
 * Any unused **Priority credits** purchased via a top-up will roll over to the following month and will only be used if you exhaust your monthly Priority credits. These rolled-over credits will continue to carry over month-to-month until they are fully used.
 
 #### Usage order:
@@ -5062,15 +5564,15 @@ When you want to purchase a plan for the first time, simply click on the "Upgrad
 
 Alternatively, click on your **Profile icon** located at the bottom of the left-side panel and then click the "Upgrade Plan" button. &#x20;
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FQFsY4yzgMMFvoKAn3KUv%2FIdeogram%20%E2%80%93%20mattematik%20-%20Light%20Dark%402x.png?alt=media&#x26;token=ea142dcd-9d73-4600-8c4e-116cbf7bd41b" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FE7XEcTz9XaSTyQEGoRor%2FIdeogram%20%E2%80%93%20mattematik%20-%20Light%20Dark%402x.png?alt=media&#x26;token=d46a1103-3a2f-4fe4-af0c-2f40391e3d27" alt="" width="272"></picture><figcaption><p>The Profile panel.</p></figcaption></figure>
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FQFsY4yzgMMFvoKAn3KUv%2FIdeogram%20%E2%80%93%20mattematik%20-%20Light%20Dark%402x.png?alt=media&#x26;token=ea142dcd-9d73-4600-8c4e-116cbf7bd41b" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FrjElyCZJ93KlyJlpoO20%2FIdeogram%20Subscription%20Plans%20-%20Light%402x%202.png?alt=media&#x26;token=2030e914-7438-4c9f-b318-0236726cb092" alt="" width="272"></picture><figcaption><p>The Profile panel.</p></figcaption></figure>
 
-You will then access the Ideogram pricing page, where you can compare and choose the plan (Basic, Plus, Pro or Team) and billing frequency (Annual or Monthly) that best suits your needs. Click on the  “Upgrade to...” button according to your choice, and you will be taken to the checkout page to enter your billing information and complete your purchase.
+You will then access the Ideogram pricing page, where you can compare and choose the plan (Plus, Pro or Team) and billing frequency (Annual or Monthly) that best suits your needs. Click on the  “Upgrade to...” button according to your choice, and you will be taken to the checkout page to enter your billing information and complete your purchase.
 
 {% hint style="danger" %}
 Ensure that you choose the plan that best suits your needs and select the appropriate billing frequency.
 {% endhint %}
 
-<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2F3kcahMI6DGSb724ddiWq%2FIdeogram%20-%20Upgrade%20Plan%20-%20Dark.webp?alt=media&#x26;token=1243fa46-abc3-4f9f-ab1b-88bb80edaf63" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fqrf8QYICSha8JQAIc32R%2FIdeogram%20-%20Upgrade%20Plan%20-%20Light.webp?alt=media&#x26;token=f0346de9-a693-47a9-ab20-0811d27c35af" alt=""></picture><figcaption><p>The pricing page as seen from a Free Plan user.</p></figcaption></figure>
+<figure><picture><source srcset="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2FYfI9pzoUqnnVV9V7fgbD%2FIdeogram%20Subscription%20Plans%20-%20Dark%402x.png?alt=media&#x26;token=02cef193-a536-4e3d-8a00-b28c0e7cfa25" media="(prefers-color-scheme: dark)"><img src="https://1799634369-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FzjhNby3LLsIikYuvxAJP%2Fuploads%2Fr7dVFsv65ErogRX50ZV0%2FIdeogram%20Subscription%20Plans%20-%20Light%402x%202.png?alt=media&#x26;token=d7599f25-2ccd-452b-8b4d-94cdeae59eaa" alt=""></picture><figcaption><p>The pricing page as seen from a Free Plan user.</p></figcaption></figure>
 
 
 # Team Plan

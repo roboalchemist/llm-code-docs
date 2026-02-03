@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/getting-started/integration-method/together.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Together AI Integration
 
 > Connect Helicone with Together AI, a platform for running open-source language models. Monitor and optimize your AI applications using Together AI's powerful models through a simple base_url configuration.

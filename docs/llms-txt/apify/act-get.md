@@ -9,13 +9,17 @@ https://api.apify.com/v2/acts/:actorId
 ```
 
 
-Clientshttps://docs.apify.com/api/client/python/reference/class/ActorClientAsync#gethttps://docs.apify.com/api/client/js/reference/class/ActorClient#getGets an object that contains all the details about a specific Actor.
+Gets an object that contains all the details about a specific Actor.
 
 ## Request
 
 ## Responses
 
 * 200
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

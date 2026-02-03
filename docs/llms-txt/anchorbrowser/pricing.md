@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/pricing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Pricing
 
 > Simple, transparent pricing for Anchor Browser automation platform

@@ -4,8 +4,6 @@
 title: Egress-Only Internet Gateway
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Egress-Only Internet Gateway
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.ec2_egress_only_internet_gateway.dataset/index.html
 ---
 
 # Egress-Only Internet Gateway
@@ -18,11 +16,11 @@ aws.ec2_egress_only_internet_gateway
 
 ## Fields
 
-| Title                            | ID   | Type   | Data Type                                                             | Description |
-| -------------------------------- | ---- | ------ | --------------------------------------------------------------------- | ----------- |
-| _key                             | core | string |
-| account_id                       | core | string |
-| attachments                      | core | json   | Information about the attachment of the egress-only internet gateway. |
-| egress_only_internet_gateway_arn | core | string |
-| egress_only_internet_gateway_id  | core | string | The ID of the egress-only internet gateway.                           |
-| tags                             | core | hstore |
+| Title                            | ID   | Type       | Data Type                                                             | Description |
+| -------------------------------- | ---- | ---------- | --------------------------------------------------------------------- | ----------- |
+| _key                             | core | string     |
+| account_id                       | core | string     |
+| attachments                      | core | json       | Information about the attachment of the egress-only internet gateway. |
+| egress_only_internet_gateway_arn | core | string     |
+| egress_only_internet_gateway_id  | core | string     | The ID of the egress-only internet gateway.                           |
+| tags                             | core | hstore_csv |

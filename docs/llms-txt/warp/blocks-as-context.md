@@ -1,4 +1,4 @@
-# Source: https://docs.warp.dev/agents/using-agents/agent-context/blocks-as-context.md
+# Source: https://docs.warp.dev/agent-platform/agent/using-agents/agent-context/blocks-as-context.md
 
 # Blocks as Context
 
@@ -8,7 +8,7 @@ Warp’s Agent can use blocks from your Agent conversations as context to better
 
 You can attach a block directly from the terminal blocklist by clicking the AI sparkles icon on it and selecting “Attach as context.”
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-974d0c18bc9b51dc26a5591c6613e69065891e5e%2Fremove_all_untracked_files.png?alt=media&#x26;token=2e0441da-f351-4df8-a8b3-b531d9dc0937" alt=""><figcaption><p>From a block of output, attach the block and ask Agent Mode to remove all untracked files.</p></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-974d0c18bc9b51dc26a5591c6613e69065891e5e%2Fremove_all_untracked_files.png?alt=media" alt=""><figcaption><p>From a block of output, attach the block and ask Agent Mode to remove all untracked files.</p></figcaption></figure>
 
 The most common use case is to ask the AI to fix an error. You can attach the error in a query to Agent Mode and type "fix it."
 

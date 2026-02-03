@@ -6,7 +6,6 @@ description: >-
   Restrict email domains that can receive monitor and scheduled report
   notifications with domain allowlist controls.
 breadcrumbs: Docs > Account Management > Domain Allowlist
-source_url: https://docs.datadoghq.com/org_settings/domain_allowlist/index.html
 ---
 
 # Domain Allowlist

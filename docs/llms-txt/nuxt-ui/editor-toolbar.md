@@ -12,11 +12,8 @@ The EditorToolbar component displays a toolbar of formatting buttons that automa
 - `bubble` (appears on text selection)
 - `floating` (appears on empty lines)
 
-<caution>
-
-It must be used inside an [Editor](/docs/components/editor) component's default slot to have access to the editor instance.
-
-</caution>
+> [!CAUTION]
+> It must be used inside an [Editor](/docs/components/editor) component's default slot to have access to the editor instance.
 
 ```vue [EditorToolbarExample.vue]
 <script setup lang="ts">
@@ -93,11 +90,8 @@ const items: EditorToolbarItem[][] = [[{
 </template>
 ```
 
-<callout icon="i-custom-tiptap">
-
-The bubble and floating layouts use TipTap's [BubbleMenu](https://tiptap.dev/docs/editor/extensions/functionality/bubble-menu) and [FloatingMenu](https://tiptap.dev/docs/editor/extensions/functionality/floating-menu) extensions.
-
-</callout>
+> [!NOTE]
+> The bubble and floating layouts use TipTap's [BubbleMenu](https://tiptap.dev/docs/editor/extensions/functionality/bubble-menu) and [FloatingMenu](https://tiptap.dev/docs/editor/extensions/functionality/floating-menu) extensions.
 
 ### Items
 
@@ -110,7 +104,7 @@ Use the `items` prop as an array of objects with the following properties:
 - `variant?: "solid" | "outline" | "soft" | "ghost" | "link" | "subtle"`
 - `activeVariant?: "solid" | "outline" | "soft" | "ghost" | "link" | "subtle"`
 - `size?: "xs" | "sm" | "md" | "lg" | "xl"`
-- [`kind?: "mark" | "textAlign" | "heading" | "link" | "image" | "blockquote" | "bulletList" | "orderedList" | "codeBlock" | "horizontalRule" | "paragraph" | "undo" | "redo" | "clearFormatting" | "duplicate" | "delete" | "moveUp" | "moveDown" | "suggestion" | "mention" | "emoji"`](/docs/components/editor#handlers)
+- [`kind?: "mark" | "textAlign" | "heading" | "link" | "image" | "blockquote" | "bulletList" | "orderedList" | "taskList" | "codeBlock" | "horizontalRule" | "paragraph" | "undo" | "redo" | "clearFormatting" | "duplicate" | "delete" | "moveUp" | "moveDown" | "suggestion" | "mention" | "emoji"`](/docs/components/editor#handlers)
 - `disabled?: boolean`
 - `loading?: boolean`
 - `active?: boolean`
@@ -277,17 +271,11 @@ const items: EditorToolbarItem[][] = [
 </template>
 ```
 
-<note>
+> [!NOTE]
+> You can also pass an array of arrays to the `items` prop to create separated groups of items.
 
-You can also pass an array of arrays to the `items` prop to create separated groups of items.
-
-</note>
-
-<tip>
-
-Each item can take an `items` array of objects with the same properties as the `items` prop to create a [DropdownMenu](/docs/components/dropdown-menu).
-
-</tip>
+> [!TIP]
+> Each item can take an `items` array of objects with the same properties as the `items` prop to create a [DropdownMenu](/docs/components/dropdown-menu).
 
 ### Layout
 
@@ -490,12 +478,19 @@ function setLink() {
 
   const { selection } = props.editor.state
   const isEmpty = selection.empty
+  const hasCode = props.editor.isActive('code')
 
   let chain = props.editor.chain().focus()
-  chain = chain.extendMarkRange('link').setLink({ href: url.value })
 
-  if (isEmpty) {
-    chain = chain.insertContent({ type: 'text', text: url.value })
+  // When linking code, extend the code mark range first to select the full code
+  if (hasCode && !isEmpty) {
+    chain = chain.extendMarkRange('code').setLink({ href: url.value })
+  } else {
+    chain = chain.extendMarkRange('link').setLink({ href: url.value })
+
+    if (isEmpty) {
+      chain = chain.insertContent({ type: 'text', text: url.value })
+    }
   }
 
   chain.run()
@@ -670,7 +665,7 @@ interface EditorToolbarProps {
    * @default "\"sm\""
    */
   size?: "xs" | "sm" | "md" | "lg" | "xl" | undefined;
-  items?: ArrayOrNested<EditorToolbarItem<EditorCustomHandlers>> | undefined;
+  items?: T | undefined;
   ui?: { root?: ClassNameValue; base?: ClassNameValue; group?: ClassNameValue; separator?: ClassNameValue; } | undefined;
   /**
    * @default "\"fixed\""
@@ -760,8 +755,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

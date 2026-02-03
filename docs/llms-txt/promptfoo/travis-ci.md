@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/integrations/travis-ci/
+
 # Travis CI Integration
 
 This guide demonstrates how to set up promptfoo with Travis CI to run evaluations as part of your CI pipeline.

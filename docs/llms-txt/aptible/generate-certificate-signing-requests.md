@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/app-guides/generate-certificate-signing-requests.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to generate certificate signing requests
 
 > 📘 If you're unsure about creating certificates or don't want to manage them, use Aptible's [Managed TLS](/core-concepts/apps/connecting-to-apps/app-endpoints/managed-tls) option!

@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/jest/no-restricted-jest-methods.md
 ---
-# jest/no-restricted-jest-methods&#x20;
 
 ### What it does
 

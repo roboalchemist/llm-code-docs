@@ -1,12 +1,10 @@
 # Source: https://docs.livekit.io/transport/self-hosting/distributed.md
 
-# Source: https://docs.livekit.io/home/self-hosting/distributed.md
-
 LiveKit docs › Self-hosting › Distributed multi-region
 
 ---
 
-# Distributed Setup
+# Distributed multi-region
 
 > LiveKit is architected to be distributed, with homogeneous instances running across many servers. In distributed mode, Redis is required as shared data store and message bus.
 
@@ -67,7 +65,7 @@ node_selector:
 
 ---
 
-This document was rendered at 2025-11-18T23:55:00.311Z.
-For the latest version of this document, see [https://docs.livekit.io/home/self-hosting/distributed.md](https://docs.livekit.io/home/self-hosting/distributed.md).
+This document was rendered at 2026-02-03T03:25:20.903Z.
+For the latest version of this document, see [https://docs.livekit.io/transport/self-hosting/distributed.md](https://docs.livekit.io/transport/self-hosting/distributed.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

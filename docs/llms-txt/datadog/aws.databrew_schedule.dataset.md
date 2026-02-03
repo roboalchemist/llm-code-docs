@@ -4,8 +4,6 @@
 title: Glue DataBrew Schedule
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Glue DataBrew Schedule
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.databrew_schedule.dataset/index.html
 ---
 
 # Glue DataBrew Schedule
@@ -30,4 +28,4 @@ aws.databrew_schedule
 | last_modified_date | core | timestamp     | The date and time when the schedule was last modified.                                                                       |
 | name               | core | string        | The name of the schedule.                                                                                                    |
 | resource_arn       | core | string        | The Amazon Resource Name (ARN) of the schedule.                                                                              |
-| tags               | core | hstore        |
+| tags               | core | hstore_csv    |

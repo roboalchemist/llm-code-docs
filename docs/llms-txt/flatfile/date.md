@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/date.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Date Format Normalizer
 
 > Automatically parse and standardize date values during data import, converting various date formats into a consistent output format.
@@ -10,7 +14,7 @@ The Date Format Normalizer plugin for Flatfile is designed to automatically pars
 
 Install the plugin via npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-validate-date
 ```
 
@@ -52,7 +56,7 @@ The plugin accepts a configuration object with the following parameters:
 This example applies date normalization to the 'start\_date' field on all sheets, converting dates to 'YYYY-MM-DD' format.
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener'
   import { validateDate } from '@flatfile/plugin-validate-date'
 
@@ -67,7 +71,7 @@ This example applies date normalization to the 'start\_date' field on all sheets
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener'
   import { validateDate } from '@flatfile/plugin-validate-date'
 
@@ -88,7 +92,7 @@ This example applies date normalization to the 'start\_date' field on all sheets
 This example configures the plugin to run only on the 'contacts' sheet. It normalizes two different date fields, 'birth\_date' and 'registration\_date', to the 'MM/dd/yyyy' format and excludes time.
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener'
   import { validateDate } from '@flatfile/plugin-validate-date'
 
@@ -104,7 +108,7 @@ This example configures the plugin to run only on the 'contacts' sheet. It norma
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener'
   import { validateDate } from '@flatfile/plugin-validate-date'
 
@@ -126,7 +130,7 @@ This example configures the plugin to run only on the 'contacts' sheet. It norma
 This example normalizes the 'event\_timestamp' field to a format that includes both date and time.
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener'
   import { validateDate } from '@flatfile/plugin-validate-date'
 
@@ -142,7 +146,7 @@ This example normalizes the 'event\_timestamp' field to a format that includes b
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener'
   import { validateDate } from '@flatfile/plugin-validate-date'
 
@@ -164,7 +168,7 @@ This example normalizes the 'event\_timestamp' field to a format that includes b
 If a date string cannot be parsed, the plugin adds an error to the specific cell. For example, if you try to import a record with `due_date: 'not a real date'`, the plugin will not change the value but will attach an error message.
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   // Source Record:
   // { due_date: 'not a real date' }
 
@@ -188,7 +192,7 @@ If a date string cannot be parsed, the plugin adds an error to the specific cell
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   // Source Record:
   // { due_date: 'not a real date' }
 

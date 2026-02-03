@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/util/hash-a-password.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Hash a password
 
 The `Bun.password.hash()` function provides a fast, built-in mechanism for securely hashing passwords in Bun. No third-party dependencies are required.
@@ -51,4 +55,4 @@ const isMatch = await Bun.password.verify(password, hash);
 
 ***
 
-See [Docs > API > Hashing](https://bun.com/docs/api/hashing#bun-password) for complete documentation.
+See [Docs > API > Hashing](/runtime/hashing#bun-password) for complete documentation.

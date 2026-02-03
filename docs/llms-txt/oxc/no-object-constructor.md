@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/no-object-constructor.md
 ---
-# eslint/no-object-constructor&#x20;
 
 ### What it does
 

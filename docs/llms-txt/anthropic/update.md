@@ -1,74 +1,98 @@
 # Source: https://platform.claude.com/docs/en/api/admin/workspaces/members/update.md
 
+# Source: https://platform.claude.com/docs/en/api/admin/workspaces/update.md
+
+# Source: https://platform.claude.com/docs/en/api/admin/users/update.md
+
+# Source: https://platform.claude.com/docs/en/api/admin/api_keys/update.md
+
 ## Update
 
-**post** `/v1/organizations/workspaces/{workspace_id}/members/{user_id}`
+**post** `/v1/organizations/api_keys/{api_key_id}`
 
-Update Workspace Member
+Update Api Key
 
 ### Path Parameters
 
-- `workspace_id: string`
+- `api_key_id: string`
 
-  ID of the Workspace.
-
-- `user_id: string`
-
-  ID of the User.
+  ID of the API key.
 
 ### Body Parameters
 
-- `workspace_role: "workspace_user" or "workspace_developer" or "workspace_admin" or "workspace_billing"`
+- `name: optional string`
 
-  New workspace role for the User.
+  Name of the API key.
 
-  - `"workspace_user"`
+- `status: optional "active" or "inactive" or "archived"`
 
-  - `"workspace_developer"`
+  Status of the API key.
 
-  - `"workspace_admin"`
+  - `"active"`
 
-  - `"workspace_billing"`
+  - `"inactive"`
+
+  - `"archived"`
 
 ### Returns
 
-- `WorkspaceMember = object { type, user_id, workspace_id, workspace_role }`
+- `APIKey = object { id, created_at, created_by, 5 more }`
 
-  - `type: "workspace_member"`
+  - `id: string`
+
+    ID of the API key.
+
+  - `created_at: string`
+
+    RFC 3339 datetime string indicating when the API Key was created.
+
+  - `created_by: object { id, type }`
+
+    The ID and type of the actor that created the API key.
+
+    - `id: string`
+
+      ID of the actor that created the object.
+
+    - `type: string`
+
+      Type of the actor that created the object.
+
+  - `name: string`
+
+    Name of the API key.
+
+  - `partial_key_hint: string`
+
+    Partially redacted hint for the API key.
+
+  - `status: "active" or "inactive" or "archived"`
+
+    Status of the API key.
+
+    - `"active"`
+
+    - `"inactive"`
+
+    - `"archived"`
+
+  - `type: "api_key"`
 
     Object type.
 
-    For Workspace Members, this is always `"workspace_member"`.
+    For API Keys, this is always `"api_key"`.
 
-    - `"workspace_member"`
-
-  - `user_id: string`
-
-    ID of the User.
+    - `"api_key"`
 
   - `workspace_id: string`
 
-    ID of the Workspace.
-
-  - `workspace_role: "workspace_user" or "workspace_developer" or "workspace_admin" or "workspace_billing"`
-
-    Role of the Workspace Member.
-
-    - `"workspace_user"`
-
-    - `"workspace_developer"`
-
-    - `"workspace_admin"`
-
-    - `"workspace_billing"`
+    ID of the Workspace associated with the API key, or null if the API key belongs to the default Workspace.
 
 ### Example
 
 ```http
-curl https://api.anthropic.com/v1/organizations/workspaces/$WORKSPACE_ID/members/$USER_ID \
+curl https://api.anthropic.com/v1/organizations/api_keys/$API_KEY_ID \
     -H 'Content-Type: application/json' \
     -H "X-Api-Key: $ANTHROPIC_ADMIN_API_KEY" \
-    -d '{
-          "workspace_role": "workspace_user"
-        }'
+    -d '{}'
 ```

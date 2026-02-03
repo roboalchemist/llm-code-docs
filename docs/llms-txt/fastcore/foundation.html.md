@@ -10,24 +10,36 @@
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L20"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L21"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### working_directory
 
->  working_directory (path)
+``` python
+
+def working_directory(
+    path
+):
+
+```
 
 *Change working directory to `path` and return to previous on exit.*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L28"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L29"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### add_docs
 
->  add_docs (cls, cls_doc=None, **docs)
+``` python
+
+def add_docs(
+    cls, cls_doc:NoneType=None, docs:VAR_KEYWORD
+):
+
+```
 
 *Copy values from
 [`docs`](https://fastcore.fast.ai/foundation.html#docs) to `cls`
@@ -81,12 +93,18 @@ test_fail(f, contains="Missing docs")
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L42"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L43"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### docs
 
->  docs (cls)
+``` python
+
+def docs(
+    cls
+):
+
+```
 
 *Decorator version of
 [`add_docs`](https://fastcore.fast.ai/foundation.html#add_docs), using
@@ -138,7 +156,13 @@ test_eq(_T.f.__doc__, "The docstring for method f.")
 
 ### is_iter
 
->  is_iter (o)
+``` python
+
+def is_iter(
+    o
+):
+
+```
 
 *Test whether `o` can be used in a `for` loop*
 
@@ -152,12 +176,18 @@ assert (o for o in range(3))
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L48"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L49"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### coll_repr
 
->  coll_repr (c, max_n=20)
+``` python
+
+def coll_repr(
+    c, max_n:int=250
+):
+
+```
 
 *String repr of up to `max_n` items of (possibly lazy) collection `c`*
 
@@ -170,37 +200,46 @@ used by [`L`](https://fastcore.fast.ai/foundation.html#l) to build a
 `__repr__` that displays the length of a list in addition to a preview
 of a list.
 
-Below is an example of the `__repr__` string created for a list of 1000
-elements:
-
 ``` python
-test_eq(coll_repr(range(1000),10), '(#1000) [0,1,2,3,4,5,6,7,8,9...]')
-test_eq(coll_repr(range(1000), 5), '(#1000) [0,1,2,3,4...]')
-test_eq(coll_repr(range(10),   5), '(#10) [0,1,2,3,4...]')
-test_eq(coll_repr(range(5),    5), '(#5) [0,1,2,3,4]')
+test_eq(coll_repr(range(1000),10), '(#1000) [0, 1, 2, 3, 4, 5, 6, 7, 8, 9...]')
+test_eq(coll_repr(range(1000), 5), '(#1000) [0, 1, 2, 3, 4...]')
+test_eq(coll_repr(range(10),   5), '(#10) [0, 1, 2, 3, 4...]')
+test_eq(coll_repr(range(5),    5), '[0, 1, 2, 3, 4]')
 ```
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L54"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L58"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### is_bool
 
->  is_bool (x)
+``` python
+
+def is_bool(
+    x
+):
+
+```
 
 *Check whether `x` is a bool or None*
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L59"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L63"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### mask2idxs
 
->  mask2idxs (mask)
+``` python
+
+def mask2idxs(
+    mask
+):
+
+```
 
 *Convert bool mask or index list to index
 [`L`](https://fastcore.fast.ai/foundation.html#l)*
@@ -214,12 +253,18 @@ test_eq(mask2idxs(array([1,2,3])), [1,2,3])
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L681"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L672"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### cycle
 
->  cycle (o)
+``` python
+
+def cycle(
+    o
+):
+
+```
 
 *Like `itertools.cycle` except creates list of `None`s if `o` is empty*
 
@@ -233,12 +278,18 @@ test_eq(itertools.islice(cycle(1),3), [1,1,1])
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L687"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L678"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### zip_cycle
 
->  zip_cycle (x, *args)
+``` python
+
+def zip_cycle(
+    x, args:VAR_POSITIONAL
+):
+
+```
 
 *Like `itertools.zip_longest` but
 [`cycle`](https://fastcore.fast.ai/basics.html#cycle)s through elements
@@ -251,12 +302,18 @@ test_eq(zip_cycle([1,2,3,4],list('abc')), [(1, 'a'), (2, 'b'), (3, 'c'), (4, 'a'
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L81"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L85"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### is_indexer
 
->  is_indexer (idx)
+``` python
+
+def is_indexer(
+    idx
+):
+
+```
 
 *Test whether `idx` will index a single item in a list*
 
@@ -279,12 +336,18 @@ assert not is_indexer(np.array([[1, 2], [3, 4]]))
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L86"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L90"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### product
 
->  product (xs)
+``` python
+
+def product(
+    xs
+):
+
+```
 
 *The product of elements of `xs`, with `None`s removed*
 
@@ -306,17 +369,145 @@ sum([])
 
     0
 
+### flatmap
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L95"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### flatmap
+
+``` python
+
+def flatmap(
+    f, xs, kwargs:VAR_KEYWORD
+):
+
+```
+
+*Apply f to each element and flatten the results into a single list.*
+
+[`flatmap`](https://fastcore.fast.ai/foundation.html#flatmap) is a
+fundamental operation in functional programming that combines mapping
+and flattening into a single step. Where `map` applies a function to
+each element and returns a list of results,
+[`flatmap`](https://fastcore.fast.ai/foundation.html#flatmap) goes
+further: it expects the function to return a sequence for each element,
+then concatenates all those sequences into one flat list, which is
+useful for operations where each input naturally produces zero, one, or
+many outputs.
+
+`flatmap(f, xs)` is just a named abstraction for the list comprehension
+`[y for x in xs for y in f(x)]`. Giving it a name makes the intent
+clearer and the code more readable.
+
+``` python
+flatmap(range, range(4))
+```
+
+    [0, 0, 1, 0, 1, 2]
+
+Compare `map` (which nests results) with
+[`flatmap`](https://fastcore.fast.ai/foundation.html#flatmap) (which
+flattens them):
+
+``` python
+list(map(str.split, ["hello world", "foo bar"]))  # nested
+```
+
+    [['hello', 'world'], ['foo', 'bar']]
+
+``` python
+flatmap(str.split, ["hello world", "flatmap rocks"])
+```
+
+    ['hello', 'world', 'flatmap', 'rocks']
+
+Common use cases include: parsing structured text (splitting lines into
+words), expanding nested data (extracting all emails from a list of
+contacts), filtering with transformation (keeping and transforming only
+valid items), and traversing hierarchies (listing files across multiple
+directories). The pattern elegantly handles “optional” results
+too—return an empty list to skip an item, or a single-element list to
+include it. This avoids the nested lists you’d get from `map` followed
+by a separate [`flatten`](https://fastcore.fast.ai/basics.html#flatten),
+and expresses the intent more directly. Below we show a few examples.
+
+Parse CSV-like lines into all values:
+
+``` python
+flatmap(Self.split(','), ["a,b,c", "d,e"])
+```
+
+    ['a', 'b', 'c', 'd', 'e']
+
+Return `[]` to skip an item, `[x]` to keep it, or `[x, y, ...]` to
+expand it:
+
+``` python
+flatmap(lambda x: [x*10] if x else [], [1, 0, 2])  # skips zeros
+```
+
+    [10, 20]
+
+``` python
+dat = [{'emails': ['a@x.com','b@x.com']}, {'emails': []}, {'emails': ['c@x.com']}]
+flatmap(Self['emails'], dat)
+```
+
+    ['a@x.com', 'b@x.com', 'c@x.com']
+
+All files in multiple directories:
+
+``` python
+flatmap(Self.iterdir(), [Path('files'), Path('images')])
+```
+
+    [Path('files/test.txt.bz2'),
+     Path('images/mnist3.png'),
+     Path('images/att_00000.png'),
+     Path('images/att_00005.png'),
+     Path('images/att_00007.png'),
+     Path('images/att_00006.png'),
+     Path('images/puppy.jpg')]
+
+Pair each item with its factors:
+
+``` python
+def factpairs(n): return [(n,i) for i in range(1,n+1) if n%i==0]
+flatmap(factpairs, [6,10])
+```
+
+    [(6, 1), (6, 2), (6, 3), (6, 6), (10, 1), (10, 2), (10, 5), (10, 10)]
+
+You can also use kwargs, for instance to apply `str.split` with a custom
+separator:
+
+``` python
+flatmap(str.split, ["a-b-c", "d-e"], sep="-")
+```
+
+    ['a', 'b', 'c', 'd', 'e']
+
 ## [`L`](https://fastcore.fast.ai/foundation.html#l) helpers
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L91"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L100"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### CollBase
 
->  CollBase (items)
+``` python
+
+def CollBase(
+    items
+):
+
+```
 
 *Base class for composing a list of `items`*
 
@@ -337,12 +528,18 @@ test_eq(str(l), '[2, 100, 4, 5]')   # __repr__
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L108"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L117"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### L
 
->  L (x=None, *args, **kwargs)
+``` python
+
+def L(
+    items:NoneType=None, rest:VAR_POSITIONAL, use_list:bool=False, match:NoneType=None
+):
+
+```
 
 *Behaves like a list of `items` but can also index with list of indices
 or masks*
@@ -352,18 +549,12 @@ replacement for a python `list`. Inspired by
 [NumPy](http://www.numpy.org/),
 [`L`](https://fastcore.fast.ai/foundation.html#l), supports advanced
 indexing and has additional methods (outlined below) that provide
-additional functionality and encourage simple expressive code. For
-example, the code below takes a list of pairs, selects the second item
-of each pair, takes its absolute value, filters items greater than 4,
-and adds them up:
+additional functionality and encourage simple expressive code.
+
+### Examples and overview
 
 ``` python
 from fastcore.utils import gt
-```
-
-``` python
-d = dict(a=1,b=-5,d=6,e=9).items()
-test_eq(L(d).itemgot(1).map(abs).filter(gt(4)).sum(), 20) # abs(-5) + abs(6) + abs(9) = 20; 1 was filtered out.
 ```
 
 Read [this overview section](https://fastcore.fast.ai/tour.html#L) for a
@@ -379,18 +570,18 @@ can also be used with [`L`](https://fastcore.fast.ai/foundation.html#l).
 t = L(range(12))
 test_eq(t, list(range(12)))
 test_ne(t, list(range(11)))
-t.reverse()
-test_eq(t[0], 11)
 t[3] = "h"
 test_eq(t[3], "h")
 t[3,5] = ("j","k")
 test_eq(t[3,5], ["j","k"])
 test_eq(t, L(t))
 test_eq(L(L(1,2),[3,4]), ([1,2],[3,4]))
+t[0:3] = [1, 2, 3]
+test_eq(t[0:3], [1, 2, 3])
 t
 ```
 
-    (#12) [11,10,9,'j',7,'k',5,4,3,2,1,0]
+    [1, 2, 3, 'j', 4, 'k', 6, 7, 8, 9, 10, 11]
 
 Any [`L`](https://fastcore.fast.ai/foundation.html#l) is a `Sequence` so
 you can use it with methods like `random.sample`:
@@ -408,7 +599,7 @@ random.seed(0)
 random.sample(t, 3)
 ```
 
-    [5, 0, 11]
+    [6, 11, 1]
 
 There are optimized indexers for arrays, tensors, and DataFrames.
 
@@ -443,26 +634,7 @@ test_eq(t, [5,1,3,2,4])
 test_eq(L(1,2,3), [1,2,3])
 test_eq(L(1,2,3), L(1,2,3))
 t = L(1)*5
-t = t.map(operator.neg)
-test_eq(t,[-1]*5)
 test_eq(~L([True,False,False]), L([False,True,True]))
-t = L(range(4))
-test_eq(zip(t, L(1).cycle()), zip(range(4),(1,1,1,1)))
-t = L.range(100)
-test_shuffled(t,t.shuffle())
-```
-
-``` python
-test_eq(L([]).sum(), 0)
-test_eq(L([]).product(), 1)
-```
-
-``` python
-def _f(x,a=0): return x+a
-t = L(1)*5
-test_eq(t.map(_f), t)
-test_eq(t.map(_f,1), [2]*5)
-test_eq(t.map(_f,a=2), [3]*5)
 ```
 
 An [`L`](https://fastcore.fast.ai/foundation.html#l) can be constructed
@@ -521,12 +693,18 @@ test_ne(L(['a', 'b']), {'a':1, 'b':2})
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L119"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L128"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### L.\_\_getitem\_\_
 
->  L.__getitem__ (idx)
+``` python
+
+def __getitem__(
+    idx
+):
+
+```
 
 *Retrieve `idx` (can be list of indices, or mask, or int) items*
 
@@ -542,12 +720,18 @@ test_eq(t[array(3)], 3)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L131"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L140"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### L.\_\_setitem\_\_
 
->  L.__setitem__ (idx, o)
+``` python
+
+def __setitem__(
+    idx, o
+):
+
+```
 
 *Set `idx` (can be list of indices, or mask, or int) items to `o` (which
 is broadcast if not iterable)*
@@ -562,12 +746,18 @@ test_eq(t[4,6], [1,2])
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L178"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L180"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### L.unique
 
->  L.unique (sort=False, bidir=False, start=None)
+``` python
+
+def unique(
+    sort:bool=False, bidir:bool=False, start:NoneType=None
+):
+
+```
 
 *Unique items, in stable order*
 
@@ -578,12 +768,18 @@ test_eq(L(4,1,2,3,4,4).unique(), [4,1,2,3])
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L179"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L186"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### L.val2idx
 
->  L.val2idx ()
+``` python
+
+def val2idx(
+    
+):
+
+```
 
 *Dict from value to index*
 
@@ -594,87 +790,186 @@ test_eq(L(1,2,3).val2idx(), {3:2,1:0,2:1})
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L181"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L192"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
-### L.groupby
+### L.range
 
->  L.groupby (key, val=<function noop>)
+``` python
+
+def range(
+    a, b:NoneType=None, step:NoneType=None
+):
+
+```
+
+*Class Method: Same as `range`, but returns
+[`L`](https://fastcore.fast.ai/foundation.html#l). Can pass collection
+for `a`, to use `len(a)`*
+
+``` python
+test_eq_type(L.range([1,1,1]), L(range(3)))
+test_eq_type(L.range(5,2,2), L(range(5,2,2)))
+```
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L198"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### L.enumerate
+
+``` python
+
+def enumerate(
+    
+):
+
+```
+
+*Same as `enumerate`*
+
+``` python
+test_eq(L('a','b','c').enumerate(), [(0,'a'),(1,'b'),(2,'c')])
+```
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L204"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### L.renumerate
+
+``` python
+
+def renumerate(
+    
+):
+
+```
 
 *Same as
-[`fastcore.basics.groupby`](https://fastcore.fast.ai/basics.html#groupby)*
+[`renumerate`](https://fastcore.fast.ai/basics.html#renumerate)*
 
 ``` python
-words = L.split('aaa abc bba')
-test_eq(words.groupby(0, (1,2)), {'a':[('a','a'),('b','c')], 'b':[('b','a')]})
+test_eq(L('a','b','c').renumerate(), [('a', 0), ('b', 1), ('c', 2)])
 ```
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L173"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L210"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
-### L.filter
-
->  L.filter (f=<function noop>, negate=False, **kwargs)
-
-*Create new [`L`](https://fastcore.fast.ai/foundation.html#l) filtered
-by predicate `f`, passing `args` and `kwargs` to `f`*
+### L.split
 
 ``` python
-list(t)
+
+def split(
+    s, sep:NoneType=None, maxsplit:int=-1
+):
+
 ```
 
-    [0, 1, 2, 3, 1, 5, 2, 7, 8, 9, 10, 11]
+*Class Method: Same as `str.split`, but returns an
+[`L`](https://fastcore.fast.ai/foundation.html#l)*
+
+[`L.split`](https://fastcore.fast.ai/foundation.html#l.split) is a class
+method that works like `str.split`, but returns an
+[`L`](https://fastcore.fast.ai/foundation.html#l) instead of a list:
 
 ``` python
-test_eq(t.filter(lambda o:o<5), [0,1,2,3,1,2])
-test_eq(t.filter(lambda o:o<5, negate=True), [5,7,8,9,10,11])
-```
-
-------------------------------------------------------------------------
-
-<a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L169"
-target="_blank" style="float:right; font-size:smaller">source</a>
-
-### L.argwhere
-
->  L.argwhere (f, negate=False, **kwargs)
-
-*Like `filter`, but return indices for matching items*
-
-``` python
-test_eq(t.argwhere(lambda o:o<5), [0,1,2,3,4,6])
+test_eq(L.split('a b c'), ['a','b','c'])
+test_eq(L.split('a-b-c', '-'), ['a','b','c'])
+test_eq(L.split('a-b-c', '-', maxsplit=1), ['a','b-c'])
 ```
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L170"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L216"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
-### L.argfirst
-
->  L.argfirst (f, negate=False)
-
-*Return index of first matching item*
+### L.splitlines
 
 ``` python
-test_eq(t.argfirst(lambda o:o>4), 5)
-test_eq(t.argfirst(lambda o:o>4,negate=True),0)
+
+def splitlines(
+    s, keepends:bool=False
+):
+
+```
+
+*Class Method: Same as `str.splitlines`, but returns an
+[`L`](https://fastcore.fast.ai/foundation.html#l)*
+
+[`L.splitlines`](https://fastcore.fast.ai/foundation.html#l.splitlines)
+is a class method that works like `str.splitlines`, but returns an
+[`L`](https://fastcore.fast.ai/foundation.html#l) instead of a list:
+
+``` python
+test_eq(L.splitlines('a\nb\nc'), ['a','b','c'])
+test_eq(L.splitlines('a\nb\nc', keepends=True), ['a\n','b\n','c'])
 ```
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L168"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L221"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
-### L.map
+### curryable
 
->  L.map (f, *args, **kwargs)
+``` python
+
+def curryable(
+    f
+):
+
+```
+
+The [`curryable`](https://fastcore.fast.ai/foundation.html#curryable)
+decorator enables a powerful pattern: methods decorated with it can be
+called either as instance methods (the normal way) or as class methods
+that return a partial function.
+
+For instance, consider processing nested data structures. Without
+curryable, you’d write:
+
+``` python
+L(lines).map(lambda x: L(x).map(int))
+```
+
+With curryable, you can write:
+
+``` python
+L(lines).map(L.map(int))
+```
+
+When you call `L.map(int)` on the class (not an instance), the decorator
+returns a `functools.partial` that waits for an iterable to be passed in
+later.
+
+This pattern is especially valuable for data parsing pipelines where
+you’re frequently mapping transformations over nested structures. The
+curried form reads more naturally and composes well with other curried
+functions like
+[`splitter()`](https://fastcore.fast.ai/foundation.html#splitter) and
+[`linesplitter()`](https://fastcore.fast.ai/foundation.html#linesplitter).
+
+------------------------------------------------------------------------
+
+### map
+
+``` python
+
+def map(
+    f, args:VAR_POSITIONAL, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Create new [`L`](https://fastcore.fast.ai/foundation.html#l) with `f`
 applied to all `items`, passing `args` and `kwargs` to `f`*
@@ -708,12 +1003,211 @@ test_eq(L.range(4).map(f, b=arg0), range(4))
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L182"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L236"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### splitter
+
+``` python
+
+def splitter(
+    sep:NoneType=None, maxsplit:int=-1
+):
+
+```
+
+*Create a partial function that splits strings into
+[`L`](https://fastcore.fast.ai/foundation.html#l)*
+
+A curried version of
+[`L.split`](https://fastcore.fast.ai/foundation.html#l.split), useful
+for mapping over collections of strings. For instance to split some
+lines with the same separator:
+
+``` python
+data = '''1,2,3
+4,5,6
+7,8,9'''
+
+grid = L.splitlines(data).map(splitter(','))
+grid
+```
+
+    [['1', '2', '3'], ['4', '5', '6'], ['7', '8', '9']]
+
+As mentioned in the
+[`curryable`](https://fastcore.fast.ai/foundation.html#curryable)
+discussion, `map` can be curried. This can work well together with
+[`L.splitlines`](https://fastcore.fast.ai/foundation.html#l.splitlines)
+output:
+
+``` python
+intgrid = grid.map(L.map(int))
+intgrid
+```
+
+    [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+Although in this particular example numpy has a useful shortcut:
+
+``` python
+np.genfromtxt(data.splitlines(), delimiter=',', dtype=int)
+```
+
+    array([[1, 2, 3],
+           [4, 5, 6],
+           [7, 8, 9]])
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L241"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### linesplitter
+
+``` python
+
+def linesplitter(
+    keepends:bool=False
+):
+
+```
+
+*Create a partial function that splits strings by lines into
+[`L`](https://fastcore.fast.ai/foundation.html#l)*
+
+A curried version of
+[`L.splitlines`](https://fastcore.fast.ai/foundation.html#l.splitlines),
+useful for splitting multi-line strings into
+[`L`](https://fastcore.fast.ai/foundation.html#l)s when mapping over a
+collection.
+
+``` python
+L(['a\nb\nc', 'd\ne']).map(linesplitter())
+```
+
+    [['a', 'b', 'c'], ['d', 'e']]
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L642"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### groupby
+
+``` python
+
+def groupby(
+    key, val:function=noop
+):
+
+```
+
+*Same as
+[`fastcore.basics.groupby`](https://fastcore.fast.ai/basics.html#groupby)*
+
+``` python
+words = L.split('aaa abc bba')
+test_eq(words.groupby(0, (1,2)), {'a':[('a','a'),('b','c')], 'b':[('b','a')]})
+```
+
+[`L.groupby`](https://fastcore.fast.ai/foundation.html#l.groupby) can
+also be used in curried form, which is useful when you need to apply the
+same grouping operation across multiple collections.
+
+``` python
+L([['a1','b2','a3'], ['x1','y2','x3']]).map(L.groupby(0))
+```
+
+    [{'a': ['a1', 'a3'], 'b': ['b2']}, {'x': ['x1', 'x3'], 'y': ['y2']}]
+
+------------------------------------------------------------------------
+
+### starmap
+
+``` python
+
+def starmap(
+    f, args:VAR_POSITIONAL, kwargs:VAR_KEYWORD
+):
+
+```
+
+*Like `map`, but use `itertools.starmap`*
+
+[`L.starmap`](https://fastcore.fast.ai/foundation.html#l.starmap)
+applies a function to each element, unpacking tuples as arguments:
+
+``` python
+test_eq(L([(1,2),(3,4)]).starmap(operator.add), [3,7])
+test_eq(L([(1,2,3),(4,5,6)]).starmap(lambda a,b,c: a+b*c), [7,34])
+```
+
+The curried form of
+[`L.starmap`](https://fastcore.fast.ai/foundation.html#l.starmap) is
+useful when you need to apply the same starmap operation across nested
+structures. For example, when you have a list of lists of tuples and
+want to apply a function that unpacks each tuple:
+
+``` python
+nested = L([[(1,2),(3,4)], [(5,6),(7,8)]])
+nested.map(L.starmap(operator.mul))
+```
+
+    [[2, 12], [30, 56]]
+
+------------------------------------------------------------------------
+
+### rstarmap
+
+``` python
+
+def rstarmap(
+    f, args:VAR_POSITIONAL, kwargs:VAR_KEYWORD
+):
+
+```
+
+*Like `starmap`, but reverse the order of args*
+
+[`L.rstarmap`](https://fastcore.fast.ai/foundation.html#l.rstarmap) is
+like `starmap`, but reverses the order of unpacked arguments:
+
+``` python
+test_eq(L((1,2),(3,4)).rstarmap(operator.sub), [1,1])  # 2-1, 4-3
+test_eq(L(('a','b'),('c','d')).rstarmap('{}{}'.format), ['ba','dc'])
+```
+
+The curried form of
+[`L.rstarmap`](https://fastcore.fast.ai/foundation.html#l.rstarmap) is
+useful when mapping over nested structures where you need reversed
+argument order. This commonly occurs when processing pairs where the
+second element should be the first argument to a function:
+
+``` python
+nested = L([[('x',1),('y',2)], [('z',3)]])
+nested.map(L.rstarmap('{}{}'.format))
+```
+
+    [['1x', '2y'], ['3z']]
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L268"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### L.map_dict
 
->  L.map_dict (f=<function noop>, *args, **kwargs)
+``` python
+
+def map_dict(
+    f:function=noop, args:VAR_POSITIONAL, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Like `map`, but creates a dict from `items` to function results*
 
@@ -725,12 +1219,18 @@ test_eq(L(range(1,5)).map_dict(operator.neg), {1:-1, 2:-2, 3:-3, 4:-4})
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L194"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L274"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### L.zip
 
->  L.zip (cycled=False)
+``` python
+
+def zip(
+    cycled:bool=False
+):
+
+```
 
 *Create new [`L`](https://fastcore.fast.ai/foundation.html#l) with
 `zip(*items)`*
@@ -749,12 +1249,18 @@ test_eq(t.zip(cycled=False), [(1, 'a'),(2, 'b'),(3, 'c')])
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L196"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L280"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### L.map_zip
 
->  L.map_zip (f, *args, cycled=False, **kwargs)
+``` python
+
+def map_zip(
+    f, args:VAR_POSITIONAL, cycled:bool=False, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Combine `zip` and `starmap`*
 
@@ -766,12 +1272,18 @@ test_eq(t.map_zip(operator.mul), [2,6,12])
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L195"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L286"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### L.zipwith
 
->  L.zipwith (*rest, cycled=False)
+``` python
+
+def zipwith(
+    rest:VAR_POSITIONAL, cycled:bool=False
+):
+
+```
 
 *Create new [`L`](https://fastcore.fast.ai/foundation.html#l) with
 `self` zip with each of `*rest`*
@@ -785,12 +1297,18 @@ test_eq(t, [(1,[0]), (2,[1]), (3,[2,2])])
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L197"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L292"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### L.map_zipwith
 
->  L.map_zipwith (f, *rest, cycled=False, **kwargs)
+``` python
+
+def map_zipwith(
+    f, rest:VAR_POSITIONAL, cycled:bool=False, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Combine `zipwith` and `starmap`*
 
@@ -800,30 +1318,291 @@ test_eq(L(1,2,3).map_zipwith(operator.mul, [2,3,4]), [2,6,12])
 
 ------------------------------------------------------------------------
 
+### filter
+
+``` python
+
+def filter(
+    f:function=noop, negate:bool=False, kwargs:VAR_KEYWORD
+):
+
+```
+
+*Create new [`L`](https://fastcore.fast.ai/foundation.html#l) filtered
+by predicate `f`, passing `args` and `kwargs` to `f`*
+
+``` python
+t = L(range(12))
+test_eq(t.filter(lambda o:o<5), [0,1,2,3,4])
+test_eq(t.filter(lambda o:o<5, negate=True), [5,6,7,8,9,10,11])
+```
+
+[`L.filter`](https://fastcore.fast.ai/foundation.html#l.filter) can be
+used as a curried class method, returning a partial that filters any
+iterable and wraps the result in an
+[`L`](https://fastcore.fast.ai/foundation.html#l). This is useful when
+mapping a filter operation over nested collections.
+
+``` python
+intgrid
+```
+
+    [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+``` python
+intgrid.map(L.filter(ge(5)))
+```
+
+    [[], [5, 6], [7, 8, 9]]
+
+------------------------------------------------------------------------
+
+### starfilter
+
+``` python
+
+def starfilter(
+    f, negate:bool=False, kwargs:VAR_KEYWORD
+):
+
+```
+
+*Like `filter`, but unpacks elements as args to `f`*
+
+[`L.starfilter`](https://fastcore.fast.ai/foundation.html#l.starfilter)
+is like `filter`, but unpacks tuple elements as arguments to the
+predicate:
+
+``` python
+test_eq(L((1,2),(3,1),(2,3)).starfilter(lt), [(1,2),(2,3)])
+test_eq(L((1,2),(3,1),(2,3)).starfilter(lt, negate=True), [(3,1)])
+```
+
+Curried
+[`L.starfilter`](https://fastcore.fast.ai/foundation.html#l.starfilter)
+is useful when mapping a starfilter operation over nested
+collections—each inner collection gets filtered by unpacking its tuples
+as arguments to the predicate, eg to filter pairs where first \< second,
+across multiple lists of pairs:
+
+``` python
+nested = L([[(1,5),(3,2)], [(4,6),(9,1)]])
+nested.map(L.starfilter(lt))
+```
+
+    [[(1, 5)], [(4, 6)]]
+
+------------------------------------------------------------------------
+
+### rstarfilter
+
+``` python
+
+def rstarfilter(
+    f, negate:bool=False, kwargs:VAR_KEYWORD
+):
+
+```
+
+*Like `starfilter`, but reverse the order of args*
+
+[`L.rstarfilter`](https://fastcore.fast.ai/foundation.html#l.rstarfilter)
+is like `starfilter`, but reverses the order of unpacked arguments (and
+can also be curried):
+
+``` python
+test_eq(L((2,1),(1,3),(3,2)).rstarfilter(lt), [(2,1),(3,2)])  # 1<2, 3<1 fails, 2<3
+test_eq(L((2,1),(1,3),(3,2)).rstarfilter(lt, negate=True), [(1,3)])
+```
+
+------------------------------------------------------------------------
+
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L186"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L701"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### argwhere
+
+``` python
+
+def argwhere(
+    f, negate:bool=False, kwargs:VAR_KEYWORD
+):
+
+```
+
+*Like `filter`, but return indices for matching items*
+
+``` python
+t = L([0,1,2,3,4,99,0])
+test_eq(t.argwhere(lambda o:o<5), [0,1,2,3,4,6])
+```
+
+------------------------------------------------------------------------
+
+### starargwhere
+
+``` python
+
+def starargwhere(
+    f, negate:bool=False
+):
+
+```
+
+*Like [`argwhere`](https://fastcore.fast.ai/basics.html#argwhere), but
+unpacks elements as args to `f`*
+
+[`L.starargwhere`](https://fastcore.fast.ai/foundation.html#l.starargwhere)
+is like [`argwhere`](https://fastcore.fast.ai/basics.html#argwhere), but
+unpacks tuple elements as arguments to the predicate (it is also
+curryable):
+
+``` python
+test_eq(L((1,2),(3,1),(2,3)).starargwhere(lt), [0,2])
+test_eq(L((1,2),(3,1),(2,3)).starargwhere(lt, negate=True), [1])
+```
+
+------------------------------------------------------------------------
+
+### rstarargwhere
+
+``` python
+
+def rstarargwhere(
+    f, negate:bool=False
+):
+
+```
+
+*Like `starargwhere`, but reverse the order of args*
+
+[`L.rstarargwhere`](https://fastcore.fast.ai/foundation.html#l.rstarargwhere)
+is like `starargwhere`, but reverses the order of unpacked arguments (it
+is also curryable):
+
+``` python
+test_eq(L((2,1),(1,3),(3,2)).rstarargwhere(lt), [0,2])  # 1<2, 3<1 fails, 2<3
+test_eq(L((2,1),(1,3),(3,2)).rstarargwhere(lt, negate=True), [1])
+```
+
+------------------------------------------------------------------------
+
+### argfirst
+
+``` python
+
+def argfirst(
+    f, negate:bool=False
+):
+
+```
+
+*Return index of first matching item*
+
+``` python
+test_eq(t.argfirst(lambda o:o>4), 5)
+test_eq(t.argfirst(lambda o:o>4,negate=True),0)
+```
+
+Curried
+[`L.argfirst`](https://fastcore.fast.ai/foundation.html#l.argfirst)
+returns a partial function that finds the index of the first matching
+item in any iterable. This is useful when mapping over nested
+collections to find the first match in each.
+
+``` python
+nested = L([[1,2,8,4], [5,9,7], [1,1,1]])
+nested.map(L.argfirst(gt(5)))
+```
+
+    [2, 1, None]
+
+------------------------------------------------------------------------
+
+### starargfirst
+
+``` python
+
+def starargfirst(
+    f, negate:bool=False
+):
+
+```
+
+*Like `argfirst`, but unpacks elements as args to `f`*
+
+[`L.starargfirst`](https://fastcore.fast.ai/foundation.html#l.starargfirst)
+is like `argfirst`, but unpacks tuple elements as arguments to the
+predicate (and is curryable):
+
+``` python
+test_eq(L((3,1),(1,2),(2,3)).starargfirst(lt), 1)
+test_eq(L((1,2),(3,1),(2,3)).starargfirst(lt, negate=True), 1)
+```
+
+------------------------------------------------------------------------
+
+### rstarargfirst
+
+``` python
+
+def rstarargfirst(
+    f, negate:bool=False
+):
+
+```
+
+*Like `starargfirst`, but reverse the order of args*
+
+[`L.rstarargfirst`](https://fastcore.fast.ai/foundation.html#l.rstarargfirst)
+is like `starargfirst`, but reverses the order of unpacked arguments
+(and is curryable):
+
+``` python
+test_eq(L((1,3),(2,1),(3,2)).rstarargfirst(lt), 1)  # 3<1 fails, 1<2
+test_eq(L((2,1),(1,3),(3,2)).rstarargfirst(lt, negate=True), 1)
+```
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L374"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### L.itemgot
 
->  L.itemgot (*idxs)
+``` python
+
+def itemgot(
+    idxs:VAR_POSITIONAL
+):
+
+```
 
 *Create new [`L`](https://fastcore.fast.ai/foundation.html#l) with item
 `idx` of all `items`*
 
 ``` python
+t = L([['x', [0]], ['y', [1]], ['z', [2,2]]])
 test_eq(t.itemgot(1), b)
 ```
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L190"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L382"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### L.attrgot
 
->  L.attrgot (k, default=None)
+``` python
+
+def attrgot(
+    k, default:NoneType=None
+):
+
+```
 
 *Create new [`L`](https://fastcore.fast.ai/foundation.html#l) with attr
 `k` (or value `k` for dicts) of all `items`.*
@@ -840,13 +1619,15 @@ test_eq(L(b).attrgot('id'), [15, 17])
 
 ------------------------------------------------------------------------
 
-<a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L146"
-target="_blank" style="float:right; font-size:smaller">source</a>
+### sorted
 
-### L.sorted
+``` python
 
->  L.sorted (key=None, reverse=False, cmp=None, **kwargs)
+def sorted(
+    key:NoneType=None, reverse:bool=False, cmp:NoneType=None, kwargs:VAR_KEYWORD
+):
+
+```
 
 *New [`L`](https://fastcore.fast.ai/foundation.html#l) sorted by `key`,
 using `sort_ex`. If key is str use `attrgetter`; if int use
@@ -856,51 +1637,79 @@ using `sort_ex`. If key is str use `attrgetter`; if int use
 test_eq(L(a).sorted('a').attrgot('b'), [2,4])
 ```
 
-------------------------------------------------------------------------
-
-<a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L162"
-target="_blank" style="float:right; font-size:smaller">source</a>
-
-### L.split
-
->  L.split (s, sep=None, maxsplit=-1)
-
-*Class Method: Same as `str.split`, but returns an
-[`L`](https://fastcore.fast.ai/foundation.html#l)*
+Curried [`L.sorted`](https://fastcore.fast.ai/foundation.html#l.sorted)
+returns a partial function that sorts any iterable by the given key.
+This is useful when mapping a sort operation over nested
+collections—each inner collection gets sorted independently using the
+same key.
 
 ``` python
-test_eq(L.split('a b c'), list('abc'))
+nested = L([[(3,'c'),(1,'a'),(2,'b')], [(6,'f'),(4,'d')]])
+nested.map(L.sorted(0))
+```
+
+    [[(1, 'a'), (2, 'b'), (3, 'c')], [(4, 'd'), (6, 'f')]]
+
+------------------------------------------------------------------------
+
+### starsorted
+
+``` python
+
+def starsorted(
+    key, reverse:bool=False
+):
+
+```
+
+*Like `sorted`, but unpacks elements as args to `key`*
+
+[`L.starsorted`](https://fastcore.fast.ai/foundation.html#l.starsorted)
+is like `sorted`, but unpacks tuple elements as arguments to the key
+function:
+
+``` python
+test_eq(L((3,1),(1,2),(2,0)).starsorted(operator.sub), [(1,2),(3,1),(2,0)])  # sorted by a-b: 2, 2, -1
+test_eq(L((1,2),(3,1),(2,3)).starsorted(operator.add), [(1,2),(3,1),(2,3)])  # sorted by a+b: 3, 4, 5
+```
+
+------------------------------------------------------------------------
+
+### rstarsorted
+
+``` python
+
+def rstarsorted(
+    key, reverse:bool=False
+):
+
+```
+
+*Like `starsorted`, but reverse the order of args*
+
+[`L.rstarsorted`](https://fastcore.fast.ai/foundation.html#l.rstarsorted)
+is like `starsorted`, but reverses the order of unpacked arguments:
+
+``` python
+test_eq(L((1,3),(2,1),(0,2)).rstarsorted(operator.sub), [(2,1),(1,3),(0,2)])  # sorted by b-a: 0, 2, 2
+test_eq(L((2,1),(1,3),(3,2)).rstarsorted(operator.sub), [(2,1),(3,2),(1,3)])  # sorted by b-a: -1, -1, 2
 ```
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L166"
-target="_blank" style="float:right; font-size:smaller">source</a>
-
-### L.range
-
->  L.range (a, b=None, step=None)
-
-*Class Method: Same as `range`, but returns
-[`L`](https://fastcore.fast.ai/foundation.html#l). Can pass collection
-for `a`, to use `len(a)`*
-
-``` python
-test_eq_type(L.range([1,1,1]), L(range(3)))
-test_eq_type(L.range(5,2,2), L(range(5,2,2)))
-```
-
-------------------------------------------------------------------------
-
-<a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L203"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L409"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### L.concat
 
->  L.concat ()
+``` python
+
+def concat(
+    
+):
+
+```
 
 *Concatenate all elements of list*
 
@@ -911,12 +1720,18 @@ test_eq(L([0,1,2,3],4,L(5,6)).concat(), range(7))
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L122"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L415"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### L.copy
 
->  L.copy ()
+``` python
+
+def copy(
+    
+):
+
+```
 
 *Same as `list.copy`, but returns an
 [`L`](https://fastcore.fast.ai/foundation.html#l)*
@@ -929,12 +1744,175 @@ test_eq(t.concat(), range(7))
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L183"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L421"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### L.shuffle
+
+``` python
+
+def shuffle(
+    
+):
+
+```
+
+*Same as `random.shuffle`, but not inplace*
+
+[`L.shuffle`](https://fastcore.fast.ai/foundation.html#l.shuffle)
+returns a new shuffled
+[`L`](https://fastcore.fast.ai/foundation.html#l), leaving the original
+unchanged:
+
+``` python
+t = L(1,2,3,4,5)
+s = t.shuffle()
+test_eq(set(s), set(t))  # same elements
+test_eq(t, [1,2,3,4,5])  # original unchanged
+```
+
+------------------------------------------------------------------------
+
+### reduce
+
+``` python
+
+def reduce(
+    f, initial:NoneType=None
+):
+
+```
+
+*Wrapper for `functools.reduce`*
+
+``` python
+test_eq(L(1,2,3,4).reduce(operator.add), 10)
+test_eq(L(1,2,3,4).reduce(operator.mul, 10), 240)
+```
+
+Curried [`L.reduce`](https://fastcore.fast.ai/foundation.html#l.reduce)
+returns a partial function that reduces any iterable using the given
+function. This is useful when mapping a reduction over nested
+collections—each inner collection gets reduced independently using the
+same operation.
+
+``` python
+nested = L([[1,2,3], [4,5], [6,7,8,9]])
+nested.map(L.reduce(operator.add))
+```
+
+    [6, 9, 30]
+
+------------------------------------------------------------------------
+
+### starreduce
+
+``` python
+
+def starreduce(
+    f, initial:NoneType=None
+):
+
+```
+
+*Like `reduce`, but unpacks elements as args to `f`*
+
+[`L.starreduce`](https://fastcore.fast.ai/foundation.html#l.starreduce)
+is like `reduce`, but unpacks tuple elements as additional arguments to
+`f` (after accumulator):
+
+``` python
+test_eq(L((1,2),(3,4),(5,6)).starreduce(lambda acc,a,b: acc+a*b, 0), 44)  # 0+1*2+3*4+5*6
+test_eq(L(('a',1),('b',2)).starreduce(lambda acc,k,v: {**acc, k:v}, {}), {'a':1,'b':2})
+```
+
+E.g implement a dot product:
+
+``` python
+def dot(a,b): return a.zipwith(b).starreduce(lambda acc,a,b: acc+a*b, 0)
+dot(L(1,3,5), L(2,4,6))
+```
+
+    44
+
+------------------------------------------------------------------------
+
+### rstarreduce
+
+``` python
+
+def rstarreduce(
+    f, initial:NoneType=None
+):
+
+```
+
+*Like `starreduce`, but reverse the order of unpacked args*
+
+[`L.rstarreduce`](https://fastcore.fast.ai/foundation.html#l.rstarreduce)
+is like `starreduce`, but reverses the order of unpacked arguments:
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L452"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### L.sum
+
+``` python
+
+def sum(
+    
+):
+
+```
+
+*Sum of the items*
+
+``` python
+test_eq(L(1,2,3,4).sum(), 10)
+test_eq(L().sum(), 0)
+```
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L458"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### L.product
+
+``` python
+
+def product(
+    
+):
+
+```
+
+*Product of the items*
+
+``` python
+test_eq(L(1,2,3,4).product(), 24)
+test_eq(L().product(), 1)
+```
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L464"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### L.map_first
 
->  L.map_first (f=<function noop>, g=<function noop>, *args, **kwargs)
+``` python
+
+def map_first(
+    f:function=noop, g:function=noop, args:VAR_POSITIONAL, kwargs:VAR_KEYWORD
+):
+
+```
 
 *First element of `map_filter`*
 
@@ -946,12 +1924,18 @@ test_eq(t.map_first(lambda o:o*2 if o>2 else None), 6)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L207"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L470"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### L.setattrs
 
->  L.setattrs (attr, val)
+``` python
+
+def setattrs(
+    attr, val
+):
+
+```
 
 *Call `setattr` on all items*
 
@@ -961,17 +1945,555 @@ t.setattrs('foo', 'bar')
 test_eq(t.attrgot('foo'), ['bar','bar'])
 ```
 
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L476"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### L.flatmap
+
+``` python
+
+def flatmap(
+    f, kwargs:VAR_KEYWORD
+):
+
+```
+
+*Apply f to each element and flatten the results into a single L.*
+
+[`L.flatmap`](https://fastcore.fast.ai/foundation.html#l.flatmap) is the
+method version of the
+[`flatmap`](https://fastcore.fast.ai/foundation.html#flatmap) function,
+allowing you to call it directly on an
+[`L`](https://fastcore.fast.ai/foundation.html#l) instance. It applies a
+function to each element and flattens the results into a single
+[`L`](https://fastcore.fast.ai/foundation.html#l). This is useful for
+operations where each input naturally produces zero, one, or many
+outputs.
+
+``` python
+test_eq(L("a,b,c", "d,e").flatmap(Self.split(',')), ['a', 'b', 'c', 'd', 'e'])
+```
+
+or alternatively use kwargs:
+
+``` python
+test_eq(L("a-b-c", "d-e").flatmap(str.split, sep='-'), ['a', 'b', 'c', 'd', 'e'])
+```
+
+As an alternative, you can just chain `map` and
+[`concat`](https://fastcore.fast.ai/basics.html#concat):
+
+``` python
+L("a,b,c", "d,e").map(Self.split(',')).concat()
+```
+
+    ['a', 'b', 'c', 'd', 'e']
+
+``` python
+L("a-b-c", "d-e").map(str.split, sep='-').concat()
+```
+
+    ['a', 'b', 'c', 'd', 'e']
+
+### itertools wrappers
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L482"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### L.cycle
+
+``` python
+
+def cycle(
+    
+):
+
+```
+
+*Same as `itertools.cycle`*
+
+[`L.cycle`](https://fastcore.fast.ai/foundation.html#l.cycle) returns an
+infinite iterator that cycles through the elements:
+
+``` python
+test_eq(list(itertools.islice(L(1,2,3).cycle(), 7)), [1,2,3,1,2,3,1])
+```
+
+------------------------------------------------------------------------
+
+### takewhile
+
+``` python
+
+def takewhile(
+    f
+):
+
+```
+
+*Same as `itertools.takewhile`*
+
+[`L.takewhile`](https://fastcore.fast.ai/foundation.html#l.takewhile)
+returns elements from the beginning of the list while the predicate is
+true:
+
+``` python
+test_eq(L(1,2,3,4,5,1,2).takewhile(lambda x: x<4), [1,2,3])
+test_eq(L(1,2,3,11).takewhile(lt(10)), [1,2,3])
+```
+
+Curried
+[`L.takewhile`](https://fastcore.fast.ai/foundation.html#l.takewhile)
+returns a partial function that takes elements from the beginning of any
+iterable while the predicate holds. This is useful when mapping over
+nested collections—each inner collection gets truncated at the first
+failing element using the same predicate.
+
+``` python
+nested = L([[1,2,5,3], [2,3,8,1], [9,1,2]])
+nested.map(L.takewhile(lt(5)))
+```
+
+    [[1, 2], [2, 3], []]
+
+------------------------------------------------------------------------
+
+### dropwhile
+
+``` python
+
+def dropwhile(
+    f
+):
+
+```
+
+*Same as `itertools.dropwhile`*
+
+[`L.dropwhile`](https://fastcore.fast.ai/foundation.html#l.dropwhile)
+skips elements from the beginning while the predicate is true, then
+returns the rest:
+
+``` python
+test_eq(L(1,2,3,4,5,1,2).dropwhile(lt(4)), [4,5,1,2])
+test_eq(L(1,2,3).dropwhile(lt(10)), [])
+```
+
+------------------------------------------------------------------------
+
+### startakewhile
+
+``` python
+
+def startakewhile(
+    f
+):
+
+```
+
+*Like `takewhile`, but unpacks elements as args to `f`*
+
+[`L.startakewhile`](https://fastcore.fast.ai/foundation.html#l.startakewhile)
+is like `takewhile`, but unpacks tuple elements as arguments to the
+predicate:
+
+``` python
+test_eq(L((1,2),(2,3),(4,1),(5,6)).startakewhile(lambda a,b: a<b), [(1,2),(2,3)])
+test_eq(L((1,10),(2,20),(5,3)).startakewhile(lt), [(1,10),(2,20)])
+```
+
+``` python
+nested = L([[(1,5),(2,6),(7,3)], [(0,1),(2,1),(3,9)]])
+nested.map(L.startakewhile(lt))
+```
+
+    [[(1, 5), (2, 6)], [(0, 1)]]
+
+------------------------------------------------------------------------
+
+### rstartakewhile
+
+``` python
+
+def rstartakewhile(
+    f
+):
+
+```
+
+*Like `startakewhile`, but reverse the order of args*
+
+[`L.rstartakewhile`](https://fastcore.fast.ai/foundation.html#l.rstartakewhile)
+is like `startakewhile`, but reverses the order of unpacked arguments:
+
+``` python
+test_eq(L((2,1),(3,2),(1,4),(6,5)).rstartakewhile(lt), [(2,1),(3,2)])  # 1<2, 2<3, 4<1 fails
+test_eq(L((10,1),(20,2),(3,5)).rstartakewhile(lt), [(10,1),(20,2)])  # 1<10, 2<20, 5<3 fails
+```
+
+------------------------------------------------------------------------
+
+### stardropwhile
+
+``` python
+
+def stardropwhile(
+    f
+):
+
+```
+
+*Like `dropwhile`, but unpacks elements as args to `f`*
+
+[`L.stardropwhile`](https://fastcore.fast.ai/foundation.html#l.stardropwhile)
+is like `dropwhile`, but unpacks tuple elements as arguments to the
+predicate:
+
+``` python
+test_eq(L((1,2),(2,3),(4,1),(5,6)).stardropwhile(lambda a,b: a<b), [(4,1),(5,6)])
+test_eq(L((1,10),(2,20),(5,3)).stardropwhile(lt), [(5,3)])
+```
+
+------------------------------------------------------------------------
+
+### rstardropwhile
+
+``` python
+
+def rstardropwhile(
+    f
+):
+
+```
+
+*Like `stardropwhile`, but reverse the order of args*
+
+[`L.rstardropwhile`](https://fastcore.fast.ai/foundation.html#l.rstardropwhile)
+is like `stardropwhile`, but reverses the order of unpacked arguments:
+
+``` python
+test_eq(L((2,1),(3,2),(1,4),(6,5)).rstardropwhile(lt), [(1,4),(6,5)])  # 1<2, 2<3 pass, 4<1 fails
+test_eq(L((10,1),(20,2),(3,5)).rstardropwhile(lt), [(3,5)])
+```
+
+------------------------------------------------------------------------
+
+### accumulate
+
+``` python
+
+def accumulate(
+    f:builtin_function_or_method=add, initial:NoneType=None
+):
+
+```
+
+*Same as `itertools.accumulate`*
+
+[`L.accumulate`](https://fastcore.fast.ai/foundation.html#l.accumulate)
+returns running totals (or running results of any binary function):
+
+``` python
+test_eq(L(1,2,3,4).accumulate(), [1,3,6,10])
+test_eq(L(1,2,3,4).accumulate(operator.mul), [1,2,6,24])
+test_eq(L(1,2,3).accumulate(initial=10), [10,11,13,16])
+```
+
+Curried
+[`L.accumulate`](https://fastcore.fast.ai/foundation.html#l.accumulate)
+returns a partial function that computes running totals (or running
+results of any binary function) on any iterable. This is useful when
+mapping over nested collections—each inner collection gets its own
+running accumulation using the same function.
+
+``` python
+nested = L([[1,2,3], [4,5,6], [10,20]])
+nested.map(L.accumulate(operator.mul))
+```
+
+    [[1, 2, 6], [4, 20, 120], [10, 200]]
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L537"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### L.pairwise
+
+``` python
+
+def pairwise(
+    
+):
+
+```
+
+*Same as `itertools.pairwise`*
+
+[`L.pairwise`](https://fastcore.fast.ai/foundation.html#l.pairwise)
+returns consecutive overlapping pairs:
+
+``` python
+test_eq(L(1,2,3,4).pairwise(), [(1,2),(2,3),(3,4)])
+test_eq(L(list('abcd')).pairwise(), [('a','b'),('b','c'),('c','d')])
+```
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L555"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### L.batched
+
+``` python
+
+def batched(
+    n
+):
+
+```
+
+*Same as `itertools.batched` (but also works on older Python versions*
+
+[`L.batched`](https://fastcore.fast.ai/foundation.html#l.batched) splits
+into chunks of size `n`:
+
+``` python
+test_eq(L(1,2,3,4,5).batched(2), [(1,2),(3,4),(5,)])
+test_eq(L(list('abcdefg')).batched(3), [('a','b','c'),('d','e','f'),('g',)])
+```
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L561"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### L.compress
+
+``` python
+
+def compress(
+    selectors
+):
+
+```
+
+*Same as `itertools.compress`*
+
+[`L.compress`](https://fastcore.fast.ai/foundation.html#l.compress)
+filters elements using a boolean selector:
+
+``` python
+test_eq(L(list('abcd')).compress([1,0,1,0]), ['a','c'])
+test_eq(L(1,2,3,4,5).compress([True,False,True,False,True]), [1,3,5])
+```
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L567"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### L.permutations
+
+``` python
+
+def permutations(
+    r:NoneType=None
+):
+
+```
+
+*Same as `itertools.permutations`*
+
+[`L.permutations`](https://fastcore.fast.ai/foundation.html#l.permutations)
+returns all permutations of length `r` (defaults to full length):
+
+``` python
+test_eq(L(1,2,3).permutations(), [(1,2,3),(1,3,2),(2,1,3),(2,3,1),(3,1,2),(3,2,1)])
+test_eq(L(list('abc')).permutations(2), [('a','b'),('a','c'),('b','a'),('b','c'),('c','a'),('c','b')])
+```
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L573"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### L.combinations
+
+``` python
+
+def combinations(
+    r
+):
+
+```
+
+*Same as `itertools.combinations`*
+
+[`L.combinations`](https://fastcore.fast.ai/foundation.html#l.combinations)
+returns all combinations of length `r`:
+
+``` python
+test_eq(L(1,2,3,4).combinations(2), [(1,2),(1,3),(1,4),(2,3),(2,4),(3,4)])
+test_eq(L(list('abcd')).combinations(3), [('a','b','c'),('a','b','d'),('a','c','d'),('b','c','d')])
+```
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/basics.py#L576"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### partition
+
+``` python
+
+def partition(
+    f:function=noop, kwargs:VAR_KEYWORD
+):
+
+```
+
+*Split into two [`L`](https://fastcore.fast.ai/foundation.html#l)s based
+on predicate `f`: (true_items, false_items)*
+
+[`L.partition`](https://fastcore.fast.ai/foundation.html#l.partition)
+splits a list into two
+[`L`](https://fastcore.fast.ai/foundation.html#l)s based on a
+predicate—items where `f` returns true, and items where it returns
+false:
+
+``` python
+t,f = L(1,2,3,4,5,6).partition(lambda x: x%2==0)
+test_eq(t, [2,4,6])
+test_eq(f, [1,3,5])
+
+evens,odds = L.range(10).partition(lambda x: x%2==0)
+test_eq(evens, [0,2,4,6,8])
+test_eq(odds, [1,3,5,7,9])
+```
+
+Curried
+[`L.partition`](https://fastcore.fast.ai/foundation.html#l.partition)
+returns a partial function that splits any iterable into two
+[`L`](https://fastcore.fast.ai/foundation.html#l)s based on a predicate.
+This is useful when mapping over nested collections—each inner
+collection gets partitioned independently using the same predicate,
+returning a tuple of (true_items, false_items) for each.
+
+``` python
+nested = L([[1,2,3,4,5], [10,15,20,25], [3,6,9]])
+nested.map(L.partition(gt(5)))
+```
+
+    [([], [1, 2, 3, 4, 5]), ([10, 15, 20, 25], []), ([6, 9], [3])]
+
+------------------------------------------------------------------------
+
+### starpartition
+
+``` python
+
+def starpartition(
+    f, kwargs:VAR_KEYWORD
+):
+
+```
+
+*Like [`partition`](https://fastcore.fast.ai/basics.html#partition), but
+unpacks elements as args to `f`*
+
+[`L.starpartition`](https://fastcore.fast.ai/foundation.html#l.starpartition)
+is like [`partition`](https://fastcore.fast.ai/basics.html#partition),
+but unpacks tuple elements as arguments to the predicate:
+
+``` python
+asc,desc = L((1,2),(3,1),(2,4),(5,3)).starpartition(lt)
+test_eq(asc, [(1,2),(2,4)])   # a < b
+test_eq(desc, [(3,1),(5,3)])  # a >= b
+```
+
+------------------------------------------------------------------------
+
+### rstarpartition
+
+``` python
+
+def rstarpartition(
+    f, kwargs:VAR_KEYWORD
+):
+
+```
+
+*Like `starpartition`, but reverse the order of args*
+
+[`L.rstarpartition`](https://fastcore.fast.ai/foundation.html#l.rstarpartition)
+is like `starpartition`, but reverses the order of unpacked arguments:
+
+``` python
+asc,desc = L((2,1),(1,3),(4,2),(3,5)).rstarpartition(lt)
+test_eq(asc, [(2,1),(4,2)])   # b < a (i.e., 1<2, 2<4)
+test_eq(desc, [(1,3),(3,5)])  # b >= a
+```
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L606"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### L.flatten
+
+``` python
+
+def flatten(
+    
+):
+
+```
+
+*Recursively flatten nested iterables (except strings)*
+
+[`L.flatten`](https://fastcore.fast.ai/foundation.html#l.flatten)
+recursively flattens nested iterables into a single
+[`L`](https://fastcore.fast.ai/foundation.html#l). Strings are treated
+as atomic (not iterated over):
+
+``` python
+test_eq(L([[1,2],[3,[4,5]]]).flatten(), [1,2,3,4,5])
+test_eq(L([1,[2,[3,[4]]]]).flatten(), [1,2,3,4])
+test_eq(L(['a',['b','c'],'d']).flatten(), ['a','b','c','d'])  # strings not flattened
+test_eq(L([1,2,3]).flatten(), [1,2,3])  # already flat
+```
+
 ## Config
 
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L253"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L615"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### save_config_file
 
->  save_config_file (file, d, **kwargs)
+``` python
+
+def save_config_file(
+    file, d, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Write settings dict to a new config file, or overwrite the existing
 one.*
@@ -979,12 +2501,18 @@ one.*
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L260"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L622"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### read_config_file
 
->  read_config_file (file, **kwargs)
+``` python
+
+def read_config_file(
+    file, kwargs:VAR_KEYWORD
+):
+
+```
 
 Config files are saved and read using Python’s
 `configparser.ConfigParser`, inside the `DEFAULT` section.
@@ -1007,13 +2535,46 @@ dict(res)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L266"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L628"
+target="_blank" style="float:right; font-size:smaller">source</a>
+
+### find_file_parents
+
+``` python
+
+def find_file_parents(
+    fname, frompath:NoneType=None
+):
+
+```
+
+*Search `cfg_path` and its parents to find `cfg_name`*
+
+``` python
+save_config_file('../tmp.ini', _d)
+try: found = find_file_parents('tmp.ini')
+finally: os.unlink('../tmp.ini')
+found
+```
+
+    Path('/Users/jhoward/aai-ws/fastcore')
+
+------------------------------------------------------------------------
+
+<a
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L634"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### Config
 
->  Config (cfg_path, cfg_name, create=None, save=True, extra_files=None,
->              types=None, **cfg_kwargs)
+``` python
+
+def Config(
+    cfg_path, cfg_name, create:NoneType=None, save:bool=True, extra_files:NoneType=None, types:NoneType=None,
+    cfg_kwargs:VAR_KEYWORD
+):
+
+```
 
 *Reading and writing `ConfigParser` ini files*
 
@@ -1097,12 +2658,18 @@ test_eq(cfg.some_num,'')
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L288"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L656"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### Config.get
 
->  Config.get (k, default=None)
+``` python
+
+def get(
+    k, default:NoneType=None
+):
+
+```
 
 Keys can be accessed as attributes, items, or with `get` and an optional
 default:
@@ -1143,12 +2710,18 @@ test_eq(cfg.get('some_num'), 3)
 ------------------------------------------------------------------------
 
 <a
-href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L302"
+href="https://github.com/AnswerDotAI/fastcore/blob/main/fastcore/foundation.py#L670"
 target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### Config.find
 
->  Config.find (cfg_name, cfg_path=None, **kwargs)
+``` python
+
+def find(
+    cfg_name, cfg_path:NoneType=None, kwargs:VAR_KEYWORD
+):
+
+```
 
 *Search `cfg_path` and its parents to find `cfg_name`*
 
@@ -1156,9 +2729,3 @@ You can use
 [`Config.find`](https://fastcore.fast.ai/foundation.html#config.find) to
 search subdirectories for a config file, starting in the current path if
 no path is specified:
-
-``` python
-Config.find('settings.ini').repo
-```
-
-    'fastcore'

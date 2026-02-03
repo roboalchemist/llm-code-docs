@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/deliverability/optimization.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deliverability optimization
 
 > How we monitor sends to increase the deliverability of your emails.

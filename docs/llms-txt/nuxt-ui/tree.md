@@ -10,7 +10,9 @@ Use the Tree component to display a hierarchical structure of items.
 
 ```vue
 <script setup lang="ts">
-const items = ref<undefined>([
+import type { TreeItem } from '@nuxt/ui'
+
+const items = ref<TreeItem[]>([
   {
     label: 'app/',
     defaultExpanded: true,
@@ -76,11 +78,8 @@ Use the `items` prop as an array of objects with the following properties:
 - `class?: any`
 - `ui?: { item?: ClassNameValue, itemWithChildren?: ClassNameValue, link?: ClassNameValue, linkLeadingIcon?: ClassNameValue, linkLabel?: ClassNameValue, linkTrailing?: ClassNameValue, linkTrailingIcon?: ClassNameValue, listWithChildren?: ClassNameValue }`
 
-<note>
-
-A unique identifier is required for each item. The component will use the `label` prop as identifier if no `get-key` is provided. Ideally you should provide a `get-key` function prop to return a unique identifier. Alternatively, you can use the `labelKey` prop to specify which property to use as the unique identifier.
-
-</note>
+> [!NOTE]
+> A unique identifier is required for each item. The component will use the `label` prop as identifier if no `get-key` is provided. Ideally you should provide a `get-key` function prop to return a unique identifier. Alternatively, you can use the `labelKey` prop to specify which property to use as the unique identifier.
 
 ```vue
 <script setup lang="ts">
@@ -194,7 +193,7 @@ const items = ref<TreeItem[]>([
 </template>
 ```
 
-### Nested <badge label="4.1+"></badge>
+### Nested `4.1+`
 
 Use the `nested` prop to control whether the Tree is rendered with nested structure or as a flat list. Defaults to `true`.
 
@@ -252,11 +251,9 @@ const items = ref<TreeItem[]>([
 </template>
 ```
 
-<note to="#with-virtualization">
-
-When `nested` is `false`, all items are rendered at the same level with indentation to indicate hierarchy. This is useful for virtualization or drag and drop functionality.
-
-</note>
+> [!NOTE]
+> See: #with-virtualization
+> When `nested` is `false`, all items are rendered at the same level with indentation to indicate hierarchy. This is useful for virtualization or drag and drop functionality.
 
 ### Color
 
@@ -378,11 +375,8 @@ const items = ref<TreeItem[]>([
 
 Use the `trailing-icon` prop to customize the trailing [Icon](/docs/components/icon) of a parent node. Defaults to `i-lucide-chevron-down`.
 
-<note>
-
-If an icon is specified for an item, it will always take precedence over these props.
-
-</note>
+> [!NOTE]
+> If an icon is specified for an item, it will always take precedence over these props.
 
 ```vue
 <script setup lang="ts">
@@ -439,23 +433,15 @@ const items = ref<TreeItem[]>([
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.chevronDown` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.chevronDown` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.chevronDown` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.chevronDown` key.
 
 ### Expanded Icon
 
@@ -515,23 +501,15 @@ const items = ref<TreeItem[]>([
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize these icons globally in your `app.config.ts` under `ui.icons.folder` and `ui.icons.folderOpen` keys.
 
-You can customize these icons globally in your `app.config.ts` under `ui.icons.folder` and `ui.icons.folderOpen` keys.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize these icons globally in your `vite.config.ts` under `ui.icons.folder` and `ui.icons.folderOpen` keys.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize these icons globally in your `vite.config.ts` under `ui.icons.folder` and `ui.icons.folderOpen` keys.
 
 ### Disabled
 
@@ -599,11 +577,8 @@ const items = ref<TreeItem[]>([
 </template>
 ```
 
-<note>
-
-You can also disable individual items using `item.disabled`.
-
-</note>
+> [!NOTE]
+> You can also disable individual items using `item.disabled`.
 
 ## Examples
 
@@ -648,6 +623,9 @@ const value = ref()
   <UTree v-model="value" :items="items" />
 </template>
 ```
+
+> [!TIP]
+> Use the `get-key` prop to change the function used to get the unique key from each item when a `v-model` or `default-value` is provided.
 
 If you want to prevent an item from being selected, you can use the `item.onSelect()` property or the global `select` event:
 
@@ -697,11 +675,8 @@ function onSelect(e: TreeItemSelectEvent<TreeItem>) {
 </template>
 ```
 
-<note>
-
-This lets you expand or collapse a parent item without selecting it.
-
-</note>
+> [!NOTE]
+> This lets you expand or collapse a parent item without selecting it.
 
 ### Control expanded items
 
@@ -794,13 +769,10 @@ function onToggle(e: TreeItemToggleEvent<TreeItem>) {
 </template>
 ```
 
-<note>
+> [!NOTE]
+> This lets you select a parent item without expanding or collapsing its children.
 
-This lets you select a parent item without expanding or collapsing its children.
-
-</note>
-
-### With checkbox in items <badge label="4.1+"></badge>
+### With checkbox in items `4.1+`
 
 You can use the `item-leading` slot to add a [Checkbox](/docs/components/checkbox) to the items. Use the `multiple`, `propagate-select` and `bubble-select` props to enable multi-selection with parent-child relationship and the `select` and `toggle` events to control the selected and expanded state of the items.
 
@@ -866,13 +838,10 @@ function onSelect(e: TreeItemSelectEvent<TreeItem>) {
 </template>
 ```
 
-<note>
+> [!NOTE]
+> This example uses the `as` prop to change the items from `button` to `div` as the [`Checkbox`](/docs/components/checkbox) is also rendered as a `button`.
 
-This example uses the `as` prop to change the items from `button` to `div` as the [`Checkbox`](/docs/components/checkbox) is also rendered as a `button`.
-
-</note>
-
-### With drag and drop <badge label="4.1+"></badge>
+### With drag and drop `4.1+`
 
 Use the [`useSortable`](https://vueuse.org/integrations/useSortable/) composable from [`@vueuse/integrations`](https://vueuse.org/integrations/README.html) to enable drag and drop functionality on the Tree. This integration wraps [Sortable.js](https://sortablejs.github.io/Sortable/) to provide a seamless drag and drop experience.
 
@@ -948,21 +917,15 @@ useSortable(tree, items, {
 </template>
 ```
 
-<note>
+> [!NOTE]
+> This example sets the `nested` prop to `false` to have a flat list of items so that the items can be dragged and dropped.
 
-This example sets the `nested` prop to `false` to have a flat list of items so that the items can be dragged and dropped.
-
-</note>
-
-### With virtualization <badge label="4.1+"></badge>
+### With virtualization `4.1+`
 
 Use the `virtualize` prop to enable virtualization for large lists as a boolean or an object with options like `{ estimateSize: 32, overscan: 12 }`.
 
-<warning>
-
-When virtualization is enabled, the tree structure is flattened, similar to setting the `nested` prop to `false`.
-
-</warning>
+> [!WARNING]
+> When virtualization is enabled, the tree structure is flattened, similar to setting the `nested` prop to `false`.
 
 ```vue [TreeVirtualizeExample.vue]
 <script setup lang="ts">
@@ -1055,37 +1018,37 @@ interface TreeProps {
   /**
    * This function is passed the index of each item and should return a unique key for that item
    */
-  getKey?: ((val: TreeItem) => string) | undefined;
+  getKey?: ((val: T[number]) => string) | undefined;
   /**
    * The key used to get the label from the item.
    * @default "\"label\""
    */
-  labelKey?: GetItemKeys<TreeItem[]> | undefined;
+  labelKey?: GetItemKeys<T> | undefined;
   /**
    * The icon displayed on the right side of a parent node.
    */
-  trailingIcon?: string | object | undefined;
+  trailingIcon?: any;
   /**
    * The icon displayed when a parent node is expanded.
    */
-  expandedIcon?: string | object | undefined;
+  expandedIcon?: any;
   /**
    * The icon displayed when a parent node is collapsed.
    */
-  collapsedIcon?: string | object | undefined;
-  items?: TreeItem[] | undefined;
+  collapsedIcon?: any;
+  items?: T | undefined;
   /**
    * The controlled value of the Tree. Can be bind as `v-model`.
    */
-  modelValue?: TreeItem | TreeItem[] | undefined;
+  modelValue?: (M extends true ? T[number][] : T[number]) | undefined;
   /**
    * The value of the Tree when initially rendered. Use when you do not need to control the state of the Tree.
    */
-  defaultValue?: TreeItem | TreeItem[] | undefined;
+  defaultValue?: (M extends true ? T[number][] : T[number]) | undefined;
   /**
    * Whether multiple options can be selected or not.
    */
-  multiple?: boolean | undefined;
+  multiple?: M | undefined;
   /**
    * Use nested DOM structure (children inside parents) vs flattened structure (all items at same level).
    * When `virtualize` is enabled, this is automatically set to `false`.
@@ -1097,12 +1060,12 @@ interface TreeProps {
    * Note: when enabled, the tree structure is flattened like if `nested` was set to `false`.
    * @default "false"
    */
-  virtualize?: boolean | { overscan?: number | undefined; estimateSize?: number | undefined; } | undefined;
-  onSelect?: ((e: TreeItemSelectEvent<TreeItem>, item: TreeItem) => void) | undefined;
-  onToggle?: ((e: TreeItemToggleEvent<TreeItem>, item: TreeItem) => void) | undefined;
+  virtualize?: boolean | { overscan?: number | undefined; estimateSize?: number | ((index: number) => number) | undefined; } | undefined;
+  onSelect?: ((e: TreeItemSelectEvent<T[number]>, item: T[number]) => void) | undefined;
+  onToggle?: ((e: TreeItemToggleEvent<T[number]>, item: T[number]) => void) | undefined;
   ui?: { root?: ClassNameValue; item?: ClassNameValue; listWithChildren?: ClassNameValue; itemWithChildren?: ClassNameValue; link?: ClassNameValue; linkLeadingIcon?: ClassNameValue; linkLabel?: ClassNameValue; linkTrailing?: ClassNameValue; linkTrailingIcon?: ClassNameValue; } | undefined;
   /**
-   * The controlled value of the expanded item. Can be binded with with `v-model`.
+   * The controlled value of the expanded item. Can be binded with `v-model`.
    */
   expanded?: string[] | undefined;
   /**
@@ -1150,7 +1113,7 @@ interface TreeSlots {
  * Emitted events for the Tree component
  */
 interface TreeEmits {
-  update:modelValue: (payload: [val: TreeItem | TreeItem[]]) => void;
+  update:modelValue: (payload: [val: M extends true ? T[number][] : T[number]]) => void;
   update:expanded: (payload: [val: string[]]) => void;
 }
 ```
@@ -1316,8 +1279,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

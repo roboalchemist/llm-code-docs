@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/site-structure/variants.md
-
-# Source: https://gitbook.com/docs/documentation/fr/publishing-documentation/site-structure/variants.md
-
-# Source: https://gitbook.com/docs/publishing-documentation/site-structure/variants.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/publishing-documentation/site-structure/variants.md
 
 # Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/site-structure/variants.md
 

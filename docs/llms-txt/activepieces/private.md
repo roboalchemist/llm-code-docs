@@ -1,6 +1,8 @@
 # Source: https://www.activepieces.com/docs/build-pieces/sharing-pieces/private.md
 
-# Source: https://www.activepieces.com/docs/developers/sharing-pieces/private.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Private
 
@@ -30,6 +32,6 @@ This guide assumes you have already created a piece and created a private fork o
   <Step title="Upload Tarball">
     Upload the generated tarball inside `dist/packages/pieces/${name}`from Activepieces Platform Admin -> Pieces
 
-        <img src="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/install-piece.png?fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=1106164b9b77b33e96ccdcd4df789948" alt="Manage Pieces" data-og-width="1420" width="1420" data-og-height="900" height="900" data-path="resources/screenshots/install-piece.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/install-piece.png?w=280&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=c9009ba8db60863675f21036a561f4ce 280w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/install-piece.png?w=560&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=c7ad50fd4c721848169fe6c9c2c6af0b 560w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/install-piece.png?w=840&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=6cfedfb7edde2f9311a1af6b783520cf 840w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/install-piece.png?w=1100&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=615c3b9f24457a4384ede39ed276d50a 1100w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/install-piece.png?w=1650&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=44499b6321130356ec94bc0826eb19fd 1650w, https://mintcdn.com/activepieces/qsnvmsFqox1HAfY0/resources/screenshots/install-piece.png?w=2500&fit=max&auto=format&n=qsnvmsFqox1HAfY0&q=85&s=b7cfc85def669ee351fef9150f4c3bce 2500w" />
+        <img src="https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/install-piece.png?fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=567001cb8e4a99373514c6e35453ed45" alt="Manage Pieces" data-og-width="1420" width="1420" data-og-height="900" height="900" data-path="resources/screenshots/install-piece.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/install-piece.png?w=280&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=13a2d9202e3d27a6653499eedd717f66 280w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/install-piece.png?w=560&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=7f98222dc723b6786e104cd7f1f72826 560w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/install-piece.png?w=840&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=3b323ddcc2764d10ca5564ce4d585ed6 840w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/install-piece.png?w=1100&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=c2e892899dccaa0d3b782e5f081efbbf 1100w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/install-piece.png?w=1650&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=638f1e658e06f1d855f5b19a0ccff76d 1650w, https://mintcdn.com/activepieces/uHZ35vXyxX7goNO-/resources/screenshots/install-piece.png?w=2500&fit=max&auto=format&n=uHZ35vXyxX7goNO-&q=85&s=f0d73c60a5077685d90f537a4f8a4ec1 2500w" />
   </Step>
 </Steps>

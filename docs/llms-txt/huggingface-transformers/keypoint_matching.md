@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/tasks/keypoint_matching.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/tasks/keypoint_matching.md
 
 # Keypoint matching
 
@@ -7,7 +7,7 @@ Keypoint matching matches different points of interests that belong to same obje
 - **Keypoint coordinates (x,y):** one-to-one mapping of pixel coordinates between the first and the second image using two lists. Each keypoint at a given index in the first list is matched to the keypoint at the same index in the second list.
 - **Matching scores:** Scores assigned to the keypoint matches.
 
-In this tutorial, you will extract keypoint matches with the `EfficientLoFTR` model trained with the [MatchAnything framework](https://huggingface.co/zju-community/matchanything_eloftr), and refine the matches. This model is only 16M parameters and can be run on a CPU. You will use the [AutoModelForKeypointMatching](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoModelForKeypointMatching) class.
+In this tutorial, you will extract keypoint matches with the `EfficientLoFTR` model trained with the [MatchAnything framework](https://huggingface.co/zju-community/matchanything_eloftr), and refine the matches. This model is only 16M parameters and can be run on a CPU. You will use the [AutoModelForKeypointMatching](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoModelForKeypointMatching) class.
 
 ```python
 from transformers import AutoImageProcessor, AutoModelForKeypointMatching
@@ -71,7 +71,7 @@ len(outputs[0]["keypoints0"])
 # 401
 ```
 
-We can visualize them using the processor's [visualize_keypoint_matching()](/docs/transformers/v5.0.0rc1/en/model_doc/efficientloftr#transformers.EfficientLoFTRImageProcessor.visualize_keypoint_matching) method.
+We can visualize them using the processor's [visualize_keypoint_matching()](/docs/transformers/v5.0.0/en/model_doc/efficientloftr#transformers.EfficientLoFTRImageProcessor.visualize_keypoint_matching) method.
 
 ```python
 plot_images = processor.visualize_keypoint_matching(images, outputs)
@@ -80,7 +80,7 @@ plot_images
 
 ![Matched Image](https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/matched_bees.png)
 
-Optionally, you can use the [Pipeline](/docs/transformers/v5.0.0rc1/en/main_classes/pipelines#transformers.Pipeline) API and set the task to `keypoint-matching`.
+Optionally, you can use the [Pipeline](/docs/transformers/v5.0.0/en/main_classes/pipelines#transformers.Pipeline) API and set the task to `keypoint-matching`.
 
 ```python
 from transformers import pipeline 

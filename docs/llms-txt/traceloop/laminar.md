@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/integrations/laminar.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LLM observability with Laminar and OpenLLMetry
 
 ## Introduction to Laminar
@@ -92,8 +96,3 @@ TRACELOOP_HEADERS="Authorization=<YOUR_LMNR_PROJECT_API_KEY>"
 and skip step 3 (exporter setup) above.
 
 For more information check out the [Laminar docs](https://docs.lmnr.ai/).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

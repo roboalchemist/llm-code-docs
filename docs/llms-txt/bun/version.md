@@ -1,11 +1,15 @@
 # Source: https://bun.com/docs/guides/util/version.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get the current Bun version
 
 Get the current version of Bun in a semver format.
 
 ```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
-Bun.version; // => "1.3.2"
+Bun.version; // => "1.3.3"
 ```
 
 ***
@@ -18,4 +22,4 @@ Bun.revision; // => "49231b2cb9aa48497ab966fc0bb6b742dacc4994"
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils) for more useful utilities.
+See [Docs > API > Utils](/runtime/utils) for more useful utilities.

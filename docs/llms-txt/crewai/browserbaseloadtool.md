@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/web-scraping/browserbaseloadtool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Browserbase Web Loader
 
 > Browserbase is a developer platform to reliably run, manage, and monitor headless browsers.

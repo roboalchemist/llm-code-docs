@@ -1,102 +1,89 @@
 # Source: https://infisical.com/docs/api-reference/endpoints/deprecated/secrets/detach-tags.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Detach tags
 
 > Detach tags from a secret
 
+
+
 ## OpenAPI
 
 ````yaml DELETE /api/v3/secrets/tags/{secretName}
+openapi: 3.0.3
+info:
+  title: Infisical API
+  description: List of all available APIs that can be consumed
+  version: 0.0.1
+servers:
+  - url: https://us.infisical.com
+    description: Production server (US)
+  - url: https://eu.infisical.com
+    description: Production server (EU)
+  - url: http://localhost:8080
+    description: Local server
+security: []
 paths:
-  path: /api/v3/secrets/tags/{secretName}
-  method: delete
-  servers:
-    - url: https://us.infisical.com
-      description: Production server (US)
-    - url: https://eu.infisical.com
-      description: Production server (EU)
-    - url: http://localhost:8080
-      description: Local server
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: An access token in Infisical
-          cookie: {}
-    parameters:
-      path:
-        secretName:
-          schema:
-            - type: string
-              required: true
-              description: The name of the secret to detach tags from.
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              projectSlug:
-                allOf:
-                  - type: string
-                    description: The slug of the project where the secret is located.
-              environment:
-                allOf:
-                  - type: string
-                    description: The slug of the environment where the secret is located.
-              secretPath:
-                allOf:
-                  - type: string
-                    default: /
-                    description: The path of the secret to detach tags from.
-              type:
-                allOf:
-                  - type: string
-                    enum:
-                      - shared
-                      - personal
-                    default: shared
-                    description: >-
-                      The type of the secret to attach tags to.
-                      (shared/personal)
-              tagSlugs:
-                allOf:
-                  - type: array
-                    items:
-                      type: string
-                    minItems: 1
-                    description: An array of existing tag slugs to detach from the secret.
-            required: true
-            requiredProperties:
-              - projectSlug
-              - environment
-              - tagSlugs
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              projectSlug: <string>
-              environment: <string>
-              secretPath: /
-              type: shared
-              tagSlugs:
-                - <string>
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              secret:
-                allOf:
-                  - type: object
+  /api/v3/secrets/tags/{secretName}:
+    delete:
+      tags:
+        - Secrets
+      description: Detach tags from a secret
+      parameters:
+        - schema:
+            type: string
+          in: path
+          name: secretName
+          required: true
+          description: The name of the secret to detach tags from.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                projectSlug:
+                  type: string
+                  description: The slug of the project where the secret is located.
+                environment:
+                  type: string
+                  description: The slug of the environment where the secret is located.
+                secretPath:
+                  type: string
+                  default: /
+                  description: The path of the secret to detach tags from.
+                type:
+                  type: string
+                  enum:
+                    - shared
+                    - personal
+                  default: shared
+                  description: The type of the secret to attach tags to. (shared/personal)
+                tagSlugs:
+                  type: array
+                  items:
+                    type: string
+                  minItems: 1
+                  description: An array of existing tag slugs to detach from the secret.
+              required:
+                - projectSlug
+                - environment
+                - tagSlugs
+              additionalProperties: false
+        required: true
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  secret:
+                    type: object
                     properties:
                       id:
                         type: string
@@ -192,245 +179,155 @@ paths:
                       - updatedAt
                       - tags
                     additionalProperties: false
-            requiredProperties:
-              - secret
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              secret:
-                id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                version: 1
-                type: shared
-                secretKeyCiphertext: <string>
-                secretKeyIV: <string>
-                secretKeyTag: <string>
-                secretValueCiphertext: <string>
-                secretValueIV: <string>
-                secretValueTag: <string>
-                secretCommentCiphertext: <string>
-                secretCommentIV: <string>
-                secretCommentTag: <string>
-                secretReminderNote: <string>
-                secretReminderRepeatDays: 123
-                skipMultilineEncoding: false
-                algorithm: aes-256-gcm
-                keyEncoding: utf8
-                metadata: <any>
-                userId: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                folderId: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                createdAt: '2023-11-07T05:31:56Z'
-                updatedAt: '2023-11-07T05:31:56Z'
-                tags:
-                  - id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                    slug: <string>
-                    color: <string>
-                    name: <string>
-        description: Default Response
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                required:
+                  - secret
+                additionalProperties: false
+        '400':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 400
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 400
-              message: <string>
-              error: <string>
-        description: Default Response
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  error:
+                    type: string
+                  details: {}
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 401
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 401
-              message: <string>
-              error: <string>
-        description: Default Response
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '403':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 403
-              message:
-                allOf:
-                  - type: string
-              details:
-                allOf:
-                  - {}
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 403
-              message: <string>
-              details: <any>
-              error: <string>
-        description: Default Response
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  details: {}
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '404':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 404
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 404
-              message: <string>
-              error: <string>
-        description: Default Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '422':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 422
-              message:
-                allOf:
-                  - {}
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 422
-              message: <any>
-              error: <string>
-        description: Default Response
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message: {}
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - error
+                additionalProperties: false
+        '500':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 500
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 500
-              message: <string>
-              error: <string>
-        description: Default Response
-  deprecated: false
-  type: path
+                  message:
+                    type: string
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+      security:
+        - bearerAuth: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: An access token in Infisical
 
 ````

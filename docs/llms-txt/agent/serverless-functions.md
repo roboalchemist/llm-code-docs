@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/builder/serverless-functions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Managing Serverless Functions
 
 Builders can use the **Call Serverless Function** action to execute custom code as part of advanced agent workflows. Once a serverless function has been created, it will appear on the **Serverless Functions** page, accessible from the profile navigation menu.

@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/troubleshooting/restrictions-on-index-names.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Restrictions on index names
 
 There are two main restrictions on index names in Pinecone: **character restrictions** and a **maximum length**.

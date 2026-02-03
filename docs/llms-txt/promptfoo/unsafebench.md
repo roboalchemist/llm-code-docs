@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/unsafebench/
+
 # UnsafeBench Plugin
 
 The UnsafeBench plugin tests multi-modal models with potentially unsafe images from the [UnsafeBench dataset](https://huggingface.co/datasets/yiting/UnsafeBench). This helps evaluate how well models:

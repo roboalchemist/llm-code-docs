@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/agent-desk/integrations/apple-messages-for-business.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Apple Messages for Business
 
 Apple Messages for Business is a service that enables your organization to communicate directly with your customers through your Customer Service Platform (CSP), which in this case will be ASAPP, using the Apple Messages for Business app.
@@ -37,7 +41,7 @@ ASAPP supports the Chat Instead entry point. See the [Chat Instead](/agent-desk/
 
 ### Complete User Experience Review
 
-Apple requires a Brand Experience QA review before the channel can be launched. Please work with your Engagement Manager to prepare and schedule for the QA review. See the [Apple User Experience Review](https://register.apple.com/resources/messages/messaging-documentation/pass-apple-qa) documentation for more information.
+Apple requires a Brand Experience QA review before you can launch the channel. Please work with your Engagement Manager to prepare and schedule for the QA review. See the [Apple User Experience Review](https://register.apple.com/resources/messages/messaging-documentation/pass-apple-qa) documentation for more information.
 
 ### Determine Launch & Throttling Strategy
 

@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/get-started/tutorials/create-a-multipage-app
+
 # Create a multipage app
 
 In [Additional features](/get-started/fundamentals/additional-features), we introduced multipage apps, including how to define pages, structure and run multipage apps, and navigate between pages in the user interface. You can read more details in our guide to [Multipage apps](/develop/concepts/multipage-apps).

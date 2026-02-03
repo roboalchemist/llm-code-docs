@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/api-reference/v2/chatbots/list-chatbot-templates.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List chatbot templates
 
 > Get a list of all the available chatbot templates. Can be used to create a new chatbot.

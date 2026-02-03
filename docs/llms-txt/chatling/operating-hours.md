@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/web-widget/operating-hours.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Operating hours
 
 > Schedule the chatbot to be visible at certain times.

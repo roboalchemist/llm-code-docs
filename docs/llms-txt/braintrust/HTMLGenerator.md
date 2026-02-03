@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/HTMLGenerator.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Generating beautiful HTML components
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/HTMLGenerator/HTMLGenerator.ipynb) by [Ankur Goyal](https://twitter.com/ankrgyl) on 2024-01-29</div>
@@ -427,7 +431,7 @@ Once this runs, you should be able to see the raw inputs and outputs, along with
 
 Let's also track user ratings for these components. Separate from whether or not they're formatted as HTML, it'll be useful to track whether users like the design.
 
-To do this, [configure a new score in the project](https://www.braintrust.dev/docs/guides/human-review#configuring-human-review). Let's call it "User preference" and make it a 👍/👎.
+To do this, [configure a new score in the project](/annotate/human-review#configuring-human-review). Let's call it "User preference" and make it a 👍/👎.
 
 <img src="https://mintcdn.com/braintrust/miepTDmD0QMRaWQF/cookbook/assets/HTMLGenerator/score-config.png?fit=max&auto=format&n=miepTDmD0QMRaWQF&q=85&s=9e1421b5b11bf273f2288e7fc65cd372" alt="Score configuration" data-og-width="877" width="877" data-og-height="740" height="740" data-path="cookbook/assets/HTMLGenerator/score-config.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/miepTDmD0QMRaWQF/cookbook/assets/HTMLGenerator/score-config.png?w=280&fit=max&auto=format&n=miepTDmD0QMRaWQF&q=85&s=8c683ca2e88106d5a0d18322252a73ce 280w, https://mintcdn.com/braintrust/miepTDmD0QMRaWQF/cookbook/assets/HTMLGenerator/score-config.png?w=560&fit=max&auto=format&n=miepTDmD0QMRaWQF&q=85&s=fc6bd39d3365a4e150d52a0c70e27450 560w, https://mintcdn.com/braintrust/miepTDmD0QMRaWQF/cookbook/assets/HTMLGenerator/score-config.png?w=840&fit=max&auto=format&n=miepTDmD0QMRaWQF&q=85&s=ab03a1dc2bce4353937359b05e4e199e 840w, https://mintcdn.com/braintrust/miepTDmD0QMRaWQF/cookbook/assets/HTMLGenerator/score-config.png?w=1100&fit=max&auto=format&n=miepTDmD0QMRaWQF&q=85&s=20fd479679911c2f08edbf76ccdee90d 1100w, https://mintcdn.com/braintrust/miepTDmD0QMRaWQF/cookbook/assets/HTMLGenerator/score-config.png?w=1650&fit=max&auto=format&n=miepTDmD0QMRaWQF&q=85&s=df80ebaa06593a0641fe19f3f6b659f2 1650w, https://mintcdn.com/braintrust/miepTDmD0QMRaWQF/cookbook/assets/HTMLGenerator/score-config.png?w=2500&fit=max&auto=format&n=miepTDmD0QMRaWQF&q=85&s=29d8d51d302e9c23877d9ed3430fd342 2500w" />
 
@@ -605,8 +609,3 @@ Nice! We are now generating components without the `<html>` tag.
 ## Where to go from here
 
 Now that we've run another experiment, a good next step would be to rate the new components and make sure we did not suffer a serious aesthetic regression. You can also collect more user examples, add them to the dataset, and re-evaluate to better assess how well your application works. Happy evaluating!
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

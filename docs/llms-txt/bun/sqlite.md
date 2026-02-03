@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/runtime/sqlite.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SQLite
 
 > Bun natively implements a high-performance SQLite3 driver.
@@ -87,11 +91,11 @@ import { Database } from "bun:sqlite";
 const strict = new Database(":memory:", { strict: true });
 
 // throws error because of the typo:
-const query = strict.query("SELECT $message;").all({ message: "Hello world" });
+const query = strict.query("SELECT $message;").all({ messag: "Hello world" });
 
 const notStrict = new Database(":memory:");
 // does not throw error:
-notStrict.query("SELECT $message;").all({ message: "Hello world" });
+notStrict.query("SELECT $message;").all({ messag: "Hello world" });
 ```
 
 ### Load via ES module import
@@ -173,10 +177,23 @@ const query = db.query(`select "Hello world" as message`);
 ```
 
 <Note>
-  Use the `.prepare()` method to prepare a query *without* caching it on the `Database` instance.
+  **What does "cached" mean?**
+
+  The caching refers to the **compiled prepared statement** (the SQL bytecode), not the query results. When you call `db.query()` with the same SQL string multiple times, Bun returns the same cached `Statement` object instead of recompiling the SQL.
+
+  It is completely safe to reuse a cached statement with different parameter values:
 
   ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
-  // compile the prepared statement
+  const query = db.query("SELECT * FROM users WHERE id = ?");
+  query.get(1); // ✓ Works
+  query.get(2); // ✓ Also works - parameters are bound fresh each time
+  query.get(3); // ✓ Still works
+  ```
+
+  Use `.prepare()` instead of `.query()` when you want a fresh `Statement` instance that isn't cached, for example if you're dynamically generating SQL and don't want to fill the cache with one-off queries.
+
+  ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+  // compile the prepared statement without caching
   const query = db.prepare("SELECT * FROM foo WHERE bar = ?");
   ```
 </Note>
@@ -190,7 +207,7 @@ SQLite supports [write-ahead log mode](https://www.sqlite.org/wal.html) (WAL) wh
 To enable WAL mode, run this pragma query at the beginning of your application:
 
 ```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
-db.exec("PRAGMA journal_mode = WAL;");
+db.run("PRAGMA journal_mode = WAL;");
 ```
 
 <Accordion title="What is WAL mode?">
@@ -289,7 +306,7 @@ Internally, this calls [`sqlite3_reset`](https://www.sqlite.org/capi3ref.html#sq
 
 ### `.run()`
 
-Use `.run()` to run a query and get back `undefined`. This is useful for schema-modifying queries (e.g. `CREATE TABLE`) or bulk write operations.
+Use `.run()` to run a query and get back an object with execution metadata. This is useful for schema-modifying queries (e.g. `CREATE TABLE`) or bulk write operations.
 
 ```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" highlight={2} theme={"theme":{"light":"github-light","dark":"dracula"}}
 const query = db.query(`create table foo;`);
@@ -641,22 +658,33 @@ class Database {
           readonly?: boolean;
           create?: boolean;
           readwrite?: boolean;
+          safeIntegers?: boolean;
+          strict?: boolean;
         },
   );
 
-  query<Params, ReturnType>(sql: string): Statement<Params, ReturnType>;
+  query<ReturnType, ParamsType>(sql: string): Statement<ReturnType, ParamsType>;
+  prepare<ReturnType, ParamsType>(sql: string): Statement<ReturnType, ParamsType>;
   run(sql: string, params?: SQLQueryBindings): { lastInsertRowid: number; changes: number };
   exec = this.run;
+
+  transaction(insideTransaction: (...args: any) => void): CallableFunction & {
+    deferred: (...args: any) => void;
+    immediate: (...args: any) => void;
+    exclusive: (...args: any) => void;
+  };
+
+  close(throwOnError?: boolean): void;
 }
 
-class Statement<Params, ReturnType> {
-  all(params: Params): ReturnType[];
-  get(params: Params): ReturnType | undefined;
-  run(params: Params): {
+class Statement<ReturnType, ParamsType> {
+  all(...params: ParamsType[]): ReturnType[];
+  get(...params: ParamsType[]): ReturnType | null;
+  run(...params: ParamsType[]): {
     lastInsertRowid: number;
     changes: number;
   };
-  values(params: Params): unknown[][];
+  values(...params: ParamsType[]): unknown[][];
 
   finalize(): void; // destroy statement and clean up resources
   toString(): string; // serialize to SQL
@@ -667,7 +695,7 @@ class Statement<Params, ReturnType> {
   paramsCount: number; // the number of parameters expected by the statement
   native: any; // the native object representing the statement
 
-  as(Class: new () => ReturnType): this;
+  as<T>(Class: new (...args: any[]) => T): Statement<T, ParamsType>;
 }
 
 type SQLQueryBindings =

@@ -8,8 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > Account Management > Datadog Audit Trail > Audit Trail Guides > Track
   Monitor Access and Configuration Changes
-source_url: >-
-  https://docs.datadoghq.com/audit_trail/guides/track_monitor_access_and_configuration_changes/index.html
 ---
 
 # Track Monitor Access and Configuration Changes

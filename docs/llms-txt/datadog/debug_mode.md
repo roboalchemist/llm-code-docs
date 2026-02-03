@@ -4,7 +4,6 @@
 title: Debug Mode
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Agent > Agent Troubleshooting > Debug Mode
-source_url: https://docs.datadoghq.com/troubleshooting/debug_mode/index.html
 ---
 
 # Debug Mode

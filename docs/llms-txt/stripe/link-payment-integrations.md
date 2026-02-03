@@ -4,9 +4,12 @@
 
 Use Link with dynamic payment methods and other integrations.
 
-For eligible transactions, Stripe automatically displays Link when it’s enabled under **Wallets** in your [payment method settings](https://dashboard.stripe.com/settings/payment_methods). All Link transactions confirm immediately, and successful payments settle to your Stripe balance on the same timeline as card payments, regardless of the payment method that funds the payment.
+To use Link, you must enable it under **Wallets** in your [payment method settings](https://dashboard.stripe.com/settings/payment_methods) and integrate it appropriately for your use case. After you’ve enabled and integrated it, Stripe automatically displays Link to your customers for eligible transactions. All Link transactions confirm immediately, and successful payments settle to your Stripe balance on the same timeline as card payments, regardless of the payment method that funds the payment.
 
-You can integrate Link in two ways: as a payment method, or by incorporating it into a card-specific integration. Stripe recommends using Link as a payment method, because it’s a simpler integration and works with [dynamic payment methods](https://docs.stripe.com/payments/payment-methods/dynamic-payment-methods.md) out of the box. However, if you only accept card payments, or you require access to card details such as the brand or last 4 digits, add Link to your card integration.
+You can integrate Link in two ways:
+
+- [As a payment method](https://docs.stripe.com/payments/link/link-payment-integrations.md?link-integrations=link-payment-method): Recommended. This integration works with [dynamic payment methods](https://docs.stripe.com/payments/payment-methods/dynamic-payment-methods.md) and in most cases requires no additional configuration.
+- [Within a card-specific integration](https://docs.stripe.com/payments/link/link-payment-integrations.md?link-integrations=link-card-integrations): Use this integration type instead if you only accept card payments, or if you require access to card details such as the brand or last 4 digits.
 
 Both Link integrations accept all types of payment methods supported by Link, including credit cards, debit cards, [Instant Bank Payments](https://docs.stripe.com/payments/link/instant-bank-payments.md), and [Klarna](https://docs.stripe.com/payments/link/klarna.md).
 

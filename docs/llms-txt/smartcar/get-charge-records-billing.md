@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/tesla/get-charge-records-billing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Charge Billing Records
 
 > Returns information about charging sessions for Tesla vehicles at public Tesla chargers including cost and charging site.

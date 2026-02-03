@@ -8,7 +8,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Continuous Integration Visibility > CI Pipeline Visibility in Datadog >
   GitLab Setup for CI Visibility
-source_url: https://docs.datadoghq.com/pipelines/gitlab/index.html
 ---
 
 # GitLab Setup for CI Visibility
@@ -370,11 +369,11 @@ After these steps, CI Visibility adds the hostname to each job. To see the metri
 {% /tab %}
 
 {% tab title="Docker Autoscaler" %}
-CI Visibility supports Infrastructure metrics for "Docker Autoscaler" executors. For more information, see the [Correlate Infrastructure Metrics with GitLab Jobs guide](https://docs.datadoghq.com/continuous_integration/guides/infrastructure_metrics_with_gitlab).
+CI Visibility supports Infrastructure metrics for "Docker Autoscaler" executors through log-based correlation. To enable this, make sure GitLab job logs are indexed so Datadog can link jobs to hosts, and that the logs include messages in the form `Instance <hostname> connected`. GitLab job logs include the `datadog.product:cipipeline` and `source:gitlab` tags, which you can use in [Log Indexes](https://docs.datadoghq.com/logs/indexes/) filters. Users also need [log read access](https://docs.datadoghq.com/logs/guide/logs-rbac/) to see the Infrastructure data in this scenario. For more information, see the [Correlate Infrastructure Metrics with GitLab Jobs guide](https://docs.datadoghq.com/continuous_integration/guides/infrastructure_metrics_with_gitlab).
 {% /tab %}
 
 {% tab title="Instance" %}
-CI Visibility supports Infrastructure metrics for "Instance" executors. For more information, see the [Correlate Infrastructure Metrics with GitLab Jobs guide](https://docs.datadoghq.com/continuous_integration/guides/infrastructure_metrics_with_gitlab).
+CI Visibility supports Infrastructure metrics for "Instance" executors through log-based correlation. To enable this, make sure GitLab job logs are indexed so Datadog can link jobs to hosts, and that the logs include messages in the form `Instance <hostname> connected`. GitLab job logs include the `datadog.product:cipipeline` and `source:gitlab` tags, which you can use in [Log Indexes](https://docs.datadoghq.com/logs/indexes/) filters. Users also need [log read access](https://docs.datadoghq.com/logs/guide/logs-rbac/) to see the Infrastructure information in this scenario. For more information, see the [Correlate Infrastructure Metrics with GitLab Jobs guide](https://docs.datadoghq.com/continuous_integration/guides/infrastructure_metrics_with_gitlab).
 {% /tab %}
 
 {% tab title="Kubernetes" %}

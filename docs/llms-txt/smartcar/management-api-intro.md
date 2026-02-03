@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/management-api-intro.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Management API Overview
 
 > The Management API allows you to manage vehicle connections and webhook subscriptions at the application level. It is designed for administrative tasks that go beyond individual vehicle data access.

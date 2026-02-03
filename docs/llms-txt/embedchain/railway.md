@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/deployment/railway.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Railway.app
 
 > Deploy your RAG application to railway.app
@@ -10,7 +14,7 @@ Follow the instructions given below to deploy your first application quickly:
 
 ## Step-1: Create RAG app
 
-```bash Install embedchain
+```bash Install embedchain theme={null}
 pip install embedchain
 ```
 
@@ -35,13 +39,13 @@ By default, Railway uses Python 3.7. Embedchain requires the python version to b
 
 To fix this, create a `.python-version` file in the root directory of your project and specify the correct version
 
-```bash .python-version
+```bash .python-version theme={null}
 3.10
 ```
 
 You also need to create a `requirements.txt` file to specify the requirements.
 
-```bash requirements.txt
+```bash requirements.txt theme={null}
 python-dotenv
 embedchain
 fastapi==0.108.0
@@ -68,7 +72,7 @@ You can also use the railway CLI to deploy your apps from the terminal, if you d
 
 To do this, just run this command in your terminal
 
-```bash Install and set up railway CLI
+```bash Install and set up railway CLI theme={null}
 npm i -g @railway/cli
 railway login
 railway link [projectID]
@@ -76,7 +80,7 @@ railway link [projectID]
 
 Finally, run `railway up` to deploy your app.
 
-```bash Deploy
+```bash Deploy theme={null}
 railway up
 ```
 

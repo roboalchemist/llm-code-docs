@@ -9,7 +9,7 @@ https://api.apify.com/v2/key-value-stores
 ```
 
 
-Clientshttps://docs.apify.com/api/client/python/reference/class/KeyValueStoreCollectionClientAsync#listhttps://docs.apify.com/api/client/js/reference/class/KeyValueStoreCollectionClient#listGets the list of key-value stores owned by the user.
+Gets the list of key-value stores owned by the user.
 
 The response is a list of objects, where each objects contains a basic information about a single key-value store.
 
@@ -22,6 +22,10 @@ By default, the records are sorted by the `createdAt` field in ascending order, 
 ## Responses
 
 * 200
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

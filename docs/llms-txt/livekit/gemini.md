@@ -12,49 +12,7 @@
 
 # Source: https://docs.livekit.io/agents/models/llm/inference/gemini.md
 
-# Source: https://docs.livekit.io/agents/models/llm/plugins/gemini.md
-
-# Source: https://docs.livekit.io/agents/models/realtime/plugins/gemini.md
-
-# Source: https://docs.livekit.io/agents/models/llm/inference/gemini.md
-
-# Source: https://docs.livekit.io/agents/models/realtime/plugins/gemini.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/gemini.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/gemini.md
-
-# Source: https://docs.livekit.io/agents/models/llm/inference/gemini.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/gemini.md
-
-# Source: https://docs.livekit.io/agents/models/realtime/plugins/gemini.md
-
-# Source: https://docs.livekit.io/agents/models/llm/inference/gemini.md
-
-# Source: https://docs.livekit.io/agents/models/realtime/plugins/gemini.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/gemini.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/gemini.md
-
-# Source: https://docs.livekit.io/agents/models/llm/inference/gemini.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/gemini.md
-
-# Source: https://docs.livekit.io/agents/models/realtime/plugins/gemini.md
-
-# Source: https://docs.livekit.io/agents/models/llm/inference/gemini.md
-
-# Source: https://docs.livekit.io/agents/models/realtime/plugins/gemini.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/gemini.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/gemini.md
-
-# Source: https://docs.livekit.io/agents/models/llm/inference/gemini.md
-
-LiveKit docs › Partner spotlight › Google › Gemini in LiveKit Inference
+LiveKit docs › Models › LLM › Inference › Gemini
 
 ---
 
@@ -62,12 +20,18 @@ LiveKit docs › Partner spotlight › Google › Gemini in LiveKit Inference
 
 > Reference for the Google Gemini models served via LiveKit Inference.
 
+> ⚠️ **Model Deprecation Notice**
+> 
+> Gemini 2.0 Flash and Gemini 2.0 Flash Lite are scheduled for **full retirement on February 13, 2026 at 5 PM PST**. We recommend that you migrate to Gemini 2.5 Flash and Gemini 2.5 Flash Lite.
+
 ## Overview
 
 LiveKit Inference offers Gemini models through Google Vertex AI. Pricing is available on the [pricing page](https://livekit.io/pricing/inference#llm).
 
 | Model name | Model ID | Providers |
 | ---------- | -------- | -------- |
+| Gemini 3 Pro | `google/gemini-3-pro` | `google` |
+| Gemini 3 Flash | `google/gemini-3-flash` | `google` |
 | Gemini 2.5 Pro | `google/gemini-2.5-pro` | `google` |
 | Gemini 2.5 Flash | `google/gemini-2.5-flash` | `google` |
 | Gemini 2.5 Flash Lite | `google/gemini-2.5-flash-lite` | `google` |
@@ -164,7 +128,7 @@ The following links provide more information about Gemini in LiveKit Inference.
 
 ---
 
-This document was rendered at 2025-11-18T23:55:09.872Z.
+This document was rendered at 2026-02-03T03:24:59.026Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/llm/inference/gemini.md](https://docs.livekit.io/agents/models/llm/inference/gemini.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

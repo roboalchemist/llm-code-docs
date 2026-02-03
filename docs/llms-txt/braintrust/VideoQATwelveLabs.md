@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/VideoQATwelveLabs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Evaluating video QA with Twelve Labs
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/VideoQATwelveLabs/VideoQATwelveLabs.ipynb) by [James Le](https://x.com/le_james94), [Ornella Altunyan](https://twitter.com/ornelladotcom) on 2025-05-14</div>
@@ -291,8 +295,3 @@ If you discover specific weaknesses, you can consider:
 * Refining your LLM-as-a-judge scorer
 * [Switching models](/cookbook/recipes/VideoQA) and running experiments in tandem
 * Refining the QA dataset to optimize for a particular domain
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

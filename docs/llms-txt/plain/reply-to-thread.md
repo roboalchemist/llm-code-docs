@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/graphql/messaging/reply-to-thread.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Reply to threads
 
 You can reply to a thread using the `replyToThread` mutation, as long as the thread's communication channel is either `API`, `CHAT`, `EMAIL`, `SLACK` or 'MS\_TEAMS'. This information is available in the thread as the `channel` field.

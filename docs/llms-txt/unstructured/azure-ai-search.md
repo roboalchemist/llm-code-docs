@@ -4,17 +4,9 @@
 
 # Source: https://docs.unstructured.io/api-reference/workflow/destinations/azure-ai-search.md
 
-# Source: https://docs.unstructured.io/ui/destinations/azure-ai-search.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/destination-connectors/azure-ai-search.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/destinations/azure-ai-search.md
-
-# Source: https://docs.unstructured.io/ui/destinations/azure-ai-search.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/destination-connectors/azure-ai-search.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/destinations/azure-ai-search.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Azure AI Search
 
@@ -46,8 +38,7 @@
   After you create the destination connector, add it along with a
   [source connector](/api-reference/workflow/sources/overview) to a [workflow](/api-reference/workflow/overview#workflows).
   Then run the worklow as a [job](/api-reference/workflow/overview#jobs). To learn how, try out the
-  [hands-on Workflow Endpoint quickstart](/api-reference/workflow/overview#quickstart),
-  go directly to the [quickstart notebook](https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/Unstructured_Platform_Workflow_Endpoint_Quickstart.ipynb),
+  the notebook [Dropbox-To-Pinecone Connector API Quickstart for Unstructured](https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/Dropbox_To_Pinecone_Connector_Quickstart.ipynb),
   or watch the two 4-minute video tutorials for the [Unstructured Python SDK](/api-reference/workflow/overview#unstructured-python-sdk).
 
   You can also create destination connectors with the Unstructured user interface (UI).
@@ -78,284 +69,75 @@ Here are some more details about these requirements:
   circumstances. This is because these schemas will vary based on your source files' types; how you
   want Unstructured to partition, chunk, and generate embeddings; any custom post-processing code that you run; and other factors.
 
-  You can adapt the following index schema example for your own needs:
+  You can adapt the following index schema example for your own needs. Be sure to replace `<number-of-dimensions>`
+  (in three locations in the following example) with the number of dimensions of the embedding model you are using:
 
   ```json  theme={null}
   {
-    "@odata.context": "https://ingest-test-azure-ai-search.search.windows.net/$metadata#indexes/$entity",
-    "@odata.etag": "\"0x8DCED5D96393CA9\"",
-    "name": "<my-index-name>",
-    "defaultScoringProfile": null,
+    "name": "elements-index",
     "fields": [
       {
         "name": "id",
         "type": "Edm.String",
-        "searchable": true,
-        "filterable": true,
-        "retrievable": true,
-        "stored": true,
-        "sortable": true,
-        "facetable": true,
-        "key": true,
-        "indexAnalyzer": null,
-        "searchAnalyzer": null,
-        "analyzer": null,
-        "normalizer": null,
-        "dimensions": null,
-        "vectorSearchProfile": null,
-        "vectorEncoding": null,
-        "synonymMaps": []
+        "key": true
       },
       {
         "name": "record_id",
         "type": "Edm.String",
-        "searchable": true,
-        "filterable": true,
-        "retrievable": true,
-        "stored": true,
-        "sortable": true,
-        "facetable": true,
-        "key": false,
-        "indexAnalyzer": null,
-        "searchAnalyzer": null,
-        "analyzer": null,
-        "normalizer": null,
-        "dimensions": null,
-        "vectorSearchProfile": null,
-        "vectorEncoding": null,
-        "synonymMaps": []
+        "filterable": true
       },
       {
         "name": "element_id",
-        "type": "Edm.String",
-        "searchable": true,
-        "filterable": true,
-        "retrievable": true,
-        "stored": true,
-        "sortable": true,
-        "facetable": true,
-        "key": false,
-        "indexAnalyzer": null,
-        "searchAnalyzer": null,
-        "analyzer": null,
-        "normalizer": null,
-        "dimensions": null,
-        "vectorSearchProfile": null,
-        "vectorEncoding": null,
-        "synonymMaps": []
+        "type": "Edm.String"
       },
       {
         "name": "text",
         "type": "Edm.String",
-        "searchable": true,
-        "filterable": true,
-        "retrievable": true,
-        "stored": true,
-        "sortable": true,
-        "facetable": true,
-        "key": false,
-        "indexAnalyzer": null,
-        "searchAnalyzer": null,
-        "analyzer": null,
-        "normalizer": null,
-        "dimensions": null,
-        "vectorSearchProfile": null,
-        "vectorEncoding": null,
-        "synonymMaps": []
-      },
-      {
-        "name": "embeddings",
-        "type": "Collection(Edm.Single)",
-        "searchable": true,
-        "filterable": false,
-        "retrievable": true,
-        "stored": true,
-        "sortable": false,
-        "facetable": false,
-        "key": false,
-        "indexAnalyzer": null,
-        "searchAnalyzer": null,
-        "analyzer": null,
-        "normalizer": null,
-        "dimensions": 3072,
-        "vectorSearchProfile": "embeddings-config-profile",
-        "vectorEncoding": null,
-        "synonymMaps": []
+        "searchable": true
       },
       {
         "name": "type",
-        "type": "Edm.String",
-        "searchable": true,
-        "filterable": true,
-        "retrievable": true,
-        "stored": true,
-        "sortable": true,
-        "facetable": true,
-        "key": false,
-        "indexAnalyzer": null,
-        "searchAnalyzer": null,
-        "analyzer": null,
-        "normalizer": null,
-        "dimensions": null,
-        "vectorSearchProfile": null,
-        "vectorEncoding": null,
-        "synonymMaps": []
+        "type": "Edm.String"
       },
       {
         "name": "metadata",
         "type": "Edm.ComplexType",
         "fields": [
           {
+            "name": "orig_elements",
+            "type": "Edm.String"
+          },
+          {
             "name": "category_depth",
-            "type": "Edm.Int32",
-            "searchable": false,
-            "filterable": true,
-            "retrievable": true,
-            "stored": true,
-            "sortable": true,
-            "facetable": true,
-            "key": false,
-            "indexAnalyzer": null,
-            "searchAnalyzer": null,
-            "analyzer": null,
-            "normalizer": null,
-            "dimensions": null,
-            "vectorSearchProfile": null,
-            "vectorEncoding": null,
-            "synonymMaps": []
+            "type": "Edm.Int32"
           },
           {
             "name": "parent_id",
-            "type": "Edm.String",
-            "searchable": true,
-            "filterable": true,
-            "retrievable": true,
-            "stored": true,
-            "sortable": true,
-            "facetable": true,
-            "key": false,
-            "indexAnalyzer": null,
-            "searchAnalyzer": null,
-            "analyzer": null,
-            "normalizer": null,
-            "dimensions": null,
-            "vectorSearchProfile": null,
-            "vectorEncoding": null,
-            "synonymMaps": []
+            "type": "Edm.String"
           },
           {
             "name": "attached_to_filename",
-            "type": "Edm.String",
-            "searchable": true,
-            "filterable": true,
-            "retrievable": true,
-            "stored": true,
-            "sortable": true,
-            "facetable": true,
-            "key": false,
-            "indexAnalyzer": null,
-            "searchAnalyzer": null,
-            "analyzer": null,
-            "normalizer": null,
-            "dimensions": null,
-            "vectorSearchProfile": null,
-            "vectorEncoding": null,
-            "synonymMaps": []
+            "type": "Edm.String"
           },
           {
             "name": "filetype",
-            "type": "Edm.String",
-            "searchable": true,
-            "filterable": true,
-            "retrievable": true,
-            "stored": true,
-            "sortable": true,
-            "facetable": true,
-            "key": false,
-            "indexAnalyzer": null,
-            "searchAnalyzer": null,
-            "analyzer": null,
-            "normalizer": null,
-            "dimensions": null,
-            "vectorSearchProfile": null,
-            "vectorEncoding": null,
-            "synonymMaps": []
+            "type": "Edm.String"
           },
           {
             "name": "last_modified",
-            "type": "Edm.DateTimeOffset",
-            "searchable": false,
-            "filterable": true,
-            "retrievable": true,
-            "stored": true,
-            "sortable": true,
-            "facetable": true,
-            "key": false,
-            "indexAnalyzer": null,
-            "searchAnalyzer": null,
-            "analyzer": null,
-            "normalizer": null,
-            "dimensions": null,
-            "vectorSearchProfile": null,
-            "vectorEncoding": null,
-            "synonymMaps": []
+            "type": "Edm.DateTimeOffset"
           },
           {
             "name": "is_continuation",
-            "type": "Edm.Boolean",
-            "searchable": false,
-            "filterable": true,
-            "retrievable": true,
-            "stored": true,
-            "sortable": true,
-            "facetable": true,
-            "key": false,
-            "indexAnalyzer": null,
-            "searchAnalyzer": null,
-            "analyzer": null,
-            "normalizer": null,
-            "dimensions": null,
-            "vectorSearchProfile": null,
-            "vectorEncoding": null,
-            "synonymMaps": []
+            "type": "Edm.Boolean"
           },
           {
             "name": "file_directory",
-            "type": "Edm.String",
-            "searchable": true,
-            "filterable": true,
-            "retrievable": true,
-            "stored": true,
-            "sortable": true,
-            "facetable": true,
-            "key": false,
-            "indexAnalyzer": null,
-            "searchAnalyzer": null,
-            "analyzer": null,
-            "normalizer": null,
-            "dimensions": null,
-            "vectorSearchProfile": null,
-            "vectorEncoding": null,
-            "synonymMaps": []
+            "type": "Edm.String"
           },
           {
             "name": "filename",
-            "type": "Edm.String",
-            "searchable": true,
-            "filterable": true,
-            "retrievable": true,
-            "stored": true,
-            "sortable": true,
-            "facetable": true,
-            "key": false,
-            "indexAnalyzer": null,
-            "searchAnalyzer": null,
-            "analyzer": null,
-            "normalizer": null,
-            "dimensions": null,
-            "vectorSearchProfile": null,
-            "vectorEncoding": null,
-            "synonymMaps": []
+            "type": "Edm.String"
           },
           {
             "name": "data_source",
@@ -363,136 +145,31 @@ Here are some more details about these requirements:
             "fields": [
               {
                 "name": "url",
-                "type": "Edm.String",
-                "searchable": true,
-                "filterable": true,
-                "retrievable": true,
-                "stored": true,
-                "sortable": true,
-                "facetable": true,
-                "key": false,
-                "indexAnalyzer": null,
-                "searchAnalyzer": null,
-                "analyzer": null,
-                "normalizer": null,
-                "dimensions": null,
-                "vectorSearchProfile": null,
-                "vectorEncoding": null,
-                "synonymMaps": []
+                "type": "Edm.String"
               },
               {
                 "name": "version",
-                "type": "Edm.String",
-                "searchable": true,
-                "filterable": true,
-                "retrievable": true,
-                "stored": true,
-                "sortable": true,
-                "facetable": true,
-                "key": false,
-                "indexAnalyzer": null,
-                "searchAnalyzer": null,
-                "analyzer": null,
-                "normalizer": null,
-                "dimensions": null,
-                "vectorSearchProfile": null,
-                "vectorEncoding": null,
-                "synonymMaps": []
+                "type": "Edm.String"
               },
               {
                 "name": "date_created",
-                "type": "Edm.DateTimeOffset",
-                "searchable": false,
-                "filterable": true,
-                "retrievable": true,
-                "stored": true,
-                "sortable": true,
-                "facetable": true,
-                "key": false,
-                "indexAnalyzer": null,
-                "searchAnalyzer": null,
-                "analyzer": null,
-                "normalizer": null,
-                "dimensions": null,
-                "vectorSearchProfile": null,
-                "vectorEncoding": null,
-                "synonymMaps": []
+                "type": "Edm.DateTimeOffset"
               },
               {
                 "name": "date_modified",
-                "type": "Edm.DateTimeOffset",
-                "searchable": false,
-                "filterable": true,
-                "retrievable": true,
-                "stored": true,
-                "sortable": true,
-                "facetable": true,
-                "key": false,
-                "indexAnalyzer": null,
-                "searchAnalyzer": null,
-                "analyzer": null,
-                "normalizer": null,
-                "dimensions": null,
-                "vectorSearchProfile": null,
-                "vectorEncoding": null,
-                "synonymMaps": []
+                "type": "Edm.DateTimeOffset"
               },
               {
                 "name": "date_processed",
-                "type": "Edm.DateTimeOffset",
-                "searchable": false,
-                "filterable": true,
-                "retrievable": true,
-                "stored": true,
-                "sortable": true,
-                "facetable": true,
-                "key": false,
-                "indexAnalyzer": null,
-                "searchAnalyzer": null,
-                "analyzer": null,
-                "normalizer": null,
-                "dimensions": null,
-                "vectorSearchProfile": null,
-                "vectorEncoding": null,
-                "synonymMaps": []
+                "type": "Edm.DateTimeOffset"
               },
               {
                 "name": "permissions_data",
-                "type": "Edm.String",
-                "searchable": true,
-                "filterable": true,
-                "retrievable": true,
-                "stored": true,
-                "sortable": true,
-                "facetable": true,
-                "key": false,
-                "indexAnalyzer": null,
-                "searchAnalyzer": null,
-                "analyzer": null,
-                "normalizer": null,
-                "dimensions": null,
-                "vectorSearchProfile": null,
-                "vectorEncoding": null,
-                "synonymMaps": []
+                "type": "Edm.String"
               },
               {
                 "name": "record_locator",
-                "type": "Edm.String",
-                "searchable": true,
-                "filterable": true,
-                "retrievable": true,
-                "stored": true,
-                "sortable": true,
-                "facetable": true,
-                "key": false,
-                "indexAnalyzer": null,
-                "searchAnalyzer": null,
-                "analyzer": null,
-                "normalizer": null,
-                "dimensions": null,
-                "vectorSearchProfile": null,
-                "vectorEncoding": null,
-                "synonymMaps": []
+                "type": "Edm.String"
               }
             ]
           },
@@ -502,485 +179,128 @@ Here are some more details about these requirements:
             "fields": [
               {
                 "name": "system",
-                "type": "Edm.String",
-                "searchable": true,
-                "filterable": true,
-                "retrievable": true,
-                "stored": true,
-                "sortable": true,
-                "facetable": true,
-                "key": false,
-                "indexAnalyzer": null,
-                "searchAnalyzer": null,
-                "analyzer": null,
-                "normalizer": null,
-                "dimensions": null,
-                "vectorSearchProfile": null,
-                "vectorEncoding": null,
-                "synonymMaps": []
+                "type": "Edm.String"
               },
               {
                 "name": "layout_width",
-                "type": "Edm.Double",
-                "searchable": false,
-                "filterable": true,
-                "retrievable": true,
-                "stored": true,
-                "sortable": true,
-                "facetable": true,
-                "key": false,
-                "indexAnalyzer": null,
-                "searchAnalyzer": null,
-                "analyzer": null,
-                "normalizer": null,
-                "dimensions": null,
-                "vectorSearchProfile": null,
-                "vectorEncoding": null,
-                "synonymMaps": []
+                "type": "Edm.Double"
               },
               {
                 "name": "layout_height",
-                "type": "Edm.Double",
-                "searchable": false,
-                "filterable": true,
-                "retrievable": true,
-                "stored": true,
-                "sortable": true,
-                "facetable": true,
-                "key": false,
-                "indexAnalyzer": null,
-                "searchAnalyzer": null,
-                "analyzer": null,
-                "normalizer": null,
-                "dimensions": null,
-                "vectorSearchProfile": null,
-                "vectorEncoding": null,
-                "synonymMaps": []
+                "type": "Edm.Double"
               },
               {
                 "name": "points",
-                "type": "Edm.String",
-                "searchable": true,
-                "filterable": true,
-                "retrievable": true,
-                "stored": true,
-                "sortable": true,
-                "facetable": true,
-                "key": false,
-                "indexAnalyzer": null,
-                "searchAnalyzer": null,
-                "analyzer": null,
-                "normalizer": null,
-                "dimensions": null,
-                "vectorSearchProfile": null,
-                "vectorEncoding": null,
-                "synonymMaps": []
+                "type": "Edm.String"
               }
             ]
           },
           {
             "name": "languages",
-            "type": "Collection(Edm.String)",
-            "searchable": true,
-            "filterable": true,
-            "retrievable": true,
-            "stored": true,
-            "sortable": false,
-            "facetable": true,
-            "key": false,
-            "indexAnalyzer": null,
-            "searchAnalyzer": null,
-            "analyzer": null,
-            "normalizer": null,
-            "dimensions": null,
-            "vectorSearchProfile": null,
-            "vectorEncoding": null,
-            "synonymMaps": []
+            "type": "Collection(Edm.String)"
           },
           {
             "name": "page_number",
-            "type": "Edm.String",
-            "searchable": true,
-            "filterable": true,
-            "retrievable": true,
-            "stored": true,
-            "sortable": true,
-            "facetable": true,
-            "key": false,
-            "indexAnalyzer": null,
-            "searchAnalyzer": null,
-            "analyzer": null,
-            "normalizer": null,
-            "dimensions": null,
-            "vectorSearchProfile": null,
-            "vectorEncoding": null,
-            "synonymMaps": []
-          },
-          {
-            "name": "orig_elements",
-            "type": "Edm.String",
-            "searchable": true,
-            "filterable": true,
-            "retrievable": true,
-            "stored": true,
-            "sortable": true,
-            "facetable": true,
-            "key": false,
-            "indexAnalyzer": null,
-            "searchAnalyzer": null,
-            "analyzer": null,
-            "normalizer": null,
-            "dimensions": null,
-            "vectorSearchProfile": null,
-            "vectorEncoding": null,
-            "synonymMaps": []
+            "type": "Edm.String"
           },
           {
             "name": "links",
-            "type": "Collection(Edm.String)",
-            "searchable": true,
-            "filterable": true,
-            "retrievable": true,
-            "stored": true,
-            "sortable": false,
-            "facetable": true,
-            "key": false,
-            "indexAnalyzer": null,
-            "searchAnalyzer": null,
-            "analyzer": null,
-            "normalizer": null,
-            "dimensions": null,
-            "vectorSearchProfile": null,
-            "vectorEncoding": null,
-            "synonymMaps": []
+            "type": "Collection(Edm.String)"
           },
           {
             "name": "page_name",
-            "type": "Edm.String",
-            "searchable": true,
-            "filterable": true,
-            "retrievable": true,
-            "stored": true,
-            "sortable": true,
-            "facetable": true,
-            "key": false,
-            "indexAnalyzer": null,
-            "searchAnalyzer": null,
-            "analyzer": null,
-            "normalizer": null,
-            "dimensions": null,
-            "vectorSearchProfile": null,
-            "vectorEncoding": null,
-            "synonymMaps": []
-          },
-          {
-            "name": "url",
-            "type": "Edm.String",
-            "searchable": true,
-            "filterable": true,
-            "retrievable": true,
-            "stored": true,
-            "sortable": true,
-            "facetable": true,
-            "key": false,
-            "indexAnalyzer": null,
-            "searchAnalyzer": null,
-            "analyzer": null,
-            "normalizer": null,
-            "dimensions": null,
-            "vectorSearchProfile": null,
-            "vectorEncoding": null,
-            "synonymMaps": []
+            "type": "Edm.String"
           },
           {
             "name": "link_urls",
-            "type": "Collection(Edm.String)",
-            "searchable": true,
-            "filterable": true,
-            "retrievable": true,
-            "stored": true,
-            "sortable": false,
-            "facetable": true,
-            "key": false,
-            "indexAnalyzer": null,
-            "searchAnalyzer": null,
-            "analyzer": null,
-            "normalizer": null,
-            "dimensions": null,
-            "vectorSearchProfile": null,
-            "vectorEncoding": null,
-            "synonymMaps": []
+            "type": "Collection(Edm.String)"
           },
           {
             "name": "link_texts",
-            "type": "Collection(Edm.String)",
-            "searchable": true,
-            "filterable": true,
-            "retrievable": true,
-            "stored": true,
-            "sortable": false,
-            "facetable": true,
-            "key": false,
-            "indexAnalyzer": null,
-            "searchAnalyzer": null,
-            "analyzer": null,
-            "normalizer": null,
-            "dimensions": null,
-            "vectorSearchProfile": null,
-            "vectorEncoding": null,
-            "synonymMaps": []
+            "type": "Collection(Edm.String)"
           },
           {
             "name": "sent_from",
-            "type": "Collection(Edm.String)",
-            "searchable": true,
-            "filterable": true,
-            "retrievable": true,
-            "stored": true,
-            "sortable": false,
-            "facetable": true,
-            "key": false,
-            "indexAnalyzer": null,
-            "searchAnalyzer": null,
-            "analyzer": null,
-            "normalizer": null,
-            "dimensions": null,
-            "vectorSearchProfile": null,
-            "vectorEncoding": null,
-            "synonymMaps": []
+            "type": "Collection(Edm.String)"
           },
           {
             "name": "sent_to",
-            "type": "Collection(Edm.String)",
-            "searchable": true,
-            "filterable": true,
-            "retrievable": true,
-            "stored": true,
-            "sortable": false,
-            "facetable": true,
-            "key": false,
-            "indexAnalyzer": null,
-            "searchAnalyzer": null,
-            "analyzer": null,
-            "normalizer": null,
-            "dimensions": null,
-            "vectorSearchProfile": null,
-            "vectorEncoding": null,
-            "synonymMaps": []
+            "type": "Collection(Edm.String)"
           },
           {
             "name": "subject",
-            "type": "Edm.String",
-            "searchable": true,
-            "filterable": true,
-            "retrievable": true,
-            "stored": true,
-            "sortable": true,
-            "facetable": true,
-            "key": false,
-            "indexAnalyzer": null,
-            "searchAnalyzer": null,
-            "analyzer": null,
-            "normalizer": null,
-            "dimensions": null,
-            "vectorSearchProfile": null,
-            "vectorEncoding": null,
-            "synonymMaps": []
+            "type": "Edm.String"
           },
           {
             "name": "section",
-            "type": "Edm.String",
-            "searchable": true,
-            "filterable": true,
-            "retrievable": true,
-            "stored": true,
-            "sortable": true,
-            "facetable": true,
-            "key": false,
-            "indexAnalyzer": null,
-            "searchAnalyzer": null,
-            "analyzer": null,
-            "normalizer": null,
-            "dimensions": null,
-            "vectorSearchProfile": null,
-            "vectorEncoding": null,
-            "synonymMaps": []
+            "type": "Edm.String"
           },
           {
             "name": "header_footer_type",
-            "type": "Edm.String",
-            "searchable": true,
-            "filterable": true,
-            "retrievable": true,
-            "stored": true,
-            "sortable": true,
-            "facetable": true,
-            "key": false,
-            "indexAnalyzer": null,
-            "searchAnalyzer": null,
-            "analyzer": null,
-            "normalizer": null,
-            "dimensions": null,
-            "vectorSearchProfile": null,
-            "vectorEncoding": null,
-            "synonymMaps": []
+            "type": "Edm.String"
           },
           {
             "name": "emphasized_text_contents",
-            "type": "Collection(Edm.String)",
-            "searchable": true,
-            "filterable": true,
-            "retrievable": true,
-            "stored": true,
-            "sortable": false,
-            "facetable": true,
-            "key": false,
-            "indexAnalyzer": null,
-            "searchAnalyzer": null,
-            "analyzer": null,
-            "normalizer": null,
-            "dimensions": null,
-            "vectorSearchProfile": null,
-            "vectorEncoding": null,
-            "synonymMaps": []
+            "type": "Collection(Edm.String)"
           },
           {
             "name": "emphasized_text_tags",
-            "type": "Collection(Edm.String)",
-            "searchable": true,
-            "filterable": true,
-            "retrievable": true,
-            "stored": true,
-            "sortable": false,
-            "facetable": true,
-            "key": false,
-            "indexAnalyzer": null,
-            "searchAnalyzer": null,
-            "analyzer": null,
-            "normalizer": null,
-            "dimensions": null,
-            "vectorSearchProfile": null,
-            "vectorEncoding": null,
-            "synonymMaps": []
+            "type": "Collection(Edm.String)"
           },
           {
             "name": "text_as_html",
-            "type": "Edm.String",
-            "searchable": true,
-            "filterable": false,
-            "retrievable": true,
-            "stored": true,
-            "sortable": false,
-            "facetable": false,
-            "key": false,
-            "indexAnalyzer": null,
-            "searchAnalyzer": null,
-            "analyzer": null,
-            "normalizer": null,
-            "dimensions": null,
-            "vectorSearchProfile": null,
-            "vectorEncoding": null,
-            "synonymMaps": []
+            "type": "Edm.String"
           },
           {
             "name": "regex_metadata",
-            "type": "Edm.String",
-            "searchable": true,
-            "filterable": true,
-            "retrievable": true,
-            "stored": true,
-            "sortable": true,
-            "facetable": true,
-            "key": false,
-            "indexAnalyzer": null,
-            "searchAnalyzer": null,
-            "analyzer": null,
-            "normalizer": null,
-            "dimensions": null,
-            "vectorSearchProfile": null,
-            "vectorEncoding": null,
-            "synonymMaps": []
+            "type": "Edm.String"
           },
           {
             "name": "detection_class_prob",
-            "type": "Edm.Double",
-            "searchable": false,
-            "filterable": true,
-            "retrievable": true,
-            "stored": true,
-            "sortable": true,
-            "facetable": true,
-            "key": false,
-            "indexAnalyzer": null,
-            "searchAnalyzer": null,
-            "analyzer": null,
-            "normalizer": null,
-            "dimensions": null,
-            "vectorSearchProfile": null,
-            "vectorEncoding": null,
-            "synonymMaps": []
-          },
-          {
-            "name": "partitioner_type",
-            "type": "Edm.String",
-            "searchable": false,
-            "filterable": true,
-            "retrievable": true,
-            "stored": true,
-            "sortable": true,
-            "facetable": true,
-            "key": false,
-            "indexAnalyzer": null,
-            "searchAnalyzer": null,
-            "analyzer": null,
-            "normalizer": null,
-            "dimensions": null,
-            "vectorSearchProfile": null,
-            "vectorEncoding": null,
-            "synonymMaps": []
+            "type": "Edm.Double"
           }
         ]
+      },
+      {
+        "name": "embeddings",
+        "type": "Collection(Edm.Single)",
+        "dimensions": <number-of-dimensions>,
+        "vectorSearchProfile": "embeddings-config-profile"
       }
     ],
-    "scoringProfiles": [],
-    "corsOptions": null,
-    "suggesters": [],
-    "analyzers": [],
-    "normalizers": [],
-    "tokenizers": [],
-    "tokenFilters": [],
-    "charFilters": [],
-    "encryptionKey": null,
-    "similarity": {
-      "@odata.type": "#Microsoft.Azure.Search.BM25Similarity",
-      "k1": null,
-      "b": null
-    },
-    "semantic": null,
     "vectorSearch": {
       "algorithms": [
         {
-          "name": "embeddings-config",
+          "name": "hnsw-<number-of-dimensions>",
           "kind": "hnsw",
           "hnswParameters": {
-            "metric": "cosine",
             "m": 4,
             "efConstruction": 400,
-            "efSearch": 500
-          },
-          "exhaustiveKnnParameters": null
+            "efSearch": 500,
+            "metric": "cosine"
+          }
         }
       ],
       "profiles": [
         {
           "name": "embeddings-config-profile",
-          "algorithm": "embeddings-config",
-          "vectorizer": null,
-          "compression": null
+          "algorithm": "hnsw-<number-of-dimensions>"
         }
-      ],
-      "vectorizers": [],
-      "compressions": []
+      ]
+    },
+    "semantic": {
+      "configurations": [
+        {
+          "name": "default-semantic-config",
+          "prioritizedFields": {
+            "titleField": null,
+            "prioritizedContentFields": [
+              { "fieldName": "text" }
+            ],
+            "prioritizedKeywordsFields": []
+          }
+        }
+      ]
     }
   }
   ```
@@ -990,7 +310,7 @@ Here are some more details about these requirements:
   * [Search indexes in Azure AI Search](https://learn.microsoft.com/azure/search/search-what-is-an-index)
   * [Schema of a search index](https://learn.microsoft.com/azure/search/search-what-is-an-index#schema-of-a-search-index)
   * [Example index schema](https://learn.microsoft.com/rest/api/searchservice/create-index#examples)
-  * [Unstructured document elements and metadata](/api-reference/partition/document-elements)
+  * [Unstructured document elements and metadata](/api-reference/legacy-api/partition/document-elements)
 
 To create an Azure AI Search destination connector, see the following examples.
 

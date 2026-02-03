@@ -4,11 +4,7 @@
 
 Other social providers setup and usage.
 
-***
 
-title: Other Social Providers
-description: Other social providers setup and usage.
-----------------------------------------------------
 
 Better Auth provides support for any social provider that implements the OAuth2 protocol or OpenID Connect (OIDC) flows through the [Generic OAuth Plugin](/docs/plugins/generic-oauth). You can use pre-configured helper functions for popular providers like Auth0, Keycloak, Okta, Microsoft Entra ID, and Slack, or manually configure any OAuth provider.
 

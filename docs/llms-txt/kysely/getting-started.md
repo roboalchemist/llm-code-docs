@@ -77,7 +77,7 @@ deno.json
 ```
 {
   "imports": {
-    "kysely": "npm:kysely@^0.28.9"
+    "kysely": "npm:kysely@^0.28.11"
   }
 }
 ```

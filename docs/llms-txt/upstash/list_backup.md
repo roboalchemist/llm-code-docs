@@ -1,64 +1,89 @@
 # Source: https://upstash.com/docs/devops/developer-api/redis/backup/list_backup.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Backup
 
 > This endpoint lists all backups for a Redis database.
 
+
+
 ## OpenAPI
 
 ````yaml devops/developer-api/openapi.yml get /redis/list-backup/{id}
+openapi: 3.0.4
+info:
+  title: Developer API - Upstash
+  description: >-
+    This is a documentation to specify Developer API endpoints based on the
+    OpenAPI 3.0 specification.
+  contact:
+    name: Support Team
+    email: support@upstash.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+  - url: https://api.upstash.com/v2
+security: []
+tags:
+  - name: redis
+    description: Manage redis databases.
+    externalDocs:
+      description: Find out more
+      url: https://upstash.com/docs/devops/developer-api/introduction
+  - name: teams
+    description: Manage teams and team members.
+    externalDocs:
+      description: Find out more
+      url: https://upstash.com/docs/devops/developer-api/introduction
+  - name: vector
+    description: Manage vector indices.
+    externalDocs:
+      description: Find out more
+      url: https://upstash.com/docs/devops/developer-api/introduction
+  - name: search
+    description: Manage search indices.
+    externalDocs:
+      description: Find out more
+      url: https://upstash.com/docs/devops/developer-api/introduction
+  - name: qstash
+    description: Manage QStash.
+    externalDocs:
+      description: Find out more
+      url: https://upstash.com/docs/devops/developer-api/introduction
+externalDocs:
+  description: Find out more about Upstash
+  url: https://upstash.com/
 paths:
-  path: /redis/list-backup/{id}
-  method: get
-  servers:
-    - url: https://api.upstash.com/v2
-  request:
-    security:
-      - title: basicAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: basic
-          cookie: {}
-    parameters:
-      path:
-        id:
+  /redis/list-backup/{id}:
+    get:
+      tags:
+        - redis
+      summary: List Backup
+      description: This endpoint lists all backups for a Redis database.
+      operationId: listBackup
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the Redis database
+          required: true
           schema:
-            - type: string
-              required: true
-              description: The ID of the Redis database
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: array
-            items:
-              allOf:
-                - $ref: '#/components/schemas/Backup'
-        examples:
-          example:
-            value:
-              - database_id: 6gcqwafd-9627-4ec2-4g51-b1429h59c8d4
-                customer_id: example@upstash.com
-                name: test
-                backup_id: 1d62p45b-c567-1239-b23e-449ads33a62e
-                creation_time: 1757000716
-                state: pending
-                backup_size: 0
-                daily_backup: 'false'
-                hourly_backup: 'false'
-                internal_backup_tag: ''
-        description: Backups retrieved successfully
-  deprecated: false
-  type: path
-  xMint:
-    href: /devops/developer-api/redis/backup/list_backup
+            type: string
+      responses:
+        '200':
+          description: Backups retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Backup'
+      security:
+        - basicAuth: []
 components:
   schemas:
     Backup:
@@ -118,5 +143,9 @@ components:
           example: ''
       xml:
         name: backup
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
 
 ````

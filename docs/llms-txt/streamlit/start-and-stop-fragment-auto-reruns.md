@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/tutorials/execution-flow/start-and-stop-fragment-auto-reruns
+
 # Start and stop a streaming fragment
 
 Streamlit lets you turn functions into [fragments](https://docs.streamlit.io/develop/concepts/architecture/fragments), which can rerun independently from the full script. Additionally, you can tell Streamlit to rerun a fragment at a set time interval. This is great for streaming data or monitoring processes. You may want the user to start and stop this live streaming. To do this, programmatically set the `run_every` parameter for your fragment.

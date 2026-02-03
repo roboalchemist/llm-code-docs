@@ -2,10 +2,6 @@
 
 # Source: https://vitest.dev/config/globals.md
 
-# Source: https://vitest.dev/guide/mocking/globals.md
-
-# Source: https://vitest.dev/config/globals.md
-
 ---
 url: /config/globals.md
 ---

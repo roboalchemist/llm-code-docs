@@ -2,13 +2,9 @@
 
 # Source: https://smartcar.com/docs/help/faqs.md
 
-# Source: https://smartcar.com/docs/help/oem-integrations/tesla/faqs.md
-
-# Source: https://smartcar.com/docs/help/faqs.md
-
-# Source: https://smartcar.com/docs/help/oem-integrations/tesla/faqs.md
-
-# Source: https://smartcar.com/docs/help/faqs.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Frequently Asked Questions (FAQs)
 
@@ -79,6 +75,6 @@ Below you'll find answers to some of the most frequently asked questions about S
   </Accordion>
 
   <Accordion title="Why do I see requests that resulted in a 460 status code with different error codes and error types on the Smartcar Dashboard?">
-    In the event that we recieve a response from the OEM after the connection is closed, we will show the error code and error type we would have responded with on the Dashboard if the connection had been kept open.
+    In the event that we receive a response from the OEM after the connection is closed, we will show the error code and error type we would have responded with on the Dashboard if the connection had been kept open.
   </Accordion>
 </AccordionGroup>

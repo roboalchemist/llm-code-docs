@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/services/transport/livekit.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LiveKitTransport
 
 > WebRTC transport implementation using LiveKit for real-time audio communication
@@ -69,8 +73,3 @@ See the [complete example](https://github.com/pipecat-ai/pipecat/blob/main/examp
 * Transport configuration with participant management
 * Pipeline integration with audio processing
 * Event handling for room lifecycle management
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

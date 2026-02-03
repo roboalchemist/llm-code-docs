@@ -4,7 +4,6 @@
 title: Testing Local and Staging Environments
 description: Learn about using Continuous Testing in local and remote environments.
 breadcrumbs: Docs > Continuous Testing > Testing Local and Staging Environments
-source_url: https://docs.datadoghq.com/environments/index.html
 ---
 
 # Testing Local and Staging Environments

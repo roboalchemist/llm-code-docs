@@ -6,7 +6,6 @@ description: >-
   Learn how to uninstall the Datadog Agent from different operating systems,
   platforms, and configuration management tools.
 breadcrumbs: Docs > Agent > Agent Guides > Uninstalling the Agent
-source_url: https://docs.datadoghq.com/guide/how-do-i-uninstall-the-agent/index.html
 ---
 
 # Uninstalling the Agent

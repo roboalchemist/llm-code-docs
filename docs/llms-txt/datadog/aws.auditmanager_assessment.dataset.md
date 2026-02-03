@@ -4,8 +4,6 @@
 title: Audit Manager Assessment
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Audit Manager Assessment
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.auditmanager_assessment.dataset/index.html
 ---
 
 # Audit Manager Assessment
@@ -18,10 +16,10 @@ aws.auditmanager_assessment
 
 ## Fields
 
-| Title      | ID   | Type   | Data Type                                                                                                                                                      | Description |
-| ---------- | ---- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| _key       | core | string |
-| account_id | core | string |
-| assessment | core | json   | An entity that defines the scope of audit evidence collected by Audit Manager. An Audit Manager assessment is an implementation of an Audit Manager framework. |
-| tags       | core | hstore |
-| user_role  | core | json   | The wrapper that contains the Audit Manager role information of the current user. This includes the role type and IAM Amazon Resource Name (ARN).              |
+| Title      | ID   | Type       | Data Type                                                                                                                                                      | Description |
+| ---------- | ---- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| _key       | core | string     |
+| account_id | core | string     |
+| assessment | core | json       | An entity that defines the scope of audit evidence collected by Audit Manager. An Audit Manager assessment is an implementation of an Audit Manager framework. |
+| tags       | core | hstore_csv |
+| user_role  | core | json       | The wrapper that contains the Audit Manager role information of the current user. This includes the role type and IAM Amazon Resource Name (ARN).              |

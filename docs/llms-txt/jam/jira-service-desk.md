@@ -2,10 +2,6 @@
 
 # Source: https://jam.dev/docs/jam-for-customer-support/jira-service-desk.md
 
-# Source: https://jam.dev/docs/integrations/jira-service-desk.md
-
-# Source: https://jam.dev/docs/jam-for-customer-support/jira-service-desk.md
-
 # Jira Service Desk
 
 1. Create a new Recording Link from the Jam browser extension

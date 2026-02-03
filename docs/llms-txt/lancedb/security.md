@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/enterprise/security.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Security & compliance
 
 > Learn about LanceDB Enterprise security features and best practices.
@@ -33,8 +37,3 @@ At LanceDB, customer data security is paramount.
 LanceDB Enterprise safeguards your data through encryption at rest, preventing
 unauthorized access. This comprehensive encryption covers all data stored within the
 object store and cache.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

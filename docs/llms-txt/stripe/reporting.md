@@ -4,7 +4,7 @@
 
 Access financing offer data in the Stripe Dashboard.
 
-> Capital for platforms is available in [public preview](https://docs.stripe.com/release-phases.md). [Sign up to join](https://docs.stripe.com/capital/how-capital-for-platforms-works.md#sign-up).
+> Capital for platforms is available in [public preview](https://docs.stripe.com/release-phases.md).
 
 The Capital page in the [Stripe Dashboard](https://dashboard.stripe.com/connect/capital) can help you understand the performance of your Capital program. The page displays metrics for originations, conversion, and the level of engagement with financing offers that were delivered to your connected accounts.
 

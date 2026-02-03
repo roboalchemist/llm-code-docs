@@ -12,20 +12,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/get-started.md
 
-# Source: https://docs.avaamo.com/user-guide/avaamo-agent-assist/agent-assist-widget/get-started.md
-
-# Source: https://docs.avaamo.com/user-guide/live-agent-console/live-agent/get-started.md
-
-# Source: https://docs.avaamo.com/user-guide/live-agent-console/supervisor/get-started.md
-
-# Source: https://docs.avaamo.com/user-guide/how-to/build-agents/test-agents/regression-testing/get-started.md
-
-# Source: https://docs.avaamo.com/user-guide/llamb/regression-testing/get-started.md
-
-# Source: https://docs.avaamo.com/user-guide/llamb/get-started.md
-
-# Source: https://docs.avaamo.com/user-guide/get-started.md
-
 # Get started
 
 Once you have created an **AI Agent**, follow these steps to configure and build it effectively.

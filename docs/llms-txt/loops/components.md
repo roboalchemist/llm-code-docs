@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/creating-emails/components.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Components
 
 > Create re-usable elements for your emails.
@@ -79,6 +83,6 @@ Enter a new name and click **Rename**.
   A deleted component's contents will be retained by any email it was added to.
 </Warning>
 
-In the Components list, find the component you want to rename, then click the `•••` menu icon. Click on **Delete** to show the confirmation modal.
+In the Components list, find the component you want to delete, then click the `•••` menu icon. Click on **Delete** to show the confirmation modal.
 
 Click **Delete** to delete the component.

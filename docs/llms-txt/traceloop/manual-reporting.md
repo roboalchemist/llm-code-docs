@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/tracing/manual-reporting.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Manually reporting calls to LLMs and Vector DBs
 
 > What should I do if my favorite vector DB or LLM is not supported by OpenLLMetry?
@@ -113,8 +117,3 @@ This function passes a parameter you can use to report the query vector as well 
     );
   ```
 </CodeGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

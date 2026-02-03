@@ -4,72 +4,55 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/deprecated/project-users/memberships.md
 
-# Source: https://infisical.com/docs/api-reference/endpoints/project-users/memberships.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/organizations/memberships.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/project-users/memberships.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/project-users/memberships.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/organizations/memberships.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/project-users/memberships.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/project-users/memberships.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/organizations/memberships.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/deprecated/project-users/memberships.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Get User Memberships
 
 > Return project user memberships
 
+
+
 ## OpenAPI
 
 ````yaml GET /api/v1/workspace/{workspaceId}/memberships
+openapi: 3.0.3
+info:
+  title: Infisical API
+  description: List of all available APIs that can be consumed
+  version: 0.0.1
+servers:
+  - url: https://us.infisical.com
+    description: Production server (US)
+  - url: https://eu.infisical.com
+    description: Production server (EU)
+  - url: http://localhost:8080
+    description: Local server
+security: []
 paths:
-  path: /api/v1/workspace/{workspaceId}/memberships
-  method: get
-  servers:
-    - url: https://us.infisical.com
-      description: Production server (US)
-    - url: https://eu.infisical.com
-      description: Production server (EU)
-    - url: http://localhost:8080
-      description: Local server
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: An access token in Infisical
-          cookie: {}
-    parameters:
-      path:
-        workspaceId:
-          schema:
-            - type: string
-              required: true
-              description: The ID of the project to get memberships from.
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              memberships:
-                allOf:
-                  - type: array
+  /api/v1/workspace/{workspaceId}/memberships:
+    get:
+      tags:
+        - Project Users
+      description: Return project user memberships
+      parameters:
+        - schema:
+            type: string
+          in: path
+          name: workspaceId
+          required: true
+          description: The ID of the project to get memberships from.
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  memberships:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -155,240 +138,155 @@ paths:
                         - user
                         - roles
                       additionalProperties: false
-            requiredProperties:
-              - memberships
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              memberships:
-                - id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                  createdAt: '2023-11-07T05:31:56Z'
-                  userId: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                  projectId: <string>
-                  user:
-                    email: <string>
-                    firstName: <string>
-                    lastName: <string>
-                    id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                    username: <string>
-                    publicKey: <string>
-                  roles:
-                    - id: <string>
-                      role: <string>
-                      customRoleId: <string>
-                      customRoleName: <string>
-                      customRoleSlug: <string>
-                      isTemporary: true
-                      temporaryMode: <string>
-                      temporaryRange: <string>
-                      temporaryAccessStartTime: '2023-11-07T05:31:56Z'
-                      temporaryAccessEndTime: '2023-11-07T05:31:56Z'
-        description: Default Response
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                required:
+                  - memberships
+                additionalProperties: false
+        '400':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 400
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 400
-              message: <string>
-              error: <string>
-        description: Default Response
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  error:
+                    type: string
+                  details: {}
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 401
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 401
-              message: <string>
-              error: <string>
-        description: Default Response
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '403':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 403
-              message:
-                allOf:
-                  - type: string
-              details:
-                allOf:
-                  - {}
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 403
-              message: <string>
-              details: <any>
-              error: <string>
-        description: Default Response
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  details: {}
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '404':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 404
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 404
-              message: <string>
-              error: <string>
-        description: Default Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '422':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 422
-              message:
-                allOf:
-                  - {}
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 422
-              message: <any>
-              error: <string>
-        description: Default Response
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message: {}
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - error
+                additionalProperties: false
+        '500':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 500
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 500
-              message: <string>
-              error: <string>
-        description: Default Response
-  deprecated: false
-  type: path
+                  message:
+                    type: string
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+      security:
+        - bearerAuth: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: An access token in Infisical
 
 ````

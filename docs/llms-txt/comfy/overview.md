@@ -12,43 +12,15 @@
 
 # Source: https://docs.comfy.org/development/overview.md
 
-# Source: https://docs.comfy.org/custom-nodes/overview.md
-
-# Source: https://docs.comfy.org/built-in-nodes/overview.md
-
-# Source: https://docs.comfy.org/tutorials/partner-nodes/overview.md
-
-# Source: https://docs.comfy.org/troubleshooting/overview.md
-
-# Source: https://docs.comfy.org/registry/overview.md
-
-# Source: https://docs.comfy.org/manager/overview.md
-
-# Source: https://docs.comfy.org/interface/settings/overview.md
-
-# Source: https://docs.comfy.org/interface/overview.md
-
-# Source: https://docs.comfy.org/development/overview.md
+# Source: https://docs.comfy.org/development/cloud/overview.md
 
 # Source: https://docs.comfy.org/custom-nodes/overview.md
 
 # Source: https://docs.comfy.org/built-in-nodes/overview.md
 
-# Source: https://docs.comfy.org/tutorials/partner-nodes/overview.md
-
-# Source: https://docs.comfy.org/troubleshooting/overview.md
-
-# Source: https://docs.comfy.org/registry/overview.md
-
-# Source: https://docs.comfy.org/interface/settings/overview.md
-
-# Source: https://docs.comfy.org/interface/overview.md
-
-# Source: https://docs.comfy.org/development/overview.md
-
-# Source: https://docs.comfy.org/custom-nodes/overview.md
-
-# Source: https://docs.comfy.org/built-in-nodes/overview.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # ComfyUI Built-in Nodes
 

@@ -36,170 +36,68 @@
 
 # Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/1password/import-secrets.md
 
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/zabbix/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/windmill/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/vercel/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/teamcity/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/render/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/railway/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/oci-vault/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/northflank/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/laravel-forge/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/hashicorp-vault/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/gcp-secret-manager/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/chef/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/bitbucket/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/azure-key-vault/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/azure-devops/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/azure-app-configuration/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/aws-secrets-manager/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/aws-parameter-store/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/1password/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/zabbix/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/windmill/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/vercel/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/teamcity/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/render/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/railway/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/oci-vault/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/northflank/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/laravel-forge/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/hashicorp-vault/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/gcp-secret-manager/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/chef/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/bitbucket/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/azure-key-vault/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/azure-devops/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/azure-app-configuration/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/aws-secrets-manager/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/aws-parameter-store/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/1password/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/zabbix/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/windmill/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/vercel/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/teamcity/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/render/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/railway/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/oci-vault/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/northflank/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/laravel-forge/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/hashicorp-vault/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/gcp-secret-manager/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/chef/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/bitbucket/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/azure-key-vault/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/azure-devops/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/azure-app-configuration/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/aws-secrets-manager/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/aws-parameter-store/import-secrets.md
-
-# Source: https://infisical.com/docs/api-reference/endpoints/secret-syncs/1password/import-secrets.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Import Secrets
 
 > Import secrets from the specified 1Password Sync destination.
 
+
+
 ## OpenAPI
 
 ````yaml POST /api/v1/secret-syncs/1password/{syncId}/import-secrets
+openapi: 3.0.3
+info:
+  title: Infisical API
+  description: List of all available APIs that can be consumed
+  version: 0.0.1
+servers:
+  - url: https://us.infisical.com
+    description: Production server (US)
+  - url: https://eu.infisical.com
+    description: Production server (EU)
+  - url: http://localhost:8080
+    description: Local server
+security: []
 paths:
-  path: /api/v1/secret-syncs/1password/{syncId}/import-secrets
-  method: post
-  servers:
-    - url: https://us.infisical.com
-      description: Production server (US)
-    - url: https://eu.infisical.com
-      description: Production server (EU)
-    - url: http://localhost:8080
-      description: Local server
-  request:
-    security: []
-    parameters:
-      path:
-        syncId:
-          schema:
-            - type: string
-              required: true
-              description: The ID of the 1Password Sync to trigger importing secrets for.
-              format: uuid
-      query:
-        importBehavior:
-          schema:
-            - type: enum<string>
-              enum:
-                - prioritize-source
-                - prioritize-destination
-              required: true
-              description: >-
-                Specify whether Infisical should prioritize secret values from
-                Infisical or 1Password.
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              secretSync:
-                allOf:
-                  - type: object
+  /api/v1/secret-syncs/1password/{syncId}/import-secrets:
+    post:
+      tags:
+        - Secret Syncs
+      description: Import secrets from the specified 1Password Sync destination.
+      operationId: importOnePasswordSecretSyncSecrets
+      parameters:
+        - schema:
+            type: string
+            enum:
+              - prioritize-source
+              - prioritize-destination
+          in: query
+          name: importBehavior
+          required: true
+          description: >-
+            Specify whether Infisical should prioritize secret values from
+            Infisical or 1Password.
+        - schema:
+            type: string
+            format: uuid
+          in: path
+          name: syncId
+          required: true
+          description: The ID of the 1Password Sync to trigger importing secrets for.
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  secretSync:
+                    type: object
                     properties:
                       id:
                         type: string
@@ -374,259 +272,146 @@ paths:
                       - destinationConfig
                     additionalProperties: false
                     title: 1Password
-            requiredProperties:
-              - secretSync
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              secretSync:
-                id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                name: <string>
-                description: <string>
-                isAutoSyncEnabled: true
-                version: 1
-                projectId: <string>
-                folderId: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                connectionId: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                createdAt: '2023-11-07T05:31:56Z'
-                updatedAt: '2023-11-07T05:31:56Z'
-                syncStatus: <string>
-                lastSyncJobId: <string>
-                lastSyncMessage: <string>
-                lastSyncedAt: '2023-11-07T05:31:56Z'
-                importStatus: <string>
-                lastImportJobId: <string>
-                lastImportMessage: <string>
-                lastImportedAt: '2023-11-07T05:31:56Z'
-                removeStatus: <string>
-                lastRemoveJobId: <string>
-                lastRemoveMessage: <string>
-                lastRemovedAt: '2023-11-07T05:31:56Z'
-                syncOptions:
-                  initialSyncBehavior: overwrite-destination
-                  keySchema: <string>
-                  disableSecretDeletion: true
-                connection:
-                  app: 1password
-                  name: <string>
-                  id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                environment:
-                  slug: <string>
-                  name: <string>
-                  id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                folder:
-                  id: <string>
-                  path: <string>
-                destination: 1password
-                destinationConfig:
-                  vaultId: <string>
-                  valueLabel: <string>
-        description: Default Response
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                required:
+                  - secretSync
+                additionalProperties: false
+        '400':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 400
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 400
-              message: <string>
-              error: <string>
-        description: Default Response
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  error:
+                    type: string
+                  details: {}
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 401
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 401
-              message: <string>
-              error: <string>
-        description: Default Response
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '403':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 403
-              message:
-                allOf:
-                  - type: string
-              details:
-                allOf:
-                  - {}
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 403
-              message: <string>
-              details: <any>
-              error: <string>
-        description: Default Response
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  details: {}
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '404':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 404
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 404
-              message: <string>
-              error: <string>
-        description: Default Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '422':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 422
-              message:
-                allOf:
-                  - {}
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 422
-              message: <any>
-              error: <string>
-        description: Default Response
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message: {}
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - error
+                additionalProperties: false
+        '500':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 500
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 500
-              message: <string>
-              error: <string>
-        description: Default Response
-  deprecated: false
-  type: path
-components:
-  schemas: {}
+                  message:
+                    type: string
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
 
 ````

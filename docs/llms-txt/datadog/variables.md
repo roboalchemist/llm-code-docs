@@ -1,3 +1,7 @@
+# Source: https://docs.datadoghq.com/security/notifications/variables.md
+
+# Source: https://docs.datadoghq.com/security/code_security/static_analysis/static_analysis_rules/go-inclusive/variables.md
+
 # Source: https://docs.datadoghq.com/actions/app_builder/variables.md
 
 ---
@@ -6,7 +10,6 @@ description: >-
   Encapsulate logic within apps using state variables to store and manipulate
   data across different app components.
 breadcrumbs: Docs > App Builder > State Variables
-source_url: https://docs.datadoghq.com/app_builder/variables/index.html
 ---
 
 # State Variables
@@ -31,7 +34,7 @@ To add a state variable with Bits AI:
 
 To add a state variable manually:
 
-1. In your app, click the Data (**{&nbsp;}**) icon to open the Data tab.
+1. In your app, click the Data (**{ }**) icon to open the Data tab.
 1. Click the plus (**+**), then select **Variable**.
 1. Optionally, click the variable name and rename it.
 1. Define the initial value for your state variable.
@@ -45,7 +48,7 @@ To create an app that uses a button to change a callout value component's style 
 
 ### Create the variables{% #create-the-variables %}
 
-1. In your app, click the Data (**{&nbsp;}**) icon to open the Data tab.
+1. In your app, click the Data (**{ }**) icon to open the Data tab.
 1. Click the plus (**+**), then select **Variable**.
 1. Name the variable `callout_value` and set its **Initial Value** to `Pass`.
 1. Click the plus (**+**) to create another variable.

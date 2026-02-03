@@ -1,25 +1,150 @@
 # Source: https://docs.fireworks.ai/fine-tuning/secure-fine-tuning.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Secure Training (BYOB)
 
 > Fine-tune models while keeping sensitive data and components under your control
 
 Fireworks enables secure model fine-tuning while maintaining customer control over sensitive components and data. Use your own cloud storage, keep reward functions proprietary, and ensure training data never persists on our platform beyond active workflows.
 
-## Secure reinforcement fine-tuning (RFT)
+## Dataset Storage (BYOB)
+
+Point Fireworks to your own cloud storage for training datasets. This applies to both Supervised Fine-Tuning (SFT) and Reinforcement Fine-Tuning (RFT) jobs.
+
+<Tip>
+  Grant least-privilege IAM to only the bucket/path prefixes needed for training. Use server-side encryption and your KMS policies where required.
+</Tip>
+
+### GCS Bucket Integration
+
+Use external Google Cloud Storage (GCS) buckets for fine-tuning while keeping your data private. Fireworks creates proxy datasets that reference your external buckets—data is only accessed during fine-tuning within a secure, isolated cluster.
+
+<Info>
+  Your data never leaves your GCS bucket except during fine-tuning, ensuring maximum privacy and security.
+</Info>
+
+#### Required Permissions
+
+You need to grant access to three service accounts:
+
+**Fireworks Control Plane**
+
+* **Account**: `fireworks-control-plane@fw-ai-cp-prod.iam.gserviceaccount.com`
+* **Required role**: Custom role with `storage.buckets.getIamPolicy` permission
+
+```bash  theme={null}
+gcloud storage buckets add-iam-policy-binding <YOUR_BUCKET> \
+  --member=serviceAccount:fireworks-control-plane@fw-ai-cp-prod.iam.gserviceaccount.com \
+  --role=projects/<YOUR_PROJECT>/roles/<YOUR_CUSTOM_ROLE>
+```
+
+**Inference Service Account**
+
+* **Account**: `inference@fw-ai-cp-prod.iam.gserviceaccount.com`
+* **Required role**: Storage Object Viewer (`roles/storage.objectViewer`)
+
+```bash  theme={null}
+gcloud storage buckets add-iam-policy-binding <YOUR_BUCKET> \
+  --member=serviceAccount:inference@fw-ai-cp-prod.iam.gserviceaccount.com \
+  --role=roles/storage.objectViewer
+```
+
+**Your Company's Fireworks Service Account**
+
+* **Account**: Your company's Fireworks account email (get it with `firectl account get`)
+* **Required role**: Storage Object Viewer (`roles/storage.objectViewer`)
+
+```bash  theme={null}
+gcloud storage buckets add-iam-policy-binding <YOUR_BUCKET> \
+  --member=serviceAccount:<YOUR_COMPANY_FW_ACCOUNT_EMAIL> \
+  --role=roles/storage.objectViewer
+```
+
+#### Usage
+
+```bash  theme={null}
+# Create dataset referencing your GCS bucket
+firectl dataset create {DATASET_NAME} --external-url gs://bucket-name/path/to/data.jsonl
+
+# Use in fine-tuning job
+firectl sftj create \
+  --dataset "accounts/{ACCOUNT}/datasets/{DATASET_NAME}" \
+  --base-model "accounts/fireworks/models/{MODEL}" \
+  --output-model {TRAINED_MODEL_NAME}
+```
+
+### AWS S3 Bucket Integration
+
+Use external AWS S3 buckets for fine-tuning while keeping your data private. Fireworks accesses your S3 data using GCP-to-AWS OIDC federation—no long-lived credentials are stored.
+
+<Note>
+  S3 bucket integration is currently supported for **training datasets only** (SFT and RFT jobs). Evaluation datasets are not yet supported.
+</Note>
+
+#### IAM Role Setup
+
+Create an IAM role with a trust policy that allows Fireworks to assume it via web identity federation:
+
+* **Federated Principal:** `accounts.google.com`
+* **Action:** `sts:AssumeRoleWithWebIdentity`
+* **Condition:** `accounts.google.com:aud` equals `117388763667264115668`
+
+Then attach a policy granting `s3:GetObject` and `s3:ListBucket` on your bucket.
+
+See the [AWS documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-idp_oidc.html) for detailed steps on creating roles for OIDC federation.
+
+#### Usage
+
+```bash  theme={null}
+# Create dataset referencing your S3 bucket
+firectl dataset create {DATASET_NAME} --external-url s3://bucket-name/path/to/data.jsonl
+
+# Use in fine-tuning job with IAM role
+firectl sftj create \
+  --dataset "accounts/{ACCOUNT}/datasets/{DATASET_NAME}" \
+  --base-model "accounts/fireworks/models/{MODEL}" \
+  --output-model {TRAINED_MODEL_NAME} \
+  --aws-iam-role "arn:aws:iam::{AWS_ACCOUNT_ID}:role/{ROLE_NAME}"
+```
+
+<Check>
+  For RFT jobs, use `firectl rftj create` with the same `--aws-iam-role` flag.
+</Check>
+
+#### Alternative: Credentials Secret
+
+Instead of IAM role federation, you can use static AWS access keys stored in a Fireworks secret:
+
+```bash  theme={null}
+# Create secret
+firectl secret create --name aws-creds \
+  --aws-access-key-id "AKIA..." \
+  --aws-secret-access-key "..."
+
+# Use in fine-tuning job
+firectl sftj create \
+  --dataset "accounts/{ACCOUNT}/datasets/{DATASET_NAME}" \
+  --base-model "accounts/fireworks/models/{MODEL}" \
+  --output-model {TRAINED_MODEL_NAME} \
+  --aws-credentials-secret "accounts/{ACCOUNT}/secrets/aws-creds"
+```
+
+<Warning>
+  IAM role federation is recommended for production. If using credentials, rotate them regularly.
+</Warning>
+
+## Secure Reinforcement Fine-Tuning (RFT)
 
 Use reinforcement fine-tuning while keeping sensitive components and data under your control. Follow these steps to run secure RFT end to end using your own storage and reward pipeline.
 
 <Steps>
   <Step title="Configure storage (BYOB)">
-    Point Fireworks to your storage so you retain governance and apply your own compliance controls.
+    Set up your dataset storage using [GCS](#gcs-bucket-integration) or [AWS S3](#aws-s3-bucket-integration) as described above.
 
-    * Datasets: [GCS Bucket Integration](#gcs-bucket-integration) (AWS S3 coming soon)
-    * Models (optional): [External AWS S3 Bucket Integration](/models/uploading-custom-models#uploading-your-model)
-
-    <Tip>
-      Grant least-privilege IAM to only the bucket/path prefixes needed for training. Use server-side encryption and your KMS policies where required.
-    </Tip>
+    For models, you can optionally use [External AWS S3 Bucket Integration](/models/uploading-custom-models#uploading-your-model).
   </Step>
 
   <Step title="Prepare your reward pipeline and rollouts">
@@ -38,38 +163,56 @@ Use reinforcement fine-tuning while keeping sensitive components and data under 
     </Info>
   </Step>
 
-  <Step title="Run reinforcement step from Python">
-    Use the Python SDK to run reinforcement steps that read from your BYOB dataset and produce a new checkpoint.
+  <Step title="Run reinforcement fine-tuning step from Python">
+    Use the Python SDK to create a reinforcement fine-tuning step that reads from your BYOB dataset and produces a new checkpoint.
 
     ```python  theme={null}
-    # Assumes you have an authenticated `llm` client and a `dataset` that
-    # references your BYOB bucket with per-example rewards.
-    import time
+    from fireworks import Fireworks
 
-    job = llm.reinforcement_step(
-        dataset=dataset,                 # Dataset with rewards in your bucket
-        output_model="my-improved-model-v1",  # New checkpoint name (must not exist)
-        epochs=1,
-        learning_rate=1e-5,
-        accelerator_count=2,
-        accelerator_type="NVIDIA_H100_80GB",
+    client = Fireworks()
+
+    # Create a reinforcement fine-tuning step
+    step = client.reinforcement_fine_tuning_steps.create(
+        rlor_trainer_job_id="my-rft-job-001",
+        display_name="Secure RFT Training Step",
+        training_config={
+            "base_model": "accounts/fireworks/models/{BASE_MODEL}",
+            "learning_rate": 1e-5,
+            "lora_rank": 8,
+            "max_context_length": 4096,
+            "batch_size": 32768,
+        },
+        dataset="accounts/{ACCOUNT}/datasets/{DATASET_NAME}",  # Your BYOB dataset with rewards
+        output_model="accounts/{ACCOUNT}/models/my-improved-model-v1",
+        reward_weights=["score"],  # Field name for rewards in your dataset
     )
 
-    # Wait for completion
-    while not job.is_completed:
-        job.raise_if_bad_state()
-        time.sleep(1)
-        job = job.get()
-        if job is None:
-            raise RuntimeError("Job was deleted while waiting for completion")
-
-    # The new model is now available at job.output_model
+    # Poll for completion
+    import time
+    timeout = 3600  # 1 hour timeout
+    start_time = time.time()
+    while True:
+        if time.time() - start_time > timeout:
+            raise TimeoutError(f"Job polling timed out after {timeout} seconds")
+        job = client.reinforcement_fine_tuning_steps.get(
+            rlor_trainer_job_id="my-rft-job-001"
+        )
+        if job.state == "JOB_STATE_COMPLETED":
+            print("Training complete!")
+            break
+        elif job.state in ("JOB_STATE_FAILED", "JOB_STATE_CANCELLED"):
+            raise RuntimeError(f"Training failed: {job.state}")
+        time.sleep(10)
     ```
 
-    See [`LLM.reinforcement_step()`](/tools-sdks/python-client/sdk-reference#reinforcement-step) and [`ReinforcementStep`](/tools-sdks/python-client/sdk-reference#reinforcementstep) for full parameters and return types.
+    See the [Create Reinforcement Fine-tuning Step API reference](/api-reference/create-reinforcement-fine-tuning-step) for full parameters and options.
+
+    <Tip>
+      For a complete iterative RL workflow example using the [Python SDK](/tools-sdks/python-sdk), including rollout generation, reward computation, and hot-reloading LoRA adapters, see the [iterative RL workflow example on GitHub](https://github.com/fw-ai-external/python-sdk/tree/main/examples/iterative_rl_workflow).
+    </Tip>
 
     <Note>
-      When continuing from a LoRA checkpoint, training parameters such as `lora_rank`, `learning_rate`, `max_context_length`, `epochs`, and `batch_size` must match the original LoRA training.
+      When continuing from a LoRA checkpoint, training parameters such as `lora_rank`, `learning_rate`, `max_context_length`, and `batch_size` must match the original LoRA training.
     </Note>
   </Step>
 
@@ -87,122 +230,6 @@ Use reinforcement fine-tuning while keeping sensitive components and data under 
 <Check>
   You now have an end-to-end secure RFT workflow with BYOB datasets, proprietary reward pipelines, and isolated training jobs that generate new checkpoints.
 </Check>
-
-## GCS Bucket Integration
-
-Use external Google Cloud Storage (GCS) buckets for fine-tuning while keeping your data private. Fireworks creates proxy datasets that reference your external buckets—data is only accessed during fine-tuning within a secure, isolated cluster.
-
-<Info>
-  Your data never leaves your GCS bucket except during fine-tuning, ensuring maximum privacy and security.
-</Info>
-
-### Required Permissions
-
-You need to grant access to three service accounts:
-
-#### Fireworks Control Plane
-
-* **Account**: `fireworks-control-plane@fw-ai-cp-prod.iam.gserviceaccount.com`
-* **Required role**: Custom role with `storage.buckets.getIamPolicy` permission
-
-<CodeGroup>
-  ```bash Setup command theme={null}
-  gcloud storage buckets add-iam-policy-binding <YOUR_BUCKET> \
-    --member=serviceAccount:fireworks-control-plane@fw-ai-cp-prod.iam.gserviceaccount.com \
-    --role=projects/<YOUR_PROJECT>/roles/<YOUR_CUSTOM_ROLE>
-  ```
-</CodeGroup>
-
-This service account will be used to retrieve the IAM Policy set on the bucket, so that we are able to perform bucket ownership verifications and access verifications during dataset creation.
-
-#### Inference Service Account
-
-* **Account**: `inference@fw-ai-cp-prod.iam.gserviceaccount.com`
-* **Required role**: Storage Object Viewer or Storage Object Admin
-
-<CodeGroup>
-  ```bash Storage Object Viewer theme={null}
-  gcloud storage buckets add-iam-policy-binding <YOUR_BUCKET> \
-    --member=serviceAccount:inference@fw-ai-cp-prod.iam.gserviceaccount.com \
-    --role=roles/storage.objectViewer
-  ```
-
-  ```bash Storage Object Admin theme={null}
-  gcloud storage buckets add-iam-policy-binding <YOUR_BUCKET> \
-    --member=serviceAccount:inference@fw-ai-cp-prod.iam.gserviceaccount.com \
-    --role=roles/storage.objectAdmin
-  ```
-</CodeGroup>
-
-This service account will be used to access the files in the bucket.
-
-#### Your Company's Fireworks Service Account
-
-* **Account**: Your company's Fireworks account registration email
-* **Required role**: Storage Object Viewer or Storage Object Admin
-
-<CodeGroup>
-  ```bash Storage Object Viewer theme={null}
-  gcloud storage buckets add-iam-policy-binding <YOUR_BUCKET> \
-    --member=serviceAccount:<YOUR_COMPANY_FW_ACCOUNT_EMAIL> \
-    --role=roles/storage.objectViewer
-  ```
-
-  ```bash Storage Object Admin theme={null}
-  gcloud storage buckets add-iam-policy-binding <YOUR_BUCKET> \
-    --member=serviceAccount:<YOUR_COMPANY_FW_ACCOUNT_EMAIL> \
-    --role=roles/storage.objectAdmin
-  ```
-</CodeGroup>
-
-This is used to validate that your account actually has access to the bucket that you are trying to reference the dataset from. The email associated with your account (not the email of the user, but the account itself, you can get it with `firectl get account`) must have at least read access to the bucket listed under the bucket access IAM policy.
-
-### Usage Example
-
-<Steps>
-  <Step title="Create a Proxy Dataset">
-    Create a dataset that references your external GCS bucket:
-
-    ```bash  theme={null}
-    firectl create dataset {DATASET_NAME} --external-url gs://bucket-name/object-name
-    ```
-
-    <Tip>
-      Ensure your gsutil path points directly to the JSONL file. If the file is in a folder, make sure the folder contains only the intended file.
-    </Tip>
-  </Step>
-
-  <Step title="Start Fine-tuning">
-    Use the proxy dataset to create a fine-tuning job:
-
-    ```bash  theme={null}
-    firectl create sftj \
-      --dataset "accounts/{ACCOUNT}/datasets/{DATASET_NAME}" \
-      --base-model "accounts/fireworks/models/{MODEL}" \
-      --output-model {TRAINED_MODEL_NAME}
-    ```
-
-    <Check>
-      For additional options, run: `firectl create sftj -h`
-    </Check>
-  </Step>
-</Steps>
-
-### Key Benefits
-
-<CardGroup cols={3}>
-  <Card title="Data Privacy" icon="shield">
-    Your data never leaves your GCS bucket except during fine-tuning
-  </Card>
-
-  <Card title="Security" icon="lock">
-    Access is limited to isolated fine-tuning clusters
-  </Card>
-
-  <Card title="Simplicity" icon="circle">
-    Reference external data without copying or moving files
-  </Card>
-</CardGroup>
 
 ## Related Resources
 

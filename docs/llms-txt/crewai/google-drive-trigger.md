@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/enterprise/guides/google-drive-trigger.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Google Drive Trigger
 
 > Respond to Google Drive file events with automated crews
@@ -9,7 +13,8 @@
 Trigger your automations when files are created, updated, or removed in Google Drive. Typical workflows include summarizing newly uploaded content, enforcing sharing policies, or notifying owners when critical files change.
 
 <Tip>
-  Connect Google Drive in **Tools & Integrations** and confirm the trigger is enabled for the automation you want to monitor.
+  Connect Google Drive in **Tools & Integrations** and confirm the trigger is
+  enabled for the automation you want to monitor.
 </Tip>
 
 ## Enabling the Google Drive Trigger
@@ -50,7 +55,9 @@ crewai triggers run google_drive/file_changed
 The `crewai triggers run` command will execute your crew with a complete Drive payload, allowing you to test your parsing logic before deployment.
 
 <Warning>
-  Use `crewai triggers run google_drive/file_changed` (not `crewai run`) to simulate trigger execution during development. After deployment, your crew will automatically receive the trigger payload.
+  Use `crewai triggers run google_drive/file_changed` (not `crewai run`) to
+  simulate trigger execution during development. After deployment, your crew
+  will automatically receive the trigger payload.
 </Warning>
 
 ## Monitoring Executions

@@ -24,6 +24,17 @@ To learn the basics on how to use Vespa CLI, see the [quick start guide](../basi
 See the [reference documentation](../reference/clients/vespa-cli/vespa) for documentation of individual Vespa CLI commands and their options. This documentation is also bundled with CLI and accessible through `vespa help
   <command>` or `man vespa-<command>`.
 
+MTLS keypair location:
+
+```
+$ ls -l .vespa/mytenant.myapp.default/
+total 16
+-rw-r--r-- 1 name staff 3273 Nov 7 08:02 data-plane-private-key.pem
+-rw-r--r-- 1 name staff 1697 Nov 7 08:02 data-plane-public-cert.pem
+```
+
+The `.vespa` directory should be in the home directory or cwd. Remember to run `vespa config set target cloud` for Vespa Cloud endpoints.
+
 ## Cheat sheet
 
 ### Install, configure and run
@@ -218,7 +229,7 @@ Example query file:
 ```
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

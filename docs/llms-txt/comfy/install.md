@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/manager/install.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ComfyUI-Manager Installation
 
 > How to install ComfyUI-Manager for different setups
@@ -148,8 +152,3 @@ The following version updates only support pip installations. Versions installed
   * Do not decompress directly into `ComfyUI/custom_nodes` (files like `__init__.py` should not be in that directory)
   * Do not install in paths like `ComfyUI/custom_nodes/ComfyUI-Manager/ComfyUI-Manager` or `ComfyUI/custom_nodes/ComfyUI-Manager-main`
 </Warning>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.comfy.org/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replitai/image-generation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Image generation
 
 > Generate AI images directly in Replit and seamlessly integrate them into your projects with Agent's image generation capabilities.

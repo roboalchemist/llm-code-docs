@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/myt5.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/myt5.md
 
 # myt5
 
@@ -22,14 +22,14 @@ The original code can be found [here](https://github.com/tomlimi/MYTE).
 
 #### transformers.MyT5Tokenizer[[transformers.MyT5Tokenizer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/myt5/tokenization_myt5.py#L135)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/myt5/tokenization_myt5.py#L133)
 
 Construct a MyT5 tokenizer.
 
-This tokenizer inherits from [PreTrainedTokenizer](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.PythonBackend) which contains most of the main methods. Users should refer to
+This tokenizer inherits from [PreTrainedTokenizer](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.PythonBackend) which contains most of the main methods. Users should refer to
 this superclass for more information regarding those methods.
 
-build_inputs_with_special_tokenstransformers.MyT5Tokenizer.build_inputs_with_special_tokenshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/myt5/tokenization_myt5.py#L284[{"name": "token_ids_0", "val": ": list"}, {"name": "token_ids_1", "val": ": typing.Optional[list[int]] = None"}]- **token_ids_0** (`list[int]`) --
+build_inputs_with_special_tokenstransformers.MyT5Tokenizer.build_inputs_with_special_tokenshttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/myt5/tokenization_myt5.py#L282[{"name": "token_ids_0", "val": ": list"}, {"name": "token_ids_1", "val": ": list[int] | None = None"}]- **token_ids_0** (`list[int]`) --
   List of IDs to which the special tokens will be added.
 - **token_ids_1** (`list[int]`, *optional*) --
   Optional second list of IDs for sequence pairs.0`list[int]`List of [input IDs](../glossary#input-ids) with the appropriate special tokens.
@@ -61,7 +61,7 @@ additional_special_tokens (`list[str]`, *optional*) : Additional special tokens 
 List of [input IDs](../glossary#input-ids) with the appropriate special tokens.
 #### get_special_tokens_mask[[transformers.MyT5Tokenizer.get_special_tokens_mask]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/myt5/tokenization_myt5.py#L222)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/myt5/tokenization_myt5.py#L220)
 
 Retrieve sequence ids from a token list that has no special tokens added. This method is called when adding
 special tokens using the tokenizer `prepare_for_model` method.
@@ -81,7 +81,7 @@ already_has_special_tokens (`bool`, *optional*, defaults to `False`) : Whether o
 A list of integers in the range [0, 1]: 1 for a special token, 0 for a sequence token.
 #### create_token_type_ids_from_sequences[[transformers.MyT5Tokenizer.create_token_type_ids_from_sequences]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/myt5/tokenization_myt5.py#L261)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/myt5/tokenization_myt5.py#L259)
 
 Create a mask from the two sequences passed to be used in a sequence-pair classification task. MyT5 does not
 make use of token type ids, therefore a list of zeros is returned.
@@ -99,5 +99,5 @@ token_ids_1 (`list[int]`, *optional*) : Optional second list of IDs for sequence
 List of zeros.
 #### save_vocabulary[[transformers.MyT5Tokenizer.save_vocabulary]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/myt5/tokenization_myt5.py#L368)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/myt5/tokenization_myt5.py#L366)
 

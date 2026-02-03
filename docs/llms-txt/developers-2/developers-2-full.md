@@ -501,7 +501,7 @@ const error = new Error("Boom 💥");
 console.error(error); // Prints: Boom 💥
 ```
 
-For more, checkout the [Node.js documentation](https://nodejs.org/dist/latest-v16.x/docs/api/console.html).
+For more, checkout the [Node.js documentation](https://nodejs.org/docs/latest-v22.x/api/console.html).
 
 We automatically disable console logging for store extensions.
 
@@ -524,8 +524,7 @@ During development, we show the stack trace and add an action to jump to the err
 
 ### Extension Issue Dashboard
 
-When unhandled exceptions and Promise rejections occur in the production build of a public extension, Raycast tries to redact all potentially sensitive information they may include, and reports them to our error backend. As an extension author, or as the manager of an organisation, you can view and manage error reports for your public extensions by going to <https://www.raycast.com/extension-issues>, or by finding your extension in Raycast's root, `Store` command, or `Manage Extensions` command, and using the `View Issues` action.\
-The dashboard should give you an overview of what issues occurred, how many times, how many users were affected, and more. Each issue additionally has a detail view, including a stack trace, breadcrumbs (typically the actions performed before the crash), extension release date, Raycast version, macOS version.
+When unhandled exceptions and Promise rejections occur in the production build of a public extension, Raycast tries to redact all potentially sensitive information they may include, and reports them to our error backend. As an extension author, or as the manager of an organisation, you can view and manage error reports for your public extensions by going to <https://www.raycast.com/extension-issues>, or by finding your extension in Raycast's root, `Store` command, or `Manage Extensions` command, and using the `View Issues` action. The dashboard should give you an overview of what issues occurred, how many times, how many users were affected, and more. Each issue additionally has a detail view, including a stack trace, breadcrumbs (typically the actions performed before the crash), extension release date, Raycast version, macOS version.
 
 ![Extension Issues](https://2922539984-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-Me_8A39tFhZg3UaVoSN%2Fuploads%2Fgit-blob-e3c7a6de170fa071b3e0caf1ac8f93d283255a91%2Fextension-issues.webp?alt=media)
 
@@ -619,7 +618,7 @@ All updates to an extension are made through a [Pull Request](https://github.com
 
 **FORK\_URL**
 
-Open the PR and click on the incomming ref as shown below
+Open the PR and click on the incoming ref as shown below
 
 ![](https://2922539984-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-Me_8A39tFhZg3UaVoSN%2Fuploads%2Fgit-blob-1a66bb065c6f9ccb78f4a42eebdcd3c70837fb1d%2Fgo-to-ref.webp?alt=media)
 
@@ -663,7 +662,7 @@ AI Extensions aren't available on Windows for now.
 
 ## AI APIs
 
-Use our [AI APIs](https://developers.raycast.com/api-reference/ai) to generate content such as summaries, translations, and more. For example, the [Notion extension](https://raycast.com/notion/notion) uses `AI.ask(...)` as part of it's Quick Capture command to generate a summary of a website.
+Use our [AI APIs](https://developers.raycast.com/api-reference/ai) to generate content such as summaries, translations, and more. For example, the [Notion extension](https://raycast.com/notion/notion) uses `AI.ask(...)` as part of its Quick Capture command to generate a summary of a website.
 
 ## AI Extensions
 
@@ -1250,7 +1249,7 @@ function ShareSecretAction() {
 Let's break this down:
 
 * The `<ShareSecretAction>` returns an [`<Action.SubmitForm>`](https://developers.raycast.com/api-reference/user-interface/actions#action.submitform).
-* The `handleSubmit()` gets called when the form is submitted with it's values.
+* The `handleSubmit()` gets called when the form is submitted with its values.
   * First we check if the user entered a secret. If not, we show a toast.
   * Then we show a toast to hint that there is a network call in progress to share the secret.
   * We call [Doppler's API](https://docs.doppler.com/reference/share-secret) with the form values
@@ -1396,7 +1395,7 @@ export default function Command() {
 
 Breaking this down:
 
-* We use a third-party dependency to parse the RSS feed and intially the parser.
+* We use a third-party dependency to parse the RSS feed and initially the parser.
 * We define our command state as a TypeScript interface.
 * We use [React's `useEffect`](https://reactjs.org/docs/hooks-effect.html) hook to parse the RSS feed after the command did mount.
 * We print the top stories to the console.
@@ -1978,10 +1977,10 @@ The typical directory structure of a newly created extension looks like this:
 
 ```bash
 extension
-├── .eslintrc.json
 ├── .prettierrc
 ├── assets
 │   └── icon.png
+├── eslint.config.js
 ├── node_modules
 ├── package-lock.json
 ├── package.json
@@ -2097,7 +2096,7 @@ All properties for extension or command-specific preferences. Use the [Preferenc
 | type<mark style="color:red;">\*</mark>        | The preference type. We currently support `"textfield"` and `"password"` (for secure entry), `"checkbox"`, `"dropdown"`, `"appPicker"`, `"file"`, and `"directory"`.                                                                                                                                                                                                                                                       |
 | required<mark style="color:red;">\*</mark>    | Indicates whether the value is required and must be entered by the user before the extension is usable.                                                                                                                                                                                                                                                                                                                    |
 | placeholder                                   | Text displayed in the preference's field when no value has been input.                                                                                                                                                                                                                                                                                                                                                     |
-| default                                       | <p>The optional default value for the field. For textfields, this is a string value; for checkboxes a boolean; for dropdowns the value of an object in the data array; for appPickers an application name, bundle ID or path.</p><p>Additionally, you can specify a different value per plaform by passing an object: <code>{ "macOS": ..., "Windows": ... }</code>\`.</p>                                                 |
+| default                                       | <p>The optional default value for the field. For textfields, this is a string value; for checkboxes a boolean; for dropdowns the value of an object in the data array; for appPickers an application name, bundle ID or path.</p><p>Additionally, you can specify a different value per plaform by passing an object: <code>{ "macOS": ..., "Windows": ... }</code>.</p>                                                   |
 
 Depending on the `type` of the Preference, some additional properties can be required:
 
@@ -2132,7 +2131,7 @@ Depending on the `type` of the Argument, some additional properties can be requi
 | -------------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | data<mark style="color:red;">\*</mark> | An array of objects with `title` and `value` properties, e.g.: `[{"title": "Item 1", "value": "1"}]` |
 
-#### Tool Properties
+## Tool Properties
 
 All properties for a tool.
 
@@ -2143,7 +2142,7 @@ All properties for a tool.
 | description<mark style="color:red;">\*</mark> | It helps users and the AI understand what the tool does. It will be displayed in the Store and in Preferences.                                                                                                                                                                                                                                  |
 | icon                                          | <p>An optional reference to an icon file in the assets folder. Use png format with a size of at least 512 x 512 pixels. To support light and dark theme, add two icons, one with <code>@dark</code> as suffix, e.g. <code>icon.png</code> and <code><icon@dark.png></code>.</p><p>If no icon is specified, the extension icon will be used.</p> |
 
-#### AI Properties
+## AI Properties
 
 All properties for the AI capabilities of the extension. Alternatively, this object can be written in a `ai.json` (or `ai.yaml`) file at the root of the extension.
 
@@ -2549,7 +2548,7 @@ export default function Command() {
 
 Before submitting data, it is important to ensure all required form controls are filled out, in the correct format.
 
-In Raycast, validation can be fully controlled from the API. To keep the same behavior as we have natively, the proper way of usage is to validate a `value` in the `onBlur` callback, update the `error` of the item and keep track of updates with the `onChange` callback to drop the `error` value. The [useForm](https://developers.raycast.com/utilities/react-hooks/useform) utils hook nicely wraps this behaviour and is the recommended way to do deal with validations.
+In Raycast, validation can be fully controlled from the API. To keep the same behavior as we have natively, the proper way of usage is to validate a `value` in the `onBlur` callback, update the `error` of the item and keep track of updates with the `onChange` callback to drop the `error` value. The [useForm](https://developers.raycast.com/utilities/react-hooks/useform) utils hook nicely wraps this behavior and is the recommended way to do deal with validations.
 
 ![](https://2922539984-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-Me_8A39tFhZg3UaVoSN%2Fuploads%2Fgit-blob-06326f9b2b6de5d39b9c8aa37e677b23c122f26e%2Fform-validation.webp?alt=media)
 
@@ -2756,10 +2755,10 @@ Raycast makes it easy to lint your extensions using the CLI's lint command (`ray
 Raycast provides by default an [opinionated ESLint configuration](https://github.com/raycast/eslint-config/blob/main/index.js) that includes everything you need to lint your Raycast extensions. The default configuration is as simple as this:
 
 ```js
-import { defineConfig } from "eslint/config";
-import raycastConfig from "@raycast/eslint-config";
+const { defineConfig } = require("eslint/config");
+const raycastConfig = require("@raycast/eslint-config");
 
-export default defineConfig([...raycastConfig]);
+module.exports = defineConfig([...raycastConfig]);
 ```
 
 It abstracts away the different ESLint dependencies used for Raycast extensions and includes different rule-sets.
@@ -2773,10 +2772,10 @@ You can check Raycast's ESLint plugin rules directly on the [repository document
 You're free to turn on/off rules or add new plugins as you see fit for your extensions. For example, you could add the rule [`@raycast/prefer-placeholders`](https://github.com/raycast/eslint-plugin/blob/main/docs/rules/prefer-placeholders.md) for your extension:
 
 ```js
-import { defineConfig } from "eslint/config";
-import raycastConfig from "@raycast/eslint-config";
+const { defineConfig } = require("eslint/config");
+const raycastConfig = require("@raycast/eslint-config");
 
-export default defineConfig([
+module.exports = defineConfig([
   ...raycastConfig,
   {
     rules: {
@@ -3186,61 +3185,65 @@ If a number is passed, it needs to be in the range 0-2. For larger values, 2 wil
 
 ### AI.Model
 
-The AI model to use to answer to the prompt. Defaults to `AI.Model["OpenAI_GPT3.5-turbo"]`.
+The AI model to use to answer to the prompt. Defaults to `AI.Model["OpenAI_GPT-4o_mini"]`.
 
-#### Enumeration members
-
-| Model                                         | Description                                                                            |
-| --------------------------------------------- | -------------------------------------------------------------------------------------- |
-| OpenAI\_GPT5-mini                             | OpenAI's latest model, great for well-defined tasks and precise prompts.               |
-| OpenAI\_GPT5-nano                             | OpenAI's latest model, great for summarization and classification tasks.               |
-| OpenAI\_GPT4.1                                | OpenAI's flagship model optimized for complex problem solving.                         |
-| OpenAI\_GPT4.1-mini                           | Balanced GPT-4.1 variant optimized for speed and cost efficiency.                      |
-| OpenAI\_GPT4.1-nano                           | Fastest and most cost-effective GPT-4.1 variant.                                       |
-| OpenAI\_GPT4                                  | Previous generation GPT-4 model with broad knowledge and complex instruction handling. |
-| OpenAI\_GPT4-turbo                            | Previous generation GPT-4 with expanded context window.                                |
-| OpenAI\_GPT4o                                 | Advanced OpenAI model optimized for speed and complex problem solving.                 |
-| OpenAI\_GPT4o-mini                            | Fast and intelligent model for everyday tasks.                                         |
-| OpenAI\_GPT5                                  | OpenAI's latest model, great for coding and agentic tasks across domains.              |
-| OpenAI\_o3                                    | Advanced model excelling in math, science, coding, and visual tasks.                   |
-| OpenAI\_o4-mini                               | Fast, efficient model optimized for coding and visual tasks.                           |
-| OpenAI\_o1                                    | Advanced reasoning model for complex STEM problems.                                    |
-| OpenAI\_o3-mini                               | Fast reasoning model optimized for STEM tasks.                                         |
-| OpenAI\_GPT\_OSS\_20b                         | OpenAI's first open-source model, 20b variant.                                         |
-| OpenAI\_GPT\_OSS\_120b                        | OpenAI's first open-source model, 120b variant.                                        |
-| Anthropic\_Claude\_Haiku                      | Anthropic's fastest model with large context window for code and text analysis.        |
-| Anthropic\_Claude\_Sonnet                     | Enhanced Claude model for complex tasks and visual reasoning.                          |
-| Anthropic\_Claude\_Sonnet\_3.7                | Anthropic's most intelligent model.                                                    |
-| Anthropic\_Claude\_4\_Sonnet                  | Anthropic's most intelligent model.                                                    |
-| Anthropic\_Claude\_4\_Opus                    | Anthropic's model for complex tasks with exceptional fluency.                          |
-| Anthropic\_Claude\_4.1\_Opus                  | Anthropic's model for complex tasks with exceptional fluency.                          |
-| Perplexity\_Sonar                             | Fast Perplexity model with integrated search capabilities.                             |
-| Perplexity\_Sonar\_Pro                        | Advanced Perplexity model for complex queries with search integration.                 |
-| Perplexity\_Sonar\_Reasoning                  | Fast reasoning model powered by DeepSeek R1.                                           |
-| Perplexity\_Sonar\_Reasoning\_Pro             | Premium reasoning model with DeepSeek R1 capabilities.                                 |
-| Llama4\_Scout                                 | Advanced 17B parameter multimodal model with 16 experts.                               |
-| Llama3.3\_70B                                 | Meta's state-of-the-art model for reasoning and general knowledge.                     |
-| Llama3.1\_8B                                  | Fast, instruction-optimized open-source model.                                         |
-| Llama3.1\_405B                                | Meta's flagship model with advanced capabilities across multiple domains.              |
-| Mistral\_Nemo                                 | Small, Apache-licensed model built with NVIDIA.                                        |
-| Mistral\_Large                                | Top-tier reasoning model with strong multilingual support.                             |
-| Mistral\_Medium                               | A powerful, cost-effective, frontier-class multimodal model.                           |
-| Mistral\_Small                                | Latest enterprise-grade small model with improved reasoning.                           |
-| Mistral\_Codestral                            | Specialized model for code-related tasks and testing.                                  |
-| Groq\_Kimi\_K2\_Instruct                      | Kimi K2 is a powerful and versatile AI model designed for a wide range of tasks.       |
-| Groq\_Qwen3\_32B                              | The latest generation of large language models in the Qwen series.                     |
-| DeepSeek\_R1\_Distill\_Llama\_3.3\_70B        | Fine-tuned Llama model with enhanced reasoning capabilities.                           |
-| Google\_Gemini\_2.5\_Pro                      | Advanced thinking model for complex problem solving.                                   |
-| Google\_Gemini\_2.5\_Flash                    | Fast, well-rounded thinking model.                                                     |
-| Google\_Gemini\_2.5\_Flash\_Lite              | Fast model optimized for large-scale text output.                                      |
-| Google\_Gemini\_2.0\_Flash                    | Low-latency model optimized for agentic experiences.                                   |
-| Groq\_Qwen3\_235B\_A22B\_Instruct\_2507\_tput | A varied model with enhanced reasoning.                                                |
-| DeepSeek\_R1                                  | Open-source model matching OpenAI-o1 performance.                                      |
-| DeepSeek\_V3                                  | Advanced Mixture-of-Experts model.                                                     |
-| xAI\_Grok\_4                                  | Advanced language model with enhanced reasoning and tool capabilities.                 |
-| xAI\_Grok\_3                                  | Enterprise-focused model for data, coding, and summarization tasks.                    |
-| xAI\_Grok\_3\_Mini                            | Fast, lightweight model for logic-based tasks.                                         |
-| xAI\_Grok\_2                                  | Advanced language model with strong reasoning capabilities.                            |
+| Model                                            | Description                                                                                                        |
+| ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| OpenAI\_GPT-5\_mini                              | OpenAI's latest model, great for well-defined tasks and precise prompts.                                           |
+| OpenAI\_GPT-5\_nano                              | OpenAI's latest model, great for summarization and classification tasks.                                           |
+| OpenAI\_GPT-4.1                                  | OpenAI's flagship model optimized for complex problem solving.                                                     |
+| OpenAI\_GPT-4.1\_mini                            | Balanced GPT-4.1 variant optimized for speed and cost efficiency.                                                  |
+| OpenAI\_GPT-4.1\_nano                            | Fastest and most cost-effective GPT-4.1 variant.                                                                   |
+| OpenAI\_GPT-4                                    | Previous generation GPT-4 model with broad knowledge and complex instruction handling.                             |
+| OpenAI\_GPT-4\_Turbo                             | Previous generation GPT-4 with expanded context window.                                                            |
+| OpenAI\_GPT-4o                                   | Advanced OpenAI model optimized for speed and complex problem solving.                                             |
+| OpenAI\_GPT-4o\_mini                             | Fast and intelligent model for everyday tasks.                                                                     |
+| OpenAI\_GPT-5                                    | OpenAI's latest model, great for coding and agentic tasks across domains.                                          |
+| OpenAI\_GPT-5\_Codex                             | OpenAI's model optimized for agentic coding tasks in Codex and similar environments.                               |
+| OpenAI\_GPT-5.1                                  | OpenAI's model with adaptive reasoning, great for coding and agentic tasks across domains.                         |
+| OpenAI\_GPT-5.1\_Codex                           | A version of GPT-5.1 optimized for agentic coding tasks in Codex or similar environments.                          |
+| OpenAI\_GPT-5.1\_Instant                         | OpenAI's fastest GPT-5.1 model with adaptive reasoning, optimized for speed and efficiency.                        |
+| OpenAI\_GPT-5.2                                  | OpenAI's most capable model for professional work and long-running agents with state-of-the-art tool-calling.      |
+| OpenAI\_GPT-5.2\_Instant                         | OpenAI's fast, capable model for everyday work with improved info-seeking, how-tos, and technical writing.         |
+| OpenAI\_o3                                       | Advanced model excelling in math, science, coding, and visual tasks.                                               |
+| OpenAI\_o4-mini                                  | Fast, efficient model optimized for coding and visual tasks.                                                       |
+| OpenAI\_o1                                       | Advanced reasoning model for complex STEM problems.                                                                |
+| OpenAI\_o3-mini                                  | Fast reasoning model optimized for STEM tasks.                                                                     |
+| Groq\_GPT-OSS\_20b                               | OpenAI's first open-source model, 20b variant.                                                                     |
+| Groq\_GPT-OSS\_120b                              | OpenAI's first open-source model, 120b variant.                                                                    |
+| Anthropic\_Claude\_4.5\_Haiku                    | Anthropic's offering focusing on being the best combination of performance and speed.                              |
+| Anthropic\_Claude\_4\_Sonnet                     | Anthropic's most intelligent model.                                                                                |
+| Anthropic\_Claude\_4.5\_Sonnet                   | Anthropic's most intelligent model with the highest intelligence across most tasks.                                |
+| Anthropic\_Claude\_4\_Opus                       | Anthropic's model for complex tasks with exceptional fluency.                                                      |
+| Anthropic\_Claude\_4.1\_Opus                     | Anthropic's model for complex tasks with exceptional fluency.                                                      |
+| Anthropic\_Claude\_4.5\_Opus                     | Anthropic's model for complex tasks with exceptional fluency.                                                      |
+| Perplexity\_Sonar                                | Fast Perplexity model with integrated search capabilities.                                                         |
+| Perplexity\_Sonar\_Pro                           | Advanced Perplexity model for complex queries with search integration.                                             |
+| Groq\_Llama\_4\_Scout                            | Advanced 17B parameter multimodal model with 16 experts.                                                           |
+| Groq\_Llama\_3.3\_70B                            | Meta's state-of-the-art model for reasoning and general knowledge.                                                 |
+| Groq\_Llama\_3.1\_8B                             | Fast, instruction-optimized open-source model.                                                                     |
+| Together\_AI\_Llama\_3.1\_405B                   | Meta's flagship model with advanced capabilities across multiple domains.                                          |
+| Mistral\_Nemo                                    | Small, Apache-licensed model built with NVIDIA.                                                                    |
+| Mistral\_Large                                   | Top-tier reasoning model with strong multilingual support.                                                         |
+| Mistral\_Medium                                  | A powerful, cost-effective, frontier-class multimodal model.                                                       |
+| Mistral\_Small\_3                                | Latest enterprise-grade small model with improved reasoning.                                                       |
+| Mistral\_Codestral                               | Specialized model for code-related tasks and testing.                                                              |
+| Groq\_Kimi\_K2\_Instruct                         | Kimi K2 is a powerful and versatile AI model designed for a wide range of tasks.                                   |
+| Groq\_Qwen3-32B                                  | The latest generation of large language models in the Qwen series.                                                 |
+| Google\_Gemini\_3\_Flash                         | Fast thinking model with strong balance of speed, performance, and value.                                          |
+| Google\_Gemini\_3\_Pro                           | Advanced thinking model for complex problem solving.                                                               |
+| Google\_Gemini\_2.5\_Pro                         | Advanced thinking model for complex problem solving.                                                               |
+| Google\_Gemini\_2.5\_Flash                       | Fast, well-rounded thinking model.                                                                                 |
+| Google\_Gemini\_2.5\_Flash\_Lite                 | Fast model optimized for large-scale text output.                                                                  |
+| Together\_AI\_Qwen3-235B-A22B-Instruct-2507-tput | A varied model with enhanced reasoning.                                                                            |
+| Together\_AI\_DeepSeek-R1                        | Open-source model matching OpenAI-o1 performance.                                                                  |
+| Together\_AI\_DeepSeek-V3                        | Advanced Mixture-of-Experts model.                                                                                 |
+| xAI\_Grok-4.1\_Fast                              | xAI's best agentic tool calling model that shines in real-world use cases like customer support and deep research. |
+| xAI\_Grok-4                                      | Advanced language model with enhanced reasoning and tool capabilities.                                             |
+| xAI\_Grok-4\_Fast                                | xAI's latest advancement in cost-efficient reasoning models.                                                       |
+| xAI\_Grok\_Code\_Fast\_1                         | Grok Code Fast 1 is xAI's Coding Agent focused model                                                               |
+| xAI\_Grok-3\_Beta                                | Enterprise-focused model for data, coding, and summarization tasks.                                                |
+| xAI\_Grok-3\_Mini\_Beta                          | Fast, lightweight model for logic-based tasks.                                                                     |
 
 If a model isn't available to the user (or has been disabled by the user), Raycast will fallback to a similar one.
 
@@ -3248,11 +3251,11 @@ If a model isn't available to the user (or has been disabled by the user), Rayca
 
 #### Properties
 
-| Property   | Description                                                                                                                                                                                                                                                      | Type                                                                   |
-| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| creativity | Concrete tasks, such as fixing grammar, require less creativity while open-ended questions, such as generating ideas, require more. If a number is passed, it needs to be in the range 0-2. For larger values, 2 will be used. For lower values, 0 will be used. | [`AI.Creativity`](#ai.creativity)                                      |
-| model      | The AI model to use to answer to the prompt.                                                                                                                                                                                                                     | [`AI.Model`](#ai.model)                                                |
-| signal     | Abort signal to cancel the request.                                                                                                                                                                                                                              | [`Date`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal) |
+| Property   | Description                                                                                                                                                                                                                                                      | Type                                                                          |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| creativity | Concrete tasks, such as fixing grammar, require less creativity while open-ended questions, such as generating ideas, require more. If a number is passed, it needs to be in the range 0-2. For larger values, 2 will be used. For lower values, 0 will be used. | [`AI.Creativity`](#ai.creativity)                                             |
+| model      | The AI model to use to answer to the prompt.                                                                                                                                                                                                                     | [`AI.Model`](#ai.model)                                                       |
+| signal     | Abort signal to cancel the request.                                                                                                                                                                                                                              | [`AbortSignal`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal) |
 
 
 # Browser Extension
@@ -5904,10 +5907,10 @@ async function getFrontmostApplication(): Promise<Application>;
 ```typescript
 import { getFrontmostApplication } from "@raycast/api";
 
-export default async function Command() => {
+export default async function Command() {
   const frontmostApplication = await getFrontmostApplication();
   console.log(`The frontmost application is: ${frontmostApplication.name}`);
-};
+}
 ```
 
 #### Return
@@ -6044,10 +6047,9 @@ export default async function Command() {
 
 #### Parameters
 
-| Name                                     | Description                                                                                                                                                                                                                                                        | Type                                      |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------- |
-| target<mark style="color:red;">\*</mark> | The file, folder or URL to open.                                                                                                                                                                                                                                   | `string`                                  |
-| application                              | The application name to use for opening the file. If no application is specified, the default application as determined by the system is used to open the specified file. Note that you can use the application name, app identifier, or absolute path to the app. | `string` or [`Application`](#application) |
+| Name                                        | Description                       | Type      |
+| ------------------------------------------- | --------------------------------- | --------- |
+| exception<mark style="color:red;">\*</mark> | The exception you want to report. | `unknown` |
 
 ## Types
 
@@ -7192,7 +7194,7 @@ You can take look at these two styles below under each of the supported items.
 
 Before submitting data, it is important to ensure all required form controls are filled out, in the correct format.
 
-In Raycast, validation can be fully controlled from the API. To keep the same behavior as we have natively, the proper way of usage is to validate a `value` in the `onBlur` callback, update the `error` of the item and keep track of updates with the `onChange` callback to drop the `error` value. The [useForm](https://developers.raycast.com/utilities/react-hooks/useform) utils hook nicely wraps this behaviour and is the recommended way to do deal with validations.
+In Raycast, validation can be fully controlled from the API. To keep the same behavior as we have natively, the proper way of usage is to validate a `value` in the `onBlur` callback, update the `error` of the item and keep track of updates with the `onChange` callback to drop the `error` value. The [useForm](https://developers.raycast.com/utilities/react-hooks/useform) utils hook nicely wraps this behavior and is the recommended way to do deal with validations.
 
 ![](https://2922539984-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-Me_8A39tFhZg3UaVoSN%2Fuploads%2Fgit-blob-06326f9b2b6de5d39b9c8aa37e677b23c122f26e%2Fform-validation.webp?alt=media)
 

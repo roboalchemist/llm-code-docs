@@ -48,7 +48,7 @@ X-Daytona-Disable-CORS: true
 ### Disable Last Activity Update
 
 To prevent sandbox last activity updates when previewing, you can set the `X-Daytona-Skip-Last-Activity-Update` header to `true`.
-This will stop Daytona from keeping sandboxes, that have [auto-stop enabled](https://www.daytona.io/docs/sandbox-management.md#auto-stop-interval), started:
+This will stop Daytona from keeping sandboxes, that have [auto-stop enabled](https://www.daytona.io/docs/sandboxes.md#auto-stop-interval), started:
 
 ```bash
 curl -H "X-Daytona-Skip-Last-Activity-Update: true" \

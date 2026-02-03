@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/status/st.info
+
 # st.info
 
 Display an informational message.

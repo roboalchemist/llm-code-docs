@@ -1,12 +1,16 @@
 # Source: https://docs.asapp.com/reporting/secure-data-retrieval.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Secure Data Retrieval
 
 > Learn how to set up secure communication between ASAPP and your real-time event API.
 
 # Secure Data Retrieval
 
-Communication between ASAPP and a customer's real-time event API endpoint is secured using TLS, specifically Mutual-TLS (mTLS). This document provides details on the expected configuration of the mTLS-secured connection between ASAPP and the customer application.
+TLS, specifically Mutual-TLS (mTLS), secures communication between ASAPP and a customer's real-time event API endpoint. This document provides details on the expected configuration of the mTLS-secured connection between ASAPP and the customer application.
 
 ## Overview
 
@@ -32,7 +36,7 @@ REST endpoints must only support TLSv1.3 when setting up HTTPS connections. Olde
 
 ### Supported Ciphers
 
-Ensure that only the following ciphers (or equivalent) are supported by each endpoint:
+Ensure that each endpoint supports only the following ciphers (or equivalent):
 
 * TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384
 * TLS\_ECDHE\_RSA\_WITH\_AES\_128\_GCM\_SHA256

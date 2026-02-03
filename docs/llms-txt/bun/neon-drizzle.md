@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/ecosystem/neon-drizzle.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Use Neon Postgres through Drizzle ORM
 
 [Neon](https://neon.tech/) is a fully managed serverless Postgres, separating compute and storage to offer features like autoscaling, branching and bottomless storage. Neon can be used from Bun directly using the `@neondatabase/serverless` driver or through an ORM like `Drizzle`.
@@ -18,7 +22,7 @@ bun add -D drizzle-kit
 
 Create a `.env.local` file and add your [Neon Postgres connection string](https://neon.tech/docs/connect/connect-from-any-app) to it.
 
-```txt .env.local icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ini .env.local icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 DATABASE_URL=postgresql://usertitle:password@ep-adj-noun-guid.us-east-1.aws.neon.tech/neondb?sslmode=require
 ```
 
@@ -31,7 +35,7 @@ import { neon } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-http";
 
 // Bun automatically loads the DATABASE_URL from .env.local
-// Refer to: https://bun.com/docs/runtime/env for more information
+// Refer to: https://bun.com/docs/runtime/environment-variables for more information
 const sql = neon(process.env.DATABASE_URL!);
 
 export const db = drizzle(sql);

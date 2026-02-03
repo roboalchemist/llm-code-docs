@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/secret-rotation/okta-client-secret.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Okta Client Secret
 
 > Learn how to automatically rotate Okta Client Secrets.

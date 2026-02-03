@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/essentials/recording.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Session Recording
 
 > Record browser sessions for debugging, analysis, and documentation

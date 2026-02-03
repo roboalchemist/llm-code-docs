@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/sdks/python-sdk-specification.md
+# Source: https://exa.ai/docs/sdks/python-sdk-specification.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Python SDK Specification
 
@@ -8,31 +12,42 @@
 
 Install the [exa-py](https://github.com/exa-labs/exa-py) SDK
 
-```Bash Bash theme={null}
-pip install exa_py
-```
+<Tabs>
+  <Tab title="uv">
+    ```bash  theme={null}
+    uv add exa-py
+    ```
+  </Tab>
+
+  <Tab title="pip">
+    ```bash  theme={null}
+    pip install exa-py
+    ```
+  </Tab>
+</Tabs>
 
 and then instantiate an Exa client
 
-```Python Python theme={null}
+```python  theme={null}
 from exa_py import Exa
 
-import os
-
-exa = Exa(os.getenv('EXA_API_KEY'))
+exa = Exa()  # Reads EXA_API_KEY from environment
+# or explicitly: exa = Exa(api_key="your-api-key")
 ```
 
-<Card title="Get API Key" icon="key" horizontal href="https://dashboard.exa.ai/login?redirect=/docs?path=/reference/python-sdk-specification">
+<Card title="Get API Key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys">
   Follow this link to get your API key
 </Card>
 
 ## `search` Method
 
-Perform an Exa search given an input query and retrieve a list of relevant results as links.
+Perform a search.
 
-### Input Example:
+By default, returns text contents with 10,000 max characters. Use contents=False to opt-out.
 
-```Python Python theme={null}
+### Input Example
+
+```python  theme={null}
 # Basic search
 result = exa.search(
   "hottest AI startups",
@@ -48,33 +63,35 @@ deep_result = exa.search(
 )
 ```
 
-### Input Parameters:
+### Input Parameters
 
-| Parameter              | Type                                           | Description                                                                                                                                                                                                                                                  | Default  |
-| ---------------------- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- |
-| query                  | str                                            | The input query string.                                                                                                                                                                                                                                      | Required |
-| additional\_queries    | Optional\[List\[str]]                          | Additional query variations for deep search. Only works with type="deep". When provided, these queries are used alongside the main query for comprehensive results.                                                                                          | None     |
-| num\_results           | Optional\[int]                                 | Number of search results to return. Limits vary by search type: with "neural": max 100. If you want to increase the num results, contact sales ([hello@exa.ai](mailto:hello@exa.ai))                                                                         | 10       |
-| include\_domains       | Optional\[List\[str]]                          | List of domains to include in the search.                                                                                                                                                                                                                    | None     |
-| exclude\_domains       | Optional\[List\[str]]                          | List of domains to exclude in the search.                                                                                                                                                                                                                    | None     |
-| start\_crawl\_date     | Optional\[str]                                 | Results will only include links **crawled** after this date.                                                                                                                                                                                                 | None     |
-| end\_crawl\_date       | Optional\[str]                                 | Results will only include links **crawled** before this date.                                                                                                                                                                                                | None     |
-| start\_published\_date | Optional\[str]                                 | Results will only include links with a **published** date after this date.                                                                                                                                                                                   | None     |
-| end\_published\_date   | Optional\[str]                                 | Results will only include links with a **published** date before this date.                                                                                                                                                                                  | None     |
-| type                   | Optional\[str]                                 | The type of search: "auto", "neural", "fast", or "deep".                                                                                                                                                                                                     | "auto"   |
-| category               | Optional\[str]                                 | A data category to focus on when searching, with higher comprehensivity and data cleanliness. Currently, the available categories are: company, research paper, news, linkedin profile, github, tweet, movie, song, personal site, pdf and financial report. | None     |
-| include\_text          | Optional\[List\[str]]                          | List of strings that must be present in webpage text of results. Currently, only 1 string is supported, of up to 5 words.                                                                                                                                    | None     |
-| exclude\_text          | Optional\[List\[str]]                          | List of strings that must not be present in webpage text of results. Currently, only 1 string is supported, of up to 5 words. Checks from the first 1000 words of the webpage text.                                                                          | None     |
-| context                | Union\[ContextContentsOptions, Literal\[True]] | If true, concatentates results into a context string.                                                                                                                                                                                                        | None     |
+| Parameter              | Type                                                                    | Description                                                                                                                                                                                                                                                                                                  | Default  |
+| ---------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- |
+| query                  | str                                                                     | The query string.                                                                                                                                                                                                                                                                                            | Required |
+| contents               | Optional\[Union\[[ContentsOptions](#contentsoptions), Literal\[False]]] | Options for retrieving page contents. Defaults to `{"text": {"maxCharacters": 10000}`}. Use False to disable contents. See [ContentsOptions](#contentsoptions) for available options (text, highlights, summary, context, etc.). Note: For deep search (type='deep'), context is always returned by the API. | None     |
+| num\_results           | Optional\[int]                                                          | Number of search results to return (default 10).  For deep search, recommend leaving blank - number of results will be determined dynamically for your query.                                                                                                                                                | None     |
+| include\_domains       | Optional\[List\[str]]                                                   | Domains to include in the search.                                                                                                                                                                                                                                                                            | None     |
+| exclude\_domains       | Optional\[List\[str]]                                                   | Domains to exclude from the search.                                                                                                                                                                                                                                                                          | None     |
+| start\_crawl\_date     | Optional\[str]                                                          | Only links crawled after this date.                                                                                                                                                                                                                                                                          | None     |
+| end\_crawl\_date       | Optional\[str]                                                          | Only links crawled before this date.                                                                                                                                                                                                                                                                         | None     |
+| start\_published\_date | Optional\[str]                                                          | Only links published after this date.                                                                                                                                                                                                                                                                        | None     |
+| end\_published\_date   | Optional\[str]                                                          | Only links published before this date.                                                                                                                                                                                                                                                                       | None     |
+| include\_text          | Optional\[List\[str]]                                                   | Strings that must appear in the page text.                                                                                                                                                                                                                                                                   | None     |
+| exclude\_text          | Optional\[List\[str]]                                                   | Strings that must not appear in the page text.                                                                                                                                                                                                                                                               | None     |
+| type                   | Optional\[Union\[[SearchType](#searchtype), str]]                       | Search type - 'auto' (default), 'fast', 'deep', or 'neural'.                                                                                                                                                                                                                                                 | None     |
+| category               | Optional\[[Category](#category)]                                        | Data category to focus on (e.g. 'company', 'news', 'research paper').                                                                                                                                                                                                                                        | None     |
+| flags                  | Optional\[List\[str]]                                                   | Experimental flags for Exa usage.                                                                                                                                                                                                                                                                            | None     |
+| moderation             | Optional\[bool]                                                         | If True, the search results will be moderated for safety.                                                                                                                                                                                                                                                    | None     |
+| user\_location         | Optional\[str]                                                          | Two-letter ISO country code of the user (e.g. US).                                                                                                                                                                                                                                                           | None     |
+| additional\_queries    | Optional\[List\[str]]                                                   | Alternative query formulations for deep search to skip automatic LLM-based query expansion. Max 5 queries. Only applicable when type='deep'. Example: \["machine learning", "ML algorithms", "neural networks"]                                                                                              | None     |
 
-### Returns Example:
+### Return Example
 
-```JSON JSON theme={null}
+```json  theme={null}
 {
   "autopromptString": "Here is a link to one of the hottest AI startups:",
   "results": [
     {
-
       "title": "Adept: Useful General Intelligence",
       "id": "https://www.adept.ai/",
       "url": "https://www.adept.ai/",
@@ -82,7 +99,6 @@ deep_result = exa.search(
       "author": null
     },
     {
-
       "title": "Home | Tenyx, Inc.",
       "id": "https://www.tenyx.com/",
       "url": "https://www.tenyx.com/",
@@ -94,208 +110,31 @@ deep_result = exa.search(
 }
 ```
 
-### Return Parameters:
+### Result Object
 
-`SearchResponse[Result]`
-
-| Field   | Type           | Description                         |
-| ------- | -------------- | ----------------------------------- |
-| results | List\[Result]  | List of Result objects              |
-| context | Optional\[str] | Results concatentated into a string |
-
-### Result Object:
-
-| Field | Type           | Description                   |
-| ----- | -------------- | ----------------------------- |
-| url   | str            | URL of the search result      |
-| id    | str            | Temporary ID for the document |
-| title | Optional\[str] | Title of the search result    |
-
-\| published\_date | Optional\[str]   | Estimated creation date                       |
-\| author         | Optional\[str]   | Author of the content, if available           |
-
-## `search_and_contents` Method
-
-Perform an Exa search given an input query and retrieve a list of relevant results as links, optionally including the full text and/or highlights of the content.
-
-### Input Example:
-
-```Python Python theme={null}
-`# Search with full text content
-result_with_text = exa.search_and_contents(
-    "AI in healthcare",
-    text=True,
-    num_results=2
-)
-
-# Search with highlights
-result_with_highlights = exa.search_and_contents(
-    "AI in healthcare",
-    highlights=True,
-    num_results=2
-)
-
-# Search with both text and highlights
-result_with_text_and_highlights = exa.search_and_contents(
-    "AI in healthcare",
-    text=True,
-    highlights=True,
-    num_results=2
-)
-
-# Search with structured summary schema
-company_schema = {
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "title": "Company Information",
-    "type": "object",
-    "properties": {
-        "name": {
-            "type": "string",
-            "description": "The name of the company"
-        },
-        "industry": {
-            "type": "string",
-            "description": "The industry the company operates in"
-        },
-        "foundedYear": {
-            "type": "number",
-            "description": "The year the company was founded"
-        },
-        "keyProducts": {
-            "type": "array",
-            "items": {
-                "type": "string"
-            },
-            "description": "List of key products or services offered by the company"
-        },
-        "competitors": {
-            "type": "array",
-            "items": {
-                "type": "string"
-            },
-            "description": "List of main competitors"
-        }
-    },
-    "required": ["name", "industry"]
-}
-
-result_with_structured_summary = exa.search_and_contents(
-    "OpenAI company information",
-    summary={
-        "schema": company_schema
-    },
-    category="company",
-    num_results=3
-)
-
-# Parse the structured summary (returned as a JSON string)
-first_result = result_with_structured_summary.results[0]
-if first_result.summary:
-    import json
-    structured_data = json.loads(first_result.summary)
-    print(structured_data["name"])        # e.g. "OpenAI"
-    print(structured_data["industry"])    # e.g. "Artificial Intelligence"
-    print(structured_data["keyProducts"]) # e.g. ["GPT-4", "DALL-E", "ChatGPT"]
-```
-
-### Input Parameters:
-
-| Parameter              | Type                                              | Description                                                                                                                                                                                                                                                  | Default  |
-| ---------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- |
-| query                  | str                                               | The input query string.                                                                                                                                                                                                                                      | Required |
-| text                   | Union\[TextContentsOptions, Literal\[True]]       | If provided, includes the full text of the content in the results.                                                                                                                                                                                           | None     |
-| highlights             | Union\[HighlightsContentsOptions, Literal\[True]] | If provided, includes highlights of the content in the results.                                                                                                                                                                                              | None     |
-| num\_results           | Optional\[int]                                    | Number of search results to return. Limits vary by search type: with "neural": max 100. If you want to increase the num results, contact sales ([hello@exa.ai](mailto:hello@exa.ai))                                                                         | 10       |
-| include\_domains       | Optional\[List\[str]]                             | List of domains to include in the search.                                                                                                                                                                                                                    | None     |
-| exclude\_domains       | Optional\[List\[str]]                             | List of domains to exclude in the search.                                                                                                                                                                                                                    | None     |
-| start\_crawl\_date     | Optional\[str]                                    | Results will only include links **crawled** after this date.                                                                                                                                                                                                 | None     |
-| end\_crawl\_date       | Optional\[str]                                    | Results will only include links **crawled** before this date.                                                                                                                                                                                                | None     |
-| start\_published\_date | Optional\[str]                                    | Results will only include links with a **published** date after this date.                                                                                                                                                                                   | None     |
-| end\_published\_date   | Optional\[str]                                    | Results will only include links with a **published** date before this date.                                                                                                                                                                                  | None     |
-| type                   | Optional\[str]                                    | The type of search: "auto", "neural", "fast", or "deep".                                                                                                                                                                                                     | "auto"   |
-| category               | Optional\[str]                                    | A data category to focus on when searching, with higher comprehensivity and data cleanliness. Currently, the available categories are: company, research paper, news, linkedin profile, github, tweet, movie, song, personal site, pdf and financial report. | None     |
-| include\_text          | Optional\[List\[str]]                             | List of strings that must be present in webpage text of results. Currently, only 1 string is supported, of up to 5 words.                                                                                                                                    | None     |
-| exclude\_text          | Optional\[List\[str]]                             | List of strings that must not be present in webpage text of results. Currently, only 1 string is supported, of up to 5 words. Checks from the first 1000 words of the webpage text.                                                                          | None     |
-| context                | Union\[ContextContentsOptions, Literal\[True]]    | Return page contents as a context string for LLM RAG. When true, combines all result contents into one string. We recommend 10000+ characters for best results. Context strings often perform better than highlights for RAG applications.                   | None     |
-
-### Returns Example:
-
-```JSON JSON theme={null}
-`{
-  "results": [
-    {
-
-      "title": "2023 AI Trends in Health Care",
-      "id": "https://aibusiness.com/verticals/2023-ai-trends-in-health-care-",
-      "url": "https://aibusiness.com/verticals/2023-ai-trends-in-health-care-",
-      "publishedDate": "2022-12-29",
-      "author": "Wylie Wong",
-      "text": "While the health care industry was initially slow to [... TRUNCATED IN THESE DOCS FOR BREVITY ...]",
-      "highlights": [
-        "But to do so, many health care institutions would like to share data, so they can build a more comprehensive dataset to use to train an AI model. Traditionally, they would have to move the data to one central repository. However, with federated or swarm learning, the data does not have to move. Instead, the AI model goes to each individual health care facility and trains on the data, he said. This way, health care providers can maintain security and governance over their data."
-      ],
-      "highlightScores": [
-        0.5566554069519043
-      ]
-    },
-    {
-
-      "title": "AI in healthcare: Innovative use cases and applications",
-      "id": "https://www.leewayhertz.com/ai-use-cases-in-healthcare",
-      "url": "https://www.leewayhertz.com/ai-use-cases-in-healthcare",
-      "publishedDate": "2023-02-13",
-      "author": "Akash Takyar",
-      "text": "The integration of AI in healthcare is not [... TRUNCATED IN THESE DOCS FOR BREVITY ...]",
-      "highlights": [
-        "The ability of AI to analyze large amounts of medical data and identify patterns has led to more accurate and timely diagnoses. This has been especially helpful in identifying complex medical conditions, which may be difficult to detect using traditional methods. Here are some examples of successful implementation of AI in healthcare. IBM Watson Health: IBM Watson Health is an AI-powered system used in healthcare to improve patient care and outcomes. The system uses natural language processing and machine learning to analyze large amounts of data and provide personalized treatment plans for patients."
-      ],
-      "highlightScores": [
-        0.6563674807548523
-      ]
-    }
-  ],
-  "requestId": "d8fd59c78d34afc9da173f1fe5aa8965"
-}
-```
-
-### Return Parameters:
-
-The return type depends on the combination of `text` and `highlights` parameters:
-
-* `SearchResponse[ResultWithText]`: When only `text` is provided.
-* `SearchResponse[ResultWithHighlights]`: When only `highlights` is provided.
-* `SearchResponse[ResultWithTextAndHighlights]`: When both `text` and `highlights` are provided.
-
-### `SearchResponse[ResultWithTextAndHighlights]`
-
-| Field   | Type                               | Description                                 |
-| ------- | ---------------------------------- | ------------------------------------------- |
-| results | List\[ResultWithTextAndHighlights] | List of ResultWithTextAndHighlights objects |
-| context | Optional\[str]                     | Results concatenated into a string          |
-
-### `ResultWithTextAndHighlights` Object
-
-| Field | Type           | Description                   |
-| ----- | -------------- | ----------------------------- |
-| url   | str            | URL of the search result      |
-| id    | str            | Temporary ID for the document |
-| title | Optional\[str] | Title of the search result    |
-
-\| published\_date   | Optional\[str]   | Estimated creation date                          |
-\| author           | Optional\[str]   | Author of the content, if available              |
-\| text             | str             | Text of the search result page (always present)  |
-\| highlights       | List\[str]       | Highlights of the search result (always present) |
-\| highlight\_scores | List\[float]     | Scores of the highlights (always present)        |
-
-Note: If neither `text` nor `highlights` is specified, the method defaults to including the full text content.
+| Field           | Type                                   | Description                                                   |
+| --------------- | -------------------------------------- | ------------------------------------------------------------- |
+| url             | str                                    | The URL of the search result.                                 |
+| id              | str                                    | The temporary ID for the document.                            |
+| title           | Optional\[str]                         | The title of the search result.                               |
+| score           | Optional\[float]                       | A number from 0 to 1 representing similarity.                 |
+| published\_date | Optional\[str]                         | An estimate of the creation date, from parsing HTML content.  |
+| author          | Optional\[str]                         | The author of the content (if available).                     |
+| image           | Optional\[str]                         | A URL to an image associated with the content (if available). |
+| favicon         | Optional\[str]                         | A URL to the favicon (if available).                          |
+| subpages        | Optional\[List\[[\_Result](#_result)]] | Subpages of main page                                         |
+| extras          | Optional\[Dict]                        | Additional metadata; e.g. links, images.                      |
+| entities        | Optional\[List\[[Entity](#entity)]]    | Structured entity data for company or person searches.        |
 
 ## `find_similar` Method
 
-Find a list of similar results based on a webpage's URL.
+Finds similar pages to a given URL, potentially with domain filters and date filters.
 
-### Input Example:
+By default, returns text contents with 10,000 max characters. Use contents=False to opt-out.
 
-```Python Python theme={null}
+### Input Example
+
+```python  theme={null}
 similar_results = exa.find_similar(
     "miniclip.com",
     num_results=2,
@@ -303,29 +142,31 @@ similar_results = exa.find_similar(
 )
 ```
 
-### Input Parameters:
+### Input Parameters
 
-| Parameter               | Type                                           | Description                                                                                                                                                                                                                                | Default  |
-| ----------------------- | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------- |
-| url                     | str                                            | The URL of the webpage to find similar results for.                                                                                                                                                                                        | Required |
-| num\_results            | Optional\[int]                                 | Number of similar results to return.                                                                                                                                                                                                       | None     |
-| include\_domains        | Optional\[List\[str]]                          | List of domains to include in the search.                                                                                                                                                                                                  | None     |
-| exclude\_domains        | Optional\[List\[str]]                          | List of domains to exclude from the search.                                                                                                                                                                                                | None     |
-| start\_crawl\_date      | Optional\[str]                                 | Results will only include links **crawled** after this date.                                                                                                                                                                               | None     |
-| end\_crawl\_date        | Optional\[str]                                 | Results will only include links **crawled** before this date.                                                                                                                                                                              | None     |
-| start\_published\_date  | Optional\[str]                                 | Results will only include links with a **published** date after this date.                                                                                                                                                                 | None     |
-| end\_published\_date    | Optional\[str]                                 | Results will only include links with a **published** date before this date.                                                                                                                                                                | None     |
-| exclude\_source\_domain | Optional\[bool]                                | If true, excludes results from the same domain as the input URL.                                                                                                                                                                           | None     |
-| category                | Optional\[str]                                 | A data category to focus on when searching, with higher comprehensivity and data cleanliness.                                                                                                                                              | None     |
-| context                 | Union\[ContextContentsOptions, Literal\[True]] | Return page contents as a context string for LLM RAG. When true, combines all result contents into one string. We recommend 10000+ characters for best results. Context strings often perform better than highlights for RAG applications. | None     |
+| Parameter               | Type                                                                    | Description                                                                                                                                                                                                                      | Default  |
+| ----------------------- | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| url                     | str                                                                     | The URL to find similar pages for.                                                                                                                                                                                               | Required |
+| contents                | Optional\[Union\[[ContentsOptions](#contentsoptions), Literal\[False]]] | Options for retrieving page contents. Defaults to `{"text": {"maxCharacters": 10000}`}. Use False to disable contents. See [ContentsOptions](#contentsoptions) for available options (text, highlights, summary, context, etc.). | None     |
+| num\_results            | Optional\[int]                                                          | Number of results to return. Default is None (server default).                                                                                                                                                                   | None     |
+| include\_domains        | Optional\[List\[str]]                                                   | Domains to include in the search.                                                                                                                                                                                                | None     |
+| exclude\_domains        | Optional\[List\[str]]                                                   | Domains to exclude from the search.                                                                                                                                                                                              | None     |
+| start\_crawl\_date      | Optional\[str]                                                          | Only links crawled after this date.                                                                                                                                                                                              | None     |
+| end\_crawl\_date        | Optional\[str]                                                          | Only links crawled before this date.                                                                                                                                                                                             | None     |
+| start\_published\_date  | Optional\[str]                                                          | Only links published after this date.                                                                                                                                                                                            | None     |
+| end\_published\_date    | Optional\[str]                                                          | Only links published before this date.                                                                                                                                                                                           | None     |
+| include\_text           | Optional\[List\[str]]                                                   | Strings that must appear in the page text.                                                                                                                                                                                       | None     |
+| exclude\_text           | Optional\[List\[str]]                                                   | Strings that must not appear in the page text.                                                                                                                                                                                   | None     |
+| exclude\_source\_domain | Optional\[bool]                                                         | Whether to exclude the source domain.                                                                                                                                                                                            | None     |
+| category                | Optional\[[Category](#category)]                                        | Data category to focus on (e.g. 'company', 'news', 'research paper').                                                                                                                                                            | None     |
+| flags                   | Optional\[List\[str]]                                                   | Experimental flags.                                                                                                                                                                                                              | None     |
 
-### Returns Example:
+### Return Example
 
-```JSON JSON theme={null}
+```json  theme={null}
 {
   "results": [
     {
-
       "title": "Play New Free Online Games Every Day",
       "id": "https://www.minigames.com/new-games",
       "url": "https://www.minigames.com/new-games",
@@ -333,7 +174,6 @@ similar_results = exa.find_similar(
       "author": null
     },
     {
-
       "title": "Play The best Online Games",
       "id": "https://www.minigames.com/",
       "url": "https://www.minigames.com/",
@@ -345,95 +185,83 @@ similar_results = exa.find_similar(
 }
 ```
 
-### Return Parameters:
+### Result Object
 
-`SearchResponse[_Result]`: The response containing similar results and optional autoprompt string.
+| Field           | Type                                   | Description                                                   |
+| --------------- | -------------------------------------- | ------------------------------------------------------------- |
+| url             | str                                    | The URL of the search result.                                 |
+| id              | str                                    | The temporary ID for the document.                            |
+| title           | Optional\[str]                         | The title of the search result.                               |
+| score           | Optional\[float]                       | A number from 0 to 1 representing similarity.                 |
+| published\_date | Optional\[str]                         | An estimate of the creation date, from parsing HTML content.  |
+| author          | Optional\[str]                         | The author of the content (if available).                     |
+| image           | Optional\[str]                         | A URL to an image associated with the content (if available). |
+| favicon         | Optional\[str]                         | A URL to the favicon (if available).                          |
+| subpages        | Optional\[List\[[\_Result](#_result)]] | Subpages of main page                                         |
+| extras          | Optional\[Dict]                        | Additional metadata; e.g. links, images.                      |
+| entities        | Optional\[List\[[Entity](#entity)]]    | Structured entity data for company or person searches.        |
 
-### `SearchResponse[Results]`
+## `get_contents` Method
 
-| Field   | Type                               | Description                                 |
-| ------- | ---------------------------------- | ------------------------------------------- |
-| results | List\[ResultWithTextAndHighlights] | List of ResultWithTextAndHighlights objects |
-| context | Optional\[String]                  | Results concatentated into a string         |
+Retrieve contents for a list of URLs.
 
-### `Results` Object
+### Input Example
 
-| Field | Type           | Description                   |
-| ----- | -------------- | ----------------------------- |
-| url   | str            | URL of the search result      |
-| id    | str            | Temporary ID for the document |
-| title | Optional\[str] | Title of the search result    |
+```python  theme={null}
+# Get contents for a single URL
+contents = exa.get_contents("https://example.com/article")
 
-\| published\_date | Optional\[str]   | Estimated creation date                       |
-\| author         | Optional\[str]   | Author of the content, if available           |
-
-## `find_similar_and_contents` Method
-
-Find a list of similar results based on a webpage's URL, optionally including the text content or highlights of each result.
-
-### Input Example:
-
-```Python Python theme={null}
-# Find similar with full text content
-similar_with_text = exa.find_similar_and_contents(
-    "https://example.com/article",
-    text=True,
-    num_results=2
-)
-
-# Find similar with highlights
-similar_with_highlights = exa.find_similar_and_contents(
-    "https://example.com/article",
-    highlights=True,
-    num_results=2
-)
-
-# Find similar with both text and highlights
-similar_with_text_and_highlights = exa.find_similar_and_contents(
-    "https://example.com/article",
-    text=True,
-    highlights=True,
-    num_results=2
-)
+# Get contents for multiple URLs
+contents = exa.get_contents([
+    "https://example.com/article1",
+    "https://example.com/article2"
+])
 ```
 
-### Input Parameters:
+### Input Parameters
 
-| Parameter               | Type                                              | Description                                                                                   | Default  |
-| ----------------------- | ------------------------------------------------- | --------------------------------------------------------------------------------------------- | -------- |
-| url                     | str                                               | The URL of the webpage to find similar results for.                                           | Required |
-| text                    | Union\[TextContentsOptions, Literal\[True]]       | If provided, includes the full text of the content in the results.                            | None     |
-| highlights              | Union\[HighlightsContentsOptions, Literal\[True]] | If provided, includes highlights of the content in the results.                               | None     |
-| num\_results            | Optional\[int]                                    | Number of similar results to return.                                                          | None     |
-| include\_domains        | Optional\[List\[str]]                             | List of domains to include in the search.                                                     | None     |
-| exclude\_domains        | Optional\[List\[str]]                             | List of domains to exclude from the search.                                                   | None     |
-| start\_crawl\_date      | Optional\[str]                                    | Results will only include links **crawled** after this date.                                  | None     |
-| end\_crawl\_date        | Optional\[str]                                    | Results will only include links **crawled** before this date.                                 | None     |
-| start\_published\_date  | Optional\[str]                                    | Results will only include links with a **published** date after this date.                    | None     |
-| end\_published\_date    | Optional\[str]                                    | Results will only include links with a **published** date before this date.                   | None     |
-| exclude\_source\_domain | Optional\[bool]                                   | If true, excludes results from the same domain as the input URL.                              | None     |
-| category                | Optional\[str]                                    | A data category to focus on when searching, with higher comprehensivity and data cleanliness. | None     |
-| context                 | Union\[ContextContentsOptions, Literal\[True]]    | If true, concatentates results into a context string.                                         | None     |
+| Parameter | Type                                                 | Description                                                       | Default  |
+| --------- | ---------------------------------------------------- | ----------------------------------------------------------------- | -------- |
+| urls      | Union\[str, List\[str], List\[[\_Result](#_result)]] | A single URL, list of URLs, or list of [Result](#result) objects. | Required |
 
-### Returns:
+### Return Example
 
-The return type depends on the combination of `text` and `highlights` parameters:
+```json  theme={null}
+{
+  "results": [
+    {
+      "url": "https://example.com/article",
+      "id": "https://example.com/article",
+      "title": "Example Article",
+      "text": "The full text content of the article..."
+    }
+  ]
+}
+```
 
-* `SearchResponse[ResultWithText]`: When only `text` is provided or when neither `text` nor `highlights` is provided (defaults to including text).
-* `SearchResponse[ResultWithHighlights]`: When only `highlights` is provided.
-* `SearchResponse[ResultWithTextAndHighlights]`: When both `text` and `highlights` are provided.
+### Result Object
 
-The response contains similar results and an optional autoprompt string.
-
-Note: If neither `text` nor `highlights` is specified, the method defaults to including the full text content.
+| Field           | Type                                   | Description                                                   |
+| --------------- | -------------------------------------- | ------------------------------------------------------------- |
+| url             | str                                    | The URL of the search result.                                 |
+| id              | str                                    | The temporary ID for the document.                            |
+| title           | Optional\[str]                         | The title of the search result.                               |
+| score           | Optional\[float]                       | A number from 0 to 1 representing similarity.                 |
+| published\_date | Optional\[str]                         | An estimate of the creation date, from parsing HTML content.  |
+| author          | Optional\[str]                         | The author of the content (if available).                     |
+| image           | Optional\[str]                         | A URL to an image associated with the content (if available). |
+| favicon         | Optional\[str]                         | A URL to the favicon (if available).                          |
+| subpages        | Optional\[List\[[\_Result](#_result)]] | Subpages of main page                                         |
+| extras          | Optional\[Dict]                        | Additional metadata; e.g. links, images.                      |
+| entities        | Optional\[List\[[Entity](#entity)]]    | Structured entity data for company or person searches.        |
 
 ## `answer` Method
 
-Generate an answer to a query using Exa's search and LLM capabilities. This method returns an AnswerResponse with the answer and a list of citations. You can optionally retrieve the full text of each citation by setting text=True.
+Generate an answer to a query using Exa's search and LLM capabilities.
 
-### Input Example:
+### Input Example
 
-```Python Python theme={null}
+```python  theme={null}
 response = exa.answer("What is the capital of France?")
 
 print(response.answer)       # e.g. "Paris"
@@ -447,17 +275,21 @@ response_with_text = exa.answer(
 print(response_with_text.citations[0].text)  # Full page text
 ```
 
-### Input Parameters:
+### Input Parameters
 
-| Parameter | Type            | Description                                                                              | Default  |
-| --------- | --------------- | ---------------------------------------------------------------------------------------- | -------- |
-| query     | str             | The question to answer.                                                                  | Required |
-| text      | Optional\[bool] | If true, the full text of each citation is included in the result.                       | False    |
-| stream    | Optional\[bool] | Note: If true, an error is thrown. Use stream\_answer() instead for streaming responses. | None     |
+| Parameter      | Type                                           | Description                                                             | Default  |
+| -------------- | ---------------------------------------------- | ----------------------------------------------------------------------- | -------- |
+| query          | str                                            | The query to answer.                                                    | Required |
+| stream         | Optional\[bool]                                | -                                                                       | `False`  |
+| text           | Optional\[bool]                                | Whether to include full text in the results. Defaults to False.         | `False`  |
+| system\_prompt | Optional\[str]                                 | A system prompt to guide the LLM's behavior when generating the answer. | None     |
+| model          | Optional\[Literal\['exa', 'exa-pro']]          | The model to use for answering. Defaults to None.                       | None     |
+| output\_schema | Optional\[[JSONSchemaInput](#jsonschemainput)] | JSON schema describing the desired answer structure.                    | None     |
+| user\_location | Optional\[str]                                 | -                                                                       | None     |
 
-### Returns Example:
+### Return Example
 
-```JSON JSON theme={null}
+```json  theme={null}
 {
   "answer": "The capital of France is Paris.",
   "citations": [
@@ -473,35 +305,24 @@ print(response_with_text.citations[0].text)  # Full page text
 }
 ```
 
-### Return Parameters:
+### Result Object
 
-Returns an `AnswerResponse` object:
-
-| Field     | Type                | Description                                   |
-| --------- | ------------------- | --------------------------------------------- |
-| answer    | str                 | The generated answer text                     |
-| citations | List\[AnswerResult] | List of citations used to generate the answer |
-
-### `AnswerResult` object
-
-| Field           | Type           | Description                                 |
-| --------------- | -------------- | ------------------------------------------- |
-| id              | str            | Temporary ID for the document               |
-| url             | str            | URL of the citation                         |
-| title           | Optional\[str] | Title of the content, if available          |
-| published\_date | Optional\[str] | Estimated creation date                     |
-| author          | Optional\[str] | The author of the content, if available     |
-| text            | Optional\[str] | The full text of the content (if text=True) |
-
-***
+| Field           | Type           | Description                                                  |
+| --------------- | -------------- | ------------------------------------------------------------ |
+| id              | str            | The temporary ID for the document.                           |
+| url             | str            | The URL of the search result.                                |
+| title           | Optional\[str] | The title of the search result.                              |
+| published\_date | Optional\[str] | An estimate of the creation date, from parsing HTML content. |
+| author          | Optional\[str] | If available, the author of the content.                     |
+| text            | Optional\[str] | The full page text from each search result.                  |
 
 ## `stream_answer` Method
 
-Generate a streaming answer to a query with Exa's LLM capabilities. Instead of returning a single response, this method yields chunks of text and/or citations as they become available.
+Generate a streaming answer response.
 
-### Input Example:
+### Input Example
 
-```Python Python theme={null}
+```python  theme={null}
 stream = exa.stream_answer("What is the capital of France?", text=True)
 
 for chunk in stream:
@@ -512,33 +333,49 @@ for chunk in stream:
             print("Citation found:", citation.url)
 ```
 
-### Input Parameters:
+### Input Parameters
 
-| Parameter | Type            | Description                                                            | Default  |
-| --------- | --------------- | ---------------------------------------------------------------------- | -------- |
-| query     | str             | The question to answer.                                                | Required |
-| text      | Optional\[bool] | If true, includes full text of each citation in the streamed response. | False    |
+| Parameter      | Type                                           | Description                                                             | Default  |
+| -------------- | ---------------------------------------------- | ----------------------------------------------------------------------- | -------- |
+| query          | str                                            | The query to answer.                                                    | Required |
+| text           | bool                                           | Whether to include full text in the results. Defaults to False.         | `False`  |
+| system\_prompt | Optional\[str]                                 | A system prompt to guide the LLM's behavior when generating the answer. | None     |
+| model          | Optional\[Literal\['exa', 'exa-pro']]          | The model to use for answering. Defaults to None.                       | None     |
+| output\_schema | Optional\[[JSONSchemaInput](#jsonschemainput)] | JSON schema describing the desired answer structure.                    | None     |
+| user\_location | Optional\[str]                                 | -                                                                       | None     |
 
-### Return Type:
+### Return Example
 
-A `StreamAnswerResponse` object, which is iterable. Iterating over it yields `StreamChunk` objects:
+```json  theme={null}
+{
+  "answer": "The capital of France is Paris.",
+  "citations": [
+    {
+      "id": "https://www.example.com/france",
+      "url": "https://www.example.com/france",
+      "title": "France - Wikipedia",
+      "publishedDate": "2023-01-01",
+      "author": null,
+      "text": "France, officially the French Republic, is a country in... [truncated for brevity]"
+    }
+  ]
+}
+```
 
-### `StreamChunk`
+### Result Object
 
-| Field     | Type                           | Description                                 |
-| --------- | ------------------------------ | ------------------------------------------- |
-| content   | Optional\[str]                 | Partial text content of the answer so far.  |
-| citations | Optional\[List\[AnswerResult]] | Citations discovered in this chunk, if any. |
+| Field     | Type                                            | Description                                 |
+| --------- | ----------------------------------------------- | ------------------------------------------- |
+| content   | Optional\[str]                                  | The partial text content of the answer      |
+| citations | Optional\[List\[[AnswerResult](#answerresult)]] | List of citations if provided in this chunk |
 
-Use `stream.close()` to end the streaming session if needed.
+## `research.create` Method
 
-## `research.create_task` Method
+Create a new research request.
 
-Create an asynchronous research task that performs multi-step web research and returns structured JSON results with citations.
+### Input Example
 
-### Input Example:
-
-```Python Python theme={null}
+```python  theme={null}
 from exa_py import Exa
 import os
 
@@ -555,84 +392,73 @@ schema = {
     }
 }
 
-task = exa.research.create_task(
+task = exa.research.create(
     instructions=instructions,
     output_schema=schema
 )
 
-# Or even simpler - let the model infer the schema
-simple_task = exa.research.create_task(
-    instructions="What are the main benefits of meditation?",
-    infer_schema=True
-)
-
-print(f"Task created with ID: {task.id}")
+print(f"Task created with ID: {task.research_id}")
 ```
 
-### Input Parameters:
+### Input Parameters
 
-| Parameter      | Type            | Description                                                                               | Default        |
-| -------------- | --------------- | ----------------------------------------------------------------------------------------- | -------------- |
-| instructions   | str             | Natural language instructions describing what the research task should accomplish.        | Required       |
-| model          | Optional\[str]  | The research model to use. Options: "exa-research" (default), "exa-research-pro".         | "exa-research" |
-| output\_schema | Optional\[Dict] | JSON Schema specification for the desired output structure. See json-schema.org/draft-07. | None           |
-| infer\_schema  | Optional\[bool] | When true and no output schema is provided, an LLM will generate an output schema.        | None           |
+| Parameter      | Type                                                                                                               | Description                                                                    | Default               |
+| -------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | --------------------- |
+| instructions   | str                                                                                                                | The research instructions describing what to research.                         | Required              |
+| model          | [ResearchModel](#researchmodel)                                                                                    | The model to use ('exa-research-fast', 'exa-research', or 'exa-research-pro'). | `'exa-research-fast'` |
+| output\_schema | Optional\[Union\[Dict\[str, Any], Type\[[BaseModel](https://docs.pydantic.dev/latest/api/base_model/#BaseModel)]]] | Optional JSON schema for structured output format.                             | None                  |
 
-### Returns:
+### Return Example
 
-Returns a `ResearchTask` object:
-
-| Field | Type | Description                        |
-| ----- | ---- | ---------------------------------- |
-| id    | str  | The unique identifier for the task |
-
-### Return Example:
-
-```JSON JSON theme={null}
+```json  theme={null}
 {
   "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
 }
 ```
 
-## `research.get_task` Method
+### Result Object
 
-Get the current status and results of a research task by its ID.
+| Field          | Type                                              | Description                                     |
+| -------------- | ------------------------------------------------- | ----------------------------------------------- |
+| research\_id   | str                                               | The unique identifier for the research request  |
+| created\_at    | float                                             | Milliseconds since epoch time                   |
+| model          | [ResearchModel](#researchmodel)                   | The model used for the research request         |
+| instructions   | str                                               | The instructions given to this research request |
+| output\_schema | Optional\[Dict\[str, Any]]                        | -                                               |
+| status         | Literal\['completed']                             | -                                               |
+| finished\_at   | float                                             | Milliseconds since epoch time                   |
+| events         | Optional\[List\[[ResearchEvent](#researchevent)]] | -                                               |
+| output         | [ResearchOutput](#researchoutput)                 | -                                               |
+| cost\_dollars  | [CostDollars](#costdollars)                       | -                                               |
 
-### Input Example:
+## `research.get` Method
 
-```Python Python theme={null}
+Get a research request by ID.
+
+### Input Example
+
+```python  theme={null}
 # Get a research task by ID
 task_id = "your-task-id-here"
-task = exa.research.get_task(task_id)
+task = exa.research.get(task_id)
 
 print(f"Task status: {task.status}")
 if task.status == "completed":
-    print(f"Results: {task.data}")
-    print(f"Citations: {task.citations}")
+    print(f"Results: {task.output}")
 ```
 
-### Input Parameters:
+### Input Parameters
 
-| Parameter | Type | Description                       | Default  |
-| --------- | ---- | --------------------------------- | -------- |
-| task\_id  | str  | The unique identifier of the task | Required |
+| Parameter      | Type                                                                                      | Description                                          | Default  |
+| -------------- | ----------------------------------------------------------------------------------------- | ---------------------------------------------------- | -------- |
+| research\_id   | str                                                                                       | The unique identifier of the research task.          | Required |
+| stream         | bool                                                                                      | Whether to stream events as they occur.              | `False`  |
+| events         | bool                                                                                      | Whether to include events in the response.           | `False`  |
+| output\_schema | Optional\[Type\[[BaseModel](https://docs.pydantic.dev/latest/api/base_model/#BaseModel)]] | Optional Pydantic model for typed output validation. | None     |
 
-### Returns:
+### Return Example
 
-Returns a `ResearchTaskDetails` object:
-
-| Field        | Type                        | Description                                      |
-| ------------ | --------------------------- | ------------------------------------------------ |
-| id           | str                         | The unique identifier for the task               |
-| status       | str                         | Task status: "running", "completed", or "failed" |
-| instructions | str                         | The original instructions provided               |
-| schema       | Optional\[Dict]             | The JSON schema specification used               |
-| data         | Optional\[Dict]             | The research results (when completed)            |
-| citations    | Optional\[Dict\[str, List]] | Citations grouped by root field (when completed) |
-
-### Return Example:
-
-```JSON JSON theme={null}
+```json  theme={null}
 {
   "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
   "status": "completed",
@@ -640,38 +466,49 @@ Returns a `ResearchTaskDetails` object:
   "schema": {
     "type": "object",
     "properties": {
-      "valuation": {"type": "string"},
-      "date": {"type": "string"},
-      "source": {"type": "string"}
+      "valuation": {
+        "type": "string"
+      },
+      "date": {
+        "type": "string"
+      },
+      "source": {
+        "type": "string"
+      }
     }
   },
-  "data": {
+  "output": {
     "valuation": "$350 billion",
     "date": "December 2024",
     "source": "Financial Times"
-  },
-  "citations": {
-    "valuation": [
-      {
-        "id": "https://www.ft.com/content/...",
-        "url": "https://www.ft.com/content/...",
-        "title": "SpaceX valued at $350bn in employee share sale",
-        "snippet": "SpaceX has been valued at $350bn..."
-      }
-    ]
   }
 }
 ```
 
-## `research.poll_task` Method
+### Result Object
 
-Poll a research task until it completes or fails, returning the final result.
+| Field          | Type                                              | Description                                     |
+| -------------- | ------------------------------------------------- | ----------------------------------------------- |
+| research\_id   | str                                               | The unique identifier for the research request  |
+| created\_at    | float                                             | Milliseconds since epoch time                   |
+| model          | [ResearchModel](#researchmodel)                   | The model used for the research request         |
+| instructions   | str                                               | The instructions given to this research request |
+| output\_schema | Optional\[Dict\[str, Any]]                        | -                                               |
+| status         | Literal\['completed']                             | -                                               |
+| finished\_at   | float                                             | Milliseconds since epoch time                   |
+| events         | Optional\[List\[[ResearchEvent](#researchevent)]] | -                                               |
+| output         | [ResearchOutput](#researchoutput)                 | -                                               |
+| cost\_dollars  | [CostDollars](#costdollars)                       | -                                               |
 
-### Input Example:
+## `research.poll_until_finished` Method
 
-```Python Python theme={null}
+Poll until research is finished.
+
+### Input Example
+
+```python  theme={null}
 # Create and poll a task until completion
-task = exa.research.create_task(
+task = exa.research.create(
     instructions="Get information about Paris, France",
     output_schema={
         "type": "object",
@@ -684,72 +521,73 @@ task = exa.research.create_task(
 )
 
 # Poll until completion
-result = exa.research.poll_task(task.id)
-print(f"Research complete: {result.data}")
+result = exa.research.poll_until_finished(task.research_id)
+print(f"Research complete: {result.output}")
 ```
 
-### Input Parameters:
+### Input Parameters
 
-| Parameter       | Type           | Description                               | Default  |
-| --------------- | -------------- | ----------------------------------------- | -------- |
-| task\_id        | str            | The unique identifier of the task         | Required |
-| poll\_interval  | Optional\[int] | Seconds between polling attempts          | 2        |
-| max\_wait\_time | Optional\[int] | Maximum seconds to wait before timing out | 300      |
+| Parameter      | Type                                                                                      | Description                                             | Default  |
+| -------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------------- | -------- |
+| research\_id   | str                                                                                       | The unique identifier of the research task.             | Required |
+| poll\_interval | int                                                                                       | Milliseconds between polling attempts.                  | `1000`   |
+| timeout\_ms    | int                                                                                       | Maximum time to wait in milliseconds before timing out. | `600000` |
+| events         | bool                                                                                      | Whether to include events in the response.              | `False`  |
+| output\_schema | Optional\[Type\[[BaseModel](https://docs.pydantic.dev/latest/api/base_model/#BaseModel)]] | Optional Pydantic model for typed output validation.    | None     |
 
-### Returns:
+### Result Object
 
-Returns a `ResearchTaskDetails` object with the completed task data (same structure as `get_task`).
+| Field          | Type                                              | Description                                     |
+| -------------- | ------------------------------------------------- | ----------------------------------------------- |
+| research\_id   | str                                               | The unique identifier for the research request  |
+| created\_at    | float                                             | Milliseconds since epoch time                   |
+| model          | [ResearchModel](#researchmodel)                   | The model used for the research request         |
+| instructions   | str                                               | The instructions given to this research request |
+| output\_schema | Optional\[Dict\[str, Any]]                        | -                                               |
+| status         | Literal\['completed']                             | -                                               |
+| finished\_at   | float                                             | Milliseconds since epoch time                   |
+| events         | Optional\[List\[[ResearchEvent](#researchevent)]] | -                                               |
+| output         | [ResearchOutput](#researchoutput)                 | -                                               |
+| cost\_dollars  | [CostDollars](#costdollars)                       | -                                               |
 
-## `research.list_tasks` Method
+## `research.list` Method
 
-List all research tasks with optional pagination.
+List research requests.
 
-### Input Example:
+### Input Example
 
-```Python Python theme={null}
+```python  theme={null}
 # List all research tasks
-response = exa.research.list_tasks()
-print(f"Found {len(response['data'])} tasks")
+response = exa.research.list()
+print(f"Found {len(response.data)} tasks")
 
 # List with pagination
-response = exa.research.list_tasks(limit=10)
-if response['hasMore']:
-    next_page = exa.research.list_tasks(cursor=response['nextCursor'])
+response = exa.research.list(limit=10)
+if response.has_more:
+    next_page = exa.research.list(cursor=response.next_cursor)
 ```
 
-### Input Parameters:
+### Input Parameters
 
-| Parameter | Type           | Description                             | Default |
-| --------- | -------------- | --------------------------------------- | ------- |
-| cursor    | Optional\[str] | Pagination cursor from previous request | None    |
-| limit     | Optional\[int] | Number of results to return (1-200)     | 25      |
+| Parameter | Type           | Description                                 | Default |
+| --------- | -------------- | ------------------------------------------- | ------- |
+| cursor    | Optional\[str] | Pagination cursor from a previous response. | None    |
+| limit     | Optional\[int] | Maximum number of results to return.        | None    |
 
-### Returns:
+### Return Example
 
-Returns a dictionary with:
-
-| Field      | Type                       | Description                                   |
-| ---------- | -------------------------- | --------------------------------------------- |
-| data       | List\[ResearchTaskDetails] | List of research task objects                 |
-| hasMore    | bool                       | Whether there are more results to paginate    |
-| nextCursor | Optional\[str]             | Cursor for the next page (if hasMore is true) |
-
-### Return Example:
-
-```JSON JSON theme={null}
+```json  theme={null}
 {
   "data": [
     {
       "id": "task-1",
       "status": "completed",
-      "instructions": "Research SpaceX valuation",
-      ...
+      "instructions": "Research SpaceX valuation"
     },
     {
       "id": "task-2",
       "status": "running",
-      "instructions": "Compare GPU specifications",
-      ...
+      "instructions": "Compare GPU specifications"
     }
   ],
   "hasMore": true,
@@ -757,7 +595,758 @@ Returns a dictionary with:
 }
 ```
 
+### Result Object
 
----
+| Field        | Type                               | Description                                            |
+| ------------ | ---------------------------------- | ------------------------------------------------------ |
+| data         | List\[[ResearchDto](#researchdto)] | The list of research requests                          |
+| has\_more    | bool                               | Whether there are more results to paginate through     |
+| next\_cursor | Optional\[str]                     | The cursor to paginate through the next set of results |
 
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt
+***
+
+## Types Reference
+
+This section documents the TypedDict and dataclass types used throughout the SDK.
+
+### Content Options
+
+These TypedDict classes configure content retrieval options for the `contents` parameter.
+
+#### `TextContentsOptions`
+
+A class representing the options that you can specify when requesting text
+
+| Field               | Type                                     | Description                                                                                                                                                                  |
+| ------------------- | ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| max\_characters     | int                                      | The maximum number of characters to return. Default: None (no limit).                                                                                                        |
+| include\_html\_tags | bool                                     | If true, include HTML tags in the returned text. Default false.                                                                                                              |
+| verbosity           | [VERBOSITY\_OPTIONS](#verbosity_options) | Controls verbosity level of returned content. "compact" (default): main content only; "standard": balanced; "full": all sections. Requires max\_age\_hours=0 to take effect. |
+| include\_sections   | List\[[SECTION\_TAG](#section_tag)]      | Only include content from these semantic sections. Requires max\_age\_hours=0 to take effect.                                                                                |
+| exclude\_sections   | List\[[SECTION\_TAG](#section_tag)]      | Exclude content from these semantic sections. Requires max\_age\_hours=0 to take effect.                                                                                     |
+
+#### `SummaryContentsOptions`
+
+A class representing the options that you can specify when requesting summary
+
+| Field  | Type                                | Description                                                                                                                         |
+| ------ | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| query  | str                                 | The query string for the summary. Summary will bias towards answering the query.                                                    |
+| schema | [JSONSchemaInput](#jsonschemainput) | JSON schema for structured output from summary. Can be a Pydantic model (automatically converted) or a dict containing JSON Schema. |
+
+#### `HighlightsContentsOptions`
+
+A class representing the options that you can specify when requesting highlights.
+
+| Field           | Type | Description                                                                              |
+| --------------- | ---- | ---------------------------------------------------------------------------------------- |
+| query           | str  | The query string for highlight generation. Highlights will be biased towards this query. |
+| max\_characters | int  | Maximum characters for highlights.                                                       |
+
+#### `ContextContentsOptions`
+
+Options for retrieving aggregated context from a set of search results.
+
+| Field           | Type | Description                                                        |
+| --------------- | ---- | ------------------------------------------------------------------ |
+| max\_characters | int  | The maximum number of characters to include in the context string. |
+
+#### `ExtrasOptions`
+
+A class representing additional extraction fields (e.g. links, images)
+
+| Field        | Type | Description |
+| ------------ | ---- | ----------- |
+| links        | int  | -           |
+| image\_links | int  | -           |
+
+#### `ContentsOptions`
+
+Options for retrieving page contents in search and find\_similar methods.
+
+All fields are optional. If no content options are specified, text with
+max\_characters=10000 is returned by default.
+
+| Field           | Type                                                                            | Description                                                                                                                                                                                                                                      |
+| --------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| text            | Union\[[TextContentsOptions](#textcontentsoptions), Literal\[True]]             | Options for text extraction, or True for defaults.                                                                                                                                                                                               |
+| highlights      | Union\[[HighlightsContentsOptions](#highlightscontentsoptions), Literal\[True]] | Options for highlight extraction, or True for defaults.                                                                                                                                                                                          |
+| summary         | Union\[[SummaryContentsOptions](#summarycontentsoptions), Literal\[True]]       | Options for summary generation, or True for defaults.                                                                                                                                                                                            |
+| context         | Union\[[ContextContentsOptions](#contextcontentsoptions), Literal\[True]]       | Options for context aggregation, or True for defaults.                                                                                                                                                                                           |
+| max\_age\_hours | int                                                                             | Maximum age of cached content in hours. If content is older, it will be fetched fresh. Special values: 0 = always fetch fresh content, -1 = never fetch fresh (use cached content only). Example: 168 = fetch fresh for pages older than 7 days. |
+| subpages        | int                                                                             | Number of subpages to crawl.                                                                                                                                                                                                                     |
+| subpage\_target | Union\[str, List\[str]]                                                         | Target subpage path(s) to crawl.                                                                                                                                                                                                                 |
+| extras          | [ExtrasOptions](#extrasoptions)                                                 | Additional extraction options (links, images).                                                                                                                                                                                                   |
+
+### Response Types
+
+These dataclasses represent API response objects.
+
+#### `JSONSchema`
+
+Represents a JSON Schema definition used for structured summary output.
+
+.. deprecated:: 1.15.0
+Use Pydantic models or dict\[str, Any] directly instead.
+This will be removed in a future version.
+
+To learn more visit [https://json-schema.org/overview/what-is-jsonschema](https://json-schema.org/overview/what-is-jsonschema).
+
+| Field                | Type                                                                          | Description |
+| -------------------- | ----------------------------------------------------------------------------- | ----------- |
+| schema\_             | str                                                                           | -           |
+| title                | str                                                                           | -           |
+| description          | str                                                                           | -           |
+| type                 | Literal\['object', 'array', 'string', 'number', 'boolean', 'null', 'integer'] | -           |
+| properties           | Dict\[str, [JSONSchema](#jsonschema)]                                         | -           |
+| items                | Union\[[JSONSchema](#jsonschema), List\[[JSONSchema](#jsonschema)]]           | -           |
+| required             | List\[str]                                                                    | -           |
+| enum                 | List                                                                          | -           |
+| additionalProperties | Union\[bool, [JSONSchema](#jsonschema)]                                       | -           |
+| definitions          | Dict\[str, [JSONSchema](#jsonschema)]                                         | -           |
+| patternProperties    | Dict\[str, [JSONSchema](#jsonschema)]                                         | -           |
+| allOf                | List\[[JSONSchema](#jsonschema)]                                              | -           |
+| anyOf                | List\[[JSONSchema](#jsonschema)]                                              | -           |
+| oneOf                | List\[[JSONSchema](#jsonschema)]                                              | -           |
+| not\_                | [JSONSchema](#jsonschema)                                                     | -           |
+
+#### `CostDollarsSearch`
+
+Represents the cost breakdown for search.
+
+| Field   | Type  | Description |
+| ------- | ----- | ----------- |
+| neural  | float | -           |
+| keyword | float | -           |
+
+#### `CostDollarsContents`
+
+Represents the cost breakdown for contents.
+
+| Field   | Type  | Description |
+| ------- | ----- | ----------- |
+| text    | float | -           |
+| summary | float | -           |
+
+#### `CostDollars`
+
+Represents costDollars field in the API response.
+
+| Field    | Type                                        | Description |
+| -------- | ------------------------------------------- | ----------- |
+| total    | float                                       | -           |
+| search   | [CostDollarsSearch](#costdollarssearch)     | -           |
+| contents | [CostDollarsContents](#costdollarscontents) | -           |
+
+#### `_Result`
+
+A class representing the base fields of a search result.
+
+| Field           | Type                                   | Description                                                   |
+| --------------- | -------------------------------------- | ------------------------------------------------------------- |
+| url             | str                                    | The URL of the search result.                                 |
+| id              | str                                    | The temporary ID for the document.                            |
+| title           | Optional\[str]                         | The title of the search result.                               |
+| score           | Optional\[float]                       | A number from 0 to 1 representing similarity.                 |
+| published\_date | Optional\[str]                         | An estimate of the creation date, from parsing HTML content.  |
+| author          | Optional\[str]                         | The author of the content (if available).                     |
+| image           | Optional\[str]                         | A URL to an image associated with the content (if available). |
+| favicon         | Optional\[str]                         | A URL to the favicon (if available).                          |
+| subpages        | Optional\[List\[[\_Result](#_result)]] | Subpages of main page                                         |
+| extras          | Optional\[Dict]                        | Additional metadata; e.g. links, images.                      |
+| entities        | Optional\[List\[[Entity](#entity)]]    | Structured entity data for company or person searches.        |
+
+#### `Result`
+
+A class representing a search result with optional text, summary, and highlights.
+
+| Field             | Type                                   | Description                                                   |
+| ----------------- | -------------------------------------- | ------------------------------------------------------------- |
+| url               | str                                    | The URL of the search result.                                 |
+| id                | str                                    | The temporary ID for the document.                            |
+| title             | Optional\[str]                         | The title of the search result.                               |
+| score             | Optional\[float]                       | A number from 0 to 1 representing similarity.                 |
+| published\_date   | Optional\[str]                         | An estimate of the creation date, from parsing HTML content.  |
+| author            | Optional\[str]                         | The author of the content (if available).                     |
+| image             | Optional\[str]                         | A URL to an image associated with the content (if available). |
+| favicon           | Optional\[str]                         | A URL to the favicon (if available).                          |
+| subpages          | Optional\[List\[[\_Result](#_result)]] | Subpages of main page                                         |
+| extras            | Optional\[Dict]                        | Additional metadata; e.g. links, images.                      |
+| entities          | Optional\[List\[[Entity](#entity)]]    | Structured entity data for company or person searches.        |
+| text              | Optional\[str]                         | The text content of the page.                                 |
+| summary           | Optional\[str]                         | A summary of the page content.                                |
+| highlights        | Optional\[List\[str]]                  | Relevant sentences from the page.                             |
+| highlight\_scores | Optional\[List\[float]]                | Scores for each highlight.                                    |
+
+#### `ResultWithText`
+
+A class representing a search result with text present.
+
+| Field           | Type                                   | Description                                                   |
+| --------------- | -------------------------------------- | ------------------------------------------------------------- |
+| url             | str                                    | The URL of the search result.                                 |
+| id              | str                                    | The temporary ID for the document.                            |
+| title           | Optional\[str]                         | The title of the search result.                               |
+| score           | Optional\[float]                       | A number from 0 to 1 representing similarity.                 |
+| published\_date | Optional\[str]                         | An estimate of the creation date, from parsing HTML content.  |
+| author          | Optional\[str]                         | The author of the content (if available).                     |
+| image           | Optional\[str]                         | A URL to an image associated with the content (if available). |
+| favicon         | Optional\[str]                         | A URL to the favicon (if available).                          |
+| subpages        | Optional\[List\[[\_Result](#_result)]] | Subpages of main page                                         |
+| extras          | Optional\[Dict]                        | Additional metadata; e.g. links, images.                      |
+| entities        | Optional\[List\[[Entity](#entity)]]    | Structured entity data for company or person searches.        |
+| text            | str                                    | The text of the search result page.                           |
+
+#### `ResultWithSummary`
+
+A class representing a search result with summary present.
+
+| Field           | Type                                   | Description                                                   |
+| --------------- | -------------------------------------- | ------------------------------------------------------------- |
+| url             | str                                    | The URL of the search result.                                 |
+| id              | str                                    | The temporary ID for the document.                            |
+| title           | Optional\[str]                         | The title of the search result.                               |
+| score           | Optional\[float]                       | A number from 0 to 1 representing similarity.                 |
+| published\_date | Optional\[str]                         | An estimate of the creation date, from parsing HTML content.  |
+| author          | Optional\[str]                         | The author of the content (if available).                     |
+| image           | Optional\[str]                         | A URL to an image associated with the content (if available). |
+| favicon         | Optional\[str]                         | A URL to the favicon (if available).                          |
+| subpages        | Optional\[List\[[\_Result](#_result)]] | Subpages of main page                                         |
+| extras          | Optional\[Dict]                        | Additional metadata; e.g. links, images.                      |
+| entities        | Optional\[List\[[Entity](#entity)]]    | Structured entity data for company or person searches.        |
+| summary         | str                                    | -                                                             |
+
+#### `ResultWithTextAndSummary`
+
+A class representing a search result with text and summary present.
+
+| Field           | Type                                   | Description                                                   |
+| --------------- | -------------------------------------- | ------------------------------------------------------------- |
+| url             | str                                    | The URL of the search result.                                 |
+| id              | str                                    | The temporary ID for the document.                            |
+| title           | Optional\[str]                         | The title of the search result.                               |
+| score           | Optional\[float]                       | A number from 0 to 1 representing similarity.                 |
+| published\_date | Optional\[str]                         | An estimate of the creation date, from parsing HTML content.  |
+| author          | Optional\[str]                         | The author of the content (if available).                     |
+| image           | Optional\[str]                         | A URL to an image associated with the content (if available). |
+| favicon         | Optional\[str]                         | A URL to the favicon (if available).                          |
+| subpages        | Optional\[List\[[\_Result](#_result)]] | Subpages of main page                                         |
+| extras          | Optional\[Dict]                        | Additional metadata; e.g. links, images.                      |
+| entities        | Optional\[List\[[Entity](#entity)]]    | Structured entity data for company or person searches.        |
+| text            | str                                    | -                                                             |
+| summary         | str                                    | -                                                             |
+
+#### `AnswerResult`
+
+A class representing a result for an answer.
+
+| Field           | Type           | Description                                                  |
+| --------------- | -------------- | ------------------------------------------------------------ |
+| id              | str            | The temporary ID for the document.                           |
+| url             | str            | The URL of the search result.                                |
+| title           | Optional\[str] | The title of the search result.                              |
+| published\_date | Optional\[str] | An estimate of the creation date, from parsing HTML content. |
+| author          | Optional\[str] | If available, the author of the content.                     |
+| text            | Optional\[str] | The full page text from each search result.                  |
+
+#### `StreamChunk`
+
+A class representing a single chunk of streaming data.
+
+| Field     | Type                                            | Description                                 |
+| --------- | ----------------------------------------------- | ------------------------------------------- |
+| content   | Optional\[str]                                  | The partial text content of the answer      |
+| citations | Optional\[List\[[AnswerResult](#answerresult)]] | List of citations if provided in this chunk |
+
+#### `AnswerResponse`
+
+A class representing the response for an answer operation.
+
+| Field     | Type                                 | Description                                      |
+| --------- | ------------------------------------ | ------------------------------------------------ |
+| answer    | Union\[str, dict\[str, Any]]         | The generated answer.                            |
+| citations | List\[[AnswerResult](#answerresult)] | A list of citations used to generate the answer. |
+
+#### `StreamAnswerResponse`
+
+A class representing a streaming answer response.
+
+#### `AsyncStreamAnswerResponse`
+
+A class representing a streaming answer response.
+
+#### `ContentStatus`
+
+A class representing the status of a content retrieval operation.
+
+| Field  | Type | Description |
+| ------ | ---- | ----------- |
+| id     | str  | -           |
+| status | str  | -           |
+| source | str  | -           |
+
+#### `SearchResponse`
+
+A class representing the response for a search operation.
+
+| Field                  | Type                                              | Description                                                  |
+| ---------------------- | ------------------------------------------------- | ------------------------------------------------------------ |
+| results                | List\[T]                                          | A list of search results.                                    |
+| resolved\_search\_type | Optional\[str]                                    | 'neural' or 'keyword' if auto.                               |
+| auto\_date             | Optional\[str]                                    | A date for filtering if autoprompt found one.                |
+| context                | Optional\[str]                                    | Combined context string when requested via contents.context. |
+| statuses               | Optional\[List\[[ContentStatus](#contentstatus)]] | Status list from get\_contents.                              |
+| cost\_dollars          | Optional\[[CostDollars](#costdollars)]            | Cost breakdown.                                              |
+
+#### `CostDollars`
+
+| Field             | Type  | Description |
+| ----------------- | ----- | ----------- |
+| total             | float | -           |
+| num\_pages        | float | -           |
+| num\_searches     | float | -           |
+| reasoning\_tokens | float | -           |
+
+#### `Result`
+
+| Field | Type | Description |
+| ----- | ---- | ----------- |
+| url   | str  | -           |
+
+#### `ResearchThinkOperation`
+
+| Field   | Type              | Description |
+| ------- | ----------------- | ----------- |
+| type    | Literal\['think'] | -           |
+| content | str               | -           |
+
+#### `ResearchSearchOperation`
+
+| Field        | Type                                          | Description |
+| ------------ | --------------------------------------------- | ----------- |
+| type         | Literal\['search']                            | -           |
+| search\_type | Literal\['neural', 'keyword', 'auto', 'fast'] | -           |
+| query        | str                                           | -           |
+| results      | List\[[Result](#result)]                      | -           |
+| page\_tokens | float                                         | -           |
+| goal         | Optional\[str]                                | -           |
+
+#### `ResearchCrawlOperation`
+
+| Field        | Type              | Description |
+| ------------ | ----------------- | ----------- |
+| type         | Literal\['crawl'] | -           |
+| result       | [Result](#result) | -           |
+| page\_tokens | float             | -           |
+| goal         | Optional\[str]    | -           |
+
+#### `ResearchDefinitionEvent`
+
+| Field          | Type                            | Description                   |
+| -------------- | ------------------------------- | ----------------------------- |
+| event\_type    | Literal\['research-definition'] | -                             |
+| research\_id   | str                             | -                             |
+| created\_at    | float                           | Milliseconds since epoch time |
+| instructions   | str                             | -                             |
+| output\_schema | Optional\[Dict\[str, Any]]      | -                             |
+
+#### `ResearchOutputCompleted`
+
+| Field         | Type                        | Description |
+| ------------- | --------------------------- | ----------- |
+| output\_type  | Literal\['completed']       | -           |
+| content       | str                         | -           |
+| cost\_dollars | [CostDollars](#costdollars) | -           |
+| parsed        | Optional\[Dict\[str, Any]]  | -           |
+
+#### `ResearchOutputFailed`
+
+| Field        | Type               | Description |
+| ------------ | ------------------ | ----------- |
+| output\_type | Literal\['failed'] | -           |
+| error        | str                | -           |
+
+#### `ResearchOutputEvent`
+
+| Field        | Type                                                                                                       | Description                   |
+| ------------ | ---------------------------------------------------------------------------------------------------------- | ----------------------------- |
+| event\_type  | Literal\['research-output']                                                                                | -                             |
+| research\_id | str                                                                                                        | -                             |
+| created\_at  | float                                                                                                      | Milliseconds since epoch time |
+| output       | Union\[[ResearchOutputCompleted](#researchoutputcompleted), [ResearchOutputFailed](#researchoutputfailed)] | -                             |
+
+#### `ResearchPlanDefinitionEvent`
+
+| Field        | Type                        | Description                   |
+| ------------ | --------------------------- | ----------------------------- |
+| event\_type  | Literal\['plan-definition'] | -                             |
+| research\_id | str                         | -                             |
+| plan\_id     | str                         | -                             |
+| created\_at  | float                       | Milliseconds since epoch time |
+
+#### `ResearchPlanOperationEvent`
+
+| Field         | Type                                    | Description                   |
+| ------------- | --------------------------------------- | ----------------------------- |
+| event\_type   | Literal\['plan-operation']              | -                             |
+| research\_id  | str                                     | -                             |
+| plan\_id      | str                                     | -                             |
+| operation\_id | str                                     | -                             |
+| created\_at   | float                                   | Milliseconds since epoch time |
+| data          | [ResearchOperation](#researchoperation) | -                             |
+
+#### `ResearchPlanOutputTasks`
+
+| Field               | Type              | Description |
+| ------------------- | ----------------- | ----------- |
+| output\_type        | Literal\['tasks'] | -           |
+| reasoning           | str               | -           |
+| tasks\_instructions | List\[str]        | -           |
+
+#### `ResearchPlanOutputStop`
+
+| Field        | Type             | Description |
+| ------------ | ---------------- | ----------- |
+| output\_type | Literal\['stop'] | -           |
+| reasoning    | str              | -           |
+
+#### `ResearchPlanOutputEvent`
+
+| Field        | Type                                                                                                           | Description                   |
+| ------------ | -------------------------------------------------------------------------------------------------------------- | ----------------------------- |
+| event\_type  | Literal\['plan-output']                                                                                        | -                             |
+| research\_id | str                                                                                                            | -                             |
+| plan\_id     | str                                                                                                            | -                             |
+| created\_at  | float                                                                                                          | Milliseconds since epoch time |
+| output       | Union\[[ResearchPlanOutputTasks](#researchplanoutputtasks), [ResearchPlanOutputStop](#researchplanoutputstop)] | -                             |
+
+#### `ResearchTaskDefinitionEvent`
+
+| Field        | Type                        | Description                   |
+| ------------ | --------------------------- | ----------------------------- |
+| event\_type  | Literal\['task-definition'] | -                             |
+| research\_id | str                         | -                             |
+| plan\_id     | str                         | -                             |
+| task\_id     | str                         | -                             |
+| created\_at  | float                       | Milliseconds since epoch time |
+| instructions | str                         | -                             |
+
+#### `ResearchTaskOperationEvent`
+
+| Field         | Type                                    | Description                   |
+| ------------- | --------------------------------------- | ----------------------------- |
+| event\_type   | Literal\['task-operation']              | -                             |
+| research\_id  | str                                     | -                             |
+| plan\_id      | str                                     | -                             |
+| task\_id      | str                                     | -                             |
+| operation\_id | str                                     | -                             |
+| created\_at   | float                                   | Milliseconds since epoch time |
+| data          | [ResearchOperation](#researchoperation) | -                             |
+
+#### `ResearchTaskOutput`
+
+| Field        | Type                  | Description |
+| ------------ | --------------------- | ----------- |
+| output\_type | Literal\['completed'] | -           |
+| content      | str                   | -           |
+
+#### `ResearchTaskOutputEvent`
+
+| Field        | Type                                      | Description                   |
+| ------------ | ----------------------------------------- | ----------------------------- |
+| event\_type  | Literal\['task-output']                   | -                             |
+| research\_id | str                                       | -                             |
+| plan\_id     | str                                       | -                             |
+| task\_id     | str                                       | -                             |
+| created\_at  | float                                     | Milliseconds since epoch time |
+| output       | [ResearchTaskOutput](#researchtaskoutput) | -                             |
+
+#### `ResearchOutput`
+
+| Field   | Type                       | Description |
+| ------- | -------------------------- | ----------- |
+| content | str                        | -           |
+| parsed  | Optional\[Dict\[str, Any]] | -           |
+
+#### `ResearchBaseDto`
+
+| Field          | Type                            | Description                                     |
+| -------------- | ------------------------------- | ----------------------------------------------- |
+| research\_id   | str                             | The unique identifier for the research request  |
+| created\_at    | float                           | Milliseconds since epoch time                   |
+| model          | [ResearchModel](#researchmodel) | The model used for the research request         |
+| instructions   | str                             | The instructions given to this research request |
+| output\_schema | Optional\[Dict\[str, Any]]      | -                                               |
+
+#### `ResearchPendingDto`
+
+| Field          | Type                            | Description                                     |
+| -------------- | ------------------------------- | ----------------------------------------------- |
+| research\_id   | str                             | The unique identifier for the research request  |
+| created\_at    | float                           | Milliseconds since epoch time                   |
+| model          | [ResearchModel](#researchmodel) | The model used for the research request         |
+| instructions   | str                             | The instructions given to this research request |
+| output\_schema | Optional\[Dict\[str, Any]]      | -                                               |
+| status         | Literal\['pending']             | -                                               |
+
+#### `ResearchRunningDto`
+
+| Field          | Type                                              | Description                                     |
+| -------------- | ------------------------------------------------- | ----------------------------------------------- |
+| research\_id   | str                                               | The unique identifier for the research request  |
+| created\_at    | float                                             | Milliseconds since epoch time                   |
+| model          | [ResearchModel](#researchmodel)                   | The model used for the research request         |
+| instructions   | str                                               | The instructions given to this research request |
+| output\_schema | Optional\[Dict\[str, Any]]                        | -                                               |
+| status         | Literal\['running']                               | -                                               |
+| events         | Optional\[List\[[ResearchEvent](#researchevent)]] | -                                               |
+
+#### `ResearchCompletedDto`
+
+| Field          | Type                                              | Description                                     |
+| -------------- | ------------------------------------------------- | ----------------------------------------------- |
+| research\_id   | str                                               | The unique identifier for the research request  |
+| created\_at    | float                                             | Milliseconds since epoch time                   |
+| model          | [ResearchModel](#researchmodel)                   | The model used for the research request         |
+| instructions   | str                                               | The instructions given to this research request |
+| output\_schema | Optional\[Dict\[str, Any]]                        | -                                               |
+| status         | Literal\['completed']                             | -                                               |
+| finished\_at   | float                                             | Milliseconds since epoch time                   |
+| events         | Optional\[List\[[ResearchEvent](#researchevent)]] | -                                               |
+| output         | [ResearchOutput](#researchoutput)                 | -                                               |
+| cost\_dollars  | [CostDollars](#costdollars)                       | -                                               |
+
+#### `ResearchCanceledDto`
+
+| Field          | Type                                              | Description                                     |
+| -------------- | ------------------------------------------------- | ----------------------------------------------- |
+| research\_id   | str                                               | The unique identifier for the research request  |
+| created\_at    | float                                             | Milliseconds since epoch time                   |
+| model          | [ResearchModel](#researchmodel)                   | The model used for the research request         |
+| instructions   | str                                               | The instructions given to this research request |
+| output\_schema | Optional\[Dict\[str, Any]]                        | -                                               |
+| status         | Literal\['canceled']                              | -                                               |
+| finished\_at   | float                                             | Milliseconds since epoch time                   |
+| events         | Optional\[List\[[ResearchEvent](#researchevent)]] | -                                               |
+
+#### `ResearchFailedDto`
+
+| Field          | Type                                              | Description                                     |
+| -------------- | ------------------------------------------------- | ----------------------------------------------- |
+| research\_id   | str                                               | The unique identifier for the research request  |
+| created\_at    | float                                             | Milliseconds since epoch time                   |
+| model          | [ResearchModel](#researchmodel)                   | The model used for the research request         |
+| instructions   | str                                               | The instructions given to this research request |
+| output\_schema | Optional\[Dict\[str, Any]]                        | -                                               |
+| status         | Literal\['failed']                                | -                                               |
+| finished\_at   | float                                             | Milliseconds since epoch time                   |
+| events         | Optional\[List\[[ResearchEvent](#researchevent)]] | -                                               |
+| error          | str                                               | A message indicating why the request failed     |
+
+#### `ListResearchResponseDto`
+
+| Field        | Type                               | Description                                            |
+| ------------ | ---------------------------------- | ------------------------------------------------------ |
+| data         | List\[[ResearchDto](#researchdto)] | The list of research requests                          |
+| has\_more    | bool                               | Whether there are more results to paginate through     |
+| next\_cursor | Optional\[str]                     | The cursor to paginate through the next set of results |
+
+#### `ResearchCreateRequestDto`
+
+| Field          | Type                            | Description                                        |
+| -------------- | ------------------------------- | -------------------------------------------------- |
+| model          | [ResearchModel](#researchmodel) | -                                                  |
+| instructions   | str                             | Instructions for what research should be conducted |
+| output\_schema | Optional\[Dict\[str, Any]]      | -                                                  |
+
+### Entity Types
+
+These types represent structured entity data returned for company or person searches.
+
+#### `JSONSchemaInput`
+
+Input type for JSON schema parameters. Can be either a Pydantic model class (automatically converted to JSON Schema) or a raw JSON Schema dictionary.
+
+**Type:** Union\[type\[[BaseModel](https://docs.pydantic.dev/latest/api/base_model/#BaseModel)], dict\[str, Any]]
+
+#### `Category`
+
+Data category to focus on when searching. Each category returns results specialized for that content type.
+
+**Type:** Literal\['company', 'research paper', 'news', 'pdf', 'tweet', 'personal site', 'financial report', 'people']
+
+#### `SearchType`
+
+Search type that determines the search algorithm. 'auto' (default) automatically selects the best approach, 'fast' prioritizes speed, 'deep' performs comprehensive multi-query search, 'neural' uses embedding-based semantic search.
+
+**Type:** Literal\['auto', 'fast', 'deep', 'neural']
+
+#### `VERBOSITY_OPTIONS`
+
+Verbosity levels for content filtering.
+
+* compact: Most concise output, main content only (default)
+* standard: Balanced content with more detail
+* full: Complete content including all sections
+
+**Type:** Literal\['compact', 'standard', 'full']
+
+#### `SECTION_TAG`
+
+Section tags for semantic content filtering.
+
+**Type:** Literal\['unspecified', 'header', 'navigation', 'banner', 'body', 'sidebar', 'footer', 'metadata']
+
+#### `Entity`
+
+**Type:** Union\[[CompanyEntity](#companyentity), [PersonEntity](#personentity)]
+
+#### `ResearchModel`
+
+**Type:** Literal\['exa-research-fast', 'exa-research', 'exa-research-pro']
+
+#### `ResearchOperation`
+
+**Type:** Annotated\[Union\[[ResearchThinkOperation](#researchthinkoperation), [ResearchSearchOperation](#researchsearchoperation), [ResearchCrawlOperation](#researchcrawloperation)], Field(discriminator='type')]
+
+#### `ResearchMetaEvent`
+
+**Type:** Union\[[ResearchDefinitionEvent](#researchdefinitionevent), [ResearchOutputEvent](#researchoutputevent)]
+
+#### `ResearchPlanEvent`
+
+**Type:** Union\[[ResearchPlanDefinitionEvent](#researchplandefinitionevent), [ResearchPlanOperationEvent](#researchplanoperationevent), [ResearchPlanOutputEvent](#researchplanoutputevent)]
+
+#### `ResearchTaskEvent`
+
+**Type:** Union\[[ResearchTaskDefinitionEvent](#researchtaskdefinitionevent), [ResearchTaskOperationEvent](#researchtaskoperationevent), [ResearchTaskOutputEvent](#researchtaskoutputevent)]
+
+#### `ResearchEvent`
+
+**Type:** Union\[[ResearchMetaEvent](#researchmetaevent), [ResearchPlanEvent](#researchplanevent), [ResearchTaskEvent](#researchtaskevent)]
+
+#### `ResearchDto`
+
+**Type:** Annotated\[Union\[[ResearchPendingDto](#researchpendingdto), [ResearchRunningDto](#researchrunningdto), [ResearchCompletedDto](#researchcompleteddto), [ResearchCanceledDto](#researchcanceleddto), [ResearchFailedDto](#researchfaileddto)], Field(discriminator='status')]
+
+#### `EntityCompanyPropertiesWorkforce`
+
+Company workforce information.
+
+| Field | Type           | Description |
+| ----- | -------------- | ----------- |
+| total | Optional\[int] | -           |
+
+#### `EntityCompanyPropertiesHeadquarters`
+
+Company headquarters information.
+
+| Field        | Type           | Description |
+| ------------ | -------------- | ----------- |
+| address      | Optional\[str] | -           |
+| city         | Optional\[str] | -           |
+| postal\_code | Optional\[str] | -           |
+| country      | Optional\[str] | -           |
+
+#### `EntityCompanyPropertiesFundingRound`
+
+Funding round information.
+
+| Field  | Type           | Description |
+| ------ | -------------- | ----------- |
+| name   | Optional\[str] | -           |
+| date   | Optional\[str] | -           |
+| amount | Optional\[int] | -           |
+
+#### `EntityCompanyPropertiesFinancials`
+
+Company financial information.
+
+| Field                  | Type                                                                                   | Description |
+| ---------------------- | -------------------------------------------------------------------------------------- | ----------- |
+| revenue\_annual        | Optional\[int]                                                                         | -           |
+| funding\_total         | Optional\[int]                                                                         | -           |
+| funding\_latest\_round | Optional\[[EntityCompanyPropertiesFundingRound](#entitycompanypropertiesfundinground)] | -           |
+
+#### `EntityCompanyPropertiesWebTraffic`
+
+Company web traffic information.
+
+| Field           | Type           | Description |
+| --------------- | -------------- | ----------- |
+| visits\_monthly | Optional\[int] | -           |
+
+#### `EntityCompanyProperties`
+
+Structured properties for a company entity.
+
+| Field         | Type                                                                                   | Description |
+| ------------- | -------------------------------------------------------------------------------------- | ----------- |
+| name          | Optional\[str]                                                                         | -           |
+| founded\_year | Optional\[int]                                                                         | -           |
+| description   | Optional\[str]                                                                         | -           |
+| workforce     | Optional\[[EntityCompanyPropertiesWorkforce](#entitycompanypropertiesworkforce)]       | -           |
+| headquarters  | Optional\[[EntityCompanyPropertiesHeadquarters](#entitycompanypropertiesheadquarters)] | -           |
+| financials    | Optional\[[EntityCompanyPropertiesFinancials](#entitycompanypropertiesfinancials)]     | -           |
+| web\_traffic  | Optional\[[EntityCompanyPropertiesWebTraffic](#entitycompanypropertieswebtraffic)]     | -           |
+
+#### `EntityDateRange`
+
+Date range for work history entries.
+
+| Field      | Type           | Description |
+| ---------- | -------------- | ----------- |
+| from\_date | Optional\[str] | -           |
+| to\_date   | Optional\[str] | -           |
+
+#### `EntityPersonPropertiesCompanyRef`
+
+Reference to a company in work history.
+
+| Field | Type           | Description |
+| ----- | -------------- | ----------- |
+| id    | Optional\[str] | -           |
+| name  | Optional\[str] | -           |
+
+#### `EntityPersonPropertiesWorkHistoryEntry`
+
+A single work history entry for a person.
+
+| Field    | Type                                                                             | Description |
+| -------- | -------------------------------------------------------------------------------- | ----------- |
+| title    | Optional\[str]                                                                   | -           |
+| location | Optional\[str]                                                                   | -           |
+| dates    | Optional\[[EntityDateRange](#entitydaterange)]                                   | -           |
+| company  | Optional\[[EntityPersonPropertiesCompanyRef](#entitypersonpropertiescompanyref)] | -           |
+
+#### `EntityPersonProperties`
+
+Structured properties for a person entity.
+
+| Field         | Type                                                                                                | Description |
+| ------------- | --------------------------------------------------------------------------------------------------- | ----------- |
+| name          | Optional\[str]                                                                                      | -           |
+| location      | Optional\[str]                                                                                      | -           |
+| work\_history | Optional\[List\[[EntityPersonPropertiesWorkHistoryEntry](#entitypersonpropertiesworkhistoryentry)]] | -           |
+
+#### `CompanyEntity`
+
+Structured entity data for a company.
+
+| Field      | Type                                                | Description |
+| ---------- | --------------------------------------------------- | ----------- |
+| id         | str                                                 | -           |
+| type       | Literal\['company']                                 | -           |
+| version    | int                                                 | -           |
+| properties | [EntityCompanyProperties](#entitycompanyproperties) | -           |
+
+#### `PersonEntity`
+
+Structured entity data for a person.
+
+| Field      | Type                                              | Description |
+| ---------- | ------------------------------------------------- | ----------- |
+| id         | str                                               | -           |
+| type       | Literal\['person']                                | -           |
+| version    | int                                               | -           |
+| properties | [EntityPersonProperties](#entitypersonproperties) | -           |

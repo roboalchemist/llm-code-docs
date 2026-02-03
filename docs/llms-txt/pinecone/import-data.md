@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/index-data/import-data.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Import records
 
 > Import large datasets efficiently from S3, GCS, or Azure into Pinecone indexes.
@@ -22,11 +26,11 @@ Before you can import records, ensure you have a serverless index, a storage int
 
 Be sure to create your index on a cloud that supports importing from the object storage you want to use:
 
-| Index location | AWS S3 | Google Cloud Storage | Azure Blob Storage |
-| -------------- | :----: | :------------------: | :----------------: |
-| **AWS**        |    ✅   |           ✅          |          ✅         |
-| **GCP**        |    ❌   |           ✅          |          ✅         |
-| **Azure**      |    ❌   |           ✅          |          ✅         |
+|                                       | …to an **AWS** index | …to a **GCP** index | …to an **Azure** index |
+| ------------------------------------- | :------------------: | :-----------------: | :--------------------: |
+| Import from **AWS S3**…               |           ✅          |          ❌          |            ❌           |
+| Import from **Google Cloud Storage**… |           ✅          |          ✅          |            ✅           |
+| Import from **Azure Blob Storage**…   |           ✅          |          ✅          |            ✅           |
 
 ### Add a storage integration
 
@@ -84,11 +88,11 @@ To import records from a public data source, a storage integration is not requir
      <Tab title="Sparse index">
        To import into a namespace in a [sparse index](/guides/index-data/indexing-overview#sparse-indexes), the Parquet file must contain the following columns:
 
-       | Column name     | Parquet type                  | Description                                                                                                                                                                                     |
-       | --------------- | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-       | `id`            | `STRING`                      | Required. The unique [identifier for each record](/guides/get-started/concepts#record-id).                                                                                                      |
-       | `sparse_values` | `LIST<INT>` and `LIST<FLOAT>` | Required. A list of floating-point values (sparse values) and a list of integer values (sparse indices) that make up the [sparse vector embedding](/guides/get-started/concepts#sparse-vector). |
-       | `metadata`      | `STRING`                      | Optional. Additional [metadata](/guides/get-started/concepts#metadata) for each record. To omit from specific rows, use `NULL`.                                                                 |
+       | Column name     | Parquet type                                          | Description                                                                                                                                                                                     |
+       | --------------- | ----------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+       | `id`            | `STRING`                                              | Required. The unique [identifier for each record](/guides/get-started/concepts#record-id).                                                                                                      |
+       | `sparse_values` | `STRUCT<indices: LIST<UINT_32>, values: LIST<FLOAT>>` | Required. A list of floating-point values (sparse values) and a list of integer values (sparse indices) that make up the [sparse vector embedding](/guides/get-started/concepts#sparse-vector). |
+       | `metadata`      | `STRING`                                              | Optional. Additional [metadata](/guides/get-started/concepts#metadata) for each record. To omit from specific rows, use `NULL`.                                                                 |
 
        <Warning>
          The Parquet file cannot contain additional columns.
@@ -300,7 +304,7 @@ Use the [`start_import`](/reference/api/latest/data-plane/start_import) operatio
   curl "https://$INDEX_HOST/bulk/imports" \
     -H 'Api-Key: $YOUR_API_KEY' \
     -H 'Content-Type: application/json' \
-    -H 'X-Pinecone-API-Version: 2025-04' \
+    -H 'X-Pinecone-Api-Version: 2025-10' \
     -d '{
           "integrationId": "a12b3d4c-47d2-492c-a97a-dd98c8dbefde",
           "uri": "s3://example_bucket/import",
@@ -442,7 +446,7 @@ To track an import's progress, check its status bar in the [Pinecone console](ht
 
   curl -X GET "https://{INDEX_HOST}/bulk/imports/101" \
     -H 'Api-Key: $YOUR_API_KEY' \
-    -H 'X-Pinecone-API-Version: 2025-04'
+    -H 'X-Pinecone-Api-Version: 2025-10'
   ```
 </CodeGroup>
 
@@ -634,7 +638,7 @@ Use the [`list_imports`](/reference/api/latest/data-plane/list_imports) operatio
 
       curl -X GET "https://$INDEX_HOST/bulk/imports?paginationToken==Tm90aGluZyB0byBzZWUgaGVyZQo" \
         -H 'Api-Key: $YOUR_API_KEY' \
-        -H 'X-Pinecone-API-Version: 2025-04'
+        -H 'X-Pinecone-Api-Version: 2025-10'
       ```
     </CodeGroup>
   </Tab>
@@ -750,7 +754,7 @@ The [`cancel_import`](/reference/api/latest/data-plane/cancel_import) operation 
 
   curl -X DELETE "https://{INDEX_HOST}/bulk/imports/101" \
     -H 'Api-Key: $YOUR_API_KEY' \
-    -H "X-Pinecone-API-Version: 2025-04"
+    -H "X-Pinecone-Api-Version: 2025-10"
   ```
 </CodeGroup>
 

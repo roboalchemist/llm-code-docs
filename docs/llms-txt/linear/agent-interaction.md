@@ -20,11 +20,23 @@ You don’t need to manage agent session state manually. Linear tracks session l
 
 ### Session external URL
 
-You can set an `externalUrl` on an `AgentSession` so users can open the current session on your web dashboard. Doing so also prevents a new session from being marked unresponsive.
+You can set an `externalUrls` on an `AgentSession` so users can open the current session on your web dashboard, desktop app, etc. Doing so also prevents a new session from being marked unresponsive.
 
-Use the [`agentSessionUpdate`](https://studio.apollographql.com/public/Linear-API/variant/current/schema/reference/objects/Mutation?query=agentSessionUpdate#agentSessionUpdate) mutation to set this value. Pass `null` to remove it.
+Use the [`agentSessionUpdate`](https://studio.apollographql.com/public/Linear-API/variant/current/schema/reference/objects/Mutation?query=agentSessionUpdate#agentSessionUpdate) mutation to set this value. 
 
-![Agent Session UI showing an Open button that links to the session’s external URL, allowing users to view the session in the agent provider’s dashboard.](https://webassets.linear.app/images/ornj730p/production/9798151670026c1394872ed26256d22cb7271fc2-1698x302.png?q=95&auto=format&dpr=2)
+* `externalUrls` is an object array, each containing a `label` and `url` field. The `url` field should be unique within the array. See schema for [`AgentSessionExternalUrlInput`](https://studio.apollographql.com/public/Linear-API/variant/current/schema/reference/inputs/AgentSessionExternalUrlInput). 
+* Use the `externalUrls` field of the [`agentSessionUpdate`](https://studio.apollographql.com/public/Linear-API/variant/current/schema/reference/objects/Mutation?query=agentSessionUpdate#agentSessionUpdate) mutation to replace the entire array. To add/remove specific URLs, use the `addedExternalUrls` or `removedExternalUrls` fields.
+
+![Agent Session UI showing an Open button that links to the session’s external URL, allowing users to view the session in the agent provider’s dashboard.](https://webassets.linear.app/images/ornj730p/production/0c5bc5681df359df62ea9520ff05403eafa4f020-2114x306.png?q=95&auto=format&dpr=2)
+
+> [!NOTE]
+> **Using `externalLink`?** The `externalLink` field is now deprecated but remains available. See [migration guide](https://linear.app/developers/agents-externalurls-migration) for instructions to adopt the `externalUrls` API.
+
+### Session pull request
+
+Your agent can inform the user that it has published a GitHub pull request by adding the pull request URL to the `externalUrls` field of the AgentSession using the [`agentSessionUpdate`](https://studio.apollographql.com/public/Linear-API/variant/current/schema/reference/objects/Mutation?query=agentSessionUpdate#agentSessionUpdate) mutation. 
+
+This will unlock additional features related to pull requests in the future. 
 
 ### Session webhooks
 
@@ -41,18 +53,45 @@ You must return a response from your webhook receiver within 5 seconds.
 
 `AgentSessionEvent` webhooks only send events to your specific agent. 
 
+For a detailed reference of all Agent Session webhook fields, see the [AgentSessionEventWebhookPayload schema](https://studio.apollographql.com/public/Linear-Webhooks/variant/current/schema/reference/objects/AgentSessionEventWebhookPayload).
+
 There will be two types of actions in the `AgentSessionEvent` category, denoted by the action field of the payload:
 
 **Action** | Behavior
 --- | ---
-`created` | A new Agent Session has been created (triggered by a user mention or delegation). You should start a new agent loop in response. Relevant input may be included in the `agentSession.issue`, `agentSession.comment`, `previousComments`, or `guidance`. Your agent can use all of this context to determine what action to take.
+`created` | A new Agent Session has been created (triggered by a user mention or delegation). You should start a new agent loop in response. To construct a prompt for your agent, you can utilize the [`promptContext` field](https://linear.app/developers/agent-interaction?noRedirect=1#collapsible-6a944bd6e1df), a formatted string containing the session’s relevant context, such as issue details, comments, and guidance. Structured data can also be found in the `agentSession.issue`, `agentSession.comment`, `previousComments`, or `guidance` fields. (Guidance refers to any instructions configured at the workspace, parent team, or team level—such as preferred repositories or task constraints.)
 
-The `guidance` field provides agent-specific instructions configured at the workspace, parent team, or team level—such as preferred repositories or task constraints.
+Your agent can use this context to determine what action to take.
+`prompted` | A user sent a new message into an existing Agent Session. This message is located in the `agentActivity.body` field of the webhook payload.
 
-Your agent should consider all of this input when deciding how to respond.
-`prompted` | A user sent a new message into an existing Agent Session. You should insert that message into the conversation history and take action. You should mainly pay attention to the `agentActivity` field’s body, as the user’s input is usually located there.
+You should insert that message into the conversation history and take action.
 
-For a detailed reference of all Agent Session webhook fields, see the [AgentSessionEventWebhookPayload schema](https://studio.apollographql.com/public/Linear-Webhooks/variant/current/schema/reference/objects/AgentSessionEventWebhookPayload).
+<details>
+<summary>promptContext example</summary>
+```xml
+<issue identifier="ENG-123">
+<title>Fix accessibility on checkout page</title>
+<description>Make it screen-reader friendly</description>
+<team name="Engineering"/>
+<label>bug</label>
+<label>a11y</label>
+<parent-issue identifier="QJT0-2">
+<title>Parent Issue Title</title>
+<description>Parent issue description</description>
+</parent-issue>
+<project name="Checkout flow">Faster checkout process</project>
+</issue>
+
+<primary-directive-thread comment-id="34f7a7e0-b3dc-4c88-9383-07cbf06b186f"><comment author="John Doe" created-at="2026-01-08 16:33:12"><user id="df3fc33e-32f3-4e65-bae7-6f8f36bdd55f">botcoder</user> Please implement this</comment></primary-directive-thread>
+
+<other-thread comment-id="7f85d4d5-7fa1-4897-822b-6c0561705f4e">
+<comment author="John Doe" created-at="2026-01-08 16:33:12">This is a separate thread comment</comment>
+<comment author="John Doe" created-at="2026-01-08 16:33:12">Reply to other comment</comment>
+</other-thread>
+
+<guidance><guidance-rule origin="team" team-name="Engineering">Always follow coding standards</guidance-rule></guidance>
+```
+</details>
 
 ### Proactively creating sessions
 
@@ -210,6 +249,44 @@ Additionally, you may see references to a `prompt` type `AgentActivity`. That is
 
 An agent cannot generate a `prompt` type activity.
 
+### Repository suggestions
+
+Agents can use the [`issueRepositorySuggestions`](https://studio.apollographql.com/public/Linear-API/variant/current/schema/reference#issueRepositorySuggestions) API to request relevant repository matches for a given issue. This query leverages context from the issue, session, agent guidance, and internal Linear signals (like linked issues or recent PRs) and uses an LLM to return ranked suggestions.
+
+The agent provides a list of candidate repositories that it already has access to, and Linear will return a filtered list with confidence scores. This can help the agent proceed confidently—or, if still uncertain, send a shorter list of options back to the user as an elicitation.
+
+**GraphQL**
+
+```graphql
+query($issueId: String!, $agentSessionId: String!) {
+  issueRepositorySuggestions(
+    issueId: $issueId
+    agentSessionId: $agentSessionId
+    candidateRepositories: [
+      {
+        hostname: "github.com",
+        repositoryFullName: "linear/linear-app"
+      },
+      {
+        hostname: "github.com",
+        repositoryFullName: "linear/linear"
+      },
+      {
+        hostname: "github.com",
+        repositoryFullName: "linear/security"
+      }
+    ]
+  ) {
+    suggestions {
+      repositoryFullName
+      hostname
+      confidence
+    }
+  }
+}
+
+```
+
 ### Signals
 
 Signals are optional metadata that modify how an [Agent Activity](https://linear.app/developers/agent-interaction#agent-activity) should be interpreted or handled by the recipient. They provide additional context about the sender’s intent—guiding how the activity should be processed or responded to.
@@ -223,6 +300,54 @@ When creating an agent activity, you may optionally mark it as `ephemeral`. Ephe
 Only `thought` or `action` type activities can be marked ephemeral. 
 
 ![Video](https://webassets.linear.app/files/ornj730p/production/41b5d7ff8f2c38b270844c9e6ac56c34eeea9cd0.mp4)
+
+## Agent plans
+
+> [!NOTE]
+> The Agent Plan API is currently in a technology preview and may change as we continue development and refine the experience.
+
+Agent Plans allow your agent to provide a session-level checklist of tasks it's working on, designed to evolve during execution. Agents can freely add, modify, or remove entries as they discover new tasks or complete existing ones. 
+
+They’re especially useful when the agent is working through multi-step tasks and needs a way to keep users informed on current and upcoming actions.
+
+The plan is a full array of steps, where each step has a `content` string and a `status`:
+
+```graphql
+agentSession.plan = Array<{
+  content: string,
+  status: "pending" | "inProgress" | "completed" | "canceled"
+}>
+```
+
+> [!NOTE]
+> **Note**: When updating a plan, agents must replace it the existing plan in its entirety. They cannot update the status of just one item.
+
+To update a session’s plan, use the [`agentSessionUpdate` mutation](https://studio.apollographql.com/public/Linear-API/variant/current/schema/reference/objects/Mutation#agentSessionUpdate):
+
+```graphql
+mutation AgentSessionUpdate($agentSessionId: String!, $data: AgentSessionUpdateInput!, ) {
+  agentSessionUpdate(id: $agentSessionId, input: $data) {
+    success
+  }
+}
+
+# Variable
+{
+	data: {
+		plan: [
+			{
+				content: "Update @linear/sdk to v61.0.0 and run npm install",
+				status: "inProgress",
+			},
+			{
+				content: "Implement agent plan mutations",
+				status: "pending"
+			},
+			...
+		]
+	}
+}
+```
 
 ## Recommendations
 

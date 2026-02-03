@@ -108,7 +108,7 @@ interface FooterColumnsProps {
    * @default "\"nav\""
    */
   as?: any;
-  columns?: FooterColumn<FooterColumnLink>[] | undefined;
+  columns?: FooterColumn<T>[] | undefined;
   ui?: { root?: ClassNameValue; left?: ClassNameValue; center?: ClassNameValue; right?: ClassNameValue; label?: ClassNameValue; list?: ClassNameValue; item?: ClassNameValue; link?: ClassNameValue; linkLeadingIcon?: ClassNameValue; linkLabel?: ClassNameValue; linkLabelExternalIcon?: ClassNameValue; } | undefined;
 }
 ```
@@ -170,8 +170,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

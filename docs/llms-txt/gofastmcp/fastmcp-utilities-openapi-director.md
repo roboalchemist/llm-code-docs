@@ -1,5 +1,9 @@
 # Source: https://gofastmcp.com/python-sdk/fastmcp-utilities-openapi-director.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # director
 
 # `fastmcp.utilities.openapi.director`
@@ -31,8 +35,3 @@ Constructs a final httpx.Request object, handling all OpenAPI serialization.
 **Returns:**
 
 * httpx.Request: Properly formatted HTTP request
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://gofastmcp.com/llms.txt

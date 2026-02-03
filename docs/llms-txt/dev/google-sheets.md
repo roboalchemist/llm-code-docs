@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/connectors/google-sheets.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Google Sheets connector
 
 > Connect WRITER Agent to Google Sheets to read, update, and analyze spreadsheet data

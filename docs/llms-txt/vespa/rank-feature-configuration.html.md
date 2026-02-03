@@ -159,5 +159,5 @@ Specifies how many query term indices to iterate over ([0, `maxTerms`\>) when us
 
  |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

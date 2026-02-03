@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/enterprise/service-accounts/
+
 # Service Accounts
 
 Service accounts allow you to create API keys for programmatic access to Promptfoo Enterprise. These are useful for CI/CD pipelines and automated testing.

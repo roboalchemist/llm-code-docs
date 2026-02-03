@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/guides/share-secrets.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Secrets
 
 > Securely use credentials in listeners
@@ -30,7 +34,7 @@ For complete examples of secure credential management, see the [Authentication E
 
 In this example, we use an `event.secrets` call to pull a sensitive Slack token for use within a listener context. We then can use the credential to post a message to Slack.
 
-```javascript
+```javascript  theme={null}
 export default function flatfileEventListener(listener) {
   //note: listening to all events with a wildcard can be used while testing but is not
   //recommended for production, as it will capture all events and may cause performance issues
@@ -57,7 +61,7 @@ export default function flatfileEventListener(listener) {
 
 The `options` parameter for the secrets fetch function allows optionally choosing a different Environment or Space than the event occurred within.
 
-```javascript
+```javascript  theme={null}
 export default function flatfileEventListener(listener) {
   //note: listening to all events with a wildcard can be used while testing but is not
   //recommended for production, as it will capture all events and may cause performance issues

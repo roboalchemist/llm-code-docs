@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/platform-guides/scim-okta-guide.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Provisioning with Okta (SCIM)
 
 > Aptible supports SCIM 2.0 provisioning through Okta using the Aptible SCIM integration. This setup enables you to automate user provisioning and de-provisioning for your organization.

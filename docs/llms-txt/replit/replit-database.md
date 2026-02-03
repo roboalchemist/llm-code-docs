@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/cloud-services/storage-and-databases/replit-database.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Key-Value Store
 
 > A simple, built-in key-value database for your Replit Apps with no configuration required.

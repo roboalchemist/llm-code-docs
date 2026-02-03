@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/web-scraping/brightdata-tools.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Bright Data Tools
 
 > Bright Data integrations for SERP search, Web Unlocker scraping, and Dataset API.

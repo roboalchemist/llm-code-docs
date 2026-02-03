@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/troubleshooting/inference-limit/
+
 # Configuring Inference
 
 Promptfoo open-source red teaming requires inference to generate probes and grade results. When using Promptfoo’s open-source red teaming solution, your usage falls under Promptfoo’s [privacy policy](https://www.promptfoo.dev/privacy/). By default, Promptfoo manages all inference. This service is optimized for high-quality, diverse test cases.

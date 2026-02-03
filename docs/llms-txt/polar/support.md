@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/support.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Support
 
 This page outlines Polar's support plans, available channels, and policies. To learn how to access support, please refer to the [Support channels](#support-channels) section. Identify the channels available to you based on your usage and follow the links to navigate to the relevant information.
@@ -10,7 +14,7 @@ The support channels you can access differ according to your use of Polar.
 
 | Support channels                                     | Community support | Billing support | Standard support |
 | :--------------------------------------------------- | :---------------: | :-------------: | :--------------: |
-| [Discord Server](#discord) (not an official channel) |         ✓         |        ✗        |         ✓        |
+| [Discord Server](#discord) (not an official channel) |         ✓         |        ✗        |         ✗        |
 | [Email](#email)                                      |         -         |        ✓        |         ✓        |
 
 ## Email

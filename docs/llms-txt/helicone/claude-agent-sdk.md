@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/gateway/integrations/claude-agent-sdk.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Claude Agent SDK Integration
 
 > Use Helicone AI Gateway with the Claude Agent SDK for building AI agents with automatic observability
@@ -334,8 +338,3 @@ for await (const message of result.sdkMessages) {
     Learn about advanced filtering and analytics
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.helicone.ai/llms.txt

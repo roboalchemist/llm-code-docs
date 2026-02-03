@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/pm/bunx.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # bunx
 
 > Run packages from npm
@@ -31,7 +35,7 @@ Packages can declare executables in the `"bin"` field of their `package.json`. T
 
 These executables are commonly plain JavaScript files marked with a [shebang line](https://en.wikipedia.org/wiki/Shebang_\(Unix\)) to indicate which program should be used to execute them. The following file indicates that it should be executed with `node`.
 
-```ts dist/index.js icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js dist/index.js icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
 #!/usr/bin/env node
 
 console.log("Hello world!");
@@ -52,6 +56,8 @@ To pass additional command-line flags and arguments through to the executable, p
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bunx my-cli --foo bar
 ```
+
+***
 
 ## Shebangs
 
@@ -79,6 +85,58 @@ bunx --package @angular/cli ng
 
 To force bun to always be used with a script, use a shebang.
 
-```ts dist/index.js icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js dist/index.js icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
 #!/usr/bin/env bun
+```
+
+***
+
+## Usage
+
+```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+bunx [flags] <package>[@version] [flags and arguments for the package]
+```
+
+Execute an npm package executable (CLI), automatically installing into a global shared cache if not installed in `node_modules`.
+
+### Flags
+
+<ParamField path="--bun" type="boolean">
+  Force the command to run with Bun instead of Node.js, even if the executable contains a Node shebang (`#!/usr/bin/env
+    node`)
+</ParamField>
+
+<ParamField path="-p, --package" type="string">
+  Specify package to install when binary name differs from package name
+</ParamField>
+
+<ParamField path="--no-install" type="boolean">
+  Skip installation if package is not already installed
+</ParamField>
+
+<ParamField path="--verbose" type="boolean">
+  Enable verbose output during installation
+</ParamField>
+
+<ParamField path="--silent" type="boolean">
+  Suppress output during installation
+</ParamField>
+
+### Examples
+
+```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+# Run Prisma migrations
+bunx prisma migrate
+
+# Format a file with Prettier
+bunx prettier foo.js
+
+# Run a specific version of a package
+bunx uglify-js@3.14.0 app.js
+
+# Use --package when binary name differs from package name
+bunx -p @angular/cli ng new my-app
+
+# Force running with Bun instead of Node.js, even if the executable contains a Node shebang
+bunx --bun vite dev foo.js
 ```

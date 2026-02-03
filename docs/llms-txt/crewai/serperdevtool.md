@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/search-research/serperdevtool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Google Serper Search
 
 > The `SerperDevTool` is designed to search the internet and return the most relevant results.

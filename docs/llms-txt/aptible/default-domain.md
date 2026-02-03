@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/apps/connecting-to-apps/app-endpoints/default-domain.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Default Domain
 
 > ❗️ Don't create a CNAME from your domain to an Endpoint using a Default Domain. These Endpoints use an Aptible-provided certificate that's valid for `*.on-aptible.com`, so using your own domain will result in a HTTPS error being shown to your users. If you'd like to use your own domain, set up an Endpoint with a [Custom Domain](/core-concepts/apps/connecting-to-apps/app-endpoints/custom-domain) instead.

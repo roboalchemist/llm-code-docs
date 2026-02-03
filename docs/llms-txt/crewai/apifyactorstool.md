@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/automation/apifyactorstool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Apify Actors
 
 > `ApifyActorsTool` lets you call Apify Actors to provide your CrewAI workflows with web scraping, crawling, data extraction, and web automation capabilities.

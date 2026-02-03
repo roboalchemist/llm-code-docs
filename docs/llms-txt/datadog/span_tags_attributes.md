@@ -4,7 +4,6 @@
 title: Span Tags, Attributes, and Facets
 description: Span Facets and Facet Panel
 breadcrumbs: Docs > APM > Trace Explorer > Span Tags, Attributes, and Facets
-source_url: https://docs.datadoghq.com/trace_explorer/span_tags_attributes/index.html
 ---
 
 # Span Tags, Attributes, and Facets

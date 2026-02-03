@@ -78,4 +78,4 @@ If the content of the thread changes, the summary will be updated automatically.
 
 You can leave an emoji reaction on an issue or a comment by clicking the "Add reaction" icon visible at the bottom of any issue or when hovering a comment.
 
-All official Unicode emojis are available by default. Custom emojis can be uploaded individually (JPG, GIF, and PNG formats are supported) or imported in bulk from your Slack workspace via the [Emoji settings](https://linear.app/settings/emojis) page.
+All official Unicode emojis are available by default. Custom emojis can be uploaded individually (JPG, GIF, and PNG formats are supported).

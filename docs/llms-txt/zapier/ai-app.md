@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/reference/ai-app.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Zapier integration structure for an AI app
 
 > AI app integrations built on Zapier allow users to automate tasks using AI capabilities. Here are some common pain points and recommendations when building AI apps on Zapier.

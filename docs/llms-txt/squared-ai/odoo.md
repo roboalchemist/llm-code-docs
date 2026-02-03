@@ -2,25 +2,15 @@
 
 # Source: https://docs.squared.ai/guides/destinations/retl-destinations/crm/odoo.md
 
-# Source: https://docs.squared.ai/guides/sources/data-sources/odoo.md
-
-# Source: https://docs.squared.ai/guides/destinations/retl-destinations/crm/odoo.md
-
-# Source: https://docs.squared.ai/guides/sources/data-sources/odoo.md
-
-# Source: https://docs.squared.ai/guides/destinations/retl-destinations/crm/odoo.md
-
-# Source: https://docs.squared.ai/guides/sources/data-sources/odoo.md
-
-# Source: https://docs.squared.ai/guides/destinations/retl-destinations/crm/odoo.md
-
-# Source: https://docs.squared.ai/guides/sources/data-sources/odoo.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Odoo
 
 ## Connect AI Squared to Odoo
 
-This guide will help you configure the Odoo Connector in AI Squared to access and transfer data from your Odoo instance.
+This guide will help you configure the Odoo Connector in AI Squared to access and transfer data to your Odoo instance.
 
 ### Prerequisites
 

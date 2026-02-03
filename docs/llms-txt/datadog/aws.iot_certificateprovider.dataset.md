@@ -4,8 +4,6 @@
 title: Iot Certificateprovider
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Iot Certificateprovider
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.iot_certificateprovider.dataset/index.html
 ---
 
 # Iot Certificateprovider
@@ -28,4 +26,4 @@ aws.iot_certificateprovider
 | creation_date                  | core | timestamp     | The date-time string that indicates when the certificate provider was created.                                                                |
 | lambda_function_arn            | core | string        | The Lambda function ARN that's associated with the certificate provider.                                                                      |
 | last_modified_date             | core | timestamp     | The date-time string that indicates when the certificate provider was last updated.                                                           |
-| tags                           | core | hstore        |
+| tags                           | core | hstore_csv    |

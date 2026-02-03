@@ -1,10 +1,14 @@
 # Source: https://docs.galileo.ai/deployments/deploying-galileo-eks/eks-cluster-config-example.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # EKS Cluster Config Example | Galileo Deployment
 
 > Review a detailed EKS cluster configuration example for deploying Galileo on Amazon EKS, ensuring efficient Kubernetes setup and management.
 
-```Bash
+```Bash  theme={null}
 ---
 apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig

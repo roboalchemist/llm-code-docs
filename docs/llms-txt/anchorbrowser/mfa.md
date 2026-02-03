@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/advanced/mfa.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # MFA
 
 > Real-time event signaling and coordination between external systems and browser instances

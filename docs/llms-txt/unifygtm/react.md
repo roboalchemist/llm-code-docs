@@ -1,5 +1,9 @@
 # Source: https://docs.unifygtm.com/developers/intent-client/react.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # React
 
 > Install the Unify Intent client in a React app.
@@ -76,7 +80,13 @@ const Example = () => {
   useEffect(() => {
     if (currentUser?.emailAddress) {
       // Log an identify event for the current user
-      unify.identify(currentUser.emailAddress);
+      // You can pass any standard Person/Company fields in the optional payload
+      // (see /reference/integrations/salesforce/field-mappings for field lists)
+      unify.identify(currentUser.emailAddress, {
+        firstName: currentUser.firstName,
+        lastName: currentUser.lastName,
+        company: { name: currentUser.companyName, domain: currentUser.companyDomain },
+      });
     }
   }, [currentUser, unify]);
 

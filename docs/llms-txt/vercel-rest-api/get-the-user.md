@@ -1,173 +1,73 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/user/get-the-user.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get the User
 
 > Retrieves information related to the currently authenticated User.
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v2/user
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v2/user
-  method: get
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: getAuthUser
-        lang: go
-        source: "package main\n\nimport(\n\t\"os\"\n\t\"github.com/vercel/vercel\"\n\t\"context\"\n\t\"log\"\n)\n\nfunc main() {\n    s := vercel.New(\n        vercel.WithSecurity(os.Getenv(\"VERCEL_BEARER_TOKEN\")),\n    )\n\n    ctx := context.Background()\n    res, err := s.User.GetAuthUser(ctx)\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Object != nil {\n        // handle response\n    }\n}"
-      - label: getAuthUser
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.user.getAuthUser();
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              user:
-                allOf:
-                  - oneOf:
+  /v2/user:
+    get:
+      tags:
+        - user
+      summary: Get the User
+      description: Retrieves information related to the currently authenticated User.
+      operationId: getAuthUser
+      parameters: []
+      responses:
+        '200':
+          description: Successful response.
+          content:
+            application/json:
+              schema:
+                properties:
+                  user:
+                    oneOf:
                       - $ref: '#/components/schemas/AuthUser'
                       - $ref: '#/components/schemas/AuthUserLimited'
-            description: Successful response.
-            requiredProperties:
-              - user
-        examples:
-          example:
-            value:
-              user:
-                createdAt: 1630748523395
-                softBlock:
-                  blockedAt: 123
-                  reason: SUBSCRIPTION_CANCELED
-                  blockedDueToOverageType: analyticsUsage
-                billing: {}
-                resourceConfig:
-                  nodeType: <string>
-                  concurrentBuilds: 123
-                  elasticConcurrencyEnabled: true
-                  buildEntitlements:
-                    enhancedBuilds: true
-                  buildQueue:
-                    configuration: SKIP_NAMESPACE_QUEUE
-                  awsAccountType: <string>
-                  awsAccountIds:
-                    - <string>
-                  cfZoneName: <string>
-                  imageOptimizationType: <string>
-                  edgeConfigs: 123
-                  edgeConfigSize: 123
-                  edgeFunctionMaxSizeBytes: 123
-                  edgeFunctionExecutionTimeoutMs: 123
-                  serverlessFunctionMaxMemorySize: 123
-                  kvDatabases: 123
-                  postgresDatabases: 123
-                  blobStores: 123
-                  integrationStores: 123
-                  cronJobs: 123
-                  cronJobsPerProject: 123
-                  microfrontendGroupsPerTeam: 123
-                  microfrontendProjectsPerGroup: 123
-                  flagsExplorerOverridesThreshold: 123
-                  flagsExplorerUnlimitedOverrides: true
-                  customEnvironmentsPerProject: 123
-                  buildMachine:
-                    purchaseType: enhanced
-                    isDefaultBuildMachine: true
-                    cores: 123
-                    memory: 123
-                  security:
-                    customRules: 123
-                    ipBlocks: 123
-                    ipBypass: 123
-                    rateLimit: 123
-                stagingPrefix: <string>
-                activeDashboardViews:
-                  - scopeId: <string>
-                    viewPreference: list
-                    favoritesViewPreference: open
-                    recentsViewPreference: open
-                importFlowGitNamespace: <string>
-                importFlowGitNamespaceId: <string>
-                importFlowGitProvider: gitlab
-                preferredScopesAndGitNamespaces:
-                  - scopeId: <string>
-                    gitNamespaceId: <string>
-                dismissedToasts:
-                  - name: <string>
-                    dismissals:
-                      - scopeId: <string>
-                        createdAt: 123
-                favoriteProjectsAndSpaces:
-                  - teamId: <string>
-                    projectId: <string>
-                hasTrialAvailable: true
-                remoteCaching:
-                  enabled: true
-                dataCache:
-                  excessBillingEnabled: true
-                featureBlocks:
-                  webAnalytics:
-                    blockedFrom: 123
-                    blockedUntil: 123
-                    isCurrentlyBlocked: true
-                id: AEIIDYVk59zbFF2Sxfyxxmua
-                email: me@example.com
-                name: John Doe
-                username: jdoe
-                avatar: 22cb30c85ff45ac4c72de8981500006b28114aa1
-                defaultTeamId: <string>
-        description: Successful response.
-    '400': {}
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-    '409': {}
-  deprecated: false
-  type: path
+                required:
+                  - user
+                type: object
+                description: Successful response.
+        '302':
+          description: ''
+        '400':
+          description: ''
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+        '409':
+          description: ''
+      security:
+        - bearerToken: []
 components:
   schemas:
     AuthUser:
@@ -260,6 +160,9 @@ components:
                 platform resources may be allocated to the User account.
             elasticConcurrencyEnabled:
               type: boolean
+              enum:
+                - false
+                - true
               description: >-
                 An object containing infomation related to the amount of
                 platform resources may be allocated to the User account.
@@ -267,6 +170,9 @@ components:
               properties:
                 enhancedBuilds:
                   type: boolean
+                  enum:
+                    - false
+                    - true
                   description: >-
                     An object containing infomation related to the amount of
                     platform resources may be allocated to the User account.
@@ -355,11 +261,6 @@ components:
               description: >-
                 An object containing infomation related to the amount of
                 platform resources may be allocated to the User account.
-            cronJobs:
-              type: number
-              description: >-
-                An object containing infomation related to the amount of
-                platform resources may be allocated to the User account.
             cronJobsPerProject:
               type: number
               description: >-
@@ -382,6 +283,9 @@ components:
                 platform resources may be allocated to the User account.
             flagsExplorerUnlimitedOverrides:
               type: boolean
+              enum:
+                - false
+                - true
               description: >-
                 An object containing infomation related to the amount of
                 platform resources may be allocated to the User account.
@@ -392,6 +296,15 @@ components:
                 platform resources may be allocated to the User account.
             buildMachine:
               properties:
+                default:
+                  type: string
+                  enum:
+                    - enhanced
+                    - turbo
+                    - standard
+                  description: >-
+                    An object containing infomation related to the amount of
+                    platform resources may be allocated to the User account.
                 purchaseType:
                   type: string
                   enum:
@@ -402,6 +315,9 @@ components:
                     platform resources may be allocated to the User account.
                 isDefaultBuildMachine:
                   type: boolean
+                  enum:
+                    - false
+                    - true
                   description: >-
                     An object containing infomation related to the amount of
                     platform resources may be allocated to the User account.
@@ -442,6 +358,11 @@ components:
                     An object containing infomation related to the amount of
                     platform resources may be allocated to the User account.
               type: object
+              description: >-
+                An object containing infomation related to the amount of
+                platform resources may be allocated to the User account.
+            bulkRedirectsFreeLimitOverride:
+              type: number
               description: >-
                 An object containing infomation related to the amount of
                 platform resources may be allocated to the User account.
@@ -513,8 +434,8 @@ components:
                   - type: string
                   - type: number
             required:
-              - scopeId
               - gitNamespaceId
+              - scopeId
             type: object
           type: array
         dismissedToasts:
@@ -530,13 +451,13 @@ components:
                     createdAt:
                       type: number
                   required:
-                    - scopeId
                     - createdAt
+                    - scopeId
                   type: object
                 type: array
             required:
-              - name
               - dismissals
+              - name
             type: object
             description: A record of when, under a certain scopeId, a toast was dismissed
           type: array
@@ -549,8 +470,8 @@ components:
               projectId:
                 type: string
             required:
-              - teamId
               - projectId
+              - teamId
             type: object
             description: >-
               A list of projects and spaces across teams that a user has marked
@@ -561,17 +482,26 @@ components:
             a favorite.
         hasTrialAvailable:
           type: boolean
+          enum:
+            - false
+            - true
           description: Whether the user has a trial available for a paid plan subscription.
         remoteCaching:
           properties:
             enabled:
               type: boolean
+              enum:
+                - false
+                - true
           type: object
           description: remote caching settings
         dataCache:
           properties:
             excessBillingEnabled:
               type: boolean
+              enum:
+                - false
+                - true
           type: object
           description: data cache settings
         featureBlocks:
@@ -584,6 +514,9 @@ components:
                   type: number
                 isCurrentlyBlocked:
                   type: boolean
+                  enum:
+                    - false
+                    - true
               required:
                 - isCurrentlyBlocked
               type: object
@@ -620,24 +553,26 @@ components:
           type: string
           description: The user's default team.
       required:
-        - createdAt
-        - softBlock
+        - avatar
         - billing
-        - resourceConfig
-        - stagingPrefix
+        - createdAt
+        - defaultTeamId
+        - email
         - hasTrialAvailable
         - id
-        - email
         - name
+        - resourceConfig
+        - softBlock
+        - stagingPrefix
         - username
-        - avatar
-        - defaultTeamId
       type: object
       description: Data for the currently authenticated User.
     AuthUserLimited:
       properties:
         limited:
           type: boolean
+          enum:
+            - true
           description: >-
             Property indicating that this User data contains only limited
             information, due to the authentication token missing privileges to
@@ -675,16 +610,21 @@ components:
           type: string
           description: The user's default team.
       required:
-        - limited
-        - id
-        - email
-        - name
-        - username
         - avatar
         - defaultTeamId
+        - email
+        - id
+        - limited
+        - name
+        - username
       type: object
       description: >-
         A limited form of data for the currently authenticated User, due to the
         authentication token missing privileges to read the full User data.
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

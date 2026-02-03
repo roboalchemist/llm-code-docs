@@ -4,8 +4,6 @@
 title: CodeGuru Security Finding
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > CodeGuru Security Finding
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.codeguru_security_finding.dataset/index.html
 ---
 
 # CodeGuru Security Finding
@@ -34,7 +32,7 @@ aws.codeguru_security_finding
 | rule_id       | core | string        | The identifier for the rule that generated the finding.                                                                                                                                                                                                                                                                    |
 | severity      | core | string        | The severity of the finding. Severity can be critical, high, medium, low, or informational. For information on severity levels, see <a href="https://docs.aws.amazon.com/codeguru/latest/security-ug/findings-overview.html#severity-distribution">Finding severity</a> in the <i>Amazon CodeGuru Security User Guide</i>. |
 | status        | core | string        | The status of the finding. A finding status can be open or closed.                                                                                                                                                                                                                                                         |
-| tags          | core | hstore        |
+| tags          | core | hstore_csv    |
 | title         | core | string        | The title of the finding.                                                                                                                                                                                                                                                                                                  |
 | type          | core | string        | The type of finding.                                                                                                                                                                                                                                                                                                       |
 | updated_at    | core | timestamp     | The time when the finding was last updated. Findings are updated when you remediate them or when the finding code location changes.                                                                                                                                                                                        |

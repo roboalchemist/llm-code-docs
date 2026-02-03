@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/ecosystem/sveltekit.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Build an app with SvelteKit and Bun
 
 Use `sv create my-app` to create a SvelteKit project with SvelteKit CLI. Answer the prompts to select a template and set up your development environment.
@@ -86,7 +90,7 @@ To build for production, you'll need to add the right SvelteKit adapter. Current
 
 Now, make the following changes to your `svelte.config.js`.
 
-```ts svelte.config.js icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js svelte.config.js icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import adapter from "@sveltejs/adapter-auto"; // [!code --]
 import adapter from "svelte-adapter-bun"; // [!code ++]
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";

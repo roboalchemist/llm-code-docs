@@ -5,10 +5,7 @@ title: Container Discovery Management
 description: >-
   Control which containers the Datadog Agent monitors by configuring discovery
   rules and inclusion/exclusion patterns
-breadcrumbs: >-
-  Docs > Container Monitoring > Containers Guides > Container Discovery
-  Management
-source_url: https://docs.datadoghq.com/guide/container-discovery-management/index.html
+breadcrumbs: Docs > Containers > Containers Guides > Container Discovery Management
 ---
 
 # Container Discovery Management
@@ -285,13 +282,16 @@ cel_workload_exclude:
       - container.pod.annotations["low_priority"] == "true"
 ```
 
-The CEL-backed workload exclusion can also be configured by providing a JSON-formatted environment value to `DD_CEL_WORKLOAD_EXCLUDE`.
+You can also configure CEL-backed workload exclusion using one of the following methods:
+
+- Set the `DD_CEL_WORKLOAD_EXCLUDE` environment variable with a JSON-formatted string containing your rules, in any containerized Agent setup.
+- For the Datadog Operator or Helm Chart, add your CEL rules to the appropriate configuration option (as shown in the examples below).
 
 {% collapsible-section #setting-environment-variables %}
-#### Setting environment variables
+#### Configuring CEL exclusion rules
 
 {% tab title="Datadog Operator" %}
-In Datadog Operator, set these environment variables under `spec.override.nodeAgent.env`.
+In Datadog Operator (>=v1.23.0), use the `spec.override.nodeAgent.celWorkloadExclude` and `spec.override.clusterAgent.celWorkloadExclude` options.
 
 ##### Example{% #example %}
 
@@ -306,10 +306,17 @@ spec:
       apiKey: <DATADOG_API_KEY>
   override:
     nodeAgent:
-      env:
-      - name: DD_CEL_WORKLOAD_EXCLUDE
-        value: >
-          [{"products":["global"],"rules":{"containers":["container.name == \"redis\""]}}]
+      celWorkloadExclude:
+        - products: [ global ]
+          rules:
+            containers:
+              - container.name == "redis"
+    clusterAgent:
+      celWorkloadExclude:
+        - products: [ global ]
+          rules:
+            containers:
+              - container.name == "redis"
 ```
 
 {% /tab %}

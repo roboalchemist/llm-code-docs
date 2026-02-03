@@ -2,6 +2,8 @@
 
 # Migration from LaunchDarkly
 
+Copy page
+
 This document is for current LaunchDarkly users who want to migrate to ConfigCat. It guides you through the migration process while providing information on the technical differences between the two services that you need to be aware of.
 
 Migration can be done on a LaunchDarkly project basis, and migration of a project usually consists of the following three steps:
@@ -12,11 +14,11 @@ Migration can be done on a LaunchDarkly project basis, and migration of a projec
 
 ConfigCat provides a wizard-like tool that is able to do the heavy lifting for step 1. However, there is currently no automation for step 2 and 3. So please expect these steps to require some manual work.
 
-However, before diving into it all, please check [this list](https://configcat.com/docs/docs/sdk-reference/overview/.md) to see if ConfigCat supports the platform your applications are running on. If not, feel free to [contact us](https://configcat.com/support). Maybe we can still figure out a way for you to migrate to ConfigCat.
+However, before diving into it all, please check [this list](https://configcat.com/docs/sdk-reference/overview.md) to see if ConfigCat supports the platform your applications are running on. If not, feel free to [contact us](https://configcat.com/support). Maybe we can still figure out a way for you to migrate to ConfigCat.
 
 ## Getting started[​](#getting-started "Direct link to Getting started")
 
-To be able to perform the migration, it's essential that you have a basic understanding of ConfigCat's main concepts and hierarchy. So, as the very first step, please read through [this brief guide](https://configcat.com/docs/docs/main-concepts/.md).
+To be able to perform the migration, it's essential that you have a basic understanding of ConfigCat's main concepts and hierarchy. So, as the very first step, please read through [this brief guide](https://configcat.com/docs/main-concepts.md).
 
 LaunchDarkly projects correspond to ConfigCat products in the ConfigCat hierarchy. However, as you already know, products are not standalone entities, they are contained by a ConfigCat organization.
 
@@ -85,7 +87,7 @@ This is a workaround that combines the upsides of the other two options at the e
 
 Please consider the following consequences:
 
-* The state of targeting toggles will be respected, however, for each problematic LaunchDarkly feature flag an extra [prerequisite flag](https://configcat.com/docs/docs/targeting/targeting-rule/flag-condition/.md) will be created in ConfigCat to emulate the targeting toggle.
+* The state of targeting toggles will be respected, however, for each problematic LaunchDarkly feature flag an extra [prerequisite flag](https://configcat.com/docs/targeting/targeting-rule/flag-condition.md) will be created in ConfigCat to emulate the targeting toggle.
 * The *off variation* values will be served.
 * The targeting rules will be imported and evaluated depending on the state of the extra prerequisite flag.
 
@@ -95,13 +97,13 @@ After making your choices on what and how to import in the first steps of the wi
 
 #### Translation phase[​](#translation-phase "Direct link to Translation phase")
 
-First, the import tool translates the LaunchDarkly project to a ConfigCat product. For more details on how this is done, please refer to [this document](https://configcat.com/docs/docs/advanced/migration-from-launchdarkly-translation/.md).
+First, the import tool translates the LaunchDarkly project to a ConfigCat product. For more details on how this is done, please refer to [this document](https://configcat.com/docs/advanced/migration-from-launchdarkly-translation.md).
 
 It's important to note that the import tool performs translation on a best effort basis. It aims to do translation in such a way that you get a feature flag evaluation behavior as close to the original as possible. However, since there are technical differences between LaunchDarkly and ConfigCat, an accurate translation is not possible in every case.
 
 Such problematic cases are called *translation issues*. The import tool detects and collects these issues during translation, and includes them in the report generated at the end of the import operation so you can review them, and make the necessary adjustments where necessary.
 
-You can find the list of possible translation issues [here](https://configcat.com/docs/docs/advanced/migration-from-launchdarkly-translation/.md#translation-issues).
+You can find the list of possible translation issues [here](https://configcat.com/docs/advanced/migration-from-launchdarkly-translation.md#translation-issues).
 
 #### Import phase[​](#import-phase "Direct link to Import phase")
 
@@ -132,7 +134,7 @@ If your applications implement feature flagging by directly consuming the Launch
 
 Let's assume you have the following simple Node.js application:
 
-```
+```js
 import LaunchDarkly from "@launchdarkly/node-server-sdk";
 
 const sdkKey = process.env.LAUNCHDARKLY_SDK_KEY ?? "#YOUR-SDK-KEY#";
@@ -170,21 +172,24 @@ if (flagValue) {
 }
 
 process.exit(0);
+
 ```
 
 Let's see now step by step how to convert this code to ConfigCat:
 
 1. Uninstall the LaunchDarkly SDK package, and install the ConfigCat one instead:
 
-   ```
+   ```bash
    npm uninstall @launchdarkly/node-server-sdk
    npm install configcat-node
+
    ```
 
 2. Instead of the `LaunchDarkly` namespace, import `configcat`:
 
-   ```
+   ```js
    import configcat from "configcat-node";
+
    ```
 
 3. Replace the LaunchDarkly SDK key with the ConfigCat one.
@@ -193,47 +198,49 @@ Let's see now step by step how to convert this code to ConfigCat:
 
 4. Instead of a LaunchDarkly client instance, obtain a ConfigCat one:
 
-   ```
+   ```js
    const client = configcat.getClient(sdkKey, configcat.PollingMode.AutoPoll, {
       maxInitWaitTimeSeconds: 10
    });
+
    ```
 
-   Please note that the ConfigCat client doesn't maintain a persistent connection to the remote server, but uses different polling strategies to get the data necessary for feature flag evaluation. Refer to the [SDK reference](https://configcat.com/docs/docs/sdk-reference/js/overview/.md#creating-the-configcat-client) to learn more about the options. For frontend applications and long-running backend services, Auto Polling mode is usually a good choice.
+   Please note that the ConfigCat client doesn't maintain a persistent connection to the remote server, but uses different polling strategies to get the data necessary for feature flag evaluation. Refer to the [SDK reference](https://configcat.com/docs/sdk-reference/js/overview.md#creating-the-configcat-client) to learn more about the options. For frontend applications and long-running backend services, Auto Polling mode is usually a good choice.
 
 5. Adjust the wait-for-initialization logic.
 
    * When using Auto Polling mode, you can rewrite it like this:
 
-     ```
+     ```js
      const clientCacheState = await client.waitForReady();
      if (clientCacheState === configcat.ClientCacheState.NoFlagData) {
        /* ... */
        process.exit(1);
      }
+
      ```
 
      Please note that the `waitForReady` method is not available on all platforms. On such platforms, you can't really implement this logic at the moment. However, you don't really need to as the feature flag evaluation methods wait for initialization internally anyway. (It's worth noting that if initialization can't complete within the timeout duration specified by the `maxInitWaitTimeSeconds` option, then feature flag evaluation methods will return the default value you pass to them.)
 
-     Actually, you only need this wait-for-initialization logic at the startup of your applications if you want to use [synchronous feature flag evaluation via snapshots](https://configcat.com/docs/docs/sdk-reference/js/overview/.md#snapshots-and-synchronous-feature-flag-evaluation).
+     Actually, you only need this wait-for-initialization logic at the startup of your applications if you want to use [synchronous feature flag evaluation via snapshots](https://configcat.com/docs/sdk-reference/js/overview.md#snapshots-and-synchronous-feature-flag-evaluation).
 
    * For other polling modes, the wait-for-initialization logic doesn't make sense, so just omit it.
 
 6. Rewrite LaunchDarkly contexts to ConfigCat User Objects.
 
-   ConfigCat uses the concept of [User Object](https://configcat.com/docs/docs/targeting/user-object/.md) to pass user and/or session-related contextual data to feature flag evaluation. It serves the same purpose as [LaunchDarkly contexts](https://launchdarkly.com/docs/home/observability/contexts), but it's a simpler data structure.
+   ConfigCat uses the concept of [User Object](https://configcat.com/docs/targeting/user-object.md) to pass user and/or session-related contextual data to feature flag evaluation. It serves the same purpose as [LaunchDarkly contexts](https://launchdarkly.com/docs/home/observability/contexts), but it's a simpler data structure.
 
    To be able to convert a context data structure to a User Object one, you will need to do the following:
 
-   * Read [the section on User Objects](https://configcat.com/docs/docs/sdk-reference/js/overview/.md#user-object) in the reference of the SDK for your platform.
-   * Read [this section](https://configcat.com/docs/docs/advanced/migration-from-launchdarkly-translation/.md#mapping-between-launchdarkly-contexts-and-configcat-user-objects) to learn how context paths are mapped to User Object attribute names.
+   * Read [the section on User Objects](https://configcat.com/docs/sdk-reference/js/overview.md#user-object) in the reference of the SDK for your platform.
+   * Read [this section](https://configcat.com/docs/advanced/migration-from-launchdarkly-translation.md#mapping-between-launchdarkly-contexts-and-configcat-user-objects) to learn how context paths are mapped to User Object attribute names.
 
    For an example of such conversion, see the adjusted code at the end of this section.
 
    Please also keep in mind:
 
    * Some LaunchDarkly SDKs may [automatically provide additional attributes](https://launchdarkly.com/docs/sdk/features/environment-attributes) in contexts. ConfigCat SDKs don't offer a feature like that at the moment, so in case you target such additional attributes in your feature flags, you will need to provide them manually in your applications.
-   * LaunchDarkly allows multiple attribute values (an array of values) for all clause operators, but ConfigCat allows multiple attribute values (an array of strings) for the ARRAY CONTAINS ANY OF / ARRAY NOT CONTAINS ANY OF comparators only. This means that it's not possible to specify multiple values for a user attribute if the evaluated feature flag contains a [User Condition](https://configcat.com/docs/docs/targeting/targeting-rule/user-condition/.md) that references the attribute, but has a comparator other than the two mentioned. Unfortunately, no workaround exists for this case.
+   * LaunchDarkly allows multiple attribute values (an array of values) for all clause operators, but ConfigCat allows multiple attribute values (an array of strings) for the ARRAY CONTAINS ANY OF / ARRAY NOT CONTAINS ANY OF comparators only. This means that it's not possible to specify multiple values for a user attribute if the evaluated feature flag contains a [User Condition](https://configcat.com/docs/targeting/targeting-rule/user-condition.md) that references the attribute, but has a comparator other than the two mentioned. Unfortunately, no workaround exists for this case.
 
 7. Rewrite feature flag evaluation calls.
 
@@ -242,15 +249,15 @@ Let's see now step by step how to convert this code to ConfigCat:
    A few things to pay attention to:
 
    * The order of parameters is different. In ConfigCat, the User Object comes last.
-   * The ConfigCat feature flag key may be different from the LaunchDarkly one. E.g. if the key starts with a non-letter character, or contains a dot, it will be changed by the import tool because such keys are not valid in ConfigCat. To see which keys have been changed, look for [T002](https://configcat.com/docs/docs/advanced/migration-from-launchdarkly-translation/.md#translation-issue-T002) translation issues in the report.
+   * The ConfigCat feature flag key may be different from the LaunchDarkly one. E.g. if the key starts with a non-letter character, or contains a dot, it will be changed by the import tool because such keys are not valid in ConfigCat. To see which keys have been changed, look for [T002](https://configcat.com/docs/advanced/migration-from-launchdarkly-translation.md#translation-issue-T002) translation issues in the report.
    * ConfigCat SDKs don't support [automatic camel casing](https://launchdarkly.com/docs/sdk/client-side/react/react-web#flag-keys-in-the-react-web-sdk) of feature flag keys.
-   * In statically typed languages, ConfigCat evaluation methods require that the default value type and the feature flag type match. (Usually, there is [a section about this](https://configcat.com/docs/docs/sdk-reference/js/overview/.md#setting-type-mapping) in the SDK reference.)
+   * In statically typed languages, ConfigCat evaluation methods require that the default value type and the feature flag type match. (Usually, there is [a section about this](https://configcat.com/docs/sdk-reference/js/overview.md#setting-type-mapping) in the SDK reference.)
    * Please be extra careful when evaluating number type feature flags. ConfigCat distinguishes between integer and decimal number feature flags. The former must be evaluated using `getValue<int>`, `getIntValue` or similar, while the latter must be evaluated using `getValue<double>`, `getDoubleValue` or similar. (JavaScript-based SDKs don't have this issue, but you can run into it in other languages.)
-   * On some platforms, the ConfigCat client provides asynchronous evaluation methods only. In such cases, synchronous feature flag evaluation is usually still possible, [via snapshots](https://configcat.com/docs/docs/sdk-reference/js/overview/.md#snapshots-and-synchronous-feature-flag-evaluation). But this works slightly differently from the asynchronous methods, so make sure you understand its behavior and possible pitfalls.
+   * On some platforms, the ConfigCat client provides asynchronous evaluation methods only. In such cases, synchronous feature flag evaluation is usually still possible, [via snapshots](https://configcat.com/docs/sdk-reference/js/overview.md#snapshots-and-synchronous-feature-flag-evaluation). But this works slightly differently from the asynchronous methods, so make sure you understand its behavior and possible pitfalls.
 
 By adjusting the example code according to the above, we get this:
 
-```
+```js
 import configcat from "configcat-node";
 
 const sdkKey = process.env.CONFIGCAT_SDK_KEY ?? "#YOUR-SDK-KEY#";
@@ -285,6 +292,7 @@ if (flagValue) {
 }
 
 process.exit(0);
+
 ```
 
 The conversion can be done in a similar way on other platforms as well. Obviously, there may be minor differences, plus advanced topics are not covered here, so it's recommended to start this work by going through the SDK reference for your platform.
@@ -307,11 +315,11 @@ Otherwise, to switch to ConfigCat, you need to do the following:
 
 3. Convert [LaunchDarkly-specific evaluation context objects](https://github.com/launchdarkly/openfeature-node-server?tab=readme-ov-file#openfeature-specific-considerations) to have a data structure compatible with ConfigCat.
 
-   This is done in a very similar way to what's described in the previous section. Read [this section](https://configcat.com/docs/docs/advanced/migration-from-launchdarkly-translation/.md#mapping-between-launchdarkly-contexts-and-configcat-user-objects) to learn how context paths are mapped to User Object attribute names.
+   This is done in a very similar way to what's described in the previous section. Read [this section](https://configcat.com/docs/advanced/migration-from-launchdarkly-translation.md#mapping-between-launchdarkly-contexts-and-configcat-user-objects) to learn how context paths are mapped to User Object attribute names.
 
    For example, something like
 
-   ```
+   ```js
    const evaluationContext = {
      kind: "multi",
      user: {
@@ -327,11 +335,12 @@ Otherwise, to switch to ConfigCat, you need to do the following:
        }
      }
    };
+
    ```
 
    should be converted to this:
 
-   ```
+   ```js
    const evaluationContext = {
      targetingKey: "#UNIQUE-USER-IDENTIFIER#",
      name: "Alice"
@@ -341,6 +350,7 @@ Otherwise, to switch to ConfigCat, you need to do the following:
      "organization:/address/city": "London",
      "/kind": ["user", "organization"],
    };
+
    ```
 
 4. Review feature flag evaluation calls.
@@ -349,16 +359,16 @@ Otherwise, to switch to ConfigCat, you need to do the following:
 
 ### Implement experiments and analytics[​](#implement-experiments-and-analytics "Direct link to Implement experiments and analytics")
 
-There are some fundamental differences in the feature flag evaluation process between LaunchDarkly and ConfigCat. In ConfigCat, feature flag evaluation is entirely implemented within the SDKs, meaning your users' sensitive data never leaves your system. The data flow is one-way – from ConfigCat CDN servers to your SDKs – and ConfigCat does not receive or store any attributes of the [User Object](https://configcat.com/docs/docs/targeting/user-object/.md) passed to the SDKs. This design prioritizes the privacy and security of user data.
+There are some fundamental differences in the feature flag evaluation process between LaunchDarkly and ConfigCat. In ConfigCat, feature flag evaluation is entirely implemented within the SDKs, meaning your users' sensitive data never leaves your system. The data flow is one-way – from ConfigCat CDN servers to your SDKs – and ConfigCat does not receive or store any attributes of the [User Object](https://configcat.com/docs/targeting/user-object.md) passed to the SDKs. This design prioritizes the privacy and security of user data.
 
 However, this has an important consequence: as opposed to LaunchDarkly, ConfigCat cannot provide an out-of-the-box solution to A/B testing, experiments or other analytics.
 
 For this, you will need an additional service that provides the necessary functionality. Here are some examples of how you can integrate such tools with ConfigCat to replicate LaunchDarkly's analytics features:
 
-* [Amplitude](https://configcat.com/docs/docs/integrations/amplitude/.md#experiments)
-* [Google Analytics](https://configcat.com/docs/docs/integrations/google-analytics/.md)
-* [Mixpanel](https://configcat.com/docs/docs/integrations/mixpanel/.md#experiments)
-* [Twilio Segment](https://configcat.com/docs/docs/integrations/segment/.md#analytics)
+* [Amplitude](https://configcat.com/docs/integrations/amplitude.md#experiments)
+* [Google Analytics](https://configcat.com/docs/integrations/google-analytics.md)
+* [Mixpanel](https://configcat.com/docs/integrations/mixpanel.md#experiments)
+* [Twilio Segment](https://configcat.com/docs/integrations/segment.md#analytics)
 
 ## Migrate LaunchDarkly teams and permissions to ConfigCat[​](#migrate-launchdarkly-teams-and-permissions-to-configcat "Direct link to Migrate LaunchDarkly teams and permissions to ConfigCat")
 
@@ -372,8 +382,8 @@ Therefore, we can only give you some pointers, but this task will inevitably req
 
 As the first step, we recommend getting familiar with ConfigCat's user management and permission system. You can find the basic concepts in the following guides:
 
-* [Organization & Roles](https://configcat.com/docs/docs/organization/.md)
-* [Team Management Basics](https://configcat.com/docs/docs/advanced/team-management/team-management-basics/.md)
+* [Organization & Roles](https://configcat.com/docs/organization.md)
+* [Team Management Basics](https://configcat.com/docs/advanced/team-management/team-management-basics.md)
 
 As you can see from this, ConfigCat doesn't use the concept of teams and roles of LaunchDarkly. You can't define such entities at the organization level, but *permission groups* per product instead.
 
@@ -382,7 +392,7 @@ As you can see from this, ConfigCat doesn't use the concept of teams and roles o
 Permission groups roughly correspond to LaunchDarkly roles, with a few key differences:
 
 * They are scoped to the product where they are defined.
-* There are no [built-in roles](https://launchdarkly.com/docs/home/account/built-in-roles) like Reader or Writer. To recreate these in ConfigCat, you will need to define the corresponding permission groups in each relevant product. However, LaunchDarkly's Admin and Owner roles can't really be represented using permission groups. ConfigCat supports the concept of [Organization Admin role](https://configcat.com/docs/docs/organization/.md#organization-admin-role) but it's an organization-level permission. You can assign this to users on invite or on your organization's "Members & Roles" page as shown in the next section.
+* There are no [built-in roles](https://launchdarkly.com/docs/home/account/built-in-roles) like Reader or Writer. To recreate these in ConfigCat, you will need to define the corresponding permission groups in each relevant product. However, LaunchDarkly's Admin and Owner roles can't really be represented using permission groups. ConfigCat supports the concept of [Organization Admin role](https://configcat.com/docs/organization.md#organization-admin-role) but it's an organization-level permission. You can assign this to users on invite or on your organization's "Members & Roles" page as shown in the next section.
 * To migrate [custom roles](https://launchdarkly.com/docs/home/account/custom-roles) to ConfigCat, you will need to translate the [policies](https://launchdarkly.com/docs/home/account/role-concepts#policies) they define to the fixed set of permissions offered by ConfigCat permission groups. Obviously, this won't be entirely possible in every case.
 
 With this in mind, create the necessary permission groups in your products, based on the roles defined in your LaunchDarkly organization.
@@ -395,7 +405,7 @@ To set up permission groups for a product, open the [ConfigCat Dashboard](https:
 
 Permission groups also act as per-product teams. Once created, you can assign users to them, who will then have the permissions specified by the permission group. (A user can only be a member of a single permission group at a time though.) This is how you map your LaunchDarkly teams to ConfigCat.
 
-However, users don't yet exist in ConfigCat at this point. You need to invite them to ConfigCat first. To do this, follow [these instructions](https://configcat.com/docs/docs/advanced/team-management/team-management-basics/.md#invite-others-to-collaborate).
+However, users don't yet exist in ConfigCat at this point. You need to invite them to ConfigCat first. To do this, follow [these instructions](https://configcat.com/docs/advanced/team-management/team-management-basics.md#invite-others-to-collaborate).
 
 When inviting users, you will need to choose a product, more specifically, a permission group to invite them to. This means that they will be automatically assigned to the specified permission groups after signing up. So, as you have already created the permission groups, ideally you can immediately invite your users to the right permission groups. (Of course, you may need to do this in batches.)
 

@@ -1,0 +1,52 @@
+# Source: https://docs.datadoghq.com/security/default_rules/def-000-xen.md
+
+---
+title: >-
+  Bedrock Knowledge Base write access should be condition-scoped in IAM
+  Customer-Managed policies
+description: Datadog, the leading service for cloud-scale monitoring.
+breadcrumbs: >-
+  Docs > Datadog Security > OOTB Rules > Bedrock Knowledge Base write access
+  should be condition-scoped in IAM Customer-Managed policies
+---
+
+# Bedrock Knowledge Base write access should be condition-scoped in IAM Customer-Managed policies
+ 
+## Description{% #description %}
+
+This control checks whether your customer-managed IAM policies for write access to Bedrock Knowledge Base (KB) sources include appropriate security conditions to restrict access. Without these conditions, principals could inadvertently gain excessive permissions, leading to KB poisoning risks.
+
+The control fails if the policy allows any write actions without a condition providing additional security context:
+
+- Actions containing:
+  - `bedrock:createknowledgebase`
+  - `bedrock:updateknowledgebase`
+  - `bedrock:deleteknowledgebase`
+  - `bedrock:ingestknowledgebasedocuments`
+  - `bedrock:associateagentknowledgebase`
+  - `bedrock:disassociateagentknowledgebase`
+  - `bedrock:deleteknowledgebasedocuments`
+  - `bedrock:createagent`
+  - `bedrock:updateagent`
+  - `bedrock:deleteagent`
+  - `bedrock:createprompt`
+  - `bedrock:updateprompt`
+  - `bedrock:deleteprompt`
+  - `bedrock:createdatasource`
+  - `bedrock:updatedatasource`
+  - `bedrock:deletedatasource`
+  - `bedrock:createflow`
+  - `bedrock:updateflow`
+  - `bedrock:deleteflow`
+  - `bedrock:create*`
+  - `bedrock:update*`
+  - `bedrock:delete*`
+  - `bedrock:modify*`
+  - `bedrock:*`
+  - `*`
+
+The control specifically verifies the presence of security conditions, such as `aws:PrincipalArn`, `aws:SourceIp`, `aws:ResourceTag`, or `aws:MultiFactorAuthPresent`, ensuring that access is appropriately restricted.
+
+## Remediation{% #remediation %}
+
+See the [IAM JSON Policy Elements: Condition](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html) and [Creating and Managing IAM Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage.html) documentation for guidance on modifying policies to include necessary security conditions.

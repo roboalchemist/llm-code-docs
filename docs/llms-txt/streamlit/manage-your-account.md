@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/deploy/streamlit-community-cloud/manage-your-account
+
 # Manage your account
 
 You can [Update your email](/deploy/streamlit-community-cloud/manage-your-account/update-your-email) or completely [Delete your account](/deploy/streamlit-community-cloud/manage-your-account/delete-your-account) through [Workspace settings](/deploy/streamlit-community-cloud/manage-your-account/workspace-settings).

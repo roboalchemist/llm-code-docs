@@ -1,181 +1,165 @@
 # Source: https://infisical.com/docs/api-reference/endpoints/identities/search.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Search
 
 > Search machine identities
 
+
+
 ## OpenAPI
 
 ````yaml POST /api/v1/identities/search
+openapi: 3.0.3
+info:
+  title: Infisical API
+  description: List of all available APIs that can be consumed
+  version: 0.0.1
+servers:
+  - url: https://us.infisical.com
+    description: Production server (US)
+  - url: https://eu.infisical.com
+    description: Production server (EU)
+  - url: http://localhost:8080
+    description: Local server
+security: []
 paths:
-  path: /api/v1/identities/search
-  method: post
-  servers:
-    - url: https://us.infisical.com
-      description: Production server (US)
-    - url: https://eu.infisical.com
-      description: Production server (EU)
-    - url: http://localhost:8080
-      description: Local server
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: An access token in Infisical
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              orderBy:
-                allOf:
-                  - type: string
-                    enum:
-                      - name
-                      - role
-                    default: name
-                    description: The column to order identities by.
-              orderDirection:
-                allOf:
-                  - type: string
-                    enum:
-                      - asc
-                      - desc
-                    default: asc
-                    description: The direction to order identities in.
-              limit:
-                allOf:
-                  - type: number
-                    maximum: 100
-                    default: 50
-                    description: The number of identities to return.
-              offset:
-                allOf:
-                  - type: number
-                    default: 0
-                    description: >-
-                      The offset to start from. If you enter 10, it will start
-                      from the 10th identity.
-              search:
-                allOf:
-                  - type: object
-                    properties:
-                      name:
-                        anyOf:
-                          - type: string
-                            maxLength: 255
-                          - type: object
-                            properties:
-                              $eq:
-                                type: string
-                                maxLength: 255
-                              $contains:
-                                type: string
-                                maxLength: 255
-                              $in:
-                                type: array
-                                items:
-                                  type: string
-                                  maxLength: 255
-                            additionalProperties: false
-                        description: The name of the identity to filter by.
-                      role:
-                        anyOf:
-                          - type: string
-                            maxLength: 255
-                          - type: object
-                            properties:
-                              $eq:
-                                type: string
-                                maxLength: 255
-                              $in:
-                                type: array
-                                items:
-                                  type: string
-                                  maxLength: 255
-                            additionalProperties: false
-                        description: The organizational role of the identity to filter by.
-                      $or:
-                        type: array
-                        items:
-                          type: object
+  /api/v1/identities/search:
+    post:
+      tags:
+        - Identities
+      description: Search machine identities
+      operationId: searchMachineIdentities
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                orderBy:
+                  type: string
+                  enum:
+                    - name
+                    - role
+                  default: name
+                  description: The column to order identities by.
+                orderDirection:
+                  type: string
+                  enum:
+                    - asc
+                    - desc
+                  default: asc
+                  description: The direction to order identities in.
+                limit:
+                  type: number
+                  maximum: 100
+                  default: 50
+                  description: The number of identities to return.
+                offset:
+                  type: number
+                  default: 0
+                  description: >-
+                    The offset to start from. If you enter 10, it will start
+                    from the 10th identity.
+                search:
+                  type: object
+                  properties:
+                    name:
+                      anyOf:
+                        - type: string
+                          maxLength: 255
+                        - type: object
                           properties:
-                            name:
-                              anyOf:
-                                - type: string
-                                  maxLength: 255
-                                - type: object
-                                  properties:
-                                    $eq:
-                                      type: string
-                                      maxLength: 255
-                                    $contains:
-                                      type: string
-                                      maxLength: 255
-                                    $in:
-                                      type: array
-                                      items:
-                                        type: string
-                                        maxLength: 255
-                                  additionalProperties: false
-                              description: The name of the identity to filter by.
-                            role:
-                              anyOf:
-                                - type: string
-                                  maxLength: 255
-                                - type: object
-                                  properties:
-                                    $eq:
-                                      type: string
-                                      maxLength: 255
-                                    $in:
-                                      type: array
-                                      items:
-                                        type: string
-                                        maxLength: 255
-                                  additionalProperties: false
-                              description: >-
-                                The organizational role of the identity to
-                                filter by.
+                            $eq:
+                              type: string
+                              maxLength: 255
+                            $contains:
+                              type: string
+                              maxLength: 255
+                            $in:
+                              type: array
+                              items:
+                                type: string
+                                maxLength: 255
                           additionalProperties: false
-                          description: The filters to apply to the search.
-                        maxItems: 5
-                    additionalProperties: false
-                    description: The filters to apply to the search.
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              orderBy: name
-              orderDirection: asc
-              limit: 50
-              offset: 0
-              search:
-                name: <string>
-                role: <string>
-                $or:
-                  - name: <string>
-                    role: <string>
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              identities:
-                allOf:
-                  - type: array
+                      description: The name of the identity to filter by.
+                    role:
+                      anyOf:
+                        - type: string
+                          maxLength: 255
+                        - type: object
+                          properties:
+                            $eq:
+                              type: string
+                              maxLength: 255
+                            $in:
+                              type: array
+                              items:
+                                type: string
+                                maxLength: 255
+                          additionalProperties: false
+                      description: The organizational role of the identity to filter by.
+                    $or:
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            anyOf:
+                              - type: string
+                                maxLength: 255
+                              - type: object
+                                properties:
+                                  $eq:
+                                    type: string
+                                    maxLength: 255
+                                  $contains:
+                                    type: string
+                                    maxLength: 255
+                                  $in:
+                                    type: array
+                                    items:
+                                      type: string
+                                      maxLength: 255
+                                additionalProperties: false
+                            description: The name of the identity to filter by.
+                          role:
+                            anyOf:
+                              - type: string
+                                maxLength: 255
+                              - type: object
+                                properties:
+                                  $eq:
+                                    type: string
+                                    maxLength: 255
+                                  $in:
+                                    type: array
+                                    items:
+                                      type: string
+                                      maxLength: 255
+                                additionalProperties: false
+                            description: >-
+                              The organizational role of the identity to filter
+                              by.
+                        additionalProperties: false
+                        description: The filters to apply to the search.
+                      maxItems: 5
+                  additionalProperties: false
+                  description: The filters to apply to the search.
+              additionalProperties: false
+      responses:
+        '200':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  identities:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -259,245 +243,158 @@ paths:
                         - identityId
                         - identity
                       additionalProperties: false
-              totalCount:
-                allOf:
-                  - type: number
-            requiredProperties:
-              - identities
-              - totalCount
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              identities:
-                - id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                  role: <string>
-                  roleId: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                  orgId: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                  createdAt: '2023-11-07T05:31:56Z'
-                  updatedAt: '2023-11-07T05:31:56Z'
-                  identityId: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                  lastLoginAuthMethod: <string>
-                  lastLoginTime: '2023-11-07T05:31:56Z'
-                  customRole:
-                    id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                    name: <string>
-                    slug: <string>
-                    permissions: <any>
-                    description: <string>
-                  identity:
-                    name: <string>
-                    id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                    hasDeleteProtection: false
-                    orgId: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                    authMethods:
-                      - <string>
-              totalCount: 123
-        description: Default Response
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  totalCount:
+                    type: number
+                required:
+                  - identities
+                  - totalCount
+                additionalProperties: false
+        '400':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 400
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 400
-              message: <string>
-              error: <string>
-        description: Default Response
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  error:
+                    type: string
+                  details: {}
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '401':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 401
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 401
-              message: <string>
-              error: <string>
-        description: Default Response
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '403':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 403
-              message:
-                allOf:
-                  - type: string
-              details:
-                allOf:
-                  - {}
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 403
-              message: <string>
-              details: <any>
-              error: <string>
-        description: Default Response
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  details: {}
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '404':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 404
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 404
-              message: <string>
-              error: <string>
-        description: Default Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message:
+                    type: string
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+        '422':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 422
-              message:
-                allOf:
-                  - {}
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 422
-              message: <any>
-              error: <string>
-        description: Default Response
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              reqId:
-                allOf:
-                  - type: string
-              statusCode:
-                allOf:
-                  - type: number
+                  message: {}
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - error
+                additionalProperties: false
+        '500':
+          description: Default Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reqId:
+                    type: string
+                  statusCode:
+                    type: number
                     enum:
                       - 500
-              message:
-                allOf:
-                  - type: string
-              error:
-                allOf:
-                  - type: string
-            requiredProperties:
-              - reqId
-              - statusCode
-              - message
-              - error
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              reqId: <string>
-              statusCode: 500
-              message: <string>
-              error: <string>
-        description: Default Response
-  deprecated: false
-  type: path
+                  message:
+                    type: string
+                  error:
+                    type: string
+                required:
+                  - reqId
+                  - statusCode
+                  - message
+                  - error
+                additionalProperties: false
+      security:
+        - bearerAuth: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: An access token in Infisical
 
 ````

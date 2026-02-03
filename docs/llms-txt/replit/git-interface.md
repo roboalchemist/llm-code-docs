@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replit-workspace/workspace-features/git-interface.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Using the Git pane
 
 > The Git pane streamlines version control directly in your workspace, making code tracking, branch management, and collaboration seamless.

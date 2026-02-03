@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/cloud-storage/bedrockkbretriever.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Bedrock Knowledge Base Retriever
 
 > Retrieve information from Amazon Bedrock Knowledge Bases using natural language queries

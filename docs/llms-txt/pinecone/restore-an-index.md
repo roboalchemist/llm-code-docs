@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/manage-data/restore-an-index.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Restore an index
 
 > Restore serverless indexes from backup snapshots.
@@ -131,7 +135,7 @@ To [create a serverless index from a backup](/reference/api/latest/control-plane
 
   curl "https://api.pinecone.io/backups/$BACKUP_ID/create-index" \
     -H "Api-Key: $PINECONE_API_KEY" \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -H 'Content-Type: application/json' \
     -d '{
           "name": "restored-index",
@@ -314,7 +318,7 @@ You can [list all restore jobs](/reference/api/latest/control-plane/list_restore
   PINECONE_API_KEY="YOUR_API_KEY"
 
   curl "https://api.pinecone.io/restore-jobs" \
-  	-H "X-Pinecone-Api-Version: 2025-04" \
+  	-H "X-Pinecone-Api-Version: 2025-10" \
   	-H "Api-Key: $PINECONE_API_KEY"
   ```
 </CodeGroup>
@@ -581,7 +585,7 @@ You can [view the details of a specific restore job](/reference/api/latest/contr
   JOB_ID="9857add2-99d4-4399-870e-aa7f15d8d326"
 
   curl "https://api.pinecone.io/restore-jobs/$JOB_ID" \
-      -H "X-Pinecone-Api-Version: 2025-04" \
+      -H "X-Pinecone-Api-Version: 2025-10" \
       -H "Api-Key: $PINECONE_API_KEY" \
       -H 'accept: application/json'
   ```

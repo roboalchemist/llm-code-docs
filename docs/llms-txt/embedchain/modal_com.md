@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/deployment/modal_com.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Modal.com
 
 > Deploy your RAG application to modal.com platform
@@ -12,7 +16,7 @@ Follow the instructions given below to deploy your first application quickly:
 
 We provide a command line utility called `ec` in embedchain that inherits the template for `modal.com` platform and help you deploy the app. Follow the instructions to create a modal.com app using the template provided:
 
-```bash Create application
+```bash Create application theme={null}
 pip install embedchain[modal]
 mkdir my-rag-app
 ec create --template=modal.com
@@ -20,7 +24,7 @@ ec create --template=modal.com
 
 This `create` command will open a browser window and ask you to login to your modal.com account and will generate a directory structure like this:
 
-```bash
+```bash  theme={null}
 ├── app.py
 ├── .env
 ├── .env.example
@@ -40,7 +44,7 @@ Feel free to edit the files as required.
 
 You can run the app locally by simply doing:
 
-```bash Run locally
+```bash Run locally theme={null}
 pip install -r requirements.txt
 ec dev
 ```
@@ -49,13 +53,13 @@ ec dev
 
 You can deploy to modal.com using the following command:
 
-```bash Deploy app
+```bash Deploy app theme={null}
 ec deploy
 ```
 
 Once this step finished, it will provide you with the deployment endpoint where you can access the app live. It will look something like this (Swagger docs):
 
-<img src="https://mintlify.s3.us-west-1.amazonaws.com/embedchain/images/fly_io.png" />
+<img src="https://mintcdn.com/embedchain/pz6fpRISI4B6JS6w/images/fly_io.png?fit=max&auto=format&n=pz6fpRISI4B6JS6w&q=85&s=0aa9e31a9beed2a53eafce3b1f677f07" data-og-width="2892" width="2892" data-og-height="1592" height="1592" data-path="images/fly_io.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/embedchain/pz6fpRISI4B6JS6w/images/fly_io.png?w=280&fit=max&auto=format&n=pz6fpRISI4B6JS6w&q=85&s=10df3c3ae0a3f669410e20d4a9505377 280w, https://mintcdn.com/embedchain/pz6fpRISI4B6JS6w/images/fly_io.png?w=560&fit=max&auto=format&n=pz6fpRISI4B6JS6w&q=85&s=3ff240394115f455aafc232527b71e8c 560w, https://mintcdn.com/embedchain/pz6fpRISI4B6JS6w/images/fly_io.png?w=840&fit=max&auto=format&n=pz6fpRISI4B6JS6w&q=85&s=ee8effc2f3c044353794129a3834a6ad 840w, https://mintcdn.com/embedchain/pz6fpRISI4B6JS6w/images/fly_io.png?w=1100&fit=max&auto=format&n=pz6fpRISI4B6JS6w&q=85&s=14c42bac49c7ab38566373e5876fc09d 1100w, https://mintcdn.com/embedchain/pz6fpRISI4B6JS6w/images/fly_io.png?w=1650&fit=max&auto=format&n=pz6fpRISI4B6JS6w&q=85&s=79ac4dd5e6d44e71c3deb5d29941c0aa 1650w, https://mintcdn.com/embedchain/pz6fpRISI4B6JS6w/images/fly_io.png?w=2500&fit=max&auto=format&n=pz6fpRISI4B6JS6w&q=85&s=4a13bad7935459e7e73626f11b59a67f 2500w" />
 
 ## Seeking help?
 

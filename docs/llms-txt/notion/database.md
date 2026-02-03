@@ -1,143 +1,57 @@
 # Source: https://developers.notion.com/reference/database.md
 
-# Notion API
-
-## Objects
-
-### Block
-- [Rich text](/reference/rich-text)
-
-### Page
-- [Page properties](/reference/page-property-values)
-  - [Page property items](/reference/property-item-object)
-
-### Database
-- [Database](/reference/database)
-
-### Data source
-- [Data source properties](/reference/data-source)
-
-### Comment
-- [Comment attachment](/reference/comment-attachment)
-- [Comment display name](/reference/comment-display-name)
-
-### File
-- [File Upload](/reference/file-upload)
-
-### User
-- [User](/reference/user)
-
-### Parent
-- [Parent](/reference/parent-object)
-
-### Emoji
-- [Emoji](/reference/emoji-object)
-
-### Unfurl attribute (Link Previews)
-- [Unfurl attribute (Link Previews)](/reference/unfurl-attribute-object)
-
-## Endpoints
-
-### Authentication
-- [Create a token](/reference/create-a-token) (post)
-- [Introspect token](/reference/introspect-token) (post)
-- [Revoke token](/reference/revoke-token) (post)
-- [Refresh a token](/reference/refresh-a-token) (post)
-
-### Blocks
-- [Append block children](/reference/append-block-children) (patch)
-- [Retrieve a block](/reference/retrieve-a-block) (get)
-- [Retrieve block children](/reference/retrieve-block-children) (get)
-- [Update a block](/reference/update-a-block) (patch)
-- [Delete a block](/reference/delete-a-block) (del)
-
-### Pages
-- [Create a page](/reference/create-a-page) (post)
-- [Retrieve a page](/reference/retrieve-a-page) (get)
-- [Retrieve a page property item](/reference/retrieve-a-page-property) (get)
-- [Update page](/reference/update-page)
-  - [Trash a page](/reference/trash-a-page)
-
-### Databases
-- [Create a database](/reference/create-database) (post)
-- [List databases](/reference/list-databases) (get)
-- [Delete a database](/reference/delete-database) (del)
-```
-
-# API Reference
-
-## Database Operations
-
-- [Create a database](https://docs.nestbase.com/reference/database-create)
-- [Update a database](https://docs.nestbase.com/reference/database-update)
-- [Retrieve a database](https://docs.nestbase.com/reference/database-retrieve)
-
-## Data Sources
-
-### Create a Data Source
-
-- [Create a data source](https://docs.nestbase.com/reference/create-a-data-source)
-- [Update a data source](https://docs.nestbase.com/reference/update-a-data-source)
-  - [Update data source properties](https://docs.nestbase.com/reference/update-data-source-properties)
-- [Retrieve a data source](https://docs.nestbase.com/reference/retrieve-a-data-source)
-- [Query a data source](https://docs.nestbase.com/reference/query-a-data-source)
-  - [Filter data source entries](https://docs.nestbase.com/reference/filter-data-source-entries)
-  - [Sort data source entries](https://docs.nestbase.com/reference/sort-data-source-entries)
-- [List data source templates](https://docs.nestbase.com/reference/list-data-source-templates)
-
-### Databases (deprecated)
-
-#### Create a Database
-
-- [Create a database](https://docs.nestbase.com/reference/create-a-database)
-- [Query a database](https://docs.nestbase.com/reference/post-database-query)
-  - [Filter database entries](https://docs.nestbase.com/reference/post-database-query-filter)
-  - [Sort database entries](https://docs.nestbase.com/reference/post-database-query-sort)
-- [Retrieve a database](https://docs.nestbase.com/reference/retrieve-a-database)
-- [Update a database](https://docs.nestbase.com/reference/update-a-database)
-  - [Update database properties](https://docs.nestbase.com/reference/update-property-schema-object)
-- [List databases (deprecated)](https://docs.nestbase.com/reference/get-databases)
-
-### Comments
-
-- [Create comment](https://docs.nestbase.com/reference/create-a-comment)
-- [Retrieve a comment](https://docs.nestbase.com/reference/retrieve-comment)
-- [List comments](https://docs.nestbase.com/reference/list-comments)
-
-### File Uploads
-
-- [Create a file upload](https://docs.nestbase.com/reference/create-a-file-upload)
-- [Send a file upload](https://docs.nestbase.com/reference/send-a-file-upload)
-- [Complete a file upload](https://docs.nestbase.com/reference/complete-a-file-upload)
-- [Retrieve a file upload](https://docs.nestbase.com/reference/retrieve-a-file-upload)
-- [List file uploads](https://docs.nestbase.com/reference/list-file-uploads)
-
-### Search
-
-- [Search](https://docs.nestbase.com/reference/post-search)
-```
+> ## Documentation Index
+> Fetch the complete documentation index at: https://developers.notion.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Database
 
-Learn more about Notion's database object.
+> Learn more about Notion's database object.
 
-A **database** is an object that contains one or more [data sources](/reference/data-sources). Databases can either be displayed inline in the parent page ([is_inline: true](/reference/data-source)) or as a full page ([is_inline: false](/reference/data-source)). The properties (schema) of each data source under a database can be maintained independently, and each data source has its own set of rows (pages).
+A **database** is an object that contains one or more [data sources](/reference/create-a-data-source). Databases can either be displayed inline in the parent page (`is_inline: true`) or as a full page (`is_inline: false`). The properties (schema) of each data source under a database can be maintained independently, and each data source has its own set of rows (pages).
 
 Individual data sources don't have permissions settings, so the set of Notion users and bots that have access to data source children is managed through **databases**.
 
-Databases that exist at the workspace level must be full-page databases, not inline. For easier permission management, we typically recommend having at least one level of parent page in between a database and the top-level workspace root.
-
 ## Object fields
 
-> **Changed as of 2025-09-03**
-> 
-> In September 2025, the [Data source](/reference/data-source) object was introduced, and includes the `properties` that used to exist here at the database level.
-> 
-> ![Diagram of the new Notion API data model: databases parent one or more data sources, each of which parents zero or more pages.](https://files.readme.io/6dc5c7eccb432e908290e2642c84579936d55ee79c6cd60a5b0807e70cdeb55a-image.png)
-> 
-> Diagram of the new Notion API data model.  
-> A database is a parent of one or more data sources, each of which parents zero or more pages.  
-> Previously, databases could only have one data source, so the concepts were combined in the API until 2025.
-> 
-> After [upgrading your API](/docs/upgrade-guide-2025-09-03) integration to `2025-09-03`, the new database object shape is displayed, including an array of child `data_sources` but **not** the data source `properties`.
-```
+<Note>
+  **Changed as of 2025-09-03**
+
+  In September 2025, the [Data source](/reference/data-source) object was introduced, and includes the `properties` that used to exist here at the database level.
+
+  <Frame caption="Diagram of the new Notion API data model. A database is a parent of one or more data sources, each of which parents zero or more pages. Previously, databases could only have one data source, so the concepts were combined in the API until 2025.">
+    <img src="https://mintcdn.com/notion-demo/Muj7K3D7I6gj-QAA/images/reference/6dc5c7eccb432e908290e2642c84579936d55ee79c6cd60a5b0807e70cdeb55a-image.png?fit=max&auto=format&n=Muj7K3D7I6gj-QAA&q=85&s=732ada865d8d25def0ba61090c6e9f2e" data-og-width="443" width="443" data-og-height="302" height="302" data-path="images/reference/6dc5c7eccb432e908290e2642c84579936d55ee79c6cd60a5b0807e70cdeb55a-image.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/notion-demo/Muj7K3D7I6gj-QAA/images/reference/6dc5c7eccb432e908290e2642c84579936d55ee79c6cd60a5b0807e70cdeb55a-image.png?w=280&fit=max&auto=format&n=Muj7K3D7I6gj-QAA&q=85&s=8d33e61be4213e2a024bcbe4b01a3bd1 280w, https://mintcdn.com/notion-demo/Muj7K3D7I6gj-QAA/images/reference/6dc5c7eccb432e908290e2642c84579936d55ee79c6cd60a5b0807e70cdeb55a-image.png?w=560&fit=max&auto=format&n=Muj7K3D7I6gj-QAA&q=85&s=3353aea11c132efb30d71bf0fd9839c9 560w, https://mintcdn.com/notion-demo/Muj7K3D7I6gj-QAA/images/reference/6dc5c7eccb432e908290e2642c84579936d55ee79c6cd60a5b0807e70cdeb55a-image.png?w=840&fit=max&auto=format&n=Muj7K3D7I6gj-QAA&q=85&s=7d0a175fcd59c54ae57a9c342dde1487 840w, https://mintcdn.com/notion-demo/Muj7K3D7I6gj-QAA/images/reference/6dc5c7eccb432e908290e2642c84579936d55ee79c6cd60a5b0807e70cdeb55a-image.png?w=1100&fit=max&auto=format&n=Muj7K3D7I6gj-QAA&q=85&s=e88f2799abfa21ad2e6154e9dc963e1d 1100w, https://mintcdn.com/notion-demo/Muj7K3D7I6gj-QAA/images/reference/6dc5c7eccb432e908290e2642c84579936d55ee79c6cd60a5b0807e70cdeb55a-image.png?w=1650&fit=max&auto=format&n=Muj7K3D7I6gj-QAA&q=85&s=7043f683e79ba9ec7144137434c93013 1650w, https://mintcdn.com/notion-demo/Muj7K3D7I6gj-QAA/images/reference/6dc5c7eccb432e908290e2642c84579936d55ee79c6cd60a5b0807e70cdeb55a-image.png?w=2500&fit=max&auto=format&n=Muj7K3D7I6gj-QAA&q=85&s=cc1ec88f460a1ea3e9c304142bdc3bf3 2500w" />
+  </Frame>
+
+  After [upgrading your API](/guides/get-started/upgrade-guide-2025-09-03) integration to `2025-09-03`, the new database object shape is displayed, including an array of child `data_sources` but **not** the data source `properties`.
+</Note>
+
+| Field              | Type                                                                             | Description                                                                                                                                                                                                                          | Example value                                                                                                                                                                                                                                                                                      |
+| :----------------- | :------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `object`           | `string`                                                                         | Always `"database"`.                                                                                                                                                                                                                 | `"database"`                                                                                                                                                                                                                                                                                       |
+| `id`               | `string` (UUID)                                                                  | Unique identifier for the database.                                                                                                                                                                                                  | `"2f26ee68-df30-4251-aad4-8ddc420cba3d"`                                                                                                                                                                                                                                                           |
+| `data_sources`     | array of data source objects                                                     | List of child data sources, each of which is a JSON object with an `id` and `name`. <br /><br /> Use [Retrieve a data source](/reference/retrieve-a-data-source) to get more details on the data source, including its `properties`. | `[{"id": "c174b72c-d782-432f-8dc0-b647e1c96df6", "name": "Tasks data source"}]`                                                                                                                                                                                                                    |
+| `created_time`     | `string` ([ISO 8601 date and time](https://en.wikipedia.org/wiki/ISO_8601))      | Date and time when this database was created. Formatted as an [ISO 8601 date time](https://en.wikipedia.org/wiki/ISO_8601) string.                                                                                                   | `"2020-03-17T19:10:04.968Z"`                                                                                                                                                                                                                                                                       |
+| `created_by`       | [Partial User](/reference/user)                                                  | User who created the database.                                                                                                                                                                                                       | `{"object": "user","id": "45ee8d13-687b-47ce-a5ca-6e2e45548c4b"}`                                                                                                                                                                                                                                  |
+| `last_edited_time` | `string` ([ISO 8601 date and time](https://en.wikipedia.org/wiki/ISO_8601))      | Date and time when this database was updated. Formatted as an [ISO 8601 date time](https://en.wikipedia.org/wiki/ISO_8601) string.                                                                                                   | `"2020-03-17T21:49:37.913Z"`                                                                                                                                                                                                                                                                       |
+| `last_edited_by`   | [Partial User](/reference/user)                                                  | User who last edited the database.                                                                                                                                                                                                   | `{"object": "user","id": "45ee8d13-687b-47ce-a5ca-6e2e45548c4b"}`                                                                                                                                                                                                                                  |
+| `title`            | array of [rich text objects](/reference/rich-text)                               | Name of the database as it appears in Notion. See [rich text object](/reference/rich-text)) for a breakdown of the properties.                                                                                                       | `"title": [ { "type": "text", "text": { "content": "Can I create a URL property", "link": null }, "annotations": { "bold": false, "italic": false, "strikethrough": false, "underline": false, "code": false, "color": "default" }, "plain_text": "Can I create a URL property", "href": null } ]` |
+| `description`      | array of [rich text objects](/reference/rich-text)                               | Description of the database as it appears in Notion. See [rich text object](/reference/rich-text)) for a breakdown of the properties.                                                                                                |                                                                                                                                                                                                                                                                                                    |
+| `icon`             | [File Object](/reference/file-object) or [Emoji object](/reference/emoji-object) | Page icon.                                                                                                                                                                                                                           |                                                                                                                                                                                                                                                                                                    |
+| `cover`            | [File object](/reference/file-object)                                            | Page cover image.                                                                                                                                                                                                                    |                                                                                                                                                                                                                                                                                                    |
+| `parent`           | `object`                                                                         | Information about the database's parent. See [Parent object](/reference/parent-object).                                                                                                                                              | `{ "type": "page_id", "page_id": "af5f89b5-a8ff-4c56-a5e8-69797d11b9f8" }`                                                                                                                                                                                                                         |
+| `url`              | `string`                                                                         | The URL of the Notion database.                                                                                                                                                                                                      | `"https://www.notion.so/668d797c76fa49349b05ad288df2d136"`                                                                                                                                                                                                                                         |
+| `archived`         | `boolean`                                                                        | The archived status of the database.                                                                                                                                                                                                 | `false`                                                                                                                                                                                                                                                                                            |
+| `in_trash`         | `boolean`                                                                        | Whether the database has been deleted.                                                                                                                                                                                               | `false`                                                                                                                                                                                                                                                                                            |
+| `is_inline`        | `boolean`                                                                        | Has the value `true` if the database appears in the page as an inline block. Otherwise has the value `false` if the database appears as a child page.                                                                                | `false`                                                                                                                                                                                                                                                                                            |
+| `public_url`       | `string`                                                                         | The public page URL if the page has been published to the web. Otherwise, `null`.                                                                                                                                                    | `"https://jm-testing.notion.site/p1-6df2c07bfc6b4c46815ad205d132e22d"1`                                                                                                                                                                                                                            |
+
+**What’s Next**
+
+<CardGroup>
+  <Card title="Data source" href="/reference/data-source" icon="angles-right" horizontal color="#0076d7" />
+
+  <Card title="Data source properties" href="/reference/property-object" icon="angles-right" horizontal color="#0076d7" />
+
+  <Card title="Page" href="/reference/page" icon="angles-right" horizontal color="#0076d7" />
+</CardGroup>

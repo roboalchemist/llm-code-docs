@@ -1,6 +1,6 @@
-# Source: https://rsbuild.dev/guide/basic/upgrade-rsbuild.md
+# Source: https://rsbuild.dev/guide/upgrade/upgrade-rsbuild.md
 
-# Upgrade Rsbuild
+# Upgrading Rsbuild
 
 This section explains how to upgrade your project's Rsbuild dependencies to the latest version.
 

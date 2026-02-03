@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/configuration/outputs/
+
 # Output Formats
 
 Save and analyze your evaluation results in various formats.

@@ -35,7 +35,7 @@ Async sub-client for manipulating a single task.
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#__init__)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/task.py#L337)\_\_init\_\_
+### [**](#__init__)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/task.py#L337)\_\_init\_\_
 
 * ****\_\_init\_\_**(\*, base\_url, root\_client, http\_client, resource\_id, resource\_path, params): None
 
@@ -73,7 +73,7 @@ Async sub-client for manipulating a single task.
 
   #### Returns None
 
-### [**](#call)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/task.py#L484)call
+### [**](#call)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/task.py#L484)call
 
 * **async **call**(\*, task\_input, build, max\_items, memory\_mbytes, timeout\_secs, restart\_on\_error, webhooks, wait\_secs): dict | None
 
@@ -121,7 +121,7 @@ Async sub-client for manipulating a single task.
 
   #### Returns dict | None
 
-### [**](#delete)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/task.py#L416)delete
+### [**](#delete)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/task.py#L416)delete
 
 * **async **delete**(): None
 
@@ -133,7 +133,7 @@ Async sub-client for manipulating a single task.
 
   #### Returns None
 
-### [**](#get)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/task.py#L341)get
+### [**](#get)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/task.py#L341)get
 
 * **async **get**(): dict | None
 
@@ -145,7 +145,7 @@ Async sub-client for manipulating a single task.
 
   #### Returns dict | None
 
-### [**](#get_input)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/task.py#L535)get\_input
+### [**](#get_input)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/task.py#L535)get\_input
 
 * **async **get\_input**(): dict | None
 
@@ -157,7 +157,7 @@ Async sub-client for manipulating a single task.
 
   #### Returns dict | None
 
-### [**](#last_run)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/task.py#L574)last\_run
+### [**](#last_run)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/task.py#L574)last\_run
 
 * ****last\_run**(\*, status, origin): [RunClientAsync](https://docs.apify.com/api/client/python/api/client/python/reference/class/RunClientAsync.md)
 
@@ -179,7 +179,7 @@ Async sub-client for manipulating a single task.
 
   #### Returns [RunClientAsync](https://docs.apify.com/api/client/python/api/client/python/reference/class/RunClientAsync.md)
 
-### [**](#runs)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/task.py#L570)runs
+### [**](#runs)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/task.py#L570)runs
 
 * ****runs**(): [RunCollectionClientAsync](https://docs.apify.com/api/client/python/api/client/python/reference/class/RunCollectionClientAsync.md)
 
@@ -189,7 +189,7 @@ Async sub-client for manipulating a single task.
 
   #### Returns [RunCollectionClientAsync](https://docs.apify.com/api/client/python/api/client/python/reference/class/RunCollectionClientAsync.md)
 
-### [**](#start)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/task.py#L423)start
+### [**](#start)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/task.py#L423)start
 
 * **async **start**(\*, task\_input, build, max\_items, memory\_mbytes, timeout\_secs, restart\_on\_error, wait\_for\_finish, webhooks): dict
 
@@ -239,7 +239,7 @@ Async sub-client for manipulating a single task.
 
   #### Returns dict
 
-### [**](#update)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/task.py#L351)update
+### [**](#update)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/task.py#L351)update
 
 * **async **update**(\*, name, task\_input, build, max\_items, memory\_mbytes, timeout\_secs, restart\_on\_error, title, actor\_standby\_desired\_requests\_per\_actor\_run, actor\_standby\_max\_requests\_per\_actor\_run, actor\_standby\_idle\_timeout\_secs, actor\_standby\_build, actor\_standby\_memory\_mbytes): dict
 
@@ -305,7 +305,7 @@ Async sub-client for manipulating a single task.
 
   #### Returns dict
 
-### [**](#update_input)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/task.py#L554)update\_input
+### [**](#update_input)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/task.py#L554)update\_input
 
 * **async **update\_input**(\*, task\_input): dict
 
@@ -321,7 +321,7 @@ Async sub-client for manipulating a single task.
 
   #### Returns dict
 
-### [**](#webhooks)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/task.py#L597)webhooks
+### [**](#webhooks)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/task.py#L597)webhooks
 
 * ****webhooks**(): [WebhookCollectionClientAsync](https://docs.apify.com/api/client/python/api/client/python/reference/class/WebhookCollectionClientAsync.md)
 
@@ -333,7 +333,7 @@ Async sub-client for manipulating a single task.
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#http_client)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/base/base_client.py#L94)http\_client
+### [**](#http_client)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/base/base_client.py#L94)http\_client
 
 **http\_client: [HTTPClient](https://docs.apify.com/api/client/python/api/client/python/reference/class/HTTPClient.md) | [HTTPClientAsync](https://docs.apify.com/api/client/python/api/client/python/reference/class/HTTPClientAsync.md)
 
@@ -341,19 +341,19 @@ Inherited from [BaseClientAsync.http\_client](https://docs.apify.com/api/client/
 
 Overrides [\_BaseBaseClient.http\_client](https://docs.apify.com/api/client/python/api/client/python/reference/class/_BaseBaseClient.md#http_client)
 
-### [**](#params)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/base/base_client.py#L17)params
+### [**](#params)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/base/base_client.py#L17)params
 
 **params: dict
 
 Inherited from [\_BaseBaseClient.params](https://docs.apify.com/api/client/python/api/client/python/reference/class/_BaseBaseClient.md#params)
 
-### [**](#resource_id)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/base/base_client.py#L15)resource\_id
+### [**](#resource_id)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/base/base_client.py#L15)resource\_id
 
 **resource\_id: str | None
 
 Inherited from [\_BaseBaseClient.resource\_id](https://docs.apify.com/api/client/python/api/client/python/reference/class/_BaseBaseClient.md#resource_id)
 
-### [**](#root_client)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/base/base_client.py#L95)root\_client
+### [**](#root_client)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/base/base_client.py#L95)root\_client
 
 **root\_client: [ApifyClient](https://docs.apify.com/api/client/python/api/client/python/reference/class/ApifyClient.md) | [ApifyClientAsync](https://docs.apify.com/api/client/python/api/client/python/reference/class/ApifyClientAsync.md)
 
@@ -361,7 +361,7 @@ Inherited from [BaseClientAsync.root\_client](https://docs.apify.com/api/client/
 
 Overrides [\_BaseBaseClient.root\_client](https://docs.apify.com/api/client/python/api/client/python/reference/class/_BaseBaseClient.md#root_client)
 
-### [**](#url)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/base/base_client.py#L16)url
+### [**](#url)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/base/base_client.py#L16)url
 
 **url: str
 

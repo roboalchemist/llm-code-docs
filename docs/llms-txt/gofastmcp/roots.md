@@ -1,47 +1,52 @@
 # Source: https://gofastmcp.com/clients/roots.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Client Roots
 
 > Provide local context and resource boundaries to MCP servers.
 
 export const VersionBadge = ({version}) => {
-  return <code className="version-badge-container">
-            <p className="version-badge">
-                <span className="version-badge-label">New in version:</span> 
-                <code className="version-badge-version">{version}</code>
-            </p>
-        </code>;
+  return <Badge stroke size="lg" icon="gift" iconType="regular" className="version-badge">
+            New in version <code>{version}</code>
+        </Badge>;
 };
 
 <VersionBadge version="2.0.0" />
 
-Roots are a way for clients to inform servers about the resources they have access to. Servers can use this information to adjust behavior or provide more relevant responses.
+Use this when you need to tell servers what local resources the client has access to.
 
-## Setting Static Roots
+Roots inform servers about resources the client can provide. Servers can use this information to adjust behavior or provide more relevant responses.
+
+## Static Roots
 
 Provide a list of roots when creating the client:
 
-<CodeGroup>
-  ```python Static Roots theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-  from fastmcp import Client
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+from fastmcp import Client
 
-  client = Client(
-      "my_mcp_server.py", 
-      roots=["/path/to/root1", "/path/to/root2"]
-  )
-  ```
+client = Client(
+    "my_mcp_server.py",
+    roots=["/path/to/root1", "/path/to/root2"]
+)
+```
 
-  ```python Dynamic Roots Callback theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-  from fastmcp import Client
-  from fastmcp.client.roots import RequestContext
+## Dynamic Roots
 
-  async def roots_callback(context: RequestContext) -> list[str]:
-      print(f"Server requested roots (Request ID: {context.request_id})")
-      return ["/path/to/root1", "/path/to/root2"]
+Use a callback to compute roots dynamically when the server requests them:
 
-  client = Client(
-      "my_mcp_server.py", 
-      roots=roots_callback
-  )
-  ```
-</CodeGroup>
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+from fastmcp import Client
+from fastmcp.client.roots import RequestContext
+
+async def roots_callback(context: RequestContext) -> list[str]:
+    print(f"Server requested roots (Request ID: {context.request_id})")
+    return ["/path/to/root1", "/path/to/root2"]
+
+client = Client(
+    "my_mcp_server.py",
+    roots=roots_callback
+)
+```

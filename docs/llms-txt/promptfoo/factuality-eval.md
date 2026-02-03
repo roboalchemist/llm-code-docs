@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/guides/factuality-eval/
+
 # Evaluating factuality
 
 ## What is factuality and why is it important?

@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/search/ui/search-bar.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SearchBar
 
 > A beautifully-designed, accessible search component for React

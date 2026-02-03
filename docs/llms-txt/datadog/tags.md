@@ -2,135 +2,1675 @@
 
 # Source: https://docs.datadoghq.com/cloud_cost_management/tags.md
 
+# Source: https://docs.datadoghq.com/api/latest/tags.md
+
 ---
 title: Tags
-description: Learn how tags are sourced, enriched, and managed in Cloud Cost Management.
-breadcrumbs: Docs > Cloud Cost Management > Tags
-source_url: https://docs.datadoghq.com/tags/index.html
+description: Datadog, the leading service for cloud-scale monitoring.
+breadcrumbs: Docs > API Reference > Tags
 ---
 
 # Tags
 
-## Overview{% #overview %}
+The tag endpoint allows you to assign tags to hosts, for example: `role:database`. Those tags are applied to all metrics sent by the host. Refer to hosts by name (`yourhost.example.com`) when fetching and applying tags to a particular host.
 
-Tags help you investigate and understand your cloud and SaaS costs across any dimensions. Tags consist of tag keys and values. For example, in `aws_product:ec2`, the tag key is `aws_product`, and the value is `ec2`.
+The component of your infrastructure responsible for a tag is identified by a source. For example, some valid sources include nagios, hudson, jenkins, users, feed, chef, puppet, git, bitbucket, fabric, capistrano, etc. Find a complete list of source type names under [API Source Attributes](https://docs.datadoghq.com/integrations/faq/list-of-api-source-attribute-value).
 
-Cloud Cost Management automatically enriches your cost data with tags from multiple sources, to help you achieve better cost allocation and get deeper insight into who owns infrastructure costs in your ever-changing cloud environments. Using tags, you can allocate shared costs fairly, create accurate reports, and track costs by team, service, or environment.
+Read more about tags on [Getting Started with Tags](https://docs.datadoghq.com/getting_started/tagging/).
 
-## Where tags come from{% #where-tags-come-from %}
+## Get All Host Tags{% #get-all-host-tags %}
 
-Across all cloud and SaaS providers, Datadog collects tags from the following sources (including enriching cost data with data from other Datadog products) and adds them to your cost data:
+{% tab title="v1" %}
 
-| Source                  | What tags are collected            | Description                                                                                                                                                                                                                                                                                                                                                                             |
-| ----------------------- | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| All Providers           | Bill columns                       | Such as AWS Cost and Usage Report (CUR) columns, Google Billing Export columns, and so on                                                                                                                                                                                                                                                                                               |
-| Datadog Enrichment      | Host Agent                         | Tags added to host metadata by the Datadog Agent running on the host                                                                                                                                                                                                                                                                                                                    |
-| Datadog Enrichment      | Software Catalog                   | Tags associated with this service in the APM Service Catalog                                                                                                                                                                                                                                                                                                                            |
-| Datadog Enrichment      | Integration Tiles                  | Tags added to the Datadog integration tile for a specific cloud account. Integration tile tags apply to all costs in that account. Requires enabling the provider integration for each account                                                                                                                                                                                          |
-| Datadog Enrichment      | Data Observability                 | Tags from Datadog Data Observability, powering BigQuery cost allocation. Requires enabling BigQuery monitoring                                                                                                                                                                                                                                                                          |
-| Datadog Enrichment      | Cloud Network Monitoring           | Source and destination dimensions from [Datadog Cloud Network Monitoring](https://docs.datadoghq.com/network_monitoring/cloud_network_monitoring/). Requires enabling Cloud Network Monitoring in the Datadog Agent. See [data transfer cost allocation](https://docs.datadoghq.com/cloud_cost_management/allocation/container_cost_allocation/?tab=aws#data-transfer) for more details |
-| Kubernetes Enrichment   | Kubernetes Node                    | User-defined tags found on Kubernetes nodes monitored with Datadog                                                                                                                                                                                                                                                                                                                      |
-| Kubernetes Enrichment   | Kubernetes Pod                     | User-defined tags found on Kubernetes pods monitored with Datadog                                                                                                                                                                                                                                                                                                                       |
-| Kubernetes Enrichment   | Kubernetes Persistent Volume       | User-defined tags found on Persistent Volumes in Kubernetes clusters monitored with Datadog                                                                                                                                                                                                                                                                                             |
-| Kubernetes Enrichment   | Kubernetes Persistent Volume Claim | User-defined tags found on Persistent Volume Claims in Kubernetes clusters monitored with Datadog                                                                                                                                                                                                                                                                                       |
-| Cloud Cost Management   | Cloud Cost Aliases                 | Tags derived from provider cost data to simplify the cost data model, such as `aws_product` (an alias of `lineItem/ProductCode`). Additional tags that exist on both cost data and integration metrics are added, allowing cost data and usage data to be combined in Custom Allocation Rules, dashboards, and notebooks                                                                |
-| Cloud Cost Management   | Cloud Cost Allocation              | Tags created during [cost allocation](https://docs.datadoghq.com/cloud_cost_management/allocation/container_cost_allocation/) that specify the split of shared resources, such as `allocated_spend_type`                                                                                                                                                                                |
-| Cloud Cost Management   | FOCUS                              | Provider-agnostic tags compliant with [FOCUS](https://focus.finops.org/), an open specification that normalizes cost and usage datasets across cloud vendors                                                                                                                                                                                                                            |
-| Tag Pipelines           | Rules defined by user              | Tags created by applying your Tag Pipelines to cost data                                                                                                                                                                                                                                                                                                                                |
-| Custom Allocation Rules | Rules defined by user              | Tags created by applying your Custom Allocation Rules to cost data (does not apply to SaaS costs)                                                                                                                                                                                                                                                                                       |
+| Datadog site      | API endpoint                                        |
+| ----------------- | --------------------------------------------------- |
+| ap1.datadoghq.com | GET https://api.ap1.datadoghq.com/api/v1/tags/hosts |
+| ap2.datadoghq.com | GET https://api.ap2.datadoghq.com/api/v1/tags/hosts |
+| app.datadoghq.eu  | GET https://api.datadoghq.eu/api/v1/tags/hosts      |
+| app.ddog-gov.com  | GET https://api.ddog-gov.com/api/v1/tags/hosts      |
+| app.datadoghq.com | GET https://api.datadoghq.com/api/v1/tags/hosts     |
+| us3.datadoghq.com | GET https://api.us3.datadoghq.com/api/v1/tags/hosts |
+| us5.datadoghq.com | GET https://api.us5.datadoghq.com/api/v1/tags/hosts |
 
-Datadog also adds provider-specific tags:
+### Overview
 
-| Provider     | What tags are collected                        | Description                                                                                                                                                                                                                                                  |
-| ------------ | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| AWS          | Cost Allocation Tags                           | Any tag defined by the user in [AWS Cost Allocation](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html) tags that show up in the AWS CUR                                                                                     |
-| AWS          | AWS Resource Groups Tagging API                | User-defined tags on a cloud resource in AWS, pulled by Cloud Cost Management using the [Groups Tagging API](https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/overview.html)                                                            |
-| AWS          | AWS Organizational Units                       | User-defined tags on AWS organizational units using [AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html)                                                                                       |
-| AWS          | AWS Organizations - Accounts                   | User-defined tags on an AWS account using [AWS Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html)                                                                                                 |
-| Amazon ECS   | Amazon ECS Task                                | User-defined tags on an ECS task definition                                                                                                                                                                                                                  |
-| Amazon ECS   | Amazon ECS Container                           | User-defined tags on a container running in an ECS task                                                                                                                                                                                                      |
-| Azure        | Azure Cost Export - User Resource Tags         | User-defined tags on a cloud resource in Azure, found in the **Tags** column in the Azure cost export. Does not include Resource Group tags                                                                                                                  |
-| Azure        | Azure Cost Export - System Resource Tags       | Azure-defined tags on a cloud resource, found in the **AdditionalInfo** column in the Azure cost export                                                                                                                                                      |
-| Google Cloud | Google Billing Export - Project Labels         | User-defined labels on a project in Google Cloud, found in the **project.labels** column in the billing export                                                                                                                                               |
-| Google Cloud | Google Billing Export - System Resource Labels | System-generated labels on a resource in Google Cloud, found in the **system\_labels** column in the billing export                                                                                                                                          |
-| Google Cloud | Google Billing Export - User Resource Labels   | User-defined labels on a cloud resource in Google Cloud, found in the **labels** column in the billing export                                                                                                                                                |
-| Google Cloud | Google Billing Export - User Resource Tags     | User-defined tags on a cloud resource in Google Cloud, found in the **tags** column in the billing export. The `goog-originating-sku-description` tag is added leveraging Google's SKU APIs, to provide more granular SKU details for commitment line items. |
-| Google Cloud | GKE Pod                                        | User-defined labels found on pods running in Google Kubernetes Engine                                                                                                                                                                                        |
-| Oracle Cloud | OCI Cost Export - User Resource Tags           | User-defined tags on a cloud resource in Oracle Cloud Infrastructure, from the **Tags** column in the OCI FOCUS cost export                                                                                                                                  |
-| Datadog      | Datadog Usage Attribution                      | User-defined tags for Usage Attribution in Datadog Plan and Usage                                                                                                                                                                                            |
-| Custom Costs | Cost File Tags                                 | User-defined tags for every provider, found on [cost files](https://docs.datadoghq.com/cloud_cost_management/setup/custom?tab=csv) uploaded to Cloud Cost Management                                                                                         |
+Returns a mapping of tags to hosts. For each tag, the response returns a list of host names that contain this tag. There is a restriction of 10k total host names from the org that can be attached to tags and returned.
 
-## How tags are normalized{% #how-tags-are-normalized %}
+### Arguments
 
-Tag keys and values may look slightly different in Cloud Cost Management compared to the providers or other parts of Datadog because of tag normalization.
+#### Query Strings
 
-Cloud Cost Management normalizes tag **keys** in a similar way to Datadog Metrics:
+| Name   | Type   | Description                                                                                                                                                                              |
+| ------ | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| source | string | Source to filter. [Complete list of source attribute values](https://docs.datadoghq.com/integrations/faq/list-of-api-source-attribute-value). Use "user" source for custom-defined tags. |
 
-- Drop leading characters that are not letters
-- Lowercase all characters
-- Replace special characters and spaces with single underscores `_`
-- Remove any trailing underscores
-- Reduce contiguous underscores to a single underscore
-- Tag keys up to 5000 characters are supported, and any characters before the first letter are dropped so that tag keys start with letters (different from Datadog Metrics)
+### Response
 
-Cloud Cost Management normalizes tag **values** as well, while maintaining human readable tag values for cost reporting. For example, `aws_instance_family:Machine Learning ASIC Instances` remains readable rather than being converted to something like `machine_learning_asic_instances`. The normalization follows this logic:
+{% tab title="200" %}
+OK
+{% tab title="Model" %}
+In this object, the key is the tag, and the value is a list of host names that are reporting that tag.
 
-- Convert any consecutive whitespaces to a single space
-- Keep all letters, marks, numbers, punctuation, and symbols
-- Replace any other characters with an underscore `_`
-- Tag values up to 5000 characters are supported
+| Parent field         | Field     | Type     | Description                                 |
+| -------------------- | --------- | -------- | ------------------------------------------- |
+|                      | tags      | object   | A mapping of tags to host names             |
+| additionalProperties | <any-key> | [string] | A list of host names which contain this tag |
 
-Cloud Cost Recommendations use [standard Datadog metrics normalization rules](https://docs.datadoghq.com/getting_started/tagging/#define-tags). Tag values in recommendations are converted to lowercase and limited to 200 characters. For example, a tag `Team:Engineering-Services` appears as `team:engineering-services` in recommendations, but as `team:Engineering-Services` in cost data.
+{% /tab %}
 
-## Override tag value normalization{% #override-tag-value-normalization %}
+{% tab title="Example" %}
 
-Turn on **Tag Normalization** in the Tag Pipelines page to normalize all cost tag values to match the Metrics normalization. From the example above, you would see `team:engineering-services` everywhere. Tag normalization applies to user-defined tags from cloud costs. Tags created by Tag Pipelines are not normalized. For Azure, the `consumedservice` out-of-the-box tag is also normalized to lowercase. For all new users, the Tag Normalization toggle is enabled by default, with normalized tag values backfilled for the past 3 months automatically. To backfill normalized tags for a longer period up to 15 months, contact [Datadog support](https://docs.datadoghq.com/cloud_cost_management/allocation/container_cost_allocation/?tab=aws#data-transfer).
+```json
+{
+  "tags": {
+    "<any-key>": [
+      "test.metric.host"
+    ]
+  }
+}
+```
 
-Tag normalization allows you to:
+{% /tab %}
 
-- View, filter and group Cost Recommendations and cost data with the same tag values
-- Correlate cost and observability data with the same tag values
-- Automatically combine tag values with different casing (For example: `env:Engineering-Prod` and `env:engineering-Prod` are both normalized to `env:engineering-prod` without having to manually set up Tag Pipelines)
+{% /tab %}
 
-{% image
-   source="https://datadog-docs.imgix.net/images/cloud_cost/tag_normalization_toggle.41f43b849e9e0c17afed9d59af7cf488.png?auto=format"
-   alt="Tag Pipelines interface showing optional toggle to normalize all tags on cost data" /%}
+{% tab title="403" %}
+Forbidden
+{% tab title="Model" %}
+Error response object.
 
-## How tags are prioritized{% #how-tags-are-prioritized %}
+| Field                    | Type     | Description                          |
+| ------------------------ | -------- | ------------------------------------ |
+| errors [*required*] | [string] | Array of errors returned by the API. |
 
-A cost data row can have multiple values for the same tag key when tag values from two or more sources are combined and one is not prioritized over the other.
+{% /tab %}
 
-To resolve conflicts and mitigate this, Cloud Cost Management replaces existing tags instead of adding duplicates using the most specific source for each tag key. For example, a Kubernetes Pod tag `team:shopping` would take precedence and replace a Kubernetes node tag `team:compute`.
+{% tab title="Example" %}
 
-Sources higher in this list replace tag values from sources lower in this list, if there are conflicts:
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
 
-- Custom Allocation Rules
-- FOCUS
-- Service Catalog
-- Amazon ECS Container
-- Amazon ECS Task
-- Kubernetes Pod
-- Kubernetes Persistent Volume
-- Kubernetes Node
-- Host Agent
+{% /tab %}
 
-Other tag sources (such as AWS Organization tags, integration tile tags, and similar sources) can be overridden by these sources. Bill columns and FOCUS columns are reserved and cannot be overridden by any source. Tag Pipelines add new tags but do not override existing tags.
+{% /tab %}
 
-## Improving tagging{% #improving-tagging %}
+{% tab title="404" %}
+Not Found
+{% tab title="Model" %}
+Error response object.
 
-1. **Understand what tags exist** - Use the [Tag Explorer](https://docs.datadoghq.com/cloud_cost_management/tags/tag_explorer) to discover which tags are already available in your cost data.
-1. **Identify gaps in cost allocation** - In the Explorer, group by any tag to see the cost allocated to that tag, or unallocated (which is displayed as `N/A`). Make sure to have "Container Allocated" enabled so that you are looking at a cost allocation that includes tags on pods.
-1. **Split up shared costs** - Use [Custom Allocation Rules](https://docs.datadoghq.com/cloud_cost_management/allocation/custom_allocation_rules) to split and assign shared costs back to teams, services, and more. You can use observability data to split costs accurately based on infrastructure usage.
-1. **Address missing or incorrect tags** - Use [Tag Pipelines](https://docs.datadoghq.com/cloud_cost_management/allocation/tag_pipelines) to alias tags, or create a new tag, for incorrect tagging. For example, if your organization wants to use the standard `application` tag key, but teams use variations (like app, webapp, or apps), you can consolidate those tags to become `application` for more accurate cost reporting.
-1. **Add new tags** - Use [Tag Pipelines](https://docs.datadoghq.com/cloud_cost_management/allocation/tag_pipelines) to automatically create new inferred tags that align with specific business logic, such as a `business-unit` tag based on team structure.
+| Field                    | Type     | Description                          |
+| ------------------------ | -------- | ------------------------------------ |
+| errors [*required*] | [string] | Array of errors returned by the API. |
 
-{% image
-   source="https://datadog-docs.imgix.net/images/cloud_cost/tag_explorer/aws_1.5b18fa3c369eb5368f143ebf21ebae67.png?auto=format"
-   alt="Tag Explorer interface showing available AWS tags and their usage" /%}
+{% /tab %}
 
-## Further reading{% #further-reading %}
+{% tab title="Example" %}
 
-- [Learn about Cloud Cost Management](https://docs.datadoghq.com/cloud_cost_management/)
-- [Tag Pipelines](https://docs.datadoghq.com/cloud_cost_management/allocation/tag_pipelines)
-- [Tag Explorer](https://docs.datadoghq.com/cloud_cost_management/tags/tag_explorer)
-- [Getting Started with Tags](https://docs.datadoghq.com/getting_started/tagging/)
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="429" %}
+Too many requests
+{% tab title="Model" %}
+Error response object.
+
+| Field                    | Type     | Description                          |
+| ------------------------ | -------- | ------------------------------------ |
+| errors [*required*] | [string] | Array of errors returned by the API. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+### Code Example
+
+##### 
+                  \# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/tags/hosts" \
+-H "Accept: application/json" \
+-H "DD-API-KEY: ${DD_API_KEY}" \
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+                
+##### 
+
+```python
+"""
+Get Tags returns "OK" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v1.api.tags_api import TagsApi
+
+configuration = Configuration()
+with ApiClient(configuration) as api_client:
+    api_instance = TagsApi(api_client)
+    response = api_instance.list_host_tags()
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Get Tags returns "OK" response
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V1::TagsAPI.new
+p api_instance.list_host_tags()
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" rb "example.rb"
+##### 
+
+```go
+// Get Tags returns "OK" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+)
+
+func main() {
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV1.NewTagsApi(apiClient)
+	resp, r, err := api.ListHostTags(ctx, *datadogV1.NewListHostTagsOptionalParameters())
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TagsApi.ListHostTags`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `TagsApi.ListHostTags`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" go run "main.go"
+##### 
+
+```java
+// Get Tags returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v1.api.TagsApi;
+import com.datadog.api.client.v1.model.TagToHosts;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    TagsApi apiInstance = new TagsApi(defaultClient);
+
+    try {
+      TagToHosts result = apiInstance.listHostTags();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TagsApi#listHostTags");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" java "Example.java"
+##### 
+
+```rust
+// Get Tags returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV1::api_tags::ListHostTagsOptionalParams;
+use datadog_api_client::datadogV1::api_tags::TagsAPI;
+
+#[tokio::main]
+async fn main() {
+    let configuration = datadog::Configuration::new();
+    let api = TagsAPI::with_config(configuration);
+    let resp = api
+        .list_host_tags(ListHostTagsOptionalParams::default())
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Get Tags returns "OK" response
+ */
+
+import { client, v1 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+const apiInstance = new v1.TagsApi(configuration);
+
+apiInstance
+  .listHostTags()
+  .then((data: v1.TagToHosts) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<DD_API_KEY>" DD_APP_KEY="<DD_APP_KEY>" tsc "example.ts"
+{% /tab %}
+
+## Get Host Tags{% #get-host-tags %}
+
+{% tab title="v1" %}
+
+| Datadog site      | API endpoint                                                    |
+| ----------------- | --------------------------------------------------------------- |
+| ap1.datadoghq.com | GET https://api.ap1.datadoghq.com/api/v1/tags/hosts/{host_name} |
+| ap2.datadoghq.com | GET https://api.ap2.datadoghq.com/api/v1/tags/hosts/{host_name} |
+| app.datadoghq.eu  | GET https://api.datadoghq.eu/api/v1/tags/hosts/{host_name}      |
+| app.ddog-gov.com  | GET https://api.ddog-gov.com/api/v1/tags/hosts/{host_name}      |
+| app.datadoghq.com | GET https://api.datadoghq.com/api/v1/tags/hosts/{host_name}     |
+| us3.datadoghq.com | GET https://api.us3.datadoghq.com/api/v1/tags/hosts/{host_name} |
+| us5.datadoghq.com | GET https://api.us5.datadoghq.com/api/v1/tags/hosts/{host_name} |
+
+### Overview
+
+Return the list of tags that apply to a given host.
+
+### Arguments
+
+#### Path Parameters
+
+| Name                        | Type   | Description                           |
+| --------------------------- | ------ | ------------------------------------- |
+| host_name [*required*] | string | Name of the host to retrieve tags for |
+
+#### Query Strings
+
+| Name   | Type   | Description                                                                                                                                                                              |
+| ------ | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| source | string | Source to filter. [Complete list of source attribute values](https://docs.datadoghq.com/integrations/faq/list-of-api-source-attribute-value). Use "user" source for custom-defined tags. |
+
+### Response
+
+{% tab title="200" %}
+OK
+{% tab title="Model" %}
+Host name and an array of its tags
+
+| Field | Type     | Description                            |
+| ----- | -------- | -------------------------------------- |
+| host  | string   | Your host name.                        |
+| tags  | [string] | A list of tags associated with a host. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "host": "test.host",
+  "tags": [
+    "environment:production"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="403" %}
+Forbidden
+{% tab title="Model" %}
+Error response object.
+
+| Field                    | Type     | Description                          |
+| ------------------------ | -------- | ------------------------------------ |
+| errors [*required*] | [string] | Array of errors returned by the API. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="404" %}
+Not Found
+{% tab title="Model" %}
+Error response object.
+
+| Field                    | Type     | Description                          |
+| ------------------------ | -------- | ------------------------------------ |
+| errors [*required*] | [string] | Array of errors returned by the API. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="429" %}
+Too many requests
+{% tab title="Model" %}
+Error response object.
+
+| Field                    | Type     | Description                          |
+| ------------------------ | -------- | ------------------------------------ |
+| errors [*required*] | [string] | Array of errors returned by the API. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+### Code Example
+
+##### 
+                  \# Path parametersexport host_name="CHANGE_ME"\# Curl commandcurl -X GET "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/tags/hosts/${host_name}" \
+-H "Accept: application/json" \
+-H "DD-API-KEY: ${DD_API_KEY}" \
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+                
+##### 
+
+```python
+"""
+Get host tags returns "OK" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v1.api.tags_api import TagsApi
+
+configuration = Configuration()
+with ApiClient(configuration) as api_client:
+    api_instance = TagsApi(api_client)
+    response = api_instance.get_host_tags(
+        host_name="host_name",
+    )
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Get host tags returns "OK" response
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V1::TagsAPI.new
+p api_instance.get_host_tags("host_name")
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+##### 
+
+```go
+// Get host tags returns "OK" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+)
+
+func main() {
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV1.NewTagsApi(apiClient)
+	resp, r, err := api.GetHostTags(ctx, "host_name", *datadogV1.NewGetHostTagsOptionalParameters())
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TagsApi.GetHostTags`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `TagsApi.GetHostTags`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+##### 
+
+```java
+// Get host tags returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v1.api.TagsApi;
+import com.datadog.api.client.v1.model.HostTags;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    TagsApi apiInstance = new TagsApi(defaultClient);
+
+    try {
+      HostTags result = apiInstance.getHostTags("host_name");
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TagsApi#getHostTags");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+##### 
+
+```rust
+// Get host tags returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV1::api_tags::GetHostTagsOptionalParams;
+use datadog_api_client::datadogV1::api_tags::TagsAPI;
+
+#[tokio::main]
+async fn main() {
+    let configuration = datadog::Configuration::new();
+    let api = TagsAPI::with_config(configuration);
+    let resp = api
+        .get_host_tags(
+            "host_name".to_string(),
+            GetHostTagsOptionalParams::default(),
+        )
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Get host tags returns "OK" response
+ */
+
+import { client, v1 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+const apiInstance = new v1.TagsApi(configuration);
+
+const params: v1.TagsApiGetHostTagsRequest = {
+  hostName: "host_name",
+};
+
+apiInstance
+  .getHostTags(params)
+  .then((data: v1.HostTags) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
+{% /tab %}
+
+## Add tags to a host{% #add-tags-to-a-host %}
+
+{% tab title="v1" %}
+
+| Datadog site      | API endpoint                                                     |
+| ----------------- | ---------------------------------------------------------------- |
+| ap1.datadoghq.com | POST https://api.ap1.datadoghq.com/api/v1/tags/hosts/{host_name} |
+| ap2.datadoghq.com | POST https://api.ap2.datadoghq.com/api/v1/tags/hosts/{host_name} |
+| app.datadoghq.eu  | POST https://api.datadoghq.eu/api/v1/tags/hosts/{host_name}      |
+| app.ddog-gov.com  | POST https://api.ddog-gov.com/api/v1/tags/hosts/{host_name}      |
+| app.datadoghq.com | POST https://api.datadoghq.com/api/v1/tags/hosts/{host_name}     |
+| us3.datadoghq.com | POST https://api.us3.datadoghq.com/api/v1/tags/hosts/{host_name} |
+| us5.datadoghq.com | POST https://api.us5.datadoghq.com/api/v1/tags/hosts/{host_name} |
+
+### Overview
+
+This endpoint allows you to add new tags to a host, optionally specifying what source these tags come from. If tags already exist, appends new tags to the tag list. If no source is specified, defaults to "user".
+
+### Arguments
+
+#### Path Parameters
+
+| Name                        | Type   | Description                         |
+| --------------------------- | ------ | ----------------------------------- |
+| host_name [*required*] | string | Specified host name to add new tags |
+
+#### Query Strings
+
+| Name   | Type   | Description                                                                                                                                                                                                                               |
+| ------ | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| source | string | Source to add tags. [Complete list of source attribute values](https://docs.datadoghq.com/integrations/faq/list-of-api-source-attribute-value). Use "user" source for custom-defined tags. If no source is specified, defaults to "user". |
+
+### Request
+
+#### Body Data (required)
+
+Update host tags request body.
+
+{% tab title="Model" %}
+
+| Field | Type     | Description                            |
+| ----- | -------- | -------------------------------------- |
+| host  | string   | Your host name.                        |
+| tags  | [string] | A list of tags associated with a host. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "host": "test.host",
+  "tags": [
+    "environment:production"
+  ]
+}
+```
+
+{% /tab %}
+
+### Response
+
+{% tab title="201" %}
+Created
+{% tab title="Model" %}
+Host name and an array of its tags
+
+| Field | Type     | Description                            |
+| ----- | -------- | -------------------------------------- |
+| host  | string   | Your host name.                        |
+| tags  | [string] | A list of tags associated with a host. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "host": "test.host",
+  "tags": [
+    "environment:production"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="403" %}
+Forbidden
+{% tab title="Model" %}
+Error response object.
+
+| Field                    | Type     | Description                          |
+| ------------------------ | -------- | ------------------------------------ |
+| errors [*required*] | [string] | Array of errors returned by the API. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="404" %}
+Not Found
+{% tab title="Model" %}
+Error response object.
+
+| Field                    | Type     | Description                          |
+| ------------------------ | -------- | ------------------------------------ |
+| errors [*required*] | [string] | Array of errors returned by the API. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="429" %}
+Too many requests
+{% tab title="Model" %}
+Error response object.
+
+| Field                    | Type     | Description                          |
+| ------------------------ | -------- | ------------------------------------ |
+| errors [*required*] | [string] | Array of errors returned by the API. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+### Code Example
+
+##### 
+                  \# Path parametersexport host_name="CHANGE_ME"\# Curl commandcurl -X POST "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/tags/hosts/${host_name}" \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-H "DD-API-KEY: ${DD_API_KEY}" \
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
+-d @- << EOF
+{}
+EOF
+                
+##### 
+
+```python
+"""
+Add tags to a host returns "Created" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v1.api.tags_api import TagsApi
+from datadog_api_client.v1.model.host_tags import HostTags
+
+body = HostTags(
+    host="test.host",
+    tags=[
+        "environment:production",
+    ],
+)
+
+configuration = Configuration()
+with ApiClient(configuration) as api_client:
+    api_instance = TagsApi(api_client)
+    response = api_instance.create_host_tags(host_name="host_name", body=body)
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Add tags to a host returns "Created" response
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V1::TagsAPI.new
+
+body = DatadogAPIClient::V1::HostTags.new({
+  host: "test.host",
+  tags: [
+    "environment:production",
+  ],
+})
+p api_instance.create_host_tags("host_name", body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+##### 
+
+```go
+// Add tags to a host returns "Created" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+)
+
+func main() {
+	body := datadogV1.HostTags{
+		Host: datadog.PtrString("test.host"),
+		Tags: []string{
+			"environment:production",
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV1.NewTagsApi(apiClient)
+	resp, r, err := api.CreateHostTags(ctx, "host_name", body, *datadogV1.NewCreateHostTagsOptionalParameters())
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TagsApi.CreateHostTags`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `TagsApi.CreateHostTags`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+##### 
+
+```java
+// Add tags to a host returns "Created" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v1.api.TagsApi;
+import com.datadog.api.client.v1.model.HostTags;
+import java.util.Collections;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    TagsApi apiInstance = new TagsApi(defaultClient);
+
+    HostTags body =
+        new HostTags().host("test.host").tags(Collections.singletonList("environment:production"));
+
+    try {
+      HostTags result = apiInstance.createHostTags("host_name", body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TagsApi#createHostTags");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+##### 
+
+```rust
+// Add tags to a host returns "Created" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV1::api_tags::CreateHostTagsOptionalParams;
+use datadog_api_client::datadogV1::api_tags::TagsAPI;
+use datadog_api_client::datadogV1::model::HostTags;
+
+#[tokio::main]
+async fn main() {
+    let body = HostTags::new()
+        .host("test.host".to_string())
+        .tags(vec!["environment:production".to_string()]);
+    let configuration = datadog::Configuration::new();
+    let api = TagsAPI::with_config(configuration);
+    let resp = api
+        .create_host_tags(
+            "host_name".to_string(),
+            body,
+            CreateHostTagsOptionalParams::default(),
+        )
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Add tags to a host returns "Created" response
+ */
+
+import { client, v1 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+const apiInstance = new v1.TagsApi(configuration);
+
+const params: v1.TagsApiCreateHostTagsRequest = {
+  body: {
+    host: "test.host",
+    tags: ["environment:production"],
+  },
+  hostName: "host_name",
+};
+
+apiInstance
+  .createHostTags(params)
+  .then((data: v1.HostTags) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
+{% /tab %}
+
+## Update host tags{% #update-host-tags %}
+
+{% tab title="v1" %}
+
+| Datadog site      | API endpoint                                                    |
+| ----------------- | --------------------------------------------------------------- |
+| ap1.datadoghq.com | PUT https://api.ap1.datadoghq.com/api/v1/tags/hosts/{host_name} |
+| ap2.datadoghq.com | PUT https://api.ap2.datadoghq.com/api/v1/tags/hosts/{host_name} |
+| app.datadoghq.eu  | PUT https://api.datadoghq.eu/api/v1/tags/hosts/{host_name}      |
+| app.ddog-gov.com  | PUT https://api.ddog-gov.com/api/v1/tags/hosts/{host_name}      |
+| app.datadoghq.com | PUT https://api.datadoghq.com/api/v1/tags/hosts/{host_name}     |
+| us3.datadoghq.com | PUT https://api.us3.datadoghq.com/api/v1/tags/hosts/{host_name} |
+| us5.datadoghq.com | PUT https://api.us5.datadoghq.com/api/v1/tags/hosts/{host_name} |
+
+### Overview
+
+This endpoint allows you to update/replace all tags in an integration source with those supplied in the request.
+
+### Arguments
+
+#### Path Parameters
+
+| Name                        | Type   | Description                        |
+| --------------------------- | ------ | ---------------------------------- |
+| host_name [*required*] | string | Specified host name to change tags |
+
+#### Query Strings
+
+| Name   | Type   | Description                                                                                                                                                                                                                               |
+| ------ | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| source | string | Source to update tags. [Complete list of source attribute values](https://docs.datadoghq.com/integrations/faq/list-of-api-source-attribute-value). Use "user" source for custom-defined tags. If no source specified, defaults to "user". |
+
+### Request
+
+#### Body Data (required)
+
+Add tags to host
+
+{% tab title="Model" %}
+
+| Field | Type     | Description                            |
+| ----- | -------- | -------------------------------------- |
+| host  | string   | Your host name.                        |
+| tags  | [string] | A list of tags associated with a host. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "host": "test.host",
+  "tags": [
+    "environment:production"
+  ]
+}
+```
+
+{% /tab %}
+
+### Response
+
+{% tab title="201" %}
+OK
+{% tab title="Model" %}
+Host name and an array of its tags
+
+| Field | Type     | Description                            |
+| ----- | -------- | -------------------------------------- |
+| host  | string   | Your host name.                        |
+| tags  | [string] | A list of tags associated with a host. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "host": "test.host",
+  "tags": [
+    "environment:production"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="403" %}
+Forbidden
+{% tab title="Model" %}
+Error response object.
+
+| Field                    | Type     | Description                          |
+| ------------------------ | -------- | ------------------------------------ |
+| errors [*required*] | [string] | Array of errors returned by the API. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="404" %}
+Not Found
+{% tab title="Model" %}
+Error response object.
+
+| Field                    | Type     | Description                          |
+| ------------------------ | -------- | ------------------------------------ |
+| errors [*required*] | [string] | Array of errors returned by the API. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="429" %}
+Too many requests
+{% tab title="Model" %}
+Error response object.
+
+| Field                    | Type     | Description                          |
+| ------------------------ | -------- | ------------------------------------ |
+| errors [*required*] | [string] | Array of errors returned by the API. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+### Code Example
+
+##### 
+                  \# Path parametersexport host_name="CHANGE_ME"\# Curl commandcurl -X PUT "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/tags/hosts/${host_name}" \
+-H "Accept: application/json" \
+-H "Content-Type: application/json" \
+-H "DD-API-KEY: ${DD_API_KEY}" \
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}" \
+-d @- << EOF
+{}
+EOF
+                
+##### 
+
+```python
+"""
+Update host tags returns "OK" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v1.api.tags_api import TagsApi
+from datadog_api_client.v1.model.host_tags import HostTags
+
+body = HostTags(
+    host="test.host",
+    tags=[
+        "environment:production",
+    ],
+)
+
+configuration = Configuration()
+with ApiClient(configuration) as api_client:
+    api_instance = TagsApi(api_client)
+    response = api_instance.update_host_tags(host_name="host_name", body=body)
+
+    print(response)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Update host tags returns "OK" response
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V1::TagsAPI.new
+
+body = DatadogAPIClient::V1::HostTags.new({
+  host: "test.host",
+  tags: [
+    "environment:production",
+  ],
+})
+p api_instance.update_host_tags("host_name", body)
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+##### 
+
+```go
+// Update host tags returns "OK" response
+
+package main
+
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+)
+
+func main() {
+	body := datadogV1.HostTags{
+		Host: datadog.PtrString("test.host"),
+		Tags: []string{
+			"environment:production",
+		},
+	}
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV1.NewTagsApi(apiClient)
+	resp, r, err := api.UpdateHostTags(ctx, "host_name", body, *datadogV1.NewUpdateHostTagsOptionalParameters())
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TagsApi.UpdateHostTags`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+
+	responseContent, _ := json.MarshalIndent(resp, "", "  ")
+	fmt.Fprintf(os.Stdout, "Response from `TagsApi.UpdateHostTags`:\n%s\n", responseContent)
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+##### 
+
+```java
+// Update host tags returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v1.api.TagsApi;
+import com.datadog.api.client.v1.model.HostTags;
+import java.util.Collections;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    TagsApi apiInstance = new TagsApi(defaultClient);
+
+    HostTags body =
+        new HostTags().host("test.host").tags(Collections.singletonList("environment:production"));
+
+    try {
+      HostTags result = apiInstance.updateHostTags("host_name", body);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TagsApi#updateHostTags");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+##### 
+
+```rust
+// Update host tags returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV1::api_tags::TagsAPI;
+use datadog_api_client::datadogV1::api_tags::UpdateHostTagsOptionalParams;
+use datadog_api_client::datadogV1::model::HostTags;
+
+#[tokio::main]
+async fn main() {
+    let body = HostTags::new()
+        .host("test.host".to_string())
+        .tags(vec!["environment:production".to_string()]);
+    let configuration = datadog::Configuration::new();
+    let api = TagsAPI::with_config(configuration);
+    let resp = api
+        .update_host_tags(
+            "host_name".to_string(),
+            body,
+            UpdateHostTagsOptionalParams::default(),
+        )
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Update host tags returns "OK" response
+ */
+
+import { client, v1 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+const apiInstance = new v1.TagsApi(configuration);
+
+const params: v1.TagsApiUpdateHostTagsRequest = {
+  body: {
+    host: "test.host",
+    tags: ["environment:production"],
+  },
+  hostName: "host_name",
+};
+
+apiInstance
+  .updateHostTags(params)
+  .then((data: v1.HostTags) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
+{% /tab %}
+
+## Remove host tags{% #remove-host-tags %}
+
+{% tab title="v1" %}
+
+| Datadog site      | API endpoint                                                       |
+| ----------------- | ------------------------------------------------------------------ |
+| ap1.datadoghq.com | DELETE https://api.ap1.datadoghq.com/api/v1/tags/hosts/{host_name} |
+| ap2.datadoghq.com | DELETE https://api.ap2.datadoghq.com/api/v1/tags/hosts/{host_name} |
+| app.datadoghq.eu  | DELETE https://api.datadoghq.eu/api/v1/tags/hosts/{host_name}      |
+| app.ddog-gov.com  | DELETE https://api.ddog-gov.com/api/v1/tags/hosts/{host_name}      |
+| app.datadoghq.com | DELETE https://api.datadoghq.com/api/v1/tags/hosts/{host_name}     |
+| us3.datadoghq.com | DELETE https://api.us3.datadoghq.com/api/v1/tags/hosts/{host_name} |
+| us5.datadoghq.com | DELETE https://api.us5.datadoghq.com/api/v1/tags/hosts/{host_name} |
+
+### Overview
+
+This endpoint allows you to remove all tags for a single host. If no source is specified, only deletes from the source "User".
+
+### Arguments
+
+#### Path Parameters
+
+| Name                        | Type   | Description                        |
+| --------------------------- | ------ | ---------------------------------- |
+| host_name [*required*] | string | Specified host name to delete tags |
+
+#### Query Strings
+
+| Name   | Type   | Description                                                                                                                                                                                              |
+| ------ | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| source | string | Source of the tags to be deleted. [Complete list of source attribute values](https://docs.datadoghq.com/integrations/faq/list-of-api-source-attribute-value). Use "user" source for custom-defined tags. |
+
+### Response
+
+{% tab title="204" %}
+OK
+{% /tab %}
+
+{% tab title="403" %}
+Forbidden
+{% tab title="Model" %}
+Error response object.
+
+| Field                    | Type     | Description                          |
+| ------------------------ | -------- | ------------------------------------ |
+| errors [*required*] | [string] | Array of errors returned by the API. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="404" %}
+Not Found
+{% tab title="Model" %}
+Error response object.
+
+| Field                    | Type     | Description                          |
+| ------------------------ | -------- | ------------------------------------ |
+| errors [*required*] | [string] | Array of errors returned by the API. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="429" %}
+Too many requests
+{% tab title="Model" %}
+Error response object.
+
+| Field                    | Type     | Description                          |
+| ------------------------ | -------- | ------------------------------------ |
+| errors [*required*] | [string] | Array of errors returned by the API. |
+
+{% /tab %}
+
+{% tab title="Example" %}
+
+```json
+{
+  "errors": [
+    "Bad Request"
+  ]
+}
+```
+
+{% /tab %}
+
+{% /tab %}
+
+### Code Example
+
+##### 
+                  \# Path parametersexport host_name="CHANGE_ME"\# Curl commandcurl -X DELETE "https://api.ap1.datadoghq.com"https://api.ap2.datadoghq.com"https://api.datadoghq.eu"https://api.ddog-gov.com"https://api.datadoghq.com"https://api.us3.datadoghq.com"https://api.us5.datadoghq.com/api/v1/tags/hosts/${host_name}" \
+-H "DD-API-KEY: ${DD_API_KEY}" \
+-H "DD-APPLICATION-KEY: ${DD_APP_KEY}"
+                
+##### 
+
+```python
+"""
+Remove host tags returns "OK" response
+"""
+
+from datadog_api_client import ApiClient, Configuration
+from datadog_api_client.v1.api.tags_api import TagsApi
+
+configuration = Configuration()
+with ApiClient(configuration) as api_client:
+    api_instance = TagsApi(api_client)
+    api_instance.delete_host_tags(
+        host_name="host_name",
+    )
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=python) and then save the example to `example.py` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" python3 "example.py"
+##### 
+
+```ruby
+# Remove host tags returns "OK" response
+
+require "datadog_api_client"
+api_instance = DatadogAPIClient::V1::TagsAPI.new
+api_instance.delete_host_tags("host_name")
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=ruby) and then save the example to `example.rb` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" rb "example.rb"
+##### 
+
+```go
+// Remove host tags returns "OK" response
+
+package main
+
+import (
+	"context"
+	"fmt"
+	"os"
+
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadog"
+	"github.com/DataDog/datadog-api-client-go/v2/api/datadogV1"
+)
+
+func main() {
+	ctx := datadog.NewDefaultContext(context.Background())
+	configuration := datadog.NewConfiguration()
+	apiClient := datadog.NewAPIClient(configuration)
+	api := datadogV1.NewTagsApi(apiClient)
+	r, err := api.DeleteHostTags(ctx, "host_name", *datadogV1.NewDeleteHostTagsOptionalParameters())
+
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `TagsApi.DeleteHostTags`: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=go) and then save the example to `main.go` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" go run "main.go"
+##### 
+
+```java
+// Remove host tags returns "OK" response
+
+import com.datadog.api.client.ApiClient;
+import com.datadog.api.client.ApiException;
+import com.datadog.api.client.v1.api.TagsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = ApiClient.getDefaultApiClient();
+    TagsApi apiInstance = new TagsApi(defaultClient);
+
+    try {
+      apiInstance.deleteHostTags("host_name");
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TagsApi#deleteHostTags");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=java) and then save the example to `Example.java` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" java "Example.java"
+##### 
+
+```rust
+// Remove host tags returns "OK" response
+use datadog_api_client::datadog;
+use datadog_api_client::datadogV1::api_tags::DeleteHostTagsOptionalParams;
+use datadog_api_client::datadogV1::api_tags::TagsAPI;
+
+#[tokio::main]
+async fn main() {
+    let configuration = datadog::Configuration::new();
+    let api = TagsAPI::with_config(configuration);
+    let resp = api
+        .delete_host_tags(
+            "host_name".to_string(),
+            DeleteHostTagsOptionalParams::default(),
+        )
+        .await;
+    if let Ok(value) = resp {
+        println!("{:#?}", value);
+    } else {
+        println!("{:#?}", resp.unwrap_err());
+    }
+}
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=rust) and then save the example to `src/main.rs` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" cargo run
+##### 
+
+```typescript
+/**
+ * Remove host tags returns "OK" response
+ */
+
+import { client, v1 } from "@datadog/datadog-api-client";
+
+const configuration = client.createConfiguration();
+const apiInstance = new v1.TagsApi(configuration);
+
+const params: v1.TagsApiDeleteHostTagsRequest = {
+  hostName: "host_name",
+};
+
+apiInstance
+  .deleteHostTags(params)
+  .then((data: any) => {
+    console.log(
+      "API called successfully. Returned data: " + JSON.stringify(data)
+    );
+  })
+  .catch((error: any) => console.error(error));
+```
+
+#### Instructions
+
+First [install the library and its dependencies](https://docs.datadoghq.com/api/latest/?code-lang=typescript) and then save the example to `example.ts` and run following commands:
+    DD_SITE="datadoghq.comus3.datadoghq.comus5.datadoghq.comdatadoghq.euap1.datadoghq.comap2.datadoghq.comddog-gov.com" DD_API_KEY="<API-KEY>" DD_APP_KEY="<APP-KEY>" tsc "example.ts"
+{% /tab %}

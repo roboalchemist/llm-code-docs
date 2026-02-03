@@ -4,8 +4,6 @@
 title: Deadline Cloud Farm
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Deadline Cloud Farm
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.deadline_farm.dataset/index.html
 ---
 
 # Deadline Cloud Farm
@@ -18,14 +16,14 @@ aws.deadline_farm
 
 ## Fields
 
-| Title       | ID   | Type      | Data Type                                      | Description |
-| ----------- | ---- | --------- | ---------------------------------------------- | ----------- |
-| _key        | core | string    |
-| account_id  | core | string    |
-| created_at  | core | timestamp | The date and time the resource was created.    |
-| created_by  | core | string    | The user or system that created this resource. |
-| farm_id     | core | string    | The farm ID.                                   |
-| kms_key_arn | core | string    | The ARN for the KMS key.                       |
-| tags        | core | hstore    |
-| updated_at  | core | timestamp | The date and time the resource was updated.    |
-| updated_by  | core | string    | The user or system that updated this resource. |
+| Title       | ID   | Type       | Data Type                                      | Description |
+| ----------- | ---- | ---------- | ---------------------------------------------- | ----------- |
+| _key        | core | string     |
+| account_id  | core | string     |
+| created_at  | core | timestamp  | The date and time the resource was created.    |
+| created_by  | core | string     | The user or system that created this resource. |
+| farm_id     | core | string     | The farm ID.                                   |
+| kms_key_arn | core | string     | The ARN for the KMS key.                       |
+| tags        | core | hstore_csv |
+| updated_at  | core | timestamp  | The date and time the resource was updated.    |
+| updated_by  | core | string     | The user or system that updated this resource. |

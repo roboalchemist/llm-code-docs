@@ -216,7 +216,7 @@ Before we move on to ranking, it's important to know some of the differences bet
 
 Consider the `title` field from our schema, and the document for the article with title "A little snow causes a big mess, more than 100 crashes on Minnesota roads". In the original input, the value for `title` is a string built of up the 14 words, with a single white space character between them. How should we be able to search this field?
 
-For string fields with `index` which defaults to `match:text`, Vespa performs linguistic processing of the string. This includes [tokenization](../../linguistics/linguistics.html#tokenization), [normalization](../../linguistics/linguistics.html#normalization)and language dependent [stemming](../../linguistics/linguistics.html#stemming) of the string.
+For string fields with `index` which defaults to `match:text`, Vespa performs linguistic processing of the string. This includes [tokenization](../../linguistics/linguistics-opennlp.html#tokenization), [normalization](../../linguistics/linguistics-opennlp.html#normalization)and language dependent [stemming](../../linguistics/linguistics-opennlp.html#stemming) of the string.
 
 In our example, this means that the string above is split into the 14 tokens, enabling Vespa to match this document for:
 
@@ -364,7 +364,7 @@ and find documents with high `popularity` values at the top. Note that we must s
 
 After completing this part of the tutorial, you should now have a basic understanding of how you can load data into Vespa and effectively search for content. In the [next part of the tutorial](news-4-embeddings.html), we'll start with the basics for transforming this search app into a recommendation system.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

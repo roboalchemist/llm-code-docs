@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replitai/general-agent.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # General Agent
 
 > General Agent is a powerful variant of Replit Agent designed to work with any project type or framework, offering enhanced flexibility and broader workflow support

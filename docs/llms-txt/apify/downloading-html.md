@@ -2,18 +2,6 @@
 
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/downloading-html.md
 
-# Source: https://docs.apify.com/academy/scraping-basics-python/downloading-html.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript/downloading-html.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-python/downloading-html.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript/downloading-html.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-python/downloading-html.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript2/downloading-html.md
-
 # Downloading HTML with Node.js
 
 **In this lesson we'll start building a Node.js application for watching prices. As a first step, we'll use the Fetch API to download HTML code of a product listing page.**
@@ -103,7 +91,7 @@ SyntaxError: Cannot use import statement outside a module
 
 ## Downloading product listing
 
-Now onto coding! Let's change our code so it downloads HTML of the product listing instead of printing `All is OK`. The https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch provides us with examples how to use it. Inspired by those, our code will look like this:
+Now onto coding! Let's change our code so it downloads HTML of the product listing instead of printing `All is OK`. The [documentation of the Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch) provides us with examples how to use it. Inspired by those, our code will look like this:
 
 
 ```
@@ -115,7 +103,7 @@ console.log(await response.text());
 
 Asynchronous flow
 
-First time you see `await`? It's a modern syntax for working with promises. See the https://nodejs.org/en/learn/asynchronous-work/javascript-asynchronous-programming-and-callbacks and https://nodejs.org/en/learn/asynchronous-work/discover-promises-in-nodejs tutorials in the official Node.js documentation for more.
+First time you see `await`? It's a modern syntax for working with promises. See the [JavaScript Asynchronous Programming and Callbacks](https://nodejs.org/en/learn/asynchronous-work/javascript-asynchronous-programming-and-callbacks) and [Discover Promises in Node.js](https://nodejs.org/en/learn/asynchronous-work/discover-promises-in-nodejs) tutorials in the official Node.js documentation for more.
 
 If we run the program now, it should print the downloaded HTML:
 
@@ -152,11 +140,11 @@ Websites can return various errors, such as when the server is temporarily down,
 
 All status codes
 
-If you've never worked with HTTP response status codes before, briefly scan their https://developer.mozilla.org/en-US/docs/Web/HTTP/Status to get at least a basic idea of what you might encounter. For further education on the topic, we recommend https://http.cat/ as a highly professional resource.
+If you've never worked with HTTP response status codes before, briefly scan their [full list](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) to get at least a basic idea of what you might encounter. For further education on the topic, we recommend [HTTP Cats](https://http.cat/) as a highly professional resource.
 
 A robust scraper skips or retries requests on errors. Given the complexity of this task, it's best to use libraries or frameworks. For now, we'll at least make sure that our program visibly crashes and prints what happened in case there's an error.
 
-First, let's ask for trouble. We'll change the URL in our code to a page that doesn't exist, so that we get a response with https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404. This could happen, for example, when the product we are scraping is no longer available:
+First, let's ask for trouble. We'll change the URL in our code to a page that doesn't exist, so that we get a response with [status code 404](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/404). This could happen, for example, when the product we are scraping is no longer available:
 
 
 ```
@@ -204,15 +192,15 @@ These challenges are here to help you test what you’ve learned in this lesson.
 
 Real world
 
-You're about to touch the real web, which is practical and exciting! But websites change, so some exercises might break. If you run into any issues, please leave a comment below or https://github.com/apify/apify-docs/issues.
+You're about to touch the real web, which is practical and exciting! But websites change, so some exercises might break. If you run into any issues, please leave a comment below or [file a GitHub Issue](https://github.com/apify/apify-docs/issues).
 
-### Scrape AliExpress
+### Scrape LEGO
 
-Download HTML of a product listing page, but this time from a real world e-commerce website. For example this page with AliExpress search results:
+Download HTML of a product listing page, but this time from a real world e-commerce website. For example this page with LEGO search results:
 
 
 ```
-https://www.aliexpress.com/w/wholesale-darth-vader.html
+https://www.lego.com/en-us/themes/star-wars
 ```
 
 
@@ -220,7 +208,7 @@ Solution
 
 
 ```
-const url = "https://www.aliexpress.com/w/wholesale-darth-vader.html";
+const url = 'https://www.lego.com/en-us/themes/star-wars';
 const response = await fetch(url);
 
 if (response.ok) {
@@ -251,7 +239,7 @@ node index.js > products.html
 ```
 
 
-If you want to use Node.js instead, it offers several ways how to create files. The solution below uses the https://nodejs.org/api/fs.html#promises-api:
+If you want to use Node.js instead, it offers several ways how to create files. The solution below uses the [Promises API](https://nodejs.org/api/fs.html#promises-api):
 
 
 ```
@@ -271,7 +259,7 @@ if (response.ok) {
 
 ### Download an image as a file
 
-Download a product image, then save it on your disk as a file. While HTML is *textual* content, images are *binary*. You may want to scan through the https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#reading_the_response_body and the https://nodejs.org/en/learn/manipulating-files/writing-files-with-nodejs tutorial for guidance. Especially check `Response.arrayBuffer()`. You can use this URL pointing to an image of a TV:
+Download a product image, then save it on your disk as a file. While HTML is *textual* content, images are *binary*. You may want to scan through the [Fetch API documentation](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#reading_the_response_body) and the [Writing files with Node.js](https://nodejs.org/en/learn/manipulating-files/writing-files-with-nodejs) tutorial for guidance. Especially check `Response.arrayBuffer()`. You can use this URL pointing to an image of a TV:
 
 
 ```
@@ -281,7 +269,7 @@ https://warehouse-theme-metal.myshopify.com/cdn/shop/products/sonyxbr55front_f72
 
 Solution
 
-Node.js offers several ways how to create files. The solution below uses https://nodejs.org/api/fs.html#promises-api:
+Node.js offers several ways how to create files. The solution below uses [Promises API](https://nodejs.org/api/fs.html#promises-api):
 
 
 ```

@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/deploy/tutorials/docker
+
 # Deploy Streamlit using Docker
 
 So you have an amazing app and you want to start sharing it with other people, what do you do? You have a few options. First, where do you want to run your Streamlit app, and how do you want to access it? Let’s say you want to run your app on your corporate network. Most corporate networks are closed to the outside world. You typically use a VPN to log onto your corporate network and access resources there. You could run your Streamlit app on a server in your corporate network for security reasons, to ensure that only folks internal to your company can access it.

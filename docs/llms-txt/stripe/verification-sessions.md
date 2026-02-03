@@ -430,10 +430,9 @@ const verificationSession = await stripe.identity.verificationSessions.cancel(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.IdentityVerificationSessionCancelParams{
-  Session: stripe.String("{{IDENTITYVERIFICATIONSESSION_ID}}"),
-}
-result, err := sc.V1IdentityVerificationSessions.Cancel(context.TODO(), params)
+params := &stripe.IdentityVerificationSessionCancelParams{}
+result, err := sc.V1IdentityVerificationSessions.Cancel(
+  context.TODO(), "{{IDENTITYVERIFICATIONSESSION_ID}}", params)
 ```
 
 ```dotnet
@@ -518,10 +517,9 @@ const verificationSession = await stripe.identity.verificationSessions.redact(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.IdentityVerificationSessionRedactParams{
-  Session: stripe.String("{{IDENTITYVERIFICATIONSESSION_ID}}"),
-}
-result, err := sc.V1IdentityVerificationSessions.Redact(context.TODO(), params)
+params := &stripe.IdentityVerificationSessionRedactParams{}
+result, err := sc.V1IdentityVerificationSessions.Redact(
+  context.TODO(), "{{IDENTITYVERIFICATIONSESSION_ID}}", params)
 ```
 
 ```dotnet

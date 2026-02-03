@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/user/st.user
+
 # st.user
 
 A read-only, dict-like object for accessing information about the current user.

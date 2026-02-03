@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/observability-guides/https-log-drain.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to set up a self-hosted HTTPS Log Drain
 
 [HTTPS log drains](/core-concepts/observability/logs/log-drains/https-log-drains) enable you to direct logs to HTTPS endpoints. This feature is handy for configuring Logstash and redirecting logs to another location while applying filters or adding additional information. To that end, we provide a sample Logstash app you can deploy on Aptible to do so: [aptible/docker-logstash](https://github.com/aptible/docker-logstash).

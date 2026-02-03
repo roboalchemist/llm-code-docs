@@ -104,12 +104,11 @@ const receivedCredit = await stripe.treasury.receivedCredits.retrieve(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.TreasuryReceivedCreditRetrieveParams{
-  ID: stripe.String("{{RECEIVED_CREDIT_ID}}"),
-}
+params := &stripe.TreasuryReceivedCreditRetrieveParams{}
 params.AddExpand("transaction")
 params.SetStripeAccount("{{CONNECTEDACCOUNT_ID}}")
-result, err := sc.V1TreasuryReceivedCredits.Retrieve(context.TODO(), params)
+result, err := sc.V1TreasuryReceivedCredits.Retrieve(
+  context.TODO(), "{{RECEIVED_CREDIT_ID}}", params)
 ```
 
 ```dotnet

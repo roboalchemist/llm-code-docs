@@ -19,6 +19,428 @@ openapi.yaml post /api/show
 
 
 
+# Anthropic compatibility
+Source: https://docs.ollama.com/api/anthropic-compatibility
+
+
+
+Ollama provides compatibility with the [Anthropic Messages API](https://docs.anthropic.com/en/api/messages) to help connect existing applications to Ollama, including tools like Claude Code.
+
+## Usage
+
+### Environment variables
+
+To use Ollama with tools that expect the Anthropic API (like Claude Code), set these environment variables:
+
+```shell theme={"system"}
+export ANTHROPIC_AUTH_TOKEN=ollama  # required but ignored
+export ANTHROPIC_API_KEY="" # required but ignored
+export ANTHROPIC_BASE_URL=http://localhost:11434
+```
+
+### Simple `/v1/messages` example
+
+<CodeGroup>
+  ```python basic.py theme={"system"}
+  import anthropic
+
+  client = anthropic.Anthropic(
+      base_url='http://localhost:11434',
+      api_key='ollama',  # required but ignored
+  )
+
+  message = client.messages.create(
+      model='qwen3-coder',
+      max_tokens=1024,
+      messages=[
+          {'role': 'user', 'content': 'Hello, how are you?'}
+      ]
+  )
+  print(message.content[0].text)
+  ```
+
+  ```javascript basic.js theme={"system"}
+  import Anthropic from "@anthropic-ai/sdk";
+
+  const anthropic = new Anthropic({
+    baseURL: "http://localhost:11434",
+    apiKey: "ollama", // required but ignored
+  });
+
+  const message = await anthropic.messages.create({
+    model: "qwen3-coder",
+    max_tokens: 1024,
+    messages: [{ role: "user", content: "Hello, how are you?" }],
+  });
+
+  console.log(message.content[0].text);
+  ```
+
+  ```shell basic.sh theme={"system"}
+  curl -X POST http://localhost:11434/v1/messages \
+  -H "Content-Type: application/json" \
+  -H "x-api-key: ollama" \
+  -H "anthropic-version: 2023-06-01" \
+  -d '{
+    "model": "qwen3-coder",
+    "max_tokens": 1024,
+    "messages": [{ "role": "user", "content": "Hello, how are you?" }]
+  }'
+  ```
+</CodeGroup>
+
+### Streaming example
+
+<CodeGroup>
+  ```python streaming.py theme={"system"}
+  import anthropic
+
+  client = anthropic.Anthropic(
+      base_url='http://localhost:11434',
+      api_key='ollama',
+  )
+
+  with client.messages.stream(
+      model='qwen3-coder',
+      max_tokens=1024,
+      messages=[{'role': 'user', 'content': 'Count from 1 to 10'}]
+  ) as stream:
+      for text in stream.text_stream:
+          print(text, end='', flush=True)
+  ```
+
+  ```javascript streaming.js theme={"system"}
+  import Anthropic from "@anthropic-ai/sdk";
+
+  const anthropic = new Anthropic({
+    baseURL: "http://localhost:11434",
+    apiKey: "ollama",
+  });
+
+  const stream = await anthropic.messages.stream({
+    model: "qwen3-coder",
+    max_tokens: 1024,
+    messages: [{ role: "user", content: "Count from 1 to 10" }],
+  });
+
+  for await (const event of stream) {
+    if (
+      event.type === "content_block_delta" &&
+      event.delta.type === "text_delta"
+    ) {
+      process.stdout.write(event.delta.text);
+    }
+  }
+  ```
+
+  ```shell streaming.sh theme={"system"}
+  curl -X POST http://localhost:11434/v1/messages \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "qwen3-coder",
+    "max_tokens": 1024,
+    "stream": true,
+    "messages": [{ "role": "user", "content": "Count from 1 to 10" }]
+  }'
+  ```
+</CodeGroup>
+
+### Tool calling example
+
+<CodeGroup>
+  ```python tools.py theme={"system"}
+  import anthropic
+
+  client = anthropic.Anthropic(
+      base_url='http://localhost:11434',
+      api_key='ollama',
+  )
+
+  message = client.messages.create(
+      model='qwen3-coder',
+      max_tokens=1024,
+      tools=[
+          {
+              'name': 'get_weather',
+              'description': 'Get the current weather in a location',
+              'input_schema': {
+                  'type': 'object',
+                  'properties': {
+                      'location': {
+                          'type': 'string',
+                          'description': 'The city and state, e.g. San Francisco, CA'
+                      }
+                  },
+                  'required': ['location']
+              }
+          }
+      ],
+      messages=[{'role': 'user', 'content': "What's the weather in San Francisco?"}]
+  )
+
+  for block in message.content:
+      if block.type == 'tool_use':
+          print(f'Tool: {block.name}')
+          print(f'Input: {block.input}')
+  ```
+
+  ```javascript tools.js theme={"system"}
+  import Anthropic from "@anthropic-ai/sdk";
+
+  const anthropic = new Anthropic({
+    baseURL: "http://localhost:11434",
+    apiKey: "ollama",
+  });
+
+  const message = await anthropic.messages.create({
+    model: "qwen3-coder",
+    max_tokens: 1024,
+    tools: [
+      {
+        name: "get_weather",
+        description: "Get the current weather in a location",
+        input_schema: {
+          type: "object",
+          properties: {
+            location: {
+              type: "string",
+              description: "The city and state, e.g. San Francisco, CA",
+            },
+          },
+          required: ["location"],
+        },
+      },
+    ],
+    messages: [{ role: "user", content: "What's the weather in San Francisco?" }],
+  });
+
+  for (const block of message.content) {
+    if (block.type === "tool_use") {
+      console.log("Tool:", block.name);
+      console.log("Input:", block.input);
+    }
+  }
+  ```
+
+  ```shell tools.sh theme={"system"}
+  curl -X POST http://localhost:11434/v1/messages \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "qwen3-coder",
+    "max_tokens": 1024,
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "Get the current weather in a location",
+        "input_schema": {
+          "type": "object",
+          "properties": {
+            "location": {
+              "type": "string",
+              "description": "The city and state"
+            }
+          },
+          "required": ["location"]
+        }
+      }
+    ],
+    "messages": [{ "role": "user", "content": "What is the weather in San Francisco?" }]
+  }'
+  ```
+</CodeGroup>
+
+## Using with Claude Code
+
+[Claude Code](https://code.claude.com/docs/en/overview) can be configured to use Ollama as its backend.
+
+### Recommended models
+
+For coding use cases, models like `glm-4.7`, `minimax-m2.1`, and `qwen3-coder` are recommended.
+
+Download a model before use:
+
+```shell theme={"system"}
+ollama pull qwen3-coder
+```
+
+> Note: Qwen 3 coder is a 30B parameter model requiring at least 24GB of VRAM to run smoothly. More is required for longer context lengths.
+
+```shell theme={"system"}
+ollama pull glm-4.7:cloud
+```
+
+### Quick setup
+
+```shell theme={"system"}
+ollama launch claude
+```
+
+This will prompt you to select a model, configure Claude Code automatically, and launch it. To configure without launching:
+
+```shell theme={"system"}
+ollama launch claude --config
+```
+
+### Manual setup
+
+Set the environment variables and run Claude Code:
+
+```shell theme={"system"}
+ANTHROPIC_AUTH_TOKEN=ollama ANTHROPIC_BASE_URL=http://localhost:11434 ANTHROPIC_API_KEY="" claude --model qwen3-coder
+```
+
+Or set the environment variables in your shell profile:
+
+```shell theme={"system"}
+export ANTHROPIC_AUTH_TOKEN=ollama
+export ANTHROPIC_BASE_URL=http://localhost:11434
+export ANTHROPIC_API_KEY=""
+```
+
+Then run Claude Code with any Ollama model:
+
+```shell theme={"system"}
+claude --model qwen3-coder
+```
+
+## Endpoints
+
+### `/v1/messages`
+
+#### Supported features
+
+* [x] Messages
+* [x] Streaming
+* [x] System prompts
+* [x] Multi-turn conversations
+* [x] Vision (images)
+* [x] Tools (function calling)
+* [x] Tool results
+* [x] Thinking/extended thinking
+
+#### Supported request fields
+
+* [x] `model`
+* [x] `max_tokens`
+* [x] `messages`
+  * [x] Text `content`
+  * [x] Image `content` (base64)
+  * [x] Array of content blocks
+  * [x] `tool_use` blocks
+  * [x] `tool_result` blocks
+  * [x] `thinking` blocks
+* [x] `system` (string or array)
+* [x] `stream`
+* [x] `temperature`
+* [x] `top_p`
+* [x] `top_k`
+* [x] `stop_sequences`
+* [x] `tools`
+* [x] `thinking`
+* [ ] `tool_choice`
+* [ ] `metadata`
+
+#### Supported response fields
+
+* [x] `id`
+* [x] `type`
+* [x] `role`
+* [x] `model`
+* [x] `content` (text, tool\_use, thinking blocks)
+* [x] `stop_reason` (end\_turn, max\_tokens, tool\_use)
+* [x] `usage` (input\_tokens, output\_tokens)
+
+#### Streaming events
+
+* [x] `message_start`
+* [x] `content_block_start`
+* [x] `content_block_delta` (text\_delta, input\_json\_delta, thinking\_delta)
+* [x] `content_block_stop`
+* [x] `message_delta`
+* [x] `message_stop`
+* [x] `ping`
+* [x] `error`
+
+## Models
+
+Ollama supports both local and cloud models.
+
+### Local models
+
+Pull a local model before use:
+
+```shell theme={"system"}
+ollama pull qwen3-coder
+```
+
+Recommended local models:
+
+* `qwen3-coder` - Excellent for coding tasks
+* `gpt-oss:20b` - Strong general-purpose model
+
+### Cloud models
+
+Cloud models are available immediately without pulling:
+
+* `glm-4.7:cloud` - High-performance cloud model
+* `minimax-m2.1:cloud` - Fast cloud model
+
+### Default model names
+
+For tooling that relies on default Anthropic model names such as `claude-3-5-sonnet`, use `ollama cp` to copy an existing model name:
+
+```shell theme={"system"}
+ollama cp qwen3-coder claude-3-5-sonnet
+```
+
+Afterwards, this new model name can be specified in the `model` field:
+
+```shell theme={"system"}
+curl http://localhost:11434/v1/messages \
+    -H "Content-Type: application/json" \
+    -d '{
+        "model": "claude-3-5-sonnet",
+        "max_tokens": 1024,
+        "messages": [
+            {
+                "role": "user",
+                "content": "Hello!"
+            }
+        ]
+    }'
+```
+
+## Differences from the Anthropic API
+
+### Behavior differences
+
+* API key is accepted but not validated
+* `anthropic-version` header is accepted but not used
+* Token counts are approximations based on the underlying model's tokenizer
+
+### Not supported
+
+The following Anthropic API features are not currently supported:
+
+| Feature                     | Description                                                 |
+| --------------------------- | ----------------------------------------------------------- |
+| `/v1/messages/count_tokens` | Token counting endpoint                                     |
+| `tool_choice`               | Forcing specific tool use or disabling tools                |
+| `metadata`                  | Request metadata (user\_id)                                 |
+| Prompt caching              | `cache_control` blocks for caching prefixes                 |
+| Batches API                 | `/v1/messages/batches` for async batch processing           |
+| Citations                   | `citations` content blocks                                  |
+| PDF support                 | `document` content blocks with PDF files                    |
+| Server-sent errors          | `error` events during streaming (errors return HTTP status) |
+
+### Partial support
+
+| Feature           | Status                                                   |
+| ----------------- | -------------------------------------------------------- |
+| Image content     | Base64 images supported; URL images not supported        |
+| Extended thinking | Basic support; `budget_tokens` accepted but not enforced |
+
+
 # Authentication
 Source: https://docs.ollama.com/api/authentication
 
@@ -53,7 +475,7 @@ ollama run gpt-oss:120b-cloud
 
 Similarly, when accessing a local API endpoint that requires cloud access, Ollama will automatically authenticate the request:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 curl http://localhost:11434/api/generate -d '{
   "model": "gpt-oss:120b-cloud",
   "prompt": "Why is the sky blue?"
@@ -66,13 +488,13 @@ For direct access to ollama.com's API served at `https://ollama.com/api`, authen
 
 First, create an [API key](https://ollama.com/settings/keys), then set the `OLLAMA_API_KEY` environment variable:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 export OLLAMA_API_KEY=your_api_key
 ```
 
 Then use the API key in the Authorization header:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 curl https://ollama.com/api/generate \
   -H "Authorization: Bearer $OLLAMA_API_KEY" \
   -d '{
@@ -142,7 +564,7 @@ Endpoints return appropriate HTTP status codes based on the success or failure o
 
 Errors are returned in the `application/json` format with the following structure, with the error message in the `error` property:
 
-```json  theme={"system"}
+```json theme={"system"}
 {
   "error": "the model failed to generate a response"
 }
@@ -152,7 +574,7 @@ Errors are returned in the `application/json` format with the following structur
 
 If an error occurs mid-stream, the error will be returned as an object in the `application/x-ndjson` format with an `error` property. Since the response has already started, the status code of the response will not be changed.
 
-```json  theme={"system"}
+```json theme={"system"}
 {"model":"gemma3","created_at":"2025-10-26T17:21:21.196249Z","response":" Yes","done":false}
 {"model":"gemma3","created_at":"2025-10-26T17:21:21.207235Z","response":".","done":false}
 {"model":"gemma3","created_at":"2025-10-26T17:21:21.219166Z","response":"I","done":false}
@@ -198,7 +620,7 @@ https://ollama.com/api
 
 Once Ollama is running, its API is automatically available and can be accessed via `curl`:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 curl http://localhost:11434/api/generate -d '{
   "model": "gemma3",
   "prompt": "Why is the sky blue?"
@@ -228,206 +650,165 @@ Ollama provides compatibility with parts of the [OpenAI API](https://platform.op
 
 ## Usage
 
-### OpenAI Python library
+### Simple `v1/chat/completions` example
 
-```python  theme={"system"}
-from openai import OpenAI
+<CodeGroup>
+  ```python basic.py theme={"system"}
+  from openai import OpenAI
 
-client = OpenAI(
-    base_url='http://localhost:11434/v1/',
+  client = OpenAI(
+      base_url='http://localhost:11434/v1/',
+      api_key='ollama',  # required but ignored
+  )
 
-    # required but ignored
-    api_key='ollama',
-)
-
-chat_completion = client.chat.completions.create(
-    messages=[
-        {
-            'role': 'user',
-            'content': 'Say this is a test',
-        }
-    ],
-    model='llama3.2',
-)
-
-response = client.chat.completions.create(
-    model="llava",
-    messages=[
-        {
-            "role": "user",
-            "content": [
-                {"type": "text", "text": "What's in this image?"},
-                {
-                    "type": "image_url",
-                    "image_url": "data:image/png;base64,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",
-                },
-            ],
-        }
-    ],
-    max_tokens=300,
-)
-
-completion = client.completions.create(
-    model="llama3.2",
-    prompt="Say this is a test",
-)
-
-list_completion = client.models.list()
-
-model = client.models.retrieve("llama3.2")
-
-embeddings = client.embeddings.create(
-    model="all-minilm",
-    input=["why is the sky blue?", "why is the grass green?"],
-)
-```
-
-#### Structured outputs
-
-```python  theme={"system"}
-from pydantic import BaseModel
-from openai import OpenAI
-
-client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
-
-# Define the schema for the response
-class FriendInfo(BaseModel):
-    name: str
-    age: int
-    is_available: bool
-
-class FriendList(BaseModel):
-    friends: list[FriendInfo]
-
-try:
-    completion = client.beta.chat.completions.parse(
-        temperature=0,
-        model="llama3.1:8b",
-        messages=[
-            {"role": "user", "content": "I have two friends. The first is Ollama 22 years old busy saving the world, and the second is Alonso 23 years old and wants to hang out. Return a list of friends in JSON format"}
-        ],
-        response_format=FriendList,
-    )
-
-    friends_response = completion.choices[0].message
-    if friends_response.parsed:
-        print(friends_response.parsed)
-    elif friends_response.refusal:
-        print(friends_response.refusal)
-except Exception as e:
-    print(f"Error: {e}")
-```
-
-### OpenAI JavaScript library
-
-```javascript  theme={"system"}
-import OpenAI from "openai";
-
-const openai = new OpenAI({
-  baseURL: "http://localhost:11434/v1/",
-
-  // required but ignored
-  apiKey: "ollama",
-});
-
-const chatCompletion = await openai.chat.completions.create({
-  messages: [{ role: "user", content: "Say this is a test" }],
-  model: "llama3.2",
-});
-
-const response = await openai.chat.completions.create({
-  model: "llava",
-  messages: [
-    {
-      role: "user",
-      content: [
-        { type: "text", text: "What's in this image?" },
-        {
-          type: "image_url",
-          image_url:
-            "data:image/png;base64,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",
-        },
+  chat_completion = client.chat.completions.create(
+      messages=[
+          {
+              'role': 'user',
+              'content': 'Say this is a test',
+          }
       ],
-    },
-  ],
-});
+      model='gpt-oss:20b',
+  )
+  print(chat_completion.choices[0].message.content)
+  ```
 
-const completion = await openai.completions.create({
-  model: "llama3.2",
-  prompt: "Say this is a test.",
-});
+  ```javascript basic.js theme={"system"}
+  import OpenAI from "openai";
 
-const listCompletion = await openai.models.list();
+  const openai = new OpenAI({
+    baseURL: "http://localhost:11434/v1/",
+    apiKey: "ollama", // required but ignored
+  });
 
-const model = await openai.models.retrieve("llama3.2");
+  const chatCompletion = await openai.chat.completions.create({
+    messages: [{ role: "user", content: "Say this is a test" }],
+    model: "gpt-oss:20b",
+  });
 
-const embedding = await openai.embeddings.create({
-  model: "all-minilm",
-  input: ["why is the sky blue?", "why is the grass green?"],
-});
-```
+  console.log(chatCompletion.choices[0].message.content);
+  ```
 
-### `curl`
-
-```shell  theme={"system"}
-curl http://localhost:11434/v1/chat/completions \
-    -H "Content-Type: application/json" \
-    -d '{
-        "model": "llama3.2",
-        "messages": [
-            {
-                "role": "system",
-                "content": "You are a helpful assistant."
-            },
-            {
-                "role": "user",
-                "content": "Hello!"
-            }
-        ]
-    }'
-
-curl http://localhost:11434/v1/chat/completions \
+  ```shell basic.sh theme={"system"}
+  curl -X POST http://localhost:11434/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "llava",
-    "messages": [
-      {
-        "role": "user",
-        "content": [
-          {
-            "type": "text",
-            "text": "What'\''s in this image?"
-          },
-          {
-            "type": "image_url",
-            "image_url": {
-               "url": "data:image/png;base64,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"
-            }
-          }
-        ]
-      }
-    ],
-    "max_tokens": 300
+    "model": "gpt-oss:20b",
+    "messages": [{ "role": "user", "content": "Say this is a test" }]
   }'
+  ```
+</CodeGroup>
 
-curl http://localhost:11434/v1/completions \
-    -H "Content-Type: application/json" \
-    -d '{
-        "model": "llama3.2",
-        "prompt": "Say this is a test"
-    }'
+### Simple `v1/responses` example
 
-curl http://localhost:11434/v1/models
+<CodeGroup>
+  ```python responses.py theme={"system"}
+  from openai import OpenAI
 
-curl http://localhost:11434/v1/models/llama3.2
+  client = OpenAI(
+      base_url='http://localhost:11434/v1/',
+      api_key='ollama',  # required but ignored
+  )
 
-curl http://localhost:11434/v1/embeddings \
-    -H "Content-Type: application/json" \
-    -d '{
-        "model": "all-minilm",
-        "input": ["why is the sky blue?", "why is the grass green?"]
-    }'
-```
+  responses_result = client.responses.create(
+    model='qwen3:8b',
+    input='Write a short poem about the color blue',
+  )
+  print(responses_result.output_text)
+  ```
+
+  ```javascript responses.js theme={"system"}
+  import OpenAI from "openai";
+
+  const openai = new OpenAI({
+    baseURL: "http://localhost:11434/v1/",
+    apiKey: "ollama", // required but ignored
+  });
+
+  const responsesResult = await openai.responses.create({
+    model: "qwen3:8b",
+    input: "Write a short poem about the color blue",
+  });
+
+  console.log(responsesResult.output_text);
+  ```
+
+  ```shell responses.sh theme={"system"}
+  curl -X POST http://localhost:11434/v1/responses \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "qwen3:8b",
+    "input": "Write a short poem about the color blue"
+  }'
+  ```
+</CodeGroup>
+
+### v1/chat/completions with vision example
+
+<CodeGroup>
+  ```python vision.py theme={"system"}
+  from openai import OpenAI
+
+  client = OpenAI(
+      base_url='http://localhost:11434/v1/',
+      api_key='ollama',  # required but ignored
+  )
+
+  response = client.chat.completions.create(
+      model='qwen3-vl:8b',
+      messages=[
+          {
+              'role': 'user',
+              'content': [
+                  {'type': 'text', 'text': "What's in this image?"},
+                  {
+                      'type': 'image_url',
+                      'image_url': 'data:image/png;base64,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',
+                  },
+              ],
+          }
+      ],
+      max_tokens=300,
+  )
+  print(response.choices[0].message.content)
+  ```
+
+  ```javascript vision.js theme={"system"}
+  import OpenAI from "openai";
+
+  const openai = new OpenAI({
+    baseURL: "http://localhost:11434/v1/",
+    apiKey: "ollama", // required but ignored
+  });
+
+  const response = await openai.chat.completions.create({
+    model: "qwen3-vl:8b",
+    messages: [
+      {
+        role: "user",
+        content: [
+          { type: "text", text: "What's in this image?" },
+          {
+            type: "image_url",
+            image_url:
+              "data:image/png;base64,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",
+          },
+        ],
+      },
+    ],
+  });
+  console.log(response.choices[0].message.content);
+  ```
+
+  ```shell vision.sh theme={"system"}
+  curl -X POST http://localhost:11434/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "qwen3-vl:8b",
+    "messages": [{ "role": "user", "content": [{"type": "text", "text": "What is this an image of?"}, {"type": "image_url", "image_url": "data:image/png;base64,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"}]}]
+  }'
+  ```
+</CodeGroup>
 
 ## Endpoints
 
@@ -532,11 +913,103 @@ curl http://localhost:11434/v1/embeddings \
 * [x] `dimensions`
 * [ ] `user`
 
+### `/v1/images/generations` (experimental)
+
+> Note: This endpoint is experimental and may change or be removed in future versions.
+
+Generate images using image generation models.
+
+<CodeGroup>
+  ```python images.py theme={"system"}
+  from openai import OpenAI
+
+  client = OpenAI(
+      base_url='http://localhost:11434/v1/',
+      api_key='ollama',  # required but ignored
+  )
+
+  response = client.images.generate(
+      model='x/z-image-turbo',
+      prompt='A cute robot learning to paint',
+      size='1024x1024',
+      response_format='b64_json',
+  )
+  print(response.data[0].b64_json[:50] + '...')
+  ```
+
+  ```javascript images.js theme={"system"}
+  import OpenAI from "openai";
+
+  const openai = new OpenAI({
+    baseURL: "http://localhost:11434/v1/",
+    apiKey: "ollama", // required but ignored
+  });
+
+  const response = await openai.images.generate({
+    model: "x/z-image-turbo",
+    prompt: "A cute robot learning to paint",
+    size: "1024x1024",
+    response_format: "b64_json",
+  });
+
+  console.log(response.data[0].b64_json.slice(0, 50) + "...");
+  ```
+
+  ```shell images.sh theme={"system"}
+  curl -X POST http://localhost:11434/v1/images/generations \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "x/z-image-turbo",
+    "prompt": "A cute robot learning to paint",
+    "size": "1024x1024",
+    "response_format": "b64_json"
+  }'
+  ```
+</CodeGroup>
+
+#### Supported request fields
+
+* [x] `model`
+* [x] `prompt`
+* [x] `size` (e.g. "1024x1024")
+* [x] `response_format` (only `b64_json` supported)
+* [ ] `n`
+* [ ] `quality`
+* [ ] `style`
+* [ ] `user`
+
+### `/v1/responses`
+
+> Note: Added in Ollama v0.13.3
+
+Ollama supports the [OpenAI Responses API](https://platform.openai.com/docs/api-reference/responses). Only the non-stateful flavor is supported (i.e., there is no `previous_response_id` or `conversation` support).
+
+#### Supported features
+
+* [x] Streaming
+* [x] Tools (function calling)
+* [x] Reasoning summaries (for thinking models)
+* [ ] Stateful requests
+
+#### Supported request fields
+
+* [x] `model`
+* [x] `input`
+* [x] `instructions`
+* [x] `tools`
+* [x] `stream`
+* [x] `temperature`
+* [x] `top_p`
+* [x] `max_output_tokens`
+* [ ] `previous_response_id` (stateful v1/responses not supported)
+* [ ] `conversation` (stateful v1/responses not supported)
+* [ ] `truncation`
+
 ## Models
 
 Before using a model, pull it locally `ollama pull`:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 ollama pull llama3.2
 ```
 
@@ -544,13 +1017,13 @@ ollama pull llama3.2
 
 For tooling that relies on default OpenAI model names such as `gpt-3.5-turbo`, use `ollama cp` to copy an existing model name to a temporary name:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 ollama cp llama3.2 gpt-3.5-turbo
 ```
 
 Afterwards, this new model name can be specified the `model` field:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 curl http://localhost:11434/v1/chat/completions \
     -H "Content-Type: application/json" \
     -d '{
@@ -575,7 +1048,7 @@ PARAMETER num_ctx <context size>
 
 Use the `ollama create mymodel` command to create a new model with the updated context size. Call the API with the updated model name:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 curl http://localhost:11434/v1/chat/completions \
     -H "Content-Type: application/json" \
     -d '{
@@ -619,7 +1092,7 @@ Source: https://docs.ollama.com/api/streaming
 
 Certain API endpoints stream responses by default, such as `/api/generate`. These responses are provided in the newline-delimited JSON format (i.e. the `application/x-ndjson` content type). For example:
 
-```json  theme={"system"}
+```json theme={"system"}
 {"model":"gemma3","created_at":"2025-10-26T17:15:24.097767Z","response":"That","done":false}
 {"model":"gemma3","created_at":"2025-10-26T17:15:24.109172Z","response":"'","done":false}
 {"model":"gemma3","created_at":"2025-10-26T17:15:24.121485Z","response":"s","done":false}
@@ -633,7 +1106,7 @@ Certain API endpoints stream responses by default, such as `/api/generate`. Thes
 
 Streaming can be disabled by providing `{"stream": false}` in the request body for any endpoint that support streaming. This will cause responses to be returned in the `application/json` format instead:
 
-```json  theme={"system"}
+```json theme={"system"}
 {"model":"gemma3","created_at":"2025-10-26T17:15:24.166576Z","response":"That's a fantastic question!","done":true}
 ```
 
@@ -680,7 +1153,7 @@ All timing values are measured in nanoseconds.
 
 For endpoints that return usage metrics, the response body will include the usage fields. For example, a non-streaming call to `/api/generate` may return the following response:
 
-```json  theme={"system"}
+```json theme={"system"}
 {
   "model": "gemma3",
   "created_at": "2025-10-17T23:14:07.414671Z",
@@ -718,13 +1191,13 @@ Embeddings turn text into numeric vectors you can store in a vector database, se
   <Tab title="CLI">
     Generate embeddings directly from the command line:
 
-    ```shell  theme={"system"}
+    ```shell theme={"system"}
     ollama run embeddinggemma "Hello world"
     ```
 
     You can also pipe text to generate embeddings:
 
-    ```shell  theme={"system"}
+    ```shell theme={"system"}
     echo "Hello world" | ollama run embeddinggemma
     ```
 
@@ -732,7 +1205,7 @@ Embeddings turn text into numeric vectors you can store in a vector database, se
   </Tab>
 
   <Tab title="cURL">
-    ```shell  theme={"system"}
+    ```shell theme={"system"}
     curl -X POST http://localhost:11434/api/embed \
       -H "Content-Type: application/json" \
       -d '{
@@ -743,7 +1216,7 @@ Embeddings turn text into numeric vectors you can store in a vector database, se
   </Tab>
 
   <Tab title="Python">
-    ```python  theme={"system"}
+    ```python theme={"system"}
     import ollama
 
     single = ollama.embed(
@@ -755,7 +1228,7 @@ Embeddings turn text into numeric vectors you can store in a vector database, se
   </Tab>
 
   <Tab title="JavaScript">
-    ```javascript  theme={"system"}
+    ```javascript theme={"system"}
     import ollama from 'ollama'
 
     const single = await ollama.embed({
@@ -777,7 +1250,7 @@ Pass an array of strings to `input`.
 
 <Tabs>
   <Tab title="cURL">
-    ```shell  theme={"system"}
+    ```shell theme={"system"}
     curl -X POST http://localhost:11434/api/embed \
       -H "Content-Type: application/json" \
       -d '{
@@ -792,7 +1265,7 @@ Pass an array of strings to `input`.
   </Tab>
 
   <Tab title="Python">
-    ```python  theme={"system"}
+    ```python theme={"system"}
     import ollama
 
     batch = ollama.embed(
@@ -808,7 +1281,7 @@ Pass an array of strings to `input`.
   </Tab>
 
   <Tab title="JavaScript">
-    ```javascript  theme={"system"}
+    ```javascript theme={"system"}
     import ollama from 'ollama'
 
     const batch = await ollama.embed({
@@ -853,7 +1326,7 @@ To enable streaming in the SDKs, set the `stream` parameter to `True`.
 
 <Tabs>
   <Tab title="Python">
-    ```python  theme={"system"}
+    ```python theme={"system"}
     from ollama import chat
 
     stream = chat(
@@ -887,7 +1360,7 @@ To enable streaming in the SDKs, set the `stream` parameter to `True`.
   </Tab>
 
   <Tab title="JavaScript">
-    ```javascript  theme={"system"}
+    ```javascript theme={"system"}
     import ollama from 'ollama'
 
     async function main() {
@@ -942,7 +1415,7 @@ Structured outputs let you enforce a JSON schema on model responses so you can r
 
 <Tabs>
   <Tab title="cURL">
-    ```shell  theme={"system"}
+    ```shell theme={"system"}
     curl -X POST http://localhost:11434/api/chat -H "Content-Type: application/json" -d '{
       "model": "gpt-oss",
       "messages": [{"role": "user", "content": "Tell me about Canada in one line"}],
@@ -953,7 +1426,7 @@ Structured outputs let you enforce a JSON schema on model responses so you can r
   </Tab>
 
   <Tab title="Python">
-    ```python  theme={"system"}
+    ```python theme={"system"}
     from ollama import chat
 
     response = chat(
@@ -966,7 +1439,7 @@ Structured outputs let you enforce a JSON schema on model responses so you can r
   </Tab>
 
   <Tab title="JavaScript">
-    ```javascript  theme={"system"}
+    ```javascript theme={"system"}
     import ollama from 'ollama'
 
     const response = await ollama.chat({
@@ -989,7 +1462,7 @@ Provide a JSON schema to the `format` field.
 
 <Tabs>
   <Tab title="cURL">
-    ```shell  theme={"system"}
+    ```shell theme={"system"}
     curl -X POST http://localhost:11434/api/chat -H "Content-Type: application/json" -d '{
       "model": "gpt-oss",
       "messages": [{"role": "user", "content": "Tell me about Canada."}],
@@ -1013,7 +1486,7 @@ Provide a JSON schema to the `format` field.
   <Tab title="Python">
     Use Pydantic models and pass `model_json_schema()` to `format`, then validate the response:
 
-    ```python  theme={"system"}
+    ```python theme={"system"}
     from ollama import chat
     from pydantic import BaseModel
 
@@ -1036,7 +1509,7 @@ Provide a JSON schema to the `format` field.
   <Tab title="JavaScript">
     Serialize a Zod schema with `zodToJsonSchema()` and parse the structured response:
 
-    ```javascript  theme={"system"}
+    ```javascript theme={"system"}
     import ollama from 'ollama'
     import { z } from 'zod'
     import { zodToJsonSchema } from 'zod-to-json-schema'
@@ -1063,7 +1536,7 @@ Provide a JSON schema to the `format` field.
 
 Define the objects you want returned and let the model populate the fields:
 
-```python  theme={"system"}
+```python theme={"system"}
 from ollama import chat
 from pydantic import BaseModel
 
@@ -1091,7 +1564,7 @@ print(pets)
 
 Vision models accept the same `format` parameter, enabling deterministic descriptions of images:
 
-```python  theme={"system"}
+```python theme={"system"}
 from ollama import chat
 from pydantic import BaseModel
 from typing import Literal, Optional
@@ -1159,7 +1632,7 @@ The `message.thinking` (chat endpoint) or `thinking` (generate endpoint) field c
 
 <Tabs>
   <Tab title="cURL">
-    ```shell  theme={"system"}
+    ```shell theme={"system"}
     curl http://localhost:11434/api/chat -d '{
       "model": "qwen3",
       "messages": [{
@@ -1173,7 +1646,7 @@ The `message.thinking` (chat endpoint) or `thinking` (generate endpoint) field c
   </Tab>
 
   <Tab title="Python">
-    ```python  theme={"system"}
+    ```python theme={"system"}
     from ollama import chat
 
     response = chat(
@@ -1189,7 +1662,7 @@ The `message.thinking` (chat endpoint) or `thinking` (generate endpoint) field c
   </Tab>
 
   <Tab title="JavaScript">
-    ```javascript  theme={"system"}
+    ```javascript theme={"system"}
     import ollama from 'ollama'
 
     const response = await ollama.chat({
@@ -1215,7 +1688,7 @@ Thinking streams interleave reasoning tokens before answer tokens. Detect the fi
 
 <Tabs>
   <Tab title="Python">
-    ```python  theme={"system"}
+    ```python theme={"system"}
     from ollama import chat
 
     stream = chat(
@@ -1244,7 +1717,7 @@ Thinking streams interleave reasoning tokens before answer tokens. Detect the fi
   </Tab>
 
   <Tab title="JavaScript">
-    ```javascript  theme={"system"}
+    ```javascript theme={"system"}
     import ollama from 'ollama'
 
     async function main() {
@@ -1306,10 +1779,10 @@ Also known as "single-shot" tool calling.
 
 <Tabs>
   <Tab title="cURL">
-    ```shell  theme={"system"}
+    ```shell theme={"system"}
     curl -s http://localhost:11434/api/chat -H "Content-Type: application/json" -d '{
       "model": "qwen3",
-      "messages": [{"role": "user", "content": "What's the temperature in New York?"}],
+      "messages": [{"role": "user", "content": "What is the temperature in New York?"}],
       "stream": false,
       "tools": [
         {
@@ -1332,11 +1805,11 @@ Also known as "single-shot" tool calling.
 
     **Generate a response with a single tool result**
 
-    ```shell  theme={"system"}
+    ```shell theme={"system"}
     curl -s http://localhost:11434/api/chat -H "Content-Type: application/json" -d '{
       "model": "qwen3",
       "messages": [
-        {"role": "user", "content": "What's the temperature in New York?"},
+        {"role": "user", "content": "What is the temperature in New York?"},
         {
           "role": "assistant",
           "tool_calls": [
@@ -1360,7 +1833,7 @@ Also known as "single-shot" tool calling.
   <Tab title="Python">
     Install the Ollama Python SDK:
 
-    ```bash  theme={"system"}
+    ```bash theme={"system"}
     # with pip
     pip install ollama -U
 
@@ -1368,7 +1841,7 @@ Also known as "single-shot" tool calling.
     uv add ollama    
     ```
 
-    ```python  theme={"system"}
+    ```python theme={"system"}
     from ollama import chat
 
     def get_temperature(city: str) -> str:
@@ -1387,7 +1860,7 @@ Also known as "single-shot" tool calling.
       }
       return temperatures.get(city, "Unknown")
 
-    messages = [{"role": "user", "content": "What's the temperature in New York?"}]
+    messages = [{"role": "user", "content": "What is the temperature in New York?"}]
 
     # pass functions directly as tools in the tools list or as a JSON schema
     response = chat(model="qwen3", messages=messages, tools=[get_temperature], think=True)
@@ -1408,7 +1881,7 @@ Also known as "single-shot" tool calling.
   <Tab title="JavaScript">
     Install the Ollama JavaScript library:
 
-    ```bash  theme={"system"}
+    ```bash theme={"system"}
     # with npm
     npm i ollama
 
@@ -1416,7 +1889,7 @@ Also known as "single-shot" tool calling.
     bun i ollama
     ```
 
-    ```typescript  theme={"system"}
+    ```typescript theme={"system"}
     import ollama from 'ollama'
 
     function getTemperature(city: string): string {
@@ -1445,7 +1918,7 @@ Also known as "single-shot" tool calling.
       },
     ]
 
-    const messages = [{ role: 'user', content: "What's the temperature in New York?" }]
+    const messages = [{ role: 'user', content: "What is the temperature in New York?" }]
 
     const response = await ollama.chat({
       model: 'qwen3',
@@ -1477,7 +1950,7 @@ Also known as "single-shot" tool calling.
   <Tab title="cURL">
     Request multiple tool calls in parallel, then send all tool responses back to the model.
 
-    ```shell  theme={"system"}
+    ```shell theme={"system"}
     curl -s http://localhost:11434/api/chat -H "Content-Type: application/json" -d '{
       "model": "qwen3",
       "messages": [{"role": "user", "content": "What are the current weather conditions and temperature in New York and London?"}],
@@ -1517,7 +1990,7 @@ Also known as "single-shot" tool calling.
 
     **Generate a response with multiple tool results**
 
-    ```shell  theme={"system"}
+    ```shell theme={"system"}
     curl -s http://localhost:11434/api/chat -H "Content-Type: application/json" -d '{
       "model": "qwen3",
       "messages": [
@@ -1570,7 +2043,7 @@ Also known as "single-shot" tool calling.
   </Tab>
 
   <Tab title="Python">
-    ```python  theme={"system"}
+    ```python theme={"system"}
     from ollama import chat
 
     def get_temperature(city: str) -> str:
@@ -1634,7 +2107,7 @@ Also known as "single-shot" tool calling.
   </Tab>
 
   <Tab title="JavaScript">
-    ```typescript  theme={"system"}
+    ```typescript theme={"system"}
     import ollama from 'ollama'
 
     function getTemperature(city: string): string {
@@ -1731,7 +2204,7 @@ It also might help to tell the model that it is in a loop and can make multiple 
 
 <Tabs>
   <Tab title="Python">
-    ```python  theme={"system"}
+    ```python theme={"system"}
     from ollama import chat, ChatResponse
 
 
@@ -1793,7 +2266,7 @@ It also might help to tell the model that it is in a loop and can make multiple 
   </Tab>
 
   <Tab title="JavaScript">
-    ```typescript  theme={"system"}
+    ```typescript theme={"system"}
     import ollama from 'ollama'
 
     type ToolName = 'add' | 'multiply'
@@ -1890,7 +2363,7 @@ When streaming, gather every chunk of `thinking`, `content`, and `tool_calls`, t
 
 <Tabs>
   <Tab title="Python">
-    ```python  theme={"system"}
+    ```python theme={"system"}
     from ollama import chat 
 
 
@@ -1910,7 +2383,7 @@ When streaming, gather every chunk of `thinking`, `content`, and `tool_calls`, t
       return temperatures.get(city, 'Unknown')
 
 
-    messages = [{'role': 'user', 'content': "What's the temperature in New York?"}]
+    messages = [{'role': 'user', 'content': "What is the temperature in New York?"}]
 
     while True:
       stream = chat(
@@ -1958,7 +2431,7 @@ When streaming, gather every chunk of `thinking`, `content`, and `tool_calls`, t
   </Tab>
 
   <Tab title="JavaScript">
-    ```typescript  theme={"system"}
+    ```typescript theme={"system"}
     import ollama from 'ollama'
 
     function getTemperature(city: string): string {
@@ -1985,7 +2458,7 @@ When streaming, gather every chunk of `thinking`, `content`, and `tool_calls`, t
     }
 
     async function agentLoop() {
-      const messages = [{ role: 'user', content: "What's the temperature in New York?" }]
+      const messages = [{ role: 'user', content: "What is the temperature in New York?" }]
 
       while (true) {
         const stream = await ollama.chat({
@@ -2052,7 +2525,7 @@ This loop streams the assistant response, accumulates partial fields, passes the
 The Python SDK automatically parses functions as a tool schema so we can pass them directly.
 Schemas can still be passed if needed.
 
-```python  theme={"system"}
+```python theme={"system"}
 from ollama import chat
 
 def get_temperature(city: str) -> str:
@@ -2087,7 +2560,7 @@ Vision models accept images alongside text so the model can describe, classify, 
 
 ## Quick start
 
-```shell  theme={"system"}
+```shell theme={"system"}
 ollama run gemma3 ./image.png whats in this image?
 ```
 
@@ -2097,7 +2570,7 @@ Provide an `images` array. SDKs accept file paths, URLs or raw bytes while the R
 
 <Tabs>
   <Tab title="cURL">
-    ```shell  theme={"system"}
+    ```shell theme={"system"}
     # 1. Download a sample image
     curl -L -o test.jpg "https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg"
 
@@ -2116,12 +2589,11 @@ Provide an `images` array. SDKs accept file paths, URLs or raw bytes while the R
         }],
         "stream": false
     }'
-    "
     ```
   </Tab>
 
   <Tab title="Python">
-    ```python  theme={"system"}
+    ```python theme={"system"}
     from ollama import chat
     # from pathlib import Path
 
@@ -2149,7 +2621,7 @@ Provide an `images` array. SDKs accept file paths, URLs or raw bytes while the R
   </Tab>
 
   <Tab title="JavaScript">
-    ```javascript  theme={"system"}
+    ```javascript theme={"system"}
     import ollama from 'ollama'
 
     const imagePath = '/absolute/path/to/image.jpg'
@@ -2208,7 +2680,7 @@ Returns an object containing:
 
 #### cURL Request
 
-```bash  theme={"system"}
+```bash theme={"system"}
 curl https://ollama.com/api/web_search \
   --header "Authorization: Bearer $OLLAMA_API_KEY" \
 	-d '{
@@ -2218,7 +2690,7 @@ curl https://ollama.com/api/web_search \
 
 **Response**
 
-```json  theme={"system"}
+```json theme={"system"}
 {
   "results": [
     {
@@ -2242,7 +2714,7 @@ curl https://ollama.com/api/web_search \
 
 #### Python library
 
-```python  theme={"system"}
+```python theme={"system"}
 import ollama
 response = ollama.web_search("What is Ollama?")
 print(response)
@@ -2250,7 +2722,7 @@ print(response)
 
 **Example output**
 
-```python  theme={"system"}
+```python theme={"system"}
 
 results = [
     {
@@ -2276,17 +2748,17 @@ More Ollama [Python example](https://github.com/ollama/ollama-python/blob/main/e
 
 #### JavaScript Library
 
-```tsx  theme={"system"}
+```tsx theme={"system"}
 import { Ollama } from "ollama";
 
 const client = new Ollama();
-const results = await client.webSearch({ query: "what is ollama?" });
+const results = await client.webSearch("what is ollama?");
 console.log(JSON.stringify(results, null, 2));
 ```
 
 **Example output**
 
-```json  theme={"system"}
+```json theme={"system"}
 {
   "results": [
     {
@@ -2332,7 +2804,7 @@ Returns an object containing:
 
 #### cURL Request
 
-```python  theme={"system"}
+```python theme={"system"}
 curl --request POST \
   --url https://ollama.com/api/web_fetch \
   --header "Authorization: Bearer $OLLAMA_API_KEY" \
@@ -2344,7 +2816,7 @@ curl --request POST \
 
 **Response**
 
-```json  theme={"system"}
+```json theme={"system"}
 {
   "title": "Ollama",
   "content": "[Cloud models](https://ollama.com/blog/cloud-models) are now available in Ollama...",
@@ -2358,7 +2830,7 @@ curl --request POST \
 
 #### Python SDK
 
-```python  theme={"system"}
+```python theme={"system"}
 from ollama import web_fetch
 
 result = web_fetch('https://ollama.com')
@@ -2367,7 +2839,7 @@ print(result)
 
 **Result**
 
-```python  theme={"system"}
+```python theme={"system"}
 WebFetchResponse(
     title='Ollama',
     content='[Cloud models](https://ollama.com/blog/cloud-models) are now available in Ollama\n\n**Chat & build
@@ -2379,17 +2851,17 @@ models](https://ollama.com/models)\n\nAvailable for macOS, Windows, and Linux',
 
 #### JavaScript SDK
 
-```tsx  theme={"system"}
+```tsx theme={"system"}
 import { Ollama } from "ollama";
 
 const client = new Ollama();
-const fetchResult = await client.webFetch({ url: "https://ollama.com" });
+const fetchResult = await client.webFetch("https://ollama.com");
 console.log(JSON.stringify(fetchResult, null, 2));
 ```
 
 **Result**
 
-```json  theme={"system"}
+```json theme={"system"}
 {
   "title": "Ollama",
   "content": "[Cloud models](https://ollama.com/blog/cloud-models) are now available in Ollama...",
@@ -2407,11 +2879,11 @@ Use Ollama’s web search API as a tool to build a mini search agent.
 
 This example uses Alibaba’s Qwen 3 model with 4B parameters.
 
-```bash  theme={"system"}
+```bash theme={"system"}
 ollama pull qwen3:4b
 ```
 
-```python  theme={"system"}
+```python theme={"system"}
 from ollama import chat, web_fetch, web_search
 
 available_tools = {'web_search': web_search, 'web_fetch': web_fetch}
@@ -2487,7 +2959,7 @@ Ollama's web search can be integrated with Cline easily using the MCP server con
 
 `Manage MCP Servers` > `Configure MCP Servers` > Add the following configuration:
 
-```json  theme={"system"}
+```json theme={"system"}
 {
   "mcpServers": {
     "web_search_and_fetch": {
@@ -2500,7 +2972,7 @@ Ollama's web search can be integrated with Cline easily using the MCP server con
 }
 ```
 
-<img src="https://mintcdn.com/ollama-9269c548/lS1IbrlCxMxm029K/images/cline-mcp.png?fit=max&auto=format&n=lS1IbrlCxMxm029K&q=85&s=046239fbe74a8e928752b97b1a8954fa" alt="Cline MCP Configuration" data-og-width="852" width="852" data-og-height="1078" height="1078" data-path="images/cline-mcp.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/ollama-9269c548/lS1IbrlCxMxm029K/images/cline-mcp.png?w=280&fit=max&auto=format&n=lS1IbrlCxMxm029K&q=85&s=251a7ae4c99cafbeff8867a3cdefc854 280w, https://mintcdn.com/ollama-9269c548/lS1IbrlCxMxm029K/images/cline-mcp.png?w=560&fit=max&auto=format&n=lS1IbrlCxMxm029K&q=85&s=bde250f5b99530b1870b5e7069abf10c 560w, https://mintcdn.com/ollama-9269c548/lS1IbrlCxMxm029K/images/cline-mcp.png?w=840&fit=max&auto=format&n=lS1IbrlCxMxm029K&q=85&s=067e154d817a737cd508f74cffa77294 840w, https://mintcdn.com/ollama-9269c548/lS1IbrlCxMxm029K/images/cline-mcp.png?w=1100&fit=max&auto=format&n=lS1IbrlCxMxm029K&q=85&s=c5db90800a313a6b262fcd37ab5be97f 1100w, https://mintcdn.com/ollama-9269c548/lS1IbrlCxMxm029K/images/cline-mcp.png?w=1650&fit=max&auto=format&n=lS1IbrlCxMxm029K&q=85&s=1c20c4081d1e8f13a3da2348c6df1fd0 1650w, https://mintcdn.com/ollama-9269c548/lS1IbrlCxMxm029K/images/cline-mcp.png?w=2500&fit=max&auto=format&n=lS1IbrlCxMxm029K&q=85&s=2dbaea69c8eefd988ec6c065ce966187 2500w" />
+<img alt="Cline MCP Configuration" />
 
 ### Codex
 
@@ -2508,22 +2980,22 @@ Ollama works well with OpenAI's Codex tool.
 
 Add the following configuration to `~/.codex/config.toml`
 
-```python  theme={"system"}
+```python theme={"system"}
 [mcp_servers.web_search]
 command = "uv"
 args = ["run", "path/to/web-search-mcp.py"]
 env = { "OLLAMA_API_KEY" = "your_api_key_here" }
 ```
 
-<img src="https://mintcdn.com/ollama-9269c548/lS1IbrlCxMxm029K/images/codex-mcp.png?fit=max&auto=format&n=lS1IbrlCxMxm029K&q=85&s=775b41bb85af7836b0a5a609de7d1f6f" alt="Codex MCP Configuration" data-og-width="1150" width="1150" data-og-height="1014" height="1014" data-path="images/codex-mcp.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/ollama-9269c548/lS1IbrlCxMxm029K/images/codex-mcp.png?w=280&fit=max&auto=format&n=lS1IbrlCxMxm029K&q=85&s=165618dddf9daa7f355f71c454ba3f41 280w, https://mintcdn.com/ollama-9269c548/lS1IbrlCxMxm029K/images/codex-mcp.png?w=560&fit=max&auto=format&n=lS1IbrlCxMxm029K&q=85&s=79585e40dfb53f5fffc4a637a5119118 560w, https://mintcdn.com/ollama-9269c548/lS1IbrlCxMxm029K/images/codex-mcp.png?w=840&fit=max&auto=format&n=lS1IbrlCxMxm029K&q=85&s=ca1d7acc055ebdbc409d9f372d9ca3e5 840w, https://mintcdn.com/ollama-9269c548/lS1IbrlCxMxm029K/images/codex-mcp.png?w=1100&fit=max&auto=format&n=lS1IbrlCxMxm029K&q=85&s=603c85032a6b8dd755950c9d29f8fd21 1100w, https://mintcdn.com/ollama-9269c548/lS1IbrlCxMxm029K/images/codex-mcp.png?w=1650&fit=max&auto=format&n=lS1IbrlCxMxm029K&q=85&s=07665e9ee289fdabb9addde3a06bca7a 1650w, https://mintcdn.com/ollama-9269c548/lS1IbrlCxMxm029K/images/codex-mcp.png?w=2500&fit=max&auto=format&n=lS1IbrlCxMxm029K&q=85&s=f885735a8b1c269439f9ccf10424421e 2500w" />
+<img alt="Codex MCP Configuration" />
 
 ### Goose
 
 Ollama can integrate with Goose via its MCP feature.
 
-<img src="https://mintcdn.com/ollama-9269c548/lS1IbrlCxMxm029K/images/goose-mcp-1.png?fit=max&auto=format&n=lS1IbrlCxMxm029K&q=85&s=5fea6e0aab7865dc950470f004c549e8" alt="Goose MCP Configuration 1" data-og-width="1152" width="1152" data-og-height="1012" height="1012" data-path="images/goose-mcp-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/ollama-9269c548/lS1IbrlCxMxm029K/images/goose-mcp-1.png?w=280&fit=max&auto=format&n=lS1IbrlCxMxm029K&q=85&s=f7ccec9b53d39d84ed10bdedd0335e33 280w, https://mintcdn.com/ollama-9269c548/lS1IbrlCxMxm029K/images/goose-mcp-1.png?w=560&fit=max&auto=format&n=lS1IbrlCxMxm029K&q=85&s=cb5464f221b561eba98c10702222d4fe 560w, https://mintcdn.com/ollama-9269c548/lS1IbrlCxMxm029K/images/goose-mcp-1.png?w=840&fit=max&auto=format&n=lS1IbrlCxMxm029K&q=85&s=0810ea78c85815474a17d5c1d975771a 840w, https://mintcdn.com/ollama-9269c548/lS1IbrlCxMxm029K/images/goose-mcp-1.png?w=1100&fit=max&auto=format&n=lS1IbrlCxMxm029K&q=85&s=67467cb3aaab1183f1f850a4061a7af0 1100w, https://mintcdn.com/ollama-9269c548/lS1IbrlCxMxm029K/images/goose-mcp-1.png?w=1650&fit=max&auto=format&n=lS1IbrlCxMxm029K&q=85&s=2e8e9d972510ba17d542156b8c7a5142 1650w, https://mintcdn.com/ollama-9269c548/lS1IbrlCxMxm029K/images/goose-mcp-1.png?w=2500&fit=max&auto=format&n=lS1IbrlCxMxm029K&q=85&s=f990a9ba7d6daf66e89699617034e6b9 2500w" />
+<img alt="Goose MCP Configuration 1" />
 
-<img src="https://mintcdn.com/ollama-9269c548/lS1IbrlCxMxm029K/images/goose-mcp-2.png?fit=max&auto=format&n=lS1IbrlCxMxm029K&q=85&s=c69c12389f7dd60ef1c53cd10af82a7d" alt="Goose MCP Configuration 2" data-og-width="1146" width="1146" data-og-height="1006" height="1006" data-path="images/goose-mcp-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/ollama-9269c548/lS1IbrlCxMxm029K/images/goose-mcp-2.png?w=280&fit=max&auto=format&n=lS1IbrlCxMxm029K&q=85&s=498deaa0c52aa33e32f4962e0dea9dc7 280w, https://mintcdn.com/ollama-9269c548/lS1IbrlCxMxm029K/images/goose-mcp-2.png?w=560&fit=max&auto=format&n=lS1IbrlCxMxm029K&q=85&s=bb62f0113619a0f572e0017849a65bb5 560w, https://mintcdn.com/ollama-9269c548/lS1IbrlCxMxm029K/images/goose-mcp-2.png?w=840&fit=max&auto=format&n=lS1IbrlCxMxm029K&q=85&s=7035aae8c4163df72f38d885f11e3f1c 840w, https://mintcdn.com/ollama-9269c548/lS1IbrlCxMxm029K/images/goose-mcp-2.png?w=1100&fit=max&auto=format&n=lS1IbrlCxMxm029K&q=85&s=ca8a2966d7c350c6d75d9252f86f7be8 1100w, https://mintcdn.com/ollama-9269c548/lS1IbrlCxMxm029K/images/goose-mcp-2.png?w=1650&fit=max&auto=format&n=lS1IbrlCxMxm029K&q=85&s=a488d0de5bf91dccd78a5187e712ceb2 1650w, https://mintcdn.com/ollama-9269c548/lS1IbrlCxMxm029K/images/goose-mcp-2.png?w=2500&fit=max&auto=format&n=lS1IbrlCxMxm029K&q=85&s=fa84ce84ab908bacd6853048972bff7c 2500w" />
+<img alt="Goose MCP Configuration 2" />
 
 ### Other integrations
 
@@ -2539,6 +3011,47 @@ Source: https://docs.ollama.com/cli
 
 ```
 ollama run gemma3
+```
+
+### Launch integrations
+
+```
+ollama launch
+```
+
+Configure and launch external applications to use Ollama models. This provides an interactive way to set up and start integrations with supported apps.
+
+#### Supported integrations
+
+* **OpenCode** - Open-source coding assistant
+* **Claude Code** - Anthropic's agentic coding tool
+* **Codex** - OpenAI's coding assistant
+* **Droid** - Factory's AI coding agent
+
+#### Examples
+
+Launch an integration interactively:
+
+```
+ollama launch
+```
+
+Launch a specific integration:
+
+```
+ollama launch claude
+```
+
+Launch with a specific model:
+
+```
+ollama launch claude --model qwen3-coder
+```
+
+Configure without launching:
+
+```
+ollama launch droid --config
 ```
 
 #### Multiline input
@@ -2641,8 +3154,6 @@ Source: https://docs.ollama.com/cloud
 
 
 
-<Info>Ollama's cloud is currently in preview.</Info>
-
 ## Cloud Models
 
 Ollama's cloud models are a new kind of model in Ollama that can run without a powerful GPU. Instead, cloud models are automatically offloaded to Ollama's cloud service while offering the same capabilities as local models, making it possible to keep using your local tools while running larger models that wouldn't fit on a personal computer.
@@ -2683,7 +3194,7 @@ ollama signin
 
     Next, create and run a simple Python script:
 
-    ```python  theme={"system"}
+    ```python theme={"system"}
     from ollama import Client
 
     client = Client()
@@ -2715,7 +3226,7 @@ ollama signin
 
     Then use the library to run a cloud model:
 
-    ```typescript  theme={"system"}
+    ```typescript theme={"system"}
     import { Ollama } from "ollama";
 
     const ollama = new Ollama();
@@ -2788,7 +3299,7 @@ curl https://ollama.com/api/tags
 
     Then make a request
 
-    ```python  theme={"system"}
+    ```python theme={"system"}
     import os
     from ollama import Client
 
@@ -2818,7 +3329,7 @@ curl https://ollama.com/api/tags
 
     Next, make a request to the model:
 
-    ```typescript  theme={"system"}
+    ```typescript theme={"system"}
     import { Ollama } from "ollama";
 
     const ollama = new Ollama({
@@ -2870,7 +3381,7 @@ Context length is the maximum number of tokens that the model has access to in m
   The default context length in Ollama is 4096 tokens.
 </Note>
 
-Tasks which require large context like web search, agents, and coding tools should be set to at least 32000 tokens.
+Tasks which require large context like web search, agents, and coding tools should be set to at least 64000 tokens.
 
 ## Setting context length
 
@@ -2881,14 +3392,15 @@ Cloud models are set to their maximum context length by default.
 ### App
 
 Change the slider in the Ollama app under settings to your desired context length.
-<img src="https://mintcdn.com/ollama-9269c548/SjntZZpXgbN5v4M5/images/ollama-settings.png?fit=max&auto=format&n=SjntZZpXgbN5v4M5&q=85&s=e8a7ccd30fd9cee5e93662db05b43dc7" alt="Context length in Ollama app" data-og-width="2724" width="2724" data-og-height="2570" height="2570" data-path="images/ollama-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/ollama-9269c548/SjntZZpXgbN5v4M5/images/ollama-settings.png?w=280&fit=max&auto=format&n=SjntZZpXgbN5v4M5&q=85&s=434e8ffd8ad5ce5a6cf77cef285aa4d7 280w, https://mintcdn.com/ollama-9269c548/SjntZZpXgbN5v4M5/images/ollama-settings.png?w=560&fit=max&auto=format&n=SjntZZpXgbN5v4M5&q=85&s=879ba157a13c3ef59a76cf21f04baae4 560w, https://mintcdn.com/ollama-9269c548/SjntZZpXgbN5v4M5/images/ollama-settings.png?w=840&fit=max&auto=format&n=SjntZZpXgbN5v4M5&q=85&s=7c7314c5f77798307a93ff466501d1cc 840w, https://mintcdn.com/ollama-9269c548/SjntZZpXgbN5v4M5/images/ollama-settings.png?w=1100&fit=max&auto=format&n=SjntZZpXgbN5v4M5&q=85&s=b39e7ab998d6894649f5e4ac4bfb51e0 1100w, https://mintcdn.com/ollama-9269c548/SjntZZpXgbN5v4M5/images/ollama-settings.png?w=1650&fit=max&auto=format&n=SjntZZpXgbN5v4M5&q=85&s=1c854c1d41672b2f937ba9db4454e159 1650w, https://mintcdn.com/ollama-9269c548/SjntZZpXgbN5v4M5/images/ollama-settings.png?w=2500&fit=max&auto=format&n=SjntZZpXgbN5v4M5&q=85&s=1f1b926851fec5786cb5fc886cd41cdc 2500w" />
+
+<img alt="Context length in Ollama app" />
 
 ### CLI
 
 If editing the context length for Ollama is not possible, the context length can also be updated when serving Ollama.
 
 ```
-OLLAMA_CONTEXT_LENGTH=32000 ollama serve
+OLLAMA_CONTEXT_LENGTH=64000 ollama serve
 ```
 
 ### Check allocated context length and model offloading
@@ -2912,7 +3424,7 @@ Source: https://docs.ollama.com/docker
 
 ## CPU only
 
-```shell  theme={"system"}
+```shell theme={"system"}
 docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
 ```
 
@@ -2924,7 +3436,7 @@ Install the [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-
 
 1. Configure the repository
 
-   ```shell  theme={"system"}
+   ```shell theme={"system"}
    curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey \
        | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg
    curl -fsSL https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list \
@@ -2935,7 +3447,7 @@ Install the [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-
 
 2. Install the NVIDIA Container Toolkit packages
 
-   ```shell  theme={"system"}
+   ```shell theme={"system"}
    sudo apt-get install -y nvidia-container-toolkit
    ```
 
@@ -2943,27 +3455,27 @@ Install the [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-
 
 1. Configure the repository
 
-   ```shell  theme={"system"}
+   ```shell theme={"system"}
    curl -fsSL https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo \
        | sudo tee /etc/yum.repos.d/nvidia-container-toolkit.repo
    ```
 
 2. Install the NVIDIA Container Toolkit packages
 
-   ```shell  theme={"system"}
+   ```shell theme={"system"}
    sudo yum install -y nvidia-container-toolkit
    ```
 
 ### Configure Docker to use Nvidia driver
 
-```shell  theme={"system"}
+```shell theme={"system"}
 sudo nvidia-ctk runtime configure --runtime=docker
 sudo systemctl restart docker
 ```
 
 ### Start the container
 
-```shell  theme={"system"}
+```shell theme={"system"}
 docker run -d --gpus=all -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
 ```
 
@@ -2976,7 +3488,7 @@ docker run -d --gpus=all -v ollama:/root/.ollama -p 11434:11434 --name ollama ol
 
 To run Ollama using Docker with AMD GPUs, use the `rocm` tag and the following command:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 docker run -d --device /dev/kfd --device /dev/dri -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama:rocm
 ```
 
@@ -2984,7 +3496,7 @@ docker run -d --device /dev/kfd --device /dev/dri -v ollama:/root/.ollama -p 114
 
 Vulkan is bundled into the `ollama/ollama` image.
 
-```shell  theme={"system"}
+```shell theme={"system"}
 docker run -d --device /dev/kfd --device /dev/dri -v ollama:/root/.ollama -p 11434:11434 -e OLLAMA_VULKAN=1 --name ollama ollama/ollama
 ```
 
@@ -2992,7 +3504,7 @@ docker run -d --device /dev/kfd --device /dev/dri -v ollama:/root/.ollama -p 114
 
 Now you can run a model:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 docker exec -it ollama ollama run llama3.2
 ```
 
@@ -3012,37 +3524,37 @@ Ollama on macOS and Windows will automatically download updates. Click on the ta
 
 On Linux, re-run the install script:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 curl -fsSL https://ollama.com/install.sh | sh
 ```
 
 ## How can I view the logs?
 
-Review the [Troubleshooting](./troubleshooting.md) docs for more about using logs.
+Review the [Troubleshooting](./troubleshooting) docs for more about using logs.
 
 ## Is my GPU compatible with Ollama?
 
-Please refer to the [GPU docs](./gpu.md).
+Please refer to the [GPU docs](./gpu).
 
 ## How can I specify the context window size?
 
-By default, Ollama uses a context window size of 2048 tokens.
+By default, Ollama uses a context window size of 4096 tokens.
 
 This can be overridden with the `OLLAMA_CONTEXT_LENGTH` environment variable. For example, to set the default context window to 8K, use:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 OLLAMA_CONTEXT_LENGTH=8192 ollama serve
 ```
 
 To change this when using `ollama run`, use `/set parameter`:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 /set parameter num_ctx 4096
 ```
 
 When using the API, specify the `num_ctx` parameter:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 curl http://localhost:11434/api/generate -d '{
   "model": "llama3.2",
   "prompt": "Why is the sky blue?",
@@ -3056,13 +3568,17 @@ curl http://localhost:11434/api/generate -d '{
 
 Use the `ollama ps` command to see what models are currently loaded into memory.
 
-```shell  theme={"system"}
+```shell theme={"system"}
 ollama ps
 ```
 
 <Info>
-  **Output**: `NAME ID SIZE PROCESSOR UNTIL llama3:70b bcfb190ca3a7 42 GB
-    100% GPU 4 minutes from now`
+  **Output**:
+
+  ```
+  NAME        ID            SIZE    PROCESSOR   UNTIL
+  llama3:70b  bcfb190ca3a7  42 GB   100% GPU    4 minutes from now
+  ```
 </Info>
 
 The `Processor` column will show which memory the model was loaded in to:
@@ -3081,7 +3597,7 @@ If Ollama is run as a macOS application, environment variables should be set usi
 
 1. For each environment variable, call `launchctl setenv`.
 
-   ```bash  theme={"system"}
+   ```bash theme={"system"}
    launchctl setenv OLLAMA_HOST "0.0.0.0:11434"
    ```
 
@@ -3095,7 +3611,7 @@ If Ollama is run as a systemd service, environment variables should be set using
 
 2. For each environment variable, add a line `Environment` under section `[Service]`:
 
-   ```ini  theme={"system"}
+   ```ini theme={"system"}
    [Service]
    Environment="OLLAMA_HOST=0.0.0.0:11434"
    ```
@@ -3104,7 +3620,7 @@ If Ollama is run as a systemd service, environment variables should be set using
 
 4. Reload `systemd` and restart Ollama:
 
-   ```shell  theme={"system"}
+   ```shell theme={"system"}
    systemctl daemon-reload
    systemctl restart ollama
    ```
@@ -3142,7 +3658,7 @@ Alternatively, the Docker daemon can be configured to use a proxy. Instructions 
 
 Ensure the certificate is installed as a system certificate when using HTTPS. This may require a new Docker image when using a self-signed certificate.
 
-```dockerfile  theme={"system"}
+```dockerfile theme={"system"}
 FROM ollama/ollama
 COPY my-ca.pem /usr/local/share/ca-certificates/my-ca.crt
 RUN update-ca-certificates
@@ -3150,7 +3666,7 @@ RUN update-ca-certificates
 
 Build and run this image:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 docker build -t ollama-with-ca .
 docker run -d -e HTTPS_PROXY=https://my.proxy.example.com -p 11434:11434 ollama-with-ca
 ```
@@ -3169,7 +3685,7 @@ Refer to the section [above](#how-do-i-configure-ollama-server) for how to set e
 
 Ollama runs an HTTP server and can be exposed using a proxy server such as Nginx. To do so, configure the proxy to forward requests and optionally set required headers (if not exposing Ollama on the network). For example, with Nginx:
 
-```nginx  theme={"system"}
+```nginx theme={"system"}
 server {
     listen 80;
     server_name example.com;  # Replace with your domain or IP
@@ -3184,7 +3700,7 @@ server {
 
 Ollama can be accessed using a range of tools for tunneling tools. For example with Ngrok:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 ngrok http 11434 --host-header="localhost:11434"
 ```
 
@@ -3192,7 +3708,7 @@ ngrok http 11434 --host-header="localhost:11434"
 
 To use Ollama with Cloudflare Tunnel, use the `--url` and `--http-host-header` flags:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 cloudflared tunnel --url http://localhost:11434 --http-host-header="localhost:11434"
 ```
 
@@ -3249,19 +3765,19 @@ If you are using the API you can preload a model by sending the Ollama server an
 
 To preload the mistral model using the generate endpoint, use:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 curl http://localhost:11434/api/generate -d '{"model": "mistral"}'
 ```
 
 To use the chat completions endpoint, use:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 curl http://localhost:11434/api/chat -d '{"model": "mistral"}'
 ```
 
 To preload a model using the CLI, use the command:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 ollama run llama3.2 ""
 ```
 
@@ -3269,7 +3785,7 @@ ollama run llama3.2 ""
 
 By default models are kept in memory for 5 minutes before being unloaded. This allows for quicker response times if you're making numerous requests to the LLM. If you want to immediately unload a model from memory, use the `ollama stop` command:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 ollama stop llama3.2
 ```
 
@@ -3282,13 +3798,13 @@ If you're using the API, use the `keep_alive` parameter with the `/api/generate`
 
 For example, to preload a model and leave it in memory use:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 curl http://localhost:11434/api/generate -d '{"model": "llama3.2", "keep_alive": -1}'
 ```
 
 To unload the model and free up memory use:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 curl http://localhost:11434/api/generate -d '{"model": "llama3.2", "keep_alive": 0}'
 ```
 
@@ -3363,7 +3879,7 @@ You'll need it to:
 
 * **Sign‑in via CLI**
 
-```shell  theme={"system"}
+```shell theme={"system"}
 ollama signin
 ```
 
@@ -3409,6 +3925,7 @@ Check your compute compatibility to see if your card is supported:
 
 | Compute Capability | Family              | Cards                                                                                                                         |
 | ------------------ | ------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| 12.1               | NVIDIA              | `GB10 (DGX Spark)`                                                                                                            |
 | 12.0               | GeForce RTX 50xx    | `RTX 5060` `RTX 5060 Ti` `RTX 5070` `RTX 5070 Ti` `RTX 5080` `RTX 5090`                                                       |
 |                    | NVIDIA Professional | `RTX PRO 4000 Blackwell` `RTX PRO 4500 Blackwell` `RTX PRO 5000 Blackwell` `RTX PRO 6000 Blackwell`                           |
 | 9.0                | NVIDIA              | `H200` `H100`                                                                                                                 |
@@ -3432,7 +3949,7 @@ Check your compute compatibility to see if your card is supported:
 | 5.0                | GeForce GTX         | `GTX 750 Ti` `GTX 750` `NVS 810`                                                                                              |
 |                    | Quadro              | `K2200` `K1200` `K620` `M1200` `M520` `M5000M` `M4000M` `M3000M` `M2000M` `M1000M` `K620M` `M600M` `M500M`                    |
 
-For building locally to support older GPUs, see [developer.md](./development.md#linux-cuda-nvidia)
+For building locally to support older GPUs, see [developer](./development#linux-cuda-nvidia)
 
 ### GPU Selection
 
@@ -3453,7 +3970,7 @@ sudo modprobe nvidia_uvm`
 
 Ollama supports the following AMD GPUs via the ROCm library:
 
-> \[!NOTE]
+> **NOTE:**
 > Additional AMD GPU support is provided by the Vulkan Library - see below.
 
 ### Linux Support
@@ -3530,9 +4047,9 @@ Ollama supports GPU acceleration on Apple devices via the Metal API.
 
 ## Vulkan GPU Support
 
-> \[!NOTE]
+> **NOTE:**
 > Vulkan is currently an Experimental feature.  To enable, you must set OLLAMA\_VULKAN=1 for the Ollama server as
-> described in the [FAQ](faq.md#how-do-i-configure-ollama-server)
+> described in the [FAQ](faq#how-do-i-configure-ollama-server)
 
 Additional GPU support on Windows and Linux is provided via
 [Vulkan](https://www.vulkan.org/). On Windows most GPU vendors drivers come
@@ -3551,7 +4068,7 @@ running as root to expose this available VRAM data.  If neither root access or t
 capability are granted, Ollama will use approximate sizes of the models
 to make best effort scheduling decisions.
 
-```bash  theme={"system"}
+```bash theme={"system"}
 sudo setcap cap_perfmon+ep /usr/local/bin/ollama
 ```
 
@@ -3559,7 +4076,7 @@ sudo setcap cap_perfmon+ep /usr/local/bin/ollama
 
 To select specific Vulkan GPU(s), you can set the environment variable
 `GGML_VK_VISIBLE_DEVICES` to one or more numeric IDs on the Ollama server as
-described in the [FAQ](faq.md#how-do-i-configure-ollama-server). If you
+described in the [FAQ](faq#how-do-i-configure-ollama-server). If you
 encounter any problems with Vulkan based GPUs, you can disable all Vulkan GPUs
 by setting `GGML_VK_VISIBLE_DEVICES=-1`
 
@@ -3580,7 +4097,7 @@ Source: https://docs.ollama.com/import
 
 First, create a `Modelfile` with a `FROM` command pointing at the base model you used for fine tuning, and an `ADAPTER` command which points to the directory with your Safetensors adapter:
 
-```dockerfile  theme={"system"}
+```dockerfile theme={"system"}
 FROM <base model name>
 ADAPTER /path/to/safetensors/adapter/directory
 ```
@@ -3589,13 +4106,13 @@ Make sure that you use the same base model in the `FROM` command as you used to 
 
 Now run `ollama create` from the directory where the `Modelfile` was created:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 ollama create my-model
 ```
 
 Lastly, test the model:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 ollama run my-model
 ```
 
@@ -3615,7 +4132,7 @@ You can create the adapter using a fine tuning framework or tool which can outpu
 
 First, create a `Modelfile` with a `FROM` command which points to the directory containing your Safetensors weights:
 
-```dockerfile  theme={"system"}
+```dockerfile theme={"system"}
 FROM /path/to/safetensors/directory
 ```
 
@@ -3623,13 +4140,13 @@ If you create the Modelfile in the same directory as the weights, you can use th
 
 Now run the `ollama create` command from the directory where you created the `Modelfile`:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 ollama create my-model
 ```
 
 Lastly, test the model:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 ollama run my-model
 ```
 
@@ -3652,13 +4169,13 @@ If you have a GGUF based model or adapter it is possible to import it into Ollam
 
 To import a GGUF model, create a `Modelfile` containing:
 
-```dockerfile  theme={"system"}
+```dockerfile theme={"system"}
 FROM /path/to/file.gguf
 ```
 
 For a GGUF adapter, create the `Modelfile` with:
 
-```dockerfile  theme={"system"}
+```dockerfile theme={"system"}
 FROM <model name>
 ADAPTER /path/to/file.gguf
 ```
@@ -3671,7 +4188,7 @@ When importing a GGUF adapter, it's important to use the same base model as the 
 
 Once you have created your `Modelfile`, use the `ollama create` command to build the model.
 
-```shell  theme={"system"}
+```shell theme={"system"}
 ollama create my-model
 ```
 
@@ -3683,13 +4200,13 @@ Ollama can quantize FP16 and FP32 based models into different quantization level
 
 First, create a Modelfile with the FP16 or FP32 based model you wish to quantize.
 
-```dockerfile  theme={"system"}
+```dockerfile theme={"system"}
 FROM /path/to/my/gemma/f16/model
 ```
 
 Use `ollama create` to then create the quantized model.
 
-```shell  theme={"system"}
+```shell theme={"system"}
 $ ollama create --quantize q4_K_M mymodel
 transferring model data
 quantizing F16 model to Q4_K_M
@@ -3701,22 +4218,12 @@ success
 
 ### Supported Quantizations
 
-* `q4_0`
-* `q4_1`
-* `q5_0`
-* `q5_1`
 * `q8_0`
 
 #### K-means Quantizations
 
-* `q3_K_S`
-* `q3_K_M`
-* `q3_K_L`
 * `q4_K_S`
 * `q4_K_M`
-* `q5_K_S`
-* `q5_K_M`
-* `q6_K`
 
 ## Sharing your model on ollama.com
 
@@ -3724,7 +4231,7 @@ You can share any model you have created by pushing it to [ollama.com](https://o
 
 First, use your browser to go to the [Ollama Sign-Up](https://ollama.com/signup) page. If you already have an account, you can skip this step.
 
-<img src="https://mintcdn.com/ollama-9269c548/uieua2DvLKVQ74Ga/images/signup.png?fit=max&auto=format&n=uieua2DvLKVQ74Ga&q=85&s=d99f1340e6cfd85d36d49a444491cc63" alt="Sign-Up" width="40%" data-og-width="756" data-og-height="1192" data-path="images/signup.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/ollama-9269c548/uieua2DvLKVQ74Ga/images/signup.png?w=280&fit=max&auto=format&n=uieua2DvLKVQ74Ga&q=85&s=8546e600b6c2b29ca91b23d837e9dc94 280w, https://mintcdn.com/ollama-9269c548/uieua2DvLKVQ74Ga/images/signup.png?w=560&fit=max&auto=format&n=uieua2DvLKVQ74Ga&q=85&s=786fba46e20fe8f9c2675abb620c7643 560w, https://mintcdn.com/ollama-9269c548/uieua2DvLKVQ74Ga/images/signup.png?w=840&fit=max&auto=format&n=uieua2DvLKVQ74Ga&q=85&s=06b9d9837022e7dbe9f9005f6f977eca 840w, https://mintcdn.com/ollama-9269c548/uieua2DvLKVQ74Ga/images/signup.png?w=1100&fit=max&auto=format&n=uieua2DvLKVQ74Ga&q=85&s=7ff9cc91091ffad52f8fb30a990d3089 1100w, https://mintcdn.com/ollama-9269c548/uieua2DvLKVQ74Ga/images/signup.png?w=1650&fit=max&auto=format&n=uieua2DvLKVQ74Ga&q=85&s=727fbd87da3a076b45794ea248f1afd3 1650w, https://mintcdn.com/ollama-9269c548/uieua2DvLKVQ74Ga/images/signup.png?w=2500&fit=max&auto=format&n=uieua2DvLKVQ74Ga&q=85&s=2ff3ce5e5197144725e860513cfe59e8 2500w" />
+<img alt="Sign-Up" />
 
 The `Username` field will be used as part of your model's name (e.g. `jmorganca/mymodel`), so make sure you are comfortable with the username that you have selected.
 
@@ -3732,21 +4239,21 @@ Now that you have created an account and are signed-in, go to the [Ollama Keys S
 
 Follow the directions on the page to determine where your Ollama Public Key is located.
 
-<img src="https://mintcdn.com/ollama-9269c548/uieua2DvLKVQ74Ga/images/ollama-keys.png?fit=max&auto=format&n=uieua2DvLKVQ74Ga&q=85&s=7ced4d97ecf6b115219f929a4914205e" alt="Ollama Keys" width="80%" data-og-width="1200" data-og-height="893" data-path="images/ollama-keys.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/ollama-9269c548/uieua2DvLKVQ74Ga/images/ollama-keys.png?w=280&fit=max&auto=format&n=uieua2DvLKVQ74Ga&q=85&s=e3c7925a5a4f5dadafcf3908df55b97c 280w, https://mintcdn.com/ollama-9269c548/uieua2DvLKVQ74Ga/images/ollama-keys.png?w=560&fit=max&auto=format&n=uieua2DvLKVQ74Ga&q=85&s=66bb814e45ec58e6b15a4be890c6fec8 560w, https://mintcdn.com/ollama-9269c548/uieua2DvLKVQ74Ga/images/ollama-keys.png?w=840&fit=max&auto=format&n=uieua2DvLKVQ74Ga&q=85&s=44af18318e8469b719218a46305361d6 840w, https://mintcdn.com/ollama-9269c548/uieua2DvLKVQ74Ga/images/ollama-keys.png?w=1100&fit=max&auto=format&n=uieua2DvLKVQ74Ga&q=85&s=46d0cfa93938c243b8e41a169ceedb1f 1100w, https://mintcdn.com/ollama-9269c548/uieua2DvLKVQ74Ga/images/ollama-keys.png?w=1650&fit=max&auto=format&n=uieua2DvLKVQ74Ga&q=85&s=c235d8ed66c24171946e376eb5e6663e 1650w, https://mintcdn.com/ollama-9269c548/uieua2DvLKVQ74Ga/images/ollama-keys.png?w=2500&fit=max&auto=format&n=uieua2DvLKVQ74Ga&q=85&s=4844902d0289c2154b65d3d0339e9934 2500w" />
+<img alt="Ollama Keys" />
 
 Click on the `Add Ollama Public Key` button, and copy and paste the contents of your Ollama Public Key into the text field.
 
 To push a model to [ollama.com](https://ollama.com), first make sure that it is named correctly with your username. You may have to use the `ollama cp` command to copy
 your model to give it the correct name. Once you're happy with your model's name, use the `ollama push` command to push it to [ollama.com](https://ollama.com).
 
-```shell  theme={"system"}
+```shell theme={"system"}
 ollama cp mymodel myuser/mymodel
 ollama push myuser/mymodel
 ```
 
 Once your model has been pushed, other users can pull and run it by using the command:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 ollama run myuser/mymodel
 ```
 
@@ -3756,13 +4263,13 @@ Source: https://docs.ollama.com/index
 
 
 
-<img src="https://mintcdn.com/ollama-9269c548/w-L7kuDqk3_8zi5c/images/welcome.png?fit=max&auto=format&n=w-L7kuDqk3_8zi5c&q=85&s=914368bbe8709d04481a8a478b66cf8c" noZoom className="rounded-3xl" data-og-width="2048" width="2048" data-og-height="1024" height="1024" data-path="images/welcome.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/ollama-9269c548/w-L7kuDqk3_8zi5c/images/welcome.png?w=280&fit=max&auto=format&n=w-L7kuDqk3_8zi5c&q=85&s=59525d30abe1d51e4df09990566452c2 280w, https://mintcdn.com/ollama-9269c548/w-L7kuDqk3_8zi5c/images/welcome.png?w=560&fit=max&auto=format&n=w-L7kuDqk3_8zi5c&q=85&s=bcacb65baf44ab859d50fac8c8d342e6 560w, https://mintcdn.com/ollama-9269c548/w-L7kuDqk3_8zi5c/images/welcome.png?w=840&fit=max&auto=format&n=w-L7kuDqk3_8zi5c&q=85&s=cc3770b69817332b5961d0faecdce473 840w, https://mintcdn.com/ollama-9269c548/w-L7kuDqk3_8zi5c/images/welcome.png?w=1100&fit=max&auto=format&n=w-L7kuDqk3_8zi5c&q=85&s=0ffad9be5c842e67ca99e76be5cc7ce6 1100w, https://mintcdn.com/ollama-9269c548/w-L7kuDqk3_8zi5c/images/welcome.png?w=1650&fit=max&auto=format&n=w-L7kuDqk3_8zi5c&q=85&s=10077a91a66acb913bb8bd51ed809a74 1650w, https://mintcdn.com/ollama-9269c548/w-L7kuDqk3_8zi5c/images/welcome.png?w=2500&fit=max&auto=format&n=w-L7kuDqk3_8zi5c&q=85&s=4673a18833fcc23e99bb280d2bffb019 2500w" />
+<img />
 
 [Ollama](https://ollama.com) is the easiest way to get up and running with large language models such as gpt-oss, Gemma 3, DeepSeek-R1, Qwen3 and more.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Quickstart" icon="rocket" href="/quickstart">
-    Get up and running with your first model
+    Get up and running with your first model or integrate Ollama with your favorite tools
   </Card>
 
   <Card title="Download Ollama" icon="download" href="https://ollama.com/download">
@@ -3780,7 +4287,7 @@ Source: https://docs.ollama.com/index
 
 ## Libraries
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Ollama's Python Library" icon="python" href="https://github.com/ollama/ollama-python">
     The official library for using Ollama with Python
   </Card>
@@ -3796,7 +4303,7 @@ Source: https://docs.ollama.com/index
 
 ## Community
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Discord" icon="discord" href="https://discord.gg/ollama">
     Join our Discord community
   </Card>
@@ -3805,6 +4312,81 @@ Source: https://docs.ollama.com/index
     Join our Reddit community
   </Card>
 </CardGroup>
+
+
+# Claude Code
+Source: https://docs.ollama.com/integrations/claude-code
+
+
+
+Claude Code is Anthropic's agentic coding tool that can read, modify, and execute code in your working directory.
+
+Open models can be used with Claude Code through Ollama's Anthropic-compatible API, enabling you to use models such as `glm-4.7`, `qwen3-coder`, `gpt-oss`.
+
+![Claude Code with Ollama](https://files.ollama.com/claude-code.png)
+
+## Install
+
+Install [Claude Code](https://code.claude.com/docs/en/overview):
+
+<CodeGroup>
+  ```shell macOS / Linux theme={"system"}
+  curl -fsSL https://claude.ai/install.sh | bash
+  ```
+
+  ```powershell Windows theme={"system"}
+  irm https://claude.ai/install.ps1 | iex
+  ```
+</CodeGroup>
+
+## Usage with Ollama
+
+### Quick setup
+
+```shell theme={"system"}
+ollama launch claude
+```
+
+To configure without launching:
+
+```shell theme={"system"}
+ollama launch claude --config
+```
+
+### Manual setup
+
+Claude Code connects to Ollama using the Anthropic-compatible API.
+
+1. Set the environment variables:
+
+```shell theme={"system"}
+export ANTHROPIC_AUTH_TOKEN=ollama
+export ANTHROPIC_API_KEY=""
+export ANTHROPIC_BASE_URL=http://localhost:11434
+```
+
+2. Run Claude Code with an Ollama model:
+
+```shell theme={"system"}
+claude --model gpt-oss:20b
+```
+
+Or run with environment variables inline:
+
+```shell theme={"system"}
+ANTHROPIC_AUTH_TOKEN=ollama ANTHROPIC_BASE_URL=http://localhost:11434 ANTHROPIC_API_KEY="" claude --model qwen3-coder 
+```
+
+**Note:** Claude Code requires a large context window. We recommend at least 64k tokens. See the [context length documentation](/context-length) for how to adjust context length in Ollama.
+
+## Recommended Models
+
+* `qwen3-coder`
+* `glm-4.7`
+* `gpt-oss:20b`
+* `gpt-oss:120b`
+
+Cloud models are also available at [ollama.com/search?c=cloud](https://ollama.com/search?c=cloud).
 
 
 # Cline
@@ -3824,8 +4406,8 @@ Install [Cline](https://docs.cline.bot/getting-started/installing-cline) in your
 
 <Note>Coding tools require a larger context window. It is recommended to use a context window of at least 32K tokens. See [Context length](/context-length) for more information.</Note>
 
-<div style={{ display: 'flex', justifyContent: 'center' }}>
-  <img src="https://mintcdn.com/ollama-9269c548/DILXUjvsEb6UDNxN/images/cline-settings.png?fit=max&auto=format&n=DILXUjvsEb6UDNxN&q=85&s=2d2755de6b2e06cd513119abf389acd0" alt="Cline settings configuration showing API Provider set to Ollama" width="50%" data-og-width="596" data-og-height="826" data-path="images/cline-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/ollama-9269c548/DILXUjvsEb6UDNxN/images/cline-settings.png?w=280&fit=max&auto=format&n=DILXUjvsEb6UDNxN&q=85&s=526c814bcfce0e2d812a6bfeb708ec74 280w, https://mintcdn.com/ollama-9269c548/DILXUjvsEb6UDNxN/images/cline-settings.png?w=560&fit=max&auto=format&n=DILXUjvsEb6UDNxN&q=85&s=03865bcf135e8ac371c526a18fc4ba8b 560w, https://mintcdn.com/ollama-9269c548/DILXUjvsEb6UDNxN/images/cline-settings.png?w=840&fit=max&auto=format&n=DILXUjvsEb6UDNxN&q=85&s=40a0ed4a094e6c3f753ef6ae8820b949 840w, https://mintcdn.com/ollama-9269c548/DILXUjvsEb6UDNxN/images/cline-settings.png?w=1100&fit=max&auto=format&n=DILXUjvsEb6UDNxN&q=85&s=f13028b0f2d177f7b3cb9eb3d6332416 1100w, https://mintcdn.com/ollama-9269c548/DILXUjvsEb6UDNxN/images/cline-settings.png?w=1650&fit=max&auto=format&n=DILXUjvsEb6UDNxN&q=85&s=00ab8386e21b6aa32e4dc4d3bbd02817 1650w, https://mintcdn.com/ollama-9269c548/DILXUjvsEb6UDNxN/images/cline-settings.png?w=2500&fit=max&auto=format&n=DILXUjvsEb6UDNxN&q=85&s=27a89d86786164ff499d03feab00d375 2500w" />
+<div>
+  <img alt="Cline settings configuration showing API Provider set to Ollama" />
 </div>
 
 ## Connecting to ollama.com
@@ -3856,7 +4438,21 @@ npm install -g @openai/codex
 
 ## Usage with Ollama
 
-<Note>Codex requires a larger context window. It is recommended to use a context window of at least 32K tokens.</Note>
+<Note>Codex requires a larger context window. It is recommended to use a context window of at least 64k tokens.</Note>
+
+### Quick setup
+
+```
+ollama launch codex
+```
+
+To configure without launching:
+
+```shell theme={"system"}
+ollama launch codex --config
+```
+
+### Manual setup
 
 To use `codex` with Ollama, use the `--oss` flag:
 
@@ -3884,7 +4480,7 @@ Create an [API key](https://ollama.com/settings/keys) from ollama.com and export
 
 To use ollama.com directly, edit your `~/.codex/config.toml` file to point to ollama.com.
 
-```toml  theme={"system"}
+```toml theme={"system"}
 model = "gpt-oss:120b"
 model_provider = "ollama"
 
@@ -3906,17 +4502,31 @@ Source: https://docs.ollama.com/integrations/droid
 
 Install the [Droid CLI](https://factory.ai/):
 
-```bash  theme={"system"}
+```bash theme={"system"}
 curl -fsSL https://app.factory.ai/cli | sh
 ```
 
-<Note>Droid requires a larger context window. It is recommended to use a context window of at least 32K tokens. See [Context length](/context-length) for more information.</Note>
+<Note>Droid requires a larger context window. It is recommended to use a context window of at least 64k tokens. See [Context length](/context-length) for more information.</Note>
 
 ## Usage with Ollama
 
+### Quick setup
+
+```bash theme={"system"}
+ollama launch droid
+```
+
+To configure without launching:
+
+```shell theme={"system"}
+ollama launch droid --config
+```
+
+### Manual setup
+
 Add a local configuration block to `~/.factory/config.json`:
 
-```json  theme={"system"}
+```json theme={"system"}
 {
   "custom_models": [
     {
@@ -3937,7 +4547,7 @@ Add a local configuration block to `~/.factory/config.json`:
 
 Add the cloud configuration block to `~/.factory/config.json`:
 
-```json  theme={"system"}
+```json theme={"system"}
 {
   "custom_models": [
     {
@@ -3957,7 +4567,7 @@ Add the cloud configuration block to `~/.factory/config.json`:
 1. Create an [API key](https://ollama.com/settings/keys) from ollama.com and export it as `OLLAMA_API_KEY`.
 2. Add the cloud configuration block to `~/.factory/config.json`:
 
-   ```json  theme={"system"}
+   ```json theme={"system"}
    {
      "custom_models": [
        {
@@ -3988,8 +4598,8 @@ Install [Goose](https://block.github.io/goose/docs/getting-started/installation/
 
 1. In Goose, open **Settings** → **Configure Provider**.
 
-<div style={{ display: 'flex', justifyContent: 'center' }}>
-  <img src="https://mintcdn.com/ollama-9269c548/Qrfd4TFdx51mx0J_/images/goose-settings.png?fit=max&auto=format&n=Qrfd4TFdx51mx0J_&q=85&s=ba9aaea6b535f03456dbafb0ba48018b" alt="Goose settings Panel" width="75%" data-og-width="1300" data-og-height="732" data-path="images/goose-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/ollama-9269c548/Qrfd4TFdx51mx0J_/images/goose-settings.png?w=280&fit=max&auto=format&n=Qrfd4TFdx51mx0J_&q=85&s=63e0cc6d307d8a6c1b7ba8bb7b1b2532 280w, https://mintcdn.com/ollama-9269c548/Qrfd4TFdx51mx0J_/images/goose-settings.png?w=560&fit=max&auto=format&n=Qrfd4TFdx51mx0J_&q=85&s=bf90aaf22a8f6307d99597964433603c 560w, https://mintcdn.com/ollama-9269c548/Qrfd4TFdx51mx0J_/images/goose-settings.png?w=840&fit=max&auto=format&n=Qrfd4TFdx51mx0J_&q=85&s=4fd50ee906a26ecde5f49575bcad1700 840w, https://mintcdn.com/ollama-9269c548/Qrfd4TFdx51mx0J_/images/goose-settings.png?w=1100&fit=max&auto=format&n=Qrfd4TFdx51mx0J_&q=85&s=01abb63a474ea8a2e47fe1b4ee7bd752 1100w, https://mintcdn.com/ollama-9269c548/Qrfd4TFdx51mx0J_/images/goose-settings.png?w=1650&fit=max&auto=format&n=Qrfd4TFdx51mx0J_&q=85&s=7188a96a903d03fe68004faeb743156c 1650w, https://mintcdn.com/ollama-9269c548/Qrfd4TFdx51mx0J_/images/goose-settings.png?w=2500&fit=max&auto=format&n=Qrfd4TFdx51mx0J_&q=85&s=92e96516a86f243a182939145d5536eb 2500w" />
+<div>
+  <img alt="Goose settings Panel" />
 </div>
 
 2. Find **Ollama**, click **Configure**
@@ -4009,8 +4619,8 @@ Install [Goose](https://block.github.io/goose/docs/getting-started/installation/
 1. Run `goose configure`
 2. Select **Configure Providers** and select **Ollama**
 
-<div style={{ display: 'flex', justifyContent: 'center' }}>
-  <img src="https://mintcdn.com/ollama-9269c548/Qrfd4TFdx51mx0J_/images/goose-cli.png?fit=max&auto=format&n=Qrfd4TFdx51mx0J_&q=85&s=3f34e0d16cbdf89858115b8c64d6dc08" alt="Goose CLI" width="50%" data-og-width="650" data-og-height="546" data-path="images/goose-cli.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/ollama-9269c548/Qrfd4TFdx51mx0J_/images/goose-cli.png?w=280&fit=max&auto=format&n=Qrfd4TFdx51mx0J_&q=85&s=d869883c3d68749aa534907cab2fcd5a 280w, https://mintcdn.com/ollama-9269c548/Qrfd4TFdx51mx0J_/images/goose-cli.png?w=560&fit=max&auto=format&n=Qrfd4TFdx51mx0J_&q=85&s=b6e2eb41567eb401582c42b2289e2a98 560w, https://mintcdn.com/ollama-9269c548/Qrfd4TFdx51mx0J_/images/goose-cli.png?w=840&fit=max&auto=format&n=Qrfd4TFdx51mx0J_&q=85&s=35c249c4cf90b3697d44e756d728d47c 840w, https://mintcdn.com/ollama-9269c548/Qrfd4TFdx51mx0J_/images/goose-cli.png?w=1100&fit=max&auto=format&n=Qrfd4TFdx51mx0J_&q=85&s=957ef7e49a7b852a8995a4a7a04aea2d 1100w, https://mintcdn.com/ollama-9269c548/Qrfd4TFdx51mx0J_/images/goose-cli.png?w=1650&fit=max&auto=format&n=Qrfd4TFdx51mx0J_&q=85&s=ebfa2bca9b17e3183d79c9534b24f3bf 1650w, https://mintcdn.com/ollama-9269c548/Qrfd4TFdx51mx0J_/images/goose-cli.png?w=2500&fit=max&auto=format&n=Qrfd4TFdx51mx0J_&q=85&s=b6ce0d3e1b9d07f3e28935767b0cf5e1 2500w" />
+<div>
+  <img alt="Goose CLI" />
 </div>
 
 3. Enter model name (e.g `qwen3`)
@@ -4042,23 +4652,78 @@ Install [IntelliJ](https://www.jetbrains.com/idea/).
 
 1. In Intellij, click the **chat icon** located in the right sidebar
 
-<div style={{ display: 'flex', justifyContent: 'center' }}>
-  <img src="https://mintcdn.com/ollama-9269c548/YbLeuKjU_QVFWOuC/images/intellij-chat-sidebar.png?fit=max&auto=format&n=YbLeuKjU_QVFWOuC&q=85&s=3744faa4bdfb6e817ad68d7da792bf18" alt="Intellij Sidebar Chat" width="50%" data-og-width="668" data-og-height="476" data-path="images/intellij-chat-sidebar.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/ollama-9269c548/YbLeuKjU_QVFWOuC/images/intellij-chat-sidebar.png?w=280&fit=max&auto=format&n=YbLeuKjU_QVFWOuC&q=85&s=b8b775ae96fdf260c9f9ffb001dee5f5 280w, https://mintcdn.com/ollama-9269c548/YbLeuKjU_QVFWOuC/images/intellij-chat-sidebar.png?w=560&fit=max&auto=format&n=YbLeuKjU_QVFWOuC&q=85&s=7636af78546e0de3a1ba1f0895d512b9 560w, https://mintcdn.com/ollama-9269c548/YbLeuKjU_QVFWOuC/images/intellij-chat-sidebar.png?w=840&fit=max&auto=format&n=YbLeuKjU_QVFWOuC&q=85&s=98ceeb48201d4c25a70ae3c723f394a4 840w, https://mintcdn.com/ollama-9269c548/YbLeuKjU_QVFWOuC/images/intellij-chat-sidebar.png?w=1100&fit=max&auto=format&n=YbLeuKjU_QVFWOuC&q=85&s=cfb6f2e863bef8b1cee3aad638a4bf7a 1100w, https://mintcdn.com/ollama-9269c548/YbLeuKjU_QVFWOuC/images/intellij-chat-sidebar.png?w=1650&fit=max&auto=format&n=YbLeuKjU_QVFWOuC&q=85&s=30a37f1fcebc59171c937ad65f222202 1650w, https://mintcdn.com/ollama-9269c548/YbLeuKjU_QVFWOuC/images/intellij-chat-sidebar.png?w=2500&fit=max&auto=format&n=YbLeuKjU_QVFWOuC&q=85&s=9a35c626ad3352cfc65846c756633ddd 2500w" />
+<div>
+  <img alt="Intellij Sidebar Chat" />
 </div>
 
 2. Select the **current model** in the sidebar, then click **Set up Local Models**
 
-<div style={{ display: 'flex', justifyContent: 'center' }}>
-  <img src="https://mintcdn.com/ollama-9269c548/YbLeuKjU_QVFWOuC/images/intellij-current-model.png?fit=max&auto=format&n=YbLeuKjU_QVFWOuC&q=85&s=cc42c11b23f4a9b57b3e7c69ae42b60b" alt="Intellij model bottom right corner" width="50%" data-og-width="778" data-og-height="546" data-path="images/intellij-current-model.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/ollama-9269c548/YbLeuKjU_QVFWOuC/images/intellij-current-model.png?w=280&fit=max&auto=format&n=YbLeuKjU_QVFWOuC&q=85&s=48a6ec059b1eb155c1ebcf9059642c91 280w, https://mintcdn.com/ollama-9269c548/YbLeuKjU_QVFWOuC/images/intellij-current-model.png?w=560&fit=max&auto=format&n=YbLeuKjU_QVFWOuC&q=85&s=7b416430af08c499ca30b92aad33f71a 560w, https://mintcdn.com/ollama-9269c548/YbLeuKjU_QVFWOuC/images/intellij-current-model.png?w=840&fit=max&auto=format&n=YbLeuKjU_QVFWOuC&q=85&s=5c3d156e7ce892035a7c753893decd9a 840w, https://mintcdn.com/ollama-9269c548/YbLeuKjU_QVFWOuC/images/intellij-current-model.png?w=1100&fit=max&auto=format&n=YbLeuKjU_QVFWOuC&q=85&s=3f41f2e81f918d6ad424d317f86be381 1100w, https://mintcdn.com/ollama-9269c548/YbLeuKjU_QVFWOuC/images/intellij-current-model.png?w=1650&fit=max&auto=format&n=YbLeuKjU_QVFWOuC&q=85&s=dcc25dd0a711f5bd3d304c7cdea45617 1650w, https://mintcdn.com/ollama-9269c548/YbLeuKjU_QVFWOuC/images/intellij-current-model.png?w=2500&fit=max&auto=format&n=YbLeuKjU_QVFWOuC&q=85&s=47d24cfabf9aefb42d44a2438b0e4285 2500w" />
+<div>
+  <img alt="Intellij model bottom right corner" />
 </div>
 
 3. Under **Third Party AI Providers**, choose **Ollama**
 4. Confirm the **Host URL** is `http://localhost:11434`, then click **Ok**
 5. Once connected, select a model under **Local models by Ollama**
 
-<div style={{ display: 'flex', justifyContent: 'center' }}>
-  <img src="https://mintcdn.com/ollama-9269c548/YbLeuKjU_QVFWOuC/images/intellij-local-models.png?fit=max&auto=format&n=YbLeuKjU_QVFWOuC&q=85&s=0cc866166e1d6af65b3d8a16c3f396f5" alt="Zed star icon in bottom right corner" width="50%" data-og-width="522" data-og-height="602" data-path="images/intellij-local-models.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/ollama-9269c548/YbLeuKjU_QVFWOuC/images/intellij-local-models.png?w=280&fit=max&auto=format&n=YbLeuKjU_QVFWOuC&q=85&s=cef5847f7b97a11ed6bc785d93181062 280w, https://mintcdn.com/ollama-9269c548/YbLeuKjU_QVFWOuC/images/intellij-local-models.png?w=560&fit=max&auto=format&n=YbLeuKjU_QVFWOuC&q=85&s=9c64e22cc5cc3db1d5dfd160450aeede 560w, https://mintcdn.com/ollama-9269c548/YbLeuKjU_QVFWOuC/images/intellij-local-models.png?w=840&fit=max&auto=format&n=YbLeuKjU_QVFWOuC&q=85&s=c2e29b300a2630189df542906012b957 840w, https://mintcdn.com/ollama-9269c548/YbLeuKjU_QVFWOuC/images/intellij-local-models.png?w=1100&fit=max&auto=format&n=YbLeuKjU_QVFWOuC&q=85&s=10a5578b086d21b104caf3a2d415a181 1100w, https://mintcdn.com/ollama-9269c548/YbLeuKjU_QVFWOuC/images/intellij-local-models.png?w=1650&fit=max&auto=format&n=YbLeuKjU_QVFWOuC&q=85&s=91a64e8e4e91a53dac2a3ff057c2b212 1650w, https://mintcdn.com/ollama-9269c548/YbLeuKjU_QVFWOuC/images/intellij-local-models.png?w=2500&fit=max&auto=format&n=YbLeuKjU_QVFWOuC&q=85&s=243144901c8988b937ead0dd1579f98a 2500w" />
+<div>
+  <img alt="Zed star icon in bottom right corner" />
 </div>
+
+
+# marimo
+Source: https://docs.ollama.com/integrations/marimo
+
+
+
+## Install
+
+Install [marimo](https://marimo.io). You can use `pip` or `uv` for this. You
+can also use `uv` to create a sandboxed environment for marimo by running:
+
+```
+uvx marimo edit --sandbox notebook.py
+```
+
+## Usage with Ollama
+
+1. In marimo, go to the user settings and go to the AI tab. From here
+   you can find and configure Ollama as an AI provider. For local use you
+   would typically point the base url to `http://localhost:11434/v1`.
+
+<div>
+  <img alt="Ollama settings in marimo" />
+</div>
+
+2. Once the AI provider is set up, you can turn on/off specific AI models you'd like to access.
+
+<div>
+  <img alt="Selecting an Ollama model" />
+</div>
+
+3. You can also add a model to the list of available models by scrolling to the bottom and using the UI there.
+
+<div>
+  <img alt="Adding a new Ollama model" />
+</div>
+
+4. Once configured, you can now use Ollama for AI chats in marimo.
+
+<div>
+  <img alt="Configure code completion" />
+</div>
+
+4. Alternatively, you can now use Ollama for **inline code completion** in marimo. This can be configured in the "AI Features" tab.
+
+<div>
+  <img alt="Configure code completion" />
+</div>
+
+## Connecting to ollama.com
+
+1. Sign in to ollama cloud via `ollama signin`
+2. In the ollama model settings add a model that ollama hosts, like `gpt-oss:120b`.
+3. You can now refer to this model in marimo!
 
 
 # n8n
@@ -4074,14 +4739,14 @@ Install [n8n](https://docs.n8n.io/choose-n8n/).
 
 1. In the top right corner, click the dropdown and select **Create Credential**
 
-<div style={{ display: 'flex', justifyContent: 'center' }}>
-  <img src="https://mintcdn.com/ollama-9269c548/AZjkMSgDaM1B-WFi/images/n8n-credential-creation.png?fit=max&auto=format&n=AZjkMSgDaM1B-WFi&q=85&s=5b7f955f792e8b9899f3b0b3a1846d06" alt="Create a n8n Credential" width="75%" data-og-width="896" data-og-height="436" data-path="images/n8n-credential-creation.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/ollama-9269c548/AZjkMSgDaM1B-WFi/images/n8n-credential-creation.png?w=280&fit=max&auto=format&n=AZjkMSgDaM1B-WFi&q=85&s=ca26ff9b910a94d1120a0df887424072 280w, https://mintcdn.com/ollama-9269c548/AZjkMSgDaM1B-WFi/images/n8n-credential-creation.png?w=560&fit=max&auto=format&n=AZjkMSgDaM1B-WFi&q=85&s=f0209dbb3aa364c2801d8c02bf2c834e 560w, https://mintcdn.com/ollama-9269c548/AZjkMSgDaM1B-WFi/images/n8n-credential-creation.png?w=840&fit=max&auto=format&n=AZjkMSgDaM1B-WFi&q=85&s=9d291f0dca191861c5eebc5236985bdd 840w, https://mintcdn.com/ollama-9269c548/AZjkMSgDaM1B-WFi/images/n8n-credential-creation.png?w=1100&fit=max&auto=format&n=AZjkMSgDaM1B-WFi&q=85&s=5bc5d64f6eb7398e83c264382064879f 1100w, https://mintcdn.com/ollama-9269c548/AZjkMSgDaM1B-WFi/images/n8n-credential-creation.png?w=1650&fit=max&auto=format&n=AZjkMSgDaM1B-WFi&q=85&s=c866783cc5819354b4f69f0e7e8acded 1650w, https://mintcdn.com/ollama-9269c548/AZjkMSgDaM1B-WFi/images/n8n-credential-creation.png?w=2500&fit=max&auto=format&n=AZjkMSgDaM1B-WFi&q=85&s=a4b7c6e4cf3d38e6898901f64556e16a 2500w" />
+<div>
+  <img alt="Create a n8n Credential" />
 </div>
 
 2. Under **Add new credential** select **Ollama**
 
-<div style={{ display: 'flex', justifyContent: 'center' }}>
-  <img src="https://mintcdn.com/ollama-9269c548/AZjkMSgDaM1B-WFi/images/n8n-ollama-form.png?fit=max&auto=format&n=AZjkMSgDaM1B-WFi&q=85&s=46c5ec6678b7323405a1ca98d9f88af0" alt="Select Ollama under Credential" width="75%" data-og-width="1014" data-og-height="580" data-path="images/n8n-ollama-form.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/ollama-9269c548/AZjkMSgDaM1B-WFi/images/n8n-ollama-form.png?w=280&fit=max&auto=format&n=AZjkMSgDaM1B-WFi&q=85&s=969d64d58c346578b68028e051ecee33 280w, https://mintcdn.com/ollama-9269c548/AZjkMSgDaM1B-WFi/images/n8n-ollama-form.png?w=560&fit=max&auto=format&n=AZjkMSgDaM1B-WFi&q=85&s=b5f84f26821ad5dbf1b05e01ce03fbcc 560w, https://mintcdn.com/ollama-9269c548/AZjkMSgDaM1B-WFi/images/n8n-ollama-form.png?w=840&fit=max&auto=format&n=AZjkMSgDaM1B-WFi&q=85&s=8f8b5b1301e0cc3e81ab32c839c52a89 840w, https://mintcdn.com/ollama-9269c548/AZjkMSgDaM1B-WFi/images/n8n-ollama-form.png?w=1100&fit=max&auto=format&n=AZjkMSgDaM1B-WFi&q=85&s=163156b985eca789a4cf2f441cf2b461 1100w, https://mintcdn.com/ollama-9269c548/AZjkMSgDaM1B-WFi/images/n8n-ollama-form.png?w=1650&fit=max&auto=format&n=AZjkMSgDaM1B-WFi&q=85&s=812d4591c0a3ebe160b6c78884ad487c 1650w, https://mintcdn.com/ollama-9269c548/AZjkMSgDaM1B-WFi/images/n8n-ollama-form.png?w=2500&fit=max&auto=format&n=AZjkMSgDaM1B-WFi&q=85&s=1ec83dd378b05cd17ac60bd9a4522e6c 2500w" />
+<div>
+  <img alt="Select Ollama under Credential" />
 </div>
 
 3. Confirm Base URL is set to `http://localhost:11434` if running locally or `http://host.docker.internal:11434` if running through docker and click **Save**
@@ -4093,7 +4758,7 @@ Install [n8n](https://docs.n8n.io/choose-n8n/).
 
   or add the following to a docker compose file:
 
-  ```yaml  theme={"system"}
+  ```yaml theme={"system"}
   extra_hosts:
     - "host.docker.internal:host-gateway"
   ```
@@ -4103,14 +4768,14 @@ You should see a `Connection tested successfully` message.
 
 4. When creating a new workflow, select **Add a first step** and select an **Ollama node**
 
-<div style={{ display: 'flex', justifyContent: 'center' }}>
-  <img src="https://mintcdn.com/ollama-9269c548/AZjkMSgDaM1B-WFi/images/n8n-chat-node.png?fit=max&auto=format&n=AZjkMSgDaM1B-WFi&q=85&s=78c15518fa96d509096af63307063ae6" alt="Add a first step with Ollama node" width="75%" data-og-width="822" data-og-height="674" data-path="images/n8n-chat-node.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/ollama-9269c548/AZjkMSgDaM1B-WFi/images/n8n-chat-node.png?w=280&fit=max&auto=format&n=AZjkMSgDaM1B-WFi&q=85&s=66a5f3201aae6a8ff315efe181fe5a36 280w, https://mintcdn.com/ollama-9269c548/AZjkMSgDaM1B-WFi/images/n8n-chat-node.png?w=560&fit=max&auto=format&n=AZjkMSgDaM1B-WFi&q=85&s=241b695dc152e97bc9992d2389c4c0cf 560w, https://mintcdn.com/ollama-9269c548/AZjkMSgDaM1B-WFi/images/n8n-chat-node.png?w=840&fit=max&auto=format&n=AZjkMSgDaM1B-WFi&q=85&s=be8484e52dab096ef1a2178a4d24e934 840w, https://mintcdn.com/ollama-9269c548/AZjkMSgDaM1B-WFi/images/n8n-chat-node.png?w=1100&fit=max&auto=format&n=AZjkMSgDaM1B-WFi&q=85&s=1be199b1714e4413d1d85fb5d679d6a1 1100w, https://mintcdn.com/ollama-9269c548/AZjkMSgDaM1B-WFi/images/n8n-chat-node.png?w=1650&fit=max&auto=format&n=AZjkMSgDaM1B-WFi&q=85&s=df82f732f724dd0079d62e39b519713a 1650w, https://mintcdn.com/ollama-9269c548/AZjkMSgDaM1B-WFi/images/n8n-chat-node.png?w=2500&fit=max&auto=format&n=AZjkMSgDaM1B-WFi&q=85&s=9f235598a4fade17b04c967e478f26a4 2500w" />
+<div>
+  <img alt="Add a first step with Ollama node" />
 </div>
 
 5. Select your model of choice (e.g. `qwen3-coder`)
 
-<div style={{ display: 'flex', justifyContent: 'center' }}>
-  <img src="https://mintcdn.com/ollama-9269c548/AZjkMSgDaM1B-WFi/images/n8n-models.png?fit=max&auto=format&n=AZjkMSgDaM1B-WFi&q=85&s=45e705696dc7c8f40112e1c6dbee0e7e" alt="Set up Ollama credentials" width="75%" data-og-width="1088" data-og-height="1058" data-path="images/n8n-models.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/ollama-9269c548/AZjkMSgDaM1B-WFi/images/n8n-models.png?w=280&fit=max&auto=format&n=AZjkMSgDaM1B-WFi&q=85&s=b0e7aede75a0098d023db708a37f9966 280w, https://mintcdn.com/ollama-9269c548/AZjkMSgDaM1B-WFi/images/n8n-models.png?w=560&fit=max&auto=format&n=AZjkMSgDaM1B-WFi&q=85&s=5786bf38961730b03e7415f9255c06d7 560w, https://mintcdn.com/ollama-9269c548/AZjkMSgDaM1B-WFi/images/n8n-models.png?w=840&fit=max&auto=format&n=AZjkMSgDaM1B-WFi&q=85&s=2182809e057f870dbf8f5b30b4069fe5 840w, https://mintcdn.com/ollama-9269c548/AZjkMSgDaM1B-WFi/images/n8n-models.png?w=1100&fit=max&auto=format&n=AZjkMSgDaM1B-WFi&q=85&s=6635c63c203627d6def2c398d22efeba 1100w, https://mintcdn.com/ollama-9269c548/AZjkMSgDaM1B-WFi/images/n8n-models.png?w=1650&fit=max&auto=format&n=AZjkMSgDaM1B-WFi&q=85&s=5715ed9f2bcf4157a29f77b59b0c69ae 1650w, https://mintcdn.com/ollama-9269c548/AZjkMSgDaM1B-WFi/images/n8n-models.png?w=2500&fit=max&auto=format&n=AZjkMSgDaM1B-WFi&q=85&s=cbb012310cc5a74f7e2616423bc4f902 2500w" />
+<div>
+  <img alt="Set up Ollama credentials" />
 </div>
 
 ## Connecting to ollama.com
@@ -4119,6 +4784,225 @@ You should see a `Connection tested successfully` message.
 2. In n8n, click **Create Credential** and select **Ollama**
 3. Set the **API URL** to `https://ollama.com`
 4. Enter your **API Key** and click **Save**
+
+
+# Onyx
+Source: https://docs.ollama.com/integrations/onyx
+
+
+
+## Overview
+
+[Onyx](http://onyx.app/) is a self-hostable Chat UI that integrates with all Ollama models. Features include:
+
+* Creating custom Agents
+* Web search
+* Deep Research
+* RAG over uploaded documents and connected apps
+* Connectors to applications like Google Drive, Email, Slack, etc.
+* MCP and OpenAPI Actions support
+* Image generation
+* User/Groups management, RBAC, SSO, etc.
+
+Onyx can be deployed for single users or large organizations.
+
+## Install Onyx
+
+Deploy Onyx with the [quickstart guide](https://docs.onyx.app/deployment/getting_started/quickstart).
+
+<Info>
+  Resourcing/scaling docs [here](https://docs.onyx.app/deployment/getting_started/resourcing).
+</Info>
+
+## Usage with Ollama
+
+1. Login to your Onyx deployment (create an account first).
+
+<div>
+  <img alt="Onyx Login Page" />
+</div>
+
+2. In the set-up process select `Ollama` as the LLM provider.
+
+<div>
+  <img alt="Onyx Set Up Form" />
+</div>
+
+3. Provide your **Ollama API URL** and select your models.
+   <Note>If you're running Onyx in Docker, to access your computer's local network use `http://host.docker.internal` instead of `http://127.0.0.1`.</Note>
+
+<div>
+  <img alt="Selecting Ollama Models" />
+</div>
+
+You can also easily connect up Onyx Cloud with the `Ollama Cloud` tab of the setup.
+
+## Send your first query
+
+<div>
+  <img alt="Onyx Query Example" />
+</div>
+
+
+# OpenClaw
+Source: https://docs.ollama.com/integrations/openclaw
+
+
+
+OpenClaw is a personal AI assistant that runs on your own devices. It bridges messaging services (WhatsApp, Telegram, Slack, Discord, iMessage, and more) to AI coding agents through a centralized gateway.
+
+## Install
+
+Install [OpenClaw](https://openclaw.ai/)
+
+```bash theme={"system"}
+npm install -g openclaw@latest
+```
+
+Then run the onboarding wizard:
+
+```bash theme={"system"}
+openclaw onboard --install-daemon
+```
+
+<Note>OpenClaw requires a larger context window. It is recommended to use a context window of at least 64k tokens. See [Context length](/context-length) for more information.</Note>
+
+## Usage with Ollama
+
+### Quick setup
+
+```bash theme={"system"}
+ollama launch openclaw
+```
+
+<Note>Previously known as Clawdbot. `ollama launch clawdbot` still works as an alias.</Note>
+
+This configures OpenClaw to use Ollama and starts the gateway.
+If the gateway is already running, no changes need to be made as the gateway will auto-reload the changes.
+
+To configure without launching:
+
+```shell theme={"system"}
+ollama launch openclaw --config
+```
+
+## Recommended Models
+
+* `qwen3-coder`
+* `glm-4.7`
+* `gpt-oss:20b`
+* `gpt-oss:120b`
+
+Cloud models are also available at [ollama.com/search?c=cloud](https://ollama.com/search?c=cloud).
+
+
+# OpenCode
+Source: https://docs.ollama.com/integrations/opencode
+
+
+
+OpenCode is an open-source AI coding assistant that runs in your terminal.
+
+## Install
+
+Install the [OpenCode CLI](https://opencode.ai):
+
+```bash theme={"system"}
+curl -fsSL https://opencode.ai/install | bash
+```
+
+<Note>OpenCode requires a larger context window. It is recommended to use a context window of at least 64k tokens. See [Context length](/context-length) for more information.</Note>
+
+## Usage with Ollama
+
+### Quick setup
+
+```bash theme={"system"}
+ollama launch opencode
+```
+
+To configure without launching:
+
+```shell theme={"system"}
+ollama launch opencode --config
+```
+
+### Manual setup
+
+Add a configuration block to `~/.config/opencode/opencode.json`:
+
+```json theme={"system"}
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "qwen3-coder": {
+          "name": "qwen3-coder"
+        }
+      }
+    }
+  }
+}
+```
+
+## Cloud Models
+
+`glm-4.7:cloud` is the recommended model for use with OpenCode.
+
+Add the cloud configuration to `~/.config/opencode/opencode.json`:
+
+```json theme={"system"}
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "glm-4.7:cloud": {
+          "name": "glm-4.7:cloud"
+        }
+      }
+    }
+  }
+}
+```
+
+## Connecting to ollama.com
+
+1. Create an [API key](https://ollama.com/settings/keys) from ollama.com and export it as `OLLAMA_API_KEY`.
+2. Update `~/.config/opencode/opencode.json` to point to ollama.com:
+
+```json theme={"system"}
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama Cloud",
+      "options": {
+        "baseURL": "https://ollama.com/v1"
+      },
+      "models": {
+        "glm-4.7:cloud": {
+          "name": "glm-4.7:cloud"
+        }
+      }
+    }
+  }
+}
+```
+
+Run `opencode` in a new terminal to load the new settings.
 
 
 # Roo Code
@@ -4165,16 +5049,16 @@ Install [VS Code](https://code.visualstudio.com/download).
 ## Usage with Ollama
 
 1. Open Copilot side bar found in top right window
-   <div style={{ display: "flex", justifyContent: "center" }}>
-     <img src="https://mintcdn.com/ollama-9269c548/Q0hzAGiFk9hDuXaH/images/vscode-sidebar.png?fit=max&auto=format&n=Q0hzAGiFk9hDuXaH&q=85&s=8d841164c3a8c2e6cb502f9dece6079c" alt="VS Code chat Sidebar" width="75%" data-og-width="838" data-og-height="304" data-path="images/vscode-sidebar.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/ollama-9269c548/Q0hzAGiFk9hDuXaH/images/vscode-sidebar.png?w=280&fit=max&auto=format&n=Q0hzAGiFk9hDuXaH&q=85&s=8baa6af2c2f307707730aff500625719 280w, https://mintcdn.com/ollama-9269c548/Q0hzAGiFk9hDuXaH/images/vscode-sidebar.png?w=560&fit=max&auto=format&n=Q0hzAGiFk9hDuXaH&q=85&s=790f257751bb80213223c2d897988793 560w, https://mintcdn.com/ollama-9269c548/Q0hzAGiFk9hDuXaH/images/vscode-sidebar.png?w=840&fit=max&auto=format&n=Q0hzAGiFk9hDuXaH&q=85&s=4c1d2ba0a7e7f4c32fc7818a213eaa85 840w, https://mintcdn.com/ollama-9269c548/Q0hzAGiFk9hDuXaH/images/vscode-sidebar.png?w=1100&fit=max&auto=format&n=Q0hzAGiFk9hDuXaH&q=85&s=5470dddd3a1a42d8c599968e8a4613b1 1100w, https://mintcdn.com/ollama-9269c548/Q0hzAGiFk9hDuXaH/images/vscode-sidebar.png?w=1650&fit=max&auto=format&n=Q0hzAGiFk9hDuXaH&q=85&s=cf1e7e5ec1aa98136b76e93db93f6116 1650w, https://mintcdn.com/ollama-9269c548/Q0hzAGiFk9hDuXaH/images/vscode-sidebar.png?w=2500&fit=max&auto=format&n=Q0hzAGiFk9hDuXaH&q=85&s=6a995df960d939abd4c3ee29f3e58fac 2500w" />
+   <div>
+     <img alt="VS Code chat Sidebar" />
    </div>
 2. Select the model dropdown > **Manage models**
-   <div style={{ display: "flex", justifyContent: "center" }}>
-     <img src="https://mintcdn.com/ollama-9269c548/Q0hzAGiFk9hDuXaH/images/vscode-models.png?fit=max&auto=format&n=Q0hzAGiFk9hDuXaH&q=85&s=9a1715817d228c9c103708da3c5ecd37" alt="VS Code model picker" width="75%" data-og-width="1064" data-og-height="462" data-path="images/vscode-models.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/ollama-9269c548/Q0hzAGiFk9hDuXaH/images/vscode-models.png?w=280&fit=max&auto=format&n=Q0hzAGiFk9hDuXaH&q=85&s=bcb1de0c96fde6b44d95a816dd81a99a 280w, https://mintcdn.com/ollama-9269c548/Q0hzAGiFk9hDuXaH/images/vscode-models.png?w=560&fit=max&auto=format&n=Q0hzAGiFk9hDuXaH&q=85&s=4941a05a32b420adabcd827ebf635097 560w, https://mintcdn.com/ollama-9269c548/Q0hzAGiFk9hDuXaH/images/vscode-models.png?w=840&fit=max&auto=format&n=Q0hzAGiFk9hDuXaH&q=85&s=1ef98e50f14c73d9027d38c2f4f28e06 840w, https://mintcdn.com/ollama-9269c548/Q0hzAGiFk9hDuXaH/images/vscode-models.png?w=1100&fit=max&auto=format&n=Q0hzAGiFk9hDuXaH&q=85&s=546c696a9857ab6721f7c084836b5921 1100w, https://mintcdn.com/ollama-9269c548/Q0hzAGiFk9hDuXaH/images/vscode-models.png?w=1650&fit=max&auto=format&n=Q0hzAGiFk9hDuXaH&q=85&s=98bf91da4065a79774c7b199a99b730f 1650w, https://mintcdn.com/ollama-9269c548/Q0hzAGiFk9hDuXaH/images/vscode-models.png?w=2500&fit=max&auto=format&n=Q0hzAGiFk9hDuXaH&q=85&s=6cbd0767ca3440fac141c2e5657f55e7 2500w" />
+   <div>
+     <img alt="VS Code model picker" />
    </div>
 3. Enter **Ollama** under **Provider Dropdown** and select desired models (e.g `qwen3, qwen3-coder:480b-cloud`)
-   <div style={{ display: "flex", justifyContent: "center" }}>
-     <img src="https://mintcdn.com/ollama-9269c548/Q0hzAGiFk9hDuXaH/images/vscode-model-options.png?fit=max&auto=format&n=Q0hzAGiFk9hDuXaH&q=85&s=1b08a9ccc2f275e6eb039de37cceaf31" alt="VS Code model options dropdown" width="75%" data-og-width="1202" data-og-height="552" data-path="images/vscode-model-options.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/ollama-9269c548/Q0hzAGiFk9hDuXaH/images/vscode-model-options.png?w=280&fit=max&auto=format&n=Q0hzAGiFk9hDuXaH&q=85&s=bdb15602e971a34695cadc7f6d90d64d 280w, https://mintcdn.com/ollama-9269c548/Q0hzAGiFk9hDuXaH/images/vscode-model-options.png?w=560&fit=max&auto=format&n=Q0hzAGiFk9hDuXaH&q=85&s=cb22702c3f6c295ae8822e8ca5f163cf 560w, https://mintcdn.com/ollama-9269c548/Q0hzAGiFk9hDuXaH/images/vscode-model-options.png?w=840&fit=max&auto=format&n=Q0hzAGiFk9hDuXaH&q=85&s=bdf5eb8776e9163afe8437f5413c67cc 840w, https://mintcdn.com/ollama-9269c548/Q0hzAGiFk9hDuXaH/images/vscode-model-options.png?w=1100&fit=max&auto=format&n=Q0hzAGiFk9hDuXaH&q=85&s=a46fc6100e91907298d223c52f306a5b 1100w, https://mintcdn.com/ollama-9269c548/Q0hzAGiFk9hDuXaH/images/vscode-model-options.png?w=1650&fit=max&auto=format&n=Q0hzAGiFk9hDuXaH&q=85&s=c134ec18e18bcdfe471fd5eb329acd9a 1650w, https://mintcdn.com/ollama-9269c548/Q0hzAGiFk9hDuXaH/images/vscode-model-options.png?w=2500&fit=max&auto=format&n=Q0hzAGiFk9hDuXaH&q=85&s=f1be99a8b9069d8d213b6a10debe73a9 2500w" />
+   <div>
+     <img alt="VS Code model options dropdown" />
    </div>
 
 
@@ -4193,20 +5077,20 @@ Install [XCode](https://developer.apple.com/xcode/)
 
 1. Click **XCode** in top left corner > **Settings**
 
-<div style={{ display: 'flex', justifyContent: 'center' }}>
-  <img src="https://mintcdn.com/ollama-9269c548/ibktA29M6ZTyqWFA/images/xcode-intelligence-window.png?fit=max&auto=format&n=ibktA29M6ZTyqWFA&q=85&s=61d8115b15ca2e451d99a66dd30df4e0" alt="Xcode Intelligence window" width="50%" data-og-width="1430" data-og-height="646" data-path="images/xcode-intelligence-window.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/ollama-9269c548/ibktA29M6ZTyqWFA/images/xcode-intelligence-window.png?w=280&fit=max&auto=format&n=ibktA29M6ZTyqWFA&q=85&s=dccb7de9b697de5b3528b247d3ef7ced 280w, https://mintcdn.com/ollama-9269c548/ibktA29M6ZTyqWFA/images/xcode-intelligence-window.png?w=560&fit=max&auto=format&n=ibktA29M6ZTyqWFA&q=85&s=1a47354c940bb3579a5cfc2bd0383100 560w, https://mintcdn.com/ollama-9269c548/ibktA29M6ZTyqWFA/images/xcode-intelligence-window.png?w=840&fit=max&auto=format&n=ibktA29M6ZTyqWFA&q=85&s=f4f2791bdde6f5f07ec8a4604d7958ee 840w, https://mintcdn.com/ollama-9269c548/ibktA29M6ZTyqWFA/images/xcode-intelligence-window.png?w=1100&fit=max&auto=format&n=ibktA29M6ZTyqWFA&q=85&s=0a2aeaddc3e1ce236c0da0de517982f1 1100w, https://mintcdn.com/ollama-9269c548/ibktA29M6ZTyqWFA/images/xcode-intelligence-window.png?w=1650&fit=max&auto=format&n=ibktA29M6ZTyqWFA&q=85&s=c2dd9fb0df13083c6214a22c7a10c21d 1650w, https://mintcdn.com/ollama-9269c548/ibktA29M6ZTyqWFA/images/xcode-intelligence-window.png?w=2500&fit=max&auto=format&n=ibktA29M6ZTyqWFA&q=85&s=2d47484eb926b98d696d2e16a498bd03 2500w" />
+<div>
+  <img alt="Xcode Intelligence window" />
 </div>
 
 2. Select **Locally Hosted**, enter port **11434** and click **Add**
 
-<div style={{ display: 'flex', justifyContent: 'center' }}>
-  <img src="https://mintcdn.com/ollama-9269c548/ibktA29M6ZTyqWFA/images/xcode-locally-hosted.png?fit=max&auto=format&n=ibktA29M6ZTyqWFA&q=85&s=05886457701f4809015cbdfe9da765a2" alt="Xcode settings" width="50%" data-og-width="1018" data-og-height="732" data-path="images/xcode-locally-hosted.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/ollama-9269c548/ibktA29M6ZTyqWFA/images/xcode-locally-hosted.png?w=280&fit=max&auto=format&n=ibktA29M6ZTyqWFA&q=85&s=709a77fcd7626725397b07d6702e85b2 280w, https://mintcdn.com/ollama-9269c548/ibktA29M6ZTyqWFA/images/xcode-locally-hosted.png?w=560&fit=max&auto=format&n=ibktA29M6ZTyqWFA&q=85&s=993cfc03618df1b7e38b59d054af7693 560w, https://mintcdn.com/ollama-9269c548/ibktA29M6ZTyqWFA/images/xcode-locally-hosted.png?w=840&fit=max&auto=format&n=ibktA29M6ZTyqWFA&q=85&s=77adf13ef4ed9be895f418795c3ca095 840w, https://mintcdn.com/ollama-9269c548/ibktA29M6ZTyqWFA/images/xcode-locally-hosted.png?w=1100&fit=max&auto=format&n=ibktA29M6ZTyqWFA&q=85&s=8ca7e015c0563bbacb3ed887803ea7e2 1100w, https://mintcdn.com/ollama-9269c548/ibktA29M6ZTyqWFA/images/xcode-locally-hosted.png?w=1650&fit=max&auto=format&n=ibktA29M6ZTyqWFA&q=85&s=c26ef88d1645deb4d577b34c05f0ef08 1650w, https://mintcdn.com/ollama-9269c548/ibktA29M6ZTyqWFA/images/xcode-locally-hosted.png?w=2500&fit=max&auto=format&n=ibktA29M6ZTyqWFA&q=85&s=c4f02b4ae584eca16242a14d4ea3346e 2500w" />
+<div>
+  <img alt="Xcode settings" />
 </div>
 
 3. Select the **star icon** on the top left corner and click the **dropdown**
 
-<div style={{ display: 'flex', justifyContent: 'center' }}>
-  <img src="https://mintcdn.com/ollama-9269c548/ibktA29M6ZTyqWFA/images/xcode-chat-icon.png?fit=max&auto=format&n=ibktA29M6ZTyqWFA&q=85&s=b4e39af73fd7e80ac04f8211cd25c844" alt="Xcode settings" width="50%" data-og-width="920" data-og-height="562" data-path="images/xcode-chat-icon.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/ollama-9269c548/ibktA29M6ZTyqWFA/images/xcode-chat-icon.png?w=280&fit=max&auto=format&n=ibktA29M6ZTyqWFA&q=85&s=538f334cf2091a439b3783eeafbb5fb5 280w, https://mintcdn.com/ollama-9269c548/ibktA29M6ZTyqWFA/images/xcode-chat-icon.png?w=560&fit=max&auto=format&n=ibktA29M6ZTyqWFA&q=85&s=6924aaf4b3c1765c77aad690b9291931 560w, https://mintcdn.com/ollama-9269c548/ibktA29M6ZTyqWFA/images/xcode-chat-icon.png?w=840&fit=max&auto=format&n=ibktA29M6ZTyqWFA&q=85&s=999a3428fbd4dad7b0459cc078f24969 840w, https://mintcdn.com/ollama-9269c548/ibktA29M6ZTyqWFA/images/xcode-chat-icon.png?w=1100&fit=max&auto=format&n=ibktA29M6ZTyqWFA&q=85&s=1000eb4de086153ff772319c6da31d37 1100w, https://mintcdn.com/ollama-9269c548/ibktA29M6ZTyqWFA/images/xcode-chat-icon.png?w=1650&fit=max&auto=format&n=ibktA29M6ZTyqWFA&q=85&s=fd8df7f3f5a6fefa5f4305e06f95ddca 1650w, https://mintcdn.com/ollama-9269c548/ibktA29M6ZTyqWFA/images/xcode-chat-icon.png?w=2500&fit=max&auto=format&n=ibktA29M6ZTyqWFA&q=85&s=5308a627658024ecf6200e004db503e5 2500w" />
+<div>
+  <img alt="Xcode settings" />
 </div>
 
 4. Click **My Account** and select your desired model
@@ -4231,16 +5115,16 @@ Install [Zed](https://zed.dev/download).
 
 1. In Zed, click the **star icon** in the bottom-right corner, then select **Configure**.
 
-<div style={{ display: 'flex', justifyContent: 'center' }}>
-  <img src="https://mintcdn.com/ollama-9269c548/qP80N64oeC4tOgE5/images/zed-settings.png?fit=max&auto=format&n=qP80N64oeC4tOgE5&q=85&s=0a63b1359b1472dde2cdf6c37e314e22" alt="Zed star icon in bottom right corner" width="50%" data-og-width="944" data-og-height="224" data-path="images/zed-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/ollama-9269c548/qP80N64oeC4tOgE5/images/zed-settings.png?w=280&fit=max&auto=format&n=qP80N64oeC4tOgE5&q=85&s=bfc876e9fb924521ab6cdb7ce0f8f8b2 280w, https://mintcdn.com/ollama-9269c548/qP80N64oeC4tOgE5/images/zed-settings.png?w=560&fit=max&auto=format&n=qP80N64oeC4tOgE5&q=85&s=c4b923c2b68da82a39d5834f71e595ec 560w, https://mintcdn.com/ollama-9269c548/qP80N64oeC4tOgE5/images/zed-settings.png?w=840&fit=max&auto=format&n=qP80N64oeC4tOgE5&q=85&s=427b91b58eaff6245edb4d19cacbe13c 840w, https://mintcdn.com/ollama-9269c548/qP80N64oeC4tOgE5/images/zed-settings.png?w=1100&fit=max&auto=format&n=qP80N64oeC4tOgE5&q=85&s=3c135be074ecb974ea19b4e286ec4439 1100w, https://mintcdn.com/ollama-9269c548/qP80N64oeC4tOgE5/images/zed-settings.png?w=1650&fit=max&auto=format&n=qP80N64oeC4tOgE5&q=85&s=974ceda223ced89cf821c3f1899040db 1650w, https://mintcdn.com/ollama-9269c548/qP80N64oeC4tOgE5/images/zed-settings.png?w=2500&fit=max&auto=format&n=qP80N64oeC4tOgE5&q=85&s=d75863b4421cc3f5229b673d673ec7eb 2500w" />
+<div>
+  <img alt="Zed star icon in bottom right corner" />
 </div>
 
 2. Under **LLM Providers**, choose **Ollama**
 3. Confirm the **Host URL** is `http://localhost:11434`, then click **Connect**
 4. Once connected, select a model under **Ollama**
 
-<div style={{ display: 'flex', justifyContent: 'center' }}>
-  <img src="https://mintcdn.com/ollama-9269c548/qP80N64oeC4tOgE5/images/zed-ollama-dropdown.png?fit=max&auto=format&n=qP80N64oeC4tOgE5&q=85&s=722c315dcb2563079865eccae2e0c56d" alt="Zed star icon in bottom right corner" width="50%" data-og-width="646" data-og-height="370" data-path="images/zed-ollama-dropdown.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/ollama-9269c548/qP80N64oeC4tOgE5/images/zed-ollama-dropdown.png?w=280&fit=max&auto=format&n=qP80N64oeC4tOgE5&q=85&s=3f1d23fad0d96ddd6eacb1e79f2e4489 280w, https://mintcdn.com/ollama-9269c548/qP80N64oeC4tOgE5/images/zed-ollama-dropdown.png?w=560&fit=max&auto=format&n=qP80N64oeC4tOgE5&q=85&s=a83649ed5beedb5fa741276d3f0de691 560w, https://mintcdn.com/ollama-9269c548/qP80N64oeC4tOgE5/images/zed-ollama-dropdown.png?w=840&fit=max&auto=format&n=qP80N64oeC4tOgE5&q=85&s=5338e29259c73686c55ccc42a1ac1e11 840w, https://mintcdn.com/ollama-9269c548/qP80N64oeC4tOgE5/images/zed-ollama-dropdown.png?w=1100&fit=max&auto=format&n=qP80N64oeC4tOgE5&q=85&s=63cca84dff4a209986daaadd2f1a1fd4 1100w, https://mintcdn.com/ollama-9269c548/qP80N64oeC4tOgE5/images/zed-ollama-dropdown.png?w=1650&fit=max&auto=format&n=qP80N64oeC4tOgE5&q=85&s=51f3d300d365ffc31661b83985fa2008 1650w, https://mintcdn.com/ollama-9269c548/qP80N64oeC4tOgE5/images/zed-ollama-dropdown.png?w=2500&fit=max&auto=format&n=qP80N64oeC4tOgE5&q=85&s=d82841949d806094684e5e28c6c0a064 2500w" />
+<div>
+  <img alt="Zed star icon in bottom right corner" />
 </div>
 
 ## Connecting to ollama.com
@@ -4260,7 +5144,7 @@ Source: https://docs.ollama.com/linux
 
 To install Ollama, run the following command:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 curl -fsSL https://ollama.com/install.sh | sh
 ```
 
@@ -4273,20 +5157,20 @@ curl -fsSL https://ollama.com/install.sh | sh
 
 Download and extract the package:
 
-```shell  theme={"system"}
-curl -fsSL https://ollama.com/download/ollama-linux-amd64.tgz \
-    | sudo tar zx -C /usr
+```shell theme={"system"}
+curl -fsSL https://ollama.com/download/ollama-linux-amd64.tar.zst \
+    | sudo tar x -C /usr
 ```
 
 Start Ollama:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 ollama serve
 ```
 
 In another terminal, verify that Ollama is running:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 ollama -v
 ```
 
@@ -4294,32 +5178,32 @@ ollama -v
 
 If you have an AMD GPU, also download and extract the additional ROCm package:
 
-```shell  theme={"system"}
-curl -fsSL https://ollama.com/download/ollama-linux-amd64-rocm.tgz \
-    | sudo tar zx -C /usr
+```shell theme={"system"}
+curl -fsSL https://ollama.com/download/ollama-linux-amd64-rocm.tar.zst \
+    | sudo tar x -C /usr
 ```
 
 ### ARM64 install
 
 Download and extract the ARM64-specific package:
 
-```shell  theme={"system"}
-curl -fsSL https://ollama.com/download/ollama-linux-arm64.tgz \
-    | sudo tar zx -C /usr
+```shell theme={"system"}
+curl -fsSL https://ollama.com/download/ollama-linux-arm64.tar.zst \
+    | sudo tar x -C /usr
 ```
 
 ### Adding Ollama as a startup service (recommended)
 
 Create a user and group for Ollama:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 sudo useradd -r -s /bin/false -U -m -d /usr/share/ollama ollama
 sudo usermod -a -G ollama $(whoami)
 ```
 
 Create a service file in `/etc/systemd/system/ollama.service`:
 
-```ini  theme={"system"}
+```ini theme={"system"}
 [Unit]
 Description=Ollama Service
 After=network-online.target
@@ -4338,7 +5222,7 @@ WantedBy=multi-user.target
 
 Then start the service:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 sudo systemctl daemon-reload
 sudo systemctl enable ollama
 ```
@@ -4349,7 +5233,7 @@ sudo systemctl enable ollama
 
 Verify that the drivers are installed by running the following command, which should print details about your GPU:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 nvidia-smi
 ```
 
@@ -4361,7 +5245,7 @@ nvidia-smi
 
 Start Ollama and verify it is running:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 sudo systemctl start ollama
 sudo systemctl status ollama
 ```
@@ -4378,13 +5262,13 @@ sudo systemctl status ollama
 
 To customize the installation of Ollama, you can edit the systemd service file or the environment variables by running:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 sudo systemctl edit ollama
 ```
 
 Alternatively, create an override file manually in `/etc/systemd/system/ollama.service.d/override.conf`:
 
-```ini  theme={"system"}
+```ini theme={"system"}
 [Service]
 Environment="OLLAMA_DEBUG=1"
 ```
@@ -4393,15 +5277,15 @@ Environment="OLLAMA_DEBUG=1"
 
 Update Ollama by running the install script again:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 curl -fsSL https://ollama.com/install.sh | sh
 ```
 
 Or by re-downloading Ollama:
 
-```shell  theme={"system"}
-curl -fsSL https://ollama.com/download/ollama-linux-amd64.tgz \
-    | sudo tar zx -C /usr
+```shell theme={"system"}
+curl -fsSL https://ollama.com/download/ollama-linux-amd64.tar.zst \
+    | sudo tar x -C /usr
 ```
 
 ## Installing specific versions
@@ -4410,7 +5294,7 @@ Use `OLLAMA_VERSION` environment variable with the install script to install a s
 
 For example:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 curl -fsSL https://ollama.com/install.sh | OLLAMA_VERSION=0.5.7 sh
 ```
 
@@ -4418,7 +5302,7 @@ curl -fsSL https://ollama.com/install.sh | OLLAMA_VERSION=0.5.7 sh
 
 To view logs of Ollama running as a startup service, run:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 journalctl -e -u ollama
 ```
 
@@ -4426,7 +5310,7 @@ journalctl -e -u ollama
 
 Remove the ollama service:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 sudo systemctl stop ollama
 sudo systemctl disable ollama
 sudo rm /etc/systemd/system/ollama.service
@@ -4434,19 +5318,19 @@ sudo rm /etc/systemd/system/ollama.service
 
 Remove ollama libraries from your lib directory (either `/usr/local/lib`, `/usr/lib`, or `/lib`):
 
-```shell  theme={"system"}
+```shell theme={"system"}
 sudo rm -r $(which ollama | tr 'bin' 'lib')
 ```
 
 Remove the ollama binary from your bin directory (either `/usr/local/bin`, `/usr/bin`, or `/bin`):
 
-```shell  theme={"system"}
+```shell theme={"system"}
 sudo rm $(which ollama)
 ```
 
 Remove the downloaded models and Ollama service user and group:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 sudo userdel ollama
 sudo groupdel ollama
 sudo rm -r /usr/share/ollama
@@ -4543,6 +5427,7 @@ INSTRUCTION arguments
 | [`ADAPTER`](#adapter)               | Defines the (Q)LoRA adapters to apply to the model.            |
 | [`LICENSE`](#license)               | Specifies the legal license.                                   |
 | [`MESSAGE`](#message)               | Specify message history.                                       |
+| [`REQUIRES`](#requires)             | Specify the minimum version of Ollama required by the model.   |
 
 ## Examples
 
@@ -4570,7 +5455,7 @@ To use this:
 
 To view the Modelfile of a given model, use the `ollama show --modelfile` command.
 
-```shell  theme={"system"}
+```shell theme={"system"}
 ollama show --modelfile llama3.2
 ```
 
@@ -4651,9 +5536,6 @@ PARAMETER <parameter> <parametervalue>
 
 | Parameter       | Description                                                                                                                                                                                                                                                                                                                                                                     | Value Type | Example Usage        |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | -------------------- |
-| mirostat        | Enable Mirostat sampling for controlling perplexity. (default: 0, 0 = disabled, 1 = Mirostat, 2 = Mirostat 2.0)                                                                                                                                                                                                                                                                 | int        | mirostat 0           |
-| mirostat\_eta   | Influences how quickly the algorithm responds to feedback from the generated text. A lower learning rate will result in slower adjustments, while a higher learning rate will make the algorithm more responsive. (Default: 0.1)                                                                                                                                                | float      | mirostat\_eta 0.1    |
-| mirostat\_tau   | Controls the balance between coherence and diversity of the output. A lower value will result in more focused and coherent text. (Default: 5.0)                                                                                                                                                                                                                                 | float      | mirostat\_tau 5.0    |
 | num\_ctx        | Sets the size of the context window used to generate the next token. (Default: 2048)                                                                                                                                                                                                                                                                                            | int        | num\_ctx 4096        |
 | repeat\_last\_n | Sets how far back for the model to look back to prevent repetition. (Default: 64, 0 = disabled, -1 = num\_ctx)                                                                                                                                                                                                                                                                  | int        | repeat\_last\_n 64   |
 | repeat\_penalty | Sets how strongly to penalize repetitions. A higher value (e.g., 1.5) will penalize repetitions more strongly, while a lower value (e.g., 0.9) will be more lenient. (Default: 1.1)                                                                                                                                                                                             | float      | repeat\_penalty 1.1  |
@@ -4753,6 +5635,16 @@ MESSAGE user Is Ontario in Canada?
 MESSAGE assistant yes
 ```
 
+### REQUIRES
+
+The `REQUIRES` instruction allows you to specify the minimum version of Ollama required by the model.
+
+```
+REQUIRES <version>
+```
+
+The version should be a valid Ollama version (e.g. 0.14.0).
+
 ## Notes
 
 * the **`Modelfile` is not case sensitive**. In the examples, uppercase instructions are used to make it easier to distinguish it from arguments.
@@ -4768,7 +5660,7 @@ Source: https://docs.ollama.com/quickstart
 
 This quickstart will walk your through running your first model with Ollama. To get started, download Ollama on macOS, Windows or Linux.
 
-<a href="https://ollama.com/download" target="_blank" className="inline-block px-6 py-2 bg-black rounded-full dark:bg-neutral-700 text-white font-normal border-none">
+<a href="https://ollama.com/download">
   Download Ollama
 </a>
 
@@ -4778,19 +5670,19 @@ This quickstart will walk your through running your first model with Ollama. To 
   <Tab title="CLI">
     Open a terminal and run the command:
 
-    ```
+    ```sh theme={"system"}
     ollama run gemma3
     ```
   </Tab>
 
   <Tab title="cURL">
-    ```
+    ```sh theme={"system"}
     ollama pull gemma3
     ```
 
     Lastly, chat with the model:
 
-    ```shell  theme={"system"}
+    ```shell theme={"system"}
     curl http://localhost:11434/api/chat -d '{
       "model": "gemma3",
       "messages": [{
@@ -4805,19 +5697,19 @@ This quickstart will walk your through running your first model with Ollama. To 
   <Tab title="Python">
     Start by downloading a model:
 
-    ```
+    ```sh theme={"system"}
     ollama pull gemma3
     ```
 
     Then install Ollama's Python library:
 
-    ```
+    ```sh theme={"system"}
     pip install ollama
     ```
 
     Lastly, chat with the model:
 
-    ```python  theme={"system"}
+    ```python theme={"system"}
     from ollama import chat
     from ollama import ChatResponse
 
@@ -4848,7 +5740,7 @@ This quickstart will walk your through running your first model with Ollama. To 
 
     Lastly, chat with the model:
 
-    ```shell  theme={"system"}
+    ```shell theme={"system"}
     import ollama from 'ollama'
 
     const response = await ollama.chat({
@@ -4862,6 +5754,47 @@ This quickstart will walk your through running your first model with Ollama. To 
 
 See a full list of available models [here](https://ollama.com/models).
 
+## Coding
+
+For coding use cases, we recommend using the `glm-4.7-flash` model.
+
+Note: this model requires 23 GB of VRAM with 64000 tokens context length.
+
+```sh theme={"system"}
+ollama pull glm-4.7-flash 
+```
+
+Alternatively, you can use a more powerful cloud model (with full context length):
+
+```sh theme={"system"}
+ollama pull glm-4.7:cloud
+```
+
+Use `ollama launch` to quickly set up a coding tool with Ollama models:
+
+```sh theme={"system"}
+ollama launch
+```
+
+### Supported integrations
+
+* [OpenCode](/integrations/opencode) - Open-source coding assistant
+* [Claude Code](/integrations/claude-code) - Anthropic's agentic coding tool
+* [Codex](/integrations/codex) - OpenAI's coding assistant
+* [Droid](/integrations/droid) - Factory's AI coding agent
+
+### Launch with a specific model
+
+```sh theme={"system"}
+ollama launch claude --model glm-4.7-flash
+```
+
+### Configure without launching
+
+```sh theme={"system"}
+ollama launch claude --config
+```
+
 
 # Troubleshooting
 Source: https://docs.ollama.com/troubleshooting
@@ -4870,19 +5803,19 @@ How to troubleshoot issues encountered with Ollama
 
 Sometimes Ollama may not perform as expected. One of the best ways to figure out what happened is to take a look at the logs. Find the logs on **Mac** by running the command:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 cat ~/.ollama/logs/server.log
 ```
 
 On **Linux** systems with systemd, the logs can be found with this command:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 journalctl -u ollama --no-pager --follow --pager-end
 ```
 
 When you run Ollama in a **container**, the logs go to stdout/stderr in the container:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 docker logs <container-name>
 ```
 
@@ -4899,7 +5832,7 @@ When you run Ollama on **Windows**, there are a few different locations. You can
 
 To enable additional debug logging to help troubleshoot problems, first **Quit the running app from the tray menu** then in a powershell terminal
 
-```powershell  theme={"system"}
+```powershell theme={"system"}
 $env:OLLAMA_DEBUG="1"
 & "ollama app.exe"
 ```
@@ -4920,13 +5853,13 @@ Dynamic LLM libraries [rocm_v6 cpu cpu_avx cpu_avx2 cuda_v11 rocm_v5]
 
 You can set OLLAMA\_LLM\_LIBRARY to any of the available LLM libraries to bypass autodetection, so for example, if you have a CUDA card, but want to force the CPU LLM library with AVX2 vector support, use:
 
-```shell  theme={"system"}
+```shell theme={"system"}
 OLLAMA_LLM_LIBRARY="cpu_avx2" ollama serve
 ```
 
 You can see what features your CPU has with the following.
 
-```shell  theme={"system"}
+```shell theme={"system"}
 cat /proc/cpuinfo| grep flags | head -1
 ```
 
@@ -4934,7 +5867,7 @@ cat /proc/cpuinfo| grep flags | head -1
 
 If you run into problems on Linux and want to install an older version, or you'd like to try out a pre-release before it's officially released, you can tell the install script which version to install.
 
-```shell  theme={"system"}
+```shell theme={"system"}
 curl -fsSL https://ollama.com/install.sh | OLLAMA_VERSION=0.5.7 sh
 ```
 
@@ -4952,7 +5885,7 @@ When Ollama starts up, it takes inventory of the GPUs present in the system to d
 
 ### Linux NVIDIA Troubleshooting
 
-If you are using a container to run Ollama, make sure you've set up the container runtime first as described in [docker.md](./docker.md)
+If you are using a container to run Ollama, make sure you've set up the container runtime first as described in [docker](./docker)
 
 Sometimes the Ollama can have difficulties initializing the GPU. When you check the server logs, this can show up as various error codes, such as "3" (not initialized), "46" (device unavailable), "100" (no device), "999" (unknown), or others. The following troubleshooting techniques may help resolve the problem
 
@@ -5017,7 +5950,7 @@ The Ollama install does not require Administrator, and installs in your home dir
 
 To install the Ollama application in a location different than your home directory, start the installer with the following flag
 
-```powershell  theme={"system"}
+```powershell theme={"system"}
 OllamaSetup.exe /DIR="d:\some\location"
 ```
 
@@ -5039,7 +5972,7 @@ If Ollama is already running, Quit the tray application and relaunch it from the
 
 Here's a quick example showing API access from `powershell`
 
-```powershell  theme={"system"}
+```powershell theme={"system"}
 (Invoke-WebRequest -method POST -Body '{"model":"llama3.2", "prompt":"Why is the sky blue?", "stream": false}' -uri http://localhost:11434/api/generate ).Content | ConvertFrom-json
 ```
 

@@ -4,7 +4,6 @@
 title: Profile Visualizations
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Continuous Profiler > Profile Visualizations
-source_url: https://docs.datadoghq.com/profile_visualizations/index.html
 ---
 
 # Profile Visualizations
@@ -12,9 +11,9 @@ source_url: https://docs.datadoghq.com/profile_visualizations/index.html
 ## Search profiles{% #search-profiles %}
 
 {% video
-   url="https://datadog-docs.imgix.net/images/profiler/search_profiles3.mp4" /%}
+   url="https://datadog-docs.imgix.net/images/profiler/search_profiles4.mp4" /%}
 
-Go to **APM -> Profiles** and select a service to view its profiles. Select a profile type to view different resources (for example, CPU, Memory, Exception, and I/O).
+Go to **APM > Profiles** and select a service to view its profiles.
 
 You can filter according to infrastructure tags or application tags set up from your [environment tracing configuration](https://docs.datadoghq.com/tracing/send_traces/#configure-your-environment). By default the following facets are available:
 
@@ -26,64 +25,23 @@ You can filter according to infrastructure tags or application tags set up from 
 | Host    | The hostname your profiled process is running on.                                                      |
 | Runtime | The type of runtime the profiled process is running (`JVM`, `CPython`).                                |
 
-The following measures are available:
-
-| Measure                | Definition                                                                                                                                                                               |
-| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| CPU                    | CPU usage, measured in cores.                                                                                                                                                            |
-| Memory&nbsp;Allocation | Memory allocation rate over the course of the profile. This value can be above the amount of memory on your system because allocated memory can be garbage collected during the profile. |
-| Wall time              | The elapsed time used by the code. Elapsed time includes time when code is running on CPU, waiting for I/O, and anything else that happens while it is running.                          |
-
-For each runtime, there is also a broader set of metrics available, which you can see [listed by timeseries](https://app.datadoghq.com/profiling/explorer?viz=timeseries).
-
-## Profile types{% #profile-types %}
-
-In the **Profiles** tab, you can see all profile types available for a given language. Depending on the language, the information collected about your profile differs. See [Profile types](https://docs.datadoghq.com/profiler/profile_types/) for a list of profile types available for each language.
-
 ## Visualizations{% #visualizations %}
 
 ### Flame graph{% #flame-graph %}
 
-The flame graph is the default visualization for Continuous Profiler. It shows how much CPU each method used (since this is a CPU profile) and how each method was called.
+The flame graph is the default visualization for Continuous Profiler. The one below shows how much CPU each method used and how each method was called. Other [Profile types](https://docs.datadoghq.com/profiler/profile_types/) are available depending on the language.
 
 {% image
-   source="https://datadog-docs.imgix.net/images/profiler/profiling_viz-flamegraph.bba69e9734b4c890cc0ac66cb7872631.png?auto=format"
+   source="https://datadog-docs.imgix.net/images/profiler/profiling_viz-flamegraph2.1dc06715418327bbcce34d16dd0fcaa0.png?auto=format"
    alt="A flame graph" /%}
 
-For example, starting from the first row in the previous image, `Thread.run()` called `ThreadPoolExecutor$Worker.run()`, which called `ThreadPoolExecutor.runWorker(ThreadPoolExecutor$Worker)`, and so on.
+For example, starting from the first row in the previous image, `Thread.run()` called `Thread.runWith(Object, Runnable)`, which called `ThreadPoolExecutor$Worker.run()`, and so on.
 
 The width of a frame represents how much of the total CPU it consumed. On the right, you can see a **CPU time by Method** top list that only accounts for self time, which is the time a method spent on CPU without calling another method.
 
+By default, darker frames indicate higher CPU usage, while lighter frames signify lower usage; the most resource-intensive methods are grouped on the leftmost side of the flame graph.
+
 Flame graphs can be included in Dashboards and Notebooks with the [Profiling Flame Graph Widget](https://docs.datadoghq.com/dashboards/widgets/profiling_flame_graph).
-
-### Single profile{% #single-profile %}
-
-By default, profiles are uploaded once a minute. Depending on the language, these processes are profiled between 15s and 60s.
-
-To view a specific profile, set the **Visualize as** option to **Profile List** and click an item in the list:
-
-{% image
-   source="https://datadog-docs.imgix.net/images/profiler/profiling_single-profile.6626bc7b5e2ca8e9da7332136d6580c0.png?auto=format"
-   alt="Select a single profile" /%}
-
-The header contains information associated with your profile, like the service that generated it, or the environment and code version associated to it.
-
-Four tabs are below the profile header:
-
-| Tab               | Definition                                                                                                                                         |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Profiles          | A flame graph and summary table of the profile you are looking at. You can switch between profile types (for example, `CPU`, `Memory allocation`). |
-| Analysis          | A set of heuristics that suggest potential issues or areas of improvement in your code. Only available for Java.                                   |
-| Metrics           | Profiler metrics coming from all profiles of the same service.                                                                                     |
-| Runtime&nbsp;Info | Runtime properties in supported languages, and profile tags.                                                                                       |
-
-**Note**: In the upper right corner of each profile, there are options to:
-
-- Compare this profile with others
-- View repository commit
-- View traces for the same process and time frame
-- Download the profile
-- Open the profile in full page
 
 ### Timeline view{% #timeline-view %}
 
@@ -172,9 +130,54 @@ Lanes on the top are runtime activities that may add extra latency to your reque
 Timeline view is currently not supported for Full Host profiling
 {% /tab %}
 
+### Timeseries and Table{% #timeseries-and-table %}
+
+For each runtime, there is a broad set of metrics available, which you can see [listed by timeseries](https://app.datadoghq.com/profiling/explorer?viz=timeseries).
+
+### Call graph{% #call-graph %}
+
+The call graph takes the same profiling data used in flame graphs, but displays each method just once, as a single node, with edges used to convey which methods have called each other.
+
+Edge thickness is used to show time spent calling other methods, while color and size indicate self time.
+
+{% image
+   source="https://datadog-docs.imgix.net/images/profiler/profiling_viz-callgraph.16d9595f2d39b8224796f3009b534276.png?auto=format"
+   alt="A call graph" /%}
+
+### Single profile{% #single-profile %}
+
+By default, profiles are uploaded once a minute. Depending on the language, these processes are profiled between 15 and 60 seconds.
+
+To view a specific profile, set the **Visualize as** option to **Profile List** and click an item in the list:
+
+{% image
+   source="https://datadog-docs.imgix.net/images/profiler/profiling_single-profile2.5e079c046b792e04a43dac3ba35c90eb.png?auto=format"
+   alt="Select a single profile" /%}
+
+The header contains information associated with your profile, like the service that generated it, or the environment and code version associated with it.
+
+Four tabs are below the profile header:
+
+| Tab                    | Definition                                                                                                                                         |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Profiles               | A flame graph and summary table of the profile you are looking at. You can switch between profile types (for example, `CPU`, `Memory allocation`). |
+| Insights               | A set of heuristics that suggest potential issues or areas of improvement in your code.                                                            |
+| Metrics                | Profiler metrics coming from all profiles of the same service.                                                                                     |
+| Runtime Info      | Runtime properties in supported languages, and profile tags.                                                                                       |
+| Related Processes | Processes related to the profile.                                                                                                                  |
+
+**Note**: In the upper right corner of each profile, there are options to:
+
+- Compare this profile with others
+- View repository commit
+- View traces for the same process and time frame
+- Download the profile
+- Open the profile in full page
+
 ## Further Reading{% #further-reading %}
 
 - [Enable continuous profiler for your application](https://docs.datadoghq.com/profiler/enabling)
 - [Getting Started with Profiler](https://docs.datadoghq.com/getting_started/profiler)
 - [Introducing always-on production profiling in Datadog](https://www.datadoghq.com/blog/introducing-datadog-profiling/)
 - [Diagnose runtime and code inefficiencies using Continuous Profiler's timeline view](https://www.datadoghq.com/blog/continuous-profiler-timeline-view/)
+- [Accessible profiling visualizations](https://www.datadoghq.com/blog/profiling-visualizations/)

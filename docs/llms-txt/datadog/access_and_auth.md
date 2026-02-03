@@ -4,7 +4,6 @@
 title: Access and Authentication
 description: Access and authentication for App builder
 breadcrumbs: Docs > App Builder > Access and Authentication
-source_url: https://docs.datadoghq.com/app_builder/access_and_auth/index.html
 ---
 
 # Access and Authentication

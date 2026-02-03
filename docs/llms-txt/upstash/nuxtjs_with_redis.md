@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/tutorials/nuxtjs_with_redis.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Nuxt with Redis
 
 > This tutorial shows how to use Upstash inside your Nuxt application.

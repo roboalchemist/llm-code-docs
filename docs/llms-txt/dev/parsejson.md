@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/blueprints/parsejson.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Parse JSON
 
 Converts a JSON string into an object, so you can work with it in your logic.

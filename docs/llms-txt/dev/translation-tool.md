@@ -1,12 +1,14 @@
 # Source: https://dev.writer.com/home/translation-tool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Translate text in a chat
 
-The translation tool for chat completions allows you to translate text during a conversation with a Palmyra model.
+The translation tool for chat completions allows you to translate text during a conversation.
 
 While Palmyra X models can perform translation tasks, they are not optimized for these tasks and may not perform well without correct prompting. Palmyra Translate is a dedicated model optimized for translation use cases.
-
-The Writer API also has a [`translation` endpoint](/api-reference/translation-api/translate) that you can use to translate text outside of a chat completion. See the [translation API guide](/home/translation) for more information.
 
 This guide explains how to use the translation tool in a chat completion and provides an example of how to use it.
 
@@ -18,7 +20,7 @@ This guide explains how to use the translation tool in a chat completion and pro
 
 ## Tool structure
 
-The translation tool allows you to translate text during a [chat with a Palmyra model](/home/chat-completion).
+The translation tool allows you to translate text during a [chat completion](/home/chat-completion).
 
 To use the translation tool, add it to the `tools` array in your `chat-completion` endpoint request.
 
@@ -342,4 +344,4 @@ By following this guide, you can use the translation tool to have the `palmyra-t
 
 ## Next steps
 
-Learn about additional capabilities of the Writer API, such as [detecting AI-generated text](/home/ai-detect) and [analyzing images](/home/analyze-images).
+Learn about additional capabilities of the Writer API, such as [analyzing images](/home/analyze-images) and [web search](/home/web-search).

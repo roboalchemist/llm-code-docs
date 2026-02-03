@@ -16,7 +16,7 @@ A **Project Rules** file (`Warp.md`) acts as your project’s AI onboarding guid
 
 ***
 
-## Generate `Warp.md`&#x20;
+## Generate `Warp.md`
 
 Run the following **verbatim** prompts in Warp to create and verify your rules file, then open it in the editor:
 
@@ -197,15 +197,13 @@ src/
 
 {% stepper %}
 {% step %}
-
-### Start Lean
+**Start Lean**
 
 Everything in `warp.md` is **prepended to your prompt**. A longer file consumes more tokens and can increase compute cost. Keep only what truly matters.
 {% endstep %}
 
 {% step %}
-
-### Iterate and Maintain
+**Iterate and Maintain**
 
 Start with `/init` boilerplate, then treat the file as a **living document**. Add the rules that help your team ship faster (e.g., branching, PR guidelines) and prune anything redundant.
 {% endstep %}

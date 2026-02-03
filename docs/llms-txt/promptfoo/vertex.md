@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/vertex/
+
 # Google Vertex
 
 The `vertex` provider enables integration with Google's official Vertex AI platform, which provides access to foundation models including Gemini, Llama, Claude, and specialized models for text, code, and embeddings.

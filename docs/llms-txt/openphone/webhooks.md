@@ -1,5 +1,9 @@
 # Source: https://www.quo.com/docs/mdx/guides/webhooks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.quo.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Webhooks
 
 > A reference for API-generated webhook payloads.
@@ -8,7 +12,9 @@
 
 Quo API webhooks allow developers to receive real-time notifications for various events, such as calls, messages, and transcripts. By integrating webhooks into your workflows, you can automate processes, enhance user experiences, and seamlessly connect Quo with other systems.
 
-<Note>**Important note:** Webhooks created in the Quo app are not compatible with those created via the API. You cannot access or modify app webhooks through the API, or API webhooks in the app.</Note>
+<Note>
+  **Important note:** Webhooks created in the Quo app are not compatible with those created via the API. You cannot access or modify app webhooks through the API, or API webhooks in the app.
+</Note>
 
 ## Webhooks payload sample data models
 
@@ -16,8 +22,7 @@ Each webhook event provides a structured payload with specific data. We've provi
 
 ### Calls
 
-These webhooks are triggered in response  in response to call-related events: `call.ringing`, `call.completed`, and `call.recording.completed`.
-The following is an example of the payload for a `call.ringing` event.
+These webhooks are triggered in response  in response to call-related events: `call.ringing`, `call.completed`, and `call.recording.completed`. The following is an example of the payload for a `call.ringing` event.
 
 ```json  theme={null}
 {
@@ -45,7 +50,10 @@ The following is an example of the payload for a `call.ringing` event.
           "+15555555555"
         ],
         "updatedAt": "2022-01-01T00:00:00Z",
-        "userId": "USlHhXmRMz"
+        "userId": "USlHhXmRMz",
+		"contactIds": [
+			"6824dfb69aee85c132b7dg65"
+		]
       }
   }
 }
@@ -72,7 +80,10 @@ This webhook is triggered in response to a `call.summary.completed` event.
       ],
       "nextSteps": [
         "Bring an umbrella."
-      ]
+      ],
+	  "contactIds": [
+		"6824dfb69aee85c132b7dg65"
+	  ]
     }
   }
 }
@@ -104,7 +115,10 @@ This webhook is triggered in response to a `call.transcript.completed` event.
         }
       ],
       "duration": 5,
-      "status": "completed"
+      "status": "completed",
+	  "contactIds": [
+		"6824dfb69aee85c132b7dg65"
+	  ]
     }
   }
 }
@@ -132,7 +146,10 @@ This webhook is triggered in response to message events such as `message.receive
       "status": "delivered",
       "createdAt": "2022-01-23T16:55:52.420Z",
       "userId": "USu5AsEHuQ",
-      "phoneNumberId": "PNtoDbDhuz"
+      "phoneNumberId": "PNtoDbDhuz",
+	  "contactIds": [
+	  	"6824dfb69aee85c132b7dg65"
+	  ]
     }
   }
 }

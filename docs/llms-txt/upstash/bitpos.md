@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/bitmap/bitpos.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/bitpos.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/bitmap/bitpos.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/bitpos.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/bitmap/bitpos.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/bitpos.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/bitmap/bitpos.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/bitpos.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/bitmap/bitpos.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/bitmap/bitpos.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # BITPOS
 
@@ -26,7 +12,7 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key to search in.
 </ParamField>
 
@@ -34,26 +20,34 @@
   The key to store the result of the operation in.
 </ParamField>
 
-<ParamField body="start" type="number">
+<ParamField body="start" type="int">
   The index to start searching at.
 </ParamField>
 
-<ParamField body="end" type="number">
+<ParamField body="end" type="int">
   The index to stop searching at.
 </ParamField>
 
 ## Response
 
-<ResponseField type="integer" required>
+<ResponseField type="int" required>
   The index of the first occurrence of the bit in the string.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-   await redis.bitpos("key", 1);
+  ```py Example theme={"system"}
+  redis.setbit("mykey", 7, 1)
+  redis.setbit("mykey", 8, 1)
+
+  assert redis.bitpos("mykey", 1) == 7
+  assert redis.bitpos("mykey", 0) == 0
+
+  # With a range
+  assert redis.bitpos("mykey", 1, 0, 2) == 0
+  assert redis.bitpos("mykey", 1, 2, 3) == -1
   ```
 
-  ```ts With Range theme={"system"}
-   await redis.bitpos("key", 1, 5, 20);
+  ```py With Range theme={"system"}
+  redis.bitpos("key", 1, 5, 20)
   ```
 </RequestExample>

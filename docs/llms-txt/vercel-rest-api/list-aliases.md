@@ -1,127 +1,126 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/aliases/list-aliases.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List aliases
 
 > Retrieves a list of aliases for the authenticated User or Team. When `domain` is provided, only aliases for that domain will be returned. When `projectId` is provided, it will only return the given project aliases.
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v4/aliases
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v4/aliases
-  method: get
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        domain:
+  /v4/aliases:
+    get:
+      tags:
+        - aliases
+      summary: List aliases
+      description: >-
+        Retrieves a list of aliases for the authenticated User or Team. When
+        `domain` is provided, only aliases for that domain will be returned.
+        When `projectId` is provided, it will only return the given project
+        aliases.
+      operationId: listAliases
+      parameters:
+        - name: domain
+          description: Get only aliases of the given domain name
+          in: query
           schema:
-            - type: array
-              items:
-                allOf:
-                  - type: string
-              description: Get only aliases of the given domain name
-              maxItems: 20
-              example: my-test-domain.com
-            - type: string
-              description: Get only aliases of the given domain name
-              example: my-test-domain.com
-        from:
+            description: Get only aliases of the given domain name
+            example: my-test-domain.com
+            maxItems: 20
+            oneOf:
+              - items:
+                  type: string
+                type: array
+              - type: string
+        - name: from
+          description: Get only aliases created after the provided timestamp
+          in: query
           schema:
-            - type: number
-              description: Get only aliases created after the provided timestamp
-              deprecated: true
-              example: 1540095775951
-        limit:
+            deprecated: true
+            description: Get only aliases created after the provided timestamp
+            example: 1540095775951
+            type: number
+        - name: limit
+          description: Maximum number of aliases to list from a request
+          in: query
           schema:
-            - type: number
-              description: Maximum number of aliases to list from a request
-              example: 10
-        projectId:
+            description: Maximum number of aliases to list from a request
+            example: 10
+            type: number
+        - name: projectId
+          description: Filter aliases from the given `projectId`
+          in: query
           schema:
-            - type: string
-              description: Filter aliases from the given `projectId`
-              example: prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB
-        since:
+            description: Filter aliases from the given `projectId`
+            example: prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB
+            type: string
+        - name: since
+          description: Get aliases created after this JavaScript timestamp
+          in: query
           schema:
-            - type: number
-              description: Get aliases created after this JavaScript timestamp
-              example: 1540095775941
-        until:
+            description: Get aliases created after this JavaScript timestamp
+            example: 1540095775941
+            type: number
+        - name: until
+          description: Get aliases created before this JavaScript timestamp
+          in: query
           schema:
-            - type: number
-              description: Get aliases created before this JavaScript timestamp
-              example: 1540095775951
-        rollbackDeploymentId:
+            description: Get aliases created before this JavaScript timestamp
+            example: 1540095775951
+            type: number
+        - name: rollbackDeploymentId
+          description: Get aliases that would be rolled back for the given deployment
+          in: query
           schema:
-            - type: string
-              description: Get aliases that would be rolled back for the given deployment
-              example: dpl_XXX
-        teamId:
+            description: Get aliases that would be rolled back for the given deployment
+            example: dpl_XXX
+            type: string
+        - description: The Team identifier to perform the request on behalf of.
+          in: query
+          name: teamId
           schema:
-            - type: string
-              description: The Team identifier to perform the request on behalf of.
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-        slug:
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        - description: The Team slug to perform the request on behalf of.
+          in: query
+          name: slug
           schema:
-            - type: string
-              description: The Team slug to perform the request on behalf of.
-              example: my-team-url-slug
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: listAliases
-        lang: go
-        source: "package main\n\nimport(\n\t\"os\"\n\t\"github.com/vercel/vercel\"\n\t\"context\"\n\t\"github.com/vercel/vercel/models/operations\"\n\t\"log\"\n)\n\nfunc main() {\n    s := vercel.New(\n        vercel.WithSecurity(os.Getenv(\"VERCEL_BEARER_TOKEN\")),\n    )\n\n    ctx := context.Background()\n    res, err := s.Aliases.ListAliases(ctx, operations.ListAliasesRequest{\n        Domain: vercel.Pointer(operations.CreateDomainStr(\n            \"my-test-domain.com\",\n        )),\n        From: vercel.Float64(1540095775951),\n        Limit: vercel.Float64(10),\n        ProjectID: vercel.String(\"prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB\"),\n        Since: vercel.Float64(1540095775941),\n        Until: vercel.Float64(1540095775951),\n        RollbackDeploymentID: vercel.String(\"dpl_XXX\"),\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Object != nil {\n        // handle response\n    }\n}"
-      - label: listAliases
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.aliases.listAliases({
-              domain: "my-test-domain.com",
-              from: 1540095775951,
-              limit: 10,
-              projectId: "prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB",
-              since: 1540095775941,
-              until: 1540095775951,
-              rollbackDeploymentId: "dpl_XXX",
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-              slug: "my-team-url-slug",
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              aliases:
-                allOf:
-                  - items:
+            type: string
+            example: my-team-url-slug
+      responses:
+        '200':
+          description: The paginated list of aliases
+          content:
+            application/json:
+              schema:
+                properties:
+                  aliases:
+                    items:
                       properties:
                         alias:
                           type: string
@@ -155,8 +154,8 @@ paths:
                               description: Username of the user who created the alias
                               example: john-doe
                           required:
-                            - uid
                             - email
+                            - uid
                             - username
                           type: object
                           description: Information of the user who created the alias
@@ -257,10 +256,10 @@ paths:
                                     enum:
                                       - user
                                 required:
+                                  - access
                                   - createdAt
                                   - lastUpdatedAt
                                   - lastUpdatedBy
-                                  - access
                                   - scope
                                 type: object
                                 description: The protection bypass for the alias
@@ -302,12 +301,12 @@ paths:
                         microfrontends:
                           properties:
                             defaultApp:
+                              type: object
+                              required:
+                                - projectId
                               properties:
                                 projectId:
                                   type: string
-                              required:
-                                - projectId
-                              type: object
                             applications:
                               oneOf:
                                 - items:
@@ -358,8 +357,8 @@ paths:
                                           The project ID of the microfrontends
                                           application.
                                     required:
-                                      - fallbackHost
                                       - branchAlias
+                                      - fallbackHost
                                       - projectId
                                     type: object
                                     description: >-
@@ -430,8 +429,8 @@ paths:
                                     A list of the deployment routing information
                                     for each project.
                           required:
-                            - defaultApp
                             - applications
+                            - defaultApp
                           type: object
                           description: >-
                             The microfrontends for the alias including the
@@ -444,70 +443,22 @@ paths:
                         - uid
                       type: object
                     type: array
-              pagination:
-                allOf:
-                  - $ref: '#/components/schemas/Pagination'
-            requiredProperties:
-              - aliases
-              - pagination
-        examples:
-          example:
-            value:
-              aliases:
-                - alias: my-alias.vercel.app
-                  created: '2017-04-26T23:00:34.232Z'
-                  createdAt: 1540095775941
-                  creator:
-                    uid: 96SnxkFiMyVKsK3pnoHfx3Hz
-                    email: john-doe@gmail.com
-                    username: john-doe
-                  deletedAt: 1540095775941
-                  deployment:
-                    id: dpl_5m8CQaRBm3FnWRW1od3wKTpaECPx
-                    url: my-instant-deployment-3ij3cxz9qr.now.sh
-                    meta: {}
-                  deploymentId: dpl_5m8CQaRBm3FnWRW1od3wKTpaECPx
-                  projectId: prj_12HKQaOmR5t5Uy6vdcQsNIiZgHGB
-                  redirect: <string>
-                  redirectStatusCode: 301
-                  uid: <string>
-                  updatedAt: 1540095775941
-                  protectionBypass: {}
-                  microfrontends:
-                    defaultApp:
-                      projectId: <string>
-                    applications:
-                      - fallbackHost: <string>
-                        projectId: <string>
-              pagination:
-                count: 20
-                next: 1540095775951
-                prev: 1540095775951
-        description: The paginated list of aliases
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: One of the provided values in the request query is invalid.
-        examples: {}
-        description: One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-    '404': {}
-  deprecated: false
-  type: path
+                  pagination:
+                    $ref: '#/components/schemas/Pagination'
+                required:
+                  - aliases
+                  - pagination
+                type: object
+        '400':
+          description: One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+        '404':
+          description: ''
+      security:
+        - bearerToken: []
 components:
   schemas:
     Pagination:
@@ -535,5 +486,10 @@ components:
         This object contains information related to the pagination of the
         current request, including the necessary parameters to get the next or
         previous page of data.
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

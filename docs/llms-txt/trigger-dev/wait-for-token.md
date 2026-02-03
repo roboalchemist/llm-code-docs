@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/wait-for-token.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Wait for token
 
 > Wait until a token is completed using waitpoint tokens.
@@ -12,7 +16,7 @@ You can complete a token using the SDK or by making a POST request to the token'
 
 To get started using wait tokens, you need to first create a token using the `wait.createToken` function:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { wait } from "@trigger.dev/sdk";
 
 // This can be called anywhere in your codebase, either in a task or in your backend code
@@ -23,7 +27,7 @@ const token = await wait.createToken({
 
 Once you have a token, you can wait for it to be completed using the `wait.forToken` function:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { wait } from "@trigger.dev/sdk";
 
 type ApprovalToken = {
@@ -42,7 +46,7 @@ if (result.ok) {
 
 To complete a token, you can use the `wait.completeToken` function:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { wait } from "@trigger.dev/sdk";
 // This can be called anywhere in your codebase, or from an external service,
 // passing in the token ID and the output of the token
@@ -53,7 +57,7 @@ await wait.completeToken<ApprovalToken>(tokenId, {
 
 Or you can make an HTTP POST request to the `url` it returns. This is an HTTP callback:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { wait } from "@trigger.dev/sdk";
 
 const token = await wait.createToken({
@@ -125,7 +129,7 @@ The `createToken` function returns a token object with the following properties:
 
 ### Example
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { wait } from "@trigger.dev/sdk";
 
 const token = await wait.createToken({
@@ -159,7 +163,7 @@ The `completeToken` function returns an object with the following properties:
 
 ### Example
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { wait } from "@trigger.dev/sdk";
 
 await wait.completeToken<ApprovalToken>(tokenId, {
@@ -172,24 +176,24 @@ await wait.completeToken<ApprovalToken>(tokenId, {
 You can complete a token using a raw HTTP request or from another language.
 
 <CodeGroup>
-  ```bash curl theme={null}
+  ```bash curl theme={"theme":"css-variables"}
   curl -X POST "https://api.trigger.dev/api/v1/waitpoints/tokens/{tokenId}/complete" \
     -H "Authorization: Bearer {token}" \
     -H "Content-Type: application/json" \
-    -d '{"output": { "status": "approved"}}'
+    -d '{"data": { "status": "approved"}}'
   ```
 
-  ```python python theme={null}
+  ```python python theme={"theme":"css-variables"}
   import requests
 
   response = requests.post(
     "https://api.trigger.dev/api/v1/waitpoints/tokens/{tokenId}/complete",
     headers={"Authorization": f"Bearer {token}"},
-    json={"output": { "status": "approved"}}
+    json={"data": { "status": "approved"}}
   )
   ```
 
-  ```ruby ruby theme={null}
+  ```ruby ruby theme={"theme":"css-variables"}
   require "net/http"
 
   uri = URI("https://api.trigger.dev/api/v1/waitpoints/tokens/{tokenId}/complete")
@@ -198,12 +202,12 @@ You can complete a token using a raw HTTP request or from another language.
   request = Net::HTTP::Post.new(uri)
   request["Authorization"] = "Bearer {token}"
   request["Content-Type"] = "application/json"
-  request.body = JSON.generate({ output: { status: "approved" } })
+  request.body = JSON.generate({ data: { status: "approved" } })
 
   response = http.request(request)
   ```
 
-  ```go go theme={null}
+  ```go go theme={"theme":"css-variables"}
   package main
 
   import (
@@ -217,7 +221,7 @@ You can complete a token using a raw HTTP request or from another language.
   	url := "https://api.trigger.dev/api/v1/waitpoints/tokens/{tokenId}/complete"
 
   	payload := map[string]interface{}{
-  		"output": map[string]interface{}{
+  		"data": map[string]interface{}{
   			"status": "approved",
   		},
   	}
@@ -282,7 +286,7 @@ The `forToken` function returns a result object with the following properties:
 
 We provide a handy `.unwrap()` method that will throw an error if the result is not ok. This means your happy path is a lot cleaner.
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 const approval = await wait.forToken<ApprovalToken>(tokenId).unwrap();
 // unwrap means an error will throw if the waitpoint times out 👆
 
@@ -292,7 +296,7 @@ console.log("Approval", approval);
 
 ### Example
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { wait } from "@trigger.dev/sdk";
 
 const result = await wait.forToken<ApprovalToken>(tokenId);
@@ -387,7 +391,7 @@ Each token is an object with the following properties:
 
 ### Example
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { wait } from "@trigger.dev/sdk";
 
 const tokens = await wait.listTokens({
@@ -462,7 +466,7 @@ The `retrieveToken` function returns a token object with the following propertie
 
 ### Example
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { wait } from "@trigger.dev/sdk";
 
 const token = await wait.retrieveToken(tokenId);
@@ -474,7 +478,7 @@ console.log(token);
 
 You can pass an idempotency key to any wait function, allowing you to skip waits if the same idempotency key is used again. This can be useful if you want to skip waits when retrying a task, for example:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 // Specify the idempotency key and TTL when creating a wait token
 const token = await wait.createToken({
   idempotencyKey: "my-idempotency-key",

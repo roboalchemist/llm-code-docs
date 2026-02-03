@@ -1,3 +1,9 @@
+# Source: https://docs.streamlit.io/deploy/tutorials
+
+# Source: https://docs.streamlit.io/develop/tutorials
+
+# Source: https://docs.streamlit.io/get-started/tutorials
+
 # First steps building Streamlit apps
 
 If you've just read through our [Basic concepts](/get-started/fundamentals/main-concepts) and want to get your hands on Streamlit. Check out these tutorials. Make sure you have [installed Streamlit](/get-started/installation) so you can execute the code yourself.

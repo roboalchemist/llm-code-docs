@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/components/cards.md
+# Source: https://www.mintlify.com/docs/components/cards.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Cards
 
@@ -8,13 +12,13 @@ Use cards to create visual containers for content. Cards are flexible containers
 
 ## Basic card
 
-<Card title="Card title" icon="text" href="/components/columns">
+<Card title="Card title" icon="text-align-start" href="/components/columns">
   This is how you use a card with an icon and a link. Clicking on this card
   brings you to the Columns page.
 </Card>
 
 ```mdx Card example theme={null}
-<Card title="Card title" icon="text" href="/components/columns">
+<Card title="Card title" icon="text-align-start" href="/components/columns">
   This is how you use a card with an icon and a link. Clicking on this card
   brings you to the Columns page.
 </Card>
@@ -28,12 +32,12 @@ Cards support several layout and styling options to fit different content needs.
 
 Add the `horizontal` property to display cards in a more compact, horizontal layout.
 
-<Card title="Horizontal card" icon="text" horizontal>
+<Card title="Horizontal card" icon="text-align-start" horizontal>
   This is an example of a horizontal card.
 </Card>
 
 ```mdx Horizontal card example theme={null}
-<Card title="Horizontal card" icon="text" horizontal>
+<Card title="Horizontal card" icon="text-align-start" horizontal>
   This is an example of a horizontal card.
 </Card>
 ```
@@ -72,9 +76,9 @@ You can customize the call-to-action text and control whether an arrow appears. 
 </Card>
 ```
 
-## Grouping cards
+## Group cards
 
-Use the [Columns component](/components/columns) to organize multiple cards side by side.
+Use the [Columns component](/components/columns) to organize multiple cards side by side. The Columns component supports one to four columns and automatically adjusts for smaller screens.
 
 <Columns cols={2}>
   <Card title="First card" icon="panel-left-close">
@@ -108,11 +112,11 @@ Use the [Columns component](/components/columns) to organize multiple cards side
 
   Options:
 
-  * [Font Awesome icon](https://fontawesome.com/icons) name
-  * [Lucide icon](https://lucide.dev/icons) name
-  * JSX-compatible SVG code wrapped in curly braces
+  * [Font Awesome](https://fontawesome.com/icons) icon name, if you have the `icons.library` [property](/organize/settings#param-icons) set to `fontawesome` in your `docs.json`
+  * [Lucide](https://lucide.dev/icons) icon name, if you have the `icons.library` [property](/organize/settings#param-icons) set to `lucide` in your `docs.json`
   * URL to an externally hosted icon
   * Path to an icon file in your project
+  * SVG code wrapped in curly braces
 
   For custom SVG icons:
 

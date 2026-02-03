@@ -6,146 +6,42 @@
 
 # Source: https://upstash.com/docs/workflow/basics/client/notify.md
 
-# Source: https://upstash.com/docs/workflow/rest/runs/notify.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://upstash.com/docs/workflow/features/notify.md
+# client.notify
 
-# Source: https://upstash.com/docs/workflow/basics/context/notify.md
+The `notify` method notifies workflows that are waiting for a specific event.
 
-# Source: https://upstash.com/docs/workflow/basics/client/notify.md
+Workflows paused at a [`context.waitForEvent`](/workflow/basics/context/waitForEvent) step with the matching `eventId` will be resumed, and the provided `eventData` will be passed back to them.
 
-# Source: https://upstash.com/docs/workflow/rest/runs/notify.md
+## Arguments
 
-# Source: https://upstash.com/docs/workflow/features/notify.md
-
-# Source: https://upstash.com/docs/workflow/basics/context/notify.md
-
-# Source: https://upstash.com/docs/workflow/basics/client/notify.md
-
-# Source: https://upstash.com/docs/workflow/rest/runs/notify.md
-
-# Source: https://upstash.com/docs/workflow/features/notify.md
-
-# Source: https://upstash.com/docs/workflow/basics/context/notify.md
-
-# Source: https://upstash.com/docs/workflow/basics/client/notify.md
-
-# Source: https://upstash.com/docs/workflow/rest/runs/notify.md
-
-# Source: https://upstash.com/docs/workflow/features/notify.md
-
-# Source: https://upstash.com/docs/workflow/basics/context/notify.md
-
-# Source: https://upstash.com/docs/workflow/basics/client/notify.md
-
-# Source: https://upstash.com/docs/workflow/rest/runs/notify.md
-
-# Notify Workflows
-
-> Resume workflows waiting for an event
-
-Notify workflows waiting for an event to resume them. See [our documentation to learn more](/workflow/howto/events).
-
-## Request
-
-<ParamField path="eventId" type="string" required>
-  Event id to notify
+<ParamField body="eventId" type="string" required>
+  The identifier of the event to notify.
 </ParamField>
 
-<ParamField body="body" type="string">
-  Event data passed to the notified workflows
+<ParamField body="eventData" type="any" optional>
+  Data to deliver to the waiting workflow(s).
+  This value will be returned in the `eventData` field of `context.waitForEvent`.
 </ParamField>
 
 ## Response
 
-The response contains a list of
-
-* notified waiter objects,
-* id of the message sent,
-* workflowRunId and workflowCreatedAt fields for the related workflow runs, as a result of the notify request.
-
-```typescript  theme={"system"}
-type NotifyResponse = { waiter: Waiter, messageId: string, workflowRunId: string, workflowCreatedAt: number}[]
-```
-
-More information about the `Waiter` object:
+Returns a list of `Waiter` objects representing the workflows that were notified:
 
 <Snippet file="qstash/waiter.mdx" />
 
-If there were no workflows waiting for the event, the result is an empty list.
+## Usage
 
-<RequestExample>
-  ```sh curl theme={"system"}
-  curl -X POST https://qstash.upstash.io/v2/notify/myEvent \
-    -H "Authorization: Bearer <token>" \
-    -d "Hello World!"
-  ```
+```javascript  theme={"system"}
+import { Client } from "@upstash/workflow";
 
-  ```js Workflow SDK theme={"system"}
-  import { Client } from "@upstash/workflow";
+const client = new Client({ token: "<QSTASH_TOKEN>" });
 
-  const client = new Client({ token: "<QSTASH_TOKEN>" })
-  await client.notify({
-    eventId: "my-event-id",
-    eventData: "Hello World!"
-  });
-  ```
-
-  ```js Node theme={"system"}
-  const response = await fetch('https://qstash.upstash.io/v2/notify/myEvent', {
-    method: 'POST',
-    body: "Hello world!",
-    headers: {
-      'Authorization': 'Bearer <token>'
-    }
-  });
-  ```
-
-  ```python Python theme={"system"}
-  import requests
-
-  headers = {
-      'Authorization': 'Bearer <token>',
-  }
-
-  response = requests.post(
-    'https://qstash.upstash.io/v2/notify/myEvent', 
-    headers=headers
-  )
-  ```
-
-  ```go Go theme={"system"}
-  req, err := http.NewRequest("POST", "https://qstash.upstash.io/v2/notify/myEvent", nil)
-  if err != nil {
-    log.Fatal(err)
-  }
-  req.Header.Set("Authorization", "Bearer <token>")
-  resp, err := http.DefaultClient.Do(req)
-  if err != nil {
-    log.Fatal(err)
-  }
-  defer resp.Body.Close()
-  ```
-</RequestExample>
-
-<ResponseExample>
-  ```json 200 OK theme={"system"}
-  [
-    {
-      "waiter": {
-        "url": "https://my-workflow.com/path",
-        "headers": {
-          "Upstash-Workflow-Runid": [
-            "wfr_melCHYvPkVhDqIhhk2"
-          ],
-          "Upstash-Workflow-Url": [
-            "https://my-workflow.com/path"
-          ]
-        },
-        "deadline": 1729869206
-      },
-      "messageId": "msg_26hZCxxbG2TT3AnHEr1w"
-    }
-  ]
-  ```
-</ResponseExample>
+await client.notify({
+  eventId: "my-event-id",
+  eventData: "my-data", // data passed to the workflow run
+});
+```

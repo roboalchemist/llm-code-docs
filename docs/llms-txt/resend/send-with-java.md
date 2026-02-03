@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/send-with-java.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send emails with Java
 
 > Learn how to send your first email using the Resend Java SDK.
@@ -14,11 +18,11 @@ To get the most out of this guide, you'll need to:
 ## 1. Install
 
 <CodeGroup>
-  ```bash Gradle theme={null}
+  ```bash Gradle theme={"theme":{"light":"github-light","dark":"vesper"}}
   implementation 'com.resend:resend-java:+'
   ```
 
-  ```xml Maven theme={null}
+  ```xml Maven theme={"theme":{"light":"github-light","dark":"vesper"}}
   <dependency>
       <groupId>com.resend</groupId>
       <artifactId>resend-java</artifactId>
@@ -29,7 +33,7 @@ To get the most out of this guide, you'll need to:
 
 ## 2. Send emails using HTML
 
-```java Main.java theme={null}
+```java Main.java theme={"theme":{"light":"github-light","dark":"vesper"}}
 import com.resend.*;
 
 public class Main {

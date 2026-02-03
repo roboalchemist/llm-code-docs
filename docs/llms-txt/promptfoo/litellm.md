@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/litellm/
+
 # LiteLLM
 
 [LiteLLM](https://docs.litellm.ai/docs/) provides access to 400+ LLMs through a unified OpenAI-compatible interface.

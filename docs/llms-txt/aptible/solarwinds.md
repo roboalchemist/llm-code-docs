@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/integrations/solarwinds.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SolarWinds Integration
 
 > Learn about sending Aptible logs to SolarWinds

@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/troubleshooting/jetbrains-stealing-focus.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Jetbrains panel steals focus
 
 > Fix issue where the Augment panel takes focus while typing in JetBrains IDEs.

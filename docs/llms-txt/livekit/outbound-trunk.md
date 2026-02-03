@@ -272,8 +272,8 @@ if (!response.isSuccessful) {
 **LiveKit Cloud**:
 
 1. Sign in to the **LiveKit Cloud** [dashboard](https://cloud.livekit.io/).
-2. Select **Telephony** → [**Configuration**](https://cloud.livekit.io/projects/p_/telephony/config).
-3. Select **Create new** → **Trunk**.
+2. Select **Telephony** → [**SIP trunks**](https://cloud.livekit.io/projects/p_/telephony/trunks).
+3. Select **Create new trunk**.
 4. Select the **JSON editor** tab.
 
 > ℹ️ **Note**
@@ -495,7 +495,7 @@ if (!response.isSuccessful) {
 **LiveKit Cloud**:
 
 1. Sign in to the **LiveKit Cloud** [dashboard](https://cloud.livekit.io/).
-2. Select **Telephony** → [**Configuration**](https://cloud.livekit.io/projects/p_/telephony/config).
+2. Select **Telephony** → [**SIP trunks**](https://cloud.livekit.io/projects/p_/telephony/trunks).
 3. The **Outbound** section lists all outbound trunks.
 
 ## Update an outbound trunk
@@ -836,7 +836,7 @@ Replacing an outbound trunk is not supported in Kotlin.
 
 **LiveKit Cloud**:
 
-1. Sign in to the **Telephony** → [**Configuration**](https://cloud.livekit.io/projects/p_/telephony/config) page.
+1. Sign in to the **Telephony** → [**SIP trunks**](https://cloud.livekit.io/projects/p_/telephony/trunks) page.
 2. Navigate to the **Outbound** section.
 3. Find the outbound trunk you want to replace → select the more (**⋮**) menu → select **Configure trunk**.
 4. Copy and paste the following text into the editor:
@@ -866,7 +866,7 @@ If it's unavailable, or IP range is required in addition to user/password, set r
 
 ---
 
-This document was rendered at 2025-12-31T18:29:36.250Z.
+This document was rendered at 2026-02-03T03:25:13.060Z.
 For the latest version of this document, see [https://docs.livekit.io/telephony/making-calls/outbound-trunk.md](https://docs.livekit.io/telephony/making-calls/outbound-trunk.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

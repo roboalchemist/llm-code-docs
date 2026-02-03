@@ -374,7 +374,7 @@ $ curl http://localhost:8080/document/v1/namespace/music/group/mygroupname/
 ```
  |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

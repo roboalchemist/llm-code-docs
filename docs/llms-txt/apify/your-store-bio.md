@@ -20,14 +20,14 @@ Everything is neatly available under a single URL, making it easy to share.
 
 Need some inspiration? Check out examples of how others are using their Store bio and README. You can set yours up by heading to **Settings > Account > Profile.**
 
-https://apify.com/anchor
+[https://apify.com/anchor](https://apify.com/anchor)
 
-https://apify.com/jupri
+[https://apify.com/jupri](https://apify.com/jupri)
 
-https://apify.com/apidojo
+[https://apify.com/apidojo](https://apify.com/apidojo)
 
-https://apify.com/curious_coder
+[https://apify.com/curious_coder](https://apify.com/curious_coder)
 
-https://apify.com/epctex
+[https://apify.com/epctex](https://apify.com/epctex)
 
-https://apify.com/microworlds
+[https://apify.com/microworlds](https://apify.com/microworlds)

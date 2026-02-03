@@ -1,3 +1,5 @@
+# Source: https://docs.groq.com/docs/guides/embeddings
+
 # Overview - GroqDocs
 
 ## Welcome

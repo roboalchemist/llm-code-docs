@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/tutorials/authentication/google
+
 # Use the Google Auth Platform to authenticate users
 
 Google is one of the most popular identity providers for social logins. You can use the Google Auth Platform with both private and organizational Google accounts. This tutorial configures authentication for anyone with a Google account. For more information, see Google's overview of the [Google Auth Platform](https://support.google.com/cloud/topic/15540269?hl=en&ref_topic=3473162&sjid=576431444945556851-NC) and [OpenID Connect](https://developers.google.com/identity/openid-connect/openid-connect#discovery).

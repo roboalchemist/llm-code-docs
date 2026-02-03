@@ -4,7 +4,6 @@
 title: Enable SSO with Okta
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > Account Management > Enable SSO with Okta
-source_url: https://docs.datadoghq.com/account-management/enable-sso-with-okta/index.html
 ---
 
 # Enable SSO with Okta

@@ -1,5 +1,9 @@
 # Source: https://docs.ollama.com/api/authentication.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ollama.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Authentication
 
 No authentication is required when accessing Ollama's API locally via `http://localhost:11434`.

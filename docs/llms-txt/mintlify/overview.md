@@ -1,82 +1,207 @@
-# Source: https://mintlify.com/docs/integrations/support/overview.md
+# Source: https://www.mintlify.com/docs/integrations/support/overview.md
 
-# Source: https://mintlify.com/docs/integrations/privacy/overview.md
+# Source: https://www.mintlify.com/docs/integrations/privacy/overview.md
 
-# Source: https://mintlify.com/docs/integrations/analytics/overview.md
+# Source: https://www.mintlify.com/docs/integrations/analytics/overview.md
 
-# Source: https://mintlify.com/docs/insights/overview.md
+# Source: https://www.mintlify.com/docs/api-playground/overview.md
 
-# Source: https://mintlify.com/docs/api-playground/overview.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://mintlify.com/docs/integrations/support/overview.md
+# Playground
 
-# Source: https://mintlify.com/docs/integrations/privacy/overview.md
+> Let developers test API endpoints directly in your documentation.
 
-# Source: https://mintlify.com/docs/integrations/analytics/overview.md
+## Overview
 
-# Source: https://mintlify.com/docs/insights/overview.md
+The API playground is an interactive environment that lets users test and explore your API endpoints. Developers can craft API requests, submit them, and view responses without leaving your documentation.
 
-# Source: https://mintlify.com/docs/api-playground/overview.md
+See [Trigger an update](/api/update/trigger) for an example of the API playground in action.
 
-# Source: https://mintlify.com/docs/integrations/support/overview.md
+<Frame>
+  <img src="https://mintcdn.com/mintlify/f7fo9pnTEtzBD70_/images/playground/API-playground-light.png?fit=max&auto=format&n=f7fo9pnTEtzBD70_&q=85&s=f83551b5d84cf27a44ed1d9418ca61be" alt="API playground for the trigger an update endpoint." className="block dark:hidden" data-og-width="2534" width="2534" data-og-height="1022" height="1022" data-path="images/playground/API-playground-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/f7fo9pnTEtzBD70_/images/playground/API-playground-light.png?w=280&fit=max&auto=format&n=f7fo9pnTEtzBD70_&q=85&s=87a778f73c13b231ae61b3b3e4ead063 280w, https://mintcdn.com/mintlify/f7fo9pnTEtzBD70_/images/playground/API-playground-light.png?w=560&fit=max&auto=format&n=f7fo9pnTEtzBD70_&q=85&s=fb0ce88ecd599c819dd780738b87c24d 560w, https://mintcdn.com/mintlify/f7fo9pnTEtzBD70_/images/playground/API-playground-light.png?w=840&fit=max&auto=format&n=f7fo9pnTEtzBD70_&q=85&s=e7cf7572fa5fcd7205c8ebcfda839f64 840w, https://mintcdn.com/mintlify/f7fo9pnTEtzBD70_/images/playground/API-playground-light.png?w=1100&fit=max&auto=format&n=f7fo9pnTEtzBD70_&q=85&s=81337643c958f66b3962e16ac569afcd 1100w, https://mintcdn.com/mintlify/f7fo9pnTEtzBD70_/images/playground/API-playground-light.png?w=1650&fit=max&auto=format&n=f7fo9pnTEtzBD70_&q=85&s=94ab7ee928898ec25390934c8897a867 1650w, https://mintcdn.com/mintlify/f7fo9pnTEtzBD70_/images/playground/API-playground-light.png?w=2500&fit=max&auto=format&n=f7fo9pnTEtzBD70_&q=85&s=440d9f8a2d8dcbbf55d665d20e6408ed 2500w" />
 
-# Source: https://mintlify.com/docs/integrations/privacy/overview.md
+  <img src="https://mintcdn.com/mintlify/f7fo9pnTEtzBD70_/images/playground/API-playground-dark.png?fit=max&auto=format&n=f7fo9pnTEtzBD70_&q=85&s=5a0dc3fd3ca0a5766c599c00a5910dba" alt="API playground for the trigger an update endpoint." className="hidden dark:block" data-og-width="2534" width="2534" data-og-height="1022" height="1022" data-path="images/playground/API-playground-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/f7fo9pnTEtzBD70_/images/playground/API-playground-dark.png?w=280&fit=max&auto=format&n=f7fo9pnTEtzBD70_&q=85&s=e3ffd7bdd28940bc42bff50ffac5b169 280w, https://mintcdn.com/mintlify/f7fo9pnTEtzBD70_/images/playground/API-playground-dark.png?w=560&fit=max&auto=format&n=f7fo9pnTEtzBD70_&q=85&s=fdf601c84aeb05836c8e711722fbd2ee 560w, https://mintcdn.com/mintlify/f7fo9pnTEtzBD70_/images/playground/API-playground-dark.png?w=840&fit=max&auto=format&n=f7fo9pnTEtzBD70_&q=85&s=45b0f029d05636ca86b99b4d1590ddb3 840w, https://mintcdn.com/mintlify/f7fo9pnTEtzBD70_/images/playground/API-playground-dark.png?w=1100&fit=max&auto=format&n=f7fo9pnTEtzBD70_&q=85&s=5e7389355d83faf84d9625c84396868f 1100w, https://mintcdn.com/mintlify/f7fo9pnTEtzBD70_/images/playground/API-playground-dark.png?w=1650&fit=max&auto=format&n=f7fo9pnTEtzBD70_&q=85&s=f826d034daefdb906bed0ed0ac6b668e 1650w, https://mintcdn.com/mintlify/f7fo9pnTEtzBD70_/images/playground/API-playground-dark.png?w=2500&fit=max&auto=format&n=f7fo9pnTEtzBD70_&q=85&s=a530b0340d9ad9a29b72a164fc7dabe5 2500w" />
+</Frame>
 
-# Source: https://mintlify.com/docs/integrations/analytics/overview.md
+The playground generates interactive pages for your endpoints based on your OpenAPI specification or AsyncAPI schema. If you modify your API, the playground automatically updates the relevant pages.
 
-# Source: https://mintlify.com/docs/insights/overview.md
+We recommend generating your API playground from an OpenAPI specification. However, you can manually create API reference pages after defining a base URL and authentication method in your `docs.json`.
 
-# Source: https://mintlify.com/docs/api-playground/overview.md
+## Get started
 
-# Source: https://mintlify.com/docs/integrations/support/overview.md
+<Steps>
+  <Step title="Add your OpenAPI specification file.">
+    <Tip>
+      Validate your OpenAPI specification file using the [Swagger Editor](https://editor.swagger.io/) or [Mint CLI](https://www.npmjs.com/package/mint) command `mint openapi-check <filename>`.
+    </Tip>
 
-# Source: https://mintlify.com/docs/integrations/privacy/overview.md
+    ```bash {3} theme={null}
+    /your-project
+      |- docs.json
+      |- openapi.json
+    ```
+  </Step>
 
-# Source: https://mintlify.com/docs/integrations/analytics/overview.md
+  <Step title="Generate endpoint pages.">
+    Update your `docs.json` to reference your OpenAPI specification.
 
-# Source: https://mintlify.com/docs/insights/overview.md
+    **To automatically generate pages for all endpoints in your OpenAPI specification**, add an `openapi` property to any navigation element.
 
-# Source: https://mintlify.com/docs/api-playground/overview.md
+    This example generates a page for each endpoint specified in `openapi.json` and organizes the pages in the "API reference" group.
 
-# Source: https://mintlify.com/docs/integrations/support/overview.md
+    ```json Generate all endpoint pages theme={null}
+    "navigation": {
+      "groups": [
+        {
+          "group": "API reference",
+          "openapi": "openapi.json"
+        }
+      ]
+    }
+    ```
 
-# Support integrations
+    **To generate pages for only specific endpoints**, list the endpoints in the `pages` property of the navigation element.
 
-> Integrate with support platforms for customer assistance.
+    This example generates pages for only the `GET /users` and `POST /users` endpoints. To generate other endpoint pages, add additional endpoints to the `pages` array.
 
-<CardGroup>
-  <Card title="Intercom" href="/integrations/support/intercom" icon={<svg className="h-6 w-6" width="2500" height="2500" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"><path d="M221.867 140.748a8.534 8.534 0 0 1-17.067 0V64a8.534 8.534 0 0 1 17.067 0v76.748zm-2.978 53.413c-1.319 1.129-32.93 27.655-90.889 27.655-57.958 0-89.568-26.527-90.887-27.656a8.535 8.535 0 0 1-.925-12.033 8.53 8.53 0 0 1 12.013-.942c.501.42 28.729 23.563 79.8 23.563 51.712 0 79.503-23.31 79.778-23.545 3.571-3.067 8.968-2.655 12.033.925a8.534 8.534 0 0 1-.923 12.033zM34.133 64A8.534 8.534 0 0 1 51.2 64v76.748a8.534 8.534 0 0 1-17.067 0V64zm42.668-17.067a8.534 8.534 0 0 1 17.066 0v114.001a8.534 8.534 0 0 1-17.066 0v-114zm42.666-4.318A8.532 8.532 0 0 1 128 34.082a8.532 8.532 0 0 1 8.534 8.533v123.733a8.534 8.534 0 0 1-17.067 0V42.615zm42.667 4.318a8.534 8.534 0 0 1 17.066 0v114.001a8.534 8.534 0 0 1-17.066 0v-114zM224 0H32C14.327 0 0 14.327 0 32v192c0 17.672 14.327 32 32 32h192c17.673 0 32-14.328 32-32V32c0-17.673-14.327-32-32-32z" fill="#1F8DED"/></svg>} horizontal />
+    ```json Generate specific endpoint pages theme={null}
+    "navigation": {
+      "groups": [
+          {
+            "group": "API reference",
+            "openapi": "openapi.json",
+            "pages": [
+              "GET /users",
+              "POST /users"
+            ]
+          }
+      ]
+    }
+    ```
+  </Step>
+</Steps>
 
-  <Card
-    href="/integrations/support/front"
-    title="Front"
-    icon={<svg className="h-6 w-6" width="754" height="754" viewBox="0 0 754 754" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M124 135.5C124 69 177.9 15 244.5 15H630.8V186.4C630.8 219.7 603.8 246.6 570.6 246.6H413.6C381.6 246.6 355.7 272.5 355.7 304.5V678.7C355.7 712 328.7 738.9 295.5 738.9H124V135.5Z" fill="#001B38"/>
-<path d="M415 462.4C501.377 462.4 571.4 392.377 571.4 306C571.4 219.623 501.377 149.6 415 149.6C328.623 149.6 258.6 219.623 258.6 306C258.6 392.377 328.623 462.4 415 462.4Z" fill="url(#paint0_linear_66_11)"/>
-<path opacity="0.5" d="M415 462.4C501.377 462.4 571.4 392.377 571.4 306C571.4 219.623 501.377 149.6 415 149.6C328.623 149.6 258.6 219.623 258.6 306C258.6 392.377 328.623 462.4 415 462.4Z" fill="url(#paint1_linear_66_11)"/>
-<defs>
-<linearGradient id="paint0_linear_66_11" x1="301.703" y1="191.962" x2="536.873" y2="428.762" gradientUnits="userSpaceOnUse">
-<stop stopColor="#FF0057" stopOpacity="0.16"/>
-<stop offset="0.86" stopColor="#FF0057"/>
-</linearGradient>
-<linearGradient id="paint1_linear_66_11" x1="301.703" y1="191.962" x2="536.873" y2="428.762" gradientUnits="userSpaceOnUse">
-<stop stopColor="#FF0057" stopOpacity="0.16"/>
-<stop offset="0.86" stopColor="#FF0057"/>
-</linearGradient>
-</defs>
-</svg>
-}
-    horizontal
-  />
-</CardGroup>
+## Customize your playground
 
-## Enabling support integrations
+Customize your API playground by defining the following properties in your `docs.json`.
 
-Integrate customer support widgets into your documentation. Add the `integrations` field to your `docs.json` file with your respective app ID.
+<ResponseField name="playground" type="object">
+  Configurations for the API playground.
+
+  <Expandable title="playground" defaultOpen="True">
+    <ResponseField name="display" type="&#x22;interactive&#x22; | &#x22;simple&#x22; | &#x22;none&#x22; | &#x22;auth&#x22;">
+      The display mode of the API playground.
+
+      * `"interactive"`: Display the interactive playground.
+      * `"simple"`: Display a copyable endpoint with no playground.
+      * `"none"`: Display nothing.
+      * `"auth"`: Display the interactive playground only to authenticated users. Unauthenticated users or users not in the required groups see no playground.
+
+      Defaults to `interactive`.
+    </ResponseField>
+
+    <ResponseField name="proxy" type="boolean" defaultOpen="True">
+      Whether to pass API requests through a proxy server. Defaults to `true`.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseField name="examples" type="object">
+  Configurations for the autogenerated API examples.
+
+  <Expandable title="examples" defaultOpen="True">
+    <ResponseField name="languages" type="array of string">
+      Example languages for the autogenerated API snippets.
+
+      Languages display in the order specified.
+    </ResponseField>
+
+    <ResponseField name="defaults" type="&#x22;required&#x22; | &#x22;all&#x22;">
+      Whether to show optional parameters in API examples. Defaults to `all`.
+    </ResponseField>
+
+    <ResponseField name="prefill" type="boolean">
+      Whether to prefill the API playground with data from schema examples. When enabled, the playground automatically populates request fields with example values from your OpenAPI specification. Defaults to `false`.
+    </ResponseField>
+
+    <ResponseField name="autogenerate" type="boolean">
+      Whether to generate code samples for endpoints from API specifications. Defaults to `true`. When set to `false`, only manually-written code samples (from `x-codeSamples` in OpenAPI specifications or `<RequestExample>` components in MDX) appear in the API playground.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+### Example configuration
+
+This example configures the API playground to be interactive with example code snippets for cURL, Python, and JavaScript. Only required parameters are shown in the code snippets, and the playground prefills the request body with example values.
 
 ```json  theme={null}
-  "integrations": {
-    "intercom": "APP_ID",
-    "frontchat": "CHAT_ID"
-  }
+{
+ "api": {
+   "playground": {
+     "display": "interactive"
+   },
+   "examples": {
+     "languages": ["curl", "python", "javascript"],
+     "defaults": "required",
+     "prefill": true
+   }
+ }
+}
 ```
+
+### Auth-based playground display
+
+Use the `auth` display mode to show the interactive playground only to authenticated users. This is useful when you want to let users view your API documentation publicly while restricting playground access to logged-in users.
+
+When `display` is set to `auth`:
+
+* Authenticated users see the interactive playground.
+* Unauthenticated users see no playground (equivalent to `none`).
+
+You can also combine `auth` with the `groups` property in page frontmatter to restrict playground access to specific user groups.
+
+```mdx Page with group-restricted playground theme={null}
+---
+title: "Create user"
+openapi: POST /users
+playground: auth
+groups: ["admin", "developer"]
+public: true
+---
+```
+
+In this example:
+
+* The page is publicly visible (anyone can view the documentation).
+* Only authenticated users in the `admin` or `developer` groups see the interactive playground.
+* Users not in those groups see no playground.
+
+If the page has no `groups` property, all authenticated users see the interactive playground.
+
+<Note>
+  The `auth` display mode requires [authentication](/deploy/authentication-setup) to be configured for your documentation.
+</Note>
+
+### Custom endpoint pages
+
+When you need more control over your API documentation, use the `x-mint` extension in your OpenAPI specification or create individual MDX pages for your endpoints.
+
+Both options allow you to:
+
+* Customize page metadata
+* Add additional content like examples
+* Control playground behavior per page
+
+The `x-mint` extension is recommended so that all of your API documentation is automatically generated from your OpenAPI specification and maintained in one file.
+
+Individual MDX pages are recommended for small APIs or when you want to experiment with changes on a per-page basis.
+
+## Further reading
+
+* [OpenAPI setup](/api-playground/openapi-setup) for more information on creating your OpenAPI document.
+* [x-mint extension](/api-playground/openapi-setup#x-mint-extension) for more information on customizing your endpoint pages.
+* [MDX setup](/api-playground/mdx-setup) for more information on manually creating individual API reference pages.
+* [AsyncAPI setup](/api-playground/asyncapi-setup) for more information on creating your AsyncAPI schema to generate WebSocket reference pages.

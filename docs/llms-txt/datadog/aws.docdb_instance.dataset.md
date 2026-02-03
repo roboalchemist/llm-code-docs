@@ -4,8 +4,6 @@
 title: DocDB Instance
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > DocDB Instance
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.docdb_instance.dataset/index.html
 ---
 
 # DocDB Instance
@@ -51,5 +49,5 @@ aws.docdb_instance
 | publicly_accessible             | core | bool          | Not supported. Amazon DocumentDB does not currently support public endpoints. The value of <code>PubliclyAccessible</code> is always <code>false</code>.                                   |
 | status_infos                    | core | json          | The status of a read replica. If the instance is not a read replica, this is blank.                                                                                                        |
 | storage_encrypted               | core | bool          | Specifies whether or not the instance is encrypted.                                                                                                                                        |
-| tags                            | core | hstore        |
+| tags                            | core | hstore_csv    |
 | vpc_security_groups             | core | json          | Provides a list of VPC security group elements that the instance belongs to.                                                                                                               |

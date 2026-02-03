@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/strategies/likert/
+
 # Likert-based Jailbreaks Strategy
 
 The Likert-based Jailbreaks strategy is an advanced technique that leverages an LLM's evaluation capabilities by framing inputs within academic research and scoring frameworks. This strategy exploits the model's understanding of content evaluation using Likert scales - rating systems commonly used in research and surveys to measure responses on a numerical scale.

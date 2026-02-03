@@ -4,7 +4,6 @@
 title: Web app Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: 'Docs > Cloudcraft (Standalone) > Components: Azure > Web app Component'
-source_url: https://docs.datadoghq.com/components-azure/web-app/index.html
 ---
 
 # Web app Component

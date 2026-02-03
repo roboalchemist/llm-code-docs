@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/index-data/upsert-data.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Upsert records
 
 > Add or update records in Pinecone indexes and manage data with namespaces.
@@ -281,7 +285,7 @@ If a record ID already exists, upserting overwrites the entire record. To change
       curl "https://$INDEX_HOST/records/namespaces/$NAMESPACE/upsert" \
         -H "Content-Type: application/x-ndjson" \
         -H "Api-Key: $PINECONE_API_KEY" \
-        -H "X-Pinecone-API-Version: 2025-04" \
+        -H "X-Pinecone-Api-Version: 2025-10" \
         -d '{"_id": "rec1", "chunk_text": "Apples are a great source of dietary fiber, which supports digestion and helps maintain a healthy gut.", "category": "digestive system"}
             {"_id": "rec2", "chunk_text": "Apples originated in Central Asia and have been cultivated for thousands of years, with over 7,500 varieties available today.", "category": "cultivation"}
             {"_id": "rec3", "chunk_text": "Rich in vitamin C and other antioxidants, apples contribute to immune health and may reduce the risk of chronic diseases.", "category": "immune system"}
@@ -578,7 +582,7 @@ If a record ID already exists, upserting overwrites the entire record. To change
       curl "https://$INDEX_HOST/vectors/upsert" \
         -H "Api-Key: $PINECONE_API_KEY" \
         -H 'Content-Type: application/json' \
-        -H "X-Pinecone-API-Version: 2025-04" \
+        -H "X-Pinecone-Api-Version: 2025-10" \
         -d '{
           "vectors": [
             {
@@ -887,7 +891,7 @@ If a record ID already exists, upserting overwrites the entire record. To change
       curl  "https://$INDEX_HOST/records/namespaces/$NAMESPACE/upsert" \
           -H "Content-Type: application/x-ndjson" \
           -H "Api-Key: $PINECONE_API_KEY" \
-          -H "X-Pinecone-API-Version: 2025-04" \
+          -H "X-Pinecone-Api-Version: 2025-10" \
           -d '{ "_id": "vec1", "chunk_text": "AAPL reported a year-over-year revenue increase, expecting stronger Q3 demand for its flagship phones.", "category": "technology", "quarter": "Q3" }
             { "_id": "vec2", "chunk_text": "Analysts suggest that AAPL'\''s upcoming Q4 product launch event might solidify its position in the premium smartphone market.", "category": "technology", "quarter": "Q4" }
             { "_id": "vec3", "chunk_text": "AAPL'\''s strategic Q3 partnerships with semiconductor suppliers could mitigate component risks and stabilize iPhone production.", "category": "technology", "quarter": "Q3" }
@@ -1345,7 +1349,7 @@ If a record ID already exists, upserting overwrites the entire record. To change
       curl "http://$INDEX_HOST/vectors/upsert" \
         -H "Content-Type: application/json" \
         -H "Api-Key: $PINECONE_API_KEY" \
-        -H "X-Pinecone-API-Version: 2025-04" \
+        -H "X-Pinecone-Api-Version: 2025-10" \
         -d '{
               "namespace": "example-namespace",
               "vectors": [
@@ -1636,7 +1640,7 @@ Send upserts in batches to help increase throughput.
 ## Upsert in parallel
 
 <Tip>
-  Python SDK v6.0.0 and later provide `async` methods for use with [asyncio](https://docs.python.org/3/library/asyncio.html). Asyncio support makes it possible to use Pinecone with modern async web frameworks such as FastAPI, Quart, and Sanic. For more details, see [Asyncio support](/reference/python-sdk#asyncio-support).
+  Python SDK v6.0.0 and later provide `async` methods for use with [asyncio](https://docs.python.org/3/library/asyncio.html). Asyncio support makes it possible to use Pinecone with modern async web frameworks such as FastAPI, Quart, and Sanic. For more details, see [Async requests](/reference/sdks/python/overview#async-requests).
 </Tip>
 
 Send multiple upserts in parallel to help increase throughput. Vector operations block until the response has been received. However, they can be made asynchronously as follows:
@@ -1645,7 +1649,7 @@ Send multiple upserts in parallel to help increase throughput. Vector operations
   ```Python Python theme={null}
   # This example uses `async_req=True` and multiple threads.
   # For a single-threaded approach compatible with modern async web frameworks, 
-  # see https://docs.pinecone.io/reference/python-sdk#asyncio-support
+  # see https://docs.pinecone.io/reference/sdks/python/overview#async-requests
   import random
   import itertools
   from pinecone import Pinecone

@@ -244,7 +244,7 @@ It is easy to change the group topology without service disruption, with a few c
 ```
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

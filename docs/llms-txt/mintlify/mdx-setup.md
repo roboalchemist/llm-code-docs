@@ -1,10 +1,14 @@
-# Source: https://mintlify.com/docs/api-playground/mdx-setup.md
+# Source: https://www.mintlify.com/docs/api-playground/mdx-setup.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Create manual API pages
 
 > Document API endpoints manually with MDX files.
 
-You can manually define API endpoints in individual pages. This approach is useful for small APIs or prototyping.
+You can manually define API endpoints in individual MDX pages. This approach is useful for small APIs or prototyping.
 
 ## Setup
 
@@ -12,10 +16,10 @@ You can manually define API endpoints in individual pages. This approach is usef
   <Step title="Configure your API settings">
     In your `docs.json` file, define your base URL and authentication method.
 
-    ```json  theme={null}
+    ```json Example docs.json theme={null}
     "api": {
       "mdx": {
-        "server": "https://mintlify.com/api",
+        "server": "https://api.acme.com/",
         "auth": {
           "method": "key",
           "name": "x-api-key"
@@ -38,24 +42,25 @@ You can manually define API endpoints in individual pages. This approach is usef
   </Step>
 
   <Step title="Create your endpoint pages">
-    Create an `MDX` file for each endpoint. Define the `title` and `api` in the frontmatter:
+    Create an MDX file for each endpoint. Define the `title` and `api` in the frontmatter:
 
     ```mdx  theme={null}
     ---
     title: 'Create new user'
-    api: 'POST https://api.mintlify.com/user'
+    api: 'POST /v1/users'
     ---
     ```
+
+    The `api` frontmatter field accepts either a full URL or a relative path:
+
+    * **Full URL** like `POST https://api.acme.com/v1/users`. The `server` field in `docs.json` is ignored for that endpoint.
+    * **Relative path** like `POST /v1/users`. Requires a `server` field in `docs.json`. The server URL is prepended to the path.
 
     Specify path parameters by wrapping them in `{}`:
 
     ```bash  theme={null}
     https://api.example.com/v1/endpoint/{userId}
     ```
-
-    <Tip>
-      If you have a `server` field configured in `docs.json`, you can use relative paths like `/v1/endpoint`.
-    </Tip>
 
     To override the global playground display mode for a specific page, add `playground` to the frontmatter:
 
@@ -97,7 +102,75 @@ You can manually define API endpoints in individual pages. This approach is usef
   </Step>
 
   <Step title="Add your endpoints to your docs">
-    Add your endpoint pages to the navigation by updating the `pages` field in your `docs.json`. Learn more about structuring your docs in [Navigation](/organize/navigation).
+    Add your endpoint pages to the navigation by updating the `pages` field in your `docs.json`:
+
+    ```json docs.json theme={null}
+    "navigation": {
+      "tabs": [
+        {
+          "tab": "API Reference",
+          "groups": [
+            {
+              "group": "Users",
+              "pages": [
+                "api-reference/users/create-user",
+                "api-reference/users/get-user",
+                "api-reference/users/update-user"
+              ]
+            },
+            {
+              "group": "Orders",
+              "pages": [
+                "api-reference/orders/create-order",
+                "api-reference/orders/list-orders"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+    ```
+
+    Each page path corresponds to an MDX file in your docs repository. For example, `api-reference/users/create-user.mdx`. Learn more about structuring your docs in [Navigation](/organize/navigation).
+
+    ### Using OpenAPI endpoints in navigation
+
+    If you have an OpenAPI specification, you can reference endpoints directly in your navigation without creating individual MDX files. Reference specific endpoints by including the OpenAPI file path and the endpoint:
+
+    ```json docs.json theme={null}
+    "navigation": {
+      "pages": [
+        "introduction",
+        "/path/to/users-openapi.json POST /users",
+        "/path/to/orders-openapi.json GET /orders"
+      ]
+    }
+    ```
+
+    You can also set a default OpenAPI spec for a navigation group and reference endpoints by method and path:
+
+    ```json docs.json theme={null}
+    {
+      "group": "API reference",
+      "openapi": "/path/to/openapi-v1.json",
+      "pages": [
+        "overview",
+        "authentication",
+        "GET /users",
+        "POST /users",
+        {
+          "group": "Orders",
+          "openapi": "/path/to/openapi-v2.json",
+          "pages": [
+            "GET /orders",
+            "POST /orders"
+          ]
+        }
+      ]
+    }
+    ```
+
+    For more details on OpenAPI integration, see [OpenAPI setup](/api-playground/openapi-setup).
   </Step>
 </Steps>
 

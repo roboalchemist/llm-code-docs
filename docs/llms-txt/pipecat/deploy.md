@@ -2,13 +2,9 @@
 
 # Source: https://docs.pipecat.ai/cli/cloud/deploy.md
 
-# Source: https://docs.pipecat.ai/deployment/pipecat-cloud/fundamentals/deploy.md
-
-# Source: https://docs.pipecat.ai/cli/cloud/deploy.md
-
-# Source: https://docs.pipecat.ai/deployment/pipecat-cloud/fundamentals/deploy.md
-
-# Source: https://docs.pipecat.ai/cli/cloud/deploy.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # deploy
 
@@ -67,11 +63,14 @@ pipecat cloud deploy [ARGS] [OPTIONS]
   [Discord](https://discord.gg/dailyco).
 </ParamField>
 
-<ParamField path="--enable-krisp / -krisp" type="boolean" default="false">
-  Enable Krisp noise cancellation for this deployed agent. In addition, you also
-  need to enable the `KrispFilter()` for your transport. See the [Krisp Noise
-  Cancellation](/deployment/pipecat-cloud/guides/krisp-noise-cancellation) guide
-  for more information.
+<ParamField path="--krisp-viva-audio-filter" type="string">
+  Enable Krisp VIVA noise cancellation with the specified audio filter model.
+  Valid values are:
+
+  * `tel`: Telephony model (up to 16kHz)
+  * `pro`: WebRTC model (up to 32kHz)
+
+  In addition to this flag, you also need to enable the `KrispVivaFilter()` for your transport. See the [Krisp VIVA](/server/utilities/audio/krisp-viva-filter) documentation for more information.
 </ParamField>
 
 <ParamField path="--enable-managed-keys" type="boolean" default="false">
@@ -138,6 +137,12 @@ pipecat cloud deploy my-first-agent your-docker-repository/my-first-agent:0.1 --
 
 ```shell  theme={null}
 pipecat cloud deploy my-first-agent your-docker-repository/my-first-agent:0.1 --region eu-central
+```
+
+**Deploy with Krisp VIVA noise cancellation:**
+
+```shell  theme={null}
+pipecat cloud deploy my-first-agent your-docker-repository/my-first-agent:0.1 --krisp-viva-audio-filter tel
 ```
 
 ## Configuration File (pcc-deploy.toml)
@@ -311,8 +316,3 @@ pipecat cloud deploy --region eu-central
 # Use config file but force update without confirmation
 pipecat cloud deploy --force
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

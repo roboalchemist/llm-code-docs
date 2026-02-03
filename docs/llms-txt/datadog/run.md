@@ -9,7 +9,6 @@ description: >-
 breadcrumbs: >-
   Docs > Administrator's Guide > Maintaining and running your Datadog
   installation
-source_url: https://docs.datadoghq.com/run/index.html
 ---
 
 # Maintaining and running your Datadog installation

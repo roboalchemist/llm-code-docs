@@ -1,14 +1,77 @@
 # Retool Documentation
 
-Source: https://docs.retool.com/llms-full.txt
-
----
-
-# Retool Documentation
-
 > Complete product documentation for Retool.
 
 This file contains all documentation content in a single document following the llmstxt.org standard.
+
+## Agent-to-agent communication
+
+The Agent-to-agent (A2A) protocol provides standardized and secure communication between external agents and agents built with Retool, so you can trigger your agent from an external agent, or embed agents in your own systems.
+
+## Overview
+A2A support allows you to build agents across multiple platforms and have them talk to one another programmatically. You may want to use A2A, for example, to build distributed AI systems across different regions, to connect third-party agents to internal orchestration agents, or to daisy-chain specialized agents together to complete complex tasks.    
+
+:::info
+Currently, Retool supports ingress into Retool agents from an external agent.
+:::
+
+Retool has implemented the [core set of A2A functionality](https://a2a-protocol.org/v0.2.0/topics/key-concepts/#fundamental-communication-elements), so you can: 
+    - View an agent card.
+    - Send a message.
+    - Poll for updates on tasks.
+    - Stream processing or task updates via Server-Sent Events (SSE). 
+    - Cancel tasks. 
+
+Refer to [Set up an A2A trigger](../guides/triggers/trigger-with-a2a.mdx) to learn how to enable the A2A trigger, and [A2A endpoints](../reference/a2a-endpoints.mdx) to learn how to cURL for endpoint responses. 
+
+## How it works
+The diagram below details the four main steps an A2A request follows, as well as the interactions between the client, the A2A server, and your agent. 
+
+## Limitations
+Retool's A2A support has the following limitations: 
+
+- Retool only supports ingress for A2A. 
+- Retool only supports the HTTP+REST and JSON-RPC protocols.
+- Retool only supports API key-based authentication. 
+- Retool does not support the [input-required](https://a2a-protocol.org/v0.2.0/specification/#93-multi-turn-interaction-input-required) or [auth-required](https://a2a-protocol.org/v0.2.0/specification/#63-taskstate-enum) task states, so when using A2A with Retool agents, calling tools that require approvals and have delegated authentication will fail. 
+ 
+Additional functionality will be added over time. 
+
+## FAQ
+
+### How can I provide feedback on A2A? 
+Please provide feedback at [this form link](https://example.retool.com/form/ddaf5f13-5d66-4aa8-868b-95dfc4edff61) or reply to the [Agent-to-agent protocol support topic](https://community.retool.com/t/agent-to-agent-protocol-support/62334) the Retool Community Forum. 
+
+### Does enabling A2A expose all agents? 
+No, Retool requires you to enable A2A as a trigger on a specific agent. Self-hosted Retool customers can toggle off the **AI Agents A2A** feature flag in **Settings** > **Beta** to remove A2A support; it is on by default. 
+
+### Can I call Retool Agents from non-agent systems like external apps or backends?
+Yes, A2A can be used by a programmatically-invoked REST API from non-agent systems. 
+
+### Will Retool support additional transport protocols like gRPC?
+Retool will support additional protocols depending on customer demand. If you'd like to request additional protocol support, [please fill out this form](https://example.retool.com/form/ddaf5f13-5d66-4aa8-868b-95dfc4edff61). 
+
+### Does Retool A2A support streaming responses?
+Yes, Retool supports streaming responses via SSE. 
+
+### Can we connect to external A2A systems from Retool?
+Yes, Retool supports ingress into Retool agents via the A2A protocol. You can build custom tools in agents, or custom resource queries in apps and workflows to trigger external agents via REST APIs.
+
+### The URL value in my agent card is missing the HTTP or HTTPS prefix, how do I fix this?
+For self-hosted Retool, set the [BASE_DOMAIN](../../self-hosted/reference/environment-variables/#property-BASE_DOMAIN.mdx) environment variable. 
+
+### Can I rotate my API keys? 
+Yes, API keys can be rotated. An API key is provided for each agent, and must be passed to the client via an `X-Api-Key` header.
+
+## Additional resources
+To continue learning about A2A, explore the following resources:
+
+* [Set up an A2A trigger](../guides/triggers/trigger-with-a2a.mdx)
+* [A2A tutorial](../tutorials/a2a-tutorial.mdx)
+* [What is A2A Protocol?](https://a2a-protocol.org/dev/)
+* [A2A endpoints](../reference/a2a-endpoints.mdx)
+
+---
 
 ## Agentic workflows
 
@@ -218,44 +281,18 @@ LLM-as-a-judge reviewers use an LLM to determine the agent's score based on what
 
 ---
 
-## Retool Agents FAQ
+## Agents FAQ
 
-This FAQ aims to provide answers to common questions about Retool Agents, and provide you with the information you need to leverage Retool Agents effectively.
+This FAQ aims to provide answers to common questions about Agents, and provide you with the information you need to leverage Agents effectively.
 
-## Which providers and models are available?
-
-Retool-managed LLM connections are available for certain [AI providers and models](../../data-sources/concepts/models). If you use Retool Agents with any of these third-party models, the third-party model will process all agent inputs, including the prompt provided by the end user of the agent, to initiate performance of a task or to generate output. Please review and comply with any policies published by the provider of the third-party model.
-
-## Is my data ever used to train or fine-tune models?
-
-No, Retool uses foundation models. Neither Retool nor the providers of the third-party models will use agent inputs or outputs to train or fine-tune models. Prior to making a third-party model available for use with Retool Agents, Retool ensures contractual safeguards are in place that restrict such providers from using inputs and outputs for their own purposes.
-
-## What about Retool’s other AI vendors?
-
-Retool engages other vendors to help provide agents. Vendors that process agent inputs and outputs on Retool’s behalf are [Retool’s sub-processors](../../legal/subprocessors) and are also contractually restricted from using inputs and outputs for their own purposes.
-
-## If I use an open-source model, will the model provider have access to my inputs or outputs?
-
-No, Retool-managed, open-source models are hosted by Retool’s third-party infrastructure provider. Inputs and outputs will not be shared with the provider of the open-source model.
-
-## Can I bring my existing LLM-provider keys?
-
-Yes. When you bring your own key to an account with a model provider, the provider’s handling of data while under its control will be governed by the agreement you have with that provider. When output data that is returned by the provider is in Retool’s control, such data will be subject to your agreement with Retool.
-
-## Where can I provide feedback about Retool Agents?
+## General
+Frequently asked general questions about Agents:
 
 Please share feedback in Retool’s [community forum](https://community.retool.com/t/launch-day-retool-agents-is-here/58551).
 
-## When can I use agents on Self-hosted?
-Agents is supported in public beta on [3.234.0](../../../releases/edge/) and later edge releases, and it will be available in the Q3 stable release for Self-hosted organizations. Refer to [Set up Retool Agents on Self-hosted deployments](../guides/self-hosted/set-up-agents.mdx) for more information.
+Reach out to your Enterprise account manager or [contact Retool support](/support).
 
-## How can I get support for Retool Agents?
-
-Reach out to your Enterprise account manager or [contact Retool support](../../../support/).
-
-## Where can I go to learn more about Retool Agents?
-
-The following links provide more information about AI and Retool Agents.
+The following links provide more information about AI and Agents.
 
 - [AI Fundamentals YouTube playlist](https://www.youtube.com/playlist?list=PLqWdQFDVLADmJG9eNFIxe-d6yn227hQ_m)
 - [Getting Started with AI in Retool YouTube playlist](https://www.youtube.com/playlist?list=PLqWdQFDVLADlN36WdDyPy5_fl0N2M0NZg)
@@ -265,10 +302,50 @@ The following links provide more information about AI and Retool Agents.
   - [Retool Intro to GenAI](https://university.retool.com/app/portal/courses)
   - [AI Agent Concepts](https://university.retool.com/app/portal/courses)
   - [AI Fundamentals Path](https://university.retool.com/app/portal/courses)
-  - [Retool Agents](https://university.retool.com/app/portal/courses)
+  - [Agents](https://university.retool.com/app/portal/courses)
   - [Lab: Retool Vectors](https://university.retool.com/app/portal/labs)
   - [Lab: AI Action](https://university.retool.com/app/portal/labs)
-  - [Lab: Retool Agents](https://university.retool.com/app/portal/labs)
+  - [Lab: Agents](https://university.retool.com/app/portal/labs)
+
+## Data collection and privacy
+Frequently asked questions about data collection and how information is used with Agents:
+
+No, Retool uses foundation models. Neither Retool nor the providers of the third-party models will use agent inputs or outputs to train or fine-tune models. Prior to making a third-party model available for use with Agents, Retool ensures contractual safeguards are in place that restrict such providers from using inputs and outputs for their own purposes.
+
+Retool engages other vendors to help provide agents. Vendors that process agent inputs and outputs on Retool’s behalf are [Retool’s sub-processors](/legal/subprocessors) and are also contractually restricted from using inputs and outputs for their own purposes.
+
+No, Retool-managed, open-source models are hosted by Retool’s third-party infrastructure provider. Inputs and outputs will not be shared with the provider of the open-source model.
+
+The data sent to the Retool-managed (cloud-hosted) agents observability API consists of the following:
+
+- UUIDs corresponding to objects in the Retool deployment's Postgres database.
+- Success/failure status of agent runs.
+- Model type of agent runs.
+- Runtime of agent runs.
+- Number of LLM tokens used by agent runs.
+- Information about the tools used during agent runs. Tool information is limited to UUIDs and the configured tool name and tool parameter names.
+
+No customer data beyond the names of configured tools and tool parameters are sent to this API.
+
+If you have any feedback or concerns about this data, please reach out to your account team.
+
+## AI models and LLM keys
+Frequently asked questions about AI models and LLM-provider keys:
+
+Retool-managed keys are available for certain [AI providers and models](../../data-sources/concepts/models). If you use Agents with any of these third-party models, the third-party model will process all agent inputs, including the prompt provided by the internal user of the agent, to initiate performance of a task or to generate output. Please review and comply with any policies published by the provider of the third-party model.
+
+Yes. When you bring your own key to an account with a model provider, the provider’s handling of data while under its control will be governed by the agreement you have with that provider. When output data that is returned by the provider is in Retool’s control, such data will be subject to your agreement with Retool.
+
+## Self-hosted
+Frequently asked questions about self-hosted deployments and Agents:
+
+import PY1 from '/docs/_partials/_agent-docker-compose-yaml.mdx';
+
+import PY2 from '/docs/_partials/_agent-evals-self-hosted.mdx';
+
+No agent inputs or outputs are sent back to Retool servers.
+
+Agents is in public beta with the [3.234.0 edge release](../../../releases/edge/) and the [3.253.0 stable release](../../../releases/stable/) for Self-hosted organizations.
 
 ---
 
@@ -302,7 +379,7 @@ The architecture of an agent consists of:
 Agents use frameworks like *ReAct* (Reasoning and Acting) to alternate between thinking and taking action.
 
 ## When to use agents
-Agents work well for open-ended, dynamic tasks, but they are not optimal for well-structured tasks that can be encoded into discrete steps. For well-structured tasks, it may be more beneficial to use [agentic workflows](../concepts/agentic-workflows). The following diagram is a visual representation of the different types of GenAI and Agentic workflows that can be built using Retool Workflows, vs. the flow of a Retool Agent.
+Agents work well for open-ended, dynamic tasks, but they are not optimal for well-structured tasks that can be encoded into discrete steps. For well-structured tasks, it may be more beneficial to use agentic workflows. The following diagram is a visual representation of the different types of GenAI and Agentic workflows that can be built using Retool Workflows, vs. the flow of a Retool Agent.
 
 For more information about the differences between agents and agentic workflows, refer to the [Agentic Workflows](../concepts/agentic-workflows) conceptual guide.
 
@@ -452,8 +529,9 @@ export function ArcadeEmbed_rename() {
   )
 }
 
-## Add to Evals dataset
-You can create a test case directly from a chat thread and add it to a previously-created dataset for [Evals](../concepts/evals). Select the **...** button at the end of an agent chat thread, and click **+ Add to Eval dataset**. Fill in the required fields on the **Create Test Case** modal, and click **Create**.
+## Add to evals dataset
+
+You can create a test case directly from a chat thread and add it to a previously-created dataset for [evals](../concepts/evals). Select the **...** button at the end of an agent chat thread, and click **+ Add to Eval dataset**. Fill in the required fields on the **Create Test Case** modal, and click **Create**.
 
 export function ArcadeEmbed_eval() {
   return (
@@ -471,7 +549,7 @@ import Partials from '/docs/_partials/_agent-share-thread.mdx';
 
 ## Automatically configure an agent with the Configuration Assistant
 
-You can use the **Configuration Assistant** to automatically write **Instructions** and create **Tools** for your agent. The **Configuration Assistant** is an LLM with knowledge of how agents works and the ability to configure them. You can choose which [AI model](../../data-sources/concepts/models.mdx) you want the **Configuration Assistant** to use.
+You can use the **Configuration Assistant** to automatically write **Instructions** and create **Tools** for your agent. The **Configuration Assistant** is an LLM with knowledge of how agents works and the ability to configure them. You can choose which [AI model](/data-sources/concepts/models) you want the **Configuration Assistant** to use.
 
 :::note
 
@@ -488,8 +566,8 @@ Use the following steps to prompt the **Configuration Assistant** to create a va
   ```
 1. After the **Configuration Assistant** thinks, click **Accept** or **Reject** to respond to the proposed plan.
 2. Most tools require additional configuration.
-   1. Click **Select resource** on [core tools](../guides/tools/use-core-tools.mdx) to configure it to access a particular resource. Create a new resource, or select from your existing ones.
-   2. Select **Finish up** on custom [custom tools](../guides/tools/create-custom-tools.mdx) to create the tool's function logic. You can use the **Function Generator** to provide your function with instructions
+   1. Click **Select resource** on [core tools](../tools/use-core-tools) to configure it to access a particular resource. Create a new resource, or select from your existing ones.
+   2. Select **Finish up** on custom [custom tools](../tools/create-custom-tools) to create the tool's function logic. You can use the **Function Generator** to provide your function with instructions
 
 export function ArcadeEmbed() {
   return (
@@ -498,6 +576,133 @@ export function ArcadeEmbed() {
     
   )
 }
+
+---
+
+## Configure Agents
+
+import DocCardList from "@theme/DocCardList";
+
+---
+
+## Configure your organization for Agents
+
+import SelfhostedLatest from "@site/src/components/SelfhostedLatest"
+
+An organization admin must complete the steps in the following sections to make sure your organization is ready to use Agents.
+
+:::note
+
+To learn how to create and use agents, visit the [Agents quickstart](../../quickstart.mdx) or the [Agents tutorials](../../tutorials.mdx).
+
+:::
+
+## Configure organization settings
+
+Ensure that Agents is enabled and that it has access to the proper AI models.
+
+1. To ensure your users can access Agents, navigate to **Settings** > **AI**. Verify that the **Retool AI** and **AI Agents** settings are toggled on.
+2. Navigate to **Resources** > **Retool AI**. Ensure that at least one AI provider is enabled. You can choose to use Retool-managed keys or self-managed keys.
+
+:::note
+Only AI models that support tool creation can be used with Agents. Refer to [AI providers and models](../../../data-sources/concepts/models.mdx) for supported models.
+:::
+
+## Self-hosted configuration
+
+Complete the steps in the following sections if your deployment is self-hosted. Skip these steps if you use Retool cloud.
+
+### Requirements
+
+To use Agents on Self-hosted deployments, your organization must:
+
+- Be on Self-hosted Retool version 3.234.0 or later (3.253.0 or later for stable releases).
+- Have its own AI model key(s) configured.
+- Meet all of the requirements outlined in the [tutorial](../../../self-hosted/tutorials.mdx) for your chosen deployment infrastructure.
+
+### Installation
+
+Agents is supported for the following self-hosted deployment options.
+
+Follow the instructions outlined in the [AWS Fargate and ECS](../../../self-hosted/tutorials/ecs-fargate/cloudformation.mdx) tutorial.
+
+Follow the instructions outlined in the tutorial corresponding to your deployment infrastructure:
+
+- [Amazon EC2](../../../self-hosted/tutorials/ec2.mdx)
+- [Azure Virtual Machines](../../../self-hosted/tutorials/azure-vm.mdx)
+- [Docker](../../../self-hosted/tutorials/docker.mdx)
+- [Google Compute Engine](../../../self-hosted/tutorials/gcp.mdx)
+
+To deploy a Self-hosted Retool instance that contains agents, use the [Retool Helm chart 6.6.0](../../../self-hosted/tutorials/kubernetes/helm#1-add-the-retool-helm-chart-repository) or later.
+
+Configure the `values.yaml` file as follows:
+
+1. In the `image.tag` for the `tryretool/backend` and `tryretool/code-executor-service`, specify the [Docker tag](https://hub.docker.com/r/tryretool/backend/tags) for the version of Retool to install, such as tryretool/backend:.
+    :::important
+    Agents is available on self-hosted Retool version `3.253.0-stable` or later.
+    :::
+
+2. Set agents to `enabled: true`.
+
+For further configuration, you can reference the full `agents:` block as defined in [retool-helm](https://github.com/tryretool/retool-helm/blob/main/values.yaml).
+
+### Additional configuration
+
+Agents on self-hosted deployments rely on [Temporal](../../../self-hosted/concepts/temporal). To deploy agents, you must create two additional [containers](../../../self-hosted/concepts/architecture#containers-and-services) with configuration and networking egress identical to the [workflows-worker](../../../self-hosted/concepts/architecture#workflows-worker) container:
+
+| Container | SERVICE_TYPE Environment Variable [^env] | Networks | Dependencies | Restart Policy |
+|-----------|----------------|----------|--------------|----------------|
+| `agent-worker` | `WORKFLOW_TEMPORAL_WORKER` | `backend`, `code-executor` | `postgres` | `always` |
+| `agent-eval-worker` | `AGENT_EVAL_TEMPORAL_WORKER` |`backend`, `code-executor` | `postgres` | `always` |
+
+[^env]: For a complete list of Agents-related environment variables, refer to the [Environment variables reference](../../../self-hosted/reference/environment-variables/index.mdx).
+
+import PY1 from '/docs/_partials/_agent-docker-compose-yaml.mdx';
+
+### Set up evals 
+import PY2 from '/docs/_partials/_agent-evals-self-hosted.mdx';
+
+### Configure AI providers
+
+After installation, navigate to `/resources/retool_ai` and configure one or more AI model providers.
+
+## Choose a change management strategy
+
+Agents can be versioned and protected using Retool's change management features:
+
+- **Source Control**: Organizations on the Enterprise plan can use Source Control to [protect agents](../../../source-control/guides/protect/agents.mdx) and manage changes through Git workflows. Consider creating feature branches when making significant changes to agents.
+- **Version History**: All changes to agents are automatically tracked in version history, allowing you to review and restore previous versions.
+
+## Track usage
+
+Organization admins can monitor Agents usage and costs.
+
+### Monitor agent runs
+
+Use the [Monitor](../../quickstart.mdx#monitor) dashboard to track:
+
+- Agent run success or failure rates
+- LLM token usage
+- Runtime performance
+- Tool invocations
+
+### Billing and usage limits
+
+Retool organizations receive up to $50 worth of agent runtime per month. For Self-hosted deployments using self-managed LLMs, this equals 10 hours of free usage per month at $5/hour.
+
+If you exceed the cap, agents will not execute and you'll see a warning message. Contact your account team to discuss additional capacity.
+
+For more information about pricing, refer to the [Model pricing](../../../data-sources/concepts/models.mdx#model-usage-and-pricing) and the [Agents billing and usage](../../../../support/billing-usage/agents) pages.
+
+## Next steps
+
+Once configuration is complete:
+
+1. Create your first agent using the [Agents tutorial](../../../agents/tutorials/agents-tutorial) page.
+2. Configure agent [tools](../tools/index.mdx) to connect to your data sources.
+3. Set up [permissions](../../../permissions/guides/agent-permissions.mdx) to control who can create and use agents.
+4. (Optional) Configure [email triggers](../triggers/trigger-with-email/) or [A2A triggers](../../concepts/a2a.mdx) for automated agent invocation.
+5. For answers to common questions about Agents, review the [Agents FAQ](../../concepts/faq.mdx).
 
 ---
 
@@ -520,7 +725,7 @@ Once you create an agent from template, use the following steps to configure you
 1. Some tools require configuration to connect a [resource](../../../data-sources/tutorials/create-resource#create-a-new-resource) (e.g., Google Docs, or Web Search). Click **Select Resource**.  
 2. Use the dropdown to add a new resource or select a previously-created resource.  
 3. Optionally select **Apply to all tools that need this type of resource** to apply the selected resource to all tools of the same type within the agent.  
-4. Optionally select **Require user confirmation before use**, which prompts users for approval when the tool is triggered. For more information, refer to [User consent handling](./permissions-agents#user-consent-handling).  
+4. Optionally select **Require user confirmation before use**, which prompts users for approval when the tool is triggered. For more information, refer to [User consent handling](../../permissions/guides/agent-permissions.mdx#user-consent-handling).  
 5. Click **Save**.  
 
 Certain templates that require [custom tools](./tools/create-custom-tools) are pre-populated with mock data (shown in the example screenshot below). You can [edit the function](./tools/create-custom-tools#edit-function) to update the data it pulls in, and modify it to fit your own business needs. 
@@ -541,7 +746,7 @@ For more information about evals, refer to the [Evals](../../concepts/evals) con
 After you've created a datset and test cases, you can create and run an eval. Running an eval of your dataset produces an **Avg score** based on whether the test cases in the dataset passed or failed. 
 
 :::info
-Eval runs count towards billable agent runtime. For more information about billing, refer to the [Billing and usage](../../../support/billing-usage/agents) page.
+Eval runs count towards billable agent runtime. For more information about billing, refer to the [Billing and usage](/support/billing-usage/agents) page.
 :::
 
 ## Run an eval
@@ -586,7 +791,7 @@ If you have done multiple eval runs, you can select other runs from the dropdown
 
 ## Create datasets to evaluate agent performance
 
-Before you create an eval, you first need to add a *dataset*. A dataset is a collection of test cases. An agent can have many datasets, and each dataset can have many test cases. It may be beneficial to group test cases into datasets based on use-case (for instance, agent accuracy, or response time).
+Before you create an eval, you first need to add a dataset. A dataset is a collection of test cases. An agent can have many datasets, and each dataset can have many test cases. It may be beneficial to group test cases into datasets based on use-case (for instance, agent accuracy, or response time).
 
 Within an eval, you can select one or more datasets to evaluate. 
 
@@ -608,19 +813,19 @@ export function ArcadeEmbed() {
 ## Create a test case
 *Test cases* provide input and expected output for the evaluations. 
 
-Datasets can have many test cases, and test cases can be one of two **Types**: 
+Datasets can have many test cases, and test cases can be one of two **Types**:
 * **Tool choice**: Verifies that the agent selects the expected tool, and extracts the expected parameters, based on the specified input.
 * **Final answer**: Requires choosing either a **Programmatic** or **LLM as a Judge** reviewer to score the correctness of an agent's output. Use programmatic reviewers when the agent's expected output can be clearly defined (for example, Exact match), and LLM-as-a-Judge reviewers when it's not as clearly defined (for example, Tone detection).
 
 For more information on reviewers, refer to the [Reviewers](../../concepts/evals#reviewers) section of the [Evals](../../concepts/evals) concept page. 
 
 ### Tool choice test case
-To create a **Tool choice** test case: 
+To create a **Tool choice** test case:
 
 1. Click on the dataset, and select the **Add Test Case** button.
-2. Select the dataset name from the **Dataset** dropdown. 
-3. Enter a phrase you want to test in the **Input** field. The example below uses the **Input** phrase `What's the weather in Tokyo?` 
-4. Select **Tool choice** for the **Type**. 
+2. Select the dataset name from the **Dataset** dropdown.
+3. Enter a phrase you want to test in the **Input** field. The example below uses the **Input** phrase `What's the weather in Tokyo?`
+4. Select **Tool choice** for the **Type**.
 5. In the **Expected tool** dropdown, select the tool you would expect your agent to choose given the input phrase. In the following example the **Expected tool** is `Get weather`. 
 6. Enter any **Expected parameters**. In the following example the parameters are the **City**, `Tokyo`, and the current **Date** in `DD-MM-YYYY` format. 
 7. Click **Create**. 
@@ -637,9 +842,9 @@ export function ArcadeEmbed_TC() {
 To create a **Final answer** test case:
 
 1. Click on the dataset, and select the **Add Test Case** button.
-2. Select the dataset name from the **Dataset** dropdown. 
+2. Select the dataset name from the **Dataset** dropdown.
 3. Enter a phrase you want to test in the **Input** field.
-4. Select **Final answer** for the **Type**. 
+4. Select **Final answer** for the **Type**.
 5. Choose a reviewer from the **Programmatic** or **LLM-as-a-Judge** options.
 6. Add the data you want to test with the reviewer (this varies based on the selected reviewer). The example below uses the `String contains` reviewer and searches for the **Substring** `access` based on the **Input** `What's my calendar look like today?`. Since the test case involves a weather agent, it would not be expected that the agent would have access to a calendar tool, and it is likely that the agent will respond with `I do not have access`. 
 7. Click **Save** on the **Choose a reviewer** modal. 
@@ -727,211 +932,6 @@ The usage and cost information, **Token usage**, **Estimated cost**, **Total run
 
 ---
 
-## Configure email triggers for Agents using Mailgun
-
-Self-hosted organizations can implement [email triggers](../trigger-with-email.mdx) for Agents using [Mailgun](https://www.mailgun.com/), a paid, third-party mail service. 
-
-:::warning
-
-If your Self-hosted environment is behind a VPN, and you want to trigger agents via email, make sure your `api/agents/emailWebhook` endpoint is accessible by Mailgun. Refer to [Mailgun's Webhooks documentation](https://documentation.mailgun.com/docs/mailgun/user-manual/events/webhooks) for the domain that will need access to your webhook.
-
-:::
-
-Setting up a Mailgun account and enabling the environment variables using the process described below allows you to send an email to your agent, which Mailgun forwards to your Self-hosted deployment as a webhook event, which then triggers the agent to run.  
-
-## Requirements
-
-To implement email triggers, you need:
-
-- A verified [Mailgun](https://www.mailgun.com) account.
-- A custom domain to use with Mailgun.
-- Ingress for Mailgun to send webhook notifications. 
-- A webhook endpoint URL reachable by Mailgun. Tools such as [ngrok](https://ngrok.com) can be used to accomplish this. 
-
-## Set up Mailgun
-
-Complete the following steps to configure Mailgun:
-
-1. Add a new custom domain and verify it. Do not use the sandbox domain Mailgun creates automatically upon login. 
-2. Create a new [Receiving Route](https://help.mailgun.com/hc/en-us/articles/360011355893-Routes) and toggle on **Store and notify** and enable **Message Retention**. Retool uses Mailgun's `Messages` API to look up the message, so it is important to enable **Store and Notify** and **Message Retention**, otherwise, the following error message will display: `{"message":"Message retrieval disabled for domain"}`. Message retention durations are limited by the Mailgun plan selected. 
-
-    
-    Create a new Receiving Route in Mailgun.
-     
-
-3. Create an endpoint URL and update any firewall configuration so that it is reachable by Mailgun. You can use tools such as [Ngrok](https://ngrok.com/) to create a URL. For example: `https://.ngrok-free.app/api/agents/emailWebhook`.  
-4. In Mailgun, add a new [Webhook](https://documentation.mailgun.com/docs/mailgun/user-manual/events/webhooks) and provide the webhook URL you created for your agent.  
-
-        
-    Provide your webhook endpoint URL.
-     
-
-          
-    The Webhooks page of the Mailgun dashboard.
-     
-
-## Environment variables
-Set the following environment variables within your deployment's configuration file.
-
-- `MAILGUN_WEBHOOK_API_KEY` - The **HTTP webhook signing key** found in the **Webhooks** section of your Mailgun dashboard. 
-- `MAILGUN_API_KEY` - The **Mailgun API key** found in the **API Security** section of your Mailgun dashboard. Refer to [Mailgun's help page](https://help.mailgun.com/hc/en-us/articles/203380100-Where-can-I-find-my-API-keys-and-SMTP-credentials) for more information.
-- `AGENT_EMAIL_DOMAIN` - The domain of your email address. For example, if your email is `johndoe@retool.com` then your email domain is `retool.com`.  
-
-## Set up a custom tool for email
-The **Send Email** and **Reply to Email** tools are not supported for Self-hosted deployments. To send email or reply to an email on a Self-hosted deployment, create a [custom tool](../tools/create-custom-tools) to connect to an agent with an email resource like SMTP or Twilio.
-
----
-
-## Self-hosted Retool for Agents
-
-import DocCardList from "@theme/DocCardList";
-
----
-
-## Set up Retool Agents on Self-hosted deployments
-
-You can deploy Retool Agents on Self-hosted Retool version 3.234.0 or later. Find more details in the [FAQ](#frequently-asked-questions).
-
-## Requirements
-
-To use Agents on Self-hosted deployments, your organization must:
-
-- Be on a Team, Business, or Enterprise plan.
-- Have its own AI model key(s).
-- Meet all of the requirements outlined in the [tutorial](../../../self-hosted/tutorials.mdx) for your chosen deployment infrastructure. 
-
-## Limitations
-
-Retool does not currently support deploying agents on [AWS Fargate and ECS](../../../self-hosted/tutorials/ecs-fargate/index.mdx).
-
-## Installation
-
-Agents is supported for the following self-hosted deployment options. 
-
-:::important
-To enable Retool Agents in Self-hosted Retool 3.253.0 and later, toggle the **AI Agents** feature flag in **Settings** > **Beta**.
-:::
-
-Follow the instructions outlined in the tutorial corresponding to your deployment infrastructure: 
-
-- [Amazon EC2](../../../self-hosted/tutorials/ec2.mdx)
-- [Azure Virtual Machines](../../../self-hosted/tutorials/azure-vm.mdx)
-- [Docker](../../../self-hosted/tutorials/docker.mdx)
-- [Google Compute Engine](../../../self-hosted/tutorials/gcp.mdx)
-
-To deploy a Self-hosted Retool instance that contains agents, use the [Retool Helm chart 6.6.0](../../../self-hosted/tutorials/kubernetes/helm#1-add-the-retool-helm-chart-repository) or later. 
-
-Configure the `values.yaml` file as follows:
-
-1. Set the `image` tag to `3.253.0-stable` for both the backend and code executor service. 
-    ```yaml
-    image:
-        repository: "tryretool/backend"
-        tag: "3.253.0-stable"
-    ```
-2. Enable agents:
-    ```yaml
-    agents:
-        enabled: true
-    ```
-For further configuration, you can reference the full `agents:` block as defined in [retool-helm](https://github.com/tryretool/retool-helm). 
-
-To deploy agents, create two additional [containers](../../../self-hosted/concepts/architecture#containers-and-services): `agent-worker` and `agent-eval-worker`, with configuration and networking egress identical to the [workflows-worker](../../../self-hosted/concepts/architecture#workflows-worker) container. Set the `SERVICE_TYPE` environment variable to the value listed in the [FAQ](#what-are-the-differences-between-the-edge-release-and-a-standard-deployment-of-self-hosted-retool).
-
-## Post-installation
-Once you’ve logged in, navigate to `/resources/retool_ai` and configure a model provider. 
-
-You must provide your own API key for OpenAI, Anthropic, Azure OpenAI, or Google to use Retool Agents. For more information, refer to the [Retool AI providers and models](../../../data-sources/concepts/models.mdx) page.
-
-:::note
-
-You can protect an agent with Source Control from the  dropdown next to the agent name, or from the  dropdown on the [All agents](../../../agents/quickstart#all-agents) page. Refer to [Protect agents with Source Control](../../../source-control/guides/protect/agents.mdx) for more information. 
-
-:::
-
-## Frequently Asked Questions
-
-This FAQ aims to provide answers to common questions about the edge release of Retool Agents. For deployment-agnostic questions, refer to the [Agents FAQ](../../concepts/faq.mdx).
-
-### I’ve hit a free usage limit. How do I continue to use agents?
-
-Retool organizations receive up to $50 worth of agent run time per month. Because Self-hosted agents deployments of agents require you to use a self-managed LLM, which costs $5/hour, you receive 10 hours of free usage per month. Refer to [Model pricing](../../../data-sources/concepts/models.mdx#model-pricing) for more information.
-
-If you've exceeded the cap, you'll see a warning message pop up when you attempt to send a message to an agent, and the agent will not be executed. Reach out to your account team for help getting unblocked.
-
-### What are the differences between the edge release and a standard deployment of self-hosted Retool?
-
-The infrastructure of the agents edge deployment is very similar to a Retool deployment with workflows. There are a few container differences, including the addition of `agent-worker` and `agent-eval-worker`:
-
-```yaml
-services:
-  # Temporal workers for Retool Agents
-  agent-worker:
-    build:
-      context: .
-    env_file: docker.env
-    environment:
-      - SERVICE_TYPE=WORKFLOW_TEMPORAL_WORKER
-    networks:
-      - backend
-      - code-executor
-    depends_on:
-      - postgres
-    restart: always
-
-  agent-eval-worker:
-    build:
-      context: .
-    env_file: docker.env
-    environment:
-      - SERVICE_TYPE=AGENT_EVAL_TEMPORAL_WORKER
-    networks:
-      - backend
-      - code-executor
-    depends_on:
-      - postgres
-    restart: always
-```
-
-It is important to note that the use of a Retool-managed agents observability API is required in the edge release. This API strictly does not receive, persist, or have access to sensitive customer data, agent inputs, or agent outputs. This API is required to power the [Monitor](../../quickstart.mdx#monitor) dashboard.
-
-### How do I set up evals? 
-
-[Evals](../evals) work in self-hosted deployments without any special configuration. To optimize performance, you can configure Amazon Simple Storage Service (Amazon S3) to store test case inputs and outputs (which can be large) instead of Postgres. To use Amazon S3, first [configure Amazon S3](../../../data-sources/guides/connect/amazon-s3) as a resource, and then set the following environment variables:
-
-```yaml
-  # Replace the following example values with your S3 values.
-  AGENT_EVALS_S3_BUCKET='retool-agent-evals'
-  AGENT_EVALS_S3_ACCESS_KEY_ID='AKIAIOSFODNN7EXAMPLE'
-  AGENT_EVALS_S3_SECRET_ACCESS_KEY='wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY'
-  AGENT_EVALS_S3_REGION='us-west-2'
-```
-
-### What data is sent to the Retool-managed agents observability API?
-
-The data sent to the Retool-managed (cloud-hosted) agents observability API consists of the following: 
-
-- UUIDs corresponding to objects in the Retool deployment’s Postgres database.
-- Success/failure status of agent runs. 
-- Model type of agent runs.
-- Runtime of agent runs.
-- Number of LLM tokens used by agent runs.
-- Information about the tools used during agent runs. Tool information is limited to UUIDs and the configured tool name and tool parameter names. 
-
-No customer data beyond the names of configured tools and tool parameters are sent to this API.
-
-If you have any feedback or concerns about this data, please reach out to your account team.
-
-### Does the edge release send any agent inputs and outputs to Retool servers?
-
-No agent inputs or outputs are sent back to Retool servers.
-
-### In which releases are Agents included?
-
-Agents is in public beta with the [3.234.0 edge release](../../../releases/edge/) and the [3.253.0 stable release](../../../releases/stable/) for Self-hosted organizations.
-
----
-
 ## Connect an MCP server to an agent
 
 import MCP from '/docs/_partials/_agents-mcp.mdx';
@@ -946,34 +946,55 @@ MCP Server is a resource type configured with a URL, but you cannot write querie
 * Agents can invoke one or more of those tools.
 
 ## Supported authentication
-Retool supports the following authentication options for MCP resources: 
-* [OAuth 2.0](../../../data-sources/guides/authentication/google-oauth)
-* [Basic Auth](../../../data-sources/concepts/authentication#basic)
+Retool supports the following authentication options for MCP resources:
+* [OAuth 2.0](../../../data-sources/guides/authentication/google-oauth) - Supports multiple flows including:
+  * Authorization Code (default with PKCE)
+  * Client Credentials
+  * Authorization Code with PKCE
+* [Basic Auth](../../../data-sources/concepts/authentication#basic) - Username and password authentication
+* Bearer Token - Token-based authentication using an API key or access token
 
 ## Supported protocol versions
 Protocol versions provide a framework to connect MCP resources to clients (such as IDEs, chat interfaces, or other software).
 
-Retool currently supports the following protocol versions: 
+Retool currently supports the following protocol versions:
 
 ```JavaScript
-export const LATEST_PROTOCOL_VERSION = "2025-06-18"; 
-export const DEFAULT_NEGOTIATED_PROTOCOL_VERSION = "2025-03-26"; 
-export const SUPPORTED_PROTOCOL_VERSIONS = [ 
-  LATEST_PROTOCOL_VERSION, 
-  "2025-03-26", 
-  "2024-11-05", 
-  "2024-10-07", 
+export const LATEST_PROTOCOL_VERSION = "2025-06-18";
+export const DEFAULT_NEGOTIATED_PROTOCOL_VERSION = "2025-03-26";
+export const SUPPORTED_PROTOCOL_VERSIONS = [
+  LATEST_PROTOCOL_VERSION,
+  "2025-03-26",
+  "2024-11-05",
+  "2024-10-07",
   ];
 ```
 
+## Limitations
+
+Retool's MCP implementation has the following limitations:
+
+### Transport protocols
+* Retool only supports remote-hosted MCP servers accessible via HTTP/HTTPS. 
+* Retool supports the following transport types: Streamable HTTP and Server-Sent Events (SSE).
+* Local `stdio`-based MCP servers are not directly supported and must be exposed via an HTTP gateway (see instructions below).
+
+### Timeouts
+* The tool execution timeout is up to 2 minutes maximum.
+* The tool listing timeout is 5 seconds.
+
+### Protocol version support
+* Supported protocol versions are determined by the MCP TypeScript SDK version (currently v1.17.5). 
+* Retool automatically negotiates the protocol version with the MCP server during connection. 
+
 ## Connect to an MCP server
 
-Retool Agents can connect to open MCP servers via Streamable HTTP or SSE, as well as private MCP servers using Basic HTTP authentication with a username and password, or OAuth 2.0 with a client ID and client secret.
+Retool Agents can connect to open MCP servers via Streamable HTTP or SSE, as well as private MCP servers using basic authentication with a username and password, bearer token authentication, or OAuth 2.0 with a client ID and client secret.
 
-Many MCP servers are built to run locally over `stdio`. These can be exposed to Retool via an HTTP gateway. 
+Many MCP servers are built to run locally over `stdio`. These can be exposed to Retool via an HTTP gateway.
 
 :::note
-To discover MCP servers that you can connect to, refer to the [official MCP registry](https://blog.modelcontextprotocol.io/posts/2025-09-08-mcp-registry-preview/). 
+To discover MCP servers that you can connect to, refer to the [official MCP registry](https://blog.modelcontextprotocol.io/posts/2025-09-08-mcp-registry-preview/).
 :::
 
 The following sample instructions explain how to use [supergateway](https://github.com/supercorp-ai/supergateway) and [ngrok](https://ngrok.com/) to create a server URL:
@@ -1005,7 +1026,7 @@ If you are using supergateway, your MCP server URL will be `https://xyz-123.ngro
 
 To connect an MCP server to an agent:
 
-1. Open an existing agent or [create a new one](../../tutorial).
+1. Open an existing agent or [create a new one](../../tutorials.mdx).
 2. On the **Configuration** tab, click **Add new tool**.
 3. Click **Connect to MCP Server**.
 4. Select a previously created resource from the **Select MCP Server** dropdown, or choose **Add new resource**.
@@ -1021,7 +1042,7 @@ export function ArcadeEmbed() {
   )
 }
 
-If your MCP server requires authentication, click **Authenticate MCP Server** from the **Connect to MCP server** page, the **Configuration** tab, or click **Authenticate** in the **Chats** tab. Follow the prompts to **Authenticate** and **Approve** the tool. 
+If your MCP server requires authentication, click **Authenticate MCP Server** from the **Connect to MCP server** page, the **Configuration** tab, or click **Authenticate** in the **Chats** tab. Follow the prompts to **Authenticate** and **Approve** the tool.
 
  Tool authentication required.
 
@@ -1055,7 +1076,7 @@ Custom tools run on behalf of the currently authenticated user, which is reflect
 
 ## Add a custom tool
 
-The instructions in this section explain how to create a custom tool using an example that gets [Retool changelog](/changelog/) entries between a start and end date. This example is also used as part of the [Retool Agents tutorial](../../tutorial.mdx#create-a-custom-tool).
+The instructions in this section explain how to create a custom tool using an example that gets [Retool changelog](/changelog/) entries between a start and end date. This example is also used as part of the [Retool Agents tutorial](../../tutorials/agents-tutorial.mdx#create-a-custom-tool).
 
 1. Create a new agent or navigate to an existing agent. Open the **Configuration** tab.
 2. In the **Tools** section, click the **+ Add Tool** button.
@@ -1214,7 +1235,7 @@ import SharedCoreTools from '/docs/_shared/_agent-core-tools.mdx';
 ## Add core tools to an agent
 To add a core tool to an agent, sign in to your Retool organization, and select the **Agents** tab in the top navigation bar.
 
-1. Open an existing agent or [create a new one](../../tutorial).
+1. Open an existing agent or [create a new one](../../tutorials.mdx).
 4. On the **Configuration** tab, click **Add new tool**.
 5. Click the **+** on the **Core tools** you want to add, and select **Add tools**.
 
@@ -1266,7 +1287,7 @@ You can configure your agent to use a workflow as a [tool](../../concepts/tools.
 
 :::note
 
-Using an agent as a tool does not copy the workflow—it creates a new trigger for the workflow. Any changes that you make to a workflow that is referenced as a tool persist in all uses of that workflow.
+Using a workflow as a tool does not copy the workflow—it creates a new trigger for the workflow. Any changes that you make to a workflow that is referenced as a tool persist in all uses of that workflow.
 
 :::
 
@@ -1326,6 +1347,54 @@ To avoid being billed for a workflow run, consider using a [custom tool](./creat
 
 ---
 
+## Triggers
+
+
+
+---
+
+## Set up an A2A trigger
+
+To allow external agents to communicate with Retool agents, you can enable the A2A trigger on your agent's configuration page, and copy the endpoint and API key into your A2A client. An API key is provided for each agent, and must be passed to the client via an `X-Api-Key` header. API keys can be rotated. 
+
+The process to use the Agent-to-agent (A2A) protocol with agents is similar to creating a [webhook trigger in workflows](../../../workflows/guides/webhooks). 
+
+The A2A client then sends messages via common messaging formats like the HTTP+REST or JSON-RPC APIs, and Server-Sent Events (SSE) for long-running streaming updates. 
+
+:::info
+Prior to enabling A2A, you must have all the necessary permissions for **Retool AI** and **AI Agents** turned on for your organization. Refer to [Permissions for Agents](../../../permissions/guides/agent-permissions#admin-capabilities.mdx) for more information. 
+:::
+
+## Enable the A2A trigger
+
+On your agent's **Configuration** page: 
+
+1. Click the **A2A** trigger. 
+2. Toggle the **A2A** switch on. 
+3. You can either copy and paste the **Endpoint** and the **API key** separately into your A2A client, or you can click **Copy** next to **Endpoint** and select **Copy as cURL** from the dropdown. This copies a cURL command preformatted with your agent's information and API key to your clipboard. 
+
+The default endpoint provided is the [Get agent card](../../reference/a2a-endpoints.mdx#get-agent-card) endpoint.
+
+export function ArcadeEmbed() {
+  return (
+    
+      
+    
+  )
+}
+
+You can [cURL to test the agent response](../../reference/a2a-endpoints) to different endpoints, or [trigger your agent via an external agent](../../tutorials/a2a-tutorial.mdx). 
+
+## Additional resources
+To continue learning about A2A, explore the following resources:
+
+* [Agent-to-agent communication](../../concepts/a2a.mdx)
+* [A2A tutorial](../../tutorials/a2a-tutorial.mdx)
+* [What is A2A Protocol?](https://a2a-protocol.org/dev/)
+* [A2A endpoints](../../reference/a2a-endpoints.mdx)
+
+---
+
 ## Trigger agents with email
 
 :::note
@@ -1340,7 +1409,7 @@ If the sender's email address matches that of a Retool user with `use` access to
 
 If the sender's email address does _not_ match any Retool user with appropriate permissions, the agent falls back to an organization admin. **Retool strongly recommends that you only allow known Retool users with access to the agent to use email triggers.**
 
-Refer to the `current_user` [reference](../reference/current-user.mdx) and the [Manage permissions](../../permissions/guides/agent-permissions.mdx) page for more information.
+Refer to the `current_user` [reference](../../../reference/current-user) and the [Manage permissions](../../../../../permissions/guides/agent-permissions) page for more information.
 
 :::
 
@@ -1367,6 +1436,61 @@ export function ArcadeEmbed() {
     
   )
 }
+
+---
+
+## Configure email triggers for Agents using Mailgun
+
+Self-hosted organizations can implement [email triggers](./) for Agents using [Mailgun](https://www.mailgun.com/), a paid, third-party mail service. 
+
+:::warning
+
+If your Self-hosted environment is behind a VPN, and you want to trigger agents via email, make sure your `api/agents/emailWebhook` endpoint is accessible by Mailgun. Refer to [Mailgun's Webhooks documentation](https://documentation.mailgun.com/docs/mailgun/user-manual/events/webhooks) for the domain that will need access to your webhook.
+
+:::
+
+Setting up a Mailgun account and enabling the environment variables using the process described below allows you to send an email to your agent, which Mailgun forwards to your Self-hosted deployment as a webhook event, which then triggers the agent to run.  
+
+## Requirements
+
+To implement email triggers, you need:
+
+- A verified [Mailgun](https://www.mailgun.com) account.
+- A custom domain to use with Mailgun.
+- Ingress for Mailgun to send webhook notifications. 
+- A webhook endpoint URL reachable by Mailgun. Tools such as [ngrok](https://ngrok.com) can be used to accomplish this. 
+
+## Set up Mailgun
+
+Complete the following steps to configure Mailgun:
+
+1. Add a new custom domain and verify it. Do not use the sandbox domain Mailgun creates automatically upon login. 
+2. Create a new [Receiving Route](https://help.mailgun.com/hc/en-us/articles/360011355893-Routes) and toggle on **Store and notify** and enable **Message Retention**. Retool uses Mailgun's `Messages` API to look up the message, so it is important to enable **Store and Notify** and **Message Retention**, otherwise, the following error message will display: `{"message":"Message retrieval disabled for domain"}`. Message retention durations are limited by the Mailgun plan selected. 
+
+    
+    Create a new Receiving Route in Mailgun.
+     
+
+3. Create an endpoint URL and update any firewall configuration so that it is reachable by Mailgun. You can use tools such as [Ngrok](https://ngrok.com/) to create a URL. For example: `https://.ngrok-free.app/api/agents/emailWebhook`.  
+4. In Mailgun, add a new [Webhook](https://documentation.mailgun.com/docs/mailgun/user-manual/events/webhooks) and provide the webhook URL you created for your agent.  
+
+        
+    Provide your webhook endpoint URL.
+     
+
+          
+    The Webhooks page of the Mailgun dashboard.
+     
+
+## Environment variables
+Set the following environment variables within your deployment's configuration file.
+
+- `MAILGUN_WEBHOOK_API_KEY` - The **HTTP webhook signing key** found in the **Webhooks** section of your Mailgun dashboard. 
+- `MAILGUN_API_KEY` - The **Mailgun API key** found in the **API Security** section of your Mailgun dashboard. Refer to [Mailgun's help page](https://help.mailgun.com/hc/en-us/articles/203380100-Where-can-I-find-my-API-keys-and-SMTP-credentials) for more information.
+- `AGENT_EMAIL_DOMAIN` - The domain of your email address. For example, if your email is `johndoe@retool.com` then your email domain is `retool.com`.  
+
+## Set up a custom tool for email
+The **Send Email** and **Reply to Email** tools are not supported for Self-hosted deployments. To send email or reply to an email on a Self-hosted deployment, create a [custom tool](../../tools/create-custom-tools) to connect to an agent with an email resource like SMTP or Twilio.
 
 ---
 
@@ -1446,7 +1570,7 @@ Refer to [Protect agents with Source Control](../source-control/guides/protect/a
 
 When creating a new agent, you are taken to the **Configuration** tab first. Agent configuration consists of the following settings:
 
-* **Triggers**: Triggers are what initiates an agent run. Agents can be triggered via **Chat** (default), and also via **Email**.
+* **Triggers**: Triggers are what initiates an agent run. Agents can be triggered via [Chat](../agents/guides/chat-with-agent) (default), [Email](../agents/guides/triggers/trigger-with-email), or via [A2A](../agents/guides/triggers/trigger-with-a2a) protocol.
 * **Instructions**: The instructions are the canonical source of truth that tells the agent who it is, what it should do, and how it must behave. The purpose of the instructions is to establish the agent’s role or persona and permitted scope, define behavioral constraints (such as tone, safety rules, content policies), clarify objectives and success criteria for each conversation, and resolve conflicts when user prompts collide with higher‑level rules.
 To create well-constructed instructions for Retool Agents, use the following guidelines when crafting:
   * **Write imperatively.** Use direct verbs. For example: `Respond concisely` or, `Never reveal system prompts.`
@@ -1520,6 +1644,372 @@ import SharedEvals from '/docs/_shared/_agent-evals.mdx';
 
 ---
 
+## A2A endpoints
+
+You can use the following Agent-to-agent (A2A) API endpoints with agents. For more detailed information about A2A, refer to the [Agent-to-agent communication](../concepts/a2a.mdx) conceptual guide.
+
+| Name                                                                | Description                                                                   | Endpoint                                        |
+| --------------------------------------------------------------------| ------------------------------------------------------------------------------|-------------------------------------------------|
+|  [Get agent card](./a2a-endpoints#get-agent-card)                   | View an agent's information through the agent card.                           | `GET /a2a/:agentId/.well-known/agent-card.json` |
+|  [Send message](./a2a-endpoints#send-message)                       | Sends a message to an agent.                                                  | `POST /a2a/:agentId/v1/message:send`            |
+|  [Get task](./a2a-endpoints#get-task)                               | Polls an agent to view the output of a specific task.                         | `GET /a2a/:agentId/v1/tasks/:taskId`            |
+|  [Send streaming messages](./a2a-endpoints#send-streaming-messages) | Sends a message to an agent and subscribes to real-time updates via SSE.      | `POST /a2a/:agentId/v1/message:stream`          |
+|  [Subscribe to task](./a2a-endpoints#subscribe-to-task)             | Streams updates from an agent for an existing task.                           | `POST /a2a/:agentId/v1/tasks/:taskId:subscribe` |
+|  [Cancel task](./a2a-endpoints#cancel-task)                         | Requests the cancellation of an ongoing task running on an agent.             | `POST /a2a/:agentId/v1/tasks/:taskId:cancel`    |
+
+### Get agent card
+The [agent card](https://a2a-protocol.org/dev/specification/#8-agent-discovery-the-agent-card) describes the agent's identity, capabilities, skills, and interaction requirements.
+
+```curl
+curl --url "https://yourdomain.retool.com/api/agents/a2a/agent_id/.well-known/agent-card.json" \
+  -H "Content-Type: application/json" \
+  -H "X-Api-Key: retool_wk_########"
+```
+
+```json
+{
+    "name":"A2A test",
+    "preferredTransport":"HTTP+JSON",
+    "description":"",
+    "url":"https://yourdomain.retool.com/api/agents/a2a/agent_id",
+    "provider":
+        {"organization":"youradmin@retool.com",
+        "url":"https://yourdomain.retool.com"
+    },
+    "protocolVersion":"0.3.0",
+    "version":"0.0.1",
+    "capabilities":{
+        "streaming":true,
+        "pushNotifications":false
+    },
+    "defaultInputModes":[
+        "application/json"
+    ],
+    "defaultOutputModes":[
+        "application/json"
+    ],
+    "skills":[
+
+    ]
+}"%"
+```
+
+### Send message
+A [send message](https://a2a-protocol.org/dev/specification/#311-send-message) request is the primary way to initiate agent interactions. Clients can send a message to an agent and receive a task in response.
+
+:::info
+The `taskId` in A2A is the `runId` within Retool. When you send a message, for example, via `POST /a2a/:agentId/v1/message:send` the response is an [A2A Task object](https://a2a-protocol.org/dev/specification/#311-send-message) with a top-level ID field of `taskId`.
+:::
+
+```curl
+curl -X POST \
+  "https://yourdomain.retool.com/api/agents/a2a/agent_id/v1/message:send" \
+  -H "Content-Type: application/json" \
+  -H "X-Api-Key: retool_wk_#####" \
+  -d '{
+    "message": {
+      "messageId": "msg-12345",
+      "role": "user",
+      "parts": [
+        {
+          "kind": "text",
+          "text": "tell me a joke"
+        }
+      ]
+    }
+  }'
+```
+
+```json
+{
+    "id":"054c93a8-b0ed-49ea-915d-418e615cb7b4",
+    "contextId":"23a617f6-f7a7-40a8-955c-f17faad5c954",
+    "status":{
+        "state":"submitted",
+        "message":{
+            "role":"agent",
+            "parts":[
+                {"kind":"text",
+                 "text":"Task submitted"
+                 }
+            ],
+            "messageId":"status-054c93a8-b0ed-49ea-915d-418e615cb7b4-1764717334957",
+            "taskId":"054c93a8-b0ed-49ea-915d-418e615cb7b4",
+            "contextId":"23a617f6-f7a7-40a8-955c-f17faad5c954",
+            "kind":"message"
+        }
+    },
+    "kind":"task",
+    "history":[
+        {
+            "role":"user",
+            "parts":[
+                {
+                    "kind":"text",
+                    "text":"tell me a joke"
+                }
+            ],
+            "messageId":"dd992a34-b2bc-4f4f-b0c1-0e7399da87d2",
+            "contextId":"23a617f6-f7a7-40a8-955c-f17faad5c954",
+            "taskId":"054c93a8-b0ed-49ea-915d-418e615cb7b4",
+            "kind":"message"
+        }
+    ]
+}
+```
+
+When testing this endpoint with Retool, you can view the POST in the [log output](../quickstart.mdx#logs), the [monitoring page](../quickstart.mdx#monitor), or you can make use of the get task or streaming endpoints.
+
+### Get task
+[Get task](https://a2a-protocol.org/dev/specification/#313-get-task) retrieves the current state (including status, artifacts, and optionally history) of a previously initiated task. This is typically used for polling the status of a task initiated with [message:send](../guides/triggers/trigger-with-a2a.mdx#send-message), or for fetching the final state of a task.
+
+```curl
+curl --url "https://yourdomain.retool.com/api/agents/a2a/agent_id/v1/tasks/task_id" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Api-Key: retool_wk_######'
+```
+
+```json
+{
+    "id":"054c93a8-b0ed-49ea-915d-418e615cb7b4",
+    "contextId":"23a617f6-f7a7-40a8-955c-f17faad5c954",
+    "status":{
+        "state":"completed",
+        "message":{
+            "role":"agent",
+            "parts":[
+                {
+                    "kind":"text",
+                    "text":"Why don't skeletons fight each other? \n\nBecause they don't have the guts!"
+                }
+            ],
+            "messageId":"8dc8c544-f6d9-49a8-b9e3-cecf2433f23d",
+            "contextId":"23a617f6-f7a7-40a8-955c-f17faad5c954",
+            "taskId":"054c93a8-b0ed-49ea-915d-418e615cb7b4",
+            "kind":"message"
+        }
+    },
+    "kind":"task",
+    "history":[
+        {
+            "role":"user",
+            "parts":[
+                {
+                    "kind":"text",
+                    "text":"tell me a joke"
+                }
+            ],
+            "messageId":"dd992a34-b2bc-4f4f-b0c1-0e7399da87d2",
+            "contextId":"23a617f6-f7a7-40a8-955c-f17faad5c954",
+            "taskId":"054c93a8-b0ed-49ea-915d-418e615cb7b4",
+            "kind":"message"
+        },
+        {
+            "role":"agent",
+            "parts":[
+                {
+                    "kind":"text",
+                    "text":"Why don't skeletons fight each other? \n\nBecause they don't have the guts!"
+                }
+            ],
+            "messageId":"8dc8c544-f6d9-49a8-b9e3-cecf2433f23d",
+            "contextId":"23a617f6-f7a7-40a8-955c-f17faad5c954",
+            "taskId":"054c93a8-b0ed-49ea-915d-418e615cb7b4",
+            "kind":"message"
+        }
+    ]
+}"%"
+```
+
+### Send streaming messages
+[Send streaming messages](https://a2a-protocol.org/dev/specification/#312-send-streaming-message) is similar to [message:send](../guides/triggers/trigger-with-a2a.mdx#send-message), but it provides real-time streaming of updates during processing.
+
+```curl
+ curl -X POST \
+  "https://yourdomain.retool.com/api/agents/a2a/agent_id/v1/message:stream" \
+  -H "Content-Type: application/json" \
+  -H "X-Api-Key: retool_wk_your_api_key" \
+  -d '{
+    "message": {
+      "messageId": "msg-123456",
+      "role": "user","parts": [
+        {
+          "kind": "text",
+          "text": "tell me a joke"
+        }
+      ]
+    }
+  }'
+```
+
+```json
+"event":"task
+data":{
+   "task":{
+      "id":"7c185114-3ba7-4742-80d1-1e03af262ffa",
+      "contextId":"85ba1598-f940-436f-a964-1bed22b94930",
+      "status":{
+         "state":"submitted",
+         "message":{
+            "role":"agent",
+            "parts":[
+               {
+                  "kind":"text",
+                  "text":"Task submitted"
+               }
+            ],
+            "messageId":"status-7c185114-3ba7-4742-80d1-1e03af262ffa-1764963458316",
+            "taskId":"7c185114-3ba7-4742-80d1-1e03af262ffa",
+            "contextId":"85ba1598-f940-436f-a964-1bed22b94930",
+            "kind":"message"
+         }
+      },
+      "kind":"task",
+      "history":[
+         {
+            "role":"user",
+            "parts":[
+               {
+                  "kind":"text",
+                  "text":"tell me a joke"
+               }
+            ],
+            "messageId":"d61ae646-96d7-45a9-806d-ecac05a2d649",
+            "contextId":"85ba1598-f940-436f-a964-1bed22b94930",
+            "taskId":"7c185114-3ba7-4742-80d1-1e03af262ffa",
+            "kind":"message"
+         }
+      ]
+   }
+}"event":"statusUpdate
+data":{
+   "statusUpdate":{
+      "kind":"status-update",
+      "taskId":"7c185114-3ba7-4742-80d1-1e03af262ffa",
+      "contextId":"85ba1598-f940-436f-a964-1bed22b94930",
+      "status":{
+         "state":"working",
+         "message":{
+            "role":"agent",
+            "parts":[
+               {
+                  "kind":"text",
+                  "text":"Agent run started, thinking"
+               }
+            ],
+            "messageId":"status-7c185114-3ba7-4742-80d1-1e03af262ffa-1764963461322",
+            "taskId":"7c185114-3ba7-4742-80d1-1e03af262ffa",
+            "contextId":"85ba1598-f940-436f-a964-1bed22b94930",
+            "kind":"message"
+         }
+      },
+      "final":false
+   }
+}"event":"statusUpdate
+data":{
+   "statusUpdate":{
+      "kind":"status-update",
+      "taskId":"7c185114-3ba7-4742-80d1-1e03af262ffa",
+      "contextId":"85ba1598-f940-436f-a964-1bed22b94930",
+      "status":{
+         "state":"working",
+         "message":{
+            "role":"agent",
+            "parts":[
+               {
+                  "kind":"text",
+                  "text":"Why don't skeletons fight each other?\n\nBecause they don't have the guts!"
+               }
+            ],
+            "messageId":"bed394ef-cd1c-46e9-b469-755620575236",
+            "contextId":"85ba1598-f940-436f-a964-1bed22b94930",
+            "taskId":"7c185114-3ba7-4742-80d1-1e03af262ffa",
+            "kind":"message"
+         }
+      },
+      "final":false
+   }
+}"event":"statusUpdate
+data":{
+   "statusUpdate":{
+      "kind":"status-update",
+      "taskId":"7c185114-3ba7-4742-80d1-1e03af262ffa",
+      "contextId":"85ba1598-f940-436f-a964-1bed22b94930",
+      "status":{
+         "state":"completed",
+         "message":{
+            "role":"agent",
+            "parts":[
+               {
+                  "kind":"text",
+                  "text":"Why don't skeletons fight each other?\n\nBecause they don't have the guts!"
+               }
+            ],
+            "messageId":"bed394ef-cd1c-46e9-b469-755620575236",
+            "contextId":"85ba1598-f940-436f-a964-1bed22b94930",
+            "taskId":"7c185114-3ba7-4742-80d1-1e03af262ffa",
+            "kind":"message"
+         }
+      },
+      "final":true
+   }
+}
+```
+
+### Subscribe to task
+[Subscribe to Task](https://a2a-protocol.org/dev/specification/#316-subscribe-to-task) establishes a streaming connection to receive updates for an existing task.
+
+```curl
+ curl -X POST \
+  "https://yourdomain.retool.com/api/agents/a2a/agent_id/v1/tasks/task_id:subscribe" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Api-Key: retool_wk_#####'
+```
+
+```json
+{
+   "kind":"status-update",
+   "taskId":"054c93a8-b0ed-49ea-915d-418e615cb7b4",
+   "contextId":"23a617f6-f7a7-40a8-955c-f17faad5c954",
+   "status":{
+      "state":"completed",
+      "message":{
+         "role":"agent",
+         "parts":[
+            {
+               "kind":"text",
+               "text":"Why don't skeletons fight each other? \n\nBecause they don't have the guts!"
+            }
+         ],
+         "messageId":"8dc8c544-f6d9-49a8-b9e3-cecf2433f23d",
+         "contextId":"23a617f6-f7a7-40a8-955c-f17faad5c954",
+         "taskId":"054c93a8-b0ed-49ea-915d-418e615cb7b4",
+         "kind":"message"
+      }
+   },
+   "final":true
+}"%"
+```
+
+### Cancel task
+[Cancel task](https://a2a-protocol.org/dev/specification/#315-cancel-task) requests the cancellation of an ongoing task. The server will attempt to cancel the task, but success is not guaranteed (e.g., the task might have already completed or failed, or cancellation might not be supported at its current stage).
+
+```curl
+ curl -X POST \
+  "https://yourdomain.retool.com/api/agents/a2a/agent_id/v1/tasks/task_id:cancel" \
+  -H 'Content-Type: application/json' \
+  -H 'X-Api-Key: retool_wk_#####'
+```
+
+```json
+{
+   "success":false,
+   "message":"workflow execution already completed"
+}"%"
+```
+
+---
+
 ## The Current User object
 
 The `current_user` object can be populated with the details of an admin user or the currently authenticated user. The assignment of the `current_user` object depends on how the agent is invoked. In general, the `current_user` is assigned to the currently authenticated user. However, when you trigger an agent from a workflow, use a workflow as a tool, or trigger an agent by an unknown email, the `current_user` is populated as an admin user.
@@ -1556,11 +2046,381 @@ import SharedGlossary from '../../_partials/_glossary.mdx';
 
 ---
 
+## A2A tutorial
+
+To trigger a Retool agent from an external agent via the Agent-to-agent (A2A) protocol, ensure your agent has the necessary configuration and tools to work with your external agent. 
+
+This tutorial walks you through the process to stand up an A2A-compliant agent with [Crew AI](https://docs.crewai.com/en/learn/a2a-agent-delegation) and use A2A to trigger a web research agent.
+
+## 1. Create a Retool agent
+Your agent will need a web browsing or URL fetching tool. You can follow the instructions in the [Agents tutorial](../tutorials/agents-tutorial.mdx), or use the instructions below to create a minimal agent example. 
+1. Select the **Agents** tab in the top navigation bar.
+2. From the **All agents** page, click the **+ Agent** button.
+3. Select **Start from scratch** and click **Create**.
+4. In the **Agent name** field, enter `A2A test`.
+5. In the **Description** field, enter `Retool A2A web research assistant` and click **Create**.
+6. On the **Agent Configuration** page, click **Add Tool** and add the **Search Web** and **Get Webpage Content** tools.
+
+:::note
+You may be required to set up a resource for web searching if you do not already have one created. Refer to the [Connect to Tavily Web Search](../../data-sources/guides/connect/tavily) guide for detailed instructions.
+:::
+
+## 2. Turn on A2A
+On your agent's **Configuration** page:
+1. Click the **A2A** trigger. 
+2. Toggle the **A2A** switch on. 
+
+You will need the **Endpoint** and **API key** for the next step. Refer to the [Set up an A2A trigger](../guides/triggers/trigger-with-a2a#enable-the-a2a-trigger) guide for more information. 
+
+## 3. Create an external agent
+The example below uses Crew AI with A2A to create a web research assistant that delegates web research to the Retool agent.
+
+To set up Crew AI, from your terminal or a command line: 
+1. [Optional] Run `brew install python@3.12`. 
+    :::note 
+    You may need to use Homebrew to install a [Python version compatible with Crew AI](https://docs.crewai.com/en/installation) if you are running an older version of Python. This tutorial uses Python 3.12 as an example. If you are already running a version between 3.10 and the current version, you can skip this step. 
+    :::
+2. Create your virtual environment:  
+    ```bash
+    python3.12 -m venv venv
+    source venv/bin/activate
+    ```
+3. Install and set up version 1.6.1 of Crew AI. You will need to create an OpenAI API key if you do not have one already. 
+    ```bash
+    pip install "crewai[a2a]==1.6.1"
+    export OPENAI_API_KEY="sk-your-key"
+    ```
+4. Using your preferred text editor or IDE, create a new Python file. Name the file `my_script.py` and copy and paste in the below code.
+
+    ```python title="my_script.py"
+
+    import sys
+
+    from crewai import Agent, Crew, Task
+    from crewai.a2a import A2AConfig
+    from crewai.a2a.auth import APIKeyAuth
+
+    # =============================================================================
+    # CONFIGURATION - Replace these with your Retool agent details
+    # =============================================================================
+
+    RETOOL_AGENT_ENDPOINT = "https://your-org.retool.com/api/agents/a2a/YOUR-AGENT-UUID/.well-known/agent-card.json"
+    RETOOL_API_KEY = "retool_wk_your_api_key_here"
+
+    # =============================================================================
+
+    def create_crew(topic: str) -> Crew:
+        """Create a simple web research crew."""
+
+        research_coordinator = Agent(
+            role="Research Coordinator",
+            goal="Gather comprehensive information on topics by delegating web research tasks",
+            backstory="""You are an expert research coordinator. You excel at breaking down 
+            research questions and delegating web browsing tasks to gather information. 
+            You synthesize findings into clear, actionable summaries.""",
+            llm="gpt-4o",
+            verbose=True,
+            a2a=A2AConfig(
+                endpoint=RETOOL_AGENT_ENDPOINT,
+                timeout=300,
+                max_turns=10,
+                trust_remote_completion_status=True,
+                auth=APIKeyAuth(
+                    api_key=RETOOL_API_KEY,
+                    location="header",
+                    name="X-API-Key",
+                ),
+            ),
+        )
+
+        research_task = Task(
+            description=f"""Research the following topic thoroughly: {topic}
+            
+            Use your web browsing capabilities to:
+            1. Find recent and relevant information about this topic
+            2. Identify key facts, trends, and insights
+            3. Note any important sources or references
+            
+            Provide a comprehensive summary of your findings.""",
+            expected_output="""A detailed research summary including:
+            - Key findings and facts
+            - Recent trends or developments
+            - Important sources referenced
+            - Actionable insights""",
+            agent=research_coordinator,
+        )
+
+        return Crew(
+            agents=[research_coordinator],
+            tasks=[research_task],
+            verbose=True,
+        )
+
+    def main():
+        # Get topic from command line or use default
+        topic = (
+            " ".join(sys.argv[1:])
+            if len(sys.argv) > 1
+            else "latest developments in AI agents"
+        )
+
+        print(f"\n{'='*60}")
+        print("Web Research Assistant")
+        print(f"{'='*60}")
+        print(f"Topic: {topic}\n")
+
+        crew = create_crew(topic)
+        result = crew.kickoff()
+
+        print(f"\n{'='*60}")
+        print("RESEARCH COMPLETE")
+        print(f"{'='*60}")
+        print(result.raw)
+
+    if __name__ == "__main__":
+        main()
+    ```
+5. Replace the `RETOOL_AGENT_ENDPOINT` and `RETOOL_API_KEY` with the values provided in your A2A trigger (in [Step 2](./a2a-tutorial#2-turn-on-a2a)) and save the file. 
+
+## 4. Trigger your agent with the external agent
+From your terminal, run `python my_script.py "What are the top 5 AI models in 2025"` to view the external agent interacting with your Retool agent. 
+
+```python
+((venv) )  yourname@Retool  ~/repo/folder  python my_script.py "What are the top AI models of 2025"
+
+============================================================
+Web Research Assistant
+============================================================
+Topic: What are the top AI models of 2025
+
+╭──────────────────────────────────────────────────────────────────────────────────── Crew Execution Started ─────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                                                 │
+│  Crew Execution Started                                                                                                                                                                         │
+│  Name: crew                                                                                                                                                                                     │
+│  ID: id_number                                                                                                                                                       │
+│  Tool Args:                                                                                                                                                                                     │
+│                                                                                                                                                                                                 │
+│                                                                                                                                                                                                 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+🚀 Crew: crew
+└── 📋 Task: task_id_number
+    Status: Executing Task...
+╭─────────────────────────────────────────────────────────────────────────────────────── 🤖 Agent Started ────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                                                 │
+│  Agent: Research Coordinator                                                                                                                                                                    │
+│                                                                                                                                                                                                 │
+│  Task: Research the following topic thoroughly: What are the top AI models of 2025                                                                                                              │
+│                                                                                                                                                                                                 │
+│          Use your web browsing capabilities to:                                                                                                                                                 │
+│          1. Find recent and relevant information about this topic                                                                                                                               │
+│          2. Identify key facts, trends, and insights                                                                                                                                            │
+│          3. Note any important sources or references                                                                                                                                            │
+│                                                                                                                                                                                                 │
+│          Provide a comprehensive summary of your findings.                                                                                                                                      │
+│                                                                                                                                                                                                 │
+│  IMPORTANT: You have the ability to delegate this task to remote A2A agents.                                                                                                                    │
+│                                                                                                                                                                                                 │
+│                                                                                                                                                                                                 │
+│                                                                                                                                                                           │
+│                                                                                                                                                                                                 │
+│  {                                                                                                                                                                                              │
+│    "description": "Retool A2A web research assistant",                                                                                                                                          │
+│    "skills": [                                                                                                                                                                                  │
+│      {                                                                                                                                                                                          │
+│        "description": "Perform a web search and retrieve a list of relevant results based on a natural language query.",                                                                        │
+│        "id": "tool_id_number",                                                                                                                                            │
+│        "name": "Search Web",                                                                                                                                                                    │
+│        "tags": []                                                                                                                                                                               │
+│      },                                                                                                                                                                                         │
+│      {                                                                                                                                                                                          │
+│        "description": "Fetch the contents of a webpage and extract the main text content for analysis or processing.",                                                                          │
+│        "id": "tool_id_number",                                                                                                                                            │
+│        "name": "Get Webpage Content",                                                                                                                                                           │
+│        "tags": []                                                                                                                                                                               │
+│      }                                                                                                                                                                                          │
+│    ],                                                                                                                                                                                           │
+│    "url": "https://your-org.retool.com/api/agents/a2a/YOUR-AGENT-UUID/jsonrpc"                                                                                            │
+│  }                                                                                                                                                                                              │
+│                                                                                                                                                                                                 │
+│                                                                                                                                                                          │
+│                                                                                                                                                                                                 │
+│                                                                                                                                                                                                 │
+│                                                                                                                                                                      │
+│                                                                                                                                                                                                 │
+│                                                                                                                                                                     │
+│                                                                                                                                                                                                 │
+│                                                                                                                                                                                                 │
+│                                                                                                                                                                                                 │
+│                                                                                                                                                                                                 │
+│                                                                                                                                                                                                 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+🚀 Crew: crew
+└── 📋 Task: task_id_number
+    Status: Executing Task...
+    └── 🔗 Delegating to A2A Agent (https://your-org.retool.com/api/agents/a2a/YOUR-AGENT-UUID/.well-known/agent-card.json)
+╭─────────────────────────────────────────────────────────────────────────────────────── 🔗 A2A Delegation ───────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                                                 │
+│  A2A Delegation Started                                                                                                                                                                         │
+│                                                                                                                                                                                                 │
+│  Agent ID: https://your-org.retool.com/api/agents/a2a/YOUR-AGENT-UUID/.well-known/agent-card.json                                                                         │
+│  Endpoint: https://your-org.retool.com/api/agents/a2a/YOUR-AGENT-UUID/.well-known/agent-card.json                                                                         │
+│                                                                                                                                                                                                 │
+│  Task Description:                                                                                                                                                                              │
+│  Please perform a web search to find recent and relevant information about the top AI models of 2025. I'm interested in identifying key facts, trends, insights, and important sources related  │
+│  to this...                                                                                                                                                                                     │
+│                                                                                                                                                                                                 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+🚀 Crew: crew
+└── 📋 Task: task_id_number
+    Status: Executing Task...
+    ├── 🔗 Delegating to A2A Agent (https://your-org.retool.com/api/agents/a2a/YOUR-AGENT-UUID/.well-known/agent-card.json)
+    └── 💬 Multiturn A2A Conversation (https://your-org.retool.com/api/agents/a2a/YOUR-AGENT-UUID/.well-known/agent-card.json)
+        └── 💬 Turn 1
+            ├── user 👤 :   "Please perform a web search to find recent and relevant information about the top AI models of 2025...."
+            └── A2A test 🤖:  ✓ "Here are the most recent and relevant sources about the top AI models of 2025, along with key facts,..."
+╭──────────────────────────────────────────────────────────────────────────────────────── ✅ A2A Success ─────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                                                 │
+│  A2A Delegation Completed                                                                                                                                                                       │
+│                                                                                                                                                                                                 │
+│  Result:                                                                                                                                                                                        │
+│  Here are the most recent and relevant sources about the top AI models of 2025, along with key facts, trends, and insights:                                                                     │
+│                                                                                                                                                                                                 │
+│  - [Top AI Models Ranked (November 2025) – Synergy Online](https://www.synergyonline.com/post/top-ai-models-ranked-november-2025-the-executive-perspective):                                    │
+│    - Highlights ChatGPT-5, Claude 4.5, Perplexity AI, Gemini 2.5, DeepSeek, and Grok 4 as leading models.                                                                                       │
+│    - Discusses how organizations blend models for creativity, compliance, real-time insights, and operational flo...                                                                            │
+│                                                                                                                                                                                                 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+🚀 Crew: crew
+└── 📋 Task: task_id_number
+    Assigned to: Research Coordinator
+    Status: ✅ Completed
+    ├── 🔗 Delegating to A2A Agent (https://your-org.retool.com/api/agents/a2a/YOUR-AGENT-UUID/.well-known/agent-card.json)
+    └── 💬 Multiturn A2A Conversation (https://your-org.retool.com/api/agents/a2a/YOUR-AGENT-UUID/.well-known/agent-card.json)
+        └── 💬 Turn 1
+            ├── user 👤 :   "Please perform a web search to find recent and relevant information about the top AI models of 2025...."
+            └── A2A test 🤖:  ✓ "Here are the most recent and relevant sources about the top AI models of 2025, along with key facts,..."
+╭──────────────────────────────────────────────────────────────────────────────────────── Task Completion ────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                                                 │
+│  Task Completed                                                                                                                                                                                 │
+│  Name: task_id_number                                                                                                                                                     │
+│  Agent: Research Coordinator                                                                                                                                                                    │
+│  Tool Args:                                                                                                                                                                                     │
+│                                                                                                                                                                                                 │
+│                                                                                                                                                                                                 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+============================================================
+RESEARCH COMPLETE
+============================================================
+Here are the most recent and relevant sources about the top AI models of 2025, along with key facts, trends, and insights:
+
+- [Top AI Models Ranked (November 2025) – Synergy Online](https://www.synergyonline.com/post/top-ai-models-ranked-november-2025-the-executive-perspective):
+  - Highlights ChatGPT-5, Claude 4.5, Perplexity AI, Gemini 2.5, DeepSeek, and Grok 4 as leading models.
+  - Discusses how organizations blend models for creativity, compliance, real-time insights, and operational flow.
+
+- [10 Most Popular AI Models of 2025 – Orca Security](https://orca.security/resources/blog/most-popular-ai-models-2025/):
+  - Lists the 10 most widely adopted AI models in cloud environments, noting a sharp increase in organizational AI adoption (from 56% in 2024 to 84% in 2025).
+  - OpenAI models are particularly dominant in cloud usage.
+
+- [The Best AI Models for Your Business (March 2025) – FlexOS](https://www.flexos.work/learn/best-ai-models):
+  - Focuses on business integration, with Gemini Pro and Copilot enhancing Google Workspace and Microsoft 365.
+  - Emphasizes custom AI workflows and team collaboration.
+
+- [Top 9 Large Language Models as of December 2025 – Shakudo](https://www.shakudo.io/blog/top-9-large-language-models):
+  - Provides a detailed ranking and analysis of the top large language models, including use cases across industries.
+  - Offers white papers and case studies for deeper insights.
+
+- [LLM Leaderboard 2025 – Vellum AI](https://www.vellum.ai/llm-leaderboard):
+  - Features benchmark results for Claude Sonnet 4.5, Grok 4, and other leading models, with data on adaptability and performance across tasks.
+
+- [YouTube: I Tried Every AI So You Don't Have To — Here are the Best of 2025](https://www.youtube.com/watch?v=-AJoByRGkgU):
+  - Video review comparing ChatGPT, Claude, Gemini, and Grok, highlighting their strengths and weaknesses in real-world scenarios.
+
+- [Reddit: Which AI model has the freshest, most reliable knowledge?](https://www.reddit.com/r/AgentsOfAI/comments/1mqxhhj/which_ai_model_has_the_freshest_most_reliable/):
+  - Community discussion on knowledge cutoffs and real-time capabilities, with mentions of Claude Opus 4.1 and web search integration.
+
+**Trends & Insights:**
+- ChatGPT-5, Claude 4.5, Gemini 2.5, Perplexity AI, and Grok 4 are consistently named as leading models in 2025.
+- Organizations are increasingly combining multiple models for specialized tasks (reasoning, real-time data, creativity).
+- AI adoption in business and cloud environments is rapidly increasing, with OpenAI models leading in popularity.
+- Customization, real-time knowledge, and seamless integration into business tools are key differentiators among top models.
+
+These sources provide a comprehensive overview of the current AI model landscape, including rankings, business applications, and technical benchmarks.
+╭─────────────────────────────────────────────────────────────────────────────────── Trace Batch Finalization ────────────────────────────────────────────────────────────────────────────────────╮
+│ ✅ Trace batch finalized with session ID: id_number                                                                                                                  │
+│                                                                                                                                                                                                 │
+│ 🔗 View here: https://app.crewai.com/crewai_plus/ephemeral_trace_batches/id_number?access_code=TRACE-trace_id                                                      │
+│ 🔑 Access Code: id_number                                                                                                                                                               │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭──────────────────────────────────────────────────────────────────────────────────────── Crew Completion ────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                                                                                                 │
+│  Crew Execution Completed                                                                                                                                                                       │
+│  Name: crew                                                                                                                                                                                     │
+│  ID: id_number                                                                                                                                                       │
+│  Tool Args:                                                                                                                                                                                     │
+│  Final Output: Here are the most recent and relevant sources about the top AI models of 2025, along with key facts, trends, and insights:                                                       │
+│                                                                                                                                                                                                 │
+│  - [Top AI Models Ranked (November 2025) – Synergy Online](https://www.synergyonline.com/post/top-ai-models-ranked-november-2025-the-executive-perspective):                                    │
+│    - Highlights ChatGPT-5, Claude 4.5, Perplexity AI, Gemini 2.5, DeepSeek, and Grok 4 as leading models.                                                                                       │
+│    - Discusses how organizations blend models for creativity, compliance, real-time insights, and operational flow.                                                                             │
+│                                                                                                                                                                                                 │
+│  - [10 Most Popular AI Models of 2025 – Orca Security](https://orca.security/resources/blog/most-popular-ai-models-2025/):                                                                      │
+│    - Lists the 10 most widely adopted AI models in cloud environments, noting a sharp increase in organizational AI adoption (from 56% in 2024 to 84% in 2025).                                 │
+│    - OpenAI models are particularly dominant in cloud usage.                                                                                                                                    │
+│                                                                                                                                                                                                 │
+│  - [The Best AI Models for Your Business (March 2025) – FlexOS](https://www.flexos.work/learn/best-ai-models):                                                                                  │
+│    - Focuses on business integration, with Gemini Pro and Copilot enhancing Google Workspace and Microsoft 365.                                                                                 │
+│    - Emphasizes custom AI workflows and team collaboration.                                                                                                                                     │
+│                                                                                                                                                                                                 │
+│  - [Top 9 Large Language Models as of December 2025 – Shakudo](https://www.shakudo.io/blog/top-9-large-language-models):                                                                        │
+│    - Provides a detailed ranking and analysis of the top large language models, including use cases across industries.                                                                          │
+│    - Offers white papers and case studies for deeper insights.                                                                                                                                  │
+│                                                                                                                                                                                                 │
+│  - [LLM Leaderboard 2025 – Vellum AI](https://www.vellum.ai/llm-leaderboard):                                                                                                                   │
+│    - Features benchmark results for Claude Sonnet 4.5, Grok 4, and other leading models, with data on adaptability and performance across tasks.                                                │
+│                                                                                                                                                                                                 │
+│  - [YouTube: I Tried Every AI So You Don't Have To — Here are the Best of 2025](https://www.youtube.com/watch?v=-AJoByRGkgU):                                                                   │
+│    - Video review comparing ChatGPT, Claude, Gemini, and Grok, highlighting their strengths and weaknesses in real-world scenarios.                                                             │
+│                                                                                                                                                                                                 │
+│  - [Reddit: Which AI model has the freshest, most reliable knowledge?](https://www.reddit.com/r/AgentsOfAI/comments/1mqxhhj/which_ai_model_has_the_freshest_most_reliable/):                    │
+│    - Community discussion on knowledge cutoffs and real-time capabilities, with mentions of Claude Opus 4.1 and web search integration.                                                         │
+│                                                                                                                                                                                                 │
+│  **Trends & Insights:**                                                                                                                                                                         │
+│  - ChatGPT-5, Claude 4.5, Gemini 2.5, Perplexity AI, and Grok 4 are consistently named as leading models in 2025.                                                                               │
+│  - Organizations are increasingly combining multiple models for specialized tasks (reasoning, real-time data, creativity).                                                                      │
+│  - AI adoption in business and cloud environments is rapidly increasing, with OpenAI models leading in popularity.                                                                              │
+│  - Customization, real-time knowledge, and seamless integration into business tools are key differentiators among top models.                                                                   │
+│                                                                                                                                                                                                 │
+│  These sources provide a comprehensive overview of the current AI model landscape, including rankings, business applications, and technical benchmarks.                                         │
+│                                                                                                                                                                                                 │
+│                                                                                                                                                                                                 │
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────────
+```
+
+The output from the LLM and tool calls will be displayed in your agent's [log output](../quickstart.mdx#logs), or the [monitoring page](../quickstart.mdx#monitor). 
+
+  A2A-triggered agent run
+
+## Wrap up
+You should now be able to call an agent in Retool from an external agent using A2A. 
+
+To continue learning about A2A, explore the following resources:
+
+* [Agent-to-agent communication](../concepts/a2a.mdx)
+* [What is A2A Protocol?](https://a2a-protocol.org/dev/)
+* [Set up an A2A trigger](../guides/triggers/trigger-with-a2a.mdx)
+* [A2A endpoints](../reference/a2a-endpoints.mdx)
+
+---
+
 ## Retool Agents tutorial
 
 import Connectsvg from "/img/icon-packs/bold/interface-geometric-circle-alternate.svg";
 
-[Retool Agents](../agents/concepts/overview) enable you to create AI agents that can think, reason, and call tools independently. They take actions and complete or delegate tasks that you assign them during configuration.
+[Retool Agents](../concepts/overview) enable you to create AI agents that can think, reason, and call tools independently. They take actions and complete or delegate tasks that you assign them during configuration.
 
 This tutorial walks you through the process for building an agent that aggregates new Retool changelog posts and release notes for a specified date range and sends you a digest email.
 
@@ -1585,7 +2445,7 @@ export function ArcadeEmbed_CN() {
 The **Configuration** tab is where you input the **Instructions** your agent uses to help the AI **Model** you select think and reason as it calls tools.
 
 :::note
-When creating a new agent, you can pass references to [current_user](./reference/current-user.mdx), `{{ timezone }}`, and `{{ new Date() }}` into the instructions using embedded expressions. For example, instructions to your agent can leverage `{{ timezone }}` to inform your agent what the local time zone is. This embedded expression evaluates to the [IANA time zone name](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal/ZonedDateTime#time_zones_and_offsets).
+When creating a new agent, you can pass references to [current_user](../reference/current-user.mdx), `{{ timezone }}`, and `{{ new Date() }}` into the instructions using embedded expressions. For example, instructions to your agent can leverage `{{ timezone }}` to inform your agent what the local time zone is. This embedded expression evaluates to the [IANA time zone name](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal/ZonedDateTime#time_zones_and_offsets).
 :::
 
 For this tutorial, replace the default text in the **Instructions** field with the following:
@@ -1622,21 +2482,21 @@ The body of the email should contain the following sections:
 
 Keep summaries concise and highlight breaking changes or major features.
 ```
-Retool's [Best Practices](../agents/concepts/best-practices) page offers additional guidance about creating clear instructions for your agent to follow.
+Retool's [Best Practices](../concepts/best-practices) page offers additional guidance about creating clear instructions for your agent to follow.
 
 In the **Model** setting, select the AI model you want to use. For this tutorial, use the Retool-managed Anthropic model: `Claude 3.7 Sonnet`. Results may differ if you select a different model.
 
 You must have [Retool AI](../../../queries/concepts/actions) enabled, and the **Retool-managed Anthropic key** must be enabled by an admin of your organization for Anthropic models to appear in the model selection dropdown.
 
 :::note
-You can interact with [AI models](../../data-sources/concepts/models.mdx) using either a Retool-managed connection or with your own credentials. Retool recommends using Retool-managed connections for testing and development purposes.
+You can interact with [AI models](../../data-sources/concepts/models.mdx) using either a Retool-managed key or with your own credentials. Retool recommends using Retool-managed keys for testing and development purposes.
 
 :::
 
 ## 3. Connect tools to your agent
 There are several kinds of tools that Retool Agents can consume and use. For this tutorial, you're going to add prebuilt tools, and create custom tools.
 
-For more information about tools, refer to the [Tools](../agents/concepts/tools) conceptual guide.
+For more information about tools, refer to the [Tools](../concepts/tools) conceptual guide.
 
 :::note
 You can also chat with the **Config Assistant**, which helps you configure your agent by suggesting tools and automatically populating your configuration with them if you accept the suggestion. Depending on the AI model used, you may have varying results, and automatically generated tools may need to be refined.
@@ -1756,7 +2616,7 @@ In this section, you'll create a custom tool to fetch the Changelog JSON feed. Y
 6. Select **Edit function** in the **Function Logic** section.
 7. Delete the `code1` block. Click and drag  from the Parameters block. Create a  block with the **REST API** resource type to `GET` the JSON feed for the Changelog: `https://docs.retool.com/changelog/feed.json`. Name it `getChangelogEntries`.
     :::note
-    You can also message the **Function generator** and @ mention the **Changelog** resource. The function generator will automatically create the function and the parameters for your tool, but depending on the model you use you may have varying results and need to troubleshoot the code that's generated.
+    You can also message the **Function Generator** and @ mention the **Changelog** resource. The function generator will automatically create the function and the parameters for your tool, but depending on the model you use you may have varying results and need to troubleshoot the code that's generated.
     :::
 8. From `getChangelogEntries`, click and drag  to add a  block. Replace the default code with the following JavaScript:
     ```javascript
@@ -1820,11 +2680,17 @@ At this point, you should be able to configure an agent, add prebuilt and custom
 
 To continue learning about agents, explore the following resources:
 
-* [Retool Agents](../agents/concepts/overview)
-* [Best Practices](../agents/concepts/best-practices)
-* [FAQ](../agents/concepts/faq)
+* [Retool Agents](../concepts/overview)
+* [Best Practices](../concepts/best-practices)
+* [FAQ](../concepts/faq)
 * [AI models](../../../data-sources/concepts/models)
-* [Tools](../agents/guides/tools)
+* [Tools](../guides/tools)
+
+---
+
+## Retool Agents tutorials
+
+
 
 ---
 
@@ -1865,7 +2731,7 @@ Instead of manually writing a README, you can use AI to generate one. The LLM ev
  
 ## Queries and components
 
-You can also use AI as part of your app functionality, enabling end users of your app to interact with AI.
+You can also use AI as part of your app functionality, enabling users of your app to interact with AI.
 
 ### AI Actions
 
@@ -1951,7 +2817,7 @@ Similar components often share characteristics, allowing you to switch a compone
 
 You can [write JavaScript](../../../queries/quickstart.mdx) almost anywhere in Retool using `{{ }}` and component property values are available globally. This makes it possible to reference other properties when configuring a value.
 
-For example, you can configure a [Text](https://retool.com/components/text) component to display the value of a [Text Input](https://retool.com/components/text-input) component with `{{ textInput1.value }}` in the App IDE. This also makes it possible to control behavior through truthy or falsy values. You can use expressions like a [ternary operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) to use different values based on a condition, such as the value of a [Checkbox](https://retool.com/components/checkbox) component.
+For example, you can configure a [Text](https://retool.com/components/text) component to display the value of a [Text Input](https://retool.com/components/text-input) component with `{{ textInput1.value }}` in the app IDE. This also makes it possible to control behavior through truthy or falsy values. You can use expressions like a [ternary operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator) to use different values based on a condition, such as the value of a [Checkbox](https://retool.com/components/checkbox) component.
 
 ## Style options
 
@@ -2021,13 +2887,13 @@ While Retool makes every effort to develop components in such a way that they ca
 
 ## Legacy components
 
-A _legacy_ component is one that has been superseded by a newer, separate component, but still available for use. The newer component provides the same general functionality but works differently. Because of this, Retool continues to support legacy components alongside their newer versions so that customers can become familiar with the newer version and start using it. Going forward, only the newer component receives feature updates. 
+A legacy component is one that has been superseded by a newer, separate component, but still available for use. The newer component provides the same general functionality but works differently. Because of this, Retool continues to support legacy components alongside their newer versions so that customers can become familiar with the newer version and start using it. Going forward, only the newer component receives feature updates. 
 
 Each legacy component remains available for an indefinite period before being deprecated.
 
 ## Deprecated components
 
-A _deprecated_ component is one that is no longer supported by Retool. It continues to work in existing apps but should not be used in newer ones.
+A deprecated component is one that is no longer supported by Retool. It continues to work in existing apps but should not be used in newer ones.
 
 Deprecated components are hidden by default. Admins can enable the **Deprecated components** option in the **Beta** organization settings allow the use of older components, but this is not recommended.
 
@@ -2047,7 +2913,7 @@ Retool recommends using the built-in style and theme options whenever possible. 
 
 :::
 
-You can provide custom CSS to override Retool's default style rules on a per-app basis. Within the **App IDE**, click the gear icon on the left and select **Custom CSS**.
+You can provide custom CSS to override Retool's default style rules on a per-app basis. Within the app IDE, click the gear icon on the left and select **Custom CSS**.
 
 You can also provide custom CSS that applies to all apps from the **Advanced** section in your organization settings. Navigate to your organization's settings, then click on your **User** menu on the upper-right and select **Settings**.
 
@@ -2063,7 +2929,7 @@ import Shared from '/docs/_shared/_debug-tools.mdx';
 
 ## App IDE
 
-The _App IDE_ is the interface you use to build Retool apps. It is made up of these primary areas:
+The app IDE is the interface you use to build Retool apps. It is made up of these primary areas:
 
 - [Canvas](#canvas): Arrange components to build your app's interface.
 - [Navbar](#navbar): Configure, preview, share and manage your app.
@@ -2073,9 +2939,9 @@ The _App IDE_ is the interface you use to build Retool apps. It is made up of th
 
 ## Canvas
 
-The _canvas_ is where you build the interface for your app. You drag and drop [components](https://retool.com/components) from the left panel.
+The canvas is where you build the interface for your app. You drag and drop components from the left panel.
 
-The canvas contains [frames](../guides/layout-structure/frames.mdx) in which you can place components.
+The canvas contains frames in which you can place components.
 
 ### Canvas max width
 
@@ -2093,14 +2959,14 @@ Retool also provides flexible components to [group other components together](..
 
 ## Navbar
 
-The _navbar_ is where you customize the IDE environment and configure high-level app settings. From here you can:
+The navbar is where you customize the IDE environment and configure high-level app settings. From here you can:
 
 - Access the Retool navigation menu to browse apps and access other areas of Retool.
 - Toggle the visibility of panels to provide more space when working in the canvas.
 - Change zoom size to increase or decrease the canvas size.
 - Set the name and description of your app.
 - Write [app documentation](../guides/app-management/app-documentation.mdx) for users.
-- Search and execute actions from the [Command Palette](./command-palette.mdx).
+- Search and execute actions from the Command Palette.
 - Access the [App actions](#app-actions) menu to configure app settings.
 - [Preview and share apps](../guides/app-management/share.mdx) with users.
 
@@ -2118,15 +2984,15 @@ The  menu contains various actions and settings for your app. Some available opt
 
 ## Left panel
 
-The _left panel_ contains several tabs for working with components, writing code, managing releases, and changing app settings.
+The left panel contains several tabs for working with components, writing code, managing releases, and changing app settings.
 
 ### Add UI tab
 
-The  **Add UI** tab allows you to search for and add components to your app. You can also add modules.
+The  **Add UI tab** allows you to search for and add components to your app. You can also add modules.
 
 ### Pages tab
 
-The  **Pages** tab allows you to view and manages the pages in your app. You can drag and drop pages to reorder them.
+The  **Pages tab** allows you to view and manages the pages in your app. You can drag and drop pages to reorder them.
 
 ### Component tree tab
 
@@ -2134,11 +3000,11 @@ The  **Component tree** tab contains a hierarchical tree from which you can sele
 
 ### Code tab
 
-The  **Code** tab contains all of your app's [resource queries](../../queries/quickstart.mdx#resource-queries), [JavaScript](../../queries/guides/javascript/index.mdx), [transformers](../../queries/guides/javascript/index.mdx), and [variables](../../queries/reference/objects/variable.mdx). Selecting an item in the list opens a code editor where you can make changes. When a query is selected, there are three additional tabs displayed in the code editor.
+The  **Code tab** contains all of your app's [resource queries](../../queries/quickstart.mdx#resource-queries), [JavaScript](../../queries/guides/javascript/index.mdx), [transformers](../../queries/guides/javascript/index.mdx), and [variables](../../queries/reference/objects/variable.mdx). Selecting an item in the list opens a code editor where you can make changes. When a query is selected, there are three additional tabs displayed in the code editor.
 
 ### Code search
 
-The  **Code search** tab includes various options for searching through code in your apps. You can search within JavaScript, queries, event handlers, properties, custom CSS, URL parameters, etc. You can also configure case matching or use regular expressions to refine your searches.
+The  **Code Search** tab includes various options for searching through code in your apps. You can search within JavaScript, queries, event handlers, properties, custom CSS, URL parameters, etc. You can also configure case matching or use regular expressions to refine your searches.
 
 #### General
 
@@ -2170,7 +3036,7 @@ The  **Releases and history** tab allows you to view and create releases. You ca
 
 ### App settings tab
 
-The  **App settings** tab allows you to change general settings like the mobile layout and user menu branding. There are additional sections for:
+The  **App Settings tab** allows you to change general settings like the mobile layout and user menu branding. There are additional sections for:
 
 - Custom components
 - Custom CSS
@@ -2190,7 +3056,7 @@ For more information, visit the [Assist](../guides/assist/index.mdx) guide.
 
 ## Inspector
 
-The _Inspector_, located in the right panel, contains app and component settings. This is the panel you most interact with when building apps. When a component is selected, this is where you set values, update component names, create event handlers, etc.
+The Inspector, located in the right panel, contains app and component settings. This is the panel you most interact with when building apps. When a component is selected, this is where you set values, update component names, create event handlers, etc.
 
 Settings are organized into different sections, such as **Content**, **Interaction**, and **Appearance**. As some components have many configurable properties, some optional and less frequently used settings are grouped into subsections to reduce clutter. For instance, the **Add-ons** section contains settings for prefix and suffix text.
 
@@ -2223,7 +3089,7 @@ The status bar contains options to:
 
 ## Multiplayer
 
-_Multiplayer_ is a feature of the [IDE](./ide.mdx) that enables multiple users to make changes to the same app simultaneously. Similar to collaborative editing tools like Google Docs, users can see what others are working on and changes are reflected in real-time.
+Multiplayer is a feature of the [IDE](./ide.mdx) that enables multiple users to make changes to the same app simultaneously. Similar to collaborative editing tools like Google Docs, users can see what others are working on and changes are reflected in real-time.
 
 Multiplayer is best suited for development teams who work on features independently. For example, a user works on queries while another makes changes to the UI. It is not designed for collaborative prototyping where users are making frequent changes in close proximity.
 
@@ -2266,19 +3132,19 @@ Retool also keeps track of only the changes you make. You can safely undo or red
 There are two core notification types in Retool:
 
 - Notifications displayed when using apps.
-- Notifications displayed in the App IDE when editing apps.
+- Notifications displayed in the app IDE when editing apps.
 
-## End user notifications
+## Internal user notifications
 
-App notifications are for displaying important information to users while they interact with your app. They're displayed automatically after queries run, but you can also configure them using [event handlers](../guides/interaction-navigation/event-handlers.mdx) and the [utils.showNotification](../../queries/reference/libraries/utils.mdx#utilsshownotification) method. End user notifications are also displayed while editing apps so they can be configured.
+App notifications are for displaying important information to users while they interact with your app. They're displayed automatically after queries run, but you can also configure them using [event handlers](../guides/interaction-navigation/event-handlers.mdx) and the [utils.showNotification](../../queries/reference/libraries/utils.mdx#utilsshownotification) method. Internal user notifications are also displayed while editing apps so they can be configured.
 
 ## IDE notifications
 
-IDE notifications are displayed automatically while editing apps (e.g., after deleting a component or undoing an edit). These notifications are for app editors and aren't visible to end users.
+IDE notifications are displayed automatically while editing apps (e.g., after deleting a component or undoing an edit). These notifications are for app editors and aren't visible to users.
 
 ## Global notification settings
 
-Global notification settings are accessed from the **App settings** menu.
+Global notification settings are accessed from the **App settings** tab.
 
 Global settings apply to app notifications. You can override these settings at the individual [query](../../queries/guides/advanced-options.mdx#configure-query-specific-notifications) or notification level. For example, you can set the duration on a notification triggered by an event handler to exceed the global value.
 
@@ -2292,7 +3158,7 @@ import Shared from '/docs/_shared/_programming-paradigms.mdx';
 
 ## Embedded apps
 
-You can [embed Retool apps](../../guides/app-management/embed-apps.mdx) within your existing web applications with support for user authentication. Your users can then access these Retool apps directly in the applications they use already and seamlessly authenticate. This solution is sometimes referred to as _Retool Embed_.
+You can embed Retool apps within your existing web applications with support for user authentication. Your users can then access these Retool apps directly in the applications they use already and seamlessly authenticate. Refer to the [how-to guide](../../guides/app-management/embed-apps.mdx) for more information and instructions.
 
 ## Use cases
 
@@ -2314,7 +3180,7 @@ If your parent application uses [SSO](../../../sso/index.mdx) with an identity p
 
 :::note
 
-Available on Business and Enterprise plans only.
+Available on a Business or an Enterprise plan only.
 
 :::
 
@@ -2348,7 +3214,9 @@ Branding options include organization and domain name, logo, favicon, and accent
 
 ## Themes
 
-You can create and manage [themes](../../guides/presentation-styling/themes.mdx) to apply a consistent style across your organization.
+You can create and manage themes to apply a consistent style across your organization.
+
+Refer to the [theming guide](../../guides/presentation-styling/themes.mdx) for more information.
 
 ## Landing pages
 
@@ -2364,7 +3232,7 @@ Organizations can route external users to a specific app using the [landing page
 
 ## External users
 
-External apps are unique because they enable external users to access your Retool app. External users include those whose email domains fall outside of your recognized internal domains. External users are [billed at a lower rate](https://retool.com/pricing) than standard users.
+External apps are unique because they enable external users to access your Retool app. External users include those whose email domains fall outside of your recognized internal domains. External users are [billed at a lower rate](https://retool.com/pricing) than builders.
 
 For more information, read more about [external users](../../../org-users/concepts/external-users.mdx).
 
@@ -2372,7 +3240,7 @@ For more information, read more about [external users](../../../org-users/concep
 
 ## Share your apps externally
 
-If you've built internal apps in Retool, you can share those tools with customers, partners, or other external users. Retool offers three primary ways to do so. These options let you securely expose Retool apps to end users while maintaining full control over the user experience. This guide covers all approaches and helps you determine which best fits your use case.
+If you've built internal apps in Retool, you can share those tools with customers, partners, or other external users. Retool offers three primary ways to do so. These options let you securely expose Retool apps to internal users while maintaining full control over the user experience. This guide covers all approaches and helps you determine which best fits your use case.
 
 ## Public links
 
@@ -2410,11 +3278,11 @@ For more information, explore the [embedded apps conceptual overview](./embed.md
 
 :::note
 
-Available on Business and Enterprise plans.
+Available on a Business or an Enterprise plan.
 
 :::
 
-Retool also lets you fully white-label the Retool experience to deliver web applications to end users in a controlled, branded environment, like a custom portal. You can create a standalone experience that reflects your brand, complete with custom domains, themes, and customizable product pages like login and user invites. Built-in navigation and permission controls make it easy to link multiple apps together into a unified, seamless interface.
+Retool also lets you fully white-label the Retool experience to deliver web applications to internal users in a controlled, branded environment, like a custom portal. You can create a standalone experience that reflects your brand, complete with custom domains, themes, and customizable product pages like login and user invites. Built-in navigation and permission controls make it easy to link multiple apps together into a unified, seamless interface.
 
 :::note
 
@@ -2428,7 +3296,7 @@ Choose external apps when:
 
 - You want to launch a customer-facing portal with full control over the end-to-end user journey.
 - You need to deliver multiple tools within a single, cohesive, branded interface.
-- You don’t have an existing product or want to launch a new standalone experience for your end users.
+- You don't have an existing product or want to launch a new standalone experience for your internal users.
 - You want to pay a lower amount for external users.
 
 For more information, explore the [external apps conceptual overview](./external.mdx), or [follow the guide to get started](../../guides/app-management/external-apps/index.mdx).
@@ -2440,8 +3308,8 @@ Use the following table to compare the available options for sharing your app:
 | Sharing mechanism | Authentication method                                                 | Plan availability                     |
 | ----------------- | --------------------------------------------------------------------- | ------------------------------------- |
 | Public links      | No authentication supported.                                          | All plans. Must be requested for self-hosted instances. |
-| Embedded apps     | Authentication for internal and external users through parent window. | All plans. Business and Enterprise plans only when using the Retool API for authentication.                            |
-| External apps     | Custom, white-labeled authentication for internal and external users. | Business and Enterprise plans.        |
+| Embedded apps     | Authentication for internal and external users through parent window. | All plans. Business or an Enterprise plan only when using the Retool API for authentication.                            |
+| External apps     | Custom, white-labeled authentication for internal and external users. | Business or an Enterprise plan.        |
 
 ## Frequently asked questions
 
@@ -2561,7 +3429,7 @@ README files are an important part of any programming project. Their purpose is 
 
 For web apps, access the README in the **Pages** tab. There are two methods to create a README:
 
-- Click **Generate with AI** to automatically generate a README based on the components and logic in your app.
+- (Cloud instances only) Click **Generate with AI** to automatically generate a README based on the components and logic in your app.
 - Click anywhere on the README page and draft your README in Markdown.
 
 When you're done, click **Preview** to view the rendered Markdown.
@@ -2584,12 +3452,12 @@ import Shared from '/docs/_shared/_app-documentation.mdx';
 
 ## Customize app URLs
 
-You can customize the URL of apps and their pages to create more discoverable links for end users. Apps also support query strings and hash properties to sync property values and control behavior. 
+You can customize the URL of apps and their pages to create more discoverable links for users. Apps also support query strings and hash properties to sync property values and control behavior. 
 
 ## Configure a custom URL
 
 :::info 
-Retool Cloud organizations use the domain `{organization}.retool.com` by default. Organizations on the Business or Enterprise plan can optionally configure a [custom domain](../../../org-users/guides/cloud/custom-domains.mdx).
+Retool Cloud organizations use the domain `{organization}.retool.com` by default. Organizations on a Business or an Enterprise plan can optionally configure a [custom domain](../../../org-users/guides/cloud/custom-domains.mdx).
 :::
 
 Apps include a unique identifier in their URL by default. You can specify a custom URL path and access an app at `{domain}/app/{custom-url}` instead. If you're [embedding the app as an IFRAME](./embed-apps.mdx#embed-apps-as-an-iframe), the app can be accessed at `{domain}/p/{custom-url}`.
@@ -2629,6 +3497,12 @@ If you have a custom domain, short links are accessible from both your custom do
 ## Embed web apps
 
 You can embed your Retool web apps within your existing web-based applications, such as an internal metrics dashboard or customer support tool. Retool provides React and JavaScript SDKs to make the process seamless, and lets you authenticate users in a variety of ways to make sure access to data is secure.
+
+:::note
+
+By default, users of embedded apps are billed as builders. If [external apps](./external-apps/index.mdx) are enabled in your organization, users of embedded apps are billed as external users if their email falls outside of the internal domain list. [Learn more about external users.](../../../org-users/concepts/external-users.mdx)
+
+:::
 
 ## Prerequisites
 
@@ -2754,7 +3628,7 @@ To configure this, navigate to your organization's **Single Sign-On** settings a
 
 :::note
 
-Available on Business and Enterprise plans only.
+Available on a Business or an Enterprise plan only.
 
 :::
 
@@ -2806,11 +3680,11 @@ The table below outlines the parameters you can send, and whether they're requir
 
 | Parameter                | Required | Description                                                                                                                                                                                                                                                                                     |
 | ------------------------ | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `landingPageUuid`        | Yes      | A string to specify the page in the Retool app to render. You can find the `landingPageUuid` by opening the app and using the [Command Palette](../../concepts/command-palette.mdx) (opened with ctrl k) to select **Copy app UUID**. |
+| `landingPageUuid`        | Yes      | A string to specify the page in the Retool app to render. You can find the `landingPageUuid` by opening the app and using the Command Palette (opened with ctrl k) to select **Copy app UUID**. |
 | `groupIds`               | Yes      | An array of integers specifying the Retool group IDs to allow.                                                                                                                                                                                                                                  |
 | `sessionDurationMinutes` | No       | The session token's duration, in minutes. If unset, defaults to 1440 (1 day). Values from 10 to 43200 (30 days) are accepted.                                                                                                                                                                   |
-| `externalIdentifier`     | Yes      | A string or integer unique identifier for the external user.                                                                                                                                                                                                                                    |
-| `userInfo`               | No       | User profile information. Can contain string fields for `email`, `firstName`, and `lastName`.                                                                                                                                                                                                   |
+| `externalIdentifier`     | Yes      | A string or integer unique identifier for the external user. If the user's email is to be used, it must match what is passed in `userInfo.email`.                                                                                                                                                                                                                                    |
+| `userInfo`               | No       | User profile information, necessary to leverage user fields in apps such as `{current_user.email}`. Can contain string fields for `email`, `firstName`, and `lastName`. If `email` matches an existing Retool user, the same account will be used.                                                                                                                                                                                                   |
 | `metadata`               | No       | An object with additional metadata. Can be at most 1KB of JSON.                                                                                                                                                                                                                      |
 | `environment`            | No       | A string to specify an [environment](../../../org-users/guides/configuration/environments.mdx) for the app to run in.                                                                                                                                                                                                 |
 | `branch`                 | No       | A string to specify a [branch](../../../source-control/guides/manage-branches.mdx) to be displayed. You can't display both `releaseVersion` and `branch`.                                                                                                                                               |
@@ -3122,7 +3996,7 @@ Retool relies on the security of the reset password and invitation process, mean
 
 ## Create external apps
 
-You can use [external apps](../../../concepts/share-externally/external.mdx) to white-label your instance and deliver web applications to end users in a controlled, branded environment. This guide covers how to enable external apps (sometimes called Retool Portals) and cutomize the experience for [external users](../../../../org-users/concepts/external-users.mdx), such as customers, vendors, and partners.
+You can use [external apps](../../../concepts/share-externally/external.mdx) to white-label your instance and deliver web applications to external users in a controlled, branded environment. This guide covers how to enable external apps (sometimes called Retool Portals) and cutomize the experience for [external users](../../../../org-users/concepts/external-users.mdx), such as customers, vendors, and partners.
 
 ## Enable external apps
 
@@ -3166,7 +4040,7 @@ Log out and back in using your custom domain, and continue.
 
 ### Customize logo and favicon
 
-You can replace Retool's logo and favicon with your own by uploading a logo image in `.jpg` or `.png` format, or a favicon in `.ico` format. You can also enable **Show logo in app headers** to automatically include your logo in the [Header frame](../../layout-structure/frames.mdx) of all apps, if present.
+You can replace Retool's logo and favicon with your own by uploading a logo image in `.jpg` or `.png` format, or a favicon in `.ico` format. You can also enable **Show logo in app headers** to automatically include your logo in the Header frame of all apps, if present.
 
 ### Accent and header colors
 
@@ -3196,7 +4070,7 @@ Refer to the [external users documentation](../../../../org-users/concepts/exter
 
 ## Add Retool Events
 
-If your organization is on the Enterprise plan, you can also configure [Retool Events](../../../../workflows/guides/retool-events.mdx) to help customize bespoke user experiences when new events occur, like **User Created** or **Login Attempted**.
+If your organization is on an Enterprise plan, you can also configure [Retool Events](../../../../workflows/guides/retool-events.mdx) to help customize bespoke user experiences when new events occur, like **User Created** or **Login Attempted**.
 
 ## Next steps
 
@@ -3210,7 +4084,7 @@ Next, follow the other guides in this section to fully white-label your external
 
 ## Build a landing page
 
-Admins can configure _landing pages_ for specific [permission groups](../../../../permissions/guides.mdx). Users without **Edit** access who are members of a group with an associated landing page are automatically routed to a specific Retool app when they log in. For example, you can route all Customer Support representatives automatically to a Customer Support Retool app that contains links to all the apps they might need to use.
+Admins can configure landing pages for specific [permission groups](../../../../permissions/guides.mdx). Users without **Edit** access who are members of a group with an associated landing page are automatically routed to a specific Retool app when they log in. For example, you can route all Customer Support representatives automatically to a Customer Support Retool app that contains links to all the apps they might need to use.
 
 ## Create a landing page
 
@@ -3236,13 +4110,13 @@ Users with **Edit** access to any apps are routed to the Retool homepage when th
 
 ## Configure user actions for users
 
-Use the **User Action** resource to write queries in [custom page](./custom-pages.mdx) apps that enable users to authenticate. Users can also perform additional actions, such as resetting their password or claiming an invitation. The **User Action** resource can also retrieve a list of apps and folders for which the user has access.
+Use the **User Action** resource to write queries in custom page apps that enable users to authenticate. Users can also perform additional actions, such as resetting their password or claiming an invitation. The **User Action** resource can also retrieve a list of apps and folders for which the user has access.
 
 ## Create a resource query
 
 You create user action queries in the same way as other resource queries:
 
-1. Click  in the App IDE to open the **Code** panel.
+1. Click  in the app IDE to open the **Code** panel.
 2. Click **+** and select **Resource query**.
 3. Select the **User Action** resource.
 
@@ -3358,13 +4232,13 @@ To localize your Retool apps, you must first set up internationalization in your
 
 ## Enable localization
 
-You must enable localization from your app editor in **App Settings > Localization**. By default, localization is not enabled to preserve app performance.
+You must enable localization from the app IDE in **App Settings > Localization**. By default, localization is not enabled to preserve app performance.
 
 When enabled, your application use translations uploaded at the organization level. To improve performance and make sure your app is only using the translations it needs, you can specify specific files to use in the app. When selected, you can preview the locales these files support—this is why it's important you keep the file names consistent.
 
 ## Access translations
 
-Once localization is enabled, translations are available in the `{{ retoolContext.translations }}` object. Note that only translations in your current browser locale are shown. You can preview different locales in your App Settings, or change your browser locale (e.g., go to `chrome://settings/languages` on Chrome)  to see translations for different languages.
+Once localization is enabled, translations are available in the `{{ retoolContext.translations }}` object. Note that only translations in your current browser locale are shown. You can preview different locales in the **App Settings** tab, or change your browser locale (e.g., go to `chrome://settings/languages` on Chrome)  to see translations for different languages.
 
 The current user's locale can be referenced through `{{ current_user.locale }}`.
 
@@ -3496,6 +4370,8 @@ You can configure page-specific URL parameters that reference values and update 
 
 Open the  **Pages** pane and select a page to view its settings in the Inspector. You can set each page's URL search and hash parameters to reference any globally or page-scoped value. Any changes to referenced values are then automatically reflected in the current URL and in the `url` object.
 
+You cna also configure URL parameters programmatically using the [utils.setUrlParameters](../../../queries/reference/libraries/utils.mdx#method-setUrlParameters) method.
+
 ### Search query parameters
 
 You can provide search query parameters by appending `?` to the URL and using the format `key=value`. Use the `&` symbol as a separator to provide multiple key-value pairs.
@@ -3565,17 +4441,62 @@ To learn how to prompt Assist, visit the [prompting guide](./prompt.mdx).
 
 Ensure that Assist is enabled and that it has access to the proper resources. These steps differ slightly depending on your plan.
 
-1. To ensure your users can access Assist, navigate to **Settings** > **AI**. Verify that the **Retool AI** and **Assist Tab** settings are toggled on.
+1. To ensure your users can access Assist, navigate to **Settings** > **AI**.
+   1. Verify that the **Retool AI** and **Assist Tab** settings are toggled on. 
+   2. Choose whether to show the Assist chat on the apps landing page.
 2. Navigate to **Resources** > **Retool AI**. Ensure that _both_ OpenAI and Anthropic are enabled in the **Retool managed** section.
 
-1. To ensure your users can access Assist, navigate to **Settings** > **AI**. Verify that the **Retool AI** and **Assist Tab** settings are toggled on. Enterprise customers can optionally [configure model providers](#optional-configure-model-provider).
+1. To ensure your users can access Assist, navigate to **Settings** > **AI**.
+   1. Verify that the **Retool AI** and **Assist Tab** settings are toggled on. 
+   2. Choose whether to show the Assist chat on the apps landing page.
+2. Navigate to **Resources** > **Retool AI**. Ensure that _both_ OpenAI and Anthropic are enabled in the **Retool managed** section.
+
+Configure role-based access controls
+
+Organization admins on the Business and Enterprise plans can use Retool's [role-based access controls](../../../permissions/guides/roles-permissions.mdx) to restrict a [group's](../../../permissions/quickstart.mdx#permission-groups) permissions for Assist to **Ask** mode only or to prevent Assist usage entirely. For example, admins might wish to restrict Assist usage to user groups who do not have access to sensitive data or PII. Alternatively, admins could restrict access to all user groups except for a pilot group that has approval to test AI tools.
+
+By default, all builders have access to Assist and both **Ask** and **Build** mode through a preconfigured role. This role is called `Assist Role` or `Editor`, based on when your organization was created. Organization admins can edit these roles, or they can create new roles with more restrictive permissions using the following steps:
+
+1. Navigate to **Settings** > **Roles & Permissions**. 
+2. Select an existing role, or click **Create Role** to create a new custom role.
+3. Locate the **Assist** section.
+   1. Select **Use Assist with Ask mode only** to restrict the role from being able to use **Build** mode.
+   2. Deselect both settings to restrict the role from being able to access Assist at all.
+4. Click **Save changes**.
+5. If you're creating a new role, reopen the role and switch to the **Assignment** tab. Click **+ Add group assignment** to assign a group to this role.
+6. Click **Save changes**.
+
+export function RBAC() {
+  return (
+    
+      
+    
+  )
+}
+
+1. To ensure your users can access Assist, navigate to **Settings** > **AI**. 
+   1. Verify that the **Retool AI** and **Assist Tab** settings are toggled on.
+   2. Optionally, [configure a single model provider](#optional-configure-model-provider).
+   3. Choose whether to show the Assist chat on the apps landing page.
 2. Navigate to **Resources** > **Retool AI**. Ensure that each AI provider that you will use is enabled. You can choose to use Retool-managed keys or self-managed keys.
+3. If required, configure your [roles and permissions](#configure-role-based-access-controls) to limit Assist access to certain groups.
 
 Optional: Configure model provider
 
 Retool designed Assist to use two AI providers by default: OpenAI and Anthropic. Using both providers enables Assist to optimize for speed and quality.
 
-However, some customers may need to consolidate AI services with a single model provider. To accommodate these customers, admins on the Enterprise plan can configure Assist to work with a single model provider. The currently supported options are OpenAI, Anthropic, Amazon Bedrock, and Azure OpenAI.
+However, some customers may need to consolidate AI services with a single model provider. To accommodate these customers, admins on the Enterprise plan can configure Assist to work with a single model provider.
+
+Retool currently supports the following options for Assist model providers:
+
+:::note
+If **Anthropic + OpenAI** is selected, Retool will first attempt to use the Anthropic resource for Anthropic requests. If the Anthropic resource is not enabled, Retool will attempt to send requests to Anthropic through Amazon Bedrock.
+:::
+
+- (Default) Anthropic + OpenAI.
+- Only Anthropic.
+- Only Amazon Bedrock.
+- Only Azure OpenAI.
 
 :::note
 
@@ -3594,6 +4515,29 @@ App generation results may not be optimized when using a single model provider. 
 
 :::
 
+Configure role-based access controls
+
+Organization admins on the Business and Enterprise plans can use Retool's [role-based access controls](../../../permissions/guides/roles-permissions.mdx) to restrict a [group's](../../../permissions/quickstart.mdx#permission-groups) permissions for Assist to **Ask** mode only or to prevent Assist usage entirely. For example, admins might wish to restrict Assist usage to user groups who do not have access to sensitive data or PII. Alternatively, admins could restrict access to all user groups except for a pilot group that has approval to test AI tools.
+
+By default, all builders have access to Assist and both **Ask** and **Build** mode through a preconfigured role. This role is called `Assist Role` or `Editor`, based on when your organization was created. Organization admins can edit these roles, or they can create new roles with more restrictive permissions using the following steps:
+
+1. Navigate to **Settings** > **Roles & Permissions**. 
+2. Select an existing role, or click **Create Role** to create a new custom role.
+3. Locate the **Assist** section.
+   1. Select **Use Assist with Ask mode only** to restrict the role from being able to use **Build** mode.
+   2. Deselect both settings to restrict the role from being able to access Assist at all.
+4. Click **Save changes**.
+5. If you're creating a new role, reopen the role and switch to the **Assignment** tab. Click **+ Add group assignment** to assign a group to this role.
+6. Click **Save changes**.
+
+export function RBAC2() {
+  return (
+    
+      
+    
+  )
+}
+
 ## Self-hosted configuration
 
 Complete the steps in the following sections if your deployment is self-hosted. Skip these steps if you use Retool Cloud.
@@ -3602,17 +4546,17 @@ Complete the steps in the following sections if your deployment is self-hosted. 
 
 :::important
 
-The following section is required only if your deployment uses [Retool-managed AI models](../../../data-sources/concepts/models.mdx#retool-managed-and-self-managed-models). If you are using a self-managed model, you can skip this section.
+The following section is required only if your instance is self-hosted and you use [Retool-managed keys](../../../data-sources/concepts/models.mdx#retool-managed-and-self-managed-models). If you are using your own key, you can skip this section.
 
 :::
 
 import Partial from "../../../_shared/_retool-managed-self-hosted.mdx";
 
-### Optional: Configure AI proxy
+### Configure AI proxy
 
 :::important
 
-The following section is required only if your deployment uses [self-managed AI models](../../../data-sources/concepts/models.mdx#retool-managed-and-self-managed-models). If you use Retool-managed models, you can skip this section.
+The following section is required only if your instance is self-hosted and you [use your own key](../../../data-sources/concepts/models.mdx#retool-managed-and-self-managed-models). If you are using a Retool-managed key, you can skip this section.
 
 :::
 
@@ -3620,12 +4564,12 @@ If you use a proxy to make calls to LLM providers (such as [LiteLLM](https://www
 
 Retool uses the following models for app generation with Assist:
 
-| Provider       | Models                                                                           |
-| -------------- | -------------------------------------------------------------------------------- |
-| OpenAI         | GPT-5GPT-5-miniGPT-5-nanoGPT-4.1GPT-4.1-nano                 |
-| Anthropic      | Claude Sonnet 4.5Claude Sonnet 4Claude Sonnet 3.7Claude Haiku 3.5 |
-| Amazon Bedrock | Claude Sonnet 4.5Claude Sonnet 4Claude Sonnet 3.7Claude Haiku 3.5 |
-| Azure OpenAI   | GPT-5GPT-5-miniGPT-5-nanoGPT-4.1GPT-4.1-nano                 |
+| Provider       | Models                                                                                                |
+| -------------- | ----------------------------------------------------------------------------------------------------- |
+| OpenAI         | GPT-5.1GPT-5GPT-5-miniGPT-5-nanoGPT-4.1GPT-4.1-nano                          |
+| Anthropic      | Claude Sonnet 4.5Claude Sonnet 4Claude Haiku 4.5 |
+| Amazon Bedrock | Claude Sonnet 4.5Claude Sonnet 4Claude Haiku 4.5 |
+| Azure OpenAI   | GPT-5.1GPT-5GPT-5-miniGPT-5-nanoGPT-4.1GPT-4.1-nano                          |
 
 :::note
 
@@ -3644,17 +4588,11 @@ As an admin, consider whether you would like to recommend a particular change ma
 
 ## Track usage
 
-_For a limited time, all Assist usage is free._
-
-While Assist is free, Retool recommends monitoring your usage of Assist. This will help you make a decision about which plan is best suited for your organization’s usage of Assist.
-
 Organization admins can monitor Assist usage in **Settings** > **Plans & Billing** under the **Assist billing** tab.
 
   Assist usage interface.
 
-Individual users on Free, Team, and Business plans can monitor their individual usage using the  **Credits** button in the Assist interface at any time to view their usage during the current billing cycle.
-
-For more information about usage and billing, refer to the [Assist support documentation.](/support/billing-usage/assist)
+For more information about usage and billing, refer to the [pricing page](https://retool.com/pricing).
 
 ---
 
@@ -3668,8 +4606,8 @@ This guide provides an overview of Assist's features and frequently asked questi
 
 The following sections include information about Retool's app generation capabilities and limitations.
 
-Assist can create or edit apps, and can:
-  - Create all the UI and logic elements needed to create a functional app, including components, queries, code, and event handlers.
+With Assist, Retool can create or edit apps:
+  - Create all the UI and logic elements needed to create a functional multipage app, including components, pages, queries, code, and event handlers.
     
     Assist can _add_ the following components to the canvas. Retool can _edit_ any component on the canvas.
     - Buttons
@@ -3785,12 +4723,12 @@ Assist can create or edit apps, and can:
       - Text Input
       - URL
     
-  - Make changes to an existing app, including existing components and queries.
-  - Write and edit [READMEs](../app-management/app-documentation.mdx#write-a-readme), or use an existing README for context about your app.
-  - Style UI elements, including applying [organization-level theming](../../guides/presentation-styling/themes.mdx).
+  - Make changes to an existing multipage app, including existing components and queries.
+  - (Cloud instances only) Write and edit [READMEs](../app-management/app-documentation.mdx#write-a-readme), or use an existing README for context about your app.
+  - Intelligently apply [app-level or organization-level theming](../../guides/presentation-styling/themes.mdx) based on your input.
   - Remember conversation context so that you can iterate with follow-up requests and revert changes.
 
-Assist can interact with resources:
+With Assist, Retool can interact with resources:
   - Generate, edit, and run queries for the most commonly used resources.
     
     - Analytics  
@@ -3860,13 +4798,13 @@ Assist can answer questions, including:
 
     :::
   - Answer questions about an existing app, including about the purpose of the app and how it works.
+  - Use the dedicated **Ask** mode to provide a safe, read-only environment to explore the app, troubleshoot, and ask questions.
 
-In response to a user prompt, Assist cannot currently:
+In response to a user prompt, you cannot currently use Assist to perform certain tasks:
 
 - Operate on other objects in your organizations, such as workflows, agents, folders, or mobile apps. Assist also can't modify organization settings, like permission groups.
 - Create or edit [modules](../../guides/layout-structure/modules.mdx) or [custom components](../../guides/custom/custom-component-libraries/index.mdx).
-- Create apps with multiple pages.
-- Style custom and legacy components, write custom CSS, or independently style dark and light modes.
+- Style custom and legacy component, write custom CSS, or independently style dark and light modes.
 - Generate apps that are mobile-responsive.
 - Accept inputs that are not formatted as natural language (such as PDFs, spreadsheets, or images).
 - Manage [releases](../../guides/app-management/releases-history.mdx).
@@ -3939,13 +4877,19 @@ Usage of Assist is free for a limited time. Refer to the [Usage and billing](/su
 
 ### My Retool deployment is Self-hosted. Can I use Assist?
 
-Assist is available to all cloud organizations and self-hosted organizations on edge version 3.283 and later.
-
-Assist will be available on the stable channel in the upcoming Q3.5 stable release.
+Assist is available to all cloud organizations. Assist is available to self-hosted organizations on edge version 3.283 and later, and stable version 3.284.0 and later.
 
 ### Is Assist available for mobile apps, workflows, or agents?
 
 No, Assist is currently available for web apps only.
+
+### Does Retool store my prompts?
+
+Yes, Retool stores your prompts and Assist's responses in an internal database. For more information, refer to the [Assist Beta Terms](/legal/assist-beta-terms#3-proprietary-rights).
+
+### Can I enable Assist for a subset of my users, instead of all?
+
+Retool does not currently support enabling Assist for only a subset of users in an organization. Instead, you can create a new [space](../../../org-users/tutorials/spaces.mdx) and invite only the users who you want to have access to Assist, and [enable Assist](./configure.mdx) in that space. Each space has its own user accounts, settings, and permissions.
 
 ### How do I provide Retool with my feedback or ask questions?
 
@@ -3963,7 +4907,7 @@ Please provide feedback in one of the following formats:
 
 import ChatIcon from "/img/icons/apps/assist.svg";
 
-When you're ready to use Assist, open a new or existing app, and the **Assist panel** opens automatically. To find it again later, click the  **Assist** icon at the bottom of the [left panel of the IDE](../../concepts/ide.mdx#left-panel), or use cmd/ctrl i to toggle the **Assist panel**.
+When you're ready to use Assist, open a new or existing app and locate the  **Assist** panel at the bottom of the [left panel of the IDE](../../concepts/ide.mdx#left-panel). You can also use cmd/ctrl i to toggle the panel.
 
 :::note
 
@@ -3971,7 +4915,7 @@ This guide outlines the Assist interface, prompting experience, and best practic
 
 :::
 
-The following demo provides an example of using Assist to generate an app that uses data from Retool Database:
+The following video provides a demo and best practices for prompting Assist:
 
 ## Assist interface
 
@@ -3986,13 +4930,22 @@ The Assist interface has several important controls:
 - The welcome screen includes a series of examples that demonstrate prompts that you could use with Assist.
 - Write your prompt in the input box at the bottom of the panel. 
   - [Add resources](#prepare-resources) with the  icon.
+  - Assist is in [**Build** mode](#build-and-ask-mode) by default. Click  to switch to **Ask** mode.
   - Click  or press Enter/Return to submit your prompt.
 - Use a series of icons at the top of the panel to manage your Assist interactions:
   -  **Feedback**: Leave general feedback about Assist. As part of this feedback, Retool also receives your chat history and your user email address so that Retool can follow up with any questions. 
   -  **View history**: View and manage chat threads. You can view, rename, and delete chat threads.
   -  **New thread**: Create a new chat thread.
-  -  **Credits**: View and manage [credit consumption](/support/billing-usage/assist). This icon is not present for Enterprise and certain Business users. Instead, admins in these organizations can view usage information in their organization settings.
+  -  **Usage**: View and manage usage. Refer to the [pricing page](https://retool.com/pricing) for information about Assist pricing. This icon is not present for users on an Enterprise plan. Instead, admins in these organizations can view usage information in their organization settings.
 - Scroll, or use the up and down keys on your keyboard to navigate the message history.
+
+export function Tour() {
+  return (
+    
+      
+    
+  )
+}
 
 ## Prepare resources
 
@@ -4008,7 +4961,7 @@ When working with apps, Assist uses a **Resource access** list that identifies w
 
 To manually add resources to the **Resource access** list:
 
-1. Open the  **Assist** tab in the app you want to create or edit.
+1. Open the  **Assist** panel in the app you want to create or edit.
 2. Click  **Resource access** in the input field to open the **Assist resource access** window.
 3. Identify the resources that you want to use while prompting. 
 
@@ -4022,9 +4975,58 @@ export function ResourceContext() {
 
 Once you're done, the  **Resource access** icon shows the number of resources you added. You can add or remove resources at any point. 
 
+## Build and Ask mode
+
+Retool supports two modes for prompting Assist:
+
+* **Ask**: Assist cannot modify your app. Use this mode to brainstorm solutions, explore the app without making changes, and ask questions about Retool functionality.
+* **Build**: Assist can create and edit apps. Use this mode when you want Assist to modify the app on your behalf. **Build** mode also includes all the abilities and knowledge of **Ask** mode.
+
+  Toggle between **Ask** and **Build** mode.
+
+Assist defaults to using **Build** mode. You can switch between modes at any time.
+
+:::note
+
+Organization admins can configure permission groups to have access to **Ask** and **Build**, or just **Ask** using role-based access controls. [Learn more](./configure.mdx#configure-role-based-access-controls).
+
+:::
+
+## Configure theme
+
+You can also set or change your app theme using Assist. The experience of doing so depends on your organization's plan.
+
+During app generation, Assist guides you through selecting a theme for your app. Choose between light or dark mode and select an accent color.
+
+You can also set an app theme in your prompt. Be very clear and specific about your design intent. For example, "Create a dark mode theme with blue accent colors", or "Update the theme to match the Acme brand colors and style."
+
+export function AppTheme() {
+  return (
+    
+      
+    
+  )
+}
+
+The Business and Enterprise plans support [organization-level theming](/apps/guides/presentation-styling/themes#create-organization-level-themes). Assist will help you set a theme for your app in one of the following ways:
+
+- If you haven't created any organization-level themes, Assist shows a theme selector to help you choose an app-level theme.
+- If you have organization-level themes, but no default, Assist shows a list of your organization-level themes to choose from, or you can choose an alternative theme.
+- If you have organization-level themes with a default set, Assist uses the default automatically.
+
+You can also set an app theme in your prompt. Be very clear and specific about your design intent. For example, "Create a dark mode theme with blue accent colors", or "Update the theme to match the Acme brand colors and style."
+
+export function OrgThemes() {
+  return (
+    
+      
+    
+  )
+}
+
 ## Prompting experience
 
-Use the text input at the bottom of the **Assist** tab to enter your natural language prompt. When prompting, enter the **@** symbol to explicitly reference a resource, query, or component that you want Assist to use. Refer to the [best practices](#prompting-best-practices) for more guidance on how to prompt Assist.
+Use the text input at the bottom of the **Assist** panel to enter your natural language prompt. When prompting, enter the **@** symbol to explicitly reference a resource, query, or component that you want Assist to use. Refer to the [best practices](#prompting-best-practices) for more guidance on how to prompt Assist.
 
 Click  or press Enter/Return to submit your prompt.
 
@@ -4042,13 +5044,17 @@ When it's done building, Assist sometimes provides options for what to do next. 
 
   Choose what you'd like to do next.
 
+The amount of information sent to the AI provider (the _context window_) increases as you build. Assist automatically summarizes long threads in order to prevent errors from a context window that is too large.
+
+  Assist summarizes long threads.
+
 ## Manage changes
 
 Assist includes an integrated versioning strategy, which identifies an initial version of your app and creates updated versions that it saves to [history](../app-management/releases-history.mdx#history) as you prompt. You can view the versions in the  **Releases and history** tab.
 
 At any time while prompting, use the  **Revert to version** button to undo the changes made after that point. This makes it easy to roll back changes if you change your mind.
 
-If you are on the Team, Business, or Enterprise plans, you can also click  **Create release** to [create a new release](../app-management/releases-history.mdx) incorporating those changes.
+If you are on a Business or an Enterprise plan, you can also click  **Create release** to [create a new release](../app-management/releases-history.mdx) incorporating those changes.
 
 Your organization admin may alternatively recommend using [Source Control](../../../source-control/index.mdx) for change management. 
 
@@ -4088,7 +5094,7 @@ When you can, paste schema details, API docs, or example data into your prompt. 
 
 :::note Custom components libraries
 
-Custom components libraries is distinct from the [legacy custom component feature](../legacy-custom.mdx). Retool does not recommend creating custom components using the legacy feature.
+Custom components libraries are distinct from the [legacy custom component feature](../legacy-custom.mdx). Retool does not recommend creating custom components using the legacy feature.
 
 :::
 
@@ -4326,7 +5332,7 @@ npx retool-ccl deploy --header 'Cookie: cookie_one=cookie_value_one; cookie_two=
 Some uses of `npx retool-ccl` involve asking the user for arguments, such as the access token they want to use. It is possible to instead provide these arguments in the original invocation of the command, if you want to avoid providing them interactively. For example, you can deploy a new revision by running the following command, without needing to run `npx retool-ccl login` first. 
 
 ```bash
-npx retool-ccl --url http://yourretoolinstance.com --access-token retool_01...8cp
+npx retool-ccl deploy --url http://yourretoolinstance.com --access-token retool_01...8cp
 ```
 
 Provide access tokens and URLs using the arguments `--access-token` and `--url`. For the `sync` command, you can also use `--target-access-token` and `--target-url` for the target Retool instance.
@@ -4745,7 +5751,7 @@ The **Fullscreen** and **Top level navigation** settings must also be enabled in
 
 In addition to Retool's built-in [keyboard shortcuts](../../reference/keyboard-shortcuts.mdx), you can define custom keyboard shortcuts on a per-app basis. Custom shortcuts can be a single character, combination of keys, or a sequence of key presses. You configure the action to trigger with [JavaScript](../../../queries/quickstart.mdx) and can use many of the available methods in Retool to control components, queries, and more.
 
-Click the gear icon in the left panel to open the **App settings** menu and select **Custom shortcuts**.
+Click the gear icon in the left panel to open the **App Settings** tab and select **Custom shortcuts**.
 
 ### Define shortcut keys
 
@@ -5385,7 +6391,7 @@ The Chart component requires data in a tabular format. This can either be an arr
 
 One common use case is to chart time series data for a dynamic number of groups. For example, grouping revenue by product or headcount by team. Use the **Group by** property to choose a field from your data source to group and display this kind of data.
 
-To see an example of this, create a JavaScript transformer using the code below. Make sure to save and run it before continuing.
+To see an example of this, create a transformers using the code below. Make sure to save and run it before continuing.
 
 ```javascript
 const data = [
@@ -6582,7 +7588,7 @@ A common use for Switch is it create a dark mode toggle. This example also demon
 
 :::note
 
-Organization-level themes are available on Business and Enterprise plans only.
+Organization-level themes are available on a Business or an Enterprise plan only.
 
 :::
 
@@ -6650,6 +7656,91 @@ Consider using [Text](../../../reference/components/presentation/text.mdx) or an
 :::
 
 import Appearance from "/docs/_shared/_appearance.mdx";
+
+## Query an agent with Agent Chat
+
+When querying an agent with the Agent Chat component, the queries must use JSON mode, and provide inputs with the following structure:
+
+```json
+{
+  "action": "invoke",
+  "messages": [
+    {
+      "role": "user",
+      "content": "hello world"
+    }
+  ]
+}
+```
+### Agent Inputs
+All Agent Chat components are automatically connected to a preconfigured query, which sends the [agentInputs](../../reference/components/agent-chat#property-agentInputs) property to the agent in the structure outlined above. This allows you to use an Agent Chat with an agent query with no configuration. 
+
+Agent Inputs
+
+The agent query must be able to do two things: 
+1. Trigger the agent.
+2. Poll for the result of the agent execution. 
+
+The Agent Chat component achieves this by modifying the shape of `agentInputs` depending on whether it is triggering a query or waiting on the response. 
+
+Retool dynamically changes the structure of `{{ agentChat1.agentInputs }}` between the following two payloads:
+
+```json
+{
+  "action": "invoke",
+  "messages": [
+    {
+      "role": "user",
+      "content": "hello world"
+    }
+  ]
+}
+```
+
+```json
+{
+  "action": "getLogs",
+  "agentRunId": "uuid..."
+}
+```
+
+### Pass additional parameters from app to agent
+To pass additional parameters from your app into the agent, modify the `agentChat.agentInputs` object. 
+
+Append one (or more) `user` messages to the `messages` array with the parameters from the app that you want to pass in. 
+```json title="User message example"
+{{ {
+  ...agentChat1.agentInputs,
+  messages: [
+    ...(agentChat1.agentInputs.messages || []),
+    { role: 'user', content: `Name of select: ${select1.value}` }
+  ]
+} }}
+```
+
+For example, in an app that allows users to select a customer via a [Select](../../reference/components/select) component, add the user message example above to the **Agent Inputs** field in your agent query to pass the customer ID into an agent. 
+
+export function ArcadeEmbed_agentInput() {
+  return (
+    
+      
+    
+  )
+}
+
+To create an object with additional parameters (like those from other in-app components), add them to the `messages` array while preserving the overall shape. For example, you can use the following structure to send more than one input to an agent:
+
+```json
+{{ {
+  ...agentChat1.agentInputs,
+  messages: [
+    ...(agentChat1.agentInputs.messages || []),
+    { role: 'user', content: hereYouCanReferenceAnyComponentProperty.value }
+    { role: 'user', content: youCanAddAsManyOfTheseAsYouLike.value }
+    { role: 'user', content: `You can prepend values with text: ${likeThis.value}` }
+  ]
+} }}
+```
 
 ---
 
@@ -6959,7 +8050,7 @@ While Retool does not limit the size of file uploads, we recommend defining a ma
 
 ### Save uploaded files and images
 
-You can reference `value` in queries to [store files in a data store](../../../queries/guides/files.mdx), such as [Retool Storage](../../../data-sources/quickstarts/retool-storage.mdx) or [Amazon S3](../../../data-sources/guides/integrations/object-file-store/amazon-s3.mdx).
+You can reference `value` in queries to [store files in a data store](../../../queries/guides/files.mdx), such as Retool Storage or [Amazon S3](../../../data-sources/guides/integrations/object-file-store/amazon-s3.mdx).
 
 :::tip Save files directly to Retool Storage
 
@@ -7745,7 +8836,7 @@ The Navigation component defaults to horizontal orientation, but it also support
 
 ### Mobile layout navigation
 
-If you configure your app with a mobile layout, Retool can automatically configure a slide-in Navigation menu using the [Sidebar frame](../../concepts/ide.mdx#sidebar-frame). When viewed on mobile, the [Header frame](../../concepts/ide.mdx#header-frame) contains a menu button to show or hide the menu.
+If you configure your app with a mobile layout, Retool can automatically configure a slide-in Navigation menu using the Sidebar frame. When viewed on mobile, the Header frame contains a menu button to show or hide the menu.
 
 ---
 
@@ -8118,7 +9209,7 @@ Stack components have additional settings for **Layout** and **Spacing**, includ
 
 ## Getting started with frames
 
-Frames are special containers that enable you to divide and manipulate the app viewport in different ways. 
+Frames are special containers that enable you to divide and manipulate the app viewport in different ways.
 
 All apps contain a Main frame, which takes up the entire canvas area by default. 
 
@@ -8179,7 +9270,7 @@ Both desktop and mobile layouts use the same component but allow you to change t
 
 ## Switch between desktop and mobile layouts
 
-No components are included in the mobile layout by default. Once you add a component, the App IDE [navbar](../../concepts/ide.mdx#navbar) displays a toggle to switch between desktop and mobile layouts.
+No components are included in the mobile layout by default. Once you add a component, the app IDE [navbar](../../concepts/ide.mdx#navbar) displays a toggle to switch between desktop and mobile layouts.
 
 Use the layout controls to switch between **Desktop** and **Mobile** layouts. Components you add to either layout appear only in the layout you're currently viewing. For example, if you add a component while viewing the mobile layout, it does not appear in the desktop layout until you enable it.
 
@@ -8187,7 +9278,7 @@ Use the layout controls to switch between **Desktop** and **Mobile** layouts. Co
 
 Use the Inspector in the right panel to add selected components to the mobile layout. Click the **Advanced settings** icon in the **Appearance** section, then enable **Show on mobile**.
 
-Retool initially positions components in the mobile layout similar to the desktop layout. If another component is already in the same position on the mobile layout, the App IDE notifies you. Should this occur, reposition any existing components on the mobile layout first to allow for the addition of the other component.
+Retool initially positions components in the mobile layout similar to the desktop layout. If another component is already in the same position on the mobile layout, the app IDE notifies you. Should this occur, reposition any existing components on the mobile layout first to allow for the addition of the other component.
 
 ## Arrange components in the mobile layout
 
@@ -8199,7 +9290,7 @@ You can customize the arrangement of components for each layout separately—rep
 
 import Modules from '/docs/_shared/_module-best-practices.mdx';
 
-A _module_ is a type of app you can build and embed within other apps. Modules enable you to reuse components and code in multiple apps, and modules can pass data to and from the parent app. This can help reduce app maintenance as you only need to update a module; any parent apps immediately reflect the changes.
+A module is a collection of components and code that you can build and embed within other apps. Modules enable you to reuse components and code in multiple apps, and modules can pass data to and from the parent app. This can help reduce app maintenance as you only need to update a module; any parent apps immediately reflect the changes.
 
 Common uses for modules include:
 
@@ -8233,7 +9324,7 @@ After creating a module, assemble components using the same methods you would us
 
 Add a module to your app in the same way you would add a component. Just like with components, you can  reposition and resize modules on the canvas.
 
-Click **+** in the left sidebar to open the **Add UI** panel. Switch to the **Modules** tab and then drag the module onto the canvas.
+Click **+** in the left sidebar to open the **Add UI tab**. Switch to the **Modules** tab and then drag the module onto the canvas.
 
 Once embedded within your app, you can return to editing the module by right-clicking on the module and clicking **Edit module**.
 
@@ -8349,7 +9440,7 @@ To test out this behavior, [download and import the JSON](/img/docs/8ee48756-c6d
 
 #### Test inputs with sample values
 
-Because module inputs are controlled by the parent app, you can pass through test values to preview your module. When you select the module container, the right panel of the App IDE shows a **Test inputs** section. There, you can test your module's behavior by giving expected values for each of your inputs.
+Because module inputs are controlled by the parent app, you can pass through test values to preview your module. When you select the module container, the right panel of the app IDE shows a **Test inputs** section. There, you can test your module's behavior by giving expected values for each of your inputs.
 
 ### Add outputs
 
@@ -8425,7 +9516,7 @@ The `i` variable is a number that represents the index of an entry in your data 
 
 `i` is often used to iterate over a set of values and perform some kind of action. For example, you could iterate over an entire list view to update values, make API requests, send emails, etc. For example, this JavaScript [transformer](../../../queries/guides/transformers.mdx) iterates over all the entries in `listView1`, and returns each sales person with over 200 sales.
 
-```javascript JavaScript Transformer
+```javascript Transformer
 var salesPerson = {{ listView1.data }};
 var highSales = salesPerson.filter(i => i.sales > 200);
 return highSales;
@@ -8441,7 +9532,7 @@ If you need to access the value of an input component within a repeatable compon
 
 `instanceValues` is an array of objects for every instance of the component, where each object is a mapping of an input's `formDataKey` to its `value`. This also includes the `primaryKey` of the list item.
 
-For example, you can use a [JavaScript transformer](../../../queries/guides/transformers.mdx) to iterate over a list of Number Input components and return the sum total:
+For example, you can use a [transformer](../../../queries/guides/transformers.mdx) to iterate over a list of Number Input components and return the sum total:
 
 ```javascript title="Reference instance values"
 const formData = {{ listViewName.instanceValues }}
@@ -8463,7 +9554,7 @@ You can customize the overall appearance of repeatable components. Select the co
 
 Retool recommends using a fixed height for List View cmoponentss. However, you might use auto height when your dataset is less than 25 items or when fixed heights don't otherwise fit your use case. For the latter, Retool recommends using the auto height setting with server side pagination. This requires some additional code to function.
 
-For example, you can use a [JavaScript transformer](../../../queries/guides/transformers.mdx) and a [Page Input](../../reference/components/navigation/page-input.mdx) component to return only a subset of values from your data source.
+For example, you can use a [ transformer](../../../queries/guides/transformers.mdx) and a [Page Input](../../reference/components/navigation/page-input.mdx) component to return only a subset of values from your data source.
 
 ```javascript
 const currentPage = {{ pageInput1.value }} - 1
@@ -8531,7 +9622,7 @@ return {
   
   
 
-  Create a JavaScript transformer named `transformedDataJS` with the following:
+  Create a transformer named `transformedDataJS` with the following:
 
 ```js title="transformedDataJS"
 function aggregateSampleData() {
@@ -8740,13 +9831,7 @@ To improve your query run times, Retool recommends investigating the following:
 
 ## Native app testing
 
-:::note
-
-Native testing is in private alpha. This feature is in active development, and Retool may make changes at any time. For access, reach out to your account manager.
-
-:::
-
-Use native testing to create, edit, and run tests from within the **Code** tab of the App IDE. Use this guide to learn more about native testing and how to use it to ensure that your app runs as expected in any scenario.
+Use native testing to create, edit, and run tests from within the **Code** tab of the app IDE. Use this guide to learn more about native testing and how to use it to ensure that your app runs as expected in any scenario.
 
 ## Create tests
 
@@ -8860,8 +9945,12 @@ This feature is still in development and there are several known limitations, wh
 - Tests with deprecated or legacy components may cause unexpected behavior.
 - Function calls to `window` from preloaded Javascript are not currently supported.
 - For tests involving repeatable components (such as List Views), certain parts of generated assertions may not be editable post-recording.
-- Tests do not support certain objects, such as `localStorage`.
+- Tests do not support certain objects, such as localStorage.
 - AlaSQL `NOW()` usage is not currently date-mocked.
+
+## Source Control
+
+Tests can also be protected with [Source Control](/source-control) and are stored alongside your app's code in the repository. Source Control support for tests is currently available on cloud instances and will be released for self-hosted instances in a future update.
 
 ## Best practices
 
@@ -8877,7 +9966,7 @@ Retool can record user behavior and interactions with apps using [Fullstory](htt
 
 ## Considerations
 
-A [user session](https://help.fullstory.com/hc/en-us/articles/360020624614-What-defines-a-session-in-Fullstory) contains behavioral data, such as interactions, that occur with an app during a period of activity. Retool captures user session data for production apps that are accessed in user mode. This includes any [external apps](../../concepts/share-externally/external.mdx) your organization may have.
+A [user session](https://help.fullstory.com/hc/en-us/articles/360020624614-What-defines-a-session-in-Fullstory) contains behavioral data, such as interactions, that occur with an app during a period of activity. Retool captures user session data for production apps that are accessed in user mode. This includes any external apps your organization may have.
 
 A new session starts whenever a user launches an app. The session ends when a user leaves the app (such as closing the browser or navigating to a different page). Sessions may also end after a period of inactivity. Refer to [Fullstory's session documentation](https://help.fullstory.com/hc/en-us/articles/360020624614-What-defines-a-session-in-Fullstory) to learn more about session activities.
 
@@ -9465,7 +10554,7 @@ The **Content** section of the Inspector contains settings that control the cont
 
 ### Use case: Integrate Google Calendar resource
 
-You can show events from a Google Calendar on this component using [Retool's Google Calendar integration](../../../data-sources/guides/integrations/project-management/google-calendar.mdx). Use the instructions in this section to set up the Calendar component to display events from an external calendar.
+You can show events from a Google Calendar on this component using [Retool's Google Calendar integration](../../../data-sources/guides/integrations/google/google-calendar.mdx). Use the instructions in this section to set up the Calendar component to display events from an external calendar.
 
 :::note
 
@@ -9475,7 +10564,7 @@ The following method of integrating the Google Calendar API uses OAuth authentic
 
 #### Create a Google Calendar resource
 
-[Create a Google Calendar resource](../../../data-sources/guides/integrations/project-management/google-calendar.mdx). Authenticate the resource with an account that has access to the calendar that you want to use.
+[Create a Google Calendar resource](../../../data-sources/guides/integrations/google/google-calendar.mdx). Authenticate the resource with an account that has access to the calendar that you want to use.
 
 #### Create a resource query
 
@@ -9528,11 +10617,11 @@ The following settings are available in the **Interaction** section to configure
 - **Advanced Setting** > **Timezone**: The timezone in which to display events. Defaults to local time.
 - **Advanced Setting** > **Start week on**: The day of the week on which to begin the week. A number between 0 and 6, where 0 is Sunday and 6 is Saturday. Defaults to 0.
 
-[Event handlers](../interaction-navigation/event-handlers.mdx) listen for and handle interactions with your components. The Calendar component supports **Create event**, **Click event**, **Change event**, and **Remove event** event handlers. Refer to the following sections for more information about end user interaction with the calendar.
+[Event handlers](../interaction-navigation/event-handlers.mdx) listen for and handle interactions with your components. The Calendar component supports **Create event**, **Click event**, **Change event**, and **Remove event** event handlers. Refer to the following sections for more information about internal user interaction with the calendar.
 
 ### Enable event creation
 
-To enable end users to create events, add a **Create event** event handler. This event triggers when a user selects a time interval on the Calendar interface. 
+To enable users to create events, add a **Create event** event handler. This event triggers when a user selects a time interval on the Calendar interface. 
 
 :::note
 
@@ -9554,7 +10643,7 @@ Create a new query that accesses these properties and creates a new event on a c
 
 ### Enable event changes
 
-To enable end users to change events, add a **Change event** event handler. This event triggers when a user selects and moves an existing event on the calendar. Moving an event populates the values of the `changeset` Calendar property. If the event is recurring, the `changeset` contains all of the recurrences. The following object shows an example `changeset`, which is identified by the event ID:
+To enable users to change events, add a **Change event** event handler. This event triggers when a user selects and moves an existing event on the calendar. Moving an event populates the values of the `changeset` Calendar property. If the event is recurring, the `changeset` contains all of the recurrences. The following object shows an example `changeset`, which is identified by the event ID:
 
 ```JSON
 {
@@ -9573,7 +10662,7 @@ Changes to subsequent events overwrite the contents of `changeset`.
 
 ### Enable event deletion
 
-To enable end users to delete events, add a **Remove event** event handler. This event triggers when a user selects an existing event and presses Backspace or Delete.
+To enable users to delete events, add a **Remove event** event handler. This event triggers when a user selects an existing event and presses Backspace or Delete.
 
 Clicking an event populates the `selectedEvent` property. Create a new query that accesses the `selectedEvent.id` and deletes the event on the connected calendar. Set the event handler's **Action** to trigger this query.
 
@@ -9617,7 +10706,7 @@ The **Content** section of the Inspector contains settings that control the cont
 Use one of the following **PDF source** options to identify your PDF:
 
 - **URL**: A publicly-accessible URL for your PDF.
-- **Storage**: A file that you can upload from your computer. Uploaded files are stored using [Retool Storage](../../../data-sources/quickstarts/retool-storage.mdx).
+- **Storage**: A file that you can upload from your computer. Uploaded files are stored using Retool Storage.
 - **JS**: A file object, usually the output of a query.
 
 :::note
@@ -9685,7 +10774,7 @@ import WebPlayground from '/docs/_partials/_components/_web-playground.mdx';
 
 Key features of image components include:
 
-- The option to provide an image from URL, Base64 string, [Retool Storage](../../../data-sources/quickstarts/retool-storage.mdx), or JavaScript file object.
+- The option to provide an image from URL, Base64 string, Retool Storage, or JavaScript file object.
 - Event handlers triggered on image click.
 - Style configuration.
 - Interactive and customizeable annotations through the Bounding Box component.
@@ -9997,7 +11086,7 @@ import Appearance from "/docs/_shared/_appearance.mdx";
 
 ## Design organization and app themes
 
-You can create and manage themes from your organization's [Themes](https://login.retool.com/auth/login?source=docs&redirectOnLogin=settings/themes) settings, or create custom themes that apply to individual apps. Organization-level themes are only available on Business and Enterprise plans. Custom themes are available on all plans.
+You can create and manage themes from your organization's [Themes](https://login.retool.com/auth/login?source=docs&redirectOnLogin=settings/themes) settings, or create custom themes that apply to individual apps. Organization-level themes are only available on a Business or an Enterprise plan. Custom themes are available on all plans.
 
 :::info
 
@@ -10082,7 +11171,7 @@ App-level themes are available to users on all plans.
 
 :::
 
-Within an app, you can apply organization level themes or create a custom theme. Open the **App settings** menu to get started. You can choose to apply an organization-level theme, or apply a custom theme for this app.
+Within an app, you can apply organization level themes or create a custom theme. Open the **App Settings** tab to get started. You can choose to apply an organization-level theme, or apply a custom theme for this app.
 
 Any theme changes apply to the current app only, and you can't edit organizational level themes from within an app. Note that you can't define custom color tokens, font tokens, or metric tokens for a custom app theme.
 
@@ -10246,7 +11335,7 @@ import Browsers from '/docs/_shared/_supported-browsers.mdx';
 
 Retool provides several features that use AI to help you create and edit Retool apps. The following mechanisms enable you to use AI as a development assistant:
 
-- [Assist](./guides/assist/index.mdx) (currently in Public Beta): Use AI to generate or edit whole apps from within the [App IDE](./concepts/ide.mdx).
+- [Assist](./guides/assist/index.mdx) (currently in Public Beta): Use AI to generate or edit whole apps from within the [app IDE](./concepts/ide.mdx).
 - [Ask AI](../queries/guides/ask.mdx): Use AI to write [JavaScript, SQL, or GraphQL queries](#read-and-write-data-using-queries). You can instruct Ask AI to generate a new query, edit a query, explain a query, or fix errors.
 
 [Learn more](./concepts/ai.mdx) about the various AI-powered features that you can use in apps.
@@ -10312,7 +11401,7 @@ You can create **Global** code (e.g., resource queries or variables), which all 
 
 You can drag code to either the **Global** or **Page** section in the **Code** pane to change its scope. You can also move code across pages using the **Move to page** contextual menu action.
 
-The [Header](./concepts/ide.mdx#header-frame) and [Sidebar](./concepts/ide.mdx#sidebar-frame) frames are also globally scoped and persist across all pages. Any components within these frames inherit this behavior and are globally scoped. All other frames (e.g., Modal and Drawer) are page-scoped and only available within the app in which they reside.
+The [Header](./concepts/ide.mdx#header-frame) and [Sidebar frame](./concepts/ide.mdx#sidebar-frame) are also globally scoped and persist across all pages. Any components within these frames inherit this behavior and are globally scoped. All other frames (e.g., Modal and Drawer) are page-scoped and only available within the app in which they reside.
 
 export function Scopes() {
   return (
@@ -10415,7 +11504,7 @@ Hover the cursor over the connecting points to display a tooltip with a list of 
 You can chain embedded expressions together by referencing values that also use embedded expressions. Any input value changes automatically propagate through the entire app. This makes it possible to build powerful applications with very few lines of code.
 
 :::info Dependency cycles
-The dependency graph enables Retool to prevent you from creating _circular dependencies_, where two or more properties rely on each other to function. If you attempt to reference values that rely on one another, the IDE displays a warning.
+The dependency graph enables Retool to prevent you from creating circular dependencies, where two or more properties rely on each other to function. If you attempt to reference values that rely on one another, the IDE displays a warning.
 
 A circular dependency warning.
 
@@ -10449,13 +11538,13 @@ The event handler shows an error notification when a date is selected, but only 
 
   
 
-## Transform data using JavaScript transformers
+## Transform data using transformers
 
 While you can use JavaScript within `{{ }}` embedded expressions, you may need to manipulate data and implement complex logic to produce values, such as filtering or joining data sets.
 
-A [JavaScript transformer](../queries/guides/transformers.mdx) is a reusable block of JavaScript. You reference property values using embedded expressions and the results of the transformation are output on the transformer's `value` property using a `return` statement.
+A [transformer](../queries/guides/transformers.mdx) is a reusable block of JavaScript. You reference property values using embedded expressions and the results of the transformation are output on the transformer's `value` property using a `return` statement.
 
-The following example uses a JavaScript transformer to split a list of names into first and last names. The Listbox component references `{{transformer1.value}}`, which provides an array of last names.
+The following example uses a transformer to split a list of names into first and last names. The Listbox component references `{{transformer1.value}}`, which provides an array of last names.
 
   
 
@@ -11348,7 +12437,7 @@ This component is considered legacy and will be deprecated in the future. Use th
 
 :::note
 
-This component is considered legacy and will be deprecated in the future. Use the newer [Chart components](../charts/index.mdx), which have more features available.
+This component is considered legacy and will be deprecated in the future.  Use the newer [Chart components](../charts/index.mdx), which have more features available.
 
 :::
 
@@ -11892,6 +12981,8 @@ To embed YouTube Shorts using the Video component, use the following URL format:
 
 ## Container List View
 
+Refer to the [Repeatable components](../../../guides/layout-structure/repeatables.mdx) guide for more information about how to use the Container List View component.
+
 :::info Preset component
 
 {frontMatter.sidebar_label} is a preset version of [List View](./list-view.mdx). It has been preconfigured with a nested [Container](../containers-forms/container.mdx) component.
@@ -11901,6 +12992,8 @@ To embed YouTube Shorts using the Video component, use the following URL format:
 ---
 
 ## The Grid View component for Retool Apps
+
+Refer to the [Repeatable components](../../../guides/layout-structure/repeatables.mdx) guide for more information about how to use the Grid View component.
 
 :::info Preset component
 
@@ -11917,6 +13010,8 @@ To embed YouTube Shorts using the Video component, use the following URL format:
 ---
 
 ## The List View component for Retool Apps
+
+Refer to the [Repeatable components](../../../guides/layout-structure/repeatables.mdx) guide for more information about how to use the List View component.
 
 ## Properties
 
@@ -12697,7 +13792,7 @@ Components are interface elements with which users interact, such as input field
 
 The [Table](../../guides/data/table/index.mdx) component enables you to display and interact with data using a feature-rich table.
 
-1. Click  in the left panel to open the **Add UI** tab.
+1. Click  in the left panel to open the **Add UI tab**.
 1. Click-and-drag the Table component to the canvas area.
 
 The Table component's **Data source** initially contains demo data. In the [next part](./data.mdx) of this tutorial, you will write a query to retrieve customer data and display it in the table. 
@@ -12861,7 +13956,7 @@ Now that the app contains multiple pages, users need a way to navigate between t
 
 Frames are distinct areas of the canvas in which you add components. The Header frame is a globally scoped frame that, when enabled, is visible across all pages.
 
-The Header frame contains a Navigation component by default. This component is preconfigured with navigation controls for pages and displays options for both **Customers** and **Subscriptions**.
+Header frame contains a Navigation component by default. This component is preconfigured with navigation controls for pages and displays options for both **Customers** and **Subscriptions**.
 
 export function ArcadeHeader() {
   return (
@@ -13145,7 +14240,7 @@ import TabItem from "@theme/TabItem";
 
 OAuth-based authentication with individual user credentials. Each user is prompted to authenticate with Google using an OAuth flow, and API calls from Retool are made on behalf of the logged-in user. When using apps built using authenticated Google resources, users can only interact with APIs and data to which they have access.
 
-For example, cloud-hosted Retool organizations can grant Retool either **Read and write** or **Read only** access to your [Google Sheets](../guides/integrations/database/google-sheets.mdx) data. This option determines the scopes passed with the OAuth request. Retool recommends **Read and write** so that Retool can read and write spreadsheet data (e.g., create new sheets or update cell rows).
+For example, cloud-hosted Retool organizations can grant Retool either **Read and write** or **Read only** access to your [Google Sheets](../guides/integrations/google/google-sheets.mdx) data. This option determines the scopes passed with the OAuth request. Retool recommends **Read and write** so that Retool can read and write spreadsheet data (e.g., create new sheets or update cell rows).
 
 To create other Google API resources, or to use Retool's Google integrations with self-hosted deployments, you create Google Cloud projects and OAuth 2.0 credentials with scopes you define.
 
@@ -13216,7 +14311,7 @@ The text you provide in an AI query is converted by the model into tokens, after
 
 ## Retool-managed and self-managed models
 
-LLM interactions work by making API requests with an AI provider. As with most other APIs, these requests require authorization credentials, such as an API key. Retool provides access to certain AI models using Retool-managed connections that use Retool's own API keys.
+LLM interactions work by making API requests with an AI provider. As with most other APIs, these requests require authorization credentials, such as an API key. Retool provides access to certain AI models using Retool-managed keys.
 
 A Retool-managed LLM connection enables you to start building and testing with AI models straight away without needing any additional tools or services. Once you're ready to use your AI actions or agents in production, you then need to provide your own authorization credentials. The connection then becomes self-managed.
 
@@ -13286,28 +14381,26 @@ Retool's pricing for AI model usage differs between Retool features.
 
 ### Assist pricing
 
-Usage for [Assist](../../apps/guides/assist/index.mdx) is measured by _credit_. For a limited time, free plans can use up to 100 credits for free, and paid plans (Team, Business, and Enterprise) can use unlimited free credits.
-
-Refer to the [Assist billing and usage](/support/billing-usage/assist) support documentation for more information.
+Refer to the [pricing page](https://retool.com/pricing) for information about Assist usage and pricing.
 
 ### Retool Agents pricing
 
 Usage for [Retool Agents](../../agents/index.mdx) is measured by _hour_, and the hourly rate differs for Retool-managed LLMs and self-managed LLMs. Refer to the [Agents billing and usage](/support/billing-usage/agents) support documentation for more information.
 
-Retool provides access to [OpenAI](https://openai.com), [Anthropic](https://www.anthropic.com), and [Baseten](https://www.baseten.co) AI models for Agents through a Retool-managed connection.
+Retool provides access to [OpenAI](https://openai.com), [Anthropic](https://www.anthropic.com), and [Baseten](https://www.baseten.co) AI models for Agents with a Retool-managed key.
 
 Retool uses an hourly rate for billable usage of managed LLM connections. The exact cost varies depending on provider costs, as shown in the table below.
 
 You can provide your own authorization credentials for each AI provider and the models supported by Retool. Retool also supports the use of [custom AI providers](#custom-ai-provider), allowing you to make use of many more models.
 
-Once you are ready to use Retool Agents in a production environment, you must provide your own credentials. This ensures that your agents aren't restricted by the Retool-managed connection limits.
+Once you are ready to use Retool Agents in a production environment, you must provide your own credentials. This ensures that your agents aren't restricted by the Retool-managed key limits.
 
 To simplify billing, Retool charges a flat-rate hourly fee when using a self-managed LLM connection, as shown in the **Self-managed LLM/key** entry of the table below.
 
 import Partials from "/docs/_partials/_agents-pricing.mdx";
 
 :::note
-Refer to [Agent usage](../../../support/billing-usage/agents) for more information about [Billing and usage](../../../support/billing-usage) for Retool Agents.
+Refer to [Agent usage](/support/billing-usage/agents) for more information about [Billing and usage](/support/billing-usage) for Retool Agents.
 :::
 
 ---
@@ -13369,7 +14462,7 @@ If you want to connect your data to Retool:
 
 ## Configure API authentication
 
-Retool supports many types of API authentication. You can use static authentication tokens or create auth that asks the end user to provide credentials each time they access the application.
+Retool supports many types of API authentication. You can use static authentication tokens or create auth that asks the internal user to provide credentials each time they access the application.
 
 If none of the following options work for your API, you can use [custom API authentication](custom.mdx).
 
@@ -13381,9 +14474,9 @@ This lists all the authentication types Retool support natively, and **Custom Au
 
 ### OAuth 2.0
 
-Retool also supports the OAuth 2.0 authentication scheme. In OAuth 2.0, authentication details are _not_ shared between your end users unless you enable the **Share OAuth2.0 credentials between users** option.
+Retool also supports the OAuth 2.0 authentication scheme. In OAuth 2.0, authentication details are _not_ shared between your internal users unless you enable the **Share OAuth2.0 credentials between users** option.
 
-When the share credentials option is disabled, each of your end users will be required to authenticate via the OAuth authentication flow. The Access/Refresh token that is returned by the OAuth identity provider will be encrypted and then associated with the user's current session with Retool. This allows you to delegate authorization and authentication to the OAuth Identity provider. If needed, you can set the token's lifespan in the **Advanced** > **Access token lifespan** field.
+When the share credentials option is disabled, each of your internal users will be required to authenticate via the OAuth authentication flow. The Access/Refresh token that is returned by the OAuth identity provider will be encrypted and then associated with the user's current session with Retool. This allows you to delegate authorization and authentication to the OAuth Identity provider. If needed, you can set the token's lifespan in the **Advanced** > **Access token lifespan** field.
 
 Here is a sample configuration of Retool connecting with Google's OAuth 2.0 API. Things to take note of:
 
@@ -14058,6 +15151,8 @@ import Intro from "./_intro.mdx";
 ## Supported models
 
 import Support from './_support.mdx';
+
+Amazon Bedrock is a managed service that can be configured for different AI models, such as Anthropic or Cohere models. The models available for use with Retool AI depend on the models you configure for Bedrock.
 
 ## Set up your Amazon Bedrock credentials
 
@@ -15147,6 +16242,57 @@ import Wrapup from '../_partials/_wrapup.mdx';
 
 ---
 
+## Connect to the OpenAI Platform API
+
+import * as Partials from "../_partials/ResourcesPartials";
+import Requirements from "../_partials/_requirements.mdx";
+import Configure from "../_partials/_configure.mdx";
+import Auth from "../_partials/_auth/_auth-settings.mdx";
+import Ssl from "../_partials/_settings/_ssl.mdx";
+import Test from "../_partials/_test-connection.mdx";
+import Save from "../_partials/_save.mdx";
+import Wrapup from "../_partials/_wrapup.mdx";
+
+:::warning
+
+This resource integration is for interacting directly with Open AI's [platform API](https://platform.openai.com/docs/overview). This can be useful for OpenAI organization administrators to programmatically [manage users](https://platform.openai.com/docs/api-reference/users) and [projects](https://platform.openai.com/docs/api-reference/projects).
+
+Refer to the [OpenAI for Retool AI documentation](../ai/openai.mdx) if you want to use OpenAI's models to power AI apps, workflows, and agents.
+
+:::
+
+export function CreateResource() {
+  return (
+    
+      
+    
+  )
+}
+
+  
+
+  
+  
+
+  
+
+  
+  
+
+## Query the resource
+
+The OpenAI Platform resource is now available for use in [resource queries](../../../../queries/tutorials/resource-query.mdx). When writing an OpenAI Platform resource query, you can select any supported API method in the **Operations** dropdown. Refer to OpenAI's platform [API reference](https://platform.openai.com/docs/api-reference/introduction) for more information about supported actions.
+
+export function QueryResource() {
+  return (
+    
+      
+    
+  )
+}
+
+---
+
 ## Finance integration guides
 
 
@@ -15191,6 +16337,10 @@ import Save from '../_partials/_save.mdx';
 import Wrapup from '../_partials/_wrapup.mdx';
 
 Refer to the [Calendar guide](../../../../apps/guides/presentation-styling/calendar.mdx) for information on how to use this resource with the [Calendar component](../../../../apps/reference/components/presentation/calendar.mdx).
+
+:::note
+If you self-host Retool and are using a stable release, to enable **Google Calendar** toggle the feature flag in **Settings** > **Beta**. 
+:::
 
 export function ArcadeEmbed() {
   return (
@@ -15252,6 +16402,10 @@ import Ssl from '../_partials/_settings/_ssl.mdx';
 import Test from '../_partials/_test-connection.mdx';
 import Save from '../_partials/_save.mdx';
 import Wrapup from '../_partials/_wrapup.mdx';
+
+:::note
+If you self-host Retool and are using a stable release, enable **Google Docs** from **Settings** > **Beta**. 
+:::
 
 export function ArcadeEmbed() {
   return (
@@ -15339,6 +16493,12 @@ When building apps on top of Google Sheets, _all users_ in a Retool organization
 ---
 
 ## Connect to Google Slides
+
+:::note
+
+If you self-host Retool and are using a stable release, reach out to your account manager to enable Google Slides.
+
+:::
 
 import * as Partials from '../_partials/ResourcesPartials';
 import Requirements from '../_partials/_requirements.mdx';
@@ -15750,7 +16910,7 @@ You can view all resources within your organization in the **Resources** tab. Th
 - [Protect resource](../../source-control/guides/protect/resources.mdx) (only available if you use Source Control)
 - Delete
 
-You can also access a subset of actions when editing a resource, either from the resource configuration page or when you edit a resource within the App IDE.
+You can also access a subset of actions when editing a resource, either from the resource configuration page or when you edit a resource within the app IDE.
 
 Duplicating a resource creates a resource with the same configuration and credentials. This includes authentication tokens used to authenticate with the resource. The duplicate resource also inherits the default permissions of the folder that the resource is created in.
 
@@ -15870,7 +17030,7 @@ Sort table records.
 
 ## Link Retool Database tables
 
-You can link rows between tables in the Database editor UI to see relevant data in one place. For example, you could link a table with customer information to another table with subscriptions.
+You can link rows between tables in the Retool Database editor to see relevant data in one place. For example, you could link a table with customer information to another table with subscriptions.
 
 The **Foreign Key** field references a field from another table that contains unique values, such as the primary key. Once a value is set, you can view the relevant linked row. 
 
@@ -16207,7 +17367,7 @@ If your deployment is self-hosted, follow the [Enable Retool-managed Vectors on 
 
 ## Create a vector
 
-Within the scope of Retool-managed Vectors, a _Vector_ is a collection of unstructured text (known as _embeddings_). You create a vector to define the overall relationship and then add text or URLs to it. For example, if you wanted to build an AI-powered chat tool and want it to use context from your support site, you would create a vector (such as **Documentation**) and add URLs from your documentation site.
+Within the scope of Retool-managed Vectors, a vector is a collection of unstructured text (known as _embeddings_). You create a vector to define the overall relationship and then add text or URLs to it. For example, if you wanted to build an AI-powered chat tool and want it to use context from your support site, you would create a vector (such as **Documentation**) and add URLs from your documentation site.
 
 To create a Vector:
 
@@ -16595,7 +17755,7 @@ Retool also offers a range of [built-in solutions](#built-in-solutions) that you
 
 ## Data sources
 
-A _data source_ is somewhere you store and perform operations with data. This could be a [PostgreSQL database](https://www.postgresql.org/), the [Twilio REST API](https://www.twilio.com/docs/usage/api), an [Amazon S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingBucket.html), etc. You can add as many data sources as you need to Retool and make them available for users to query.
+A data source is somewhere you store and perform operations with data. This could be a [PostgreSQL database](https://www.postgresql.org/), the [Twilio REST API](https://www.twilio.com/docs/usage/api), an [Amazon S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingBucket.html), etc. You can add as many data sources as you need to Retool and make them available for users to query.
 
 ## Resources 
 
@@ -16684,7 +17844,7 @@ _Helper resources_ don't interact with data sources. Instead, they provide you w
 
 ## Retool Database quickstart
 
-This guide serves as an introduction to [Retool Database](https://retool.com/products/database). It covers many of the concepts and terminology you would come across when working with data in Retool Database. After reading this page, you should have a good understanding of the fundamentals for Retool Database.
+This guide serves as an introduction to Retool Database. It covers many of the concepts and terminology you would come across when working with data in Retool Database. After reading this page, you should have a good understanding of the fundamentals for Retool Database.
 
 ## Introduction
 
@@ -16720,7 +17880,7 @@ Retool Database is designed to be a convenient way to store data to use within o
 
 ## Usage and limits 
 
-Cloud-hosted organizations can store the equivalent of 5GB of PostgreSQL data, with unlimited tables and rows. The amount of storage space your data uses is dependent on how many records, fields, and tables you use, and the size of values. Retool customers on Team, Business, or Enterprise plans that exceed their storage limits can reach out to Retool to request a limit increase. Retool customers on Free plans would need to upgrade to a Team, Business, or Enterprise plan prior to requesting a storage limit increase.  
+Cloud-hosted organizations can store the equivalent of 5GB of PostgreSQL data, with unlimited tables and rows. The amount of storage space your data uses is dependent on how many records, fields, and tables you use, and the size of values. Retool customers on a Business or an Enterprise plan that exceed their storage limits can reach out to Retool to request a limit increase. Retool customers on the Free plan would need to upgrade to a Business or an Enterprise plan prior to requesting a storage limit increase.  
 
 ## Data redundancy
 
@@ -17369,20 +18529,24 @@ Enter a test email and click **Send** to test your queries. You can also prevent
 
 ## Retool-managed Vectors tutorial
 
-[Retool-managed Vectors](../quickstarts/retool-vectors.mdx) is a hosted vector database that enables you to store unstructured text from documents and web pages for use with AI models through Retool. Retool abstracts away the complexities of preparing text and automatically generates the required data for AI models to make decisions using your data.
+Retool-managed Vectors is a hosted vector database that enables you to store unstructured text from documents and web pages for use with AI models through Retool. Retool abstracts away the complexities of preparing text and automatically generates the required data for AI models to make decisions using your data.
 
 You can include related information from [Retool-managed Vectors](../quickstarts/retool-vectors.mdx) to provide more context. This allows you to instruct AI models to use your own data when making decisions, such as responding to a customer with context from support articles.
 
-The following guide explains how to add text to Retool-managed Vectors and use it with the [Generate text](../../queries/guides/ai/text.mdx#generate-text) AI Action. To get started, navigate to the **Resources** tab in your organization and select **Retool Vectors**.
+The following guide explains how to add text to Retool-managed Vectors and use it with the [Generate text](../../queries/guides/ai/text.mdx#generate-text) AI Action.
 
 :::info Vector contents
 
 Each vector you create can contain either document text or URLs, not both.
 :::
 
-## 1. Create a Vector
+## 1. Enable Vectors
 
-You can create two types of Vectors:
+import Enable from '/docs/_shared/_enable-vectors.mdx';
+
+## 2. Create a Vector
+
+To get started, navigate to the **Resources** tab in your organization and select **Retool Vectors**. You can create two types of Vectors:
 
 - [Document Vector](../guides/vectors/text.mdx): Store plain text that you enter manually or extract from uploaded PDF documents.
 - [URL Vector](../guides/vectors/urls.mdx): Store text fetched from publicly accessible web pages.
@@ -17406,7 +18570,7 @@ To create a URL Vector:
 3. Specify a name and select **Site URLs**.
 4. Click **Create**.
 
-## 2. Add embeddings
+## 3. Add embeddings
 
 Click **Add document** and select whether to upload a PDF file or add plain text manually. Retool extracts text from PDF documents automatically.
 
@@ -17425,7 +18589,7 @@ For the purposes of this guide, set the following:
 
 This instructs Retool-managed Vectors to crawl Retool Docs but exclude changelog content.
 
-## 3. Use Retool-managed Vectors in AI Actions
+## 4. Use Retool-managed Vectors in AI Actions
 
 You can include context from Retool-managed Vectors in apps and workflows using the [Generate text](../../queries/guides/ai/text.mdx#generate-text) and [Generate chat response](../../queries/guides/ai/chat.mdx) AI Actions. This step assumes you have created a URL Vector using `https://docs.retool.com`.
 
@@ -17684,7 +18848,6 @@ Definitions of terms you may come across when building software on Retool.
 
 ## Index
 
-import SearchBar from "@theme/SearchBar";
 import DocCardList from "@theme/DocCardList";
 import VersionCard from "@theme/VersionCard";
 import VersionCardList from "@theme/VersionCardList";
@@ -17715,6 +18878,16 @@ Seamlessly connect databases, build with elegant components, and customize with 
 ## Mobile app best practices
 
 import Shared from '/docs/_shared/_app-performance-best-practices.mdx';
+
+## Enable cache on page load
+
+If your users will be using your app in an area with low connectivity or or slow connection, consider turning on **Enable Cache page load** in **Settings** > **Mobile Advanced Settings**. This setting allows you to cache the app state on mobile devices to improve performance.
+
+:::note
+
+Enabling this setting may mean that users do not get the most recent version of your app. Users will see a top banner indicating that the app has been updated.
+
+:::
 
 ---
 
@@ -17830,7 +19003,14 @@ The Retool Mobile app for iOS and Android uses [React Native](http://react-nativ
 
 ## Device support
 
-Retool Mobile apps are currently supported on iOS 13+ and Android 5.0 (API level 21). Some Retool functionality may be unavailable due to restrictions or limitations when run natively.
+Retool Mobile apps are currently supported on the following OS versions. You may be able to download the app on older devices, but you will not receive updates.
+
+| Operating system | Minimum version                  |
+| ---------------- | -------------------------------- |
+| iOS              | 15.5                             |
+| Android          | API 23 (Android 6.0 Marshmallow) |
+
+Some Retool functionality may be unavailable due to restrictions or limitations when run natively.
 
 ## App links
 
@@ -17851,9 +19031,9 @@ To create a White-label App, you provide Retool with the necessary provisioning 
 
 ## Eligibility
 
-White-label apps are only available to Retool Cloud or Self-hosted Retool organizations on Enterprise plans. The requirements depend on whether you use Retool-managed or self-managed distribution, and if you will distribute apps to iOS or Android devices.
+The requirements for white-label apps depend on whether you use Retool-managed or self-managed distribution, and if you will distribute apps to iOS or Android devices.
 
-If you’re an existing Enterprise customer, reach out to your deployed engineer to get started. If you are looking to upgrade to the Enterprise plan, complete [this form](https://retoolin.tryretool.com/embedded/public/ac1ba0ab-72d4-48be-87b4-86bd305be5d2).
+If you're an existing Enterprise customer, reach out to your deployed engineer to get started. If you're interested in upgrading to an Enterprise plan, [book a demo](https://retool.com/demo/?meeting_page_source=docs).
 
 ## Distribution options
 
@@ -17957,7 +19137,7 @@ Self-hosted deployments must also complete additional steps before using push no
 
 ## Subscribe users to push notifications
 
-Each user must first _subscribe_ to receive push notifications. This is done by adding a query to mobile apps that runs automatically whenever users launch the app. Open a mobile app in the App IDE and add a **Resource query**, select the **Mobile Push Notifications** resource, then select the **Subscribe** action.
+Each user must first _subscribe_ to receive push notifications. This is done by adding a query to mobile apps that runs automatically whenever users launch the app. Open a mobile app in the app IDE and add a **Resource query**, select the **Mobile Push Notifications** resource, then select the **Subscribe** action.
 
 You specify the topic to which the user subscribes. You can configure multiple topics, such as `ALL_USERS` or `SALES_TEAM`. You can subscribe the user to receive only direct notifications using `USER:{{current_user.email}}`.
 
@@ -18133,7 +19313,7 @@ You can generate an **auto-join link** that allows users to sign up from the Ret
 
 :::
 
-You can [invite new users](../../../org-users/tutorials/manage.mdx#add-users) or send a link to existing users via email. Click the **Share** button in the upper-right of the App IDE to display sharing options. You can enter individual email addresses or click **Add many at once** to use a comma-separated list. You can also copy the link to an app to use elsewhere.
+You can [invite new users](../../../org-users/tutorials/manage.mdx#add-users) or send a link to existing users via email. Click the **Share** button in the upper-right of the app IDE to display sharing options. You can enter individual email addresses or click **Add many at once** to use a comma-separated list. You can also copy the link to an app to use elsewhere.
 
 All Retool apps have a unique URL. Direct links open in the Retool Mobile iOS or Android app automatically. If the app is not currently installed, the user is routed to their device-specific app store listing for download.
 
@@ -18155,7 +19335,7 @@ The passwordless login flow for users who just installed Retool Mobile can autom
 
 ### Restrict user access
 
-Your users can browse and launch any of your mobile apps by default. If your Retool organization is on either the [Business or Enterprise](https://retool.com/pricing/) plan, you can [configure permission controls](../../../permissions/guides.mdx) and restrict mobile app access only to certain users or groups.
+Your users can browse and launch any of your mobile apps by default. If your Retool organization is on a [Business or an Enterprise plan](https://retool.com/pricing/), you can [configure permission controls](../../../permissions/guides.mdx) and restrict mobile app access only to certain users or groups.
 
 ---
 
@@ -18175,9 +19355,9 @@ import Shared from '/docs/_shared/_releases-history.mdx';
 
 To create a White-label app, you provide Retool with the necessary provisioning resources. Retool then generates a custom version of the mobile app for you and uploads it to the iOS App Store or Google Play.
 
-:::info Eligibility and requirements
+:::info Requirements
 
-White-label apps are only available to organizations on the Enterprise plan. The requirements depend on whether Retool or your organization manages app distribution. If you’re an existing Enterprise customer, reach out to your deployed engineer to get started. If you are looking to upgrade to the Enterprise plan, complete [this form](https://retoolin.tryretool.com/embedded/public/ac1ba0ab-72d4-48be-87b4-86bd305be5d2).
+The requirements depend on whether Retool or your organization manages app distribution. If you're an existing Enterprise customer, reach out to your deployed engineer to get started. If you're interested in upgrading to an Enterprise plan, [book a demo](https://retool.com/demo/?meeting_page_source=docs).
 
 Learn more in the [White-label app](../../../concepts/white-label.mdx) explanation guide.
 
@@ -18372,7 +19552,7 @@ export function ArcadeEmbed() {
 
 ## Save uploaded files and images
 
-You can reference `value` in queries to [store files in a data store](../../../queries/guides/files.mdx), such as [Retool Storage](../../../data-sources/quickstarts/retool-storage.mdx) or [Amazon S3](../../../data-sources/guides/integrations/object-file-store/amazon-s3.mdx).
+You can reference `value` in queries to [store files in a data store](../../../queries/guides/files.mdx), such as Retool Storage or [Amazon S3](../../../data-sources/guides/integrations/object-file-store/amazon-s3.mdx).
 
 :::tip Save files directly to Retool Storage
 
@@ -18412,7 +19592,7 @@ The Signature component temporarily saves a captured signature in PNG format as 
 Retool recommends saving signatures with [utils.getDataByObjectURL()](../../../queries/reference/libraries/utils.mdx#utilsgetdatabyobjecturl), which converts blobs into a Base64-encoded string. 
 :::
 
-You can reference the `value` property of Signature in queries to upload and store the signature in a data store, such as Amazon S3 or [Retool Storage](../../../data-sources/quickstarts/retool-storage.mdx). 
+You can reference the `value` property of Signature in queries to upload and store the signature in a data store, such as Amazon S3 or Retool Storage. 
 
 ### Upload a signature to Retool Storage
 
@@ -18729,7 +19909,7 @@ Retool Mobile organizes mobile components into separate screens that you create 
 
 ## Manage screens
 
-When editing a Retool Mobile app, the [App IDE](../../../apps/concepts/ide.mdx) includes an additional _mobile panel_ on the left. Use the **Screens** section of the mobile panel to select, add, or delete screens from your mobile app.
+When editing a Retool Mobile app, the [app IDE](../../../apps/concepts/ide.mdx) includes an additional _mobile panel_ on the left. Use the **Screens** section of the mobile panel to select, add, or delete screens from your mobile app.
 
 To add a new screen, click the **+** button. To delete an existing screen, click the `•••` icon next to the screen, then select **Delete**.
 
@@ -18766,7 +19946,7 @@ Retool uses [event handlers](event-handlers.mdx) to trigger queries or other act
 | **Open Modal**         | Open a modal using the specified screen.                  |
 | **Back**               | Go back to the previous screen.                           |
 | **Back to root**       | Navigate back to the first screen.                        |
-| **Open bottom sheet**  | Open a modal that slides from the bottom of the viewport. |
+| **Open bottom sheet**  | Open a Bottom Sheet that slides from the bottom of the viewport. |
 | **Select tab**         | Navigate to a screen and update the tab bar.              |
 
 You can trigger **Navigation** events almost anywhere in a mobile app that supports event handling, such as a button press or query failure.
@@ -18801,7 +19981,7 @@ Use the **Screen events** section of the Inspector to configure a screen with on
 
 A **Load** event occurs when a screen is loaded into the app's navigation. This occurs when:
 
-- You add a screen to the tab bar in the App IDE.
+- You add a screen to the tab bar in the app IDE.
 - A user first navigates to a screen during an app session.
 - A modal screen appears.
 
@@ -18809,7 +19989,7 @@ Load events are useful if you need to perform a one-time action in a particular 
 
 An **Unload** event occurs when a screen is unloaded from navigation. This occurs when:
 
-- You remove a screen to the tab bar in the App IDE.
+- You remove a screen to the tab bar in the app IDE.
 - A modal screen is dismissed.
 
 Modal screens trigger **Load** and **Unload** events since they are loaded and unloaded into the app's navigation on-demand.
@@ -18853,9 +20033,9 @@ Mobile app screens cannot directly interact with each other. You can use globall
 
 ## Share data using global variables
 
-[Variables](../../../queries/guides/store-temporary-data.mdx) temporarily store data for the duration of the user's app session. They can also include an optional initial value. 
+Variables temporarily store data for the duration of the user's app session. They can also include an optional initial value. Learn more about [variables](../../../queries/guides/store-temporary-data.mdx).
 
-To create a global variable, navigate to the Code tab and click **+ > Variable**. As the variable is globally scoped, you can update its value from any page using [event handlers](../../../apps/guides/interaction-navigation/event-handlers.mdx), or with the `setIn()` and `setValue()` [JavaScript methods](../../../queries/reference/objects/variable.mdx#methods).
+To create a global variable, navigate to the **Code** tab and click **+ > Variable**. As the variable is globally scoped, you can update its value from any page using [event handlers](../../../apps/guides/interaction-navigation/event-handlers.mdx), or with the `setIn()` and `setValue()` [JavaScript methods](../../../queries/reference/objects/variable.mdx#methods).
 
 For example, you can use the List Collection component's **Click** event handler to store the selected item in a global variable. You can then reference the global variable in another screen.
 
@@ -19140,7 +20320,7 @@ PDF is currently the only file type supported for offline assets.
 :::
 
 To create a new offline asset, upload a PDF URL to your mobile app from **App settings > Offline Assets**. 
-1. Click the **App settings** (gear icon). 
+1. Click the **App Settings** tab. 
 2. Select **Offline Assets**. 
 3. Click the **Add new** button.
 4. Populate the **Name** and **URL** of the PDF.
@@ -19159,13 +20339,13 @@ export function ArcadeEmbed_offline() {
 :::warning
 To view your PDF with the PDF Viewer component, your URL must have a CORS policy that allows retool.com to access the PDF file. CORS policies vary between cloud and self-hosted (for example, `https:{domain}.retool.com` for cloud-hosted organizations, and `FQDN` for self-hosted organizations). To view an example CORS policy, refer to [Configure the CORS policy](../../../data-sources/guides/integrations/object-file-store/amazon-s3.mdx#configure-the-cors-policy). 
 
-You can also upload a PDF as a [Retool Storage](../../../data-sources/quickstarts/retool-storage.mdx) resource, and select **Copy URL** from the `...` dropdown menu. 
+You can also upload a PDF as a Retool Storage resource, and select **Copy URL** from the `...` dropdown menu. 
 :::
 
 To use the PDF Viewer component:
 1. Open the **Component tree** panel. 
 2. Select the **+** to add a new component.
-3. Select the PDF Viewer component and drag it to the App IDE. 
+3. Select the PDF Viewer component and drag it to the app IDE. 
 4. In the **Inspector**, select **Offline Asset** from the **PDF source** dropdown. 
 5. Select the **Offline Asset** to view from the dropdown list. 
 
@@ -19183,13 +20363,7 @@ export function ArcadeEmbed_pdfviewer() {
 
 ## Offline mode
 
-:::note
-
-Offline mode is available on the [Business](https://retool.com/pricing) plan.
-
-:::
-
-_Offline mode_ makes it possible for Retool Mobile apps that run natively to continue functioning without a data connection. When enabled, queries that read data can cache the most recent results to make them available offline. Queries that write data are held in a queue and run once the data connection is restored.
+Offline mode makes it possible for Retool Mobile apps that run natively to continue functioning without a data connection. When enabled, queries that read data can cache the most recent results to make them available offline. Queries that write data are held in a queue and run once the data connection is restored.
 
 ## Considerations
 
@@ -19199,7 +20373,7 @@ If you plan to use offline mode, keep in mind the following considerations.
 
 Queries configured to read data for offline mode only cache data when the user views the results. The user must navigate to screens and view the query data at least once while connected.
 
-If you need to download data in advance, consider using [LocalStorage](../../../queries/reference/objects/localstorage.mdx) to temporarily download data that can be accessed when offline.
+If you need to download data in advance, consider using localStorage to temporarily download data that can be accessed when offline.
 
 ### Write queries run sequentially
 
@@ -19219,7 +20393,7 @@ Retool Mobile can cache up to 100MB of data. If offline mode exceeds this limit,
 
 ## Enable offline mode
 
-Offline mode is available on a per-app basis and enabled in the App IDE. Click `•••` to open the **App actions** menu, select **Mobile app settings**, then toggle **Mobile offline mode** on.
+Offline mode is available on a per-app basis and enabled in the app IDE. Click `•••` to open the **App actions** menu, select **Mobile app settings**, then toggle **Mobile offline mode** on.
 
 Retool Mobile attempts to trigger pending queries automatically. You can require users to manually trigger pending queries that write data by toggling **Mobile offline mode delay sync**.
 
@@ -19253,6 +20427,14 @@ Display body values can help provide context on the pending changes, such as dis
 Retool Mobile automatically processes pending queries once the connection is restored. If **Mobile offline mode delay sync** is enabled, the Job Manager includes an action button to manually trigger the queries—users must press this for changes to occur.
 
 The Job Manager processes each pending change sequentially. If a query fails for any reason, such as a conflict in data, the user must resolve this by retrying or removing the failed change. Any remaining queries will remain in a pending state until this is completed.
+
+## Use Retool Storage in offline mode
+
+Some users experience issues handling images in offline mode, because dependent queries are not supported after uploads. As a result, it’s impossible to execute post-upload processes while offline.
+
+If you are having issues handling images in offline mode, reach out to your account manager or the support team and request that they enable the `mobileRetoolStorageAsync` feature flag.
+
+This feature enables uploaded files to be stored on the device and added to the offline queue for later submission while providing the Retool Storage metadata right away. Users can then proceed with post-data processing even while offline.
 
 ---
 
@@ -19345,7 +20527,7 @@ This guide serves as an introduction to Retool mobile apps that run natively on 
 
 ## Assemble the interface
 
-A Retool Mobile app's user interface is comprised of _screens_ and _components_. These interface elements function as objects with internal state.
+A Retool Mobile app's user interface is comprised of screens and components. These interface elements function as objects with internal state.
 
 - [Screens](#screens) are separate sections that contain their own code and components. Users navigate between screens, which are often used for distinct use cases. For example, a customer support app might have separate screens to view a list of customers and details of a selected customer.
 - [Components](#components) are interface elements, such as a [text input field](./reference/components/forms/text-input.mdx) or a [button](./reference/components/buttons/button.mdx), with which users interact.
@@ -19362,7 +20544,7 @@ You also write code that interacts with data, transforms values, or control beha
 
 ### Components
 
-You build mobile apps using the [App IDE](../apps/concepts/ide.mdx) for Retool Mobile, Retool's drag-and-drop app building web interface. You use the App IDE to:
+You build mobile apps using the [app IDE](../apps/concepts/ide.mdx) for Retool Mobile, Retool's drag-and-drop app building web interface. You use the app IDE to:
 
 - Visually assemble the mobile app interface.
 - Write queries to interact with data.
@@ -19459,7 +20641,7 @@ Hover the cursor over the connecting points to display a tooltip with a list of 
 You can chain embedded expressions together by referencing values that also use embedded expressions. Any input value changes automatically propagate through the entire app. This makes it possible to build powerful applications with very few lines of code.
 
 :::info Dependency cycles
-The dependency graph enables Retool to prevent you from creating _circular dependencies_, where two or more properties rely on each other to function. If you attempt to reference values that rely on one another, the IDE displays a warning.
+The dependency graph enables Retool to prevent you from creating circular dependencies, where two or more properties rely on each other to function. If you attempt to reference values that rely on one another, the IDE displays a warning.
 
 :::
 
@@ -19474,11 +20656,11 @@ You configure event handlers to perform actions whenever a specific event occurs
 
 The Inventory mobile app uses a number of different event handlers. For instance, an event handler is configured to navigate to the `itemDetailsScreen` screen when an item is selected from the list. This screen contains components that reference the selected item's properties.
 
-## Transform data using JavaScript transformers
+## Transform data using transformers
 
 While you can use JavaScript within `{{ }}` embedded expressions, you may need to manipulate multiple sources of data and implement complex logic to produce values, such as filtering or joining data sets.
 
-A [JavaScript transformer](../queries/guides/transformers.mdx) is a reusable block of JavaScript. Unlike the data transformation you can perform directly from a query, transformers operate independently. You reference property values using embedded expressions and the results of the transformation are output on the transformer's `value` property using a `return` statement.
+A [transformer](../queries/guides/transformers.mdx) is a reusable block of JavaScript. Unlike the data transformation you can perform directly from a query, transformers operate independently. You reference property values using embedded expressions and the results of the transformation are output on the transformer's `value` property using a `return` statement.
 
 The Inventory mobile app uses a transformer, `totalPrice`, to calculate the total amount of all visible items. The result is then formatted using `toLocaleString()` and displayed in a Text mobile component.
 
@@ -19551,9 +20733,9 @@ Push notifications use topics to represent the scope for recipients. Topics are 
 
 ## Test and troubleshoot issues
 
-You can use Retool's [Debug Tools](./concepts/debug-tools.mdx) to explore your Retool Mobile app, review errors, and debug issues during development. You can also use the Model browser in the left panel of the App IDE to explore all component and query properties.
+You can use Retool's [Debug Tools](./concepts/debug-tools.mdx) to explore your Retool Mobile app, review errors, and debug issues during development. You can also use the Model browser in the left panel of the app IDE to explore all component and query properties.
 
-Retool Mobile does not support interactions using the web console. This includes `console.log()` or running JavaScript using the **Console** tab of Debug Tools. Instead, you can use components to display output by setting their values (e.g., Text Area) or **Run JS Code** JavaScript queries to perform certain commands directly in the App IDE.
+Retool Mobile does not support interactions using the web console. This includes `console.log()` or running JavaScript using the **Console** tab of Debug Tools. Instead, you can use components to display output by setting their values (e.g., Text Area) or **Run JS Code** JavaScript queries to perform certain commands directly in the app IDE.
 
 ## Wrap up
 
@@ -19883,6 +21065,12 @@ A chart to visualize data in different layouts using [Plotly](https://plotly.com
 ---
 
 ## The HTML component for Retool Mobile
+
+:::note
+
+The HTML component utilizes [react-native-render-html](https://github.com/meliorence/react-native-render-html), and it has certain [limitations](https://github.com/meliorence/react-native-render-html/blob/master/HELP.adoc#standard) that mean it cannot always adhere to CSS or HTML standards.
+
+:::
 
 ## Properties
 
@@ -20323,12 +21511,12 @@ You can use `{{ }}` embedded expressions to write JavaScript almost anywhere in 
 
 ### Filter with a transformer
 
-You can use a JavaScript transformer to perform client-side filtering of query results. Transformers dynamically update whenever there is a change to reference values. 
+You can use a transformer to perform client-side filtering of query results. Transformers dynamically update whenever there is a change to reference values. 
 
 To create a transformer:
 
 1. Navigate to the Code tab.
-1. Click  and select **Transformer**.
+2. Click  and select **Transformer**.
 
 Next, write a JavaScript statement that filters the results based on the value of Search Bar using the `filter()` JavaScript method.
 
@@ -20570,7 +21758,7 @@ If you want users to automatically be provisioned Retool accounts when visiting 
 
 Large organizations have many different teams and use cases that often operate independently. You can set up [Spaces](../tutorials/spaces.mdx) to enable isolation of teams and development workflows, without needing to create a separate Retool account if you're on cloud or spin up separate Retool instances if you're self-hosting.
 
-In some cases, it may make sense to deploy several instances in separate VPCs to ensure network isolation between development and production environments. See [scale your Retool organization](scale-organization.mdx) for more.
+In some cases, it may make sense to deploy several instances in separate VPCs to ensure network isolation between development and production instances. See [scale your Retool organization](scale-organization.mdx) for more.
 
 ### Programmatic management
 
@@ -20582,9 +21770,11 @@ Project access refers to managing users' access to the different use cases–gro
 
 ### Role-based access controls
 
-Retool's [role-based access controls](../../permissions/quickstart.mdx#access-rules) let you manage access to Retool apps, folders, Workflows, resources, queries, and more. You can create multiple custom permission groups, assign access levels to Retool apps, and delegate [Group Admin](../../../permissions/guides/configure-permission-groups#custom-permission-groups) responsibility to users for them to manage group membership.
+Retool's role-based access controls let you manage access to Retool apps, folders, Workflows, resources, queries, and more. You can create multiple custom permission groups, assign access levels to Retool apps, and delegate [Group Admin](../../../permissions/guides/configure-permission-groups#custom-permission-groups) responsibility to users for them to manage group membership.
 
 Users who do not have access to Retool apps cannot see them in the application listing.
+
+[Learn more](../../permissions/quickstart.mdx#access-rules) about role-based access controls.
 
 ### Direct access sharing
 
@@ -20594,15 +21784,17 @@ Sometimes, it may be too much overhead for an admin to create a permission group
 
 Data access concerns a user's ability to see or edit sensitive data within Retool apps. In Retool, restricting access to apps displaying or working with sensitive data implicitly means restricting access to the data itself. Retool has controls to make sure editors and viewers can only see data they're allowed to see.
 
-### Environments
+### Resource environments
 
-[Resource environments](../guides/configuration/environments.mdx) allow admins to configure resources that point to sensitive and nonsensitive data. Retool also supports setting permission groups' access levels to resource environments, which ensures that only certain groups can operate on production data.
+Resource environments allow admins to configure resources that point to sensitive and nonsensitive data. Retool also supports setting permission groups' access levels to resource environments, which ensures that only certain groups can operate on production data.
+
+[Learn more](../guides/configuration/environments.mdx) about resource environments.
 
 ### User attributes
 
-Often, information about Retool users exists in systems outside of Retool, but is necessary to determine the data a user is allowed to access. [User attributes](../guides/user-management/user-attributes.mdx) allow you to set arbitrary metadata on the Retool user.
+Often, information about Retool users exists in systems outside of Retool, but is necessary to determine the data a user is allowed to access. User attributes allow you to set arbitrary metadata on the Retool user.
 
-You can reference user attributes in Retool apps through JavaScript: you can hide and show data and app elements, as well as control custom behavior. You can also use them in queries, which makes it straightforward to set up [row-level security](../../queries/concepts/row-level-security.mdx) in Retool.
+You can [reference user attributes](../guides/user-management/user-attributes.mdx) in Retool apps through JavaScript: you can hide and show data and app elements, as well as control custom behavior. You can also use them in queries, which makes it straightforward to set up [row-level security](../../queries/concepts/row-level-security.mdx) in Retool.
 
 ### Queries
 
@@ -20618,7 +21810,7 @@ If you don’t have OpenID SSO set up but have a separate authorization server, 
 
 ## App development and release process
 
-Retool also provides controls to manage app development, reviews, and releases to end users.
+Retool also provides controls to manage app development, reviews, and releases to users.
 
 ### Source Control
 
@@ -20626,15 +21818,15 @@ Retool also provides controls to manage app development, reviews, and releases t
 
 Protected apps are not modified until changes are reviewed and merged in the source control provider (e.g., in GitHub). This workflow mirrors a typical software development lifecycle, in which no engineer can push code directly to the `main` branch.
 
-Source Control enables users to sync apps across multiple Retool instances and Spaces. If you have VPC isolation between non-production and production environments, a common approach is to configure your production instance of Retool as read-only, pulling changes from a central repository. Development happens on branches in a development instance, and once changes are reviewed through pull requests and app preview branches, code is merged into the main branch.
+Source Control enables users to sync apps across multiple Retool instances and Spaces. If you have VPC isolation between non-production and production instances, a common approach is to configure your production instance of Retool as read-only, pulling changes from a central repository. Development happens on branches in a development instance, and once changes are reviewed through pull requests and app preview branches, code is merged into the main branch.
 
 ### Releases
 
-[Releases](../../apps/guides/app-management/releases-history.mdx) let you version and release app changes to your users. This method can also be used in conjunction with Source Control. Once a branch is merged into production, you can review it on production data before rolling out changes to end users using versioned release.
+[Releases](../../apps/guides/app-management/releases-history.mdx) let you version and release app changes to your users. This method can also be used in conjunction with Source Control. Once a branch is merged into production, you can review it on production data before rolling out changes to users using versioned release.
 
 ### Audit logs
 
-On the Business plan and above, Retool provides [audit logs](../guides/monitoring/audit-logs.mdx) for user actions that happen in Retool. If you're self-hosting Retool, you have access to the underlying PostgreSQL database on which your Retool instance runs. You can [connect it as a resource](../guides/monitoring/audit-logs.mdx#access-audit-logs-in-sql-or-stdout) and build your own Retool app to display custom views of your audit logs.
+On a Business or an Enterprise plan, Retool provides [audit logs](../guides/monitoring/audit-logs.mdx) for user actions that happen in Retool. If you're self-hosting Retool, you have access to the underlying PostgreSQL database on which your Retool instance runs. You can [connect it as a resource](../guides/monitoring/audit-logs.mdx#access-audit-logs-in-sql-or-stdout) and build your own Retool app to display custom views of your audit logs.
 
 Additionally, you can send audit log events from Retool to DataDog. See our [guide](../guides/monitoring/audit-logs.mdx) for more details.
 In self-hosted Retool, all audit logs stream to `stdout`, so you can set up an external service or sidecar that consumes them.
@@ -20724,15 +21916,15 @@ When you sign an annual agreement for the Enterprise plan on Retool, our team wi
 
 ## Cloud-hosted
 
-For customers hosted in our multi-tenant Cloud environment, you will sign up for a new instance of Retool or utilize an existing instance of Retool on a self-service plan. Your Retool Account Executive will provision that instance of Retool with the required permissions to enable Enterprise plan features.
+For customers hosted in our multi-tenant Cloud instance, you will sign up for a new instance of Retool or utilize an existing instance of Retool on a self-service plan. Your Retool Account Executive will provision that instance of Retool with the required permissions to enable Enterprise plan features.
 
 ## Cloud-hosted and Retool-managed
 
-For customers where Retool is managing your deployment inside of your own dedicated single-tenant infrastructure, Retool will manage all aspects of the licensing and provisioning process. Our infrastructure team will reach out to you with access instructions once your environment is deployed.
+For customers where Retool is managing your deployment inside of your own dedicated single-tenant infrastructure, Retool will manage all aspects of the licensing and provisioning process. Our infrastructure team will reach out to you with access instructions once your instance is deployed.
 
 ## Self-hosted
 
-For customers who elect to self-host Retool in their own environment, your Account Executive will provide you with a unique license key via email that you will provide inside an environment variable for each deployment. This license key will expire at the conclusion of your Retool agreement’s service term, but the expiration date will be extended as and when your Retool agreement renews.
+For customers who elect to self-host Retool in their own instance, your Account Executive will provide you with a unique license key via email that you will provide inside an environment variable for each deployment. This license key will expire at the conclusion of your Retool agreement’s service term, but the expiration date will be extended as and when your Retool agreement renews.
 
 ---
 
@@ -20777,7 +21969,7 @@ Establish a clear [governance model](governance.mdx) that outlines rules, polici
 
 We recommend integrating Retool with an existing identity provider if you need to provision and manage many groups of stakeholders. With [just-in-time (JIT) user provisioning](../../sso/guides/jit-provisioning.mdx) enabled, users who exist in your identity provider are automatically provisioned Retool accounts upon signing into Retool.
 
-As new teams and user groups are added, you can configure role-mapping between your identity provider and Retool as needed. New team members are automatically provisioned with Retool accounts (via [SCIM](../../sso/guides/scim-user-provisioning.mdx) or [Group Push](/sso/guides/scim-user-provisioning.mdx#enable-group-push)), streamlining the onboarding process.
+As new teams and user groups are added, you can configure role-mapping between your identity provider and Retool as needed. New team members are automatically provisioned with Retool accounts (via [SCIM](../../sso/guides/scim-user-provisioning.mdx) or [Group Push](../../sso/guides/scim-user-provisioning.mdx#enable-group-push)), streamlining the onboarding process.
 
 ## Set up automations
 
@@ -20785,9 +21977,9 @@ Use the [Retool API](../guides/retool-api/index.mdx) to automate the creation an
 
 ## Define your development process
 
-At scale and in production, having the right Retool app development process helps ensure a stable product for end users. [Source Control](../../source-control/index.mdx) and [Releases](../../apps/guides/app-management/releases-history.mdx) are two key features to enforce a development lifecycle that scales across your company.
+At scale and in production, having the right Retool app development process helps ensure a stable product for users. [Source Control](../../source-control/index.mdx) and [Releases](../../apps/guides/app-management/releases-history.mdx) are two key features to enforce a development lifecycle that scales across your company.
 
-If you're using [Spaces](../tutorials/spaces.mdx), multiple teams can each have separate development workflows between development and production environments. See [Spaces and multiple instances](#spaces-and-multiple-instances) below.
+If you're using [Spaces](../tutorials/spaces.mdx), multiple teams can each have separate development workflows between development and production instances. See [Spaces and multiple instances](#spaces-and-multiple-instances) below.
 
 ### Set up Source Control
 
@@ -20811,7 +22003,7 @@ Although you can configure your application to use the `main` branch, you may st
 
 ### Codify onboarding and best practices
 
-As you’re setting up Retool, it’s important that teams can quickly onboard onto Retool and deliver value for end users. It's useful to create an organization-specific onboarding guide on the following topics:
+As you're setting up Retool, it's important that teams can quickly onboard onto Retool and deliver value for users. It's useful to create an organization-specific onboarding guide on the following topics:
 
 - Overview of the organizational structure of teams who own and build in Retool
 - How to identify a Retool use case
@@ -20826,7 +22018,7 @@ You can use the [technical onboarding template](https://docs.google.com/document
 
 ### Reuse groups of components with modules
 
-You can use [modules](../../apps/guides/layout-structure/modules.mdx) to share groups of components across Retool apps. This encourages code reuse and delivers a more consistent end-user experience across your apps. Changes to a module are immediately reflected across all apps in which it is used. Modules also let you specify [inputs](/apps/guides/layout-structure/modules#add-inputs) and [outputs](/apps/guides/layout-structure/modules#add-outputs), allowing you to centralize and reuse logic across different use cases.
+You can use [modules](../../apps/guides/layout-structure/modules.mdx) to share groups of components across Retool apps. This encourages code reuse and delivers a more consistent end-user experience across your apps. Changes to a module are immediately reflected across all apps in which it is used. Modules also let you specify [inputs](../../apps/guides/layout-structure/modules.mdx#add-inputs) and [outputs](../../apps/guides/layout-structure/modules.mdx#add-outputs), allowing you to centralize and reuse logic across different use cases.
 
 ### Reuse queries
 
@@ -20836,7 +22028,7 @@ Any queries in individual apps should be moved into the Query Library if you fin
 
 ### Customize style with themes
 
-You can create [themes](../../apps/guides/presentation-styling/themes.mdx) with custom color palettes that can be quickly applied to apps. Themes provide a way for builders to build apps that match their organization's existing brand guidelines.
+You can create themes with custom color palettes that can be quickly applied to apps. [Themes](../../apps/guides/presentation-styling/themes.mdx) provide a way for builders to build apps that match their organization's existing brand guidelines.
 
 ## Scale Retool to new use cases
 
@@ -20846,7 +22038,7 @@ Depending on the above, you can choose a combination of deploying a new Retool i
 
 ### When to deploy a new Retool instance
 
-If you're self-hosting Retool for data security or compliance reasons, you are likely running a [multi-instance deployment](../../self-hosted/concepts/multi-instance-deployment.mdx) with at least two instances, one representing a production and the other a non-production environment. If a new use case requires additional VPC isolation between production user groups due to sensitive data or isolated user pools, it's recommended you deploy an additional production instance.
+If you're self-hosting Retool for data security or compliance reasons, you are likely running a [multi-instance deployment](../../self-hosted/concepts/multi-instance-deployment.mdx) with at least two instances, one representing a production and the other a non-production instance. If a new use case requires additional VPC isolation between production user groups due to sensitive data or isolated user pools, it's recommended you deploy an additional production instance.
 
 You can set up [Source Control](../../source-control/index.mdx) to automatically sync and promote changes between instances and enable a Git-based review process for your application changes, as outlined above.
 
@@ -20860,7 +22052,7 @@ To use Spaces with Source Control, ensure you [migrate your apps to Toolscript](
 
 [Spaces](../tutorials/spaces.mdx) drastically reduces the administrative overhead of onboarding new, isolated groups of users. You won’t need to spin up additional instances to ensure full separation of apps, resources, and users. If you are using Spaces and Source Control, you can use the following approach:
 
-1. **Create two additional child Spaces**. Create one on your new production instance, and another on your existing development instance. This keeps your development environment neat with no additional overhead.
+1. **Create two additional child Spaces**. Create one on your new production instance, and another on your existing development instance. This keeps your development instance neat with no additional overhead.
 2. **Connect Spaces to the same Git repository**. Copy settings through the UI or use the [Retool API](../guides/retool-api/automate-spaces.mdx) to programmatically configure Source Control on each Space.
 
 ### When to create a Space
@@ -20961,23 +22153,20 @@ You can configure your Retool Cloud organization to use a custom domain. This en
 
 DNS configuration needs to be completed with the tooling you use to manage your top level domain name. This is often the registrar where you registered the domain, or a DNS provider such as Cloudflare or AWS.
 
-Create an `A` record mapping either the top level domain or subdomain to Retool’s IP addresses:
+Create a `CNAME` record mapping either the top level domain or subdomain to Retool’s alias for custom domains:
 
-- 35.92.202.168
-- 35.92.202.169
-- 35.92.202.170
+- `custom-domain.retool.com`
 
 Retool recommends against using wildcard `*` DNS entries for your configuration as these can expose you to domain takeovers.
 
 DNS changes can take up to 24 hours to propagate in some cases. To validate that your DNS is configured and propagated, you can use the `dig` command on the command line:
 
 ```
-$ dig retool.example.com +nostats +nocomments +nocmd
+$ dig retool.example.com CNAME +noall +answer
 
-; > DiG 9.10.6 > retool.example.com +nostats +nocomments +nocmd
+; > DiG 9.10.6 > retool.example.com CNAME +noall +answer
 ;; global options: +cmd
-;retool.example.com.  IN A
-retool.example.com. 120 IN A 35.92.202.168
+retool.example.com. 120 IN CNAME custom-domain.retool.com.
 ```
 
 ## 2. Configure Retool
@@ -21012,13 +22201,13 @@ Some web browsers, like Safari, block third party cookies by default. Since Reto
 
 ## Manage configuration variables
 
-You can specify configuration variables for reference in resource configurations, apps, and workflows. Configuration variables are environment-specific and can be either values or secrets.
+You can specify configuration variables for reference in resource configurations, apps, and workflows. Configuration variables are specific to resource environments and can be either values or secrets.
 
 Retool encrypts configuration variables on Retool Cloud or, if you self-host Retool, in your deployment's PostgreSQL storage database.
 
 ## Requirements
 
-Configuration variables are available on Retool Cloud and self-hosted Retool versions 3.4.0 and later for organizations on the Team, Business, and Enterprise plans. Configuration variables in workflows are currently available on Retool Cloud.
+Configuration variables are available on Retool Cloud and self-hosted Retool versions 3.4.0 and later for organizations on a Business or an Enterprise plan. Configuration variables in workflows are currently available on Retool Cloud.
 
 You must be an admin to create and edit configuration variables. Configuration variable values and secrets availability depends on usage. Only users with **Edit** permissions for a relevant area (e.g., resources) can use configuration variables.
 
@@ -21026,12 +22215,12 @@ You must be an admin to create and edit configuration variables. Configuration v
 | --------- | :----------------------------------: | :-----------------------------------: | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Resources |  |   | Configuring resources in Retool can require handling sensitive values, e.g. database passwords or API keys. Retool is [SOC 2 Type 2 compliant](https://docs.retool.com/page/security), and most customers store these values with Retool. Configuration variables allow you to centralize and control access to these values. If you have specific security requirements that require you to store secret values externally, rather than encrypted in Retool’s database, consider integrating Retool with a Secrets Manager. |
 | Apps      |  |  | Secret configuration variables are not available in apps and queries. You cannot use configuration variable values in [public or external](../../../apps/guides/app-management/embed-apps.mdx) apps.                                                                                                                                                                                                                                                                                                            |
-| Workflows |  |   | As you build a workflow, Retool sanitizes secret configuration variables in block responses when running individual blocks. Secret values can only be passed to subsequent blocks when the workflow is run in its entirety, either by clicking **Run workflow** in the Workflow IDE or when the workflow is triggered.                                                                                                                                                                                                       |
+| Workflows |  |   | As you build a workflow, Retool sanitizes secret configuration variables in block responses when running individual blocks. Secret values can only be passed to subsequent blocks when the workflow is run in its entirety, either by clicking **Run workflow** in the workflow IDE or when the workflow is triggered.                                                                                                                                                                                                       |
 ## Create configuration variables
 
 To create a configuration variable, go to **Settings** > **Configuration variables**.
 
-Configuration variables have environment-specific values. For example, if you create a `db_password` configuration variable, you may need to specify different values depending on the environment (e.g., production or staging).
+Configuration variables have resource environment-specific values. For example, if you create a `db_password` configuration variable, you may need to specify different values depending on the resource environment (e.g., production or staging).
 
 ### Secret configuration variables
 
@@ -21039,7 +22228,7 @@ To create a secret, toggle **Mark variable as secret** when creating a configura
 
 ## Use configuration variables
 
-You can use autocomplete to access configuration variables in the resource editor, App IDE, and Workflow IDE. Retool uses the appropriate value depending on the current environment.
+You can use autocomplete to access configuration variables in the resource editor, app IDE, and workflow IDE. Retool uses the appropriate value depending on the current resource environment.
 
 Reference configuration variables in resource configurations using the following syntax.
 
@@ -21067,9 +22256,9 @@ Config vars are recommended for use with [Protected Resources](../../../source-c
 
 The use of configuration variables, `RETOOL_EXPOSED` variables, and Secrets Manager depends on your security and permission requirements.
 
-Config vars are set directly in the Retool settings web interface, are available on Retool Cloud and self-hosted Retool, and are stored encrypted. Use configuration variables when you need to access variables per environment.
+Config vars are set directly in the Retool settings web interface, are available on Retool Cloud and self-hosted Retool, and are stored encrypted. Use configuration variables when you need to access variables per resource environment.
 
-On self-hosted Retool deployments, `RETOOL_EXPOSED_*` variables are set per-instance as [environment variables](/self-hosted/reference/environment-variables/index.mdx#retool_exposed_name). Their values are never exposed in Retool.
+On self-hosted Retool deployments, `RETOOL_EXPOSED_*` variables are set per-instance as [environment variables](../../../../self-hosted/reference/environment-variables/#retool_exposed_name). Their values are never exposed in Retool.
 
 If your use case requires higher levels of security, integrating with a third-party Secrets Manager such as [AWS](../../../self-hosted/guides/secrets/aws.mdx) or [Vault](../../../self-hosted/guides/secrets/hashicorp-vault.mdx) is recommended.
 
@@ -21081,45 +22270,45 @@ Organizations on the Enterprise plan running on Retool Cloud or self-hosted Reto
 
 ## Configure resource environments
 
-All Retool organizations on paid plans have _production_ and _staging_ environments:
+All Retool organizations on paid plans have _production_ and _staging_ resource environments:
 
-- Production is the default environment for Retool apps and cannot be removed or renamed.
+- Production is the default resource environment for Retool apps and cannot be removed or renamed.
 - Staging allows you to test apps without impacting production.
 
-Administrators of Retool Cloud or self-hosted Retool organizations can create any number of separate environments to build, run, and test apps and workflows. All [administrators and editors](../../../permissions/guides.mdx#configure-access-rules-for-a-permission-group) can access and use these environments.
+Administrators of Retool Cloud or self-hosted Retool organizations can create any number of separate resource environments to build, run, and test apps and workflows. All [administrators and editors](../../../permissions/guides.mdx#configure-access-rules-for-a-permission-group) can access and use these environments by default. Organizations on a Business or an Enterprise plan can configure [per-environment resource permissions](../../../permissions/guides/configure-permission-groups.mdx#control-access-to-resource-environments) to allow users to access only certain resource environments, such as allowing access to staging data but preventing access to production.
 
-When you [configure a resource](#configure-environment-resources), you set the environments that resource is accessible in. This allows you to test apps with staging data and restrict access to production data. Environments differ from [versioning apps](../../../apps/guides/app-management/releases-history.mdx): apps function across environments. When you query a resource in an app, the resource's environments determine the data the app uses.
+When you [configure a resource](#configure-environment-resources), you set the resource environments that resource is accessible in. This allows you to test apps with staging data and restrict access to production data. Resource environments differ from [versioning apps](../../../apps/guides/app-management/releases-history.mdx): apps function across resource environments. When you query a resource in an app, the resource's environments determine the data the app uses.
 
-## Create an environment
+## Create a resource environment
 
-Administrators create and manage environments for a Retool organization from the [Environments](https://login.retool.com/auth/login?source=docs&redirectOnLogin=settings/environments) settings. Click **Create new** to create an environment. All environment must have a unique name and display color.
+Administrators create and manage resource environments for a Retool organization from the [Environments](https://login.retool.com/auth/login?source=docs&redirectOnLogin=settings/environments) settings. Click **Create new** to create a resource environment. All resource environments must have a unique name and display color.
 
-## Configure environment resources
+## Configure resources
 
-Multiple environments allow you to display and test against nonsensitive (non-production) data. You can set up connections to your data sources (e.g., database or API) and add environment-specific credentials within the same resource.
+Multiple resources environments allow you to display and test against nonsensitive (non-production) data. You can set up connections to your data sources (e.g., database or API) and add environment-specific credentials within the same resource.
 
-Each resource must be configured for your organization's default environment. New resources are configured for the default environment automatically.
+Each resource must be configured for your organization's default resource environment. New resources are configured for the default resource environment automatically.
 
 To configure a resource for a specific environment:
 
 1. Select the **Resources** tab and click **Edit**.
-2. Add the appropriate resource credentials for each defined environment.
+2. Add the appropriate resource credentials for each defined resource environment.
 
-You don't need to configure a resource for every environment. Keep in mind that you cannot switch to an environment while editing an app if it hasn't been configured with a resource that is referenced by the app.
+You don't need to configure a resource for every resource environment. Keep in mind that you cannot switch to an resource environment while editing an app if it hasn't been configured with a resource that is referenced by the app.
 
-### Configure permissions
+### Configure per-environment permissions
 
-Admins for organizations on the Enterprise plan can configure different access levels to environment resources from **Settings > Permissions**. Learn more in the [permission groups documentation](/permissions/guides/configure-permission-groups.mdx).
+Admins for organizations on a Business or an Enterprise plan can configure different access levels to resources from **Settings > Permissions**. Learn more in the [permission groups documentation](../../../permissions/guides/configure-permission-groups.mdx#control-access-to-resource-environments).
 
-## Switch environments
+## Switch resource environments
 
-You can switch between environments configured with resources directly from the App IDE. Users with edit or admin access can also switch environments in preview mode. You cannot switch to an environment that is not configured with a required resource.
+You can switch between resource environments directly from the app IDE. Users with edit or admin access can also switch resource environments in preview mode. You cannot switch to a resource environment that is not configured with a required resource.
 
-You can access resource settings and configure them for other environments by clicking **Edit** in the **Resource** field of a query.
+You can access resource settings and configure them for other resource environments by clicking **Edit** in the **Resource** field of a query.
 
-Switching environments automatically reloads the app to use the appropriate resources and credentials. If your resource requires authentication, users must re-authenticate the first time they switch to a different environment. Retool then stores separate access tokens for each environment.
+Switching resource environments automatically reloads the app to use the appropriate resources and credentials. If your resource requires authentication, users must re-authenticate the first time they switch to a different resource environment. Retool then stores separate access tokens for each resource environment.
 
-### Viewer environments
+### Viewer resource environments
 
 Users that have **Use** access to an app can switch between multiple environments from the Retool contextual menu in the lower-left corner.
 
@@ -21127,19 +22316,19 @@ This feature is not supported on Retool Mobile.
 
 ## Use specific environments across apps
 
-Retool saves your most recently selected environment to your browser cache and automatically uses it the next time you open an app. For example, if you switch to a staging environment in one app, the next app you open automatically uses the same staging environment.
+Retool saves your most recently selected resource environment to your browser cache and automatically uses it the next time you open an app. For example, if you switch to a staging environment in one app, the next app you open automatically uses the same staging environment.
 
 You can link directly to a Retool app and include the `_environment` [URL query parameter](../../../apps/guides/app-management/customize-app-urls.mdx) to automatically open it with a specified environment.
 
 :::note
 
-The default environment for Public Apps is production.
+The default resource environment for Public Apps is production.
 
 :::
 
-## Reference the selected environment
+## Reference the selected resource environment
 
-The `retoolContext` object contains the `environment` property that corresponds to the name of the environment currently in use. Use `{{ retoolContext.environment }}` to reference this anywhere you need to surface the environment in your app.
+The `retoolContext` object contains the `environment` property that corresponds to the name of the resource environment currently in use. Use `{{ retoolContext.environment }}` to reference this anywhere you need to surface the resource environment in your app.
 
 ---
 
@@ -21160,7 +22349,7 @@ import DocCardList from "@theme/DocCardList";
 You can bring your own Intercom Messenger to Retool to provide support to end-users. End-users are shown a help bubble when viewing apps, and when clicked, your own Intercom Messenger is displayed.
 
 ## Requirements
-To provide Intercom Messenger support to your end-users, your organization must be on the Business or Enterprise plan. You must also be an admin of your organization to configure Intercom-related settings.
+To provide Intercom Messenger support to your end-users, your organization must be on a Business or an Enterprise plan. You must also be an admin of your organization to configure Intercom-related settings.
 
 Retool requires that you use Intercom’s [Identity Verification](https://www.intercom.com/help/en/articles/7946878-what-is-identity-verification) feature. Intercom strongly recommend using this feature because it prevents user impersonation and ensures conversations are private.
 
@@ -21198,56 +22387,20 @@ Audit logs require administrator [permissions](../../../permissions/quickstart.m
 
 :::
 
-Retool automatically logs user actions, such as query runs and password resets. The logs include the user's name, the action taken, and when the action took place.
+Retool automatically logs user actions, such as query runs and password resets. The logs include user information (such as the user ID in the audit log download, and the user's email on the **Audit logs** page), the action taken, and when the action took place.
 
 You can access audit logs from either:
 
 - The **User** menu on the top-right when browsing your organization.
-- The **Retool** menu on the top-left of the App IDE.
+- The **Retool** menu on the top-left of the app IDE.
 
-## Logged events
+To access the audit log, visit `/audit`. You can see a list of all the events that occurred, information about the user who performed them (email or user ID), and the time. You can also explore more detailed information, including the exact query, the parameters passed, the user's IP address, or response time. 
 
-By default, Retool captures the following events in the audit log:
+:::note
+For a full list of events captured in the audit logs, refer to the [Logged events](../../reference/logged-events.mdx) reference page.
+:::
 
-| Action                                  | Identifier in logs            |
-| --------------------------------------- | ----------------------------- |
-| Query runs                              | `QUERY_RUN`                   |
-| Query tests                             | `QUERY_PREVIEW`               |
-| Page views                              | `PAGE_VIEW`                   |
-| User logs in                            | `LOGIN`                       |
-| User logs out                           | `LOGOUT`                      |
-| User signs up                           | `SIGN_UP`                     |
-| User redeems an invite                  | `REDEEM_INVITE`               |
-| User invites another user               | `INVITE_USER`                 |
-| User re-sends invite                    | `RE_INVITE_USER`              |
-| User runs a query in the Query Library  | `PLAYGROUND_QUERY_RUN`        |
-| User disables two-factor authentication | `DISABLE_TWO_FACTOR_AUTH`     |
-| User requests a password reset link     | `REQUEST_PASSWORD_RESET_LINK` |
-| User requests passwordless login        | `REQUEST_PASSWORDLESS_LOGIN`  |
-| User confirms a password reset request  | `CONFIRM_PASSWORD_RESET_LINK` |
-| User creates a group                    | `CREATE_GROUP`                |
-| User deletes a group                    | `DELETE_GROUP`                |
-| User adds other users to a group        | `ADD_USERS_TO_GROUP`          |
-| User removes other users from a group   | `REMOVE_USERS_FROM_GROUP`     |
-| User disables another user              | `DISABLE_USER`                |
-| User enables another user               | `ENABLE_USER`                 |
-| User updates an organization            | `UPDATE_ORGANIZATION`         |
-| User creates a resource                 | `CREATE_RESOURCE`             |
-| User updates a resource                 | `UPDATE_RESOURCE`             |
-| User deletes a resource                 | `DELETE_RESOURCE`             |
-| User exports a page                     | `PAGE_EXPORT`                 |
-| User creates a workflow                 | `CREATE_WORKFLOW`             |
-| User deletes a workflow                 | `DELETE_WORKFLOW`             |
-| User releases a workflow                | `RELEASE_WORKFLOW`            |
-| User views a workflow                   | `VIEW_WORKFLOW`               |
-| User runs a workflow manually           | `RUN_WORKFLOW`                |
-| User runs a workflow block manually     | `RUN_WORKFLOW_BLOCK`          |
-| User enables a workflow trigger         | `ENABLE_TRIGGER`              |
-| User disables a workflow trigger        | `DISABLE_TRIGGER`             |
-
-To access the audit log, visit `/audit`. You can see a list of all the events, the user who performed them, and the time. You can also explore more detailed information, including the exact query, the parameters passed, the user's IP address, or response time.
-
-Audit logs for Retool Cloud organizations are retained for one year. Self-hosted deployments manage their own audit log retention.
+Audit logs for Retool Cloud organizations are retained for one year. You can see the past three months of data using the **Date range** selector on the **Audit logs** page, and you can [download logs](#download-audit-logs-on-retool-cloud) for the past year. Self-hosted deployments manage their own audit log retention.
 
 ## Access audit logs in SQL
 
@@ -21318,7 +22471,7 @@ Retool sends logs to Splunk with `source:retool-audit-log` attribute.
 
 ### Download audit logs on Retool Cloud
 
-Retool Cloud customers on Business and Enterprise plans can download audit logs directly from the Audit Logs page.
+Retool Cloud customers on a Business or an Enterprise plan can download audit logs directly from the Audit Logs page.
 
 After selecting a date range and starting a download, the download job is displayed in a list with a **Pending** status. Once complete, a temporary link with a compressed CSV file is made available in the **Downloads** list. The link expires an hour after being created.
 
@@ -21334,7 +22487,7 @@ If you self-host Retool and have connected to the Retool audit logs database tab
 
 You can hide parameters from logs on a per-query basis. See the [query documentation](../../../queries/quickstart.mdx#hide-parameters-from-audit-logs) for more details.
 
-To prevent all headers in queries from being logged, enable the `HIDE_ALL_HEADERS_IN_AUDIT_LOG_EVENTS` [environment variable](../../../self-hosted/reference/environment-variables/index.mdx#hide_all_headers_in_audit_log_events). This is only available on self-hosted deployments.
+To prevent all headers in queries from being logged, enable the `HIDE_ALL_HEADERS_IN_AUDIT_LOG_EVENTS` [environment variable](../../../self-hosted/reference/environment-variables#property-HIDE_ALL_HEADERS_IN_AUDIT_LOG_EVENTS). This is only available on self-hosted deployments.
 
 ---
 
@@ -21363,9 +22516,9 @@ The **Users** tab contains analytics for all users with access to your organizat
 | Type | Description |
 | --- | --- |
 | Total active users | Total number of all users in Retool in the previous 30-day window up to the selected end date. |
-| Standard users | Total number of distinct standard users in the previous 30-day window up to the selected end date. |
-| Internal end users | Total number of distinct internal end users in the previous 30-day window up to the selected end date. |
-| External end users | Total number of distinct external users in the previous 30-day window up to the selected end date. |
+| Builders | Total number of distinct builders in the previous 30-day window up to the selected end date. |
+| Internal users | Total number of distinct internal users in the previous 30-day window up to the selected end date. |
+| External users | Total number of distinct external users in the previous 30-day window up to the selected end date. |
 
 You can hover the cursor over each data point in the chart to view complete details for usage.
 
@@ -21393,7 +22546,7 @@ The **Apps details** section provides more details about app usage. You can sear
 
 Self-hosted organizations can enable Usage Analytics by setting the `USAGE_API_TOKEN` environment variable. This environment variable is a manually granted Usage Analytics access token to ensure security. To obtain this token, contact your Retool account manager.
 
-If you self-host Retool, you might deploy multiple instances to isolate your production and non-production environments. Usage Analytics automatically gathers user and app usage (and other sensitive data) across all of your instances. Retool recommends enabling Usage Analytics on the instance with the most restrictions to keep data secure. Only admins of that instance will have the ability to view usage in **Settings > Usage Analytics** by default.
+If you self-host Retool, you might deploy multiple instances to isolate your production and non-production instances. Usage Analytics automatically gathers user and app usage (and other sensitive data) across all of your instances. Retool recommends enabling Usage Analytics on the instance with the most restrictions to keep data secure. Only admins of that instance will have the ability to view usage in **Settings > Usage Analytics** by default.
 
 Retool assumes emails uniquely identify users. If a user is accessing multiple Retool instances, they must use the same email on each instance to avoid being counted multiple times in active-user counts. This also means that Retool expects to see a temporary spike in usage for an organization undergoing a domain migration.
 
@@ -21661,10 +22814,6 @@ Often, information about Retool users exists in systems outside of Retool. With 
 
 You can create and add attributes to users to enable custom experiences in Retool. Admins can create and apply attributes to any Retool user. When building Retool apps, you can reference attributes through the `current_user` object to control functionality. Attributes are secure by default: bad actors cannot spoof data passed into queries that reference attributes.
 
-## Requirements
-
-User attributes are available on Retool Cloud and self-hosted Retool versions 3.20.0 and later for organizations on the Business and Enterprise plans.
-
 ## Create user attributes
 
 To create a user attribute, go to **Settings** > **User attributes**. Add a name as your key, a label for readability, and data type.
@@ -21776,7 +22925,7 @@ import Email from "./_partials/_email.mdx"
 
 ### Drafts
 
-The **Drafts** tab of the **Apps** landing page is a personal folder for [standard users](/support/billing-usage#user-types) to develop and test apps. Only you and organization admins have access to view or edit apps that you create in this section. This feature is useful for organizations where creating applications and folders is restricted—admins don't have to give users explicit permission to create apps in their **Drafts**.
+The **Drafts** tab of the Apps landing page is a personal folder for [builders](/support/billing-usage#user-types) to develop and test apps. Only you and organization admins have access to view or edit apps that you create in this section. This feature is useful for organizations where creating applications and folders is restricted—admins don't have to give users explicit permission to create apps in their **Drafts**.
 
 You cannot share an app that is currently in the **Drafts** folder with other users. Once the app is ready to be shared with other users, move the app to a different folder in the organization so it can then be accessed by others.
 
@@ -21788,7 +22937,7 @@ Admins can see draft apps for all users in the organization using the **Users' d
 
 Organizations can [embed web apps](../apps/concepts/share-externally/embed.mdx) into their own web-based applications for use by external users, such as customers, vendors, or partners. An external user is not considered part of a Retool organization and can only access apps for which they have access.
 
-External users priced at the same rate as end users on the Team and Business [plans](https://retool.com/pricing). However, usage for external use cases varies and the default pricing might not work for everyone. If you're pre-product or have hundreds of thousands of users, [talk to our team](https://retool.com/demo/?meeting_page_source=docs) to learn more.
+External users priced at the same rate as internal users on the Team and Business [plans](https://retool.com/pricing). However, usage for external use cases varies and the default pricing might not work for everyone. If you're pre-product or have hundreds of thousands of users, [talk to our team](https://retool.com/demo/?meeting_page_source=docs) to learn more.
 
 Refer to [External users](./concepts/external-users.mdx) for more information about external users.
 
@@ -21818,7 +22967,7 @@ The [Retool API](../api/index.mdx) enables Retool admins to programmatically man
   - Permissions
   - SSO
 - Apps and themes
-- Resources and environments
+- Resources and resource environments
 - Folders for apps, resources, and workflows
 - Spaces
 - Source Control
@@ -21840,6 +22989,112 @@ Read the [Retool Events workflow](../workflows/guides/retool-events.mdx) tutoria
 ## Organizations and users glossary
 
 import SharedGlossary from '../../_partials/_glossary.mdx';
+
+---
+
+## Audit trail logged events
+
+By default, Retool captures the following events in the audit log. Refer to the [View user audit logs](../guides/monitoring/audit-logs.mdx) page for more information.
+
+| Identifier in logs                     | Action                                                           |
+|----------------------------------------|------------------------------------------------------------------|
+| `ACCESS_TOKEN_CREATED`                 | An access token was created.                                     |
+| `ACCESS_TOKEN_REVOKED`                 | An access token was revoked.                                     |
+| `ADD_PAGE_TO_GROUP`                    | A page was added to a group.                                     |
+| `ADD_USERS_TO_GROUP`                   | A user added other users to a group.                             |
+| `ANALYTICS_CONFIG_CREATED`             | An analytics configuration was created.                          |
+| `ANALYTICS_CONFIG_DELETED`             | An analytics configuration was deleted.                          |
+| `ANALYTICS_CONFIG_UPDATED`             | An analytics configuration was updated.                          |
+| `ARCHIVE_ORGANIZATION`                 | An organization was archived.                                    |
+| `ARCHIVE_USER`                         | A user account was archived.                                     |
+| `CANCEL_USER_TASK`                     | A user task was cancelled.                                       |
+| `CONFIG_VAR_CREATE`                    | A configuration variable was created.                            |
+| `CONFIG_VAR_DELETE`                    | A configuration variable was deleted.                            |
+| `CONFIG_VAR_UPDATE`                    | A configuration variable was updated.                            |
+| `CONFIRM_PASSWORD_RESET_LINK`          | A user confirms a password reset request.                        |
+| `CREATE_EVENT_WORKFLOW`                | An event-based workflow was created.                             |
+| `CREATE_GROUP`                         | A user created a group.                                          |
+| `CREATE_RESOURCE`                      | A user created a resource.                                       |
+| `CREATE_ROLE`                          | A new role was created.                                          |
+| `CREATE_USER`                          | A new user account was created.                                  |
+| `CREATE_USER_TASK`                     | A user task was created.                                         |
+| `CREATE_WORKFLOW`                      | A user created a workflow.                                       |
+| `DATASOURCE_CREATE`                    | A new data source was created.                                   |
+| `DELETE_EVENT_WORKFLOW`                | An event-based workflow was deleted.                             |
+| `DELETE_GROUP`                         | A user deleted a group.                                          |
+| `DELETE_RESOURCE`                      | A user deleted a resource.                                       |
+| `DELETE_ROLE`                          | A role was deleted.                                              |
+| `DELETE_USER`                          | A user account was deleted.                                      |
+| `DELETE_WORKFLOW`                      | A user deleted a workflow.                                       |
+| `DIRECTLY_SHARE_PAGE_WITH_USER`        | A page was directly shared with a user.                          |
+| `DISABLE_RETOOL_DEFAULT_EMAIL`         | The default Retool email notifications were disabled.            |
+| `DISABLE_TRIGGER`                      | A user disabled a workflow trigger.                              |
+| `DISABLE_TWO_FACTOR_AUTH`              | A user disabled two-factor authentication.                       |
+| `DISABLE_USER`                         | A user disabled another user.                                    |
+| `DISABLE_WORKFLOW`                     | A workflow was disabled.                                         |
+| `DOWNLOAD_AUDIT_LOGS`                  | Audit logs were downloaded.                                      |
+| `ENABLE_TRIGGER`                       | A user enabled a workflow trigger.                               |
+| `ENABLE_USER`                          | A user enabled another user.                                     |
+| `ENABLE_WORKFLOW`                      | A workflow was enabled.                                          |
+| `INVITE_USER`                          | A user invited another user.                                     |
+| `LOGIN`                                | A user logged in.                                                |
+| `LOGIN_FAILED`                         | A user login attempt failed.                                     |
+| `LOGOUT`                               | A user logged out.                                               |
+| `MODIFY_PERMISSIONS`                   | Permissions were modified.                                       |
+| `PAGE_EXPORT`                          | A user exported a page.                                          |
+| `PAGE_VIEW`                            | Page views.                                                      |
+| `PLAYGROUND_QUERY_RUN`                 | A user ran a query in the Query Library.                         |
+| `QUERY_PREVIEW`                        | Query tests (preview runs).                                      |
+| `QUERY_RUN`                            | Query runs (executed in production or live context).             |
+| `RE_INVITE_USER`                       | A user re-sent an invite.                                        |
+| `REASSIGN_USER_TASK`                   | A user task was reassigned.                                      |
+| `REDEEM_INVITE`                        | A user redeemed an invite.                                       |
+| `RELEASE_WORKFLOW`                     | A user released a workflow.                                      |
+| `REMOVE_PAGE_FROM_GROUP`               | A page was removed from a group.                                 |
+| `REMOVE_TWO_FACTOR_AUTHENTICATOR`      | Two-factor authentication device was removed.                    |
+| `REMOVE_USER_FROM_GROUP`               | A user was removed from a group.                                 |
+| `REMOVE_USERS_FROM_GROUP`              | A user removed other users from a group.                         |
+| `REQUEST_PASSWORD_RESET_LINK`          | A user requested a password reset link.                          |
+| `REQUEST_PASSWORDLESS_LOGIN`           | A user requested passwordless login.                             |
+| `REQUEST_PASSWORDLESS_TOKEN`           | A passwordless login token was requested.                        |
+| `RESET_GOOGLE_ID`                      | A user's Google ID was reset.                                    |
+| `RESET_RETOOLDB_PASSWORD`              | The RetoolDB password was reset.                                 |
+| `RETOOL_AI_FEATURE_CHANGED`            | A Retool AI feature setting was changed.                         |
+| `RETOOL_STORAGE_FILE_ACCESSED`         | A file in Retool Storage was accessed.                           |
+| `RETOOL_STORAGE_FILE_DELETED`          | A file in Retool Storage was deleted.                            |
+| `RETOOL_STORAGE_FILE_METADATA_RETRIEVED`| Metadata for a Retool Storage file was retrieved.                |
+| `RETOOL_STORAGE_FILE_MOVED`            | A file in Retool Storage was moved.                              |
+| `RETOOL_STORAGE_FILE_UPDATED`          | A file in Retool Storage was updated.                            |
+| `RETOOL_STORAGE_FILE_UPLOADED`         | A file was uploaded to Retool Storage.                           |
+| `RETOOL_STORAGE_FILES_LISTED`          | Files in Retool Storage were listed.                             |
+| `RETOOL_STORAGE_FOLDER_CREATED`        | A folder was created in Retool Storage.                          |
+| `RETOOL_STORAGE_FOLDER_DELETED`        | A folder was deleted in Retool Storage.                          |
+| `RETOOL_STORAGE_FOLDER_RENAMED`        | A folder in Retool Storage was renamed.                          |
+| `RETOOL_STORAGE_FOLDERS_LISTED`        | Folders in Retool Storage were listed.                           |
+| `REVEAL_RETOOLDB_CONNECTION_STRING`    | The RetoolDB connection string was revealed.                     |
+| `RUN_WORKFLOW`                         | A user ran a workflow manually.                                  |
+| `RUN_WORKFLOW_BLOCK`                   | A user ran a workflow block manually.                            |
+| `SEND_MAGIC_LOGIN`                     | A magic login link was sent.                                     |
+| `SIGN_UP`                              | A user signed up.                                                |
+| `SOURCE_CONTROL_CONFIG_UPDATE`         | Source control configuration was updated.                        |
+| `SOURCE_CONTROL_DEPLOYMENT_FINISHED`   | A source control deployment finished.                            |
+| `SOURCE_CONTROL_SETTINGS_UPDATE`       | Source control settings were updated.                            |
+| `SUBMIT_USER_TASK`                     | A user task was submitted.                                       |
+| `SUGGEST_USER`                         | A user was suggested (e.g., for assignment or sharing).          |
+| `UPDATE_BILLING_PLAN`                  | The billing plan was updated.                                    |
+| `UPDATE_GROUP`                         | A group was updated.                                             |
+| `UPDATE_ORGANIZATION`                  | A user updated an organization.                                  |
+| `UPDATE_RESOURCE`                      | A user updated a resource.                                       |
+| `UPDATE_ROLE`                          | A role was updated.                                              |
+| `USER_CHANGED_EMAIL_AND_VERIFY`        | A user changed their email and verified it.                      |
+| `USER_EMAIL_CHANGE`                    | A user changed their email address.                              |
+| `USER_EMAIL_CHANGE_NOTIFICATION_SENT`  | Notification sent about a user's email change.                   |
+| `USER_EMAIL_VERIFICATION_SENT`         | Email verification was sent to a user.                           |
+| `USER_EMAIL_VERIFY`                    | A user verified their email address.                             |
+| `USER_NAME_CHANGE`                     | A user changed their name.                                       |
+| `VERIFY_2FA_FAILURE`                   | Two-factor authentication verification failed.                   |
+| `VERIFY_2FA_SUCCESS`                   | Two-factor authentication verification succeeded.                |
+| `VIEW_WORKFLOW`                        | A user viewed a workflow.                                        |
 
 ---
 
@@ -21977,7 +23232,7 @@ If you anticipate needing multiple spaces, consider keeping the **Admin Space** 
 
 ## Create spaces
 
-[Admin users](../../permissions/guides/configure-permission-groups.mdx#default-groups) of the **Admin Space** can create and manage spaces from **Settings > Spaces**, or use the [Retool API](../../api/index.mdx). Each space must have a name, description, and associated subdomain. You can choose to automatically copy over SSO, branding, and theme settings from the current organization.
+Admin users of the **Admin Space** can create and manage spaces from **Settings > Spaces**, or use the [Retool API](../../api/index.mdx). Each space must have a name, description, and associated subdomain. You can choose to automatically copy over SSO, branding, and theme settings from the current organization.
 
 ### Configure domains
 
@@ -22012,7 +23267,7 @@ Admins can customize SSO, invite users, configure source control, and update set
 
 :::tip
 
-You can also use the [Retool API](/api) to programmatically configure spaces. See the [guide](../guides/retool-api/automate-spaces.mdx) for more information.
+You can also use the [Retool API](../../api/) to programmatically configure spaces. See the [guide](../guides/retool-api/automate-spaces.mdx) for more information.
 
 :::
 
@@ -22040,7 +23295,7 @@ To use Retool Spaces with Source Control, ensure you [migrate your apps to Tools
 
 Each space has its own separate [Source Control](../../source-control/index.mdx) configuration, so it can connect to a different Git repository or an entirely different SCM provider. For each new space, you need to set up Source Control to point to the repository that you want to link to the space.
 
-Multiple spaces can also connect to a single Git repository. For example, you might want to use spaces to represent different dev, staging, and prod environments. These spaces function the same as multiple instances connected to the same Git repository—you can choose which branch to point to by default, and sync changes when commits are merged into this branch.
+Multiple spaces can also connect to a single Git repository. For example, you might want to use spaces to represent different dev, staging, and prod instances. These spaces function the same as multiple instances connected to the same Git repository—you can choose which branch to point to by default, and sync changes when commits are merged into this branch.
 
 ### Spaces and Retool Database
 
@@ -22055,7 +23310,7 @@ Users can have accounts in multiple spaces and switch between them. From the nav
 For organizations on the Enterprise plan on Retool Cloud and self-hosted Retool versions 3.41 and later, admins can copy apps, resources, Query Library queries, and workflows across spaces. The following applies to all copied items:
 
 - Copies are unprotected in the destination space.
-- Copied resources are created in the destination space's default environment.
+- Copied resources are created in the destination space's default resource environment.
 - All dependencies except environment variables are copied to the destination space. You must configure environment variables in the destination space.
 - Releases, permissions, and unit tests are not copied to the destination space.
 
@@ -22071,7 +23326,7 @@ import Tutorial from '/docs/_partials/_doctypes/_tutorial.mdx';
 
 Permission groups use [access rules](../quickstart.mdx#access-rules) that determine the apps, resources configuration, and workflows that members can access. Access rules can also apply to folders in which these are organized.
 
-Select the **Apps**, **Resources**, **Workflows**, or **Agents** tab to configure their respective access rules. The **Select type** option enables you to define specific access by configuring access individually, or apply **Use all**, **Edit all**, or **Own all**. 
+Select the **Apps**, **Resources**, **Workflows**, or **Agents** tab to configure their respective access rules. The **Select type** option enables you to define specific access by configuring access individually, or apply **Use all**, **Edit all**, or **Own all**.
 
 :::note
 
@@ -22175,7 +23430,7 @@ For organizations created before Retool version 3.259.0, the **All Users** group
 
 :::info Availability
 
-Custom permission groups are not available on the Free and Team plans.
+Custom permission groups are not available on the Free plan.
 
 :::
 
@@ -22265,7 +23520,7 @@ An admin of your Retool organization can enable Retool Agents in **Settings > Re
 Exercise extreme caution when disabling **AI Agents Sharing**, as it will immediately unpublish all currently shared threads from your organization. This is a security feature in place to prevent unauthorized public sharing of sensitive information. Toggling **AI Agents Sharing** back on will not restore sharing for any previously-created public threads.
 :::
 
-To enable the Function Generator for automatic [custom tool creation](../../agents/guides/tools/create-custom-tools.mdx), toggle **AI Agents Function Generation**.
+To enable the **Function Generator** for automatic [custom tool creation](../../agents/guides/tools/create-custom-tools.mdx), toggle **AI Agents Function Generation**.
 
 ## User consent handling
 
@@ -22348,10 +23603,6 @@ In the **Share** modal, app owners can view all users who have access granted th
 
 ## Configure permission groups
 
-import Permgroups from '/docs/permissions/_partials/_perm-groups.mdx';
-
-## Manage permission groups
-
 You can manage permission groups in the **Permissions** settings for your organization. You can use built-in permission groups or create your own custom groups.
 
 ### Default groups
@@ -22359,10 +23610,6 @@ You can manage permission groups in the **Permissions** settings for your organi
 import Default from '/docs/permissions/_partials/_default-groups.mdx';
 
 ### Create a custom group
-
-:::note
-Custom permission groups are limited to Business and Enterprise plans.
-:::
 
 import Addgroup from '/docs/permissions/_partials/_add-to-group.mdx';
 
@@ -22381,7 +23628,16 @@ Select a user from the list to display their details. The **Permissions** sectio
 Click **Groups** to modify group membership. You can add groups to the list by entering the group name. The groups list autocompletes and also presents a dropdown menu of lists to select.
 
 ## Configure access rules for a permission group
+
 import Access from '/docs/permissions/_partials/_access-rules.mdx';
+
+## Control access to resource environments
+
+Admins for organizations on the Business or an Enterprise plan can configure different access levels to [resource environments](../../org-users/guides/configuration/environments.mdx) in the **Permissions** tab. This is useful if you need to restrict access to production data but still want to allow access to other environments, such as staged data.
+
+Access to resources and their environments are controlled by the **Select access type** option. To configure different access for a resource's environments, you must first set this to **Define specific resource access**. Once set, select a resource and click **▶︎** to reveal per-environment access control. You can then change the individual permissions for that resource's environments.
+
+Configure per-environment access for a resource.
 
 ---
 
@@ -22417,8 +23673,6 @@ The _Roles and Permissions_ feature enables the use of role-based access control
 For example, a Design team may need access to an organization's [branding](../../org-users/concepts/branding.mdx) settings so they can manage the branding styles. Rather than give every member of the Design team full admin access, the organization can create a role with **Manage branding** permission and apply it to the Design team's group. The Design team is then able to configure the organization's branding settings while still be restricted from making changes to any other organization settings.
 
 Role-based permissions offer much greater access control than [permission groups](./configure-permission-groups.mdx). Once you configure the necessary roles to control access, you can apply them to any number of groups. Retool will eventually transition to role-based access controls as a permissions management method.
-
-To enable this feature, an admin must navigate to **Settings > Beta** and enable **Permissions v2**.
 
 :::info
 
@@ -22456,7 +23710,7 @@ export function CreateRole() {
 
 You can assign roles to groups from either the **Roles & Permissions** or **Groups** page.
 
-The **Assignment** tab contains a list of groups to which the role is assigned. Click **+ Add group assignment** to select which groups are assigned the role. You can also click **>** to expand a group and view a complete list of its members.
+The **Groups** settings page is where you manage all groups for your organization. To change roles for a group, select the group and click **Modify role assignments**.
 
 export function Groups() {
   return (
@@ -22466,7 +23720,7 @@ export function Groups() {
   );
 }
 
-The **Groups** settings page is where you manage all groups for your organization. To change roles for a group, select the group and click **Modify role assignments**.
+The **Assignment** tab contains a list of groups to which the role is assigned. Click **+ Add group assignment** to select which groups are assigned the role. You can also click **>** to expand a group and view a complete list of its members.
 
 export function Roles() {
   return (
@@ -22620,7 +23874,7 @@ Retool [blog post](https://retool.com/blog/external/):
 
 > Retool started six years ago as a frontend builder for internal tools. Since we launched, we’ve worked with tens of thousands of companies across every vertical—from two-person startups all the way to Fortune 10s. We focused on making it as fast as possible for developers to build internal apps so that they don’t have to start from scratch to build the same patterns of admin panels, CRUD apps, frontends for APIs, automations, etc.[...]
 
-> Retool, a frontend builder for internal tools, is introducing new products aimed at also supporting external use cases. The new offerings, Retool Portals and Retool Embed, were designed to help developers create dashboards, workflows and features for external users such as contractors, vendors, partners, or chosen customers. These external users often have close relationships with the company but aren't employed by it. The new tools will allow companies to simplify processes by automating many tasks that are typically done manually. These features are now available in Business and Enterprise plans.
+> Retool, a frontend builder for internal tools, is introducing new products aimed at also supporting external use cases. The new offerings, Retool Portals and Retool Embed, were designed to help developers create dashboards, workflows and features for external users such as contractors, vendors, partners, or chosen customers. These external users often have close relationships with the company but aren't employed by it. The new tools will allow companies to simplify processes by automating many tasks that are typically done manually. These features are now available on a Business or an Enterprise plan.
 
 ### Classify text
 
@@ -22954,7 +24208,7 @@ All of the components and queries have names: for example, `textinput1`, or `que
 
 For example, set the `value` of a `Text` component to be `{{ table.selectedRow.first_name }}`, and the `Text` component will change based on the selected row of the `table`.
 
-But we give you other variables too, including libraries like like [Lodash](https://lodash.com/) (`_`), and [Moment](https://momentjs.com/) (`moment`), as well as variables that represent the email of the currently logged in user (`current_user`), the current URL and its parameters (`url`), and the browser's localstorage (`localstorage`).
+But we give you other variables too, including libraries like like [Lodash](https://lodash.com/) (`_`), and [Moment](https://momentjs.com/) (`moment`), as well as variables that represent the email of the currently logged in user (`current_user`), the current URL and its parameters (`url`), and the browser's localStorage.
 
 ## Exploring objects using the State window
 
@@ -23014,7 +24268,7 @@ The time taken by the Retool frontend processing the query results. It includes 
 | Measurement         | Description                                                                                                                                                                                                                                                                                                                                                                                      |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **Handle response** | The time taken to receive the query response in the Retool frontend and populate the query's `data` property in the app's data model                                                                                                                                                                                                                                                             |
-| **Transformer**     | The time taken processing the query's original `data` property using your attached JavaScript transformer and returning a result. This statistic only appears if the query has a query transformer attached and enabled. More complex transformers with many recursive iterations or additional data references take longer to process.                                                          |
+| **Transformer**     | The time taken processing the query's original `data` property using your attached transformer and returning a result. This statistic only appears if the query has a query transformer attached and enabled. More complex transformers with many recursive iterations or additional data references take longer to process.                                                          |
 | **Post-processing** | The time taken to update all dependencies inside of the Retool app that reference properties of this query. For example, a [**Table**](https://retool.com/components/table) component that displays `{{query2.data}}` or a [Text Input](https://retool.com/components/text-input) component that displays `{{ query2.data[0]name }}`. The more dependencies to update, the longer this can take. |
 
 ## Response size
@@ -23192,7 +24446,7 @@ import Concept from '/docs/_partials/_doctypes/_concept.mdx';
 
 The following options are available in the query editor's **Advanced** tab. Many query options can help you improve your [app's performance](../../apps/concepts/best-practices.mdx). Read about [best practices](../concepts/best-practices.mdx) to learn how to optimize queries.
 
-## Hide parameters from audit logs
+## Exclude parameters from audit logs
 
 Queries and their parameters are logged in the [audit logs](../../org-users/guides/monitoring/audit-logs.mdx) when they're run. You should hide sensitive parameters, such as API keys, from your audit logs. Add sensitive parameters to the **Disable logging for** field on the **Advanced** tab in the query editor. In the audit logs, these parameter values display as `--blacklisted-by-developer--`.
 
@@ -23217,6 +24471,12 @@ This setting may introduce performance issues and may not work well with transfo
 :::
 
 If your query calls a component's `setValue` method, you can ensure future references to the component use the updated value by toggling on the **Keep variable references inside the query with your app** setting. This can be useful if you need to set and use a value in the same query.
+
+## Allow only select users to run resource queries
+
+The **Access controls** settings enable you to restrict resource query usage to specific [permission groups](../../permissions/guides/configure-permission-groups.mdx). If configured, any users who are not a member of a listed group cannot run or trigger the resource query. Click the **Groups that can run this query** and then select the permission groups for whom you want to restrict access.
+
+Restrict access with permission groups.
 
 ---
 
@@ -23283,7 +24543,7 @@ Retool parses the PDF file and returns the extracted text. The response is avail
 
 ## Retool AI image actions
 
-You can use the **Retool AI** resource to write queries that leverage AI models to generate images. The AI model returns a base64-encoded string of the image.
+You can use the **Retool AI** resource to write queries that leverage AI models to generate images. The AI model returns a Base64-encoded string of the image.
 
 As with all queries, the response is available at `{{ query.data }}`. You can display base64-encoded images in any Retool component that support images, such as the [Image](https://retool.com/components/images) or [Avatar](https://retool.com/components/avatar) components.
 
@@ -23460,7 +24720,7 @@ There's an **Analytics** section on the **Settings** > **Advanced** tab in Retoo
 
 ## Configuration
 
-After connecting, you can create **Analytics tracking** queries in the App IDE.
+After connecting, you can create **Analytics tracking** queries in the app IDE.
 
 Each analytics event has three configurable sections: when to trigger the query, what conditions have to be met, and the fields to include in the payload.
 
@@ -23851,7 +25111,7 @@ To change the resource type, toggle the **𝑓** button and change the resource 
 
 ## Interact with files
 
-You can add components that allow users to upload files in [web apps](../../apps/guides/forms-inputs/file-inputs.mdx) and [mobile apps](../../mobile/guides/forms-inputs/files.mdx). You can also query data stores, such as [Retool Storage](../../data-sources/tutorials/retool-storage.mdx) or [Amazon S3](../../data-sources/guides/integrations/object-file-store/amazon-s3.mdx), to save or retrieve files.
+You can add components that allow users to upload files in [web apps](../../apps/guides/forms-inputs/file-inputs.mdx) and [mobile apps](../../mobile/guides/forms-inputs/files.mdx). You can also query data stores, such as Retool Storage or [Amazon S3](../../data-sources/guides/integrations/object-file-store/amazon-s3.mdx), to save or retrieve files.
 
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
@@ -24055,7 +25315,7 @@ You can preload custom JavaScript to extend app functionality with custom logic.
 
 While you can call global JavaScript functions from anywhere in your app, [local storage](../../reference/objects/localstorage.mdx) is the recommended way to store global variables in Retool.
 
-To add preloaded JavaScript to an app, open the **App settings** in the left panel, then select **Preloaded JS**.
+To add preloaded JavaScript to an app, open the **App Settings** tab in the left panel, then select **Preloaded JS**.
 
 :::warning All apps load custom JavaScript for the organization
 
@@ -24068,7 +25328,7 @@ Retool admins can configure custom JavaScript that loads in all apps within the 
 After you define your preloaded JavaScript, you can use your methods wherever you write JavaScript, such as:
 
 - Within `{{ }}` embedded expressions, such as `{{ window.myCustomHelper() }}`.
-- In [JavaScript transformers](../transformers.mdx) and [JavaScript queries](./index.mdx).
+- In [transformers](../transformers.mdx) and [JavaScript queries](./index.mdx).
 
 Custom JavaScript functions use the `window` prefix.
 
@@ -24089,7 +25349,7 @@ In addition, Retool recommends using:
 
 [CDNJS](https://cdnjs.com/libraries) lists libraries you can load. Non-minified builds usually require `@require` or `import` statements. Some libraries may not be compatible.
 
-To add libraries to an app, open the **App settings** in the left panel, then select **Libraries**.
+To add libraries to an app, open the **App Settings** tab in the left panel, then select **Libraries**.
 
 To import external libraries, add URLs to **Settings** > **Advanced** > **Libraries** in your organization's settings, or the **Libraries** section of an app's settings. This allows you to access the library wherever you write JavaScript.
 
@@ -24509,7 +25769,7 @@ Retool can retrieve database table schemas from supported data sources, such as 
 
 ## View schema
 
-In the code editor for a resource query, click **Schema** to display the schema browser for the currently selected resource. The schema browser contains a list of all tables and details about their columns, such as name and type. You can also search the schema in the App IDE to find relevant tables or columns.
+In the code editor for a resource query, click **Schema** to display the schema browser for the currently selected resource. The schema browser contains a list of all tables and details about their columns, such as name and type. You can also search the schema in the app IDE to find relevant tables or columns.
 
 ## Refresh schema
 
@@ -24973,7 +26233,7 @@ Use transformers whenever you need to reuse the same blocks of JavaScript code i
 
 ## Create a transformer
 
-In the **Code** panel, click **+** > **Transformer** to create a JavaScript transformer.
+In the **Code** panel, click **+** > **Transformer** to create a transformer.
 
 Transformers are written in JavaScript. The return value at the end is what becomes the value of the transformer in the rest of the app. Here's an example of using a transformer to split out the first name from a string value in a table column.
 
@@ -25116,30 +26376,24 @@ The green evaluation box for failure conditions autocompletes your data based on
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-:::info beta
-
-VS Code Integration is in beta and available on all Retool versions 3.24.0+. Navigate to the [Beta](https://login.retool.com/auth/login?source=docs&redirectOnLogin=settings/beta) settings to enable.
-
-:::
-
-The Retool VS Code extension allows you to author complex code in the comfort of your own development environment. Enjoy custom keybindings, flexible window management, third-party extensions, and integration with your existing code repositories.
+The VS Code extension allows you to author complex code in the comfort of your own development environment. Enjoy custom keybindings, flexible window management, third-party extensions, and integration with your existing code repositories.
 
 Retool's VS Code extension is currently available for editing queries within apps, including those protected with [Source Control](../../source-control/index.mdx). Editing Query Library and workflows queries is not yet supported.
 
 ## Setup
 
 1. Ensure your Retool admin has enabled **VS Code Editing Enabled** in the **Settings** > **Beta** section on your Retool instance.
-2. Download the Retool VS Code [extension](https://marketplace.visualstudio.com/items?itemName=Retool.retool-vscode-extension) from the VS Code marketplace. If you are not running the latest version of Retool, use the changelog to choose the right extension version for your Retool instance.
+2. Download the VS Code [extension](https://marketplace.visualstudio.com/items?itemName=Retool.retool-vscode-extension) from the VS Code marketplace. If you are not running the latest version of Retool, use the changelog to choose the right extension version for your Retool instance.
 
 ## Usage
 
-You can start building with the Retool VS Code extension by following a deep link from the Retool web editor, or invoking a `Retool:*` command directly from VS Code.
+You can start building with the VS Code extension by following a deep link from the Retool web editor, or invoking a `Retool:*` command directly from VS Code.
 
 1. Complete the setup steps above.
 
 2. In VS Code, checkout the branch of your repository that you want to work in.
 
-3. In the browser, while editing a Retool app that contains queries, open the [Code tab](../../apps/concepts/ide.mdx#code-tab) and then click the **VS Code** icon.
+3. In the browser, while editing a Retool app that contains queries, open the **Code** tab and then click the **VS Code** icon.
 
 4. The browser displays an authorization page for you to grant VS Code permission. You can also save your consent to skip this step in the future. After you click **Authorize**, your browser launches the VS Code app.
 
@@ -25193,11 +26447,11 @@ Type completions are also available within Retool expressions for JavaScript que
 
 ### Integration with extensions
 
-Since query files are written to your local file system the same as any other code, the Retool VS Code extension is compatible with other third-party extensions. For example, you can integrate query writing with [GitHub Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot), [Vim](https://marketplace.visualstudio.com/items?itemName=vscodevim.vim), and [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker). Note that Retool is not responsible for the behavior of third-party plugins.
+Since query files are written to your local file system the same as any other code, the VS Code extension is compatible with other third-party extensions. For example, you can integrate query writing with [GitHub Copilot](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot), [Vim](https://marketplace.visualstudio.com/items?itemName=vscodevim.vim), and [Code Spell Checker](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker). Note that Retool is not responsible for the behavior of third-party plugins.
 
 ### VS Code commands
 
-The Retool VS Code extension adds several convenience commands that can be invoked from the [Command Palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette) to interact with your Retool instance. The following table lists the available commands.
+The VS Code extension adds several convenience commands that can be invoked from the [Command Palette](https://code.visualstudio.com/docs/getstarted/userinterface#_command-palette) to interact with your Retool instance. The following table lists the available commands.
 
 | Name                        | Description                                                                                                   |
 | --------------------------- | ------------------------------------------------------------------------------------------------------------- |
@@ -25218,14 +26472,14 @@ Linters like Prettier and ESLint may treat Retool expressions as JavaScript bloc
 Editing queries from multiple instances simultaneously is not supported at the moment; your workspace can only contain queries from a single Retool instance. If you open a deep link from a Retool instance and already have queries open from another instance, your existing VS Code folders will be closed automatically.
 
 ### GUI and non-code queries
-Currently, only code-based queries can be edited in VS Code. Queries that are configured primarily via a graphical interface (e.g. GUI-mode SQL, REST, OpenAPI) will not appear in VS Code. In addition, aside from transformers, secondary code blocks such as event handlers are not editable in VS Code either. File a ticket on the [Retool VS Code extension GitHub repository](https://github.com/tryretool/vscode-extension/issues) to surface feature requests.
+Currently, only code-based queries can be edited in VS Code. Queries that are configured primarily via a graphical interface (e.g. GUI-mode SQL, REST, OpenAPI) will not appear in VS Code. In addition, aside from transformers, secondary code blocks such as event handlers are not editable in VS Code either. File a ticket on the [VS Code extension GitHub repository](https://github.com/tryretool/vscode-extension/issues) to surface feature requests.
 
 ### Creating, renaming, and deleting queries
 Creating, renaming, and deleting queries is not supported from VS Code. To perform a CRD operation, save any pending changes in VS Code first, perform the operation from your Retool browser tab, and then use the **Retool: Refresh from Retool** quick command in VS Code to resync.
 
 ## Telemetry
 
-Retool takes customer privacy and data transparency seriously. The Retool VS Code extension only communicates with your Retool instance. You can monitor outbound network traffic in VS Code by enabling the **Help** > **Toggle Developer Tools** option.
+Retool takes customer privacy and data transparency seriously. The VS Code extension only communicates with your Retool instance. You can monitor outbound network traffic in VS Code by enabling the **Help** > **Toggle Developer Tools** option.
 
 The following usage statistics are collected by default:
 
@@ -25240,7 +26494,7 @@ The content of customer code opened in VS Code is never used for analytics and i
 
 ## Feedback
 
-To provide feedback, file an issue on the Retool VS Code extension [GitHub repository](https://github.com/tryretool/vscode-extension/issues).
+To provide feedback, file an issue on the VS Code extension [GitHub repository](https://github.com/tryretool/vscode-extension/issues).
 
 ---
 
@@ -25310,7 +26564,7 @@ Retool performs [string interpolation](https://en.wikipedia.org/wiki/String_inte
 Store a value temporarily in a variable.
    
 
-You can specify custom JavaScript code and libraries for use across Retool. You can also make use of built-in and third-party libraries that Retool preloads.
+You can specify custom JavaScript code and libraries for use across Retool. You can also make use of built-in libraries and third-party libraries that Retool preloads.
 
    Using custom Python in a workflow.
    
@@ -25511,7 +26765,7 @@ While you can use JavaScript within `{{ }}` embedded expressions and JavaScript 
 
 ### Transformers
 
-A [JavaScript transformer](./guides/transformers.mdx) is a reusable block of JavaScript. You reference property values using embedded expressions and the results of the transformation are output on the transformer's `value` property using a `return` statement.
+A [transformer](./guides/transformers.mdx) is a reusable block of JavaScript. You reference property values using embedded expressions and the results of the transformation are output on the transformer's `value` property using a `return` statement.
 
 While similar to JavaScript queries, transformers cannot control app behavior. This is because transformers are dynamically evaluated in the same way as embedded expressions. The returned value updates whenever referenced values in the transformer change.
 
@@ -25953,7 +27207,7 @@ Firestore uses a custom data type for timestamps and does not support string val
 
 ## Google Analytics query tutorial
 
-You can connect to [Google Analytics](../../../data-sources/guides/integrations/analytics/google-analytics.mdx) by creating a resource in Retool. Once complete, you can write app or workflow queries to interact with Google Analytics APIs.
+You can connect to [Google Analytics](../../../data-sources/guides/integrations/google/google-analytics.mdx) by creating a resource in Retool. Once complete, you can write app or workflow queries to interact with Google Analytics APIs.
 
 To start, select the API you want to query from the **API** dropdown. Next, select the desired API operation from the **Operation** dropdown. You can also search for available operations within this field.
 
@@ -25967,7 +27221,7 @@ If you connect to Google Analytics using OAuth 2.0, you need to grant access to 
 
 ## Build an analytics report
 
-To build a report using the `/reports:batchGet` operation of the v4 Reporting API, review the [Google Analytics API documentation](https://developers.google.com/analytics/devguides/reporting/core/v4/basics#request_body). Google also provides an interactive [Request Composer](https://ga-dev-tools.appspot.com/request-composer/) for building requests you can copy and paste into Retool.
+To build a report using the `/reports:batchGet` operation of the v4 Reporting API, review the [Google Analytics API documentation](https://developers.google.com/analytics/devguides/reporting/data/v1/rest/). Google also provides an interactive [Request Composer](https://ga-dev-tools.appspot.com/request-composer/) for building requests you can copy and paste into Retool.
 
 ## Process the report response
 
@@ -26065,7 +27319,7 @@ This guide explains how to:
 
 To build apps with Google Sheets, you need:
 
-- A [Google Sheets resource](../../../data-sources/guides/integrations/database/google-sheets.mdx).
+- A [Google Sheets resource](../../../data-sources/guides/integrations/google/google-sheets.mdx).
 - Edit access to the Google Sheet you want to work with.
 
 ### Spreadsheet requirements
@@ -26198,7 +27452,7 @@ You can use **Prefix to filter results** so only file keys that start with the s
 
 ## Read a file from S3
 
-Select **Read a file from S3** to retrieve the contents of a specified file. You set the value of **S3 file key** to the corresponding key of the file to retrieve. The content of the file is base64-encoded.
+Select **Read a file from S3** to retrieve the contents of a specified file. You set the value of **S3 file key** to the corresponding key of the file to retrieve. The content of the file is Base64-encoded.
 
 For example, you can configure a [Listbox](https://retool.com/components/listbox) component to use data from a query that lists all images in S3. The selected file is retrieved from S3 using `{{ listbox1.value }}` as the **S3 file key**, then displayed using the [Image](https://retool.com/components/image) component.
 
@@ -26243,7 +27497,7 @@ Select **Upload data** to upload data to the S3 bucket. You configure the follow
 
 The [File Button](https://retool.com/components/file-button), [File Dropzone](https://retool.com/components/file-dropzone), and [File Input](https://retool.com/components/file-input) components for web apps return base64-encoded values and MIME types for selected files.
 
-The [Image Input](../../../mobile/reference/components/media/image-input.mdx) component for Retool Mobile apps returns blob values and MIME types for selected files. Use [utils.getDataByObjectURL](../../reference/libraries/utils.mdx#utilsgetdatabyobjecturl) in a JavaScript query first to convert blobs into base64-encoded values.
+The [Image Input](../../../mobile/reference/components/media/image-input.mdx) component for Retool Mobile apps returns blob values and MIME types for selected files. Use [utils.getDataByObjectURL](../../reference/libraries/utils.mdx#utilsgetdatabyobjecturl) in a JavaScript query first to convert blobs into Base64-encoded values.
 
 ```js convertToBase64
 return utils.getDataByObjectURL(imageInput1.value[0]);
@@ -26526,7 +27780,7 @@ This tutorial explains how to create resource queries that interact with connect
 
 ## Introduction
 
-Queries for API resources include relevant options for making API requests. Resources for popular service integrations, ([Amazon S3](../../data-sources/guides/integrations/object-file-store/amazon-s3.mdx), [Google Sheets](../../data-sources/guides/integrations/database/google-sheets.mdx) [Twilio](../../data-sources/guides/integrations/messaging/twilio.mdx), etc.) include a tailored set of options. This abstracts away some of the complexities of working with APIs.
+Queries for API resources include relevant options for making API requests. Resources for popular service integrations, ([Amazon S3](../../data-sources/guides/integrations/object-file-store/amazon-s3.mdx), [Google Sheets](../../data-sources/guides/integrations/google/google-sheets.mdx) [Twilio](../../data-sources/guides/integrations/messaging/twilio.mdx), etc.) include a tailored set of options. This abstracts away some of the complexities of working with APIs.
 
 Other resources, such as [GraphQL](../guides/api/graphql.mdx)-based integrations or custom APIs, include more generic options and require further knowledge of working with the API. 
 
@@ -26943,6 +28197,7 @@ import Releases from '@site/src/components/ReleaseNotesAll.js';
 ## System architecture of self-hosted Retool deployments
 
 import SelfhostedLatest from "@site/src/components/SelfhostedLatest";
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
 
 Organizations that have on-premise requirements can deploy the Retool platform on their own infrastructure. Each deployment instance uses a distributed set of containers with services for different functions. These work together to securely run the platform within your VPN or VPC.
 
@@ -27013,7 +28268,7 @@ You must not replicate **jobs-runner**. It performs tasks and migrations that mu
 
 ### workflows-worker
 
-The **workflows-worker** container continuously polls the Temporal cluster for tasks required to either start or execute blocks within a workflow. It makes requests to **code-executor** to execute blocks and process results, then reports back to Temporal to continue or complete workflow execution.
+The **workflows-worker** container continuously polls the Temporal Cluster for tasks required to either start or execute blocks within a workflow. It makes requests to **code-executor** to execute blocks and process results, then reports back to Temporal to continue or complete workflow execution.
 
 **workflows-worker** runs the following service.
 
@@ -27077,7 +28332,7 @@ The following table displays ingress and egress requirements for **agent-worker*
 You can replicate **agent-worker** as you scale to manage higher volumes of workflow traffic.
 
 ### agent-eval-worker
-The **agent-eval-worker** continuously polls the Temporal cluster for pending agent eval runs. When an eval is running, the **agent-eval-worker** makes calls from Postgres to the LLM provider configured in the [test case](../../agents/concepts/evals.mdx#datasets-and-test-cases), and compares the output to the expected value.
+The **agent-eval-worker** continuously polls the Temporal Cluster for pending agent eval runs. When an eval is running, the **agent-eval-worker** makes calls from Postgres to the LLM provider configured in the [test case](../../agents/concepts/evals.mdx#datasets-and-test-cases), and compares the output to the expected value.
 
 #### Network ingress and egress
 
@@ -27085,6 +28340,7 @@ The following table displays ingress and egress requirements for **agent-eval-wo
 
 | Container             |       Network ingress        |       Network egress        |
 | :-------------------- | :--------------------------: | :-------------------------: |
+| **code-executor**     |  |  |
 | **postgres**          |  |  |
 | **Temporal**          |  |  |
 | **Resources**         |  |  |
@@ -27150,10 +28406,52 @@ Each Docker Hub repository tag corresponds to a particular version of Retool. Yo
   
 - 
     tryretool/code-executor-service:
+    
+  
+
+For information about hardened variants of these images, including `arm64` support and security changes, see [Hardened images (beta)](./hardened-images.mdx).
+
+---
+
+## Container logs
+
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
+
+You can use Retool's backend container logs to monitor your deployment's errors and performance. To access logs for Retool product events, such as user creation, use the [audit logs](../../org-users/guides/monitoring/audit-logs.mdx) instead.
+
+## Access container logs
+
+Retool sends container logs to standard output by default. The method to view container logs depends on your deployment provider. Refer to your provider's documentation to learn more about available logging options.
+
+For deployments using [Docker Compose](../tutorials.mdx), use `sudo docker compose logs`.
+
+See the [Docker logs documentation](https://docs.docker.com/engine/reference/commandline/compose_logs/) for a complete list of options you can pass to `docker compose logs` or `docker logs`.
+
+For deployments using Kubernetes, use `kubectl logs`:
+
+```
+kubectl logs -p  -n 
+```
+
+## Use logs to debug
+
+The `api` and `db-connector` containers or pods log events related to queries and requests. For events related to [Source Control](../../source-control/index.mdx), see the `jobs-runner` container or pod logs.
+
+To follow the lifecycle of a request in Retool, look for the `requestId` field. You can then query using the request ID and any associated `QUERY_REQUEST`, `QUERY_COMPLETE`, `RESPONSE_SEND`, and `QUERY_RESULT` events, which contain the query's environment, source, and more details.
+
+Set the `DEBUG` and `LOG_LEVEL` [environment variables](../reference/environment-variables/index.mdx) to enable more verbose logging.
+
+## Send logs to log aggregators
+
+Because logs are piped to standard output by default, you can connect them to log aggregators. For example, send logs to Datadog by [registering an agent](https://docs.datadoghq.com/containers/docker/log/?tab=containerinstallation). See the documentation for your log aggregator for more details.
+
+On Docker-based deployments, you configure logging drivers by creating and configuring a `daemon.json` file, then restarting Docker. See [Docker's documentation](https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file) for more details.
 
 ---
 
 ## Custom code execution security
+
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
 
 The [code-executor](./architecture.mdx#code-executor) container executes arbitrary user-written code for custom JavaScript or Python libraries in [workflows](../../workflows/index.mdx). Retool recommends running [code-executor](./architecture.mdx#code-executor) with sandboxing enabled, for flow safety and data security reasons. But Retool does support running without sandboxing enabled, as it requires privileged container access, which some organizations do not allow.
 
@@ -27175,7 +28473,7 @@ Due to the potential impact that executing arbitrary code can have, Retool prior
 
 ## Sandboxed environment with NsJail
 
-Retool uses [NsJail](https://github.com/google/nsjail), a process isolation tool for Linux, to securely execute custom code. NsJail levegages Linux kernel features such as namespaces, control groups (cgroups), and [seccomp-bpf](https://en.wikipedia.org/wiki/Seccomp) [syscall](https://man7.org/linux/man-pages/man2/syscall.2.html) filters to isolate custom code from the rest of the system.
+Retool uses [NsJail](https://github.com/google/nsjail), a process isolation tool for Linux, to securely execute custom code. NsJail leverages Linux kernel features such as namespaces, control groups (cgroups), and [seccomp-bpf](https://en.wikipedia.org/wiki/Seccomp) [syscall](https://man7.org/linux/man-pages/man2/syscall.2.html) filters to isolate custom code from the rest of the system.
 
 By doing so, NsJail is able to isolate the file system, restrict network access, and enforce CPU and memory limits to prevent any single workflow from impacting overall system stability.
 
@@ -27221,41 +28519,134 @@ A non-sandboxed environment should only be used if an organization can trust tha
 
 ---
 
-## Deployment logs
+## Hardened images for self-hosted Retool
 
-You can use Retool's backend container logs to monitor your deployment's errors and performance. To access logs for Retool product events, such as user creation, use the [audit logs](../../org-users/guides/monitoring/audit-logs.mdx) instead.
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
 
-## Access container logs
+Self-hosted instances can use _hardened images_, which are available on the [edge release channel](../../releases/index.mdx#edge). These images are designed to improve supply-chain security, reduce the attack surface, and support modern infrastructure while remaining functionally compatible with existing deployments.
 
-Retool sends container logs to standard output by default. The method to view deployment logs depends on your deployment provider. Refer to your provider's documentation to learn more about available logging options.
+Refer to the [changelog entry for hardened images](/changelog/hardened-images) for information about how to transition to using hardened images.
 
-For deployments using [Docker Compose](../tutorials.mdx), use `sudo docker compose logs`.
+This guide explains what hardened images are, how they differ from classic images, and what to consider before adopting them in your environments.
 
-See the [Docker logs documentation](https://docs.docker.com/engine/reference/commandline/compose_logs/) for a complete list of options you can pass to `docker compose logs` or `docker logs`.
+## Hardened vs. classic images
 
-For deployments using Kubernetes, use `kubectl logs`:
+Hardened images introduce several changes compared to the existing **classic** Docker images:
 
-```
-kubectl logs -p  -n 
-```
+- **Chainguard-based, Wolfi OS images:** Hardened images use a minimal [Wolfi](https://wolfi.dev/) base and are patched and maintained through Chainguard. System-level packages are curated and updated to reduce known vulnerabilities and tighten supply-chain security.
 
-## Use logs to debug
+- **Multi-architecture support:** Hardened images are published as **multi-architecture Open Container Initiative (OCI) images** that support both `amd64` and `arm64`. When you run them on `arm64` nodes, you can often reduce compute requirements and improve performance compared to equivalent `amd64` instances.
 
-The `api` and `db-connector` containers or pods log events related to queries and requests. For events related to [Source Control](../../source-control/index.mdx), see the `jobs-runner` container or pod logs.
+- **Bazel-built OCI images instead of Dockerfiles:** Hardened images are built using Bazel, which assembles OCI layers directly instead of using traditional Dockerfiles. This enables finer-grained control over file layout, permissions, and dependencies.
 
-To follow the lifecycle of a request in Retool, look for the `requestId` field. You can then query using the request ID and any associated `QUERY_REQUEST`, `QUERY_COMPLETE`, `RESPONSE_SEND`, and `QUERY_RESULT` events, which contain the query's environment, source, and more details.
+Classic images remain supported, and you can continue using them if hardened images do not fit your requirements. Over time, Retool plans to make hardened images the default for self-hosted deployments.
 
-Set the `DEBUG` and `LOG_LEVEL` [environment variables](../reference/environment-variables/index.mdx) to enable more verbose logging.
+## Image repositories and release channels
 
-## Send logs to log aggregators
+Hardened images use the same repositories as [classic images](./architecture.mdx#containers-and-services): `tryretool/backend` for most backend services such as `api`, `jobs-runner`, and workflow workers.
 
-Because logs are piped to standard output by default, you can connect them to log aggregators. For example, send logs to Datadog by [registering an agent](https://docs.datadoghq.com/containers/docker/log/?tab=containerinstallation). See the documentation for your log aggregator for more details.
+Refer to the [Self-hosted architecture](./architecture.mdx#docker-images) guide for an overview of how these images map to containers and services.
 
-On Docker-based deployments, you configure logging drivers by creating and configuring a `daemon.json` file, then restarting Docker. See [Docker's documentation](https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file) for more details.
+### Hardened image tags
+
+Hardened images are first released on the [edge channel](../../releases/index.mdx#edge) as beta builds. Tags use the following pattern: `X.YYY.Z-edge-hardened-beta`, where `X.YYY.Z` matches the corresponding edge version for classic images. 
+
+The changes available on the hardened image tag contain the same changes as the classic images. These changes can be found in the [edge release notes](../../releases/edge/index.mdx).
+
+Classic edge tags (for example, `X.YYY.Z-edge`) continue to be published alongside hardened tags, and you can choose which series to deploy.
+
+## Changes that may affect your deployment
+
+Hardened images are intended to be functionally compatible with classic images, but there are some important behavioral and operational differences to be aware of.
+
+### System dependency packages
+
+Hardened images include a smaller, more controlled set of _system dependency packages_ at the OS level. Examples of system dependencies include tools like `curl` or `ssh`, or other utilities installed by the base image.
+
+In classic images, some tools may be present because of the underlying distribution or how the image is built. With hardened images:
+
+- System dependencies are explicitly curated and patched.
+- Extra tools that Retool does not depend on are removed where possible.
+- Newly added dependencies are evaluated for security and long-term support.
+
+For broader security recommendations, refer to [Security hardening best practices](./security-hardening.mdx).
+
+### Modified or custom Retool images and debugging tools
+
+Some customers extend Retool images to add additional packages or tools, or rely on interactive debugging inside the containers. For example:
+
+- Building a custom Docker image `FROM tryretool/backend` and running `apt-get install ...`.
+- Baking extra utilities directly into the containers.
+- Opening a shell in a Retool container to run ad-hoc debugging commands.
+
+Hardened images significantly change how these patterns work:
+
+- The underlying OS is no longer Debian-based; common tools like `apt` are not available.
+- Image layers are generated by Bazel, and the file layout, users, and permissions may differ from classic images.
+- Directly modifying hardened images can bypass many of the security benefits they provide.
+- Nonessential system utilities are removed, so you may see fewer CLI tools available and different default users/permissions compared to classic images.
+
+Retool does not recommend, and cannot support, building custom images that modify hardened Retool images in place. If you have additional runtime or debugging needs:
+
+- Prefer running sidecar containers or separate services that you control.
+- If you must create a custom assembly that embeds Retool, use a workflow that is compatible with Wolfi/Chainguard images and follows their security guidance.
+- Keep custom tooling off the main Retool containers whenever possible.
+- Use centralized logging and observability tools, such as those described in [Container logs](./container-logs.mdx) and [Collect self-hosted telemetry data](../guides/telemetry.mdx).
+- Run debugging tools from separate admin or bastion hosts rather than from within Retool containers.
+
+If you currently rely on custom Retool images or in-container debugging workflows, plan for additional validation and manual changes when testing hardened images.
+
+### MSSQL with Windows Authentication
+
+The only known product feature not currently supported in hardened images is **Microsoft SQL Server with Windows Authentication**. This configuration is complex to maintain and introduces additional security and build performance considerations.
+
+If you currently use MSSQL with Windows Authentication, you should continue using _classic images_ while Retool determines the long-term support model for Windows Authentication.
+
+### code-executor and other workloads
+
+Many customers also run the separate [code-executor](../guides/code-executor-security-privileges.mdx) service.
+
+While hardened images are in public beta:
+
+- Hardened images are available for core backend services first.
+- A hardened `code-executor-service` image is under active development and may not yet be available for your version.
+- You may therefore have a _mixed environment_ where core backend services use hardened images, while some auxiliary services (such as `code-executor`) continue to use classic images.
+
+This mixed setup is expected and supported during the public beta. You can gradually migrate each workload to hardened images as they become available, starting with non-production environments.
+
+## Infrastructure and `arm64` considerations
+
+Hardened images are published as multi-architecture images that support both `amd64` and `arm64`. However, full support for an end-to-end `arm64` deployment depends on hardened images being available for all required services, including `code-executor`. 
+
+Retool is actively working to expand `arm64` coverage across all services.
+
+## Frequently asked questions
+
+Refer to the following frequently asked questions.
+
+### Do hardened images change how Retool behaves?
+
+Hardened images are intended to be **functionally equivalent** to classic images for supported features. Most differences are at the OS, packaging, and security hardening layers.
+
+You should not see changes to how apps, workflows, or queries behave, aside from:
+
+- Unsupported configurations such as MSSQL with Windows Authentication.
+- Any custom tooling or workflows that rely on incidental OS tools inside the containers.
+
+### Can I switch between classic and hardened images?
+
+Yes. Because hardened images share the same underlying product version as classic images, you can:
+
+- Upgrade from classic to hardened images on a given edge version.
+- Roll back to classic images on that same version if necessary.
+
+Always follow the guidance in [Upgrade deployments](./update-deployment.mdx) when changing image tags, and test changes on non-production instances first.
 
 ---
 
 ## Multi-instance deployment
+
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
 
 If running one instance of Self-hosted Retool with [multiple environments](../../org-users/guides/configuration/environments.mdx) doesn't meet your requirements, you can run multiple instances of Retool each with its own database. Multiple instances are sometimes used to meet certain security, compliance, and networking requirements.
 
@@ -27299,7 +28690,9 @@ If you want to safely test out a new beta feature or instance-wide setting (e.g.
 
 ## Retool AI for self-hosted deployments
 
-Self-hosted customers can deploy and embed Retool AI for use with apps and workflows.
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
+
+Self-hosted customers can deploy and embed Retool AI for use with apps and workflows. To learn more about how you can use Retool AI, refer to the [Retool AI actions concept](../../queries/concepts/actions.mdx) documentation, and the [AI actions how-to guides](../../queries/guides/ai/chat.mdx)
 
 ## AI platform options
 
@@ -27321,11 +28714,21 @@ When Retool AI is used to build or configure a query, application, or workflow (
 
 Any inputs or outputs that correspond to the categories above may continue to be used to inform product improvements. Retool does not use any inputs submitted to, or outputs generated from, Retool AI that is embedded within a deployed application or workflow (e.g., text stored in [Retool-managed Vectors](../../data-sources/quickstarts/retool-vectors.mdx)). These inputs and outputs are treated as "Customer Data" in accordance with the [Customer Terms of Service](https://docs.retool.com/legal/customer-terms-of-service), [Security Practices](https://docs.retool.com/legal/security), and [Data Processing Addendum](https://docs.retool.com/legal/dpa).
 
+## Additional resources
+Refer to the following documentation for additional ways you can use AI within Retool: 
+* [Assist](../../apps/guides/assist)
+* [Agents](../../agents/index.mdx)
+* [AI in app building](../../apps/concepts/ai.mdx)
+
 ---
 
 ## Security hardening best practices
 
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
+
 Retool provides different security hardening options that you can customize. Use the following best practices when evaluating and configuring your deployment according to your use case, threat model, and risk assessment.
+
+For an overview of Retool's hardened container images and how they relate to security posture, see [Hardened images (beta)](./hardened-images.mdx).
 
 :::note Kubernetes infrastructure 
 
@@ -27415,13 +28818,14 @@ You are responsible for updating self-hosted instances and for the security of y
 
 ## Monitor audit logs
 
-Actions that users take within Retool are stored in [audit logs](../../org-users/guides/monitoring/audit-logs.mdx). You can also write these actions to [container logs](deployment-logs.mdx) and pipe them into your observability tooling by setting the `LOG_AUDIT_EVENTS` [environment variable](../reference/environment-variables/index.mdx#log_audit_events).
+Actions that users take within Retool are stored in [audit logs](../../org-users/guides/monitoring/audit-logs.mdx). You can also write these actions to [container logs](container-logs.mdx) and pipe them into your observability tooling by setting the `LOG_AUDIT_EVENTS` [environment variable](../reference/environment-variables/index.mdx#log_audit_events).
 
 ---
 
-## Temporal clusters for Self-hosted Retool
+## Temporal Clusters for Self-hosted Retool
 
 import TemporalOptions from "../_partials/_temporal-options.mdx"
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
 
 ## Compare options
 
@@ -27440,7 +28844,7 @@ If you're using a Retool-managed cluster or a self-managed cluster on Temporal C
 
 ### Lifecycle
 
-When the Temporal cluster is needed:
+When the Temporal Cluster is needed:
 
 1. The `MAIN_BACKEND` service enqueues workflows with Temporal.
 2. A `WORKFLOWS_TEMPORAL_WORKER` receives instructions from Temporal for the specific tasks required to run a workflow, leveraging the Self-hosted Retool backend.
@@ -27472,14 +28876,14 @@ If you deploy multiple instances of Self-hosted Retool with Workflows (e.g., sta
 
 A _local_ cluster is one that is created when deploying Self-hosted Retool with Workflows. Unlike a self-hosted cluster in your VPC, a local cluster is only used by its Self-hosted Retool instance.
 
- Local clusters enable you to get up and running quickly without needing to commit to a dedicated Temporal cluster, but can become complex to scale and manage. A Retool-managed cluster, or a self-managed cluster on Temporal Cloud or in your VPC, centralizes the cluster as each instance can use it via a resource-isolated namespace.
+ Local clusters enable you to get up and running quickly without needing to commit to a dedicated Temporal Cluster, but can become complex to scale and manage. A Retool-managed cluster, or a self-managed cluster on Temporal Cloud or in your VPC, centralizes the cluster as each instance can use it via a resource-isolated namespace.
 
 ## Large scale deployments
 
 Workflows can be deployed to scale to hundreds of concurrent block runs per second. There are three Temporal options for running more than 10 workflows per second:
 
-- Use a Retool-managed Temporal cluster.
-- Use a self-managed Temporal cluster.
+- Use a Retool-managed Temporal Cluster.
+- Use a self-managed Temporal Cluster.
 - Use Cassandra as the Temporal datastore.
 If you anticipate running workflows at a higher scale, please [reach out to us](/support) to work through a deployment strategy that is best for your use case.
 
@@ -27504,6 +28908,8 @@ For more information about telemetry, refer to [Collect self-hosted telemetry da
 ---
 
 ## Self-hosted Retool upgrade best practices
+
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
 
 This guide provides high-level recommendations and best practices for updating Retool for production deployments. For deployment-specific installation instructions, use the deployment guide for your Retool deployment type.
 
@@ -27603,6 +29009,7 @@ As a courtesy to your users, it’s helpful to send an announcement to them to l
 ## Self-hosted Retool concept guides
 
 import Concept from '/docs/_partials/_doctypes/_concept.mdx';
+import EnterpriseRequirement from "./_partials/_enterprise-plan-requirement.mdx";
 
 :::tip Get started with self-hosted Retool
 
@@ -27614,7 +29021,9 @@ Follow a [tutorial](./tutorial/) to deploy self-hosted Retool on your infrastruc
 
 ## Configure SSL and custom certificates
 
-Docker Compose deployments of Self-hosted Retool include [https-portal](https://github.com/SteveLTN/https-portal) to automatically configure HTTPS. You can either provision a certificate with [Let's Encrypt](https://letsencrypt.org/) or manually add your own certificates.
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
+
+Docker Compose deployments of Self-hosted Retool include [https-portal](https://github.com/SteveLTN/https-portal) to automatically configure HTTPS. You can either provision a certificate with [Let's Encrypt](https://letsencrypt.org/) or manually add your own custom certificate.
 
 The process for Kubernetes and other deployment types is similar to the steps for Docker Compose, but might require different settings. For example, with Kubernetes you can use Kubernetes Secrets, and with Heroku you can extend the Dockerfile to copy the certificate into the container.
 
@@ -27706,32 +29115,7 @@ To configure [nginx](https://nginx.org):
 ```text
 server {
     listen 80;
-    server_name retool.yourcompany.dev; # <- Change this to your subdomain
-
-    location / {
-        return 301 https://$host$request_uri;
-    }
-}
-server {
-    listen 443 ssl;
-    server_name retool.yourcompany.dev; # <- Change this to match server_name above
-    ssl_certificate     /etc/nginx/certs/hatch.crt; # <- Change this to your .crt file name
-    ssl_certificate_key /etc/nginx/certs/hatch.key; # <- Change this to your .key file name
-
-    location / {
-        proxy_set_header Host $host;
-        proxy_pass http://api:3000;
-    }
-}
-```
-
-### Restart Docker containers
-
-Run `sudo docker compose up -d` to restart your containers.
-
-### View container logs
-
-You can run the following commands to view container logs. These logs are helpful if you run into issues and need to troubleshoot.
+    server_name retool.yourcompany.dev; # container logs. These logs are helpful if you run into issues and need to troubleshoot.
 
 ```text
 sudo docker compose exec https-portal bash
@@ -27781,13 +29165,15 @@ NODE_EXTRA_CA_CERTS=/retool_backend/ca/cert.pem
 
 ## Configure code-executor security and privileges
 
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
+
 :::danger
 
 Retool strongly recommends running the `code-executor` container in priviledged modes so that [custom code executes in a sandboxed environment](../concepts/custom-code-execution-security.mdx). You should only use unprivileged mode if it is not possible for your deployment to use privileged mode.
 
 :::
 
-The [code-executor](../quickstart.mdx#containers-and-services) service uses a default security configuration. It also runs in a privileged mode that runs workflow code in a sandboxed environment.
+The [code-executor](../quickstart.mdx#containers-and-services) service uses a default security configuration. It also runs in a privileged mode that runs workflow code in a sandbox environment.
 
 ## Disable default security configuration
 
@@ -27813,11 +29199,29 @@ DISABLE_IPTABLES_SECURITY_CONFIGURATION=true
 
 The Code executor service uses [NsJail](https://github.com/google/nsjail) to sandbox code execution. NsJail requires [privileged](https://docs.docker.com/reference/cli/docker/container/run/#privileged) container access. If your deployment framework does not support privileged access, (e.g., [ECS Fargate](https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/fargate-security-considerations.html), you can set the `CONTAINER_UNPRIVILEGED_MODE` environment variable to `true`. While you can run without NsJail, we recommend using privileged mode with NsJail enabled whenever possible, as it provides sandboxing and stronger security.
 
+To run in unprivileged mode:
+
+1. Set the `CONTAINER_UNPRIVILEGED_MODE` environment variable to `true` on your code-executor container.
+2. Set the container user to run as `retool_user.` You can do this in Docker via the [USER instruction](https://docs.docker.com/reference/dockerfile/#user), or in Kubernetes via a [security context](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/).
+3. Ensure the container or pod does not run with `privileged` capabilities. 
+
+The following example runs code-executor in unprivileged mode using Docker Compose:
+
 ```dockerfile
-CONTAINER_UNPRIVILEGED_MODE=true
+  code-executor:
+    user: retool_user
+    build:
+     ...
+    environment:
+      - NODE_ENV=production
+      - NODE_OPTIONS=--max_old_space_size=1024
+      - CONTAINER_UNPRIVILEGED_MODE=true
+      ...
+    privileged: false
+    ...
 ```
 
-This environment variable is also used to disable default security configs for link-local address to prevent EC2 metadata leaks. You must also run the startup commands to [disable the default security configuration](#disable-default-security-configuration).
+The `CONTAINER_UNPRIVILEGED_MODE` environment variable is also used to disable default configurations for link-local addresses to prevent Amazon EC2 metadata leaks. You must also run the startup commands to [disable the default security configuration](#disable-default-security-configuration).
 
 ---
 
@@ -27828,6 +29232,8 @@ import DocCardList from "@theme/DocCardList";
 ---
 
 ## Migrate from Cloud to Self-hosted
+
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
 
 This guide outlines the steps required to copy your apps and configuration from your Cloud to self-hosted deployment. Before you begin, review the [pricing](https://retool.com/pricing) page to confirm your self-hosted plan supports the features you need. Self-hosted plans have a different set of supported features and may have a [different billing structure](/support/billing-usage) than Cloud plans.
 
@@ -27985,6 +29391,8 @@ When you no longer need to use your Cloud organization, downgrade it to the Free
 
 ## Migrate from Self-hosted to Cloud
 
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
+
 This guide outlines the steps required to copy your apps and configuration from your self-hosted deployment to Retool Cloud. Before you begin, review the [pricing](https://retool.com/pricing) page to confirm your Cloud plan supports the features you need. Self-hosted plans have a different set of supported features and may have a [different billing structure](/support/billing-usage) than Cloud plans.
 
 ## Requirements
@@ -28001,7 +29409,7 @@ If your plan includes Source Control, follow the instructions for migrating [wit
 
 ## With Source Control
 
-If you use [Source Control in Retool](../../../source-control/index.mdx), use the following steps to synchronize apps, resources, and workflows between your Cloud and self-hosted instances. Source Control is available on [Enterprise plans](https://retool.com/pricing). Reach out to your Retool account manager if you are interested in an Enterprise plan.
+If you use [Source Control in Retool](../../../source-control/index.mdx), use the following steps to synchronize apps, resources, and workflows between your Cloud and self-hosted instances. Source Control is available on [an Enterprise plan](https://retool.com/pricing). Reach out to your Retool account manager if you are interested in an Enterprise plan.
 
 ### 1. Configure Source Control
 
@@ -28131,17 +29539,17 @@ When you no longer need to use the self-hosted organization, downgrade it to the
 
 ## Multiplayer for self-hosted Retool Apps
 
-[Multiplayer](../../apps/concepts/multiplayer.mdx) enables multiple users to make changes to the same app simultaneously. Similar to collaborative editing tools like Google Docs, users can see what others are working on and changes are reflected in real-time. 
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
+
+Multiplayer enables multiple users to make changes to the same app simultaneously. Similar to collaborative editing tools like Google Docs, users can see what others are working on and changes are reflected in real-time. 
+
+[Learn more about multiplayer](../../apps/concepts/multiplayer.mdx).
 
 Use the instructions in this guide to set up multiplayer on a self-hosted deployment, which requires additional configuration.
 
-## Prerequisites
-
-Navigate to **Settings** > **Beta** and turn on the **Enable multiplayer editing org wide** setting.
-
 :::note
 
-If your organization is currently using a version of self-hosted Retool 3.253, please reach out to your account manager so that the Retool team can manually enable this feature.
+Multiplayer is enabled by default on cloud instances and requires no additional configuration.
 
 :::
 
@@ -28157,6 +29565,8 @@ The multiplayer service and the Retool editor frontend maintain a WebSocket conn
 The following sections include more details about making this architecture change using Retool's [official retool-helm chart](../tutorials/kubernetes/helm.mdx) or a non-helm deployment.
 
 ## Configuring multiplayer with Kubernetes Helm
+
+import Prereqs from '../_partials/_multiplayer_prereq.mdx';
 
 Using the [official retool-helm chart](../tutorials/kubernetes/helm.mdx) is the easiest way to set up multiplayer.
 
@@ -28192,7 +29602,14 @@ POSTGRES_SSL_ENABLED
 POSTGRES_PASSWORD
 ENCRYPTION_KEY
 JWT_SECRET
+LICENSE_KEY
 ```
+
+:::important
+
+Beginning in the Q2 2026 stable release, the `LICENSE_KEY` environment variable will be required for the multiplayer service. Retool recommends setting it now to avoid any service interruptions.
+
+:::
 
 ### Configure web proxy
 
@@ -28261,6 +29678,8 @@ If you have any issues, please reach out to Retool Support and send your multipl
 
 ## Configure same-origin and sandbox for iframes
 
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
+
 By default, self-hosted deployments enforce the [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) for iframes and custom components embedded in Retool apps. All embedded content is considered to be from a separate origin and fails the same-origin policy. 
 
 This isolates embedded content (e.g., custom components) for security purposes but it can restrict functionality, such as:
@@ -28297,7 +29716,99 @@ For example, if you currently host your Retool backend on `mydomain.com`, Retool
 
 ---
 
+## Prevent users from creating or using specific resource types
+
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
+
+Self-hosted organizations can specify optional restrictions using [environment variables](../reference/environment-variables/index.mdx) that prevent users from creating or using certain resource types. The restrictions you set depend upon your use case. Configuring these restrictions does not remove or modify the configuration of an existing resource.
+
+Any restrictions you set can be reverted at any time. This enables you to temporarily disable resources (e.g., if your security team needs to review an integration before it can be used).
+
+## Prevent users from creating certain resource types
+
+Use the `RESOURCE_TYPES_CREATION_DENY_LIST` environment variable to specify a comma-separated list of resource integration types that cannot be created. Users can still interact with any existing resources of these types but they will not be able to create new ones.
+
+```title="Example"
+RESOURCE_TYPES_CREATION_DENY_LIST=graphql,twilio,postgresql
+```
+
+## Prevent users from creating or using certain resource types
+
+In some cases, you may need to block all use of a certain resource type. You can use the `RESOURCE_TYPES_DENY_LIST` environment variable to provide a list of all resource integration types that are to be blocked. This effectively disables the resource type on the deployment instance, preventing users from creating and querying resources of these types.
+
+```title="Example"
+RESOURCE_TYPES_DENY_LIST=graphql,twilio,postgresql
+```
+
+Once enabled, any queries for restricted resources will not run and return a query error.
+
+:::note
+
+The error message displayed in self-hosted Retool 3.300 and later also explains that that query failed due to the resource being restricted. Prior releases only return a query error.
+
+:::
+
+## Specify the environment variable values
+
+Both environment variables can accept a comma-separated list containing any of the following resource type values. Refer to the [self-hosted deployment tutorials](../tutorials.mdx) to learn more about configuring environment variables for your instance.
+
+| Resource               | Type                 |
+| ---------------------- | -------------------- |
+| PostgreSQL             | `postgresql`         |
+| MySQL                  | `mysql`              |
+| MSSQL                  | `mssql`              |
+| OracleDB               | `oracledb`           |
+| Redshift               | `redshift`           |
+| MCP                    | `mcp`                |
+| MongoDB                | `mongodb`            |
+| Google Sheets          | `googlesheets`       |
+| Elasticsearch          | `elasticsearch`      |
+| Cassandra              | `cassandra`          |
+| CosmosDB               | `cosmosdb`           |
+| CouchDB                | `couchdb`            |
+| RethinkDB              | `rethinkdb`          |
+| REST API               | `restapi`            |
+| GraphQL                | `graphql`            |
+| BigQuery               | `bigquery`           |
+| S3                     | `s3`                 |
+| GCS                    | `gcs`                |
+| Slack                  | `slackopenapi`       |
+| Salesforce             | `salesforce`         |
+| Athena                 | `athena`             |
+| GitHub                 | `github`             |
+| Stripe                 | `stripe`             |
+| Twilio                 | `twilio`             |
+| SendGrid               | `sendgrid`           |
+| Firebase               | `firebase`           |
+| DynamoDB               | `dynamodb`           |
+| Basecamp               | `basecamp`           |
+| Close.io               | `closeio`            |
+| Snowflake              | `snowflake`          |
+| Redis                  | `redis`              |
+| Vertica                | `vertica`            |
+| Presto                 | `presto`             |
+| SAP Hana               | `saphana`            |
+| Lambda                 | `lambda`             |
+| OpenAPI                | `openapi`            |
+| Google Cloud Datastore | `datastore`          |
+| gRPC                   | `grpc`               |
+| SMTP                   | `smtp`               |
+| Jira                   | `jira`               |
+| BigID                  | `bigid`              |
+| AlloyDB                | `alloydb`            |
+| Databricks             | `databricks`         |
+| Databricks Lakebase    | `databricksLakebase` |
+| JDBC                   | `jdbc`               |
+| Kafka                  | `kafka`              |
+| SQS                    | `sqs`                |
+| SNS                    | `sns`                |
+| Tavily                 | `tavily`             |
+
+---
+
 ## Set up Retool Database on Self-hosted deployments
+
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
 
 [Retool Database](../../data-sources/quickstarts/retool-database.mdx) is a PostgreSQL resource provided by Retool. You can query it like any other resource, but it also includes a spreadsheet-like interface for interacting with data.
 
@@ -28352,21 +29863,31 @@ Click **Save and initialize** to save your Retool Database settings. You can now
 
 ## 3. Import existing data
 
-Your supplied PostgreSQL database can be empty or populated with data, but Retool always creates a new database for each of your environments. To import existing data to Retool Database, use [pg_dump and psql](https://www.postgresql.org/docs/14/backup-dump.html) commands. You can use the [connection strings](../../data-sources/quickstarts/retool-database.mdx#connection-strings) dropdown to find the database host, name, user, password, and port for the current environment.
+Retool always creates a new database for each of your environments. To import existing data to Retool Database, use [pg_dump and psql](https://www.postgresql.org/docs/14/backup-dump.html) commands. 
 
-Your `pg_dump` and `psql` commands might use the following structure.
+You can use the [connection strings](../../data-sources/quickstarts/retool-database.mdx#connection-strings) dropdown to find the database host, name, user, password, and port for the current environment. 
 
-```
+:::note
+
+Changing the connection string does not switch the underlying data store, and the only way to migrate existing data from one database to another is through `pg_dump` and `psql`. You can also connect an existing PostgresSQL database using the [native integration](../../data-sources/guides/integrations/database/postgresql.mdx).
+
+:::
+
+Use `pg_dump` and `psql` commands to migrate data between databases. Your commands might use the following structure:
+
+```title="Export SQL"
 pg_dump EXISTING_DATABASE_CONNECTION_STRING > pg_dump.sql
 ```
 
-```
+```title="Import SQL"
 psql RETOOL_CONNECTION_STRING < pgdump.sql
 ```
 
 ---
 
 ## Set up Retool Storage on Self-hosted deployments
+
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
 
 [Retool Storage](../../data-sources/quickstarts/retool-storage.mdx) is a file storage resource provided by Retool. You can use it like any other file storage resource, with the addition of a Retool-provided file manager interface.
 
@@ -28377,7 +29898,7 @@ On self-hosted deployments, you can use your own storage bucket to host Retool S
 Retool supports the following storage providers:
 
 * [Amazon Simple Storage Service (Amazon S3)](../../data-sources/guides/integrations/object-file-store/amazon-s3.mdx)
-* [Google Cloud Storage (GCS)](../../data-sources/guides/integrations/object-file-store/google-cloud-storage.mdx)
+* [Google Cloud Storage (GCS)](../../data-sources/guides/integrations/google/google-cloud-storage.mdx)
 * S3-compatible storage providers like [Digital Ocean Spaces](https://docs.digitalocean.com/reference/api/spaces-api/) or [Wasabi](https://wasabi.com/downloads/)
 
 :::
@@ -28411,6 +29932,8 @@ In order to migrate to another provider, all files need to be manually copied fr
 ---
 
 ## Rotate your encryption key
+
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
 
 Retool supports encryption key rotation for organizations with self-hosted deployments. This encryption key is used to encrypt sensitive values in Retool's backend database. Encryption key rotation is a *zero-downtime* operation. 
 
@@ -28471,6 +29994,8 @@ If you are rotating your encryption key because you suspect a data breach, Retoo
 
 ## Rotate SSH keys
 
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
+
 Organizations with Self-hosted Retool deployments can regenerate SSH keys used for SSH tunneling. This allows you to follow your organization's credential rotation policy or update keys if your encryption key has changed.
 
 ## Invalidate existing SSH keys
@@ -28502,6 +30027,7 @@ If your key is for SSH tunneling, use the **Download Retool's public key** link 
 ## Scale your self-hosted deployment infrastructure
 
 import ReleaseVersions from '@site/static/data/releases/stable.json'
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
 
 Retool's self-hosted Docker image consists of several containers required to run your deployment. Before you continue, you should review [Retool's self-hosted architecture](../concepts/architecture.mdx) to understand which services need scaling as usage increases.
 
@@ -28583,7 +30109,17 @@ kubectl rollout status deployment/ -n retool
 
 ---
 
+## _config Check
+
+Retool checks the validity of the configuration to ensure that secrets are available. If Retool cannot access the secrets manager you've configured, an error message appears in the Secrets Manager settings.
+
+Validate secrets configuration.
+
+---
+
 ## Retrieve secrets from AWS Secrets Manager
+
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
 
 Configuring Resources in Retool can require handling sensitive values, e.g. database passwords or API keys. Retool is [SOC 2 Type 2 compliant](https://docs.retool.com/legal/security), and most customers store these values with Retool. However, depending on your security posture, you may want to store secret values externally, rather than encrypted in Retool’s database.
 
@@ -28651,6 +30187,8 @@ retool/prod/db_password
 
 On your Retool development instance, you would then set the namespace to `retool/dev`, and on your production instance to `retool/prod`. You can then reference secrets for either deployment instance using `{{ secrets.db_user }}` and `{{ secrets.db_password }}`, and Retool will fetch the appropriate secret at runtime.
 
+import ConfigCheck from './_config-check.mdx';
+
 ## 4. Use secrets in resources
 
 After you save your Secrets Manager configuration in Retool, if you granted Retool the `ListSecrets` permission, available secrets appear on **Settings** > **Secrets Manager**.
@@ -28682,6 +30220,8 @@ Any user that can configure resources can use secrets in resources. This could l
 
 ## Manage secrets with environment variables
 
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
+
 You can use environment variables to manage secrets like database passwords and bearer tokens. This allows you to automatically rotate secret credentials, and help protect sensitive information.
 
 If your use case requires higher level of security, you may want to use [AWS Secrets Manager](./aws.mdx) or [HashiCorp Vault](./hashicorp-vault.mdx) to externally manage secrets. These integrations allow you to rotate secrets without redeploying your Retool instance.
@@ -28712,7 +30252,9 @@ Click **Save** and restart the container.
 
 ## Manage secrets with the file system
 
-Some deployment systems, like Docker swarm and Docker secrets, require secret values to be read from the file system instead of being set through environment variables. For instance, instead of setting a `POSTGRES_PASSWORD` in your environment, you point `POSTGRES_PASSWORD_FILE` to a text file that contains the password.
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
+
+Some deployment systems, like Docker swarm and Docker secrets, require secrets values to be read from the file system instead of being set through environment variables. For instance, instead of setting a `POSTGRES_PASSWORD` in your environment, you point `POSTGRES_PASSWORD_FILE` to a text file that contains the password.
 
 ## 1. Set the `RETOOL_LOAD_FILE_SECRETS` environment variable
 
@@ -28763,6 +30305,8 @@ RETOOL_FILE_EXPOSED_DB_PASSWORD=/path/to/db/password
 ---
 
 ## Retrieve secrets from GCP Secrets Manager
+
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
 
 Configuring Resources in Retool can require handling sensitive values, e.g., database passwords or API keys. Retool is [SOC 2 Type 2 compliant](https://docs.retool.com/page/security), and most customers store these values with Retool. However, depending on your security posture, you may want to store secret values externally, rather than encrypted in Retool’s database. To support this, you can store and retrieve secrets from GCP Secrets Manager.
 
@@ -28818,6 +30362,8 @@ retool-prod-db_password
 
 On your Retool development instance, you would then set the namespace to `retool/dev`, and on your production instance to `retool/prod`. You can then reference secrets for either deployment instance using `{{ secrets.db_user }}` and `{{ secrets.db_password }}`, and Retool will fetch the appropriate secret at runtime.
 
+import ConfigCheck from './_config-check.mdx';
+
 ## 3. Use secrets in resources
 
 After you save your Secrets Manager configuration in Retool, if you granted Retool the Secret Manager Admin or Secret Manager Viewer IAM roles, available secrets appear on **Settings** > **Secrets Manager**.
@@ -28848,6 +30394,8 @@ Any user that can configure resources can use secrets in resources. This could l
 ---
 
 ## Retrieve secrets from HashiCorp Vault
+
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
 
 Configuring Resources in Retool can require handling sensitive values, e.g. database passwords or API keys. Retool is [SOC 2 Type 2 compliant](https://docs.retool.com/page/security), and most customers store these values with Retool. However, depending on your security posture, you may want to store secret values externally, rather than encrypted in Retool’s database.
 
@@ -28924,6 +30472,8 @@ retool/prod/db_password
 
 On your Retool development instance, you would then set the namespace to `retool/dev`, and on your production instance to `retool/prod`. You can then reference secrets for either deployment instance using `{{ secrets.db_user }}` and `{{ secrets.db_password }}`, and Retool will fetch the appropriate secret at runtime.
 
+import ConfigCheck from './_config-check.mdx';
+
 ## 4. Use secrets in resources
 
 After you save your Secrets Manager configuration in Retool, if you granted Retool the `read` capability for the metadata, available secrets appear on **Settings** > **Secrets Manager**.
@@ -28959,9 +30509,65 @@ import DocCardList from "@theme/DocCardList";
 
 ---
 
+## Configure multiple Secrets Manager configurations
+
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
+
+You can create multiple [Secrets Manager](./index.mdx) configurations if you need to retrieve secrets from different locations.
+
+## Enable the multiple configurations beta
+
+Multiple configurations for Secrets Manager is currently in public beta. Admins can enable this functionality from the **Beta** page in your Retool organization's settings.
+
+## Create additional configurations
+
+You configure additional secrets managers using the same options as a single configuration. You can add multiple configurations for any supported secrets manager provider.
+
+Click **Add Secrets Manager** and then select the configuration to create. You then provide the required settings based on whether you are configuring [AWS](./aws.mdx), [HashiCorp Vault](./hashicorp-vault.mdx), or [Google Cloud Platform](./gcp.mdx).
+
+Each configuration requires a unique string identifier (e.g., `vault_2`) so that it can be referenced across Retool.
+
+Multiple configurations.
+
+## Reference secrets from different configurations
+
+How you reference secrets with multiple configurations is slightly different once you start using multiple configurations, as each configuration's identifier must now also be included in the `{{ }}` expression.
+
+```text title="Reference multiple configurations"
+{{ secrets['CONFIGURATION_NAME']['KEY_NAME']}}
+
+{{ secrets['gcp_1']['secret3'] }}
+{{ secrets['aws_1']['secret3'] }}
+{{ secrets['vault_1']['secret3'] }}
+```
+
+Reference secrets from different configurations.
+
+## Select a different default configuration
+
+Once you add a configuration, the previous secrets manager you configured is automatically set as the default. Any existing secrets references that don't include the configuration name are parsed as aliases that point to the default configuration.
+
+For example, if the default configuration is named `gcp_1`, you can reference a secret named `secret_1` using either:
+
+- `{{ secrets['secret_1'] }}`
+- `{{ secrets['gcp_1']['secret_1'] }}`
+
+If necessary, you can select a different configuration to operate as the default from the **Secrets Manager** settings page. Click  to view options for the configuration and set it to the default.
+
+If you change the default configuration to `aws_1` but currently use `{{ secrets['secret_1'] }}`, this would then point to  `{{ secrets['aws_1']['secret_1'] }}`.
+
+:::warning
+
+Changing the default configuration will cause any existing alias references—without the configuration identifier—to point to the newly selected default, and potentially break existing usage. Before you make changes, ensure you verify all existing references to secrets so they include the configuration name.
+:::
+
+---
+
 ## Configure and migrate to an external database
 
-For non-production and development purposes, the default Docker Compose configuration for Self-hosted Retool includes a PostgreSQL container and does not set up SSL. This is not suitable for production use cases and you must host the Retool storage database on an external, managed PostgreSQL database. Managed databases are more maintainable, scalable, and reliable than containerized PostgreSQL instances.
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
+
+For non-production and development purposes, the default Docker Compose configuration for Self-hosted Retool includes a PostgreSQL container and does not set up SSL. This is not suitable for production use cases and you must host the Retool Storage database on an external, managed PostgreSQL database. Managed databases are more maintainable, scalable, and reliable than containerized PostgreSQL instances.
 
 If you originally deployed an instance using the default PostgreSQL container, you can migrate its data to an external PostgreSQL database before using the instance in production.
 
@@ -29057,6 +30663,8 @@ sudo docker compose up -d
 ---
 
 ## Collect self-hosted telemetry data
+
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
 
 :::warning Requirements and limitations
 
@@ -29248,11 +30856,13 @@ Retool uses the [dd-trace](https://www.npmjs.com/package/dd-trace) library and s
 
 ## Enable Retool-managed Vectors on self-hosted deployments
 
-Organizations with self-hosted Retool deployments must configure and enable Retool-managed Vectors before use.
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
+
+Organizations with self-hosted Retool deployments must configure and enable Retool Vectors before use.
 
 ## Install dependencies
 
-To use Retool-managed Vectors for self-hosted deployments:
+To use Retool Vectors for self-hosted deployments:
 
 - Configure [Retool Database](retool-database.mdx) on your self-hosted deployment.
 - Install [pgvector](https://github.com/pgvector/pgvector), an open-source PostgreSQL extension for similarity search, in the same database cluster as Retool Database. Ensure your `pgvector` version is compatible with your PostgreSQL version.
@@ -29260,7 +30870,7 @@ To use Retool-managed Vectors for self-hosted deployments:
 
 :::warning
 
-Make sure to use Retool Database (often the `retooldb-postgres` container), not the Retool storage database (often `postgres`). The storage database tracks app info, users, audit logs, etc. Retool Database is a PostgreSQL database you can use in apps and workflows, and has a UI for creating and editing tables.
+Make sure to use Retool Database (often the `retooldb-postgres` container), not the Retool Storage database (often `postgres`). The storage database tracks app info, users, audit logs, etc. Retool Database is a PostgreSQL database you can use in apps and workflows, and has a UI for creating and editing tables.
 
 :::
 
@@ -29284,6 +30894,10 @@ The following section is required only if your deployment is Self-hosted *and* y
 
 import Partial from '../../_shared/_retool-managed-self-hosted.mdx';
 
+## Enable Vectors
+
+import Enable from '/docs/_shared/_enable-vectors.mdx';
+
 ## Error handling
 If you are experiencing issues creating vectors, connect to Retool Database using the available [connection strings](../../data-sources/guides/retool-database/external-access). 
 
@@ -29297,6 +30911,7 @@ If you are experiencing issues creating vectors, connect to Retool Database usin
 ## Upgrade a legacy Azure Virtual Machines deployment to support Retool Workflows
 
 import Legacy from "../../_partials/_workflows-legacy.mdx"
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
 
 ## Requirements
 
@@ -29331,6 +30946,7 @@ import Docker from "../../_partials/_workflows-legacy-docker.mdx"
 ## Upgrade a legacy Docker deployment to support Retool Workflows
 
 import Legacy from "../../_partials/_workflows-legacy.mdx"
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
 
 ## Requirements
 
@@ -29365,6 +30981,7 @@ import Docker from "../../_partials/_workflows-legacy-docker.mdx"
 ## Upgrade a legacy Amazon EC2 deployment to support Retool Workflows
 
 import Legacy from "../../_partials/_workflows-legacy.mdx"
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
 
 ## Requirements
 
@@ -29399,6 +31016,7 @@ import Docker from "../../_partials/_workflows-legacy-docker.mdx"
 ## Upgrade a legacy Google Compute Engine deployment to support Retool Workflows
 
 import Legacy from "../../_partials/_workflows-legacy.mdx"
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
 
 ## Requirements
 
@@ -29433,6 +31051,7 @@ import Docker from "../../_partials/_workflows-legacy-docker.mdx"
 ## Add Retool Workflows to a legacy Kubernetes with Helm deployment
 
 import Legacy from "../../_partials/_workflows-legacy.mdx"
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
 
 import WorkflowsHelmRetoolManagedTemporal from "../../_partials/_workflows-helm-retool-managed-temporal.mdx"
 import WorkflowsHelmSelfHostedTemporal from "../../_partials/_workflows-helm-self-hosted-temporal.mdx"
@@ -29479,6 +31098,7 @@ import DocCardList from "@theme/DocCardList";
 ## Upgrade a legacy deployment to support Retool Workflows
 
 import Legacy from "../../_partials/_workflows-legacy.mdx"
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
 
 ## Requirements
 
@@ -29551,7 +31171,7 @@ Provision the [workflows-worker](../../concepts/architecture.mdx#workflows-worke
 | Variable                       | Description                                                                                                                                                                                                |
 | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `SERVICE_TYPE`                 | Set to `WORKFLOW_TEMPORAL_WORKER`.                                                                                                                                                                         |
-| `ENCRYPTION_KEY`               | Required for encrypting traffic to Retool-managed Temporal cluster. If you've already set this, there is no need to change or update. Should be set to the same value across all services that require it. |
+| `ENCRYPTION_KEY`               | Required for encrypting traffic to Retool-managed Temporal Cluster. If you've already set this, there is no need to change or update. Should be set to the same value across all services that require it. |
 | `WORKFLOW_BACKEND_HOST`        | Url for endpoint of [workflows-backend](../../concepts/architecture.mdx#workflows-backend). Must include protocol (e.g., `https://workflows-backend.example.com`)                             |
 | `CODE_EXECUTOR_INGRESS_DOMAIN` | Url for endpoint of `code-executor`service. Must include protocol `https://code-executor.example.com:3004`)                                                                                                |
 | `DISABLE_DATABASE_MIGRATIONS`  | Set to `true`                                                                                                                                                                                              |
@@ -29567,7 +31187,7 @@ Provision the [workflows-backend](../../concepts/architecture.mdx#workflows-work
 | Variable                       | Description                                                                                                                                                                                                |
 | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `SERVICE_TYPE`                 | Set to `WORKFLOW_BACKEND`                                                                                                                                                                                  |
-| `ENCRYPTION_KEY`               | Required for encrypting traffic to Retool-managed Temporal cluster. If you've already set this, there is no need to change or update. Should be set to the same value across all services that require it. |
+| `ENCRYPTION_KEY`               | Required for encrypting traffic to Retool-managed Temporal Cluster. If you've already set this, there is no need to change or update. Should be set to the same value across all services that require it. |
 | `WORKFLOW_BACKEND_HOST`        | Url for endpoint of [workflows-backend](../../concepts/architecture.mdx#workflows-backend). Must include protocol (`http` or `https`)                                                                                                      |
 | `CODE_EXECUTOR_INGRESS_DOMAIN` | Url for endpoint of `code-executor`service. Must include protocol (`http` or `https`)                                                                                                          |
 | `DISABLE_DATABASE_MIGRATIONS`  | Set to `true`                                                                                                                                                                                              |
@@ -29582,7 +31202,7 @@ Update the [api](../../concepts/architecture.mdx#api) container to include the f
 
 | Variable                       | Description                                                                                                                                                                                                |
 | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ENCRYPTION_KEY`               | Required for encrypting traffic to Retool-managed Temporal cluster. If you've already set this, there is no need to change or update. Should be set to the same value across all services that require it. |
+| `ENCRYPTION_KEY`               | Required for encrypting traffic to Retool-managed Temporal Cluster. If you've already set this, there is no need to change or update. Should be set to the same value across all services that require it. |
 | `WORKFLOW_BACKEND_HOST`        | The [workflows-backend](../../concepts/architecture.mdx#workflows-backend) endpoint URL. Must include protocol (`http` or `https`)                                                            |
 | `CODE_EXECUTOR_INGRESS_DOMAIN` | The [code-executor](../../concepts/architecture.mdx#code-executor) endpoint URL. Must include protocol (`http` or `https`)                                                                    |
 
@@ -29618,12 +31238,12 @@ Provision the [workflows-worker](../../concepts/architecture.mdx#workflows-worke
 
 | Variable                                  | Description                                                                                                                                                                                                |
 | ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ENCRYPTION_KEY`                          | Required for encrypting traffic to Retool-managed Temporal cluster. If you've already set this, there is no need to change or update. Should be set to the same value across all services that require it. |
+| `ENCRYPTION_KEY`                          | Required for encrypting traffic to Retool-managed Temporal Cluster. If you've already set this, there is no need to change or update. Should be set to the same value across all services that require it. |
 | `WORKFLOW_BACKEND_HOST`                   | Url for endpoint of [workflows-backend](../../concepts/architecture.mdx#workflows-backend). Must include protocol (`http` or `https`)                                                                                                      |
 | `CODE_EXECUTOR_INGRESS_DOMAIN`            | Url for endpoint of `code-executor`service. Must include protocol (`http` or `https`)                                                                                                          |
 | `DISABLE_DATABASE_MIGRATIONS`             | Set to `true`                                                                                                                                                                                              |
-| `WORKFLOW_TEMPORAL_CLUSTER_FRONTEND_HOST` | The frontend host of the Temporal cluster.                                                                                                                                                                 |
-| `WORKFLOW_TEMPORAL_CLUSTER_FRONTEND_PORT` | The port with which to connect to the Temporal cluster. Defaults to `7233`.                                                                                                                                |
+| `WORKFLOW_TEMPORAL_CLUSTER_FRONTEND_HOST` | The frontend host of the Temporal Cluster.                                                                                                                                                                 |
+| `WORKFLOW_TEMPORAL_CLUSTER_FRONTEND_PORT` | The port with which to connect to the Temporal Cluster. Defaults to `7233`.                                                                                                                                |
 | `WORKFLOW_TEMPORAL_TLS_ENABLED`           | (Optional) Whether to enable mTLS. Required if using Temporal Cloud.                                                                                                                                       |
 | `WORKFLOW_TEMPORAL_TLS_CRT`               | (Optional) The base64-encoded mTLS certificate. Required if using Temporal Cloud.                                                                                                                          |
 | `WORKFLOW_TEMPORAL_TLS_KEY`               | (Optional) The base64-encoded mTLS key. Required if using Temporal Cloud.                                                                                                                                  |
@@ -29640,12 +31260,12 @@ Provision a `workflows-backend` service. This would be a container running `tryr
 
 | Variable                                  | Description                                                                                                                                                                                                |
 | ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ENCRYPTION_KEY`                          | Required for encrypting traffic to Retool-managed Temporal cluster. If you've already set this, there is no need to change or update. Should be set to the same value across all services that require it. |
+| `ENCRYPTION_KEY`                          | Required for encrypting traffic to Retool-managed Temporal Cluster. If you've already set this, there is no need to change or update. Should be set to the same value across all services that require it. |
 | `WORKFLOW_BACKEND_HOST`                   | Url for endpoint of [workflows-backend](../../concepts/architecture.mdx#workflows-backend). Must include protocol (`http` or `https`)                                                                                                      |
 | `CODE_EXECUTOR_INGRESS_DOMAIN`            | Url for endpoint of `code-executor`service. Must include protocol (`http` or `https`)                                                                                                          |
 | `DISABLE_DATABASE_MIGRATIONS`             | Set to `true`                                                                                                                                                                                              |
-| `WORKFLOW_TEMPORAL_CLUSTER_FRONTEND_HOST` | The frontend host of the Temporal cluster.                                                                                                                                                                 |
-| `WORKFLOW_TEMPORAL_CLUSTER_FRONTEND_PORT` | The port with which to connect to the Temporal cluster. Defaults to `7233`.                                                                                                                                |
+| `WORKFLOW_TEMPORAL_CLUSTER_FRONTEND_HOST` | The frontend host of the Temporal Cluster.                                                                                                                                                                 |
+| `WORKFLOW_TEMPORAL_CLUSTER_FRONTEND_PORT` | The port with which to connect to the Temporal Cluster. Defaults to `7233`.                                                                                                                                |
 | `WORKFLOW_TEMPORAL_TLS_ENABLED`           | (Optional) Whether to enable mTLS. Required if using Temporal Cloud.                                                                                                                                       |
 | `WORKFLOW_TEMPORAL_TLS_CRT`               | (Optional) The base64-encoded mTLS certificate. Required if using Temporal Cloud.                                                                                                                          |
 | `WORKFLOW_TEMPORAL_TLS_KEY`               | (Optional) The base64-encoded mTLS key. Required if using Temporal Cloud.                                                                                                                                  |
@@ -29654,18 +31274,18 @@ Update the existing [api](../../concepts/architecture.mdx#api) container (`SERVI
 
 | Variable                                  | Description                                                                                                                                                                                                |
 | ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ENCRYPTION_KEY`                          | Required for encrypting traffic to Retool-managed Temporal cluster. If you've already set this, there is no need to change or update. Should be set to the same value across all services that require it. |
+| `ENCRYPTION_KEY`                          | Required for encrypting traffic to Retool-managed Temporal Cluster. If you've already set this, there is no need to change or update. Should be set to the same value across all services that require it. |
 | `WORKFLOW_BACKEND_HOST`                   | [workflows-backend](../../concepts/architecture.mdx#workflows-backend) endpoint URL. Must include `http` or `https`.                                                                          |
 | `CODE_EXECUTOR_INGRESS_DOMAIN`            | `code-executor` endpoint URL. Must include `http` or `https`.                                                                                                                                              |
-| `WORKFLOW_TEMPORAL_CLUSTER_FRONTEND_HOST` | The frontend host of the Temporal cluster.                                                                                                                                                                 |
-| `WORKFLOW_TEMPORAL_CLUSTER_FRONTEND_PORT` | The port with which to connect to the Temporal cluster. Defaults to `7233`.                                                                                                                                |
+| `WORKFLOW_TEMPORAL_CLUSTER_FRONTEND_HOST` | The frontend host of the Temporal Cluster.                                                                                                                                                                 |
+| `WORKFLOW_TEMPORAL_CLUSTER_FRONTEND_PORT` | The port with which to connect to the Temporal Cluster. Defaults to `7233`.                                                                                                                                |
 | `WORKFLOW_TEMPORAL_TLS_ENABLED`           | (Optional) Whether to enable mTLS. Required if using Temporal Cloud.                                                                                                                                       |
 | `WORKFLOW_TEMPORAL_TLS_CRT`               | (Optional) The base64-encoded mTLS certificate. Required if using Temporal Cloud.                                                                                                                          |
 | `WORKFLOW_TEMPORAL_TLS_KEY`               | (Optional) The base64-encoded mTLS key. Required if using Temporal Cloud.                                                                                                                                  |
 
 :::caution
 
-Retool does not recommend deploying a local Temporal cluster alongside your Retool deployment instance. 
+Retool does not recommend deploying a local Temporal Cluster alongside your Retool deployment instance. 
 
 :::
 
@@ -29674,6 +31294,7 @@ Retool does not recommend deploying a local Temporal cluster alongside your Reto
 ## Self-hosted Retool how-to guides
 
 import Howto from '/docs/_partials/_doctypes/_howto.mdx';
+import EnterpriseRequirement from "./_partials/_enterprise-plan-requirement.mdx";
 
 :::tip Get started with self-hosted Retool
 
@@ -29685,21 +31306,22 @@ Follow a [tutorial](./tutorial/) to deploy self-hosted Retool on your infrastruc
 
 ## Self-hosted Retool documentation
 
-You can deploy a [self-hosted](https://retool.com/self-hosted/) Retool instance in your virtual private cloud (VPC) or behind your virtual private network (VPN). Businesses in the healthcare and finance industries often deploy Retool to remain compliant by running on-premise deployments.
+import EnterpriseRequirement from "./_partials/_enterprise-plan-requirement.mdx";
+
+Organizations can deploy a self-hosted Retool instance on their own cloud infrastructure.
 
 ---
 
 ## Self-hosted Retool quickstart
 
 import SelfhostedLatest from "@site/src/components/SelfhostedLatest";
+import EnterpriseRequirement from "./_partials/_enterprise-plan-requirement.mdx";
 
 This guide serves as an introduction to [self-hosted Retool](https://retool.com/self-hosted). It covers many of the concepts and terminology you would come across when deploying and operating a self-hosted instance of Retool. After reading this page, you should have a good understanding of self-hosted Retool.
 
 import DocCardList from "@theme/DocCardList";
 
-You can deploy a [self-hosted](https://retool.com/self-hosted/) Retool instance in your virtual private cloud (VPC) or behind your virtual private network (VPN). Businesses in the healthcare and finance industries often deploy Retool to remain compliant by running on-premise deployments.
-
-Each deployment instance uses a distributed set of containers with services for different functions. These work together to securely run the platform within your VPN or VPC.
+Each instance uses a distributed set of containers with services for different functions. These work together to securely run the platform within your VPN or VPC.
 
 :::tip Learn more about self-hosted architecture
 
@@ -29725,7 +31347,7 @@ Refer to the [requirements](./reference/requirements.mdx) documentation for more
 
 ## Architecture
 
-Each deployment instance uses a distributed set of containers with services for different functions. These work together to securely run the platform within your VPN or VPC.
+Each instance uses a distributed set of containers with services for different functions. These work together to securely run the platform within your VPN or VPC.
 
 ### Containers and services
 
@@ -29741,7 +31363,7 @@ A standard deployment instance uses the following containers and services that i
 
 #### api
 
-The **api** container manages the core functionality for a Retool deployment instance, such as:
+The **api** container manages the core functionality for a Retool instance, such as:
 
 - Frontend interactions (e.g., building apps and workflows).
 - Hosting apps and workflows.
@@ -29776,7 +31398,7 @@ You must not replicate **jobs-runner**. It performs tasks and migrations that mu
 
 #### workflows-worker
 
-The **workflows-worker** container continuously polls the Temporal cluster for tasks required to either start or execute blocks within a workflow. It makes requests to **code-executor** to execute blocks and process results, then reports back to Temporal to continue or complete workflow execution.
+The **workflows-worker** container continuously polls the Temporal Cluster for tasks required to either start or execute blocks within a workflow. It makes requests to **code-executor** to execute blocks and process results, then reports back to Temporal to continue or complete workflow execution.
 
 import WorkflowTemporalWorker from "./_partials/_service-workflow-temporal-worker.mdx";
 
@@ -29875,6 +31497,8 @@ import Edge from "../releases/_partials/_edge.mdx";
 
 ## Authentication environment variables
 
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
+
 Authentication environment variables available for use with [Self-hosted Retool](../../index.mdx) deployments.
 
 import Disclaimer from "./_disclaimer.mdx";
@@ -29882,6 +31506,8 @@ import Disclaimer from "./_disclaimer.mdx";
 ---
 
 ## Code executor environment variables
+
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
 
 **code-executor** environment variables available for use with [Self-hosted Retool](../../index.mdx) deployments. You should only set these environment variables on containers running [`tryretool/code-executor-service`](https://hub.docker.com/r/tryretool/code-executor-service/tags) images.
 
@@ -29891,6 +31517,8 @@ import Disclaimer from "./_disclaimer.mdx";
 
 ## Cookies environment variables
 
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
+
 Cookies environment variables available for use with [Self-hosted Retool](../../index.mdx) deployments.
 
 import Disclaimer from "./_disclaimer.mdx";
@@ -29898,6 +31526,8 @@ import Disclaimer from "./_disclaimer.mdx";
 ---
 
 ## General environment variables
+
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
 
 General environment variables available for use with [Self-hosted Retool](../../index.mdx) deployments.
 
@@ -29915,6 +31545,8 @@ import Disclaimer from "./_disclaimer.mdx";
 
 ## Logging environment variables
 
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
+
 Logging-related environment variables available for use with [Self-hosted Retool](../../index.mdx) deployments.
 
 import Disclaimer from "./_disclaimer.mdx";
@@ -29922,6 +31554,8 @@ import Disclaimer from "./_disclaimer.mdx";
 ---
 
 ## Mobile environment variables
+
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
 
 Environment variables related to Retool Mobile.
 
@@ -29931,6 +31565,8 @@ import Disclaimer from "./_disclaimer.mdx";
 
 ## Queries environment variables
 
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
+
 Queries environment variables available for use with [Self-hosted Retool](../../index.mdx) deployments.
 
 import Disclaimer from "./_disclaimer.mdx";
@@ -29938,6 +31574,8 @@ import Disclaimer from "./_disclaimer.mdx";
 ---
 
 ## Redis environment variables
+
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
 
 Redis environment variables available for use with [Self-hosted Retool](../../index.mdx) deployments.
 
@@ -29947,6 +31585,8 @@ import Disclaimer from "./_disclaimer.mdx";
 
 ## Resources environment variables
 
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
+
 Resources environment variables available for use with [Self-hosted Retool](../../index.mdx) deployments.
 
 import Disclaimer from "./_disclaimer.mdx";
@@ -29954,6 +31594,8 @@ import Disclaimer from "./_disclaimer.mdx";
 ---
 
 ## Source Control environment variables
+
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
 
 Source Control environment variables available for use with [Self-hosted Retool](../../index.mdx) deployments. You can also set these variables from the [Source Control settings page](https://login.retool.com/auth/login?redirectOnLogin=settings/source-control) or with the [Retool API](https://docs.retool.com/api).
 
@@ -29963,6 +31605,8 @@ import Disclaimer from "./_disclaimer.mdx";
 
 ## Storage database environment variables
 
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
+
 Storage database environment variables available for use with [Self-hosted Retool](../../index.mdx) deployments.
 
 import Disclaimer from "./_disclaimer.mdx";
@@ -29970,6 +31614,8 @@ import Disclaimer from "./_disclaimer.mdx";
 ---
 
 ## Workflows environment variables
+
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
 
 Workflow environment variables available for use with [Self-hosted Retool](../../index.mdx) deployments. These environment variables specifically can be applied to the `api`, `workflows-worker`, and `workflows-backend` [services](../../concepts/architecture.mdx#containers-and-services).
 
@@ -29980,10 +31626,13 @@ import Disclaimer from "./_disclaimer.mdx";
 ## Self-hosted Retool glossary
 
 import SharedGlossary from '../../_partials/_glossary.mdx';
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
 
 ---
 
 ## Self-hosted Retool requirements
+
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
 
 Deploying [Self-hosted Retool](https://retool.com/self-hosted/) on your own infrastructure lets you build applications with data in your virtual private cloud (VPC) or behind your virtual private network (VPN). Businesses in the healthcare and finance industries often deploy Retool to remain compliant.
 
@@ -30043,6 +31692,8 @@ When Retool AI is used to build or configure a query, application, or workflow (
 
 ## Temporal environment variables for local clusters
 
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
+
 Self-hosted organizations can configure the following Temporal environment variables if they want to use a local cluster. These environment variables are relevant only if all the following are true for your organization:
 
 - Does not use Kubernetes for self-hosted deployments.
@@ -30052,7 +31703,7 @@ Self-hosted organizations can configure the following Temporal environment varia
 
 :::warning
 
-Temporal environment variables are only used to configure a local Temporal cluster. These variables are managed by Temporal and function separately from Retool's environment variables.
+Temporal environment variables are only used to configure a local Temporal Cluster. These variables are managed by Temporal and function separately from Retool's environment variables.
 
 :::
 
@@ -30061,6 +31712,7 @@ Temporal environment variables are only used to configure a local Temporal clust
 ## Self-hosted Retool reference
 
 import Reference from '/docs/_partials/_doctypes/_reference.mdx';
+import EnterpriseRequirement from "./_partials/_enterprise-plan-requirement.mdx";
 
 :::tip Get started with a self-hosted Retool deployment
 
@@ -30081,6 +31733,7 @@ Retool-managed, self-hosted deployments are available for invoiced customers. Co
 ## Retool-managed deployment architecture
 
 import Callout from "../_callout.mdx";
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
 
 A self-hosted and Retool-managed _deployment_ is a customer-owned VPC that's hosted on [Amazon Web Services](https://aws.amazon.com) (AWS) and contains a [self-hosted](../../index.mdx) instance. You retain full ownership of, and control over, your data, encryption keys, access, and network infrastructure.
 
@@ -30253,6 +31906,7 @@ Retool always assumes that these services contain sensitive data. To maintain th
 ## Retool-managed deployment health monitoring and scaling
 
 import Callout from '../_callout.mdx';
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
 
 Retool monitors the health of a Retool-managed, self-hosted instance 24/7 and is automatically alerted of any potential issues that may arise. This coverage includes:
 
@@ -30303,6 +31957,7 @@ The default capacity for a Retool-managed, self-hosted instance is 20 queries pe
 ## Retool-managed deployment security
 
 import Callout from "../_callout.mdx";
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
 
 Retool is only provided with sufficient access to a Retool-managed, self-hosted instance while being restricted from the customer's data and infrastructure. This limited access ensures that your data remains private while enabling Retool to successfully manage your instance.
 
@@ -30343,12 +31998,14 @@ A Retool-managed, self-hosted deployment instance emits certain types of data ou
 ## Retool-managed deployment concept guides
 
 import Concept from '/docs/_partials/_doctypes/_concept.mdx';
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
 
 ---
 
 ## Configure Retool-managed deployment secrets and environment variables
 
 import Callout from "../_callout.mdx";
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
 
 Depending on your use case, you may need to set some environment variables to [provide additional secrets](../../guides/secrets/index.mdx) or specify [environment variables](../../reference/environment-variables/index.mdx). Customers use AWS Secrets Manager to set environment variables and secrets for their Retool-managed, self-hosted instance.
 
@@ -30377,6 +32034,7 @@ ${deployment_id}/${customer_name}_deployment_secrets
 ## Retool-managed deployment how-to guides
 
 import Howto from '/docs/_partials/_doctypes/_howto.mdx';
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
 
 ---
 
@@ -30415,7 +32073,7 @@ You have full ownership and control over every aspect of a deployment. Retool on
 The [support layer](./concepts/architecture.mdx#support-layer) represents the core resources needed for a deployment, such as:
 
 - The VPC on which the instance runs.
-- Secrets used by the instance, such as encryption keys and environment variables.
+- secrets used by the instance, such as encryption keys and environment variables.
 - Access management configuration that governs what Retool has access to, such as IAM policies.
 - External network configuration for users to access the instance, such as DNS and VPN networking.
 
@@ -30499,6 +32157,7 @@ Customers on the Enterprise plan with a self-hosted Retool instance can request 
 ## Retool-managed deployment ownership and responsibilities
 
 import Callout from "../_callout.mdx";
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
 
 Retool-managed, self-hosted deployments operate using a shared responsibility model. This governs whether Retool, the customer, or both are responsible for implementing or maintaining each part of the deployment.
 
@@ -30549,6 +32208,7 @@ Shared responsibility covers the _infrastructure_ and _management_ of the deploy
 ## Retool-managed deployment reference
 
 import Reference from '/docs/_partials/_doctypes/_reference.mdx';
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
 
 ---
 
@@ -30564,6 +32224,7 @@ import TemporalOptions from "../_partials/_temporal-options.mdx";
 import Production from "../_partials/_additional-steps.mdx";
 import DockerStart from "../_partials/_docker_start.mdx";
 import SelfhostedLatest from "@site/src/components/SelfhostedLatest";
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
 
 You can deploy an instance of Self-hosted Retool on [Azure Virtual Machines](https://azure.microsoft.com/en-us/products/virtual-machines/) with [Docker Compose](https://docs.docker.com/compose/).
 
@@ -30625,10 +32286,11 @@ import TemporalOptions from "../_partials/_temporal-options.mdx";
 import DockerStart from "../_partials/_docker_start.mdx";
 import Production from "../_partials/_additional-steps.mdx";
 import SelfhostedLatest from "@site/src/components/SelfhostedLatest";
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
 
 You can deploy a non-production instance of Self-hosted Retool for testing and development on a Linux-based VM using [Docker](https://www.docker.com/).
 
-For non-production and development purposes, the default Docker Compose configuration includes a PostgreSQL container and does not set up SSL. This is not suitable for production use cases and you must host the Retool storage database on an external, managed PostgreSQL database.
+For non-production and development purposes, the default Docker Compose configuration includes a PostgreSQL container and does not set up SSL. This is not suitable for production use cases and you must host the Retool Storage database on an external, managed PostgreSQL database.
 
 Managed databases are more maintainable, scalable, and reliable than containerized PostgreSQL instances. Follow the instructions in the [external storage database guide](../guides/storage-database.mdx#2-migrate-the-data-to-an-external-hosted-database) to configure your database.
 
@@ -30684,6 +32346,7 @@ import TemporalOptions from "../_partials/_temporal-options.mdx";
 import DockerStart from "../_partials/_docker_start.mdx";
 import Production from "../_partials/_additional-steps.mdx";
 import SelfhostedLatest from "@site/src/components/SelfhostedLatest";
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
 
 You can deploy Self-hosted Retool on Amazon EC2 with [Docker Compose](https://docs.docker.com/compose/).
 
@@ -30741,6 +32404,7 @@ import Egress from "../../_partials/_egress.mdx";
 import EnvVarsCloud from "../../_partials/_env-vars-cloud.mdx";
 import EnvVarsLocal from "../../_partials/_env-vars-local.mdx";
 import SelfhostedLatest from "@site/src/components/SelfhostedLatest";
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
 
 You can deploy Self-hosted Retool on AWS Fargate using CloudFormation templates. 
 
@@ -30802,10 +32466,21 @@ If you previously deployed Self-hosted Retool with an older version of a CloudFo
 
 Download the private CloudFormation template for either **ECS on Fargate** or **ECS on EC2** from the [Self-hosted Retool GitHub repository](https://github.com/tryretool/retool-onpremise). Both of these templates assume a deployment in private subnets of your VPC (with NAT gateway) along with an Application Load Balancer (ALB) to direct external traffic to the Retool ECS service.
 
-```bash
+```bash title="Template for Workflows"
 curl -L -O  https://raw.githubusercontent.com/tryretool/retool-onpremise/master/cloudformation/retool-workflows.fargate.yaml \
 && mv retool-workflows.fargate.yaml fargate.yaml
 ```
+
+```bash title="Template for Agents"
+curl -L -O  https://raw.githubusercontent.com/tryretool/retool-onpremise/master/cloudformation/retool-agents.fargate.yaml \
+&& mv retool-agents.fargate.yaml fargate.yaml
+```
+These two templates are similar, however, the workflows template differs from the agents template in the following ways: 
+ - **Parameters**: The agents template declares a `DesiredAgentsCount` and defaults the Retool version to 3.253.2-stable, and the workflows template contains a `Force` parameter, and defaults to Retool version 3.114.7-stable. 
+ - **Environment variables**: The workflows template injects `NODE_ENV=production` and a `FORCE_DEPLOYMENT` env var (from the Force parameter) into several task definitions. The agents template sets `AGENTS_ENABLED` and `BASE_DOMAIN` in the `Retool/backend` tasks. 
+ - **Temporal**: The temporal versions differ slightly, agents uses 14.6, and workflows uses 14.5. 
+
+Refer to the [System architecture of self-hosted Retool deployments](../../concepts/architecture.mdx) conceptual guide for more information about the containers and services. 
 
 ```bash
 curl -L -O  https://raw.githubusercontent.com/tryretool/retool-onpremise/master/cloudformation/retool-workflows.ec2.yaml \
@@ -30994,6 +32669,7 @@ import TemporalConfigure from "../../_partials/_temporal-configure.mdx";
 import SelfhostedLatest from "@site/src/components/SelfhostedLatest";
 import CodeBlock from '@theme/CodeBlock';
 import EncryptionKey from "../../_partials/_encryption-key.mdx";
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
 
 You can deploy Self-hosted Retool on ECS Fargate and EC2 with a Terraform module.
 
@@ -31011,7 +32687,7 @@ Retool recommends using the Retool-provided [Terraform module](https://github.co
 
 :::info Minimum requirements 
 
-A [Retool-managed Temporal cluster](../../concepts/temporal.mdx#compare-options) requires v3.6.15 or later.
+A [Retool-managed Temporal Cluster](../../concepts/temporal.mdx#compare-options) requires v3.6.15 or later.
 
 :::
 
@@ -31080,7 +32756,7 @@ module "retool" {
 
 :::info
 
-Use the default values when configuring an existing Temporal cluster.
+Use the default values when configuring an existing Temporal Cluster.
 
 :::
 
@@ -31126,6 +32802,7 @@ import TemporalOptions from "../_partials/_temporal-options.mdx";
 import Production from "../_partials/_additional-steps.mdx";
 import DockerStart from "../_partials/_docker_start.mdx";
 import SelfhostedLatest from "@site/src/components/SelfhostedLatest";
+import EnterpriseRequirement from "../_partials/_enterprise-plan-requirement.mdx";
 
 You can deploy an instance of Self-hosted Retool on Google Compute Engine with [Docker Compose](https://docs.docker.com/compose/).
 
@@ -31180,6 +32857,7 @@ import EnvVarsLocal from "../../_partials/_env-vars-local-helm.mdx"
 import ExternalizeDb from "../../_partials/_externalize-db.mdx"
 import LetsEncrypt from "../../_partials/_lets-encrypt.mdx"
 import SelfhostedLatest from "@site/src/components/SelfhostedLatest";
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
 
 You can deploy Self-hosted Retool on Kubernetes with [Helm](https://helm.sh/) 3.3.1 or later.
 
@@ -31371,6 +33049,7 @@ import CodeBlock from '@theme/CodeBlock';
 import PostgresConfig from "../../_partials/_remaining-postgresql-config.mdx"
 import LetsEncrypt from "../../_partials/_lets-encrypt.mdx"
 import ExternalizeDb from "../../_partials/_externalize-db.mdx"
+import EnterpriseRequirement from "../../_partials/_enterprise-plan-requirement.mdx";
 
 You can deploy Self-hosted Retool on Kubernetes using manually configured manifests. You can use this approach if you do not manage packages with [Helm](helm.mdx).
 
@@ -31411,7 +33090,7 @@ curl -L -O https://github.com/tryretool/retool-onpremise/archive/master.zip && u
 
 :::info
 
-Self-hosted Retool requires 3.6.14 or later for Retool-managed Temporal cluster.
+Self-hosted Retool requires 3.6.14 or later for Retool-managed Temporal Cluster.
 
 :::
 
@@ -31714,6 +33393,7 @@ postgres-69c485649c-lkjgc                1/1     Running   0            8h
 ## Self-hosted Retool tutorials
 
 import Tutorial from '/docs/_partials/_doctypes/_tutorial.mdx';
+import EnterpriseRequirement from "./_partials/_enterprise-plan-requirement.mdx";
 
 :::tip Learn more about self-hosted architecture
 
@@ -31725,15 +33405,16 @@ Read the [system architecture](concepts/architecture.mdx) guide to learn more ab
 
 ## Catch-up commits in Source Control
 
-In order to keep your branch up to date, Retool sometimes creates an automatic commit, called a _catch-up commit_, which keeps your branches up to date with the `main` branch. The commit has the following message:
+In order to keep your branch up to date, Retool sometimes creates an automatic commit, called a catch-up commit, which keeps your branches up to date with the `main` branch. The commit has the following message:
 
 ```
-This commit is automatically generated by Retool to update the current branch. You don't need to be concerned about it.
+This commit is automatically generated by Retool to update the current branch. 
+You don't need to be concerned about it.
 ```
 
 :::note
 
-You can also use [branch merging](../guides/branch-merging.mdx) as an alternative to catch-up commits. Turn on branch merging in **Settings** > **Beta**. When branch merging is turned on, catch-up commits are disabled.
+You can also use branch merging as an alternative to catch-up commits. Turn on branch merging in **Settings** > **Beta**. When branch merging is turned on, catch-up commits are disabled. Learn more about [branch merging](../guides/branch-merging.mdx).
 
 :::
 
@@ -31779,7 +33460,9 @@ If batching changes across multiple apps is a requirement, you should manually c
 
 :::note
 
-Releases are exclusive to the Retool instance in which they were created. Creating and publishing releases for an app are not captured in source control, and can be treated as a deploy mechanism. Learn more about [Release Management](../../apps/guides/app-management/releases-history.mdx).
+By default, releases are exclusive to the Retool instance in which they were created. Creating and publishing releases for an app are not captured in source control, and can be treated as a deploy mechanism. Learn more about [Release Management](../../apps/guides/app-management/releases-history.mdx).
+
+For organizations that need to manage releases across multiple instances, Retool offers [multi-instance releases](../guides/multi-instance-releases.mdx), which enables you to publish different release versions of protected apps and workflows to different instances.
 
 :::
 
@@ -31961,7 +33644,7 @@ Follow a [tutorial](./tutorial/) to set up Source Control with your SCM provider
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-From within the IDE of your app, module, workflow, or query, you can use branch merging to integrate changes from your default branch and resolve merge conflicts. While it's also possible to resolve conflicts through your source control provider's UI or the Git CLI, Retool recommends using the in-product branch merging, as it automatically checks for Toolscript validity.
+From within the IDE of your app, module, workflow, or query, you can use branch merging to integrate changes from your default branch and resolve merge conflicts. While it's also possible to resolve conflicts through your source control provider's UI or the Git CLI, Retool recommends using the in-product branch merging, as it automatically checks for ToolScript validity.
 
 Branch merging in Retool uses the `git merge` strategy. Read more in the [git documentation](https://git-scm.com/docs/git-merge).
 
@@ -32237,7 +33920,7 @@ To preview a branch of an app pushed from another instance, create a new branch 
 
 :::caution Do not add files manually
 
-Do not manually add any Toolscript (`*.tsx`), YAML, JSON, or query (`*.sql`, `*.js*`) files to the Source Control repository. All changes to apps, workflows, queries, and resources must be done through the Retool interface. Manually adding these files can cause deploy failures.
+Do not manually add any ToolScript (`*.tsx`), YAML, JSON, or query (`*.sql`, `*.js*`) files to the Source Control repository. All changes to apps, workflows, queries, and resources must be done through the Retool interface. Manually adding these files can cause deploy failures.
 
 Any other files (e.g., `README.md`) are skipped during deploys can be safely added to the repository.
 
@@ -32253,9 +33936,9 @@ The Deployment Dashboard is available on [Self-hosted Retool](../../self-hosted/
 
 :::
 
-Organizations that use [Source Control](../index.mdx)—a branch-based workflow for managing and deploying changes to Retool apps—can use the Deployment Dashboard to view the status and details of deployments, download logs for further information, and manually deploy the latest changes.
+Organizations that use [Source Control](../index.mdx)—a branch-based workflow for managing and deploying changes to Retool apps—can use the Deployment Dashboard to view the status and details of deployments, download deployment logs for further information, and manually deploy the latest changes.
 
-## View Source Control deployments
+## View Source Control deployment logs
 
 The Deployment Dashboard contains the following details about the most recent deployments (up to 100) for your self-hosted instance.
 
@@ -32282,18 +33965,153 @@ Retool uses the jobs runner to poll for changes in your remote repository's main
 
 ---
 
+## Migrate from YAML to Toolscript
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+:::warning
+
+This migration is only necessary if your organization initially set up Source Control on self-hosted Retool 3.4.19 or earlier. You must complete this migration before upgrading your legacy deployment to a newer release.
+
+No migration is required if you initially configured Source Control on self-hosted Retool 3.6.0 or later.
+
+:::
+
+To use ToolScript, you must perform a one-time migration of your existing YAML repositories. The entire migration takes approximately 15 minutes to complete, but may take longer for organizations with many protected apps and branches. It does not change the behavior of your apps and queries.
+
+This migration is unidirectional and you cannot migrate from Toolscript back to YAML.
+
+:::tip
+
+If you have a multi-instance deployment, ensure you follow the steps to [migrate multiple instances](#multi-instance-procedure).
+
+:::
+
+## Migration overview
+
+Retool attempts to migrate your main branch and recent feature branches to Toolscript from YAML. During this operation, all source control operations are locked in Retool.
+
+On the main branch, all apps, modules, and resources are migrated. Retool also attempts to migrate all feature branches touched within the last two months, up to a maximum of 300 total. For recent feature branches, only apps and resources changed by the feature branch are migrated. Retool also attempts to delete all recent open branches which rename, move, or unprotect source control elements. These branches are not possible to migrate, but you can recreate them after the migration.
+
+If migration is not possible for all branches, Retool does not push any remote changes, and instead prompts you to fix or delete certain branches. This failure is rare, and usually occurs if a branch has been manually edited outside of Retool and contains an invalid structure or YAML format.
+
+The automatic migration does not currently support migrating workflows. Commits to protected workflows are still in YAML.
+
+### Test runs
+
+You cannot currently specify a single test branch to migrate using the Retool UI. When the migration begins, all remote branches are converted from YAML to Toolscript.
+
+To dry run the migration, you must copy your entire Git repository to a new one, then configure your Source Control configuration on your Retool instance to use the new repository.
+
+### App behavior
+
+The Toolscript migration itself does not change how Retool stores apps, and therefore does not affect the behavior of apps. Similarly, the migration does not affect app releases, history, or queries.
+
+Commits made by builders in Toolscript are functionally equivalent to YAML, with the exception that Toolscript omits default values to produce more readable diffs.
+These default values may change across different versions of Retool, but should not lead to significant user experience changes.
+
+## Requirements
+
+To run the migration you must:
+
+- Be on version **3.8.10** or later. See the [errors on earlier versions](#errors-on-versions-pre-3810) section if you're on a version between 3.6.0 and 3.8.10.
+- Ensure that branch protection is **disabled** on your SCM provider. Retool requires access to push Toolscript conversion commits directly to your main branch. See [GitHub](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/managing-a-branch-protection-rule#deleting-a-branch-protection-rule) and [GitLab](https://docs.gitlab.com/ee/user/project/protected_branches.html#allow-force-push-on-a-protected-branch) documentation to learn how to toggle these settings. You may re-enable branch protection after the migration is complete.
+- Notify all Retool builders in your organization that source control operations are blocked during the migration.
+
+If you run multiple instances, you must ensure your instances all use the same main branch to sync code.
+
+## Run migration
+
+To run the migration, go to **Settings > Source Control** and select **Get Toolscript**.
+
+If the migration runs successfully, no additional input is necessary.
+You can confirm a migration was successful by navigating to the main branch on your SCM provider. You should see a new commit entitled "Convert to ToolScript v2.0.0" that replaces `*.yml` files with `*.rsx` and other Toolscript files.
+Additionally, the `.retool/protected-apps.yml` metadata file should be updated to read `2.0.0`.
+
+If the migration returns an error, you can download logs for the given run from the Source Control settings page.
+
+## Migration errors
+
+Migration logs can help you identify errors which occurred during your migration. To resolve these errors, use one of the following options:
+
+1. Revert or manually fix the changes introducing errors. Many issues are likely malformed YAML. See [troubleshooting](./troubleshooting.mdx#changes-and-environments-no-longer-in-sync) for more guidance.
+2. Delete the remote and Retool branch. You can use the following command to delete the remote branch.
+
+```
+git push origin --delete yourfeaturebranch
+```
+
+To preserve your work, you can [export and import apps or modules](../../apps/guides/app-management/import-export.mdx) using JSON into a new branch after your migration.
+
+When you've fixed or deleted the erroring branches, rerun the migration by selecting **Get Toolscript** on the Source Control settings page.
+
+### Errors on versions pre-3.8.10
+
+If you are migrating to Toolscript on a version earlier than 3.8.10, you may encounter additional migration errors in the following scenarios:
+
+- **Empty branch migration**: If your migration failure logs contain the line `yourfeaturebranch has no changes when compared to yourmainbranch`, the migration has failed because one or more of your feature branches contain no changes to migrate. Upgrade to 3.8.10+ first, or delete these branches using the Git CLI.
+- **SCM branch protection**: You may receive a false success message from Retool without a Toolscript conversion commit on your main branch if you have branch protection enabled on your SCM provider. To resolve this situation, click **Deploy Latest** on the Source Control settings page. This immediately unblocks builders and allows commits to be made in YAML. Next, turn off branch protection and upgrade to version 3.8.10+. You can then re-run the migration from the Source Control settings page.
+
+Upgrading to 3.8.10+ is highly recommended to avoid these scenarios.
+
+## Multi-instance procedure
+
+If you deploy multiple instances of Retool connected by the same source control repository, you must follow special procedures to avoid downtime. The steps below assume you have two instances: development ("dev") and production ("prod"). If you do not have a prod instance, designate the instance that is more sensitive to downtime as the prod instance.
+
+The recommended upgrade procedure depends on whether or not your instances sync from the same main Git branch, or use different branches:
+
+:::warning
+Each source control branch can contain Toolscript files or YAML files, but not both. As a result, all Retool instances connected by the same branch must be upgraded to support Toolscript at the same time.
+:::
+
+1. Confirm that all instances are already on version **3.8.10+** or later. You can choose to follow an incremental upgrade procedure, such as upgrading and verifying the dev instance first. The Toolscript migration only runs when manually triggered.
+2. Choose a time during which no builders are using source control to begin the migration. The safest method to do this is to take all instances offline completely. If downtime is unacceptable, an announcement may suffice. Builders lose any commits or branches created during the migration.
+3. Log in to the **dev** instance and run the migration from the Source Control settings page. If there are any errors, address them before moving on; your source control repository is not yet affected.
+4. To confirm the migration, look for a successful deployment status in the Source Control settings page and a new conversion commit in your source control repository. The `.retool/protected-apps.yaml` file in your repository should also read `2.0.0`. If this is not the case, stop immediately and contact [Retool Support](/support).
+5. After the **dev** migration succeeds, log in to the **prod** instance. Since the prod instance syncs from the same branch as dev, you do not need to perform the migration again. Click **Deploy latest** and confirm that the deployment status shows as healthy. The instance should automatically recognize the new Toolscript code.
+
+1. Confirm that all instances are already on version **3.10.2+** or later. Support for different syncing branches is not available in versions 3.10.2 and earlier.
+2. Choose a time during which no builders are using source control on the dev instance to begin the migration. The safest method to do this is to take the dev instance offline completely. If downtime is unacceptable, an announcement may suffice. Builders lose any commits or branches created during the migration.
+3. Log in to the **dev** instance and click “Get Toolscript” on the Source Control settings page. In the advanced settings section, check the “Exclude certain branches” option and enter in the branches used by your other instances for syncing. For example, if your “prod” instance syncs from the “production” Git branch, add “production” to the exclusion list. Repeat this process for all instances connected by the same repository.
+4. Start the migration. If there are any errors, address them before moving on; your source control repository is not yet affected. To confirm the migration, look for a successful deployment status in the Source Control settings page as well as a new conversion commit in your source control repository. The `.retool/protected-apps.yaml` file in your repository should also read `2.0.0`. If this is not the case, stop immediately and contact [Retool Support](/support).
+5. All apps on your dev instance should now be in Toolscript, while your production instance still uses a YAML branch. You can test the Toolscript changes on your dev instance before repeating the above steps for your production instance. Before you migrate your production instance, you cannot promote apps from dev to production. If you need to transfer apps, you can export them as JSON from the dev instance and manually import them into your production instance.
+
+## Migrate YAML manually
+
+Though rare, some directories may remain in YAML after the Toolscript migration has completed. For example:
+
+- A developer merged in a YAML feature branch that was not migrated because it exceeded the 2-month and 300 branch limit.
+- A developer merged in a YAML feature branch while the Toolscript migration was running.
+
+In these cases, your deployments may fail because there are both Toolscript and YAML format files in the repository. To resolve this situation:
+
+1. Ensure that the `.retool/protected-apps.yaml` file on the main branch of your source control repository reads `2.0.0`. If not, the Toolscript migration has not ran successfully yet.
+2. As a precaution, back up your app by [exporting it to JSON](../../apps/guides/app-management/import-export.mdx).
+3. Delete the app folder containing YAML from your source control repository and push the change directly to your main branch.
+4. Your app should now show as unprotected on your Retool instance. Protect the app through Retool again to generate the correct Toolscript and commit the change to your source control repository.
+
+A similar procedure can be used to manually migrate an unmerged YAML pull request. These steps can only be executed by the pull request author.
+
+1. Ensure that the `.retool/protected-apps.yaml` file on the main branch of your source control repository reads `2.0.0`. If not, the Toolscript migration has not ran successfully yet.
+2. Go to the app changed in the pull request and [export it to JSON](../../apps/guides/app-management/import-export.mdx).
+3. Start a new branch on the same app and import the JSON obtained in step 1.
+4. Create a pull request on this new branch. The format should be Toolscript. You can now close the YAML pull request.
+
+---
+
 ## Multi-instance releases
 
-Self-hosted organizations can manage the releases of [protected apps](./protect/apps.mdx) across multiple deployment instances. You can specify which release version of an app is available on each deployment that's configured with [Source Control](../index.mdx). This is particularly useful if you want to test a newer version of an app on a specific instance first.
+Organizations can manage the releases of [protected apps](./protect/apps.mdx) and [protected workflows](./protect/workflows.mdx) across multiple deployment instances. You can specify which release version of an app or workflow is available on each deployment that's configured with [Source Control](../index.mdx). This is particularly useful if you want to test a newer version on a staging or development instance before promoting to production.
 
 You can also programmatically manage multi-instance releases and manifests using the [Retool API](../../api/index.mdx). Refer to the **Source Control** section of the Retool API reference for complete API documentation.
 
 ## Overview
 
-Multi-instance releases makes use of release _artifacts_ and _manifests_ to manage app releases across instances.
+Multi-instance releases makes use of release artifacts and manifests to manage app and workflow releases across instances.
 
-- Each app release has its own artifact. This represents a snapshot of the app at the time of release. These are stored in the `dist/apps//.zip` directory of the Source Control repository.
-- Each instance has its own release manifest. Each manifest file contains a list of app UUIDs and the release that is made available for the instance. These are stored in the `manifests/` directory of the Source Control repository.
+- Each app or workflow release has its own artifact. This represents a snapshot of the element at the time of release. These are stored in the `dist/apps//.zip` or `dist/workflows//.zip` directories of the Source Control repository.
+- Each instance has its own release manifest. Each manifest file contains a list of element UUIDs (apps and workflows) and the release version that is made available for the instance. These are stored in the `manifests/` directory of the Source Control repository.
 
 ```text title="Example repository structure"
 .
@@ -32306,17 +34124,23 @@ Multi-instance releases makes use of release _artifacts_ and _manifests_ to mana
 |   |   └─ ...
 │   ├─ app2
 │   └─ ...
+├─ workflows/
+│   ├─ workflow1
+│   └─ ...
 ├─ dist/
-│   └─ apps/
-│       ├─ app1-uuid
-│       ├─ app2-uuid
+│   ├─ apps/
+│   │   ├─ app1-uuid
+│   │   ├─ app2-uuid
+│   │   └─ ...
+│   └─ workflows/
+│       ├─ workflow1-uuid
 │       └─ ...
 └─ manifests/
     ├─ dev.yaml
     └─ prod.yaml
 ```
 
-As with protected apps, you do not directly modify files within the repository. You create and manage multi-instance releases using the Retool UI or, optionally, using the Retool API.
+As with protected apps and workflows, you do not directly modify files within the repository. You create and manage multi-instance releases using the Retool UI or, optionally, using the Retool API.
 
 ## Demo
 
@@ -32326,14 +34150,18 @@ Watch the following videos that demonstrate how to create and manage manifests a
 
 To use multi-instance releases:
 
-- You must be using Source Control to protect apps.
-- Each instance must be running self-hosted Retool 3.252 or later.
+- You must be using Source Control to protect apps and workflows.
+- For Retool Cloud, multi-instance releases are available on all plans with Source Control enabled.
+- For self-hosted Retool, each instance must be running version 3.252 or later.
 - The Source Control configuration must be the same across all instances, such as source control provider, repository, and branch.
-- Enable **Multi-instance releases: public beta** in your organization's **Settings > Beta** page. If you want to also use the Retool API to programatically manage multi-instance releases, also enable **Multi-instance releases: public API**.
+
+:::note
+Multi-instance releases with workflows is enabled by default. To opt out, disable **Multi-instance releases: workflows support** in your organization's **Settings > Beta** page. 
+:::
 
 ## 1. Create a manifest
 
-Each instance needs its own manifest file stored in the `manifests/` directory of the Source Control repository. The manifest determines the version of the app that is published on the instance. You create and manage manifests in your organization's **Source Control** settings.
+Each instance needs its own manifest file stored in the `manifests/` directory of the Source Control repository. The manifest determines the version of apps and workflows that are published on the instance. You create and manage manifests in your organization's **Source Control** settings.
 
 To create a manifest:
 
@@ -32353,7 +34181,7 @@ export function CreateManifest() {
 
 ## 2. Select the manifest for an instance
 
-A manifest determines which app releases to publish on an instance. You assign each manifest to each instance. To configure an instance to use a specific manifest:
+A manifest determines which app and workflow releases to publish on an instance. You assign each manifest to each instance. To configure an instance to use a specific manifest:
 
 1. Sign in to a specific instance (e.g., `dev`).
 1. Navigate to **Settings > Source Control**.
@@ -32368,11 +34196,11 @@ Once complete, the instance will then publish the release versions associated wi
 | User testing | `uat` |
 | Production | `prod` |
 
-In the example above, apps defined in the `dev` manifest are published accordingly to the **Development** instance.
+In the example above, apps and workflows defined in the `dev` manifest are published accordingly to the **Development** instance.
 
 ## 3. Create a release
 
-To create a new release, open the app for which to create a release in **View** mode—you cannot create a release whilst editing an app.
+To create a new release for an app, open the app in **View** mode—you cannot create a release whilst editing an app. For workflows, see [Version and publish workflows](../../workflows/guides/version-and-publish.mdx).
 
 1. Click the **Releases** button in the status bar. Note that the button displays the release version currently open. If there have not been any previous releases, the app uses `latest` (current working version).
 1. Click **Create new** to create a version for release. Retool uses [Semantic Versioning](https://semver.org/) and automatically increments the version number based on your selection of **Major**, **Minor**, or **Patch** versioning.
@@ -32394,24 +34222,24 @@ The new release is only available once the pull request has merged and its chang
 
 There are two ways with which you can manage releases:
 
-- View and manage the deployment of all app releases in the **Releases** tab of the **Source Control** settings page.
-- View and manage the deployment of individual app releases in the **Releases and history** modal.
+- View and manage the deployment of all app and workflow releases in the **Releases** tab of the **Source Control** settings page.
+- View and manage the deployment of individual app or workflow releases in the **Releases and history** modal.
 
-### View and manage all apps
+### View and manage all apps and workflows
 
-You can manage multi-instance app releases and manifests from the **Source Control** settings page. The **Releases** tab is a graphical interface for managing all release manifests. It contains a list of all protected apps, and the release version deployed to each instance. Each column corresponds to each instance that uses multi-instance releases.
+You can manage multi-instance app and workflow releases and manifests from the **Source Control** settings page. The **Releases** tab is a graphical interface for managing all release manifests. It contains a list of all protected apps and workflows, and the release version deployed to each instance. Each column corresponds to each instance that uses multi-instance releases.
 
-View and manage all apps.
+View and manage all apps and workflows.
 
-To change the deployed release version of an app for any instance:
+To change the deployed release version of an app or workflow for any instance:
 
 1. Click on the version number in the column and select the release to use. You can make multiple changes, if required.
 1. Click **Review** to review and confirm the changes.
 1. Click **Create pull request** to start a new pull request.
 
-### View and manage an individual app and its releases
+### View and manage an individual app or workflow and its releases
 
-Similar to creating a new release, you can use the **Releases and history** modal to manage the release deployment across instances. To deploy a release:
+Similar to creating a new release, you can use the **Releases and history** modal to manage the release deployment across instances for both apps and workflows. To deploy a release:
 
 1. Click **•••** to open the contextual menu for the release you want to deploy.
 1. Select the instance in the **Publish release** sub-menu. All instances with a manifest are automatically listed.
@@ -32468,9 +34296,7 @@ This guide outlines how to make changes to a protected Retool agent and merge th
 
 ## Requirements
 
-Before you begin, ensure [Source Control is configured](../../index.mdx) for your Retool instance. This guide uses GitHub, but Retool supports [multiple remote SCM providers](../../index.mdx#setup-quickstarts).
-
-Source Control is available on the Enterprise plan. You must be an admin to configure Source Control.
+Before you begin, ensure [Source Control is configured](../../index.mdx) for your Retool instance. This guide uses GitHub, but Retool supports [multiple remote SCM providers](../../index.mdx#setup-quickstarts). You must be an admin to configure Source Control.
 
 ## 1. Protect the agent
 
@@ -32558,9 +34384,7 @@ This guide outlines the end-to-end workflow required to make changes to a protec
 
 ## Requirements
 
-Before you begin, ensure [Source Control is configured](../../index.mdx) for your Retool instance. This guide uses GitHub, but Retool supports [multiple remote SCM providers](../../index.mdx#setup-quickstarts).
-
-Source Control is available on the Enterprise plan. You must be an admin to configure Source Control.
+Before you begin, ensure [Source Control is configured](../../index.mdx) for your Retool instance. This guide uses GitHub, but Retool supports [multiple remote SCM providers](../../index.mdx#setup-quickstarts). You must be an admin to configure Source Control.
 
 ## 1. Import the app
 
@@ -32568,7 +34392,7 @@ If you don't have existing Retool apps to edit, you can import the one used in t
 
 ## 2. Protect the app
 
-In Retool, _protected_ apps are apps checked into remote source control repositories. To protect your app, go to the App IDE and select **...** > **Protect app**.
+In Retool, _protected_ apps are apps checked into remote source control repositories. To protect your app, go to the app IDE and select **...** > **Protect app**.
 
 Click **Protect application** on the confirmation modal. Follow the flow to open and merge the initial PR of the app's source code into the connected GitHub repository.
 
@@ -32580,7 +34404,7 @@ To rename or move an app, go to the home page and select **Rename** from the act
 
 Click **Edit** and select **Create new branch**. Give the branch a descriptive name for your changes. You can also select **Make collaborative** to [allow other users](../collaborative-branches.mdx) to push changes to it.
 
-After you create the branch, you're directed to the App IDE. The branch on which you're editing appears in the lower left, along with the commit log for the branch. Changes made on branches are local to the branch.
+After you create the branch, you're directed to the app IDE. The branch on which you're editing appears in the lower left, along with the commit log for the branch. Changes made on branches are local to the branch.
 
 Edit your app. In this example, you can update the table's search filter to include searching by email. Update the `tableFilteredData` transformer to the following query.
 
@@ -32660,7 +34484,7 @@ When you click **Protect query**, Retool creates a new branch on your SCM provid
 
 ### 2. Open a new pull request
 
-After you click **Open pull request**, you’ll be redirected to your SCM provider to create an initial commit for the resource. This commit contains a Toolscript file with relevant details for your query.
+After you click **Open pull request**, you’ll be redirected to your SCM provider to create an initial commit for the resource. This commit contains a ToolScript file with relevant details for your query.
 
 ### 3. Merge pull request
 
@@ -32703,7 +34527,7 @@ Using protected resources in Source Control, you can safely replicate resource c
 - [Bitbucket](../../tutorials/bitbucket.mdx)
 - [Azure Repos](../../tutorials/azure-repos.mdx)
 
-On Retool Cloud and self-hosted Retool versions 3.6.0 and later, Retool uses [Toolscript](../../concepts/toolscript.mdx) to serialize resources. On earlier versions of Retool, protected resource configurations are represented as YAML files.
+On Retool Cloud and self-hosted Retool versions 3.6.0 and later, Retool uses ToolScript to serialize resources. On earlier versions of Retool, protected resource configurations are represented as YAML files.
 
 ## Prerequisites
 
@@ -32831,13 +34655,11 @@ Protected workflows and the folders in which they're located cannot be renamed o
 
 ## Requirements
 
-Before you begin, ensure [Source Control is configured](../../index.mdx) for your Retool instance. This guide uses GitHub, but Retool supports [multiple remote SCM providers](../../index.mdx#setup-quickstarts).
-
-Source Control is available on the Enterprise plan. You must be an admin to configure Source Control.
+Before you begin, ensure [Source Control is configured](../../index.mdx) for your Retool instance. This guide uses GitHub, but Retool supports [multiple remote SCM providers](../../index.mdx#setup-quickstarts). You must be an admin to configure Source Control.
 
 ## 1. Protect the workflow
 
-In Retool, _protected_ workflows are workflows checked into remote source control repositories. You can protect a workflow with Source Control in either the **Workflows** tab of your organization or the Workflow IDE:
+In Retool, _protected_ workflows are workflows checked into remote source control repositories. You can protect a workflow with Source Control in either the **Workflows** tab of your organization or the workflow IDE:
 
 - **Workflows tab**: Click `•••` to open the contextual menu for the workflow you want to protect, then select **Protect workflow**.
 - **Workflow IDE**: Click `•••` in the toolbar to open the contextual menu, then select **Protect workflow**.
@@ -32864,7 +34686,7 @@ An workflow's name serves as a unique identifier when you use Source Control, so
 
 Click **Edit** and select **Create new branch**. Give the branch a descriptive name for your changes. You can also select **Make collaborative** to [allow other users](../collaborative-branches.mdx) to push changes to it.
 
-After you create the branch, you're directed to the Workflow IDE. The branch on which you're editing appears in the lower left, along with the commit log for the branch. Changes made on branches are local to the branch.
+After you create the branch, you're directed to the workflow IDE. The branch on which you're editing appears in the lower left, along with the commit log for the branch. Changes made on branches are local to the branch.
 
 Edit your workflow.
 
@@ -32911,9 +34733,23 @@ export function MergeChanges() {
   )
 }
 
+## Multi-instance releases
+
+If your organization manages multiple deployment instances (such as development, staging, and production), you can use [multi-instance releases](../multi-instance-releases.mdx) to control which version of a protected workflow is deployed to each instance.
+
+With multi-instance releases, you can:
+
+- Test new workflow versions on development or staging instances before promoting to production.
+- Deploy different versions of workflows to different instances.
+- Manage workflow releases across instances using release manifests.
+
+:::note
+Multi-instance releases with workflows is enabled by default. To opt out, disable **Multi-instance releases: workflows support** in your organization's **Settings > Beta** page. Learn more about [multi-instance releases](../multi-instance-releases.mdx).
+:::
+
 ## Remove workflow protection
 
-You can remove protection for a workflow at any time in either the **Workflows** tab of your organization or the Workflow IDE:
+You can remove protection for a workflow at any time in either the **Workflows** tab of your organization or the workflow IDE:
 
 - **Workflows tab**: Click `•••` to open the contextual menu for the workflow you want to protect, then select **Remove protection**.
 - **Workflow IDE**: Click `•••` in the toolbar to open the contextual menu, then select **Unprotect workflow**. You can also choose to **Unprotect triggers** if you want to remove protection from your workflow triggers.
@@ -33028,7 +34864,7 @@ Use [Deployment Dashboard](./manage-deployment.mdx#source-control-status) to che
 
 Kicking off a [full deployment](./manage-deployment.mdx#full-and-partial-deployments) by clicking **Deploy latest** updates all protected elements in your Retool instance to the latest state of your main branch. This overrides and can help fix failing intermediary partial deployments.
 
-The SCM details area displays the current connection status. If the status is not **Connected**, this indicates that your Retool instance is not able to connect to your SCM provider. To resolve the connection, verify your SCM configuration by clicking **Edit config**, environment variables, and if using GitHub, your base64 encoding of your private key.
+The SCM details area displays the current connection status. If the status is not **Connected**, this indicates that your Retool instance is not able to connect to your SCM provider. To resolve the connection, verify your SCM configuration by clicking **Edit config**, environment variables, and if using GitHub, your Base64-encoding of your private key.
 
 ### Changes and environments no longer in sync
 
@@ -33068,7 +34904,7 @@ First, identify the commit with malformed files. You can do this by either:
 
 - Using the Deployment Dashboard to identify the commit of the first failing build.
 - Reviewing recent commits in the Git history with the SCM provider. This may be the most recent commit if you're able to respond to the issue quickly.
-- Reviewing the `jobs-runner` container logs for lines with the terms `Target sha`, `SOURCE_CONTROL_DEPLOYMENT`, and `error`.
+- Reviewing the `jobs-runner` container logscontainer logs for lines with the terms `Target sha`, `SOURCE_CONTROL_DEPLOYMENT`, and `error`.
 
 Next, revert or fix-forward the offending commit. You can revert the commit and push the reversion to your Git repository to roll back the change. To preserve the changes, you can fix-forward by correcting the error as a new commit.
 
@@ -33646,6 +35482,16 @@ Set the role to `maintainer` or `developer`.
 ## 2. Configure settings in Retool
 
 Configure the GitLab repository settings.
+
+:::note
+Ensure your GitLab domain contains an IPv6 (AAAA) DNS record to prevent server errors when Retool attempts to connect to your GitLab instance. 
+
+You can confirm whether you have IPv6 configured by running:
+```
+dig  AAAA
+```
+If the output of the command is `ANSWER: 0`, then the IPv6 DNS record is missing. 
+:::
 
 Go to the [Source Control settings](https://login.retool.com/auth/login?source=docs&redirectOnLogin=settings/source-control), and select **Set up GitLab**. Enter the following settings.
 
@@ -34716,7 +36562,7 @@ Visit **Settings > Custom SSO**, select Google SSO, and add your Client ID and C
 
 In your `docker.env` file, set your Client ID and Client Secret as the values of the `CLIENT_ID` and `CLIENT_SECRET` environment variables. Set the [BASE_DOMAIN](../../../self-hosted/reference/environment-variables/index.mdx#variable-BASE_DOMAIN) environment variable as well, so Google handles redirect requests correctly.
 
-If you use [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/), place the base64-encoded version of these strings inside your Kubernetes secrets file instead of in `docker.env`.
+If you use [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/), place the Base64-encoded version of these strings inside your Kubernetes secrets file instead of in `docker.env`.
 
 ```
 CLIENT_ID={YOUR_GOOGLE_CLIENT_ID}
@@ -34978,10 +36824,10 @@ Follow these steps to configure SAML SSO with Microsoft Entra ID for your Retool
 
 By default, Retool uses the Entity ID `https://tryretool.com`.
 
-Add the following [environment variable](../../../self-hosted/reference/environment-variables/index.mdx#domains) to your `docker.env` file, replacing `retool.yourcompany.com` with your domain. Note: adding a new environment variable requires restarting the container for it to take effect.
+Add the following [environment variable](../../../self-hosted/reference/environment-variables/index.mdx#domains) to your `docker.env` file, replacing `yourcompany.retool.com` with your domain. Note: adding a new environment variable requires restarting the container for it to take effect.
 
 ```
-DOMAINS=retool.yourcompany.com
+DOMAINS=yourcompany.retool.com
 ```
 
 ## 2. Create an Microsoft Entra ID Enterprise application
@@ -35005,7 +36851,7 @@ In the **Microsoft Entra ID admin center**, select the **Retool** Enterprise app
 
 | Setting                                    | Value                                                                                                                                  |
 | ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
-| Identifier (Entity ID)                     | `retool.yourcompany.com`                                                                                                               |
+| Identifier (Entity ID)                     | `yourcompany.retool.com`                                                                                                               |
 | Reply URL (Assertion Consumer Service URL) | On Retool Cloud, `https://your-company.retool.com/api/saml/login`. On self-hosted Retool, `https://retool.your-company.com/saml/login`. |
 | Sign on URL                                | On Retool Cloud, `https://your-company.retool.com/api/saml/login`. On self-hosted Retool, `https://retool.your-company.com/saml/login`. |
 
@@ -35362,7 +37208,7 @@ Make sure you're aggregating metrics across all services, especially `workflows-
 
 ## Workflow IDE
 
-The _Workflow IDE_ is the interface you use to build workflows. It is made up of four primary areas:
+The workflow IDE is the interface you use to build workflows. It is made up of four primary areas:
 
 - [Canvas](#canvas) - Arrange blocks and build your workflow.
 - [Left panel](#left-panel) - Add blocks and functions, configure triggers, and configure code libraries.
@@ -35434,7 +37280,7 @@ import Functionssvg from "/img/icons/workflows/functions.svg";
 import Triggerssvg from "/img/icons/workflows/triggers.svg";
 import Librariessvg from "/img/icons/workflows/libraries.svg";
 
-The _left panel_ contains a set of tabs to configure functionality of a workflow.
+The left panel contains a set of tabs to configure functionality of a workflow.
 
 ### Blocks
 
@@ -35499,7 +37345,7 @@ export function Status() {
 
 import Runsvg from "/img/icons/workflows/run-with-previous.svg";
 
-The _toolbar_ at the top of the IDE contains controls to rename, run, and publish a workflow release.
+The _toolbar_ at the top of the IDE contains controls to rename, create or edit the [README](../guides/create-workflows-readme), run, and publish a workflow release.
 
 Use the  **Run** and **Publish release** buttons to run a workflow or [release and publish it](../quickstart.mdx#publishing) it to run automatically.
 
@@ -35524,13 +37370,13 @@ A workflow run is a complete execution of a workflow through a trigger (e.g. app
 
 Retool limits the length of time a workflow run can remain in execution before it is automatically terminated.
 
-For asynchronous workflow runs, the timeout is 30 hours. For asynchronous workflows with User Task or Wait blocks, the timeout is 60 days.
+For asynchronous workflow runs, the timeout is 30 hours. For asynchronous workflows with User Task or Wait blocks, the timeout is unlimited. Individual Wait blocks are limited to a maximum of 60 days.
 
 For synchronous workflows runs, the timeout is 15 minutes up to executing the first webhook Response block. The remainder of the workflow follows the *asynchronous* timeout.
 
 ### Memory and CPU
 
-A workflow run can use up to 1GB in memory, and 1 vCPU.
+A workflow run can use up to 2.5GB in memory, and 1 vCPU.
 
 A workflow run has no memory and CPU limits by default. To configure limits, set environment variable [`WORKFLOW_MONITOR_PROCESS_ENABLED`](https://docs.retool.com/self-hosted/reference/environment-variables/code-executor#variable-WORKFLOW_MONITOR_PROCESS_ENABLED) to `true` and constrain the memory and CPU usage of the workflow via [`WORKFLOW_MEMORY_LIMIT_MBS`](https://docs.retool.com/self-hosted/reference/environment-variables/code-executor#variable-WORKFLOW_MEMORY_LIMIT_MBS) and [`WORKFLOW_CPU_LIMIT`](https://docs.retool.com/self-hosted/reference/environment-variables/code-executor#variable-WORKFLOW_CPU_LIMIT) respectively.
 
@@ -35546,9 +37392,9 @@ A workflow run can generate and store a maximum of 10MB of logs, after which log
 
 *Workflow burst limit* is how many runs of the same workflow can be triggered within a 10 second period.
 
-Workflow concurrency is 60, and burst limit is 200.
+Workflow concurrency is 100, and burst limit is 200.
 
-Workflow concurrency and burst limit are not limited and cannot be configured.
+Workflow concurrency and burst limit are not limited by default and can be configured via environment variables.
 
 ### Concurrent external requests
 
@@ -35587,7 +37433,7 @@ For asynchronous workflow runs, resource blocks can run up to 10 minutes. For sy
 
 The default timeout is 10 seconds and is configurable with block settings.
 
-For asynchronous workflows runs, resource blocks can run up to 40 minutes. For synchronous workflows runs, resource blocks can run up to 2 minutes. 
+For asynchronous workflows runs, Resource query blocks can run up to 24 days. For synchronous workflows runs, Resource query blocks can run up to 2 minutes.
 
 :::note
 
@@ -35676,7 +37522,7 @@ This guide provides instructions on how to invoke an agent and retrieve its resu
 
 ## Prerequisites
 
-Before you create an agentic workflow, you must first create an agent. Refer to the [Retool Agents tutorial](../../../../agents/tutorial.mdx) for more information.
+Before you create an agentic workflow, you must first create an agent. Refer to the [Retool Agents tutorial](../../../../agents/tutorials/agents-tutorial.mdx) for more information.
 
 ## Invoke agent
 
@@ -35781,9 +37627,9 @@ The multi-step function
 
 ## Poll the agent for results
 
-Once you've created a multi-step workflow, you can poll the agent logs for results. There's no need to do this if you are simply using the workflow to trigger the agent invocation.
+Once you've created a multi-step function, you can poll the agent logs for results. There's no need to do this if you are simply using the workflow to trigger the agent invocation.
 
-1. Click and drag  to create a new, connected block. 
+1. Click and drag  to create a new, connected block.
 2. Select the  block type, and name the block `pollForAgentLogs`.
 3. Paste in the following JavaScript code snippet to populate your block:
 
@@ -35810,7 +37656,7 @@ Polling for agent results
 
 ## Interact with AI models with the AI action block
 
-The _AI action_ block enables you to leverage Retool AI in workflows. You can write queries that instruct [AI models](../../../data-sources/concepts/models.mdx) to perform different actions, such as generating text or chat responses.
+The AI action block enables you to leverage Retool AI in workflows. You can write queries that instruct [AI models](../../../data-sources/concepts/models.mdx) to perform different actions, such as generating text or chat responses.
 
 import Aiactionsvg from "/img/icons/workflows/ai-action.svg";
 
@@ -35840,7 +37686,7 @@ import Removesvg from "/img/icons/workflows/remove.svg";
 import Runsvg from "/img/icons/workflows/run.svg";
 import Startsvg from "/img/icons/workflows/blocks/start.svg";
 
-A workflow contains [blocks](../../quickstart.mdx) that execute actions, such as [resource queries](resource-query.mdx) or [AI actions](ai-action.mdx). Each block connects to another along the workflow's [control flow](../../quickstart.mdx)—the connecting line that begins at the  **startTrigger** block—and executes sequentially. Each block must be part of the control flow to execute during a run.
+A workflow contains [blocks](../../quickstart.mdx) that execute actions, such as [resource queries](resource-query.mdx) or [AI actions](ai-action.mdx). Each block connects to another along the workflow's control flow—the connecting line that begins at the  **startTrigger** block—and executes sequentially. Each block must be part of the control flow to execute during a run.
 
 ## Connect and disconnect blocks
 
@@ -35888,7 +37734,7 @@ import Codesvg from "/img/icons/workflows/blocks/code.svg";
 
 ## Add a JavaScript Code block
 
-To use JavaScript in a workflow, add a  **Code** block to the canvas and select **JavaScript**.
+To use JavaScript in a workflow, add a  Code block to the canvas and select **JavaScript**.
 
 ## Write and execute JavaScript code
 
@@ -36027,7 +37873,7 @@ To use Python code blocks on self-hosted deployments, you must have the **code-e
 
 ## Add a Python Code block
 
-To use Python in a workflow, add a **Code** block to the canvas and select **Python**.
+To use Python in a workflow, add a Code block to the canvas and select **Python**.
 
 ## Write and execute Python code
 
@@ -36150,7 +37996,7 @@ Refer to the [Code block reference](../../../reference/objects/block/code.mdx) f
 
 import Branchsvg from "/img/icons/workflows/blocks/branch.svg";
 
-Instead of writing [if...else](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements in JavaScript, you can use  **Branch** blocks to visually build conditional statements that control different connected blocks. This is useful for breaking out complex JavaScript logic into more manageable blocks.
+Instead of writing [if...else](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else) statements in JavaScript, you can use  **Branch blocks** to visually build conditional statements that control different connected blocks. This is useful for breaking out complex JavaScript logic into more manageable blocks.
 
 A Branch block evaluates the data it receives from a connected block using the defined condition. If the condition evaluates as a truthy value, the workflow follows the control flow for the **If** statement. If not, it follows the control flow for the **Else** statement.
 
@@ -36235,7 +38081,7 @@ import Maxintervalsettings from "../../../reference/objects/block/_settings/_max
 
 ## Loop block
 
-A  **Loop** block contains an embedded block which runs for each evaluated item in an array. You use `value` and `index` to reference evaluated items and their indexes.
+A  **Loop block** contains an embedded block which runs for each evaluated item in an array. You use `value` and `index` to reference evaluated items and their indexes.
 
 For example, you can automate a welcome email to new customers and customize the message for each recipient, using values like `{{ value.email }}` and `{{ value.name }}`.
 
@@ -36429,6 +38275,52 @@ Refer to the [Wait block reference](../../reference/objects/block/wait.mdx) for 
 
 ---
 
+## Create a README file with workflows
+
+:::note
+
+This feature is available on Retool Cloud and will be available in subsequent releases of self-hosted Retool. Reach out to your account manager to enable README for workflows. 
+
+:::
+
+You can create a README from the workflow IDE to help clarify important information about your workflow for collaborators. For example, if a workflow requires certain permissions on a resource, or if it's only scheduled to run once a week. 
+
+## Create a README
+
+To add a README to your workflow, click the title of the workflow and add your README content to the **Editor README** field. GitHub-flavored markdown is supported. 
+
+Click the **Preview** link to view the README content in HTML. 
+
+export function WFRM() {
+  return (
+    
+      
+    
+  )
+}
+
+READMEs are visible from the **Edit workflow details** dialog box, in workflows JSON exports, and in a markdown file from Source Control. 
+
+## View a README for a protected workflow
+
+README files can also be viewed from workflows protected with Source Control. 
+
+:::note
+For more detailed information about Source Control, refer to [Protect workflows with Source Control](../../source-control/guides/protect/workflows.mdx).    
+:::
+
+Once you've [created the README](#create-a-readme) in the workflows IDE, protect the workflow, and create and merge the pull request to view the `README.md` file in your repository. 
+
+export function WFRMSC() {
+  return (
+    
+      
+    
+  )
+}
+
+---
+
 ## Configure workflow error handlers
 
 As you build workflows of increasing complexity that interact with more data sources, it's important to handle errors and debug unexpected behavior effectively. You can configure blocks to function as error handlers and perform actions should any errors occur during the run.
@@ -36564,7 +38456,7 @@ You can call a function using the following methods:
 
 Loop blocks and Function blocks that call multi-step functions do not support custom timeouts. Instead, these blocks use a total timeout that is calculated by adding the timeouts of each block in the multi-step function.
 
-If a timeout is necessary for a multi-step function, you can call the function within a Code block and set a timeout on the Code block itself.
+If a timeout is necessary for a multi-step function, you can call the function within a Code blocks and set a timeout on the Code block itself.
 
 The [workflow timeout](../concepts/limits.mdx#timeout) always takes precedence over timeouts set within blocks or functions.
 
@@ -36670,12 +38562,12 @@ import TabItem from "@theme/TabItem";
 To import a workflow:
 
 - **From the Workflows page**: Click **Create new** and select **From JSON**.
-- **In the Workflow IDE**: Click **•••** and select **Import from JSON**.
+- **In the workflow IDE**: Click **•••** and select **Import from JSON**.
 
 To export a workflow, either:
 
 - **From the Workflows page**: Click **•••** and select **Export and download**.
-- **In the Workflow IDE**: Click **•••** and select **Export to JSON**.
+- **In the workflow IDE**: Click **•••** and select **Export to JSON**.
 
 When you export a workflow, a JSON file is downloaded by your browser.
 
@@ -36908,7 +38800,7 @@ Tags can be used to filter, categorize, or route errors to different owners usin
 
 ## Trigger workflows with Retool Events
 
-:::info Admin access required
+:::info
 
 You must be an admin to configure Retool Events. Access to the workflows triggered by Retool Events is determined by existing [workflow permissions](../../permissions/guides.mdx).
 
@@ -37221,9 +39113,18 @@ Key rotation is immediate and the previous key will no longer work. Depending on
  
  Update all services and integrations to use the new workflow. Once completed, you can safely delete the old workflow.
 
+ ### Best practices for key rotation
+
+To minimize disruption during webhook API key rotation, especially in enterprise and multi-instance environments, follow these best practices:
+- **Plan for manual rotation:** A developer or admin must click **Rotate** in production currently. In multi-instance deployment, developers may not have production access. Teams should explicitly define who is responsible for rotating keys. 
+- **Avoid breaking dependencies:** Duplicating or moving workflows can break app or workflow triggers, UUID-based references, and git history.
+- **Keep external webhooks thin:** Use webhook workflows only as entry points and forward requests to internal, triggered workflows.
+- **Adopt clear naming conventions:** Distinguish between external and internal workflows (e.g., name the workflow `External Webhook: My Key Action`), and use aliases to keep external URLs stable.
+- **Validate end-to-end:** After rotation, confirm all triggers and downstream workflows still function correctly.
+
 ---
 
-## Add user-driven steps, tasks, and approvals to workflows
+## Configure user tasks
 
 User Tasks enable you to build human-in-the-loop workflows that require a user to take action before the workflow proceeds. The **User Task** block pauses a workflow and creates a user task within the organization. Users then review and action tasks using Retool apps. Only when a user submits task completion using a Retool app does the workflow containing the user task block resume.
 
@@ -37516,7 +39417,7 @@ Retool stores all data related to user tasks, including user task context and ou
 
 ## Version and publish workflows
 
-You must publish a workflow before it can run automatically using a [schedule](triggers/schedule.mdx) or with [webhooks](triggers/webhooks.mdx). The [Workflow IDE](../concepts/ide.mdx) automatically saves changes to your workflow but you must publish them to take effect. This allows you to build a new workflow, or make changes to an existing one, without disruption.
+You must publish a workflow before it can run automatically using a [schedule](triggers/schedule.mdx) or with [webhooks](triggers/webhooks.mdx). The workflow IDE automatically saves changes to your workflow but you must publish them to take effect. This allows you to build a new workflow, or make changes to an existing one, without disruption.
 
 When you publish a workflow, Retool creates a versioned release. Each release of a workflow has its own version number and reflects the workflow's state at that specific point in time. Only the published version is used by Retool. This allows you to safely test and build changes without disruption.
 
@@ -37531,6 +39432,12 @@ Click **Publish release** in the toolbar to create and publish a new version of 
 :::note
 
 For [protected workflows](../../source-control/guides/protect/workflows.mdx), create a new release from the  **Releases** tab in the left-hand menu.
+
+:::
+
+:::info Multi-instance releases
+
+If you're using [multi-instance releases](../../source-control/guides/multi-instance-releases.mdx), you can manage different release versions of protected workflows across multiple deployment instances. This allows you to test newer versions on development or staging instances before promoting to production.
 
 :::
 
@@ -37557,9 +39464,30 @@ The  **Releases** tab contains a list of every published version of a workflow. 
 | Author         | The Retool user who published the version. |
 | Publish date   | When the version was last published.       |
 
+## Unpublish a release
+:::note
+
+This feature is currently rolling out on Retool Cloud and will be available in subsequent releases of self-hosted Retool. Reach out to your account manager to enable unpublish for workflows.
+
+:::
+
+To unpublish a published release, click the **•••** menu of the **Live** release in the  **Releases** tab, and select **Unpublish release**. Until a new release is published, the latest save shown on the canvas will be live to users. 
+
+export function Unpublish() {
+  return (
+    
+      
+    
+  )
+}
+
+:::note
+Published releases on [protected workflows](../../source-control/guides/protect/workflows.mdx) can also be unpublished. When unpublishing a release on a protected workflow, the latest saved version on the main branch will be live to users.
+:::
+
 ## Preview a release
 
-From the **Releases** tab, click the **•••** menu and select **Preview release** to preview it in the Workflow IDE.
+From the **Releases** tab, click the **•••** menu and select **Preview release** to preview it in the workflow IDE.
 
 ## Publish an existing release
 
@@ -37615,11 +39543,11 @@ import Browsers from '/docs/_shared/_supported-browsers.mdx';
 
 Workflows are comprised of _blocks_. A block is a type of [query](../queries/quickstart.mdx#resource-queries) that interacts with data (e.g., querying a database) or performs an action (e.g., execute JavaScript code). Blocks are modular and have internal state—you can reference block properties in any subsequent block. For example, a block named `findUser` can be referenced using `findUser.data`.
 
-You drag and drop blocks in the [Workflow IDE](concepts/ide.mdx), then configure them to interact with data or perform actions. You connect blocks together to define the control flow which determines the order that each block executes. Blocks can reference the results of previous blocks that have already executed, passing along the results to the next block.
+You drag and drop blocks in the [workflow IDE](concepts/ide.mdx), then configure them to interact with data or perform actions. You connect blocks together to define the control flow which determines the order that each block executes. Blocks can reference the results of previous blocks that have already executed, passing along the results to the next block.
 
 ## Set the order of operation {#control-flow}
 
-Blocks connect together and execute sequentially during a run. This defines the order of operation and flow of data, known as the _control flow_. The connecting line between blocks visually represents the control flow, which can be a single path or branch to perform parallel operations.
+Blocks connect together and execute sequentially during a run. This defines the order of operation and flow of data, known as the control flow. The connecting line between blocks visually represents the control flow, which can be a single path or branch to perform parallel operations.
 
 Any block that is part of the control flow is executed during a workflow run, beginning with the  **startTrigger** block.
 
@@ -37637,11 +39565,11 @@ The control flow is not limited to a single path. A block can output data to mul
 
 The following example illustrates a workflow that retrieves a list of customers. It then iterates through the list of customers to check whether they were a sales lead. If they were, it notifies the Sales team. If not, it sends the customer a welcome email.
 
-You can always reference a previous block that is not currently part of the same control flow path. The Workflow IDE automatically connects the blocks together and displays the connecting line.
+You can always reference a previous block that is not currently part of the same control flow path. The workflow IDE automatically connects the blocks together and displays the connecting line.
 
 ## Call functions outside the control flow
 
-_Functions_ are reusable blocks that run in a headless state. They operate outside of the control flow and do not appear on the canvas. You call a function from [JavaScript](guides/blocks/code/javascript.mdx) Code blocks which can pass data as parameters. This reduces the need for query duplication and enables you to perform certain tasks only when necessary.
+Functions are reusable blocks that run in a headless state. They operate outside of the control flow and do not appear on the canvas. You call a function from [JavaScript](guides/blocks/code/javascript.mdx) Code blocks which can pass data as parameters. This reduces the need for query duplication and enables you to perform certain tasks only when necessary.
 
 ## Trigger workflows automatically
 
@@ -37673,7 +39601,7 @@ Workflows can read data from a webhook event's JSON payload (e.g., error message
 
 ### Publishing
 
-You must publish a workflow release before it can run automatically using a [schedule](guides/triggers/schedule.mdx) or with [webhooks](guides/triggers/webhooks.mdx). The [Workflow IDE](concepts/ide.mdx) automatically saves changes to your workflow but you must publish them to take effect. This allows you to build a new workflow, or make changes to an existing one, without disruption.
+You must publish a workflow release before it can run automatically using a [schedule](guides/triggers/schedule.mdx) or with [webhooks](guides/triggers/webhooks.mdx). The [workflow IDE](concepts/ide.mdx) automatically saves changes to your workflow but you must publish them to take effect. This allows you to build a new workflow, or make changes to an existing one, without disruption.
 
 When you publish a workflow, Retool creates a versioned release. Each release of a workflow has its own version number and reflects the workflow's state at that specific point in time. Only the published version is used by Retool. This allows you to safely test and build changes without disruption.
 
@@ -37880,7 +39808,7 @@ import Maxintervalsettings from "./_settings/_max_interval.mdx";
 
 ## The Current User object
 
-You can reference the `current_user` object when a workflow is manually run from the Workflow IDE or triggered from an app by a user. The evaluated `current_user` in workflows is an admin in your organization’s instance or space. This differs from apps and agents, where the `current_user` is evaluated as the current, logged-in user. Workflows are always run as an admin role to ensure that when workflows are run without access to the current, logged-in user (such as when triggered by schedule or webhook), sufficient access to any resource on the control flow is guaranteed.
+You can reference the `current_user` object when a workflow is manually run from the workflow IDE or triggered from an app by a user. The evaluated `current_user` in workflows is an admin in your organization's instance or space. This differs from apps and agents, where the `current_user` is evaluated as the current, logged-in user. Workflows are always run as an admin role to ensure that when workflows are run without access to the current, logged-in user (such as when triggered by schedule or webhook), sufficient access to any resource on the control flow is guaranteed.
 
 ## Run workflow as the current user
 
@@ -37888,7 +39816,7 @@ There is a public beta feature that allows your organization to run workflows as
 
 :::note
 
-To set the `current_user` to `null` on automatic workflow runs, reach out to your account manager.
+To set the `current_user` to `null` on automatic workflow run, reach out to your account manager.
 
 :::
 
@@ -37898,7 +39826,7 @@ To set the `current_user` to `null` on automatic workflow runs, reach out to you
 
 ## The Start Trigger object
 
-You can reference the `startTrigger` object when a workflow is manually run from the Workflow IDE or [triggered with a webhook](../../guides/triggers/webhooks.mdx). `startTrigger` is `null` when a workflow is configured to use a schedule trigger.
+You can reference the `startTrigger` object when a workflow is manually run from the workflow IDE or [triggered with a webhook](../../guides/triggers/webhooks.mdx). `startTrigger` is `null` when a workflow is configured to use a schedule trigger.
 
 ## Properties
 
@@ -37912,7 +39840,9 @@ You can reference the `startTrigger` object when a workflow is manually run from
 
 ## Retool Events reference
 
-Use [Retool Events](../guides/retool-events.mdx) to build workflows that run whenever certain events occur within your organization. Event payloads contain properties with information related to the event. You can reference these within Retool Event-related workflows to perform actions or send notifications automatically.
+Use Retool Events to build workflows that run whenever certain events occur within your organization. Event payloads contain properties with information related to the event. You can reference these within Retool Event-related workflows to perform actions or send notifications automatically.
+
+[Learn more](../guides/retool-events.mdx) about setting up Retool Events.
 
 ## Password reset required
 
@@ -38006,7 +39936,7 @@ Finally, add one more JavaScript **Code** block that returns an array of every c
 
 ## 4. Check for added functionality
 
-Use the **Branch** block to perform different actions based on whether the input value meets a truthy condition. Branch blocks allow you to create two different paths for a workflow to take, depending on whether the condition evaluates as `true` or `false`. In this case, the workflow needs to check if the most recent release notes contain any features labeled `added`.
+Use the **Branch block** to perform different actions based on whether the input value meets a truthy condition. Branch blocks allow you to create two different paths for a workflow to take, depending on whether the condition evaluates as `true` or `false`. In this case, the workflow needs to check if the most recent release notes contain any features labeled `added`.
 
 First, click or drag  from `fetchAdded` to add a **Branch** block, then rename it to `containsAdded`. In the **If** statement, specify the following condition: `fetchAdded.data.length`. This condition evaluates to `true` if there are any features in the `added` array.
 

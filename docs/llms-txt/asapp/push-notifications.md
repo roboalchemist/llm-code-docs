@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/agent-desk/integrations/ios-sdk/push-notifications.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Push Notifications
 
 ## Get Started with Push Notifications

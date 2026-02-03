@@ -6,7 +6,7 @@
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 Upsun supports building and deploying applications written in Go using Go modules. They’re compiled during the Build hook phase, and support both committed dependencies and download-on-demand.
 
@@ -20,14 +20,6 @@ When you deploy your app, you always get the latest available patches.
    - 1.25
 
    - 1.24
-
-   - 1.23
-
-   - 1.22
-
-   - 1.21
-
-   - 1.20
 
 ### Specify the language
 
@@ -55,6 +47,14 @@ The following versions are [deprecated](https://docs.upsun.com/glossary.md#depre
 They're available, but they don't receive security updates from upstream and aren't guaranteed to work.
 They'll be removed in the future – consider migrating to a [supported version](#supported-versions).
 
+   - 1.23
+
+   - 1.22
+
+   - 1.21
+
+   - 1.20
+
    - 1.19
 
    - 1.18
@@ -74,10 +74,6 @@ They'll be removed in the future – consider migrating to a [supported version]
    - 1.11
 
    - 1.10
-
-   - 1.9
-
-   - 1.8
 
 ## Go toolchain auto download
 
@@ -155,6 +151,8 @@ Consult each of the individual service documentation to see how to retrieve and 
 - [MariaDB/MySQL](https://docs.upsun.com/add-services/mysql.md#use-in-app)
 
 - [Memcached](https://docs.upsun.com/add-services/memcached.md#use-in-app)
+
+- [Mercure](https://docs.upsun.com/add-services/mercure.md#use-in-app)
 
 - [MongoDB](https://docs.upsun.com/add-services/mongodb.md#use-in-app)
 

@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/ai-ml/llamaindextool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LlamaIndex Tool
 
 > The `LlamaIndexTool` is a wrapper for LlamaIndex tools and query engines.

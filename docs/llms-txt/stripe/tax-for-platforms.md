@@ -8,7 +8,7 @@ Stripe Tax enables businesses to calculate, collect, and report indirect taxes i
 
 Use this guide if your connected accounts are responsible for collecting, filing, and reporting taxes.
 
-1. [Set up your connected accounts for tax](https://docs.stripe.com/tax/tax-for-platforms.md#check-set-up)
+1. [Set up your connected accounts for tax](https://docs.stripe.com/tax/tax-for-platforms.md#set-up)
 1. (Optional) [Assign tax codes to the product catalog](https://docs.stripe.com/tax/tax-for-platforms.md#assign-product-tax-codes)
 1. [Integrate tax calculation and collection](https://docs.stripe.com/tax/tax-for-platforms.md#enable-tax-collection)
 1. [Access Stripe Tax Reports](https://docs.stripe.com/tax/tax-for-platforms.md#access-reports)
@@ -154,15 +154,10 @@ result, err := sc.V1AccountSessions.Create(context.TODO(), params)
 var options = new AccountSessionCreateOptions
 {
     Account = "{{CONNECTED_ACCOUNT_ID}}",
-    Components = new AccountSessionComponentsOptions
-    {
-        TaxSettings = new AccountSessionComponentsTaxSettingsOptions { Enabled = true },
-        TaxRegistrations = new AccountSessionComponentsTaxRegistrationsOptions
-        {
-            Enabled = true,
-        },
-    },
+    Components = new AccountSessionComponentsOptions(),
 };
+options.AddExtraParam("components[tax_settings][enabled]", true);
+options.AddExtraParam("components[tax_registrations][enabled]", true);
 var client = new StripeClient("<<YOUR_SECRET_KEY>>");
 var service = client.V1.AccountSessions;
 AccountSession accountSession = service.Create(options);

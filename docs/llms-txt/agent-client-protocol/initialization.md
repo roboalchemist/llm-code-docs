@@ -1,5 +1,9 @@
 # Source: https://agentclientprotocol.com/protocol/initialization.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://agentclientprotocol.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Initialization
 
 > How all Agent Client Protocol connections begin
@@ -221,8 +225,3 @@ Both Clients and Agents **SHOULD** provide information about their implementatio
 ***
 
 Once the connection is initialized, you're ready to [create a session](./session-setup) and begin the conversation with the Agent.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://agentclientprotocol.com/llms.txt

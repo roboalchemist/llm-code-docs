@@ -1,14 +1,18 @@
 # Source: https://docs.asapp.com/ai-productivity/ai-summary/intent.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Intent
 
 > Generate intents from your conversations
 
-An intent is a topic-level descriptor-a single world or short phrase-that reflects the customer's main issue or question at the beginning of a conversation.
+An intent is a topic-level descriptor—a single word or short phrase—that reflects the customer's main issue or question at the beginning of a conversation.
 
-Intents come out-of-the-box with support for common intents, but can be customized to match your unique use cases.
+Intents come out-of-the-box with support for common intents, but you can customize them to match your unique use cases.
 
-Intents enable you to optimize operations by analyzing contact reasons, better route conversations, and contribute to your larger analyzing activities.
+Intents enable you to optimize operations by analyzing contact reasons, route conversations more effectively, and contribute to your larger analysis activities.
 
 ## How it works
 
@@ -22,7 +26,7 @@ To help understand how intent identification works, let's use an example convers
 > **Customer**: 6789\
 > **Agent**: Let me check the details for you. One moment, please.\
 > **Agent**: I see that your claim was approved on June 10, 2024, for \$5000. The payout has been processed.\
-> **Customer**: Great! When will I receive the money? /autosummary/getting-started#salesforce-plugin
+> **Customer**: Great! When will I receive the money?\
 > **Agent**: The payout will be credited to your account within 3-5 business days.\
 > **Customer**: Perfect, thank you so much for your help.\
 > **Agent**: You're welcome! Is there anything else I can assist you with?\
@@ -40,7 +44,7 @@ In this case, the intent might be identified as:
 }
 ```
 
-The intent is determined based on the customer's initial statement about checking the status of their payout, which is the primary reason for their contact.
+The system determines the intent based on the customer's initial statement about checking the status of their payout, which is the primary reason for their contact.
 
 ## Generate an Intent
 
@@ -73,7 +77,7 @@ A successfully created conversation returns a status code of 200 and a conversat
 
 You need to add the messages for the conversation.
 
-You have the choice to add a **single message** for each turn of the conversation, or can upload a **batch of messages** a conversation.
+You have the choice to add a **single message** for each turn of the conversation, or you can upload a **batch of messages** for a conversation.
 
 <Tabs>
   <Tab title="Single message">
@@ -94,7 +98,7 @@ You have the choice to add a **single message** for each turn of the conversatio
 
     A successfully created message returns a status code of 200 and the id of the message.
 
-    <Warning>We only show one message as an example, though you would create many messages over the source of the conversation.</Warning>
+    <Warning>We only show one message as an example, though you would create many messages over the course of the conversation.</Warning>
   </Tab>
 
   <Tab title="Batched messages">
@@ -211,7 +215,7 @@ This intent represents the primary reason for the customer's contact, regardless
 
 ## Customization
 
-AI Summary allows for extensive customization of the intent identification to meet your specific needs. Whether you want to use industry-specific intents or adhere to your company's unique categorization, this feature provides the flexibility to tailor intents in a way that aligns with your operational goals.
+AI Summary provides extensive customization options for intent identification to meet your specific needs. Whether you want to use industry-specific intents or adhere to your company's unique categorization, this feature provides the flexibility to tailor intents in a way that aligns with your operational goals.
 
 To customize your intents, you can use the Self-Service Configuration tool in ASAPP's AI Console. This tool allows you to:
 

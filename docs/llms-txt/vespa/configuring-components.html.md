@@ -147,7 +147,7 @@ The `myFile()` and `myModel()` getter returns a `java.nio.Path` object, while th
 
 When the client asks for config that uses the `url` or `model` config type with a URL, the content will be downloaded and cached on the nodes that need it. If you want to change the content, the application package needs to be updated with a new URL for the changed content and the application [deployed](../basics/applications.html), otherwise the cached content will still be used. This avoids unintended changes to the application if the content of a URL changes.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

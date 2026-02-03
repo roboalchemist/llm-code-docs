@@ -2,17 +2,9 @@
 
 # Source: https://infisical.com/docs/documentation/platform/dynamic-secrets/ldap.md
 
-# Source: https://infisical.com/docs/integrations/app-connections/ldap.md
-
-# Source: https://infisical.com/docs/documentation/platform/dynamic-secrets/ldap.md
-
-# Source: https://infisical.com/docs/integrations/app-connections/ldap.md
-
-# Source: https://infisical.com/docs/documentation/platform/dynamic-secrets/ldap.md
-
-# Source: https://infisical.com/docs/integrations/app-connections/ldap.md
-
-# Source: https://infisical.com/docs/documentation/platform/dynamic-secrets/ldap.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # LDAP
 
@@ -148,27 +140,31 @@ The Infisical LDAP dynamic secret allows you to generate user credentials on dem
         <ParamField path="Username Template" type="string" default="{{randomUsername}}">
           Specifies a template for generating usernames. This field allows customization of how usernames are automatically created.
 
-          Allowed template variables are
+          Allowed template variables are:
 
-          * `{{randomUsername}}`: Random username string
-          * `{{unixTimestamp}}`: Current Unix timestamp
-          * `{{identity.name}}`: Name of the identity that is generating the secret
-          * `{{random N}}`: Random string of N characters
+          * `{{randomUsername}}`: Random username string.
+          * `{{unixTimestamp}}`: Current Unix timestamp at the time of lease creation.
+          * `{{identity.name}}`: Name of the identity that is generating the lease.
+          * `{{dynamicSecret.name}}`: Name of the associated dynamic secret.
+          * `{{dynamicSecret.type}}`: Type of the associated dynamic secret.
+          * `{{random N}}`: Random string of N characters.
 
-          Allowed template functions are
+          Allowed template functions are:
 
-          * `truncate`: Truncates a string to a specified length
-          * `replace`: Replaces a substring with another value
+          * `truncate`: Truncates a string to a specified length.
+          * `replace`: Replaces a substring with another value.
+          * `uppercase`: Converts a string to uppercase.
+          * `lowercase`: Converts a string to lowercase.
 
           Examples:
 
-          ```
-          {{randomUsername}}                              // 3POnzeFyK9gW2nioK0q2gMjr6CZqsRiX
-          {{unixTimestamp}}                               // 17490641580
-          {{identity.name}}                               // testuser
-          {{random-5}}                                    // x9k2m
-          {{truncate identity.name 4}}                    // test
-          {{replace identity.name 'user' 'replace'}}      // testreplace
+          ```yaml  theme={"dark"}
+          {{ randomUsername }}                                            // 3POnzeFyK9gW2nioK0q2gMjr6CZqsRiX
+          {{ unixTimestamp }}                                             // 17490641580
+          {{ identity.name }}                                             // <identity-name>
+          {{ random 5 }}                                                  // x9K2m
+          {{ truncate identity.name 4 }}                                  // test
+          {{ replace identity.name '<identity-name>' 'new-value' }}       // new-value
           ```
         </ParamField>
       </Step>

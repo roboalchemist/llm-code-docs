@@ -1,4 +1,8 @@
-# Source: https://infisical.com/docs/documentation/platform/agentic-manager/concepts/mcp-overview.md
+# Source: https://infisical.com/docs/documentation/platform/agent-sentinel/concepts/mcp-overview.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Model Context Protocol
 
@@ -19,7 +23,7 @@ MCP follows a client-server architecture:
 
 When an AI assistant needs to perform an action—like searching Notion, creating a GitHub issue, or querying a database—it communicates with the appropriate MCP server using the standardized protocol.
 
-## Why Do You Need Agentic Manager?
+## Why Do You Need Agent Sentinel?
 
 While MCP provides the protocol for AI-tool communication, it doesn't solve the governance and security challenges that organizations face:
 
@@ -32,7 +36,7 @@ While MCP provides the protocol for AI-tool communication, it doesn't solve the 
 
 ### The Solution
 
-Infisical Agentic Manager acts as a secure gateway between AI clients and MCP servers:
+Infisical Agent Sentinel acts as a secure gateway between AI clients and MCP servers:
 
 ```mermaid  theme={"dark"}
 graph LR
@@ -49,9 +53,4 @@ This architecture provides:
 3. **Complete Audit Trail**: Every tool invocation is logged with full request/response details, user attribution, and timestamps.
 4. **Access Control**: Leverage Infisical's existing access control mechanisms to manage who can use which endpoints.
 
-Learn more about [credential modes](/documentation/platform/agentic-manager/mcp-servers#credential-modes) when configuring MCP servers.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://infisical.com/docs/llms.txt
+Learn more about [credential modes](/documentation/platform/agent-sentinel/mcp-servers#credential-modes) when configuring MCP servers.

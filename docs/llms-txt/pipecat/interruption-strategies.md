@@ -1,8 +1,17 @@
-# Source: https://docs.pipecat.ai/server/utilities/interruption-strategies.md
+# Source: https://docs.pipecat.ai/server/utilities/turn-management/interruption-strategies.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Interruption Strategies
 
 > Configure when users can interrupt the bot to prevent unwanted interruptions from brief affirmations
+
+<Warning>
+  DEPRECATED Interruption strategies have been deprecated in favor of [User Turn
+  Strategies](/server/utilities/turn-management/user-turn-strategies).
+</Warning>
 
 ## Overview
 
@@ -134,8 +143,3 @@ task = PipelineTask(
 * Strategies are evaluated in order - first match wins
 * Both audio and text data are automatically fed to strategies based on their implementation
 * Word counting uses simple whitespace splitting for word boundaries
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

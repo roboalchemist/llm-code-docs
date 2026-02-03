@@ -1,6 +1,12 @@
 # Source: https://docs.windsurf.com/autocomplete/tips.md
 
-# Tips
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Autocomplete Tips
+
+> Tips for getting the most out of Windsurf Autocomplete including inline comments, Fill In The Middle (FIM), and snooze functionality.
 
 ## Inline Comments
 

@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/text/st.code
+
 # st.code
 
 Display a code block with optional syntax highlighting.

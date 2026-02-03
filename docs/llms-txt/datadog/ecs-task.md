@@ -4,7 +4,6 @@
 title: ECS Task Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > AWS Components > ECS Task Component
-source_url: https://docs.datadoghq.com/components-aws/ecs-task/index.html
 ---
 
 # ECS Task Component

@@ -4,7 +4,6 @@
 title: Customer Gateway Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > AWS Components > Customer Gateway Component
-source_url: https://docs.datadoghq.com/components-aws/customer-gateway/index.html
 ---
 
 # Customer Gateway Component

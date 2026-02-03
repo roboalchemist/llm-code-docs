@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/competitors/
+
 # Competitors Plugin
 
 The Competitors red teaming plugin is designed to test whether an AI system can be influenced to mention or recommend its competitors. This plugin helps identify potential vulnerabilities where the AI might inadvertently promote competing products or services. By default, it disallows any mention of competitors, but can be configured to allow mentions but not endorsements.

@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/self-hosting/docker.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Docker compose
 
 > You can self-host Trigger.dev on your own infrastructure using Docker.
@@ -71,39 +75,39 @@ You may need to spin up multiple workers to handle peak concurrency. The good ne
 
 1. Clone the repository
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 git clone --depth=1 https://github.com/triggerdotdev/trigger.dev
 cd trigger.dev/hosting/docker
 ```
 
 2. Create a `.env` file
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 cp .env.example .env
 ```
 
 3. Start the webapp
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 cd webapp
 docker compose up -d
 ```
 
 4. Configure the webapp using the [environment variables](/self-hosting/env/webapp) in your `.env` file, then apply the changes:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 docker compose up -d
 ```
 
 5. You should now be able to access the webapp at `http://localhost:8030`. When logging in, check the container logs for the magic link:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 docker compose logs -f webapp
 ```
 
 6. (optional) To initialize a new project, run the following command:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 npx trigger.dev@latest init -p <project-ref> -a http://localhost:8030
 ```
 
@@ -111,20 +115,20 @@ npx trigger.dev@latest init -p <project-ref> -a http://localhost:8030
 
 1. Clone the repository
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 git clone --depth=1 https://github.com/triggerdotdev/trigger.dev
 cd trigger.dev/hosting/docker
 ```
 
 2. Create a `.env` file
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 cp .env.example .env
 ```
 
 3. Start the worker
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 cd worker
 docker compose up -d
 ```
@@ -133,7 +137,7 @@ docker compose up -d
 
 5. Apply the changes:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 docker compose up -d
 ```
 
@@ -143,7 +147,7 @@ docker compose up -d
 
 If you want to run the webapp and worker on the same machine, just replace the `up` command with the following:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 # Run this from the /hosting/docker directory
 docker compose -f webapp/docker-compose.yml -f worker/docker-compose.yml up -d
 ```
@@ -154,7 +158,7 @@ When running the combined stack, worker bootstrap is handled automatically. When
 
 On the first run, the webapp will generate a worker token and store it in a shared volume. It will also print the token to the console. It should look something like this:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 ==========================
 Trigger.dev Bootstrap - Worker Token
 
@@ -179,11 +183,36 @@ You can then uncomment and set the `TRIGGER_WORKER_TOKEN` environment variable i
 
 Don't forget to restart the worker container for the changes to take effect:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 # Run this from the /hosting/docker/worker directory
 docker compose down
 docker compose up -d
 ```
+
+### Creating additional worker groups
+
+To create additional worker groups beyond the bootstrap group, use the admin API endpoint. This requires admin privileges.
+
+**Making a user admin:**
+
+* **New users**: Set `ADMIN_EMAILS` environment variable (regex pattern) before user creation.
+* **Existing users**: Set `admin = true` in the `user` table in your database.
+
+**Creating a worker group:**
+
+```bash  theme={"theme":"css-variables"}
+api_url=http://localhost:8030
+wg_name=my-worker
+admin_pat=tr_pat_...
+
+curl -X POST \
+  "$api_url/admin/api/v1/workers" \
+  -H "Authorization: Bearer $admin_pat" \
+  -H "Content-Type: application/json" \
+  -d "{\"name\": \"$wg_name\"}"
+```
+
+The response includes a `token` field if the worker group is newly created.
 
 ## Registry setup
 
@@ -207,7 +236,7 @@ You should change these before deploying to production, especially the password.
 
 When self-hosting, builds run locally. You will have to login to the registry on every machine that runs the `deploy` command. You should only have to do this once:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 docker login -u <username> <registry>
 ```
 
@@ -249,7 +278,7 @@ By default, magic link auth is the only login option. If the `EMAIL_TRANSPORT` e
 
 #### Resend
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 EMAIL_TRANSPORT=resend
 FROM_EMAIL=
 REPLY_TO_EMAIL=
@@ -262,7 +291,7 @@ Note that setting `SMTP_SECURE=false` does *not* mean the email is sent insecure
 This simply means that the connection is secured using the modern STARTTLS protocol command instead of implicit TLS.
 You should only set this to true when the SMTP server host directs you to do so (generally when using port 465)
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 EMAIL_TRANSPORT=smtp
 FROM_EMAIL=
 REPLY_TO_EMAIL=
@@ -279,7 +308,7 @@ Credentials are to be supplied as with any other program using the AWS SDK.
 
 In this scenario, you would likely either supply the additional environment variables `AWS_REGION`, `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` or, when running on AWS, use credentials supplied by the EC2 IMDS.
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 EMAIL_TRANSPORT=aws-ses
 FROM_EMAIL=
 REPLY_TO_EMAIL=
@@ -289,7 +318,7 @@ REPLY_TO_EMAIL=
 
 To authenticate with GitHub, you will need to set up a GitHub OAuth app. It needs a callback URL `https://<your_webapp_domain>/auth/github/callback` and you will have to set the following env vars:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 AUTH_GITHUB_CLIENT_ID=<your_client_id>
 AUTH_GITHUB_CLIENT_SECRET=<your_client_secret>
 ```
@@ -298,9 +327,9 @@ AUTH_GITHUB_CLIENT_SECRET=<your_client_secret>
 
 All email addresses can sign up and log in this way. If you would like to restrict this, you can use the `WHITELISTED_EMAILS` env var. For example:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 # every email that does not match this regex will be rejected
-WHITELISTED_EMAILS="authorized@yahoo\.com|authorized@gmail\.com"
+WHITELISTED_EMAILS="^(authorized@yahoo\.com|authorized@gmail\.com)$"
 ```
 
 This will apply to all auth methods including magic link and GitHub OAuth.
@@ -314,7 +343,7 @@ There are several reasons to lock the version of your Docker images:
 
 By default, the images will point at the latest versioned release via the `latest` tag. You can override this by specifying a different tag in your `.env` file. For example:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 TRIGGER_IMAGE_TAG=v4.0.0
 ```
 
@@ -326,7 +355,7 @@ TRIGGER_IMAGE_TAG=v4.0.0
 
   You should check the logs of the webapp container to see the magic link:
 
-  ```bash  theme={null}
+  ```bash  theme={"theme":"css-variables"}
   # Run this from the /hosting/docker/webapp directory
   docker compose logs -f webapp
   ```
@@ -339,7 +368,7 @@ This section highlights some of the CLI commands and options that are useful whe
 
 To avoid being redirected to [Trigger.dev Cloud](https://cloud.trigger.dev) when using the CLI, you need to specify the URL of your self-hosted instance with the `--api-url` or `-a` flag. For example:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 npx trigger.dev@latest login -a http://trigger.example.com
 ```
 
@@ -349,7 +378,7 @@ Once you've logged in, you shouldn't have to specify the URL again with other co
 
 You can specify a profile when logging in. This allows you to easily use the CLI with multiple instances of Trigger.dev. For example:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 npx trigger.dev@latest login -a http://trigger.example.com \
     --profile self-hosted
 ```
@@ -358,25 +387,25 @@ Logging in with a new profile will also make it the new default profile.
 
 To use a specific profile, you can use the `--profile` flag with other commands:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 npx trigger.dev@latest dev --profile self-hosted
 ```
 
 To list all your profiles, use the `list-profiles` command:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 npx trigger.dev@latest list-profiles
 ```
 
 To remove a profile, use the `logout` command:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 npx trigger.dev@latest logout --profile self-hosted
 ```
 
 To switch to a different profile, use the `switch` command:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 # To run interactively
 npx trigger.dev@latest switch
 
@@ -388,7 +417,7 @@ npx trigger.dev@latest switch self-hosted
 
 It can be useful to check you are logged into the correct instance. Running this will also show the API URL:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 npx trigger.dev@latest whoami
 ```
 
@@ -403,7 +432,7 @@ For more detailed instructions, see the [GitHub Actions guide](/github-actions).
 
 By default, the Trigger.dev webapp sends telemetry data to our servers. This data is used to improve the product and is not shared with third parties. If you would like to opt-out of this, you can set the `TRIGGER_TELEMETRY_DISABLED` environment variable on the webapp container. The value doesn't matter, it just can't be empty. For example:
 
-```yaml  theme={null}
+```yaml  theme={"theme":"css-variables"}
 services:
   webapp:
     ...

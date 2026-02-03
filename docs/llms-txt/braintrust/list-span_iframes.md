@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/api-reference/spaniframes/list-span_iframes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List span_iframes
 
 > List out all span_iframes. The span_iframes are sorted by creation date, with the most recently-created span_iframes coming first
@@ -278,7 +282,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

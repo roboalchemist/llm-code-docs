@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/additional-resources/bounties/hunter-resources.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Resources for Bounty Hunters
 
 > Find templates, portfolio tips, and tutorials to help you succeed as a Replit bounty hunter. Learn how to showcase your work and build your skills.

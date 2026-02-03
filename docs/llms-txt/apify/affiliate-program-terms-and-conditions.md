@@ -8,13 +8,13 @@ Latest version effective from: July 5, 2025
 
 ***
 
-**Apify Technologies s.r.o.**, with its registered seat at Vodičkova 704/36, 110 00 Prague 1, Czech Republic, Company reg. no. 04788290, recorded in the Commercial Register kept by the Municipal Court of Prague, File No.: C 253224 ("**we**" or "**Apify**") thanks you ("**you**" or the "**Affiliate Partner**") for your interest in joining the Apify's Affiliate Program (the "**Affiliate Program**"). These terms and conditions (the "**Affiliate Program Terms**") shall govern your rights and obligations in relation to your participation in the Affiliate Program in addition to https://docs.apify.com/legal/general-terms-and-conditions.md (the "**General Terms**").
+**Apify Technologies s.r.o.**, with its registered seat at Vodičkova 704/36, 110 00 Prague 1, Czech Republic, Company reg. no. 04788290, recorded in the Commercial Register kept by the Municipal Court of Prague, File No.: C 253224 ("**we**" or "**Apify**") thanks you ("**you**" or the "**Affiliate Partner**") for your interest in joining the Apify's Affiliate Program (the "**Affiliate Program**"). These terms and conditions (the "**Affiliate Program Terms**") shall govern your rights and obligations in relation to your participation in the Affiliate Program in addition to [Apify General Terms and Conditions](https://docs.apify.com/legal/general-terms-and-conditions.md) (the "**General Terms**").
 
 Terms starting with a capital letter used in these Affiliate Program Terms have the meaning defined either here or in the General Terms. Provisions of the General Terms regarding liability, indemnity, governing law and choice of jurisdiction are incorporated herein by reference.
 
 ## 1. Joining the Affiliate Program
 
-1.1. You may join the Affiliate Program by creating an account on Apify's https://apify.firstpromoter.com/ ("**FirstPromoter**"). By ticking the box "*I agree to the Apify Affiliate Program terms*", you claim that you are over 18 years old and agree to adhere to these Affiliate Program Terms, in addition to the General Terms. If you act on behalf of a company when accepting these Affiliate Program Terms, you also hereby declare to be authorized to perform such legal actions on behalf of the company (herein the term "**you**" shall mean the relevant company).
+1.1. You may join the Affiliate Program by creating an account on Apify's [FirstPromoter portal](https://apify.firstpromoter.com/) ("**FirstPromoter**"). By ticking the box "*I agree to the Apify Affiliate Program terms*", you claim that you are over 18 years old and agree to adhere to these Affiliate Program Terms, in addition to the General Terms. If you act on behalf of a company when accepting these Affiliate Program Terms, you also hereby declare to be authorized to perform such legal actions on behalf of the company (herein the term "**you**" shall mean the relevant company).
 
 ## 2. Apify's obligations
 

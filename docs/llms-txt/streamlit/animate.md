@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/concepts/design/animate
+
 # Animate and update elements
 
 Sometimes you display a chart or dataframe and want to modify it live as the app runs (for example, in a loop). Some elements have built-in methods to allow you to update them in-place without rerunning the app.

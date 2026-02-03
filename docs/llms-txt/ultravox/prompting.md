@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/gettingstarted/prompting.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Prompting Guide
 
 > A guide to prompting for great voice AI experiences
@@ -129,8 +133,3 @@ Example: User asks for help changing their password
 
 * Learn how [Agents](/agents/overview) work and how to build them
 * Check out the guide on [Guiding Agents](/agents/guiding-agents) to learn techniques for steering agents toward good experiences
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

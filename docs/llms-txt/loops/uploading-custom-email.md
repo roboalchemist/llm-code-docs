@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/creating-emails/uploading-custom-email.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Uploading a custom email
 
 > Use Loops with Emailify, Email Love or MJML.

@@ -2,10 +2,6 @@
 
 # Source: https://docs.convex.dev/client/android/data-types.md
 
-# Source: https://docs.convex.dev/client/swift/data-types.md
-
-# Source: https://docs.convex.dev/client/android/data-types.md
-
 # Kotlin and Convex type conversion
 
 ## Custom data types[​](#custom-data-types "Direct link to Custom data types")

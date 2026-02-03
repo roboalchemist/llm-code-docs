@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/concepts/custom-components/publish
+
 # Publish a Component
 
 Publishing your Streamlit Component to [PyPI](https://pypi.org/) makes it easily accessible to Python users around the world. This step is completely optional, so if you won’t be releasing your component publicly, you can skip this section!

@@ -1,162 +1,172 @@
-# Source: https://braintrust.dev/docs/core/human-review.md
+# Source: https://braintrust.dev/docs/annotate/human-review.md
 
-# Human review
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-Human review is a critical part of the evaluation process.
+# Add human feedback
 
-Although Braintrust helps you automatically evaluate AI software, human
-review is a critical part of the process. Braintrust seamlessly integrates human
-feedback from end users, subject matter experts, and product teams in one place. You can
-use human review to evaluate/compare experiments, assess the efficacy of your automated scoring
-methods, and curate log events to use in your evals. As you add human review scores, your logs will update in real time.
+> Review traces with structured scores
 
-<img src="https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/label.png?fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=aab2f2c158d909ab8be2eaf438964971" alt="Human review label" data-og-width="2166" width="2166" data-og-height="1260" height="1260" data-path="images/guides/human-review/label.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/label.png?w=280&fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=3a5f1e98ab2f25decfad184abb353acc 280w, https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/label.png?w=560&fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=ad3d2f6a004004979cec1d647aa49a08 560w, https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/label.png?w=840&fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=1c8992d9fcd6bcd5b21d412dd924bfbd 840w, https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/label.png?w=1100&fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=93a42413af4300f292a66abb4a4f7b17 1100w, https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/label.png?w=1650&fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=887af3caccd6daa69dd08d958baf3610 1650w, https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/label.png?w=2500&fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=a5a5034b61b48c7059f8cae0ba28a1f2 2500w" />
+Review traces and provide structured scores to begin the annotation process. You can efficiently evaluate large batches with keyboard navigation, or use the kanban layout to visualize review progress across backlog, pending, and complete states.
 
-## Configure human review
+## Configure review scores
 
-To set up human review, define the scores you want to collect in your
-project's **Configuration** tab.
+Review scores let you collect structured feedback on spans and label dataset rows.
 
-<img src="https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/config-page.png?fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=ab39a4ecc41c8984d64238993697b991" alt="Human Review Configuration" data-og-width="2164" width="2164" data-og-height="1212" height="1212" data-path="images/guides/human-review/config-page.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/config-page.png?w=280&fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=a66060ad380be1ef62da5d00a9f92025 280w, https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/config-page.png?w=560&fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=912569b2bc0b753010ddd412da55169e 560w, https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/config-page.png?w=840&fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=9af941071db4accc8ce8d28ef8f6f83f 840w, https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/config-page.png?w=1100&fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=5265b17559449d65ce7401d4c64eb88e 1100w, https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/config-page.png?w=1650&fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=b2b7c7d246580f546ae4f13d9bf6603f 1650w, https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/config-page.png?w=2500&fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=976d95b2fc9cdb30d836fb41cf57f1be 2500w" />
+Configure scores in <Icon icon="settings-2" /> **Settings** > **Project** > <Icon icon="list-checks" /> **Human review**. See [Configure human review](/admin/projects#configure-human-review) for details on score types and options.
 
-Select **Add human review score** to configure a new score. A score can be one of
+## Score traces and datasets
 
-* Continuous number value between `0%` and `100%`, with a slider input control.
-* Categorical value where you can define the possible options and their scores. Categorical value options
-  are also assigned a unique percentage value between `0%` and `100%` (stored as 0 to 1).
-* Free-form text where you can write a string value to the `metadata` field at a specified path.
+Go to the <Icon icon="list-checks" /> **Review** page and select the type of data to review:
 
-<img src="https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/create-modal.png?fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=a34dc62e907d61215df45cc50d45c50e" alt="Create modal" data-og-width="2140" width="2140" data-og-height="1296" height="1296" data-path="images/guides/human-review/create-modal.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/create-modal.png?w=280&fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=21ed0f4e379cf3ae589ebdd8392b264f 280w, https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/create-modal.png?w=560&fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=a02bb5af4b8bd28a16ac40fa866681a4 560w, https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/create-modal.png?w=840&fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=38703a1be02f0574740c243fb71f5e49 840w, https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/create-modal.png?w=1100&fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=56001ee96e558c47a3a8ffde80ab782c 1100w, https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/create-modal.png?w=1650&fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=695aa37e201701169c22d9ea06e54623 1650w, https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/create-modal.png?w=2500&fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=fb5638740eee6decade7a1daac7100f9 2500w" />
+* **Log spans**: production traces and debugging sessions
+* **Experiment spans**: Evaluation results and test runs
+* **Dataset rows**: Test cases and examples
 
-Created human review scores will appear in the **Human review** section in every experiment and log trace in the project. Categorical scores configured to "write to expected" and free-form scores will also appear on dataset rows.
+Then select a row and set scores. You can also [add comments and tags](/annotate/labels) while reviewing.
 
-### Write to expected fields
-
-You may choose to write categorical scores to the `expected` field of a span instead of a score.
-To enable this, check the **Write to expected field instead of score** option. There is also
-an option to **Allow multiple choice** when writing to the expected field.
+When finished reviewing, click **Complete review and continue** to move to the next item in the queue, or use the **Next row** and **Previous row** buttons.
 
 <Note>
-  A numeric score will not be assigned to the categorical options when writing to the expected
-  field. If there is an existing object in the expected field, the categorical value will be
-  appended to the object.
+  Not all score types appear on dataset rows. Only categorical/slider scores configured to "write to expected" and free-form scores are available for dataset reviews, since datasets store test data (input/expected pairs) rather than subjective quality assessments.
 </Note>
 
-<img src="https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/expected-fields.png?fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=406359641fc9f3de4f70086d56f236dd" alt="Write to expected" data-og-width="1852" width="1852" data-og-height="966" height="966" data-path="images/guides/human-review/expected-fields.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/expected-fields.png?w=280&fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=74c2817c643f44e6bf10b5c872ad988b 280w, https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/expected-fields.png?w=560&fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=2504bd28d1b54f4430d7458fd407be25 560w, https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/expected-fields.png?w=840&fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=5691362eca4b4c03f9b2dbf32873bb51 840w, https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/expected-fields.png?w=1100&fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=2d93b28ed1d8d7f62d65c15b4786a762 1100w, https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/expected-fields.png?w=1650&fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=e2ee18d7f67b4b4f89c08d765a7734bb 1650w, https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/expected-fields.png?w=2500&fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=a44f9ea41167ce86f27a572aac1c3f7d 2500w" />
+## Filter review data
 
-In addition to categorical scores, you can always directly edit the structured output for the `expected` field of any span through the UI.
+Each project provides default table views with common filters, including:
 
-## Review logs and experiments
+* **Default view**: Shows all records
+* **Awaiting review**: Shows only records flagged for review but not yet started
+* **Assigned to me**: Shows only records assigned to you for review
+* **Completed**: Shows only records that have finished review
 
-To manually review results from your logs or experiment, select a row to open trace view. There, you can edit the human review scores you previously configured.
+Use the <Icon icon="layers-2" /> **View** menu to switch between views.
 
-<video className="border rounded-md" loop autoPlay muted playsInline poster="/images/guides/human-review/in-experiment-poster.png">
-  <source src="https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/in-experiment.mp4?fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=ece6a5e7cc413c6280a92198176873ce" type="video/mp4" data-path="images/guides/human-review/in-experiment.mp4" />
-</video>
+You can also use the [<Icon icon="list-filter" /> **Filter**](/observe/filter) menu to focus on specific subsets for review. Use the **Basic** tab for point-and-click filtering, or switch to **SQL** to write precise queries. For example, filter by scores (e.g., `scores.Preference > 0.75`) to find highly-rated examples.
 
-As you set scores, they will be automatically saved and reflected in the summary metrics. The process is the same whether you're reviewing logs or experiments.
+<Tip>
+  Default table views cannot be modified, but you can create [custom table views](#create-custom-table-views) based on custom filters and display settings.
+</Tip>
 
-### Leave comments
+<Tip>
+  Use [tags](/observe/view-logs#organize-with-tags) to mark items for "Triage", then review them all at once.
+</Tip>
 
-In addition to setting scores, you can also add comments to spans and update their `expected` values. These updates
-are tracked alongside score updates to form an audit trail of edits to a span.
+## Change the trace layout
 
-If you leave a comment that you want to share with a teammate, you can copy a link that will deeplink to the comment.
+While reviewing log and experiment traces, you see detailed information about the flagged span by default.
+
+### View as a timeline
+
+While viewing a trace, select <Icon icon="square-chart-gantt" /> **Timeline** to visualize the trace as a gantt chart. This view shows spans as horizontal bars where the width represents duration. Bars are color-coded by span type, making it easy to identify performance bottlenecks and understand the execution flow.
+
+### View as a thread
+
+While viewing a trace, select <Icon icon="messages-square" /> **Thread** to view the trace as a conversation thread. This view displays messages, tool calls, and scores in chronological order, ideal for debugging LLM conversations and multi-turn interactions.
+
+Use <Icon icon="search" /> **Find** or press `Cmd/Ctrl+F` to search within the thread view and quickly locate specific content such as message text and score rationale. Matches are highlighted in-place using your browser's native highlighting.
 
 <Note>
-  Comments are searchable. Use the [Filter menu](/core/logs/view#filter-menu) on the **Logs** or **Experiments** page to find traces by comment.
+  Thread view searches only within the currently open trace, not across all traces in your project.
 </Note>
 
-<video className="border rounded-md" loop autoPlay muted playsInline poster="/images/guides/human-review/comment-poster.png">
-  <source src="https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/comment.mp4?fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=b8aeec14bc3456cc40591c3e3a1e085c" type="video/mp4" data-path="images/guides/human-review/comment.mp4" />
-</video>
+### Create custom trace views
 
-## Focused review mode
+While viewing a trace, select <Icon icon="layers-2" /> **Views** to create custom visualizations using natural language. Describe how you want to view your trace data and [Loop](/observe/loop) will generate the code.
 
-If you or a subject matter expert is reviewing a large number of logs or experiments, you can use **Review** mode to enter
-a UI that's optimized specifically for review. To enter review mode, hit the "r" key or the expand (<Icon icon="maximize" className="size-3 inline" />)
-icon next to the **Human review** header in a span.
+For example:
 
-<video className="border rounded-md" loop autoPlay muted playsInline poster="/images/guides/human-review/review-mode-poster.png">
-  <source src="https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/review-mode.mp4?fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=e3c0c752242fbbe2f84c698bca7f4c5d" type="video/mp4" data-path="images/guides/human-review/review-mode.mp4" />
-</video>
+* "Create a view that renders a list of all tools available in this trace and their outputs"
+* "Render the video url from the trace's metadata field and show simple thumbs up/down buttons"
 
-In review mode, you can set scores, leave comments, and edit expected values. Review mode is optimized for keyboard
-navigation, so you can quickly move between scores and rows with keyboard shortcuts. You can also share a link to the
-review mode view with other team members, and they'll drop directly into review mode.
+By default, a custom trace view is only visible and editable by the user who created it. To share your view with all users in the project, select **Save** > **Save as new view version** > **Update**.
 
-### Review data that matches a specific criteria
+<Note>
+  Self-hosted deployments: If you restrict outbound access, allowlist `https://www.braintrustsandbox.dev` to enable custom views. This domain hosts the sandboxed iframe that securely renders custom view code.
+</Note>
 
-To easily review a subset of your logs or experiments that match a given criteria, you can filter using English or [BTQL](/reference/btql#btql-query-syntax), then enter review mode.
+### Change span data format
 
-In addition to filters, you can use [tags](/core/logs#tags-and-queues) to mark items for `Triage`, and then review them all at once.
+When viewing a trace, each span field (input, output, metadata, etc.) displays data in a specific format. Change how a field displays by selecting the view mode dropdown in the field's header.
 
-You can also save any filters, sorts, or column configurations as views. Views give you a standardized place to see any current or future logs that match a given criteria, for example, logs with a Factuality score less than 50%. Once you create your view, you can enter review mode right from there.
+Available views:
 
-<video className="border rounded-md" loop autoPlay muted playsInline poster="/images/guides/human-review/filter-view-review-poster.png">
-  <source src="https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/filter-view-review.mp4?fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=2de455f84682dc366558af1481bd01af" type="video/mp4" data-path="images/guides/human-review/filter-view-review.mp4" />
-</video>
+* **Pretty** - Parses objects deeply and renders values as Markdown (optimized for readability)
+* **JSON** - JSON highlighting and folding
+* **YAML** - YAML highlighting and folding
+* **Tree** - Hierarchical tree view for nested data structures
 
-Reviewing is a common task, and therefore you can enter review mode from any experiment or log view. You can also re-enter review mode from any view to audit
-past reviews or update scores.
+Additional format-specific views appear automatically for certain data types:
 
-### Dynamic review with views
+* **LLM** - Formatted AI messages and tool calls with Markdown
+* **LLM Raw** - Unformatted AI messages and tool calls
+* **HTML** - Rendered HTML content
 
-* Designed for optimal productivity: The combination of views and human review mode simplifies the review process with intuitive filters, reusable configurations, and keyboard navigation, enabling fast and efficient evaluation and feedback.
+Your view mode selection is remembered per field type. To set a default view mode for all fields, go to <Icon icon="settings-2" /> **Settings** > **Personal** > <Icon icon="square-user-round" /> **Profile** and select your preferred data view. See [Personal settings](/admin/personal-settings#default-data-display-format) for more details.
 
-* Dynamic and flexible views: Views dynamically update with new rows matching saved criteria, without requiring the need to set up and maintain complex automation rules.
+## Create and edit scores inline
 
-* Easy collaboration: Sharing review mode links allows for team collaboration without requiring intricate permissions or setup overhead.
+While reviewing, create new score types or edit existing configurations without navigating to settings:
 
-## Select spans for review
+* To create a new score, click **+ Human review score**.
+* To edit an existing score, select the <Icon icon="pencil" /> edit icon next to the score name.
 
-The **Review** list is a centralized annotation queue to see all spans that have been marked for review across your project. This complements focused reviews by
-giving you a curated queue of items that need attention, regardless of where they appear in your project.
+Changes apply immediately across your project.
 
-To mark a span for review, select **Flag for review** in the span header. You can also bulk select rows that need review and select **Flag for review**.
-Additionally, you can assign spans to specific users so they can view all spans pending their review.
+<Note>
+  Editing a score configuration affects how that score works going forward. Existing score values on traces remain unchanged.
+</Note>
 
-<video className="border rounded-md" loop autoPlay muted playsInline poster="/images/guides/human-review/mark-for-review-poster.png">
-  <source src="https://mintcdn.com/braintrust/ORZ9J5LROFjITLRP/images/guides/human-review/mark-for-review.mp4?fit=max&auto=format&n=ORZ9J5LROFjITLRP&q=85&s=3469c63c86fa05e4f3ad3db63aa2748d" type="video/mp4" data-path="images/guides/human-review/mark-for-review.mp4" />
-</video>
+## Capture production feedback
 
-Navigate to **Review** from the sidebar to see all marked spans across your project.
+In addition to internal reviews, capture feedback directly from production users. Production feedback helps you understand real-world performance and build datasets from actual user interactions.
 
-### Review in context
+See [Capture user feedback](/instrument/user-feedback) for implementation details and [Build datasets from user feedback](/annotate/datasets#from-user-feedback) to learn how to turn feedback into evaluation datasets. You can also use [dashboards](/observe/dashboards) to monitor user satisfaction trends and correlate automated scores with user feedback.
 
-When you open a span in the list, you'll see it in the context of its full trace. This allows you to understand the span's role within the larger request and
-review parent and child spans for additional context.
+## Customize the review table
 
-Once you've finished reviewing a span, you can mark it as **Complete** or navigate to the next item in the queue.
+### Show and hide columns
 
-## Filter using feedback
+Select <Icon icon="settings-2" /> **Display** > **Columns** and then:
 
-In the UI, you can filter on log events with specific scores by adding a filter using the filter button, like "Preference is greater than 75%",
-and then add the matching rows to a dataset for further investigation.
+* Show or hide columns to focus on relevant data
+* Reorder columns by dragging them
+* Pin important columns to the left
 
-You can also programmatically filter log events using the API using a query and the project ID:
+All column settings are automatically saved when you save a view.
 
-<CodeGroup dropdown>
-  ```typescript  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
-  await braintrust.projects.logs.fetch(projectId, { query });
-  ```
+### Use kanban layout
 
-  ```python  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
-  import braintrust
+The kanban layout organizes flagged spans into three columns based on their review status:
 
-  braintrust.projects.logs.fetch("<project_id>", "scores.Preference > 0.75")
-  ```
-</CodeGroup>
+* **Backlog**: Spans flagged for review but not yet started
+* **Pending**: Spans currently being reviewed
+* **Complete**: Spans that have finished review
 
-This is a powerful way to utilize human feedback
-to improve your evals.
+To use the kanban layout:
 
-## Capture end-user feedback
+1. On the <Icon icon="list-checks" /> **Review** page, select <Icon icon="settings-2" /> **Display** > **Layout** > **Kanban**.
+2. Drag cards between columns to update review status. Changes save automatically.
+3. Click any card to open the full trace for detailed review.
 
-The same set of updates — scores, comments, and expected values — can be captured from end-users as well. Check out
-[Write logs](/core/logs/write#user-feedback) for more details.
+Each card displays the span name, creation date, assignees, and a preview of the input and output.
 
+### Create custom table views
 
----
+Custom table views save your table configurations including filters, column order, column visibility, and display settings. This lets you quickly switch between different ways of reviewing your data.
 
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt
+To create a custom table view:
+
+1. Apply the filters and display settings you want.
+2. Select **Save as** in the toolbar.
+3. Enter a view name.
+
+Custom table views are accessible and configurable by any member of the organization. Table views update dynamically with new rows matching saved criteria.
+
+## Next steps
+
+* [Add labels and corrections](/annotate/labels) to categorize and tag traces
+* [Build datasets](/annotate/datasets) from reviewed logs
+* [Capture user feedback](/instrument/user-feedback) from production
+* [Run evaluations](/evaluate/run-evaluations) with human-reviewed datasets

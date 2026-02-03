@@ -2,10 +2,6 @@
 
 # Source: https://vitest.dev/config/coverage.md
 
-# Source: https://vitest.dev/guide/coverage.md
-
-# Source: https://vitest.dev/config/coverage.md
-
 ---
 url: /config/coverage.md
 ---

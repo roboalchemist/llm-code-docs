@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/integrations/oauth.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # OAuth Support
 
 > Set up OAuth App Connections in your supported data warehouses to securely execute data diffs on behalf of your users.

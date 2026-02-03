@@ -10,8 +10,7 @@ Learn how to prompt Warp’s AI to review pull requests like an experienced engi
 
 {% stepper %}
 {% step %}
-
-### Intro
+**Intro**
 
 This tutorial teaches you how to use Warp to make **pull-request reviews faster and smarter**.\
 Instead of relying on AI summaries, you’ll prompt Warp to generate an **index and priority list**, guiding your review order while flagging risky sections.
@@ -20,16 +19,14 @@ Although this example focuses on large PRs, the same workflow applies to **code 
 {% endstep %}
 
 {% step %}
-
-### The Problem
+**The Problem**
 
 Large PRs are difficult to parse.\
 AI summaries gloss over nuance and may miss subtle issues — you need structured, prioritized insight instead.
 {% endstep %}
 
 {% step %}
-
-### The Prompt
+**The Prompt**
 
 Use this in Warp’s AI input:
 

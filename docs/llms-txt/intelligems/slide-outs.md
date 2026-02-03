@@ -1,10 +1,10 @@
-# Source: https://docs.intelligems.io/offer-experiences/slide-outs.md
+# Source: https://docs.intelligems.io/offer-personalizations/slide-outs.md
 
 # Offer Messages
 
 ### Overview
 
-Offer Messages are promotional call-outs that appear as overlays to highlight special offers and drive engagement. They capture customer attention at key moments in the shopping journey. They can be added to an Offer Experience or Offer Test.
+Offer Messages are promotional call-outs that appear as overlays to highlight special offers and drive engagement. They capture customer attention at key moments in the shopping journey. They can be added to an Offer Personalization or Offer Test.
 
 <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-86a6792d3b307b7f48b3f0fa9f61505b64cbb3a4%2FOffer%20message%20-%20pop%20up%20message%20(1).png?alt=media" alt=""><figcaption></figcaption></figure>
 

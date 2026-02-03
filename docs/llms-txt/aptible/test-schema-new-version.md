@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/database-guides/test-schema-new-version.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Test a PostgreSQL Database's schema on a new version
 
 > The goal of this guide is to test the schema of an existing Database against another Database version in order to see if it's compatible with the desired version. The primary reason to do this is to ensure a Database's schema is compatible with a higher version before upgrading.

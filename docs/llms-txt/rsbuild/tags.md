@@ -1,12 +1,14 @@
+# Source: https://rsbuild.dev/config/html/tags.md
+
 # html.tags
 
-* **Type:**
+- **Type:**
+  
+  ```ts
+  type TagsConfig = HtmlTag | HtmlTagHandler | Array<HtmlTag | HtmlTagHandler>;
+  ```
 
-```ts
-type TagsConfig = HtmlTag | HtmlTagHandler | Array<HtmlTag | HtmlTagHandler>;
-```
-
-* **Default:** `undefined`
+- **Default:** `undefined`
 
 Modifies the tags that are injected into the HTML page.
 
@@ -63,8 +65,8 @@ type HtmlTag = {
 
 ### tag
 
-* **Type:** `string`
-* **Default:** `undefined`
+- **Type:** `string`
+- **Default:** `undefined`
 
 The HTML tag name to be generated. Should be a valid HTML element name.
 
@@ -92,14 +94,14 @@ export default {
 
 ### attrs
 
-* **Type:** `Record<string, string | boolean | null | undefined>`
-* **Default:** `undefined`
+- **Type:** `Record<string, string | boolean | null | undefined>`
+- **Default:** `undefined`
 
 HTML attributes to be applied to the tag.
 
-* `string` values will be rendered as `attribute="value"`
-* `true` renders as boolean attribute (e.g., `<input disabled>`)
-* `false` or `null` or `undefined` values will omit the attribute
+- `string` values will be rendered as `attribute="value"`
+- `true` renders as boolean attribute (e.g., `<input disabled>`)
+- `false` or `null` or `undefined` values will omit the attribute
 
 For example, inject a `script` tag with `src` and `type` attributes:
 
@@ -124,8 +126,8 @@ export default {
 
 ### children
 
-* **Type:** `string`
-* **Default:** `undefined`
+- **Type:** `string`
+- **Default:** `undefined`
 
 The innerHTML content of the tag. The content is inserted as-is without HTML escaping, so ensure it is safe to prevent XSS vulnerabilities.
 
@@ -146,15 +148,15 @@ export default {
 
 ### hash
 
-* **Type:** `boolean | string | ((url: string, hash: string) => string)`
-* **Default:** `false`
+- **Type:** `boolean | string | ((url: string, hash: string) => string)`
+- **Default:** `false`
 
 Controls whether to add a hash query parameter to asset URLs for cache invalidation, only affects the `src` attribute of the `script` tag and the `href` attribute of the `link` tag.
 
-* `false`: No hash query
-* `true`: Generate hash based on HTML content
-* `string`: Uses a custom hash string
-* `function`: Custom hash generation via a function
+- `false`: No hash query
+- `true`: Generate hash based on HTML content
+- `string`: Uses a custom hash string
+- `function`: Custom hash generation via a function
 
 ```ts
 // rsbuild.config.ts
@@ -174,15 +176,15 @@ export default {
 
 ### publicPath
 
-* **Type:** `boolean | string | ((url: string, publicPath: string) => string)`
-* **Default:** `true`
+- **Type:** `boolean | string | ((url: string, publicPath: string) => string)`
+- **Default:** `true`
 
 Controls whether to prepend the asset prefix to resource URLs. Only affects the `src` attribute of the `script` tag and the `href` attribute of the `link` tag.
 
-* `true`: Prepends asset prefix to the URL
-* `false`: Uses the URL as-is
-* `string`: Uses a custom prefix
-* `function`: Custom path transformation via a function
+- `true`: Prepends asset prefix to the URL
+- `false`: Uses the URL as-is
+- `string`: Uses a custom prefix
+- `function`: Custom path transformation via a function
 
 ```ts
 // rsbuild.config.ts
@@ -205,13 +207,13 @@ export default {
 
 ### append
 
-* **Type:** `boolean`
-* **Default:** `true`
+- **Type:** `boolean`
+- **Default:** `true`
 
 Controls whether to insert the tag after existing tags.
 
-* `true`: Insert after existing tags
-* `false`: Insert before existing tags
+- `true`: Insert after existing tags
+- `false`: Insert before existing tags
 
 ```ts
 // rsbuild.config.ts
@@ -232,13 +234,13 @@ See [Injection position](#injection-position) for more details.
 
 ### head
 
-* **Type:** `boolean`
-* **Default:** auto-detect
+- **Type:** `boolean`
+- **Default:** auto-detect
 
 Specifies whether to inject the tag into the HTML `<head>` element.
 
-* `true`: Inject into `<head>`
-* `false`: Inject into `<body>`
+- `true`: Inject into `<head>`
+- `false`: Inject into `<body>`
 
 ```ts
 // rsbuild.config.ts
@@ -259,21 +261,21 @@ For elements allowed in the `<head>`, the default is `true`; for other elements,
 
 Allowed element types in the `<head>` include:
 
-* `title`
-* `base`
-* `link`
-* `style`
-* `meta`
-* `script`
-* `noscript`
-* `template`
+- `title`
+- `base`
+- `link`
+- `style`
+- `meta`
+- `script`
+- `noscript`
+- `template`
 
 See [Injection position](#injection-position) for more details.
 
 ### metadata
 
-* **Type:** `Record<string, any>`
-* **Default:** `undefined`
+- **Type:** `Record<string, any>`
+- **Default:** `undefined`
 
 The metadata object for tags, used to store additional information about tags. `metadata` does not affect the generated HTML content.
 
@@ -321,9 +323,9 @@ export default {
 
 The final injection position of the tag is determined by the [head](#head) and [append](#append) options.
 
-* `append`: Defines the injection position of the current tag relative to existing tags, defaults to `true`
-* `head`: Specifies whether to add the current tag to the HTML `<head>` element, defaults to `true` for element types allowed in the `<head>`, otherwise `false`.
-* If two tag objects have the same `head` and `append` options, they will be inserted into the same area and hold their relative positions to each other.
+- `append`: Defines the injection position of the current tag relative to existing tags, defaults to `true`
+- `head`: Specifies whether to add the current tag to the HTML `<head>` element, defaults to `true` for element types allowed in the `<head>`, otherwise `false`.
+- If two tag objects have the same `head` and `append` options, they will be inserted into the same area and hold their relative positions to each other.
 
 ```html
 <html>
@@ -439,8 +441,8 @@ The tag object here will be directly added to the HTML file after processing, bu
 
 Reasonable use cases include:
 
-* Injecting static assets with **determined paths** on CDN.
-* Injecting inline scripts that need to be loaded on the first screen.
+- Injecting static assets with **determined paths** on CDN.
+- Injecting inline scripts that need to be loaded on the first screen.
 
 For example, the usage of the following example:
 

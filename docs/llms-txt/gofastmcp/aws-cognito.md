@@ -1,16 +1,17 @@
 # Source: https://gofastmcp.com/integrations/aws-cognito.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AWS Cognito OAuth 🤝 FastMCP
 
 > Secure your FastMCP server with AWS Cognito user pools
 
 export const VersionBadge = ({version}) => {
-  return <code className="version-badge-container">
-            <p className="version-badge">
-                <span className="version-badge-label">New in version:</span> 
-                <code className="version-badge-version">{version}</code>
-            </p>
-        </code>;
+  return <Badge stroke size="lg" icon="gift" iconType="regular" className="version-badge">
+            New in version <code>{version}</code>
+        </Badge>;
 };
 
 <VersionBadge version="2.12.4" />
@@ -246,93 +247,6 @@ mcp = FastMCP(name="Production AWS Cognito App", auth=auth_provider)
 
   For complete details on these parameters, see the [OAuth Proxy documentation](/servers/auth/oauth-proxy#configuration-parameters).
 </Note>
-
-## Environment Variables
-
-For production deployments, use environment variables instead of hardcoding credentials.
-
-### Provider Selection
-
-Setting this environment variable allows the AWS Cognito provider to be used automatically without explicitly instantiating it in code.
-
-<Card>
-  <ParamField path="FASTMCP_SERVER_AUTH" default="Not set">
-    Set to `fastmcp.server.auth.providers.aws.AWSCognitoProvider` to use AWS Cognito authentication.
-  </ParamField>
-</Card>
-
-### AWS Cognito-Specific Configuration
-
-These environment variables provide default values for the AWS Cognito provider, whether it's instantiated manually or configured via `FASTMCP_SERVER_AUTH`.
-
-<Card>
-  <ParamField path="FASTMCP_SERVER_AUTH_AWS_COGNITO_USER_POOL_ID" required>
-    Your AWS Cognito user pool ID (e.g., `eu-central-1_XXXXXXXXX`)
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_AWS_COGNITO_AWS_REGION" default="eu-central-1">
-    AWS region where your AWS Cognito user pool is located
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_AWS_COGNITO_CLIENT_ID" required>
-    Your AWS Cognito app client ID
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_AWS_COGNITO_CLIENT_SECRET" required>
-    Your AWS Cognito app client secret
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_AWS_COGNITO_BASE_URL" default="http://localhost:8000">
-    Public URL where OAuth endpoints will be accessible (includes any mount path)
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_AWS_COGNITO_ISSUER_URL" default="Uses BASE_URL">
-    Issuer URL for OAuth metadata (defaults to `BASE_URL`). Set to root-level URL when mounting under a path prefix to avoid 404 logs. See [HTTP Deployment guide](/deployment/http#mounting-authenticated-servers) for details.
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_AWS_COGNITO_REDIRECT_PATH" default="/auth/callback">
-    One of the redirect paths configured in your AWS Cognito app client
-  </ParamField>
-
-  <ParamField path="FASTMCP_SERVER_AUTH_AWS_COGNITO_REQUIRED_SCOPES" default="[&#x22;openid&#x22;]">
-    Comma-, space-, or JSON-separated list of required OAuth scopes (e.g., `openid email` or `["openid","email","profile"]`)
-  </ParamField>
-</Card>
-
-Example `.env` file:
-
-```bash  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-# Use the AWS Cognito provider
-FASTMCP_SERVER_AUTH=fastmcp.server.auth.providers.aws.AWSCognitoProvider
-
-# AWS Cognito credentials
-FASTMCP_SERVER_AUTH_AWS_COGNITO_USER_POOL_ID=eu-central-1_XXXXXXXXX
-FASTMCP_SERVER_AUTH_AWS_COGNITO_AWS_REGION=eu-central-1
-FASTMCP_SERVER_AUTH_AWS_COGNITO_CLIENT_ID=your-app-client-id
-FASTMCP_SERVER_AUTH_AWS_COGNITO_CLIENT_SECRET=your-app-client-secret
-FASTMCP_SERVER_AUTH_AWS_COGNITO_BASE_URL=https://your-server.com
-FASTMCP_SERVER_AUTH_AWS_COGNITO_REQUIRED_SCOPES=openid,email,profile
-```
-
-With environment variables set, your server code simplifies to:
-
-```python server.py theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-from fastmcp import FastMCP
-from fastmcp.server.dependencies import get_access_token
-
-# Authentication is automatically configured from environment
-mcp = FastMCP(name="AWS Cognito Secured App")
-
-@mcp.tool
-async def get_access_token_claims() -> dict:
-    """Get the authenticated user's access token claims."""
-    token = get_access_token()
-    return {
-        "sub": token.claims.get("sub"),
-        "username": token.claims.get("username"),
-        "cognito:groups": token.claims.get("cognito:groups", []),
-    }
-```
 
 ## Features
 

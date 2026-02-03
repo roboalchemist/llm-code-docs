@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/knowledge-base/why-are-my-emails-landing-on-the-suppression-list.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Why are my emails landing on the Suppression List?
 
 > Learn why your emails land on the Suppression List and how to remove them.
@@ -19,14 +23,23 @@ Here are some possible reasons an email address is placed on the Suppression Lis
 * The recipient's email address **contains a typo**.
 * The recipient's email address **doesn't exist**.
 * The recipient's email server has **permanently blocked delivery**.
+* The recipient has marked the delivery as spam.
 
 ## View email bounce details
 
-You can view the reason an email bounced on the [Emails](https://resend.com/emails) page. Open the [Emails](https://resend.com/emails) page and search for the recipient's email address in question.
+You can view the reason an email bounced on the [Emails](https://resend.com/emails) page:
 
-A human-readable summary of the reason for the bounce displays. For more technical details and suggested next steps, click the **See details** button.
+1. Open the [Emails](https://resend.com/emails) page and search for the recipient's email address in question.
+2. Click on the email to view its details.
+3. Hover over the `Bounced` status indicator to see a summary of the bounce reason.
 
-<img alt="Email Bounced button" src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/email-suppression-list-1.png?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=9b189d98b12e5c0e85393c004698388e" data-og-width="2992" width="2992" data-og-height="1868" height="1868" data-path="images/email-suppression-list-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/email-suppression-list-1.png?w=280&fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=8510dc097062e6467927cf332a653dad 280w, https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/email-suppression-list-1.png?w=560&fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=1db6371680e74d4521522fc19c671e78 560w, https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/email-suppression-list-1.png?w=840&fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=21e8ea479a8162bb3f3364501cd79258 840w, https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/email-suppression-list-1.png?w=1100&fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=911a8a0869c8315d719ea140c76af922 1100w, https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/email-suppression-list-1.png?w=1650&fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=de791bfcba501497b975fd3f2964116a 1650w, https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/email-suppression-list-1.png?w=2500&fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=40b0830bf8f600ec249c7875243e3092 2500w" />
+<img alt="Email Bounce Notification" src="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/email-bounce-details-1.png?fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=f0f99293137b8de4a9862b05cfd87d74" data-og-width="3024" width="3024" data-og-height="1888" height="1888" data-path="images/email-bounce-details-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/email-bounce-details-1.png?w=280&fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=0fd440475bc204251169761afee247d4 280w, https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/email-bounce-details-1.png?w=560&fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=5d0c2fa42b7e8173818e5ed4f27dabc0 560w, https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/email-bounce-details-1.png?w=840&fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=a7777878ad51806c9c2368069a663cf7 840w, https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/email-bounce-details-1.png?w=1100&fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=ed292d9d5aef5c9ef159b7d026e89d77 1100w, https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/email-bounce-details-1.png?w=1650&fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=85dec0cbae94dae7a300487c6748af36 1650w, https://mintcdn.com/resend/OWNnQaVDyqcGyhhN/images/email-bounce-details-1.png?w=2500&fit=max&auto=format&n=OWNnQaVDyqcGyhhN&q=85&s=060e633e0c298de6faaddae8c77d927f 2500w" />
+
+For more technical details and suggested next steps, click the **See details** button. The drawer will open on the right side of your screen with the bounce type, subtype, and suggestions on how to proceed.
+
+## What happens if you try sending to a recipient on the suppression list?
+
+Whenever you send an email with Resend, we check if the recipient is on the suppression list. If they are, we'll [suppress](/dashboard/emails/email-suppressions.mdx) the delivery to prevent damaging your sender reputation and our infrastructure.
 
 ## Removing an email address from the Suppression List
 

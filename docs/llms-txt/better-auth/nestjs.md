@@ -4,11 +4,7 @@
 
 Integrate Better Auth with NestJS.
 
-***
 
-title: NestJS Integration
-description: Integrate Better Auth with NestJS.
------------------------------------------------
 
 This guide will show you how to integrate Better Auth with [NestJS](https://nestjs.com/).
 
@@ -22,7 +18,7 @@ Before you start, make sure you have a Better Auth instance configured. If you h
 
 Install the NestJS integration library:
 
-<CodeBlockTabs defaultValue="npm">
+<CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
   <CodeBlockTabsList>
     <CodeBlockTabsTrigger value="npm">
       npm

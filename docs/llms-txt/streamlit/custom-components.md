@@ -1,3 +1,7 @@
+# Source: https://docs.streamlit.io/develop/api-reference/custom-components
+
+# Source: https://docs.streamlit.io/develop/concepts/custom-components
+
 # Components
 
 Components are third-party Python modules that extend what's possible with Streamlit.

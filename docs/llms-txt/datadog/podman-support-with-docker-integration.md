@@ -6,10 +6,8 @@ description: >-
   Deploy and monitor Datadog Agent with Podman container runtime using rootless
   and rootful containers
 breadcrumbs: >-
-  Docs > Container Monitoring > Containers Guides > Using the Docker integration
-  with Podman container runtime
-source_url: >-
-  https://docs.datadoghq.com/guide/podman-support-with-docker-integration/index.html
+  Docs > Containers > Containers Guides > Using the Docker integration with
+  Podman container runtime
 ---
 
 # Using the Docker integration with Podman container runtime

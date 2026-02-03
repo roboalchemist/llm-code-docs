@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/concepts/app-testing/examples
+
 # App testing example
 
 ## Testing a login page

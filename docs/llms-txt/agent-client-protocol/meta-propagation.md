@@ -1,5 +1,9 @@
 # Source: https://agentclientprotocol.com/rfds/meta-propagation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://agentclientprotocol.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Meta Field Propagation Conventions
 
 * Author(s): [Adrian Cole](https://github.com/codefromthecrypt)
@@ -64,8 +68,3 @@ Here are several MCP SDKs that propagate W3C trace-context in `_meta`:
 
 * 2025-12-04: Implementation in extensibility docs
 * 2025-11-28: Initial draft
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://agentclientprotocol.com/llms.txt

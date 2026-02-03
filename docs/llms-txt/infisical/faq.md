@@ -2,17 +2,9 @@
 
 # Source: https://infisical.com/docs/cli/faq.md
 
-# Source: https://infisical.com/docs/self-hosting/faq.md
-
-# Source: https://infisical.com/docs/cli/faq.md
-
-# Source: https://infisical.com/docs/self-hosting/faq.md
-
-# Source: https://infisical.com/docs/cli/faq.md
-
-# Source: https://infisical.com/docs/self-hosting/faq.md
-
-# Source: https://infisical.com/docs/cli/faq.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # FAQ
 

@@ -1,6 +1,8 @@
 # Source: https://www.activepieces.com/docs/admin-guide/security/audit-logs/flow-run-finished.md
 
-# Source: https://www.activepieces.com/docs/operations/audit-logs/flow-run-finished.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Flow Run Finished
 

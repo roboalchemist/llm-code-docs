@@ -10,8 +10,6 @@ description: >-
 breadcrumbs: >-
   Docs > APM > Tracing Guides > Tutorial - Enabling Tracing for a Python
   Application in a Container and an Agent on a Host
-source_url: >-
-  https://docs.datadoghq.com/guide/tutorial-enable-python-container-agent-host/index.html
 ---
 
 # Tutorial - Enabling Tracing for a Python Application in a Container and an Agent on a Host

@@ -1,5 +1,9 @@
 # Source: https://dub.co/docs/api-reference/rate-limits.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dub.co/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Rate limits
 
 > Learn about Dub's API rate limits.

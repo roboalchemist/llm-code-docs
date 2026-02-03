@@ -6,7 +6,7 @@
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 Node.js is a popular asynchronous JavaScript runtime.
 Deploy scalable Node.js apps of all sizes on Upsun.
@@ -56,21 +56,31 @@ They'll be removed in the future – consider migrating to a [supported version]
 
    - 16
 
-   - 14
+   - 8.9
 
-   - 12
+   - 6.10
 
-   - 10
+   - 6.9
 
-   - 8
+   - 6.8
 
-   - 6
+   - 6.6
 
-   - 4.8
+   - 6.3
+
+   - 6.2
 
    - 4.7
 
-   - 0.12
+   - 4.6
+
+   - 4.5
+
+   - 4.4
+
+   - 4.3
+
+   - 4.2
 
 ## Usage example
 
@@ -371,6 +381,8 @@ Consult each of the individual service documentation to see how to retrieve and 
 - [MariaDB/MySQL](https://docs.upsun.com/add-services/mysql.md#use-in-app)
 
 - [Memcached](https://docs.upsun.com/add-services/memcached.md#use-in-app)
+
+- [Mercure](https://docs.upsun.com/add-services/mercure.md#use-in-app)
 
 - [MongoDB](https://docs.upsun.com/add-services/mongodb.md#use-in-app)
 

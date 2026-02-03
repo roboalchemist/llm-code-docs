@@ -10,11 +10,11 @@
 
 Automating your Actor development process can save time and reduce errors, especially for projects with multiple Actors or frequent updates. Instead of manually pushing code, building Actors, and running tests, you can automate these steps to run whenever you push code to your repository.
 
-You can automate Actor builds and tests using your Git repository's automated workflows like https://github.com/features/actions or https://www.atlassian.com/software/bitbucket/features/pipelines.
+You can automate Actor builds and tests using your Git repository's automated workflows like [GitHub Actions](https://github.com/features/actions) or [Bitbucket Pipelines](https://www.atlassian.com/software/bitbucket/features/pipelines).
 
 Using Bitbucket?
 
-Follow our step-by-step guide to set up continuous integration for your Actors with Bitbucket Pipelines: https://help.apify.com/en/articles/6988586-setting-up-continuous-integration-for-apify-actors-on-bitbucket.
+Follow our step-by-step guide to set up continuous integration for your Actors with Bitbucket Pipelines: [Read the Bitbucket CI guide](https://help.apify.com/en/articles/6988586-setting-up-continuous-integration-for-apify-actors-on-bitbucket).
 
 Set up continuous integration for your Actors using one of these methods:
 
@@ -51,7 +51,7 @@ Now your Actor will automatically rebuild on every push to the GitHub repository
 
 1. Push your Actor to a GitHub repository.
 
-2. Get your Apify API token from the https://console.apify.com/settings/integrations
+2. Get your Apify API token from the [Apify Console](https://console.apify.com/settings/integrations)
 
    ![Apify token in app](/assets/images/ci-token-b623bba2addc8778a802a97aabda2ada.png)
 
@@ -151,4 +151,4 @@ Now your Actor will automatically rebuild on every push to the GitHub repository
 
 Setting up continuous integration (CI) for your Apify Actors ensures that CI automatically tests and builds your code whenever you push changes to your repository. This helps catch issues early and streamlines your deployment process, whether you're releasing to production or maintaining a beta branch.
 
-You can also integrate directly with GitHub, check out the https://docs.apify.com/platform/integrations/github.md.
+You can also integrate directly with GitHub, check out the [official Apify GitHub integration documentation](https://docs.apify.com/platform/integrations/github.md).

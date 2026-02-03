@@ -4,8 +4,6 @@
 title: ElastiCache Serverless Cache
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > ElastiCache Serverless Cache
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.elasticache_serverless_cache.dataset/index.html
 ---
 
 # ElastiCache Serverless Cache
@@ -38,5 +36,5 @@ aws.elasticache_serverless_cache
 | snapshot_retention_limit | core | int64         | The current setting for the number of serverless cache snapshots the system will retain. Available for Valkey, Redis OSS and Serverless Memcached only.                                                                                                          |
 | status                   | core | string        | The current status of the serverless cache. The allowed values are CREATING, AVAILABLE, DELETING, CREATE-FAILED and MODIFYING.                                                                                                                                   |
 | subnet_ids               | core | array<string> | If no subnet IDs are given and your VPC is in us-west-1, then ElastiCache will select 2 default subnets across AZs in your VPC. For all other Regions, if no subnet IDs are given then ElastiCache will select 3 default subnets across AZs in your default VPC. |
-| tags                     | core | hstore        |
+| tags                     | core | hstore_csv    |
 | user_group_id            | core | string        | The identifier of the user group associated with the serverless cache. Available for Valkey and Redis OSS only. Default is NULL.                                                                                                                                 |

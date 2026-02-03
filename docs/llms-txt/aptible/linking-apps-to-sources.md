@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/apps/deploying-apps/linking-apps-to-sources.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Linking Apps to Sources
 
 # Overview

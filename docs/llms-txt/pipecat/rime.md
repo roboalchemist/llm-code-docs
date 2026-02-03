@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/services/tts/rime.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Rime
 
 > Text-to-speech service implementations using Rime AI
@@ -64,9 +68,9 @@ async def spell_out_text(text: str, type: str) -> str:
 
 tts = RimeTTSService(
     api_key=os.getenv("RIME_API_KEY"),
-    text_transforms=[{
-        "phone_number": spell_out_text,
-    }],
+    text_transforms=[
+        ("phone_number", spell_out_text),
+    ],
 )
 ```
 
@@ -84,9 +88,9 @@ async def pause_after_questions(text: str, type: str) -> str:
 
 tts = RimeTTSService(
     api_key=os.getenv("RIME_API_KEY"),
-    text_transforms=[{
-        "sentence": pause_after_questions, # Only apply to sentence aggregations
-    }],
+    text_transforms=[
+        ("sentence", pause_after_questions), # Only apply to sentence aggregations
+    ],
 )
 ```
 
@@ -106,9 +110,9 @@ async def maybe_say_potato_all_fancylike(text: str, type: str) -> str:
 
 tts = RimeTTSService(
     api_key=os.getenv("RIME_API_KEY"),
-    text_transforms=[{
-        "*": maybe_say_potato_all_fancylike, # Apply to all text
-    }],
+    text_transforms=[
+        ("*", maybe_say_potato_all_fancylike), # Apply to all text
+    ],
 )
 ```
 
@@ -127,13 +131,8 @@ async def slow_down_slow_words(text: str, type: str) -> str:
 
 tts = RimeTTSService(
     api_key=os.getenv("RIME_API_KEY"),
-    text_transforms=[{
-        "*": slow_down_slow_words, # Apply to all text
-    }],
+    text_transforms=[
+        ("*", slow_down_slow_words), # Apply to all text
+    ],
 )
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

@@ -1,51 +1,111 @@
 # Source: https://docs.turso.tech/cli/installation.md
 
+# Source: https://docs.turso.tech/agentfs/installation.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Installation
 
-> Learn how to install the Turso CLI on Mac, Linux and Windows.
+> Install the AgentFS CLI on Linux, macOS, and Windows
 
-## macOS
+## Quick Install
 
-To install the Turso CLI on macOS, we recommend that you use Homebrew:
-
-```bash  theme={null}
-brew install tursodatabase/tap/turso
-```
-
-If you don't use Homebrew, you can use the following command to execute a shell script that installs the CLI:
+The fastest way to install AgentFS:
 
 ```bash  theme={null}
-curl -sSfL https://get.tur.so/install.sh | bash
+curl -fsSL https://github.com/tursodatabase/agentfs/releases/latest/download/agentfs-installer.sh | sh
 ```
 
-## Linux
+This installs the `agentfs` binary to `~/.cargo/bin`.
 
-Run the following command to execute a shell script that installs the CLI:
+## Platform-Specific Instructions
+
+<Tabs>
+  <Tab title="macOS">
+    ```bash  theme={null}
+    curl -fsSL https://github.com/tursodatabase/agentfs/releases/latest/download/agentfs-installer.sh | sh
+    ```
+
+    After installation, restart your terminal or run:
+
+    ```bash  theme={null}
+    source ~/.zshrc  # or ~/.bashrc
+    ```
+  </Tab>
+
+  <Tab title="Linux">
+    **Using the installer:**
+
+    ```bash  theme={null}
+    curl -fsSL https://github.com/tursodatabase/agentfs/releases/latest/download/agentfs-installer.sh | sh
+    ```
+
+    After installation, restart your terminal or run:
+
+    ```bash  theme={null}
+    source ~/.bashrc  # or ~/.zshrc
+    ```
+
+    **Requirements:**
+
+    * FUSE must be available for filesystem mounting
+    * On Ubuntu/Debian: `sudo apt install fuse3`
+    * On Fedora: `sudo dnf install fuse3`
+  </Tab>
+
+  <Tab title="Windows">
+    **Using PowerShell:**
+
+    ```powershell  theme={null}
+    irm https://github.com/tursodatabase/agentfs/releases/latest/download/agentfs-installer.ps1 | iex
+    ```
+
+    Or download the binary directly from the [releases page](https://github.com/tursodatabase/agentfs/releases).
+  </Tab>
+</Tabs>
+
+## Verify Installation
 
 ```bash  theme={null}
-curl -sSfL https://get.tur.so/install.sh | bash
+agentfs --version
 ```
 
-## Windows
+## Shell Completions
 
-Installing the Turso CLI on Windows requires that you have [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) installed.
-
-Once WSL is installed, run the following in PowerShell:
+Enable tab completion for your shell:
 
 ```bash  theme={null}
-wsl
+# Auto-detect shell
+agentfs completions install
+
+# Or specify shell explicitly
+agentfs completions install bash
+agentfs completions install zsh
+agentfs completions install fish
 ```
 
-You can then execute the script to install the Turso CLI:
+Restart your shell after installing completions.
+
+## Building from Source
+
+Requires Rust 1.70+:
 
 ```bash  theme={null}
-curl -sSfL https://get.tur.so/install.sh | bash
+git clone https://github.com/tursodatabase/agentfs.git
+cd agentfs/cli
+cargo install --path .
 ```
 
-## Verify installation
+## Next Steps
 
-You must open a new shell to verify the installation with the following command:
+<CardGroup cols={2}>
+  <Card title="Agentic Coding" icon="robot" href="/agentfs/guides/sandbox">
+    Run AI coding agents safely
+  </Card>
 
-```bash  theme={null}
-turso
-```
+  <Card title="CLI Reference" icon="terminal" href="/agentfs/reference/cli">
+    Full command reference
+  </Card>
+</CardGroup>

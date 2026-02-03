@@ -1,11 +1,15 @@
 # Source: https://docs.frigade.com/component/survey/nps.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.frigade.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # NPS Survey
 
 > Collect structured and freeform feedback from your users
 
 <Frame className="h-96 items-center px-4">
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/components/nps.svg" />
+  <img src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/nps.svg?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=06e1d731f5cbff52fc864cc189bf9aca" data-og-width="622" width="622" data-og-height="188" height="188" data-path="images/components/nps.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/nps.svg?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=dac77d4284c82a7c6d27cb2f043e3f7d 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/nps.svg?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=60dad2c62b5ca6d98251758dca56769e 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/nps.svg?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=26b83e9eabceddf2360f25d7e6be0665 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/nps.svg?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=c0d804bd6aa655b0aeab86302e462218 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/nps.svg?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=29169f8264a873974fe2613729603348 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/nps.svg?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=ebe3f53154d3f611ae2ce715950c459c 2500w" />
 </Frame>
 
 ## About this component
@@ -44,18 +48,26 @@ The component comes with a default NPS scale of 0-10. You can also use a custom 
   <Tab title="Emoji Survey">
     <Frame style={{ paddingTop: "64px", paddingBottom: "64px" }}>
       <img
-        src="https://mintlify.s3.us-west-1.amazonaws.com/frigade-docs/images/components/surveys/emoji.png"
+        src="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/surveys/emoji.png?fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=5547c82d295589ed2566ddb41cddb2f2"
         style={{
         width: "340px",
         height: "auto",
       }}
+        data-og-width="1034"
+        width="1034"
+        data-og-height="517"
+        height="517"
+        data-path="images/components/surveys/emoji.png"
+        data-optimize="true"
+        data-opv="3"
+        srcset="https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/surveys/emoji.png?w=280&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=47bbf71587c609176319b500027ca119 280w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/surveys/emoji.png?w=560&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=dba2cd173dce5976b02905b8d8e16b21 560w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/surveys/emoji.png?w=840&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=b2a373b7efa8ed69cf7ebe7ed1e4077f 840w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/surveys/emoji.png?w=1100&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=8bffb090eeccb7ae16b93c570951569c 1100w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/surveys/emoji.png?w=1650&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=7742054ee55a372f735cd0abd6cfde88 1650w, https://mintcdn.com/frigade-docs/7j7O5wbAiLBomVEP/images/components/surveys/emoji.png?w=2500&fit=max&auto=format&n=7j7O5wbAiLBomVEP&q=85&s=0a651c4968ddaa7d52a54005cabc0633 2500w"
       />
     </Frame>
   </Tab>
 
   <Tab title="Code">
     <CodeGroup>
-      ```Typescript App.tsx
+      ```Typescript App.tsx theme={"system"}
         import * as Frigade from '@frigade/react';
         
         const App = () => {
@@ -86,7 +98,7 @@ The component comes with a default NPS scale of 0-10. You can also use a custom 
 
 <Tabs>
   <Tab title="Code">
-    ```tsx
+    ```tsx  theme={"system"}
     import * as Frigade from '@frigade/react';
 
     const App = () => {
@@ -141,7 +153,7 @@ To learn about how to customize Frigade components, see the [customization docum
 
       For example, if you want to use a custom field type called `calendar`:
 
-      ```tsx
+      ```tsx  theme={"system"}
       import { Form, FormFieldProps } from "@frigade/react";
 
       function CalendarField({ field, submit }: FormFieldProps) {

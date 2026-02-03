@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/open-source/ingestion/ingest-cli.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Process files in batches by using the Unstructured Ingest CLI
 
 The Unstructured Ingest CLI enables you to use command-line scripts to send files in batches to Unstructured for processing, and to tell Unstructured where to deliver the processed data. [Learn more](/open-source/ingestion/overview#unstructured-ingest-cli).
@@ -49,7 +53,7 @@ Using the Ingest CLI to send files in batches to Unstructured for processing is 
    If you do not have this URL, email Unstructured Support at [support@unstructured.io](mailto:support@unstructured.io).
 
 <Note>
-  The default URL for Unstructured Ingest is the same as the default URL for the Unstructured Partition Endpoint: `https://api.unstructuredapp.io/general/v0/general`.
+  The default URL for Unstructured Ingest is the same as the default URL for the legacy Unstructured Partition Endpoint: `https://api.unstructuredapp.io/general/v0/general`.
   However, you should always use the URL that was provided to you when your Unstructured account was created.
 </Note>
 

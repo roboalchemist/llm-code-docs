@@ -2,7 +2,9 @@
 
 # Config V2 SDK Compatibility
 
-This table shows which SDK versions support Config V2. Read more about [Config V2](https://configcat.com/docs/docs/advanced/config-v2/.md)
+Copy page
+
+This table shows which SDK versions support Config V2. Read more about [Config V2](https://configcat.com/docs/advanced/config-v2.md)
 
 | SDK                                                                             | Version    | Release Notes                                                     |
 | ------------------------------------------------------------------------------- | ---------- | ----------------------------------------------------------------- |

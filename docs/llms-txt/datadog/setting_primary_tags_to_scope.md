@@ -6,7 +6,6 @@ description: >-
   Learn how to set primary tags to scope and filter APM data across different
   environments, services, and versions for better organization.
 breadcrumbs: Docs > APM > Tracing Guides > Set Primary Tags to Scope
-source_url: https://docs.datadoghq.com/guide/setting_primary_tags_to_scope/index.html
 ---
 
 # Set Primary Tags to Scope

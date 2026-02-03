@@ -6,7 +6,6 @@ description: >-
   Use Bits AI SRE to automatically investigate monitor alerts and provide root
   cause analysis for faster incident resolution.
 breadcrumbs: Docs > Bits AI > Bits AI SRE > Investigate issues
-source_url: https://docs.datadoghq.com/bits_ai_sre/investigate_issues/index.html
 ---
 
 # Investigate issues

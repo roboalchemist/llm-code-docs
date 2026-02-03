@@ -2,27 +2,17 @@
 
 # Source: https://docs.windsurf.com/plugins/guide-for-admins.md
 
-# Source: https://docs.windsurf.com/windsurf/guide-for-admins.md
-
-# Source: https://docs.windsurf.com/plugins/guide-for-admins.md
-
-# Source: https://docs.windsurf.com/windsurf/guide-for-admins.md
-
-# Source: https://docs.windsurf.com/plugins/guide-for-admins.md
-
-# Source: https://docs.windsurf.com/windsurf/guide-for-admins.md
-
-# Source: https://docs.windsurf.com/plugins/guide-for-admins.md
-
-# Source: https://docs.windsurf.com/windsurf/guide-for-admins.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Guide for Admins
 
-> Windsurf Guide for Enterprise Admins
+> Enterprise admin guide for deploying Windsurf at scale. Configure SSO, SCIM, RBAC, analytics, and team management for large organizations.
 
 # Windsurf Guide for Enterprise Admins
 
-> **Purpose**   This guide helps enterprise *platform / developer-experience* administrators plan, roll out, and operate Windsurf for organizations with **large enterprise teams**.  It is intentionally *opinionated* and links out to detailed “how-to” docs per topic.  Treat it both as a **read-through guide** *and* as a **check-list** when onboarding.
+> **Purpose**   This guide helps enterprise *platform / developer-experience* administrators plan, roll out, and operate Windsurf for organizations with **large enterprise teams**.  It is intentionally *opinionated* and links out to detailed "how-to" docs per topic.  Treat it both as a **read-through guide** *and* as a **check-list** when onboarding.
 
 ***
 
@@ -46,15 +36,15 @@
 6. Distribute **Windsurf clients/extensions** to end users
 7. View **analytics dashboards** & **API access tokens**
 
-> Use this list as your “Day 0” deployment tracker.
+> Use this list as your "Day 0" deployment tracker.
 
 ***
 
 ## 3.   Core Windsurf Concepts
 
 * **Team** – flat collections of members; no nested teams. Teams (also called *Groups*) drive **role assignment** and **analytics grouping**, letting you scope permissions and view usage metrics per cohort.
-* **Roles & Permissions** – predefined RBAC; admins are primarily responsible for **team management**, **Windsurf feature settings**, and **analytics**. Built-in roles usually cover these needs, but creating a custom role with *analytics-view* permission lets team managers and leads see metrics for their own teams. (<a href="/windsurf/accounts/rbac-role-management" target="_blank">RBAC docs</a>)
-* **Admin Portal** – centralized UI for user & team management, credit usage, SSO configuration, feature toggles (<a href="/windsurf/cascade/web-search" target="_blank">Web Search</a>, <a href="/windsurf/cascade/mcp" target="_blank">MCP</a>, <a href="/windsurf/cascade/app-deploys" target="_blank">Deploys</a>), analytics dashboards/report export, service keys for API usage, and role/permission controls.
+* **Roles & Permissions** – predefined RBAC; admins are primarily responsible for **team management**, **Windsurf feature settings**, and **analytics**. Built-in roles usually cover these needs, but creating a custom role with *analytics-view* permission lets team managers and leads see metrics for their own teams. (<a href="/plugins/accounts/rbac-role-management" target="_blank">RBAC docs</a>)
+* **Admin Portal** – centralized UI for user & team management, credit usage, SSO configuration, feature toggles (<a href="/plugins/cascade/web-search" target="_blank">Web Search</a>, <a href="/plugins/cascade/mcp" target="_blank">MCP</a>, <a href="/windsurf/cascade/app-deploys" target="_blank">Deploys</a>), analytics dashboards/report export, service keys for API usage, and role/permission controls.
 * **Agents & Workspaces** – Windsurf IDE and Jetbrains Plugins are Agentic
 
 ### 3.1   Admin Portal Overview
@@ -85,9 +75,18 @@ The <a href="https://windsurf.com/team/settings" target="_blank">Admin Portal</a
 * Configure which AI models your teams can access within Windsurf
 * Select multiple models for different use cases (code completion, chat, etc.)
 
+**Default Model Override**
+
+* Set the default Cascade model for users on your team
+* This model is pre-selected each time a user opens Windsurf (not just the first time)
+* Users can still change their model at any time during a session
+* Only models enabled in Models Configuration are available as default options
+
 **Auto Run Terminal Commands** *(Beta)*
 
-* Allow or restrict Cascade's ability to auto-execute commands on users' machines
+* Set the maximum auto-execution level for terminal commands across your organization
+* Four levels available: **Disabled** (no auto-execution), **Allowlist Only** (only allowlisted commands), **Auto** (AI-judged safe commands), and **Turbo** (all commands except denylisted)
+* Users can select any level up to the maximum you configure, giving them flexibility within your security policy
 * [Learn more about auto-executed commands](https://docs.windsurf.com/windsurf/terminal#auto-executed-cascade-commands)
 
 **MCP Servers** *(Beta)*
@@ -136,7 +135,7 @@ The <a href="https://windsurf.com/team/settings" target="_blank">Admin Portal</a
 | **Recommended approach** | Create Windsurf-specific *app* in IdP; use **role-based** group assignments rather than org-wide `All Employees` group |
 | **Common pitfalls**      | Email suffix mismatches, duplicate user aliases                                                                        |
 
-*See the <a href="https://docs.windsurf.com/windsurf/accounts/sso-scim" target="_blank">SSO & SCIM Setup Guide</a> for step-by-step configuration for Okta, Azure AD, Google, and Generic SAML.*
+*See the <a href="https://docs.windsurf.com/plugins/accounts/sso-scim" target="_blank">SSO & SCIM Setup Guide</a> for step-by-step configuration for Okta, Azure AD, Google, and Generic SAML.*
 
 ### 4.2   SCIM Provisioning
 
@@ -145,7 +144,7 @@ The <a href="https://windsurf.com/team/settings" target="_blank">Admin Portal</a
   * Create / deactivate **users** automatically
   * Create **teams** automatically (or manage manually)
   * Users can belong to **multiple teams**
-  * Custom team creation via SCIM API (<a href="https://docs.windsurf.com/windsurf/accounts/sso-scim#scim-api" target="_blank">docs</a>)
+  * Custom team creation via SCIM API (<a href="https://docs.windsurf.com/plugins/accounts/sso-scim#scim-api" target="_blank">docs</a>)
 * **Mapping strategies**
   * 1 IdP group → 1 Windsurf team (simple, most common)
   * Functional vs. project-based group prefixes (e.g. `proj-foo-devs`)
@@ -182,8 +181,8 @@ Analytics shows the **percentage of code written by Windsurf**, helping quantify
 | **REST** | SCIM management, analytics |
 
 * Generate service keys under <a href="https://windsurf.com/team/settings" target="_blank">**Team Settings → Service Keys**</a>. Scope keys to *least privilege* needed.
-* More advanced reporting: see the <a href="https://docs.windsurf.com/plugins/accounts/api-reference/introduction" target="_blank">Analytics API Reference</a>.
-* For team management: see the <a href="https://docs.windsurf.com/windsurf/accounts/sso-scim#scim-api" target="_blank">SCIM API – Custom Teams</a>.
+* More advanced reporting and usage management: see the <a href="https://docs.windsurf.com/plugins/accounts/api-reference/api-introduction" target="_blank">API Reference</a>.
+* For team management: see the <a href="https://docs.windsurf.com/plugins/accounts/sso-scim#scim-api" target="_blank">SCIM API – Custom Teams</a>.
 
 ***
 
@@ -196,8 +195,8 @@ Analytics shows the **percentage of code written by Windsurf**, helping quantify
 
 ## 8.   Setting Up End Users for Success
 
-1. Point end users to the <a href="https://docs.windsurf.com/windsurf/getting-started" target="_blank">Windsurf installation guide</a> to install the appropriate extension or desktop client.
-2. Publish an internal “Getting Started with Windsurf” page (link to official docs)
+1. Point end users to the <a href="https://docs.windsurf.com/plugins/getting-started" target="_blank">Windsurf installation guide</a> to install the appropriate extension or desktop client.
+2. Publish an internal "Getting Started with Windsurf" page (link to official docs)
 3. Hold live onboarding sessions / record short demos
 4. Curate starter project templates & sample prompts
 5. Collect feedback via survey after 2 weeks; iterate
@@ -206,7 +205,7 @@ Analytics shows the **percentage of code written by Windsurf**, helping quantify
 
 ## 9.   Additional Resources
 
-* <a href="https://docs.windsurf.com/windsurf/accounts/sso-scim" target="_blank">SSO & SCIM Setup Guide</a>
-* <a href="https://docs.windsurf.com/windsurf/accounts/sso-scim#scim-api" target="_blank">SCIM API – Custom Teams</a>
+* <a href="https://docs.windsurf.com/plugins/accounts/sso-scim" target="_blank">SSO & SCIM Setup Guide</a>
+* <a href="https://docs.windsurf.com/plugins/accounts/sso-scim#scim-api" target="_blank">SCIM API – Custom Teams</a>
 * <a href="https://docs.windsurf.com/plugins/accounts/api-reference/introduction" target="_blank">Analytics API Reference</a>
-* <a href="/windsurf/accounts/rbac-role-management" target="_blank">RBAC Controls</a>
+* <a href="/plugins/accounts/rbac-role-management" target="_blank">RBAC Controls</a>

@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/functions/stats.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # FUNCTION STATS
 
 > Return information about the function running engine.
@@ -47,8 +51,3 @@
   // }
   ```
 </RequestExample>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://upstash.com/docs/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/get-odometer.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Odometer
 
 > Returns the vehicle’s last known odometer reading.

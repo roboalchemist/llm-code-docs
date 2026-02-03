@@ -4,8 +4,6 @@
 title: EKS Fargate Profile
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > EKS Fargate Profile
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.eks_fargateprofile.dataset/index.html
 ---
 
 # EKS Fargate Profile
@@ -31,4 +29,4 @@ aws.eks_fargateprofile
 | selectors              | core | json          | The selectors to match for a <code>Pod</code> to use this Fargate profile.                                                                                                                                                                                                                                                                      |
 | status                 | core | string        | The current status of the Fargate profile.                                                                                                                                                                                                                                                                                                      |
 | subnets                | core | array<string> | The IDs of subnets to launch a <code>Pod</code> into.                                                                                                                                                                                                                                                                                           |
-| tags                   | core | hstore        |
+| tags                   | core | hstore_csv    |

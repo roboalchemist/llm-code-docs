@@ -1,0 +1,33 @@
+# Source: https://docs.datadoghq.com/security/default_rules/def-000-pal.md
+
+---
+title: User activity detected from unauthorized countries
+description: Datadog, the leading service for cloud-scale monitoring.
+breadcrumbs: >-
+  Docs > Datadog Security > OOTB Rules > User activity detected from
+  unauthorized countries
+---
+
+# User activity detected from unauthorized countries
+ 
+### Goal{% #goal %}
+
+Detect user activity from a country that's part of a denylist.
+
+This may be caused by a malicious actor using a compromised account, or a user violating policy.
+
+### Strategy{% #strategy %}
+
+Review IPs from traces [tagged with a user](https://docs.datadoghq.com/security/application_security/threats/add-user-info/?tab=set_user#adding-authenticated-user-information-to-traces-and-enabling-user-blocking-capability). If the country linked to this IP is part of the denylist, trigger the signal.
+
+To update the denylist with your restrictions, clone and update the rule. This rule shouldn't be enabled at the same time as the allowlist variant.
+
+Require the trace to be flagged, either by [a user event](https://docs.datadoghq.com/security/application_security/threats/add-user-info/?tab=set_user#adding-user-events-login-success-login-failure-any-business-logic-to-traces) or by an In-App WAF attack.
+
+A `Medium` signal is generated if any trace is found.
+
+### Triage and response{% #triage-and-response %}
+
+1. Investigate the IP activity and validate that it is legitimate.
+1. If the account was compromised, reset the password and log out the attacker.
+1. Consider blocking the account until situation is remediated/user is out of the forbidden country.

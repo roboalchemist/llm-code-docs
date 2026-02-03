@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/guides/cookbooks/environment-tracking.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Environment Tracking
 
 > Effortlessly track and manage your development, staging, and production environments with Helicone.

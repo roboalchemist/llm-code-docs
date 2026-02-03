@@ -6,14 +6,14 @@
 
 ***
 
-Now that we know how to execute scripts on a page, we're ready to learn a bit about https://docs.apify.com/academy/web-scraping-for-beginners/data-extraction.md. In this lesson, we'll be scraping all the on-sale products from our https://demo-webstore.apify.org/search/on-sale website. Playwright & Puppeteer offer two main methods for data extraction:
+Now that we know how to execute scripts on a page, we're ready to learn a bit about data extraction. In this lesson, we'll be scraping all the on-sale products from our [Fakestore](https://demo-webstore.apify.org/search/on-sale) website. Playwright & Puppeteer offer two main methods for data extraction:
 
 1. Directly in `page.evaluate()` and other evaluate functions such as `page.$$eval()`.
-2. In the Node.js context using a parsing library such as https://www.npmjs.com/package/cheerio
+2. In the Node.js context using a parsing library such as [Cheerio](https://www.npmjs.com/package/cheerio)
 
 Crawlee and parsing with Cheerio
 
-If you are using Crawlee, we highly recommend the https://crawlee.dev/api/playwright-crawler/interface/PlaywrightCrawlingContext#parseWithCheerio function for unified data extraction syntax. This way, switching between browser and plain HTTP scraping is a breeze.
+If you are using Crawlee, we highly recommend the [parseWithCheerio](https://crawlee.dev/api/playwright-crawler/interface/PlaywrightCrawlingContext#parseWithCheerio) function for unified data extraction syntax. This way, switching between browser and plain HTTP scraping is a breeze.
 
 ## Setup
 
@@ -96,7 +96,7 @@ When we run this code, we see this logged to our console:
 
 ## Using jQuery
 
-Working with `document.querySelector` is cumbersome and quite verbose, but with the `page.addScriptTag()` function and the latest https://releases.jquery.com/, we can inject jQuery into the current page to gain access to its syntactical sweetness:
+Working with `document.querySelector` is cumbersome and quite verbose, but with the `page.addScriptTag()` function and the latest [jQuery CDN link](https://releases.jquery.com/), we can inject jQuery into the current page to gain access to its syntactical sweetness:
 
 
 ```
@@ -136,7 +136,7 @@ This will output the same exact result as the code in the previous section.
 
 ## Parsing in the Node.js context
 
-One of the most popular parsing libraries for Node.js is https://www.npmjs.com/package/cheerio, which can be used in tandem with Playwright and Puppeteer. It is extremely beneficial to parse the page's HTML in the Node.js context for a number of reasons:
+One of the most popular parsing libraries for Node.js is [Cheerio](https://www.npmjs.com/package/cheerio), which can be used in tandem with Playwright and Puppeteer. It is extremely beneficial to parse the page's HTML in the Node.js context for a number of reasons:
 
 * You can port the code between headless browser data extraction and plain HTTP data extraction
 * You don't have to worry in which context you're working (which can sometimes be confusing)
@@ -306,4 +306,4 @@ await browser.close();
 
 ## Next up
 
-Our https://docs.apify.com/academy/puppeteer-playwright/reading-intercepting-requests.md will be discussing something super cool - request interception and reading data from requests and responses. It's like using DevTools, except programmatically!
+Our [next lesson](https://docs.apify.com/academy/puppeteer-playwright/reading-intercepting-requests.md) will be discussing something super cool - request interception and reading data from requests and responses. It's like using DevTools, except programmatically!

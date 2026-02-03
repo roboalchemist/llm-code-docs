@@ -1,5 +1,9 @@
 # Source: https://docs.infera.org/litepaper.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.infera.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Litepaper
 
 <div style={{width: "100%", height: "200px", display: "flex", justifyContent: "center", alignItems: "center", border: "1px solid white", borderRadius: "5px"}}> [Infera Litepaper](https://litepaper.infera.org/) </div>
@@ -37,7 +41,7 @@ Infera aims to democratize AI inference through a decentralized, blockchain-base
 The network bundles computational tasks submitted by users which are then dynamically distributed among participating nodes. Nodes will be able to perform inference and pick up failed jobs from other nodes. This prevents issues with single points of failure and increases network stability for users and developers. The decentralized architecture facilitates communications between nodes, enabling efficient distribution and execution of AI inference tasks across the network.
 
 <Frame caption="Diagram 1 - Infera's inference network architecture">
-  <img width="100%" src="https://mintlify.s3.us-west-1.amazonaws.com/infera-a106b685/images/litepaper/diagram-1.jpg" />
+  <img width="100%" src="https://mintcdn.com/infera-a106b685/uWBCufE3moWDn93L/images/litepaper/diagram-1.jpg?fit=max&auto=format&n=uWBCufE3moWDn93L&q=85&s=7e0771deb99cb2acc1e19e29058a4df5" data-og-width="921" data-og-height="683" data-path="images/litepaper/diagram-1.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/infera-a106b685/uWBCufE3moWDn93L/images/litepaper/diagram-1.jpg?w=280&fit=max&auto=format&n=uWBCufE3moWDn93L&q=85&s=200ab39ec394ce984a80c826f671d805 280w, https://mintcdn.com/infera-a106b685/uWBCufE3moWDn93L/images/litepaper/diagram-1.jpg?w=560&fit=max&auto=format&n=uWBCufE3moWDn93L&q=85&s=5755203ad29f9cbdb22c247dff4ef780 560w, https://mintcdn.com/infera-a106b685/uWBCufE3moWDn93L/images/litepaper/diagram-1.jpg?w=840&fit=max&auto=format&n=uWBCufE3moWDn93L&q=85&s=6513047bc5f7c740dc03533017e6db7a 840w, https://mintcdn.com/infera-a106b685/uWBCufE3moWDn93L/images/litepaper/diagram-1.jpg?w=1100&fit=max&auto=format&n=uWBCufE3moWDn93L&q=85&s=56efad3549c3949a571e4868a1258159 1100w, https://mintcdn.com/infera-a106b685/uWBCufE3moWDn93L/images/litepaper/diagram-1.jpg?w=1650&fit=max&auto=format&n=uWBCufE3moWDn93L&q=85&s=85ff131cf543ea81e926a117131a8e3f 1650w, https://mintcdn.com/infera-a106b685/uWBCufE3moWDn93L/images/litepaper/diagram-1.jpg?w=2500&fit=max&auto=format&n=uWBCufE3moWDn93L&q=85&s=1af1bb1a6d172ef7d6c47e19e588e281 2500w" />
 </Frame>
 
 ***
@@ -57,21 +61,21 @@ Additionally, the load balancer is able to pick up dropped jobs from nodes and r
 A verified inference function (VIF) is a cryptographic primitive that produces a verifiable inference output from a given input and secret key. VIFs can provide proof that specific inference computations were performed correctly by generating verifiable random outputs associated with the computation. This proof can be stored and accessed on-chain, allowing anyone to verify that the inference results are genuine.To significantly reduce the cost of on-chain inference compared to existing methods, INFER will be implemented as the gas token for Infera’s L3. This significantly reduces cost to use the network while also providing a dedicated environment for users to build on top of Infera.
 
 <Frame caption="Diagram 2 - Layered blockchain architecture with Infera's L3">
-  <img width="100%" src="https://mintlify.s3.us-west-1.amazonaws.com/infera-a106b685/images/litepaper/diagram-2.jpg" />
+  <img width="100%" src="https://mintcdn.com/infera-a106b685/uWBCufE3moWDn93L/images/litepaper/diagram-2.jpg?fit=max&auto=format&n=uWBCufE3moWDn93L&q=85&s=28643fd91def2083cc6d60e9ae0bd910" data-og-width="916" data-og-height="635" data-path="images/litepaper/diagram-2.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/infera-a106b685/uWBCufE3moWDn93L/images/litepaper/diagram-2.jpg?w=280&fit=max&auto=format&n=uWBCufE3moWDn93L&q=85&s=720c78ae6af8b77127a8c57b077b9923 280w, https://mintcdn.com/infera-a106b685/uWBCufE3moWDn93L/images/litepaper/diagram-2.jpg?w=560&fit=max&auto=format&n=uWBCufE3moWDn93L&q=85&s=fd3183dbc0eafad76a4396ebde00840a 560w, https://mintcdn.com/infera-a106b685/uWBCufE3moWDn93L/images/litepaper/diagram-2.jpg?w=840&fit=max&auto=format&n=uWBCufE3moWDn93L&q=85&s=4ee4e5c6b4ea20f9af542fc91dbc5501 840w, https://mintcdn.com/infera-a106b685/uWBCufE3moWDn93L/images/litepaper/diagram-2.jpg?w=1100&fit=max&auto=format&n=uWBCufE3moWDn93L&q=85&s=d985bb38ae4644c3a20c02396c37eca5 1100w, https://mintcdn.com/infera-a106b685/uWBCufE3moWDn93L/images/litepaper/diagram-2.jpg?w=1650&fit=max&auto=format&n=uWBCufE3moWDn93L&q=85&s=cd8c000fcd1dc79c7034a90950e15251 1650w, https://mintcdn.com/infera-a106b685/uWBCufE3moWDn93L/images/litepaper/diagram-2.jpg?w=2500&fit=max&auto=format&n=uWBCufE3moWDn93L&q=85&s=1e20b32601fac3d5749721e667d4fc30 2500w" />
 </Frame>
 
 ***
 
-*   **Ethereum Mainnet**
-    *   Ethereum Mainnet where all transactions get settled
+* **Ethereum Mainnet**
+  * Ethereum Mainnet where all transactions get settled
 
-*   **Base Chain**
-    *   Aggregates and validates transactions from Layer 3.
-    *   Periodically commits these transactions to Ethereum.
+* **Base Chain**
+  * Aggregates and validates transactions from Layer 3.
+  * Periodically commits these transactions to Ethereum.
 
-*   **Infera Layer 3**
-    *   Optimized for specific use cases such as AI inference.
-    *   Inference network will be available via smart contract on Layer 3.
+* **Infera Layer 3**
+  * Optimized for specific use cases such as AI inference.
+  * Inference network will be available via smart contract on Layer 3.
 
 ## 3. Role of INFER Token
 
@@ -119,9 +123,9 @@ To maintain the integrity and reliability of the Infera network, nodes will be r
 
 The Infera API and SDK constitute the primary interface for accessing our decentralized AI inference network. Our initial release focuses on a Python SDK, chosen for its widespread adoption in the AI and data science communities. The API design allows for developers to access the network of available nodes to perform inference work for AI applications built on top of the network. Future development will extend support to other programming languages, with JavaScript being the next target platform to broaden accessibility for web-based applications. Metrics for Success
 
-*   Number of API calls and SDK downloads.
-*   Developer satisfaction and engagement levels.
-*   Growth in the number and quality of third-party applications and services built on Infera.
+* Number of API calls and SDK downloads.
+* Developer satisfaction and engagement levels.
+* Growth in the number and quality of third-party applications and services built on Infera.
 
 ## 5. Use Cases
 
@@ -149,16 +153,16 @@ For example, developers can leverage Infera to create AI-driven market-making al
 
 Infera's agent framework follows a perceive-think-act cycle:
 
-*   **Perceive:** Processes input data and updates the knowledge base.
-*   **Think:** Uses the decision engine to determine the next action.
-*   **Act:** Executes the chosen action and learns from the result.
+* **Perceive:** Processes input data and updates the knowledge base.
+* **Think:** Uses the decision engine to determine the next action.
+* **Act:** Executes the chosen action and learns from the result.
 
 To use this framework, developers would need to download our SDK and integrate our built-in functions for accessing the Infera network. The SDK provides easy-to-use methods for:
 
-*   Initializing an AI agent with specific capabilities and models
-*   Connecting to the Infera network and managing node interactions
-*   Submitting inference tasks and retrieving results
-*   Updating the agent's decision-making parameters
+* Initializing an AI agent with specific capabilities and models
+* Connecting to the Infera network and managing node interactions
+* Submitting inference tasks and retrieving results
+* Updating the agent's decision-making parameters
 
 Our SDK will be available in python for developers to integrate Infera into their project. With just a few lines of code, developers can create sophisticated AI agents that leverage the power of Infera’s decentralized inference network.
 
@@ -178,6 +182,6 @@ In conclusion, by leveraging blockchain technology and distributed systems, we p
 
 Key contributions of this work include:
 
-1.  A scalable architecture for distributed AI inference
-2.  Load balancing engine optimized for distributing AI workloads
-3.  An incentive structure promoting on-chain AI ecosystems Further research is required to fully realize the potential of this technology. Future work will focus on optimizing network performance, enhancing security measures, and conducting large-scale deployments to validate our approach in real-world scenarios. As the AI landscape continues to evolve, Infera’s decentralized platform has the potential to democratize access to AI capabilities, fostering innovation across various industries and research domains.
+1. A scalable architecture for distributed AI inference
+2. Load balancing engine optimized for distributing AI workloads
+3. An incentive structure promoting on-chain AI ecosystems Further research is required to fully realize the potential of this technology. Future work will focus on optimizing network performance, enhancing security measures, and conducting large-scale deployments to validate our approach in real-world scenarios. As the AI landscape continues to evolve, Infera’s decentralized platform has the potential to democratize access to AI capabilities, fostering innovation across various industries and research domains.

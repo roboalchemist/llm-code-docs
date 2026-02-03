@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/http/cluster.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Start a cluster of HTTP servers
 
 > Run multiple HTTP servers concurrently via the "reusePort" option to share the same port across multiple processes

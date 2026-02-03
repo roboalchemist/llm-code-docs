@@ -1,28 +1,12 @@
 # Source: https://docs.replit.com/tutorials/expo-on-replit.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Building Mobile Apps with Expo and Replit
 
 > Replit is the fastest way to create and publish cross-platform mobile apps using Expo, without any setup or configuration.
-
-export const AuthorCard = ({img = "https://replit.com/cdn-cgi/image/width=256,quality=80,format=auto/https://storage.googleapis.com/replit/images/1730840970400_e885f16578bbbb227adbfeb7b979be34.jpeg", href = "https://youtube.com/@mattpalmer", name = "Matt Palmer", role = "Head of Developer Relations"}) => {
-  return <a href={href} target="_blank" className="card block not-prose font-normal group relative my-2 ring-2 ring-transparent rounded-xl bg-white/50 dark:bg-codeblock/50 border border-gray-100 shadow-md dark:shadow-none shadow-gray-300/10 dark:border-gray-800/50 overflow-hidden cursor-pointer hover:!border-primary dark:hover:!border-primary-light">
-      <div className="flex items-center gap-2 p-4">
-        <div className="flex-shrink-0">
-          <img src={img} alt={name} className="w-12 h-12 rounded-full object-cover" />
-        </div>
-        <div className="flex-grow">
-          <h3 className="text-base font-semibold mb-0.5 text-inherit">{name}</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400 m-0">{role}</p>
-        </div>
-      </div>
-    </a>;
-};
-
-<AuthorCard />
-
-<Frame>
-  <img src="https://mintcdn.com/replit/0ixNWaRF232g0Gwn/images/tutorials/expo-header.webp?fit=max&auto=format&n=0ixNWaRF232g0Gwn&q=85&s=3e5d31fb93e31a05b832bf7962179252" data-og-width="600" width="600" data-og-height="338" height="338" data-path="images/tutorials/expo-header.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/0ixNWaRF232g0Gwn/images/tutorials/expo-header.webp?w=280&fit=max&auto=format&n=0ixNWaRF232g0Gwn&q=85&s=292626499e7f02ffea1f37dda0f68a0d 280w, https://mintcdn.com/replit/0ixNWaRF232g0Gwn/images/tutorials/expo-header.webp?w=560&fit=max&auto=format&n=0ixNWaRF232g0Gwn&q=85&s=7e1e8e66789dee5eea70f7de73970249 560w, https://mintcdn.com/replit/0ixNWaRF232g0Gwn/images/tutorials/expo-header.webp?w=840&fit=max&auto=format&n=0ixNWaRF232g0Gwn&q=85&s=a96f785d0012cd43b5f37826197bb554 840w, https://mintcdn.com/replit/0ixNWaRF232g0Gwn/images/tutorials/expo-header.webp?w=1100&fit=max&auto=format&n=0ixNWaRF232g0Gwn&q=85&s=6ec8b90a1cd1a7f214f39af7c33deda9 1100w, https://mintcdn.com/replit/0ixNWaRF232g0Gwn/images/tutorials/expo-header.webp?w=1650&fit=max&auto=format&n=0ixNWaRF232g0Gwn&q=85&s=7d2a7dae3da91e77aabbaf7f23fdc9b8 1650w, https://mintcdn.com/replit/0ixNWaRF232g0Gwn/images/tutorials/expo-header.webp?w=2500&fit=max&auto=format&n=0ixNWaRF232g0Gwn&q=85&s=8ced15bb6cc04530ac98ebfa10115793 2500w" />
-</Frame>
 
 Apps are the new websites, and everyone should be able to create them. By combining Replit's browser-based development environment [with Expo](https://expo.dev/blog/from-idea-to-app-with-replit-and-expo), mobile app creation is now as simple as building a website.
 
@@ -75,14 +59,15 @@ Expo uses React Native to help you build apps for iOS, Android, and the web from
   The democratization of mobile development through Replit and Expo makes app creation accessible to everyone, not just professional developers.
 </Note>
 
-### Customizing your app with Agent or Assistant
+### Customizing your app with Agent
 
 <Steps>
   <Step title="Choose your AI tool">
-    You can use either [Agent](/replitai/agent) or [Assistant](/replitai/assistant) to build your Expo app:
+    Use [Agent](/replitai/agent) to build your Expo app:
 
-    * **Agent**: Best for complex features and major changes. The Expo template uses [General Agent](/replitai/general-agent), which supports any framework.
-    * **Assistant**: Best for smaller changes and code explanations.
+    * **Build mode**: Best for complex features and major changes. The Expo template uses [General Agent](/replitai/general-agent), which supports any framework.
+    * **Fast mode**: Best for smaller changes and code explanations.
+    * **Plan mode**: Best for planning and brainstorming.
   </Step>
 
   <Step title="Use natural language to build your app">
@@ -94,7 +79,7 @@ Expo uses React Native to help you build apps for iOS, Android, and the web from
 
     1. Open the Replit Mobile App
     2. Find your project
-    3. Use Agent or Assistant to make changes and improvements
+    3. Use Agent to make changes and improvements
     4. See updates appear in real-time
   </Step>
 </Steps>

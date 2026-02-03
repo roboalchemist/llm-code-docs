@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/pr-workflows.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Approval Workflows
 
 > Learn how to enable a set of policies to manage changes to sensitive secrets and environments.

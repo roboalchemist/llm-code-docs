@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/charts/st.area_chart
+
 # st.area_chart
 
 Display an area chart.

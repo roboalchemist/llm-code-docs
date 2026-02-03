@@ -2,17 +2,9 @@
 
 # Source: https://docs.tavus.io/sections/conversational-video-interface/conversation/customizations/background-customizations.md
 
-# Source: https://docs.tavus.io/sections/video/background-customizations.md
-
-# Source: https://docs.tavus.io/sections/conversational-video-interface/conversation/customizations/background-customizations.md
-
-# Source: https://docs.tavus.io/sections/video/background-customizations.md
-
-# Source: https://docs.tavus.io/sections/conversational-video-interface/conversation/customizations/background-customizations.md
-
-# Source: https://docs.tavus.io/sections/video/background-customizations.md
-
-# Source: https://docs.tavus.io/sections/conversational-video-interface/conversation/customizations/background-customizations.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Background Customizations
 

@@ -1,6 +1,8 @@
 # Source: https://www.activepieces.com/docs/install/troubleshooting/bullboard.md
 
-# Source: https://www.activepieces.com/docs/handbook/engineering/playbooks/bullboard.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Queues Dashboard
 
@@ -47,19 +49,11 @@ Runs flows when they're triggered.
 
 Processes incoming webhook requests that start flow runs.
 
-#### EXECUTE\_AGENT
-
-Runs AI agent tasks within flows.
-
 #### DELAYED\_FLOW
 
 Runs flows that were scheduled for later, like paused flows or delayed executions.
 
 ### High Priority Jobs
-
-#### EXECUTE\_TOOL
-
-Runs tool operations in flows, usually for AI-powered features.
 
 #### EXECUTE\_PROPERTY
 

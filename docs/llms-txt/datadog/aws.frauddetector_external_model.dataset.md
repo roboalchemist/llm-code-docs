@@ -4,8 +4,6 @@
 title: Fraud Detector External Model
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Fraud Detector External Model
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.frauddetector_external_model.dataset/index.html
 ---
 
 # Fraud Detector External Model
@@ -18,17 +16,17 @@ aws.frauddetector_external_model
 
 ## Fields
 
-| Title                          | ID   | Type   | Data Type                                                        | Description |
-| ------------------------------ | ---- | ------ | ---------------------------------------------------------------- | ----------- |
-| _key                           | core | string |
-| account_id                     | core | string |
-| arn                            | core | string | The model ARN.                                                   |
-| created_time                   | core | string | Timestamp of when the model was last created.                    |
-| input_configuration            | core | json   | The input configuration.                                         |
-| invoke_model_endpoint_role_arn | core | string | The role used to invoke the model.                               |
-| last_updated_time              | core | string | Timestamp of when the model was last updated.                    |
-| model_endpoint                 | core | string | The Amazon SageMaker model endpoints.                            |
-| model_endpoint_status          | core | string | The Amazon Fraud Detector status for the external model endpoint |
-| model_source                   | core | string | The source of the model.                                         |
-| output_configuration           | core | json   | The output configuration.                                        |
-| tags                           | core | hstore |
+| Title                          | ID   | Type       | Data Type                                                        | Description |
+| ------------------------------ | ---- | ---------- | ---------------------------------------------------------------- | ----------- |
+| _key                           | core | string     |
+| account_id                     | core | string     |
+| arn                            | core | string     | The model ARN.                                                   |
+| created_time                   | core | string     | Timestamp of when the model was last created.                    |
+| input_configuration            | core | json       | The input configuration.                                         |
+| invoke_model_endpoint_role_arn | core | string     | The role used to invoke the model.                               |
+| last_updated_time              | core | string     | Timestamp of when the model was last updated.                    |
+| model_endpoint                 | core | string     | The Amazon SageMaker model endpoints.                            |
+| model_endpoint_status          | core | string     | The Amazon Fraud Detector status for the external model endpoint |
+| model_source                   | core | string     | The source of the model.                                         |
+| output_configuration           | core | json       | The output configuration.                                        |
+| tags                           | core | hstore_csv |

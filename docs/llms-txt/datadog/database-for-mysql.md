@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Cloudcraft (Standalone) > Components: Azure > Database for MySQL
   Component
-source_url: https://docs.datadoghq.com/components-azure/database-for-mysql/index.html
 ---
 
 # Database for MySQL Component

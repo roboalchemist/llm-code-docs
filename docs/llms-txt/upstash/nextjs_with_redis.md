@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/tutorials/nextjs_with_redis.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Next.js with Redis
 
 <Card title="GitHub Repository" icon="github" href="https://github.com/upstash/redis-js/tree/main/examples/nextjs-app-router" horizontal>

@@ -1,10 +1,14 @@
 # Source: https://upstash.com/docs/redis/help/managing-healthcare-data.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Managing Healthcare Data
 
 You can use Upstash Redis to store and process Protected Health Information (PHI). You are responsible for the following:
 
-* **Signing a Business Associate Agreement (BAA)** with Upstash. Email [support@upstash.com](mailto:support@upstash.com) to get started.
+* **Signing a Business Associate Agreement (BAA)** with Upstash. This is provided as part of our Enterprise offering. Email [support@upstash.com](mailto:support@upstash.com) to get started.
 * **Marking specific databases as HIPAA databases** and addressing security issues raised by the Upstash team.
 * **Ensuring MFA is enabled** on all Upstash Console accounts.
   * Enforce MFA as a requirement to access the organization

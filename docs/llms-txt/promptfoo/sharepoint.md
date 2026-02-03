@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/integrations/sharepoint/
+
 # SharePoint Integration
 
 promptfoo allows you to import eval test cases directly from Microsoft SharePoint CSV files using certificate-based authentication with Azure AD.

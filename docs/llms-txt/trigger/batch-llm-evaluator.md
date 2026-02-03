@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/example-projects/batch-llm-evaluator.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Next.js Batch LLM Evaluator
 
 > This example Next.js project evaluates multiple LLM models using the Vercel AI SDK and streams updates to the frontend using Trigger.dev Realtime.

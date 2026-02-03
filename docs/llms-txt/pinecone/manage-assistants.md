@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/assistant/manage-assistants.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Manage assistants
 
 > View, update, and delete, and check the status of assistants.
@@ -44,10 +48,10 @@ This operation returns a response like the following:
     {
       "name": "example-assistant",
       "instructions": "Use American English for spelling and grammar.",
-      "metadata": {},
+      "metadata": {"team": "customer-support", "version": "1.0"},
       "status": "Initializing",
-      "created_on": "2023-11-07T05:31:56Z",
-      "updated_on": "2023-11-07T05:31:56Z"
+      "created_at": "2023-11-07T05:31:56Z",
+      "updated_at": "2023-11-07T05:31:56Z"
     }
   ]
 }
@@ -100,10 +104,10 @@ This operation returns a response like the following:
 {
   "name": "example-assistant",
   "instructions": "Use American English for spelling and grammar.",
-  "metadata": {},
+  "metadata": {"team": "customer-support", "version": "1.0"},
   "status": "Initializing",
-  "created_on": "2023-11-07T05:31:56Z",
-  "updated_on": "2023-11-07T05:31:56Z"
+  "created_at": "2023-11-07T05:31:56Z",
+  "updated_at": "2023-11-07T05:31:56Z"
 }
 ```
 
@@ -130,6 +134,10 @@ The chat model is the underlying large language model (LLM) that powers the assi
 
 You can [add or update the instructions](/reference/api/latest/assistant/update_assistant) for an existing assistant. Instructions are a short description or directive for the assistant to apply to all of its responses. For example, you can update the instructions to reflect the assistant's role or purpose.
 
+<Note>
+  Instructions (maximum size 16 KB) are included in every chat API call. Longer instructions increase input token costs for each request and consume more of the LLM's context window, reducing available space for retrieved context and conversation history.
+</Note>
+
 For example:
 
 <CodeGroup>
@@ -144,7 +152,7 @@ For example:
   assistant = pc.assistant.update_assistant(
       assistant_name="example-assistant", 
       instructions="Use American English for spelling and grammar.",
-      region="us" # Region to deploy assistant. Options: "us" (default) or "eu".
+      metadata={"team": "customer-support", "version": "1.1"} # Optional metadata (max 16KB) for organizing assistants.
   )
   ```
 
@@ -155,6 +163,7 @@ For example:
 
   await pc.updateAssistant('example-assistant', {
     instructions: 'Use American English for spelling and grammar.',
+    metadata: { team: 'customer-support', version: '1.1' }, // Optional metadata (max 16KB) for organizing assistants.
   });
   ```
 
@@ -166,8 +175,7 @@ For example:
     -H "Content-Type: application/json" \
     -d '{
     "instructions": "Use American English for spelling and grammar.",
-    "metadata": {"updated": "2024-09-30"},
-    "region": "us"
+    "metadata": {"team": "customer-support", "version": "1.1"}
   }'
   ```
 </CodeGroup>
@@ -178,7 +186,7 @@ The example above returns a result like the following:
 {
     "name":"example-assistant",
     "instructions":"Use American English for spelling and grammar.",
-    "metadata":{"updated":"2024-09-30"},
+    "metadata":{"team": "customer-support", "version": "1.1"},
     "status":"Ready",
     "created_at":"2024-06-14T14:58:06.573004549Z",
     "updated_at":"2024-10-01T19:44:32.813235817Z"

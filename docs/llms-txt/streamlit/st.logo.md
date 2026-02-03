@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/media/st.logo
+
 # st.logo
 
 Renders a logo in the upper-left corner of your app and its sidebar.

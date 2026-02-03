@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/configuration/expected-outputs/javascript/
+
 # Javascript assertions
 
 The `javascript` [assertion](https://www.promptfoo.dev/docs/configuration/expected-outputs/) allows you to provide a custom JavaScript function to validate the LLM output.

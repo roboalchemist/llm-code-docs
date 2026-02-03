@@ -10,7 +10,6 @@ description: >-
 breadcrumbs: >-
   Docs > APM > Tracing Guides > Tutorial - Enabling Tracing for a Java
   Application on AWS Elastic Kubernetes Service
-source_url: https://docs.datadoghq.com/guide/tutorial-enable-java-aws-eks/index.html
 ---
 
 # Tutorial - Enabling Tracing for a Java Application on AWS Elastic Kubernetes Service

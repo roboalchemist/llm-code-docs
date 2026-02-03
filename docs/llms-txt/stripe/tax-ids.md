@@ -6,35 +6,9 @@
 
 # Source: https://docs.stripe.com/billing/customer/tax-ids.md
 
-# Source: https://docs.stripe.com/invoicing/customer/tax-ids.md
+# Customer Tax IDs
 
-# Source: https://docs.stripe.com/tax/invoicing/tax-ids.md
-
-# Source: https://docs.stripe.com/tax/checkout/tax-ids.md
-
-# Source: https://docs.stripe.com/billing/customer/tax-ids.md
-
-# Source: https://docs.stripe.com/invoicing/customer/tax-ids.md
-
-# Source: https://docs.stripe.com/tax/invoicing/tax-ids.md
-
-# Source: https://docs.stripe.com/tax/checkout/tax-ids.md
-
-# Source: https://docs.stripe.com/billing/customer/tax-ids.md
-
-# Source: https://docs.stripe.com/invoicing/customer/tax-ids.md
-
-# Source: https://docs.stripe.com/tax/invoicing/tax-ids.md
-
-# Source: https://docs.stripe.com/tax/checkout/tax-ids.md
-
-# Source: https://docs.stripe.com/billing/customer/tax-ids.md
-
-# Source: https://docs.stripe.com/invoicing/customer/tax-ids.md
-
-# Customer tax IDs
-
-Store, validate, and render customer tax ID numbers with Stripe Invoicing.
+Learn how to store, validate, and render customer tax ID numbers with Stripe Billing.
 
 Need another tax ID type? Request additional Tax ID types by emailing [stripe-tax@stripe.com](mailto:stripe-tax@stripe.com?subject=Request).
 
@@ -151,6 +125,7 @@ Currently, Stripe supports the following Tax ID types in the following regions:
 | PE      | pe_ruc     | Peruvian RUC number                                                                                     | 12345678901           | Yes                        |
 | PH      | ph_tin     | Philippines Tax Identification Number                                                                   | 123456789012          | Yes                        |
 | PL      | eu_vat     | European VAT number                                                                                     | PL1234567890          | Yes                        |
+| PL      | pl_nip     | Polish NIP number                                                                                       | 1234567890            | No                         |
 | PT      | eu_vat     | European VAT number                                                                                     | PT123456789           | Yes                        |
 | RO      | eu_vat     | European VAT number                                                                                     | RO1234567891          | Yes                        |
 | RO      | ro_tin     | Romanian tax ID number                                                                                  | 1234567890123         | No                         |

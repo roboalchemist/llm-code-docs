@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/powered-by-zapier/zap-creation/selecting-an-action.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Selecting an Action
 
 > An Action is an operation that can be performed against a third-party API; such as a `READ` or a `WRITE`.

@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/connectors/microsoft-outlook.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Microsoft Outlook connector
 
 > Connect WRITER Agent to Microsoft Outlook to manage emails and communications

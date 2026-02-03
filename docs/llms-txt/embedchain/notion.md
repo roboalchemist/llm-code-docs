@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/components/data-sources/notion.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 📓 Notion
 
 To use notion you must install the extra dependencies with `pip install --upgrade embedchain[community]`.
@@ -7,7 +11,7 @@ To use notion you must install the extra dependencies with `pip install --upgrad
 To load a notion page, use the data\_type as `notion`. Since it is hard to automatically detect, it is advised to specify the `data_type` when adding a notion document.
 The next argument must **end** with the `notion page id`. The id is a 32-character string. Eg:
 
-```python
+```python  theme={null}
 from embedchain import App
 
 app = App()

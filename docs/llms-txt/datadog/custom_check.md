@@ -3,8 +3,7 @@
 ---
 title: Custom Checks
 description: Datadog, the leading service for cloud-scale monitoring.
-breadcrumbs: Docs > Container Monitoring > Datadog Operator > Custom Checks
-source_url: https://docs.datadoghq.com/datadog_operator/custom_check/index.html
+breadcrumbs: Docs > Containers > Datadog Operator > Custom Checks
 ---
 
 # Custom Checks

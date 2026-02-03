@@ -4,30 +4,6 @@
 
 # Source: https://grafbase.com/docs/gateway/installation.md
 
-# Source: https://grafbase.com/docs/cli/installation.md
-
-# Source: https://grafbase.com/docs/platform/self-hosting/installation.md
-
-# Source: https://grafbase.com/docs/gateway/installation.md
-
-# Source: https://grafbase.com/docs/cli/installation.md
-
-# Source: https://grafbase.com/docs/platform/self-hosting/installation.md
-
-# Source: https://grafbase.com/docs/gateway/installation.md
-
-# Source: https://grafbase.com/docs/cli/installation.md
-
-# Source: https://grafbase.com/docs/platform/self-hosting/installation.md
-
-# Source: https://grafbase.com/docs/gateway/installation.md
-
-# Source: https://grafbase.com/docs/cli/installation.md
-
-# Source: https://grafbase.com/docs/platform/self-hosting/installation.md
-
-# Source: https://grafbase.com/docs/gateway/installation.md
-
 # Installation
 
 To install the Grafbase Gateway, run the following command:

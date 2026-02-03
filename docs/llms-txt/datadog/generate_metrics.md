@@ -6,7 +6,6 @@ description: Generate custom metrics from ingested spans and complete traces.
 breadcrumbs: >-
   Docs > APM > The Trace Pipeline > Generate Custom Metrics from Spans and
   Traces
-source_url: https://docs.datadoghq.com/trace_pipeline/generate_metrics/index.html
 ---
 
 # Generate Custom Metrics from Spans and Traces

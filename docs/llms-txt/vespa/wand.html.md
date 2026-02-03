@@ -178,5 +178,5 @@ The [rawScore](../reference/ranking/rank-features.html#rawScore(field)) ranking 
 
 In this example, the inner product score is 41, and the bm25 of the text is 35.003.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

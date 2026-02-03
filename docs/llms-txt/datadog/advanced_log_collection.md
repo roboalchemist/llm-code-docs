@@ -6,7 +6,6 @@ description: Use the Datadog Agent to collect your logs and send them to Datadog
 breadcrumbs: >-
   Docs > Agent > Host Agent Log collection > Advanced Log Collection
   Configurations
-source_url: https://docs.datadoghq.com/logs/advanced_log_collection/index.html
 ---
 
 # Advanced Log Collection Configurations

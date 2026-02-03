@@ -50,7 +50,7 @@ Once you've connected, you get a welcome message detailing which environment you
 
 Now you can interact with the environment as you want.
 Note that your app's file system is read-only,
-except for any [mounts you've defined](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#mounts).
+except for any [mounts you've defined](https://docs.upsun.com/create-apps/image-properties/mounts.md).
 
 ## Connect to services
 

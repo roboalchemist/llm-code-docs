@@ -1,10 +1,11 @@
+# Source: https://docs.datadoghq.com/getting_started/containers/datadog_operator.md
+
 # Source: https://docs.datadoghq.com/containers/datadog_operator.md
 
 ---
 title: Datadog Operator
 description: Deploy and manage the Datadog Agent on Kubernetes using the Datadog Operator
-breadcrumbs: Docs > Container Monitoring > Datadog Operator
-source_url: https://docs.datadoghq.com/datadog_operator/index.html
+breadcrumbs: Docs > Containers > Datadog Operator
 ---
 
 # Datadog Operator

@@ -1,12 +1,77 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/cli-changelog.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # CLI Changelog
 
 > See the history of changes for the Graphite CLI.
 
-### Current versions:
+<Info> The CLI initially releases to a Beta stage and then graduates to Stable. For current and historical version information, please visit our [NPM repository](https://www.npmjs.com/package/@withgraphite/graphite-cli?activeTab=versions). </Info>
 
-**Stable: 1.7.8**      **Beta: 1.7.8**      **Alpha: 1.7.9**
+<Update label="1.7.18" description="2026-02-02" tags={["feature","bug-fix"]}>
+  * AI-generated branch names now honor the lowercase CLI configuration setting.
+
+  * Improved `gt sync --force` warning behavior - non-interactive mode now consistently respects the flag, and interactive mode shows more informative warnings.
+
+  * Fixed a bug where range diff could incorrectly evaluate empty output as equivalent, causing sync to take the remote version despite local changes.
+
+  * Fixed a bug related to empty commit messages during rebase.
+
+  * Fixed a bug where `gt get` and `gt checkout` would exit with code 0 even on error.
+
+  * Fixed an issue where users would see `fatal: ambiguous argument 'refs/gt-fetch-head/...': unknown revision or path not in the working tree.` when running `gt sync`.
+
+  * Fixed a bug where `gt get` and `gt checkout` did not properly look for numerical branch names.
+</Update>
+
+<Update label="1.7.17" description="2026-01-28" tags={["feature","bug-fix"]}>
+  * Updated `gt get` command description to include new flags
+  * Fixed a bug where stale remote tracking references could cause incorrect failed pushes when reusing branch names.
+  * Fixed `gt undo` to properly work with `gt freeze` and `gt unfreeze` commands.
+  * Fixed CLI help text for `gt split --by-file`.
+</Update>
+
+<Update label="1.7.16" description="2026-01-20" tags={["feature", "improvement", "bug-fix", "performance"]}>
+  * Added new `--remote-upstack` (`-u`) flag to `gt get` to fetch upstack branches submitted by other users.
+  * Fixed a bug where frozen branches could be updated by `gt submit` after a `gt sync`.
+  * Fixed `gt reorder` incorrectly splitting stacks when reordering branches above frozen branches.
+  * Fixed commit message formatting when using multiple -m flags - messages now include newlines between each flag, which matches native git behavior.
+  * Fixed a bug where `gt submit` would use the wrong branch's metadata to generate a title and description under some circumstances.
+</Update>
+
+<Update label="1.7.15" description="2026-01-07" tags={["feature", "improvement"]}>
+  * Added new `--close` flag (alias `-c`) to `gt delete` to also close a branch's associated PR on GitHub.
+  * Improved branch name suggestion logic when running `gt split` to match behavior of `gt create`.
+</Update>
+
+<Update label="1.7.14" description="2025-12-23" tags={["feature"]}>
+  * Added new `--into` flag to `gt modify` for committing changes into a downstack branch instead of the current branch.
+</Update>
+
+<Update label="1.7.13" description="2025-12-18" tags={["bug-fix"]}>
+  * Fixed some internal issues with builds.
+</Update>
+
+<Update label="1.7.12" description="2025-12-15" tags={["feature", "bug-fix"]}>
+  * Fixed issue with branch selection when running `gt create --insert`.
+  * Add current branch indicator in `gt log`.
+  * Always prompt a user before opening an editor for a PR description.
+  * Fixed `gt submit --cli --ai` prompt to reflect AI auto-fills PR descriptions when skipped.
+</Update>
+
+<Update label="1.7.11" description="2025-12-10" tags={["feature", "bug-fix"]}>
+  * Updated `gt up` and `gt down` to return a non-zero exit code when they cannot move because the current branch is already at the top or bottom of the stack.
+  * Running `gt undo` right after `gt abort` will now undo the command that ran before the aborted command instead of failing.
+  * Updated all CLI help text and generated documentation links to use graphite.com instead of graphite.dev.
+</Update>
+
+<Update label="1.7.10" description="2025-11-20" tags={["feature","bug-fix"]}>
+  * Added a new feature to `gt submit` that lets users choose whether reviewers should be applied to all PRs or only to newly created PRs when submitting a stack that contains a mix of new and existing PRs.
+  * Fixed a circular dependency bug in split by file that occurred when branch names conflicted after a split was performed.
+  * Fixed an alias parsing issue causing unintentional command execution upon user typos
+</Update>
 
 <Update label="1.7.9" description="2025-11-14" tags={["feature","bug-fix"]}>
   * Added ability to set and manage a default profile through the interactive config menu.

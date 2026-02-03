@@ -4,8 +4,6 @@
 title: Bedrock Evaluation Job
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Bedrock Evaluation Job
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.bedrock_evaluation_job.dataset/index.html
 ---
 
 # Bedrock Evaluation Job
@@ -36,4 +34,4 @@ aws.bedrock_evaluation_job
 | output_data_config         | core | json          | Contains the configuration details of the Amazon S3 bucket for storing the results of the evaluation job.                          |
 | role_arn                   | core | string        | The Amazon Resource Name (ARN) of the IAM service role used in the evaluation job.                                                 |
 | status                     | core | string        | The current status of the evaluation job.                                                                                          |
-| tags                       | core | hstore        |
+| tags                       | core | hstore_csv    |

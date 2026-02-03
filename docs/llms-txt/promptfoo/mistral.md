@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/mistral/
+
 # Mistral AI
 
 The [Mistral AI API](https://docs.mistral.ai/api/) provides access to cutting-edge language models that deliver exceptional performance at competitive pricing. Mistral offers a compelling alternative to OpenAI and other providers, with specialized models for reasoning, code generation, and multimodal tasks.

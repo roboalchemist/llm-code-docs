@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/invoicing/invoicing-settings/invoice-numbering.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Invoice numbering
 
 > Define how invoice numbers are generated — per customer or across the billing entity.

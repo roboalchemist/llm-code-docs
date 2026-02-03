@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/export-workbook.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Export Workbook Plugin
 
 > A server-side utility for Flatfile that allows users to export data from an entire Flatfile Workbook into a single, downloadable Microsoft Excel (.xlsx) file.
@@ -18,7 +22,7 @@ Use cases include:
 ## Installation
 
 <CodeGroup>
-  ```bash npm
+  ```bash npm theme={null}
   npm install @flatfile/plugin-export-workbook
   ```
 </CodeGroup>
@@ -55,7 +59,7 @@ The `sheetOptions` parameter allows you to configure specific sheets with the fo
 ### Basic Usage
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from "@flatfile/listener";
   import { exportWorkbookPlugin } from "@flatfile/plugin-export-workbook";
 
@@ -78,7 +82,7 @@ The `sheetOptions` parameter allows you to configure specific sheets with the fo
   */
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from "@flatfile/listener";
   import { exportWorkbookPlugin } from "@flatfile/plugin-export-workbook";
 
@@ -105,7 +109,7 @@ The `sheetOptions` parameter allows you to configure specific sheets with the fo
 ### Configuration Example
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from "@flatfile/listener";
   import { exportWorkbookPlugin } from "@flatfile/plugin-export-workbook";
 
@@ -134,7 +138,7 @@ The `sheetOptions` parameter allows you to configure specific sheets with the fo
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from "@flatfile/listener";
   import { exportWorkbookPlugin } from "@flatfile/plugin-export-workbook";
 
@@ -167,7 +171,7 @@ The `sheetOptions` parameter allows you to configure specific sheets with the fo
 ### Advanced Usage with Column Transformer
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from "@flatfile/listener";
   import { exportWorkbookPlugin } from "@flatfile/plugin-export-workbook";
 
@@ -205,7 +209,7 @@ The `sheetOptions` parameter allows you to configure specific sheets with the fo
   */
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from "@flatfile/listener";
   import { exportWorkbookPlugin } from "@flatfile/plugin-export-workbook";
 

@@ -2,6 +2,8 @@
 
 # Prohibited and restricted businesses
 
+## Understand prohibited and restricted business categories and jurisdictions, outlining extra due diligence requirements and approval limits.
+
 This document was previously known as "Ethical instructions for Partners, including Prohibited and Restricted segments".
 
 The below businesses are either prohibited or restricted to use Klarna’s services. Any business using Klarna’s services and operating in a restricted segment listed below shall comply with the requirements outlined by Klarna. 

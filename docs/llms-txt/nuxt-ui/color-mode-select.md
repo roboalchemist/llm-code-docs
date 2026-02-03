@@ -18,13 +18,9 @@ The ColorModeSelect component extends the [SelectMenu](/docs/components/select-m
 
 ### With custom icons
 
-<framework-only>
-<template v-slot:nuxt="">
-<div>
-
-Use the `app.config.ts` to customize the icon with the `ui.icons` property:
-
-```ts [app.config.ts]
+**Nuxt:**
+Use the app.config.ts to customize the icon with the ui.icons property:
+```ts
 export default defineAppConfig({
   ui: {
     icons: {
@@ -34,17 +30,12 @@ export default defineAppConfig({
     }
   }
 })
+
 ```
 
-</div>
-</template>
-
-<template v-slot:vue="">
-<div>
-
-Use the `vite.config.ts` to customize the icon with the `ui.icons` property:
-
-```ts [vite.config.ts]
+**Vue:**
+Use the vite.config.ts to customize the icon with the ui.icons property:
+```ts
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import ui from '@nuxt/ui/vite'
@@ -62,11 +53,8 @@ export default defineConfig({
     })
   ]
 })
-```
 
-</div>
-</template>
-</framework-only>
+```
 
 ## API
 
@@ -82,19 +70,19 @@ interface ColorModeSelectProps {
    */
   defaultOpen?: boolean | undefined;
   /**
-   * The controlled open state of the Combobox. Can be binded with with `v-model:open`.
+   * The controlled open state of the Combobox. Can be binded with `v-model:open`.
    */
   open?: boolean | undefined;
   /**
    * The icon displayed to open the menu.
    */
-  trailingIcon?: string | object | undefined;
+  trailingIcon?: any;
   color?: "primary" | "secondary" | "success" | "info" | "warning" | "error" | "neutral" | undefined;
   /**
    * Highlight the ring color like a focus state.
    */
   highlight?: boolean | undefined;
-  ui?: { base?: ClassNameValue; leading?: ClassNameValue; leadingIcon?: ClassNameValue; leadingAvatar?: ClassNameValue; leadingAvatarSize?: ClassNameValue; trailing?: ClassNameValue; trailingIcon?: ClassNameValue; value?: ClassNameValue; placeholder?: ClassNameValue; arrow?: ClassNameValue; content?: ClassNameValue; viewport?: ClassNameValue; group?: ClassNameValue; empty?: ClassNameValue; label?: ClassNameValue; separator?: ClassNameValue; item?: ClassNameValue; itemLeadingIcon?: ClassNameValue; itemLeadingAvatar?: ClassNameValue; itemLeadingAvatarSize?: ClassNameValue; itemLeadingChip?: ClassNameValue; itemLeadingChipSize?: ClassNameValue; itemTrailing?: ClassNameValue; itemTrailingIcon?: ClassNameValue; itemWrapper?: ClassNameValue; itemLabel?: ClassNameValue; itemDescription?: ClassNameValue; input?: ClassNameValue; focusScope?: ClassNameValue; } | undefined;
+  ui?: { base?: ClassNameValue; leading?: ClassNameValue; leadingIcon?: ClassNameValue; leadingAvatar?: ClassNameValue; leadingAvatarSize?: ClassNameValue; trailing?: ClassNameValue; trailingIcon?: ClassNameValue; value?: ClassNameValue; placeholder?: ClassNameValue; arrow?: ClassNameValue; content?: ClassNameValue; viewport?: ClassNameValue; group?: ClassNameValue; empty?: ClassNameValue; label?: ClassNameValue; separator?: ClassNameValue; item?: ClassNameValue; itemLeadingIcon?: ClassNameValue; itemLeadingAvatar?: ClassNameValue; itemLeadingAvatarSize?: ClassNameValue; itemLeadingChip?: ClassNameValue; itemLeadingChipSize?: ClassNameValue; itemTrailing?: ClassNameValue; itemTrailingIcon?: ClassNameValue; itemWrapper?: ClassNameValue; itemLabel?: ClassNameValue; itemDescription?: ClassNameValue; input?: ClassNameValue; focusScope?: ClassNameValue; trailingClear?: ClassNameValue; } | undefined;
   /**
    * The name of the field. Submitted with its owning form as part of a name/value pair.
    */
@@ -135,11 +123,11 @@ interface ColorModeSelectProps {
   /**
    * Display an icon on the left side.
    */
-  leadingIcon?: string | object | undefined;
+  leadingIcon?: any;
   /**
    * The icon when the `loading` prop is `true`.
    */
-  loadingIcon?: string | object | undefined;
+  loadingIcon?: any;
   /**
    * Whether to reset the searchTerm when the Combobox input blurred
    */
@@ -149,9 +137,17 @@ interface ColorModeSelectProps {
    */
   resetSearchTermOnSelect?: boolean | undefined;
   /**
+   * When `true` the `modelValue` will be reset to `null` (or `[]` if `multiple`)
+   */
+  resetModelValueOnClear?: boolean | undefined;
+  /**
    * When `true`, hover over item will trigger highlight
    */
   highlightOnHover?: boolean | undefined;
+  /**
+   * Use this to compare objects by a particular field, or pass your own comparison function for complete control over how objects are compared.
+   */
+  by?: string | ((a: SelectMenuItem[], b: SelectMenuItem[]) => boolean) | undefined;
   /**
    * The value of the SelectMenu when initially rendered. Use when you do not need to control the state of the SelectMenu.
    */
@@ -176,7 +172,16 @@ interface ColorModeSelectProps {
   /**
    * The icon displayed when an item is selected.
    */
-  selectedIcon?: string | object | undefined;
+  selectedIcon?: any;
+  /**
+   * Display a clear button to reset the model value.
+   * Can be an object to pass additional props to the Button.
+   */
+  clear?: boolean | Partial<Omit<ButtonProps, LinkPropsKeys>> | undefined;
+  /**
+   * The icon displayed in the clear button.
+   */
+  clearIcon?: any;
   /**
    * Display an arrow alongside the menu.
    */
@@ -189,7 +194,7 @@ interface ColorModeSelectProps {
    * Enable virtualization for large lists.
    * Note: when enabled, all groups are flattened into a single list due to a limitation of Reka UI (https://github.com/unovue/reka-ui/issues/1885).
    */
-  virtualize?: boolean | { overscan?: number | undefined; estimateSize?: number | undefined; } | undefined;
+  virtualize?: boolean | { overscan?: number | undefined; estimateSize?: number | ((index: number) => number) | undefined; } | undefined;
   /**
    * When `items` is an array of objects, select the field to use as the value instead of the object itself.
    */
@@ -202,6 +207,7 @@ interface ColorModeSelectProps {
    * When `items` is an array of objects, select the field to use as the description.
    */
   descriptionKey?: GetItemKeys<SelectMenuItem[]> | undefined;
+  modelModifiers?: Omit<ModelModifiers<SelectMenuItem>, "lazy"> | undefined;
   /**
    * Determines if custom user input that does not exist in options can be added.
    */
@@ -220,8 +226,4 @@ interface ColorModeSelectProps {
 
 ## Changelog
 
-<component-changelog prefix="color-mode">
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

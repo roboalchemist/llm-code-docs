@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/api-reference/webhooks/get-webhook.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Retrieve Webhook
 
 > Retrieve a single webhook for the authenticated user.
@@ -41,7 +45,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </ResendParamField>
 
 <RequestExample>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -51,13 +55,13 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   );
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->webhooks->get('4dd369bc-aa82-4ff3-97de-514ae3000ee0');
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = 're_xxxxxxxxx'
@@ -65,7 +69,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   webhook = resend.Webhooks.get(webhook_id='4dd369bc-aa82-4ff3-97de-514ae3000ee0')
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   require 'resend'
 
   Resend.api_key = 're_xxxxxxxxx'
@@ -73,15 +77,19 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   webhook = Resend::Webhooks.get('4dd369bc-aa82-4ff3-97de-514ae3000ee0')
   ```
 
-  ```go Go theme={null}
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
+
   import "github.com/resend/resend-go/v3"
 
-  client := resend.NewClient("re_xxxxxxxxx")
+  func main() {
+  	client := resend.NewClient("re_xxxxxxxxx")
 
-  webhook, err := client.Webhooks.Get("4dd369bc-aa82-4ff3-97de-514ae3000ee0")
+  	client.Webhooks.Get("4dd369bc-aa82-4ff3-97de-514ae3000ee0")
+  }
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{Resend, Result};
 
   #[tokio::main]
@@ -97,7 +105,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -109,7 +117,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   }
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -118,14 +126,14 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   Console.WriteLine( "Endpoint={0}", resp.Content.EndpointUrl );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X GET 'https://api.resend.com/webhooks/4dd369bc-aa82-4ff3-97de-514ae3000ee0' \
        -H 'Authorization: Bearer re_xxxxxxxxx'
   ```
 </RequestExample>
 
 <ResponseExample>
-  ```json Response theme={null}
+  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "object": "webhook",
     "id": "4dd369bc-aa82-4ff3-97de-514ae3000ee0",

@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/webhooks/thread-service-level-agreement-status-transitioned.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Thread SLA status transitioned
 
 This event is fired when the status of an SLA linked to a thread changes.

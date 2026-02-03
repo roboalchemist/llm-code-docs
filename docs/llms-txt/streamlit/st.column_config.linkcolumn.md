@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/data/st.column_config/st.column_config.linkcolumn
+
 # st.column_config.LinkColumn
 
 Configure a link column in `st.dataframe` or `st.data_editor`.

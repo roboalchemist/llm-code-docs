@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/integration/mergeagenthandlertool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Merge Agent Handler Tool
 
 > Enables CrewAI agents to securely access third-party integrations like Linear, GitHub, Slack, and more through Merge's Agent Handler platform
@@ -369,8 +373,3 @@ The tool provides comprehensive error handling:
 * **Validation Errors**: Invalid parameters passed to tool methods
 
 All errors are wrapped in `MergeAgentHandlerToolError` for consistent error handling.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.crewai.com/llms.txt

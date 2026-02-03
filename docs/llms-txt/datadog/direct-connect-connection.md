@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Cloudcraft (Standalone) > AWS Components > Direct Connect Connection
   Component
-source_url: https://docs.datadoghq.com/components-aws/direct-connect-connection/index.html
 ---
 
 # Direct Connect Connection Component

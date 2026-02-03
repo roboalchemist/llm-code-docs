@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/vector/sdks/php/commands/delete-vectors.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deleting Vectors
 
 You can easily delete vectors from our vector database, ensuring your data remains organized and up-to-date.

@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/execution-flow/st.fragment
+
 # st.fragment
 
 Decorator to turn a function into a fragment which can rerun independently of the full app.

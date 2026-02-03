@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/jsdoc/require-property-description.md
 ---
-# jsdoc/require-property-description&#x20;
 
 ### What it does
 

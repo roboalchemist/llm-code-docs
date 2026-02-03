@@ -152,7 +152,7 @@ While document checks provide a defense against the use of fraudulent identity d
 
 Selfie checks look for distinguishing biological traits, such as face geometry, from a government-issued photo ID and a picture of your user’s face. Stripe then uses advanced machine learning algorithms to ensure the face pictures belong to the same person.
 
-In some places, such as the EU, there are privacy laws that require you to justify your use of biometric technology or offer an alternative, non-biometric means of verification.  We recommend you offer an alternative verification option or consult with your legal counsel.
+In some places, such as the EU, there are privacy laws that require you to justify your use of biometric technology or offer an alternative, non-biometric means of verification. We recommend you offer an alternative verification option or consult with your legal counsel.
 
 ### Availability 
 
@@ -618,13 +618,6 @@ To add ID number checks to your app, see [Creating a VerificationSession](https:
 ID Number checks are available in the following countries:
 
 - US
-
-### Additional Availability  (Invite only)
-
-[Reach out to support](https://support.stripe.com/contact) to request access to ID Number checks in the following countries:
-
-- BR
-- SG
 
 
 # Phone (Invite only)

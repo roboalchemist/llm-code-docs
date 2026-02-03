@@ -1,5 +1,9 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/troubleshooting.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # CLI Troubleshooting FAQs
 
 > Tips for resolving common Graphite CLI issues.
@@ -18,7 +22,7 @@ If the CLI gets stuck in a broken state and you are not able to wait for a membe
 
 * `gt init --reset` is the nuclear option which deletes all Graphite metadata from your repository. All branches will need to be re-tracked.
 
-* The debug logs that `gt feedback` sends us are stored at `~/.local/share/graphite/debug` (or `$XDG_DATA_HOME/graphite/debug`). Each file contains the logs for a single CLI invocation, and includes information about underlying git commands and network requests. Logs are stored for 24 hours —`gt feedback` sends the whole directory. If you encounter any issues with the `gt feedback` command, feel free to zip the directory and include it in a support ticket to [support@graphite.dev](mailto:support@graphite.dev). You can also go spelunking in the logs yourself if you are curious!
+* The debug logs that `gt feedback` sends us are stored at `~/.local/share/graphite/debug` (or `$XDG_DATA_HOME/graphite/debug`). Each file contains the logs for a single CLI invocation, and includes information about underlying git commands and network requests. Logs are stored for 24 hours —`gt feedback` sends the whole directory. If you encounter any issues with the `gt feedback` command, feel free to zip the directory and include it in a support ticket to [support@graphite.com](mailto:support@graphite.com). You can also go spelunking in the logs yourself if you are curious!
 
 If none of these work, and you would like specific help for your issue, reach out in our [community Slack channel](https://community.graphite.com).
 

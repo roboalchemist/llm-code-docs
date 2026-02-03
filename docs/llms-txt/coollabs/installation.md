@@ -1,34 +1,38 @@
 # Source: https://docs.coollabs.io/coolify/v3/installation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.coollabs.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # null
 
 This section provide details on how to install Coolify.
 
 Before running the install script, please ensure your server has the following packages installed:
 
-*   `sudo`
-*   `wget`
-*   `curl`
+* `sudo`
+* `wget`
+* `curl`
 
 ## Scripted
 
 Prompts for answers:
 
-```bash
+```bash  theme={null}
 wget -q https://get.coollabs.io/coolify/install.sh \
 -O install.sh; sudo bash ./install.sh
 ```
 
 No question asked (force):
 
-```bash
+```bash  theme={null}
 wget -q https://get.coollabs.io/coolify/install.sh \
 -O install.sh; sudo bash ./install.sh -f
 ```
 
 Opt-out from telemetry (count installed instances on the [landing page](https://coolify.io))
 
-```bash
+```bash  theme={null}
 wget -q https://get.coollabs.io/coolify/install.sh \
 -O install.sh; sudo bash ./install.sh -n
 ```
@@ -37,10 +41,10 @@ You can review the script [here](https://github.com/coollabsio/get.coollabs.io/b
 
 ## Manually
 
-1.  Need to set the required environment variables in a `.env` file (see
-    [below](./installation.md#environment-variables))
-2.  Need to have [Docker Engine v20.10+](https://docs.docker.com/engine/install/)
-    installed on your server.
+1. Need to set the required environment variables in a `.env` file (see
+   [below](./installation.md#environment-variables))
+2. Need to have [Docker Engine v20.10+](https://docs.docker.com/engine/install/)
+   installed on your server.
 
 ### Environment Variables
 
@@ -48,7 +52,7 @@ Coolify needs to have the following environment variables to be set in advance.
 
 > This is done automatically with the automated installation script.
 
-```text
+```text  theme={null}
 COOLIFY_APP_ID=
 COOLIFY_SECRET_KEY=
 COOLIFY_DATABASE_URL=file:../db/prod.db
@@ -70,7 +74,7 @@ COOLIFY_AUTO_UPDATE=false
 
 ## Options
 
-```sh
+```sh  theme={null}
 Usage: install.sh [options...]
     -h, --help                  Show this help menu.
     -v, --version               Show script version.
@@ -99,10 +103,10 @@ reconfigure Coolify.
 
 For example:
 
-*   If you want to opt-out of tracking, execute the install script with
-    `--do-not-track`.
-*   If you want to use the white-labeled version, execute the install script with
-    `--white-labeled`.
+* If you want to opt-out of tracking, execute the install script with
+  `--do-not-track`.
+* If you want to use the white-labeled version, execute the install script with
+  `--white-labeled`.
 
 <Warning>
   Some configurations are not preserved if you would like to change them on an already configured instance.
@@ -116,7 +120,7 @@ For example:
 
 If for some reason, your instance crashes, you can restart it with the following command:
 
-```bash
+```bash  theme={null}
 wget -q https://get.coollabs.io/coolify/install.sh \
 -O install.sh; sudo bash ./install.sh -r
 ```
@@ -127,18 +131,18 @@ You can easily uninstall Coolify by stopping the following containers,
 `coolify`, `coolify-proxy` and `coolify-fluentbit`, or execute the following
 script:
 
-```bash
+```bash  theme={null}
 docker stop -t 0 coolify coolify-proxy coolify-fluentbit; docker rm coolify coolify-proxy coolify-fluentbit
 ```
 
 You also need to cleanup all the docker volumes as well.
 
-```bash
+```bash  theme={null}
 docker volume rm coolify-db coolify-letsencrypt coolify-local-backup coolify-logs coolify-ssl-certs coolify-traefik-letsencrypt
 ```
 
 And delete all configurations in `~/coolify`:
 
-```bash
+```bash  theme={null}
 rm -f ~/coolify
 ```

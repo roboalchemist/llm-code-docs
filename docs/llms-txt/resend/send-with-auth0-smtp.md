@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/send-with-auth0-smtp.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send emails using Auth0 with SMTP
 
 > Learn how to integrate Auth0 with Resend SMTP.
@@ -16,9 +20,20 @@ To get the most out of this guide, you'll need to:
 When configuring your SMTP integration, you'll need to use the following credentials:
 
 * **Host**: `smtp.resend.com`
-* **Port**: `465`
+* **Port**: `465` or `587` (see [port options](#port-options) below)
 * **Username**: `resend`
 * **Password**: `YOUR_API_KEY`
+
+### Port options
+
+Resend supports multiple ports for different security configurations:
+
+| Type     | Port                | Security                                                                  |
+| -------- | ------------------- | ------------------------------------------------------------------------- |
+| SMTPS    | `465`, `2465`       | Implicit SSL/TLS (Immediately connects via SSL/TLS)                       |
+| STARTTLS | `25`, `587`, `2587` | Explicit SSL/TLS (First connects via plaintext, then upgrades to SSL/TLS) |
+
+For Auth0, we recommend using port `465` (SMTPS) or `587` (STARTTLS).
 
 ## 2. Integrate with Auth0 SMTP
 

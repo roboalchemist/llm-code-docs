@@ -1,8 +1,8 @@
+# Source: https://resend.com/docs/webhooks/introduction.md
+
 # Source: https://resend.com/docs/knowledge-base/introduction.md
 
 # Source: https://resend.com/docs/introduction.md
-
-# Source: https://resend.com/docs/dashboard/webhooks/introduction.md
 
 # Source: https://resend.com/docs/dashboard/topics/introduction.md
 
@@ -11,6 +11,8 @@
 # Source: https://resend.com/docs/dashboard/segments/introduction.md
 
 # Source: https://resend.com/docs/dashboard/receiving/introduction.md
+
+# Source: https://resend.com/docs/dashboard/logs/introduction.md
 
 # Source: https://resend.com/docs/dashboard/emails/introduction.md
 
@@ -24,57 +26,9 @@
 
 # Source: https://resend.com/docs/api-reference/introduction.md
 
-# Source: https://resend.com/docs/knowledge-base/introduction.md
-
-# Source: https://resend.com/docs/introduction.md
-
-# Source: https://resend.com/docs/dashboard/webhooks/introduction.md
-
-# Source: https://resend.com/docs/dashboard/topics/introduction.md
-
-# Source: https://resend.com/docs/dashboard/templates/introduction.md
-
-# Source: https://resend.com/docs/dashboard/segments/introduction.md
-
-# Source: https://resend.com/docs/dashboard/receiving/introduction.md
-
-# Source: https://resend.com/docs/dashboard/emails/introduction.md
-
-# Source: https://resend.com/docs/dashboard/domains/introduction.md
-
-# Source: https://resend.com/docs/dashboard/broadcasts/introduction.md
-
-# Source: https://resend.com/docs/dashboard/audiences/introduction.md
-
-# Source: https://resend.com/docs/dashboard/api-keys/introduction.md
-
-# Source: https://resend.com/docs/api-reference/introduction.md
-
-# Source: https://resend.com/docs/knowledge-base/introduction.md
-
-# Source: https://resend.com/docs/introduction.md
-
-# Source: https://resend.com/docs/dashboard/webhooks/introduction.md
-
-# Source: https://resend.com/docs/dashboard/topics/introduction.md
-
-# Source: https://resend.com/docs/dashboard/templates/introduction.md
-
-# Source: https://resend.com/docs/dashboard/segments/introduction.md
-
-# Source: https://resend.com/docs/dashboard/receiving/introduction.md
-
-# Source: https://resend.com/docs/dashboard/emails/introduction.md
-
-# Source: https://resend.com/docs/dashboard/domains/introduction.md
-
-# Source: https://resend.com/docs/dashboard/broadcasts/introduction.md
-
-# Source: https://resend.com/docs/dashboard/audiences/introduction.md
-
-# Source: https://resend.com/docs/dashboard/api-keys/introduction.md
-
-# Source: https://resend.com/docs/api-reference/introduction.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Introduction
 

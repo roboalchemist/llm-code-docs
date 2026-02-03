@@ -62,6 +62,8 @@ For members with existing accounts, click on your current workspace icon, hover 
 
 Navigate to [Settings > Administration > Security](https://linear.app/settings/security) to generate a unique link that allows for anyone with the URL to join your workspace. If enabled, please ensure this link is only shared internally with your organization.
 
+Invite links are persistent and reusable. They can be set to a new unique value with the "_Reset invite link_" button.
+
 ## Invite & Assign
 
 Invited users can be assigned issues or marked as project leads before they accept their invitation.

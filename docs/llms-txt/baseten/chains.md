@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/reference/sdk/chains.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Chains SDK Reference
 
 > Python SDK Reference for Chains
@@ -263,7 +267,10 @@ uses GPUs, drivers will be included in the image.
 | ----------- | ------- |
 | `PY39`      | *py39*  |
 | `PY310`     | *py310* |
-| `PY311 `    | *py311* |
+| `PY311`     | *py311* |
+| `PY312`     | *py312* |
+| `PY313`     | *py313* |
+| `PY314`     | *py314* |
 
 ### *class* `truss_chains.CustomImage`
 
@@ -300,7 +307,7 @@ Specifies which compute resources a chainlet has in the *remote* deployment.
 | `gpu_count`           | *int*                         | `1`     | Number of GPUs to allocate.                                                                                     |
 | `predict_concurrency` | *int\|Literal\['cpu\_count']* | `1`     | Number of concurrent requests a single replica of a deployed chainlet handles.                                  |
 
-Concurrency concepts are explained in [this guide](/development/model/performance/concurrency#2-predict-concurrency).
+Concurrency concepts are explained in [this guide](/development/model/concurrency#2-predict-concurrency).
 It is important to understand the difference between predict\_concurrency and
 the concurrency target (used for autoscaling, i.e. adding or removing replicas).
 Furthermore, the `predict_concurrency` of a single instance is implemented in

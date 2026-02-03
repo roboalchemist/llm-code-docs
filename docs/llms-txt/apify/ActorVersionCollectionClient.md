@@ -2,19 +2,32 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/class/ActorVersionCollectionClient.md
 
-# Source: https://docs.apify.com/api/client/python/reference/class/ActorVersionCollectionClient.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/ActorVersionCollectionClient.md
-
-# Source: https://docs.apify.com/api/client/python/reference/class/ActorVersionCollectionClient.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/ActorVersionCollectionClient.md
-
-# Source: https://docs.apify.com/api/client/python/reference/class/ActorVersionCollectionClient.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/ActorVersionCollectionClient.md
-
 # ActorVersionCollectionClient<!-- -->
+
+Client for managing the collection of Actor versions.
+
+Actor versions represent specific builds or snapshots of an Actor's code. This client provides methods to list and create versions for a specific Actor.
+
+* **@example**
+
+  ```
+  const client = new ApifyClient({ token: 'my-token' });
+  const actorClient = client.actor('my-actor-id');
+
+  // List all versions
+  const versionsClient = actorClient.versions();
+  const { items } = await versionsClient.list();
+
+  // Create a new version
+  const newVersion = await versionsClient.create({
+    versionNumber: '0.2',
+    buildTag: 'latest'
+  });
+  ```
+
+* **@see**
+
+  <https://docs.apify.com/platform/actors/development/actor-definition/versions>
 
 ### Hierarchy
 
@@ -42,25 +55,25 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#apifyClient)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L35)inheritedapifyClient
+### [**](#apifyClient)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L36)inheritedapifyClient
 
 **apifyClient: [ApifyClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/ApifyClient.md)
 
 Inherited from ResourceCollectionClient.apifyClient
 
-### [**](#baseUrl)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L27)inheritedbaseUrl
+### [**](#baseUrl)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L28)inheritedbaseUrl
 
 **baseUrl: string
 
 Inherited from ResourceCollectionClient.baseUrl
 
-### [**](#httpClient)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L37)inheritedhttpClient
+### [**](#httpClient)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L38)inheritedhttpClient
 
 **httpClient: HttpClient
 
 Inherited from ResourceCollectionClient.httpClient
 
-### [**](#id)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L23)optionalinheritedid
+### [**](#id)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L24)optionalinheritedid
 
 **id?
 
@@ -70,7 +83,7 @@ Inherited from ResourceCollectionClient.httpClient
 
 Inherited from ResourceCollectionClient.id
 
-### [**](#params)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L39)optionalinheritedparams
+### [**](#params)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L40)optionalinheritedparams
 
 **params?
 
@@ -80,19 +93,19 @@ Inherited from ResourceCollectionClient.id
 
 Inherited from ResourceCollectionClient.params
 
-### [**](#publicBaseUrl)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L29)inheritedpublicBaseUrl
+### [**](#publicBaseUrl)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L30)inheritedpublicBaseUrl
 
 **publicBaseUrl: string
 
 Inherited from ResourceCollectionClient.publicBaseUrl
 
-### [**](#resourcePath)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L31)inheritedresourcePath
+### [**](#resourcePath)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L32)inheritedresourcePath
 
 **resourcePath: string
 
 Inherited from ResourceCollectionClient.resourcePath
 
-### [**](#safeId)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L25)optionalinheritedsafeId
+### [**](#safeId)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L26)optionalinheritedsafeId
 
 **safeId?
 
@@ -102,7 +115,7 @@ Inherited from ResourceCollectionClient.resourcePath
 
 Inherited from ResourceCollectionClient.safeId
 
-### [**](#url)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L33)inheritedurl
+### [**](#url)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L34)inheritedurl
 
 **url: string
 
@@ -110,11 +123,15 @@ Inherited from ResourceCollectionClient.url
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#create)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_version_collection.ts#L38)create
+### [**](#create)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_version_collection.ts#L75)create
 
 * ****create**(actorVersion): Promise<[FinalActorVersion](https://docs.apify.com/api/client/js/api/client/js/reference.md#FinalActorVersion)>
 
-- <https://docs.apify.com/api/v2#/reference/actors/version-collection/create-version>
+- Creates a new Actor version.
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/act-versions-post>
 
   ***
 
@@ -122,18 +139,40 @@ Inherited from ResourceCollectionClient.url
 
   * ##### actorVersion: [ActorVersion](https://docs.apify.com/api/client/js/api/client/js/reference.md#ActorVersion)
 
+    The Actor version data.
+
   #### Returns Promise<[FinalActorVersion](https://docs.apify.com/api/client/js/api/client/js/reference.md#FinalActorVersion)>
 
-### [**](#list)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_version_collection.ts#L22)list
+  The created Actor version object.
 
-* ****list**(options): Promise<[ActorVersionListResult](https://docs.apify.com/api/client/js/api/client/js/reference.md#ActorVersionListResult)>
+### [**](#list)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_version_collection.ts#L62)list
 
-- <https://docs.apify.com/api/v2#/reference/actors/version-collection/get-list-of-versions>
+* ****list**(\_options): Promise<[ActorVersionListResult](https://docs.apify.com/api/client/js/api/client/js/reference.md#ActorVersionListResult)> & AsyncIterable<[FinalActorVersion](https://docs.apify.com/api/client/js/api/client/js/reference.md#FinalActorVersion), any, any>
+
+- Lists all Actor versions.
+
+  Awaiting the return value (as you would with a Promise) will result in a single API call. The amount of fetched items in a single API call is limited.
+
+  ```
+  const paginatedList = await client.list();
+  ```
+
+  Asynchronous iteration is also supported. This will fetch additional pages if needed until all items are retrieved.
+
+  ```
+  for await (const singleItem of client.list()) {...}
+  ```
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/act-versions-get>
 
   ***
 
   #### Parameters
 
-  * ##### options: [ActorVersionCollectionListOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorVersionCollectionListOptions.md) = <!-- -->{}
+  * ##### \_options: [ActorVersionCollectionListOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorVersionCollectionListOptions.md) = <!-- -->{}
 
-  #### Returns Promise<[ActorVersionListResult](https://docs.apify.com/api/client/js/api/client/js/reference.md#ActorVersionListResult)>
+  #### Returns Promise<[ActorVersionListResult](https://docs.apify.com/api/client/js/api/client/js/reference.md#ActorVersionListResult)> & AsyncIterable<[FinalActorVersion](https://docs.apify.com/api/client/js/api/client/js/reference.md#FinalActorVersion), any, any>
+
+  A paginated iterator of Actor versions.

@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/built-in-nodes/partner-node/image/luma/luma-reference.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Luma Reference - ComfyUI Built-in Node Documentation
 
 > Helper node providing reference images for Luma image generation

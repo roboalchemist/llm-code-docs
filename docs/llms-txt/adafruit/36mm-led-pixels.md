@@ -40,7 +40,7 @@ In Stock
 [12V 5A switching power supply](https://www.adafruit.com/product/352)
 This is a beefy switching supply, for when you need a lot of power! It can supply 12V DC up to 5 Amps, running from 110V or 220V power (the plug it comes with is for US/Canada/Japan but you can use any plug adapter for your country, or just replace the cable with a standard 'figure-8'...
 
-Out of Stock
+In Stock
 [Buy Now](https://www.adafruit.com/product/352)
 [Related Guides to the Product](https://learn.adafruit.com/products/352/guides)
 ### 36mm  Square 12V Digital RGB LED Pixels (Strand of 20)
@@ -54,18 +54,18 @@ No Longer Stocked
 
 ## Related Guides
 
-- [Arduino Lesson 0. Getting Started](https://learn.adafruit.com/lesson-0-getting-started.md)
-- [Arduino Prototyping Mounting Plate](https://learn.adafruit.com/arduino-prototyping-mounting-plate.md)
-- [WiFi Candy Bowl Monitor](https://learn.adafruit.com/wifi-candy-bowl.md)
-- [Sous-vide controller powered by Arduino - The SousViduino!](https://learn.adafruit.com/sous-vide-powered-by-arduino-the-sous-viduino.md)
+- [Adafruit Data Logger Shield](https://learn.adafruit.com/adafruit-data-logger-shield.md)
+- [Track Your Treats: Halloween Candy GPS Tracker](https://learn.adafruit.com/track-your-treats-halloween-candy-gps-tracker.md)
+- [Adafruit 1.27" and 1.5" Color OLED Breakout Board](https://learn.adafruit.com/adafruit-1-5-color-oled-breakout-board.md)
+- [Adafruit Proto Shield for Arduino](https://learn.adafruit.com/adafruit-proto-shield-arduino.md)
+- [Adafruit 16-channel PWM/Servo Shield](https://learn.adafruit.com/adafruit-16-channel-pwm-slash-servo-shield.md)
+- [Light Meter](https://learn.adafruit.com/light-meter.md)
+- [Cloud Thermometer](https://learn.adafruit.com/cloud-thermometer.md)
+- [Character LCDs](https://learn.adafruit.com/character-lcds.md)
+- [Ladyada's Learn Arduino - Lesson #0](https://learn.adafruit.com/ladyadas-learn-arduino-lesson-number-0.md)
+- [Program an AVR or Arduino Using Raspberry Pi GPIO](https://learn.adafruit.com/program-an-avr-or-arduino-using-raspberry-pi-gpio-pins.md)
 - [Arduino Lesson 17. Email Sending Movement Detector](https://learn.adafruit.com/arduino-lesson-17-email-sending-movement-detector.md)
-- [SMS Texting Pet Food Dish](https://learn.adafruit.com/sms-texting-pet-food-dish.md)
-- [Adafruit AirLift Shield - ESP32 WiFi Co-Processor](https://learn.adafruit.com/adafruit-airlift-shield-esp32-wifi-co-processor.md)
-- [Affordable HAL 9000 Replica](https://learn.adafruit.com/hal-9000-replica.md)
-- [Arduino Lesson 13. DC Motors](https://learn.adafruit.com/adafruit-arduino-lesson-13-dc-motors.md)
-- [Deciphering Strange Arduino Code](https://learn.adafruit.com/deciphering-strange-arduino-code.md)
-- [Low Power Coin Cell Voltage Logger](https://learn.adafruit.com/low-power-coin-cell-voltage-logger.md)
-- [Arduino Lesson 1. Blink](https://learn.adafruit.com/adafruit-arduino-lesson-1-blink.md)
-- [Remote controlled door lock using a fingerprint sensor & Adafruit IO](https://learn.adafruit.com/remote-controlled-door-lock-using-a-fingerprint-sensor-and-adafruit-io.md)
-- [20mm LED Pixels](https://learn.adafruit.com/20mm-led-pixels.md)
-- [Arduino Lesson 11. LCD Displays - Part 1](https://learn.adafruit.com/adafruit-arduino-lesson-11-lcd-displays-1.md)
+- [Arduino Prototyping Mounting Plate](https://learn.adafruit.com/arduino-prototyping-mounting-plate.md)
+- [Analog Feedback Servos](https://learn.adafruit.com/analog-feedback-servos.md)
+- [All About Arduino Libraries](https://learn.adafruit.com/adafruit-all-about-arduino-libraries-install-use.md)
+- [Trainable Robotic Arm](https://learn.adafruit.com/trainable-robotic-arm.md)

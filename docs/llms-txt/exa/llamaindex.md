@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/reference/llamaindex.md
+# Source: https://exa.ai/docs/reference/llamaindex.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # LlamaIndex
 
@@ -101,8 +105,3 @@ LlamaIndex is a framework for building LLM applications powered by structured da
     As you can see, the output generation is enriched with the context of our Exa Search query result!
   </Step>
 </Steps>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

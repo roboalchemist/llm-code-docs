@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/getting-started/tutorials/backend.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Backend SDK Tutorials
 
 > In this tutorial, we will go over how to integrate Connect into your application and make requests to a vehicle using our backend SDKs.

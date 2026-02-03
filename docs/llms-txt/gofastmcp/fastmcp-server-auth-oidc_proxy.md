@@ -1,5 +1,9 @@
 # Source: https://gofastmcp.com/python-sdk/fastmcp-server-auth-oidc_proxy.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # oidc_proxy
 
 # `fastmcp.server.auth.oidc_proxy`
@@ -45,7 +49,7 @@ that is OIDC compliant.
 
 **Methods:**
 
-#### `get_oidc_configuration` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/oidc_proxy.py#L345" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `get_oidc_configuration` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/oidc_proxy.py#L380" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 get_oidc_configuration(self, config_url: AnyHttpUrl, strict: bool | None, timeout_seconds: int | None) -> OIDCConfiguration
@@ -59,7 +63,7 @@ Gets the OIDC configuration for the specified configuration URL.
 * `strict`: The strict flag for the configuration
 * `timeout_seconds`: HTTP request timeout in seconds
 
-#### `get_token_verifier` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/oidc_proxy.py#L362" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
+#### `get_token_verifier` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/auth/oidc_proxy.py#L397" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
 get_token_verifier(self) -> TokenVerifier

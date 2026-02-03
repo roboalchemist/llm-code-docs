@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/generativeagent/configuring/tasks-and-functions/set-variable.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Set Variable Functions
 
 > Save a value from the conversation with a Set Variable Function.
@@ -84,7 +88,7 @@ At least one variable must be configured so GenerativeAgent can store the outcom
 
 Use [Jinja2](https://jinja.palletsprojects.com/en/stable/) to create or modify the stored value.
 
-As an Example, the following Jinja2 template will set the variable to **"Children under 2 can fly as a lap child."** if the `child_age_at_time_of_flight` is less than 2. Otherwise, it will set the variable to **"Children 2 or older must have their own seat."**
+For example, the following Jinja2 template sets the variable to **"Children under 2 can fly as a lap child."** if `child_age_at_time_of_flight` is less than 2. Otherwise, it sets the variable to **"Children 2 or older must have their own seat."**
 
 ```jinja2  theme={null}
 'Children under 2 can fly as a lap child.' if params.child_age_at_time_of_flight < 2 else 'Children 2 or older must have their own seat.''
@@ -102,7 +106,7 @@ After saving, you'll see a detail page showing the JSON schema and the configure
 
 ## Step 5: Use the Function in the Conversation
 
-Once you have created your set variable function, you must add the function to the task's list of available functions in order for GenerativeAgent to use it.
+Once you have created your set variable function, add it to the task's list of available functions for GenerativeAgent to use it.
 
 GenerativeAgent may call the function proactively, but we recommend you instruct GenerativeAgent to call the function explicitly.
 
@@ -111,9 +115,9 @@ Always make sure to test your functions with Previewer to ensure they work as ex
 Here's how the function works within a task and conversation flow:
 
 1. GenerativeAgent collects the required parameters from the user (or context).
-2. (Optional) A "Message before Sending" can be displayed to the user, clarifying why GenerativeAgent is saving data.
+2. (Optional) The system can display a "Message before Sending" to the user, clarifying why GenerativeAgent is saving data.
 3. Jinja2 transformations convert or combine inputs, if defined.
-4. Reference variables are created as soon as the function runs successfully—GenerativeAgent can immediately incorporate them into logic or other function calls.
+4. The system creates reference variables as soon as the function runs successfully—GenerativeAgent can immediately incorporate them into logic or other function calls.
 5. If you turned on "Include return variable as part of function response," GenerativeAgent receives the new values right away, shaping subsequent interaction steps.
 
 <Accordion title="Example task leveraging reference variables set by a set variable function">

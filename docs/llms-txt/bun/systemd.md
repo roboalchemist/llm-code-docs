@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/ecosystem/systemd.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Run Bun as a daemon with systemd
 
 [systemd](https://systemd.io) is an init system and service manager for Linux operating systems that manages the startup and control of system processes and services.

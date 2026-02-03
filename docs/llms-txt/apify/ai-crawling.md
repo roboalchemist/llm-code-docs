@@ -4,17 +4,17 @@
 
 ## Apify Scraper for AI Crawling
 
-Apify Scraper for AI Crawling from https://apify.com/ lets you extract text content from websites to feed AI models, LLM applications, vector databases, or Retrieval Augmented Generation (RAG) pipelines. It supports rich formatting using Markdown, cleans the HTML of irrelevant elements, downloads linked files, and integrates with AI ecosystems like LangChain, LlamaIndex, and other LLM frameworks.
+Apify Scraper for AI Crawling from [Apify](https://apify.com/) lets you extract text content from websites to feed AI models, LLM applications, vector databases, or Retrieval Augmented Generation (RAG) pipelines. It supports rich formatting using Markdown, cleans the HTML of irrelevant elements, downloads linked files, and integrates with AI ecosystems like LangChain, LlamaIndex, and other LLM frameworks.
 
-To use these modules, you need an https://console.apify.com and an https://docs.apify.com/platform/integrations/api#api-token. You can find your token in the https://console.apify.com/ under **Settings > Integrations**. After connecting, you can automate content extraction at scale and incorporate the results into your AI workflows.
+To use these modules, you need an [Apify account](https://console.apify.com) and an [API token](https://docs.apify.com/platform/integrations/api#api-token). You can find your token in the [Apify Console](https://console.apify.com/) under **Settings > Integrations**. After connecting, you can automate content extraction at scale and incorporate the results into your AI workflows.
 
 ## Connect Apify Scraper for AI Crawling
 
-1. Create an account at https://console.apify.com/. You can sign up using your email, Gmail, or GitHub account.
+1. Create an account at [Apify](https://console.apify.com/). You can sign up using your email, Gmail, or GitHub account.
 
    ![Sign up page](/assets/images/wcc-signup-05f272efdc2e70fddd89ff59d8600031.png)
 
-2. To connect your Apify account to Make, you can use an OAuth connection (recommended) or an Apify API token. To get the Apify API token, navigate to **https://console.apify.com/settings/integrations** in the Apify Console.
+2. To connect your Apify account to Make, you can use an OAuth connection (recommended) or an Apify API token. To get the Apify API token, navigate to **[Settings > API & Integrations](https://console.apify.com/settings/integrations)** in the Apify Console.
 
    ![Apify Console token for Make.png](/assets/images/apify-console-token-for-make-cf75dbeb5effdcab9bc204cee94cdb6a.png)
 
@@ -76,21 +76,21 @@ Sample output (shortened)
 
 ```
 {
-  "url": "https://docs.apify.com/academy/web-scraping-for-beginners",
+  "url": "https://docs.apify.com/academy/scraping-basics-javascript",
   "crawl": {
-    "loadedUrl": "https://docs.apify.com/academy/web-scraping-for-beginners",
+    "loadedUrl": "https://docs.apify.com/academy/scraping-basics-javascript",
     "loadedTime": "2025-04-22T14:33:20.514Z",
     "referrerUrl": "https://docs.apify.com/academy",
     "depth": 1,
     "httpStatusCode": 200
   },
   "metadata": {
-    "canonicalUrl": "https://docs.apify.com/academy/web-scraping-for-beginners",
-    "title": "Web scraping for beginners | Apify Documentation",
-    "description": "Learn the basics of web scraping with a step-by-step tutorial and practical exercises.",
+    "canonicalUrl": "https://docs.apify.com/academy/scraping-basics-javascript",
+    "title": "Web scraping basics for JavaScript devs | Apify Documentation",
+    "description": "Learn how to use JavaScript to extract information from websites in this practical course, starting from the absolute basics.",
     "languageCode": "en",
-    "markdown": "# Web scraping for beginners\n\nWelcome to our comprehensive web scraping tutorial for beginners. This guide will take you through the fundamentals of extracting data from websites, with practical examples and exercises.\n\n## What is web scraping?\n\nWeb scraping is the process of extracting data from websites. It involves making HTTP requests to web servers, downloading HTML pages, and parsing them to extract the desired information.\n\n## Why learn web scraping?\n\n- **Data collection**: Gather information for research, analysis, or business intelligence\n- **Automation**: Save time by automating repetitive data collection tasks\n- **Integration**: Connect web data with your applications or databases\n- **Monitoring**: Track changes on websites automatically\n\n## Getting started\n\nTo begin web scraping, you'll need to understand the basics of HTML, CSS selectors, and HTTP. This tutorial will guide you through these concepts step by step.\n\n...",
-    "text": "Web scraping for beginners\n\nWelcome to our comprehensive web scraping tutorial for beginners. This guide will take you through the fundamentals of extracting data from websites, with practical examples and exercises.\n\nWhat is web scraping?\n\nWeb scraping is the process of extracting data from websites. It involves making HTTP requests to web servers, downloading HTML pages, and parsing them to extract the desired information.\n\nWhy learn web scraping?\n\n- Data collection: Gather information for research, analysis, or business intelligence\n- Automation: Save time by automating repetitive data collection tasks\n- Integration: Connect web data with your applications or databases\n- Monitoring: Track changes on websites automatically\n\nGetting started\n\nTo begin web scraping, you'll need to understand the basics of HTML, CSS selectors, and HTTP. This tutorial will guide you through these concepts step by step.\n\n..."
+    "markdown": "# Web scraping basics for JavaScript devs\n\nWelcome to our comprehensive web scraping tutorial for beginners. This guide will take you through the fundamentals of extracting data from websites, with practical examples and exercises.\n\n## What is web scraping?\n\nWeb scraping is the process of extracting data from websites. It involves making HTTP requests to web servers, downloading HTML pages, and parsing them to extract the desired information.\n\n## Why learn web scraping?\n\n- **Data collection**: Gather information for research, analysis, or business intelligence\n- **Automation**: Save time by automating repetitive data collection tasks\n- **Integration**: Connect web data with your applications or databases\n- **Monitoring**: Track changes on websites automatically\n\n## Getting started\n\nTo begin web scraping, you'll need to understand the basics of HTML, CSS selectors, and HTTP. This tutorial will guide you through these concepts step by step.\n\n...",
+    "text": "Web scraping basics for JavaScript devs\n\nWelcome to our comprehensive web scraping tutorial for beginners. This guide will take you through the fundamentals of extracting data from websites, with practical examples and exercises.\n\nWhat is web scraping?\n\nWeb scraping is the process of extracting data from websites. It involves making HTTP requests to web servers, downloading HTML pages, and parsing them to extract the desired information.\n\nWhy learn web scraping?\n\n- Data collection: Gather information for research, analysis, or business intelligence\n- Automation: Save time by automating repetitive data collection tasks\n- Integration: Connect web data with your applications or databases\n- Monitoring: Track changes on websites automatically\n\nGetting started\n\nTo begin web scraping, you'll need to understand the basics of HTML, CSS selectors, and HTTP. This tutorial will guide you through these concepts step by step.\n\n..."
   }
 }
 ```
@@ -144,10 +144,10 @@ In addition to the standard output fields, Advanced Settings provides:
 
 Looking for more than just AI crawling? You can use other native Make apps powered by Apify:
 
-* https://docs.apify.com/platform/integrations/make/tiktok.md
-* https://docs.apify.com/platform/integrations/make/search.md
-* https://docs.apify.com/platform/integrations/make/maps.md
-* https://docs.apify.com/platform/integrations/make/youtube.md
-* https://docs.apify.com/platform/integrations/make/amazon.md
+* [TikTok Data](https://docs.apify.com/platform/integrations/make/tiktok.md)
+* [Google Search](https://docs.apify.com/platform/integrations/make/search.md)
+* [Google Maps Emails Data](https://docs.apify.com/platform/integrations/make/maps.md)
+* [YouTube Data](https://docs.apify.com/platform/integrations/make/youtube.md)
+* [Amazon](https://docs.apify.com/platform/integrations/make/amazon.md)
 
-And more! Because you can access any of thousands of our scrapers on Apify Store by using the https://www.make.com/en/integrations/apify.
+And more! Because you can access any of thousands of our scrapers on Apify Store by using the [general Apify connections](https://www.make.com/en/integrations/apify).

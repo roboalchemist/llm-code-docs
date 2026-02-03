@@ -75,7 +75,7 @@ These are the highest quality & capacity batteries, the same as shipped with the
   
 Brand may vary but all battery brands are verified...
 
-In Stock
+Out of Stock
 [Buy Now](https://www.adafruit.com/product/380)
 [Related Guides to the Product](https://learn.adafruit.com/products/380/guides)
 ### Breadboarding wire bundle
@@ -97,18 +97,18 @@ In Stock
 
 ## Related Guides
 
-- [2.8" TFT Touch Shield](https://learn.adafruit.com/2-8-tft-touch-shield.md)
-- [Adafruit 4-Channel ADC Breakouts](https://learn.adafruit.com/adafruit-4-channel-adc-breakouts.md)
-- [CircuitPython Libraries on Linux and the 96Boards DragonBoard 410c](https://learn.adafruit.com/circuitpython-libraries-on-linux-and-the-96boards-dragonboard-410c.md)
-- [Arduino Lesson 3. RGB LEDs](https://learn.adafruit.com/adafruit-arduino-lesson-3-rgb-leds.md)
-- [Arduino Lesson 8. Analog Inputs](https://learn.adafruit.com/adafruit-arduino-lesson-8-analog-inputs.md)
-- [Let’s Put LEDs in Things!](https://learn.adafruit.com/lets-put-leds-in-things.md)
-- [Bluetooth Controlled Motorized Camera Slider](https://learn.adafruit.com/bluetooth-motorized-camera-slider.md)
-- [Adafruit VS1053 MP3/AAC/Ogg/MIDI/WAV Codec Breakout Tutorial](https://learn.adafruit.com/adafruit-vs1053-mp3-aac-ogg-midi-wav-play-and-record-codec-tutorial.md)
-- [CircuitPython Libraries on Linux and the NVIDIA Jetson Nano](https://learn.adafruit.com/circuitpython-libraries-on-linux-and-the-nvidia-jetson-nano.md)
-- [Adafruit Optical Fingerprint Sensor](https://learn.adafruit.com/adafruit-optical-fingerprint-sensor.md)
-- [FTDI Friend](https://learn.adafruit.com/ftdi-friend.md)
-- [IR Sensor](https://learn.adafruit.com/ir-sensor.md)
-- [WiFi Controlled LED Christmahanukwanzaa Tree](https://learn.adafruit.com/wifi-controlled-led-christmahanukwanzaa-tree.md)
-- [A REST API for Arduino & the CC3000 WiFi Chip](https://learn.adafruit.com/a-rest-api-for-arduino-and-the-cc3000-wifi-chip.md)
-- [Adafruit Proto Screw Shield](https://learn.adafruit.com/adafruit-proto-screw-shield.md)
+- [Reverse Geocache Box](https://learn.adafruit.com/reverse-geocache-engagement-box.md)
+- [Ladyada's Learn Arduino - Lesson #2](https://learn.adafruit.com/ladyadas-learn-arduino-lesson-number-2.md)
+- [Wave Shield Talking Clock](https://learn.adafruit.com/wave-shield-talking-clock.md)
+- [Wireless Game Show Poppers for the Classroom!](https://learn.adafruit.com/wireless-game-show-poppers.md)
+- [Wireless Gardening with Arduino + CC3000 WiFi Modules](https://learn.adafruit.com/wireless-gardening-arduino-cc3000-wifi-modules.md)
+- [CircuitPython Essentials](https://learn.adafruit.com/circuitpython-essentials.md)
+- [CircuitPython Libraries on Linux and ODROID C2](https://learn.adafruit.com/circuitpython-libaries-linux-odroid-c2.md)
+- [2.2" TFT Display](https://learn.adafruit.com/2-2-tft-display.md)
+- [RGB LED Matrix Basics](https://learn.adafruit.com/32x16-32x32-rgb-led-matrix.md)
+- [Halloween Pumpkin](https://learn.adafruit.com/halloween-pumpkin.md)
+- [Remote controlled door lock using a fingerprint sensor & Adafruit IO](https://learn.adafruit.com/remote-controlled-door-lock-using-a-fingerprint-sensor-and-adafruit-io.md)
+- [Automatic Monitor Color Temperature Adjustment](https://learn.adafruit.com/automatic-monitor-color-temperature-adjustment.md)
+- [Animating Multiple LED Backpacks](https://learn.adafruit.com/animating-multiple-led-backpacks.md)
+- [Skill Badge Requirements: Microcontrollers](https://learn.adafruit.com/skill-badge-requirements-microcontrollers.md)
+- [RePaper eInk Development Board](https://learn.adafruit.com/repaper-eink-development-board.md)

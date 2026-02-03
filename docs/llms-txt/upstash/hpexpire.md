@@ -2,56 +2,47 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hpexpire.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hpexpire.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hpexpire.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hpexpire.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hpexpire.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hpexpire.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hpexpire.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hpexpire.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hpexpire.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hpexpire.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # HPEXPIRE
 
-> Sets an expiration time for a field in a hash in milliseconds.
+> Set a timeout on a hash field in milliseconds.
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the hash.
 </ParamField>
 
-<ParamField body="fields" type="string | number | (string | number)[]" required>
+<ParamField body="fields" type="Union[str, List[str]]" required>
   The field or list of fields within the hash to set the expiry for.
 </ParamField>
 
-<ParamField body="milliseconds" type="number" required>
-  The time-to-live (TTL) in milliseconds.
+<ParamField body="milliseconds" type="Union[int, datetime.timedelta]" required>
+  The timeout in milliseconds as an integer or a `datetime.timedelta` object.
 </ParamField>
 
-<ParamField body="option" type="string" optional>
-  Optional condition for setting the expiration:
+<ParamField body="nx" type="bool" optional>
+  Set expiry only when the field has no expiry. Defaults to `False`.
+</ParamField>
 
-  * `NX`: Set the expiration only if the field does not already have an expiration.
-  * `XX`: Set the expiration only if the field already has an expiration.
-  * `GT`: Set the expiration only if the new TTL is greater than the current TTL.
-  * `LT`: Set the expiration only if the new TTL is less than the current TTL.
+<ParamField body="xx" type="bool" optional>
+  Set expiry only when the field has an existing expiry. Defaults to `False`.
+</ParamField>
 
-  For more details, see [HPEXPIRE documentation](https://redis.io/commands/hpexpire).
+<ParamField body="gt" type="bool" optional>
+  Set expiry only when the new expiry is greater than the current one. Defaults to `False`.
+</ParamField>
+
+<ParamField body="lt" type="bool" optional>
+  Set expiry only when the new expiry is less than the current one. Defaults to `False`.
 </ParamField>
 
 ## Response
 
-<ResponseField type="number[]" required>
+<ResponseField type="List[int]" required>
   A list of integers indicating whether the expiry was successfully set.
 
   * `-2` if the field does not exist in the hash or if key doesn't exist.
@@ -63,10 +54,9 @@
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.hset("my-key", "my-field", "my-value");
-  const expirationSet = await redis.hpexpire("my-key", "my-field", 1000);
+  ```py Example theme={"system"}
+  redis.hset(hash_name, field, value)
 
-  console.log(expirationSet); // [1]
+  assert redis.hpexpire(hash_name, field, 1000) == [1]
   ```
 </RequestExample>

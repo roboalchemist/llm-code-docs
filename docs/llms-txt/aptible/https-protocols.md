@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/apps/connecting-to-apps/app-endpoints/https-endpoints/https-protocols.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # HTTPS Protocols
 
 Aptible offer a few ways to configure the protocols used by your [HTTP(S) Endpoints](/core-concepts/apps/connecting-to-apps/app-endpoints/https-endpoints/overview) for HTTPS termination through a set of [Configuration](/core-concepts/apps/deploying-apps/configuration) variables. These are the same variables as can be defined for [TLS Endpoints](/core-concepts/apps/connecting-to-apps/app-endpoints/tls-endpoints). If set once on the application, they will apply to all TLS and HTTPS endpoints for that application.

@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/server/dbsize.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/server/dbsize.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/server/dbsize.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/server/dbsize.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/server/dbsize.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/server/dbsize.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/server/dbsize.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/server/dbsize.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/server/dbsize.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/server/dbsize.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # DBSIZE
 
@@ -30,13 +16,12 @@ This command has no arguments
 
 ## Response
 
-<ResponseField type="integer" required>
+<ResponseField type="int" required>
   The number of keys in the database
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  const keys = await redis.dbsize();
-  console.log(keys) // 20
+  ```py Example theme={"system"}
+  redis.dbsize()
   ```
 </RequestExample>

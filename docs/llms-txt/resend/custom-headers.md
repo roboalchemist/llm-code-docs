@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/dashboard/emails/custom-headers.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Custom Headers
 
 > Customize how emails are sent with your own headers.
@@ -16,7 +20,7 @@ This is a fairly advanced feature, but it can be useful for a few things:
 Here's how you can add custom headers to your emails:
 
 <CodeGroup>
-  ```ts Node.js {11} theme={null}
+  ```ts Node.js {11} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -32,7 +36,7 @@ Here's how you can add custom headers to your emails:
   });
   ```
 
-  ```php PHP {9} theme={null}
+  ```php PHP {9} theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->emails->send([
@@ -46,7 +50,7 @@ Here's how you can add custom headers to your emails:
   ]);
   ```
 
-  ```python Python {11} theme={null}
+  ```python Python {11} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
@@ -65,7 +69,7 @@ Here's how you can add custom headers to your emails:
   print(email)
   ```
 
-  ```rb Ruby {11} theme={null}
+  ```rb Ruby {11} theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -84,7 +88,7 @@ Here's how you can add custom headers to your emails:
   puts sent
   ```
 
-  ```go Go {17} theme={null}
+  ```go Go {17} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import (
   	"fmt"
 
@@ -114,7 +118,7 @@ Here's how you can add custom headers to your emails:
   }
   ```
 
-  ```rust Rust {14} theme={null}
+  ```rust Rust {14} theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::types::{Attachment, CreateEmailBaseOptions, Tag};
   use resend_rs::{Resend, Result};
 
@@ -136,7 +140,7 @@ Here's how you can add custom headers to your emails:
   }
   ```
 
-  ```java Java {13} theme={null}
+  ```java Java {13} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -158,7 +162,7 @@ Here's how you can add custom headers to your emails:
   }
   ```
 
-  ```csharp .NET {12-15} theme={null}
+  ```csharp .NET {12-15} theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
   using System.Collections.Generic;
 
@@ -180,7 +184,7 @@ Here's how you can add custom headers to your emails:
   Console.WriteLine( "Email Id={0}", resp.Content );
   ```
 
-  ```bash cURL {10} theme={null}
+  ```bash cURL {10} theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X POST 'https://api.resend.com/emails' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json' \

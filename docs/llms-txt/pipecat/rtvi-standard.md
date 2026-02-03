@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/client/rtvi-standard.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # The RTVI Standard
 
 > An overview of the RTVI standard and its key features
@@ -547,8 +551,3 @@ For each metric type, the data structure is an array of objects with the followi
   }
 }
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/ui/sources/dropbox-source-quickstart.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Dropbox source connector quickstart
 
 Unstructured can connect to several types of [sources](/ui/connectors#sources). In this quickstart, you create a [Dropbox](https://www.dropbox.com/) source connector that you can add to your Unstructured [workflows](/ui/workflows).

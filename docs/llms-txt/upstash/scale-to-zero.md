@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/common/concepts/scale-to-zero.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Scale to Zero
 
 > Only pay for what you really use.

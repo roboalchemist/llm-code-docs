@@ -1,21 +1,25 @@
 # Source: https://docs.coollabs.io/coolify/v3/databases.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.coollabs.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # null
 
 Quickly deploy databases with a few clicks.
 
-*   [MongoDB](https://mongodb.com) -
-    [AMD64](https://hub.docker.com/r/bitnami/mongodb/)/[ARM](https://hub.docker.com/_/mongo/)
-*   [MariaDB](https://mariadb.org/) -
-    [AMD64](https://hub.docker.com/r/bitnami/mariadb/)/[ARM](https://hub.docker.com/_/mariadb/)
-*   [MySQL](https://www.mysql.com/) -
-    [AMD64](https://hub.docker.com/r/bitnami/mysql/)/[ARM](https://hub.docker.com/_/mysql/)
-*   [PostgreSQL](https://www.postgresql.org/) -
-    [AMD64](https://hub.docker.com/r/bitnami/postgresql/)/[ARM](https://hub.docker.com/_/postgres/)
-*   [CouchDB](https://couchdb.apache.org/) -
-    [AMD64](https://hub.docker.com/r/bitnami/couchdb/)/[ARM](https://hub.docker.com/_/couchdb/)
-*   [Redis](https://redis.io/) -
-    [AMD64](https://hub.docker.com/r/bitnami/redis/)/[ARM](https://hub.docker.com/_/redis/)
+* [MongoDB](https://mongodb.com) -
+  [AMD64](https://hub.docker.com/r/bitnami/mongodb/)/[ARM](https://hub.docker.com/_/mongo/)
+* [MariaDB](https://mariadb.org/) -
+  [AMD64](https://hub.docker.com/r/bitnami/mariadb/)/[ARM](https://hub.docker.com/_/mariadb/)
+* [MySQL](https://www.mysql.com/) -
+  [AMD64](https://hub.docker.com/r/bitnami/mysql/)/[ARM](https://hub.docker.com/_/mysql/)
+* [PostgreSQL](https://www.postgresql.org/) -
+  [AMD64](https://hub.docker.com/r/bitnami/postgresql/)/[ARM](https://hub.docker.com/_/postgres/)
+* [CouchDB](https://couchdb.apache.org/) -
+  [AMD64](https://hub.docker.com/r/bitnami/couchdb/)/[ARM](https://hub.docker.com/_/couchdb/)
+* [Redis](https://redis.io/) -
+  [AMD64](https://hub.docker.com/r/bitnami/redis/)/[ARM](https://hub.docker.com/_/redis/)
 
 To see all the features you could set with environment variables, check the base
 image links!

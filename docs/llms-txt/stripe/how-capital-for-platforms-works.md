@@ -4,7 +4,7 @@
 
 Learn the basics about Stripe Capital for platforms.
 
-> Capital for platforms is available in [public preview](https://docs.stripe.com/release-phases.md). [Sign up to join](https://docs.stripe.com/capital/how-capital-for-platforms-works.md#sign-up).
+> Capital for platforms is available in [public preview](https://docs.stripe.com/release-phases.md).
 
 Stripe Capital for platforms works differently by country. Capital for platforms is only available in the United States (US) and United Kingdom (GB).
 
@@ -59,7 +59,7 @@ There are three types of financing offers: merchant cash advance (MCA), flex loa
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **MCA**             | This involves YouLend buying a business’s future receivables. It’s not a loan or credit transaction. Instead, YouLend purchases a percentage of the business’s payment processing volume as specified in the YouLend Advance Agreement. There is no fixed payment schedule or regular debits; payments vary based on the business’s processing volume. | A connected account processing payments with Stripe for at least 90 to 180 days.                                                                                           |
 | **Flex loan**       | Flex term loans are made available by Celtic Bank to eligible businesses. These loans have a maximum term, and periodic payments. If withholdings from payment processing receivables don’t meet a minimum amount (typically on a 30 or 60-day basis), shortfalls are debited from a linked bank account.                                              | A connected account processing payments with Stripe for over 180 days or more.                                                                                             |
-| **Fixed term loan** | A loan a connected account must pay within 42 weeks, making weekly payments at a fixed interest rate.                                                                                                                                                                                                                                                  | A connected account who processed payments off Stripe, whose non-Stripe payments data you [imported to Stripe](https://docs.stripe.com/capital/import-non-stripe-data.md). |
+| **Fixed term loan** | A loan a connected account must pay within 42 weeks, making weekly payments at a fixed amount.                                                                                                                                                                                                                                                         | A connected account who processed payments off Stripe, whose non-Stripe payments data you [imported to Stripe](https://docs.stripe.com/capital/import-non-stripe-data.md). |
 
 The following table compares a flex loan and a fixed term loan:
 
@@ -303,8 +303,6 @@ To see all the emails sent by Stripe to a connected account:
 ## Capital servicing
 
 Stripe Capital and our financial partner handle support and servicing for your connected accounts for inquiries related to Capital. To help connected accounts facing business challenges, our financial partner might offer extended payment plans to help them make smaller payments to meet their financing obligations. Connected accounts who want to discuss their financial obligations can reach out to our partner, YouLend, at [stripecapital@youlend.com](mailto:stripecapital@youlend.com).
-
-## Sign up
 
 ## See also
 

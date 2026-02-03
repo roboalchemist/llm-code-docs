@@ -4,7 +4,6 @@
 title: Azure Queue Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: 'Docs > Cloudcraft (Standalone) > Components: Azure > Azure Queue Component'
-source_url: https://docs.datadoghq.com/components-azure/azure-queue/index.html
 ---
 
 # Azure Queue Component

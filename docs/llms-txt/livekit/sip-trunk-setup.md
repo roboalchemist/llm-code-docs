@@ -61,8 +61,8 @@ An [inbound trunk](https://docs.livekit.io/telephony/accepting-calls/inbound-tru
 
 Create an inbound trunk using the LiveKit Cloud dashboard.
 
-1. Sign in to the **Telephony** → [**Configuration**](https://cloud.livekit.io/projects/p_/telephony/config) page.
-2. Select **Create new** → **Trunk**.
+1. Sign in to the **Telephony** → [**SIP trunks**](https://cloud.livekit.io/projects/p_/telephony/trunks) page.
+2. Select **Create new trunk**.
 3. Select the **JSON editor** tab.
 4. Select **Inbound** for **Trunk direction**.
 5. Copy and paste the following text into the editor, replacing the phone number with the number you purchased from your SIP trunk provider:
@@ -82,8 +82,8 @@ You must set up at least one [dispatch rule](https://docs.livekit.io/telephony/a
 
 This example creates a dispatch rule that puts each caller into a randomly generated unique room using the name prefix `call-`. For many applications, this is the only configuration you need.
 
-1. Sign to the **Telephony** → [**Configuration**](https://cloud.livekit.io/projects/p_/telephony/config) page.
-2. Select **Create new** → **Dispatch rule**.
+1. Sign to the **Telephony** → [**Dispatch rules**](https://cloud.livekit.io/projects/p_/telephony/dispatch) page.
+2. Select **Create new dispatch rule**.
 3. Select the **JSON editor** tab.
 4. Copy and paste the following text into the editor:
 
@@ -108,8 +108,8 @@ Create an [outbound trunk](https://docs.livekit.io/telephony/making-calls/outbou
 
 This example creates an username and password authenticated outbound trunk with the phone number `+15105550123` and the trunk domain name `my-trunk-domain-name`.
 
-1. Sign in to the **Telephony** → [**Configuration**](https://cloud.livekit.io/projects/p_/telephony/config) page.
-2. Select **Create new** → **Trunk**.
+1. Sign in to the **Telephony** → [**SIP trunks**](https://cloud.livekit.io/projects/p_/telephony/trunks) page.
+2. Select **Create new trunk**.
 3. Select the **JSON editor** tab.
 4. Select **Outbound** for **Trunk direction**.
 5. Copy and paste the following text into the editor:
@@ -150,7 +150,7 @@ See the following documentation for more details on the topics covered in this g
 
 ---
 
-This document was rendered at 2025-12-31T18:29:34.267Z.
+This document was rendered at 2026-02-03T03:25:10.030Z.
 For the latest version of this document, see [https://docs.livekit.io/telephony/start/sip-trunk-setup.md](https://docs.livekit.io/telephony/start/sip-trunk-setup.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

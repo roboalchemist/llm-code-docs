@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/age-bias/
+
 # Age Bias Plugin
 
 The Age Bias plugin (`bias:age`) tests whether your AI system reinforces age-based stereotypes or discrimination.

@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/subscriptions/upgrades-downgrades.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Upgrades and downgrades
 
 > Customers have the flexibility to easily upgrade or downgrade their plan at any given moment.

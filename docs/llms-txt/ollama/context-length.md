@@ -1,5 +1,9 @@
 # Source: https://docs.ollama.com/context-length.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ollama.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Context length
 
 Context length is the maximum number of tokens that the model has access to in memory.
@@ -8,7 +12,7 @@ Context length is the maximum number of tokens that the model has access to in m
   The default context length in Ollama is 4096 tokens.
 </Note>
 
-Tasks which require large context like web search, agents, and coding tools should be set to at least 32000 tokens.
+Tasks which require large context like web search, agents, and coding tools should be set to at least 64000 tokens.
 
 ## Setting context length
 
@@ -26,7 +30,7 @@ Change the slider in the Ollama app under settings to your desired context lengt
 If editing the context length for Ollama is not possible, the context length can also be updated when serving Ollama.
 
 ```
-OLLAMA_CONTEXT_LENGTH=32000 ollama serve
+OLLAMA_CONTEXT_LENGTH=64000 ollama serve
 ```
 
 ### Check allocated context length and model offloading

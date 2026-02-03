@@ -1,6 +1,6 @@
 # Source: https://docs.livekit.io/agents/models/avatar/plugins/bey.md
 
-LiveKit docs › Models › Virtual avatars › Plugins › Beyond Presence
+LiveKit docs › Models › Virtual avatar › Plugins › BEY
 
 ---
 
@@ -9,7 +9,7 @@ LiveKit docs › Models › Virtual avatars › Plugins › Beyond Presence
 > How to use the Beyond Presence virtual avatar plugin for LiveKit Agents.
 
 Available in:
-- [ ] Node.js
+- [x] Node.js
 - [x] Python
 
 ## Overview
@@ -22,10 +22,19 @@ This section includes a basic usage example and some reference material. For lin
 
 ### Installation
 
-Install the plugin from PyPI:
+**Python**:
 
 ```shell
-uv add "livekit-agents[bey]~=1.2"
+uv add "livekit-agents[bey]~=1.3"
+
+```
+
+---
+
+**Node.js**:
+
+```shell
+pnpm add @livekit/agents-plugin-bey
 
 ```
 
@@ -38,6 +47,8 @@ Set `BEY_API_KEY` in your `.env` file.
 ### Usage
 
 Use the plugin in an `AgentSession`. For example, you can use this avatar in the [Voice AI quickstart](https://docs.livekit.io/agents/start/voice-ai.md).
+
+**Python**:
 
 ```python
 from livekit.plugins import bey
@@ -60,6 +71,30 @@ await session.start(
 
 ```
 
+---
+
+**Node.js**:
+
+```typescript
+import { voice } from '@livekit/agents';
+import * as bey from '@livekit/agents-plugin-bey';
+
+const session = new voice.AgentSession({
+   // ... stt, llm, tts, etc.
+});
+
+const avatar = new bey.AvatarSession({
+    avatarId: "...",  // ID of the Beyond Presence avatar to use
+});
+
+// Start the avatar and wait for it to join
+await avatar.start(session, room);
+
+// Start your agent session with the user
+await session.start();
+
+```
+
 Preview the avatar in the [Agents Playground](https://docs.livekit.io/agents/start/playground.md) or a frontend [starter app](https://docs.livekit.io/agents/start/frontend.md#starter-apps) that you build.
 
 ### Parameters
@@ -76,12 +111,6 @@ This section describes some of the available parameters. See the [plugin referen
 
 The following resources provide more information about using Beyond Presence with LiveKit Agents.
 
-- **[Python package](https://pypi.org/project/livekit-plugins-bey/)**: The `livekit-plugins-bey` package on PyPI.
-
-- **[Plugin reference](https://docs.livekit.io/reference/python/v1/livekit/plugins/bey/index.html.md#livekit.plugins.bey.AvatarSession)**: Reference for the Beyond Presence avatar plugin.
-
-- **[GitHub repo](https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-bey)**: View the source or contribute to the LiveKit Beyond Presence avatar plugin.
-
 - **[Beyond Presence docs](https://docs.bey.dev/docs)**: Beyond Presence's full docs site.
 
 - **[Agents Playground](https://docs.livekit.io/agents/start/playground.md)**: A virtual workbench to test your avatar agent.
@@ -90,7 +119,7 @@ The following resources provide more information about using Beyond Presence wit
 
 ---
 
-This document was rendered at 2025-11-18T23:55:16.088Z.
+This document was rendered at 2026-02-03T03:25:07.033Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/avatar/plugins/bey.md](https://docs.livekit.io/agents/models/avatar/plugins/bey.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

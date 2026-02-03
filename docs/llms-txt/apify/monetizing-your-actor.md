@@ -13,7 +13,7 @@ When you publish your Actor on the Apify platform, you have the option to make i
 
 ## Rental pricing model
 
-With the rental model, you can specify a free trial period and a monthly rental price. After the trial, users with an https://apify.com/pricing can continue using your Actor by paying the monthly fee. You can receive 80% of the total rental fees collected each month.
+With the rental model, you can specify a free trial period and a monthly rental price. After the trial, users with an [Apify paid plan](https://apify.com/pricing) can continue using your Actor by paying the monthly fee. You can receive 80% of the total rental fees collected each month.
 
 Example - rental pricing model
 
@@ -64,7 +64,7 @@ For example, if you host 50GB of data for 30 days:
 
 This means that storing 50 GB of data for 30 days results in 36,000 GB-hours.
 
-Read more about Actors in the Store and different pricing models from the perspective of your users in the https://docs.apify.com/platform/actors/running/actors-in-store.
+Read more about Actors in the Store and different pricing models from the perspective of your users in the [Store documentation](https://docs.apify.com/platform/actors/running/actors-in-store).
 
 Example - pay-per-result pricing model
 
@@ -76,13 +76,13 @@ Your profit is computed only from the first two users, since they are on Apify p
 
 To ensure profitable operation:
 
-* Set memory limits in your https://docs.apify.com/platform/actors/development/actor-definition/actor-json file to control platform usage costs
+* Set memory limits in your [actor.json](https://docs.apify.com/platform/actors/development/actor-definition/actor-json) file to control platform usage costs
 * Implement the `ACTOR_MAX_PAID_DATASET_ITEMS` check to prevent excess result generation
 * Test your Actor with various result volumes to determine optimal pricing
 
 ## Setting up monetization
 
-Navigate to your https://console.apify.com/actors?tab=my in the Apify Console choose Actor that you want to monetize, and select the Publication tab. ![Monetization section](/assets/images/monetization-section-5ea234343a91208580100eb37c1b9e7f.png) Open the Monetization section and complete your billing and payment details. ![Set up monetization](/assets/images/monetize_actor_set_up_monetization-7612e44589223f7e92b8adcd006bc1bb.png) Follow the monetization wizard to configure. Follow the monetization wizard to configure your pricing model. ![Monetization wizard](/assets/images/monetization_wizard-39bd82ef5ffa7a6f5a9143d2892178a4.png)
+Navigate to your [Actor page](https://console.apify.com/actors?tab=my) in the Apify Console choose Actor that you want to monetize, and select the Publication tab. ![Monetization section](/assets/images/monetization-section-5ea234343a91208580100eb37c1b9e7f.png) Open the Monetization section and complete your billing and payment details. ![Set up monetization](/assets/images/monetize_actor_set_up_monetization-7612e44589223f7e92b8adcd006bc1bb.png) Follow the monetization wizard to configure. Follow the monetization wizard to configure your pricing model. ![Monetization wizard](/assets/images/monetization_wizard-39bd82ef5ffa7a6f5a9143d2892178a4.png)
 
 ### Changing monetization
 
@@ -100,7 +100,7 @@ All other changes (such as decreasing prices, adjusting descriptions, or removin
 
 Frequency of major monetization adjustments
 
-You can make major monetization changes to each Actor only **once per month**. After making a major change, you must wait until it takes effect (14 days) plus an additional period before making another major change. For further information & guidelines, please refer to our https://apify.com/store-terms-and-conditions
+You can make major monetization changes to each Actor only **once per month**. After making a major change, you must wait until it takes effect (14 days) plus an additional period before making another major change. For further information & guidelines, please refer to our [Terms & Conditions](https://apify.com/store-terms-and-conditions)
 
 ## Payouts & analytics
 
@@ -129,4 +129,4 @@ Create SEO-optimized descriptions and README files to improve search engine visi
 
 Remember to tag Apify in your social media posts for additional exposure. Effective promotion can significantly impact your Actor's success, differentiating between those with many paid users and those with few to none.
 
-Learn more about promoting your Actor from https://apify.notion.site/3fdc9fd4c8164649a2024c9ca7a2d0da?v=6d262c0b026d49bfa45771cd71f8c9ab.
+Learn more about promoting your Actor from [Apify's Marketing Playbook](https://apify.notion.site/3fdc9fd4c8164649a2024c9ca7a2d0da?v=6d262c0b026d49bfa45771cd71f8c9ab).

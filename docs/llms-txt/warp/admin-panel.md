@@ -22,7 +22,7 @@ Admin Panel access is restricted to team administrators. Right now, only the cre
 
 Team administrators can access the Admin Panel directly at <https://app.warp.dev/admin/>
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-9a756ef788dd10c9af6ed67bc3088dac9de07629%2Fadmin-panel-overview.png?alt=media" alt=""><figcaption><p>Admin Panel main interface with sections for AI, privacy, billing, code, and sharing settings</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-9a756ef788dd10c9af6ed67bc3088dac9de07629%2Fadmin-panel-overview.png?alt=media" alt=""><figcaption><p>Admin Panel main interface with sections for AI, privacy, billing, code, and sharing settings</p></figcaption></figure>
 
 ## How Settings Enforcement Works
 

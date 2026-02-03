@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/internals/architecture/components.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Components
 
 > Understand Infisical's core architectural components and how they work together.

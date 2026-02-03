@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/tutorials/python_multithreading.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Multithreaded Web Scraping with Redis Caching
 
 In this tutorial, we’ll build a multithreaded web scraper in Python that leverages Redis for caching responses to minimize redundant HTTP requests. The scraper will be capable of handling groups of URLs across multiple threads while caching responses to reduce load and improve performance.

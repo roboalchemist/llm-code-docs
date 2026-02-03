@@ -4,11 +4,11 @@
 
 Improve Performance: Use `blockRequests`
 
-Unfortunately, in the recent version of Puppeteer, request interception disables the native cache and slows down the Actor significantly. Therefore, it's not recommended to follow the examples shown in this article. Instead, use https://crawlee.dev/api/puppeteer-crawler/namespace/puppeteerUtils#BlockRequestsOptions *utility function from* https://crawlee.dev. It works through different paths and doesn't slow down your process.
+Unfortunately, in the recent version of Puppeteer, request interception disables the native cache and slows down the Actor significantly. Therefore, it's not recommended to follow the examples shown in this article. Instead, use [blockRequests](https://crawlee.dev/api/puppeteer-crawler/namespace/puppeteerUtils#BlockRequestsOptions) *utility function from* [Crawlee](https://crawlee.dev). It works through different paths and doesn't slow down your process.
 
 When using Puppeteer, often a webpage will load many resources that are not actually necessary for your use case. For example page could be loading many tracking libraries, that are completely unnecessary for most crawlers, but will cause the page to use more traffic and load slower.
 
-For example for this web page: https://edition.cnn.com/ If we run an Actor that measures extracted downloaded data from each response until the page is fully loaded, we get these results:
+For example for this web page: [https://edition.cnn.com/](https://edition.cnn.com/) If we run an Actor that measures extracted downloaded data from each response until the page is fully loaded, we get these results:
 
 ![Actor loading](/assets/images/actor-load-e6fc832092a1c94156fd96b3522c2c3b.png)
 

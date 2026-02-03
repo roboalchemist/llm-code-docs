@@ -2,17 +2,9 @@
 
 # Source: https://bun.com/docs/guides/read-file/stream.md
 
-# Source: https://bun.com/docs/guides/write-file/stream.md
-
-# Source: https://bun.com/docs/guides/read-file/stream.md
-
-# Source: https://bun.com/docs/guides/write-file/stream.md
-
-# Source: https://bun.com/docs/guides/read-file/stream.md
-
-# Source: https://bun.com/docs/guides/write-file/stream.md
-
-# Source: https://bun.com/docs/guides/read-file/stream.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Read a file as a ReadableStream
 
@@ -37,4 +29,4 @@ for await (const chunk of stream) {
 
 ***
 
-Refer to the [Streams](https://bun.com/docs/api/streams) documentation for more information on working with streams in Bun.
+Refer to the [Streams](/runtime/streams) documentation for more information on working with streams in Bun.

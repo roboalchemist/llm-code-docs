@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/divergent-repetition/
+
 # Divergent Repetition Plugin
 
 The Divergent Repetition red teaming plugin is designed to test whether an AI system can be manipulated into revealing its training data through repetitive pattern exploitation that causes model divergence.

@@ -1,10 +1,11 @@
+# Source: https://docs.datadoghq.com/error_tracking/error_grouping.md
+
 # Source: https://docs.datadoghq.com/tracing/error_tracking/error_grouping.md
 
 ---
 title: Error Grouping
 description: Understand how errors are grouped into issues.
 breadcrumbs: Docs > APM > Error Tracking for Backend Services > Error Grouping
-source_url: https://docs.datadoghq.com/error_tracking/error_grouping/index.html
 ---
 
 # Error Grouping

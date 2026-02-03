@@ -4,7 +4,6 @@
 title: Single Step APM Instrumentation
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > APM > Application Instrumentation > Single Step APM Instrumentation
-source_url: https://docs.datadoghq.com/trace_collection/single-step-apm/index.html
 ---
 
 # Single Step APM Instrumentation
@@ -31,6 +30,10 @@ After instrumentation, you can optionally:
 
 Click on one of the following tiles to learn how to set up SSI for your deployment type:
 
+- [linux](linux)
+- [docker](docker)
+- [kubernetes](kubernetes)
+- [windows](windows)
 
 ## Troubleshooting{% #troubleshooting %}
 

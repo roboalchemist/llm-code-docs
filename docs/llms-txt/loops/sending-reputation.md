@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/deliverability/sending-reputation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Building your sender reputation
 
 > Understanding how to build your sender reputation.

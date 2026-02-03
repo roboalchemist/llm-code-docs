@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/reference/cli/truss/model-logs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # truss model-logs
 
 > Fetch logs for a deployed model.
@@ -41,8 +45,3 @@ To stream logs in real-time, use the following:
 ```sh  theme={"system"}
 truss model-logs --model-id YOUR_MODEL_ID --deployment-id YOUR_DEPLOYMENT_ID --tail
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.baseten.co/llms.txt

@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/code_llama.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/code_llama.md
 
 # CodeLlama
 
@@ -9,7 +9,7 @@ You can find all the original Code Llama checkpoints under the [Code Llama](http
 > [!TIP]
 > Click on the Code Llama models in the right sidebar for more examples of how to apply Code Llama to different coding tasks.
 
-The example below demonstrates how to generate code with [Pipeline](/docs/transformers/v5.0.0rc1/en/main_classes/pipelines#transformers.Pipeline), or the [AutoModel](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoModel), and from the command line.
+The example below demonstrates how to generate code with [Pipeline](/docs/transformers/v5.0.0/en/main_classes/pipelines#transformers.Pipeline), or the [AutoModel](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoModel), and from the command line.
 
 ```py
 import torch
@@ -133,7 +133,7 @@ visualizer("""def func(a, b):
 
 #### transformers.CodeLlamaTokenizer[[transformers.CodeLlamaTokenizer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/code_llama/tokenization_code_llama.py#L44)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/code_llama/tokenization_code_llama.py#L41)
 
 Construct a Llama tokenizer. Based on byte-level Byte-Pair-Encoding.
 
@@ -152,12 +152,12 @@ call `tokenizer.update_post_processor()` to make sure that the post-processing i
 values of the first token and final token of an encoded sequence will not be correct). For more details, checkout
 [post-processors] (https://huggingface.co/docs/tokenizers/api/post-processors) documentation.
 
-This tokenizer inherits from [PreTrainedTokenizerFast](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should
+This tokenizer inherits from [PreTrainedTokenizerFast](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should
 refer to this superclass for more information regarding those methods. The default configuration match that of
 [meta-llama/CodeLlama-7b-Instruct-hf](https://huggingface.co/meta-llama/CodeLlama-7b-Instruct-hf/blob/main/tokenizer_config.json)
 which supports prompt infilling.
 
-get_special_tokens_masktransformers.CodeLlamaTokenizer.get_special_tokens_maskhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L1335[{"name": "token_ids_0", "val": ": list[int]"}, {"name": "token_ids_1", "val": ": Optional[list[int]] = None"}, {"name": "already_has_special_tokens", "val": ": bool = False"}]- **token_ids_0** -- List of IDs for the (possibly already formatted) sequence.
+get_special_tokens_masktransformers.CodeLlamaTokenizer.get_special_tokens_maskhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L1330[{"name": "token_ids_0", "val": ": list[int]"}, {"name": "token_ids_1", "val": ": list[int] | None = None"}, {"name": "already_has_special_tokens", "val": ": bool = False"}]- **token_ids_0** -- List of IDs for the (possibly already formatted) sequence.
 - **token_ids_1** -- Unused when `already_has_special_tokens=True`. Must be None in that case.
 - **already_has_special_tokens** -- Whether the sequence is already formatted with special tokens.0A list of integers in the range [0, 1]1 for a special token, 0 for a sequence token.
 
@@ -209,13 +209,13 @@ vocab_file (`str`, *optional*) : [SentencePiece](https://github.com/google/sente
 1 for a special token, 0 for a sequence token.
 #### save_vocabulary[[transformers.CodeLlamaTokenizer.save_vocabulary]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_tokenizers.py#L384)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_tokenizers.py#L408)
 
 ## CodeLlamaTokenizerFast[[transformers.CodeLlamaTokenizer]]
 
 #### transformers.CodeLlamaTokenizer[[transformers.CodeLlamaTokenizer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/code_llama/tokenization_code_llama.py#L44)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/code_llama/tokenization_code_llama.py#L41)
 
 Construct a Llama tokenizer. Based on byte-level Byte-Pair-Encoding.
 
@@ -234,12 +234,12 @@ call `tokenizer.update_post_processor()` to make sure that the post-processing i
 values of the first token and final token of an encoded sequence will not be correct). For more details, checkout
 [post-processors] (https://huggingface.co/docs/tokenizers/api/post-processors) documentation.
 
-This tokenizer inherits from [PreTrainedTokenizerFast](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should
+This tokenizer inherits from [PreTrainedTokenizerFast](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should
 refer to this superclass for more information regarding those methods. The default configuration match that of
 [meta-llama/CodeLlama-7b-Instruct-hf](https://huggingface.co/meta-llama/CodeLlama-7b-Instruct-hf/blob/main/tokenizer_config.json)
 which supports prompt infilling.
 
-get_special_tokens_masktransformers.CodeLlamaTokenizer.get_special_tokens_maskhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L1335[{"name": "token_ids_0", "val": ": list[int]"}, {"name": "token_ids_1", "val": ": Optional[list[int]] = None"}, {"name": "already_has_special_tokens", "val": ": bool = False"}]- **token_ids_0** -- List of IDs for the (possibly already formatted) sequence.
+get_special_tokens_masktransformers.CodeLlamaTokenizer.get_special_tokens_maskhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L1330[{"name": "token_ids_0", "val": ": list[int]"}, {"name": "token_ids_1", "val": ": list[int] | None = None"}, {"name": "already_has_special_tokens", "val": ": bool = False"}]- **token_ids_0** -- List of IDs for the (possibly already formatted) sequence.
 - **token_ids_1** -- Unused when `already_has_special_tokens=True`. Must be None in that case.
 - **already_has_special_tokens** -- Whether the sequence is already formatted with special tokens.0A list of integers in the range [0, 1]1 for a special token, 0 for a sequence token.
 
@@ -291,10 +291,10 @@ vocab_file (`str`, *optional*) : [SentencePiece](https://github.com/google/sente
 1 for a special token, 0 for a sequence token.
 #### update_post_processor[[transformers.CodeLlamaTokenizer.update_post_processor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_tokenizers.py#L397)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_tokenizers.py#L421)
 
 Updates the underlying post processor with the current `bos_token` and `eos_token`.
 #### save_vocabulary[[transformers.CodeLlamaTokenizer.save_vocabulary]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_tokenizers.py#L384)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_tokenizers.py#L408)
 

@@ -1,5 +1,9 @@
 # Source: https://agentclientprotocol.com/protocol/session-setup.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://agentclientprotocol.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Session Setup
 
 > Creating and loading sessions
@@ -377,8 +381,3 @@ If `mcpCapabilities.sse` is `false` or not present, the Agent does not support S
 Agents **SHOULD** connect to all MCP servers specified by the Client.
 
 Clients **MAY** use this ability to provide tools directly to the underlying language model by including their own MCP server.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://agentclientprotocol.com/llms.txt

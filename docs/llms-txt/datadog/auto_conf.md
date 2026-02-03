@@ -5,10 +5,7 @@ title: Autodiscovery Auto-Configuration
 description: >-
   Manage automatic configuration for popular containerized services using
   Autodiscovery auto-configuration templates
-breadcrumbs: >-
-  Docs > Container Monitoring > Containers Guides > Autodiscovery
-  Auto-Configuration
-source_url: https://docs.datadoghq.com/guide/auto_conf/index.html
+breadcrumbs: Docs > Containers > Containers Guides > Autodiscovery Auto-Configuration
 ---
 
 # Autodiscovery Auto-Configuration

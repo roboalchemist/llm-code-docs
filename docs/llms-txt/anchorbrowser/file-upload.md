@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/advanced/file-upload.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # File Upload
 
 Anchor Browser allows you to upload files during your browser sessions, enabling you to interact with web applications/forms that require files as input.

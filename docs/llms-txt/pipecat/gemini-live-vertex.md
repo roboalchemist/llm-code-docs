@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/services/s2s/gemini-live-vertex.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Gemini Live Vertex AI
 
 > A real-time, multimodal conversational AI service powered by Google's Gemini via Vertex AI
@@ -27,8 +31,8 @@
     Official Vertex AI Gemini Live API documentation
   </Card>
 
-  <Card title="Google Cloud Vertex AI" icon="cloud" href="https://cloud.google.com/vertex-ai">
-    Official Google Cloud Vertex AI platform
+  <Card title="Gemini Live Model Card" icon="book" href="https://docs.cloud.google.com/vertex-ai/generative-ai/docs/models/gemini/2-5-flash-live-api">
+    Gemini Live available models
   </Card>
 </CardGroup>
 
@@ -65,8 +69,3 @@ Before using Gemini Live Vertex AI services, you need:
 * **Voice Activity Detection**: Automatic speech detection and turn management
 * **Function Calling**: Advanced tool integration and API calling capabilities
 * **Context Management**: Intelligent conversation history and system instruction handling
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

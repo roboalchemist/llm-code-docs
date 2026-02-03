@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/dashboard/emails/deliverability-insights.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deliverability Insights
 
 > Improve your deliverability with tailored insights based on your sending.

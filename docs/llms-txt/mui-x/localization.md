@@ -4,12 +4,6 @@
 
 # Source: https://mui.com/x/react-date-pickers/localization.md
 
-# Source: https://mui.com/x/react-data-grid/localization.md
-
-# Source: https://mui.com/x/react-charts/localization.md
-
-# Source: https://mui.com/x/react-date-pickers/localization.md
-
 ---
 productId: x-date-pickers
 title: Date and Time Pickers - Translated components

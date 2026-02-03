@@ -14,9 +14,7 @@ Components can have multiple `slots`, each representing a distinct HTML element 
 
 Let's take the [Card](/docs/components/card) component as an example which has multiple slots:
 
-<code-group>
-
-```ts [src/theme/card.ts]
+```ts
 export default {
   slots: {
     root: 'bg-default ring ring-default divide-y divide-default rounded-lg',
@@ -25,9 +23,10 @@ export default {
     footer: 'p-4 sm:px-6'
   }
 }
+
 ```
 
-```vue [src/runtime/components/Card.vue]
+```vue
 <template>
   <div :class="ui.root({ class: [props.ui?.root, props.class] })">
     <div :class="ui.header({ class: props.ui?.header })">
@@ -43,35 +42,29 @@ export default {
     </div>
   </div>
 </template>
-```
 
-</code-group>
+```
 
 Some components don't have slots, they are just composed of a single root element. In this case, the theme only defines the `base` slot like the [Container](/docs/components/container) component for example:
 
-<code-group>
-
-```ts [src/theme/container.ts]
+```ts
 export default {
   base: 'max-w-(--ui-container) mx-auto px-4 sm:px-6 lg:px-8'
 }
+
 ```
 
-```vue [src/runtime/components/Container.vue]
+```vue
 <template>
   <div :class="container({ class: props.class })">
     <slot />
   </div>
 </template>
+
 ```
 
-</code-group>
-
-<warning>
-
-Components without slots don't have a [`ui` prop](#ui-prop), only the [`class` prop](#class-prop) is available to override styles.
-
-</warning>
+> [!WARNING]
+> Components without slots don't have a [`ui` prop](#ui-prop), only the [`class` prop](#class-prop) is available to override styles.
 
 ### Variants
 
@@ -143,23 +136,15 @@ export default {
 }
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/installation/nuxt#themedefaultvariants">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/installation/nuxt#themedefaultvariants
+> You can use the `theme.defaultVariants` option in your `nuxt.config.ts` to override the default values for `size` and `color` for all components at once.
 
-You can use the `theme.defaultVariants` option in your `nuxt.config.ts` to override the default values for `size` and `color` for all components at once.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/installation/vue#themedefaultvariants">
-
-You can use the `theme.defaultVariants` option in your `vite.config.ts` to override the default values for `size` and `color` for all components at once.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/installation/vue#themedefaultvariants
+> You can use the `theme.defaultVariants` option in your `vite.config.ts` to override the default values for `size` and `color` for all components at once.
 
 ### Compound Variants
 
@@ -211,44 +196,24 @@ export default (options: Required<ModuleOptions>) => ({
 
 You have multiple ways to customize the appearance of Nuxt UI components, you can do it for all components at once or on a per-component basis.
 
-<note>
+> [!NOTE]
+> Tailwind Variants uses [`tailwind-merge`](https://github.com/dcastil/tailwind-merge) under the hood to merge classes so you don't have to worry about conflicting classes.
 
-Tailwind Variants uses [`tailwind-merge`](https://github.com/dcastil/tailwind-merge) under the hood to merge classes so you don't have to worry about conflicting classes.
-
-</note>
-
-<tip>
-
-You can explore the theme for each component in two ways:
-
-- Check the `Theme` section in the documentation of each individual component.
-- Browse the source code directly in the GitHub repository at [`src/theme`](https://github.com/nuxt/ui/tree/v4/src/theme).
-
-</tip>
+> [!TIP]
+> You can explore the theme for each component in two ways:Check the `Theme` section in the documentation of each individual component.Browse the source code directly in the GitHub repository at [`src/theme`](https://github.com/nuxt/ui/tree/v4/src/theme).
 
 ### Global config
 
-<framework-only>
-<template v-slot:nuxt="">
+**Nuxt:**
+You can override the theme of components globally inside your app.config.ts by using the exact same structure as the theme object.
 
-You can override the theme of components globally inside your `app.config.ts` by using the exact same structure as the theme object.
-
-</template>
-
-<template v-slot:vue="">
-
-You can override the theme of components globally inside your `vite.config.ts` by using the exact same structure as the theme object.
-
-</template>
-</framework-only>
+**Vue:**
+You can override the theme of components globally inside your vite.config.ts by using the exact same structure as the theme object.
 
 You can customize the [`slots`](#slots), [`variants`](#variants), [`compoundVariants`](#compound-variants) and [`defaultVariants`](#default-variants) of a component to change the default theme of a component:
 
-<framework-only>
-<template v-slot:nuxt="">
-<div>
-
-```ts [app.config.ts]
+**Nuxt:**
+```ts
 export default defineAppConfig({
   ui: {
     button: {
@@ -274,15 +239,11 @@ export default defineAppConfig({
     }
   }
 })
+
 ```
 
-</div>
-</template>
-
-<template v-slot:vue="">
-<div>
-
-```ts [vite.config.ts]
+**Vue:**
+```ts
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import ui from '@nuxt/ui/vite'
@@ -317,17 +278,11 @@ export default defineConfig({
     })
   ]
 })
+
 ```
 
-</div>
-</template>
-</framework-only>
-
-<note>
-
-In this example, `font-bold` overrides `font-medium` on all buttons, `size-4` overrides `size-5` class on the leading icon when `size="md"` and `ring-default hover:bg-accented` overrides `ring-accented hover:bg-elevated` when `color="neutral"` and `variant="outline"`. The buttons now defaults to `color="neutral"` and `variant="outline"`.
-
-</note>
+> [!NOTE]
+> In this example, `font-bold` overrides `font-medium` on all buttons, `size-4` overrides `size-5` class on the leading icon when `size="md"` and `ring-default hover:bg-accented` overrides `ring-accented hover:bg-elevated` when `color="neutral"` and `variant="outline"`. The buttons now defaults to `color="neutral"` and `variant="outline"`.
 
 ### `ui` prop
 
@@ -341,11 +296,8 @@ You can also override a component's **slots** using the `ui` prop. This takes pr
 </template>
 ```
 
-<note>
-
-In this example, the `trailingIcon` slot is overwritten with `size-3` even though the `md` size variant would apply a `size-5` class to it.
-
-</note>
+> [!NOTE]
+> In this example, the `trailingIcon` slot is overwritten with `size-3` even though the `md` size variant would apply a `size-5` class to it.
 
 ### `class` prop
 
@@ -359,8 +311,5 @@ The `class` prop allows you to override the classes of the `root` or `base` slot
 </template>
 ```
 
-<note>
-
-In this example, the `font-bold` class will override the default `font-medium` class on this button.
-
-</note>
+> [!NOTE]
+> In this example, the `font-bold` class will override the default `font-medium` class on this button.

@@ -2,13 +2,11 @@
 
 # Access Keys
 
-Access keys play a crucial role in granting permissions to Mission Controls, Satellites or Analytics within Juno.
+Access keys play a crucial role in granting permissions to Mission Controls, Satellites or Orbiters within Juno.
 
-When you sign in to Juno's [Console](/docs/terminology.md#console) using [Internet Identity](https://internetcomputer.org/internet-identity), you â and no one else (including not Juno) â become the owner of your [mission control](/docs/terminology.md#mission-control). This information is then sent back to your browser, where you can manage your modules.
+When you sign in to Juno's [Console](/docs/terminology.md#console) (for example, with Internet Identity) and create modules, you â and no one else, not even Juno â become their owner.
 
 ![Juno&#39;s console flow](/assets/images/console-d0903e4989f7c4db5f4e85567211d266.png)
-
-When you create a [satellite](/docs/terminology.md#satellite), you and your mission control become its owners. Per extension, you â and no one else (including not Juno) â own your satellite.
 
 **Note:**
 
@@ -27,7 +25,7 @@ Each access key is assigned a **role** that defines what it can do:
 | **Write** | Editor | â   | â   | â   | â   |
 | **Submit** | Submitter | â   | â   | â   | â   |
 
-An **administrator** can perform tasks such as configuring or deploying an app, topping up a mission control or satellite, creating a new collection in the [datastore](/docs/build/datastore.md) or [storage](/docs/build/storage.md), or configuring a custom domain in the [hosting](/docs/build/hosting.md).
+An **administrator** can perform tasks such as configuring or deploying an app, topping up a module, creating a new collection in the [datastore](/docs/build/datastore.md) or [storage](/docs/build/storage.md), or configuring a custom domain in the [hosting](/docs/build/hosting.md).
 
 An **editor** can publish new serverless function versions to a Satelliteâs CDN, deploy your frontend application, and read data from a collection. However, it cannot directly upgrade a Satellite or start/stop a module.
 
@@ -93,7 +91,7 @@ When you run the command, the CLI checks if an access key is already present on 
 
 ### Generate a new access key
 
-To **generate a new access key** and attach it to your desired Mission Controls and Satellites, you can run:
+To **generate a new access key** and attach it to your desired module, you can run:
 
 ```
 juno login

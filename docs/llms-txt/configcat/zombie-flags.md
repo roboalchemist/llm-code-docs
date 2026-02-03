@@ -2,6 +2,8 @@
 
 # Zombie Flags
 
+Copy page
+
 Zombie flags (stale flags) are feature flags that are no longer needed or actively used. They often remain in the codebase long after their purpose has been fulfilled. Removing these outdated flags can reduce technical debt, improve performance, and simplify your codebase.
 
 Common scenarios where zombie flags appear:

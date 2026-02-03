@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/cloud-storage/s3writertool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # S3 Writer Tool
 
 > The `S3WriterTool` enables CrewAI agents to write content to files in Amazon S3 buckets.

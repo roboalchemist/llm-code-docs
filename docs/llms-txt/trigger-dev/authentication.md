@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/management/authentication.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Authentication
 
 > Authenticating with the Trigger.dev management API
@@ -14,7 +18,7 @@ There are two methods of authenticating with the management API: using a secret 
 
 Certain API functions work with both authentication methods, but require different arguments depending on the method used. For example, the `runs.list` function can be called using either a `secretKey` or a `personalAccessToken`, but the `projectRef` argument is required when using a `personalAccessToken`:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { configure, runs } from "@trigger.dev/sdk";
 
 // Using secretKey authentication
@@ -80,7 +84,7 @@ A PAT is a token associated with a specific user, and gives access to all the or
 
 For example, when uploading environment variables using a PAT, you must provide the `projectRef` and `environment` arguments:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { configure, envvars } from "@trigger.dev/sdk";
 
 configure({
@@ -103,7 +107,7 @@ When working with preview branches, you may need to target a specific branch whe
   <Tab title="SDK">
     To target a specific preview branch, include the `previewBranch` option in your SDK configuration:
 
-    ```ts  theme={null}
+    ```ts  theme={"theme":"css-variables"}
     import { configure, envvars } from "@trigger.dev/sdk";
 
     configure({
@@ -120,7 +124,7 @@ When working with preview branches, you may need to target a specific branch whe
   <Tab title="cURL">
     To target a specific preview branch, include the `x-trigger-branch` header in your API requests with the branch name as the value:
 
-    ```bash  theme={null}
+    ```bash  theme={"theme":"css-variables"}
     curl --request PUT \
       --url https://api.trigger.dev/api/v1/projects/{projectRef}/envvars/preview/DATABASE_URL \
       --header 'Authorization: Bearer <token>' \
@@ -145,7 +149,7 @@ This will set the `DATABASE_URL` environment variable specifically for the `feat
 
 When using the SDK to manage preview branch environment variables, the branch targeting is handled automatically when you're running in a preview environment with the `TRIGGER_PREVIEW_BRANCH` environment variable set. However, you can also specify the branch explicitly:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { configure, envvars } from "@trigger.dev/sdk";
 
 configure({

@@ -6,25 +6,111 @@ Source: https://docs.bito.ai/llms-full.txt
 
 # Welcome to Bito
 
-[Bito](https://bito.ai/) is an **AI-powered code review tool** that helps you catch bugs, security vulnerabilities, code smells, and other issues in your pull requests and code editors. By understanding your entire codebase, Bito provides context-aware, actionable suggestions that improve code quality and security.
+[**Bito**](https://bito.ai/) provides **codebase intelligence** for AI coding agents. Using Bito, your AI agents like Cursor, Claude, ChatGPT, GitHub Copilot, and Windsurf can understand your entire codebase architecture and generate accurate, production-ready code.
 
-It includes real-time recommendations from dev tools you already use such as static code analysis, open source vulnerability scanners, linters, and secrets scanning tools (e.g., passwords, API keys, sensitive information, etc.).
+Bito's [**AI Architect**](https://docs.bito.ai/ai-architect/overview) builds a knowledge graph of your codebase — from repos to modules to APIs —delivering system-aware context to the AI coding agents you already use. This helps AI agents reason about your system instead of working with isolated code snippets.
 
-#### Supported platforms
+Beyond code generation, AI Architect also powers Bito's [**AI Code Review Agent**](https://docs.bito.ai/ai-code-reviews-in-git/overview), which provides intelligent, context-aware code reviews in GitHub, GitLab, and Bitbucket. This catches cross-repository impacts and architectural issues that traditional tools miss, helping you merge PRs 89% faster with 34% fewer regressions.
 
-[**AI Code Reviews in Git**](https://docs.bito.ai/ai-code-reviews-in-git/overview)**:** GitHub, GitLab, Bitbucket
+<p align="center"><a href="https://alpha.bito.ai/home/welcome" class="button primary">Start free trial</a><a href="#getting-started" class="button secondary">Getting started guide</a></p>
 
-[**AI Code Reviews in IDE**](https://docs.bito.ai/ai-code-reviews-in-ide/overview)**:** VS Code, Cursor, Windsurf, JetBrains
+{% embed url="<https://www.youtube.com/watch?v=qAMtZ41-xJY>" %}
 
-<p align="center"><a href="https://alpha.bito.ai/home/welcome" class="button primary">Start free trial</a><a href="getting-started" class="button secondary">Getting started guide</a></p>
+## Key capabilities of the AI Architect
 
-<figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FnYACckyUuw2IToyJyF0r%2Fimg-bito-cra.png?alt=media&#x26;token=81b38b43-dc23-495f-8eb8-6f7d54da524f" alt=""><figcaption></figcaption></figure>
+* **Grounded 1-shot production-ready code** — The AI Architect learns all your services, endpoints, code usage examples, and architectural patterns. The agent automatically feeds those to your coding agent (Claude Code, Cursor, Codex, any MCP client) to provide it the necessary information to quickly and efficiently create production ready code.
+  * [**Watch demo video**](https://www.youtube.com/watch?v=2yx_FfDsYco)
+* **Consistent design adherence** — Code generated aligns with your architecture patterns and coding conventions.
+* **Spec-driven development** — Automatically generate highly detailed, implementation-ready technical requirement documents (TRDs) and low-level designs (LLDs) with a deep, context-aware understanding of your codebase, services, and design patterns, ensuring architectural integrity and consistency at a granular level.
+  * [**Watch demo video**](https://www.youtube.com/watch?v=xMmZbbZUcq0)
+* **Triaging production issues** — Easily and quickly find root causes to production issues based on errors/logs/etc.
+  * [**Watch demo video**](https://www.youtube.com/watch?v=05-2hKcaZKk)
+* **Faster onboarding** — New engineers or AI agents can quickly understand how a system or component system structure.
+* **Enhanced documentation and diagramming** — Through its internal understanding of interconnections between modules and APIs.
+* **Smarter code reviews** — Reviews with system-wide awareness of dependencies and impacts.
 
-## See AI Code Review Agent in action
+## Getting started
 
-{% embed url="<https://youtu.be/WukH9rA_5go>" %}
+Choose what you'd like to set up:
 
-## Quickstart guide
+* **AI Architect**
+  * Bito-hosted (contact <support@bito.ai>)
+  * [Self-hosted](https://docs.bito.ai/ai-architect/install-ai-architect-self-hosted)
+* **AI Code Review Agent**
+  * [Use in Git](https://docs.bito.ai/ai-code-reviews-in-git/overview) (GitHub, GitLab, Bitbucket)
+  * [Use in IDE](https://docs.bito.ai/ai-code-reviews-in-ide/overview) (VS Code, Cursor, Windsurf, JetBrains)
+  * [Use in CLI](https://docs.bito.ai/ai-code-reviews-in-cli/overview) (integrates seamlessly with AI coding agents like Cursor, Claude Code, Windsurf, and others.)
+
+## Helpful resources
+
+<table data-column-title-hidden data-view="cards"><thead><tr><th align="center"></th><th data-hidden></th><th data-hidden data-type="content-ref"></th><th data-hidden data-type="content-ref"></th><th data-hidden data-type="content-ref"></th><th data-hidden data-type="content-ref"></th><th data-hidden data-type="content-ref"></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="image">Cover image</th><th data-hidden data-type="content-ref"></th></tr></thead><tbody><tr><td align="center"><mark style="color:blue;"><strong>AI Architect</strong></mark></td><td></td><td></td><td></td><td></td><td></td><td></td><td><a href="ai-architect/overview">overview</a></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FKfjIPU8lpdcKQMiY7EGz%2FUntitled%20design%20(19).png?alt=media&#x26;token=62c60fc6-f75d-445a-8711-2d61fe444de0">Untitled design (19).png</a></td><td></td></tr><tr><td align="center"><mark style="color:blue;"><strong>AI Code Review Agent</strong></mark></td><td></td><td></td><td></td><td></td><td></td><td></td><td><a href="ai-code-reviews-in-git/overview">overview</a></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FUcdZ6vcK9gCjJTUaEDne%2FUntitled%20design%20(4).png?alt=media&#x26;token=20b0eeb0-8004-45cd-9802-7fa0549aa4c4">Untitled design (4).png</a></td><td></td></tr><tr><td align="center"><mark style="color:blue;"><strong>Account and settings</strong></mark></td><td>Manage workspace and personalize Bito</td><td><a href="help/account-and-settings/setting-ai-output-language">setting-ai-output-language</a></td><td><a href="help/account-and-settings/managing-user-access-levels">managing-user-access-levels</a></td><td></td><td></td><td></td><td><a href="help/account-and-settings">account-and-settings</a></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2F645WmCAHgOMYO87FSCRM%2FUntitled%20design%20(5).png?alt=media&#x26;token=115732a3-d63e-4792-bdca-a9c50e4085f4">Untitled design (5).png</a></td><td></td></tr><tr><td align="center"><mark style="color:blue;"><strong>Billing and plans</strong></mark></td><td></td><td></td><td></td><td></td><td></td><td></td><td><a href="help/billing-and-plans">billing-and-plans</a></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2F4pl4GzipZ3Hn1o61AqGm%2FUntitled%20design%20(6).png?alt=media&#x26;token=f81e2f72-ced4-42ce-86bc-0547a1ed138d">Untitled design (6).png</a></td><td></td></tr><tr><td align="center"><mark style="color:blue;"><strong>Privacy and security</strong></mark></td><td></td><td></td><td></td><td></td><td></td><td></td><td><a href="privacy-and-security">privacy-and-security</a></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FFkH7cI5uaBk4mSFTyaaW%2FUntitled%20design%20(7).png?alt=media&#x26;token=b6d74f19-950e-49d2-a79c-c154a668bada">Untitled design (7).png</a></td><td></td></tr><tr><td align="center"><mark style="color:blue;"><strong>Get support</strong></mark></td><td>Get support and learn about our security and privacy policy</td><td><a href="help/support-and-questions/troubleshooting">troubleshooting</a></td><td><a href="privacy-and-security">privacy-and-security</a></td><td></td><td></td><td></td><td><a href="help/support-and-questions">support-and-questions</a></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2F6dVx3gGICbyTYJ2YWxO6%2FUntitled%20design%20(8).png?alt=media&#x26;token=5e5eabea-119e-4007-b2f8-375948110131">Untitled design (8).png</a></td><td></td></tr><tr><td align="center"><mark style="color:blue;"><strong>Changelog</strong></mark></td><td></td><td></td><td></td><td></td><td></td><td></td><td><a href="changelog">changelog</a></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FFsF73C8pvf82gpl6dgBr%2FUntitled%20design%20(9).png?alt=media&#x26;token=487a109b-e66d-4bb0-ad15-7fb45ab702b1">Untitled design (9).png</a></td><td></td></tr></tbody></table>
+
+## AI Architect
+
+<table data-view="cards"><thead><tr><th align="center"></th><th data-hidden data-card-cover data-type="image">Cover image</th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td align="center"><mark style="color:blue;"><strong>Bito-hosted AI Architect</strong></mark></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2F1nzhVrMmnlDSgPBjGrKI%2FUntitled%20design%20(20).png?alt=media&#x26;token=7e3f84f3-395a-493c-bc8e-49c7d4e23081">Untitled design (20).png</a></td><td></td></tr><tr><td align="center"><mark style="color:blue;"><strong>Self-hosted AI Architect</strong></mark></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FcN5PxgUcfRku9UErlrI4%2FUntitled%20design%20(22).png?alt=media&#x26;token=7c1cb981-e78c-4257-a1f5-211d7e418a2a">Untitled design (22).png</a></td><td><a href="ai-architect/install-ai-architect-self-hosted">install-ai-architect-self-hosted</a></td></tr><tr><td align="center"><mark style="color:blue;"><strong>MCP integration with AI coding agents</strong></mark></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FC8KLSLkuVitYRvWbxjhW%2FUntitled%20design%20(21).png?alt=media&#x26;token=d5253874-a176-4982-9c80-7424bea3e7c2">Untitled design (21).png</a></td><td><a href="ai-architect/quick-mcp-integration-with-ai-coding-agents">quick-mcp-integration-with-ai-coding-agents</a></td></tr></tbody></table>
+
+## AI Code Review Agent
+
+<table data-view="cards"><thead><tr><th align="center"></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td align="center"><mark style="color:blue;"><strong>AI that understands your code</strong></mark></td><td><a href="https://bito.ai/blog/how-does-bitos-ai-that-understands-your-code-work/">https://bito.ai/blog/how-does-bitos-ai-that-understands-your-code-work/</a></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FkPkq5LHtYSalDCHDTP46%2FUntitled%20design%20(10).png?alt=media&#x26;token=97b4b970-e58b-462d-9377-25c37f87b75c">Untitled design (10).png</a></td></tr><tr><td align="center"><mark style="color:blue;"><strong>Chat with AI Code Review Agent</strong></mark></td><td><a href="ai-code-reviews-in-git/chat-with-ai-code-review-agent">chat-with-ai-code-review-agent</a></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FuG3uzNArjISxQKaIwlD4%2FUntitled%20design%20(11).png?alt=media&#x26;token=7717b4da-d5bd-4832-9be9-57cb317719e9">Untitled design (11).png</a></td></tr><tr><td align="center"><mark style="color:blue;"><strong>Custom code review rules and guidelines</strong></mark></td><td><a href="ai-code-reviews-in-git/implementing-custom-code-review-rules">implementing-custom-code-review-rules</a></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FmHye90slz6w7KNJPrbMz%2FUntitled%20design%20(12).png?alt=media&#x26;token=935b3f08-9c6f-4dfc-988b-492b12433484">Untitled design (12).png</a></td></tr><tr><td align="center"><mark style="color:blue;"><strong>Code review analytics</strong></mark></td><td><a href="ai-code-reviews-in-git/code-review-analytics">code-review-analytics</a></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FAr3P1Q8iKedkGw5wc5dT%2FUntitled%20design%20(13).png?alt=media&#x26;token=d3e29396-7b28-4209-bcaa-6d317aa865ed">Untitled design (13).png</a></td></tr><tr><td align="center"><mark style="color:blue;"><strong>Supported programming languages and tools</strong></mark></td><td><a href="ai-code-reviews-in-git/supported-programming-languages-and-tools">supported-programming-languages-and-tools</a></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FEpQb5PwhjYZFMzJJs24Y%2FUntitled%20design%20(14).png?alt=media&#x26;token=8df8c9f0-fde4-4b1b-9a5c-fadb13579edc">Untitled design (14).png</a></td></tr><tr><td align="center"><mark style="color:blue;"><strong>Available commands</strong></mark></td><td><a href="ai-code-reviews-in-git/available-commands">available-commands</a></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2F8tpsZXZa5vaSR5DPd9Z4%2FUntitled%20design%20(17).png?alt=media&#x26;token=cd3cb363-adb7-4e42-a2b9-7c31c6d89cf3">Untitled design (17).png</a></td></tr><tr><td align="center"><mark style="color:blue;"><strong>Agent settings</strong></mark></td><td></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FOYL9kSoRur4Z04t2bBcG%2FUntitled%20design%20(18).png?alt=media&#x26;token=af2dac06-ba9a-4fb2-bfbe-622cc1d81a6e">Untitled design (18).png</a></td></tr><tr><td align="center"><mark style="color:blue;"><strong>FAQs</strong></mark></td><td><a href="ai-code-reviews-in-git/faqs">faqs</a></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2F3a9YUrociayAlAcP15ps%2FUntitled%20design%20(16).png?alt=media&#x26;token=eae78693-6120-4390-a695-12bb5de793a6">Untitled design (16).png</a></td></tr></tbody></table>
+
+## Video library
+
+{% embed url="<https://www.youtube.com/@bitoai?sub_confirmation=1>" %}
+
+## Need help?
+
+If you have any questions, feel free to email us at [**support@bito.ai**](mailto:support@bito.ai)
+
+
+# Quickstart
+
+This guide will help you set up and start using Bito's AI-powered tools. Whether you're looking to enhance feedback of your coding agents with [AI Architect](https://docs.bito.ai/ai-architect/overview) or automate code reviews with our [AI Code Review Agent](https://docs.bito.ai/ai-code-reviews-in-git/overview), you'll find everything you need below.
+
+### AI Architect
+
+{% stepper %}
+{% step %}
+
+### Install AI Architect
+
+#### Bito-hosted
+
+1. Contact <support@bito.ai>
+
+#### Self-hosted
+
+1. Download from [GitHub](https://github.com/gitbito/ai-architect)
+2. Run setup and configure your repositories
+3. Start indexing to build knowledge graph of your codebase
+4. Get your MCP server URL and access token
+
+[Complete installation guide →](https://docs.bito.ai/ai-architect/install-ai-architect-self-hosted)
+{% endstep %}
+
+{% step %}
+
+### Connect to your AI coding agent
+
+You can connect AI Architect to your AI coding tools using **either an automated installer or a manual configuration**, depending on the agent and your environment.
+
+* **Automated setup (recommended)**\
+  The installer will automatically configure AI Architect for all compatible AI coding tools on your system.
+
+  [**Quick MCP Integration Guide**](https://docs.bito.ai/ai-architect/quick-mcp-integration-with-ai-coding-agents)
+* **Manual setup**
+
+  If you prefer hands-on control over your configuration or encounter issues with automated setup, we provide detailed step-by-step guides for each supported AI coding tool:
+
+  * [**Guide for Claude Code**](https://docs.bito.ai/ai-architect/guide-for-claude-code)
+  * [**Guide for Cursor**](https://docs.bito.ai/ai-architect/guide-for-cursor)
+  * [**Guide for Windsurf**](https://docs.bito.ai/ai-architect/guide-for-windsurf)
+  * [**Guide for GitHub Copilot (VS Code)**](https://docs.bito.ai/ai-architect/guide-for-github-copilot-vs-code)
+  * [**Guide for Junie (JetBrains)**](https://docs.bito.ai/ai-architect/guide-for-junie-jetbrains)
+  * [**Guide for JetBrains AI Assistant**](https://docs.bito.ai/ai-architect/guide-for-jetbrains-ai-assistant)
+    {% endstep %}
+    {% endstepper %}
+
+### AI Code Reviews in Git
 
 {% stepper %}
 {% step %}
@@ -78,75 +164,6 @@ To customize your agent, go to [Repositories](https://alpha.bito.ai/home/ai-agen
 [Learn more](https://docs.bito.ai/ai-code-reviews-in-git/install-run-using-bito-cloud/create-or-customize-an-agent-instance)
 {% endstep %}
 {% endstepper %}
-
-## Helpful resources
-
-<table data-column-title-hidden data-view="cards"><thead><tr><th align="center"></th><th data-hidden></th><th data-hidden data-type="content-ref"></th><th data-hidden data-type="content-ref"></th><th data-hidden data-type="content-ref"></th><th data-hidden data-type="content-ref"></th><th data-hidden data-type="content-ref"></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th><th data-hidden data-type="content-ref"></th></tr></thead><tbody><tr><td align="center"><mark style="color:blue;"><strong>AI Code Review Agent</strong></mark></td><td></td><td></td><td></td><td></td><td></td><td></td><td><a href="ai-code-reviews-in-git/overview">overview</a></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FUcdZ6vcK9gCjJTUaEDne%2FUntitled%20design%20(4).png?alt=media&#x26;token=20b0eeb0-8004-45cd-9802-7fa0549aa4c4">Untitled design (4).png</a></td><td></td></tr><tr><td align="center"><mark style="color:blue;"><strong>Account and settings</strong></mark></td><td>Manage workspace and personalize Bito</td><td><a href="help/account-and-settings/setting-ai-output-language">setting-ai-output-language</a></td><td><a href="help/account-and-settings/managing-user-access-levels">managing-user-access-levels</a></td><td></td><td></td><td></td><td><a href="help/account-and-settings">account-and-settings</a></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2F645WmCAHgOMYO87FSCRM%2FUntitled%20design%20(5).png?alt=media&#x26;token=115732a3-d63e-4792-bdca-a9c50e4085f4">Untitled design (5).png</a></td><td></td></tr><tr><td align="center"><mark style="color:blue;"><strong>Billing and plans</strong></mark></td><td></td><td></td><td></td><td></td><td></td><td></td><td><a href="help/billing-and-plans">billing-and-plans</a></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2F4pl4GzipZ3Hn1o61AqGm%2FUntitled%20design%20(6).png?alt=media&#x26;token=f81e2f72-ced4-42ce-86bc-0547a1ed138d">Untitled design (6).png</a></td><td></td></tr><tr><td align="center"><mark style="color:blue;"><strong>Privacy and security</strong></mark></td><td></td><td></td><td></td><td></td><td></td><td></td><td><a href="privacy-and-security">privacy-and-security</a></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FFkH7cI5uaBk4mSFTyaaW%2FUntitled%20design%20(7).png?alt=media&#x26;token=b6d74f19-950e-49d2-a79c-c154a668bada">Untitled design (7).png</a></td><td></td></tr><tr><td align="center"><mark style="color:blue;"><strong>Get support</strong></mark></td><td>Get support and learn about our security and privacy policy</td><td><a href="help/support-and-questions/troubleshooting">troubleshooting</a></td><td><a href="privacy-and-security">privacy-and-security</a></td><td></td><td></td><td></td><td><a href="help/support-and-questions">support-and-questions</a></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2F6dVx3gGICbyTYJ2YWxO6%2FUntitled%20design%20(8).png?alt=media&#x26;token=5e5eabea-119e-4007-b2f8-375948110131">Untitled design (8).png</a></td><td></td></tr><tr><td align="center"><mark style="color:blue;"><strong>Changelog</strong></mark></td><td></td><td></td><td></td><td></td><td></td><td></td><td><a href="changelog">changelog</a></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FFsF73C8pvf82gpl6dgBr%2FUntitled%20design%20(9).png?alt=media&#x26;token=487a109b-e66d-4bb0-ad15-7fb45ab702b1">Untitled design (9).png</a></td><td></td></tr></tbody></table>
-
-## Feature guides
-
-<table data-view="cards"><thead><tr><th align="center"></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td align="center"><mark style="color:blue;"><strong>AI that understands your code</strong></mark></td><td><a href="https://bito.ai/blog/how-does-bitos-ai-that-understands-your-code-work/">https://bito.ai/blog/how-does-bitos-ai-that-understands-your-code-work/</a></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FkPkq5LHtYSalDCHDTP46%2FUntitled%20design%20(10).png?alt=media&#x26;token=97b4b970-e58b-462d-9377-25c37f87b75c">Untitled design (10).png</a></td></tr><tr><td align="center"><mark style="color:blue;"><strong>Chat with AI Code Review Agent</strong></mark></td><td><a href="ai-code-reviews-in-git/chat-with-ai-code-review-agent">chat-with-ai-code-review-agent</a></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FuG3uzNArjISxQKaIwlD4%2FUntitled%20design%20(11).png?alt=media&#x26;token=7717b4da-d5bd-4832-9be9-57cb317719e9">Untitled design (11).png</a></td></tr><tr><td align="center"><mark style="color:blue;"><strong>Custom code review rules and guidelines</strong></mark></td><td><a href="ai-code-reviews-in-git/implementing-custom-code-review-rules">implementing-custom-code-review-rules</a></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FmHye90slz6w7KNJPrbMz%2FUntitled%20design%20(12).png?alt=media&#x26;token=935b3f08-9c6f-4dfc-988b-492b12433484">Untitled design (12).png</a></td></tr><tr><td align="center"><mark style="color:blue;"><strong>Code review analytics</strong></mark></td><td><a href="ai-code-reviews-in-git/code-review-analytics">code-review-analytics</a></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FAr3P1Q8iKedkGw5wc5dT%2FUntitled%20design%20(13).png?alt=media&#x26;token=d3e29396-7b28-4209-bcaa-6d317aa865ed">Untitled design (13).png</a></td></tr><tr><td align="center"><mark style="color:blue;"><strong>Supported programming languages and tools</strong></mark></td><td><a href="ai-code-reviews-in-git/supported-programming-languages-and-tools">supported-programming-languages-and-tools</a></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FEpQb5PwhjYZFMzJJs24Y%2FUntitled%20design%20(14).png?alt=media&#x26;token=8df8c9f0-fde4-4b1b-9a5c-fadb13579edc">Untitled design (14).png</a></td></tr><tr><td align="center"><mark style="color:blue;"><strong>Available commands</strong></mark></td><td><a href="ai-code-reviews-in-git/available-commands">available-commands</a></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2F8tpsZXZa5vaSR5DPd9Z4%2FUntitled%20design%20(17).png?alt=media&#x26;token=cd3cb363-adb7-4e42-a2b9-7c31c6d89cf3">Untitled design (17).png</a></td></tr><tr><td align="center"><mark style="color:blue;"><strong>Agent settings</strong></mark></td><td></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FOYL9kSoRur4Z04t2bBcG%2FUntitled%20design%20(18).png?alt=media&#x26;token=af2dac06-ba9a-4fb2-bfbe-622cc1d81a6e">Untitled design (18).png</a></td></tr><tr><td align="center"><mark style="color:blue;"><strong>FAQs</strong></mark></td><td><a href="ai-code-reviews-in-git/faqs">faqs</a></td><td><a href="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2F3a9YUrociayAlAcP15ps%2FUntitled%20design%20(16).png?alt=media&#x26;token=eae78693-6120-4390-a695-12bb5de793a6">Untitled design (16).png</a></td></tr></tbody></table>
-
-## Video library
-
-{% embed url="<https://www.youtube.com/@bitoai?sub_confirmation=1>" %}
-
-## Need help?
-
-If you have any questions, feel free to email us at [**support@bito.ai**](mailto:support@bito.ai)
-
-
-# Getting started
-
-Deploy the AI Code Review Agent in Bito Cloud or opt for self-hosted service.
-
-**The** [**AI Code Review Agent**](https://docs.bito.ai/ai-code-reviews-in-git/overview) **supports two deployment options:**
-
-* [**Bito Cloud (fully managed)**](https://docs.bito.ai/ai-code-reviews-in-git/install-run-using-bito-cloud)
-* [**Self-hosted service (run on your own infrastructure)**](https://docs.bito.ai/ai-code-reviews-in-git/install-run-as-a-self-hosted-service)
-
-Each option comes with its own set of benefits and considerations.
-
-This guide walks you through both options to help you determine which deployment model best fits your team’s needs.
-
-## Bito Cloud
-
-[**Bito Cloud**](https://docs.bito.ai/ai-code-reviews-in-git/install-run-using-bito-cloud) provides a managed environment for running the AI Code Review Agent, offering a seamless, hassle-free experience. This option is ideal for teams looking for quick deployment and minimal operational overhead.
-
-**Pros:**
-
-* **Simplicity:** Enjoy a straightforward setup with a single-click installation process, making it easy to get started without technical hurdles.
-* **Maintenance-Free:** Bito Cloud takes care of all necessary updates and maintenance, ensuring your Agent always operates on the latest software version without any effort on your part.
-* **Scalability:** The platform is designed to easily scale, accommodating project growth effortlessly and ensuring reliable performance under varying loads.
-
-**Cons:**
-
-* **Handling of Pull Request Diffs:** For analysis purposes, diffs from pull requests are temporarily stored on our servers.
-
-<p align="center"><a href="ai-code-reviews-in-git/install-run-using-bito-cloud" class="button primary">Install/run using Bito Cloud</a></p>
-
-***
-
-## Self-hosted service
-
-[**Self-hosted**](https://docs.bito.ai/ai-code-reviews-in-git/install-run-as-a-self-hosted-service) AI Code Review Agent offers a higher degree of control and customization, suited for organizations with specific requirements or those who prefer to manage their own infrastructure.
-
-**Pros:**
-
-* **Full Control:** Self-hosting provides complete control over the deployment environment, allowing for extensive customization and the ability to integrate with existing systems as needed.
-* **Privacy and Security:** Keeping the AI Code Review Agent within your own infrastructure can enhance data security and privacy, as all information remains under your direct control.
-
-**Cons:**
-
-* **Setup Complexity:** Establishing a self-hosted environment requires technical know-how and can be more complex than using a managed service, potentially leading to longer setup times.
-* **Maintenance Responsibility:** The responsibility of maintaining and updating the software falls entirely on your team, which includes ensuring the system is scaled appropriately to handle demand.
-
-<p align="center"><a href="ai-code-reviews-in-git/install-run-as-a-self-hosted-service" class="button primary">Install/run as a self-hosted service</a></p>
-
-
-# Try Bito's AI code review
-
-Coming soon...
 
 
 # Privacy and security
@@ -227,6 +244,3702 @@ If you have any questions about our security and privacy, please email [**suppor
 
 # Overview
 
+System intelligence for your coding agents.
+
+Bito’s **AI Architect** builds a knowledge graph of your codebase — from repos to modules to APIs — delivering deep codebase intelligence to the coding agents you already use. This fundamentally changes the game for enterprises with many microservices or large, complex codebases.
+
+{% hint style="info" %}
+Bito provides the AI Architect in a completely secure fashion, with the AI Architect available on-prem if you desire with no code ever being sent to Bito. No AI is trained on your code and your code is not stored.
+{% endhint %}
+
+{% embed url="<https://youtu.be/qAMtZ41-xJY>" %}
+
+## Key capabilities of the AI Architect include:
+
+* **Grounded 1-shot production-ready code** — The AI Architect learns all your services, endpoints, code usage examples, and architectural patterns. The agent automatically feeds those to your coding agent (Claude Code, Cursor, Codex, any MCP client) to provide it the necessary information to quickly and efficiently create production ready code.
+  * [**Watch demo video**](https://www.youtube.com/watch?v=2yx_FfDsYco)
+* **Consistent design adherence** — Code generated aligns with your architecture patterns and coding conventions.
+* **Spec-driven development** — Automatically generate highly detailed, implementation-ready technical requirement documents (TRDs) and low-level designs (LLDs) with a deep, context-aware understanding of your codebase, services, and design patterns, ensuring architectural integrity and consistency at a granular level.
+  * [**Watch demo video**](https://www.youtube.com/watch?v=xMmZbbZUcq0)
+* **Triaging production issues** — Easily and quickly find root causes to production issues based on errors/logs/etc.
+  * [**Watch demo video**](https://www.youtube.com/watch?v=05-2hKcaZKk)
+* **Faster onboarding** — New engineers or AI agents can quickly understand how a system or component system structure.
+* **Enhanced documentation and diagramming** — Through its internal understanding of interconnections between modules and APIs.
+* **Smarter code reviews** — Reviews with system-wide awareness of dependencies and impacts.
+
+The AI Architect builds the knowledge graph by analyzing all your repositories (whether you have 50 or 5,000 repos) to learn about your codebase architecture, microservices, modules, API endpoints, design patterns, and more.
+
+## How you can use AI Architect
+
+AI Architect is designed to be flexible and can power multiple use cases across different AI coding tools and workflows.
+
+* [**Integrate via MCP server**](#getting-started) – Use AI Architect as an **MCP (Model Context Protocol) server** to connect with tools like [Claude Code](https://docs.bito.ai/ai-architect/guide-for-claude-code), [Cursor](https://docs.bito.ai/ai-architect/guide-for-cursor), [Windsurf](https://docs.bito.ai/ai-architect/guide-for-windsurf), [GitHub Copilot (VS Code)](https://docs.bito.ai/ai-architect/guide-for-github-copilot-vs-code), [Junie (JetBrains)](https://docs.bito.ai/ai-architect/guide-for-junie-jetbrains), and [JetBrains AI Assistant](https://docs.bito.ai/ai-architect/guide-for-jetbrains-ai-assistant). It helps connected tools understand your codebase and workflows better, resulting in accurate and more reliable suggestions.
+  1. **On-premises deployment** – Install and run AI Architect on your own infrastructure.
+     * [**See the installation instructions**](https://docs.bito.ai/ai-architect/install-ai-architect-self-hosted)
+  2. **Bito-hosted version** – Use the hosted version managed by Bito.
+     * Contact [**support@bito.ai**](mailto:support@bito.ai) for a trial
+* [**Example: Bito’s AI Code Review Agent**](https://docs.bito.ai/ai-code-reviews-in-git/overview) – One example of AI Architect in action is **Bito’s AI Code Review Agent**, which uses AI Architect to deliver smarter, context-aware code reviews directly in your pull requests and IDEs.
+  * [**View Guide**](https://docs.bito.ai/ai-architect/integrating-ai-architect-with-ai-code-review-agent)
+
+## Why use the AI Architect?
+
+Most AI coding tools struggle with accuracy in real-world codebases because they
+
+1. Don’t fully understand the breadth and depth of your codebase. They read some of the code in your existing repository, but they don’t have a complete graph of your internal APIs, endpoints, libraries, etc. On top of that, if you are accessing a monorepo or many services not available on your machine locally, they have no context or get confused trying to access them. Bito’s AI Architect has built a knowledge graph to provide this information in a cheap and efficient way to your coding agent so it can accomplish the task with grounded and complete information.
+2. They don’t fully understand how all of your services and modules interact with each other when you are trying to understand your overall system versus just one component. The AI Architect’s graph contains a mapping of all the dependencies, allowing to provide sophisticated analysis – how you would expect an Architect too.
+
+## How AI Architect differs from Embeddings?
+
+Traditional embeddings work like a search engine — they retrieve code snippets or documents similar to a given query.&#x20;
+
+They can find related content but can’t understand how different parts of your system work together.&#x20;
+
+The AI Architect, on the other hand:&#x20;
+
+* Builds a knowledge graph that captures relationships between repositories, modules, APIs, and libraries.
+* Provides precise answers and implementations, not just search results.
+* Understands context and intent — how and why something is implemented in your codebase.
+* Enables system-aware reasoning, allowing AI agents to generate or review code with full architectural understanding.
+
+## Getting started
+
+1. [**Try Bito's AI Architect**](https://alpha.bito.ai/home/welcome/ai-architect)
+2. [**Get a demo**](https://calendly.com/d/csk7-8yg-pwf) with our team.
+3. Lastly, email [**support@bito.ai**](mailto:support@bito.ai) if you have any additional questions.
+
+## Demos of different ways to use AI Architect
+
+{% embed url="<https://www.youtube.com/watch?v=2yx_FfDsYco>" %}
+
+{% embed url="<https://www.youtube.com/watch?v=xMmZbbZUcq0>" %}
+
+{% embed url="<https://www.youtube.com/watch?v=05-2hKcaZKk>" %}
+
+
+# Install AI Architect (self-hosted)
+
+Deploy AI Architect in your own infrastructure for complete data control and enhanced security
+
+This guide walks you through installing [**Bito's AI Architect**](https://docs.bito.ai/ai-architect/overview) as a self-hosted service in your own infrastructure. Self-hosting gives you complete control over where your code knowledge graph resides and how AI Architect accesses your repositories.
+
+**Why choose self-hosted deployment?** Organizations with strict data governance requirements, air-gapped environments, or specific compliance needs benefit from running AI Architect within their own infrastructure. Your codebase analysis and knowledge graph stay entirely within your control, while still providing the same powerful context-aware capabilities to your AI coding tools.
+
+**What you'll accomplish:** By the end of this guide, you'll have AI Architect running on your infrastructure, connected to your Git repositories, and ready to integrate with AI coding tools like Claude Code, Cursor, Windsurf, and GitHub Copilot through the Model Context Protocol (MCP).
+
+### Deployment options
+
+AI Architect can be deployed in three different configurations depending on your team size, infrastructure, and security requirements:
+
+#### a. Personal use (with your LLM keys)
+
+Set up AI Architect on your local machine for individual development work. You'll provide your own LLM API keys for indexing, giving you complete control over the AI models used and associated costs.
+
+**Best for:** Individual developers who want codebase understanding on their personal machine.
+
+#### b. Team / shared access (with your LLM keys)
+
+Deploy AI Architect on a shared server within your infrastructure, allowing multiple team members to connect their AI coding tools to the same MCP server. Each team member can configure AI Architect with their preferred AI coding agent while sharing the same indexed codebase knowledge graph.
+
+**Best for:** Development teams that want to share codebase intelligence across the team while managing their own LLM costs.
+
+#### c. Enterprise deployment (requires Bito Enterprise Plan)
+
+Deploy AI Architect on your infrastructure (local machine or shared server) with indexing managed by Bito. Instead of providing your own LLM keys, Bito handles the repository indexing process, simplifying setup and cost management.
+
+**Best for:** Organizations that prefer managed indexing without handling individual LLM API keys and costs.
+
+{% hint style="info" %}
+**Note:** All deployment options are self-hosted on your infrastructure — your code and knowledge graph remain under your control.
+{% endhint %}
+
+## Prerequisites
+
+### a. Required accounts and tokens
+
+{% stepper %}
+{% step %}
+
+### Bito API Key (aka Bito Access Key)
+
+You'll need a **Bito account** and a **Bito Access Key** to authenticate AI Architect. You can sign up for a Bito account at [**https://alpha.bito.ai**](https://alpha.bito.ai/), and create an access key from [**Settings -> Advanced Settings**](https://alpha.bito.ai/home/advanced)
+
+* [**View Guide**](https://docs.bito.ai/help/account-and-settings/access-key)
+  {% endstep %}
+
+{% step %}
+
+### Git provider
+
+We support the following Git providers:
+
+* GitHub
+* GitLab
+* Bitbucket
+
+So, you'll need an account on one of these Git providers to index your repositories with AI Architect.
+{% endstep %}
+
+{% step %}
+
+### Git Access Token
+
+A personal access token from your chosen Git provider is required. You'll use this token to allow AI Architect to read and index your repositories.
+
+1. **GitHub Personal Access Token (Classic):** To use GitHub repositories with AI Architect, ensure you have a CLASSIC personal access token with repo access. We do not support fine-grained tokens currently.
+   * [**View Guide**](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic)
+2. **GitLab Personal Access Token:** To use GitLab repositories with AI Architect, a token with API access is required.
+   * [**View Guide**](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#create-a-personal-access-token)
+3. **Bitbucket Access Token:** To use Bitbucket repositories with AI Architect, you need **API Token** or **HTTP Access Token** depending on your Bitbucket setup.
+   1. **Bitbucket Cloud (`API Token`):** You must provide both your **token** and **email address**.
+      * [**View Guide**](https://support.atlassian.com/bitbucket-cloud/docs/create-an-api-token/)
+   2. **Bitbucket Self-Hosted (`HTTP Access Token`):** You must provide both your **token** and **username**.
+      * [**View Guide**](https://confluence.atlassian.com/bitbucketserver/personal-access-tokens-939515499.html)
+        {% endstep %}
+
+{% step %}
+
+### LLM API keys
+
+Bito's AI Architect uses Large Language Models (LLMs) to build a knowledge graph of your codebase.
+
+We suggest you provide API keys for both **Anthropic** and **Grok** LLMs, as that provides the best coverage and the best cost of indexing.
+
+Bito will use **Claude Haiku** and **Grok Code Fast** together to index your codebase. It will cost you approximately USD $0.20 - $0.40 per MB of indexable code (we do not index binaries, TARs, zips, images, etc). If you provide only an Anthropic key without Grok, your indexing costs will be significantly higher, approximately USD $1.00 - $1.50 per MB of indexable code.&#x20;
+{% endstep %}
+{% endstepper %}
+
+### b. System requirements
+
+AI Architect can be installed on your local machine for individual use, or on a shared server that your entire team can connect to. When installed on a server, multiple developers can configure their AI coding tools (such as Claude Code, Cursor, Windsurf, etc.) to use the same MCP server, sharing access to the indexed codebase.
+
+The AI Architect supports the following operating systems:
+
+* **macOS**
+* **Unix-based systems** (Ubuntu, Debian, RHEL, or similar distributions)
+* **Windows (via WSL2)**
+
+#### Shared servers (for team deployments)
+
+* **On-premise physical servers** - Bare metal Linux servers in your data center
+* **On-premise virtual machines** - VMware, Hyper-V, Proxmox, KVM, or other virtualization platforms
+* **Cloud virtual machines** - AWS EC2, Google Cloud Compute Engine, Azure VMs, DigitalOcean Droplets, or similar cloud instances
+
+{% stepper %}
+{% step %}
+
+### Hardware specifications
+
+|          |                                                                                   Recommended                                                                                   |
+| :------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|  **CPU** |                                                                                    6-8 cores                                                                                    |
+|  **RAM** |                                                                                     8-12 GB                                                                                     |
+| **Disk** | <p>SSD with adequate IOPS<br><br><strong>Note:</strong> Ensure sufficient disk space is available, as all configured repositories will be cloned to this disk during setup.</p> |
+
+AI Architect automatically detects available system resources during setup and configures optimal resource allocation for its Docker containers. For most deployments, the automatic configuration provides good performance. However, you can manually adjust these settings to fine-tune performance or accommodate specific workload requirements.
+
+You can customize resource limits by editing the `.env-bitoarch` file and run the command `./setup.sh --force-restart` to update the allocation. The following environment variables can be manually configured to control resource allocation.
+
+```dotenv
+CIS_PROVIDER_MEMORY_LIMIT=1g
+CIS_MANAGER_MEMORY_LIMIT=2g
+CIS_CONFIG_MEMORY_LIMIT=512m
+MYSQL_MEMORY_LIMIT=2g
+CIS_TRACKER_MEMORY_LIMIT=512m
+
+
+CIS_PROVIDER_CPU_LIMIT=1.0
+CIS_MANAGER_CPU_LIMIT=2.0
+CIS_CONFIG_CPU_LIMIT=0.5
+MYSQL_CPU_LIMIT=1.0
+CIS_TRACKER_CPU_LIMIT=0.5
+```
+
+{% endstep %}
+
+{% step %}
+
+### **WSL2 is required for Windows users**
+
+If you're running Windows, Windows Subsystem for Linux 2 (WSL2) must be installed before proceeding.
+
+**To install WSL2:**
+
+1. Open PowerShell or Command Prompt as Administrator
+2. Run the following command:
+
+```shellscript
+wsl --install
+```
+
+3. Set up your Ubuntu username and password when prompted.
+   {% endstep %}
+
+{% step %}
+
+### Docker Desktop / Docker Service (required)
+
+**Docker Compose** is required to run AI Architect.
+
+The easiest and recommended way to get Docker Compose is to install **Docker Desktop**.
+
+Docker Desktop includes Docker Compose along with Docker Engine and Docker CLI which are Docker Compose prerequisites.
+
+[**Install Docker Desktop**](https://docs.docker.com/compose/install)
+
+**Configuration for Windows (WSL2):**
+
+If you're using Windows with WSL2, you need to enable Docker integration with your WSL distribution:
+
+1. Open **Docker Desktop**
+2. Go to **Settings** > **Resources** > **WSL Integration**
+3. Enable integration for your WSL distribution (e.g., Ubuntu)
+4. Click **Apply**
+   {% endstep %}
+
+{% step %}
+
+### Kubernetes cluster (required for Kubernetes based deployment method)
+
+### For production environments:
+
+During the setup process given below, if you choose [**Kubernetes**](https://kubernetes.io/docs/home/) as your deployment method, you must have an existing Kubernetes cluster set up and running.
+
+Ensure your Kubernetes cluster have the following required tools:
+
+* **kubectl** (Kubernetes command-line tool)
+* **helm** (Kubernetes package manager)
+
+### For testing and development:
+
+For testing purposes, you can create a local Kubernetes cluster using KIND (Kubernetes in Docker). KIND allows you to run Kubernetes clusters in Docker containers.
+
+**Install KIND:**
+
+* **macOS:**
+
+```shellscript
+brew install kind kubectl helm
+```
+
+* **Linux:**
+
+```shellscript
+# KIND
+curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-amd64
+chmod +x ./kind
+sudo mv ./kind /usr/local/bin/kind
+
+# kubectl
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x kubectl
+sudo mv kubectl /usr/local/bin/
+
+# Helm
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+```
+
+{% hint style="info" %}
+**Note:** Before creating a KIND cluster, verify Docker has sufficient resources:
+
+```shellscript
+docker info --format 'CPUs={{.NCPU}} Mem={{.MemTotal}}'
+```
+
+\
+**Required:** Minimum 4 CPUs and 8GB RAM
+
+If resources are insufficient, increase Docker Desktop resources (Preferences → Resources) and restart Docker.
+{% endhint %}
+
+#### Setting up a test cluster with KIND
+
+Create a KIND cluster with proper port mappings for service access:
+
+```shellscript
+kind create cluster --name bito-ai-architect --config - <<EOF
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+- role: control-plane
+  extraPortMappings:
+  - containerPort: 80
+    hostPort: 80
+  - containerPort: 443
+    hostPort: 443
+EOF
+```
+
+{% hint style="info" %}
+**Note:** Services use ClusterIP for secure, internal-only access. External access is configured via Ingress Controller on ports 80/443.
+{% endhint %}
+
+#### Verify cluster
+
+```shellscript
+kubectl cluster-info --context kind-bito-ai-architect
+kubectl get nodes
+```
+
+{% endstep %}
+{% endstepper %}
+
+## Installation guide
+
+{% stepper %}
+{% step %}
+
+### Install AI Architect
+
+Before proceeding with the installation, ensure **Docker Desktop / Docker Service** or **Kubernetes cluster** is running on your system. If it's not already running, launch it and wait for it to fully start before continuing.
+
+Open your terminal:
+
+* **Linux/macOS**: Use your standard terminal application
+* **Windows (WSL2)**: Launch the **Ubuntu** application from the **Start menu**
+
+Execute the installation command:
+
+```bash
+curl -fsSL https://aiarchitect.bito.ai/install.sh | bash
+```
+
+The installation script will:
+
+* Download the latest Bito AI Architect package
+* Extract it to your system
+* Initialize the setup process
+
+{% hint style="info" %}
+**Installing dependencies:**
+
+The AI Architect setup process will automatically check for required tools on your system. If any dependencies are missing (such as `jq`, which is needed for JSON processing), you'll be prompted to install them. Simply type `y` and press `Enter` to proceed with the installation.
+{% endhint %}
+{% endstep %}
+
+{% step %}
+
+### Configuration
+
+Follow the on-screen prompts to configure your deployment. You'll provide the following information:
+
+#### Select AI Architect deployment method:
+
+Choose how you want to deploy Bito's AI Architect. We support two deployment methods:
+
+1. **Docker Compose:** Deploys AI Architect using Docker Compose.
+2. **Kubernetes:** Deploys AI Architect to an existing Kubernetes cluster. Choose this option if you have an existing Kubernetes cluster running and want to leverage Kubernetes for orchestration, scaling, and management.
+   * **Note:** The setup script will automatically deploy AI Architect services to your Kubernetes cluster in the `bito-ai-architect` namespace.
+
+{% hint style="info" %}
+**If you have a Kubernetes cluster:**
+
+1. Ensure it's running
+2. Verify the current Kubernetes context: `kubectl config current-context`
+3. Check connectivity: `kubectl cluster-info`
+
+\
+**If you don't have a Kubernetes cluster:**
+
+1. Select Docker Compose (option 1)
+   {% endhint %}
+
+#### You'll need to provide the following details when prompted:
+
+{% hint style="info" %}
+**Note:** Refer to the [**Prerequisites section**](#prerequisites) for details on how to obtain these.
+{% endhint %}
+
+* **Bito API Key** (required) - Enter your Bito Access key and press Enter.
+* **Git provider** (required):
+
+  You'll be prompted to choose your Git provider:
+
+  1. GitLab
+  2. GitHub
+  3. Bitbucket
+
+  Enter the number corresponding to your Git provider and press Enter.
+* **Is your Git provider self-hosted or cloud-based?**
+
+  * Type `y` for enterprise/self-hosted instances (like `https://github.company.com`) and enter your custom domain URL
+  * Type `n` for standard cloud providers (github.com, gitlab.com, bitbucket.org)
+
+  Press Enter to continue.
+* **Git Access Token** (required) - Enter personal access token for your Git provider and press Enter.
+* **Configure LLM API keys** (required) - Choose which AI model provider(s) to configure:
+
+  1. Anthropic
+  2. Grok
+  3. OpenAI
+
+  Enter the number corresponding to your AI model provider, then provide your API key when prompted.
+
+  We suggest you provide API keys for both **Anthropic** and **Grok** LLMs, as that provides the best coverage and the best cost of indexing.
+
+  After adding a provider, you'll be asked: *"Do you want to configure another provider?"*
+
+  * Type `y` to add additional providers (recommended for better coverage and fallback options).
+  * Type `n` when you're done adding LLM providers.
+
+  Press Enter to continue.
+* **Generate a secure MCP access token?** - You'll be asked if you want Bito to create a secure token to prevent unauthorized access to your MCP server:
+
+  * Type `y` to generate a secure access token (recommended)
+  * Type `n` to skip token generation
+
+  Press Enter to continue.
+  {% endstep %}
+
+{% step %}
+
+### Add repositories
+
+Once your Git account is connected successfully, Bito automatically detects your repositories and populates the `/usr/local/etc/bitoarch/.bitoarch-config.yaml` file with an initial list. Review this file to confirm which repositories you want to index — feel free to remove any that should be excluded or add others as needed. Once the list looks correct, save the file, and continue with the steps below.
+
+{% hint style="info" %}
+For versions older than 1.4.0, configuration file can be found in installation directory.
+{% endhint %}
+
+Below is an example of how the `.bitoarch-config.yaml` file is structured:
+
+```yaml
+repository:
+  configured_repos:
+    - namespace: your-org/repo-name-1
+    - namespace: your-org/repo-name-2
+    - namespace: your-org/repo-name-3
+```
+
+After updating the `.bitoarch-config.yaml` file, you have two options to proceed with adding your repositories for indexing:
+
+1. **Auto Configure (recommended)**
+   * Automatically saves the repositories and starts indexing
+   * If needed, edit the repo list before selecting this option
+2. **Manual Setup**
+   * You have to manually update the configuration file and then start the indexing. Below we have provided complete details of the manual process.
+
+Once you select an option, your **Bito MCP URL** and **Bito MCP Access Token** will be displayed. Make sure to store them in a safe place, you'll need them later when configuring MCP server in your AI coding agent (e.g., Claude Code, Cursor, Windsurf, GitHub Copilot (VS Code), etc.).
+
+To manually apply the configuration, run this command:
+
+```shellscript
+bitoarch add-repos /usr/local/etc/bitoarch/.bitoarch-config.yaml
+```
+
+{% endstep %}
+
+{% step %}
+
+### Start indexing
+
+Once your repositories are configured, AI Architect needs to analyze and index them to build the knowledge graph. This process scans your codebase structure, dependencies, and relationships to enable context-aware AI assistance.
+
+Start the indexing process by running:
+
+```shellscript
+bitoarch index-repos
+```
+
+{% hint style="info" %}
+**Note:** Indexing process will take approximately 3-10 minutes per repository. Smaller repos take less time.
+{% endhint %}
+
+Once the indexing is complete, you can configure AI Architect MCP server in any coding or chat agent that supports MCP.
+{% endstep %}
+
+{% step %}
+
+### Check indexing status
+
+Run this command to check the status of your indexing:
+
+```shellscript
+bitoarch index-status
+```
+
+{% hint style="info" %}
+**Example output:**
+
+```
+Configured Repositories:
+  Total: 3
+
+Repository Index Status:
+State: ⏳ running
+  Progress: 0 / 1 completed
+  In Progress: 1
+
+Workspace Index Progress:
+State: ⏳ running
+  Progress: 1 / 2 completed
+  In Progress: 1
+
+Overall Status: in-progress
+```
+
+**What each section represents:**
+
+* **Configured Repositories:** Shows how many repositories are added in your config file for indexing.
+* **Repository Index Status:** Shows the indexing progress for each individual repository.
+* **Workspace Index Progress:** Shows the status of indexes that combine and process information across multiple repositories.
+* **Overall Status:** Provides a single summary indicating whether indexing is still running, completed successfully, or failed.
+  {% endhint %}
+  {% endstep %}
+
+{% step %}
+
+### Check MCP server details
+
+To manually check the MCP server details (e.g. **Bito MCP URL** and **Bito MCP Access Token**), use the following command:
+
+```shellscript
+bitoarch mcp-info
+```
+
+If you need to update your **Bito MCP Access Token**, use the following command:
+
+```shellscript
+bitoarch rotate-mcp-token <new-token>
+```
+
+{% hint style="info" %}
+Replace `<new-token>` with your new secure token value.
+
+**Important:** After rotating the token, you'll need to update it in all AI coding agents (Claude Code, Cursor, Windsurf, etc.) where you've configured this MCP server.
+{% endhint %}
+{% endstep %}
+{% endstepper %}
+
+## Update repository list and re-index
+
+Edit `/usr/local/etc/bitoarch/.bitoarch-config.yaml` file to add/remove repositories.
+
+```shellscript
+vim /usr/local/etc/bitoarch/.bitoarch-config.yaml
+```
+
+To apply the changes, run this command:
+
+```shellscript
+bitoarch update-repos /usr/local/etc/bitoarch/.bitoarch-config.yaml
+```
+
+Start the re-indexing process using this command:
+
+```shellscript
+bitoarch index-repos
+```
+
+## Accessing services (Kubernetes-based deployment)
+
+Port-forwards are exposed on all network interfaces (0.0.0.0) and are accessible from any machine on the network.
+
+#### Local access (from the Kubernetes host machine)
+
+```shellscript
+curl http://localhost:5001/health          # Provider
+curl http://localhost:5002/health          # Manager
+curl http://localhost:5003/health          # Config
+```
+
+#### Network access (from other machines on your network)
+
+Get the host machine's IP address:
+
+```shellscript
+kubectl get nodes -o wide
+# Or: hostname -I (Linux) / ifconfig (macOS)
+```
+
+From another machine on the network:
+
+```shellscript
+curl http://<host-ip>:5001/health          # Provider
+curl http://<host-ip>:5002/health          # Manager
+curl http://<host-ip>:5003/health          # Config
+curl http://<host-ip>:5005/health          # Tracker
+```
+
+#### Security considerations
+
+> **Important security notes:**
+>
+> * Port-forwards use HTTP (not HTTPS) - traffic is unencrypted
+> * Services are accessible from any machine that can reach the host
+>
+> **For production internet-facing deployments:**
+>
+> * Use firewall rules to restrict access to trusted IPs
+> * Consider using Kubernetes Ingress with TLS/SSL
+> * Implement VPN for remote access
+> * Use network policies to limit pod-to-pod traffic
+
+#### Alternative: Kubernetes Ingress (production)
+
+For production deployments, configure a Kubernetes Ingress Controller with TLS/SSL instead of using port-forwards. This provides secure HTTPS access with proper certificate management.
+
+## Setting up AI Architect MCP in coding agents
+
+Now that AI Architect is installed and your repositories are indexed, the next step is to connect it to your AI coding tools (such as Claude Code, Cursor, Windsurf, GitHub Copilot, etc.) through the Model Context Protocol (MCP).
+
+#### Quick setup (recommended)
+
+**Save time with our automated installer!** We provide a one-command setup that automatically configures AI Architect for all compatible AI coding tools on your system.
+
+The automated installer will:
+
+* Detect all supported AI tools installed on your system
+* Configure them automatically with your MCP credentials
+* Get you up and running in seconds instead of manually configuring each tool
+
+👉 [**Try our Quick MCP Integration Guide**](https://docs.bito.ai/ai-architect/quick-mcp-integration-with-ai-coding-agents) for automated setup across all your tools.
+
+#### Manual setup
+
+If you prefer hands-on control over your configuration or encounter issues with automated setup, we provide detailed step-by-step guides for each supported AI coding tool:
+
+* [**Guide for Claude Code**](https://docs.bito.ai/ai-architect/guide-for-claude-code)
+* [**Guide for Cursor**](https://docs.bito.ai/ai-architect/guide-for-cursor)
+* [**Guide for Windsurf**](https://docs.bito.ai/ai-architect/guide-for-windsurf)
+* [**Guide for GitHub Copilot (VS Code)**](https://docs.bito.ai/ai-architect/guide-for-github-copilot-vs-code)
+* [**Guide for Junie (JetBrains)**](https://docs.bito.ai/ai-architect/guide-for-junie-jetbrains)
+* [**Guide for JetBrains AI Assistant**](https://docs.bito.ai/ai-architect/guide-for-jetbrains-ai-assistant)
+
+Each guide walks you through the complete manual configuration process for that specific tool.
+
+## Configuring AI Architect for Bito AI Code Review Agent
+
+Now that you have **AI Architect** set up, you can take your code quality to the next level by integrating it with [**Bito's AI Code Review Agent**](https://bito.ai/product/ai-code-review-agent/). This powerful combination delivers significantly more accurate and context-aware code reviews by leveraging the deep codebase knowledge graph that AI Architect has built.
+
+**Why integrate AI Architect with AI Code Review Agent?**
+
+When the AI Code Review Agent has access to AI Architect's knowledge graph, it gains a comprehensive understanding of your entire codebase architecture — including microservices, modules, APIs, dependencies, and design patterns.
+
+This enables the AI Code Review Agent to:
+
+* **Provide system-aware code reviews** - Understand how changes in one service or module impact other parts of your system
+* **Catch architectural inconsistencies** - Identify when new code doesn't align with your established patterns and conventions
+* **Detect cross-repository issues** - Spot problems that span multiple repositories or services
+* **Deliver more accurate suggestions** - Generate fixes that are grounded in your actual codebase structure and usage patterns
+* **Reduce false positives** - Better understand context to avoid flagging valid code as problematic
+
+#### Getting started with AI Architect-powered code reviews
+
+1. Log in to [**Bito Cloud**](https://alpha.bito.ai/home/welcome)
+2. Open the [**AI Architect Settings**](https://alpha.bito.ai/home/ai-architect/settings?mode=self-hosted) dashboard.
+3. In the **Server URL** field, enter your **Bito MCP URL**
+4. In the **Auth token** field, enter your **Bito MCP Access Token**
+
+**Need help getting started?** Contact our team at [**support@bito.ai**](mailto:support@bito.ai) to request a trial. We'll help you configure the integration and get your team up and running quickly.
+
+## Upgrading AI Architect
+
+Upgrade your AI Architect installation to the latest version while preserving your data and configuration. The upgrade process:
+
+* Automatically detects your current version
+* Downloads and extracts the new version
+* Migrates your configuration and data
+* Seamlessly transitions to the new version
+* Preserves all indexed repositories and settings
+
+#### Upgrade instructions
+
+#### Option 1: Upgrade from within your installation (Recommended)
+
+If you're running **version 1.1.0 or higher**, navigate to your current installation directory and run:
+
+```shellscript
+cd /path/to/bito-ai-architect
+```
+
+```shellscript
+./scripts/upgrade.sh --version=latest
+```
+
+#### Option 2: Upgrade from external location
+
+If you need to run the upgrade from outside your installation directory (useful for **version 1.0.0**), use the `--old-path` parameter:
+
+```shellscript
+# Download the standalone upgrade script
+curl -O https://github.com/gitbito/ai-architect/blob/main/upgrade.sh
+chmod +x upgrade.sh
+
+# Run upgrade with explicit path
+./upgrade.sh --old-path=/path/to/bito-ai-architect --version=latest
+```
+
+#### Upgrade parameters
+
+The upgrade script supports the following parameters:
+
+```shellscript
+# Description
+--version=VERSION
+
+# Upgrade to specific version
+--version=latest
+
+# Upgrade from custom URL or file
+--url=file:///path/to/package.tar.gz
+
+# Specify installation path (required if running outside installation directory)
+--old-path=/opt/bito-ai-architect
+
+# Show help message
+--help
+```
+
+{% hint style="info" %}
+**Your data is safe:** All repositories, indexes, API keys, and settings are automatically preserved during upgrade.
+{% endhint %}
+
+{% hint style="info" %}
+**Important:** You can only upgrade within the same deployment type. To switch from **Docker Compose** to **Kubernetes** or vice versa, you must use the `./setup.sh --clean` command, which will result in data loss.
+{% endhint %}
+
+## Troubleshooting guide
+
+```shellscript
+# Check all services
+bitoarch status
+bitoarch health --verbose
+
+# View full configuration
+bitoarch show-config --raw
+
+# Test MCP connection
+bitoarch mcp-test
+
+# Check indexing status with details
+bitoarch index-status --raw
+
+# Check setup log
+tail -f setup.log
+
+# Local log files
+tail -f var/logs/cis-provider/provider.log
+tail -f var/logs/cis-manager/manager.log
+
+# Complete logs
+./setup.sh --logs
+
+# Reset installation (removes all data and configuration)
+./setup.sh --clean
+
+# Then run setup again
+./setup.sh
+
+# To stop all the service
+./setup.sh --stop
+
+# Restart service (for env based config updates)
+./setup.sh --restart
+
+# Force pull latest images based on service-versions.json and restart services
+./setup.sh --update
+```
+
+#### Commands specific to Kubernetes-based deployment
+
+```shellscript
+# Check Kubernetes pod status
+# All pods should show "Running" status.
+kubectl get pods -n bito-ai-architect
+
+# Check detailed information about a specific Kubernetes pod
+kubectl describe pod <pod-name> -n bito-ai-architect
+
+# Access Kubernetes pod shell
+kubectl exec -it -n bito-ai-architect \
+  $(kubectl get pod -n bito-ai-architect -l app.kubernetes.io/component=provider -o jsonpath='{.items[0].metadata.name}') \
+  -- /bin/sh
+
+# Stop KIND cluster (preserves data)
+docker stop bito-ai-architect-control-plane
+
+# Start KIND cluster again
+docker start bito-ai-architect-control-plane
+
+# Delete KIND cluster completely
+kind delete cluster --name bito-ai-architect
+
+# View Provider service logs:
+kubectl logs -n bito-ai-architect -l app.kubernetes.io/component=provider --tail=100 -f
+
+# View Manager service logs:
+kubectl logs -n bito-ai-architect -l app.kubernetes.io/component=manager --tail=100 -f
+```
+
+## Available commands
+
+For complete reference of AI Architect CLI commands, refer to [Available commands](https://docs.bito.ai/ai-architect/available-commands).
+
+
+# Available commands
+
+CLI commands for installing, operating, and maintaining Bito's AI Architect.
+
+Quick reference for CLI commands used to install, configure, and manage [**Bito's AI Architect**](https://docs.bito.ai/ai-architect/overview).
+
+* [**Setup script commands:**](#setup-script-commands) Use these commands to **install AI Architect** and manage its initial service setup and lifecycle.
+* [**AI Architect management commands (`bitoarch`):**](#ai-architect-management-commands) Use these commands **after installation** to manage repositories, indexing, configuration, health checks, and MCP operations.
+
+## Setup script commands
+
+Commands used to install AI Architect and manage its initial service setup.
+
+| Command                      | Description                                                                                      |
+| ---------------------------- | ------------------------------------------------------------------------------------------------ |
+| `./setup.sh`                 | Run interactive setup wizard                                                                     |
+| `./setup.sh --help` or `-h`  | Show help message with all available options                                                     |
+| `./setup.sh --status`        | Check if services are running                                                                    |
+| `./setup.sh --logs`          | View service logs for debugging                                                                  |
+| `./setup.sh --stop`          | Stop all services (preserves containers)                                                         |
+| `./setup.sh --restart`       | Restart all services without config changes                                                      |
+| `./setup.sh --force-restart` | Restart all services and reapply environment variables. Use after updating `.env-bitoarch` file. |
+| `./setup.sh --update`        | Force pull latest images based on service-versions.json and restart services                     |
+| `./setup.sh --clean`         | Remove all data and services                                                                     |
+
+## AI Architect management commands
+
+Use these `bitoarch` commands to manage AI Architect.
+
+{% hint style="info" %}
+**Note:** After [installation of AI Architect](https://docs.bito.ai/ai-architect/install-ai-architect-self-hosted), the `bitoarch` command is available globally.
+{% endhint %}
+
+### Core operations
+
+| Command                    | Description                           | Example                                    |
+| -------------------------- | ------------------------------------- | ------------------------------------------ |
+| `bitoarch index-repos`     | Trigger workspace repository indexing | Simple index without parameters            |
+| `bitoarch index-status`    | Check indexing status                 | View progress and state                    |
+| `bitoarch pause-indexing`  | Pause ongoing indexing process        | `bitoarch pause-indexing`                  |
+| `bitoarch resume-indexing` | Resume paused indexing process        | `bitoarch resume-indexing`                 |
+| `bitoarch stop-indexing`   | Stop indexing completely              | `bitoarch stop-indexing`                   |
+| `bitoarch index-repo-list` | List all repositories                 | `bitoarch index-repo-list --status active` |
+| `bitoarch show-config`     | Show current configuration            | `bitoarch show-config --raw`               |
+
+**Examples:**
+
+```shellscript
+# Trigger repository indexing
+bitoarch index-repos
+
+# Check indexing status (default summary)
+bitoarch index-status
+
+# Full API response for debugging
+bitoarch index-status --raw
+
+# Machine-readable filtered JSON
+bitoarch index-status --output json
+
+# List all repositories
+bitoarch index-repo-list
+```
+
+***
+
+### Repository management
+
+| Command                            | Description                    | Example                                       |
+| ---------------------------------- | ------------------------------ | --------------------------------------------- |
+| `bitoarch add-repo <namespace>`    | Add single repository          | `bitoarch add-repo myorg/myrepo`              |
+| `bitoarch remove-repo <namespace>` | Remove repository              | `bitoarch remove-repo myorg/myrepo`           |
+| `bitoarch add-repos <file>`        | Load configuration from YAML   | `bitoarch add-repos .bitoarch-config.yaml`    |
+| `bitoarch update-repos <file>`     | Update configuration from YAML | `bitoarch update-repos .bitoarch-config.yaml` |
+| `bitoarch repo-info <name>`        | Get detailed repository info   | `bitoarch repo-info myrepo --dependencies`    |
+
+**Examples:**
+
+```shellscript
+# Add a single repository
+bitoarch add-repo myorg/myrepo
+
+# Remove a repository
+bitoarch remove-repo myorg/myrepo
+
+# Load multiple repositories from YAML
+bitoarch add-repos .bitoarch-config.yaml
+
+# Update configuration
+bitoarch update-repos .bitoarch-config.yaml
+
+# Get repository details
+bitoarch repo-info myrepo
+```
+
+***
+
+### Service operations
+
+| Command           | Description                  | Example                     |
+| ----------------- | ---------------------------- | --------------------------- |
+| `bitoarch status` | View all services status     | Docker ps-like output       |
+| `bitoarch health` | Check health of all services | `bitoarch health --verbose` |
+| `bitoarch info`   | Get platform information     | Version, ports, resources   |
+
+**Examples:**
+
+```shellscript
+# Check service status (docker ps-like)
+bitoarch status
+
+# Health check
+bitoarch health
+
+# Detailed health information
+bitoarch health --verbose
+
+# Platform information
+bitoarch info
+```
+
+***
+
+### Configuration
+
+| Command                     | Description                     | Example                                 |
+| --------------------------- | ------------------------------- | --------------------------------------- |
+| `bitoarch update-api-key`   | Update Bito API key             | Interactive or with `--api-key` flag    |
+| `bitoarch update-git-creds` | Update Git provider credentials | Interactive or with flags               |
+| `bitoarch rotate-mcp-token` | Rotate MCP access token         | `bitoarch rotate-mcp-token <new-token>` |
+
+**Examples:**
+
+```shellscript
+# Update API key (interactive)
+bitoarch update-api-key
+
+# Update API key with flag
+bitoarch update-api-key --api-key <key> --restart
+
+# Update Git credentials (interactive)
+bitoarch update-git-creds
+
+# Update Git credentials with flags
+bitoarch update-git-creds --provider github --token <token> --restart
+
+# Rotate MCP token
+bitoarch rotate-mcp-token <new-token>
+```
+
+***
+
+### MCP operations
+
+| Command                     | Description                  | Example                                        |
+| --------------------------- | ---------------------------- | ---------------------------------------------- |
+| `bitoarch mcp-test`         | Test MCP connection          | Verify server connectivity                     |
+| `bitoarch mcp-tools`        | List available MCP tools     | `bitoarch mcp-tools --details`                 |
+| `bitoarch mcp-capabilities` | Show MCP server capabilities | `bitoarch mcp-capabilities --output caps.json` |
+| `bitoarch mcp-resources`    | List MCP resources           | View available data sources                    |
+| `bitoarch mcp-info`         | Show MCP configuration       | Display URL and token info                     |
+
+**Examples:**
+
+```shellscript
+# Test MCP connection
+bitoarch mcp-test
+
+# List MCP tools
+bitoarch mcp-tools
+
+# Show detailed tool information
+bitoarch mcp-tools --details
+
+# Get server capabilities
+bitoarch mcp-capabilities
+
+# Save capabilities to file
+bitoarch mcp-capabilities --output capabilities.json
+
+# List resources
+bitoarch mcp-resources
+
+# Show MCP configuration
+bitoarch mcp-info
+```
+
+***
+
+### Output options
+
+Add these flags to any command:
+
+| Flag            | Purpose                | Example                |
+| --------------- | ---------------------- | ---------------------- |
+| `--format json` | JSON output            | For automation/scripts |
+| `--raw`         | Show full API response | For debugging          |
+| `--output json` | Filtered JSON output   | For `index-status`     |
+| `--help`        | Show command help      | Get usage information  |
+
+***
+
+### Common workflows
+
+#### Initial setup
+
+```shellscript
+# 1. Check services are running
+bitoarch status
+
+# 2. Add repositories
+bitoarch add-repos .bitoarch-config.yaml
+
+# 3. Trigger indexing
+bitoarch index-repos
+
+# 4. Monitor progress
+bitoarch index-status
+```
+
+#### Daily operations
+
+```shellscript
+# Check health
+bitoarch health
+
+# View repositories
+bitoarch index-repo-list
+
+# Check index status
+bitoarch index-status
+```
+
+#### Adding new repositories
+
+```shellscript
+# Single repository
+bitoarch add-repo myorg/newrepo
+
+# Multiple repositories from file
+bitoarch add-repos new-repos.yaml
+
+# Trigger re-indexing
+bitoarch index-repos
+```
+
+#### Troubleshooting
+
+```shellscript
+# Check all services
+bitoarch status
+bitoarch health --verbose
+
+# View full configuration
+bitoarch show-config --raw
+
+# Test MCP connection
+bitoarch mcp-test
+
+# Check indexing status with details
+bitoarch index-status --raw
+```
+
+***
+
+### Getting help
+
+| Command                     | Shows                       |
+| --------------------------- | --------------------------- |
+| `bitoarch --help`           | Main menu with all commands |
+| `bitoarch <command> --help` | Command-specific help       |
+
+**Examples:**
+
+```shellscript
+# Main help
+bitoarch --help
+
+# Command help
+bitoarch index-repos --help
+bitoarch add-repo --help
+bitoarch mcp-tools --help
+```
+
+***
+
+### Environment
+
+Configuration is loaded from `.env-bitoarch` file. Key variables:
+
+* `BITO_API_KEY` - API key for authentication
+* `GIT_PROVIDER` - Git provider (github, gitlab, bitbucket)
+* `GIT_ACCESS_TOKEN` - Git access token
+* `BITO_MCP_ACCESS_TOKEN` - MCP server access token
+* `CIS_*_EXTERNAL_PORT` - Service external ports
+
+***
+
+### Version
+
+Check CLI version:
+
+```shellscript
+bitoarch --version
+```
+
+
+# Available MCP tools
+
+Access deep repository intelligence and codebase insights through AI Architect's MCP server
+
+[**AI Architect's**](https://docs.bito.ai/ai-architect/overview) MCP server provides a comprehensive suite of tools for exploring, analyzing, and understanding your organization's codebase. These tools enable AI coding assistants to access deep repository intelligence, architectural insights, and code-level information across all your Git repositories.
+
+Below is the complete list of MCP tools provided by AI Architect:
+
+|             Tool name            |                                                                                                                                                                                                                                                                                                                                                                                                          Description                                                                                                                                                                                                                                                                                                                                                                                                         |
+| :------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|        **getCapabilities**       |                                                                                                                                                                                                    <p>Discover what repository intelligence and analysis capabilities this MCP server provides.</p><p></p><p>Returns comprehensive information about available repository data, dependency analysis features, architectural insights, and clustering patterns for your organization's Git repositories.</p><p></p><p>Use this to understand what repository information is available through this specialized service.</p>                                                                                                                                                                                                   |
+|       **listRepositories**       |                                                                                                                                                         <p>Browse all Git repositories in your organization. Returns comprehensive repository catalog with names, descriptions, and resource URIs.</p><p></p><p>Use this to discover available repositories, understand the organization's project landscape, identify microservices and components, or get an overview of all systems.</p><p></p><p>Each entry includes a resource URI for accessing detailed repository information.</p><p></p><p>Instant access to pre-indexed organizational repository data.</p>                                                                                                                                                        |
+|         **listClusters**         |                                                                                                                                                          <p>View automatically identified clusters of related repositories in your organization.</p><p></p><p>Clusters represent groups of repositories with strong dependencies or architectural relationships, often forming subsystems or microservice groups.</p><p></p><p>Use this to understand system architecture, identify bounded contexts, discover service groupings, or analyze component relationships.</p><p></p><p>Returns cluster information with member repositories and their resource URIs.</p>                                                                                                                                                         |
+|       **getRepositoryInfo**      | <p>Get comprehensive repository information including metadata, structure, and dependencies.</p><p></p><p>To access incoming dependencies (services depending on this repo): set includeIncomingDependencies=true.</p><p></p><p>To access outgoing dependencies (services this repo depends on): set includeOutgoingDependencies=true.</p><p></p><p>Edge data includes various dependency types - filter by edge.type field to isolate specific categories.</p><p></p><p>Smart defaults: dependencies auto-limited by detailLevel (summary: 10, standard: 25, full: unlimited).</p><p></p><p>Essential for understanding repository relationships, analyzing dependencies, investigating integration points, and assessing impact of changes.</p><p></p><p>Returns pre-analyzed dependency graphs and relationship data.</p> |
+|        **getClusterInfo**        |                                                                                                                                                                  <p>Examine a specific cluster of related repositories to understand subsystem architecture within your organization.</p><p></p><p>Returns all member repositories, their interdependencies, project summaries, and resource URIs.</p><p></p><p>Use this to analyze how repositories collaborate, understand service boundaries, explore microservice architectures, or investigate system decomposition patterns.</p><p></p><p>Valuable for architectural reviews and impact analysis.</p>                                                                                                                                                                  |
+|      **searchRepositories**      |                                            <p>ONLY use when you DON'T know the repository name. If you know exact name, use getRepositoryInfo or getFieldPath directly.</p><p></p><p>Intelligent search across your organization's Git repositories using natural language queries.</p><p></p><p>Search by technology, functionality, frameworks, or project characteristics when repository name is unknown.</p><p></p><p>Uses TF-IDF algorithm on pre-indexed repository metadata for relevant results.</p><p></p><p>Examples: 'Python microservices', 'repositories using Redis', 'authentication services', 'React applications', 'payment processing systems', 'Kubernetes deployments'.</p><p></p><p>Returns repositories with relevance scores and direct access URIs.</p>                                            |
+|    **searchWithinRepository**    |                                                                                  <p>Search for content within a single repository including metadata and dependency data.</p><p></p><p>Searches metadata fields and optionally incoming\_dependencies and outgoing\_dependencies.</p><p></p><p>By default searches ALL data for comprehensive results.</p><p></p><p>Use includeIncomingDependencies=false and includeOutgoingDependencies=false for faster metadata-only search.</p><p></p><p>Returns filtered results with matches from metadata and dependencies.</p><p></p><p>Use when: You know which repo but need to find specific information without knowing exact field paths.</p><p></p><p>Natural language queries work well.</p>                                                                                 |
+|      **getRepositorySchema**     |                                                                                                                                                                                                                                                                                                       <p>Discover repository structure without fetching data.</p><p></p><p>Returns field names, types, array counts, and nested hierarchy.</p><p></p><p>Essential first step for exploring unfamiliar repositories.</p>                                                                                                                                                                                                                                                                                                      |
+|         **getFieldPath**         |                                                                                                                                                           <p>Extract specific nested field using dot notation and array indexing.</p><p></p><p>MOST EFFICIENT for surgical data extraction - returns only requested field vs full repository.</p><p></p><p>For dependencies: use 'incoming\_dependencies' or 'outgoing\_dependencies' paths with arraySlice, then filter by edge.type field to isolate specific categories.</p><p></p><p>Supports deep nesting, array slicing, and optional parent context.</p><p></p><p>Returns only the requested field data.</p>                                                                                                                                                          |
+| **queryFieldAcrossRepositories** |                                                                                                                                                                                                                                                                                                                              <p>Query same field path across multiple repositories in single call.</p><p></p><p>Comparative analysis, pattern discovery, and technology audits across repos.</p>                                                                                                                                                                                                                                                                                                                             |
+|          **searchCode**          |                                                                                                                                                                                                                                                                                                                      <p>Search code using zoekt index with powerful query syntax.</p><p></p><p>Supports file filters, exclusions, case sensitivity.</p><p></p><p>Returns code matches with snippets.</p>                                                                                                                                                                                                                                                                                                                     |
+|         **searchSymbols**        |                                                                                                                                                                                                                                                                                                                                                                     Search for symbol definitions (functions, classes, methods) across indexed codebase.                                                                                                                                                                                                                                                                                                                                                                     |
+|            **getCode**           |                                                                                                                                                                                                                                                                                   <p>Retrieve actual source code content from repository files.</p><p></p><p>Use after searchCode/searchSymbols to view the full code around matches.</p><p></p><p>Returns file contents with line numbers. Only available when reposDir is configured.</p>                                                                                                                                                                                                                                                                                  |
+
+
+# Quick MCP integration with AI coding agents
+
+Connect Bito's AI Architect to your AI coding tools (Cursor, Claude Code, Windsurf, etc.) in seconds with our automated installer
+
+## Prerequisites
+
+Before running the installer, have these ready:
+
+1. Your Bito Workspace ID (or full Bito MCP URL for self-hosted instances)
+2. Your Bito MCP Access Token
+
+{% hint style="info" %}
+Note: For self-hosted instances, follow the [**AI Architect installation instructions**](https://docs.bito.ai/ai-architect/install-ai-architect-self-hosted). Upon successful setup, you will receive a **Bito MCP URL** and **Bito MCP Access Token** that you need to enter.
+{% endhint %}
+
+3. Your email ID (for tracking/identification)
+4. At least one supported tool installed:
+   * Claude Code
+   * Cursor
+   * Windsurf
+   * VS Code (GitHub Copilot)
+   * Junie
+   * JetBrains AI Assistant
+
+{% hint style="info" %}
+**Note:** For [Claude.ai (Web)](https://docs.bito.ai/ai-architect/guide-for-claude.ai-web) and [ChatGPT (Web & Desktop)](https://docs.bito.ai/ai-architect/guide-for-chatgpt-web-and-desktop) you'll need to follow the manual setup process as they require OAuth authentication through your browser.
+{% endhint %}
+
+## Installation guide
+
+Our automated installer will prompt you for credentials and automatically configure all supported AI tools available on your system.
+
+#### macOS / Linux
+
+Open your terminal and run:
+
+```bash
+curl -fsSL https://mcp-setup.bito.ai/install.sh | bash
+```
+
+#### Windows
+
+Open **PowerShell** (not Command Prompt) and run:
+
+```powershell
+irm https://mcp-setup.bito.ai/install.ps1 | iex
+```
+
+{% hint style="info" %}
+**Note:** When using a self-hosted AI Architect, ensure that the MCP server is up and running before proceeding with the setup. The setup will fail if MCP is not running.
+{% endhint %}
+
+#### What happens next
+
+1. **The installer starts** and checks for compatible tools
+2. **You'll be prompted** to enter your credentials.
+3. **Automatic configuration** - All detected tools are configured
+4. **Confirmation** - You'll see which tools were successfully set up
+
+## After installation
+
+{% stepper %}
+{% step %}
+
+### Restart your AI tool
+
+After the installer completes, **completely close and reopen your AI tool** to ensure the configuration takes effect.
+{% endstep %}
+
+{% step %}
+
+### Verify AI architect connection
+
+Check that AI Architect appears in your tool's MCP server list:
+
+* **Claude Desktop:** Click "+" → Connectors → look for BitoAIArchitect
+* **Claude Code:** Run `claude mcp list` to see BitoAIArchitect
+* **Cursor:** Settings → MCP → look for BitoAIArchitect
+* **Windsurf:** Settings → Windsurf Settings → Cascade → MCP Servers → Open MCP Marketplace → look for BitoAIArchitect
+* **VS Code:** Copilot Chat → gear icon → MCP Servers → look for BitoAIArchitect
+  {% endstep %}
+
+{% step %}
+
+### Run a test query
+
+Open a chat or conversation in your AI tool and try a test query to confirm AI Architect is working:
+
+* "What repositories are available in my organization?"
+* "Show me all Python repositories"
+* "List the available tools"
+
+If you receive accurate responses about your codebase, the setup is complete!
+{% endstep %}
+{% endstepper %}
+
+## Uninstalling
+
+To remove Bito AI Architect from all tools:
+
+#### macOS / Linux
+
+Open your terminal and run:
+
+```bash
+curl -fsSL https://mcp-setup.bito.ai/uninstall.sh | bash
+```
+
+#### Windows
+
+Open **PowerShell** (not Command Prompt) and run:
+
+```powershell
+irm https://mcp-setup.bito.ai/uninstall.ps1 | iex
+```
+
+## Need manual setup?
+
+If you prefer to configure tools individually or need to set up web-based tools (Claude.ai, ChatGPT), refer to our detailed integration guides:
+
+* [Claude Code](https://docs.bito.ai/ai-architect/guide-for-claude-code)
+* [Claude Desktop](https://docs.bito.ai/ai-architect/guide-for-claude-desktop)
+* [Claude.ai (Web)](https://docs.bito.ai/ai-architect/guide-for-claude.ai-web)
+* [Cursor](https://docs.bito.ai/ai-architect/guide-for-cursor)
+* [Windsurf](https://docs.bito.ai/ai-architect/guide-for-windsurf)
+* [GitHub Copilot (VS Code)](https://docs.bito.ai/ai-architect/guide-for-github-copilot-vs-code)
+* [Junie](https://docs.bito.ai/ai-architect/guide-for-junie-jetbrains)
+* [JetBrains AI Assistant](https://docs.bito.ai/ai-architect/guide-for-jetbrains-ai-assistant)
+* [ChatGPT (Web & Desktop)](https://docs.bito.ai/ai-architect/guide-for-chatgpt-web-and-desktop)
+
+## Troubleshooting
+
+#### Installer issues
+
+**"Command not found" or similar errors:**
+
+* Verify you're using the correct shell (bash for macOS/Linux, PowerShell for Windows)
+* Check your internet connection
+* Try running the command again
+
+**No tools detected:**
+
+* Ensure your AI tools are installed before running the installer
+* The installer only configures tools it can detect on your system
+* You can run the installer again after installing new tools
+
+#### Connection issues
+
+* Verify **Bito MCP URL** and **Bito MCP Access Token** are correct.
+* Test endpoint with MCP protocol:
+
+```bash
+curl -s -X POST \
+  -H "Authorization: Bearer <Your-Bito-MCP-Access-Token>" \
+  -H "Content-Type: application/json" \
+  -d '{"jsonrpc":"2.0","method":"initialize","params":{},"id":1}' \
+  <Your-Bito-MCP-URL>
+
+# Should return HTTP 200 with JSON response for valid credentials
+# HTTP 401: Invalid Bito MCP Access Token
+# HTTP 404: Invalid Bito MCP URL
+```
+
+{% hint style="info" %}
+**Note:**
+
+* Replace `<Your-Bito-MCP-URL>` with the **Bito MCP URL** you received after completing the AI Architect setup.
+  * For the Bito-hosted AI Architect, use the following URL format: `https://mcp.bito.ai/<Your-Bito-Workspace-ID>/mcp`
+
+    Replace `<Your-Bito-Workspace-ID>` with your actual Bito workspace ID, which you can find after logging into your Bito account at [**alpha.bito.ai**](https://alpha.bito.ai/)
+* Replace `<Your-Bito-MCP-Access-Token>` with the **Bito MCP Access Token** you received after completing the AI Architect setup.
+  {% endhint %}
+
+**Server not appearing after install:**
+
+* Completely restart your AI tool (don't just reload)
+* Verify your credentials were entered correctly
+* Check that you have the minimum required versions (see below)
+
+#### Minimum requirements
+
+Some tools require specific versions:
+
+* **Node.js 20.18.1+** for Claude Desktop, VS Code, and JetBrains
+* **VS Code 1.99+** with Agent Mode enabled
+* **JetBrains 2025.1+** with AI Assistant plugin 251.26094.80.5+
+
+**Check Node.js version:**
+
+```bash
+node --version
+```
+
+If you need to install or update Node.js, visit [nodejs.org](https://nodejs.org/)
+
+
+# Guide for Claude Code
+
+Integrate Claude Code with AI Architect for more accurate, codebase-aware AI assistance.
+
+Use Bito's [**AI Architect**](https://docs.bito.ai/ai-architect/overview) with **Claude Code** to enhance your AI-powered coding experience.
+
+Once connected via MCP (Model Context Protocol), Claude Code can leverage AI Architect’s deep contextual understanding of your project, enabling more accurate code suggestions, explanations, and code insights.
+
+## Quick setup (recommended)
+
+**Want to get started faster?** We offer an automated installer that can configure AI Architect for all your AI coding tools in just a few seconds.
+
+The automated setup will:
+
+* Detect all compatible AI tools installed on your system
+* Configure them automatically with your credentials
+* Save you time by eliminating manual configuration steps
+
+👉 [**Try our Quick MCP Integration Guide**](https://docs.bito.ai/ai-architect/quick-mcp-integration-with-ai-coding-agents) for automated setup.
+
+## Manual setup
+
+If you prefer manual configuration, follow the step-by-step instructions below.
+
+## Prerequisites
+
+1. Follow the [**AI Architect installation instructions**](https://docs.bito.ai/ai-architect/install-ai-architect-self-hosted). Upon successful setup, you will receive a **Bito MCP URL** and **Bito MCP Access Token** that you need to enter in your coding agent.
+2. [Download **BitoAIArchitectGuidelines.md** file](https://github.com/gitbito/ai-architect/blob/main/BitoAIArchitectGuidelines.md). You will need to copy/paste the content from this file later when configuring AI Architect.
+   * **Note:** This file contains best practices, usage instructions, and prompting guidelines for the Bito AI Architect MCP server. The setup will work without this file, but including it helps AI tools interact more effectively with the Bito AI Architect MCP server.
+
+## Set up AI Architect
+
+Claude Code has the same setup process across all platforms (Windows, macOS, Linux, WSL) using the command line.
+
+Claude Code uses CLI-based configuration, NOT manual JSON editing.
+
+{% stepper %}
+{% step %}
+
+### Install Claude Code
+
+If you haven't already:
+
+```shellscript
+npm install -g @anthropic-ai/claude-code
+```
+
+Verify installation:
+
+```shellscript
+claude --version
+```
+
+{% endstep %}
+
+{% step %}
+
+### Add Bito AI Architect MCP server
+
+Use the `claude mcp add` command with the correct parameter order:
+
+```shellscript
+claude mcp add \
+  --transport http \
+  --scope user \
+  BitoAIArchitect \
+  <Your-Bito-MCP-URL> \
+  --header "Authorization: Bearer <Your-Bito-MCP-Access-Token>" \
+  --header "x-email-id: <Your-Email>"
+```
+
+{% hint style="info" %}
+**Note:**
+
+* Replace `<Your-Bito-MCP-URL>` with the **Bito MCP URL** you received after completing the AI Architect setup.
+  * For the Bito-hosted AI Architect, use the following URL format: `https://mcp.bito.ai/<Your-Bito-Workspace-ID>/mcp`
+
+    Replace `<Your-Bito-Workspace-ID>` with your actual Bito workspace ID, which you can find after logging into your Bito account at [**alpha.bito.ai**](https://alpha.bito.ai/)
+* Replace `<Your-Bito-MCP-Access-Token>` with the **Bito MCP Access Token** you received after completing the AI Architect setup.
+* Replace `<Your-Email>` with your actual email address.
+  {% endhint %}
+
+{% hint style="info" %}
+**Important:** The server name and URL must come BEFORE the `--header` option.
+{% endhint %}
+
+{% hint style="info" %}
+**Scope options:**
+
+* `--scope user`: Available in all your projects (recommended)
+* `--scope project`: Only in current project (stored in `.mcp.json`)
+* `--scope local`: Only in current directory (default)
+  {% endhint %}
+  {% endstep %}
+
+{% step %}
+
+### Verify installation
+
+List your MCP servers:
+
+```shellscript
+claude mcp list
+```
+
+You should see "BitoAIArchitect" in the list.
+
+Test the server:
+
+```shellscript
+claude mcp get BitoAIArchitect
+```
+
+{% endstep %}
+
+{% step %}
+
+### Add guidelines (optional but highly recommended)
+
+The [**BitoAIArchitectGuidelines.md** file](#prerequisites) contains best practices, usage instructions, and prompting guidelines for the Bito AI Architect MCP server.
+
+The setup will work without this file, but including it helps AI tools interact more effectively with the Bito AI Architect MCP server.
+
+**You can either create:**
+
+1. **Global guidelines** - Apply across all your projects. Best for teams or developers who want consistent standards everywhere.
+2. **Project-specific guidelines** - Apply to a single project only.
+
+Choose one of the following based on your preference:
+
+### Option A: Global guidelines
+
+Create `.claude` directory if it doesn't exist:
+
+```shellscript
+mkdir -p ~/.claude
+```
+
+Create or edit `CLAUDE.md`:
+
+```shellscript
+nano ~/.claude/CLAUDE.md
+```
+
+Copy the contents of your [**BitoAIArchitectGuidelines.md** file](#prerequisites) into this file, then save.
+
+### Option B: Project-specific guidelines
+
+Run this command in your project directory:
+
+```shellscript
+nano CLAUDE.md
+```
+
+Or run these commands:
+
+```shellscript
+mkdir -p .claude
+```
+
+```shellscript
+nano .claude/CLAUDE.md
+```
+
+Copy the contents of your [**BitoAIArchitectGuidelines.md** file](#prerequisites) into this file, then save.
+{% endstep %}
+
+{% step %}
+
+### Start using Claude Code
+
+In your project directory, run:
+
+```shellscript
+claude
+```
+
+Now, in the chat you can ask questions about your indexed repositories. The AI Architect will help Claude Code provide accurate answers based on your codebase.
+
+**Try asking something like:**
+
+```
+What repositories are available in my organization?
+```
+
+{% endstep %}
+{% endstepper %}
+
+## Windows-specific notes
+
+#### Windows (Native - Command Prompt/PowerShell):
+
+* MCP servers using `npx` require the `cmd /c` wrapper:
+
+```shellscript
+# For stdio servers on Windows
+claude mcp add --transport stdio my-server -- cmd /c npx -y @some/package
+```
+
+#### Windows (WSL):
+
+* Configuration is stored in Linux file system
+* No need for `cmd /c` wrapper
+* Use standard Linux paths (`~/.claude/`)
+
+## Configuration file locations
+
+<table><thead><tr><th width="104.60003662109375">Platform</th><th>Main config</th><th>Settings</th><th>Global guidelines</th></tr></thead><tbody><tr><td><strong>Windows</strong></td><td><code>%USERPROFILE%\.claude\claude.json</code></td><td><code>%USERPROFILE%\.claude\settings.json</code></td><td><code>%USERPROFILE%\.claude\CLAUDE.md</code></td></tr><tr><td><strong>macOS</strong></td><td><code>~/.claude/claude.json</code></td><td><code>~/.claude/settings.json</code></td><td><code>~/.claude/CLAUDE.md</code></td></tr><tr><td><strong>Linux</strong></td><td><code>~/.claude/claude.json</code></td><td><code>~/.claude/settings.json</code></td><td><code>~/.claude/CLAUDE.md</code></td></tr><tr><td><strong>WSL</strong></td><td><code>~/.claude/claude.json</code></td><td><code>~/.claude/settings.json</code></td><td><code>~/.claude/CLAUDE.md</code></td></tr></tbody></table>
+
+{% hint style="info" %}
+**IMPORTANT:**
+
+* ✅ These files are managed automatically by `claude mcp` commands
+* ❌ Do NOT manually create `~/.claude/mcp.json` (this file doesn't exist)
+* ❌ Do NOT manually edit `~/.claude/claude.json` (use CLI commands instead)
+  {% endhint %}
+
+## Common Claude Code MCP commands
+
+```shellscript
+# Add HTTP server with Bearer token (correct parameter order)
+claude mcp add --transport http --scope user \
+  <name> <url> \
+  --header "Authorization: Bearer <token>" \
+  --header "x-email-id: <your-email>"
+
+# Add server with environment variables
+claude mcp add <name> -e API_KEY="value" -- npx @server/package
+
+# Add server with JSON config (for complex setups)
+claude mcp add-json <name> '{"type":"http","url":"...","headers":{...}}'
+
+# List all MCP servers
+claude mcp list
+
+# Get server details
+claude mcp get <name>
+
+# Remove MCP server
+claude mcp remove <name>
+
+# View server status (inside Claude Code session)
+/mcp
+
+# Reset project-scoped server approval choices
+claude mcp reset-project-choices
+
+```
+
+## Troubleshooting Claude Code
+
+#### Server not appearing:
+
+```shellscript
+# Verify it was added
+claude mcp list
+
+# Check for errors
+claude --verbose
+
+# Try removing and re-adding
+claude mcp remove BitoAIArchitect
+claude mcp add --transport http --scope user \
+  BitoAIArchitect <Your-Bito-MCP-URL> \
+  --header "Authorization: Bearer <Your-Bito-MCP-Access-Token>" \
+  --header "x-email-id: <Your-Email>"
+```
+
+{% hint style="info" %}
+**Note:**
+
+* Replace `<Your-Bito-MCP-URL>` with the **Bito MCP URL** you received after completing the AI Architect setup.
+  * For the Bito-hosted AI Architect, use the following URL format: `https://mcp.bito.ai/<Your-Bito-Workspace-ID>/mcp`
+
+    Replace `<Your-Bito-Workspace-ID>` with your actual Bito workspace ID, which you can find after logging into your Bito account at [**alpha.bito.ai**](https://alpha.bito.ai/)
+* Replace `<Your-Bito-MCP-Access-Token>` with the **Bito MCP Access Token** you received after completing the AI Architect setup.
+* Replace `<Your-Email>` with your actual email address.
+  {% endhint %}
+
+#### Connection issues:
+
+```shellscript
+# Test the endpoint with proper MCP protocol
+curl -s -X POST \
+  -H "Authorization: Bearer <Your-Bito-MCP-Access-Token>" \
+  -H "Content-Type: application/json" \
+  -d '{"jsonrpc":"2.0","method":"initialize","params":{},"id":1}' \
+  <Your-Bito-MCP-URL>
+
+# Should return HTTP 200 with JSON response for valid credentials
+# HTTP 401: Invalid Bito MCP Access Token
+# HTTP 404: Invalid Bito MCP URL
+```
+
+{% hint style="info" %}
+**Note:**
+
+* Replace `<Your-Bito-MCP-URL>` with the **Bito MCP URL** you received after completing the AI Architect setup.
+  * For the Bito-hosted AI Architect, use the following URL format: `https://mcp.bito.ai/<Your-Bito-Workspace-ID>/mcp`
+
+    Replace `<Your-Bito-Workspace-ID>` with your actual Bito workspace ID, which you can find after logging into your Bito account at [**alpha.bito.ai**](https://alpha.bito.ai/)
+* Replace `<Your-Bito-MCP-Access-Token>` with the **Bito MCP Access Token** you received after completing the AI Architect setup.
+  {% endhint %}
+
+#### Permission issues (macOS/Linux):
+
+```shellscript
+chmod 755 ~/.claude
+chmod 644 ~/.claude/claude.json
+chmod 644 ~/.claude/settings.json
+```
+
+
+# Guide for Claude Desktop
+
+Integrate Claude Desktop with AI Architect for more accurate, codebase-aware AI assistance.
+
+Use Bito's [**AI Architect**](https://docs.bito.ai/ai-architect/overview) with **Claude Desktop** to enhance your AI-powered coding experience.
+
+Once connected via MCP (Model Context Protocol), Claude Desktop can leverage AI Architect's deep contextual understanding of your project, enabling more accurate code suggestions, explanations, and code insights.
+
+## Prerequisites
+
+1. Follow the [**AI Architect installation instructions**](https://docs.bito.ai/ai-architect/install-ai-architect-self-hosted). Upon successful setup, you will receive a **Bito MCP URL** and **Bito MCP Access Token** that you need to enter in your coding agent.
+2. [Download **BitoAIArchitectGuidelines.md file**](https://github.com/gitbito/ai-architect/blob/main/BitoAIArchitectGuidelines.md). You will need to copy/paste the content from this file later when configuring AI Architect.
+   * **Note:** This file contains best practices, usage instructions, and prompting guidelines for the Bito AI Architect MCP server. The setup will work without this file, but including it helps AI tools interact more effectively with the Bito AI Architect MCP server.
+3. **Claude Desktop installed** - Download and install Claude Desktop from [claude.ai/download](https://claude.ai/download) if you haven't already.
+4. **Node.js 20.18.1 or higher** - Required for the `mcp-remote` proxy
+   * **macOS:**
+
+     ```shellscript
+     brew install node@20
+     # Or use nvm: nvm install 20 && nvm use 20
+     ```
+   * **Windows:** Download from <https://nodejs.org/> (download 20.x LTS)
+   * **Linux (Ubuntu/Debian):**
+
+     ```shellscript
+     curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+     sudo apt-get install -y nodejs
+     ```
+   * **Verify installation:**
+
+     ```shellscript
+     node --version  # Should show v20.x.x or higher
+     npx --version
+     ```
+
+{% hint style="info" %}
+**Note:** Claude Desktop uses OAuth 2.1 authentication via the `mcp-remote` proxy, so you don't need to manually manage access tokens. Your email will be collected during the OAuth consent flow.
+{% endhint %}
+
+## Set up AI Architect
+
+Claude Desktop uses `claude_desktop_config.json` with the `mcp-remote` proxy for OAuth-enabled remote servers.
+
+Claude Desktop supports both local MCP servers and remote HTTP servers. For Bito AI Architect (a remote OAuth server), we use the `mcp-remote` proxy which handles the OAuth flow automatically.
+
+{% stepper %}
+{% step %}
+
+### Open configuration file
+
+#### **macOS:**
+
+1. Open Claude Desktop
+2. Click **Claude** menu → **Settings** → **Developer** tab
+3. Click **Edit Config** to open `claude_desktop_config.json`
+
+Or manually open: `~/Library/Application Support/Claude/claude_desktop_config.json`
+
+#### **Windows:**
+
+1. Open Claude Desktop
+2. Click **File** → **Settings** → **Developer** tab
+3. Click **Edit Config** to open `claude_desktop_config.json`
+
+Or manually open: `%APPDATA%\Claude\claude_desktop_config.json`
+{% endstep %}
+
+{% step %}
+
+### Add AI Architect configuration
+
+Add the following to your `claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "BitoAIArchitect": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "<Your-Bito-MCP-URL>"
+      ]
+    }
+  }
+}
+```
+
+{% hint style="info" %}
+
+* Replace `<Your-Bito-MCP-URL>` with the **Bito MCP URL** you received after completing the AI Architect setup.
+  * For the Bito-hosted AI Architect, use the following URL format: `https://mcp.bito.ai/<Your-Bito-Workspace-ID>/mcp`
+
+    Replace `<Your-Bito-Workspace-ID>` with your actual Bito workspace ID, which you can find after logging into your Bito account at [**alpha.bito.ai**](https://alpha.bito.ai/)
+    {% endhint %}
+
+If you already have other MCP servers configured, add BitoAIArchitect to the existing `mcpServers` object:
+
+```json
+{
+  "mcpServers": {
+    "existing-server": {
+      ...
+    },
+    "BitoAIArchitect": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "<Your-Bito-MCP-URL>"
+      ]
+    }
+  }
+}
+```
+
+{% hint style="info" %}
+
+* Replace `<Your-Bito-MCP-URL>` with the **Bito MCP URL** you received after completing the AI Architect setup.
+  * For the Bito-hosted AI Architect, use the following URL format: `https://mcp.bito.ai/<Your-Bito-Workspace-ID>/mcp`
+
+    Replace `<Your-Bito-Workspace-ID>` with your actual Bito workspace ID, which you can find after logging into your Bito account at [**alpha.bito.ai**](https://alpha.bito.ai/)
+    {% endhint %}
+
+**Windows-specific configuration:**
+
+On Windows, you may need to use the `cmd` wrapper:
+
+```json
+{
+  "mcpServers": {
+    "BitoAIArchitect": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "mcp-remote",
+        "<Your-Bito-MCP-URL>"
+      ]
+    }
+  }
+}
+```
+
+{% hint style="info" %}
+
+* Replace `<Your-Bito-MCP-URL>` with the **Bito MCP URL** you received after completing the AI Architect setup.
+  * For the Bito-hosted AI Architect, use the following URL format: `https://mcp.bito.ai/<Your-Bito-Workspace-ID>/mcp`
+
+    Replace `<Your-Bito-Workspace-ID>` with your actual Bito workspace ID, which you can find after logging into your Bito account at [**alpha.bito.ai**](https://alpha.bito.ai/)
+    {% endhint %}
+    {% endstep %}
+
+{% step %}
+
+### Restart Claude Desktop
+
+1. **Completely quit** Claude Desktop (not just close the window)
+   * macOS: Claude menu → Quit Claude
+   * Windows: Right-click system tray icon → Exit
+2. Reopen Claude Desktop
+3. The MCP server will start automatically
+   {% endstep %}
+
+{% step %}
+
+### Complete OAuth authorization
+
+On first use, `mcp-remote` will open your browser to complete OAuth:
+
+1. A browser window opens showing the **Bito Authorization** page
+2. Review the requested permissions
+3. **Enter your email address** (required for tracking)
+4. Click **"Authorize"** or **"Allow"**
+5. Return to Claude Desktop - the connection is now active
+   {% endstep %}
+
+{% step %}
+
+### Verify connection
+
+1. In Claude Desktop, click the **"+"** button at the bottom of the chat
+2. Select **"Connectors"** or look for the hammer/wrench icon
+3. BitoAIArchitect should appear in the list
+4. Try asking: "What repositories are available?"
+   {% endstep %}
+   {% endstepper %}
+
+## Troubleshooting Claude Desktop
+
+#### **Server not appearing:**
+
+1. Verify JSON syntax in config file
+2. Ensure Node.js 20+ is installed: `node --version`
+3. Check that `npx` is available: `npx --version`
+4. Fully quit and restart Claude Desktop
+
+#### **OAuth flow not starting:**
+
+1. Ensure your browser is set as default
+2. Allow pop-ups for the OAuth flow
+3. Check firewall settings
+
+#### **"mcp-remote not found" error:**
+
+* Ensure Node.js is in your PATH
+* Try running `npx -y mcp-remote --help` in terminal to verify it works
+
+#### **Connection shows "Disconnected":**
+
+* OAuth tokens may have expired - restart Claude Desktop to re-authorize
+* Check your internet connection
+* Verify the Workspace ID is correct
+
+
+# Guide for Claude.ai (Web)
+
+Integrate Claude.ai with AI Architect for more accurate, codebase-aware AI assistance.
+
+Use Bito's [**AI Architect**](https://docs.bito.ai/ai-architect/overview) with **Claude.ai (Web)** to enhance your AI-powered coding experience.
+
+Once connected via MCP (Model Context Protocol), Claude.ai can leverage AI Architect's deep contextual understanding of your project, enabling more accurate code suggestions, explanations, and code insights.
+
+## Prerequisites
+
+1. Follow the [**AI Architect installation instructions**](https://docs.bito.ai/ai-architect/install-ai-architect-self-hosted). Upon successful setup, you will receive a **Bito MCP URL** and **Bito MCP Access Token** that you need to enter in your coding agent.
+   * **Note:** The **Bito MCP URL** must be publicly accessible. Localhost or private network URLs (for example, `http://localhost` or internal IP addresses) are not supported and will not work.
+2. [Download **BitoAIArchitectGuidelines.md file**](https://github.com/gitbito/ai-architect/blob/main/BitoAIArchitectGuidelines.md). You will need to copy/paste the content from this file later when configuring AI Architect.
+   * **Note:** This file contains best practices, usage instructions, and prompting guidelines for the Bito AI Architect MCP server. The setup will work without this file, but including it helps AI tools interact more effectively with the Bito AI Architect MCP server.
+3. **A paid Claude.ai subscription** - MCP integrations require one of the following:
+   * Claude Pro
+   * Claude Max
+   * Claude Team
+   * Claude Enterprise
+
+{% hint style="info" %}
+**Note:** Free tier accounts do not have access to MCP Integrations.
+{% endhint %}
+
+## OAuth authentication
+
+Claude.ai uses **OAuth 2.1 with PKCE** for secure authentication, so you don't need to manually manage access tokens. Your email will be collected during the OAuth consent flow for tracking purposes.
+
+**How OAuth authentication works:**
+
+1. You add the MCP server URL in Claude.ai Integrations settings
+2. Claude.ai initiates an OAuth flow
+3. Your browser opens a consent page hosted by Bito
+4. You enter your email and approve the connection
+5. Claude.ai receives secure tokens automatically
+6. Your email is tracked for usage analytics (collected during OAuth consent)
+
+**Benefits:**
+
+* No manual token management
+* Secure browser-based authentication
+* Automatic token refresh
+* Email collected during consent (no separate header needed)
+
+**OAuth Callback URL:** `https://claude.ai/api/mcp/auth_callback`
+
+## Set up AI Architect
+
+{% stepper %}
+{% step %}
+
+### Open Claude.ai integrations
+
+1. Go to [claude.ai](https://claude.ai) and sign in with your paid account
+2. Click on your **profile icon** (bottom-left corner)
+3. Select **Settings**
+4. Navigate to **Integrations** section
+   {% endstep %}
+
+{% step %}
+
+### Add Bito AI Architect MCP server
+
+1. Click **"+ Add Custom Integration"**
+2. Enter the integration details:
+   * **Name:** BitoAIArchitect
+   * **URL:** `<Your-Bito-MCP-URL>`
+
+{% hint style="info" %}
+
+* Replace `<Your-Bito-MCP-URL>` with the **Bito MCP URL** you received after completing the AI Architect setup.
+  * For the Bito-hosted AI Architect, use the following URL format: `https://mcp.bito.ai/<Your-Bito-Workspace-ID>/mcp`
+
+    Replace `<Your-Bito-Workspace-ID>` with your actual Bito workspace ID, which you can find after logging into your Bito account at [**alpha.bito.ai**](https://alpha.bito.ai/)
+    {% endhint %}
+
+3. Click **"Connect"** or **"Add"**
+   {% endstep %}
+
+{% step %}
+
+### Complete OAuth authorization
+
+1. A new browser window/tab will open showing the **Bito Authorization** page
+2. Review the requested permissions
+3. **Enter your email address** (required for tracking/identification)
+4. Click **"Authorize"** or **"Allow"**
+5. The window will close and you'll be returned to Claude.ai
+   {% endstep %}
+
+{% step %}
+
+### Verify connection
+
+1. Return to Claude.ai Settings → Integrations
+2. BitoAIArchitect should show as **"Connected"** with a green indicator
+3. Start a new conversation and try:
+
+   ```
+   What repositories are available in my organization?
+   ```
+
+{% endstep %}
+{% endstepper %}
+
+## Troubleshooting Claude.ai
+
+#### **"Integrations" option not visible:**
+
+* Verify you have a paid Claude subscription (Pro, Max, Team, or Enterprise)
+* Free tier accounts do not have MCP access
+* Contact Anthropic support if you have a paid plan but don't see the option
+
+#### **OAuth authorization fails:**
+
+* Ensure pop-ups are allowed for claude.ai
+* Check that your Workspace ID is correct
+* Verify your organization has OAuth enabled for the MCP server
+* Try clearing browser cache and cookies, then retry
+
+#### **Connection shows "Disconnected":**
+
+* Click the server entry and select "Reconnect"
+* OAuth tokens may have expired - re-authorize when prompted
+* Check if your Bito workspace is still active
+
+#### **Tools not appearing in conversation:**
+
+* Ensure the MCP server shows "Connected" status
+* Try starting a fresh conversation
+* Some tools may require specific prompts to activate
+
+
+# Guide for Cursor
+
+Integrate Cursor with AI Architect for more accurate, codebase-aware AI assistance.
+
+Use Bito's [**AI Architect**](https://docs.bito.ai/ai-architect/overview) with **Cursor** to enhance your AI-powered coding experience.
+
+Once connected via MCP (Model Context Protocol), Cursor can leverage AI Architect’s deep contextual understanding of your project, enabling more accurate code suggestions, explanations, and code insights.
+
+## Quick setup (recommended)
+
+**Want to get started faster?** We offer an automated installer that can configure AI Architect for all your AI coding tools in just a few seconds.
+
+The automated setup will:
+
+* Detect all compatible AI tools installed on your system
+* Configure them automatically with your credentials
+* Save you time by eliminating manual configuration steps
+
+👉 [**Try our Quick MCP Integration Guide**](https://docs.bito.ai/ai-architect/quick-mcp-integration-with-ai-coding-agents) for automated setup.
+
+## Manual setup
+
+If you prefer manual configuration, follow the step-by-step instructions below.
+
+## Prerequisites
+
+1. Follow the [**AI Architect installation instructions**](https://docs.bito.ai/ai-architect/install-ai-architect-self-hosted). Upon successful setup, you will receive a **Bito MCP URL** and **Bito MCP Access Token** that you need to enter in your coding agent.
+2. [Download **BitoAIArchitectGuidelines.md** file](https://github.com/gitbito/ai-architect/blob/main/BitoAIArchitectGuidelines.md). You will need to copy/paste the content from this file later when configuring AI Architect.
+   * **Note:** This file contains best practices, usage instructions, and prompting guidelines for the Bito AI Architect MCP server. The setup will work without this file, but including it helps AI tools interact more effectively with the Bito AI Architect MCP server.
+
+## Set up AI Architect
+
+Follow the setup instructions for your operating system:
+
+* [**Windows**](#windows)
+* [**macOS/Linux**](#macos-linux)
+
+## Windows
+
+{% stepper %}
+{% step %}
+
+### Create Cursor config directory
+
+1. Press `Win + R`
+2. Type: `%USERPROFILE%\.cursor`
+3. Press Enter
+
+If the folder doesn't exist, create it:
+
+1. Open File Explorer
+2. Navigate to `%USERPROFILE%`
+3. Create new folder: `.cursor`
+   {% endstep %}
+
+{% step %}
+
+### Create or edit mcp.json
+
+1. Open `%USERPROFILE%\.cursor\mcp.json` in a text editor.
+2. If the file doesn't exist, create it with this content:
+
+```json
+{
+  "mcpServers": {
+    "BitoAIArchitect": {
+      "url": "<Your-Bito-MCP-URL>",
+      "headers": {
+        "Authorization": "Bearer <Your-Bito-MCP-Access-Token>",
+        "x-email-id": "<Your-Email>"
+      }
+    }
+  }
+}
+```
+
+{% hint style="info" %}
+**Note:**
+
+* Replace `<Your-Bito-MCP-URL>` with the **Bito MCP URL** you received after completing the AI Architect setup.
+  * For the Bito-hosted AI Architect, use the following URL format: `https://mcp.bito.ai/<Your-Bito-Workspace-ID>/mcp`
+
+    Replace `<Your-Bito-Workspace-ID>` with your actual Bito workspace ID, which you can find after logging into your Bito account at [**alpha.bito.ai**](https://alpha.bito.ai/)
+* Replace `<Your-Bito-MCP-Access-Token>` with the **Bito MCP Access Token** you received after completing the AI Architect setup.
+* Replace `<Your-Email>` with your actual email address.
+  {% endhint %}
+
+3. If the file exists with other servers, add `BitoAIArchitect` to the `mcpServers` object:
+
+```json
+{
+  "mcpServers": {
+    "existing-server": {
+      ...
+    },
+    "BitoAIArchitect": {
+      "url": "<Your-Bito-MCP-URL>",
+      "headers": {
+        "Authorization": "Bearer <Your-Bito-MCP-Access-Token>",
+        "x-email-id": "<Your-Email>"
+      }
+    }
+  }
+}
+```
+
+{% hint style="info" %}
+**Note:**
+
+* Replace `<Your-Bito-MCP-URL>` with the **Bito MCP URL** you received after completing the AI Architect setup.
+  * For the Bito-hosted AI Architect, use the following URL format: `https://mcp.bito.ai/<Your-Bito-Workspace-ID>/mcp`
+
+    Replace `<Your-Bito-Workspace-ID>` with your actual Bito workspace ID, which you can find after logging into your Bito account at [**alpha.bito.ai**](https://alpha.bito.ai/)
+* Replace `<Your-Bito-MCP-Access-Token>` with the **Bito MCP Access Token** you received after completing the AI Architect setup.
+* Replace `<Your-Email>` with your actual email address.
+  {% endhint %}
+  {% endstep %}
+
+{% step %}
+
+### Add guidelines (optional but highly recommended)
+
+The [**BitoAIArchitectGuidelines.md** file](#prerequisites) contains best practices, usage instructions, and prompting guidelines for the Bito AI Architect MCP server.
+
+The setup will work without this file, but including it helps AI tools interact more effectively with the Bito AI Architect MCP server.
+
+1. In your project root, create `.cursorrules` file.
+2. Open this file with a text editor.
+3. Copy the contents of your [**BitoAIArchitectGuidelines.md** file](#prerequisites) into `.cursorules` file.
+4. Save.
+   {% endstep %}
+
+{% step %}
+
+### Restart Cursor
+
+1. Close Cursor completely
+2. Reopen Cursor
+3. Open **Settings → Tools & MCP**
+4. Verify `BitoAIArchitect` appears in the MCP servers list
+   {% endstep %}
+   {% endstepper %}
+
+## macOS/Linux
+
+{% stepper %}
+{% step %}
+
+### Create Cursor config directory
+
+```shellscript
+mkdir -p ~/.cursor
+```
+
+{% endstep %}
+
+{% step %}
+
+### Create or edit mcp.json
+
+```
+nano ~/.cursor/mcp.json
+```
+
+Add this content:
+
+```json
+{
+  "mcpServers": {
+    "BitoAIArchitect": {
+      "url": "<Your-Bito-MCP-URL>",
+      "headers": {
+        "Authorization": "Bearer <Your-Bito-MCP-Access-Token>",
+        "x-email-id": "<Your-Email>"
+      }
+    }
+  }
+}
+```
+
+{% hint style="info" %}
+**Note:**
+
+* Replace `<Your-Bito-MCP-URL>` with the **Bito MCP URL** you received after completing the AI Architect setup.
+  * For the Bito-hosted AI Architect, use the following URL format: `https://mcp.bito.ai/<Your-Bito-Workspace-ID>/mcp`
+
+    Replace `<Your-Bito-Workspace-ID>` with your actual Bito workspace ID, which you can find after logging into your Bito account at [**alpha.bito.ai**](https://alpha.bito.ai/)
+* Replace `<Your-Bito-MCP-Access-Token>` with the **Bito MCP Access Token** you received after completing the AI Architect setup.
+* Replace `<Your-Email>` with your actual email address.
+  {% endhint %}
+
+Save and exit (Ctrl+O, Enter, Ctrl+X)
+{% endstep %}
+
+{% step %}
+
+### Add guidelines (optional but highly recommended)
+
+The [**BitoAIArchitectGuidelines.md** file](#prerequisites) contains best practices, usage instructions, and prompting guidelines for the Bito AI Architect MCP server.
+
+The setup will work without this file, but including it helps AI tools interact more effectively with the Bito AI Architect MCP server.
+
+1. In your project root, create `.cursorrules` file.
+2. Open this file with a text editor.
+3. Copy the contents of your [**BitoAIArchitectGuidelines.md** file](#prerequisites) into `.cursorules` file.
+4. Save.
+   {% endstep %}
+
+{% step %}
+
+### Restart Cursor
+
+1. Close Cursor completely
+2. Reopen Cursor
+3. Open **Settings → Tools & MCP**
+4. Verify `BitoAIArchitect` appears in the MCP servers list
+   {% endstep %}
+   {% endstepper %}
+
+## Troubleshooting Cursor
+
+#### Server not showing:
+
+```shellscript
+# Verify file location
+ls -la ~/.cursor/mcp.json
+
+# Check file permissions
+chmod 644 ~/.cursor/mcp.json
+
+# Verify JSON syntax
+cat ~/.cursor/mcp.json | python -m json.tool
+```
+
+#### Connection errors:
+
+* Verify **Bito MCP URL** and **Bito MCP Access Token** are correct.
+* Test endpoint with MCP protocol:
+
+```shellscript
+curl -s -X POST \
+  -H "Authorization: Bearer <Your-Bito-MCP-Access-Token>" \
+  -H "Content-Type: application/json" \
+  -d '{"jsonrpc":"2.0","method":"initialize","params":{},"id":1}' \
+  <Your-Bito-MCP-URL>
+
+# Should return HTTP 200 with JSON response for valid credentials
+# HTTP 401: Invalid Bito MCP Access Token
+# HTTP 404: Invalid Bito MCP URL
+```
+
+{% hint style="info" %}
+**Note:**
+
+* Replace `<Your-Bito-MCP-URL>` with the **Bito MCP URL** you received after completing the AI Architect setup.
+  * For the Bito-hosted AI Architect, use the following URL format: `https://mcp.bito.ai/<Your-Bito-Workspace-ID>/mcp`
+
+    Replace `<Your-Bito-Workspace-ID>` with your actual Bito workspace ID, which you can find after logging into your Bito account at [**alpha.bito.ai**](https://alpha.bito.ai/)
+
+* Replace `<Your-Bito-MCP-Access-Token>` with the **Bito MCP Access Token** you received after completing the AI Architect setup.
+  {% endhint %}
+
+* Check **Settings → Tools & MCP** for error messages
+
+
+# Guide for Windsurf
+
+Integrate Windsurf with AI Architect for more accurate, codebase-aware AI assistance.
+
+Use Bito's [**AI Architect**](https://docs.bito.ai/ai-architect/overview) with **Windsurf** to enhance your AI-powered coding experience.
+
+Once connected via MCP (Model Context Protocol), Windsurf can leverage AI Architect’s deep contextual understanding of your project, enabling more accurate code suggestions, explanations, and code insights.
+
+## Quick setup (recommended)
+
+**Want to get started faster?** We offer an automated installer that can configure AI Architect for all your AI coding tools in just a few seconds.
+
+The automated setup will:
+
+* Detect all compatible AI tools installed on your system
+* Configure them automatically with your credentials
+* Save you time by eliminating manual configuration steps
+
+👉 [**Try our Quick MCP Integration Guide**](https://docs.bito.ai/ai-architect/quick-mcp-integration-with-ai-coding-agents) for automated setup.
+
+## Manual setup
+
+If you prefer manual configuration, follow the step-by-step instructions below.
+
+## Prerequisites
+
+1. Follow the [**AI Architect installation instructions**](https://docs.bito.ai/ai-architect/install-ai-architect-self-hosted). Upon successful setup, you will receive a **Bito MCP URL** and **Bito MCP Access Token** that you need to enter in your coding agent.
+2. [Download **BitoAIArchitectGuidelines.md** file](https://github.com/gitbito/ai-architect/blob/main/BitoAIArchitectGuidelines.md). You will need to copy/paste the content from this file later when configuring AI Architect.
+   * **Note:** This file contains best practices, usage instructions, and prompting guidelines for the Bito AI Architect MCP server. The setup will work without this file, but including it helps AI tools interact more effectively with the Bito AI Architect MCP server.
+
+## Set up AI Architect
+
+Follow the setup instructions for your operating system:
+
+* [**Windows**](#windows)
+* [**macOS/Linux**](#macos-linux)
+
+## Windows
+
+{% stepper %}
+{% step %}
+
+### Create Windsurf config directory
+
+1. Press **Win + R**
+2. Type: `%USERPROFILE%\.codeium\windsurf`
+3. Press **Enter**
+
+If the folders don't exist, create them:
+
+1. Open File Explorer
+2. Navigate to `%USERPROFILE%`
+3. Create folders: `.codeium\windsurf`
+   {% endstep %}
+
+{% step %}
+
+### Create or edit mcp\_config.json
+
+1. Open `%USERPROFILE%\.codeium\windsurf\mcp_config.json` in a text editor.
+2. If the file doesn't exist, create it with this content:
+
+```json
+{
+  "mcpServers": {
+    "BitoAIArchitect": {
+      "serverUrl": "<Your-Bito-MCP-URL>",
+      "headers": {
+        "Authorization": "Bearer <Your-Bito-MCP-Access-Token>",
+        "x-email-id": "<Your-Email>"
+      }
+    }
+  }
+}
+```
+
+{% hint style="info" %}
+**Note:**
+
+* Replace `<Your-Bito-MCP-URL>` with the **Bito MCP URL** you received after completing the AI Architect setup.
+  * For the Bito-hosted AI Architect, use the following URL format: `https://mcp.bito.ai/<Your-Bito-Workspace-ID>/mcp`
+
+    Replace `<Your-Bito-Workspace-ID>` with your actual Bito workspace ID, which you can find after logging into your Bito account at [**alpha.bito.ai**](https://alpha.bito.ai/)
+* Replace `<Your-Bito-MCP-Access-Token>` with the **Bito MCP Access Token** you received after completing the AI Architect setup.
+* Replace `<Your-Email>` with your actual email address.
+  {% endhint %}
+
+3. If the file exists with other servers, add `BitoAIArchitect` to the `mcpServers` object:
+
+```json
+{
+  "mcpServers": {
+    "existing-server": {
+      ...
+    },
+    "BitoAIArchitect": {
+      "serverUrl": "<Your-Bito-MCP-URL>",
+      "headers": {
+        "Authorization": "Bearer <Your-Bito-MCP-Access-Token>",
+        "x-email-id": "<Your-Email>"
+      }
+    }
+  }
+}
+```
+
+{% hint style="info" %}
+**Note:**
+
+* Replace `<Your-Bito-MCP-URL>` with the **Bito MCP URL** you received after completing the AI Architect setup.
+  * For the Bito-hosted AI Architect, use the following URL format: `https://mcp.bito.ai/<Your-Bito-Workspace-ID>/mcp`
+
+    Replace `<Your-Bito-Workspace-ID>` with your actual Bito workspace ID, which you can find after logging into your Bito account at [**alpha.bito.ai**](https://alpha.bito.ai/)
+* Replace `<Your-Bito-MCP-Access-Token>` with the **Bito MCP Access Token** you received after completing the AI Architect setup.
+* Replace `<Your-Email>` with your actual email address.
+  {% endhint %}
+
+4. Save
+   {% endstep %}
+
+{% step %}
+
+### Add guidelines (optional but highly recommended)
+
+The [**BitoAIArchitectGuidelines.md** file](#prerequisites) contains best practices, usage instructions, and prompting guidelines for the Bito AI Architect MCP server.
+
+The setup will work without this file, but including it helps AI tools interact more effectively with the Bito AI Architect MCP server.
+
+#### Option A: Global guidelines (applies to all projects):
+
+Create directory:
+
+```shellscript
+mkdir %USERPROFILE%\.codeium\windsurf\memories
+```
+
+Copy the contents of your [**BitoAIArchitectGuidelines.md** file](#prerequisites) into `global_rules.md` file:
+
+```shellscript
+copy BitoAIArchitectGuidelines.md %USERPROFILE%\.codeium\windsurf\memories\global_rules.md
+```
+
+#### Option B: Project-level guidelines (applies to specific project):
+
+In your project directory, create `.windsurf\rules` directory:
+
+```shellscript
+mkdir .windsurf\rules
+```
+
+Copy the contents of your [**BitoAIArchitectGuidelines.md** file](#prerequisites) into `bitoai-architect.md` file:
+
+```shellscript
+copy BitoAIArchitectGuidelines.md .windsurf\rules\bitoai-architect.md
+```
+
+{% hint style="info" %}
+**Note:** Windsurf Wave 8+ uses `.windsurf\rules\*.md` format for project-level rules. Global guidelines in `~/.codeium/windsurf/memories/global_rules.md` are supported in all versions.
+{% endhint %}
+{% endstep %}
+
+{% step %}
+
+### Restart Windsurf
+
+1. Close Windsurf completely
+2. Reopen Windsurf
+3. Open **Settings → Cascade → MCP Servers**
+4. Click "Refresh"
+5. Verify `BitoAIArchitect` appears with green status
+   {% endstep %}
+   {% endstepper %}
+
+## macOS/Linux
+
+{% stepper %}
+{% step %}
+
+### Create Windsurf config directory
+
+```shellscript
+mkdir -p ~/.codeium/windsurf
+```
+
+{% endstep %}
+
+{% step %}
+
+### Create or edit mcp\_config.json
+
+```shellscript
+nano ~/.codeium/windsurf/mcp_config.json
+```
+
+Add this content:
+
+```json
+{
+  "mcpServers": {
+    "BitoAIArchitect": {
+      "serverUrl": "<Your-Bito-MCP-URL>",
+      "headers": {
+        "Authorization": "Bearer <Your-Bito-MCP-Access-Token>",
+        "x-email-id": "<Your-Email>"
+      }
+    }
+  }
+}
+```
+
+{% hint style="info" %}
+**Note:**
+
+* Replace `<Your-Bito-MCP-URL>` with the **Bito MCP URL** you received after completing the AI Architect setup.
+  * For the Bito-hosted AI Architect, use the following URL format: `https://mcp.bito.ai/<Your-Bito-Workspace-ID>/mcp`
+
+    Replace `<Your-Bito-Workspace-ID>` with your actual Bito workspace ID, which you can find after logging into your Bito account at [**alpha.bito.ai**](https://alpha.bito.ai/)
+* Replace `<Your-Bito-MCP-Access-Token>` with the **Bito MCP Access Token** you received after completing the AI Architect setup.
+* Replace `<Your-Email>` with your actual email address.
+  {% endhint %}
+
+Save and exit (Ctrl+O, Enter, Ctrl+X)
+{% endstep %}
+
+{% step %}
+
+### Add guidelines (optional but highly recommended)
+
+The [**BitoAIArchitectGuidelines.md** file](#prerequisites) contains best practices, usage instructions, and prompting guidelines for the Bito AI Architect MCP server.
+
+The setup will work without this file, but including it helps AI tools interact more effectively with the Bito AI Architect MCP server.
+
+#### Option A: Global guidelines (applies to all projects):
+
+Create directory:
+
+```shellscript
+mkdir -p ~/.codeium/windsurf/memories
+```
+
+Copy the contents of your [**BitoAIArchitectGuidelines.md** file](#prerequisites) into `global_rules.md` file:
+
+```shellscript
+cp BitoAIArchitectGuidelines.md ~/.codeium/windsurf/memories/global_rules.md
+```
+
+#### Option B: Project-level guidelines (applies to specific project):
+
+In your project directory, create `.windsurf/rules` directory:
+
+```shellscript
+mkdir -p .windsurf/rules
+```
+
+Copy the contents of your [**BitoAIArchitectGuidelines.md** file](#prerequisites) into `bitoai-architect.md` file:
+
+```shellscript
+cp BitoAIArchitectGuidelines.md .windsurf/rules/bitoai-architect.md
+```
+
+{% hint style="info" %}
+**Note:** Windsurf Wave 8+ uses `.windsurf/rules/*.md` format for project-level rules. Global guidelines in `~/.codeium/windsurf/memories/global_rules.md` are supported in all versions.
+{% endhint %}
+{% endstep %}
+
+{% step %}
+
+### Restart Windsurf
+
+1. Close Windsurf completely
+2. Reopen Windsurf
+3. Open **Settings → Cascade → MCP Servers**
+4. Click "Refresh"
+5. Verify `BitoAIArchitect` appears with green status
+   {% endstep %}
+   {% endstepper %}
+
+## Troubleshooting Windsurf
+
+#### Server not showing:
+
+```shellscript
+# Verify file location
+ls -la ~/.codeium/windsurf/mcp_config.json
+
+# Check permissions
+chmod 755 ~/.codeium/windsurf
+chmod 644 ~/.codeium/windsurf/mcp_config.json
+
+# Verify JSON syntax
+cat ~/.codeium/windsurf/mcp_config.json | python -m json.tool
+```
+
+#### Connection errors:
+
+* Verify **Bito MCP URL** and **Bito MCP Access Token** are correct.
+* Test endpoint with MCP protocol:
+
+```shellscript
+curl -s -X POST \
+  -H "Authorization: Bearer <Your-Bito-MCP-Access-Token>" \
+  -H "Content-Type: application/json" \
+  -d '{"jsonrpc":"2.0","method":"initialize","params":{},"id":1}' \
+  <Your-Bito-MCP-URL>
+
+# Should return HTTP 200 with JSON response for valid credentials
+# HTTP 401: Invalid Bito MCP Access Token
+# HTTP 404: Invalid Bito MCP URL
+```
+
+{% hint style="info" %}
+**Note:**
+
+* Replace `<Your-Bito-MCP-URL>` with the **Bito MCP URL** you received after completing the AI Architect setup.
+  * For the Bito-hosted AI Architect, use the following URL format: `https://mcp.bito.ai/<Your-Bito-Workspace-ID>/mcp`
+
+    Replace `<Your-Bito-Workspace-ID>` with your actual Bito workspace ID, which you can find after logging into your Bito account at [**alpha.bito.ai**](https://alpha.bito.ai/)
+
+* Replace `<Your-Bito-MCP-Access-Token>` with the **Bito MCP Access Token** you received after completing the AI Architect setup.
+  {% endhint %}
+
+* Check **Settings → Cascade → MCP Servers** for error messages.
+
+
+# Guide for GitHub Copilot (VS Code)
+
+Integrate GitHub Copilot in VS Code with AI Architect for more accurate, codebase-aware AI assistance.
+
+Use Bito's [**AI Architect**](https://docs.bito.ai/ai-architect/overview) with **GitHub Copilot in VS Code** to enhance your AI-powered coding experience.
+
+Once connected via MCP (Model Context Protocol), GitHub Copilot can leverage AI Architect’s deep contextual understanding of your project, enabling more accurate code suggestions, explanations, and code insights.
+
+## Quick setup (recommended)
+
+**Want to get started faster?** We offer an automated installer that can configure AI Architect for all your AI coding tools in just a few seconds.
+
+The automated setup will:
+
+* Detect all compatible AI tools installed on your system
+* Configure them automatically with your credentials
+* Save you time by eliminating manual configuration steps
+
+👉 [**Try our Quick MCP Integration Guide**](https://docs.bito.ai/ai-architect/quick-mcp-integration-with-ai-coding-agents) for automated setup.
+
+## Manual setup
+
+If you prefer manual configuration, follow the step-by-step instructions below.
+
+## Prerequisites
+
+1. Follow the [**AI Architect installation instructions**](https://docs.bito.ai/ai-architect/install-ai-architect-self-hosted). Upon successful setup, you will receive a **Bito MCP URL** and **Bito MCP Access Token** that you need to enter in your coding agent.
+2. [Download **BitoAIArchitectGuidelines.md** file](https://github.com/gitbito/ai-architect/blob/main/BitoAIArchitectGuidelines.md). You will need to copy/paste the content from this file later when configuring AI Architect.
+   * **Note:** This file contains best practices, usage instructions, and prompting guidelines for the Bito AI Architect MCP server. The setup will work without this file, but including it helps AI tools interact more effectively with the Bito AI Architect MCP server.
+3. **Requires Visual Studio Code version 1.99 or later**
+   1. **Check VS Code version:** `code --version`
+   2. **Update VS Code if needed:** Help → Check for Updates
+4. **Enable Agent Mode**
+   1. Open VS Code Settings (Ctrl/Cmd + ,)
+   2. Search: `chat.agent.enabled`
+   3. Check the box to enable Agent Mode
+5. **Ensure Node.js 20.18.1+ is Installed:**
+
+   VS Code's MCP implementation automatically tries to use OAuth for HTTP servers. For static Bearer token authentication (which Bito AI Architect uses), you need to use the `mcp-remote` proxy tool.
+
+   The `mcp-remote` proxy requires **Node.js 20.18.1 or higher**.
+
+   **Why Node.js 20+?** The mcp-remote proxy depends on undici v7, which requires Node.js 20+ (needs the `File` global API added in Node 20.0.0). Node.js 18 and earlier will fail with `ReferenceError: File is not defined`.
+
+   **Windows:** Download from <https://nodejs.org/> (download 20.x LTS)
+
+   **macOS:**
+
+   ```shellscript
+   brew install node@20
+   # Or use nvm: nvm install 20 && nvm use 20
+   ```
+
+   **Linux (Ubuntu/Debian):**
+
+   ```shellscript
+   curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+   sudo apt-get install -y nodejs
+   ```
+
+   **Verify:**
+
+   ```shellscript
+   node --version  # Should show v20.x.x or higher
+   npx --version
+   ```
+6. GitHub Copilot extension installed and enabled
+7. GitHub account with Copilot access
+
+## Set up AI Architect
+
+VS Code has the same setup process across all platforms (Windows, macOS, Linux, WSL).
+
+### Workspace configuration (recommended)
+
+{% stepper %}
+{% step %}
+
+### Create .vscode directory
+
+In your project root:
+
+```shellscript
+mkdir .vscode
+```
+
+{% endstep %}
+
+{% step %}
+
+### Create mcp.json
+
+Create `.vscode/mcp.json`:
+
+```json
+{
+  "servers": {
+    "BitoAIArchitect": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "<Your-Bito-MCP-URL>",
+        "--header",
+        "Authorization: Bearer <Your-Bito-MCP-Access-Token>",
+        "--header",
+        "x-email-id: <Your-Email>"
+      ]
+    }
+  }
+}
+```
+
+{% hint style="info" %}
+**Note:**
+
+* Replace `<Your-Bito-MCP-URL>` with the **Bito MCP URL** you received after completing the AI Architect setup.
+  * For the Bito-hosted AI Architect, use the following URL format: `https://mcp.bito.ai/<Your-Bito-Workspace-ID>/mcp`
+
+    Replace `<Your-Bito-Workspace-ID>` with your actual Bito workspace ID, which you can find after logging into your Bito account at [**alpha.bito.ai**](https://alpha.bito.ai/)
+* Replace `<Your-Bito-MCP-Access-Token>` with the **Bito MCP Access Token** you received after completing the AI Architect setup.
+* Replace `<Your-Email>` with your actual email address.
+  {% endhint %}
+
+**Important:**
+
+* Include `"type": "stdio"` in the configuration
+* VS Code requires `mcp-remote` proxy for static Bearer token authentication
+* The `"servers"` object is at the root level in workspace configs
+* Direct HTTP transport with static Bearer tokens triggers OAuth flows in VS Code
+
+**Why mcp-remote?** VS Code's MCP implementation automatically initiates OAuth discovery when connecting to HTTP MCP servers. Since `BitoAIArchitect` uses static Bearer token authentication (not OAuth), we use the `mcp-remote` proxy to handle the authentication properly.
+{% endstep %}
+
+{% step %}
+
+### Add guidelines (optional but highly recommended)
+
+The [**BitoAIArchitectGuidelines.md** file](#prerequisites) contains best practices, usage instructions, and prompting guidelines for the Bito AI Architect MCP server.
+
+The setup will work without this file, but including it helps AI tools interact more effectively with the Bito AI Architect MCP server.
+
+Create `.github` directory:
+
+```shellscript
+mkdir -p .github
+```
+
+Copy the contents of your [**BitoAIArchitectGuidelines.md** file](#prerequisites) into `.github/copilot-instructions.md` file:
+
+```shellscript
+cp BitoAIArchitectGuidelines.md .github/copilot-instructions.md
+```
+
+{% endstep %}
+
+{% step %}
+
+### Start the MCP server
+
+**Important:** VS Code requires manually starting MCP servers. Follow these steps:
+
+1. Open **Copilot Chat** (Ctrl/Cmd + I)
+2. Click the **gear icon** in the Copilot Chat panel
+3. Select **"MCP Servers"**
+4. Find **BitoAIArchitect** in the list
+5. Click the **gear icon** next to BitoAIArchitect
+6. Select **"Start Server"**
+
+**Alternative method:**
+
+1. Open `.vscode/mcp.json` in VS Code
+2. Look for a **Start** button above the configuration
+3. Click **Start** to initialize the server
+   {% endstep %}
+
+{% step %}
+
+### Verify in Copilot Chat
+
+1. Open Copilot Chat (Ctrl/Cmd + I)
+2. Switch to Agent mode (toggle in chat interface)
+3. Click the Tools icon (wrench)
+4. Verify `BitoAIArchitect` appears in the tools list
+5. Try asking: "What repositories are available?"
+   {% endstep %}
+   {% endstepper %}
+
+### User configuration (global)
+
+To make `BitoAIArchitect` available in ALL projects, create a user-level `mcp.json` file:
+
+#### Windows
+
+* **Create/edit:** `%APPDATA%\Code\User\mcp.json`
+
+#### macOS
+
+* **Create/edit:** `~/Library/Application Support/Code/User/mcp.json`
+
+#### Linux
+
+* **Create/edit:** `~/.config/Code/User/mcp.json`
+
+#### Configuration
+
+Add this to your `mcp.json`:
+
+```json
+{
+  "servers": {
+    "BitoAIArchitect": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "<Your-Bito-MCP-URL>",
+        "--header",
+        "Authorization: Bearer <Your-Bito-MCP-Access-Token>",
+        "--header",
+        "x-email-id: <Your-Email>"
+      ]
+    }
+  }
+}
+```
+
+{% hint style="info" %}
+**Note:**
+
+* Replace `<Your-Bito-MCP-URL>` with the **Bito MCP URL** you received after completing the AI Architect setup.
+  * For the Bito-hosted AI Architect, use the following URL format: `https://mcp.bito.ai/<Your-Bito-Workspace-ID>/mcp`
+
+    Replace `<Your-Bito-Workspace-ID>` with your actual Bito workspace ID, which you can find after logging into your Bito account at [**alpha.bito.ai**](https://alpha.bito.ai/)
+* Replace `<Your-Bito-MCP-Access-Token>` with the **Bito MCP Access Token** you received after completing the AI Architect setup.
+* Replace `<Your-Email>` with your actual email address.
+  {% endhint %}
+
+#### Enable MCP discovery
+
+Also ensure MCP discovery is enabled in your `settings.json`:
+
+```
+{
+  "chat.mcp.discovery.enabled": true
+}
+```
+
+**Important:**
+
+* User-level config uses `mcp.json` (separate from `settings.json`)
+* Include `"type": "stdio"` in the configuration
+* After saving, manually start the server via Copilot Chat (see Step 4 above)
+
+## Troubleshooting VS Code (GitHub Copilot)
+
+#### Server not appearing in MCP Servers list:
+
+1. Verify `mcp.json` is in the correct location (see paths above)
+2. Ensure `"type": "stdio"` is included in the configuration
+3. Check JSON syntax is valid
+4. Restart VS Code completely (Cmd+Q / Alt+F4)
+
+#### Server not starting:
+
+1. Manually start the server:
+   * Open Copilot Chat → gear icon → MCP Servers
+   * Click gear icon next to BitoAIArchitect → Start Server
+2. Check Node.js version: `node --version` (must be 20.18.1+)
+3. View → Output → select "MCP" for error messages
+
+#### Tools not showing in Copilot Chat:
+
+1. Ensure server is started (see above)
+2. Open Copilot Chat
+3. Switch to Agent mode
+4. Click Tools (wrench icon)
+5. Verify BitoAIArchitect appears
+
+#### Agent Mode not available:
+
+1. Update VS Code to 1.99+
+2. Settings → Search: `chat.agent.enabled`
+3. Enable the checkbox
+
+#### MCP discovery issues:
+
+Ensure `settings.json` has:
+
+```
+"chat.mcp.discovery.enabled": true
+```
+
+**Note:** This must be a boolean `true`, NOT an object like `{"claude-desktop": true}`.
+
+#### Node.js version too old:
+
+Error: `ReferenceError: File is not defined` or similar
+
+* Upgrade Node.js to 20.18.1 or later
+* If using nvm: `nvm install 20 && nvm use 20 && nvm alias default 20`
+
+#### Reset if needed:
+
+* Ctrl/Cmd + Shift + P
+* Run: `MCP: Reset Cached Tools`
+* Restart VS Code
+
+#### OAuth prompts appearing:
+
+If VS Code is prompting for OAuth instead of using your Bearer token:
+
+1. Ensure you're using the `mcp-remote` proxy configuration (not direct HTTP)
+2. Verify `"type": "stdio"` is in your config
+3. Cancel the OAuth prompt - the server should still work
+4. Check that Node.js and npx are installed: `npx --version`
+
+
+# Guide for Junie (JetBrains)
+
+Integrate Junie (JetBrains) with AI Architect for more accurate, codebase-aware AI assistance.
+
+Use Bito's [**AI Architect**](https://docs.bito.ai/ai-architect/overview) with **Junie (JetBrains)** to enhance your AI-powered coding experience.
+
+Once connected via MCP (Model Context Protocol), Junie can leverage AI Architect’s deep contextual understanding of your project, enabling more accurate code suggestions, explanations, and code insights.
+
+## Quick setup (recommended)
+
+**Want to get started faster?** We offer an automated installer that can configure AI Architect for all your AI coding tools in just a few seconds.
+
+The automated setup will:
+
+* Detect all compatible AI tools installed on your system
+* Configure them automatically with your credentials
+* Save you time by eliminating manual configuration steps
+
+👉 [**Try our Quick MCP Integration Guide**](https://docs.bito.ai/ai-architect/quick-mcp-integration-with-ai-coding-agents) for automated setup.
+
+## Manual setup
+
+If you prefer manual configuration, follow the step-by-step instructions below.
+
+## Prerequisites
+
+1. Follow the [**AI Architect installation instructions**](https://docs.bito.ai/ai-architect/install-ai-architect-self-hosted). Upon successful setup, you will receive a **Bito MCP URL** and **Bito MCP Access Token** that you need to enter in your coding agent.
+2. [Download **BitoAIArchitectGuidelines.md** file](https://github.com/gitbito/ai-architect/blob/main/BitoAIArchitectGuidelines.md). You will need to copy/paste the content from this file later when configuring AI Architect.
+   * **Note:** This file contains best practices, usage instructions, and prompting guidelines for the Bito AI Architect MCP server. The setup will work without this file, but including it helps AI tools interact more effectively with the Bito AI Architect MCP server.
+3. **Junie installed in a JetBrains IDE** (IntelliJ IDEA, PyCharm, WebStorm, etc.)
+4. **Node.js 20.18.1+** installed (for `mcp-remote` proxy)
+   1. **Why Node.js 20+?** The mcp-remote proxy depends on undici v7, which requires Node.js 20+ (needs the `File` global API added in Node 20.0.0). Node.js 18 and earlier will fail with `ReferenceError: File is not defined`.
+   2. **Verify:**
+
+      ```shellscript
+      node --version  # Should show v20.x.x or higher
+      npx --version
+      ```
+   3. If Node.js is not installed or the version < 20 then [download Node.js 20.x LTS](https://nodejs.org/)
+
+## Set up AI Architect <a href="#set-up-ai-architect" id="set-up-ai-architect"></a>
+
+Junie has the same setup process across all platforms (Windows, macOS, Linux, WSL).
+
+{% stepper %}
+{% step %}
+
+### Access Junie MCP settings
+
+1. Open your JetBrains IDE (IntelliJ, PyCharm, etc.)
+2. Go to: **Settings** (Ctrl/Cmd + Alt + S)
+3. Navigate to: **Tools** → **Junie** → **MCP Settings**
+4. Click the **+** (Add) button to open the global `mcp.json` configuration file in the editor, or manually edit the file as shown below
+   {% endstep %}
+
+{% step %}
+
+### Configure `BitoAIArchitect`
+
+The global configuration file is located at:
+
+* **macOS/Linux**: `~/.junie/mcp/mcp.json`
+* **Windows**: `%USERPROFILE%\.junie\mcp\mcp.json`
+
+**macOS/Linux configuration:**
+
+```json
+{
+  "mcpServers": {
+    "BitoAIArchitect": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "<Your-Bito-MCP-URL>",
+        "--header",
+        "Authorization:${AUTH_HEADER}",
+        "--header",
+        "x-email-id: <Your-Email>"
+      ],
+      "env": {
+        "AUTH_HEADER": "Bearer <Your-Bito-MCP-Access-Token>"
+      }
+    }
+  }
+}
+```
+
+{% hint style="info" %}
+**Note:**
+
+* Replace `<Your-Bito-MCP-URL>` with the **Bito MCP URL** you received after completing the AI Architect setup.
+  * For the Bito-hosted AI Architect, use the following URL format: `https://mcp.bito.ai/<Your-Bito-Workspace-ID>/mcp`
+
+    Replace `<Your-Bito-Workspace-ID>` with your actual Bito workspace ID, which you can find after logging into your Bito account at [**alpha.bito.ai**](https://alpha.bito.ai/)
+* Replace `<Your-Bito-MCP-Access-Token>` with the **Bito MCP Access Token** you received after completing the AI Architect setup.
+* Replace `<Your-Email>` with your actual email address.
+  {% endhint %}
+
+**Windows configuration (IMPORTANT - uses cmd /c):**
+
+```json
+{
+  "mcpServers": {
+    "BitoAIArchitect": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "mcp-remote",
+        "<Your-Bito-MCP-URL>",
+        "--header",
+        "Authorization:${AUTH_HEADER}",
+        "--header",
+        "x-email-id: <Your-Email>"
+      ],
+      "env": {
+        "AUTH_HEADER": "Bearer <Your-Bito-MCP-Access-Token>"
+      }
+    }
+  }
+}
+```
+
+{% hint style="info" %}
+**Note:**
+
+* Replace `<Your-Bito-MCP-URL>` with the **Bito MCP URL** you received after completing the AI Architect setup.
+  * For the Bito-hosted AI Architect, use the following URL format: `https://mcp.bito.ai/<Your-Bito-Workspace-ID>/mcp`
+
+    Replace `<Your-Bito-Workspace-ID>` with your actual Bito workspace ID, which you can find after logging into your Bito account at [**alpha.bito.ai**](https://alpha.bito.ai/)
+* Replace `<Your-Bito-MCP-Access-Token>` with the **Bito MCP Access Token** you received after completing the AI Architect setup.
+* Replace `<Your-Email>` with your actual email address.
+  {% endhint %}
+  {% endstep %}
+
+{% step %}
+
+### Save and restart
+
+1. Save the `mcp.json` file
+2. Close all JetBrains IDE windows
+3. Reopen your IDE
+   {% endstep %}
+
+{% step %}
+
+### Verify connection
+
+1. Go to: **Settings** → **Tools** → **Junie** → **MCP Settings**
+2. Check that `BitoAIArchitect` appears in the server list
+3. Status should show as **Connected** or **Running**
+   {% endstep %}
+
+{% step %}
+
+### Add guidelines (optional but highly recommended)
+
+The [**BitoAIArchitectGuidelines.md** file](#prerequisites) contains best practices, usage instructions, and prompting guidelines for the Bito AI Architect MCP server.
+
+The setup will work without this file, but including it helps AI tools interact more effectively with the Bito AI Architect MCP server.
+
+To add Bito AI Architect usage guidelines to a specific project:
+
+1. Navigate to your project root
+2. Create `.junie` directory:
+
+   ```shellscript
+   mkdir -p .junie
+   ```
+
+   Copy the contents of your [**BitoAIArchitectGuidelines.md** file](#prerequisites) into `.junie/guidelines.md` file:
+
+   ```shellscript
+   cp /path/to/BitoAIArchitectGuidelines.md .junie/guidelines.md
+   ```
+3. Junie will automatically use these guidelines for the project
+
+**What Junie guidelines should contain:**
+
+* `BitoAIArchitect` MCP usage best practices
+* When to query repository information
+* How to search for dependencies and tech stacks
+  {% endstep %}
+  {% endstepper %}
+
+## Troubleshooting
+
+#### Junie not showing `BitoAIArchitect`:
+
+1. Verify Node.js is installed: `node --version`
+2. Check `mcp.json` syntax (must be valid JSON)
+3. On Windows, ensure you're using `cmd` with `/c` argument
+4. Restart the IDE completely
+
+#### Connection errors:
+
+1. **Test the endpoint manually:**
+
+```shellscript
+# Use proper MCP protocol to test authentication
+curl -s -X POST \
+  -H "Authorization: Bearer <Your-Bito-MCP-Access-Token>" \
+  -H "Content-Type: application/json" \
+  -d '{"jsonrpc":"2.0","method":"initialize","params":{},"id":1}' \
+  <Your-Bito-MCP-URL>
+```
+
+{% hint style="info" %}
+**Note:**
+
+* Replace `<Your-Bito-MCP-URL>` with the **Bito MCP URL** you received after completing the AI Architect setup.
+  * For the Bito-hosted AI Architect, use the following URL format: `https://mcp.bito.ai/<Your-Bito-Workspace-ID>/mcp`
+
+    Replace `<Your-Bito-Workspace-ID>` with your actual Bito workspace ID, which you can find after logging into your Bito account at [**alpha.bito.ai**](https://alpha.bito.ai/)
+* Replace `<Your-Bito-MCP-Access-Token>` with the **Bito MCP Access Token** you received after completing the AI Architect setup.
+  {% endhint %}
+
+2. Verify your **Bito MCP URL** and **Bito MCP Access Token** are correct
+3. Check firewall settings
+
+
+# Guide for JetBrains AI Assistant
+
+Integrate JetBrains AI Assistant with AI Architect for more accurate, codebase-aware AI assistance.
+
+Use Bito's [**AI Architect**](https://docs.bito.ai/ai-architect/overview) with **JetBrains AI Assistant** to enhance your AI-powered coding experience.
+
+Once connected via MCP (Model Context Protocol), JetBrains AI Assistant can leverage AI Architect’s deep contextual understanding of your project, enabling more accurate code suggestions, explanations, and code insights.
+
+## Quick setup (recommended)
+
+**Want to get started faster?** We offer an automated installer that can configure AI Architect for all your AI coding tools in just a few seconds.
+
+The automated setup will:
+
+* Detect all compatible AI tools installed on your system
+* Configure them automatically with your credentials
+* Save you time by eliminating manual configuration steps
+
+👉 [**Try our Quick MCP Integration Guide**](https://docs.bito.ai/ai-architect/quick-mcp-integration-with-ai-coding-agents) for automated setup.
+
+## Manual setup
+
+If you prefer manual configuration, follow the step-by-step instructions below.
+
+## Prerequisites
+
+1. Follow the [**AI Architect installation instructions**](https://docs.bito.ai/ai-architect/install-ai-architect-self-hosted). Upon successful setup, you will receive a **Bito MCP URL** and **Bito MCP Access Token** that you need to enter in your coding agent.
+2. [Download **BitoAIArchitectGuidelines.md** file](https://github.com/gitbito/ai-architect/blob/main/BitoAIArchitectGuidelines.md). You will need to copy/paste the content from this file later when configuring AI Architect.
+   * **Note:** This file contains best practices, usage instructions, and prompting guidelines for the Bito AI Architect MCP server. The setup will work without this file, but including it helps AI tools interact more effectively with the Bito AI Architect MCP server.
+3. **JetBrains IDE**: IntelliJ IDEA 2025.1+ (or PyCharm, WebStorm, PhpStorm, etc. 2025.1+)
+4. **AI Assistant Plugin (version 251.26094.80.5 or higher)**
+   1. Open your JetBrains IDE
+   2. Go to: **Settings** (Ctrl/Cmd + Alt + S)
+   3. Navigate to: **Plugins**
+   4. Search for "AI Assistant"
+   5. Verify version is 251.26094.80.5 or higher
+5. **Node.js**: **20.18.1+** installed (for mcp-remote proxy)
+   1. **Why Node.js 20+?** The mcp-remote proxy depends on undici v7, which requires Node.js 20+ (needs the `File` global API added in Node 20.0.0). Node.js 18 and earlier will fail with `ReferenceError: File is not defined`.
+   2. Verify:
+
+      ```shellscript
+      node --version  # Should show v20.x.x or higher
+      npx --version
+      ```
+   3. If Node.js is not installed or the version < 20 then [download Node.js 20.x LTS](https://nodejs.org/)
+
+## Set up AI Architect <a href="#set-up-ai-architect" id="set-up-ai-architect"></a>
+
+JetBrains AI Assistant has the same setup process across all platforms (Windows, macOS, Linux, WSL).
+
+{% stepper %}
+{% step %}
+
+### Access MCP settings
+
+1. Open your JetBrains IDE (IntelliJ IDEA, PyCharm, WebStorm, etc.)
+2. Go to: **Settings** (Ctrl/Cmd + Alt + S)
+3. Navigate to: **Tools** → **AI Assistant** → **Model Context Protocol (MCP)**
+4. Click **Add** to add a new MCP server
+   {% endstep %}
+
+{% step %}
+
+### Configure `BitoAIArchitect`
+
+The configuration dialog accepts JSON input. Paste the appropriate JSON configuration for your platform:
+
+#### **macOS/Linux configuration:**
+
+```json
+{
+  "mcpServers": {
+    "BitoAIArchitect": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "<Your-Bito-MCP-URL>",
+        "--header",
+        "Authorization:${AUTH_HEADER}",
+        "--header",
+        "x-email-id: <Your-Email>"
+      ],
+      "env": {
+        "AUTH_HEADER": "Bearer <Your-Bito-MCP-Access-Token>"
+      }
+    }
+  }
+}
+```
+
+{% hint style="info" %}
+**Note:**
+
+* Replace `<Your-Bito-MCP-URL>` with the **Bito MCP URL** you received after completing the AI Architect setup.
+  * For the Bito-hosted AI Architect, use the following URL format: `https://mcp.bito.ai/<Your-Bito-Workspace-ID>/mcp`
+
+    Replace `<Your-Bito-Workspace-ID>` with your actual Bito workspace ID, which you can find after logging into your Bito account at [**alpha.bito.ai**](https://alpha.bito.ai/)
+* Replace `<Your-Bito-MCP-Access-Token>` with the **Bito MCP Access Token** you received after completing the AI Architect setup.
+* Replace `<Your-Email>` with your actual email address.
+  {% endhint %}
+
+#### **Windows configuration (IMPORTANT - uses cmd):**
+
+```json
+{
+  "mcpServers": {
+    "BitoAIArchitect": {
+      "command": "cmd",
+      "args": [
+        "/c",
+        "npx",
+        "-y",
+        "mcp-remote",
+        "<Your-Bito-MCP-URL>",
+        "--header",
+        "Authorization:${AUTH_HEADER}",
+        "--header",
+        "x-email-id: <Your-Email>"
+      ],
+      "env": {
+        "AUTH_HEADER": "Bearer <Your-Bito-MCP-Access-Token>"
+      }
+    }
+  }
+}
+```
+
+{% hint style="info" %}
+**Note:**
+
+* Replace `<Your-Bito-MCP-URL>` with the **Bito MCP URL** you received after completing the AI Architect setup.
+  * For the Bito-hosted AI Architect, use the following URL format: `https://mcp.bito.ai/<Your-Bito-Workspace-ID>/mcp`
+
+    Replace `<Your-Bito-Workspace-ID>` with your actual Bito workspace ID, which you can find after logging into your Bito account at [**alpha.bito.ai**](https://alpha.bito.ai/)
+* Replace `<Your-Bito-MCP-Access-Token>` with the **Bito MCP Access Token** you received after completing the AI Architect setup.
+* Replace `<Your-Email>` with your actual email address.
+  {% endhint %}
+  {% endstep %}
+
+{% step %}
+
+### Save and restart
+
+1. Click **OK** to save the MCP server configuration
+2. Click **OK** to close Settings
+3. Restart your IDE completely
+   {% endstep %}
+
+{% step %}
+
+### Verify connection
+
+1. Go to: **Settings** → **Tools** → **AI Assistant** → **Model Context Protocol (MCP)**
+2. Find `BitoAIArchitect` in the list
+3. Check the **Status** column - should show **Running** or **Connected**
+   {% endstep %}
+
+{% step %}
+
+### Enable Codebase Mode
+
+**IMPORTANT**: MCP tools only work in "Codebase" mode or Edit mode.
+
+To use `BitoAIArchitect`:
+
+1. Open JetBrains AI Assistant chat
+2. Toggle on the **"Codebase"** mode switch at the top of the chat window
+3. OR use Edit mode (Ctrl/Cmd + Shift + Enter), which implicitly enables codebase context
+   {% endstep %}
+
+{% step %}
+
+### Add guidelines (optional but highly recommended)
+
+The [**BitoAIArchitectGuidelines.md** file](#prerequisites) contains best practices, usage instructions, and prompting guidelines for the Bito AI Architect MCP server.
+
+The setup will work without this file, but including it helps AI tools interact more effectively with the Bito AI Architect MCP server.
+
+To add Bito AI Architect usage rules to a specific project:
+
+1. Navigate to your project root
+2. Create `.aiassistant/rules/` directory:
+
+   ```shellscript
+   mkdir -p .aiassistant/rules
+   ```
+3. Create a rule file (e.g., `bitoai-architect.md`):
+
+   Copy the contents of your [**BitoAIArchitectGuidelines.md** file](#prerequisites) into `.aiassistant/rules/bitoai-architect.md` file:
+
+   ```shellscript
+   cp /path/to/BitoAIArchitectGuidelines.md .aiassistant/rules/bitoai-architect.md
+   ```
+4. In your IDE: **Settings** → **Tools** → **AI Assistant** → **Rules**
+5. The rule file should appear automatically
+6. Configure how it should be applied:
+   * **Always**: Applied to all chats automatically
+   * **Manually**: Invoked using `@rule:bitoai-architect`
+   * **By Model Decision**: AI decides when to apply
+   * **By File Patterns**: Applied when specific files are open
+
+**What AI Assistant rules should contain:**
+
+* `BitoAIArchitect` MCP usage instructions
+* When to query organizational repositories
+* How to search for dependencies and tech stacks
+  {% endstep %}
+  {% endstepper %}
+
+## Troubleshooting
+
+#### JetBrains AI Assistant not showing MCP settings:
+
+1. Verify IDE version is 2025.1 or later
+2. Verify AI Assistant plugin is version 251.26094.80.5+
+3. Update both if needed
+
+#### `BitoAIArchitect` not appearing or showing "Not started":
+
+1. Verify Node.js is installed: `node --version`
+2. Check that you've toggled "Codebase" mode ON in the chat
+3. On Windows, ensure you're using `cmd` command (not `npx` directly)
+4. Restart the IDE completely
+5. Check IDE logs for errors: **Help** → **Show Log in Explorer/Finder**
+   * Look for files in the `mcp` folder
+
+#### Connection errors:
+
+1. **Test the endpoint manually:**
+
+```shellscript
+# Use proper MCP protocol to test authentication
+curl -s -X POST \
+  -H "Authorization: Bearer <Your-Bito-MCP-Access-Token>" \
+  -H "Content-Type: application/json" \
+  -d '{"jsonrpc":"2.0","method":"initialize","params":{},"id":1}' \
+  <Your-Bito-MCP-URL>
+```
+
+{% hint style="info" %}
+**Note:**
+
+* Replace `<Your-Bito-MCP-URL>` with the **Bito MCP URL** you received after completing the AI Architect setup.
+  * For the Bito-hosted AI Architect, use the following URL format: `https://mcp.bito.ai/<Your-Bito-Workspace-ID>/mcp`
+
+    Replace `<Your-Bito-Workspace-ID>` with your actual Bito workspace ID, which you can find after logging into your Bito account at [**alpha.bito.ai**](https://alpha.bito.ai/)
+* Replace `<Your-Bito-MCP-Access-Token>` with the **Bito MCP Access Token** you received after completing the AI Architect setup.
+  {% endhint %}
+
+2. Verify your **Bito MCP URL** and **Bito MCP Access Token** are correct
+3. Check firewall settings
+4. Verify the `--header` argument format: `Authorization:${AUTH_HEADER}` (colon, no space)
+
+#### Windows-specific issues:
+
+1. Verify the JSON uses `"command": "cmd"` (not `npx`)
+2. Ensure `"/c"` is the first element in the `args` array
+3. Node.js must be in system PATH
+
+
+# Guide for ChatGPT (Web & Desktop)
+
+Integrate ChatGPT with AI Architect for more accurate, codebase-aware AI assistance.
+
+Use Bito's [**AI Architect**](https://docs.bito.ai/ai-architect/overview) with **ChatGPT (Web & Desktop)** to enhance your AI-powered coding experience.
+
+Once connected via MCP (Model Context Protocol), ChatGPT can leverage AI Architect's deep contextual understanding of your project, enabling more accurate code suggestions, explanations, and code insights.
+
+{% hint style="info" %}
+**Note:** This guide covers setup for both the web interface (chat.openai.com) and the ChatGPT desktop app. The configuration is identical for both platforms.
+{% endhint %}
+
+## Prerequisites
+
+1. Follow the [**AI Architect installation instructions**](https://docs.bito.ai/ai-architect/install-ai-architect-self-hosted). Upon successful setup, you will receive a **Bito MCP URL** and **Bito MCP Access Token** that you need to enter in your coding agent.
+   * **Note:** When using Bito AI Architect MCP with ChatGPT (Web), the **Bito MCP URL** must be publicly accessible. Localhost or private network URLs (for example, `http://localhost` or internal IP addresses) are not supported and will not work.
+2. [Download **BitoAIArchitectGuidelines.md file**](https://github.com/gitbito/ai-architect/blob/main/BitoAIArchitectGuidelines.md). You will need to copy/paste the content from this file later when configuring AI Architect.
+   * **Note:** This file contains best practices, usage instructions, and prompting guidelines for the Bito AI Architect MCP server. The setup will work without this file, but including it helps AI tools interact more effectively with the Bito AI Architect MCP server.
+3. **A paid ChatGPT subscription** - MCP connectors require one of the following:
+   * ChatGPT Plus
+   * ChatGPT Pro
+   * ChatGPT Team
+   * ChatGPT Enterprise
+   * ChatGPT Edu
+
+{% hint style="info" %}
+**Note:** Free tier accounts do not have access to MCP connectors.
+{% endhint %}
+
+{% hint style="info" %}
+**Note:** Full MCP support (including write/modify actions) is available for Team, Enterprise, and Edu plans. Plus and Pro users have read/fetch permissions via Developer Mode.
+{% endhint %}
+
+## OAuth authentication
+
+ChatGPT uses **OAuth 2.1 with PKCE** for secure MCP server authentication via the Connectors feature in Developer Mode.
+
+**How OAuth authentication works:**
+
+1. You enable Developer Mode and add the MCP server URL in Connectors settings
+2. ChatGPT initiates an OAuth flow
+3. Your browser opens a consent page hosted by Bito
+4. You enter your email and approve the connection
+5. ChatGPT receives secure tokens automatically
+6. Your email is tracked for usage analytics (collected during OAuth consent)
+
+**Benefits:**
+
+* No manual token management
+* Secure browser-based authentication
+* Automatic token refresh
+* Email collected during consent (no separate header needed)
+
+## Set up AI Architect
+
+{% stepper %}
+{% step %}
+
+### Enable Developer mode
+
+1. Go to [chatgpt.com](https://chatgpt.com) (or open the ChatGPT desktop app) and sign in
+2. Click on your **profile icon** (bottom-left corner)
+3. Select **Settings**
+4. Go to **Apps and Connectors** (or just **Connectors**)
+5. Scroll down and click **"Advanced Settings"**
+6. Toggle **"Developer Mode"** to ON
+   {% endstep %}
+
+{% step %}
+
+### Create Bito AI Architect Connector
+
+1. In the **Connectors** section, click **"Create"** or **"+ Add Connector"**
+2. Fill in the connector details:
+   * **Connector Name:** BitoAIArchitect
+   * **Description:** Repository intelligence and architecture analysis for your organization
+   * **MCP Server URL:** `<Your-Bito-MCP-URL>`
+   * **Authentication:** Select **"OAuth"**
+
+{% hint style="info" %}
+**Note:**
+
+* Replace `<Your-Bito-MCP-URL>` with the **Bito MCP URL** you received after completing the AI Architect setup.
+  * For the Bito-hosted AI Architect, use the following URL format: `https://mcp.bito.ai/<Your-Bito-Workspace-ID>/mcp`
+
+    Replace `<Your-Bito-Workspace-ID>` with your actual Bito workspace ID, which you can find after logging into your Bito account at [**alpha.bito.ai**](https://alpha.bito.ai/)
+    {% endhint %}
+
+3. Click **"Create"** or **"Save"**
+   {% endstep %}
+
+{% step %}
+
+### Complete OAuth authorization
+
+1. Click on the newly created BitoAIArchitect connector
+2. Click **"Connect"** to initiate the OAuth flow
+3. A browser window opens showing the **Bito Authorization** page
+4. Review the requested permissions
+5. **Enter your email address** (required for tracking)
+6. Click **"Authorize"** or **"Allow"**
+7. Return to ChatGPT - the connection is now active
+   {% endstep %}
+
+{% step %}
+
+### Verify connection
+
+1. Return to ChatGPT Settings → Connectors
+2. BitoAIArchitect should show as **"Connected"**
+3. Start a new conversation
+4. In the composer, click **"Use Connectors"** or look for the connector tools
+5. Try asking:
+
+   ```
+   What repositories are available in my organization?
+   ```
+
+{% endstep %}
+
+{% step %}
+
+### Using Bito AI Architect in ChatGPT
+
+Once connected, you can use **BitoAIArchitect** in several ways:
+
+* **Direct prompts:** Ask questions about your repositories
+* **Deep Research:** BitoAIArchitect tools appear in "Deep Research" mode
+* **Connectors menu:** Select BitoAIArchitect from the "Use Connectors" option
+  {% endstep %}
+  {% endstepper %}
+
+## Troubleshooting ChatGPT
+
+#### **"Connectors" or Developer Mode option not visible:**
+
+* Verify you have a paid ChatGPT subscription (Plus, Pro, Team, Enterprise, or Edu)
+* Free tier accounts do not have connector access
+* The feature may be rolling out gradually - check back later if recently subscribed
+
+#### **OAuth authorization fails:**
+
+* Ensure pop-ups are allowed for chatgpt.com
+* Check that your Workspace ID is correct
+* Verify your organization has OAuth enabled for the MCP server
+* Try using an incognito/private browser window
+
+#### **"Error fetching OAuth configuration":**
+
+* Verify the MCP server URL is correct and accessible
+* Ensure the server supports OAuth 2.1 with dynamic client registration
+* Check that `code_challenge_methods_supported` includes `S256` in the authorization server metadata
+
+#### **Connection shows "Error" or "Disconnected":**
+
+* Click the connection and select "Reconnect"
+* OAuth tokens may have expired - re-authorize when prompted
+* Check if your Bito workspace is still active
+
+#### **Tools not working in conversation:**
+
+* Ensure the MCP connection shows "Connected" status
+* Try starting a fresh conversation
+* Explicitly mention "use BitoAIArchitect" in your prompt if tools don't activate automatically
+* Check that you're using the connector in a mode that supports tools (not all chat modes do)
+
+
+# AI Code Review Agent (with AI Architect vs without AI Architect)
+
+From single-repo reviews to system-wide insights
+
+The [AI Code Review Agent](https://docs.bito.ai/ai-code-reviews-in-git/overview) becomes significantly more powerful when paired with [**AI Architect**](https://docs.bito.ai/ai-architect/overview).
+
+Below is a clear explanation of how the agent behaves in each setup and why AI Architect unlocks much deeper, system-level insights.
+
+## AI Code Review Agent without AI Architect
+
+The standard AI Code Review Agent analyzes code at the **repository level**.
+
+It creates a ***within-repo knowledge graph*** by building:
+
+* Abstract Syntax Trees (ASTs)
+* Symbol indexes
+* Local dependency relationships
+
+This allows it to perform strong, context-aware code reviews **within a single repository**, including:
+
+* Identifying issues in the diff
+* Understanding dependencies inside the repo
+* Checking for consistency and correctness within that project
+* Suggesting improvements based on local patterns
+
+However, the agent’s visibility stops at the repository boundary. It cannot detect effects on other services or codebases.
+
+## AI Code Review Agent powered by AI Architect
+
+When **AI Architect** is enabled, the **AI Code Review Agent** gains a **complete view of your entire engineering ecosystem**.
+
+AI Architect builds a **cross-repository knowledge graph** that maps:
+
+* All services
+* Shared libraries
+* Modules and components
+* Inter-service dependencies
+* Upstream and downstream call chains
+
+With this system-level understanding, the agent can perform much deeper analysis.
+
+#### **Key capabilities unlocked by AI Architect**
+
+**1. Cross-repository awareness**
+
+The agent understands how code in one repo interacts with code in others — crucial for microservices and distributed systems.
+
+**2. Cross-repo impact analysis**
+
+During a pull request review, the agent can identify:
+
+* What breaks downstream if you change an interface
+* Which services call the function you updated
+* Which teams or repos depend on your changes
+* Whether the update introduces architecture-wide risks
+
+**3. Architecture-level checks**
+
+The agent evaluates your changes not just for correctness, but for their alignment with the overall system design.
+
+**4. Early problem detection across the entire codebase**
+
+Ripple effects, breaking changes, or dependency violations that traditionally appear only in staging or after deployment can now be flagged directly during review.
+
+***
+
+### **Side-by-side comparison**
+
+| Capability                  | Without AI Architect | With AI Architect                 |
+| --------------------------- | -------------------- | --------------------------------- |
+| Scope                       | Single repository    | Entire system (multi-repo)        |
+| Knowledge graph             | Repo-only            | Cross-repository, system-wide     |
+| AST + symbol analysis       | ✅                    | ✅ (plus cross-repo linking)       |
+| Dependency visibility       | Local to repo        | Full call chains across repos     |
+| Impact analysis             | Local only           | Upstream + downstream, multi-repo |
+| Architecture checks         | Limited              | System-level validation           |
+| Ripple-effect detection     | ❌                    | ✅                                 |
+| Multi-service understanding | ❌                    | ✅                                 |
+
+
+# Integrating AI Architect with AI Code Review Agent
+
+Leverage AI Architect's knowledge graph to power more intelligent code reviews
+
+Enhance your code reviews with deeper codebase intelligence by connecting Bito's [AI Code Review Agent](https://docs.bito.ai/ai-code-reviews-in-git/overview) to [AI Architect](https://docs.bito.ai/ai-architect/overview). This integration enables significantly more accurate and context-aware reviews by leveraging the comprehensive knowledge graph that AI Architect builds from your codebase.
+
+### What this integration provides
+
+When AI Code Review Agent accesses AI Architect's knowledge graph, it gains a complete understanding of your codebase architecture — including microservices, modules, APIs, dependencies, and design patterns.
+
+This enhanced context allows the AI Code Review Agent to:
+
+* **Provide system-aware code reviews** - Understand how changes in one service or module impact other parts of your system
+* **Catch architectural inconsistencies** - Identify when new code doesn't align with your established patterns and conventions
+* **Detect cross-repository issues** - Spot problems that span multiple repositories or services
+* **Deliver more accurate suggestions** - Generate fixes that are grounded in your actual codebase structure and usage patterns
+* **Reduce false positives** - Better understand context to avoid flagging valid code as problematic
+
+### Setup instructions
+
+Follow these steps to connect AI Architect with AI Code Review Agent:
+
+1. Log in to [**Bito Cloud**](https://alpha.bito.ai/home/welcome)
+2. Open the [**AI Architect Settings**](https://alpha.bito.ai/home/ai-architect/settings?mode=self-hosted) dashboard.
+3. In the **Server URL** field, enter your **Bito MCP URL**
+4. In the **Auth token** field, enter your **Bito MCP Access Token**
+
+### Need help?
+
+Contact our team at [**support@bito.ai**](mailto:support@bito.ai) to request a trial. We'll help you configure the integration and get your team up and running quickly.
+
+
+# Overview
+
 On-demand, context-aware AI code reviews for GitHub, GitLab, and Bitbucket.
 
 {% hint style="info" %}
@@ -273,7 +3986,7 @@ The **Free Plan** offers **AI-generated pull request summaries** to provide a qu
 
 ## Learn more
 
-<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><mark style="color:purple;"><strong>Getting Started</strong></mark></td><td></td><td><a href="../getting-started">getting-started</a></td></tr><tr><td><mark style="color:purple;"><strong>Key Features</strong></mark></td><td></td><td><a href="key-features">key-features</a></td></tr><tr><td><mark style="color:purple;"><strong>Supported Programming Languages and Tools</strong></mark></td><td></td><td><a href="supported-programming-languages-and-tools">supported-programming-languages-and-tools</a></td></tr><tr><td><mark style="color:purple;"><strong>Agent Configuration: bito-cra.properties File</strong></mark></td><td></td><td><a href="install-run-as-a-self-hosted-service/agent-configuration-bito-cra.properties-file">agent-configuration-bito-cra.properties-file</a></td></tr><tr><td><mark style="color:purple;"><strong>FAQs</strong></mark></td><td></td><td><a href="faqs">faqs</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><mark style="color:purple;"><strong>Getting Started</strong></mark></td><td></td><td><a href="getting-started">getting-started</a></td></tr><tr><td><mark style="color:purple;"><strong>Key Features</strong></mark></td><td></td><td><a href="key-features">key-features</a></td></tr><tr><td><mark style="color:purple;"><strong>Supported Programming Languages and Tools</strong></mark></td><td></td><td><a href="supported-programming-languages-and-tools">supported-programming-languages-and-tools</a></td></tr><tr><td><mark style="color:purple;"><strong>Agent Configuration: bito-cra.properties File</strong></mark></td><td></td><td><a href="install-run-as-a-self-hosted-service/agent-configuration-bito-cra.properties-file">agent-configuration-bito-cra.properties-file</a></td></tr><tr><td><mark style="color:purple;"><strong>FAQs</strong></mark></td><td></td><td><a href="faqs">faqs</a></td></tr></tbody></table>
 
 
 # Key features
@@ -609,6 +4322,238 @@ Bito supports posting code review feedback in over 20 languages. You can choose 
 20. Spanish (español)
 21. Turkish (Türkçe)
 22. Vietnamese (Tiếng Việt)
+
+
+# Try AI code reviews using Test Mode
+
+Experience AI-powered code analysis on any pull request — no admin access needed.
+
+Bito offers **Test Mode** to help you quickly explore our [**AI Code Review Agent**](https://docs.bito.ai/ai-code-reviews-in-git/overview) without requiring administrator permissions for your Git repositories. Whether you're evaluating Bito for your team or simply want to see it in action before a full setup, Test Mode gives you immediate access using just a personal access token.
+
+You can point Bito at any pull request you have access to and receive instant AI-generated feedback.
+
+**What you get:**
+
+* Instant access to AI-powered code reviews
+* Support for GitHub, GitLab, and Bitbucket (cloud and self-hosted)
+* 10 complimentary pull request analyses
+
+<figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FqVlbGXqjnQt2E2qaVad5%2Fscrnli_GLgdASP4YVzfQ9.png?alt=media&#x26;token=4e1ac44e-d684-45ab-9838-a6c9913990bf" alt=""><figcaption></figcaption></figure>
+
+## Who can use Test Mode?
+
+Test Mode is designed for first-time evaluators. You can access it when:
+
+* Your Bito account is on a trial subscription (or eligible for a trial, meaning you haven't used any trials before)
+* Your workspace has a clean slate (no previous Git repository connections)
+
+{% hint style="info" %}
+When you analyze your first pull request in Test Mode, Bito automatically activates your 14-day trial, giving you access to code review capabilities.
+{% endhint %}
+
+## Getting started
+
+{% stepper %}
+{% step %}
+
+### Log in to Bito
+
+[**Log in to Bito Cloud**](https://alpha.bito.ai/home/welcome) with a fresh user account and create a new workspace
+{% endstep %}
+
+{% step %}
+
+### Access Test Mode
+
+* Click **"Do a test code review"** option at the bottom of the Git setup wizard
+
+<figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FPtd1tm0n4S8RCAOlJbsK%2Fscrnli_Y4T3koD33Vyr4v.png?alt=media&#x26;token=6c8391cc-2725-4492-92e4-d2697705e701" alt=""><figcaption></figcaption></figure>
+{% endstep %}
+
+{% step %}
+
+### Enter pull request details
+
+1. **Pull request URL**
+
+   Enter the complete URL of the pull request you want Bito to review.
+
+   * **Example:** `https://github.com/username/repository/pull/123`
+
+2. **Personal Access Token**
+
+   Generate a personal access token from your Git platform to authorize Bito to read the pull request:
+
+   1. **For GitHub:**
+      1. Create **GitHub classic Token with `repo` access**. Fine-grained tokens are not supported. [Learn more](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic)
+   2. **For GitLab:**
+      1. Create **GitLab token with `api` scope** [Learn more](https://docs.gitlab.com/user/profile/personal_access_tokens/#create-a-personal-access-token)
+   3. **For Bitbucket:**
+      1. Depending on your Bitbucket setup, you may need one of the following:
+         * For **Bitbucket Cloud** use **API Token**. [Learn more](https://support.atlassian.com/bitbucket-cloud/docs/create-an-api-token/)
+         * For **Bitbucket Enterprise (Self-Hosted)** use **HTTP Access Token**. [Learn more](https://confluence.atlassian.com/bitbucketserver/personal-access-tokens-939515499.html)
+      2. Required scopes:
+         * `read:pullrequest:bitbucket`
+         * `write:pullrequest:bitbucket`
+         * `read:workspace:bitbucket`
+         * `read:repository:bitbucket`
+         * `read:user:bitbucket`
+      3. Enter both your Bitbucket **email address** and the **personal access token** in Bito
+   4. **For Self-managed GitHub, GitLab, and Bitbucket:**
+
+      If you're using self-managed Git instances (GitHub Enterprise, GitLab Self-Managed, or Bitbucket Server):
+
+      1. Select your Git provider
+      2. Enter your Git domain URL (e.g., `https://bitbucket.example.com`)
+      3. Configure Network Access
+         * If your network restricts external services from accessing your Git server, add these Bito IP addresses to your allowed IP list:
+
+```
+18.188.201.104
+3.23.173.30
+18.216.64.170
+```
+
+3. **Validate your token**
+
+   Click **"Validate"** to verify that your personal access token is working correctly. This ensures Bito can access the pull request before proceeding.
+
+4. **Choose your review depth**
+
+   Select the level of analysis you want:
+
+   * **Essential:** Focuses on the most critical issues (faster review)
+   * **Comprehensive:** Provides deeper analysis with more detailed feedback (more thorough review)
+
+{% hint style="info" %}
+Feel free to experiment with both approaches on different pull requests to find what works best for your needs.
+{% endhint %}
+{% endstep %}
+
+{% step %}
+
+### Start code review
+
+Click **Do a test code review** to start the AI code review.
+{% endstep %}
+{% endstepper %}
+
+## Test Mode dashboard
+
+After completing your first test review, you'll have access to a dashboard showing:
+
+* Number of test reviews remaining (out of 10 total)
+* History of analyzed pull requests
+* Quick-start button for new reviews
+
+#### Starting new test review
+
+To analyze another pull request, click **"New code review"** button in the upper-right corner of your review history table.
+
+## Upgrading to full Git integration
+
+Once you've used all 10 test reviews, you'll need to complete full Git integration to continue using Bito's AI Code Review Agent.
+
+#### Why upgrade?
+
+Full Git integration unlocks powerful features not available in Test Mode:
+
+**Advanced configuration:**
+
+* **Default branch settings:** Customize which branch is used for code reviews
+* **Custom guidelines:** Define your own review rules and coding standards
+* **Filters:** Exclude draft PRs, files, or branches from review to focus on relevant code.
+* **Tools:** Enable additional checks, such as secret scanning.
+* **Automation:** Configure auto-reviews, batching, and summary settings
+* **And much more.**
+
+**Unlimited reviews:**
+
+* No review limits — analyze every pull request
+* Automatic reviews on new PRs
+* Incremental reviews on PR updates
+* Complete team analytics and insights
+
+#### How to upgrade
+
+From your Test Mode dashboard, click **"Complete Git integration"** and follow the setup wizard to connect your Git repositories.
+
+For detailed setup instructions, see:
+
+* [**Guide for GitHub**](https://docs.bito.ai/ai-code-reviews-in-git/install-run-using-bito-cloud/guide-for-github)
+* [**Guide for GitHub (Self-Managed)**](https://docs.bito.ai/ai-code-reviews-in-git/install-run-using-bito-cloud/guide-for-github-self-managed)
+* [**Guide for GitLab**](https://docs.bito.ai/ai-code-reviews-in-git/install-run-using-bito-cloud/guide-for-gitlab)
+* [**Guide for GitLab (Self-Managed)**](https://docs.bito.ai/ai-code-reviews-in-git/install-run-using-bito-cloud/guide-for-gitlab-self-managed)
+* [**Guide for Bitbucket**](https://docs.bito.ai/ai-code-reviews-in-git/install-run-using-bito-cloud/guide-for-bitbucket)
+* [**Guide for Bitbucket (Self-Managed)**](https://docs.bito.ai/ai-code-reviews-in-git/install-run-using-bito-cloud/guide-for-bitbucket-self-managed)
+
+### FAQs
+
+**Q: Can I use Test Mode if I've previously used Bito?**\
+A: Test Mode is only available to users who haven't previously used a trial and haven't set up Git integration in their workspace.
+
+**Q: What happens after I use all 10 test reviews?**\
+A: You'll need to complete full Git integration to continue reviewing pull requests.
+
+**Q: Can I test on private repositories?**\
+A: Yes, as long as your personal access token has the correct permissions to access the repository.
+
+**Q: Does Test Mode work with self-hosted Git instances?**\
+A: Yes, Test Mode supports GitHub Enterprise, GitLab Self-Managed, and Bitbucket Server. You'll need to provide your Git domain URL and configure network access (whitelist Bito IP addresses) if needed.
+
+**Q: Will my code be stored or used for training?**\
+A: No. Bito does not store your code, and your code is never used for AI model training. Learn more about our [privacy and security practices](https://docs.bito.ai/privacy-and-security).
+
+**Q: What's the difference between Essential and Comprehensive review modes?**\
+A: Essential mode focuses on critical issues and completes faster, while Comprehensive mode provides deeper analysis with more detailed feedback. You can try both to see which fits your needs.
+
+
+# Getting started
+
+Deploy the AI Code Review Agent in Bito Cloud or opt for self-hosted service.
+
+**The** [**AI Code Review Agent**](https://docs.bito.ai/ai-code-reviews-in-git/overview) **supports two deployment options:**
+
+* [**Bito Cloud (fully managed)**](https://docs.bito.ai/ai-code-reviews-in-git/install-run-using-bito-cloud)
+* [**Self-hosted service (run on your own infrastructure)**](https://docs.bito.ai/ai-code-reviews-in-git/install-run-as-a-self-hosted-service)
+
+Each option comes with its own set of benefits and considerations.
+
+This guide walks you through both options to help you determine which deployment model best fits your team’s needs.
+
+## Bito Cloud
+
+[**Bito Cloud**](https://docs.bito.ai/ai-code-reviews-in-git/install-run-using-bito-cloud) provides a managed environment for running the AI Code Review Agent, offering a seamless, hassle-free experience. This option is ideal for teams looking for quick deployment and minimal operational overhead.
+
+**Pros:**
+
+* **Simplicity:** Enjoy a straightforward setup with a single-click installation process, making it easy to get started without technical hurdles.
+* **Maintenance-Free:** Bito Cloud takes care of all necessary updates and maintenance, ensuring your Agent always operates on the latest software version without any effort on your part.
+* **Scalability:** The platform is designed to easily scale, accommodating project growth effortlessly and ensuring reliable performance under varying loads.
+
+**Cons:**
+
+* **Handling of Pull Request Diffs:** For analysis purposes, diffs from pull requests are temporarily stored on our servers.
+
+<p align="center"><a href="install-run-using-bito-cloud" class="button primary">Install/run using Bito Cloud</a></p>
+
+***
+
+## Self-hosted service
+
+[**Self-hosted**](https://docs.bito.ai/ai-code-reviews-in-git/install-run-as-a-self-hosted-service) AI Code Review Agent offers a higher degree of control and customization, suited for organizations with specific requirements or those who prefer to manage their own infrastructure.
+
+**Pros:**
+
+* **Full Control:** Self-hosting provides complete control over the deployment environment, allowing for extensive customization and the ability to integrate with existing systems as needed.
+* **Privacy and Security:** Keeping the AI Code Review Agent within your own infrastructure can enhance data security and privacy, as all information remains under your direct control.
+
+**Cons:**
+
+* **Setup Complexity:** Establishing a self-hosted environment requires technical know-how and can be more complex than using a managed service, potentially leading to longer setup times.
+* **Maintenance Responsibility:** The responsibility of maintaining and updating the software falls entirely on your team, which includes ensuring the system is scaled appropriately to handle demand.
+
+<p align="center"><a href="install-run-as-a-self-hosted-service" class="button primary">Install/run as a self-hosted service</a></p>
 
 
 # Install/run using Bito Cloud
@@ -4391,6 +8336,155 @@ By leveraging Bito's Jira integration, your development team can maintain higher
 * Check that your code changes are in the expected areas
 
 
+# Interaction diagram
+
+Visualize code changes and their impact with automated sequence diagrams.
+
+The **Interaction Diagram** is a visual feature in Bito's [AI Code Review Agent](https://docs.bito.ai/ai-code-reviews-in-git/overview) that automatically generates sequence diagrams to help you quickly understand the impact of code changes in your pull requests.
+
+This diagram visualizes how different components of your code interact with each other, making code reviews faster and more intuitive.
+
+<figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2F8CfF2JsDQidxrSRngzxQ%2Fscrnli_S6UpbwjKn6AfL1.png?alt=media&#x26;token=0e65a067-402a-4c90-b766-896c762bac11" alt="Interaction diagram by Bito"><figcaption><p><strong>Interaction Diagram by Bito</strong></p></figcaption></figure>
+
+### How to enable
+
+1. Navigate to the [Code Review > Repositories](https://alpha.bito.ai/home/ai-agents/code-review-agent) dashboard.
+2. Click the **Settings** button next to the Agent instance you wish to modify.
+3. Under **Review** tab, enable the **Generate interaction diagrams** option.
+
+Once enabled, Bito will automatically post interaction diagrams during code reviews.
+
+<figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FSaUBPFgiJCvDetaChxVw%2Fscrnli_f5R90M2Ur6HW53.png?alt=media&#x26;token=e9473999-cfef-4aed-a3fa-eeb9d16a6dd1" alt=""><figcaption></figcaption></figure>
+
+### Understanding sequence diagrams
+
+A sequence diagram is a type of visual diagram that shows how different parts of your system interact with each other over time.
+
+It illustrates the flow of operations by displaying the order in which methods are called and how data flows between different components.
+
+This makes it easy to trace the execution path of your code and understand dependencies between modules.
+
+### Diagram components
+
+#### Boxes
+
+The main components in the diagram are displayed as boxes. The level of detail shown depends on the size of your code changes:
+
+* **Small changes**: Boxes may represent individual classes or functions with detailed interactions
+* **Large changes**: Boxes may represent higher-level abstractions for better readability
+
+Bito's AI automatically determines the appropriate level of detail based on your pull request.
+
+#### Labels and indicators
+
+Within boxes, you'll see labels that provide quick insights:
+
+**Change type:**
+
+Indicates what kind of modification was made to each module in your codebase.
+
+* 🟩 **Added** - New code introduced to the codebase. These are components, functions, or classes that didn't exist before this pull request.
+* 🔄 **Updated** - Existing code that has been modified. This indicates changes to the logic, behavior, or implementation of existing components.
+* **Deleted** - Code that has been removed from the codebase. These components are no longer present after this pull request is merged.
+
+**Impact level:**
+
+Shows the scope and significance of changes to help you prioritize your code review efforts.
+
+* **Low** - Minimal impact (● ○ ○)
+  * Changes are localized and unlikely to affect other parts of the system. Safe to review with standard attention.
+* **Medium** - Moderate impact (● ● ○)
+  * Changes affect multiple components or have moderate complexity. Requires careful review of interactions and side effects.
+* **High** - Significant impact (● ● ●)
+  * Changes are extensive or critical, affecting core functionality or multiple system areas. Demands thorough review and testing.
+
+These visual indicators help you identify critical changes at a glance.
+
+#### Arrows and flow
+
+**Solid arrows (→)**: Represent forward calls flowing left to right
+
+* Example: If `main()` calls `UserService`, a solid arrow points from `main()` to `UserService`
+
+**Dotted arrows (⇢)**: Represent return flows going right to left
+
+* Example: When `UserService` returns data to `main()`, a dotted arrow points back from `UserService` to `main()`
+
+**Circular arrows (↻)**: Indicate internal calls within the same module
+
+* Example: One component of `UserService` calling another component within `UserService`
+
+#### Control flow blocks
+
+**Alt block (if-else logic)**
+
+* Displayed as a dotted box around multiple lines
+* Contains two sections separated by a dotted line representing "if" and "else" branches
+* Shows conditional execution paths in your code
+
+**Opt block (optional parameters)**
+
+* Used for functions with parameter overloading
+* Contains a single section for optional execution flow
+* Represents code that may or may not execute depending on optional parameters
+
+Code outside these blocks represents the normal execution flow.
+
+### Platform-specific behavior
+
+#### GitHub
+
+* Diagrams are posted in **Mermaid format**
+* Interactive controls available:
+  * Pan (move top, bottom, left, right)
+  * Expand/collapse
+  * Zoom in/out
+
+#### GitLab
+
+* Diagrams are posted in **Mermaid format**
+* **Note**: For very large diagrams, GitLab may not render automatically. You'll see a notice box with a **"Display"** button - click it to manually render the diagram
+
+#### Bitbucket
+
+* Diagrams are posted as **image format**
+
+{% hint style="info" %}
+**Note:** If you see a "syntax error" or "unable to render" message, try refreshing the page.
+{% endhint %}
+
+### Incremental reviews
+
+When you run incremental reviews (for example, by using the `/review` command in pull request comments), the existing interaction diagram will be updated rather than creating a new comment with a separate diagram.
+
+### Interaction diagram vs impact analysis diagram
+
+Bito can generate two types of diagrams, but only one is displayed at a time:
+
+* **Interaction diagram**: Generated by the standard Code Review Agent, focusing on code changes in the current pull request
+* **Impact analysis diagram**: Generated using [Bito AI Architect](https://docs.bito.ai/ai-architect/overview) with complete cross-repository codebase understanding.
+  * **Note:** This feature is not publicly available yet. Please contact Bito at [**support@bito.ai**](mailto:support@bito.ai) to have it enabled for your account.
+
+{% hint style="info" %}
+**Note:** If both **Impact Analysis** and **Interaction Diagram** are enabled, only the Impact Analysis diagram will be shown.
+{% endhint %}
+
+### Best practices
+
+* Review the diagram before diving into code details to get a high-level understanding
+* Use impact indicators to prioritize which changes need closer examination
+* Follow the arrow flows to understand the execution path
+* Pay special attention to "High" impact modules
+
+### Troubleshooting
+
+* **Diagram not appearing**: Verify that **"Generate interaction diagrams"** is enabled in [Bito Cloud](https://alpha.bito.ai/) settings
+* **Rendering issues**:
+  * In GitLab, you may need to click the **Display** button to manually render the diagram.
+  * Refresh the page - this often resolves transient rendering errors.
+* **Syntax errors**: In some cases, the Mermaid diagram may contain syntax errors that prevent it from rendering. Try updating the pull request so the diagram is regenerated.
+
+
 # Agent settings
 
 Learn how to customize the AI Code Review Agent.
@@ -4528,7 +8622,7 @@ You can override the following Code Review Agent settings:&#x20;
     java:
       name: "Java Coding Standards"  
       Path: "./guidelines/java.txt"
-</code></pre></td></tr><tr><td><strong>dependency_check.enabled</strong></td><td><p>Run Dependency Check analysis during code reviews.<br></p><p><strong>Valid values:</strong> <code>true</code> or <code>false</code></p></td></tr><tr><td><strong>repo_level_guidelines_enabled</strong></td><td>When enabled, Bito will automatically detect and use best-practice guidelines from agent configuration files such as <code>CLAUDE.md</code>, <code>AGENTS.md</code>, <code>GEMINI.md</code>, <code>.cursor/rules</code>, or <code>.windsurf/rules</code> during code reviews.<br><br><strong>Valid values:</strong> <code>true</code> or <code>false</code></td></tr><tr><td><strong>sequence_diagram_enabled</strong></td><td>When enabled, Bito will generate interaction diagrams during code reviews to visualize the architecture and impacted components in the submitted changes.<br>Currently, it is supported for GitHub and GitLab.<br><br><strong>Valid values:</strong> <code>true</code> or <code>false</code></td></tr><tr><td><strong>static_analysis.fb_infer.enabled</strong></td><td>Run Static Analysis tools during code reviews for providing better feedback.<br><br><strong>Valid values:</strong> <code>true</code> or <code>false</code></td></tr><tr><td><strong>labels_excluded</strong></td><td>Comma-separated list of labels that, if present on a pull request or merge request, skip automatic review.<br><br>This is case-sensitive by default. For example, if we mention "Bug" in the repo-level <code>.bito.yaml</code> file and the tagged label is "bug", we won't match it. Users can use regex to make it case-insensitive, e.g., <code>(?i)^bug$</code> or <code>(?i)bug</code>.<br><br><strong>Example:</strong> <code>"wip, do-not-review, chore, size/*"</code> or <code>&#x3C;nil></code></td></tr></tbody></table>
+</code></pre></td></tr><tr><td><strong>dependency_check.enabled</strong></td><td><p>Run Dependency Check analysis during code reviews.<br></p><p><strong>Valid values:</strong> <code>true</code> or <code>false</code></p></td></tr><tr><td><strong>repo_level_guidelines_enabled</strong></td><td>When enabled, Bito will automatically detect and use best-practice guidelines from agent configuration files such as <code>CLAUDE.md</code>, <code>AGENTS.md</code>, <code>GEMINI.md</code>, <code>.cursor/rules</code>, or <code>.windsurf/rules</code> during code reviews.<br><br><strong>Valid values:</strong> <code>true</code> or <code>false</code></td></tr><tr><td><strong>sequence_diagram_enabled</strong></td><td>When enabled, Bito will generate interaction diagrams during code reviews to visualize the architecture and impacted components in the submitted changes.<br>Currently, it is supported for GitHub and GitLab.<br><br><strong>Valid values:</strong> <code>true</code> or <code>false</code></td></tr><tr><td><strong>static_analysis.fb_infer.enabled</strong></td><td>Run Static Analysis tools during code reviews for providing better feedback.<br><br><strong>Valid values:</strong> <code>true</code> or <code>false</code></td></tr><tr><td><strong>labels_excluded</strong></td><td>Comma-separated list of labels that, if present on a pull request or merge request, skip automatic review.<br><br>This is case-sensitive by default. For example, if we mention "Bug" in the repo-level <code>.bito.yaml</code> file and the tagged label is "bug", we won't match it. Users can use regex to make it case-insensitive, e.g., <code>(?i)^bug$</code> or <code>(?i)bug</code>.<br><br><strong>Example:</strong> <code>"wip, do-not-review, chore, size/*"</code></td></tr><tr><td><strong>post_as_request_changes</strong></td><td>Enable this option to get Bito feedback as "Request changes" review comments. Depending on your Git provider settings, you may need to resolve all comments before merging.<br><br>For GitHub, this will automatically enable auto-approve for resolved PRs.<br><br><strong>Valid values:</strong> <code>true</code> or <code>false</code> </td></tr><tr><td><strong>functional_validation_enabled</strong></td><td>Enable this option to automatically validate pull requests against Jira ticket referenced in PR description, title, or branch name.<br><br>Jira Integration must be completed from <a href="https://alpha.bito.ai/">Bito dashboard</a> for this to work.<br><br><strong>Valid values:</strong> <code>true</code> or <code>false</code> </td></tr></tbody></table>
 
 &#x20;
 
@@ -6609,1512 +10703,1277 @@ By the way, you can continue using Bito while indexing is in progress in the bac
 
 # Overview
 
-AI that understands your codebase inside out — and codes like your team.
+AI Code Reviews in CLI
 
-Bito’s **AI Architect** builds a knowledge graph of your entire codebase.
+**AI Code Reviews in CLI** brings fast, intelligent code reviews directly to your terminal, helping you catch issues early — before they reach production.
 
-It analyzes all your repositories (whether you have 50 or 5000 repos) to learn about your codebase architecture, microservices, modules, API endpoints, design patterns, and more.
+It analyzes your code changes using AI to provide instant feedback on:
 
-AI Architect can then provide accurate and well-written code.
+* **Security vulnerabilities** - Detects issues such as SQL injection, XSS, insecure authentication, and unsafe data handling.
+* **Potential bugs** - Identifies logic errors, edge cases, incorrect assumptions, and runtime-related issues.
+* **Performance problems** - Flags inefficient algorithms, unnecessary computations, memory-intensive patterns, and scalability risks.
+* **Code quality & best practices** - Improves readability, maintainability, and design by suggesting better patterns, structure, and conventions.
 
-This fundamentally changes the game for enterprises with many microservices or large, complex codebases.
+Unlike traditional linters or static analyzers, the analysis is context-aware and explains *why* an issue matters and *how* to fix it.
 
-We believe AI Architect provides an ability to perform a code review similar to how a principal engineer or an architect would be able to help connect the dots on the impact of your changes across your codebase.
+By reviewing changes as you work, it helps you improve code consistency and reliability across your projects.
 
-## How you can use AI Architect
+## Perfect for Agentic coding workflows
 
-AI Architect is designed to be flexible and can power multiple use cases across different AI coding tools and workflows.
+The CLI integrates seamlessly with AI coding agents like Cursor, Claude Code, Windsurf, and others. Simply tell your agent "review my changes" and it automatically runs the review, presents findings, and can even implement fixes for you.
 
-* [**Integrate via MCP server**](#getting-started) – Use AI Architect as an **MCP (Model Context Protocol) server** to connect with tools like [Claude Code](https://docs.bito.ai/ai-architect/guide-for-claude-code), [Cursor](https://docs.bito.ai/ai-architect/guide-for-cursor), [Windsurf](https://docs.bito.ai/ai-architect/guide-for-windsurf), and [GitHub Copilot (VS Code)](https://docs.bito.ai/ai-architect/guide-for-github-copilot-vs-code). It helps connected tools understand your codebase and workflows better, resulting in accurate and more reliable suggestions.
-* [**Example: Bito’s AI Code Review Agent**](https://docs.bito.ai/ai-code-reviews-in-git/overview) – One example of AI Architect in action is **Bito’s AI Code Review Agent**, which uses AI Architect to deliver smarter, context-aware code reviews directly in your pull requests and IDEs.
+Stay in natural conversation while getting expert code analysis - no manual command typing or context switching required.
 
-## Why use AI Architect?
+[**Learn more**](https://docs.bito.ai/ai-code-reviews-in-cli/ai-code-reviews-in-ai-coding-agents)
 
-Most AI coding tools struggle with accuracy in real-world codebases because they don’t know your internal APIs, endpoints, or library usage.&#x20;
+## Supported platforms
 
-AI Architect eliminates this problem by learning from your actual repositories.&#x20;
+#### Supported Operating Systems
 
-* How your team structures code&#x20;
-* How different services interact&#x20;
-* How external dependencies are used&#x20;
-* Etc.&#x20;
+* Windows
+* macOS
+* Linux
 
-**Key benefits include:**&#x20;
+#### Source Code Management (SCM) compatibility
 
-* **Accurate, production-ready code** — because it knows your codebase inside out.&#x20;
-* **Consistent design adherence** — aligns with your architecture patterns and coding conventions.&#x20;
-* **Faster onboarding** — new engineers or AI agents can quickly understand the system structure.&#x20;
-* **Enhanced documentation and diagramming** — through its internal understanding of interconnections between modules and APIs.&#x20;
-* **Smarter code reviews** — reviews with system-wide awareness of dependencies and impacts.&#x20;
+Works seamlessly across a wide range of version control systems and workflows:
 
-&#x20;
+* Git
+* Subversion (SVN)
+* Mercurial
+* Perforce
+* Plain files (no SCM required)
 
-## How AI Architect differs from Embeddings?
+This makes it suitable for both modern Git-based projects and legacy or enterprise codebases.
 
-Traditional embeddings work like a search engine — they retrieve code snippets or documents similar to a given query.&#x20;
+## Why use AI Code Reviews in CLI?
 
-They can find related content but can’t understand how different parts of your system work together.&#x20;
+#### Terminal-first by design
 
-AI Architect, on the other hand:&#x20;
+Run reviews directly from your terminal — locally, over SSH, or in cloud environments — without pushing code or opening an IDE. This makes it ideal for remote servers, containers, and minimal development setups.
 
-* Builds a knowledge graph that captures relationships between repositories, modules, APIs, and libraries.
-* Provides precise answers and implementations, not just search results.
-* Understands context and intent — how and why something is implemented in your codebase.
-* Enables system-aware reasoning, allowing AI agents to generate or review code with full architectural understanding.
+#### Catch issues earlier (Shift Left)
 
-## Getting started
+Review code:
 
-1. Contact Bito support team at <support@bito.ai>  to have your repositories indexed. You will get an **MCP server URL** and **Auth token** from Bito.
-2. Configure MCP server in supported AI coding tools such as Claude Code, Cursor, Windsurf, and GitHub Copilot (VS Code).
+* Before committing
+* Before pushing
+* Before opening a pull request
+* As part of automated CI/CD checks
 
-   Select your AI coding tool from the options below and follow the step-by-step installation guide to seamlessly set up AI Architect.
+Earlier feedback means fewer regressions, faster reviews, and lower cost of fixes.
 
-   * [**Guide for Claude Code**](https://docs.bito.ai/ai-architect/guide-for-claude-code)
-   * [**Guide for Cursor**](https://docs.bito.ai/ai-architect/guide-for-cursor)
-   * [**Guide for Windsurf**](https://docs.bito.ai/ai-architect/guide-for-windsurf)
-   * [**Guide for GitHub Copilot (VS Code)**](https://docs.bito.ai/ai-architect/guide-for-github-copilot-vs-code)
+#### Precise control over what gets reviewed
+
+Review exactly what you want, when you want:
+
+* Uncommitted local changes
+* One or more recent commits
+* Specific files or directories
+* Differences against any branch, tag, or commit
+
+This flexibility makes it easy to integrate into both individual and team workflows.
+
+#### AI that understands context
+
+Instead of only matching rules, the AI analyzes intent and structure. It can:
+
+* Detect non-obvious bugs
+* Explain trade-offs
+* Suggest safer or cleaner alternatives
+* Adapt feedback based on surrounding code
+
+#### Fits seamlessly into existing workflows
+
+Use it as:
+
+* A **pre-commit** quality gate
+* A **pre-push** validation step
+* A **CI/CD** job that fails builds on critical issues
+* An **interactive review tool** during active development
+
+### How it fits into the broader Bito ecosystem
+
+AI Code Reviews in CLI complements other review surfaces by covering scenarios where IDEs or Git platforms are not ideal.
+
+| Platform                                                                                                                  | Best used for                                                          |
+| ------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| [**AI Code Reviews in Git**](https://docs.bito.ai/ai-code-reviews-in-git/overview) (GitHub, GitLab, Bitbucket)            | Pull request and merge request reviews                                 |
+| [**AI Code Reviews in IDE**](https://docs.bito.ai/ai-code-reviews-in-ide/overview) (VS Code, JetBrains, Cursor, Windsurf) | Real-time feedback while coding                                        |
+| [**AI Code Reviews in CLI**](https://docs.bito.ai/ai-code-reviews-in-cli/overview)                                        | CI/CD automation, remote or terminal-only workflows, pre-commit checks |
+
+**Use the CLI when you need:**
+
+* Terminal-native workflows
+* Automation and scripting
+* Reviews in headless or remote environments
+* Fast feedback without opening an IDE or browser
+* Pre-commit/pre-push validation
+
+## Key features
+
+#### Smart review modes & filtering
+
+Focus on what matters most at each stage of development:
+
+* **Essential mode**\
+  Shows only HIGH-severity issues — ideal for pre-commit or CI gates.
+* **Comprehensive mode**\
+  Includes all severity levels for deeper analysis.
+* **Focus areas**\
+  Limit reviews to specific concerns such as:
+  * Security
+  * Performance
+  * Bugs
+  * Tests
+  * Documentation
+* **Severity filtering**\
+  Display only high, medium, or low-priority findings as needed.
+
+#### Output formats for humans and automation
+
+Choose the format that fits your use case:
+
+* **Interactive terminal UI**\
+  Colorized, structured output optimized for developer review.
+* **Plain text output**\
+  Clean, deterministic output for logs and CI/CD systems.
+* **Prompt-only mode**\
+  Minimal output designed for AI agents or tool chaining.
+
+#### Interactive fix application
+
+Apply suggested fixes safely and efficiently:
+
+* Review each issue and its proposed change
+* Apply or skip fixes individually
+* Apply all remaining fixes in one step
+* Automatic backups ensure changes are reversible
+
+This enables faster iteration without losing control.
+
+### Security & privacy
+
+* Reviews are run on-demand and scoped to selected files or changes
+* Designed to integrate safely into local, remote, and CI environments
+* No requirement to push code to a repository to get feedback
+
+### Getting started
+
+Ready to start reviewing code from your terminal?
+
+👉 Visit the [**Installation guide**](https://docs.bito.ai/ai-code-reviews-in-cli/installation-guide) to get set up in minutes.
+
+**Next steps:**
+
+* [**How to use?**](https://docs.bito.ai/ai-code-reviews-in-cli/how-to-use) – Run your first code review
+* [**Available commands**](https://docs.bito.ai/ai-code-reviews-in-cli/available-commands) – Complete reference of CLI commands
+* [**Troubleshooting**](https://docs.bito.ai/ai-code-reviews-in-cli/troubleshooting) – Common issues and how to resolve them
 
 
-# Guide for Claude Code
+# Installation guide
 
-Integrate Claude Code with AI Architect for more accurate, codebase-aware AI assistance.
+AI Code Reviews in CLI lets you run fast, high-quality AI-powered code reviews directly from your terminal. It works on **macOS, Linux, and Windows**, and installation typically takes a few minutes.
 
-Use Bito's [**AI Architect**](https://docs.bito.ai/ai-architect/overview) with **Claude Code** to enhance your AI-powered coding experience.
-
-Once connected via MCP (Model Context Protocol), Claude Code can leverage AI Architect’s deep contextual understanding of your project, enabling more accurate code suggestions, explanations, and code insights.
+This guide walks you through installation steps.
 
 ## Prerequisites
 
-1. Contact Bito support team at <support@bito.ai> to have your repositories indexed. You will get an **MCP server URL** and **Auth token** from Bito.
-2. Download **BitoAIArchitectGuidelines.md** file. You will need to copy/paste the content from this file later when configuring AI Architect.
-
-## Set up AI Architect
-
-Follow the setup instructions for your operating system:
-
-* [**Windows**](#windows)
-* [**macOS**](#macos)
-* [**Linux**](#linux)
-
-## Windows
-
 {% stepper %}
 {% step %}
 
-### Create configuration directory
+### Bito API Key (aka Bito Access Key)
 
-1. Press **Win + R**
-2. Type: `%USERPROFILE%`
-3. Press **Enter** to open your home directory
-   {% endstep %}
+You'll need a **Bito account** and a **Bito Access Key** to authenticate AI Code Reviews in CLI. You can sign up for a Bito account at [**https://alpha.bito.ai**](https://alpha.bito.ai/), and create an access key from [**Settings -> Advanced Settings**](https://alpha.bito.ai/home/advanced)
 
-{% step %}
-
-### Create `.claude` folder
-
-1. In File Explorer, create new folder
-2. Name it: `.claude`
-3. You should now see the folder in `%USERPROFILE%\.claude`
-   {% endstep %}
-
-{% step %}
-
-### Create MCP configuration file
-
-1. Navigate into the `.claude` folder
-2. Right-click in empty space → **New > Text Document**
-3. Name it: `mcp.json`
-4. Open with Notepad or VS Code
-5. Paste the following:
-
-```json
-{
-  "mcpServers": {
-    "Bito": {
-      "transport": "http",
-      "url": "Enter_MCP_Server_URL_Here", // e.g. "https://mcp.bito.ai/123456/mcp"
-      "headers": {
-        "Authorization": "Enter_Auth_Token_Here" // e.g. "Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-      },
-      "timeout": 60000,
-      "disabled": false
-    }
-  }
-}
-```
-
-{% hint style="info" %}
-**Note:**
-
-* Replace the text **`Enter_MCP_Server_URL_Here`** with the actual MCP server URL.
-* Replace the text **`Enter_Auth_Token_Here`** with the actual auth token.
-  {% endhint %}
-
-6. Save the file (Ctrl + S)
-   {% endstep %}
-
-{% step %}
-
-### Create guidelines file
-
-1. In the `.claude` folder, create new text document
-2. Name it: `mcp-usage.md`
-3. Copy and paste ALL contents of `BitoAIArchitectGuidelines.md` into this file
-4. Save (Ctrl + S)
-   {% endstep %}
-
-{% step %}
-
-### Restart Claude Code
-
-Close and reopen Claude Code completely.
-
-**File locations:**
-
-* MCP config: `C:\Users\[YourUsername]\.claude\mcp.json`
-* Guidelines: `C:\Users\[YourUsername]\.claude\mcp-usage.md`
+* [**View Guide**](https://docs.bito.ai/help/account-and-settings/access-key)
   {% endstep %}
   {% endstepper %}
 
-## macOS
+## Installation guide
 
 {% stepper %}
 {% step %}
 
-### Create configuration directory
+### Download and install the CLI
 
-1. Open Terminal (**Cmd + Space**, type Terminal)
-2. Run:
+#### macOS and Linux:
 
-```sh
-mkdir -p ~/.claude
+Open a **terminal** and run:
+
+```shellscript
+curl -fsSL https://bitoreview.bito.ai/install.sh | bash
 ```
 
-{% endstep %}
+#### Windows:
 
-{% step %}
+Open **PowerShell** and run:
 
-### Create MCP configuration file
-
-1. In Terminal, run:
-
-```sh
-nano ~/.claude/mcp.json
-```
-
-2. Paste the following:
-
-```json
-{
-  "mcpServers": {
-    "Bito": {
-      "transport": "http",
-      "url": "Enter_MCP_Server_URL_Here", // e.g. "https://mcp.bito.ai/123456/mcp"
-      "headers": {
-        "Authorization": "Enter_Auth_Token_Here" // e.g. "Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-      },
-      "timeout": 60000,
-      "disabled": false
-    }
-  }
-}
+```shellscript
+irm https://bitoreview.bito.ai/install.ps1 | iex
 ```
 
 {% hint style="info" %}
-**Note:**
-
-* Replace the text **`Enter_MCP_Server_URL_Here`** with the actual MCP server URL.
-* Replace the text **`Enter_Auth_Token_Here`** with the actual auth token.
-  {% endhint %}
-
-3. Save: Press `Ctrl + O`, then press Enter, then `Ctrl + X`
-   {% endstep %}
-
-{% step %}
-
-### Create guidelines file
-
-1. In Terminal, run:
-
-```sh
-nano ~/.claude/mcp-usage.md
-```
-
-2. Copy and paste ALL contents of `BitoAIArchitectGuidelines.md` into this file
-3. Save: `Ctrl + O`, Enter, `Ctrl + X`
-   {% endstep %}
-
-{% step %}
-
-### Verify files
-
-```sh
-ls -la ~/.claude/
-```
-
-You should see both `mcp.json` and `mcp-usage.md`
-{% endstep %}
-
-{% step %}
-
-### Restart Claude Code
-
-Close and reopen Claude Code.
-
-**File locations:**
-
-* MCP Config: `~/.claude/mcp.json`
-* Guidelines: `~/.claude/mcp-usage.md`&#x20;
-  {% endstep %}
-  {% endstepper %}
-
-## Linux
-
-{% stepper %}
-{% step %}
-
-### Create configuration directory
-
-1. Open Terminal
-2. Run:
-
-```sh
-mkdir -p ~/.claude
-```
-
-{% endstep %}
-
-{% step %}
-
-### Create MCP configuration file
-
-1. In Terminal, run:
-
-```sh
-nano ~/.claude/mcp.json
-```
-
-2. Paste:
-
-```json
-{
-  "mcpServers": {
-    "Bito": {
-      "transport": "http",
-      "url": "Enter_MCP_Server_URL_Here", // e.g. "https://mcp.bito.ai/123456/mcp"
-      "headers": {
-        "Authorization": "Enter_Auth_Token_Here" // e.g. "Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-      },
-      "timeout": 60000,
-      "disabled": false
-    }
-  }
-}
-```
-
-{% hint style="info" %}
-**Note:**
-
-* Replace the text **`Enter_MCP_Server_URL_Here`** with the actual MCP server URL.
-* Replace the text **`Enter_Auth_Token_Here`** with the actual auth token.
-  {% endhint %}
-
-3. Save: `Ctrl + O`, Enter, `Ctrl + X`
-   {% endstep %}
-
-{% step %}
-
-### Create guidelines file
-
-1. In Terminal, run:
-
-```sh
-nano ~/.claude/mcp-usage.md
-```
-
-2. Copy and paste ALL contents of `BitoAIArchitectGuidelines.md` into this file
-3. Save: `Ctrl + O`, Enter, `Ctrl + X`
-   {% endstep %}
-
-{% step %}
-
-### Verify files
-
-```sh
-ls -la ~/.claude/
-```
-
-You should see both `mcp.json` and `mcp-usage.md`
-{% endstep %}
-
-{% step %}
-
-### Restart Claude Code
-
-Close and reopen Claude Code.
-
-**File locations:**
-
-* MCP Config: `~/.claude/mcp.json`
-* Guidelines: `~/.claude/mcp-usage.md`
-  {% endstep %}
-  {% endstepper %}
-
-
-# Guide for Cursor
-
-Integrate Cursor with AI Architect for more accurate, codebase-aware AI assistance.
-
-Use Bito's [**AI Architect**](https://docs.bito.ai/ai-architect/overview) with **Cursor** to enhance your AI-powered coding experience.
-
-Once connected via MCP (Model Context Protocol), Cursor can leverage AI Architect’s deep contextual understanding of your project, enabling more accurate code suggestions, explanations, and code insights.
-
-## Prerequisites
-
-1. Contact Bito support team at <support@bito.ai> to have your repositories indexed. You will get an **MCP server URL** and **Auth token** from Bito.
-2. Download **BitoAIArchitectGuidelines.md** file. You will need to copy/paste the content from this file later when configuring AI Architect.
-
-## Set up AI Architect
-
-Follow the setup instructions for your operating system:
-
-* [**Windows**](#windows)
-* [**macOS**](#macos)
-* [**Linux**](#linux)
-
-## Windows
-
-{% stepper %}
-{% step %}
-
-### Locate Cursor config directory
-
-1. Press **Win + R**
-2. Type: `%APPDATA%\Cursor`
-3. Press Enter
-
-If folder doesn't exist, run Cursor once to create it.
-{% endstep %}
-
-{% step %}
-
-### Create/update MCP configuration
-
-1. In `%APPDATA%\Cursor`, find or create: `cursor_desktop_config.json`
-2. Open with Notepad or VS Code
-3. Add or update the `mcpServers` section:
-
-```json
-{
-  "mcpServers": {
-    "Bito": {
-      "transport": "http",
-      "url": "Enter_MCP_Server_URL_Here", // e.g. "https://mcp.bito.ai/123456/mcp"
-      "headers": {
-        "Authorization": "Enter_Auth_Token_Here" // e.g. "Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-      },
-      "timeout": 60000,
-      "disabled": false
-    }
-  }
-}
-```
-
-{% hint style="info" %}
-**Note:**
-
-* Replace the text **`Enter_MCP_Server_URL_Here`** with the actual MCP server URL.
-* Replace the text **`Enter_Auth_Token_Here`** with the actual auth token.
-  {% endhint %}
-
-4. Save
-   {% endstep %}
-
-{% step %}
-
-### Create workspace guidelines file
-
-1. In your project root, create: `.cursorrules`
-2. Open with text editor
-3. Copy and paste ALL contents of `BitoAIArchitectGuidelines.md` into this file
-4. Save
-   {% endstep %}
-
-{% step %}
-
-### Activate in Cursor
-
-1. Open Cursor
-2. Press `Ctrl + ,` (comma) to open Settings
-3. Navigate to **Features > MCP** or **Developer > MCP**
-4. Click **Refresh** button
-5. You should see "BitoAIArchitect" listed
-   {% endstep %}
-
-{% step %}
-
-### Restart Cursor
-
-Close and reopen Cursor.
-
-**File paths:**
-
-* Global config: `C:\Users\[YourUsername]\AppData\Roaming\Cursor\cursor_desktop_config.json`
-* Workspace guidelines: `[ProjectRoot]\.cursorrules`
-  {% endstep %}
-  {% endstepper %}
-
-## macOS
-
-{% stepper %}
-{% step %}
-
-### Create Cursor config directory
-
-1. Open Terminal
-2. Run:
-
-```sh
-mkdir -p ~/.cursor
-```
-
-{% endstep %}
-
-{% step %}
-
-### Create/update MCP configuration
-
-1. Run:
-
-```sh
-nano ~/.cursor/cursor_desktop_config.json
-```
-
-2. Paste:
-
-```json
-{
-  "mcpServers": {
-    "Bito": {
-      "transport": "http",
-      "url": "Enter_MCP_Server_URL_Here", // e.g. "https://mcp.bito.ai/123456/mcp"
-      "headers": {
-        "Authorization": "Enter_Auth_Token_Here" // e.g. "Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-      },
-      "timeout": 60000,
-      "disabled": false
-    }
-  }
-}
-```
-
-{% hint style="info" %}
-**Note:**
-
-* Replace the text **`Enter_MCP_Server_URL_Here`** with the actual MCP server URL.
-* Replace the text **`Enter_Auth_Token_Here`** with the actual auth token.
-  {% endhint %}
-
-3. Save: `Ctrl + O`, Enter, `Ctrl + X`
-   {% endstep %}
-
-{% step %}
-
-### Create workspace guidelines file
-
-1. In your project root, run:
-
-```sh
-nano .cursorrules
-```
-
-2. Copy and paste ALL contents of `BitoAIArchitectGuidelines.md` into this file
-3. Save: `Ctrl + O`, Enter, `Ctrl + X`
-   {% endstep %}
-
-{% step %}
-
-### Activate in Cursor
-
-1. Open Cursor
-2. Press `Cmd + ,` to open Settings
-3. Navigate to **Features > MCP**
-4. Click **Refresh** button
-5. "BitoAIArchitect" should appear
-   {% endstep %}
-
-{% step %}
-
-### Restart Cursor
-
-Close and reopen Cursor.
-
-**File paths:**
-
-* Config: `~/.cursor/cursor_desktop_config.json`
-* Workspace guidelines: `[ProjectRoot]/.cursorrules`
-  {% endstep %}
-  {% endstepper %}
-
-## Linux
-
-{% stepper %}
-{% step %}
-
-### Create Cursor config directory
-
-1. Open Terminal
-2. Run:
-
-```sh
-mkdir -p ~/.cursor
-```
-
-{% endstep %}
-
-{% step %}
-
-### Create/update MCP configuration
-
-1. Run:
-
-```sh
-nano ~/.cursor/cursor_desktop_config.json
-```
-
-2. Paste:
-
-```json
-{
-  "mcpServers": {
-    "Bito": {
-      "transport": "http",
-      "url": "Enter_MCP_Server_URL_Here", // e.g. "https://mcp.bito.ai/123456/mcp"
-      "headers": {
-        "Authorization": "Enter_Auth_Token_Here" // e.g. "Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-      },
-      "timeout": 60000,
-      "disabled": false
-    }
-  }
-}
-```
-
-{% hint style="info" %}
-**Note:**
-
-* Replace the text **`Enter_MCP_Server_URL_Here`** with the actual MCP server URL.
-* Replace the text **`Enter_Auth_Token_Here`** with the actual auth token.
-  {% endhint %}
-
-3. Save: `Ctrl + O`, Enter, `Ctrl + X`
-   {% endstep %}
-
-{% step %}
-
-### Create workspace guidelines file
-
-1. In your project root, run:
-
-```sh
-nano .cursorrules
-```
-
-2. Copy and paste ALL contents of `BitoAIArchitectGuidelines.md` into this file
-3. Save: `Ctrl + O`, Enter, `Ctrl + X`
-   {% endstep %}
-
-{% step %}
-
-### Activate in Cursor
-
-1. Open Cursor
-2. Press `Ctrl + ,` to open Settings
-3. Navigate to **Features > MCP**
-4. Click **Refresh** button
-5. "BitoAIArchitect" should appear
-   {% endstep %}
-
-{% step %}
-
-### Restart Cursor
-
-Close and reopen Cursor.
-
-**File paths:**
-
-* Config: `~/.cursor/cursor_desktop_config.json`
-* Workspace guidelines: `[ProjectRoot]/.cursorrules`
-  {% endstep %}
-  {% endstepper %}
-
-
-# Guide for Windsurf
-
-Integrate Windsurf with AI Architect for more accurate, codebase-aware AI assistance.
-
-Use Bito's [**AI Architect**](https://docs.bito.ai/ai-architect/overview) with **Windsurf** to enhance your AI-powered coding experience.
-
-Once connected via MCP (Model Context Protocol), Windsurf can leverage AI Architect’s deep contextual understanding of your project, enabling more accurate code suggestions, explanations, and code insights.
-
-## Prerequisites
-
-1. Contact Bito support team at <support@bito.ai> to have your repositories indexed. You will get an **MCP server URL** and **Auth token** from Bito.
-2. Download **BitoAIArchitectGuidelines.md** file. You will need to copy/paste the content from this file later when configuring AI Architect.
-
-## Set up AI Architect
-
-Follow the setup instructions for your operating system:
-
-* [**Windows**](#windows)
-* [**macOS**](#macos)
-* [**Linux**](#linux)
-
-## Windows
-
-{% stepper %}
-{% step %}
-
-### Create Windsurf config directory
-
-1. Press **Win + R**
-2. Type: `%USERPROFILE%\.codeium\windsurf`
-3. Press **Enter**
-
-If the folder doesn't exist:
-
-1. Navigate to: `%USERPROFILE%\.codeium`
-2. Create new folder: `windsurf`
-   {% endstep %}
-
-{% step %}
-
-### Create MCP configuration file
-
-1. In the `windsurf` folder, create: `mcp_config.json`
-2. Open with Notepad or VS Code
-3. Paste:
-
-```json
-{
-  "mcpServers": {
-    "Bito": {
-      "transport": "http",
-      "url": "Enter_MCP_Server_URL_Here", // e.g. "https://mcp.bito.ai/123456/mcp"
-      "headers": {
-        "Authorization": "Enter_Auth_Token_Here" // e.g. "Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-      },
-      "timeout": 60000,
-      "disabled": false
-    }
-  }
-}
-```
-
-{% hint style="info" %}
-**Note:**
-
-* Replace the text **`Enter_MCP_Server_URL_Here`** with the actual MCP server URL.
-* Replace the text **`Enter_Auth_Token_Here`** with the actual auth token.
-  {% endhint %}
-
-4. Save
-   {% endstep %}
-
-{% step %}
-
-### Create workspace instructions file
-
-1. In your project root, create folder: `.windsurf`
-2. Inside `.windsurf`, create: `instructions.md`
-3. Open with text editor
-4. Copy and paste ALL contents of `BitoAIArchitectGuidelines.md` into this file
-5. Save
-   {% endstep %}
-
-{% step %}
-
-### Activate in Windsurf
-
-1. Open Windsurf
-2. Click **Settings** (gear icon)
-3. Navigate to **Cascade > Model Context Protocol (MCP) Servers**
-4. You should see "BitoAIArchitect" listed
-5. Click **Refresh** if needed
-   {% endstep %}
-
-{% step %}
-
-### Restart Windsurf
-
-Close and reopen Windsurf.
-
-**File paths:**
-
-* Global config: `C:\Users\[YourUsername]\.codeium\windsurf\mcp_config.json`
-* Workspace instructions: `[ProjectRoot]\.windsurf\instructions.md`
-  {% endstep %}
-  {% endstepper %}
-
-## macOS
-
-{% stepper %}
-{% step %}
-
-### Create Windsurf config directory
-
-1. Open Terminal
-2. Run:
-
-```sh
-mkdir -p ~/.codeium/windsurf
-```
-
-{% endstep %}
-
-{% step %}
-
-### Create MCP configuration file
-
-1. Run:
-
-```sh
-nano ~/.codeium/windsurf/mcp_config.json
-```
-
-2. Paste:
-
-```json
-{
-  "mcpServers": {
-    "Bito": {
-      "transport": "http",
-      "url": "Enter_MCP_Server_URL_Here", // e.g. "https://mcp.bito.ai/123456/mcp"
-      "headers": {
-        "Authorization": "Enter_Auth_Token_Here" // e.g. "Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-      },
-      "timeout": 60000,
-      "disabled": false
-    }
-  }
-}
-```
-
-{% hint style="info" %}
-**Note:**
-
-* Replace the text **`Enter_MCP_Server_URL_Here`** with the actual MCP server URL.
-* Replace the text **`Enter_Auth_Token_Here`** with the actual auth token.
-  {% endhint %}
-
-3. Save: `Ctrl + O`, Enter, `Ctrl + X`
-   {% endstep %}
-
-{% step %}
-
-### Create workspace instructions file
-
-1. In your project root, run:
-
-```sh
-mkdir -p .windsurf
-```
-
-```sh
-nano .windsurf/instructions.md
-```
-
-2. Copy and paste ALL contents of `BitoAIArchitectGuidelines.md` into this file
-3. Save: `Ctrl + O`, Enter, `Ctrl + X`
-   {% endstep %}
-
-{% step %}
-
-### Activate in Windsurf
-
-1. Open Windsurf
-2. Click **Settings**
-3. Navigate to **Cascade > Model Context Protocol (MCP) Servers**
-4. Click **Refresh** to load changes
-5. "BitoAIArchitect" should appear
-   {% endstep %}
-
-{% step %}
-
-### Restart Windsurf
-
-Close and reopen Windsurf.
-
-**File paths:**
-
-* Config: `~/.codeium/windsurf/mcp_config.json`
-* Workspace instructions: `[ProjectRoot]/.windsurf/instructions.md`
-  {% endstep %}
-  {% endstepper %}
-
-## Linux
-
-{% stepper %}
-{% step %}
-
-### Create Windsurf config directory
-
-1. Open Terminal
-2. Run:
-
-```sh
-mkdir -p ~/.codeium/windsurf
-```
-
-{% endstep %}
-
-{% step %}
-
-### Create MCP configuration file
-
-1. Run:
-
-```sh
-nano ~/.codeium/windsurf/mcp_config.json
-```
-
-2. Paste:
-
-```json
-{
-  "mcpServers": {
-    "Bito": {
-      "transport": "http",
-      "url": "Enter_MCP_Server_URL_Here", // e.g. "https://mcp.bito.ai/123456/mcp"
-      "headers": {
-        "Authorization": "Enter_Auth_Token_Here" // e.g. "Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-      },
-      "timeout": 60000,
-      "disabled": false
-    }
-  }
-}
-```
-
-{% hint style="info" %}
-**Note:**
-
-* Replace the text **`Enter_MCP_Server_URL_Here`** with the actual MCP server URL.
-* Replace the text **`Enter_Auth_Token_Here`** with the actual auth token.
-  {% endhint %}
-
-3. Save: `Ctrl + O`, Enter, `Ctrl + X`
-   {% endstep %}
-
-{% step %}
-
-### Create workspace instructions file
-
-1. In your project root, run:
-
-```sh
-mkdir -p .windsurf
-```
-
-```sh
-nano .windsurf/instructions.md
-```
-
-2. Copy and paste ALL contents of `BitoAIArchitectGuidelines.md` into this file
-3. Save: `Ctrl + O`, Enter, `Ctrl + X`
-   {% endstep %}
-
-{% step %}
-
-### Activate in Windsurf
-
-1. Open Windsurf
-2. Click **Settings**
-3. Navigate to **Cascade > Model Context Protocol (MCP) Servers**
-4. Click **Refresh**
-5. "BitoAIArchitect" should appear
-   {% endstep %}
-
-{% step %}
-
-### Restart Windsurf
-
-Close and reopen Windsurf.
-
-**File paths:**
-
-* Config: `~/.codeium/windsurf/mcp_config.json`
-* Workspace instructions: `[ProjectRoot]/.windsurf/instructions.md`
-  {% endstep %}
-  {% endstepper %}
-
-
-# Guide for GitHub Copilot (VS Code)
-
-Integrate GitHub Copilot in VS Code with AI Architect for more accurate, codebase-aware AI assistance.
-
-Use Bito's [**AI Architect**](https://docs.bito.ai/ai-architect/overview) with **GitHub Copilot in VS Code** to enhance your AI-powered coding experience.
-
-Once connected via MCP (Model Context Protocol), GitHub Copilot can leverage AI Architect’s deep contextual understanding of your project, enabling more accurate code suggestions, explanations, and code insights.
-
-## Prerequisites
-
-1. Contact Bito support team at <support@bito.ai> to have your repositories indexed. You will get an **MCP server URL** and **Auth token** from Bito.
-2. Download **BitoAIArchitectGuidelines.md** file. You will need to copy/paste the content from this file later when configuring AI Architect.
-3. Requires Visual Studio Code version 1.99 or later (check with `code --version`)
-4. GitHub Copilot extension installed and enabled
-5. GitHub account with Copilot access
-
-## Set up AI Architect
-
-Follow the setup instructions for your operating system:
-
-* [**Windows**](#windows)
-* [**macOS**](#macos)
-* [**Linux**](#linux)
-
-## Windows
-
-{% stepper %}
-{% step %}
-
-### Ensure VS Code is up to date
-
-1. Open VS Code
-2. Go to **Help > Check for Updates**
-3. Install any available updates
-4. Verify version: Open terminal and run `code --version`
-   {% endstep %}
-
-{% step %}
-
-### Enable Agent mode
-
-1. Press `Ctrl + ,` to open Settings
-2. In the search bar, type: `chat.agent.enabled`
-3. Check the box to enable **Chat: Agent Enabled**
-   {% endstep %}
-
-{% step %}
-
-### Choose configuration method
-
-You have two options:
-
-**Option A: Workspace configuration (recommended for team projects)**
-
-* Location: `[ProjectRoot]\.vscode\mcp.json`
-* Shared with team via version control
-* Project-specific
-
-**Option B: User configuration (personal, all workspaces)**
-
-* Location: `%APPDATA%\Code\User\settings.json`
-* Only available to you across all projects
-* Global configuration
-  {% endstep %}
-
-{% step %}
-
-### Workspace configuration (Option A)
-
-1. In your project root, create folder: `.vscode`
-2. Inside `.vscode`, create file: `mcp.json`
-3. Open with VS Code or Notepad
-4. Paste:
-
-```sh
-{
-  "servers": {
-    "Bito": {
-      "type": "http",
-      "url": "Enter_MCP_Server_URL_Here", // e.g. "https://mcp.bito.ai/123456/mcp"
-      "headers": {
-        "Authorization": "Enter_Auth_Token_Here" // e.g. "Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-      },
-      "timeout": 60000,
-      "disabled": false
-    }
-  }
-}
-```
-
-{% hint style="info" %}
-**Note:**
-
-* Replace the text **`Enter_MCP_Server_URL_Here`** with the actual MCP server URL.
-* Replace the text **`Enter_Auth_Token_Here`** with the actual auth token.
-  {% endhint %}
-
-5. Save the file (Ctrl + S)
-   {% endstep %}
-
-{% step %}
-
-### User configuration (Option B) (Alternative)
-
-1. Press `Ctrl + Shift + P` to open Command Palette
-2. Type: `Preferences: Open User Settings (JSON)`
-3. Press Enter
-4. Add this configuration to your settings.json:
-
-```json
-{
-  "mcp": {
-    "servers": {
-      "Bito": {
-        "type": "http",
-        "url": "Enter_MCP_Server_URL_Here", // e.g. "https://mcp.bito.ai/123456/mcp"
-        "headers": {
-          "Authorization": "Enter_Auth_Token_Here" // e.g. "Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-        },
-        "timeout": 60000,
-        "disabled": false
-      }
-    }
-  }
-}
-```
-
-{% hint style="info" %}
-**Note:** If settings.json already has content, make sure to add the `"mcp"` section properly within the existing JSON structure.
+**Tip:** If you encounter execution policy errors, run PowerShell as Administrator or allow script execution temporarily.
 {% endhint %}
-
-{% hint style="info" %}
-**Note:**
-
-* Replace the text **`Enter_MCP_Server_URL_Here`** with the actual MCP server URL.
-* Replace the text **`Enter_Auth_Token_Here`** with the actual auth token.
-  {% endhint %}
-
-5. Save (Ctrl + S)
-   {% endstep %}
-
-{% step %}
-
-### Start the MCP server
-
-1. If using workspace config, open `.vscode/mcp.json` in VS Code
-2. A **Start** button will appear above the configuration in the editor
-3. Click **Start** to activate the server
-4. Wait for confirmation that the server has started
-   {% endstep %}
-
-{% step %}
-
-### Verify setup
-
-1. Open GitHub Copilot Chat (Ctrl + Alt + I)
-2. Click the dropdown at the bottom and select **Agent** mode
-3. Click the **Tools** icon (wrench symbol) in the chat interface
-4. Verify "BitoAIArchitect" appears in the list of available tools
-5. You should see the available tools from the BitoAIArchitect MCP server
-   {% endstep %}
-
-{% step %}
-
-### Optional - Add project guidelines
-
-1. In your project root, create folder: `.github`
-2. Inside `.github`, create file: `copilot-instructions.md`
-3. Copy and paste ALL contents of `BitoAIArchitectGuidelines.md` into this file
-4. Save the file
-
-**File paths:**
-
-* Workspace config: `[ProjectRoot]\.vscode\mcp.json`
-* User config: `C:\Users\[YourUsername]\AppData\Roaming\Code\User\settings.json`
-* Guidelines (optional): `[ProjectRoot]\.github\copilot-instructions.md`&#x20;
-  {% endstep %}
-  {% endstepper %}
-
-## macOS
-
-{% stepper %}
-{% step %}
-
-### Ensure VS Code is up to date
-
-1. Open VS Code
-2. Go to **Code > Check for Updates** (or **Help > Check for Updates**)
-3. Install any available updates
-4. Verify version in Terminal: `code --version`
-   {% endstep %}
-
-{% step %}
-
-### Enable Agent mode
-
-1. Press `Cmd + ,` to open Settings
-2. In the search bar, type: `chat.agent.enabled`
-3. Check the box to enable **Chat: Agent Enabled**
-   {% endstep %}
-
-{% step %}
-
-### Choose configuration method
-
-**Option A: Workspace configuration (recommended for team projects)**
-
-* Location: `[ProjectRoot]/.vscode/mcp.json`
-* Shared with team, project-specific
-
-**Option B: User configuration (personal, all workspaces)**
-
-* Location: `~/Library/Application Support/Code/User/settings.json`
-* Global across all projects
-  {% endstep %}
-
-{% step %}
-
-### Workspace configuration (Option A)
-
-1. In Terminal, navigate to your project root
-2. Run:
-
-```sh
-mkdir -p .vscode
-```
-
-```sh
-nano .vscode/mcp.json
-```
-
-3. Paste:
-
-```json
-{
-  "servers": {
-    "Bito": {
-      "type": "http",
-      "url": "Enter_MCP_Server_URL_Here", // e.g. "https://mcp.bito.ai/123456/mcp"
-      "headers": {
-        "Authorization": "Enter_Auth_Token_Here" // e.g. "Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-      },
-      "timeout": 60000,
-      "disabled": false
-    }
-  }
-}
-```
-
-{% hint style="info" %}
-**Note:**
-
-* Replace the text **`Enter_MCP_Server_URL_Here`** with the actual MCP server URL.
-* Replace the text **`Enter_Auth_Token_Here`** with the actual auth token.
-  {% endhint %}
-
-4. Save: `Ctrl + O`, Enter, `Ctrl + X`
-   {% endstep %}
-
-{% step %}
-
-### User configuration (Option B) (Alternative)
-
-1. Press `Cmd + Shift + P` to open Command Palette
-2. Type: `Preferences: Open User Settings (JSON)`
-3. Press Enter
-4. Add this configuration to your settings.json:
-
-```json
-{
-  "mcp": {
-    "servers": {
-      "Bito": {
-        "type": "http",
-        "url": "Enter_MCP_Server_URL_Here", // e.g. "https://mcp.bito.ai/123456/mcp"
-        "headers": {
-          "Authorization": "Enter_Auth_Token_Here" // e.g. "Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-        },
-        "timeout": 60000,
-        "disabled": false
-      }
-    }
-  }
-}
-```
-
-{% hint style="info" %}
-**Note:** If settings.json already has content, make sure to add the `"mcp"` section properly within the existing JSON structure.
-{% endhint %}
-
-{% hint style="info" %}
-**Note:**
-
-* Replace the text **`Enter_MCP_Server_URL_Here`** with the actual MCP server URL.
-* Replace the text **`Enter_Auth_Token_Here`** with the actual auth token.
-  {% endhint %}
-
-5. Save: `Cmd + S`
-   {% endstep %}
-
-{% step %}
-
-### Start the MCP server
-
-1. Open the mcp.json file in VS Code
-2. Click **Start** button that appears above the configuration
-3. Wait for server to activate
-   {% endstep %}
-
-{% step %}
-
-### Verify setup
-
-1. Open Copilot Chat (`Cmd + Alt + I` or `Cmd + Shift + I`)
-2. Select **Agent** mode from the dropdown
-3. Click **Tools** icon to view available tools
-4. Verify "BitoAIArchitect" is listed
-   {% endstep %}
-
-{% step %}
-
-### Optional - Add project guidelines
-
-```sh
-mkdir -p .github
-```
-
-```sh
-nano .github/copilot-instructions.md
-```
-
-Copy and paste ALL contents of `BitoAIArchitectGuidelines.md` into this file
-
-**File paths:**
-
-* Workspace: `[ProjectRoot]/.vscode/mcp.json`
-* User: `~/Library/Application Support/Code/User/settings.json`
-* Guidelines: `[ProjectRoot]/.github/copilot-instructions.md`&#x20;
-  {% endstep %}
-  {% endstepper %}
-
-## Linux
-
-{% stepper %}
-{% step %}
-
-### Ensure VS Code is up to date
-
-1. Open VS Code
-2. Go to **Help > Check for Updates**
-3. Install updates if available
-4. Verify: `code --version` in terminal
-   {% endstep %}
-
-{% step %}
-
-### Enable Agent mode
-
-1. Press `Ctrl + ,` to open Settings
-2. Search: `chat.agent.enabled`
-3. Enable **Chat: Agent Enabled**
-   {% endstep %}
-
-{% step %}
-
-### Choose configuration method
-
-**Option A: Workspace** - `[ProjectRoot]/.vscode/mcp.json` (recommended)
-
-**Option B: User** - `~/.config/Code/User/settings.json` (global)
-{% endstep %}
-
-{% step %}
-
-### Workspace configuration (Option A)
-
-```sh
-mkdir -p .vscode
-```
-
-```sh
-nano .vscode/mcp.json
-```
-
-Paste:
-
-```json
-{
-  "servers": {
-    "Bito": {
-      "type": "http",
-      "url": "Enter_MCP_Server_URL_Here", // e.g. "https://mcp.bito.ai/123456/mcp"
-      "headers": {
-        "Authorization": "Enter_Auth_Token_Here" // e.g. "Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-      },
-      "timeout": 60000,
-      "disabled": false
-    }
-  }
-}
-```
-
-{% hint style="info" %}
-**Note:**
-
-* Replace the text **`Enter_MCP_Server_URL_Here`** with the actual MCP server URL.
-* Replace the text **`Enter_Auth_Token_Here`** with the actual auth token.
-  {% endhint %}
-
-Save: `Ctrl + O`, Enter, `Ctrl + X`
-{% endstep %}
-
-{% step %}
-
-### User configuration (Option B) (Alternative)
-
-1. Press `Ctrl + Shift + P`
-2. Type: `Preferences: Open User Settings (JSON)`
-3. Add to settings.json:
-
-```json
-{
-  "mcp": {
-    "servers": {
-      "Bito": {
-        "type": "http",
-        "url": "Enter_MCP_Server_URL_Here", // e.g. "https://mcp.bito.ai/123456/mcp"
-        "headers": {
-          "Authorization": "Enter_Auth_Token_Here" // e.g. "Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-        },
-        "timeout": 60000,
-        "disabled": false
-      }
-    }
-  }
-}
-```
-
-{% hint style="info" %}
-**Note:** If settings.json already has content, make sure to add the `"mcp"` section properly within the existing JSON structure.
-{% endhint %}
-
-{% hint style="info" %}
-**Note:**
-
-* Replace the text **`Enter_MCP_Server_URL_Here`** with the actual MCP server URL.
-* Replace the text **`Enter_Auth_Token_Here`** with the actual auth token.
-  {% endhint %}
-
-5. Save: `Ctrl + S`
-   {% endstep %}
-
-{% step %}
-
-### Start server & verify
-
-1. Open mcp.json in VS Code, click **Start** button
-2. Open Copilot Chat (`Ctrl + Alt + I`)
-3. Select **Agent** mode
-4. Click **Tools** icon to verify "BitoAIArchitect" is listed
-   {% endstep %}
-
-{% step %}
-
-### Optional - Add guidelines
-
-1. In Terminal, run:
-
-```sh
-mkdir -p .github
-```
-
-```sh
-nano .github/copilot-instructions.md
-```
-
-2. Copy and paste ALL contents of `BitoAIArchitectGuidelines.md` into this file
-3. Save: `Ctrl + O`, Enter, `Ctrl + X`
-
-**File paths:**
-
-* Workspace: `[ProjectRoot]/.vscode/mcp.json`
-* User: `~/.config/Code/User/settings.json`
-* Guidelines: `[ProjectRoot]/.github/copilot-instructions.md`
-  {% endstep %}
-  {% endstepper %}
-
-
-# AI Code Review Agent (with AI Architect vs without AI Architect)
-
-From single-repo reviews to system-wide insights
-
-The [AI Code Review Agent](https://docs.bito.ai/ai-code-reviews-in-git/overview) becomes significantly more powerful when paired with [**AI Architect**](https://docs.bito.ai/ai-architect/overview).
-
-Below is a clear explanation of how the agent behaves in each setup and why AI Architect unlocks much deeper, system-level insights.
-
-## AI Code Review Agent without AI Architect
-
-The standard AI Code Review Agent analyzes code at the **repository level**.
-
-It creates a ***within-repo knowledge graph*** by building:
-
-* Abstract Syntax Trees (ASTs)
-* Symbol indexes
-* Local dependency relationships
-
-This allows it to perform strong, context-aware code reviews **within a single repository**, including:
-
-* Identifying issues in the diff
-* Understanding dependencies inside the repo
-* Checking for consistency and correctness within that project
-* Suggesting improvements based on local patterns
-
-However, the agent’s visibility stops at the repository boundary. It cannot detect effects on other services or codebases.
-
-## AI Code Review Agent powered by AI Architect
-
-When **AI Architect** is enabled, the **AI Code Review Agent** gains a **complete view of your entire engineering ecosystem**.
-
-AI Architect builds a **cross-repository knowledge graph** that maps:
-
-* All services
-* Shared libraries
-* Modules and components
-* Inter-service dependencies
-* Upstream and downstream call chains
-
-With this system-level understanding, the agent can perform much deeper analysis.
-
-#### **Key capabilities unlocked by AI Architect**
-
-**1. Cross-repository awareness**
-
-The agent understands how code in one repo interacts with code in others — crucial for microservices and distributed systems.
-
-**2. Cross-repo impact analysis**
-
-During a pull request review, the agent can identify:
-
-* What breaks downstream if you change an interface
-* Which services call the function you updated
-* Which teams or repos depend on your changes
-* Whether the update introduces architecture-wide risks
-
-**3. Architecture-level checks**
-
-The agent evaluates your changes not just for correctness, but for their alignment with the overall system design.
-
-**4. Early problem detection across the entire codebase**
-
-Ripple effects, breaking changes, or dependency violations that traditionally appear only in staging or after deployment can now be flagged directly during review.
 
 ***
 
-### **Side-by-side comparison**
+#### What gets installed:
 
-| Capability                  | Without AI Architect | With AI Architect                 |
-| --------------------------- | -------------------- | --------------------------------- |
-| Scope                       | Single repository    | Entire system (multi-repo)        |
-| Knowledge graph             | Repo-only            | Cross-repository, system-wide     |
-| AST + symbol analysis       | ✅                    | ✅ (plus cross-repo linking)       |
-| Dependency visibility       | Local to repo        | Full call chains across repos     |
-| Impact analysis             | Local only           | Upstream + downstream, multi-repo |
-| Architecture checks         | Limited              | System-level validation           |
-| Ripple-effect detection     | ❌                    | ✅                                 |
-| Multi-service understanding | ❌                    | ✅                                 |
+The installer will:
+
+1. Download the CLI binary for your platform
+2. Install it in a user-local directory:
+   * **macOS/Linux:** `~/.bitoreview/bin/`
+   * **Windows:** `%USERPROFILE%\.bitoreview\bin\`
+3. Add the binary to your **PATH** so the `bitoreview` command is available globally
+4. Install **bito-wingman** (the AI engine) if it is not already present
+5. Create a `br` alias for quick access
+   {% endstep %}
+
+{% step %}
+
+### Reload your terminal environment
+
+To make the CLI available immediately, restart your terminal or reload your shell configuration.
+
+#### macOS / Linux:
+
+Restart your terminal or run:
+
+```shellscript
+# Bash
+source ~/.bashrc
+
+# Zsh (macOS default)
+source ~/.zshrc
+```
+
+#### Windows:
+
+* Restart **PowerShell**\
+  **or**
+* Run `refreshenv` if **Chocolatey** is installed
+  {% endstep %}
+
+{% step %}
+
+### Verify installation
+
+Confirm that the CLI is installed correctly:
+
+```shellscript
+bitoreview --version
+```
+
+The installer also creates a shortcut alias:
+
+```shellscript
+br --version
+```
+
+{% hint style="info" %}
+Both commands should return the same version.
+{% endhint %}
+{% endstep %}
+
+{% step %}
+
+### Authentication setup
+
+To run code reviews, the CLI requires a valid [**Bito API key (aka Bito Access Key)**](https://docs.bito.ai/help/account-and-settings/access-key).
+
+#### Get Bito API key:
+
+You can sign up for a Bito account at [**https://alpha.bito.ai**](https://alpha.bito.ai/), and create an access key from [**Settings -> Advanced Settings**](https://alpha.bito.ai/home/advanced)
+
+* [**View Guide**](https://docs.bito.ai/help/account-and-settings/access-key)
+
+***
+
+#### Configure the Bito API key:
+
+You can configure authentication in multiple ways.
+
+* **Method 1: Interactive setup (recommended)** - You'll be prompted to paste your [Bito API key](https://docs.bito.ai/help/account-and-settings/access-key) securely.
+
+```shellscript
+bitoreview config set-api-key
+```
+
+* **Method 2: Direct CLI setup** - Useful for automation or scripted setups.
+
+```shellscript
+bitoreview config set-api-key YOUR_API_KEY_HERE
+```
+
+{% hint style="info" %}
+**Note:** replace `YOUR_API_KEY_HERE` with your actual [Bito API key](https://docs.bito.ai/help/account-and-settings/access-key).
+{% endhint %}
+
+* **Method 3: Environment variable** - Useful for CI/CD pipelines, shared machines, temporary or project-specific credentials
+
+```shellscript
+export BITO_API_KEY=YOUR_API_KEY_HERE
+```
+
+{% hint style="info" %}
+**Note:** replace `YOUR_API_KEY_HERE` with your actual [Bito API key](https://docs.bito.ai/help/account-and-settings/access-key).
+{% endhint %}
+
+***
+
+#### Verify your Bito API key:
+
+To confirm your Bito API key is configured correctly, run:
+
+```shellscript
+bitoreview config show-api-key
+```
+
+***
+
+#### Bito API key resolution priority
+
+If multiple API keys are configured, the CLI resolves them in the following order:
+
+1. **Command-line flag**: `--api-key YOUR_KEY`
+2. **Environment variable**: `BITO_API_KEY`
+3. **Stored configuration file**: `~/.bitowingman/env`
+
+This makes it easy to override credentials per command, project, or environment.
+{% endstep %}
+
+{% step %}
+
+### Next steps
+
+You’re now ready to run AI-powered code reviews from your terminal.
+
+* [**How to use?**](https://docs.bito.ai/ai-code-reviews-in-cli/how-to-use) – Run your first code review
+* [**Available commands**](https://docs.bito.ai/ai-code-reviews-in-cli/available-commands) – Complete reference of CLI commands
+* [**Troubleshooting**](https://docs.bito.ai/ai-code-reviews-in-cli/troubleshooting) – Common issues and how to resolve them
+  {% endstep %}
+  {% endstepper %}
+
+
+# How to use?
+
+Get up and running in minutes. This guide walks you through running your first code review from the terminal and shows common workflows you can adopt right away.
+
+## Prerequisites
+
+Before you begin, make sure you have:
+
+* ✅ Installed the CLI ([Installation guide](https://docs.bito.ai/ai-code-reviews-in-cli/installation-guide))
+* ✅ Configured your [Bito API key (aka Bito Access Key)](https://docs.bito.ai/help/account-and-settings/access-key)
+* ✅ A Git repository with code changes (committed or uncommitted)
+
+## Run your first code review
+
+#### Review all changes (default)
+
+From your project's root directory, run:
+
+```shellscript
+bitoreview review
+```
+
+**Command format:**
+
+```shellscript
+bitoreview review [files...] [options]
+```
+
+**Options:**
+
+|           Flag           |                    Description                   |
+| :----------------------: | :----------------------------------------------: |
+|    `-t, --type <type>`   |  Review scope: `all`, `uncommitted`, `committed` |
+|    `-i, --interactive`   |        Enable interactive fix application        |
+|         `--plain`        |           Plain text output (no colors)          |
+|      `--prompt-only`     |      Minimal output optimized for AI agents      |
+|     `--focus <area>`     |           Focus area (see Focus Areas)           |
+|      `--mode <mode>`     | `essential` (HIGH only) or `comprehensive` (all) |
+|   `--severity <level>`   |    Filter by severity: `high`, `medium`, `low`   |
+|     `--base <branch>`    |            Base branch for comparison            |
+| `--base-commit <commit>` |          Specific commit for comparison          |
+|      `--scm <type>`      |  Override SCM: `git`, `svn`, `hg`, `p4`, `plain` |
+|   `-c, --config <path>`  |              Custom config file path             |
+|     `--api-key <key>`    |               Pass API key directly              |
+|      `--cwd <path>`      |               Set working directory              |
+|       `-d, --debug`      |                Enable debug output               |
+|      `-v, --verbose`     |              Enable verbose logging              |
+|   `--max-retries <num>`  |            Retry attempts (default: 2)           |
+|       `--no-color`       |              Disable colored output              |
+
+{% hint style="info" %}
+For complete reference of CLI commands, refer to [Available commands](https://docs.bito.ai/ai-code-reviews-in-cli/available-commands).
+{% endhint %}
+
+#### Review only uncommitted changes
+
+Use this while actively coding, before committing:
+
+```shellscript
+bitoreview review --type uncommitted
+```
+
+#### Review only committed changes
+
+Review commits that haven't been pushed yet:
+
+```shellscript
+bitoreview review --type committed
+```
+
+#### Review specific files
+
+Limit the review scope to specific files:
+
+```shellscript
+bitoreview review src/api/*.js src/utils/helper.js
+```
+
+#### Review changes against a specific branch
+
+Compare your current branch with another branch (for example, `main`):
+
+```shellscript
+bitoreview review --base main
+```
+
+#### Review changes against a specific commit
+
+Compare your current code with a specific commit by providing its hash:
+
+```shellscript
+bitoreview review --base-commit abc123
+```
+
+{% hint style="info" %}
+**Note:** replace `abc123` with your actual commit hash.
+{% endhint %}
+
+#### Short alias for `bitoreview` command
+
+You can use `br` as a shortcut:
+
+```shellscript
+br review
+```
+
+```shellscript
+br review --type uncommitted
+```
+
+## Review modes
+
+{% stepper %}
+{% step %}
+
+### Essential mode (fast, critical issues only)
+
+* Only shows HIGH severity issues
+* Ideal for CI/CD pipelines and pre-commit hooks
+* Quick, focused feedback
+
+```shellscript
+bitoreview review --mode essential
+```
+
+{% endstep %}
+
+{% step %}
+
+### Comprehensive mode (full analysis)
+
+* Shows all severity levels (HIGH, MEDIUM, LOW)
+* Thorough analysis for pull requests and code audits
+* This is the **default mode**.
+
+```shellscript
+bitoreview review --mode comprehensive
+```
+
+{% endstep %}
+{% endstepper %}
+
+## Focus areas
+
+Use `--focus <area>` to concentrate the review on specific aspects:
+
+|    Focus area    |                      Description                      |
+| :--------------: | :---------------------------------------------------: |
+|    `security`    |  SQL injection, authentication, data validation, XSS  |
+|   `performance`  | Bottlenecks, memory leaks, optimization opportunities |
+|      `bugs`      |        Logic errors, edge cases, runtime errors       |
+| `best-practices` |      Code style, design patterns, maintainability     |
+|      `tests`     |        Test coverage, test quality, testability       |
+|  `documentation` |         Comments, documentation, code clarity         |
+
+**Example:**
+
+```shellscript
+bitoreview review --focus security --mode essential
+```
+
+## Severity levels
+
+|   Level  |                          Description                          |
+| :------: | :-----------------------------------------------------------: |
+|  `high`  | Must-fix: crashes, security vulnerabilities, breaking changes |
+| `medium` |     Should-fix: best practice violations, moderate issues     |
+|   `low`  |    Nice-to-have: formatting, minor refactoring suggestions    |
+
+Filter by minimum severity:
+
+```shellscript
+bitoreview review --severity high
+```
+
+## Output formats
+
+{% stepper %}
+{% step %}
+
+### Interactive mode (default)
+
+Rich terminal UI with:
+
+* Colored output
+* Tables for metrics and issues
+* Real-time progress spinners
+
+```shellscript
+bitoreview review
+```
+
+{% endstep %}
+
+{% step %}
+
+### Plain text mode
+
+No colors, suitable for logs and CI/CD:
+
+```shellscript
+bitoreview review --plain
+```
+
+Save to file:
+
+```shellscript
+bitoreview review --plain > review-report.txt
+```
+
+{% endstep %}
+
+{% step %}
+
+### Prompt-only mode
+
+Minimal output optimized for AI agents:
+
+```shellscript
+bitoreview review --prompt-only
+```
+
+{% endstep %}
+{% endstepper %}
+
+## Interactive fix application
+
+Enable interactive mode to review and apply suggested fixes one by one:
+
+```shellscript
+bitoreview review --interactive
+# or
+bitoreview review -i
+```
+
+#### Interactive prompts
+
+For each fixable issue, you'll see:
+
+| Option     | Action                                      |
+| ---------- | ------------------------------------------- |
+| `y` (yes)  | Apply this fix                              |
+| `n` (no)   | Skip this fix                               |
+| `s` (skip) | Same as 'no'                                |
+| `a` (all)  | Apply all remaining fixes without prompting |
+| `q` (quit) | Exit interactive mode                       |
+
+#### Backup files
+
+When fixes are applied, backup files are automatically created with the `.bitoreview-backup` extension.
+
+## Multi-SCM support
+
+The CLI automatically detects your version control system:
+
+|     SCM     |     Detection    |
+| :---------: | :--------------: |
+|     Git     | `.git` directory |
+|     SVN     | `.svn` directory |
+|  Mercurial  |  `.hg` directory |
+|   Perforce  | `.p4config` file |
+| Plain files |  No VCS required |
+
+#### Override SCM detection
+
+```shellscript
+bitoreview review --scm git
+bitoreview review --scm svn
+bitoreview review --scm hg
+bitoreview review --scm p4
+bitoreview review --scm plain
+```
+
+#### Review types across SCMs
+
+|  Review type  |      Git     |      SVN     |  Mercurial  |     Perforce    |
+| :-----------: | :----------: | :----------: | :---------: | :-------------: |
+| `uncommitted` | Working tree | Working copy | Working dir | Pending changes |
+|  `committed`  |   Committed  |   Revisions  |  Changesets |    Submitted    |
+|     `all`     |     Both     |     Both     |     Both    |       Both      |
+
+## Combine review options for precision
+
+You can mix options to match your workflow:
+
+```shellscript
+# Quick security check before commit
+bitoreview review --type uncommitted --focus security --mode essential
+
+# High-severity performance issues vs main branch
+bitoreview review --base main --focus performance --severity high
+
+# Full review of selected files
+bitoreview review src/auth/*.js --mode comprehensive
+```
+
+## Configuration
+
+Customize settings to match your project's needs and workflow preferences.
+
+#### Configuration methods
+
+AI Code Reviews in CLI can be configured in three ways, with each method overriding the previous:
+
+1. **Built-in defaults** - Sensible defaults that work for most projects
+2. **Configuration file** - Project-specific settings in `.bitoreview.yaml`&#x20;
+3. **CLI flags** - Per-command overrides (highest priority)
+
+#### Configuration file
+
+Create a `.bitoreview.yaml` file in your project root to set default options:
+
+```shellscript
+# Review scope: all, uncommitted, committed
+type: all
+
+# Review mode: essential (HIGH only) or comprehensive (all severities)
+mode: comprehensive
+
+# Focus area: security, performance, bugs, best-practices, tests, documentation
+focus: best-practices
+
+# Minimum severity: high, medium, low
+severity: medium
+
+# Custom instructions for the AI reviewer
+customInstructions: |
+  - Pay special attention to error handling
+  - Check for proper input validation
+  - Ensure consistent coding style
+```
+
+{% hint style="info" %}
+For complete reference of review options, refer to [Available commands](https://docs.bito.ai/ai-code-reviews-in-cli/available-commands).
+{% endhint %}
+
+#### Environment variables
+
+| Variable       | Description                                                                                                        |
+| -------------- | ------------------------------------------------------------------------------------------------------------------ |
+| `BITO_API_KEY` | [Bito API key (aka Bito Access key)](https://docs.bito.ai/help/account-and-settings/access-key) for authentication |
+
+## Getting help
+
+View help directly from the CLI:
+
+```shellscript
+# Show help
+bitoreview --help
+bitoreview review --help
+bitoreview config --help
+
+# Show version
+bitoreview --version
+```
+
+**Still running into issues?**\
+👉 Visit the [**Troubleshooting guide**](https://docs.bito.ai/ai-code-reviews-in-cli/troubleshooting) to find solutions for common installation, configuration, and runtime problems, along with tips for resolving frequent errors quickly.
+
+
+# AI code reviews in AI coding agents
+
+Supercharge AI coding agents with automated code reviews
+
+[**AI Code Reviews in CLI**](https://docs.bito.ai/ai-code-reviews-in-cli/overview) integrates seamlessly with AI coding agents like Cursor, Claude Code, Windsurf, and others, enabling natural language code reviews and automated fixes.
+
+## Prerequisites <a href="#prerequisites" id="prerequisites"></a>
+
+Before you begin, make sure you have:
+
+* ✅ Installed the CLI ([Installation guide](https://docs.bito.ai/ai-code-reviews-in-cli/installation-guide))
+* ✅ Configured your [Bito API key (aka Bito Access Key)](https://docs.bito.ai/help/account-and-settings/access-key)
+* ✅ A Git repository with code changes (committed or uncommitted)
+
+## Why use code review CLI with AI agents?
+
+AI coding agents are great at writing code, but they need expert guidance to catch security vulnerabilities, performance issues, and best practices violations. The **AI Code Reviews in CLI** provides that expertise.
+
+**The power combination:**
+
+* **AI Code Reviews in CLI** provides specialized code analysis
+* **Your AI agent (Cursor, Claude Code, Windsurf, etc.)** implements the fixes and iterates based on feedback
+* **You** stay in natural conversation, never leaving your workflow
+
+## How it works
+
+{% stepper %}
+{% step %}
+
+### Configure your agent
+
+Add `bitoreview` command to your agent's rules file so it knows when and how to run code reviews.
+{% endstep %}
+
+{% step %}
+
+### Ask for code reviews in natural language
+
+Simply tell your agent "review my changes" or "check for security issues"
+{% endstep %}
+
+{% step %}
+
+### Agent runs code review CLI Automatically
+
+Your agent executes the `bitoreview` command and reads the results
+{% endstep %}
+
+{% step %}
+
+### Get fixes implemented instantly
+
+Tell your agent which issues to fix, and it implements the changes automatically
+{% endstep %}
+{% endstepper %}
+
+## Setup guide
+
+Add the markdown content below to your agent's rules file. The exact file location depends on the AI coding agent you're using:
+
+* **Cursor**: `.cursor/rules/bito-code-review.mdc`
+* **Claude Code**:&#x20;
+
+  * `~/.claude/CLAUDE.md`  in your home folder, which applies it to all your Claude sessions.
+
+  OR
+
+  * `CLAUDE.md` in the root of your repo
+* **Windsurf**: `.windsurf/rules/bito-code-review.md`
+* **Cline**: `.clinerules/bito-code-review.md`
+* **Other agents**: Check your agent's documentation for custom rules/instructions location
+
+```markdown
+# AI Code Review Rules
+
+## Automatic code reviews
+When the user asks to "review my changes", "review code", "check for issues", or similar:
+1. Run: `bitoreview review --prompt-only`
+2. Parse and present the findings clearly to the user
+3. Offer to fix issues automatically
+
+## Review scope options
+**Review uncommitted changes only:**
+- Command: `bitoreview review --type uncommitted --prompt-only`
+
+**Review committed changes only:**
+- Command: `bitoreview review --type committed --prompt-only`
+
+**Review all changes (committed + uncommitted):**
+- Command: `bitoreview review --type all --prompt-only`
+
+**Review against specific branch:**
+- Command: `bitoreview review --base <branch> --prompt-only`
+
+**Review against specific commit:**
+- Command: `bitoreview review --base-commit <commit-hash> --prompt-only`
+
+**Review specific files or patterns:**
+- Command: `bitoreview review [files...] --prompt-only`
+
+## Review modes
+**Essential mode (HIGH severity only):**
+- Command: `bitoreview review --mode essential --prompt-only`
+- Use when: "quick review", "HIGH severity only"
+- Shows only critical issues for rapid feedback
+
+**Comprehensive mode (all severities):**
+- Command: `bitoreview review --mode comprehensive --prompt-only`
+- Use when: "thorough review", "full review", "detailed analysis"
+- Shows HIGH, MEDIUM, and LOW severity issues
+
+## Working directory override
+**Review from different directory:**
+- Command: `bitoreview review --cwd /path/to/project --prompt-only`
+
+## Fix implementation workflow
+When implementing fixes from review results:
+1. Address HIGH severity issues first
+2. Explain what you're changing before applying fixes
+3. Show before/after code snippets for context
+4. Ask for user confirmation on significant changes
+```
+
+
+# Available commands
+
+This page provides a complete reference for all commands and options available in [**AI Code Reviews in CLI**](https://docs.bito.ai/ai-code-reviews-in-cli/overview). Use it to understand what each command does, when to use it, and how to combine options for common workflows.
+
+### Command structure
+
+```bash
+bitoreview <command> [options]
+```
+
+For convenience, you can also use the short alias `br` instead of `bitoreview`:
+
+```shellscript
+br <command> [options]
+```
+
+### Commands overview
+
+|   Command   |                      Description                      |
+| :---------: | :---------------------------------------------------: |
+|   `review`  | Analyze code changes and generate AI-powered feedback |
+|   `config`  |       Manage configuration settings and API keys      |
+|   `--help`  |                Display help information               |
+| `--version` |           Display the installed CLI version           |
+
+### `review` command
+
+The `review` command is the core of the CLI. It analyzes your code changes and highlights issues related to bugs, security, performance, and overall code quality.
+
+#### Basic syntax
+
+```bash
+bitoreview review [files...] [options]
+```
+
+#### Examples
+
+```bash
+# Review all changes
+bitoreview review
+
+# Review specific files
+bitoreview review src/app.js src/utils/helper.js
+
+# Review files using glob patterns
+bitoreview review "src/**/*.js"
+
+# Review only uncommitted changes
+bitoreview review --type uncommitted
+
+# Run a fast, security-focused review
+bitoreview review --focus security --mode essential
+```
+
+#### Review scope options
+
+**`--type, -t <type>`**
+
+Specify which changes to review.
+
+**Supported values:**
+
+* `all` (default) - Review both committed and uncommitted changes
+* `uncommitted` - Review only working directory changes
+* `committed` - Review only committed changes that have not yet been pushed
+
+**Examples:**
+
+```bash
+bitoreview review --type uncommitted
+bitoreview review -t committed
+```
+
+**`--base <branch>`**
+
+Compare changes against a specific branch.
+
+**Example:**
+
+```bash
+bitoreview review --base main
+bitoreview review --base develop
+```
+
+**`--base-commit <commit>`**
+
+Compare changes against a specific commit hash.
+
+**Example:**
+
+```bash
+bitoreview review --base-commit abc123
+```
+
+#### Review quality options
+
+**`--mode <mode>`**
+
+Control the depth and breadth of the review.
+
+**Supported values:**
+
+* `essential` - Shows only HIGH severity issues for rapid feedback
+* `comprehensive` (default) - Shows all severity levels for thorough analysis
+
+**Examples:**
+
+```bash
+# Quick review
+bitoreview review --mode essential
+
+# Thorough review
+bitoreview review --mode comprehensive
+```
+
+**`--focus <area>`**
+
+Concentrate the review on specific code quality aspects.
+
+**Supported values:**
+
+* `security` - SQL injection, XSS, authentication, data validation
+* `performance` - Memory leaks, inefficient algorithms, bottlenecks
+* `bugs` - Logic errors, edge cases, runtime issues
+* `best-practices` - Code style, design patterns, maintainability
+* `tests` - Test coverage, test quality, testability
+* `documentation` - Comments, documentation quality, code clarity
+
+**Examples:**
+
+```bash
+bitoreview review --focus security
+bitoreview review --focus performance --mode essential
+```
+
+**`--severity <level>`**
+
+Filter issues by minimum severity level.
+
+**Supported values:**
+
+* `high` - Critical issues that must be fixed
+* `medium` - Important issues that should be addressed
+* `low` - Minor suggestions and style improvements
+
+**Examples:**
+
+```bash
+# Show only high severity issues
+bitoreview review --severity high
+
+# Show medium and high severity
+bitoreview review --severity medium
+```
+
+#### Output options
+
+**`--interactive, -i`**
+
+Enable interactive mode to review and apply fixes one by one.
+
+**Example:**
+
+```bash
+bitoreview review --interactive
+# or
+bitoreview review -i
+```
+
+**`--plain`**
+
+Output plain text without colors or formatting, suitable for logs and CI/CD.
+
+**Example:**
+
+```bash
+bitoreview review --plain
+bitoreview review --plain > review-report.txt
+```
+
+**`--prompt-only`**
+
+Minimal output optimized for AI agent integration.
+
+**Example:**
+
+```bash
+bitoreview review --prompt-only
+```
+
+**`--no-color`**
+
+Disable colored output (similar to `--plain` but retains structure).
+
+**Example:**
+
+```bash
+bitoreview review --no-color
+```
+
+#### SCM options
+
+**`--scm <type>`**
+
+Override automatic SCM detection.
+
+**Supported values:**
+
+* `git` - Git repository
+* `svn` - Subversion repository
+* `hg` - Mercurial repository
+* `p4` - Perforce repository
+* `plain` - No version control (analyze files directly)
+
+**Example:**
+
+```bash
+bitoreview review --scm git
+bitoreview review --scm plain
+```
+
+#### Configuration options
+
+**`--config, -c <path>`**
+
+Use a custom configuration file path instead of `.bitoreview.yaml` in the project root.
+
+**Example:**
+
+```bash
+bitoreview review --config .bitoreview-custom.yaml
+bitoreview review -c config/bitoreview.yaml
+```
+
+**`--api-key <key>`**
+
+Provide API key directly via command line (overrides environment and config file).
+
+**Example:**
+
+```bash
+bitoreview review --api-key YOUR_API_KEY_HERE
+```
+
+**`--cwd <path>`**
+
+Set the working directory for the review.
+
+**Example:**
+
+```bash
+bitoreview review --cwd /path/to/project
+```
+
+#### Debugging options
+
+**`--debug, -d`**
+
+Enable debug output for troubleshooting.
+
+**Example:**
+
+```bash
+bitoreview review --debug
+bitoreview review -d
+```
+
+**`--verbose, -v`**
+
+Enable verbose logging for detailed information.
+
+**Example:**
+
+```bash
+bitoreview review --verbose
+bitoreview review -v
+```
+
+**`--max-retries <number>`**
+
+Set the number of retry attempts for API calls (default: 2).
+
+**Example:**
+
+```bash
+bitoreview review --max-retries 5
+```
+
+### `config` command
+
+Manage configuration and API keys.
+
+#### Set API key
+
+```bash
+bitoreview config set-api-key [key]
+```
+
+**Interactive mode** (prompts for key):
+
+```bash
+bitoreview config set-api-key
+```
+
+**Direct mode** (provide key in command):
+
+```bash
+bitoreview config set-api-key YOUR_API_KEY_HERE
+```
+
+#### Show API key
+
+Display your configured API key (masked for security).
+
+```bash
+bitoreview config show-api-key
+```
+
+### Global options
+
+#### `--help, -h`
+
+Display help for any command.
+
+**Examples:**
+
+```bash
+bitoreview --help
+bitoreview review --help
+bitoreview config --help
+```
+
+#### `--version`
+
+Show the installed CLI version.
+
+**Example:**
+
+```bash
+bitoreview --version
+```
+
+### Option combinations
+
+AI Code Reviews in CLI allows you to combine multiple options for precise control:
+
+```bash
+# Fast pre-commit security check
+bitoreview review --type uncommitted --focus security --mode essential
+
+# Comprehensive performance review against main
+bitoreview review --base main --focus performance
+
+# High-severity bugs only in specific files
+bitoreview review src/critical/*.js --focus bugs --severity high
+
+# Plain text output for CI/CD with retries
+bitoreview review --plain --max-retries 3
+```
+
+
+# Troubleshooting
+
+Solutions to common issues when using AI Code Reviews in CLI.
+
+#### Enable debug output
+
+```shellscript
+bitoreview review --debug
+# or
+bitoreview review -d
+```
+
+#### Enable verbose logging
+
+```shellscript
+bitoreview review --verbose
+# or
+bitoreview review -v
+```
+
+#### Common issues
+
+**Issue: "API key not found"**
+
+```shellscript
+# Set your API key
+bitoreview config set-api-key YOUR_KEY
+
+# Verify it's set
+bitoreview config show-api-key
+```
+
+**Issue: "Wingman binary not found"**
+
+Re-run the CLI installer to reinstall wingman:
+
+* **macOS/Linux (Terminal):**
+
+```shellscript
+curl -fsSL https://bitoreview.bito.ai/install.sh | bash
+```
+
+* **Windows (PowerShell):**
+
+```shellscript
+irm https://bitoreview.bito.ai/install.ps1 | iex
+```
+
+**Issue: Slow reviews on large codebases**
+
+* Use `--mode essential` for faster feedback
+* Focus on specific files: `bitoreview review src/changed-file.js`
+* Use `--type uncommitted` to limit scope
+
+**Issue: Too many low-priority issues**
+
+```shellscript
+# Filter to high severity only
+bitoreview review --severity high
+
+# Or use essential mode
+bitoreview review --mode essential
+```
+
+#### Performance expectations
+
+|    Codebase size    | Approximate time |
+| :-----------------: | :--------------: |
+|   Small (<5 files)  |   30-60 seconds  |
+| Medium (5-20 files) |    1-3 minutes   |
+|  Large (20+ files)  |    3-8 minutes   |
 
 
 # Bito CLI
@@ -9153,953 +13012,6 @@ Despite its advantages, RAG also comes with its set of challenges:&#x20;
 Retrieval Augmented Generation is a significant step forward in the NLP field. By allowing machines to access a vast array of information and create something meaningful from it, RAG opens up a world of possibilities for AI applications. &#x20;
 
 Whether you're a developer looking to build smarter AI systems, a business aiming to improve customer experience, or just an AI enthusiast, understanding RAG is crucial for advancing in the dynamic field of artificial intelligence.&#x20;
-
-
-# Prompts
-
-A prompt, in the simplest terms, is the initial input or instruction given to an AI model to elicit a response or generate content. It's the human touchpoint for machine intelligence, a cue that sets the AI's gears in motion.&#x20;
-
-Prompts are more than mere commands; they are the seeds from which vast trees of potential conversations and content grow. Think of them as the opening line of a story, the question in a quiz, or the problem statement in a mathematical conundrum – the prompt is the genesis of the AI's creative or analytical output.&#x20;
-
-For example, when you ask GPT-4o "What's the best way to learn a new language?" you've given it a prompt. The AI then processes this and generates advice based on its training data.&#x20;
-
-## The Art of Prompt Engineering&#x20;
-
-Prompt engineering is a discipline in itself, evolving as an art and science within AI communities. Crafting effective prompts is akin to programming without code; it's about phrasing and framing your request to the AI in a way that maximizes the quality and precision of its output.&#x20;
-
-Good prompt engineering can involve:&#x20;
-
-* **Being specific:** Clearly defining what you want the AI to do.&#x20;
-* **Setting the tone:** Informing the AI of the style or mood of the content you expect.&#x20;
-* **Contextualizing:** Providing background information to guide the AI's responses.&#x20;
-
-**Example:** Instead of saying, "Tell me about France," a well-engineered prompt would be, "Write a short travel guide for first-time visitors to France, highlighting top attractions, cultural etiquette, and local cuisine."&#x20;
-
-## The Role of Prompts in Generative AI&#x20;
-
-Generative AI, which includes everything from text to image generation models, relies heavily on prompts to determine the direction of content creation. Prompts for generative AI act as a blueprint from which the model can conjure up entirely new pieces of content – whether that's an article, a poem, a piece of art, or a musical composition.&#x20;
-
-Prompts tell the AI not just what to create, but can also suggest how to create it, influencing creativity, tone, structure, and detail. As generative AI grows more sophisticated, the potential for complex and nuanced prompts increases, allowing for more customized and high-fidelity outputs.&#x20;
-
-**Example:** Prompting an AI with "Create a poem in the style of Edgar Allan Poe about the sea" instructs the model to adopt a specific literary voice and thematic focus.&#x20;
-
-## Challenges and Considerations&#x20;
-
-Crafting the perfect prompt isn't always straightforward. One of the challenges lies in the AI's interpretation of the prompt. Ambiguity can lead to unexpected or unwanted results, while overly restrictive prompts may stifle the AI's creative capabilities.&#x20;
-
-Moreover, ethical considerations arise when prompts are designed to elicit biased or harmful content. The AI's response is contingent upon its training data, and if that data includes prejudiced or false information, the output may reflect those biases. Responsible prompt engineering thus also involves an awareness of potential harm and the implementation of safeguards against it.&#x20;
-
-**Example:** To avoid bias in AI-generated news summaries, prompts should be engineered to require neutrality and fact-checking.&#x20;
-
-## Conclusion&#x20;
-
-Prompts are the simple commands or questions we use to kickstart a conversation with AI, guiding it to understand and generate the responses or content we seek. They're like the steering wheel for the AI's capabilities, crucial for navigating the vast landscape of information and creativity the AI models offer.&#x20;
-
-As we continue to interact with and shape AI technology, mastering the use of prompts becomes our way of ensuring that the conversation flows in the right direction. Simply put, the better we become at asking, the better AI gets at answering.&#x20;
-
-So, the next time you interact with a language model, remember that the quality of the output is often a direct reflection of your input - your prompt is the key.&#x20;
-
-
-# Prompt engineering
-
-Prompt Engineering is the art and science of crafting inputs (prompts) that guide AI to produce the desired outputs. It's about understanding how to communicate with an AI in a way that leverages its capabilities to the fullest. Think of it as giving directions to a supremely intelligent genie without any misunderstandings.&#x20;
-
-{% hint style="info" %}
-In Bito’s backend, we do a lot of prompt engineering to ensure that you always receive accurate outputs.
-{% endhint %}
-
-## Why is it Important?&#x20;
-
-Generative AI, like OpenAI’s GPT models, are revolutionizing industries from content creation to coding. But their utility hinges on the quality of the prompts they receive. A well-engineered prompt can yield rich, accurate, and nuanced responses, while a poor one can lead to irrelevant or even nonsensical answers.&#x20;
-
-## The Anatomy of a Good Prompt&#x20;
-
-### Clarity and Specificity&#x20;
-
-AI models are literal. If you ask for an article, you'll get an article. If you ask for a poem about dogs in space, you’ll get exactly that. The specificity of your request can significantly alter the output.&#x20;
-
-**Example:**&#x20;
-
-* **Vague Prompt:** Write about health.&#x20;
-* **Engineered Prompt:** Write a comprehensive guide on adopting a Mediterranean diet for improving heart health, tailored for beginners.&#x20;
-
-### Contextual Information&#x20;
-
-Providing context helps the AI understand the nuance of the request. This could include tone, purpose, or background information.&#x20;
-
-**Example:**&#x20;
-
-* **Without Context:** Explain quantum computing.&#x20;
-* **With Context:** Explain quantum computing in simple terms for a blog aimed at high school students interested in physics.&#x20;
-
-### Closed vs. Open Prompts&#x20;
-
-Closed prompts lead to specific answers, while open prompts allow for more creativity. Depending on your goal, you may need one over the other.&#x20;
-
-**Example:**&#x20;
-
-* **Closed Prompt:** What is the capital of France?&#x20;
-* **Open Prompt:** Describe a day in the life of a Parisian.&#x20;
-
-## The Practice of Prompt Engineering&#x20;
-
-Prompt engineering is not a "get it right the first time" kind of task. It involves iterating prompts based on the responses received. Tweaking, refining, and even overhauling prompts based on output can lead to more accurate and relevant results.&#x20;
-
-A significant part of prompt engineering is experimentation. By testing different prompts and studying the outputs, engineers learn the nuances of the AI's language understanding and generation capabilities.&#x20;
-
-Keywords are the bread and butter of prompt engineering. Identifying the right keywords can steer the AI in the desired direction.&#x20;
-
-**Example:**&#x20;
-
-* **Without Keyword Emphasis:** Write about the internet.&#x20;
-* **With Keyword Emphasis:** Write an article focused on the evolution of internet privacy policies.&#x20;
-
-## Advanced Techniques&#x20;
-
-### Chain of Thought Prompts&#x20;
-
-These prompts mimic a human thought process, providing a step-by-step explanation that leads to an answer or conclusion. This can be especially useful for complex problem-solving.&#x20;
-
-**Example:**&#x20;
-
-* **Chain of Thought Prompt:** To calculate the gravitational force on an apple on Earth, first, we determine the mass of the apple and the distance from the center of the Earth...&#x20;
-
-### Zero-Shot and Few-Shot Learning&#x20;
-
-In zero-shot learning, the AI is given a task without previous examples. In few-shot learning, it’s provided with a few examples to guide the response. Both techniques can be leveraged in prompt engineering for better results.&#x20;
-
-**Example:**&#x20;
-
-* **Zero-Shot Prompt:** What are five innovative ways to use drones in agriculture?&#x20;
-* **Few-Shot Prompt:** Here are two ways to use drones in agriculture: 1) Crop monitoring, 2) Automated planting. List three more innovative ways.&#x20;
-
-## Ethical Considerations and Limitations&#x20;
-
-* **Bias and Sensitivity:** Prompt engineers must be mindful of inherent biases and ethical considerations. This includes avoiding prompts that could lead to harmful outputs or perpetuate stereotypes.&#x20;
-* **Realistic Expectations:** LLMs and Generative AI are powerful but not omnipotent. Understanding their limitations is crucial in setting realistic expectations for what prompt engineering can achieve.&#x20;
-* **Data Privacy and Security:** As prompts often contain information that may be sensitive, engineers must consider data privacy and security in their designs.&#x20;
-
-## Conclusion&#x20;
-
-Prompt engineering is more than a technical skill—it’s a new form of linguistic artistry. As we continue to integrate AI into our daily lives, becoming adept at communicating with these systems will become as essential as coding is today.&#x20;
-
-Whether you’re a writer, a developer, or just an AI enthusiast, mastering the craft of prompt engineering will place you at the forefront of this exciting conversational frontier. So go ahead, start crafting those prompts, and unlock the full potential of your AI companions.&#x20;
-
-
-# Account and settings
-
-Manage your Bito workspace, members and the personal settings
-
-<table data-view="cards"><thead><tr><th data-type="content-ref"></th><th></th></tr></thead><tbody><tr><td><a href="account-and-settings/creating-a-bito-account">creating-a-bito-account</a></td><td>Learn how to sign up or log in to Bito</td></tr><tr><td><a href="account-and-settings/workspace">workspace</a></td><td>Learn how to create, join, or change workspace</td></tr><tr><td><a href="account-and-settings/managing-workspace-members">managing-workspace-members</a></td><td>Invite coworkers and manage their workspace membership</td></tr><tr><td><a href="account-and-settings/setting-ai-output-language">setting-ai-output-language</a></td><td>Personalize Bito to speak your language</td></tr><tr><td><a href="account-and-settings/managing-user-access-levels">managing-user-access-levels</a></td><td>Learn about different access levels and permissions</td></tr><tr><td><a href="account-and-settings/access-key">access-key</a></td><td>An alternative to standard email and OTP authentication</td></tr></tbody></table>
-
-
-# Creating a Bito account
-
-Try Advanced AI Coding Assistant for Free
-
-You would need to create an account with your email to use Bito. You can sign up for Bito directly from the IDE extension or the Bito web interface at <https://alpha.bito.ai/>.&#x20;
-
-1. After you install the Bito extension, click the "Sign up or Sign-in" button on the Bito sign-up flow screen.
-
-<figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FrKXn8cHKNAL5GnpscTIz%2Fscrnli_10_11_2023_2-20-15%20PM.png?alt=media&#x26;token=0b44a956-ca5d-449d-98c2-c48231d50b02" alt=""><figcaption></figcaption></figure>
-
-2. In the next screen, enter your work email address, and verify through a six-digit code sent to your email address.&#x20;
-
-<figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FfBan4b3U8lc5mjiMlqFU%2Fimage.png?alt=media&#x26;token=5c517cd8-7450-4857-a9e1-bfb16bd5e970" alt=""><figcaption></figcaption></figure>
-
-<figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FFdYZqY99H9Uc5edpKF81%2Fimage.png?alt=media&#x26;token=d6f1cc20-880e-44e3-b48b-dffb5bf7fb5e" alt=""><figcaption></figcaption></figure>
-
-3. Once your email is verified, you will get an option to create your profile. Enter your full name and set the language for the AI setup. Bito uses this setting to generate the output regardless of prompt language. &#x20;
-
-<figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FpPJRCUaojm4vLIHlz1ts%2Fimage.png?alt=media&#x26;token=000cf658-5583-429f-a43f-a0902d7afcb4" alt=""><figcaption></figcaption></figure>
-
-Now, let's learn[ **how to create a new workspace or join an existing one**](https://docs.bito.ai/help/account-and-settings/workspace) to start using Bito.
-
-
-# Workspace
-
-Learn How to Create, Join, or Change Workspace
-
-A workspace is a dedicated environment or space where teams can collaborate and use Bito services. After logging into your Bito account, you can either create a new workspace or join an existing one you've been invited to.
-
-{% hint style="info" %}
-You can use Bito in a single-player mode for all the use cases. However, it works best when your coworkers join the Workspace for collaboration.
-{% endhint %}
-
-## Create a New Workspace
-
-The link to create a new workspace will appear at the bottom of the sign-up flow screen. Click on "Create Workspace" to get started.
-
-<figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FHWxQUAPaH5sVDqga1dzu%2Fscrnli_10_11_2023_2-22-59%20PM.png?alt=media&#x26;token=d19d8cb2-9d6f-4914-bed7-5a895597a73f" alt="" width="548"><figcaption></figcaption></figure>
-
-Now, enter the name of the workspace. You can also choose to make this workspace discoverable by the users with the same domain email as your email. Finally, click on the "Next" button to proceed creating a new workspace.
-
-<figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2Fb6VbR8KXhaS0Y3BjpkEm%2FScreenshot%202023-10-11%20020015.png?alt=media&#x26;token=c74aa767-af5d-4c7b-bd2e-a2c15e146709" alt="" width="548"><figcaption></figcaption></figure>
-
-{% hint style="info" %}
-For example, if your email is <smith@mywebsite.com> and you enable the "Workspace discovery" feature, then any other person with an email that ends in @mywebsite.com (like <john@mywebsite.com>, <furqan@mywebsite.com>, and so on) can join your workspace after they sign in.
-
-You can always switch this feature off later by visiting the [**Workspace Settings**](https://alpha.bito.ai/home/settings/advance-settings) page.
-{% endhint %}
-
-{% hint style="info" %}
-Workspace discovery feature is not available for public email addresses like @gmail.com, @outlook.com, @yahoo.com, etc.
-{% endhint %}
-
-Once you complete the Workspace setup, Bito will be ready to use.
-
-## Join an Existing Workspace
-
-If your email domain is allowed for the Workspace, or your coworker invited you, you will see the Workspace listed during the sign-up flow under the "Workspaces Available to Join" list.
-
-Simply click on the "Join" button given in front of the workspace you want to join. Joining your company or team Workspace takes less than a minute.
-
-<figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2Fqel6Daae7iDdBCscKnar%2FScreenshot%202023-10-11%20015945.png?alt=media&#x26;token=9a76b5af-6697-4dd7-ab30-2eb6af7e273e" alt="" width="548"><figcaption></figcaption></figure>
-
-Alternatively, you can join the Workspace through the Workspace link shared by your coworker.
-
-<figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FCgFvEd6zWzp7YVGwLXcz%2Fscrnli_10_11_2023_2-41-20%20PM.png?alt=media&#x26;token=447f8451-865a-43da-858c-48fc11f085b5" alt=""><figcaption></figcaption></figure>
-
-## Change Workspace
-
-Follow the below steps to switch to a different workspace:
-
-1. First log out of your Bito account.
-
-<figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FELpLDBOMVjAQ8nkPd3J1%2Fscrnli_10_11_2023_3-33-22%20PM.png?alt=media&#x26;token=523b51ae-945f-42cc-a3db-3c34248b288a" alt=""><figcaption></figcaption></figure>
-
-2. Then, log back in and choose the workspace you want from the available list.
-
-<figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FzlQEezrD2Fnu8hwfw5YV%2FScreenshot%202023-10-11%20015929.png?alt=media&#x26;token=3e4ee15f-5903-4eea-aa13-6e0885b2d97a" alt="" width="548"><figcaption></figcaption></figure>
-
-### How to See Which Workspace You Are In?
-
-In the IDE extension, place your mouse cursor over the workspace icon. The workspace name will show up as a tooltip.
-
-<figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2F5J2vqqbLURf4qs7NmmXo%2Fscrnli_10_11_2023_2-50-44%20PM.png?alt=media&#x26;token=1e20fd29-5ad1-4148-a317-5f2be27814bc" alt="" width="521"><figcaption></figcaption></figure>
-
-
-# Managing  workspace members
-
-Bring your team together
-
-In Bito, collaboration happens within a **Workspace**, where team members are assigned roles and access based on their responsibilities. In most cases, every organization would create one Workspace. Anyone can [**sign up on Bito**](https://alpha.bito.ai/), create a workspace for their team, and invite their coworkers to join the Workspace.&#x20;
-
-The [**Manage Users → Members**](https://alpha.bito.ai/home/members) dashboard introduces a clear, flexible interface for managing user access and feature seats across your team.
-
-## Seat management overview
-
-At the top of the **Members** dashboard, you’ll see a summary of your seat usage and assignment status:
-
-* **Seats purchased**: Displays the total number of seats your workspace has purchased and the total billing amount.
-* **Seats assigned**: Shows how many of those seats are assigned for:
-  * **IDE Code Reviews**
-  * **Git Code Reviews**
-* **Seat assignment mode**:
-  * **Auto (Assign & Buy):** In this mode, available seats will be automatically assigned to developers (marked as [Eligible](https://docs.bito.ai/billing-and-plans/overview#assigning-code-review-agent-seats)) when they join the workspace or when they submit their first pull request reviewed by Bito. If all seats are assigned, new seat is purchased and assigned automatically.
-    * ***Note:** This mode is useful for dynamic teams where new contributors are added frequently.*
-    * ***Note:** This is the default mode for all new workspaces.*
-  * **Auto (Assign only):** In this mode, available seats will be automatically assigned to developers (marked as [Eligible](https://docs.bito.ai/billing-and-plans/overview#assigning-code-review-agent-seats)) when they join the workspace or when they submit their first pull request reviewed by Bito. If no seats are available, Bito will not purchase additional seats, and the developer will not gain access to Bito features.
-  * **Manual:** In this mode, workspace admins need to manually purchase seats and [assign them to developers](https://docs.bito.ai/billing-and-plans/overview#assigning-code-review-agent-seats) as needed. Bito will review pull requests only for submitters who have an assigned seat.
-    * ***Note:** This mode is ideal for teams that want tighter control over who gets access and when billing occurs.*
-
-You can switch between these modes based on your team's seat allocation preferences.
-
-<a href="../../billing-and-plans/overview#seat-management" class="button primary">Learn more</a>
-
-<figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2Fk892sPlZPXvsMUJJQD8O%2Fscrnli_jE3Uiba03IjHl3.png?alt=media&#x26;token=0357c01b-3100-48d6-acb9-6222200ce6ef" alt=""><figcaption></figcaption></figure>
-
-## Managing members by feature
-
-Below the seat overview, you'll find three tabs to manage different types of access:
-
-#### 1. **Git Code Review tab**
-
-Assign or unassign seats to members specifically for the Git based Code Review Agent feature. Each member listed here can be toggled on or off depending on whether you want to allocate a seat for this feature.
-
-<figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FtyTtpwy7rcDF5gS0eiCo%2Fscrnli_4XpAlWqsuim28d.png?alt=media&#x26;token=fb85bf93-c45c-453c-bed1-92ea4dad2251" alt=""><figcaption></figcaption></figure>
-
-#### 2. **IDE Code Review tab**
-
-Similar to the Git Code Review tab, this tab lets you assign or remove access to Bito's AI Chat and code review feature in supported IDEs. You can also [invite new members](#inviting-coworkers-to-the-workspace) to join the workspace.
-
-<figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FkCCdW3bit3FaCDFXdZUa%2Fscrnli_0JzrS8S3Gip93M_1.png?alt=media&#x26;token=d96f858a-ed59-48c2-aebb-8ca7f66a9917" alt=""><figcaption></figcaption></figure>
-
-#### 3. **Admin tab**
-
-This tab is dedicated to managing administrative roles within the workspace. Only members with elevated permissions are shown here.
-
-This tab displays a table with the following information:
-
-* **Name**: Displays the full name and email address of the member.
-* **Role**: A dropdown that allows you to set or update the user’s administrative role:
-  * **Owner**: Full control over the workspace.
-  * **Admin**: Access to most workspace management functions.
-  * **+ Billing contact**: (Checkbox) Receives billing-related communications.
-  * **Billing only**: (Button) Limits the member to billing management tasks.
-
-**Additional options:**
-
-Each admin row has a three-dot menu offering:
-
-* **Remove from Admin members**: Revoke administrative privileges.
-* **Remove from workspace**: Completely remove the user from the workspace.
-
-<figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FjvjwFLEt9xotsiKVcX3j%2Fscrnli_hRg3q01U3ivPsa.png?alt=media&#x26;token=62ef6fce-4d55-4ee1-a8b1-00d7c1997e96" alt=""><figcaption></figcaption></figure>
-
-## Inviting coworkers to the Workspace
-
-You can use Bito in a single-player mode for all the use cases. However, it works best when your coworkers join the Workspace to collaborate with Bito. There are three ways you can invite your coworkers.&#x20;
-
-**Option 1** - Allow your work e-mail domain for the Workspace. This setting is turned on by default, and all users with the same e-mail domain as yours will automatically see the Workspace under "Pending Invitations" when signing up in Bito. You can manage this setting after you create the Workspace through the "Settings" page in your Bito account.&#x20;
-
-{% hint style="info" %}
-You may still need to notify your coworkers about Bito and share Bito workspace URL. We don't send e-mails to your coworkers unless you invite them to the Workspace.&#x20;
-{% endhint %}
-
-**Option 2** - Invite your coworkers via e-mail when you create your Workspace or later from your workspace setting.&#x20;
-
-**Option 3**- Share a web link specific to your Workspace via the channel of your choice: e-mail, Slack, or Teams. The link is automatically created and shown when creating a workspace or on the workspace settings page.
-
-## Adding Admin members
-
-To add a new admin:
-
-1. Click the **“Add members”** button at the top of the Admin tab.
-2. In the popup:
-   * Select an existing user from your workspace, **or**
-   * Invite a new member by entering their email address.
-3. Assign the appropriate role and permissions as needed.
-
-
-# Setting AI output language
-
-Communicate in Your Preferred Language
-
-Bito users come from all over the world, and it makes it super easy to set the AI output language. Bito will automatically generate the text output in the language in your user profile setting, regardless of the prompt input language.&#x20;
-
-Bito allows setting this language when creating an account, as described in [creating-a-bito-account](https://docs.bito.ai/help/account-and-settings/creating-a-bito-account "mention").&#x20;
-
-You can also set or change this setting anytime by going to [**Settings > Profile settings**](https://alpha.bito.ai/home/profile) in Bito Cloud. Here is a quick video walkthrough.&#x20;
-
-{% embed url="<https://www.loom.com/share/2b8100233f2145a5ad792cd6e1d9e8b0>" %}
-Setting AI output language in Bito
-{% endembed %}
-
-**Supported Languages:**
-
-Bito offers 20+ languages for you to choose from. Here is the list of currently supported languages:
-
-1. English **(Default Language)**
-2. Bulgarian (български)
-3. Chinese (Simplified) (简体中文)
-4. Chinese (Traditional) (繁體中文)
-5. Czech (čeština)
-6. French (français)
-7. German (Deutsch)
-8. Hungarian (magyar)
-9. Italian (italiano)
-10. Japanese (日本語)
-11. Korean (한국어)
-12. Polish (polski)
-13. Portuguese (português)
-14. Russian (русский)
-15. Spanish (español)
-16. Turkish (Türkçe)
-17. Vietnamese (Tiếng Việt)
-18. Dutch (Nederlands)
-19. Hebrew (עִברִית)
-20. Arabic (عربي)
-21. Malay (Melayu)
-22. Hindi (हिंदी)
-
-**Using the Language Support Feature**
-
-Once you have selected your preferred language, Bito will communicate with you in your selected language. Take full advantage of this feature by:
-
-* Asking questions or giving commands to Bito in your selected language
-* Receiving responses and outputs from Bito in the language you've selected
-
-Note: All responses from Bito will appear in the selected language, regardless of the input language
-
-Enjoy the convenience of conversing with Bito in your native language and take your coding experience to a new level!&#x20;
-
-
-# Managing user access levels
-
-Understanding User Roles in Bito Workspaces
-
-A Bito Workspace represents your organization. It is the highest level of organization in Bito.  &#x20;
-
-In a Bito Workspace, different user types play distinct roles in managing and collaborating within the workspace. Here is an overview of the three user types: **Owner, Admin, and User**. Understanding these roles will help you effectively manage your workspace and optimize team collaboration.&#x20;
-
-**Owner:** The Owner holds the highest level of authority within the workspace&#x20;
-
-**Admin:** Admins have a significant role in managing the workspace alongside the Owner&#x20;
-
-**User:** Users have access to the workspace with limited administrative privileges&#x20;
-
-Here's a table summarizing the roles of the different user types in a Bito Workspace:
-
-<table><thead><tr><th width="292"></th><th>Owner</th><th>Admin</th><th>Member</th></tr></thead><tbody><tr><td>Make or Remove Other Owner</td><td>Yes</td><td>No</td><td>No</td></tr><tr><td>Promote another user to admin or remove admin</td><td>Yes</td><td>Yes</td><td>No</td></tr><tr><td>Manage Subs and Billing</td><td>Yes</td><td>Yes</td><td>No</td></tr><tr><td>Manage Overage Limits</td><td>Yes</td><td>Yes</td><td>No</td></tr><tr><td>Add Member by E-mail</td><td>Yes</td><td>Yes</td><td>No</td></tr><tr><td>Access and Share Join workspace link</td><td>Yes</td><td>Yes</td><td>Yes</td></tr><tr><td>Deactivate Member</td><td>Yes</td><td>Yes</td><td>No</td></tr><tr><td>Edit WS Settings - Name, Discovery</td><td>Yes</td><td>Yes</td><td>No</td></tr><tr><td>Approve Member [When joining from the "Invite Workspace" web link]</td><td>Yes</td><td>Yes</td><td>No</td></tr><tr><td>Force Reauthentication</td><td>Yes</td><td>Yes</td><td>No</td></tr></tbody></table>
-
-
-# Access key
-
-An alternative to standard email and OTP authentication
-
-**Bito Access Key** allows for an alternate authentication mechanism in contrast to the standard Email & OTP based authentication. Access Keys can be created via the [Bito Web UI](https://alpha.bito.ai/) and utilized within the [Bito CLI](https://docs.bito.ai/other-bito-ai-tools/bito-cli). This guide outlines the process of creating or deleting an Access Key.
-
-<figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2Ft16iiwHjspLM4hlT1BrD%2Fscrnli_kddkiyfRuZeUdC.png?alt=media&#x26;token=422dec4b-a477-48c2-8efb-fe587842260c" alt=""><figcaption></figcaption></figure>
-
-## Creating an Access Key&#x20;
-
-Follow these steps to create a Bito Access Key:&#x20;
-
-1. Log in to your account at: <https://alpha.bito.ai/>&#x20;
-2. Navigate to **Settings > Advanced settings** by [visiting this link](https://alpha.bito.ai/home/advanced).
-3. Click the **Create new key** button.
-4. Enter a name for your Bito Access Key to make it easily identifiable.
-5. Click **Create Bito Access Key** to generate your key.
-6. Copy the key immediately, as it will not be displayed again after you close the popup.
-
-{% hint style="info" %}
-It's crucial to protect your Bito Access Key. Avoid checking it into your code repositories to prevent accidental exposure. If you suspect that your Bito Access Key has been compromised, promptly delete it and create a new one. You can do this anytime.
-{% endhint %}
-
-{% hint style="info" %}
-You can create multiple Bito Access Keys to use in different projects.
-{% endhint %}
-
-## Deleting an Access Key&#x20;
-
-To delete an existing Bito Access Key, follow these steps:&#x20;
-
-1. Log in to your account at: <https://alpha.bito.ai/>&#x20;
-2. Navigate to **Settings > Advanced settings** by [visiting this link](https://alpha.bito.ai/home/advanced).
-3. Click the **trash icon** next to the Bito Access Key you want to delete.
-4. A confirmation popup will appear asking if you are sure you want to delete the key. Click **Yes** to proceed.
-
-{% hint style="info" %}
-Once a Bito Access Key is deleted, it cannot be recovered. So, before deleting a key, ensure it is not in use.
-{% endhint %}
-
-
-# Billing and plans
-
-Learn About Subscription Plans, Payment Methods, and Refunds.
-
-<table data-view="cards"><thead><tr><th data-type="content-ref"></th><th></th></tr></thead><tbody><tr><td><a href="billing-and-plans/overview">overview</a></td><td>Guide to billing and paid plans</td></tr><tr><td><a href="billing-and-plans/payment-methods">payment-methods</a></td><td>Learn how to pay and manage your payment methods</td></tr><tr><td><a href="billing-and-plans/managing-workspace-plan">managing-workspace-plan</a></td><td>Upgrade or downgrade your subscription anytime!</td></tr><tr><td><a href="billing-and-plans/pay-for-additional-workspace-members">pay-for-additional-workspace-members</a></td><td>Learn how payments work when you invite a coworker to the workspace</td></tr><tr><td><a href="billing-and-plans/advanced-ai-requests-usage">advanced-ai-requests-usage</a></td><td>Manage your spending to avoid unexpected expenses</td></tr><tr><td><a href="billing-and-plans/billing-history">billing-history</a></td><td>Access your payment records</td></tr><tr><td><a href="billing-and-plans/billing-details">billing-details</a></td><td>Manage your billing address and other details</td></tr><tr><td><a href="billing-and-plans/security">security</a></td><td>How stripe protects your sensitive information</td></tr><tr><td><a href="billing-and-plans/refund-policy">refund-policy</a></td><td>We currently do not give refunds</td></tr><tr><td><a href="billing-and-plans/discounts">discounts</a></td><td>We currently do not offer discounts</td></tr></tbody></table>
-
-
-# Overview
-
-Guide to Billing and Paid Plans
-
-Bito offers four pricing plans designed to support developers and teams of all sizes:&#x20;
-
-1. Free Plan
-2. Team Plan
-3. Professional Plan
-4. Enterprise Plan
-
-Read more details on [**Bito's Pricing**](https://bito.ai/pricing/) page or watch the video below to learn how billing and paid plans work in Bito.
-
-{% embed url="<https://www.youtube.com/watch?v=Xx8vSb5HhXk>" %}
-
-## Free Plan
-
-Bito's **Free Plan** is available at no cost and provides a powerful set of capabilities for individual and hobbyist developers.
-
-**The Free Plan includes:**
-
-* [**Free AI-powered pull request summaries**](https://docs.bito.ai/ai-code-reviews-in-git/key-features#pull-request-summary) for GitHub, GitLab, and Bitbucket
-* [**30+ programming languages**](https://docs.bito.ai/ai-code-reviews-in-git/supported-programming-languages-and-tools) supported (including Python, JavaScript, TypeScript, Go, Rust, and more)
-* [**20+ output languages**](https://docs.bito.ai/ai-code-reviews-in-git/supported-programming-languages-and-tools#supported-output-languages-for-code-review-feedback) available (including English, Chinese, Spanish, and more)
-
-<a href="https://bito.ai/pricing/" class="button primary">Learn more</a>
-
-## Team Plan
-
-The **Team Plan** is designed for small to medium teams (up to 25 seats) who need advanced code review capabilities. It includes all the features of the **Free Plan**, and also provides access to premium features.
-
-The **Team Plan** uses best-in-class AI models such as Claude Sonnet 4, OpenAI's GPT-4o, and Anthropic's Claude Sonnet 3.5.
-
-**Pricing:**
-
-* **Annual:** $12 per seat per month (billed annually)
-* **Monthly:** $15 per seat per month (billed monthly starting on the 1st of the month)
-
-**The Team Plan includes:**
-
-* Everything in Free Plan, plus
-* Unlimited, [**codebase-aware AI code reviews**](https://docs.bito.ai/ai-code-reviews-in-git/key-features#ai-that-understands-your-code) in Git
-* Supports multiple Git platforms, such as:
-  * [GitHub](https://docs.bito.ai/ai-code-reviews-in-git/install-run-using-bito-cloud/guide-for-github)
-  * [GitHub (Self-Managed)](https://docs.bito.ai/ai-code-reviews-in-git/install-run-using-bito-cloud/guide-for-github-self-managed)
-  * [GitLab](https://docs.bito.ai/ai-code-reviews-in-git/install-run-using-bito-cloud/guide-for-gitlab)
-  * [GitLab (Self-Managed)](https://docs.bito.ai/ai-code-reviews-in-git/install-run-using-bito-cloud/guide-for-gitlab-self-managed)
-  * [Bitbucket](https://docs.bito.ai/ai-code-reviews-in-git/install-run-using-bito-cloud/guide-for-bitbucket)
-  * [Bitbucket (Self-Managed)](https://docs.bito.ai/ai-code-reviews-in-git/install-run-using-bito-cloud/guide-for-bitbucket-self-managed)
-* [**Chat with Bito Agent in pull requests**](https://docs.bito.ai/ai-code-reviews-in-git/chat-with-ai-code-review-agent)
-* [**Changelist**](https://docs.bito.ai/ai-code-reviews-in-git/key-features#changelist) (A table that shows what changed in a pull request)
-* [**Line-by-line reviews**](https://docs.bito.ai/ai-code-reviews-in-git/key-features#one-click-to-accept-suggestions) with actionable code suggestions
-* [**Analytics**](https://docs.bito.ai/ai-code-reviews-in-git/code-review-analytics) (Get in-depth insights into your code review process)
-* [**AI code reviews in supported code editors**](https://docs.bito.ai/ai-code-reviews-in-ide/overview) (VS Code, Cursor, Windsurf, and all JetBrains IDEs)
-* [**50 AI Chat requests per user per day**](https://docs.bito.ai/ai-code-reviews-in-ide/ai-chat-in-bito) in Bito IDE extension
-  * ***Note:** Free trial users are limited to 20 AI Chat requests per day.*
-* [**Templates**](https://docs.bito.ai/ai-code-reviews-in-ide/templates) provide ready-made checks to help you quickly analyze and refine your code in the editor.
-
-<a href="https://bito.ai/pricing/" class="button primary">Learn more</a>
-
-## Professional Plan
-
-The **Professional Plan** is designed for growing teams and organizations that need advanced capabilities beyond the **Team Plan**.
-
-**Pricing:**
-
-* **Annual:** $20 per seat per month (billed annually)
-* **Monthly:** $25 per seat per month (billed monthly starting on the 1st of the month)
-
-**The Professional Plan includes:**
-
-* Everything in Team Plan, plus:
-* Unlimited seats
-* [**Custom code review guidelines**](https://docs.bito.ai/ai-code-reviews-in-git/implementing-custom-code-review-rules)
-* [**Jira integration**](https://docs.bito.ai/ai-code-reviews-in-git/jira-integration)
-* Code reviews in CI/CD pipelines
-* Self-hosted for $5 per seat a month
-* Learning system that adapts to your team's preferences
-* Dedicated Slack with Bito team
-* Increased code review limits in your IDE
-
-<a href="https://alpha.bito.ai/home/welcome" class="button primary">Start your 14-day free trial</a>
-
-## Enterprise Plan
-
-The **Enterprise Plan** is aimed at large organizations. It includes all **Professional Plan** features and also provides access to premium features.
-
-**The Enterprise Plan includes:**
-
-* Everything in Professional Plan, plus
-* Bito's AI Architect ([learn more](https://bito.ai/product/ai-architect))
-* Impact analysis across your codebase, services, modules
-* Code reviews in CI/CD pipelines
-* On-prem or self-hosted
-* Multi-org support
-* Customer support
-  * Dedicated CSM
-  * SLA support
-  * Agreement redlines
-  * Custom invoicing and payment terms
-* Security and compliance
-  * SSO, SCIM, and SAML (Coming soon)
-  * Audit Logs (Coming soon)
-
-<a href="https://bit.ly/contact-bito-sales" class="button primary">Contact us to upgrade to Enterprise Plan</a>
-
-## Seat management
-
-Bito uses seat-based billing to give workspace admins precise control over usage and costs.
-
-From the [**Members**](https://alpha.bito.ai/home/members) dashboard, workspace admins can choose how seats are purchased and assigned to users.
-
-### Bito provides three modes for seat management:
-
-{% stepper %}
-{% step %}
-
-### Auto (Assign & Buy)
-
-In this mode, available seats will be automatically assigned to developers (marked as [Eligible](#assigning-code-review-agent-seats)) when they join the workspace or when they submit their first pull request reviewed by Bito. If all seats are assigned, new seat is purchased and assigned automatically.
-
-* ***Note:** This mode is useful for dynamic teams where new contributors are added frequently.*
-* ***Note:** This is the default mode for all new workspaces.*
-  {% endstep %}
-
-{% step %}
-
-### Auto (Assign only)
-
-In this mode, available seats will be automatically assigned to developers (marked as [Eligible](#assigning-code-review-agent-seats)) when they join the workspace or when they submit their first pull request reviewed by Bito. If no seats are available, Bito will not purchase additional seats, and the developer will not gain access to Bito features.
-{% endstep %}
-
-{% step %}
-
-### Manual
-
-In this mode, workspace admins need to manually purchase seats and [assign them to developers](#assigning-code-review-agent-seats) as needed. Bito will review pull requests only for submitters who have an assigned seat.
-
-* ***Note:** This mode is ideal for teams that want tighter control over who gets access and when billing occurs.*
-  {% endstep %}
-  {% endstepper %}
-
-{% hint style="info" %}
-The **Team Plan** supports up to 25 seats, whereas the **Professional Plan** and **Enterprise Plan** allows for unlimited seats.
-{% endhint %}
-
-<figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FoBDDPHO2bhUpFw3iulTP%2Fscrnli_QJ3jsjfiDcfrSt.png?alt=media&#x26;token=fa7b5c66-b351-4b33-829f-99160e219311" alt=""><figcaption></figcaption></figure>
-
-## Add or remove seats manually
-
-Workspace admins can manually purchase additional seats or remove unused ones.
-
-1. Go to the [**Members**](https://alpha.bito.ai/home/members) dashboard and click the **settings** icon at the top-right corner of the table.
-2. In the popup, use the **`+`** and **`−`** icons to adjust the seat count.
-3. Click **Confirm** to apply the changes.
-
-{% hint style="info" %}
-Seat adjustments take effect immediately. If seats are added mid-month, the charges are prorated for the remaining days of the billing cycle.
-{% endhint %}
-
-<figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FGG8a1b2kqUDvV6VMvG8I%2Fscrnli_y0t19cms654sc8_1.png?alt=media&#x26;token=cb131a06-0992-4e74-9e9b-3f9a18b75a1e" alt=""><figcaption></figcaption></figure>
-
-## Seat assignment across Bito products
-
-Seats apply separately to each Bito product:
-
-* **IDE Code Review**\
-  Seats for AI code review in code editors can be assigned to any user in a workspace. These users appear under the **IDE Code Review** tab on the [**Members**](https://alpha.bito.ai/home/members) dashboard.
-* **Git Code Review**\
-  Seats for the AI code review in GitHub, GitLab, and Bitbucket are tied to Git handles that submit pull requests. These handles appear under the **Git Code Review** tab.
-  * In **Auto (Assign & Buy) mode**, seats are assigned (and purchased if necessary) as soon as a Git handle submits its first pull request.
-  * In **Auto (Assign only) mode**, available seats are assigned as soon as a Git handle submits its first pull request. If no seats are available, Bito will not purchase additional seats, and the developer will not gain access to the AI Code Review Agent.
-  * In **Manual mode**, admins must assign seats manually to these Git handles before they can use the AI Code Review Agent.
-
-### Assigning Code Review Agent seats
-
-To manage seat access for your team:
-
-1. Go to the **Git Code Review** tab on the [**Members**](https://alpha.bito.ai/home/members) dashboard.
-2. Find the developer’s **Git handle** (imported automatically after GitHub, GitLab, or Bitbucket integration).
-3. Use the drop-down menu in front of the Git handle and choose one of the following seat statuses:
-   * **Assigned** – Immediately gives the user access to Bito features (such as the AI Code Review Agent).
-   * **Eligible** – Marks the user to automatically receive a seat when one becomes available.
-     * **Note:** This option only applies when your Bito workspace is using **Auto (Assign & Buy)** or **Auto (Assign only)** mode.
-   * **Ineligible** – The user will not receive a seat or access to Bito features.
-
-{% hint style="info" %}
-**Note:**
-
-* In **Auto (Assign & Buy)** or **Auto (Assign only)** mode, available seats are automatically assigned to developers marked as **Eligible**.
-* In **Manual** mode, seats must be explicitly assigned to developers by selecting **Assigned** from the drop-down menu.
-  {% endhint %}
-
-***
-
-All billing and plans functionality is available at [Bito’s website](https://alpha.bito.ai/) by logging in with your email. Additionally, from Bito's IDE plug-in, click on the hamburger menu icon in the top-right corner (denoted by three horizontal lines) and select **Account Settings** to redirect to Bito's website.
-
-<figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FcHvilqSXXduIm3igyV89%2Fscrnli_7_26_2024_9-49-18%20AM.png?alt=media&#x26;token=87f0ff33-b19f-45c5-8582-a93dd6d6317d" alt="" width="473"><figcaption></figcaption></figure>
-
-From there you can go to the [**Billing and Plans**](https://alpha.bito.ai/home/settings/bito-premium/billing) page to access the billing functionality.
-
-<figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2F5R1bjWqVQLKkHkWMkwJd%2Fbilling_ss_2.jpg?alt=media&#x26;token=7b95aac3-8060-442a-a286-d9a6f563a344" alt=""><figcaption></figcaption></figure>
-
-{% hint style="info" %}
-**Note:** You cannot make billing changes directly from the Bito IDE extension.
-{% endhint %}
-
-Bito uses Stripe to handle all payment processing and securely store your credit card/payment information. Bito itself does not store your credit card/payment information.&#x20;
-
-Bito bills at the Workspace level. All users within a given Workspace will be billed on the same plan. You cannot have some users on the **Team Plan** and some users on the **Free Plan**, within the same workspace.
-
-When you [signed up for Bito](https://docs.bito.ai/help/account-and-settings/creating-a-bito-account), you [created or joined a workspace](https://docs.bito.ai/help/account-and-settings/workspace). Primary Owners, Owners, and Admins can change the billing plan for a workspace. You can see your workspace by going to [Home page](https://alpha.bito.ai/) or [Workspace Settings](https://alpha.bito.ai/home/settings/advance-settings) page. You can see your Role by going to [Members](https://alpha.bito.ai/home/settings/members) page. You can change your workspace by logging out, and when you log-in, you will choose which workspace you want to be a part of. It’s similar to Slack, where you can access different workspaces.&#x20;
-
-Within each Workspace, Bito bills at the seat (sometimes referred to as “user”) level from the first of the month to the last day of the month. So, if you have 12 users in your Workspace (let’s call it the “MyCompany” workspace), when an Admin signs up for the **Team Plan**, the “MyCompany” workspace will be billed for all 12 users. Bito’s **Team Plan** costs $15 per user per month. So, you will pay $180 per month for 12 users, and that will be charged on the 1st of the month for the next month. To give an example, on September 1, you would be charged $180 for the month of September.  Any overages you had in terms of accessing Advanced AI models for the month of August, would also be charged on September 1.
-
-{% hint style="info" %}
-To repeat, each month’s bill will include your base $15 per month fee per user for the current month, and the overage charges for the previous month.
-{% endhint %}
-
-Your first month when you sign up, you will be billed for the current month in a prorated fashion.  For example, if you signed up in the middle of March, you would be billed $7.50 per seat (half of the $15 full month fee). &#x20;
-
-For any additional questions, please review the documentation we have. In addition, please feel free to contact Bito at [**support@bito.ai**](mailto:support@bito.ai) with any questions.
-
-
-# Payment methods
-
-Learn How to Pay and Manage Your Payment Methods
-
-## Supported Payment Methods
-
-We use [Stripe](https://stripe.com/) as our trusted payment handler to ensure seamless and secure transactions. We offer a variety of convenient payment methods to cater to your preferences.&#x20;
-
-### Below is a list of accepted payment methods:
-
-* Credit and Debit Cards (Visa, Mastercard, American Express, Diners, Discover, JCB, and China Union Pay)&#x20;
-* Google Pay, Apple Pay, Alipay, Cash App Pay&#x20;
-* Bank Accounts in the US and many other countries
-
-## Manage (Add or Delete) Payment Methods&#x20;
-
-Payment methods for Bito are managed securely by Stripe. You can add or delete payment methods if you want.
-
-{% hint style="info" %}
-Managing payment methods functionality is not available for workspaces on the **Free Plan**.
-{% endhint %}
-
-### To add a new payment method, follow these steps:&#x20;
-
-1. Go to the [**Manage Subscription > Billing and Plans**](https://alpha.bito.ai/home/settings/bito-premium/billing) page.
-2. Click on the "Edit payment methods" button.
-
-   <figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2Fb8doLKuEnZshKK326xJl%2Fb4_1.png?alt=media&#x26;token=ea6fdf59-16fa-4f0b-8110-9a67c4b18a11" alt=""><figcaption></figcaption></figure>
-3. On this page, you will see your currently active plan as well as your existing payments method attached to your account.
-
-   <figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FajJR8EBRTyQRmlod4uFw%2Fb5.jpg?alt=media&#x26;token=9ece712e-a032-471f-9706-c7b539b5ea34" alt=""><figcaption></figcaption></figure>
-4. Click on the "Add payment method" button.&#x20;
-5. A form will open through which you can add any of our supported payment methods mentioned above.
-
-   <figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FrZls12xmOtVfekWx494k%2Fb6.jpg?alt=media&#x26;token=e7156a52-5993-4256-830b-ef2e9b81d419" alt="" width="375"><figcaption></figcaption></figure>
-6. Fill in the form and press the "Add" button to add a new payment method.
-
-### To delete a payment method, follow these steps:&#x20;
-
-1. Go to the [**Manage Subscription > Billing and Plans**](https://alpha.bito.ai/home/settings/bito-premium/billing) page.
-2. Click on the "Edit payment methods" button.&#x20;
-
-   <figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2Fb8doLKuEnZshKK326xJl%2Fb4_1.png?alt=media&#x26;token=ea6fdf59-16fa-4f0b-8110-9a67c4b18a11" alt=""><figcaption></figcaption></figure>
-3. On this page, you will see your currently active plan as well as your existing payments method attached to your account.&#x20;
-
-   <figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FaTEvGKSjQeRE2AFcThMj%2Fb7.jpg?alt=media&#x26;token=7c32c832-8ce7-4536-abbf-e86a27bdc971" alt=""><figcaption></figcaption></figure>
-4. Click on the three dots button in front of the payment method you want to delete.
-
-   <figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FzdiAnWjFWFDMmbMzvDoO%2Fb8_1.png?alt=media&#x26;token=aafb818d-51e3-49b4-8317-71c2abca8c80" alt=""><figcaption></figcaption></figure>
-5. Now click "Delete" from the popup menu.&#x20;
-6. A warning popup box will open, asking you to confirm whether you really want to delete the payment method.
-
-   <figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FjWLoKkOWPg55cfWUBEgj%2Fb9_1.png?alt=media&#x26;token=2b3ab6fc-1c5a-4d88-af8b-7eb3df6044bd" alt=""><figcaption></figcaption></figure>
-7. Simply click the "Delete payment method" button on this warning popup to remove this payment method from your account.
-8. As you can see in the below screenshot, the "Visa" payment method is removed successfully.
-
-   <figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FR4l4WYAUOQFGdgMWULmU%2Fb10.jpg?alt=media&#x26;token=ac182b01-e283-49ca-89f7-bd5182e3dea4" alt=""><figcaption></figcaption></figure>
-
-{% hint style="info" %}
-If you currently have an active paid plan and only one payment method is attached to your account, then you won't be able to delete it. You can only delete secondary payment methods.
-{% endhint %}
-
-
-# Managing workspace plan
-
-Upgrade or Downgrade Your Subscription Anytime!
-
-## How to Upgrade Workspace Plan?&#x20;
-
-Follow the below steps to upgrade from **Free Plan** to **Team Plan**:&#x20;
-
-1. Go to the [**Manage Subscription > Billing and Plans**](https://alpha.bito.ai/home/settings/bito-premium/billing) page.&#x20;
-2. In the **Current plan** section, click the "Change plan" button.
-
-   <figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FgSam5K2vi8ClVGDOhM7H%2Fb3_1.png?alt=media&#x26;token=a4c0306d-6ac0-460c-bb0b-286b77dc527a" alt=""><figcaption></figcaption></figure>
-3. On this page, you will see your **current plan (i.e., Free Plan)** as well as the **Team Plan**.
-
-   <figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FZcn4r8iBbqKohgNeIoXZ%2Fscrnli_8_30_2024_10-35-56%20AM.png?alt=media&#x26;token=eada7860-a589-4dbc-8455-b03e4cca1903" alt=""><figcaption></figcaption></figure>
-4. Click the "Upgrade" button provided in the **Team Plan**. This action will redirect you to the secure Stripe Checkout page.
-5. On the Stripe Checkout page, you can see the price you have to pay, as well as the form where you can enter your payment details. The price you will see for the **Team Plan** will depend on the number of days and time left in the current month as well as the total number of members in your workspace. Here's a list of [**Payment Methods**](https://docs.bito.ai/help/billing-and-plans/payment-methods) we accept.
-
-   <figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FwB9Gvcy8BhIUh2uWBXtc%2Fb12.jpg?alt=media&#x26;token=0ebf50d9-be03-4dbd-a022-3596e37d804c" alt=""><figcaption></figcaption></figure>
-6. Select your preferred payment method, fill in the form, and click on the “Subscribe” button.
-7. After completing the transaction, you will be redirected to Bito where a confirmation message will be shown.
-8. As you can see in the below screenshot, your workspace plan has successfully upgraded from **Free Plan** to **Team Plan**.
-
-   <figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FOnSiDVjdYSjeKFfEQd8X%2Fb13.jpg?alt=media&#x26;token=70783eb5-6197-408f-b361-8c6c87f275e8" alt=""><figcaption></figcaption></figure>
-
-That's it! You can now start using the features of **Team Plan**.&#x20;
-
-## How to Downgrade/Cancel Workspace Plan?&#x20;
-
-You can cancel your paid plan at any time and move back to the **Free Plan**. When you do cancel, you will retain the use of your paid plan until the end of the billing cycle as you have already paid for that. At this time, we are unable to offer refunds. Also, any additional usage beyond the allocated limit of your paid plan will be charged in the next billing cycle.&#x20;
-
-Follow the below steps to downgrade from **Team Plan** to **Free Plan**:
-
-1. Go to the [**Manage Subscription > Billing and Plans**](https://alpha.bito.ai/home/settings/bito-premium/billing) page.&#x20;
-2. In the **Current plan** section, click the "Cancel plan" button.&#x20;
-
-   <figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FKLXQaFmei34bOoAgUyig%2Fb14_1.png?alt=media&#x26;token=beecf109-d874-46a5-8865-7d92fa6b5863" alt=""><figcaption></figcaption></figure>
-3. A popup will appear. It has two steps.&#x20;
-
-   * In the first step, you have to select a reason for canceling your plan. It will help us improve Bito. After selecting a reason, click “Continue to cancel”.
-
-   <figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FOxwaKee18rXpDwQUdcaw%2Fb15_1.png?alt=media&#x26;token=c03cc8f9-2068-48ee-a839-8cc820abf7d9" alt=""><figcaption></figcaption></figure>
-
-   * The second step provides you with some information about what to expect after your plan is canceled. If all looks good press the “I want to cancel” button to cancel your subscription.
-
-   <figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FbyCmP1HPnW4V0jr9qHq5%2Fscrnli_10_13_2023_12-37-24%20PM_cropped.png?alt=media&#x26;token=3ae1fc30-163f-4177-8ee3-3cf8145dd4ff" alt=""><figcaption></figcaption></figure>
-
-{% hint style="info" %}
-Once you cancel your subscription, you can easily renew it before the next billing cycle.
-{% endhint %}
-
-## How to Renew Workspace Plan?&#x20;
-
-To renew your Workspace plan, follow these steps:&#x20;
-
-1. Go to the [**Manage Subscription > Billing and Plans**](https://alpha.bito.ai/home/settings/bito-premium/billing) page.&#x20;
-2. In the “Current plan” section, click the "Renew plan" button. You will be redirected to a secure page powered by Stripe.&#x20;
-
-   <figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2Fjvidc3f3dSeAeMLO5V6x%2Fb19_1.png?alt=media&#x26;token=6ef83e42-9dd3-4aa1-aef9-79d93a7cc530" alt=""><figcaption></figcaption></figure>
-3. If you had previously cancelled your subscription plan, you will see the details of your cancelled plan on this page, along with a “Renew plan” button.&#x20;
-
-   <figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2Fym0ZO1c599iOytek2EeX%2Fb20_1.png?alt=media&#x26;token=aabcf42a-8674-4022-bafc-50fd53986cea" alt=""><figcaption></figcaption></figure>
-4. Click on the “Renew plan” button to proceed with the renewal process.&#x20;
-5. On this page, you will find all the details of your previously cancelled plan before you renew it.
-
-   <figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2Fy8CqxqPHpa6tl5zNKtoR%2Fb21_1.png?alt=media&#x26;token=cdd32ea1-2523-4ecd-be10-c099d76e3156" alt=""><figcaption></figcaption></figure>
-6. Click on the “Renew plan” button to complete the renewal of your subscription or press the “Go back” button to return to the previous screen.
-
-
-# Pay for additional workspace members
-
-Learn How Payments Work When You Invite a Coworker to the Workspace
-
-If your workspace is using the **Free Plan**, your account will not be charged when you invite new members. However, if your workspace has subscribed to the **Team Plan**, each member you invite will be charged based on the price of the **Team Plan** and the number of days and time left in the current month. Additionally, the **600 Advanced AI Model requests** will be added to the total quota of the workspace for each member invited.
-
-Read more at [**Bito's pricing page**](https://bito.ai/pricing/).
-
-## Inviting coworkers to the Workspace
-
-1. Go to the [**Manage Users > Members**](https://alpha.bito.ai/home/settings/members) page.
-2. Click on the “Invite members” button.&#x20;
-
-   <figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FxWDeKxAoMsvDnoJXTr1J%2Fb22_1.png?alt=media&#x26;token=95ddda39-eb68-4a6f-86b2-f05557404f48" alt=""><figcaption></figcaption></figure>
-3. A form will open in a popup box.&#x20;
-4. Enter emails of your coworkers that you want to add in the workspace.&#x20;
-
-   <figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FwKHtUMFjRNebKIsLZcGh%2Fb23_1.png?alt=media&#x26;token=12b5e987-867f-4aca-84b3-7e9768d9c725" alt=""><figcaption></figcaption></figure>
-5. Press the “Send” button to proceed.&#x20;
-6. A warning message will appear informing you that inviting new members to the workspace will result in additional charges.&#x20;
-
-   <figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2Fq2JecMKEnI2YtiS8Vv1Z%2Fb24_1.png?alt=media&#x26;token=e94806bf-8329-43bf-b135-2dc5a154ed03" alt=""><figcaption></figcaption></figure>
-7. If you are ok with that, press the “Invite members” button to send the invitation.
-
-{% hint style="info" %}
-When the invited person joins the workspace, the billing account attached to the workspace will be charged automatically.
-{% endhint %}
-
-
-# Advanced AI requests usage
-
-View and manage your workspace usage to avoid unexpected expenses.
-
-If you are on a paid plan, such as the **Team Plan**, and are the owner or admin of a workspace, you can easily view the **Advanced AI Model requests** (GPT-4o or similar) included for the current month and the number of requests used by your workspace members and AI Agents.
-
-{% hint style="info" %}
-If you are on the **Free Plan**, this plan does not include Advanced AI Model requests, so this feature is not relevant to your plan.
-{% endhint %}
-
-To view your usage, simply visit the [**Settings > Requests Usage**](https://alpha.bito.ai/home/bito-premium/ai-request-usage) dashboard.
-
-<figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FLvhkrI1qRsPMv3sZgAah%2Fscrnli_BhFvQLrCPOhJD5.png?alt=media&#x26;token=dd474bb4-436e-43d1-b279-0e4173406b33" alt=""><figcaption></figcaption></figure>
-
-## What is an Advanced AI Model Request?&#x20;
-
-Bito uses best-in-class AI models (such as GPT-4o, Claude Sonnet 3.7, and similar models) to offer its services. These are known as **Advanced AI models** and are only accessible through our [paid plans](https://bito.ai/pricing/).
-
-When your **Advanced AI Model Request** quota is used up, [AI Chat](https://docs.bito.ai/ai-code-reviews-in-ide/ai-chat-in-bito) requests will be blocked for the rest of the day and will become available again the next day.
-
-
-# Billing history
-
-Access Your Payment Records
-
-Bito maintains your billing history through [Stripe](https://stripe.com/).&#x20;
-
-To view your past payments, follow these steps:&#x20;
-
-1. Open the [**Manage Subscription > Billing and Plans**](https://alpha.bito.ai/home/settings/bito-premium/billing) page.
-2. Click on the "View billing history" button. You will be redirected to a secure page powered by Stripe.&#x20;
-
-   <figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FRb33gTAF6OgFdiXVFpRK%2Fb4_2.png?alt=media&#x26;token=88e3d3f5-3365-4c8f-8825-b4aaf2bb9133" alt=""><figcaption></figcaption></figure>
-3. On this page, you will see your complete billing history.&#x20;
-
-   <figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FQHX1PeSDNM8hVAz8N0fu%2Fb29.jpg?alt=media&#x26;token=6639753e-fb62-4634-b429-064add048209" alt=""><figcaption></figcaption></figure>
-4. Open a specific invoice to view its complete details.&#x20;
-
-   <figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2F6qJIfI9mVamzu3aHyEM0%2Fb29_1.png?alt=media&#x26;token=4ecf17fa-034a-4dfa-9952-66823a2347b2" alt=""><figcaption></figcaption></figure>
-5. From the invoice page, you can view more details by clicking “View invoice and payment details”.&#x20;
-
-   <figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FS4UIXR3FcXygpHsZHZgu%2Fb30_1.png?alt=media&#x26;token=6c659668-c857-4a36-9dd0-da6ec8e0a4e6" alt=""><figcaption></figcaption></figure>
-
-   <figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FTHNG3xeGg1qE7Tj6B6by%2Fb31.png?alt=media&#x26;token=c0093158-0f20-4196-930b-ffcee9cb74c0" alt=""><figcaption></figcaption></figure>
-6. &#x20;You can also download the invoice and the receipt from this page by clicking the “Download invoice” and “Download receipt” buttons respectively.&#x20;
-
-   <figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FNx8WhbD71HFZFPb1gjsx%2Fb30_2.png?alt=media&#x26;token=1ddd7cd3-723e-4f34-8946-30b07803c28f" alt=""><figcaption></figcaption></figure>
-
-{% hint style="info" %}
-Billing History functionality is not available for workspaces on the **Free Plan**.
-{% endhint %}
-
-
-# Billing details
-
-Manage your billing address and tax (VAT, GST, etc) details.
-
-## Add or Update Billing Address
-
-1. Open the [**Manage Subscription > Billing and Plans**](https://alpha.bito.ai/home/settings/bito-premium/billing) page.
-2. Click on the "Edit billing details" button. You will be redirected to a secure page powered by Stripe.
-
-   <figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FvXmD9GsC6iMGnhY5KfDs%2Fscrnli_10_13_2023_3-20-38%20PM_cropped.png?alt=media&#x26;token=743391c3-2ed4-47d9-8008-5dce602eede9" alt=""><figcaption></figcaption></figure>
-3. On this page, you will see your current plan details as well as billing information such as address. Click on "Update information" button to add/edit your billing details.
-
-<figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FqkOFaeSsEvCiidfMDovc%2Fscrnli_10_13_2023_3-21-16%20PM_cropped.png?alt=media&#x26;token=1a0af9ca-13eb-463b-9da4-75ec6b42697e" alt=""><figcaption></figcaption></figure>
-
-4. Now, you will see a form through which you can add your billing information such as the billing address and tax (VAT, GST, etc) details. Click on the "Save" button to save your changes or click on the "Cancel" button to return to the previous screen.
-
-<figure><img src="https://2860197046-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FYgNBTrPKG0DuVdAyDvSa%2Fuploads%2FiL84s7NmUEnAfxPHy8CI%2Fscrnli_ZCA7fAh2h28iGG.png?alt=media&#x26;token=13225208-e8ba-4c05-8631-c456e6a4fa05" alt="" width="384"><figcaption></figcaption></figure>
-
-
-# Security
-
-How Stripe Protects Your Sensitive Information
-
-We understand that the security of your payment information is of utmost importance. That's why we have partnered with Stripe, a globally recognized and trusted payment platform, to ensure that your sensitive data remains safe and secure throughout the payment process.&#x20;
-
-If you have any questions, please contact us at [**support@bito.ai**](mailto:support@bito.ai)&#x20;
-
-## Why Stripe?&#x20;
-
-When you subscribe to our paid plans, we rely on Stripe's robust infrastructure to handle your payment details securely.&#x20;
-
-**Here's why we chose Stripe as our trusted payment handler:**&#x20;
-
-### 1. PCI Compliance&#x20;
-
-Stripe is certified as a Level 1 Service Provider under the Payment Card Industry Data Security Standard (PCI DSS). It is the most stringent level of certification available in the payment industry. This means that Stripe adheres to strict security standards and undergoes regular audits to ensure compliance.&#x20;
-
-It ensures that all cardholder data is handled securely throughout the payment journey.&#x20;
-
-&#x20;Rest assured that your sensitive card information is securely handled at all times. Neither Bito nor Stripe stores your sensitive data on their servers. Even our staff cannot access it. Your payment details are safe with us.&#x20;
-
-### 2. GDPR Compliance&#x20;
-
-Stripe also complies with the General Data Protection Regulation (GDPR) and regularly undergoes audits to maintain its certifications.&#x20;
-
-### 3. Secure API Communication&#x20;
-
-All communication between Bito and Stripe occurs through secure APIs (Application Programming Interfaces). These APIs are designed to transmit data in an encrypted format, adding an extra layer of security to the payment process.&#x20;
-
-### 4. Data Encryption&#x20;
-
-All data transmitted to Stripe is encrypted using industry-standard encryption protocols, such as TLS (Transport Layer Security). This ensures that sensitive information, including credit card details and personal data, is protected during transit.&#x20;
-
-### 5. Secure Card Information Handling&#x20;
-
-Stripe follows the principle of "security by design" and does not store cardholder data on its servers. Instead, it utilizes tokenization, a process that replaces sensitive card information with unique tokens. These tokens are used for subsequent transactions, reducing the risk of unauthorized access to card data.&#x20;
-
-This means that even if Stripe's systems were compromised, your original card information would remain safe as the token holds no value to potential attackers.&#x20;
-
-### 6. Intrusion Detection and Prevention&#x20;
-
-Stripe maintains a comprehensive intrusion detection and prevention system to monitor and block any unauthorized attempts to access its systems. Suspicious activities are flagged in real-time, and appropriate action is taken to mitigate potential threats.&#x20;
-
-### 7. Radar Fraud Detection&#x20;
-
-Stripe's Radar uses machine learning algorithms to detect and prevent fraudulent transactions in real-time. This intelligent system constantly evolves and adapts to new fraud patterns, providing enhanced protection for Bito's customers.&#x20;
-
-### 8. Continuous Monitoring&#x20;
-
-Stripe conducts regular security assessments and audits to identify vulnerabilities and address potential weaknesses in its systems. This continuous monitoring approach allows them to stay proactive in the face of emerging security risks.
 
 
 

@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/telephony/making-calls/outbound-calls.md
 
-# Source: https://docs.livekit.io/sip/outbound-calls.md
-
-LiveKit docs › Making calls › Make outbound calls
+LiveKit docs › Making calls › Outbound calls
 
 ---
 
@@ -10,13 +8,19 @@ LiveKit docs › Making calls › Make outbound calls
 
 > Create a LiveKit SIP participant to make outbound calls.
 
-The following sections include examples for making an outbound call by creating a LiveKit SIP participant and configuring call settings for dialing out. To create an AI agent to make outbound calls on your behalf, see the [Voice AI telephony guide](https://docs.livekit.io/agents/start/telephony.md).
+## Overview
+
+Make outbound calls from LiveKit rooms to phone numbers by creating SIP participants. When you create a SIP participant with an outbound trunk, LiveKit initiates a call to the specified phone number and connects the callee to the room as a SIP participant. Once connected, the callee can interact with other participants in the room, including AI agents and regular participants.
+
+To make outbound calls, you need at least one [outbound trunk](https://docs.livekit.io/telephony/making-calls/outbound-trunk.md) configured. You can customize outbound calls with features like custom caller ID, DTMF tones for extension codes, and dial tone playback while the call connects.
+
+To create an AI agent to make outbound calls on your behalf, see the [Voice AI telephony guide](https://docs.livekit.io/agents/start/telephony.md).
 
 ## Creating a SIP participant
 
-To make outbound calls with SIP Service, create a SIP participant with the [`CreateSIPParticipant`](https://docs.livekit.io/sip/api.md#createsipparticipant) API. It returns an `SIPParticipantInfo` object that describes the participant.
+To make outbound calls with SIP Service, create a SIP participant with the [`CreateSIPParticipant`](https://docs.livekit.io/reference/telephony/sip-api.md#createsipparticipant) API. It returns an `SIPParticipantInfo` object that describes the participant.
 
-Outbound calling requires at least one [Outbound Trunk](https://docs.livekit.io/sip/trunk-outbound.md).
+Outbound calling requires at least one [Outbound Trunk](https://docs.livekit.io/telephony/making-calls/outbound-trunk.md).
 
 **LiveKit CLI**:
 
@@ -34,7 +38,7 @@ Outbound calling requires at least one [Outbound Trunk](https://docs.livekit.io/
 }
 
 ```
-2. Create the SIP Participant using the CLI. After you run this command, the participant makes a call to the `sip_call_to` number configured in your outbound trunk. When you set `wait_until_answered` to `true`, the command waits until the callee picks up the call before returning. You can also monitor the call status using the [SIP participant attributes](https://docs.livekit.io/sip/sip-participant.md#sip-attributes). When the callee picks up the call, the `sip.callStatus` attribute is `active`.
+2. Create the SIP Participant using the CLI. After you run this command, the participant makes a call to the `sip_call_to` number configured in your outbound trunk. When you set `wait_until_answered` to `true`, the command waits until the callee picks up the call before returning. You can also monitor the call status using the [SIP participant attributes](https://docs.livekit.io/reference/telephony/sip-participant.md#sip-attributes). When the callee picks up the call, the `sip.callStatus` attribute is `active`.
 
 ```shell
 lk sip participant create sip-participant.json
@@ -46,7 +50,7 @@ lk sip participant create sip-participant.json
 **Node.js**:
 
 ```typescript
-import { SipClient } from 'livekit-server-sdk';
+import { SipClient, TwirpError } from 'livekit-server-sdk';
 
 const sipClient = new SipClient(process.env.LIVEKIT_URL,
                                 process.env.LIVEKIT_API_KEY,
@@ -80,6 +84,10 @@ async function main() {
     console.log('Participant created:', participant);
   } catch (error) {
     console.error('Error creating SIP participant:', error);
+    if (error instanceof TwirpError) {
+      console.error("SIP error code: ", error.metadata?.['sip_status_code']);
+      console.error("SIP error message: ", error.metadata?.['sip_status']);
+    }
   }
 }
 
@@ -115,6 +123,10 @@ async def main():
         print(f"Successfully created {participant}")
     except Exception as e:
         print(f"Error creating SIP participant: {e}")
+        # sip_status_code contains the status code from upstream carrier
+        print(f"SIP error code: {e.metadata.get('sip_status_code')}")
+        # sip_status contains the status message from upstream carrier
+        print(f"SIP error message: {e.metadata.get('sip_status')}")
     finally:
         await livekit_api.aclose()
 
@@ -203,6 +215,83 @@ func main() {
 ```
 
 Once the user picks up, they will be connected to `my-sip-room`.
+
+## Custom caller ID
+
+You can set a custom caller ID for outbound calls using the `display_name` field in the`CreateSIPParticipant` request. By default, if this field isn't included in the request, the phone number is used as the display name. If this field is set to an empty string, most SIP trunking providers issue a Caller ID Name (CNAM) lookup and use the result as the display name.
+
+> ℹ️ **SIP provider support**
+> 
+> Your SIP provider must support custom caller ID for the `display_name` value to be used. Confirm with your specific provider to verify support.
+
+**LiveKit CLI**:
+
+```json
+{
+  "sip_trunk_id": "<your-trunk-id>",
+  "sip_call_to": "<phone-number-to-dial>",
+  "room_name": "my-sip-room",
+  "participant_identity": "sip-test",
+  "participant_name": "Test Caller",
+  "display_name": "My Custom Display Name"
+}
+
+```
+
+---
+
+**Node.js**:
+
+```typescript
+const sipParticipantOptions = {
+  participantIdentity: 'sip-test',
+  participantName: 'Test Caller',
+  displayName: 'My Custom Display Name'
+};
+
+```
+
+---
+
+**Python**:
+
+```python
+  request = CreateSIPParticipantRequest(
+    sip_trunk_id = "<trunk_id>",
+    sip_call_to = "<phone_number>",
+    room_name = "my-sip-room",
+    participant_identity = "sip-test",
+    participant_name = "Test Caller",
+    display_name = "My Custom Display Name"
+  )
+
+```
+
+---
+
+**Ruby**:
+
+Custom display name is not yet supported in Ruby.
+
+---
+
+**Go**:
+
+```go
+displayName := "My Custom Display Name"
+
+request := &livekit.CreateSIPParticipantRequest {
+  SipTrunkId: trunkId,
+  SipCallTo: phoneNumber,
+  RoomName: roomName,
+  ParticipantIdentity: participantIdentity,
+  ParticipantName: participantName,
+  KrispEnabled: true,
+  WaitUntilAnswered: true,
+  DisplayName: &displayName,
+}
+
+```
 
 ## Making a call with extension codes (DTMF)
 
@@ -376,7 +465,7 @@ If `play_dialtone` is enabled, the SIP Participant plays a dial tone to the room
 
 ---
 
-This document was rendered at 2025-11-18T23:55:21.235Z.
-For the latest version of this document, see [https://docs.livekit.io/sip/outbound-calls.md](https://docs.livekit.io/sip/outbound-calls.md).
+This document was rendered at 2026-02-03T03:25:13.211Z.
+For the latest version of this document, see [https://docs.livekit.io/telephony/making-calls/outbound-calls.md](https://docs.livekit.io/telephony/making-calls/outbound-calls.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

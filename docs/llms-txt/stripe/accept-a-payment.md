@@ -6,9 +6,13 @@ Securely accept payments online.
 
 Build a payment form or use a prebuilt checkout page to start accepting online payments.
 
+> #### Not a developer?
+> 
+> Use Stripe’s [no-code options](https://docs.stripe.com/no-code.md) or apps from [our partners](https://stripe.partners/) to get started and do more with your Stripe account—no code required. If you use a third-party platform to build and maintain a website, you can add Stripe payments with a plugin.
+
 # Stripe-hosted page
 
-> This is a Stripe-hosted page for when platform is web and ui is stripe-hosted. View the full page at https://docs.stripe.com/payments/accept-a-payment?platform=web&ui=stripe-hosted.
+> This is a Stripe-hosted page for when payment-ui is checkout and ui is stripe-hosted. View the full page at https://docs.stripe.com/payments/accept-a-payment?payment-ui=checkout&ui=stripe-hosted.
 
 Redirect to a Stripe-hosted payment page using [Stripe Checkout](https://docs.stripe.com/payments/checkout.md). See how this integration [compares to Stripe’s other integration types](https://docs.stripe.com/payments/online-payments.md#compare-features-and-availability).
 
@@ -81,7 +85,7 @@ composer require stripe/stripe-php
   - https://mvnrepository.com/artifact/com.stripe/stripe-java or
   - https://github.com/stripe/stripe-java/releases/latest
 */
-implementation "com.stripe:stripe-java:30.0.0"
+implementation "com.stripe:stripe-java:31.3.0"
 ```
 
 ```xml
@@ -94,7 +98,7 @@ implementation "com.stripe:stripe-java:30.0.0"
 <dependency>
   <groupId>com.stripe</groupId>
   <artifactId>stripe-java</artifactId>
-  <version>30.0.0</version>
+  <version>31.3.0</version>
 </dependency>
 ```
 
@@ -117,13 +121,13 @@ npm install stripe --save
 # Make sure your project is using Go Modules
 go mod init
 # Install stripe-go
-go get -u github.com/stripe/stripe-go/v83
+go get -u github.com/stripe/stripe-go/v84
 ```
 
 ```go
 // Then import the package
 import (
-  "github.com/stripe/stripe-go/v83"
+  "github.com/stripe/stripe-go/v84"
 )
 ```
 
@@ -815,9 +819,7 @@ See [Testing](https://docs.stripe.com/testing.md) for additional information to 
 
 ## Optional: Create products and prices
 
-You can [set up your Checkout Session](https://docs.stripe.com/payments/checkout/pay-what-you-want.md) to accept tips and donations, or sell pay-what-you-want products and services.
-
-Before you create a Checkout Session, you can create *Products* (Products represent what your business sells—whether that's a good or a service) and *Prices* (Prices define how much and how often to charge for products. This includes how much the product costs, what currency to use, and the interval if the price is for subscriptions) upfront. Use products to represent different physical goods or levels of service, and *Prices* (Prices define how much and how often to charge for products. This includes how much the product costs, what currency to use, and the interval if the price is for subscriptions) to represent each product’s pricing.
+Before you create a Checkout Session, you can create *Products* (Products represent what your business sells—whether that's a good or a service) and *Prices* (Prices define how much and how often to charge for products. This includes how much the product costs, what currency to use, and the interval if the price is for subscriptions) upfront. Use products to represent different physical goods or levels of service, and *Prices* (Prices define how much and how often to charge for products. This includes how much the product costs, what currency to use, and the interval if the price is for subscriptions) to represent each product’s pricing. You can [set up your Checkout Session](https://docs.stripe.com/payments/checkout/pay-what-you-want.md) to accept tips and donations, or sell pay-what-you-want products and services.
 
 For example, you can create a T-shirt as a product with a price of 20 USD. This allows you to update and add prices without needing to change the details of your underlying products. You can either create products and prices with the Stripe Dashboard or API. Learn more about [how products and prices work](https://docs.stripe.com/products-prices/how-products-and-prices-work.md).
 
@@ -1776,6 +1778,8 @@ Stripe.Checkout.Session session = service.Create(options);
 
 Passing this parameter in either [payment](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-mode) or [subscription](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-mode) mode displays an optional checkbox to let customers explicitly save their payment method for future purchases. When customers check this checkbox, Checkout saves the payment method with [allow_redisplay: always](https://docs.stripe.com/api/payment_methods/object.md#payment_method_object-allow_redisplay). Checkout uses this parameter to determine whether a payment method can be prefilled on future purchases. When using `saved_payment_method_options.payment_method_save`, you don’t need to pass in `setup_future_usage` to save the payment method.
 
+If your Connect platform uses [customer-configured Accounts](https://docs.stripe.com/api/v2/core/accounts/create.md#v2_create_accounts-configuration-customer), use our [guide](https://docs.stripe.com/connect/use-accounts-as-customers.md) to replace `Customer` and event references in your code with the equivalent Accounts v2 API references.
+
 Using [saved_payment_method_options.payment_method_save](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-saved_payment_method_options-payment_method_save) requires a `Customer`. To save a new customer, set the Checkout Session’s [customer_creation](https://docs.stripe.com/api/checkout/sessions/create.md) to `always`. Otherwise, the session doesn’t save the customer or the payment method.
 
 If `payment_method_save` isn’t passed in or if the customer doesn’t agree to save the payment method, Checkout still saves payment methods created in `subscription` mode or using `setup_future_usage`. These payment methods have an `allow_redisplay` value of `limited`, which prevents them from being prefilled for returning purchases and allows you to comply with card network rules and data protection regulations. Learn how to [change the default behavior enabled by these modes](https://support.stripe.com/questions/prefilling-saved-cards-in-checkout) and how to change or override `allow_redisplay` behavior.
@@ -1994,11 +1998,9 @@ var options = new Stripe.Checkout.SessionCreateOptions
     },
     Mode = "payment",
     SuccessUrl = "https://example.com/success.html",
-    SavedPaymentMethodOptions = new Stripe.Checkout.SessionSavedPaymentMethodOptionsOptions
-    {
-        PaymentMethodRemove = "enabled",
-    },
+    SavedPaymentMethodOptions = new Stripe.Checkout.SessionSavedPaymentMethodOptionsOptions(),
 };
+options.AddExtraParam("saved_payment_method_options[payment_method_remove]", "enabled");
 var client = new StripeClient("<<YOUR_SECRET_KEY>>");
 var service = client.V1.Checkout.Sessions;
 Stripe.Checkout.Session session = service.Create(options);
@@ -2197,7 +2199,7 @@ Let your customers [manage](https://docs.stripe.com/customer-management.md) thei
 
 # Embedded form
 
-> This is a Embedded form for when platform is web and ui is embedded-form. View the full page at https://docs.stripe.com/payments/accept-a-payment?platform=web&ui=embedded-form.
+> This is a Embedded form for when payment-ui is checkout and ui is embedded-form. View the full page at https://docs.stripe.com/payments/accept-a-payment?payment-ui=checkout&ui=embedded-form.
 
 Embed a prebuilt payment form on your site using [Stripe Checkout](https://docs.stripe.com/payments/checkout.md). See how this integration [compares to Stripe’s other integration types](https://docs.stripe.com/payments/online-payments.md#compare-features-and-availability).
 
@@ -2270,7 +2272,7 @@ composer require stripe/stripe-php
   - https://mvnrepository.com/artifact/com.stripe/stripe-java or
   - https://github.com/stripe/stripe-java/releases/latest
 */
-implementation "com.stripe:stripe-java:30.0.0"
+implementation "com.stripe:stripe-java:31.3.0"
 ```
 
 ```xml
@@ -2283,7 +2285,7 @@ implementation "com.stripe:stripe-java:30.0.0"
 <dependency>
   <groupId>com.stripe</groupId>
   <artifactId>stripe-java</artifactId>
-  <version>30.0.0</version>
+  <version>31.3.0</version>
 </dependency>
 ```
 
@@ -2306,13 +2308,13 @@ npm install stripe --save
 # Make sure your project is using Go Modules
 go mod init
 # Install stripe-go
-go get -u github.com/stripe/stripe-go/v83
+go get -u github.com/stripe/stripe-go/v84
 ```
 
 ```go
 // Then import the package
 import (
-  "github.com/stripe/stripe-go/v83"
+  "github.com/stripe/stripe-go/v84"
 )
 ```
 
@@ -2337,7 +2339,7 @@ You can also create a Checkout Session for an [existing customer](https://docs.s
 
 To return customers to a custom page that you host on your website, specify that page’s URL in the [return_url](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-return_url) parameter. Include the `{CHECKOUT_SESSION_ID}` template variable in the URL to retrieve the session’s status on the return page. Checkout automatically substitutes the variable with the Checkout Session ID before redirecting.
 
-Read more about [configuring the return page](https://docs.stripe.com/payments/accept-a-payment.md?platform=web&ui=embedded-form#return-page) and other options for [customizing redirect behavior](https://docs.stripe.com/payments/checkout/custom-success-page.md?payment-ui=embedded-form).
+Read more about [configuring the return page](https://docs.stripe.com/payments/accept-a-payment.md?payment-ui=checkout&ui=embedded-form#return-page) and other options for [customizing redirect behavior](https://docs.stripe.com/payments/checkout/custom-success-page.md?payment-ui=embedded-form).
 
 After you create the Checkout Session, use the `client_secret` returned in the response to [mount Checkout](https://docs.stripe.com/payments/accept-a-payment.md#mount-checkout).
 
@@ -2905,7 +2907,7 @@ Handle the following events when collecting payments with the Checkout:
 
 To test your embedded payment form integration:
 
-1. Create an embedded Checkout Session and mount Checkout on your page.
+1. Create an embedded Checkout Session and mount the payment form on your page.
 1. Fill out the payment details with a method from the table below.
    - Enter any future date for card expiry.
    - Enter any 3-digit number for CVC.
@@ -2987,9 +2989,7 @@ A Checkout Session only displays the Google Pay button to customers when *all* o
 
 ## Optional: Create products and prices
 
-You can [set up your Checkout Session](https://docs.stripe.com/payments/checkout/pay-what-you-want.md) to accept tips and donations, or sell pay-what-you-want products and services.
-
-Before you create a Checkout Session, you can create *Products* (Products represent what your business sells—whether that's a good or a service) and *Prices* (Prices define how much and how often to charge for products. This includes how much the product costs, what currency to use, and the interval if the price is for subscriptions) upfront. Use products to represent different physical goods or levels of service, and *Prices* (Prices define how much and how often to charge for products. This includes how much the product costs, what currency to use, and the interval if the price is for subscriptions) to represent each product’s pricing.
+Before you create a Checkout Session, you can create *Products* (Products represent what your business sells—whether that's a good or a service) and *Prices* (Prices define how much and how often to charge for products. This includes how much the product costs, what currency to use, and the interval if the price is for subscriptions) upfront. Use products to represent different physical goods or levels of service, and *Prices* (Prices define how much and how often to charge for products. This includes how much the product costs, what currency to use, and the interval if the price is for subscriptions) to represent each product’s pricing. You can [set up your Checkout Session](https://docs.stripe.com/payments/checkout/pay-what-you-want.md) to accept tips and donations, or sell pay-what-you-want products and services.
 
 For example, you can create a T-shirt as a product with a price of 20 USD. This allows you to update and add prices without needing to change the details of your underlying products. You can either create products and prices with the Stripe Dashboard or API. Learn more about [how products and prices work](https://docs.stripe.com/products-prices/how-products-and-prices-work.md).
 
@@ -3984,6 +3984,8 @@ Stripe.Checkout.Session session = service.Create(options);
 
 Passing this parameter in either [payment](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-mode) or [subscription](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-mode) mode displays an optional checkbox to let customers explicitly save their payment method for future purchases. When customers check this checkbox, Checkout saves the payment method with [allow_redisplay: always](https://docs.stripe.com/api/payment_methods/object.md#payment_method_object-allow_redisplay). Checkout uses this parameter to determine whether a payment method can be prefilled on future purchases. When using `saved_payment_method_options.payment_method_save`, you don’t need to pass in `setup_future_usage` to save the payment method.
 
+If your Connect platform uses [customer-configured Accounts](https://docs.stripe.com/api/v2/core/accounts/create.md#v2_create_accounts-configuration-customer), use our [guide](https://docs.stripe.com/connect/use-accounts-as-customers.md) to replace `Customer` and event references in your code with the equivalent Accounts v2 API references.
+
 Using [saved_payment_method_options.payment_method_save](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-saved_payment_method_options-payment_method_save) requires a `Customer`. To save a new customer, set the Checkout Session’s [customer_creation](https://docs.stripe.com/api/checkout/sessions/create.md) to `always`. Otherwise, the session doesn’t save the customer or the payment method.
 
 If `payment_method_save` isn’t passed in or if the customer doesn’t agree to save the payment method, Checkout still saves payment methods created in `subscription` mode or using `setup_future_usage`. These payment methods have an `allow_redisplay` value of `limited`, which prevents them from being prefilled for returning purchases and allows you to comply with card network rules and data protection regulations. Learn how to [change the default behavior enabled by these modes](https://support.stripe.com/questions/prefilling-saved-cards-in-checkout) and how to change or override `allow_redisplay` behavior.
@@ -4211,11 +4213,9 @@ var options = new Stripe.Checkout.SessionCreateOptions
     Mode = "payment",
     UiMode = "embedded",
     ReturnUrl = "https://example.com/return",
-    SavedPaymentMethodOptions = new Stripe.Checkout.SessionSavedPaymentMethodOptionsOptions
-    {
-        PaymentMethodRemove = "enabled",
-    },
+    SavedPaymentMethodOptions = new Stripe.Checkout.SessionSavedPaymentMethodOptionsOptions(),
 };
+options.AddExtraParam("saved_payment_method_options[payment_method_remove]", "enabled");
 var client = new StripeClient("<<YOUR_SECRET_KEY>>");
 var service = client.V1.Checkout.Sessions;
 Stripe.Checkout.Session session = service.Create(options);
@@ -4425,11 +4425,25 @@ Learn how to [programmatically get a notification](https://docs.stripe.com/check
 - [Customize your branding](https://docs.stripe.com/payments/checkout/customization.md)
 
 
-# Embedded components
+# Checkout Sessions API
 
-> This is a Embedded components for when platform is web and ui is embedded-components. View the full page at https://docs.stripe.com/payments/accept-a-payment?platform=web&ui=embedded-components.
+> This is a Checkout Sessions API for when payment-ui is elements and api-integration is checkout. View the full page at https://docs.stripe.com/payments/accept-a-payment?payment-ui=elements&api-integration=checkout.
 
-Build a checkout page on your website using [Stripe Elements](https://docs.stripe.com/payments/elements.md) and [Checkout Sessions](https://docs.stripe.com/api/checkout/sessions.md), an integration that manages tax, discounts, shipping rates, and more.
+Build a custom payment form using [Stripe Elements](https://docs.stripe.com/payments/elements.md) and the [Checkout Sessions API](https://docs.stripe.com/api/checkout/sessions.md). See how this integration [compares to Stripe’s other integration types](https://docs.stripe.com/payments/online-payments.md#compare-features-and-availability).
+
+The Checkout Sessions API provides built-in support for tax calculation, discounts, shipping, and currency conversion, reducing the amount of custom code you need to write. This is the recommended approach for most integrations. Learn more about [when to use Checkout Sessions instead of PaymentIntents](https://docs.stripe.com/payments/checkout-sessions-and-payment-intents-comparison.md).
+
+The client-side and server-side code builds a checkout form that accepts various payment methods.
+
+#### Integration effort
+Complexity: 3/5
+#### Integration type
+
+Combine UI components into a custom payment flow
+
+#### UI customization
+
+CSS-level customization with the [Appearance API](https://docs.stripe.com/elements/appearance-api.md)
 
 ## Set up the server [Server-side]
 
@@ -4487,7 +4501,7 @@ composer require stripe/stripe-php
   - https://mvnrepository.com/artifact/com.stripe/stripe-java or
   - https://github.com/stripe/stripe-java/releases/latest
 */
-implementation "com.stripe:stripe-java:30.0.0"
+implementation "com.stripe:stripe-java:31.3.0"
 ```
 
 ```xml
@@ -4500,7 +4514,7 @@ implementation "com.stripe:stripe-java:30.0.0"
 <dependency>
   <groupId>com.stripe</groupId>
   <artifactId>stripe-java</artifactId>
-  <version>30.0.0</version>
+  <version>31.3.0</version>
 </dependency>
 ```
 
@@ -4523,13 +4537,13 @@ npm install stripe --save
 # Make sure your project is using Go Modules
 go mod init
 # Install stripe-go
-go get -u github.com/stripe/stripe-go/v83
+go get -u github.com/stripe/stripe-go/v84
 ```
 
 ```go
 // Then import the package
 import (
-  "github.com/stripe/stripe-go/v83"
+  "github.com/stripe/stripe-go/v84"
 )
 ```
 
@@ -4885,13 +4899,17 @@ const stripe = loadStripe("<<YOUR_PUBLISHABLE_KEY>>");
 
 #### HTML + JS
 
-Create either a `clientSecret` promise that resolves with the client secret or set it as the secret directly. Call [initCheckout](https://docs.stripe.com/js/custom_checkout/init), passing in `clientSecret`. `initCheckout` returns a promise that resolves to a [Checkout](https://docs.stripe.com/js/custom_checkout/checkout_object) instance.
+Create either a `clientSecret` promise that resolves with the client secret or set it as the secret directly. Call [initCheckout](https://docs.stripe.com/js/custom_checkout/init), passing in `clientSecret`. `initCheckout` returns a promise that resolves to a [Checkout](https://docs.stripe.com/js/custom_checkout) instance.
 
-The [checkout](https://docs.stripe.com/js/custom_checkout/checkout_object) object acts as the foundation of your checkout page, and contains data from the Checkout Session and methods to update the Session.
+The [checkout](https://docs.stripe.com/js/custom_checkout) object acts as the foundation of your checkout page, and contains data from the Checkout Session and methods to update the Session.
 
 The object returned by [actions.getSession()](https://docs.stripe.com/js/custom_checkout/session) contains your pricing information. We recommend reading and displaying the `total`, and `lineItems` from the session in your UI.
 
 This lets you turn on new features with minimal code changes. For example, adding [manual currency prices](https://docs.stripe.com/payments/custom/localize-prices/manual-currency-prices.md) requires no UI changes if you display the `total`.
+
+```html
+<div id="checkout-container"></div>
+```
 
 ```javascript
 const clientSecret = fetch('/create-checkout-session', {method: 'POST'})
@@ -4908,17 +4926,13 @@ if (loadActionsResult.type === 'success') {
 }
 ```
 
-```html
-<div id="checkout-container"></div>
-```
-
 #### React
 
 Create `clientSecret` as a `Promise<string> | string` containing the client secret returned by your server.
 
-Wrap your application with the [CheckoutProvider](https://docs.stripe.com/js/custom_checkout/react/checkout_provider) component, passing in `clientSecret` and the `stripe` instance.
+Wrap your application with the [CheckoutProvider](https://docs.stripe.com/js/react_stripe_js/checkout/checkout_provider) component, passing in `clientSecret` and the `stripe` instance.
 
-Use the [useCheckout](https://docs.stripe.com/js/custom_checkout/react/use_checkout) hook in your components to get the [Checkout](https://docs.stripe.com/js/custom_checkout/checkout_object) object, which contains data from the Checkout Session and methods to update the Session.
+Use the [useCheckout](https://docs.stripe.com/js/react_stripe_js/checkout/use_checkout) hook in your components to get the [Checkout](https://docs.stripe.com/js/custom_checkout) object, which contains data from the Checkout Session and methods to update the Session.
 
 Use the `Checkout` object as the container for your prices. We recommend reading and displaying the `total` and `lineItems` from the `Checkout` object in your UI.
 
@@ -5013,9 +5027,9 @@ if (loadActionsResult.type === 'success') {
 
 If you already pass in an existing [customer_email](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-customer_email) or [Customer](https://docs.stripe.com/api/checkout/sessions/create.md#create_checkout_session-customer) with a valid email set when creating the Checkout Session, you can skip this step.
 
-If you implement your own email validation, you can pass in the validated email on [confirm](https://docs.stripe.com/js/custom_checkout/react/confirm) and skip this step.
+If you implement your own email validation, you can pass in the validated email on [confirm](https://docs.stripe.com/js/react_stripe_js/checkout/confirm) and skip this step.
 
-Create a component to collect your customer’s email address. Call [updateEmail](https://docs.stripe.com/js/custom_checkout/react/update_email) when your customer finishes the input to validate and save the email address.
+Create a component to collect your customer’s email address. Call [updateEmail](https://docs.stripe.com/js/react_stripe_js/checkout/update_email) when your customer finishes the input to validate and save the email address.
 
 Depending on the design of your checkout form, you can call `updateEmail` in the following ways:
 
@@ -5030,7 +5044,7 @@ const EmailInput = () => {
   const checkoutState = useCheckout();
   const [email, setEmail] = React.useState('');
   const [error, setError] = React.useState(null);
-  
+
   if (checkoutState.type === 'loading') {
     return (
       <div>Loading...</div>
@@ -5052,7 +5066,7 @@ const EmailInput = () => {
     setError(null);
     setEmail(e.target.value);
   };
-  
+
   return (
     <div>
       <label htmlFor="checkout-form-email">Email</label>
@@ -5094,7 +5108,7 @@ You can [customize the appearance](https://docs.stripe.com/payments/checkout/cus
 
 #### React
 
-Mount the [Payment Element](https://docs.stripe.com/payments/payment-element.md) component within the [CheckoutProvider](https://docs.stripe.com/js/custom_checkout/react/checkout_provider).
+Mount the [Payment Element](https://docs.stripe.com/payments/payment-element.md) component within the [CheckoutProvider](https://docs.stripe.com/js/react_stripe_js/checkout/checkout_provider).
 
 ```jsx
 import React from 'react';
@@ -5114,13 +5128,13 @@ export default CheckoutForm;
 
 See the [Stripe.js docs](https://docs.stripe.com/js/custom_checkout/create_payment_element#custom_checkout_create_payment_element-options) to view the supported options.
 
-You can [customize the appearance](https://docs.stripe.com/payments/checkout/customization/appearance.md) of all Elements by passing [elementsOptions.appearance](https://docs.stripe.com/js/custom_checkout/react/checkout_provider#custom_checkout_react_checkout_provider-options-elementsOptions-appearance) to the [CheckoutProvider](https://docs.stripe.com/js/custom_checkout/react/checkout_provider).
+You can [customize the appearance](https://docs.stripe.com/payments/checkout/customization/appearance.md) of all Elements by passing [elementsOptions.appearance](https://docs.stripe.com/js/react_stripe_js/checkout/checkout_provider#react_checkout_provider-options-elementsOptions-appearance) to the [CheckoutProvider](https://docs.stripe.com/js/react_stripe_js/checkout/checkout_provider).
 
 ## Submit the payment [Client-side]
 
 #### HTML + JS
 
-Render a **Pay** button that calls [confirm](https://docs.stripe.com/js/custom_checkout/confirm) from the [checkout](https://docs.stripe.com/js/custom_checkout/checkout_object) instance to submit the payment.
+Render a **Pay** button that calls [confirm](https://docs.stripe.com/js/custom_checkout/confirm) from the `Checkout` instance to submit the payment.
 
 ```html
 <button id="pay-button">Pay</button>
@@ -5150,7 +5164,7 @@ if (loadActionsResult.type === 'success') {
 
 #### React
 
-Render a **Pay** button that calls [confirm](https://docs.stripe.com/js/custom_checkout/confirm) from [useCheckout](https://docs.stripe.com/js/custom_checkout/react/use_checkout) to submit the payment.
+Render a **Pay** button that calls [confirm](https://docs.stripe.com/js/custom_checkout/confirm) from [useCheckout](https://docs.stripe.com/js/react_stripe_js/checkout/use_checkout) to submit the payment.
 
 ```jsx
 import React from 'react';
@@ -5238,9 +5252,7 @@ See [Testing](https://docs.stripe.com/testing.md) for additional information to 
 
 ## Optional: Create products and prices
 
-You can [set up your Checkout Session](https://docs.stripe.com/payments/checkout/pay-what-you-want.md) to accept tips and donations, or sell pay-what-you-want products and services.
-
-Before you create a Checkout Session, you can create *Products* (Products represent what your business sells—whether that's a good or a service) and *Prices* (Prices define how much and how often to charge for products. This includes how much the product costs, what currency to use, and the interval if the price is for subscriptions) upfront. Use products to represent different physical goods or levels of service, and *Prices* (Prices define how much and how often to charge for products. This includes how much the product costs, what currency to use, and the interval if the price is for subscriptions) to represent each product’s pricing.
+Before you create a Checkout Session, you can create *Products* (Products represent what your business sells—whether that's a good or a service) and *Prices* (Prices define how much and how often to charge for products. This includes how much the product costs, what currency to use, and the interval if the price is for subscriptions) upfront. Use products to represent different physical goods or levels of service, and *Prices* (Prices define how much and how often to charge for products. This includes how much the product costs, what currency to use, and the interval if the price is for subscriptions) to represent each product’s pricing. You can [set up your Checkout Session](https://docs.stripe.com/payments/checkout/pay-what-you-want.md) to accept tips and donations, or sell pay-what-you-want products and services.
 
 For example, you can create a T-shirt as a product with a price of 20 USD. This allows you to update and add prices without needing to change the details of your underlying products. You can either create products and prices with the Stripe Dashboard or API. Learn more about [how products and prices work](https://docs.stripe.com/products-prices/how-products-and-prices-work.md).
 
@@ -5757,7 +5769,7 @@ Stripe.Checkout.Session session = service.Create(options);
 
 ## Optional: Save payment method details
 
-Learn how to [accept a payment and save your customer’s payment details](https://docs.stripe.com/payments/checkout/save-during-payment.md?payment-ui=embedded-components) for future purchases.
+Learn how to [accept a payment and save your customer’s payment details](https://docs.stripe.com/payments/save-during-payment.md) for future purchases.
 
 ## Optional: Listen for Checkout Session changes
 
@@ -5850,7 +5862,7 @@ The Billing Address Element supports the following props:
 
 You can build your own form to collect billing addresses.
 
-- If your checkout page has a distinct address collection step before confirmation, call [updateBillingAddress](https://docs.stripe.com/js/custom_checkout/react/update_billing_address) when your customer submits the address.
+- If your checkout page has a distinct address collection step before confirmation, call [updateBillingAddress](https://docs.stripe.com/js/react_stripe_js/checkout/update_billing_address) when your customer submits the address.
 - Otherwise, you can submit the address when your customer clicks the “pay” button by passing [billingAddress](https://docs.stripe.com/js/custom_checkout/confirm#custom_checkout_session_confirm-options-billingAddress) to [confirm](https://docs.stripe.com/js/custom_checkout/confirm).
 
 ### Collect partial billing addresses
@@ -5942,7 +5954,7 @@ checkout.on('change', (session) => {
 
 #### React
 
-Use [useCheckout](https://docs.stripe.com/js/custom_checkout/react/use_checkout) to render the shipping cost in your checkout form.
+Use [useCheckout](https://docs.stripe.com/js/react_stripe_js/checkout/use_checkout) to render the shipping cost in your checkout form.
 
 ```jsx
 import React from 'react';
@@ -5989,7 +6001,7 @@ const CheckoutForm = () => {
 
 You can build your own form to collect shipping addresses.
 
-- If your checkout page has a distinct address collection step before confirmation, call [updateShippingAddress](https://docs.stripe.com/js/custom_checkout/react/update_shipping_address) when your customer submits the address.
+- If your checkout page has a distinct address collection step before confirmation, call [updateShippingAddress](https://docs.stripe.com/js/react_stripe_js/checkout/update_shipping_address) when your customer submits the address.
 - Otherwise, you can submit the address when your customer clicks the “pay” button by passing [shippingAddress](https://docs.stripe.com/js/custom_checkout/confirm#custom_checkout_session_confirm-options-shippingAddress) to [confirm](https://docs.stripe.com/js/custom_checkout/confirm).
 
 ## Optional: Separate authorization and capture [Server-side]
@@ -6193,11 +6205,13 @@ Learn how to [programmatically get a notification](https://docs.stripe.com/check
 - [Add one-click buttons](https://docs.stripe.com/elements/express-checkout-element/accept-a-payment.md?payment-ui=embedded-components)
 
 
-# Advanced integration
+# Payment Intents API
 
-> This is a Advanced integration for when platform is web and ui is elements. View the full page at https://docs.stripe.com/payments/accept-a-payment?platform=web&ui=elements.
+> This is a Payment Intents API for when payment-ui is elements and api-integration is paymentintents. View the full page at https://docs.stripe.com/payments/accept-a-payment?payment-ui=elements&api-integration=paymentintents.
 
-Build a custom payments integration by embedding UI components on your site, using [Stripe Elements](https://docs.stripe.com/payments/elements.md). See how this integration [compares to Stripe’s other integration types](https://docs.stripe.com/payments/online-payments.md#compare-features-and-availability).
+Build a custom payment form using [Stripe Elements](https://docs.stripe.com/payments/elements.md) and the [Payment Intents API](https://docs.stripe.com/api/payment_intents.md). See how this integration [compares to Stripe’s other integration types](https://docs.stripe.com/payments/online-payments.md#compare-features-and-availability).
+
+The Payment Intents API provides granular control over your checkout flow, allowing you to customize every aspect of the payment process. This approach requires more integration code but offers maximum flexibility. Learn more about [when to use Checkout Sessions instead of PaymentIntents](https://docs.stripe.com/payments/checkout-sessions-and-payment-intents-comparison.md).
 
 The client-side and server-side code builds a checkout form that accepts various payment methods.
 
@@ -6271,7 +6285,7 @@ composer require stripe/stripe-php
   - https://mvnrepository.com/artifact/com.stripe/stripe-java or
   - https://github.com/stripe/stripe-java/releases/latest
 */
-implementation "com.stripe:stripe-java:30.0.0"
+implementation "com.stripe:stripe-java:31.3.0"
 ```
 
 ```xml
@@ -6284,7 +6298,7 @@ implementation "com.stripe:stripe-java:30.0.0"
 <dependency>
   <groupId>com.stripe</groupId>
   <artifactId>stripe-java</artifactId>
-  <version>30.0.0</version>
+  <version>31.3.0</version>
 </dependency>
 ```
 
@@ -6307,13 +6321,13 @@ npm install stripe --save
 # Make sure your project is using Go Modules
 go mod init
 # Install stripe-go
-go get -u github.com/stripe/stripe-go/v83
+go get -u github.com/stripe/stripe-go/v84
 ```
 
 ```go
 // Then import the package
 import (
-  "github.com/stripe/stripe-go/v83"
+  "github.com/stripe/stripe-go/v84"
 )
 ```
 
@@ -6947,7 +6961,7 @@ By default, the Payment Element only collects the necessary billing address deta
 
 ### Request Apple Pay merchant token
 
-If you’ve configured your integration to [accept Apple Pay payments](https://docs.stripe.com/payments/accept-a-payment.md?platform=web&ui=elements#apple-pay-and-google-pay), we recommend configuring the Apple Pay interface to return a merchant token to enable merchant initiated transactions (MIT). [Request the relevant merchant token type](https://docs.stripe.com/apple-pay/merchant-tokens.md?pay-element=web-pe) in the Payment Element.
+If you’ve configured your integration to [accept Apple Pay payments](https://docs.stripe.com/payments/accept-a-payment.md?payment-ui=elements&api-integration=paymentintents#apple-pay-and-google-pay), we recommend configuring the Apple Pay interface to return a merchant token to enable merchant initiated transactions (MIT). [Request the relevant merchant token type](https://docs.stripe.com/apple-pay/merchant-tokens.md?pay-element=web-pe) in the Payment Element.
 
 ## Optional: Save and retrieve customer payment methods
 
@@ -7874,8 +7888,8 @@ form.addEventListener('submit', async (event) => {
 
   if (error) {
     // This point is reached if there's an immediate error when
-    // confirming the payment. Show error to your customer (e.g., payment
-    // details incomplete)
+    // confirming the payment. Show error to your customer (for example,
+    // payment details incomplete)
     const messageContainer = document.querySelector('#error-message');
     messageContainer.textContent = error.message;
   } else {
@@ -7931,8 +7945,8 @@ const CheckoutForm = () => {
 
     if (error) {
       // This point will only be reached if there is an immediate error when
-      // confirming the payment. Show error to your customer (e.g., payment
-      // details incomplete)
+      // confirming the payment. Show error to your customer (for example,
+      // payment details incomplete)
       setErrorMessage(error.message);
     } else {
       // Your customer will be redirected to your `return_url`. For some payment
@@ -8183,12 +8197,12 @@ Learn how to test different scenarios using the following table:
 
 ### Apple Pay and Google Pay 
 
-When you [enable card payments](https://docs.stripe.com/payments/accept-a-payment.md?platform=web&ui=elements#create-the-paymentintent), we display Apple Pay and Google Pay for customers whose environment meets the [wallet display conditions](https://docs.stripe.com/testing/wallets.md). To accept payments from these wallets, you must also:
+When you [enable card payments](https://docs.stripe.com/payments/accept-a-payment.md?payment-ui=elements&api-integration=paymentintents#create-the-paymentintent), we display Apple Pay and Google Pay for customers whose environment meets the [wallet display conditions](https://docs.stripe.com/testing/wallets.md). To accept payments from these wallets, you must also:
 
 - Enable them in your [payment methods settings](https://dashboard.stripe.com/settings/payment_methods). Apple Pay is enabled by default.
 - Serve your application over HTTPS in development and production.
 - [Register your domain](https://docs.stripe.com/payments/payment-methods/pmd-registration.md).
-- [Fetch updates from the server](https://docs.stripe.com/payments/accept-a-payment.md?platform=web&ui=elements#fetch-updates) if you update the amount of a [PaymentIntent](https://docs.stripe.com/api/payment_intents.md) to keep the wallet’s payment modal in sync.
+- [Fetch updates from the server](https://docs.stripe.com/payments/accept-a-payment.md?payment-ui=elements&api-integration=paymentintents#fetch-updates) if you update the amount of a [PaymentIntent](https://docs.stripe.com/api/payment_intents.md) to keep the wallet’s payment modal in sync.
 
 > #### Regional Testing
 > 
@@ -8462,7 +8476,7 @@ Stripe collects information on customer interactions with Elements to provide se
 
 # In-app integration for iOS
 
-> This is a In-app integration for iOS for when platform is ios. View the full page at https://docs.stripe.com/payments/accept-a-payment?platform=ios.
+> This is a In-app integration for iOS for when payment-ui is mobile and platform is ios. View the full page at https://docs.stripe.com/payments/accept-a-payment?payment-ui=mobile&platform=ios.
 ![](https://b.stripecdn.com/docs-statics-srv/assets/ios-overview.9e0d68d009dc005f73a6f5df69e00458.png)
 
 Integrate Stripe’s prebuilt payment UI into the checkout of your iOS app with the [PaymentSheet](https://stripe.dev/stripe-ios/stripe-paymentsheet/Classes/PaymentSheet.html) class. See our sample integration [on GitHub](https://github.com/stripe/stripe-ios/tree/master/Example/PaymentSheet%20Example).
@@ -8525,7 +8539,7 @@ composer require stripe/stripe-php
   - https://mvnrepository.com/artifact/com.stripe/stripe-java or
   - https://github.com/stripe/stripe-java/releases/latest
 */
-implementation "com.stripe:stripe-java:30.0.0"
+implementation "com.stripe:stripe-java:31.3.0"
 ```
 
 ```xml
@@ -8538,7 +8552,7 @@ implementation "com.stripe:stripe-java:30.0.0"
 <dependency>
   <groupId>com.stripe</groupId>
   <artifactId>stripe-java</artifactId>
-  <version>30.0.0</version>
+  <version>31.3.0</version>
 </dependency>
 ```
 
@@ -8561,13 +8575,13 @@ npm install stripe --save
 # Make sure your project is using Go Modules
 go mod init
 # Install stripe-go
-go get -u github.com/stripe/stripe-go/v83
+go get -u github.com/stripe/stripe-go/v84
 ```
 
 ```go
 // Then import the package
 import (
-  "github.com/stripe/stripe-go/v83"
+  "github.com/stripe/stripe-go/v84"
 )
 ```
 
@@ -8650,6 +8664,8 @@ By default, Stripe enables cards and other prevalent payment methods that can he
 > #### Note
 > 
 > To display the PaymentSheet before you create a PaymentIntent, see [Collect payment details before creating an Intent](https://docs.stripe.com/payments/accept-a-payment-deferred.md?type=payment).
+
+If your Connect platform uses [customer-configured Accounts](https://docs.stripe.com/api/v2/core/accounts/create.md#v2_create_accounts-configuration-customer), use our [guide](https://docs.stripe.com/connect/use-accounts-as-customers.md) to replace `Customer` and event references in your code with the equivalent Accounts v2 API references.
 
 This integration uses three Stripe API objects:
 
@@ -9954,7 +9970,18 @@ configuration.applePay = .init(merchantId: "merchant.com.your_app_name",
 
 ## Optional: Enable card scanning
 
+#### iOS
+
 To enable card scanning support, set the `NSCameraUsageDescription` (**Privacy - Camera Usage Description**) in the Info.plist of your application, and provide a reason for accessing the camera (for example, “To scan cards”). Devices with iOS 13 or higher support card scanning.
+
+#### Android
+
+To enable card scanning support, [request production access](https://developers.google.com/pay/api/android/guides/test-and-deploy/request-prod-access) to the Google Pay API from the [Google Pay and Wallet Console](https://pay.google.com/business/console?utm_source=devsite&utm_medium=devsite&utm_campaign=devsite).
+
+- If you’ve enabled Google Pay, the card scanning feature is automatically available in our UI on eligible devices. To learn more about eligible devices, see the [Google Pay API constraints](https://developers.google.com/pay/payment-card-recognition/debit-credit-card-recognition)
+- **Important:** The card scanning feature only appears in builds signed with the same signing key registered in the [Google Pay & Wallet Console](https://pay.google.com/business/console). Test or debug builds using different signing keys (for example, builds distributed through Firebase App Tester) won’t show the **Scan card** option. To test card scanning in pre-release builds, you must either:
+  - Sign your test builds with your production signing key
+  - Add your test signing key fingerprint to the Google Pay and Wallet Console
 
 ## Optional: Enable ACH payments
 
@@ -10242,8 +10269,8 @@ curl https://api.stripe.com/v1/customers \
 # Create an Ephemeral Key for the Customer
 curl https://api.stripe.com/v1/ephemeral_keys \
   -u <<YOUR_SECRET_KEY>>: \
-  -H "Stripe-Version: 2025-10-29.clover" \
-  -H "Stripe-Account: 2025-10-29.clover" \
+  -H "Stripe-Version: 2026-01-28.clover" \
+  -H "Stripe-Account: 2026-01-28.clover" \
   -X "POST" \
   -d "customer"="{{CUSTOMER_ID}}" \
 
@@ -10274,7 +10301,7 @@ post '/payment-sheet' do
   customer = Stripe::Customer.create({stripe_account: '{{CONNECTED_ACCOUNT_ID}}'})
   ephemeralKey = Stripe::EphemeralKey.create({
     customer: customer['id'],
-  }, {stripe_version: '2025-10-29.clover', stripe_account: '{{CONNECTED_ACCOUNT_ID}}'})
+  }, {stripe_version: '2026-01-28.clover', stripe_account: '{{CONNECTED_ACCOUNT_ID}}'})
   paymentIntent = Stripe::PaymentIntent.create({
     amount: 1099,
     currency: 'eur',
@@ -10313,7 +10340,7 @@ def payment_sheet():
   ephemeralKey = stripe.EphemeralKey.create(
     customer=customer['id'],
     stripe_account="{{CONNECTED_ACCOUNT_ID}}",
-    stripe_version='2025-10-29.clover',
+    stripe_version='2026-01-28.clover',
   )
 
   paymentIntent = stripe.PaymentIntent.create(
@@ -10349,7 +10376,7 @@ $ephemeralKey = $stripe->ephemeralKeys->create([
   'customer' => $customer->id,
 ], [
   'stripe_account' => '{{CONNECTED_ACCOUNT_ID}}',
-  'stripe_version' => '2025-10-29.clover',
+  'stripe_version' => '2026-01-28.clover',
 ]);
 
 $paymentIntent = $stripe->paymentIntents->create([
@@ -10410,7 +10437,7 @@ post(
     EphemeralKeyCreateParams ephemeralKeyParams =
       EphemeralKeyCreateParams.builder()
         .setStripeAccount("{{CONNECTED_ACCOUNT_ID}}")
-        .setStripeVersion("2025-10-29.clover")
+        .setStripeVersion("2026-01-28.clover")
         .setCustomer(customer.getId())
         .build();
 
@@ -10464,7 +10491,7 @@ app.post('/payment-sheet', async (req, res) => {
     {customer: customer.id},
     {
       stripeAccount: '{{CONNECTED_ACCOUNT_ID}}',
-      apiVersion: '2025-10-29.clover'
+      apiVersion: '2026-01-28.clover'
     }
   );
   const paymentIntent = await stripe.paymentIntents.create({
@@ -10513,7 +10540,7 @@ func handlePaymentSheet(w http.ResponseWriter, r *http.Request) {
   ekparams := &stripe.EphemeralKeyParams{
     Customer: stripe.String(c.ID),
     StripeAccount: stripe.String("{{CONNECTED_ACCOUNT_ID}}")
-    StripeVersion: stripe.String("2025-10-29.clover"),
+    StripeVersion: stripe.String("2026-01-28.clover"),
   }
   ek, _ := ephemeralKey.New(ekparams)
 
@@ -10570,7 +10597,7 @@ public ActionResult<PaymentSheetCreateResponse> CreatePaymentSheet([FromBody] Cr
   {
     Customer = customer.Id,
     StipeAccount = "{{CONNECTED_ACCOUNT_ID}}",
-    StripeVersion = "2025-10-29.clover",
+    StripeVersion = "2026-01-28.clover",
   };
   var ephemeralKeyService = new EphemeralKeyService();
   var ephemeralKey = ephemeralKeyService.Create(ephemeralKeyOptions);
@@ -10610,7 +10637,7 @@ public ActionResult<PaymentSheetCreateResponse> CreatePaymentSheet([FromBody] Cr
 
 # In-app integration for Android
 
-> This is a In-app integration for Android for when platform is android. View the full page at https://docs.stripe.com/payments/accept-a-payment?platform=android.
+> This is a In-app integration for Android for when payment-ui is mobile and platform is android. View the full page at https://docs.stripe.com/payments/accept-a-payment?payment-ui=mobile&platform=android.
 ![](https://b.stripecdn.com/docs-statics-srv/assets/android-overview.471eaf89a760f5b6a757fd96b6bb9b60.png)
 
 Integrate Stripe’s prebuilt payment UI into the checkout of your Android app with the [PaymentSheet](https://stripe.dev/stripe-android/paymentsheet/com.stripe.android.paymentsheet/-payment-sheet/index.html) class.
@@ -10673,7 +10700,7 @@ composer require stripe/stripe-php
   - https://mvnrepository.com/artifact/com.stripe/stripe-java or
   - https://github.com/stripe/stripe-java/releases/latest
 */
-implementation "com.stripe:stripe-java:30.0.0"
+implementation "com.stripe:stripe-java:31.3.0"
 ```
 
 ```xml
@@ -10686,7 +10713,7 @@ implementation "com.stripe:stripe-java:30.0.0"
 <dependency>
   <groupId>com.stripe</groupId>
   <artifactId>stripe-java</artifactId>
-  <version>30.0.0</version>
+  <version>31.3.0</version>
 </dependency>
 ```
 
@@ -10709,13 +10736,13 @@ npm install stripe --save
 # Make sure your project is using Go Modules
 go mod init
 # Install stripe-go
-go get -u github.com/stripe/stripe-go/v83
+go get -u github.com/stripe/stripe-go/v84
 ```
 
 ```go
 // Then import the package
 import (
-  "github.com/stripe/stripe-go/v83"
+  "github.com/stripe/stripe-go/v84"
 )
 ```
 
@@ -10751,9 +10778,9 @@ dependencies {
   // ...
 
   // Stripe Android SDK
-  implementation("com.stripe:stripe-android:22.2.0")
+  implementation("com.stripe:stripe-android:22.6.1")
   // Include the financial connections SDK to support US bank account as a payment method
-  implementation("com.stripe:financial-connections:22.2.0")
+  implementation("com.stripe:financial-connections:22.6.1")
 }
 ```
 
@@ -10768,9 +10795,9 @@ dependencies {
   // ...
 
   // Stripe Android SDK
-  implementation 'com.stripe:stripe-android:22.2.0'
+  implementation 'com.stripe:stripe-android:22.6.1'
   // Include the financial connections SDK to support US bank account as a payment method
-  implementation 'com.stripe:financial-connections:22.2.0'
+  implementation 'com.stripe:financial-connections:22.6.1'
 }
 ```
 
@@ -10787,6 +10814,8 @@ By default, Stripe enables cards and other prevalent payment methods that can he
 > #### Note
 > 
 > To display the PaymentSheet before you create a PaymentIntent, see [Collect payment details before creating an Intent](https://docs.stripe.com/payments/accept-a-payment-deferred.md?type=payment).
+
+If your Connect platform uses [customer-configured Accounts](https://docs.stripe.com/api/v2/core/accounts/create.md#v2_create_accounts-configuration-customer), use our [guide](https://docs.stripe.com/connect/use-accounts-as-customers.md) to replace `Customer` and event references in your code with the equivalent Accounts v2 API references.
 
 This integration uses three Stripe API objects:
 
@@ -12060,7 +12089,12 @@ You must test Google Pay using a physical Android device instead of a simulated 
 
 ## Optional: Enable card scanning
 
-To enable card scanning support, [request production access](https://developers.google.com/pay/api/android/guides/test-and-deploy/request-prod-access) to the Google Pay API from the [Google Pay & Wallet Console](https://pay.google.com/business/console?utm_source=devsite&utm_medium=devsite&utm_campaign=devsite).
+To enable card scanning support, [request production access](https://developers.google.com/pay/api/android/guides/test-and-deploy/request-prod-access) to the Google Pay API from the [Google Pay and Wallet Console](https://pay.google.com/business/console?utm_source=devsite&utm_medium=devsite&utm_campaign=devsite).
+
+- If you’ve enabled Google Pay, the card scanning feature is automatically available in our UI on eligible devices. To learn more about eligible devices, see the [Google Pay API constraints](https://developers.google.com/pay/payment-card-recognition/debit-credit-card-recognition)
+- **Important:** The card scanning feature only appears in builds signed with the same signing key registered in the [Google Pay & Wallet Console](https://pay.google.com/business/console). Test or debug builds using different signing keys (for example, builds distributed through Firebase App Tester) won’t show the **Scan card** option. To test card scanning in pre-release builds, you must either:
+  - Sign your test builds with your production signing key
+  - Add your test signing key fingerprint to the Google Pay and Wallet Console
 
 ## Optional: Enable ACH payments
 
@@ -12083,7 +12117,7 @@ dependencies {
   // ...
 
   // Financial Connections Android SDK
-  implementation("com.stripe:financial-connections:22.2.0")
+  implementation("com.stripe:financial-connections:22.6.1")
 }
 ```
 
@@ -12098,7 +12132,7 @@ dependencies {
   // ...
 
   // Financial Connections Android SDK
-  implementation 'com.stripe:financial-connections:22.2.0'
+  implementation 'com.stripe:financial-connections:22.6.1'
 }
 ```
 
@@ -12310,9 +12344,9 @@ class CheckoutActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
-    flowController = PaymentSheet.FlowController.Builder(
-      paymentResultCallback = ::onPaymentSheetResult,
-      paymentOptionCallback = ::onPaymentOption,
+    val flowController = PaymentSheet.FlowController.Builder(
+      resultCallback = ::onPaymentSheetResult,
+      paymentOptionResultCallback = ::onPaymentOption,
     ).build(this)
   }
 }
@@ -12395,7 +12429,8 @@ flowController.configureWithPaymentIntent(
 // ...
   flowController.presentPaymentOptions()
 // ...
-  private fun onPaymentOption(paymentOption: PaymentOption?) {
+  private fun onPaymentOption(paymentOptionResult: PaymentOptionResult) {
+    val paymentOption = paymentOptionResult.paymentOption
     if (paymentOption != null) {
       paymentMethodButton.text = paymentOption.label
       paymentMethodButton.setCompoundDrawablesRelativeWithIntrinsicBounds(
@@ -12520,8 +12555,8 @@ curl https://api.stripe.com/v1/customers \
 # Create an Ephemeral Key for the Customer
 curl https://api.stripe.com/v1/ephemeral_keys \
   -u <<YOUR_SECRET_KEY>>: \
-  -H "Stripe-Version: 2025-10-29.clover" \
-  -H "Stripe-Account: 2025-10-29.clover" \
+  -H "Stripe-Version: 2026-01-28.clover" \
+  -H "Stripe-Account: 2026-01-28.clover" \
   -X "POST" \
   -d "customer"="{{CUSTOMER_ID}}" \
 
@@ -12552,7 +12587,7 @@ post '/payment-sheet' do
   customer = Stripe::Customer.create({stripe_account: '{{CONNECTED_ACCOUNT_ID}}'})
   ephemeralKey = Stripe::EphemeralKey.create({
     customer: customer['id'],
-  }, {stripe_version: '2025-10-29.clover', stripe_account: '{{CONNECTED_ACCOUNT_ID}}'})
+  }, {stripe_version: '2026-01-28.clover', stripe_account: '{{CONNECTED_ACCOUNT_ID}}'})
   paymentIntent = Stripe::PaymentIntent.create({
     amount: 1099,
     currency: 'eur',
@@ -12591,7 +12626,7 @@ def payment_sheet():
   ephemeralKey = stripe.EphemeralKey.create(
     customer=customer['id'],
     stripe_account="{{CONNECTED_ACCOUNT_ID}}",
-    stripe_version='2025-10-29.clover',
+    stripe_version='2026-01-28.clover',
   )
 
   paymentIntent = stripe.PaymentIntent.create(
@@ -12627,7 +12662,7 @@ $ephemeralKey = $stripe->ephemeralKeys->create([
   'customer' => $customer->id,
 ], [
   'stripe_account' => '{{CONNECTED_ACCOUNT_ID}}',
-  'stripe_version' => '2025-10-29.clover',
+  'stripe_version' => '2026-01-28.clover',
 ]);
 
 $paymentIntent = $stripe->paymentIntents->create([
@@ -12688,7 +12723,7 @@ post(
     EphemeralKeyCreateParams ephemeralKeyParams =
       EphemeralKeyCreateParams.builder()
         .setStripeAccount("{{CONNECTED_ACCOUNT_ID}}")
-        .setStripeVersion("2025-10-29.clover")
+        .setStripeVersion("2026-01-28.clover")
         .setCustomer(customer.getId())
         .build();
 
@@ -12742,7 +12777,7 @@ app.post('/payment-sheet', async (req, res) => {
     {customer: customer.id},
     {
       stripeAccount: '{{CONNECTED_ACCOUNT_ID}}',
-      apiVersion: '2025-10-29.clover'
+      apiVersion: '2026-01-28.clover'
     }
   );
   const paymentIntent = await stripe.paymentIntents.create({
@@ -12791,7 +12826,7 @@ func handlePaymentSheet(w http.ResponseWriter, r *http.Request) {
   ekparams := &stripe.EphemeralKeyParams{
     Customer: stripe.String(c.ID),
     StripeAccount: stripe.String("{{CONNECTED_ACCOUNT_ID}}")
-    StripeVersion: stripe.String("2025-10-29.clover"),
+    StripeVersion: stripe.String("2026-01-28.clover"),
   }
   ek, _ := ephemeralKey.New(ekparams)
 
@@ -12848,7 +12883,7 @@ public ActionResult<PaymentSheetCreateResponse> CreatePaymentSheet([FromBody] Cr
   {
     Customer = customer.Id,
     StipeAccount = "{{CONNECTED_ACCOUNT_ID}}",
-    StripeVersion = "2025-10-29.clover",
+    StripeVersion = "2026-01-28.clover",
   };
   var ephemeralKeyService = new EphemeralKeyService();
   var ephemeralKey = ephemeralKeyService.Create(ephemeralKeyOptions);
@@ -12888,10 +12923,10 @@ public ActionResult<PaymentSheetCreateResponse> CreatePaymentSheet([FromBody] Cr
 
 # In-app integration for React Native
 
-> This is a In-app integration for React Native for when platform is react-native. View the full page at https://docs.stripe.com/payments/accept-a-payment?platform=react-native.
+> This is a In-app integration for React Native for when payment-ui is mobile and platform is react-native. View the full page at https://docs.stripe.com/payments/accept-a-payment?payment-ui=mobile&platform=react-native.
 ![](https://b.stripecdn.com/docs-statics-srv/assets/ios-overview.9e0d68d009dc005f73a6f5df69e00458.png)
 
-This integration combines all of the steps required to pay—collecting payment details and confirming the payment—into a single sheet that displays on top of your app.
+This integration combines all of the steps required to pay, including collecting payment details and confirming the payment, into a single sheet that displays on top of your app.
 
 ## Set up Stripe [Server-side] [Client-side]
 
@@ -12951,7 +12986,7 @@ composer require stripe/stripe-php
   - https://mvnrepository.com/artifact/com.stripe/stripe-java or
   - https://github.com/stripe/stripe-java/releases/latest
 */
-implementation "com.stripe:stripe-java:30.0.0"
+implementation "com.stripe:stripe-java:31.3.0"
 ```
 
 ```xml
@@ -12964,7 +12999,7 @@ implementation "com.stripe:stripe-java:30.0.0"
 <dependency>
   <groupId>com.stripe</groupId>
   <artifactId>stripe-java</artifactId>
-  <version>30.0.0</version>
+  <version>31.3.0</version>
 </dependency>
 ```
 
@@ -12987,13 +13022,13 @@ npm install stripe --save
 # Make sure your project is using Go Modules
 go mod init
 # Install stripe-go
-go get -u github.com/stripe/stripe-go/v83
+go get -u github.com/stripe/stripe-go/v84
 ```
 
 ```go
 // Then import the package
 import (
-  "github.com/stripe/stripe-go/v83"
+  "github.com/stripe/stripe-go/v84"
 )
 ```
 
@@ -13078,6 +13113,8 @@ By default, Stripe enables cards and other prevalent payment methods that can he
 > #### Note
 > 
 > To display the PaymentSheet before you create a PaymentIntent, see [Collect payment details before creating an Intent](https://docs.stripe.com/payments/accept-a-payment-deferred.md?type=payment).
+
+If your Connect platform uses [customer-configured Accounts](https://docs.stripe.com/api/v2/core/accounts/create.md#v2_create_accounts-configuration-customer), use our [guide](https://docs.stripe.com/connect/use-accounts-as-customers.md) to replace `Customer` and event references in your code with the equivalent Accounts v2 API references.
 
 This integration uses three Stripe API objects:
 
@@ -14313,9 +14350,20 @@ const { error, paymentOption } = await initPaymentSheet({
 });
 ```
 
-## Optional: Enable card scanning (iOS only) [Client-side]
+## Optional: Enable card scanning [Client-side]
+
+#### iOS
 
 To enable card scanning support, set the `NSCameraUsageDescription` (**Privacy - Camera Usage Description**) in the Info.plist of your application, and provide a reason for accessing the camera (for example, “To scan cards”). Devices with iOS 13 or higher support card scanning.
+
+#### Android
+
+To enable card scanning support, [request production access](https://developers.google.com/pay/api/android/guides/test-and-deploy/request-prod-access) to the Google Pay API from the [Google Pay and Wallet Console](https://pay.google.com/business/console?utm_source=devsite&utm_medium=devsite&utm_campaign=devsite).
+
+- If you’ve enabled Google Pay, the card scanning feature is automatically available in our UI on eligible devices. To learn more about eligible devices, see the [Google Pay API constraints](https://developers.google.com/pay/payment-card-recognition/debit-credit-card-recognition)
+- **Important:** The card scanning feature only appears in builds signed with the same signing key registered in the [Google Pay & Wallet Console](https://pay.google.com/business/console). Test or debug builds using different signing keys (for example, builds distributed through Firebase App Tester) won’t show the **Scan card** option. To test card scanning in pre-release builds, you must either:
+  - Sign your test builds with your production signing key
+  - Add your test signing key fingerprint to the Google Pay and Wallet Console
 
 ## Optional: Customize the sheet [Client-side]
 
@@ -14476,19 +14524,4 @@ if (error) {
 ```
 
 Setting `allowsDelayedPaymentMethods` to true allows [delayed notification](https://docs.stripe.com/payments/payment-methods.md#payment-notification) payment methods like US bank accounts. For these payment methods, the final payment status isn’t known when the `PaymentSheet` completes, and instead succeeds or fails later. If you support these types of payment methods, inform the customer their order is confirmed and only fulfill their order (for example, ship their product) when the payment is successful.
-
-
-# Plugins
-
-> This is a Plugins for when platform is plugins. View the full page at https://docs.stripe.com/payments/accept-a-payment?platform=plugins.
-
-Collect Stripe payments in whichever publishing or e-commerce platform you use, with a Stripe plugin created by our partners. The Stripe developer community uses Stripe’s APIs to create plugins and extensions.
-
-If you use a third-party platform to build and maintain a website, you can add Stripe payments with a plugin.
-
-> All plugins on this page are ready for *Strong Customer Authentication* (Strong Customer Authentication (SCA) is a regulatory requirement in effect as of September 14, 2019, that impacts many European online payments. It requires customers to use two-factor authentication like 3D Secure to verify their purchase) (SCA).
-
-## Get started
-
-Check out our full list of [partners](https://stripe.partners) for a solution to your use case.
 

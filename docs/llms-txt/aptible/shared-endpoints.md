@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/apps/connecting-to-apps/app-endpoints/https-endpoints/shared-endpoints.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Shared Endpoints
 
 HTTP(S) endpoints can be configured to share their underlying load balancer with other endpoints on the stack, reducing the cost of the endpoint. The main limitations of shared endpoints are:

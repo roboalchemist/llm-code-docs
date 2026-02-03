@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/widgets/st.file_uploader
+
 # st.file_uploader
 
 Display a file uploader widget.

@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/getting-started/home.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Aptible Documentation
 
 > A Platform as a Service (PaaS) that gives startups everything developers need to launch and scale apps and databases that are secure, reliable, and compliant — no manual configuration required.

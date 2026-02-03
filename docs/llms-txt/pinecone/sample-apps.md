@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/examples/sample-apps.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Sample apps
 
 export const Tag = ({text, icon}) => {

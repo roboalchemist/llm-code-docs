@@ -5,10 +5,7 @@ title: 'Autodiscovery: Scenarios & Examples'
 description: >-
   Detailed examples for configuring integrations in containerized Kubernetes
   environments using Autodiscovery
-breadcrumbs: >-
-  Docs > Container Monitoring > Containers Guides > Autodiscovery: Scenarios &
-  Examples
-source_url: https://docs.datadoghq.com/guide/autodiscovery-examples/index.html
+breadcrumbs: 'Docs > Containers > Containers Guides > Autodiscovery: Scenarios & Examples'
 ---
 
 # Autodiscovery: Scenarios & Examples

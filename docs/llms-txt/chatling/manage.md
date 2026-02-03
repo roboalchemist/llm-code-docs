@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/chatbot/intents/manage.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Manage intents
 
 > A guide on how to create and manage your chatbot's intents

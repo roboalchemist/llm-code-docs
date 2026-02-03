@@ -1,10 +1,11 @@
+# Source: https://docs.datadoghq.com/cloudprem/introduction/network.md
+
 # Source: https://docs.datadoghq.com/agent/configuration/network.md
 
 ---
 title: Network Traffic
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Agent > Agent Configuration > Network Traffic
-source_url: https://docs.datadoghq.com/configuration/network/index.html
 ---
 
 # Network Traffic

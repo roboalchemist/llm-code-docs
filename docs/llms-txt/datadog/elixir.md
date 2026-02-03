@@ -6,8 +6,6 @@ description: Manually instrument your Elixir applications to send custom traces 
 breadcrumbs: >-
   Docs > APM > Application Instrumentation > Code-Based Custom Instrumentation >
   Custom Instrumentation for Elixir
-source_url: >-
-  https://docs.datadoghq.com/trace_collection/custom_instrumentation/elixir/index.html
 ---
 
 # Custom Instrumentation for Elixir

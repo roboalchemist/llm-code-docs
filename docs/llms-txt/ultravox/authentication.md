@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/tools/custom/authentication.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tool Authentication
 
 > How to use auth tokens with tools.
@@ -149,8 +153,3 @@ Each option may also contain multiple requirements, for example if your server r
 When defining an agent or creating a call, you pass in the key(s) in the `authTokens` property of `selectedTools`.
 If the tokens you provide satisfy multiple options, the first non-empty option whose requirements are all satisfied
 will be used. An unauthenticated option, if present, will only be used if no other option can be satisfied.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

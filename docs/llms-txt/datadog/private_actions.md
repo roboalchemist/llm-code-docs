@@ -6,7 +6,6 @@ description: >-
   Allow workflows and apps to interact with private network services using
   Docker-based private action runners with secure authentication.
 breadcrumbs: Docs > Private Actions Overview
-source_url: https://docs.datadoghq.com/private_actions/index.html
 ---
 
 # Private Actions Overview

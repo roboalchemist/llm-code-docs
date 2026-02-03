@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/quantization/selecting.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/quantization/selecting.md
 
 # Selecting a quantization method
 

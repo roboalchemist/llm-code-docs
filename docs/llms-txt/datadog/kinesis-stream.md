@@ -4,7 +4,6 @@
 title: Kinesis Stream Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > AWS Components > Kinesis Stream Component
-source_url: https://docs.datadoghq.com/components-aws/kinesis-stream/index.html
 ---
 
 # Kinesis Stream Component

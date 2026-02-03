@@ -3,8 +3,7 @@
 ---
 title: Projects
 description: Datadog, the leading service for cloud-scale monitoring.
-breadcrumbs: Docs > Case Management > Projects
-source_url: https://docs.datadoghq.com/case_management/projects/index.html
+breadcrumbs: Docs > Incident Response > Case Management > Projects
 ---
 
 # Projects

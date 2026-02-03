@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > DDSQL Reference > Data Directory > IoT Wireless Network Analyzer
   Configuration
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.iotwireless_network_analyzer_configuration.dataset/index.html
 ---
 
 # IoT Wireless Network Analyzer Configuration
@@ -28,7 +26,7 @@ aws.iotwireless_network_analyzer_configuration
 | description       | core | string        | The description of the new resource.                                                           |
 | multicast_groups  | core | array<string> | List of multicast group resources that have been added to the network analyzer configuration.  |
 | name              | core | string        | Name of the network analyzer configuration.                                                    |
-| tags              | core | hstore        |
+| tags              | core | hstore_csv    |
 | trace_content     | core | json          | Trace content for your wireless devices, gateways, and multicast groups.                       |
 | wireless_devices  | core | array<string> | List of wireless device resources that have been added to the network analyzer configuration.  |
 | wireless_gateways | core | array<string> | List of wireless gateway resources that have been added to the network analyzer configuration. |

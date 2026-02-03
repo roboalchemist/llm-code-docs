@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/cli/acp/clients.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ACP Clients
 
 > Configure Auggie to run in any Agent Client Protocol (ACP) compatible client like Zed, Neovim, or Emacs.
@@ -38,12 +42,103 @@ If you want to configure Auggie manually through Zed's settings, you can use the
 }
 ```
 
+### JetBrains
+
+<Note>
+  We recommend installing and configuring Augment in [JetBrains IDEs](/jetbrains/setup-augment/install-jetbrains-ides) using the [Augment extension](https://plugins.jetbrains.com/plugin/24072-augment-ai-coding-assistant-for-professionals).
+</Note>
+
+To use Auggie with JetBrains IDEs, you can configure it in your IDE settings. You can pass additional [command-line arguments](/cli/reference) to Auggie by adding them to the `args` array or use alternative [authentication methods](/cli/setup-auggie/authentication) by passing environment variables in the `env` object.
+
+```json  theme={null}
+{
+  "agent_servers": {
+    "Auggie CLI": {
+      "command": "auggie",
+      "args": [
+        "--acp"
+      ],
+      "env": {}
+    }
+  }
+}
+```
+
 ### Neovim
 
-To use Auggie with neovim, you can use one of the following plugins:
+To use Auggie with Neovim, you can use one of the following plugins:
 
-* [CodeCompanion](https://github.com/olimorris/codecompanion.nvim)
-* [Avante](https://github.com/yetone/avante.nvim?tab=readme-ov-file#enabling-acp)
+#### [**Avante.nvim**](https://github.com/yetone/avante.nvim)
+
+Add the following to your lazy.nvim configuration:
+
+```lua  theme={null}
+  {
+    "yetone/avante.nvim",
+    event = "VeryLazy",
+    build = "make",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+    },
+    opts = {
+      provider = "auggie-acp",
+      acp_providers = {
+        ["auggie-acp"] = {
+          command = "auggie",
+          args = { "--acp" },
+        },
+      },
+      behaviour = {
+        auto_suggestions = false,
+        auto_set_highlight_group = true,
+        auto_set_keymaps = true,
+        auto_apply_diff_after_generation = false,
+        support_paste_from_clipboard = false,
+      },
+    },
+  },
+
+```
+
+#### [**Agentic.nvim**](https://github.com/carlos-algms/agentic.nvim)
+
+Add the following to your lazy.nvim configuration:
+
+```lua  theme={null}
+{
+  "carlos-algms/agentic.nvim",
+  opts = {
+    provider = "auggie-acp",
+    acp_providers = {
+      ["auggie-acp"] = {
+        command = "auggie",
+        args = { "--acp" },
+      },
+    },
+  },
+}
+```
+
+#### [**CodeCompanion.nvim**](https://github.com/olimorris/codecompanion.nvim)
+
+Add the following to your lazy.nvim configuration:
+
+```lua  theme={null}
+{
+  "olimorris/codecompanion.nvim",
+  opts = {
+    strategies = {
+      chat = {
+        adapter = "auggie_cli",
+      },
+      inline = {
+        adapter = "auggie_cli",
+      },
+    },
+  },
+}
+```
 
 ### Emacs
 

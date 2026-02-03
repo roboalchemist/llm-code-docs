@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/data/st.table
+
 # st.table
 
 Display a static table.

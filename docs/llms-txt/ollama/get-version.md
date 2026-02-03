@@ -1,50 +1,53 @@
 # Source: https://docs.ollama.com/api-reference/get-version.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ollama.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get version
 
 > Retrieve the version of the Ollama
 
+
+
 ## OpenAPI
 
 ````yaml openapi.yaml get /api/version
+openapi: 3.1.0
+info:
+  title: Ollama API
+  version: 0.1.0
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+  description: |
+    OpenAPI specification for the Ollama HTTP API
+servers:
+  - url: http://localhost:11434
+    description: Ollama
+security: []
 paths:
-  path: /api/version
-  method: get
-  servers:
-    - url: http://localhost:11434
-      description: Ollama
-  request:
-    security: []
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: Default
-        lang: bash
-        source: |
-          curl http://localhost:11434/api/version
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              version:
-                allOf:
-                  - type: string
-                    description: Version of Ollama
-            refIdentifier: '#/components/schemas/VersionResponse'
-        examples:
-          example:
-            value:
-              version: 0.12.6
-        description: Version information
-  deprecated: false
-  type: path
+  /api/version:
+    get:
+      summary: Get version
+      description: Retrieve the version of the Ollama
+      operationId: version
+      responses:
+        '200':
+          description: Version information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VersionResponse'
+              example:
+                version: 0.12.6
 components:
-  schemas: {}
+  schemas:
+    VersionResponse:
+      type: object
+      properties:
+        version:
+          type: string
+          description: Version of Ollama
 
 ````

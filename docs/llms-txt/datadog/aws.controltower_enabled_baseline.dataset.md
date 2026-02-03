@@ -4,8 +4,6 @@
 title: Control Tower Enabled Baseline
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Control Tower Enabled Baseline
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.controltower_enabled_baseline.dataset/index.html
 ---
 
 # Control Tower Enabled Baseline
@@ -18,15 +16,15 @@ aws.controltower_enabled_baseline
 
 ## Fields
 
-| Title                | ID   | Type   | Data Type                                                                                          | Description |
-| -------------------- | ---- | ------ | -------------------------------------------------------------------------------------------------- | ----------- |
-| _key                 | core | string |
-| account_id           | core | string |
-| arn                  | core | string | The ARN of the EnabledBaseline resource                                                            |
-| baseline_identifier  | core | string | The specific baseline that is enabled as part of the EnabledBaseline resource.                     |
-| baseline_version     | core | string | The enabled version of the baseline.                                                               |
-| drift_status_summary | core | json   | The drift status of the enabled baseline.                                                          |
-| parent_identifier    | core | string | An ARN that represents an object returned by ListEnabledBaseline, to describe an enabled baseline. |
-| status_summary       | core | json   | The deployment summary of an EnabledControl or EnabledBaseline resource.                           |
-| tags                 | core | hstore |
-| target_identifier    | core | string | The target upon which the baseline is enabled.                                                     |
+| Title                | ID   | Type       | Data Type                                                                                          | Description |
+| -------------------- | ---- | ---------- | -------------------------------------------------------------------------------------------------- | ----------- |
+| _key                 | core | string     |
+| account_id           | core | string     |
+| arn                  | core | string     | The ARN of the EnabledBaseline resource                                                            |
+| baseline_identifier  | core | string     | The specific baseline that is enabled as part of the EnabledBaseline resource.                     |
+| baseline_version     | core | string     | The enabled version of the baseline.                                                               |
+| drift_status_summary | core | json       | The drift status of the enabled baseline.                                                          |
+| parent_identifier    | core | string     | An ARN that represents an object returned by ListEnabledBaseline, to describe an enabled baseline. |
+| status_summary       | core | json       | The deployment summary of an EnabledControl or EnabledBaseline resource.                           |
+| tags                 | core | hstore_csv |
+| target_identifier    | core | string     | The target upon which the baseline is enabled.                                                     |

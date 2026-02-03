@@ -1,5 +1,9 @@
 # Source: https://docs.squared.ai/guides/destinations/retl-destinations/productivity-tools/google-sheets.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Google Sheets - Service Account
 
 > Google Sheets serves as an effective reverse ETL destination, enabling real-time data synchronization from data warehouses to a collaborative, user-friendly spreadsheet environment. It democratizes data access, allowing stakeholders to analyze, share, and act on insights without specialized skills. The platform supports automation and customization, enhancing decision-making and operational efficiency. Google Sheets transforms complex data into actionable intelligence, fostering a data-driven culture across organizations.

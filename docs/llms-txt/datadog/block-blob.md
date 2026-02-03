@@ -4,7 +4,6 @@
 title: Block Blob Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: 'Docs > Cloudcraft (Standalone) > Components: Azure > Block Blob Component'
-source_url: https://docs.datadoghq.com/components-azure/block-blob/index.html
 ---
 
 # Block Blob Component

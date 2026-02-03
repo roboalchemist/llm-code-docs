@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/api-playground/asyncapi-setup.md
+# Source: https://www.mintlify.com/docs/api-playground/asyncapi-setup.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # AsyncAPI setup
 
@@ -51,7 +55,25 @@ To automatically generate pages for all channels in your AsyncAPI schema, add an
     ]
   }
   ```
+
+  ```json Multiple files theme={null}
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "API Reference",
+        "asyncapi": [
+          "/path/to/events.json",
+          "/path/to/webhooks.json"
+        ]
+      }
+    ]
+  }
+  ```
 </CodeGroup>
+
+<Note>
+  When you specify multiple AsyncAPI files, each file generates its own set of channel pages.
+</Note>
 
 ### Examples with groups
 

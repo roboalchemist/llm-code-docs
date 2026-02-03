@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/payments/payment-retries.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Payment retries
 
 ## Retry an invoice payment

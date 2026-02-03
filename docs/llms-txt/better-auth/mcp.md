@@ -4,11 +4,7 @@
 
 MCP provider plugin for Better Auth
 
-***
 
-title: MCP
-description: MCP provider plugin for Better Auth
-------------------------------------------------
 
 `OAuth` `MCP`
 
@@ -55,7 +51,7 @@ The **MCP** plugin lets your app act as an OAuth provider for MCP clients. It ha
 
     <Tabs items={["migrate", "generate"]}>
       <Tab value="migrate">
-        <CodeBlockTabs defaultValue="npm">
+        <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
           <CodeBlockTabsList>
             <CodeBlockTabsTrigger value="npm">
               npm
@@ -101,7 +97,7 @@ The **MCP** plugin lets your app act as an OAuth provider for MCP clients. It ha
       </Tab>
 
       <Tab value="generate">
-        <CodeBlockTabs defaultValue="npm">
+        <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
           <CodeBlockTabsList>
             <CodeBlockTabsTrigger value="npm">
               npm

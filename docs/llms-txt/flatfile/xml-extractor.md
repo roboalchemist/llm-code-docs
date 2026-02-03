@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/xml-extractor.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # XML Extractor
 
 > A Flatfile plugin for parsing XML files, flattening nested structures and attributes, and converting them into tabular format for easy import into Flatfile Sheets.
@@ -10,7 +14,7 @@ The XML Extractor plugin processes .xml files uploaded to Flatfile by parsing XM
 
 Install the XML Extractor plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-xml-extractor
 ```
 
@@ -41,7 +45,7 @@ By default, the plugin:
 ### Basic Usage
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { listener } from '@flatfile/listener';
   import { XMLExtractor } from '@flatfile/plugin-xml-extractor';
 
@@ -54,7 +58,7 @@ By default, the plugin:
   });
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { listener } from '@flatfile/listener';
   import { XMLExtractor } from '@flatfile/plugin-xml-extractor';
   import type { FlatfileEvent } from '@flatfile/listener';
@@ -72,7 +76,7 @@ By default, the plugin:
 ### Custom Configuration
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { listener } from '@flatfile/listener';
   import { XMLExtractor } from '@flatfile/plugin-xml-extractor';
 
@@ -95,7 +99,7 @@ By default, the plugin:
   });
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { listener } from '@flatfile/listener';
   import { XMLExtractor } from '@flatfile/plugin-xml-extractor';
   import type { FlatfileEvent } from '@flatfile/listener';
@@ -123,7 +127,7 @@ By default, the plugin:
 ### Using the Standalone Parser
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import * as fs from 'fs';
   import { xmlParser } from '@flatfile/plugin-xml-extractor';
 
@@ -134,7 +138,7 @@ By default, the plugin:
   console.log(workbookData.Sheet1.data[0]);
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import * as fs from 'fs';
   import { xmlParser } from '@flatfile/plugin-xml-extractor';
 
@@ -149,7 +153,7 @@ By default, the plugin:
 ### Error Handling
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { xmlParser } from '@flatfile/plugin-xml-extractor';
 
   try {
@@ -160,7 +164,7 @@ By default, the plugin:
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { xmlParser } from '@flatfile/plugin-xml-extractor';
 
   try {
@@ -187,7 +191,7 @@ If tags within a record are repeated (e.g., multiple `<email>` tags), the extrac
 Use the `transform` function to inspect intermediate parsed output:
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   XMLExtractor({
     transform: (row) => {
       console.log(row);
@@ -196,7 +200,7 @@ Use the `transform` function to inspect intermediate parsed output:
   })
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   XMLExtractor({
     transform: (row: Record<string, any>) => {
       console.log(row);

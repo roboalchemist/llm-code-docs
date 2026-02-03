@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/examplecode/tools/mcp-partition.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Model Context Protocol (MCP) Hands-On Walkthrough for the Unstructured Partition Endpoint
 
 [Model Context Protocol](https://modelcontextprotocol.io/introduction) (MCP) is an open protocol that standardizes
@@ -15,8 +19,8 @@ this walkthrough demonstrates how to run an MCP *server*
 for chunking as well, processing local files one file at a time.
 
 <Note>
-  For a hands-on walkthrough of the [Unstructured Workflow Endpoint](/api-reference/workflow/overview) instead,
-  see the [MCP Hands-On Walkthrough for the Unstructured Workflow Endpoint](/examplecode/tools/mcp), which offers
+  For a hands-on walkthrough of the [Unstructured API's workflow operations](/api-reference/workflow/overview) instead,
+  see the [MCP Hands-On Walkthrough for the Unstructured API's workflow operations](/examplecode/tools/mcp), which offers
   a full range of partitioning, chunking, embedding, and enrichment options for your files and data.
 </Note>
 

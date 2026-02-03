@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/development/model/requests.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Using request objects / cancellation
 
 > Get more control by directly using the request object.
@@ -7,7 +11,7 @@
 Truss processes client requests by extracting and validating payloads. For **advanced use cases**, you can access the raw request object to:
 
 * **Customize payload deserialization** (e.g., binary protocol buffers).
-* **Handle disconnections & cancel long-running predictions.**
+* **Handle disconnections and cancel long-running predictions.**
 
 <Tip>You can mix request objects with standard inputs or use requests exclusively for performance optimization.</Tip>
 
@@ -64,7 +68,7 @@ class Model:
 
 ### TRT-LLM (Polling-Based Cancellation)
 
-For **TensorRT-LLM**, use `response_iterator.cancel()` to terminate streaming requests:
+For TensorRT-LLM, use `response_iterator.cancel()` to terminate streaming requests:
 
 ```python  theme={"system"}
 async for request_output in response_iterator:
@@ -78,7 +82,7 @@ async for request_output in response_iterator:
 
 ### vLLM (Abort API)
 
-For **vLLM**, use `engine.abort()` to stop processing:
+For vLLM, use `engine.abort()` to stop processing:
 
 ```python  theme={"system"}
 async for request_output in results_generator:

@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/api-references/openapi/add-an-openapi-specification.md
-
-# Source: https://gitbook.com/docs/documentation/fr/api-references/openapi/add-an-openapi-specification.md
-
-# Source: https://gitbook.com/docs/api-references/openapi/add-an-openapi-specification.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/api-references/openapi/add-an-openapi-specification.md
 
 # Source: https://gitbook.com/docs/documentation/zh/api-references/openapi/add-an-openapi-specification.md
 

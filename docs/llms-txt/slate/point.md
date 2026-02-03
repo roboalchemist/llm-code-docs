@@ -2,14 +2,6 @@
 
 # Source: https://docs.slatejs.org/v0.47/slate-core/point.md
 
-# Source: https://docs.slatejs.org/api/locations/point.md
-
-# Source: https://docs.slatejs.org/v0.47/slate-core/point.md
-
-# Source: https://docs.slatejs.org/api/locations/point.md
-
-# Source: https://docs.slatejs.org/v0.47/slate-core/point.md
-
 # Point
 
 ```javascript

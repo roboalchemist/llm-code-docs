@@ -34,8 +34,10 @@ import { SankeyChart } from '@mui/x-charts-pro';
 | onHighlightChange | `function(highlightedItem: SankeyHighlightItemData \| null) => void` | - | No |  |
 | onLinkClick | `function(event: React.MouseEvent<SVGElement, MouseEvent>, link: SankeyLinkIdentifierWithData) => void` | - | No |  |
 | onNodeClick | `function(event: React.MouseEvent<SVGElement, MouseEvent>, node: SankeyNodeIdentifierWithData) => void` | - | No |  |
+| onTooltipItemChange | `function(tooltipItem: SeriesItemIdentifier<TSeries> \| null) => void` | - | No |  |
 | slotProps | `object` | `{}` | No |  |
 | slots | `object` | `{}` | No |  |
+| tooltipItem | `{ nodeId: number \| string, seriesId: number \| string, subType: 'node', type: 'sankey' } \| { seriesId: number \| string, sourceId: number \| string, subType: 'link', targetId: number \| string, type: 'sankey' }` | - | No |  |
 | width | `number` | - | No |  |
 
 > **Note**: The `ref` is forwarded to the root element.

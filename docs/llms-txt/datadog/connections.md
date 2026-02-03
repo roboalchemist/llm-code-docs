@@ -4,7 +4,6 @@
 title: Connections
 description: Connections for actions
 breadcrumbs: Docs > Connections
-source_url: https://docs.datadoghq.com/connections/index.html
 ---
 
 # Connections

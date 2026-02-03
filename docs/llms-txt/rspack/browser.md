@@ -1,7 +1,5 @@
 # Source: https://rspack.dev/api/javascript-api/browser.md
 
-import { ApiMeta } from '../../../../components/ApiMeta';
-
 # Browser API
 
 `@rspack/browser` is a version of Rspack specifically designed for browser environments, without relying on WebContainers or any particular platform. Its API is consistent with the [JavaScript API](/api/javascript-api/index.md) of `@rspack/core`, while additionally providing features and interfaces tailored for the browser environment.
@@ -220,8 +218,7 @@ interface BrowserRequirePluginOptions {
 
 #### `modules`
 
-<ApiMeta addedVersion="1.6.0-beta.0" />
-
+[Added in v1.6.0-beta.0](https://github.com/web-infra-dev/rspack/releases/tag/v1.6.0-beta.0)
 This option allows you to directly map a module request id to any JavaScript object within the project. Note that you need to create a corresponding empty file in `memfs`:
 
 ```js title="rspack.config.mjs"

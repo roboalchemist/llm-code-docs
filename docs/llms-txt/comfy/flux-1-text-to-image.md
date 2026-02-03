@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/flux/flux-1-text-to-image.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ComfyUI Flux.1 Text-to-Image Workflow Example
 
 > This guide provides a brief introduction to the Flux.1 model and guides you through using the Flux.1 model for text-to-image generation with examples including the full version and the FP8 Checkpoint version.
@@ -48,6 +52,10 @@ In this example, we'll introduce text-to-image examples using both Flux.1 Dev an
 
 Please download the image below and drag it into ComfyUI to load the workflow.
 ![Flux Dev Original Version Workflow](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/flux/text-to-image/flux_dev_t5fp16.png)
+
+<a className="prose" target="_blank" href="https://cloud.comfy.org/?template=flux_dev_checkpoint_example&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28a745', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
+  <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Run on Comfy Cloud</p>
+</a>
 
 #### 2. Manual Model Installation
 
@@ -102,6 +110,10 @@ Please download the image below and drag it into ComfyUI to load the workflow.
 
 ![Flux Schnell Version Workflow](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/flux/text-to-image/flux_schnell_t5fp8.png)
 
+<a className="prose" target="_blank" href="https://cloud.comfy.org/?template=flux_schnell&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28a745', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
+  <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Run on Comfy Cloud</p>
+</a>
+
 #### 2. Manual Models Installation
 
 <Note>
@@ -154,6 +166,10 @@ but it also requires less VRAM, and you only need to install one model file to t
 Please download the image below and drag it into ComfyUI to load the workflow.
 
 ![Flux Dev fp8 Checkpoint Version Workflow](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/flux/text-to-image/flux_dev_fp8.png)
+
+<a className="prose" target="_blank" href="https://cloud.comfy.org/?template=flux_dev_full_text_to_image&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28a745', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
+  <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Run on Comfy Cloud</p>
+</a>
 
 Please download [flux1-dev-fp8.safetensors](https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors?download=true) and save it to the `ComfyUI/models/checkpoints/` directory.
 

@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/gateway/prompt-integration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Prompt Management
 
 > Deploy and iterate prompts through the AI Gateway without code changes

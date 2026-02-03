@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/api-references/guides/configuring-the-test-it-button.md
-
-# Source: https://gitbook.com/docs/documentation/fr/api-references/guides/configuring-the-test-it-button.md
-
-# Source: https://gitbook.com/docs/api-references/guides/configuring-the-test-it-button.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/api-references/guides/configuring-the-test-it-button.md
 
 # Source: https://gitbook.com/docs/documentation/zh/api-references/guides/configuring-the-test-it-button.md
 

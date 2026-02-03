@@ -4,11 +4,7 @@
 
 Integrate Better Auth with MySQL.
 
-***
 
-title: MySQL
-description: Integrate Better Auth with MySQL.
-----------------------------------------------
 
 MySQL is a popular open-source relational database management system (RDBMS) that is widely used for building web applications and other types of software. It provides a flexible and scalable database solution that allows for efficient storage and retrieval of data.
 Read more here: [MySQL](https://www.mysql.com/).
@@ -47,24 +43,33 @@ your database schema based on your Better Auth configuration and plugins.
   <thead>
     <tr className="border-b">
       <th>
-        <p className="font-bold text-[16px] mb-1">MySQL Schema Generation</p>
+        <p className="font-bold text-[16px] mb-1">
+          MySQL Schema Generation
+        </p>
       </th>
 
       <th>
-        <p className="font-bold text-[16px] mb-1">MySQL Schema Migration</p>
+        <p className="font-bold text-[16px] mb-1">
+          MySQL Schema Migration
+        </p>
       </th>
     </tr>
   </thead>
 
   <tbody>
     <tr className="h-10">
-      <td>â Supported</td>
-      <td>â Supported</td>
+      <td>
+        â Supported
+      </td>
+
+      <td>
+        â Supported
+      </td>
     </tr>
   </tbody>
 </table>
 
-<CodeBlockTabs defaultValue="npm">
+<CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
   <CodeBlockTabsList>
     <CodeBlockTabsTrigger value="npm">
       npm
@@ -108,7 +113,7 @@ your database schema based on your Better Auth configuration and plugins.
   </CodeBlockTab>
 </CodeBlockTabs>
 
-<CodeBlockTabs defaultValue="npm">
+<CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
   <CodeBlockTabsList>
     <CodeBlockTabsTrigger value="npm">
       npm

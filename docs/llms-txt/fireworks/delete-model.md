@@ -1,46 +1,62 @@
-# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-model.md
-
 # Source: https://docs.fireworks.ai/api-reference/delete-model.md
 
-# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-model.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.fireworks.ai/api-reference/delete-model.md
+# Delete Model
 
-# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-model.md
 
-# Source: https://docs.fireworks.ai/api-reference/delete-model.md
 
-# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-model.md
+## OpenAPI
 
-# Source: https://docs.fireworks.ai/api-reference/delete-model.md
+````yaml delete /v1/accounts/{account_id}/models/{model_id}
+openapi: 3.1.0
+info:
+  title: Gateway REST API
+  version: 4.21.6
+servers:
+  - url: https://api.fireworks.ai
+security:
+  - BearerAuth: []
+tags:
+  - name: Gateway
+paths:
+  /v1/accounts/{account_id}/models/{model_id}:
+    delete:
+      tags:
+        - Gateway
+      summary: Delete Model
+      operationId: Gateway_DeleteModel
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: The Account Id
+          schema:
+            type: string
+        - name: model_id
+          in: path
+          required: true
+          description: The Model Id
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A successful response.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        Bearer authentication using your Fireworks API key. Format: Bearer
+        <API_KEY>
+      bearerFormat: API_KEY
 
-# Source: https://docs.fireworks.ai/tools-sdks/firectl/commands/delete-model.md
-
-# firectl delete model
-
-> Deletes a model.
-
-```
-firectl delete model [flags]
-```
-
-### Examples
-
-```
-firectl delete model my-model
-firectl delete model accounts/my-account/models/my-model
-```
-
-### Flags
-
-```
-  -h, --help   help for model
-```
-
-### Global flags
-
-```
-  -a, --account-id string   The Fireworks account ID. If not specified, reads account_id from ~/.fireworks/auth.ini.
-      --api-key string      An API key used to authenticate with Fireworks.
-  -p, --profile string      fireworks auth and settings profile to use.
-```
+````

@@ -6,18 +6,9 @@ description: >-
   Automatically surface critical issues with contextual insights and recommended
   next steps
 breadcrumbs: Docs > Continuous Profiler > Automated Analysis
-source_url: https://docs.datadoghq.com/automated_analysis/index.html
 ---
 
 # Automated Analysis
-
-{% callout %}
-##### Join the Preview!
-
-Automated Analysis is in Preview.
-
-[Request Access](https://www.datadoghq.com/product-preview/automated-analysis/)
-{% /callout %}
 
 ## Overview{% #overview %}
 
@@ -77,9 +68,9 @@ Each row represents an insight type, summarizing:
 
 - Service and runtime affected
 - Insight type (for example, GC Pauses or High Lock Contention)
-- Severity (for example, Info or Warning)
+- Priority (high, medium or low)
 
-You can filter insights by runtime, service, or environment to narrow the list to the most important insights. Teams often use this view to identify patterns, such as multiple services affected by the same inefficiency. Clicking on an insight opens its detail panel.
+You can filter insights by insight name, runtime, service, or environment to narrow the list to the most important insights. Teams often use this view to identify patterns, such as multiple services affected by the same inefficiency. Clicking on an insight opens its detail panel.
 
 ## Supported insights{% #supported-insights %}
 

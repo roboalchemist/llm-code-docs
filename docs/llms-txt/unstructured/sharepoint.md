@@ -4,17 +4,9 @@
 
 # Source: https://docs.unstructured.io/api-reference/workflow/sources/sharepoint.md
 
-# Source: https://docs.unstructured.io/ui/sources/sharepoint.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/source-connectors/sharepoint.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/sources/sharepoint.md
-
-# Source: https://docs.unstructured.io/ui/sources/sharepoint.md
-
-# Source: https://docs.unstructured.io/open-source/ingestion/source-connectors/sharepoint.md
-
-# Source: https://docs.unstructured.io/api-reference/workflow/sources/sharepoint.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # SharePoint
 
@@ -46,8 +38,7 @@
   After you create the source connector, add it along with a
   [destination connector](/api-reference/workflow/destinations/overview) to a [workflow](/api-reference/workflow/overview#workflows).
   Then run the worklow as a [job](/api-reference/workflow/overview#jobs). To learn how, try out the
-  [hands-on Workflow Endpoint quickstart](/api-reference/workflow/overview#quickstart),
-  go directly to the [quickstart notebook](https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/Unstructured_Platform_Workflow_Endpoint_Quickstart.ipynb),
+  the notebook [Dropbox-To-Pinecone Connector API Quickstart for Unstructured](https://colab.research.google.com/github/Unstructured-IO/notebooks/blob/main/notebooks/Dropbox_To_Pinecone_Connector_Quickstart.ipynb),
   or watch the two 4-minute video tutorials for the [Unstructured Python SDK](/api-reference/workflow/overview#unstructured-python-sdk).
 
   You can also create source connectors with the Unstructured user interface (UI).
@@ -97,11 +88,28 @@ The requirements are as follows.
 * The SharePoint Online and OneDrive plans must share the same Microsoft Entra ID tenant.
   [Learn more](https://learn.microsoft.com/microsoft-365/enterprise/subscriptions-licenses-accounts-and-tenants-for-microsoft-cloud-offerings?view=o365-worldwide).
 
-* The SharePoint Online site URL.
+* The SharePoint Online site base URL. This URL must meet the following requirements:
 
-  * Site collection-level URLs typically have the format `https://<tenant>.sharepoint.com/sites/<site-collection-name>`.
-  * Root site collection-level URLs typically have the format `https://<tenant>.sharepoint.com`.
-  * To process all sites within a SharePoint tenant, use a site URL of `https://<tenant>-admin.sharepoint.com`.
+  1. Starts with `https://`.
+  2. Followed by any number of uppercase or lowercase letters, digits, or hyphens (`-`). This portion of the URL must contain at least
+     one dot segment after the first domain label; for example, `.com`, `.sharepoint.com`, or `.co.uk`.
+  3. Followed optionally by `/sites/` or `/teams/` and ends with any name that can include any number of
+     uppercase or lowercase letters, digits, hyphens (`-`), or underscores (`_`); for example, `/sites/my-site` or `/teams/my_team`.
+
+  Some examples of valid site URLs include:
+
+  * `https://contoso.com`
+  * `https://my-company.sharepoint.com`
+  * `https://example.co.uk`
+  * `https://contoso.sharepoint.com/sites/engineering`
+  * `https://teams.example.com/teams/marketing`
+
+  Additionally, note the following about collection-level URLs and all site URLs:
+
+  * Site collection-level URLs typically have a format with a pattern similar to `https://<tenant>.sharepoint.com/sites/<site-collection-name>`.
+  * Team collection-level URLs typically have a format with a pattern similar to `https://<tenant>.sharepoint.com/teams/<team-collection-name>`.
+  * Root site collection-level URLs typically have a format with a pattern similar to `https://<tenant>.sharepoint.com`.
+  * To process all sites within a SharePoint tenant, use a site URL with a pattern similar to `https://<tenant>-admin.sharepoint.com`.
 
   [Learn more](https://learn.microsoft.com/microsoft-365/community/query-string-url-tricks-sharepoint-m365).
 

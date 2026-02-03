@@ -2,19 +2,7 @@
 
 # Source: https://docs.livekit.io/agents/models/tts/inference/rime.md
 
-# Source: https://docs.livekit.io/agents/models/tts/plugins/rime.md
-
-# Source: https://docs.livekit.io/agents/models/tts/inference/rime.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/rime.md
-
-# Source: https://docs.livekit.io/agents/models/tts/inference/rime.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/rime.md
-
-# Source: https://docs.livekit.io/agents/models/tts/inference/rime.md
-
-LiveKit docs › Models › Text-to-speech (TTS) › LiveKit Inference › Rime
+LiveKit docs › Models › TTS › Inference › Rime
 
 ---
 
@@ -30,7 +18,6 @@ LiveKit Inference offers voice models powered by Rime. Pricing information is av
 | -------- | --------- |
 | `rime/arcana` | `en`, `es`, `fr`, `de` |
 | `rime/mistv2` | `en`, `es`, `fr`, `de` |
-| `rime/mist` | `en`, `es`, `fr`, `de` |
 
 ## Usage
 
@@ -42,7 +29,7 @@ The simplest way to use Rime TTS is to pass it to the `tts` argument in your `Ag
 from livekit.agents import AgentSession
 
 session = AgentSession(
-    tts="rime/arcana:astra",
+    tts="rime/arcana:celeste",
     # ... llm, stt, vad, turn_detection, etc.
 )
 
@@ -56,7 +43,7 @@ session = AgentSession(
 import { AgentSession } from '@livekit/agents';
 
 session = new AgentSession({
-    tts: "rime/arcana:astra",
+    tts: "rime/arcana:celeste",
     // ... tts, stt, vad, turn_detection, etc.
 });
 
@@ -74,7 +61,7 @@ from livekit.agents import AgentSession, inference
 session = AgentSession(
     tts=inference.TTS(
         model="rime/arcana", 
-        voice="astra", 
+        voice="celeste", 
         language="en"
     ),
     # ... tts, stt, vad, turn_detection, etc.
@@ -92,7 +79,7 @@ import { AgentSession } from '@livekit/agents';
 session = new AgentSession({
     tts: new inference.TTS({ 
         model: "rime/arcana", 
-        voice: "astra", 
+        voice: "celeste", 
         language: "en" 
     }),
     // ... tts, stt, vad, turn_detection, etc.
@@ -133,7 +120,7 @@ The following links provide more information about Rime in LiveKit Inference.
 
 ---
 
-This document was rendered at 2025-11-18T23:55:13.429Z.
+This document was rendered at 2026-02-03T03:25:04.828Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/tts/inference/rime.md](https://docs.livekit.io/agents/models/tts/inference/rime.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

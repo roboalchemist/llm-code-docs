@@ -1,3 +1,5 @@
+# Source: https://preactjs.com/guide/v10/getting-started#aliasing-react-to-preact
+
 # Getting Started
 
 New to Preact? New to Virtual DOM? Check out the [tutorial](/tutorial).

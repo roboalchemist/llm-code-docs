@@ -55,7 +55,7 @@ Logger for redirected actor logs.
 
 ## Constructors<!-- -->[**](#Constructors)
 
-### [**](#constructor)[**](https://github.com/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/src/resource_clients/log.ts#L83)constructor
+### [**](#constructor)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/log.ts#L114)constructor
 
 * ****new LoggerActorRedirect**(options): [LoggerActorRedirect](https://docs.apify.com/api/client/js/api/client/js/reference/class/LoggerActorRedirect.md)
 
@@ -70,7 +70,7 @@ Logger for redirected actor logs.
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#captureRejections)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@types/node/events.d.ts#L425)staticexternalinheritedcaptureRejections
+### [**](#captureRejections)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/events.d.ts#L425)staticexternalinheritedcaptureRejections
 
 **captureRejections: boolean
 
@@ -84,7 +84,7 @@ Change the default `captureRejections` option on all new `EventEmitter` objects.
 
   v13.4.0, v12.16.0
 
-### [**](#captureRejectionSymbol)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@types/node/events.d.ts#L418)staticexternalreadonlyinheritedcaptureRejectionSymbol
+### [**](#captureRejectionSymbol)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/events.d.ts#L418)staticexternalreadonlyinheritedcaptureRejectionSymbol
 
 **captureRejectionSymbol: typeof captureRejectionSymbol
 
@@ -98,7 +98,7 @@ See how to write a custom `rejection handler`.
 
   v13.4.0, v12.16.0
 
-### [**](#defaultMaxListeners)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@types/node/events.d.ts#L464)staticexternalinheriteddefaultMaxListeners
+### [**](#defaultMaxListeners)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/events.d.ts#L464)staticexternalinheriteddefaultMaxListeners
 
 **defaultMaxListeners: number
 
@@ -128,7 +128,7 @@ The emitted warning can be inspected with `process.on('warning')` and will have 
 
   v0.11.2
 
-### [**](#errorMonitor)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@types/node/events.d.ts#L411)staticexternalreadonlyinheritederrorMonitor
+### [**](#errorMonitor)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/events.d.ts#L411)staticexternalreadonlyinheritederrorMonitor
 
 **errorMonitor: typeof errorMonitor
 
@@ -144,7 +144,7 @@ Installing a listener using this symbol does not change the behavior once an `'e
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#_log)[**](https://github.com/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/src/resource_clients/log.ts#L87)\_log
+### [**](#_log)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/log.ts#L118)\_log
 
 * ****\_log**(level, message, data, exception, opts): undefined | string
 
@@ -160,7 +160,7 @@ Installing a listener using this symbol does not change the behavior once an `'e
 
   #### Returns undefined | string
 
-### [**](#_outputWithConsole)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@apify/log/src/index.d.ts#L49)externalinherited\_outputWithConsole
+### [**](#_outputWithConsole)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@apify/log/src/index.d.ts#L49)externalinherited\_outputWithConsole
 
 * ****\_outputWithConsole**(level, line): void
 
@@ -173,7 +173,7 @@ Installing a listener using this symbol does not change the behavior once an `'e
 
   #### Returns void
 
-### [**](#\[captureRejectionSymbol])[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@types/node/events.d.ts#L103)externaloptionalinherited\[captureRejectionSymbol]
+### [**](#\[captureRejectionSymbol])[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/events.d.ts#L103)externaloptionalinherited\[captureRejectionSymbol]
 
 * ****\[captureRejectionSymbol]**\<K>(error, event, ...args): void
 
@@ -187,7 +187,7 @@ Installing a listener using this symbol does not change the behavior once an `'e
 
   #### Returns void
 
-### [**](#addListener)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@types/node/events.d.ts#L642)externalinheritedaddListener
+### [**](#addListener)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/events.d.ts#L642)externalinheritedaddListener
 
 * ****addListener**\<K>(eventName, listener): this
 
@@ -209,7 +209,7 @@ Installing a listener using this symbol does not change the behavior once an `'e
 
   #### Returns this
 
-### [**](#emit)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@types/node/events.d.ts#L904)externalinheritedemit
+### [**](#emit)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/events.d.ts#L904)externalinheritedemit
 
 * ****emit**\<K>(eventName, ...args): boolean
 
@@ -265,7 +265,7 @@ Installing a listener using this symbol does not change the behavior once an `'e
 
   #### Returns boolean
 
-### [**](#eventNames)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@types/node/events.d.ts#L967)externalinheritedeventNames
+### [**](#eventNames)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/events.d.ts#L967)externalinheritedeventNames
 
 * ****eventNames**(): (string | symbol)\[]
 
@@ -295,7 +295,7 @@ Installing a listener using this symbol does not change the behavior once an `'e
 
   #### Returns (string | symbol)\[]
 
-### [**](#getMaxListeners)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@types/node/events.d.ts#L819)externalinheritedgetMaxListeners
+### [**](#getMaxListeners)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/events.d.ts#L819)externalinheritedgetMaxListeners
 
 * ****getMaxListeners**(): number
 
@@ -311,7 +311,7 @@ Installing a listener using this symbol does not change the behavior once an `'e
 
   #### Returns number
 
-### [**](#getOptions)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@apify/log/src/index.d.ts#L48)externalinheritedgetOptions
+### [**](#getOptions)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@apify/log/src/index.d.ts#L48)externalinheritedgetOptions
 
 * ****getOptions**(): Record\<string, any>
 
@@ -319,7 +319,7 @@ Installing a listener using this symbol does not change the behavior once an `'e
 
   #### Returns Record\<string, any>
 
-### [**](#listenerCount)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@types/node/events.d.ts#L913)externalinheritedlistenerCount
+### [**](#listenerCount)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/events.d.ts#L913)externalinheritedlistenerCount
 
 * ****listenerCount**\<K>(eventName, listener): number
 
@@ -345,7 +345,7 @@ Installing a listener using this symbol does not change the behavior once an `'e
 
   #### Returns number
 
-### [**](#listeners)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@types/node/events.d.ts#L832)externalinheritedlisteners
+### [**](#listeners)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/events.d.ts#L832)externalinheritedlisteners
 
 * ****listeners**\<K>(eventName): Function\[]
 
@@ -373,7 +373,7 @@ Installing a listener using this symbol does not change the behavior once an `'e
 
   #### Returns Function\[]
 
-### [**](#log)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@apify/log/src/index.d.ts#L51)externalinheritedlog
+### [**](#log)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@apify/log/src/index.d.ts#L51)externalinheritedlog
 
 * ****log**(level, message, ...args): void
 
@@ -387,7 +387,7 @@ Installing a listener using this symbol does not change the behavior once an `'e
 
   #### Returns void
 
-### [**](#off)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@types/node/events.d.ts#L792)externalinheritedoff
+### [**](#off)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/events.d.ts#L792)externalinheritedoff
 
 * ****off**\<K>(eventName, listener): this
 
@@ -409,7 +409,7 @@ Installing a listener using this symbol does not change the behavior once an `'e
 
   #### Returns this
 
-### [**](#on)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@types/node/events.d.ts#L674)externalinheritedon
+### [**](#on)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/events.d.ts#L674)externalinheritedon
 
 * ****on**\<K>(eventName, listener): this
 
@@ -458,7 +458,7 @@ Installing a listener using this symbol does not change the behavior once an `'e
 
   #### Returns this
 
-### [**](#once)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@types/node/events.d.ts#L704)externalinheritedonce
+### [**](#once)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/events.d.ts#L704)externalinheritedonce
 
 * ****once**\<K>(eventName, listener): this
 
@@ -507,7 +507,7 @@ Installing a listener using this symbol does not change the behavior once an `'e
 
   #### Returns this
 
-### [**](#prependListener)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@types/node/events.d.ts#L931)externalinheritedprependListener
+### [**](#prependListener)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/events.d.ts#L931)externalinheritedprependListener
 
 * ****prependListener**\<K>(eventName, listener): this
 
@@ -543,7 +543,7 @@ Installing a listener using this symbol does not change the behavior once an `'e
 
   #### Returns this
 
-### [**](#prependOnceListener)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@types/node/events.d.ts#L947)externalinheritedprependOnceListener
+### [**](#prependOnceListener)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/events.d.ts#L947)externalinheritedprependOnceListener
 
 * ****prependOnceListener**\<K>(eventName, listener): this
 
@@ -579,7 +579,7 @@ Installing a listener using this symbol does not change the behavior once an `'e
 
   #### Returns this
 
-### [**](#rawListeners)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@types/node/events.d.ts#L863)externalinheritedrawListeners
+### [**](#rawListeners)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/events.d.ts#L863)externalinheritedrawListeners
 
 * ****rawListeners**\<K>(eventName): Function\[]
 
@@ -624,7 +624,7 @@ Installing a listener using this symbol does not change the behavior once an `'e
 
   #### Returns Function\[]
 
-### [**](#removeAllListeners)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@types/node/events.d.ts#L803)externalinheritedremoveAllListeners
+### [**](#removeAllListeners)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/events.d.ts#L803)externalinheritedremoveAllListeners
 
 * ****removeAllListeners**(eventName): this
 
@@ -648,7 +648,7 @@ Installing a listener using this symbol does not change the behavior once an `'e
 
   #### Returns this
 
-### [**](#removeListener)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@types/node/events.d.ts#L787)externalinheritedremoveListener
+### [**](#removeListener)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/events.d.ts#L787)externalinheritedremoveListener
 
 * ****removeListener**\<K>(eventName, listener): this
 
@@ -737,7 +737,7 @@ Installing a listener using this symbol does not change the behavior once an `'e
 
   #### Returns this
 
-### [**](#setMaxListeners)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@types/node/events.d.ts#L813)externalinheritedsetMaxListeners
+### [**](#setMaxListeners)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/events.d.ts#L813)externalinheritedsetMaxListeners
 
 * ****setMaxListeners**(n): this
 
@@ -759,7 +759,7 @@ Installing a listener using this symbol does not change the behavior once an `'e
 
   #### Returns this
 
-### [**](#setOptions)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@apify/log/src/index.d.ts#L47)externalinheritedsetOptions
+### [**](#setOptions)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@apify/log/src/index.d.ts#L47)externalinheritedsetOptions
 
 * ****setOptions**(options): void
 
@@ -771,7 +771,7 @@ Installing a listener using this symbol does not change the behavior once an `'e
 
   #### Returns void
 
-### [**](#addAbortListener)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@types/node/events.d.ts#L403)staticexternalinheritedaddAbortListener
+### [**](#addAbortListener)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/events.d.ts#L403)staticexternalinheritedaddAbortListener
 
 * ****addAbortListener**(signal, resource): Disposable
 
@@ -817,7 +817,7 @@ Installing a listener using this symbol does not change the behavior once an `'e
 
   Disposable that removes the `abort` listener.
 
-### [**](#getEventListeners)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@types/node/events.d.ts#L325)staticexternalinheritedgetEventListeners
+### [**](#getEventListeners)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/events.d.ts#L325)staticexternalinheritedgetEventListeners
 
 * ****getEventListeners**(emitter, name): Function\[]
 
@@ -859,7 +859,7 @@ Installing a listener using this symbol does not change the behavior once an `'e
 
   #### Returns Function\[]
 
-### [**](#getMaxListeners)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@types/node/events.d.ts#L354)staticexternalinheritedgetMaxListeners
+### [**](#getMaxListeners)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/events.d.ts#L354)staticexternalinheritedgetMaxListeners
 
 * ****getMaxListeners**(emitter): number
 
@@ -900,7 +900,7 @@ Installing a listener using this symbol does not change the behavior once an `'e
 
   #### Returns number
 
-### [**](#listenerCount)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@types/node/events.d.ts#L297)staticexternalinheritedlistenerCount
+### [**](#listenerCount)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/events.d.ts#L297)staticexternalinheritedlistenerCount
 
 * ****listenerCount**(emitter, eventName): number
 
@@ -940,7 +940,7 @@ Installing a listener using this symbol does not change the behavior once an `'e
 
   #### Returns number
 
-### [**](#on)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@types/node/events.d.ts#L270)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@types/node/events.d.ts#L275)staticexternalinheritedon
+### [**](#on)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/events.d.ts#L270)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/events.d.ts#L275)staticexternalinheritedon
 
 * ****on**(emitter, eventName, options): AsyncIterator\<any\[], undefined, any>
 * ****on**(emitter, eventName, options): AsyncIterator\<any\[], undefined, any>
@@ -1037,7 +1037,7 @@ Installing a listener using this symbol does not change the behavior once an `'e
 
   An `AsyncIterator` that iterates `eventName` events emitted by the `emitter`
 
-### [**](#once)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@types/node/events.d.ts#L184)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@types/node/events.d.ts#L189)staticexternalinheritedonce
+### [**](#once)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/events.d.ts#L184)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/events.d.ts#L189)staticexternalinheritedonce
 
 * ****once**(emitter, eventName, options): Promise\<any\[]>
 * ****once**(emitter, eventName, options): Promise\<any\[]>
@@ -1129,7 +1129,7 @@ Installing a listener using this symbol does not change the behavior once an `'e
 
   #### Returns Promise\<any\[]>
 
-### [**](#setMaxListeners)[**](https://undefined/apify/apify-client-js/blob/6ae721a8e78193a0cc00f788b311041d416ea18a/node_modules/@types/node/events.d.ts#L369)staticexternalinheritedsetMaxListeners
+### [**](#setMaxListeners)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/events.d.ts#L369)staticexternalinheritedsetMaxListeners
 
 * ****setMaxListeners**(n, ...eventTargets): void
 

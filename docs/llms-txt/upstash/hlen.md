@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hlen.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hlen.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hlen.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # HLEN
 
@@ -26,23 +12,25 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the hash.
 </ParamField>
 
 ## Response
 
-<ResponseField type="integer" required>
+<ResponseField type="int" required>
   How many fields are in the hash.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.hset("key", {
-    id: 1,
-    username: "chronark",
-    });
-  const fields = await redis.hlen("key");
-  console.log(fields); // 2
+  ```py Example theme={"system"}
+  assert redis.hlen("myhash") == 0
+
+  redis.hset("myhash", values={
+      "field1": "Hello",
+      "field2": "World"
+  })
+
+  assert redis.hlen("myhash") == 2
   ```
 </RequestExample>

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/websocket/
+
 # WebSockets
 
 The WebSocket provider allows you to connect to a WebSocket endpoint for inference. This is useful for real-time, bidirectional communication. WebSockets are often used to stream messages that contain partial responses to improve the perceived performance of LLM applications. Promptfoo supports a range of implementations from servers that respond with a single message containing the full response, to those that stream a series of partial responses.

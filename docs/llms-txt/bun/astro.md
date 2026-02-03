@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/ecosystem/astro.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Build an app with Astro and Bun
 
 Initialize a fresh Astro app with `bun create astro`. The `create-astro` package detects when you are using `bunx` and will automatically install dependencies using `bun`.

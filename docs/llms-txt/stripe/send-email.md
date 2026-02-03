@@ -12,6 +12,8 @@ Set up Stripe to send important email notifications and reminders to your custom
 
 ## Customer emails 
 
+If your Connect platform uses [customer-configured Accounts](https://docs.stripe.com/api/v2/core/accounts/create.md#v2_create_accounts-configuration-customer), use our [guide](https://docs.stripe.com/connect/use-accounts-as-customers.md) to replace `Customer` and event references in your code with the equivalent Accounts v2 API references.
+
 You can configure Stripe to send email notifications or reminders to your customer:
 
 - Upon failed payment attempts.
@@ -140,8 +142,8 @@ const invoice = await stripe.invoices.sendInvoice('id');
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.InvoiceSendInvoiceParams{Invoice: stripe.String("id")}
-result, err := sc.V1Invoices.SendInvoice(context.TODO(), params)
+params := &stripe.InvoiceSendInvoiceParams{}
+result, err := sc.V1Invoices.SendInvoice(context.TODO(), "id", params)
 ```
 
 ```dotnet
@@ -194,7 +196,7 @@ You can create your own custom email template to replace the Stripe prebuilt ema
 
 ## Stop sending customer emails for successful payments
 
-To opt out of sending you customers emails for successful payments:
+To opt out of sending your customers emails for successful payments:
 
 1. In the Stripe Dashboard, go to **Settings** > **Business** > [Customer emails](https://dashboard.stripe.com/settings/emails).
 1. Under Payments, disable **Successful payments**.

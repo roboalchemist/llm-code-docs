@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/ai-agents/respond-and-check-content.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Respond to customer inquiry and check for inappropriate content
 
 > Create an AI agent workflow that responds to customer inquiries while checking if their text is inappropriate
@@ -21,7 +25,7 @@ In this example, we'll create a workflow that simultaneously checks content for 
 * Generates customer service responses using an AI model
 * Simultaneously checks for inappropriate content while generating responses
 
-```typescript  theme={null}
+```typescript  theme={"theme":"css-variables"}
 import { openai } from "@ai-sdk/openai";
 import { batch, task } from "@trigger.dev/sdk";
 import { generateText } from "ai";
@@ -117,7 +121,7 @@ export const handleCustomerQuestion = task({
 
 On the Test page in the dashboard, select the `handle-customer-question` task and include a payload like the following:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "question": "Can you explain 2FA?"
 }

@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/agent-desk/integrations/chat-instead/ios.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # iOS
 
 ## Pre-requisites
@@ -29,7 +33,7 @@ Once you've successfully configured and initialized the ASAPP SDK, you can start
    func channel(_ channel: ASAPPChannel, didFailToOpenWithErrorDescription errorDescription: String?)
    ```
 
-   This is called if there's an error while trying to open a channel.
+   ASAPP calls this if an error occurs while trying to open a channel.
 
    ```json  theme={null}
    func didSelectASAPPChatChannel()
@@ -49,7 +53,7 @@ Once you've successfully configured and initialized the ASAPP SDK, you can start
    ASAPP.createChatViewControllerForPushingFromChatInstead()
    ```
 
-   to present or push the view controller instance that was returned.
+   to present or push the view controller instance that ASAPP returned.
 
    This means that you must present/push the ASAPP chat view controller inside `didSelectASAPPChatChannel()`.
 
@@ -66,7 +70,7 @@ Whenever a channel is selected, ASAPP handles everything by default (except for 
    ```
 
 <Note>
-  Only presentation is supported. Pushing the `chatInsteadViewController` instance is not supported and will result in unexpected behavior.
+  Only presentation works. Pushing the `chatInsteadViewController` instance does not work and causes unexpected behavior.
 </Note>
 
 ## Support for iPad
@@ -89,7 +93,7 @@ This will only have an effect when your app is run on iPad.
 
 ## Customization
 
-You can customize the Chat Instead header title and the chat icon when creating the `ASAPPChatInsteadViewController` instance. (ee [Getting Started](#getting-started "iOS").
+You can customize the Chat Instead header title and the chat icon when creating the `ASAPPChatInsteadViewController` instance. (See [Getting Started](#getting-started "iOS").
 
 <Frame>
   <img src="https://mintcdn.com/asapp/oWc-pd36yCvpD40u/image/uuid-fe1fe0e0-a7e7-d065-110c-b3b24627847b.png?fit=max&auto=format&n=oWc-pd36yCvpD40u&q=85&s=0e858cf47e3564c073af38f44cd814e5" data-og-width="1999" width="1999" data-og-height="929" height="929" data-path="image/uuid-fe1fe0e0-a7e7-d065-110c-b3b24627847b.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/oWc-pd36yCvpD40u/image/uuid-fe1fe0e0-a7e7-d065-110c-b3b24627847b.png?w=280&fit=max&auto=format&n=oWc-pd36yCvpD40u&q=85&s=5441d2dc01ccb30932eb2cdd2d1e11c5 280w, https://mintcdn.com/asapp/oWc-pd36yCvpD40u/image/uuid-fe1fe0e0-a7e7-d065-110c-b3b24627847b.png?w=560&fit=max&auto=format&n=oWc-pd36yCvpD40u&q=85&s=bdac0d4bb09e32d24f16d2b8948899a0 560w, https://mintcdn.com/asapp/oWc-pd36yCvpD40u/image/uuid-fe1fe0e0-a7e7-d065-110c-b3b24627847b.png?w=840&fit=max&auto=format&n=oWc-pd36yCvpD40u&q=85&s=1818734cb2a32577a174a5c775ab6a1e 840w, https://mintcdn.com/asapp/oWc-pd36yCvpD40u/image/uuid-fe1fe0e0-a7e7-d065-110c-b3b24627847b.png?w=1100&fit=max&auto=format&n=oWc-pd36yCvpD40u&q=85&s=7c2fb887b0f256efb6ba84a4d57505c8 1100w, https://mintcdn.com/asapp/oWc-pd36yCvpD40u/image/uuid-fe1fe0e0-a7e7-d065-110c-b3b24627847b.png?w=1650&fit=max&auto=format&n=oWc-pd36yCvpD40u&q=85&s=993228b8288c34bc9743e6a9ffb3126f 1650w, https://mintcdn.com/asapp/oWc-pd36yCvpD40u/image/uuid-fe1fe0e0-a7e7-d065-110c-b3b24627847b.png?w=2500&fit=max&auto=format&n=oWc-pd36yCvpD40u&q=85&s=8e477172fdfe6a155b8f43948f833952 2500w" />
@@ -105,14 +109,14 @@ ASAPP supports [Dark Mode](../ios-sdk/customization#dark-mode-15935 "Dark Mode")
 
 ## Remote settings
 
-When you create an instance of `ASAPPChatInsteadViewController`, it will automatically fetch remote settings to indicate which channels to display. You can configure these settings.
+When you create an instance of `ASAPPChatInsteadViewController`, it automatically fetches remote settings to indicate which channels to display. You can configure these settings.
 
 <Note>
-  These remote settings will override local ones (i.e. the ones you pass in when creating the `ASAPPChatInsteadViewController` instance).
+  These remote settings override local ones (i.e. the ones you pass in when creating the `ASAPPChatInsteadViewController` instance).
 </Note>
 
-If there's an error while fetching the settings and no local values were set, the defaults will be used.
+If an error occurs while fetching the settings and no local values were set, the system uses the defaults.
 
 ## Cache
 
-When fetching succeeds, the SDK will cache the remote settings for a short period of time. This cache will be referenced in lieu of repeated fetches. The cache will be valid across multiple app sessions.
+When fetching succeeds, the SDK caches the remote settings for a short period of time. This cache references in lieu of repeated fetches. The cache remains valid across multiple app sessions.

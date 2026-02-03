@@ -4,8 +4,6 @@
 title: ElastiCache Replication Group
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > ElastiCache Replication Group
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.elasticache_replication_group.dataset/index.html
 ---
 
 # ElastiCache Replication Group
@@ -51,7 +49,7 @@ aws.elasticache_replication_group
 | snapshot_window               | core | string        | The daily time range (in UTC) during which ElastiCache begins taking a daily snapshot of your node group (shard). Example: 05:00-09:00 If you do not specify this parameter, ElastiCache automatically chooses an appropriate time range. This parameter is only valid if the Engine parameter is redis.                                                                                                                    |
 | snapshotting_cluster_id       | core | string        | The cluster ID that is used as the daily snapshot source for the replication group.                                                                                                                                                                                                                                                                                                                                         |
 | status                        | core | string        | The current state of this replication group - creating, available, modifying, deleting, create-failed, snapshotting.                                                                                                                                                                                                                                                                                                        |
-| tags                          | core | hstore        |
+| tags                          | core | hstore_csv    |
 | transit_encryption_enabled    | core | bool          | A flag that enables in-transit encryption when set to true. Required: Only available when creating a replication group in an Amazon VPC using Redis OSS version 3.2.6, 4.x or later. Default: false                                                                                                                                                                                                                         |
 | transit_encryption_mode       | core | string        | A setting that allows you to migrate your clients to use in-transit encryption, with no downtime.                                                                                                                                                                                                                                                                                                                           |
 | user_group_ids                | core | array<string> | The ID of the user group associated to the replication group.                                                                                                                                                                                                                                                                                                                                                               |

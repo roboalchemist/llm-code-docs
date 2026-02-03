@@ -1,5 +1,9 @@
 # Source: https://www.activepieces.com/docs/handbook/customer-support/pylon.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to use Pylon
 
 > Guide for using Pylon to manage customer support tickets
@@ -8,7 +12,7 @@ At Activepieces, we use Pylon to manage Slack-based customer support requests th
 
 Learn more about Pylon's features: [https://docs.usepylon.com/pylon-docs](https://docs.usepylon.com/pylon-docs)
 
-<img src="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/pylon-board.png?fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=5e653ec9a78ead22b3edc7f3cbac1a31" alt="Pylon board showing different columns for ticket management" data-og-width="1693" width="1693" data-og-height="1022" height="1022" data-path="resources/pylon-board.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/pylon-board.png?w=280&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=5afae234a251cddb52fbc2e98fd6f9df 280w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/pylon-board.png?w=560&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=edc15a6de060b8d731356098bf781b8b 560w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/pylon-board.png?w=840&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=ab9422f6444c07fe2739dd07f2b2059d 840w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/pylon-board.png?w=1100&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=990ffc64f2da10c0c8bdb6659826ddbb 1100w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/pylon-board.png?w=1650&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=096a95126fe07af16cb9735913d688ab 1650w, https://mintcdn.com/activepieces/j3GVg3kKyC3IS6YV/resources/pylon-board.png?w=2500&fit=max&auto=format&n=j3GVg3kKyC3IS6YV&q=85&s=8e737a78dc7abb9402b62abd98e1265f 2500w" />
+<img src="https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/pylon-board.png?fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=4c286a0ac7893dd6c11f1cf931dd8a42" alt="Pylon board showing different columns for ticket management" data-og-width="1693" width="1693" data-og-height="1022" height="1022" data-path="resources/pylon-board.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/pylon-board.png?w=280&fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=aed1a4c386c560b84316c67c862dd9b4 280w, https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/pylon-board.png?w=560&fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=c15468d855923650fdd7b0b7acc8b558 560w, https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/pylon-board.png?w=840&fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=72d41d0109b83197b9387af825220d25 840w, https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/pylon-board.png?w=1100&fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=d972699d3d6b29f881b8688498f14903 1100w, https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/pylon-board.png?w=1650&fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=dbb1483923d46d27d2c0e5f248cb939c 1650w, https://mintcdn.com/activepieces/ki8mFooo8mAmhMdP/resources/pylon-board.png?w=2500&fit=max&auto=format&n=ki8mFooo8mAmhMdP&q=85&s=6ba2e0d7c7f40f94bac7ac5ab050ed2e 2500w" />
 
 ### New Column
 

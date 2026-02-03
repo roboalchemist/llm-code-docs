@@ -1,5 +1,9 @@
 # Source: https://docs.ollama.com/linux.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ollama.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Linux
 
 ## Install
@@ -20,8 +24,8 @@ curl -fsSL https://ollama.com/install.sh | sh
 Download and extract the package:
 
 ```shell  theme={"system"}
-curl -fsSL https://ollama.com/download/ollama-linux-amd64.tgz \
-    | sudo tar zx -C /usr
+curl -fsSL https://ollama.com/download/ollama-linux-amd64.tar.zst \
+    | sudo tar x -C /usr
 ```
 
 Start Ollama:
@@ -41,8 +45,8 @@ ollama -v
 If you have an AMD GPU, also download and extract the additional ROCm package:
 
 ```shell  theme={"system"}
-curl -fsSL https://ollama.com/download/ollama-linux-amd64-rocm.tgz \
-    | sudo tar zx -C /usr
+curl -fsSL https://ollama.com/download/ollama-linux-amd64-rocm.tar.zst \
+    | sudo tar x -C /usr
 ```
 
 ### ARM64 install
@@ -50,8 +54,8 @@ curl -fsSL https://ollama.com/download/ollama-linux-amd64-rocm.tgz \
 Download and extract the ARM64-specific package:
 
 ```shell  theme={"system"}
-curl -fsSL https://ollama.com/download/ollama-linux-arm64.tgz \
-    | sudo tar zx -C /usr
+curl -fsSL https://ollama.com/download/ollama-linux-arm64.tar.zst \
+    | sudo tar x -C /usr
 ```
 
 ### Adding Ollama as a startup service (recommended)
@@ -146,8 +150,8 @@ curl -fsSL https://ollama.com/install.sh | sh
 Or by re-downloading Ollama:
 
 ```shell  theme={"system"}
-curl -fsSL https://ollama.com/download/ollama-linux-amd64.tgz \
-    | sudo tar zx -C /usr
+curl -fsSL https://ollama.com/download/ollama-linux-amd64.tar.zst \
+    | sudo tar x -C /usr
 ```
 
 ## Installing specific versions

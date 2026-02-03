@@ -2,10 +2,6 @@
 
 # Source: https://vuejs.org/api/render-function.md
 
-# Source: https://vuejs.org/guide/extras/render-function.md
-
-# Source: https://vuejs.org/api/render-function.md
-
 ---
 url: /api/render-function.md
 ---

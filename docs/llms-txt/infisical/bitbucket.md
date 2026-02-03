@@ -6,29 +6,9 @@
 
 # Source: https://infisical.com/docs/documentation/platform/secret-scanning/bitbucket.md
 
-# Source: https://infisical.com/docs/integrations/secret-syncs/bitbucket.md
-
-# Source: https://infisical.com/docs/integrations/cicd/bitbucket.md
-
-# Source: https://infisical.com/docs/integrations/app-connections/bitbucket.md
-
-# Source: https://infisical.com/docs/documentation/platform/secret-scanning/bitbucket.md
-
-# Source: https://infisical.com/docs/integrations/secret-syncs/bitbucket.md
-
-# Source: https://infisical.com/docs/integrations/cicd/bitbucket.md
-
-# Source: https://infisical.com/docs/integrations/app-connections/bitbucket.md
-
-# Source: https://infisical.com/docs/documentation/platform/secret-scanning/bitbucket.md
-
-# Source: https://infisical.com/docs/integrations/secret-syncs/bitbucket.md
-
-# Source: https://infisical.com/docs/integrations/cicd/bitbucket.md
-
-# Source: https://infisical.com/docs/integrations/app-connections/bitbucket.md
-
-# Source: https://infisical.com/docs/documentation/platform/secret-scanning/bitbucket.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Bitbucket Secret Scanning
 

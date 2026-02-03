@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/text-classification/build-your-own-conditions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 > A class to build custom conditions for DataFrame assertions and alerting.
 
 # null
@@ -10,7 +14,7 @@ A `Condition` is a class for building custom data quality checks. Simply create 
 
 You can build a `Run Report` that will evaluate all conditions after a run is processed.
 
-```py
+```py  theme={null}
 import dataquality as dq
 
 dq.init("text_classification")
@@ -26,7 +30,7 @@ dq.register_run_report(conditions=[cond1], emails=["foo@bar.com"]
 
 You can also build and evaluate conditions by accessing the processed DataFrame.
 
-```py
+```py  theme={null}
 from dataquality import Condition
 
 df = dq.metrics.get_dataframe("proj_name", "run_name", "training")
@@ -38,7 +42,7 @@ passes, ground_truth = cond.evaluate(df)
 
 A `Condition` is defined as:
 
-```py
+```py  theme={null}
 class Condition:
     agg: AggregateFunction # An aggregate function to apply to the metric
     threshold: float # Threshold value for evaluating the condition
@@ -51,7 +55,7 @@ To gain an intuition for what can be accomplished, consider the following exampl
 
 1. Is the average confidence less than 0.3?
 
-```py
+```py  theme={null}
 >>> c = Condition(
 ...     agg=AggregateFunction.avg,
 ...     metric="confidence",
@@ -62,7 +66,7 @@ To gain an intuition for what can be accomplished, consider the following exampl
 
 2. Is the max DEP greater or equal to 0.45?
 
-```py
+```py  theme={null}
 >>> c = Condition(
 ...     agg=AggregateFunction.max,
 ...     metric="data_error_potential",
@@ -75,7 +79,7 @@ By adding filters, you can further narrow down the scope of the condition. If th
 
 3. Alert if over 80% of the dataset has confidence under 0.1
 
-```py
+```py  theme={null}
 >>> c = Condition(
 ...     operator=Operator.gt,
 ...     threshold=0.8,
@@ -90,7 +94,7 @@ By adding filters, you can further narrow down the scope of the condition. If th
 
 4. Alert if at least 20% of the dataset has drifted (Inference DataFrames only)
 
-```py
+```py  theme={null}
 >>> c = Condition(
 ...     operator=Operator.gte,
 ...     threshold=0.2,
@@ -105,7 +109,7 @@ By adding filters, you can further narrow down the scope of the condition. If th
 
 5. Alert 5% or more of the dataset contains PII
 
-```py
+```py  theme={null}
 >>> c = Condition(
 ...     operator=Operator.gte,
 ...     threshold=0.05,
@@ -122,7 +126,7 @@ Complex conditions can be built when the filter has a different metric than the 
 
 6. Alert if the min confidence of drifted data is less than 0.15
 
-```py
+```py  theme={null}
 >>> c = Condition(
 ...     agg=AggregateFunction.min,
 ...     metric="confidence",
@@ -138,7 +142,7 @@ Complex conditions can be built when the filter has a different metric than the 
 
 7. Alert if over 50% of high DEP (>=0.7) data contains PII:
 
-```py
+```py  theme={null}
 >>> c = Condition(
 ...     operator=Operator.gt,
 ...     threshold=0.5,
@@ -158,7 +162,7 @@ You can also call conditions directly, which will assert its truth against a Dat
 
 1. Assert that average confidence less than 0.3
 
-```py
+```py  theme={null}
 >>> c = Condition(
 ...     agg=AggregateFunction.avg,
 ...     metric="confidence",
@@ -176,7 +180,7 @@ You can also call conditions directly, which will assert its truth against a Dat
 
 The available aggregate functions are:
 
-```py
+```py  theme={null}
 
     class AggregateFunction(str, Enum):
         avg = "avg"
@@ -188,13 +192,13 @@ The available aggregate functions are:
 
 ## Operator
 
-```py
+```py  theme={null}
 from dataquality import Operator
 ```
 
 The available operators are:
 
-```py
+```py  theme={null}
 class Operator(str, Enum):
     eq = "eq"
     neq = "neq"

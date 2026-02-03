@@ -1,12 +1,14 @@
 # Source: https://docs.windsurf.com/windsurf/cascade/hooks.md
 
-# Cascade Hooks (Beta)
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Cascade Hooks
+
+> Execute custom shell commands at key points in Cascade's workflow for logging, security controls, validation, and enterprise governance with pre and post hooks.
 
 Cascade Hooks enable you to execute custom shell commands at key points during Cascade's workflow. This powerful extensibility feature allows you to log operations, enforce guardrails, run validation checks, or integrate with external systems.
-
-<Warning>
-  **Beta Release**: Cascade Hooks are currently in beta and undergoing active development. Features and APIs may change. Please contact [Windsurf Support](https://windsurf.com/support) with feedback or bug reports.
-</Warning>
 
 <Note>
   Hooks are designed for power users and enterprise teams who need fine-grained control over Cascade's behavior. They require basic shell scripting knowledge.
@@ -16,8 +18,8 @@ Cascade Hooks enable you to execute custom shell commands at key points during C
 
 Hooks unlock a wide range of automation and governance capabilities:
 
-* **Logging & Analytics**: Track every file read, code change, or command executed by Cascade for compliance and usage analysis
-* **Security Controls**: Block Cascade from accessing sensitive files or running dangerous commands
+* **Logging & Analytics**: Track every file read, code change, command executed, user prompt, or Cascade response for compliance and usage analysis
+* **Security Controls**: Block Cascade from accessing sensitive files, running dangerous commands, or processing policy-violating prompts
 * **Quality Assurance**: Run linters, formatters, or tests automatically after code modifications
 * **Custom Workflows**: Integrate with issue trackers, notification systems, or deployment pipelines
 * **Team Standardization**: Enforce coding standards and best practices across your organization
@@ -48,7 +50,8 @@ System-level hooks are ideal for organization-wide policies enforced on shared d
 
 User-level hooks are perfect for personal preferences and optional workflows.
 
-* **Location**: `~/.codeium/windsurf/hooks.json`
+* **Windsurf IDE**: `~/.codeium/windsurf/hooks.json`
+* **JetBrains Plugin**: `~/.codeium/hooks.json`
 
 #### Workspace-Level
 
@@ -95,7 +98,7 @@ Each hook accepts the following parameters:
 
 ## Hook Events
 
-Cascade provides eight hook events that cover the most critical actions in the agent workflow.
+Cascade provides eleven hook events that cover the most critical actions in the agent workflow.
 
 ### Common Input Structure
 
@@ -109,7 +112,7 @@ All hooks receive a JSON object with the following common fields:
 | `timestamp`         | string | ISO 8601 timestamp when the hook was triggered                     |
 | `tool_info`         | object | Event-specific information (varies by hook type)                   |
 
-In the following examples, the common fields are omitted for brevity. There are eight major types of hook events:
+In the following examples, the common fields are omitted for brevity. There are eleven major types of hook events:
 
 ### pre\_read\_code
 
@@ -280,6 +283,74 @@ Triggered **after** Cascade successfully invokes an MCP tool.
 }
 ```
 
+### pre\_user\_prompt
+
+Triggered **before** Cascade processes the text of a user's prompt. This may block the action if the hook exits with code 2.
+
+**Use cases**: Log all user prompts for auditing, block potentially harmful or policy-violating prompts
+
+**Input JSON**:
+
+```json  theme={null}
+{
+  "agent_action_name": "pre_user_prompt",
+  "tool_info": {
+    "user_prompt": "can you run the echo hello command"
+  }
+}
+```
+
+The `show_output` configuration option does not apply to this hook.
+
+### post\_cascade\_response
+
+Triggered **after** Cascade completes a response to a user's prompt. This hook receives the full Cascade response ever since the last user input.
+
+**Use cases**: Log all Cascade responses for auditing, analyze response patterns, send responses to external systems for compliance review
+
+**Input JSON**:
+
+```json  theme={null}
+{
+  "agent_action_name": "post_cascade_response",
+  "tool_info": {
+    "response": "### Planner Response\n\nI'll help you create that file.\n\n*Created file `/path/to/file.py`*\n\n### Planner Response\n\nThe file has been created successfully."
+  }
+}
+```
+
+The `response` field contains the markdown-formatted content of Cascade's response since the last user input. This includes planner responses, tool actions (file reads, writes, commands), and any other steps Cascade took.
+
+The `show_output` configuration option does not apply to this hook.
+
+<Warning>
+  The `response` content is derived from trajectory data and may contain sensitive information from your codebase or conversations. Handle this data according to your organization's security and privacy policies.
+</Warning>
+
+### post\_setup\_worktree
+
+Triggered **after** a new [git worktree](./worktrees) is created and configured. The hook is executed inside the new **worktree** directory.
+
+**Use cases**: Copy `.env` files or other untracked files into the worktree, install dependencies, run setup scripts
+
+**Environment Variables**:
+
+| Variable               | Description                                                                                                                |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `$ROOT_WORKSPACE_PATH` | The absolute path to the original workspace. Use this to access files or run commands relative to the original repository. |
+
+**Input JSON**:
+
+```json  theme={null}
+{
+  "agent_action_name": "post_setup_worktree",
+  "tool_info": {
+    "worktree_path": "/Users/me/.windsurf/worktrees/my-repo/abmy-repo-c123",
+    "root_workspace_path": "/Users/me/projects/my-repo"
+  }
+}
+```
+
 ## Exit Codes
 
 Your hook scripts communicate results through exit codes:
@@ -291,7 +362,7 @@ Your hook scripts communicate results through exit codes:
 | Any other | Error          | Action proceeds normally                                                                             |
 
 <Warning>
-  Only **pre-hooks** (pre\_read\_code, pre\_write\_code, pre\_run\_command, pre\_mcp\_tool\_use) can block actions using exit code 2. Post-hooks cannot block since the action has already occurred.
+  Only **pre-hooks** (pre\_user\_prompt, pre\_read\_code, pre\_write\_code, pre\_run\_command, pre\_mcp\_tool\_use) can block actions using exit code 2. Post-hooks cannot block since the action has already occurred.
 </Warning>
 
 Keep in mind that the user can see any hook-generated standard output and standard error in the Cascade UI if `show_output` is true.
@@ -302,7 +373,7 @@ Keep in mind that the user can see any hook-generated standard output and standa
 
 Track every action Cascade takes for auditing purposes.
 
-**Config** (`~/.codeium/windsurf/hooks.json`):
+**Config**:
 
 ```json  theme={null}
 {
@@ -329,6 +400,11 @@ Track every action Cascade takes for auditing purposes.
       {
         "command": "python3 /Users/yourname/hooks/log_input.py",
         "show_output": true
+      }
+    ],
+    "post_cascade_response": [
+      {
+        "command": "python3 /Users/yourname/hooks/log_input.py"
       }
     ]
   }
@@ -372,7 +448,7 @@ This script appends every hook invocation to a log file, creating an audit trail
 
 Prevent Cascade from reading files outside a specific directory.
 
-**Config** (`~/.codeium/windsurf/hooks.json`):
+**Config**:
 
 ```json  theme={null}
 {
@@ -429,7 +505,7 @@ When Cascade attempts to read a file outside the allowed directory, this hook bl
 
 Prevent Cascade from executing potentially harmful commands.
 
-**Config** (`~/.codeium/windsurf/hooks.json`):
+**Config**:
 
 ```json  theme={null}
 {
@@ -483,11 +559,130 @@ if __name__ == "__main__":
 
 This hook scans commands for dangerous patterns and blocks them before execution.
 
+### Blocking Policy-Violating Prompts
+
+Prevent users from submitting prompts that violate organizational policies.
+
+**Config**:
+
+```json  theme={null}
+{
+  "hooks": {
+    "pre_user_prompt": [
+      {
+        "command": "python3 /Users/yourname/hooks/block_bad_prompts.py"
+      }
+    ]
+  }
+}
+```
+
+**Script** (`block_bad_prompts.py`):
+
+```python  theme={null}
+#!/usr/bin/env python3
+
+import sys
+import json
+
+BLOCKED_PATTERNS = [
+    "something dangerous",
+    "bypass security",
+    "ignore previous instructions"
+]
+
+def main():
+    # Read the JSON data from stdin
+    input_data = sys.stdin.read()
+
+    # Parse the JSON
+    try:
+        data = json.loads(input_data)
+
+        if data.get("agent_action_name") == "pre_user_prompt":
+            tool_info = data.get("tool_info", {})
+            user_prompt = tool_info.get("user_prompt", "").lower()
+
+            for pattern in BLOCKED_PATTERNS:
+                if pattern in user_prompt:
+                    print(f"Prompt blocked: Contains prohibited content. The user cannot ask the agent to do bad things.", file=sys.stderr)
+                    sys.exit(2)  # Exit code 2 blocks the prompt
+
+    except json.JSONDecodeError as e:
+        print(f"Error parsing JSON: {e}", file=sys.stderr)
+        sys.exit(1)
+
+if __name__ == "__main__":
+    main()
+```
+
+This hook examines user prompts before they are processed and blocks any that contain prohibited patterns. When a prompt is blocked, the user sees an error message in the Cascade UI.
+
+### Logging Cascade Responses
+
+Track all Cascade responses for compliance auditing or analytics.
+
+**Config**:
+
+```json  theme={null}
+{
+  "hooks": {
+    "post_cascade_response": [
+      {
+        "command": "python3 /Users/yourname/hooks/log_cascade_response.py"
+      }
+    ]
+  }
+}
+```
+
+**Script** (`log_cascade_response.py`):
+
+```python  theme={null}
+#!/usr/bin/env python3
+
+import sys
+import json
+from datetime import datetime
+
+def main():
+    # Read the JSON data from stdin
+    input_data = sys.stdin.read()
+
+    # Parse the JSON
+    try:
+        data = json.loads(input_data)
+
+        if data.get("agent_action_name") == "post_cascade_response":
+            tool_info = data.get("tool_info", {})
+            cascade_response = tool_info.get("response", "")
+            trajectory_id = data.get("trajectory_id", "unknown")
+            timestamp = data.get("timestamp", datetime.now().isoformat())
+
+            # Log to file
+            with open("/Users/yourname/hooks/cascade_responses.log", "a") as f:
+                f.write(f"\n{'='*80}\n")
+                f.write(f"Timestamp: {timestamp}\n")
+                f.write(f"Trajectory ID: {trajectory_id}\n")
+                f.write(f"Response:\n{cascade_response}\n")
+
+            print(f"Logged Cascade response for trajectory {trajectory_id}")
+
+    except json.JSONDecodeError as e:
+        print(f"Error parsing JSON: {e}", file=sys.stderr)
+        sys.exit(1)
+
+if __name__ == "__main__":
+    main()
+```
+
+This hook logs every Cascade response to a file, creating an audit trail of all AI-generated content. You can extend this to send data to external logging systems, databases, or compliance platforms.
+
 ### Running Code Formatters After Edits
 
 Automatically format code files after Cascade modifies them.
 
-**Config** (`~/.codeium/windsurf/hooks.json`):
+**Config**:
 
 ```json  theme={null}
 {
@@ -529,6 +724,52 @@ exit 0
 ```
 
 This hook automatically runs the appropriate formatter based on the file type after each edit.
+
+### Setting Up Worktrees
+
+Copy environment files and install dependencies when a new worktree is created.
+
+**Config** (in `.windsurf/hooks.json`):
+
+```json  theme={null}
+{
+  "hooks": {
+    "post_setup_worktree": [
+      {
+        "command": "bash $ROOT_WORKSPACE_PATH/hooks/setup_worktree.sh",
+        "show_output": true
+      }
+    ]
+  }
+}
+```
+
+**Script** (`hooks/setup_worktree.sh`):
+
+```bash  theme={null}
+#!/bin/bash
+
+# Copy environment files from the original workspace
+if [ -f "$ROOT_WORKSPACE_PATH/.env" ]; then
+    cp "$ROOT_WORKSPACE_PATH/.env" .env
+    echo "Copied .env file"
+fi
+
+if [ -f "$ROOT_WORKSPACE_PATH/.env.local" ]; then
+    cp "$ROOT_WORKSPACE_PATH/.env.local" .env.local
+    echo "Copied .env.local file"
+fi
+
+# Install dependencies
+if [ -f "package.json" ]; then
+    npm install
+    echo "Installed npm dependencies"
+fi
+
+exit 0
+```
+
+This hook ensures each worktree has the necessary environment configuration and dependencies installed automatically.
 
 ## Best Practices
 

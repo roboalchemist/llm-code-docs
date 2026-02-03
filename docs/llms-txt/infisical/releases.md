@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/self-hosting/guides/releases.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Release Channels
 
 > Learn how to configure your deployment for different release schedules.

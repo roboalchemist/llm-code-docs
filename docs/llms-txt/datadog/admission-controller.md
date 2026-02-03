@@ -6,9 +6,8 @@ description: >-
   Troubleshoot common issues with the Datadog Cluster Agent Admission Controller
   and library injection
 breadcrumbs: >-
-  Docs > Container Monitoring > Container Troubleshooting > Troubleshooting
-  Admission Controller
-source_url: https://docs.datadoghq.com/troubleshooting/admission-controller/index.html
+  Docs > Containers > Container Troubleshooting > Troubleshooting Admission
+  Controller
 ---
 
 # Troubleshooting Admission Controller

@@ -1,4 +1,8 @@
-# Source: https://braintrust.dev/docs/integrations/sdk-integrations/autogen.md
+# Source: https://braintrust.dev/docs/integrations/agent-frameworks/autogen.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Autogen
 
@@ -121,8 +125,3 @@ if __name__ == "__main__":
 
 * [AutoGen documentation](https://microsoft.github.io/autogen/stable/)
 * [Braintrust OpenTelemetry guide](/integrations/sdk-integrations/opentelemetry)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

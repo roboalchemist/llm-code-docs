@@ -4,8 +4,6 @@
 title: IoT Dimension
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > IoT Dimension
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.iot_dimension.dataset/index.html
 ---
 
 # IoT Dimension
@@ -27,5 +25,5 @@ aws.iot_dimension
 | last_modified_date | core | timestamp     | The date the dimension was last modified.                                                                                                       |
 | name               | core | string        | The unique identifier for the dimension.                                                                                                        |
 | string_values      | core | array<string> | The value or list of values used to scope the dimension. For example, for topic filters, this is the pattern used to match the MQTT topic name. |
-| tags               | core | hstore        |
+| tags               | core | hstore_csv    |
 | type               | core | string        | The type of the dimension.                                                                                                                      |

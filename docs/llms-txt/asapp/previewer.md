@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/generativeagent/configuring/previewer.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Previewer
 
 > Learn how to use the Previewer in AI Console to test and refine your GenerativeAgent's behavior
@@ -47,7 +51,7 @@ Choose between:
 
 ### Test Scenario Type
 
-When directly talking to GenerativeAgent, you can choose what kinda of data GenerativeAgent will use for its function calls by selecting the "Scenario type":
+When directly talking to GenerativeAgent, you can choose what kind of data GenerativeAgent will use for its function calls by selecting the "Scenario type":
 
 * **Test Scenario**: This uses the data from a previously created [Test Scenario](/generativeagent/configuring/tasks-and-functions/test-scenarios) where you have already defined a simulated mock data that a function would return. This allows you to try out different Tasks and iterate on tasks definitions or on Functions without concern of hitting actual APIs.
 * **External Endpoint**: This will use the actual API Connections, allowing you to test GenerativeAgent using real APIs and data.

@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/enterprise/features/rbac.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Role-Based Access Control (RBAC)
 
 > Control access to crews, tools, and data with roles, scopes, and granular permissions.
@@ -30,7 +34,8 @@ You can configure users and roles in Settings → Roles.
   </Step>
 
   <Step title="Choose a role type">
-    Use a predefined role (<b>Owner</b>, <b>Member</b>) or click <b>Create role</b> to define a custom one.
+    Use a predefined role (<b>Owner</b>, <b>Member</b>) or click{" "}
+    <b>Create role</b> to define a custom one.
   </Step>
 
   <Step title="Assign to members">
@@ -71,15 +76,18 @@ You can configure automation‑level access control in Automation → Settings �
   </Step>
 
   <Step title="Set visibility">
-    Choose <b>Private</b> to restrict access. The organization owner always retains access.
+    Choose <b>Private</b> to restrict access. The organization owner always
+    retains access.
   </Step>
 
   <Step title="Whitelist access">
-    Add specific users and roles allowed to view, run, and access logs/metrics/settings.
+    Add specific users and roles allowed to view, run, and access
+    logs/metrics/settings.
   </Step>
 
   <Step title="Save and verify">
-    Save changes, then confirm that non‑whitelisted users cannot view or run the automation.
+    Save changes, then confirm that non‑whitelisted users cannot view or run the
+    automation.
   </Step>
 </Steps>
 
@@ -92,7 +100,8 @@ You can configure automation‑level access control in Automation → Settings �
 | Access logs/metrics/settings | ✓     | ✓                     | ✗               |
 
 <Tip>
-  The organization owner always has access. In private mode, only whitelisted users and roles can view, run, and access logs/metrics/settings.
+  The organization owner always has access. In private mode, only whitelisted
+  users and roles can view, run, and access logs/metrics/settings.
 </Tip>
 
 <Frame>

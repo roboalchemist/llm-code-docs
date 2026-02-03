@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/integrations/data/pandas_and_pyarrow.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Pandas and PyArrow
 
 export const PyPlatformsPandasVectorSearch = "pandas_results = (\n    pandas_table.search([0.9, 0.1, 0.3])\n    .select([\"text\", \"_distance\"])\n    .limit(1)\n    .to_pandas()\n)\nprint(pandas_results)\n";
@@ -43,8 +47,3 @@ For web services or background jobs that already rely on `asyncio`, use the asyn
 <CodeBlock filename="Python" language="Python" icon="python">
   {PyPlatformsPandasAsyncExample}
 </CodeBlock>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

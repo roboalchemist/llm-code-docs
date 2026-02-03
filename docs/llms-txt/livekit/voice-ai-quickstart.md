@@ -637,7 +637,7 @@ Follow these guides bring your voice AI app to life in the real world.
 
 ---
 
-This document was rendered at 2025-12-31T18:29:32.871Z.
+This document was rendered at 2026-02-03T03:24:53.985Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/start/voice-ai-quickstart.md](https://docs.livekit.io/agents/start/voice-ai-quickstart.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

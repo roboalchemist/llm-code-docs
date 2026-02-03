@@ -4,8 +4,6 @@
 title: ElastiCache User
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > ElastiCache User
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.elasticache_user.dataset/index.html
 ---
 
 # ElastiCache User
@@ -28,7 +26,7 @@ aws.elasticache_user
 | engine                 | core | string        | The options are valkey or redis.                                       |
 | minimum_engine_version | core | string        | The minimum engine version required, which is Redis OSS 6.0            |
 | status                 | core | string        | Indicates the user status. Can be "active", "modifying" or "deleting". |
-| tags                   | core | hstore        |
+| tags                   | core | hstore_csv    |
 | user_group_ids         | core | array<string> | Returns a list of the user group IDs the user belongs to.              |
 | user_id                | core | string        | The ID of the user.                                                    |
 | user_name              | core | string        | The username of the user.                                              |

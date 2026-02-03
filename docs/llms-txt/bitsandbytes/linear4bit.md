@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/bitsandbytes/v0.49.0/reference/nn/linear4bit.md
+# Source: https://huggingface.co/docs/bitsandbytes/v0.49.1/reference/nn/linear4bit.md
 
 # 4-bit quantization
 
@@ -8,7 +8,7 @@
 
 #### bitsandbytes.nn.Linear4bit[[bitsandbytes.nn.Linear4bit]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/nn/modules.py#L422)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/nn/modules.py#L422)
 
 This class is the base module for the 4-bit quantization algorithm presented in [QLoRA](https://arxiv.org/abs/2305.14314).
 QLoRA 4-bit linear layers uses blockwise k-bit quantization under the hood, with the possibility of selecting various
@@ -40,7 +40,7 @@ quantized_model.load_state_dict(fp16_model.state_dict())
 quantized_model = quantized_model.to(0) # Quantization happens here
 ```
 
-__init__bitsandbytes.nn.Linear4bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/nn/modules.py#L455[{"name": "input_features", "val": ""}, {"name": "output_features", "val": ""}, {"name": "bias", "val": " = True"}, {"name": "compute_dtype", "val": " = None"}, {"name": "compress_statistics", "val": " = True"}, {"name": "quant_type", "val": " = 'fp4'"}, {"name": "quant_storage", "val": " = torch.uint8"}, {"name": "device", "val": " = None"}]- **input_features** (`str`) --
+__init__bitsandbytes.nn.Linear4bit.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/nn/modules.py#L455[{"name": "input_features", "val": ""}, {"name": "output_features", "val": ""}, {"name": "bias", "val": " = True"}, {"name": "compute_dtype", "val": " = None"}, {"name": "compress_statistics", "val": " = True"}, {"name": "quant_type", "val": " = 'fp4'"}, {"name": "quant_storage", "val": " = torch.uint8"}, {"name": "device", "val": " = None"}]- **input_features** (`str`) --
   Number of input features of the linear layer.
 - **output_features** (`str`) --
   Number of output features of the linear layer.
@@ -61,11 +61,11 @@ bias (`bool`, defaults to `True`) : Whether the linear class uses the bias term 
 
 #### bitsandbytes.nn.LinearFP4[[bitsandbytes.nn.LinearFP4]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/nn/modules.py#L558)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/nn/modules.py#L560)
 
 Implements the FP4 data type.
 
-__init__bitsandbytes.nn.LinearFP4.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/nn/modules.py#L563[{"name": "input_features", "val": ""}, {"name": "output_features", "val": ""}, {"name": "bias", "val": " = True"}, {"name": "compute_dtype", "val": " = None"}, {"name": "compress_statistics", "val": " = True"}, {"name": "quant_storage", "val": " = torch.uint8"}, {"name": "device", "val": " = None"}]- **input_features** (`str`) --
+__init__bitsandbytes.nn.LinearFP4.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/nn/modules.py#L565[{"name": "input_features", "val": ""}, {"name": "output_features", "val": ""}, {"name": "bias", "val": " = True"}, {"name": "compute_dtype", "val": " = None"}, {"name": "compress_statistics", "val": " = True"}, {"name": "quant_storage", "val": " = torch.uint8"}, {"name": "device", "val": " = None"}]- **input_features** (`str`) --
   Number of input features of the linear layer.
 - **output_features** (`str`) --
   Number of output features of the linear layer.
@@ -84,7 +84,7 @@ bias (`bool`, defaults to `True`) : Whether the linear class uses the bias term 
 
 #### bitsandbytes.nn.LinearNF4[[bitsandbytes.nn.LinearNF4]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/nn/modules.py#L594)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/nn/modules.py#L596)
 
 Implements the NF4 data type.
 
@@ -96,7 +96,7 @@ For more information read the paper: QLoRA: Efficient Finetuning of Quantized LL
 Implementation of the NF4 data type in bitsandbytes can be found in the `create_normal_map` function in
 the `functional.py` file: https://github.com/TimDettmers/bitsandbytes/blob/main/bitsandbytes/functional.py#L236.
 
-__init__bitsandbytes.nn.LinearNF4.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/nn/modules.py#L606[{"name": "input_features", "val": ""}, {"name": "output_features", "val": ""}, {"name": "bias", "val": " = True"}, {"name": "compute_dtype", "val": " = None"}, {"name": "compress_statistics", "val": " = True"}, {"name": "quant_storage", "val": " = torch.uint8"}, {"name": "device", "val": " = None"}]- **input_features** (`str`) --
+__init__bitsandbytes.nn.LinearNF4.__init__https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/nn/modules.py#L608[{"name": "input_features", "val": ""}, {"name": "output_features", "val": ""}, {"name": "bias", "val": " = True"}, {"name": "compute_dtype", "val": " = None"}, {"name": "compress_statistics", "val": " = True"}, {"name": "quant_storage", "val": " = torch.uint8"}, {"name": "device", "val": " = None"}]- **input_features** (`str`) --
   Number of input features of the linear layer.
 - **output_features** (`str`) --
   Number of output features of the linear layer.
@@ -115,7 +115,7 @@ bias (`bool`, defaults to `True`) : Whether the linear class uses the bias term 
 
 #### bitsandbytes.nn.Params4bit[[bitsandbytes.nn.Params4bit]]
 
-[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.0/bitsandbytes/nn/modules.py#L212)
+[Source](https://github.com/bitsandbytes-foundation/bitsandbytes/blob/v0.49.1/bitsandbytes/nn/modules.py#L212)
 
 __init__bitsandbytes.nn.Params4bit.__init__[{"name": "*args", "val": ""}, {"name": "**kwargs", "val": ""}]
 Initialize self.  See help(type(self)) for accurate signature.

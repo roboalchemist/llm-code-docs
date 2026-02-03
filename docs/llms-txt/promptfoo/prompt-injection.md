@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/strategies/prompt-injection/
+
 # Prompt Injection Strategy
 
 The Prompt Injection strategy tests common direct prompt injection vulnerabilities in LLMs.

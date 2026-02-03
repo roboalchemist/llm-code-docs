@@ -1,5 +1,9 @@
 # Source: https://docs.squared.ai/release-notes/2024/September-2024.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # September 2024 releases
 
 > Release updates for the month of September
@@ -84,8 +88,3 @@
 > For further details on any feature or update, check the detailed documentation or contact our support team. We’re here to help make your experience seamless!
 
 ***
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.squared.ai/llms.txt

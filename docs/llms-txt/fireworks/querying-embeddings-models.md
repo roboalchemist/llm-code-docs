@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/guides/querying-embeddings-models.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Embeddings & Reranking
 
 > Generate embeddings and rerank results for semantic search
@@ -74,13 +78,19 @@ Fireworks hosts several purpose-built embeddings models, which are optimized spe
 
 ## Reranking documents
 
-Reranking models are used to rerank a list of documents based on a query. We only support reranking with the Qwen3 Reranker family of models:
+Reranking models are used to rerank a list of documents based on a query. We support reranking with the Qwen3 Reranker family of models:
 
 * `fireworks/qwen3-reranker-8b` (\*available on serverless)
 * `fireworks/qwen3-reranker-4b`
 * `fireworks/qwen3-reranker-0p6b`
 
-The reranking model takes a query and a list of documents as input and outputs the list of documents scored by relevance to the query.
+### Using the `/rerank` endpoint
+
+The `/rerank` endpoint provides a simple interface for reranking documents.
+
+<Note>
+  The `/rerank` endpoint does not yet support all models and parallelism options. For more flexibility, use the `/embeddings` endpoint with `return_logits` as shown in the next section.
+</Note>
 
 ```python Python theme={null}
 import requests
@@ -88,16 +98,16 @@ import requests
 url = "https://api.fireworks.ai/inference/v1/rerank"
 
 payload = {
-      "model": "fireworks/qwen3-reranker-8b",
-      "query": "What was the primary objective of the Apollo 10 mission?",
-      "documents": [
-        "The Apollo 10 mission was launched in May 1969 and served as a 'dress rehearsal' for the Apollo 11 lunar landing.",
-        "The crew of Apollo 10 consisted of astronauts Thomas Stafford, John Young, and Eugene Cernan.",
-        "The command module for Apollo 10 was nicknamed 'Charlie Brown' and the lunar module was called 'Snoopy', after characters from the Peanuts comics.",
-        "The Apollo program was a series of NASA missions that successfully landed the first humans on the Moon and returned them safely to Earth."
-      ],
-      "top_n": 3,
-      "return_documents": True
+    "model": "fireworks/qwen3-reranker-8b",
+    "query": "What is the capital of France?",
+    "documents": [
+        "Paris is the capital and largest city of France, home to the Eiffel Tower and the Louvre Museum.",
+        "France is a country in Western Europe known for its wine, cuisine, and rich history.",
+        "The weather in Europe varies significantly between northern and southern regions.",
+        "Python is a popular programming language used for web development and data science."
+    ],
+    "top_n": 3,
+    "return_documents": True
 }
 
 headers = {
@@ -110,6 +120,132 @@ response = requests.post(url, json=payload, headers=headers)
 print(response.json())
 
 ```
+
+### Using the `/embeddings` endpoint
+
+You can also use the `/embeddings` endpoint with the `return_logits` parameter to rerank documents. This approach supports more models and parallelism options.
+
+The embedding model takes in token IDs for "yes" and "no" and outputs associated logits indicating how likely the document is relevant or not relevant to the query. You can obtain these token IDs using `tokenizer.convert_tokens_to_ids()` with the transformers library and the Qwen3 tokenizer.
+
+<Tabs>
+  <Tab title="Simple">
+    ```python Python theme={null}
+    import requests
+
+    url = "https://api.fireworks.ai/inference/v1/embeddings"
+
+    query = "What is the capital of France?"
+    documents = [
+        "Paris is the capital and largest city of France, home to the Eiffel Tower and the Louvre Museum.",
+        "France is a country in Western Europe known for its wine, cuisine, and rich history.",
+        "The weather in Europe varies significantly between northern and southern regions.",
+        "Python is a popular programming language used for web development and data science."
+    ]
+
+    # Format prompts as query-document pairs using the Qwen3 Reranker format
+    instruction = "Given a web search query, retrieve relevant passages that answer the query"
+    prompts = [
+        f"<Instruct>: {instruction}\n<Query>: {query}\n<Document>: {doc}"
+        for doc in documents
+    ]
+
+    # Token IDs for "no" and "yes" in Qwen3 reranker models
+    token_false_id = 2753   # "no"
+    token_true_id = 9454    # "yes"
+
+    payload = {
+        "model": "fireworks/qwen3-reranker-8b",
+        "input": prompts,
+        "return_logits": [token_false_id, token_true_id],
+        "normalize": True  # Applies softmax to the selected logits
+    }
+
+    headers = {
+        "Authorization": "Bearer <FIREWORKS_API_KEY>",
+        "Content-Type": "application/json"
+    }
+
+    response = requests.post(url, json=payload, headers=headers).json()
+
+    # Extract relevance scores (probability of "yes" token)
+    results = []
+    for i, item in enumerate(response["data"]):
+        probs = item["embedding"]  # [no_prob, yes_prob]
+        relevance_score = probs[1]  # "yes" probability is the relevance score
+        results.append({
+            "index": i,
+            "relevance_score": relevance_score,
+            "document": documents[i]
+        })
+
+    # Sort by relevance score (highest first)
+    results.sort(key=lambda x: x["relevance_score"], reverse=True)
+
+    for result in results:
+        print(f"Score: {result['relevance_score']:.4f} - {result['document'][:80]}...")
+
+    ```
+  </Tab>
+
+  <Tab title="Parallel (asyncio)">
+    For large document sets, you can improve throughput by sending multiple requests in parallel using minibatches:
+
+    ```python Python theme={null}
+    import asyncio
+    import aiohttp
+
+    url = "https://api.fireworks.ai/inference/v1/embeddings"
+
+    query = "What is the capital of France?"
+    documents = [...]  # Your list of documents
+
+    # Format prompts as query-document pairs using the Qwen3 Reranker format
+    instruction = "Given a web search query, retrieve relevant passages that answer the query"
+    prompts = [
+        f"<Instruct>: {instruction}\n<Query>: {query}\n<Document>: {doc}"
+        for doc in documents
+    ]
+
+    # Token IDs for "no" and "yes" in Qwen3 reranker models
+    token_false_id = 2753   # "no"
+    token_true_id = 9454    # "yes"
+
+    headers = {
+        "Authorization": "Bearer <FIREWORKS_API_KEY>",
+        "Content-Type": "application/json"
+    }
+
+    async def rerank_batch(session, batch_prompts):
+        payload = {
+            "model": "fireworks/qwen3-reranker-8b",
+            "input": batch_prompts,
+            "return_logits": [token_false_id, token_true_id],
+            "normalize": True
+        }
+        async with session.post(url, json=payload, headers=headers) as response:
+            return await response.json()
+
+    async def rerank_parallel(prompts, batch_size=100):
+        batches = [prompts[i:i+batch_size] for i in range(0, len(prompts), batch_size)]
+
+        async with aiohttp.ClientSession() as session:
+            tasks = [rerank_batch(session, batch) for batch in batches]
+            results = await asyncio.gather(*tasks)
+
+        # Combine results from all batches
+        all_scores = []
+        for result in results:
+            for item in result["data"]:
+                all_scores.append(item["embedding"][1])  # "yes" probability
+
+        return all_scores
+
+    scores = asyncio.run(rerank_parallel(prompts))
+    ```
+  </Tab>
+</Tabs>
+
+With `normalize=True`, the endpoint applies softmax to the selected logits, returning probabilities that sum to 1. The "yes" probability directly represents the relevance score.
 
 ## Deploying embeddings and reranking models
 

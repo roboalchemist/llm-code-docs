@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/custom-components/st.components.v2.component
+
 # st.components.v2.component
 
 Register an `st.components.v2` component and return a callable to mount it.

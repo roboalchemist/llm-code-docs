@@ -4,11 +4,7 @@
 
 Learn how to seamlessly integrate Better Auth with your Fastify application.
 
-***
 
-title: Better Auth Fastify Integration Guide
-description: Learn how to seamlessly integrate Better Auth with your Fastify application.
------------------------------------------------------------------------------------------
 
 This guide provides step-by-step instructions for configuring both essential handlers and CORS settings.
 
@@ -25,7 +21,7 @@ Verify the following requirements before integration:
   * `package.json`: `{ "type": "module" }`
   * TypeScript `tsconfig.json`: `{ "module": "ESNext" }`
 * **Fastify Dependencies**:
-  <CodeBlockTabs defaultValue="npm">
+  <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
     <CodeBlockTabsList>
       <CodeBlockTabsTrigger value="npm">
         npm
@@ -69,7 +65,17 @@ Verify the following requirements before integration:
     </CodeBlockTab>
   </CodeBlockTabs>
 
-<Callout type="tip"> For TypeScript: Ensure your `tsconfig.json` includes `"esModuleInterop": true` for optimal compatibility. </Callout>
+<Callout type="tip">
+   For TypeScript: Ensure your 
+
+  `tsconfig.json`
+
+   includes 
+
+  `"esModuleInterop": true`
+
+   for optimal compatibility. 
+</Callout>
 
 ### Authentication Handler Setup
 
@@ -165,5 +171,7 @@ fastify.register(fastifyCors, {
 // (Use previous handler configuration here)
 ```
 
-<Callout type="warning"> Always restrict CORS origins in production environments. Use environment variables for dynamic configuration. </Callout>
+<Callout type="warning">
+   Always restrict CORS origins in production environments. Use environment variables for dynamic configuration. 
+</Callout>
 

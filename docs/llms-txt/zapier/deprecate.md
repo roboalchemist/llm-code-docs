@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/manage/deprecate.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deprecate or delete a version
 
 > Deprecation is an optional process that allows you to set a date from which an integration version cannot be used anymore. Zapier is normally a “set it and forget it” experience for users, so use this feature carefully. Only if the version will no longer function, should it be deprecated. Please note that deprecating a version is significantly disruptive to our mutual users if a migration to a different version is not possible.

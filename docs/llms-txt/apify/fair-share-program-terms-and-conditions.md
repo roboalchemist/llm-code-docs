@@ -8,7 +8,7 @@ Effective Date: February 14, 2025
 
 ***
 
-We offer you the opportunity to enroll in our Apify Open Source Fair Share Program ("**Fair Share Program**"), which is subject to the following Apify Open Source Fair Share Program Terms and Conditions ("**Fair Share Program Terms**"). Fair Share Program is further governed by the https://docs.apify.com/legal/affiliate-program-terms-and-conditions.md and, to the extent applicable, by https://docs.apify.com/legal/store-publishing-terms-and-conditions.md which are both incorporated herein by the reference. In case of a conflict, these Apify Fair Share Program Terms shall prevail.
+We offer you the opportunity to enroll in our Apify Open Source Fair Share Program ("**Fair Share Program**"), which is subject to the following Apify Open Source Fair Share Program Terms and Conditions ("**Fair Share Program Terms**"). Fair Share Program is further governed by the [Affiliate Program Terms and Conditions](https://docs.apify.com/legal/affiliate-program-terms-and-conditions.md) and, to the extent applicable, by [Apify Store Publishing Terms and Conditions](https://docs.apify.com/legal/store-publishing-terms-and-conditions.md) which are both incorporated herein by the reference. In case of a conflict, these Apify Fair Share Program Terms shall prevail.
 
 Terms starting with a capital letter used in these Fair Share Program Terms have the meaning defined either here or in the Affiliate Program Terms and Conditions.
 
@@ -30,7 +30,7 @@ The Fair Share Program offers three different tiers, each with varying levels of
 
 ### 2.2. Maintainer Tier
 
-2.2.1. **Joining Maintainer Tier**. To join the Maintainer Tier, you must first: (i) https://apify.firstpromoter.com/signup/28997, (ii) https://console.apify.com/sign-up at apify.com, and (iii) either successfully claim ownership of the Actor in Apify Store or link your GitHub OSS Public Repository containing an Actor code to the same Actor in Apify Store, subject to the Apify Store Publishing Terms.
+2.2.1. **Joining Maintainer Tier**. To join the Maintainer Tier, you must first: (i) [join our Affiliate Program](https://apify.firstpromoter.com/signup/28997), (ii) [create an Account](https://console.apify.com/sign-up) at apify.com, and (iii) either successfully claim ownership of the Actor in Apify Store or link your GitHub OSS Public Repository containing an Actor code to the same Actor in Apify Store, subject to the Apify Store Publishing Terms.
 
 2.2.2. **Commission & Remuneration**. In the Maintainer Tier you may receive standard Commission as outlined in the Affiliate Program. Additionally, you may also be eligible to receive remuneration under the Apify Store Publishing Terms in case you monetize your Actor.
 

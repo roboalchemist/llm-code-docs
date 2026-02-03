@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/integrations/platforms/kubernetes/infisical-secret-crd.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Using the InfisicalSecret CRD
 
 > Learn how to use the InfisicalSecret CRD to fetch secrets from Infisical and store them as native Kubernetes secret resource
@@ -953,6 +957,12 @@ Using Go templates, you can format, combine, and create new key-value pairs from
   Please refer to the [templating functions documentation](/integrations/platforms/kubernetes/overview#available-helper-functions) for more information.
 </Accordion>
 
+<Accordion title="managedKubeSecretReferences[].template.metadata">
+  Define custom labels and annotations for the managed Kubernetes secret. This allows you to specify metadata that should be applied to the managed secret separately from the InfisicalSecret itself.
+
+  For detailed information on how metadata propagation works and examples, see the [Propagating Labels & Annotations](#propagating-labels-&-annotations) section.
+</Accordion>
+
 ### Operator Managed ConfigMaps
 
 The managed config map properties specify where to store the secrets retrieved from your Infisical project. Config maps can be used to store **non-sensitive** data, such as application configuration variables.
@@ -1059,6 +1069,12 @@ Using Go templates, you can format, combine, and create new key-value pairs from
   ### Available templating functions
 
   Please refer to the [templating functions documentation](/integrations/platforms/kubernetes/overview#available-helper-functions) for more information.
+</Accordion>
+
+<Accordion title="managedKubeConfigMapReferences[].template.metadata">
+  Define custom labels and annotations for the managed Kubernetes ConfigMap. This allows you to specify metadata that should be applied to the managed ConfigMap separately from the InfisicalSecret itself.
+
+  This field works the same way as `template.metadata` for managed secrets. For detailed information on how metadata propagation works and examples, see the [Propagating Labels & Annotations](#propagating-labels-&-annotations) section.
 </Accordion>
 
 ## Applying CRD
@@ -1547,10 +1563,13 @@ stringData:
 
 ## Propagating Labels & Annotations
 
-The operator will transfer all labels & annotations present on the `InfisicalSecret` CRD to the managed Kubernetes secret to be created.
-Thus, if a specific label is required on the resulting secret, it can be applied as demonstrated in the following example:
+The operator provides flexible options for managing labels and annotations on managed Kubernetes secrets.
 
-<Accordion title="Example propagation">
+<Accordion title="Default Behavior (Without template.metadata)">
+  By default, the operator will transfer all labels & annotations present on the `InfisicalSecret` to the managed Kubernetes secret to be created.
+
+  ### Example
+
   ```yaml  theme={"dark"}
   apiVersion: secrets.infisical.com/v1alpha1
   kind: InfisicalSecret
@@ -1561,11 +1580,11 @@ Thus, if a specific label is required on the resulting secret, it can be applied
     annotations:
       example.com/annotation-to-be-passed-to-managed-secret: "sample-value"
   spec:
-    ..
     authentication:
-      ...
+      # ... auth config ...
     managedKubeSecretReferences:
-      ...
+      - secretName: managed-token
+        secretNamespace: default
   ```
 
   This would result in the following managed secret to be created:
@@ -1581,6 +1600,74 @@ Thus, if a specific label is required on the resulting secret, it can be applied
     labels:
       label-to-be-passed-to-managed-secret: sample-value
     name: managed-token
+    namespace: default
+  type: Opaque
+  ```
+</Accordion>
+
+<Accordion title="Custom Metadata (With template.metadata)">
+  When you specify `template.metadata` in your template configuration, you have full control over which labels and annotations are applied to the managed secret:
+
+  * Labels and annotations from `template.metadata` are used exclusively on the managed secret
+  * InfisicalSecret labels and annotations are NOT propagated to the managed secret
+  * This allows you to keep InfisicalSecret-specific metadata separate from the managed secret metadata
+
+  <Tip>
+    To prevent any propagation while using `template.metadata`, pass empty objects for labels and/or annotations.
+    This will ensure no labels or annotations are propagated to the managed secret, even from the InfisicalSecret CRD's own labels/annotations:
+
+    ```yaml  theme={"dark"}
+    template:
+      metadata:
+        labels: {}
+        annotations: {}
+    ```
+  </Tip>
+
+  ### Example
+
+  ```yaml  theme={"dark"}
+  apiVersion: secrets.infisical.com/v1alpha1
+  kind: InfisicalSecret
+  metadata:
+    name: infisicalsecret-with-template-metadata
+    labels:
+      managed-by: infisical-operator
+    annotations:
+      example.com/cr-specific: "metadata"
+  spec:
+    authentication:
+      # ... auth config ...
+    managedKubeSecretReferences:
+      - secretName: managed-secret-with-custom-metadata
+        secretNamespace: default
+        template:
+          includeAllSecrets: true
+          metadata:
+            labels:
+              app: my-application
+              environment: production
+              tier: backend
+            annotations:
+              secret.example.com/description: "Production database credentials"
+              secret.example.com/owner: "platform-team"
+  ```
+
+  This would result in the following managed secret to be created:
+
+  ```yaml  theme={"dark"}
+  apiVersion: v1
+  data: ...
+  kind: Secret
+  metadata:
+    annotations:
+      secret.example.com/description: "Production database credentials"
+      secret.example.com/owner: "platform-team"
+    labels:
+      app: my-application
+      environment: production
+      tier: backend
+    name: managed-secret-with-custom-metadata
     namespace: default
   type: Opaque
   ```

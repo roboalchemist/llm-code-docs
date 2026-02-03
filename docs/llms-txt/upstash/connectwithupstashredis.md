@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/howto/connectwithupstashredis.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Connect with upstash-redis
 
 [upstash-redis](https://github.com/upstash/redis-js)
@@ -19,7 +23,7 @@ It is the only connectionless (HTTP based) Redis client and designed for:
 * and other environments where HTTP is preferred over TCP.
 
 See
-[the list of APIs](https://docs.upstash.com/features/restapi#rest---redis-api-compatibility)
+[the list of APIs](https://upstash.com/docs/redis/features/restapi#rest-redis-api-compatibility)
 supported.
 
 ## Quick Start

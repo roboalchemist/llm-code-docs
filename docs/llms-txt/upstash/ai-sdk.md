@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/vector/integrations/ai-sdk.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Vercel AI SDK with Upstash Vector
 
 The [AI SDK](https://sdk.vercel.ai/docs/introduction) is a TypeScript toolkit designed to help developers build AI-powered applications using React, Next.js, Vue, Svelte, Node.js, and more.

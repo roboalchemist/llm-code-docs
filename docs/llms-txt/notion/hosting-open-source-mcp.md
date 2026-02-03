@@ -1,24 +1,32 @@
-# Source: https://developers.notion.com/docs/hosting-open-source-mcp.md
+# Source: https://developers.notion.com/guides/mcp/hosting-open-source-mcp.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://developers.notion.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Hosting a local MCP server
 
-Learn how and when to use the open-source Notion MCP server.
+> Learn how and when to use the open-source Notion MCP server.
 
-## If you would like to run your own MCP server, the [notion-mcp-server](https://github.com/makenotion/notion-mcp-server) package is our open-source implementation. It offers more control over setup and behavior, and is a great fit for teams who already have an existing Notion integration or prefer to manage infrastructure themselves.
+<Warning>
+  The open-source `notion-mcp-server` package is no longer actively maintained. We recommend using the remote [Notion MCP](/guides/mcp/get-started-with-mcp) server for the best experience. Issues and pull requests on the open-source repository are not actively monitored.
+</Warning>
 
-Compared to Notion’s remote MCP, this option requires more technical setup, including provisioning your own Notion integration and handling deployment. But it also gives you full visibility, support for the original JSON-based v1 APIs, and the flexibility to customize capabilities as needed.
+If you need to run your own MCP server, the [`notion-mcp-server` package](https://github.com/makenotion/notion-mcp-server) is available as an open-source implementation. This option may be suitable if you:
 
-Our MCP server works with any MCP client. Select one that best fits your needs and use cases. Examples of supported MCP clients are listed [here](common-mcp-clients).
+* Need bearer token authentication for fully automated workflows
+* Already have an existing Notion integration you want to reuse
+* Require access to the original JSON-based v1 APIs
+* Prefer to manage infrastructure yourself
 
-**Updated 4 months ago**
+Compared to Notion's remote MCP, running the open-source server requires more technical setup, including provisioning your own Notion integration, managing API tokens, and handling deployment.
 
----
+<Note>
+  For most use cases, we recommend connecting to the remote Notion MCP server at `https://mcp.notion.com/mcp`. It requires no infrastructure setup, stays up-to-date automatically, and includes tools optimized specifically for AI agents.
+</Note>
 
-## What’s Next
+**What's Next**
 
-Explore the [GitHub repo](https://github.com/makenotion/notion-mcp-server) to get started.
+If you still want to self-host, explore the [GitHub repo](https://github.com/makenotion/notion-mcp-server) to get started.
 
-Learn more about common AI tools:
-
-- [Common MCP clients](/docs/common-mcp-clients)
-```
+For the recommended approach, see [Connecting to Notion MCP](/guides/mcp/get-started-with-mcp).

@@ -1,3 +1,5 @@
+# Source: https://react.dev/reference/react-dom/static/prerender.md
+
 # Source: https://react.dev/reference/react-dom/static/prerender
 
 ## Intro
@@ -87,7 +89,7 @@ Along with the <CodeStep step={1}>root component</CodeStep>, you need to provide
 
 For example, it might look like this:
 
-```js [[1, 1, "App"]]
+```js [[1, 1, "App")]
 export default function App() {
   return (
     <html>

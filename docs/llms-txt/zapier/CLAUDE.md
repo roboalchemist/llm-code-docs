@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/CLAUDE.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # null
 
 # CLAUDE.md
@@ -21,26 +25,26 @@ This is Zapier's public API documentation site built with Mintlify. The docs are
 
 ```bash  theme={null}
 # Install dependencies
-npm i
+pnpm i
 
 # Run locally
-npm run dev
+pnpm run dev
 ```
 
 ### Build and Quality Checks
 
 ```bash  theme={null}
 # Format TypeScript files
-npm run format
+pnpm run format
 
 # Compile TypeScript
-npm run compile
+pnpm run compile
 
 # Full build process (format + compile + scriptify)
-npm run build
+pnpm run build
 
 # Check for broken links
-npx mintlify broken-links
+pnpx mintlify broken-links
 ```
 
 ### Pre-commit Hook
@@ -100,6 +104,6 @@ The pre-commit hook automatically:
 ## Testing and Validation
 
 * Run `mintlify dev` for local development server
-* Use `npx mintlify broken-links` to check for broken internal links
+* Use `pnpx mintlify broken-links` to check for broken internal links
 * The pre-commit hook validates route configurations automatically
 * Python script `check_redirects.py` can validate external links against localhost:3000

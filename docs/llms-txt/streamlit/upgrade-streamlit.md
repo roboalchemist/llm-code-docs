@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/deploy/streamlit-community-cloud/manage-your-app/upgrade-streamlit
+
 # Upgrade your app's Streamlit version on Streamlit Community Cloud
 
 Want to use a cool new Streamlit feature but your app on Streamlit Community Cloud is running an old version of the Streamlit library? If that's you, don't worry! Here's how to upgrade your app's Streamlit version, based on how you manage your [app dependencies](/deploy/streamlit-community-cloud/deploy-your-app/app-dependencies):

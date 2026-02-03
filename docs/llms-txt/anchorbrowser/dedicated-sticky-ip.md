@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/advanced/dedicated-sticky-ip.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Dedicated Sticky IP
 
 > Reserve a fixed IP address for a specific profile.

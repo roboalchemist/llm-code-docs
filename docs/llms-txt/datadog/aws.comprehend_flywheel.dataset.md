@@ -4,8 +4,6 @@
 title: Comprehend Flywheel
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Comprehend Flywheel
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.comprehend_flywheel.dataset/index.html
 ---
 
 # Comprehend Flywheel
@@ -18,20 +16,20 @@ aws.comprehend_flywheel
 
 ## Fields
 
-| Title                     | ID   | Type      | Data Type                                                                                                            | Description |
-| ------------------------- | ---- | --------- | -------------------------------------------------------------------------------------------------------------------- | ----------- |
-| _key                      | core | string    |
-| account_id                | core | string    |
-| active_model_arn          | core | string    | The Amazon Resource Number (ARN) of the active model version.                                                        |
-| creation_time             | core | timestamp | Creation time of the flywheel.                                                                                       |
-| data_access_role_arn      | core | string    | The Amazon Resource Name (ARN) of the IAM role that grants Amazon Comprehend permission to access the flywheel data. |
-| data_lake_s3_uri          | core | string    | Amazon S3 URI of the data lake location.                                                                             |
-| data_security_config      | core | json      | Data security configuration.                                                                                         |
-| flywheel_arn              | core | string    | The Amazon Resource Number (ARN) of the flywheel.                                                                    |
-| last_modified_time        | core | timestamp | Last modified time for the flywheel.                                                                                 |
-| latest_flywheel_iteration | core | string    | The most recent flywheel iteration.                                                                                  |
-| message                   | core | string    | A description of the status of the flywheel.                                                                         |
-| model_type                | core | string    | Model type of the flywheel's model.                                                                                  |
-| status                    | core | string    | The status of the flywheel.                                                                                          |
-| tags                      | core | hstore    |
-| task_config               | core | json      | Configuration about the model associated with a flywheel.                                                            |
+| Title                     | ID   | Type       | Data Type                                                                                                            | Description |
+| ------------------------- | ---- | ---------- | -------------------------------------------------------------------------------------------------------------------- | ----------- |
+| _key                      | core | string     |
+| account_id                | core | string     |
+| active_model_arn          | core | string     | The Amazon Resource Number (ARN) of the active model version.                                                        |
+| creation_time             | core | timestamp  | Creation time of the flywheel.                                                                                       |
+| data_access_role_arn      | core | string     | The Amazon Resource Name (ARN) of the IAM role that grants Amazon Comprehend permission to access the flywheel data. |
+| data_lake_s3_uri          | core | string     | Amazon S3 URI of the data lake location.                                                                             |
+| data_security_config      | core | json       | Data security configuration.                                                                                         |
+| flywheel_arn              | core | string     | The Amazon Resource Number (ARN) of the flywheel.                                                                    |
+| last_modified_time        | core | timestamp  | Last modified time for the flywheel.                                                                                 |
+| latest_flywheel_iteration | core | string     | The most recent flywheel iteration.                                                                                  |
+| message                   | core | string     | A description of the status of the flywheel.                                                                         |
+| model_type                | core | string     | Model type of the flywheel's model.                                                                                  |
+| status                    | core | string     | The status of the flywheel.                                                                                          |
+| tags                      | core | hstore_csv |
+| task_config               | core | json       | Configuration about the model associated with a flywheel.                                                            |

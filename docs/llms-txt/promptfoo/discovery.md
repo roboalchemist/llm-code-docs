@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/discovery/
+
 # Target Discovery
 
 Promptfoo's **Target Discovery Agent** automatically extracts useful information about generative AI systems that you want to red team. This information is used to craft adversarial inputs that are unique to the target system, improving attack efficacy and response evaluation quality.

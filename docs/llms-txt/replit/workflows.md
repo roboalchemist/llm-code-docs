@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replit-workspace/workflows.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Workflows
 
 > A Workflow is a easily configurable 'Run' button that can run any command(s) you'd like.

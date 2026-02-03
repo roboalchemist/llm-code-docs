@@ -95,8 +95,11 @@ While this comes with a latency penalty the first time you push external package
 
 Create a [`convex.json`](/production/project-configuration.md#convexjson) file in the same directory as your `package.json` if it does not exist already. Set the `node.externalPackages` field to `["*"]` to mark all dependencies used within your Node actions as external:
 
+convex.json
+
 ```
 {
+  "$schema": "./node_modules/convex/schemas/convex.schema.json",
   "node": {
     "externalPackages": ["*"]
   }
@@ -105,8 +108,11 @@ Create a [`convex.json`](/production/project-configuration.md#convexjson) file i
 
 Alternatively, you can explicitly specify which packages to mark as external:
 
+convex.json
+
 ```
 {
+  "$schema": "./node_modules/convex/schemas/convex.schema.json",
   "node": {
     "externalPackages": ["aws-sdk", "sharp"]
   }

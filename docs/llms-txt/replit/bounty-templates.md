@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/additional-resources/bounties/bounty-templates.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Bounty Templates
 
 > Learn how to communicate effectively during bounty projects with templates for both bounty hunters and posters to use throughout the process.

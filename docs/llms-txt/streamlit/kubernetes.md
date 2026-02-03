@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/deploy/tutorials/kubernetes
+
 # Deploy Streamlit using Kubernetes
 
 So you have an amazing app and you want to start sharing it with other people, what do you do? You have a few options. First, where do you want to run your Streamlit app, and how do you want to access it?

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/integrations/circle-ci/
+
 # Setting up Promptfoo with CircleCI
 
 This guide shows how to integrate promptfoo's LLM evaluation into your CircleCI pipeline. This allows you to automatically test your prompts and models whenever changes are made to your repository.

@@ -23,7 +23,7 @@ Model for a dataset metadata.
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#accessed_at)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/models.py#L31)accessed\_at
+### [**](#accessed_at)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/models.py#L31)accessed\_at
 
 **accessed\_at: Annotated\[datetime, Field(alias='accessedAt')]
 
@@ -31,7 +31,7 @@ Inherited from [StorageMetadata.accessed\_at](https://crawlee.dev/python/api/cla
 
 The timestamp when the storage was last accessed.
 
-### [**](#created_at)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/models.py#L34)created\_at
+### [**](#created_at)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/models.py#L34)created\_at
 
 **created\_at: Annotated\[datetime, Field(alias='createdAt')]
 
@@ -39,7 +39,7 @@ Inherited from [StorageMetadata.created\_at](https://crawlee.dev/python/api/clas
 
 The timestamp when the storage was created.
 
-### [**](#id)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/models.py#L25)id
+### [**](#id)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/models.py#L25)id
 
 **id: Annotated\[str, Field(alias='id')]
 
@@ -47,19 +47,19 @@ Inherited from [StorageMetadata.id](https://crawlee.dev/python/api/class/Storage
 
 The unique identifier of the storage.
 
-### [**](#item_count)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/models.py#L47)item\_count
+### [**](#item_count)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/models.py#L47)item\_count
 
 **item\_count: int
 
 The number of items in the dataset.
 
-### [**](#model_config)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/models.py#L45)model\_config
+### [**](#model_config)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/models.py#L45)model\_config
 
 **model\_config: Undefined
 
 Overrides [StorageMetadata.model\_config](https://crawlee.dev/python/api/class/StorageMetadata#model_config)
 
-### [**](#modified_at)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/models.py#L37)modified\_at
+### [**](#modified_at)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/models.py#L37)modified\_at
 
 **modified\_at: Annotated\[datetime, Field(alias='modifiedAt')]
 
@@ -67,7 +67,7 @@ Inherited from [StorageMetadata.modified\_at](https://crawlee.dev/python/api/cla
 
 The timestamp when the storage was last modified.
 
-### [**](#name)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/storage_clients/models.py#L28)name
+### [**](#name)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/storage_clients/models.py#L28)name
 
 **name: Annotated\[str | None, Field(alias='name', default=None)]
 

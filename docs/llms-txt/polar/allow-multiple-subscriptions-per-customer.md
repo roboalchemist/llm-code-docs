@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/guides/allow-multiple-subscriptions-per-customer.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to allow multiple subscriptions per customer
 
 > Learn how to allow multiple subscriptions per customer in Polar.

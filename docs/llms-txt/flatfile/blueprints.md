@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/core-concepts/blueprints.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Blueprints
 
 > Define your data schema to structure exactly how data should look, behave, and connect
@@ -42,7 +46,7 @@ To make that part easier, we have provided the [Space Configure Plugin](/plugins
 <Tip>
   **Recommendation:** Although throughout the documentation we'll be explicitly defining each level of a blueprint, it's important to note that you can split each of your **Workbooks**, **Sheets**, **Documents**, and **Actions** definitions into separate files and import them. Then your Workbook blueprint can be as simple as:
 
-  ```javascript
+  ```javascript  theme={null}
   const companyWorkbook = {
     name: "Company Workbook",
     documents: [dataProcessingSteps]
@@ -56,7 +60,7 @@ To make that part easier, we have provided the [Space Configure Plugin](/plugins
 
 This example shows a Blueprint definition for [Space configuration](/core-concepts/spaces#space-configuration). It creates a single [Workbook](/core-concepts/workbooks) with a single [Document](/core-concepts/documents) and a single [Sheet](/core-concepts/sheets) containing two [Fields](/core-concepts/fields) and one [Action](/core-concepts/actions).
 
-```javascript
+```javascript  theme={null}
 const workbooks = [{
   name: "Company Workbook",
   documents: [
@@ -136,12 +140,12 @@ The **Business Operations** Workbooks each contain several Sheets grouped into C
 <Tabs>
   <Tab title="Screenshot">
     <Frame caption="An example of Workbooks grouped by Folder and Sheets grouped by Collection">
-      <img src="https://mintlify.s3.us-west-1.amazonaws.com/flatfileinc/core-concepts/assets/folders-and-collections.png" />
+      <img src="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/folders-and-collections.png?fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=463e5bdab5ef392b9197dc4ec6274b7a" data-og-width="1872" width="1872" data-og-height="1710" height="1710" data-path="core-concepts/assets/folders-and-collections.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/folders-and-collections.png?w=280&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=d0a3b8101e024fc89cbc7139322da860 280w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/folders-and-collections.png?w=560&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=1e6570b2b0fee190b9c0c7d474dc2b0b 560w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/folders-and-collections.png?w=840&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=3e987d914aab5d7983838ff6087f7095 840w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/folders-and-collections.png?w=1100&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=012b50837a367cbddc3aba5ad606a947 1100w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/folders-and-collections.png?w=1650&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=2e569ff52ffd5c65db067d8b90bd95ba 1650w, https://mintcdn.com/flatfileinc/JzFdJ3ksHuS-ooTQ/core-concepts/assets/folders-and-collections.png?w=2500&fit=max&auto=format&n=JzFdJ3ksHuS-ooTQ&q=85&s=26941df8f72e4f3fd8cf765672896e83 2500w" />
     </Frame>
   </Tab>
 
   <Tab title="Workbook Blueprints">
-    ```javascript
+    ```javascript  theme={null}
     const salesReportWorkbook = {
       name: "Sales Analytics",
       folder: "Analytics",
@@ -184,7 +188,7 @@ The **Business Operations** Workbooks each contain several Sheets grouped into C
   </Tab>
 
   <Tab title="Sheet Blueprints">
-    ```javascript
+    ```javascript  theme={null}
     const salesDataSheet = {
       name: "Sales Data",
       collection: "Source Data",

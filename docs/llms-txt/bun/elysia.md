@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/ecosystem/elysia.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Build an HTTP server using Elysia and Bun
 
 [Elysia](https://elysiajs.com) is a Bun-first performance focused web framework that takes full advantage of Bun's HTTP, file system, and hot reloading APIs. Get started with `bun create`.

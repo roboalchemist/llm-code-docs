@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/reference/aptible-cli/cli-commands/cli-services-autoscalingpolicy-set.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # aptible services:autoscaling_policy:set
 
 Sets the sizing (autoscaling) policy for a service. This is not incremental, all arguments must be sent at once or they will be set to defaults. Also aliased to `services:sizing_policy:set`.
@@ -10,7 +14,7 @@ For more information, see the [Autoscaling documentation](/core-concepts/scaling
 
 ```
 Usage:
-  aptible services:autoscaling_policy:set SERVICE --autoscaling-type (horizontal|vertical) [--metric-lookback-seconds SECONDS] [--percentile PERCENTILE] [--post-scale-up-cooldown-seconds SECONDS] [--post-scale-down-cooldown-seconds SECONDS] [--post-release-cooldown-seconds SECONDS] [--mem-cpu-ratio-r-threshold RATIO] [--mem-cpu-ratio-c-threshold RATIO] [--mem-scale-up-threshold THRESHOLD] [--mem-scale-down-threshold THRESHOLD] [--minimum-memory MEMORY] [--maximum-memory MEMORY] [--min-cpu-threshold THRESHOLD] [--max-cpu-threshold THRESHOLD] [--min-containers CONTAINERS] [--max-containers CONTAINERS] [--scale-up-step STEPS] [--scale-down-step STEPS]
+  aptible services:autoscaling_policy:set [--app APP] SERVICE --autoscaling-type (horizontal|vertical) [--metric-lookback-seconds SECONDS] [--percentile PERCENTILE] [--post-scale-up-cooldown-seconds SECONDS] [--post-scale-down-cooldown-seconds SECONDS] [--post-release-cooldown-seconds SECONDS] [--mem-cpu-ratio-r-threshold RATIO] [--mem-cpu-ratio-c-threshold RATIO] [--mem-scale-up-threshold THRESHOLD] [--mem-scale-down-threshold THRESHOLD] [--minimum-memory MEMORY] [--maximum-memory MEMORY] [--min-cpu-threshold THRESHOLD] [--max-cpu-threshold THRESHOLD] [--min-containers CONTAINERS] [--max-containers CONTAINERS] [--scale-up-step STEPS] [--scale-down-step STEPS]
 
 Options:
       [--app=APP]

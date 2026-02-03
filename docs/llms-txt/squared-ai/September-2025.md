@@ -1,5 +1,9 @@
 # Source: https://docs.squared.ai/release-notes/2025/September-2025.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # September 2025 Releases
 
 > Release updates for the month of September
@@ -125,8 +129,3 @@
 
 * **Security Gem Updates**\
   Upgraded git and rexml gems per security findings.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.squared.ai/llms.txt

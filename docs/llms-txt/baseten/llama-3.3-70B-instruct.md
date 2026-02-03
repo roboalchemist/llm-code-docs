@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/examples/models/llama/llama-3.3-70B-instruct.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Llama 3.3 70B Instruct
 
 > Llama 3.3 70B Instruct is a large language model that is optimized for instruction following.

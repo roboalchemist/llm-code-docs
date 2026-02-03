@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/special-token-injection/
+
 # Special Token Injection for LLMs
 
 ## Overview

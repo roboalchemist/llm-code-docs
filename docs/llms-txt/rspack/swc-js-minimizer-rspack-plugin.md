@@ -1,11 +1,8 @@
 # Source: https://rspack.dev/plugins/rspack/swc-js-minimizer-rspack-plugin.md
 
-import { ApiMeta } from '@components/ApiMeta.tsx';
-
 # SwcJsMinimizerRspackPlugin
 
-<ApiMeta specific={['Rspack']} />
-
+Rspack only
 This plugin is used to minify JavaScript files using [SWC](https://swc.rs/).
 
 ## Example
@@ -35,8 +32,8 @@ When `optimization.minimizer` is set, the default minimizers are disabled, so we
 
 ### test
 
-* **Type:** `string | RegExp | Array<string | RegExp>`
-* **Default:** `\.[cm]?js(\?.*)?$`
+- **Type:** `string | RegExp | Array<string | RegExp>`
+- **Default:** `\.[cm]?js(\?.*)?$`
 
 Specify the files to be minimized. You can use regular expressions or file path strings, and only the files that match will be minimized.
 
@@ -50,8 +47,8 @@ new rspack.SwcJsMinimizerRspackPlugin({
 
 ### include
 
-* **Type:** `string | RegExp | Array<string | RegExp>`
-* **Default:** `undefined`
+- **Type:** `string | RegExp | Array<string | RegExp>`
+- **Default:** `undefined`
 
 Same as `test`, specify the files to be minimized.
 
@@ -63,8 +60,8 @@ new rspack.SwcJsMinimizerRspackPlugin({
 
 ### exclude
 
-* **Type:** `string | RegExp | Array<string | RegExp>`
-* **Default:** `undefined`
+- **Type:** `string | RegExp | Array<string | RegExp>`
+- **Default:** `undefined`
 
 Specify the files to be excluded. You can use regular expressions or file path strings, and the files that match will not be minimized.
 
@@ -78,7 +75,7 @@ new rspack.SwcJsMinimizerRspackPlugin({
 
 ### extractComments
 
-* **Type:**
+- **Type:**
 
 ```ts
 type ExtractCommentsOptions =
@@ -90,7 +87,7 @@ type ExtractCommentsOptions =
     };
 ```
 
-* **Default:** `undefined`
+- **Default:** `undefined`
 
 Whether comments shall be extracted to a separate file. If the original file is named `foo.js`, then the comments will be stored to `foo.js.LICENSE.txt`.
 
@@ -144,7 +141,7 @@ new rspack.SwcJsMinimizerRspackPlugin({
 
 ### minimizerOptions
 
-* **Type:**
+- **Type:**
 
 ```ts
 type MinimizerOptions = {
@@ -157,13 +154,13 @@ type MinimizerOptions = {
 };
 ```
 
-* **Default:**
+- **Default:**
 
 ```js
 const defaultOptions = {
   minify: true,
   mangle: true,
-  ecma: 5,
+  ecma: 5, // or derived from Rspack's target configuration
   compress: {
     passes: 2,
   }
@@ -172,6 +169,12 @@ const defaultOptions = {
   },
 };
 ```
+
+:::tip Default ecma from Rspack target
+If `ecma` is not specified, `SwcJsMinimizerRspackPlugin` will automatically derive a default value from Rspack's [`target`](/config/target.md) configuration. Otherwise, it defaults to `5`.
+
+This means you can rely on your Rspack `target` configuration without manually specifying the same ecma version in the plugin options.
+:::
 
 Similar to the `jsc.minify` option of SWC, please refer to [SWC - Minification](https://swc.rs/docs/configuration/minification) for all available options.
 

@@ -24,7 +24,7 @@ When you run a command that's subshell-compatible, Warp will prompt you and invi
 bash, zsh, or fish (3.6 or above) must be set as the default shell within containers and ssh sessions for the Warpification of the subshells to work.
 {% endhint %}
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-bbd768d41f956ba63cc7410138fc2e5980c74d30%2Fsubshells-demo.gif?alt=media" alt=""><figcaption><p>Subshells Demo</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-bbd768d41f956ba63cc7410138fc2e5980c74d30%2Fsubshells-demo.gif?alt=media" alt=""><figcaption><p>Subshells Demo</p></figcaption></figure>
 
 ### Configuring subshell-compatible commands
 

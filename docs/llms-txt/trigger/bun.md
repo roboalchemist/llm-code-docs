@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/frameworks/bun.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Bun guide
 
 > This guide will show you how to setup Trigger.dev in your existing Bun project, test an example task, and view the run.
@@ -31,15 +35,15 @@ export const framework_0 = "Bun"
     Run this command in the root of your project to get started:
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest init --runtime bun
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest init --runtime bun
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest init --runtime bun
       ```
     </CodeGroup>
@@ -57,7 +61,7 @@ export const framework_0 = "Bun"
   <Step title="Update example.ts to use Bun">
     Open the `/src/trigger/example.ts` file and replace the contents with the following:
 
-    ```ts example.ts theme={null}
+    ```ts example.ts theme={"theme":"css-variables"}
     import { Database } from "bun:sqlite";
     import { task } from "@trigger.dev/sdk";
 
@@ -83,15 +87,15 @@ export const framework_0 = "Bun"
     It can also update your `@trigger.dev/*` packages to prevent version mismatches and failed deploys. You will always be prompted first.
 
     <CodeGroup>
-      ```bash npm theme={null}
+      ```bash npm theme={"theme":"css-variables"}
       npx trigger.dev@latest dev
       ```
 
-      ```bash pnpm theme={null}
+      ```bash pnpm theme={"theme":"css-variables"}
       pnpm dlx trigger.dev@latest dev
       ```
 
-      ```bash yarn theme={null}
+      ```bash yarn theme={"theme":"css-variables"}
       yarn dlx trigger.dev@latest dev
       ```
     </CodeGroup>

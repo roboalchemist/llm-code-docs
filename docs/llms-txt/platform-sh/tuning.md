@@ -2,21 +2,13 @@
 
 # Source: https://docs.upsun.com/languages/java/tuning.md
 
-# Source: https://docs.upsun.com/languages/php/tuning.md
-
-# Source: https://docs.upsun.com/languages/java/tuning.md
-
-# Source: https://docs.upsun.com/languages/php/tuning.md
-
-# Source: https://docs.upsun.com/languages/java/tuning.md
-
 # Performance tuning Java
 
 
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 There are a number of settings that can be adjusted for each application to optimize its performance on Upsun.
 

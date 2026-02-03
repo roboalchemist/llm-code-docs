@@ -260,7 +260,7 @@ Use the following reference documentation on how use tensors in documents:
 - [Tensor field in schema](../schemas/schemas.html#tensor)
 - [Document JSON Format](../schemas/document-json-format.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

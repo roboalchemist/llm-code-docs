@@ -1,10 +1,34 @@
 # Source: https://platform.claude.com/docs/en/api/typescript/models.md
 
+# Source: https://platform.claude.com/docs/en/api/ruby/models.md
+
+# Source: https://platform.claude.com/docs/en/api/python/models.md
+
+# Source: https://platform.claude.com/docs/en/api/kotlin/models.md
+
+# Source: https://platform.claude.com/docs/en/api/java/models.md
+
+# Source: https://platform.claude.com/docs/en/api/go/models.md
+
+# Source: https://platform.claude.com/docs/en/api/typescript/beta/models.md
+
+# Source: https://platform.claude.com/docs/en/api/ruby/beta/models.md
+
+# Source: https://platform.claude.com/docs/en/api/python/beta/models.md
+
+# Source: https://platform.claude.com/docs/en/api/kotlin/beta/models.md
+
+# Source: https://platform.claude.com/docs/en/api/java/beta/models.md
+
+# Source: https://platform.claude.com/docs/en/api/go/beta/models.md
+
+# Source: https://platform.claude.com/docs/en/api/beta/models.md
+
+# Source: https://platform.claude.com/docs/en/api/models.md
+
 # Models
 
 ## List
-
-`client.models.list(ModelListParamsparams?, RequestOptionsoptions?): Page<ModelInfo>`
 
 **get** `/v1/models`
 
@@ -12,73 +36,73 @@ List available models.
 
 The Models API response can be used to determine which models are available for use in the API. More recently released models are listed first.
 
-### Parameters
+### Query Parameters
 
-- `params: ModelListParams`
+- `after_id: optional string`
 
-  - `after_id?: string`
+  ID of the object to use as a cursor for pagination. When provided, returns the page of results immediately after this object.
 
-    Query param: ID of the object to use as a cursor for pagination. When provided, returns the page of results immediately after this object.
+- `before_id: optional string`
 
-  - `before_id?: string`
+  ID of the object to use as a cursor for pagination. When provided, returns the page of results immediately before this object.
 
-    Query param: ID of the object to use as a cursor for pagination. When provided, returns the page of results immediately before this object.
+- `limit: optional number`
 
-  - `limit?: number`
+  Number of items to return per page.
 
-    Query param: Number of items to return per page.
+  Defaults to `20`. Ranges from `1` to `1000`.
 
-    Defaults to `20`. Ranges from `1` to `1000`.
+### Header Parameters
 
-  - `betas?: Array<AnthropicBeta>`
+- `"anthropic-beta": optional array of AnthropicBeta`
 
-    Header param: Optional header to specify the beta version(s) you want to use.
+  Optional header to specify the beta version(s) you want to use.
 
-    - `(string & {})`
+  - `UnionMember0 = string`
 
-    - `"message-batches-2024-09-24" | "prompt-caching-2024-07-31" | "computer-use-2024-10-22" | 16 more`
+  - `UnionMember1 = "message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 16 more`
 
-      - `"message-batches-2024-09-24"`
+    - `"message-batches-2024-09-24"`
 
-      - `"prompt-caching-2024-07-31"`
+    - `"prompt-caching-2024-07-31"`
 
-      - `"computer-use-2024-10-22"`
+    - `"computer-use-2024-10-22"`
 
-      - `"computer-use-2025-01-24"`
+    - `"computer-use-2025-01-24"`
 
-      - `"pdfs-2024-09-25"`
+    - `"pdfs-2024-09-25"`
 
-      - `"token-counting-2024-11-01"`
+    - `"token-counting-2024-11-01"`
 
-      - `"token-efficient-tools-2025-02-19"`
+    - `"token-efficient-tools-2025-02-19"`
 
-      - `"output-128k-2025-02-19"`
+    - `"output-128k-2025-02-19"`
 
-      - `"files-api-2025-04-14"`
+    - `"files-api-2025-04-14"`
 
-      - `"mcp-client-2025-04-04"`
+    - `"mcp-client-2025-04-04"`
 
-      - `"mcp-client-2025-11-20"`
+    - `"mcp-client-2025-11-20"`
 
-      - `"dev-full-thinking-2025-05-14"`
+    - `"dev-full-thinking-2025-05-14"`
 
-      - `"interleaved-thinking-2025-05-14"`
+    - `"interleaved-thinking-2025-05-14"`
 
-      - `"code-execution-2025-05-22"`
+    - `"code-execution-2025-05-22"`
 
-      - `"extended-cache-ttl-2025-04-11"`
+    - `"extended-cache-ttl-2025-04-11"`
 
-      - `"context-1m-2025-08-07"`
+    - `"context-1m-2025-08-07"`
 
-      - `"context-management-2025-06-27"`
+    - `"context-management-2025-06-27"`
 
-      - `"model-context-window-exceeded-2025-08-26"`
+    - `"model-context-window-exceeded-2025-08-26"`
 
-      - `"skills-2025-10-02"`
+    - `"skills-2025-10-02"`
 
 ### Returns
 
-- `ModelInfo`
+- `data: array of ModelInfo`
 
   - `id: string`
 
@@ -100,24 +124,27 @@ The Models API response can be used to determine which models are available for 
 
     - `"model"`
 
+- `first_id: string`
+
+  First ID in the `data` list. Can be used as the `before_id` for the previous page.
+
+- `has_more: boolean`
+
+  Indicates if there are more results in the requested page direction.
+
+- `last_id: string`
+
+  Last ID in the `data` list. Can be used as the `after_id` for the next page.
+
 ### Example
 
-```typescript
-import Anthropic from '@anthropic-ai/sdk';
-
-const client = new Anthropic({
-  apiKey: process.env['ANTHROPIC_API_KEY'], // This is the default and can be omitted
-});
-
-// Automatically fetches more pages as needed.
-for await (const modelInfo of client.models.list()) {
-  console.log(modelInfo.id);
-}
+```http
+curl https://api.anthropic.com/v1/models \
+    -H 'anthropic-version: 2023-06-01' \
+    -H "X-Api-Key: $ANTHROPIC_API_KEY"
 ```
 
 ## Retrieve
-
-`client.models.retrieve(stringmodelID, ModelRetrieveParamsparams?, RequestOptionsoptions?): ModelInfo`
 
 **get** `/v1/models/{model_id}`
 
@@ -125,63 +152,63 @@ Get a specific model.
 
 The Models API response can be used to determine information about a specific model or resolve a model alias to a model ID.
 
-### Parameters
+### Path Parameters
 
-- `modelID: string`
+- `model_id: string`
 
   Model identifier or alias.
 
-- `params: ModelRetrieveParams`
+### Header Parameters
 
-  - `betas?: Array<AnthropicBeta>`
+- `"anthropic-beta": optional array of AnthropicBeta`
 
-    Optional header to specify the beta version(s) you want to use.
+  Optional header to specify the beta version(s) you want to use.
 
-    - `(string & {})`
+  - `UnionMember0 = string`
 
-    - `"message-batches-2024-09-24" | "prompt-caching-2024-07-31" | "computer-use-2024-10-22" | 16 more`
+  - `UnionMember1 = "message-batches-2024-09-24" or "prompt-caching-2024-07-31" or "computer-use-2024-10-22" or 16 more`
 
-      - `"message-batches-2024-09-24"`
+    - `"message-batches-2024-09-24"`
 
-      - `"prompt-caching-2024-07-31"`
+    - `"prompt-caching-2024-07-31"`
 
-      - `"computer-use-2024-10-22"`
+    - `"computer-use-2024-10-22"`
 
-      - `"computer-use-2025-01-24"`
+    - `"computer-use-2025-01-24"`
 
-      - `"pdfs-2024-09-25"`
+    - `"pdfs-2024-09-25"`
 
-      - `"token-counting-2024-11-01"`
+    - `"token-counting-2024-11-01"`
 
-      - `"token-efficient-tools-2025-02-19"`
+    - `"token-efficient-tools-2025-02-19"`
 
-      - `"output-128k-2025-02-19"`
+    - `"output-128k-2025-02-19"`
 
-      - `"files-api-2025-04-14"`
+    - `"files-api-2025-04-14"`
 
-      - `"mcp-client-2025-04-04"`
+    - `"mcp-client-2025-04-04"`
 
-      - `"mcp-client-2025-11-20"`
+    - `"mcp-client-2025-11-20"`
 
-      - `"dev-full-thinking-2025-05-14"`
+    - `"dev-full-thinking-2025-05-14"`
 
-      - `"interleaved-thinking-2025-05-14"`
+    - `"interleaved-thinking-2025-05-14"`
 
-      - `"code-execution-2025-05-22"`
+    - `"code-execution-2025-05-22"`
 
-      - `"extended-cache-ttl-2025-04-11"`
+    - `"extended-cache-ttl-2025-04-11"`
 
-      - `"context-1m-2025-08-07"`
+    - `"context-1m-2025-08-07"`
 
-      - `"context-management-2025-06-27"`
+    - `"context-management-2025-06-27"`
 
-      - `"model-context-window-exceeded-2025-08-26"`
+    - `"model-context-window-exceeded-2025-08-26"`
 
-      - `"skills-2025-10-02"`
+    - `"skills-2025-10-02"`
 
 ### Returns
 
-- `ModelInfo`
+- `ModelInfo = object { id, created_at, display_name, type }`
 
   - `id: string`
 
@@ -205,23 +232,17 @@ The Models API response can be used to determine information about a specific mo
 
 ### Example
 
-```typescript
-import Anthropic from '@anthropic-ai/sdk';
-
-const client = new Anthropic({
-  apiKey: process.env['ANTHROPIC_API_KEY'], // This is the default and can be omitted
-});
-
-const modelInfo = await client.models.retrieve('model_id');
-
-console.log(modelInfo.id);
+```http
+curl https://api.anthropic.com/v1/models/$MODEL_ID \
+    -H 'anthropic-version: 2023-06-01' \
+    -H "X-Api-Key: $ANTHROPIC_API_KEY"
 ```
 
 ## Domain Types
 
 ### Model Info
 
-- `ModelInfo`
+- `ModelInfo = object { id, created_at, display_name, type }`
 
   - `id: string`
 

@@ -4,7 +4,6 @@
 title: vSphere Integration Billing
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Account Management > Billing > vSphere Integration Billing
-source_url: https://docs.datadoghq.com/billing/vsphere/index.html
 ---
 
 # vSphere Integration Billing

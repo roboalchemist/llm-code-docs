@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/examples/exa-recruiting-agent.md
+# Source: https://exa.ai/docs/examples/exa-recruiting-agent.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Recruiting Agent
 
@@ -326,8 +330,3 @@ Alrighty, that's it! We've just built an automated way of finding, researching, 
 And the best part is that every time you use Exa to find new candidates, you can do more `find_similar(new_candidate_homepage)` searches with the new candidates as well -- helping you build an infinite list!
 
 Hope this tutorial was helpful and don't forget, you can get started with [Exa for free](https://dashboard.exa.ai/overview) :)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

@@ -2,6 +2,10 @@
 
 # Source: https://docs.runpod.io/pods/manage-pods.md
 
+# Source: https://docs.runpod.io/sdks/graphql/manage-pods.md
+
+# Source: https://docs.runpod.io/pods/manage-pods.md
+
 > ## Documentation Index
 >
 > Fetch the complete documentation index at: https://docs.runpod.io/llms.txt

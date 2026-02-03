@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/cli/permissions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tool Permissions
 
 > Control what tools Auggie CLI can execute with granular permission settings for security and compliance. Tool permissions configured will only work inside the CLI and not in the Augment code extension.
@@ -45,19 +49,7 @@ Tool Request → Check Rules → Apply Permission → Execute/Deny → Log Decis
 
 ## Configuration Files
 
-Tool permissions are configured through `settings.json` files with clear precedence:
-
-### File Locations
-
-1. **User settings**: `~/.augment/settings.json`
-   * Personal preferences that apply to all your projects
-   * Ideal for your default security stance
-
-2. **Project settings**: `<workspace>/.augment/settings.json`
-   * Repository-specific rules shared with your team
-   * Perfect for project-specific security requirements
-
-<Note>Settings are merged with later files taking precedence. Project settings override user settings.</Note>
+Tool permissions are configured through the `settings.json` located in `~/.augment/settings.json` as personal settings that apply to all your projects.
 
 ## Basic Configuration
 
@@ -73,7 +65,7 @@ Rules define permissions for specific tools. Each rule can specify:
 
 ```json  theme={null}
 {
-  "tool-permissions": [
+  "toolPermissions": [
     { "toolName": "launch-process", "permission": { "type": "deny" } },
     { "toolName": "view", "permission": { "type": "allow" } }
   ]
@@ -86,7 +78,7 @@ Create an explicit allow list by only allowing specific tools:
 
 ```json  theme={null}
 {
-  "tool-permissions": [
+  "toolPermissions": [
     { "toolName": "view", "permission": { "type": "allow" } },
     { "toolName": "codebase-retrieval", "permission": { "type": "allow" } },
     { "toolName": "grep-search", "permission": { "type": "allow" } },
@@ -103,7 +95,7 @@ Create a block list by explicitly denying specific dangerous tools:
 
 ```json  theme={null}
 {
-  "tool-permissions": [
+  "toolPermissions": [
     { "toolName": "remove-files", "permission": { "type": "deny" } },
     { "toolName": "kill-process", "permission": { "type": "deny" } },
     { "toolName": "launch-process", "shellInputRegex": "^(rm|sudo|shutdown|reboot)", "permission": { "type": "deny" } }
@@ -119,7 +111,7 @@ Combine allow, deny, and ask-user rules for fine-grained control:
 
 ```json  theme={null}
 {
-  "tool-permissions": [
+  "toolPermissions": [
     { "toolName": "view", "permission": { "type": "allow" } },
     { "toolName": "codebase-retrieval", "permission": { "type": "allow" } },
     { "toolName": "grep-search", "permission": { "type": "allow" } },
@@ -188,7 +180,7 @@ Control which shell commands can be executed using regex patterns:
 
 ```json  theme={null}
 {
-  "tool-permissions": [
+  "toolPermissions": [
     { "toolName": "launch-process", "shellInputRegex": "^(ls|pwd|echo|cat|grep)\\s", "permission": { "type": "allow" } },
     { "toolName": "launch-process", "permission": { "type": "deny" } }
   ]
@@ -207,7 +199,7 @@ Control when permission checks occur:
 
 ```json  theme={null}
 {
-  "tool-permissions": [
+  "toolPermissions": [
     { "toolName": "github-api", "eventType": "tool-response", "permission": { "type": "allow" } }
   ]
 }
@@ -251,7 +243,7 @@ Allow only read operations, perfect for code review and analysis:
 
 ```json  theme={null}
 {
-  "tool-permissions": [
+  "toolPermissions": [
     { "toolName": "view", "permission": { "type": "allow" } },
     { "toolName": "codebase-retrieval", "permission": { "type": "allow" } },
     { "toolName": "grep-search", "permission": { "type": "allow" } },
@@ -271,7 +263,7 @@ Add safety guards for potentially dangerous operations:
 
 ```json  theme={null}
 {
-  "tool-permissions": [
+  "toolPermissions": [
     { "toolName": "remove-files", "permission": { "type": "ask-user" } },
     {
       "toolName": "launch-process",
@@ -288,7 +280,7 @@ Restrictive settings for automated workflows:
 
 ```json  theme={null}
 {
-  "tool-permissions": [
+  "toolPermissions": [
     { "toolName": "view", "permission": { "type": "allow" } },
     { "toolName": "str-replace-editor", "permission": { "type": "allow" } },
     { "toolName": "save-file", "permission": { "type": "allow" } },
@@ -311,24 +303,51 @@ Use external services to validate tool requests:
 
 ```json  theme={null}
 {
-  "tool-permissions": [
+  "toolPermissions": [
     { "toolName": "github-api", "permission": { "type": "webhook-policy", "webhookUrl": "https://api.company.com/validate-tool" } }
   ]
 }
 ```
 
-The webhook receives:
+The webhook receives a POST request with the following JSON payload:
 
 ```json  theme={null}
 {
-  "toolName": "github-api",
-  "eventType": "tool-call",
-  "details": { /* tool-specific data */ },
+  "tool-name": "github-api",
+  "event-type": "tool-call",
+  "details": { /* tool-specific data, see below */ },
   "timestamp": "2025-01-01T02:41:40.580Z"
 }
 ```
 
-Expected response:
+**Payload fields:**
+
+* **`tool-name`**: The name of the tool being invoked
+* **`event-type`**: Either `"tool-call"` (before execution) or `"tool-response"` (after execution)
+* **`details`**: Tool-specific data (for `tool-call`) or response data (for `tool-response`)
+* **`timestamp`**: ISO 8601 timestamp of the request
+
+**Details for `tool-call` event type** (varies by tool):
+
+| Tool                 | Details Fields    |
+| :------------------- | :---------------- |
+| `launch-process`     | `cwd`, `command`  |
+| `view`               | `path`            |
+| `str-replace-editor` | `path`, `command` |
+| `save-file`          | `path`            |
+| `remove-files`       | `file_paths`      |
+| `web-fetch`          | `url`             |
+
+**Details for `tool-response` event type:**
+
+```json  theme={null}
+{
+  "text": "Tool output text",
+  "isError": false
+}
+```
+
+**Expected response:**
 
 ```json  theme={null}
 {
@@ -343,20 +362,59 @@ Use local scripts for complex validation logic:
 
 ```json  theme={null}
 {
-  "tool-permissions": [
+  "toolPermissions": [
     { "toolName": "launch-process", "permission": { "type": "script-policy", "script": "/path/to/validate-command.sh" } }
   ]
 }
 ```
 
+The script receives the same JSON payload as webhooks via **stdin**:
+
+```json  theme={null}
+{
+  "tool-name": "launch-process",
+  "event-type": "tool-call",
+  "details": {
+    "cwd": "/path/to/workspace",
+    "command": "npm install express"
+  },
+  "timestamp": "2025-01-01T02:41:40.580Z"
+}
+```
+
+**Script behavior:**
+
+* **Exit code 0**: Allow the tool execution
+* **Non-zero exit code**: Deny the tool execution
+* **stdout/stderr**: Optional message included in the agent response
+
+**Example script:**
+
+```bash  theme={null}
+#!/bin/bash
+# Read JSON payload from stdin
+payload=$(cat)
+
+# Extract command using jq
+command=$(echo "$payload" | jq -r '.details.command // empty')
+
+# Deny dangerous commands
+if [[ "$command" == *"rm -rf"* ]] || [[ "$command" == *"sudo"* ]]; then
+  echo "Dangerous command blocked: $command"
+  exit 1
+fi
+
+# Allow all other commands
+exit 0
+```
+
 ## Best Practices
 
 1. **Be Explicit**: Define clear rules for all tools you want to control
-2. **Layer Settings**: Use user settings for defaults, project settings for team rules
-3. **Test Configurations**: Verify permissions work as expected before automation
-4. **Log Decisions**: Monitor which tools are being allowed/denied for audit trails
-5. **Regular Reviews**: Periodically review and update permission rules
-6. **Order Matters**: Remember that rules are evaluated top-down, first match wins
+2. **Test Configurations**: Verify permissions work as expected before automation
+3. **Log Decisions**: Monitor which tools are being allowed/denied for audit trails
+4. **Regular Reviews**: Periodically review and update permission rules
+5. **Order Matters**: Remember that rules are evaluated top-down, first match wins
 
 ## Troubleshooting
 

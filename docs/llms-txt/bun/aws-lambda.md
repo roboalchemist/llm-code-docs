@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/deployment/aws-lambda.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deploy a Bun application on AWS Lambda
 
 [AWS Lambda](https://aws.amazon.com/lambda/) is a serverless compute service that lets you run code without provisioning or managing servers.

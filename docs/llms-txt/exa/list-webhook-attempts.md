@@ -1,170 +1,134 @@
-# Source: https://docs.exa.ai/websets/api/webhooks/attempts/list-webhook-attempts.md
+# Source: https://exa.ai/docs/websets/api/webhooks/attempts/list-webhook-attempts.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # List webhook attempts
 
 > List all attempts made by a Webhook ordered in descending order.
 
+
+
 ## OpenAPI
 
 ````yaml get /v0/webhooks/{id}/attempts
+openapi: 3.1.0
+info:
+  title: Websets
+  description: ''
+  version: '0'
+  contact: {}
+servers:
+  - url: https://api.exa.ai/websets/
+    description: Production
+security: []
+tags: []
 paths:
-  path: /v0/webhooks/{id}/attempts
-  method: get
-  servers:
-    - url: https://api.exa.ai/websets/
-      description: Production
-  request:
-    security:
-      - title: api key
-        parameters:
-          query: {}
-          header:
-            x-api-key:
-              type: apiKey
-              description: Your Exa API key
-          cookie: {}
-    parameters:
-      path:
-        id:
+  /v0/webhooks/{id}/attempts:
+    get:
+      tags:
+        - Webhooks Attempts
+      summary: List webhook attempts
+      description: List all attempts made by a Webhook ordered in descending order.
+      operationId: webhooks-attempts-list
+      parameters:
+        - name: id
+          required: true
+          in: path
+          description: The ID of the webhook
           schema:
-            - type: string
+            type: string
+        - name: cursor
+          required: false
+          in: query
+          description: The cursor to paginate through the results
+          schema:
+            minLength: 1
+            type: string
+        - name: limit
+          required: false
+          in: query
+          description: The number of results to return
+          schema:
+            minimum: 1
+            maximum: 200
+            default: 25
+            type: number
+        - name: eventType
+          required: false
+          in: query
+          description: The type of event to filter by
+          schema:
+            type: string
+            enum:
+              - webset.created
+              - webset.deleted
+              - webset.paused
+              - webset.idle
+              - webset.search.created
+              - webset.search.canceled
+              - webset.search.completed
+              - webset.search.updated
+              - import.created
+              - import.completed
+              - webset.item.created
+              - webset.item.enriched
+              - monitor.created
+              - monitor.updated
+              - monitor.deleted
+              - monitor.run.created
+              - monitor.run.completed
+              - webset.export.created
+              - webset.export.completed
+        - name: successful
+          required: false
+          in: query
+          description: Filter attempts by their success status
+          schema:
+            type: boolean
+      responses:
+        '200':
+          description: List of webhook attempts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListWebhookAttemptsResponse'
+          headers:
+            X-Request-Id:
+              schema:
+                type: string
+              description: Unique identifier for the request.
+              example: req_N6SsgoiaOQOPqsYKKiw5
               required: true
-              description: The ID of the webhook
-      query:
-        cursor:
-          schema:
-            - type: string
-              required: false
-              description: The cursor to paginate through the results
-              minLength: 1
-        limit:
-          schema:
-            - type: number
-              required: false
-              description: The number of results to return
-              maximum: 200
-              minimum: 1
-              default: 25
-        eventType:
-          schema:
-            - type: enum<string>
-              enum:
-                - webset.created
-                - webset.deleted
-                - webset.paused
-                - webset.idle
-                - webset.search.created
-                - webset.search.canceled
-                - webset.search.completed
-                - webset.search.updated
-                - import.created
-                - import.completed
-                - webset.item.created
-                - webset.item.enriched
-                - monitor.created
-                - monitor.updated
-                - monitor.deleted
-                - monitor.run.created
-                - monitor.run.completed
-                - webset.export.created
-                - webset.export.completed
-              required: false
-              description: The type of event to filter by
-        successful:
-          schema:
-            - type: boolean
-              required: false
-              description: Filter attempts by their success status
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: JavaScript
-        lang: javascript
-        source: >-
-          // npm install exa-js
-
-          import Exa from 'exa-js';
-
-          const exa = new Exa('YOUR_EXA_API_KEY');
-
-
-          const attempts = await exa.websets.webhooks.listAttempts('webhook_id',
-          {
-            limit: 20
-          });
-
-
-          console.log(`Found ${attempts.data.length} webhook attempts`);
-
-          attempts.data.forEach(attempt => {
-            console.log(`- ${attempt.id}: ${attempt.status}`);
-          });
-      - label: Python
-        lang: python
-        source: |-
-          # pip install exa-py
-          from exa_py import Exa
-          exa = Exa('YOUR_EXA_API_KEY')
-
-          attempts = exa.websets.webhooks.attempts.list('webhook_id')
-
-          print(f'Found {len(attempts.data)} webhook attempts')
-          for attempt in attempts.data:
-              print(f'- {attempt.id}: {attempt.status}')
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type:
-                      - array
-                    items:
-                      type:
-                        - object
-                      $ref: '#/components/schemas/WebhookAttempt'
-                    description: The list of webhook attempts
-              hasMore:
-                allOf:
-                  - type:
-                      - boolean
-                    description: Whether there are more results to paginate through
-              nextCursor:
-                allOf:
-                  - type: string
-                    description: The cursor to paginate through the next set of results
-                    nullable: true
-            refIdentifier: '#/components/schemas/ListWebhookAttemptsResponse'
-            requiredProperties:
-              - data
-              - hasMore
-              - nextCursor
-        examples:
-          example:
-            value:
-              data:
-                - id: <string>
-                  object: webhook_attempt
-                  eventId: <string>
-                  eventType: webset.created
-                  webhookId: <string>
-                  url: <string>
-                  successful: true
-                  responseHeaders: {}
-                  responseBody: <string>
-                  responseStatusCode: 123
-                  attempt: 123
-                  attemptedAt: '2023-11-07T05:31:56Z'
-              hasMore: true
-              nextCursor: <string>
-        description: List of webhook attempts
-  deprecated: false
-  type: path
+      security:
+        - api_key: []
 components:
   schemas:
+    ListWebhookAttemptsResponse:
+      type:
+        - object
+      properties:
+        data:
+          type:
+            - array
+          items:
+            $ref: '#/components/schemas/WebhookAttempt'
+            type:
+              - object
+          description: The list of webhook attempts
+        hasMore:
+          type:
+            - boolean
+          description: Whether there are more results to paginate through
+        nextCursor:
+          type: string
+          description: The cursor to paginate through the next set of results
+          nullable: true
+      required:
+        - data
+        - hasMore
+        - nextCursor
     WebhookAttempt:
       type:
         - object
@@ -254,9 +218,11 @@ components:
         - responseStatusCode
         - attempt
         - attemptedAt
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Your Exa API key
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

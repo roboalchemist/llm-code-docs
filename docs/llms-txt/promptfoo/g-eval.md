@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/configuration/expected-outputs/model-graded/g-eval/
+
 # G-Eval
 
 G-Eval is a framework that uses LLMs with chain-of-thoughts (CoT) to evaluate LLM outputs based on custom criteria. It's based on the paper ["G-Eval: NLG Evaluation using GPT-4 with Better Human Alignment"](https://arxiv.org/abs/2303.16634).

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/guides/gpt-4.1-vs-gpt-4o-mmlu/
+
 # GPT-4.1 vs GPT-4o: MMLU Benchmark Comparison
 
 OpenAI's [GPT-4.1](https://openai.com/index/introducing-gpt-4-1-in-the-api/) scores **90.2% on MMLU** vs GPT-4o's 85.7% - a **4.5 point improvement** on academic reasoning.

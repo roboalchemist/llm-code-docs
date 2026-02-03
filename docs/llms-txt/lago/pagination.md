@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/api-reference/pagination.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Pagination
 
 Many API endpoints that return lists of resources support pagination, enabling you to manage large result sets efficiently. You can control which results are returned by specifying the `page` and `per_page` query parameters.

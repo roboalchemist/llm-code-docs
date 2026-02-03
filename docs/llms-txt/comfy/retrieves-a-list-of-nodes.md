@@ -1,226 +1,151 @@
 # Source: https://docs.comfy.org/api-reference/registry/retrieves-a-list-of-nodes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Retrieves a list of nodes
 
 > Returns a paginated list of nodes across all publishers.
 
+
+
 ## OpenAPI
 
 ````yaml https://api.comfy.org/openapi get /nodes
+openapi: 3.0.2
+info:
+  title: Comfy API
+  version: '1.0'
+servers:
+  - url: https://api.comfy.org
+security: []
 paths:
-  path: /nodes
-  method: get
-  servers:
-    - url: https://api.comfy.org
-  request:
-    security: []
-    parameters:
-      path: {}
-      query:
-        page:
+  /nodes:
+    get:
+      tags:
+        - Registry
+      summary: Retrieves a list of nodes
+      description: Returns a paginated list of nodes across all publishers.
+      operationId: ListAllNodes
+      parameters:
+        - description: Page number of the nodes list
+          in: query
+          name: page
           schema:
-            - type: integer
-              description: Page number of the nodes list
-              default: 1
-        limit:
+            default: 1
+            type: integer
+        - description: Number of nodes to return per page
+          in: query
+          name: limit
           schema:
-            - type: integer
-              description: Number of nodes to return per page
-              default: 10
-        supported_os:
+            default: 10
+            type: integer
+        - description: Filter nodes by supported operating systems
+          examples:
+            linux:
+              value: 'POSIX :: Linux'
+            macos:
+              value: MacOS
+            macosx:
+              value: 'MacOS :: MacOS X'
+            osIndependent:
+              value: OS Independent
+            ubuntu:
+              value: 'POSIX :: Linux :: Ubuntu'
+            windows:
+              value: 'Microsoft :: Windows'
+            windows10:
+              value: 'Microsoft :: Windows :: Windows 10'
+          in: query
+          name: supported_os
           schema:
-            - type: string
-              description: Filter nodes by supported operating systems
-        supported_accelerator:
+            type: string
+        - description: Filter nodes by supported accelerator
+          in: query
+          name: supported_accelerator
           schema:
-            - type: string
-              description: Filter nodes by supported accelerator
-        include_banned:
+            type: string
+        - description: Number of nodes to return per page
+          in: query
+          name: include_banned
           schema:
-            - type: boolean
-              description: Number of nodes to return per page
-        timestamp:
+            type: boolean
+        - description: >-
+            Retrieve nodes created or updated after this timestamp (ISO 8601
+            format)
+          in: query
+          name: timestamp
           schema:
-            - type: string
-              description: >-
-                Retrieve nodes created or updated after this timestamp (ISO 8601
-                format)
-              format: date-time
-        latest:
+            format: date-time
+            type: string
+        - description: >-
+            Whether to fetch fresh result from database or use cached one if
+            false
+          in: query
+          name: latest
           schema:
-            - type: boolean
-              description: >-
-                Whether to fetch fresh result from database or use cached one if
-                false
-        sort:
+            type: boolean
+        - description: >-
+            Database column to use as ascending ordering. Add `;desc` as suffix
+            on each column for descending sort
+          in: query
+          name: sort
           schema:
-            - type: array
-              items:
-                allOf:
-                  - type: string
-              description: >-
-                Database column to use as ascending ordering. Add `;desc` as
-                suffix on each column for descending sort
-        node_id:
+            items:
+              type: string
+            type: array
+        - description: node_id to use as filter
+          in: query
+          name: node_id
           schema:
-            - type: array
-              items:
-                allOf:
-                  - type: string
-              description: node_id to use as filter
-        comfyui_version:
+            items:
+              type: string
+            type: array
+        - description: Comfy UI version
+          in: query
+          name: comfyui_version
           schema:
-            - type: string
-              description: Comfy UI version
-        form_factor:
+            type: string
+        - description: The platform requesting the nodes
+          in: query
+          name: form_factor
           schema:
-            - type: string
-              description: The platform requesting the nodes
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              limit:
-                allOf:
-                  - description: Maximum number of nodes per page
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  limit:
+                    description: Maximum number of nodes per page
                     type: integer
-              nodes:
-                allOf:
-                  - items:
+                  nodes:
+                    items:
                       $ref: '#/components/schemas/Node'
                     type: array
-              page:
-                allOf:
-                  - description: Current page number
+                  page:
+                    description: Current page number
                     type: integer
-              total:
-                allOf:
-                  - description: Total number of nodes available
+                  total:
+                    description: Total number of nodes available
                     type: integer
-              totalPages:
-                allOf:
-                  - description: Total number of pages available
+                  totalPages:
+                    description: Total number of pages available
                     type: integer
-        examples:
-          example:
-            value:
-              limit: 123
-              nodes:
-                - author: <string>
-                  banner_url: <string>
-                  category: <string>
-                  created_at: '2023-11-07T05:31:56Z'
-                  description: <string>
-                  downloads: 123
-                  github_stars: 123
-                  icon: <string>
-                  id: <string>
-                  latest_version:
-                    changelog: <string>
-                    comfy_node_extract_status: <string>
-                    createdAt: '2023-11-07T05:31:56Z'
-                    dependencies:
-                      - <string>
-                    deprecated: true
-                    downloadUrl: <string>
-                    id: <string>
-                    node_id: <string>
-                    status: NodeVersionStatusActive
-                    status_reason: <string>
-                    supported_accelerators:
-                      - <string>
-                    supported_comfyui_frontend_version: <string>
-                    supported_comfyui_version: <string>
-                    supported_os:
-                      - <string>
-                    tags:
-                      - <string>
-                    tags_admin:
-                      - <string>
-                    version: <string>
-                  license: <string>
-                  name: <string>
-                  preempted_comfy_node_names:
-                    - <string>
-                  publisher:
-                    createdAt: '2023-11-07T05:31:56Z'
-                    description: <string>
-                    id: <string>
-                    logo: <string>
-                    members:
-                      - id: <string>
-                        role: <string>
-                        user:
-                          email: <string>
-                          id: <string>
-                          name: <string>
-                    name: <string>
-                    source_code_repo: <string>
-                    status: PublisherStatusActive
-                    support: <string>
-                    website: <string>
-                  rating: 123
-                  repository: <string>
-                  search_ranking: 123
-                  status: NodeStatusActive
-                  status_detail: <string>
-                  supported_accelerators:
-                    - <string>
-                  supported_comfyui_frontend_version: <string>
-                  supported_comfyui_version: <string>
-                  supported_os:
-                    - <string>
-                  tags:
-                    - <string>
-                  tags_admin:
-                    - <string>
-                  translations: {}
-              page: 123
-              total: 123
-              totalPages: 123
-        description: A paginated list of nodes
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Invalid input, object invalid
-        examples: {}
-        description: Invalid input, object invalid
-    '404':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Not found
-        examples: {}
-        description: Not found
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
-              message:
-                allOf:
-                  - type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties:
-              - error
-              - message
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Internal server error
-  deprecated: false
-  type: path
+                type: object
+          description: A paginated list of nodes
+        '400':
+          description: Invalid input, object invalid
+        '404':
+          description: Not found
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
 components:
   schemas:
     Node:
@@ -319,12 +244,16 @@ components:
           description: Translations of node metadata in different languages.
           type: object
       type: object
-    NodeStatus:
-      enum:
-        - NodeStatusActive
-        - NodeStatusDeleted
-        - NodeStatusBanned
-      type: string
+    ErrorResponse:
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+      required:
+        - error
+        - message
+      type: object
     NodeVersion:
       properties:
         changelog:
@@ -390,14 +319,6 @@ components:
             unique for the node.
           type: string
       type: object
-    NodeVersionStatus:
-      enum:
-        - NodeVersionStatusActive
-        - NodeVersionStatusDeleted
-        - NodeVersionStatusBanned
-        - NodeVersionStatusPending
-        - NodeVersionStatusFlagged
-      type: string
     Publisher:
       properties:
         createdAt:
@@ -430,6 +351,20 @@ components:
         website:
           type: string
       type: object
+    NodeStatus:
+      enum:
+        - NodeStatusActive
+        - NodeStatusDeleted
+        - NodeStatusBanned
+      type: string
+    NodeVersionStatus:
+      enum:
+        - NodeVersionStatusActive
+        - NodeVersionStatusDeleted
+        - NodeVersionStatusBanned
+        - NodeVersionStatusPending
+        - NodeVersionStatusFlagged
+      type: string
     PublisherMember:
       properties:
         id:

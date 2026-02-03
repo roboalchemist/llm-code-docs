@@ -134,7 +134,7 @@ package.json
      "test": "jest"
    },
    "codegenConfig": {
-     "name": "AppSpecs",
+     "name": "NativeLocalStorageSpec",
      "type": "modules",
      "jsSrcsDir": "specs",
      "android": {

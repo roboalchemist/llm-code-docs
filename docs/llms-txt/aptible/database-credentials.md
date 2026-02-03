@@ -1,12 +1,18 @@
 # Source: https://www.aptible.com/docs/core-concepts/managed-databases/connecting-databases/database-credentials.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Database Credentials
 
 # Overview
 
 When you provision a [Database](/core-concepts/managed-databases/overview) on Aptible, you'll be provided with a set of Database Credentials.
 
-<Warning> The password in Database Credentials should be protected for security. </Warning>
+<Warning>
+  The password in Database Credentials should be protected for security.
+</Warning>
 
 Database Credentials are presented as connection URLs. Many libraries can use those directly, but you can always break down the URL into components.  The structure is:
 
@@ -26,11 +32,13 @@ There are three ways to connect to a Database using Database Credentials:
 * **Database Endpoint:** [Database Endpoints](/core-concepts/managed-databases/connecting-databases/database-endpoints) allow users to expose Aptible Databases on the public internet. When another Database Endpoint is created, a separate set of Database Credentials is provided. Database Endpoints are useful if, for example, a third party needs to be granted access to the Aptible Database. This set of Database Credentials can be found in the Dashboard.
 * **Database Tunnels:** The `aptible db:tunnel` CLI command allows users to create a [Database Tunnel](/core-concepts/managed-databases/connecting-databases/database-tunnels), which provides a convenient, ad-hoc method for users to connect to Aptible Databases from a local workstation. Database Credentials are exposed in the terminal when you successfully tunnel and are only valid while the `db:tunnel` is up. Database Tunnels persist until the connection is closed or for a maximum of 24 hours.
 
-<Tip> The Database Credentials provides credentials for the `aptible` user, but you can also create your own users for database types that support multiple users such as PostgreSQL and MySQL. Refer to the database's own documentation for detailed instructions. If setting up a restricted user, review our [Setting Up Restriced User documentation](https://www.aptible.com/docs/core-concepts/managed-databases/connecting-databases/database-credentials#setting-up-a-restricted-user) for extra considerations.</Tip>
+<Tip>
+  The Database Credentials provides credentials for the `aptible` user, but you can also create your own users for database types that support multiple users, such as PostgreSQL and MySQL. Refer to the database's own documentation for detailed instructions. If setting up a restricted user, review our [Setting Up Restricted User documentation](https://www.aptible.com/docs/core-concepts/managed-databases/connecting-databases/database-credentials#setting-up-a-restricted-user) for extra considerations.
+</Tip>
 
 Note that certain [Supported Databases](/core-concepts/managed-databases/supported-databases/overview) provide multiple credentials. Refer to the respective Database documentation for more information.
 
-# Connnecting to Mulitple Databases within your App
+# Connecting to Multiple Databases within your App
 
 You can create multiple environment variables to store multiple database URLs, utilizing different variable names for each database. These can then be used in a database.yml file. The Aptible platform is agnostic as to how you store your DB configuration, as long as your are reading the added environment variables correctly.
 
@@ -48,16 +56,15 @@ The `aptible` user credentials can only be rotated by contacting [Aptible Suppor
 
 Aptible role management for the Environment is limited to what the Aptible user can do through the CLI or Dashboard; Database user management is separate.
 
-You can create other database users on the Database with CREATE USER . However, this can lead to exposing the Database so that it can be accessed by this individual without giving them access to the aptible database user’s credentials. Traditionally, you use aptible db:tunnel to access the Database locally but this command prints the tunnel URL with the aptible user credentials. This can lead to two main scenarios:
+You can create other database users on the Database with CREATE USER . However, this can lead to exposing the Database so that it can be accessed by this individual without giving them access to the aptible database user’s credentials. Traditionally, you use aptible db:tunnel to access the Database locally, but this command prints the tunnel URL with the aptible user credentials. This can lead to two main scenarios:
 
 ### If you don’t mind giving this individual access to the aptible credentials
 
-Then you can give them Manage access to the Database’s Environment so they can tunnel into the database, and use the read-only user and password to log in via the tunnel. This is relatively easy to implement and can help prevent accidental writes but doesn’t ensure that this individual doesn’t login as aptible . The user would also have to remember not to copy/paste the aptible user credentials printed every time they tunnel.
+Then you can give them Manage access to the Database’s Environment so they can tunnel into the database, and use the read-only user and password to log in via the tunnel. This is relatively easy to implement and can help prevent accidental writes but doesn’t ensure that this individual doesn’t login as aptible. The user would also have to remember not to copy/paste the aptible user credentials printed every time they tunnel.
 
 ### If this individual cannot have access to the aptible credentials
 
-Then this user cannot have Manage access to the Database which removes db:tunnel as an option.
+Then this user cannot have Manage access to the Database, which removes db:tunnel as an option.
 
-* If the user only needs CLI access, you can create an App with a tool like psql installed on a different Environment on the same Stack. The user can aptible ssh into the App and use psql to access the Database using the read-only credentials. The Aptible user would require Manage access to this second Environment, but would not need any access to the Database’s Environment for this to work.
-
+* If the user only needs CLI access, you can create an App with a tool like psql installed on a different Environment on the same Stack. The user can aptible SSH into the App and use psql to access the Database using the read-only credentials. The Aptible user would require Manage access to this second Environment, but would not need any access to the Database’s Environment for this to work.
 * If the user needs access from their private system, then you’ll have to create a Database Endpoint to expose the Database over the internet. We strongly recommend using [IP Filtering](https://www.aptible.com/docs/core-concepts/apps/connecting-to-apps/app-endpoints/ip-filtering#ip-filtering) to restrict access to the IP addresses or address ranges that they’ll be accessing the Database from so that the Database isn’t exposed to the entire internet for anyone to attempt to connect to.

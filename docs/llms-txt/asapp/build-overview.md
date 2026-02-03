@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/generativeagent/build-overview.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Building a GenerativeAgent
 
 > Learn how GenerativeAgent works and the key components you'll configure.
@@ -20,11 +24,11 @@ Unlike traditional bots with predefined flows, GenerativeAgent uses natural lang
   </Step>
 
   <Step title="Knowledge Base Retrieval">
-    GenerativeAgent searches it's local copy of your knowledge base for relevant information and adds it to the conversation context.
+    GenerativeAgent searches its local copy of your knowledge base for relevant information and adds it to the conversation context.
 
-    At every conversation turn, our Knowledge Base service will select the most relevant articles and add them to the conversation context.
+    At every conversation turn, our Knowledge Base service selects the most relevant articles and adds them to the conversation context.
 
-    We sync to your knowledge base at regular intervals, according to your configuration.
+    The system syncs to your knowledge base at regular intervals, according to your configuration.
   </Step>
 
   <Step title="Task Selection and Execution">
@@ -42,8 +46,8 @@ Unlike traditional bots with predefined flows, GenerativeAgent uses natural lang
 
 This process continues in a loop until either:
 
-* The **conversation is resolved** and GenerativeAgent hands control back to your system
-* GenerativeAgent can't help further and **escalates to a human agent**
+* **GenerativeAgent resolves the conversation** and hands control back to your system
+* GenerativeAgent cannot help further and **escalates to a human agent**
 
 ## Key Components You'll Configure
 

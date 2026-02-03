@@ -1,3 +1,5 @@
+# Source: https://docs.datadoghq.com/error_tracking/backend/exception_replay.md
+
 # Source: https://docs.datadoghq.com/tracing/error_tracking/exception_replay.md
 
 ---
@@ -6,7 +8,6 @@ description: Learn about Exception Replay in APM Error Tracking.
 breadcrumbs: >-
   Docs > APM > Error Tracking for Backend Services > Exception Replay in Error
   Tracking
-source_url: https://docs.datadoghq.com/error_tracking/exception_replay/index.html
 ---
 
 # Exception Replay in Error Tracking

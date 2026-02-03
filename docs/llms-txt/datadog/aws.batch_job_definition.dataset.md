@@ -4,8 +4,6 @@
 title: Batch Job Definition
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Batch Job Definition
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.batch_job_definition.dataset/index.html
 ---
 
 # Batch Job Definition
@@ -37,6 +35,6 @@ aws.batch_job_definition
 | revision                       | core | int64         | The revision of the job definition.                                                                                                                                                                                                                                                                                                                                                                                                                |
 | scheduling_priority            | core | int64         | The scheduling priority of the job definition. This only affects jobs in job queues with a fair-share policy. Jobs with a higher scheduling priority are scheduled before jobs with a lower scheduling priority.                                                                                                                                                                                                                                   |
 | status                         | core | string        | The status of the job definition.                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| tags                           | core | hstore        |
+| tags                           | core | hstore_csv    |
 | timeout                        | core | json          | The timeout time for jobs that are submitted with this job definition. After the amount of time you specify passes, Batch terminates your jobs if they aren't finished.                                                                                                                                                                                                                                                                            |
 | type                           | core | string        | The type of job definition. It's either container or multinode. If the job is run on Fargate resources, then multinode isn't supported. For more information about multi-node parallel jobs, see Creating a multi-node parallel job definition in the Batch User Guide.                                                                                                                                                                            |

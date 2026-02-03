@@ -1,54 +1,75 @@
-# Source: https://docs.exa.ai/reference/team-management/get-api-key.md
+# Source: https://exa.ai/docs/reference/team-management/get-api-key.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Get API Key
 
 > Retrieve details of a specific API key by its ID.
 
+<Card title="Get your Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys" />
+
+## Overview
+
+The Get API Key endpoint allows you to retrieve detailed information about a specific API key using its unique identifier.
+
+## Path Parameters
+
+* **id**: The unique identifier of the API key to retrieve
+
+## Response
+
+Returns detailed information about the API key including:
+
+* **id**: Unique identifier
+* **name**: Descriptive name
+* **rateLimit**: Rate limit in requests per minute (if set)
+* **teamId**: Team ID this key belongs to
+* **createdAt**: When the key was created
+
+
 ## OpenAPI
 
 ````yaml get /api-keys/{id}
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: Team Management API
+  description: >-
+    API for managing API keys within teams. Provides CRUD operations for
+    creating, listing, updating, and deleting API keys with team-based access
+    controls.
+servers:
+  - url: https://admin-api.exa.ai/team-management
+security:
+  - apikey: []
 paths:
-  path: /api-keys/{id}
-  method: get
-  servers:
-    - url: https://admin-api.exa.ai/team-management
-  request:
-    security:
-      - title: apikey
-        parameters:
-          query: {}
-          header:
-            x-api-key:
-              type: apiKey
-              description: Service API key for team authentication
-          cookie: {}
-    parameters:
-      path:
-        id:
+  /api-keys/{id}:
+    get:
+      tags:
+        - Team Management
+      summary: Get API Key
+      description: Retrieves details of a specific API key by its ID.
+      operationId: get-api-key
+      parameters:
+        - name: id
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: The unique identifier of the API key
-              format: uuid
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: Get a specific API key
-        lang: bash
-        source: |
-          curl -X GET 'https://admin-api.exa.ai/team-management/api-keys/{id}' \
-            -H 'x-api-key: YOUR-SERVICE-KEY'
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              apiKey:
-                allOf:
-                  - type: object
+            type: string
+            format: uuid
+          description: The unique identifier of the API key
+      responses:
+        '200':
+          description: API key retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  apiKey:
+                    type: object
                     properties:
                       id:
                         type: string
@@ -64,65 +85,44 @@ paths:
                       createdAt:
                         type: string
                         format: date-time
-        examples:
-          example:
-            value:
-              apiKey:
-                id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                name: <string>
-                rateLimit: 123
-                teamId: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                createdAt: '2023-11-07T05:31:56Z'
-        description: API key retrieved successfully
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
+        '400':
+          description: Bad request - invalid API key ID format
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
                     example: Invalid API key ID format. Must be a valid UUID.
-        examples:
-          example:
-            value:
-              error: Invalid API key ID format. Must be a valid UUID.
-        description: Bad request - invalid API key ID format
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
+        '401':
+          description: Unauthorized - Invalid or missing service key
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
                     example: Unauthorized
-        examples:
-          example:
-            value:
-              error: Unauthorized
-        description: Unauthorized - Invalid or missing service key
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
+        '404':
+          description: Not found - API key does not exist
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
                     example: API key not found
-        examples:
-          example:
-            value:
-              error: API key not found
-        description: Not found - API key does not exist
-  deprecated: false
-  type: path
+      security:
+        - apikey: []
 components:
-  schemas: {}
+  securitySchemes:
+    apikey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Service API key for team authentication
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

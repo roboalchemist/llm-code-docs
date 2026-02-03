@@ -4,7 +4,6 @@
 title: Windows Containers Issues
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Agent > Agent Troubleshooting > Windows Containers Issues
-source_url: https://docs.datadoghq.com/troubleshooting/windows_containers/index.html
 ---
 
 # Windows Containers Issues

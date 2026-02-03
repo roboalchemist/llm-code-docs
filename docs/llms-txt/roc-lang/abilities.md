@@ -1,3 +1,5 @@
+# Source: https://www.roc-lang.org/abilities#inspect-ability
+
 # Abilities | Roc
 
 # Encode.roc

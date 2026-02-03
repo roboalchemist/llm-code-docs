@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/guides/nextjs-vercel.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Next.js + Vercel
 
 This guide demonstrates how to use Infisical to manage secrets for your Next.js + Vercel stack from local development to production. It uses:
@@ -191,32 +195,7 @@ At this stage, you know how to use the Infisical CLI to inject secrets into your
 
 ## Infisical-Vercel integration for production environment variables
 
-We'll now use the Infisical-Vercel integration send secrets from Infisical to Vercel as production environment variables.
-
-### Infisical-Vercel integration
-
-To begin we have to import the Next.js app into Vercel as a project. [Follow these instructions](https://vercel.com/docs/frameworks/nextjs) to deploy the Next.js app to Vercel.
-
-Next, navigate to your project's integrations tab in Infisical and press on the Vercel tile to grant Infisical access to your Vercel account.
-
-<img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/integrations.png" alt="integrations" />
-
-<img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/integrations/vercel/integrations-vercel-auth.png" alt="integrations vercel authorization" />
-
-<Note>
-  Opting in for the Infisical-Vercel integration will break end-to-end encryption since Infisical will be able to read
-  your secrets. This is, however, necessary for Infisical to sync the secrets to Vercel.
-
-  Your secrets remain encrypted at rest following our [security guide mechanics](/internals/security).
-</Note>
-
-Now select **Production** for (the source) **Environment** and sync it to the **Production Environment** of the (target) application in Vercel.
-Lastly, press create integration to start syncing secrets to Vercel.
-
-<img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/integrations/vercel/integrations-vercel-create.png" alt="integrations vercel" />
-<img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/integrations/vercel/integrations-vercel.png" alt="integrations vercel" />
-
-You should now see your secret from Infisical appear as production environment variables in your Vercel project.
+Use our [Vercel Secret Syncs](../../integrations/secret-syncs/vercel) guide to sync secrets from Infisical to Vercel as production environment variables.
 
 At this stage, you know how to use the Infisical-Vercel integration to sync production secrets from Infisical to Vercel.
 
@@ -254,4 +233,4 @@ At this stage, you know how to use the Infisical-Vercel integration to sync prod
 See also:
 
 * [Documentation for the Infisical CLI](/cli/overview)
-* [Documentation for the Vercel integration](/integrations/cloud/vercel)
+* [Documentation for the Vercel Secret Sync](../../integrations/secret-syncs/vercel)

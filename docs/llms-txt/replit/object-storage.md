@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/cloud-services/storage-and-databases/object-storage.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # App Storage
 
 > App Storage is Replit's built-in file storage that lets your app easily host and save uploads like images, videos, and documents.

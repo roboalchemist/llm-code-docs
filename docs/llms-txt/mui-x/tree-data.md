@@ -2,10 +2,6 @@
 
 # Source: https://mui.com/x/react-data-grid/tree-data.md
 
-# Source: https://mui.com/x/react-data-grid/server-side-data/tree-data.md
-
-# Source: https://mui.com/x/react-data-grid/tree-data.md
-
 ---
 title: Data Grid - Tree data
 ---

@@ -4,7 +4,7 @@
 
 Charge customers based on their usage of your product or service.
 
-[Pay-as-you-go pricing](https://docs.stripe.com/products-prices/pricing-models.md#pay-as-you-go) is a flexible, scalable model that lets you charge customers in arrears for the usage they accrue. AI businesses, SaaS platforms, and cloud services often use this pricing model.
+[Pay-as-you-go pricing](https://docs.stripe.com/subscriptions/pricing-models/usage-based-pricing.md#pay-as-you-go) is a flexible, scalable model that lets you charge customers in arrears for the usage they accrue. AI businesses, SaaS platforms, and cloud services often use this pricing model.
 
 ## What you’ll build
 
@@ -430,6 +430,8 @@ Price price = service.Create(options);
 ```
 
 ## Create a customer
+
+If your Connect platform uses [customer-configured Accounts](https://docs.stripe.com/api/v2/core/accounts/create.md#v2_create_accounts-configuration-customer), use our [guide](https://docs.stripe.com/connect/use-accounts-as-customers.md) to replace `Customer` and event references in your code with the equivalent Accounts v2 API references.
 
 Next, create a *customer* (Customer objects represent customers of your business. They let you reuse payment methods and give you the ability to track multiple payments).
 

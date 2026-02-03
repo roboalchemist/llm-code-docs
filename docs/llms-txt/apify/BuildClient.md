@@ -2,19 +2,31 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/class/BuildClient.md
 
-# Source: https://docs.apify.com/api/client/python/reference/class/BuildClient.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/BuildClient.md
-
-# Source: https://docs.apify.com/api/client/python/reference/class/BuildClient.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/BuildClient.md
-
-# Source: https://docs.apify.com/api/client/python/reference/class/BuildClient.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/BuildClient.md
-
 # BuildClient<!-- -->
+
+Client for managing a specific Actor build.
+
+Builds are created when an Actor is built from source code. This client provides methods to get build details, wait for the build to finish, abort it, and access its logs.
+
+* **@example**
+
+  ```
+  const client = new ApifyClient({ token: 'my-token' });
+  const buildClient = client.build('my-build-id');
+
+  // Get build details
+  const build = await buildClient.get();
+
+  // Wait for the build to finish
+  const finishedBuild = await buildClient.waitForFinish();
+
+  // Access build logs
+  const log = await buildClient.log().get();
+  ```
+
+* **@see**
+
+  <https://docs.apify.com/platform/actors/running/runs-and-builds#builds>
 
 ### Hierarchy
 
@@ -46,25 +58,25 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#apifyClient)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L35)inheritedapifyClient
+### [**](#apifyClient)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L36)inheritedapifyClient
 
 **apifyClient: [ApifyClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/ApifyClient.md)
 
 Inherited from ResourceClient.apifyClient
 
-### [**](#baseUrl)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L27)inheritedbaseUrl
+### [**](#baseUrl)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L28)inheritedbaseUrl
 
 **baseUrl: string
 
 Inherited from ResourceClient.baseUrl
 
-### [**](#httpClient)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L37)inheritedhttpClient
+### [**](#httpClient)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L38)inheritedhttpClient
 
 **httpClient: HttpClient
 
 Inherited from ResourceClient.httpClient
 
-### [**](#id)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L23)optionalinheritedid
+### [**](#id)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L24)optionalinheritedid
 
 **id?
 
@@ -74,7 +86,7 @@ Inherited from ResourceClient.httpClient
 
 Inherited from ResourceClient.id
 
-### [**](#params)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L39)optionalinheritedparams
+### [**](#params)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L40)optionalinheritedparams
 
 **params?
 
@@ -84,19 +96,19 @@ Inherited from ResourceClient.id
 
 Inherited from ResourceClient.params
 
-### [**](#publicBaseUrl)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L29)inheritedpublicBaseUrl
+### [**](#publicBaseUrl)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L30)inheritedpublicBaseUrl
 
 **publicBaseUrl: string
 
 Inherited from ResourceClient.publicBaseUrl
 
-### [**](#resourcePath)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L31)inheritedresourcePath
+### [**](#resourcePath)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L32)inheritedresourcePath
 
 **resourcePath: string
 
 Inherited from ResourceClient.resourcePath
 
-### [**](#safeId)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L25)optionalinheritedsafeId
+### [**](#safeId)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L26)optionalinheritedsafeId
 
 **safeId?
 
@@ -106,7 +118,7 @@ Inherited from ResourceClient.resourcePath
 
 Inherited from ResourceClient.safeId
 
-### [**](#url)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L33)inheritedurl
+### [**](#url)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L34)inheritedurl
 
 **url: string
 
@@ -114,31 +126,64 @@ Inherited from ResourceClient.url
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#abort)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/build.ts#L39)abort
+### [**](#abort)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/build.ts#L87)abort
 
 * ****abort**(): Promise<[Build](https://docs.apify.com/api/client/js/api/client/js/reference/interface/Build.md)>
 
-- <https://docs.apify.com/api/v2#/reference/actor-builds/abort-build/abort-build>
+- Aborts the Actor build.
+
+  Stops the build process immediately. The build will have an `ABORTED` status.
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/actor-build-abort-post>
+
+  * **@example**
+
+    ```
+    await client.build('build-id').abort();
+    ```
 
   ***
 
   #### Returns Promise<[Build](https://docs.apify.com/api/client/js/api/client/js/reference/interface/Build.md)>
 
-### [**](#delete)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/build.ts#L52)delete
+  The updated Build object with `ABORTED` status
+
+### [**](#delete)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/build.ts#L102)delete
 
 * ****delete**(): Promise\<void>
 
-- <https://docs.apify.com/api/v2#/reference/actor-builds/delete-build/delete-build>
+- Deletes the Actor build.
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/actor-build-delete>
 
   ***
 
   #### Returns Promise\<void>
 
-### [**](#get)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/build.ts#L25)get
+### [**](#get)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/build.ts#L63)get
 
 * ****get**(options): Promise\<undefined | [Build](https://docs.apify.com/api/client/js/api/client/js/reference/interface/Build.md)>
 
-- <https://docs.apify.com/api/v2#/reference/actor-builds/build-object/get-build>
+- Gets the Actor build object from the Apify API.
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/actor-build-get>
+
+  * **@example**
+
+    ```
+    // Get build status immediately
+    const build = await client.build('build-id').get();
+    console.log(`Status: ${build.status}`);
+
+    // Wait up to 60 seconds for build to finish
+    const build = await client.build('build-id').get({ waitForFinish: 60 });
+    ```
 
   ***
 
@@ -146,37 +191,77 @@ Inherited from ResourceClient.url
 
   * ##### options: [BuildClientGetOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/BuildClientGetOptions.md) = <!-- -->{}
 
+    Get options
+
   #### Returns Promise\<undefined | [Build](https://docs.apify.com/api/client/js/api/client/js/reference/interface/Build.md)>
 
-### [**](#getOpenApiDefinition)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/build.ts#L59)getOpenApiDefinition
+  The Build object, or `undefined` if it does not exist
+
+### [**](#getOpenApiDefinition)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/build.ts#L112)getOpenApiDefinition
 
 * ****getOpenApiDefinition**(): Promise<[OpenApiDefinition](https://docs.apify.com/api/client/js/api/client/js/reference/interface/OpenApiDefinition.md)>
 
-- <https://docs.apify.com/api/v2/actor-build-openapi-json-get>
+- Retrieves the OpenAPI definition for the Actor build.
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/actor-build-openapi-json-get>
 
   ***
 
   #### Returns Promise<[OpenApiDefinition](https://docs.apify.com/api/client/js/api/client/js/reference/interface/OpenApiDefinition.md)>
 
-### [**](#log)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/build.ts#L94)log
+  The OpenAPI definition object.
+
+### [**](#log)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/build.ts#L176)log
 
 * ****log**(): [LogClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/LogClient.md)
 
-- <https://docs.apify.com/api/v2#/reference/actor-builds/build-log>
+- Returns a client for accessing the log of this Actor build.
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/actor-build-log-get>
+
+  * **@example**
+
+    ```
+    // Get build log
+    const log = await client.build('build-id').log().get();
+    console.log(log);
+    ```
 
   ***
 
   #### Returns [LogClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/LogClient.md)
 
-### [**](#waitForFinish)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/build.ts#L80)waitForFinish
+  A client for accessing the build's log
+
+### [**](#waitForFinish)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/build.ts#L152)waitForFinish
 
 * ****waitForFinish**(options): Promise<[Build](https://docs.apify.com/api/client/js/api/client/js/reference/interface/Build.md)>
 
-- Returns a promise that resolves with the finished Build object when the provided actor build finishes or with the unfinished Build object when the `waitSecs` timeout lapses. The promise is NOT rejected based on run status. You can inspect the `status` property of the Build object to find out its status.
+- Waits for the Actor build to finish and returns the finished Build object.
 
-  The difference between this function and the `waitForFinish` parameter of the `get` method is the fact that this function can wait indefinitely. Its use is preferable to the `waitForFinish` parameter alone, which it uses internally.
+  The promise resolves when the build reaches a terminal state (`SUCCEEDED`, `FAILED`, `ABORTED`, or `TIMED-OUT`). If `waitSecs` is provided and the timeout is reached, the promise resolves with the unfinished Build object (status will be `RUNNING` or `READY`). The promise is NOT rejected based on build status.
+
+  Unlike the `waitForFinish` parameter in get, this method can wait indefinitely by polling the build status. It uses the `waitForFinish` parameter internally (max 60s per call) and continuously polls until the build finishes or the timeout is reached.
 
   This is useful when you need to immediately start a run after a build finishes.
+
+  * **@example**
+
+    ```
+    // Wait indefinitely for build to finish
+    const build = await client.build('build-id').waitForFinish();
+    console.log(`Build finished with status: ${build.status}`);
+
+    // Start a run immediately after build succeeds
+    const build = await client.build('build-id').waitForFinish();
+    if (build.status === 'SUCCEEDED') {
+      const run = await client.actor('my-actor').start();
+    }
+    ```
 
   ***
 
@@ -184,4 +269,8 @@ Inherited from ResourceClient.url
 
   * ##### options: [BuildClientWaitForFinishOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/BuildClientWaitForFinishOptions.md) = <!-- -->{}
 
+    Wait options
+
   #### Returns Promise<[Build](https://docs.apify.com/api/client/js/api/client/js/reference/interface/Build.md)>
+
+  The Build object (finished or still building if timeout was reached)

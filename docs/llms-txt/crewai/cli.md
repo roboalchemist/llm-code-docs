@@ -1,10 +1,19 @@
 # Source: https://docs.crewai.com/en/concepts/cli.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # CLI
 
 > Learn how to use the CrewAI CLI to interact with CrewAI.
 
-<Warning>Since release 0.140.0, CrewAI AMP started a process of migrating their login provider. As such, the authentication flow via CLI was updated. Users that use Google to login, or that created their account after July 3rd, 2025 will be unable to log in with older versions of the `crewai` library.</Warning>
+<Warning>
+  Since release 0.140.0, CrewAI AMP started a process of migrating their login
+  provider. As such, the authentication flow via CLI was updated. Users that use
+  Google to login, or that created their account after July 3rd, 2025 will be
+  unable to log in with older versions of the `crewai` library.
+</Warning>
 
 ## Overview
 
@@ -153,12 +162,16 @@ crewai run
 ```
 
 <Note>
-  Starting from version 0.103.0, the `crewai run` command can be used to run both standard crews and flows. For flows, it automatically detects the type from pyproject.toml and runs the appropriate command. This is now the recommended way to run both crews and flows.
+  Starting from version 0.103.0, the `crewai run` command can be used to run
+  both standard crews and flows. For flows, it automatically detects the type
+  from pyproject.toml and runs the appropriate command. This is now the
+  recommended way to run both crews and flows.
 </Note>
 
 <Note>
-  Make sure to run these commands from the directory where your CrewAI project is set up.
-  Some commands may require additional configuration or setup within your project structure.
+  Make sure to run these commands from the directory where your CrewAI project
+  is set up. Some commands may require additional configuration or setup within
+  your project structure.
 </Note>
 
 ### 9. Chat
@@ -197,6 +210,7 @@ Deploy the crew or flow to [CrewAI AMP](https://app.crewai.com).
 
 * **Authentication**: You need to be authenticated to deploy to CrewAI AMP.
   You can login or create an account with:
+
   ```shell Terminal theme={null}
   crewai login
   ```
@@ -237,41 +251,53 @@ crewai org switch <organization_id>
 ```
 
 <Note>
-  You must be authenticated to CrewAI AMP to use these organization management commands.
+  You must be authenticated to CrewAI AMP to use these organization management
+  commands.
 </Note>
 
 * **Create a deployment** (continued):
+
   * Links the deployment to the corresponding remote GitHub repository (it usually detects this automatically).
 
 * **Deploy the Crew**: Once you are authenticated, you can deploy your crew or flow to CrewAI AMP.
+
   ```shell Terminal theme={null}
   crewai deploy push
   ```
+
   * Initiates the deployment process on the CrewAI AMP platform.
   * Upon successful initiation, it will output the Deployment created successfully! message along with the Deployment Name and a unique Deployment ID (UUID).
 
 * **Deployment Status**: You can check the status of your deployment with:
+
   ```shell Terminal theme={null}
   crewai deploy status
   ```
+
   This fetches the latest deployment status of your most recent deployment attempt (e.g., `Building Images for Crew`, `Deploy Enqueued`, `Online`).
 
 * **Deployment Logs**: You can check the logs of your deployment with:
+
   ```shell Terminal theme={null}
   crewai deploy logs
   ```
+
   This streams the deployment logs to your terminal.
 
 * **List deployments**: You can list all your deployments with:
+
   ```shell Terminal theme={null}
   crewai deploy list
   ```
+
   This lists all your deployments.
 
 * **Delete a deployment**: You can delete a deployment with:
+
   ```shell Terminal theme={null}
   crewai deploy remove
   ```
+
   This deletes the deployment from the CrewAI AMP platform.
 
 * **Help Command**: You can get help with the CLI with:
@@ -449,19 +475,23 @@ crewai traces status
 Trace collection is controlled by checking three settings in priority order:
 
 1. **Explicit flag in code** (highest priority - can enable OR disable):
+
    ```python  theme={null}
    crew = Crew(agents=[...], tasks=[...], tracing=True)   # Always enable
    crew = Crew(agents=[...], tasks=[...], tracing=False)  # Always disable
    crew = Crew(agents=[...], tasks=[...])                 # Check lower priorities (default)
    ```
+
    * `tracing=True` will **always enable** tracing (overrides everything)
    * `tracing=False` will **always disable** tracing (overrides everything)
    * `tracing=None` or omitted will check lower priority settings
 
 2. **Environment variable** (second priority):
+
    ```env  theme={null}
    CREWAI_TRACING_ENABLED=true
    ```
+
    * Checked only if `tracing` is not explicitly set to `True` or `False` in code
    * Set to `true` or `1` to enable tracing
 
@@ -489,13 +519,20 @@ Trace collection is controlled by checking three settings in priority order:
 </Note>
 
 <Tip>
-  For more information about tracing, see the [Tracing documentation](/observability/tracing).
+  For more information about tracing, see the [Tracing
+  documentation](/observability/tracing).
 </Tip>
 
 <Tip>
-  CrewAI CLI handles authentication to the Tool Repository automatically when adding packages to your project. Just append `crewai` before any `uv` command to use it. E.g. `crewai uv add requests`. For more information, see [Tool Repository](https://docs.crewai.com/enterprise/features/tool-repository) docs.
+  CrewAI CLI handles authentication to the Tool Repository automatically when
+  adding packages to your project. Just append `crewai` before any `uv` command
+  to use it. E.g. `crewai uv add requests`. For more information, see [Tool
+  Repository](https://docs.crewai.com/enterprise/features/tool-repository) docs.
 </Tip>
 
 <Note>
-  Configuration settings are stored in `~/.config/crewai/settings.json`. Some settings like organization name and UUID are read-only and managed through authentication and organization commands. Tool repository related settings are hidden and cannot be set directly by users.
+  Configuration settings are stored in `~/.config/crewai/settings.json`. Some
+  settings like organization name and UUID are read-only and managed through
+  authentication and organization commands. Tool repository related settings are
+  hidden and cannot be set directly by users.
 </Note>

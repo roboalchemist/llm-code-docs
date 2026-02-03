@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/webhooks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Webhooks
 
 When using Lago, the app generates [several events](/api-reference/webhooks/messages) that you can listen to in order to trigger workflows. Each time an event is generated, you can view it in the Lago application using the webhook logs. This allows you to take a closer look at the generated events, detect possible errors, and retry them.

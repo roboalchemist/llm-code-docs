@@ -6,7 +6,6 @@ description: >-
   Complete list of operating systems and platforms supported by the Datadog
   Agent including Linux, Windows, macOS, and cloud environments.
 breadcrumbs: Docs > Agent > Supported Platforms
-source_url: https://docs.datadoghq.com/supported_platforms/index.html
 ---
 
 # Supported Platforms

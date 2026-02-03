@@ -1,107 +1,95 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/checks/get-a-single-check.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get a single check
 
 > Return a detailed response for a single check.
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v1/deployments/{deploymentId}/checks/{checkId}
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v1/deployments/{deploymentId}/checks/{checkId}
-  method: get
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path:
-        deploymentId:
+  /v1/deployments/{deploymentId}/checks/{checkId}:
+    get:
+      tags:
+        - checks
+      summary: Get a single check
+      description: Return a detailed response for a single check.
+      operationId: getCheck
+      parameters:
+        - name: deploymentId
+          description: The deployment to get the check for.
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: The deployment to get the check for.
-              example: dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6
-        checkId:
+            description: The deployment to get the check for.
+            example: dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6
+            type: string
+        - name: checkId
+          description: The check to fetch
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: The check to fetch
-              example: check_2qn7PZrx89yxY34vEZPD31Y9XVj6
-      query:
-        teamId:
+            description: The check to fetch
+            example: check_2qn7PZrx89yxY34vEZPD31Y9XVj6
+            type: string
+        - description: The Team identifier to perform the request on behalf of.
+          in: query
+          name: teamId
           schema:
-            - type: string
-              description: The Team identifier to perform the request on behalf of.
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-        slug:
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        - description: The Team slug to perform the request on behalf of.
+          in: query
+          name: slug
           schema:
-            - type: string
-              description: The Team slug to perform the request on behalf of.
-              example: my-team-url-slug
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: getCheck
-        lang: go
-        source: "package main\n\nimport(\n\t\"os\"\n\t\"github.com/vercel/vercel\"\n\t\"context\"\n\t\"log\"\n)\n\nfunc main() {\n    s := vercel.New(\n        vercel.WithSecurity(os.Getenv(\"VERCEL_BEARER_TOKEN\")),\n    )\n\n    ctx := context.Background()\n    res, err := s.Checks.GetCheck(ctx, \"dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6\", \"check_2qn7PZrx89yxY34vEZPD31Y9XVj6\", nil, nil)\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Object != nil {\n        // handle response\n    }\n}"
-      - label: getCheck
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.checks.getCheck({
-              deploymentId: "dpl_2qn7PZrx89yxY34vEZPD31Y9XVj6",
-              checkId: "check_2qn7PZrx89yxY34vEZPD31Y9XVj6",
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-              slug: "my-team-url-slug",
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              id:
-                allOf:
-                  - type: string
-              name:
-                allOf:
-                  - type: string
-              path:
-                allOf:
-                  - type: string
-              status:
-                allOf:
-                  - type: string
+            type: string
+            example: my-team-url-slug
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: string
+                  name:
+                    type: string
+                  path:
+                    type: string
+                  status:
+                    type: string
                     enum:
                       - registered
                       - running
                       - completed
-              conclusion:
-                allOf:
-                  - type: string
+                  conclusion:
+                    type: string
                     enum:
                       - canceled
                       - failed
@@ -109,12 +97,13 @@ paths:
                       - succeeded
                       - skipped
                       - stale
-              blocking:
-                allOf:
-                  - type: boolean
-              output:
-                allOf:
-                  - properties:
+                  blocking:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                  output:
+                    properties:
                       metrics:
                         properties:
                           FCP:
@@ -129,8 +118,8 @@ paths:
                                 enum:
                                   - web-vitals
                             required:
-                              - value
                               - source
+                              - value
                             type: object
                           LCP:
                             properties:
@@ -144,8 +133,8 @@ paths:
                                 enum:
                                   - web-vitals
                             required:
-                              - value
                               - source
+                              - value
                             type: object
                           CLS:
                             properties:
@@ -159,8 +148,8 @@ paths:
                                 enum:
                                   - web-vitals
                             required:
-                              - value
                               - source
+                              - value
                             type: object
                           TBT:
                             properties:
@@ -174,8 +163,8 @@ paths:
                                 enum:
                                   - web-vitals
                             required:
-                              - value
                               - source
+                              - value
                             type: object
                           virtualExperienceScore:
                             properties:
@@ -189,134 +178,68 @@ paths:
                                 enum:
                                   - web-vitals
                             required:
-                              - value
                               - source
+                              - value
                             type: object
                         required:
+                          - CLS
                           - FCP
                           - LCP
-                          - CLS
                           - TBT
                         type: object
                     type: object
-              detailsUrl:
-                allOf:
-                  - type: string
-              integrationId:
-                allOf:
-                  - type: string
-              deploymentId:
-                allOf:
-                  - type: string
-              externalId:
-                allOf:
-                  - type: string
-              createdAt:
-                allOf:
-                  - type: number
-              updatedAt:
-                allOf:
-                  - type: number
-              startedAt:
-                allOf:
-                  - type: number
-              completedAt:
-                allOf:
-                  - type: number
-              rerequestable:
-                allOf:
-                  - type: boolean
-            requiredProperties:
-              - id
-              - name
-              - status
-              - blocking
-              - integrationId
-              - deploymentId
-              - createdAt
-              - updatedAt
-        examples:
-          example:
-            value:
-              id: <string>
-              name: <string>
-              path: <string>
-              status: registered
-              conclusion: canceled
-              blocking: true
-              output:
-                metrics:
-                  FCP:
-                    value: 123
-                    previousValue: 123
-                    source: web-vitals
-                  LCP:
-                    value: 123
-                    previousValue: 123
-                    source: web-vitals
-                  CLS:
-                    value: 123
-                    previousValue: 123
-                    source: web-vitals
-                  TBT:
-                    value: 123
-                    previousValue: 123
-                    source: web-vitals
-                  virtualExperienceScore:
-                    value: 123
-                    previousValue: 123
-                    source: web-vitals
-              detailsUrl: <string>
-              integrationId: <string>
-              deploymentId: <string>
-              externalId: <string>
-              createdAt: 123
-              updatedAt: 123
-              startedAt: 123
-              completedAt: 123
-              rerequestable: true
-        description: ''
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: One of the provided values in the request query is invalid.
-        examples: {}
-        description: One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: >-
-              You do not have permission to access this resource.
+                  detailsUrl:
+                    type: string
+                  integrationId:
+                    type: string
+                  deploymentId:
+                    type: string
+                  externalId:
+                    type: string
+                  createdAt:
+                    type: number
+                  updatedAt:
+                    type: number
+                  startedAt:
+                    type: number
+                  completedAt:
+                    type: number
+                  rerequestable:
+                    type: boolean
+                    enum:
+                      - false
+                      - true
+                required:
+                  - blocking
+                  - createdAt
+                  - deploymentId
+                  - id
+                  - integrationId
+                  - name
+                  - status
+                  - updatedAt
+                type: object
+        '400':
+          description: One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: >-
+            You do not have permission to access this resource.
 
-              The provided token is not from an OAuth2 Client that created the
-              Check
-        examples: {}
-        description: |-
-          You do not have permission to access this resource.
-          The provided token is not from an OAuth2 Client that created the Check
-    '404':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: |-
-              Check was not found
-              The deployment was not found
-        examples: {}
-        description: |-
-          Check was not found
-          The deployment was not found
-  deprecated: false
-  type: path
+            The provided token is not from an OAuth2 Client that created the
+            Check
+        '404':
+          description: |-
+            Check was not found
+            The deployment was not found
+      security:
+        - bearerToken: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

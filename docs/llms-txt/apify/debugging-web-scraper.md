@@ -20,7 +20,7 @@ document.getElementsByTagName('head')[0].appendChild(jq);
 ```
 
 
-If that doesn't work because of a CORS violation, you can install https://chrome.google.com/webstore/detail/ekkjohcjbjcjjifokpingdbdlfekjcgi that injects jQuery on a button click.
+If that doesn't work because of a CORS violation, you can install [this extension](https://chrome.google.com/webstore/detail/ekkjohcjbjcjjifokpingdbdlfekjcgi) that injects jQuery on a button click.
 
 You can test a `pageFunction` code in two ways in your console:
 

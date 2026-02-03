@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/built-in-nodes/partner-node/video/pika/pika-text-to-video.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Pika 2.2 Text to Video - ComfyUI Native Node Documentation
 
 > A node that converts text descriptions into videos using Pika AI

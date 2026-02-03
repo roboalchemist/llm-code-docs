@@ -1,196 +1,93 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/transformers_as_backend.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/community_integrations/transformers_as_backend.md
 
-# Source: https://huggingface.co/docs/transformers/v4.57.3/transformers_as_backend.md
+# Building a compatible model backend for inference
 
-# Inference server backends
+Transformers models are compatible with inference engines like [vLLM](https://github.com/vllm-project/vllm) and [SGLang](https://docs.sglang.ai). Use the same Transformers model anywhere and avoid reimplementing a model from scratch for each inference engine. Models in Transformers that aren't natively supported by either inference engine work too.
 
-Transformers' models are compatible with different inference servers like vLLM and SGLang. Instead of implementing a model for each inference server, you only need one model, which can be plugged into any inference server. It simplifies maintenance and makes it easy for users to use different inference servers for different use cases.
+This guide shows you how to implement a model in Transformers that works as a backend for any inference engine.
 
-With Transformers as a backend, you can also serve any model - including custom and Hub-hosted models - without waiting for native support.
+## Model implementation
 
-This guide shows how to use Transformers' models as a backend to some popular inference servers and how to build a model that supports all inference servers.
+1. Follow the model [contribution guidelines](./add_new_model) or the [custom model contribution guidelines](./custom_models). The model must have a valid `config.json` in its directory and a valid `auto_map` field pointing to the model class in the config.
 
-## vLLM
+2. Use the [AttentionInterface](/docs/transformers/v5.0.0/en/internal/modeling_utils#transformers.AttentionInterface) class for custom and optimized attention functions. This interface unlocks each inference engine's performance features. 
 
-[vLLM](https://github.com/vllm-project/vllm) is a high-performance inference engine optimized for serving LLMs at scale. It supports many Transformers' models, including all decoder-only LLMs and several vision-language models (VLMs). VLMs currently support image inputs only, with video support planned.
+   Use `ALL_ATTENTION_FUNCTIONS` when defining the attention layer and propagate `**kwargs**` from the base `MyModel` class to the attention layers. Set `_supports_attention_backend` to `True` in [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel).
+   
+   Expand the code below for an example.
 
-vLLM automatically selects the best backend, and if a model isn't natively supported, it falls back to the Transformers model. To explicitly use a Transformers' model, set `model_impl="transformers"`.
+    
+    modeling_my_model.py
 
-```python
-from vllm import LLM
-llm = LLM(model="meta-llama/Llama-3.2-1B", model_impl="transformers")
-```
+    ```python
+    from transformers import PreTrainedModel
+    from torch import nn
 
-Add `--model-impl transformers` to `vllm serve` to launch a server with a Transformers' model.
+    class MyAttention(nn.Module):
 
-```bash
-vllm serve meta-llama/Llama-3.2-1B \
-    --task generate \
-    --model-impl transformers
-```
+        def forward(self, hidden_states, **kwargs):
+            ...
+            attention_interface = ALL_ATTENTION_FUNCTIONS[self.config._attn_implementation]
+            attn_output, attn_weights = attention_interface(
+                self,
+                query_states,
+                key_states,
+                value_states,
+                **kwargs,
+            )
+            ...
 
-Refer to the [vLLM docs](https://docs.vllm.ai/en/latest/models/supported_models.html#transformers) for more usage examples and tips on using a Transformers as the backend.
+    class MyModel(PreTrainedModel):
+        _supports_attention_backend = True
+    ```
 
-## SGLang
+    
 
-[SGLang](https://github.com/InternLM/sglang) is a high-performance, OpenAI-compatible server and runtime designed for chat-based LLMs. It offers fast inference, role-based conversation handling, and support for custom pipelines, making it great for building real-world LLM apps.
+3. Enable optional tensor or pipeline parallelism by adding the following keys to [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig).
 
-SGLang automatically falls back to the Transformers backend if a model isn't natively supported. To explicitly use a Transformers' model, set `impl="transformers"`.
+    * `base_model_tp_plan` enables [tensor parallelism](./perf_infer_gpu_multi) by mapping fully qualified layer name patterns to tensor parallel styles. Supports only the `"colwise"` and `"rowwise"` partitioning strategies.
+    * `base_model_pp_plan` enables pipeline parallelism by mapping direct child layer names to tuples of lists of strings. The first element of the tuple contains the names of the input arguments. The last element contains the variable names of the layer outputs in the modeling code.
 
-```python
-import sglang as sgl
+    Expand the code below for an example.
 
-llm = sgl.Engine("meta-llama/Llama-3.2-1B-Instruct", impl="transformers")
-print(llm.generate(["The capital of France is"], {"max_new_tokens": 20})[0])
-```
+    
+    configuration_my_model.py
 
-Add `impl transformers` to `sglang.launch_server` to launch a server with a Transformers' model.
+    ```python
 
-```bash
-python3 -m sglang.launch_server \
-  --model-path kyutai/helium-1-preview-2b \
-  --impl transformers \
-  --host 0.0.0.0 \
-  --port 30000
-```
+    from transformers import PreTrainedConfig
 
-Refer to the [SGLang docs](https://docs.sglang.ai/supported_models/transformers_fallback.html) for more usage examples and tips on using a Transformers as the backend.
+    class MyConfig(PreTrainedConfig):
+        base_model_tp_plan = {
+            "layers.*.self_attn.k_proj": "colwise",
+            "layers.*.self_attn.v_proj": "colwise",
+            "layers.*.self_attn.o_proj": "rowwise",
+            "layers.*.mlp.gate_proj": "colwise",
+            "layers.*.mlp.up_proj": "colwise",
+            "layers.*.mlp.down_proj": "rowwise",
+        }
+        base_model_pp_plan = {
+            "embed_tokens": (["input_ids"], ["inputs_embeds"]),
+            "layers": (["hidden_states", "attention_mask"], ["hidden_states"]),
+            "norm": (["hidden_states"], ["hidden_states"]),
+        }
+    ```
 
-## TGI
+    
 
-[TGI](https://huggingface.co/docs/text-generation-inference/index) can serve models that aren't [natively implemented](https://huggingface.co/docs/text-generation-inference/supported_models) by falling back on the Transformers implementation of the model. Some of TGIs high-performance features aren't available in the Transformers implementation, but other features like continuous batching and streaming are still supported.
+## Multimodal models
 
-> [!TIP]
-> Refer to the [Non-core model serving](https://huggingface.co/docs/text-generation-inference/basic_tutorials/non_core_models) guide for more details.
+Multimodal models require additional changes beyond the [vision language model contribution checklist](./contributing#vision-language-model-contribution-checklist). These changes ensure multimodal inputs are properly processed.
 
-Serve a Transformers implementation the same way you'd serve a TGI model.
+1. The [ProcessorMixin](/docs/transformers/v5.0.0/en/main_classes/processors#transformers.ProcessorMixin) class must include the `self.image_token` and `self.image_token_ids` attributes. These placeholder tokens indicate image positions in the input. The same token appears in the input prompt for images and in the model code to scatter image features.
 
-```docker
-docker run --gpus all --shm-size 1g -p 8080:80 -v $volume:/data ghcr.io/huggingface/text-generation-inference:latest --model-id gpt2
-```
+2. The [ProcessorMixin](/docs/transformers/v5.0.0/en/main_classes/processors#transformers.ProcessorMixin) class must include a `self._get_num_multimodal_tokens` method. This method computes the number of placeholder tokens required for multimodal inputs with given sizes. It returns a `MultiModalData` object. Placeholders between `` tokens, such as row or column tokens, don't count as image placeholders. Count only tokens replaced by image features later in the modeling code.
 
-Add `--trust-remote_code` to the command to serve a custom Transformers model.
-
-```docker
-docker run --gpus all --shm-size 1g -p 8080:80 -v $volume:/data ghcr.io/huggingface/text-generation-inference:latest --model-id  --trust-remote-code
-```
-
-## Building a compatible model backend
-
-To ensure a model is compatible as a backend to any inference server, make sure it is compatible with Transformers and supports the [AttentionInterface](./attention_interface) class.
-
-1. A model must be Transformers-compatible following the model [contribution guidelines](./add_new_model) or the [custom model contribution guidelines](./custom_models). Make sure the model has a valid `config.json` in its directory and a valid `auto_map` field pointing to the model class in the config.
-
-2. A model's attentions needs to be configurable with the [AttentionInterface](./attention_interface) to allow custom and optimized attention functions. This is important for enabling the performance features of the different inference servers.
-   Use `ALL_ATTENTION_FUNCTIONS` when defining the attention layer and propagate `**kwargs**` from the base `MyModel` class to the attention layers. Set `_supports_attention_backend` to `True` in [PreTrainedModel](/docs/transformers/v4.57.3/en/main_classes/model#transformers.PreTrainedModel). Expand the code below for an example.
-
-modeling_my_model.py
-
-```python
-
-from transformers import PreTrainedModel
-from torch import nn
-
-class MyAttention(nn.Module):
-
-    def forward(self, hidden_states, **kwargs):
-        ...
-        attention_interface = ALL_ATTENTION_FUNCTIONS[self.config._attn_implementation]
-        attn_output, attn_weights = attention_interface(
-            self,
-            query_states,
-            key_states,
-            value_states,
-            **kwargs,
-        )
-        ...
-
-class MyModel(PreTrainedModel):
-    _supports_attention_backend = True
-```
-
-3. This step is optional, but if you want to support tensor parallel and/or pipeline parallel features, add the following keys to the config.
-    * `base_model_tp_plan` enables [tensor parallelism](./perf_infer_gpu_multi) by mapping fully qualified layer name patterns to tensor parallel styles. Only the `"colwise"` and `"rowwise"` partitioning strategies are currently supported.
-    * `base_model_pp_plan` enables pipeline parallelism by mapping direct child layer names to tuples of lists of strings. The list in the first element of the tuple contains the names of the input arguments. The list in the last element of the tuple contains the names of the variables the layer outputs to in the modeling code.
-
- Expand the code below for an example.
-
-configuration_my_model.py
-
-```python
-
-from transformers import PretrainedConfig
-
-class MyConfig(PretrainedConfig):
-    base_model_tp_plan = {
-        "layers.*.self_attn.k_proj": "colwise",
-        "layers.*.self_attn.v_proj": "colwise",
-        "layers.*.self_attn.o_proj": "rowwise",
-        "layers.*.mlp.gate_proj": "colwise",
-        "layers.*.mlp.up_proj": "colwise",
-        "layers.*.mlp.down_proj": "rowwise",
-    }
-    base_model_pp_plan = {
-        "embed_tokens": (["input_ids"], ["inputs_embeds"]),
-        "layers": (["hidden_states", "attention_mask"], ["hidden_states"]),
-        "norm": (["hidden_states"], ["hidden_states"]),
-    }
-```
-
-### Multimodal models
-
-For multimodal models, you need to include a few more changes on top of the general recommendations. These rules ensure that your model integrates properly with multimodal data.
-
-1. A multimodal model requires a base `MyMultiModalModel` class to handle multimodal fusion without a language modeling head and a separate generative class that adds a head.
-
-    The base model needs to implement the `get_image_features()` method to accept image pixel values and return encoded outputs. These are later merged with the language embeddings and don't require any postprocessing. The shape of the returned features must match the number of input images. If a vision encoder returns variable-length outputs (patch-based), return a list of 2D tensors of size `(image_seq_len, image_dim)` for each image.
+3. The [ProcessorMixin](/docs/transformers/v5.0.0/en/main_classes/processors#transformers.ProcessorMixin) class must check the value of `return_mm_token_type_ids` and return `mm_token_type_ids`. This indicates whether each position is a text token (`0`), image placeholder token (`1`), or a video placeholder token (`2`). Multimodal token type id sequences must be contiguous with no breaks between consecutive tokens. Treat special tokens for beginning, ending, row, and column tokens as placeholders.
 
 Expand the code below for an example.
 
 modeling_my_multimodal_model.py
-
-```python
-from transformers.generation import GenerationMixin
-
-class MyMultimodalModel(MyMultimodalPreTrainedModel):
-    def __init__(self, config):
-        super().__init__(config)
-        self.language_model = AutoModel.from_config(config.text_config)
-        self.vision_tower = AutoModel.from_config(config.vision_config)
-        self.multimodal_projection = nn.Linear(vision_dim, text_dim)
-    
-    def get_image_features(self, pixel_values):
-        return self.vision_tower(pixel_values).last_hidden_states
-    
-    def forward(self, input_ids, pixel_values, **kwargs):
-        # process your inputs
-        return MyModelOutputWithPast(
-            last_hidden_state=last_hidden_state,
-            image_hidden_states=image_features,
-            [...]
-        )
-
-class MyMultimodalModelForConditionalGeneration(MyMultimodalPreTrainedModel, GenerationMixin):
-    def __init__(self, config):
-        super().__init__(config)
-        self.model = MyMultimodalModel(config)
-        self.lm_head = nn.Linear(hidden_dim, vocab_size)
-```
-
-2. A multimodal model config must be nested with the following fields.
-    * text_config: decoder language model config
-    * vision_config: vision encoder config
-    * image_token_id: ID of the image placeholder token used in the input to indicate image position
-
-3. A multimodal model's processing class must have the `self.image_token` and `self.image_token_ids` attributes. These are placeholder tokens used to indicate image positions in the input. The placeholder token is the same token used in the input prompt and to mask scatter image features.
-
-   The processing class also needs `self._get_num_multimodal_tokens` method to compute the number of placeholder tokens needed for multimodal inputs with given sizes and to return a `MultiModalData` object. The placeholder for row and column tokens don't count as image placeholders. Only the tokens that are actually replaced by image features are computed.
-
-Finally, when `return_mm_token_type_ids=True`, the class has to return `mm_token_type_ids` to indicate whether each position is a text token (`0`) or image placeholder token (`1`). Each image's token type IDs must be contiguous with no breaks between consecutive ones.
-
-Expand the code below for an example.
-
-processing_my_multimodal_model.py
 
 ```python
 class MyMultimodalProcessor(ProcessorMixin):
@@ -222,6 +119,6 @@ class MyMultimodalProcessor(ProcessorMixin):
 
 ## Resources
 
-* Read the [Transformers backend integration in vLLM](https://blog.vllm.ai/2025/04/11/transformers-backend.html) blog post for more details about the Transformers backend in vLLM.
-* Read the [Transformers backend integration in SGLang](https://huggingface.co/blog/transformers-backend-sglang) blog post for more details about the Transformers backend in SGLang.
+* Read the [Transformers backend integration in vLLM](https://blog.vllm.ai/2025/04/11/transformers-backend.html) blog post for more details.
+* Read the [Transformers backend integration in SGLang](https://huggingface.co/blog/transformers-backend-sglang) blog post for more details.
 

@@ -4,7 +4,6 @@
 title: ECS Cluster Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > AWS Components > ECS Cluster Component
-source_url: https://docs.datadoghq.com/components-aws/ecs-cluster/index.html
 ---
 
 # ECS Cluster Component

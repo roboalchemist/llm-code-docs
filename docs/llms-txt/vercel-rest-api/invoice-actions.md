@@ -1,133 +1,107 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/marketplace/invoice-actions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Invoice Actions
 
 > This endpoint allows the partner to request a refund for an invoice to Vercel. The invoice is created using the [Submit Invoice API](#submit-invoice-api).
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples post /v1/installations/{integrationConfigurationId}/billing/invoices/{invoiceId}/actions
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: >-
-    /v1/installations/{integrationConfigurationId}/billing/invoices/{invoiceId}/actions
-  method: post
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path:
-        integrationConfigurationId:
+  /v1/installations/{integrationConfigurationId}/billing/invoices/{invoiceId}/actions:
+    post:
+      tags:
+        - marketplace
+      summary: Invoice Actions
+      description: >-
+        This endpoint allows the partner to request a refund for an invoice to
+        Vercel. The invoice is created using the [Submit Invoice
+        API](#submit-invoice-api).
+      operationId: update-invoice
+      parameters:
+        - name: integrationConfigurationId
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-        invoiceId:
+            type: string
+        - name: invoiceId
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              action:
-                allOf:
-                  - type: string
-                    enum:
-                      - refund
-              reason:
-                allOf:
-                  - type: string
-                    description: Refund reason.
-              total:
-                allOf:
-                  - description: >-
-                      The total amount to be refunded. Must be less than or
-                      equal to the total amount of the invoice.
-                    type: string
-                    pattern: ^[0-9]+(\\.[0-9]+)?$
-            required: true
-            requiredProperties:
-              - action
-              - reason
-              - total
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              action: refund
-              reason: <string>
-              total: <string>
-    codeSamples:
-      - label: update-invoice
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            await vercel.marketplace.updateInvoice({
-              integrationConfigurationId: "<id>",
-              invoiceId: "<id>",
-              requestBody: {
-                action: "refund",
-                reason: "<value>",
-                total: "<value>",
-              },
-            });
-
-
-          }
-
-          run();
-  response:
-    '204': {}
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: |-
-              One of the provided values in the request body is invalid.
-              One of the provided values in the request query is invalid.
-        examples: {}
-        description: |-
-          One of the provided values in the request body is invalid.
-          One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-    '404': {}
-    '409': {}
-  deprecated: false
-  type: path
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - type: object
+                  properties:
+                    action:
+                      type: string
+                      enum:
+                        - refund
+                    reason:
+                      type: string
+                      description: Refund reason.
+                    total:
+                      description: >-
+                        The total amount to be refunded. Must be less than or
+                        equal to the total amount of the invoice.
+                      type: string
+                      pattern: ^[0-9]+(\\.[0-9]+)?$
+                  required:
+                    - action
+                    - reason
+                    - total
+                  additionalProperties: false
+        required: true
+      responses:
+        '204':
+          description: ''
+        '400':
+          description: |-
+            One of the provided values in the request body is invalid.
+            One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+        '404':
+          description: ''
+        '409':
+          description: ''
+      security:
+        - bearerToken: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

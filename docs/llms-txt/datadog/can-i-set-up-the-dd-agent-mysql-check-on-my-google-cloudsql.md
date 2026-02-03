@@ -8,8 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > Agent > Agent Guides > Can I set up the dd-agent mysql check on my
   Google CloudSQL?
-source_url: >-
-  https://docs.datadoghq.com/guide/can-i-set-up-the-dd-agent-mysql-check-on-my-google-cloudsql/index.html
 ---
 
 # Can I set up the dd-agent mysql check on my Google CloudSQL?

@@ -2,17 +2,284 @@
 
 # Source: https://docs.comfy.org/changelog/index.md
 
-# Source: https://docs.comfy.org/index.md
-
-# Source: https://docs.comfy.org/changelog/index.md
-
-# Source: https://docs.comfy.org/index.md
-
-# Source: https://docs.comfy.org/changelog/index.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Changelog
 
 > Track ComfyUI's latest features, improvements, and bug fixes. For detailed release notes, see the [Github releases](https://github.com/comfyanonymous/ComfyUI/releases) page.
+
+<Update label="v0.8.1" description="January 8, 2026">
+  **Model Support**
+
+  * Added Gemma 12B support with quantized weights
+  * Enhanced LTXAV text encoder with device selection support and reduced VRAM usage
+  * Improved memory estimation for LTXAV text encoder
+
+  **Performance Improvements**
+
+  * Fixed FP8MM offloading performance issues
+  * Added warning for outdated PyTorch versions with recommendation to upgrade to cu130 for performance boost
+  * Updated comfy kitchen version requirements
+
+  **Bug Fixes**
+
+  * Fixed stable release workflow to properly pull latest comfy kitchen updates
+  * Removed confusing load statistics from model patcher
+  * Updated workflow templates to v0.7.69
+</Update>
+
+<Update label="v0.8.0" description="January 7, 2026">
+  **New Models Support**
+
+  * Added LTXV 2 model support
+  * Added NVFP4 checkpoint support (fp4 matrix multiplication)
+  * Added Sage Attention 3 support via CLI argument
+
+  **API Improvements**
+
+  * V3 API: Exposed DynamicCombo and Autogrow functionality
+  * API nodes: Kling Omni 720p resolution support, WAN2.6 ReferenceToVideo
+  * Tripo3D: Optimized face\_limit parameter handling
+  * Fixed URL encoding preservation for Vidu API signed URLs
+
+  **Fixes**
+
+  * Fixed upscale model CPU offloading
+  * Fixed LTXV2 text encoder lowvram compatibility
+  * Fixed fp8 processing issues
+  * Fixed MPO format images to use first frame only
+  * Conditional comfy-kitchen CUDA support based on PyTorch version
+
+  **Other**
+
+  * Added OOM memory summary for debugging
+  * Mahiro CFG display name update
+  * Workflow templates updated to v0.7.67
+  * Code refactoring and cleanup (CLIP preprocessing, comfy-kitchen integration)
+</Update>
+
+<Update label="v0.7.0" description="December 31, 2025">
+  **System Requirements**
+
+  * PyTorch 2.4+ minimum version requirement
+
+  **Fixes & Improvements**
+
+  * Enabled async memory offload by default for AMD GPUs
+  * Fixed ancestral sampler noise on CPU inference
+  * Improved memory management error handling (pin/unpin operations)
+  * Added VACE context handling in context windows
+
+  **Updates**
+
+  * ComfyUI Frontend updated to v1.35.9
+  * ComfyUI Manager updated to v4.0.4
+  * Workflow templates updated to v0.7.64
+
+  **New Nodes**
+
+  * Added ManualSigmas node for sampling control
+  * Added Kling Motion Control node
+  * ResizeByLongerSide now supports video processing
+
+  **API Nodes**
+
+  * Gemini API: Force enable prompt enhancement
+  * Billing changed from dollars to credits
+  * Deprecated "seededit", updated Seedream node display names
+
+  **Technical**
+
+  * Converted image processing nodes to V3 schema
+  * Optimized Lumina/Z image model (removed unused components)
+</Update>
+
+<Update label="v0.6.0" description="December 24, 2025">
+  **New Model Support**
+
+  * Qwen Image Layered
+  * NewBie Image Exp0.1
+
+  **New Features**
+
+  * Unified jobs API with /api/jobs endpoints for workflow monitoring
+
+  **Improvements**
+
+  * Disabled watermark generation by default in API nodes
+  * Refactored trainer with resolution bucketing for better training efficiency
+  * Enhanced AMD GPU support
+  * Extended Kling O1 StartEndFrame node duration range
+  * Updated Topaz 4k video upscaling functionality
+
+  **Bug Fixes**
+
+  * Fixed mask concatenation issues in ZImageFunControlNet in --gpu-only mode
+</Update>
+
+<Update label="v0.5.1" description="December 18, 2025">
+  * Added GPT-Image-1.5 API nodes
+  * Fixed V3 nodes processing regression
+  * Improved SA-Solver accuracy
+</Update>
+
+<Update label="v0.5.0" description="December 17, 2025">
+  **New Models & Features**
+
+  * WanMove model for advanced motion processing
+  * Qwen Edit 2511 with automatic detection
+  * Z-Image Fun Control Union 2.0 with inpainting
+
+  **API Nodes**
+
+  * Kling Omni Image, TextToVideoWithAudio, ImageToVideoWithAudio
+  * Wan2.6 model integration
+  * Tripo3.0 for 3D model generation
+
+  **Performance**
+
+  * Improved memory estimation for Z-Image and SD3 models
+  * Better GPU memory management for Qwen-Image VAE
+  * Frontend updated to v1.34.9
+</Update>
+
+<Update label="v0.4.0" description="December 10, 2025">
+  **Model Support**
+
+  * Ovis Image
+  * Kandinsky 5.0 (T2V/I2V/T2I variants)
+  * Z-Image Alibaba PAI-Fun ControlNet support
+  * Improved Z-Image FP16 compatibility
+  * Added PATCH method to CORS headers and chroma-radiance-x0 mode
+
+  **Workflow &  Enhancements**
+
+  * Context windows fixes and enhanced temporal processing
+  * Kling API @image reference format
+  * ComfyUI-Manager pip installation support
+
+  **Frontend Improvements**
+
+  * Improve frontend load/startup time significantly
+  * Restored settings button in sidebar
+  * GPU accelerated maskeditor rendering
+  * Improve asset cards and queue progress panel designs
+  * Add missing nodes warning UI to queue button and breadcrumb
+  * Mobile fixes
+  * various bug fixes
+
+  **Major VRAM Optimizations**
+
+  * Temporal rolling VAE delivering massive VRAM reductions for video models (Hunyuan/Kandinsky)
+  * Reduced LoRA memory reservations, especially beneficial for Flux2 workflows
+  * Fixed Flux2 OOM errors with improved dequantization offload accounting
+  * Enhanced LoRA computation speed with FP16 processing
+  * Optimized text encoder GPU usage to prevent unnecessary CPU fallbacks
+
+  **V3 Schema Migration**
+
+  * Converted 3D, audio, freelunch, and mask nodes to V3 schema
+  * Added MatchType, DynamicCombo, and Autogrow support for improved workflow flexibility
+
+  **Bug Fixes & Compatibility**
+
+  * Fixed text encoder regression when loaded directly on GPU
+  * Resolved transformer\_options clearing issue in Lumina models
+  * Fixed Qwen Image LoRA training, HunyuanVideo 1.5 meanflow distil issues
+  * Corrected EmptyAudio node input types for proper audio workflow integration
+  * Enhanced VRAM calculation accuracy to prevent unwanted full offloading
+  * Support for "transformer." LoRA prefix in Z-Image workflows
+  * Improved scaled FP8 format compatibility with mixed quantization operations
+
+  **Note: for Desktop users**
+
+  * If you have not turned off the auto-update, please wait for the latest Desktop release, it will auto-update to the latest version.
+  * If you are using the Desktop and **if you also turn off the auto-update**, the Desktop might not be able to auto-update for the latest version this time.
+  * Please download the latest Desktop version from [here](https://www.comfy.org/download) to get the latest features.
+</Update>
+
+<Update label="v0.3.76" description="December 2, 2025">
+  **Frontend UI/UX**
+
+  * New UI: **Nodes 2.0** public beta
+  * Linear mode beta version (You can enable it by setting a hot-key in keybinding.)
+  * Subgraphs improvement and bug fixes
+  * Improve missing node UX
+  * New workflow progress panel
+  * New Assets sidebar
+
+  **3D feature**
+
+  * Support panoramic image in the 3D node
+  * Merge 3D animation node into 3D node
+
+  **Lora Trainer**
+
+  * Support multi-resolution for ComfyUI native LoRA trainer
+  * Support Z-Image LoRA training
+
+  **Performance & model support**
+
+  * Support video tiny VAEs
+  * Support z-image LoRA formats
+  * Enable async offloading by default on Nvidia
+
+  **Partner Nodes**
+
+  * Veo3 First-Last-Frame Node
+  * Add Kling v2.5 turbo to Kling FirstLastFrame node
+  * Kling O1 model support
+</Update>
+
+<Update label="v0.3.75" description="November 26, 2025">
+  **New Model Support**
+
+  * Added Z Image model with optimized performance for image processing workflows
+
+  **Bug Fixes**
+
+  * Fixed LoRA functionality with mixed FP8 precision models
+  * Enhanced Flux2 reference image memory estimation to reduce VRAM errors
+</Update>
+
+<Update label="v0.3.73" description="November 26, 2025">
+  **Bug Fixes**
+
+  * Fixed critical system crashes that could interrupt workflow execution
+  * Optimized Flux 2 text encoder VRAM usage for better performance
+</Update>
+
+<Update label="v0.3.72" description="November 25, 2025">
+  **New Model Support**
+
+  * Added comprehensive Flux 2 model support including Flux 2 Pro API nodes
+  * Enhanced HunyuanVideo workflows with new variants and improved display names
+
+  **API & Security Improvements**
+
+  * Improved API security with Content Security Policy headers
+  * Fixed public API access issues and Gemini model support
+
+  **Video Processing**
+
+  * Added `get_frame_count` and `get_frame_rate` methods for better video workflow control
+
+  **Performance Optimizations**
+
+  * Optimized text encoder quantization with hardware-aware detection
+  * Enhanced quantization support with better memory management
+
+  **Developer Tools**
+
+  * Added BlockInfo support for Chroma, Qwen-Image, and HunyuanVideo models
+
+  **Frontend & Dependencies**
+
+  * Updated frontend to v1.30.6
+  * Bumped Transformers version
+</Update>
 
 <Update label="v0.3.71" description="November 21, 2025">
   **Model Compatibility & Enhancements**

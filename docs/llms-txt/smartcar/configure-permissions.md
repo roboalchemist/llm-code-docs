@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/getting-started/how-to/configure-permissions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to Configure Permissions for Vehicle Data Collection
 
 > Step-by-step guide to selecting signals, commands, and attributes in the Smartcar Dashboard and requesting the right permissions from vehicle owners.

@@ -10,84 +10,33 @@
 
 # Source: https://docs.chatling.ai/ai-agent/actions/introduction.md
 
-# Source: https://docs.chatling.ai/introduction.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.chatling.ai/chatbot/introduction.md
+# AI Actions
 
-# Source: https://docs.chatling.ai/chatbot/intents/introduction.md
+Actions unlock the true power of AI Agents. Instead of only generating replies, the agent can actively carry out tasks during a conversation. This might involve saving details of potential leads, interacting with external systems to fetch or store data, creating support tickets, and more.
 
-# Source: https://docs.chatling.ai/chatbot/builder/introduction.md
+By using actions, you give your agent the power to handle practical steps on its own. This transforms the chatbot experience from a simple Q\&A into an interactive assistant that can streamline processes, save time, and improve outcomes for both your team and your users.
 
-# Source: https://docs.chatling.ai/ai-agent/introduction.md
+## Available Actions
 
-# Source: https://docs.chatling.ai/ai-agent/actions/introduction.md
+* **[Lead Form](/ai-agent/actions/lead-form)**: displays a form to collect the user's details and save them as a contact.
+* **[Buttons](/ai-agent/actions/buttons)**: displays a set of buttons in the chat, such as URL buttons to open a webpage or text buttons to send preset replies that keep the flow moving.
+* **[HTTP Request](/ai-agent/actions/http-request)**: sends a request to an external API to fetch or store data, or perform an action. This allows you to connect your agent to external tools and services.
+* **[Cal.com Booking Widget](/ai-agent/actions/cal-booking)**: Lets users book appointments directly within the chat.
+* **[Send Email](/ai-agent/actions/send-email)**: sends a custom email to any recipient.
 
-# Source: https://docs.chatling.ai/introduction.md
+## How to create an action
 
-# Source: https://docs.chatling.ai/chatbot/introduction.md
+1. Go to your AI agent's dashboard.
+2. Click on the `Actions` menu from the sidebar.
+3. Click the `New` button.
+4. Select the action you want to create.
+5. Configure the action according to your needs.
+6. Click the `Create action` button.
 
-# Source: https://docs.chatling.ai/chatbot/intents/introduction.md
+## Tutorials
 
-# Source: https://docs.chatling.ai/chatbot/builder/introduction.md
-
-# Source: https://docs.chatling.ai/ai-agent/introduction.md
-
-# Source: https://docs.chatling.ai/ai-agent/actions/introduction.md
-
-# Source: https://docs.chatling.ai/introduction.md
-
-# Source: https://docs.chatling.ai/chatbot/introduction.md
-
-# Source: https://docs.chatling.ai/chatbot/intents/introduction.md
-
-# Source: https://docs.chatling.ai/chatbot/builder/introduction.md
-
-# Source: https://docs.chatling.ai/ai-agent/introduction.md
-
-# Source: https://docs.chatling.ai/ai-agent/actions/introduction.md
-
-# Source: https://docs.chatling.ai/introduction.md
-
-# Source: https://docs.chatling.ai/chatbot/introduction.md
-
-# Source: https://docs.chatling.ai/chatbot/intents/introduction.md
-
-# Source: https://docs.chatling.ai/chatbot/builder/introduction.md
-
-# Source: https://docs.chatling.ai/ai-agent/introduction.md
-
-# Source: https://docs.chatling.ai/ai-agent/actions/introduction.md
-
-# Source: https://docs.chatling.ai/introduction.md
-
-# Introduction
-
-Welcome to the Chatling documentation. This is your end-to-end guide to the platform that explains core concepts, walks you through setup and deployment, and helps you get the most out of the platform.
-
-## What is Chatling?
-
-Chatling is a no-code platform that lets you build conversational AI agents in minutes, trained on custom data, such as business websites, company policies, knowledge bases and documents.
-
-Deploy your agents seamlessly on your website and other channels to automate customer support, capture and qualify leads, and deliver accurate answers.
-
-## Products
-
-There are two types of products available in the Chatling platform.
-
-### 1. AI Agents
-
-Outcome-driven assistants that understand intent and act autonomously. Agents follow your instructions, use your knowledge, and invoke custom actions to fetch/store/update data and complete tasks—no flow building required.
-
-### 2. AI Chatbots
-
-Flow-based bots you design with a visual builder. Define steps, branches, and messages to create predictable, guided experiences (menus, FAQs, forms) with optional AI answers—ideal where tight control and consistency matter.
-
-## Documentation
-
-To get started, explore the documentation for the product you're interested in.
-
-<CardGroup cols={2}>
-  <Card title="AI Agents" icon="sparkles" href="/ai-agent/introduction" />
-
-  <Card title="AI Chatbots" icon="message-bot" href="/chatbot/introduction" />
-</CardGroup>
+1. [Fetch and Email Order Confirmation](/ai-agent/actions/tutorials/fetch-and-email-order-confirmation)

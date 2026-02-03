@@ -4,7 +4,6 @@
 title: Configuration at Runtime
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > APM > Application Instrumentation > Configuration at Runtime
-source_url: https://docs.datadoghq.com/trace_collection/runtime_config/index.html
 ---
 
 # Configuration at Runtime

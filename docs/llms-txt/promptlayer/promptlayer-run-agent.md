@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/running-requests/promptlayer-run-agent.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Run Agent
 
 The `run_workflow()` method initiates the execution of predefined Agents in PromptLayer, allowing you to start complex, multi-step sequences. For a comprehensive understanding of Agents, including their use cases, key concepts, and versioning, please refer to the [Agents documentation](/why-promptlayer/agents).
@@ -219,8 +223,3 @@ When the agent completes, PromptLayer will POST the execution results to your ca
 ```
 
 This approach eliminates the need for polling and handles timeouts gracefully, making it perfect for webhook-based integrations.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

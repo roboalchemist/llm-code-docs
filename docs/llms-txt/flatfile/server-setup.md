@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/embedding/server-setup.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Server Setup for Space Reuse
 
 > Server-side implementation guide for reusing existing spaces
@@ -21,7 +25,7 @@ This pattern ensures security by keeping your secret key on the server while pro
 
 Create a `.env` file with your credentials:
 
-```bash
+```bash  theme={null}
 # .env
 FLATFILE_API_KEY=sk_1234567890abcdef  # Your secret key
 SPACE_ID=us_sp_abc123def456           # Space ID to reuse
@@ -32,7 +36,7 @@ BASE_URL=http://localhost:3000        # Your application URL
 
 Here's a Node.js/Express server that retrieves space access tokens:
 
-```javascript
+```javascript  theme={null}
 // server.js
 import express from "express";
 import cors from "cors";
@@ -94,7 +98,7 @@ app.listen(PORT, () => {
 
 For applications that need to handle multiple spaces:
 
-```javascript
+```javascript  theme={null}
 // enhanced-server.js
 import express from "express";
 import cors from "cors";
@@ -198,7 +202,7 @@ app.listen(PORT, () => {
 
 Your client application should fetch the space data from your server:
 
-```javascript
+```javascript  theme={null}
 // client.js
 async function getSpaceData(spaceId) {
   try {
@@ -221,7 +225,7 @@ async function getSpaceData(spaceId) {
 
 Once you have the space data, use it to initialize Flatfile:
 
-```javascript
+```javascript  theme={null}
 window.openFlatfile = () => {
   fetch(server_url + "/space") // Make a request to the server endpoint
     .then((response) => response.json())
@@ -250,7 +254,7 @@ Here's how the complete workflow works:
 
 ### 1. Server Setup
 
-```javascript
+```javascript  theme={null}
 // server.js
 app.get("/api/spaces/:spaceId", async (req, res) => {
   const space = await flatfile.spaces.get(req.params.spaceId);
@@ -260,7 +264,7 @@ app.get("/api/spaces/:spaceId", async (req, res) => {
 
 ### 2. Client Request
 
-```javascript
+```javascript  theme={null}
 // client.js
 const response = await fetch("/api/spaces/us_sp_abc123def456");
 const { data } = await response.json();
@@ -268,7 +272,7 @@ const { data } = await response.json();
 
 ### 3. Client Usage
 
-```javascript
+```javascript  theme={null}
 const flatfileOptions = {
   space: {
     id: space && space.data && space.data.id,
@@ -288,7 +292,7 @@ initializeFlatfile(flatfileOptions);
 
 Never expose your secret key in client-side code:
 
-```javascript
+```javascript  theme={null}
 // ✅ Good - server-side only
 const flatfile = new FlatfileClient({
   token: process.env.FLATFILE_API_KEY, // Secret key on server
@@ -304,7 +308,7 @@ const flatfile = new FlatfileClient({
 
 Configure CORS to only allow your frontend domain:
 
-```javascript
+```javascript  theme={null}
 app.use(
   cors({
     origin: process.env.BASE_URL, // Only your frontend
@@ -323,7 +327,7 @@ app.use(
 
 ### Server-Side Errors
 
-```javascript
+```javascript  theme={null}
 app.get("/api/spaces/:spaceId", async (req, res) => {
   try {
     const space = await flatfile.spaces.get(req.params.spaceId);
@@ -351,7 +355,7 @@ app.get("/api/spaces/:spaceId", async (req, res) => {
 
 ### Client-Side Errors
 
-```javascript
+```javascript  theme={null}
 async function getSpaceData(spaceId) {
   try {
     const response = await fetch(`/api/spaces/${spaceId}`);

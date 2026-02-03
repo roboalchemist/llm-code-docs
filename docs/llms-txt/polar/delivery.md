@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/integrate/webhooks/delivery.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Handle & monitor webhook deliveries
 
 > How to parse, validate and handle webhooks and monitor their deliveries on Polar
@@ -29,22 +33,22 @@ Our TypeScript & Python SDKs come with a built-in helper function to easily
 validate and parse the webhook event - see full examples below.
 
 <CodeGroup>
-  ```typescript JS (Express) theme={null}
+  ```typescript icon="square-js" JS (Express) theme={null}
   import express, { Request, Response } from 'express'
   import { validateEvent, WebhookVerificationError } from '@polar-sh/sdk/webhooks'
 
   const app = express()
 
   app.post(
-  '/webhook',
-  express.raw({ type: 'application/json' }),
-  (req: Request, res: Response) => {
-  try {
-  const event = validateEvent(
-  req.body,
-  req.headers,
-  process.env['POLAR_WEBHOOK_SECRET'] ?? '',
-  )
+    '/webhook',
+    express.raw({ type: 'application/json' }),
+    (req: Request, res: Response) => {
+      try {
+        const event = validateEvent(
+          req.body,
+          req.headers,
+          process.env['POLAR_WEBHOOK_SECRET'] ?? '',
+        )
 
         // Process the event
 
@@ -55,10 +59,8 @@ validate and parse the webhook event - see full examples below.
         }
         throw error
       }
-
-  },
+    },
   )
-
   ```
 
   ```python Python (Flask) theme={null}
@@ -147,10 +149,18 @@ If we hit an error while trying to reach your endpoint, whether it is a temporar
 
 ### Delivery Timeouts
 
-We timeout our requests to your endpoint after **20 seconds**. Triggering a
-retry attempt after a delay as explained above. However, we strongly recommend you optimize your endpoint route to be fast. A
-best practice is for your webhook handler to queue a background worker task to handle the
+We currently timeout our requests to your endpoint after **10 seconds**, triggering a
+retry attempt after a delay as explained above. However, we strongly recommend you optimize your endpoint route to respond within **2 seconds** to ensure reliable delivery. We may lower the timeout threshold in the future, so we advise implementing your webhook handler to queue a background worker task to handle the
 payload asynchronously.
+
+### Endpoint Disabling
+
+Webhook endpoints are automatically disabled after **10 consecutive failed deliveries** (non-2xx responses). When this happens:
+
+* The endpoint is marked as disabled and will no longer receive new events.
+* Admin of the organization will receive an email notification.
+
+To re-enable a disabled endpoint, go to your organization's webhook settings in the dashboard and manually enable it. Before re-enabling, ensure your endpoint is properly configured and reachable to avoid repeated disabling.
 
 ## Troubleshooting
 
@@ -182,6 +192,12 @@ any issues arise.
   route exists and see any issues along the way
 * Try adding trailing `/` to the URL on Polar. Often `/foo` is resolved to
   `/foo/` by frameworks.
+
+`HTTP 3xx`
+
+Redirect responses (301, 302, 307, etc.) are treated as failures. Polar does not follow redirects for webhook deliveries. Update your webhook URL to the final destination URL to avoid redirects.
+
+A common cause is hosting providers like Vercel that redirect between `www` and non-`www` domains. Make sure your configured URL matches your actual domain.
 
 `HTTP 403`
 

@@ -1,12 +1,16 @@
 # Source: https://docs.unstructured.io/examplecode/tools/azure-storage-events.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Azure Blob Storage event triggers
 
 You can use Azure Blob Storage events, such as adding new files to—or updating existing files within—Azure Blob Storage containers, to automatically run Unstructured ETL+ workflows
 that rely on those containers as sources. This enables a no-touch approach to having Unstructured automatically process new and updated files in Azure Blob Storage containers as they are added or updated.
 
 This example shows how to automate this process by adding a custom [Azure Function](https://learn.microsoft.com/azure/azure-functions/functions-overview) app to your Azure account. This function app runs
-a function whenever a new or updated file is detected in the specified Azure Blob Storage container. This function then calls the [Unstructured Workflow Endpoint](/api-reference/workflow/overview) to automatically run the
+a function whenever a new or updated file is detected in the specified Azure Blob Storage container. This function then calls the [Unstructured API's workflow operations](/api-reference/workflow/overview) to automatically run the
 specified corresponding Unstructured ETL+ workflow within your Unstructured account.
 
 <Note>
@@ -49,10 +53,10 @@ To use this example, you will need the following:
      c. Follow the on-screen instructions to finish generating the key.<br />
      d. Click the **Copy** icon next to your new key to add the key to your system's clipboard. If you lose this key, simply return and click the **Copy** icon again.<br />
 
-* The Unstructured Workflow Endpoint URL for your account, as follows:
+* The Unstructured API's workflow operations URL for your account, as follows:
 
   1. In the Unstructured UI, click **API Keys** on the sidebar.<br />
-  2. Note the value of the **Unstructured Workflow Endpoint** field.
+  2. Note the value of the **Unstructured API's workflow operations** field.
 
 ## Step 1: Create an Azure Function App
 
@@ -108,7 +112,7 @@ To use this example, you will need the following:
 
 ## Step 3: Customize the function for your workflow
 
-1. With the **Code + Test** page open from the previous step, on the **Code + Test** tab, replace the the context of the `index.js` file with the following code:
+1. With the **Code + Test** page open from the previous step, on the **Code + Test** tab, replace the content of the `index.js` file with the following code:
 
    ```javascript  theme={null}
    module.exports = async function (context, myBlob) {
@@ -147,7 +151,7 @@ To use this example, you will need the following:
 
 7. For **Value**, enter your `<unstructured-api-url>/workflows/<workflow-id>/run`, and replace the following placeholders:
 
-   * Replace `<unstructured-api-url>` with your Unstructured Workflow Endpoint value.
+   * Replace `<unstructured-api-url>` with your Unstructured API's workflow operations value.
    * Replace `<workflow-id>` with the ID of your Unstructured workflow. For now, because the workflow does not yet exist, enter some fictitious value, such as `1234567890`. You will
      update this value later in Step 6 after you create the workflow.
 

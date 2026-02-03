@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/data-monitoring/monitors-as-code.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Monitors as Code
 
 > Manage Datafold monitors via version-controlled YAML for greater scalability, governance, and flexibility in code-based workflows.

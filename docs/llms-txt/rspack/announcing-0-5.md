@@ -1,8 +1,6 @@
 # Source: https://rspack.dev/blog/announcing-0-5.md
 
-import { PackageManagerTabs } from '@theme';
-
-*January 09, 2024*
+_January 09, 2024_
 
 # Announcing Rspack 0.5
 
@@ -26,9 +24,9 @@ Support `rspack.HotModuleReplacementPlugin` in Rspack. If you are not using `@rs
 
 Default transformation is a builtin, which internally transforms source files (such as TypeScript), into compatible sources (such as JavaScript). To make the transformation more customizable, we handed out this feature to users by using `builtin:swc-loader` and dropped the support of several [rules\[\].type](/config/module-rules.md#rulestype). These `rules[].type`s are dropped:
 
-* `"typescript"` or `"ts"`
-* `"tsx"`
-* `"jsx"`
+- `"typescript"` or `"ts"`
+- `"tsx"`
+- `"jsx"`
 
 In order to achieve old behavior, please remove `rules[].type` or change it to `"javascript/auto"` and apply your custom loader configurations.
 
@@ -211,11 +209,49 @@ After you upgrade `@rspack/core` to v0.5.0, if you build failed with error: `Fai
 
 If you are using `externalHelpers: true` with `builtin:swc-loader` or `swc-loader`, now you need to install `@swc/helpers` as dependencies of your project.
 
-<PackageManagerTabs command="install @swc/helpers" />
+
+```sh [npm]
+npm install @swc/helpers
+```
+
+```sh [yarn]
+yarn add @swc/helpers
+```
+
+```sh [pnpm]
+pnpm add @swc/helpers
+```
+
+```sh [bun]
+bun add @swc/helpers
+```
+
+```sh [deno]
+deno add npm:@swc/helpers
+```
 
 If you are using `@rspack/plugin-react-refresh`, now you need to install `react-refresh` as devDependencies of your project.
 
-<PackageManagerTabs command="install react-refresh" />
+
+```sh [npm]
+npm install react-refresh
+```
+
+```sh [yarn]
+yarn add react-refresh
+```
+
+```sh [pnpm]
+pnpm add react-refresh
+```
+
+```sh [bun]
+bun add react-refresh
+```
+
+```sh [deno]
+deno add npm:react-refresh
+```
 
 ### Apply rspack.HotModuleReplacementPlugin
 

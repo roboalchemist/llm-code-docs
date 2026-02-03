@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/creating-content/variables-and-expressions.md
-
-# Source: https://gitbook.com/docs/documentation/fr/creating-content/variables-and-expressions.md
-
-# Source: https://gitbook.com/docs/creating-content/variables-and-expressions.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/creating-content/variables-and-expressions.md
 
 # Source: https://gitbook.com/docs/documentation/zh/creating-content/variables-and-expressions.md
 
@@ -12,15 +8,15 @@
 
 # Variables and expressions
 
-With variables you can create reusable text that can be conditionally referenced in [expressions](https://gitbook.com/docs/formatting/inline#expressions) and [conditions for adaptive content](https://gitbook.com/docs/publishing-documentation/adaptive-content/adapting-your-content#working-with-the-condition-editor).&#x20;
+With variables you can create reusable text that can be conditionally referenced in [expressions](https://gitbook.com/docs/formatting/inline#expressions) and [conditions for adaptive content](https://gitbook.com/docs/publishing-documentation/adaptive-content/adapting-your-content#working-with-the-condition-editor).
 
-If you repeat the same name, phrase or version number multiple times within your content, you can create a **variable** to help keep all those instances in sync and accurate — which is useful if you ever need to update them, or they’re complex and often mistyped.
+If you repeat the same name, phrase or version number multiple times within your content, you can create a **variable** to help keep all those instances in sync and accurate — which is useful if you ever need to update them, or they’re complex and often mistyped.
 
 You can create variables that are scoped to a single page, or a single space.
 
 ### Create a new variable
 
-To create a new variable, Click the **Variables** <picture><source srcset="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FVJIUUkSBNSVvib2I7bZi%2Fvariables-dark.svg?alt=media&#x26;token=ea265cbe-43cb-4d30-8949-ccf584259eb0" media="(prefers-color-scheme: dark)"><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FLm9dLFUy5c3i4YOEwvSz%2Fvariables.svg?alt=media&#x26;token=ae18f815-541c-4b17-ae42-9c4d90897899" alt=""></picture> icon in the upper right corner when editing an open [change request](https://gitbook.com/docs/collaboration/change-requests). This will open the Variables side panel.
+To create a new variable, click the **Library** in your Table of Contents when editing an open [change request](https://gitbook.com/docs/collaboration/change-requests). Then, click **Variables**.
 
 You can use the toggle at the top to view and create variables scoped either to the current page you’re on, or all pages within the current space.
 
@@ -36,9 +32,9 @@ Variable names must start with a letter, and can contain letters, numbers and un
 
 ### Use variables in your content
 
-Variables can be referenced and used within an [expression](https://gitbook.com/docs/formatting/inline#expressions) — which you can insert into your content inline. After inserting an expression, double click it to open the expression editor.
+Variables can be referenced and used within an [expression](https://gitbook.com/docs/formatting/inline#expressions) — which you can insert into your content inline. After inserting an expression, double click it to open the expression editor.
 
-Variables defined under your page are accessible under the `page.vars` object. Similarly, variables defined across your entire space are accessible under the `space.vars` object.&#x20;
+Variables defined under your page are accessible under the `page.vars` object. Similarly, variables defined across your entire space are accessible under the `space.vars` object.
 
 <figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FaRWyFWMI24Cy2nVZmSzE%2FUsing%20variable%402x.png?alt=media&#x26;token=a1999774-f0da-4232-8533-b7e806ddd87c" alt="A GitBook screenshot showing an expression block within the editor. The expression editor is open below it and the ‘space.vars.latest_version’ variable has been selected"><figcaption><p>You can add variables to your content within expresions. The expression editor offers autocomplete options to help you find the variable you need.</p></figcaption></figure>
 

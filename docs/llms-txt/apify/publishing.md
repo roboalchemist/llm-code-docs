@@ -6,20 +6,20 @@
 
 ***
 
-> Sharing is caring but you can also make money from your Actors. Check out our https://blog.apify.com/make-regular-passive-income-developing-web-automation-actors-b0392278d085/ for more context.
+> Sharing is caring but you can also make money from your Actors. Check out our [blog post](https://blog.apify.com/make-regular-passive-income-developing-web-automation-actors-b0392278d085/) for more context.
 
 ## Publish process
 
-To build & publish an Actor on https://apify.com/store, you'll go through the following main stages:
+To build & publish an Actor on [Apify Store](https://apify.com/store), you'll go through the following main stages:
 
-1. https://docs.apify.com/platform/actors/development.md.
-2. https://docs.apify.com/platform/actors/publishing/publish.md and set up of https://docs.apify.com/platform/actors/publishing/monetize.md.
-3. https://docs.apify.com/platform/actors/development/automated-tests.md.
-4. https://apify.notion.site/3fdc9fd4c8164649a2024c9ca7a2d0da?v=6d262c0b026d49bfa45771cd71f8c9ab.
+1. [Development](https://docs.apify.com/platform/actors/development.md).
+2. [Publication](https://docs.apify.com/platform/actors/publishing/publish.md) and set up of [monetization](https://docs.apify.com/platform/actors/publishing/monetize.md).
+3. [Testing](https://docs.apify.com/platform/actors/development/automated-tests.md).
+4. [Promotion](https://apify.notion.site/3fdc9fd4c8164649a2024c9ca7a2d0da?v=6d262c0b026d49bfa45771cd71f8c9ab).
 
 ## Benefits of publishing and monetization
 
-Publishing your Actor on the Apify Store transforms your code, eliminating traditional SaaS development overhead. When you publish your Actor you gain access to:
+Publishing your Actor on Apify Store transforms your code, eliminating traditional SaaS development overhead. When you publish your Actor you gain access to:
 
 * Streamlined product delivery
 
@@ -44,11 +44,11 @@ Packaging your software as an Actor allows you to launch new SaaS product faster
 * Pay-per-result for usage-based pricing
 * Pay-per-event for specific operations
 
-To learn more visit our https://docs.apify.com/platform/actors/running/actors-in-store#pricing-models page.
+To learn more visit our [Actors in Store](https://docs.apify.com/platform/actors/running/actors-in-store#pricing-models) page.
 
 ## Maintain public Actors
 
-While private Actors don't necessarily require ongoing maintenance, public Actors demand a higher level of responsibility. Since public Actors are available on the https://apify.com/store and may be used by other users, an unmaintained public Actor could negatively impact those who depend on it.
+While private Actors don't necessarily require ongoing maintenance, public Actors demand a higher level of responsibility. Since public Actors are available on the [Apify Store](https://apify.com/store) and may be used by other users, an unmaintained public Actor could negatively impact those who depend on it.
 
 To ensure long-term quality and improve your chances of successfully monetizing your Actors, we recommend reserving approximately 2 hours per week for maintenance tasks, such as:
 
@@ -58,29 +58,29 @@ To ensure long-term quality and improve your chances of successfully monetizing 
 
 ![](/assets/images/apify-store-1d47e1201c104ab3c2bb25aeab35b714.webp "Apify Store")
 
-If you decide to make your Actor's code publicly available on https://github.com, code quality becomes even more crucial, as your Actor may be the first experience some users have with Apify.
+If you decide to make your Actor's code publicly available on [GitHub](https://github.com), code quality becomes even more crucial, as your Actor may be the first experience some users have with Apify.
 
 ### Handling breaking changes
 
-While refactoring and updating your Actor's code is encouraged, be cautious of making changes that could break the Actor for existing users. If you plan to introduce breaking change, please contact us at mailto:community@apify.com beforehand, and we'll assist you in communicating the change to your users.
+While refactoring and updating your Actor's code is encouraged, be cautious of making changes that could break the Actor for existing users. If you plan to introduce breaking change, please contact us at [community@apify.com](mailto:community@apify.com) beforehand, and we'll assist you in communicating the change to your users.
 
 ### Documentation and testing
 
-Pay special attention to your Actor's documentation (https://apify.notion.site/How-to-create-an-Actor-README-759a1614daa54bee834ee39fe4d98bc2). It should be clear, detailed, concise and, readable, using simple language and avoiding technical jargon whenever possible, as your users may not be developers.
+Pay special attention to your Actor's documentation ([README](https://apify.notion.site/How-to-create-an-Actor-README-759a1614daa54bee834ee39fe4d98bc2)). It should be clear, detailed, concise and, readable, using simple language and avoiding technical jargon whenever possible, as your users may not be developers.
 
-Ensure periodic testing, either manually or by https://docs.apify.com/platform/actors/development/automated-tests.md and https://apify.com/apify/monitoring. This can help prevent users from encountering issues with your Actor.
+Ensure periodic testing, either manually or by [setting up automatic testing](https://docs.apify.com/platform/actors/development/automated-tests.md) and [monitoring](https://apify.com/apify/monitoring). This can help prevent users from encountering issues with your Actor.
 
 ## Inspiration for new Actors
 
 To find ideas for new Actor, consider the following sources:
 
 * Your own experiences with friends, colleagues, and customers
-* SEO tools to identify search terms, websites related to web scraping, web automation, or web integrations (see the https://apify.notion.site/SEO-990259fe88a84fd0a85ce6d3b394d8c1 for more details)
-* The https://apify.com/ideas to find Actors in demand by the Apify community
-* Our https://discord.com/invite/jyEM2PRvMU, especially the https://discord.com/channels/801163717915574323/1022804760484659210 channel can offer great insights
+* SEO tools to identify search terms, websites related to web scraping, web automation, or web integrations (see the [SEO article](https://apify.notion.site/SEO-990259fe88a84fd0a85ce6d3b394d8c1) for more details)
+* The [Actor ideas page](https://apify.com/ideas) to find Actors in demand by the Apify community
+* Our [Discord community](https://discord.com/invite/jyEM2PRvMU), especially the [#hire-freelancers](https://discord.com/channels/801163717915574323/1022804760484659210) channel can offer great insights
 
-Additionally, you can refer to our https://blog.apify.com/ for examples of how we write about and present Actors, such as the:
+Additionally, you can refer to our [blog](https://blog.apify.com/) for examples of how we write about and present Actors, such as the:
 
-* https://blog.apify.com/set-up-alert-when-webpage-changes/
-* https://blog.apify.com/kickstarter-search-actor-create-your-own-kickstarter-api/
-* https://blog.apify.com/google-sheets-import-data/
+* [Content Checker article](https://blog.apify.com/set-up-alert-when-webpage-changes/)
+* [Kickstarter scraper article](https://blog.apify.com/kickstarter-search-actor-create-your-own-kickstarter-api/)
+* [Google Sheets Actor article](https://blog.apify.com/google-sheets-import-data/)

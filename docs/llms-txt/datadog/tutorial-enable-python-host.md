@@ -10,7 +10,6 @@ description: >-
 breadcrumbs: >-
   Docs > APM > Tracing Guides > Tutorial - Enabling Tracing for a Python
   Application on the Same Host as the Datadog Agent
-source_url: https://docs.datadoghq.com/guide/tutorial-enable-python-host/index.html
 ---
 
 # Tutorial - Enabling Tracing for a Python Application on the Same Host as the Datadog Agent

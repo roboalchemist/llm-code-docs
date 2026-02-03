@@ -1,5 +1,9 @@
 # Source: https://docs.meshconnect.com/advanced/language.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.meshconnect.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Enabling Multi-Language Support for Link
 
 > This guide explains how to configure Mesh Link to support multiple languages, allowing you to provide a localized experience for your users.

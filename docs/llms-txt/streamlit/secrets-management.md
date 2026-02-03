@@ -1,3 +1,7 @@
+# Source: https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/secrets-management
+
+# Source: https://docs.streamlit.io/develop/concepts/connections/secrets-management
+
 # Secrets management
 
 Storing unencrypted secrets in a git repository is a bad practice. For applications that require access to sensitive credentials, the recommended solution is to store those credentials outside the repository - such as using a credentials file not committed to the repository or passing them as environment variables.

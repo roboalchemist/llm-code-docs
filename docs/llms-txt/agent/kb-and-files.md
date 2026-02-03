@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/builder/kb-and-files.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Knowledge Base & Files
 
 [Knowledge bases in ](https://agent.ai/builder/files)[Agent.ai](http://Agent.ai) are organized collections of documents that your agents can reference in their workflows. Think of them as specialized folders containing information that you want your agents to know and use. You could have separate knowledge bases for product documentation, internal policies, and more.

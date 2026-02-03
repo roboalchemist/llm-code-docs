@@ -1,169 +1,187 @@
 # Source: https://docs.baseten.co/development/model/custom-server.md
 
-# Deploy Custom servers from Docker Images
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-> A config.yaml is all you need
+# Deploy custom Docker images
 
-If you have an existing API server packaged in a **Docker image**—whether an open-source server like [vLLM](https://github.com/vllm-project/vllm) or a custom-built image—you can deploy it on Baseten **with just a `config.yaml` file**.
+> Deploy custom Docker images to run inference servers like vLLM, SGLang, Triton, or any containerized application.
 
-<Info>
-  Custom servers also support WebSocket deployments. For WebSocket-specific configuration, see [WebSockets documentation](/development/model/websockets#websocket-usage-with-custom-servers).
-</Info>
+When you write a `Model` class, Truss uses the
+[Truss server base image](https://hub.docker.com/r/baseten/truss-server-base/tags)
+by default. However, you can deploy pre-built containers.
 
-## 1. Configuring a Custom Server in `config.yaml`
+In this guide, you will learn how to set the your configuration file to run a
+custom Docker image and deploy it to Baseten using Truss.
 
-Define a **Docker-based server** by adding `docker_server`:
+## Configuration
+
+To deploy a custom Docker image, set
+[`base_image`](/reference/truss-configuration#base-image-image) to your image
+and use the `docker_server` argument to specify how to run it.
 
 ```yaml config.yaml theme={"system"}
 base_image:
-  image: vllm/vllm-openai:latest
+  image: your-registry/your-image:latest
 docker_server:
-  start_command: vllm serve meta-llama/Meta-Llama-3.1-8B-Instruct --port 8000 --max-model-len 1024
+  start_command: your-server-start-command
+  server_port: 8000
+  predict_endpoint: /predict
   readiness_endpoint: /health
   liveness_endpoint: /health
-  predict_endpoint: /v1/chat/completions
-  server_port: 8000
 ```
 
-### Key Configurations
-
-| Field                | Required | Description                                                                                                                                                                                                                                         |
-| -------------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `start_command`      | ✅        | Command to start the server                                                                                                                                                                                                                         |
-| `predict_endpoint`   | ✅        | Endpoint for serving requests (only one per model). This maps your server's inference endpoint to Baseten's prediction endpoint                                                                                                                     |
-| `server_port`        | ✅        | Port where the server runs                                                                                                                                                                                                                          |
-| `readiness_endpoint` | ✅        | Used for [Kubernetes readiness probes](https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/#readiness-probe) to determine when the container is ready to accept traffic. This must match an endpoint on your server |
-| `liveness_endpoint`  | ✅        | Used for [Kubernetes liveness probes](https://kubernetes.io/docs/concepts/configuration/liveness-readiness-startup-probes/#liveness-probe) to determine if the container **needs to be restarted**. This must match an endpoint on your server      |
-
-### Understanding Readiness vs. Liveness
-
-Both probes run continuously after your container starts, but serve different purposes:
-
-* **Readiness probe**: Answers "Can I handle requests right now?" When it fails, Kubernetes stops sending traffic to the container (but doesn't restart it). Use this to prevent traffic during startup or temporary unavailability.
-
-* **Liveness probe**: Answers "Am I healthy enough to keep running?" When it fails, Kubernetes restarts the container. Use this to recover from deadlocks or hung processes.
-
-For most servers, using the same endpoint (like `/health`) for both is sufficient—as long as it accurately reflects whether your server can handle requests. The key difference is the action taken: readiness controls traffic routing, while liveness controls container lifecycle.
-
-**Initial delays**: Both probes wait before starting checks to allow your server time to start up. See [Custom health checks](/development/model/custom-health-checks) for configuration details.
-
-### Important: Docker Image Requirements
-
-**Container file system**: The `/app` directory is used internally by Baseten. The model container runs as a nonroot user on some configurations, but `/app` and `/tmp` directories are still writable.
+* `image`: The Docker image to use.
+* `start_command`: The command to start the server.
+* `server_port`: The port to listen on.
+* `predict_endpoint`: The endpoint to forward requests to.
+* `readiness_endpoint`: The endpoint to check if the server is ready.
+* `liveness_endpoint`: The endpoint to check if the server is alive.
 
 <Warning>
-  **Image caching**: When using tags like `:latest`, Baseten may not detect changes in the image and may use the cached copy instead. If you update an image with the same tag, Baseten might not detect the change and will reload the cached version. To avoid this, use **image digests** instead of tags when referencing updated images:
-
-  ```yaml  theme={"system"}
-  base_image:
-    image: your-registry/your-image@sha256:abc123def456...
-  ```
-
-  This ensures Baseten always pulls the exact version you specify.
+  Port 8080 is reserved by Baseten's internal reverse proxy. If your server binds to port 8080, the deployment fails with `[Errno 98] address already in use`.
 </Warning>
 
-### Endpoint Mapping
+For the full list of fields, see the
+[configuration reference](/reference/truss-configuration#docker_server).
 
-<Tip>
-  While `predict_endpoint` is required, you can still access any route in your server using the [sync](https://docs.baseten.co/inference/calling-your-model#sync-api-endpoints) endpoint.
-</Tip>
+<Accordion title="Endpoint mapping">
+  While `predict_endpoint` maps your server's inference route to Baseten's
+  `/predict` endpoint, you can access any route in your server using the
+  [sync endpoint](/inference/calling-your-model#sync-api-endpoints).
 
-**Mapping Rules:**
+  | Baseten endpoint                            | Maps to                       |
+  | ------------------------------------------- | ----------------------------- |
+  | `/environments/production/predict`          | Your `predict_endpoint` route |
+  | `/environments/production/sync/{any/route}` | `/{any/route}` in your server |
 
-| Baseten Endpoint                             | Maps To                       | Description                            |
-| -------------------------------------------- | ----------------------------- | -------------------------------------- |
-| `environments/{production}/predict`          | `predict_endpoint` route      | Default endpoint for model predictions |
-| `environments/{production}/sync/{any/route}` | `/{any/route}` in your server | Access any route in your server        |
+  **Example:** If you set `predict_endpoint: /v1/chat/completions`:
 
-**Example:** If you set `predict_endpoint: /my/custom/route`:
+  | Baseten endpoint                          | Maps to                |
+  | ----------------------------------------- | ---------------------- |
+  | `/environments/production/predict`        | `/v1/chat/completions` |
+  | `/environments/production/sync/v1/models` | `/v1/models`           |
+</Accordion>
 
-| Baseten Endpoint                                 | Maps To            |
-| ------------------------------------------------ | ------------------ |
-| `environments/{production}/predict`              | `/my/custom/route` |
-| `environments/{production}/sync/my/custom/route` | `/my/custom/route` |
-| `environments/{production}/sync/my/other/route`  | `/my/other/route`  |
+## Deploy Ollama
 
-## 2. Example: Running a vLLM Server
+This example deploys [Ollama](https://ollama.com/) with the TinyLlama model
+using a custom Docker image. Ollama is a popular lightweight LLM inference
+server, similar to vLLM or SGLang. TinyLlama is small enough to run on a CPU.
 
-This example deploys **Meta-Llama-3.1-8B-Instruct** using **vLLM** on an **L4 GPU**, with `/health` as the readiness and liveness probe.
+### 1. Create the config
 
-```yaml config.yaml theme={"system"}
-base_image:
-  image: vllm/vllm-openai:latest
-docker_server:
-  start_command: sh -c "HF_TOKEN=$(cat /secrets/hf_access_token) vllm serve meta-llama/Meta-Llama-3.1-8B-Instruct --port 8000 --max-model-len 1024"
-  readiness_endpoint: /health
-  liveness_endpoint: /health
-  predict_endpoint: /v1/chat/completions
-  server_port: 8000
-resources:
-  accelerator: L4
-model_name: vllm-model-server
-secrets:
-  hf_access_token: null
-runtime:
-  predict_concurrency: 128
-```
-
-<Tip>
-  vLLM's /health endpoint is used to determine when the server is ready or needs
-  restarting.
-</Tip>
-
-<Info>More examples available in Truss examples repo.</Info>
-
-## 3. Installing custom Python packages
-
-To install additional Python dependencies, add a `requirements.txt` file to your Truss.
-
-#### Example: Infinity embedding model server
+Create a `config.yaml` file with the following configuration:
 
 ```yaml config.yaml theme={"system"}
+model_name: ollama-tinyllama
 base_image:
   image: python:3.11-slim
+build_commands:
+  - curl -fsSL https://ollama.com/install.sh | sh
 docker_server:
-  start_command: sh -c "infinity_emb v2 --model-id BAAI/bge-small-en-v1.5"
-  readiness_endpoint: /health
-  liveness_endpoint: /health
-  predict_endpoint: /embeddings
-  server_port: 7997
+  start_command: sh -c "ollama serve & sleep 5 && ollama pull tinyllama && wait"
+  readiness_endpoint: /api/tags
+  liveness_endpoint: /api/tags
+  predict_endpoint: /api/generate
+  server_port: 11434
 resources:
-  accelerator: L4
-  use_gpu: true
-model_name: infinity-embedding-server
-requirements:
-  - infinity-emb[all]
-environment_variables:
-  hf_access_token: null
+  cpu: "4"
+  memory: 8Gi
 ```
 
-## 4. Accessing secrets in custom servers
+The `base_image` field specifies the Docker image to use as your starting
+point, in this case a lightweight Python image. The `build_commands` section
+installs Ollama into the container at build time. You can also use this to
+install model weights or other dependencies.
 
-To use **API keys or other secrets**, first store them in Baseten. Baseten can then inject secrets into your container. They will be available at `/secrets/{secret_name}`.
+The `start_command` launches the Ollama server, waits for it to initialize, and
+then pulls the TinyLlama model.
 
-#### Example: Accessing a Hugging Face token
+The `readiness_endpoint` and `liveness_endpoint`
+both point to `/api/tags`, which returns successfully when Ollama is running.
+The `predict_endpoint` maps Baseten's `/predict` route to Ollama's
+`/api/generate` endpoint.
 
-Add secrets with placeholder values in `config.yaml`:
+Finally, declare your resource requirements. This example only needs 4 CPUs and
+8GB of memory. For a complete list of resource options, see the
+[Resources](/deployment/resources) page.
 
-```yaml config.yaml theme={"system"}
-secrets:
-  hf_access_token: null
-```
+### 2. Deploy
 
-<Warning>Never store actual secret values in `config.yaml`. Store secrets in the [workspace settings](https://app.baseten.co/settings/secrets).</Warning>
-
-Then, inside your server's `start_command` or application code, read secrets from the `/secrets` directory:
+To deploy the model, use the following:
 
 ```sh  theme={"system"}
-HF_TOKEN=$(cat /secrets/hf_access_token)
+truss push --publish
 ```
 
-Or in your application code:
+This will build the Docker image and deploy it to Baseten.
+Once the `readiness_endpoint` and `liveness_endpoint` are successful, the model will be ready to use.
 
-```python  theme={"system"}
-# Python example
-with open('/secrets/hf_access_token', 'r') as f:
-    hf_token = f.read().strip()
+### 3. Run inference
+
+Ollama uses OpenAI API compatible endpoints to run inference and calls
+`/api/generate` to generate text. Since you mapped the `/predict` route to
+Ollama's `/api/generate` endpoint, you can run inference by calling the
+`/predict` endpoint.
+
+<Tabs>
+  <Tab title="Truss CLI">
+    To run inference with Truss, use the `predict` command:
+
+    ```sh  theme={"system"}
+    truss predict -d '{"model": "tinyllama", "prompt": "Write a short story about a robot dreaming", "options": {"num_predict": 50}}'
+    ```
+  </Tab>
+
+  <Tab title="cURL">
+    To run inference with cURL, use the following command:
+
+    ```sh  theme={"system"}
+    curl -s -X POST "https://model-MODEL_ID.api.baseten.co/development/predict" \
+      -H "Authorization: Api-Key $BASETEN_API_KEY" \
+      -d '{"model": "tinyllama", "prompt": "Write a short story about a robot dreaming", "options": {"num_predict": 50}}' \
+      | jq -j '.response'
+    ```
+  </Tab>
+
+  <Tab title="Python">
+    To run inference with Python, use the following:
+
+    ```python  theme={"system"}
+    import os
+    import requests
+
+    model_id = "MODEL_ID"
+    baseten_api_key = os.environ["BASETEN_API_KEY"]
+
+    response = requests.post(
+        f"https://model-{model_id}.api.baseten.co/development/predict",
+        headers={"Authorization": f"Api-Key {baseten_api_key}"},
+        json={
+            "model": "tinyllama",
+            "prompt": "Write a short story about a robot dreaming",
+            "options": {"num_predict": 50},
+        },
+    )
+    print(response.json()["response"])
+    ```
+  </Tab>
+</Tabs>
+
+The following is an example of its response:
+
+```output  theme={"system"}
+It was a dreary, grey day when the robots started to dream. 
+They had been programmed to think like humans, but it wasn't until they began to dream that they realized just how far apart they actually were.
 ```
 
-<Info>More on secrets management [here](/development/model/secrets).</Info>
+Congratulations! You have successfully deployed and ran inference on a custom Docker image.
+
+## Next steps
+
+* [Private registries](/development/model/private-registries) — Pull images from AWS ECR, Google Artifact Registry, or Docker Hub
+* [Secrets](/development/model/secrets#custom-docker-images) — Access API keys and tokens in your container
+* [WebSockets](/development/model/websockets#websocket-usage-with-custom-servers) — Enable WebSocket connections
+* [vLLM](/examples/vllm), [SGLang](/examples/sglang), [TensorRT-LLM](/examples/tensorrt-llm) — Deploy LLMs with popular inference servers

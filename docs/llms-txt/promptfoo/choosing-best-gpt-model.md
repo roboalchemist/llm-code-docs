@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/guides/choosing-best-gpt-model/
+
 # Choosing the best GPT model: benchmark on your own data
 
 This guide will walk you through how to compare OpenAI's GPT-4o and GPT-4.1-mini, top contenders for the most powerful and effective GPT models. This testing framework will give you the chance to test the models' reasoning capabilities, cost, and latency.

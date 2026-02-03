@@ -2,17 +2,9 @@
 
 # Source: https://polar.sh/docs/api-reference/customer-portal/license-keys/deactivate.md
 
-# Source: https://polar.sh/docs/api-reference/license-keys/deactivate.md
-
-# Source: https://polar.sh/docs/api-reference/customer-portal/license-keys/deactivate.md
-
-# Source: https://polar.sh/docs/api-reference/license-keys/deactivate.md
-
-# Source: https://polar.sh/docs/api-reference/customer-portal/license-keys/deactivate.md
-
-# Source: https://polar.sh/docs/api-reference/license-keys/deactivate.md
-
-# Source: https://polar.sh/docs/api-reference/customer-portal/license-keys/deactivate.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Deactivate License Key
 
@@ -23,184 +15,128 @@
 > If you plan to validate a license key on a server, use the `/v1/license-keys/deactivate`
 > endpoint instead.
 
+
+
 ## OpenAPI
 
 ````yaml post /v1/customer-portal/license-keys/deactivate
+openapi: 3.1.0
+info:
+  title: Polar API
+  summary: Polar HTTP and Webhooks API
+  description: Read the docs at https://polar.sh/docs/api-reference
+  version: 0.1.0
+servers:
+  - url: https://api.polar.sh
+    description: Production environment
+    x-speakeasy-server-id: production
+  - url: https://sandbox-api.polar.sh
+    description: Sandbox environment
+    x-speakeasy-server-id: sandbox
+security:
+  - access_token: []
+tags:
+  - name: public
+    description: >-
+      Endpoints shown and documented in the Polar API documentation and
+      available in our SDKs.
+  - name: private
+    description: >-
+      Endpoints that should appear in the schema only in development to generate
+      our internal JS SDK.
+  - name: mcp
+    description: Endpoints enabled in the MCP server.
 paths:
-  path: /v1/customer-portal/license-keys/deactivate
-  method: post
-  servers:
-    - url: https://api.polar.sh
-      description: Production environment
-    - url: https://sandbox-api.polar.sh
-      description: Sandbox environment
-  request:
-    security:
-      - title: ''
-        parameters:
-          query: {}
-          header: {}
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              key:
-                allOf:
-                  - type: string
-                    title: Key
-              organization_id:
-                allOf:
-                  - type: string
-                    format: uuid4
-                    title: Organization Id
-              activation_id:
-                allOf:
-                  - type: string
-                    format: uuid4
-                    title: Activation Id
-            required: true
-            title: LicenseKeyDeactivate
-            refIdentifier: '#/components/schemas/LicenseKeyDeactivate'
-            requiredProperties:
-              - key
-              - organization_id
-              - activation_id
-        examples:
-          example:
-            value:
-              key: <string>
-              organization_id: <string>
-              activation_id: <string>
-    codeSamples:
-      - label: Go (SDK)
-        lang: go
-        source: "package main\n\nimport(\n\t\"context\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"github.com/polarsource/polar-go/models/components\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New()\n\n    res, err := s.CustomerPortal.LicenseKeys.Deactivate(ctx, components.LicenseKeyDeactivate{\n        Key: \"<key>\",\n        OrganizationID: \"<value>\",\n        ActivationID: \"<value>\",\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res != nil {\n        // handle response\n    }\n}"
-      - label: Python (SDK)
-        lang: python
-        source: |-
-          from polar_sdk import Polar
+  /v1/customer-portal/license-keys/deactivate:
+    post:
+      tags:
+        - customer_portal
+        - license_keys
+        - public
+      summary: Deactivate License Key
+      description: >-
+        Deactivate a license key instance.
 
 
-          with Polar() as polar:
+        > This endpoint doesn't require authentication and can be safely used on
+        a public
 
-              polar.customer_portal.license_keys.deactivate(request={
-                  "key": "<key>",
-                  "organization_id": "<value>",
-                  "activation_id": "<value>",
-              })
+        > client, like a desktop application or a mobile app.
 
-              # Use the SDK ...
-      - label: Typescript (SDK)
-        lang: typescript
-        source: |-
-          import { Polar } from "@polar-sh/sdk";
+        > If you plan to validate a license key on a server, use the
+        `/v1/license-keys/deactivate`
 
-          const polar = new Polar();
-
-          async function run() {
-            await polar.customerPortal.licenseKeys.deactivate({
-              key: "<key>",
-              organizationId: "<value>",
-              activationId: "<value>",
-            });
-
-
-          }
-
-          run();
-      - label: PHP (SDK)
-        lang: php
-        source: |-
-          declare(strict_types=1);
-
-          require 'vendor/autoload.php';
-
-          use Polar;
-          use Polar\Models\Components;
-
-          $sdk = Polar\Polar::builder()->build();
-
-          $request = new Components\LicenseKeyDeactivate(
-              key: '<key>',
-              organizationId: '<value>',
-              activationId: '<value>',
-          );
-
-          $response = $sdk->customerPortal->licenseKeys->deactivate(
-              request: $request
-          );
-
-          if ($response->statusCode === 200) {
-              // handle response
-          }
-  response:
-    '204':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: License key activation deactivated.
-        examples: {}
-        description: License key activation deactivated.
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
-                    const: ResourceNotFound
-                    title: Error
-                    examples:
-                      - ResourceNotFound
-              detail:
-                allOf:
-                  - type: string
-                    title: Detail
-            title: ResourceNotFound
-            refIdentifier: '#/components/schemas/ResourceNotFound'
-            requiredProperties:
-              - error
-              - detail
-        examples:
-          example:
-            value:
-              error: ResourceNotFound
-              detail: <string>
-        description: License key not found.
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    type: array
-                    title: Detail
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+        > endpoint instead.
+      operationId: customer_portal:license_keys:deactivate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LicenseKeyDeactivate'
+        required: true
+      responses:
+        '204':
+          description: License key activation deactivated.
+        '404':
+          description: License key not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - {}
 components:
   schemas:
+    LicenseKeyDeactivate:
+      properties:
+        key:
+          type: string
+          title: Key
+        organization_id:
+          type: string
+          format: uuid4
+          title: Organization Id
+        activation_id:
+          type: string
+          format: uuid4
+          title: Activation Id
+      type: object
+      required:
+        - key
+        - organization_id
+        - activation_id
+      title: LicenseKeyDeactivate
+    ResourceNotFound:
+      properties:
+        error:
+          type: string
+          const: ResourceNotFound
+          title: Error
+          examples:
+            - ResourceNotFound
+        detail:
+          type: string
+          title: Detail
+      type: object
+      required:
+        - error
+        - detail
+      title: ResourceNotFound
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     ValidationError:
       properties:
         loc:
@@ -222,5 +158,12 @@ components:
         - msg
         - type
       title: ValidationError
+  securitySchemes:
+    access_token:
+      type: http
+      scheme: bearer
+      description: >-
+        You can generate an **Organization Access Token** from your
+        organization's settings.
 
 ````

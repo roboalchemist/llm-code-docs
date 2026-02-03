@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/get-started/concepts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Concepts
 
 > Understand concepts in Pinecone and how they relate to each other.
@@ -26,15 +30,23 @@ There are two types of [serverless indexes](/guides/index-data/indexing-overview
 
 ### Dense index
 
-A dense index stores [dense vectors](#dense-vector), which are a series of numbers that represent the meaning and relationships of text, images, or other types of data. Each number in a dense vector corresponds to a point in a multidimensional space. Vectors that are closer together in that space are semantically similar.
+Dense indexes store records that have one [dense vector](#dense-vector) each.
 
-When you query a dense index, Pinecone retrieves the dense vectors that are the most semantically similar to the query. This is often called **semantic search**, nearest neighbor search, similarity search, or just vector search.
+<Note>
+  If any records in a dense index also have a [sparse vector](#sparse-vector), the index is a [hybrid index](/guides/search/hybrid-search#use-a-single-hybrid-index).
+</Note>
+
+A dense vector is a series of numbers that represent the meaning and relationships of text, images, or other types of data. Each number in a dense vector corresponds to a point in a multidimensional space. Vectors that are closer together in that space are semantically similar.
+
+When you query a dense index, Pinecone retrieves records containing dense vectors that are most semantically similar to the query. This is often called **semantic search**, nearest neighbor search, similarity search, or just vector search.
 
 ### Sparse index
 
-A sparse index stores [sparse vectors](#sparse-vector), which are a series of numbers that represent the words or phrases in a document. Sparse vectors have a very large number of dimensions, where only a small proportion of values are non-zero. The dimensions represent words from a dictionary, and the values represent the importance of these words in the document.
+Sparse indexes store records that have one [sparse vector](#sparse-vector) each.
 
-When you search a sparse index, Pinecone retrieves the sparse vectors that most exactly match the words or phrases in the query. Query terms are scored independently and then summed, with the most similar records scored highest. This is often called **lexical search** or **keyword search**.
+Every sparse vector is a series of numbers that represent the words or phrases in a document. Sparse vectors have a very large number of dimensions, where only a small proportion of values are non-zero. The dimensions represent words from a dictionary, and the values represent the importance of these words in the document.
+
+When you search a sparse index, Pinecone retrieves the records with sparse vectors that most exactly match the words or phrases in the query. Query terms are scored independently and then summed, with records that have the most similar vectors scored highest. This is often called **lexical search** or **keyword search**.
 
 ## Namespace
 
@@ -70,17 +82,17 @@ For more information about dense vectors, see [What are vector embeddings?](http
 
 ### Sparse vector
 
-A sparse vector, also referred to as a sparse vector embedding, has a large number of dimensions, but only a small proportion of those values are non-zero. Sparse vectors are often used to represent documents or queries in a way that captures keyword information. Each dimension in a sparse vector typically represents a word from a dictionary, and the non-zero values represent the importance of these words in the document.
+Sparse vectors are often used to represent documents or queries in a way that captures keyword information. Each dimension in a sparse vector typically represents a word from a dictionary, and the non-zero values represent the importance of these words in the document.
 
-Sparse vectors are stored in [sparse indexes](#sparse-index).
+Sparse vectors have a large number of dimensions, but a small number of those values are non-zero. Because most values are zero, Pinecone stores sparse vectors efficiently by keeping only the non-zero values along with their corresponding indices.
 
-You use a sparse embedding model to convert data to sparse vectors. The embedding model can be external to Pinecone or [hosted on Pinecone infrastructure](/guides/index-data/create-an-index#embedding-models) and integrated with an index.
+Sparse vectors are stored in [sparse indexes](#sparse-index) and [hybrid indexes](/guides/search/hybrid-search#use-a-single-hybrid-index). To convert data to sparse vectors, use a sparse embedding model. The embedding model can be external to Pinecone or [hosted on Pinecone infrastructure](/guides/index-data/create-an-index#embedding-models) and integrated with an index.
 
 For more information about sparse vectors, see [Sparse retrieval](https://www.pinecone.io/learn/sparse-retrieval/).
 
 ### Metadata
 
-Metadata is additional information that can be attached to vector embeddings to provide more context and enable additional [filtering capabilities](/guides/index-data/indexing-overview#metadata). For example, the original text of the embeddings can be stored in the metadata.
+Metadata is additional information included in a record to provide more context and enable additional [filtering capabilities](/guides/index-data/indexing-overview#metadata). For example, the original text that was embedded can be stored in the metadata.
 
 ## Other concepts
 

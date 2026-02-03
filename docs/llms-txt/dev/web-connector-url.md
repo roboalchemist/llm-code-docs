@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/web-connector-url.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add web content to a Knowledge Graph
 
 This guide demonstrates how to add web content to a [Knowledge Graph](/home/knowledge-graph) using web connector URLs. Adding web connector URLs to your Knowledge Graph allows you to automatically extract and index content from websites, making it available for querying in your Knowledge Graph.

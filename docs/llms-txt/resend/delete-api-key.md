@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/api-reference/api-keys/delete-api-key.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete API key
 
 > Remove an existing API key.
@@ -41,7 +45,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
 </ResendParamField>
 
 <RequestExample>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -51,20 +55,20 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   );
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->apiKeys->remove('b6d24b8e-af0b-4c3c-be0c-359bbd97381e');
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
   resend.ApiKeys.remove(api_key_id="b6d24b8e-af0b-4c3c-be0c-359bbd97381e")
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -72,14 +76,18 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   Resend::ApiKeys.remove "b6d24b8e-af0b-4c3c-be0c-359bbd97381e"
   ```
 
-  ```go Go theme={null}
-  import 	"github.com/resend/resend-go/v3"
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
+  package main
 
-  client := resend.NewClient("re_xxxxxxxxx")
-  client.ApiKeys.Remove("b6d24b8e-af0b-4c3c-be0c-359bbd97381e")
+  import "github.com/resend/resend-go/v3"
+
+  func main() {
+  	client := resend.NewClient("re_xxxxxxxxx")
+  	client.ApiKeys.Remove("b6d24b8e-af0b-4c3c-be0c-359bbd97381e")
+  }
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{Resend, Result};
 
   #[tokio::main]
@@ -95,7 +103,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -107,7 +115,7 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   }
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -115,14 +123,14 @@ export const ResendParamField = ({children, body, path, ...props}) => {
   await resend.ApiKeyDeleteAsync( new Guid( "b6d24b8e-af0b-4c3c-be0c-359bbd97381e" ) );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X DELETE 'https://api.resend.com/api-keys/b6d24b8e-af0b-4c3c-be0c-359bbd97381e' \
        -H 'Authorization: Bearer re_xxxxxxxxx'
   ```
 </RequestExample>
 
 <ResponseExample>
-  ```text Response theme={null}
+  ```text Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   HTTP 200 OK
   ```
 </ResponseExample>

@@ -24,5 +24,5 @@ To add a new address to get notifications:
 4. Click **Save**
 5. Go to your email inbox and click the verification link you have received there.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/integration/crewaiautomationtool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # CrewAI Run Automation Tool
 
 > Enables CrewAI agents to invoke CrewAI Platform automations and leverage external crew services within your workflows.

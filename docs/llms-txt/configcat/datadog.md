@@ -2,6 +2,8 @@
 
 # Datadog - Monitor your feature flags events
 
+Copy page
+
 ## Overview[​](#overview "Direct link to Overview")
 
 Monitor feature flag events in real-time. Feature flag changes will appear as events in Datadog, tagged with relevant product, config, and environment details.

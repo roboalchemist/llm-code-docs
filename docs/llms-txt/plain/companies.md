@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/graphql/companies.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Companies
 
 Within Plain every customer can belong to one company. The company is infered automatically using the customer's email address. For example if their email address ends with "@nike.com" then their company will be automatically set to "Nike".

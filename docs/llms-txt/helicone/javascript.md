@@ -22,77 +22,9 @@
 
 # Source: https://docs.helicone.ai/integrations/anthropic/javascript.md
 
-# Source: https://docs.helicone.ai/integrations/xai/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/openai/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/ollama/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/nvidia/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/llama/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/instructor/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/groq/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/gemini/vertex/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/gemini/api/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/bedrock/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/azure/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/anthropic/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/xai/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/openai/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/ollama/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/nvidia/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/llama/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/instructor/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/groq/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/gemini/vertex/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/gemini/api/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/bedrock/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/azure/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/anthropic/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/xai/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/openai/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/ollama/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/nvidia/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/llama/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/instructor/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/groq/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/gemini/vertex/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/gemini/api/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/bedrock/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/azure/javascript.md
-
-# Source: https://docs.helicone.ai/integrations/anthropic/javascript.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Anthropic JavaScript SDK Integration
 

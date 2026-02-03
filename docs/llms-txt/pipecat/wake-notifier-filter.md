@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/utilities/filters/wake-notifier-filter.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # WakeNotifierFilter
 
 > Processor that triggers a notifier when specified frame types pass a custom filter
@@ -90,8 +94,3 @@ graph TD
 * Uses async filter function for complex conditions
 * Functions as a "listener" that doesn't affect the data stream
 * Can be used for logging, analytics, or coordinating external systems
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

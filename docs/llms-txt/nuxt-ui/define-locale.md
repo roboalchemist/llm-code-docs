@@ -29,11 +29,9 @@ const locale = defineLocale<Messages>({
 </template>
 ```
 
-<tip to="/docs/getting-started/integrations/i18n">
-
-Learn more about internationalization in the **i18n integration** documentation.
-
-</tip>
+> [!TIP]
+> See: /docs/getting-started/integrations/i18n
+> Learn more about internationalization in the i18n integration documentation.
 
 ## API
 
@@ -43,45 +41,15 @@ Creates a new locale object with the provided options.
 
 #### Parameters
 
-<field-group>
-<field name="options" type="DefineLocaleOptions<M>" :required="true" required="true">
-
 The locale configuration object with the following properties:
 
-<collapsible>
-<field-group>
-<field name="name" type="string" :required="true" required="true">
+The display name of the locale (e.g., , ).
 
-The display name of the locale (e.g., `'English'`, `'Français'`).
+The ISO code of the locale (e.g., , , ).
 
-</field>
+The text direction of the locale. Defaults to .
 
-<field name="code" type="string" :required="true" required="true">
-
-The ISO code of the locale (e.g., `'en'`, `'fr'`, `'de-AT'`).
-
-</field>
-</field-group>
-</collapsible>
-
-<field name="dir" type="'ltr' | 'rtl'">
-
-The text direction of the locale. Defaults to `'ltr'`.
-
-</field>
-
-<field name="messages" type="M" :required="true" required="true">
-
-The translation messages object. Use the `Messages` type from `@nuxt/ui` for type safety.
-
-</field>
-</field>
-
-::
-
-</field-group>
-
-::
+The translation messages object. Use the  type from  for type safety.
 
 **Returns:** A `Locale<M>` object that can be passed to the `locale` prop of the [App](/docs/components/app) component.
 
@@ -123,8 +91,5 @@ const locale = defineLocale<Messages>({
 </template>
 ```
 
-<note>
-
-You can look at the [built-in locales](https://github.com/nuxt/ui/tree/v4/src/runtime/locale) for reference on how to structure the messages object.
-
-</note>
+> [!NOTE]
+> You can look at the [built-in locales](https://github.com/nuxt/ui/tree/v4/src/runtime/locale) for reference on how to structure the messages object.

@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/gettingstarted/concurrency.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Scaling & Call Concurrency
 
 > How to scale call volume with Ultravox.
@@ -155,8 +159,3 @@ Set it and forget it. You don't have to sweat the load or keep track of 429s. Le
 * Marketing call campaigns
 * Proactive customer service follow-ups
 * High-volume appointment reminders
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

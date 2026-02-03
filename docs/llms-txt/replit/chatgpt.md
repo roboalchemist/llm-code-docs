@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/platforms/chatgpt.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Replit in ChatGPT
 
 > Build real apps by talking to ChatGPT. Create, update, and inspect Replit Apps from a single conversation.
@@ -167,8 +171,3 @@ Feature parity with the full Replit experience (databases, secrets management, m
 * **[Replit Workspace](/category/replit-workspace)**: Explore the full development environment
 * **[Publishing](/category/replit-deployments)**: Share and deploy your apps
 * **[Support](https://replit.com/~?supportform=true)**: Contact us for help with Replit in ChatGPT
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.replit.com/llms.txt

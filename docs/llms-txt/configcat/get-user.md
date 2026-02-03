@@ -2,10 +2,7 @@
 
 # Get User
 
-```
-GET 
-/v2/:organizationId/Users/:userId
-```
+Copy page
 
 This endpoint returns a user.
 

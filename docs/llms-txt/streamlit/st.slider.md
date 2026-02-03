@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/widgets/st.slider
+
 # st.slider
 
 Display a slider widget.

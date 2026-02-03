@@ -1,4 +1,8 @@
-# Source: https://braintrust.dev/docs/integrations/sdk-integrations/openai-agents-sdk.md
+# Source: https://braintrust.dev/docs/integrations/agent-frameworks/openai-agents-sdk.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # OpenAI Agents SDK
 
@@ -169,9 +173,4 @@ Use OpenAI Agents SDK as the `task` in a Braintrust `Eval` to build and evaluate
 ## Resources
 
 * [OpenAI Agents SDK documentation](https://openai.com/index/introducing-the-openai-agents-sdk/)
-* [Braintrust Eval guide](/core/experiments)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt
+* [Braintrust Eval guide](/evaluate/run-evaluations)

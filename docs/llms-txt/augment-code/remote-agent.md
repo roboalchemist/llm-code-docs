@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/using-augment/remote-agent.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Using Remote Agent
 
 > Use Remote Agent to complete tasks across your workflow–implementing a feature, upgrade a dependency, or writing a pull request–all from the cloud and with the full power of Visual Studio Code when you need it.

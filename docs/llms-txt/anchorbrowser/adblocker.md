@@ -1,14 +1,18 @@
 # Source: https://docs.anchorbrowser.io/advanced/adblocker.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Ad Blocker
 
 > Block ads, trackers, and unwanted content in your browser sessions
 
 Ad blocking is enabled by default in Anchor Browser. It blocks ads, trackers, and malicious content to improve page load times and create cleaner automation.
 
-<Info>
+<Note>
   Ad blocking is enabled by default. Disable it only if you need to test ad-related functionality.
-</Info>
+</Note>
 
 ## Quick Start
 

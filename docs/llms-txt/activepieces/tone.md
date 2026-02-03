@@ -1,5 +1,9 @@
 # Source: https://www.activepieces.com/docs/handbook/customer-support/tone.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tone & Communication
 
 Our customers are fellow engineers and great people to work with. This guide will help you understand the tone and communication style that reflects Activepieces' culture in customer support.

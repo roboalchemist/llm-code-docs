@@ -2,108 +2,52 @@
 
 # Source: https://docs.embedchain.ai/api-reference/app/delete.md
 
-# Source: https://docs.embedchain.ai/examples/rest-api/delete.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.embedchain.ai/api-reference/app/delete.md
+# 🗑 delete
 
-# Source: https://docs.embedchain.ai/examples/rest-api/delete.md
+## Delete Document
 
-# Source: https://docs.embedchain.ai/api-reference/app/delete.md
+`delete()` method allows you to delete a document previously added to the app.
 
-# Source: https://docs.embedchain.ai/examples/rest-api/delete.md
+### Usage
 
-# Source: https://docs.embedchain.ai/api-reference/app/delete.md
+```python  theme={null}
+from embedchain import App
 
-# Source: https://docs.embedchain.ai/examples/rest-api/delete.md
+app = App()
 
-# Delete app
+forbes_doc_id = app.add("https://www.forbes.com/profile/elon-musk")
+wiki_doc_id = app.add("https://en.wikipedia.org/wiki/Elon_Musk")
 
-> Delete an existing app
+app.delete(forbes_doc_id)   # deletes the forbes document
+```
 
-## OpenAPI
+<Note>
+  If you do not have the document id, you can use `app.db.get()` method to get the document and extract the `hash` key from `metadatas` dictionary object, which serves as the document id.
+</Note>
 
-````yaml delete /{app_id}/delete
-paths:
-  path: /{app_id}/delete
-  method: delete
-  request:
-    security: []
-    parameters:
-      path:
-        app_id:
-          schema:
-            - type: string
-              required: true
-              title: App Id
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              response:
-                allOf:
-                  - type: string
-                    title: Response
-            title: DefaultResponse
-            refIdentifier: '#/components/schemas/DefaultResponse'
-            requiredProperties:
-              - response
-        examples:
-          example:
-            value:
-              response: <string>
-        description: Successful Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    type: array
-                    title: Detail
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
-components:
-  schemas:
-    ValidationError:
-      properties:
-        loc:
-          items:
-            anyOf:
-              - type: string
-              - type: integer
-          type: array
-          title: Location
-        msg:
-          type: string
-          title: Message
-        type:
-          type: string
-          title: Error Type
-      type: object
-      required:
-        - loc
-        - msg
-        - type
-      title: ValidationError
+## Delete Chat Session History
 
-````
+`delete_session_chat_history()` method allows you to delete all previous messages in a chat history.
+
+### Usage
+
+```python  theme={null}
+from embedchain import App
+
+app = App()
+
+app.add("https://www.forbes.com/profile/elon-musk")
+
+app.chat("What is the net worth of Elon Musk?")
+
+app.delete_session_chat_history()
+```
+
+<Note>
+  `delete_session_chat_history(session_id="session_1")` method also accepts `session_id` optional param for deleting chat history of a specific session.
+  It assumes the default session if no `session_id` is provided.
+</Note>

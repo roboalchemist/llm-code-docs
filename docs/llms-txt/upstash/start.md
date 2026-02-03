@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/howto/start.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Start a Run
 
 You’ve defined your workflow, and the final step is to trigger the endpoint!
@@ -23,9 +27,7 @@ We recommend using [`client.trigger`](/workflow/basics/client/trigger) to start 
     retries: 3                    // optional retries in the initial request
     delay: "10s"                  // optional delay value
     failureUrl: "https://<YOUR_FAILURE_URL>", // optional failure url
-    useFailureFunction: true,     // whether a failure function is defined in the endpoint
     flowControl: { ... }          // optional flow control
-    keepTriggerConfig: true,      // whether to keep the trigger config in all steps
   })
 
   console.log(workflowRunId)

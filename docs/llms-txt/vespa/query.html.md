@@ -8,9 +8,9 @@ Refer to the [Query API guide](../../querying/query-api.html) for API examples.
 
 All the request parameters listed below can be set in query profiles. The first four blocks of properties are also modeled as[query profile types](../../querying/query-profiles.html#query-profile-types). These types can be referred from query profiles (and inheriting types) to provide type checking on the parameters.
 
-These parameters often have both a full name - including the path from the root query profile - and one or more abbreviated names. Both names can be used in requests, while only full names can be used in query profiles. The full names are case-sensitive, abbreviated names are case-insensitive.
+Parameters have _full name_ and can have one or more shorter aliases, shown in square brackets below. Both names can be used in requests and query profiles. Aliases are case-insensitive in requests.
 
-The parameters modeled as query profiles are also available through get methods as Java objects from the Query to Searcher components.
+When accessing parameters from Searcher components, the full names correspond to the path from the root Query object to that parameter.
 
 ## Parameters
 Query
@@ -38,6 +38,7 @@ Query Model
 - [model.type.composite](#model.type.composite)
 - [model.type.tokenization](#model.type.tokenization)
 - [model.type.syntax](#model.type.syntax)
+- [model.type.profile](#model.type.profile)
 - [model.type.isYqlDefault](#model.type.isYqlDefault)
 
 Ranking
@@ -186,7 +187,7 @@ An index name. The field which is searched for query terms which doesn't explici
 
 Encoding names or aliases defined in the [IANA character sets](https://www.iana.org/assignments/character-sets/character-sets.xhtml). Sets the encoding to use when returning a result. The query is always encoded as UTF-8, independently of how the result will be encoded.
 
-The encodings `big5`, `euc-jp`, `euc-kr`, `gb2312`, `iso-2022-jp` and `shift-jis` also influences how [tokenization](../../linguistics/linguistics.html#tokenization) is done in the absence of an explicit language setting.
+The encodings `big5`, `euc-jp`, `euc-kr`, `gb2312`, `iso-2022-jp` and `shift-jis` also influences how [tokenization](../../linguistics/linguistics-opennlp.html#tokenization) is done in the absence of an explicit language setting.
 
  |
 | model.filter | filter | String | | 
@@ -302,6 +303,11 @@ Sets the syntax used to interpret the query string. Options:
 | simple | Use the [simple query language](../querying/simple-query-language.html) suitable for end users. |
 | web | Like the [simple query language](../querying/simple-query-language.html), but '+' in front of a term means "search for this term as-is", and 'a OR b' (capital OR) means match either a or b. |
 | yql | Parse as a [YQL query](https://docs.vespa.ai/en/reference/query-language-reference.html). |
+
+ |
+| model.type.profile | | String | `(null)` | 
+
+Overrides the linguistics profile assigned to the field(s) searched. The linguistics profile is used to choose the processing done in the [linguistics component](../../linguistics/linguistics.html).
 
  |
 | model.type.isYqlDefault | | Boolean | `false` | 
@@ -489,7 +495,7 @@ Threshold value deciding if a query with an approximate [nearestNeighbor](../que
 
  |
 | ranking.matching  
-.approximateThreshold | | double [0.0, 1.0] | 0.05 | 
+.approximateThreshold | | double [0.0, 1.0] | 0.02 | 
 
 Rank profile equivalent: [approximate-threshold](../schemas/schemas.html#approximate-threshold)
 
@@ -497,7 +503,7 @@ Threshold value deciding if a query with an approximate [nearestNeighbor](../que
 
  |
 | ranking.matching  
-.filterFirstThreshold | | double [0.0, 1.0] | 0.0 | 
+.filterFirstThreshold | | double [0.0, 1.0] | 0.3 | 
 
 Rank profile equivalent: [filter-first-threshold](../schemas/schemas.html#filter-first-threshold)
 
@@ -639,6 +645,7 @@ Whether to bold query terms in [schema](../schemas/schemas.html) fields defined 
 | --- | --- |
 | _No value_ or [default](../querying/default-result-format.html) | The default, builtin JSON format |
 | [json](../querying/default-result-format.html) | Builtin JSON format |
+| `cbor` | Builtin [CBOR](https://cbor.io/) format. Binary encoding, responses are smaller and faster to render than JSON, especially for numeric data. Semantically equivalent to JSON. Cannot be used with `jsoncallback` (JSONP). Requires Vespa 8.623.5 or later. |
 | `xml` | Builtin XML format. 
  **Deprecated:** See [deprecations](../release-notes/vespa8.html).
  |
@@ -646,6 +653,8 @@ Whether to bold query terms in [schema](../schemas/schemas.html) fields defined 
  **Deprecated:** See [deprecations](../release-notes/vespa8.html).
  |
 | _Any other value_ | A custom [result renderer](../../applications/result-renderers.html) supplied by the application |
+
+The response format can also be selected via the HTTP `Accept` header. If the Accept header specifies `application/cbor` with higher priority than `application/json`, CBOR will be used. The `format` query parameter overrides the Accept header.
 
  |
 | presentation.summary | summary | String | | 
@@ -1007,7 +1016,7 @@ A string with JSON. Refer to the [select reference](../querying/json-query-langu
 
  |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

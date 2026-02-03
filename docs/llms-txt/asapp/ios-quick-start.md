@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/agent-desk/integrations/ios-sdk/ios-quick-start.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # iOS Quick Start
 
 If you want to start fast, follow these steps:
@@ -14,14 +18,14 @@ If you want to start fast, follow these steps:
 
 Before downloading and installing the SDK, please make sure you have the following information. Contact your Implementation Manager at ASAPP if you have any questions.
 
-| App ID               | Also known as the "Company Marker", assigned by ASAPP.                                                                                                                                                                                 |
-| :------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| API Host Name        | The fully-qualified domain name used by the SDK to communicate with ASAPP's API. Provided by ASAPP and subject to change based on the stage of implementation.                                                                         |
-| Region Code          | The ISO 3166-1 alpha-2 code for the region of the implementation, provided by ASAPP.                                                                                                                                                   |
-| Supported Languages  | Your app's supported languages, in order of preference, as an array of language tag strings. Strings can be in the format "\{ISO 639-1 Code}-\{ISO 3166-1 Code}" or "\{ISO 639-1 Code}", such as "en-us" or "en". Defaults to \["en"]. |
-| Client Secret        | This can be an empty or random string\* until otherwise notified by ASAPP.                                                                                                                                                             |
-| User Identifier      | A username or similar value used to identify and authenticate the customer, provided by the Customer Company.                                                                                                                          |
-| Authentication Token | A password-equivalent value, which may or may not expire, used to authenticate the customer that is provided by the Customer Company.                                                                                                  |
+| App ID               | Also known as the "Company Marker", assigned by ASAPP.                                                                                                                                                                              |
+| :------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| API Host Name        | The fully-qualified domain name used by the SDK to communicate with ASAPP's API. Provided by ASAPP and subject to change based on the stage of implementation.                                                                      |
+| Region Code          | The ISO 3166-1 alpha-2 code for the region of the implementation, provided by ASAPP.                                                                                                                                                |
+| Supported Languages  | Your app's supported languages, in order of preference, as an array of language tag strings. Strings can be in the format `{ISO 639-1 Code}-{ISO 3166-1 Code}` or `{ISO 639-1 Code}`, such as "en-us" or "en". Defaults to \["en"]. |
+| Client Secret        | This can be an empty or random string\* until otherwise notified by ASAPP.                                                                                                                                                          |
+| User Identifier      | A username or similar value used to identify and authenticate the customer, provided by the Customer Company.                                                                                                                       |
+| Authentication Token | A password-equivalent value, which may or may not expire, used to authenticate the customer that is provided by the Customer Company.                                                                                               |
 
 \* In the future, the ASAPP-provided client secret will be a string that authorizes the integrated SDK to call the ASAPP API in production. ASAPP recommends fetching this string from a server and storing it securely using Secure Storage; however, as it is one of many layers of security, you can hard-code the client secret.
 
@@ -39,7 +43,7 @@ Add your chosen flavor of the framework to the "Frameworks, Libraries, and Embed
 
 Add the provided `ASAPPResources.bundle` to your target's "Frameworks, Libraries, and Embedded Content" and then include it in your target's "Copy Bundle Resources" build phase.
 
-The SDK allows a customer to take and upload photos, [unless these features are disabled through configuration](https://docs-sdk.asapp.com/api/chatsdk/ios/latest/Classes/ASAPP.html#/Permissions). Since iOS 10, Apple requires descriptions for why your app uses the photo library and/or camera, which will be displayed to the customer. If you haven't already, you'll need to add these descriptions to your app's `Info.plist`.
+The SDK allows customers to take and upload photos, [unless you disable these features through configuration](https://docs-sdk.asapp.com/api/chatsdk/ios/latest/Classes/ASAPP.html#/Permissions). Since iOS 10, Apple requires descriptions for why your app uses the photo library and/or camera, which Apple displays to the customer. If you haven't already, you'll need to add these descriptions to your app's `Info.plist`.
 
 * If you access `Info.plist` via Xcode's plist editor, the description keys are "Privacy - Camera Usage Description" and "Privacy - Photo Library Usage Description".
 * If you access `Info.plist` via a text editor, the keys are "NSPhotoLibraryUsageDescription" and "NSCameraUsageDescription".

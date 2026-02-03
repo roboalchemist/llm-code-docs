@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/guides/learn/transports.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Transports
 
 > Learn about the different ways users can connect to your Pipecat voice AI bot
@@ -18,6 +22,10 @@ Pipecat supports multiple transport types to fit different use cases and deploym
 
   <Card title="FastAPIWebsocketTransport" icon="plug" href="/server/services/transport/fastapi-websocket">
     WebSocket transport for telephony providers and custom WebSocket connections
+  </Card>
+
+  <Card title="HeyGenTransport" icon="camera" href="/server/services/transport/heygen">
+    Specialized transport for HeyGen LiveAvatar video generation and streaming
   </Card>
 
   <Card title="LiveKitTransport" icon="microphone" href="/server/services/transport/livekit">
@@ -89,16 +97,10 @@ params = TransportParams(
     video_out_enabled=False,
 
     # Video stream configuration
-    camera_out_width=1024,
-    camera_out_height=576,
-    camera_out_bitrate=800000,
-    camera_out_framerate=30,
-
-    # Voice Activity Detection
-    vad_analyzer=SileroVADAnalyzer(),
-
-    # Turn detection for conversation management
-    turn_analyzer=some_turn_analyzer,
+    video_out_width=1024,
+    video_out_height=576,
+    video_out_bitrate=800000,
+    video_out_framerate=30,
 )
 ```
 
@@ -107,6 +109,12 @@ params = TransportParams(
   TransportParams with transport-specific options. Check the individual
   transport documentation for details.
 </Note>
+
+<Tip>
+  For advanced turn detection (like Smart Turn), configure [User Turn
+  Strategies](/server/utilities/turn-management/user-turn-strategies) on the
+  context aggregator instead of using the transport's turn\_analyzer parameter.
+</Tip>
 
 <Card title="TransportParams Reference" icon="code" href="https://reference-server.pipecat.ai/en/latest/api/pipecat.transports.base_transport.html#pipecat.transports.base_transport.TransportParams">
   Complete reference for all transport configuration options
@@ -156,7 +164,6 @@ transport = FastAPIWebsocketTransport(
         audio_in_enabled=True,
         audio_out_enabled=True,
         add_wav_header=False,
-        vad_analyzer=SileroVADAnalyzer(),
         serializer=serializer,  # Provider-specific serialization
     ),
 )
@@ -187,7 +194,6 @@ async def bot(runner_args: RunnerArguments):
             params=DailyParams(
                 audio_in_enabled=True,
                 audio_out_enabled=True,
-                vad_analyzer=SileroVADAnalyzer(),
             ),
         )
 
@@ -199,7 +205,6 @@ async def bot(runner_args: RunnerArguments):
             params=TransportParams(
                 audio_in_enabled=True,
                 audio_out_enabled=True,
-                vad_analyzer=SileroVADAnalyzer(),
             ),
             webrtc_connection=runner_args.webrtc_connection,
         )
@@ -273,8 +278,3 @@ Now that you understand how transports connect users to your bot, let's explore 
 <Card title="Speech Input & Turn Detection" icon="arrow-right" href="/guides/learn/speech-input">
   Learn how to configure speech recognition in your voice AI pipeline
 </Card>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

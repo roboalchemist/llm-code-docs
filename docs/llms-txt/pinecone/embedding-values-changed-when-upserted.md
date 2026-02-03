@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/troubleshooting/embedding-values-changed-when-upserted.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Embedding values changed when upserted
 
 There are two distinct cases in which you might notice that the values of your embeddings appear different in Pinecone than the floats you upserted.

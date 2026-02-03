@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/payments/payment-authorization.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Payment pre-authorization
 
 > Learn how to validate payment methods before creating, upgrading, or downgrading customer subscriptions.
@@ -36,9 +40,8 @@ Pre-authorization can fail for several reasons:
 
 * Invalid card details;
 * Insufficient funds; and
-* 3D Secure authentication requirement.
 
-Please note that if 3D Secure authentication is required, it may prevent subscription creation.
+Please note that if 3DS is required during pre-authorization, the card is considered valid and the subscription is created.
 
 ## Understanding the limitations
 

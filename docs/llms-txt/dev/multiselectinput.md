@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/components/multiselectinput.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Multiselect Input
 
 A user input component that allows users to select multiple values from a searchable list of options.

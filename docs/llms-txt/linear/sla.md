@@ -114,6 +114,6 @@ Subscribers will be notified 24 hours prior to a potential SLA breach.
 </details>
 
 <details>
-<summary>What's the relationship between SLAs and Due dates?</summary>
+<summary>What's the relationship between SLAs and due dates?</summary>
 An issue may use either due dates or an SLA, but not both. If an issue has a due date and then has an SLA applied, the due date will be replaced by the SLA
 </details>

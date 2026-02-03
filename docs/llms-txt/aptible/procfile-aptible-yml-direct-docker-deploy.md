@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/core-concepts/apps/deploying-apps/image/deploying-with-docker-image/procfile-aptible-yml-direct-docker-deploy.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Procfiles and  `.aptible.yml`
 
 To provide a [Procfile](/how-to-guides/app-guides/define-services) or a [`.aptible.yml`](/core-concepts/apps/deploying-apps/releases/aptible-yml) when using [Direct Docker Image Deploy](/how-to-guides/app-guides/migrate-dockerfile-to-direct-image-deploy), you need to include these files in your Docker image at a pre-defined location:

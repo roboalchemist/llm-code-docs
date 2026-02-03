@@ -6,15 +6,15 @@
 
 ***
 
-Each website is represented by an HTML DOM, a tree-like structure consisting of HTML elements (e.g. paragraphs, images, videos) and text. https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM allows the separate DOM trees to be attached to the main DOM while remaining isolated in terms of CSS inheritance and JavaScript DOM manipulation. The CSS and JavaScript codes of separate shadow DOM components do not clash, but the downside is that you can't access the content from outside.
+Each website is represented by an HTML DOM, a tree-like structure consisting of HTML elements (e.g. paragraphs, images, videos) and text. [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM) allows the separate DOM trees to be attached to the main DOM while remaining isolated in terms of CSS inheritance and JavaScript DOM manipulation. The CSS and JavaScript codes of separate shadow DOM components do not clash, but the downside is that you can't access the content from outside.
 
-Let's take a look at this page https://www.alodokter.com/. If you click on the menu and open a Chrome debugger, you will see that the menu tree is attached to the main DOM as shadow DOM under the element `<top-navbar-view id="top-navbar-view">`.
+Let's take a look at this page [alodokter.com](https://www.alodokter.com/). If you click on the menu and open a Chrome debugger, you will see that the menu tree is attached to the main DOM as shadow DOM under the element `<top-navbar-view id="top-navbar-view">`.
 
 ![Shadow root of the top-navbar-view custom element](/assets/images/shadow-023c6b4266de5874b37593ca6e0a0ad6.png)
 
 The rest of the content is rendered the same way. This makes it hard to scrape because `document.body.innerText`, `document.getElementsByTagName('a')`, and all others return an empty result.
 
-The content of the menu can be accessed only via the https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot property. If you use jQuery you can do the following:
+The content of the menu can be accessed only via the [shadowRoot](https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot) property. If you use jQuery you can do the following:
 
 
 ```

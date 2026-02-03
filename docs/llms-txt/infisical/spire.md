@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/identities/oidc-auth/spire.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SPIFFE/SPIRE
 
 > Learn how to authenticate SPIRE workloads with Infisical using OpenID Connect (OIDC).

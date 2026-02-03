@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > APM > Tracing Guides > Setting and Querying User and Account
   Information in Traces
-source_url: https://docs.datadoghq.com/guide/users-accounts/index.html
 ---
 
 # Setting and Querying User and Account Information in Traces

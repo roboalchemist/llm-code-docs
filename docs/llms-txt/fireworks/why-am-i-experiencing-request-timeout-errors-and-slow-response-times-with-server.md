@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/faq-new/deployment-infrastructure/why-am-i-experiencing-request-timeout-errors-and-slow-response-times-with-server.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Why am I experiencing request timeout errors and slow response times with serverless LLM models?
 
 Timeout errors and increased response times can occur due to **server load during high-traffic periods**.

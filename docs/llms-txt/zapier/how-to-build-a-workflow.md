@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/powered-by-zapier/zap-creation/how-to-build-a-workflow.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to Build a Workflow
 
 > This guide walks through the entire process of building an automated workflow for your users to use -- from picking apps, adding authentication, filling inputs and publishing.
@@ -105,7 +109,7 @@ In an above step, the user selected the "New Lead" action with id `core:wJ3PxHpN
 
 <CodeGroup>
   ```js Request theme={null}
-  //POST /actions/core:core:wJ3PxHpNArZ8MqvloW3L1ZyMDQ4nJ/inputs
+  //POST /actions/core:wJ3PxHpNArZ8MqvloW3L1ZyMDQ4nJ/inputs
   {
     "data": {
       "authentication": "49509",

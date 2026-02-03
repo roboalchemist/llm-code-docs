@@ -4,7 +4,6 @@
 title: Remediate issues
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Bits AI > Bits AI SRE > Remediate issues
-source_url: https://docs.datadoghq.com/bits_ai_sre/remediate_issues/index.html
 ---
 
 # Remediate issues

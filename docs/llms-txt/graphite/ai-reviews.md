@@ -1,5 +1,9 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/ai-reviews.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AI Reviews
 
 > Catch bugs before they ship to production with AI code review
@@ -16,7 +20,7 @@ AI reviews analyze every pull request in your repositories, identifying potentia
 * **Reduce incidents**: Prevent bugs that cause outages or customer-facing issues
 
 <Frame>
-  <img src="https://mintcdn.com/graphite-58cc94ce/ICBXK7d1j0p5cvvq/images/ai-reviews-3.png?fit=max&auto=format&n=ICBXK7d1j0p5cvvq&q=85&s=b52980162334664fa01c861fc69c4d50" data-og-width="2560" width="2560" data-og-height="1504" height="1504" data-path="images/ai-reviews-3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/graphite-58cc94ce/ICBXK7d1j0p5cvvq/images/ai-reviews-3.png?w=280&fit=max&auto=format&n=ICBXK7d1j0p5cvvq&q=85&s=66330e5654e545542cbe0c38ee00695d 280w, https://mintcdn.com/graphite-58cc94ce/ICBXK7d1j0p5cvvq/images/ai-reviews-3.png?w=560&fit=max&auto=format&n=ICBXK7d1j0p5cvvq&q=85&s=b34880a3deca52d91236d17ec7a39741 560w, https://mintcdn.com/graphite-58cc94ce/ICBXK7d1j0p5cvvq/images/ai-reviews-3.png?w=840&fit=max&auto=format&n=ICBXK7d1j0p5cvvq&q=85&s=e047aeec7bdf05c291da84a7ffc2d19f 840w, https://mintcdn.com/graphite-58cc94ce/ICBXK7d1j0p5cvvq/images/ai-reviews-3.png?w=1100&fit=max&auto=format&n=ICBXK7d1j0p5cvvq&q=85&s=8fb1ca6e3268cd075b9634b2752315c3 1100w, https://mintcdn.com/graphite-58cc94ce/ICBXK7d1j0p5cvvq/images/ai-reviews-3.png?w=1650&fit=max&auto=format&n=ICBXK7d1j0p5cvvq&q=85&s=a89d4a3aa760b8a76fa462b2ece5923f 1650w, https://mintcdn.com/graphite-58cc94ce/ICBXK7d1j0p5cvvq/images/ai-reviews-3.png?w=2500&fit=max&auto=format&n=ICBXK7d1j0p5cvvq&q=85&s=98c38cccfde9b04dbb1b92b4d3042825 2500w" />
+  <img src="https://mintcdn.com/graphite-58cc94ce/5GxUKNqcuyEAkMh7/images/ai-reviews-2.png?fit=max&auto=format&n=5GxUKNqcuyEAkMh7&q=85&s=d7ab1bd1900d87b13d0f9b61af3db823" data-og-width="3394" width="3394" data-og-height="1810" height="1810" data-path="images/ai-reviews-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/graphite-58cc94ce/5GxUKNqcuyEAkMh7/images/ai-reviews-2.png?w=280&fit=max&auto=format&n=5GxUKNqcuyEAkMh7&q=85&s=0bf0c7ed3a3a29f3217ef84549bed7ff 280w, https://mintcdn.com/graphite-58cc94ce/5GxUKNqcuyEAkMh7/images/ai-reviews-2.png?w=560&fit=max&auto=format&n=5GxUKNqcuyEAkMh7&q=85&s=2af2501ffd5cda6133bdee8629075eb4 560w, https://mintcdn.com/graphite-58cc94ce/5GxUKNqcuyEAkMh7/images/ai-reviews-2.png?w=840&fit=max&auto=format&n=5GxUKNqcuyEAkMh7&q=85&s=e8b0ce12f004e51fd87117e2fca857ff 840w, https://mintcdn.com/graphite-58cc94ce/5GxUKNqcuyEAkMh7/images/ai-reviews-2.png?w=1100&fit=max&auto=format&n=5GxUKNqcuyEAkMh7&q=85&s=37b4227eb3b58d3e031a52849370cd50 1100w, https://mintcdn.com/graphite-58cc94ce/5GxUKNqcuyEAkMh7/images/ai-reviews-2.png?w=1650&fit=max&auto=format&n=5GxUKNqcuyEAkMh7&q=85&s=5c8bab6dc5f153ce18e8695f780c33ce 1650w, https://mintcdn.com/graphite-58cc94ce/5GxUKNqcuyEAkMh7/images/ai-reviews-2.png?w=2500&fit=max&auto=format&n=5GxUKNqcuyEAkMh7&q=85&s=c29d2af66266e25dd8e55dd751d71d32 2500w" />
 </Frame>
 
 ## What makes AI reviews different
@@ -30,7 +34,7 @@ Unlike other code review tools, AI reviews:
 
 Ready to see AI reviews in action? Get started in minutes:
 
-<CardGroup cols={3}>
+<CardGroup cols={2}>
   <Card title="Setup & configuration" icon="settings" href="/ai-reviews-setup">
     Enable AI reviews and get immediate feedback on your PRs.
   </Card>
@@ -41,6 +45,10 @@ Ready to see AI reviews in action? Get started in minutes:
 
   <Card title="Customization" icon="sliders-horizontal" href="/ai-review-customization">
     Tailor AI reviews to your team's specific needs and coding standards.
+  </Card>
+
+  <Card title="Dashboard & analytics" icon="chart-line" href="/ai-review-comments#tracking-ai-review-impact">
+    Track acceptance rates, measure rule effectiveness, and optimize review quality.
   </Card>
 </CardGroup>
 

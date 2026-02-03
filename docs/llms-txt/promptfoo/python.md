@@ -1,3 +1,9 @@
+# Source: https://www.promptfoo.dev/docs/providers/python/
+
+# Source: https://www.promptfoo.dev/docs/integrations/python/
+
+# Source: https://www.promptfoo.dev/docs/configuration/expected-outputs/python/
+
 # Python Assertions
 
 The `python` assertion allows you to provide a custom Python function to validate the LLM output.

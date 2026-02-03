@@ -74,7 +74,7 @@ To learn about using Link with dynamic payment methods and other integrations, s
 - [Payment Links](https://docs.stripe.com/payment-links.md)
 - [Hosted Invoice Page](https://docs.stripe.com/invoicing/hosted-invoice-page.md)
 - [Payment Element](https://docs.stripe.com/payments/elements.md)
-- [Mobile Payment Element](https://docs.stripe.com/payments/accept-a-payment.md?platform=ios&mobile-ui=payment-element)
+- [Mobile Payment Element](https://docs.stripe.com/payments/accept-a-payment.md?payment-ui=mobile&platform=ios)
 
 ### Eligibility
 
@@ -99,15 +99,20 @@ Stripe provides a set of test institutions and bank accounts to simulate various
 
 ### Simulate successful bank account connection
 
-- **Payment Success**: Simulates a successful bank account connection and an authorized payment.
-- **Success (Later Disputed)**: Simulates a successful bank account connection and an authorized payment, then generates a customer-initiated dispute. You can view the dispute in the Dashboard.
-- **Payment Blocked**: Simulates a successful bank account connection and a payment that Stripe declines due to elevated risk.
+- **Success**: Simulates a successful bank account connection and an authorized payment.
+- **Disputed**: Simulates a successful bank account connection and an authorized payment, then generates a customer-initiated dispute. You can view the dispute in the Dashboard.
+- **Blocked**: Simulates a successful bank account connection and a payment that Stripe declines because of elevated risk.
+- **Bank (Non-OAuth)**: Provides a Stripe-hosted login form to simulate institutions that don’t support OAuth. This option is most representative of account linking for the majority of live mode non-OAuth institutions. Use the following test credentials to proceed:
+  - The initial prompt asks for username and password. Entering any input value simulates a successful login.
+  - In the password field or any subsequent field, enter `options` (selection from a list), `mfa` (one-time passcode entry), `confirm_mfa` (one-time passcode confirmation), or `security_question` (secret answer entry) to exercise further login prompts.
+  - Entering `error` in any field ends the login session; `incorrect` gives you a chance to try again.
+- **Bank (OAuth)**: Provides a test institution OAuth popup that allows you to select accounts to link. This option is most representative of account linking for the majority of live mode OAuth institutions.
 
 ### Simulate failed bank account connection
 
-- **Down Bank (Scheduled)**: The institution’s login API is unavailable for a known time period that the institution communicated to Stripe.
-- **Down Bank (Unscheduled)**: The institution’s login API is unavailable without any information about the downtime communicated to Stripe.
-- **Down Bank (Error)**: Stripe is experiencing an unknown error communicating with the institution.
+- **Down (Scheduled)**: The institution’s login API is unavailable for a known time period that the institution communicated to Stripe.
+- **Down (Unscheduled)**: The institution’s login API is unavailable without any information about the downtime communicated to Stripe.
+- **Down (Error)**: Stripe is experiencing an unknown error communicating with the institution.
 
 ## See also
 

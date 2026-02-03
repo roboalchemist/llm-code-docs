@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/user/st.login
+
 # st.login
 
 Initiate the login flow for the given provider.

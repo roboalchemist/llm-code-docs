@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/tutorials/elements/annotate-an-altair-chart
+
 # Annotate an Altair chart
 
 Altair allows you to annotate your charts with text, images, and emojis. You can do this by overlaying two charts to create a layered chart.

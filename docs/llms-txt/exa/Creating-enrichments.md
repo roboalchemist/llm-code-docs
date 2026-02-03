@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/websets/dashboard/walkthroughs/Creating-enrichments.md
+# Source: https://exa.ai/docs/websets/dashboard/walkthroughs/Creating-enrichments.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Creating Enrichments 
 
@@ -33,8 +37,3 @@
 
   * "What is the most powerful data point mentioned in each research paper?" - Text
 </Tip>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

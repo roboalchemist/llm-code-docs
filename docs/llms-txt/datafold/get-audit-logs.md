@@ -1,123 +1,107 @@
 # Source: https://docs.datafold.com/api-reference/audit-logs/get-audit-logs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Audit Logs
+
+
 
 ## OpenAPI
 
 ````yaml get /api/v1/audit_logs
+openapi: 3.1.0
+info:
+  contact:
+    email: support@datafold.com
+    name: API Support
+  description: >-
+    The Datafold API reference is a guide to our available endpoints and
+    authentication methods.
+
+    If you're just getting started with Datafold, we recommend first checking
+    out our [documentation](https://docs.datafold.com).
+
+
+    :::info
+      To use the Datafold API, you should first create a Datafold API Key,
+      which should be stored as a local environment variable named DATAFOLD_API_KEY.
+      This can be set in your Datafold Cloud's Settings under the Account page.
+    :::
+  title: Datafold API
+  version: latest
+servers:
+  - description: Default server
+    url: https://app.datafold.com
+security:
+  - ApiKeyAuth: []
 paths:
-  path: /api/v1/audit_logs
-  method: get
-  servers:
-    - url: https://app.datafold.com
-      description: Default server
-  request:
-    security:
-      - title: ApiKeyAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: apiKey
-              description: Use the 'Authorization' header with the format 'Key <api-key>'
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              end_date:
-                allOf:
-                  - anyOf:
-                      - format: date-time
-                        type: string
-                      - type: 'null'
-                    title: End Date
-              start_date:
-                allOf:
-                  - anyOf:
-                      - format: date-time
-                        type: string
-                      - type: 'null'
-                    title: Start Date
-            title: ApiDownloadAuditLogs
-            refIdentifier: '#/components/schemas/ApiDownloadAuditLogs'
-          - type: 'null'
-            title: Data
-        examples:
-          example:
-            value:
-              end_date: '2023-11-07T05:31:56Z'
-              start_date: '2023-11-07T05:31:56Z'
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              logs:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/AuditLogs'
-                    title: Logs
-                    type: array
-            title: ApiGetAuditLogs
-            refIdentifier: '#/components/schemas/ApiGetAuditLogs'
-            requiredProperties:
-              - logs
-        examples:
-          example:
-            value:
-              logs:
-                - action: <string>
-                  client_ip: <string>
-                  event_uuid: <string>
-                  is_support_user: true
-                  log_entry: <string>
-                  object_id: 123
-                  object_type: <string>
-                  payload: {}
-                  referer: <string>
-                  request_type: <string>
-                  source: <string>
-                  status: <string>
-                  timestamp: <string>
-                  url: <string>
-                  user_agent: <string>
-                  user_email: <string>
-                  user_id: 123
-        description: Successful Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    title: Detail
-                    type: array
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+  /api/v1/audit_logs:
+    get:
+      tags:
+        - Audit Logs
+      summary: Get Audit Logs
+      operationId: get_audit_logs_api_v1_audit_logs_get
+      requestBody:
+        content:
+          application/json:
+            schema:
+              anyOf:
+                - $ref: '#/components/schemas/ApiDownloadAuditLogs'
+                - type: 'null'
+              title: Data
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiGetAuditLogs'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
 components:
   schemas:
+    ApiDownloadAuditLogs:
+      properties:
+        end_date:
+          anyOf:
+            - format: date-time
+              type: string
+            - type: 'null'
+          title: End Date
+        start_date:
+          anyOf:
+            - format: date-time
+              type: string
+            - type: 'null'
+          title: Start Date
+      title: ApiDownloadAuditLogs
+      type: object
+    ApiGetAuditLogs:
+      properties:
+        logs:
+          items:
+            $ref: '#/components/schemas/AuditLogs'
+          title: Logs
+          type: array
+      required:
+        - logs
+      title: ApiGetAuditLogs
+      type: object
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          title: Detail
+          type: array
+      title: HTTPValidationError
+      type: object
     AuditLogs:
       properties:
         action:
@@ -226,5 +210,11 @@ components:
         - type
       title: ValidationError
       type: object
+  securitySchemes:
+    ApiKeyAuth:
+      description: Use the 'Authorization' header with the format 'Key <api-key>'
+      in: header
+      name: Authorization
+      type: apiKey
 
 ````

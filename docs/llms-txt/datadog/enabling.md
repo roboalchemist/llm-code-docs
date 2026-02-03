@@ -10,8 +10,6 @@ description: >-
 breadcrumbs: >-
   Docs > APM > Application Instrumentation > Dynamic Instrumentation > Enabling
   Dynamic Instrumentation
-source_url: >-
-  https://docs.datadoghq.com/trace_collection/dynamic_instrumentation/enabling/index.html
 ---
 
 # Enabling Dynamic Instrumentation
@@ -36,6 +34,7 @@ Select your runtime below to learn how to enable Dynamic Instrumentation for you
 - [Node.js](https://docs.datadoghq.com/dynamic_instrumentation/enabling/nodejs)
 - [Ruby](https://docs.datadoghq.com/dynamic_instrumentation/enabling/ruby)
 - [PHP](https://docs.datadoghq.com/dynamic_instrumentation/enabling/php)
+- [Go](https://docs.datadoghq.com/dynamic_instrumentation/enabling/go)
 
 ## Further reading{% #further-reading %}
 

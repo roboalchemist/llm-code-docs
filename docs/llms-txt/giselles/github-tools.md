@@ -1,5 +1,9 @@
 # Source: https://docs.giselles.ai/en/glossary/github-tools.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.giselles.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # GitHub Tools
 
 > Learn how to configure and use GitHub Tools within a Generator Node, empowering your AI models to interact directly with your GitHub repositories.

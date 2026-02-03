@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/how-to/experiment-with-multiple-prompts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Experiment with Multiple Prompts
 
 > Experiment with multiple prompts in Galileo Evaluate to optimize generative AI performance using iterative testing and comprehensive analysis tools.
@@ -12,7 +16,7 @@ A sweep allows you to execute, in bulk, multiple LLM runs with different combina
 
 <iframe src="https://cdn.iframe.ly/pl5CFiY" width="100%" height="480px" allowfullscreen="" scrolling="no" allow="encrypted-media *;" />
 
-```Python
+```Python  theme={null}
 import promptquality as pq
 from promptquality import Scorers
 from promptquality import SupportedModels

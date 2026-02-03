@@ -4,103 +4,121 @@
 
 https://docs.apify.com
 
-https://docs.apify.com/academyhttps://docs.apify.com/platform
+[Academy](https://docs.apify.com/academy)[Platform](https://docs.apify.com/platform)
 
-https://docs.apify.com/api
+[API](https://docs.apify.com/api)
 
-* https://docs.apify.com/api/v2
-* https://docs.apify.com/api/client/js/
-* https://docs.apify.com/api/client/python/
+* [Reference](https://docs.apify.com/api/v2)
+* [Client for JavaScript](https://docs.apify.com/api/client/js/)
+* [Client for Python](https://docs.apify.com/api/client/python/)
 
-https://docs.apify.com/sdk
+[SDK](https://docs.apify.com/sdk)
 
-* https://docs.apify.com/sdk/js/
-* https://docs.apify.com/sdk/python/
+* [SDK for JavaScript](https://docs.apify.com/sdk/js/)
+* [SDK for Python](https://docs.apify.com/sdk/python/)
 
-https://docs.apify.com/cli/
+[CLI](https://docs.apify.com/cli/)
 
-https://docs.apify.com/open-source
+[Open source](https://docs.apify.com/open-source)
 
-* https://crawlee.dev
-* https://github.com/apify/got-scraping
-* https://github.com/apify/fingerprint-suite
-* https://github.com/apify
-* https://whitepaper.actor
+* [Crawlee](https://crawlee.dev)
+* [Fingerprint Suite](https://github.com/apify/fingerprint-suite)
+* [impit](https://github.com/apify/impit)
+* [MCP CLI](https://github.com/apify/mcp-cli)
+* [Actor whitepaper](https://whitepaper.actor)
+* [proxy-chain](https://github.com/apify/proxy-chain)
+* [Apify on GitHub](https://github.com/apify)
 
-[Chat on Discord](https://discord.com/invite/jyEM2PRvMU)https://console.apify.com
+[Chat on Discord](https://discord.com/invite/jyEM2PRvMU)[Go to Console](https://console.apify.com)
 
 # Apify open source
 
-Open-source tools and libraries created and maintained by Apify experts to help you with web scraping, browser automation, and proxy management.
+Tools and libraries maintained by the Apify team.
 
 ## Crawlee
 
-Crawlee is a fully open-source web scraping and browser automation library that helps you build reliable crawlers.
+A popular library for building reliable web crawlers, scrapers, and browser automations.
 
 https://crawlee.dev/
 
-### https://crawlee.dev/
+### [JavaScript](https://crawlee.dev/)
 
 https://crawlee.dev/python/
 
-### https://crawlee.dev/python/
-
-## Other
+### [Python](https://crawlee.dev/python/)
 
 https://github.com/apify/fingerprint-suite
 
-### https://github.com/apify/fingerprint-suite
+#### [Fingerprint Suite](https://github.com/apify/fingerprint-suite)
 
-Generate and inject browser fingerprints to avoid detection and improve scraper stealth.
+Toolkit for generating and injecting realistic browser fingerprints into Playwright and Puppeteer.
 
-https://github.com/apify/fingerprint-suite
+[Star](https://github.com/apify/fingerprint-suite)
 
-https://github.com/apify/got-scraping
+https://github.com/apify/impit
 
-### https://github.com/apify/got-scraping
+#### [impit](https://github.com/apify/impit)
 
-A powerful extension for sending browser-like requests and blending in with web traffic.
+Rust-based HTTP client with browser impersonation. Bindings for Node.js, Python, and CLI.
 
-https://github.com/apify/got-scraping
+[Star](https://github.com/apify/impit)
 
-### https://github.com/apify/proxy-chain
+https://github.com/apify/mcp-cli
 
-A Node.js proxy server with support for SSL, authentication, upstream proxy chaining, custom HTTP responses, and traffic statistics.
+#### [mcpc](https://github.com/apify/mcp-cli)
+
+CLI client for the Model Context Protocol (MCP) for server exploration, scripting, and code mode.
+
+[Star](https://github.com/apify/mcp-cli)
 
 https://github.com/apify/proxy-chain
+
+#### [proxy-chain](https://github.com/apify/proxy-chain)
+
+Node.js proxy server with SSL, authentication, and upstream proxy chaining.
+
+[Star](https://github.com/apify/proxy-chain)
+
+https://whitepaper.actor
+
+#### [Actor whitepaper](https://whitepaper.actor)
+
+Open specification for Actors, the serverless microapps at the core of the Apify platform.
+
+[Follow Apify on GitHub](https://github.com/apify)
 
 ## Actor templates
 
 Actor templates help you quickly set up your web scraping projects. Save development time and get immediate access to all the features of the Apify platform.
 
-https://apify.com/templates
+[Browse all templates](https://apify.com/templates)
 
 Learn
 
-* https://docs.apify.com/academy
-* https://docs.apify.com/platform
+* [Academy](https://docs.apify.com/academy)
+* [Platform](https://docs.apify.com/platform)
 
 API
 
-* https://docs.apify.com/api/v2
-* https://docs.apify.com/api/client/js/
-* https://docs.apify.com/api/client/python/
+* [Reference](https://docs.apify.com/api/v2)
+* [Client for JavaScript](https://docs.apify.com/api/client/js/)
+* [Client for Python](https://docs.apify.com/api/client/python/)
 
 SDK
 
-* https://docs.apify.com/sdk/js/
-* https://docs.apify.com/sdk/python/
+* [SDK for JavaScript](https://docs.apify.com/sdk/js/)
+* [SDK for Python](https://docs.apify.com/sdk/python/)
 
 Other
 
-* https://docs.apify.com/cli/
-* https://docs.apify.com/open-source
+* [CLI](https://docs.apify.com/cli/)
+* [Open source](https://docs.apify.com/open-source)
 
 More
 
-* https://crawlee.dev
-* https://github.com/apify
-* https://discord.com/invite/jyEM2PRvMU
-* https://trust.apify.com
+* [Crawlee](https://crawlee.dev)
+* [GitHub](https://github.com/apify)
+* [Discord](https://discord.com/invite/jyEM2PRvMU)
+* [Trust Center](https://trust.apify.com)
 
 https://apify.com

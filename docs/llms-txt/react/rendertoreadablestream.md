@@ -410,13 +410,17 @@ async function handler(request) {
           logServerCrashReport(error);
         }
       });
+      let isCrawler = // ... depends on your bot detection strategy ...
+      if (isCrawler) {
+        await stream.allReady;
+      }
       return new Response(stream, {
-        status: getStatusCode(),
+        status: didError ? 500 : 200,
         headers: { 'content-type': 'text/html' },
       });
     } catch (error) {
       return new Response('<h1>Something went wrong</h1>', {
-        status: getStatusCode(),
+        status: 500,
         headers: { 'content-type': 'text/html' },
       });
     }

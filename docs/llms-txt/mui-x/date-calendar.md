@@ -2,10 +2,6 @@
 
 # Source: https://mui.com/x/react-date-pickers/date-calendar.md
 
-# Source: https://mui.com/x/api/date-pickers/date-calendar.md
-
-# Source: https://mui.com/x/react-date-pickers/date-calendar.md
-
 ---
 productId: x-date-pickers
 title: React Date Calendar component

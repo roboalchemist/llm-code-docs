@@ -1,5 +1,9 @@
 # Source: https://docs.turso.tech/cli/db/inspect.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # db inspect
 
 You can inspect the usage of a database, including the total space used, rows read and written with the following command:

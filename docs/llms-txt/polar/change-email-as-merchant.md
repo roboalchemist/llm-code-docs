@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/guides/change-email-as-merchant.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to Change Account Email (as a Merchant)
 
 > Learn how to change your account email on Polar as a Merchant.

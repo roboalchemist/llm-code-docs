@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/integrate/oauth2/connect.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # OAuth 2.0 Connect
 
 ## Authorize
@@ -58,7 +62,7 @@ Once you have the authorization code, you can exchange it for an access token. T
 
 Here is an example with cURL:
 
-```bash  theme={null}
+```bash Terminal theme={null}
 curl -X POST https://api.polar.sh/v1/oauth2/token \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -d 'grant_type=authorization_code&code=AUTHORIZATION_CODE&client_id=CLIENT_ID&client_secret=CLIENT_SECRET&redirect_uri=https://example.com/callback'
@@ -107,7 +111,7 @@ In this case, **and only if the client is configured as a Public Client**, the r
 
 Once you have an access token, either from a Personal Access Token or from the OpenID Connect flow, you can make authenticated requests to the API. Here is a simple example with cURL:
 
-```bash  theme={null}
+```bash Terminal theme={null}
 curl -X GET https://api.polar.sh/v1/oauth2/userinfo \
   -H 'Authorization: Bearer polar_at_XXX'
 ```

@@ -4,8 +4,6 @@
 title: DataSync Location Object Storage
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > DataSync Location Object Storage
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.datasync_location_objectstorage.dataset/index.html
 ---
 
 # DataSync Location Object Storage
@@ -31,4 +29,4 @@ aws.datasync_location_objectstorage
 | managed_secret_config | core | json          | Describes configuration information for a DataSync-managed secret, such as an authentication token or set of credentials that DataSync uses to access a specific transfer location. DataSync uses the default Amazon Web Services-managed KMS key to encrypt this secret in Secrets Manager. |
 | server_port           | core | int64         | The port that your object storage server accepts inbound network traffic on (for example, port 443).                                                                                                                                                                                         |
 | server_protocol       | core | string        | The protocol that your object storage system uses to communicate.                                                                                                                                                                                                                            |
-| tags                  | core | hstore        |
+| tags                  | core | hstore_csv    |

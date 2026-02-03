@@ -2,25 +2,39 @@
 
 # Source: https://docs.unstructured.io/api-reference/legacy-api/partition/speed-up-large-files-batches.md
 
-# Source: https://docs.unstructured.io/open-source/how-to/speed-up-large-files-batches.md
-
-# Source: https://docs.unstructured.io/api-reference/legacy-api/partition/speed-up-large-files-batches.md
-
-# Source: https://docs.unstructured.io/open-source/how-to/speed-up-large-files-batches.md
-
-# Source: https://docs.unstructured.io/api-reference/partition/speed-up-large-files-batches.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Speed up processing of large files and batches
 
+<Note>
+  The following information applies to the legacy Unstructured Partition Endpoint.
+
+  Unstructured recommends that you use the
+  [on-demand jobs](/api-reference/workflow/overview#run-an-on-demand-job) functionality in the
+  [Unstructured API](/api-reference/overview) instead. Unstructured's on-demand jobs provide
+  many benefits over the legacy Unstructured Partition Endpoint, including support for:
+
+  * Production-level usage.
+  * Multiple local input files in batches.
+  * The latest and highest-performing models.
+  * Post-transform enrichments.
+  * All of Unstructured's chunking strategies.
+  * The generation of vector embeddings.
+
+  The Unstructured API also provides support for processing files and data in remote locations.
+</Note>
+
 When you use Unstructured, here are some techniques that you can try to help speed up the processing of large files and large batches of files.
 
-Choose your partitioning strategy wisely. For example, if you have simple PDFs that don't have images and tables, you might be able to use the `fast` strategy. Try the `fast` strategy on a few of your documents before you try using the `hi_res` strategy. [Learn more](/api-reference/partition/partitioning).
+Choose your partitioning strategy wisely. For example, if you have simple PDFs that don't have images and tables, you might be able to use the `fast` strategy. Try the `fast` strategy on a few of your documents before you try using the `hi_res` strategy. [Learn more](/api-reference/legacy-api/partition/partitioning).
 
-To speed up PDF file processing, the [Unstructured SDK for Python](/api-reference/partition/sdk-python) and the [Unstructured SDK for JavaScript/TypeScript](/api-reference/partition/sdk-jsts) provide the following parameters to help speed up processing a large PDF file:
+To speed up PDF file processing, the [Unstructured SDK for Python](/api-reference/legacy-api/partition/sdk-python) and the [Unstructured SDK for JavaScript/TypeScript](/api-reference/legacy-api/partition/sdk-jsts) provide the following parameters to help speed up processing a large PDF file:
 
 * `split_pdf_page` (Python) or `splitPdfPage` (JavaScript/TypeScript), when set to true (the default), splits the PDF file on the client side before sending it as batches to Unstructured for processing. The number of pages in each batch is determined internally. Batches can contain between 2 and 20 pages.
 * `split_pdf_concurrency_level` (Python) or `splitPdfConcurrencyLevel` (JavaScript/TypeScript) is an integer that specifies the number of parallel requests. The default is 5. The maximum is 15. This behavior is ignored unless `split_pdf_page` (Python) or `splitPdfPage` (JavaScript/TypeScript) is also set to true.
 * `split_pdf_allow_failed` (Python) or splitPdfAllowFailed\` (JavaScript/TypeScript), when set to true, allows partitioning to continue even if some pages fail.
 * `split_pdf_page_range` (Python only) is a list of two integers that specify the beginning and ending page numbers of the PDF file to be sent. A `ValueError` is raised if the specified range is not valid. This behavior is ignored unless `split_pdf_page` is also set to true.
 
-[Learn more](/api-reference/partition/sdk-python#page-splitting).
+[Learn more](/api-reference/legacy-api/partition/sdk-python#page-splitting).

@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/test/code-coverage.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Code coverage
 
 > Learn how to use Bun's built-in code coverage reporting to track test coverage and find untested areas in your codebase

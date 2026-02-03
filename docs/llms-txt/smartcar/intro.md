@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/intro.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Smartcar APIs
 
 > Here you'll find everything you need to integrate with Smartcar via REST APIs. Learn how to connect and manage Smartcar's Vehicles API, Management API, and Compatibility API through a simple interface.

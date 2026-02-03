@@ -1,8 +1,8 @@
-# Source: https://docs.warp.dev/platform/warp-platform.md
+# Source: https://docs.warp.dev/agent-platform/platform/warp-platform.md
 
 # Warp Platform
 
-[Ambient Agents](https://docs.warp.dev/ambient-agents) and first-party [integrations](https://docs.warp.dev/integrations) run on the Warp Platform. The platform gives you a consistent way to **trigger work**, **orchestrate and track tasks**, **execute agents** (in an optional [Environment](https://docs.warp.dev/platform/cli/integrations-and-environments), on a host), and inspect outcomes with team visibility.
+[Ambient Agents](https://docs.warp.dev/agent-platform/ambient-agents/ambient-agents-overview) and first-party [integrations](https://docs.warp.dev/agent-platform/integrations/integrations-overview) run on the Warp Platform. The platform gives you a consistent way to **trigger work**, **orchestrate and track tasks**, **execute agents** (in an optional [Environment](https://docs.warp.dev/reference/cli/integrations-and-environments), on a host), and inspect outcomes with team visibility.
 
 **Most production setups follow the same flow:**
 
@@ -30,7 +30,7 @@ In practice: **triggers create tasks; tasks execute on a host (optionally in an 
 
 ### Warp CLI
 
-The [cli](https://docs.warp.dev/platform/cli "mention") is the **headless interface** for running Warp agents in non-interactive mode. It’s commonly used in CI, scripts, and server environments where there is no interactive UI. For interactive workflows, use the [agent](https://docs.warp.dev/agents/agents-overview) embedded in Warp’s desktop app.
+The [Warp CLI](https://docs.warp.dev/reference/cli) is the **headless interface** for running Warp agents in non-interactive mode. It’s commonly used in CI, scripts, and server environments where there is no interactive UI. For interactive workflows, use the [agent](https://docs.warp.dev/agent-platform/agent/agents-overview) embedded in Warp’s desktop app.
 
 A key property of the CLI is that it is **cloud-connected**. Even when an agent is started on a local machine or in CI, it reports progress to Warp’s servers. This enables team visibility, session sharing (where supported), and programmatic tracking through the API.
 
@@ -72,7 +72,7 @@ The orchestrator:
 * Runs on Warp’s servers (cloud control plane).
 * Creates tasks when triggers fire (integrations, schedules, API calls, or explicit starts).
 * Tracks lifecycle state (created → running → completed/failed) and associated metadata.
-* Exposes task lifecycle operations via the [CLI](https://docs.warp.dev/platform/cli) and a [REST API](https://docs.warp.dev/platform/agent-api-and-sdk) (create tasks, query history, and inspect status/outputs).
+* Exposes task lifecycle operations via the [Warp CLI](https://docs.warp.dev/reference/cli) and a [REST API](https://docs.warp.dev/reference/api-and-sdk) (create tasks, query history, and inspect status/outputs).
 * Powers SDKs (TypeScript/Python) for programmatic usage on top of the orchestrator API.
 
 #### When teams use the API/SDK
@@ -88,7 +88,7 @@ Teams typically use the API/SDK when:
 
 ### Environments
 
-[Environments](https://docs.warp.dev/cli/integrations-and-environments#what-is-an-environment) define the execution context an agent should run in.
+[Environments](https://docs.warp.dev/reference/cli/integrations-and-environments#what-is-an-environment) define the execution context an agent should run in.
 
 **An Environment typically includes:**
 
@@ -118,7 +118,7 @@ Environments are recommended when:
 
 ### Agent API and SDK
 
-The Warp [Agent API](https://docs.warp.dev/agent-api-and-sdk#agent-api) is the HTTP interface to the Warp Platform. It lets you create and inspect Ambient Agent tasks from any system (CI, cron, backend services, internal tools), without requiring the Warp desktop app.
+The Warp [Agent API](https://docs.warp.dev/reference/api-and-sdk#agent-api) is the HTTP interface to the Warp Platform. It lets you create and inspect Ambient Agent tasks from any system (CI, cron, backend services, internal tools), without requiring the Warp desktop app.
 
 **What you can do with the API**
 
@@ -135,7 +135,7 @@ Warp provides official [Python](https://github.com/warpdotdev/warp-sdk-python) a
 * Consistent error types mapped to API status codes
 * Helpers for raw responses when you need headers/status/custom parsing
 
-If you’re building an integration (CI, Slack bots, internal tooling, orchestrators), the [SDKs](https://docs.warp.dev/agent-api-and-sdk#agent-sdk) are typically the quickest and safest starting point.
+If you’re building an integration (CI, Slack bots, internal tooling, orchestrators), the [SDKs](https://docs.warp.dev/reference/api-and-sdk#agent-sdk) are typically the quickest and safest starting point.
 
 **SDK vs raw REST**
 
@@ -143,7 +143,7 @@ If you’re building an integration (CI, Slack bots, internal tooling, orchestra
 * Use raw REST when you want minimal dependencies or full control over your HTTP client.
 
 {% hint style="info" %}
-For full endpoint semantics and schema definitions, please refer to the dedicated [API docs](https://docs.warp.dev/platform/agent-api-and-sdk) and Models/Schema reference, plus the [Python SDK](https://github.com/warpdotdev/warp-sdk-python) and [TypeScript SDK](https://github.com/warpdotdev/warp-sdk-typescript) repos for the latest usage/examples.
+For full endpoint semantics and schema definitions, please refer to the dedicated [API docs](https://docs.warp.dev/reference/api-and-sdk) and Models/Schema reference, plus the [Python SDK](https://github.com/warpdotdev/warp-sdk-python) and [TypeScript SDK](https://github.com/warpdotdev/warp-sdk-typescript) repos for the latest usage/examples.
 {% endhint %}
 
 ***
@@ -170,7 +170,7 @@ With self-hosting:
 
 ### Integrations
 
-[Integrations](https://docs.warp.dev/integrations) connect external system events to Ambient Agent execution. An integration ties a third-party event source to Warp so that when an event occurs, Warp can create a task with the relevant context and start it automatically.
+[Integrations](https://docs.warp.dev/agent-platform/integrations/integrations-overview) connect external system events to Ambient Agent execution. An integration ties a third-party event source to Warp so that when an event occurs, Warp can create a task with the relevant context and start it automatically.
 
 * **First-party integrations**: Warp owns event subscriptions + context extraction.
 * **Custom integrations**: You own event ingestion/filtering; you call the API/SDK to create tasks.
@@ -191,8 +191,8 @@ warp integration create …
 
 Examples of context:
 
-* [Slack](https://docs.warp.dev/integrations/slack): message text + channel + thread + user identity
-* [GitHub](https://docs.warp.dev/integrations/github-actions): PR metadata + diffs + labels + checks
+* [Slack](https://docs.warp.dev/agent-platform/integrations/slack): message text + channel + thread + user identity
+* [GitHub](https://docs.warp.dev/agent-platform/integrations/github-actions): PR metadata + diffs + labels + checks
 * CI: logs + job metadata + artifacts
 
 #### Custom integrations
@@ -215,7 +215,7 @@ In this model:
 
 ### Secrets
 
-Ambient Agents often need credentials to access external systems (APIs, cloud providers, databases, internal tools, MCP servers). Warp provides a [secrets store](https://docs.warp.dev/ambient-agents/agent-secrets) that can inject secrets at runtime so agents can use authenticated tools without exposing secret values in logs or UI.
+Ambient Agents often need credentials to access external systems (APIs, cloud providers, databases, internal tools, MCP servers). Warp provides a [secrets store](https://docs.warp.dev/agent-platform/ambient-agents/agent-secrets) that can inject secrets at runtime so agents can use authenticated tools without exposing secret values in logs or UI.
 
 #### What secrets are for
 
@@ -243,9 +243,9 @@ While a task is executing, the agent reports progress and status back to Warp. A
 
 Warp provides multiple surfaces for observability:
 
-* [Management UI](https://docs.warp.dev/agents/using-agents/managing-agents): lists tasks, status, timing, metadata, and history.
-* [Agent Session Sharing](https://docs.warp.dev/knowledge-and-collaboration/session-sharing/agent-session-sharing): authorized teammates can attach to a running task to monitor and, where supported, steer it.
-* [API](https://docs.warp.dev/platform/agent-api-and-sdk)s and SDKs: query task history, build monitoring, and generate reports.
+* [Management UI](https://docs.warp.dev/agent-platform/agent/using-agents/managing-agents): lists tasks, status, timing, metadata, and history.
+* [Agent Session Sharing](https://docs.warp.dev/warp/knowledge-and-collaboration/session-sharing/agent-session-sharing): authorized teammates can attach to a running task to monitor and, where supported, steer it.
+* [APIs](https://docs.warp.dev/reference/api-and-sdk) and SDKs: query task history, build monitoring, and generate reports.
 
 #### Access control
 
@@ -258,11 +258,11 @@ Warp provides multiple surfaces for observability:
 
 Ambient Agent setups often include shared configuration such as:
 
-* [MCP configuration](https://docs.warp.dev/ambient-agents/mcp-servers-for-agents)
-* [rules / guardrails](https://docs.warp.dev/knowledge-and-collaboration/rules)
-* [saved prompts](https://docs.warp.dev/knowledge-and-collaboration/warp-drive/prompts)
-* [environment variables](https://docs.warp.dev/knowledge-and-collaboration/warp-drive/environment-variables)
-* [secrets](https://docs.warp.dev/ambient-agents/agent-secrets)
+* [MCP configuration](https://docs.warp.dev/agent-platform/ambient-agents/mcp-servers-for-agents)
+* [rules / guardrails](https://docs.warp.dev/warp/knowledge-and-collaboration/rules)
+* [saved prompts](https://docs.warp.dev/warp/knowledge-and-collaboration/warp-drive/prompts)
+* [environment variables](https://docs.warp.dev/warp/knowledge-and-collaboration/warp-drive/environment-variables)
+* [secrets](https://docs.warp.dev/agent-platform/ambient-agents/agent-secrets)
 
 Warp supports centralized configuration so these settings apply consistently regardless of where a task is launched.
 
@@ -270,11 +270,11 @@ This is especially useful when the same workflow can be triggered from multiple 
 
 ### Using the Warp Platform with or without the Warp app
 
-[Ambient Agents](https://docs.warp.dev/ambient-agents) do not require Warp’s desktop terminal. Teams can operate Ambient Agent workflows using:
+[Ambient Agents](https://docs.warp.dev/agent-platform/ambient-agents/ambient-agents-overview) do not require Warp's desktop terminal. Teams can operate Ambient Agent workflows using:
 
 * Warp CLI
 * web surfaces (where available)
-* [session sharing](https://docs.warp.dev/knowledge-and-collaboration/session-sharing)
+* [session sharing](https://docs.warp.dev/warp/knowledge-and-collaboration/session-sharing/)
 * management UI
 * APIs and SDKs
 

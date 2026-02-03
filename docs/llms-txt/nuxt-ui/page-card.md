@@ -8,19 +8,15 @@
 
 The PageCard component provides a flexible way to display content in a card with an illustration in the default slot.
 
-<code-preview>
-<u-page-card className="w-96" description="Nuxt UI integrates with latest Tailwind CSS v4, bringing significant improvements." icon="i-simple-icons-tailwindcss" title="Tailwind CSS">
+```vue
+<template>
+  <u-page-card description=Nuxt UI integrates with latest Tailwind CSS, bringing significant improvements. icon=i-simple-icons-tailwindcss title=Tailwind CSS>
+  <img alt=Tailwind CSS src=/tailwindcss-v4.svg /></u-page-card>
+</template>
+```
 
-![Tailwind CSS](/tailwindcss-v4.svg)
-
-</u-page-card>
-</code-preview>
-
-<tip>
-
-Use the [PageGrid](/docs/components/page-grid), [PageColumns](/docs/components/page-columns) or [PageList](/docs/components/page-list) components to display multiple PageCard.
-
-</tip>
+> [!TIP]
+> Use the [PageGrid](/docs/components/page-grid), [PageColumns](/docs/components/page-columns) or [PageList](/docs/components/page-list) components to display multiple PageCard.
 
 ### Title
 
@@ -38,7 +34,7 @@ Use the `description` prop to set the description of the card.
 
 ```vue
 <template>
-  <UPageCard title="Tailwind CSS" description="Nuxt UI integrates with latest Tailwind CSS v4, bringing significant improvements." />
+  <UPageCard title="Tailwind CSS" description="Nuxt UI integrates with latest Tailwind CSS, bringing significant improvements." />
 </template>
 ```
 
@@ -48,7 +44,7 @@ Use the `icon` prop to set the icon of the card.
 
 ```vue
 <template>
-  <UPageCard title="Tailwind CSS" description="Nuxt UI integrates with latest Tailwind CSS v4, bringing significant improvements." icon="i-simple-icons-tailwindcss" />
+  <UPageCard title="Tailwind CSS" description="Nuxt UI integrates with latest Tailwind CSS, bringing significant improvements." icon="i-simple-icons-tailwindcss" />
 </template>
 ```
 
@@ -58,7 +54,7 @@ You can pass any property from the [`<NuxtLink>`](https://nuxt.com/docs/api/comp
 
 ```vue
 <template>
-  <UPageCard title="Tailwind CSS" description="Nuxt UI integrates with latest Tailwind CSS v4, bringing significant improvements." icon="i-simple-icons-tailwindcss" to="https://tailwindcss.com/docs/v4-beta" target="_blank" />
+  <UPageCard title="Tailwind CSS" description="Nuxt UI integrates with latest Tailwind CSS, bringing significant improvements." icon="i-simple-icons-tailwindcss" to="https://tailwindcss.com/docs/v4-beta" target="_blank" />
 </template>
 ```
 
@@ -68,15 +64,12 @@ Use the `variant` prop to change the style of the card.
 
 ```vue
 <template>
-  <UPageCard title="Tailwind CSS" description="Nuxt UI integrates with latest Tailwind CSS v4, bringing significant improvements." icon="i-simple-icons-tailwindcss" to="https://tailwindcss.com/docs/v4-beta" target="_blank" variant="soft" />
+  <UPageCard title="Tailwind CSS" description="Nuxt UI integrates with latest Tailwind CSS, bringing significant improvements." icon="i-simple-icons-tailwindcss" to="https://tailwindcss.com/docs/v4-beta" target="_blank" variant="soft" />
 </template>
 ```
 
-<tip>
-
-You can apply the `light` or `dark` class to the `links` slot when using the `solid` variant to reverse the colors.
-
-</tip>
+> [!TIP]
+> You can apply the `light` or `dark` class to the `links` slot when using the `solid` variant to reverse the colors.
 
 ### Orientation
 
@@ -84,7 +77,7 @@ Use the `orientation` prop to change the orientation with the default slot. Defa
 
 ```vue
 <template>
-  <UPageCard title="Tailwind CSS" description="Nuxt UI integrates with latest Tailwind CSS v4, bringing significant improvements." icon="i-simple-icons-tailwindcss" orientation="horizontal">
+  <UPageCard title="Tailwind CSS" description="Nuxt UI integrates with latest Tailwind CSS, bringing significant improvements." icon="i-simple-icons-tailwindcss" orientation="horizontal">
     <img src="/tailwindcss-v4.svg" alt="Tailwind CSS" class="w-full" />
   </UPageCard>
 </template>
@@ -96,7 +89,7 @@ Use the `reverse` prop to reverse the orientation of the default slot.
 
 ```vue
 <template>
-  <UPageCard title="Tailwind CSS" description="Nuxt UI integrates with latest Tailwind CSS v4, bringing significant improvements." icon="i-simple-icons-tailwindcss" orientation="horizontal" reverse>
+  <UPageCard title="Tailwind CSS" description="Nuxt UI integrates with latest Tailwind CSS, bringing significant improvements." icon="i-simple-icons-tailwindcss" orientation="horizontal" reverse>
     <img src="/tailwindcss-v4.svg" alt="Tailwind CSS" class="w-full" />
   </UPageCard>
 </template>
@@ -108,7 +101,7 @@ Use the `highlight` and `highlight-color` props to display a highlighted border 
 
 ```vue
 <template>
-  <UPageCard title="Tailwind CSS" description="Nuxt UI integrates with latest Tailwind CSS v4, bringing significant improvements." icon="i-simple-icons-tailwindcss" orientation="horizontal" highlight highlight-color="primary">
+  <UPageCard title="Tailwind CSS" description="Nuxt UI integrates with latest Tailwind CSS, bringing significant improvements." icon="i-simple-icons-tailwindcss" orientation="horizontal" highlight highlight-color="primary">
     <img src="/tailwindcss-v4.svg" alt="Tailwind CSS" class="w-full" />
   </UPageCard>
 </template>
@@ -118,31 +111,25 @@ Use the `highlight` and `highlight-color` props to display a highlighted border 
 
 Use the `spotlight` and `spotlight-color` props to display a spotlight effect that follows your mouse cursor and highlights borders on hover.
 
-<note>
-
-The spotlight effect will take over hover effects when using a `to` prop. It's best to use it with the `outline` variant.
-
-</note>
+> [!NOTE]
+> The spotlight effect will take over hover effects when using a `to` prop. It's best to use it with the `outline` variant.
 
 ```vue
 <template>
-  <UPageCard title="Tailwind CSS" description="Nuxt UI integrates with latest Tailwind CSS v4, bringing significant improvements." icon="i-simple-icons-tailwindcss" orientation="horizontal" spotlight spotlight-color="primary">
+  <UPageCard title="Tailwind CSS" description="Nuxt UI integrates with latest Tailwind CSS, bringing significant improvements." icon="i-simple-icons-tailwindcss" orientation="horizontal" spotlight spotlight-color="primary">
     <img src="/tailwindcss-v4.svg" alt="Tailwind CSS" class="w-full" />
   </UPageCard>
 </template>
 ```
 
-<tip>
-
-You can also customize the color and size by using the `--spotlight-color` and `--spotlight-size` CSS variables:
-
-```vue
-<template>
-  <UPageCard spotlight class="[--spotlight-color:var(--ui-error)] [--spotlight-size:200px]" />
-</template>
-```
-
-</tip>
+> [!TIP]
+> You can also customize the color and size by using the `--spotlight-color` and `--spotlight-size` CSS variables:
+> ```vue
+> <template>
+>   <UPageCard spotlight class="[--spotlight-color:var(--ui-error)] [--spotlight-size:200px]" />
+> </template>
+> 
+> ```
 
 ## Examples
 
@@ -174,11 +161,9 @@ const testimonial = ref({
 </template>
 ```
 
-<tip to="/docs/components/page-columns">
-
-You can use the [`PageColumns`](/docs/components/page-columns) component to display multiple PageCard in a multi-column layout.
-
-</tip>
+> [!TIP]
+> See: /docs/components/page-columns
+> You can use the `PageColumns` component to display multiple PageCard in a multi-column layout.
 
 ## API
 
@@ -196,7 +181,7 @@ interface PageCardProps {
   /**
    * The icon displayed above the title.
    */
-  icon?: string | object | undefined;
+  icon?: any;
   title?: string | undefined;
   description?: string | undefined;
   /**
@@ -219,7 +204,7 @@ interface PageCardProps {
   spotlight?: boolean | undefined;
   spotlightColor?: "error" | "primary" | "secondary" | "success" | "info" | "warning" | "neutral" | undefined;
   variant?: "solid" | "outline" | "soft" | "subtle" | "ghost" | "naked" | undefined;
-  to?: string | RouteLocationAsRelativeGeneric | RouteLocationAsPathGeneric | undefined;
+  to?: string | kt | Tt | undefined;
   target?: "_blank" | "_parent" | "_self" | "_top" | (string & {}) | null | undefined;
   onClick?: ((event: MouseEvent) => void | Promise<void>) | undefined;
   ui?: { root?: ClassNameValue; spotlight?: ClassNameValue; container?: ClassNameValue; wrapper?: ClassNameValue; header?: ClassNameValue; body?: ClassNameValue; footer?: ClassNameValue; leading?: ClassNameValue; leadingIcon?: ClassNameValue; title?: ClassNameValue; description?: ClassNameValue; } | undefined;
@@ -273,7 +258,7 @@ export default defineAppConfig({
         },
         reverse: {
           true: {
-            wrapper: 'lg:order-last'
+            wrapper: 'order-last'
           }
         },
         variant: {
@@ -305,6 +290,7 @@ export default defineAppConfig({
         to: {
           true: {
             root: [
+              'has-focus-visible:ring-2 has-focus-visible:ring-primary',
               'transition'
             ]
           }
@@ -484,12 +470,6 @@ export default defineAppConfig({
           class: {
             root: '[--spotlight-color:var(--ui-bg-inverted)]'
           }
-        },
-        {
-          to: true,
-          class: {
-            root: 'has-focus-visible:ring-2 has-focus-visible:ring-primary'
-          }
         }
       ],
       defaultVariants: {
@@ -504,8 +484,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

@@ -1,6 +1,6 @@
 # Source: https://docs.livekit.io/agents/models/llm/plugins/openrouter.md
 
-LiveKit docs › Models › Large language models (LLM) › Plugins › OpenRouter
+LiveKit docs › Models › LLM › Plugins › OpenRouter
 
 ---
 
@@ -14,14 +14,14 @@ Available in:
 
 ## Overview
 
-This plugin allows you to use [OpenRouter](https://openrouter.ai/) as an LLM provider for your voice agents. OpenRouter provides access to hundreds of models from multiple providers through a unified API, with automatic fallback support and intelligent routing.
+This plugin allows you to use [OpenRouter](https://openrouter.ai/) as an LLM provider for your voice agents. OpenRouter provides access to hundreds of models from multiple providers through a unified API, with automatic fallback support and intelligent routing. OpenRouter compatibility is provided by the OpenAI plugin using the OpenRouter Chat Completions API.
 
 ## Usage
 
 Install the OpenAI plugin to add OpenRouter support:
 
 ```shell
-uv add "livekit-agents[openai]~=1.2"
+uv add "livekit-agents[openai]~=1.3"
 
 ```
 
@@ -147,7 +147,7 @@ The following links provide more information about the OpenRouter integration.
 
 ---
 
-This document was rendered at 2025-11-18T23:55:11.763Z.
+This document was rendered at 2026-02-03T03:25:01.154Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/llm/plugins/openrouter.md](https://docs.livekit.io/agents/models/llm/plugins/openrouter.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

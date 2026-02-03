@@ -1,8 +1,12 @@
-# Source: https://mintlify.com/docs/deploy/vercel.md
+# Source: https://www.mintlify.com/docs/deploy/vercel.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Vercel
 
-> Deploy documentation on Vercel with automatic builds and custom domains.
+> Deploy documentation to a subpath on Vercel.
 
 export const VercelJsonGenerator = () => {
   const [subdomain, setSubdomain] = useState('[SUBDOMAIN]');
@@ -29,6 +33,9 @@ export const VercelJsonGenerator = () => {
     }, {
       source: `/${subpath}/robots.txt`,
       destination: `https://${subdomain}.mintlify.app/robots.txt`
+    }, {
+      source: `/${subpath}/mcp`,
+      destination: `https://${subdomain}.mintlify.app/mcp`
     }, {
       source: `/${subpath}/:path*`,
       destination: `https://${subdomain}.mintlify.app/${subpath}/:path*`
@@ -76,47 +83,47 @@ export const VercelJsonGenerator = () => {
     </div>;
 };
 
+Configure your `vercel.json` file to proxy requests from your main domain to your documentation at a subpath.
+
 ## vercel.json file
 
-The `vercel.json` file configures how your project is built and deployed. It sits in your project's root directory and controls various aspects of your deployment, including routing, redirects, headers, and build settings.
+The `vercel.json` file configures how your project builds and deploys. It sits in your project's root directory and controls various aspects of your deployment, including routing, redirects, headers, and build settings.
 
-We use the `rewrites` configuration to proxy requests from your main domain to your documentation.
+We use the `rewrites` configuration in your `vercel.json` file to proxy requests from your main domain to your documentation.
 
 Rewrites map incoming requests to different destinations without changing the URL in the browser. When someone visits `yoursite.com/docs`, Vercel internally fetches content from `your-subdomain.mintlify.dev/docs`, but the user still sees `yoursite.com/docs` in their browser. This is different from redirects, which send users to another URL entirely.
 
-You can customize the subpath to any value you prefer, such as `/docs`, `/help`, or `/guides`. Additionally, you can use deeply nested subpaths like `/product/docs`.
-
 ## Configuration
 
-### Host from `/docs`
+### Host at `/docs` subpath
 
 1. Navigate to [Custom domain setup](https://dashboard.mintlify.com/settings/deployment/custom-domain) in your dashboard.
 2. Click the **Host at `/docs`** toggle to the on position.
+   <Frame>
+     <img alt="Screenshot of the Custom domain setup page. The Host at `/docs` toggle is on and highlighted by an orange rectangle." src="https://mintcdn.com/mintlify/y0I2fgo5Rzv873ju/images/subpath/toggle-light.png?fit=max&auto=format&n=y0I2fgo5Rzv873ju&q=85&s=7e32943b9dd517e21030678381a60b40" className="block dark:hidden" data-og-width="1438" width="1438" data-og-height="298" height="298" data-path="images/subpath/toggle-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/y0I2fgo5Rzv873ju/images/subpath/toggle-light.png?w=280&fit=max&auto=format&n=y0I2fgo5Rzv873ju&q=85&s=33d489126d09988d19d008d6a7f4a297 280w, https://mintcdn.com/mintlify/y0I2fgo5Rzv873ju/images/subpath/toggle-light.png?w=560&fit=max&auto=format&n=y0I2fgo5Rzv873ju&q=85&s=b21fa8cf8a97621570dfafbf58adc664 560w, https://mintcdn.com/mintlify/y0I2fgo5Rzv873ju/images/subpath/toggle-light.png?w=840&fit=max&auto=format&n=y0I2fgo5Rzv873ju&q=85&s=4148864540f914d5cd5fd9da362f4bf8 840w, https://mintcdn.com/mintlify/y0I2fgo5Rzv873ju/images/subpath/toggle-light.png?w=1100&fit=max&auto=format&n=y0I2fgo5Rzv873ju&q=85&s=47fd61f2209bd3d69e84eb3504f44758 1100w, https://mintcdn.com/mintlify/y0I2fgo5Rzv873ju/images/subpath/toggle-light.png?w=1650&fit=max&auto=format&n=y0I2fgo5Rzv873ju&q=85&s=e6452903ad163a01396dc9dbda4b0dc0 1650w, https://mintcdn.com/mintlify/y0I2fgo5Rzv873ju/images/subpath/toggle-light.png?w=2500&fit=max&auto=format&n=y0I2fgo5Rzv873ju&q=85&s=705655c35ceb3f569262b45500a53706 2500w" />
 
-<Frame>
-  <img alt="Screenshot of the Custom domain setup page. The Host at `/docs` toggle is on and highlighted by an orange rectangle." src="https://mintcdn.com/mintlify/y0I2fgo5Rzv873ju/images/subpath/toggle-light.png?fit=max&auto=format&n=y0I2fgo5Rzv873ju&q=85&s=7e32943b9dd517e21030678381a60b40" className="block dark:hidden" data-og-width="1438" width="1438" data-og-height="298" height="298" data-path="images/subpath/toggle-light.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/y0I2fgo5Rzv873ju/images/subpath/toggle-light.png?w=280&fit=max&auto=format&n=y0I2fgo5Rzv873ju&q=85&s=33d489126d09988d19d008d6a7f4a297 280w, https://mintcdn.com/mintlify/y0I2fgo5Rzv873ju/images/subpath/toggle-light.png?w=560&fit=max&auto=format&n=y0I2fgo5Rzv873ju&q=85&s=b21fa8cf8a97621570dfafbf58adc664 560w, https://mintcdn.com/mintlify/y0I2fgo5Rzv873ju/images/subpath/toggle-light.png?w=840&fit=max&auto=format&n=y0I2fgo5Rzv873ju&q=85&s=4148864540f914d5cd5fd9da362f4bf8 840w, https://mintcdn.com/mintlify/y0I2fgo5Rzv873ju/images/subpath/toggle-light.png?w=1100&fit=max&auto=format&n=y0I2fgo5Rzv873ju&q=85&s=47fd61f2209bd3d69e84eb3504f44758 1100w, https://mintcdn.com/mintlify/y0I2fgo5Rzv873ju/images/subpath/toggle-light.png?w=1650&fit=max&auto=format&n=y0I2fgo5Rzv873ju&q=85&s=e6452903ad163a01396dc9dbda4b0dc0 1650w, https://mintcdn.com/mintlify/y0I2fgo5Rzv873ju/images/subpath/toggle-light.png?w=2500&fit=max&auto=format&n=y0I2fgo5Rzv873ju&q=85&s=705655c35ceb3f569262b45500a53706 2500w" />
-
-  <img alt="Screenshot of the Custom domain setup page. The Host at `/docs` toggle is on and highlighted by an orange rectangle." src="https://mintcdn.com/mintlify/y0I2fgo5Rzv873ju/images/subpath/toggle-dark.png?fit=max&auto=format&n=y0I2fgo5Rzv873ju&q=85&s=9e0fd7047a7937d5a6d9cfc2c55acb09" className="hidden dark:block" data-og-width="1440" width="1440" data-og-height="300" height="300" data-path="images/subpath/toggle-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/y0I2fgo5Rzv873ju/images/subpath/toggle-dark.png?w=280&fit=max&auto=format&n=y0I2fgo5Rzv873ju&q=85&s=0d91795ad4a995f2f38870b1e1dcdf42 280w, https://mintcdn.com/mintlify/y0I2fgo5Rzv873ju/images/subpath/toggle-dark.png?w=560&fit=max&auto=format&n=y0I2fgo5Rzv873ju&q=85&s=06032a7cb5cd4ef88ec6ff7d43a59936 560w, https://mintcdn.com/mintlify/y0I2fgo5Rzv873ju/images/subpath/toggle-dark.png?w=840&fit=max&auto=format&n=y0I2fgo5Rzv873ju&q=85&s=836eef4347e6e17b30dac1b38c41c951 840w, https://mintcdn.com/mintlify/y0I2fgo5Rzv873ju/images/subpath/toggle-dark.png?w=1100&fit=max&auto=format&n=y0I2fgo5Rzv873ju&q=85&s=43c8f66298e7820cffe6d544663ca9a7 1100w, https://mintcdn.com/mintlify/y0I2fgo5Rzv873ju/images/subpath/toggle-dark.png?w=1650&fit=max&auto=format&n=y0I2fgo5Rzv873ju&q=85&s=f2b3176eb3af0ac276f8255973ae57ab 1650w, https://mintcdn.com/mintlify/y0I2fgo5Rzv873ju/images/subpath/toggle-dark.png?w=2500&fit=max&auto=format&n=y0I2fgo5Rzv873ju&q=85&s=19e3818409019c5e6136b61861b01f89 2500w" />
-</Frame>
-
+     <img alt="Screenshot of the Custom domain setup page. The Host at `/docs` toggle is on and highlighted by an orange rectangle." src="https://mintcdn.com/mintlify/y0I2fgo5Rzv873ju/images/subpath/toggle-dark.png?fit=max&auto=format&n=y0I2fgo5Rzv873ju&q=85&s=9e0fd7047a7937d5a6d9cfc2c55acb09" className="hidden dark:block" data-og-width="1440" width="1440" data-og-height="300" height="300" data-path="images/subpath/toggle-dark.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mintlify/y0I2fgo5Rzv873ju/images/subpath/toggle-dark.png?w=280&fit=max&auto=format&n=y0I2fgo5Rzv873ju&q=85&s=0d91795ad4a995f2f38870b1e1dcdf42 280w, https://mintcdn.com/mintlify/y0I2fgo5Rzv873ju/images/subpath/toggle-dark.png?w=560&fit=max&auto=format&n=y0I2fgo5Rzv873ju&q=85&s=06032a7cb5cd4ef88ec6ff7d43a59936 560w, https://mintcdn.com/mintlify/y0I2fgo5Rzv873ju/images/subpath/toggle-dark.png?w=840&fit=max&auto=format&n=y0I2fgo5Rzv873ju&q=85&s=836eef4347e6e17b30dac1b38c41c951 840w, https://mintcdn.com/mintlify/y0I2fgo5Rzv873ju/images/subpath/toggle-dark.png?w=1100&fit=max&auto=format&n=y0I2fgo5Rzv873ju&q=85&s=43c8f66298e7820cffe6d544663ca9a7 1100w, https://mintcdn.com/mintlify/y0I2fgo5Rzv873ju/images/subpath/toggle-dark.png?w=1650&fit=max&auto=format&n=y0I2fgo5Rzv873ju&q=85&s=f2b3176eb3af0ac276f8255973ae57ab 1650w, https://mintcdn.com/mintlify/y0I2fgo5Rzv873ju/images/subpath/toggle-dark.png?w=2500&fit=max&auto=format&n=y0I2fgo5Rzv873ju&q=85&s=19e3818409019c5e6136b61861b01f89 2500w" />
+   </Frame>
 3. Enter your domain.
 4. Select **Add domain**.
-5. Add the following rewrites to your `vercel.json` file. Replace `[subdomain]` with your subdomain:
+5. Add the following rewrites to your `vercel.json` file. Replace `[subdomain]` with your subdomain, which is found at the end of your dashboard URL. For example, `dashboard.mintlify.com/your-organization/your-subdomain` has a domain identifier of `your-subdomain`.
 
-```json  theme={null}
-{
-  "rewrites": [
-    {
-      "source": "/docs",
-      "destination": "https://[subdomain].mintlify.dev/docs"
-    },
-    {
-      "source": "/docs/:match*",
-      "destination": "https://[subdomain].mintlify.dev/docs/:match*"
-    }
-  ]
-}
-```
+   ```json  theme={null}
+   {
+     "rewrites": [
+       {
+         "source": "/docs",
+         "destination": "https://[subdomain].mintlify.dev/docs"
+       },
+       {
+         "source": "/docs/:match*",
+         "destination": "https://[subdomain].mintlify.dev/docs/:match*"
+       }
+     ]
+   }
+   ```
+
+The `rewrites` configuration maps the `/docs` subpath on your domain to the `/docs` subpath on your documentation.
 
 * **`source`**: The path pattern on your domain that triggers the rewrite.
 * **`destination`**: Where the request should be proxied to.
@@ -124,40 +131,10 @@ You can customize the subpath to any value you prefer, such as `/docs`, `/help`,
 
 For more information, see [Configuring projects with vercel.json: Rewrites](https://vercel.com/docs/projects/project-configuration#rewrites) in the Vercel documentation.
 
-### Host from custom path
+### Host at custom subpath
 
 To use a custom subpath (any path other than `/docs`), you must organize your documentation files within your repository to match your subpath structure. For example, if your documentation is hosted at `yoursite.com/help`, your documentation files must be in a `help/` directory.
 
 Use the generator below to create your rewrites configuration. Add the rewrites to your `vercel.json` file.
 
 <VercelJsonGenerator />
-
-## Using external proxies with Vercel
-
-If you're using an external proxy (like Cloudflare or AWS CloudFront) in front of your Vercel deployment, you must configure it properly to avoid conflicts with Vercel's domain verification and SSL certificate provisioning.
-
-Improper proxy configuration can prevent Vercel from provisioning Let's Encrypt SSL certificates and cause domain verification failures.
-
-See the [supported providers](https://vercel.com/guides/how-to-setup-verified-proxy#supported-providers-verified-proxy-lite) in the Vercel documentation.
-
-### Required path allowlist
-
-Your external proxy must allow traffic to these specific paths without blocking, redirecting, or heavily caching:
-
-* `/.well-known/acme-challenge/*` - Required for Let's Encrypt certificate verification
-* `/.well-known/vercel/*` - Required for Vercel domain verification
-* `/mintlify-assets/_next/static/*` - Required for static assets
-
-These paths should pass through directly to your Vercel deployment without modification.
-
-### Header forwarding requirements
-
-Ensure that your proxy correctly forwards the `HOST` header. Without proper header forwarding, verification requests will fail.
-
-### Testing your proxy setup
-
-To verify your proxy is correctly configured:
-
-1. Test that `https://[yourdomain].com/.well-known/vercel/` returns a response.
-2. Ensure SSL certificates are provisioning correctly in your Vercel dashboard.
-3. Check that domain verification completes successfully.

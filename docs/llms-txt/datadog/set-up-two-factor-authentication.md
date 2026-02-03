@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Cloudcraft (Standalone) > Account Management > Set up Two-Factor
   Authentication
-source_url: >-
-  https://docs.datadoghq.com/account-management/set-up-two-factor-authentication/index.html
 ---
 
 # Set up Two-Factor Authentication

@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/manage-data/manage-namespaces.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Manage namespaces
 
 > Create and manage namespaces in serverless indexes.
@@ -22,7 +26,7 @@ curl "https://$INDEX_HOST/namespaces" \
   -H "Accept: application/json" \
   -H "Content-Type: application/json" \
   -H "Api-Key: $PINECONE_API_KEY" \
-  -H "X-Pinecone-API-Version: 2025-10" \
+  -H "X-Pinecone-Api-Version: 2025-10" \
   -d '{
         "name": "example-namespace",
         "schema": {
@@ -204,7 +208,7 @@ Up to 100 namespaces are returned at a time by default, in sorted order (bitwise
 
   curl -X GET "https://$INDEX_HOST/namespaces" \
       -H "Api-Key: $PINECONE_API_KEY" \
-      -H "X-Pinecone-API-Version: 2025-04"
+      -H "X-Pinecone-Api-Version: 2025-10"
   ```
 </CodeGroup>
 
@@ -429,7 +433,7 @@ Use the [`describe_namespace`](/reference/api/latest/data-plane/describenamespac
 
   curl -X GET "https://$INDEX_HOST/namespaces/$NAMESPACE" \
       -H "Api-Key: $PINECONE_API_KEY" \
-      -H "X-Pinecone-API-Version: 2025-04"
+      -H "X-Pinecone-Api-Version: 2025-10"
   ```
 </CodeGroup>
 
@@ -585,7 +589,7 @@ Use the [`delete_namespace`](/reference/api/latest/data-plane/deletenamespace) o
 
   curl -X DELETE "https://$INDEX_HOST/namespaces/$NAMESPACE" \
       -H "Api-Key: $PINECONE_API_KEY" \
-      -H "X-Pinecone-API-Version: 2025-04"
+      -H "X-Pinecone-Api-Version: 2025-10"
   ```
 </CodeGroup>
 
@@ -760,7 +764,7 @@ To use the default namespace for upserts, queries, or other data operations, set
     -H "Accept: application/json" \
     -H "Content-Type: application/json" \
     -H "Api-Key: $PINECONE_API_KEY" \
-    -H "X-Pinecone-API-Version: unstable" \
+    -H "X-Pinecone-Api-Version: unstable" \
     -d '{
           "query": {
               "inputs": {"text": "Disease prevention"},

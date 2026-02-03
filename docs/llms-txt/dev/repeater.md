@@ -1,26 +1,8 @@
-# Source: https://dev.writer.com/framework/repeater.md
-
-# Source: https://dev.writer.com/components/repeater.md
-
 # Source: https://dev.writer.com/agent-builder/repeater.md
 
-# Source: https://dev.writer.com/framework/repeater.md
-
-# Source: https://dev.writer.com/components/repeater.md
-
-# Source: https://dev.writer.com/agent-builder/repeater.md
-
-# Source: https://dev.writer.com/framework/repeater.md
-
-# Source: https://dev.writer.com/components/repeater.md
-
-# Source: https://dev.writer.com/agent-builder/repeater.md
-
-# Source: https://dev.writer.com/framework/repeater.md
-
-# Source: https://dev.writer.com/components/repeater.md
-
-# Source: https://dev.writer.com/agent-builder/repeater.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Build dynamic UI components with Repeaters
 
@@ -81,8 +63,6 @@ The select input allows the user to select multiple items from a list. You'll us
     <Note>
       When you define the options for the select input, the values are what the user sees in the select dropdown, and the keys are what will be stored in the state variable.
     </Note>
-
-        <img src="https://mintlify.s3.us-west-1.amazonaws.com/writer/images/agent-builder/repeater-select.png" alt="Select input" />
   </Step>
 
   <Step title="Add a Heading component">

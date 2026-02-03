@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/integrations/app-connections/auth0.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Auth0 Connection
 
 > Learn how to configure an Auth0 Connection for Infisical.
@@ -47,7 +51,7 @@ Infisical supports the use of [Client Credentials](https://auth0.com/docs/get-st
 
 <Tabs>
   <Tab title="Infisical UI">
-    1. Navigate to the **App Connections** page in the desired project.
+    1. Navigate to the **Integrations** tab in the desired project, then select **App Connections**.
        <img src="https://mintlify.s3.us-west-1.amazonaws.com/infisical/images/app-connections/general/add-connection.png" alt="App Connections Tab" />
 
     2. Select the **Auth0 Connection** option.

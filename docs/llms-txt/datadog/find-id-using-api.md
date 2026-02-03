@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Cloudcraft (Standalone) > Advanced > Find a Cloud Account or Team ID
   using our API
-source_url: https://docs.datadoghq.com/advanced/find-id-using-api/index.html
 ---
 
 # Find a Cloud Account or Team ID using our API

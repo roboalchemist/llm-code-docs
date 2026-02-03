@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/optimize/increase-throughput.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Increase throughput
 
 > Learn techniques to improve data operation performance and query throughput.
@@ -20,11 +24,11 @@ Pinecone is thread-safe, so you can send multiple [upsert](/guides/index-data/up
 
 ### Use gRPC
 
-Use the [Python SDK with gRPC extras](/reference/python-sdk) to run data operations such as upserts and queries over [gRPC](https://grpc.io/) rather than HTTP for a modest performance improvement.
+Use the [Python SDK with gRPC extras](/reference/sdks/python/overview) to run data operations such as upserts and queries over [gRPC](https://grpc.io/) rather than HTTP for a modest performance improvement.
 
 ### Upsert from a dataframe
 
-To quickly ingest data when using the Python SDK, use the [`upsert_from_dataframe` method](/reference/python-sdk#upsert-from-a-dataframe). The method includes retry logic and `batch_size`, and is performant especially with Parquet file data sets.
+To quickly ingest data when using the Python SDK, use the [`upsert_from_dataframe` method](/reference/sdks/python/overview#upsert-from-a-dataframe). The method includes retry logic and `batch_size`, and is performant especially with Parquet file data sets.
 
 ## See also
 

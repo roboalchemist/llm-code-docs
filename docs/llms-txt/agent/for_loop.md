@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/actions/for_loop.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # For Loop
 
 Repeat actions for each item in a list or a specific number of times - automate repetitive tasks efficiently.

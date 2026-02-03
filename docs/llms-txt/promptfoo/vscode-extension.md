@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/code-scanning/vscode-extension/
+
 # VS Code Extension
 
 The Promptfoo Security Scanner for VS Code detects LLM security vulnerabilities directly in your editor. It finds prompt injection risks, jailbreak vulnerabilities, PII exposure, and other security issues as you code—before they reach your CI pipeline or production.

@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replitai/web-search.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Web Search
 
 > Agent searches the web and fetches current information to build apps with up-to-date information, latest documentation, and accurate details from across the internet.
@@ -166,5 +170,5 @@ Agent searches for recent financial reports and builds a dashboard with current,
 
 Combine Web Search with other Agent features for maximum impact:
 
-* Learn about [Dynamic Intelligence](/replitai/dynamic-intelligence) for deeper analysis of research results
-* See [Advanced AI features](/tutorials/advanced-ai-features) for strategies on combining Web Search with Dynamic Intelligence
+* Learn about [Agent](/replitai/agent) capabilities for building apps
+* Explore [Replit AI tools](/category/replit-ai) for more development features

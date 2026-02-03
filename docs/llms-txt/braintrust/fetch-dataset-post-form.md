@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/api-reference/datasets/fetch-dataset-post-form.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Fetch dataset (POST form)
 
 > Fetch the events in a dataset. Equivalent to the GET form of the same path, but with the parameters in the request body rather than in the URL query. For more complex queries, use the `POST /btql` endpoint.
@@ -302,8 +306,8 @@ components:
           description: >-
             A unique identifier used to link different dataset events together
             as part of a full trace. See the [tracing
-            guide](https://www.braintrust.dev/docs/guides/tracing) for full
-            details on tracing
+            guide](https://www.braintrust.dev/docs/instrument) for full details
+            on tracing
         root_span_id:
           type: string
           description: A unique identifier for the trace this dataset event belongs to
@@ -325,6 +329,45 @@ components:
           items:
             nullable: true
           description: Optional list of audit entries attached to this event
+        facets:
+          type: object
+          nullable: true
+          additionalProperties:
+            nullable: true
+          description: Facets for categorization (dictionary from facet id to value)
+        classifications:
+          type: object
+          nullable: true
+          additionalProperties:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: Stable classification identifier
+                label:
+                  type: string
+                  description: >-
+                    Original label of the classification item, which is useful
+                    for search and indexing purposes
+                confidence:
+                  type: number
+                  nullable: true
+                  description: Optional confidence score for the classification
+                metadata:
+                  type: object
+                  nullable: true
+                  additionalProperties:
+                    nullable: true
+                  description: Optional metadata associated with the classification
+                source:
+                  $ref: '#/components/schemas/SavedFunctionId'
+              required:
+                - id
+          description: >-
+            Classifications for this event (dictionary from classification name
+            to items)
       required:
         - id
         - _xact_id
@@ -367,6 +410,54 @@ components:
         - object_id
         - id
       description: Indicates the event was copied from another object.
+    SavedFunctionId:
+      anyOf:
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - function
+            id:
+              type: string
+            version:
+              type: string
+              description: The version of the function
+          required:
+            - type
+            - id
+          title: function
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - global
+            name:
+              type: string
+            function_type:
+              $ref: '#/components/schemas/FunctionTypeEnum'
+          required:
+            - type
+            - name
+          title: global
+        - type: 'null'
+      description: Optional function identifier that produced the classification
+    FunctionTypeEnum:
+      type: string
+      enum:
+        - llm
+        - scorer
+        - task
+        - tool
+        - custom_view
+        - preprocessor
+        - facet
+        - classifier
+        - tag
+        - null
+      default: scorer
+      description: The type of global function. Defaults to 'scorer'.
   securitySchemes:
     bearerAuth:
       type: http
@@ -379,7 +470,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

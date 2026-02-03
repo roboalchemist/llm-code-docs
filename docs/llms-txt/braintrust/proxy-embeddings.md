@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/api-reference/proxy/proxy-embeddings.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Proxy embeddings
 
 > Proxy an embeddings request to the specified model, converting its format as needed. Will cache automatically.
@@ -71,7 +75,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

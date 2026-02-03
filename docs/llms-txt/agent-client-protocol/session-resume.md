@@ -1,5 +1,9 @@
 # Source: https://agentclientprotocol.com/rfds/session-resume.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://agentclientprotocol.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Resuming of existing sessions
 
 * Author(s): [@josevalim](https://github.com/josevalim)
@@ -83,8 +87,3 @@ This argues "session/resume" is the basic primitive which "session/load" builds 
 ## Revision history
 
 * 2025-11-24: Update FAQ to mention session/resume vs session/load
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://agentclientprotocol.com/llms.txt

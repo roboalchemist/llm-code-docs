@@ -7,7 +7,6 @@ description: >-
   Agent by each of the RUM, Logs, and APM products, as applicable to the data
   domain.
 breadcrumbs: Docs > Default Standard Attributes
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Default Standard Attributes

@@ -1,12 +1,46 @@
 # Source: https://polar.sh/docs/integrate/sdk/adapters/express.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Express
 
 > Payments and Checkouts made dead simple with Express
 
-```bash  theme={null}
-pnpm install @polar-sh/express zod
-```
+## Examples
+
+* [With Express v4](https://github.com/polarsource/examples/tree/main/with-express-v4)
+
+## Installation
+
+Install the required Polar packages using the following command:
+
+<Tabs>
+  <Tab title="npm">
+    ```bash Terminal theme={null}
+    npm install zod @polar-sh/express
+    ```
+  </Tab>
+
+  <Tab title="yarn">
+    ```bash Terminal theme={null}
+    yarn add zod @polar-sh/express
+    ```
+  </Tab>
+
+  <Tab title="pnpm">
+    ```bash Terminal theme={null}
+    pnpm add zod @polar-sh/express
+    ```
+  </Tab>
+
+  <Tab title="bun">
+    ```bash Terminal theme={null}
+    bun add zod @polar-sh/express
+    ```
+  </Tab>
+</Tabs>
 
 ## Checkout
 

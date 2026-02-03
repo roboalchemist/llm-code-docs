@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/optimize/increase-relevance.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Increase search relevance
 
 > Learn techniques to improve search result quality.
@@ -24,9 +28,12 @@ For more details, see [Filter by metadata](/guides/search/filter-by-metadata).
 
 [Semantic search](/guides/search/semantic-search) and [lexical search](/guides/search/lexical-search) are powerful information retrieval techniques, but each has notable limitations. For example, semantic search can miss results based on exact keyword matches, especially in scenarios involving domain-specific terminology, while lexical search can miss results based on relationships, such as synonyms and paraphrases.
 
-To lift these limitations, you can search both dense and sparse indexes, combine the results from both, and use one of Pinecone’s hosted reranking models to assign a unified relevance score, reorder the result accordingly, and return the most relevant matches. This is often called hybrid search or cascading retrieval.
+To work around these limitations, you can perform hybrid search, which combines semantic and lexical search. There are two ways to do this:
 
-For more details, see [Hybrid search](/guides/search/hybrid-search).
+* [Use a single hybrid index](/guides/search/hybrid-search#use-a-single-hybrid-index). This is the **recommended** approach for most use cases because you make requests to a single index, the linkage between dense and sparse vectors is implicit, and you can perform hybrid queries with a single request.
+* [Use separate dense and sparse indexes](/guides/search/hybrid-search#use-separate-dense-and-sparse-indexes). This approach provides more flexibility but requires managing two indexes, maintaining linkages between vectors, and querying each index separately before merging results.
+
+For more details, including guidance on choosing the right approach, see [Hybrid search](/guides/search/hybrid-search).
 
 ## Explore chunking strategies
 

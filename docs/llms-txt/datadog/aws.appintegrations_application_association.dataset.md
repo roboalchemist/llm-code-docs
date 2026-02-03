@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > DDSQL Reference > Data Directory > AppIntegrations Application
   Association
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.appintegrations_application_association.dataset/index.html
 ---
 
 # AppIntegrations Application Association
@@ -20,11 +18,11 @@ aws.appintegrations_application_association
 
 ## Fields
 
-| Title                       | ID   | Type   | Data Type                                                                          | Description |
-| --------------------------- | ---- | ------ | ---------------------------------------------------------------------------------- | ----------- |
-| _key                        | core | string |
-| account_id                  | core | string |
-| application_arn             | core | string | The Amazon Resource Name (ARN) of the Application.                                 |
-| application_association_arn | core | string | The Amazon Resource Name (ARN) of the Application Association.                     |
-| client_id                   | core | string | The identifier for the client that is associated with the Application Association. |
-| tags                        | core | hstore |
+| Title                       | ID   | Type       | Data Type                                                                          | Description |
+| --------------------------- | ---- | ---------- | ---------------------------------------------------------------------------------- | ----------- |
+| _key                        | core | string     |
+| account_id                  | core | string     |
+| application_arn             | core | string     | The Amazon Resource Name (ARN) of the Application.                                 |
+| application_association_arn | core | string     | The Amazon Resource Name (ARN) of the Application Association.                     |
+| client_id                   | core | string     | The identifier for the client that is associated with the Application Association. |
+| tags                        | core | hstore_csv |

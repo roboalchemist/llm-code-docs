@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/access-controls/project-access-requests.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Project Access Requests
 
 > Learn how to request access to projects in Infisical.

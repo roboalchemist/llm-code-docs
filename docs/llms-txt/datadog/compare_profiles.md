@@ -4,7 +4,6 @@
 title: Compare Profiles
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Continuous Profiler > Compare Profiles
-source_url: https://docs.datadoghq.com/compare_profiles/index.html
 ---
 
 # Compare Profiles

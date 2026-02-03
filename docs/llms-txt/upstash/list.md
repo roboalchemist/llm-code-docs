@@ -6,90 +6,87 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/functions/list.md
 
-# Source: https://upstash.com/docs/workflow/rest/flow-control/list.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://upstash.com/docs/workflow/rest/dlq/list.md
+# FUNCTION LIST
 
-# Source: https://upstash.com/docs/workflow/basics/client/dlq/list.md
+> List details about the registered libraries and functions.
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/functions/list.md
+## Arguments
 
-# Source: https://upstash.com/docs/workflow/rest/flow-control/list.md
+<ParamField body="options" type="Object">
+  The list options.
 
-# Source: https://upstash.com/docs/workflow/rest/dlq/list.md
+  <Expandable>
+    <ParamField body="libraryName" type="string">
+      Pattern for matching library names.
+    </ParamField>
 
-# Source: https://upstash.com/docs/workflow/basics/client/dlq/list.md
-
-# Source: https://upstash.com/docs/qstash/api/url-groups/list.md
-
-# Source: https://upstash.com/docs/qstash/api/schedules/list.md
-
-# Source: https://upstash.com/docs/qstash/api/queues/list.md
-
-# Source: https://upstash.com/docs/qstash/api/logs/list.md
-
-# Source: https://upstash.com/docs/qstash/api/flow-control/list.md
-
-# Source: https://upstash.com/docs/qstash/api/events/list.md
-
-# Source: https://upstash.com/docs/workflow/rest/flow-control/list.md
-
-# Source: https://upstash.com/docs/workflow/rest/dlq/list.md
-
-# Source: https://upstash.com/docs/workflow/basics/client/dlq/list.md
-
-# Source: https://upstash.com/docs/qstash/api/url-groups/list.md
-
-# Source: https://upstash.com/docs/qstash/api/schedules/list.md
-
-# Source: https://upstash.com/docs/qstash/api/queues/list.md
-
-# Source: https://upstash.com/docs/qstash/api/logs/list.md
-
-# Source: https://upstash.com/docs/qstash/api/flow-control/list.md
-
-# Source: https://upstash.com/docs/qstash/api/events/list.md
-
-# Source: https://upstash.com/docs/workflow/rest/flow-control/list.md
-
-# Source: https://upstash.com/docs/workflow/rest/dlq/list.md
-
-# Source: https://upstash.com/docs/workflow/basics/client/dlq/list.md
-
-# Source: https://upstash.com/docs/qstash/api/url-groups/list.md
-
-# Source: https://upstash.com/docs/qstash/api/schedules/list.md
-
-# Source: https://upstash.com/docs/qstash/api/queues/list.md
-
-# Source: https://upstash.com/docs/qstash/api/logs/list.md
-
-# Source: https://upstash.com/docs/qstash/api/flow-control/list.md
-
-# Source: https://upstash.com/docs/qstash/api/events/list.md
-
-# Source: https://upstash.com/docs/workflow/rest/flow-control/list.md
-
-# List Flow-Control Keys
-
-> List All Flow Control Keys
+    <ParamField body="withCode" type="boolean" default="false">
+      Whether to include the library source code in the response.
+    </ParamField>
+  </Expandable>
+</ParamField>
 
 ## Response
 
-<ResponseField name="flowControls" type="Array">
+<ResponseField type="Object[]" required>
+  List of libraries.
+
   <Expandable>
-    <ResponseField name="flowControlKey" type="string">
-      The key of the flow control. See the [flow control](/workflow/features/flow-control) for more details.
+    <ResponseField name="libraryName" type="string" required>
+      The name of the library.
     </ResponseField>
 
-    <ResponseField name="waitListSize" type="integer">
-      The number of messages in the wait list that waits for `parallelism` set in the flow control.
+    <ResponseField name="engine" type="string" required>
+      The engine used by the library (e.g., "LUA").
+    </ResponseField>
+
+    <ResponseField name="functions" type="Object[]" required>
+      List of functions in the library.
+
+      <Expandable>
+        <ResponseField name="name" type="string" required>
+          The name of the function.
+        </ResponseField>
+
+        <ResponseField name="description" type="string | undefined" required>
+          The description of the function, or undefined if not provided.
+        </ResponseField>
+
+        <ResponseField name="flags" type="string[]" required>
+          List of flags for the function (e.g., "no-writes").
+        </ResponseField>
+      </Expandable>
+    </ResponseField>
+
+    <ResponseField name="libraryCode" type="string">
+      The source code of the library (only included if `withCode` is true).
     </ResponseField>
   </Expandable>
 </ResponseField>
 
 <RequestExample>
-  ```sh  theme={"system"}
-  curl -X GET https://qstash.upstash.io/v2/flowControl/  -H "Authorization: Bearer <token>"
+  ```ts Example theme={"system"}
+  const libs = await redis.functions.list({
+      libraryName: "mylib",
+      withCode: true
+  })
+
+  console.log(libs)
+  // [
+  //   {
+  //     libraryName: "mylib",
+  //     engine: "LUA",
+  //     functions: [{
+  //       name: "my_func",
+  //       description: null,
+  //       flags: [ "no-writes" ]
+  //     }],
+  //     libraryCode: "#!lua name=mylib ..."
+  //   }
+  // ]
   ```
 </RequestExample>

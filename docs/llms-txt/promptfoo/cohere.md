@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/cohere/
+
 # Cohere
 
 The `cohere` provider is an interface to Cohere AI's [chat inference API](https://docs.cohere.com/reference/chat), with models such as Command R that are optimized for RAG and tool usage.

@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/integrate/sdk/python.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Python SDK
 
 Fully type-hinted and allows both synchronous and asynchronous usage, thanks to [HTTPX](https://www.python-httpx.org/).
@@ -7,7 +11,7 @@ Under the hood, schemas are validated by [Pydantic](https://docs.pydantic.dev/la
 
 ### Quickstart
 
-```bash  theme={null}
+```bash Terminal theme={null}
 pip install polar-sdk
 ```
 

@@ -8,7 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > APM > Tracing Guides > Understanding Injector Behavior with Single Step
   Instrumentation
-source_url: https://docs.datadoghq.com/guide/injectors/index.html
 ---
 
 # Understanding Injector Behavior with Single Step Instrumentation

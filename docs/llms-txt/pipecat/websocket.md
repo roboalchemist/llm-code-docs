@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/client/js/transports/websocket.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # WebSocketTransport
 
 > A lightweight transport for WebSocket based connections with Pipecat
@@ -147,7 +151,6 @@ The `WebSocketTransport` takes the same options as the constructor; `WebSocketTr
               audio_in_enabled=True,
               audio_out_enabled=True,
               add_wav_header=False,
-              vad_analyzer=SileroVADAnalyzer(),
               serializer=ProtobufFrameSerializer(),
           ),
       )
@@ -156,26 +159,26 @@ The `WebSocketTransport` takes the same options as the constructor; `WebSocketTr
 
       messages = [{ role: "system", content: "You are a helpful assistant." }]
       context = LLMContext(messages)
-      context_aggregator = LLMContextAggregatorPair(context)
-
-      # RTVI events for Pipecat client UI
-      rtvi = RTVIProcessor(config=RTVIConfig(config=[]))
+      user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+          context,
+          user_params=LLMUserAggregatorParams(
+              vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.2)),
+          ),
+      )
 
       pipeline = Pipeline(
           [
               ws_transport.input(),
-              context_aggregator.user(),
-              rtvi,
+              user_aggregator,
               llm,  # LLM
               ws_transport.output(),
-              context_aggregator.assistant(),
+              assistant_aggregator,
           ]
       )
 
       task = PipelineTask(
           pipeline,
           params,
-          observers=[RTVIObserver(rtvi)],
       )
       ...
   ```
@@ -222,8 +225,3 @@ The WebSocketTransport does provide reconnection handling. If the WebSocket conn
     `@pipecat-ai/websocket-transport`
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

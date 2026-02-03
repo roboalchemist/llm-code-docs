@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/websets/dashboard/integrations.md
+# Source: https://exa.ai/docs/websets/dashboard/integrations.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Integrations
 
@@ -178,8 +182,3 @@ No authentication is required for Clay integration, as we currently support expo
 Your Webset rows will populate your Clay table within moments.
 
 <img src="https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/websets/integrations/clay-export.png?fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=2171ef8d52ffdc65b74a4e01b6413b0c" alt="Clay export interface" data-og-width="1270" width="1270" data-og-height="1290" height="1290" data-path="images/websets/integrations/clay-export.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/websets/integrations/clay-export.png?w=280&fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=b46f98a3259d4f3addf483446c461ff6 280w, https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/websets/integrations/clay-export.png?w=560&fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=e85316751711cad456b2562175a2c498 560w, https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/websets/integrations/clay-export.png?w=840&fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=67f3bd324938b7bb843b1868fbb4d534 840w, https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/websets/integrations/clay-export.png?w=1100&fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=e1de8ad6869dcd58a47e30dea3ec7529 1100w, https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/websets/integrations/clay-export.png?w=1650&fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=a39e7fec96c92c912529571eedba2edf 1650w, https://mintcdn.com/exa-52/tmzyKnsgpKLGddKC/images/websets/integrations/clay-export.png?w=2500&fit=max&auto=format&n=tmzyKnsgpKLGddKC&q=85&s=50fde294b23cf81e9bd3ec34ef8f1d95 2500w" />
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

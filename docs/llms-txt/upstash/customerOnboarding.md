@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/examples/customerOnboarding.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Customer Onboarding
 
 This example demonstrates a customer onboarding process using Upstash Workflow. The following example workflow registers a new user, sends welcome emails, and periodically checks and responds to the user's activity state.

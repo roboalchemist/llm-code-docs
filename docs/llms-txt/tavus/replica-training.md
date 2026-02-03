@@ -1,5 +1,9 @@
 # Source: https://docs.tavus.io/sections/replica/replica-training.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Replica Training
 
 > Guide to recording a high-quality training video for generating a high-quality Replica using the Phoenix model.
@@ -48,7 +52,7 @@ If you're uploading a pre-recorded training video via our <a href="/api-referenc
   * `webm`
   * `mp4` with **H.264** video codec and **AAC** audio codec
 * **Maximum file size**: 750MB
-* **Minimum resolution**: 720p
+* **Minimum resolution**: 1080p
 
 ### Consent Statement
 

@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/development/model/deploy-and-iterate.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deploy and iterate
 
 > Deploy your model and quickly iterate on it.
@@ -7,7 +11,7 @@
 In [Your First Model](/development/model/build-your-first-model), we walked through
 how to deploy a basic model to Baseten. If you are trying to rapidly make changes
 and iterate on your model, you'll notice that there is quite a bit of time between
-running `truss push` and when the changes are reflected on Baseten.
+running `truss push --publish` and when the changes are reflected on Baseten.
 
 Also, a lot of models require special hardware that you may not immediately have
 access to.
@@ -17,15 +21,15 @@ live reload your model as you work.
 
 # Truss Watch
 
-To make use of `truss watch`, start by deploying your model:
+To make use of `truss watch`, start by deploying your model as a development deployment:
 
 ```bash  theme={"system"}
-$ truss push
+$ truss push --watch
 ```
 
-By default, this will deploy a "development" version of your model. This means that the model
-has a live reload server attached to it and supports hot reloading. To get the hot reload
-loop working, simply run `truss watch` afterwards:
+This will deploy a "development" version of your model with live reload enabled. The model
+has a live reload server attached to it and supports hot reloading. To continue the hot reload
+loop, simply run `truss watch` afterwards:
 
 ```bash  theme={"system"}
 $ truss watch
@@ -47,5 +51,5 @@ truss push --publish
 ```
 
 Note that development models have slightly worse performance, and have more
-limited scaling properites, so it's highly recommend to not use these for
-any production use-case.
+limited scaling properties, so it's highly recommended to not use these for
+any production use case.

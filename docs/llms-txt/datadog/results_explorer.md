@@ -4,7 +4,6 @@
 title: Synthetic Monitoring & Testing Results Explorer
 description: Examine CI jobs executing Continuous Testing tests.
 breadcrumbs: Docs > Continuous Testing > Synthetic Monitoring & Testing Results Explorer
-source_url: https://docs.datadoghq.com/results_explorer/index.html
 ---
 
 # Synthetic Monitoring & Testing Results Explorer

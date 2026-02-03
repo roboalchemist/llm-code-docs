@@ -205,7 +205,7 @@ eval $(upsun completion)
 
 You can use the Upsun CLI to run commands on your container.
 You can use any command you've added in [dependencies](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#dependencies)
-or a [hook](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#hooks).
+or a [hook](https://docs.upsun.com/create-apps/image-properties/hooks.md).
 
 The syntax looks like the following:
 

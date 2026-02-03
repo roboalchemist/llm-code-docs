@@ -1,25 +1,51 @@
 # Source: https://polar.sh/docs/integrate/sdk/typescript.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # TypeScript SDK
 
-> SDK for JavaScript runtimes (Node.js and browsers)
+> SDK for JavaScript runtimes (Node.js and Browser)
 
-### Quickstart
+## Examples
 
-```bash  theme={null}
-pnpm add @polar-sh/sdk
-```
+* [With Node.js](https://github.com/polarsource/examples/tree/main/with-nodejs)
 
-```typescript  theme={null}
+## Installation
+
+<Tabs>
+  <Tab title="npm">
+    ```bash Terminal theme={null}
+    npm install @polar-sh/sdk
+    ```
+  </Tab>
+
+  <Tab title="yarn">
+    ```bash Terminal theme={null}
+    yarn add @polar-sh/sdk
+    ```
+  </Tab>
+
+  <Tab title="pnpm">
+    ```bash Terminal theme={null}
+    pnpm add @polar-sh/sdk
+    ```
+  </Tab>
+</Tabs>
+
+## Quickstart
+
+```typescript icon="square-js" index.js theme={null}
 import { Polar } from '@polar-sh/sdk'
 
 const polar = new Polar({
-  accessToken: process.env['POLAR_ACCESS_TOKEN'] ?? '',
+  accessToken: process.env.POLAR_ACCESS_TOKEN,
+  server: process.env.POLAR_MODE || 'sandbox' // sandbox or production
 })
 
 async function run() {
   const result = await polar.users.benefits.list({})
-
   for await (const page of result) {
     // Handle the page
     console.log(page)
@@ -28,8 +54,6 @@ async function run() {
 
 run()
 ```
-
-[Read more](https://github.com/polarsource/polar-js)
 
 <Note>
   **camelCase vs. snake\_case**
@@ -46,25 +70,17 @@ run()
 
 ### Framework Adapters
 
-Implement Checkout & Webhook handlers in 5 lines of code.
+Implement Checkout & Webhook handlers in few lines of code.
 
-* [Next.js](/integrate/sdk/adapters/nextjs)
 * [Astro](/integrate/sdk/adapters/astro)
-* [Remix](/integrate/sdk/adapters/remix)
-* [Sveltekit](/integrate/sdk/adapters/sveltekit)
+* [Better Auth](/integrate/sdk/adapters/better-auth)
 * [Deno](/integrate/sdk/adapters/deno)
 * [Elysia](/integrate/sdk/adapters/elysia)
 * [Express](/integrate/sdk/adapters/express)
-* [Fastify](/integrate/sdk/adapters/fastify)
 * [Hono](/integrate/sdk/adapters/hono)
-
-### Sandbox Environment
-
-You can configure the SDK so it hits the [sandbox environment](/integrate/sandbox) instead of the production one. You just need to add the `server` property to the configuration object:
-
-```typescript  theme={null}
-const polar = new Polar({
-  server: 'sandbox',
-  accessToken: process.env['POLAR_ACCESS_TOKEN'] ?? '',
-})
-```
+* [Fastify](/integrate/sdk/adapters/fastify)
+* [Next.js](/integrate/sdk/adapters/nextjs)
+* [Nuxt](/integrate/sdk/adapters/nuxt)
+* [Remix](/integrate/sdk/adapters/remix)
+* [Sveltekit](/integrate/sdk/adapters/sveltekit)
+* [TanStack Start](/integrate/sdk/adapters/tanstack-start)

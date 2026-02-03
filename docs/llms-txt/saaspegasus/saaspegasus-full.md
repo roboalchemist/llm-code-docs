@@ -74,7 +74,7 @@ If you chose to use a zip file instead, unzip it to a folder where you want to d
 
 ```bash
 git init
-git add .Building
+git add .
 git commit -am "initial project creation"
 ```
 
@@ -1801,7 +1801,7 @@ To start the Docker services, run:
 make start
 ```
 
-This will start the Database services (PostgreSQL and Redis) and in full-mode, start all the processes needed to run your application, including Django, the front end build, and Celery.
+This will start the Database services (PostgreSQL and Redis) and in full-mode, start all the processes needed to run your application, including Django, the front end server / bundler, and Celery.
 
 make and Windows
 
@@ -1814,6 +1814,18 @@ make init
 ```
 
 Which will also create and run database migrations and bootstrap your application.
+
+## Stopping the application
+
+[Section titled “Stopping the application”](#stopping-the-application)
+
+To stop the Docker services, run:
+
+```bash
+make stop
+```
+
+This will stop the Database services (PostgreSQL and Redis) and in full-mode, stop the other container processes (Django, Vite/Webpack, and Celery).
 
 ## Architecture and how it works
 
@@ -1956,6 +1968,35 @@ You can also get around this issue by running your application natively, instead
 
 * [Dockerizing Django with Postgres, Gunicorn, and Nginx](https://testdriven.io/blog/dockerizing-django-with-postgres-gunicorn-and-nginx/) provides an overview of the setup, and has additional information about using Docker in production
 * [Environment variables in Compose](https://docs.docker.com/compose/environment-variables/) is a good resource on the different ways to work with environment variables in Docker
+
+# Early Access Program
+
+> How to get early access to new SaaS Pegasus features and development releases.
+
+If you’d like to try out new Pegasus features before they’re officially released, you can request access to the early-access / beta testing program.
+
+## What’s in Early Access
+
+[Section titled “What’s in Early Access”](#whats-in-early-access)
+
+You can see the [Development Release Notes](/release-notes-dev/) for a preview of what’s currently in development.
+
+With early access you have the opportunity to:
+
+* **Test new features** before they’re officially released
+* **Provide feedback** that shapes the final implementation
+* **Get a head start** on upcoming changes
+
+It is worth noting that early-access features are more likely to have bugs as they have not gone through the same rigor of QA and testing as final release features.
+
+## How to Request Access
+
+[Section titled “How to Request Access”](#how-to-request-access)
+
+To request early access, reach out through one of these channels:
+
+* **Slack**: Message in the SaaS Pegasus Slack community
+* **Email**: <cory@saaspegasus.com>
 
 # Feature Flags
 
@@ -2594,6 +2635,252 @@ Follow [the subscriptions documentation](/subscriptions/#webhooks) to set up web
 
 Releases of [SaaS Pegasus: The Django SaaS Boilerplate](https://www.saaspegasus.com/) are documented here.
 
+In Development
+
+See the [Development Release Notes](/release-notes-dev/) for a preview of what’s coming in the next release.
+
+## Version 2026.2
+
+[Section titled “Version 2026.2”](#version-20262)
+
+This release focuses on improving AI-assisted development with a number direct and indirect improvements.
+
+### Standalone Frontend ported to shadcn/ui
+
+[Section titled “Standalone Frontend ported to shadcn/ui”](#standalone-frontend-ported-to-shadcnui)
+
+**The standalone React frontend has been completely redesigned using shadcn/ui components.** Shadcn has become the de-facto recommended way to build a standalone React frontend and LLMs are very good at working with it. This makes it a natural choice for the standalone frontend for Pegasus moving forwards.
+
+Details:
+
+* New sidebar component using shadcn’s responsive sidebar pattern
+* All form inputs, buttons, labels, and cards now use shadcn components
+* Authentication pages (login, signup, password reset) redesigned with consistent styling
+* Profile page and navigation demo updated to use shadcn components
+* Added shadcn configuration file (`components.json`) for easy component management
+* Added path alias `@/*` for cleaner imports
+
+See the [updated Standalone React Front End documentation](/experimental/react-front-end/) for details.
+
+### Skills for Agents
+
+[Section titled “Skills for Agents”](#skills-for-agents)
+
+This release of Pegasus starts introducing [agent skills](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview) to assist with common and repetitive tasks when working with Pegasus projects.
+
+In a new Pegasus project, all skills will be included if you enable Claude support.
+
+There are currently skills to help you upgrade your Pegasus project (`/resolve-pegasus-conflicts`), fix type errors in your code (`/fix-types`), and work with worktrees (`/worktree`).
+
+Pegasus skills are open source and will be maintained in the following two repositories:
+
+* **[Pegasus Skills](https://github.com/saaspegasus/pegasus-skills)**: Skills that are specific to working on Pegasus projects.
+* **[Django Skills](https://github.com/saaspegasus/django-skills)**: Skills that are more generally useful for any Django project.
+
+See the [AI Integrations documentation](/ai/development/#pegasus-skills-for-claude-code) for installation instructions and details.
+
+### Type Checking with Mypy
+
+[Section titled “Type Checking with Mypy”](#type-checking-with-mypy)
+
+One of the most important principles of successfully building complex applications with agents is that you should give them as many tools as possible to help them verify their work. Type checking is one of these tools that can help agents catch errors and bugs and verify their work.
+
+To assist with this, **Pegasus now includes optional support for static type checking using mypy and django-stubs.** When enabled, your project will include pre-configured mypy settings, and type checking runs automatically in GitHub Actions CI.
+
+In addition, a large number of small changes were made to the codebase to add type hints and fix typing issues so that mypy works out of the box on all tested build configurations.
+
+Note: this features is labeled as experimental because not every combination of Pegasus features has been fully tested by mypy, but it will become an official supported feature in the next release and is safe to enable and use.
+
+See the new [Type Checking documentation](/experimental/type-checking/) for details.
+
+### Git Worktree Support (Experimental)
+
+[Section titled “Git Worktree Support (Experimental)”](#git-worktree-support-experimental)
+
+Another growing trend in AI programming is the use of git worktrees to enable parallel development on multiple branches simultaneously. Worktrees allow you (or agents) to work on multiple branches at once without overwriting each branch’s changes.
+
+To assist with using worktrees, Pegasus adds some utilities that help you create and manage worktrees. Specifically, you can now create isolated git worktrees with unique ports for all services, enabling parallel development on multiple branches simultaneously, giving each worktree its own database and web ports (so multiple worktrees can run in browsers concurrently).
+
+Specifically, each worktree gets its own:
+
+* Django port (starting at 8000, incrementing for each worktree)
+* Vite dev server port (starting at 5173)
+* PostgreSQL instance port (starting at 5432)
+* Redis instance port (starting at 6379)
+
+To create a worktree, use the new `/worktree` Claude Code skill or run:
+
+```bash
+./scripts/create-worktree.sh feature-name
+```
+
+This feature is experimental. See the [Git Worktrees documentation](/experimental/git-worktrees/) for details.
+
+### Other Changes
+
+[Section titled “Other Changes”](#other-changes)
+
+**Added**
+
+* **Added support for superuser API permissions.** New `IsSuperUser`, `IsAuthenticatedSuperUser`, and `IsAuthenticatedOrHasUserAPIKeySuperUser` permission classes for restricting API endpoints to superusers only.
+  * Also added tests.
+* Added an error notification when HTMX requests fail.
+* The `dev.sh` script (and `make dev`) now starts the standalone frontend dev server alongside Django and Vite (if enabled).
+
+**Changed**
+
+* Django and Vite ports are now configurable via environment variables. Set `DJANGO_PORT`, `DJANGO_VITE_PORT`, `POSTGRES_PORT`, and `REDIS_PORT` in your `.env` file. Docker Compose should use these ports automatically. This helps enable the worktree workflow outlined above.
+* **Changed the default development docker setup to only expose postgres and redis ports over localhost.** This improves security if you are doing development on a machine that’s exposed to the public internet.
+* Moved `django-browser-reload` and `django-watchfiles` to development requirements and only set them up if `DEBUG=True`. Thanks Saif for the suggestion!
+* Switched from `psycopg2-binary` to `psycopg[binary]`, as recommended by the latest Django docs. Thanks Saif for the suggestion!
+* API key display and revocation now uses key prefix instead of ID. Thanks Brennon for the suggestion!
+* Added configurable Docker user/group in production Dockerfile. You can now customize the user and group IDs via build args (`SITE_UID`, `SITE_GID`, `SITE_USER`, `SITE_GROUP`). Thanks Geoff for the suggestion!
+* Added a longer default deploy timeout (180 seconds) for Kamal deployments. Thanks Aurelien for the suggestion!
+* Changed assertion statements to proper exceptions in subscription views and employee views for better error handling.
+* The `.git` and `config` directories are now excluded in production images via the `.dockerignore` file. Thanks Geoff for the suggestion!
+* Font awesome is now installed via NPM instead of the CDN. Thanks Geoff for suggesting!
+
+**Fixed**
+
+* Fixed shadcn/daisyUI CSS variable mappings. Accent colors are no longer overridden by shadcn by default, which was causing inconsistent styling on DaisyUI accent components.
+
+* Vite now ignores large directories (`.venv`, `node_modules`, `.git`) when watching files. This helps prevent exhausting system inotify watchers. Thanks Jacob for the suggestion!
+
+* Switched some model references to use `gettext_lazy` instead of `gettext` for translatable strings, which is the correct pattern for model-level translations. Thanks Saif for reporting!
+
+* Fixed tests failing when using manifest storage by adding a test base class that overrides storage settings. Thanks Brennon for reporting!
+
+* Don’t add `django-celery-beat` uv source to `pyproject.toml` if not using celery.
+
+* **Made many minor code-quality improvements caught by the type checker. Examples:**
+
+  * Subscription signals now handle missing subscriptions more gracefully/explicitly.
+  * Added proper return types and null checks in subscription helpers
+  * Fixed type hints in AI agents and tools
+  * Added type annotations to settings and model files
+  * Fixed import paths for `Message` class in teams tests
+  * Added type ignores with explanatory comments where necessary
+
+*February 2, 2026*
+
+## Version 2025.12.2
+
+[Section titled “Version 2025.12.2”](#version-2025122)
+
+This is a hotfix release that bumps the Pegasus CLI version to fix [a permissions issue with the created views](https://github.com/saaspegasus/pegasus-cli/issues/29).
+
+Thanks Mark for reporting!
+
+It’s recommended that all projects upgrade the CLI version to 0.11 and/or add the appropriate permissions checks to the created views (by adding `team=request.team` or `user=request.user` to the object access queries in the generated `views.py` files).
+
+*January 8, 2026*
+
+## Version 2025.12.1
+
+[Section titled “Version 2025.12.1”](#version-2025121)
+
+This is a hotfix release that fixes an issue where production Dockerfiles weren’t building on 2025.12 when celery was enabled because `git` was not installed. The fix is installing `git` before installing Python dependencies.
+
+Thanks Denis and Chris for reporting!
+
+*Dec 14, 2025*
+
+## Version 2025.12
+
+[Section titled “Version 2025.12”](#version-202512)
+
+This release upgrades Pegasus to Django 6, adds Google Gemini (Nano Banana Pro) as an AI image generation option, and includes several minor fixes and updates.
+
+### Django 6
+
+[Section titled “Django 6”](#django-6)
+
+Pegasus has been upgraded to Django 6! This includes:
+
+* **Upgraded Django to version 6.0.**
+* **Bumped the minimum Python version to 3.12** to match Django 6’s requirements.
+* **Removed `django-template-partials` dependency**, as template partials are now built into Django 6. Also simplified the template loader configuration in `settings.py` by removing the partials-related setup.
+* Temporarily added a workaround to `pyproject.toml` / `requirements.in` to allow installing `django-celery-beat` from source, until [this issue is resolved](https://github.com/celery/django-celery-beat/issues/977).
+
+See the upgrading section below for more details.
+
+### Gemini / Nano Banana Image Generation
+
+[Section titled “Gemini / Nano Banana Image Generation”](#gemini--nano-banana-image-generation)
+
+You can now generate images in the image demo with Google Gemini (Nano Banana Pro). This model is *very* good at image generation and opens up a lot of new application use cases. See the [image generation documentation](/ai/images) for setup details.
+
+### Other Changes
+
+[Section titled “Other Changes”](#other-changes-1)
+
+* **Upgraded most JavaScript packages to their latest versions.**
+
+* **Upgraded most Python packages to their latest versions.**
+
+* **Added `django.contrib.postgres` to installed apps when using Postgres.** This is required to use the Wagtail integration on Django 6.
+
+* **Pinned the Postgres Docker image to version 17 everywhere.** Thanks Eugen for reporting a configuration mismatch for version 18!
+
+* **Improved admin defaults**
+
+  * The ecommerce `Purchase` admin now includes search fields (user email, checkout session ID) and autocomplete for the user field.
+  * The `CustomUser` admin now includes search fields for email, first name, and last name.
+
+* **Fixed various type annotations throughout the codebase to pass stricter type checking.** This is part of an ongoing effort to improve the type safety of the codebase.
+
+* Upgraded the default uv version to 0.9.17
+
+* Updated `settings.ADMINS` to use a simpler format with just email addresses instead of name/email tuple, which will be removed in Django 7.
+
+* Added translations in a few places.
+
+* Added a project description field to `pyproject.toml` that uses your project’s description.
+
+#### Fixed
+
+[Section titled “Fixed”](#fixed)
+
+* Fixed a typo in the subscription template filename (`no_subsription_access.html` → `no_subscription_access.html`).
+* Fixed a typo in a comment in the team model’s manager documentation.
+* Fixed timezone warnings in subscription tests by using `timezone.now()` instead of `datetime.utcnow()`.
+* Fixed missing return type annotations and added better error handling in ecommerce helpers.
+* Added a return statement to the `get_discounted_price` billing utility to match the return type of the function.
+* Removed a redundant import in the team invitation views.
+* Fixed a few compatibility issues on the experimental Django Ninja build.
+
+### CLI changes
+
+[Section titled “CLI changes”](#cli-changes)
+
+* Released [v0.10 of the CLI](https://github.com/saaspegasus/pegasus-cli/releases/tag/v0.10) which adds Django 6.0 support and fixes a few bugs (details in release notes there).
+
+### Upgrading
+
+[Section titled “Upgrading”](#upgrading)
+
+A few notes on upgrading to Django 6:
+
+* **Django 6 requires Python 3.12 or later.** This was already the default version in Pegasus, but if you are on an older version you will need to upgrade. Using any supported Pegasus deployment option should handle this for you.
+* If your project was using `django-template-partials` (used by the Pegasus CLI), you should review [Django’s migration guide](https://github.com/carltongibson/django-template-partials/blob/main/Migration.md). Most of this is handled by Pegasus, but **you must remove the `{% load partials %}` from all your existing templates that have it**.
+
+*December 12, 2025*
+
+## Version 2025.11.2
+
+[Section titled “Version 2025.11.2”](#version-2025112)
+
+This is a bugfix release addressing a few issues:
+
+* **Switched the default production celery pool from `gevent` to `threads`.** This fixes compatibility issues between `gevent` and `asyncio` that arose when using agents inside Celery. Thanks Matt for reporting and suggesting the fix!
+  * This change also removes `gevent` from production requirements. If you were using it elsewhere you should keep it.
+* Fixed a bug where the “New Agent Chat” button didn’t properly set the agent name on React / non-async builds.
+* Fixed a whitespace issue in the Digital Ocean `app-spec.yaml` file that was causing an invalid config.
+* Bumped the Postgres version on Digital Ocean to the latest (version 18).
+* Added the `/.vite/` path back to the `.gitignore` file.
+
+*November 27, 2025*
+
 ## Version 2025.11.1
 
 [Section titled “Version 2025.11.1”](#version-2025111)
@@ -2634,7 +2921,7 @@ See [the updated teams documentation](/teams) for more information about working
 
 ### Other changes
 
-[Section titled “Other changes”](#other-changes)
+[Section titled “Other changes”](#other-changes-2)
 
 **Added**
 
@@ -2672,7 +2959,7 @@ See [the updated teams documentation](/teams) for more information about working
 
 ### Upgrading
 
-[Section titled “Upgrading”](#upgrading)
+[Section titled “Upgrading”](#upgrading-1)
 
 * If you had any code dependent on `request.team` being set even if there was no team in the URL, you should update that code to use `request.default_team`.
 * If you were using the (Convert)Kit integration, you should update based on the [latest documentation](/configuration/#kit-formerly-convertkit).
@@ -2754,7 +3041,7 @@ If you have any questions or concerns about migrating, don’t hesitate to get i
 
 ### Other changes
 
-[Section titled “Other changes”](#other-changes-1)
+[Section titled “Other changes”](#other-changes-3)
 
 * Overhauled the “[Gettting started](/getting-started/)” and “[Docker](/docker/)” sections of the docs to reflect the latest changes.
 * In addition to the major changes mentioned above, made some minor changes and corrections to the README and AI Rules files.
@@ -2853,7 +3140,7 @@ You can learn more about these features and how they work in the following video
 
 ### Other changes
 
-[Section titled “Other changes”](#other-changes-2)
+[Section titled “Other changes”](#other-changes-4)
 
 * **Removed the “OpenAI” chat configuration option. All AI chat functionality now uses the `litellm` module, which supports OpenAI, as well as Anthropic, Google, and other models.**
 * Changed `AI_CHAT_DEFAULT_LLM_MODEL` environment variable to `DEFAULT_LLM_MODEL`
@@ -2910,7 +3197,7 @@ Complete details are below.
 
 ### Fixed
 
-[Section titled “Fixed”](#fixed)
+[Section titled “Fixed”](#fixed-1)
 
 * Updated the Digital Ocean deployment to use a managed database instead of a development database. Development databases are no longer well-supported in app platform.
 
@@ -2978,7 +3265,7 @@ Thanks to everyone who contributed ideas and code to this release!
 
 ### Fixed
 
-[Section titled “Fixed”](#fixed-1)
+[Section titled “Fixed”](#fixed-2)
 
 * **Improved the Python environment setup in `Dockerfile.dev` to be much more performant. This should make Docker container rebuilds after adding/changing Python dependencies much faster.**
 
@@ -3097,7 +3384,7 @@ These updates affect the [standalone React front end](/experimental/react-front-
 
 ### Upgrading
 
-[Section titled “Upgrading”](#upgrading-1)
+[Section titled “Upgrading”](#upgrading-2)
 
 If your project has existing migration files that create celery tasks (e.g. `/apps/subscriptions/migrations/0001_celery_tasks.py`), you should leave them in your repository to prevent issues running future migrations. The tasks themselves are unaffected, since they live in the database.
 
@@ -3196,7 +3483,7 @@ If you would like help migrating off this theme, you can reach out via standard 
 
 ### Upgrading
 
-[Section titled “Upgrading”](#upgrading-2)
+[Section titled “Upgrading”](#upgrading-3)
 
 For help switching from Webpack to Vite, see [the Webpack to Vite migration guide](/front-end/migrating).
 
@@ -3363,7 +3650,7 @@ Details:
 
 ### Upgrading
 
-[Section titled “Upgrading”](#upgrading-3)
+[Section titled “Upgrading”](#upgrading-4)
 
 There are several changes in this release that may require additional steps during the upgrade process. To help with this, I recorded a video walkthrough of myself upgrading one of my own projects, which you can watch below:
 
@@ -3437,7 +3724,7 @@ Watch a demo below, or check out the new [AI tool docs](/ai/development).
 
 ### Fixed
 
-[Section titled “Fixed”](#fixed-2)
+[Section titled “Fixed”](#fixed-3)
 
 * **Fixed a potential XSS vulnerability issue with `markdown_tags` not properly escaping vulnerable tags.** This issue existed if you were using the AI chat UI, or built other functionality on top of that library. All markdown is now sanitized with `nh3`. (Thanks Mitja for reporting!)
   * Also added tests for this functionality.
@@ -3543,7 +3830,7 @@ Here’s a detailed breakdown of the changes:
 
 ### Upgrading
 
-[Section titled “Upgrading”](#upgrading-4)
+[Section titled “Upgrading”](#upgrading-5)
 
 See the [Tailwind upgrade guide](/css/tailwind/#upgrading-from-tailwind-3-to-4) for details on upgrading existing Tailwind projects.
 
@@ -3612,7 +3899,7 @@ This is a maintenance release with a number of upgrades and fixes.
 
 ### Fixed
 
-[Section titled “Fixed”](#fixed-3)
+[Section titled “Fixed”](#fixed-4)
 
 * **Improved edge-case handling the Stripe checkout integration.**
 
@@ -3637,7 +3924,7 @@ This is a maintenance release with a number of upgrades and fixes.
 
 [Section titled “Removed”](#removed)
 
-* Removed `django_otp` dependency and configuration, which was only there to facilitate the transition to `allauth.mfa`. See the release notes for [Version 2024.5](#version-20245) for more information on this change.
+* Removed `django_otp` dependency and configuration, which was only there to facilitate the transition to `allauth.mfa`. See the release notes for [Version 2024.5](/release-notes-history/#version-20245) for more information on this change.
   * Also removed the associated `migrate_allauth_2fa` management command.
 * Removed the default user-facing messages on login/logout. You can add them back or customize them by editing the files in `/templates/account/messages/`.
 
@@ -3649,7 +3936,7 @@ This is a maintenance release with a number of upgrades and fixes.
 
 ### Upgrading
 
-[Section titled “Upgrading”](#upgrading-5)
+[Section titled “Upgrading”](#upgrading-6)
 
 Tailwind projects that have added their own `.sass` files will need to either restore sass support or port these files to `.css` (llms are good at this!). You can “restore” sass support by rejecting the proposed changes in `package.json` and `webpack.config.js` during upgrade.
 
@@ -3727,7 +4014,7 @@ Changes affecting the AI Chat, AI Images, and Group Chat apps:
 
 ### Other Changes
 
-[Section titled “Other Changes”](#other-changes-3)
+[Section titled “Other Changes”](#other-changes-5)
 
 Other changes included in this release are below.
 
@@ -3780,7 +4067,7 @@ Other changes included in this release are below.
 
 ### Upgrading
 
-[Section titled “Upgrading”](#upgrading-6)
+[Section titled “Upgrading”](#upgrading-7)
 
 **Python / Node updates**
 
@@ -3819,6 +4106,32 @@ uv run ruff check --fix
 ```
 
 *Jan 27, 2025*
+
+Old Version?
+
+Release notes for updates before 2025 are available on the [Release Notes History](/release-notes-history/) page.
+
+# In Development Release Notes
+
+> Preview of upcoming features and changes in the next SaaS Pegasus release.
+
+In Development
+
+These release notes are for a version that is still in development and has not been released yet. Features and changes may be modified before the final release. To try these features early, see the [Early Access Program](/early-access/).
+
+*The development release notes are generated automatically by AI and may contain errors.*
+
+***
+
+The development release notes have not been updated since the 2026.2 release.
+
+# Release Notes History
+
+> Historical release notes and changelog for older versions of SaaS Pegasus Django boilerplate.
+
+These are old releases.
+
+For the latest updates, see the [Release Notes](/release-notes/) page.
 
 ## Version 2024.12.1
 
@@ -3872,7 +4185,7 @@ The rest of the docs have been updated to accommodate uv, though it’s possible
 
 ### Other updates
 
-[Section titled “Other updates”](#other-updates-3)
+[Section titled “Other updates”](#other-updates)
 
 * **Changed the default set up of social logins to use settings-based configuration instead of `SocialApps` in the database.** See the upgrade notes if you are using social logins to prevent issues. Thanks Alex for the suggestion and for helping with the updated documentation!
 * Updated the default flowbite setup to disable the forms plugin. This was causing styling conflicts with the default DaisyUI styles on certain form elements, including checkboxes.
@@ -3880,7 +4193,7 @@ The rest of the docs have been updated to accommodate uv, though it’s possible
 
 ### Upgrading
 
-[Section titled “Upgrading”](#upgrading-7)
+[Section titled “Upgrading”](#upgrading)
 
 To migrate an existing project to `uv` see [this guide](/cookbooks/#migrating-from-pip-tools-to-uv).
 
@@ -3896,7 +4209,7 @@ This is a minor maintenance release with a few changes in preparation for adding
 
 ### Changed
 
-[Section titled “Changed”](#changed-4)
+[Section titled “Changed”](#changed)
 
 * Pinned the version of `uv` used in CI and Dockerfiles.
 * Added `venv` and `.venv` directories to the `.dockerignore` file and `make translations` target.
@@ -3918,14 +4231,14 @@ This release adds the ability to disable dark mode on Tailwind, upgrades front e
 
 ## Added
 
-[Section titled “Added”](#added-3)
+[Section titled “Added”](#added)
 
 * **Added a new build option to disable dark mode for Tailwind builds.** (Thanks Arno for suggesting!)
 * Added basic user-facing error messages to the standalone front end sign up and login workflows.
 
 ## Changed
 
-[Section titled “Changed”](#changed-5)
+[Section titled “Changed”](#changed-1)
 
 * **Upgraded all JavaScript dependencies.**
 * **Updated the API client to use the latest version 7.9.0, and updated the standalone front end to work with the latest changes.**
@@ -3935,7 +4248,7 @@ This release adds the ability to disable dark mode on Tailwind, upgrades front e
 
 ## Fixed
 
-[Section titled “Fixed”](#fixed-4)
+[Section titled “Fixed”](#fixed)
 
 * Fixed a bug where your migrations and tests would fail if your project name was > 50 characters (thanks Bernard for reporting!).
 * Fixed a bug in the group chat demo where submitting an empty room name would take you to a 404 page.
@@ -3945,7 +4258,7 @@ This release adds the ability to disable dark mode on Tailwind, upgrades front e
 
 ## Removed
 
-[Section titled “Removed”](#removed-1)
+[Section titled “Removed”](#removed)
 
 * The `.env` file is no longer included in zip downloads. This file was already removed from Github builds so this just makes the two consistent. Projects should create `.env` file from the `.env.example` file.
 * Removed the `migrate_customers_to_teams` management command. This was added for an upgrade two years ago, and is assumed to be no longer needed.
@@ -3960,7 +4273,7 @@ This is a minor hotfix release.
 
 ### Fixed
 
-[Section titled “Fixed”](#fixed-5)
+[Section titled “Fixed”](#fixed-1)
 
 * Fixed an issue where the team selector was accidentally transparent in Tailwind builds.
 * Removed shadcn template that was accidentally included even if shadcn was disabled.
@@ -4016,7 +4329,7 @@ Read more in the [flowbite docs here](/css/tailwind/#flowbite).
 
 ### Other updates
 
-[Section titled “Other updates”](#other-updates-4)
+[Section titled “Other updates”](#other-updates-1)
 
 * **Upgraded all Python packages to their latest versions.**
 
@@ -4045,7 +4358,7 @@ Read more in the [flowbite docs here](/css/tailwind/#flowbite).
 
 ### Upgrading
 
-[Section titled “Upgrading”](#upgrading-8)
+[Section titled “Upgrading”](#upgrading-1)
 
 If you’re using Docker the `make upgrade` command won’t work out-of-the-box due to the change in how requirements files are managed. You will first have to rebuild your containers with:
 
@@ -4121,7 +4434,7 @@ This release is mainly [an update to the CLI](https://github.com/saaspegasus/peg
 
 ### Other changes
 
-[Section titled “Other changes”](#other-changes-4)
+[Section titled “Other changes”](#other-changes)
 
 * Fixed an issue where HTMX links without href tags weren’t showing a pointer cursor on some CSS frameworks.
 * Add default region to Redis and Postgres configurations in `render.yaml` to make it easier to find/replace them when changing your project’s region. (Thanks Jacob for suggesting!)
@@ -4188,11 +4501,11 @@ See also: the updated [Payments docs](/payments).
 
 ### Other Changes
 
-[Section titled “Other Changes”](#other-changes-5)
+[Section titled “Other Changes”](#other-changes-1)
 
 #### Added
 
-[Section titled “Added”](#added-4)
+[Section titled “Added”](#added-1)
 
 * **Added `django-htmx` and `django-template-partials` as first-class dependencies to HTMX builds.** These libraries are used by the CLI and will be used for more HTMX-based functionality moving forwards.
 * Added `make manage` command to run arbitrary `manage.py` commands in a docker environment. E.g. `make manage ARGS='createsuperuser'`.
@@ -4200,7 +4513,7 @@ See also: the updated [Payments docs](/payments).
 
 #### Changed
 
-[Section titled “Changed”](#changed-6)
+[Section titled “Changed”](#changed-2)
 
 * Changed links on the tailwind signup page to use `pg-link` class instead of explict tailwind classes. (Thanks Peter for the suggestion!)
 * Silenced extraneous djstripe warnings when running tests. (Thanks Chris for the suggestion!)
@@ -4212,7 +4525,7 @@ See also: the updated [Payments docs](/payments).
 
 #### Fixed
 
-[Section titled “Fixed”](#fixed-6)
+[Section titled “Fixed”](#fixed-2)
 
 * Fixed a typo in the help text for the `bootstrap_ecommerce` command.
 * Fixed a bug where `user_teams` context processor could cause a crash if auth middeware didn’t run (for example, on a 500 error page in production).
@@ -4261,7 +4574,7 @@ This is a maintenance release that includes a number of mostly small fixes and u
 
 ### Fixed
 
-[Section titled “Fixed”](#fixed-7)
+[Section titled “Fixed”](#fixed-3)
 
 * **Fixed a few styling issues on Bulma builds**:
 
@@ -4282,7 +4595,7 @@ This is a maintenance release that includes a number of mostly small fixes and u
 
 ### Changed
 
-[Section titled “Changed”](#changed-7)
+[Section titled “Changed”](#changed-3)
 
 * **Upgraded Django to version 5.1.**
 * Upgraded all Python packages to their latest versions.
@@ -4297,14 +4610,14 @@ This is a maintenance release that includes a number of mostly small fixes and u
 
 ### Documentation
 
-[Section titled “Documentation”](#documentation-1)
+[Section titled “Documentation”](#documentation)
 
 * Improved the documentation on [customizing the Material Bootstrap theme](/css/material).
 * Added documentation for [deploying multiple apps to the same VPS with Kamal](/deployment/kamal/#cookbooks).
 
 ### Upgrading
 
-[Section titled “Upgrading”](#upgrading-9)
+[Section titled “Upgrading”](#upgrading-2)
 
 * Bulma builds may need to add the `is-tab` class to `navbar-items` in the top nav to mimic the updated navbar styling.
 
@@ -4318,13 +4631,13 @@ This is a maintenance release which upgrades HTMX to version 2.0 and fixes a han
 
 ### Changed
 
-[Section titled “Changed”](#changed-8)
+[Section titled “Changed”](#changed-4)
 
 * **Upgraded HTMX to [version 2.0](https://htmx.org/posts/2024-06-17-htmx-2-0-0-is-released/).** See upgrade note below.
 
 ### Fixed
 
-[Section titled “Fixed”](#fixed-8)
+[Section titled “Fixed”](#fixed-4)
 
 * Fixed a bug on some environments where `make build-api-client` would wrong relative to the wrong directory. (Thanks Ben for finding and fixing!)
 * Downgraded Postgres from 16 to 14 on Digital Ocean deployments, due to [an issue with permissions on version 16](https://www.digitalocean.com/community/questions/how-can-i-create-a-postgres-16-user-that-has-permission-to-create-tables-on-an-app-platform-dev-database) that was causing new Digital Ocean deployments to fail. (Thanks Panagiotis for reporting!)
@@ -4333,7 +4646,7 @@ This is a maintenance release which upgrades HTMX to version 2.0 and fixes a han
 
 ### Upgrading
 
-[Section titled “Upgrading”](#upgrading-10)
+[Section titled “Upgrading”](#upgrading-3)
 
 Htmx 2.0 requires loading new extensions. If you were loading HTMX extensions in your own templates, you will have to upgrade the location of those to the 2.0 versions.
 
@@ -4359,7 +4672,7 @@ This is a maintenance release with many small updates and fixes.
 
 ### Added
 
-[Section titled “Added”](#added-5)
+[Section titled “Added”](#added-2)
 
 * **Added test cases for subscription decorators, feature gating, and views.** These can be extended/adapted to test custom subscription logic. Also added utility functions to create test products, subscriptions and mock requests.
 * Added a test that will fail if your project is missing any database migrations. [More on this concept here](https://adamj.eu/tech/2024/06/23/django-test-pending-migrations/).
@@ -4369,7 +4682,7 @@ This is a maintenance release with many small updates and fixes.
 
 ### Changed
 
-[Section titled “Changed”](#changed-9)
+[Section titled “Changed”](#changed-5)
 
 * **Code is now automatically formatted for all projects.** The “Autoformat code” check box has been renamed to “Enable linting and formatting” and now only controls whether `ruff` and the pre-commit hooks are included in the project download. Projects that had already enabled auto-formatting are unaffected by this change. (See upgrade notes below.)
 * **The example landing pages are now used as the project’s landing page instead of being listed in the examples**. (Bulma and Tailwind builds only.)
@@ -4383,7 +4696,7 @@ This is a maintenance release with many small updates and fixes.
 
 ### Fixed
 
-[Section titled “Fixed”](#fixed-9)
+[Section titled “Fixed”](#fixed-5)
 
 * Fixed a bug where the formatting `make` targets were still calling `black` and `isort` instead of `ruff`. `make black` is now `make ruff-format` and `make isort` is now `make ruff-lint`.
 * Fixed a bug where the sign up view tests would fail in your environment if `settings.TURNSTILE_SECRET` was set. (Thanks Finbar for reporting!)
@@ -4395,7 +4708,7 @@ This is a maintenance release with many small updates and fixes.
 
 ### Removed
 
-[Section titled “Removed”](#removed-2)
+[Section titled “Removed”](#removed-1)
 
 * Deleted the “sticky header” html and CSS code that was only used on the example landing pages.
 
@@ -4463,13 +4776,13 @@ Finally, the [admin dashboard](#admin-dashboard) no longer shows users with unco
 
 ### Complete changelog
 
-[Section titled “Complete changelog”](#complete-changelog-1)
+[Section titled “Complete changelog”](#complete-changelog)
 
 Below is the complete set of changes in this release.
 
 #### Added
 
-[Section titled “Added”](#added-6)
+[Section titled “Added”](#added-3)
 
 * **Added configurable captcha support on sign up pages, using [Cloudflare turnstile](https://www.cloudflare.com/products/turnstile/).** See [the turnstile documentation](/configuration/#turnstile) for more information on setting this up. (Thanks Troy, Jacob, Robert and others for suggesting.)
 * Added API views for two-factor authentication, and to change the logged-in user’s password. (Thanks Finbar for suggesting!)
@@ -4481,7 +4794,7 @@ Below is the complete set of changes in this release.
 
 #### Fixed
 
-[Section titled “Fixed”](#fixed-10)
+[Section titled “Fixed”](#fixed-6)
 
 * Fixed a bug where team names longer than 50 characters could cause a crash during sign up.
 * Fixed a bug where multi-factor authentication QR codes had a dark background when dark mode was enabled (Tailwind builds only). (Thanks Artem for reporting!)
@@ -4495,7 +4808,7 @@ Below is the complete set of changes in this release.
 
 #### Changed
 
-[Section titled “Changed”](#changed-10)
+[Section titled “Changed”](#changed-6)
 
 * **Upgraded all Python packages to the latest versions.**
 
@@ -4540,7 +4853,7 @@ Below is the complete set of changes in this release.
 
 #### Removed
 
-[Section titled “Removed”](#removed-3)
+[Section titled “Removed”](#removed-2)
 
 * Removed `black` and `isort` from dev-requirements, since they have been replaced by `ruff`.
 * Removed `llm` library and associated code, since it has been replaced by `litellm`.
@@ -4626,7 +4939,7 @@ The complete release notes are below:
 
 ### Added
 
-[Section titled “Added”](#added-7)
+[Section titled “Added”](#added-4)
 
 * **Added an optional health check endpoint at /health/.** (see above for details)
 * **Added an option to connect the chatbot to other LLMs**. (see above for details)
@@ -4638,7 +4951,7 @@ The complete release notes are below:
 
 ### Changed
 
-[Section titled “Changed”](#changed-11)
+[Section titled “Changed”](#changed-7)
 
 * Upgraded allauth to the latest version (0.62.1).
 * **Migrated two-factor authentication from the third-party `django-allauth-2fa` to the `django-allauth` built-in implementation.** See upgrade notes below for migrating existing projects.
@@ -4657,14 +4970,14 @@ The complete release notes are below:
 
 ### Fixed
 
-[Section titled “Fixed”](#fixed-11)
+[Section titled “Fixed”](#fixed-7)
 
 * **SQLite build now properly parse `DATABASE_URL` if it is set. This fixes issues deploying to certain platforms when building with SQLite.** (Thanks Manasvini for reporting!)
 * Updated allauth documentation links in the README to point to the new [allauth docs site](https://docs.allauth.org/). (Thanks Shantu for reporting!)
 
 ### Removed
 
-[Section titled “Removed”](#removed-4)
+[Section titled “Removed”](#removed-3)
 
 * Removed several no-longer-needed allauth template files.
 * Removed deprecated “version” field from the dev `docker-compose.yml` file. (Thanks Moyi for reporting!)
@@ -4676,7 +4989,7 @@ The complete release notes are below:
 
 ### Upgrading
 
-[Section titled “Upgrading”](#upgrading-11)
+[Section titled “Upgrading”](#upgrading-4)
 
 **Two-factor authentication**
 
@@ -4704,14 +5017,14 @@ This is a maintenance release with a number of fixes and small changes. The most
 
 ### Added
 
-[Section titled “Added”](#added-8)
+[Section titled “Added”](#added-5)
 
 * **Kamal deployments now support celerybeat for scheduled tasks out-of-the-box.** (Thanks Peter for the suggestion!)
 * Added an example celerybeat configuration to the built-in examples.
 
 ### Changed
 
-[Section titled “Changed”](#changed-12)
+[Section titled “Changed”](#changed-8)
 
 * **The websocket OpenAI chat example is now fully asynchronous.** This should substantially improve the number of concurrent sessions supported by the app.
 * Use alpine to disable submit and clear input in the OpenAI chat example (thanks Artem for the suggestion!)
@@ -4723,7 +5036,7 @@ This is a maintenance release with a number of fixes and small changes. The most
 
 ### Fixed
 
-[Section titled “Fixed”](#fixed-12)
+[Section titled “Fixed”](#fixed-8)
 
 * **Fixed a bug where non-admins of teams could not view their own team settings/members.** (Thanks Bernard for reporting!)
 * Fixed a bug where deleted subscriptions with `canceled_at_period_end=True` could cause a crash when trying to view them. This bug would typically only manifest in test mode or if you manually deleted subscriptions in Stripe.
@@ -4734,7 +5047,7 @@ This is a maintenance release with a number of fixes and small changes. The most
 
 ### Documentation
 
-[Section titled “Documentation”](#documentation-2)
+[Section titled “Documentation”](#documentation-1)
 
 * Improved the [instructions for running Kamal with Docker](https://docs.saaspegasus.com/deployment/kamal/#running-kamal-with-docker). Thanks EJ and Simon for the help with this!
 
@@ -4802,7 +5115,7 @@ You can watch a demo of this and learn how it’s built in this video: [Building
 
 ### Fixed
 
-[Section titled “Fixed”](#fixed-13)
+[Section titled “Fixed”](#fixed-9)
 
 * Fixed a bug where the standalone front end Dockerfile did not install the right dependencies. In some cases, this caused the front end to not start properly.
 * Fixed a bug where viewing a non-existent team would cause a 500 error instead of a 404.
@@ -4846,14 +5159,14 @@ Application navigation now uses a new team selector component. This allows users
 
 #### Added
 
-[Section titled “Added”](#added-9)
+[Section titled “Added”](#added-6)
 
 * **API Authentication and JWT support.** See above.
 * **An Experimental Standalone React (Vite) Front End**. See above.
 
 #### Changed
 
-[Section titled “Changed”](#changed-13)
+[Section titled “Changed”](#changed-9)
 
 * **Team navigation overhaul**. See above.
 
@@ -4899,7 +5212,7 @@ Application navigation now uses a new team selector component. This allows users
 
 #### Fixed
 
-[Section titled “Fixed”](#fixed-14)
+[Section titled “Fixed”](#fixed-10)
 
 * Fixed hard-coded reference to the Pegasus dev project in Google Cloud media configuration in `settings_production.py`
 * Fixed a bug where the two-factor QR codes were very difficult to scan in dark mode. (Tailwind builds only)
@@ -4987,7 +5300,7 @@ The Google Cloud deployment support has been completely overhauled and brought i
 
 ### Other Changes
 
-[Section titled “Other Changes”](#other-changes-6)
+[Section titled “Other Changes”](#other-changes-2)
 
 * Updated most `make` targets that run commands in Docker to not require the `web` container to be running. They will now spin up and remove temporary containers instead. (Thanks Artem for the suggestion!)
 * Slightly improve styling of page that shows when there are social authentication errors (thanks Finbar for the contribution!)
@@ -5111,7 +5424,7 @@ Below are the complete release notes:
 
 ### Added
 
-[Section titled “Added”](#added-10)
+[Section titled “Added”](#added-7)
 
 * **Added support for deploying to any linux server using the new Kamal deployment option. [Documentation](/deployment/kamal).**
 * **Added first-class support for “login with Github.”**
@@ -5120,7 +5433,7 @@ Below are the complete release notes:
 
 ### Changed
 
-[Section titled “Changed”](#changed-14)
+[Section titled “Changed”](#changed-10)
 
 * **Load `request.team` in `TeamsMiddleware` even if the user doesn’t have access to the team if `team_slug` is passed to the view. Since authorization is done in the view decorators like `login_and_team_required` this should be safe, and makes it easier to create team views that don’t require authentication.**
   * Also updated tests to reflect this new behavior.
@@ -5141,7 +5454,7 @@ Below are the complete release notes:
 
 ### Fixed
 
-[Section titled “Fixed”](#fixed-15)
+[Section titled “Fixed”](#fixed-11)
 
 * Fixed description of `dev-requirements.txt` to indicate it installs development, not production requirements. (Thanks Yngve for reporting!)
 * Fixed 500 error when trying to accept an invitation that was already accepted.
@@ -5154,7 +5467,7 @@ Below are the complete release notes:
 
 ### Removed
 
-[Section titled “Removed”](#removed-5)
+[Section titled “Removed”](#removed-4)
 
 * Removed migration to auto-create social apps in the database.
 * Cleaned up template imports in a few places.
@@ -5261,7 +5574,7 @@ Below are the complete release notes including several other substantial changes
 
 ### Added
 
-[Section titled “Added”](#added-11)
+[Section titled “Added”](#added-8)
 
 * **Added asynchronous and websocket support via a new build option.** [Documentation](/async).
 
@@ -5285,7 +5598,7 @@ Below are the complete release notes including several other substantial changes
 
 ### Changed
 
-[Section titled “Changed”](#changed-15)
+[Section titled “Changed”](#changed-11)
 
 * **Added the `feature_gate_check` and `get_feature_gate_check` helper functions, for more fine-grained control of feature gate checking.** See the updated [feature-gating documentation](/subscriptions/#feature-gating) for more information.
   * Related: Modified the `active_subscription_required` decorator to use this function.
@@ -5327,7 +5640,7 @@ Below are the complete release notes including several other substantial changes
 
 ### Fixed
 
-[Section titled “Fixed”](#fixed-16)
+[Section titled “Fixed”](#fixed-12)
 
 * Fixed absolute paths to Android-specific favicons to be relative. (Thanks Alexander for reporting!)
 * Fixed issue where mobile menu content sometimes did not appear in front of page content on Tailwind builds.
@@ -5338,7 +5651,7 @@ Below are the complete release notes including several other substantial changes
 
 ### Removed
 
-[Section titled “Removed”](#removed-6)
+[Section titled “Removed”](#removed-5)
 
 * **Removed the previous Payments example.** Apps should refer to the new E-Commerce app to use one-time payments.
 
@@ -5410,7 +5723,7 @@ There were also several smaller improvements.
 
 #### Added
 
-[Section titled “Added”](#added-12)
+[Section titled “Added”](#added-9)
 
 * **Stripe: Added embedded pricing table support, via a new build option.**
 * Wagtail: Added `social_image` field to all content models (using `BaseContentPage`), so you can define a custom image to use for `og:meta` tags for any individual page.
@@ -5420,7 +5733,7 @@ There were also several smaller improvements.
 
 ### Changed
 
-[Section titled “Changed”](#changed-16)
+[Section titled “Changed”](#changed-12)
 
 * **Wagtail: Migrated `ContentPage.body` and `BlogPage.body` to use `StreamField` instead of `RichTextField`. This provides much more flexibility in laying out your pages and working with many different section types.**
 * Wagtail: All content models now extend from `BaseContentPage` so that you can add fields that should be shared among all your different types of content.
@@ -5435,7 +5748,7 @@ There were also several smaller improvements.
 
 ### Fixed
 
-[Section titled “Fixed”](#fixed-17)
+[Section titled “Fixed”](#fixed-13)
 
 * Subscriptions: Fixed bug that caused trialing subscriptions to not be counted as active.
 * Subscriptions: Show the correct currency in subscription details page if using Stripe’s [multi-currency support](https://stripe.com/docs/payments/checkout/present-local-currencies?platform=multi-currency-prices). (Thanks Mario for reporting.)
@@ -5445,7 +5758,7 @@ There were also several smaller improvements.
 
 ### Removed
 
-[Section titled “Removed”](#removed-7)
+[Section titled “Removed”](#removed-6)
 
 * Removed no-longer-supported `DJSTRIPE_USE_NATIVE_JSONFIELD` setting.
 
@@ -5501,7 +5814,7 @@ This release adds official support for three marketing email platforms (Mailchim
 
 ### Added
 
-[Section titled “Added”](#added-13)
+[Section titled “Added”](#added-10)
 
 * **First class support for marketing email lists.** You can now select a platform (Mailchimp, ConvertKit, Email Octopus, or none), and your build will be customized for that platform, including settings/environment variables, and automatically subscribing new sign ups to your email list (if properly configured). See the updated [mailing list documentation](/configuration/#mailing-list) for more details.
 * Added a management command to send test emails: `./manage.py send_test_email cory@example.com`. Useful when troubleshooting/changing how your server sends email.
@@ -5513,7 +5826,7 @@ This release adds official support for three marketing email platforms (Mailchim
 
 ### Fixed
 
-[Section titled “Fixed”](#fixed-18)
+[Section titled “Fixed”](#fixed-14)
 
 * Removed empty JavaScript files in certain builds that were causing `npm type-check` to fail. (Thanks George for reporting!)
 * Only try to log mailing list errors to Sentry if building with Sentry enabled.
@@ -5525,7 +5838,7 @@ This release adds official support for three marketing email platforms (Mailchim
 
 ### Changed
 
-[Section titled “Changed”](#changed-17)
+[Section titled “Changed”](#changed-13)
 
 * **Upgraded all JavaScript packages to their latest (as of late July) versions.**
 * Use the project’s slug in the `package.json` name instead of “pegasus”.
@@ -5540,7 +5853,7 @@ This release adds official support for three marketing email platforms (Mailchim
 
 ### Upgrading
 
-[Section titled “Upgrading”](#upgrading-12)
+[Section titled “Upgrading”](#upgrading-5)
 
 If you were previously using the mailchimp email functionality, you will need to edit your project and select “Mailchimp” under “Email Marketing Platform” to keep using it.
 
@@ -5554,7 +5867,7 @@ This is a large maintenance release with many improvements and a few new feature
 
 ### Added
 
-[Section titled “Added”](#added-14)
+[Section titled “Added”](#added-11)
 
 * **Expanded the built-in timezone support (if building with internationalization).** This includes:
 
@@ -5570,7 +5883,7 @@ This is a large maintenance release with many improvements and a few new feature
 
 ### Changed
 
-[Section titled “Changed”](#changed-18)
+[Section titled “Changed”](#changed-14)
 
 * **Removed all React dependencies and supporting code when building without React and without the built-in examples.**
 * Made order of example navigation and example homepage cards consistent.
@@ -5582,7 +5895,7 @@ This is a large maintenance release with many improvements and a few new feature
 
 ### Fixed
 
-[Section titled “Fixed”](#fixed-19)
+[Section titled “Fixed”](#fixed-15)
 
 * **Refactored how custom components are added to Tailwind to follow the official guidance on [build-time imports](https://tailwindcss.com/docs/using-with-preprocessors#build-time-imports).** This fixes an issue where multiple style declarations of some classes were included, causing some CSS overrides to not work out of the box. It also results in improved CSS compile times and reduced output file sizes. Additionally, some tailwind styles were moved out of the main `site-tailwind.css` file and into other imported files. (Thanks Tyler for reporting and suggesting the fix!)
 * More gracefully handle when a Stripe subscription is deleted (usually in test mode), by logging an error and clearing it from the associated user/team object.
@@ -5608,7 +5921,7 @@ This is a minor release with some form updates and a bugfix for material Bootstr
 
 ### Added
 
-[Section titled “Added”](#added-15)
+[Section titled “Added”](#added-12)
 
 * Added the ability to specify attrs on form fields, along with special helper parsing for Alpine.js forms.
 * Added a forms example using Alpine.js to demonstrate Alpine.js form functionality, including hiding/showing a field based on the value of another field, rendering field values in labels, and changing the style of a field based on its value. The example is available at <http://localhost:8000/pegasus/forms/alpine/>.
@@ -5617,7 +5930,7 @@ This is a minor release with some form updates and a bugfix for material Bootstr
 
 ### Fixed
 
-[Section titled “Fixed”](#fixed-20)
+[Section titled “Fixed”](#fixed-16)
 
 * Fixed some styling issues with Bootstrap 5.3 and the material theme.
 * Fixed the documentation for how to customize variables when using Bootstrap.
@@ -5673,7 +5986,7 @@ Here’s a 3-minute demo video of the new ChatGPT functionality:
 
 #### Added
 
-[Section titled “Added”](#added-16)
+[Section titled “Added”](#added-13)
 
 * Added `makemigrations` and `migrate` steps to README on sqlite builds (thanks Patrick for suggesting).
 * Added `{% block top_nav_app %}` to `app_base.html` to the material theme, so that the app nav can be overridden in sub-templates
@@ -5682,7 +5995,7 @@ Here’s a 3-minute demo video of the new ChatGPT functionality:
 
 #### Changed
 
-[Section titled “Changed”](#changed-19)
+[Section titled “Changed”](#changed-15)
 
 * **Upgraded Django to 4.2 LTS, Wagtail to 5.0, and a handful of other Python packages to their latest versions.**
 * Switched from deprecated `DEFAULT_FILE_STORAGE` and `STATICFILES_STORAGE` settings to `STORAGES` setting (added in Django 4.2).
@@ -5691,7 +6004,7 @@ Here’s a 3-minute demo video of the new ChatGPT functionality:
 
 #### Fixed
 
-[Section titled “Fixed”](#fixed-21)
+[Section titled “Fixed”](#fixed-17)
 
 * Fixed a bug where the app would crash if people signed up but already had an account, when teams were enabled.
 * Fixed crashing issues with running `./manage.py bootstrap_content` (and, resultingly, `make init`) multiple times in a row.
@@ -5701,7 +6014,7 @@ Here’s a 3-minute demo video of the new ChatGPT functionality:
 
 ### Removed
 
-[Section titled “Removed”](#removed-8)
+[Section titled “Removed”](#removed-7)
 
 * Removed deprecated `USE_L10N` setting.
 
@@ -5788,13 +6101,13 @@ This release updates the Python requirements files (again). Apologies for the it
 
 ### Other changes
 
-[Section titled “Other changes”](#other-changes-7)
+[Section titled “Other changes”](#other-changes-3)
 
 Smaller updates in this release are below.
 
 #### Added
 
-[Section titled “Added”](#added-17)
+[Section titled “Added”](#added-14)
 
 * **You can now automatically remove the teams example. Uncheck “include Teams example” in your project settings.**
 * Added an “I agree to terms” checkbox on sign up for all CSS frameworks.
@@ -5804,14 +6117,14 @@ Smaller updates in this release are below.
 
 #### Changed
 
-[Section titled “Changed”](#changed-20)
+[Section titled “Changed”](#changed-16)
 
 * Switched template setting to use `loaders` instead of `APP_DIRS` and disable template caching in development (thanks Michael for suggesting)
 * Add apps directory to places Tailwind looks for templates, so that any CSS classes defined there are properly applied.
 
 #### Fixed
 
-[Section titled “Fixed”](#fixed-22)
+[Section titled “Fixed”](#fixed-18)
 
 * Fixed a bug where `./manage.py bootstrap_content` didn’t work if you didn’t have translations enabled.
 * Fixed a bug where `black` and `isort` occasionally conflicted on import styles.
@@ -5823,13 +6136,13 @@ Smaller updates in this release are below.
 
 #### Removed
 
-[Section titled “Removed”](#removed-9)
+[Section titled “Removed”](#removed-8)
 
 * Removed internal subscriptions API endpoints from the generated API documentation and API clients. If you’d like to keep these, you can remove the `exclude=True` line from the `extend_schema` declaration in `subscriptions/views/api_views.py`, and then [rebuild the API client](/apis/#generating-the-api-client).
 
 #### Documentation
 
-[Section titled “Documentation”](#documentation-3)
+[Section titled “Documentation”](#documentation-2)
 
 * Overhauled the documentation on working with [virtual environments](/python/packages) and made `venv` the default recommendation over `virtualenv`.
 
@@ -5860,14 +6173,14 @@ Another minor release with a few small fixes.
 
 ### Changed
 
-[Section titled “Changed”](#changed-21)
+[Section titled “Changed”](#changed-17)
 
 * Add `restart: unless-stopped` to web container docker-compose config, so that the web process still restarts on things like syntax errors. (Thanks Moritz for suggesting)
 * Code formatting checks in Github Actions now run on the entire codebase instead of just the diffs in pull requests.
 
 ### Fixed
 
-[Section titled “Fixed”](#fixed-23)
+[Section titled “Fixed”](#fixed-19)
 
 * Upgraded `cryptography` to version `39.0.2` which patches some high-severity vulnerabilities. (Thanks Michael for reporting)
 * Fixed an issue with `boto3` accidentally not being included in requirements files when you enabled S3 media. (Thanks Elliott for reporting)
@@ -5887,14 +6200,14 @@ There are also some small fixes (details below).
 
 ### Added
 
-[Section titled “Added”](#added-18)
+[Section titled “Added”](#added-15)
 
 * ChatGPT and DALL-E 2 demos. To use these you need to check the “OpenAI demos” box in your project settings.
 * You can now disable translations when building, which removes locale files and related code.
 
 ### Changed
 
-[Section titled “Changed”](#changed-22)
+[Section titled “Changed”](#changed-18)
 
 * `dev-requirements.in` and `prod-requirements.in` now constrain package versions to those included in `requirements.in`. This should prevent library version conflicts between files.
 * Remove `apps.utils.slug` and related test code if not building with teams enabled.
@@ -5903,7 +6216,7 @@ There are also some small fixes (details below).
 
 ## Fixed
 
-[Section titled “Fixed”](#fixed-24)
+[Section titled “Fixed”](#fixed-20)
 
 * Removed extraneous packages that were accidentally be included in `dev-requirements.txt` even if you had built without certain features enabled. If you saw a big diff after running `pip-compile requirements/dev-requirements.in` on a recent build, this was why.
 * Made all package versions consistent between `requirements.txt` and `dev-requirements.txt`
@@ -5979,7 +6292,7 @@ The [Alpine.js](https://alpinejs.dev/) library has been officially added as a de
 
 ### Added
 
-[Section titled “Added”](#added-19)
+[Section titled “Added”](#added-16)
 
 * **Added pre-commit/black support, as described above and in the [code formatting docs](/code-structure/#code-formatting)**
 * **Added django-debug-toolbar, as described above and in [the `debug-toolbar` documentation](/configuration/#django-debug-toolbar)**
@@ -5994,7 +6307,7 @@ The [Alpine.js](https://alpinejs.dev/) library has been officially added as a de
 
 ### Changed
 
-[Section titled “Changed”](#changed-23)
+[Section titled “Changed”](#changed-19)
 
 * **Migrated subscription selection flow from JavaScript to Alpine.js** and deleted a lot of custom JavaScript code that was no longer necessary as a result.
 * Updated `ProductWithMetadata` serialization format remove monthly/annual/default prices, and add a dictionary of prices based on billing interval.
@@ -6013,7 +6326,7 @@ The [Alpine.js](https://alpinejs.dev/) library has been officially added as a de
 
 ### Fixed
 
-[Section titled “Fixed”](#fixed-25)
+[Section titled “Fixed”](#fixed-21)
 
 * Removed “https” prefix from fly.io host checks, which caused them to fail.
 * Fixed the url in the “Add a Password” link on the user’s profile to go to the set password page. This link is only visible if the user signs up via social auth. (Thanks Blake for reporting)
@@ -6025,7 +6338,7 @@ The [Alpine.js](https://alpinejs.dev/) library has been officially added as a de
 
 ### Removed
 
-[Section titled “Removed”](#removed-10)
+[Section titled “Removed”](#removed-9)
 
 * Removed helper functions on `ProductWithMetadata` related to monthly/annual pricing (e.g. `monthly_price`).
 * Removed the no-longer-used `get_payment_metadata_from_request` helper function.
@@ -6034,7 +6347,7 @@ The [Alpine.js](https://alpinejs.dev/) library has been officially added as a de
 
 ### Documentation
 
-[Section titled “Documentation”](#documentation-4)
+[Section titled “Documentation”](#documentation-3)
 
 * **Added write up about [the front end files](/front-end/design-patterns).**
 * **Added write up about managing [test vs live Stripe products](/subscriptions/#stripe-in-production)**
@@ -6051,7 +6364,7 @@ This release was driven by feedback from the Pegasus community. It includes many
 
 ### Added
 
-[Section titled “Added”](#added-20)
+[Section titled “Added”](#added-17)
 
 * **You can now build Pegasus projects without the built-in examples.**
 * More type hints to return values in subscriptions module.
@@ -6059,7 +6372,7 @@ This release was driven by feedback from the Pegasus community. It includes many
 
 ### Changed
 
-[Section titled “Changed”](#changed-24)
+[Section titled “Changed”](#changed-20)
 
 * **Upgraded all Python libraries to their latest versions (including Django to 4.1.6)**
 * **Upgraded all JavaScript libraries to their latest versions.**
@@ -6074,7 +6387,7 @@ This release was driven by feedback from the Pegasus community. It includes many
 
 ### Fixed
 
-[Section titled “Fixed”](#fixed-26)
+[Section titled “Fixed”](#fixed-22)
 
 * Fixed a bug introduced in 2022.12 that resulted in a duplicate team being created when users created an account while accepting a team invitation (Bootstrap and Tailwind only).
 * Cleaned up styling of Monthly/Annual selector buttons on subscription UI (Tailwind only).
@@ -6083,7 +6396,7 @@ This release was driven by feedback from the Pegasus community. It includes many
 
 ### Upgrading
 
-[Section titled “Upgrading”](#upgrading-13)
+[Section titled “Upgrading”](#upgrading-6)
 
 If you don’t want to upgrade Django to 4.1 this upgrade *should* be backwards compatible. Pin the Django version to 3.2.x in your requirements file and [rebuild requirements](/python/packages/#working-with-requirements).
 
@@ -6099,7 +6412,7 @@ Happy holidays!
 
 ### Added
 
-[Section titled “Added”](#added-21)
+[Section titled “Added”](#added-18)
 
 * Added a `make upgrade` target to update docker containers and a local database after upgrading.
 * Added a Redis instance to Github actions CI setup, so that any tests which depend on Redis can run without modification.
@@ -6107,7 +6420,7 @@ Happy holidays!
 
 ### Changed
 
-[Section titled “Changed”](#changed-25)
+[Section titled “Changed”](#changed-21)
 
 * **Updated usage of `.env` files. Python environments now use `.env`, docker uses `.env.docker`, and the example was renamed from `.env.dev.example` to `.env.example`. [Details here](/configuration).** See upgrade notes.
 * **Invitations can now only be accepted from the email address that was invited.** See upgrade notes.
@@ -6120,7 +6433,7 @@ Happy holidays!
 
 ### Fixed
 
-[Section titled “Fixed”](#fixed-27)
+[Section titled “Fixed”](#fixed-23)
 
 * Remove `customer` from the user admin for team builds (this was causing the User admin to error for team-based builds if subscriptions were enabled).
 * Update the `bootstrap_content` management command to publish content (in addition to creating it).
@@ -6176,19 +6489,19 @@ This release is a minor/hotfix update with a few small changes.
 
 ### Added
 
-[Section titled “Added”](#added-22)
+[Section titled “Added”](#added-19)
 
 * Added `clear_cached_subscription` helper function to `SubscriptionModelBase`
 
 ### Changed
 
-[Section titled “Changed”](#changed-26)
+[Section titled “Changed”](#changed-22)
 
 * Upgraded dj-stripe to 2.7.2. This fixes several crashing errors when using more complex subscription/billing models.
 
 ### Fixed
 
-[Section titled “Fixed”](#fixed-28)
+[Section titled “Fixed”](#fixed-24)
 
 * Catch and fix Stripe errors when trying to view a cancelled subscription that has not been synchronized with Stripe
 
@@ -6278,7 +6591,7 @@ Related changes:
 
 ### Other Changes
 
-[Section titled “Other Changes”](#other-changes-8)
+[Section titled “Other Changes”](#other-changes-4)
 
 * **Upgraded font awesome to the latest version (6.2) and load the CSS from a CDN.**
 * Upgraded djstripe to version 2.6.2
@@ -6311,7 +6624,7 @@ Related changes:
 
 ### Removed
 
-[Section titled “Removed”](#removed-11)
+[Section titled “Removed”](#removed-10)
 
 * Deleted no-longer-needed static images for Twitter / Google logos.
 * Removed unused “is-small” class from various icon markup.
@@ -6319,7 +6632,7 @@ Related changes:
 
 ### Upgrading
 
-[Section titled “Upgrading”](#upgrading-14)
+[Section titled “Upgrading”](#upgrading-7)
 
 The major change that requires care in upgrading is the migration of the `customer` field from the User to the Team for team-based builds.
 
@@ -6362,13 +6675,13 @@ This release adds two-factor authentication, and has a number of smaller improve
 
 ### Added
 
-[Section titled “Added”](#added-23)
+[Section titled “Added”](#added-20)
 
 * **Two-factor authentication.** Users can now set up two-factor authentication on their account (using Google Authenticator or similar), and will be required to enter a token to login. This is configured from the user’s profile page. More [documentation here](/configuration/#two-factor-authentication).
 
 ### Changed
 
-[Section titled “Changed”](#changed-27)
+[Section titled “Changed”](#changed-23)
 
 * Improved UI feedback in React Teams UI and Employee example when the API client can’t load data.
 * Wagtail and admin login pages now redirect to the main login page (this prevents users from bypassing two-factor authentication, if enabled).
@@ -6381,7 +6694,7 @@ This release adds two-factor authentication, and has a number of smaller improve
 
 ### Fixed
 
-[Section titled “Fixed”](#fixed-29)
+[Section titled “Fixed”](#fixed-25)
 
 * Fix an issue in Bootstrap builds where some material styles were being applied to the initial download even if you didn’t choose the material theme.
 * Fixed a bug where certain pages would fail to load if teams were enabled but the logged in user was not a member of any teams.
@@ -6409,7 +6722,7 @@ Major related changes:
 
 ### Other Changes
 
-[Section titled “Other Changes”](#other-changes-9)
+[Section titled “Other Changes”](#other-changes-5)
 
 * **Attach team models to the request in middleware instead of view decorator.** This means that `request.team` will be available on every request, so team navigation will be available even on pages like a user profile that are not team-specific. For details see the updated [teams middleware docs](/teams/#middleware), as well as the upgrade notes below.
 * Added tests for the above middleware, and updated other tests to be compatible with it.
@@ -6493,7 +6806,7 @@ See the updated [Tailwind docs](/css/tailwind) for more information and customiz
 
 ### Other Changes
 
-[Section titled “Other Changes”](#other-changes-10)
+[Section titled “Other Changes”](#other-changes-6)
 
 * **React-based team deletion now works like the HTMX version, with a pop-up confirmation modal.** The “Delete” button was removed from the team list UI.
 * **Deleting a team/user will now automatically cancel any subscription associated with that team/user.** (thanks Florian for reporting!)
@@ -6602,7 +6915,7 @@ Details related to this change:
 
 ### Other Changes
 
-[Section titled “Other Changes”](#other-changes-11)
+[Section titled “Other Changes”](#other-changes-7)
 
 * **Switched chart examples and supporting code from `c3.js` to [`Chart.js`](https://www.chartjs.org/).**
 * Upgraded Django to the latest LTS security release (3.2.14).
@@ -6624,7 +6937,7 @@ Complete release notes are below:
 
 ### Added
 
-[Section titled “Added”](#added-24)
+[Section titled “Added”](#added-21)
 
 * **Pegasus now supports Wagtail! [Documentation](/wagtail).** There are a fair number of changes to support this work, most of which are only relevant if you enable wagtail support. The main ones includ a new `content` app, a large number of new Python package dependencies (all stemming from `wagtail`), and some updates to the site navigation.
 * **Pegasus now generates a sitemap for you.** [Documentation](/page-metadata/#sitemaps).
@@ -6633,7 +6946,7 @@ Complete release notes are below:
 
 ### Changed
 
-[Section titled “Changed”](#changed-28)
+[Section titled “Changed”](#changed-24)
 
 * Social sign ups will now automatically create a default team if not there.
 * The `login_and_team_required` decorator now falls back to the default team from the session/user if not available from URL (thanks Van for the suggestion)
@@ -6650,7 +6963,7 @@ Complete release notes are below:
 
 ### Fixed
 
-[Section titled “Fixed”](#fixed-30)
+[Section titled “Fixed”](#fixed-26)
 
 * Fixed `pyparsing` version conflict between regular and production requirements (Google Cloud builds only)
 * Fixed subscription price displays when using graduated pricing. (Thanks Lachlan for reporting)
@@ -6668,7 +6981,7 @@ The release also many small fixes and improvements.
 
 ### Added
 
-[Section titled “Added”](#added-25)
+[Section titled “Added”](#added-22)
 
 * **Re-use the Stripe `Customer` object when a User has multiple subscriptions / payments (by saving it on the User model). This prevents users from having to re-enter their cards multiple times.**
 * **Added an `active_subscription_required` decorator for easier subscription feature-gating. [Docs](/subscriptions/#using-the-active_subscription_required-decorator)**
@@ -6683,7 +6996,7 @@ The release also many small fixes and improvements.
 
 ### Fixed
 
-[Section titled “Fixed”](#fixed-31)
+[Section titled “Fixed”](#fixed-27)
 
 * Fixed bootstrap button CSS classes in a few templates to use the `pg-` class styles instead of the legacy Bulma version. (thanks Lisa for reporting)
 * Removed unreachable template code in `view_subscription.html`.
@@ -6696,7 +7009,7 @@ The release also many small fixes and improvements.
 
 ### Changed
 
-[Section titled “Changed”](#changed-29)
+[Section titled “Changed”](#changed-25)
 
 * **Upgraded Python packages to their latest versions.**
 * **Heroku-based docker deployments now use a `buster` base image instead of `alpine`. This helps to simplify build issues when adding certain packages / libraries.**
@@ -6713,7 +7026,7 @@ The release also many small fixes and improvements.
 
 ### Removed
 
-[Section titled “Removed”](#removed-12)
+[Section titled “Removed”](#removed-11)
 
 * **The deprecated Stripe elements support for subscriptions has been removed. Subscriptions require using Checkout moving forwards.**
 
@@ -6743,7 +7056,7 @@ Version 2022.4 is a mix of new features and maintenance improvements. Major upda
 
 ### Added
 
-[Section titled “Added”](#added-26)
+[Section titled “Added”](#added-23)
 
 * **Added “login with Twitter” as a first-class supported authentication option.**
 * **Users can now see and manage (connect and disconnect) social accounts (Google and Twitter) from their profile pages.**
@@ -6755,7 +7068,7 @@ Version 2022.4 is a mix of new features and maintenance improvements. Major upda
 
 ### Changed
 
-[Section titled “Changed”](#changed-30)
+[Section titled “Changed”](#changed-26)
 
 * **Upgraded version of node that runs in the Docker container from 14 to 16.**
 * **Sentry is now a first-class build option enabled in the UI. If enabled, it will be automatically included in requirements and configured in `settings.py`.**
@@ -6770,13 +7083,13 @@ Version 2022.4 is a mix of new features and maintenance improvements. Major upda
 
 ### Fixed
 
-[Section titled “Fixed”](#fixed-32)
+[Section titled “Fixed”](#fixed-28)
 
 * Filter out inactive (archived) Stripe prices/plans from the list of plans
 
 ### Removed
 
-[Section titled “Removed”](#removed-13)
+[Section titled “Removed”](#removed-12)
 
 * Removed `dev-requirements` files. Pip tools should now be installed with `pip install --upgrade pip-tools`.
 * No longer call `npm install` in the `Dockerfile`, since it wasn’t working as expected.
@@ -6784,7 +7097,7 @@ Version 2022.4 is a mix of new features and maintenance improvements. Major upda
 
 ### Documentation
 
-[Section titled “Documentation”](#documentation-5)
+[Section titled “Documentation”](#documentation-4)
 
 * Added [page metadata documentation](/page-metadata) for working with project / page metadata (e.g. page titles).
 * Updated the [upgrading documentation](/upgrading) to recommend a branch-based approach.
@@ -6802,13 +7115,13 @@ This should work automatically for all projects out-of-the-box. See [the documen
 
 ### Added
 
-[Section titled “Added”](#added-27)
+[Section titled “Added”](#added-24)
 
 * [Github Actions support](/github-actions).
 
 ### Changed
 
-[Section titled “Changed”](#changed-31)
+[Section titled “Changed”](#changed-27)
 
 * Postgres database settings can now be configured by environment variables directly in `settings.py`
 * Upgrade default Python version to 3.9 (including in all Docker files)
@@ -6817,7 +7130,7 @@ This should work automatically for all projects out-of-the-box. See [the documen
 
 ### Fixed
 
-[Section titled “Fixed”](#fixed-33)
+[Section titled “Fixed”](#fixed-29)
 
 * More consistent support for using Celery with all versions of Heroku and Redis secure/insecure URLs (thanks Brett for reporting).
 
@@ -6845,7 +7158,7 @@ This release also adds support for Django 4.0. See note below for details.
 
 ### Added
 
-[Section titled “Added”](#added-28)
+[Section titled “Added”](#added-25)
 
 * New Bootstrap Material theme based on Creative Tim’s Material Kit / Material Dashboard
 * Added breadcrumbs to the Employee demo app pages
@@ -6859,7 +7172,7 @@ This release also adds support for Django 4.0. See note below for details.
 
 ### Changed
 
-[Section titled “Changed”](#changed-32)
+[Section titled “Changed”](#changed-28)
 
 * All tables are now responsive (scrollable) on Bootstrap builds
 * Add vertical gutters to columns on Bootstrap builds
@@ -6872,7 +7185,7 @@ This release also adds support for Django 4.0. See note below for details.
 
 ### Fixed
 
-[Section titled “Fixed”](#fixed-34)
+[Section titled “Fixed”](#fixed-30)
 
 * Fixed widget class overrides from not being populated for some widgets. This also fixes “select all” functionality in the Django admin for Bootstrap builds. (Thanks Will for reporting!)
 * Fixed connection strings for Redis on Heroku if you were not on the free tier, by adding `?ssl_cert_reqs=none` to Redis connection strings. (Thanks Reid for reporting!)
@@ -6886,7 +7199,7 @@ This release also adds support for Django 4.0. See note below for details.
 
 This version unofficially supports Django 4.0, however still ships with 3.2.12.
 
-This is due to one issue with the `dj-stripe` dependency [generating migration files](https://github.com/dj-stripe/dj-stripe/pull/1607) that may cause migration problems across multiple Pegasus environments (e.g. dev and prod, or two developer machines). This is a very similar issue to the one described in the [0.14.2 release notes](/release-notes/#version-0142).
+This is due to one issue with the `dj-stripe` dependency [generating migration files](https://github.com/dj-stripe/dj-stripe/pull/1607) that may cause migration problems across multiple Pegasus environments (e.g. dev and prod, or two developer machines). This is a very similar issue to the one described in the [0.14.2 release notes](/release-notes-history/#version-0142).
 
 If you wish to use Django 4.0, update the pinned version to 4.0.2 (or latest) in your `requirements.txt` file after downloading Pegasus, and all should work.
 
@@ -6900,7 +7213,7 @@ This maintenance release simplifies how users are accessed via API key authentic
 
 ### Changed
 
-[Section titled “Changed”](#changed-33)
+[Section titled “Changed”](#changed-29)
 
 * `HasUserAPIKey` permission class now populates `request.user` with the associated user, if a valid `UserAPIKey` is present.
 * API Views and Viewsets now continue to access users via `request.user` instead of the `get_user()` helper functions
@@ -6908,7 +7221,7 @@ This maintenance release simplifies how users are accessed via API key authentic
 
 ### Removed
 
-[Section titled “Removed”](#removed-14)
+[Section titled “Removed”](#removed-13)
 
 * Now-redundant `UserAPIKeyMixin` class
 
@@ -6924,7 +7237,7 @@ There are also a number of smaller fixes and upgrades.
 
 ### Added
 
-[Section titled “Added”](#added-29)
+[Section titled “Added”](#added-26)
 
 * API Key support! See the new [API key documentation](/apis) for details.
 * Example `DJSTRIPE_WEBHOOK_SECRET` to `.env.dev` file for local Docker deployments
@@ -6939,14 +7252,14 @@ There are also a number of smaller fixes and upgrades.
 
 ### Changed
 
-[Section titled “Changed”](#changed-34)
+[Section titled “Changed”](#changed-30)
 
 * Updated how some type hints are done to reduce potential for circular imports caused by typing
 * Updated headings of account pages to be more consistent with rest of site
 
 ### Fixed
 
-[Section titled “Fixed”](#fixed-35)
+[Section titled “Fixed”](#fixed-31)
 
 * Added missing closing `</section>` tag to `templates/accounts/password_change.html` (thanks Peter for reporting!)
 * Removed redundant tailwind imports from `assets/styles/pegasus/tailwind.css` which were causing duplicate CSS definitions in the generated `site-tailwind.css` file (thanks Anna for reporting!)
@@ -6955,13 +7268,13 @@ There are also a number of smaller fixes and upgrades.
 
 ### Removed
 
-[Section titled “Removed”](#removed-15)
+[Section titled “Removed”](#removed-14)
 
 * Building for multiple CSS frameworks has been removed. To try different CSS frameworks you will need to edit your project and download each codebase separately.
 
 ### Deprecated
 
-[Section titled “Deprecated”](#deprecated-1)
+[Section titled “Deprecated”](#deprecated)
 
 **The following features will likely be removed in an upcoming release. Let me know if you would miss these!**
 
@@ -6985,7 +7298,7 @@ You can read the complete notes below. The format for this release (and likely f
 
 ### Added
 
-[Section titled “Added”](#added-30)
+[Section titled “Added”](#added-27)
 
 * **Support for per-unit / per-seat billing. See [the docs on using this](/subscriptions/#per-unit--per-seat-billing)**
 * `SubscriptionSerializer` class for including Subscription objects in APIs
@@ -7006,7 +7319,7 @@ You can read the complete notes below. The format for this release (and likely f
 
 ### Changed
 
-[Section titled “Changed”](#changed-35)
+[Section titled “Changed”](#changed-31)
 
 * **Changed URLs of Stripe integration API calls to be more consistent**
 * **Removed `subscriptions.views.helpers` and merged into `subscriptions.helpers`**
@@ -7025,7 +7338,7 @@ You can read the complete notes below. The format for this release (and likely f
 
 ### Fixed
 
-[Section titled “Fixed”](#fixed-36)
+[Section titled “Fixed”](#fixed-32)
 
 * Team and invitation list APIs now require authentication (results in a 403 instead of 500 error when accessed anonymously)
 * Archived products are not included in the default product list generated by `bootstrap_subscriptions`
@@ -7038,7 +7351,7 @@ You can read the complete notes below. The format for this release (and likely f
 
 ### Deprecated
 
-[Section titled “Deprecated”](#deprecated-2)
+[Section titled “Deprecated”](#deprecated-1)
 
 **The following features will likely be removed in an upcoming release. Let me know if you would miss these!**
 
@@ -8030,7 +8343,7 @@ Documentation for subscriptions can be [found here](/subscriptions).
 
 ### Documentation
 
-[Section titled “Documentation”](#documentation-6)
+[Section titled “Documentation”](#documentation-5)
 
 * Added release notes page (this one)
 * Added [subscriptions overview page](/subscriptions)
@@ -8234,7 +8547,7 @@ docker run --network host --rm -it stripe/stripe-cli listen \
 
 [Section titled “Webhooks in production”](#webhooks-in-production)
 
-The webhook setup changed significantly in version 2025.4.1. If you are on version 2025.4.1 or later, follow these steps, which are taken from the [dj-stripe docs](https://dj-stripe.dev/2.9/usage/webhooks/). For versions earlier than 2025.4.1 see the next section.
+The webhook setup changed significantly in version 2025.4.1. If you are on version 2025.4.1 or later, follow these steps, which are taken from the dj-stripe docs. For versions earlier than 2025.4.1 see the next section.
 
 * As a superuser, visit the Django admin of your site and navigate to djstripe -> Webhook endpoints -> Add webhook endpoint (or /admin/djstripe/webhookendpoint/add/).
 
@@ -8660,7 +8973,7 @@ The team is set automatically in views by the [middleware](#middleware) or by us
 
 ```python
 a_team = Team.objects.get(slug='a-team')
-with current_team(team):
+with current_team(a_team):
     # get_current_team() will return the `a_team` object inside this block
     call_code_that_uses_the_curent_team()
     MyModel.for_team().all()  # only returns objects with `team=a_team`
@@ -8676,7 +8989,7 @@ At its core, all Team-based views need the following:
 
 [Section titled “Urls”](#urls)
 
-See `apps.team.urls` for an example of how to set these up in your apps, and your main `apps.{project}.urls` file for how to add them to your site’s URLs.
+See `apps.teams.urls` for an example of how to set these up in your apps, and your main `apps.{project}.urls` file for how to add them to your site’s URLs.
 
 Anything that goes into `team_urlpatterns` in `apps.{project}.urls` will automatically be added under the URL `https://example.com/a/<team_slug>/`. The `team_slug` is a human-readable, URL-friendly version of the team name that is auto-generated for you.
 
@@ -8919,6 +9232,16 @@ If you follow these steps it should be relatively easy to expose teams down the 
 Supporting team and non-team users
 
 If you have different categories of users, some on teams and some not, then instead of hiding the functionality mentioned above, you should instead conditionally enable it based on the type of user that is logged in.
+
+### Renaming “teams” in your application
+
+[Section titled “Renaming “teams” in your application”](#renaming-teams-in-your-application)
+
+Many projects may want to rename “Teams” to something else, e.g. “Organizations”.
+
+To rename teams it is recommended to rename it in the UI only and not update the data models or app name. Renaming it in the models and app will make future Pegasus upgrades much more difficult.
+
+To rename teams in the UI, you can search for “teams” in the codebase and update the references, which are mostly in the template and javascript files.
 
 # Information about Templates
 
@@ -9163,11 +9486,11 @@ In this case you can fake a pure Pegasus branch by taking the following steps. *
 1. Save your current code (from the “main” branch).
 2. Make a new branch (e.g. called “pure-pegasus”)
 3. Download your codebase from saaspegasus.com on the *last release your project used/upgraded to*.
-4. Put the unmodified download of Pegasus 2022.3 onto that branch, without any of your own code. The easiest way to do that is to copy the `.git` folder into your downloaded project and immediately commit the result. This will “brutally” overwrite all your customizations in your git history. *Note this commit id.*
+4. Put the unmodified download of your *current* Pegasus version onto that branch, without any of your own code. The easiest way to do that is to copy the `.git` folder into your downloaded project and immediately commit the result. This will “brutally” overwrite all your customizations in your git history. *Note this commit id.*
 5. Then repeat this process, but instead, do the reverse. Copy the `.git` folder from the Pegasus download back into your (unmodified) copy of the `main` code and again commit the result. This will create a single commit containing all customizations you’ve made to your project.
 6. Review this code and merge it back into `main`. If you did everything correctly you should have two huge commits but the pull request will contain no changes.
 
-After this process git will believe that the pure pegasus code is fully merged to `main`. You can then use the commit id you noted in step 4 as the starting point for your upgrade ([step 1](#1-create-a-branch-for-the-upgrade)), and jump to [step 2 above](#2-upgrade-the-code-in-the-branch).
+After this process git will believe that the pure pegasus code is fully merged to `main`. You can then use the commit id you noted in step 4 as the commit id on the site, or the starting point for your upgrade ([step 1](#1-create-a-branch-for-the-upgrade)), and jump to [step 2 above](#2-upgrade-the-code-in-the-branch).
 
 # Wagtail CMS
 
@@ -9334,6 +9657,24 @@ In order for this to work, you will have to add an `ANTHROPIC_API_KEY` to your r
 
 [Junie](https://www.jetbrains.com/junie/) is the coding assistant built by JetBrains (makers of PyCharm). If you enable the Junie integration, your rules will be collapsed into a single, organized `.junie/guidelines.md` file for Junie to use.
 
+## Pegasus Skills for Claude Code
+
+[Section titled “Pegasus Skills for Claude Code”](#pegasus-skills-for-claude-code)
+
+[Pegasus Skills](https://github.com/saaspegasus/pegasus-skills) are specialized skill files that enhance Claude Code’s capabilities when working with Pegasus projects.
+
+Currently there is one skill available:
+
+* **resolve-pegasus-conflicts**: Helps resolve merge conflicts that arise during Pegasus upgrades. This skill can be invoked with `/resolve-pegasus-conflicts` or by asking Claude Code for help with merge conflicts during an upgrade.
+
+See the [Pegasus Skills repository](https://github.com/saaspegasus/pegasus-skills) for installation instructions and more details.
+
+## Git Worktrees for Parallel Development (Experimental)
+
+[Section titled “Git Worktrees for Parallel Development (Experimental)”](#git-worktrees-for-parallel-development-experimental)
+
+Pegasus includes experimental support for git worktrees, allowing you to work on multiple branches simultaneously with isolated services. See the [Git Worktrees documentation](/experimental/git-worktrees/) for details.
+
 ## Other tools
 
 [Section titled “Other tools”](#other-tools)
@@ -9346,13 +9687,19 @@ Also, if you’d like support or help configuring a different tool, email <suppo
 
 > Generate images with AI models including DALL-E-2, DALL-E-3, and Stability AI using OpenAI and Stability AI API keys in your Django application.
 
-Pegasus includes an optional example app for generating images with multiple different models, including [Dall-E-2](https://openai.com/index/dall-e-2) and [Dall-E-3](https://openai.com/index/dall-e-3) and [Stability AI](https://stability.ai/) (Stable Diffusion 3).
+Pegasus includes an optional example app for generating images with multiple different models, including [Gemini/Nano Banana Pro](https://gemini.google/overview/image-generation/), [Dall-E-2](https://openai.com/index/dall-e-2) and [Dall-E-3](https://openai.com/index/dall-e-3) and [Stability AI](https://stability.ai/) (Stable Diffusion 3).
 
 ## Configuration
 
 [Section titled “Configuration”](#configuration)
 
-To use the Dall-E models, you must set `OPENAI_API_KEY` in your environment, and to use Stability AI, you must set `STABILITY_AI_API_KEY`.
+You will need to set the following environment/.env variables to use the different models:
+
+| Model                | Environment Variable             |
+| -------------------- | -------------------------------- |
+| Gemini / Nano Banana | `AI_IMAGES_GEMINI_API_KEY`       |
+| Dall-E               | `AI_IMAGES_OPENAI_API_KEY`       |
+| Stability AI         | `AI_IMAGES_STABILITY_AI_API_KEY` |
 
 You can choose which model you want to use from the dropdown on the image generation page.
 
@@ -10410,7 +10757,7 @@ Additionally, you must connect Digital Ocean to your project’s Github reposito
 
 Before you can deploy you will need to set up databases for your application.
 
-First, navigate to [Databases —> New](https://cloud.digitalocean.com/databases/new), and choose “PostgreSQL” and the latest version (as of this writing, v17).
+First, navigate to [Databases —> New](https://cloud.digitalocean.com/databases/new), and choose “PostgreSQL” and the latest version (as of this writing, v18).
 
 You can leave most of the settings as-is, though feel free to change as you want. The smallest size should be fine for most applications getting stared.
 
@@ -12020,6 +12367,154 @@ After completing a payment in Stripe Checkout, you are redirected to the wrong p
 
 This is usually caused by a misconfigured Django site. See the documentation on [absolute URLs](/configuration/#absolute-urls) to fix.
 
+# Git Worktrees for Parallel Development
+
+> Use git worktrees with isolated services for parallel development on multiple branches simultaneously.
+
+Experimental Feature
+
+This feature is experimental. It is likely (but not guaranteed) that it will make it into a future Pegasus release. While in the experimental phase, it may undergo significant changes, including breaking changes.
+
+Git worktrees allow you to work on multiple branches simultaneously without switching contexts. Each worktree is an isolated working directory with its own ports for all services (Django, Vite, PostgreSQL, and Redis).
+
+## Creating a Worktree
+
+[Section titled “Creating a Worktree”](#creating-a-worktree)
+
+You can create a worktree using the standalone script:
+
+```bash
+# Interactive mode - prompts for name and base branch
+./scripts/create-worktree.sh
+
+
+# With arguments
+./scripts/create-worktree.sh feature-name          # Branches from main (default)
+./scripts/create-worktree.sh feature-name dev      # Branches from dev
+
+
+# Custom directory location (default: ../worktrees)
+WORKTREE_BASE_DIR=/custom/path ./scripts/create-worktree.sh feature-name
+```
+
+Or, if you’re using Claude Code, you can use the `/worktree` skill, which will prompt you for a name and base branch.
+
+## What Gets Created
+
+[Section titled “What Gets Created”](#what-gets-created)
+
+When you create a worktree, the script:
+
+1. Creates a new git worktree in `../worktrees/{name}` (configurable via `WORKTREE_BASE_DIR`)
+2. Allocates unique ports for all services (Django, Vite, PostgreSQL, Redis)
+3. Copies and configures `.env` with the new ports
+4. Updates `DATABASE_URL` and `REDIS_URL` to use the allocated ports
+5. Updates CORS settings to match the new Vite port
+6. Copies Claude settings (if present)
+7. Runs initial setup (`make setup-env` and `make npm-install-all`)
+
+## Port Allocation
+
+[Section titled “Port Allocation”](#port-allocation)
+
+Worktrees get automatically assigned ports to avoid conflicts:
+
+| Worktree   | Django | Vite | PostgreSQL | Redis |
+| ---------- | ------ | ---- | ---------- | ----- |
+| Main       | 8000   | 5173 | 5432       | 6379  |
+| Worktree 1 | 8001   | 5174 | 5433       | 6380  |
+| Worktree 2 | 8002   | 5175 | 5434       | 6381  |
+
+Each worktree runs its own isolated PostgreSQL and Redis instances via Docker Compose, allowing you to:
+
+* Work with different database schemas or data simultaneously
+* Test migrations independently without affecting other worktrees
+* Run integration tests in complete isolation
+
+## Working in a Worktree
+
+[Section titled “Working in a Worktree”](#working-in-a-worktree)
+
+After creating a worktree:
+
+```bash
+# 1. Change to the worktree directory (path shown in creation output)
+cd ../worktrees/{name}
+
+
+# 2. Start PostgreSQL and Redis (in background)
+make start-bg
+
+
+# 3. Start development servers (Django and Vite)
+make dev
+
+
+# 4. (Optional) Start a new Claude session in this directory
+claude
+```
+
+Access your worktree at the allocated ports (shown during creation).
+
+## Managing Worktrees
+
+[Section titled “Managing Worktrees”](#managing-worktrees)
+
+```bash
+# List all worktrees
+git worktree list
+
+
+# Remove a worktree (from main directory)
+git worktree remove ../worktrees/{name}
+
+
+# Remove a worktree and delete the branch
+git worktree remove ../worktrees/{name}
+git branch -D {name}
+```
+
+## Reconfiguring Ports
+
+[Section titled “Reconfiguring Ports”](#reconfiguring-ports)
+
+If you need to fix port conflicts or change ports in an existing worktree:
+
+```bash
+# From within a worktree (auto-detect ports)
+cd ../worktrees/{name}
+../../{project}/scripts/configure-ports.sh
+
+
+# From repo root (specify worktree path)
+./scripts/configure-ports.sh ../worktrees/{name}
+
+
+# Use specific ports (advanced)
+./scripts/configure-ports.sh ../worktrees/{name} 8005 5178 5437 6383
+```
+
+The script updates all port-related variables in `.env` including `DATABASE_URL`, `REDIS_URL`, and `CORS_ALLOWED_ORIGINS`.
+
+## Important Notes
+
+[Section titled “Important Notes”](#important-notes)
+
+* **Isolated services**: Each worktree has its own PostgreSQL and Redis instances with unique ports
+* **Database independence**: Migrations and data changes in one worktree don’t affect others
+* **Docker required**: PostgreSQL and Redis run via Docker Compose (`make start-bg`)
+* **Independent npm packages**: Each worktree has its own `node_modules`
+* **Branch naming**: If a branch name conflicts, the script appends `-2`, `-3`, etc.
+* **Port conflicts**: Make sure no other services are using the allocated port ranges
+
+## Known Limitations
+
+[Section titled “Known Limitations”](#known-limitations)
+
+* This feature has only been tested on Linux environments and may not work with other operaring systems.
+
+If you have any feedback on this feature please let us know!
+
 # Standalone React Front End
 
 > Build decoupled React single-page applications with Vite, session authentication, API integration, and deployment to static hosting platforms.
@@ -12028,20 +12523,21 @@ Experimental Feature
 
 This feature is experimental. It is likely (but not guaranteed) that it will make it into a future Pegasus release. While in the experimental phase, it may undergo significant changes, including breaking changes.
 
-*Added in version 2024.4. Expanded in version 2025.4.1.*
+*Added in version 2024.4. Expanded in versions 2025.4.1 and 2026.1.*
 
 SaaS Pegasus’s default React integration is based on a hybrid-model for reasons [outlined here](https://www.saaspegasus.com/guides/modern-javascript-for-django-developers/client-server-architectures/#enter-the-hybrid-architecture). The hybrid model is still recommended for the overwhelming majority of Pegasus projects using React. However, there are valid reasons to run a completely separate React front---including access to dedicated tooling and libraries, isolating your front end and back end code, and working with AI-based tools that generate single-page applications.
 
-Pegasus experimentally ships with a decoupled front end *example* single page application that can be used as a starting point for building out a decoupled front end / SPA with React. It uses [Vite](https://vitejs.dev/) as a development server and build tool.
+Pegasus experimentally ships with a decoupled front end *example* single page application that can be used as a starting point for building out a decoupled front end / SPA with React. It uses [Vite](https://vitejs.dev/) as a development server and build tool, and uses React with TailwindCSS and [shadcn/ui](https://ui.shadcn.com/) for components.
 
 The features it includes are:
 
 * A standalone Vite / React application.
 * Authentication via headless allauth and sessions---including sign up, login, social login, email confirmation, two-factor authentication, and logout functionality.
+* A shadcn/ui component environment setup with DaisyUI theme colors.
 * A sample profile page which shows how to retrieve data from the logged in user (via the back end APIs) and display it.
 * The employee lifecycle demo that ships with Pegasus (if enabled), showing a full create, update, delete (CRUD) workflow.
 
-The standalone front end is *only available on TailwindCSS* and uses DaisyUI for styling.
+The standalone front end is *only available on TailwindCSS*.
 
 **The standalone is not intended to be a replacement for Pegasus’s UI, but a reference example you can use as a starting point to build standalone, single-page-applications with Pegasus and React.**
 
@@ -12080,6 +12576,45 @@ npm run dev
 ```
 
 Note: your Django backend must also be running for the front end to work, and you must also [build your Django front end](/front-end/overview) for styles to work.
+
+## Shadcn setup
+
+[Section titled “Shadcn setup”](#shadcn-setup)
+
+This frontend uses [shadcn/ui](https://ui.shadcn.com/) for UI components. shadcn components are copied into the codebase (not installed as a package) and can be customized directly.
+
+### Adding Components
+
+[Section titled “Adding Components”](#adding-components)
+
+```bash
+cd frontend
+npx shadcn@latest add [component-name]
+```
+
+Components are installed to `src/components/ui/`. Browse available components at <https://ui.shadcn.com/docs/components>.
+
+### Key Files
+
+[Section titled “Key Files”](#key-files)
+
+* `components.json` - shadcn configuration
+* `src/lib/utils.ts` - `cn()` helper for className merging
+* `src/components/ui/` - all shadcn components
+* `src/index.css` - CSS variables and DaisyUI color mapping
+
+### DaisyUI Integration
+
+[Section titled “DaisyUI Integration”](#daisyui-integration)
+
+shadcn colors are mapped to DaisyUI theme variables in `src/index.css` under `@theme inline`. This ensures shadcn components use the same colors as the rest of the app.
+
+Key mappings:
+
+* `--color-primary` → DaisyUI primary
+* `--color-destructive` → DaisyUI error
+* `--color-muted` → DaisyUI base-200
+* `--color-accent` → DaisyUI base-300
 
 ## Authentication
 
@@ -12235,6 +12770,72 @@ This is likely because your `frontend/.env` file does not exist, or your `VITE_A
 [Section titled “Feedback”](#feedback)
 
 If you have any feedback on this feature I would love to hear it! Feedback could include bug reports, feature requests, or any suggested architectural changes.
+
+# Type Checking with Mypy
+
+> Enable static type checking in your Pegasus project using mypy and django-stubs.
+
+Experimental Feature
+
+This feature is experimental. It is likely (but not guaranteed) that it will make it into a future Pegasus release. While in the experimental phase, it may undergo significant changes, including breaking changes.
+
+Pegasus includes optional support for static type checking using [mypy](https://mypy-lang.org/) and [django-stubs](https://github.com/typeddjango/django-stubs). When enabled, type checking runs automatically in GitHub Actions CI.
+
+*This feature is currently marked as experimental because not every combination of Pegasus features has been fully tested by mypy. However, most common configurations are tested and should work out of the box. However, enabling type checking is perfectly safe.*
+
+## Enabling Type Checking
+
+[Section titled “Enabling Type Checking”](#enabling-type-checking)
+
+Type checking can be enabled from your project’s configuration page under “Developer Setup” -> “Advanced”. When enabled, your project will include:
+
+* `mypy`, `django-stubs`, and other stub libraries as development dependencies
+* A mypy configuration in your `pyproject.toml`
+* Type checking in the GitHub Actions CI workflow
+* Additional guidelines in AI skills files for working with types
+
+## Running Type Checks
+
+[Section titled “Running Type Checks”](#running-type-checks)
+
+To run type checking locally:
+
+```bash
+# With uv
+uv run mypy .
+
+
+# Without uv
+mypy .
+```
+
+## Configuration
+
+[Section titled “Configuration”](#configuration)
+
+Type checking is configured in your `pyproject.toml` file. The default configuration should pass out of the box for all new Pegasus projects.
+
+*If you run into any mypy errors with your project’s configuration on a new project, please report them [via email or Slack](https://www.saaspegasus.com/support/).*
+
+## Documentation (and AI Skills)
+
+[Section titled “Documentation (and AI Skills)”](#documentation-and-ai-skills)
+
+Your project’s AI skills files will now include additional guidelines for working with types. If you’re using Claude Code, you can run
+
+```plaintext
+/fix-types
+```
+
+as a skill in Claude Code to run interactive type check fixes on your code.
+
+The skills file is also open source and [documented here](https://github.com/saaspegasus/django-skills/blob/main/skills/fix-types/SKILL.md) if you’d like to see details on suggested fixes and resolution patterms. Please contribute if you have any suggestions for improvements!
+
+## Upgrading / adding type checking
+
+[Section titled “Upgrading / adding type checking”](#upgrading--adding-type-checking)
+
+When you first enable type checking for your project you will likely get some errors in your own code. The easiest way to resolve these is via the `/fix-types` skill mentioned above.
 
 # Front End Design Patterns
 
@@ -12807,7 +13408,7 @@ In the “Commit id” field, enter the commit ID of the most recent Pegasus upd
 
 | Codebase            | Commit ID                                  | Pegasus Version | Last Updated |
 | ------------------- | ------------------------------------------ | --------------- | ------------ |
-| Scriv               | `dbee5f634503f9d37b061c7a682e59db3bfece06` | 2025.4.1        | April, 2025  |
+| Scriv               | `899f6011967b0264d01a03e73dc18e4c7254e216` | 2025.11.3       | Dec, 2025    |
 | Translation Creator | `673e3cf37ffeb3472c0eedf3a38e924ee7a3c0ab` | 2025.3          | March, 2025  |
 
 Enter the commit ID and click “Set Commit ID”.

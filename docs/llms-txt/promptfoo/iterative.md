@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/strategies/iterative/
+
 # Iterative Jailbreaks Strategy
 
 The Iterative Jailbreaks strategy is a technique designed to systematically probe and potentially bypass an AI system's constraints by repeatedly refining a single-shot prompt through multiple iterations. This approach is inspired by research on automated jailbreaking techniques like the Tree of Attacks method [1](#user-content-fn-1).

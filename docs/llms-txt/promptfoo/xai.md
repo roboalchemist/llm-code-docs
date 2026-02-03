@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/xai/
+
 # xAI (Grok) Provider
 
 The `xai` provider supports xAI's Grok models through an API interface compatible with OpenAI's format. The provider supports both text and vision capabilities depending on the model used.

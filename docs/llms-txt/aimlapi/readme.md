@@ -78,7 +78,7 @@ If you've already made your choice and know the model ID, use the [Search panel]
 {% endtab %}
 
 {% tab title="Models by DEVELOPER" %}
-**Alibaba Cloud**: [Text/Chat](https://docs.aimlapi.com/api-references/text-models-llm/alibaba-cloud) [Image](https://docs.aimlapi.com/api-references/video-models/alibaba-cloud) [Video](https://docs.aimlapi.com/api-references/image-models/alibaba-cloud) [Text-to-Speech](https://docs.aimlapi.com/api-references/speech-models/text-to-speech/alibaba-cloud)
+**Alibaba Cloud**: [Text/Chat](https://docs.aimlapi.com/api-references/text-models-llm/alibaba-cloud) [Image](https://docs.aimlapi.com/api-references/video-models/alibaba-cloud) [Video](https://docs.aimlapi.com/api-references/image-models/alibaba-cloud) [Text-to-Speech](https://docs.aimlapi.com/api-references/speech-models/text-to-speech/alibaba-cloud) [Embedding](https://docs.aimlapi.com/api-references/embedding-models/alibaba-cloud)
 
 **Anthracite**: [Text/Chat](https://docs.aimlapi.com/api-references/text-models-llm/anthracite)
 
@@ -88,7 +88,9 @@ If you've already made your choice and know the model ID, use the [Search panel]
 
 **BAAI**: [Embedding](https://docs.aimlapi.com/api-references/embedding-models/baai)
 
-**ByteDance**: [Image](https://docs.aimlapi.com/api-references/video-models/bytedance) [Video](https://docs.aimlapi.com/api-references/image-models/bytedance)
+**Baidu**:    [Text/Chat](https://docs.aimlapi.com/api-references/text-models-llm/baidu)
+
+**ByteDance**: [Text/Chat](https://docs.aimlapi.com/api-references/text-models-llm/bytedance)  [Image](https://docs.aimlapi.com/api-references/video-models/bytedance) [Video](https://docs.aimlapi.com/api-references/image-models/bytedance)
 
 **Cohere**: [Text/Chat](https://docs.aimlapi.com/api-references/text-models-llm/cohere)
 
@@ -103,6 +105,8 @@ If you've already made your choice and know the model ID, use the [Search panel]
 **Google**: [Text/Chat](https://docs.aimlapi.com/api-references/text-models-llm/google) [Image](https://docs.aimlapi.com/api-references/image-models/google) [Video](https://docs.aimlapi.com/api-references/video-models/google) [Music](https://docs.aimlapi.com/api-references/vision-models/ocr-optical-character-recognition/google) [Vision(OCR)](https://docs.aimlapi.com/api-references/music-models/google) [Embedding](https://docs.aimlapi.com/api-references/embedding-models/google)
 
 **Gryphe**: [Text/Chat](https://docs.aimlapi.com/api-references/text-models-llm/gryphe)
+
+**Hume AI**: [Text-to-Speech](https://docs.aimlapi.com/api-references/speech-models/text-to-speech/hume-ai)
 
 **Inworld**: [Text-to-Speech](https://docs.aimlapi.com/api-references/speech-models/text-to-speech/inworld)
 
@@ -142,7 +146,7 @@ If you've already made your choice and know the model ID, use the [Search panel]
 
 **Sber AI**: [Video](https://docs.aimlapi.com/api-references/video-models/sber-ai)
 
-**Tencent**: [Image](https://docs.aimlapi.com/api-references/image-models/tencent)
+**Tencent**: [Image](https://docs.aimlapi.com/api-references/image-models/tencent)  [Video](https://docs.aimlapi.com/api-references/video-models/tencent)  [3D](https://docs.aimlapi.com/api-references/3d-generating-models/tencent)
 
 **Together AI**: [Embedding](https://docs.aimlapi.com/api-references/embedding-models/together-ai)
 

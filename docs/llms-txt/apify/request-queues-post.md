@@ -9,7 +9,7 @@ https://api.apify.com/v2/request-queues
 ```
 
 
-Clientshttps://docs.apify.com/api/client/python/reference/class/RequestQueueCollectionClientAsync#get_or_createhttps://docs.apify.com/api/client/js/reference/class/RequestQueueCollectionClient#getOrCreateCreates a request queue and returns its object. Keep in mind that requests stored under unnamed queue follows https://docs.apify.com/platform/storage#data-retention.
+Creates a request queue and returns its object. Keep in mind that requests stored under unnamed queue follows [data retention period](https://docs.apify.com/platform/storage#data-retention).
 
 It creates a queue of given name if the parameter name is used. If a queue with the given name already exists then the endpoint returns its object.
 
@@ -18,7 +18,10 @@ It creates a queue of given name if the parameter name is used. If a queue with 
 ## Responses
 
 * 201
+* 400
 
 **Response Headers**
 
 * **Location**
+
+Bad request - invalid input parameters or request body.

@@ -6,10 +6,12 @@ When encountering issues during Lynx page development, you can use [DevTool](/gu
 However, you need to follow these steps to integrate DevTool first.
 
 :::info
-
 It is recommended to integrate DevTool in non-production environments to keep your production builds lightweight.
-All code examples in this documentation can be found in the [integrating-lynx-demo-projects](https://github.com/lynx-family/integrating-lynx-demo-projects/tree/main).
 
+- **Package size**: DevTool will increase the package size.
+- **Runtime**: Related modules are lazy loaded when enabled, which will increase memory overhead, and some features may affect the loading performance.
+
+All code examples in this documentation can be found in the [integrating-lynx-demo-projects](https://github.com/lynx-family/integrating-lynx-demo-projects/tree/main).
 :::
 
 <PlatformTabs queryKey="platform">
@@ -22,10 +24,10 @@ All code examples in this documentation can be found in the [integrating-lynx-de
       ```ruby title="Podfile" {8,11}
       # Ensure Lynx DevTool version matches the Lynx version when integrating
       target 'YourTarget' do
-        pod 'LynxService', '3.4.1', :subspecs => [
+        pod 'LynxService', '3.6.0', :subspecs => [
             'Devtool',
         ]
-        pod 'LynxDevtool', '3.4.1'
+        pod 'LynxDevtool', '3.6.0'
       end
       ```
 
@@ -114,8 +116,8 @@ All code examples in this documentation can be found in the [integrating-lynx-de
           ```groovy
           // Ensure Lynx DevTool version matches the Lynx version when integrating
           dependencies {
-            implementation "org.lynxsdk.lynx:lynx-devtool:3.4.1"
-            implementation "org.lynxsdk.lynx:lynx-service-devtool:3.4.1"
+            implementation "org.lynxsdk.lynx:lynx-devtool:3.6.0"
+            implementation "org.lynxsdk.lynx:lynx-service-devtool:3.6.0"
           }
           ```
         </Tab>
@@ -124,8 +126,8 @@ All code examples in this documentation can be found in the [integrating-lynx-de
           ```kotlin
           // Ensure Lynx DevTool version matches the Lynx version when integrating
           dependencies {
-            implementation ("org.lynxsdk.lynx:lynx-devtool:3.4.1")
-            implementation ("org.lynxsdk.lynx:lynx-service-devtool:3.4.1")
+            implementation ("org.lynxsdk.lynx:lynx-devtool:3.6.0")
+            implementation ("org.lynxsdk.lynx:lynx-service-devtool:3.6.0")
           }
           ```
         </Tab>
@@ -172,6 +174,7 @@ All code examples in this documentation can be found in the [integrating-lynx-de
       <Details title="These three switches are disabled by default, you need to enable them.">
         * `Lynx DevTool` and `Lynx LogBox` switches can only take effect after `Lynx Debug` is enabled.
         * When debugging Lynx pages with the DevTool Desktop, `Lynx DevTool` needs to be enabled.
+          - If you need to use JavaScript debugging, you also need to enable the `LoadJsBridge` switch.
         * LogBox helps you quickly identify and diagnose issues.
       </Details>
 
@@ -179,7 +182,7 @@ All code examples in this documentation can be found in the [integrating-lynx-de
 
       <Tabs groupId="turn-on-switches-android">
         <Tab label="Java">
-          ```java title=YourApplication.java {3-9}
+          ```java title=YourApplication.java {3-11}
           private void initLynxEnv() {
             LynxEnv.inst().init(this, null, null, null);
             // Enable Lynx Debug
@@ -189,13 +192,15 @@ All code examples in this documentation can be found in the [integrating-lynx-de
             // Enable Lynx LogBox
             LynxDevToolService.getINSTANCE().setLogBoxPresetValue(true);
             LynxEnv.inst().enableLogBox(true);
+            // Enable LoadJsBridge
+            LynxDevToolService.getINSTANCE().setLoadJsBridge(true);
           }
 
           ```
         </Tab>
 
         <Tab label="Kotlin">
-          ```kotlin title=YourApplication.kt {3-9}
+          ```kotlin title=YourApplication.kt {3-11}
           private fun initLynxEnv() {
             LynxEnv.inst().init(this, null, null, null)
             // Enable Lynx Debug
@@ -205,6 +210,8 @@ All code examples in this documentation can be found in the [integrating-lynx-de
             // Enable Lynx LogBox
             LynxDevToolService.INSTANCE.setLogBoxPresetValue(true)
             LynxEnv.inst().enableLogBox(true)
+            // Enable LoadJsBridge
+            LynxDevToolService.INSTANCE.setLoadJsBridge(true)
           }
           ```
         </Tab>
@@ -321,6 +328,10 @@ connect your app via USB to start debugging.
   <NextSteps.Step href="/guide/start/integrate-lynx-devtool-advanced" title="More DevTool Switches" description="Need more advanced configurations for DevTool?" />
 </NextSteps.Root>
 
+## Compatibility
+
+
+**Error:** No compatibility data found for `devtool.integration`
 ## Next Step
 
 <NextSteps.Root>

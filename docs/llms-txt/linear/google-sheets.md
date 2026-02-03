@@ -12,11 +12,11 @@ The Google Sheets integration creates a Google Sheet for your workspace's issue 
 
 All issues in public teams in a workspace will be shared to the issues sheet, and all projects belonging to at least one public team will sync to the projects sheet. We do not export data contained only in private teams.
 
-There isn't a way to select what data is shared to the Google Sheet beyond configuring whether you wish to sync issues, projects, or both.
+There isn't a way to select what data is shared to the Google Sheet beyond configuring whether you wish to sync issues, projects, and/or initiatives.
 
 ## Configure
 
-Go to the [Google Sheets integration settings](https://linear.app/settings/integrations/google-sheets) and connect Linear to a Google account. This will automatically create a Google Sheet called _Linear Issues_ in your Google Drive. Optionally, enable a new Sheet for projects as well.
+Go to the [Google Sheets integration settings](https://linear.app/settings/integrations/google-sheets) and connect Linear to a Google account. This will automatically create a Google Sheet called _Linear Issues_ in your Google Drive. Optionally, also choose to enable new sheets for projects and initiatives.
 
 As this is a workspace setting, you can only connect one account per team. To share the data with teammates, update permissions directly on the sheet. If you're looking for a one-time download, workspace Admins can [export](https://linear.app/settings/import-export) a CSV instead.
 
@@ -85,6 +85,29 @@ As this is a workspace setting, you can only connect one account per team. To sh
 * Latest Update Date
 * Customer Count
 * Customer Revenue
+
+### Initiatives
+
+* ID
+* Parent ID
+* Name
+* URL
+* Description
+* Details
+* Status
+* Creator
+* Owner
+* Target Date (Start)
+* Target Date (End)
+* Created At
+* Started At
+* Updated At
+* Completed At
+* Archived At
+* Teams
+* Health
+* Latest Update
+* Latest Update Date
 
 ## Updating data
 

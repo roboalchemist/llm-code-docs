@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/reference/set-exa-as-default-search.md
+# Source: https://exa.ai/docs/reference/set-exa-as-default-search.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Make Exa Your Default Search Engine
 
@@ -92,8 +96,3 @@ If these steps don't work for your browser:
 * **Free, fast and accurate** search results every time
 
 Now you can enjoy Exa's powerful search right from your browser's address bar!
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

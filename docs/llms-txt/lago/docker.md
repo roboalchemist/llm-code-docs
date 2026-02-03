@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/lago-self-hosted/docker.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Docker
 
 > Docker is the easiest way to get started with the self-hosted version of Lago.
@@ -147,6 +151,9 @@ application. You can override them to customise your setup.
 | `LAGO_USE_GCS`                        | false                                          | Use Google Cloud Service Cloud Storage for file storage, ⚠️ If you want to use GCS, you have to pass the credentials json key file to the api and worker service |
 | `LAGO_GCS_PROJECT`                    |                                                | GCS Project name                                                                                                                                                 |
 | `LAGO_GCS_BUCKET`                     |                                                | GCS Bucket Name                                                                                                                                                  |
+| `LAGO_GCS_CREDENTIALS`                |                                                | GCS Credentials JSON file path                                                                                                                                   |
+| `LAGO_GCS_IAM`                        | false                                          | GCS IAM Authentication                                                                                                                                           |
+| `LAGO_GCS_GSA_EMAIL`                  |                                                | GCS GSA Email                                                                                                                                                    |
 | `LAGO_PDF_URL`                        | [http://pdf:3000](http://pdf:3000)             | PDF Service URL on your infrastructure                                                                                                                           |
 | `LAGO_DISABLE_SIGNUP`                 |                                                | Disable Sign up when running Lago in self-hosted                                                                                                                 |
 | `LAGO_RAILS_STDOUT`                   | true                                           | Set to true to activate logs on containers                                                                                                                       |
@@ -307,16 +314,20 @@ You have to set these variables to use AWS S3 Compatible Endpoints.
 
 You have to set those variables to use GCS Cloud Storage.
 
-| Name               | Description                                        |
-| ------------------ | -------------------------------------------------- |
-| `LAGO_USE_GCS`     | Set to "true" if you want to use GCS Cloud Storage |
-| `LAGO_GCS_PROJECT` | GCS Project name                                   |
-| `LAGO_GCS_BUCKET`  | GCS Bucket name                                    |
+| Name                   | Description                                        |
+| ---------------------- | -------------------------------------------------- |
+| `LAGO_USE_GCS`         | Set to "true" if you want to use GCS Cloud Storage |
+| `LAGO_GCS_PROJECT`     | GCS Project name                                   |
+| `LAGO_GCS_BUCKET`      | GCS Bucket name                                    |
+| `LAGO_GCS_CREDENTIALS` | GCS Credentials JSON file path                     |
+| `LAGO_GCS_IAM`         | GCS IAM Authentication                             |
+| `LAGO_GCS_GSA_EMAIL`   | GCS GSA Email                                      |
 
 In the `docker-compose.yml` file, you must uncomment the lines and pass the
 correct GCS credentials json file.
 
 ```yaml  theme={"dark"}
+# Example using GCS Credentials File
 api:
   volumes:
     - gcs_keyfile.json:/app/gcs_keyfile.json

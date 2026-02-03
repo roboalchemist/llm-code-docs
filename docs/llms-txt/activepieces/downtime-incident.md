@@ -1,5 +1,9 @@
 # Source: https://www.activepieces.com/docs/handbook/engineering/onboarding/downtime-incident.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Handling Downtime
 
 ![Downtime Incident](https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTZnbGxjc3k5d3NxeXQwcmhxeTRsbnNybnd4NG41ZnkwaDdsa3MzeSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/2UCt7zbmsLoCXybx6t/giphy.gif)

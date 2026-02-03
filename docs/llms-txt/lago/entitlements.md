@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/entitlements.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Entitlements
 
 > Unify entitlements and billing in one streamlined platform with Lago.

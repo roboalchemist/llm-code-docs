@@ -6,7 +6,6 @@ description: >-
   Allocate cloud costs across your organization with Datadog Cloud Cost
   Management.
 breadcrumbs: Docs > Cloud Cost Management > Cost Allocation
-source_url: https://docs.datadoghq.com/allocation/index.html
 ---
 
 # Cost Allocation

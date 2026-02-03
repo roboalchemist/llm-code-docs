@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/enterprise/guides/automation-triggers.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Triggers Overview
 
 > Understand how CrewAI AMP triggers work, how to manage them, and where to find integration-specific playbooks
@@ -19,36 +23,68 @@ Deep-dive guides walk through setup and sample workflows for each integration:
     <a href="/en/enterprise/guides/gmail-trigger">Enable crews when emails arrive or threads update.</a>
   </Card>
 
+  {" "}
+
   <Card title="Google Calendar Trigger" icon="calendar-days">
-    <a href="/en/enterprise/guides/google-calendar-trigger">React to calendar events as they are created, updated, or cancelled.</a>
+    <a href="/en/enterprise/guides/google-calendar-trigger">
+      React to calendar events as they are created, updated, or cancelled.
+    </a>
   </Card>
+
+  {" "}
 
   <Card title="Google Drive Trigger" icon="folder-open">
-    <a href="/en/enterprise/guides/google-drive-trigger">Handle Drive file uploads, edits, and deletions.</a>
+    <a href="/en/enterprise/guides/google-drive-trigger">
+      Handle Drive file uploads, edits, and deletions.
+    </a>
   </Card>
+
+  {" "}
 
   <Card title="Outlook Trigger" icon="envelope-open">
-    <a href="/en/enterprise/guides/outlook-trigger">Automate responses to new Outlook messages and calendar updates.</a>
+    <a href="/en/enterprise/guides/outlook-trigger">
+      Automate responses to new Outlook messages and calendar updates.
+    </a>
   </Card>
+
+  {" "}
 
   <Card title="OneDrive Trigger" icon="cloud">
-    <a href="/en/enterprise/guides/onedrive-trigger">Audit file activity and sharing changes in OneDrive.</a>
+    <a href="/en/enterprise/guides/onedrive-trigger">
+      Audit file activity and sharing changes in OneDrive.
+    </a>
   </Card>
+
+  {" "}
 
   <Card title="Microsoft Teams Trigger" icon="comments">
-    <a href="/en/enterprise/guides/microsoft-teams-trigger">Kick off workflows when new Teams chats start.</a>
+    <a href="/en/enterprise/guides/microsoft-teams-trigger">
+      Kick off workflows when new Teams chats start.
+    </a>
   </Card>
+
+  {" "}
 
   <Card title="HubSpot Trigger" icon="hubspot">
-    <a href="/en/enterprise/guides/hubspot-trigger">Launch automations from HubSpot workflows and lifecycle events.</a>
+    <a href="/en/enterprise/guides/hubspot-trigger">
+      Launch automations from HubSpot workflows and lifecycle events.
+    </a>
   </Card>
+
+  {" "}
 
   <Card title="Salesforce Trigger" icon="salesforce">
-    <a href="/en/enterprise/guides/salesforce-trigger">Connect Salesforce processes to CrewAI for CRM automation.</a>
+    <a href="/en/enterprise/guides/salesforce-trigger">
+      Connect Salesforce processes to CrewAI for CRM automation.
+    </a>
   </Card>
 
+  {" "}
+
   <Card title="Slack Trigger" icon="slack">
-    <a href="/en/enterprise/guides/slack-trigger">Start crews directly from Slack slash commands.</a>
+    <a href="/en/enterprise/guides/slack-trigger">
+      Start crews directly from Slack slash commands.
+    </a>
   </Card>
 
   <Card title="Zapier Trigger" icon="bolt">
@@ -194,11 +230,12 @@ class MyAutomatedCrew:
 The crew will automatically receive and can access the trigger payload through the standard CrewAI context mechanisms.
 
 <Note>
-  Crew and Flow inputs can include `crewai_trigger_payload`. CrewAI automatically injects this payload:
-
-  * Tasks: appended to the first task's description by default ("Trigger Payload: {crewai_trigger_payload}")
-  * Control via `allow_crewai_trigger_context`: set `True` to always inject, `False` to never inject
-  * Flows: any `@start()` method that accepts a `crewai_trigger_payload` parameter will receive it
+  Crew and Flow inputs can include `crewai_trigger_payload`. CrewAI
+  automatically injects this payload: - Tasks: appended to the first task's
+  description by default ("Trigger Payload: {crewai_trigger_payload}") - Control
+  via `allow_crewai_trigger_context`: set `True` to always inject, `False` to
+  never inject - Flows: any `@start()` method that accepts a
+  `crewai_trigger_payload` parameter will receive it
 </Note>
 
 ### Integration with Flows

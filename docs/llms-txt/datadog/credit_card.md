@@ -4,7 +4,6 @@
 title: Credit Card Billing
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Account Management > Billing > Credit Card Billing
-source_url: https://docs.datadoghq.com/billing/credit_card/index.html
 ---
 
 # Credit Card Billing

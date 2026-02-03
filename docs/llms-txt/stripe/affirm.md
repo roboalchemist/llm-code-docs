@@ -55,7 +55,6 @@ To pay with Affirm, customers are redirected to Affirm’s site, where they [aut
 #### Business locations
 
 - CA
-- GB
 - US
 
 #### Product support
@@ -120,7 +119,7 @@ Affirm supports two *financing packages* (A financing package is a configuration
   - 12 months - interest bearing
   - 36 months - interest bearing |
 
-Rates vary from 10% to 36% APR, subject to eligibility. For example, a 800 USD purchase might cost 72.12 USD per month over 12 months at 15% APR.  See [Affirm lending terms](http://affirm.com/disclosures) for more details. Platforms don’t qualify for the pay in 30 plan and 0% APR.
+Rates vary from 10% to 36% APR, subject to eligibility. For example, a 800 USD purchase might cost 72.12 USD per month over 12 months at 15% APR. See [Affirm lending terms](http://affirm.com/disclosures) for more details. Platforms don’t qualify for the pay in 30 plan and 0% APR.
 
 #### Enhanced
 
@@ -141,7 +140,7 @@ Rates vary from 10% to 36% APR, subject to eligibility. For example, a 800 USD p
   - 12 months - 0% APR
   - 36 months - interest bearing |
 
-Rates vary from 10% to 36% APR, subject to eligibility. For example, a 800 USD purchase might cost 72.12 USD per month over 12 months at 15% APR.  See [Affirm lending terms](http://affirm.com/disclosures) for more details. Platforms don’t qualify for the pay in 30 plan and 0% APR.
+Rates vary from 10% to 36% APR, subject to eligibility. For example, a 800 USD purchase might cost 72.12 USD per month over 12 months at 15% APR. See [Affirm lending terms](http://affirm.com/disclosures) for more details. Platforms don’t qualify for the pay in 30 plan and 0% APR.
 
 ## Prohibited and restricted business categories
 

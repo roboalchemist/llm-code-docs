@@ -1,8 +1,18 @@
 # Source: https://gofastmcp.com/deployment/running-server.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Running Your Server
 
 > Learn how to run your FastMCP server locally for development and testing
+
+export const VersionBadge = ({version}) => {
+  return <Badge stroke size="lg" icon="gift" iconType="regular" className="version-badge">
+            New in version <code>{version}</code>
+        </Badge>;
+};
 
 FastMCP servers can be run in different ways depending on your needs. This guide focuses on running servers locally for development and testing. For production deployment to a URL, see the [HTTP Deployment](/deployment/http) guide.
 
@@ -157,6 +167,32 @@ fastmcp run database_server.py -- --database-path /tmp/db.sqlite --debug
 This is useful for servers that need configuration files, database paths, API keys, or other runtime options.
 
 For more CLI features including development mode with the MCP Inspector, see the [CLI documentation](/patterns/cli).
+
+### Auto-Reload for Development
+
+<VersionBadge version="3.0.0" />
+
+During development, you can use the `--reload` flag to automatically restart your server when source files change:
+
+```bash  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+fastmcp run server.py --reload
+```
+
+The server watches for changes to Python files in the current directory and restarts automatically when you save changes. This provides a fast feedback loop during development without manually stopping and starting the server.
+
+```bash  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+# Watch specific directories for changes
+fastmcp run server.py --reload --reload-dir ./src --reload-dir ./lib
+
+# Combine with other options
+fastmcp run server.py --reload --transport http --port 8080
+```
+
+<Note>
+  Auto-reload uses stateless mode to enable seamless restarts. For stdio transport, this is fully featured. For HTTP transport, some bidirectional features like elicitation are not available during reload mode.
+</Note>
+
+SSE transport does not support auto-reload due to session limitations. Use HTTP transport instead if you need both network access and auto-reload.
 
 ### Async Usage
 

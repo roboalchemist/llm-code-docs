@@ -4,7 +4,7 @@
 
 Learn about the requirements and guidelines for regulatory compliance.
 
-> Capital for platforms is available in [public preview](https://docs.stripe.com/release-phases.md). [Sign up to join](https://docs.stripe.com/capital/how-capital-for-platforms-works.md#sign-up).
+> Capital for platforms is available in [public preview](https://docs.stripe.com/release-phases.md).
 
 Review the Capital regulatory guidelines for platforms in the United States (US) or United Kingdom (GB). To offer and promote Stripe Capital to your users, your platform’s marketing and user interfaces must adhere to the following regulatory compliance guidelines. These guidelines can help your platform and users (connected accounts) navigate the financial regulations applicable to Capital.
 
@@ -94,7 +94,7 @@ Keep thorough records of all marketing materials, customer data, account informa
 
 | Record Type                            | Examples                                                                                                                                                                                             |
 | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Product Interface (UX)                 | Screenshots of all deployed versions of the product UX, include application flow, customer dashboard, support pages, etc.                                                                            |
+| Product Interface (UX)                 | Screenshots of all deployed versions of the product UX, include application flow, customer dashboard, support pages, and so on                                                                       |
 | Marketing                              | Inventory of all marketing copy deployed, Email distribution lists, user targeting, used Email solicitation opt out lists (including timestamps of user opt-outs), and adherence to opt-out requests |
 | Customer communications and complaints | Email interactions or documentation developed in the course of resolving complaints                                                                                                                  |
 
@@ -113,7 +113,7 @@ If you use a testimonial or endorsement to advertise Stripe products to your cus
 The CAN-SPAM Act regulates marketing activity conducted by email.
 
 - An email is deemed a commercial message, subject to the CAN-SPAM act, if the primary purpose of the email is to convey a commercial advertisement, or to promote a product or service.
-- A transactional email is an email sent to a customer that has a primary purpose relating to a particular transaction or relationship between you and the customer (e.g. financing terms and conditions). The CAN-SPAM Act imposes more rigorous requirements on commercial email messages, as compared with transactional messages. Transactional messages are not subject to most of the requirements of the CAN-SPAM Act. If a message contains both transactional content and commercial content, the CAN-SPAM Act’s commercial email requirements might apply, if the message’s primary purpose might be considered to be commercial.
+- A transactional email is an email sent to a customer that has a primary purpose relating to a particular transaction or relationship between you and the customer (for example, financing terms and conditions). The CAN-SPAM Act imposes more rigorous requirements on commercial email messages, as compared with transactional messages. Transactional messages are not subject to most of the requirements of the CAN-SPAM Act. If a message contains both transactional content and commercial content, the CAN-SPAM Act’s commercial email requirements might apply, if the message’s primary purpose might be considered to be commercial.
 
 To facilitate compliance with the CAN-SPAM Act, any employee or staff utilizing or having access to your email systems and resources for marketing must adhere to the following requirements:
 
@@ -161,7 +161,7 @@ Make sure that marketing materials use clear messaging that fully explains produ
 
 Direct marketing is any type of advertising or promotional material to individuals or businesses and applies to any type of communication, such as sending someone information about Stripe Capital by email, text, or through social media.
 
-UK Privacy and Electronic Communications Regulations (PECR) give specific privacy rights in relation to electronic communications and have specific rules on marketing calls, emails, texts and so on. These rules work alongside the UK Data Protection Act and the UK GDPR. These rules might differ depending on your chosen method of direct marketing and the type of business you intend to contact. “Electronic mail” is intentionally broad and includes texts, emails, sounds, images, or social media messages.
+UK Privacy and Electronic Communications Regulations (PECR) give specific privacy rights in relation to electronic communications and have specific rules on marketing calls, emails, texts, and so on. These rules work alongside the UK Data Protection Act and the UK GDPR. These rules might differ depending on your chosen method of direct marketing and the type of business you intend to contact. “Electronic mail” is intentionally broad and includes texts, emails, sounds, images, or social media messages.
 
 Businesses or body corporates are classed as “corporate subscribers” under PECR. The PECR consent rule on electronic mail marketing generally doesn’t apply to corporate subscribers if related to their professional role. This means that you don’t need their consent under PECR to send B2B direct marketing emails or texts to corporate subscribers.
 
@@ -172,7 +172,7 @@ Sole traders and partnerships are classed as “individual subscribers” (even 
 
 When marketing to either corporate or individual subscribers:
 
-- Identify your audience and apply the right consent rule, i.e. 'corporate subscribers’ vs ‘individual subscribers’.
+- Identify your audience and apply the right consent rule: “corporate subscribers” vs “individual subscribers.”
 - Use fair, clear, and accurate information - don’t leave out key terms or fees, and don’t advertise product uses or features that aren’t true.
 - Don’t disguise or conceal your identity.
 - Provide a valid contact address so they can opt out or unsubscribe easily, offer an opt-out of messaging in every message. For example, opt out by reply, an unsubscribe link in emails, an ability to update communication preferences in the dashboard, or an **X** dismissal option in the embedded component.

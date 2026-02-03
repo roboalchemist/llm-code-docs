@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/cli/reference.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # CLI Flags and Options
 
 > A comprehensive reference for all command-line flags available in the Auggie CLI.
@@ -71,6 +75,8 @@ See [Custom Commands](/cli/custom-commands) for detailed information on creating
 | `auggie --rules /path/to/rules.md`         | Additional rules to append to workspace guidelines                        |
 | `auggie --model "name"`                    | Select the model to use (accepts long or short names from the model list) |
 
+<Note>Skills are loaded automatically from `.augment/skills/` and `.claude/skills/` directories in both your workspace and home directory. See [Skills](/cli/skills) for more information.</Note>
+
 ### Models
 
 List out available models and their short names to be passed into the `--model` flag
@@ -79,7 +85,37 @@ List out available models and their short names to be passed into the `--model` 
 | :------------------- | :-------------------- |
 | `auggie models list` | List available models |
 
-<Note>Tool permissions can be configured in settings.json files. See [Permissions](/cli/permissions) for detailed configuration.</Note>
+### Tools
+
+Manage which tools are available to the agent. You can temporarily disable tools for a session or persistently manage them via settings.
+
+| Command                            | Description                                                                              |
+| :--------------------------------- | :--------------------------------------------------------------------------------------- |
+| `auggie --remove-tool <tool-name>` | Remove a specific tool by name for the current session. Can be specified multiple times. |
+| `auggie tools list`                | List all available tools and their current status                                        |
+| `auggie tools remove <tool-name>`  | Persistently remove a tool by adding it to the `removedTools` list in settings.json      |
+| `auggie tools add <tool-name>`     | Re-enable a previously removed tool by removing it from the `removedTools` list          |
+
+**Examples:**
+
+```sh  theme={null}
+# Disable the web-fetch tool for this session
+auggie --remove-tool web-fetch
+
+# Disable multiple tools for this session
+auggie --remove-tool web-fetch --remove-tool web-search
+
+# Persistently disable a tool
+auggie tools remove launch-process
+
+# Re-enable a previously disabled tool
+auggie tools add launch-process
+
+# See all tools and their status
+auggie tools list
+```
+
+<Note>Command-line `--remove-tool` flags take precedence over settings. For fine-grained control over tool behavior (allow, deny, ask-user), see [Permissions](/cli/permissions).</Note>
 
 ### MCP and integrations
 
@@ -98,6 +134,46 @@ List out available models and their short names to be passed into the `--model` 
 <Note>You can define MCP servers persistently in the settings files: `~/.augment/settings.json`. Any `--mcp-config` flags are applied last and override settings.</Note>
 
 For detailed usage examples, options, settings.json format, and precedence rules, see [Integrations and MCP](/cli/integrations#manage-mcp-servers-with-the-auggie-cli).
+
+### MCP Server Mode
+
+Run Auggie as an MCP server to expose the codebase-retrieval tool to external AI tools like Claude Code, Cursor, and others.
+
+| Flag                   | Description                                                                                       |
+| :--------------------- | :------------------------------------------------------------------------------------------------ |
+| `--mcp`                | Run Auggie as an MCP tool server. Uses the current working directory as the workspace by default. |
+| `--mcp-auto-workspace` | Enable automatic workspace discovery based on client requests (added in v0.14.0)                  |
+| `-w /path/to/project`  | Specify a workspace to index                                                                      |
+
+#### Automatic Workspace Discovery
+
+The `--mcp-auto-workspace` flag enables dynamic workspace discovery in MCP mode. When enabled:
+
+* The `codebase-retrieval` tool accepts a `directory_path` parameter to specify which workspace to search
+* Workspaces are indexed on-demand when first accessed
+* Multiple workspaces can be searched within a single MCP server session
+
+This is useful when the MCP client (e.g., Claude Code) needs to work with multiple projects or when the workspace isn't known at startup time.
+
+You can combine `--mcp-auto-workspace` with `-w` to pre-index a primary workspace at startup while still allowing dynamic discovery of additional workspaces. This is useful for large workspaces that take time to index, or to reduce latency on the first query to your main project.
+
+**Examples:**
+
+```bash  theme={null}
+# MCP server with auto-discovery (recommended)
+auggie --mcp --mcp-auto-workspace
+
+# Pre-index a workspace, allow dynamic discovery of others
+auggie --mcp --mcp-auto-workspace -w /path/to/primary/project
+
+# Use only a single workspace path
+auggie --mcp -w /path/to/project
+
+# Use current working directory as the workspace
+auggie --mcp
+```
+
+<Note>When using `--mcp-auto-workspace`, the first query to a new workspace may take longer as the workspace is indexed. Subsequent queries to the same workspace will be fast.</Note>
 
 ### Authentication
 
@@ -124,9 +200,27 @@ For detailed usage examples, options, settings.json format, and precedence rules
 | `GITHUB_API_TOKEN`            | GitHub API token              |
 | `AUGMENT_DISABLE_AUTO_UPDATE` | Disable automatic CLI updates |
 
+### Shell Environment
+
+When Auggie executes shell commands using the `launch-process` tool, it sets the following environment variable:
+
+| Variable        | Description                                                                                                                        |
+| --------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `AUGMENT_AGENT` | Set to `1` when a command is executed by Auggie. Scripts can check for this variable to detect if they are being run by the agent. |
+
+**Example usage in a script:**
+
+```sh  theme={null}
+if [ -n "$AUGMENT_AGENT" ]; then
+  echo "Running inside Auggie"
+  # Adjust behavior for agent execution
+fi
+```
+
 ## See Also
 
 * [Custom Rules and Guidelines](/cli/rules) - Configure custom rules for project-specific guidance
+* [Skills](/cli/skills) - Extend capabilities with specialized domain knowledge
 * [Custom Commands](/cli/custom-commands) - Create reusable command templates
 * [Permissions](/cli/permissions) - Configure tool permissions and security
 * [Integrations](/cli/integrations) - Connect external tools and services

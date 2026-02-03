@@ -1,165 +1,167 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/deployments/get-deployment-events.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get deployment events
 
 > Get the build logs of a deployment by deployment ID and build ID. It can work as an infinite stream of logs or as a JSON endpoint depending on the input parameters.
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v3/deployments/{idOrUrl}/events
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v3/deployments/{idOrUrl}/events
-  method: get
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path:
-        idOrUrl:
+  /v3/deployments/{idOrUrl}/events:
+    get:
+      tags:
+        - deployments
+      summary: Get deployment events
+      description: >-
+        Get the build logs of a deployment by deployment ID and build ID. It can
+        work as an infinite stream of logs or as a JSON endpoint depending on
+        the input parameters.
+      operationId: getDeploymentEvents
+      parameters:
+        - name: idOrUrl
+          description: The unique identifier or hostname of the deployment.
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: The unique identifier or hostname of the deployment.
-              example: dpl_5WJWYSyB7BpgTj3EuwF37WMRBXBtPQ2iTMJHJBJyRfd
-      query:
-        direction:
+            type: string
+            example: dpl_5WJWYSyB7BpgTj3EuwF37WMRBXBtPQ2iTMJHJBJyRfd
+            description: The unique identifier or hostname of the deployment.
+        - name: direction
+          description: Order of the returned events based on the timestamp.
+          in: query
+          required: false
           schema:
-            - type: enum<string>
-              enum:
-                - backward
-                - forward
-              required: false
-              description: Order of the returned events based on the timestamp.
-              default: forward
-              example: backward
-        follow:
+            type: string
+            enum:
+              - backward
+              - forward
+            default: forward
+            example: backward
+            description: Order of the returned events based on the timestamp.
+        - name: follow
+          description: When enabled, this endpoint will return live events as they happen.
+          in: query
+          required: false
           schema:
-            - type: enum<number>
-              enum:
-                - 0
-                - 1
-              required: false
-              description: >-
-                When enabled, this endpoint will return live events as they
-                happen.
-              example: 1
-        limit:
+            type: number
+            enum:
+              - 0
+              - 1
+            example: 1
+            description: >-
+              When enabled, this endpoint will return live events as they
+              happen.
+        - name: limit
+          description: >-
+            Maximum number of events to return. Provide `-1` to return all
+            available logs.
+          in: query
+          required: false
           schema:
-            - type: number
-              required: false
-              description: >-
-                Maximum number of events to return. Provide `-1` to return all
-                available logs.
-              example: 100
-        name:
+            type: number
+            example: 100
+            description: >-
+              Maximum number of events to return. Provide `-1` to return all
+              available logs.
+        - name: name
+          description: Deployment build ID.
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-              description: Deployment build ID.
-              example: bld_cotnkcr76
-        since:
+            type: string
+            example: bld_cotnkcr76
+            description: Deployment build ID.
+        - name: since
+          description: Timestamp for when build logs should be pulled from.
+          in: query
+          required: false
           schema:
-            - type: number
-              required: false
-              description: Timestamp for when build logs should be pulled from.
-              example: 1540095775941
-        until:
+            type: number
+            example: 1540095775941
+            description: Timestamp for when build logs should be pulled from.
+        - name: until
+          description: Timestamp for when the build logs should be pulled up until.
+          in: query
+          required: false
           schema:
-            - type: number
-              required: false
-              description: Timestamp for when the build logs should be pulled up until.
-              example: 1540106318643
-        statusCode:
+            type: number
+            example: 1540106318643
+            description: Timestamp for when the build logs should be pulled up until.
+        - name: statusCode
+          description: HTTP status code range to filter events by.
+          in: query
+          required: false
           schema:
-            - type: number
-              required: false
-              description: HTTP status code range to filter events by.
-              example: 5xx
-            - type: string
-              required: false
-              description: HTTP status code range to filter events by.
-              example: 5xx
-        delimiter:
+            example: 5xx
+            description: HTTP status code range to filter events by.
+            oneOf:
+              - type: number
+              - type: string
+        - name: delimiter
+          in: query
+          required: false
           schema:
-            - type: enum<number>
-              enum:
-                - 0
-                - 1
-              required: false
-              example: 1
-        builds:
+            type: number
+            enum:
+              - 0
+              - 1
+            example: 1
+        - name: builds
+          in: query
+          required: false
           schema:
-            - type: enum<number>
-              enum:
-                - 0
-                - 1
-              required: false
-              example: 1
-        teamId:
+            type: number
+            enum:
+              - 0
+              - 1
+            example: 1
+        - description: The Team identifier to perform the request on behalf of.
+          in: query
+          name: teamId
           schema:
-            - type: string
-              description: The Team identifier to perform the request on behalf of.
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-        slug:
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        - description: The Team slug to perform the request on behalf of.
+          in: query
+          name: slug
           schema:
-            - type: string
-              description: The Team slug to perform the request on behalf of.
-              example: my-team-url-slug
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: getDeploymentEvents
-        lang: go
-        source: "package main\n\nimport(\n\t\"os\"\n\t\"github.com/vercel/vercel\"\n\t\"context\"\n\t\"github.com/vercel/vercel/models/operations\"\n\t\"log\"\n)\n\nfunc main() {\n    s := vercel.New(\n        vercel.WithSecurity(os.Getenv(\"VERCEL_BEARER_TOKEN\")),\n    )\n\n    ctx := context.Background()\n    res, err := s.Deployments.GetDeploymentEvents(ctx, operations.GetDeploymentEventsRequest{\n        IDOrURL: \"dpl_5WJWYSyB7BpgTj3EuwF37WMRBXBtPQ2iTMJHJBJyRfd\",\n        Direction: operations.DirectionBackward.ToPointer(),\n        Follow: vercel.Float64(1),\n        Limit: vercel.Float64(100),\n        Name: vercel.String(\"bld_cotnkcr76\"),\n        Since: vercel.Float64(1540095775941),\n        Until: vercel.Float64(1540106318643),\n        StatusCode: vercel.Pointer(operations.CreateStatusCodeStr(\n            \"5xx\",\n        )),\n        Delimiter: vercel.Float64(1),\n        Builds: vercel.Float64(1),\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res != nil {\n        // handle response\n    }\n}"
-      - label: getDeploymentEvents
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.deployments.getDeploymentEvents({
-              idOrUrl: "dpl_5WJWYSyB7BpgTj3EuwF37WMRBXBtPQ2iTMJHJBJyRfd",
-              direction: "backward",
-              follow: 1,
-              limit: 100,
-              name: "bld_cotnkcr76",
-              since: 1540095775941,
-              until: 1540106318643,
-              statusCode: "5xx",
-              delimiter: 1,
-              builds: 1,
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-              slug: "my-team-url-slug",
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: array
-            items:
-              allOf:
-                - oneOf:
+            type: string
+            example: my-team-url-slug
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  oneOf:
                     - properties:
                         type:
                           type: string
@@ -197,8 +199,8 @@ paths:
                                 readyState:
                                   type: string
                               required:
-                                - type
                                 - name
+                                - type
                               type: object
                             text:
                               type: string
@@ -270,24 +272,24 @@ paths:
                                 wafRuleId:
                                   type: string
                               required:
-                                - timestamp
-                                - method
                                 - host
+                                - method
                                 - path
-                                - userAgent
                                 - referer
                                 - region
+                                - timestamp
+                                - userAgent
                               type: object
                           required:
+                            - date
                             - deploymentId
                             - id
-                            - date
                             - serial
                           type: object
                       required:
-                        - type
                         - created
                         - payload
+                        - type
                       type: object
                     - properties:
                         created:
@@ -313,8 +315,8 @@ paths:
                             readyState:
                               type: string
                           required:
-                            - type
                             - name
+                            - type
                           type: object
                         serial:
                           type: string
@@ -350,77 +352,147 @@ paths:
                         - type
                       type: object
                   nullable: true
-          - type: 'null'
-        examples:
-          example:
-            value:
-              - type: delimiter
-                created: 123
-                payload:
-                  deploymentId: <string>
-                  info:
-                    type: <string>
-                    name: <string>
-                    entrypoint: <string>
-                    path: <string>
-                    step: <string>
-                    readyState: <string>
-                  text: <string>
-                  id: <string>
-                  date: 123
-                  serial: <string>
-                  created: 123
-                  statusCode: 123
-                  requestId: <string>
-                  proxy:
-                    timestamp: 123
-                    method: <string>
-                    host: <string>
-                    path: <string>
-                    statusCode: 123
-                    userAgent:
-                      - <string>
-                    referer: <string>
-                    clientIp: <string>
-                    region: <string>
-                    scheme: <string>
-                    responseByteSize: 123
-                    cacheId: <string>
-                    pathType: <string>
-                    pathTypeVariant: <string>
-                    vercelId: <string>
-                    vercelCache: MISS
-                    lambdaRegion: <string>
-                    wafAction: log
-                    wafRuleId: <string>
-        description: ''
-      application/stream+json:
-        schemaArray:
-          - type: object
-            properties:
-              type:
-                allOf:
-                  - type: string
-                    enum:
-                      - delimiter
-                      - command
-                      - stdout
-                      - stderr
-                      - exit
-                      - deployment-state
-                      - middleware
-                      - middleware-invocation
-                      - edge-function-invocation
-                      - metric
-                      - report
-                      - fatal
-              created:
-                allOf:
-                  - type: number
-              payload:
-                allOf:
+                nullable: true
+            application/stream+json:
+              schema:
+                oneOf:
                   - properties:
+                      type:
+                        type: string
+                        enum:
+                          - delimiter
+                          - command
+                          - stdout
+                          - stderr
+                          - exit
+                          - deployment-state
+                          - middleware
+                          - middleware-invocation
+                          - edge-function-invocation
+                          - metric
+                          - report
+                          - fatal
+                      created:
+                        type: number
+                      payload:
+                        properties:
+                          deploymentId:
+                            type: string
+                          info:
+                            properties:
+                              type:
+                                type: string
+                              name:
+                                type: string
+                              entrypoint:
+                                type: string
+                              path:
+                                type: string
+                              step:
+                                type: string
+                              readyState:
+                                type: string
+                            required:
+                              - name
+                              - type
+                            type: object
+                          text:
+                            type: string
+                          id:
+                            type: string
+                          date:
+                            type: number
+                          serial:
+                            type: string
+                          created:
+                            type: number
+                          statusCode:
+                            type: number
+                          requestId:
+                            type: string
+                          proxy:
+                            properties:
+                              timestamp:
+                                type: number
+                              method:
+                                type: string
+                              host:
+                                type: string
+                              path:
+                                type: string
+                              statusCode:
+                                type: number
+                              userAgent:
+                                items:
+                                  type: string
+                                type: array
+                              referer:
+                                type: string
+                              clientIp:
+                                type: string
+                              region:
+                                type: string
+                              scheme:
+                                type: string
+                              responseByteSize:
+                                type: number
+                              cacheId:
+                                type: string
+                              pathType:
+                                type: string
+                              pathTypeVariant:
+                                type: string
+                              vercelId:
+                                type: string
+                              vercelCache:
+                                type: string
+                                enum:
+                                  - MISS
+                                  - HIT
+                                  - STALE
+                                  - BYPASS
+                                  - PRERENDER
+                                  - REVALIDATED
+                              lambdaRegion:
+                                type: string
+                              wafAction:
+                                type: string
+                                enum:
+                                  - log
+                                  - challenge
+                                  - deny
+                                  - bypass
+                                  - rate_limit
+                              wafRuleId:
+                                type: string
+                            required:
+                              - host
+                              - method
+                              - path
+                              - referer
+                              - region
+                              - timestamp
+                              - userAgent
+                            type: object
+                        required:
+                          - date
+                          - deploymentId
+                          - id
+                          - serial
+                        type: object
+                    required:
+                      - created
+                      - payload
+                      - type
+                    type: object
+                  - properties:
+                      created:
+                        type: number
+                      date:
+                        type: number
                       deploymentId:
+                        type: string
+                      id:
                         type: string
                       info:
                         properties:
@@ -437,234 +509,58 @@ paths:
                           readyState:
                             type: string
                         required:
-                          - type
                           - name
+                          - type
                         type: object
-                      text:
-                        type: string
-                      id:
-                        type: string
-                      date:
-                        type: number
                       serial:
                         type: string
-                      created:
-                        type: number
-                      statusCode:
-                        type: number
-                      requestId:
+                      text:
                         type: string
-                      proxy:
-                        properties:
-                          timestamp:
-                            type: number
-                          method:
-                            type: string
-                          host:
-                            type: string
-                          path:
-                            type: string
-                          statusCode:
-                            type: number
-                          userAgent:
-                            items:
-                              type: string
-                            type: array
-                          referer:
-                            type: string
-                          clientIp:
-                            type: string
-                          region:
-                            type: string
-                          scheme:
-                            type: string
-                          responseByteSize:
-                            type: number
-                          cacheId:
-                            type: string
-                          pathType:
-                            type: string
-                          pathTypeVariant:
-                            type: string
-                          vercelId:
-                            type: string
-                          vercelCache:
-                            type: string
-                            enum:
-                              - MISS
-                              - HIT
-                              - STALE
-                              - BYPASS
-                              - PRERENDER
-                              - REVALIDATED
-                          lambdaRegion:
-                            type: string
-                          wafAction:
-                            type: string
-                            enum:
-                              - log
-                              - challenge
-                              - deny
-                              - bypass
-                              - rate_limit
-                          wafRuleId:
-                            type: string
-                        required:
-                          - timestamp
-                          - method
-                          - host
-                          - path
-                          - userAgent
-                          - referer
-                          - region
-                        type: object
-                    required:
-                      - deploymentId
-                      - id
-                      - date
-                      - serial
-                    type: object
-            requiredProperties:
-              - type
-              - created
-              - payload
-          - type: object
-            properties:
-              created:
-                allOf:
-                  - type: number
-              date:
-                allOf:
-                  - type: number
-              deploymentId:
-                allOf:
-                  - type: string
-              id:
-                allOf:
-                  - type: string
-              info:
-                allOf:
-                  - properties:
                       type:
                         type: string
-                      name:
+                        enum:
+                          - delimiter
+                          - command
+                          - stdout
+                          - stderr
+                          - exit
+                          - deployment-state
+                          - middleware
+                          - middleware-invocation
+                          - edge-function-invocation
+                          - metric
+                          - report
+                          - fatal
+                      level:
                         type: string
-                      entrypoint:
-                        type: string
-                      path:
-                        type: string
-                      step:
-                        type: string
-                      readyState:
-                        type: string
+                        enum:
+                          - error
+                          - warning
                     required:
+                      - created
+                      - date
+                      - deploymentId
+                      - id
+                      - info
+                      - serial
                       - type
-                      - name
                     type: object
-              serial:
-                allOf:
-                  - type: string
-              text:
-                allOf:
-                  - type: string
-              type:
-                allOf:
-                  - type: string
-                    enum:
-                      - delimiter
-                      - command
-                      - stdout
-                      - stderr
-                      - exit
-                      - deployment-state
-                      - middleware
-                      - middleware-invocation
-                      - edge-function-invocation
-                      - metric
-                      - report
-                      - fatal
-              level:
-                allOf:
-                  - type: string
-                    enum:
-                      - error
-                      - warning
-            requiredProperties:
-              - created
-              - date
-              - deploymentId
-              - id
-              - info
-              - serial
-              - type
-        examples:
-          example:
-            value:
-              type: delimiter
-              created: 123
-              payload:
-                deploymentId: <string>
-                info:
-                  type: <string>
-                  name: <string>
-                  entrypoint: <string>
-                  path: <string>
-                  step: <string>
-                  readyState: <string>
-                text: <string>
-                id: <string>
-                date: 123
-                serial: <string>
-                created: 123
-                statusCode: 123
-                requestId: <string>
-                proxy:
-                  timestamp: 123
-                  method: <string>
-                  host: <string>
-                  path: <string>
-                  statusCode: 123
-                  userAgent:
-                    - <string>
-                  referer: <string>
-                  clientIp: <string>
-                  region: <string>
-                  scheme: <string>
-                  responseByteSize: 123
-                  cacheId: <string>
-                  pathType: <string>
-                  pathTypeVariant: <string>
-                  vercelId: <string>
-                  vercelCache: MISS
-                  lambdaRegion: <string>
-                  wafAction: log
-                  wafRuleId: <string>
-        description: ''
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: One of the provided values in the request query is invalid.
-        examples: {}
-        description: One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-    '500': {}
-  deprecated: false
-  type: path
+                nullable: true
+        '400':
+          description: One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+        '500':
+          description: ''
+      security:
+        - bearerToken: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

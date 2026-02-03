@@ -8,7 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > APM > Tracing Guides > Ingestion volume control with APM Distributed
   Tracing
-source_url: https://docs.datadoghq.com/guide/trace_ingestion_volume_control/index.html
 ---
 
 # Ingestion volume control with APM Distributed Tracing

@@ -1,14 +1,18 @@
 # Source: https://docs.coollabs.io/coolify/v3/architecture.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.coollabs.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # null
 
 Coolify consist of :
 
-*   [User Interface](#ui)
-*   [API](#api)
-*   [HTTP/TCP Proxy](#http-proxy)
-*   [TCP Proxies](#tcp-proxies) for databases.
-*   [SSL certificates](#ssl-certs) are handled by Let's Encrypt.
+* [User Interface](#ui)
+* [API](#api)
+* [HTTP/TCP Proxy](#http-proxy)
+* [TCP Proxies](#tcp-proxies) for databases.
+* [SSL certificates](#ssl-certs) are handled by Let's Encrypt.
 
 ## User Interface
 

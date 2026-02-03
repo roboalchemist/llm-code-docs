@@ -1,5 +1,9 @@
 # Source: https://docs.argil.ai/api-reference/endpoint/subtitles.export.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.argil.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Export subtitles for a video project
 
 > Exports subtitles for a video project in VTT or ASS format. The subtitles can optionally include styling information.
@@ -103,7 +107,3 @@ components:
       description: API key to be included in the x-api-key header
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.argil.ai/llms.txt

@@ -203,24 +203,25 @@ You can deploy instances of some Render services *free of charge*:
 - Render Postgres databases
 - Render Key Value instances
 
-*Free instances have important limitations, and you _should not_ use them for production applications.* However, they're perfect for testing out a new technology, working on a hobby project, or previewing Render's developer experience!
+*Free instances have important limitations. Do not use them for production applications.* However, they're perfect for testing out a new technology, working on a hobby project, or previewing Render's developer experience.
 
 You can also deploy [static sites](static-sites) on Render for free.
 
-> Web services and static sites count against your monthly included allotments of outbound bandwidth and pipeline minutes. View your usage in the [Render Dashboard](https://dashboard.render.com/billing#included-usage).
+> Web services and static sites count against your monthly included amounts of outbound bandwidth and pipeline minutes. View your usage in the [Render Dashboard](https://dashboard.render.com/billing#included-usage).
 
 ## Create a Free instance
 
-> For a more complete walkthrough, see [*Your First Render Deploy*](your-first-deploy).
+> For a more complete deployment walkthrough, see [*Your First Render Deploy*](your-first-deploy).
 
 1. [Sign up for Render](https://dashboard.render.com/register) if you haven't yet.
 2. In the [Render Dashboard][dboard], click *New*:
 
    [img]
 
-3. Select *Static Site*, *Web Service*, *Postgres*, or *Key Value*. Free options aren't available for other service types.
+3. Select *Static Site*, *Web Service*, *Postgres*, or *Key Value*.
+    - Other service types don't support Free instances.
 
-4. During the service creation flow, you choose an *instance type* to run your service on (unless it's a static site). Choose *Free*:
+4. During the service creation flow, you choose an *instance type* for your service (unless it's a static site). Choose *Free*:
 
    [img]
 
@@ -240,13 +241,27 @@ Free web services support many (but not all) features available to web services 
 - [Log streams](log-streams)
 - [Rollbacks](rollbacks) (only to the two most recent previous deploys)
 
-*The limitations below are specific to web services on the Free instance type.* To avoid these limitations, you can create a web service on any paid instance type.
+*Most limitations below are specific to web services on the Free instance type.* To avoid these limitations, you can upgrade your service to any paid instance type.
 
 ### Spinning down on idle
 
 Render *spins down* a Free web service that goes 15 minutes without receiving inbound traffic. Render spins the service back _up_ whenever it next receives a request to process.
 
+Whenever a service spins down, any changes to its local filesystem are lost (see [Local files lost on redeploy](#local-files-lost-on-redeploy)).
+
 Spinning up a service takes up to a minute, which causes a noticeable delay for incoming requests until the service is back up and running. For example, a browser page load will hang temporarily.
+
+Render automatically displays a loading page to connecting browsers while a Free web service is spinning up.
+
+### Local files lost on redeploy
+
+Like all Render services, Free web services have an [ephemeral filesystem](deploys#ephemeral-filesystem). This means that any changes to your web service's filesystem (uploaded images, local SQLite databases, etc.) are _lost_ every time the service redeploys, restarts, or [spins down](#spinning-down-on-idle).
+
+*For long-term data storage:*
+
+- _Paid_ services can preserve local filesystem changes by attaching a [persistent disk](disks), but Free web services _cannot_.
+- Paid _and_ Free services can persist relational data in a [Render Postgres](postgresql-creating-connecting) database.
+    - Note that Free Render Postgres databases [expire 30 days after creation](#30-day-limit).
 
 ### Monthly usage limits
 
@@ -260,12 +275,12 @@ Render grants *750 Free instance hours* to each workspace per calendar month:
 
 #### Bandwidth and build pipeline
 
-Free web services count against your monthly included allotments of [outbound bandwidth](outbound-bandwidth) and [build pipeline minutes](build-pipeline#pipeline-minutes).
+Free web services count against your monthly included amounts of [outbound bandwidth](outbound-bandwidth) and [build pipeline minutes](build-pipeline#pipeline-minutes).
 
-- *If you consume all of your outbound bandwidth during a given month,* Render bills you for a supplementary allotment.
+- *If you consume all of your outbound bandwidth during a given month,* Render bills you for a supplementary amount.
   - If you haven't added a payment method, Render instead suspends all of your Free services for the remainder of the month.
-- *If you consume all of your build pipeline minutes during a given month,* Render bills you for a supplementary allotment (unless you've reached your [spend limit](build-pipeline#setting-a-spend-limit).
-  - If you haven't added a payment method or you reach your spend limit, Render instead disables all new builds for your services for the remainder of the month.
+- *If you consume all of your build pipeline minutes during a given month,* Render bills you for a supplementary amount (unless you've reached your [spend limit](build-pipeline#setting-a-spend-limit).
+  - If you haven't added a payment method or you reach your spend limit, Render instead disables all new builds for your workspace for the remainder of the month.
   - In this case, your services remain active using their existing deploys.
 
 #### Tracking usage
@@ -347,27 +362,27 @@ Render notifies you via email when you’re approaching a Free database expirati
 
 > [Learn more about Render Key Value.](key-value)
 
-*The limitations below are specific to Render Key Value instances on the Free instance type.* To avoid these limits, you can create a Render Key Value instance on any paid instance type.
+*The limitations below are specific to Render Key Value instances on the Free instance type.* To avoid these limits, you can upgrade your instance to any paid instance type.
 
 ### Single-instance limit
 
 Only _one_ Free Key Value instance can be active for any given workspace.
 
-### Ephemeral storage
+### In-memory only
 
-Free Key Value instances are _not_ backed by a persistent disk. Whenever an instance restarts, all of its data is lost.
+Unlike paid instances, Free Key Value instances do not continually persist their state to disk. This means that whenever an instance restarts, all of its data is lost.
 
 ### Other limitations
 
 - Render might perform maintenance on a Free Render Key Value instance at any time. Your instance is temporarily unavailable during maintenance.
-- Render might restart a Free Render Key Value instance at any time (thereby deleting its data).
-- If you upgrade a Free Render Key Value instance to a paid instance type, all of its data is lost.
+- Render might restart a Free Render Key Value instance at any time (thereby [deleting its data](#in-memory-only)).
+- If you upgrade a Free Render Key Value instance to a paid instance type, its data is lost during the upgrade process.
 
 ## Static sites
 
 > [Learn more about static sites on Render.](static-sites)
 
-Static sites are free to deploy on Render. As with web services, they count against your monthly included allotments of outbound bandwidth and pipeline minutes. View your usage in the [Render Dashboard](https://dashboard.render.com/billing#included-usage).
+Static sites are free to deploy on Render. As with web services, they count against your monthly included amounts of outbound bandwidth and pipeline minutes. View your usage in the [Render Dashboard](https://dashboard.render.com/billing#included-usage).
 
 
 # Professional Features
@@ -441,9 +456,122 @@ You can upgrade any *Hobby* workspace to a *Professional* workspace from its *Bi
 - Increased retention of historical [service metrics](service-metrics) and [logs](logging)
 
 
-# Using Render with LLM-Powered Tools
+# Using Render with Coding Agents
 
-Render supports a variety of capabilities to help you manage your infrastructure, diagnose issues, and understand the platform with the help of LLMs.
+Render integrates with popular coding agents to help you manage your infrastructure, diagnose issues, and learn about the platform.
+
+## Agent skills
+
+Render's official *skills* enable agents to deploy, debug, and monitor your apps. Use skills with popular tools like Codex, Claude Code, and Cursor.
+
+### Install
+
+**Codex installation**
+
+##### Codex installation
+
+Render provides a curated skill in the Codex skill installer. Run the following in Codex:
+
+```codex
+$skill-installer render-deploy
+```
+
+**Quick-install script**
+
+##### Quick-install script
+
+Run the following script to automatically detect popular supported tools (Claude Code, Cursor, etc.) on your system and install Render's official skills for each:
+
+```shell
+curl -fsSL https://raw.githubusercontent.com/render-oss/skills/main/scripts/install.sh | bash
+```
+
+The output looks like this:
+
+[img]
+
+**Manual installation**
+
+##### Manual installation
+
+1. Clone the [Render Skills GitHub repository](https://github.com/render-oss/skills).
+2. From the repo's `skills/` directory, copy each skill directory into your tool's skills directory.
+
+    Default skills directories for popular tools are listed below:
+
+| Tool | Skills Directory |
+|--------|--------|
+| Claude Code | `~/.claude/skills/<skill-name>/` |
+| Codex | `~/.codex/skills/<skill-name>/` |
+| Cursor | `~/.cursor/skills/<skill-name>/` |
+| OpenCode | `~/.config/opencode/skills/<skill-name>/` |
+
+> Depending on your tool, you might need to restart it after installing.
+
+After installing, you can invoke the skill using your tool's syntax (usually a `/` or `$` symbol followed by the skill name). Your tool also invokes the skill automatically to fulfill relevant prompts.
+
+[img]
+
+### Supported skills
+
+| Skill | Description |
+|--------|--------|
+| **render-deploy** | Deploy applications using IaC with Render Blueprints or directly via MCP. Includes automatic codebase analysis and environment variable management. |
+| **render-debug** | Debug deployment issues using logs, metrics, and database queries. Detects common issues like missing environment variables, port binding errors, and resource constraints. |
+| **render-monitor** | Monitor service health, performance metrics, logs, and resource usage in real-time. |
+
+### Example prompts
+
+Ask your tool to perform any of these tasks:
+
+<blockquote>Deploy my application to Render</blockquote>
+
+<blockquote>Debug my Render deployment</blockquote>
+
+<blockquote>Is my Render service healthy?</blockquote>
+
+Your tool will invoke the appropriate set of skills and guide you through the process.
+
+## Jules integration
+
+[Jules by Google Labs](https://jules.google/?utm_source=render) provides a managed integration with Render. Whenever you open a pull request in your service's repo, Jules can detect failures in your service's preview build and automatically push fixes to address them.
+
+#### Prerequisites
+
+- Your Render service's repo must be hosted on GitHub.
+- Jules must have access to your service's repo.
+- [Pull request previews](service-previews#pull-request-previews-git-backed) must be enabled for your service.
+    - These are the preview builds that Jules uses to detect and address issues.
+
+#### Setup
+
+1. Go to [dashboard.render.com/jules](https://dashboard.render.com/jules).
+
+    This opens the API Keys section of your user settings with a Jules-specific section:
+
+    [img]
+
+2. Next to the **Jules by Google Labs** section, click **+ Create API Key**.
+
+    A creation dialog appears.
+
+3. Review and accept the terms for Render's Jules integration, then click **Create API Key**.
+
+4. Copy the created API key to your clipboard.
+
+5. Open your [Jules integrations page](https://jules.google.com/settings/integrations?utm_source=render):
+
+    [img]
+
+6. Under the **Render** integration, paste the API key you copied and submit it.
+
+You're all set! Whenever a pull request preview fails for your repo, Jules will automatically analyze its logs to identify the root cause and push a fix to address it.
+
+You can also **enable MCP features** to use Render's official [MCP server](mcp-server) with the Jules agent:
+
+[img]
+
+You can disconnect the integration at any time by deleting the API key from the Jules integrations page.
 
 ## Render MCP server
 
@@ -458,43 +586,6 @@ The MCP server provides tools for actions such as:
 - Analyzing metrics and logs
 
 It's especially useful for helping you identify and resolve issues with service deploys.
-
-## Jules integration
-
-[Jules by Google Labs](https://jules.google/?utm_source=render) is an autonomous coding agent that provides a managed integration with Render. Whenever you open a pull request in your service's repo, Jules can detect failures in your service's preview build and automatically push fixes to address them.
-
-### Prerequisites
-
-- Your Render service's repo must be hosted on GitHub.
-- Jules must have access to your service's repo.
-- [Pull request previews](service-previews#pull-request-previews-git-backed) must be enabled for your service.
-    - These are the preview builds that Jules uses to detect and address issues.
-
-### Setup
-
-1. Go to [dashboard.render.com/jules](https://dashboard.render.com/jules).
-
-    This opens the API Keys section of your user settings with a Jules-specific section:
-
-    [img]
-
-2. Next to the *Jules by Google Labs* section, click *+ Create API Key*.
-
-    A creation dialog appears.
-
-3. Review and accept the terms for Render's Jules integration, then click *Create API Key*.
-
-4. Copy the created API key to your clipboard.
-
-5. Open your [Jules integrations page](https://jules.google.com/settings/integrations?utm_source=render):
-
-    [img]
-
-6. Under the *Render* integration, paste the API key you copied and submit it.
-
-You're all set! Whenever a pull request preview fails for your repo, Jules will automatically analyze its logs to identify the root cause and push a fix to address it.
-
-You can disconnect the integration at any time by deleting the API key from the Jules integrations page.
 
 ## Documentation features
 
@@ -533,7 +624,7 @@ https://render.com/docs/llms-full.txt
 
 > **This feature is experimental.**
 >
-> Support for this documentation-specific MCP server might be discontinued at any time in the future.
+> Render might discontinue support for this documentation-specific MCP server at any time in the future.
 
 Render's primary [MCP server](#render-mcp-server) does not yet provide tools for querying the Render documentation.
 
@@ -700,7 +791,9 @@ You can deploy static websites (React, Next.js, etc.) to Render in just a few cl
 
 *Static sites are fast and free to deploy.* After you link your site's Git repo, Render automatically updates your site with every push to your specified branch. Each site receives a unique `onrender.com` URL, and you can add your own [custom domains](custom-domains).
 
-> *Deploying a _dynamic_ site, such as a Rails server?* Instead create a [web service](web-services).
+> *Deploying a _dynamic_ site, such as a Rails app?*
+>
+> Create a [web service](web-services) instead of a static site.
 
 Static sites count against your workspace's monthly included amounts of [outbound bandwidth](outbound-bandwidth) and [pipeline minutes](build-pipeline). You can track your usage in the [Render Dashboard](https://dashboard.render.com/billing#included-usage).
 
@@ -1654,7 +1747,7 @@ See the table to learn how to set your language version:
 
 | Language | Default Version* | How to Set a Version |
 |--------|--------|--------|
-| [*Node.js*](node-version) | `22.16.0` | Set the `NODE_VERSION` [environment variable](configure-environment-variables#setting-environment-variables), or add a `.node-version` file to your project root containing only the version number: `21.1.0` For additional options, see [Setting Your Node.js Version](node-version). |
+| [*Node.js*](node-version) | `22.22.0` | Set the `NODE_VERSION` [environment variable](configure-environment-variables#setting-environment-variables), or add a `.node-version` file to your project root containing only the version number: `21.1.0` For additional options, see [Setting Your Node.js Version](node-version). |
 | [**Bun**](bun-version) | `1.3.4` | Set the `BUN_VERSION` [environment variable](configure-environment-variables#setting-environment-variables): `1.1.0` |
 | [**Python**](python-version) | `3.13.4` | Set the `PYTHON_VERSION` [environment variable](configure-environment-variables#setting-environment-variables), or add a `.python-version` file to your project root containing only the version number: `3.12.11` For details, see [Setting Your Python Version](python-version). You can also set versions for the following package management tools: - [uv](uv-version) - [Poetry](poetry-version) |
 | [**Ruby**](ruby-version) | `3.4.4` | Set [the `ruby` directive](https://bundler.io/guides/gemfile_ruby.html) in your `Gemfile`, or add a `.ruby-version` file to your project root containing only the version number: `3.1.4` For details, see [Setting Your Ruby Version](ruby-version). |
@@ -2322,13 +2415,15 @@ Render can build your service's Docker image based on the Dockerfile in your pro
 
    [img]
 
-> *To run multiple commands, provide them to `/bin/bash -c`.*
+> *To run multiple commands, provide them to `/bin/sh -c`.*
 >
 >    For example, here's a *Docker Command* for a Django service that runs database migrations and then starts the web server:
 >
 >    ```
->    /bin/bash -c python manage.py migrate && gunicorn myapp.wsgi:application --bind 0.0.0.0:10000
+>    /bin/sh -c python manage.py migrate && gunicorn myapp.wsgi:application --bind 0.0.0.0:10000
 >    ```
+>
+>    If your Docker image includes Bash, you can use `/bin/bash -c` instead of `/bin/sh -c`.
 
    Note that you can't customize the command that Render uses to _build_ your image.
 
@@ -7860,13 +7955,13 @@ Create a new service by clicking the *+ New* button in the top-right corner of t
 
 Select a service type from the list and complete the creation flow to deploy your code.
 
-> *Deploying for the first time?* See our [quickstarts](#quickstarts).
+> *Deploying for the first time?* See [Your First Render Deploy](your-first-deploy).
 
 ## Create a workspace
 
 See [Workspaces, Members, and Roles](team-members).
 
-## Navigating the dashboard
+## Navigate the dashboard
 
 Open workspace-wide search with `⌘+K` / `CTRL+K`, then use the arrow keys to jump directly to any resource:
 
@@ -7897,21 +7992,23 @@ From your workspace's homepage in the [Render Dashboard][dboard] click *Billing*
   - [Outbound bandwidth](outbound-bandwidth)
   - [Build pipeline minutes](build-pipeline#pipeline-minutes)
 
-## Set your display theme
+## Customize appearance
+
+### Set your display theme
 
 The Render Dashboard provides light and dark display themes, along with high-contrast variants of each.
 
-To set your display theme:
+You can also customize the log explorer's theme independently from your main dashboard theme.
 
-1. Open the account menu in the top-right corner of the [Render Dashboard][dboard].
+*To set your display theme:*
 
-   - *If you don't need to toggle high contrast,* click *Theme* to set your display theme and you're all set:
+1. Open the account menu in the top-right corner of the [Render Dashboard][dboard]:
 
      [img]
 
-     When you change your theme this way, Render keeps your current high contrast setting.
+2. *If you don't need to toggle high contrast,* click *Theme* to set your display theme and you're all set!
 
-2. *If you _do_ need to toggle high contrast,* instead click *Account settings*.
+    *If you _do_ need to toggle high contrast,* instead click *Account settings*.
 
 3. Scroll down to the *Appearance* section:
 
@@ -7921,11 +8018,31 @@ To set your display theme:
 
 5. Click *Save changes*.
 
-6. Separately, use the toggle to enable or disable *High Contrast Mode*.
+6. Separately, you can also customize the following from this section:
+    - Toggle *High Contrast Mode*.
+    - Set the [log explorer's](logging) theme independently from your dashboard theme.
 
-## Add a user image
+### Set your user avatar
 
-If you have a [Gravatar](https://gravatar.com/) account associated with your Render account's email address, your Gravatar image appears next to your email address in the top-right corner of the dashboard. Otherwise, a generic user icon is shown.
+From your [Account Settings page](https://dashboard.render.com/u/settings#profile), click *Edit* under the *Avatar* section:
+
+[img]
+
+You can upload a custom image or set a text monogram.
+
+By default, Render uses the [Gravatar](https://gravatar.com/) image for your account's email address. If you don't have a Gravatar image, Render sets a text monogram using the first letter of your email address.
+
+### Set your workspace avatar
+
+> Only workspace admins can set the workspace image.
+
+From your workspace's Settings page, click *Edit* under the *Avatar* section:
+
+[img]
+
+You can upload a custom image or set a text monogram.
+
+By default, Render sets a text monogram using the first letter of your workspace's name.
 
 
 # SSH and Shell Access
@@ -7998,8 +8115,6 @@ Support for shell access varies by service type:
 All set! You're ready to [start an SSH session](#starting-an-ssh-session).
 
 ## Starting an SSH session
-
-> **SSHing into a Docker-based service?** See [Docker-specific configuration](#docker-specific-configuration).
 
 After completing [SSH setup](#ssh-setup), you can start SSH sessions from your terminal using the [Render CLI](cli), or by running the `ssh` command directly.
 
@@ -8161,29 +8276,6 @@ Render also supports U2F/FIDO hardware authenticated keys like a YubiKey.
 
 - `ed25519-sk`
 - `ecdsa-sk`
-
-### Docker-specific configuration
-
-If your service runs a [Docker image](docker), additional configuration is required for it to accept SSH connections:
-
-1. Make sure your image includes openSSH (`openssh-server`).
-2. Make sure your Dockerfile creates a `~/.ssh` directory for the running user with the correct permissions (`chmod 0700`).
-3. If the running user is not the root user, that user must have shell access.
-
-   - If your Dockerfile references a parent image, you will need to perform these steps in a Dockerfile that you control, making use of the `USER` instruction to change back to a root user and `usermod` (or equivalent) to modify the non-root user, like so:
-
-     ```dockerfile
-     # Switch to root to modify user
-     USER root
-     RUN usermod -s /bin/bash myuser
-     # Switch back to non-root user
-     USER myuser
-     ```
-
-Additionally, some configurations are not supported:
-
-- If your Dockerfile specifies a root user, the account cannot be locked. Use `usermod --unlock root` or `passwd -u root` to unlock the account.
-- If your service uses a [persistent disk](disks), you must not mount it to the `$HOME` directory of the running user.
 
 ### Cron job connections
 
@@ -9030,7 +9122,7 @@ This page also displays the logs for recent job runs. Render retains logs for on
 ### Terminating a job
 
 - A one-off job terminates whenever its specified `startCommand` exits. Render automatically deprovisions the job's instance.
-- You can terminate a one-off job manually with the [Cancel running job](https://api-docs.render.com/reference/cancel-job) endpoint, or from the base service's **Jobs** page in the Render Dashboard.
+- You can terminate a one-off job manually with the [Cancel running job](https://api-docs.render.com/reference/cancel-job) endpoint.
 - If a one-off job hasn't exited after 30 days, Render automatically terminates it.
 - If you redeploy or suspend the base service of a running one-off job, the job is _not_ terminated. It continues running using its existing build artifact and configuration.
 
@@ -9425,15 +9517,56 @@ envVarGroups:
         value: https://api.stripe.com/v2
 ```
 
-## IDE validation
+## Validating Blueprints
 
-The Render Blueprint specification is served from [SchemaStore.org](https://www.schemastore.org/json/), which many popular IDEs use to provide live validation and autocompletion for JSON and YAML files.
+You can validate the structure of your `render.yaml` file directly from your IDE. Additionally, the Render CLI and API both provide Blueprint validation capabilities for programmatic use.
 
-For VS Code, install the [YAML extension by Red Hat](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml) to enable validation of `render.yaml` files:
+**IDE**
+
+#### IDE validation
+
+The Render Blueprint specification is served from [SchemaStore.org](https://www.schemastore.org/), which many popular IDEs use to provide live validation and autocompletion for JSON and YAML files.
+
+For VS Code / Cursor, install the [YAML extension by Red Hat](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml) to enable validation of `render.yaml` files:
 
 [img]
 
-If your IDE _doesn't_ integrate with SchemaStore.org, the Blueprint specification is also hosted at `https://render.com/schema/render.yaml.json` in JSON Schema format. Consult your IDE's documentation to learn how to use this schema for validation.
+If your IDE _doesn't_ integrate with SchemaStore.org, the Blueprint specification is also hosted in JSON Schema format at the following URL:
+
+```
+https://render.com/schema/render.yaml.json
+```
+
+Consult your IDE's documentation to learn how to use this schema for validation.
+
+**Render CLI**
+
+#### Render CLI
+
+> **Requires v2.7.0 or later of the Render CLI.**
+>
+> See [upgrade instructions](cli#1-install-or-upgrade).
+
+Validate your `render.yaml` file with the following Render CLI command:
+
+```shell{outputLines:2-4}
+render blueprints validate render.yaml
+
+services[0].branch (line 19, column 5): branch prod could not be found
+Error: /Users/example/my-project/render.yaml has validation errors
+```
+
+This command exits with a non-zero status if the file fails validation.
+
+**Render API**
+
+#### Render API
+
+> **Get started with the [Render API](api).**
+
+Validate your `render.yaml` file with the Render API's [Validate Blueprint endpoint.](https://api-docs.render.com/reference/validate-blueprint)
+
+The `valid` field in the response body is `true` if the file passes validation and `false` if it fails. The response code is `200` in either case.
 
 ## Root-level fields
 
@@ -9534,6 +9667,8 @@ disk:
 ```
 
 You can modify the `name` and `mountPath` of an existing disk. You can _increase_ the `sizeGB` of an existing disk, but you can't reduce it.
+
+The `name` field can be any string value, including simply `disk`. This value is not currently displayed in the Render Dashboard.
 
 ### Static sites
 
@@ -11098,6 +11233,23 @@ After you save your changes, Render metrics start to appear in the **Metrics** t
 
 [img]
 
+### Groundcover
+
+Obtain both your Groundcover **Endpoint** and **API key** with the following steps:
+
+1. From your Groundcover dashboard, select **Settings > Access > Ingestion Keys** in the sidebar.
+2. Click **Create key**.
+3. For **Key type**, select **Third Party**.
+
+> Each ingestion key should be dedicated to a single data source for better security and manageability.
+
+4. Add a descriptive name (e.g., "Render Metrics Integration").
+5. Click **Create**.
+6. Copy your **Ingestion key** and provide it as your **API key** in the Render Dashboard.
+7. Copy your **Managed OpenTelemetry endpoint** URL and provide it as your **Endpoint** in the Render Dashboard.
+
+For more details, see the [Groundcover documentation](https://docs.groundcover.com/use-groundcover/remote-access-and-apis/ingestion-keys#creating-an-ingestion-key).
+
 ### Other providers (custom)
 
 > Consult this section only if your observability provider isn't listed above.
@@ -11305,20 +11457,6 @@ Log lines in the explorer display the following information:
 | *Instance* | The identifier for the service instance that generated the log, surrounded by square brackets. Helpful for filtering logs for a [scaled service](scaling), or for pinpointing an instance swap during a deploy. Click this value to add it as a search filter. [HTTP request logs](#http-request-logs) are aggregated at the service level (not the individual instance level), so they do not display this value. |
 | *Message* | The logged message. [HTTP request logs](#http-request-logs) instead display the details for the corresponding HTTP request, such as: - HTTP method - Status code - Requested URL |
 
-### Viewing line details
-
-Click a log line to open its details pane:
-
-[img]
-
-From this pane, you can:
-
-| Action | How to do it |
-| *Jump to the line's original position in the log explorer* | Click the "target" icon at the top of the pane. This icon is displayed only if log results are currently narrowed by a search string and/or filters. |
-| *Copy the line's unique URL* | Open the *•••* menu at the top of the pane and click *Copy log URL*. You can share this URL with other workspace members to help you collaborate on debugging. |
-| *Open a [Dashboard shell](ssh) session* | Open the *•••* menu at the top of the pane and click *SSH into instance*. Note that you can't SSH into an instance that is no longer running. |
-| *Add one of the line's details (instance ID, log level, etc.) as a filter* | Open the *•••* menu next to the corresponding value and click *Include in query*. |
-
 ## Log filters
 
 When searching with the log explorer, you can filter results by the following (in addition to searching for an arbitrary string):
@@ -11365,7 +11503,7 @@ The log explorer supports these keyboard shortcuts:
 | Jump to top | `Home` |
 | Jump to bottom | `End` |
 | Copy all currently displayed logs | `CMD+Shift+C` (macOS) `CTRL+Shift+C` (Windows/Linux) |
-| Clear logs (live tail view only) | `CMD+Shift+L` (macOS) `CTRL+Shift+L` (Windows/Linux) |
+| Clear logs (live tail view only) | `Shift+L` |
 
 ## HTTP request logs
 
@@ -11403,7 +11541,7 @@ By tracing each phase of the request lifecycle with one consistent ID, you can m
 
 ## Logs for an individual deploy or job
 
-View the logs for an individual deploy of your service from the service's *Events* page. Click the word *Deploy* in a timeline entry to open the log viewer:
+View the logs for an individual deploy of your service from the service's *Events* page. Click the word *Deploy* in a timeline entry to open the log explorer:
 
 [img]
 
@@ -11412,6 +11550,14 @@ View the logs for an individual deploy of your service from the service's *Event
 [img]
 
 Similarly, you can view logs for the execution of a [one-off job](one-off-jobs) from the associated service's *Jobs* page.
+
+## Explorer theme
+
+The log explorer supports both light and dark display themes. It defaults to matching the theme that you [set for the Render Dashboard](render-dashboard#set-your-display-theme).
+
+You can independently set the explorer's theme from the *Appearance* section of your [User Settings page](https://dashboard.render.com/u/settings#appearance):
+
+[img]
 
 ## Log limits
 
@@ -11620,6 +11766,7 @@ Among many other capabilities, the CLI supports:
 - Triggering service deploys, restarts, and one-off jobs
 - Opening a psql session to your database
 - Viewing and filtering live service logs
+- Validating `render.yaml` files for [Render Blueprints](infrastructure-as-code)
 
 The CLI also supports [non-interactive use](#non-interactive-mode) in scripts and CI/CD.
 
@@ -11627,7 +11774,9 @@ The CLI also supports [non-interactive use](#non-interactive-mode) in scripts an
 
 ## Setup
 
-### 1. Install
+### 1. Install or Upgrade
+
+Use any of the following methods to install the Render CLI or upgrade to the latest version:
 
 **Homebrew**
 
@@ -11709,6 +11858,7 @@ You're ready to go!
 | `deploys create`<br/>`[SERVICE_ID]` | Triggers a deploy for the specified service. If you don't provide a service ID in interactive mode, the CLI prompts you to select a service. In [non-interactive mode](#non-interactive-mode), helpful options include: - `--wait` to block until the deploy completes (a failed deploy exits with a non-zero status) - `--commit [SHA]` to deploy a specific commit (Git-backed services only) - `--image [URL]` to deploy a specific Docker image tag or digest (image-backed services only) |
 | `psql`<br/>`[DATABASE_ID]` | Opens a psql session to the specified PostgreSQL database. If you don't provide a database ID in interactive mode, the CLI prompts you to select a database. |
 | `ssh`<br/>`[SERVICE_ID]` | Opens an SSH session to a running instance of the specified service. If you don't provide a service ID in interactive mode, the CLI prompts you to select a service. |
+| `blueprints validate`<br/>`[BLUEPRINT_FILE]` | Validates the structure of the specified `render.yaml` file for use with [Render Blueprints](infrastructure-as-code). Exits with a non-zero status if the file fails validation. If you don't provide a file path, the CLI defaults to `./render.yaml`. |
 
 ## Non-interactive mode
 
@@ -11799,7 +11949,11 @@ You can change this file path by setting the `RENDER_CLI_CONFIG_PATH` environmen
 
 For security, CLI tokens periodically expire. If you don't use the Render CLI for a while, you might need to re-authenticate with `render login`.
 
-View a list of your active CLI tokens from your [Account Settings page](https://dashboard.render.com/u/settings#render-cli-tokens) in the Render Dashboard. You can manually revoke a CLI token that you no longer need or that might be compromised. Expired and revoked tokens tokens do not appear in the list.
+View a list of your active CLI tokens from your [Account Settings page](https://dashboard.render.com/u/settings#render-cli-tokens) in the Render Dashboard. You can manually revoke a CLI token that you no longer need or that might be compromised. Expired and revoked tokens do not appear in the list.
+
+## Release history
+
+
 
 
 # Render MCP Server
@@ -11866,7 +12020,7 @@ Select the tab for your app:
 
 Add the following configuration to `~/.cursor/mcp.json`:
 
-```json{3-8}
+```json:~/cursor/mcp.json{3-8}
 {
   "mcpServers": {
     "render": {
@@ -11926,6 +12080,24 @@ Add the configuration below to your Claude Desktop MCP settings. By default, thi
 Replace `<YOUR_API_KEY>` with your [API key](#1-create-an-api-key).
 
 For more details, see the [Claude Desktop MCP documentation](https://modelcontextprotocol.io/quickstart/user).
+
+**Jules**
+
+#### Jules setup
+
+1. Go to [dashboard.render.com/jules](https://dashboard.render.com/jules) and create a Jules API key:
+
+    [img]
+
+2. Open your [Jules integration settings](https://jules.google.com/settings/integrations).
+
+3. Under **Render**, paste your Jules API key and save the changes.
+
+4. Confirm that **Enable MCP features** is checked:
+
+    [img]
+
+Render's Jules integration can also monitor your service's pull requests and automatically push fixes to address issues. [Learn more.](llm-support#jules-integration)
 
 **Windsurf**
 
@@ -12013,12 +12185,12 @@ The Render MCP server provides a "[tool](https://modelcontextprotocol.io/docs/co
 | Resource Type | Supported Actions |
 |--------|--------|
 | **Workspaces** | - List all workspaces you have access to - Set the current workspace - Fetch details of the currently selected workspace |
-| **Services** | - Create a new web service or static site - Other service types are not yet supported. - List all services in the current workspace - Retrieve details about a specific service - Update all environment variables for a service |
+| **Services** | - Create the following service types: - [Web services](web-services) - [Static sites](static-sites) - [Cron jobs](cronjobs) - [Render Postgres](postgresql) - [Render Key Value](key-value) - Other service types are not yet supported. - List all services in the current workspace - Retrieve details about a specific service - Update all environment variables for a service |
 | **Deploys** | - List the deploy history for a service - Get details about a specific deploy |
 | **Logs** | - List logs matching provided filters - List all values for a given log label |
 | **Metrics** | - Fetch performance metrics for services and datastores, including: - CPU / memory usage - Instance count - Datastore connection counts - Web service response counts, segmentable by status code - Web service response times (requires a **Professional** workspace or higher) - Outbound bandwidth usage |
 | **Render Postgres** | - Create a new database - List all databases in the current workspace - Get details about a specific database - Run a read-only SQL query against a specific database |
-| **Render Key Value** | - List all Key Value instances in your Render account - Get details about a specific Key Value instance - Create a new Key Value instance |
+| **Render Key Value** | - Create a new Key Value instance - List all Key Value instances in your Render account - Get details about a specific Key Value instance |
 
 ## Running locally
 
@@ -12157,16 +12329,15 @@ Note the following additional limitations:
 
   - [Web services](web-services)
   - [Static sites](static-sites)
+  - [Cron jobs](cronjobs)
   - [Render Postgres databases](postgresql)
   - [Render Key Value instances](key-value)
 
-  Other service types (private services, background workers, and cron jobs) are not yet supported.
-
-- The MCP server does not support creating [free instances](free).
+  Other service types are not yet supported.
 
 - The MCP server does not support all configuration options when creating services.
 
-  - For example, you cannot create image-backed services or set up IP allowlists. If there are options you'd like to see supported, please submit an issue on the MCP server's [GitHub repository](https://github.com/render-oss/render-mcp-server/issues).
+  - For example, you cannot create [image-backed services](deploying-an-image) or set up [IP allowlists](inbound-ip-rules). If there are options you'd like to see supported, please submit an issue on the MCP server's [GitHub repository](https://github.com/render-oss/render-mcp-server/issues).
 
 - The MCP server does not support modifying or deleting existing Render resources, with one exception:
 
@@ -12558,14 +12729,17 @@ Admins can reassign member roles from the *Workspace Settings* page in the [Rend
 
 # Login Settings
 
-You can log in to Render with any of the following account providers:
+Render integrates with multiple login providers and helps you enforce secure login requirements for your workspace.
 
-- Google
-- GitHub
-- GitLab
-- Bitbucket
+## Supported login methods
 
-You can also log in via email and password.
+- Any of the following account providers:
+  - Google
+  - GitHub
+  - GitLab
+  - Bitbucket
+- Email and password
+- [SAML SSO](saml-sso) (Enterprise organizations only)
 
 ## Managing login methods
 
@@ -12581,27 +12755,25 @@ Here, you can:
   - Render uses these credentials to access your repositories for [deploys](deploys).
 - Toggle two-factor authentication (2FA)
 
-> *Rules for account connections:*
->
-> - If you connect GitHub for both login and deployment, you _must_ use the same GitHub account for both.
->   - The same is true for GitLab and Bitbucket.
-> - You _can_ use a Git provider for deployment _without_ using it for login (or vice versa).
-> - Multiple Render accounts _can't_ use the same provider account to _log in_.
-> - Multiple Render accounts _can_ use the same provider account for _deployment_.
-> - You _can't_ disconnect your Google account if you belong to a workspace that enforces [Google-account-based login](#google-account-login). First, leave any such workspaces.
+### Rules for account connections
+
+- If you connect GitHub for both login and deployment, you _must_ use the same GitHub account for both.
+  - The same is true for GitLab and Bitbucket.
+- You _can_ use a Git provider for deployment _without_ using it for login (or vice versa).
+- Multiple Render accounts _can't_ use the same provider account to _log in_.
+- Multiple Render accounts _can_ use the same provider account for _deployment_.
+- You _can't_ disconnect your Google account if you belong to a workspace that enforces [Google-account-based login](#google-account-login). First, leave any such workspaces.
 
 ## Enforcing secure login
-
-> *[*SAML SSO*](saml-sso) is currently in early access for Enterprise plans.*
->
-> To request SAML SSO for your organization, please [contact us](contact).
 
 Your workspace can require its members to use any combination of the following login practices:
 
 - [Two-factor authentication (2FA)](#two-factor-authentication)
 - [Google account login](#google-account-login)
 
-Only workspace [*admins*](team-members#member-roles) can configure login enforcement features.
+Only workspace [admins](team-members#member-roles) can configure these enforcements.
+
+Enterprise organizations can also enforce secure login via [SAML SSO](saml-sso).
 
 ### Two-factor authentication
 
@@ -12619,12 +12791,14 @@ Enforce Google-account-based login from your *Workspace Settings* page:
 
 [img]
 
-If you enable this feature, your team members can't access the workspace's resources or settings if they log in using any method _besides_ their Google account (such as with a username and password). Additionally, your team members can't change their Render account's associated email address.
+*If you enable this feature:*
 
-> *As of 2024-05-01*, new [API keys](api#1-create-an-api-key) must be created while signed in via Google account to access resources of a workspace that enables this feature.
->
-> API keys created _before_ this date always have full access to workspace resources, regardless of the team member's login method at the time of creation.
+- Team members can't access the workspace's resources or settings if they log in using any method _besides_ their Google account (such as username and password).
+-  Team members can't change their Render account's associated email address.
+- Team members must sign in with the Google account that matches the invited email address.
+  - For example, a workspace invitation for `person@example.com` must be accepted by signing in with that specific Google account, not a personal Gmail address.
 
+[API keys](api#1-create-an-api-key) must be created while signed in via Google account to access resources of a workspace that enables this feature. API keys created before May 1, 2024 are not subject to this restriction.
 
 
 # Audit Logs
@@ -12778,6 +12952,22 @@ A cron job was created.
 
 A cron job was deleted.
 
+###### `UpdateAutoDeployEvent`
+
+[Auto-deploy](deploys#configuring-auto-deploys) was enabled or disabled for a service.
+
+###### `UpdateAutoDeployTriggerEvent`
+
+The [auto-deploy trigger](deploys#configuring-auto-deploys) settings (such as branch or path filters) were changed for a service.
+
+###### `CreateCustomDomainEvent`
+
+A [custom domain](custom-domains) was added to a service.
+
+###### `DeleteCustomDomainEvent`
+
+A [custom domain](custom-domains) was removed from a service.
+
 ### Datastores
 
 #### General
@@ -12922,6 +13112,10 @@ A resource (such as a service or environment group) was moved into or out of a p
 
 [Protected access](projects#protected-environments) was enabled or disabled for a project environment.
 
+###### `UpdateEnvironmentIsolatedEvent`
+
+The [isolation setting](projects#blocking-cross-environment-traffic) was changed for a project environment.
+
 ### Compliance & documents
 
 ###### `DocumentDownloadEvent`
@@ -13028,6 +13222,7 @@ A [SCIM token](saml-sso#member-management-setup-scim) was revoked for the org.
 
 | Date | Change |
 |--------|--------|
+| `2025-01-20` | Added the following workspace event types: - [`UpdateAutoDeployEvent`](#updateautodeployevent) - [`UpdateAutoDeployTriggerEvent`](#updateautodeploytriggerevent) - [`CreateCustomDomainEvent`](#createcustomdomainevent) - [`DeleteCustomDomainEvent`](#deletecustomdomainevent) - [`UpdateEnvironmentIsolatedEvent`](#updateenvironmentisolatedevent) |
 | `2025-03-13` | Added initial set of [enterprise events](#enterprise-events). |
 | `2025-03-11` | Added the following workspace event types: - [`CreateOtelIntegrationEvent`](#createotelintegrationevent) - [`DeleteOtelIntegrationEvent`](#deleteotelintegrationevent) - [`UpdateOtelIntegrationEvent`](#updateotelintegrationevent) - [`CreateWebhookEvent`](#createwebhookevent) - [`UpdateWebhookEvent`](#updatewebhookevent) - [`DeleteWebhookEvent`](#deletewebhookevent) |
 | `2024-12-18` | Added the following workspace event types: - [`DocumentDownloadEvent`](#documentdownloadevent) - [`SignNDAEvent`](#signndaevent) |
@@ -13280,7 +13475,7 @@ You're all set! With SSO enforced, all accounts managed by your IdP _must_ use S
 
 > *With SSO enforced, you can still invite guest members to individual workspaces in your org.*
 >
-> Because they can't log in via SSO, guests are restricted to the single workspace they're invited to. For details, see [Member types](enterprise-orgs#member-types).
+> Because they can't log in via SSO, guests are restricted to the single workspace they're invited to. For details, see [Member types](enterprise-orgs#member-types). Guest invitations can only be accepted by a Render account with an email address that matches the address the invitation was sent to.
 
 ## Member management setup (SCIM)
 
@@ -13753,7 +13948,7 @@ Check over the [Create AWS Credentials](#create-aws-credentials) instructions.
 2. Add a file named `.bun-version` to the root of your repo. This file contains a single line with the version to use:
 
    ```:.bun-version
-   1.3.4
+   1.3.8
    ```
 
 You can specify either a semantic version number (such as `1.3.4`) or use `latest` to always use the most recent version of Bun with every deploy.
@@ -13924,306 +14119,18 @@ const keyValueClient = new Redis({
 
 
 
-Elixir version `1.18.4` and Erlang/OTP version `27.0` are the defaults for Render services created on or after *2025-06-12*.
+Elixir version `1.18.4` and Erlang/OTP version `28.0.2` are the defaults for Render services created on or after *2025-06-12*.
 
-You can specify your service's Elixir and/or Erlang/OTP version by setting environment variables:
+You can specify different Elixir and Erlang/OTP versions by setting the following [environment variables](configure-environment-variables) for your service:
 
-## Elixir
+| Variable | Example Value |
+|--------|--------|
+| `ELIXIR_VERSION` | `1.19.5` |
+| `ERLANG_VERSION` | `28.3` |
 
-Add an environment variable called `ELIXIR_VERSION` to your service and set its value to a valid version (e.g., `1.14.5`).
-
-Supported Elixir versions are [listed below](#supported-elixir-versions).
-
-If you don't _also_ specify an Erlang/OTP version, Render automatically downloads an Erlang runtime that's compatible with your chosen Elixir version.
-
-### Supported Elixir versions
-
-*Click to show versions*
-
-- `1.19.4`
-- `1.19.3`
-- `1.19.2`
-- `1.19.1`
-- `1.19.0`
-- `1.18.4`
-- `1.18.3`
-- `1.18.2`
-- `1.18.1`
-- `1.18.0`
-- `1.17.3`
-- `1.17.2`
-- `1.17.1`
-- `1.17.0`
-- `1.16.3`
-- `1.16.2`
-- `1.16.1`
-- `1.16.0`
-- `1.15.8`
-
-## Erlang/OTP
-
-Add an environment variable called `ERLANG_VERSION` to your app and set the value to a valid version (e.g., `24.3.4`).
-
-> If you set an Erlang/OTP version, make sure it's [compatible with your Elixir version](https://hexdocs.pm/elixir/1.16.1/compatibility-and-deprecations.html#compatibility-between-elixir-and-erlang-otp)!
-
-Supported Erlang/OTP versions are [listed below](#supported-erlangotp-versions).
-
-Note that `22.2` is a less recent version than `22.2.8`, because valid versions are based on [tags in the official Erlang repo](https://github.com/erlang/otp/tags).
-
-### Supported Erlang/OTP versions
-
-*Click to show versions*
-
-- `27.3.4`
-- `27.3.3`
-- `27.3.2`
-- `27.3.1`
-- `27.3`
-- `27.2.4`
-- `27.2.3`
-- `27.2.2`
-- `27.2.1`
-- `27.2`
-- `27.1.3`
-- `27.1.2`
-- `27.1.1`
-- `27.1`
-- `27.0.1`
-- `27.0`
-- `26.2.5`
-- `26.2.4`
-- `26.2.3`
-- `26.2.2`
-- `26.2.1`
-- `26.2`
-- `26.1.2`
-- `26.1.1`
-- `26.1`
-- `26.0.2`
-- `26.0.1`
-- `26.0`
-- `25.3.2`
-- `25.3.1`
-- `25.3`
-- `25.2.3`
-- `25.2.2`
-- `25.2.1`
-- `25.2`
-- `25.1.2`
-- `25.1.1`
-- `25.1`
-- `25.0.4`
-- `25.0.3`
-- `25.0.2`
-- `25.0.1`
-- `25.0`
-- `24.3.4`
-- `24.3.3`
-- `24.3.2`
-- `24.3.1`
-- `24.3`
-- `24.2.2`
-- `24.2.1`
-- `24.2`
-- `24.1.7`
-- `24.1.6`
-- `24.1.5`
-- `24.1.4`
-- `24.1.3`
-- `24.1.2`
-- `24.1.1`
-- `24.1`
-- `24.0.6`
-- `24.0.5`
-- `24.0.4`
-- `24.0.3`
-- `24.0.2`
-- `24.0.1`
-- `24.0`
-- `23.3.4`
-- `23.3.3`
-- `23.3.2`
-- `23.3.1`
-- `23.3`
-- `23.2.7`
-- `23.2.6`
-- `23.2.5`
-- `23.2.4`
-- `23.2.3`
-- `23.2.2`
-- `23.2.1`
-- `23.2`
-- `23.1.5`
-- `23.1.4`
-- `23.1.3`
-- `23.1.2`
-- `23.1.1`
-- `23.1`
-- `23.0.4`
-- `23.0.3`
-- `23.0.2`
-- `23.0.1`
-- `23.0`
-- `22.3.4`
-- `22.3.3`
-- `22.3.2`
-- `22.3.1`
-- `22.3`
-- `22.2.8`
-- `22.2.7`
-- `22.2.6`
-- `22.2.5`
-- `22.2.4`
-- `22.2.3`
-- `22.2.2`
-- `22.2.1`
-- `22.2`
-- `22.1.8`
-- `22.1.7`
-- `22.1.6`
-- `22.1.5`
-- `22.1.4`
-- `22.1.3`
-- `22.1.2`
-- `22.1.1`
-- `22.1`
-- `22.0.7`
-- `22.0.6`
-- `22.0.5`
-- `22.0.4`
-- `22.0.3`
-- `22.0.2`
-- `22.0.1`
-- `22.0`
-- `21.3.8`
-- `21.3.7`
-- `21.3.6`
-- `21.3.5`
-- `21.3.4`
-- `21.3.3`
-- `21.3.2`
-- `21.3.1`
-- `21.3`
-- `21.2.7`
-- `21.2.6`
-- `21.2.5`
-- `21.2.4`
-- `21.2.3`
-- `21.2.2`
-- `21.2.1`
-- `21.2`
-- `21.1.4`
-- `21.1.3`
-- `21.1.2`
-- `21.1.1`
-- `21.1`
-- `21.0.9`
-- `21.0.8`
-- `21.0.7`
-- `21.0.6`
-- `21.0.5`
-- `21.0.4`
-- `21.0.3`
-- `21.0.2`
-- `21.0.1`
-- `21.0`
-- `20.3.8`
-- `20.3.7`
-- `20.3.6`
-- `20.3.5`
-- `20.3.4`
-- `20.3.3`
-- `20.3.2`
-- `20.3.1`
-- `20.3`
-- `20.2.4`
-- `20.2.3`
-- `20.2.2`
-- `20.2.1`
-- `20.2`
-- `20.1.7`
-- `20.1.6`
-- `20.1.5`
-- `20.1.4`
-- `20.1.3`
-- `20.1.2`
-- `20.1.1`
-- `20.1`
-- `20.0.5`
-- `20.0.4`
-- `20.0.3`
-- `20.0.2`
-- `20.0.1`
-- `20.0`
-- `19.3.6`
-- `19.3.5`
-- `19.3.4`
-- `19.3.3`
-- `19.3.2`
-- `19.3.1`
-- `19.3`
-- `19.2.3`
-- `19.2.2`
-- `19.2.1`
-- `19.2`
-- `19.1.6`
-- `19.1.5`
-- `19.1.4`
-- `19.1.3`
-- `19.1.2`
-- `19.1.1`
-- `19.1`
-- `19.0.7`
-- `19.0.6`
-- `19.0.5`
-- `19.0.4`
-- `19.0.3`
-- `19.0.2`
-- `19.0.1`
-- `19.0`
-- `18.3.4`
-- `18.3.3`
-- `18.3.2`
-- `18.3.1`
-- `18.3`
-- `18.2.4`
-- `18.2.3`
-- `18.2.2`
-- `18.2.1`
-- `18.2`
-- `18.1.5`
-- `18.1.4`
-- `18.1.3`
-- `18.1.2`
-- `18.1.1`
-- `18.1`
-- `18.0.3`
-- `18.0.2`
-- `18.0.1`
-- `18.0`
-- `17.5.6`
-- `17.5.5`
-- `17.5.4`
-- `17.5.3`
-- `17.5.2`
-- `17.5.1`
-- `17.5`
-- `17.4.1`
-- `17.4`
-- `17.3.4`
-- `17.3.3`
-- `17.3.2`
-- `17.3.1`
-- `17.3`
-- `17.2.2`
-- `17.2.1`
-- `17.2`
-- `17.1.2`
-- `17.1.1`
-- `17.1`
-- `17.0.2`
-- `17.0.1`
-- `17.0`
+> *Your Elixir version must be compatible with your Erlang/OTP version!*
+>
+> Otherwise, your service's builds will fail. For compatibility information, see the [Elixir documentation](https://hexdocs.pm/elixir/compatibility-and-deprecations.html#between-elixir-and-erlang-otp).
 
 ## History of default Elixir versions
 
@@ -14278,7 +14185,7 @@ There is no action required by you. Please reach out to <support@render.com> if 
 
 | Current default Node.js version |
 |--------|
-| *`22.16.0`* Services created before *2025-06-12* have a different default version. [See below.](#history-of-default-nodejs-versions) |
+| *`22.22.0`* Services created before *2026-01-14* have a different default version. [See below.](#history-of-default-nodejs-versions) |
 
 *Set a different Node.js version in _any_ of the following ways* (in descending order of precedence):
 
@@ -14318,7 +14225,8 @@ If you don't set a Node.js version for your service, Render's default version de
 
 | Service Creation Date | Default Node.js Version |
 |---|---|
-| 2025-06-12 and later | `22.16.0` |
+| 2026-01-14 and later | `22.22.0` |
+| 2025-06-12 | `22.16.0` |
 | 2024-12-16 | `22.12.0` |
 | 2024-11-24 | `22.11.0` |
 | 2024-10-30 | `22.10.0` |

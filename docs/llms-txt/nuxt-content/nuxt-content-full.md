@@ -16,29 +16,29 @@ orientation: horizontal
   title: The Mountains Website
   description: A website about the most iconic mountains in the world.
   ---
-  
+
   ::my-vue-hero-component{orientation="horizontal"}
   #title
   Welcome to the Mountains Website.
   #description
   This is a description of the Mountains Website.
   ::
-  
+
   This is a paragraph with **bold** and _italic_ text.
   ```
-  
+
   ```vue [pages/index.vue]
   <script setup lang="ts">
   const { data } = await useAsyncData('home', () => {
     return queryCollection('content').path('/').first()
   })
-  
+
   useSeoMeta({
     title: data.value?.title,
     description: data.value?.description
   })
   </script>
-  
+
   <template>
     <ContentRenderer :value="data" />
   </template>
@@ -50,11 +50,11 @@ orientation: horizontal
   ---
   class: mb-3 rounded-full
   size: sm
-  to: https://content.nuxt.com/blog/studio-module-alpha
+  to: https://nuxt.studio
   trailing-icon: i-lucide-arrow-right
   variant: outline
   ---
-  Nuxt Studio alpha is out
+  Nuxt Studio is out
   :::
 
 #title
@@ -73,8 +73,7 @@ Nuxt Content is a module for Nuxt that provides a simple way to manage content f
   ---
   :::
 
-  :::u-input-copy{value="npx nuxt module add content"}
-  :::
+:u-input-copy{value="npx nuxt module add content"}
 ::
 
 ::u-container{.pb-12.xl:pb-24}
@@ -85,95 +84,95 @@ Nuxt Content is a module for Nuxt that provides a simple way to manage content f
     ---
     #title{unwrap="p"}
     File-based CMS
-    
+
     #description{unwrap="p"}
     Write your content in Markdown, YAML, CSV or JSON and query it in your components.
     ::::
-  
+
     ::::u-page-feature
     ---
     icon: i-lucide-filter
     ---
     #title{unwrap="p"}
     Query Builder
-    
+
     #description{unwrap="p"}
     Query your content with a MongoDB-like API to fetch the right data at the right time.
     ::::
-  
+
     ::::u-page-feature
     ---
     icon: i-lucide-database
     ---
     #title{unwrap="p"}
     SQLite powered
-    
+
     #description{unwrap="p"}
     Add custom fields to your content, making it suitable for various types of projects.
     ::::
-  
+
     ::::u-page-feature
     ---
     icon: i-simple-icons-markdown
     ---
     #title{unwrap="p"}
     Markdown with Vue
-    
+
     #description{unwrap="p"}
     Use Vue components in Markdown files, with props, slots and nested components.
     ::::
-  
+
     ::::u-page-feature
     ---
     icon: i-lucide-list-minus
     ---
     #title{unwrap="p"}
     Code highlighting
-    
+
     #description{unwrap="p"}
     Display beautiful code blocks on your website with the Shiki integration supporting VS Code themes.
     ::::
-  
+
     ::::u-page-feature
     ---
     icon: i-lucide-mouse-pointer-click
     ---
     #title{unwrap="p"}
     Visual Editor
-    
+
     #description{unwrap="p"}
     Let your team edit your Nuxt Content project with Nuxt Studio, our visual editor.
     ::::
-  
+
     ::::u-page-feature
     ---
     icon: i-lucide-panel-left
     ---
     #title{unwrap="p"}
     Navigation Generation
-    
+
     #description{unwrap="p"}
     Generate a structured object from your content files and display a navigation menu in minutes.
     ::::
-  
+
     ::::u-page-feature
     ---
     icon: i-lucide-heading-1
     ---
     #title{unwrap="p"}
     Prose Components
-    
+
     #description{unwrap="p"}
     Customize HTML typography tags with Vue components to give your content a consistent style.
     ::::
-  
+
     ::::u-page-feature
     ---
     icon: i-lucide-globe
     ---
     #title{unwrap="p"}
     Deploy everywhere
-    
+
     #description{unwrap="p"}
     Nuxt Content works on all hosting providers, static, server, serverless & edge.
     ::::
@@ -188,13 +187,7 @@ Everything you need for content management
 Combine file-based simplicity with Vue component power. Build content-rich websites, from documentation pages to complex applications.
 
   :::div{.hidden.md:block}
-    ::::u-color-mode-image
-    ---
-    class: size-full absolute top-0 inset-0
-    dark: /home/features-dark.svg
-    light: /home/features-light.svg
-    ---
-    ::::
+  :u-color-mode-image{.size-full.absolute.top-0.inset-0 dark="/home/features-dark.svg" light="/home/features-light.svg"}
   :::
 ::
 
@@ -212,56 +205,62 @@ orientation: horizontal
         ---
         #title
         The Everest.
-        
+
         #description
         The Everest is the highest mountain in the world, standing at 8,848 meters above sea level.
         ::::::
       :::::
     ::::
-  
+
     ::::tabs-item{icon="i-simple-icons-markdown" label="content/index.md"}
     ```mdc [content/index.md]
     ---
     title: The Mountains Website
     description: A website about the most iconic mountains in the world.
     ---
-    
+
     ::landing-hero
     ---
     image: /mountains/everest.jpg
     ---
     #title
     The Everest.
-    
+
     #description
     The Everest is the highest mountain in the world, standing at 8,848 meters above sea level.
     ::
-    
+
     ```
-    ::::
-  
-    ::::tabs-item{icon="i-simple-icons-vuedotjs" label="components/LandingHero.vue"}
-    ```vue [components/LandingHero.vue]
-      <script setup lang="ts">
-      defineProps<{
-        image: string 
-      }>()
-      </script>
-      
-      <template>
-        <section class="flex flex-col sm:flex-row sm:items-center gap-4 py-8 sm:gap-12 sm:py-12">
-          <div>
-            <h1 class="text-4xl font-semibold">
-              <slot name="title" />
-            </h1>
-            <div class="text-base text-gray-600 dark:text-gray-300">
-              <slot name="description" />
+
+    \::::
+
+      :::::tabs-item
+      ---
+      icon: i-simple-icons-vuedotjs
+      label: components/LandingHero.vue
+      ---
+      ```vue [components/LandingHero.vue]
+        <script setup lang="ts">
+        defineProps<{
+          image: string 
+        }>()
+        </script>
+        
+        <template>
+          <section class="flex flex-col sm:flex-row sm:items-center gap-4 py-8 sm:gap-12 sm:py-12">
+            <div>
+              <h1 class="text-4xl font-semibold">
+                <slot name="title" />
+              </h1>
+              <div class="text-base text-gray-600 dark:text-gray-300">
+                <slot name="description" />
+              </div>
             </div>
-          </div>
-          <img :src="image" class="w-1/2 rounded-lg">
-        </section>
-      </template>
-    ```
+            <img :src="image" class="w-1/2 rounded-lg">
+          </section>
+        </template>
+      ```
+      :::::
     ::::
   :::
 
@@ -320,7 +319,7 @@ orientation: horizontal
       return queryCollection('blog').all()
     })
     </script>
-    
+
     <template>
       <div>
         <h1>Blog</h1>
@@ -333,12 +332,12 @@ orientation: horizontal
     </template>
     ```
     ::::
-  
+
     ::::tabs-item{icon="i-simple-icons-typescript" label="content.config.ts"}
     ```ts [content.config.ts]
     import { defineContentConfig, defineCollection } from '@nuxt/content'
     import { z } from 'zod'
-    
+
     export default defineContentConfig({
       collections: {
         blog: defineCollection({
@@ -405,7 +404,7 @@ Define your content structure with collections and query them with schema valida
 reverse: true
 orientation: horizontal
 ---
-:video{autoplay controls loop src="https://res.cloudinary.com/nuxt/video/upload/v1733494722/contentv3final_rc8bvu.mp4"}
+:video{autoplay controls loop src="https://res.cloudinary.com/nuxt/video/upload/v1767647099/studio/studio-demo_eiofld.mp4"}
 
 #title{unwrap="p"}
 Let [anyone edit]{.text-(--ui-primary)} your website
@@ -414,11 +413,11 @@ Let [anyone edit]{.text-(--ui-primary)} your website
   :::u-button
   ---
   color: primary
-  label: Currently in alpha
   target: _blank
-  to: https://github.com/nuxt-content/studio
+  to: https://nuxt.studio
   variant: outline
   ---
+  Try Nuxt Studio
   :::
 
 Edit your Nuxt Content website with the **Studio module**, our free and open-source visual interface to edit your content in production.
@@ -437,381 +436,28 @@ Edit your Nuxt Content website with the **Studio module**, our free and open-sou
   icon: i-lucide-file-text
   ---
   #title{unwrap="p"}
-  Visual editor for Markdown, YML and JSON files (coming in beta)
+  Visual editor for Markdown, YML and JSON files
   :::
 
   :::u-page-feature
   ---
-  icon: i-simple-icons-google
+  icon: i-simple-icons-git
   ---
   #title{unwrap="p"}
-  Publish changes directly on GitHub
+  Publish changes directly on your Git provider
   :::
 ::
 
 ::u-page-section
   :::div{.hidden.md:block}
-    ::::u-color-mode-image
-    ---
-    class: size-full absolute bottom-0 inset-0 z-[-1]
-    dark: /home/cta-dark.svg
-    light: /home/cta-light.svg
-    ---
-    ::::
+  :u-color-mode-image{.size-full.absolute.bottom-0.inset-0.z-[-1] dark="/home/cta-dark.svg" light="/home/cta-light.svg"}
   :::
 
 #title
 Add a git-based CMS to your Nuxt project.
 
 #links
-  :::u-button
-  ---
-  label: Start reading docs
-  to: https://content.nuxt.com/docs/getting-started/installation
-  trailingIcon: i-lucide-arrow-right
-  ---
-  :::
-::
-
-
-# Meet Studio, content edition for everyone.
-
-::u-page-hero
-  :::div{.hidden.md:block}
-    ::::u-color-mode-image
-    ---
-    class: size-full absolute bottom-0 inset-x-4 z-[-1]
-    dark: /home/hero-dark.svg
-    light: /home/hero-light.svg
-    ---
-    ::::
-  :::
-
-#title{unwrap="p"}
-Meet Studio, content edition :br for everyone.
-
-#description
-**Nuxt Studio** brings visual editing to your Nuxt Content projects. Anyone can contribute to the website thanks to our versatile editor that adapt to markdown, YAML, or JSON. No technical expertise needed. *Built for developers, made for everyone.*
-
-#links{unwrap="p"}
-  :::u-button
-  ---
-  label: Get Started for free
-  size: xl
-  target: _blank
-  to: https://nuxt.studio/signin
-  trailingIcon: i-lucide-arrow-right
-  ---
-  :::
-
-  :::u-button
-  ---
-  color: neutral
-  label: Read the documentation
-  size: xl
-  to: https://content.nuxt.com/docs/studio/setup
-  variant: subtle
-  ---
-  :::
-::
-
-::u-page-section
-#features
-  :::u-page-feature
-  ---
-  icon: i-lucide-circle-user
-  ---
-  #title{unwrap="p"}
-  GitHub & Google Authentication
-  
-  #description{unwrap="p"}
-  Personalized workspace for each role: developers, writers, and clients.
-  :::
-
-  :::u-page-feature
-  ---
-  icon: i-lucide-file-pen
-  ---
-  #title{unwrap="p"}
-  Easy content updates
-  
-  #description{unwrap="p"}
-  From Markdown to YAML edition, our visual editor is designed for non technical users.
-  :::
-
-  :::u-page-feature
-  ---
-  icon: i-lucide-users
-  ---
-  #title{unwrap="p"}
-  Real-time Collaboration
-  
-  #description{unwrap="p"}
-  Write as a team in real-time with our collaboration features.
-  :::
-
-  :::u-page-feature
-  ---
-  icon: i-lucide-sparkles
-  ---
-  #title{unwrap="p"}
-  From Code to Edition
-  
-  #description{unwrap="p"}
-  Developers build the foundation while writers can safely edit the content.
-  :::
-
-  :::u-page-feature
-  ---
-  icon: i-lucide-panels-top-left
-  ---
-  #title{unwrap="p"}
-  Review before publishing
-  
-  #description{unwrap="p"}
-  Review your changes before making them live on your website.
-  :::
-
-  :::u-page-feature
-  ---
-  icon: i-lucide-mouse-pointer-click
-  ---
-  #title{unwrap="p"}
-  Ready-to-use Templates
-  
-  #description{unwrap="p"}
-  Get started quickly with pre-built templates for Saas sites, blogs, docs and more.
-  :::
-::
-
-::u-page-section
----
-orientation: horizontal
----
-  :::tabs
-    ::::tabs-item
-    ---
-    class: overflow-x-auto !text-sm
-    icon: i-simple-icons-markdown
-    label: content/index.md
-    ---
-    ```mdc [content/index.md]
-    ---
-    title: The Mountains Website
-    description: A website about the most iconic mountains in the world.
-    ---
-    
-    ::landing-hero
-    ---
-    image: /mountains/everest.jpg
-    ---
-    #title
-    The Everest.
-    
-    #description
-    The Everest is the highest mountain in the world, standing at 8,848 meters above sea level.
-    ::
-    
-    ```
-    ::::
-  
-    ::::tabs-item
-    ---
-    class: overflow-x-auto text-md
-    icon: i-simple-icons-vuedotjs
-    label: components/LandingHero.vue
-    ---
-    ```vue [components/LandingHero.vue]
-      <script setup lang="ts">
-      defineProps<{
-        image: string 
-      }>()
-      </script>
-      
-      <template>
-        <section class="flex flex-col sm:flex-row sm:items-center gap-4 py-8 sm:gap-12 sm:py-12">
-          <div>
-            <h1 class="text-4xl font-semibold">
-              <slot name="title" />
-            </h1>
-            <div class="text-base text-gray-600 dark:text-gray-300">
-              <slot name="description" />
-            </div>
-          </div>
-          <img :src="image" class="w-1/2 rounded-lg">
-        </section>
-      </template>
-    ```
-    ::::
-  
-    ::::tabs-item{icon="i-lucide-eye" label="Preview"}
-      :::::browser-frame
-      ![vue component edition on Studio](https://content.nuxt.com/docs/studio/home-content-studio-dark.webp)
-      :::::
-    ::::
-  :::
-
-#title{unwrap="p"}
-Developers create the [editing experience]{.text-(--ui-primary)}
-
-#description
-Developers build the foundation their way: custom components, media library, and site configuration.
-
-#features
-  :::u-page-feature
-  ---
-  icon: i-lucide-settings-2
-  ---
-  #title{unwrap="p"}
-  Customizable and editable Vue components
-  :::
-
-  :::u-page-feature
-  ---
-  icon: i-simple-icons-markdown
-  ---
-  #title{unwrap="p"}
-  Edit your Markdown with our visual editor
-  :::
-
-  :::u-page-feature
-  ---
-  icon: i-lucide-brush
-  ---
-  #title{unwrap="p"}
-  Edit your app.config visually
-  :::
-
-#links
-  :::u-button
-  ---
-  color: neutral
-  label: Learn more about custom components
-  to: https://content.nuxt.com/docs/files/markdown#vue-components
-  trailingIcon: i-lucide-arrow-right
-  variant: subtle
-  ---
-  :::
-::
-
-::u-page-section
----
-reverse: true
-orientation: horizontal
----
-:video{autoplay controls loop src="https://res.cloudinary.com/nuxt/video/upload/v1744126742/studio/finalpropscomps_usfabp.mp4"}
-
-#title{unwrap="p"}
-Let [anyone edit]{.text-(--ui-primary)} your Nuxt Content website
-
-#description
-Teams and clients get a powerful visual editor for content management, from text edition to media management - all without touching code.
-
-#features
-  :::u-page-feature
-  ---
-  icon: i-lucide-mouse-pointer-click
-  ---
-  #title{unwrap="p"}
-  Visual editor with drag and drop for Markdown
-  :::
-
-  :::u-page-feature
-  ---
-  icon: i-lucide-file-text
-  ---
-  #title{unwrap="p"}
-  Form generation for `YML` and `JSON` files
-  :::
-
-  :::u-page-feature
-  ---
-  icon: i-lucide-image
-  ---
-  #title{unwrap="p"}
-  Manage all your medias in one place
-  :::
-::
-
-::u-page-section
----
-orientation: horizontal
----
-  :::u-color-mode-image
-  ---
-  class: size-full
-  dark: /home/pro-dark.svg
-  light: /home/pro-light.svg
-  ---
-  :::
-
-#title
-[Edit together]{.text-(--ui-primary)} , preview instantly
-
-#description
-Edit content as a team and see your site come to life with live preview. From text editing to component updates, every change reflects your final website design. Experience seamless content creation without delays or manual refreshes.
-
-#features
-  :::u-page-feature
-  ---
-  icon: i-lucide-files
-  ---
-  #title{unwrap="p"}
-  See your changes in real-time on your website
-  :::
-
-  :::u-page-feature
-  ---
-  icon: i-lucide-link
-  ---
-  #title{unwrap="p"}
-  Share preview URLs to anyone with live updates
-  :::
-
-  :::u-page-feature
-  ---
-  icon: i-lucide-list
-  ---
-  #title{unwrap="p"}
-  Review all your changes before publishing
-  :::
-::
-
-::u-page-section
-  :::div{.hidden.md:block}
-    ::::u-color-mode-image
-    ---
-    class: size-full absolute bottom-0 inset-x-4 z-[-1]
-    dark: /home/cta-dark.svg
-    light: /home/cta-light.svg
-    ---
-    ::::
-  :::
-
-#title
-The [best way]{.text-(--ui-primary)} to edit your [Nuxt Content]{.text-(--ui-primary)} website
-
-#links
-  :::u-button
-  ---
-  label: Get started for free
-  target: _blank
-  to: https://nuxt.studio/signin
-  trailingIcon: i-lucide-arrow-right
-  ---
-  :::
-
-  :::u-button
-  ---
-  color: neutral
-  label: See pricing
-  to: https://content.nuxt.com/studio/pricing
-  variant: outline
-  ---
-  :::
-
-#description
-Import your Nuxt Content website and invite your team to collaborate today.
+:u-button{label="Start reading docs" to="https://content.nuxt.com/docs/getting-started/installation" trailingIcon="i-lucide-arrow-right"}
 ::
 
 
@@ -829,7 +475,7 @@ Collections organize related items within your project, helping you manage large
 - **Type-safe Queries**: Direct TypeScript integration across all utilities
 - **Automatic Validation**: Ensure data consistency across frontmatter fields and data files (json, yml...)
 - **Advanced Query Builder**: Filter, sort, and paginate your collections with ease
-- **Studio Integration**: Enhanced form generation and optimal editing experience through [Studio](https://content.nuxt.com/studio)
+- **Studio Integration**: Enhanced form generation and optimal editing experience through [Studio](https://nuxt.studio){rel="&#x22;nofollow&#x22;"}
 
 Learn more about [Content Collections](https://content.nuxt.com/docs/collections/define).
 
@@ -866,7 +512,7 @@ The new collections system provides automatic TypeScript types for all your data
 
 ### Nuxt Studio Integration :badge[Soon]{color="neutral"}
 
-[Nuxt Studio](https://content.nuxt.com/docs/studio/setup) and v3 are designed to complement each other perfectly.. The [studio module](https://github.com/nuxt-content/studio){rel="nofollow"} is creating an ideal environment where developers can focus on code while team members manage content through an intuitive interface.
+[Nuxt Studio](https://nuxt.studio){rel="&#x22;nofollow&#x22;"} and v3 are designed to complement each other perfectly. The [studio module](https://github.com/nuxt-content/nuxt-studio){rel="&#x22;nofollow&#x22;"} is creating an ideal environment where developers can focus on code while team members manage content through an intuitive interface.
 
 ---
 
@@ -879,7 +525,7 @@ Learn how to migrate from Content v2 to v3 in the [migration guide](https://cont
 
 # Installation
 
-### Install the Package
+## Install the Package
 
 Choose your preferred package manager to install Nuxt Content v3:
 
@@ -901,7 +547,7 @@ bun add @nuxt/content
 ```
 ::
 
-### Register the Module
+## Register the Module
 
 Add the Nuxt Content module to your `nuxt.config.ts`:
 
@@ -911,7 +557,7 @@ export default defineNuxtConfig({
 })
 ```
 
-### Automatic Setup
+## Automatic Setup
 
 When starting a new Nuxt project with the `create-nuxt` CLI, you can simply select `@nuxt/content` from the interactive module selector. This will automatically install and register the module for you.
 
@@ -947,7 +593,45 @@ If you don't want to install any package, you can use native SQLite from Node.js
 Checkout [`experimental.nativeSqlite` configuration](https://content.nuxt.com/docs/getting-started/configuration#experimentalnativesqlite-deprecated-use-sqliteconnector).
 ::
 
-### Create your First Collection
+::note{color="warning"}
+If you use **pnpm v10+**, dependency build scripts are not executed by default.
+
+:br
+
+Since `better-sqlite3` and `sqlite3` rely on a postinstall/build step to generate native bindings,
+you may encounter errors such as:
+
+:br
+
+`Could not locate the bindings file`
+
+:br
+
+To resolve this, you can approve the required build scripts by running:
+
+  :::code-group
+  ```bash [pnpm]
+  pnpm approve-builds
+  ```
+  :::
+
+Alternatively, if you need a non-interactive setup (for example in CI),
+you can explicitly allow native builds by adding the following configuration
+to your project root `package.json`:
+
+```json [package.json]
+{
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "better-sqlite3",
+      "sqlite3"
+    ]
+  }
+}
+```
+::
+
+## Create your First Collection
 
 Create a `content.config.ts` file in your project root directory:
 
@@ -982,7 +666,7 @@ Learn more in our
 .
 ::
 
-### Create your First Markdown Page
+## Create your First Markdown Page
 
 Create a `content/index.md` file in your project root directory:
 
@@ -994,7 +678,7 @@ Here is some content.
 
 Read more about writing [Markdown pages](https://content.nuxt.com/docs/files/markdown).
 
-### Display your Page
+## Display your Page
 
 Create a `pages/index.vue` file and display the page content:
 
@@ -1114,7 +798,7 @@ type RemarkPlugins = Record<string, false | MarkdownPlugin>
 ```
 ::
 
-A list of [remark](https://github.com/remarkjs/remark){rel="nofollow"} plugins to use.
+A list of [remark](https://github.com/remarkjs/remark){rel="&#x22;nofollow&#x22;"} plugins to use.
 
 ```ts [nuxt.config.ts]
 export default defineNuxtConfig({
@@ -1154,7 +838,7 @@ type RehypePlugins = object
 ```
 ::
 
-A list of [rehype](https://github.com/remarkjs/remark-rehype){rel="nofollow"} plugins to use.
+A list of [rehype](https://github.com/remarkjs/remark-rehype){rel="&#x22;nofollow&#x22;"} plugins to use.
 
 ```ts [nuxt.config.ts]
 export default defineNuxtConfig({
@@ -1173,6 +857,20 @@ export default defineNuxtConfig({
 })
 ```
 
+#### `contentHeading`
+
+::code-group
+```ts [Default]
+contentHeading: true
+```
+
+```ts [Signature]
+type ContentHeading = boolean
+```
+::
+
+Setting this option to `false` disables the automatic generation of `title` and `description` fields that are normally extracted from the first H1 heading and the paragraphs that follow it.
+
 #### `highlight`
 
 ::code-group
@@ -1185,18 +883,18 @@ type Highlight = false | object
 ```
 ::
 
-Nuxt Content uses [Shiki](https://github.com/shikijs/shiki){rel="nofollow"} to provide syntax highlighting for [`ProsePre`](https://content.nuxt.com/docs/components/prose#prosepre) and [`ProseCode`](https://content.nuxt.com/docs/components/prose#prosecode).
+Nuxt Content uses [Shiki](https://github.com/shikijs/shiki){rel="&#x22;nofollow&#x22;"} to provide syntax highlighting for [`ProsePre`](https://content.nuxt.com/docs/components/prose#prosepre) and [`ProseCode`](https://content.nuxt.com/docs/components/prose#prosecode).
 
-| Option  | Type                                         | Description                                                                                                                      |
-| ------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| `theme` | `ShikiTheme` or `Record<string, ShikiTheme>` | The [color theme](https://github.com/shikijs/shiki/blob/main/docs/themes.md){rel="nofollow"} to use.                             |
-| `langs` | `ShikiLang[]`                                | The [loaded languages](https://github.com/shikijs/shiki/blob/main/docs/languages.md){rel="nofollow"} available for highlighting. |
+| Option  | Type                                         | Description                                                                                                                                  |
+| ------- | -------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `theme` | `ShikiTheme` or `Record<string, ShikiTheme>` | The [color theme](https://github.com/shikijs/shiki/blob/main/docs/themes.md){rel="&#x22;nofollow&#x22;"} to use.                             |
+| `langs` | `ShikiLang[]`                                | The [loaded languages](https://github.com/shikijs/shiki/blob/main/docs/languages.md){rel="&#x22;nofollow&#x22;"} available for highlighting. |
 
 - `highlight.theme`
 
 Theme can be specified by a single string but also supports an object with multiple themes.
 
-This option is compatible with [Color Mode module](https://color-mode.nuxtjs.org/){rel="nofollow"}.
+This option is compatible with [Color Mode module](https://color-mode.nuxtjs.org/){rel="&#x22;nofollow&#x22;"}.
 
 If you are using multiple themes, it's recommended to always have a `default` theme specified.
 
@@ -1275,7 +973,7 @@ export default defineNuxtConfig({
 })
 ```
 
-Read more about adding languages in the [Shiki documentation](https://github.com/shikijs/shiki/blob/main/docs/languages.md#adding-grammar){rel="nofollow"}.
+Read more about adding languages in the [Shiki documentation](https://github.com/shikijs/shiki/blob/main/docs/languages.md#adding-grammar){rel="&#x22;nofollow&#x22;"}.
 
 ### `pathMeta`
 
@@ -1287,9 +985,9 @@ If set to `true`, the path will be prefixed with a leading slash. Default value 
 
 #### `pathMeta.slugifyOptions`
 
-Content module uses [slugify](https://github.com/simov/slugify){rel="nofollow"} to generate the slug, you can customize the behavior of slugify with this option.
+Content module uses [slugify](https://github.com/simov/slugify){rel="&#x22;nofollow&#x22;"} to generate the slug, you can customize the behavior of slugify with this option.
 
-Checkout [slugify options](https://github.com/simov/slugify#options){rel="nofollow"} for more information.
+Checkout [slugify options](https://github.com/simov/slugify#options){rel="&#x22;nofollow&#x22;"} for more information.
 
 ### `transformers`
 
@@ -1342,6 +1040,19 @@ export default defineNuxtConfig({
     database: {
       type: 'sqlite',
       filename: 'SQLITE_DB_LOCATION'
+    }
+  }
+})
+```
+
+If you can't use a normal file-backed SQLite database (for example due to read-only filesystems or platform limitations), you can run SQLite entirely in memory. Nuxt Content will restore the database from the generated dump on first query. On serverless platforms this database will be recreated on each cold start; prerender as many routes as possible to avoid repeated runtime initialization.
+
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+  content: {
+    database: {
+      type: 'sqlite',
+      filename: ':memory:'
     }
   }
 })
@@ -1413,7 +1124,7 @@ export default defineNuxtConfig({
 ::note
 The most popular LibSQL hosting services is 
 
-[Turso](https://turso.tech/){rel="nofollow"}
+[Turso](https://turso.tech/){rel=""nofollow""}
 
 .
 ::
@@ -1498,47 +1209,20 @@ export default defineNuxtConfig({
 
 ```ts [Default]
 watch: {
-  enabled: true,
-  port: 4000,
-  showURL: false
+  enabled: true
 }
 ```
 
-Configure content hot reload in development.
+Controls whether content hot reloading is enabled during development.
 
-Value:
+**Options:**
 
-- `enabled`: Enable/Disable hot reload.
-- `port`: Select the port used for the WebSocket server.
-- `showURL`: Toggle URL display in dev server boot message.
-
-Nuxt Content uses [listhen](https://github.com/unjs/listhen){rel="nofollow"} to provide a local development server. Check out the [listhen documentation](https://github.com/unjs/listhen#options){rel="nofollow"} for more information.
+- `enabled` (`boolean`): Enable or disable hot reloading when editing content files.
+  - `true` (default): Automatically reloads content changes in your application during development.
+  - `false`: Disables hot reloading; changes require a manual refresh.
 
 ::callout
-The watcher is a development feature and will not be included in production.
-::
-
-::code-group
-```ts [Enabled]
-export default defineNuxtConfig({
-  content: {
-    watch: {
-      port: 4000,
-      showURL: true
-    }
-  }
-})
-```
-
-```ts [Disabled]
-export default defineNuxtConfig({
-  content: {
-    watch: {
-      enabled: false
-    }
-  }
-})
-```
+The content watcher only runs in development and leverages the Vite dev server to detect content updates and send events to your application for live updates.
 ::
 
 ## `experimental`
@@ -1627,7 +1311,7 @@ The new API is backed by SQL and content queries happens within a specific colle
 `<slot mdc-unwrap="p" />`
 ::
 
-- Components created under the `components/content` directory are no longer automatically registered as global components. If you use [dynamic rendering](https://vuejs.org/guide/essentials/component-basics.html#dynamic-components){rel="nofollow"} to render these components outside markdown files, you must manually register them in your Nuxt app. Check out the [Nuxt - Custom Components Directories](https://nuxt.com/docs/guide/directory-structure/components#custom-directories){rel="nofollow"} documentation for more information on how to do so.
+- Components created under the `components/content` directory are no longer automatically registered as global components. If you use [dynamic rendering](https://vuejs.org/guide/essentials/component-basics.html#dynamic-components){rel="&#x22;nofollow&#x22;"} to render these components outside markdown files, you must manually register them in your Nuxt app. Check out the [Nuxt - Custom Components Directories](https://nuxt.com/docs/guide/directory-structure/components#custom-directories){rel="&#x22;nofollow&#x22;"} documentation for more information on how to do so.
 
 ### Types
 
@@ -1818,14 +1502,14 @@ export default defineContentConfig({
 ::warning
 Currently, a document is designed to be present in only one collection at a time. If a file is referenced in multiple collections, live reload will not work correctly. To avoid this, it is recommended to use the `exclude` attribute to explicitly exclude a document from other collections using appropriate regex patterns.
 
-This topic is still under discussion in this issue: [nuxt/content#2966](https://github.com/nuxt/content/issues/2966){rel="nofollow"}.
+This topic is still under discussion in this issue: [nuxt/content#2966](https://github.com/nuxt/content/issues/2966){rel=""nofollow""}.
 ::
 
 ### Collection Schema
 
 Schemas enforce data consistency within a collection and serve as the source of truth for TypeScript types.
 
-On top of the built-in fields, you can define a schema by adding the `schema` property to your collection by using a [`zod`](https://zod.dev){rel="nofollow"} schema:
+On top of the built-in fields, you can define a schema by adding the `schema` property to your collection by using a [`zod`](https://zod.dev){rel="&#x22;nofollow&#x22;"} schema:
 
 ```ts [content.config.ts]
 import { defineCollection, defineContentConfig } from '@nuxt/content'
@@ -1856,7 +1540,7 @@ export default defineContentConfig({
 
  object that contains a set of Zod schemas for common data types. Check 
 
-[Zod’s README](https://github.com/colinhacks/zod){rel="nofollow"}
+[Zod’s README](https://github.com/colinhacks/zod){rel=""nofollow""}
 
  for complete documentation on how Zod works and what features are available.
 ::
@@ -1864,6 +1548,71 @@ export default defineContentConfig({
 ::tip
 You can define as many collections as you want to organize different types of content.
 ::
+
+### Database Indexes
+
+Optimize query performance by defining indexes on collection columns. Indexes are especially useful for fields used in filtering, sorting, or lookups.
+
+```ts [content.config.ts]
+import { defineCollection, defineContentConfig } from '@nuxt/content'
+import { z } from 'zod'
+
+export default defineContentConfig({
+  collections: {
+    products: defineCollection({
+      type: 'data',
+      source: 'products/*.json',
+      schema: z.object({
+        sku: z.string(),
+        price: z.number(),
+        category: z.string(),
+        inStock: z.boolean(),
+      }),
+      indexes: [
+        // Single column indexes
+        { columns: ['category'] },
+        { columns: ['price'] },
+
+        // Composite index for category + price filtering
+        { columns: ['category', 'price'] },
+
+        // Unique index to ensure SKU uniqueness
+        { columns: ['sku'], unique: true },
+
+        // Custom index name (optional)
+        { columns: ['inStock', 'category'], name: 'idx_stock_category' },
+      ],
+    }),
+  },
+})
+```
+
+::note
+Indexes are created automatically when the database schema is generated. They work across all supported databases: SQLite, Cloudflare D1, PostgreSQL, LibSQL, and PGlite.
+::
+
+::tip{icon="i-ph-lightbulb"}
+**Cloudflare D1 Cost Optimization**
+
+: With indexes, a 
+
+`WHERE`
+
+ clause on an indexed column counts as only 1 row read when there's a single match. Without an index, D1 counts all rows scanned in the table, significantly increasing your read costs. Indexes can dramatically reduce your D1 billing.
+::
+
+**Index Configuration Options:**
+
+- **`columns`** (required): Array of column names to include in the index
+- **`unique`** (optional): Set to `true` to create a unique index (default: `false`)
+- **`name`** (optional): Custom index name. If omitted, auto-generates as `idx_{collection}_{column1}_{column2}`
+
+**Performance Tips:**
+
+- Index columns used in `where()` queries for faster filtering
+- Index columns used in `sort()` for optimized sorting
+- Use composite indexes for queries that filter/sort by multiple columns
+- Unique indexes automatically enforce data uniqueness constraints
 
 ## Querying Collections
 
@@ -1908,6 +1657,17 @@ type Collection = {
   source?: string | CollectionSource
   // Zod schema for content validation and typing
   schema?: ZodObject<T>
+  // Database indexes for query optimization
+  indexes?: CollectionIndex[]
+}
+
+type CollectionIndex = {
+  // Column names to include in the index
+  columns: string[]
+  // Optional custom index name
+  name?: string
+  // Whether this is a unique index (default: false)
+  unique?: boolean
 }
 ```
 
@@ -1973,10 +1733,8 @@ Nuxt Content will automatically generate a path for each file in the collection,
 
 Here are examples of generated paths based on file structure:
 
-|                                  |                       |
-| -------------------------------- | --------------------- |
-|                                  |                       |
 | File                             | Path                  |
+| -------------------------------- | --------------------- |
 | `content/index.md`               | `/`                   |
 | `content/about.md`               | `/about`              |
 | `content/blog/index.md`          | `/blog`               |
@@ -2207,7 +1965,7 @@ source: {
 
 ### `repository`
 
-External source representing a remote git repository URL (e.g., <https://github.com/nuxt/content>{rel="nofollow"}).
+External source representing a remote git repository URL (e.g., <https://github.com/nuxt/content>{rel="&#x22;nofollow&#x22;"}), or an object containing Git branch / tag information, or optionally authentication
 
 When defining an external source you must also define the `include` option.
 `include` pattern is essential for the module to know which files to use for the collection.
@@ -2228,26 +1986,96 @@ export default defineContentConfig({
 })
 ```
 
-### `authToken`
+#### `branch` / `tag`
 
-Authentication token for private repositories (e.g., GitHub personal access token).
+This option allows for cloning a Git repository by its tag or branch.
+
+**Example:**
+If you want to clone by a tag, make the `repository` attribute an object, with the `url` of your repository, and set the `tag` attribute.
+
+```js
+import { defineCollection, defineContentConfig } from '@nuxt/content'
+
+export default defineContentConfig({
+  collections: {
+    docs: defineCollection({
+      type: 'page',
+      source: {
+        repository: {
+          url: 'https://github.com/nuxt/content',
+          tag: 'v1'
+        },
+        include: 'docs/content/**',
+      },
+    })
+  }
+})
+```
+
+**Example:**
+
+If you want to clone by a remote branch, make the `repository` attribute an object, with the `url` of your repository, and set the `branch` attribute.
+
+```js
+import { defineCollection, defineContentConfig } from '@nuxt/content'
+
+export default defineContentConfig({
+  collections: {
+    docs: defineCollection({
+      type: 'page',
+      source: {
+        repository: {
+          url: 'https://github.com/nuxt/content',
+          branch: 'dev'
+        },
+        include: 'docs/content/**',
+      },
+    })
+  }
+})
+```
+
+#### `auth`
+
+This option allows for basic and token-based authentication for Git repositories.
 
 ::warning{icon="i-lucide-shield-alert"}
 Never commit authentication tokens or credentials directly in your code. Use environment variables or other secure methods to provide these values at runtime.
 ::
 
-### `authBasic`
+**Example:**
 
-Basic authentication for private repositories (e.g., Bitbucket username and password).
+If you want to use basic authentication (e.g. for BitBucket repositories), you can use:
 
 ```ts
 defineCollection({
   type: 'page',
   source: {
-    repository: 'https://bitbucket.org/username/repo',
-    authBasic: {
-      username: 'username',
-      password: 'password',
+    repository: {
+      url: 'https://bitbucket.org/username/repo',
+      auth: {
+        username: 'username',
+        password: 'password',
+      },
+    },
+  },
+})
+```
+
+**Example:**
+
+If you need to use authentication tokens (e.g. for Github, Gitlab, some Forgejo providers), you can do the following:
+
+```ts
+defineCollection({
+  type: 'page',
+  source: {
+    repository: {
+      url: 'https://github.com/username/repo',
+      auth: {
+        username: 'username',
+        token: 'password',
+      },
     },
   },
 })
@@ -2331,7 +2159,7 @@ The
 
 Zod v4 provides a native JSON Schema export. No `zod-to-json-schema` dependency is required.
 
-### Install
+### Install Zod
 
 ```bash
 pnpm add -D zod
@@ -2368,7 +2196,7 @@ export default defineContentConfig({
 
 Use Valibot primitives to define your schema.
 
-### Install
+### Install Valibot
 
 ```bash
 pnpm add -D valibot @valibot/to-json-schema
@@ -2410,13 +2238,13 @@ Only install and use the validator you need. Nuxt Content auto-detects supported
 
 ## Support for other validators
 
-Nuxt Content converts your collection schema to JSON Schema Draft-07 internally. If your preferred validator can be transformed to Draft-07 (or has a compatible adapter), it can be supported. Currently, Zod (v3 and v4) and Valibot are auto-detected. If you’d like first-class support for another validator, consider opening an issue or PR in the [Nuxt Content repository](https://github.com/nuxt/content){rel="nofollow"}.
+Nuxt Content converts your collection schema to JSON Schema Draft-07 internally. If your preferred validator can be transformed to Draft-07 (or has a compatible adapter), it can be supported. Currently, Zod (v3 and v4) and Valibot are auto-detected. If you’d like first-class support for another validator, consider opening an issue or PR in the [Nuxt Content repository](https://github.com/nuxt/content){rel="&#x22;nofollow&#x22;"}.
 
 ## Editor metadata (optional)
 
 You can enrich fields for Studio via `property(...).editor({ ... })` with both validators. See the Studio docs for mapping details.
 
-::tip{to="https://content.nuxt.com/docs/studio/content"}
+::tip{to="https://nuxt.studio/content#form-editor"}
 Learn how editor metadata maps to form inputs in Studio.
 ::
 
@@ -2620,7 +2448,7 @@ Additional parameters that you have defined in your frontmatter block need to be
 
 We created the MDC syntax to supercharge Markdown and give you the ability to integrate Vue components with slots and props inside your Markdown.
 
-::info{to="https://remark-mdc.nuxt.space/#syntax"}
+::note{to="https://remark-mdc.nuxt.space/#syntax"}
 Explore the full MDC documentation.
 ::
 
@@ -2649,7 +2477,7 @@ Default slot content
 ```
 
 ::warning
-Components that are used in Markdown has to be marked as 
+Components that are used in Markdown have to be marked as 
 
 `global`
 
@@ -2657,11 +2485,11 @@ Components that are used in Markdown has to be marked as
 
 `components/content/`
 
- directory, visit 
+ directory. Visit 
 
-[Nuxt 3 docs](https://nuxt.com/docs/guide/directory-structure/components){rel="nofollow"}
+[Nuxt 3 docs](https://nuxt.com/docs/guide/directory-structure/components){rel=""nofollow""}
 
- to learn more about it.
+ to learn more.
 ::
 
 #### Block Components
@@ -2726,7 +2554,7 @@ This will be rendered inside the `description` slot.
   :::code-preview{icon="i-lucide-eye" label="Preview"}
     ::::example-hero
     My Page Title
-    
+
     #description
     This will be rendered inside the `description` slot.
     ::::
@@ -2750,7 +2578,7 @@ You can use Markdown inside your components slots:
   A [rich text](/) will be **rendered** by the component.
   ::
   ```
-  
+
   ```html [MyTitle.vue]
   <template>
     <h1 class="text-4xl">
@@ -2758,17 +2586,17 @@ You can use Markdown inside your components slots:
     </h1>
   </template>
   ```
-  
+
     ::::code-preview{icon="i-lucide-eye" label="Preview"}
       :::::example-title
       A 
-      
+
       [rich text](https://content.nuxt.com)
-      
+
        will be 
-      
+
       **rendered**
-      
+
        by the component.
       :::::
     ::::
@@ -2816,9 +2644,9 @@ const alertClass = computed(() => {
   :::code-preview{icon="i-lucide-eye" label="Preview"}
     ::::example-alert{type="warning"}
     The 
-    
+
     **alert**
-    
+
      component.
     ::::
   :::
@@ -2908,13 +2736,7 @@ defineProps({
 ```
 
   :::code-preview{icon="i-lucide-eye" label="Preview"}
-    ::::example-icon-card
-    ---
-    description: Harness the full power of Nuxt and the Nuxt ecosystem.
-    icon: i-simple-icons-nuxtdotjs
-    title: Nuxt Architecture.
-    ---
-    ::::
+  :example-icon-card{description="Harness the full power of Nuxt and the Nuxt ecosystem." icon="i-simple-icons-nuxtdotjs" title="Nuxt Architecture."}
   :::
 ::
 
@@ -2930,11 +2752,7 @@ Hello [World]{style="color: green;" .custom-class #custom-id}!
 ```
 
   :::code-preview{icon="i-lucide-eye" label="Preview"}
-  Hello 
-  
-  [World]{#custom-id .custom-class style="color: green;"}
-  
-   !
+  Hello [World]{#custom-id .custom-class style="color: green;"} !
   :::
 ::
 
@@ -2944,14 +2762,14 @@ In addition to mdc components and `span`, attribute syntax will work on images, 
 ```md [index.md]
 Attributes work on:
 
-- [link](#attributes){style="background-color: green;"}, `code`{style="color: cyan;"},
+- [Attributes](#attributes){style="background-color: green;"}, `code`{style="color: cyan;"},
 - _italic_{style="background-color: yellow; color:black;"} and **bold**{style="background-color: lightgreen;"} texts.
 ```
 
   :::code-preview{prose label="Preview" prose=""}
   Attributes work on:
-  
-  - [link](https://content.nuxt.com/#attributes){style="background-color: green;"}, `code`,
+
+  - [Attributes](https://content.nuxt.com/#attributes){style="background-color: green;"}, `code`,
   - *italic* and **bold** texts.
   :::
 ::
@@ -3002,7 +2820,7 @@ For each HTML tag, a Vue component is used, allowing you to override them if nee
 
 If you want to customize a Prose component, here are the recommended steps:
 
-- Check out the original [component sources](https://github.com/nuxt-modules/mdc/blob/main/src/runtime/components/prose){rel="nofollow"}.
+- Check out the original [component sources](https://github.com/nuxt-modules/mdc/blob/main/src/runtime/components/prose){rel="&#x22;nofollow&#x22;"}.
 - Use the exact same props.
 - In your `components/content/` directory, give it the same name.
 - Make it yours 🚀.
@@ -3013,7 +2831,7 @@ Read the complete Prose reference in the Prose Components section.
 
 ## Code Highlighting
 
-Nuxt Content uses [Shiki](https://github.com/shikijs/shiki){rel="nofollow"}, which colors tokens with VSCode themes.
+Nuxt Content uses [Shiki](https://github.com/shikijs/shiki){rel="&#x22;nofollow&#x22;"}, which colors tokens with VSCode themes.
 
 Code highlighting works both on [`ProsePre`](https://content.nuxt.com/docs/components/prose#prosepre) and [`ProseCode`](https://content.nuxt.com/docs/components/prose#prosecodeinline).
 
@@ -3143,7 +2961,7 @@ Now we can query authors:
 // Find a single author
 const { data: author } = await useAsyncData('larbish', () => {
   return queryCollection('authors')
-    .where('stem', '=', 'larbish')
+    .where('stem', '=', 'authors/larbish')
     .first()
 })
 
@@ -3220,7 +3038,7 @@ Now we can query authors:
 // Find a single author
 const { data: author } = await useAsyncData('larbish', () => {
   return queryCollection('authors')
-    .where('stem', '=', 'larbish')
+    .where('stem', '=', 'authors/larbish')
     .first()
 })
 
@@ -3236,7 +3054,13 @@ const { data: authors } = await useAsyncData('authors', () => {
 
 # CSV
 
-## Define Collection
+## Single-file source
+
+When you point a collection to a single CSV file (instead of a glob), Nuxt Content **treats each data row as a separate item** in the collection.
+
+- **Define the collection**: set `source` to the path of a single `.csv` file.
+- **Item generation**: each data row becomes an item with the row’s fields at the top level (no `body` array).
+- **IDs**: item IDs are suffixed with `#<rowNumber>`, where `#1` is the first data row after the header.
 
 ```ts [content.config.ts]
 import { defineCollection, defineContentConfig } from '@nuxt/content'
@@ -3244,13 +3068,65 @@ import { z } from 'zod'
 
 export default defineContentConfig({
   collections: {
-    authors: defineCollection({
+    people: defineCollection({
       type: 'data',
-      source: 'authors/**.csv',
+      source: 'org/people.csv',
       schema: z.object({
         name: z.string(),
-        email: z.string(),
-        avatar: z.string()
+        email: z.string().email()
+      })
+    })
+  }
+})
+```
+
+```csv [content/org/people.csv]
+name,email
+Alice,alice@example.com
+Bob,bob@example.com
+```
+
+Each row produces its own item. For example, the first data row will have an ID ending with `#1` and the second with `#2`. You can query by any column:
+
+```ts
+const { data: alice } = await useAsyncData('alice', () =>
+  queryCollection('people')
+    .where('email', '=', 'alice@example.com')
+    .first()
+)
+
+const { data: allPeople } = await useAsyncData('all-people', () =>
+  queryCollection('people')
+    .order('name', 'ASC')
+    .all()
+)
+```
+
+::note
+- The header row is required and is not turned into an item.
+- With a single-file source, items contain row fields at the top level (no `body`).
+- If you prefer treating each CSV file as a single item containing all rows in `body`, use a glob source like `org/**.csv` instead of a single file.
+  \:::
+
+## Multiple-files source
+
+If you uses `*/**.csv` as source in configuration, Nuxt Content will treat them differently from single-file collections. :br**Each file(not row) will be treated as an item**, rows will be parsed into `body` field in item object as an array.
+
+```ts [content.config.ts]
+import { defineCollection, defineContentConfig } from '@nuxt/content'
+import { z } from 'zod'
+
+export default defineContentConfig({
+  collections: {
+    charts: defineCollection({
+      type: 'data',
+      source: 'charts/**.csv',
+      schema: z.object({
+        // Body is important in CSV files, without body field you cannot access to data array
+        body: z.array(z.object({
+          label: z.string(),
+          value: z.number()
+        }))
       })
     })
   }
@@ -3258,54 +3134,55 @@ export default defineContentConfig({
 
 ```
 
-## Create `.csv` files
+Create chart files in `content/charts/` directory.
 
-Create author files in `content/authors/` directory.
+  :::code-group
+  ```csv [content/charts/chart1.csv]
+  label,value
+  A,100
+  B,200
+  C,300
+  ```
 
-::code-group
-```csv [users.csv]
-id,name,email
-1,John Doe,john@example.com
-2,Jane Smith,jane@example.com
-3,Alice Johnson,alice@example.com
-```
+  ```csv [content/charts/chart2.csv]
+  label,value
+  Foo,123
+  Bar,456
+  Baz,789
+  ```
+  :::
 
-```csv [team.csv]
-name,role,avatar
-John Doe,Developer,https://avatars.githubusercontent.com/u/1?v=4
-Jane Smith,Designer,https://avatars.githubusercontent.com/u/2?v=4
-```
-::
+  :::warning
+  Each CSV file should have a header row that defines the column names, which will be used as object keys when parsed.
+  :::
 
-::warning
-Each CSV file should have a header row that defines the column names, which will be used as object keys when parsed.
-::
-
-## Query Data
-
-Now we can query authors:
+Now we can query charts:
 
 ```vue
 <script lang="ts" setup>
-// Find a single author
-const { data: author } = await useAsyncData('john-doe', () => {
-  return queryCollection('authors')
-    .where('name', '=', 'John Doe')
+// Find a single chart
+const { data: chart1 } = await useAsyncData('chart1', () => {
+  return queryCollection('charts')
+    .where('id', '=', 'charts/charts/chart1.csv')
     .first()
 })
 
-// Get all authors
-const { data: authors } = await useAsyncData('authors', () => {
-  return queryCollection('authors')
-    .order('name', 'ASC')
+// Get all charts
+const { data: charts } = await useAsyncData('charts', () => {
+  return queryCollection('charts')
+    .order('id', 'ASC')
     .all()
 })
+
 </script>
 
 <template>
   <ul>
-    <li v-for="author in authors" :key="author.id">
-      {{ author.name }} ({{ author.email }})
+    <li v-for="chart in charts" :key="chart.id">
+      <!-- CSV data are in `chart.body` as an array -->
+      <p v-for="data in chart.body">
+        {{ data.label }} - {{ data.value }}
+      </p>
     </li>
   </ul>
 </template>
@@ -3371,12 +3248,13 @@ id;name;email
 2;Jane Smith;jane@example.com
 ```
 
-::note
-The CSV parser can be disabled by setting 
+  :::note
+  The CSV parser can be disabled by setting 
 
-`csv: false`
+  `csv: false`
 
- in the configuration if you don't need CSV support.
+   in the configuration if you don't need CSV support.
+  :::
 ::
 
 
@@ -3389,7 +3267,7 @@ Use the auto-imported `queryCollection` to find contents inside a collection. He
 If you have not defined any collection, check [How to define a collection](https://content.nuxt.com/docs/collections/define#defining-collections).
 
 ```vue [pages/[...slug\\].vue]
-<script>
+<script setup>
 const route = useRoute()
 const { data: page } = await useAsyncData(route.path, () => {
   return queryCollection('docs').path(route.path).first()
@@ -3430,8 +3308,6 @@ interface CollectionQueryBuilder<T> {
 Create a query builder to search in the specific collection.
 
 - Parameter:
-
-
   - `collection`: The key of defined collection in `content.config.ts`
 
 ### `path(path: string)`
@@ -3439,8 +3315,6 @@ Create a query builder to search in the specific collection.
 Search for contents that have specific `path`. (`path` is an special field in `page` collections which generates based on fs path and can be use as route to render the content)
 
 - Parameter:
-
-
   - `path`: The path string to match.
 
 ```ts
@@ -3455,8 +3329,6 @@ const { data } = await useAsyncData(route.path, () => {
 Select specific fields from the collection to be returned in the query result.
 
 - Parameters:
-
-
   - `...fields`: A list of field names to select from the collection.
 
 ```ts
@@ -3473,12 +3345,8 @@ const { data } = await useAsyncData(route.path, () => {
 Add a condition to the query to filter results based on a specific field.
 
 - Parameters:
-
-
   - `field`: The field to filter on
   - `operator`: The SQL operator to use for comparison. Possible values include:
-
-
     - `'='`: Equal to
     - `'>'`: Greater than
     - `'<'`: Less than
@@ -3510,8 +3378,6 @@ const { data } = await useAsyncData(route.path, () => {
 Add an AND condition group to the query. This allows for more complex query conditions.
 
 - Parameter:
-
-
   - `groupFactory`: A function that receives a query builder and can add multiple conditions that will be grouped together with AND
 
 ```ts
@@ -3531,8 +3397,6 @@ const { data } = await useAsyncData('recent-docs', () => {
 Add an OR condition group to the query. This allows for alternative conditions.
 
 - Parameter:
-
-
   - `groupFactory`: A function that receives a query builder and can add multiple conditions that will be grouped together with OR
 
 ```ts
@@ -3552,8 +3416,6 @@ const { data } = await useAsyncData('featured-docs', () => {
 Order the query results based on a specific field.
 
 - Parameters:
-
-
   - `field`: The field to order by.
   - `direction`: The direction of ordering, either 'ASC' for ascending or 'DESC' for descending.
 
@@ -3571,8 +3433,6 @@ const { data } = await useAsyncData(route.path, () => {
 Limit the number of results returned by the query.
 
 - Parameter:
-
-
   - `limit`: The maximum number of results to return.
 
 ```ts
@@ -3589,8 +3449,6 @@ const { data } = await useAsyncData(route.path, () => {
 Skip a specified number of results in the query.
 
 - Parameter:
-
-
   - `skip`: The number of results to skip.
 
 ```ts
@@ -3767,13 +3625,9 @@ interface ChainablePromise<T extends keyof PageCollections, R> extends Promise<R
 Generate a navigation tree for the specified collection.
 
 - Parameters:
-
-
   - `collection`: The key of the defined collection in `content.config.ts`.
   - `extraFields`: (Optional) An array of additional fields to include in the navigation items. (By default `title` and `path` are included in the navigation items.)
 - Returns: A chainable promise that resolves to a navigation tree structure. The promise includes methods for adding query conditions:
-
-
   - `where(field, operator, value)`: Add a WHERE condition
   - `andWhere(groupFactory)`: Add a grouped AND condition
   - `orWhere(groupFactory)`: Add a grouped OR condition
@@ -3863,9 +3717,7 @@ Returns the headline (name of the parent folder) for a given path within a navig
 
 - `navigation`: The navigation tree (array of ContentNavigationItem).
 - `path`: The current page path.
-- `options` (optional):
-
-
+- `options`(optional):
   - `indexAsChild`: Treat index pages as children.
 
 **Example:**
@@ -3883,9 +3735,7 @@ Returns the breadcrumb trail (array of navigation items) for a given path within
 
 - `navigation`: The navigation tree (array of ContentNavigationItem).
 - `path`: The current page path.
-- `options` (optional):
-
-
+- `options`(optional):
   - `current`: Include the current page in the breadcrumb.
   - `indexAsChild`: Treat index pages as children.
 
@@ -3904,9 +3754,7 @@ Finds and returns the direct children of a given path in the navigation tree.
 
 - `navigation`: The navigation tree (array of ContentNavigationItem).
 - `path`: The parent path to find children for.
-- `options` (optional):
-
-
+- `options`(optional):
   - `indexAsChild`: Treat index pages as children.
 
 **Example:**
@@ -3924,9 +3772,7 @@ Returns the sibling navigation items for a given path (i.e., other items with th
 
 - `navigation`: The navigation tree (array of ContentNavigationItem).
 - `path`: The current page path.
-- `options` (optional):
-
-
+- `options`(optional):
   - `indexAsChild`: Treat index pages as children.
 
 **Example:**
@@ -3993,19 +3839,13 @@ interface ChainablePromise<T extends keyof PageCollections, R> extends Promise<R
 Find the surrounding items (previous and next) for a specific content item in a collection.
 
 - Parameters:
-
-
   - `collection`: The key of the defined collection in `content.config.ts`.
   - `path`: The path of the current content item.
   - `opts`: (Optional) An object with the following properties:
-
-
     - `before`: (Optional) The number of items to fetch before the current item. Default is 1.
     - `after`: (Optional) The number of items to fetch after the current item. Default is 1.
     - `fields`: (Optional) An array of additional fields to include in the surrounding items.
 - Returns: A chainable promise that resolves to an array containing the surrounding items. The promise includes methods for adding query conditions:
-
-
   - `where(field, operator, value)`: Add a WHERE condition
   - `andWhere(groupFactory)`: Add a grouped AND condition
   - `orWhere(groupFactory)`: Add a grouped OR condition
@@ -4109,7 +3949,7 @@ The
 ## Type
 
 ```ts
-function queryCollectionSearchSections(collection: keyof Collections, opts?: { ignoredTags: string[] }): ChainablePromise<T, Section[]>
+function queryCollectionSearchSections(collection: keyof Collections, opts?: { ignoredTags?: string[], minHeading?: string, maxHeading?: string }): ChainablePromise<T, Section[]>
 
 interface ChainablePromise<T extends keyof PageCollections, R> extends Promise<R> {
   where(field: keyof PageCollections[T] | string, operator: SQLOperator, value?: unknown): ChainablePromise<T, R>
@@ -4126,16 +3966,12 @@ interface ChainablePromise<T extends keyof PageCollections, R> extends Promise<R
 Generate searchable sections from the specified collection.
 
 - Parameters:
-
-
   - `collection`: The key of the defined collection in `content.config.ts`.
   - `options`: (Optional) An object with the following properties:
-
-
     - `ignoredTags`: An array of tag names to ignore when generating sections. Default is an empty array.
+    - `minHeading`: Minimum heading level to split on (e.g., `'h2'`). Default is `'h1'`.
+    - `maxHeading`: Maximum heading level to split on (e.g., `'h3'`). Default is `'h6'`.
 - Returns: A Promise that resolves to an array of searchable sections. Each section is an object with the following properties:
-
-
   - `id`: A unique identifier for the section.
   - `title`: The title of the section (usually the heading text).
   - `titles`: An array of parent section titles, representing the hierarchy.
@@ -4150,7 +3986,9 @@ Here's an example of how to use `queryCollectionSearchSections` to create search
 <script>
 const { data: surround } = await useAsyncData('foo-surround', () => {
   return queryCollectionSearchSections('docs', {
-    ignoredTags: ['code']
+    ignoredTags: ['code'],
+    minHeading: 'h2',
+    maxHeading: 'h3',
   })
 })
 </script>
@@ -4351,8 +4189,6 @@ When not using the `title` slot, the `h2` element will not be rendered.
 ## Props
 
 - `mdc-unwrap`: Whether to unwrap the content or not. This is useful when you want to extract the content nested in native Markdown syntax. Each specified tag will get removed from AST.
-
-
   - **Type:** `boolean` or `string`
   - **Default:** `false`
   - **Example:** `'p'` or `'ul li'`
@@ -4367,7 +4203,7 @@ To overwrite a prose component, create a component with the same name in your pr
 ::note
 Prose components are originally part of 
 
-[`@nuxtjs/mdc`](https://github.com/nuxt-modules/mdc){rel="nofollow"}
+[`@nuxtjs/mdc`](https://github.com/nuxt-modules/mdc){rel=""nofollow""}
 
 .
 ::
@@ -4376,11 +4212,11 @@ Prose components are originally part of
 
 ::code-group
 ```md [Code]
-[Link](/docs/components/prose)
+[Prose Components](/docs/components/prose)
 ```
 
   :::code-preview{icon="i-lucide-eye" label="Preview"}
-  [Link](https://content.nuxt.com/docs/components/prose)
+  [Prose Components](https://content.nuxt.com/docs/components/prose)
   :::
 ::
 
@@ -4461,7 +4297,7 @@ If you want to use
 
   :::code-preview{icon="i-lucide-eye" label="Preview"}
   `code`
-  
+
   `const code: string = 'highlighted code inline'`{.shiki,shiki-themes,material-theme-lighter,material-theme,material-theme-palenight lang="ts"}
   :::
 ::
@@ -4551,9 +4387,9 @@ Divider above.
 
   :::code-preview{icon="i-lucide-eye" label="Preview"}
   Divider under.
-  
+
   ---
-  
+
   Divider above.
   :::
 ::
@@ -4719,7 +4555,7 @@ You can use
 
  to check the Glibc version. Checkout 
 
-[issue #3248](https://github.com/nuxt/content/issues/3248){rel="nofollow"}
+[issue #3248](https://github.com/nuxt/content/issues/3248){rel=""nofollow""}
 
  for more details.
 ::
@@ -4791,7 +4627,6 @@ Serverless hosting lets you run code and applications without managing servers d
 
 The module have built-in support for couple of famous serverless platforms. You can deploy your project to them with ease. Checkout the guides for each platform:
 
-- [NuxtHub](https://content.nuxt.com/docs/deploy/nuxthub)
 - [Cloudflare Pages](https://content.nuxt.com/docs/deploy/cloudflare-pages)
 - [Vercel](https://content.nuxt.com/docs/deploy/vercel)
 
@@ -4842,22 +4677,6 @@ export default defineNuxtConfig({
   }
 })
 ```
-
-```ts [NuxtHub]
-// Install the NuxtHub module (see hub.nuxt.com)
-export default defineNuxtConfig({
-  modules: ['@nuxt/content', '@nuxthub/core'],
-  content: {
-    database: {
-      type: 'd1',
-      binding: 'DB'
-    }
-  },
-  hub: {
-    database: true
-  }
-})
-```
 ::
 
 ### 2. Deploy your project
@@ -4866,10 +4685,10 @@ Nuxt Content uses Nuxt deployment presets to adjust the build process for differ
 
 Various serverless platform are supported with zero configuration:
 
-- [Cloudflare](https://nuxt.com/deploy/cloudflare){rel="nofollow"}
-- [NuxtHub](https://nuxt.com/deploy/nuxthub){rel="nofollow"}
-- [Vercel](https://nuxt.com/deploy/vercel){rel="nofollow"}
-- [Netlify](https://nuxt.com/deploy/netlify){rel="nofollow"}
+- [Cloudflare](https://nuxt.com/deploy/cloudflare){rel="&#x22;nofollow&#x22;"}
+- [NuxtHub](https://nuxt.com/deploy/nuxthub){rel="&#x22;nofollow&#x22;"}
+- [Vercel](https://nuxt.com/deploy/vercel){rel="&#x22;nofollow&#x22;"}
+- [Netlify](https://nuxt.com/deploy/netlify){rel="&#x22;nofollow&#x22;"}
 
 All you need to do is to set the build command to:
 
@@ -4928,40 +4747,21 @@ We recommend to checkout
 
 # NuxtHub
 
-::card
-Quick Setup
-
-1. Install the `@nuxthub/core` module `nuxi module add hub`
-2. Use `npx nuxthub deploy` to deploy your content to NuxtHub
-::
-
----
-
-Nuxt Content module has a built-in integration with [NuxtHub](https://hub.nuxt.com){rel="nofollow"} to deploy your content.
+Nuxt Content module has a built-in integration with [NuxtHub](https://hub.nuxt.com){rel="&#x22;nofollow&#x22;"} to deploy your content.
 
 To enable NuxtHub integration, you need to install the `@nuxthub/core` module and register it in your `nuxt.config.ts`. More efficiently, you can use `nuxi module` command to do both at once.
 
-```bash
+```bash [Terminal]
 npx nuxi module add hub
 ```
 
 That's it 🎉
 
-Now you can use the `npx nuxthub deploy` command to deploy your content to NuxtHub.
-
-```bash
-npx nuxthub deploy
-```
-
-::note
-Nuxt Content module automatically enables NuxtHub database. And update database configuration to use Cloudflare D1 with `DB` binding name. (This is default configuration for NuxtHub database.)
-
-:br
-
-You can override the database configuration by providing your own database configuration in `nuxt.config.ts`.
+::callout
+Nuxt Content module automatically reads the NuxtHub database options in order to share the same database to store the Nuxt Content data.
 ::
 
-Checkout the [NuxtHub documentation](https://hub.nuxt.com/docs/getting-started/deploy){rel="nofollow"} for more information.
+Checkout the [NuxtHub documentation](https://hub.nuxt.com){rel="&#x22;nofollow&#x22;"} for more information.
 
 
 # Cloudflare Pages
@@ -4970,19 +4770,19 @@ Checkout the [NuxtHub documentation](https://hub.nuxt.com/docs/getting-started/d
 Quick Setup
 
 1. Use `nuxi build --preset=cloudflare_pages` to build your app
-2. Create D1 database and connect to your project in Cloudflare Dashboard under `DB` binding name
+2. Create and connect a D1 database to your project in the Cloudflare Dashboard using binding name `DB`
 3. Deploy/Redeploy your app
 ::
 
 ---
 
-Nuxt Content module has a built-in integration with [Cloudflare Pages](https://pages.cloudflare.com){rel="nofollow"} to deploy your content.
+The Nuxt Content module has a built-in integration with [Cloudflare Pages](https://pages.cloudflare.com){rel="&#x22;nofollow&#x22;"} to deploy your content.
 
-Module will automatically detects the build target and prepare the necessary configuration for Cloudflare Pages.
+The Module will automatically detect the build target and prepare the necessary configuration for Cloudflare Pages.
 
-You can either use `--preset=cloudflare_pages` option on `nuxi build` command or use `nuxt.config.ts` to configure the preset.
+You can either use the `--preset=cloudflare_pages` option with the `nuxi build` command or use `nuxt.config.ts` to configure the preset.
 
-```ts
+```ts [nuxt.config.ts]
 export default defineNuxtConfig({
   nitro: {
     preset: 'cloudflare_pages',
@@ -4990,17 +4790,36 @@ export default defineNuxtConfig({
 });
 ```
 
-The module requires a D1 database to be connected to the app in order to work. By default it will use the `DB` binding name. You can override the database configuration by providing your own database configuration in `nuxt.config.ts`.
+## D1 Database
 
-After creating a new Cloudflare Pages project, you need to create a new D1 database and connect it to the project. Make sure to use the same binding name as the module is using. (default is `DB`)
+A D1 database connected to the app is **required*&#x2A; for the Nuxt Content module to work. By default the module uses the binding name &#x2A;*`DB`**. You can override the [database configuration](https://content.nuxt.com/docs/getting-started/configuration#d1) by providing your own in `nuxt.config.ts`.
+
+After creating a new Cloudflare Pages project, you need to create a new D1 database and connect it to the project. Make sure to use the same binding name as the module is using.
+
+### Local Preview
+
+While `nuxi dev` and `nuxi build` don't require any extra configuration, testing a build locally with `nuxi preview` requires Cloudflare's Wrangler to be configured to provide a temporary, local database for Nuxt Content to bind. This can be done with a `wrangler.jsonc` or `wrangler.toml` file. Because Wrangler creates a local database, `database_name` and `database_id` can safely, but don't need to, match the values in production.
+
+```jsonc [wrangler.jsonc]
+{
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "example-db",
+      "database_id": "example-db-id"
+    }
+  ]
+}
+```
 
 That's it 🎉
 
-Checkout:
+Relevant resources:
 
-- [Nuxt Deploy documentation](https://nuxt.com/deploy/cloudflare){rel="nofollow"}
-- [Cloudflare D1 documentation](https://developers.cloudflare.com/d1/){rel="nofollow"}
-- [Cloudflare Pages documentation](https://developers.cloudflare.com/pages/){rel="nofollow"}
+- [Nuxt Deploy documentation](https://nuxt.com/deploy/cloudflare){rel="&#x22;nofollow&#x22;"}
+- [Cloudflare D1 documentation](https://developers.cloudflare.com/d1/){rel="&#x22;nofollow&#x22;"}
+- [Create and bind a D1 database](https://developers.cloudflare.com/d1/get-started/){rel="&#x22;nofollow&#x22;"}
+- [Cloudflare Pages documentation](https://developers.cloudflare.com/pages/){rel="&#x22;nofollow&#x22;"}
 
 
 # Cloudflare Workers
@@ -5015,7 +4834,7 @@ Quick Setup
 
 ---
 
-The Nuxt Content module has a built-in integration with [Cloudflare Workers](https://workers.cloudflare.com){rel="nofollow"} to deploy your content.
+The Nuxt Content module has a built-in integration with [Cloudflare Workers](https://workers.cloudflare.com){rel="&#x22;nofollow&#x22;"} to deploy your content.
 
 The module will automatically detect the build target and prepare the necessary configuration for Cloudflare Workers.
 
@@ -5073,9 +4892,9 @@ That's it! 🎉
 
 Check out:
 
-- [Nuxt Deploy documentation](https://nuxt.com/deploy/cloudflare){rel="nofollow"}
-- [Cloudflare D1 documentation](https://developers.cloudflare.com/d1/){rel="nofollow"}
-- [Cloudflare Workers documentation](https://developers.cloudflare.com/workers/){rel="nofollow"}
+- [Nuxt Deploy documentation](https://nuxt.com/deploy/cloudflare){rel="&#x22;nofollow&#x22;"}
+- [Cloudflare D1 documentation](https://developers.cloudflare.com/d1/){rel="&#x22;nofollow&#x22;"}
+- [Cloudflare Workers documentation](https://developers.cloudflare.com/workers/){rel="&#x22;nofollow&#x22;"}
 
 
 # Vercel
@@ -5104,8 +4923,8 @@ There are a couple of database providers that are supported by Vercel. You can u
 
 Checkout:
 
-- [Nuxt Deploy documentation](https://nuxt.com/deploy/vercel){rel="nofollow"}
-- [Vercel documentation](https://vercel.com/docs/deployments/deployment-methods){rel="nofollow"}
+- [Nuxt Deploy documentation](https://nuxt.com/deploy/vercel){rel="&#x22;nofollow&#x22;"}
+- [Vercel documentation](https://vercel.com/docs/deployments/deployment-methods){rel="&#x22;nofollow&#x22;"}
 
 
 # Netlify
@@ -5140,8 +4959,8 @@ That's it 🎉
 
 Checkout:
 
-- [Nuxt Deploy documentation](https://nuxt.com/deploy/netlify){rel="nofollow"}
-- [Netlify documentation](https://www.netlify.com/blog/2016/09/29/a-step-by-step-guide-deploying-on-netlify/){rel="nofollow"}
+- [Nuxt Deploy documentation](https://nuxt.com/deploy/netlify){rel="&#x22;nofollow&#x22;"}
+- [Netlify documentation](https://www.netlify.com/blog/2016/09/29/a-step-by-step-guide-deploying-on-netlify/){rel="&#x22;nofollow&#x22;"}
 
 
 # AWS Amplify
@@ -5149,14 +4968,36 @@ Checkout:
 ::card
 Quick Setup
 
-- Install `sqlite3` package in your project.
-- Go to AWS Amplify dashboard and create a new project using git repository and deploy the app.
+- Prepare Sqlite Connector
+  - Option A (recommended on Node.js 22+): Use native `node:sqlite`
+  - Option B (legacy): Install `sqlite3` package in your project.
+- Go to AWS Amplify dashboard and create a new project using your git repository and deploy the app.
 ::
 
 ---
 
 Nuxt Content projects can be deployed to AWS Amplify with zero configuration.
 The module will automatically detect an AWS Amplify environment and will prepare the necessary configuration for deployment.
+
+## Option A: Use native `node:sqlite`
+
+In order to use native `node:sqlite` package, you need to change node version to 22+. This can be easily done
+in Amplify dashboard via `Build Settings` > `Live Package Updates` > `Package (Node.js version) = 22`.
+
+This is also possible via `amplify.yml` inside `preBuild` phase.
+
+```yml
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - nvm install 22
+        - nvm use 22
+        - node -v
+        - npm ci
+```
+
+## Option B: Use `sqlite3`
 
 All you need to do is to install `sqlite3` package in your project and go to AWS Amplify dashboard and create a new project using git repository.
 
@@ -5172,7 +5013,7 @@ By default module will use SQlite database located at
 
 Checkout:
 
-- [Nuxt Deploy documentation](https://nuxt.com/deploy/aws-amplify){rel="nofollow"}
+- [Nuxt Deploy documentation](https://nuxt.com/deploy/aws-amplify){rel="&#x22;nofollow&#x22;"}
 
 
 # Docker
@@ -5232,7 +5073,7 @@ WORKDIR /app
 
 COPY package.json bun.lock* ./
 
-# use ignore-scripts to avoid builting node modules like better-sqlite3
+# use ignore-scripts to avoid building node modules like better-sqlite3
 RUN bun install --frozen-lockfile --ignore-scripts
 
 # Copy the entire project
@@ -5253,9 +5094,9 @@ ENTRYPOINT [ "bun", "--bun", "run", "/app/server/index.mjs" ]
 ```
 
 
-# I18n module
+# Nuxt i18n module
 
-Nuxt Content integrates with [`@nuxtjs/i18n`](https://i18n.nuxtjs.org/){rel="nofollow"} to create multi-language websites. When both modules are configured together, you can organize content by language and automatically serve the correct content based on the user's locale.
+Nuxt Content integrates with `@nuxtjs/i18n` to create multi-language websites. When both modules are configured together, you can organize content by language and automatically serve the correct content based on the user's locale.
 
 ## Setup
 
@@ -5413,13 +5254,13 @@ Make sure to handle missing content gracefully and provide clear feedback to use
 
 You can see a complete working example:
 
-- **Source**: <https://github.com/nuxt/content/tree/main/examples/i18n>{rel="nofollow"}
-- **Live Demo**: <https://content3-i18n.nuxt.dev/>{rel="nofollow"}
+- **Source**: <https://github.com/nuxt/content/tree/main/examples/i18n>{rel="&#x22;nofollow&#x22;"}
+- **Live Demo**: <https://content3-i18n.nuxt.dev/>{rel="&#x22;nofollow&#x22;"}
 
 
-# LLMs module
+# Nuxt LLMs module
 
-The Nuxt Content module integrates [`nuxt-llms`](https://github.com/nuxtlabs/nuxt-llms){rel="nofollow"} to prepare your content for Large Language Models (LLMs). When `nuxt-llms` is detected, Content module automatically extends the LLMs module and inject collections of type [page](https://content.nuxt.com/docs/collections/types#page-type){rel="nofollow"} to the LLMs module.🚀
+The Nuxt Content module integrates `nuxt-llms` to prepare your content for Large Language Models (LLMs). When `nuxt-llms` is detected, Content module automatically extends the LLMs module and inject collections of type [page](https://content.nuxt.com/docs/collections/types#page-type){rel="&#x22;nofollow&#x22;"} to the LLMs module.🚀
 
 ## Setup
 
@@ -5446,6 +5287,29 @@ export default defineNuxtConfig({
 
 That's it 🚀 `/llms.txt` file is automatically generated and pre-rendered.
 
+## Raw markdown access
+
+When `nuxt-llms` is enabled, Nuxt Content also exposes a raw markdown endpoint so you can stream LLM-ready source files without going through the full rendering pipeline.
+
+- **Endpoint**: `/raw/<content-path>.md` (use the same path as the page URL, drop trailing `/index`, and keep the `.md` extension), returning `text/markdown; charset=utf-8`.
+- **Scope**: only `page` collections are included; exclude specific collections with `llms.contentRawMarkdown.excludeCollections`. Set `llms.contentRawMarkdown = false` to disable the endpoint entirely.
+- **Output**: if the requested document is missing a top-level heading or description, the route prepends the title and description to the markdown body before returning it.
+- **llms.txt links**: document links generated in `llms.txt` are automatically rewritten to the `/raw/...md` endpoint (unless the collection is excluded or the feature is disabled) so agents fetch compact markdown instead of full HTML, reducing token usage and improving response speed. Control this with `llms.contentRawMarkdown.rewriteLLMSTxt` (defaults to `true`).
+
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+  modules: ['@nuxt/content', 'nuxt-llms'],
+  llms: {
+    contentRawMarkdown: {
+      // Optional: prevent specific page collections from being exposed
+      excludeCollections: ['blog'],
+      // Optional: keep llms.txt links pointing to rendered pages
+      rewriteLLMSTxt: false,
+    },
+  },
+})
+```
+
 ## Sections
 
 When generating content, you can create custom sections to process your content into LLM-friendly formats.
@@ -5459,7 +5323,7 @@ If there is no section defined in the
 
  option, the module will only add 
 
-[page](https://content.nuxt.com/docs/collections/types#page-type){rel="nofollow"}
+[page](https://content.nuxt.com/docs/collections/types#page-type){rel=""nofollow""}
 
  collections to the LLMs module.
 ::
@@ -5521,13 +5385,13 @@ Checkout the nuxt-llms documentation for more information about the module.
 
 # Full-Text Search
 
-Content module exposes a handy utility [`queryCollectionSearchSections`](https://content.nuxt.com/docs/utils/query-collection-search-sections) to break down content files into searchable sections. This is useful for implementing full-text search in your website. You can use the result of this utility in combination with [Nuxt UI Content Search](https://ui.nuxt.com/pro/components/content-search){rel="nofollow"} or other search libraries like [Fuse.js](https://fusejs.io/){rel="nofollow"}, [minisearch](https://lucaong.github.io/minisearch){rel="nofollow"}, etc.
+Content module exposes a handy utility [`queryCollectionSearchSections`](https://content.nuxt.com/docs/utils/query-collection-search-sections) to break down content files into searchable sections. This is useful for implementing full-text search in your website. You can use the result of this utility in combination with [Nuxt UI Content Search](https://ui.nuxt.com/pro/components/content-search){rel="&#x22;nofollow&#x22;"} or other search libraries like [Fuse.js](https://fusejs.io/){rel="&#x22;nofollow&#x22;"}, [minisearch](https://lucaong.github.io/minisearch){rel="&#x22;nofollow&#x22;"}, etc.
 
 ## Nuxt UI
 
 Nuxt UI provides a ready to use component for full-text search. You can use it by passing the result of `queryCollectionSearchSections` to the `files` prop of the component.
 
-Read more about [Nuxt UI Content Search](https://ui.nuxt.com/pro/components/content-search){rel="nofollow"}.
+Read more about [Nuxt UI Content Search](https://ui.nuxt.com/pro/components/content-search){rel="&#x22;nofollow&#x22;"}.
 
 ::code-group
 ```vue [UContentSearchExample.vue]
@@ -5549,14 +5413,13 @@ const searchTerm = ref('')
 ```
 
   :::code-preview{icon="i-lucide-eye" label="Preview"}
-    ::::example-fulltext-content-search
-    ::::
+  :example-fulltext-content-search
   :::
 ::
 
 ## MiniSearch example
 
-Read more about [minisearch](https://lucaong.github.io/minisearch){rel="nofollow"}.
+Read more about [minisearch](https://lucaong.github.io/minisearch){rel="&#x22;nofollow&#x22;"}.
 
 ::code-group
 ```vue [MiniSearchExample.vue]
@@ -5596,14 +5459,13 @@ const result = computed(() => miniSearch.search(toValue(query)))
 ```
 
   :::code-preview{icon="i-lucide-eye" label="Preview"}
-    ::::example-fulltext-mini-search
-    ::::
+  :example-fulltext-mini-search
   :::
 ::
 
 ## Fuse.js example
 
-Read more about [Fuse.js](https://fusejs.io){rel="nofollow"}.
+Read more about [Fuse.js](https://fusejs.io){rel="&#x22;nofollow&#x22;"}.
 
 ::code-group
 ```vue [FusejsExample.vue]
@@ -5640,8 +5502,7 @@ const result = computed(() => fuse.search(toValue(query)).slice(0, 10))
 ```
 
   :::code-preview{icon="i-lucide-eye" label="Preview"}
-    ::::example-fulltext-fusejs
-    ::::
+  :example-fulltext-fusejs
   :::
 ::
 
@@ -5791,7 +5652,6 @@ This file is automatically generated when you start your Nuxt app. No need to cr
 
 1. **Check if the database exists** (`.data/content/contents.sqlite`).
 2. **Run a cleanup & restart Nuxt**:
-
    ```bash \[Terminal]
    npx nuxi cleanup && npx nuxi dev
    ```
@@ -5802,17 +5662,14 @@ This file is automatically generated when you start your Nuxt app. No need to cr
 If things seem **really broken**, try resetting it:
 
 1. **Delete the database file**:
-
    ```bash \[Terminal]
    rm -rf .data/content/contents.sqlite
    ```
-2. **Run cleanup** to remove old caches:
-
+2. **Run cleanup**to remove old caches:
    ```bash \[Terminal]
    npx nuxi cleanup
    ```
-3. **Restart Nuxt** to generate a fresh database:
-
+3. **Restart Nuxt**to generate a fresh database:
    ```bash \[Terminal]
    npx nuxi dev
    ```
@@ -5825,7 +5682,7 @@ Cleaning up will remove cached data. Don't worry—it regenerates automatically!
 
 If VS Code isn’t enough, check out:
 
-- 🖥️ [**DB Browser for SQLite**](https://sqlitebrowser.org/){rel="nofollow"} – A visual tool for inspecting & modifying the database.
+- 🖥️ [**DB Browser for SQLite**](https://sqlitebrowser.org/){rel="&#x22;nofollow&#x22;"} – A visual tool for inspecting & modifying the database.
 - 🛠️ **SQLite Command Line** – Use `sqlite3 contents.sqlite` to run SQL queries from your terminal.
 
 
@@ -6105,1052 +5962,6 @@ export default defineNuxtConfig({
 This approach allows you to extend Nuxt Content to handle any custom file format you need.
 
 
-# Introduction
-
-## The new Nuxt Studio module
-
-When NuxtLabs joined Vercel, the team promised to release [nuxt.studio](https://nuxt.studio){rel="nofollow"} as a free open-source, self-hosted module for Nuxt projects.
-
-::u-button
----
-color: neutral
-icon: i-simple-icons-github
-target: _blank
-to: https://github.com/nuxt-content/studio
-variant: subtle
----
-Discover the Nuxt Studio module on GitHub.
-::
-
-That promise is now fulfilled. Thanks to vercel support the first version of the **Nuxt Studio module** is available.
-
-You can now enable **content editing directly in production**, with real-time preview and GitHub integration, all from within your own Nuxt application.
-
-::u-button
----
-external: ""
-color: neutral
-icon: i-lucide-mouse-pointer-click
-to: https://content.nuxt.com/admin?redirect=/docs/studio/introduction
----
-Try editing this page
-::
-
-## How does it differ from the standalone platform?
-
-Originally offered as a hosted platform at [nuxt.studio](https://nuxt.studio){rel="nofollow"}, Studio has evolved into an open-source Nuxt module that you can deploy alongside your Nuxt Content website.
-
-This means content editors can manage and update content directly in production, without needing local development tools or Git knowledge.
-
-### Key differences
-
-- ✅ **Self-hosted** — runs entirely on your own infrastructure
-- ✅ **No external dependencies** — no APIs or third-party services required
-- ✅ **Free and open-source** — released under the MIT license
-- ✅ **Built-in integration** — works within your Nuxt app
-
-::warning
-The new Nuxt Studio module requires a server-side route for authentication.
-While static generation remains supported, your site must be 
-
-**deployed on a platform that supports server-side rendering (SSR)**
-
-.
-::
-
-
-# Setup Nuxt Studio
-
-::note{to="https://nuxt.studio/docs/setup"}
-This documentation covers only the new open-source Nuxt Studio module.
-Click here to view the documentation for the legacy standalone platform.
-::
-
-## Installation
-
-Install Nuxt Studio using the Nuxt CLI within your project:
-
-```bash [Terminal]
-npx nuxt module add nuxt-studio@alpha
-```
-
-::tip{icon="i-lucide-rocket"}
-Start your development server and start editing your Nuxt Content website.
-::
-
-## Development mode
-
-When running locally, **any file changes will be synchronized in real time with your local filesystem**.
-
-The publish system is only available in production mode. Use your current workflow (git command, IDE, GitHub Desktop...) to commit your changes.
-
-## Production mode
-
-While Nuxt Studio can be useful during development (especially with the upcoming Studio editor) its main advantage is the ability to publish changes directly from your production website.
-
-In order to publish changes in production, you need to configure the git repository:
-
-```ts [nuxt.config.ts]
-export default defineNuxtConfig({
-  studio: {
-    // Git repository configuration (owner and repo are required)
-    repository: {
-      provider: 'github', // 'github' or 'gitlab'
-      owner: 'your-username', // your GitHub/GitLab username or organization
-      repo: 'your-repo', // your repository name
-      branch: 'main', // the branch to commit to (default: 'main')
-    }
-  }
-})
-```
-
-::callout{to="https://content.nuxt.com/#options"}
-Read more about all the available options.
-::
-
-### OAuth Configuration
-
-To enable this Nuxt Studio supports authentication through both GitHub and GitLab OAuth providers allowing you to log in and publish updates from production.
-
-::tip
----
-icon: i-lucide-info
-to: https://content.nuxt.com/docs/studio/providers#oauth-providers
----
-Follow the setup instructions for your Git provider.
-::
-
-Once your OAuth app is setup, you should have your environment variables set in your hosting provider.
-
-::code-group
-```bash [GitHub]
-STUDIO_GITHUB_CLIENT_ID=<your_github_client_id>
-STUDIO_GITHUB_CLIENT_SECRET=<your_github_client_secret>
-```
-
-```bash [GitLab]
-STUDIO_GITLAB_APPLICATION_ID=<your_gitlab_application_id>
-STUDIO_GITLAB_APPLICATION_SECRET=<your_gitlab_secret>
-```
-::
-
-### Deployment
-
-Nuxt Studio requires a server-side route for authentication.
-
-While static generation remains supported with [Nuxt hybrid rendering](https://nuxt.com/docs/4.x/guide/concepts/rendering#hybrid-rendering){rel="nofollow"}, your site must be &#x2A;*deployed on a platform that supports server-side rendering (SSR)** using `nuxt build` command.
-
-If you want to pre-render all your pages, use the following configuration:
-
-```ts [nuxt.config.ts]
-export default defineNuxtConfig({
-  nitro: {
-    prerender: {
-      // Pre-render the homepage
-      routes: ['/'],
-      // Then crawl all the links on the page
-      crawlLinks: true
-    }
-  }
-})
-```
-
-### Open Studio
-
-Once deployed, open Studio by navigating to your configured route (default: `/_studio`):
-
-1. Click the login button if it does not directly redirect to the OAuth app authorization page
-2. Authorize the OAuth application
-3. You'll be redirected back to Studio ready to edit your content
-
-::tip
-You can also use the shortcut 
-
-`CMD`
-
- \+ 
-
-`.`
-
- to redirect to the Studio route.
-::
-
-::note
-OAuth-based login with 
-
-**Google**
-
- will be available soon.
-::
-
-## Options
-
-Add the module to your `nuxt.config.ts` and configure your repository based on your Git provider:
-
-### Admin route
-
-Customize the login route using the `route` option:
-
-```ts [nuxt.config.ts]
-export default defineNuxtConfig({
-  studio: {
-    route: '/admin', // default: '/_studio'
-  }
-})
-```
-
-### Repository
-
-Use the `repository` option to specify your git repository to sync in production mode.
-
-```ts [nuxt.config.ts]
-export default defineNuxtConfig({
-  studio: {
-    repository: {
-      provider: 'github', // 'github' or 'gitlab', default: 'github'
-      owner: 'your-username', // your GitHub/GitLab username or organization
-      repo: 'your-repo', // your repository name
-      branch: 'main', // the branch to commit to (default: main)
-    }
-  }
-})
-```
-
-#### Root directory `default: ''`
-
-If your Nuxt Content application is in a monorepo or subdirectory, specify the `rootDir` option to point to the correct location.
-
-```ts [nuxt.config.ts]
-export default defineNuxtConfig({
-  studio: {
-    repository: {
-      ...
-      rootDir: 'docs'
-    }
-  }
-})
-```
-
-#### Private Repository Access `default: true`
-
-By default, Studio requests access to both public and private repositories.
-
-Setting `private: false` limits the OAuth scope to public repositories only, which may be preferable for security or compliance reasons when working with public repositories.
-
-```ts [nuxt.config.ts]
-export default defineNuxtConfig({
-  studio: {
-    repository: {
-      ...
-      private: false
-    }
-  }
-})
-```
-
-### Internationalization
-
-Nuxt Studio includes built-in internationalization support with the following languages available:
-
-- 🇬🇧 **English** (default)
-- 🇫🇷 **French**
-
-Set your preferred language using the `i18n` option:
-
-```ts [nuxt.config.ts]
-export default defineNuxtConfig({
-  studio: {
-    i18n: {
-      defaultLocale: 'fr' // 'en' or 'fr'
-    }
-  }
-})
-```
-
-This will translate:
-
-- All UI elements and labels
-- Monaco editor snippets and code completion
-- Contextual messages and notifications
-
-::callout{icon="i-lucide-heart-handshake"}
-Community contributions for new language translations are welcome! If you'd like to add support for a new language, please visit the 
-
-[GitHub repository](https://github.com/nuxt-content/studio){rel="nofollow"}
-
- and drop a pull request.
-::
-
-### Dev mode
-
-If you want to use test locally your production setup, disable the `dev` option:
-
-```ts [nuxt.config.ts]
-export default defineNuxtConfig({
-  studio: {
-    dev: false
-  }
-})
-```
-
-Make sure to create another GitHub/GitLab OAuth app that redirects to your local dev server (usually <http://localhost:3000>{rel="nofollow"}).
-
-
-# Oauth Providers
-
-## GitHub
-
-To use GitHub as your Git provider, you need to create a GitHub OAuth application.
-
-::prose-steps{level="4"}
-#### Navigate to GitHub Developer Settings
-
-Go to [GitHub Developer Settings](https://github.com/settings/developers){rel="nofollow"} and click **New OAuth App**
-
-#### Configure the OAuth Application
-
-Fill in the required fields:
-
-- **Application name**: Your app name
-- **Homepage URL**: `https://yourdomain.com`
-- **Authorization callback URL**: `https://yourdomain.com`:note [If you want to try studio locally, set the callback url to your local url `http://localhost:3000`]
-
-#### Copy Your Credentials
-
-After creating the OAuth app, you'll receive:
-
-- A **Client ID** (visible immediately)
-- A **Client Secret** (click **Generate a new client secret**)
-
-#### Set your environment Variables
-
-Add the GitHub OAuth credentials to your deployment platform's environment variables or in your `.env` file in local
-
-```bash [.env]
-STUDIO_GITHUB_CLIENT_ID=<your_github_client_id>
-STUDIO_GITHUB_CLIENT_SECRET=<your_github_client_secret>
-```
-::
-
-::tip
-That's it! Once deployed with the appropriate credentials set as environment variables. Studio will be accessible from your production instance. Just login on the 
-
-`/_studio`
-
- (or on the route you've configured) to start editing.
-::
-
-## GitLab
-
-To use GitLab as your Git provider, you need to create a GitLab OAuth application.
-
-::prose-steps{level="4"}
-#### Navigate to GitLab Applications
-
-Go to your GitLab [User Settings → Applications](https://gitlab.com/-/user_settings/applications){rel="nofollow"} (or your group/organization settings) and create a **New Application**.
-
-#### Configure the OAuth Application
-
-Fill in the required fields:
-
-- **Application name**: Your app name
-- **Redirect URI**: `https://yourdomain.com/__nuxt_studio/auth/gitlab`
-- **Scopes**: Select `api` (required for publication) :note[If you want to try studio locally, add your local url as redirect URI: `http://localhost:3000/__nuxt_studio/auth/gitlab`]
-
-#### Copy Your Credentials
-
-After creating the OAuth application, you'll receive:
-
-- An **Application ID** (visible immediately)
-- A **Secret** (visible immediately)
-
-#### Set your environment Variables
-
-Add the GitLab OAuth credentials to your deployment platform's environment variables or in your `.env` file in local
-
-```bash [.env]
-STUDIO_GITLAB_APPLICATION_ID=<your_gitlab_application_id>
-STUDIO_GITLAB_APPLICATION_SECRET=<your_gitlab_secret>
-```
-::
-
-::tip
-That's it! Once deployed with the appropriate credentials set as environment variables. Studio will be accessible from your production instance. Just login on the 
-
-`/_studio`
-
- (or on the route you've configured) to start editing.
-::
-
-## Advanced options
-
-### Custom Redirect URL
-
-By default, Studio uses your deployment URL as the OAuth redirect URL. If you need to customize it you can specify a custom redirect URL:
-
-```bash [.env]
-# Using GitHub provider
-STUDIO_GITHUB_REDIRECT_URL=https://custom-domain.com
-
-# Using GitLab provider
-STUDIO_GITLAB_REDIRECT_URL=https://custom-domain.com
-```
-
-::callout
-This is useful when you need to handle OAuth callbacks through a specific endpoint.
-::
-
-## Working with Staging/Preview Branches
-
-By default, Studio commits changes to the branch specified in your configuration (typically `main`). However, you can configure Studio to work with a staging or preview branch instead.
-
-This is useful when you want to review changes on a preview environment before merging to production. You can currently handle pull requests manually from GitHub, but automatic PR creation is included in our roadmap and will be implemented in a future release.
-
-::prose-steps
-### Configure
-
-Update your `nuxt.config.ts` to target your staging branch.
-
-```ts [nuxt.config.ts]
-export default defineNuxtConfig({
-  studio: {
-    repository: {
-      owner: 'your-username',
-      repo: 'your-repo',
-      branch: PROCESS.ENV.STUDIO_BRANCH_NAME, // Target your staging branch instead of main
-    }
-  }
-})
-```
-
-  :::tip
-  You can use environment variables to manage multiple branches for different environments.
-  :::
-
-### Deploy
-
-Configure your hosting platform to deploy the staging branch to a preview URL (e.g., `staging.yourdomain.com`).
-
-### Create a Separate OAuth App (based on your Git provider)
-
-Create a new OAuth App specifically for your staging environment and use your staging URL as callback URL.
-
-### Set Environment Variables
-
-Configure your staging deployment env varibales with the staging OAuth credentials.
-
-```bash [.env.staging]
-STUDIO_GITHUB_CLIENT_ID=<your_staging_github_client_id>
-STUDIO_GITHUB_CLIENT_SECRET=<your_staging_github_client_secret>
-STUDIO_GITHUB_BRANCH_NAME=<your_staging_branch_name>
-```
-
-### Access Studio on Staging
-
-Navigate to `https://staging.yourdomain.com/_studio` to edit content. All commits will be pushed to your configured staging branch.
-
-### Merging to Production
-
-Once you're satisfied with changes on your staging branch, create a pull request from your staging branch to your main branch on GitHub to deploy to production.
-
-  :::note
-  **Pull Request Automation Coming Soon**
-  
-  :br
-  
-  Automatic pull request creation from Studio is planned for a future release. For now, you'll need to manually create PRs on GitHub to merge staging changes into your main branch.
-  :::
-::
-
-
-# Edit your content
-
-::warning
-**Alpha Release**
-
-:br
-
-The current version only includes the code editor for Markdown, YAML, and JSON files.
-For now, this section covers the legacy documentation from the original Nuxt Studio platform.
-::
-
-Nuxt Studio offers a versatile workspace for both developers and content writers, giving them the freedom to choose between our differents editors:
-
-- [Notion-like editor](https://content.nuxt.com/#notion-like-editor-markdown-files) for `Markdown` files
-- [Form editor](https://content.nuxt.com/#form-editor) for `YAML` and `JSON` files
-- [Code editor](https://content.nuxt.com/#code-editor) for any kind of files (for technical users only)
-
-Each editor serves its own purpose. Some users are used to code edition, while others prefer a non-technical, visual approach. At the end, **code syntax is the final output** for both editors.
-
-## Code editor
-
-![Edit directly your raw content with our code editor](https://content.nuxt.com/docs/studio/code-editor.webp)
-
-It provides full control over your content, allowing you to write raw content directly:
-
-- [MDC](https://content.nuxt.com/docs/files/markdown) syntax for `Markdown` files
-- [JSON](https://content.nuxt.com/docs/files/json) or [YAML](https://content.nuxt.com/docs/files/yaml) syntax
-
-## Notion-like editor (`Markdown` files)
-
-::warning
-**Alpha Release**
-
-:br
-
-The visual editor isn’t available yet — it’s coming in the beta release.
-For now, this section covers the legacy documentation from the original Nuxt Studio platform.
-::
-
-![edit your website with a visual interface](https://content.nuxt.com/docs/studio/visual-markdown-editor.webp)
-
-This editor is heavily inspired by Notion, well known for its intuitive design and flexibility. Much like a standard text editor, this editor is designed to be familiar and easy to use. However, it stands out with its additional features that improve the writing experience.
-
-::tip{to="https://content.nuxt.com/blog/visual-editor"}
-You want to know how we've built this editor and how it works under the hood? Check this blog post.
-::
-
-### Frontmatter
-
-[Frontmatter](https://content.nuxt.com/docs/files/markdown#frontmatter) is a convention of Markdown-based CMS to provide meta-data to pages, like description or title or any other data you would like to store as `key: value` pair.
-
-Based on the user [collection and schema](https://content.nuxt.com/docs/collections/define) provided, a form is generated to edit this metadata from the editor.
-
-:video{autoplay controls loop poster="/home/videos/HomeNotionLikePoster.webp" src="https://res.cloudinary.com/nuxt/video/upload/v1739982761/frontmatterform_yjafgt.mp4"}
-
-::prose-note{to="https://content.nuxt.com/#form-editor-yaml-and-json-files"}
-Check this section to learn more about form generation based on schema.
-::
-
-### Toolbar
-
-Highlight your text to reveal the toolbar, giving you access to all the standard text editing features (title formatting, Bold, Italic, Strike-through, code, link, class, bullet list, numerated list...).
-
-### Medias
-
-Users can simply drag and drop images directly into the editor. An upload modal will open to let you choose the destination folder.
-
-By typing `/` and searching for `Image` or `Video`, they can quickly insert a media. A modal will open to let them choose the media they want to insert from the media gallery (aka the`public` folder of the Nuxt application).
-
-From the media modal, you can set the [alt attribute](https://www.w3schools.com/tags/att_img_alt.asp){rel="nofollow"} for SEO and accessibility purpose.
-
-### Vue Components
-
-One of this editor standout features is its ability to integrate and customize any complex `Vue` component directly within the editor.
-
-#### Create and integrate your own component
-
-A developer can create any kind of visually complex components and editors will be able to use them and focus on the content. An editor can also play with the component properties, styles, and behaviour to fit its specific requirements as long as the developer made it customisable.
-
-::steps{level="4"}
-#### Create your component
-
-You can create Vue components and integrate them into Markdown. They just need to be located in the `/components/content` folder to be available.
-
-```vue [components/content/HomeFeature.vue]
-<template>
-  <div class="flex items-start gap-3">
-    <div class="flex items-center justify-center border rounded-lg p-1.5">
-      <UIcon :name="icon" />
-    </div>
-    <div class="flex flex-col">
-      <h3 class="font-semibold">
-        <slot name="title" />
-      </h3>
-      <span>
-        <slot name="description" />
-      </span>
-    </div>
-  </div>
-</template>
-
-<script setup lang="ts">
-defineProps({
-  icon: {
-    type: String,
-    default: 'i-ph-cursor-click',
-  },
-})
-</script>
-```
-
-#### Integrate these components easily within any Markdown file using [MDC syntax](https://content.nuxt.com/docs/files/markdown#mdc-syntax)
-
-```mdc [content/index.md]
-::home-feature
-  ---
-  icon: i-mdi-vuejs
-  ---
-  #title
-  Embedded Vue components
-  #description
-  Edit slots and props inside the Notion-like editor.
-::
-```
-
-#### Edit them with our Studio editors
-
-The visual editor simplifies the component edition, allowing you to integrate and edit them directly in the visual editor. Non technical users can play with **slots** and **props** without any technical knowledge.
-
-:video{autoplay controls loop src="https://res.cloudinary.com/nuxt/video/upload/v1744126742/studio/finalpropscomps_usfabp.mp4"}
-
-All components in the `/components/content` folder are available in the editor. Studio users can type `/` anywhere while editing to access the list of available components.
-
-  :::tip{to="https://content.nuxt.com/docs/studio/debug"}
-  Take a look at this section to validate your
-  
-  `Vue`
-  
-  component integration in the editor in local development.
-  :::
-::
-
-#### Integrate built-in components from external libraries
-
-By default, you can integrate any component inside a Markdown file and it should work and be editable from Studio but external components **won't be displayed in the components list in Studio and can't be integrated manually by a Studio editor**.
-
-To list this component inside Studio and fetch all its metadata, you need to set it as global in your Nuxt config file.
-
-Here is an example to integrate Button and Icon components from the [Nuxt UI](https://ui.nuxt.com){rel="nofollow"} library:
-
-```ts
-export default defineNuxtConfig({
-  hooks: {
-    'components:extend': (components) => {
-      const globals = components.filter(c => ['UButton', 'UIcon'].includes(c.pascalName))
-
-      globals.forEach(c => c.global = true)
-    }
-  },
-})
-```
-
-## Form editor
-
-::warning
-**Alpha Release**
-
-:br
-
-The visual editor isn’t available yet — it’s coming in the beta release.
-For now, this section covers the legacy documentation from the original Nuxt Studio platform.
-::
-
-![YAML and JSON edition with auto generated form](https://content.nuxt.com/blog/frontmatters.png)
-
-This editor is used whether you’re editing the [frontmatter]() of a `Markdown` file or a `JSON` / `YAML` file.
-
-It eliminates the need to interact directly with complex file syntax. Instead, a form is automatically generated based on the provided user [collection schema](https://content.nuxt.com/docs/collections/define).
-
-### **Defining your form with** `zod` Schema
-
-::prose-note{to="https://content.nuxt.com/docs/collections/define"}
-Learn more about schema collection definition in the dedicated section.
-::
-
-Once the `schema` property has been defined in your collection, this will automatically generate the corresponding form on Studio interface.
-
-::prose-code-group
-```ts [content.config.ts]
-export default defineContentConfig({
-  collections: {
-    posts: defineCollection({
-      type: 'page',
-      source: 'blog/*.md',
-      schema: z.object({
-        draft: z.boolean().default(false),
-        category: z.enum(['Alps', 'Himalaya', 'Pyrenees']).optional(),
-        date: z.date(),
-        image: z.object({
-          src: property(z.string()).editor({ input: 'media' }),
-          alt: z.string(),
-        }),
-        slug: property(z.string()).editor({ hidden: true }),
-        icon: property(z.string().optional()).editor({ input: 'icon' }),
-        authors: z.array(z.object({
-          slug: z.string(),
-          username: z.string(),
-          name: z.string(),
-          to: z.string(),
-          avatar: z.object({
-            src: z.string(),
-            alt: z.string(),
-          }),
-        })),
-      }),
-    }),
-  },
-})    
-```
-
-  :::code-preview{icon="i-lucide-eye" label="Generated Form"}
-  ![Form preview](https://content.nuxt.com/docs/studio/preview-schema.png)
-  :::
-::
-
-### **Native Inputs Mapping**
-
-Primitive Zod types are automatically mapped to appropriate form inputs in:
-
-- **String** → Text input
-- **Date** → Date picker
-- **Number** → Number input (counter)
-- **Boolean** → Toggle switch
-- **Enum** → Select dropdown
-- **Arrays of strings** → List of badge inputs
-- **Arrays of objects** → Accordion of items with embedded form
-
-:video{autoplay controls loop poster="https://res.cloudinary.com/nuxt/video/upload/v1740679550/arrayobjectandstring_r1jpvz.jpg" src="https://res.cloudinary.com/nuxt/video/upload/v1740679550/arrayobjectandstring_r1jpvz.mp4"}
-
-### Custom Inputs Mapping
-
-Studio goes beyond primitive types. You can customise form fields using the `editor` method, which extends Zod types with metadata to empower editor interface.
-
-This allows you to define custom inputs or hide fields.
-
-#### Usage
-
-```ts [content.config.ts]
-// Icon
-icon: property(z.string()).editor({ input: 'icon', iconLibraries: ['lucide', 'simple-icons'] })
-
-// Media
-image: property(z.string()).editor({ input: 'media' })
-```
-
-#### Options
-
-##### `input: 'media' | 'icon'`
-
-You can set the editor input type. Currently `icon` and `media` are available.
-
-##### `iconLibraries: Array<string>`
-
-Specifies which [Iconify](https://icones.js.org/){rel="nofollow"} libraries to display. Use this option to filter and limit the available icon sets.
-
-`hidden: Boolean`
-
-This option can be set to avoid the display of a field in the Studio editor.
-
-::prose-tip
-Studio inputs are fully extensible. We can create as many input as we want based on our users needs.
-::
-
-
-# Manage and integrate Medias in Nuxt Content Studio CMS
-
-## Browse your medias
-
-All medias located in the `/public` directory are available in the **Media** tab of the Studio interface.
-
-It's an intuitive interface for non technical users to manage their `/public` directory.
-
-Users can easily browse folders, upload new media at any level, and drag and drop media, making medias organization straightforward.
-
-The interface is designed to be intuitive for non-technical users. It can be viewed as a user friendly IDE.
-
-## Use it in the Notion-like editor
-
-::warning
-**Alpha Release**
-
-:br
-
-The visual editor isn’t available yet — it’s coming in the beta release.
-For now, this section covers the legacy documentation from the original Nuxt Studio platform.
-::
-
-Users can simply drag and drop images directly into the editor. An upload modal will open to let you choose the destination folder.
-
-By typing `/` and searching for `Image`, they can quickly insert a media. A modal will open to let them choose the media they want to insert.
-
-From the media modal, you can set the [alt attribute](https://www.w3schools.com/tags/att_img_alt.asp){rel="nofollow"} for SEO and accessibility purpose.
-
-
-# Roadmap
-
-This roadmap outlines the development phases of the self-hosted Nuxt Studio module. We're committed to build a powerful open-source content management system for Nuxt Content websites.
-
-::prose-note
-This roadmap is subject to change based on community feedback and evolving priorities. Join the conversation on 
-
-[GitHub Discussions](https://github.com/nuxt-content/studio/discussions){rel="nofollow"}
-
- or 
-
-[join the Discord](https://discord.gg/sBXDm6e8SP){rel="nofollow"}
-
- to help shape the future of Nuxt Studio.
-::
-
-## Current Status: Alpha Release
-
-::badge
-v1.0.0-alpha - Current Release
-::
-
-The alpha release focuses on core functionality and stability. We're using Monaco editor to ensure all file operations and GitHub work before introducing the visual editor.
-
-## Release Phases
-
-### ✅ Phase 1 - Alpha (Completed)
-
-**Focus**: Core infrastructure, file operations, and GitHub integration
-
-::prose-steps{level="4"}
-#### Monaco Code Editor
-
-Professional code editor for enhanced Markdown with MDC syntax, YAML, and JSON files.
-
-**Features:**
-
-- Syntax highlighting for Markdown, YAML, JSON
-- MDC syntax support
-- Split-screen diff viewer for conflicts
-- Auto-save functionality
-
-**Status:** ✅ Completed
-
-#### File Operations
-
-Complete CRUD operations for content files in the `content/` directory.
-
-**Features:**
-
-- Create new files and folders
-- Edit existing files
-- Delete files and folders
-- Rename and move files
-- Draft management with status tracking
-
-**Status:** ✅ Completed
-
-#### Media Management
-
-Centralized media library for assets in the `public/` directory.
-
-**Features:**
-
-- Upload images, videos, audio files
-- Organize media in folders
-- Preview media files
-- Delete and rename media
-- Copy media URLs and intergrate in Markdown
-
-**Status:** ✅ Completed
-
-#### Git Integration
-
-Direct commits to GitHub with full version control.
-
-**Features:**
-
-- GitHub OAuth integration
-- Commit changes via GitHub API
-- Conflict detection
-- Author attribution
-- Commit message customization
-
-**Status:** ✅ Completed
-
-#### Real-time Preview
-
-Live preview of changes on your production website.
-
-**Status:** ✅ Completed
-
-#### Internationalization (i18n)
-
-Multi-language support for the Studio interface.
-
-**Status:** ✅ Completed
-
-#### GitLab Integration
-
-Support for GitLab as a git provider alongside GitHub.
-
-**Status:** ✅ Completed
-
-#### Development Mode
-
-Local development support without authentication.
-::
-
-### 🚧 Phase 2 - Beta (In Development)
-
-**Focus**: Visual editing experience and enhanced authentication
-
-**Target Release**: Q4 2025
-
-The beta phase introduces the open source version of the visual editor, making Studio accessible to non-technical users.
-
-::prose-steps{level="4"}
-#### Visual Editor
-
-Notion-inspired WYSIWYG editor for Markdown content.
-
-**Status:** 🚧 In Development
-
-#### Frontmatter Edition as Form
-
-Nuxt Content collections schema-based forms for editing frontmatter in Markdown files.
-
-**Status:** 🚧 Planned
-
-#### `YAML`and `JSON` Edition as Form
-
-Nuxt Content collections schema-based forms for `json` and `yaml` files.
-
-**Status:** 🚧 Planned
-
-#### Vue Component Edition
-
-Visual interface for editing Vue component props and slots.
-
-**Status:** 🚧 Planned
-
-#### Google OAuth Authentication
-
-Alternative authentication method for non-GitHub users.
-
-**Status:** 🚧 Planned
-
-  :::prose-warning
-  Google-authenticated users will require at least one personal GitHub token to commit.
-  :::
-::
-
-### 🔮 Phase 3 - Stable Release
-
-**Focus**: Production readiness and advanced features
-
-**Target Release**: End of year 2025
-
-The stable release will include performance optimizations and production ready features.
-
-### 🌟 Phase 4 - Advanced Features (Future)
-
-**Focus**: AI integration, multiple git providers and community based features.
-
-**Target Release**: 2026
-
-Long-term vision for expanding Studio's capabilities and integrate AI-powered content suggestions.
-
-
-# Advanced
-
-This page explains how Nuxt Studio keeps your content synchronized between the browser (your production site) and your Git prodiver repository.
-
-::prose-note
-This section is informational. Synchronization happens automatically after setup and requires no manual action.
-::
-
-## Architecture Overview
-
-The self-hosted Nuxt Studio module uses a three-tier system for storage:
-
-### Production Database (SQLite WASM)
-
-When the application loads in the browser, Nuxt Content v3 downloads a SQLite database dump from the server and initializes a local WASM database. :br
-This local database contains all content from the `content/` directory of your deployed branch.
-
-::warning
-This browser-side database stays in sync with your Git repository as long as your last deployment was built successfully and your CI/CD pipeline completed without errors.
-::
-
-### Draft Storage (IndexedDB)
-
-Studio maintains a separate **draft layer** using [unstorage](https://unstorage.unjs.io/){rel="nofollow"}, backed by IndexedDB. :br
-When you edit content, your changes are stored as *drafts* in this layer. :br
-Each time the Studio app loads, these drafts are merged with the SQLite database to render a *drafted* version of your production site.
-
-::note
-Drafts are stored only in your local browser. They are not shared between editors or devices.
-::
-
-### Git Repository
-
-When you publish, Studio commits your draft changes directly to your Git repository (GitHub or GitLab) through the provider's API. :br
-Your CI/CD pipeline then rebuilds and redeploys your site automatically.
-
-::warning
-After deployment, you need to wait for your build to complete successfully, then refresh your site to update your browser database with your latest content.
-::
-
-::tip
-The Studio module will automatically notify you when a new deployment is detected.
-::
-
-## How Synchronization Works
-
-### Initial Load
-
-::prose-steps{level="4"}
-#### Database Initialization
-
-Nuxt Content downloads the SQLite database dump generated during the build process. :br
-This file contains all parsed content from your `content/` directory.
-
-#### Draft Recovery
-
-Studio checks IndexedDB for any existing drafts from previous sessions and loads them into the SQLite database.
-
-#### Preview
-
-Studio refreshes the site preview so you can view your latest drafts and edits directly on your production website.
-::
-
-### Editing Content
-
-When you modify content in Studio:
-
-::prose-steps{level="4"}
-#### Draft Modification
-
-Changes are saved immediately in IndexedDB as draft items with a status of `created`, `modified`, or `deleted`.
-
-#### Database Update
-
-The local SQLite database is updated to include your draft content, allowing instant visual preview.
-
-#### Conflict Detection
-
-Studio compares your draft content against the latest version in your Git repository to detect possible conflicts.
-
-Conflicts can occur when:
-
-- Someone pushes a commit that modifies the same file and its version is currently building.
-- A deployment fails or hasn't completed, leaving the production database out of date and out of sync with your Git repository.
-::
-
-### Publishing Changes
-
-When you publish your edits:
-
-::prose-steps{level="4"}
-#### Draft Collection
-
-Studio gathers all draft items that contain changes.
-
-#### Git Commit
-
-Using your Git provider's API, Studio creates a new commit with all updated files.
-
-#### Deployment Trigger
-
-Your CI/CD platform detects the commit and automatically rebuilds and redeploys your website.
-
-#### Deployment Wait
-
-After publication, Studio clears the local drafts and waits for the deployment to complete. :br
-During this time, a loading state is shown while the production SQLite database catches up with your latest commit.
-
-  :::warning
-  Until your commit is deployed, Studio remains in a pending state where the production database is not yet up to date.
-  :::
-::
-
-
 # Canvas
 
 ::template-core
@@ -7232,7 +6043,7 @@ A lightweight Nuxt theme to build a Markdown driven website, based on Nuxt Conte
 # Docs
 
 ::template-core
-[Nuxt UI](https://ui.nuxt.com){rel="nofollow"} is a collection of premium components designed to facilitate the creation of appealing and responsive Nuxt applications in a matter of minutes.
+[Nuxt UI](https://ui.nuxt.com){rel=""nofollow""} is a collection of premium components designed to facilitate the creation of appealing and responsive Nuxt applications in a matter of minutes.
 
 The Nuxt UI team is dedicated to deliver the best integration and customization experience, while the Studio team is providing full compatibility with Nuxt Studio.
 
@@ -7310,16 +6121,16 @@ my-docs/
 
 This starter comes pre-configured with:
 
-- [Nuxt 4](https://nuxt.com){rel="nofollow"} - The web framework
-- [Nuxt Content](https://content.nuxt.com/){rel="nofollow"} - File-based CMS
-- [Nuxt UI](https://ui.nuxt.com){rel="nofollow"} - Premium UI components
-- [Nuxt Image](https://image.nuxt.com/){rel="nofollow"} - Optimized images
-- [Tailwind CSS 4](https://tailwindcss.com/){rel="nofollow"} - Utility-first CSS
-- [Docus Layer](https://www.npmjs.com/package/docus){rel="nofollow"} - Documentation theme
+- [Nuxt 4](https://nuxt.com){rel=""nofollow""} - The web framework
+- [Nuxt Content](https://content.nuxt.com/){rel=""nofollow""} - File-based CMS
+- [Nuxt UI](https://ui.nuxt.com){rel=""nofollow""} - Premium UI components
+- [Nuxt Image](https://image.nuxt.com/){rel=""nofollow""} - Optimized images
+- [Tailwind CSS 4](https://tailwindcss.com/){rel=""nofollow""} - Utility-first CSS
+- [Docus Layer](https://www.npmjs.com/package/docus){rel=""nofollow""} - Documentation theme
 
 ## 📖 Documentation
 
-For detailed documentation on customizing your Docus project, visit the [Docus Documentation](https://docus.dev){rel="nofollow"}
+For detailed documentation on customizing your Docus project, visit the [Docus Documentation](https://docus.dev){rel=""nofollow""}
 
 ## 🚀 Deployment
 
@@ -7333,7 +6144,7 @@ The built files will be in the `.output` directory, ready for deployment to any 
 
 ## 📄 License
 
-[MIT License](https://opensource.org/licenses/MIT){rel="nofollow"}
+[MIT License](https://opensource.org/licenses/MIT){rel=""nofollow""}
 
 #right
   :::template-features
@@ -7446,17 +6257,17 @@ The i18n starter generates URLs with language prefixes:
 
 This starter comes pre-configured with:
 
-- [Nuxt 4](https://nuxt.com){rel="nofollow"} - The web framework
-- [Nuxt Content](https://content.nuxt.com/){rel="nofollow"} - File-based CMS
-- [Nuxt i18n](https://i18n.nuxt.com/){rel="nofollow"} - Internationalization
-- [Nuxt UI](https://ui.nuxt.com){rel="nofollow"} - Premium UI components
-- [Nuxt Image](https://image.nuxt.com/){rel="nofollow"} - Optimized images
-- [Tailwind CSS 4](https://tailwindcss.com/){rel="nofollow"} - Utility-first CSS
-- [Docus Layer](https://www.npmjs.com/package/docus){rel="nofollow"} - Documentation theme
+- [Nuxt 4](https://nuxt.com){rel=""nofollow""} - The web framework
+- [Nuxt Content](https://content.nuxt.com/){rel=""nofollow""} - File-based CMS
+- [Nuxt i18n](https://i18n.nuxt.com/){rel=""nofollow""} - Internationalization
+- [Nuxt UI](https://ui.nuxt.com){rel=""nofollow""} - Premium UI components
+- [Nuxt Image](https://image.nuxt.com/){rel=""nofollow""} - Optimized images
+- [Tailwind CSS 4](https://tailwindcss.com/){rel=""nofollow""} - Utility-first CSS
+- [Docus Layer](https://www.npmjs.com/package/docus){rel=""nofollow""} - Documentation theme
 
 ## 📖 Documentation
 
-For detailed documentation on customizing your Docus project, visit the [Docus Documentation](https://docus.dev){rel="nofollow"}
+For detailed documentation on customizing your Docus project, visit the [Docus Documentation](https://docus.dev){rel=""nofollow""}
 
 ## 🚀 Deployment
 
@@ -7470,7 +6281,7 @@ The built files will be in the `.output` directory, ready for deployment to any 
 
 ## 📄 License
 
-[MIT License](https://opensource.org/licenses/MIT){rel="nofollow"}
+[MIT License](https://opensource.org/licenses/MIT){rel=""nofollow""}
 
 #right
   :::template-features
@@ -7500,7 +6311,7 @@ The built files will be in the `.output` directory, ready for deployment to any 
 # Landing
 
 ::template-core
-[Nuxt UI](https://ui.nuxt.com){rel="nofollow"} is a collection of premium components designed to facilitate the creation of appealing and responsive Nuxt applications in a matter of minutes.
+[Nuxt UI](https://ui.nuxt.com){rel=""nofollow""} is a collection of premium components designed to facilitate the creation of appealing and responsive Nuxt applications in a matter of minutes.
 
 The Nuxt UI team is dedicated to deliver the best integration and customization experience, while the Studio team is providing full compatibility with Nuxt Studio module.
 
@@ -7595,7 +6406,7 @@ Minted Directory is a highly customizable template designed for building success
 # Portfolio
 
 ::template-core
-[Nuxt UI](https://ui.nuxt.com){rel="nofollow"} is a collection of premium components designed to facilitate the creation of appealing and responsive Nuxt applications in a matter of minutes.
+[Nuxt UI](https://ui.nuxt.com){rel=""nofollow""} is a collection of premium components designed to facilitate the creation of appealing and responsive Nuxt applications in a matter of minutes.
 
 The Nuxt UI team is dedicated to deliver the best integration and customization experience, while the Studio team is providing full compatibility with Nuxt Studio.
 
@@ -7628,7 +6439,7 @@ The Nuxt UI team is dedicated to deliver the best integration and customization 
 # Saas
 
 ::template-core
-[Nuxt UI](https://ui.nuxt.com){rel="nofollow"} is a collection of premium components designed to facilitate the creation of appealing and responsive Nuxt applications in a matter of minutes.
+[Nuxt UI](https://ui.nuxt.com){rel=""nofollow""} is a collection of premium components designed to facilitate the creation of appealing and responsive Nuxt applications in a matter of minutes.
 
 The Nuxt UI team is dedicated to deliver the best integration and customization experience, while the Studio team is providing full compatibility with Nuxt Studio.
 
@@ -7662,7 +6473,7 @@ The Nuxt UI team is dedicated to deliver the best integration and customization 
 
 # Docus, the Comeback
 
-We’ve completely rewritten the [Docus](https://docus.dev){rel="nofollow"} theme. Reviving it with a fresh and modern foundation powered by the Nuxt ecosystem and designed by Nuxt UI to offer the best documentation experience.
+We’ve completely rewritten the [Docus](https://docus.dev){rel="&#x22;nofollow&#x22;"} theme. Reviving it with a fresh and modern foundation powered by the Nuxt ecosystem and designed by Nuxt UI to offer the best documentation experience.
 
 The goal was simple: take **the best parts of the Nuxt ecosystem** and deliver a documentation theme that’s powerful, elegant and easy to maintain.
 
@@ -7670,7 +6481,7 @@ The goal was simple: take **the best parts of the Nuxt ecosystem** and deliver a
 
 ### **📦 A real** [Nuxt]{.text-primary} **app with just one dependency**
 
-Docus is built on top of [Nuxt 3](https://nuxt.com){rel="nofollow"} (version 4 compatibility mode is enabled so we're already ready for Nuxt 4). That means your documentation is a full Nuxt application with access to the entire Nuxt features: components, modules, plugins, runtime config, and more.
+Docus is built on top of [Nuxt 3](https://nuxt.com){rel="&#x22;nofollow&#x22;"} (version 4 compatibility mode is enabled so we're already ready for Nuxt 4). That means your documentation is a full Nuxt application with access to the entire Nuxt features: components, modules, plugins, runtime config, and more.
 
 **But**, **the best part is**... You only need the **docus** package. It bundles all the necessary officials Nuxt modules, so you can start writing documentation in seconds. All you need in your app is a `package.json` file and a `content/` folder with your Markdown in it. Then you’re good to go.
 
@@ -7773,14 +6584,14 @@ Whether you’re fixing bugs, suggesting features, or writing docs, we’d love 
 
 # Nuxt Studio Alpha Release
 
-When NuxtLabs joined Vercel, we promised to transform [nuxt.studio](https://nuxt.studio){rel="nofollow"} from a hosted platform into a free, open-source module. Today, we're excited to announce the **first alpha release** of the Nuxt Studio module.
+When NuxtLabs joined Vercel, we promised to transform [nuxt.studio](https://nuxt.studio){rel="&#x22;nofollow&#x22;"} from a hosted platform into a free, open-source module. Today, we're excited to announce the **first alpha release** of the Nuxt Studio module.
 
 ::u-button
 ---
 color: neutral
 icon: i-simple-icons-github
 target: _blank
-to: https://github.com/nuxt-content/studio
+to: https://github.com/nuxt-content/nuxt-studio
 variant: subtle
 ---
 Discover the Nuxt Studio module on GitHub.
@@ -7807,7 +6618,7 @@ This milestone wouldn't have been possible without Vercel's support. Their backi
 
 ### What's Different?
 
-Originally provided as a hosted platform at [nuxt.studio](https://nuxt.studio){rel="nofollow"}, Studio is now a free and open-source Nuxt module that you can deploy alongside your Nuxt Content website.
+Originally provided as a hosted platform at [nuxt.studio](https://nuxt.studio){rel="&#x22;nofollow&#x22;"}, Studio is now a free and open-source Nuxt module that you can deploy alongside your Nuxt Content website.
 
 This means content editors can manage and update content directly in production, on their website, without the need of local development tools or Git knowledge.
 
@@ -7816,7 +6627,7 @@ This means content editors can manage and update content directly in production,
 - **Free and open-source** — released under the MIT license
 - **Direct integration** — a simple GitHub OAuth app is needed to get started
 
-The only trade-off is that Studio now requires a server-side route for authentication. While static generation remains supported with [Nuxt hybrid rendering](https://nuxt.com/docs/4.x/guide/concepts/rendering#hybrid-rendering){rel="nofollow"}, your site must be deployed on a platform that supports SSR.
+The only trade-off is that Studio now requires a server-side route for authentication. While static generation remains supported with [Nuxt hybrid rendering](https://nuxt.com/docs/4.x/guide/concepts/rendering#hybrid-rendering){rel="&#x22;nofollow&#x22;"}, your site must be deployed on a platform that supports SSR.
 
 ## 📦 What's Shipped in Alpha
 
@@ -7836,7 +6647,7 @@ The alpha release focuses on **core infrastructure and stability** without riski
 
 ### Beta Release `Q4 2025`
 
-Inspired from what we've built on [nuxt.studio](https://nuxt.studio){rel="nofollow"}, the beta phase will introduce the open-source visual editor, making Studio accessible to non-technical users:
+Inspired from what we've built on [nuxt.studio](https://nuxt.studio){rel="&#x22;nofollow&#x22;"}, the beta phase will introduce the open-source visual editor, making Studio accessible to non-technical users:
 
 - **Markdown Editor** — Notion-inspired experience for Markdown
 - **Form-based Editing** — Schema-based forms for Markdown frontmatter, YAML, and JSON files
@@ -7865,7 +6676,7 @@ When your Nuxt Content website loads, Nuxt Content v3 downloads a SQLite databas
 
 ### Draft Storage `IndexedDB`
 
-Studio maintains a separate draft layer using [unstorage](https://unstorage.unjs.io/){rel="nofollow"} backed by IndexedDB. When you edit content, changes are stored as drafts locally in your browser. Each time Studio loads, these drafts are merged with the SQLite database to render a drafted version of your production site.
+Studio maintains a separate draft layer using [unstorage](https://unstorage.unjs.io/){rel="&#x22;nofollow&#x22;"} backed by IndexedDB. When you edit content, changes are stored as drafts locally in your browser. Each time Studio loads, these drafts are merged with the SQLite database to render a drafted version of your production site.
 
 ::note
 Drafts are stored only in your browser. They're not shared between editors or devices.
@@ -7911,9 +6722,9 @@ Studio compares your draft content against the latest version on GitHub to detec
 
   :::note
   **Conflicts can occur when:**
-  
+
   :br
-  
+
   - Someone pushes a commit that modifies the same file and its version is currently building.
   - A deployment fails or hasn’t completed, leaving the production out of date and unsync with GitHub.
   :::
@@ -7956,7 +6767,166 @@ Check out the [setup guide](https://content.nuxt.com/docs/studio/setup) for comp
 
 ---
 
-We're excited to see what you build with Nuxt Studio. Join the conversation on [GitHub Discussions](https://github.com/nuxt-content/studio/discussions){rel="nofollow"} or [join our Discord](https://discord.gg/sBXDm6e8SP){rel="nofollow"} to help shape the future of the module.
+We're excited to see what you build with Nuxt Studio. Join the conversation on [GitHub Discussions](https://github.com/nuxt-content/nuxt-studio/discussions){rel="&#x22;nofollow&#x22;"} or [join our Discord](https://discord.gg/sBXDm6e8SP){rel="&#x22;nofollow&#x22;"} to help shape the future of the module.
+
+
+# Nuxt Studio is Now Free and Open Source
+
+**Nuxt Studio is dead, long live Nuxt Studio.**
+
+We promised to deliver by the end of the 2025 year and today we're keeping that promise: we're officially releasing the first stable version of Nuxt Studio as a **free, open-source Nuxt module**. At the same time, we're sunsetting the legacy [nuxt.studio](https://nuxt.studio){rel="&#x22;nofollow&#x22;"} platform. It now becomes the new official documentation.
+
+::u-button
+---
+color: neutral
+icon: i-simple-icons-github
+target: _blank
+to: https://github.com/nuxt-content/nuxt-studio
+variant: outline
+---
+Discover the Nuxt Studio module on GitHub.
+::
+
+## 🌄 Why We're Sunsetting [nuxt.studio](https://nuxt.studio){rel="&#x22;nofollow&#x22;"}
+
+When NuxtLabs joined Vercel, we promised to make our premium products free and open source.We're following the same approach already taken with [Nuxt UI](https://ui.nuxt.com){rel="&#x22;nofollow&#x22;"} and soon applied to [NuxtHub](https://hub.nuxt.com){rel="&#x22;nofollow&#x22;"}.
+
+For us, this means everything. It's the opportunity to focus entirely on building tools that are **free, open source, and accessible to everyone**.
+
+This is why Studio platform will be discontinued.
+
+## 🚀 Meet the New Studio Module
+
+We rebuilt Studio from the ground up as a Nuxt module. The result is a fully self-hosted content management solution that runs alongside your Nuxt Content website.
+
+### What's Different?
+
+- **Self-hosted** — runs entirely on your infrastructure alongside your Nuxt app
+- **Free and open-source** — released under the MIT license
+- **Dev integration** — works also in development mode
+
+## 📦 Features
+
+This stable release includes everything you need to edit content in production:
+
+### TipTap Visual Editor
+
+The modern Notion-like editing experience for Markdown content is back with a improved version, powered by [TipTap](https://tiptap.dev/){rel="&#x22;nofollow&#x22;"} integrated through the [Nuxt UI Editor](https://ui.nuxt.com/pro/components/editor){rel="&#x22;nofollow&#x22;"} component:
+
+- Rich text editing with headings, formatting, links, and more
+- MDC component support for inserting Vue components
+- Vue component props editor for visual property editing
+- Drag & drop for reordering content blocks
+- Slash commands for quick formatting access
+- Real-time conversion between visual content and MDC syntax
+
+### Form-Based Editor
+
+Schema-based forms automatically generated from your [collection definitions](https://content.nuxt.com/docs/collections/define):
+
+- Automatic form generation for frontmatter, YAML, and JSON files
+- Custom inputs for media and icon selection
+- Native type mapping (string → text, boolean → toggle, enum → select)
+- Array support and object support
+
+### File Operations
+
+Complete CRUD operations for your `content/` directory: create, edit, delete, rename, and move files with built-in draft management.
+
+### Media Management
+
+Centralized media library for assets in your `public/` directory with upload, organize and preview.
+
+### Git Integration
+
+Direct commits to GitHub or GitLab with conflict detection, author attribution, and custom commit messages.
+
+### Real-time Preview
+
+Live preview of draft changes on your production website with instant updates and side-by-side editing.
+
+### Multi-Language Support
+
+The Studio interface is available in 17 languages including English, French, German, Spanish, Japanese, Chinese, and more.
+
+### Authentication Options
+
+Multiple authentication providers: GitHub OAuth, GitLab OAuth, Google OAuth, or custom authentication with your own flow.
+
+## 📦 Quick Start
+
+Install the module using the Nuxt CLI:
+
+```bash [Terminal]
+npx nuxt module add nuxt-studio
+```
+
+Start editing in local or configure your repository for production:
+
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+  studio: {
+    repository: {
+      provider: 'github',
+      owner: 'your-username',
+      repo: 'your-repo',
+      branch: 'main'
+    }
+  }
+})
+```
+
+::tip{to="https://nuxt.studio/setup"}
+Follow the complete setup guide for detailed installation instructions.
+::
+
+## 📅 Sunset Timeline
+
+::prose-steps
+### Now
+
+You can already migrate to the new module. All existing subscription have been canceled.
+
+### 2026
+
+The legacy nuxt.studio platform becomes the new official documentation and we'll keep improving this module day after day.
+::
+
+::note
+The 
+
+[nuxt.studio](http://nuxt.studio){rel=""nofollow""}
+
+ platform has always been just an editing layer. Your content lives in your Git repository and you remain in full control. The sunset of the platform will have zero impact on your deployed website or its behaviour.
+::
+
+## 🔄 Migration Guide
+
+Migration is extremely simple:
+
+1. **Install the module**: Follow the [setup documentation](https://nuxt.studio/setup){rel="&#x22;nofollow&#x22;"}
+2. **Configure authentication**: Set up [GitHub](https://nuxt.studio/git-providers#github){rel="&#x22;nofollow&#x22;"}, [GitLab](https://nuxt.studio/git-providers#gitlab){rel="&#x22;nofollow&#x22;"}, or [Google OAuth](https://nuxt.studio/auth-providers#google){rel="&#x22;nofollow&#x22;"}
+3. **Remove legacy code**: Upcoming versions of Nuxt Content will automatically remove all legacy Studio code, but you can already remove the `preview` key in your Nuxt Content configuration.
+
+## 🗺 What's Next
+
+We're committed to making the open-source module an even better experience. Here's what's coming in 2026:
+
+- **AI-powered content generation** — intelligent content suggestions and assistance
+- **TipTap extension exposal** — we'll expose the TipTap extensions we've built (related to MDC syntax) so you can use it with the [Nuxt UI Editor](https://ui.nuxt.com/docs/components/editor){rel="&#x22;nofollow&#x22;"}.
+- **Community-driven features** — shaped by your feedback
+
+## 🙏 Thank You
+
+Your feedback shaped both the old and new Studio. Your support made this transition possible.
+
+Thanks to Vercel for making this happen. Their pushing towards open source.
+
+We're excited to see what you build with the new Nuxt Studio module. Join the conversation on [GitHub Discussions](https://github.com/nuxt-content/nuxt-studio/discussions){rel="&#x22;nofollow&#x22;"} or [join our Discord](https://discord.gg/sBXDm6e8SP){rel="&#x22;nofollow&#x22;"} to help shape the future of content editing.
+
+---
+
+If you need help migrating, reach out on our [Discord server](https://discord.gg/sBXDm6e8SP){rel="&#x22;nofollow&#x22;"}.
 
 
 # Introducing Nuxt Studio v2
@@ -7964,11 +6934,11 @@ We're excited to see what you build with Nuxt Studio. Join the conversation on [
 ::warning
 This article was published before the merge of the 
 
-[Content](https://github.com/nuxt/content){rel="nofollow"}
+[Content](https://github.com/nuxt/content){rel=""nofollow""}
 
  and 
 
-[Studio](https://github.com/nuxtlabs/studio-module){rel="nofollow"}
+[Studio](https://github.com/nuxtlabs/studio-module){rel=""nofollow""}
 
  modules on January 6, 2025. As a result, it may contain some inconsistencies. The Studio module is now deprecated and available as an opt-in feature of the Content module. Learn how to enable it in 
 
@@ -7991,13 +6961,13 @@ Studio is optimized for
  folder with Markdown files. This simple setup is enough to start editing and publishing your files with the platform.
 ::
 
-### **A more intuitive interface**
+## **A more intuitive interface**
 
 ![Nuxt studio v2 interface](https://content.nuxt.com/blog/v2-interface.webp)
 
 The main improvement in Version 2 is a **complete rework of the interface**. We have designed it to be more intuitive and user-friendly, especially for non-technical users. Our goal was to simplify the user experience, making it easier to create and set up projects with minimal hassle. The new interface is light, straightforward, and designed to streamline your workflow.
 
-### **Google authentication**
+## **Google authentication**
 
 ![Google and GitHub authentication](https://content.nuxt.com/blog/google-github.webp)
 
@@ -8011,7 +6981,7 @@ Since a Google user can not create a project, he has to
  with existing projects to edit them.
 ::
 
-### **Minimal setup to edit your files**
+## **Minimal setup to edit your files**
 
 You can now edit your content **without any setup**, just import your repository and this is it. You can navigate through your files and medias, edit your content and publish on GitHub.
 
@@ -8023,13 +6993,13 @@ Collaboration is available for teams.
 Medias in the editor are not displayed until you set up the live preview (see section below).
 ::
 
-### Simplified setup for live preview
+## Simplified setup for live preview
 
 ![preview enable between notion like editor and website](https://content.nuxt.com/blog/preview.webp)
 
 As the live preview feature requires a deployed URL, we made it as simple as possible to set it up.
 
-While GitHub pages deployment remains available and still does not require any configuration on your end, requirements have been simplified for self-hosted project as we removed the token verification. [Enabling the Studio module](https://nuxt.studio/docs/get-started/setup#enable-the-live-preview){rel="nofollow"} is the &#x2A;*only remaining requirement.**
+While GitHub pages deployment remains available and still does not require any configuration on your end, requirements have been simplified for self-hosted project as we removed the token verification. [Enabling the Studio module](https://nuxt.studio/docs/get-started/setup#enable-the-live-preview){rel="&#x22;nofollow&#x22;"} is the &#x2A;*only remaining requirement.**
 
 ::warning{to="https://github.com/nuxtlabs/studio-module"}
 It's crucial to use the latest version of the 
@@ -8039,13 +7009,13 @@ It's crucial to use the latest version of the
  to ensure compatibility and access to new features.
 ::
 
-### New documentation
+## New documentation
 
-With a revamped platform comes a [new documentation](https://nuxt.studio/docs/get-started/introduction){rel="nofollow"}. Don't hesitate to check it out to learn everything about the new Studio.
+With a revamped platform comes a [new documentation](https://nuxt.studio/docs/get-started/introduction){rel="&#x22;nofollow&#x22;"}. Don't hesitate to check it out to learn everything about the new Studio.
 
-Whether you are an [editor](https://nuxt.studio/docs/editors/introduction){rel="nofollow"} or a [developer](https://nuxt.studio/docs/developers/introduction){rel="nofollow"} you now have your dedicated section in the docs.
+Whether you are an [editor](https://nuxt.studio/docs/editors/introduction){rel="&#x22;nofollow&#x22;"} or a [developer](https://nuxt.studio/docs/developers/introduction){rel="&#x22;nofollow&#x22;"} you now have your dedicated section in the docs.
 
-### A new direction for Studio
+## A new direction for Studio
 
 Most available CMS solutions have to choose between being very customizable for developers or highly user friendly for content editors, with Studio we want to do both.
 
@@ -8055,7 +7025,7 @@ Most available CMS solutions have to choose between being very customizable for 
 Our Notion-like editor has a bright future ahead, and we want to develop it collaboratively with the community.
 ::
 
-###
+##
 
 
 # How to upgrade your Nuxt documentation website to Content x UI v3
@@ -8124,7 +7094,7 @@ export default defineContentConfig({
 })
 ```
 
-On top of the built-in fields provided by the [`page`](https://content.nuxt.com/docs/collections/types#page-type) type, we added the extra field `links` to the `docs` collection so we can optionally display them in the docs [page header](https://ui3.nuxt.dev/components/page-header){rel="nofollow"}.
+On top of the built-in fields provided by the [`page`](https://content.nuxt.com/docs/collections/types#page-type) type, we added the extra field `links` to the `docs` collection so we can optionally display them in the docs [page header](https://ui3.nuxt.dev/components/page-header){rel="&#x22;nofollow&#x22;"}.
 
 ::prose-tip
 The 
@@ -8142,9 +7112,9 @@ The
   :::prose-code-group
   ```ts [app.vue (v3)]
   const { data: navigation } = await useAsyncData('navigation', () => queryCollectionNavigation('docs'))
-  
+
   ```
-  
+
   ```ts [app.vue (v2)]
   const { data: navigation } = await useAsyncData('navigation', () => fetchContentNavigation())
   ```
@@ -8158,7 +7128,7 @@ The
     server: false,
   })
   ```
-  
+
   ```ts [app.vue (v2)]
   const { data: files } = useLazyFetch<ParsedContent[]>('/api/search.json', {
     default: () => [],
@@ -8177,7 +7147,7 @@ The
   ```ts [index.vue (v3)]
   const { data: page } = await useAsyncData('index', () => queryCollection('landing').path('/').first())
   ```
-  
+
   ```ts [index.vue (v2)]
   const { data: page } = await useAsyncData('index', () => queryContent('/').findOne())
   ```
@@ -8187,26 +7157,26 @@ The
 
 ```ts [index.vue]
 useSeoMeta({
-  title: page.value.seo.title,
-  ogTitle: page.value.seo.title,
-  description: page.value.seo.description,
-  ogDescription: page.value.seo.description
+title: page.value.seo.title,
+ogTitle: page.value.seo.title,
+description: page.value.seo.description,
+ogDescription: page.value.seo.description
 })
 ```
 
   :::prose-note
   Please note that the 
-  
+
   `seo`
-  
+
    field is automatically overridden by the root 
-  
+
   `title`
-  
+
    and 
-  
+
   `description`
-  
+
    if not set.
   :::
 ::
@@ -8226,14 +7196,14 @@ useSeoMeta({
   ]), {
     transform: ([page, surround]) => ({ page, surround }),
   })
-  
+
   const page = computed(() => data.value?.page)
   const surround = computed(() => data.value?.surround)
   ```
-  
+
   ```ts [docs/[...slug\\].vue (v2)]
   const { data: page } = await useAsyncData(route.path, () => queryContent(route.path).findOne())
-  
+
   const { data: surround } = await useAsyncData(`${route.path}-surround`, () => queryContent()
     .where({ _extension: 'md', navigation: { $ne: false } })
     .only(['title', 'description', '_path'])
@@ -8246,26 +7216,26 @@ useSeoMeta({
 
 ```ts [index.vue]
 useSeoMeta({
-  title: page.value.seo.title,
-  ogTitle: `${page.value.seo.title} - ${seo?.siteName}`,
-  description: page.value.seo.description,
-  ogDescription: page.value.seo.description
+title: page.value.seo.title,
+ogTitle: `${page.value.seo.title} - ${seo?.siteName}`,
+description: page.value.seo.description,
+ogDescription: page.value.seo.description
 })
 ```
 
   :::prose-note
   Please note that the 
-  
+
   `seo`
-  
+
    field is automatically overridden by the root 
-  
+
   `title`
-  
+
    and 
-  
+
   `description`
-  
+
    if not set.
   :::
 ::
@@ -8288,7 +7258,7 @@ All `_dir.yml` files become `.navigation.yml`
 
 ### 8. Migrate Studio activation
 
-Since the [studio module](https://nuxt.studio){rel="nofollow"} has been deprecated and a new generic `Preview API` has been implemented directly into Nuxt Content, we can remove the `@nuxthq/studio` package from our dependencies and from the `nuxt.config.ts` modules.
+Since the [studio module](https://nuxt.studio){rel="&#x22;nofollow&#x22;"} has been deprecated and a new generic `Preview API` has been implemented directly into Nuxt Content, we can remove the `@nuxthq/studio` package from our dependencies and from the `nuxt.config.ts` modules.
 
 Instead we just need to enable the preview mode in the Nuxt configuration file by binding the Studio API.
 
@@ -8302,12 +7272,10 @@ export default defineNuxtConfig({
 })
 ```
 
-Finally, in order to keep the [app config file updatable](https://content.nuxt.com/docs/studio/config) from Studio, we just need to update the helper import of the `nuxt.schema.ts` file from `@nuxthq/studio/theme` to `@nuxt/content/preview`.
-
 ::prose-tip
 That's it, content v3 is now powering the starter. Let's now migrate to version 3 of 
 
-[Nuxt UI / UI Pro](https://ui3.nuxt.dev){rel="nofollow"}
+[Nuxt UI / UI Pro](https://ui3.nuxt.dev){rel=""nofollow""}
 
 .
 ::
@@ -8331,15 +7299,15 @@ To maintain consistency with the UI versioning, which transitioned from v1 to v2
   ```bash [pnpm]
   pnpm add @nuxt/ui-pro@next
   ```
-  
+
   ```bash [yarn]
   yarn add @nuxt/ui-pro@next
   ```
-  
+
   ```bash [npm]
   npm install @nuxt/ui-pro@next
   ```
-  
+
   ```bash [bun]
   bun add @nuxt/ui-pro@next
   ```
@@ -8355,7 +7323,7 @@ It's no longer required to add `@nuxt/ui` in modules as it is automatically impo
     modules: ['@nuxt/ui-pro']
   })
   ```
-  
+
   ```ts [nuxt.config.ts (v1)]
   export default defineNuxtConfig({
     extends: ['@nuxt/ui-pro'],
@@ -8366,7 +7334,7 @@ It's no longer required to add `@nuxt/ui` in modules as it is automatically impo
 
   :::prose-note
   **Nuxt UIPro V3**
-  
+
    is now considered as a module and no longer as a layer.
   :::
 
@@ -8379,8 +7347,8 @@ It's no longer required to add `@nuxt/ui` in modules as it is automatically impo
 
 ```ts [nuxt.config.ts]
 export default defineNuxtConfig({
-  modules: ['@nuxt/ui-pro'],
-  css: ['~/assets/css/main.css']
+modules: ['@nuxt/ui-pro'],
+css: ['~/assets/css/main.css']
 })
 ```
 
@@ -8399,19 +7367,19 @@ Nuxt UI v3 uses Tailwind CSS v4 that follows a CSS-first configuration approach.
 @source "../content/**/*";
 
 @theme {
-  --font-sans: 'DM Sans', sans-serif;
+--font-sans: 'DM Sans', sans-serif;
 
-  --color-green-50: #EFFDF5;
-  --color-green-100: #D9FBE8;
-  --color-green-200: #B3F5D1;
-  --color-green-300: #75EDAE;
-  --color-green-400: #00DC82;
-  --color-green-500: #00C16A;
-  --color-green-600: #00A155;
-  --color-green-700: #007F45;
-  --color-green-800: #016538;
-  --color-green-900: #0A5331;
-  --color-green-950: #052E16;
+--color-green-50: #EFFDF5;
+--color-green-100: #D9FBE8;
+--color-green-200: #B3F5D1;
+--color-green-300: #75EDAE;
+--color-green-400: #00DC82;
+--color-green-500: #00C16A;
+--color-green-600: #00A155;
+--color-green-700: #007F45;
+--color-green-800: #016538;
+--color-green-900: #0A5331;
+--color-green-950: #052E16;
 }
 
 ```
@@ -8606,19 +7574,19 @@ export default defineContentConfig({
 
   :::prose-note
   `prose`
-  
+
    property must be set to 
-  
+
   `false`
-  
+
    in 
-  
+
   `ContentRendered`
-  
+
    as we don't want 
-  
+
   `Mardown`
-  
+
    to be applied with prose styling in the case of a landing page integrating non prose Vue components.
   :::
 
@@ -8634,7 +7602,7 @@ export default defineContentConfig({
     </UContainer>
   </template>
   ```
-  
+
   ```vue [index.vue (v1)]
   <template>
     <div>
@@ -8660,9 +7628,9 @@ export default defineContentConfig({
                 aria-hidden="true"
               />
             </NuxtLink>
-  
+
             {{ page.hero.headline.label }}
-  
+
             <UIcon
               v-if="page.hero.headline.icon"
               :name="page.hero.headline.icon"
@@ -8670,18 +7638,18 @@ export default defineContentConfig({
             />
           </UBadge>
         </template>
-  
+
         <template #title>
           <MDC cache-key="head-title" :value="page.hero.title" />
         </template>
-  
+
         <MDC
           :value="page.hero.code"
           cache-key="head-code"
           class="prose prose-primary dark:prose-invert mx-auto"
         />
       </ULandingHero>
-  
+
       <ULandingSection
         :title="page.features.title"
         :links="page.features.links"
@@ -8707,7 +7675,15 @@ Landing components have been reorganised and standardised as generic `Page` comp
 
 - `LandingHero` => `PageHero`
 - `LandingSection` => `PageSection`
-- `LandingCard` => `PageCard` (we'll use the `PageFeature` instead) :prose-tip[Have a look at the final `Markdown` result on GitHub.]{to="https://github.com/nuxt-ui-pro/docs/blob/v3/content/index.md"}
+- `LandingCard` => `PageCard` (we'll use the `PageFeature` instead)
+
+  :::prose-tip{to="https://github.com/nuxt-ui-pro/docs/blob/v3/content/index.md"}
+  Have a look at the final 
+
+  `Markdown`
+
+   result on GitHub.
+  :::
 ::
 
 ### 6. Migrate docs page
@@ -8716,7 +7692,10 @@ Landing components have been reorganised and standardised as generic `Page` comp
 #### Layout
 
 - `Aside` component has been renamed to `PageAside` .
-- `ContentNavigation` component can be used (instead of `NavigationTree`) to display the content navigation returned by `queryCollectionNavigation`. :prose-code-group[```vue \[layout/docs.vue (v3)\]
+- `ContentNavigation` component can be used (instead of `NavigationTree`) to display the content navigation returned by `queryCollectionNavigation`.
+
+  :::prose-code-group
+  ```vue [layout/docs.vue (v3)]
   <template>
     <UContainer>
       <UPage>
@@ -8733,7 +7712,9 @@ Landing components have been reorganised and standardised as generic `Page` comp
       </UPage>
     </UContainer>
   </template>
-  ``````vue \[layout/docs.vue (v1)\]
+  ```
+
+  ```vue [layout/docs.vue (v1)]
   <template>
     <UContainer>
       <UPage>
@@ -8747,7 +7728,8 @@ Landing components have been reorganised and standardised as generic `Page` comp
       </UPage>
     </UContainer>
   </template>
-  ```]
+  ```
+  :::
 
 #### Catch-all pages
 
@@ -8811,14 +7793,14 @@ Furthermore, [serverless](https://content.nuxt.com/docs/deploy/serverless) hosti
 
 ### Serverless Compatibility
 
-A key challenge with Nuxt Content v2 was the large bundle size required to store all content files. It was an issue when deploying to serverless or edge platforms like [Netlify](https://netlify.com){rel="nofollow"}, [NuxtHub](https://hub.nuxt.com){rel="nofollow"} or [Vercel](https://vercel.com){rel="nofollow"}.
+A key challenge with Nuxt Content v2 was the large bundle size required to store all content files. It was an issue when deploying to serverless or edge platforms like [Netlify](https://netlify.com){rel="&#x22;nofollow&#x22;"}, [NuxtHub](https://hub.nuxt.com){rel="&#x22;nofollow&#x22;"} or [Vercel](https://vercel.com){rel="&#x22;nofollow&#x22;"}.
 
 In serverless environments, each user request triggers a fresh instance of your Nuxt server, it starts from scratch each time. This "stateless" nature means you can't store data in server memory or use file-based databases like SQLite. That's why we've implemented database adaptors that persist data independently of your server instances.
 
 ::prose-note
 We're manually switching to the appropriate provider (Vercel / Postgres, NuxtHub / D1...) according to the 
 
-[database type](https://cfec52f9.content-f0q.pages.dev/docs/getting-started/configuration#database){rel="nofollow"}
+[database type](https://cfec52f9.content-f0q.pages.dev/docs/getting-started/configuration#database){rel=""nofollow""}
 
  you've set in your config.
 ::
@@ -8941,7 +7923,7 @@ Note that we've decided to remove the document-driven mode to simplify the modul
 
 ### Preview API
 
-Previously an independent module, the [Studio module](https://github.com/nuxtlabs/studio-module){rel="nofollow"} has been updated to be more generic and is now integrated directly into Nuxt Content as a `Preview API`.
+Previously an independent module, the [Studio module](https://github.com/nuxtlabs/studio-module){rel="&#x22;nofollow&#x22;"} has been updated to be more generic and is now integrated directly into Nuxt Content as a `Preview API`.
 
 Enabling the preview functionality in Studio is easier than ever—simply configure the Studio API as your `Preview API` in your Nuxt Content settings:
 
@@ -8959,7 +7941,7 @@ This simplification means no extra module is required for Studio, making setup f
 
 ### **Unified Documentation**
 
-In addition to this integration, we’ve unified the **Content** and **Studio** documentation and websites into a single comprehensive resource. Only the Studio platform (available once the user is logged-in) remains as a [standalone site](https://nuxt.studio){rel="nofollow"}.
+In addition to this integration, we’ve unified the **Content** and **Studio** documentation and websites into a single comprehensive resource. Only the Studio platform (available once the user is logged-in) remains as a [standalone site](https://nuxt.studio){rel="&#x22;nofollow&#x22;"}.
 
 **We can now take advantage of data structures and collections in Studio**. The Studio platform supports and adapts its behaviour to **collections** and **user-defined schemas**. This enhancement will allow schema-generated forms for both `YAML` and `JSON` files as well as front-matter within Markdown files.
 
@@ -8990,11 +7972,11 @@ When your file is saved with the Markdown editor, the content is stored exactly 
 
 ![Edit your content with a visual editor on Nuxt Studio](https://content.nuxt.com/blog/visual-editor.webp)
 
-The Visual Editor is a sort of WYSIWYG (What You See Is What You Get) tool built on top of [TipTap](https://tiptap.dev/){rel="nofollow"} and [ProseMirror](https://prosemirror.net/){rel="nofollow"}, designed to abstract away the complexities of Markdown syntax and offer a more intuitive, visual editing experience. This editor is particularly user-friendly for those who prefer not to deal with raw Markdown code.
+The Visual Editor is a sort of WYSIWYG (What You See Is What You Get) tool built on top of [TipTap](https://tiptap.dev/){rel="&#x22;nofollow&#x22;"} and [ProseMirror](https://prosemirror.net/){rel="&#x22;nofollow&#x22;"}, designed to abstract away the complexities of Markdown syntax and offer a more intuitive, visual editing experience. This editor is particularly user-friendly for those who prefer not to deal with raw Markdown code.
 
 ### **How the visual editor processes files**
 
-When you open a Markdown file with the Visual Editor, Nuxt Studio first parses the original Markdown file. Using the [MDC module](https://github.com/nuxt-modules/mdc){rel="nofollow"}, it generates an Abstract Syntax Tree (AST). This AST is then converted into a TipTap-compatible format (TipTap AST), allowing the editor to accurately render the document visually.
+When you open a Markdown file with the Visual Editor, Nuxt Studio first parses the original Markdown file. Using the [MDC module](https://github.com/nuxt-modules/mdc){rel="&#x22;nofollow&#x22;"}, it generates an Abstract Syntax Tree (AST). This AST is then converted into a TipTap-compatible format (TipTap AST), allowing the editor to accurately render the document visually.
 
 Once the Visual Editor displays the content, users can make updates in a visually intuitive way. Behind the scenes, the editor continuously transforms the TipTap AST back into MDC AST then MDC syntax, ensuring that your content remains in Markdown format.
 
@@ -9036,11 +8018,11 @@ Understanding how the visual editor processes and converts Markdown can help ens
 ::warning
 This article was published before the merge of the 
 
-[Content](https://github.com/nuxt/content){rel="nofollow"}
+[Content](https://github.com/nuxt/content){rel=""nofollow""}
 
  and 
 
-[Studio](https://github.com/nuxtlabs/studio-module){rel="nofollow"}
+[Studio](https://github.com/nuxtlabs/studio-module){rel=""nofollow""}
 
  modules on January 6, 2025. As a result, it may contain some inconsistencies. The Studio module is now deprecated and available as an opt-in feature of the Content module. Learn how to enable it in 
 
@@ -9082,7 +8064,7 @@ Soon, the form generation feature will extend to all `YAML` and `JSON` files you
 ::callout{icon="i-ph-lightbulb"}
 This section is just a teaser of 
 
-[Nuxt Content v3](https://github.com/nuxt/content/tree/v3){rel="nofollow"}
+[Nuxt Content v3](https://github.com/nuxt/content/tree/v3){rel=""nofollow""}
 
 . We will publish a more detailed blog post soon.
 ::
@@ -9091,7 +8073,7 @@ We're actively working on the next major update of Nuxt Content which will bring
 
 ### Improved Performance
 
-A key challenge with Nuxt Content v2 was the large bundle size required to store all content files. It was an issue when deploying to edge platforms like [NuxtHub](https://hub.nuxt.com/){rel="nofollow"}.
+A key challenge with Nuxt Content v2 was the large bundle size required to store all content files. It was an issue when deploying to edge platforms like [NuxtHub](https://hub.nuxt.com/){rel="&#x22;nofollow&#x22;"}.
 
 To address this, Nuxt Content v3 moves away from the file based storing in production and leverage SQL database system. This switch is transparent to users. We're providing a zero config support for development mode, static generation, server rendering and edge deployments with NuxtHub.
 
@@ -9139,7 +8121,7 @@ export const collections = {
 ::warning
 This article was published before v3.7, learn 
 
-[this guide](https://github.com/nuxt/content/blob/main/CHANGELOG.md#370-2025-09-12){rel="nofollow"}
+[this guide](https://github.com/nuxt/content/blob/main/CHANGELOG.md#370-2025-09-12){rel=""nofollow""}
 
  to migrate.
 ::
@@ -9166,22 +8148,22 @@ Nuxt Content v3 has been officially released. Don't hesitate to try it out and g
 ::warning
 This article was published before v3.7, learn 
 
-[this guide](https://github.com/nuxt/content/blob/main/CHANGELOG.md#370-2025-09-12){rel="nofollow"}
+[this guide](https://github.com/nuxt/content/blob/main/CHANGELOG.md#370-2025-09-12){rel=""nofollow""}
 
  to migrate.
 ::
 
-The [Studio](https://nuxt.studio){rel="nofollow"} forms are dynamically generated based on the collection schema defined in your content configuration file. This behaviour applies whether you’re editing the [frontmatter](https://content.nuxt.com/docs/files/markdown#frontmatter) of a `Markdown` file or a `JSON` / `YAML` file.
+The [Studio](https://nuxt.studio){rel="&#x22;nofollow&#x22;"} forms are dynamically generated based on the collection schema defined in your content configuration file. This behaviour applies whether you’re editing the [frontmatter](https://content.nuxt.com/docs/files/markdown#frontmatter) of a `Markdown` file or a `JSON` / `YAML` file.
 
 :video{autoplay controls poster="https://res.cloudinary.com/nuxt/video/upload/v1739982761/frontmatterform_yjafgt.png" src="https://res.cloudinary.com/nuxt/video/upload/v1739982761/frontmatterform_yjafgt.mp4"}
 
 ## **Defining your form with** `zod` Schema
 
-Nuxt Content leverages [zod](https://github.com/colinhacks/zod){rel="nofollow"} to let you define a type-safe schema for your content. This schema not only validates your data but also powers the form generation in **Studio**.
+Nuxt Content leverages [zod](https://github.com/colinhacks/zod){rel="&#x22;nofollow&#x22;"} to let you define a type-safe schema for your content. This schema not only validates your data but also powers the form generation in **Studio**.
 
 ### **Built-in zod Helpers**
 
-You can define your Content schema by adding the `schema` property to your collection and by using a [zod](https://github.com/colinhacks/zod){rel="nofollow"} schema.
+You can define your Content schema by adding the `schema` property to your collection and by using a [zod](https://github.com/colinhacks/zod){rel="&#x22;nofollow&#x22;"} schema.
 
 `@nuxt/content` exposes a `z` object that contains a set of [Zod](https://content.nuxt.com) utilities for common data types.
 
@@ -9269,11 +8251,11 @@ Studio inputs are fully extensible. We can create as many input as we want based
 ::warning
 This article was published before the merge of the 
 
-[Content](https://github.com/nuxt/content){rel="nofollow"}
+[Content](https://github.com/nuxt/content){rel=""nofollow""}
 
  and 
 
-[Studio](https://github.com/nuxtlabs/studio-module){rel="nofollow"}
+[Studio](https://github.com/nuxtlabs/studio-module){rel=""nofollow""}
 
  modules on January 6, 2025. As a result, it may contain some inconsistencies. The Studio module is now deprecated and available as an opt-in feature of the Content module. Learn how to enable it in 
 
@@ -9298,14 +8280,14 @@ Alongside this update, we’ve improved the synchronized navigation between the 
 
 ## On the Road to Nuxt Content v3
 
-We’re excited to share that the fourth alpha version of Nuxt Content v3 has been released, with the [**draft documentation**](https://content.nuxt.com/){rel="nofollow"} available.
+We’re excited to share that the fourth alpha version of Nuxt Content v3 has been released, with the [**draft documentation**](https://content.nuxt.com/){rel="&#x22;nofollow&#x22;"} available.
 
 ### What’s Next?
 
 In the coming months, we’ll focus on testing and refining Nuxt Content v3 to ensure a robust, production-ready release. Here’s a quick look at the Nuxt Studio related improvements ahead:
 
 - **Merging the Studio module**: Soon, the Studio module will be integrated directly into Nuxt Content. Once Nuxt Content v3 is released, activating Studio will be as simple as setting `content.editor: true` in your `nuxt.config.ts` file. This simplification means no extra module is required for Studio, making setup faster.
-- **Unified documentation**: With the module integration, we’ll also merge the [Content](https://content.nuxt.com){rel="nofollow"} and [Studio](https://nuxt.studio){rel="nofollow"} documentation and websites into one comprehensive resource. Only the Studio platform (available once the user is logged) will remain as a standalone site.
+- **Unified documentation**: With the module integration, we’ll also merge the [Content](https://content.nuxt.com){rel="&#x22;nofollow&#x22;"} and [Studio](https://nuxt.studio){rel="&#x22;nofollow&#x22;"} documentation and websites into one comprehensive resource. Only the Studio platform (available once the user is logged) will remain as a standalone site.
 - **Take advantage of data structures and collections in Studio**: With Nuxt Content v3, the Studio platform will support and adapt its behaviour to [collections](https://content.nuxt.com/docs/collections/define) and user-defined schemas. This enhancement will allow schema-generated forms for both YAML and JSON files as well as front-matter within Markdown files.
 
 These updates reflect our commitment to providing the best content editing platform for your Nuxt website. Stay tuned!

@@ -23,8 +23,7 @@ You’ll learn how to:
 
 {% stepper %}
 {% step %}
-
-### Open a Postgres REPL in Warp
+**Open a Postgres REPL in Warp**
 
 Open Warp and connect to your Postgres database (or a test instance):
 
@@ -36,8 +35,7 @@ You’ll enter the interactive `psql` prompt, where you normally type SQL comman
 {% endstep %}
 
 {% step %}
-
-### Invoke Warp’s AI Input
+**Invoke Warp’s AI Input**
 
 Inside the running REPL, press:
 
@@ -52,8 +50,7 @@ You can **type or speak** in plain English — Warp will translate your request 
 {% endstep %}
 
 {% step %}
-
-### Ask Warp in Natural Language
+**Ask Warp in Natural Language**
 
 Start with a simple request:
 
@@ -84,8 +81,7 @@ You can run both within your REPL to display the tables.
 {% endstep %}
 
 {% step %}
-
-### Observe How Warp Learns from Context
+**Observe How Warp Learns from Context**
 
 As you continue issuing prompts, Warp’s AI agent **learns the structure of your database** by observing what’s printed in the REPL output.
 
@@ -112,8 +108,7 @@ Running this query in `psql` filters users accordingly.
 {% endstep %}
 
 {% step %}
-
-### Apply the Same Workflow to Other REPLs
+**Apply the Same Workflow to Other REPLs**
 
 This feature works **not just in Postgres** but also in:
 
@@ -135,8 +130,7 @@ Warp automatically detects the active REPL, so you don’t need to specify “SQ
 {% endstep %}
 
 {% step %}
-
-### Experiment and Iterate
+**Experiment and Iterate**
 
 Try varying your natural-language prompts:
 

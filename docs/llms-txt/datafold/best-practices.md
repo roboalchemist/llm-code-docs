@@ -1,30 +1,10 @@
-# Source: https://docs.datafold.com/deployment-testing/best-practices.md
-
 # Source: https://docs.datafold.com/data-diff/in-database-diffing/best-practices.md
 
 # Source: https://docs.datafold.com/data-diff/cross-database-diffing/best-practices.md
 
-# Source: https://docs.datafold.com/deployment-testing/best-practices.md
-
-# Source: https://docs.datafold.com/data-diff/in-database-diffing/best-practices.md
-
-# Source: https://docs.datafold.com/data-diff/cross-database-diffing/best-practices.md
-
-# Source: https://docs.datafold.com/deployment-testing/best-practices.md
-
-# Source: https://docs.datafold.com/data-diff/in-database-diffing/best-practices.md
-
-# Source: https://docs.datafold.com/data-diff/cross-database-diffing/best-practices.md
-
-# Source: https://docs.datafold.com/data-diff/in-database-diffing/best-practices.md
-
-# Source: https://docs.datafold.com/data-diff/cross-database-diffing/best-practices.md
-
-# Source: https://docs.datafold.com/deployment-testing/best-practices.md
-
-# Source: https://docs.datafold.com/data-diff/in-database-diffing/best-practices.md
-
-# Source: https://docs.datafold.com/data-diff/cross-database-diffing/best-practices.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Best Practices
 

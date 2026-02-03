@@ -1,14 +1,18 @@
 # Source: https://docs.baseten.co/development/chain/engine-builder-models.md
 
-# Engine Builder Models
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-> Engine Builder models are pre-trained models that are optimized for specific inference tasks.
+# Engine-Builder LLM Models
 
-Baseten's [Engine Builder](/development/model/performance/engine-builder-overview) enables the deployment of optimized model inference engines. Currently, it supports TensorRT-LLM. Truss Chains allows seamless integration of these engines into structured workflows. This guide provides a quick entry point for Chains users.
+> Engine-Builder LLM models are pre-trained models that are optimized for specific inference tasks.
+
+Baseten's [Engine-Builder](/engines/engine-builder-llm/overview) enables the deployment of optimized model inference engines. Currently, it supports TensorRT-LLM. Truss Chains allows seamless integration of these engines into structured workflows. This guide provides a quick entry point for Chains users.
 
 ## LLama 7B Example
 
-Use the `EngineBuilderLLMChainlet` baseclass to configure an LLM engine. The additional `engine_builder_config` field specifies model architecture, repository, and runtime parameters and more, the full options are detailed in the [Engine Builder configuration guide](/development/model/performance/engine-builder-config).
+Use the `EngineBuilderLLMChainlet` baseclass to configure an LLM engine. The additional `engine_builder_config` field specifies model architecture, repository, and engine parameters and more, the full options are detailed in the [Engine-Builder configuration guide](/engines/engine-builder-llm/engine-builder-config).
 
 ```python  theme={"system"}
 import truss_chains as chains
@@ -39,7 +43,7 @@ class Llama7BChainlet(chains.EngineBuilderLLMChainlet):
 * No `run_local` ([guide](/development/chain/localdev)) and `watch` ([guide](/development/chain/watch)) Standard Chains support a local debugging mode and watch. However, when using `EngineBuilderLLMChainlet`, local execution is not available, and testing must be done after deployment.
   For a faster dev loop of the rest of your chain (everything except the engine builder chainlet) you can substitute those chainlets with stubs like you can do for an already deployed truss model \[[guide](/development/chain/stub)].
 
-## Integrate the Engine Builder Chainlet
+## Integrate the Engine-Builder Chainlet
 
 After defining an `EngineBuilderLLMInput` like `Llama7BChainlet` above, you can use it as a dependency in other conventional chainlets:
 
@@ -49,7 +53,7 @@ import truss_chains as chains
 
 @chains.mark_entrypoint
 class TestController(chains.ChainletBase):
-    """Example using the Engine Builder Chainlet in another Chainlet."""
+    """Example using the Engine-Builder Chainlet in another Chainlet."""
 
     def __init__(self, llm=chains.depends(Llama7BChainlet)) -> None:
         self._llm = llm
@@ -59,5 +63,4 @@ class TestController(chains.ChainletBase):
         llm_input = chains.EngineBuilderLLMInput(messages=messages)
         async for chunk in self._llm.run_remote(llm_input):
             yield chunk
-
 ```

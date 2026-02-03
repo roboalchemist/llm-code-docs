@@ -1,5 +1,9 @@
 # Source: https://docs.openpipe.ai/features/deployments.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.openpipe.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deployment Types
 
 >  Learn about serverless, hourly, and dedicated deployments.
@@ -42,7 +46,7 @@ While every task is different, we've found that models hosted on dedicated deplo
 
 The following chart shows the average time to first token and total completion time for three models hosted on OpenPipe, and three popular closed source models. The dedicated deployments are equipped with n-gram speculative decoding, allowing the model to "guess" several tokens at a time, then validate the guess with the fully trained model. In practice this reduces latency by avoiding bottlenecks in the GPU without any degradation in accuracy.
 
-<Frame>![](https://mintlify.s3.us-west-1.amazonaws.com/openpipe/images/features/deployments/800-input-500-output.png)</Frame>
+<Frame><img src="https://mintcdn.com/openpipe/yLyh_RHELnvU-7tP/images/features/deployments/800-input-500-output.png?fit=max&auto=format&n=yLyh_RHELnvU-7tP&q=85&s=ffe5d6cba0e216d408d8b4ad8ad85428" alt="" data-og-width="2266" width="2266" data-og-height="1101" height="1101" data-path="images/features/deployments/800-input-500-output.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/openpipe/yLyh_RHELnvU-7tP/images/features/deployments/800-input-500-output.png?w=280&fit=max&auto=format&n=yLyh_RHELnvU-7tP&q=85&s=b12ca25b983b9e89dcd79f5644561107 280w, https://mintcdn.com/openpipe/yLyh_RHELnvU-7tP/images/features/deployments/800-input-500-output.png?w=560&fit=max&auto=format&n=yLyh_RHELnvU-7tP&q=85&s=f597fd8cb5f903b50a682c606fa0002f 560w, https://mintcdn.com/openpipe/yLyh_RHELnvU-7tP/images/features/deployments/800-input-500-output.png?w=840&fit=max&auto=format&n=yLyh_RHELnvU-7tP&q=85&s=598d7d37067abb1cbee4df2fd345837a 840w, https://mintcdn.com/openpipe/yLyh_RHELnvU-7tP/images/features/deployments/800-input-500-output.png?w=1100&fit=max&auto=format&n=yLyh_RHELnvU-7tP&q=85&s=be5af8f2d50f653a4a3b56d6a4af235b 1100w, https://mintcdn.com/openpipe/yLyh_RHELnvU-7tP/images/features/deployments/800-input-500-output.png?w=1650&fit=max&auto=format&n=yLyh_RHELnvU-7tP&q=85&s=6b2dcb8651d1166dc34636458a33306e 1650w, https://mintcdn.com/openpipe/yLyh_RHELnvU-7tP/images/features/deployments/800-input-500-output.png?w=2500&fit=max&auto=format&n=yLyh_RHELnvU-7tP&q=85&s=ec9190185985b35a1d8378b4236ec0ff 2500w" /></Frame>
 
 As shown in the chart above, the models hosted on dedicated deployments are able to provide much faster response times than the serverless deployment or closed models, with a dedicated Qwen 2.5 14B Instruct deployment outperforming Llama 3.1 8B Instruct despite being almost twice as large.
 

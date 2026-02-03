@@ -1,69 +1,101 @@
 # Source: https://upstash.com/docs/devops/developer-api/redis/moveto_team.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Move To Team
 
 > This endpoint moves database under a target team
 
+
+
 ## OpenAPI
 
 ````yaml devops/developer-api/openapi.yml post /redis/move-to-team
+openapi: 3.0.4
+info:
+  title: Developer API - Upstash
+  description: >-
+    This is a documentation to specify Developer API endpoints based on the
+    OpenAPI 3.0 specification.
+  contact:
+    name: Support Team
+    email: support@upstash.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+  - url: https://api.upstash.com/v2
+security: []
+tags:
+  - name: redis
+    description: Manage redis databases.
+    externalDocs:
+      description: Find out more
+      url: https://upstash.com/docs/devops/developer-api/introduction
+  - name: teams
+    description: Manage teams and team members.
+    externalDocs:
+      description: Find out more
+      url: https://upstash.com/docs/devops/developer-api/introduction
+  - name: vector
+    description: Manage vector indices.
+    externalDocs:
+      description: Find out more
+      url: https://upstash.com/docs/devops/developer-api/introduction
+  - name: search
+    description: Manage search indices.
+    externalDocs:
+      description: Find out more
+      url: https://upstash.com/docs/devops/developer-api/introduction
+  - name: qstash
+    description: Manage QStash.
+    externalDocs:
+      description: Find out more
+      url: https://upstash.com/docs/devops/developer-api/introduction
+externalDocs:
+  description: Find out more about Upstash
+  url: https://upstash.com/
 paths:
-  path: /redis/move-to-team
-  method: post
-  servers:
-    - url: https://api.upstash.com/v2
-  request:
-    security:
-      - title: basicAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: basic
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              team_id:
-                allOf:
-                  - type: string
-                    description: The ID of the target team
-              database_id:
-                allOf:
-                  - type: string
-                    description: The ID of the database to be moved
-            required: true
-            requiredProperties:
-              - team_id
-              - database_id
-        examples:
-          example:
-            value:
-              team_id: <string>
-              database_id: <string>
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: string
-            example: OK
-        examples:
-          example:
-            value: OK
-        description: Database moved successfully
-  deprecated: false
-  type: path
-  xMint:
-    href: /devops/developer-api/redis/moveto_team
+  /redis/move-to-team:
+    post:
+      tags:
+        - redis
+      summary: Move To Team
+      description: This endpoint moves database under a target team
+      operationId: moveToTeam
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                team_id:
+                  type: string
+                  description: The ID of the target team
+                database_id:
+                  type: string
+                  description: The ID of the database to be moved
+              required:
+                - team_id
+                - database_id
+      responses:
+        '200':
+          description: Database moved successfully
+          content:
+            application/json:
+              schema:
+                type: string
+                example: OK
+      security:
+        - basicAuth: []
 components:
-  schemas: {}
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
 
 ````

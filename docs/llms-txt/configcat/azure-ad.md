@@ -2,6 +2,8 @@
 
 # Entra ID (Azure AD) Identity Provider
 
+Copy page
+
 Connect ConfigCat with Entra ID via SAML.
 
 ## Introduction[​](#introduction "Direct link to Introduction")
@@ -99,7 +101,7 @@ To let users authenticate via SAML, you need to assign individual users or group
 
 ## 5. Sign In[​](#5-sign-in "Direct link to 5. Sign In")
 
-* Go to the [ConfigCat Log In](https://app.configcat.com/auth/login) page, and click `COMPANY ACCOUNT - SAML`.
+* Go to the [ConfigCat Log In](https://app.configcat.com) page, and click `COMPANY ACCOUNT - SAML`.
 
   ![ConfigCat SAML login](/docs/assets/saml/dashboard/saml_login.png)
 
@@ -115,5 +117,5 @@ To let users authenticate via SAML, you need to assign individual users or group
 
 ## 6. Next Steps[​](#6-next-steps "Direct link to 6. Next Steps")
 
-* Configure [User provisioning (SCIM)](https://configcat.com/docs/docs/advanced/team-management/scim/scim-overview/.md)
-* or configure the [auto-assignment of users](https://configcat.com/docs/docs/advanced/team-management/auto-assign-users/.md) if you don't want to provision your users with your Identity Provider.
+* Configure [User provisioning (SCIM)](https://configcat.com/docs/advanced/team-management/scim/scim-overview.md)
+* or configure the [auto-assignment of users](https://configcat.com/docs/advanced/team-management/auto-assign-users.md) if you don't want to provision your users with your Identity Provider.

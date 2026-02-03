@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/publish/best-practices.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Best practices for showcasing your integration
 
 > Sharing well-crafted content about your Zapier integration can help you improve user adoption, highlight key use cases, and simplify integration processes. Need some inspiration? The following examples show how some of our partners are effectively communicating their Zapier integrations across different platforms.

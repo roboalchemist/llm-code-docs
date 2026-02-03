@@ -1,3 +1,7 @@
+# Source: https://docs.streamlit.io/develop/api-reference/widgets
+
+# Source: https://docs.streamlit.io/develop/concepts/multipage-apps/widgets
+
 # Working with widgets in multipage apps
 
 When you create a widget in a Streamlit app, Streamlit generates a widget ID and uses it to make your widget stateful. As your app reruns with user interaction, Streamlit keeps track of the widget's value by associating its value to its ID. In particular, a widget's ID depends on the page where it's created. If you define an identical widget on two different pages, then the widget will reset to its default value when you switch pages.

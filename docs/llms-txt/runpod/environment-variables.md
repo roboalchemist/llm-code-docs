@@ -4,6 +4,12 @@
 
 # Source: https://docs.runpod.io/pods/templates/environment-variables.md
 
+# Source: https://docs.runpod.io/serverless/vllm/environment-variables.md
+
+# Source: https://docs.runpod.io/serverless/development/environment-variables.md
+
+# Source: https://docs.runpod.io/pods/templates/environment-variables.md
+
 <!-- Documentation Index: See llms.txt -->
 <!-- See llms.txt for complete documentation index -->
 <!-- Use this for finding documentation -->

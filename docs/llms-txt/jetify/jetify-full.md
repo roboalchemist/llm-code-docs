@@ -24,7 +24,7 @@ You can add or remove team members from your team, or modify their role, using t
 
 Once you’ve been invited to a team, you can authenticate from the CLI by running:
 
-```bash  theme={null}
+```bash theme={null}
 devbox auth login
 ```
 
@@ -33,19 +33,19 @@ SSO.
 
 You can check your current authentication status by running:
 
-```bash  theme={null}
+```bash theme={null}
 devbox auth whoami
 ```
 
 You can check that you are connected to the cache, and your current cache URL, by running:
 
-```bash  theme={null}
+```bash theme={null}
 devbox cache info
 ```
 
 You can logout by running:
 
-```bash  theme={null}
+```bash theme={null}
 devbox auth logout
 ```
 
@@ -62,7 +62,7 @@ generated it.
 
 To generate a Token, first authenticate as described above, and then run:
 
-```bash  theme={null}
+```bash theme={null}
 devbox auth tokens new
 ```
 
@@ -155,7 +155,7 @@ Source: https://www.jetify.com/docs/docs/cloud/cache/usage/index
 Once you have authenticated, Devbox will automatically configure your cache for you. You can also
 manually configure the cache by running:
 
-```bash  theme={null}
+```bash theme={null}
 devbox cache configure
 ```
 
@@ -179,7 +179,7 @@ Push access is currently only available for authenticated users with Admin permi
 You can push the entire closure of a Devbox project to the Jetify Cache by navigating to your
 project root and running
 
-```bash  theme={null}
+```bash theme={null}
 devbox cache upload
 ```
 
@@ -190,7 +190,7 @@ You can also push a single package by passing a flake reference to the Devbox CL
 For example, to push a custom `mongodb` package from a custom flake.nix on your machine, you can
 run:
 
-```bash  theme={null}
+```bash theme={null}
 devbox cache upload path:./path/to/flake.nix#mongodb
 ```
 
@@ -198,7 +198,7 @@ You can also cache packages from Github or from Nixpkgs by passing the appropria
 This can be useful for caching build artifacts if a package does not exist in the public Nix cache,
 or if it requires you to build it from source:
 
-```bash  theme={null}
+```bash theme={null}
 # Cache an installable hosted on Github (process-compose)devbox cache upload github:F1bonnac1/process-compose# Cache a package from nixpkgsdevbox cache upload nixpkgs#mongodb
 ```
 
@@ -218,7 +218,7 @@ Users with a free account can upgrade to a paid team on the dashboard anytime.
 
 1. From the Team Selector in the top right of your dashboard, select **Create a New Team**
 
-<img src="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/creating-your-team/team-selector-dropdown.png?fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=f27ef1ac588d09c3426d4d91a49357fe" alt="New Team" data-og-width="754" width="754" data-og-height="496" height="496" data-path="docs/cloud/dashboard/creating-your-team/team-selector-dropdown.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/creating-your-team/team-selector-dropdown.png?w=280&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=6e2b1bd599d27882ca2266284811a8ed 280w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/creating-your-team/team-selector-dropdown.png?w=560&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=9c0a9fbefceef7cbadb181fe46042e83 560w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/creating-your-team/team-selector-dropdown.png?w=840&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=015b583ed1570de7514437c43303933a 840w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/creating-your-team/team-selector-dropdown.png?w=1100&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=3e8ed9acce69ae0fe14f6c3f94d87925 1100w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/creating-your-team/team-selector-dropdown.png?w=1650&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=e7443641c687bc981c4b59868ada4935 1650w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/creating-your-team/team-selector-dropdown.png?w=2500&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=4cd2d1626e12eaf6f0d1f9c9348863cb 2500w" />
+<img alt="New Team" />
 
 1. You may be prompted to sign in again. Log in with the same email or Google Account that you used
    to create your Account.
@@ -226,7 +226,7 @@ Users with a free account can upgrade to a paid team on the dashboard anytime.
 2. At the bottom of the team selection screen, enter your new Team Name and then click **Create
    Team**
 
-<img src="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/creating-your-team/create-team-form.png?fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=27f3c1411c6e9d4935e70a3af1d7c0c8" alt="Create Team Form" data-og-width="1096" width="1096" data-og-height="428" height="428" data-path="docs/cloud/dashboard/creating-your-team/create-team-form.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/creating-your-team/create-team-form.png?w=280&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=c93f812b5553f7b172e4eb81c75a74bc 280w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/creating-your-team/create-team-form.png?w=560&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=67746b02939dcea3ff9d75d501c4f3d6 560w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/creating-your-team/create-team-form.png?w=840&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=4a7997cf51e0e0e1cd5d14c574cb8d96 840w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/creating-your-team/create-team-form.png?w=1100&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=e126b2cea1f858652bb3830cae4f3a42 1100w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/creating-your-team/create-team-form.png?w=1650&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=cfbd7ffd4ca8275419088d18e7912329 1650w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/creating-your-team/create-team-form.png?w=2500&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=dc524e461e46bd9beb474d0a1ca84aa1 2500w" />
+<img alt="Create Team Form" />
 
 1. Your new team will be created, and you will be automatically switched to your new team. You can
    now [invite other members](/docs/cloud/dashboard/inviting-members/) to join your team.
@@ -245,7 +245,7 @@ Source: https://www.jetify.com/docs/docs/cloud/dashboard/index
 
 The  lets you manage your team, projects, and secrets from a single interface. You can use the Dashboard to manage your own hobby projects, or to collaborate with other team members.
 
-<img src="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/jetify-cloud-dashboard-overview.jpeg?fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=e7774a907b874e2a3e6451141e1a7afb" alt="Jetify Dashboard" data-og-width="5088" width="5088" data-og-height="3800" height="3800" data-path="docs/cloud/dashboard/jetify-cloud-dashboard-overview.jpeg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/jetify-cloud-dashboard-overview.jpeg?w=280&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=e9527fe9b97884121b282efc0df21e97 280w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/jetify-cloud-dashboard-overview.jpeg?w=560&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=c3e1110319cb63805e2191efffb95ae0 560w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/jetify-cloud-dashboard-overview.jpeg?w=840&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=db07022f1273ec50e900ad17b7bfc849 840w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/jetify-cloud-dashboard-overview.jpeg?w=1100&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=4529e4ddc6d45ae9a7599e4398585b00 1100w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/jetify-cloud-dashboard-overview.jpeg?w=1650&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=7806c101886691be2fae4cf868d02d5a 1650w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/jetify-cloud-dashboard-overview.jpeg?w=2500&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=baa1c1dafaedc860e5ba16b16f319c69 2500w" />
+<img alt="Jetify Dashboard" />
 
 You can visit the Jetify Dashboard at [cloud.jetify.com](https://cloud.jetify.com)
 
@@ -278,23 +278,23 @@ Team members can be added in one of two Roles:
 
 1. In the Jetify Dashboard, navigate to the **Members** tab
 
-   <img src="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/members-tab-navigation.png?fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=c7e1ae6609a093c82893d172a4c97701" alt="Members Tab" data-og-width="2604" width="2604" data-og-height="1004" height="1004" data-path="docs/cloud/dashboard/inviting-members/members-tab-navigation.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/members-tab-navigation.png?w=280&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=dd5f71e19476cef8f50cced184b9a2cf 280w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/members-tab-navigation.png?w=560&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=af6759f1c71960375694c533ded6a6c8 560w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/members-tab-navigation.png?w=840&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=42d8b11d531ba0be650a6e96ffbc1dc7 840w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/members-tab-navigation.png?w=1100&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=2ef7791315d7a2527f9587ef505ee10f 1100w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/members-tab-navigation.png?w=1650&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=a2cf77b83601378a02c658a236c6755a 1650w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/members-tab-navigation.png?w=2500&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=bbb1568c4d461dda3eb6a47b32a416c7 2500w" />
+   <img alt="Members Tab" />
 
 2 . To invite a member, enter their email address, and the **Role** you want to assign to them.
 
-<img src="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/invite-member-form.png?fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=688a504c5eab93e9010c748fe0d06a83" alt="Inviting a Member" data-og-width="1646" width="1646" data-og-height="536" height="536" data-path="docs/cloud/dashboard/inviting-members/invite-member-form.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/invite-member-form.png?w=280&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=54b6042c4499db3cc2b01a8a8acd3463 280w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/invite-member-form.png?w=560&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=01a1ecf4c800307b528b1f55d3020834 560w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/invite-member-form.png?w=840&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=fbd7c8f05e070d51594a67841cb0d548 840w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/invite-member-form.png?w=1100&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=9c07c98eac04c8882015a5ccad293e65 1100w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/invite-member-form.png?w=1650&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=72e800aef16a67050600ea1c1c44621d 1650w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/invite-member-form.png?w=2500&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=0ba5b5dc177e75317b5ece032cc38e0f 2500w" />
+<img alt="Inviting a Member" />
 
 1. Once invited, users will receive an email with instructions on how to join your team. They will
    show up in the **Members** tab as invited until they accept the invitation:
 
-   <img src="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/member-status-invited.png?fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=19adda3c43457aa02c9dbb1c08a52822" alt="Invited Member" data-og-width="1578" width="1578" data-og-height="164" height="164" data-path="docs/cloud/dashboard/inviting-members/member-status-invited.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/member-status-invited.png?w=280&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=e321c12ef18a385e00533e379280a7f3 280w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/member-status-invited.png?w=560&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=b3a8d1a75624264cdaada33d3e5b5822 560w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/member-status-invited.png?w=840&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=c1937cf8905652662144f8ea60ed1ef4 840w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/member-status-invited.png?w=1100&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=1836ddb4059f7be5a30e7cebb255dd30 1100w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/member-status-invited.png?w=1650&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=aa27f7bfbae5f33bf0197820f47bda4a 1650w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/member-status-invited.png?w=2500&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=0180edbf1286c585b2c591b3dc7b9b2b 2500w" />
+   <img alt="Invited Member" />
 
    Note that invitations will expire if they are not accepted within 7 days, after which you will
    need to re-send the invitation.
 
    Once they accept the invitation, they will switch to **active**
 
-   <img src="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/member-status-active.png?fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=878745ccef2b6b45a5fd85e6786e0b28" alt="Active Member" data-og-width="1598" width="1598" data-og-height="190" height="190" data-path="docs/cloud/dashboard/inviting-members/member-status-active.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/member-status-active.png?w=280&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=11edd2f12ede11b4112e18ab27fd2435 280w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/member-status-active.png?w=560&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=1936de197869b1acdb4a21746d5b02d7 560w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/member-status-active.png?w=840&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=acfc7389067612ed91caaa3ac6f619da 840w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/member-status-active.png?w=1100&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=22544bb915c497117e83c8908444424f 1100w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/member-status-active.png?w=1650&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=107e58d9d0038244fb1fc804e7160f5d 1650w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/member-status-active.png?w=2500&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=a4c248b44e3ab79c00a2bc08f26cea8d 2500w" />
+   <img alt="Active Member" />
 
 ## Removing a Team Member[​](#removing-a-team-member "Direct link to Removing a Team Member")
 
@@ -305,7 +305,7 @@ a team member
 2. Click the Options button to the right of the member's name
 3. Select Delete from the pop up that appears:
 
-<img src="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/delete-member-action.png?fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=d1ec459866679fef9f7c3e1c6bee442e" alt="Delete a member" data-og-width="1698" width="1698" data-og-height="256" height="256" data-path="docs/cloud/dashboard/inviting-members/delete-member-action.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/delete-member-action.png?w=280&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=3de5809aed2913889cdcdb2287566982 280w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/delete-member-action.png?w=560&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=22fd969c154544fd6e97a414bc854ecc 560w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/delete-member-action.png?w=840&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=62caedc48213561bc8aa94dcb2e2119f 840w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/delete-member-action.png?w=1100&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=7b3d3c342eddb21aa2654b1dff8deba3 1100w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/delete-member-action.png?w=1650&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=451c533459b0bd814c94177c0241ddd9 1650w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/dashboard/inviting-members/delete-member-action.png?w=2500&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=0e4ee9eed10666693d8b8beafc1aff1c 2500w" />
+<img alt="Delete a member" />
 
 1. Click **OK** on the confirmation window that appears to confirm that you want to remove the
    member from your team
@@ -324,14 +324,14 @@ Jetify Cloud will automatically configure a unique, private domain for previewin
 
 1. In your project on the Jetify Cloud Dashboard, select **Settings**
 2. Scroll down to the **Custom Domain** section on the settings page
-   <img src="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/custom-domains/custom-domain-settings.png?fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=15b1013bbeab92c120293169def8c738" alt="Custom Domain Section" data-og-width="2056" width="2056" data-og-height="814" height="814" data-path="docs/cloud/deploys/custom-domains/custom-domain-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/custom-domains/custom-domain-settings.png?w=280&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=1559e90cabb3e82ab61dbc5b1c695630 280w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/custom-domains/custom-domain-settings.png?w=560&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=67a3d971aa5d03eca551c794d1a3c3f1 560w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/custom-domains/custom-domain-settings.png?w=840&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=a7e3923c8d39abf6820c948d6f2c563b 840w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/custom-domains/custom-domain-settings.png?w=1100&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=335f97b598c5cb7271700ef5e5662ad6 1100w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/custom-domains/custom-domain-settings.png?w=1650&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=6b56240b8158ebd8cf6859a03c57e503 1650w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/custom-domains/custom-domain-settings.png?w=2500&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=b70201903b83b4be0f29869db9c3a747 2500w" />
+   <img alt="Custom Domain Section" />
 3. Enter the custom domain name that you would like to use for your project
 4. After you click confirm, your custom domain will be set in a pending state. To validate the
    domain, you will need to add a record to your DNS provider:
-   <img src="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/custom-domains/custom-domain-status-pending.png?fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=d415e76ce4c98b77c87260eb022b1c7a" alt="Pending custom domain" data-og-width="2024" width="2024" data-og-height="830" height="830" data-path="docs/cloud/deploys/custom-domains/custom-domain-status-pending.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/custom-domains/custom-domain-status-pending.png?w=280&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=31e0213a3c1d8691b09f3e065d1a54f8 280w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/custom-domains/custom-domain-status-pending.png?w=560&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=13801b909e15176633f3c83a612ac6e8 560w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/custom-domains/custom-domain-status-pending.png?w=840&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=d19667a54eb48d20ad1d0efb129a9c73 840w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/custom-domains/custom-domain-status-pending.png?w=1100&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=e603858352db8e8fdfe960329d98b54d 1100w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/custom-domains/custom-domain-status-pending.png?w=1650&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=6ce68da8dd8da0c7ede0a5c7ce06871f 1650w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/custom-domains/custom-domain-status-pending.png?w=2500&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=cf5240f1b1205fb89b75e65ee6417497 2500w" />
+   <img alt="Pending custom domain" />
 5. Once the correct records have been added to your DNS provider, your Custom Domain will display an
    **Issued** status:
-   <img src="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/custom-domains/custom-domain-status-issued.png?fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=0a297b8005bca8e131cc4d89b96cce10" alt="Custom Domain Issued" data-og-width="1990" width="1990" data-og-height="786" height="786" data-path="docs/cloud/deploys/custom-domains/custom-domain-status-issued.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/custom-domains/custom-domain-status-issued.png?w=280&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=eeed6c82a897c3a1f6c65844c36b5dc1 280w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/custom-domains/custom-domain-status-issued.png?w=560&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=28c4b30259e70327c058daf75e7ebcf2 560w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/custom-domains/custom-domain-status-issued.png?w=840&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=569f6e2222b1536fecd5346fad442858 840w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/custom-domains/custom-domain-status-issued.png?w=1100&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=8b52ba06ab6fe7ae3b028cc9bcaf0739 1100w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/custom-domains/custom-domain-status-issued.png?w=1650&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=4d98fff6dc90a2fadc152896c4afa820 1650w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/custom-domains/custom-domain-status-issued.png?w=2500&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=adb0af1e9bfd896ff6c3bee832dcd664 2500w" />
+   <img alt="Custom Domain Issued" />
 
 ## Removing a Custom Domain[​](#removing-a-custom-domain "Direct link to Removing a Custom Domain")
 
@@ -427,7 +427,7 @@ to identify bottlenecks in the build process. Build logs automatically stream in
 You can view the build logs for a specific deployment by selecting the deployment, and then
 expanding the Build logs section
 
-<img src="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/monitoring-deploys/deployment-build-logs.png?fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=e2638b22168c2bcc05642f41dd46c272" alt="Build logs" data-og-width="3026" width="3026" data-og-height="2150" height="2150" data-path="docs/cloud/deploys/monitoring-deploys/deployment-build-logs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/monitoring-deploys/deployment-build-logs.png?w=280&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=8c382f223e8a002c0143ff80659ca332 280w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/monitoring-deploys/deployment-build-logs.png?w=560&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=0fe1de6aae899c938da5e591d708e75e 560w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/monitoring-deploys/deployment-build-logs.png?w=840&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=634a4b57b1685b05269066b9c8016c0b 840w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/monitoring-deploys/deployment-build-logs.png?w=1100&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=f7e4c74c4beb69c3edbe1d50fc5a4ec6 1100w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/monitoring-deploys/deployment-build-logs.png?w=1650&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=fe40500aab09107f9478c1433e36c757 1650w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/monitoring-deploys/deployment-build-logs.png?w=2500&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=ab065d424d12f00d46097c00bd56b7eb 2500w" />
+<img alt="Build logs" />
 
 ## Runtime Logs[​](#runtime-logs "Direct link to Runtime Logs")
 
@@ -440,7 +440,7 @@ your deployments.
 
 You can view your Runtime Logs by clicking the **Runtime Logs** tab in your Deployment Details page:
 
-<img src="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/monitoring-deploys/deployment-runtime-logs.png?fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=0516e122c8504011fc9623837ad0a6a6" alt="Runtime Logs" data-og-width="2100" width="2100" data-og-height="1554" height="1554" data-path="docs/cloud/deploys/monitoring-deploys/deployment-runtime-logs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/monitoring-deploys/deployment-runtime-logs.png?w=280&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=3eeedeadd2f602dbfa1ba785c27d5a41 280w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/monitoring-deploys/deployment-runtime-logs.png?w=560&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=fb241d8245900b1dca3ece145d726950 560w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/monitoring-deploys/deployment-runtime-logs.png?w=840&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=22b66eeda57acab20314e643cc2f3215 840w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/monitoring-deploys/deployment-runtime-logs.png?w=1100&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=d5b86907e9b2a558ac9666856d441388 1100w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/monitoring-deploys/deployment-runtime-logs.png?w=1650&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=a330744a310632aed33dba69032e53af 1650w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/monitoring-deploys/deployment-runtime-logs.png?w=2500&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=d187d3ef9e587cbd9a8d09c7d2a895c2 2500w" />
+<img alt="Runtime Logs" />
 
 ## Preview URL[​](#preview-url "Direct link to Preview URL")
 
@@ -497,7 +497,7 @@ devbox.json:
 
 Below is an example `devbox.json` that can be used for a simple Go project in Jetify Cloud:
 
-```json  theme={null}
+```json theme={null}
 {
   "packages": ["[email protected]"],
   "env": {
@@ -540,7 +540,7 @@ repositories, you will need to install the Devbox Cloud Github app in your repos
 3. Select a Repository to import your repo. If your project is not in the root directory of your
    repository, you can specify a subdirectory for Jetify to search for your project.
 
-<img src="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/setup/select-repository-for-project.png?fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=3de3d226c4430571d583eddf37afc9f0" alt="Select the Repo for your Jetify Project" data-og-width="3026" width="3026" data-og-height="2150" height="2150" data-path="docs/cloud/deploys/setup/select-repository-for-project.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/setup/select-repository-for-project.png?w=280&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=b8646d2b1fe7a9a349c476434867f294 280w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/setup/select-repository-for-project.png?w=560&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=2dce4487c00eaae12711ab10c5566dbd 560w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/setup/select-repository-for-project.png?w=840&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=4f699372152e8499aa59913afd741347 840w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/setup/select-repository-for-project.png?w=1100&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=d59285077bf3c56f014b65809ca8ed74 1100w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/setup/select-repository-for-project.png?w=1650&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=18ae13aa833461baa7b546e7bfbe1fb2 1650w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/deploys/setup/select-repository-for-project.png?w=2500&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=c7ffbe0c35c40938d764bde12134a75d 2500w" />
+<img alt="Select the Repo for your Jetify Project" />
 
 ## Choosing an Instance Size[​](#choosing-an-instance-size "Direct link to Choosing an Instance Size")
 
@@ -653,7 +653,7 @@ To manage secrets from the Jetify Cloud Dashboard, you must first:
 
 1. From the Jetify Dashboard, select the project whose secrets you want to manage
 2. Navigate to the Secrets tab of the Jetify Dashboard
-   <img src="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/secrets/dashboard-secrets/secrets-tab-navigation.png?fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=a146c5c309e4b6e2a464301bab9290ba" alt="Jetify Dashboard Secrets Tab" data-og-width="2366" width="2366" data-og-height="1202" height="1202" data-path="docs/cloud/secrets/dashboard-secrets/secrets-tab-navigation.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/secrets/dashboard-secrets/secrets-tab-navigation.png?w=280&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=a64e7894ef9b9202cc6a00e4ced2a4fd 280w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/secrets/dashboard-secrets/secrets-tab-navigation.png?w=560&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=ea581430b41ff5968184fa41c52d0518 560w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/secrets/dashboard-secrets/secrets-tab-navigation.png?w=840&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=87e58f610512f3fb5ad8829999d0efd0 840w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/secrets/dashboard-secrets/secrets-tab-navigation.png?w=1100&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=be8b6b04983d0fdaca7446acb79d8953 1100w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/secrets/dashboard-secrets/secrets-tab-navigation.png?w=1650&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=a7f40d39014ba1587eafa5f509043561 1650w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/secrets/dashboard-secrets/secrets-tab-navigation.png?w=2500&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=a5a091224b9d9ad28399f24fd0373472 2500w" />
+   <img alt="Jetify Dashboard Secrets Tab" />
 3. To create a new secret, enter the key name of the secret, along with the value that you want to
    set in the form. Note that secrets are set as environment variables, so the key name must be a
    valid environment variable name.
@@ -669,7 +669,7 @@ You can update or manage secrets by clicking the edit button next to the secret 
 update. This will open a modal where you can update the value of the secret, or delete the secret
 entirely.
 
-<img src="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/secrets/dashboard-secrets/edit-secrets-interface.png?fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=d375aea5783f0b57e71f857afb9d7298" alt="Editing Secrets" data-og-width="2476" width="2476" data-og-height="940" height="940" data-path="docs/cloud/secrets/dashboard-secrets/edit-secrets-interface.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/secrets/dashboard-secrets/edit-secrets-interface.png?w=280&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=14f174f0bc803aac759d2901e35e395c 280w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/secrets/dashboard-secrets/edit-secrets-interface.png?w=560&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=1b4f90c0ee3ce00e57461e8289c3e5db 560w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/secrets/dashboard-secrets/edit-secrets-interface.png?w=840&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=ddc17e9dba22520a96c87e2fc6b42ebc 840w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/secrets/dashboard-secrets/edit-secrets-interface.png?w=1100&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=ac856db64eccfaee5b9e0fc770b677b7 1100w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/secrets/dashboard-secrets/edit-secrets-interface.png?w=1650&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=65e40ce451fbab9e0611d6e6cee803e3 1650w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/secrets/dashboard-secrets/edit-secrets-interface.png?w=2500&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=b55635fce3ad5ff33f757a7c98547894 2500w" />
+<img alt="Editing Secrets" />
 
 ## Further Reading[​](#further-reading "Direct link to Further Reading")
 
@@ -723,7 +723,7 @@ If you don't already have Devbox installed, see our
 You can authenticate with Jetify Cloud by running `devbox auth login`. This will launch the browser
 authentication flow to sign into Jetify Cloud.
 
-<img src="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/secrets/secrets-cli/jetify-authentication-page.jpeg?fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=9464344a973716038c113405085b7278" alt="Auth Page" data-og-width="1870" width="1870" data-og-height="1354" height="1354" data-path="docs/cloud/secrets/secrets-cli/jetify-authentication-page.jpeg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/secrets/secrets-cli/jetify-authentication-page.jpeg?w=280&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=b7095ddef632b95c83fe8d805493c904 280w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/secrets/secrets-cli/jetify-authentication-page.jpeg?w=560&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=7c6f55e6382a9d604eba8373ab6e71c3 560w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/secrets/secrets-cli/jetify-authentication-page.jpeg?w=840&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=ab1f2bf6a46736b6e7dd1fdf78b4d26a 840w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/secrets/secrets-cli/jetify-authentication-page.jpeg?w=1100&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=f95165ec98e215e97d6fe98aba644a9f 1100w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/secrets/secrets-cli/jetify-authentication-page.jpeg?w=1650&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=3b51201a292d4bb77c4e40aad0d8e357 1650w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/cloud/secrets/secrets-cli/jetify-authentication-page.jpeg?w=2500&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=b142095c5e91bff966e1ebc697c9c74e 2500w" />
+<img alt="Auth Page" />
 
 Once you complete the authentication flow and select a team, the Devbox CLI will configure itself to
 use the team you selected
@@ -733,7 +733,7 @@ use the team you selected
 To create a new project on Jetify Cloud, navigate to the root directory of your project and run
 `devbox secrets init`
 
-```bash  theme={null}
+```bash theme={null}
 /Users/puckworth/my-project❯ devbox secrets init
 ? Setup project in /Users/puckworth/my-project? Yes
 Initializing project in org
@@ -751,18 +751,18 @@ navigate to the [Jetify Dashboard](/docs/cloud/dashboard/).
 
 You can set secrets using `devbox secrets set`:
 
-```bash  theme={null}
+```bash theme={null}
 devbox secrets set FOO=BAR
 ```
 
-```text  theme={null}
+```text theme={null}
 [DONE] Set environment variable 'FOO' in environment: dev
 ```
 
 By default, variables will be set on the `dev` environment. You can set secrets on other
 environments by passing the `--environment` flag:
 
-```bash  theme={null}
+```bash theme={null}
 devbox secrets set FOO=BAR --environment prod
 ```
 
@@ -772,7 +772,7 @@ Supported environments include `dev`, `preview`, and `prod`.
 
 You can bulk add secrets from a file by using `devbox secrets import`:
 
-```bash  theme={null}
+```bash theme={null}
 devbox secrets import .env.dev
 [DONE] Uploaded 3 environment variable(s) from file '.env.dev' to environment: dev
 ```
@@ -780,7 +780,7 @@ devbox secrets import .env.dev
 The file should follow the `.env` format, with each line containing a single environment variable in
 the form:
 
-```bash  theme={null}
+```bash theme={null}
 VARIABLE_NAME=VARIABLE_VALUE
 ```
 
@@ -788,7 +788,7 @@ VARIABLE_NAME=VARIABLE_VALUE
 
 You can view your project's secrets by running `devbox secrets ls`:
 
-```text  theme={null}
+```text theme={null}
 Environment: dev
 +-----------------+-------+
 |      NAME       | VALUE |
@@ -834,7 +834,7 @@ secrets as environment variables whenever you:
 
 You can remove a secret from your project by running `devbox secrets rm`:
 
-```bash  theme={null}
+```bash theme={null}
 devbox secrets rm FOO
 [DONE] Deleted environment variable 'FOO' in environment: dev
 ```
@@ -843,7 +843,7 @@ devbox secrets rm FOO
 
 You can export your secrets to a `.env` file using `devbox secrets download`:
 
-```bash  theme={null}
+```bash theme={null}
 devbox secrets download .env
 [DONE] Downloaded environment variables to '.env' for environment: dev
 ```
@@ -861,13 +861,13 @@ Source: https://www.jetify.com/docs/docs/devbox/cli-reference/devbox-add/index
 
 Add a new package to your devbox
 
-```bash  theme={null}
+```bash theme={null}
 devbox add <pkg>... [flags]
 ```
 
 ## Examples[​](#examples "Direct link to Examples")
 
-```bash  theme={null}
+```bash theme={null}
 # Add the latest version of the `ripgrep` package
 devbox add ripgrep
 
@@ -931,7 +931,7 @@ accounts and organizations.
 
 This command is a no-op for single-user Nix installs that aren't running the Nix daemon.
 
-```bash  theme={null}
+```bash theme={null}
   devbox cache configure [flags]
 ```
 
@@ -951,7 +951,7 @@ Source: https://www.jetify.com/docs/docs/devbox/cli-reference/devbox-cache-info/
 
 Output information about the nix cache
 
-```bash  theme={null}
+```bash theme={null}
   devbox cache info [flags]
 ```
 
@@ -970,7 +970,7 @@ Source: https://www.jetify.com/docs/docs/devbox/cli-reference/devbox-cache-uploa
 
 Upload specified nix installable or nix packages in current project to cache. If [installable] is provided, only that installable will be uploaded. Otherwise, all packages in the project will be uploaded. To upload to specific cache, use --to flag. Otherwise, a cache from the cache provider will be used, if available.
 
-```bash  theme={null}
+```bash theme={null}
 devbox cache upload [installable] [flags]
 ```
 
@@ -995,7 +995,7 @@ Source: https://www.jetify.com/docs/docs/devbox/cli-reference/devbox-cache/index
 
 A collection of commands to interact with the Jetify Cache or other Nix caches.
 
-```bash  theme={null}
+```bash theme={null}
   devbox cache [command]
 ```
 
@@ -1024,7 +1024,7 @@ install it via your OS's package manager.
 
 To load completions in your current shell session:
 
-```bash  theme={null}
+```bash theme={null}
 	source <(devbox completion bash)
 ```
 
@@ -1032,20 +1032,20 @@ To load completions for every new session, execute once:
 
 ## Linux[​](#linux "Direct link to Linux")
 
-```bash  theme={null}
+```bash theme={null}
 	devbox completion bash > /etc/bash_completion.d/devbox
 ```
 
 ## macOS[​](#macos "Direct link to macOS")
 
-```bash  theme={null}
+```bash theme={null}
 devbox completion bash > \
   $(brew --prefix)/etc/bash_completion.d/devbox
 ```
 
 You will need to start a new shell for this setup to take effect.
 
-```bash  theme={null}
+```bash theme={null}
 devbox completion bash
 ```
 
@@ -1072,19 +1072,19 @@ Generate the autocompletion script for the fish shell.
 
 To load completions in your current shell session:
 
-```bash  theme={null}
+```bash theme={null}
 devbox completion fish | source
 ```
 
 To load completions for every new session, execute once:
 
-```bash  theme={null}
+```bash theme={null}
 devbox completion fish > ~/.config/fish/completions/devbox.fish
 ```
 
 You will need to start a new shell for this setup to take effect.
 
-```bash  theme={null}
+```bash theme={null}
 devbox completion fish [flags]
 ```
 
@@ -1111,7 +1111,7 @@ Generate the autocompletion script for the zsh shell.
 
 If you are using Oh My Zsh, just run the following:
 
-```bash  theme={null}
+```bash theme={null}
 mkdir -p ~/.oh-my-zsh/completions
 devbox completion zsh > ~/.oh-my-zsh/completions/_devbox
 ```
@@ -1125,7 +1125,7 @@ echo "autoload -U compinit; compinit" >> ~/.zshrc
 
 To load completions in your current shell session:
 
-```bash  theme={null}
+```bash theme={null}
 source <(devbox completion zsh); compdef _devbox devbox
 ```
 
@@ -1133,20 +1133,20 @@ To load completions for every new session, execute once:
 
 ## Linux[​](#linux "Direct link to Linux")
 
-```bash  theme={null}
+```bash theme={null}
 devbox completion zsh > "${fpath[1]}/_devbox"
 ```
 
 ## macOS[​](#macos "Direct link to macOS")
 
-```bash  theme={null}
+```bash theme={null}
 devbox completion zsh > \
   $(brew --prefix)/share/zsh/site-functions/_devbox
 ```
 
 You will need to start a new shell for this setup to take effect.
 
-```bash  theme={null}
+```bash theme={null}
 devbox completion zsh [flags]
 ```
 
@@ -1206,7 +1206,7 @@ Initialize a directory as a devbox project using a template
 Initialize a directory as a devbox project. This will create an empty devbox.json in the current
 directory. You can then add packages using `devbox add`
 
-```bash  theme={null}
+```bash theme={null}
 devbox create [dir] --template <template> [flags]
 ```
 
@@ -1248,7 +1248,7 @@ Generate Dockerfile and devcontainer.json files under .devcontainer/ directory
 Generate Dockerfile and devcontainer.json files necessary to run VSCode in remote container
 environments.
 
-```bash  theme={null}
+```bash theme={null}
 devbox generate devcontainer [flags]
 ```
 
@@ -1274,7 +1274,7 @@ Source: https://www.jetify.com/docs/docs/devbox/cli-reference/devbox-generate-di
 
 Top level command for generating the .envrc file for your Devbox Project. This can be used with  to automatically start your shell when you cd into your devbox directory
 
-```bash  theme={null}
+```bash theme={null}
 devbox generate direnv [flags]
 ```
 
@@ -1306,7 +1306,7 @@ Generate a Dockerfile that replicates devbox shell
 Generate a Dockerfile that replicates devbox shell. Can be used to run devbox shell environment in
 an OCI container.
 
-```bash  theme={null}
+```bash theme={null}
 devbox generate dockerfile [flags]
 ```
 
@@ -1333,7 +1333,7 @@ Source: https://www.jetify.com/docs/docs/devbox/cli-reference/devbox-generate-re
 
 Generate a markdown readme file for this project. You must specify a name for the Readme file when running the command:
 
-```bash  theme={null}
+```bash theme={null}
 devbox generate readme [filename] [flags]
 ```
 
@@ -1358,7 +1358,7 @@ Source: https://www.jetify.com/docs/docs/devbox/cli-reference/devbox-generate/in
 
 Top level command for generating Devcontainers, Dockerfiles, and other useful files for your Devbox Project.
 
-```bash  theme={null}
+```bash theme={null}
 devbox generate <devcontainer|dockerfile|direnv> [flags]
 ```
 
@@ -1393,13 +1393,13 @@ Source: https://www.jetify.com/docs/docs/devbox/cli-reference/devbox-global-add/
 
 Add a new global package.
 
-```bash  theme={null}
+```bash theme={null}
 devbox global add <pkg>... [flags]
 ```
 
 ## Examples[​](#examples "Direct link to Examples")
 
-```bash  theme={null}
+```bash theme={null}
 # Add the latest version of the `ripgrep` package
 devbox global add ripgrep
 
@@ -1445,7 +1445,7 @@ Source: https://www.jetify.com/docs/docs/devbox/cli-reference/devbox-global-inst
 
 Install all packages mentioned in your global devbox.json.
 
-```bash  theme={null}
+```bash theme={null}
 devbox global install <pkg>... [flags]
 ```
 
@@ -1468,7 +1468,7 @@ Source: https://www.jetify.com/docs/docs/devbox/cli-reference/devbox-global-list
 
 Lists all the packages you have installed globally
 
-```bash  theme={null}
+```bash theme={null}
 devbox global list <pkg>... [flags]
 ```
 
@@ -1495,7 +1495,7 @@ Source: https://www.jetify.com/docs/docs/devbox/cli-reference/devbox-global-pull
 
 Pulls a global config from a file or URL. URLs must be prefixed with 'http://' or 'https://'.
 
-```bash  theme={null}
+```bash theme={null}
 devbox global pull <file> | <url> [flags]
 ```
 
@@ -1518,7 +1518,7 @@ Source: https://www.jetify.com/docs/docs/devbox/cli-reference/devbox-global-push
 
 Push a [global] config. Leave empty to use Jetify sync. Can be a git repo for self storage.
 
-```bash  theme={null}
+```bash theme={null}
 devbox global push <git-repo> [flags]
 ```
 
@@ -1541,7 +1541,7 @@ Source: https://www.jetify.com/docs/docs/devbox/cli-reference/devbox-global-rm/i
 
 Removes a package from your global config
 
-```bash  theme={null}
+```bash theme={null}
 devbox global rm <pkg> [flags]
 ```
 
@@ -1568,7 +1568,7 @@ The script must be defined in `devbox.json`, or else it will be interpreted as a
 You can pass arguments to your script or command. Everything after `--` will be passed verbatim into
 your command (see example)
 
-```bash  theme={null}
+```bash theme={null}
 devbox global run <pkg>... [flags]
 ```
 
@@ -1576,7 +1576,7 @@ devbox global run <pkg>... [flags]
 
 Run a command directly:
 
-```bash  theme={null}
+```bash theme={null}
 devbox add cowsay
 devbox global run cowsay hello
 devbox global run -- cowsay -d hello
@@ -1584,7 +1584,7 @@ devbox global run -- cowsay -d hello
 
 Run a script (defined as `"moo": "cowsay moo"`) in your devbox.json:
 
-```bash  theme={null}
+```bash theme={null}
 devbox global run moo
 ```
 
@@ -1609,7 +1609,7 @@ Source: https://www.jetify.com/docs/docs/devbox/cli-reference/devbox-global-serv
 
 Interact with Devbox services for your global packages. This command replicates the subcommands for  but for your global packages.
 
-```bash  theme={null}
+```bash theme={null}
 devbox global services [command]
 ```
 
@@ -1636,14 +1636,14 @@ Print shell commands that add global Devbox packages to your PATH
 
 * To add the global packages to the PATH of your current shell, run the following command:
 
-  ```bash  theme={null}
+  ```bash theme={null}
   . <(devbox global shellenv)
   ```
 
 * To add the global packages to the PATH of all new shells, add the following line to your shell's
   config file (e.g. `~/.bashrc` or `~/.zshrc`):
 
-  ```bash  theme={null}
+  ```bash theme={null}
   eval "$(devbox global shellenv)"
   ```
 
@@ -1678,7 +1678,7 @@ For example: if your global config has `[email protected]` in your package list
 If no packages are provided, this command will update all the versioned packages to the latest
 acceptable version.
 
-```bash  theme={null}
+```bash theme={null}
 devbox update [pkg]... [flags]
 ```
 
@@ -1712,7 +1712,7 @@ You can also use Devbox as a global package manager by adding the following line
 
 For more details, see [Use Devbox as your Primary Package Manager](/docs/devbox/devbox-global/).
 
-```bash  theme={null}
+```bash theme={null}
 devbox global <subcommand> [flags]
 ```
 
@@ -1752,7 +1752,7 @@ Display information for a package, including any installed plugins
 Devbox info displays all available information from a packages installed plugins, such as
 environment variables, configuration files, and services provided by the plugin
 
-```bash  theme={null}
+```bash theme={null}
 devbox info <pkg> [flags]
 ```
 
@@ -1782,7 +1782,7 @@ Initialize a directory as a devbox project
 Initialize a directory as a devbox project. This will create an empty devbox.json in the current
 directory. You can then add packages using `devbox add`
 
-```bash  theme={null}
+```bash theme={null}
 devbox init [<dir>] [flags]
 ```
 
@@ -1807,7 +1807,7 @@ Starts a new devbox shell and installs all packages mentioned in devbox.json in 
 
 Then exits the shell when packages are done installing.
 
-```bash  theme={null}
+```bash theme={null}
 devbox install [flags]
 ```
 
@@ -1831,7 +1831,7 @@ Source: https://www.jetify.com/docs/docs/devbox/cli-reference/devbox-rm/index
 
 Remove a package from your devbox
 
-```bash  theme={null}
+```bash theme={null}
 devbox rm <pkg>... [flags]
 ```
 
@@ -1857,7 +1857,7 @@ Starts a new interactive shell and runs your target script in it. The shell will
 You can also run arbitrary commands in your devbox shell by passing them as arguments to
 `devbox run`. For example:
 
-```bash  theme={null}
+```bash theme={null}
   devbox run echo "Hello World"
 ```
 
@@ -1865,13 +1865,13 @@ Will print `Hello World` to the console from within your devbox shell.
 
 For more details, read our [scripts guide](/docs/devbox/guides/scripts/)
 
-```bash  theme={null}
+```bash theme={null}
   devbox run <script | command> [flags]
 ```
 
 ## Examples[​](#examples "Direct link to Examples")
 
-```bash  theme={null}
+```bash theme={null}
 # Run a command directly:
 devbox add cowsay
 devbox run cowsay hello
@@ -1917,13 +1917,13 @@ You can add a package to your project using `devbox add <package>`.
 
 Too add a specific version, use `devbox add <package>@<version>`.
 
-```bash  theme={null}
+```bash theme={null}
 devbox search <pkg> [flags]
 ```
 
 ## Example[​](#example "Direct link to Example")
 
-```bash  theme={null}
+```bash theme={null}
 $ devbox search ripgrep
 Warning: Search is experimental and may not work as expected.
 Found 8+ results for "ripgrep":
@@ -1958,7 +1958,7 @@ Download environment variables into the specified file
 Download environment variables stored into the specified file (most commonly a .env file). The
 format of the file is one NAME=VALUE per line.
 
-```bash  theme={null}
+```bash theme={null}
 devbox secrets download <file1> [flags]
 ```
 
@@ -1986,7 +1986,7 @@ Source: https://www.jetify.com/docs/docs/devbox/cli-reference/devbox-secrets-ini
 
 Initialize devbox secrets in the project directory. This setup step creates/connects to an existing jetify cloud project
 
-```bash  theme={null}
+```bash theme={null}
 devbox secrets init [flags]
 ```
 
@@ -2014,7 +2014,7 @@ List all stored environment variables
 List all stored environment variables. If no environment flag is provided, variables in all
 environments will be listed.
 
-```bash  theme={null}
+```bash theme={null}
 devbox secrets list [flags]
 ```
 
@@ -2049,7 +2049,7 @@ Delete one or more environment variables
 
 Delete one or more environment variables that are stored.
 
-```bash  theme={null}
+```bash theme={null}
 devbox secrets rm <NAME1> [<NAME2>]... [flags]
 ```
 
@@ -2080,7 +2080,7 @@ Securely store one or more environment variables
 
 Securely store one or more environment variables.
 
-```bash  theme={null}
+```bash theme={null}
 devbox secrets set <NAME1>=<value1> [<NAME2>=<value2>]... [flags]
 ```
 
@@ -2111,7 +2111,7 @@ Upload variables defined in a .env file
 
 Upload variables defined in one or more .env files. The files should have one NAME=VALUE per line.
 
-```bash  theme={null}
+```bash theme={null}
 devbox secrets upload <file1> [<fileN>]... [flags]
 ```
 
@@ -2146,13 +2146,13 @@ Manage environment variables and secrets
 Securely stores and retrieves environment variables on the cloud. Environment variables are always
 encrypted, which makes it possible to store values that contain passwords and other secrets.
 
-```bash  theme={null}
+```bash theme={null}
 devbox secrets [flags]
 ```
 
 ## Options[​](#options "Direct link to Options")
 
-```bash  theme={null}
+```bash theme={null}
   -h, --help   help for devbox secrets
 ```
 
@@ -2182,7 +2182,7 @@ Attach to a running instance of . This command lets you launch the TUI for proce
 Note that terminating the TUI will not stop your backgrounded services. To stop your services, use
 `devbox services stop`.
 
-```bash  theme={null}
+```bash theme={null}
 devbox services attach [flags]
 ```
 
@@ -2205,7 +2205,7 @@ Source: https://www.jetify.com/docs/docs/devbox/cli-reference/devbox-services-ls
 
 List available services
 
-```bash  theme={null}
+```bash theme={null}
 devbox services ls [flags]
 ```
 
@@ -2228,7 +2228,7 @@ Source: https://www.jetify.com/docs/docs/devbox/cli-reference/devbox-services-re
 
 Restarts service. If no service is specified, restarts all services and process-compose.
 
-```bash  theme={null}
+```bash theme={null}
 devbox services restart [service]... [flags]
 ```
 
@@ -2259,7 +2259,7 @@ Source: https://www.jetify.com/docs/docs/devbox/cli-reference/devbox-services-st
 
 Starts a service or list of services. If no service is specified, starts all services + process-compose.
 
-```bash  theme={null}
+```bash theme={null}
 devbox services start [service]... [flags]
 ```
 
@@ -2290,7 +2290,7 @@ Source: https://www.jetify.com/docs/docs/devbox/cli-reference/devbox-services-st
 
 Stops a service. If no service is specified, stops all your running services and shuts down process-compose.
 
-```bash  theme={null}
+```bash theme={null}
 devbox services stop [service]... [flags]
 ```
 
@@ -2315,7 +2315,7 @@ Source: https://www.jetify.com/docs/docs/devbox/cli-reference/devbox-services-up
 
 Starts process-compose and runs all the services in your project. If a list of services is specified in the arguments, only those services will be started.
 
-```bash  theme={null}
+```bash theme={null}
 devbox services up [services]... [flags]
 ```
 
@@ -2327,7 +2327,7 @@ Once your services are running, you can manage them using `services start`, `ser
 
 ## Examples[​](#examples "Direct link to Examples")
 
-```bash  theme={null}
+```bash theme={null}
 # Start all services with process compose in the foreground
 devbox services up
 
@@ -2364,7 +2364,7 @@ Source: https://www.jetify.com/docs/docs/devbox/cli-reference/devbox-services/in
 
 Interact with Devbox services via process-compose
 
-```bash  theme={null}
+```bash theme={null}
 devbox services <ls|restart|start|stop> [flags]
 ```
 
@@ -2404,7 +2404,7 @@ Start a new shell or run a command with access to your packages. If the --config
 shell will be started using the devbox.json found in the --config flag directory. If --config isn't
 set, then devbox recursively searches the current directory and its parents.
 
-```bash  theme={null}
+```bash theme={null}
 devbox shell [flags]
 ```
 
@@ -2433,7 +2433,7 @@ Source: https://www.jetify.com/docs/docs/devbox/cli-reference/devbox-shellenv/in
 
 Print shell commands that add Devbox packages to your PATH
 
-```bash  theme={null}
+```bash theme={null}
 devbox shellenv [flags]
 ```
 
@@ -2471,7 +2471,7 @@ will update your project to the latest patch version of `python 3.11`.
 If no packages are provided, this command will update all the versioned packages in your project to
 the latest acceptable version.
 
-```bash  theme={null}
+```bash theme={null}
 devbox update [pkg]... [flags]
 ```
 
@@ -2495,7 +2495,7 @@ Source: https://www.jetify.com/docs/docs/devbox/cli-reference/devbox-version-upd
 
 Check for a new version of devbox and update if available
 
-```bash  theme={null}
+```bash theme={null}
 devbox version update [flags]
 ```
 
@@ -2518,7 +2518,7 @@ Source: https://www.jetify.com/docs/docs/devbox/cli-reference/devbox-version/ind
 
 Print version information
 
-```bash  theme={null}
+```bash theme={null}
 devbox version [update] [flags]
 ```
 
@@ -2547,7 +2547,7 @@ Source: https://www.jetify.com/docs/docs/devbox/cli-reference/devbox/index
 
 Instant, easy, predictable shells and containers
 
-```bash  theme={null}
+```bash theme={null}
 devbox [flags]
 ```
 
@@ -2584,7 +2584,7 @@ Source: https://www.jetify.com/docs/docs/devbox/configuration/index
 
 Your devbox configuration is stored in a  file, located in your project's root directory. This file can be edited directly, or using the .
 
-```json  theme={null}
+```json theme={null}
 {
   "packages": [] | {},
   "env": {},
@@ -2609,7 +2609,7 @@ You can add packages to your devbox.json using `devbox add <package_name>`, and 
 Packages can be structured as a list of package names (`<packages>@<version>`) or
 [flake references](#adding-packages-from-flakes):
 
-```json  theme={null}
+```json theme={null}
 {
   "packages": ["go@latest", "golangci-lint@latest"]
 }
@@ -2618,7 +2618,7 @@ Packages can be structured as a list of package names (`<packages>@<version>`) o
 If you need to provide more options to your packages (such as limiting which platforms will install
 the package), you can structure packages as a map, where each package follows the schema below:
 
-```json  theme={null}
+```json theme={null}
 {
   "packages": {
     // If only a version is specified, you can abbreviate as:
@@ -2646,7 +2646,7 @@ the package), you can structure packages as a map, where each package follows th
 
 For example:
 
-```json  theme={null}
+```json theme={null}
 {
   "packages": {
     "go": "latest",
@@ -2669,7 +2669,7 @@ end of the package name. For example, to pin the `go` package to version `1.19`,
 `devbox add [email protected]`, or add `[email protected]` to the packages list in your
 `devbox.json`:
 
-```json  theme={null}
+```json theme={null}
 { "packages": ["[email protected]"] }
 ```
 
@@ -2683,7 +2683,7 @@ To see a list of packages and their available versions, you can run `devbox sear
 You can add packages from flakes by adding a reference to the flake in the `packages` list in your
 `devbox.json`. We currently support installing Flakes from Github and local paths.
 
-```json  theme={null}
+```json theme={null}
 {
   "packages": [
     // Add the default package from a github repository
@@ -2710,7 +2710,7 @@ You can choose to include or exclude your packages on specific platforms by addi
 packages or libraries that are only available on specific platforms (such as `busybox` on Linux, or
 `utm` on macOS):
 
-```json  theme={null}
+```json theme={null}
 {
   "packages": {
     // Only install busybox on linux
@@ -2747,7 +2747,7 @@ Some packages include builtin plugins or services that are automatically started
 installed. You can disable these plugins using `devbox add <package> --disable-plugin`, or by
 setting the `disable_plugin` field to `true` in your package definition:
 
-```json  theme={null}
+```json theme={null}
 {
   "packages": {
     "glibcLocales": {
@@ -2767,7 +2767,7 @@ local machine or by [Devbox Plugins](/docs/devbox/guides/plugins/).
 
 For example, you could set variable `$FOO` to `bar` by adding the following to your `devbox.json`:
 
-```json  theme={null}
+```json theme={null}
 { "env": { "FOO": "bar" } }
 ```
 
@@ -2785,7 +2785,7 @@ You can load environment variables from a `.env` file by adding the path to the 
 `env_from` field (the file must end with `.env`). This is useful for loading secrets or other
 sensitive information that you don't want to store in your `devbox.json`.
 
-```json  theme={null}
+```json theme={null}
 { "env_from": "path/to/.env" }
 ```
 
@@ -2798,7 +2798,7 @@ overridden if the same variable is set directly in your `devbox.json`
 You can securely load secrets from Jetify Secrets by running `devbox secrets init` and creating a
 project in Jetify Cloud. This will add the `jetify-cloud` field to `env_from` in your project.
 
-```json  theme={null}
+```json theme={null}
 { "env_from": "jetify-cloud" }
 ```
 
@@ -2823,7 +2823,7 @@ configure your environment. For longer running tasks, you should consider using 
 
 This is an example `devbox.json` that customizes the prompt and prints a welcome message:
 
-```json  theme={null}
+```json theme={null}
 {
   "shell": {
     "init_hook": [
@@ -2836,7 +2836,7 @@ This is an example `devbox.json` that customizes the prompt and prints a welcome
 
 When run, you'll see:
 
-```bash  theme={null}
+```bash theme={null}
 > devbox shell
 Installing nix packages. This may take a while...
 Starting a devbox shell...
@@ -2853,7 +2853,7 @@ can be used to start up background process (like databases or servers), or to ru
 Scripts can be defined by giving a name, and one or more commands. Single command scripts can be
 added by providing a name, and a string:
 
-```json  theme={null}
+```json theme={null}
 {
   "shell": {
     "scripts": {
@@ -2865,7 +2865,7 @@ added by providing a name, and a string:
 
 To run multiple commands in a single script, you can pass them as an array:
 
-```json  theme={null}
+```json theme={null}
 {
   "shell": {
     "scripts": {
@@ -2886,7 +2886,7 @@ beginning of the list. Likewise, if a setting in your project config conflicts w
 your `devbox.json` has a script with the same name as a plugin script), your project config will
 take precedence.
 
-```json  theme={null}
+```json theme={null}
 {
     "include": [
         // Include a plugin from a Github Repo. The repo must have a plugin.json in it's root,
@@ -2905,7 +2905,7 @@ take precedence.
 An example of a devbox configuration for a Rust project called `hello_world` might look like the
 following:
 
-```json  theme={null}
+```json theme={null}
 {
   "packages": ["rustup@latest", "libiconv@latest"],
   "env": { "PROJECT_DIR": "$PWD" },
@@ -2938,7 +2938,7 @@ This GitHub Action also supports caching the packages and dependencies installed
 
 In your project's workflow YAML, add the following step:
 
-```bash  theme={null}
+```bash theme={null}
 - name: Install devbox  uses: jetify-com/devbox-install-[email protected]
 ```
 
@@ -2947,7 +2947,7 @@ In your project's workflow YAML, add the following step:
 The workflow below shows how to use the action to install Devbox, and then run arbitrary commands or
 [Devbox Scripts](/docs/devbox/guides/scripts/) in your shell.
 
-```bash  theme={null}
+```bash theme={null}
 name: Testing with devboxon: pushjobs:  test:    runs-on: ubuntu-latest    steps:      - uses: actions/checkout@v4      - name: Install devbox        uses: jetify-com/devbox-install-[email protected]      - name: Run arbitrary commands        run: devbox run -- echo "done!"      - name: Run a script called test        run: devbox run test
 ```
 
@@ -3026,8 +3026,8 @@ For example — if you use ripgrep as your preferred search tool, you can add it
 profile with `devbox global add ripgrep`. Now whenever you start a Devbox shell, you will have
 ripgrep available, even if it's not in the project's devbox.json.
 
-<Frame caption="Installing Packages with Devbox Global">
-    <img src="https://mintcdn.com/jetify/jyk5Hl_irNQ736vI/docs/devbox/devbox-global/devbox-global-package-manager.svg?fit=max&auto=format&n=jyk5Hl_irNQ736vI&q=85&s=31aa2848da4173b1d80a4c8322f3f058" alt="Devbox global package manager" data-og-width="700" width="700" data-og-height="538" height="538" data-path="docs/devbox/devbox-global/devbox-global-package-manager.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/jetify/jyk5Hl_irNQ736vI/docs/devbox/devbox-global/devbox-global-package-manager.svg?w=280&fit=max&auto=format&n=jyk5Hl_irNQ736vI&q=85&s=2384e55a18d976e593cc10d837e074d8 280w, https://mintcdn.com/jetify/jyk5Hl_irNQ736vI/docs/devbox/devbox-global/devbox-global-package-manager.svg?w=560&fit=max&auto=format&n=jyk5Hl_irNQ736vI&q=85&s=4cd32632f537c882fc8deea34073edc0 560w, https://mintcdn.com/jetify/jyk5Hl_irNQ736vI/docs/devbox/devbox-global/devbox-global-package-manager.svg?w=840&fit=max&auto=format&n=jyk5Hl_irNQ736vI&q=85&s=42c91febec655d81dfde6de1f51906cc 840w, https://mintcdn.com/jetify/jyk5Hl_irNQ736vI/docs/devbox/devbox-global/devbox-global-package-manager.svg?w=1100&fit=max&auto=format&n=jyk5Hl_irNQ736vI&q=85&s=b9da0c13bc7292ff941cee470a25dd00 1100w, https://mintcdn.com/jetify/jyk5Hl_irNQ736vI/docs/devbox/devbox-global/devbox-global-package-manager.svg?w=1650&fit=max&auto=format&n=jyk5Hl_irNQ736vI&q=85&s=2bf184ea87d0b74d00c41eda3ff5e88d 1650w, https://mintcdn.com/jetify/jyk5Hl_irNQ736vI/docs/devbox/devbox-global/devbox-global-package-manager.svg?w=2500&fit=max&auto=format&n=jyk5Hl_irNQ736vI&q=85&s=e3131de6cdcb51c7998129cc9098941c 2500w" />
+<Frame>
+  <img alt="Devbox global package manager" />
 </Frame>
 
 You can also use `devbox global` to replace package managers like `brew` and `apt` by adding the
@@ -3044,7 +3044,7 @@ list of [Nix Packages](https://search.nixos.org/packages) you want to install.
 
 For example, if we wanted to install ripgrep, vim, and git to our global profile, we could run:
 
-```bash  theme={null}
+```bash theme={null}
 devbox global add ripgrep vim git
 # Output:
 ripgrep is now installed
@@ -3057,7 +3057,7 @@ included in the project's `devbox.json`.
 
 To view a full list of global packages, you can run `devbox global list`:
 
-```bash  theme={null}
+```bash theme={null}
 devbox global list
 # Output:
 * ripgrep
@@ -3067,7 +3067,7 @@ devbox global list
 
 To remove a global package, use:
 
-```bash  theme={null}
+```bash theme={null}
 devbox global rm ripgrep
 # Output:
 removing 'github:NixOS/nixpkgs/ripgrep'
@@ -3083,7 +3083,7 @@ packages.
 
 To temporarily add the global packages to your current shell, run:
 
-```bash  theme={null}
+```bash theme={null}
 . <(devbox global shellenv --init-hook)
 ```
 
@@ -3094,7 +3094,7 @@ shell:
 
 Add the following command to your `~/.bashrc` file:
 
-```bash  theme={null}
+```bash theme={null}
 eval "$(devbox global shellenv --init-hook)"
 ```
 
@@ -3104,7 +3104,7 @@ Make sure to add this hook before any other hooks that use your global packages.
 
 Add the following command to your `~/.zshrc` file:
 
-```bash  theme={null}
+```bash theme={null}
 eval "$(devbox global shellenv --init-hook)"
 ```
 
@@ -3112,7 +3112,7 @@ eval "$(devbox global shellenv --init-hook)"
 
 Add the following command to your `~/.config/fish/config.fish` file:
 
-```bash  theme={null}
+```bash theme={null}
 devbox global shellenv --init-hook | source
 ```
 
@@ -3247,15 +3247,15 @@ Development header files and libraries are often installed in a separate output 
 For example, the command below will install both the default output `out`, and the `cli` output for
 the prometheus package:
 
-````bash  theme={null}
+```bash theme={null}
 devbox add prometheus --outputs=out,cli
-```bash
+```
 
 You can also specify non-default outputs in [flake references](/docs/devbox/guides/using-flakes/):
 
-```bash
+```bash theme={null}
 devbox add github:NixOS/nixpkgs#prometheus^out,cli
-````
+```
 
 ## One of my project's packages is taking a long time to install. How can I speed up the installation process?[​](#one-of-my-projects-packages-is-taking-a-long-time-to-install-how-can-i-speed-up-the-installation-process "Direct link to One of my project's packages is taking a long time to install. How can I speed up the installation process?")
 
@@ -3312,7 +3312,7 @@ init\_hook.
 You can use any previous version of Devbox by setting the `DEVBOX_USE_VERSION` environment variable.
 For example, to use version 0.8.0, you can run the following or add it to your shell's rcfile:
 
-```bash  theme={null}
+```bash theme={null}
 export DEVBOX_USE_VERSION=0.8.0
 ```
 
@@ -3324,17 +3324,15 @@ You can upgrade to the latest version of Devbox by unsetting the variable, and r
 By default, Devbox will prefix your prompt with `(devbox)` when inside a `devbox shell`. You can
 disable this behavior by setting this environment variable in your shell's rcfile:
 
-````bash  theme={null}
+```bash theme={null}
 DEVBOX_NO_PROMPT=true
-```json
+```
 
 If you are using Fish:
 
-````
-
-set -U devbox\_no\_prompt true
-
-```bash  theme={null}
+```bash theme={null}
+set -U devbox_no_prompt true
+```
 
 ## How can I uninstall Devbox?[​](#how-can-i-uninstall-devbox "Direct link to How can I uninstall Devbox?")
 
@@ -3348,7 +3346,6 @@ If you want to uninstall Nix, you will need to follow the instructions in the Ni
 [https://nixos.org/manual/nix/stable/installation/uninstall](https://nixos.org/manual/nix/stable/installation/uninstall).
 
 [Edit this page](https://github.com/jetify-com/devbox/tree/main/docs/app/docs/faq.md)
-```
 
 
 # Creating a Devbox Plugin
@@ -3403,7 +3400,7 @@ works as follows:
 
 Plugins are defined as Go JSON Template files, using the following schema:
 
-```json  theme={null}
+```json theme={null}
 {  "name": "",  "version": "",  "description": "",  "packages":[] | {},  "env": {    "<key>": "<value>"  },  "create_files": {    "<destination>": "<source>"  },  "shell": {    "init_hook": [      "<bash commands>"    ],     "scripts": {      "<key>": "<value>"    }  },  "include": [   "<path_to_plugin>"  ]}
 ```
 
@@ -3495,7 +3492,7 @@ servers), or to run one off commands (like setting up a dev DB, or running your 
 Scripts can be defined by giving a name, and one or more commands. Single command scripts can be
 added by providing a name, and a string:
 
-```json  theme={null}
+```json theme={null}
 {
   "shell": {
     "scripts": {
@@ -3507,7 +3504,7 @@ added by providing a name, and a string:
 
 To run multiple commands in a single script, you can pass them as an array:
 
-```json  theme={null}
+```json theme={null}
 {
   "shell": {
     "scripts": {
@@ -3566,7 +3563,7 @@ test project
 The plugin.json below installs MongoDB + the Mongo shell, and sets the environment variables and
 config needed to run MongoDB in Devbox.
 
-```json  theme={null}
+```json theme={null}
 {
   "name": "mongodb",
   "version": "0.0.1",
@@ -3626,7 +3623,7 @@ version without looking up a Nixpkg commit.
 You can look up the available versions of a package by running `devbox search <package_name>`. For
 example, to see the available versions of `nodejs`, you can run `devbox search nodejs`:
 
-```bash  theme={null}
+```bash theme={null}
 $ devbox search nodejsFound 2+ results for "nodejs":* nodejs  (20.5.1, 20.5.0, 20.4.0, 20.3.1, 20.3.0, 20.2.0, 20.1.0, 20.0.0, 19.9.0, 19.8.1)* nodejs-slim  (20.5.1, 20.5.0, 20.4.0, 20.3.1, 20.3.0, 20.2.0, 20.1.0, 20.0.0, 19.9.0, 19.8.1)Warning: Showing top 10 results and truncated versions. Use --show-all to show all.
 ```
 
@@ -3639,11 +3636,11 @@ For example, to use the latest version of `ripgrep,` run `devbox add ripgrep`,
 `devbox add ripgrep@latest`, or add `ripgrep@latest` to your devbox.json package list.
 
 To add a specific version of a package, write `<package_name>@<version>`. For example, to pin the
-`nodejs` package to version `20.1.0`, you can run `devbox add [email protected]` or add
-`[email protected]` to the packages list in your `devbox.json`:
+`nodejs` package to version `20.1.0`, you can run `devbox add package_name@version` or add
+`package_name@version` to the packages list in your `devbox.json`:
 
 ```
-"packages": [	"[email protected]"]
+"packages": [	"package_name@version"]
 ```
 
 For packages that use semver, you can pin a range of versions for your project. For example, if you
@@ -3687,14 +3684,14 @@ platforms using the `--platform` flag when you run `devbox add`.
 
 For example, to install the `busybox` package only on Linux platforms, you can run:
 
-```bash  theme={null}
+```bash theme={null}
 devbox add busybox --platform x86_64-linux,aarch64-linux
 ```
 
 This will add busybox to your `devbox.json`, but will only install it when use devbox on a Linux
 machine. The packages section in your config will look like the following
 
-```json  theme={null}
+```json theme={null}
 {
   "packages": {
     "busybox": {
@@ -3711,14 +3708,14 @@ You can also tell Devbox to exclude a package from a specific platform using the
 `--exclude-platform` flag. For example, to avoid installing `ripgrep` on an ARM-based Mac, you can
 run:
 
-```bash  theme={null}
+```bash theme={null}
 devbox add ripgrep --exclude-platform aarch64-darwin
 ```
 
 This will add ripgrep to your `devbox.json`, but will not install it when use devbox on an ARM-based
 Mac. The packages section in your config will look like the following:
 
-```json  theme={null}
+```json theme={null}
 {
   "packages": {
     "ripgrep": {
@@ -3762,7 +3759,7 @@ You can also explicitly add a built-in plugin in your project by adding it to th
 [`include` section](/docs/devbox/configuration/#include) of your `devbox.json` file. For example, to
 explicitly add the plugin for Nginx, you can add the following to your `devbox.json` file:
 
-```json  theme={null}
+```json theme={null}
 { "include": ["plugin:nginx"] }
 ```
 
@@ -3798,8 +3795,22 @@ Sometimes, you may want to share a plugin across multiple projects or users. In 
 provide a Github reference to a plugin hosted on Github. To install a github hosted plugin, add the
 following to the include section of your devbox.json
 
+Default - `master` branch:
+
 ```
   "include": [    "github:<org>/<repo>?dir=<plugin-dir>"  ]
+```
+
+Branch override:
+
+```
+  "include": [    "github:<org>/<repo>/<branch>?dir=<plugin-dir>"  ]
+```
+
+Git Tag Pinning:
+
+```
+  "include": [    "github:<org>/<repo>/tags/<tag-to-pin>?dir=<plugin-dir>"  ]
 ```
 
 Note that Devbox will cache Github plugins for 24 hours. This is to aid performance of
@@ -3813,7 +3824,7 @@ extenuating circumstances, you can bypass this cache by setting
 Let's take a look at the plugin for Nginx. To get started, let's initialize a new devbox project,
 and add the `nginx` package:
 
-```bash  theme={null}
+```bash theme={null}
 cd ~/my_proj
 devbox init && devbox add nginx
 ```
@@ -3821,7 +3832,7 @@ devbox init && devbox add nginx
 Devbox will install the package, activate the `nginx` plugin, and print a short explanation of the
 plugin's configuration
 
-```bash  theme={null}
+```bash theme={null}
 Installing nix packages. This may take a while... done.
 
 nginx NOTES:
@@ -3877,7 +3888,7 @@ These files give us everything we need to run NGINX, and we can modify the `ngin
 We can also see in the info page that Devbox has configured an NGINX service for us. Let's start
 this service with `devbox services start nginx`, and then test it with `curl`:
 
-```bash  theme={null}
+```bash theme={null}
 > devbox services start nginx
 Installing nix packages. This may take a while... done.
 Starting a devbox shell...
@@ -3952,7 +3963,7 @@ Scripts will run after your packages finish installing, and after your `init_hoo
 Scripts can be added in your `devbox.json`. Scripts require a unique name, and a command or list of
 commands to run:
 
-```json  theme={null}
+```json theme={null}
 "shell": {
     "init_hook": "echo \"Hello \"",
     "scripts": {
@@ -3970,7 +3981,7 @@ commands to run:
 To run a script, use `devbox run <script_name>`. This will start your shell, run your `init_hook`,
 and then run the script:
 
-```bash  theme={null}
+```bash theme={null}
 $ devbox run echo_once
 Installing nix packages. This may take a while... done.
 Starting a devbox shell...
@@ -3993,20 +4004,20 @@ interrupt the script with CTRL-C (or a SIGINT signal).
 You can use `devbox run` to run any command in your Devbox shell, even if you have not defined it as
 a script. For example, you can run the command below to print "Hello World" in your Devbox shell:
 
-```bash  theme={null}
+```bash theme={null}
 devbox run echo "Hello World"
 ```
 
 You can also run commands that use flags as normal. For example:
 
-```bash  theme={null}
+```bash theme={null}
 devbox run lsof -i :80
 ```
 
 Note that if you want to pass flags to `devbox run`, you should pass them before the command. For
 example:
 
-```bash  theme={null}
+```bash theme={null}
 # Run `lsof -i :80` in your devbox shell in quiet mode
 devbox run -q lsof -i :80
 ```
@@ -4017,7 +4028,7 @@ You can use the `--env` flag to set custom environment variables in your Devbox 
 the following command will set the `MY_VAR` environment variable to `my_value` when running the
 `echo` command:
 
-```bash  theme={null}
+```bash theme={null}
 devbox run --env MY_VAR=my_value echo $MY_VAR
 ```
 
@@ -4025,7 +4036,7 @@ You can also load environment variables from a .env file using the `--env-file` 
 the following command will load the environment variables from the `.env.devbox` file in your
 current directory:
 
-```bash  theme={null}
+```bash theme={null}
 devbox run --env-file .env.devbox echo $MY_VAR
 ```
 
@@ -4060,7 +4071,7 @@ and manage your project's services.
 You can start all the services in your project by running `devbox services up`. This will start
 process-compose in the foreground, and start all the services associated with your project:
 
-<img src="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/devbox/guides/services/process-compose-tui-interface.png?fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=f5a42b52daa70be4f1b7c62842bddf64" alt="Process Compose running in the foreground" data-og-width="1684" width="1684" data-og-height="1208" height="1208" data-path="docs/devbox/guides/services/process-compose-tui-interface.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/devbox/guides/services/process-compose-tui-interface.png?w=280&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=e983b2880810ac5fff0c30e39d5775a0 280w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/devbox/guides/services/process-compose-tui-interface.png?w=560&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=69b55b6575deac8a5995ebf063becebe 560w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/devbox/guides/services/process-compose-tui-interface.png?w=840&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=4d126b6b2f3b2ea5b19fb9cf419d0845 840w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/devbox/guides/services/process-compose-tui-interface.png?w=1100&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=bd20b234adb655d076aaedf14c0a07a8 1100w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/devbox/guides/services/process-compose-tui-interface.png?w=1650&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=764b1fce10dff13bbd0bdc60c9a370ee 1650w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/devbox/guides/services/process-compose-tui-interface.png?w=2500&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=414edf928f27b3132e2af0ed03a219a9 2500w" />
+<img alt="Process Compose running in the foreground" />
 
 You can also start a specific service by passing the name as an argument. For example, to start just
 `postgresql`, you can run `devbox services up postgresql`
@@ -4088,7 +4099,7 @@ If you have a process or service that you want to run with your Devbox project, 
 using a process-compose.yml in your project's root directory. For example, if you want to run a
 Django server, you could add the following yaml:
 
-```yaml  theme={null}
+```yaml theme={null}
 # Process compose for starting django
 version: "0.5"
 processes:
@@ -4119,7 +4130,7 @@ The service will be made available to your project when you install the packages
 You can list all the services available to your current devbox project by running
 `devbox services ls`. For example, the services in a PHP web app project might look like this:
 
-```text  theme={null}
+```text theme={null}
 devbox services ls
 No services currently running. Run `devbox services up` to start them:
   django
@@ -4129,7 +4140,7 @@ No services currently running. Run `devbox services up` to start them:
 If process-compose is already running, `devbox services ls` will show you the list of services
 registered with process-compose and their current status
 
-```text  theme={null}
+```text theme={null}
 Services running in process-compose:
 NAME              STATUS          EXIT CODE
 django            Running         0
@@ -4187,7 +4198,7 @@ For example, to install [Process Compose](https://github.com/F1bonacc1/process-c
 repository using Nix Flakes, you can use the following string in your packages list. This will
 install the latest version of Process Compose from the `main` branch.
 
-```nix  theme={null}
+```nix theme={null}
 github:F1bonacc1/process-compose
 ```
 
@@ -4196,7 +4207,7 @@ github:F1bonacc1/process-compose
 You can install a specific release or branch by adding it to your flake reference. The following
 example will install Process Compose version 0.40.2 from the `v0.40.2` tag.
 
-```nix  theme={null}
+```nix theme={null}
 github:F1bonacc1/process-compose/v0.40.2
 ```
 
@@ -4210,7 +4221,7 @@ For example, if you want to use [Fenix](https://github.com/nix-community/fenix) 
 specific version of Rust, you can use the following string in your packages list. This example will
 install the `stable.toolchain` packages from the `fenix` package.
 
-```nix  theme={null}
+```nix theme={null}
 github:nix-community/fenix#stable.toolchain
 ```
 
@@ -4219,14 +4230,14 @@ github:nix-community/fenix#stable.toolchain
 The Nixpkgs repo on Github also provides a Flake for installing packages. You can use the following
 flake reference to install packages from a specific Nixpkgs commit or reference:
 
-```nix  theme={null}
+```nix theme={null}
 github:NixOS/nixpkgs/<ref>#<package>
 ```
 
 For example, if you want to install the `hello` package from the `nixos-20.09` branch, you can use
 the following string in your packages list:
 
-```nix  theme={null}
+```nix theme={null}
 github:NixOS/nixpkgs/nixos-20.09#hello
 ```
 
@@ -4240,7 +4251,7 @@ You can install these additional outputs by adding a `^` and a comma-separated l
 the end of your flake reference. For example, the following command will install the default (`out`)
 and `dev` outputs of the `libcap` package:
 
-```nix  theme={null}
+```nix theme={null}
 github:nixos/nixpkgs#libcap^out,dev
 ```
 
@@ -4260,7 +4271,7 @@ For example, if you have a local Flake in the `./my-flake` directory, you can us
 string in your `packages` list. This example will install all the packages under the `my-package`
 attribute.
 
-```nix  theme={null}
+```nix theme={null}
 path:./my-flake#my-package
 ```
 
@@ -4272,14 +4283,14 @@ when using flakes in your Devbox project. To speed up your builds, you can use t
 
 After setting up your cache directly, you can upload the flake by running:
 
-```bash  theme={null}
+```bash theme={null}
 devbox cache upload <flake-reference>
 ```
 
 Alternatively, you can cache your entire project closure by running the following command from your
 project root:
 
-```bash  theme={null}
+```bash theme={null}
 devbox cache upload
 ```
 
@@ -4319,7 +4330,7 @@ direnv to seamlessly work with a devbox project.
 If you have direnv installed, Devbox will generate an .envrc file when you run
 `devbox generate direnv` and enables it by running `direnv allow` in the background:
 
-````bash  theme={null}
+````bash theme={null}
 ➜  devbox generate direnvSuccess: generated .envrc fileSuccess: ran `direnv allow`direnv: loading ~/src/docs/devbox/.envrcdirenv: using devbox
 ```bash
 
@@ -4352,7 +4363,7 @@ key-value pairs, where the key is the name of the environment variable and the v
 the environment variable. For example, if you wanted to add a `MY_CUSTOM_ENV_VAR` environment
 variable with a value of `my-custom-value`, you would run the following command:
 
-````bash  theme={null}
+````bash theme={null}
 devbox generate direnv --env MY_CUSTOM_ENV_VAR=my-value
 ```bash
 
@@ -4368,7 +4379,7 @@ environment variables to set in the devbox environment. If the file does not exi
 parameter is ignored. For example, if you wanted to add a `.env.devbox` file located in your project
 root, you would run the following command:
 
-````bash  theme={null}
+````bash theme={null}
 devbox generate direnv --env-file .env.devbox
 ```bash
 
@@ -4391,7 +4402,7 @@ Alternatively, a project directory can be whitelisted so that changes will be au
 up by `direnv`. This is done by adding following snippet to direnv config file typically at
 `~/.config/direnv/direnv.toml`. You can create the file and directory if it doesn't exist.
 
-```bash  theme={null}
+```bash theme={null}
 [whitelist]prefix = [ "/absolute/path/to/project" ]
 ```
 
@@ -4494,13 +4505,13 @@ macOS terminal.
 
    You can use the following command to compile: to compile:
 
-   ```bash  theme={null}
+   ```bash theme={null}
    javac my_java_project/src/main/hello.java
    ```
 
 6. Use `java` command to run the compiled project. For example, to run the sample project from above:
 
-   ```bash  theme={null}
+   ```bash theme={null}
    cd src/java main/hello
    ```
 
@@ -4552,7 +4563,7 @@ opened, **if the workspace opened in VSCode has a devbox.json file**.
 This setting can be turned off in VSCode's settings. Simply search for `devbox.autoShellOnTerminal`
 in settings or add the following to VSCode's settings.json:
 
-```json  theme={null}
+```json theme={null}
 "devbox.autoShellOnTerminal": false
 ```
 
@@ -4613,7 +4624,7 @@ follow the installation guide first. Then follow the steps below:
    executable java binary inside the devbox shell. Copy and save that path. It should look something
    like this:
 
-```json  theme={null}
+```json theme={null}
    /nix/store/qaf9fysymdoj19qtyg7209s83lajz65b-zulu17.34.19-ca-jdk-17.0.3/bin/java
 ```
 
@@ -4628,7 +4639,7 @@ follow the installation guide first. Then follow the steps below:
 7. Once the `launch.json` file is opened, update the `configurations` parameter to look like snippet
    below:
 
-   ```json  theme={null}
+   ```json theme={null}
    {
      "type": "java",
      "name": "Launch Current File",
@@ -4639,7 +4650,7 @@ follow the installation guide first. Then follow the steps below:
    }
    ```
 
-```json  theme={null}
+```json theme={null}
 
    Update the values in between \< and > to match your project and environment.
 
@@ -4670,7 +4681,7 @@ macOS terminal.
 
 my\_java\_project/-- src/-- -- main/-- -- -- hello.java
 
-````json  theme={null}
+````json theme={null}
 
    You can use the following command to compile: to compile:
 
@@ -4680,11 +4691,11 @@ my\_java\_project/-- src/-- -- main/-- -- -- hello.java
 
 6. Use `java` command to run the compiled project. For example, to run the sample project from above:
 
-   ```bash  theme={null}
+   ```bash theme={null}
    cd src/java main/hello
    ```
 
-```json  theme={null}
+```json theme={null}
 
 If this guide is missing something, feel free to contribute by opening a
 [pull request](https://github.com/jetify-com/devbox/pulls) in Github.
@@ -4722,7 +4733,7 @@ steps:
 2. You may need to explicitly tell your LSP to use the binaries in your \$PATH variable. To do this,
    add the following to the `~/.config/zed/config.json` file:
 
-```json  theme={null}
+```json theme={null}
 {
   ...
   "lsp": {
@@ -4738,7 +4749,7 @@ steps:
    behavior for loading direnv directly may cause conflicts with the packages installed via Devbox.
    To fix this, add the following to your `~/.config/zed/config.json` file:
 
-```json  theme={null}
+```json theme={null}
 { "load_direnv": "shell_hook" }
 ```
 
@@ -4754,8 +4765,8 @@ In practice, Devbox works similar to a package manager like yarn – except the 
 are at the operating-system level (the sort of thing you would normally install with brew or
 apt-get).
 
-<Frame caption="Create isolated dev environments on the fly with Devbox">
-    <img src="https://mintcdn.com/jetify/jyk5Hl_irNQ736vI/docs/devbox/devbox-isolated-shell-environment.svg?fit=max&auto=format&n=jyk5Hl_irNQ736vI&q=85&s=3b991128527cad0eb62569268d2e577c" alt="Devbox isolated shell environment" data-og-width="710" width="710" data-og-height="472" height="472" data-path="docs/devbox/devbox-isolated-shell-environment.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/jetify/jyk5Hl_irNQ736vI/docs/devbox/devbox-isolated-shell-environment.svg?w=280&fit=max&auto=format&n=jyk5Hl_irNQ736vI&q=85&s=716425148e24dd338ac1079a887eb55e 280w, https://mintcdn.com/jetify/jyk5Hl_irNQ736vI/docs/devbox/devbox-isolated-shell-environment.svg?w=560&fit=max&auto=format&n=jyk5Hl_irNQ736vI&q=85&s=50fa2a42b2cdff607ad909f5d3dd17e3 560w, https://mintcdn.com/jetify/jyk5Hl_irNQ736vI/docs/devbox/devbox-isolated-shell-environment.svg?w=840&fit=max&auto=format&n=jyk5Hl_irNQ736vI&q=85&s=3d30b75561f3b48ae592e6f54be12f44 840w, https://mintcdn.com/jetify/jyk5Hl_irNQ736vI/docs/devbox/devbox-isolated-shell-environment.svg?w=1100&fit=max&auto=format&n=jyk5Hl_irNQ736vI&q=85&s=28c735b78457fbb39b01bb5cac07cc3b 1100w, https://mintcdn.com/jetify/jyk5Hl_irNQ736vI/docs/devbox/devbox-isolated-shell-environment.svg?w=1650&fit=max&auto=format&n=jyk5Hl_irNQ736vI&q=85&s=c98ce8fa5e03151dd3124b7b9b43a3e3 1650w, https://mintcdn.com/jetify/jyk5Hl_irNQ736vI/docs/devbox/devbox-isolated-shell-environment.svg?w=2500&fit=max&auto=format&n=jyk5Hl_irNQ736vI&q=85&s=3d632a442121a442e27c62e973806390 2500w" />
+<Frame>
+  <img alt="Devbox isolated shell environment" />
 </Frame>
 
 ## Why Use Devbox?[​](#why-use-devbox "Direct link to Why Use Devbox?")
@@ -4818,7 +4829,7 @@ Select your OS below for the steps to install Devbox.
 
 Run the following install script as a *non-root user* to install the latest version of Devbox:
 
-```bash  theme={null}
+```bash theme={null}
 curl -fsSL https://get.jetify.com/devbox | bash
 ```
 
@@ -4831,7 +4842,7 @@ If you would like to install Nix yourself, we recommend the
 
 Run the following install script to install the latest version of Devbox:
 
-```bash  theme={null}
+```bash theme={null}
 curl -fsSL https://get.jetify.com/devbox | bash
 ```
 
@@ -4848,13 +4859,13 @@ You can use Devbox on a Windows machine using
 <Accordion title="Installing WSL2">
   To install WSL2 with the default Ubuntu distribution, open Powershell or Windows Command Prompt as an administrator, and run:
 
-  ```bash  theme={null}
+  ```bash theme={null}
   wsl --install
   ```
 
   If WSL2 is already installed, you can install Ubuntu by running
 
-  ```bash  theme={null}
+  ```bash theme={null}
   wsl --install -d Ubuntu
   ```
 
@@ -4866,7 +4877,7 @@ You can use Devbox on a Windows machine using
 
 Run the following script in your WSL2 terminal as a *non-root user* to install Devbox.
 
-```bash  theme={null}
+```bash theme={null}
 curl -fsSL https://get.jetify.com/devbox | bash
 ```
 
@@ -4879,19 +4890,19 @@ Devbox is available through the
 
 To install on NixOS:
 
-```bash  theme={null}
+```bash theme={null}
 nix-env -iA nixos.devbox
 ```
 
 To install on a non NixOS:
 
-```bash  theme={null}
+```bash theme={null}
 nix-env -iA nixpkgs.devbox
 ```
 
 or
 
-```bash  theme={null}
+```bash theme={null}
 nix profile install nixpkgs#devbox
 ```
 
@@ -4904,14 +4915,14 @@ help you access pre-releases and final releases of Devbox as soon as they are pu
 
 To get the latest version:
 
-```bash  theme={null}
+```bash theme={null}
 nix profile install github:jetify-com/devbox/latest
 ```
 
 To install a specific version, you can run the following command (only supports versions 0.13.2 and
 above).
 
-```bash  theme={null}
+```bash theme={null}
 nix profile install github:jetify-com/devbox/0.13.2
 ```
 
@@ -4931,7 +4942,7 @@ You can find release notes and details on the
 You can rollback or pin the version of Devbox on your system using the `DEVBOX_USE_VERSION`
 environment variable. For example, to use version 0.8.0:
 
-```bash  theme={null}
+```bash theme={null}
 export DEVBOX_USE_VERSION=0.8.0
 ```
 
@@ -4981,7 +4992,7 @@ available when using this Devbox shell, ensuring we don’t pollute your machine
 
 2. Initialize Devbox:
 
-   ```bash  theme={null}
+   ```bash theme={null}
    devbox init
    ```
 
@@ -4994,20 +5005,20 @@ available when using this Devbox shell, ensuring we don’t pollute your machine
 4. You can add a package to your project by running `devbox add <package>`. For example, running the
    following will install the latest available version of RipGrep in your project:
 
-   ```bash  theme={null}
+   ```bash theme={null}
    devbox add ripgrep
    ```
 
    If you want to install a specific version of a package, you can run
    `devbox add <package>@<version>`. For example, to install Python 3.10, you can run:
 
-   ```bash  theme={null}
+   ```bash theme={null}
    devbox add [email protected]
    ```
 
 5. Your `devbox.json` file keeps track of the packages you've added, it should now look like this:
 
-   ```json  theme={null}
+   ```json theme={null}
    {
      "packages": ["ripgrep@latest", "[email protected]"]
    }
@@ -5017,7 +5028,7 @@ available when using this Devbox shell, ensuring we don’t pollute your machine
 
 1. Start a new shell that has your packages and tools installed:
 
-   ```bash  theme={null}
+   ```bash theme={null}
    devbox shell
    ```
 
@@ -5034,27 +5045,27 @@ available when using this Devbox shell, ensuring we don’t pollute your machine
 
    In this example we installed Python 3.10, so let's use it.
 
-   ```bash  theme={null}
+   ```bash theme={null}
    $ python --version
    Python 3.10.0
    ```
 
    We will also have the latest version of ripgrep installed in our shell:
 
-   ```bash  theme={null}
+   ```bash theme={null}
    $ rg --version
    ripgrep 13.0.0-SIMD -AVX (compiled)
    ```
 
 3. Your regular tools are also available including environment variables and config settings.
 
-   ```bash  theme={null}
+   ```bash theme={null}
    git config --get user.name
    ```
 
 4. To exit the Devbox shell and return to your regular shell:
 
-   ```bash  theme={null}
+   ```bash theme={null}
    exit
    ```
 
@@ -5068,16 +5079,16 @@ Once you publish your Devbox project to Github, you can help other developers ge
 the Devbox Badge to your repo. Please copy the code snippets below and paste them into your
 README.md to add the badge
 
-[<img src="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/images/devbox/badges/devbox-badge-galaxy.svg?fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=be7849d4f3a3e00cdbe2ba224d03e519" alt="Built with Devbox" data-og-width="110" width="110" data-og-height="20" height="20" data-path="docs/images/devbox/badges/devbox-badge-galaxy.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/images/devbox/badges/devbox-badge-galaxy.svg?w=280&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=91c053fddd06700f361367d707ad9a1b 280w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/images/devbox/badges/devbox-badge-galaxy.svg?w=560&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=12b52db7a6e3ca4b25c6ced9453ae287 560w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/images/devbox/badges/devbox-badge-galaxy.svg?w=840&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=36a790e424132ac2f50b1bf8c7d219fa 840w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/images/devbox/badges/devbox-badge-galaxy.svg?w=1100&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=31438086329d7589238ac3f43f800014 1100w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/images/devbox/badges/devbox-badge-galaxy.svg?w=1650&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=ecd8eaeb818c5e3c8acd2d45eb343e76 1650w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/images/devbox/badges/devbox-badge-galaxy.svg?w=2500&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=ab1e3c3cefc4beae8cdea11b54055189 2500w" />](https://www.jetify.com/devbox/docs/contributor-quickstart/)
+[<img alt="Built with Devbox" />](https://www.jetify.com/devbox/docs/contributor-quickstart/)
 
 * Markdown
 * HTML
 
-```markdown  theme={null}
+```markdown theme={null}
 [![Built with Devbox](https://www.jetify.com/img/devbox/shield_galaxy.svg)](https://www.jetify.com/devbox/docs/contributor-quickstart/)
 ```
 
-```html  theme={null}
+```html theme={null}
 <a href="https://www.jetify.com/devbox/docs/contributor-quickstart/">
     <img
         src="https://www.jetify.com/img/devbox/shield_galaxy.svg"
@@ -5086,16 +5097,16 @@ README.md to add the badge
 </a>
 ```
 
-[<img src="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/images/devbox/badges/devbox-badge-moon.svg?fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=e64f4e9e90bb6cc9be67c7426b189175" alt="Built with Devbox" data-og-width="110" width="110" data-og-height="21" height="21" data-path="docs/images/devbox/badges/devbox-badge-moon.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/images/devbox/badges/devbox-badge-moon.svg?w=280&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=efe49dea5abdea0800d265aea21ec2f5 280w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/images/devbox/badges/devbox-badge-moon.svg?w=560&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=ceb943f007e453f03780bcea28913fe5 560w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/images/devbox/badges/devbox-badge-moon.svg?w=840&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=97502a74430543d09a4c089cb8a6850a 840w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/images/devbox/badges/devbox-badge-moon.svg?w=1100&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=7cfa0297f26649b0776dc0a17415c8ae 1100w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/images/devbox/badges/devbox-badge-moon.svg?w=1650&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=1cdb70c63ee3fe10bdb02a32e165d1a3 1650w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/images/devbox/badges/devbox-badge-moon.svg?w=2500&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=189ab34774f899f208c390d1c4be8b15 2500w" />](https://www.jetify.com/devbox/docs/contributor-quickstart/)
+[<img alt="Built with Devbox" />](https://www.jetify.com/devbox/docs/contributor-quickstart/)
 
 * Markdown
 * HTML
 
-```markdown  theme={null}
+```markdown theme={null}
 [![Built with Devbox](https://www.jetify.com/img/devbox/shield_moon.svg)](https://www.jetify.com/devbox/docs/contributor-quickstart/)
 ```
 
-```html  theme={null}
+```html theme={null}
 <a href="https://www.jetify.com/devbox/docs/contributor-quickstart/">
     <img
         src="https://www.jetify.com/img/devbox/shield_moon.svg"
@@ -5160,7 +5171,7 @@ development.
 
 ## Explore by Product
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Testpilot" icon="rocket" href="/docs/testpilot/">
     **Your AI QA Engineer**
 
@@ -5669,7 +5680,7 @@ OK
     ]
 </Accordion>
 
-```json  theme={null}
+```json theme={null}
 {
   "name": "string",
   "version": "string",
@@ -5838,6 +5849,74 @@ Bad Request: empty search query (set a ?q=\<query> query parameter)
 Not Found
 
 
+# Running scripts with Bash Tool
+Source: https://www.jetify.com/docs/docs/testpilot/advanced/bash-tool
+
+Learn how to use the Bash Tool in Testpilot to execute shell scripts as part of your testing workflow.
+
+Our recommended way to extend Testpilot's capabilities is through our [Model Context Protocol (MCP) integration](../model-context-protocol). However, for scenarios where you want Testpilot to run a simple script directly, or where adding an MCP server is not feasible, you can use Testpilot's Bash tool. Bash tool can be useful for tasks such as setting up test environments, performing system checks, or manipulating files during test execution.
+
+<Warning>
+  The Bash tool executes shell commands directly on the machine where Testpilot is running. Be cautious when using it, especially with commands that modify system files or configurations, as it can pose security risks. If you want to restrict or provide a safer alternative to executing arbitrary shell commands, consider using the [Model Context Protocol (MCP) integration](../model-context-protocol) instead.
+</Warning>
+
+## Enabling the Bash Tool
+
+To enable the Bash tool in Testpilot, you will first need to set the `BASH_TOOL` environment variable to `true` in your Testpilot configuration. This can typically be done by adding the following line to your environment configuration file or setting it directly in your deployment environment:
+
+```bash theme={null}
+export BASH_TOOL=true
+```
+
+## Using the Bash Tool in Test Cases
+
+Once the Bash tool is enabled, you can use it in your test cases by adding a step that describes a script or command you want to execute. You should specify the relative path to the script, as well as any arguments you want Testpilot to pass to the script.
+
+<Note>Testpilot will use your current working directory and shell environment as the context for executing scripts.</Note>
+
+Here is an example of how to define a test case that uses the Bash tool:
+
+```yaml theme={null}
+# Example YAML test case using the Bash tool
+cases:
+  - id: testcase_bash_tool_simple
+    name: bash-tool-simple-execution
+    description: Simple test that executes bash scripts and uses their output
+    platform_config:
+      url: https://todomvc.com/examples/react/dist/
+    steps:
+      - Run the data generator script at scripts/generate-test-data.sh with arguments 3 and "todo"
+      - Use the generated test data to create three todo items
+      - Verify all three todo items are displayed in the list
+```
+
+```bash theme={null}
+#!/bin/bash
+# ./scripts/generate-test-data.sh
+set -e
+
+COUNT=${1:-5}
+PREFIX=${2:-"test-item"}
+
+echo "=== Test Data Generator ==="
+echo "Generating $COUNT items with prefix '$PREFIX'"
+echo ""
+
+# Generate test data
+for i in $(seq 1 $COUNT); do
+    echo "$PREFIX-$i"
+done
+
+echo ""
+echo "=== Generation Complete ==="
+echo "Generated $COUNT test items"
+
+exit 0
+```
+
+When you execute this test case, Testpilot will run the `generate-test-data.sh` script with the specified arguments, capture its output, and use that output to fill out the todo items on the TodoMVC application.
+
+
 # Advanced Testpilot Features
 Source: https://www.jetify.com/docs/docs/testpilot/advanced/index
 
@@ -5853,7 +5932,7 @@ This section covers advanced Testpilot features designed for specific use cases 
 
 Advanced features include AI-powered test generation and extensibility through the Model Context Protocol. These capabilities are designed for specific workflows and may not be necessary for all users.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="AI Test Generation" icon="sparkles" href="/docs/testpilot/ai-test-generation">
     Automatically generate test plans from natural language descriptions.
   </Card>
@@ -5905,7 +5984,7 @@ generation capability helps by:
 To generate tests, use the `testpilot generate` command followed by a prompt that describes what you
 want to test:
 
-```bash  theme={null}
+```bash theme={null}
 testpilot generate "Visit nixhub.com and search for 'go'. Verify that version 1.24 is shown"
 ```
 
@@ -5917,7 +5996,7 @@ This command:
 
 You should see something like the following output in a `generated.pilot.yaml` file:
 
-```yaml  theme={null}
+```yaml theme={null}
 schema_version: v1.0.0
 name: null
 cases:
@@ -5943,7 +6022,7 @@ For best results, include:
 
 You can provide additional context to improve test generation quality using the `--context` flag:
 
-```bash  theme={null}
+```bash theme={null}
 testpilot generate "Test the checkout process" --context ./api-docs.md --context ./checkout-flow.txt
 ```
 
@@ -5962,7 +6041,7 @@ You can specify multiple context files to provide more comprehensive information
 By default, generated tests are saved to the current directory. You can specify a different output
 directory:
 
-```bash  theme={null}
+```bash theme={null}
 testpilot generate "Test search functionality" --outdir ./tests/search
 ```
 
@@ -5970,7 +6049,7 @@ testpilot generate "Test search functionality" --outdir ./tests/search
 
 Here's an example of a test plan generated from a prompt:
 
-```yaml  theme={null}
+```yaml theme={null}
 name: "Login Functionality Test Suite"
 context:
   - text: "This test suite verifies the login functionality of the example.com website"
@@ -6028,7 +6107,7 @@ Testpilot generates a starting point for your tests, but you should:
 
 After reviewing and adjusting the generated tests, run them with:
 
-```bash  theme={null}
+```bash theme={null}
 testpilot test path/to/generated-test.pilot.yaml
 ```
 
@@ -6038,13 +6117,13 @@ For the best results, create detailed, specific prompts:
 
 **Basic Prompt:**
 
-```markdown  theme={null}
+```markdown theme={null}
 Test the login functionality at https://example.com
 ```
 
 **Better Prompt:**
 
-```markdown  theme={null}
+```markdown theme={null}
 Test the login functionality at https://example.com including:
 - Successful login with valid credentials
 - Failed login with incorrect password
@@ -6088,7 +6167,7 @@ This approach creates tests that are more resilient to UI changes and easier to 
 
 This section provides guidance on writing effective tests, optimizing test performance, and maintaining your test suite over time.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="How to Write Effective Tests" icon="check-circle" href="/docs/testpilot/best-practices/write-effective-tests">
     Tips and patterns for creating reliable, maintainable tests.
   </Card>
@@ -6135,7 +6214,7 @@ Learn tips and patterns for creating reliable, maintainable tests. Optimize test
 
 * For example — you can rewrite the following test steps:
 
-  ```yaml  theme={null}
+  ```yaml theme={null}
   - Verify that you can see the login form
   - Click the login form
   - Verify that the login form is active
@@ -6144,7 +6223,7 @@ Learn tips and patterns for creating reliable, maintainable tests. Optimize test
 
   into:
 
-  ```yaml  theme={null}
+  ```yaml theme={null}
   - Enter your login information in the form
   ```
 
@@ -6509,7 +6588,7 @@ Both formats share the same core object structures and use `camelCase` field nam
 
 ## Complete JSON Schema
 
-```json  theme={null}
+```json theme={null}
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "TestPilot JSON Report",
@@ -6887,7 +6966,7 @@ Both formats share the same core object structures and use `camelCase` field nam
 
 ### Basic Report Structure
 
-```json  theme={null}
+```json theme={null}
 {
   "id": "tpreport_01abc123...",
   "startTime": "2025-10-30T10:00:00Z",
@@ -6940,7 +7019,7 @@ Install Testpilot and run your first AI-powered end-to-end test in minutes. Star
 Welcome to Testpilot! This section will get you up and running with AI-powered end-to-end testing
 quickly.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Install Testpilot" icon="gear" href="/docs/testpilot/install">
     Install Testpilot and configure your environment in minutes.
   </Card>
@@ -6976,7 +7055,7 @@ Before you can run tests on Android devices, you'll need to set up Appium:
 
 1. Install Appium Server and dependencies:
 
-   ```bash  theme={null}
+   ```bash theme={null}
    # Install Appium globally
    npm install -g appium
 
@@ -6989,7 +7068,7 @@ Before you can run tests on Android devices, you'll need to set up Appium:
 
 2. Verify your Appium installation:
 
-   ```bash  theme={null}
+   ```bash theme={null}
    appium-doctor
    ```
 
@@ -6997,7 +7076,7 @@ Before you can run tests on Android devices, you'll need to set up Appium:
 
 3. Start the Appium server:
 
-   ```bash  theme={null}
+   ```bash theme={null}
    appium --allow-cors
    ```
 
@@ -7047,7 +7126,7 @@ to your `emulator.wtf` devices using the following steps:
 Create a test file (e.g., `android-test.pilot.yaml`) with the platform\_config specifying your
 Android app package:
 
-```yaml  theme={null}
+```yaml theme={null}
 name: "Android App Test"
 context:
   - text: "Testing a native Android application"
@@ -7069,13 +7148,13 @@ cases:
 
 To run a test on an Android device, use the following command:
 
-```bash  theme={null}
+```bash theme={null}
 testpilot test android-test.pilot.yaml --driver appium --os android --runtime native
 ```
 
 For testing web content in Chrome on an Android device:
 
-```bash  theme={null}
+```bash theme={null}
 testpilot test web-test.pilot.yaml --driver appium --os android --runtime chrome
 ```
 
@@ -7084,7 +7163,7 @@ testpilot test web-test.pilot.yaml --driver appium --os android --runtime chrome
 The `platform_config` section lets you define the android app that you want to run your tests on.
 You can specify an app and URL for both browser based and native application tests
 
-```yaml  theme={null}
+```yaml theme={null}
 platform_config:
   url: "https://example.com"        # For browser-based tests
   android_pkg: "com.example.myapp"  # For native app tests
@@ -7106,7 +7185,7 @@ dependencies:
 
 1. Install Appium Server and dependencies:
 
-   ```bash  theme={null}
+   ```bash theme={null}
    # Install Appium globally
    npm install -g appium
 
@@ -7119,7 +7198,7 @@ dependencies:
 
 2. Verify your Appium installation:
 
-   ```bash  theme={null}
+   ```bash theme={null}
    appium-doctor --ios
    ```
 
@@ -7128,7 +7207,7 @@ dependencies:
 
 3. Start the Appium server:
 
-   ```bash  theme={null}
+   ```bash theme={null}
    appium --allow-cors
    ```
 
@@ -7156,7 +7235,7 @@ Testpilot works with iOS simulators managed through Xcode. Here's how to set one
 Create a test file (e.g., `ios-test.pilot.yaml`) with the platform\_config specifying your iOS app
 bundle identifier:
 
-```yaml  theme={null}
+```yaml theme={null}
 name: "iOS App Test"
 context:
   - text: "Testing a native iOS application"
@@ -7180,27 +7259,27 @@ To run a test on an iOS simulator or device, use the following command. You must
 `--driver`, `--os`, `--runtime`, `--os-version`, and `--udid` flags to ensure the test runs
 correctly on your iOS simulator:
 
-```bash  theme={null}
+```bash theme={null}
 testpilot test ios-test.pilot.yaml --driver appium --os ios --runtime native --udid <device-udid>
 ```
 
 <Check>
   You can find your device's UDID using
 
-  ```bash  theme={null}
+  ```bash theme={null}
   xcrun simctl list
   ```
 
   To get a list of running sims, use:
 
-  ```bash  theme={null}
+  ```bash theme={null}
   xcrun simctl list booted
   ```
 </Check>
 
 For testing web content in Safari on an iOS device:
 
-```bash  theme={null}
+```bash theme={null}
 testpilot test web-test.pilot.yaml --driver appium --os ios --runtime safari --os-version 18.5
 ```
 
@@ -7208,7 +7287,7 @@ testpilot test web-test.pilot.yaml --driver appium --os ios --runtime safari --o
 
 The `platform_config` section of your test file is crucial for iOS testing:
 
-```yaml  theme={null}
+```yaml theme={null}
 platform_config:
   url: "https://example.com"      # For browser-based tests
   ios_bundle: "com.example.MyApp" # For native app tests
@@ -7245,7 +7324,7 @@ Here is a simple test that will go to Hacker News, search for a topic, and click
 
 Copy these contents to a yaml file titled `example-hn-search.pilot.yaml`.
 
-```yaml  theme={null}
+```yaml theme={null}
 name: "Hacker News Search Test"
 
 # List of Cases to Execute
@@ -7272,14 +7351,14 @@ context, and begins executing the `steps`.
 You can run your test files using `testpilot test <path_to_file>`. Testpilot runs your tests in
 headless mode by default, but you can use `--show-browser` to watch what Testpilot is doing live:
 
-```bash  theme={null}
+```bash theme={null}
 testpilot test example-hn-search.pilot.yaml --show-browser
 ```
 
 Testpilot will launch the browser and begin executing your testplan live. You can view the LLM's
 actions and reasoning in your terminal:
 
-```bash  theme={null}
+```bash theme={null}
 ❯ testpilot test example-hn-search.pilot.yaml
 Info: Found 1 pilot plan
 -> Test Case: Search for Devbox on Hacker News
@@ -7325,11 +7404,11 @@ Once your test is finished, a static HTML report with the results, screenshots, 
 test will be written to `testpilot-out`. You can view the results by opening the index.html at the
 root of the folder:
 
-```bash  theme={null}
+```bash theme={null}
 open testpilot-out/index.html
 ```
 
-<img src="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/testpilot/getting-started/testpilot-test-output-example.png?fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=be01ffcc6347e29c23880386068c174b" alt="Test Output Example" data-og-width="2528" width="2528" data-og-height="1762" height="1762" data-path="docs/testpilot/getting-started/testpilot-test-output-example.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/testpilot/getting-started/testpilot-test-output-example.png?w=280&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=bba743cd250780cb8c7f01bb836e0585 280w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/testpilot/getting-started/testpilot-test-output-example.png?w=560&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=fa81762922778b291563f09f7ab60f1d 560w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/testpilot/getting-started/testpilot-test-output-example.png?w=840&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=b40f426cb665036e6903a0e742886c4a 840w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/testpilot/getting-started/testpilot-test-output-example.png?w=1100&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=284633c6ccbe527c78a816b3598e3bb9 1100w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/testpilot/getting-started/testpilot-test-output-example.png?w=1650&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=444bf19a24d671e9bd56299213f6fada 1650w, https://mintcdn.com/jetify/k7lJpyU9i-Y_obPW/docs/testpilot/getting-started/testpilot-test-output-example.png?w=2500&fit=max&auto=format&n=k7lJpyU9i-Y_obPW&q=85&s=0f7b4bad6c6c4a2a3e486eb45850cb2b 2500w" />
+<img alt="Test Output Example" />
 
 
 # How to Add Context to Testpilot Tests
@@ -7357,7 +7436,7 @@ You can add context at two levels in your pilot files:
 
 Global context applies to all test cases in a file. Add it at the root level of your test file:
 
-```yaml  theme={null}
+```yaml theme={null}
 name: "E-commerce Test Suite"
 login_url: "https://example.com/login"
 context:
@@ -7375,7 +7454,7 @@ cases:
 
 Test-specific context applies only to a single test case:
 
-```yaml  theme={null}
+```yaml theme={null}
 cases:
   - id: "checkout-test-001"
     name: "Complete Checkout"
@@ -7398,7 +7477,7 @@ cases:
 
 Add context that directly helps with test execution:
 
-```yaml  theme={null}
+```yaml theme={null}
 context:
   - text: "The login button changes to 'Logging in...' while processing"
   - text: "Error messages appear below each form field"
@@ -7409,7 +7488,7 @@ context:
 
 Describe important UI elements and their behavior:
 
-```yaml  theme={null}
+```yaml theme={null}
 context:
   - text: "The navigation uses a hamburger menu on mobile screens"
   - text: "The search bar expands when clicked"
@@ -7420,7 +7499,7 @@ context:
 
 Include relevant business logic or validation rules:
 
-```yaml  theme={null}
+```yaml theme={null}
 context:
   - text: "Promotional codes are case-sensitive and must be entered without spaces"
 ```
@@ -7429,7 +7508,7 @@ context:
 
 Include information about your test environment:
 
-```yaml  theme={null}
+```yaml theme={null}
 context:
   - text: "This is a staging environment and emails are not actually sent"
   - text: "The payment gateway is in test mode"
@@ -7471,7 +7550,7 @@ Testpilot.
 
 Configure Testpilot to use your Mailosaur account by setting these environment variables:
 
-```bash  theme={null}
+```bash theme={null}
 export MAILOSAUR_API_KEY=your_api_key
 export MAILOSAUR_SERVER_ID=your_server_id
 ```
@@ -7486,7 +7565,7 @@ example, you can test a signup flow using a unique, randomly generated email as 
 
 ### Example Test Scenario[​](#example-test-scenario "Direct link to Example Test Scenario")
 
-```yaml  theme={null}
+```yaml theme={null}
 cases:
   id: email_signup_0001
   name: Sign up with email verification
@@ -7502,7 +7581,7 @@ cases:
 
 If you prefer not to use the Mailosaur integration, you can explicitly specify email addresses in your test scenarios:
 
-```yaml  theme={null}
+```yaml theme={null}
 cases:
   id: email_signup_0001
   name: Sign up with email verification
@@ -7526,7 +7605,7 @@ Task-focused guides for common testing scenarios. Learn authentication, email te
 These guides help you solve specific testing challenges and implement advanced workflows with
 Testpilot.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Adding Context to Tests" icon="info" href="/docs/testpilot/guides/add-context-to-tests">
     Provide additional context to improve AI test understanding and reliability.
   </Card>
@@ -7584,7 +7663,7 @@ the option to pass multiple devices to run mobile tests in parallel. :::
 
 Typical usage:
 
-```bash  theme={null}
+```bash theme={null}
 # Use default concurrency
 testpilot test plans/
 
@@ -7600,7 +7679,7 @@ testpilot test --concurrency 1 plans/
 Sharding tells multiple independent processes or machines to each take a deterministic slice. You
 specify it as `current/total` with a 1-based shard index:
 
-```bash  theme={null}
+```bash theme={null}
 # First of three shards
 testpilot test --shard 1/3 plans/
 
@@ -7615,7 +7694,7 @@ cleanly.) There is no dynamic balancing yet; faster shards will simply finish ea
 
 ### CI matrix example[​](#ci-matrix-example "Direct link to CI matrix example")
 
-```yaml  theme={null}
+```yaml theme={null}
 strategy:
   matrix:
     shard: [1, 2, 3, 4]
@@ -7671,7 +7750,7 @@ The syntax works as follows:
 A common use case is parameterizing the host URL in your tests. This lets you run the same tests
 against different environments without modifying your test files:
 
-```yaml  theme={null}
+```yaml theme={null}
 name: "Parameterized URL Test"
 context:
   - text: "Test can run against different environments based on the TEST_HOST environment variable"
@@ -7697,7 +7776,7 @@ In this example:
 
 You can run the same test with different parameter values by changing the environment variables:
 
-```bash  theme={null}
+```bash theme={null}
 # Run against staging (default)
 testpilot test login.pilot.yaml
 
@@ -7714,7 +7793,7 @@ testpilot test login.pilot.yaml
 
 You can parameterize any string value in your test files, not just URLs:
 
-```yaml  theme={null}
+```yaml theme={null}
 name: "User Registration Test"
 context:
   - text: "Test registration with configurable user details"
@@ -7743,7 +7822,7 @@ Parameterizing your tests is useful for:
 
 Here's how you might use parameterized tests in a CI/CD pipeline:
 
-```yaml  theme={null}
+```yaml theme={null}
 # In your CI/CD configuration
 stages:
   - test
@@ -7786,7 +7865,7 @@ Test authenticated features efficiently. Configure login credentials, set up aut
 
 Testpilot uses environment variables to securely manage your login credentials:
 
-```bash  theme={null}
+```bash theme={null}
 # Set your username and password as environment variables
 export TESTPILOT_USERNAME="your-username"
 export TESTPILOT_PASSWORD="your-password"
@@ -7800,7 +7879,7 @@ manager of your choice to set these credentials before running Testpilot
 
 Alternatively, you can also use custom env-vars of your own choosing by specifying them in the pilot file:
 
-```yaml  theme={null}
+```yaml theme={null}
 name: "Configuring Environment Variables for Login"
 login:
   username: ${MY_CUSTOM_USERNAME}
@@ -7813,7 +7892,7 @@ cases:
 
 To tell Testpilot where to log in, add a `login.url` field to your pilot file:
 
-```yaml  theme={null}
+```yaml theme={null}
 name: "Authenticated Tests Example"
 login:
   url: "https://example.com/login"
@@ -7849,7 +7928,7 @@ session, saving time and reducing flakiness.
 
 Here's a complete example of testing features that require authentication:
 
-```yaml  theme={null}
+```yaml theme={null}
 name: "User Account Tests"
 login:
   url: "https://myapp.com/login"
@@ -7889,7 +7968,7 @@ your application without repeatedly handling the login process in each test case
 
 For mobile apps, the login steps have to be more explicitly specified and tested, notably as done in step 2 below.
 
-```yaml  theme={null}
+```yaml theme={null}
 name: "Login Flow Test"
 login:
   username: ${MY_CUSTOM_USERNAME}
@@ -7930,7 +8009,7 @@ Configuring viewports allows you to:
 You can define viewports at the test case level using the `viewports` field. Here's how to set it
 up:
 
-```yaml  theme={null}
+```yaml theme={null}
 cases:
   - id: "responsive-test-001"
     name: "Homepage Responsive Test"
@@ -7969,7 +8048,7 @@ Here are some commonly used viewport sizes for different device categories:
 
 ### Desktop[​](#desktop "Direct link to Desktop")
 
-```yaml  theme={null}
+```yaml theme={null}
 viewports:
   - name: "Desktop Large"
     size: [1920, 1080]
@@ -7979,7 +8058,7 @@ viewports:
 
 ### Tablet[​](#tablet "Direct link to Tablet")
 
-```yaml  theme={null}
+```yaml theme={null}
 viewports:
   - name: "Tablet Landscape"
     size: [1024, 768]
@@ -7989,7 +8068,7 @@ viewports:
 
 ### Mobile[​](#mobile "Direct link to Mobile")
 
-```yaml  theme={null}
+```yaml theme={null}
 viewports:
   - name: "Mobile Large"
     size: [428, 926]  # iPhone 13 Pro Max
@@ -8082,7 +8161,7 @@ Install Testpilot in minutes. Set up the binary and configure your OpenAI API ke
 
 Install Testpilot by running the following command in your terminal:
 
-```bash  theme={null}
+```bash theme={null}
 curl -fsSL https://get.jetify.com/testpilot | bash
 ```
 
@@ -8094,14 +8173,14 @@ completes, you'll be able to use the `testpilot` command.
 Testpilot uses OpenAI's API to generate and run tests. You'll need to set your OpenAI API key as an
 environment variable:
 
-```bash  theme={null}
+```bash theme={null}
 export OPENAI_API_KEY=your-api-key-here
 ```
 
 If you are using a proxy or a different provider for your OpenAI API, you can set the
 `OPENAI_BASE_URL` environment variable to point to your API endpoint:
 
-```bash  theme={null}
+```bash theme={null}
 export OPENAI_BASE_URL=https://your-openai-api-endpoint.com
 ```
 
@@ -8142,7 +8221,7 @@ Before you begin, make sure you have:
 Let's start by creating a simple GitLab CI pipeline that installs Testpilot and runs a test. Create
 or edit your `.gitlab-ci.yml` file in your project root:
 
-```yaml  theme={null}
+```yaml theme={null}
 # Include the Testpilot component
 include:
   - component: gitlab.com/jetify-com/gitlab-components/testpilot-install@main
@@ -8212,7 +8291,7 @@ pipeline to handle both platforms:
 The component works out-of-the-box with GitLab's standard Linux runners. No additional configuration
 needed!
 
-```yaml  theme={null}
+```yaml theme={null}
 include:
   - component: gitlab.com/jetify-com/gitlab-components/testpilot-install@main
     inputs:
@@ -8236,7 +8315,7 @@ setup. Here's how to configure your pipeline to use GitLab's SaaS macOS runners:
 
 **Step 1:** Define your macOS runner configuration at the top of your `.gitlab-ci.yml`:
 
-```yaml  theme={null}
+```yaml theme={null}
 # macOS runner configuration
 .macos_saas_runners:
   tags:
@@ -8245,7 +8324,7 @@ setup. Here's how to configure your pipeline to use GitLab's SaaS macOS runners:
 
 **Step 2:** Include the component with macOS-specific settings:
 
-```yaml  theme={null}
+```yaml theme={null}
 # Include the Testpilot component for macOS
 include:
   - component: gitlab.com/jetify-com/gitlab-components/testpilot-install@main
@@ -8273,7 +8352,7 @@ run-tests-macos:
 If you're using self-hosted runners, you can configure Testpilot to run on them using a
 configuration like the following
 
-```yaml  theme={null}
+```yaml theme={null}
 # Custom runner configurations
 .arm_runner:
   tags:
@@ -8303,7 +8382,7 @@ test-arm:
 
 Want to test on both Linux and macOS? Here's how:
 
-```yaml  theme={null}
+```yaml theme={null}
 # Runner configurations
 .macos_saas_runners:
   tags:
@@ -8352,7 +8431,7 @@ You can see an example of sharding testpilot files in our
 [example repo](https://gitlab.com/jetify-com/gitlab-components-example). An example gitlab.yaml file
 is below:
 
-```yaml  theme={null}
+```yaml theme={null}
 include:
   - component: gitlab.com/jetify-com/gitlab-components/testpilot-install@main
     inputs:
@@ -8432,7 +8511,7 @@ This means the second time your pipeline runs, Testpilot installation will be mu
 
 If you need to change where files are cached:
 
-```yaml  theme={null}
+```yaml theme={null}
 include:
   - component: gitlab.com/jetify-com/gitlab-components/testpilot-install@main
     inputs:
@@ -8475,7 +8554,7 @@ Testpilot integrates seamlessly with your existing CI/CD workflows, allowing you
 
 This section covers integrations with popular CI/CD platforms and development tools. You'll learn how to set up Testpilot in your pipeline, configure test execution, and manage test results.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="GitLab CI/CD Integration" icon="gitlab" href="/docs/testpilot/integrations/gitlab-cicd">
     Set up Testpilot in your GitLab pipelines with the official component.
   </Card>
@@ -8512,7 +8591,7 @@ Extend Testpilot with MCP servers. Connect to internal APIs, custom scripts, and
 Use the `testpilot mcp add` command to register an MCP server for the current Git repository or
 directory. To add a local server, pass the command that starts the server:
 
-```bash  theme={null}
+```bash theme={null}
 testpilot mcp add /path/to/mcp-server --flag arg
 ```
 
@@ -8520,7 +8599,7 @@ Testpilot will start the server and connect to it the next time you run `testpil
 
 To add a remote server, pass the server URL:
 
-```bash  theme={null}
+```bash theme={null}
 testpilot mcp add https://mcp.example.com
 ```
 
@@ -8528,13 +8607,13 @@ If the server requires authentication, provide credentials as environment variab
 with the `--env` and `--header` flags. For example, you can pass an environment variable to a local
 server:
 
-```bash  theme={null}
+```bash theme={null}
 testpilot mcp add --env API_KEY=SECRET /path/to/mcp-server
 ```
 
 Or set an HTTP header for a remote server:
 
-```bash  theme={null}
+```bash theme={null}
 testpilot mcp add --header 'Authorization: Bearer $MY_TOKEN' https://mcp.example.com
 ```
 
@@ -8565,7 +8644,7 @@ use them in CI.
 Local servers are commands that Testpilot starts as separate processes. Testpilot communicates with
 these servers through standard input/output.
 
-```json  theme={null}
+```json theme={null}
 {
   "mcpServers": {
     "filesystem-server": {
@@ -8586,7 +8665,7 @@ If the `command` field contains no path separators ('/'), Testpilot searches for
 
 Remote servers communicate with Testpilot over HTTPS.
 
-```json  theme={null}
+```json theme={null}
 {
   "mcpServers": {
     "api-server": {
@@ -8614,7 +8693,7 @@ Environment variables can also have default values with `${VAR:-default_value}`,
 `GH_MCP_SERVER` environment variable for the GitHub MCP server URL, with a fallback to the default
 endpoint:
 
-```json  theme={null}
+```json theme={null}
 {
   "mcpServers": {
     "github": {
@@ -8631,7 +8710,7 @@ endpoint:
 This configuration uses the default GitHub MCP server while allowing you to override it for specific
 Testpilot runs. For example, you can restrict GitHub MCP permissions:
 
-```bash  theme={null}
+```bash theme={null}
 # Restrict GitHub MCP tools to read-only permissions.
 GH_MCP_SERVER=https://api.githubcopilot.com/mcp/readonly testpilot test
 ```
@@ -8648,7 +8727,7 @@ Source: https://www.jetify.com/docs/docs/testpilot/pilotfile-reference
 
 Complete reference for Testpilot pilot files. Learn the file format, configuration options, and test case structure.
 
-```yaml  theme={null}
+```yaml theme={null}
 name: "My Test Suite"
 login_url: "https://example.com/login"
 context:
@@ -8667,7 +8746,7 @@ cases:
 An optional string that provides a human-readable name for the test suite. If not specified,
 Testpilot will derive the name from the filename.
 
-```yaml  theme={null}
+```yaml theme={null}
 name: "E-commerce Checkout Tests"
 ```
 
@@ -8676,7 +8755,7 @@ name: "E-commerce Checkout Tests"
 An optional URL that specifies the login page for the application under test. When specified,
 Testpilot will perform authentication before running test cases.
 
-```yaml  theme={null}
+```yaml theme={null}
 login_url: "https://myapp.com/auth/login"
 ```
 
@@ -8686,7 +8765,7 @@ An optional array of context objects that provide additional information to all 
 plan. This context is inherited by all test cases and can be used to provide background information
 or setup details.
 
-```yaml  theme={null}
+```yaml theme={null}
 context:
   - text: "This application requires users to be logged in"
   - text: "All tests assume a clean database state"
@@ -8697,7 +8776,7 @@ context:
 An array of test case objects that define the individual tests to be executed. Each test case
 represents a specific scenario or user journey to validate.
 
-```yaml  theme={null}
+```yaml theme={null}
 cases:
   - id: "checkout-001"
     name: "Complete Purchase"
@@ -8713,7 +8792,7 @@ Each test case in the `cases` array supports the following fields:
 A unique identifier for the test case. This ID is used internally by Testpilot to track and
 reference test cases.
 
-```yaml  theme={null}
+```yaml theme={null}
 id: "login-success-001"
 ```
 
@@ -8721,7 +8800,7 @@ id: "login-success-001"
 
 A human-readable name for the test case that describes what the test validates.
 
-```yaml  theme={null}
+```yaml theme={null}
 name: "Successful User Login"
 ```
 
@@ -8730,7 +8809,7 @@ name: "Successful User Login"
 A detailed description of what the test case does and what it validates. This helps with test
 documentation and debugging.
 
-```yaml  theme={null}
+```yaml theme={null}
 description: "Verifies that a user can successfully log in with valid credentials"
 ```
 
@@ -8739,7 +8818,7 @@ description: "Verifies that a user can successfully log in with valid credential
 An array of strings that describe the steps to be performed during the test. Each step represents an
 action or validation that should be performed.
 
-```yaml  theme={null}
+```yaml theme={null}
 steps:
   - "Navigate to the login page"
   - "Enter valid username and password"
@@ -8751,7 +8830,7 @@ steps:
 
 The URL where the test case should begin execution. This is the starting point for the test.
 
-```yaml  theme={null}
+```yaml theme={null}
 url: "https://myapp.com/dashboard"
 ```
 
@@ -8760,7 +8839,7 @@ url: "https://myapp.com/dashboard"
 An array of viewport configurations that define the screen sizes at which the test should be
 executed. This is useful for responsive testing across different device sizes.
 
-```yaml  theme={null}
+```yaml theme={null}
 viewports:
   - name: "Desktop"
     size: [1920, 1080]
@@ -8780,7 +8859,7 @@ Each viewport object contains:
 Test case-specific context that provides additional information for this particular test. This is
 merged with any root-level context.
 
-```yaml  theme={null}
+```yaml theme={null}
 context:
   - text: "This test requires a user with admin privileges"
   - text: "Database should contain sample product data"
@@ -8791,7 +8870,7 @@ context:
 Custom HTTP headers to include in all browser requests for this test case. The
 browser sends these headers with every request made during test execution.
 
-```yaml  theme={null}
+```yaml theme={null}
 headers:
   X-Custom-Header: "custom-value"
   Token: "Bearer ${MY_TOKEN}"
@@ -8807,7 +8886,7 @@ Android or iOS platforms.
 Configuration for testing on different platforms (web, mobile, etc.). This allows you to specify
 different entry points for different platforms.
 
-```yaml  theme={null}
+```yaml theme={null}
 platform_config:
   url: "https://web.myapp.com"
   android_pkg: "com.mycompany.myapp"
@@ -8825,7 +8904,7 @@ The platform configuration includes:
 Context objects provide additional information that can be used by Testpilot during test execution.
 Currently, only text-based context is supported.
 
-```yaml  theme={null}
+```yaml theme={null}
 context:
   - text: "User should have completed onboarding"
 ```
@@ -8840,7 +8919,7 @@ Testpilot supports multiple file formats for pilot files:
 
 ### YAML Format (Recommended)[​](#yaml-format-recommended "Direct link to YAML Format (Recommended)")
 
-```yaml  theme={null}
+```yaml theme={null}
 name: "My Tests"
 cases:
   - id: "test-001"
@@ -8853,7 +8932,7 @@ cases:
 
 ### TOML Format[​](#toml-format "Direct link to TOML Format")
 
-```toml  theme={null}
+```toml theme={null}
 name = "My Tests"
 
 [[cases]]
@@ -8865,7 +8944,7 @@ steps = ["Step 1", "Step 2"]
 
 ### JSON Format[​](#json-format "Direct link to JSON Format")
 
-```json  theme={null}
+```json theme={null}
 {
   "name": "My Tests",
   "cases": [
@@ -8894,7 +8973,7 @@ Testpilot recognizes pilot files with the following naming patterns:
 Testpilot can load pilot files from remote URLs, including GitHub repositories. When using GitHub
 URLs, you can optionally set the `GITHUB_TOKEN` environment variable for authentication.
 
-```bash  theme={null}
+```bash theme={null}
 # Load from a direct URL
 testpilot run https://example.com/tests/pilot.yaml
 
@@ -8906,7 +8985,7 @@ testpilot run https://github.com/user/repo/raw/main/tests/pilot.yaml
 
 Here's a complete example of a pilot file for testing an e-commerce application:
 
-```yaml  theme={null}
+```yaml theme={null}
 name: "E-commerce Application Tests"
 login_url: "https://shop.example.com/login"
 context:
@@ -8991,7 +9070,7 @@ Complete command-line reference for Testpilot. Learn all CLI commands, options, 
 The Testpilot CLI provides powerful command-line tools for running tests, managing authentication,
 and handling reports.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="testpilot" icon="terminal" href="/docs/testpilot/reference/cli/testpilot">
     Main CLI tool for AI-powered end-to-end testing.
   </Card>
@@ -9055,7 +9134,7 @@ Source: https://www.jetify.com/docs/docs/testpilot/reference/cli/testpilot
 
 Testpilot CLI - AI-powered end-to-end testing tool
 
-```bash  theme={null}
+```bash theme={null}
 testpilot [flags]
 ```
 
@@ -9084,7 +9163,7 @@ Source: https://www.jetify.com/docs/docs/testpilot/reference/cli/testpilot-auth
 
 Manage your account
 
-```bash  theme={null}
+```bash theme={null}
 testpilot auth [command]
 ```
 
@@ -9120,7 +9199,7 @@ Source: https://www.jetify.com/docs/docs/testpilot/reference/cli/testpilot-auth-
 
 Log in to your account
 
-```bash  theme={null}
+```bash theme={null}
 testpilot auth login [flags]
 ```
 
@@ -9131,7 +9210,7 @@ to access Testpilot services and features that require authentication.
 
 ## Examples[​](#examples "Direct link to Examples")
 
-```bash  theme={null}
+```bash theme={null}
 # Log in to your account
 testpilot auth login
 ```
@@ -9160,7 +9239,7 @@ Source: https://www.jetify.com/docs/docs/testpilot/reference/cli/testpilot-auth-
 
 Log out from your account
 
-```bash  theme={null}
+```bash theme={null}
 testpilot auth logout [flags]
 ```
 
@@ -9171,7 +9250,7 @@ credentials from your local system.
 
 ## Examples[​](#examples "Direct link to Examples")
 
-```bash  theme={null}
+```bash theme={null}
 # Log out from your account
 testpilot auth logout
 ```
@@ -9200,7 +9279,7 @@ Source: https://www.jetify.com/docs/docs/testpilot/reference/cli/testpilot-auth-
 
 Show information about the current user
 
-```bash  theme={null}
+```bash theme={null}
 testpilot auth whoami [flags]
 ```
 
@@ -9211,7 +9290,7 @@ details and optionally authentication tokens.
 
 ## Examples[​](#examples "Direct link to Examples")
 
-```bash  theme={null}
+```bash theme={null}
 # Show current user information
 testpilot auth whoami
 
@@ -9244,7 +9323,7 @@ Source: https://www.jetify.com/docs/docs/testpilot/reference/cli/testpilot-gener
 
 Generate a pilot plan from a prompt
 
-```bash  theme={null}
+```bash theme={null}
 testpilot generate [test prompt] [flags]
 ```
 
@@ -9266,7 +9345,7 @@ that can help the AI generate more accurate test cases.
 
 ## Examples[​](#examples "Direct link to Examples")
 
-```bash  theme={null}
+```bash theme={null}
 # Generate a pilot plan for testing login functionality
 testpilot generate "Test user login with valid and invalid credentials"
 
@@ -9295,7 +9374,7 @@ Source: https://www.jetify.com/docs/docs/testpilot/reference/cli/testpilot-insta
 
 Download and install dependencies
 
-```bash  theme={null}
+```bash theme={null}
 testpilot install [flags]
 ```
 
@@ -9310,7 +9389,7 @@ images.
 
 ## Examples[​](#examples "Direct link to Examples")
 
-```bash  theme={null}
+```bash theme={null}
 # Install dependencies
 testpilot install
 
@@ -9335,7 +9414,7 @@ Source: https://www.jetify.com/docs/docs/testpilot/reference/cli/testpilot-repor
 
 Manage test reports
 
-```bash  theme={null}
+```bash theme={null}
 testpilot report [command]
 ```
 
@@ -9364,7 +9443,7 @@ Source: https://www.jetify.com/docs/docs/testpilot/reference/cli/testpilot-repor
 
 Merge multiple test reports into a single report
 
-```bash  theme={null}
+```bash theme={null}
 testpilot report merge <dir1> <dir2> [dir3...] [flags]
 ```
 
@@ -9376,7 +9455,7 @@ results.
 
 ## Examples[​](#examples "Direct link to Examples")
 
-```bash  theme={null}
+```bash theme={null}
 # Merge two report directories
 testpilot report merge ./reports1 ./reports2
 
@@ -9404,13 +9483,13 @@ Source: https://www.jetify.com/docs/docs/testpilot/reference/cli/testpilot-test
 
 Test the scenarios in the provided pilot plans
 
-```bash  theme={null}
+```bash theme={null}
 testpilot test [path/to/plan.pilot.yaml | path/to/directory/with/pilot/plans] [flags]
 ```
 
 ## Examples[​](#examples "Direct link to Examples")
 
-```bash  theme={null}
+```bash theme={null}
 # Run all tests in the current directory
 testpilot test
 
@@ -9475,13 +9554,13 @@ Source: https://www.jetify.com/docs/docs/testpilot/reference/cli/testpilot-versi
 
 Print version information
 
-```bash  theme={null}
+```bash theme={null}
 testpilot version [flags]
 ```
 
 ## Examples[​](#examples "Direct link to Examples")
 
-```bash  theme={null}
+```bash theme={null}
 # Print version number
 testpilot version
 
@@ -9508,7 +9587,7 @@ Source: https://www.jetify.com/docs/docs/testpilot/reference/cli/testpilot-versi
 
 Update launcher and binary
 
-```bash  theme={null}
+```bash theme={null}
 testpilot version update
 ```
 
@@ -9518,7 +9597,7 @@ Updates the Testpilot launcher and binary to the latest version.
 
 ## Examples[​](#examples "Direct link to Examples")
 
-```bash  theme={null}
+```bash theme={null}
 # Update Testpilot to the latest version
 testpilot version update
 ```

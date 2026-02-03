@@ -4,6 +4,10 @@
 
 # Source: https://docs.lunary.ai/docs/integrations/azure-openai.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Azure OpenAI integration
 
 Our Python SDK includes automatic integration with Azure OpenAI.
@@ -51,8 +55,3 @@ Our Python SDK includes automatic integration with Azure OpenAI.
     ```
   </Step>
 </Steps>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

@@ -1,4 +1,4 @@
-# Source: https://docs.intelligems.io/offer-experiences/upgrade-offer-components.md
+# Source: https://docs.intelligems.io/offer-personalizations/upgrade-offer-components.md
 
 # Upgrade Offer Components
 

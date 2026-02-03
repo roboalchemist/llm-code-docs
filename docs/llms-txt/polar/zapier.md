@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/features/integrations/zapier.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Polar for Zapier
 
 > Connect Polar to hundreds of other apps with Zapier

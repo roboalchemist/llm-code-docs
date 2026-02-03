@@ -6,7 +6,6 @@ description: >-
   Make custom HTTP requests to endpoints with configurable authentication,
   methods, headers, and response handling for workflows and apps.
 breadcrumbs: Docs > Connections > HTTP Requests
-source_url: https://docs.datadoghq.com/connections/http/index.html
 ---
 
 # HTTP Requests

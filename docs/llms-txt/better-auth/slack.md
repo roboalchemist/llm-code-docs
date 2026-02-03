@@ -4,11 +4,7 @@
 
 Slack provider setup and usage.
 
-***
 
-title: Slack
-description: Slack provider setup and usage.
---------------------------------------------
 
 <Steps>
   <Step>

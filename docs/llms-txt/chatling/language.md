@@ -2,42 +2,18 @@
 
 # Source: https://docs.chatling.ai/chatbot/builder/blocks/condition/language.md
 
-# Source: https://docs.chatling.ai/web-widget/language.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/condition/language.md
+# Language
 
-# Source: https://docs.chatling.ai/web-widget/language.md
+> Learn how to use the Language condition block in Chatling
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/condition/language.md
+The Language condition block is used to define flows based on the user's browser language. This can be useful for creating multilingual bots that respond in the user's preferred language.
 
-# Source: https://docs.chatling.ai/web-widget/language.md
+Let's say you want to create a bot that supports English, Spanish, and French languages. You can use the Language condition block to define different responses or actions based on the user's preferred language setting in their browser.
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/condition/language.md
+Below is an example of such a flow. The Else path is a fallback for users whose language is not supported by the bot. In this case, it falls back to the English language.
 
-# Source: https://docs.chatling.ai/web-widget/language.md
-
-# Set the language of your chatbot widget
-
-> Set the language of your chatbot widget.
-
-The chatbot is available in over 45 languages. You can customize the language of your chatbot to match your audience's preferences. This affects all text elements in the chatbot widget, including placeholders, buttons, and system messages.
-
-By default, the language is set to `Auto`. This means that the chatbot will automatically detect the user's language based on their browser settings.
-
-## Set the language
-
-1. From your chatbot's dashboard, go to **Appearance**.
-
-<img src="https://chatling-assets.b-cdn.net/open-chatbot-appearance-settings.jpg" alt="Open chatbot appearance settings" width="300" />
-
-2. Click `Configure` from the sidebar.
-
-<img src="https://chatling-assets.b-cdn.net/click-configure-appearance.jpg" alt="Go to Configure" width="450px" />
-
-3. Use the `Interface language` dropdown to select the language of your chatbot.
-
-Note: If you set the language to `Auto`, the chatbot will automatically detect the user's language based on their browser settings.
-
-<img src="https://chatling-assets.b-cdn.net/set-chatbot-language.jpg" alt="Set chatbot language" width="450px" />
-
-4. Click `Save`.
+<img src="https://chatling-assets.b-cdn.net/language-conditional-flow.png" alt="Language conditional flow" width="700" />

@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/integrations/ai/synthetic-data-kit.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Meta Llama Synthetic Data Kit
 
 > Use Meta Llama's Synthetic Data Kit with LanceDB to generate high-quality synthetic datasets for LLM fine-tuning and training.
@@ -74,8 +78,3 @@ This workflow allows you to go from a collection of documents to a high-quality,
 To get started with the synthetic-data-kit, you can clone the [GitHub Repository](https://github.com/meta-llama/synthetic-data-kit) and install the necessary dependencies.
 
 > **Note:** You will also need access to a Llama model, either running locally or via a hosted API.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

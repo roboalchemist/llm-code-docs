@@ -2,10 +2,7 @@
 
 # Replace Flag
 
-```
-PUT 
-/v1/settings/:settingId
-```
+Copy page
 
 This endpoint replaces the whole value of a Feature Flag or Setting identified by the `settingId` parameter.
 

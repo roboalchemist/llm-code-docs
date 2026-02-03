@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/openai-agents/
+
 # OpenAI Agents
 
 Test multi-turn agentic workflows built with the [@openai/agents](https://github.com/openai/openai-agents-js) SDK. Evaluate agents that use tools, hand off between specialists, and handle multi-step tasks.

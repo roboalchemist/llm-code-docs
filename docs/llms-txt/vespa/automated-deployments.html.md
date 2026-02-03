@@ -207,7 +207,7 @@ Note that one or both of the application revision and platform may be upgraded d
 - Set up a deployment badge - available from the console's deployment view - example: ![vespa-team.vespacloud-docsearch.default overview](https://api-ctl.vespa-cloud.com/badge/v1/vespa-team/vespacloud-docsearch/default)
 - Set up a [global query endpoint](../reference/applications/deployment.html#endpoints-global).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

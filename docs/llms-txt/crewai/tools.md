@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/concepts/tools.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tools
 
 > Understanding and leveraging tools within the CrewAI framework for agent collaboration and task execution.

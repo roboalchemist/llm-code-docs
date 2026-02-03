@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/gettingstarted/how-ultravox-works.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How Ultravox Works
 
 > Understanding the core concepts and architecture of Ultravox Realtime
@@ -144,8 +148,3 @@ No hidden fees. Just straightforward rates that make premium voice AI accessible
 <Info>
   **Still have questions?** Our engineering team hangs out in Discord and typically responds within minutes. See [Getting Help](/gettingstarted/getting-help).
 </Info>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

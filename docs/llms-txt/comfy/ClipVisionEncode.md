@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/built-in-nodes/ClipVisionEncode.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ClipVisionEncode - ComfyUI Built-in Node Documentation
 
 > The ClipVisionEncode node is used to encode input images into visual feature vectors through the CLIP Vision model.

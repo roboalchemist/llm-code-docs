@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/integrations/embedding/imagebind.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ImageBind
 
 export const PyEmbeddingImagebindTextSearch = "query = \"an animal which flies and tweets\"\nactual = table.search(query).limit(1).to_pydantic(ImageBindModel)[0]\nprint(actual.text == \"bird\")\n";
@@ -57,8 +61,3 @@ You can add any input query and fetch the result as follows:
 </CodeGroup>
 
 If you have any questions about the embeddings API, supported models, or see a relevant model missing, please raise an issue [on GitHub](https://github.com/lancedb/lancedb/issues).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

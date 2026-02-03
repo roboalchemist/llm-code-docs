@@ -1,5 +1,9 @@
 # Source: https://docs.argil.ai/resources/layouts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.argil.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Media and avatar layouts (positioning)
 
 > How to use split screen and different avatar positionnings

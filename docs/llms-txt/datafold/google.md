@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/security/single-sign-on/saml/examples/google.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Google
 
 ## Google as a SAML Identity Provider

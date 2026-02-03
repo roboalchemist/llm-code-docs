@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/guides/deepseek-benchmark/
+
 # Deepseek vs GPT vs O3 vs Llama: Run a Custom Benchmark
 
 Deepseek is a new Mixture-of-Experts (MoE) model that's all the rage due to its impressive performance, especially in code tasks. Its MoE architecture has 671B total parameters, though only 37B are activated for each token. This allows for efficient inference while maintaining powerful capabilities.

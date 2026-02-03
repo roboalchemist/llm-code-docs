@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/custom-nodes/js/javascript_hooks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Comfy Hooks
 
 ## Extension hooks
@@ -52,6 +56,10 @@ And play nicely - isolate your changes wherever possible.</Tip>
 
 A very common idiom in `beforeRegisterNodeDef` is to 'hijack' an existing method:
 
+<Note>
+  **Deprecated:** The prototype hijacking pattern shown below is deprecated and subject to change at any point in the near future. For context menus, use the official [Context Menu API](/custom-nodes/js/context-menu-migration) instead. For other use cases, prefer using the official [extension hooks](/custom-nodes/js/javascript_hooks) where available.
+</Note>
+
 ```Javascript  theme={null}
 async beforeRegisterNodeDef(nodeType, nodeData, app) {
 	if (nodeType.comfyClass=="MyNodeClass") { 
@@ -72,6 +80,8 @@ or even make calling it conditional.
 
 When hijacking a method in this way, you will want to look at the core comfy code (breakpoints are your friend) to check
 and conform with the method signature.
+
+<Warning>This approach is fragile and may break with future ComfyUI updates. Use official APIs whenever possible.</Warning>
 
 #### nodeCreated()
 

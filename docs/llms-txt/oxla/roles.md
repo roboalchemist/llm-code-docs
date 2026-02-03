@@ -1,5 +1,9 @@
 # Source: https://docs.oxla.com/security/roles.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.oxla.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Roles
 
 Roles in Oxla can be used to manage access to the following objects:

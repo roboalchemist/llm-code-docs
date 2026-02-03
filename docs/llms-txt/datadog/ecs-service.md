@@ -4,7 +4,6 @@
 title: ECS Service Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > AWS Components > ECS Service Component
-source_url: https://docs.datadoghq.com/components-aws/ecs-service/index.html
 ---
 
 # ECS Service Component

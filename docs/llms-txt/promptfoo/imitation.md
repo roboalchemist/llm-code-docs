@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/imitation/
+
 # Imitation Plugin
 
 The Imitation red teaming plugin is designed to test whether an AI system can be influenced to imitate a specific person, brand, or organization.

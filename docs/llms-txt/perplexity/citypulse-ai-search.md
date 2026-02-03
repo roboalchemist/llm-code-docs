@@ -1,4 +1,8 @@
-# Source: https://docs.perplexity.ai/cookbook/showcase/citypulse-ai-search.md
+# Source: https://docs.perplexity.ai/docs/cookbook/showcase/citypulse-ai-search.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # CityPulse | AI-Powered Geospatial Discovery Search
 
@@ -39,12 +43,12 @@ response = client.chat.completions.create(
 )
 ```
 
-**Sonar Reasoning for Personalized Insights**
+**Sonar Reasoning Pro for Personalized Insights**
 
 ```python  theme={null}
 # Generate AI-powered location recommendations
 response = client.chat.completions.create(
-    model="sonar-reasoning",
+    model="sonar-reasoning-pro",
     messages=[{
         "role": "user",
         "content": f"Provide personalized insights for {location_name}: what to try, best times to visit, pro tips"

@@ -22,210 +22,175 @@
 
 # Source: https://docs.crewai.com/en/learn/overview.md
 
-# Source: https://docs.crewai.com/en/tools/web-scraping/overview.md
-
-# Source: https://docs.crewai.com/en/tools/search-research/overview.md
-
-# Source: https://docs.crewai.com/en/tools/overview.md
-
-# Source: https://docs.crewai.com/en/tools/integration/overview.md
-
-# Source: https://docs.crewai.com/en/tools/file-document/overview.md
-
-# Source: https://docs.crewai.com/en/tools/database-data/overview.md
-
-# Source: https://docs.crewai.com/en/tools/cloud-storage/overview.md
-
-# Source: https://docs.crewai.com/en/tools/automation/overview.md
-
-# Source: https://docs.crewai.com/en/tools/ai-ml/overview.md
-
-# Source: https://docs.crewai.com/en/observability/overview.md
-
-# Source: https://docs.crewai.com/en/mcp/overview.md
-
-# Source: https://docs.crewai.com/en/learn/overview.md
-
-# Source: https://docs.crewai.com/en/tools/web-scraping/overview.md
-
-# Source: https://docs.crewai.com/en/tools/search-research/overview.md
-
-# Source: https://docs.crewai.com/en/tools/overview.md
-
-# Source: https://docs.crewai.com/en/tools/integration/overview.md
-
-# Source: https://docs.crewai.com/en/tools/file-document/overview.md
-
-# Source: https://docs.crewai.com/en/tools/database-data/overview.md
-
-# Source: https://docs.crewai.com/en/tools/cloud-storage/overview.md
-
-# Source: https://docs.crewai.com/en/tools/automation/overview.md
-
-# Source: https://docs.crewai.com/en/tools/ai-ml/overview.md
-
-# Source: https://docs.crewai.com/en/observability/overview.md
-
-# Source: https://docs.crewai.com/en/mcp/overview.md
-
-# Source: https://docs.crewai.com/en/learn/overview.md
-
-# Source: https://docs.crewai.com/en/tools/web-scraping/overview.md
-
-# Source: https://docs.crewai.com/en/tools/search-research/overview.md
-
-# Source: https://docs.crewai.com/en/tools/overview.md
-
-# Source: https://docs.crewai.com/en/tools/integration/overview.md
-
-# Source: https://docs.crewai.com/en/tools/file-document/overview.md
-
-# Source: https://docs.crewai.com/en/tools/database-data/overview.md
-
-# Source: https://docs.crewai.com/en/tools/cloud-storage/overview.md
-
-# Source: https://docs.crewai.com/en/tools/automation/overview.md
-
-# Source: https://docs.crewai.com/en/tools/ai-ml/overview.md
-
-# Source: https://docs.crewai.com/en/observability/overview.md
-
-# Source: https://docs.crewai.com/en/mcp/overview.md
-
-# Source: https://docs.crewai.com/en/learn/overview.md
-
-# Source: https://docs.crewai.com/en/tools/web-scraping/overview.md
-
-# Source: https://docs.crewai.com/en/tools/search-research/overview.md
-
-# Source: https://docs.crewai.com/en/tools/overview.md
-
-# Source: https://docs.crewai.com/en/tools/integration/overview.md
-
-# Source: https://docs.crewai.com/en/tools/file-document/overview.md
-
-# Source: https://docs.crewai.com/en/tools/database-data/overview.md
-
-# Source: https://docs.crewai.com/en/tools/cloud-storage/overview.md
-
-# Source: https://docs.crewai.com/en/tools/automation/overview.md
-
-# Source: https://docs.crewai.com/en/tools/ai-ml/overview.md
-
-# Source: https://docs.crewai.com/en/observability/overview.md
-
-# Source: https://docs.crewai.com/en/mcp/overview.md
-
-# Source: https://docs.crewai.com/en/learn/overview.md
-
-# Source: https://docs.crewai.com/en/tools/web-scraping/overview.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Overview
 
-> Extract data from websites and automate browser interactions with powerful scraping tools
+> Learn how to build, customize, and optimize your CrewAI applications with comprehensive guides and tutorials
 
-These tools enable your agents to interact with the web, extract data from websites, and automate browser-based tasks. From simple web scraping to complex browser automation, these tools cover all your web interaction needs.
+## Learn CrewAI
 
-## **Available Tools**
+This section provides comprehensive guides and tutorials to help you master CrewAI, from basic concepts to advanced techniques. Whether you're just getting started or looking to optimize your existing implementations, these resources will guide you through every aspect of building powerful AI agent workflows.
+
+## Getting Started Guides
+
+### Core Concepts
 
 <CardGroup cols={2}>
-  <Card title="Scrape Website Tool" icon="globe" href="/en/tools/web-scraping/scrapewebsitetool">
-    General-purpose web scraping tool for extracting content from any website.
+  <Card title="Sequential Process" icon="list-ol" href="/en/learn/sequential-process">
+    Learn how to execute tasks in a sequential order for structured workflows.
   </Card>
 
-  <Card title="Scrape Element Tool" icon="crosshairs" href="/en/tools/web-scraping/scrapeelementfromwebsitetool">
-    Target specific elements on web pages with precision scraping capabilities.
+  <Card title="Hierarchical Process" icon="sitemap" href="/en/learn/hierarchical-process">
+    Implement hierarchical task execution with manager agents overseeing workflows.
   </Card>
 
-  <Card title="Firecrawl Crawl Tool" icon="spider" href="/en/tools/web-scraping/firecrawlcrawlwebsitetool">
-    Crawl entire websites systematically with Firecrawl's powerful engine.
+  <Card title="Conditional Tasks" icon="code-branch" href="/en/learn/conditional-tasks">
+    Create dynamic workflows with conditional task execution based on outcomes.
   </Card>
 
-  <Card title="Firecrawl Scrape Tool" icon="fire" href="/en/tools/web-scraping/firecrawlscrapewebsitetool">
-    High-performance web scraping with Firecrawl's advanced capabilities.
-  </Card>
-
-  <Card title="Firecrawl Search Tool" icon="magnifying-glass" href="/en/tools/web-scraping/firecrawlsearchtool">
-    Search and extract specific content using Firecrawl's search features.
-  </Card>
-
-  <Card title="Selenium Scraping Tool" icon="robot" href="/en/tools/web-scraping/seleniumscrapingtool">
-    Browser automation and scraping with Selenium WebDriver capabilities.
-  </Card>
-
-  <Card title="ScrapFly Tool" icon="plane" href="/en/tools/web-scraping/scrapflyscrapetool">
-    Professional web scraping with ScrapFly's premium scraping service.
-  </Card>
-
-  <Card title="ScrapGraph Tool" icon="network-wired" href="/en/tools/web-scraping/scrapegraphscrapetool">
-    Graph-based web scraping for complex data relationships.
-  </Card>
-
-  <Card title="Spider Tool" icon="spider" href="/en/tools/web-scraping/spidertool">
-    Comprehensive web crawling and data extraction capabilities.
-  </Card>
-
-  <Card title="BrowserBase Tool" icon="browser" href="/en/tools/web-scraping/browserbaseloadtool">
-    Cloud-based browser automation with BrowserBase infrastructure.
-  </Card>
-
-  <Card title="HyperBrowser Tool" icon="window-maximize" href="/en/tools/web-scraping/hyperbrowserloadtool">
-    Fast browser interactions with HyperBrowser's optimized engine.
-  </Card>
-
-  <Card title="Stagehand Tool" icon="hand" href="/en/tools/web-scraping/stagehandtool">
-    Intelligent browser automation with natural language commands.
-  </Card>
-
-  <Card title="Oxylabs Scraper Tool" icon="globe" href="/en/tools/web-scraping/oxylabsscraperstool">
-    Access web data at scale with Oxylabs.
-  </Card>
-
-  <Card title="Bright Data Tools" icon="spider" href="/en/tools/web-scraping/brightdata-tools">
-    SERP search, Web Unlocker, and Dataset API integrations.
+  <Card title="Async Kickoff" icon="bolt" href="/en/learn/kickoff-async">
+    Execute crews asynchronously for improved performance and concurrency.
   </Card>
 </CardGroup>
 
-## **Common Use Cases**
+### Agent Development
 
-* **Data Extraction**: Scrape product information, prices, and reviews
-* **Content Monitoring**: Track changes on websites and news sources
-* **Lead Generation**: Extract contact information and business data
-* **Market Research**: Gather competitive intelligence and market data
-* **Testing & QA**: Automate browser testing and validation workflows
-* **Social Media**: Extract posts, comments, and social media analytics
+<CardGroup cols={2}>
+  <Card title="Customizing Agents" icon="user-gear" href="/en/learn/customizing-agents">
+    Learn how to customize agent behavior, roles, and capabilities.
+  </Card>
 
-## **Quick Start Example**
+  <Card title="Coding Agents" icon="code" href="/en/learn/coding-agents">
+    Build agents that can write, execute, and debug code automatically.
+  </Card>
 
-```python  theme={null}
-from crewai_tools import ScrapeWebsiteTool, FirecrawlScrapeWebsiteTool, SeleniumScrapingTool
+  <Card title="Multimodal Agents" icon="images" href="/en/learn/multimodal-agents">
+    Create agents that can process text, images, and other media types.
+  </Card>
 
-# Create scraping tools
-simple_scraper = ScrapeWebsiteTool()
-advanced_scraper = FirecrawlScrapeWebsiteTool()
-browser_automation = SeleniumScrapingTool()
+  <Card title="Custom Manager Agent" icon="user-tie" href="/en/learn/custom-manager-agent">
+    Implement custom manager agents for complex hierarchical workflows.
+  </Card>
+</CardGroup>
 
-# Add to your agent
-agent = Agent(
-    role="Web Research Specialist",
-    tools=[simple_scraper, advanced_scraper, browser_automation],
-    goal="Extract and analyze web data efficiently"
-)
-```
+## Advanced Features
 
-## **Scraping Best Practices**
+### Workflow Control
 
-* **Respect robots.txt**: Always check and follow website scraping policies
-* **Rate Limiting**: Implement delays between requests to avoid overwhelming servers
-* **User Agents**: Use appropriate user agent strings to identify your bot
-* **Legal Compliance**: Ensure your scraping activities comply with terms of service
-* **Error Handling**: Implement robust error handling for network issues and blocked requests
-* **Data Quality**: Validate and clean extracted data before processing
+<CardGroup cols={2}>
+  <Card title="Human in the Loop" icon="user-check" href="/en/learn/human-in-the-loop">
+    Integrate human oversight and intervention into agent workflows.
+  </Card>
 
-## **Tool Selection Guide**
+  <Card title="Human Input on Execution" icon="hand-paper" href="/en/learn/human-input-on-execution">
+    Allow human input during task execution for dynamic decision making.
+  </Card>
 
-* **Simple Tasks**: Use `ScrapeWebsiteTool` for basic content extraction
-* **JavaScript-Heavy Sites**: Use `SeleniumScrapingTool` for dynamic content
-* **Scale & Performance**: Use `FirecrawlScrapeWebsiteTool` for high-volume scraping
-* **Cloud Infrastructure**: Use `BrowserBaseLoadTool` for scalable browser automation
-* **Complex Workflows**: Use `StagehandTool` for intelligent browser interactions
+  <Card title="Replay Tasks" icon="rotate-left" href="/en/learn/replay-tasks-from-latest-crew-kickoff">
+    Replay and resume tasks from previous crew executions.
+  </Card>
+
+  <Card title="Kickoff for Each" icon="repeat" href="/en/learn/kickoff-for-each">
+    Execute crews multiple times with different inputs efficiently.
+  </Card>
+</CardGroup>
+
+### Customization & Integration
+
+<CardGroup cols={2}>
+  <Card title="Custom LLM" icon="brain" href="/en/learn/custom-llm">
+    Integrate custom language models and providers with CrewAI.
+  </Card>
+
+  <Card title="LLM Connections" icon="link" href="/en/learn/llm-connections">
+    Configure and manage connections to various LLM providers.
+  </Card>
+
+  <Card title="Create Custom Tools" icon="wrench" href="/en/learn/create-custom-tools">
+    Build custom tools to extend agent capabilities.
+  </Card>
+
+  <Card title="Using Annotations" icon="at" href="/en/learn/using-annotations">
+    Use Python annotations for cleaner, more maintainable code.
+  </Card>
+</CardGroup>
+
+## Specialized Applications
+
+### Content & Media
+
+<CardGroup cols={2}>
+  <Card title="DALL-E Image Generation" icon="image" href="/en/learn/dalle-image-generation">
+    Generate images using DALL-E integration with your agents.
+  </Card>
+
+  <Card title="Bring Your Own Agent" icon="user-plus" href="/en/learn/bring-your-own-agent">
+    Integrate existing agents and models into CrewAI workflows.
+  </Card>
+</CardGroup>
+
+### Tool Management
+
+<CardGroup cols={2}>
+  <Card title="Force Tool Output as Result" icon="hammer" href="/en/learn/force-tool-output-as-result">
+    Configure tools to return their output directly as task results.
+  </Card>
+</CardGroup>
+
+## Learning Path Recommendations
+
+### For Beginners
+
+1. Start with **Sequential Process** to understand basic workflow execution
+2. Learn **Customizing Agents** to create effective agent configurations
+3. Explore **Create Custom Tools** to extend functionality
+4. Try **Human in the Loop** for interactive workflows
+
+### For Intermediate Users
+
+1. Master **Hierarchical Process** for complex multi-agent systems
+2. Implement **Conditional Tasks** for dynamic workflows
+3. Use **Async Kickoff** for performance optimization
+4. Integrate **Custom LLM** for specialized models
+
+### For Advanced Users
+
+1. Build **Multimodal Agents** for complex media processing
+2. Create **Custom Manager Agents** for sophisticated orchestration
+3. Implement **Bring Your Own Agent** for hybrid systems
+4. Use **Replay Tasks** for robust error recovery
+
+## Best Practices
+
+### Development
+
+* **Start Simple**: Begin with basic sequential workflows before adding complexity
+* **Test Incrementally**: Test each component before integrating into larger systems
+* **Use Annotations**: Leverage Python annotations for cleaner, more maintainable code
+* **Custom Tools**: Build reusable tools that can be shared across different agents
+
+### Production
+
+* **Error Handling**: Implement robust error handling and recovery mechanisms
+* **Performance**: Use async execution and optimize LLM calls for better performance
+* **Monitoring**: Integrate observability tools to track agent performance
+* **Human Oversight**: Include human checkpoints for critical decisions
+
+### Optimization
+
+* **Resource Management**: Monitor and optimize token usage and API costs
+* **Workflow Design**: Design workflows that minimize unnecessary LLM calls
+* **Tool Efficiency**: Create efficient tools that provide maximum value with minimal overhead
+* **Iterative Improvement**: Use feedback and metrics to continuously improve agent performance
+
+## Getting Help
+
+* **Documentation**: Each guide includes detailed examples and explanations
+* **Community**: Join the [CrewAI Forum](https://community.crewai.com) for discussions and support
+* **Examples**: Check the Examples section for complete working implementations
+* **Support**: Contact [support@crewai.com](mailto:support@crewai.com) for technical assistance
+
+Start with the guides that match your current needs and gradually explore more advanced topics as you become comfortable with the fundamentals.

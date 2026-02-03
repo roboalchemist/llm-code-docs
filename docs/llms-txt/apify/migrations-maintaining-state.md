@@ -1,6 +1,6 @@
 # Source: https://docs.apify.com/academy/expert-scraping-with-apify/migrations-maintaining-state.md
 
-# V - Migrations & maintaining state
+# Migrations & maintaining state
 
 **Learn about what Actor migrations are and how to handle them properly so that the state is not lost and runs can safely be resurrected.**
 
@@ -14,14 +14,14 @@ When a migration happens, you want to do a so-called "state transition", which m
 
 ## Learning 🧠
 
-Read this https://docs.apify.com/platform/actors/development/builds-and-runs/state-persistence.md on migrations and dealing with state transitions.
+Read this [article](https://docs.apify.com/platform/actors/development/builds-and-runs/state-persistence.md) on migrations and dealing with state transitions.
 
-Before moving forward, read about Actor https://docs.apify.com/sdk/js/docs/upgrading/upgrading-to-v3#events and how to listen for them.
+Before moving forward, read about Actor [events](https://docs.apify.com/sdk/js/docs/upgrading/upgrading-to-v3#events) and how to listen for them.
 
 ## Knowledge check 📝
 
 1. Actors have an option in the **Settings** tab to **Restart on error**. Would you use this feature for regular Actors? When would you use this feature?
-2. Migrations happen randomly, but by https://docs.apify.com/platform/actors/running/runs-and-builds.md#aborting-runs, you can simulate a similar situation. Try this out on the platform and observe what happens. What changes occur, and what remains the same for the restarted Actor's run?
+2. Migrations happen randomly, but by [aborting gracefully](https://docs.apify.com/platform/actors/running/runs-and-builds.md#aborting-runs), you can simulate a similar situation. Try this out on the platform and observe what happens. What changes occur, and what remains the same for the restarted Actor's run?
 3. Why don't you (usually) need to add any special migration handling code for a standard crawling/scraping Actor? Are there any features in the Crawlee/Apify SDK that handle this under the hood?
 4. How can you intercept the migration event? How much time do you have after this event happens and before the Actor migrates?
 5. When would you persist data to the default key-value store instead of to a named key-value store?
@@ -41,8 +41,8 @@ Once again returning to our Amazon **demo-actor**, let's say that we need to sto
 
 Every 10 seconds, we should log the most up-to-date version of this object to the console. Additionally, the object should be able to solve Actor migrations, which means that even if the Actor were to migrate, its data would not be lost upon resurrection.
 
-https://docs.apify.com/academy/expert-scraping-with-apify/solutions/handling-migrations.md
+[Solution](https://docs.apify.com/academy/expert-scraping-with-apify/solutions/handling-migrations.md)
 
 ## Next up
 
-You might have already noticed that we've been using the **RESIDENTIAL** proxy group in the `proxyConfiguration` within our Amazon scraping Actor. But what does that mean? Learn why we've used this group, about proxies, and about avoiding anti-scraping measures in the https://docs.apify.com/academy/expert-scraping-with-apify/bypassing-anti-scraping.md.
+You might have already noticed that we've been using the **RESIDENTIAL** proxy group in the `proxyConfiguration` within our Amazon scraping Actor. But what does that mean? Learn why we've used this group, about proxies, and about avoiding anti-scraping measures in the [next lesson](https://docs.apify.com/academy/expert-scraping-with-apify/bypassing-anti-scraping.md).

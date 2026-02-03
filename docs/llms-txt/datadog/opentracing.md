@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > APM > Application Instrumentation > Code-Based Custom Instrumentation >
   OpenTracing Instrumentation Setup
-source_url: >-
-  https://docs.datadoghq.com/trace_collection/custom_instrumentation/opentracing/index.html
 ---
 
 # OpenTracing Instrumentation Setup

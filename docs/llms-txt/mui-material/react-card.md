@@ -530,7 +530,7 @@ function SelectActionCard() {
       }}
     >
       {cards.map((card, index) => (
-        <Card>
+        <Card key={card.id}>
           <CardActionArea
             onClick={() => setSelectedCard(index)}
             data-active={selectedCard === index ? '' : undefined}

@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/video/kandinsky/kandinsky-5.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Kandinsky 5.0
 
 > This guide shows how to use Kandinsky 5.0 video generation workflows in ComfyUI
@@ -138,8 +142,3 @@ ComfyUI/
 * [GitHub Repository](https://github.com/ai-forever/Kandinsky-5)
 * [ComfyUI Integration](https://github.com/ai-forever/Kandinsky-5/blob/main/comfyui/README.md)
 * [Project Page](https://ai-forever.github.io/Kandinsky-5/)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.comfy.org/llms.txt

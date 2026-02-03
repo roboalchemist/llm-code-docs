@@ -1,6 +1,14 @@
 # Source: https://docs.turso.tech/guides/agent-databases.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Agent Databases
+
+<Info>
+  Looking for a complete agent state management solution? Check out [AgentFS](/agentfs/introduction) - our specialized SDK designed specifically for AI agents, offering filesystem operations, key-value storage, and automatic tool call tracking in a single database file.
+</Info>
 
 AI agents need databases to store context, track state, and maintain memory across executions. Turso Database offers two powerful approaches:
 

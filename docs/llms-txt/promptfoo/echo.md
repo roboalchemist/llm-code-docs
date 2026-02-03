@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/echo/
+
 # Echo Provider
 
 The Echo Provider is a simple utility provider that returns the input prompt as the output. It's particularly useful for testing, debugging, and validating pre-generated outputs without making any external API calls.

@@ -4,7 +4,7 @@
 
 Integrate with our API to build a custom Capital program.
 
-> Capital for platforms is available in [public preview](https://docs.stripe.com/release-phases.md). [Sign up to join](https://docs.stripe.com/capital/how-capital-for-platforms-works.md#sign-up).
+> Capital for platforms is available in [public preview](https://docs.stripe.com/release-phases.md).
 
 [Stripe Capital](https://docs.stripe.com/capital/how-capital-for-platforms-works.md) enables your platform to retrieve prequalified financing offers for your connected accounts, expose a compliant financing offer application, and provide ongoing reporting for in-progress financing.
 
@@ -83,7 +83,7 @@ curl https://api.stripe.com/v1/capital/financing_offers/financingoffer_abc123 \
 
 Stripe sends the `capital.financing_offer.created` *webhook* (A webhook is a real-time push notification sent to your application as a JSON payload through HTTPS requests) after a financing offer is created. Update your webhook integration to listen for the `capital.financing_offer.created` webhook. If you send your own offer emails, the webhook is an important notification to notify the user of their offer.
 
-> Make sure the contents of your offer email comply with banking regulations by reviewing the [marketing guidance](https://docs.stripe.com/capital/marketing.md) page. Submit all changes to user-facing materials for review at [capital-review@stripe.com](mailto:capital-review@stripe.com).
+> Make sure the contents of your offer email comply with banking regulations by reviewing the [marketing guidance](https://docs.stripe.com/capital/marketing.md) page. Submit all changes to user-facing materials for review and approval using the [Change Request Form](https://form.asana.com/?k=8K51UWmWhttehNFD5qBLdg&d=974470123217835).
 
 In the email, link users to a dedicated Capital section in your platform dashboard. Users access the Capital financing application with [Account Links](https://docs.stripe.com/api/account_links.md). Account Links expire shortly after they’re generated, so provide a way for users to regenerate the application link. Include a link to the financing application in your platform dashboard by generating an Account Link of type `capital_financing_offer`.
 

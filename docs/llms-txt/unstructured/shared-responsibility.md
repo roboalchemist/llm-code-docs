@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/support/shared-responsibility.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Shared Responsibility Model
 
 The Unstructured Shared Responsibility Model defines the division of ownership and duties between

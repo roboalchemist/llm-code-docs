@@ -1,26 +1,30 @@
 # Source: https://docs.baseten.co/examples/tensorrt-llm.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Fast LLMs with TensorRT-LLM
 
 > Optimize LLMs for low latency and high throughput
 
-To get the best performance, we recommend using our [TensorRT-LLM Engine Builder](#) when deploying LLMs. Models deployed with the Engine Builder are [OpenAI compatible](#), support [structured output](#) and [function calling](#), and offer deploy-time post-training quantization to FP8 with Hopper GPUs.
+To get the best performance, we recommend using our [TensorRT-LLM Engine-Builder](/engines/engine-builder-llm/overview) when deploying LLMs. Models deployed with the Engine-Builder are [OpenAI compatible](/inference/calling-your-model), support [structured output](/engines/performance-concepts/structured-outputs) and [function calling](/engines/performance-concepts/function-calling), and offer deploy-time post-training quantization to FP8 with Hopper GPUs and NVFP4 with Blackwell GPUs.
 
-The Engine Builder supports LLMs from the following families, both foundation models and fine-tunes:
+The Engine-Builder supports LLMs from the following families, both foundation models and fine-tunes:
 
 * Llama 3.0 and later (including DeepSeek-R1 distills)
 * Qwen 2.5 and later (including Math, Coder, and DeepSeek-R1 distills)
 * Mistral (all LLMs)
 
-You can download preset Engine Builder configs for common models from the [model library](#).
+You can download preset Engine-Builder configs for common models from the [model library](/examples/models/overview).
 
 <Note>
-  The Engine Builder does not support vision-language models like [Llama 3.2 11B](#) or [Pixtral](#). For these models, we recommend [vLLM](/examples/vllm).
+  The Engine-Builder does not support vision-language models like Llama 3.2 11B or Pixtral. For these models, we recommend [vLLM](/examples/vllm).
 </Note>
 
 ## Example: Deploy Qwen 2.5 3B on an H100
 
-This configuration builds an inference engine to serve [Qwen 2.5 3B](#) on an H100 GPU. Running this model is fast and cheap, making it a good example for documentation, but the process of deploying it is very similar to larger models like [Llama 3.3 70B](#).
+This configuration builds an inference engine to serve [Qwen 2.5 3B](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct) on an H100 GPU. Running this model is fast and cheap, making it a good example for documentation, but the process of deploying it is very similar to larger models like [Llama 3.3 70B](/examples/models/llama/llama-3.3-70B-instruct).
 
 ## Setup
 
@@ -61,7 +65,7 @@ mkdir qwen-2-5-3b-engine
 touch qwen-2-5-3b-engine/config.yaml
 ```
 
-This configuration file specifies model information and Engine Builder arguments. You can find dozens of examples in the [model library](#) as well as details on each config option in the [engine builder reference](#).
+This configuration file specifies model information and Engine-Builder arguments. You can find dozens of examples in the [model library](/examples/models/overview) as well as details on each config option in the [engine builder reference](/engines/engine-builder-llm/engine-builder-config).
 
 Below is an example for Qwen 2.5 3B.
 
@@ -79,7 +83,7 @@ model_metadata:
   repo_id: Qwen/Qwen2.5-3B-Instruct
 model_name: Qwen 2.5 3B Instruct
 python_version: py39
-resources: # Engine Builder GPU cannot be changed post-deployment
+resources: # Engine-Builder GPU cannot be changed post-deployment
   accelerator: H100
   use_gpu: true
 secrets: {}
@@ -143,4 +147,4 @@ for chunk in stream:
         print(chunk.choices[0].delta.content, end="")
 ```
 
-That's it! You have successfully deployed and called an LLM optimized with the TensorRT-LLM Engine Builder. Check the [model library](#) for more examples and the [engine builder reference](#) for details on each config option.
+That's it! You have successfully deployed and called an LLM optimized with the TensorRT-LLM Engine-Builder. Check the [model library](/examples/models/overview) for more examples and the [engine builder reference](/engines/engine-builder-llm/engine-builder-config) for details on each config option.

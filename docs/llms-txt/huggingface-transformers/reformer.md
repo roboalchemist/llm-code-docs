@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/reformer.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/reformer.md
 
 # Reformer
 
@@ -95,12 +95,12 @@ merges (`str` or `list[str]`, *optional*) : Custom merges list. If not provided,
 
 #### transformers.ReformerTokenizer[[transformers.ReformerTokenizer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/reformer/tokenization_reformer.py#L34)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/reformer/tokenization_reformer.py#L31)
 
 Construct a Reformer tokenizer (backed by HuggingFace's tokenizers library). Based on
 [BPE](https://huggingface.co/docs/tokenizers/python/latest/components.html?highlight=bpe#models).
 
-This tokenizer inherits from [TokenizersBackend](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should
+This tokenizer inherits from [TokenizersBackend](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should
 refer to this superclass for more information regarding those methods.
 
 **Parameters:**
@@ -123,11 +123,11 @@ merges (`str` or `list[str]`, *optional*) : Custom merges list. If not provided,
 
 #### transformers.ReformerModel[[transformers.ReformerModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/reformer/modeling_reformer.py#L1916)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/reformer/modeling_reformer.py#L1923)
 
 The bare Reformer Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -135,13 +135,13 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.ReformerModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/reformer/modeling_reformer.py#L1936[{"name": "input_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "num_hashes", "val": ": typing.Optional[int] = None"}, {"name": "past_buckets_states", "val": ": typing.Optional[transformers.models.reformer.modeling_reformer.ReformerDynamicCache] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`) --
+forwardtransformers.ReformerModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/reformer/modeling_reformer.py#L1943[{"name": "input_ids", "val": ": torch.Tensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.Tensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.Tensor | None = None"}, {"name": "num_hashes", "val": ": int | None = None"}, {"name": "past_buckets_states", "val": ": transformers.models.reformer.modeling_reformer.ReformerDynamicCache | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`) --
   Indices of input sequence tokens in the vocabulary. During training the input_ids sequence_length has to be
   a multiple of the relevant model's chunk lengths (lsh's, local's or both). During evaluation, the indices
   are automatically padded to be a multiple of the chunk length.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -163,7 +163,7 @@ forwardtransformers.ReformerModel.forwardhttps://github.com/huggingface/transfor
   The number of hashing rounds that should be performed during bucketing. Setting this argument overwrites
   the default defined in `config.num_hashes`.
 
-  For more information, see `num_hashes` in [ReformerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/reformer#transformers.ReformerConfig).
+  For more information, see `num_hashes` in [ReformerConfig](/docs/transformers/v5.0.0/en/model_doc/reformer#transformers.ReformerConfig).
 - **past_buckets_states** (`ReformerDynamicCache`, *optional*) --
   List of `tuple(torch.LongTensor, torch.FloatTensor` of length `config.n_layers`, with the first element
   being the previous *buckets* of shape `(batch_size, num_heads, num_hashes, sequence_length)`) and the
@@ -181,9 +181,9 @@ forwardtransformers.ReformerModel.forwardhttps://github.com/huggingface/transfor
   Whether or not to return the attentions tensors of all attention layers. See `attentions` under returned
   tensors for more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0`transformers.models.reformer.modeling_reformer.ReformerModelOutput` or `tuple(torch.FloatTensor)`A `transformers.models.reformer.modeling_reformer.ReformerModelOutput` or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0`transformers.models.reformer.modeling_reformer.ReformerModelOutput` or `tuple(torch.FloatTensor)`A `transformers.models.reformer.modeling_reformer.ReformerModelOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([ReformerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/reformer#transformers.ReformerConfig)) and inputs.
+elements depending on the configuration ([ReformerConfig](/docs/transformers/v5.0.0/en/model_doc/reformer#transformers.ReformerConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, num_predict, hidden_size)`) -- Sequence of hidden-states at the last layer of the model.
 
@@ -195,16 +195,16 @@ elements depending on the configuration ([ReformerConfig](/docs/transformers/v5.
 
   Contains precomputed buckets and hidden-states that can be used (see `past_buckets_states` input) to speed
   up sequential decoding.
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [ReformerModel](/docs/transformers/v5.0.0rc1/en/model_doc/reformer#transformers.ReformerModel) forward method, overrides the `__call__` special method.
+The [ReformerModel](/docs/transformers/v5.0.0/en/model_doc/reformer#transformers.ReformerModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -212,7 +212,7 @@ the latter silently ignores them.
 
 **Parameters:**
 
-config ([ReformerModel](/docs/transformers/v5.0.0rc1/en/model_doc/reformer#transformers.ReformerModel)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([ReformerModel](/docs/transformers/v5.0.0/en/model_doc/reformer#transformers.ReformerModel)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
@@ -220,7 +220,7 @@ config ([ReformerModel](/docs/transformers/v5.0.0rc1/en/model_doc/reformer#trans
 
 A `transformers.models.reformer.modeling_reformer.ReformerModelOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([ReformerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/reformer#transformers.ReformerConfig)) and inputs.
+elements depending on the configuration ([ReformerConfig](/docs/transformers/v5.0.0/en/model_doc/reformer#transformers.ReformerConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, num_predict, hidden_size)`) -- Sequence of hidden-states at the last layer of the model.
 
@@ -232,11 +232,11 @@ elements depending on the configuration ([ReformerConfig](/docs/transformers/v5.
 
   Contains precomputed buckets and hidden-states that can be used (see `past_buckets_states` input) to speed
   up sequential decoding.
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
@@ -246,11 +246,11 @@ elements depending on the configuration ([ReformerConfig](/docs/transformers/v5.
 
 #### transformers.ReformerModelWithLMHead[[transformers.ReformerModelWithLMHead]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/reformer/modeling_reformer.py#L2135)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/reformer/modeling_reformer.py#L2142)
 
 Reformer Model with a `language modeling` head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -258,13 +258,13 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.ReformerModelWithLMHead.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/reformer/modeling_reformer.py#L2161[{"name": "input_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "num_hashes", "val": ": typing.Optional[int] = None"}, {"name": "past_buckets_states", "val": ": typing.Optional[list[tuple[torch.Tensor]]] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "labels", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "logits_to_keep", "val": ": typing.Union[int, torch.Tensor] = 0"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`) --
+forwardtransformers.ReformerModelWithLMHead.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/reformer/modeling_reformer.py#L2168[{"name": "input_ids", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.Tensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.Tensor | None = None"}, {"name": "num_hashes", "val": ": int | None = None"}, {"name": "past_buckets_states", "val": ": list[tuple[torch.Tensor]] | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "labels", "val": ": torch.Tensor | None = None"}, {"name": "logits_to_keep", "val": ": int | torch.Tensor = 0"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`) --
   Indices of input sequence tokens in the vocabulary. During training the input_ids sequence_length has to be
   a multiple of the relevant model's chunk lengths (lsh's, local's or both). During evaluation, the indices
   are automatically padded to be a multiple of the chunk length.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **position_ids** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -286,7 +286,7 @@ forwardtransformers.ReformerModelWithLMHead.forwardhttps://github.com/huggingfac
   The number of hashing rounds that should be performed during bucketing. Setting this argument overwrites
   the default defined in `config.num_hashes`.
 
-  For more information, see `num_hashes` in [ReformerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/reformer#transformers.ReformerConfig).
+  For more information, see `num_hashes` in [ReformerConfig](/docs/transformers/v5.0.0/en/model_doc/reformer#transformers.ReformerConfig).
 - **past_buckets_states** (`list[tuple(torch.LongTensor, torch.FloatTensor)]`, *optional*) --
   List of `tuple(torch.LongTensor, torch.FloatTensor` of length `config.n_layers`, with the first element
   being the previous *buckets* of shape `(batch_size, num_heads, num_hashes, sequence_length)`) and the
@@ -304,19 +304,19 @@ forwardtransformers.ReformerModelWithLMHead.forwardhttps://github.com/huggingfac
   Whether or not to return the attentions tensors of all attention layers. See `attentions` under returned
   tensors for more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 - **labels** (`torch.LongTensor` of shape `(batch_size,)`, *optional*) --
   Labels for computing the sequence classification/regression loss. Indices should be in `[-100, 0, ...,
   config.vocab_size - 1]`. All labels set to `-100` are ignored (masked), the loss is only computed for
   labels in `[0, ..., config.vocab_size]`
-- **logits_to_keep** (`Union[int, torch.Tensor]`, defaults to `0`) --
+- **logits_to_keep** (`Union[int, torch.Tensor]`, *optional*, defaults to `0`) --
   If an `int`, compute logits for the last `logits_to_keep` tokens. If `0`, calculate logits for all
   `input_ids` (special case). Only last token logits are needed for generation, and calculating them only for that
   token can save memory, which becomes pretty significant for long sequences or large vocabulary size.
   If a `torch.Tensor`, must be 1D corresponding to the indices to keep in the sequence length dimension.
-  This is useful when using packed tensor format (single dimension for batch and sequence length).0[transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or a tuple of
+  This is useful when using packed tensor format (single dimension for batch and sequence length).0[transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([ReformerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/reformer#transformers.ReformerConfig)) and inputs.
+elements depending on the configuration ([ReformerConfig](/docs/transformers/v5.0.0/en/model_doc/reformer#transformers.ReformerConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
@@ -329,7 +329,7 @@ elements depending on the configuration ([ReformerConfig](/docs/transformers/v5.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [ReformerModelWithLMHead](/docs/transformers/v5.0.0rc1/en/model_doc/reformer#transformers.ReformerModelWithLMHead) forward method, overrides the `__call__` special method.
+The [ReformerModelWithLMHead](/docs/transformers/v5.0.0/en/model_doc/reformer#transformers.ReformerModelWithLMHead) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -352,15 +352,15 @@ Example:
 
 **Parameters:**
 
-config ([ReformerModelWithLMHead](/docs/transformers/v5.0.0rc1/en/model_doc/reformer#transformers.ReformerModelWithLMHead)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([ReformerModelWithLMHead](/docs/transformers/v5.0.0/en/model_doc/reformer#transformers.ReformerModelWithLMHead)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or a tuple of
+A [transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([ReformerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/reformer#transformers.ReformerConfig)) and inputs.
+elements depending on the configuration ([ReformerConfig](/docs/transformers/v5.0.0/en/model_doc/reformer#transformers.ReformerConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
@@ -378,11 +378,11 @@ elements depending on the configuration ([ReformerConfig](/docs/transformers/v5.
 
 #### transformers.ReformerForMaskedLM[[transformers.ReformerForMaskedLM]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/reformer/modeling_reformer.py#L2269)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/reformer/modeling_reformer.py#L2276)
 
 The Reformer Model with a `language modeling` head on top."
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -390,13 +390,13 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.ReformerForMaskedLM.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/reformer/modeling_reformer.py#L2289[{"name": "input_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "num_hashes", "val": ": typing.Optional[int] = None"}, {"name": "labels", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`) --
+forwardtransformers.ReformerForMaskedLM.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/reformer/modeling_reformer.py#L2296[{"name": "input_ids", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.Tensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.Tensor | None = None"}, {"name": "num_hashes", "val": ": int | None = None"}, {"name": "labels", "val": ": torch.Tensor | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`) --
   Indices of input sequence tokens in the vocabulary. During training the input_ids sequence_length has to be
   a multiple of the relevant model's chunk lengths (lsh's, local's or both). During evaluation, the indices
   are automatically padded to be a multiple of the chunk length.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **position_ids** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -418,7 +418,7 @@ forwardtransformers.ReformerForMaskedLM.forwardhttps://github.com/huggingface/tr
   The number of hashing rounds that should be performed during bucketing. Setting this argument overwrites
   the default defined in `config.num_hashes`.
 
-  For more information, see `num_hashes` in [ReformerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/reformer#transformers.ReformerConfig).
+  For more information, see `num_hashes` in [ReformerConfig](/docs/transformers/v5.0.0/en/model_doc/reformer#transformers.ReformerConfig).
 - **labels** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Labels for computing the masked language modeling loss. Indices should be in `[-100, 0, ...,
   config.vocab_size]` (see `input_ids` docstring) Tokens with indices set to `-100` are ignored (masked),
@@ -437,9 +437,9 @@ forwardtransformers.ReformerForMaskedLM.forwardhttps://github.com/huggingface/tr
   Whether or not to return the attentions tensors of all attention layers. See `attentions` under returned
   tensors for more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([ReformerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/reformer#transformers.ReformerConfig)) and inputs.
+elements depending on the configuration ([ReformerConfig](/docs/transformers/v5.0.0/en/model_doc/reformer#transformers.ReformerConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Masked language modeling (MLM) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
@@ -452,7 +452,7 @@ elements depending on the configuration ([ReformerConfig](/docs/transformers/v5.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [ReformerForMaskedLM](/docs/transformers/v5.0.0rc1/en/model_doc/reformer#transformers.ReformerForMaskedLM) forward method, overrides the `__call__` special method.
+The [ReformerForMaskedLM](/docs/transformers/v5.0.0/en/model_doc/reformer#transformers.ReformerForMaskedLM) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -496,15 +496,15 @@ Example:
 
 **Parameters:**
 
-config ([ReformerForMaskedLM](/docs/transformers/v5.0.0rc1/en/model_doc/reformer#transformers.ReformerForMaskedLM)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([ReformerForMaskedLM](/docs/transformers/v5.0.0/en/model_doc/reformer#transformers.ReformerForMaskedLM)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or a tuple of
+A [transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([ReformerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/reformer#transformers.ReformerConfig)) and inputs.
+elements depending on the configuration ([ReformerConfig](/docs/transformers/v5.0.0/en/model_doc/reformer#transformers.ReformerConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Masked language modeling (MLM) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
@@ -522,12 +522,12 @@ elements depending on the configuration ([ReformerConfig](/docs/transformers/v5.
 
 #### transformers.ReformerForSequenceClassification[[transformers.ReformerForSequenceClassification]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/reformer/modeling_reformer.py#L2407)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/reformer/modeling_reformer.py#L2414)
 
 Reformer Model transformer with a sequence classification/regression head on top (a linear layer on top of the
 pooled output) e.g. for GLUE tasks.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -535,13 +535,13 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.ReformerForSequenceClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/reformer/modeling_reformer.py#L2421[{"name": "input_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "num_hashes", "val": ": typing.Optional[int] = None"}, {"name": "labels", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`) --
+forwardtransformers.ReformerForSequenceClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/reformer/modeling_reformer.py#L2428[{"name": "input_ids", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.Tensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.Tensor | None = None"}, {"name": "num_hashes", "val": ": int | None = None"}, {"name": "labels", "val": ": torch.Tensor | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`) --
   Indices of input sequence tokens in the vocabulary. During training the input_ids sequence_length has to be
   a multiple of the relevant model's chunk lengths (lsh's, local's or both). During evaluation, the indices
   are automatically padded to be a multiple of the chunk length.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **position_ids** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -563,7 +563,7 @@ forwardtransformers.ReformerForSequenceClassification.forwardhttps://github.com/
   The number of hashing rounds that should be performed during bucketing. Setting this argument overwrites
   the default defined in `config.num_hashes`.
 
-  For more information, see `num_hashes` in [ReformerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/reformer#transformers.ReformerConfig).
+  For more information, see `num_hashes` in [ReformerConfig](/docs/transformers/v5.0.0/en/model_doc/reformer#transformers.ReformerConfig).
 - **labels** (`torch.LongTensor` of shape `(batch_size,)`, *optional*) --
   Labels for computing the sequence classification/regression loss. Indices should be in `[0, ...,
   config.num_labels - 1]`. If `config.num_labels == 1` a regression loss is computed (Mean-Square loss), If
@@ -575,9 +575,9 @@ forwardtransformers.ReformerForSequenceClassification.forwardhttps://github.com/
   Whether or not to return the attentions tensors of all attention layers. See `attentions` under returned
   tensors for more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([ReformerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/reformer#transformers.ReformerConfig)) and inputs.
+elements depending on the configuration ([ReformerConfig](/docs/transformers/v5.0.0/en/model_doc/reformer#transformers.ReformerConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).
@@ -590,7 +590,7 @@ elements depending on the configuration ([ReformerConfig](/docs/transformers/v5.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [ReformerForSequenceClassification](/docs/transformers/v5.0.0rc1/en/model_doc/reformer#transformers.ReformerForSequenceClassification) forward method, overrides the `__call__` special method.
+The [ReformerForSequenceClassification](/docs/transformers/v5.0.0/en/model_doc/reformer#transformers.ReformerForSequenceClassification) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -627,15 +627,15 @@ Example of single-label classification:
 
 **Parameters:**
 
-config ([ReformerForSequenceClassification](/docs/transformers/v5.0.0rc1/en/model_doc/reformer#transformers.ReformerForSequenceClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([ReformerForSequenceClassification](/docs/transformers/v5.0.0/en/model_doc/reformer#transformers.ReformerForSequenceClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
+A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([ReformerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/reformer#transformers.ReformerConfig)) and inputs.
+elements depending on the configuration ([ReformerConfig](/docs/transformers/v5.0.0/en/model_doc/reformer#transformers.ReformerConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).
@@ -653,12 +653,12 @@ elements depending on the configuration ([ReformerConfig](/docs/transformers/v5.
 
 #### transformers.ReformerForQuestionAnswering[[transformers.ReformerForQuestionAnswering]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/reformer/modeling_reformer.py#L2558)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/reformer/modeling_reformer.py#L2565)
 
 The Reformer transformer with a span classification head on top for extractive question-answering tasks like
 SQuAD (a linear layer on top of the hidden-states output to compute `span start logits` and `span end logits`).
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -666,13 +666,13 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.ReformerForQuestionAnswering.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/reformer/modeling_reformer.py#L2570[{"name": "input_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "num_hashes", "val": ": typing.Optional[int] = None"}, {"name": "start_positions", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "end_positions", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`) --
+forwardtransformers.ReformerForQuestionAnswering.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/reformer/modeling_reformer.py#L2577[{"name": "input_ids", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.Tensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.Tensor | None = None"}, {"name": "num_hashes", "val": ": int | None = None"}, {"name": "start_positions", "val": ": torch.Tensor | None = None"}, {"name": "end_positions", "val": ": torch.Tensor | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`) --
   Indices of input sequence tokens in the vocabulary. During training the input_ids sequence_length has to be
   a multiple of the relevant model's chunk lengths (lsh's, local's or both). During evaluation, the indices
   are automatically padded to be a multiple of the chunk length.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **position_ids** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -694,7 +694,7 @@ forwardtransformers.ReformerForQuestionAnswering.forwardhttps://github.com/huggi
   The number of hashing rounds that should be performed during bucketing. Setting this argument overwrites
   the default defined in `config.num_hashes`.
 
-  For more information, see `num_hashes` in [ReformerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/reformer#transformers.ReformerConfig).
+  For more information, see `num_hashes` in [ReformerConfig](/docs/transformers/v5.0.0/en/model_doc/reformer#transformers.ReformerConfig).
 - **start_positions** (`torch.Tensor` of shape `(batch_size,)`, *optional*) --
   Labels for position (index) of the start of the labelled span for computing the token classification loss.
   Positions are clamped to the length of the sequence (`sequence_length`). Position outside of the sequence
@@ -710,9 +710,9 @@ forwardtransformers.ReformerForQuestionAnswering.forwardhttps://github.com/huggi
   Whether or not to return the attentions tensors of all attention layers. See `attentions` under returned
   tensors for more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([ReformerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/reformer#transformers.ReformerConfig)) and inputs.
+elements depending on the configuration ([ReformerConfig](/docs/transformers/v5.0.0/en/model_doc/reformer#transformers.ReformerConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Total span extraction loss is the sum of a Cross-Entropy for the start and end positions.
 - **start_logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`) -- Span-start scores (before SoftMax).
@@ -726,7 +726,7 @@ elements depending on the configuration ([ReformerConfig](/docs/transformers/v5.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [ReformerForQuestionAnswering](/docs/transformers/v5.0.0rc1/en/model_doc/reformer#transformers.ReformerForQuestionAnswering) forward method, overrides the `__call__` special method.
+The [ReformerForQuestionAnswering](/docs/transformers/v5.0.0/en/model_doc/reformer#transformers.ReformerForQuestionAnswering) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -766,15 +766,15 @@ Example:
 
 **Parameters:**
 
-config ([ReformerForQuestionAnswering](/docs/transformers/v5.0.0rc1/en/model_doc/reformer#transformers.ReformerForQuestionAnswering)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([ReformerForQuestionAnswering](/docs/transformers/v5.0.0/en/model_doc/reformer#transformers.ReformerForQuestionAnswering)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or a tuple of
+A [transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([ReformerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/reformer#transformers.ReformerConfig)) and inputs.
+elements depending on the configuration ([ReformerConfig](/docs/transformers/v5.0.0/en/model_doc/reformer#transformers.ReformerConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Total span extraction loss is the sum of a Cross-Entropy for the start and end positions.
 - **start_logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`) -- Span-start scores (before SoftMax).

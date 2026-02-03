@@ -1,5 +1,9 @@
 # Source: https://docs.pinata.cloud/gateways/gateway-access-controls.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Gateway Access Controls
 
 Pinata's Dedicated Gateways make it possible to fetch and serve IPFS content quickly and reliably, however there can be security risks in exposing an open gateway to the world. That's why Pinata has created Gateway Access Controls. These controls will allow you to further limit your gateway, making sure only your platform is using it. This is accomplished with **Gateway Keys, IP Address Restrictions,** and **Host Origin Restrictions.**

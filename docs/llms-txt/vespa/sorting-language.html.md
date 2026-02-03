@@ -161,7 +161,7 @@ Sort in ascending order yearofbirth groups, and sort by relevancy within each gr
 +yearofbirth -[relevance]
 ```
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

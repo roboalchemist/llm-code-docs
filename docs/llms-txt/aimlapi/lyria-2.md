@@ -71,7 +71,7 @@ This endpoint creates and sends a music generation task to the server — and re
 >
 
 ```json
-{"openapi":"3.0.0","info":{"title":"AI/ML Gateway","version":"1.0"},"servers":[{"url":"https://api.aimlapi.com"}],"security":[{"access-token":[]}],"components":{"securitySchemes":{"access-token":{"scheme":"bearer","bearerFormat":"<YOUR_AIMLAPI_KEY>","type":"http","description":"Bearer key"}},"schemas":{"Audio.v2.SubmitAudioResponseDTO":{"type":"object","properties":{"id":{"type":"string"},"status":{"type":"string","enum":["queued","completed","generating","error"]}},"required":["id","status"]}}},"paths":{"/v2/generate/audio":{"post":{"operationId":"AudioModelsControllerV2_createGeneration_v2","parameters":[],"requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"model":{"enum":["google/lyria2"]},"prompt":{"type":"string","description":"The prompt to generate audio."},"negative_prompt":{"type":"string","description":"A description of what to exclude from the generated audio"},"seed":{"type":"integer","minimum":0,"description":"A seed for deterministic generation. If provided, the model will attempt to produce the same audio given the same prompt and other parameters."}},"required":["model","prompt"]}}}},"responses":{"default":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Audio.v2.SubmitAudioResponseDTO"}}}}},"tags":["Audio Generation"]}}}}
+{"openapi":"3.0.0","info":{"title":"AIML API","version":"1.0.0"},"servers":[{"url":"https://api.aimlapi.com"}],"paths":{"/v2/generate/audio":{"post":{"operationId":"_v2_generate_audio","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"model":{"type":"string","enum":["google/lyria2"]},"prompt":{"type":"string","description":"Lyrics with optional formatting. You can use a newline to separate each line of lyrics. You can use two newlines to add a pause between lines. You can use double hash marks (##) at the beginning and end of the lyrics to add accompaniment. Maximum 600 characters."},"negative_prompt":{"type":"string","description":"A description of what to exclude from the generated audio"},"seed":{"type":"integer","minimum":0,"description":"A seed for deterministic generation. If provided, the model will attempt to produce the same audio given the same prompt and other parameters."}},"required":["model","prompt"],"title":"google/lyria2"}}}},"responses":{"200":{"content":{"application/json":{"schema":{"type":"object","properties":{"id":{"type":"string","description":"The ID of the generated audio."},"status":{"type":"string","enum":["queued","generating","completed","error"],"description":"The current status of the generation task."},"audio_file":{"type":"object","nullable":true,"properties":{"url":{"type":"string","format":"uri","description":"The URL where the file can be downloaded from."}},"required":["url"]},"error":{"type":"object","nullable":true,"properties":{"name":{"type":"string"},"message":{"type":"string"}},"required":["name","message"],"description":"Description of the error, if any."},"meta":{"type":"object","nullable":true,"properties":{"usage":{"type":"object","nullable":true,"properties":{"credits_used":{"type":"number","description":"The number of tokens consumed during generation."}},"required":["credits_used"]}},"description":"Additional details about the generation."}},"required":["id","status"]}}}}}}}}}
 ```
 
 ### Retrieve the generated music sample from the server <a href="#retrieve-the-generated-video-from-the-server" id="retrieve-the-generated-video-from-the-server"></a>
@@ -83,7 +83,7 @@ After sending a request for music generation, this task is added to the queue. B
 >
 
 ```json
-{"openapi":"3.0.0","info":{"title":"AI/ML Gateway","version":"1.0"},"servers":[{"url":"https://api.aimlapi.com"}],"security":[{"access-token":[]}],"components":{"securitySchemes":{"access-token":{"scheme":"bearer","bearerFormat":"<YOUR_AIMLAPI_KEY>","type":"http","description":"Bearer key"}},"schemas":{"Audio.v2.PollAudioResponseDTO":{"type":"object","properties":{"audio_file":{"type":"object","properties":{"url":{"type":"string","format":"uri"}},"required":["url"]},"id":{"type":"string"},"status":{"type":"string","enum":["queued","completed","generating","error"]},"error":{"nullable":true}},"required":["id","status"]}}},"paths":{"/v2/generate/audio":{"get":{"operationId":"AudioModelsControllerV2_fetchGeneration_v2","parameters":[{"name":"generation_id","required":true,"in":"query","schema":{"type":"string"}}],"responses":{"default":{"description":"","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Audio.v2.PollAudioResponseDTO"}}}}},"tags":["Audio Generation"]}}}}
+{"openapi":"3.0.0","info":{"title":"AIML API","version":"1.0.0"},"servers":[{"url":"https://api.aimlapi.com"}],"security":[{"access-token":[]}],"components":{"securitySchemes":{"access-token":{"scheme":"bearer","bearerFormat":"<YOUR_AIMLAPI_KEY>","type":"http","description":"Bearer key","in":"header"}}},"paths":{"/v2/generate/audio":{"get":{"operationId":"_v2_generate_audio","parameters":[{"name":"generation_id","required":true,"in":"query","schema":{"type":"string"}}],"responses":{"200":{"content":{"application/json":{"schema":{"type":"object","properties":{"id":{"type":"string","description":"The ID of the generated audio."},"status":{"type":"string","enum":["queued","generating","completed","error"],"description":"The current status of the generation task."},"audio_file":{"type":"object","nullable":true,"properties":{"url":{"type":"string","format":"uri","description":"The URL where the file can be downloaded from."}},"required":["url"]},"error":{"type":"object","nullable":true,"properties":{"name":{"type":"string"},"message":{"type":"string"}},"required":["name","message"],"description":"Description of the error, if any."},"meta":{"type":"object","nullable":true,"properties":{"usage":{"type":"object","nullable":true,"properties":{"credits_used":{"type":"number","description":"The number of tokens consumed during generation."}},"required":["credits_used"]}},"description":"Additional details about the generation."}},"required":["id","status"]}}}}}}}}}
 ```
 
 ## Quick Code Example
@@ -133,7 +133,7 @@ Still waiting... Checking again in 10 seconds.
 {% code overflow="wrap" %}
 
 ```javascript
-Generation complete:/n {'id': 'ac94b938-a53a-483a-bef3-2bea9dd12bb8:lyria2', 'status': 'completed', 'audio_file': {'url': 'https://cdn.aimlapi.com/eagle/files/lion/5N4F_QWb5K8rDSHfpUN0S_output.wav', 'content_type': 'audio/wav', 'file_name': 'output.wav', 'file_size': 6291544}}
+Generation complete:\n {'id': 'ac94b938-a53a-483a-bef3-2bea9dd12bb8:lyria2', 'status': 'completed', 'audio_file': {'url': 'https://cdn.aimlapi.com/eagle/files/lion/5N4F_QWb5K8rDSHfpUN0S_output.wav', 'content_type': 'audio/wav', 'file_name': 'output.wav', 'file_size': 6291544}}
 ```
 
 {% endcode %}
@@ -207,11 +207,11 @@ def main():
                 break
         
             status = response_data.get("status")
-            if status == "generating" or status == "queued" or status == "waiting":
-                print("Still waiting... Checking again in 10 seconds.")
+            if status in ["queued", "generating"]:
+                print(f"Status: {status}. Checking again in 10 seconds.")
                 time.sleep(10)
             else:
-                print("Generation complete:/n", response_data)
+                print("Generation complete:\n", response_data)
                 return response_data
    
         print("Timeout reached. Stopping.")
@@ -307,8 +307,8 @@ async function main() {
     }
 
     const status = result.status;
-    if (['generating', 'queued', 'waiting'].includes(status)) {
-      console.log('Still waiting... Checking again in 10 seconds.');
+    if (['generating', 'queued'].includes(status)) {
+      console.log(`Status: ${status}. Checking again in 10 seconds.`);
     } else {
       console.log('Generation complete:\n', result);
       clearInterval(intervalId);
@@ -334,7 +334,7 @@ Generation: {'id': 'ac94b938-a53a-483a-bef3-2bea9dd12bb8:lyria2', 'status': 'que
 Still waiting... Checking again in 10 seconds.
 Still waiting... Checking again in 10 seconds.
 Still waiting... Checking again in 10 seconds.
-Generation complete:/n {'id': 'ac94b938-a53a-483a-bef3-2bea9dd12bb8:lyria2', 'status': 'completed', 'audio_file': {'url': 'https://cdn.aimlapi.com/eagle/files/lion/5N4F_QWb5K8rDSHfpUN0S_output.wav', 'content_type': 'audio/wav', 'file_name': 'output.wav', 'file_size': 6291544}}
+Generation complete:\n {'id': 'ac94b938-a53a-483a-bef3-2bea9dd12bb8:lyria2', 'status': 'completed', 'audio_file': {'url': 'https://cdn.aimlapi.com/eagle/files/lion/5N4F_QWb5K8rDSHfpUN0S_output.wav', 'content_type': 'audio/wav', 'file_name': 'output.wav', 'file_size': 6291544}}
 ```
 
 {% endcode %}

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/llm-supply-chain/
+
 # LLM Supply Chain Security
 
 Secure your LLM supply chain with static model scanning and dynamic behavioral testing to detect trojans, backdoors, model drift, and safety regressions.

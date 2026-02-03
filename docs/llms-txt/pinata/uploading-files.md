@@ -1,5 +1,9 @@
 # Source: https://docs.pinata.cloud/files/uploading-files.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Uploading Files
 
 <img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/QmaHVPUAt5iqhCGHgMcbyRh4dkcoFNod8B38ZUaZ3urxRU?img-format=webp" />

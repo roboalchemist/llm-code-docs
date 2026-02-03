@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/reference/add-report-columns.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add Column to Evaluation Pipeline
 
 > Adds a new evaluation step (column) to an existing evaluation pipeline. Columns execute sequentially from left to right and can reference data from previous columns.
@@ -281,7 +285,3 @@ paths:
                     example: Report not found
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

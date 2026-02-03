@@ -1,12 +1,18 @@
 # Source: https://bun.com/docs/guides/install/trusted.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add a trusted dependency
 
 Unlike other npm clients, Bun does not execute arbitrary lifecycle scripts for installed dependencies, such as `postinstall` and `node-gyp` builds. These scripts represent a potential security risk, as they can execute arbitrary code on your machine.
 
 <Note>
   Bun includes a default allowlist of popular packages containing `postinstall` scripts that are known to be safe. You
-  can see this list [here](https://github.com/oven-sh/bun/blob/main/src/install/default-trusted-dependencies.txt).
+  can see this list [here](https://github.com/oven-sh/bun/blob/main/src/install/default-trusted-dependencies.txt). This
+  default list only applies to packages installed from npm. For packages from other sources (such as `file:`, `link:`,
+  `git:`, or `github:` dependencies), you must explicitly add them to `trustedDependencies`.
 </Note>
 
 ***
@@ -45,4 +51,4 @@ bun install
 
 ***
 
-See [Docs > Package manager > Trusted dependencies](https://bun.com/docs/install/lifecycle) for complete documentation of trusted dependencies.
+See [Docs > Package manager > Trusted dependencies](/pm/lifecycle) for complete documentation of trusted dependencies.

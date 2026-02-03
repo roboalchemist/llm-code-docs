@@ -1,68 +1,74 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/security/read-firewall-actions-by-project.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Read Firewall Actions by Project
 
 > Retrieve firewall actions for a project
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v1/security/firewall/events
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v1/security/firewall/events
-  method: get
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security: []
-    parameters:
-      path: {}
-      query:
-        projectId:
+  /v1/security/firewall/events:
+    get:
+      tags:
+        - security
+      summary: Read Firewall Actions by Project
+      description: Retrieve firewall actions for a project
+      parameters:
+        - name: projectId
+          in: query
+          required: true
           schema:
-            - type: string
-              required: true
-        startTimestamp:
+            type: string
+        - name: startTimestamp
+          in: query
+          required: false
           schema:
-            - type: number
-              required: false
-        endTimestamp:
+            type: number
+        - name: endTimestamp
+          in: query
+          required: false
           schema:
-            - type: number
-              required: false
-        hosts:
+            type: number
+        - name: hosts
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: get_/v1/security/firewall/events
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel();
-
-          async function run() {
-            const result = await vercel.security.getV1SecurityFirewallEvents({
-              projectId: "<id>",
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              actions:
-                allOf:
-                  - items:
+            type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                properties:
+                  actions:
+                    items:
                       properties:
                         startTime:
                           type: string
@@ -70,6 +76,9 @@ paths:
                           type: string
                         isActive:
                           type: boolean
+                          enum:
+                            - false
+                            - true
                         action_type:
                           type: string
                         host:
@@ -79,55 +88,28 @@ paths:
                         count:
                           type: number
                       required:
-                        - startTime
-                        - endTime
-                        - isActive
                         - action_type
-                        - host
-                        - public_ip
                         - count
+                        - endTime
+                        - host
+                        - isActive
+                        - public_ip
+                        - startTime
                       type: object
                     type: array
-            requiredProperties:
-              - actions
-        examples:
-          example:
-            value:
-              actions:
-                - startTime: <string>
-                  endTime: <string>
-                  isActive: true
-                  action_type: <string>
-                  host: <string>
-                  public_ip: <string>
-                  count: 123
-        description: ''
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: One of the provided values in the request query is invalid.
-        examples: {}
-        description: One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-    '404': {}
-    '500': {}
-  deprecated: false
-  type: path
-components:
-  schemas: {}
+                required:
+                  - actions
+                type: object
+        '400':
+          description: One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+        '404':
+          description: ''
+        '500':
+          description: ''
+      security: []
 
 ````

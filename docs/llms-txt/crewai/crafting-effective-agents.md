@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/guides/agents/crafting-effective-agents.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Crafting Effective Agents
 
 > Learn best practices for designing powerful, specialized AI agents that collaborate effectively to solve complex problems.

@@ -9,7 +9,7 @@ https://api.apify.com/v2/users/:userId
 ```
 
 
-Returns public information about a specific user account, similar to what can be seen on public profile pages (e.g. https://apify.com/apify).
+Returns public information about a specific user account, similar to what can be seen on public profile pages (e.g. [https://apify.com/apify](https://apify.com/apify)).
 
 This operation requires no authentication token.
 
@@ -18,6 +18,10 @@ This operation requires no authentication token.
 ## Responses
 
 * 200
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

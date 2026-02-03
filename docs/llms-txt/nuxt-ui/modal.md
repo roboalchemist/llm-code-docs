@@ -70,11 +70,8 @@ You can pass any property from the [Button](/docs/components/button) component t
 </template>
 ```
 
-<tip>
-
-The close button is not displayed if the `#content` slot is used as it's a part of the header.
-
-</tip>
+> [!TIP]
+> The close button is not displayed if the `#content` slot is used as it's a part of the header.
 
 ### Close Icon
 
@@ -91,23 +88,15 @@ Use the `close-icon` prop to customize the close button [Icon](/docs/components/
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.close` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.close` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.close` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.close` key.
 
 ### Transition
 
@@ -143,11 +132,8 @@ Use the `overlay` prop to control whether the Modal has an overlay or not. Defau
 
 Use the `modal` prop to control whether the Modal blocks interaction with outside content. Defaults to `true`.
 
-<note>
-
-When `modal` is set to `false`, the overlay is automatically disabled and outside content becomes interactive.
-
-</note>
+> [!NOTE]
+> When `modal` is set to `false`, the overlay is automatically disabled and outside content becomes interactive.
 
 ```vue
 <template>
@@ -164,17 +150,11 @@ When `modal` is set to `false`, the overlay is automatically disabled and outsid
 
 Use the `dismissible` prop to control whether the Modal is dismissible when clicking outside of it or pressing escape. Defaults to `true`.
 
-<note>
+> [!NOTE]
+> A `close:prevent` event will be emitted when the user tries to close it.
 
-A `close:prevent` event will be emitted when the user tries to close it.
-
-</note>
-
-<tip>
-
-You can combine `modal: false` with `dismissible: false` to make the Modal's background interactive without closing it.
-
-</tip>
+> [!TIP]
+> You can combine `modal: false` with `dismissible: false` to make the Modal's background interactive without closing it.
 
 ```vue
 <template>
@@ -187,15 +167,12 @@ You can combine `modal: false` with `dismissible: false` to make the Modal's bac
 </template>
 ```
 
-### Scrollable <badge label="Soon"></badge>
+### Scrollable `4.2+`
 
 Use the `scrollable` prop to make the Modal's content scrollable within the overlay.
 
-<warning>
-
-As the overlay is needed for scrolling, `modal: false` is not compatible and `overlay: false` only removes the background.
-
-</warning>
+> [!WARNING]
+> As the overlay is needed for scrolling, `modal: false` is not compatible and `overlay: false` only removes the background.
 
 ```vue
 <template>
@@ -208,11 +185,8 @@ As the overlay is needed for scrolling, `modal: false` is not compatible and `ov
 </template>
 ```
 
-<caution>
-
-There's a [known issue](https://reka-ui.com/docs/components/dialog#scrollable-overlay) where clicking on the scrollbar may unintentionally close the dialog on some operating systems.
-
-</caution>
+> [!CAUTION]
+> There's a [known issue](https://reka-ui.com/docs/components/dialog#scrollable-overlay) where clicking on the scrollbar may unintentionally close the dialog on some operating systems.
 
 ### Fullscreen
 
@@ -255,33 +229,18 @@ defineShortcuts({
 </template>
 ```
 
-<note>
+> [!NOTE]
+> In this example, leveraging [`defineShortcuts`](/docs/composables/define-shortcuts), you can toggle the Modal by pressing .
 
-In this example, leveraging [`defineShortcuts`](/docs/composables/define-shortcuts), you can toggle the Modal by pressing <kbd value="O">
-
-
-
-</kbd>
-
-.
-
-</note>
-
-<tip>
-
-This allows you to move the trigger outside of the Modal or remove it entirely.
-
-</tip>
+> [!TIP]
+> This allows you to move the trigger outside of the Modal or remove it entirely.
 
 ### Programmatic usage
 
 You can use the [`useOverlay`](/docs/composables/use-overlay) composable to open a Modal programmatically.
 
-<warning>
-
-Make sure to wrap your app with the [`App`](/docs/components/app) component which uses the [`OverlayProvider`](https://github.com/nuxt/ui/blob/v4/src/runtime/components/OverlayProvider.vue) component.
-
-</warning>
+> [!WARNING]
+> Make sure to wrap your app with the [`App`](/docs/components/app) component which uses the [`OverlayProvider`](https://github.com/nuxt/ui/blob/v4/src/runtime/components/OverlayProvider.vue) component.
 
 First, create a modal component that will be opened programmatically:
 
@@ -306,11 +265,8 @@ const emit = defineEmits<{ close: [boolean] }>()
 </template>
 ```
 
-<note>
-
-We are emitting a `close` event when the modal is closed or dismissed here. You can emit any data through the `close` event, however, the event must be emitted in order to capture the return value.
-
-</note>
+> [!NOTE]
+> We are emitting a `close` event when the modal is closed or dismissed here. You can emit any data through the `close` event, however, the event must be emitted in order to capture the return value.
 
 Then, use it in your app:
 
@@ -361,11 +317,8 @@ async function open() {
 </template>
 ```
 
-<tip>
-
-You can close the modal within the modal component by emitting `emit('close')`.
-
-</tip>
+> [!TIP]
+> You can close the modal within the modal component by emitting `emit('close')`.
 
 ### Nested modals
 
@@ -511,11 +464,11 @@ interface ModalProps {
    * `{ size: 'md', color: 'neutral', variant: 'ghost' }`{lang="ts-type"}
    * @default "true"
    */
-  close?: boolean | Partial<ButtonProps> | undefined;
+  close?: boolean | Omit<ButtonProps, LinkPropsKeys> | undefined;
   /**
    * The icon displayed in the close button.
    */
-  closeIcon?: string | object | undefined;
+  closeIcon?: any;
   /**
    * When `false`, the modal will not close when clicking outside or pressing escape.
    * @default "true"
@@ -643,8 +596,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

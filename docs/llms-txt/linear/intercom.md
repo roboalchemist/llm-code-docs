@@ -32,9 +32,25 @@ Issues created through the integration will be sent to the Linear team's Triage 
 > [!NOTE]
 > Get more out of the Intercom integration by enabling the [Triage](https://linear.app/docs/triage) feature for your teams. Any issues created from Intercom will go to Triage when enabled (otherwise, the issues will be added to the first backlog status in your team).
 
+### Create with Linear Agent
+
+In addition to creating issues manually from an Intercom conversation, you can now use the _Create with Linear Agent_ option to automatically create Linear issues using AI.
+
+When selected, Linear analyzes the entire conversation, including customer messages, support replies, metadata, and any attachments, and identifies the underlying product request or bug. The Linear Agent generates an informed title and description while pulling in the relevant context from your conversation with the customer. 
+
+![Create Linear issues automatically with the Linear Agent](https://webassets.linear.app/images/ornj730p/production/6690f2e2a1414f007321531ab0a8f1213a6aae70-696x760.png?q=95&auto=format&dpr=2)
+
+A customer request is created when applicable, and the issue is routed to the desired team for review and prioritization.
+
+To use the Linear Agent in Intercom, make sure the Intercom integration is installed and connected, then enable the feature in _Settings_ > _Integrations_ > _Intercom_. 
+
+Once enabled, you can optionally provide guidance that helps the agent choose the right team or template when creating issues. These instructions can include examples, routing hints, or references to internal documentation. The agent will follow this guidance when creating issues, ensuring they land in the appropriate place within your workflow.
+
+![Linear Agent guidance to route new issues created through Intercom](https://webassets.linear.app/images/ornj730p/production/b11dd176e244aba10997374331bb0afa8c2c5c38-1524x1428.png?q=95&auto=format&dpr=2)
+
 ### Use templates
 
-Linear admins can designate up to 5 [templates](https://linear.app/docs/issue-templates) to be available for quick use from within the Linear integration in Intercom. Selecting any of these templates will pre-fill issue property fields appropriately, helping to speed up issue creation and maintain a high level of data hygiene in your issues.
+Linear admins can designate up to 10 [templates](https://linear.app/docs/issue-templates) to be available for quick use from within the Linear integration in Intercom. Selecting any of these templates will pre-fill issue property fields appropriately, helping to speed up issue creation and maintain a high level of data hygiene in your issues.
 
 ## Search and link issues
 

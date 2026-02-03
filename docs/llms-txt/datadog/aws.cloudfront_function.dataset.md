@@ -4,8 +4,6 @@
 title: CloudFront Function
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > CloudFront Function
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.cloudfront_function.dataset/index.html
 ---
 
 # CloudFront Function
@@ -18,13 +16,13 @@ aws.cloudfront_function
 
 ## Fields
 
-| Title             | ID   | Type   | Data Type                                                       | Description |
-| ----------------- | ---- | ------ | --------------------------------------------------------------- | ----------- |
-| _key              | core | string |
-| account_id        | core | string |
-| function_arn      | core | string |
-| function_config   | core | json   | Contains configuration information about a CloudFront function. |
-| function_metadata | core | json   | Contains metadata about a CloudFront function.                  |
-| name              | core | string | The name of the CloudFront function.                            |
-| status            | core | string | The status of the CloudFront function.                          |
-| tags              | core | hstore |
+| Title             | ID   | Type       | Data Type                                                       | Description |
+| ----------------- | ---- | ---------- | --------------------------------------------------------------- | ----------- |
+| _key              | core | string     |
+| account_id        | core | string     |
+| function_arn      | core | string     |
+| function_config   | core | json       | Contains configuration information about a CloudFront function. |
+| function_metadata | core | json       | Contains metadata about a CloudFront function.                  |
+| name              | core | string     | The name of the CloudFront function.                            |
+| status            | core | string     | The status of the CloudFront function.                          |
+| tags              | core | hstore_csv |

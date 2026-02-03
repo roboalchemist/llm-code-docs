@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/test/skip-tests.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Skip tests with the Bun test runner
 
 To skip a test with the Bun test runner, use the `test.skip` function.
@@ -38,4 +42,4 @@ Ran 3 tests across 1 files. [74.00ms]
 See also:
 
 * [Mark a test as a todo](/guides/test/todo-tests)
-* [Docs > Test runner > Writing tests](https://bun.sh/docs/test/writing)
+* [Docs > Test runner > Writing tests](/test/writing-tests)

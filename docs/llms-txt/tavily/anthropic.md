@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/documentation/integrations/anthropic.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Anthropic
 
 > Integrate Tavily with Anthropic Claude to enhance your AI applications with real-time web search capabilities.
@@ -275,7 +279,7 @@ chat_with_claude("What is trending now in the agents space in 2025?")
                     "auto_parameters": {
                         "type": "boolean",
                         "default": False,
-                        "description": "Auto-tune parameters based on the query (beta). Explicit values you pass still win."
+                        "description": "Auto-tune parameters based on the query. Explicit values you pass still win."
                     },
                     "topic": {
                         "type": "string",
@@ -349,6 +353,11 @@ chat_with_claude("What is trending now in the agents space in 2025?")
                         "default": False,
                         "description": "Whether to include the favicon URL for each result"
                     },
+                    "include_usage": {
+                        "type": "boolean",
+                        "default": False,
+                        "description": "Whether to include credit usage information in the response"
+                    },
                     "include_domains": {
                         "type": "array",
                         "items": {"type": "string"},
@@ -397,6 +406,11 @@ chat_with_claude("What is trending now in the agents space in 2025?")
                       "type": "boolean",
                       "default": False,
                       "description": "Whether to include the favicon URL for each result"
+                  },
+                  "include_usage": {
+                      "type": "boolean",
+                      "default": False,
+                      "description": "Whether to include credit usage information in the response"
                   },
                   "extract_depth": {
                       "type": "string",
@@ -494,6 +508,11 @@ chat_with_claude("What is trending now in the agents space in 2025?")
                           "enum": ["Documentation", "Blog", "Careers","About","Pricing","Community","Developers","Contact","Media"]
                       },
                       "description": "Filter URLs using predefined categories like documentation, blog, api, etc"
+                  },
+                  "include_usage": {
+                      "type": "boolean",
+                      "default": False,
+                      "description": "Whether to include credit usage information in the response"
                   }
               }
           }
@@ -593,6 +612,11 @@ chat_with_claude("What is trending now in the agents space in 2025?")
                       "type": "boolean",
                       "default": False,
                       "description": "Whether to include the favicon URL for each result"
+                  },
+                  "include_usage": {
+                      "type": "boolean",
+                      "default": False,
+                      "description": "Whether to include credit usage information in the response"
                   }
               }
           }
@@ -602,8 +626,3 @@ chat_with_claude("What is trending now in the agents space in 2025?")
 </Accordion>
 
 For more information about Tavily's capabilities, check out our [API documentation](/documentation/api-reference/introduction) and [best practices](/documentation/best-practices/best-practices-search).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

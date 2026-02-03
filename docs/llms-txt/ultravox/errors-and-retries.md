@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/webhooks/errors-and-retries.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Error Handling & Retries
 
 > Understand how Ultravox automatically retries failed webhook deliveries with exponential backoff to ensure reliable event notifications.
@@ -21,8 +25,3 @@ For permanent failures or extended downtime, you can always use our REST API to 
 * Learn about all [Available Webhooks](./available-webhooks) you can subscribe to
 * Implement [Webhook Security](./securing-webhooks) to protect your endpoints
 * Check out our [API reference](/api-reference/webhooks/webhooks-list) for webhook management endpoints
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

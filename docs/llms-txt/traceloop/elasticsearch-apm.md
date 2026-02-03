@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/integrations/elasticsearch-apm.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LLM Observability with Elasticsearch APM Service
 
 Connect OpenLLMetry to [Elastic APM](https://www.elastic.co/guide/en/apm/guide/current/index.html) to visualize LLM traces in Kibana's native APM interface. This integration uses OpenTelemetry Protocol (OTLP) to route traces from your application through an OpenTelemetry Collector to Elastic APM Server.
@@ -292,8 +296,3 @@ OpenLLMetry automatically captures these attributes in each LLM span:
 * [Elastic APM Documentation](https://www.elastic.co/docs/solutions/observability/apm)
 * [OpenTelemetry Collector Configuration](https://opentelemetry.io/docs/collector/configuration/)
 * [Traceloop SDK Configuration](https://www.traceloop.com/docs/openllmetry/configuration)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

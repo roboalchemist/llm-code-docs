@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/enterprise/features/agent-repositories.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Agent Repositories
 
 > Learn how to use Agent Repositories to share and reuse your agents across teams and projects

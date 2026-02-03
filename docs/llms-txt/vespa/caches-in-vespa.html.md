@@ -44,5 +44,5 @@ By default, the cache is enabled, using up to 5% of available memory - configura
 
 _ranking.queryCache_ and _groupingSessionCache_described in the [Query API reference](../reference/api/query.html)are only caching data in between phases for a given a query, so other queries do not get any benefits, but these caches saves container - content node(s) round-trips for a _given_ query.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

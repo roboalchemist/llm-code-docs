@@ -1,3 +1,5 @@
+# Source: https://docs.slack.dev/tools/deno-slack-sdk/
+
 # Deno Slack SDK
 
 ## Workflow apps require a paid plan

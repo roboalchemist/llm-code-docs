@@ -2,10 +2,7 @@
 
 # Get Environment
 
-```
-GET 
-/v1/environments/:environmentId
-```
+Copy page
 
 This endpoint returns the metadata of an Environment identified by the `environmentId`.
 

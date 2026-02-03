@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/features/faq.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # FAQ
 
 Frequently Asked Questions
@@ -34,6 +38,10 @@ When streaming is enabled, each chunk includes:
 * `raw_response`: The raw streaming response from the LLM provider
 * `prompt_blueprint`: The progressively built prompt blueprint showing the current state of the response
 * `request_id`: Only included in the final chunk to indicate completion
+
+<Note>
+  The `raw_response` structure is provider-specific and may change as LLM providers update their APIs. For stable, provider-agnostic access, use `prompt_blueprint` instead.
+</Note>
 
 Example usage for OpenAI:
 
@@ -191,8 +199,3 @@ Yes, PromptLayer supports MCP functions in agents. The MCP Action node allows yo
 PromptLayer supports OpenAI's built-in tools from the Responses API, including Web Search and File Search with Vector Stores. These tools enable your prompts to access real-time web information and search through uploaded documents—all without writing custom function definitions.
 
 Learn how to set up and use these tools in our [Tool Calling documentation](/features/prompt-registry/tool-calling#built-in-tools-openai-responses-api).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

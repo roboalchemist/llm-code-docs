@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/tutorials/configuration-and-theming/variable-fonts
+
 # Use variable font files to customize your font
 
 Streamlit comes with Source Sans as the default font, but you can configure your app to use another font. This tutorial uses variable font files and is a walkthrough of Example 1 from [Customize fonts in your Streamlit app](/develop/concepts/configuration/theming-customize-fonts#example-1-define-an-alternative-font-with-variable-font-files). For an example that uses static font files, see [Use static font files to customize your font](/develop/tutorials/configuration-and-theming/static-fonts).

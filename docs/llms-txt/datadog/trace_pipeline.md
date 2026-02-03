@@ -4,7 +4,6 @@
 title: The Trace Pipeline
 description: Learn how to control span ingestion
 breadcrumbs: Docs > APM > The Trace Pipeline
-source_url: https://docs.datadoghq.com/trace_pipeline/index.html
 ---
 
 # The Trace Pipeline

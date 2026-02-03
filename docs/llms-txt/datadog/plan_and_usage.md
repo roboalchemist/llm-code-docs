@@ -6,7 +6,6 @@ description: >-
   Access usage reports, plan settings, and billing history for your Datadog
   account, including multi-organization usage tracking and cost analysis.
 breadcrumbs: Docs > Account Management > Plan and Usage Settings
-source_url: https://docs.datadoghq.com/plan_and_usage/index.html
 ---
 
 # Plan and Usage Settings

@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/self-hosting/guides/mongo-to-postgres.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Migrate Mongo to Postgres
 
 > Learn how to migrate Infisical from MongoDB to PostgreSQL.

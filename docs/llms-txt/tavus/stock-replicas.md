@@ -1,5 +1,9 @@
 # Source: https://docs.tavus.io/sections/replica/stock-replicas.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Stock Replicas
 
 > Browse ready-to-use digital presenters from Tavus for fast, high quality video creation.

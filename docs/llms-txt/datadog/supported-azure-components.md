@@ -4,7 +4,6 @@
 title: Which Azure components are supported?
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > FAQ > Which Azure components are supported?
-source_url: https://docs.datadoghq.com/faq/supported-azure-components/index.html
 ---
 
 # Which Azure components are supported?

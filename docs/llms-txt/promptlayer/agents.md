@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/why-promptlayer/agents.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Agents
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/jidwFuKL5tg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen />
@@ -38,14 +42,20 @@ Input Variables are the data you feed into an Agent. They can be text, numbers, 
 
 Nodes are the building blocks of the Agent. Each node represents a specific action or decision. Types include:
 
-* **Prompt Template**: Make an LLM call using a specified prompt template and input variables.
+* **Prompt Template**: Make an LLM call using a prompt template from the registry or an [inline template](#inline-templates) defined directly in the node configuration.
 * **Callback Endpoint**: Make external API calls (ex: RAG steps) or trigger callback requests after workflow processes finish.
 * **Coding Agent**: Execute AI coding agents (such as Claude Code) in a sandboxed environment for data transformations, file processing, and complex analysis. [Learn more about Coding Agent](/features/evaluations/eval-types#coding-agent)
+* **For Loop**: Iterate over collections, running a prompt or sub-workflow on each item. [Learn more about For Loop](/running-requests/workflow-loops#for-loop-for_loop)
+* **While Loop**: Execute repeatedly until a condition is met. [Learn more about While Loop](/running-requests/workflow-loops#while-loop-while_loop)
 * **Math Operator**: Perform numerical comparisons or calculations between different data sources.
 * **Parse Value**: Extract and process specific data types like strings, numbers, or JSON from inputs.
 
 <Info>
-  **Want to learn about all available node types?** Agent nodes use the same building blocks as evaluation types. [View all eval types](/features/evaluations/eval-types) to see the full catalog of nodes you can use in your agents, including LLM assertions, data extraction, conversation simulators, and more.
+  **Want to learn about all available node types?** Agent nodes use the same
+  building blocks as evaluation types. [View all eval
+  types](/features/evaluations/eval-types) to see the full catalog of nodes you
+  can use in your agents, including LLM assertions, data extraction,
+  conversation simulators, and more.
 </Info>
 
 <img src="https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/agents/nodes.png?fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=7d8e9d3e1da1ab0423a9152386a2c63f" alt="Nodes" data-og-width="1584" width="1584" data-og-height="530" height="530" data-path="images/agents/nodes.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/agents/nodes.png?w=280&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=bf23e787aa8d575601e582f197e45c90 280w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/agents/nodes.png?w=560&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=0bd9dc31e12a6b4414d2a7faa7ceb497 560w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/agents/nodes.png?w=840&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=9149021f805309ffc9d41749d5e8a99a 840w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/agents/nodes.png?w=1100&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=f1408f6d563f56c80c8ecb4437dd8dbb 1100w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/agents/nodes.png?w=1650&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=bcc9121fe3264f8a8206d90ba2ac3758 1650w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/agents/nodes.png?w=2500&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=fe12d4019c9c70df38693203f558b747 2500w" />
@@ -71,6 +81,53 @@ Output Nodes determine what your Agent returns as its final result. When using C
 
 <img src="https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/agents/output-node.png?fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=1959ee88ed63c1204dd2f052c823ad84" alt="Output Nodes" data-og-width="1050" width="1050" data-og-height="470" height="470" data-path="images/agents/output-node.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/agents/output-node.png?w=280&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=7b109dad799e9f2344055984a98ad58f 280w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/agents/output-node.png?w=560&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=8ccf2da71ef7ff417f872a4ff2bb0d8a 560w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/agents/output-node.png?w=840&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=28d62c60fac1ef30c61c500d09251672 840w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/agents/output-node.png?w=1100&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=bac443e2b2f35f30299a4f29467e02c3 1100w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/agents/output-node.png?w=1650&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=b8f042bd3efca6ed33de8205651bb61b 1650w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/agents/output-node.png?w=2500&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=aac9a6e1e3812ee832ad615658b8cf0d 2500w" />
 
+### 5. Inline Templates
+
+Prompt Template nodes can reference a template from the Prompt Registry or define a template inline. Inline templates are useful for quick iteration and experimentation without committing a prompt to the registry.
+
+When creating or updating an agent programmatically, use `inline_template` instead of `template` in a Prompt Template node's configuration:
+
+```json  theme={null}
+{
+  "name": "Generate Summary",
+  "node_type": "PROMPT_TEMPLATE",
+  "configuration": {
+    "inline_template": {
+      "inline": true,
+      "prompt_template": {
+        "type": "chat",
+        "messages": [
+          {
+            "role": "system",
+            "content": [{"type": "text", "text": "Summarize the following text concisely."}]
+          },
+          {
+            "role": "user",
+            "content": [{"type": "text", "text": "{input_text}"}]
+          }
+        ]
+      },
+      "metadata": {
+        "model": {
+          "provider": "openai",
+          "name": "gpt-4",
+          "parameters": {"temperature": 0.3}
+        }
+      }
+    },
+    "prompt_template_variable_mappings": {
+      "input_text": "document"
+    }
+  },
+  "dependencies": ["document"],
+  "is_output_node": false
+}
+```
+
+<Info>
+  You must provide exactly one of `template` (registry reference) or `inline_template` (inline content) in a Prompt Template node's configuration. They are mutually exclusive. You can convert an inline template to a registry template at any time from the UI using "Save to Registry".
+</Info>
+
 ## Versioning
 
 Agent versioning automatically tracks changes over time. Each update creates a new version, allowing you to safely experiment with new ideas while keeping the current production version stable. You can view the full history of your Agent's changes, which helps with team collaboration and iterative development.
@@ -84,8 +141,3 @@ You can run an Agent in three ways: using the [Python or JavaScript SDK](/runnin
 After running an Agent, the full trace, including spans from all nodes, will be visible in the left traces menu. This allows you to visualize the execution path and see intermediate outputs at each step, helping you debug and optimize your Agent.
 
 <img src="https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/agents/spans.png?fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=8535d4c092fa6330135ce964b5205456" alt="Traces" data-og-width="1540" width="1540" data-og-height="1252" height="1252" data-path="images/agents/spans.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/agents/spans.png?w=280&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=0b6a5e98efe7fdf500db9b7f1eb06100 280w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/agents/spans.png?w=560&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=88c3c5e14f00c059118a42b08ba6912b 560w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/agents/spans.png?w=840&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=24dc6ee5eb4a0c842fe2d7a64e9dde26 840w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/agents/spans.png?w=1100&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=d06e7ff6dfa6a5215df681d3c634183a 1100w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/agents/spans.png?w=1650&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=a7fad3e119756d2cd061ae48f79c2dd6 1650w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/agents/spans.png?w=2500&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=6267701b8bed1c5baece19c22e39c9ab 2500w" />
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

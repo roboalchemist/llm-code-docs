@@ -9,13 +9,17 @@ https://api.apify.com/v2/acts/:actorId
 ```
 
 
-Clientshttps://docs.apify.com/api/client/js/reference/class/ActorClient#deleteDeletes an Actor.
+Deletes an Actor.
 
 ## Request
 
 ## Responses
 
 * 204
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/bitsandbytes/v0.49.0/contributing.md
+# Source: https://huggingface.co/docs/bitsandbytes/v0.49.1/contributing.md
 
 # Contribution Guide
 

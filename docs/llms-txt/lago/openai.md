@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/templates/per-token/openai.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Clone OpenAI pricing
 
 > Replicate OpenAI's per-token pricing model with Lago.
@@ -603,63 +607,72 @@ For OpenAI, pricing depends on the language model used. Here are several price p
     2. Reference the customer's subscription with `external_subscription_id`
     3. Include usage and filters data in `properties`
 
-    <Tabs>
-      <Tab title="cURL">
-        ```bash highlight={10,11,12-16} theme={"dark"}
-        LAGO_URL="https://api.getlago.com"
-        API_KEY="__API_KEY__"
+    <CodeGroup>
+      ```bash cURL highlight={10,11,12-16} theme={"dark"}
+      LAGO_URL="https://api.getlago.com"
+      API_KEY="__API_KEY__"
 
-        curl --location --request POST "$LAGO_URL/api/v1/events" \
-          --header "Authorization: Bearer $API_KEY" \
-          --header 'Content-Type: application/json' \
-          --data-raw '{
-            "event": {
-              "transaction_id": "__TRANSACTION_ID__",
-              "code": "__BILLABLE_METRIC_CODE__",
-              "external_subscription_id": "__EXTERNAL_SUBSCRIPTION_ID__",
-              "properties": {
-                "total": 5000,
-                "model": "8k",
-                "type": "input"
-              }
+      curl --location --request POST "$LAGO_URL/api/v1/events" \
+        --header "Authorization: Bearer $API_KEY" \
+        --header 'Content-Type: application/json' \
+        --data-raw '{
+          "event": {
+            "transaction_id": "__TRANSACTION_ID__",
+            "code": "__BILLABLE_METRIC_CODE__",
+            "external_subscription_id": "__EXTERNAL_SUBSCRIPTION_ID__",
+            "properties": {
+              "total": 5000,
+              "model": "8k",
+              "type": "input"
             }
-          }'
-        ```
-      </Tab>
-
-      <Tab title="Python">
-        ```python highlight={9,10-15} theme={"dark"}
-        from lago_python_client.client import Client
-        from lago_python_client.exceptions import LagoApiError
-        from lago_python_client.models import Event
-
-        client = Client(api_key='__API_KEY__')
-
-        event = Event(
-          transaction_id="__TRANSACTION_ID__",
-          code="__BILLABLE_METRIC_CODE__",
-          external_subscription_id="__EXTERNAL_SUBSCRIPTION_ID__",
-          properties={
-            "total": 5000,
-            "model": "8k",
-            "type": "input"
           }
-        )
+        }'
+      ```
 
-        try:
-            client.events.create(event)
-        except LagoApiError as e:
-            repair_broken_state(e)  # do something on error or raise your own exception
-        ```
-      </Tab>
+      ```python Python highlight={9,10-15} theme={"dark"}
+      from lago_python_client.client import Client
+      from lago_python_client.exceptions import LagoApiError
+      from lago_python_client.models import Event
 
-      <Tab title="Ruby">
-        ```ruby highlight={7,8-13} theme={"dark"}
-        require 'lago-ruby-client'
+      client = Client(api_key='__API_KEY__')
 
-        client = Lago::Api::Client.new(api_key: '__API_KEY__')
+      event = Event(
+        transaction_id="__TRANSACTION_ID__",
+        code="__BILLABLE_METRIC_CODE__",
+        external_subscription_id="__EXTERNAL_SUBSCRIPTION_ID__",
+        properties={
+          "total": 5000,
+          "model": "8k",
+          "type": "input"
+        }
+      )
 
-        client.events.create(
+      try:
+          client.events.create(event)
+      except LagoApiError as e:
+          repair_broken_state(e)  # do something on error or raise your own exception
+      ```
+
+      ```ruby Ruby highlight={7,8-13} theme={"dark"}
+      require 'lago-ruby-client'
+
+      client = Lago::Api::Client.new(api_key: '__API_KEY__')
+
+      client.events.create(
+        transaction_id: "__TRANSACTION_ID__",
+        code: "__BILLABLE_METRIC_CODE__",
+        external_subscription_id: "__EXTERNAL_SUBSCRIPTION_ID__",
+        properties: {
+          total: 5000,
+          model: "8k",
+          type: "input"
+        }
+      )
+      ```
+
+      ```js Javascript highlight={4,5-10} theme={"dark"}
+      await client.events.createEvent({
+        event: {
           transaction_id: "__TRANSACTION_ID__",
           code: "__BILLABLE_METRIC_CODE__",
           external_subscription_id: "__EXTERNAL_SUBSCRIPTION_ID__",
@@ -668,44 +681,25 @@ For OpenAI, pricing depends on the language model used. Here are several price p
             model: "8k",
             type: "input"
           }
-        )
-        ```
-      </Tab>
-
-      <Tab title="Javascript">
-        ```js highlight={4,5-10} theme={"dark"}
-        await client.events.createEvent({
-          event: {
-            transaction_id: "__TRANSACTION_ID__",
-            code: "__BILLABLE_METRIC_CODE__",
-            external_subscription_id: "__EXTERNAL_SUBSCRIPTION_ID__",
-            properties: {
-              total: 5000,
-              model: "8k",
-              type: "input"
-            }
-          }
-        });
-        ```
-      </Tab>
-
-      <Tab title="Go">
-        ```go highlight={10-16} theme={"dark"}
-        eventInput := &lago.EventInput{
-          TransactionID:          "__TRANSACTION_ID__",
-          Code:                   "__BILLABLE_METRIC_CODE__",
-          ExternalSubscriptionID: "__EXTERNAL_SUBSCRIPTION_ID__",
-          Properties: map[string]interface{}{
-            "total": 5000,
-            "model": "8k",
-            "type":  "input",
-          },
         }
+      });
+      ```
 
-        event, err := client.Event().Create(ctx, eventInput)
-        ```
-      </Tab>
-    </Tabs>
+      ```go Go highlight={10-16} theme={"dark"}
+      eventInput := &lago.EventInput{
+        TransactionID:          "__TRANSACTION_ID__",
+        Code:                   "__BILLABLE_METRIC_CODE__",
+        ExternalSubscriptionID: "__EXTERNAL_SUBSCRIPTION_ID__",
+        Properties: map[string]interface{}{
+          "total": 5000,
+          "model": "8k",
+          "type":  "input",
+        },
+      }
+
+      event, err := client.Event().Create(ctx, eventInput)
+      ```
+    </CodeGroup>
 
     Refer to the [API reference](/api-reference/events/usage) to create an event.
   </Step>

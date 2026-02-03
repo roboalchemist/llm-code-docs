@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/data/st.column_config/st.column_config.datecolumn
+
 # st.column_config.DateColumn
 
 Configure a date column in `st.dataframe` or `st.data_editor`.

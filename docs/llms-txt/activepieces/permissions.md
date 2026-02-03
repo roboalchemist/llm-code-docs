@@ -1,54 +1,59 @@
 # Source: https://www.activepieces.com/docs/admin-guide/guides/permissions.md
 
-# Source: https://www.activepieces.com/docs/security/permissions.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Project Permissions
+# Manage User Roles
 
 > Documentation on project permissions in Activepieces
 
+<Snippet file="enterprise-feature.mdx" />
+
 Activepieces utilizes Role-Based Access Control (RBAC) for managing permissions within projects. Each project consists of multiple flows and users, with each user assigned specific roles that define their actions within the project.
 
-The supported roles in Activepieces are:
+## Default Roles
 
-* **Admin:**
-  * View Flows
-  * Edit Flows
-  * Publish/Turn On and Off Flows
-  * View Runs
-  * Retry Runs
-  * View Issues
-  * Resolve Issues
-  * View Connections
-  * Edit Connections
-  * View Project Members
-  * Add/Remove Project Members
-  * Configure Git Repo to Sync Flows With
-  * Push/Pull Flows to/from Git Repo
+Activepieces comes with four standard roles out of the box. The table below shows the permissions for each role:
 
-* **Editor:**
-  * View Flows
-  * Edit Flows
-  * Publish/Turn On and Off Flows
-  * View Runs
-  * Retry Runs
-  * View Connections
-  * Edit Connections
-  * View Issues
-  * Resolve Issues
-  * View Project Members
+| Permission                 | Admin | Editor | Operator | Viewer |
+| -------------------------- | :---: | :----: | :------: | :----: |
+| **Flows**                  |       |        |          |        |
+| View Flows                 |   ✓   |    ✓   |     ✓    |    ✓   |
+| Edit Flows                 |   ✓   |    ✓   |          |        |
+| Publish / Toggle Flows     |   ✓   |    ✓   |     ✓    |        |
+| **Runs**                   |       |        |          |        |
+| View Runs                  |   ✓   |    ✓   |     ✓    |    ✓   |
+| Retry Runs                 |   ✓   |    ✓   |     ✓    |        |
+| **Connections**            |       |        |          |        |
+| View Connections           |   ✓   |    ✓   |     ✓    |    ✓   |
+| Edit Connections           |   ✓   |    ✓   |     ✓    |        |
+| **Team**                   |       |        |          |        |
+| View Project Members       |   ✓   |    ✓   |     ✓    |    ✓   |
+| Add/Remove Project Members |   ✓   |        |          |        |
+| **Git Sync**               |       |        |          |        |
+| Configure Git Repo         |   ✓   |        |          |        |
+| Pull Flows from Git        |   ✓   |        |          |        |
+| Push Flows to Git          |   ✓   |        |          |        |
 
-* **Operator:**
-  * Publish/Turn On and Off Flows
-  * View Runs
-  * Retry Runs
-  * View Issues
-  * View Connections
-  * Edit Connections
-  * View Project Members
+## Custom Roles
 
-* **Viewer:**
-  * View Flows
-  * View Runs
-  * View Connections
-  * View Project Members
-  * View Issues
+If the default roles don't fit your needs, you can create custom roles with specific permissions.
+
+<Steps>
+  <Step title="Navigate to Project Roles">
+    Go to **Platform Admin** → **Security** → **Project Roles**
+  </Step>
+
+  <Step title="Create a New Role">
+    Click **Create Role** and give it a name
+  </Step>
+
+  <Step title="Configure Permissions">
+    Select the specific permissions you want to grant to this role
+  </Step>
+</Steps>
+
+<Tip>
+  Custom roles are useful when you need fine-grained control, such as allowing users to view and retry runs without being able to edit flows.
+</Tip>

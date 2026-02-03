@@ -1,14 +1,18 @@
 # Source: https://docs.giselles.ai/en/prompts/examples.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.giselles.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Examples
 
 > Effective Prompt Examples in Giselle’s Generator Nodes.
 
-This document provides effective and concrete prompt examples tailored specifically for Giselle's Generator Nodes, leveraging various multimodal AI models including Anthropic's Claude, Google's Gemini, OpenAI's GPT-4o, and Fal AI for image generation.
+This document provides effective and concrete prompt examples tailored specifically for Giselle's Generator Nodes, leveraging various multimodal AI models including Anthropic's Claude, Google's Gemini, and OpenAI's GPT series.
 
 ## Basic Examples
 
-### 1. Technical Query using GPT-4o
+### 1. Technical Query using GPT-5.2
 
 ```plaintext  theme={null}
 Role: Experienced programmer
@@ -27,7 +31,7 @@ Output Format:
 * Explicit instruction and clear output expectations.
 * Specifies programming language explicitly.
 
-### 2. Image Generation with Fal AI
+### 2. Image Generation with Gemini
 
 ```plaintext  theme={null}
 Role: Graphic designer
@@ -36,7 +40,7 @@ Task:
 Generate a high-quality, minimalist logo for a technology startup named "QuantumLeap."
 
 Constraints:
-- Model: flux-pro/v1.1
+- Model: Gemini 2.5 Flash Image
 - Color scheme: Blue and white
 - Style: Modern, minimalistic
 
@@ -47,7 +51,7 @@ Output Format:
 **Why this prompt is effective:**
 
 * Clearly defines role and creative constraints.
-* Utilizes specific Fal AI model for high-quality outputs.
+* Utilizes Gemini's image generation capabilities for high-quality outputs.
 * Precise output format suitable for immediate use.
 
 ## Advanced Examples
@@ -93,7 +97,7 @@ Steps:
 2. Suggest practical ethical guidelines for deployment.
 
 Constraints:
-- Model: Claude 3.7 Sonnet
+- Model: Claude Sonnet 4.5
 
 Output Format:
 - Ethical implications listed clearly
@@ -110,17 +114,17 @@ Output Format:
 ### 1. Comprehensive Market Research Workflow
 
 ```plaintext  theme={null}
-Step 1 (Claude 3.7 Sonnet):
+Step 1 (Claude Sonnet 4.5):
 Role: Market researcher and sustainability analyst
 Task: Research sustainable food packaging trends and analyze their ethical and sustainability implications.
 Output Format: Analysis summary and recommendations.
 
-Step 2 (GPT-4o):
+Step 2 (GPT-5.2):
 Role: Technical writer
 Task: Format the insights and recommendations into a structured industry report.
 Output Format: Professional document in markdown format.
 
-Step 3 (Fal AI flux-pro/v1.1):
+Step 3 (Gemini 2.5 Flash Image):
 Role: Graphic designer
 Task: Generate a compelling visual cover image for the final report.
 Constraints: Sustainability theme, professional style

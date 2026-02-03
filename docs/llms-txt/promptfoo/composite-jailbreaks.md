@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/strategies/composite-jailbreaks/
+
 # Composite Jailbreaks Strategy
 
 The Composite Jailbreaks strategy combines multiple jailbreak techniques from top research papers to create more sophisticated attacks.

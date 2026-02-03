@@ -11,7 +11,7 @@ Source: https://docs.pinata.cloud/account-management/api-keys
 
 This page is where you can create, record, and delete API keys for the [Pinata API](/api-reference/introduction). Creating an API key is very simple! Just visit the page to start by click on the API Keys button in the left sidebar, then click "New Key" in the top right.
 
-<img style={{ width: '100%', borderRadius: '0.5rem'}} src="https://docs.mypinata.cloud/ipfs/bafybeignh2yy7bp7qpts5vi46prbjd6lbz23lmtbfcgvpcwc5rjkudrfta" />
+<img />
 
 In the New Key modal you can choose if you want the key to be an Admin key and have full access over every endpoint, or scope the keys by selecting which endpoints you want to use. You can also give it a limited number of uses, and be sure to give it a name to keep track of it. Once you have that filled out click "Create Key" and it will show you the `pinata_api_key`, `pinata_api_secret_key`, and the `JWT`. It's best to click "Copy All" and keep the API key data safe and secure.
 
@@ -38,11 +38,11 @@ If successful you should see this!
 
 From the Keys Page you can see the name of a key, the public key, when it was issues, how many max uses it has, and what permissions it was given.
 
-<img style={{ width: '100%', borderRadius: '0.5rem'}} src="https://docs.mypinata.cloud/ipfs/bafkreicw5nrin7q2yrd2a34m4vav4tn6hkylgcu3kaitquervjtpa334m4" />
+<img />
 
 At any point you can delete an API key by clicking on the Revoke button
 
-<img style={{ width: '100%', borderRadius: '0.5rem'}} src="https://docs.mypinata.cloud/ipfs/bafybeicmljijcfkwgyzrb53jexpzk2dqitpu6tmt3ntfcuad7hg6cs6com" />
+<img />
 
 
 # Billing
@@ -52,7 +52,7 @@ Source: https://docs.pinata.cloud/account-management/billing
 
 The billing page is where you can upgrade your account, view your current usage, or make changes to your billing info.
 
-<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafybeihntdys3bepoxpnmppvx7lvyt5npwy4w2vx6coh2nl432kvr5vcsu" />
+<img />
 
 ## Usage
 
@@ -65,7 +65,7 @@ Heading over to the "Usage" tab, this is where you can view how much of your pla
   use the Dedicated Gateway once your account has gone above the limit by 25%.
 </Warning>
 
-<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafybeibn4buugdjr5mhun7xnjms53izpieopm27vlpku2krggtqrrr6zxy" />
+<img />
 
 ## Payment Info
 
@@ -73,7 +73,7 @@ Clicking the 'Manage Billing' button will show you the current card in use and i
 
 <Note>Pinata currently only accepts standard debit and credit cards</Note>
 
-<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://files.readme.io/4f3170a-Screenshot-Arc-07-29-2023-00-032x.png" />
+<img />
 
 ## Plan Selection
 
@@ -84,7 +84,7 @@ From the plan selection you can choose a plan that fits your need the most, whet
   the prorated amount
 </Note>
 
-<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafkreicli4byl2l3iqgyuaziysxrxzd5b6a4jnp6tlnmx7fyp2isu5gw4y" />
+<img />
 
 
 # Limits
@@ -98,11 +98,12 @@ The Private IPFS API and IPFS API have variying limits that users should be awar
 
 API rate limits on both the Private IPFS API and IPFS API are currently determined by plan type:
 
-| Plan   | Rate Limit              |
-| ------ | ----------------------- |
-| Free   | 60 requests per minute  |
-| Picnic | 250 requests per minute |
-| Fiesta | 500 requests per minute |
+| Plan       | Rate Limit              |
+| ---------- | ----------------------- |
+| Free       | 60 requests per minute  |
+| Picnic     | 250 requests per minute |
+| Fiesta     | 500 requests per minute |
+| Enterprise | 100 requests per second |
 
 ### Exceptions
 
@@ -133,7 +134,9 @@ Beyond 100MB the max file size is **25GB** at this time.
 
 ### IPFS API
 
-<Warning>While the upload limit is 25GB we would recommend only uploading up to 15GB per file/folder for reliability reasons. We can try to assist uploads 15GB-25GB but we cannot guarantee success at this time.</Warning>
+<Warning>
+  While the upload limit is 25GB we would recommend only uploading up to 15GB per file/folder for reliability reasons. We can try to assist uploads 15GB-25GB but we cannot guarantee success at this time.
+</Warning>
 
 There is no aggregate limit for uploads, but each individual upload (whether it is a file or a folder) is limited to **25 GB**.
 
@@ -169,7 +172,7 @@ Once your Webhook is created you will be taken to the dashboard where you can se
 
 Check out the link below to browse all the available webhook events you can subscribe to!
 
-<Card title="Webhook Event Catalog" href="https://event-types.pinata.cloud/" icon="link" horizontal>
+<Card title="Webhook Event Catalog" href="https://event-types.pinata.cloud/" icon="link">
   Visit our Svix page for all Pinata Webhook events!
 </Card>
 
@@ -185,7 +188,7 @@ To grab the secret for your Webhook locate it on the Webhook Dashboard on the ri
 
 Our webhook partner Svix offers a set of useful libraries that make verifying webhooks very simple. Here is a an example using Javascript:
 
-```typescript  theme={null}
+```typescript theme={null}
 import { Webhook } from "svix";
 
 const secret = "whsec_MfKQ9r8GKYqrTwjUPD8ILPZIo2LaLaSw";
@@ -215,7 +218,7 @@ Source: https://docs.pinata.cloud/account-management/workspaces
 
 Workspaces is a feature that allows you to add multiple people to your account and collaborate in a natural way. With the Picnic plan, you'll get 3 seats to invite your teammates, and with Fiesta you'll get 5 seats, plus the ability to add more at an extra fee.
 
-<iframe width="600" height="400" src="https://www.youtube.com/embed/xnyTtCaD-y0?si=nEv94OAftTR42_B5" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen style={{ width: '100%', borderRadius: '0.5rem' }} />
+<iframe title="YouTube video player" />
 
 ## Inviting Members
 
@@ -225,17 +228,17 @@ Workspaces is a feature that allows you to add multiple people to your account a
 
 To get started, login with a paid account and click on the profile button in the top right, then select "Workspaces."
 
-<img style={{ borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafybeiczyvykd3upg5qesrpluiinpeqhtee7oqkks5hxyy63o4nmxjlj7e" />
+<img />
 
 Once at the Workspaces screen, you can type in the email for the person you want to invite. They could already have a Pinata account or could be someone who hasn't signed up yet. Once they sign into their account, they will be prompted to accept the invite on the Workspaces page.
 
-<img style={{ borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafkreibsxu7j5jtwehclczx24cxjlp3sw55zyrpjvxoxfsi745qoy3k5lu" />
+<img />
 
 ## Switching Workspaces
 
 By default, when you login, you will be put in your account with your Workspace, and you can switch to another Workspace you are member of by clicking on the drop-down menu in the top left corner.
 
-<img style={{ borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafybeidfgp5wxppiifmur76jondslfy5wzztdtkebw23jkbgwenvmf33i4" />
+<img />
 
 ## Removing Members
 
@@ -245,7 +248,7 @@ By default, when you login, you will be put in your account with your Workspace,
 
 If you ever need to remove someone from a Workspace, you can do so from the Workspaces page. Click on the three small dots next to the user's email and click "remove member." You can invite them back at any time!
 
-<img style={{ borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafybeicqiqzyjjy7cttp5x3olwlfugxiogxymtuhprp4aysgg3uo4ooqmi" />
+<img />
 
 
 # Deleting Files
@@ -303,7 +306,7 @@ The SDK has a very simple [delete](/sdk/files/public/delete) method that will al
 
 If you find yourself in a position where you need to delete most or all of your files you can use the [Auto Paginate](/sdk/files/public/list#auto-paginate) feature on the SDK to fetch all the IDs of your files and delete them in a few lines of code!
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -330,11 +333,11 @@ main();
 
 If you are trying to delete files, then you can do so by clicking on the on the 3 dots at the end of the row and selecting "Delete"
 
-<img style={{ width: "60%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafkreid3hqvzckbh7cgj5ywdyzzmjn6tweztdlk6q2ra4hlt4yljhvt57m" />
+<img />
 
 Additionally, with our Bulk File Actions tool, you can select and manage multiple files at once - up to 100!
 
-<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafybeie2d42ty54bwn5zqaqzq3s3xh4q22sjiiykkedxbrh3e2to4cmw5e" />
+<img />
 
 
 # Groups
@@ -1091,10 +1094,10 @@ You can remove a key-value entry by making the value `null`.
 
 Check out some of our reading material on some of the possibilities of key-values and file-centric architecture!
 
-<CardGroup cols={2}>
-  <Card title="Pinata’s KV Store - A File-Centric Database" img="https://pinata.cloud/blog/content/images/size/w2000/format/avif/2024/11/blog-1.png" href="https://pinata.cloud/blog/pinatas-kv-store-a-file-centric-database" />
+<CardGroup>
+  <Card title="Pinata’s KV Store - A File-Centric Database" href="https://pinata.cloud/blog/pinatas-kv-store-a-file-centric-database" />
 
-  <Card title="Using File-Centric Architecture to Build Simple and Capable Apps" img="https://pinata.cloud/blog/content/images/size/w2000/format/avif/2024/11/Blog.png" href="https://pinata.cloud/blog/using-file-centric-architecture-to-build-simple-and-capable-apps/" />
+  <Card title="Using File-Centric Architecture to Build Simple and Capable Apps" href="https://pinata.cloud/blog/using-file-centric-architecture-to-build-simple-and-capable-apps/" />
 </CardGroup>
 
 
@@ -1397,13 +1400,188 @@ Filters results and only returns files where `cid` is still `pending`
 
 The `list` method has an auto pagination feature that is triggered when used inside a `for await` iterator
 
-```typescript  theme={null}
+```typescript theme={null}
 for await (const item of pinata.files.list() {
   console.log(item.id);
 }
 ```
 
 Works like magic ✨
+
+
+# Collections
+Source: https://docs.pinata.cloud/files/nft-backup/collections
+
+View your NFT collections and their IPFS CIDs
+
+After syncing a wallet, view your NFT collections and their CIDs.
+
+## Viewing Collections
+
+<img alt="Image" />
+
+Each collection shows:
+
+| Field      | Description     |
+| ---------- | --------------- |
+| Name       | Collection name |
+| Chain      | Blockchain      |
+| NFTs Owned | Your NFT count  |
+| CIDs       | IPFS CIDs found |
+
+## Collection Details
+
+<img alt="Image" />
+
+Click a collection to see:
+
+* Collection metadata (image, description)
+* List of CIDs with backup status
+
+### CID Information
+
+| Field     | Description                    |
+| --------- | ------------------------------ |
+| CID       | IPFS content identifier        |
+| Source    | `metadata` or `image`          |
+| Backed Up | Whether pinned to your account |
+
+## Filtering
+
+Filter collections by chain using the dropdown.
+
+## Related
+
+* [Wallets](/files/nft-backup/wallets) - Add and sync wallets
+* [Sync](/files/nft-backup/sync) - Sync CIDs
+
+
+# Overview
+Source: https://docs.pinata.cloud/files/nft-backup/overview
+
+Backup your NFT collections to Pinata
+
+Pin all IPFS content from your NFT collections to your Pinata account.
+
+## Two Ways to Backup
+
+<CardGroup>
+  <Card title="Manual Sync" icon="rotate">
+    Sync your wallet on-demand and choose which CIDs to backup. Best for one-time backups or when you want full control over what gets pinned.
+  </Card>
+
+  <Card title="Automated Backups" icon="clock">
+    Enable auto-backup to automatically pin new CIDs whenever you sync. Set it and forget it—your NFTs stay protected.
+  </Card>
+</CardGroup>
+
+## How It Works
+
+1. **Connect** - Add your wallet address
+2. **Sync** - Pinata scans your wallet across supported chains and extracts IPFS CIDs
+3. **Backup** - Pin CIDs to your Pinata account (manually or automatically)
+
+Own multiple NFTs from the same collection? Shared assets are only pinned once, so you won't pay for duplicates.
+
+<iframe title="YouTube video player" />
+
+## Supported Chains
+
+|           |          |           |
+| --------- | -------- | --------- |
+| Ethereum  | Base     | Polygon   |
+| Flow      | Zora     | Arbitrum  |
+| Monad     | Optimism | Avalanche |
+| Blast     | Sei      | B3        |
+| Berachain | ApeChain | Ronin     |
+| Abstract  | Shape    | Unichain  |
+| Gunzilla  | HyperEVM | Somnia    |
+
+## Next Steps
+
+<CardGroup>
+  <Card title="Wallets" icon="wallet" href="/files/nft-backup/wallets">
+    Add and sync wallets
+  </Card>
+
+  <Card title="Collections" icon="grid-2" href="/files/nft-backup/collections">
+    View your collections
+  </Card>
+
+  <Card title="Sync" icon="cloud-arrow-up" href="/files/nft-backup/sync">
+    Sync CIDs
+  </Card>
+</CardGroup>
+
+
+# Sync
+Source: https://docs.pinata.cloud/files/nft-backup/sync
+
+Pin your NFT CIDs to Pinata
+
+After syncing a wallet, backup the IPFS CIDs to your Pinata account. Own multiple NFTs from the same collection? Shared assets are only pinned once, so you won't pay for duplicates.
+
+## Backup All
+
+To backup all CIDs for a wallet:
+
+1. Go to [NFT Backup](https://app.pinata.cloud/nft-backup/wallets)
+2. Select a wallet
+3. Click **Backup All**
+
+Pinata pins all CIDs in the background. This can take a few minutes.
+
+## Auto-Backup
+
+<img alt="Image" />
+
+Enable auto-backup to automatically pin new CIDs when you sync:
+
+1. Select a wallet
+2. Toggle **Auto-Backup** on
+
+## Related
+
+* [Wallets](/files/nft-backup/wallets) - Add and sync wallets
+* [Collections](/files/nft-backup/collections) - View collections
+
+
+# Wallets
+Source: https://docs.pinata.cloud/files/nft-backup/wallets
+
+Add wallets to backup your NFT collections
+
+Add your wallet address to Pinata, then sync to fetch your NFT collections.
+
+<img alt="Image" />
+
+## Adding a Wallet
+
+1. Go to [NFT Backup](https://app.pinata.cloud/nft-backup/wallets)
+2. Click **Add Wallet**
+3. Enter your wallet address
+4. Click **Register**
+
+## Syncing a Wallet
+
+After adding a wallet, sync it to fetch your NFT collections:
+
+1. Select a wallet
+2. Click **Sync**
+
+Syncing scans your wallet across supported chains and extracts any IPFS CIDs from the metadata and images. This can take a few minutes depending on how many NFTs you have.
+
+## Managing Wallets
+
+From the wallets page you can:
+
+* View sync status and CID counts
+* Enable auto-backup
+
+## Related
+
+* [Collections](/files/nft-backup/collections) - View synced collections
+* [Sync](/files/nft-backup/sync) - Sync CIDs
 
 
 # Presigned URLs
@@ -1415,10 +1593,10 @@ There are situations where you may need to upload a file client side instead of 
 
 For a more robust example, check out our guides on Hono and React!
 
-<CardGroup cols={2}>
-  <Card href="/frameworks/hono" horizontal icon="fire" title="Hono Guide" />
+<CardGroup>
+  <Card href="/frameworks/hono" icon="fire" title="Hono Guide" />
 
-  <Card href="/frameworks/react" horizontal icon="react" title="React Guide" />
+  <Card href="/frameworks/react" icon="react" title="React Guide" />
 </CardGroup>
 
 ## Usage
@@ -1821,24 +1999,24 @@ Want to get paid for access to your private content? Check out [x402 Monetizatio
 
 Pinata has built several example apps and tutorials you can reference to see how Private IPFS enables token gated experiences in blockchain and crpto contexts.
 
-<Card horizontal title="PinataCloud/concealmint-client" href="https://github.com/PinataCloud/concealmint-client" icon="github">
+<Card title="PinataCloud/concealmint-client" href="https://github.com/PinataCloud/concealmint-client" icon="github">
   GitHub repo for [CONCEALMINT](https://concealmint.com), an app for creating and access Private NFTs
 </Card>
 
-<CardGroup cols={2}>
-  <Card img="https://pinata.cloud/blog/content/images/size/w2000/format/avif/2024/12/781.png" title="Making Private NFTs" href="https://pinata.cloud/blog/making-private-nfts/">
+<CardGroup>
+  <Card title="Making Private NFTs" href="https://pinata.cloud/blog/making-private-nfts/">
     By using Private IPFS you can gate acceess to files based on NFT ownership
   </Card>
 
-  <Card img="https://www.pinata.cloud/blog/content/images/size/w2000/format/avif/2024/10/Blog-19.png" title="How to Build a Farcaster Native Gumroad on Base" href="https://www.pinata.cloud/blog/how-to-build-a-farcaster-native-gumroad-on-base/">
+  <Card title="How to Build a Farcaster Native Gumroad on Base" href="https://www.pinata.cloud/blog/how-to-build-a-farcaster-native-gumroad-on-base/">
     Sell digital content inside Farcaster frames and keeping it secure through Private IPFS
   </Card>
 
-  <Card img="https://www.pinata.cloud/blog/content/images/size/w2000/format/avif/2025/01/1112.png" title="How To Build Simple Logging For Your Crypto App With Private IPFS" href="https://www.pinata.cloud/blog/how-to-build-simple-logging-for-your-crypto-app-with-private-ipfs/">
+  <Card title="How To Build Simple Logging For Your Crypto App With Private IPFS" href="https://www.pinata.cloud/blog/how-to-build-simple-logging-for-your-crypto-app-with-private-ipfs/">
     Add simple yet private logging to your crypto app using Private IPFS
   </Card>
 
-  <Card img="https://www.pinata.cloud/blog/content/images/size/w2000/format/avif/2024/10/Blog-20.png" title="Building a Macintosh-Inspired Retro File System in the Browser" href="https://www.pinata.cloud/blog/building-a-macintosh-inspired-retro-file-system-in-the-browser/">
+  <Card title="Building a Macintosh-Inspired Retro File System in the Browser" href="https://www.pinata.cloud/blog/building-a-macintosh-inspired-retro-file-system-in-the-browser/">
     See the possibilities of file management using Groups and Private IPFS
   </Card>
 </CardGroup>
@@ -1855,7 +2033,7 @@ In a post-AI world it will become more and more evident that every piece of cont
 
 Pinata is using the EIP-712 signature standard for signing CIDs with the following domain and types.
 
-```typescript  theme={null}
+```typescript theme={null}
 export const domain = {
   name: "Sign Content",
   version: "1.0.0",
@@ -1994,7 +2172,7 @@ In order to attach a signature to a CID the following requirements must be met:
 
 After creating the signature with the previous step you can add it to the CID with the [add](/sdk/signatures/public/add) method in the SDK.
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata-web3";
 
 const pinata = new PinataSDK({
@@ -2017,7 +2195,7 @@ There are two ways you can an existing signature for a CID: the [get](/sdk/signa
 
 After [installing the plugin](/gateways/plugins/getting-started#installing-plugins) you can simply request a CID through the Dedicated Gateway and get the signature in the header `pinata-signauture`.
 
-```typescript  theme={null}
+```typescript theme={null}
 const signatureReq = await fetch(
   `https://<YOUR_GATEWAY_DOMAIN>.mypinata.cloud/ipfs/<CID>`,
   {
@@ -2035,7 +2213,7 @@ You can also use the [get](/sdk/signatures/public/get) method to get a signature
   This method will check all CIDs on Pinata and will return a signature if it exists
 </Note>
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata-web3";
 
 const pinata = new PinataSDK({
@@ -2133,7 +2311,7 @@ Since the signatures are using the EIP-712 standard you can use a library like [
 
 To delete an existing signautre for a given CID you can use the [delete](/sdk/signatures/public/delete) method.
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata-web3";
 
 const pinata = new PinataSDK({
@@ -2152,7 +2330,7 @@ Source: https://docs.pinata.cloud/files/uploading-files
 
 
 
-<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/QmaHVPUAt5iqhCGHgMcbyRh4dkcoFNod8B38ZUaZ3urxRU?img-format=webp" />
+<img />
 
 At the core of Pinata's services is our IPFS APIs which allow you to upload files to either public or private IPFS. You can read more about the difference between the two [here](/files/private-ipfs).
 
@@ -2463,7 +2641,7 @@ Then back on the client side code, you can upload using the signed URL instead o
 
 If you happen to use the API as well as local files you can also track the progress of the upload using a library like `got`. Better support for upload progress will come in later versions of the SDK!
 
-```typescript  theme={null}
+```typescript theme={null}
 import fs from "fs";
 import FormData from "form-data";
 import got from "got";
@@ -3043,11 +3221,11 @@ CAR file processing is **asynchronous**. After a successful upload, Pinata valid
 
 Another way you can upload content to Pinata is by transferring content that is already on IPFS. This could be CIDs that are on your own local IPFS node or another IPFS pinning service! You can do this with the “Import from IPFS” button in the web app, like so:
 
-<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafybeid6k42hboh543sgw7svsnn4aj52lzqnp7gz2vedwa7wzic6w4debu" />
+<img />
 
 Or you can pin by CID with the SDK using the [cid](/sdk/upload/public/cid) method.
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata-web3";
 
 const pinata = new PinataSDK({
@@ -3060,7 +3238,7 @@ const pin = await pinata.upload.public.cid("QmVLwvmGehsrNEvhcCnnsw5RQNseohgEkFNN
 
 This will result in a `request_id` and Pinata will start looking for the file. Progress can be checked by using the [queue](/sdk/files/public/queue) method.
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata-web3";
 
 const pinata = new PinataSDK({
@@ -3073,7 +3251,7 @@ const jobs = await pinata.files.public.queue().status("prechecking")
 
 All possible filters are included in the API reference below, but these are the possible "status" filters:
 
-<ParamField query="status" type="string">
+<ParamField type="string">
   Filter by the status of the job in the pinning queue (see potential statuses
   below)
 
@@ -3092,7 +3270,7 @@ All possible filters are included in the API reference below, but these are the 
 
 If you find yourself in a position where you want to pre-determine the CID before uploading you can use a combination of the `ipfs-unixfx-importer` and `blockstore-core` libraries.
 
-```typescript  theme={null}
+```typescript theme={null}
 import { importer } from "ipfs-unixfs-importer";
 import { MemoryBlockstore } from "blockstore-core/memory";
 
@@ -3121,7 +3299,7 @@ export const predictCID = async (file: File, version: 0 | 1 = 1) => {
 
 Usage will just require passing in a file object and the version of the CID you want to predict. Here is an example using a local file.
 
-```typescript  theme={null}
+```typescript theme={null}
 import fs from "fs"
 
 const file = new File([fs.readFileSync("path/to-file")], "filename.extension");
@@ -3133,11 +3311,11 @@ console.log(cid);
 
 If you run IPFS infrastructure and would like to peer with Pinata's nodes you can do so with the [Kubo](https://docs.ipfs.tech/reference/kubo/cli/) commands listed below. Rather than using full multiaddresses for our node IDs we use a DNS setup that is more stable and allows our infrastructure to be flexible.
 
-```bash  theme={null}
+```bash theme={null}
 ipfs swarm connect /dnsaddr/bitswap.pinata.cloud
 ```
 
-```bash  theme={null}
+```bash theme={null}
 ipfs config --json Peering.Peers '[{ "ID": "Qma8ddFEQWEU8ijWvdxXm3nxU7oHsRtCykAaVz8WUYhiKn", "Addrs": ["/dnsaddr/bitswap.pinata.cloud"] }]'
 ```
 
@@ -3147,7 +3325,7 @@ If you have any issues feel free to [reach out](mailto:team@pinata.cloud)!
 
 You can also use the **[Pinata App](https://app.pinata.cloud/)** to upload files. It’s as simple as clicking the “Add” button in the top right corner of the **[files page](https://app.pinata.cloud/ipfs/files)**. Select your file, give it a name, then upload. Once it's complete you’ll see it listed in the files page.
 
-<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafybeih5leperkpn2thy2xbebh3zqqmvqhx6p5nl5n7buj73w62yoha6ki" />
+<img />
 
 Start uploading by [signing up for a free account](https://app.pinata.cloud/register)!
 
@@ -3158,14 +3336,14 @@ Source: https://docs.pinata.cloud/files/vectors
 
 
 <Warning>
-  The file vectors feature is still in beta and is only available on Private IPFS. Please contact the team at <a href="mailto:team@pinata.cloud" target="_blank">[team@pinata.cloud](mailto:team@pinata.cloud)</a> if you have any issues.
+  The file vectors feature is still in beta and is only available on Private IPFS. Please contact the team at <a href="mailto:team@pinata.cloud">[team@pinata.cloud](mailto:team@pinata.cloud)</a> if you have any issues.
 </Warning>
 
 ## Overview
 
 A common nusance when building AI apps is context embeddings. If you use a traditional stack you generall have to store an embedding, vectorize it, store the vector, then when you query a vector you'll get another reference to the file which you then have to fetch again. Pinata's solution is much more elegant. With Pinata's file vectoring you can upload a file and vector it at the same time.
 
-```typescript  theme={null}
+```typescript theme={null}
 const upload = await pinata.upload.private
   .file(file)
   .group("GROUP_ID")
@@ -3174,7 +3352,7 @@ const upload = await pinata.upload.private
 
 When it comes time to query a vector, you have the option to either list your query results and judge the matching score, or just return the highest scoring file itself.
 
-```typescript  theme={null}
+```typescript theme={null}
 const { data, contentType } = await pinata.files.private
   .queryVectors({
     groupId: "GROUP_ID",
@@ -3216,7 +3394,7 @@ const upload = await pinata.upload.private
 
 If you already have a file that's been uploaded and it's [part of a group](/files/file-groups) then you can vectorize it.
 
-```typescript  theme={null}
+```typescript theme={null}
 const update = await pinata.files.private.vectorize("FILE_ID")
 ```
 
@@ -3224,7 +3402,7 @@ const update = await pinata.files.private.vectorize("FILE_ID")
 
 After a file has been vectorized and it's part of a group, you can query vectors for a given group.
 
-```typescript  theme={null}
+```typescript theme={null}
 const results = await pinata.files.private.queryVectors({
   groupId: "52681e41-86f4-407b-8f79-33a7e7e5df68",
   query: "Hello World"
@@ -3233,7 +3411,7 @@ const results = await pinata.files.private.queryVectors({
 
 This will return the following type:
 
-```typescript  theme={null}
+```typescript theme={null}
 type VectorizeQueryResponse = {
 	count: number;
 	matches: VectorQueryMatch[];
@@ -3262,34 +3440,30 @@ const { data, contentType }  = await pinata.files.private.queryVectors({
 
 If at any point you need to delete vectors for a file you can do so with the `deleteVectors` method in the SDK.
 
-```typescript  theme={null}
+```typescript theme={null}
 const update = await pinata.files.private.deleteVectors("FILE_ID")
 ```
 
 
 # Introduction
-Source: https://docs.pinata.cloud/files/x402
+Source: https://docs.pinata.cloud/files/x402/intro
 
 
 
 <Note>
-  x402 requires a feature flag to be enabled on your Pinata account. Contact [team@pinata.cloud](mailto:team@pinata.cloud) to request access.
+  x402 is available on paid Pinata accounts. [Upgrade your account](https://app.pinata.cloud/billing) to access x402 monetization features.
 </Note>
 
 Pinata's x402 enables you to monetize your private IPFS files by receiving USDC payments directly to your wallet. You set the price, you receive the payment.
-
-<Note>
-  x402 is currently available through the Pinata API v3. SDK support coming soon.
-</Note>
 
 ## Overview
 
 Pinata's x402 implementation enables:
 
 * **Monetization of private IPFS content** using Payment Instructions
-* **You receive payments directly** to your wallet address. Payments go to you, not Pinata.
+* **You receive payments directly** to your wallet address. Payments go to you.
 * **Flexible payment requirements** configurable per file or group of files
-* **USDC payments** on Base (mainnet) and Base Sepolia (testnet)
+* **USDC payments** on Base (mainnet) and Base Sepolia (testnet). USDC is currently the only supported token.
 * **Gateway-level enforcement** through the x402 protocol
 
 ## Network Configuration
@@ -3298,50 +3472,6 @@ Pinata's x402 implementation enables:
 | ---------------------- | -------------------------------------------- | ----------------------- |
 | Base (Mainnet)         | `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913` | Production monetization |
 | Base Sepolia (Testnet) | `0x036CbD53842c5426634e7929541eC2318f3dCF7e` | Testing payment flows   |
-
-## Payment Instructions API
-
-Create and manage payment requirements for your private content:
-
-<CardGroup cols={2}>
-  <Card title="List Instructions" icon="list" href="/api-reference/endpoint/x402/payment-instructions-list">
-    View all payment instructions
-  </Card>
-
-  <Card title="Create Instruction" icon="plus" href="/api-reference/endpoint/x402/payment-instructions-create">
-    Define new payment requirements
-  </Card>
-
-  <Card title="Get Instruction" icon="eye" href="/api-reference/endpoint/x402/payment-instructions-get">
-    Retrieve instruction details
-  </Card>
-
-  <Card title="Update Instruction" icon="pen" href="/api-reference/endpoint/x402/payment-instructions-update">
-    Modify payment requirements
-  </Card>
-
-  <Card title="Delete Instruction" icon="trash" href="/api-reference/endpoint/x402/payment-instructions-delete">
-    Remove payment instructions
-  </Card>
-</CardGroup>
-
-## CID Management
-
-Attach payment instructions to your private files:
-
-<CardGroup cols={3}>
-  <Card title="List CIDs" icon="folder" href="/api-reference/endpoint/x402/cids-list">
-    View attached CIDs
-  </Card>
-
-  <Card title="Add CID" icon="link" href="/api-reference/endpoint/x402/cids-add">
-    Attach CID to instruction
-  </Card>
-
-  <Card title="Remove CID" icon="unlink" href="/api-reference/endpoint/x402/cids-remove">
-    Detach CID from instruction
-  </Card>
-</CardGroup>
 
 ## How It Works
 
@@ -3357,79 +3487,42 @@ Attach payment instructions to your private files:
 
 ## Example Workflow
 
-<CodeGroup>
-  ```bash cURL theme={null}
-  # 1. Create a payment instruction
-  curl -X POST https://api.pinata.cloud/v3/x402/payment_instructions \
-    -H "Authorization: Bearer YOUR_JWT" \
-    -H "Content-Type: application/json" \
-    -d '{
-      "name": "Premium Content",
-      "payment_requirements": [{
-        "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
-        "pay_to": "0xYourWalletAddress",
-        "network": "base",
-        "description": "Access fee",
-        "max_amount_required": "10000"
-      }]
-    }'
+```typescript theme={null}
+import { PinataSDK } from "pinata";
 
-  # 2. Attach CID to payment instruction
-  curl -X PUT https://api.pinata.cloud/v3/x402/payment_instructions/{instruction_id}/cids/{cid} \
-    -H "Authorization: Bearer YOUR_JWT"
+const pinata = new PinataSDK({
+  pinataJwt: process.env.PINATA_JWT!,
+  pinataGateway: "your-gateway.mypinata.cloud",
+});
 
-  # 3. Share the x402 gateway URL
-  # https://your-gateway.mypinata.cloud/x402/cid/{cid}
-  ```
+// 1. Upload a private file
+const file = new File(["premium content"], "content.pdf", { type: "application/pdf" });
+const upload = await pinata.upload.private.file(file);
 
-  ```typescript TypeScript theme={null}
-  const JWT = "YOUR_PINATA_JWT";
-
-  // 1. Create a payment instruction
-  const createInstruction = await fetch(
-    "https://api.pinata.cloud/v3/x402/payment_instructions",
+// 2. Create a payment instruction
+const instruction = await pinata.x402.createPaymentInstruction({
+  name: "Premium Content",
+  payment_requirements: [
     {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${JWT}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: "Premium Content",
-        payment_requirements: [
-          {
-            asset: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
-            pay_to: "0xYourWalletAddress", // YOU receive payments here
-            network: "base",
-            description: "Access fee",
-            max_amount_required: "10000",
-          },
-        ],
-      }),
-    }
-  );
-  const instruction = await createInstruction.json();
-  const instructionId = instruction.data.id;
+      asset: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+      pay_to: "0xYourWalletAddress", // YOU receive payments here
+      network: "base",
+      description: "Access fee",
+      amount: "10000", // $0.01 in USDC
+    },
+  ],
+});
 
-  // 2. Attach CID to payment instruction
-  await fetch(
-    `https://api.pinata.cloud/v3/x402/payment_instructions/${instructionId}/cids/${cid}`,
-    {
-      method: "PUT",
-      headers: {
-        Authorization: `Bearer ${JWT}`,
-      },
-    }
-  );
+// 3. Attach CID to payment instruction
+await pinata.x402.addCid(instruction.data.id, upload.cid);
 
-  // 3. Share the x402 gateway URL
-  // https://your-gateway.mypinata.cloud/x402/cid/{cid}
-  ```
-</CodeGroup>
+// 4. Share the x402 gateway URL
+// https://your-gateway.mypinata.cloud/x402/cid/{cid}
+```
 
 ## Why Use Payment Instructions
 
-The Payment Instructions API enables you to monetize your private content by setting custom payment requirements and receiving payments directly to your wallet.
+Payment Instructions enable you to monetize your private content by setting custom payment requirements and receiving payments directly to your wallet.
 
 Key benefits:
 
@@ -3438,23 +3531,33 @@ Key benefits:
 * **Reusable payment instructions** that can be attached to multiple CIDs
 * **Full control** over payment requirements, pricing, and access
 
-## Legacy Endpoints
+## SDK Reference
 
-These endpoints are maintained for backward compatibility:
-
-<CardGroup cols={2}>
-  <Card title="/pin (Legacy)" horizontal icon="upload" href="/api-reference/endpoint/x402/legacy-pin">
-    Upload to either Public or Private IPFS
+<CardGroup>
+  <Card title="x402 Overview" icon="sparkle" href="/sdk/x402/index">
+    Get started with x402 monetization
   </Card>
 
-  <Card title="/retrieve (Legacy)" horizontal icon="download" href="/api-reference/endpoint/x402/legacy-retrieve">
-    Access a file on Private IPFS
+  <Card title="Payment Instructions" icon="code" href="/sdk/x402/payment-instructions/list">
+    Create and manage payment instructions
+  </Card>
+
+  <Card title="CID Management" icon="link" href="/sdk/x402/cids/list">
+    Attach CIDs to payment instructions
+  </Card>
+
+  <Card title="Types" icon="brackets-curly" href="/sdk/types/x402">
+    TypeScript type definitions
   </Card>
 </CardGroup>
 
+## API Reference
+
+For direct API access, see the [x402 API documentation](/api-reference/endpoint/x402/payment-instructions-list).
+
 
 # Accessing Paid Content
-Source: https://docs.pinata.cloud/files/x402-accessing-paid-content
+Source: https://docs.pinata.cloud/files/x402/x402-accessing-paid-content
 
 
 
@@ -3474,7 +3577,7 @@ When attempting to access x402-protected content without a payment payload, the 
 
 Make a GET request to the x402 gateway URL:
 
-```bash  theme={null}
+```bash theme={null}
 curl https://your-gateway.mypinata.cloud/x402/cid/bafkreih...
 ```
 
@@ -3482,7 +3585,7 @@ curl https://your-gateway.mypinata.cloud/x402/cid/bafkreih...
 
 The gateway returns HTTP 402 with payment details:
 
-```json  theme={null}
+```json theme={null}
 {
   "x402Version": 1,
   "accepts": [
@@ -3517,7 +3620,7 @@ The gateway returns HTTP 402 with payment details:
 
 After successful payment, include the `X-Payment` header in the request:
 
-```bash  theme={null}
+```bash theme={null}
 curl https://your-gateway.mypinata.cloud/x402/cid/bafkreih... \
   -H "X-Payment: eyJ4NDAyVmVyc2lvbiI6MSwic2NoZW1lIjoiZXhhY3QiLCJuZXR3b3..."
 ```
@@ -3550,7 +3653,7 @@ The x402 libraries require a Viem account or Coinbase Developer Platform wallet:
 
 ### Option 1: Viem Local Account
 
-```typescript  theme={null}
+```typescript theme={null}
 import { privateKeyToAccount } from "viem/accounts";
 
 const account = privateKeyToAccount("0xYOUR_PRIVATE_KEY");
@@ -3558,7 +3661,7 @@ const account = privateKeyToAccount("0xYOUR_PRIVATE_KEY");
 
 ### Option 2: Coinbase CDP Wallet
 
-```typescript  theme={null}
+```typescript theme={null}
 import { Coinbase, Wallet } from "@coinbase/coinbase-sdk";
 
 const coinbase = new Coinbase({
@@ -3574,10 +3677,10 @@ const account = await wallet.getDefaultAddress();
 
 Once you have your wallet set up, use the x402 libraries to access paid content:
 
-### x402-fetch
+### @x402/fetch
 
-```typescript  theme={null}
-import { wrapFetchWithPayment } from "x402-fetch";
+```typescript theme={null}
+import { wrapFetchWithPayment } from "@x402/fetch";
 import { privateKeyToAccount } from "viem/accounts";
 
 // Set up your wallet
@@ -3593,10 +3696,10 @@ const content = await response.json();
 console.log(content);
 ```
 
-### x402-axios
+### @x402/axios
 
-```typescript  theme={null}
-import { wrapAxiosWithPayment } from "x402-axios";
+```typescript theme={null}
+import { wrapAxiosWithPayment } from "@x402/axios";
 import axios from "axios";
 import { privateKeyToAccount } from "viem/accounts";
 
@@ -3651,6 +3754,8 @@ Gateway or facilitator error. Contact the content creator.
 
 ## Network Support
 
+**USDC is currently the only supported token.**
+
 | Network                | Status      | Token                                               | Use Case   |
 | ---------------------- | ----------- | --------------------------------------------------- | ---------- |
 | Base (Mainnet)         | ✅ Available | USDC (`0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`) | Production |
@@ -3666,8 +3771,8 @@ Gateway or facilitator error. Contact the content creator.
 
 ## Example: Complete Integration
 
-```typescript  theme={null}
-import { wrapFetchWithPayment } from "x402-fetch";
+```typescript theme={null}
+import { wrapFetchWithPayment } from "@x402/fetch";
 import { privateKeyToAccount } from "viem/accounts";
 
 // Set up your wallet
@@ -3701,8 +3806,8 @@ accessPaidContent("bafkreih5aznjvttude6c3wbvqeebb6rlx5wkbzyppv7garjiubll2ceym4")
 
 ## Resources
 
-* [x402-fetch NPM Package](https://www.npmjs.com/package/x402-fetch)
-* [x402-axios NPM Package](https://www.npmjs.com/package/x402-axios)
+* [@x402/fetch NPM Package](https://www.npmjs.com/package/@x402/fetch)
+* [@x402/axios NPM Package](https://www.npmjs.com/package/@x402/axios)
 * [Viem Documentation](https://viem.sh)
 * [Coinbase Developer Platform](https://docs.cdp.coinbase.com/)
 
@@ -3711,47 +3816,8 @@ accessPaidContent("bafkreih5aznjvttude6c3wbvqeebb6rlx5wkbzyppv7garjiubll2ceym4")
 Need help accessing paid content? Contact the content creator or reach out to [team@pinata.cloud](mailto:team@pinata.cloud).
 
 
-# Legacy x402
-Source: https://docs.pinata.cloud/files/x402-legacy
-
-
-
-<Warning>
-  These endpoints represent an early implementation of the x402 protocol. For new implementations, please use the [Payment Instructions API](/files/x402-payment-instructions).
-</Warning>
-
-## Overview
-
-The legacy x402 endpoints were Pinata's initial implementation of the x402 protocol for testing crypto-based content monetization. These endpoints use a simplified payment model and require the x402-axios or x402-fetch libraries.
-
-## Endpoints
-
-For detailed API specifications, see the API Reference:
-
-<CardGroup cols={2}>
-  <Card title="Upload" icon="upload" href="/api-reference/endpoint/x402/legacy-pin">
-    Upload files with payment
-  </Card>
-
-  <Card title="Retrieve" icon="download" href="/api-reference/endpoint/x402/legacy-retrieve">
-    Access private files with payment
-  </Card>
-</CardGroup>
-
-## Why Use Payment Instructions Instead
-
-The Payment Instructions API offers:
-
-* **Flexible pricing** - Set your own payment requirements
-* **Better control** - Manage payment requirements separately from files
-* **Standard protocol** - Works with the standard x402 implementation
-* **One-to-many** - Attach one payment instruction to multiple files
-
-For new projects, we recommend using the [Payment Instructions API](/files/x402-payment-instructions).
-
-
 # Payment Instructions Guide
-Source: https://docs.pinata.cloud/files/x402-payment-instructions
+Source: https://docs.pinata.cloud/files/x402/x402-payment-instructions
 
 
 
@@ -3761,8 +3827,8 @@ This guide covers how to create, manage, and use Payment Instructions to monetiz
 
 ## Prerequisites
 
-* x402 feature flag enabled on your Pinata account
-* Authentication with appropriate permissions (`OrgFilesRead` or `OrgFilesWrite`)
+* Paid Pinata account
+* [Pinata SDK](/sdk/getting-started) installed
 * Private files uploaded to Pinata IPFS
 
 ## Understanding Payment Instructions
@@ -3774,28 +3840,28 @@ A Payment Instruction is a reusable configuration that defines:
 * **Metadata** - Name and description for organization
 
 <Note>
-  The `payment_requirements` field is an array for future extensibility. Currently, only the first payment requirement in the array is processed by the gateway.
+  The `payment_requirements` field is an array, allowing you to define multiple payment options. Each payment instruction can have multiple requirements, giving requesters flexibility in how they pay.
 </Note>
 
 ### Payment Instruction Structure
 
-```json  theme={null}
-{
-  "id": "019a2b6a-adc5-7608-9ef2-2666248a60d6",
-  "version": 1,
-  "payment_requirements": [
-    {
-      "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
-      "pay_to": "0x6135561038E7C676473431842e586C8248276AED",
-      "network": "base",
-      "description": "Premium content access",
-      "max_amount_required": "10000"
-    }
-  ],
-  "name": "Premium Content",
-  "description": "Access to premium files",
-  "created_at": "2025-10-28T15:23:22.951382Z"
-}
+```typescript theme={null}
+type PaymentInstruction = {
+  id: string;
+  version: number;
+  payment_requirements: PaymentRequirement[];
+  name: string;
+  description?: string;
+  created_at: string;
+};
+
+type PaymentRequirement = {
+  asset: string;           // USDC token contract address
+  pay_to: string;          // Your wallet address
+  network: "base" | "base-sepolia" | "eip155:8453" | "eip155:84532";
+  amount: string;          // Amount in USDC smallest units
+  description?: string;
+};
 ```
 
 <Note>
@@ -3804,55 +3870,42 @@ A Payment Instruction is a reusable configuration that defines:
 
 ## Networks and Tokens
 
-Currently supported configurations:
+Currently supported configurations. **USDC is the only supported token at this time.**
 
 ### Base Mainnet (Production)
 
-* **Network**: `base`
+* **Network**: `base` (or `eip155:8453`)
 * **USDC Token Address**: `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`
 * **Use for**: Production monetization
 
 ### Base Sepolia (Testing)
 
-* **Network**: `base-sepolia`
+* **Network**: `base-sepolia` (or `eip155:84532`)
 * **USDC Token Address**: `0x036CbD53842c5426634e7929541eC2318f3dCF7e`
 * **Use for**: Testing payment flows
 
 ## Complete Workflow
 
+```typescript theme={null}
+import { PinataSDK } from "pinata";
+
+const pinata = new PinataSDK({
+  pinataJwt: process.env.PINATA_JWT!,
+  pinataGateway: "your-gateway.mypinata.cloud",
+});
+```
+
 ### Step 1: Upload Private Content
 
 First, upload your file as private to Pinata:
 
-<CodeGroup>
-  ```bash cURL theme={null}
-  curl -X POST https://uploads.pinata.cloud/v3/files \
-    -H "Authorization: Bearer YOUR_JWT" \
-    -F "file=@premium-content.pdf" \
-    -F "network=private"
-  ```
-
-  ```typescript TypeScript theme={null}
-  const JWT = "YOUR_PINATA_JWT";
-
-  const formData = new FormData();
-  const file = new File(["file contents"], "premium-content.pdf", {
-    type: "application/pdf",
-  });
-  formData.append("file", file);
-  formData.append("network", "private");
-
-  const upload = await fetch("https://uploads.pinata.cloud/v3/files", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${JWT}`,
-    },
-    body: formData,
-  });
-  const { data } = await upload.json();
-  const cid = data.cid;
-  ```
-</CodeGroup>
+```typescript theme={null}
+const file = new File(["file contents"], "premium-content.pdf", {
+  type: "application/pdf",
+});
+const upload = await pinata.upload.private.file(file);
+const cid = upload.cid;
+```
 
 **Important:** The file must be uploaded to the `private` network to be monetized with x402.
 
@@ -3860,81 +3913,30 @@ First, upload your file as private to Pinata:
 
 Create a payment instruction with your desired requirements:
 
-<CodeGroup>
-  ```bash cURL theme={null}
-  curl -X POST https://api.pinata.cloud/v3/x402/payment_instructions \
-    -H "Authorization: Bearer YOUR_JWT" \
-    -H "Content-Type: application/json" \
-    -d '{
-      "name": "Premium PDF Access",
-      "description": "One-time payment for PDF access",
-      "payment_requirements": [
-        {
-          "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
-          "pay_to": "0x6135561038E7C676473431842e586C8248276AED",
-          "network": "base",
-          "description": "Access fee",
-          "max_amount_required": "10000"
-        }
-      ]
-    }'
-  ```
-
-  ```typescript TypeScript theme={null}
-  const JWT = "YOUR_PINATA_JWT";
-
-  const instruction = await fetch(
-    "https://api.pinata.cloud/v3/x402/payment_instructions",
+```typescript theme={null}
+const instruction = await pinata.x402.createPaymentInstruction({
+  name: "Premium PDF Access",
+  description: "One-time payment for PDF access",
+  payment_requirements: [
     {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${JWT}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: "Premium PDF Access",
-        description: "One-time payment for PDF access",
-        payment_requirements: [
-          {
-            asset: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
-            pay_to: "0x6135561038E7C676473431842e586C8248276AED", // YOU receive payments here
-            network: "base",
-            description: "Access fee",
-            max_amount_required: "10000",
-          },
-        ],
-      }),
-    }
-  );
-  const { data } = await instruction.json();
-  const instructionId = data.id;
-  ```
-</CodeGroup>
+      asset: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913", // USDC on Base
+      pay_to: "0x6135561038E7C676473431842e586C8248276AED", // YOU receive payments here
+      network: "base",
+      description: "Access fee",
+      amount: "10000", // $0.01 in USDC
+    },
+  ],
+});
+const instructionId = instruction.data.id;
+```
 
 ### Step 3: Attach CID to Payment Instruction
 
 Link your private file to the payment instruction:
 
-<CodeGroup>
-  ```bash cURL theme={null}
-  curl -X PUT https://api.pinata.cloud/v3/x402/payment_instructions/{instruction_id}/cids/{cid} \
-    -H "Authorization: Bearer YOUR_JWT"
-  ```
-
-  ```typescript TypeScript theme={null}
-  const JWT = "YOUR_PINATA_JWT";
-
-  await fetch(
-    `https://api.pinata.cloud/v3/x402/payment_instructions/${instructionId}/cids/${cid}`,
-    {
-      method: "PUT",
-      headers: {
-        Authorization: `Bearer ${JWT}`,
-      },
-    }
-  );
-  ```
-</CodeGroup>
+```typescript theme={null}
+await pinata.x402.addCid(instructionId, cid);
+```
 
 ### Step 4: Share x402 Gateway URL
 
@@ -3950,200 +3952,84 @@ https://your-gateway.mypinata.cloud/x402/cid/{cid}
 
 View all your payment instructions with pagination:
 
-<CodeGroup>
-  ```bash cURL theme={null}
-  curl -X GET "https://api.pinata.cloud/v3/x402/payment_instructions?limit=20" \
-    -H "Authorization: Bearer YOUR_JWT"
-  ```
-
-  ```typescript TypeScript theme={null}
-  const JWT = "YOUR_PINATA_JWT";
-
-  const list = await fetch(
-    "https://api.pinata.cloud/v3/x402/payment_instructions?limit=20",
-    {
-      headers: {
-        Authorization: `Bearer ${JWT}`,
-      },
-    }
-  );
-  const instructions = await list.json();
-  ```
-</CodeGroup>
+```typescript theme={null}
+const instructions = await pinata.x402.listPaymentInstructions({ limit: 20 });
+```
 
 Filter by specific criteria:
 
-* `?cid=bafkreih...` - Find instruction for a specific CID
-* `?name=Premium` - Filter by name
-* `?id=019a2b6a...` - Get specific instruction
+```typescript theme={null}
+// Find instruction for a specific CID
+const byCid = await pinata.x402.listPaymentInstructions({ cid: "bafkreih..." });
+
+// Filter by name
+const byName = await pinata.x402.listPaymentInstructions({ name: "Premium" });
+
+// Get specific instruction by ID
+const byId = await pinata.x402.listPaymentInstructions({ id: "019a2b6a..." });
+```
+
+### Getting a Single Instruction
+
+```typescript theme={null}
+const instruction = await pinata.x402.getPaymentInstruction(instructionId);
+```
 
 ### Updating Instructions
 
 Modify payment requirements for all attached CIDs:
 
-<CodeGroup>
-  ```bash cURL theme={null}
-  curl -X PATCH https://api.pinata.cloud/v3/x402/payment_instructions/{id} \
-    -H "Authorization: Bearer YOUR_JWT" \
-    -H "Content-Type: application/json" \
-    -d '{
-      "payment_requirements": [
-        {
-          "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
-          "pay_to": "0x6135561038E7C676473431842e586C8248276AED",
-          "network": "base",
-          "max_amount_required": "50000"
-        }
-      ]
-    }'
-  ```
-
-  ```typescript TypeScript theme={null}
-  const JWT = "YOUR_PINATA_JWT";
-
-  const update = await fetch(
-    `https://api.pinata.cloud/v3/x402/payment_instructions/${id}`,
+```typescript theme={null}
+const updated = await pinata.x402.updatePaymentInstruction(instructionId, {
+  payment_requirements: [
     {
-      method: "PATCH",
-      headers: {
-        Authorization: `Bearer ${JWT}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        payment_requirements: [
-          {
-            asset: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
-            pay_to: "0x6135561038E7C676473431842e586C8248276AED",
-            network: "base",
-            max_amount_required: "50000",
-          },
-        ],
-      }),
-    }
-  );
-  ```
-</CodeGroup>
+      asset: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+      pay_to: "0x6135561038E7C676473431842e586C8248276AED",
+      network: "base",
+      amount: "50000", // Updated to $0.05
+    },
+  ],
+});
+```
 
 ### Deleting Instructions
 
 Before deleting, remove all CID attachments:
 
-<CodeGroup>
-  ```bash cURL theme={null}
-  # 1. List attached CIDs
-  curl -X GET https://api.pinata.cloud/v3/x402/payment_instructions/{id}/cids \
-    -H "Authorization: Bearer YOUR_JWT"
+```typescript theme={null}
+// 1. List attached CIDs
+const { data: cidData } = await pinata.x402.listCids(instructionId);
 
-  # 2. Remove each CID
-  curl -X DELETE https://api.pinata.cloud/v3/x402/payment_instructions/{id}/cids/{cid} \
-    -H "Authorization: Bearer YOUR_JWT"
+// 2. Remove each CID
+for (const cid of cidData.cids) {
+  await pinata.x402.removeCid(instructionId, cid);
+}
 
-  # 3. Delete the instruction
-  curl -X DELETE https://api.pinata.cloud/v3/x402/payment_instructions/{id} \
-    -H "Authorization: Bearer YOUR_JWT"
-  ```
-
-  ```typescript TypeScript theme={null}
-  const JWT = "YOUR_PINATA_JWT";
-
-  // 1. List attached CIDs
-  const listCids = await fetch(
-    `https://api.pinata.cloud/v3/x402/payment_instructions/${id}/cids`,
-    {
-      headers: {
-        Authorization: `Bearer ${JWT}`,
-      },
-    }
-  );
-  const { data: cids } = await listCids.json();
-
-  // 2. Remove each CID
-  for (const cid of cids) {
-    await fetch(
-      `https://api.pinata.cloud/v3/x402/payment_instructions/${id}/cids/${cid}`,
-      {
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${JWT}`,
-        },
-      }
-    );
-  }
-
-  // 3. Delete the instruction
-  await fetch(
-    `https://api.pinata.cloud/v3/x402/payment_instructions/${id}`,
-    {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${JWT}`,
-      },
-    }
-  );
-  ```
-</CodeGroup>
+// 3. Delete the instruction
+await pinata.x402.deletePaymentInstruction(instructionId);
+```
 
 ## CID Management
 
-### One-to-Many Relationship
+### CID and Payment Instruction Relationship
 
-* One Payment Instruction can be attached to multiple CIDs
-* Each CID can only have one Payment Instruction at a time
+* **One Payment Instruction → Multiple CIDs**: A single payment instruction can be attached to multiple CIDs
+* **One CID → One Payment Instruction**: Each CID can only have one payment instruction at a time
+* **Multiple Requirements**: A payment instruction can have multiple payment requirements in its `payment_requirements` array
 * Updating the instruction affects all attached CIDs
 
 ### Managing CID Attachments
 
-<CodeGroup>
-  ```bash cURL theme={null}
-  # List all CIDs for an instruction
-  curl -X GET https://api.pinata.cloud/v3/x402/payment_instructions/{instruction_id}/cids \
-    -H "Authorization: Bearer YOUR_JWT"
+```typescript theme={null}
+// List all CIDs for an instruction
+const cids = await pinata.x402.listCids(instructionId);
 
-  # Add a CID
-  curl -X PUT https://api.pinata.cloud/v3/x402/payment_instructions/{instruction_id}/cids/{cid} \
-    -H "Authorization: Bearer YOUR_JWT"
+// Add a CID
+await pinata.x402.addCid(instructionId, cid);
 
-  # Remove a CID
-  curl -X DELETE https://api.pinata.cloud/v3/x402/payment_instructions/{instruction_id}/cids/{cid} \
-    -H "Authorization: Bearer YOUR_JWT"
-  ```
-
-  ```typescript TypeScript theme={null}
-  const JWT = "YOUR_PINATA_JWT";
-
-  // List all CIDs for an instruction
-  const listCids = await fetch(
-    `https://api.pinata.cloud/v3/x402/payment_instructions/${instructionId}/cids`,
-    {
-      headers: {
-        Authorization: `Bearer ${JWT}`,
-      },
-    }
-  );
-
-  // Add a CID
-  await fetch(
-    `https://api.pinata.cloud/v3/x402/payment_instructions/${instructionId}/cids/${cid}`,
-    {
-      method: "PUT",
-      headers: {
-        Authorization: `Bearer ${JWT}`,
-      },
-    }
-  );
-
-  // Remove a CID
-  await fetch(
-    `https://api.pinata.cloud/v3/x402/payment_instructions/${instructionId}/cids/${cid}`,
-    {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${JWT}`,
-      },
-    }
-  );
-  ```
-</CodeGroup>
+// Remove a CID
+await pinata.x402.removeCid(instructionId, cid);
+```
 
 ## Gateway Behavior
 
@@ -4151,7 +4037,7 @@ When a requester accesses your x402 gateway URL without payment, the gateway ret
 
 ### Without Payment (402 Response)
 
-```json  theme={null}
+```json theme={null}
 {
   "x402Version": 1,
   "accepts": [
@@ -4185,15 +4071,15 @@ The gateway:
 
 ### Payment Amounts
 
-The `max_amount_required` uses USDC's smallest unit. USDC has 6 decimals, so to convert USD to the token amount, multiply by 1,000,000:
+The `amount` uses USDC's smallest unit. USDC has 6 decimals, so to convert USD to the token amount, multiply by 1,000,000:
 
-| USD Amount | `max_amount_required` | Calculation         |
-| ---------- | --------------------- | ------------------- |
-| \$0.01     | `"10000"`             | \$0.01 × 1,000,000  |
-| \$0.10     | `"100000"`            | \$0.10 × 1,000,000  |
-| \$1.00     | `"1000000"`           | \$1.00 × 1,000,000  |
-| \$5.00     | `"5000000"`           | \$5.00 × 1,000,000  |
-| \$10.00    | `"10000000"`          | \$10.00 × 1,000,000 |
+| USD Amount | `amount`     | Calculation         |
+| ---------- | ------------ | ------------------- |
+| \$0.01     | `"10000"`    | \$0.01 × 1,000,000  |
+| \$0.10     | `"100000"`   | \$0.10 × 1,000,000  |
+| \$1.00     | `"1000000"`  | \$1.00 × 1,000,000  |
+| \$5.00     | `"5000000"`  | \$5.00 × 1,000,000  |
+| \$10.00    | `"10000000"` | \$10.00 × 1,000,000 |
 
 **Formula:** USD Amount × 1,000,000 = token amount
 
@@ -4226,8 +4112,8 @@ The `max_amount_required` uses USDC's smallest unit. USDC has 6 decimals, so to 
 **400 Bad Request when creating instruction**
 
 * Check `asset` and `pay_to` addresses start with `0x`
-* Verify `network` is either `base` or `base-sepolia`
-* Ensure `max_amount_required` is provided
+* Verify `network` is `base`, `base-sepolia`, `eip155:8453`, or `eip155:84532`
+* Ensure `amount` is provided
 
 **404 Not Found when accessing CID**
 
@@ -4235,22 +4121,24 @@ The `max_amount_required` uses USDC's smallest unit. USDC has 6 decimals, so to 
 * Check the CID is attached to a payment instruction
 * Ensure the gateway URL format is correct
 
+## SDK Reference
+
+* [List Payment Instructions](/sdk/x402/payment-instructions/list)
+* [Create Payment Instruction](/sdk/x402/payment-instructions/create)
+* [Get Payment Instruction](/sdk/x402/payment-instructions/get)
+* [Update Payment Instruction](/sdk/x402/payment-instructions/update)
+* [Delete Payment Instruction](/sdk/x402/payment-instructions/delete)
+* [List CIDs](/sdk/x402/cids/list)
+* [Add CID](/sdk/x402/cids/add)
+* [Remove CID](/sdk/x402/cids/remove)
+
 ## API Reference
 
-For detailed API specifications, see:
-
-* [List Payment Instructions](/api-reference/endpoint/x402/payment-instructions-list)
-* [Create Payment Instruction](/api-reference/endpoint/x402/payment-instructions-create)
-* [Get Payment Instruction](/api-reference/endpoint/x402/payment-instructions-get)
-* [Update Payment Instruction](/api-reference/endpoint/x402/payment-instructions-update)
-* [Delete Payment Instruction](/api-reference/endpoint/x402/payment-instructions-delete)
-* [List CIDs](/api-reference/endpoint/x402/cids-list)
-* [Add CID](/api-reference/endpoint/x402/cids-add)
-* [Remove CID](/api-reference/endpoint/x402/cids-remove)
+For direct API access, see the [x402 API documentation](/api-reference/endpoint/x402/payment-instructions-list).
 
 
 # Quick Start
-Source: https://docs.pinata.cloud/files/x402-quick-start
+Source: https://docs.pinata.cloud/files/x402/x402-quick-start
 
 
 
@@ -4259,49 +4147,33 @@ Get started monetizing your private IPFS files with x402 in just a few minutes.
 With x402, you monetize your private files by setting payment requirements. Payments go directly to your wallet. You control the price and receive the funds.
 
 <Note>
-  Before starting, ensure the x402 feature flag is enabled on your account. Contact [team@pinata.cloud](mailto:team@pinata.cloud) if you need access.
+  x402 is available on paid Pinata accounts. [Upgrade your account](https://app.pinata.cloud/billing) to access x402 monetization features.
 </Note>
 
 ## Prerequisites
 
-* Pinata account with x402 feature flag enabled
-* API JWT from [Pinata App](https://app.pinata.cloud/developers/api-keys)
-* Private file uploaded to Pinata
+* Paid Pinata account
+* [Pinata SDK](/sdk/getting-started) installed
 * Ethereum wallet address to receive payments
 
 ## Step 1: Upload a Private File
 
 First, upload a file to Private IPFS:
 
-<CodeGroup>
-  ```bash cURL theme={null}
-  curl -X POST https://uploads.pinata.cloud/v3/files \
-    -H "Authorization: Bearer YOUR_JWT" \
-    -F "file=@your-file.pdf" \
-    -F "network=private"
-  ```
+```typescript theme={null}
+import { PinataSDK } from "pinata";
 
-  ```typescript TypeScript theme={null}
-  const JWT = "YOUR_PINATA_JWT";
+const pinata = new PinataSDK({
+  pinataJwt: process.env.PINATA_JWT!,
+  pinataGateway: "your-gateway.mypinata.cloud",
+});
 
-  const formData = new FormData();
-  const file = new File(["file contents"], "your-file.pdf", {
-    type: "application/pdf",
-  });
-  formData.append("file", file);
-  formData.append("network", "private");
-
-  const upload = await fetch("https://uploads.pinata.cloud/v3/files", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${JWT}`,
-    },
-    body: formData,
-  });
-  const uploadResponse = await upload.json();
-  const cid = uploadResponse.data.cid;
-  ```
-</CodeGroup>
+const file = new File(["file contents"], "your-file.pdf", {
+  type: "application/pdf",
+});
+const upload = await pinata.upload.private.file(file);
+const cid = upload.cid;
+```
 
 Save the returned `cid` for the next step.
 
@@ -4309,73 +4181,39 @@ Save the returned `cid` for the next step.
 
 Define your payment requirements:
 
-<CodeGroup>
-  ```bash cURL theme={null}
-  curl -X POST https://api.pinata.cloud/v3/x402/payment_instructions \
-    -H "Authorization: Bearer YOUR_JWT" \
-    -H "Content-Type: application/json" \
-    -d '{
-      "name": "Premium Content Access",
-      "description": "One-time payment for file access",
-      "payment_requirements": [
-        {
-          "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
-          "pay_to": "YOUR_WALLET_ADDRESS",
-          "network": "base",
-          "description": "Access fee",
-          "max_amount_required": "10000"
-        }
-      ]
-    }'
-  ```
-
-  ```typescript TypeScript theme={null}
-  const JWT = "YOUR_PINATA_JWT";
-
-  const instruction = await fetch(
-    "https://api.pinata.cloud/v3/x402/payment_instructions",
+```typescript theme={null}
+const instruction = await pinata.x402.createPaymentInstruction({
+  name: "Premium Content Access",
+  description: "One-time payment for file access",
+  payment_requirements: [
     {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${JWT}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: "Premium Content Access",
-        description: "One-time payment for file access",
-        payment_requirements: [
-          {
-            asset: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
-            pay_to: "YOUR_WALLET_ADDRESS", // YOU receive payments here
-            network: "base",
-            description: "Access fee",
-            max_amount_required: "10000",
-          },
-        ],
-      }),
-    }
-  );
-  const instructionResponse = await instruction.json();
-  const instructionId = instructionResponse.data.id;
-  ```
-</CodeGroup>
+      asset: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913", // USDC on Base
+      pay_to: "YOUR_WALLET_ADDRESS", // YOU receive payments here
+      network: "base",
+      description: "Access fee",
+      amount: "10000", // $0.01 in USDC
+    },
+  ],
+});
+const instructionId = instruction.data.id;
+```
 
-**Understanding Payment Amounts:** The `max_amount_required` uses USDC's smallest unit. USDC has 6 decimals, so to convert USD to the token amount, multiply by 1,000,000:
+**Understanding Payment Amounts:** The `amount` uses USDC's smallest unit. USDC has 6 decimals, so to convert USD to the token amount, multiply by 1,000,000:
 
-| USD Amount | `max_amount_required` | Calculation         |
-| ---------- | --------------------- | ------------------- |
-| \$0.01     | `"10000"`             | \$0.01 × 1,000,000  |
-| \$0.10     | `"100000"`            | \$0.10 × 1,000,000  |
-| \$1.00     | `"1000000"`           | \$1.00 × 1,000,000  |
-| \$5.00     | `"5000000"`           | \$5.00 × 1,000,000  |
-| \$10.00    | `"10000000"`          | \$10.00 × 1,000,000 |
+| USD Amount | `amount`     | Calculation         |
+| ---------- | ------------ | ------------------- |
+| \$0.01     | `"10000"`    | \$0.01 × 1,000,000  |
+| \$0.10     | `"100000"`   | \$0.10 × 1,000,000  |
+| \$1.00     | `"1000000"`  | \$1.00 × 1,000,000  |
+| \$5.00     | `"5000000"`  | \$5.00 × 1,000,000  |
+| \$10.00    | `"10000000"` | \$10.00 × 1,000,000 |
 
 **Formula:** USD Amount × 1,000,000 = token amount
 
 **Networks:**
 
-* Production: Use `"base"` with `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`
-* Testing: Use `"base-sepolia"` with `0x036CbD53842c5426634e7929541eC2318f3dCF7e`
+* Production: Use `"base"` (or `"eip155:8453"`) with `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`
+* Testing: Use `"base-sepolia"` (or `"eip155:84532"`) with `0x036CbD53842c5426634e7929541eC2318f3dCF7e`
 
 Save the returned `id` for the next step.
 
@@ -4383,28 +4221,9 @@ Save the returned `id` for the next step.
 
 Link your private file to the payment instruction:
 
-<CodeGroup>
-  ```bash cURL theme={null}
-  curl -X PUT https://api.pinata.cloud/v3/x402/payment_instructions/{instruction_id}/cids/{cid} \
-    -H "Authorization: Bearer YOUR_JWT"
-  ```
-
-  ```typescript TypeScript theme={null}
-  const JWT = "YOUR_PINATA_JWT";
-
-  await fetch(
-    `https://api.pinata.cloud/v3/x402/payment_instructions/${instructionId}/cids/${cid}`,
-    {
-      method: "PUT",
-      headers: {
-        Authorization: `Bearer ${JWT}`,
-      },
-    }
-  );
-  ```
-</CodeGroup>
-
-Replace `{instruction_id}` with the ID from Step 2 and `{cid}` with the CID from Step 1.
+```typescript theme={null}
+await pinata.x402.addCid(instructionId, cid);
+```
 
 ## Step 4: Share Your Monetized Content
 
@@ -4422,23 +4241,17 @@ https://your-gateway.mypinata.cloud/x402/cid/{cid}
 
 When a requester accesses your URL without payment, the gateway returns a 402 response with payment requirements:
 
-<CodeGroup>
-  ```bash cURL theme={null}
-  curl https://your-gateway.mypinata.cloud/x402/cid/{cid}
-  ```
-
-  ```typescript TypeScript theme={null}
-  const response = await fetch(
-    `https://your-gateway.mypinata.cloud/x402/cid/${cid}`
-  );
-  const paymentRequirements = await response.json();
-  console.log(paymentRequirements);
-  ```
-</CodeGroup>
+```typescript theme={null}
+const response = await fetch(
+  `https://your-gateway.mypinata.cloud/x402/cid/${cid}`
+);
+const paymentRequirements = await response.json();
+console.log(paymentRequirements);
+```
 
 Response:
 
-```json  theme={null}
+```json theme={null}
 {
   "x402Version": 1,
   "accepts": [{
@@ -4458,19 +4271,55 @@ After payment is made, requesters can access the file by including the payment p
 ## Next Steps
 
 * **Manage Multiple Files**: Attach multiple CIDs to the same payment instruction
-* **Update Pricing**: Use the [Update Payment Instruction](/api-reference/endpoint/x402/payment-instructions-update) endpoint
+* **Update Pricing**: Use [`updatePaymentInstruction`](/sdk/x402/payment-instructions/update)
 * **Monitor Access**: Check your gateway analytics to track paid downloads
-* **Requester Guide**: Learn how requesters access paid content in the [Accessing Paid Content](/files/x402-accessing-paid-content) guide
+* **Requester Guide**: Learn how requesters access paid content in the [Accessing Paid Content](/files/x402/x402-accessing-paid-content) guide
 
 ## Common Issues
 
 **404 Not Found**: Verify the CID is private and correctly attached to a payment instruction
 
-**403 Forbidden**: Check that your API key has the required permissions (`OrgFilesWrite`)
+**403 Forbidden**: Check that your API key has the required permissions
 
 **409 Conflict**: If deleting a payment instruction fails, remove all CID attachments first
 
 Need help? Contact [team@pinata.cloud](mailto:team@pinata.cloud)
+
+## API Reference
+
+For direct API access, see the [x402 API documentation](/api-reference/endpoint/x402/payment-instructions-list).
+
+
+# x402 Services
+Source: https://docs.pinata.cloud/files/x402/x402-services
+
+
+
+## Overview
+
+The x402 Services provide streamlined endpoints for crypto-based content monetization using the @x402/axios or @x402/fetch libraries.
+
+## Endpoints
+
+For detailed API specifications, see the API Reference:
+
+<CardGroup>
+  <Card title="Upload" icon="upload" href="/api-reference/endpoint/x402/pin">
+    Upload files with payment
+  </Card>
+
+  <Card title="Retrieve" icon="download" href="/api-reference/endpoint/x402/retrieve">
+    Access private files with payment
+  </Card>
+</CardGroup>
+
+## See Also
+
+For more granular control over payment configurations, see the [Payment Instructions API](/files/x402/x402-payment-instructions), which offers:
+
+* **Flexible pricing** - Define custom payment requirements
+* **Separate management** - Configure payments independently from files
+* **One-to-many** - Attach one payment instruction to multiple files
 
 
 # Astro
@@ -4489,7 +4338,7 @@ To create an API key, visit the [Keys Page](https://app.pinata.cloud/developers/
   to scope keys as you better understand your needs
 </Note>
 
-<img style={{ borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafybeignh2yy7bp7qpts5vi46prbjd6lbz23lmtbfcgvpcwc5rjkudrfta" />
+<img />
 
 Once you have created the keys you will be shown your API Key Info. This will contain your **Api Key**, **API Secret**, and your **JWT**. Click "Copy All" and save them somewhere safe!
 
@@ -4499,7 +4348,7 @@ Once you have created the keys you will be shown your API Key Info. This will co
 
 After you have your API key, you will want to get your Gateway domain. When you create a Pinata account, you'll automatically have a Gateway created for you! To see it, simply visit the [Gateways Page](https://app.pinata.cloud/gateway) see it listed there.
 
-<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafkreiaedels7u6z6f3dwgmp5t25a2o74xt2kqe4kf72tk6orri7hrbfy4" />
+<img />
 
 The gateway domains are randomly generated and might look something like this:
 
@@ -4511,7 +4360,7 @@ aquamarine-casual-tarantula-177.mypinata.cloud
 
 To create a new Astro project go ahead and run this command in the terminal:
 
-```bash  theme={null}
+```bash theme={null}
 npm create astro@latest pinata-astro
 ```
 
@@ -4536,13 +4385,13 @@ deps   Install dependencies?
 
 After completing the project setup we can go ahead and `cd` into the repo and install `pinata`.
 
-```bash  theme={null}
+```bash theme={null}
 cd pinata-astro && npm i pinata
 ```
 
 Since we want to keep our API key private we will need to make sure our code is deployed server side, and we can use several different adapter options which you can view [here](https://docs.astro.build/en/guides/server-side-rendering/). We also need a UI framework to handle our upload form, and there are many to choose from [here](https://docs.astro.build/en/guides/framework-components/). We'll use `vercel` and `svelte` for this tutorial, and you can install them like so.
 
-```bash  theme={null}
+```bash theme={null}
 npx astro add vercel svelte
 ```
 
@@ -4627,7 +4476,7 @@ This component creates a `<form>` with a file `<input>` as well as a `<button>` 
 
 In the `src/pages` folder make a new folder called `api` and inside there make a file called `upload.ts`. Paste the following code inside it:
 
-```typescript  theme={null}
+```typescript theme={null}
 import type { APIRoute } from "astro";
 import { pinata } from "../../utils/pinata";
 
@@ -4693,7 +4542,7 @@ Source: https://docs.pinata.cloud/frameworks/hono
 
 To create an API key, visit the [Keys Page](https://app.pinata.cloud/developers/keys) and click the "New Key" button in the top right. Once you do that you can select if you want your key to be admin or if you want to scope the privileges of the keys to certain endpoints or limit the number of uses. Make those selections, then give the key a name at the bottom, and click create key.
 
-<img style={{ borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafybeignh2yy7bp7qpts5vi46prbjd6lbz23lmtbfcgvpcwc5rjkudrfta" />
+<img />
 
 Once you have created the keys, you will be shown your API Key Info. This will contain your **Api Key**, **API Secret**, and your **JWT**. Click "Copy All" and save them somewhere safe!
 
@@ -4703,7 +4552,7 @@ Once you have created the keys, you will be shown your API Key Info. This will c
 
 After you have your API key, you will want to get your Gateway domain. When you create a Pinata account, you'll automatically have a Gateway created for you! To see it, simply visit the [Gateways Page](https://app.pinata.cloud/gateway) see it listed there.
 
-<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafkreiaedels7u6z6f3dwgmp5t25a2o74xt2kqe4kf72tk6orri7hrbfy4" />
+<img />
 
 The gateway domains are randomly generated and might look something like this:
 
@@ -4715,13 +4564,13 @@ aquamarine-casual-tarantula-177.mypinata.cloud
 
 Run the command below to make a new Hono project:
 
-```bash  theme={null}
+```bash theme={null}
 npm create hono@latest pinata-server
 ```
 
 After doing so you should see a list of different deployment templates. We would recommend using `Cloudflare Workers` which is what we'll follow through with in this guide. After selecting that `cd` into the project and install the Pinata SDK.
 
-```bash  theme={null}
+```bash theme={null}
 cd pinata-server
 npm i pinata
 ```
@@ -4789,23 +4638,23 @@ This creates just two simple endpoints:
 
 Test it out by running the following command in your terminal
 
-```bash  theme={null}
+```bash theme={null}
 npm run dev
 ```
 
 You should see the console say it's serving at `http://localhost:8787`. While this is running, in a separate terminal window run this curl to test the API endpoint:
 
-```bash  theme={null}
+```bash theme={null}
 curl http://localhost:8787/presigned_url
 ```
 
 If successful you shoud have a JSON object like the following
 
-```JSON  theme={null}
+```JSON theme={null}
 {"url":"https://uploads.pinata.cloud/v3/files/redacted?X-Algorithm=PINATA2&X-Date=1743695529&X-Expires=60&X-Method=%5B%22HEAD%22%2C%22PATCH%22%2C%22POST%22%5D&X-Upload-Option-Network=public&X-User-ID=redacted&X-Signature=redacted"}
 ```
 
-<Card href="/frameworks/react" horizontal icon="react" title="Continue to React Guide">
+<Card href="/frameworks/react" icon="react" title="Continue to React Guide">
   To see how you can use Presigned URLs with a client side framework check out the React guide
 </Card>
 
@@ -4826,7 +4675,7 @@ To create an API key, visit the [Keys Page](https://app.pinata.cloud/developers/
   to scope keys as you better understand your needs
 </Note>
 
-<img style={{ borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafybeignh2yy7bp7qpts5vi46prbjd6lbz23lmtbfcgvpcwc5rjkudrfta" />
+<img />
 
 Once you have created the keys you will be shown your API Key Info. This will contain your **Api Key**, **API Secret**, and your **JWT**. Click "Copy All" and save them somewhere safe!
 
@@ -4836,7 +4685,7 @@ Once you have created the keys you will be shown your API Key Info. This will co
 
 After you have your API key, you will want to get your Gateway domain. When you create a Pinata account, you'll automatically have a Gateway created for you! To see it, simply visit the [Gateways Page](https://app.pinata.cloud/gateway) see it listed there.
 
-<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafkreiaedels7u6z6f3dwgmp5t25a2o74xt2kqe4kf72tk6orri7hrbfy4" />
+<img />
 
 The gateway domains are randomly generated and might look something like this:
 
@@ -4854,13 +4703,13 @@ aquamarine-casual-tarantula-177.mypinata.cloud
 
 As with any Next.js project we can start one up with the following command
 
-```bash  theme={null}
+```bash theme={null}
 npx create-next-app@latest
 ```
 
 After the project is created `cd` into the repo and install `pinata`
 
-```bash  theme={null}
+```bash theme={null}
 npm i pinata
 ```
 
@@ -5006,13 +4855,13 @@ Next.js has a file size limit as to what can be pass through API routes, so anot
 
 As with any Next.js project we can start one up with the following command
 
-```bash  theme={null}
+```bash theme={null}
 npx create-next-app@latest
 ```
 
 After the project is created `cd` into the repo and install `pinata`
 
-```bash  theme={null}
+```bash theme={null}
 npm i pinata
 ```
 
@@ -5190,7 +5039,7 @@ To create an API key, visit the [Keys Page](https://app.pinata.cloud/developers/
   move to scope keys as you better understand your needs
 </Note>
 
-<img style={{ borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafybeignh2yy7bp7qpts5vi46prbjd6lbz23lmtbfcgvpcwc5rjkudrfta" />
+<img />
 
 Once you have created the keys you will be shown your API Key Info. This will contain your **Api Key**, **API Secret**, and your **JWT**. Click "Copy All" and save them somewhere safe!
 
@@ -5202,13 +5051,13 @@ Once you have created the keys you will be shown your API Key Info. This will co
 
 To start you can go to your terminal and put in the following code
 
-```bash  theme={null}
+```bash theme={null}
 mkdir pinata-starter && cd pinata-starter && npm init -y
 ```
 
 Then install the [Files SDK](/sdk) as well as `dotenv`
 
-```bash  theme={null}
+```bash theme={null}
 npm i pinata dotenv
 ```
 
@@ -5223,7 +5072,7 @@ Use the `JWT` from the API key creation in the previous step as well as the `Gat
 
 Now we'll make two files, `index.js` and `hello-world.txt`.
 
-```bash  theme={null}
+```bash theme={null}
 touch index.js && touch hello-world.txt
 ```
 
@@ -5286,7 +5135,7 @@ Once we have our initial project setup we can put the following code into our `i
 
 You can run this by using `node index.js` in the terminal. After uploading a file you should get a response that looks like this
 
-```javascript  theme={null}
+```javascript theme={null}
 {
     id: "349f1bb2-5d59-4cab-9966-e94c028a05b7",
     name: "file.txt",
@@ -5331,7 +5180,7 @@ Source: https://docs.pinata.cloud/frameworks/react
 
 Since React is a client side framework it is recommend to handle uploads using [Presigned URLs](/files/presigned-urls) using a server side framework like [Hono](/frameworks/hono). We would highly recommend following the Hono guide below before doing this React guide!
 
-<Card href="/frameworks/Hono" horizontal icon="fire" title="Hono Guide" />
+<Card href="/frameworks/Hono" icon="fire" title="Hono Guide" />
 
 ## Installation
 
@@ -5339,7 +5188,7 @@ Since React is a client side framework it is recommend to handle uploads using [
 
 Before we start you'll need your Dedicated Gateway domain. When you create a Pinata account, you'll automatically have a Gateway created for you! To see it, simply visit the [Gateways Page](https://app.pinata.cloud/gateway) see it listed there.
 
-<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafkreiaedels7u6z6f3dwgmp5t25a2o74xt2kqe4kf72tk6orri7hrbfy4" />
+<img />
 
 The gateway domains are randomly generated and might look something like this:
 
@@ -5351,13 +5200,13 @@ aquamarine-casual-tarantula-177.mypinata.cloud
 
 Run the command below to make a new React project:
 
-```bash  theme={null}
+```bash theme={null}
 npm create vite@latest
 ```
 
 Give the project a name and select the React framework. Then `cd` into the project and install `pinata`.
 
-```bash  theme={null}
+```bash theme={null}
 npm i pinata
 ```
 
@@ -5467,7 +5316,7 @@ In our code we have a pretty simple form that will trigger `handleSubmit()`. Thi
 
 To try it out make sure your server is running, then in another terminal Run
 
-```bash  theme={null}
+```bash theme={null}
 npm run dev
 ```
 
@@ -5490,7 +5339,7 @@ To create an API key, visit the [Keys Page](https://app.pinata.cloud/developers/
   to scope keys as you better understand your needs
 </Note>
 
-<img style={{ borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafybeignh2yy7bp7qpts5vi46prbjd6lbz23lmtbfcgvpcwc5rjkudrfta" />
+<img />
 
 Once you have created the keys you will be shown your API Key Info. This will contain your **Api Key**, **API Secret**, and your **JWT**. Click "Copy All" and save them somewhere safe!
 
@@ -5500,7 +5349,7 @@ Once you have created the keys you will be shown your API Key Info. This will co
 
 After you have your API key, you will want to get your Gateway domain. When you create a Pinata account, you'll automatically have a Gateway created for you! To see it, simply visit the [Gateways Page](https://app.pinata.cloud/gateway) see it listed there.
 
-<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafkreiaedels7u6z6f3dwgmp5t25a2o74xt2kqe4kf72tk6orri7hrbfy4" />
+<img />
 
 The gateway domains are randomly generated and might look something like this:
 
@@ -5512,13 +5361,13 @@ aquamarine-casual-tarantula-177.mypinata.cloud
 
 We can start a Remix app by entering the command below into the terminal
 
-```bash  theme={null}
+```bash theme={null}
 npx create-remix@latest pinata-remix
 ```
 
 After it's finished installed we'll want to `cd` into the project and install the `pinata` SDK.
 
-```bash  theme={null}
+```bash theme={null}
 cd pinata-remix && npm i pinata
 ```
 
@@ -5533,7 +5382,7 @@ GATEWAY_URL= # The Gateway domain we grabbed earlier, formatting just as we copi
 
 Make a folder in the root of the project called `utils`, and inside make a file called `pinata.ts` with the following code:
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 export const pinata = new PinataSDK({
@@ -5610,7 +5459,7 @@ export default function Index() {
 
 Let's walk through what's happening here. To start we have our client side markup:
 
-```typescript  theme={null}
+```typescript theme={null}
 <div className="font-sans p-4 flex flex-col gap-4 justify-center items-center min-h-screen max-w-[500px] mx-auto">
 			<h1 className="text-3xl font-bold">Remix + Pinata</h1>
 			<Form
@@ -5645,7 +5494,7 @@ This is a simple `Form` element provided by Remix which lets us make a submissio
 
 Then we have our server action:
 
-```typescript  theme={null}
+```typescript theme={null}
 export const action = async ({ request }: ActionFunctionArgs) => {
 	const formData = await request.formData();
 	const file = formData.get("file") as File;
@@ -5674,7 +5523,7 @@ To create an API key, visit the [Keys Page](https://app.pinata.cloud/developers/
   to scope keys as you better understand your needs
 </Note>
 
-<img style={{ borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafybeignh2yy7bp7qpts5vi46prbjd6lbz23lmtbfcgvpcwc5rjkudrfta" />
+<img />
 
 Once you have created the keys you will be shown your API Key Info. This will contain your **Api Key**, **API Secret**, and your **JWT**. Click "Copy All" and save them somewhere safe!
 
@@ -5684,7 +5533,7 @@ Once you have created the keys you will be shown your API Key Info. This will co
 
 After you have your API key, you will want to get your Gateway domain. When you create a Pinata account, you'll automatically have a Gateway created for you! To see it, simply visit the [Gateways Page](https://app.pinata.cloud/gateway) see it listed there.
 
-<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafkreiaedels7u6z6f3dwgmp5t25a2o74xt2kqe4kf72tk6orri7hrbfy4" />
+<img />
 
 The gateway domains are randomly generated and might look something like this:
 
@@ -5700,7 +5549,7 @@ This guide will walk you through a server side upload flow in SvelteKit
 
 The easiest way to start building a SvelteKit app is to run `npm create`
 
-```bash  theme={null}
+```bash theme={null}
 npm create svelte@latest pinata-app
 - Which Svelte app template? Skeleton project
 - Add type checking with TypeScript? Yes, using TypeScript syntax
@@ -5710,13 +5559,13 @@ npm create svelte@latest pinata-app
 
 After the project is created `cd` into the repo and install `pinata`
 
-```bash  theme={null}
+```bash theme={null}
 npm i pinata
 ```
 
 In this demo we will be using `tailwindcss` with typography plugin. Follow other CSS Framework guides respectively.
 
-```bash  theme={null}
+```bash theme={null}
 npx svelte-add@latest tailwindcss
 ```
 
@@ -5868,7 +5717,7 @@ Source: https://docs.pinata.cloud/gateways/dedicated-ipfs-gateways
 
 Dedicated Gateways are the fastest way to fetch content from IPFS, and are the ideal tool when building decentralized applications. When you create a Pinata account, you'll automatically have a Dedicated Gateway created for you! To see it, simply visit the [Gateways Page](https://app.pinata.cloud/gateway).
 
-<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafkreiaedels7u6z6f3dwgmp5t25a2o74xt2kqe4kf72tk6orri7hrbfy4" />
+<img />
 
 The gateway domains are randomly generated and might look something like this:
 
@@ -5880,13 +5729,13 @@ aquamarine-casual-tarantula-177.mypinata.cloud
 
 To view content through your gateway, grab the CID of the file you'd like to view and add it to your gateway URL, like so:
 
-<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafybeifvav3tzhkldtb6taawuavxtd4nvcd4vd3xzeax2wd5b4y35azmrq" />
+<img />
 
 Simple as that!
 
 You can also fetch the data programatically using the [get](/sdk/gateways/public/get) method in the [SDK](/sdk).
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata-web3";
 
 const pinata = new PinataSDK({
@@ -5903,7 +5752,7 @@ All Pinata Dedicated Gateways are restricted by default. This mean they will onl
 
 If you plan to upload content to your own account then use your gateway to fetch it, you shouldn't have to touch a thing and it will work as expected! However, lets say you're building a marketplace and you need to fetch content outside your account. In that case, you will want to use [Gateway Access Controls](/gateways/gateway-access-controls). Adding one of these will allow you to access CIDs from the public IPFS network, but it has to meet that access control condition, like a Gateway API Key or Host Origin requirement. Be sure to read our [docs on Gateway Access Controls](/gateways/gateway-access-controls) to learn more.
 
-<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafybeibu2lhpviqupiqkp27vlquwno34bibpstv7ukweeupelm2oglsizm" />
+<img />
 
 <Note>
   The only way to open a Dedicated Gateway and allow any CID to go through is to
@@ -5922,7 +5771,7 @@ https://ipfs.io/ipfs/QmVLwvmGehsrNEvhcCnnsw5RQNseohgEkFNN1848zNzdng
 
 The Pinata SDK is designed to assist you in scenarios like this. It can take IPFS urls, whether they are the protocol standard (`ipfs://`) or another gateway (`https://ipfs.io`), and turn them into your specified Dedicated Gateway.
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata-web3";
 
 const pinata = new PinataSDK({
@@ -5980,23 +5829,23 @@ When working with IPFS Gateways the behavior usually falls into two categories: 
 
 Restricted means the gateway can only load content that is pinned to that user's account. This is the default behavior for Pinata's Dedicated Gateway, as it provides the maximum level of security. Any requests made to a CID outside the user's account will be unauthorized.
 
-<img style={{ width: '100%', borderRadius: '0.5rem'}} src="https://docs.mypinata.cloud/ipfs/Qmd4Z7GEkBo4VQUHpBQUxX9ud5wHSkAU3sPajJ73k33Rtc" />
+<img />
 
 <Info>This check of whether or not a file is pinned or not using `/data/pinList` in the Pinata API, which means recursive CIDs in folders are considered unauthorized. Instead, use the folder CID in the path of the gateway followed by the file name.</Info>
 
 ### Open Gateway
 
-<img style={{ width: '100%', borderRadius: '0.5rem'}} src="https://docs.mypinata.cloud/ipfs/QmZAWTtEXeyGiTg6fjWmV4Chyrj7hZH59LMhUaB8AYJ3Er" />
+<img />
 
 Open means the gateway can access any content on IPFS, not just pinned content. An example might be a public gateway like `ipfs.io/ipfs/` which is open to everyone, but has heavy rate limiting. For Dedicated Gateways, you achieve this open state by adding Access Controls.
 
 ### Why Access Controls?
 
-<img style={{ width: '100%', borderRadius: '0.5rem'}} src="https://docs.mypinata.cloud/ipfs/QmcQP1ASKEJhFCF9HPZJBLdufaGD3kXZieexqpqUzje3vw" />
+<img />
 
 If someone were to open their Dedicated Gateway without any permissions, anyone who found the domain could use it for themselves and abuse it, leaving the owner with a big bill of overages.
 
-<img style={{ width: '100%', borderRadius: '0.5rem'}} src="https://docs.mypinata.cloud/ipfs/QmVB3vCkHGYmXYiBkQSZcE7nhSUkFHoq3L1MbS7cqnidrZ" />
+<img />
 
 Because of this Pinata developed Gateway Access Controls to allow users to open their Gateways, but with restrictions that must be met first.
 
@@ -6014,11 +5863,11 @@ Adding a Gateway Key restriction means that content served through your gateway 
 
 To create a Gateway Key, click on the button that says "Request Key."
 
-<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafkreibhjpoevzk6lspvqrvgmwobsgl7fcttytm7v3fffpf3wgecmxt3bm" />
+<img />
 
 When you create a key you will have the ability to preview the token by clicking the "eye" icon, or copy the token to your clipboard with the "copy" icon. At any point, you can delete a gateway key by clicking the "trash" icon.
 
-<img style={{ width: "70%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafkreidzja4bhlh7fjam5jv3ujc7vaoa6dyg4bex6323thf344p5ou75hy" />
+<img />
 
 Once you have the key, there are two ways you can use it in the gateway request.
 
@@ -6046,21 +5895,21 @@ You can also restrict your gateway by IP Address. You can add up to 100 differen
 
 To start, click "Set IP Address" on the right side of the menu.
 
-<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafkreigzxm2h4gfflwpxcejijbl2pq6id3e6ppzoelsdvij6q2h575esli" />
+<img />
 
 You will get window asking for a valid IP Address which will allow any requests being made from the IP Address to go through!
 
-<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafkreigdjnva4yualme2bqo4hiyfgt3d3dgjdnpfqcbolqclrobtvmniqy" />
+<img />
 
 ### Host Origin
 
 With the Host Origin restriction, you can make sure your gateway can only be used on a specific domain (for example, '[https://app.pinata.cloud](https://app.pinata.cloud)'). To get started, click on "Add Host Origin."
 
-<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafkreiereemuubnb5wcuqisvzww2fwyythusc3zffn3dfvvp32yvsbi72m" />
+<img />
 
 After that, you can add the domain you would like your gateway to be used from!
 
-<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafkreiaoc6ukms6a2qd444fc3ifunheet6jdzhkppwn76lxputgfhqiswu" />
+<img />
 
 <Warning>
   Make sure you include the `https://` protocol prefix in the URL and that there are no trailing slashes! To test localhost use the IP Access control with your public facing IP.
@@ -6114,19 +5963,19 @@ There are differences when using image optmizations for public files vs private 
 
 At least one option must be specified. Options are comma-separated (spaces are not allowed anywhere). Names of options can be specified in full or abbreviated.
 
-<ParamField query="img-width" type="string">
+<ParamField type="string">
   Specifies maximum width of the image in pixels. Exact behavior depends on the fit mode (described below).
 </ParamField>
 
-<ParamField query="img-height" type="string">
+<ParamField type="string">
   Specifies maximum height of the image in pixels. Exact behavior depends on the fit mode (described below).
 </ParamField>
 
-<ParamField query="img-dpr=x" type="string">
+<ParamField type="string">
   Device Pixel Ratio. Default 1. Multiplier for width/height that makes it easier to specify higher-DPI sizes in .
 </ParamField>
 
-<ParamField query="img-fit" type="string">
+<ParamField type="string">
   Affects interpretation of width and height. All resizing modes preserve aspect ratio. Available modes are:
 
   * `img-fit=scale-down` Image will be shrunk in size to fully fit within the given width or height, but won’t be enlarged.
@@ -6140,7 +5989,7 @@ At least one option must be specified. Options are comma-separated (spaces are n
   * `img-fit=pad` Image will be resized (shrunk or enlarged) to be as large as possible within the given width or height while preserving the aspect ratio, and the extra area will be filled with a background color (white by default). Transparent background may be very expensive, and it’s better to use fit=contain and CSS object-fit: contain property instead.
 </ParamField>
 
-<ParamField query="img-gravity" type="string">
+<ParamField type="string">
   When cropping with `fit=cover`, specifies the most important side or point in the image that shouldn’t be cropped off.
 
   * `img-gravity=auto` The point will be guessed by looking for areas that stand out the most from image background
@@ -6149,29 +5998,29 @@ At least one option must be specified. Options are comma-separated (spaces are n
     If a side (left, right, top, bottom) or coordinates specified on a scale from 0.0 (top or left) to 1.0 (bottom or right), 0.5 being the center. The X and Y coordinates are separated by lowercase x, e.g. 0x1 means left and bottom, 0.5x0.5 is the center, 0.5x0.33 is a point in the top third of the image.
 </ParamField>
 
-<ParamField query="img-quality" type="string">
+<ParamField type="string">
   Specifies quality for images in JPEG, WebP and AVIF formats. The quality is in 1-100 scale, but useful values are between 50 (low quality, small file size) and 90 (high quality, large file size). 85 is the default. When using the PNG format, an explicit quality setting allows use of PNG8 (palette) variant of the format.
 </ParamField>
 
-<ParamField query="img-format" type="string" default="auto">
+<ParamField type="string">
   Allows serving of the WebP format to browsers that support it. If this option is not specified, a standard format like JPEG or PNG will be used.
 </ParamField>
 
-<ParamField query="img-anim" type="string">
+<ParamField type="string">
   Reduces animations to still images. This setting is recommended to avoid surprisingly large animGIF files, or flashing images.
 </ParamField>
 
-<ParamField query="img-sharpen" type="string">
+<ParamField type="string">
   Specifies strength of sharpening filter. The value is a floating-point number between 0 (no sharpening) and 10 (max). 1 is a recommended value.
 </ParamField>
 
-<ParamField query="img-onerror" type="string">
+<ParamField type="string">
   In case of a fatal error that prevents the image from being resized use `img-onerror=redirect` to redirect to the unresized source image URL. This may be useful in case some images require user authentication and cannot be fetched. This option shouldn’t be used if the source images may be very large. This option is ignored if the image is from another domain (subdomains are OK).
 
   * `img-onerror=redirect` Redirects to original source url
 </ParamField>
 
-<ParamField query="img-metadata" type="string">
+<ParamField type="string">
   Controls amount of invisible metadata (EXIF data) that should be preserved. Color profiles and EXIF rotation are applied to the image even if the metadata is discarded. Note that if the Polish feature is enabled, all metadata may have been removed already and this option may have no effect.
 
   * `img-metadata=keep` Preserve most of the image metadata (including GPS location) when possible.
@@ -6187,7 +6036,7 @@ Read JPEG, PNG, GIF (including animations), and WebP images. SVG is not supporte
 
 Image Optimizations are built into both [`get`](/sdk/gateways/public/get) and [`createAccessLink`](/sdk/gateways/private/create-access-link) methods of the SDK.
 
-```typescript  theme={null}
+```typescript theme={null}
 type OptimizeImageOptions = {
   width?: number;
   height?: number;
@@ -6203,7 +6052,7 @@ type OptimizeImageOptions = {
 };
 ```
 
-```typescript  theme={null}
+```typescript theme={null}
 const data = await pinata.gateways.public
   .get("bafkreih5aznjvttude6c3wbvqeebb6rlx5wkbzyppv7garjiubll2ceym4")
   .optimizeImage({
@@ -6233,7 +6082,7 @@ Follow the steps in the [Getting Started](/gateways/plugins/getting-started) gui
 
 Once the plugin is installed the rest is quite simple. If a CID as a signature attached to it, then there will be a `pinata-signature` field in the headers.
 
-```typescript  theme={null}
+```typescript theme={null}
 const signatureReq = await fetch(
   `https://<YOUR_GATEWAY_DOMAIN>.mypinata.cloud/ipfs/<CID>`,
   {
@@ -6262,19 +6111,19 @@ You can install plugins either through the Pinata App or the Pinata API.
 To install a plugin navigate to the Plugins Marketplace tab on the right side.
 
 <Frame>
-  <img style={{ width: '100%', borderRadius: '0.5rem'}} src="https://docs.mypinata.cloud/ipfs/bafkreidmyi2vmovwmcyc4zhnetr632rvnvo4owrmigqnunezbdqfm32q2e" />
+  <img />
 </Frame>
 
 Once there you can find the plugin you want to install and click "Install." This will bring up a drop down of your Dedicated Gateways to choose which the plugin is installed to.
 
 <Frame>
-  <img style={{ width: '100%', borderRadius: '0.5rem'}} src="https://docs.mypinata.cloud/ipfs/bafybeig4pkyofczlhlag33i5coxs4oewk66ejveguzppqng23qo45gabgi" />
+  <img />
 </Frame>
 
 Once installed you can confirm its there by going to the "My Plugins" tab.
 
 <Frame>
-  <img style={{ width: '100%', borderRadius: '0.5rem'}} src="https://docs.mypinata.cloud/ipfs/bafkreiabaxv26bt7wkuq5k5maya4lwpegmvcpz5tlr6rbjpgijvwxxmymu" />
+  <img />
 </Frame>
 
 ### Pinata API
@@ -6388,13 +6237,13 @@ Just like installing, removing a plugin can be done through the Pinata App or th
 To unintall a plugin first navigate to the Plugin Marketplace tab and then select the "My Plugins" tab.
 
 <Frame>
-  <img style={{ width: '100%', borderRadius: '0.5rem'}} src="https://docs.mypinata.cloud/ipfs/bafkreia674vlwkwam2cnpshbptg76rafvmmtxcrvhun7nhkw7lg5iefwpu" />
+  <img />
 </Frame>
 
 Then locate the target gateway and plugin, then click the action item on the right hand side and select "Uninstall" from the dropdown menu.
 
 <Frame>
-  <img style={{ width: '100%', borderRadius: '0.5rem'}} src="https://docs.mypinata.cloud/ipfs/bafkreif7irn7yht6xc3uld4bylc5a4zy2zurixy23wquki3vlrjtwgo4ny" />
+  <img />
 </Frame>
 
 ### Pinata API
@@ -6429,7 +6278,7 @@ While it may seem like this undermines the benefits of IPFS' imutable content sy
 
 To demonstrate how this plugin works, consider the following example:
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -6477,7 +6326,7 @@ Follow the steps in the [Getting Started](/gateways/plugins/getting-started) gui
 
 After installing the plugin you can then make CID swaps and have them reflect when making Gateway requests. The first parameter `cid` will be the original CID, and `swapCid` will be the content you want it to point to instead.
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -6493,7 +6342,7 @@ const swap = await pinata.files.public.addSwap({
 
 You can fetch the history of CID swaps using the `swapHistory` method, passing in the `cid` of the original CID and the `domain` of the gateway that has the Hot Swaps plugin installed.
 
-```typescript  theme={null}
+```typescript theme={null}
 const history = await pinata.files.public.getSwapHistory({
   cid: "bafkreibbvdqf5ekc2crouowv7vtjbcmbjoiysegslmmqc6jrxbaa43xske",
   domain: "discordpinnie.mypinata.cloud"
@@ -6514,7 +6363,7 @@ const history = await pinata.files.public.getSwapHistory({
 
 To delete a CID swap you can simply use the `deleteSwap` method and pass in the CID.
 
-```typescript  theme={null}
+```typescript theme={null}
 const deleteSwap = await pinata.files.public.deleteSwap(
   "bafkreibbvdqf5ekc2crouowv7vtjbcmbjoiysegslmmqc6jrxbaa43xske"
 )
@@ -6529,7 +6378,7 @@ Source: https://docs.pinata.cloud/gateways/retrieving-files
 
 Gateways are Pinata's tool to deliver your content with speed and security. They're similar to CDNs but with way more features. When you create a Pinata account, you'll automatically have a Gateway created for you! To see it, simply visit the [Gateways Page](https://app.pinata.cloud/gateway).
 
-<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/Qmcn3K1Bo5W6GgVX935FxdmVYg91rVLMrcZ3NsZ8Vemsd4" />
+<img />
 
 The gateway domains are randomly generated and might look something like this:
 
@@ -6553,7 +6402,7 @@ Since these files are public there is no need create a temporary url. At this po
 
 One of the simplest ways to fetch content is through the [get](/sdk/gateways/private/get) method in the [SDK](/sdk). All content is referenced by the `cid`, a special identifier given to each file based on the cotnent of that file.
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -6568,7 +6417,7 @@ const { data, contentType } = await pinata.gateways.public.get(
 
 You can also use the SDK to provide a URL for your file using the `pinataGateway` in the config.
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -6597,7 +6446,7 @@ Pinata also allows you to create a custom domain for your Dedicated Gateway. Sim
 
 All content uploaded with Private IPFS is by default private, and there are a few ways you can view it. One of the simplest ways to fetch content is through the [get](/sdk/gateways/private/get) method in the [SDK](/sdk). All content is referenced by the `cid`, a special identifier given to each file based on the cotnent of that file.
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -6718,7 +6567,7 @@ Pinata has been empowering the NFT space since 2018 and there's a good reason fo
 
 One of the biggest reasons you want to use IPFS for NFTs is to prevent tampering or "rug pulls" where someone can just delete the data for an NFT and make it worthless. NFTs are tokens on the blockchain that have a "Token URI" which is simply a link pointing to data about that NFT off-chain, because putting data on-chain is far too expensive. If this link is a centralized server, like `https://server.com/pinnie.png`, then whoever has control of the server can simply upload totally different content and keep the same name, thus keeping the same link. Or they could just delete it and it would be empty!
 
-<img style={{ width: '100%', borderRadius: '0.5rem'}} src="https://docs.mypinata.cloud/ipfs/bafybeibcggc5ngxahj7k5pv3csn3owh27gejgfd5uv2sw5t6jyk262eide" />
+<img />
 
 This is where IPFS becomes necessary. Since the address or link to the content on IPFS is the [CID](/ipfs-101/what-are-cids), which is based on the content itself and is immutable, you can't change it or alter it. In addition, the ability for multiple people to [pin](/ipfs-101/what-is-ipfs-pinning) content and help it persist on the network makes it harder for something to just be deleted.
 
@@ -6732,11 +6581,11 @@ The first thing you need to do is upload the content to Pinata. Since IPFS suppo
 
 To upload the content you can either do a simple upload through the Pinata App by navigating to the [files page](https://app.pinata.cloud/ipfs/files) and uploading through the UI like so:
 
-<img style={{ width: '100%', borderRadius: '0.5rem'}} src="https://docs.mypinata.cloud/ipfs/bafybeih5leperkpn2thy2xbebh3zqqmvqhx6p5nl5n7buj73w62yoha6ki" />
+<img />
 
 Or you can upload through the [SDK](/sdk) using a script like this:
 
-```typescript  theme={null}
+```typescript theme={null}
 const { PinataSDK } = require("pinata")
 const fs = require("fs")
 const { Blob } = require("buffer")
@@ -6760,7 +6609,7 @@ async function upload(){
 
 In each case you will want to grab the CID for that file, which will look something like this:
 
-<img style={{ width: '100%', borderRadius: '0.5rem'}} src="https://docs.mypinata.cloud/ipfs/bafybeifru5pzm3zksvprxkjtfg7xx5x24hzbltamugmwsuo7iutlmuejtu" />
+<img />
 
 ### Step 2: Create and Upload Metadata
 
@@ -6782,11 +6631,11 @@ Now that we have the CID for our content on IPFS, we need to create a metadata f
 
 You'll notice that we are using the IPFS protocol URL for the image link. There are other ways to reference CIDs in NFT metadata which you can read about more [here]().
 
-<img style={{ width: '100%', borderRadius: '0.5rem'}} src="https://docs.mypinata.cloud/ipfs/bafybeigooboyucupcfkiii6xc76nscv6rpo5v4vh4u5optsbbmddyx6or4" />
+<img />
 
 Once you have that file filled out you will want to save it as something like `metadata.json` (this might be different if you are making a large project using folders). Then you can upload the metadata file to Pinata using the app like before, or if you are using the API we have a [JSON endpoint](/api-reference/endpoint/ipfs/pin-json-to-ipfs) you can use to simplify the process, like so:
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -6816,13 +6665,13 @@ If you are non-technical and you're just looking for the easy way to create an N
 
 If you want to get your feet wet with smart contracts you could follow the video below! It covers the Base layer 2 blockchain in particular, but the method will work on other EVM chains.
 
-<iframe width="600" height="400" src="https://www.youtube.com/embed/YkfMXquwVn4?si=OeUzRO_mh5By6NPv" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen style={{ width: '100%', borderRadius: '0.5rem' }} />
+<iframe title="YouTube video player" />
 
 #### Implementing into an Decentralized App
 
 If you are a developer that is trying to do NFT minting on a larger scale, you could use an NFT minting API like [Crossmint](https://crossmint.com). Lucky for you we have some tutorials on how to do just that!
 
-<iframe width="600" height="400" src="https://www.youtube.com/embed/LTFRD-eEc5Y?si=-L7uMccPnAmkahql" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen style={{ width: '100%', borderRadius: '0.5rem' }} />
+<iframe title="YouTube video player" />
 
 
 # What are CIDs?
@@ -6832,7 +6681,7 @@ Source: https://docs.pinata.cloud/ipfs-101/what-are-cids
 
 Content Identifiers (CIDs) are one of the most important parts of IPFS. Whenever you share a file through IPFS, that file or folder gets assigned a CID that looks like this:
 
-<img style={{ width: '100%', borderRadius: '0.5rem'}} src="https://docs.mypinata.cloud/ipfs/bafybeifru5pzm3zksvprxkjtfg7xx5x24hzbltamugmwsuo7iutlmuejtu" />
+<img />
 
 What's happening behind the scenes: IPFS is breaking the file into blocks and running it through a cryptographic hash. It's like a math equation, where if you had `x + 2 = y`, and then you pass in `x = 2`, then `y = 4`. No matter how many times you run it, you will have the same answer if you keep passing in `x = 2`. In the same way,  IPFS creates CIDs for files that are reproducible. If you share a file of `Pinnie.png` you will get the same CID every time. It is through this CID that content is fetched across the IPFS network, which each piece pointing to a blocks on different nodes, altogether building a cohesive piece of content.
 
@@ -6876,7 +6725,7 @@ When it comes to providing an IPFS link, there are a few options to choose from.
 
 An IPFS protocol URL looks like this:
 
-<img style={{ width: '100%', borderRadius: '0.5rem'}} src="https://docs.mypinata.cloud/ipfs/bafybeigooboyucupcfkiii6xc76nscv6rpo5v4vh4u5optsbbmddyx6or4" />
+<img />
 
 If you copy and paste that into your browser, you may not get anything back. That is because in order to use this one, you have to have a local IPFS node running to participate in the network. Even when you do, it will likely be very very slow since IPFS is still a growing network.
 
@@ -6888,7 +6737,7 @@ If you are on a different L1 chain, you may want to test it first.. There are so
 
 A public gateway URL looks something like this:
 
-<img style={{ width: '100%', borderRadius: '0.5rem'}} src="https://docs.mypinata.cloud/ipfs/bafybeihrr4uz3wsr4dwx3n53uh7vkycsmak5b3ti2jciaozy6pyd3bsyhq" />
+<img />
 
 This will deliver the content in the browser without the need of a local IPFS node. However, since this gateway is a public gateway, your speed might vary due to the heavy traffic and congestion. Some platforms will see this kind of the url and switch it out with their own faster gateway choice, but not always. Generally you want to assume that if you take this path, the assets will be slow.
 
@@ -6896,7 +6745,7 @@ This will deliver the content in the browser without the need of a local IPFS no
 
 A [Dedicated Gateway](/gateways/dedicated-ipfs-gateways) URL looks something like this:
 
-<img style={{ width: '100%', borderRadius: '0.5rem'}} src="https://docs.mypinata.cloud/ipfs/bafybeifqqck34x7i2sbjwgcwtxrwvhtppqifu32ygj44d574rphqd6efge" />
+<img />
 
 Dedicated Gateways are much much faster than any other method, and should ideally be used when trying to display content on your own platform. However, using them in NFTs should be done in caution. If you use a Dedicated Gateway in your NFT project metadata and image links, your speed will be great, however anytime another marketplace or rarity bot asks the blockchain for the IPFS data, your gateway will be hit. Since most Dedicated Gateways are paid services, this could greatly drive up your costs and usage. You'll get the best performance, control, and flexibility with this method, however you might have to pay more than the other methods.
 
@@ -6912,23 +6761,23 @@ An example of accessing content from this gateway can be seen with: `https://ipf
 
 What's going on here exactly? Let's break it down. First you have the gateway domain. There are lots of different domains out there, like `ipfs.io`, and if you have a Pinata account you get a Dedicated Gateway which might look something like `aquamarine-casual-tarantula-177.mypinata.cloud`. Each of these can be used to bridge files from IPFS to HTTPs. Next you have the IPFS path which looks like `ipfs/` and this is necessary for a gateway to work. Finally we have the CID at the end, which is the actual IPFS address for our content.
 
-<img style={{ width: '100%', borderRadius: '0.5rem'}} src="https://docs.mypinata.cloud/ipfs/bafybeieot47okoj37dvjhpqp3nxg4w3toqx2jsjyjq5xm2xjocazfszefe" />
+<img />
 
 ## Folder Paths
 
 Sometimes your CID might be a folder, in which case you might have difficulty loading it through the gateway. This happens because if you do not designate a complete folder path, then the gateway will try to load all of the files and index them into a sheet showing every file. This can be pretty intensive depending what kind of gateway you're using, and will likely stall out due to how long it can take. To remedy this, simply add on the file path of the content you're trying to get inside. For instance, if we have a folder with the CID of `QmWfHgs3nKiyFWx3tFEYvm8DiHTrCsxEHxvDdBh95ZQSLT` and the inside looks something like this:
 
-<img style={{ width: '100%', borderRadius: '0.5rem'}} src="https://docs.mypinata.cloud/ipfs/bafybeia6totdq6bguhdohpcttwm2aiytji2kgx53f5c2bm6wuhscp5msva" />
+<img />
 
 Then we could access the files inside by adding on `/pinnie.png` or `clouds.json` to the end of our folder path. In the end we would have something like this.
 
-<img style={{ width: '100%', borderRadius: '0.5rem'}} src="https://docs.mypinata.cloud/ipfs/bafybeieterauxfimyx4rdfkihhtzafij7pdiuk5dwnvkuxivcwqidg5j5y" />
+<img />
 
 ## Public Gateways
 
 The most common kind of IPFS Gateways are Public Gateways. These are usually run and maintained by IPFS Pinning Services, protocols, or even smaller groups that want to help build the IPFS ecosystem. They're referred to as "Public" because anyone can access them! You just have to add a CID to the end of one to start using it. You can try that now by adding this CID `bafkreih5aznjvttude6c3wbvqeebb6rlx5wkbzyppv7garjiubll2ceym4` to the end of a Public Gateway:
 
-```text  theme={null}
+```text theme={null}
 https://ipfs.io/ipfs/
 ```
 
@@ -6960,11 +6809,11 @@ Due to these properties it is ideal for Web3 data storage such as NFTs, DeFi, an
 
 The best way to understand IPFS is to see it as an alternative to HTTP. With HTTP server model the end user has a computer which makes a request to see content from a server, then that server sends back the requested content. This is a simple two way communication, and while there are more complex instances, the key is that the data is stored on the server and has ultimate control of that content.
 
-<img style={{ width: '100%', borderRadius: '0.5rem'}} src="https://docs.mypinata.cloud/ipfs/bafybeigyax3bkqkikle7wyhk75fo5g3hvnntjtjbp7bwj6opipva2qmehy" />
+<img />
 
 IPFS on the other hand, is a network is made up of a multitude of different IPFS nodes which share data with each other. Whenever a node wants to share content on IPFS, it runs the content through a cryptographic hash and returns a [CID](/ipfs-101/what-are-cids), or "Content Identifier." This CID serves as both the address and the verification that the content is what it says it is. After the CID has been created the IPFS node will "pin" that content to the network, essentially sharing it and saying it is worth keeping.
 
-<img style={{ width: '100%', borderRadius: '0.5rem'}} src="https://docs.mypinata.cloud/ipfs/bafybeicfeptvwjkwlbv2iye3m2oc5c44femjb4f2wpdn7bku4ylxqexli4" />
+<img />
 
 As the CID is requested by other IPFS nodes, the content will pass through other nodes leaving a cache that can be used for faster retrieval the more it is requested. This cache will eventually get pretty big and can cause bloat, and this is where pinning really comes into play. The IPFS node will run a garbage collector from time to time which will clear the contents of the cache, except for any CIDs that are actively being pinned by another IPFS node. As long as one IPFS node is pinning that content, it will stay on the network. If the content is unpinned and there is no other node holding it, eventually the content will fade from the network. This creates a model that can persevere data but not to a point that will cause clutter and bloat.
 
@@ -6974,11 +6823,11 @@ Blockchains have an incredible ability to keep a long ledger of transactions and
 
 NFTs, or really anything being used on the blockchain, will usually have a token element that is on chain that has a pointer to data off-chain (referred to as the token URI). This pointer is usually a link to a metadata file in the form of JSON, which has information like the name of the NFT, a description, and usually another link to an image that is also off-chain. Back in the earlier days of NFTs these pointers or token URIs were centralized servers, and that caused a problem. There was nothing stopping the owner of that server from changing the data to be something completely different. A link like `https://drive.google.com/nft/pinnie.png` could be dynamic; at any time the owner of that file could upload a picture of something else and name it `pinnie.png` and the link would still be the same. What was the point of buying a piece of art on the blockchain if it could change and be worthless?
 
-<img style={{ width: '100%', borderRadius: '0.5rem'}} src="https://docs.mypinata.cloud/ipfs/bafybeibcggc5ngxahj7k5pv3csn3owh27gejgfd5uv2sw5t6jyk262eide" />
+<img />
 
 This is where IPFS steps in, along with it's special abilities of cryptography and distributed nature. Whenever a file is stored on IPFS, it gets a unique CID that is based on the content of the file. If the file is changed by a single pixel or character, then it will receive a completely different CID. It solves the problem of `pinnie.png` being replaced with something else since you couldn't simply just change the name. Due to the cryptographic nature of IPFS, anything shared on IPFS is immutable and cannot be changed.
 
-<img style={{ width: '100%', borderRadius: '0.5rem'}} src="https://docs.mypinata.cloud/ipfs/bafybeieuqr2cld6gdw6cebril4kwwl6ylawsewuoybgswscsc7irytkeb4" />
+<img />
 
 Since IPFS is decentralized in the way it stores the data, it also solved the potential crisis of something deleting the data or the server going offline. With IPFS pinning, multiple nodes can pin data to ensure that it stays online. A good metaphor for this is a fridge. If you wanted to put a picture on a fridge, you would likely use a magnet to put it up there. If you have two or three magnets on that picture, you could remove the original magnet and the picture would stay up. IPFS works in a similar way; anyone can take the CID for some content and pin it themselves to help preserve it. Content can persist as long as a single IPFS node is pinning it!
 
@@ -6986,7 +6835,7 @@ Since IPFS is decentralized in the way it stores the data, it also solved the po
 
 Pinata is an IPFS Pinning Service that provides user with, you guessed it, IPFS services! These range from uploading files and pinning them to IPFS, to blazing fast [Dedicated Gateways](/gateways/dedicated-ipfs-gateways) which come in handy if you need to fetch content from IPFS. Our focus is to provide developers easy to use tools so they can add in IPFS to their Web3 architecture as simply as possible, and to make it reliable and trustworthy. If you're not sure where to start, check out our [Getting Started](/quickstart) page which will have you up and running with Pinata in no time! 🚀
 
-<iframe width="600" height="400" src="https://www.youtube.com/embed/29k2C1JXyg4?si=8dNhSnVBEkzRb3dz" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen style={{ width: '100%', borderRadius: '0.5rem' }} />
+<iframe title="YouTube video player" />
 
 
 # What is Pinning?
@@ -6996,7 +6845,7 @@ Source: https://docs.pinata.cloud/ipfs-101/what-is-ipfs-pinning
 
 IPFS "Pinning" is the foundation to getting content on IPFS. When you upload a file to IPFS, the IPFS node will create a [CID](/ipfs-101/what-are-cids) for that file which will act as the identifier and the address. Then it will "pin" that file to the IPFS network, making it available for other nodes to request it. At that point any other IPFS node can request the content for a CID, and the content will pass through other nodes leaving a cache on that node. This makes it faster to fetch files again if those nodes are used.
 
-<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafybeicfeptvwjkwlbv2iye3m2oc5c44femjb4f2wpdn7bku4ylxqexli4" />
+<img />
 
 As the cache on these nodes through, it will soon become bloated with too much data, similar to how your computer can get slow if it's loaded down with too many cache files. IPFS nodes have a way to handle this though, and that's through something called "Garbage Collection." This is a process where the IPFS node will dump any content in the cache that is not being pinned to IPFS. However if there is content in the cache that is still being pinned by at least one IPFS node, then it will stay. Pinning is what keeps content on IPFS, and as long as content is being pinned by one node, it will stay available on the network.
 
@@ -7008,7 +6857,7 @@ With Pinata there are a few ways you can pin files to IPFS
 
 If you're a developer that needs to build decentralized applications then you will likely want to use the [Pinata SDK](/sdk) or [Pinata API](/api-reference/endpoint/upload-a-file). These make it simple to upload files or raw JSON to IPFS!
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -7031,7 +6880,7 @@ We also have other tools like the [Pinata CLI](/tools/ipfs-cli) or [Next.js Star
 
 If you're non-technical you can use [Pinata App](https://app.pinata.cloud/ipfs/files) to upload files, perfect if you just want to get started with NFTs and IPFS! It's as simple as clicking the "Add" button in the top right corner of the files page, selecting your file, give it a name, then upload. Once its complete, you'll see it listed in the files page!
 
-<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafybeih5leperkpn2thy2xbebh3zqqmvqhx6p5nl5n7buj73w62yoha6ki" />
+<img />
 
 <Note>
   Start uploading by [signing up for a free
@@ -7042,11 +6891,11 @@ If you're non-technical you can use [Pinata App](https://app.pinata.cloud/ipfs/f
 
 Another way you can upload content to Pinata is by transferring content that is already on IPFS. This could be CIDs that are on your own local IPFS node or another IPFS pinning service! You can do this with the "Import from IPFS" button in the web app, like so:
 
-<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafybeid6k42hboh543sgw7svsnn4aj52lzqnp7gz2vedwa7wzic6w4debu" />
+<img />
 
 Or you can pin by CID with our API using the [Pin By CID](/api-reference/endpoint/ipfs/pin-by-cid) endpoint with a code snippet like this:
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -7069,15 +6918,15 @@ The Pinata Docs have multiple ways they can be used in LLMs or AI empowered code
 
 If you are concerned about context tokens then you will want to use our hand crafted [AI Docs](https://ai-docs.pinata.cloud)
 
-```bash  theme={null}
+```bash theme={null}
 curl https://ai-docs.pinata.cloud
 ```
 
-<iframe width="600" height="400" src="https://www.youtube.com/embed/eakKfqp1brE" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen style={{ width: '100%', borderRadius: '0.5rem' }} />
+<iframe title="YouTube video player" />
 
 <br />
 
-<Card title="How to Use Pinata with Cursor, Zed, and other LLMs" img="https://pinata.cloud/blog/content/images/size/w2000/format/avif/2024/11/Blog-4.1-1.png" href="https://pinata.cloud/blog/how-to-use-pinata-with-cursor-zed-and-other-llms/" />
+<Card title="How to Use Pinata with Cursor, Zed, and other LLMs" href="https://pinata.cloud/blog/how-to-use-pinata-with-cursor-zed-and-other-llms/" />
 
 ## Larger Context
 
@@ -7099,83 +6948,41 @@ Source: https://docs.pinata.cloud/quickstart
 
 Start uploading and retrieving content in no time
 
-<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://mintcdn.com/pinata/09jphG_rC0WCVTMW/assets/hero.png?fit=max&auto=format&n=09jphG_rC0WCVTMW&q=85&s=95297a18fcd1c80bef2f0e46d8ea85b0" data-og-width="3840" width="3840" data-og-height="2160" height="2160" data-path="assets/hero.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/pinata/09jphG_rC0WCVTMW/assets/hero.png?w=280&fit=max&auto=format&n=09jphG_rC0WCVTMW&q=85&s=5c1566e77a2caece80509dc03928cef3 280w, https://mintcdn.com/pinata/09jphG_rC0WCVTMW/assets/hero.png?w=560&fit=max&auto=format&n=09jphG_rC0WCVTMW&q=85&s=204381c67d5efab5c5f7c3cb9be37ada 560w, https://mintcdn.com/pinata/09jphG_rC0WCVTMW/assets/hero.png?w=840&fit=max&auto=format&n=09jphG_rC0WCVTMW&q=85&s=65fd318eeb23036c1c28122b5d3f894f 840w, https://mintcdn.com/pinata/09jphG_rC0WCVTMW/assets/hero.png?w=1100&fit=max&auto=format&n=09jphG_rC0WCVTMW&q=85&s=8955b68fd16e765a25b3a5b3ef84ee97 1100w, https://mintcdn.com/pinata/09jphG_rC0WCVTMW/assets/hero.png?w=1650&fit=max&auto=format&n=09jphG_rC0WCVTMW&q=85&s=cf457d49ca6e7cd2ef3651630f1362bb 1650w, https://mintcdn.com/pinata/09jphG_rC0WCVTMW/assets/hero.png?w=2500&fit=max&auto=format&n=09jphG_rC0WCVTMW&q=85&s=2d72ab84231016d3ec2dcf704cea91ea 2500w" />
+<img />
 
 ## Getting Started with Pinata
 
 Whether you're brand new or a seasoned developer, Pinata makes it simple to store and retrieve content with speed and security. All you need to kick off your journey is a [free Pinata account](https://app.pinata.cloud/register)!
 
-<CardGroup cols={3}>
-  <Card
-    horizontal
-    title="Next.Js"
-    href="/frameworks/next-js"
-    icon={
-  <svg width="800px" height="800px" class="h-6 w-6" viewBox="0 0 256 256" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid"><g><path d="M119.616813,0.0688905149 C119.066276,0.118932037 117.314565,0.294077364 115.738025,0.419181169 C79.3775171,3.69690087 45.3192571,23.3131775 23.7481916,53.4631946 C11.7364614,70.2271045 4.05395894,89.2428829 1.15112414,109.384595 C0.12512219,116.415429 0,118.492153 0,128.025062 C0,137.557972 0.12512219,139.634696 1.15112414,146.665529 C8.10791789,194.730411 42.3163245,235.11392 88.7116325,250.076335 C97.0197458,252.753556 105.778299,254.580072 115.738025,255.680985 C119.616813,256.106338 136.383187,256.106338 140.261975,255.680985 C157.453763,253.779407 172.017986,249.525878 186.382014,242.194795 C188.584164,241.068861 189.00958,240.768612 188.709286,240.518404 C188.509091,240.36828 179.124927,227.782837 167.86393,212.570214 L147.393939,184.922273 L121.743891,146.965779 C107.630108,126.098464 96.0187683,109.034305 95.9186706,109.034305 C95.8185728,109.009284 95.7184751,125.873277 95.6684262,146.465363 C95.5933529,182.52028 95.5683284,183.971484 95.1178886,184.82219 C94.4672532,186.048207 93.9667644,186.548623 92.915738,187.099079 C92.114956,187.499411 91.4142717,187.574474 87.6355816,187.574474 L83.3063539,187.574474 L82.1552297,186.848872 C81.4044966,186.373477 80.8539589,185.747958 80.4785924,185.022356 L79.9530792,183.896422 L80.0031281,133.729796 L80.0782014,83.5381493 L80.8539589,82.5623397 C81.25435,82.0369037 82.1051808,81.3613431 82.7057674,81.0360732 C83.7317693,80.535658 84.1321603,80.4856165 88.4613881,80.4856165 C93.5663734,80.4856165 94.4172043,80.6857826 95.7434995,82.1369867 C96.1188661,82.5373189 110.007429,103.454675 126.623656,128.650581 C143.239883,153.846488 165.962072,188.250034 177.122972,205.139048 L197.392766,235.839522 L198.418768,235.163961 C207.502639,229.259062 217.112023,220.852086 224.719453,212.09482 C240.910264,193.504394 251.345455,170.835585 254.848876,146.665529 C255.874878,139.634696 256,137.557972 256,128.025062 C256,118.492153 255.874878,116.415429 254.848876,109.384595 C247.892082,61.3197135 213.683675,20.9362052 167.288368,5.97379012 C159.105376,3.32158945 150.396872,1.49507389 140.637341,0.394160408 C138.234995,0.143952798 121.693842,-0.131275573 119.616813,0.0688905149 L119.616813,0.0688905149 Z M172.017986,77.4831252 C173.219159,78.0836234 174.195112,79.2345784 174.545455,80.435575 C174.74565,81.0861148 174.795699,94.9976579 174.74565,126.348671 L174.670577,171.336 L166.73783,159.17591 L158.780059,147.01582 L158.780059,114.313685 C158.780059,93.1711423 158.880156,81.2862808 159.030303,80.7108033 C159.430694,79.3096407 160.306549,78.2087272 161.507722,77.5581875 C162.533724,77.0327515 162.909091,76.98271 166.837928,76.98271 C170.541544,76.98271 171.19218,77.0327515 172.017986,77.4831252 Z"></path></g></svg>
-  }
-  >
+<CardGroup>
+  <Card title="Next.Js" icon="https://mintlify.s3.us-west-1.amazonaws.com/pinata/%3Csvg%20width=%22800px%22%20height=%22800px%22%20class=%22h-6%20w-6%22%20viewBox=%220%200%20256%20256%22%20version=%221.1%22%20xmlns=%22http:/www.w3.org/2000/svg%22%20xmlns:xlink=%22http:/www.w3.org/1999/xlink%22%20preserveAspectRatio=%22xMidYMid%22%3E%3Cg%3E%3Cpath%20d=%22M119.616813,0.0688905149%20C119.066276,0.118932037%20117.314565,0.294077364%20115.738025,0.419181169%20C79.3775171,3.69690087%2045.3192571,23.3131775%2023.7481916,53.4631946%20C11.7364614,70.2271045%204.05395894,89.2428829%201.15112414,109.384595%20C0.12512219,116.415429%200,118.492153%200,128.025062%20C0,137.557972%200.12512219,139.634696%201.15112414,146.665529%20C8.10791789,194.730411%2042.3163245,235.11392%2088.7116325,250.076335%20C97.0197458,252.753556%20105.778299,254.580072%20115.738025,255.680985%20C119.616813,256.106338%20136.383187,256.106338%20140.261975,255.680985%20C157.453763,253.779407%20172.017986,249.525878%20186.382014,242.194795%20C188.584164,241.068861%20189.00958,240.768612%20188.709286,240.518404%20C188.509091,240.36828%20179.124927,227.782837%20167.86393,212.570214%20L147.393939,184.922273%20L121.743891,146.965779%20C107.630108,126.098464%2096.0187683,109.034305%2095.9186706,109.034305%20C95.8185728,109.009284%2095.7184751,125.873277%2095.6684262,146.465363%20C95.5933529,182.52028%2095.5683284,183.971484%2095.1178886,184.82219%20C94.4672532,186.048207%2093.9667644,186.548623%2092.915738,187.099079%20C92.114956,187.499411%2091.4142717,187.574474%2087.6355816,187.574474%20L83.3063539,187.574474%20L82.1552297,186.848872%20C81.4044966,186.373477%2080.8539589,185.747958%2080.4785924,185.022356%20L79.9530792,183.896422%20L80.0031281,133.729796%20L80.0782014,83.5381493%20L80.8539589,82.5623397%20C81.25435,82.0369037%2082.1051808,81.3613431%2082.7057674,81.0360732%20C83.7317693,80.535658%2084.1321603,80.4856165%2088.4613881,80.4856165%20C93.5663734,80.4856165%2094.4172043,80.6857826%2095.7434995,82.1369867%20C96.1188661,82.5373189%20110.007429,103.454675%20126.623656,128.650581%20C143.239883,153.846488%20165.962072,188.250034%20177.122972,205.139048%20L197.392766,235.839522%20L198.418768,235.163961%20C207.502639,229.259062%20217.112023,220.852086%20224.719453,212.09482%20C240.910264,193.504394%20251.345455,170.835585%20254.848876,146.665529%20C255.874878,139.634696%20256,137.557972%20256,128.025062%20C256,118.492153%20255.874878,116.415429%20254.848876,109.384595%20C247.892082,61.3197135%20213.683675,20.9362052%20167.288368,5.97379012%20C159.105376,3.32158945%20150.396872,1.49507389%20140.637341,0.394160408%20C138.234995,0.143952798%20121.693842,-0.131275573%20119.616813,0.0688905149%20L119.616813,0.0688905149%20Z%20M172.017986,77.4831252%20C173.219159,78.0836234%20174.195112,79.2345784%20174.545455,80.435575%20C174.74565,81.0861148%20174.795699,94.9976579%20174.74565,126.348671%20L174.670577,171.336%20L166.73783,159.17591%20L158.780059,147.01582%20L158.780059,114.313685%20C158.780059,93.1711423%20158.880156,81.2862808%20159.030303,80.7108033%20C159.430694,79.3096407%20160.306549,78.2087272%20161.507722,77.5581875%20C162.533724,77.0327515%20162.909091,76.98271%20166.837928,76.98271%20C170.541544,76.98271%20171.19218,77.0327515%20172.017986,77.4831252%20Z%22%3E%3C/path%3E%3C/g%3E%3C/svg%3E" href="/frameworks/next-js">
     Quickstart
   </Card>
 
-  <Card
-    horizontal
-    title="Hono"
-    href="/frameworks/hono"
-    icon={
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" width="24.83" height="32" viewBox="0 0 256 330"><path fill="#FF5B11" d="M134.129.029q1.315-.17 2.319.662a1256 1256 0 0 1 69.573 93.427q24.141 36.346 41.082 76.862q27.055 72.162-28.16 125.564q-48.313 40.83-111.318 31.805q-75.312-15.355-102.373-87.133Q-1.796 217.85.614 193.51q4.014-41.896 19.878-80.838q6.61-15.888 17.228-29.154a382 382 0 0 1 16.565 21.203q3.66 3.825 7.62 7.289Q92.138 52.013 134.13.029" opacity=".993"/><path fill="#FF9758" d="M129.49 53.7q36.47 42.3 65.93 90.114a187.3 187.3 0 0 1 15.24 33.13q12.507 49.206-26.836 81.169q-38.05 26.774-83.488 15.902q-48.999-15.205-56.653-65.929q-1.857-15.993 3.314-31.142a225.4 225.4 0 0 1 17.89-35.78l19.878-29.155a5510 5510 0 0 0 44.726-58.31"/></svg>
-  }
-  >
+  <Card title="Hono" icon="https://mintlify.s3.us-west-1.amazonaws.com/pinata/%3Csvg%20xmlns=%22http:/www.w3.org/2000/svg%22%20class=%22h-6%20w-6%22%20width=%2224.83%22%20height=%2232%22%20viewBox=%220%200%20256%20330%22%3E%3Cpath%20fill=%22%23FF5B11%22%20d=%22M134.129.029q1.315-.17%202.319.662a1256%201256%200%200%201%2069.573%2093.427q24.141%2036.346%2041.082%2076.862q27.055%2072.162-28.16%20125.564q-48.313%2040.83-111.318%2031.805q-75.312-15.355-102.373-87.133Q-1.796%20217.85.614%20193.51q4.014-41.896%2019.878-80.838q6.61-15.888%2017.228-29.154a382%20382%200%200%201%2016.565%2021.203q3.66%203.825%207.62%207.289Q92.138%2052.013%20134.13.029%22%20opacity=%22.993%22/%3E%3Cpath%20fill=%22%23FF9758%22%20d=%22M129.49%2053.7q36.47%2042.3%2065.93%2090.114a187.3%20187.3%200%200%201%2015.24%2033.13q12.507%2049.206-26.836%2081.169q-38.05%2026.774-83.488%2015.902q-48.999-15.205-56.653-65.929q-1.857-15.993%203.314-31.142a225.4%20225.4%200%200%201%2017.89-35.78l19.878-29.155a5510%205510%200%200%200%2044.726-58.31%22/%3E%3C/svg%3E" href="/frameworks/hono">
     Quickstart
   </Card>
 
-  <Card
-    horizontal
-    title="React"
-    href="/frameworks/react"
-    icon={
-  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" width="28" height="32" viewBox="0 0 256 256"><path fill="#00D8FF" d="M210.483 73.824a172 172 0 0 0-8.24-2.597c.465-1.9.893-3.777 1.273-5.621c6.238-30.281 2.16-54.676-11.769-62.708c-13.355-7.7-35.196.329-57.254 19.526a171 171 0 0 0-6.375 5.848a156 156 0 0 0-4.241-3.917C100.759 3.829 77.587-4.822 63.673 3.233C50.33 10.957 46.379 33.89 51.995 62.588a171 171 0 0 0 1.892 8.48c-3.28.932-6.445 1.924-9.474 2.98C17.309 83.498 0 98.307 0 113.668c0 15.865 18.582 31.778 46.812 41.427a146 146 0 0 0 6.921 2.165a168 168 0 0 0-2.01 9.138c-5.354 28.2-1.173 50.591 12.134 58.266c13.744 7.926 36.812-.22 59.273-19.855a146 146 0 0 0 5.342-4.923a168 168 0 0 0 6.92 6.314c21.758 18.722 43.246 26.282 56.54 18.586c13.731-7.949 18.194-32.003 12.4-61.268a145 145 0 0 0-1.535-6.842c1.62-.48 3.21-.974 4.76-1.488c29.348-9.723 48.443-25.443 48.443-41.52c0-15.417-17.868-30.326-45.517-39.844m-6.365 70.984q-2.102.694-4.3 1.345c-3.24-10.257-7.612-21.163-12.963-32.432c5.106-11 9.31-21.767 12.459-31.957c2.619.758 5.16 1.557 7.61 2.4c23.69 8.156 38.14 20.213 38.14 29.504c0 9.896-15.606 22.743-40.946 31.14m-10.514 20.834c2.562 12.94 2.927 24.64 1.23 33.787c-1.524 8.219-4.59 13.698-8.382 15.893c-8.067 4.67-25.32-1.4-43.927-17.412a157 157 0 0 1-6.437-5.87c7.214-7.889 14.423-17.06 21.459-27.246c12.376-1.098 24.068-2.894 34.671-5.345q.785 3.162 1.386 6.193M87.276 214.515c-7.882 2.783-14.16 2.863-17.955.675c-8.075-4.657-11.432-22.636-6.853-46.752a157 157 0 0 1 1.869-8.499c10.486 2.32 22.093 3.988 34.498 4.994c7.084 9.967 14.501 19.128 21.976 27.15a135 135 0 0 1-4.877 4.492c-9.933 8.682-19.886 14.842-28.658 17.94M50.35 144.747c-12.483-4.267-22.792-9.812-29.858-15.863c-6.35-5.437-9.555-10.836-9.555-15.216c0-9.322 13.897-21.212 37.076-29.293c2.813-.98 5.757-1.905 8.812-2.773c3.204 10.42 7.406 21.315 12.477 32.332c-5.137 11.18-9.399 22.249-12.634 32.792a135 135 0 0 1-6.318-1.979m12.378-84.26c-4.811-24.587-1.616-43.134 6.425-47.789c8.564-4.958 27.502 2.111 47.463 19.835a144 144 0 0 1 3.841 3.545c-7.438 7.987-14.787 17.08-21.808 26.988c-12.04 1.116-23.565 2.908-34.161 5.309a160 160 0 0 1-1.76-7.887m110.427 27.268a348 348 0 0 0-7.785-12.803c8.168 1.033 15.994 2.404 23.343 4.08c-2.206 7.072-4.956 14.465-8.193 22.045a381 381 0 0 0-7.365-13.322m-45.032-43.861c5.044 5.465 10.096 11.566 15.065 18.186a322 322 0 0 0-30.257-.006c4.974-6.559 10.069-12.652 15.192-18.18M82.802 87.83a323 323 0 0 0-7.227 13.238c-3.184-7.553-5.909-14.98-8.134-22.152c7.304-1.634 15.093-2.97 23.209-3.984a322 322 0 0 0-7.848 12.897m8.081 65.352c-8.385-.936-16.291-2.203-23.593-3.793c2.26-7.3 5.045-14.885 8.298-22.6a321 321 0 0 0 7.257 13.246c2.594 4.48 5.28 8.868 8.038 13.147m37.542 31.03c-5.184-5.592-10.354-11.779-15.403-18.433c4.902.192 9.899.29 14.978.29c5.218 0 10.376-.117 15.453-.343c-4.985 6.774-10.018 12.97-15.028 18.486m52.198-57.817c3.422 7.8 6.306 15.345 8.596 22.52c-7.422 1.694-15.436 3.058-23.88 4.071a382 382 0 0 0 7.859-13.026a347 347 0 0 0 7.425-13.565m-16.898 8.101a359 359 0 0 1-12.281 19.815a329 329 0 0 1-23.444.823c-7.967 0-15.716-.248-23.178-.732a310 310 0 0 1-12.513-19.846h.001a307 307 0 0 1-10.923-20.627a310 310 0 0 1 10.89-20.637l-.001.001a307 307 0 0 1 12.413-19.761c7.613-.576 15.42-.876 23.31-.876H128c7.926 0 15.743.303 23.354.883a329 329 0 0 1 12.335 19.695a359 359 0 0 1 11.036 20.54a330 330 0 0 1-11 20.722m22.56-122.124c8.572 4.944 11.906 24.881 6.52 51.026q-.518 2.504-1.15 5.09c-10.622-2.452-22.155-4.275-34.23-5.408c-7.034-10.017-14.323-19.124-21.64-27.008a161 161 0 0 1 5.888-5.4c18.9-16.447 36.564-22.941 44.612-18.3M128 90.808c12.625 0 22.86 10.235 22.86 22.86s-10.235 22.86-22.86 22.86s-22.86-10.235-22.86-22.86s10.235-22.86 22.86-22.86"/></svg>
-  }
-  >
+  <Card title="React" icon="https://mintlify.s3.us-west-1.amazonaws.com/pinata/%3Csvg%20xmlns=%22http:/www.w3.org/2000/svg%22%20class=%22h-6%20w-6%22%20width=%2228%22%20height=%2232%22%20viewBox=%220%200%20256%20256%22%3E%3Cpath%20fill=%22%2300D8FF%22%20d=%22M210.483%2073.824a172%20172%200%200%200-8.24-2.597c.465-1.9.893-3.777%201.273-5.621c6.238-30.281%202.16-54.676-11.769-62.708c-13.355-7.7-35.196.329-57.254%2019.526a171%20171%200%200%200-6.375%205.848a156%20156%200%200%200-4.241-3.917C100.759%203.829%2077.587-4.822%2063.673%203.233C50.33%2010.957%2046.379%2033.89%2051.995%2062.588a171%20171%200%200%200%201.892%208.48c-3.28.932-6.445%201.924-9.474%202.98C17.309%2083.498%200%2098.307%200%20113.668c0%2015.865%2018.582%2031.778%2046.812%2041.427a146%20146%200%200%200%206.921%202.165a168%20168%200%200%200-2.01%209.138c-5.354%2028.2-1.173%2050.591%2012.134%2058.266c13.744%207.926%2036.812-.22%2059.273-19.855a146%20146%200%200%200%205.342-4.923a168%20168%200%200%200%206.92%206.314c21.758%2018.722%2043.246%2026.282%2056.54%2018.586c13.731-7.949%2018.194-32.003%2012.4-61.268a145%20145%200%200%200-1.535-6.842c1.62-.48%203.21-.974%204.76-1.488c29.348-9.723%2048.443-25.443%2048.443-41.52c0-15.417-17.868-30.326-45.517-39.844m-6.365%2070.984q-2.102.694-4.3%201.345c-3.24-10.257-7.612-21.163-12.963-32.432c5.106-11%209.31-21.767%2012.459-31.957c2.619.758%205.16%201.557%207.61%202.4c23.69%208.156%2038.14%2020.213%2038.14%2029.504c0%209.896-15.606%2022.743-40.946%2031.14m-10.514%2020.834c2.562%2012.94%202.927%2024.64%201.23%2033.787c-1.524%208.219-4.59%2013.698-8.382%2015.893c-8.067%204.67-25.32-1.4-43.927-17.412a157%20157%200%200%201-6.437-5.87c7.214-7.889%2014.423-17.06%2021.459-27.246c12.376-1.098%2024.068-2.894%2034.671-5.345q.785%203.162%201.386%206.193M87.276%20214.515c-7.882%202.783-14.16%202.863-17.955.675c-8.075-4.657-11.432-22.636-6.853-46.752a157%20157%200%200%201%201.869-8.499c10.486%202.32%2022.093%203.988%2034.498%204.994c7.084%209.967%2014.501%2019.128%2021.976%2027.15a135%20135%200%200%201-4.877%204.492c-9.933%208.682-19.886%2014.842-28.658%2017.94M50.35%20144.747c-12.483-4.267-22.792-9.812-29.858-15.863c-6.35-5.437-9.555-10.836-9.555-15.216c0-9.322%2013.897-21.212%2037.076-29.293c2.813-.98%205.757-1.905%208.812-2.773c3.204%2010.42%207.406%2021.315%2012.477%2032.332c-5.137%2011.18-9.399%2022.249-12.634%2032.792a135%20135%200%200%201-6.318-1.979m12.378-84.26c-4.811-24.587-1.616-43.134%206.425-47.789c8.564-4.958%2027.502%202.111%2047.463%2019.835a144%20144%200%200%201%203.841%203.545c-7.438%207.987-14.787%2017.08-21.808%2026.988c-12.04%201.116-23.565%202.908-34.161%205.309a160%20160%200%200%201-1.76-7.887m110.427%2027.268a348%20348%200%200%200-7.785-12.803c8.168%201.033%2015.994%202.404%2023.343%204.08c-2.206%207.072-4.956%2014.465-8.193%2022.045a381%20381%200%200%200-7.365-13.322m-45.032-43.861c5.044%205.465%2010.096%2011.566%2015.065%2018.186a322%20322%200%200%200-30.257-.006c4.974-6.559%2010.069-12.652%2015.192-18.18M82.802%2087.83a323%20323%200%200%200-7.227%2013.238c-3.184-7.553-5.909-14.98-8.134-22.152c7.304-1.634%2015.093-2.97%2023.209-3.984a322%20322%200%200%200-7.848%2012.897m8.081%2065.352c-8.385-.936-16.291-2.203-23.593-3.793c2.26-7.3%205.045-14.885%208.298-22.6a321%20321%200%200%200%207.257%2013.246c2.594%204.48%205.28%208.868%208.038%2013.147m37.542%2031.03c-5.184-5.592-10.354-11.779-15.403-18.433c4.902.192%209.899.29%2014.978.29c5.218%200%2010.376-.117%2015.453-.343c-4.985%206.774-10.018%2012.97-15.028%2018.486m52.198-57.817c3.422%207.8%206.306%2015.345%208.596%2022.52c-7.422%201.694-15.436%203.058-23.88%204.071a382%20382%200%200%200%207.859-13.026a347%20347%200%200%200%207.425-13.565m-16.898%208.101a359%20359%200%200%201-12.281%2019.815a329%20329%200%200%201-23.444.823c-7.967%200-15.716-.248-23.178-.732a310%20310%200%200%201-12.513-19.846h.001a307%20307%200%200%201-10.923-20.627a310%20310%200%200%201%2010.89-20.637l-.001.001a307%20307%200%200%201%2012.413-19.761c7.613-.576%2015.42-.876%2023.31-.876H128c7.926%200%2015.743.303%2023.354.883a329%20329%200%200%201%2012.335%2019.695a359%20359%200%200%201%2011.036%2020.54a330%20330%200%200%201-11%2020.722m22.56-122.124c8.572%204.944%2011.906%2024.881%206.52%2051.026q-.518%202.504-1.15%205.09c-10.622-2.452-22.155-4.275-34.23-5.408c-7.034-10.017-14.323-19.124-21.64-27.008a161%20161%200%200%201%205.888-5.4c18.9-16.447%2036.564-22.941%2044.612-18.3M128%2090.808c12.625%200%2022.86%2010.235%2022.86%2022.86s-10.235%2022.86-22.86%2022.86s-22.86-10.235-22.86-22.86s10.235-22.86%2022.86-22.86%22/%3E%3C/svg%3E" href="/frameworks/react">
     Quickstart
   </Card>
 
-  <Card
-    horizontal
-    title="Svelte"
-    href="/frameworks/sveltekit"
-    icon={
-  <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" width="26.6" height="32" viewBox="0 0 256 308"><path fill="#FF3E00" d="M239.682 40.707C211.113-.182 154.69-12.301 113.895 13.69L42.247 59.356a82.2 82.2 0 0 0-37.135 55.056a86.57 86.57 0 0 0 8.536 55.576a82.4 82.4 0 0 0-12.296 30.719a87.6 87.6 0 0 0 14.964 66.244c28.574 40.893 84.997 53.007 125.787 27.016l71.648-45.664a82.18 82.18 0 0 0 37.135-55.057a86.6 86.6 0 0 0-8.53-55.577a82.4 82.4 0 0 0 12.29-30.718a87.57 87.57 0 0 0-14.963-66.244"/><path fill="#FFF" d="M106.889 270.841c-23.102 6.007-47.497-3.036-61.103-22.648a52.7 52.7 0 0 1-9.003-39.85a50 50 0 0 1 1.713-6.693l1.35-4.115l3.671 2.697a92.5 92.5 0 0 0 28.036 14.007l2.663.808l-.245 2.659a16.07 16.07 0 0 0 2.89 10.656a17.14 17.14 0 0 0 18.397 6.828a15.8 15.8 0 0 0 4.403-1.935l71.67-45.672a14.92 14.92 0 0 0 6.734-9.977a15.92 15.92 0 0 0-2.713-12.011a17.16 17.16 0 0 0-18.404-6.832a15.8 15.8 0 0 0-4.396 1.933l-27.35 17.434a52.3 52.3 0 0 1-14.553 6.391c-23.101 6.007-47.497-3.036-61.101-22.649a52.68 52.68 0 0 1-9.004-39.849a49.43 49.43 0 0 1 22.34-33.114l71.664-45.677a52.2 52.2 0 0 1 14.563-6.398c23.101-6.007 47.497 3.036 61.101 22.648a52.7 52.7 0 0 1 9.004 39.85a51 51 0 0 1-1.713 6.692l-1.35 4.116l-3.67-2.693a92.4 92.4 0 0 0-28.037-14.013l-2.664-.809l.246-2.658a16.1 16.1 0 0 0-2.89-10.656a17.14 17.14 0 0 0-18.398-6.828a15.8 15.8 0 0 0-4.402 1.935l-71.67 45.674a14.9 14.9 0 0 0-6.73 9.975a15.9 15.9 0 0 0 2.709 12.012a17.16 17.16 0 0 0 18.404 6.832a15.8 15.8 0 0 0 4.402-1.935l27.345-17.427a52.2 52.2 0 0 1 14.552-6.397c23.101-6.006 47.497 3.037 61.102 22.65a52.68 52.68 0 0 1 9.003 39.848a49.45 49.45 0 0 1-22.34 33.12l-71.664 45.673a52.2 52.2 0 0 1-14.563 6.398"/></svg>
-  }
-  >
+  <Card title="Svelte" icon="https://mintlify.s3.us-west-1.amazonaws.com/pinata/%3Csvg%20class=%22h-6%20w-6%22%20xmlns=%22http:/www.w3.org/2000/svg%22%20width=%2226.6%22%20height=%2232%22%20viewBox=%220%200%20256%20308%22%3E%3Cpath%20fill=%22%23FF3E00%22%20d=%22M239.682%2040.707C211.113-.182%20154.69-12.301%20113.895%2013.69L42.247%2059.356a82.2%2082.2%200%200%200-37.135%2055.056a86.57%2086.57%200%200%200%208.536%2055.576a82.4%2082.4%200%200%200-12.296%2030.719a87.6%2087.6%200%200%200%2014.964%2066.244c28.574%2040.893%2084.997%2053.007%20125.787%2027.016l71.648-45.664a82.18%2082.18%200%200%200%2037.135-55.057a86.6%2086.6%200%200%200-8.53-55.577a82.4%2082.4%200%200%200%2012.29-30.718a87.57%2087.57%200%200%200-14.963-66.244%22/%3E%3Cpath%20fill=%22%23FFF%22%20d=%22M106.889%20270.841c-23.102%206.007-47.497-3.036-61.103-22.648a52.7%2052.7%200%200%201-9.003-39.85a50%2050%200%200%201%201.713-6.693l1.35-4.115l3.671%202.697a92.5%2092.5%200%200%200%2028.036%2014.007l2.663.808l-.245%202.659a16.07%2016.07%200%200%200%202.89%2010.656a17.14%2017.14%200%200%200%2018.397%206.828a15.8%2015.8%200%200%200%204.403-1.935l71.67-45.672a14.92%2014.92%200%200%200%206.734-9.977a15.92%2015.92%200%200%200-2.713-12.011a17.16%2017.16%200%200%200-18.404-6.832a15.8%2015.8%200%200%200-4.396%201.933l-27.35%2017.434a52.3%2052.3%200%200%201-14.553%206.391c-23.101%206.007-47.497-3.036-61.101-22.649a52.68%2052.68%200%200%201-9.004-39.849a49.43%2049.43%200%200%201%2022.34-33.114l71.664-45.677a52.2%2052.2%200%200%201%2014.563-6.398c23.101-6.007%2047.497%203.036%2061.101%2022.648a52.7%2052.7%200%200%201%209.004%2039.85a51%2051%200%200%201-1.713%206.692l-1.35%204.116l-3.67-2.693a92.4%2092.4%200%200%200-28.037-14.013l-2.664-.809l.246-2.658a16.1%2016.1%200%200%200-2.89-10.656a17.14%2017.14%200%200%200-18.398-6.828a15.8%2015.8%200%200%200-4.402%201.935l-71.67%2045.674a14.9%2014.9%200%200%200-6.73%209.975a15.9%2015.9%200%200%200%202.709%2012.012a17.16%2017.16%200%200%200%2018.404%206.832a15.8%2015.8%200%200%200%204.402-1.935l27.345-17.427a52.2%2052.2%200%200%201%2014.552-6.397c23.101-6.006%2047.497%203.037%2061.102%2022.65a52.68%2052.68%200%200%201%209.003%2039.848a49.45%2049.45%200%200%201-22.34%2033.12l-71.664%2045.673a52.2%2052.2%200%200%201-14.563%206.398%22/%3E%3C/svg%3E" href="/frameworks/sveltekit">
     Quickstart
   </Card>
 
-  <Card
-    horizontal
-    title="Astro"
-    href="/frameworks/astro"
-    icon={
-    <svg class="h-7 w-7" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path fill="url(#vscodeIconsFileTypeAstro0)" d="M11.025 20.499c-.532 1.75-.154 4.184 1.105 5.331v-.042l.042-.112c.154-.741.756-1.203 1.526-1.175c.713.014 1.12.392 1.217 1.217c.042.308.042.616.056.938v.098c0 .7.196 1.371.588 1.959c.35.56.84.993 1.497 1.287l-.028-.056l-.028-.112c-.49-1.469-.14-2.49 1.147-3.358l.392-.266l.868-.573a4.25 4.25 0 0 0 1.791-3.037c.07-.532 0-1.05-.154-1.553l-.21.14c-1.945 1.035-4.17 1.4-6.325.98c-1.301-.197-2.56-.56-3.498-1.652z"/><path fill="#fff" d="M4.925 20.191s3.736-1.82 7.486-1.82l2.84-8.759c.098-.42.406-.7.756-.7s.644.28.756.714l2.826 8.746c4.45 0 7.487 1.82 7.487 1.82L20.709 2.84c-.168-.518-.49-.84-.896-.84h-7.612c-.406 0-.7.322-.896.84z"/><defs><linearGradient id="vscodeIconsFileTypeAstro0" x1="8.19" x2="16.91" y1="23" y2="18.89" gradientTransform="translate(-.673 -2.198)scale(1.3993)" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#D83333"/><stop offset="1" stop-color="#F041FF"/></linearGradient></defs></svg>
-    }
-  >
+  <Card title="Astro" icon="https://mintlify.s3.us-west-1.amazonaws.com/pinata/%3Csvg%20class=%22h-7%20w-7%22%20xmlns=%22http:/www.w3.org/2000/svg%22%20width=%2232%22%20height=%2232%22%20viewBox=%220%200%2032%2032%22%3E%3Cpath%20fill=%22url(%23vscodeIconsFileTypeAstro0)%22%20d=%22M11.025%2020.499c-.532%201.75-.154%204.184%201.105%205.331v-.042l.042-.112c.154-.741.756-1.203%201.526-1.175c.713.014%201.12.392%201.217%201.217c.042.308.042.616.056.938v.098c0%20.7.196%201.371.588%201.959c.35.56.84.993%201.497%201.287l-.028-.056l-.028-.112c-.49-1.469-.14-2.49%201.147-3.358l.392-.266l.868-.573a4.25%204.25%200%200%200%201.791-3.037c.07-.532%200-1.05-.154-1.553l-.21.14c-1.945%201.035-4.17%201.4-6.325.98c-1.301-.197-2.56-.56-3.498-1.652z%22/%3E%3Cpath%20fill=%22%23fff%22%20d=%22M4.925%2020.191s3.736-1.82%207.486-1.82l2.84-8.759c.098-.42.406-.7.756-.7s.644.28.756.714l2.826%208.746c4.45%200%207.487%201.82%207.487%201.82L20.709%202.84c-.168-.518-.49-.84-.896-.84h-7.612c-.406%200-.7.322-.896.84z%22/%3E%3Cdefs%3E%3ClinearGradient%20id=%22vscodeIconsFileTypeAstro0%22%20x1=%228.19%22%20x2=%2216.91%22%20y1=%2223%22%20y2=%2218.89%22%20gradientTransform=%22translate(-.673%20-2.198)scale(1.3993)%22%20gradientUnits=%22userSpaceOnUse%22%3E%3Cstop%20offset=%220%22%20stop-color=%22%23D83333%22/%3E%3Cstop%20offset=%221%22%20stop-color=%22%23F041FF%22/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E" href="/frameworks/astro">
     Quickstart
   </Card>
 
-  <Card
-    horizontal
-    title="Remix"
-    href="/frameworks/remix"
-    icon={
-  <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="#888888" d="M21.511 18.508c.216 2.773.216 4.073.216 5.492H15.31c0-.309.006-.592.011-.878c.018-.892.036-1.821-.109-3.698c-.19-2.747-1.374-3.358-3.55-3.358H1.574v-5H11.97c2.748 0 4.122-.835 4.122-3.049c0-1.946-1.374-3.125-4.122-3.125H1.573V0h11.541c6.221 0 9.313 2.938 9.313 7.632c0 3.511-2.176 5.8-5.114 6.182c2.48.497 3.93 1.909 4.198 4.694M1.573 24v-3.727h6.784c1.133 0 1.379.84 1.379 1.342V24Z"/></svg>
-  }
-  >
+  <Card title="Remix" icon="https://mintlify.s3.us-west-1.amazonaws.com/pinata/%3Csvg%20class=%22h-6%20w-6%22%20xmlns=%22http:/www.w3.org/2000/svg%22%20width=%2232%22%20height=%2232%22%20viewBox=%220%200%2024%2024%22%3E%3Cpath%20fill=%22%23888888%22%20d=%22M21.511%2018.508c.216%202.773.216%204.073.216%205.492H15.31c0-.309.006-.592.011-.878c.018-.892.036-1.821-.109-3.698c-.19-2.747-1.374-3.358-3.55-3.358H1.574v-5H11.97c2.748%200%204.122-.835%204.122-3.049c0-1.946-1.374-3.125-4.122-3.125H1.573V0h11.541c6.221%200%209.313%202.938%209.313%207.632c0%203.511-2.176%205.8-5.114%206.182c2.48.497%203.93%201.909%204.198%204.694M1.573%2024v-3.727h6.784c1.133%200%201.379.84%201.379%201.342V24Z%22/%3E%3C/svg%3E" href="/frameworks/remix">
     Quickstart
   </Card>
 </CardGroup>
 
 ### 1. Get API key and Gateway URL
 
-<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafybeignh2yy7bp7qpts5vi46prbjd6lbz23lmtbfcgvpcwc5rjkudrfta" />
+<img />
 
 Inside the [Pinata App](https://app.pinata.cloud) select "API Keys" from the sidebar, then click "New Key" in the top right. We would recommend starting with Admin privileges and unlimited uses to start. You will receive a `pinata_api_key`, `pinata_api_secret`, and a `JWT`. The JWT is the most common authentication method and what we'll be using below.
 
@@ -7205,7 +7012,7 @@ In the root of your project run the install command with your package manager of
 
 Import and initialize the SDK in your codebase with the API key and Gateway from the previous step
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -7214,7 +7021,9 @@ const pinata = new PinataSDK({
 });
 ```
 
-<Note>The `PINATA_JWT` is a secret key, be sure to initialize the SDK in a secure environment and practice basic variable security practices. If you need to upload from a client environment, consider using signed JWTs</Note>
+<Note>
+  The `PINATA_JWT` is a secret key, be sure to initialize the SDK in a secure environment and practice basic variable security practices. If you need to upload from a client environment, consider using signed JWTs
+</Note>
 
 ### 3. Upload a File
 
@@ -7350,248 +7159,15 @@ Use the `cid` of a file to fetch it through a Gateway directly or create a URL
 
 Ready to see more of what Pinata has to offer? Here are some additional features and concepts to help you get the most out of our platform:
 
-<CardGroup cols={2}>
-  <Card title="Groups" icon="cabinet-filing" color="#00cc92" href="https://docs.pinata.cloud/files/groups">
+<CardGroup>
+  <Card title="Groups" icon="cabinet-filing" href="https://docs.pinata.cloud/files/groups">
     With Groups, you can organize your files via the Pinata API or the web app. Create a Group, store your IPFS content, and fetch content quickly and easily.
   </Card>
 
-  <Card title="Workspaces" icon="people-group" color="#00cc92" href="https://docs.pinata.cloud/account-management/workspaces">
+  <Card title="Workspaces" icon="people-group" href="https://docs.pinata.cloud/account-management/workspaces">
     Workspaces allow you to add multiple team members to your Pinata account and collaborate seamlessly. Even if your team members don’t have a Pinata account, you can invite them easily. This feature is essential for efficient project collaboration and management.
   </Card>
 </CardGroup>
-
-
-# requests
-Source: https://docs.pinata.cloud/sdk/analytics/requests
-
-`org:analytics:read`
-
-Get analytics on requests for multiple properties
-
-## Usage
-
-The `analytics` class is unique in that it very flexible, but also can require more queries to be used well. Be sure to real the [Parameters](#parameters) in detail to understand how it can be used.
-
-The `requests` method will sort results by highest number of requests, but will also include `bandwidth` values.
-
-```typescript  theme={null}
-import { PinataSDK } from "pinata";
-
-const pinata = new PinataSDK({
-  pinataJwt: process.env.PINATA_JWT!,
-  pinataGateway: "example-gateway.mypinata.cloud",
-});
-
-const clicks = await pinata.analytics.requests
-  .days(30)
-  .limit(10)
-  .cid("<CID>")
-```
-
-## Returns
-
-What is returned in `value` will depend on they property or query used. For instance, using `cid()` will return CIDs, `country()` will return Countries, etc.
-
-```typescript  theme={null}
-type TopAnalyticsResponse = {
-	data: TopAnalyticsItem[];
-};
-
-type TopAnalyticsItem = {
-	value: string;
-	requests: number;
-	bandwidth: number;
-};
-```
-
-## Parameters
-
-Filter response with the following additional methods. It does require at least one property, such as `cid`, `fileName`, `userAgent`, `country`, `region`, or `referrer`.
-
-### cid
-
-* Type: `string`
-
-Returns requests for all CIDs
-
-```typescript {3} theme={null}
-const files = await pinata.analytics.requests
-  .days(7)
-  .cid()
-```
-
-Filter by passing an argument
-
-```typescript {3} theme={null}
-const files = await pinata.analytics.requests
-  .days(7)
-  .cid("bafkreih5aznjvttude6c3wbvqeebb6rlx5wkbzyppv7garjiubll2ceym4")
-```
-
-### fileName
-
-* Type: `string`
-
-Returns requests for all file names
-
-```typescript {3} theme={null}
-const files = await pinata.analytics.requests
-  .days(7)
-  .fileName()
-```
-
-Filter by passing an argument
-
-```typescript {3} theme={null}
-const files = await pinata.analytics.requests
-  .days(7)
-  .fileName("pinnie.png")
-```
-
-### userAgent
-
-* Type: `string`
-
-Returns requests for user agents
-
-```typescript {3} theme={null}
-const files = await pinata.analytics.requests
-  .days(7)
-  .userAgent()
-```
-
-Filter by passing an argument
-
-```typescript {3-5} theme={null}
-const files = await pinata.analytics.requests
-  .days(7)
-  .userAgent(
-    "Mozilla/5.0 (X11; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0"
-  )
-```
-
-### country
-
-* Type: `string`
-
-Returns requests for countries
-
-```typescript {3} theme={null}
-const files = await pinata.analytics.requests
-  .days(7)
-  .country()
-```
-
-Filter by passing an argument
-
-```typescript {3} theme={null}
-const files = await pinata.analytics.requests
-  .days(7)
-  .country("us")
-```
-
-### region
-
-* Type: `string`
-
-Returns requests for regions inside of countries
-
-```typescript {3} theme={null}
-const files = await pinata.analytics.requests
-  .days(7)
-  .region()
-```
-
-Filter by passing an argument
-
-```typescript {3} theme={null}
-const files = await pinata.analytics.requests
-  .days(7)
-  .region("us - VA")
-```
-
-### referer
-
-* Type: `string`
-
-Returns requests for referers
-
-```typescript {3} theme={null}
-const files = await pinata.analytics.requests
-  .days(7)
-  .referer()
-```
-
-Filter by passing an argument
-
-```typescript {3} theme={null}
-const files = await pinata.analytics.requests
-  .days(7)
-  .referer("https://docs.pinata.cloud/")
-```
-
-### days
-
-* Type: `number`
-
-Number of days to query. Starts with current date and then goes back by provided number.
-
-```typescript {2} theme={null}
-const files = await pinata.analytics.requests
-  .days(7)
-  .cid()
-```
-
-### sort
-
-* Type: `"asc" | "desc"`
-
-Order results either ascending or descending by created date
-
-```typescript {4} theme={null}
-const files = await pinata.analytics.requests
-  .days(7)
-  .cid()
-  .sort("asc")
-```
-
-### limit
-
-* Type: `number`
-
-Limit the number of results
-
-```typescript {4} theme={null}
-const files = await pinata.analytics.requests
-  .days(7)
-  .cid()
-  .limit(10)
-```
-
-### customDates
-
-* Type: `string, string`
-
-Custom dates to query using a start and end date with the format `YYYY-MM-DD`
-
-```typescript {2} theme={null}
-const files = await pinata.analytics.requests
-  .customDates("2024-11-01", "2024-11-20")
-  .cid()
-```
-
-### from
-
-* Type: `string`
-
-Provide an alternate Gateway domain to query instead of the default one found in the Pinata SDK Config
-
-```typescript {4} theme={null}
-const files = await pinata.analytics.requests
-  .days(7)
-  .cid()
-  .from("example-2.mypinata.cloud")
-```
 
 
 # Config
@@ -7603,7 +7179,7 @@ Overview of the Private IPFS SDK Config
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -7642,7 +7218,7 @@ Swap a CID for another using the [Hot Swaps](/gateways/plugins/hot-swaps) gatewa
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -7658,7 +7234,7 @@ const swap = await pinata.files.private.addSwap({
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 export type SwapCidResponse = {
 	mapped_cid: string;
 	created_at: string;
@@ -7705,7 +7281,7 @@ Delte an array of files from your account
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -7720,7 +7296,7 @@ const deletedFiles = await pinata.files.private.delete([
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type DeleteResponse[] = {
   id: string;
   status: string;
@@ -7735,7 +7311,7 @@ type DeleteResponse[] = {
 
 An array of file IDs you want to delete
 
-```typescript  theme={null}
+```typescript theme={null}
 const unpin = await pinata.files.private
   .delete([
     "5e3011c0-f242-46b8-ad8d-2141bba23096",
@@ -7753,7 +7329,7 @@ Remove a CID swap for [Hot Swaps](/gateways/plugins/hot-swaps) plugin
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -7768,7 +7344,7 @@ const deleteSwap = await pinata.files.private.deleteSwap(
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 OK
 ```
 
@@ -7782,7 +7358,7 @@ Pass in the required parameters below to remove a CID swap
 
 This would be the original CID that was swapped
 
-```typescript  theme={null}
+```typescript theme={null}
 const deleteSwap = await pinata.files.private.deleteSwap(
   "bafkreibbvdqf5ekc2crouowv7vtjbcmbjoiysegslmmqc6jrxbaa43xske"
 )
@@ -7795,14 +7371,14 @@ Source: https://docs.pinata.cloud/sdk/files/private/delete-vectors
 `org:files:write`
 
 <Warning>
-  The file vectors feature is still in beta. Please contact the team at <a href="mailto:team@pinata.cloud" target="_blank">[team@pinata.cloud](mailto:team@pinata.cloud)</a> if you have any issues.
+  The file vectors feature is still in beta. Please contact the team at <a href="mailto:team@pinata.cloud">[team@pinata.cloud](mailto:team@pinata.cloud)</a> if you have any issues.
 </Warning>
 
 Delete vectors for a given `fileId`
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -7816,7 +7392,7 @@ const update = await pinata.files.private
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type VectorizeFileResponse = {
 	status: boolean;
 };
@@ -7845,7 +7421,7 @@ See the history of [Hot Swaps](/gateways/plugins/hot-swaps) on a Gateway domain 
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -7861,7 +7437,7 @@ const history = await pinata.files.private.getSwapHistory({
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 SwapCidResponse[]
 
 export type SwapCidResponse = {
@@ -7910,7 +7486,7 @@ List and filter files pinned to your Pinata account
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -7923,7 +7499,7 @@ const files = await pinata.files.pivate.list()
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type FileListResponse = {
   files: FileListItem[];
   next_page_token: string;
@@ -8072,7 +7648,7 @@ const files = await pinata.files.private
 
 The `list` method has an auto pagination feature that is triggered when used inside a `for await` iterator
 
-```typescript  theme={null}
+```typescript theme={null}
 for await (const item of pinata.files.private.list()) {
   console.log(item.id);
 }
@@ -8087,14 +7663,14 @@ Source: https://docs.pinata.cloud/sdk/files/private/query-vectors
 `org:files:write`
 
 <Warning>
-  The file vectors feature is still in beta. Please contact the team at <a href="mailto:team@pinata.cloud" target="_blank">[team@pinata.cloud](mailto:team@pinata.cloud)</a> if you have any issues.
+  The file vectors feature is still in beta. Please contact the team at <a href="mailto:team@pinata.cloud">[team@pinata.cloud](mailto:team@pinata.cloud)</a> if you have any issues.
 </Warning>
 
 Query file vectors for a given `groupId`
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -8110,7 +7686,7 @@ const update = await pinata.files.private.queryVectors({
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type VectorizeQueryResponse = {
 	count: number;
 	matches: VectorQueryMatch[];
@@ -8182,7 +7758,7 @@ Update information for an existing file
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -8198,7 +7774,7 @@ const update = await pinata.files.private.update({
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type FileListItem = {
 	id: string;
 	name: string | null;
@@ -8262,14 +7838,14 @@ Source: https://docs.pinata.cloud/sdk/files/private/vectorize
 `org:files:write`
 
 <Warning>
-  The file vectors feature is still in beta. Please contact the team at <a href="mailto:team@pinata.cloud" target="_blank">[team@pinata.cloud](mailto:team@pinata.cloud)</a> if you have any issues.
+  The file vectors feature is still in beta. Please contact the team at <a href="mailto:team@pinata.cloud">[team@pinata.cloud](mailto:team@pinata.cloud)</a> if you have any issues.
 </Warning>
 
 Vectorize an existing file (must be part of a group)
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -8283,7 +7859,7 @@ const update = await pinata.files.private
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type VectorizeFileResponse = {
 	status: boolean;
 };
@@ -8312,7 +7888,7 @@ Swap a CID for another using the [Hot Swaps](/gateways/plugins/hot-swaps) gatewa
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -8328,7 +7904,7 @@ const swap = await pinata.files.public.addSwap({
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 export type SwapCidResponse = {
 	mapped_cid: string;
 	created_at: string;
@@ -8375,7 +7951,7 @@ Delte an array of files from your account
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -8390,7 +7966,7 @@ const deletedFiles = await pinata.files.public.delete([
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type DeleteResponse[] = {
   id: string;
   status: string;
@@ -8405,7 +7981,7 @@ type DeleteResponse[] = {
 
 An array of file IDs you want to delete
 
-```typescript  theme={null}
+```typescript theme={null}
 const unpin = await pinata.files.public
   .delete([
     "5e3011c0-f242-46b8-ad8d-2141bba23096",
@@ -8423,7 +7999,7 @@ Remove a CID swap for [Hot Swaps](/gateways/plugins/hot-swaps) plugin
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -8438,7 +8014,7 @@ const deleteSwap = await pinata.files.public.deleteSwap(
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 OK
 ```
 
@@ -8452,7 +8028,7 @@ Pass in the required parameters below to remove a CID swap
 
 This would be the original CID that was swapped
 
-```typescript  theme={null}
+```typescript theme={null}
 const deleteSwap = await pinata.files.public.deleteSwap(
   "bafkreibbvdqf5ekc2crouowv7vtjbcmbjoiysegslmmqc6jrxbaa43xske"
 )
@@ -8468,7 +8044,7 @@ See the history of [Hot Swaps](/gateways/plugins/hot-swaps) on a Gateway domain 
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -8484,7 +8060,7 @@ const history = await pinata.files.public.getSwapHistory({
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 SwapCidResponse[]
 
 export type SwapCidResponse = {
@@ -8533,7 +8109,7 @@ List and filter files pinned to your Pinata account
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -8546,7 +8122,7 @@ const files = await pinata.files.public.list()
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type FileListResponse = {
 		files: FileListItem[];
 		next_page_token: string;
@@ -8695,7 +8271,7 @@ const files = await pinata.files.public
 
 The `list` method has an auto pagination feature that is triggered when used inside a `for await` iterator
 
-```typescript  theme={null}
+```typescript theme={null}
 for await (const item of pinata.files.public.list()) {
 		console.log(item.id);
 }
@@ -8713,7 +8289,7 @@ List pin by CID requests in queue
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -8726,7 +8302,7 @@ const queue = await pinata.files.public.queue().status("prechecking")
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 export type PinQueueResponse = {
 	rows: PinQueueItem[];
 	next_page_token: string;
@@ -8760,7 +8336,7 @@ Filter results with the following methods. All filters are optional.
 
 Filter by `cid`
 
-```typescript  theme={null}
+```typescript theme={null}
 const jobs = await pinata.files.public
   .queue()
   .cid('bafkreih5aznjvttude6c3wbvqeebb6rlx5wkbzyppv7garjiubll2ceym4')
@@ -8772,7 +8348,7 @@ const jobs = await pinata.files.public
 
 Filter by current status
 
-```typescript  theme={null}
+```typescript theme={null}
 const jobs = await pinata.files.public
   .queue()
   .status("prechecking")
@@ -8784,7 +8360,7 @@ const jobs = await pinata.files.public
 
 Order results by either ascending or descending by submission
 
-```typescript  theme={null}
+```typescript theme={null}
 const jobs = await pinata.files.public
   .queue()
   .sort("ASC")
@@ -8796,7 +8372,7 @@ const jobs = await pinata.files.public
 
 Limit the number of results. Default is `10`, max is `250`
 
-```typescript  theme={null}
+```typescript theme={null}
 const jobs = await pinata.files.public
   .queue()
   .pageLimit(100)
@@ -8808,7 +8384,7 @@ const jobs = await pinata.files.public
 
 Paginate through results
 
-```typescript  theme={null}
+```typescript theme={null}
 const jobs = await pinata.files.public
   .queue()
   .pageToken("TOKEN")
@@ -8818,7 +8394,7 @@ const jobs = await pinata.files.public
 
 The `pinJobs` method has an auto pagination feature that is triggered when used inside a `for await` iterator
 
-```typescript  theme={null}
+```typescript theme={null}
 for await (const job of pinata.files.public.queue().status("expired") {
   console.log(job.cid);
 }
@@ -8834,7 +8410,7 @@ Update information for an existing file
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -8850,7 +8426,7 @@ const update = await pinata.files.public.update({
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type FileListItem = {
 	id: string;
 	name: string | null;
@@ -8917,7 +8493,7 @@ Creates a temporary access link for a file on private IPFS
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -9004,7 +8580,7 @@ const url = await pinata.gateways.private.createAccessLink({
 
 * Type: [OptimizeImageOptions](/sdk/types#optimizeimageoptions)
 
-```typescript  theme={null}
+```typescript theme={null}
 type OptimizeImageOptions = {
   width?: number;
   height?: number;
@@ -9042,7 +8618,7 @@ Retrieve a file through the config's `pinataGateway`
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -9057,7 +8633,7 @@ const file = await pinata.gateways.private.get("bafkreih5aznjvttude6c3wbvqeebb6r
 
 Returns the data in the form of `JSON`, `string`, or `Blob` as well as the `ContentType`
 
-```typescript  theme={null}
+```typescript theme={null}
 type GetCIDResponse = {
   data?: JSON | string | Blob | null;
   contentType: ContentType;
@@ -9091,7 +8667,7 @@ type ContentType =
 
 Accepts CID of the file you are trying to fetch
 
-```typescript  theme={null}
+```typescript theme={null}
 const data = await pinata.gateways.private.get(
 	"bafybeibo5zcqeorhqxczodrx52rn7byyrwfvwthz5dspnjlbkd7zkugefi",
 );
@@ -9101,7 +8677,7 @@ const data = await pinata.gateways.private.get(
 
 * Type: [OptimizeImageOptions](/sdk/types#optimizeimageoptions)
 
-```typescript  theme={null}
+```typescript theme={null}
 type OptimizeImageOptions = {
   width?: number;
   height?: number;
@@ -9139,7 +8715,7 @@ Convert an IPFS link into one that uses your Dedicated Gateway
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata-web3";
 
 const pinata = new PinataSDK({
@@ -9154,7 +8730,7 @@ const url = await pinata.gateways.convert(
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 string
 ```
 
@@ -9166,7 +8742,7 @@ string
 
 Accepts CID or IPFS gateway link.
 
-```typescript  theme={null}
+```typescript theme={null}
 const url = await pinata.gateways.convert(
 	"bafybeibo5zcqeorhqxczodrx52rn7byyrwfvwthz5dspnjlbkd7zkugefi/hello-1.txt",
 );
@@ -9186,7 +8762,7 @@ const url = await pinata.gateways.convert(
 
 Use a different gateway prefix than the config default
 
-```typescript  theme={null}
+```typescript theme={null}
 const url = await pinata.gateways.convert(
 	"QmVLwvmGehsrNEvhcCnnsw5RQNseohgEkFNN1848zNzdng",
 	"https://ipfs.io"
@@ -9203,7 +8779,7 @@ Retrieve a file from IPFS through the config's `pinataGateway`
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata-web3";
 
 const pinata = new PinataSDK({
@@ -9218,7 +8794,7 @@ const file = await pinata.gateways.public.get("QmVLwvmGehsrNEvhcCnnsw5RQNseohgEk
 
 Returns the data from the CID in the form of `JSON`, `string`, or `Blob` as well as the `ContentType`
 
-```typescript  theme={null}
+```typescript theme={null}
 type GetCIDResponse = {
   data?: JSON | string | Blob | null;
   contentType: ContentType;
@@ -9252,7 +8828,7 @@ type ContentType =
 
 Accepts CID or IPFS gateway link.
 
-```typescript  theme={null}
+```typescript theme={null}
 const data = await pinata.gateways.public.get(
 	"bafybeibo5zcqeorhqxczodrx52rn7byyrwfvwthz5dspnjlbkd7zkugefi/hello-1.txt",
 );
@@ -9272,7 +8848,7 @@ const data = await pinata.gateways.public.get(
 
 * Type: [OptimizeImageOptions](/sdk/types#optimizeimageoptions)
 
-```typescript  theme={null}
+```typescript theme={null}
 type OptimizeImageOptions = {
   width?: number;
   height?: number;
@@ -9290,7 +8866,7 @@ type OptimizeImageOptions = {
 
 If the content being fetched is an image you can apply image optimizations to the image.
 
-```typescript  theme={null}
+```typescript theme={null}
 const data = await pinata.gateways.public
   .get("QmVLwvmGehsrNEvhcCnnsw5RQNseohgEkFNN1848zNzdng")
   .optimizeImage({
@@ -9306,7 +8882,7 @@ Source: https://docs.pinata.cloud/sdk/getting-started
 
 Get up and running with the Pinata IPFS SDK
 
-<img style={{ width: '100%', borderRadius: '0.5rem'}} src="https://docs.mypinata.cloud/ipfs/QmQi9QEuMfsoxVPqhDQdppdyD6HSrUDsaKK5hdTvT1nikw?img-format=webp" />
+<img />
 
 The IPFS SDK is an all-in-one tool for everything you might need, from uploading content, using Gateways, even user or group management!
 
@@ -9337,7 +8913,7 @@ Import and initialize the SDK in your codebase with the following variables
 * [Pinata API Key JWT](/account-management/api-keys)
 * [Pinata Dedicated Gateway Domain](/gateways/retrieving-files)
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -9373,7 +8949,7 @@ await main();
 
 This will return an object like the following
 
-```typescript  theme={null}
+```typescript theme={null}
 {
   id: "0195f815-5c5e-716d-9240-d3ae380e2002",
   group_id: null,
@@ -9426,7 +9002,7 @@ Add private files to a private group
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -9445,7 +9021,7 @@ const group = await pinata.groups.private.addFiles({
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type UpdateGroupFilesResponse[] = {
 	id: string;
 	status: string;
@@ -9496,7 +9072,7 @@ Create a private group
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -9511,7 +9087,7 @@ const group = await pinata.groups.private.create({
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type GroupResponseItem = {
     id: string;
     name: string;
@@ -9543,7 +9119,7 @@ Delete a private group
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -9558,7 +9134,7 @@ const groups = await pinata.groups.private.delete({
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 OK
 ```
 
@@ -9586,7 +9162,7 @@ Get info for an existing private group
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -9601,7 +9177,7 @@ const groups = await pinata.groups.private.get({
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type GroupResponseItem = {
     id: string;
     name: string;
@@ -9633,7 +9209,7 @@ List and filter through all private groups
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -9647,7 +9223,7 @@ const groups = await pinata.groups.private
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type GroupListResponse = {
   groups: GroupResponseItem[];
   next_page_token: string;
@@ -9705,7 +9281,7 @@ const groups = await pinata.groups.private
 
 The `list` method has an auto pagination feature that is triggered when used inside a `for await` iterator
 
-```typescript  theme={null}
+```typescript theme={null}
 for await (const item of pinata.gateways.private.list()) {
   console.log(item.name);
 }
@@ -9721,7 +9297,7 @@ Remove private files from a private group
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -9740,7 +9316,7 @@ const group = await pinata.groups.private.removeFiles({
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type UpdateGroupFilesResponse[] = {
 	id: string;
 	status: string;
@@ -9791,7 +9367,7 @@ Update the name of a private group
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -9807,7 +9383,7 @@ const groups = await pinata.groups.private.update({
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type GroupResponseItem = {
     id: string;
     name: string;
@@ -9853,7 +9429,7 @@ Add public files to a public group
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -9872,7 +9448,7 @@ const group = await pinata.groups.public.addFiles({
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type UpdateGroupFilesResponse[] = {
 	id: string;
 	status: string;
@@ -9923,7 +9499,7 @@ Create a public group
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -9938,7 +9514,7 @@ const group = await pinata.groups.public.create({
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type GroupResponseItem = {
     id: string;
     name: string;
@@ -9970,7 +9546,7 @@ Delete a public group
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -9985,7 +9561,7 @@ const groups = await pinata.groups.public.delete({
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 OK
 ```
 
@@ -10013,7 +9589,7 @@ Get info for an existing public group
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -10028,7 +9604,7 @@ const groups = await pinata.groups.public.get({
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type GroupResponseItem = {
     id: string;
     name: string;
@@ -10060,7 +9636,7 @@ List and filter through all public groups
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -10074,7 +9650,7 @@ const groups = await pinata.groups.public
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type GroupListResponse = {
   groups: GroupResponseItem[];
   next_page_token: string;
@@ -10131,7 +9707,7 @@ const groups = await pinata.groups.public
 
 The `list` method has an auto pagination feature that is triggered when used inside a `for await` iterator
 
-```typescript  theme={null}
+```typescript theme={null}
 for await (const item of pinata.gateways.public.list()) {
   console.log(item.name);
 }
@@ -10147,7 +9723,7 @@ Remove public files from a public group
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -10166,7 +9742,7 @@ const group = await pinata.groups.public.removeFiles({
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type UpdateGroupFilesResponse[] = {
 	id: string;
 	status: string;
@@ -10217,7 +9793,7 @@ Update the name of a public group
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -10233,7 +9809,7 @@ const groups = await pinata.groups.public.update({
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type GroupResponseItem = {
     id: string;
     name: string;
@@ -10279,7 +9855,7 @@ Included with the Pinata SDK is the `pinata/react` package which comes with a ho
 
 Install the Pinata SDK
 
-```bash  theme={null}
+```bash theme={null}
 npm i pinata
 ```
 
@@ -10287,13 +9863,13 @@ npm i pinata
 
 Import at the top of your desired page or component
 
-```typescript  theme={null}
+```typescript theme={null}
 import { useUpload, convert } from "pinata/react";
 ```
 
 Inside your page or component use the hook to extract methods and state
 
-```typescript  theme={null}
+```typescript theme={null}
 const {
 	upload, // Method to upload a file using a presigned URL
 	progress, // Progress state as integer
@@ -10312,7 +9888,7 @@ const {
 
 Return types for `useUpload`
 
-```typescript  theme={null}
+```typescript theme={null}
 export type UseUploadReturn = {
 	progress: number;
 	loading: boolean;
@@ -10332,7 +9908,7 @@ export type UseUploadReturn = {
 
 To upload a file you must already have a server setup that returns a [Presigned URL](/files/presigned-urls). Then you can pass it into the `upload` method like so.
 
-```typescript  theme={null}
+```typescript theme={null}
 await upload(file, "public", "presigned_URL", {
   metadata: {
   	name: file.name || "Upload from React",
@@ -10350,7 +9926,7 @@ await upload(file, "public", "presigned_URL", {
 
 Below are the available `UploadOptions` that can be passed into `upload`
 
-```typescript  theme={null}
+```typescript theme={null}
 export type UploadOptions = {
 	metadata?: PinataMetadata;
 	groupId?: string;
@@ -10362,14 +9938,14 @@ Once a file is uploaded the `uploadResponse` will contain either the full upload
 
 The `convert` helper can be used to turn a CID into a URL like so:
 
-```typescript  theme={null}
+```typescript theme={null}
 const ipfsLink = await convert(uploadResponse.cid, "https://gateway.pinata.cloud");
 // https://gateway.pinata.cloud/ipfs/CID
 ```
 
 Below is a full example of implementing the `useUpload` hook with progress and abilities to pause and resume the upload.
 
-```typescript  theme={null}
+```typescript theme={null}
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
@@ -10499,181 +10075,6 @@ Please [contact us](mailto:steve@pinata.cloud) if you have any issues!
 
 
 # add
-Source: https://docs.pinata.cloud/sdk/signatures/private/add
-
-`org:files:write`
-
-Add an EIP-712 signature to a CID
-
-<Note>
-  For more information about adding signatures to CIDs on IPFS please read the [Signatures Guide](/files/signatures).
-</Note>
-
-## Usage
-
-```typescript  theme={null}
-import { PinataSDK } from "pinata-web3";
-
-const pinata = new PinataSDK({
-  pinataJwt: process.env.PINATA_JWT!,
-  pinataGateway: "example-gateway.mypinata.cloud",
-});
-
-const signature = await pinata.signatures.private.add({
-  cid: "QmXGeVy9dVwfuFJmvbzz8y4dYK1TdxXbDGzwbNuyZ5xXSU",
-  signature: "0x1b...911b",
-  address: "0xB3899AA8E13172E48D44CE411b0c4c2f08730Dc6"
-});
-```
-
-## Returns
-
-```typescript  theme={null}
-type SignatureResponse = {
-  cid: string;
-  signature: string;
-};
-```
-
-## Parameters
-
-### cid
-
-* Type: `string`
-
-Target CID that you want to add a signature to.
-
-```typescript {2} theme={null}
-const signature = await pinata.signatures.private.add({
-  cid: "QmXGeVy9dVwfuFJmvbzz8y4dYK1TdxXbDGzwbNuyZ5xXSU",
-  signature: "0x1b...911b",
-  address: "0xB3899AA8E13172E48D44CE411b0c4c2f08730Dc6"
-});
-```
-
-### signature
-
-* Type: `0x${string}`
-
-EIP-712 Signature to be assigned to target CID.
-
-```typescript {3} theme={null}
-const signature = await pinata.signatures.private.add({
-  cid: "QmXGeVy9dVwfuFJmvbzz8y4dYK1TdxXbDGzwbNuyZ5xXSU",
-  signature: "0x1b...911b",
-  address: "0xB3899AA8E13172E48D44CE411b0c4c2f08730Dc6"
-});
-```
-
-### address
-
-* Type: `0x${string}`
-
-Wallet address that made the signature
-
-```typescript {4} theme={null}
-const signature = await pinata.signatures.private.add({
-  cid: "QmXGeVy9dVwfuFJmvbzz8y4dYK1TdxXbDGzwbNuyZ5xXSU",
-  signature: "0x1b...911b",
-  address: "0xB3899AA8E13172E48D44CE411b0c4c2f08730Dc6"
-});
-```
-
-
-# delete
-Source: https://docs.pinata.cloud/sdk/signatures/private/delete
-
-`org:files:write`
-
-Delete an EIP-712 signature from a CID
-
-<Note>
-  For more information about adding signatures to CIDs on IPFS please read the [Signatures Guide](/files/signatures).
-</Note>
-
-## Usage
-
-```typescript  theme={null}
-import { PinataSDK } from "pinata-web3";
-
-const pinata = new PinataSDK({
-  pinataJwt: process.env.PINATA_JWT!,
-  pinataGateway: "example-gateway.mypinata.cloud",
-});
-
-const signature = await pinata.signatures.delete(
-  "QmXGeVy9dVwfuFJmvbzz8y4dYK1TdxXbDGzwbNuyZ5xXSU"
-);
-```
-
-## Returns
-
-```typescript  theme={null}
-OK
-```
-
-## Parameters
-
-### cid
-
-* Type: `string`
-
-Target CID that you want to add a signature to.
-
-```typescript  theme={null}
-const signature = await pinata.signatures.delete(
-  "QmXGeVy9dVwfuFJmvbzz8y4dYK1TdxXbDGzwbNuyZ5xXSU"
-);
-```
-
-
-# get
-Source: https://docs.pinata.cloud/sdk/signatures/private/get
-
-`org:files:read`
-
-Get signature for CID
-
-<Note>
-  For more information about adding signatures to CIDs on IPFS please read the [Signatures Guide](/files/signatures).
-</Note>
-
-## Usage
-
-```typescript  theme={null}
-import { PinataSDK } from "pinata-web3";
-
-const pinata = new PinataSDK({
-  pinataJwt: process.env.PINATA_JWT!,
-  pinataGateway: "example-gateway.mypinata.cloud",
-});
-
-const signature = await pinata.signatures.get("QmXGeVy9dVwfuFJmvbzz8y4dYK1TdxXbDGzwbNuyZ5xXSU");
-```
-
-## Returns
-
-```typescript  theme={null}
-type SignatureResponse = {
-  cid: string;
-  signature: string;
-};
-```
-
-## Parameters
-
-### cid
-
-* Type: `string`
-
-Target CID that you want to add a signature to.
-
-```typescript  theme={null}
-const signature = await pinata.signatures.get("QmXGeVy9dVwfuFJmvbzz8y4dYK1TdxXbDGzwbNuyZ5xXSU");
-```
-
-
-# add
 Source: https://docs.pinata.cloud/sdk/signatures/public/add
 
 `org:files:write`
@@ -10686,7 +10087,7 @@ Add an EIP-712 signature to a CID
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata-web3";
 
 const pinata = new PinataSDK({
@@ -10703,7 +10104,7 @@ const signature = await pinata.signatures.public.add({
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type SignatureResponse = {
   cid: string;
   signature: string;
@@ -10768,7 +10169,7 @@ Delete an EIP-712 signature from a CID
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata-web3";
 
 const pinata = new PinataSDK({
@@ -10783,7 +10184,7 @@ const signature = await pinata.signatures.delete(
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 OK
 ```
 
@@ -10795,7 +10196,7 @@ OK
 
 Target CID that you want to add a signature to.
 
-```typescript  theme={null}
+```typescript theme={null}
 const signature = await pinata.signatures.delete(
   "QmXGeVy9dVwfuFJmvbzz8y4dYK1TdxXbDGzwbNuyZ5xXSU"
 );
@@ -10815,7 +10216,7 @@ Get signature for CID
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata-web3";
 
 const pinata = new PinataSDK({
@@ -10828,7 +10229,7 @@ const signature = await pinata.signatures.get("QmXGeVy9dVwfuFJmvbzz8y4dYK1TdxXbD
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type SignatureResponse = {
   cid: string;
   signature: string;
@@ -10843,7 +10244,7 @@ type SignatureResponse = {
 
 Target CID that you want to add a signature to.
 
-```typescript  theme={null}
+```typescript theme={null}
 const signature = await pinata.signatures.get("QmXGeVy9dVwfuFJmvbzz8y4dYK1TdxXbDGzwbNuyZ5xXSU");
 ```
 
@@ -10857,7 +10258,7 @@ Upload a base64 string to Private IPFS
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -10870,7 +10271,7 @@ const upload = await pinata.upload.private.base64("SGVsbG8gV29ybGQh")
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type UploadResponse = {
 	id: string;
 	name: string;
@@ -10896,7 +10297,7 @@ type UploadResponse = {
 
 Accepts a string encoded in base64
 
-```typescript  theme={null}
+```typescript theme={null}
 const upload = await pinata.upload.private.base64("SGVsbG8gV29ybGQh")
 ```
 
@@ -10941,7 +10342,7 @@ const upload = await pinata.upload.private
 ### vectorize (Optional)
 
 <Warning>
-  The file vectors feature is still in beta. Please contact the team at <a href="mailto:team@pinata.cloud" target="_blank">[team@pinata.cloud](mailto:team@pinata.cloud)</a> if you have any issues.
+  The file vectors feature is still in beta. Please contact the team at <a href="mailto:team@pinata.cloud">[team@pinata.cloud](mailto:team@pinata.cloud)</a> if you have any issues.
 </Warning>
 
 * Type: `null`
@@ -10993,7 +10394,7 @@ Create a signed upload URL for a file upload. This method is ideal when you want
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -11143,7 +10544,7 @@ Upload a single file to Private IPFS
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -11176,7 +10577,7 @@ const upload = await pinata.upload.private.file(file);
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type UploadResponse = {
 	id: string;
 	name: string;
@@ -11256,7 +10657,7 @@ const upload = await pinata.upload.private
 ### vectorize (Optional)
 
 <Warning>
-  The file vectors feature is still in beta. Please contact the team at <a href="mailto:team@pinata.cloud" target="_blank">[team@pinata.cloud](mailto:team@pinata.cloud)</a> if you have any issues.
+  The file vectors feature is still in beta. Please contact the team at <a href="mailto:team@pinata.cloud">[team@pinata.cloud](mailto:team@pinata.cloud)</a> if you have any issues.
 </Warning>
 
 * Type: `null`
@@ -11304,7 +10705,7 @@ Upload a JSON object to Private IPFS
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -11321,7 +10722,7 @@ const upload = await pinata.upload.json({
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type UploadResponse = {
 	id: string;
 	name: string;
@@ -11347,7 +10748,7 @@ type UploadResponse = {
 
 Accepts an object that is turned into JSON
 
-```typescript  theme={null}
+```typescript theme={null}
 const upload = await pinata.upload.private.json({
     content: "console.log('hello world!)",
     name: "helloworld.ts",
@@ -11408,7 +10809,7 @@ const upload = await pinata.upload.private
 ### vectorize (Optional)
 
 <Warning>
-  The file vectors feature is still in beta. Please contact the team at <a href="mailto:team@pinata.cloud" target="_blank">[team@pinata.cloud](mailto:team@pinata.cloud)</a> if you have any issues.
+  The file vectors feature is still in beta. Please contact the team at <a href="mailto:team@pinata.cloud">[team@pinata.cloud](mailto:team@pinata.cloud)</a> if you have any issues.
 </Warning>
 
 * Type: `null`
@@ -11468,7 +10869,7 @@ Upload the contents of a URL to Private IPFS
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -11481,7 +10882,7 @@ const upload = await pinata.upload.private.url("https://i.imgur.com/u4mGk5b.gif"
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type UploadResponse = {
 	id: string;
 	name: string;
@@ -11507,7 +10908,7 @@ type UploadResponse = {
 
 Accepts a URL in the form of a string. The mimetype of the URL body provided in the headers typically determines the resulting file.
 
-```typescript  theme={null}
+```typescript theme={null}
 const upload = await pinata.upload.private.url("https://i.imgur.com/u4mGk5b.gif")
 ```
 
@@ -11552,7 +10953,7 @@ const upload = await pinata.upload.private
 ### vectorize (Optional)
 
 <Warning>
-  The file vectors feature is still in beta. Please contact the team at <a href="mailto:team@pinata.cloud" target="_blank">[team@pinata.cloud](mailto:team@pinata.cloud)</a> if you have any issues.
+  The file vectors feature is still in beta. Please contact the team at <a href="mailto:team@pinata.cloud">[team@pinata.cloud](mailto:team@pinata.cloud)</a> if you have any issues.
 </Warning>
 
 * Type: `null`
@@ -11600,7 +11001,7 @@ Upload a base64 string to Pinata
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -11613,7 +11014,7 @@ const upload = await pinata.upload.public.base64("SGVsbG8gV29ybGQh")
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type UploadResponse = {
 	id: string;
 	name: string;
@@ -11639,7 +11040,7 @@ type UploadResponse = {
 
 Accepts a string encoded in base64
 
-```typescript  theme={null}
+```typescript theme={null}
 const upload = await pinata.upload.public.base64("SGVsbG8gV29ybGQh")
 ```
 
@@ -11715,7 +11116,7 @@ Pin an existing CID on IPFS to your Pinata account
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -11728,7 +11129,7 @@ const pin = await pinata.upload.public.cid("QmVLwvmGehsrNEvhcCnnsw5RQNseohgEkFNN
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type PinByCIDResponse = {
 	id: string;
 	cid: string;
@@ -11745,7 +11146,7 @@ type PinByCIDResponse = {
 
 Target CID already on IPFS
 
-```typescript  theme={null}
+```typescript theme={null}
 const pin = await pinata.upload.public.cid("QmVLwvmGehsrNEvhcCnnsw5RQNseohgEkFNN1848zNzdng")
 ```
 
@@ -11781,7 +11182,7 @@ const upload = await pinata.upload.public
 
 Upload to a specific group by passing in the `groupId`
 
-```typescript  theme={null}
+```typescript theme={null}
 const pin = await pinata.upload.public
   .cid("QmVLwvmGehsrNEvhcCnnsw5RQNseohgEkFNN1848zNzdng")
   .group("b07da1ff-efa4-49af-bdea-9d95d8881103")
@@ -11793,7 +11194,7 @@ const pin = await pinata.upload.public
 
 Upload a file using a secondary API key generated through `keys.create()`
 
-```typescript  theme={null}
+```typescript theme={null}
 const pin = await pinata.upload.public
   .cid("QmVLwvmGehsrNEvhcCnnsw5RQNseohgEkFNN1848zNzdng")
   .key("GENERATED_API_JWT")
@@ -11805,7 +11206,7 @@ const pin = await pinata.upload.public
 
 Accepts an array of host node IDs to peer with
 
-```typescript  theme={null}
+```typescript theme={null}
 const pin = await pinata.upload
   .cid("QmVLwvmGehsrNEvhcCnnsw5RQNseohgEkFNN1848zNzdng")
   .peerAddress([
@@ -11828,7 +11229,7 @@ Create a signed upload URL for a file upload. This method is ideal when you want
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -11966,7 +11367,7 @@ Upload a single file to Pinata
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -11999,7 +11400,7 @@ const upload = await pinata.upload.public.file(file);
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type UploadResponse = {
 	id: string;
 	name: string;
@@ -12122,7 +11523,7 @@ Upload an array of files to Pinata as a folder
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -12137,7 +11538,7 @@ const upload = await pinata.upload.public.fileArray([file1, file2])
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type UploadResponse = {
 	id: string;
 	name: string;
@@ -12163,7 +11564,7 @@ type UploadResponse = {
 
 Accepts an array of File objects in accordance with the [W3C File API](https://w3c.github.io/FileAPI/#file-section).
 
-```typescript  theme={null}
+```typescript theme={null}
 const file1 = new File([blob1], "hello1.txt", { type: "text/plain" })
 const file2 = new File([blob2], "hello2.txt", { type: "text/plain" })
 const upload = await pinata.upload.public.fileArray([file1, file2])
@@ -12241,7 +11642,7 @@ Upload a JSON object to Pinata
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -12258,7 +11659,7 @@ const upload = await pinata.upload.public.json({
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type UploadResponse = {
 	id: string;
 	name: string;
@@ -12284,7 +11685,7 @@ type UploadResponse = {
 
 Accepts an object that is turned into JSON
 
-```typescript  theme={null}
+```typescript theme={null}
 const upload = await pinata.upload.public.json({
     content: "console.log('hello world!)",
     name: "helloworld.ts",
@@ -12384,7 +11785,7 @@ Upload the contents of a URL to Pinata
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -12397,7 +11798,7 @@ const upload = await pinata.upload.public.url("https://i.imgur.com/u4mGk5b.gif")
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type UploadResponse = {
 	id: string;
 	name: string;
@@ -12423,7 +11824,7 @@ type UploadResponse = {
 
 Accepts a URL in the form of a string. The mimetype of the URL body provided in the headers typically determines the resulting file.
 
-```typescript  theme={null}
+```typescript theme={null}
 const upload = await pinata.upload.public.url("https://i.imgur.com/u4mGk5b.gif")
 ```
 
@@ -12509,13 +11910,13 @@ If you happened to be using a scoped API key for [legacy endpoints](/api-referen
 
 Install the latest version by running the following command:
 
-```bash  theme={null}
+```bash theme={null}
 npm i pinata@latest
 ```
 
 Initalizing the SDK works the exact same way in previous versions
 
-```typescript  theme={null}
+```typescript theme={null}
 const pinata = new PinataSDK({
   pinataJwt: "PINATA_JWT",
   pinataGateway: "example-gateway.mypinata.cloud",
@@ -12605,7 +12006,7 @@ If you happened to be using a scoped API key for [legacy endpoints](/api-referen
 
 Install the latest version by running the following command:
 
-```bash  theme={null}
+```bash theme={null}
 npm i pinata@latest
 ```
 
@@ -12906,7 +12307,7 @@ The official CLI for Pinata written in Go
 
 The IPFS CLI is a tool you can use alongside your account to upload and manage files through your terminal. The source code can be found in the link below.
 
-<Card horizontal icon="github" href="https://github.com/PinataCloud/ipfs-cli" title="Source Code" />
+<Card icon="github" href="https://github.com/PinataCloud/ipfs-cli" title="Source Code" />
 
 ## Installation
 
@@ -12918,7 +12319,7 @@ The IPFS CLI is a tool you can use alongside your account to upload and manage f
 
 The easiest way to install is to copy and paste this script into your terminal
 
-```bash  theme={null}
+```bash theme={null}
 curl -fsSL https://cli.pinata.cloud/install | bash
 ```
 
@@ -13399,7 +12800,7 @@ A collection of Expo compatible hooks to use with Pinata
 
 Install with your package manager of choice
 
-```bash  theme={null}
+```bash theme={null}
 pnpm i pinata-expo-hooks@latest
 ```
 
@@ -13407,19 +12808,19 @@ pnpm i pinata-expo-hooks@latest
 
 `pinata-expo-hooks` is MIT open sourced and can be accessed on GitHub with the link below
 
-<Card title="PinataCloud/pinata-expo" icon="github" href="https://github.com/PinataCloud/pinata-expo" horizontal />
+<Card title="PinataCloud/pinata-expo" icon="github" href="https://github.com/PinataCloud/pinata-expo" />
 
 ## Usage
 
 Import at the top of your desired page or component
 
-```typescript  theme={null}
+```typescript theme={null}
 import { useUpload } from "pinata-expo-hooks";
 ```
 
 Inside your page or component use the hook to extract methods and state
 
-```typescript  theme={null}
+```typescript theme={null}
 const {
 	upload, // Method to upload a file using a presigned URL
 	progress, // Progress state as integer
@@ -13434,7 +12835,7 @@ const {
 
 Return types for `useUpload`
 
-```typescript  theme={null}
+```typescript theme={null}
 export type UseUploadReturn = {
 	progress: number;
 	loading: boolean;
@@ -13454,7 +12855,7 @@ export type UseUploadReturn = {
 
 To upload a file you must already have a server setup that returns a [Presigned URL](/files/presigned-urls). Then you can pass it into the `upload` method like so.
 
-```typescript  theme={null}
+```typescript theme={null}
 await upload(fileUri, "public", "presigned_URL", {
 	name: fileName || "Upload from Expo",
 	keyvalues: {
@@ -13470,7 +12871,7 @@ await upload(fileUri, "public", "presigned_URL", {
 
 Below are the available `UploadOptions` that can be passed into `upload`
 
-```typescript  theme={null}
+```typescript theme={null}
 export type UploadOptions = {
 	customHeaders?: Record<string, string>;
 	name?: string;
@@ -13484,7 +12885,7 @@ Once a file is uploaded the `uploadResponse` will contain the CID for the file.
 
 Below is a full example of implementing the `useUpload` hook with progress and abilities to pause and resume the upload.
 
-```typescript  theme={null}
+```typescript theme={null}
 import { Image } from "expo-image";
 import { View, Text, Button, StyleSheet } from "react-native";
 import * as ImagePicker from "expo-image-picker";
@@ -14028,10 +13429,12 @@ get /gateways
 
 
 
-# null
+# List Installed Plugins for Gateway
 Source: https://docs.pinata.cloud/api-reference/endpoint/ipfs/list-installed-plugins-for-gateway
 
 get /ipfs/gateway_plugins/{gateway_id}
+`org:gateways:read`
+
 
 
 
@@ -14260,135 +13663,6 @@ Removes a CID association from a payment instruction
 
 
 
-# Upload a File (Legacy x402)
-Source: https://docs.pinata.cloud/api-reference/endpoint/x402/legacy-pin
-
-pinata-x402-api-v1.yaml post /pin/{network}
-Uploads a file to Pinata's public IPFS network
-
-<Warning>
-  This is an early beta implementation of the x402 protocol. For production use, please use the [Payment Instructions API](/files/x402-payment-instructions) instead.
-</Warning>
-
-## Cost
-
-| Price           | Duration           |
-| --------------- | ------------------ |
-| \$0.10/GB \* 12 | Pins for 12 months |
-
-## Example Usage
-
-In order to access these endpoints you will need to use either [`x402-axios`](https://www.npmjs.com/package/x402-axios) or [`x402-fetch`](https://www.npmjs.com/package/x402-fetch). Once installed you will also need either [Viem](https://viem.sh) or a Coinbase developer account. From there you can create an `account` locally or through the CDP Wallet API.
-
-When you make a request to one of the Pinata x402 endpoints it will return a 402 error saying payment is required. Then the `fetchWithPayment` method from the fetch or axios library will make a second requst for the requested payment amount. After payment is settled then you can use the returned presigned URL to upload the file to Pinata.
-
-```typescript  theme={null}
-import { wrapFetchWithPayment, decodeXPaymentResponse } from "x402-fetch";
-import { account } from "./viem";
-
-const fetchWithPayment = wrapFetchWithPayment(fetch, account);
-
-const url = "https://402.pinata.cloud/v1/pin/public";
-
-fetchWithPayment(url, {
-  method: "POST",
-  body: JSON.stringify({
-    fileSize: 5000000,
-  }),
-})
-  .then(async (response) => {
-    const body = (await response.json()) as { url: string };
-    console.log(body);
-
-    const uuid = crypto.randomUUID();
-
-    const file = new File([`Paid and pinned by 402.pinata.cloud: ${uuid}`], "file.txt");
-
-    const data = new FormData();
-    data.append("network", "public");
-    data.append("file", file);
-
-    const uploadReq = await fetch(body.url, {
-      method: "POST",
-      body: data,
-    });
-
-    const uploadRes = await uploadReq.json();
-    console.log(uploadRes);
-  })
-  .catch((error) => {
-    console.error(error.response?.data?.error);
-  });
-```
-
-Uploading files to Public IPFS means you can access them through a gateway like `https://ipfs.io/ipfs/:CID`. If you upload a file as `private` then it will not be accessible on public IPFS, so in order to access it you need to create a temporary access URL. This flow is similar to the previous one, except you would provide the CID that you uploded previously that you would like to access. After a successful payment the server will return a URL you can access the file with.
-
-```typescript  theme={null}
-import { wrapFetchWithPayment, decodeXPaymentResponse } from "x402-fetch";
-import { account } from "./viem";
-
-const fetchWithPayment = wrapFetchWithPayment(fetch, account);
-
-const url =
-  "https://402.pinata.cloud/v1/retrieve/private/bafkreih5aznjvttude6c3wbvqeebb6rlx5wkbzyppv7garjiubll2ceym4";
-
-fetchWithPayment(url, {
-  method: "GET",
-})
-  .then(async (response) => {
-    const body = (await response.json()) as { url: string };
-    console.log(body);
-  })
-  .catch((error) => {
-    console.error(error.response?.data?.error);
-  });
-```
-
-
-# Retrieve a Private File (Legacy x402)
-Source: https://docs.pinata.cloud/api-reference/endpoint/x402/legacy-retrieve
-
-pinata-x402-api-v1.yaml get /retrieve/private/{cid}
-Retrieves a private file from IPFS by its CID
-
-<Warning>
-  This is an early beta implementation of the x402 protocol. For production use, please use the [Payment Instructions API](/files/x402-payment-instructions) instead.
-</Warning>
-
-## Cost
-
-| Price    | Duration    |
-| -------- | ----------- |
-| \$0.0001 | Per request |
-
-## Example Usage
-
-If you upload a file as `private` then it will not be accessible on public IPFS, so in order to access it you need to create a temporary access URL. This flow is similar to the previous one, except you would provide the CID that you uploded previously that you would like to access. After a successful payment the server will return a URL you can access the file with.
-
-```typescript  theme={null}
-import { wrapFetchWithPayment, decodeXPaymentResponse } from "x402-fetch";
-import { account } from "./viem";
-
-const fetchWithPayment = wrapFetchWithPayment(fetch, account);
-
-const url =
-	"https://402.pinata.cloud/v1/retrieve/private/bafkreih5aznjvttude6c3wbvqeebb6rlx5wkbzyppv7garjiubll2ceym4";
-
-fetchWithPayment(url, {
-	method: "GET",
-})
-	.then(async (response) => {
-
-		const body = (await response.json()) as { url: string };
-		console.log(body);
-
-	})
-	.catch((error) => {
-		console.error(error.response?.data?.error);
-	});
-```
-
-
 # Create Payment Instruction
 Source: https://docs.pinata.cloud/api-reference/endpoint/x402/payment-instructions-create
 
@@ -14429,6 +13703,127 @@ Updates an existing payment instruction
 
 
 
+# Upload a File
+Source: https://docs.pinata.cloud/api-reference/endpoint/x402/pin
+
+pinata-x402-api-v1.yaml post /pin/{network}
+Uploads a file to Pinata's public IPFS network
+
+## Cost
+
+| Price           | Duration           |
+| --------------- | ------------------ |
+| \$0.10/GB \* 12 | Pins for 12 months |
+
+## Example Usage
+
+In order to access these endpoints you will need to use either [`@x402/axios`](https://www.npmjs.com/package/@x402/axios) or [`@x402/fetch`](https://www.npmjs.com/package/@x402/fetch). Once installed you will also need either [Viem](https://viem.sh) or a Coinbase developer account. From there you can create an `account` locally or through the CDP Wallet API.
+
+When you make a request to one of the Pinata x402 endpoints it will return a 402 error saying payment is required. Then the `fetchWithPayment` method from the fetch or axios library will make a second requst for the requested payment amount. After payment is settled then you can use the returned presigned URL to upload the file to Pinata.
+
+```typescript theme={null}
+import { wrapFetchWithPayment, decodeXPaymentResponse } from "@x402/fetch";
+import { account } from "./viem";
+
+const fetchWithPayment = wrapFetchWithPayment(fetch, account);
+
+const url = "https://402.pinata.cloud/v1/pin/public";
+
+fetchWithPayment(url, {
+  method: "POST",
+  body: JSON.stringify({
+    fileSize: 5000000,
+  }),
+})
+  .then(async (response) => {
+    const body = (await response.json()) as { url: string };
+    console.log(body);
+
+    const uuid = crypto.randomUUID();
+
+    const file = new File([`Paid and pinned by 402.pinata.cloud: ${uuid}`], "file.txt");
+
+    const data = new FormData();
+    data.append("network", "public");
+    data.append("file", file);
+
+    const uploadReq = await fetch(body.url, {
+      method: "POST",
+      body: data,
+    });
+
+    const uploadRes = await uploadReq.json();
+    console.log(uploadRes);
+  })
+  .catch((error) => {
+    console.error(error.response?.data?.error);
+  });
+```
+
+Uploading files to Public IPFS means you can access them through a gateway like `https://ipfs.io/ipfs/:CID`. If you upload a file as `private` then it will not be accessible on public IPFS, so in order to access it you need to create a temporary access URL. This flow is similar to the previous one, except you would provide the CID that you uploded previously that you would like to access. After a successful payment the server will return a URL you can access the file with.
+
+```typescript theme={null}
+import { wrapFetchWithPayment, decodeXPaymentResponse } from "@x402/fetch";
+import { account } from "./viem";
+
+const fetchWithPayment = wrapFetchWithPayment(fetch, account);
+
+const url =
+  "https://402.pinata.cloud/v1/retrieve/private/bafkreih5aznjvttude6c3wbvqeebb6rlx5wkbzyppv7garjiubll2ceym4";
+
+fetchWithPayment(url, {
+  method: "GET",
+})
+  .then(async (response) => {
+    const body = (await response.json()) as { url: string };
+    console.log(body);
+  })
+  .catch((error) => {
+    console.error(error.response?.data?.error);
+  });
+```
+
+
+# Retrieve a Private File
+Source: https://docs.pinata.cloud/api-reference/endpoint/x402/retrieve
+
+pinata-x402-api-v1.yaml get /retrieve/private/{cid}
+Retrieves a private file from IPFS by its CID
+
+## Cost
+
+| Price    | Duration    |
+| -------- | ----------- |
+| \$0.0001 | Per request |
+
+## Example Usage
+
+If you upload a file as `private` then it will not be accessible on public IPFS, so in order to access it you need to create a temporary access URL. This flow is similar to the previous one, except you would provide the CID that you uploded previously that you would like to access. After a successful payment the server will return a URL you can access the file with.
+
+```typescript theme={null}
+import { wrapFetchWithPayment, decodeXPaymentResponse } from "@x402/fetch";
+import { account } from "./viem";
+
+const fetchWithPayment = wrapFetchWithPayment(fetch, account);
+
+const url =
+	"https://402.pinata.cloud/v1/retrieve/private/bafkreih5aznjvttude6c3wbvqeebb6rlx5wkbzyppv7garjiubll2ceym4";
+
+fetchWithPayment(url, {
+	method: "GET",
+})
+	.then(async (response) => {
+
+		const body = (await response.json()) as { url: string };
+		console.log(body);
+
+	})
+	.catch((error) => {
+		console.error(error.response?.data?.error);
+	});
+```
+
+
 # Introduction
 Source: https://docs.pinata.cloud/api-reference/introduction
 
@@ -14440,7 +13835,7 @@ Welcome to the Pinata API Reference! Before you can do anything in the API, you'
 
 Visit the [Pinata API Keys](https://app.pinata.cloud/developers/api-keys) page to generate new keys.
 
-<img style={{ width: "100%", borderRadius: "0.5rem" }} src="https://docs.mypinata.cloud/ipfs/bafybeignh2yy7bp7qpts5vi46prbjd6lbz23lmtbfcgvpcwc5rjkudrfta" />
+<img />
 
 In the 'New Key' modal, you can choose if you want the key to be an Admin key and have full access over every endpoint, or scope the keys by selecting which endpoints you want to use. You can also give it a limited number of uses, so be sure to give it a name to keep track of it. Once you have that filled out, click "Generate API Key" and it will show you the `pinata_api_key`, `pinata_api_secret_key`, and the `JWT`. It's best to click "Copy All" and keep the API key data safe and secure.
 
@@ -14451,7 +13846,7 @@ In the 'New Key' modal, you can choose if you want the key to be an Admin key an
 
 Once you have created your keys you can go ahead and try testing them! Try to paste this into your terminal with your `JWT`
 
-```bash  theme={null}
+```bash theme={null}
 curl --request GET \
      --url https://api.pinata.cloud/data/testAuthentication \
      --header 'accept: application/json' \
@@ -14480,7 +13875,7 @@ The `analytics` class is unique in that it very flexible, but also can require m
 
 The `bandwidth` method will sort results by highest number of bandwidth, but will also include `requests` values.
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -14498,7 +13893,7 @@ const clicks = await pinata.analytics.bandwidth
 
 What is returned in `value` will depend on they property or query used. For instance, using `cid()` will return CIDs, `country()` will return Countries, etc.
 
-```typescript  theme={null}
+```typescript theme={null}
 type TopAnalyticsResponse = {
 	data: TopAnalyticsItem[];
 };
@@ -14700,6 +14095,239 @@ const files = await pinata.analytics.bandwidth
 ```
 
 
+# requests
+Source: https://docs.pinata.cloud/sdk/analytics/requests
+
+`org:analytics:read`
+
+Get analytics on requests for multiple properties
+
+## Usage
+
+The `analytics` class is unique in that it very flexible, but also can require more queries to be used well. Be sure to real the [Parameters](#parameters) in detail to understand how it can be used.
+
+The `requests` method will sort results by highest number of requests, but will also include `bandwidth` values.
+
+```typescript theme={null}
+import { PinataSDK } from "pinata";
+
+const pinata = new PinataSDK({
+  pinataJwt: process.env.PINATA_JWT!,
+  pinataGateway: "example-gateway.mypinata.cloud",
+});
+
+const clicks = await pinata.analytics.requests
+  .days(30)
+  .limit(10)
+  .cid("<CID>")
+```
+
+## Returns
+
+What is returned in `value` will depend on they property or query used. For instance, using `cid()` will return CIDs, `country()` will return Countries, etc.
+
+```typescript theme={null}
+type TopAnalyticsResponse = {
+	data: TopAnalyticsItem[];
+};
+
+type TopAnalyticsItem = {
+	value: string;
+	requests: number;
+	bandwidth: number;
+};
+```
+
+## Parameters
+
+Filter response with the following additional methods. It does require at least one property, such as `cid`, `fileName`, `userAgent`, `country`, `region`, or `referrer`.
+
+### cid
+
+* Type: `string`
+
+Returns requests for all CIDs
+
+```typescript {3} theme={null}
+const files = await pinata.analytics.requests
+  .days(7)
+  .cid()
+```
+
+Filter by passing an argument
+
+```typescript {3} theme={null}
+const files = await pinata.analytics.requests
+  .days(7)
+  .cid("bafkreih5aznjvttude6c3wbvqeebb6rlx5wkbzyppv7garjiubll2ceym4")
+```
+
+### fileName
+
+* Type: `string`
+
+Returns requests for all file names
+
+```typescript {3} theme={null}
+const files = await pinata.analytics.requests
+  .days(7)
+  .fileName()
+```
+
+Filter by passing an argument
+
+```typescript {3} theme={null}
+const files = await pinata.analytics.requests
+  .days(7)
+  .fileName("pinnie.png")
+```
+
+### userAgent
+
+* Type: `string`
+
+Returns requests for user agents
+
+```typescript {3} theme={null}
+const files = await pinata.analytics.requests
+  .days(7)
+  .userAgent()
+```
+
+Filter by passing an argument
+
+```typescript {3-5} theme={null}
+const files = await pinata.analytics.requests
+  .days(7)
+  .userAgent(
+    "Mozilla/5.0 (X11; Linux x86_64; rv:132.0) Gecko/20100101 Firefox/132.0"
+  )
+```
+
+### country
+
+* Type: `string`
+
+Returns requests for countries
+
+```typescript {3} theme={null}
+const files = await pinata.analytics.requests
+  .days(7)
+  .country()
+```
+
+Filter by passing an argument
+
+```typescript {3} theme={null}
+const files = await pinata.analytics.requests
+  .days(7)
+  .country("us")
+```
+
+### region
+
+* Type: `string`
+
+Returns requests for regions inside of countries
+
+```typescript {3} theme={null}
+const files = await pinata.analytics.requests
+  .days(7)
+  .region()
+```
+
+Filter by passing an argument
+
+```typescript {3} theme={null}
+const files = await pinata.analytics.requests
+  .days(7)
+  .region("us - VA")
+```
+
+### referer
+
+* Type: `string`
+
+Returns requests for referers
+
+```typescript {3} theme={null}
+const files = await pinata.analytics.requests
+  .days(7)
+  .referer()
+```
+
+Filter by passing an argument
+
+```typescript {3} theme={null}
+const files = await pinata.analytics.requests
+  .days(7)
+  .referer("https://docs.pinata.cloud/")
+```
+
+### days
+
+* Type: `number`
+
+Number of days to query. Starts with current date and then goes back by provided number.
+
+```typescript {2} theme={null}
+const files = await pinata.analytics.requests
+  .days(7)
+  .cid()
+```
+
+### sort
+
+* Type: `"asc" | "desc"`
+
+Order results either ascending or descending by created date
+
+```typescript {4} theme={null}
+const files = await pinata.analytics.requests
+  .days(7)
+  .cid()
+  .sort("asc")
+```
+
+### limit
+
+* Type: `number`
+
+Limit the number of results
+
+```typescript {4} theme={null}
+const files = await pinata.analytics.requests
+  .days(7)
+  .cid()
+  .limit(10)
+```
+
+### customDates
+
+* Type: `string, string`
+
+Custom dates to query using a start and end date with the format `YYYY-MM-DD`
+
+```typescript {2} theme={null}
+const files = await pinata.analytics.requests
+  .customDates("2024-11-01", "2024-11-20")
+  .cid()
+```
+
+### from
+
+* Type: `string`
+
+Provide an alternate Gateway domain to query instead of the default one found in the Pinata SDK Config
+
+```typescript {4} theme={null}
+const files = await pinata.analytics.requests
+  .days(7)
+  .cid()
+  .from("example-2.mypinata.cloud")
+```
+
+
 # create
 Source: https://docs.pinata.cloud/sdk/keys/create
 
@@ -14709,7 +14337,7 @@ Create an API key
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -14731,7 +14359,7 @@ const key = await pinata.keys.create({
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type KeyResponse = {
   JWT: string;
   pinata_api_key: string;
@@ -14796,7 +14424,7 @@ const key = await pinata.keys.create({
 
 * Type: `ResourcePermission[]`
 
-```typescript  theme={null}
+```typescript theme={null}
 export type ResourcePermission =
 	| "org:read"
 	| "org:write"
@@ -14862,7 +14490,7 @@ List and filter through Keys
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -14878,7 +14506,7 @@ const keys = await pinata.keys
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type KeyListItem = {
   id: string;
   name: string;
@@ -14904,7 +14532,7 @@ Filter response with the following additional methods. All filters are optional.
 
 Filter by name, uses "contains" matching
 
-```typescript  theme={null}
+```typescript theme={null}
 const keys = await pinata.keys
   .list()
   .name("Greetings");
@@ -14916,7 +14544,7 @@ const keys = await pinata.keys
 
 Filter keys by whether or not they have been revoked
 
-```typescript  theme={null}
+```typescript theme={null}
 const keys = await pinata.keys
   .list()
   .revoked(false);
@@ -14928,7 +14556,7 @@ const keys = await pinata.keys
 
 Filter keys based on whether they had limited uses that were exhuasted
 
-```typescript  theme={null}
+```typescript theme={null}
 const keys = await pinata.keys
   .list()
   .exhausted(false);
@@ -14940,7 +14568,7 @@ const keys = await pinata.keys
 
 Offset the number of keys returned to paginate
 
-```typescript  theme={null}
+```typescript theme={null}
 const keys = await pinata.keys
   .list()
   .offset(5);
@@ -14950,7 +14578,7 @@ const keys = await pinata.keys
 
 The `list` method has an auto pagination feature that is triggered when used inside a `for await` iterator
 
-```typescript  theme={null}
+```typescript theme={null}
 for await (const item of pinata.keys.list()) {
   console.log(item.name);
 }
@@ -14966,7 +14594,7 @@ Revoke an API Key
 
 ## Usage
 
-```typescript  theme={null}
+```typescript theme={null}
 import { PinataSDK } from "pinata";
 
 const pinata = new PinataSDK({
@@ -14981,7 +14609,7 @@ const revoke = await pinata.keys.revoke([
 
 ## Returns
 
-```typescript  theme={null}
+```typescript theme={null}
 type RevokeKeyResponse[] = {
   key: string;
   status: string;
@@ -14996,10 +14624,185 @@ type RevokeKeyResponse[] = {
 
 An array of API Keys to revoke. This is the `key` found in the response of `keys.list`
 
-```typescript  theme={null}
+```typescript theme={null}
 const revoke = await pinata.keys.revoke([
  "94566af5e63833e260be"
 ]);
+```
+
+
+# add
+Source: https://docs.pinata.cloud/sdk/signatures/private/add
+
+`org:files:write`
+
+Add an EIP-712 signature to a CID
+
+<Note>
+  For more information about adding signatures to CIDs on IPFS please read the [Signatures Guide](/files/signatures).
+</Note>
+
+## Usage
+
+```typescript theme={null}
+import { PinataSDK } from "pinata-web3";
+
+const pinata = new PinataSDK({
+  pinataJwt: process.env.PINATA_JWT!,
+  pinataGateway: "example-gateway.mypinata.cloud",
+});
+
+const signature = await pinata.signatures.private.add({
+  cid: "QmXGeVy9dVwfuFJmvbzz8y4dYK1TdxXbDGzwbNuyZ5xXSU",
+  signature: "0x1b...911b",
+  address: "0xB3899AA8E13172E48D44CE411b0c4c2f08730Dc6"
+});
+```
+
+## Returns
+
+```typescript theme={null}
+type SignatureResponse = {
+  cid: string;
+  signature: string;
+};
+```
+
+## Parameters
+
+### cid
+
+* Type: `string`
+
+Target CID that you want to add a signature to.
+
+```typescript {2} theme={null}
+const signature = await pinata.signatures.private.add({
+  cid: "QmXGeVy9dVwfuFJmvbzz8y4dYK1TdxXbDGzwbNuyZ5xXSU",
+  signature: "0x1b...911b",
+  address: "0xB3899AA8E13172E48D44CE411b0c4c2f08730Dc6"
+});
+```
+
+### signature
+
+* Type: `0x${string}`
+
+EIP-712 Signature to be assigned to target CID.
+
+```typescript {3} theme={null}
+const signature = await pinata.signatures.private.add({
+  cid: "QmXGeVy9dVwfuFJmvbzz8y4dYK1TdxXbDGzwbNuyZ5xXSU",
+  signature: "0x1b...911b",
+  address: "0xB3899AA8E13172E48D44CE411b0c4c2f08730Dc6"
+});
+```
+
+### address
+
+* Type: `0x${string}`
+
+Wallet address that made the signature
+
+```typescript {4} theme={null}
+const signature = await pinata.signatures.private.add({
+  cid: "QmXGeVy9dVwfuFJmvbzz8y4dYK1TdxXbDGzwbNuyZ5xXSU",
+  signature: "0x1b...911b",
+  address: "0xB3899AA8E13172E48D44CE411b0c4c2f08730Dc6"
+});
+```
+
+
+# delete
+Source: https://docs.pinata.cloud/sdk/signatures/private/delete
+
+`org:files:write`
+
+Delete an EIP-712 signature from a CID
+
+<Note>
+  For more information about adding signatures to CIDs on IPFS please read the [Signatures Guide](/files/signatures).
+</Note>
+
+## Usage
+
+```typescript theme={null}
+import { PinataSDK } from "pinata-web3";
+
+const pinata = new PinataSDK({
+  pinataJwt: process.env.PINATA_JWT!,
+  pinataGateway: "example-gateway.mypinata.cloud",
+});
+
+const signature = await pinata.signatures.delete(
+  "QmXGeVy9dVwfuFJmvbzz8y4dYK1TdxXbDGzwbNuyZ5xXSU"
+);
+```
+
+## Returns
+
+```typescript theme={null}
+OK
+```
+
+## Parameters
+
+### cid
+
+* Type: `string`
+
+Target CID that you want to add a signature to.
+
+```typescript theme={null}
+const signature = await pinata.signatures.delete(
+  "QmXGeVy9dVwfuFJmvbzz8y4dYK1TdxXbDGzwbNuyZ5xXSU"
+);
+```
+
+
+# get
+Source: https://docs.pinata.cloud/sdk/signatures/private/get
+
+`org:files:read`
+
+Get signature for CID
+
+<Note>
+  For more information about adding signatures to CIDs on IPFS please read the [Signatures Guide](/files/signatures).
+</Note>
+
+## Usage
+
+```typescript theme={null}
+import { PinataSDK } from "pinata-web3";
+
+const pinata = new PinataSDK({
+  pinataJwt: process.env.PINATA_JWT!,
+  pinataGateway: "example-gateway.mypinata.cloud",
+});
+
+const signature = await pinata.signatures.get("QmXGeVy9dVwfuFJmvbzz8y4dYK1TdxXbDGzwbNuyZ5xXSU");
+```
+
+## Returns
+
+```typescript theme={null}
+type SignatureResponse = {
+  cid: string;
+  signature: string;
+};
+```
+
+## Parameters
+
+### cid
+
+* Type: `string`
+
+Target CID that you want to add a signature to.
+
+```typescript theme={null}
+const signature = await pinata.signatures.get("QmXGeVy9dVwfuFJmvbzz8y4dYK1TdxXbDGzwbNuyZ5xXSU");
 ```
 
 
@@ -15010,7 +14813,7 @@ Source: https://docs.pinata.cloud/sdk/types/analytics
 
 ### AnalyticsQuery
 
-```typescript  theme={null}
+```typescript theme={null}
 export type AnalyticsQuery = {
 	gateway_domain: string;
 	start_date: string;
@@ -15028,7 +14831,7 @@ export type AnalyticsQuery = {
 
 ### TopAnalyticsQuery
 
-```typescript  theme={null}
+```typescript theme={null}
 export type TopAnalyticsQuery = AnalyticsQuery & {
 	sort_by: "requests" | "bandwidth";
 	attribute:
@@ -15043,7 +14846,7 @@ export type TopAnalyticsQuery = AnalyticsQuery & {
 
 ### TopAnalyticsResponse
 
-```typescript  theme={null}
+```typescript theme={null}
 export type TopAnalyticsResponse = {
 	data: TopAnalyticsItem[];
 };
@@ -15051,7 +14854,7 @@ export type TopAnalyticsResponse = {
 
 ### TopAnalyticsItem
 
-```typescript  theme={null}
+```typescript theme={null}
 export type TopAnalyticsItem = {
 	value: string;
 	requests: number;
@@ -15061,7 +14864,7 @@ export type TopAnalyticsItem = {
 
 ### TimeIntervalAnalyticsQuery
 
-```typescript  theme={null}
+```typescript theme={null}
 export type TimeIntervalAnalyticsQuery = AnalyticsQuery & {
 	sort_by?: "requests" | "bandwidth";
 	date_interval: "day" | "week";
@@ -15070,7 +14873,7 @@ export type TimeIntervalAnalyticsQuery = AnalyticsQuery & {
 
 ### TimePeriodItem
 
-```typescript  theme={null}
+```typescript theme={null}
 export type TimePeriodItem = {
 	period_start_time: string;
 	requests: number;
@@ -15080,7 +14883,7 @@ export type TimePeriodItem = {
 
 ### TimeIntervalAnalyticsResponse
 
-```typescript  theme={null}
+```typescript theme={null}
 export type TimeIntervalAnalyticsResponse = {
 	total_requests: number;
 	total_bandwidth: number;
@@ -15090,7 +14893,7 @@ export type TimeIntervalAnalyticsResponse = {
 
 ### UserPinnedDataResponse
 
-```typescript  theme={null}
+```typescript theme={null}
 export type UserPinnedDataResponse = {
 	pin_count: number;
 	pin_size_total: number;
@@ -15106,7 +14909,7 @@ Source: https://docs.pinata.cloud/sdk/types/config
 
 ### PinataConfig
 
-```typescript  theme={null}
+```typescript theme={null}
 export type PinataConfig = {
 	pinataJwt?: string;
 	pinataGateway?: string;
@@ -15125,7 +14928,7 @@ Source: https://docs.pinata.cloud/sdk/types/files
 
 ### FileObject
 
-```typescript  theme={null}
+```typescript theme={null}
 export type FileObject = {
 	name: string;
 	size: number;
@@ -15137,13 +14940,13 @@ export type FileObject = {
 
 ### JsonBody
 
-```typescript  theme={null}
+```typescript theme={null}
 export type JsonBody = Record<string, unknown>;
 ```
 
 ### PinataMetadata
 
-```typescript  theme={null}
+```typescript theme={null}
 export type PinataMetadata = {
 	name?: string;
 	keyvalues?: Record<string, string>;
@@ -15152,7 +14955,7 @@ export type PinataMetadata = {
 
 ### UpdateFileOptions
 
-```typescript  theme={null}
+```typescript theme={null}
 export type UpdateFileOptions = {
 	id: string;
 	name?: string;
@@ -15162,7 +14965,7 @@ export type UpdateFileOptions = {
 
 ### DeleteResponse
 
-```typescript  theme={null}
+```typescript theme={null}
 export type DeleteResponse = {
 	id: string;
 	status: string;
@@ -15171,7 +14974,7 @@ export type DeleteResponse = {
 
 ### FileListItem
 
-```typescript  theme={null}
+```typescript theme={null}
 export type FileListItem = {
 	id: string;
 	name: string | null;
@@ -15187,7 +14990,7 @@ export type FileListItem = {
 
 ### FileListResponse
 
-```typescript  theme={null}
+```typescript theme={null}
 export type FileListResponse = {
 	files: FileListItem[];
 	next_page_token: string;
@@ -15196,7 +14999,7 @@ export type FileListResponse = {
 
 ### FileListQuery
 
-```typescript  theme={null}
+```typescript theme={null}
 export type FileListQuery = {
 	name?: string;
 	group?: string;
@@ -15213,7 +15016,7 @@ export type FileListQuery = {
 
 ### PinQueueQuery
 
-```typescript  theme={null}
+```typescript theme={null}
 export type PinQueueQuery = {
 	sort?: "ASC" | "DSC";
 	status?:
@@ -15233,7 +15036,7 @@ export type PinQueueQuery = {
 
 ### PinQueueItem
 
-```typescript  theme={null}
+```typescript theme={null}
 export type PinQueueItem = {
 	id: string;
 	cid?: string;
@@ -15255,7 +15058,7 @@ export type PinQueueItem = {
 
 ### PinQueueResponse
 
-```typescript  theme={null}
+```typescript theme={null}
 export type PinQueueResponse = {
 	rows: PinQueueItem[];
 	next_page_token: string;
@@ -15264,7 +15067,7 @@ export type PinQueueResponse = {
 
 ### SwapCidOptions
 
-```typescript  theme={null}
+```typescript theme={null}
 export type SwapCidOptions = {
 	cid: string;
 	swapCid: string;
@@ -15273,7 +15076,7 @@ export type SwapCidOptions = {
 
 ### SwapHistoryOptions
 
-```typescript  theme={null}
+```typescript theme={null}
 export type SwapHistoryOptions = {
 	cid: string;
 	domain: string;
@@ -15282,7 +15085,7 @@ export type SwapHistoryOptions = {
 
 ### SwapCidResponse
 
-```typescript  theme={null}
+```typescript theme={null}
 export type SwapCidResponse = {
 	mapped_cid: string;
 	created_at: string;
@@ -15291,7 +15094,7 @@ export type SwapCidResponse = {
 
 ### VectorizeFileResponse
 
-```typescript  theme={null}
+```typescript theme={null}
 export type VectorizeFileResponse = {
 	status: boolean;
 };
@@ -15299,7 +15102,7 @@ export type VectorizeFileResponse = {
 
 ### VectorizeQuery
 
-```typescript  theme={null}
+```typescript theme={null}
 export type VectorizeQuery = {
 	groupId: string;
 	query: string;
@@ -15309,7 +15112,7 @@ export type VectorizeQuery = {
 
 ### VectorQueryMatch
 
-```typescript  theme={null}
+```typescript theme={null}
 export type VectorQueryMatch = {
 	file_id: string;
 	cid: string;
@@ -15319,7 +15122,7 @@ export type VectorQueryMatch = {
 
 ### VectorizeQueryResponse
 
-```typescript  theme={null}
+```typescript theme={null}
 export type VectorizeQueryResponse = {
 	count: number;
 	matches: VectorQueryMatch[];
@@ -15336,7 +15139,7 @@ Source: https://docs.pinata.cloud/sdk/types/gateways
 
 ### ContentType
 
-```typescript  theme={null}
+```typescript theme={null}
 export type ContentType =
 	| "application/json"
 	| "application/xml"
@@ -15360,7 +15163,7 @@ export type ContentType =
 
 ### GetCIDResponse
 
-```typescript  theme={null}
+```typescript theme={null}
 export type GetCIDResponse = {
 	data?: JSON | string | Blob | null;
 	contentType: ContentType;
@@ -15369,7 +15172,7 @@ export type GetCIDResponse = {
 
 ### OptimizeImageOptions
 
-```typescript  theme={null}
+```typescript theme={null}
 export type OptimizeImageOptions = {
 	width?: number;
 	height?: number;
@@ -15387,7 +15190,7 @@ export type OptimizeImageOptions = {
 
 ### AccessLinkOptions
 
-```typescript  theme={null}
+```typescript theme={null}
 export type AccessLinkOptions = {
 	cid: string;
 	date?: number;
@@ -15398,7 +15201,7 @@ export type AccessLinkOptions = {
 
 ### ContainsCIDResponse
 
-```typescript  theme={null}
+```typescript theme={null}
 export type ContainsCIDResponse = {
 	containsCid: boolean;
 	cid: string | null;
@@ -15413,7 +15216,7 @@ Source: https://docs.pinata.cloud/sdk/types/groups
 
 ### GroupOptions
 
-```typescript  theme={null}
+```typescript theme={null}
 export type GroupOptions = {
 	name: string;
 	isPublic?: boolean;
@@ -15422,7 +15225,7 @@ export type GroupOptions = {
 
 ### UpdateGroupOptions
 
-```typescript  theme={null}
+```typescript theme={null}
 export type UpdateGroupOptions = {
 	groupId: string;
 	name?: string;
@@ -15432,7 +15235,7 @@ export type UpdateGroupOptions = {
 
 ### GetGroupOptions
 
-```typescript  theme={null}
+```typescript theme={null}
 export type GetGroupOptions = {
 	groupId: string;
 };
@@ -15440,7 +15243,7 @@ export type GetGroupOptions = {
 
 ### GroupListResponse
 
-```typescript  theme={null}
+```typescript theme={null}
 export type GroupListResponse = {
 	groups: GroupResponseItem[];
 	next_page_token: string;
@@ -15449,7 +15252,7 @@ export type GroupListResponse = {
 
 ### GroupResponseItem
 
-```typescript  theme={null}
+```typescript theme={null}
 export type GroupResponseItem = {
 	id: string;
 	is_public: boolean;
@@ -15460,7 +15263,7 @@ export type GroupResponseItem = {
 
 ### GroupQueryOptions
 
-```typescript  theme={null}
+```typescript theme={null}
 export type GroupQueryOptions = {
 	name?: string;
 	limit?: number;
@@ -15471,7 +15274,7 @@ export type GroupQueryOptions = {
 
 ### GroupCIDOptions
 
-```typescript  theme={null}
+```typescript theme={null}
 export type GroupCIDOptions = {
 	groupId: string;
 	files: string[];
@@ -15480,7 +15283,7 @@ export type GroupCIDOptions = {
 
 ### UpdateGroupFilesResponse
 
-```typescript  theme={null}
+```typescript theme={null}
 export type UpdateGroupFilesResponse = {
 	id: string;
 	status: string;
@@ -15495,7 +15298,7 @@ Source: https://docs.pinata.cloud/sdk/types/keys
 
 ### KeyPermissions
 
-```typescript  theme={null}
+```typescript theme={null}
 export type KeyPermissions = {
 	admin?: boolean;
 	endpoints?: Endpoints;
@@ -15504,7 +15307,7 @@ export type KeyPermissions = {
 
 ### Endpoints
 
-```typescript  theme={null}
+```typescript theme={null}
 export type Endpoints = {
 	data?: DataEndponts;
 	pinning?: PinningEndpoints;
@@ -15513,7 +15316,7 @@ export type Endpoints = {
 
 ### DataEndponts
 
-```typescript  theme={null}
+```typescript theme={null}
 export type DataEndponts = {
 	pinList?: boolean;
 	userPinnedDataTotal?: boolean;
@@ -15522,7 +15325,7 @@ export type DataEndponts = {
 
 ### PinningEndpoints
 
-```typescript  theme={null}
+```typescript theme={null}
 export type PinningEndpoints = {
 	hashMetadata?: boolean;
 	hashPinPolicy?: boolean;
@@ -15537,7 +15340,7 @@ export type PinningEndpoints = {
 
 ### KeyOptions
 
-```typescript  theme={null}
+```typescript theme={null}
 export type KeyOptions = {
 	keyName: string;
 	permissions: KeyPermissions;
@@ -15547,7 +15350,7 @@ export type KeyOptions = {
 
 ### KeyResponse
 
-```typescript  theme={null}
+```typescript theme={null}
 export type KeyResponse = {
 	JWT: string;
 	pinata_api_key: string;
@@ -15557,7 +15360,7 @@ export type KeyResponse = {
 
 ### KeyListQuery
 
-```typescript  theme={null}
+```typescript theme={null}
 export type KeyListQuery = {
 	revoked?: boolean;
 	limitedUse?: boolean;
@@ -15569,7 +15372,7 @@ export type KeyListQuery = {
 
 ### KeyListItem
 
-```typescript  theme={null}
+```typescript theme={null}
 export type KeyListItem = {
 	id: string;
 	name: string;
@@ -15587,7 +15390,7 @@ export type KeyListItem = {
 
 ### KeyScopes
 
-```typescript  theme={null}
+```typescript theme={null}
 type KeyScopes = {
 	endpoints: {
 		pinning: {
@@ -15601,7 +15404,7 @@ type KeyScopes = {
 
 ### KeyListResponse
 
-```typescript  theme={null}
+```typescript theme={null}
 export type KeyListResponse = {
 	keys: KeyListItem[];
 	count: number;
@@ -15610,7 +15413,7 @@ export type KeyListResponse = {
 
 ### RevokeKeyResponse
 
-```typescript  theme={null}
+```typescript theme={null}
 export type RevokeKeyResponse = {
 	key: string;
 	status: string;
@@ -15625,7 +15428,7 @@ Source: https://docs.pinata.cloud/sdk/types/signatures
 
 ### SignatureOptions
 
-```typescript  theme={null}
+```typescript theme={null}
 export type SignatureOptions = {
 	cid: string;
 	signature: string;
@@ -15635,7 +15438,7 @@ export type SignatureOptions = {
 
 ### SignatureResponse
 
-```typescript  theme={null}
+```typescript theme={null}
 export type SignatureResponse = {
 	cid: string;
 	signature: string;
@@ -15650,7 +15453,7 @@ Source: https://docs.pinata.cloud/sdk/types/uploads
 
 ### UploadResponse
 
-```typescript  theme={null}
+```typescript theme={null}
 export type UploadResponse = {
 	id: string;
 	name: string;
@@ -15670,7 +15473,7 @@ export type UploadResponse = {
 
 ### UploadOptions
 
-```typescript  theme={null}
+```typescript theme={null}
 export type UploadOptions = {
 	metadata?: PinataMetadata;
 	//pinType?: "async" | "sync" | "cidOnly";
@@ -15683,7 +15486,7 @@ export type UploadOptions = {
 
 ### SignedUploadUrlOptions
 
-```typescript  theme={null}
+```typescript theme={null}
 export type SignedUploadUrlOptions = {
 	date?: number;
 	expires: number;
@@ -15696,7 +15499,7 @@ export type SignedUploadUrlOptions = {
 
 ### UploadCIDOptions
 
-```typescript  theme={null}
+```typescript theme={null}
 export type UploadCIDOptions = {
 	metadata?: PinataMetadata;
 	peerAddresses?: string[];
@@ -15707,13 +15510,986 @@ export type UploadCIDOptions = {
 
 ### PinByCIDResponse
 
-```typescript  theme={null}
+```typescript theme={null}
 export type PinByCIDResponse = {
 	id: string;
 	cid: string;
 	status: "prechecking" | "retrieving";
 	name: string;
 };
+```
+
+
+# x402
+Source: https://docs.pinata.cloud/sdk/types/x402
+
+
+
+Types for x402 monetization features
+
+## PaymentRequirement
+
+Defines a single payment requirement within a payment instruction.
+
+```typescript theme={null}
+type PaymentRequirement = {
+  asset: string;
+  pay_to: string;
+  network: "base" | "base-sepolia" | "eip155:8453" | "eip155:84532";
+  amount: string;
+  description?: string;
+};
+```
+
+| Property      | Type                                                                | Description                                                                                                   |
+| ------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `asset`       | `string`                                                            | The USDC token contract address for the network (e.g., `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913` for Base) |
+| `pay_to`      | `string`                                                            | The wallet address to receive payments                                                                        |
+| `network`     | `"base"` \| `"base-sepolia"` \| `"eip155:8453"` \| `"eip155:84532"` | The blockchain network for transactions. Accepts friendly names or EIP-155 chain IDs                          |
+| `amount`      | `string`                                                            | The amount required in USDC smallest units (6 decimals). Example: `"10000"` = \$0.01                          |
+| `description` | `string`                                                            | Optional description for this requirement                                                                     |
+
+## PaymentInstruction
+
+Represents a complete payment instruction with all its requirements.
+
+```typescript theme={null}
+type PaymentInstruction = {
+  id: string;
+  version: number;
+  payment_requirements: PaymentRequirement[];
+  name: string;
+  description?: string;
+  created_at: string;
+};
+```
+
+| Property               | Type                   | Description                                   |
+| ---------------------- | ---------------------- | --------------------------------------------- |
+| `id`                   | `string`               | Unique identifier for the payment instruction |
+| `version`              | `number`               | Version number of the instruction             |
+| `payment_requirements` | `PaymentRequirement[]` | Array of payment requirements                 |
+| `name`                 | `string`               | Name of the payment instruction               |
+| `description`          | `string`               | Optional description                          |
+| `created_at`           | `string`               | ISO timestamp of creation                     |
+
+## CreatePaymentInstructionRequest
+
+Request body for creating a new payment instruction.
+
+```typescript theme={null}
+type CreatePaymentInstructionRequest = {
+  name: string;
+  payment_requirements: PaymentRequirement[];
+  description?: string;
+};
+```
+
+## UpdatePaymentInstructionRequest
+
+Request body for updating an existing payment instruction.
+
+```typescript theme={null}
+type UpdatePaymentInstructionRequest = {
+  name?: string;
+  payment_requirements?: PaymentRequirement[];
+  description?: string;
+};
+```
+
+## PaymentInstructionListQuery
+
+Query parameters for listing payment instructions.
+
+```typescript theme={null}
+type PaymentInstructionListQuery = {
+  limit?: number;
+  pageToken?: string;
+  cid?: string;
+  name?: string;
+  id?: string;
+};
+```
+
+| Property    | Type     | Description                         |
+| ----------- | -------- | ----------------------------------- |
+| `limit`     | `number` | Maximum number of results to return |
+| `pageToken` | `string` | Pagination token for next page      |
+| `cid`       | `string` | Filter by associated CID            |
+| `name`      | `string` | Filter by instruction name          |
+| `id`        | `string` | Filter by instruction ID            |
+
+## PaymentInstructionListResponse
+
+Response structure for listing payment instructions.
+
+```typescript theme={null}
+type PaymentInstructionListResponse = {
+  data: {
+    payment_instructions: PaymentInstruction[];
+    next_page_token?: string;
+  };
+};
+```
+
+## PaymentInstructionResponse
+
+Response structure for single payment instruction operations.
+
+```typescript theme={null}
+type PaymentInstructionResponse = {
+  data: PaymentInstruction;
+};
+```
+
+## PaymentInstructionDeleteResponse
+
+Response structure for delete operations.
+
+```typescript theme={null}
+type PaymentInstructionDeleteResponse = {
+  data: {};
+};
+```
+
+## CidListQuery
+
+Query parameters for listing CIDs associated with a payment instruction.
+
+```typescript theme={null}
+type CidListQuery = {
+  limit?: number;
+  pageToken?: string;
+};
+```
+
+## CidListResponse
+
+Response structure for listing CIDs.
+
+```typescript theme={null}
+type CidListResponse = {
+  data: {
+    cids: string[];
+    next_page_token?: string;
+  };
+};
+```
+
+## CidAssociation
+
+Represents a CID associated with a payment instruction.
+
+```typescript theme={null}
+type CidAssociation = {
+  payment_instruction_id: string;
+  cid: string;
+  created_at: string;
+};
+```
+
+| Property                 | Type     | Description                                       |
+| ------------------------ | -------- | ------------------------------------------------- |
+| `payment_instruction_id` | `string` | ID of the associated payment instruction          |
+| `cid`                    | `string` | The IPFS CID                                      |
+| `created_at`             | `string` | ISO timestamp of when the association was created |
+
+## CidAssociationResponse
+
+Response structure for adding a CID to a payment instruction.
+
+```typescript theme={null}
+type CidAssociationResponse = {
+  data: CidAssociation;
+};
+```
+
+## CidRemoveResponse
+
+Response structure for removing a CID from a payment instruction.
+
+```typescript theme={null}
+type CidRemoveResponse = {
+  data: {};
+};
+```
+
+
+# add
+Source: https://docs.pinata.cloud/sdk/x402/cids/add
+
+
+
+Associate a CID with a payment instruction for x402 monetization
+
+## Usage
+
+```typescript theme={null}
+import { PinataSDK } from "pinata";
+
+const pinata = new PinataSDK({
+  pinataJwt: process.env.PINATA_JWT!,
+  pinataGateway: "example-gateway.mypinata.cloud",
+});
+
+const association = await pinata.x402.addCid(
+  "01234567-89ab-cdef-0123-456789abcdef",
+  "bafkreih5aznjvttude6c3wbvqeebb6rlx5wkbzyppv7garjiubll2ceym4"
+);
+```
+
+## Returns
+
+```typescript theme={null}
+type CidAssociationResponse = {
+  data: CidAssociation;
+};
+
+type CidAssociation = {
+  payment_instruction_id: string;
+  cid: string;
+  created_at: string;
+};
+```
+
+## Parameters
+
+### paymentInstructionId (required)
+
+* Type: `string`
+
+The unique identifier of the payment instruction to associate the CID with
+
+```typescript theme={null}
+const association = await pinata.x402.addCid(
+  "01234567-89ab-cdef-0123-456789abcdef",
+  "bafkreih5aznjvttude6c3wbvqeebb6rlx5wkbzyppv7garjiubll2ceym4"
+);
+```
+
+### cid (required)
+
+* Type: `string`
+
+The IPFS CID to associate with the payment instruction. Once associated, accessing this content will require payment according to the payment instruction.
+
+```typescript theme={null}
+const association = await pinata.x402.addCid(
+  "01234567-89ab-cdef-0123-456789abcdef",
+  "bafkreih5aznjvttude6c3wbvqeebb6rlx5wkbzyppv7garjiubll2ceym4"
+);
+```
+
+
+# list
+Source: https://docs.pinata.cloud/sdk/x402/cids/list
+
+
+
+List all CIDs associated with a payment instruction
+
+## Usage
+
+```typescript theme={null}
+import { PinataSDK } from "pinata";
+
+const pinata = new PinataSDK({
+  pinataJwt: process.env.PINATA_JWT!,
+  pinataGateway: "example-gateway.mypinata.cloud",
+});
+
+const cids = await pinata.x402.listCids(
+  "01234567-89ab-cdef-0123-456789abcdef"
+);
+```
+
+## Returns
+
+```typescript theme={null}
+type CidListResponse = {
+  data: {
+    cids: string[];
+    next_page_token?: string;
+  };
+};
+```
+
+## Parameters
+
+### paymentInstructionId (required)
+
+* Type: `string`
+
+The unique identifier of the payment instruction
+
+```typescript theme={null}
+const cids = await pinata.x402.listCids(
+  "01234567-89ab-cdef-0123-456789abcdef"
+);
+```
+
+### options
+
+Optional parameters for pagination.
+
+#### limit
+
+* Type: `number`
+
+Limit the number of results returned
+
+```typescript {3-5} theme={null}
+const cids = await pinata.x402.listCids(
+  "01234567-89ab-cdef-0123-456789abcdef",
+  {
+    limit: 10,
+  }
+);
+```
+
+#### pageToken
+
+* Type: `string`
+
+Paginate through results using a page token from a previous response
+
+```typescript {3-5} theme={null}
+const cids = await pinata.x402.listCids(
+  "01234567-89ab-cdef-0123-456789abcdef",
+  {
+    pageToken: "MDE5MWIzZWYtM2U0Zi03YTY5LWE3OTQtOTRhZDE5NjQxMTk0",
+  }
+);
+```
+
+
+# remove
+Source: https://docs.pinata.cloud/sdk/x402/cids/remove
+
+
+
+Remove a CID association from a payment instruction
+
+## Usage
+
+```typescript theme={null}
+import { PinataSDK } from "pinata";
+
+const pinata = new PinataSDK({
+  pinataJwt: process.env.PINATA_JWT!,
+  pinataGateway: "example-gateway.mypinata.cloud",
+});
+
+const result = await pinata.x402.removeCid(
+  "01234567-89ab-cdef-0123-456789abcdef",
+  "bafkreih5aznjvttude6c3wbvqeebb6rlx5wkbzyppv7garjiubll2ceym4"
+);
+```
+
+## Returns
+
+```typescript theme={null}
+type CidRemoveResponse = {
+  data: {};
+};
+```
+
+## Parameters
+
+### paymentInstructionId (required)
+
+* Type: `string`
+
+The unique identifier of the payment instruction
+
+```typescript theme={null}
+const result = await pinata.x402.removeCid(
+  "01234567-89ab-cdef-0123-456789abcdef",
+  "bafkreih5aznjvttude6c3wbvqeebb6rlx5wkbzyppv7garjiubll2ceym4"
+);
+```
+
+### cid (required)
+
+* Type: `string`
+
+The IPFS CID to remove from the payment instruction. Once removed, the content will no longer require payment for access through this instruction.
+
+```typescript theme={null}
+const result = await pinata.x402.removeCid(
+  "01234567-89ab-cdef-0123-456789abcdef",
+  "bafkreih5aznjvttude6c3wbvqeebb6rlx5wkbzyppv7garjiubll2ceym4"
+);
+```
+
+
+# x402 Monetization
+Source: https://docs.pinata.cloud/sdk/x402/index
+
+
+
+<Note>
+  x402 is available on paid Pinata accounts. [Upgrade your account](https://app.pinata.cloud/billing) to access x402 monetization features.
+</Note>
+
+Monetize your private IPFS files by receiving USDC payments directly to your wallet using the x402 protocol.
+
+For detailed concepts and workflows, see the [x402 Introduction](/files/x402/intro).
+
+## Quick Example
+
+```typescript theme={null}
+import { PinataSDK } from "pinata";
+
+const pinata = new PinataSDK({
+  pinataJwt: process.env.PINATA_JWT!,
+  pinataGateway: "your-gateway.mypinata.cloud",
+});
+
+// 1. Upload a private file
+const file = new File(["premium content"], "content.pdf", { type: "application/pdf" });
+const upload = await pinata.upload.private.file(file);
+
+// 2. Create a payment instruction
+const instruction = await pinata.x402.createPaymentInstruction({
+  name: "Premium Content Access",
+  payment_requirements: [
+    {
+      asset: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913", // USDC on Base
+      pay_to: "0xYourWalletAddress", // YOU receive payments here
+      network: "base",
+      amount: "10000", // $0.01 in USDC
+    },
+  ],
+});
+
+// 3. Attach CID to payment instruction
+await pinata.x402.addCid(instruction.data.id, upload.cid);
+
+// 4. Share the x402 gateway URL
+// https://your-gateway.mypinata.cloud/x402/cid/{cid}
+```
+
+## Network Configuration
+
+**USDC is currently the only supported token.**
+
+| Network                | USDC Token Address                           | Use Case                |
+| ---------------------- | -------------------------------------------- | ----------------------- |
+| Base (Mainnet)         | `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913` | Production monetization |
+| Base Sepolia (Testnet) | `0x036CbD53842c5426634e7929541eC2318f3dCF7e` | Testing payment flows   |
+
+## Payment Amounts
+
+USDC has 6 decimals. To convert USD to token amount, multiply by 1,000,000:
+
+| USD    | `amount`    |
+| ------ | ----------- |
+| \$0.01 | `"10000"`   |
+| \$0.10 | `"100000"`  |
+| \$1.00 | `"1000000"` |
+
+## Available Methods
+
+### Payment Instructions
+
+* [list](/sdk/x402/payment-instructions/list) - List all payment instructions
+* [create](/sdk/x402/payment-instructions/create) - Create a new payment instruction
+* [get](/sdk/x402/payment-instructions/get) - Get a payment instruction by ID
+* [update](/sdk/x402/payment-instructions/update) - Update a payment instruction
+* [delete](/sdk/x402/payment-instructions/delete) - Delete a payment instruction
+
+### CID Management
+
+* [list](/sdk/x402/cids/list) - List CIDs attached to a payment instruction
+* [add](/sdk/x402/cids/add) - Attach a CID to a payment instruction
+* [remove](/sdk/x402/cids/remove) - Remove a CID from a payment instruction
+
+## Related Resources
+
+* [x402 Introduction](/files/x402/intro) - Overview of x402 monetization
+* [Quick Start Guide](/files/x402/x402-quick-start) - Step-by-step setup guide
+* [Payment Instructions Guide](/files/x402/x402-payment-instructions) - Detailed workflow guide
+* [Accessing Paid Content](/files/x402/x402-accessing-paid-content) - How requesters access paid content
+* [x402 Types](/sdk/types/x402) - TypeScript type definitions
+
+
+# create
+Source: https://docs.pinata.cloud/sdk/x402/payment-instructions/create
+
+
+
+Create a new payment instruction for x402 monetization
+
+## Usage
+
+```typescript theme={null}
+import { PinataSDK } from "pinata";
+
+const pinata = new PinataSDK({
+  pinataJwt: process.env.PINATA_JWT!,
+  pinataGateway: "example-gateway.mypinata.cloud",
+});
+
+const instruction = await pinata.x402.createPaymentInstruction({
+  name: "Premium Content Access",
+  payment_requirements: [
+    {
+      asset: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913", // USDC on Base
+      pay_to: "0x1234567890abcdef1234567890abcdef12345678",
+      network: "base",
+      amount: "10000", // $0.01 in USDC (6 decimals)
+    },
+  ],
+});
+```
+
+## Returns
+
+```typescript theme={null}
+type PaymentInstructionResponse = {
+  data: PaymentInstruction;
+};
+
+type PaymentInstruction = {
+  id: string;
+  version: number;
+  payment_requirements: PaymentRequirement[];
+  name: string;
+  description?: string;
+  created_at: string;
+};
+
+type PaymentRequirement = {
+  asset: string;
+  pay_to: string;
+  network: "base" | "base-sepolia" | "eip155:8453" | "eip155:84532";
+  amount: string;
+  description?: string;
+};
+```
+
+## Parameters
+
+### name (required)
+
+* Type: `string`
+
+The name for the payment instruction
+
+```typescript {2} theme={null}
+const instruction = await pinata.x402.createPaymentInstruction({
+  name: "Premium Content Access",
+  payment_requirements: [
+    {
+      asset: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913", // USDC on Base
+      pay_to: "0x1234567890abcdef1234567890abcdef12345678",
+      network: "base",
+      amount: "10000", // $0.01 in USDC (6 decimals)
+    },
+  ],
+});
+```
+
+### payment\_requirements (required)
+
+* Type: `PaymentRequirement[]`
+
+An array of payment requirements. Each requirement specifies the asset, recipient address, network, and amount required for access.
+
+```typescript {3-9} theme={null}
+const instruction = await pinata.x402.createPaymentInstruction({
+  name: "Premium Content Access",
+  payment_requirements: [
+    {
+      asset: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913", // USDC on Base
+      pay_to: "0x1234567890abcdef1234567890abcdef12345678",
+      network: "base",
+      amount: "10000", // $0.01 in USDC (6 decimals)
+    },
+  ],
+});
+```
+
+#### PaymentRequirement Properties
+
+| Property      | Type                                                                | Required | Description                                     |
+| ------------- | ------------------------------------------------------------------- | -------- | ----------------------------------------------- |
+| `asset`       | `string`                                                            | Yes      | The USDC token contract address for the network |
+| `pay_to`      | `string`                                                            | Yes      | The wallet address to receive payments          |
+| `network`     | `"base"` \| `"base-sepolia"` \| `"eip155:8453"` \| `"eip155:84532"` | Yes      | The blockchain network                          |
+| `amount`      | `string`                                                            | Yes      | The maximum amount required for access          |
+| `description` | `string`                                                            | No       | Optional description for this requirement       |
+
+### description
+
+* Type: `string`
+
+An optional description for the payment instruction
+
+```typescript {10} theme={null}
+const instruction = await pinata.x402.createPaymentInstruction({
+  name: "Premium Content Access",
+  payment_requirements: [
+    {
+      asset: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913", // USDC on Base
+      pay_to: "0x1234567890abcdef1234567890abcdef12345678",
+      network: "base",
+      amount: "10000", // $0.01 in USDC (6 decimals)
+    },
+  ],
+  description: "Access to exclusive premium content",
+});
+```
+
+
+# delete
+Source: https://docs.pinata.cloud/sdk/x402/payment-instructions/delete
+
+
+
+Delete a payment instruction
+
+## Usage
+
+```typescript theme={null}
+import { PinataSDK } from "pinata";
+
+const pinata = new PinataSDK({
+  pinataJwt: process.env.PINATA_JWT!,
+  pinataGateway: "example-gateway.mypinata.cloud",
+});
+
+const result = await pinata.x402.deletePaymentInstruction(
+  "01234567-89ab-cdef-0123-456789abcdef"
+);
+```
+
+## Returns
+
+```typescript theme={null}
+type PaymentInstructionDeleteResponse = {
+  data: {};
+};
+```
+
+## Parameters
+
+### id (required)
+
+* Type: `string`
+
+The unique identifier of the payment instruction to delete
+
+```typescript theme={null}
+const result = await pinata.x402.deletePaymentInstruction(
+  "01234567-89ab-cdef-0123-456789abcdef"
+);
+```
+
+
+# get
+Source: https://docs.pinata.cloud/sdk/x402/payment-instructions/get
+
+
+
+Retrieve a specific payment instruction by ID
+
+## Usage
+
+```typescript theme={null}
+import { PinataSDK } from "pinata";
+
+const pinata = new PinataSDK({
+  pinataJwt: process.env.PINATA_JWT!,
+  pinataGateway: "example-gateway.mypinata.cloud",
+});
+
+const instruction = await pinata.x402.getPaymentInstruction(
+  "01234567-89ab-cdef-0123-456789abcdef"
+);
+```
+
+## Returns
+
+```typescript theme={null}
+type PaymentInstructionResponse = {
+  data: PaymentInstruction;
+};
+
+type PaymentInstruction = {
+  id: string;
+  version: number;
+  payment_requirements: PaymentRequirement[];
+  name: string;
+  description?: string;
+  created_at: string;
+};
+
+type PaymentRequirement = {
+  asset: string;
+  pay_to: string;
+  network: "base" | "base-sepolia" | "eip155:8453" | "eip155:84532";
+  amount: string;
+  description?: string;
+};
+```
+
+## Parameters
+
+### id (required)
+
+* Type: `string`
+
+The unique identifier of the payment instruction to retrieve
+
+```typescript theme={null}
+const instruction = await pinata.x402.getPaymentInstruction(
+  "01234567-89ab-cdef-0123-456789abcdef"
+);
+```
+
+
+# list
+Source: https://docs.pinata.cloud/sdk/x402/payment-instructions/list
+
+
+
+List and filter payment instructions for x402 monetization
+
+## Usage
+
+```typescript theme={null}
+import { PinataSDK } from "pinata";
+
+const pinata = new PinataSDK({
+  pinataJwt: process.env.PINATA_JWT!,
+  pinataGateway: "example-gateway.mypinata.cloud",
+});
+
+const instructions = await pinata.x402.listPaymentInstructions();
+```
+
+## Returns
+
+```typescript theme={null}
+type PaymentInstructionListResponse = {
+  data: {
+    payment_instructions: PaymentInstruction[];
+    next_page_token?: string;
+  };
+};
+
+type PaymentInstruction = {
+  id: string;
+  version: number;
+  payment_requirements: PaymentRequirement[];
+  name: string;
+  description?: string;
+  created_at: string;
+};
+
+type PaymentRequirement = {
+  asset: string;
+  pay_to: string;
+  network: "base" | "base-sepolia" | "eip155:8453" | "eip155:84532";
+  amount: string;
+  description?: string;
+};
+```
+
+## Parameters
+
+Filter response with the following optional parameters.
+
+### limit
+
+* Type: `number`
+
+Limit the number of results returned
+
+```typescript {2-4} theme={null}
+const instructions = await pinata.x402.listPaymentInstructions({
+  limit: 10,
+});
+```
+
+### pageToken
+
+* Type: `string`
+
+Paginate through results using a page token from a previous response
+
+```typescript {2-4} theme={null}
+const instructions = await pinata.x402.listPaymentInstructions({
+  pageToken: "MDE5MWIzZWYtM2U0Zi03YTY5LWE3OTQtOTRhZDE5NjQxMTk0",
+});
+```
+
+### cid
+
+* Type: `string`
+
+Filter payment instructions by associated CID
+
+```typescript {2-4} theme={null}
+const instructions = await pinata.x402.listPaymentInstructions({
+  cid: "bafkreih5aznjvttude6c3wbvqeebb6rlx5wkbzyppv7garjiubll2ceym4",
+});
+```
+
+### name
+
+* Type: `string`
+
+Filter payment instructions by name
+
+```typescript {2-4} theme={null}
+const instructions = await pinata.x402.listPaymentInstructions({
+  name: "Premium Content",
+});
+```
+
+### id
+
+* Type: `string`
+
+Filter by specific payment instruction ID
+
+```typescript {2-4} theme={null}
+const instructions = await pinata.x402.listPaymentInstructions({
+  id: "01234567-89ab-cdef-0123-456789abcdef",
+});
+```
+
+
+# update
+Source: https://docs.pinata.cloud/sdk/x402/payment-instructions/update
+
+
+
+Update an existing payment instruction
+
+## Usage
+
+```typescript theme={null}
+import { PinataSDK } from "pinata";
+
+const pinata = new PinataSDK({
+  pinataJwt: process.env.PINATA_JWT!,
+  pinataGateway: "example-gateway.mypinata.cloud",
+});
+
+const instruction = await pinata.x402.updatePaymentInstruction(
+  "01234567-89ab-cdef-0123-456789abcdef",
+  {
+    name: "Updated Premium Content",
+  }
+);
+```
+
+## Returns
+
+```typescript theme={null}
+type PaymentInstructionResponse = {
+  data: PaymentInstruction;
+};
+
+type PaymentInstruction = {
+  id: string;
+  version: number;
+  payment_requirements: PaymentRequirement[];
+  name: string;
+  description?: string;
+  created_at: string;
+};
+
+type PaymentRequirement = {
+  asset: string;
+  pay_to: string;
+  network: "base" | "base-sepolia" | "eip155:8453" | "eip155:84532";
+  amount: string;
+  description?: string;
+};
+```
+
+## Parameters
+
+### id (required)
+
+* Type: `string`
+
+The unique identifier of the payment instruction to update
+
+```typescript theme={null}
+const instruction = await pinata.x402.updatePaymentInstruction(
+  "01234567-89ab-cdef-0123-456789abcdef",
+  {
+    name: "Updated Name",
+  }
+);
+```
+
+### name
+
+* Type: `string`
+
+Update the name of the payment instruction
+
+```typescript {4} theme={null}
+const instruction = await pinata.x402.updatePaymentInstruction(
+  "01234567-89ab-cdef-0123-456789abcdef",
+  {
+    name: "Updated Premium Content",
+  }
+);
+```
+
+### payment\_requirements
+
+* Type: `PaymentRequirement[]`
+
+Update the payment requirements array
+
+```typescript {4-11} theme={null}
+const instruction = await pinata.x402.updatePaymentInstruction(
+  "01234567-89ab-cdef-0123-456789abcdef",
+  {
+    payment_requirements: [
+      {
+        asset: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913", // USDC on Base
+        pay_to: "0xnewaddress1234567890abcdef12345678",
+        network: "base",
+        amount: "20000", // $0.02 in USDC (6 decimals)
+      },
+    ],
+  }
+);
+```
+
+#### PaymentRequirement Properties
+
+| Property      | Type                                                                | Required | Description                                     |
+| ------------- | ------------------------------------------------------------------- | -------- | ----------------------------------------------- |
+| `asset`       | `string`                                                            | Yes      | The USDC token contract address for the network |
+| `pay_to`      | `string`                                                            | Yes      | The wallet address to receive payments          |
+| `network`     | `"base"` \| `"base-sepolia"` \| `"eip155:8453"` \| `"eip155:84532"` | Yes      | The blockchain network                          |
+| `amount`      | `string`                                                            | Yes      | The amount required for access                  |
+| `description` | `string`                                                            | No       | Optional description for this requirement       |
+
+### description
+
+* Type: `string`
+
+Update the description of the payment instruction
+
+```typescript {4} theme={null}
+const instruction = await pinata.x402.updatePaymentInstruction(
+  "01234567-89ab-cdef-0123-456789abcdef",
+  {
+    description: "Updated description for the payment instruction",
+  }
+);
 ```
 
 

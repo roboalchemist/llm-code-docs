@@ -1,8 +1,6 @@
 # Source: https://rspack.dev/blog/announcing-0-6.md
 
-import { PackageManagerTabs } from '@theme';
-
-*April 10, 2024*
+_April 10, 2024_
 
 # Announcing Rspack 0.6
 

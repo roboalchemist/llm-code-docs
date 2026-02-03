@@ -1,10 +1,39 @@
 # Source: https://braintrust.dev/docs/data-plane-changelog.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Data plane changelog
 
 > New data plane versions
 
-This changelog is for customers who [self-host the Braintrust data plane](/guides/self-hosting/index).
+This changelog is for customers who [self-host the Braintrust data plane](/admin/self-hosting).
+
+<Update label="January 2026">
+  ### v1.1.31 - January 23, 2026
+
+  * Improve performance of S3 export (this is an ongoing effort, and we are continuing to make improvements)
+  * Added native GCS authentication for object storage
+  * SQL improvements: added PIVOT/UNPIVOT syntax, `array` identifier, string similarity functions in group by, negative array indexing; fixed MATCH syntax, `.user` identifier parsing, and positional aggregates for sort
+  * Improved async batch invoke performance with configurable batch sizes
+  * Improved proxy error responses with proper status codes
+  * Fixed attachment parsing for root-level attachments
+
+  ### v1.1.30 - January 9, 2026
+
+  * Added support for parsing prompts using Nunjucks/Jinja syntax in the playground
+  * Added `date_trunc` and `json_extract` functions to BTQL and SQL
+  * Added support for alerting on prompt environment updates
+  * Added support for File type in newer Vercel AI SDK versions
+  * Improved tags functionality
+  * Improved async scoring performance with batched payload requests
+  * Improved WAL compression and ephemeral data handling
+  * Fixed MCP OAuth flow when initial auth server discovery returns 401
+  * Fixed implicit aliasing support in BTQL queries
+  * Auto-correct double quotes to string literals in BTQL parser
+  * Automatically convert Google inline base64 attachments to Braintrust attachments
+</Update>
 
 <Update label="December 2025">
   ### v1.1.29 - December 17, 2025
@@ -283,8 +312,3 @@ This changelog is for customers who [self-host the Braintrust data plane](/guide
   * The proxy is now accessible at `https://api.braintrust.dev/v1/proxy`
   * If you are self-hosting, the proxy is now bundled into the API service
 </Update>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

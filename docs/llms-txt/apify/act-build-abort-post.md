@@ -22,6 +22,10 @@ Only builds that are starting or running are aborted. For builds with status `FI
 ## Responses
 
 * 200
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

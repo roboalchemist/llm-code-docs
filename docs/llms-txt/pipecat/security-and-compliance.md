@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/deployment/pipecat-cloud/security/security-and-compliance.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Security Guide
 
 > Securing your agents on Pipecat Cloud
@@ -250,8 +254,3 @@ For security-related questions or to report security issues:
 
 * **Security Issues**: Email [disclosures@daily.co](mailto:disclosures@daily.co) to report potential vulnerabilities
 * **General Support**: Contact [help@daily.co](mailto:help@daily.co) for security questions
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

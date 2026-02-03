@@ -1,14 +1,33 @@
 # Source: https://docs.replit.com/replitai/design-mode.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Design Mode
 
 > Create beautiful interactive designs and static websites in under 2 minutes with better visual quality than ever.
+
+export const YouTubeEmbed = ({videoId, title = "YouTube video", startAt}) => {
+  if (!videoId) {
+    return null;
+  }
+  let url = "https://www.youtube.com/embed/" + videoId;
+  if (startAt) {
+    url = url + "?start=" + startAt;
+  }
+  return <Frame>
+      <iframe src={url} title={title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+    </Frame>;
+};
 
 Design Mode creates interactive front-end designs and websites in under 2 minutes. Powered by Gemini 3, it delivers better design quality than ever before on Replit, and in less time.
 
 <Tip>
   **New: Powered by Gemini 3** - Design Mode uses Google's latest Gemini 3 model, delivering superior visual quality and faster results than ever before on Replit. Experience the best-looking designs we've ever produced.
 </Tip>
+
+<YouTubeEmbed videoId="MLqYxlyWw3M" />
 
 ## What is Design Mode?
 
@@ -82,6 +101,10 @@ Design Mode addresses key pain points that made Replit too slow or not good enou
     <Frame>
       <img src="https://mintcdn.com/replit/qoj91drixtt2JjNS/images/replitai/convert-to-app-design-mode.png?fit=max&auto=format&n=qoj91drixtt2JjNS&q=85&s=29da37b77ad19de9eadd14e845d40bd5" alt="Convert to App button shown by Agent when functionality is requested" data-og-width="1352" width="1352" data-og-height="396" height="396" data-path="images/replitai/convert-to-app-design-mode.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/replit/qoj91drixtt2JjNS/images/replitai/convert-to-app-design-mode.png?w=280&fit=max&auto=format&n=qoj91drixtt2JjNS&q=85&s=bbda0d21478063e3c2da1fdcc6084519 280w, https://mintcdn.com/replit/qoj91drixtt2JjNS/images/replitai/convert-to-app-design-mode.png?w=560&fit=max&auto=format&n=qoj91drixtt2JjNS&q=85&s=e8ce73342564646b203130a41ad24440 560w, https://mintcdn.com/replit/qoj91drixtt2JjNS/images/replitai/convert-to-app-design-mode.png?w=840&fit=max&auto=format&n=qoj91drixtt2JjNS&q=85&s=9af04d49b4e6931f468e79ea8c55fb02 840w, https://mintcdn.com/replit/qoj91drixtt2JjNS/images/replitai/convert-to-app-design-mode.png?w=1100&fit=max&auto=format&n=qoj91drixtt2JjNS&q=85&s=f8d1bbe1c2b6589a82e0b4d180640f4f 1100w, https://mintcdn.com/replit/qoj91drixtt2JjNS/images/replitai/convert-to-app-design-mode.png?w=1650&fit=max&auto=format&n=qoj91drixtt2JjNS&q=85&s=22019b3fdab7781fd832a55e0d1d37a4 1650w, https://mintcdn.com/replit/qoj91drixtt2JjNS/images/replitai/convert-to-app-design-mode.png?w=2500&fit=max&auto=format&n=qoj91drixtt2JjNS&q=85&s=f1abf84b3400b92d7cc1564416f7614f 2500w" />
     </Frame>
+
+    <Note>
+      **Core and Teams only**: Converting a Design to a full app (graduating from Design to Build) requires a Core or Teams subscription. Starter users can create and deploy Designs but cannot convert them to full apps with backend functionality.
+    </Note>
   </Step>
 </Steps>
 
@@ -157,11 +180,11 @@ Perfect for user testing, stakeholder presentations, and gathering feedback befo
 * Attach screenshots to recreate existing designs
 * Reference design systems or component libraries in your prompts
 
-## Design Mode vs. Start with a design
+## Design Mode vs. App Mode
 
-Design Mode differs from the "Start with a design" build mode in full apps:
+Design Mode and App Mode serve different purposes:
 
-<Accordion title="Design Mode vs. Start with a design">
+<Accordion title="Design Mode vs. App Mode">
   **Design Mode (Design tab):**
 
   * Selected from the homepage as "Design"
@@ -169,16 +192,17 @@ Design Mode differs from the "Start with a design" build mode in full apps:
   * No backend infrastructure—visuals only
   * Built with Gemini 3 for superior design quality
   * Purpose-built for rapid prototyping and simple websites
-  * Uses static deployments only until the app graduates
+  * Uses static deployments only until converted to an App
 
-  **Start with a design (in App tab):**
+  **App Mode (App tab):**
 
-  * Selected after pressing "Build" from the homepage
-  * Creates a design first (\~3 minutes), then builds full functionality (\~10 minutes)
-  * Includes access to backend, databases, and integrations from the start (after pressing "Build functionality")
-  * Part of the complete app development workflow
+  * Selected from the homepage as "App"
+  * Builds full-stack applications with frontend and backend
+  * Includes access to databases, APIs, and integrations
+  * Choose between Fast (\~3-5 mins) or full build (10+ mins)
+  * Complete application development workflow
 
-  Choose Design Mode when you want the fastest path to beautiful visuals without backend complexity. Choose Start with a design when you know you'll need backend functionality.
+  Choose Design Mode when you want the fastest path to beautiful visuals without backend complexity. Choose App Mode when you need backend functionality, databases, or server-side logic.
 </Accordion>
 
 ## FAQ

@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/search/hybrid-search.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Hybrid Search
 
 > Learn how to perform hybrid search in LanceDB by combining vector and full-text search techniques with reranking.
@@ -255,8 +259,3 @@ By default, LanceDB uses `RRFReranker()`, which uses reciprocal rank fusion scor
 | :---------- | :--------- | :-------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `normalize` | `str`      | `"score"` | The method to normalize the scores. Can be `rank` or `score`. If `rank`, the scores are converted to ranks and then normalized. If `score`, the scores are normalized directly. |
 | `reranker`  | `Reranker` | `RRF()`   | The reranker to use. If not specified, the default reranker is used.                                                                                                            |
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

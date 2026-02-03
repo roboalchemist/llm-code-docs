@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Cloudcraft (Standalone) > Getting started > Create your first live
   cloud diagram
-source_url: >-
-  https://docs.datadoghq.com/getting-started/create-your-first-cloudcraft-diagram/index.html
 ---
 
 # Create your first live cloud diagram

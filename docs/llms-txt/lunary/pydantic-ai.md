@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/integrations/pydantic-ai.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Pydantic AI Integration
 
 <Warning>
@@ -55,8 +59,3 @@ This will automatically track:
 * Errors and exceptions
 
 All telemetry data will be sent to Lunary for monitoring and analysis.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

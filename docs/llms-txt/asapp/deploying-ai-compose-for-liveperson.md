@@ -1,12 +1,16 @@
 # Source: https://docs.asapp.com/ai-productivity/ai-compose/deploying-ai-compose-for-liveperson.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deploying AI Compose for LivePerson
 
 > Use AI Compose on your LivePerson application.
 
 ## Overview
 
-This page describes how to Integrate AI Compose in your LivePerson application.
+This page describes how to integrate AI Compose into your LivePerson application.
 
 ### Integration Steps
 
@@ -75,7 +79,7 @@ Customers can automatically install and manage the ASAPP AI Compose browser exte
 
 The Customer's system administrator must configure GPO rules to allow the installation server URL and the software component ID. Through GPO, the administrator can choose to force the installation (i.e., install without requiring human intervention).
 
-The following policies will configure Chrome and Edge to download the AI Compose browser extension in all on-premise managed devices via GPO:
+The following policies will configure Chrome and Edge to download the AI Compose browser extension on all on-premise managed devices via GPO:
 
 | **Policy Name**                                                                                                         | **Value to Set**                                                                                                                                                                |
 | :---------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -127,7 +131,7 @@ In order to have Chrome download the ASAPP hosted extension in all managed devic
 
 1. Navigate to **Device management > Chrome**.
 2. Click **Apps & Extensions**.
-3. Click on **Add (+)** and look for **Add Chrome app or extension by ID** option.
+3. Click on **Add (+)** and search for the **Add Chrome app or extension by ID** option.
 4. Complete the fields using the values provided below. Be sure to select the **From a custom URL** option.
 
 | **Field** | **Value**                                                                                                                                      |

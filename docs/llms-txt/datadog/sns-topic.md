@@ -4,7 +4,6 @@
 title: SNS Topic Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > AWS Components > SNS Topic Component
-source_url: https://docs.datadoghq.com/components-aws/sns-topic/index.html
 ---
 
 # SNS Topic Component

@@ -6,7 +6,6 @@ description: >-
   Chat with Bits AI in Datadog and Slack to query observability data using
   natural language and get insights about your services.
 breadcrumbs: Docs > Bits AI > Chat with Bits AI
-source_url: https://docs.datadoghq.com/chat_with_bits_ai/index.html
 ---
 
 # Chat with Bits AI

@@ -1,5 +1,9 @@
 # Source: https://docs.solidfi.com/v2/api-reference/getting-started/rate-limiting.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.solidfi.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Rate Limiting
 
 > Solid Platform enforces rate limiting

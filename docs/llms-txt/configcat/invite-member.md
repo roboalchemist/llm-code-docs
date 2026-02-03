@@ -2,10 +2,7 @@
 
 # Invite Member
 
-```
-POST 
-/v1/products/:productId/members/invite
-```
+Copy page
 
 This endpoint invites a Member into the given Product identified by the `productId` parameter.
 

@@ -4,7 +4,6 @@
 title: Datadog Documentation Guides
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Datadog Documentation Guides
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Datadog Documentation Guides

@@ -46,7 +46,7 @@ Plan add-ons
 
 *This option is available only if you are on a subscription plan*.
 
-You can extend your subscription plans with add-ons, like extra proxies, Actor memory, and more. Navigate to https://console.apify.com/billing/subscription section in Apify Console, and click the **Buy add-ons** button to explore the available options.
+You can extend your subscription plans with add-ons, like extra proxies, Actor memory, and more. Navigate to [Subscription](https://console.apify.com/billing/subscription) section in Apify Console, and click the **Buy add-ons** button to explore the available options.
 
 ![Apify Console subscription view](/assets/images/console-billing-subscription-19a02e019587c65ed35a361401aa53af.png)
 

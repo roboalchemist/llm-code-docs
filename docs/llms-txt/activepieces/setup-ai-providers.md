@@ -1,5 +1,9 @@
 # Source: https://www.activepieces.com/docs/admin-guide/guides/setup-ai-providers.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Setup AI Providers
 
 AI providers are configured by the platform admin to centrally manage credentials and access, making [AI pieces](https://www.activepieces.com/pieces/ai) and their features available to everyone in all projects.
@@ -27,8 +31,3 @@ Use an AI gateway like **Vercel AI Gateway** or **Cloudflare AI Gateway** to:
 * Track usage across projects
 
 Just set the gateway URL as your provider's base URL in the Admin Console.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.activepieces.com/docs/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.tavus.io/sections/conversational-video-interface/conversation/usecases/customer-service.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Customer Service Agent
 
 > Engage in real-time customer support conversations that adapt to user emotions and behavior.
@@ -47,7 +51,7 @@
           }
         }
       ],
-      "model": "tavus-llama-4",
+      "model": "tavus-gpt-oss",
       "speculative_inference": true
     },
     "perception": {
@@ -83,10 +87,10 @@
         }
       ]
     },
-    "stt": {
-      "participant_pause_sensitivity": "medium",
-      "participant_interrupt_sensitivity": "high",
-      "smart_turn_detection": true
+    "conversational_flow": {
+      "turn_detection_model": "sparrow-1",
+      "turn_taking_patience": "low",
+      "replica_interruptibility": "medium"
     }
   }
 }
@@ -109,7 +113,7 @@ This predefined persona is configured to provide personalized history lessons. I
     * `emotional_state`: what the user seems to feel (e.g., frustrated, calm)
     * `indicator`: what was observed (e.g., sighing, avoiding eye contact)
   * **TTS Layer**: Employs the `cartesia` voice engine with emotion control.
-  * **STT Layer**: Uses `tavus-advanced` engine with smart turn detection for seamless real-time conversations.
+  * **Conversational Flow Layer**: Uses `sparrow-1` turn detection model with low turn-taking patience for fast responses and medium replica interruptibility for balanced conversation flow.
 
 ## Create a Conversation with the Customer Service Agent Persona
 
@@ -162,7 +166,7 @@ This predefined persona is configured to provide personalized history lessons. I
                 }
               }
             ],
-            "model": "tavus-llama-4",
+            "model": "tavus-gpt-oss",
             "speculative_inference": true
           },
           "perception": {
@@ -198,10 +202,10 @@ This predefined persona is configured to provide personalized history lessons. I
               }
             ]
           },
-          "stt": {
-            "participant_pause_sensitivity": "medium",
-            "participant_interrupt_sensitivity": "high",
-            "smart_turn_detection": true
+          "conversational_flow": {
+            "turn_detection_model": "sparrow-1",
+            "turn_taking_patience": "low",
+            "replica_interruptibility": "medium"
           }
         }
       }'

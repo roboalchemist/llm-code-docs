@@ -4,8 +4,6 @@
 title: MSK Configuration
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > MSK Configuration
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.kafka_configuration.dataset/index.html
 ---
 
 # MSK Configuration
@@ -29,4 +27,4 @@ aws.kafka_configuration
 | latest_revision | core | json          | Latest revision of the configuration.                                                                                                                                                                                       |
 | name            | core | string        | The name of the configuration.                                                                                                                                                                                              |
 | state           | core | string        | The state of the configuration. The possible states are ACTIVE, DELETING, and DELETE_FAILED.                                                                                                                                |
-| tags            | core | hstore        |
+| tags            | core | hstore_csv    |

@@ -4,20 +4,26 @@
 title: AWS Accounts
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > Cloudcraft API Reference > AWS Accounts
-source_url: https://docs.datadoghq.com/api/aws-accounts/index.html
 ---
 
 # AWS Accounts
-.openapi-spec-content img{max-width:100%}.openapi-spec-content h1 a:hover,.openapi-spec-content h2 a:hover{color:#000;border-bottom:1px solid #000}List AWS accountsGET&nbsp; /aws/accountOverview
+.openapi-spec-content img{max-width:100%}.openapi-spec-content h1 a:hover,.openapi-spec-content h2 a:hover{color:#000;border-bottom:1px solid #000}List AWS accountsGET  /aws/accountOverview
 List all AWS accounts linked to your Cloudcraft account.
 
 The response is an array of AWS accounts. Each entry includes the account ID and name, access control, and user information.
 
 The provided account IDs are required to access the other AWS-related APIs.
-Response200401OKModelExampleExpand AllFieldTypeDescriptionaccounts
+Response200401
+{% tab title="200" %}
+OKModelExample
+{% tab title="Model" %}
+Expand AllFieldTypeDescriptionaccounts
 array
 
 An array of AWS accounts.
+{% /tab %}
+
+{% tab title="Example" %}
 
 ```json
 {
@@ -34,7 +40,15 @@ An array of AWS accounts.
   ]
 }
 ```
-UnauthorizedCode Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="401" %}
+Unauthorized
+{% /tab %}
+Code Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
 ```bash
 curl --location 'https://api.cloudcraft.co/aws/account'
 ```
@@ -125,7 +139,7 @@ fetch("https://api.cloudcraft.co/aws/account", requestOptions)
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
 ```
-Add an AWS accountPOST&nbsp; /aws/accountOverview
+Add an AWS accountPOST  /aws/accountOverview
 Register a new AWS account with Cloudcraft.
 
 The body of the request should contain the account properties in JSON format. The response contains the created account object, including the newly assigned ID for use with other API endpoints.
@@ -135,7 +149,11 @@ The body of the request should contain the account properties in JSON format. Th
 - **name**: A human-readable name for the AWS account. For example, "Production" or "Staging".
 - **roleArn**: The ARN of the read-only IAM role you've created in your AWS account for Cloudcraft. The IAM role must be created with the unique external ID value of the person who generated the API key being used.
 - **region**: Optional property representing the AWS region to be used for account validation. By default, the account will be validated in the us-east-1 region.
-Response201401403OKModelExampleExpand AllFieldTypeDescriptionCreatorId
+Response201401403
+{% tab title="201" %}
+OKModelExample
+{% tab title="Model" %}
+Expand AllFieldTypeDescriptionCreatorId
 string
 
 The user ID of the creator of the AWS account.
@@ -163,6 +181,9 @@ updatedAt
 string
 
 The date and time the AWS account was last updated.
+{% /tab %}
+
+{% tab title="Example" %}
 
 ```json
 {
@@ -175,7 +196,19 @@ The date and time the AWS account was last updated.
   "updatedAt": "2022-01-01T01:37:55.709Z"
 }
 ```
-UnauthorizedForbidden, insufficient privilegesCode Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="401" %}
+Unauthorized
+{% /tab %}
+
+{% tab title="403" %}
+Forbidden, insufficient privileges
+{% /tab %}
+Code Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
 ```bash
 curl --location 'https://api.cloudcraft.co/aws/account' \
 --header 'Content-Type: application/json' \
@@ -299,11 +332,15 @@ fetch("https://api.cloudcraft.co/aws/account", requestOptions)
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
 ```
-Get AWS IAM role parametersGET&nbsp; /aws/account/iamParametersOverview
+Get AWS IAM role parametersGET  /aws/account/iamParametersOverview
 List the parameters required for you to register a new IAM role in AWS for use with Cloudcraft.
 
 Combined with the AWS CLI to generate IAM roles, this endpoint can facilitate fully automated role creation at scale for organizations with many AWS accounts.
-Response200401OKModelExampleExpand AllFieldTypeDescriptionaccountId
+Response200401
+{% tab title="200" %}
+OKModelExample
+{% tab title="Model" %}
+Expand AllFieldTypeDescriptionaccountId
 string
 
 The AWS account ID for Cloudcraft.
@@ -315,6 +352,9 @@ externalId
 string
 
 The unique external ID for the Cloudcraft user.
+{% /tab %}
+
+{% tab title="Example" %}
 
 ```json
 {
@@ -323,7 +363,15 @@ The unique external ID for the Cloudcraft user.
   "externalId": "ex53e827-a724-4a2a-9fec-b13761540785"
 }
 ```
-UnauthorizedCode Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="401" %}
+Unauthorized
+{% /tab %}
+Code Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
 ```bash
 curl --location 'https://api.cloudcraft.co/aws/account/iamParameters'
 ```
@@ -416,13 +464,29 @@ fetch("https://api.cloudcraft.co/aws/account/iamParameters", requestOptions)
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
 ```
-Delete AWS accountDELETE&nbsp; /aws/account/{account_id}Overview
+Delete AWS accountDELETE  /aws/account/{account_id}Overview
 Delete a registered AWS account.
 
 ### Path Parameters{% #path-parameters %}
 
 - **account\_id**: *UUID*. AWS account ID. Required.
-Response200401403404OKUnauthorizedForbidden, insufficient privilegesAWS account not foundCode Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
+Response200401403404
+{% tab title="200" %}
+OK
+{% /tab %}
+
+{% tab title="401" %}
+Unauthorized
+{% /tab %}
+
+{% tab title="403" %}
+Forbidden, insufficient privileges
+{% /tab %}
+
+{% tab title="404" %}
+AWS account not found
+{% /tab %}
+Code Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
 ```bash
 curl --location --request DELETE 'https://api.cloudcraft.co/aws/account/{account_id}'
 ```
@@ -517,7 +581,7 @@ fetch("https://api.cloudcraft.co/aws/account/{account_id}", requestOptions)
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
 ```
-Update an AWS accountPUT&nbsp; /aws/account/{account_id}Overview
+Update an AWS accountPUT  /aws/account/{account_id}Overview
 Update an AWS account registered in Cloudcraft.
 
 The body of the request should contain the account properties in JSON format. The response contains the updated account object.
@@ -526,7 +590,19 @@ The body of the request should contain the account properties in JSON format. Th
 
 - **name**: A human-readable name for the AWS account. For example, "Production" or "Staging".
 - **roleArn**: The ARN of the read-only IAM role you've created in your AWS account for Cloudcraft. The IAM role must be created with the unique external ID value of the person who generated the API key being used.
-Response200401403OKUnauthorizedForbidden, insufficient privilegesCode Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
+Response200401403
+{% tab title="200" %}
+OK
+{% /tab %}
+
+{% tab title="401" %}
+Unauthorized
+{% /tab %}
+
+{% tab title="403" %}
+Forbidden, insufficient privileges
+{% /tab %}
+Code Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
 ```bash
 curl --location --request PUT 'https://api.cloudcraft.co/aws/account/{account_id}' \
 --data '{"name": "My updated AWS Account",
@@ -633,7 +709,7 @@ fetch("https://api.cloudcraft.co/aws/account/{account_id}", requestOptions)
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
 ```
-Snapshot AWS accountGET&nbsp; /aws/account/{account_id}/{region}/{format}Overview
+Snapshot AWS accountGET  /aws/account/{account_id}/{region}/{format}Overview
 Scan and render one region of an AWS account into a blueprint in JSON, SVG, PNG, PDF, or MxGraph format.
 
 The time required to generate the snapshot depends on the number of resources in the AWS region.
@@ -661,7 +737,15 @@ The API behaves as a long poll, with a wait time of up to 120 seconds for the re
 - **paperSize**: *String*. Applies when the format is PDF. One of "Letter", "Legal", "Tabloid", "Ledger", "A0", "A1", "A2", "A3", "A4", or "A5".
 - **projection**: *String*. The visual style of the diagram. One of "isometric" or "2d".
 - **theme**: *String*. The color theme of the diagram. One of "light" or "dark".
-Response200202401403404OKWait time exceededModelExampleExpand AllFieldTypeDescriptioncode
+Response200202401403404
+{% tab title="200" %}
+OK
+{% /tab %}
+
+{% tab title="202" %}
+Wait time exceededModelExample
+{% tab title="Model" %}
+Expand AllFieldTypeDescriptioncode
 string
 
 A code indicating the status of the snapshot generation.
@@ -673,6 +757,9 @@ retry
 boolean
 
 A flag indicating whether the client should retry the request.
+{% /tab %}
+
+{% tab title="Example" %}
 
 ```json
 {
@@ -681,7 +768,23 @@ A flag indicating whether the client should retry the request.
   "retry": true
 }
 ```
-UnauthorizedForbidden, insufficient privilegesAWS account not foundCode Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
+
+{% /tab %}
+
+{% /tab %}
+
+{% tab title="401" %}
+Unauthorized
+{% /tab %}
+
+{% tab title="403" %}
+Forbidden, insufficient privileges
+{% /tab %}
+
+{% tab title="404" %}
+AWS account not found
+{% /tab %}
+Code Example.chroma{max-height:350px;overflow:hidden;overflow-y:scroll}
 ```bash
 curl --location 'https://api.cloudcraft.co/aws/account/{account_id}/{region}/{format}'
 ```

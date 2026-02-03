@@ -1,4 +1,4 @@
-# Source: https://docs.warp.dev/ambient-agents/managing-ambient-agents.md
+# Source: https://docs.warp.dev/agent-platform/ambient-agents/managing-ambient-agents.md
 
 # Managing Ambient Agents
 
@@ -11,7 +11,7 @@ Warp provides a centralized management view where you can monitor agent activity
 
 {% embed url="<https://www.loom.com/share/679c267ddd2d44519abf79edcb1122c7>" %}
 
-This management view includes your **local (interactive) agents** and [Ambient Agent](https://docs.warp.dev/ambient-agents) runs.&#x20;
+This management view includes your **local (interactive) agents** and [Ambient Agent](https://docs.warp.dev/agent-platform/ambient-agents/ambient-agents-overview) runs.
 
 ***
 
@@ -32,7 +32,7 @@ The management view includes two categories of agent activity.
 * Credit usage reflects inference + compute, shown as a single combined value in this view.
 
 {% hint style="warning" %}
-All usage rolls up into Warp’s standard [**AI credit**](https://docs.warp.dev/support-and-billing/plans-and-pricing/ai-credits) system. There is no separate billing unit for compute versus inference; both contribute to the same credit balance.
+All usage rolls up into Warp's standard [**AI credit**](https://docs.warp.dev/support-and-community/plans-and-billing/ai-credits) system.
 {% endhint %}
 
 In the **Personal** tab, you can view all of the interactive and Ambient Agent conversations that you own. In the **All** tab, you can see everything from the personal tab, as well as any ambient sessions that are shared with you by your teammates; right now, this only includes things triggered from integrations.
@@ -49,11 +49,11 @@ Each row represents a single item in the management view (either an interactive 
 
 Where the agent was launched from. Common sources include:
 
-* **Interactive:** an [agent conversation](https://docs.warp.dev/agents/agents-overview) started in the Warp app
-* **CLI**: a local run triggered by the [Warp CLI](https://docs.warp.dev/platform/cli)
-* **API**: a run triggered by [Warp’s API](https://docs.warp.dev/platform/agent-api-and-sdk)
-* **Slack / Linear**: runs triggered by [integrations](https://docs.warp.dev/integrations)
-* **Scheduled**: runs triggered on a [cron schedule](https://docs.warp.dev/ambient-agents/managing-ambient-agents/scheduled-agents)
+* **Interactive:** an [agent conversation](https://docs.warp.dev/agent-platform/agent/agents-overview) started in the Warp app
+* **CLI**: a local run triggered by the [Warp CLI](https://docs.warp.dev/reference/cli/README)
+* **API**: a run triggered by [Warp’s API](https://docs.warp.dev/reference/api-and-sdk/README)
+* **Slack / Linear**: runs triggered by [integrations](https://docs.warp.dev/agent-platform/integrations/integrations-overview)
+* **Scheduled**: runs triggered on a [cron schedule](https://docs.warp.dev/agent-platform/ambient-agents/managing-ambient-agents/scheduled-agents)
 
 **Status**
 
@@ -64,7 +64,7 @@ Warp uses a small set of statuses to help you quickly identify what needs attent
 **Duration (for Ambient Agent tasks)**
 
 * Shown for ambient runs to indicate how long the task executed.
-* Note: Interactive conversations generally don’t map cleanly to a single “run duration,” so this is currently omitted.&#x20;
+* Note: Interactive conversations generally don’t map cleanly to a single “run duration,” so this is currently omitted.
 
 ***
 

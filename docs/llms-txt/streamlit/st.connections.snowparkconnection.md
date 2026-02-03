@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/connections/st.connections.snowparkconnection
+
 # st.connections.SnowparkConnection
 
 A connection to Snowpark using snowflake.snowpark.session.Session. Initialize using `st.connection("<name>", type="snowpark")`.

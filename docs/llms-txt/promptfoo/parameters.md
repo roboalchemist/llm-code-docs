@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/configuration/parameters/
+
 # Prompts, tests, and outputs
 
 Configure how promptfoo evaluates your LLM applications.

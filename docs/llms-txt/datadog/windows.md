@@ -1,3 +1,17 @@
+# Source: https://docs.datadoghq.com/security/workload_protection/setup/agent/windows.md
+
+# Source: https://docs.datadoghq.com/security/cloud_security_management/setup/agent/windows.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/python/windows.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/nodejs/windows.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/java/windows.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/dotnet/windows.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/windows.md
+
 # Source: https://docs.datadoghq.com/agent/supported_platforms/windows.md
 
 # Source: https://docs.datadoghq.com/tracing/trace_collection/single-step-apm/windows.md
@@ -8,7 +22,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > APM > Application Instrumentation > Single Step APM Instrumentation >
   Single Step APM Instrumentation on Windows
-source_url: https://docs.datadoghq.com/trace_collection/single-step-apm/windows/index.html
 ---
 
 # Single Step APM Instrumentation on Windows

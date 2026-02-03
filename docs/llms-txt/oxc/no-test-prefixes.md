@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/jest/no-test-prefixes.md
 ---
-# jest/no-test-prefixes&#x20;
 
 ### What it does
 

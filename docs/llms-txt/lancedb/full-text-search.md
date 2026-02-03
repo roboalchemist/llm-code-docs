@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/search/full-text-search.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Full-Text Search (FTS)
 
 > Learn how to implement full-text search in LanceDB using BM25 for keyword-based retrieval.
@@ -1092,8 +1096,3 @@ Search for exact phrases within the array fields:
   console.log(phraseResults);
   ```
 </CodeGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

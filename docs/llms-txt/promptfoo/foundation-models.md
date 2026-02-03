@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/foundation-models/
+
 # How to Red Team Foundation Models
 
 LLM security starts at the foundation model level. Assessing the security of foundation models is the first step to building secure Generative AI applications. This baseline will give you a starting point to understand what risks are associated with the foundation (or fine-tuned) models that you are using.

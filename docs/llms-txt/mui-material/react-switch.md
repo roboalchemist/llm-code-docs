@@ -434,7 +434,7 @@ export default function CustomizedSwitches() {
 
 ```
 
-🎨 If you are looking for inspiration, you can check [MUI Treasury's customization examples](https://mui-treasury.com/?path=/docs/switch-introduction--docs).
+🎨 If you are looking for inspiration, you can check [MUI Treasury's customization examples](https://www.mui-treasury.com/?path=/docs/switch-introduction--docs).
 
 ## Label placement
 

@@ -1,18 +1,33 @@
 # Source: https://docs.anchorbrowser.io/examples/configuration-collection.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Configuration Collection
 
 The following example shows how to collect configuration data that is not exposed through an API from a SaaS service (Grafana) configuration page.
 
-```tsx node.js theme={null}
-import { chromium } from 'playwright';
+<CodeGroup>
+  ```tsx node.js theme={null}
+  const result = await anchorClient.agent.task(
+    'Collect the node names and their CPU average %, return in JSON array',
+    {
+      taskOptions: {
+        url: 'https://play.grafana.org/a/grafana-k8s-app/navigation/nodes',
+      }
+    }
+  )
+  console.log(result);
+  ```
 
-const browser = await chromium.connectOverCDP(connectionString);
-const context = browser.contexts()[0];
-const ai = context.serviceWorkers()[0];
-const page = context.pages()[0];
-
-await page.goto("https://play.grafana.org/a/grafana-k8s-app/navigation/nodes?from=now-1h&to=now&refresh=1m", { waitUntil: 'domcontentloaded' });
-const result = await ai.evaluate('Collect the node names and their CPU average %, return in JSON array')
-console.log(result);
-```
+  ```python python theme={null}
+  result = anchor_client.agent.task(
+    'Collect the node names and their CPU average %, return in JSON array',
+    task_options={
+      'url': 'https://play.grafana.org/a/grafana-k8s-app/navigation/nodes',
+    }
+  )
+  print(result)
+  ```
+</CodeGroup>

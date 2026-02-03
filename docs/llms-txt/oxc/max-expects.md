@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/jest/max-expects.md
 ---
-# jest/max-expects&#x20;
 
 ### What it does
 

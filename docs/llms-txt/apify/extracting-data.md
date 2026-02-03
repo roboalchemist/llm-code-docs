@@ -2,18 +2,6 @@
 
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/extracting-data.md
 
-# Source: https://docs.apify.com/academy/scraping-basics-python/extracting-data.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript/extracting-data.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-python/extracting-data.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript/extracting-data.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-python/extracting-data.md
-
-# Source: https://docs.apify.com/academy/scraping-basics-javascript2/extracting-data.md
-
 # Extracting data from HTML with Node.js
 
 **In this lesson we'll finish extracting product data from the downloaded HTML. With help of basic string manipulation we'll focus on cleaning and correctly representing the product price.**
@@ -68,7 +56,7 @@ if (priceText.startsWith("From ")) {
 
 Built-in string methods
 
-If you're not proficient in JavaScript's string methods, https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith checks the beginning of a given string, and https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace changes part of a given string.
+If you're not proficient in JavaScript's string methods, [.startsWith()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith) checks the beginning of a given string, and [.replace()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) changes part of a given string.
 
 The whole program would look like this:
 
@@ -109,9 +97,9 @@ if (response.ok) {
 
 ## Removing white space
 
-Often, the strings we extract from a web page start or end with some amount of whitespace, typically space characters or newline characters, which come from the https://en.wikipedia.org/wiki/Indentation_(typesetting)#Indentation_in_programming of the HTML tags.
+Often, the strings we extract from a web page start or end with some amount of whitespace, typically space characters or newline characters, which come from the [indentation](https://en.wikipedia.org/wiki/Indentation_(typesetting)#Indentation_in_programming) of the HTML tags.
 
-We call the operation of removing whitespace *trimming* or *stripping*, and it's so useful in many applications that programming languages and libraries include ready-made tools for it. Let's add JavaScript's built-in https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trim:
+We call the operation of removing whitespace *trimming* or *stripping*, and it's so useful in many applications that programming languages and libraries include ready-made tools for it. Let's add JavaScript's built-in [.trim()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trim):
 
 
 ```
@@ -135,9 +123,9 @@ NaN
 
 Interactive JavaScript
 
-The demonstration above is inside the Node.js' https://nodejs.org/en/learn/command-line/how-to-use-the-nodejs-repl. It's similar to running arbitrary code in your browser's DevTools Console, and it's a useful playground where you can try how code behaves before you use it in your program.
+The demonstration above is inside the Node.js' [interactive REPL](https://nodejs.org/en/learn/command-line/how-to-use-the-nodejs-repl). It's similar to running arbitrary code in your browser's DevTools Console, and it's a useful playground where you can try how code behaves before you use it in your program.
 
-We need to remove the dollar sign and the decimal commas. For this type of cleaning, https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions are often the best tool for the job, but in this case https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace is also sufficient:
+We need to remove the dollar sign and the decimal commas. For this type of cleaning, [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions) are often the best tool for the job, but in this case [.replace()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) is also sufficient:
 
 
 ```
@@ -166,7 +154,7 @@ if (priceText.startsWith("From ")) {
 ```
 
 
-Great! Only if we didn't overlook an important pitfall called https://en.wikipedia.org/wiki/Floating-point_error_mitigation. In short, computers save floating point numbers in a way which isn't always reliable:
+Great! Only if we didn't overlook an important pitfall called [floating-point error](https://en.wikipedia.org/wiki/Floating-point_error_mitigation). In short, computers save floating point numbers in a way which isn't always reliable:
 
 
 ```
@@ -252,7 +240,7 @@ These challenges are here to help you test what you’ve learned in this lesson.
 
 Real world
 
-You're about to touch the real web, which is practical and exciting! But websites change, so some exercises might break. If you run into any issues, please leave a comment below or https://github.com/apify/apify-docs/issues.
+You're about to touch the real web, which is practical and exciting! But websites change, so some exercises might break. If you run into any issues, please leave a comment below or [file a GitHub Issue](https://github.com/apify/apify-docs/issues).
 
 ### Scrape units on stock
 
@@ -278,45 +266,48 @@ import * as cheerio from 'cheerio';
 
 function parseUnitsText(text) {
   const count = text
-    .replace("In stock,", "")
-    .replace("Only", "")
-    .replace(" left", "")
-    .replace("units", "")
+    .replace('In stock,', '')
+    .replace('Only', '')
+    .replace(' left', '')
+    .replace('units', '')
     .trim();
-  return count === "Sold out" ? 0 : parseInt(count);
+  if (count === 'Sold out') {
+    return 0;
+  }
+  return Number.parseInt(count, 10);
 }
 
-const url = "https://warehouse-theme-metal.myshopify.com/collections/sales";
+const url = 'https://warehouse-theme-metal.myshopify.com/collections/sales';
 const response = await fetch(url);
 
-if (response.ok) {
-  const html = await response.text();
-  const $ = cheerio.load(html);
-
-  for (const element of $(".product-item").toArray()) {
-    const $productItem = $(element);
-
-    const title = $productItem.find(".product-item__title");
-    const title = $title.text().trim();
-
-    const unitsText = $productItem.find(".product-item__inventory").text();
-    const unitsCount = parseUnitsText(unitsText);
-
-    console.log(`${title} | ${unitsCount}`);
-  }
-} else {
+if (!response.ok) {
   throw new Error(`HTTP ${response.status}`);
+}
+
+const html = await response.text();
+const $ = cheerio.load(html);
+
+for (const element of $('.product-item').toArray()) {
+  const $productItem = $(element);
+
+  const $title = $productItem.find('.product-item__title');
+  const title = $title.text().trim();
+
+  const unitsText = $productItem.find('.product-item__inventory').text();
+  const unitsCount = parseUnitsText(unitsText);
+
+  console.log(`${title} | ${unitsCount}`);
 }
 ```
 
 
 Conditional (ternary) operator
 
-For brevity, the solution uses the https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_operator. You can achieve the same with a plain `if` and `else` block.
+For brevity, the solution uses the [conditional (ternary) operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_operator). You can achieve the same with a plain `if` and `else` block.
 
 ### Use regular expressions
 
-Simplify the code from previous exercise. Use https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions to parse the number of units. You can match digits using a range like `[0-9]` or by a special sequence `\d`. To match more characters of the same type you can use `+`.
+Simplify the code from previous exercise. Use [regular expressions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions) to parse the number of units. You can match digits using a range like `[0-9]` or by a special sequence `\d`. To match more characters of the same type you can use `+`.
 
 Solution
 
@@ -327,38 +318,38 @@ import * as cheerio from 'cheerio';
 function parseUnitsText(text) {
   const match = text.match(/\d+/);
   if (match) {
-    return parseInt(match[0]);
+    return Number.parseInt(match[0], 10);
   }
   return 0;
 }
 
-const url = "https://warehouse-theme-metal.myshopify.com/collections/sales";
+const url = 'https://warehouse-theme-metal.myshopify.com/collections/sales';
 const response = await fetch(url);
 
-if (response.ok) {
-  const html = await response.text();
-  const $ = cheerio.load(html);
-
-  for (const element of $(".product-item").toArray()) {
-    const $productItem = $(element);
-
-    const $title = $productItem.find(".product-item__title");
-    const title = $title.text().trim();
-
-    const unitsText = $productItem.find(".product-item__inventory").text();
-    const unitsCount = parseUnitsText(unitsText);
-
-    console.log(`${title} | ${unitsCount}`);
-  }
-} else {
+if (!response.ok) {
   throw new Error(`HTTP ${response.status}`);
+}
+
+const html = await response.text();
+const $ = cheerio.load(html);
+
+for (const element of $('.product-item').toArray()) {
+  const $productItem = $(element);
+
+  const $title = $productItem.find('.product-item__title');
+  const title = $title.text().trim();
+
+  const unitsText = $productItem.find('.product-item__inventory').text();
+  const unitsCount = parseUnitsText(unitsText);
+
+  console.log(`${title} | ${unitsCount}`);
 }
 ```
 
 
 Conditional (ternary) operator
 
-For brevity, the solution uses the https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_operator. You can achieve the same with a plain `if` and `else` block.
+For brevity, the solution uses the [conditional (ternary) operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_operator). You can achieve the same with a plain `if` and `else` block.
 
 ### Scrape publish dates of F1 news
 
@@ -384,9 +375,9 @@ Hamilton reveals distress over ‘devastating’ groundhog accident at Canadian 
 
 Need a nudge?
 
-* HTML's `time` element can have an attribute `datetime`, which https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time, such as the ISO 8601.
-* Cheerio gives you https://cheerio.js.org/docs/api/classes/Cheerio#attr to access attributes.
-* In JavaScript you can use an ISO 8601 string to create a https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date object.
+* HTML's `time` element can have an attribute `datetime`, which [contains data in a machine-readable format](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time), such as the ISO 8601.
+* Cheerio gives you [.attr()](https://cheerio.js.org/docs/api/classes/Cheerio#attr) to access attributes.
+* In JavaScript you can use an ISO 8601 string to create a [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) object.
 * To get the date, you can call `.toDateString()` on `Date` objects.
 
 Solution
@@ -395,29 +386,30 @@ Solution
 ```
 import * as cheerio from 'cheerio';
 
-const url = "https://www.theguardian.com/sport/formulaone";
+const url = 'https://www.theguardian.com/sport/formulaone';
 const response = await fetch(url);
 
-if (response.ok) {
-  const html = await response.text();
-  const $ = cheerio.load(html);
-
-  for (const element of $("#maincontent ul li").toArray()) {
-    const $article = $(element);
-
-    const title = $article
-      .find("h3")
-      .text()
-      .trim();
-    const dateText = $article
-      .find("time")
-      .attr("datetime")
-      .trim();
-    const date = new Date(dateText);
-
-    console.log(`${title} | ${date.toDateString()}`);
-  }
-} else {
+if (!response.ok) {
   throw new Error(`HTTP ${response.status}`);
+}
+
+const html = await response.text();
+const $ = cheerio.load(html);
+
+for (const element of $('#maincontent ul li').toArray()) {
+  const $article = $(element);
+  const title = $article.find('h3').text().trim();
+  const dateAttr = $article.find('time').attr('datetime');
+
+  if (!title || !dateAttr) {
+    continue;
+  }
+
+  const date = new Date(dateAttr.trim());
+  if (Number.isNaN(date.getTime())) {
+    continue;
+  }
+
+  console.log(`${title} | ${date.toDateString()}`);
 }
 ```

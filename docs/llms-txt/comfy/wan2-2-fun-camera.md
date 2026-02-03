@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/video/wan/wan2-2-fun-camera.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ComfyUI Wan2.2 Fun Camera Control: Video Generation Workflow Example
 
 > This article demonstrates how to use camera control for video generation with Wan2.2 Fun Camera Control in ComfyUI.
@@ -37,7 +41,7 @@ Here are the relevant model weights and code repository:
 
     <Tab title="Desktop or Cloud users">
       * The Desktop is base on ComfyUI stable release, it will auto-update when there is a new Desktop stable release available.
-      * [Cloud](https://cloud.comfy.org) will update after ComfyUI stable release, we will update the Cloud after ComfyUI stable release.
+      * [Cloud](https://cloud.comfy.org) will update after ComfyUI stable release.
 
       So, if you find any core node missing in this document, it might be because the new core nodes have not yet been released in the latest stable version. Please wait for the next stable release.
     </Tab>

@@ -13,9 +13,9 @@ Bytecode caching is a build-time optimization that dramatically improves applica
 
 ## Usage
 
-### Basic usage
+### Basic usage (CommonJS)
 
-Enable bytecode caching with the `--bytecode` flag:
+Enable bytecode caching with the `--bytecode` flag. Without `--format`, this defaults to CommonJS:
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun build ./index.ts --target=bun --bytecode --outdir=./dist
@@ -23,7 +23,7 @@ bun build ./index.ts --target=bun --bytecode --outdir=./dist
 
 This generates two files:
 
-* `dist/index.js` - Your bundled JavaScript
+* `dist/index.js` - Your bundled JavaScript (CommonJS)
 * `dist/index.jsc` - The bytecode cache file
 
 At runtime, Bun automatically detects and uses the `.jsc` file:
@@ -34,13 +34,23 @@ bun ./dist/index.js  # Automatically uses index.jsc
 
 ### With standalone executables
 
-When creating executables with `--compile`, bytecode is embedded into the binary:
+When creating executables with `--compile`, bytecode is embedded into the binary. Both ESM and CommonJS formats are supported:
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+# ESM (requires --compile)
+bun build ./cli.ts --compile --bytecode --format=esm --outfile=mycli
+
+# CommonJS (works with or without --compile)
 bun build ./cli.ts --compile --bytecode --outfile=mycli
 ```
 
 The resulting executable contains both the code and bytecode, giving you maximum performance in a single file.
+
+### ESM bytecode
+
+ESM bytecode requires `--compile` because Bun embeds module metadata (import/export information) in the compiled binary. This metadata allows the JavaScript engine to skip parsing entirely at runtime.
+
+Without `--compile`, ESM bytecode would still require parsing the source to analyze module dependencies—defeating the purpose of bytecode caching.
 
 ### Combining with other optimizations
 
@@ -96,34 +106,8 @@ Larger applications benefit more because they have more code to parse.
 * ❌ **Code that runs once**
 * ❌ **Development builds**
 * ❌ **Size-constrained environments**
-* ❌ **Code with top-level await** (not supported)
 
 ## Limitations
-
-### CommonJS only
-
-Bytecode caching currently works with CommonJS output format. Bun's bundler automatically converts most ESM code to CommonJS, but **top-level await** is the exception:
-
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
-// This prevents bytecode caching
-const data = await fetch("https://api.example.com");
-export default data;
-```
-
-**Why**: Top-level await requires async module evaluation, which can't be represented in CommonJS. The module graph becomes asynchronous, and the CommonJS wrapper function model breaks down.
-
-**Workaround**: Move async initialization into a function:
-
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
-async function init() {
-  const data = await fetch("https://api.example.com");
-  return data;
-}
-
-export default init;
-```
-
-Now the module exports a function that the consumer can await when needed.
 
 ### Version compatibility
 
@@ -209,7 +193,7 @@ Check that the `.jsc` file exists:
 ls -lh dist/
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 -rw-r--r--  1 user  staff   245K  index.js
 -rw-r--r--  1 user  staff   1.1M  index.jsc
 ```
@@ -220,13 +204,13 @@ To log if bytecode is being used, set `BUN_JSC_verboseDiskCache=1` in your envir
 
 On success, it will log something like:
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 [Disk cache] cache hit for sourceCode
 ```
 
 If you see a cache miss, it will log something like:
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 [Disk cache] cache miss for sourceCode
 ```
 
@@ -241,8 +225,6 @@ It's normal for it it to log a cache miss multiple times since Bun doesn't curre
 * Using `--minify` to reduce code size before bytecode generation
 * Compressing `.jsc` files for network transfer (gzip/brotli)
 * Evaluating if the startup performance gain is worth the size increase
-
-**Top-level await**: Not supported. Refactor to use async initialization functions.
 
 ## What is bytecode?
 
@@ -262,7 +244,7 @@ With bytecode caching, Bun moves steps 1 and 2 to the build step. At runtime, th
 
 Modern JavaScript engines use a clever optimization called **lazy parsing**. They don't parse all your code upfront - instead, functions are only parsed when they're first called:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Without bytecode caching:
 function rarely_used() {
   // This 500-line function is only parsed
@@ -339,7 +321,7 @@ Bytecode files are significantly larger than source code - typically 2-8x larger
 **Bytecode instructions are verbose**:
 A single line of minified JavaScript might compile to dozens of bytecode instructions. For example:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 const sum = arr.reduce((a, b) => a + b, 0);
 ```
 
@@ -545,7 +527,7 @@ Bun's CSS bundler automatically converts this nested syntax into traditional fla
 
 You can also nest media queries and other at-rules inside selectors, eliminating the need to repeat selector patterns:
 
-```css title="styles.css" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```scss title="styles.css" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 .responsive-element {
   display: block;
 
@@ -616,7 +598,7 @@ CSS now allows you to modify individual components of a color using relative col
 
 Bun's CSS bundler computes these relative color modifications at build time (when not using CSS variables) and generates static color values for browser compatibility:
 
-```css  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```css theme={"theme":{"light":"github-light","dark":"dracula"}}
 .theme-color {
   --accent: lch(69.32% 58.34 328.37);
   --subtle-blue: oklch(60.92% 0.112 240.01);
@@ -985,7 +967,7 @@ The `:is()` pseudo-class function (formerly `:matches()`) allows you to create m
 
 For browsers that don't support `:is()`, Bun's CSS bundler provides fallbacks using vendor-prefixed alternatives:
 
-```css  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```css theme={"theme":{"light":"github-light","dark":"dracula"}}
 /* Fallback using -webkit-any */
 .article :-webkit-any(h1, h2, h3) {
   margin-top: 1.5em;
@@ -1563,6 +1545,7 @@ In Bun's CLI, simple boolean flags like `--minify` do not accept an argument. Ot
 | `--chunk-names`        | `--chunk-naming`           | Renamed for consistency with naming in JS API                                                                                                                                                                                                                                                                                                                           |
 | `--color`              | n/a                        | Always enabled                                                                                                                                                                                                                                                                                                                                                          |
 | `--drop`               | `--drop`                   |                                                                                                                                                                                                                                                                                                                                                                         |
+| n/a                    | `--feature`                | Bun-specific. Enable feature flags for compile-time dead-code elimination via `import { feature } from "bun:bundle"`                                                                                                                                                                                                                                                    |
 | `--entry-names`        | `--entry-naming`           | Renamed for consistency with naming in JS API                                                                                                                                                                                                                                                                                                                           |
 | `--global-name`        | n/a                        | Not applicable, Bun does not support `iife` output at this time                                                                                                                                                                                                                                                                                                         |
 | `--ignore-annotations` | `--ignore-dce-annotations` |                                                                                                                                                                                                                                                                                                                                                                         |
@@ -1794,15 +1777,28 @@ Generate standalone executables from TypeScript or JavaScript files with Bun
 
 Bun's bundler implements a `--compile` flag for generating a standalone binary from a TypeScript or JavaScript file.
 
-<CodeGroup>
-  ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
-  bun build ./cli.ts --compile --outfile mycli
-  ```
+<Tabs>
+  <Tab title="CLI">
+    ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    bun build ./cli.ts --compile --outfile mycli
+    ```
+  </Tab>
 
-  ```ts cli.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
-  console.log("Hello world!");
-  ```
-</CodeGroup>
+  <Tab title="JavaScript">
+    ```ts build.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    await Bun.build({
+      entrypoints: ["./cli.ts"],
+      compile: {
+        outfile: "./mycli",
+      },
+    });
+    ```
+  </Tab>
+</Tabs>
+
+```ts cli.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+console.log("Hello world!");
+```
 
 This bundles `cli.ts` into an executable that can be executed directly:
 
@@ -1810,7 +1806,7 @@ This bundles `cli.ts` into an executable that can be executed directly:
 ./mycli
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 Hello world!
 ```
 
@@ -1824,49 +1820,158 @@ The `--target` flag lets you compile your standalone executable for a different 
 
 To build for Linux x64 (most servers):
 
-```bash icon="terminal" terminal theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun build --compile --target=bun-linux-x64 ./index.ts --outfile myapp
+<Tabs>
+  <Tab title="CLI">
+    ```bash icon="terminal" terminal theme={"theme":{"light":"github-light","dark":"dracula"}}
+    bun build --compile --target=bun-linux-x64 ./index.ts --outfile myapp
 
-# To support CPUs from before 2013, use the baseline version (nehalem)
-bun build --compile --target=bun-linux-x64-baseline ./index.ts --outfile myapp
+    # To support CPUs from before 2013, use the baseline version (nehalem)
+    bun build --compile --target=bun-linux-x64-baseline ./index.ts --outfile myapp
 
-# To explicitly only support CPUs from 2013 and later, use the modern version (haswell)
-# modern is faster, but baseline is more compatible.
-bun build --compile --target=bun-linux-x64-modern ./index.ts --outfile myapp
-```
+    # To explicitly only support CPUs from 2013 and later, use the modern version (haswell)
+    # modern is faster, but baseline is more compatible.
+    bun build --compile --target=bun-linux-x64-modern ./index.ts --outfile myapp
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    ```ts build.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    // Standard Linux x64
+    await Bun.build({
+      entrypoints: ["./index.ts"],
+      compile: {
+        target: "bun-linux-x64",
+        outfile: "./myapp",
+      },
+    });
+
+    // Baseline (pre-2013 CPUs)
+    await Bun.build({
+      entrypoints: ["./index.ts"],
+      compile: {
+        target: "bun-linux-x64-baseline",
+        outfile: "./myapp",
+      },
+    });
+
+    // Modern (2013+ CPUs, faster)
+    await Bun.build({
+      entrypoints: ["./index.ts"],
+      compile: {
+        target: "bun-linux-x64-modern",
+        outfile: "./myapp",
+      },
+    });
+    ```
+  </Tab>
+</Tabs>
 
 To build for Linux ARM64 (e.g. Graviton or Raspberry Pi):
 
-```bash icon="terminal" terminal theme={"theme":{"light":"github-light","dark":"dracula"}}
-# Note: the default architecture is x64 if no architecture is specified.
-bun build --compile --target=bun-linux-arm64 ./index.ts --outfile myapp
-```
+<Tabs>
+  <Tab title="CLI">
+    ```bash icon="terminal" terminal theme={"theme":{"light":"github-light","dark":"dracula"}}
+    # Note: the default architecture is x64 if no architecture is specified.
+    bun build --compile --target=bun-linux-arm64 ./index.ts --outfile myapp
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    ```ts build.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    await Bun.build({
+      entrypoints: ["./index.ts"],
+      compile: {
+        target: "bun-linux-arm64",
+        outfile: "./myapp",
+      },
+    });
+    ```
+  </Tab>
+</Tabs>
 
 To build for Windows x64:
 
-```bash icon="terminal" terminal theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun build --compile --target=bun-windows-x64 ./path/to/my/app.ts --outfile myapp
+<Tabs>
+  <Tab title="CLI">
+    ```bash icon="terminal" terminal theme={"theme":{"light":"github-light","dark":"dracula"}}
+    bun build --compile --target=bun-windows-x64 ./path/to/my/app.ts --outfile myapp
 
-# To support CPUs from before 2013, use the baseline version (nehalem)
-bun build --compile --target=bun-windows-x64-baseline ./path/to/my/app.ts --outfile myapp
+    # To support CPUs from before 2013, use the baseline version (nehalem)
+    bun build --compile --target=bun-windows-x64-baseline ./path/to/my/app.ts --outfile myapp
 
-# To explicitly only support CPUs from 2013 and later, use the modern version (haswell)
-bun build --compile --target=bun-windows-x64-modern ./path/to/my/app.ts --outfile myapp
+    # To explicitly only support CPUs from 2013 and later, use the modern version (haswell)
+    bun build --compile --target=bun-windows-x64-modern ./path/to/my/app.ts --outfile myapp
 
-# note: if no .exe extension is provided, Bun will automatically add it for Windows executables
-```
+    # note: if no .exe extension is provided, Bun will automatically add it for Windows executables
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    ```ts build.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    // Standard Windows x64
+    await Bun.build({
+      entrypoints: ["./path/to/my/app.ts"],
+      compile: {
+        target: "bun-windows-x64",
+        outfile: "./myapp", // .exe added automatically
+      },
+    });
+
+    // Baseline or modern variants
+    await Bun.build({
+      entrypoints: ["./path/to/my/app.ts"],
+      compile: {
+        target: "bun-windows-x64-baseline",
+        outfile: "./myapp",
+      },
+    });
+    ```
+  </Tab>
+</Tabs>
 
 To build for macOS arm64:
 
-```bash icon="terminal" terminal theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun build --compile --target=bun-darwin-arm64 ./path/to/my/app.ts --outfile myapp
-```
+<Tabs>
+  <Tab title="CLI">
+    ```bash icon="terminal" terminal theme={"theme":{"light":"github-light","dark":"dracula"}}
+    bun build --compile --target=bun-darwin-arm64 ./path/to/my/app.ts --outfile myapp
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    ```ts build.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    await Bun.build({
+      entrypoints: ["./path/to/my/app.ts"],
+      compile: {
+        target: "bun-darwin-arm64",
+        outfile: "./myapp",
+      },
+    });
+    ```
+  </Tab>
+</Tabs>
 
 To build for macOS x64:
 
-```bash icon="terminal" terminal theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun build --compile --target=bun-darwin-x64 ./path/to/my/app.ts --outfile myapp
-```
+<Tabs>
+  <Tab title="CLI">
+    ```bash icon="terminal" terminal theme={"theme":{"light":"github-light","dark":"dracula"}}
+    bun build --compile --target=bun-darwin-x64 ./path/to/my/app.ts --outfile myapp
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    ```ts build.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    await Bun.build({
+      entrypoints: ["./path/to/my/app.ts"],
+      compile: {
+        target: "bun-darwin-x64",
+        outfile: "./myapp",
+      },
+    });
+    ```
+  </Tab>
+</Tabs>
 
 ### Supported targets
 
@@ -1897,15 +2002,34 @@ The order of the `--target` flag does not matter, as long as they're delimited b
 
 Use the `--define` flag to inject build-time constants into your executable, such as version numbers, build timestamps, or configuration values:
 
-```bash icon="terminal" terminal theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun build --compile --define BUILD_VERSION='"1.2.3"' --define BUILD_TIME='"2024-01-15T10:30:00Z"' src/cli.ts --outfile mycli
-```
+<Tabs>
+  <Tab title="CLI">
+    ```bash icon="terminal" terminal theme={"theme":{"light":"github-light","dark":"dracula"}}
+    bun build --compile --define BUILD_VERSION='"1.2.3"' --define BUILD_TIME='"2024-01-15T10:30:00Z"' src/cli.ts --outfile mycli
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    ```ts build.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    await Bun.build({
+      entrypoints: ["./src/cli.ts"],
+      compile: {
+        outfile: "./mycli",
+      },
+      define: {
+        BUILD_VERSION: JSON.stringify("1.2.3"),
+        BUILD_TIME: JSON.stringify("2024-01-15T10:30:00Z"),
+      },
+    });
+    ```
+  </Tab>
+</Tabs>
 
 These constants are embedded directly into your compiled binary at build time, providing zero runtime overhead and enabling dead code elimination optimizations.
 
 <Note>
   For comprehensive examples and advanced patterns, see the [Build-time constants
-  guide](https://bun.com/guides/runtime/build-time-constants).
+  guide](/guides/runtime/build-time-constants).
 </Note>
 
 ***
@@ -1920,17 +2044,52 @@ With compiled executables, you can move that cost from runtime to build-time.
 
 When deploying to production, we recommend the following:
 
-```bash icon="terminal" terminal theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun build --compile --minify --sourcemap ./path/to/my/app.ts --outfile myapp
-```
+<Tabs>
+  <Tab title="CLI">
+    ```bash icon="terminal" terminal theme={"theme":{"light":"github-light","dark":"dracula"}}
+    bun build --compile --minify --sourcemap ./path/to/my/app.ts --outfile myapp
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    ```ts build.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    await Bun.build({
+      entrypoints: ["./path/to/my/app.ts"],
+      compile: {
+        outfile: "./myapp",
+      },
+      minify: true,
+      sourcemap: "linked",
+    });
+    ```
+  </Tab>
+</Tabs>
 
 ### Bytecode compilation
 
 To improve startup time, enable bytecode compilation:
 
-```bash icon="terminal" terminal theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun build --compile --minify --sourcemap --bytecode ./path/to/my/app.ts --outfile myapp
-```
+<Tabs>
+  <Tab title="CLI">
+    ```bash icon="terminal" terminal theme={"theme":{"light":"github-light","dark":"dracula"}}
+    bun build --compile --minify --sourcemap --bytecode ./path/to/my/app.ts --outfile myapp
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    ```ts build.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    await Bun.build({
+      entrypoints: ["./path/to/my/app.ts"],
+      compile: {
+        outfile: "./myapp",
+      },
+      minify: true,
+      sourcemap: "linked",
+      bytecode: true,
+    });
+    ```
+  </Tab>
+</Tabs>
 
 Using bytecode compilation, `tsc` starts 2x faster:
 
@@ -1940,10 +2099,7 @@ Using bytecode compilation, `tsc` starts 2x faster:
 
 Bytecode compilation moves parsing overhead for large input files from runtime to bundle time. Your app starts faster, in exchange for making the `bun build` command a little slower. It doesn't obscure source code.
 
-<Warning>
-  **Experimental:** Bytecode compilation is an experimental feature. Only `cjs` format is supported (which means no
-  top-level-await). Let us know if you run into any issues!
-</Warning>
+<Note>Bytecode compilation supports both `cjs` and `esm` formats when used with `--compile`.</Note>
 
 ### What do these flags do?
 
@@ -1959,14 +2115,112 @@ The `--bytecode` argument enables bytecode compilation. Every time you run JavaS
 
 **`--compile-exec-argv="args"`** - Embed runtime arguments that are available via `process.execArgv`:
 
-```bash icon="terminal" terminal theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun build --compile --compile-exec-argv="--smol --user-agent=MyBot" ./app.ts --outfile myapp
-```
+<Tabs>
+  <Tab title="CLI">
+    ```bash icon="terminal" terminal theme={"theme":{"light":"github-light","dark":"dracula"}}
+    bun build --compile --compile-exec-argv="--smol --user-agent=MyBot" ./app.ts --outfile myapp
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    ```ts build.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    await Bun.build({
+      entrypoints: ["./app.ts"],
+      compile: {
+        execArgv: ["--smol", "--user-agent=MyBot"],
+        outfile: "./myapp",
+      },
+    });
+    ```
+  </Tab>
+</Tabs>
 
 ```ts app.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // In the compiled app
 console.log(process.execArgv); // ["--smol", "--user-agent=MyBot"]
 ```
+
+### Runtime arguments via `BUN_OPTIONS`
+
+The `BUN_OPTIONS` environment variable is applied to standalone executables, allowing you to pass runtime flags without recompiling:
+
+```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+# Enable CPU profiling on a compiled executable
+BUN_OPTIONS="--cpu-prof" ./myapp
+
+# Enable heap profiling with markdown output
+BUN_OPTIONS="--heap-prof-md" ./myapp
+
+# Combine multiple flags
+BUN_OPTIONS="--smol --cpu-prof-md" ./myapp
+```
+
+This is useful for debugging or profiling production executables without rebuilding them.
+
+***
+
+## Automatic config loading
+
+Standalone executables can automatically load configuration files from the directory where they are run. By default:
+
+* **`tsconfig.json`** and **`package.json`** loading is **disabled** — these are typically only needed at development time, and the bundler already uses them when compiling
+* **`.env`** and **`bunfig.toml`** loading is **enabled** — these often contain runtime configuration that may vary per deployment
+
+<Note>
+  In a future version of Bun, `.env` and `bunfig.toml` may also be disabled by default for more deterministic behavior.
+</Note>
+
+### Enabling config loading at runtime
+
+If your executable needs to read `tsconfig.json` or `package.json` at runtime, you can opt in with the new CLI flags:
+
+```bash icon="terminal" terminal theme={"theme":{"light":"github-light","dark":"dracula"}}
+# Enable runtime loading of tsconfig.json
+bun build --compile --compile-autoload-tsconfig ./app.ts --outfile myapp
+
+# Enable runtime loading of package.json
+bun build --compile --compile-autoload-package-json ./app.ts --outfile myapp
+
+# Enable both
+bun build --compile --compile-autoload-tsconfig --compile-autoload-package-json ./app.ts --outfile myapp
+```
+
+### Disabling config loading at runtime
+
+To disable `.env` or `bunfig.toml` loading for deterministic execution:
+
+<Tabs>
+  <Tab title="CLI">
+    ```bash icon="terminal" terminal theme={"theme":{"light":"github-light","dark":"dracula"}}
+    # Disable .env loading
+    bun build --compile --no-compile-autoload-dotenv ./app.ts --outfile myapp
+
+    # Disable bunfig.toml loading
+    bun build --compile --no-compile-autoload-bunfig ./app.ts --outfile myapp
+
+    # Disable all config loading
+    bun build --compile --no-compile-autoload-dotenv --no-compile-autoload-bunfig ./app.ts --outfile myapp
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    ```ts build.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    await Bun.build({
+      entrypoints: ["./app.ts"],
+      compile: {
+        // tsconfig.json and package.json are disabled by default
+        autoloadTsconfig: true, // Enable tsconfig.json loading
+        autoloadPackageJson: true, // Enable package.json loading
+
+        // .env and bunfig.toml are enabled by default
+        autoloadDotenv: false, // Disable .env loading
+        autoloadBunfig: false, // Disable bunfig.toml loading
+        outfile: "./myapp",
+      },
+    });
+    ```
+  </Tab>
+</Tabs>
 
 ***
 
@@ -1983,7 +2237,7 @@ echo "console.log(\"you shouldn't see this\");" > such-bun.js
 bun build --compile ./such-bun.js
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 [3ms] bundle 1 modules
 [89ms] compile such-bun
 ```
@@ -1995,7 +2249,7 @@ Normally, running `./such-bun` with arguments would execute the script.
 ./such-bun install
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 you shouldn't see this
 ```
 
@@ -2006,7 +2260,7 @@ However, with the `BUN_BE_BUN=1` environment variable, it acts just like the `bu
 BUN_BE_BUN=1 ./such-bun install
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun install v1.2.16-canary.1 (1d1db811)
 Checked 63 installs across 64 packages (no changes) [5.00ms]
 ```
@@ -2045,12 +2299,12 @@ Bun's `--compile` flag can create standalone executables that contain both serve
     </head>
     <body>
       <h1>Hello World</h1>
-      <script src="./app.js"></script>
+      <script src="./app.ts"></script>
     </body>
   </html>
   ```
 
-  ```ts app.js icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+  ```ts app.ts icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
   console.log("Hello from the client!");
   ```
 
@@ -2063,9 +2317,24 @@ Bun's `--compile` flag can create standalone executables that contain both serve
 
 To build this into a single executable:
 
-```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun build --compile ./server.ts --outfile myapp
-```
+<Tabs>
+  <Tab title="CLI">
+    ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    bun build --compile ./server.ts --outfile myapp
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    ```ts build.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    await Bun.build({
+      entrypoints: ["./server.ts"],
+      compile: {
+        outfile: "./myapp",
+      },
+    });
+    ```
+  </Tab>
+</Tabs>
 
 This creates a self-contained binary that includes:
 
@@ -2088,11 +2357,26 @@ For more details on building full-stack applications with Bun, see the [full-sta
 
 ## Worker
 
-To use workers in a standalone executable, add the worker's entrypoint to the CLI arguments:
+To use workers in a standalone executable, add the worker's entrypoint to the build:
 
-```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun build --compile ./index.ts ./my-worker.ts --outfile myapp
-```
+<Tabs>
+  <Tab title="CLI">
+    ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    bun build --compile ./index.ts ./my-worker.ts --outfile myapp
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    ```ts build.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    await Bun.build({
+      entrypoints: ["./index.ts", "./my-worker.ts"],
+      compile: {
+        outfile: "./myapp",
+      },
+    });
+    ```
+  </Tab>
+</Tabs>
 
 Then, reference the worker in your code:
 
@@ -2136,39 +2420,148 @@ cd /home/me/Desktop
 
 ## Embed assets & files
 
-Standalone executables support embedding files.
+Standalone executables support embedding files directly into the binary. This lets you ship a single executable that contains images, JSON configs, templates, or any other assets your application needs.
 
-To embed files into an executable with `bun build --compile`, import the file in your code.
+### How it works
+
+Use the `with { type: "file" }` [import attribute](https://github.com/tc39/proposal-import-attributes) to embed a file:
 
 ```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
-// this becomes an internal file path
+import icon from "./icon.png" with { type: "file" };
+
+console.log(icon);
+// During development: "./icon.png"
+// After compilation: "$bunfs/icon-a1b2c3d4.png" (internal path)
+```
+
+The import returns a **path string** that points to the embedded file. At build time, Bun:
+
+1. Reads the file contents
+2. Embeds the data into the executable
+3. Replaces the import with an internal path (prefixed with `$bunfs/`)
+
+You can then read this embedded file using `Bun.file()` or Node.js `fs` APIs.
+
+### Reading embedded files with Bun.file()
+
+`Bun.file()` is the recommended way to read embedded files:
+
+```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import icon from "./icon.png" with { type: "file" };
 import { file } from "bun";
 
+// Get file contents as different types
+const bytes = await file(icon).arrayBuffer(); // ArrayBuffer
+const text = await file(icon).text(); // string (for text files)
+const blob = file(icon); // Blob
+
+// Stream the file in a response
 export default {
   fetch(req) {
-    // Embedded files can be streamed from Response objects
-    return new Response(file(icon));
+    return new Response(file(icon), {
+      headers: { "Content-Type": "image/png" },
+    });
   },
 };
 ```
 
-Embedded files can be read using `Bun.file`'s functions or the Node.js `fs.readFile` function (in `"node:fs"`).
+### Reading embedded files with Node.js fs
 
-For example, to read the contents of the embedded file:
+Embedded files work seamlessly with Node.js file system APIs:
 
 ```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import icon from "./icon.png" with { type: "file" };
+import config from "./config.json" with { type: "file" };
+import { readFileSync, promises as fs } from "node:fs";
+
+// Synchronous read
+const iconBuffer = readFileSync(icon);
+
+// Async read
+const configData = await fs.readFile(config, "utf-8");
+const parsed = JSON.parse(configData);
+
+// Check file stats
+const stats = await fs.stat(icon);
+console.log(`Icon size: ${stats.size} bytes`);
+```
+
+### Practical examples
+
+#### Embedding a JSON config file
+
+```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+import configPath from "./default-config.json" with { type: "file" };
 import { file } from "bun";
 
-const bytes = await file(icon).arrayBuffer();
-// await fs.promises.readFile(icon)
-// fs.readFileSync(icon)
+// Load the embedded default configuration
+const defaultConfig = await file(configPath).json();
+
+// Merge with user config if it exists
+const userConfig = await file("./user-config.json")
+  .json()
+  .catch(() => ({}));
+const config = { ...defaultConfig, ...userConfig };
+```
+
+#### Serving static assets in an HTTP server
+
+Use `static` routes in `Bun.serve()` for efficient static file serving:
+
+```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+import favicon from "./favicon.ico" with { type: "file" };
+import logo from "./logo.png" with { type: "file" };
+import styles from "./styles.css" with { type: "file" };
+import { file, serve } from "bun";
+
+serve({
+  static: {
+    "/favicon.ico": file(favicon),
+    "/logo.png": file(logo),
+    "/styles.css": file(styles),
+  },
+  fetch(req) {
+    return new Response("Not found", { status: 404 });
+  },
+});
+```
+
+Bun automatically handles Content-Type headers and caching for static routes.
+
+#### Embedding templates
+
+```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+import templatePath from "./email-template.html" with { type: "file" };
+import { file } from "bun";
+
+async function sendWelcomeEmail(user: { name: string; email: string }) {
+  const template = await file(templatePath).text();
+  const html = template.replace("{{name}}", user.name).replace("{{email}}", user.email);
+
+  // Send email with the rendered template...
+}
+```
+
+#### Embedding binary files
+
+```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+import wasmPath from "./processor.wasm" with { type: "file" };
+import fontPath from "./font.ttf" with { type: "file" };
+import { file } from "bun";
+
+// Load a WebAssembly module
+const wasmBytes = await file(wasmPath).arrayBuffer();
+const wasmModule = await WebAssembly.instantiate(wasmBytes);
+
+// Read binary font data
+const fontData = await file(fontPath).bytes();
 ```
 
 ### Embed SQLite databases
 
-If your application wants to embed a SQLite database, set `type: "sqlite"` in the import attribute and the `embed` attribute to `"true"`.
+If your application wants to embed a SQLite database into the compiled executable, set `type: "sqlite"` in the import attribute and the `embed` attribute to `"true"`.
+
+The database file must already exist on disk. Then, import it in your code:
 
 ```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import myEmbeddedDb from "./my.db" with { type: "sqlite", embed: "true" };
@@ -2176,7 +2569,19 @@ import myEmbeddedDb from "./my.db" with { type: "sqlite", embed: "true" };
 console.log(myEmbeddedDb.query("select * from users LIMIT 1").get());
 ```
 
-This database is read-write, but all changes are lost when the executable exits (since it's stored in memory).
+Finally, compile it into a standalone executable:
+
+```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun build --compile ./index.ts --outfile mycli
+```
+
+<Note>
+  The database file must exist on disk when you run `bun build --compile`. The `embed: "true"` attribute tells the
+  bundler to include the database contents inside the compiled executable. When running normally with `bun run`, the
+  database file is loaded from disk just like a regular SQLite import.
+</Note>
+
+In the compiled executable, the embedded database is read-write, but all changes are lost when the executable exits (since it's stored in memory).
 
 ### Embed N-API Addons
 
@@ -2192,11 +2597,32 @@ Unfortunately, if you're using `@mapbox/node-pre-gyp` or other similar tools, yo
 
 ### Embed directories
 
-To embed a directory with `bun build --compile`, use a shell glob in your `bun build` command:
+To embed a directory with `bun build --compile`, include file patterns in your build:
 
-```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun build --compile ./index.ts ./public/**/*.png
-```
+<Tabs>
+  <Tab title="CLI">
+    ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    bun build --compile ./index.ts ./public/**/*.png
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    ```ts build.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    import { Glob } from "bun";
+
+    // Expand glob pattern to file list
+    const glob = new Glob("./public/**/*.png");
+    const pngFiles = Array.from(glob.scanSync("."));
+
+    await Bun.build({
+      entrypoints: ["./index.ts", ...pngFiles],
+      compile: {
+        outfile: "./myapp",
+      },
+    });
+    ```
+  </Tab>
+</Tabs>
 
 Then, you can reference the files in your code:
 
@@ -2216,47 +2642,175 @@ This is honestly a workaround, and we expect to improve this in the future with 
 
 ### Listing embedded files
 
-To get a list of all embedded files, use `Bun.embeddedFiles`:
+`Bun.embeddedFiles` gives you access to all embedded files as `Blob` objects:
 
 ```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import "./icon.png" with { type: "file" };
+import "./data.json" with { type: "file" };
+import "./template.html" with { type: "file" };
 import { embeddedFiles } from "bun";
 
-console.log(embeddedFiles[0].name); // `icon-${hash}.png`
+// List all embedded files
+for (const blob of embeddedFiles) {
+  console.log(`${blob.name} - ${blob.size} bytes`);
+}
+// Output:
+//   icon-a1b2c3d4.png - 4096 bytes
+//   data-e5f6g7h8.json - 256 bytes
+//   template-i9j0k1l2.html - 1024 bytes
 ```
 
-`Bun.embeddedFiles` returns an array of `Blob` objects which you can use to get the size, contents, and other properties of the files.
+Each item in `Bun.embeddedFiles` is a `Blob` with a `name` property:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
-embeddedFiles: Blob[]
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+embeddedFiles: ReadonlyArray<Blob>;
 ```
 
-The list of embedded files excludes bundled source code like `.ts` and `.js` files.
+This is useful for dynamically serving all embedded assets using `static` routes:
+
+```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+import "./public/favicon.ico" with { type: "file" };
+import "./public/logo.png" with { type: "file" };
+import "./public/styles.css" with { type: "file" };
+import { embeddedFiles, serve } from "bun";
+
+// Build static routes from all embedded files
+const staticRoutes: Record<string, Blob> = {};
+for (const blob of embeddedFiles) {
+  // Remove hash from filename: "icon-a1b2c3d4.png" -> "icon.png"
+  const name = blob.name.replace(/-[a-f0-9]+\./, ".");
+  staticRoutes[`/${name}`] = blob;
+}
+
+serve({
+  static: staticRoutes,
+  fetch(req) {
+    return new Response("Not found", { status: 404 });
+  },
+});
+```
+
+<Note>
+  `Bun.embeddedFiles` excludes bundled source code (`.ts`, `.js`, etc.) to help protect your application's source.
+</Note>
 
 #### Content hash
 
 By default, embedded files have a content hash appended to their name. This is useful for situations where you want to serve the file from a URL or CDN and have fewer cache invalidation issues. But sometimes, this is unexpected and you might want the original name instead:
 
-To disable the content hash, pass `--asset-naming` to `bun build --compile` like this:
+To disable the content hash, configure asset naming:
 
-```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun build --compile --asset-naming="[name].[ext]" ./index.ts
-```
+<Tabs>
+  <Tab title="CLI">
+    ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    bun build --compile --asset-naming="[name].[ext]" ./index.ts
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    ```ts build.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    await Bun.build({
+      entrypoints: ["./index.ts"],
+      compile: {
+        outfile: "./myapp",
+      },
+      naming: {
+        asset: "[name].[ext]",
+      },
+    });
+    ```
+  </Tab>
+</Tabs>
 
 ***
 
 ## Minification
 
-To trim down the size of the executable a little, pass `--minify` to `bun build --compile`. This uses Bun's minifier to reduce the code size. Overall though, Bun's binary is still way too big and we need to make it smaller.
+To trim down the size of the executable, enable minification:
+
+<Tabs>
+  <Tab title="CLI">
+    ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    bun build --compile --minify ./index.ts --outfile myapp
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    ```ts build.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    await Bun.build({
+      entrypoints: ["./index.ts"],
+      compile: {
+        outfile: "./myapp",
+      },
+      minify: true, // Enable all minification
+    });
+
+    // Or granular control:
+    await Bun.build({
+      entrypoints: ["./index.ts"],
+      compile: {
+        outfile: "./myapp",
+      },
+      minify: {
+        whitespace: true,
+        syntax: true,
+        identifiers: true,
+      },
+    });
+    ```
+  </Tab>
+</Tabs>
+
+This uses Bun's minifier to reduce the code size. Overall though, Bun's binary is still way too big and we need to make it smaller.
 
 ***
 
 ## Windows-specific flags
 
-When compiling a standalone executable on Windows, there are two platform-specific options that can be used to customize metadata on the generated `.exe` file:
+When compiling a standalone executable on Windows, there are platform-specific options to customize metadata on the generated `.exe` file:
 
-* `--windows-icon=path/to/icon.ico` to customize the executable file icon.
-* `--windows-hide-console` to disable the background terminal, which can be used for applications that do not need a TTY.
+<Tabs>
+  <Tab title="CLI">
+    ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    # Custom icon
+    bun build --compile --windows-icon=path/to/icon.ico ./app.ts --outfile myapp
+
+    # Hide console window (for GUI apps)
+    bun build --compile --windows-hide-console ./app.ts --outfile myapp
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    ```ts build.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    await Bun.build({
+      entrypoints: ["./app.ts"],
+      compile: {
+        outfile: "./myapp",
+        windows: {
+          icon: "./path/to/icon.ico",
+          hideConsole: true,
+          // Additional Windows metadata:
+          title: "My Application",
+          publisher: "My Company",
+          version: "1.0.0",
+          description: "A standalone Windows application",
+          copyright: "Copyright 2024",
+        },
+      },
+    });
+    ```
+  </Tab>
+</Tabs>
+
+Available Windows options:
+
+* `icon` - Path to `.ico` file for the executable icon
+* `hideConsole` - Disable the background terminal (for GUI apps)
+* `title` - Application title in file properties
+* `publisher` - Publisher name in file properties
+* `version` - Version string in file properties
+* `description` - Description in file properties
+* `copyright` - Copyright notice in file properties
 
 <Warning>These flags currently cannot be used when cross-compiling because they depend on Windows APIs.</Warning>
 
@@ -2313,9 +2867,24 @@ codesign -vvv --verify ./myapp
 
 Standalone executables support code splitting. Use `--compile` with `--splitting` to create an executable that loads code-split chunks at runtime.
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun build --compile --splitting ./src/entry.ts --outdir ./build
-```
+<Tabs>
+  <Tab title="CLI">
+    ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    bun build --compile --splitting ./src/entry.ts --outdir ./build
+    ```
+  </Tab>
+
+  <Tab title="JavaScript">
+    ```ts build.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    await Bun.build({
+      entrypoints: ["./src/entry.ts"],
+      compile: true,
+      splitting: true,
+      outdir: "./build",
+    });
+    ```
+  </Tab>
+</Tabs>
 
 <CodeGroup>
   ```ts src/entry.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
@@ -2335,10 +2904,54 @@ bun build --compile --splitting ./src/entry.ts --outdir ./build
 ./build/entry
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 Entrypoint loaded
 Lazy module loaded
 ```
+
+***
+
+## Using plugins
+
+Plugins work with standalone executables, allowing you to transform files during the build process:
+
+```ts build.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+import type { BunPlugin } from "bun";
+
+const envPlugin: BunPlugin = {
+  name: "env-loader",
+  setup(build) {
+    build.onLoad({ filter: /\.env\.json$/ }, async args => {
+      // Transform .env.json files into validated config objects
+      const env = await Bun.file(args.path).json();
+
+      return {
+        contents: `export default ${JSON.stringify(env)};`,
+        loader: "js",
+      };
+    });
+  },
+};
+
+await Bun.build({
+  entrypoints: ["./cli.ts"],
+  compile: {
+    outfile: "./mycli",
+  },
+  plugins: [envPlugin],
+});
+```
+
+Example use case - embedding environment config at build time:
+
+```ts cli.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+import config from "./config.env.json";
+
+console.log(`Running in ${config.environment} mode`);
+console.log(`API endpoint: ${config.apiUrl}`);
+```
+
+Plugins can perform any transformation: compile YAML/TOML configs, inline SQL queries, generate type-safe API clients, or preprocess templates. Refer to the [plugin documentation](/bundler/plugins) for more details.
 
 ***
 
@@ -2350,6 +2963,109 @@ Currently, the `--compile` flag can only accept a single entrypoint at a time an
 * `--public-path`
 * `--target=node` or `--target=browser`
 * `--no-bundle` - we always bundle everything into the executable.
+
+***
+
+## API reference
+
+The `compile` option in `Bun.build()` accepts three forms:
+
+```ts title="types" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+interface BuildConfig {
+  entrypoints: string[];
+  compile: boolean | Bun.Build.Target | CompileBuildOptions;
+  // ... other BuildConfig options (minify, sourcemap, define, plugins, etc.)
+}
+
+interface CompileBuildOptions {
+  target?: Bun.Build.Target; // Cross-compilation target
+  outfile?: string; // Output executable path
+  execArgv?: string[]; // Runtime arguments (process.execArgv)
+  autoloadTsconfig?: boolean; // Load tsconfig.json (default: false)
+  autoloadPackageJson?: boolean; // Load package.json (default: false)
+  autoloadDotenv?: boolean; // Load .env files (default: true)
+  autoloadBunfig?: boolean; // Load bunfig.toml (default: true)
+  windows?: {
+    icon?: string; // Path to .ico file
+    hideConsole?: boolean; // Hide console window
+    title?: string; // Application title
+    publisher?: string; // Publisher name
+    version?: string; // Version string
+    description?: string; // Description
+    copyright?: string; // Copyright notice
+  };
+}
+```
+
+Usage forms:
+
+```ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+// Simple boolean - compile for current platform (uses entrypoint name as output)
+compile: true
+
+// Target string - cross-compile (uses entrypoint name as output)
+compile: "bun-linux-x64"
+
+// Full options object - specify outfile and other options
+compile: {
+  target: "bun-linux-x64",
+  outfile: "./myapp",
+}
+```
+
+### Supported targets
+
+```ts title="Bun.Build.Target" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+type Target =
+  | "bun-darwin-x64"
+  | "bun-darwin-x64-baseline"
+  | "bun-darwin-arm64"
+  | "bun-linux-x64"
+  | "bun-linux-x64-baseline"
+  | "bun-linux-x64-modern"
+  | "bun-linux-arm64"
+  | "bun-linux-x64-musl"
+  | "bun-linux-arm64-musl"
+  | "bun-windows-x64"
+  | "bun-windows-x64-baseline"
+  | "bun-windows-x64-modern";
+```
+
+### Complete example
+
+```ts build.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+import type { BunPlugin } from "bun";
+
+const myPlugin: BunPlugin = {
+  name: "my-plugin",
+  setup(build) {
+    // Plugin implementation
+  },
+};
+
+const result = await Bun.build({
+  entrypoints: ["./src/cli.ts"],
+  compile: {
+    target: "bun-linux-x64",
+    outfile: "./dist/mycli",
+    execArgv: ["--smol"],
+    autoloadDotenv: false,
+    autoloadBunfig: false,
+  },
+  minify: true,
+  sourcemap: "linked",
+  bytecode: true,
+  define: {
+    "process.env.NODE_ENV": JSON.stringify("production"),
+    VERSION: JSON.stringify("1.0.0"),
+  },
+  plugins: [myPlugin],
+});
+
+if (result.success) {
+  console.log("Build successful:", result.outputs[0].path);
+}
+```
 
 
 # Fullstack dev server
@@ -2780,8 +3496,8 @@ This will allow you to use TailwindCSS utility classes in your HTML and CSS file
 <!doctype html>
 <html>
   <head>
-    <link rel="stylesheet" href="tailwindcss" />
     <!-- [!code ++] -->
+    <link rel="stylesheet" href="tailwindcss" />
   </head>
   <!-- the rest of your HTML... -->
 </html>
@@ -2801,8 +3517,8 @@ Alternatively, you can import TailwindCSS in your CSS file:
 <!doctype html>
 <html>
   <head>
-    <link rel="stylesheet" href="./style.css" />
     <!-- [!code ++] -->
+    <link rel="stylesheet" href="./style.css" />
   </head>
   <!-- the rest of your HTML... -->
 </html>
@@ -2844,6 +3560,27 @@ Bun will lazily resolve and load each plugin and use them to bundle your routes.
   integrate this with the `bun build` CLI. These plugins work in `Bun.build()`'s JS API, but are not yet supported in
   the CLI.
 </Note>
+
+## Inline Environment Variables
+
+Bun can replace `process.env.*` references in your frontend JavaScript and TypeScript with their actual values at build time. Configure the `env` option in your `bunfig.toml`:
+
+```toml title="bunfig.toml" icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+[serve.static]
+env = "PUBLIC_*"  # only inline env vars starting with PUBLIC_ (recommended)
+# env = "inline"  # inline all environment variables
+# env = "disable" # disable env var replacement (default)
+```
+
+<Note>
+  This only works with literal `process.env.FOO` references, not `import.meta.env` or indirect access like `const env =
+      process.env; env.FOO`.
+
+  If an environment variable is not set, you may see runtime errors like `ReferenceError: process
+      is not defined` in the browser.
+</Note>
+
+See the [HTML & static sites documentation](/bundler/html-static#inline-environment-variables) for more details on build-time configuration and examples.
 
 ## How It Works
 
@@ -2987,7 +3724,7 @@ const server = serve({
 console.log(`🚀 Server running on ${server.url}`);
 ```
 
-```html title="public/index.html" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```html title="public/index.html" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 <!DOCTYPE html>
 <html>
   <head>
@@ -3112,7 +3849,7 @@ export function App() {
 }
 ```
 
-```css title="src/styles.css" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```css title="src/styles.css" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 * {
   margin: 0;
   padding: 0;
@@ -3354,7 +4091,7 @@ CMD ["bun", "index.js"]
 
 ### Environment Variables
 
-```bash title=".env.production" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ini title=".env.production" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 NODE_ENV=production
 PORT=3000
 DATABASE_URL=postgresql://user:pass@localhost:5432/myapp
@@ -3430,7 +4167,7 @@ Hot Module Replacement (HMR) allows you to update modules in a running applicati
 
 ## `import.meta.hot` API Reference
 
-Bun implements a client-side HMR API modeled after [Vite's `import.meta.hot` API](https://vitejs.dev/guide/api-hmr.html). It can be checked for with `if (import.meta.hot)`, tree-shaking it in production.
+Bun implements a client-side HMR API modeled after [Vite's `import.meta.hot` API](https://vite.dev/guide/api-hmr). It can be checked for with `if (import.meta.hot)`, tree-shaking it in production.
 
 ```ts title="index.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 if (import.meta.hot) {
@@ -3564,7 +4301,7 @@ Indicates that multiple dependencies' modules can be accepted. This variant acce
 
 `import.meta.hot.data` maintains state between module instances during hot replacement, enabling data transfer from previous to new versions. When `import.meta.hot.data` is written into, Bun will also mark this module as capable of self-accepting (equivalent of calling `import.meta.hot.accept()`).
 
-```jsx title="index.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```tsx title="index.tsx" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { createRoot } from "react-dom/client";
 import { App } from "./app";
 
@@ -3676,7 +4413,7 @@ bun ./index.html
 ```
 
 ```
-Bun v1.3.2
+Bun v1.3.3
 ready in 6.62ms
 → http://localhost:3000/
 Press h + Enter to show shortcuts
@@ -3702,7 +4439,7 @@ bun index.html
 ```
 
 ```
-Bun v1.3.2
+Bun v1.3.3
 ready in 6.62ms
 → http://localhost:3000/
 Press h + Enter to show shortcuts
@@ -3731,8 +4468,8 @@ Some projects have several separate routes or HTML files as entry points. To sup
 bun ./index.html ./about.html
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
-Bun v1.3.2
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
+Bun v1.3.3
 ready in 6.62ms
 → http://localhost:3000/
 Routes:
@@ -3755,7 +4492,7 @@ bun ./**/*.html
 ```
 
 ```
-Bun v1.3.2
+Bun v1.3.3
 ready in 6.62ms
 → http://localhost:3000/
 Routes:
@@ -3773,7 +4510,7 @@ bun ./index.html ./about/index.html ./about/foo/index.html
 ```
 
 ```
-Bun v1.3.2
+Bun v1.3.3
 ready in 6.62ms
 → http://localhost:3000/
 Routes:
@@ -3814,7 +4551,7 @@ For example:
   }
   ```
 
-  ```css abc.css theme={"theme":{"light":"github-light","dark":"dracula"}}
+  ```css abc.css icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
   body {
     background-color: red;
   }
@@ -3823,7 +4560,7 @@ For example:
 
 This outputs:
 
-```css  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```css styles.css icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 body {
   background-color: red;
 }
@@ -3907,6 +4644,91 @@ Then, reference TailwindCSS in your HTML via `<link>` tag, `@import` in CSS, or 
 
 <Info>Only one of those are necessary, not all three.</Info>
 
+## Inline environment variables
+
+Bun can replace `process.env.*` references in your JavaScript and TypeScript with their actual values at build time. This is useful for injecting configuration like API URLs or feature flags into your frontend code.
+
+### Dev server (runtime)
+
+To inline environment variables when using `bun ./index.html`, configure the `env` option in your `bunfig.toml`:
+
+```toml title="bunfig.toml" icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+[serve.static]
+env = "PUBLIC_*"  # only inline env vars starting with PUBLIC_ (recommended)
+# env = "inline"  # inline all environment variables
+# env = "disable" # disable env var replacement (default)
+```
+
+<Note>
+  This only works with literal `process.env.FOO` references, not `import.meta.env` or indirect access like `const env =
+      process.env; env.FOO`.
+
+  If an environment variable is not set, you may see runtime errors like `ReferenceError: process
+      is not defined` in the browser.
+</Note>
+
+Then run the dev server:
+
+```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+PUBLIC_API_URL=https://api.example.com bun ./index.html
+```
+
+### Build for production
+
+When building static HTML for production, use the `env` option to inline environment variables:
+
+<Tabs>
+  <Tab title="CLI">
+    ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    # Inline all environment variables
+    bun build ./index.html --outdir=dist --env=inline
+
+    # Only inline env vars with a specific prefix (recommended)
+    bun build ./index.html --outdir=dist --env=PUBLIC_*
+    ```
+  </Tab>
+
+  <Tab title="API">
+    ```ts title="build.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    // Inline all environment variables
+    await Bun.build({
+      entrypoints: ["./index.html"],
+      outdir: "./dist",
+      env: "inline", // [!code highlight]
+    });
+
+    // Only inline env vars with a specific prefix (recommended)
+    await Bun.build({
+      entrypoints: ["./index.html"],
+      outdir: "./dist",
+      env: "PUBLIC_*", // [!code highlight]
+    });
+    ```
+  </Tab>
+</Tabs>
+
+### Example
+
+Given this source file:
+
+```ts title="app.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+const apiUrl = process.env.PUBLIC_API_URL;
+console.log(`API URL: ${apiUrl}`);
+```
+
+And running with `PUBLIC_API_URL=https://api.example.com`:
+
+```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+PUBLIC_API_URL=https://api.example.com bun build ./index.html --outdir=dist --env=PUBLIC_*
+```
+
+The bundled output will contain:
+
+```js title="dist/app.js" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
+const apiUrl = "https://api.example.com";
+console.log(`API URL: ${apiUrl}`);
+```
+
 ## Echo console logs from browser to terminal
 
 Bun's dev server supports streaming console logs from the browser to the terminal.
@@ -3918,7 +4740,7 @@ bun ./index.html --console
 ```
 
 ```
-Bun v1.3.2
+Bun v1.3.3
 ready in 6.62ms
 → http://localhost:3000/
 Press h + Enter to show shortcuts
@@ -4032,8 +4854,6 @@ All paths are resolved relative to your HTML file, making it easy to organize yo
   * Need more plugins
   * Need more configuration options for things like asset handling
   * Need a way to configure CORS, headers, etc.
-
-  If you want to submit a PR, most of the code is [here](https://github.com/oven-sh/bun/blob/main/src/bun.js/api/bun/html-rewriter.ts). You could even copy paste that file into your project and use it as a starting point.
 </Warning>
 
 ## How this works
@@ -4051,8 +4871,6 @@ Learn more in the full-stack docs.
 Source: https://bun.com/docs/bundler/index
 
 Bun's fast native bundler for JavaScript, TypeScript, JSX, and more
-
-export const name_0 = undefined
 
 Bun's fast native bundler can be used via the `bun build` CLI command or the `Bun.build()` JavaScript API.
 
@@ -4084,7 +4902,7 @@ Bun's fast native bundler can be used via the `bun build` CLI command or the `Bu
 It's fast. The numbers below represent performance on esbuild's [three.js benchmark](https://github.com/oven-sh/bun/tree/main/bench/bundle).
 
 <Frame>
-  <img src="https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/bundler-speed.png?fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=0a549e542fceb7d51f84976fe1d151e4" caption="Bundling 10 copies of three.js from scratch, with sourcemaps and minification" data-og-width="2690" width="2690" data-og-height="1072" height="1072" data-path="images/bundler-speed.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/bundler-speed.png?w=280&fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=c92e84677eb9da86699582482f7d0752 280w, https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/bundler-speed.png?w=560&fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=de00bc18218a9e7e4a710f88ab82d6f7 560w, https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/bundler-speed.png?w=840&fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=07d97d8810d903fe052476caddbc2646 840w, https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/bundler-speed.png?w=1100&fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=6ad21a681255af55a711bbceccfef746 1100w, https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/bundler-speed.png?w=1650&fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=8decffe83aa2e455b19b1c389214994e 1650w, https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/bundler-speed.png?w=2500&fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=5db3e9a0ef08d32d43b64d35c7626895 2500w" />
+  <img />
 </Frame>
 
 ## Why bundle?
@@ -4149,7 +4967,7 @@ For each file specified in `entrypoints`, Bun will generate a new bundle. This b
 
 The contents of `out/index.js` will look something like this:
 
-```ts title="out/index.js" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js title="out/index.js" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // out/index.js
 // ...
 // ~20k lines of code
@@ -4261,6 +5079,78 @@ An array of paths corresponding to the entrypoints of our application. One bundl
     ```
   </Tab>
 </Tabs>
+
+### files
+
+A map of file paths to their contents for in-memory bundling. This allows you to bundle virtual files that don't exist on disk, or override the contents of files that do exist. This option is only available in the JavaScript API.
+
+File contents can be provided as a `string`, `Blob`, `TypedArray`, or `ArrayBuffer`.
+
+#### Bundle entirely from memory
+
+You can bundle code without any files on disk by providing all sources via `files`:
+
+```ts title="build.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+const result = await Bun.build({
+  entrypoints: ["/app/index.ts"],
+  files: {
+    "/app/index.ts": `
+      import { greet } from "./greet.ts";
+      console.log(greet("World"));
+    `,
+    "/app/greet.ts": `
+      export function greet(name: string) {
+        return "Hello, " + name + "!";
+      }
+    `,
+  },
+});
+
+const output = await result.outputs[0].text();
+console.log(output);
+```
+
+When all entrypoints are in the `files` map, the current working directory is used as the root.
+
+#### Override files on disk
+
+In-memory files take priority over files on disk. This lets you override specific files while keeping the rest of your codebase unchanged:
+
+```ts title="build.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+// Assume ./src/config.ts exists on disk with development settings
+await Bun.build({
+  entrypoints: ["./src/index.ts"],
+  files: {
+    // Override config.ts with production values
+    "./src/config.ts": `
+      export const API_URL = "https://api.production.com";
+      export const DEBUG = false;
+    `,
+  },
+  outdir: "./dist",
+});
+```
+
+#### Mix disk and virtual files
+
+Real files on disk can import virtual files, and virtual files can import real files:
+
+```ts title="build.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+// ./src/index.ts exists on disk and imports "./generated.ts"
+await Bun.build({
+  entrypoints: ["./src/index.ts"],
+  files: {
+    // Provide a virtual file that index.ts imports
+    "./src/generated.ts": `
+      export const BUILD_ID = "${crypto.randomUUID()}";
+      export const BUILD_TIME = ${Date.now()};
+    `,
+  },
+  outdir: "./dist",
+});
+```
+
+This is useful for code generation, injecting build-time constants, or testing with mock modules.
 
 ### outdir
 
@@ -4569,7 +5459,7 @@ Injects environment variables into the bundled output by converting `process.env
 
 For the input below:
 
-```ts title="input.js" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js title="input.js" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // input.js
 console.log(process.env.FOO);
 console.log(process.env.BAZ);
@@ -4577,7 +5467,7 @@ console.log(process.env.BAZ);
 
 The generated bundle will contain the following code:
 
-```ts title="output.js" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js title="output.js" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // output.js
 console.log("bar");
 console.log("123");
@@ -4623,7 +5513,7 @@ console.log(process.env.BAZ);
 
 The generated bundle will contain the following code:
 
-```ts title="output.js" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js title="output.js" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
 console.log(process.env.FOO);
 console.log("https://acme.com");
 console.log(process.env.BAZ);
@@ -4770,7 +5660,7 @@ Normally, bundling `index.tsx` would generate a bundle containing the entire sou
 
 The generated bundle will look something like this:
 
-```ts title="out/index.js" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js title="out/index.js" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { z } from "zod";
 
 // ...
@@ -4973,7 +5863,7 @@ We can build both entrypoints in the `pages` directory:
 
 <Tabs>
   <Tab title="JavaScript">
-    ```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```js theme={"theme":{"light":"github-light","dark":"dracula"}}
     await Bun.build({
       entrypoints: ['./pages/index.tsx', './pages/settings.tsx'],
       outdir: './out',
@@ -4982,7 +5872,7 @@ We can build both entrypoints in the `pages` directory:
   </Tab>
 
   <Tab title="CLI">
-    ```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
     bun build ./pages/index.tsx ./pages/settings.tsx --outdir ./out
     ```
   </Tab>
@@ -5006,7 +5896,7 @@ This behavior can be overridden by specifying the `root` option:
 
 <Tabs>
   <Tab title="JavaScript">
-    ```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```js theme={"theme":{"light":"github-light","dark":"dracula"}}
     await Bun.build({
       entrypoints: ['./pages/index.tsx', './pages/settings.tsx'],
       outdir: './out',
@@ -5016,7 +5906,7 @@ This behavior can be overridden by specifying the `root` option:
   </Tab>
 
   <Tab title="CLI">
-    ```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
     bun build ./pages/index.tsx ./pages/settings.tsx --outdir ./out --root .
     ```
   </Tab>
@@ -5081,7 +5971,7 @@ Setting `publicPath` will prefix all file paths with the specified value.
 
 The output file would now look something like this.
 
-```ts title="out/index.js" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js title="out/index.js" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
 var logo = "https://cdn.example.com/logo-a7305bdef.svg";
 ```
 
@@ -5201,6 +6091,202 @@ Remove function calls from a bundle. For example, `--drop=console` will remove a
   </Tab>
 </Tabs>
 
+### features
+
+Enable compile-time feature flags for dead-code elimination. This provides a way to conditionally include or exclude code paths at bundle time using `import { feature } from "bun:bundle"`.
+
+```ts title="app.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+import { feature } from "bun:bundle";
+
+if (feature("PREMIUM")) {
+  // Only included when PREMIUM flag is enabled
+  initPremiumFeatures();
+}
+
+if (feature("DEBUG")) {
+  // Only included when DEBUG flag is enabled
+  console.log("Debug mode");
+}
+```
+
+<Tabs>
+  <Tab title="JavaScript">
+    ```ts title="build.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    await Bun.build({
+      entrypoints: ['./app.ts'],
+      outdir: './out',
+      features: ["PREMIUM"],  // PREMIUM=true, DEBUG=false
+    })
+    ```
+  </Tab>
+
+  <Tab title="CLI">
+    ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    bun build ./app.ts --outdir ./out --feature PREMIUM
+    ```
+  </Tab>
+</Tabs>
+
+The `feature()` function is replaced with `true` or `false` at bundle time. Combined with minification, unreachable code is eliminated:
+
+```ts title="Input" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+import { feature } from "bun:bundle";
+const mode = feature("PREMIUM") ? "premium" : "free";
+```
+
+```js title="Output (with --feature PREMIUM --minify)" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
+var mode = "premium";
+```
+
+```js title="Output (without --feature PREMIUM, with --minify)" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
+var mode = "free";
+```
+
+**Key behaviors:**
+
+* `feature()` requires a string literal argument — dynamic values are not supported
+* The `bun:bundle` import is completely removed from the output
+* Works with `bun build`, `bun run`, and `bun test`
+* Multiple flags can be enabled: `--feature FLAG_A --feature FLAG_B`
+* For type safety, augment the `Registry` interface to restrict `feature()` to known flags (see below)
+
+**Use cases:**
+
+* Platform-specific code (`feature("SERVER")` vs `feature("CLIENT")`)
+* Environment-based features (`feature("DEVELOPMENT")`)
+* Gradual feature rollouts
+* A/B testing variants
+* Paid tier features
+
+**Type safety:** By default, `feature()` accepts any string. To get autocomplete and catch typos at compile time, create an `env.d.ts` file (or add to an existing `.d.ts`) and augment the `Registry` interface:
+
+```ts title="env.d.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+declare module "bun:bundle" {
+  interface Registry {
+    features: "DEBUG" | "PREMIUM" | "BETA_FEATURES";
+  }
+}
+```
+
+Ensure the file is included in your `tsconfig.json` (e.g., `"include": ["src", "env.d.ts"]`). Now `feature()` only accepts those flags, and invalid strings like `feature("TYPO")` become type errors.
+
+### metafile
+
+Generate metadata about the build in a structured format. The metafile contains information about all input files, output files, their sizes, imports, and exports. This is useful for:
+
+* **Bundle analysis**: Understand what's contributing to bundle size
+* **Visualization**: Feed into tools like [esbuild's bundle analyzer](https://esbuild.github.io/analyze/) or other visualization tools
+* **Dependency tracking**: See the full import graph of your application
+* **CI integration**: Track bundle size changes over time
+
+<Tabs>
+  <Tab title="JavaScript">
+    ```ts title="build.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    const result = await Bun.build({
+      entrypoints: ['./src/index.ts'],
+      outdir: './dist',
+      metafile: true,
+    });
+
+    if (result.metafile) {
+      // Analyze inputs
+      for (const [path, meta] of Object.entries(result.metafile.inputs)) {
+        console.log(`${path}: ${meta.bytes} bytes`);
+      }
+
+      // Analyze outputs
+      for (const [path, meta] of Object.entries(result.metafile.outputs)) {
+        console.log(`${path}: ${meta.bytes} bytes`);
+      }
+
+      // Save for external analysis tools
+      await Bun.write('./dist/meta.json', JSON.stringify(result.metafile));
+    }
+    ```
+  </Tab>
+
+  <Tab title="CLI">
+    ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    bun build ./src/index.ts --outdir ./dist --metafile ./dist/meta.json
+    ```
+  </Tab>
+</Tabs>
+
+#### Markdown metafile
+
+Use `--metafile-md` to generate a markdown metafile, which is LLM-friendly and easy to read in the terminal:
+
+```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun build ./src/index.ts --outdir ./dist --metafile-md ./dist/meta.md
+```
+
+Both `--metafile` and `--metafile-md` can be used together:
+
+```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun build ./src/index.ts --outdir ./dist --metafile ./dist/meta.json --metafile-md ./dist/meta.md
+```
+
+#### `metafile` option formats
+
+In the JavaScript API, `metafile` accepts several forms:
+
+```ts title="build.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+// Boolean — include metafile in the result object
+await Bun.build({
+  entrypoints: ["./src/index.ts"],
+  outdir: "./dist",
+  metafile: true,
+});
+
+// String — write JSON metafile to a specific path
+await Bun.build({
+  entrypoints: ["./src/index.ts"],
+  outdir: "./dist",
+  metafile: "./dist/meta.json",
+});
+
+// Object — specify separate paths for JSON and markdown output
+await Bun.build({
+  entrypoints: ["./src/index.ts"],
+  outdir: "./dist",
+  metafile: {
+    json: "./dist/meta.json",
+    markdown: "./dist/meta.md",
+  },
+});
+```
+
+The metafile structure contains:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+interface BuildMetafile {
+  inputs: {
+    [path: string]: {
+      bytes: number;
+      imports: Array<{
+        path: string;
+        kind: ImportKind;
+        original?: string; // Original specifier before resolution
+        external?: boolean;
+      }>;
+      format?: "esm" | "cjs" | "json" | "css";
+    };
+  };
+  outputs: {
+    [path: string]: {
+      bytes: number;
+      inputs: {
+        [path: string]: { bytesInOutput: number };
+      };
+      imports: Array<{ path: string; kind: ImportKind }>;
+      exports: string[];
+      entryPoint?: string;
+      cssBundle?: string; // Associated CSS file for JS entry points
+    };
+  };
+}
+```
+
 ## Outputs
 
 The `Bun.build` function returns a `Promise<BuildOutput>`, defined as:
@@ -5210,6 +6296,7 @@ interface BuildOutput {
   outputs: BuildArtifact[];
   success: boolean;
   logs: Array<object>; // see docs for details
+  metafile?: BuildMetafile; // only when metafile: true
 }
 
 interface BuildArtifact extends Blob {
@@ -5298,22 +6385,41 @@ The Bun runtime implements special pretty-printing of `BuildArtifact` object to 
 
 ## Bytecode
 
-The `bytecode: boolean` option can be used to generate bytecode for any JavaScript/TypeScript entrypoints. This can greatly improve startup times for large applications. Only supported for `"cjs"` format, only supports `"target": "bun"` and dependent on a matching version of Bun. This adds a corresponding `.jsc` file for each entrypoint.
+The `bytecode: boolean` option can be used to generate bytecode for any JavaScript/TypeScript entrypoints. This can greatly improve startup times for large applications. Requires `"target": "bun"` and is dependent on a matching version of Bun.
+
+* **CommonJS**: Works with or without `compile: true`. Generates a `.jsc` file alongside each entrypoint.
+* **ESM**: Requires `compile: true`. Bytecode and module metadata are embedded in the standalone executable.
+
+Without an explicit `format`, bytecode defaults to CommonJS.
 
 <Tabs>
   <Tab title="JavaScript">
     ```ts title="build.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    // CommonJS bytecode (generates .jsc files)
     await Bun.build({
       entrypoints: ["./index.tsx"],
       outdir: "./out",
       bytecode: true,
+    })
+
+    // ESM bytecode (requires compile)
+    await Bun.build({
+      entrypoints: ["./index.tsx"],
+      outfile: "./mycli",
+      bytecode: true,
+      format: "esm",
+      compile: true,
     })
     ```
   </Tab>
 
   <Tab title="CLI">
     ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    # CommonJS bytecode
     bun build ./index.tsx --outdir ./out --bytecode
+
+    # ESM bytecode (requires --compile)
+    bun build ./index.tsx --outfile ./mycli --bytecode --format=esm --compile
     ```
   </Tab>
 </Tabs>
@@ -5415,10 +6521,12 @@ interface BuildConfig {
    * JSX configuration object for controlling JSX transform behavior
    */
   jsx?: {
+    runtime?: "automatic" | "classic";
+    importSource?: string;
     factory?: string;
     fragment?: string;
-    importSource?: string;
-    runtime?: "automatic" | "classic";
+    sideEffects?: boolean;
+    development?: boolean;
   };
   naming?:
     | string
@@ -5479,7 +6587,10 @@ interface BuildConfig {
    * start times, but will make the final output larger and slightly increase
    * memory usage.
    *
-   * Bytecode is currently only supported for CommonJS (`format: "cjs"`).
+   * - CommonJS: works with or without `compile: true`
+   * - ESM: requires `compile: true`
+   *
+   * Without an explicit `format`, defaults to CommonJS.
    *
    * Must be `target: "bun"`
    * @default false
@@ -5502,13 +6613,20 @@ interface BuildConfig {
   drop?: string[];
 
   /**
-   * When set to `true`, the returned promise rejects with an AggregateError when a build failure happens.
-   * When set to `false`, the `success` property of the returned object will be `false` when a build failure happens.
+   * - When set to `true`, the returned promise rejects with an AggregateError when a build failure happens.
+   * - When set to `false`, returns a {@link BuildOutput} with `{success: false}`
    *
-   * This defaults to `false` in Bun 1.1 and will change to `true` in Bun 1.2
-   * as most usage of `Bun.build` forgets to check for errors.
+   * @default true
    */
   throw?: boolean;
+
+  /**
+   * Custom tsconfig.json file path to use for path resolution.
+   * Equivalent to `--tsconfig-override` in the CLI.
+   */
+  tsconfig?: string;
+
+  outdir?: string;
 }
 
 interface BuildOutput {
@@ -5575,198 +6693,199 @@ declare class ResolveMessage {
 
 ## CLI Usage
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun build <entry points>
 ```
 
 ### General Configuration
 
-<ParamField path="--production" type="boolean">
+<ParamField type="boolean">
   Set <code>NODE\_ENV=production</code> and enable minification
 </ParamField>
 
-<ParamField path="--bytecode" type="boolean">
+<ParamField type="boolean">
   Use a bytecode cache when compiling
 </ParamField>
 
-<ParamField path="--target" type="string" default="browser">
+<ParamField type="string">
   Intended execution environment for the bundle. One of <code>browser</code>, <code>bun</code>, or <code>node</code>
 </ParamField>
 
-<ParamField path="--conditions" type="string">
+<ParamField type="string">
   Pass custom resolution conditions
 </ParamField>
 
-<ParamField path="--env" type="string" default="disable">
-  Inline environment variables into the bundle as <code>process.env.\${name_0}</code>. To inline variables matching a
+<ParamField type="string">
+  Inline environment variables into the bundle as <code>process.env.\$</code>. To inline variables matching a
   prefix, use a glob like <code>FOO\_PUBLIC\_\*</code>
 </ParamField>
 
 ### Output & File Handling
 
-<ParamField path="--outdir" type="string" default="dist">
+<ParamField type="string">
   Output directory (used when building multiple entry points)
 </ParamField>
 
-<ParamField path="--outfile" type="string">
+<ParamField type="string">
   Write output to a specific file
 </ParamField>
 
-<ParamField path="--sourcemap" type="string" default="none">
+<ParamField type="string">
   Generate source maps. One of <code>linked</code>, <code>inline</code>, <code>external</code>, or <code>none</code>
 </ParamField>
 
-<ParamField path="--banner" type="string">
+<ParamField type="string">
   Add a banner to the output (e.g. <code>"use client"</code> for React Server Components)
 </ParamField>
 
-<ParamField path="--footer" type="string">
+<ParamField type="string">
   Add a footer to the output (e.g. <code>// built with bun!</code>)
 </ParamField>
 
-<ParamField path="--format" type="string" default="esm">
-  Module format of the output bundle. One of <code>esm</code>, <code>cjs</code>, or <code>iife</code>
+<ParamField type="string">
+  Module format of the output bundle. One of <code>esm</code>, <code>cjs</code>, or <code>iife</code>. Defaults to
+  <code>cjs</code> when <code>--bytecode</code> is used.
 </ParamField>
 
 ### File Naming
 
-<ParamField path="--entry-naming" type="string" default="[dir]/[name].[ext]">
+<ParamField type="string">
   Customize entry point filenames
 </ParamField>
 
-<ParamField path="--chunk-naming" type="string" default="[name]-[hash].[ext]">
+<ParamField type="string">
   Customize chunk filenames
 </ParamField>
 
-<ParamField path="--asset-naming" type="string" default="[name]-[hash].[ext]">
+<ParamField type="string">
   Customize asset filenames
 </ParamField>
 
 ### Bundling Options
 
-<ParamField path="--root" type="string">
+<ParamField type="string">
   Root directory used when bundling multiple entry points
 </ParamField>
 
-<ParamField path="--splitting" type="boolean">
+<ParamField type="boolean">
   Enable code splitting for shared modules
 </ParamField>
 
-<ParamField path="--public-path" type="string">
+<ParamField type="string">
   Prefix to be added to import paths in bundled code
 </ParamField>
 
-<ParamField path="--external" type="string">
+<ParamField type="string">
   Exclude modules from the bundle (supports wildcards). Alias: <code>-e</code>
 </ParamField>
 
-<ParamField path="--packages" type="string" default="bundle">
+<ParamField type="string">
   How to treat dependencies: <code>external</code> or <code>bundle</code>
 </ParamField>
 
-<ParamField path="--no-bundle" type="boolean">
+<ParamField type="boolean">
   Transpile only — do not bundle
 </ParamField>
 
-<ParamField path="--css-chunking" type="boolean">
+<ParamField type="boolean">
   Chunk CSS files together to reduce duplication (only when multiple entry points import CSS)
 </ParamField>
 
 ### Minification & Optimization
 
-<ParamField path="--emit-dce-annotations" type="boolean" default="true">
+<ParamField type="boolean">
   Re-emit Dead Code Elimination annotations. Disabled when <code>--minify-whitespace</code> is used
 </ParamField>
 
-<ParamField path="--minify" type="boolean">
+<ParamField type="boolean">
   Enable all minification options
 </ParamField>
 
-<ParamField path="--minify-syntax" type="boolean">
+<ParamField type="boolean">
   Minify syntax and inline constants
 </ParamField>
 
-<ParamField path="--minify-whitespace" type="boolean">
+<ParamField type="boolean">
   Minify whitespace
 </ParamField>
 
-<ParamField path="--minify-identifiers" type="boolean">
+<ParamField type="boolean">
   Minify variable and function identifiers
 </ParamField>
 
-<ParamField path="--keep-names" type="boolean">
+<ParamField type="boolean">
   Preserve original function and class names when minifying
 </ParamField>
 
 ### Development Features
 
-<ParamField path="--watch" type="boolean">
+<ParamField type="boolean">
   Rebuild automatically when files change
 </ParamField>
 
-<ParamField path="--no-clear-screen" type="boolean">
+<ParamField type="boolean">
   Don’t clear the terminal when rebuilding with <code>--watch</code>
 </ParamField>
 
-<ParamField path="--react-fast-refresh" type="boolean">
+<ParamField type="boolean">
   Enable React Fast Refresh transform (for development testing)
 </ParamField>
 
 ### Standalone Executables
 
-<ParamField path="--compile" type="boolean">
+<ParamField type="boolean">
   Generate a standalone Bun executable containing the bundle. Implies <code>--production</code>
 </ParamField>
 
-<ParamField path="--compile-exec-argv" type="string">
+<ParamField type="string">
   Prepend arguments to the standalone executable’s <code>execArgv</code>
 </ParamField>
 
 ### Windows Executable Details
 
-<ParamField path="--windows-hide-console" type="boolean">
+<ParamField type="boolean">
   Prevent a console window from opening when running a compiled Windows executable
 </ParamField>
 
-<ParamField path="--windows-icon" type="string">
+<ParamField type="string">
   Set an icon for the Windows executable
 </ParamField>
 
-<ParamField path="--windows-title" type="string">
+<ParamField type="string">
   Set the Windows executable product name
 </ParamField>
 
-<ParamField path="--windows-publisher" type="string">
+<ParamField type="string">
   Set the Windows executable company name
 </ParamField>
 
-<ParamField path="--windows-version" type="string">
+<ParamField type="string">
   Set the Windows executable version (e.g. <code>1.2.3.4</code>)
 </ParamField>
 
-<ParamField path="--windows-description" type="string">
+<ParamField type="string">
   Set the Windows executable description
 </ParamField>
 
-<ParamField path="--windows-copyright" type="string">
+<ParamField type="string">
   Set the Windows executable copyright notice
 </ParamField>
 
 ### Experimental & App Building
 
-<ParamField path="--app" type="boolean">
+<ParamField type="boolean">
   <b>(EXPERIMENTAL)</b> Build a web app for production using Bun Bake
 </ParamField>
 
-<ParamField path="--server-components" type="boolean">
+<ParamField type="boolean">
   <b>(EXPERIMENTAL)</b> Enable React Server Components
 </ParamField>
 
-<ParamField path="--debug-dump-server-files" type="boolean">
+<ParamField type="boolean">
   When <code>--app</code> is set, dump all server files to disk even for static builds
 </ParamField>
 
-<ParamField path="--debug-no-minify" type="boolean">
+<ParamField type="boolean">
   When <code>--app</code> is set, disable all minification
 </ParamField>
 
@@ -5832,14 +6951,14 @@ Transpiles both TypeScript and JSX to vanilla JavaScript.
 
 JSON files can be directly imported.
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import pkg from "./package.json";
 pkg.name; // => "my-package"
 ```
 
 During bundling, the parsed JSON is inlined into the bundle as a JavaScript object.
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 const pkg = {
   name: "my-package",
   // ... other fields
@@ -5876,14 +6995,14 @@ If a `.json` file is passed as an entrypoint to the bundler, it will be converte
 
 JSONC (JSON with Comments) files can be directly imported. Bun will parse them, stripping out comments and trailing commas.
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import config from "./config.jsonc";
 console.log(config);
 ```
 
 During bundling, the parsed JSONC is inlined into the bundle as a JavaScript object, identical to the `json` loader.
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 var config = {
   option: "value",
 };
@@ -5901,7 +7020,7 @@ var config = {
 
 TOML files can be directly imported. Bun will parse them with its fast native TOML parser.
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import config from "./bunfig.toml";
 config.logLevel; // => "debug"
 
@@ -5911,7 +7030,7 @@ config.logLevel; // => "debug"
 
 During bundling, the parsed TOML is inlined into the bundle as a JavaScript object.
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 var config = {
   logLevel: "debug",
   // ...other fields
@@ -5945,7 +7064,7 @@ If a `.toml` file is passed as an entrypoint, it will be converted to a `.js` mo
 
 YAML files can be directly imported. Bun will parse them with its fast native YAML parser.
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import config from "./config.yaml";
 console.log(config);
 
@@ -5955,7 +7074,7 @@ import data from "./data.txt" with { type: "yaml" };
 
 During bundling, the parsed YAML is inlined into the bundle as a JavaScript object.
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 var config = {
   name: "my-app",
   version: "1.0.0",
@@ -5989,7 +7108,7 @@ If a `.yaml` or `.yml` file is passed as an entrypoint, it will be converted to 
 
 The contents of the text file are read and inlined into the bundle as a string. Text files can be directly imported. The file is read and returned as a string.
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import contents from "./file.txt";
 console.log(contents); // => "Hello, world!"
 
@@ -6000,7 +7119,7 @@ import html from "./index.html" with { type: "text" };
 
 When referenced during a build, the contents are inlined into the bundle as a string.
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 var contents = `Hello, world!`;
 console.log(contents);
 ```
@@ -6025,7 +7144,7 @@ If a `.txt` file is passed as an entrypoint, it will be converted to a `.js` mod
 
 In the runtime, native addons can be directly imported.
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import addon from "./addon.node";
 console.log(addon);
 ```
@@ -6040,7 +7159,7 @@ console.log(addon);
 
 In the runtime and bundler, SQLite databases can be directly imported. This will load the database using `bun:sqlite`.
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import db from "./my.db" with { type: "sqlite" };
 ```
 
@@ -6050,7 +7169,7 @@ By default, the database is external to the bundle (so that you can potentially 
 
 You can change this behavior with the `"embed"` attribute:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 // embed the database into the bundle
 import db from "./my.db" with { type: "sqlite", embed: "true" };
 ```
@@ -6076,7 +7195,7 @@ The `html` loader processes HTML files and bundles any referenced assets. It wil
 
 For example, given this HTML file:
 
-```html title="src/index.html" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```html title="src/index.html" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 <!DOCTYPE html>
 <html>
   <body>
@@ -6089,7 +7208,7 @@ For example, given this HTML file:
 
 It will output a new HTML file with the bundled assets:
 
-```html title="dist/index.html" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```html title="dist/index.html" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 <!DOCTYPE html>
 <html>
   <body>
@@ -6143,13 +7262,13 @@ Under the hood, it uses [`lol-html`](https://github.com/cloudflare/lol-html) to 
 
 CSS files can be directly imported. The bundler will parse and bundle CSS files, handling `@import` statements and `url()` references.
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import "./styles.css";
 ```
 
 During bundling, all imported CSS files are bundled together into a single `.css` file in the output directory.
 
-```css  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```css theme={"theme":{"light":"github-light","dark":"dracula"}}
 .my-class {
   background: url("./image.png");
 }
@@ -6163,7 +7282,7 @@ During bundling, all imported CSS files are bundled together into a single `.css
 
 This loader is used to parse Bun Shell scripts. It's only supported when starting Bun itself, so it's not available in the bundler or in the runtime.
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun run ./script.sh
 ```
 
@@ -6175,7 +7294,7 @@ bun run ./script.sh
 
 The file loader resolves the import as a path/URL to the imported file. It's commonly used for referencing media or font assets.
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 // logo.ts
 import logo from "./logo.svg";
 console.log(logo);
@@ -6183,14 +7302,14 @@ console.log(logo);
 
 In the runtime, Bun checks that the `logo.svg` file exists and converts it to an absolute path to the location of `logo.svg` on disk.
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun run logo.ts
 # Output: /path/to/project/logo.svg
 ```
 
 In the bundler, things are slightly different. The file is copied into `outdir` as-is, and the import is resolved as a relative path pointing to the copied file.
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Output
 var logo = "./logo.svg";
 console.log(logo);
@@ -6245,7 +7364,7 @@ Now we'll bundle this file with `bun build`. The bundled file will be printed to
 bun build ./cli.tsx
 ```
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 console.log(`Your random number is ${0.6805550949689833}`);
 ```
 
@@ -6300,7 +7419,7 @@ macro();
 
 When shipping a library containing a macro to npm or another package registry, use the `"macro"` export condition to provide a special version of your package exclusively for the macro environment.
 
-```json title="package.json" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```json title="package.json" icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
   "name": "my-package",
   "exports": {
@@ -6426,7 +7545,7 @@ export function howLong() {
 
 This outputs:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 function howLong() {
   console.log("The page is", 1322, "characters long");
 }
@@ -6550,7 +7669,7 @@ Bun includes a fast JavaScript and TypeScript minifier that can reduce bundle si
 
 Use the `--minify` flag to enable all minification modes:
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun build ./index.ts --minify --outfile=out.js
 ```
 
@@ -6564,7 +7683,7 @@ The `--minify` flag automatically enables:
 
 The `--production` flag automatically enables minification:
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun build ./index.ts --production --outfile=out.js
 ```
 
@@ -6577,7 +7696,7 @@ The `--production` flag also:
 
 You can enable specific minification modes individually:
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 # Only remove whitespace
 bun build ./index.ts --minify-whitespace --outfile=out.js
 
@@ -6595,7 +7714,7 @@ bun build ./index.ts --minify-whitespace --minify-syntax --outfile=out.js
 
 When using Bun's bundler programmatically, configure minification through the `minify` option:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 await Bun.build({
   entrypoints: ["./index.ts"],
   outdir: "./out",
@@ -6605,7 +7724,7 @@ await Bun.build({
 
 For granular control, pass an object:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 await Bun.build({
   entrypoints: ["./index.ts"],
   outdir: "./out",
@@ -7764,13 +8883,13 @@ void 0;
 
 When minifying identifiers, you may want to preserve original function and class names for debugging purposes. Use the `--keep-names` flag:
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun build ./index.ts --minify --keep-names --outfile=out.js
 ```
 
 Or in the JavaScript API:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 await Bun.build({
   entrypoints: ["./index.ts"],
   outdir: "./out",
@@ -7928,7 +9047,7 @@ Other common namespaces are:
 
 ### onStart
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 onStart(callback: () => void): Promise<void> | void;
 ```
 
@@ -7988,7 +9107,7 @@ In the above example, Bun will wait until the first `onStart()` (sleeping for 10
 
 ### onResolve
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 onResolve(
   args: { filter: RegExp; namespace?: string },
   callback: (args: { path: string; importer: string }) => {
@@ -8029,7 +9148,7 @@ plugin({
 
 ### onLoad
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 onLoad(
   args: { filter: RegExp; namespace?: string },
   defer: () => Promise<void>,
@@ -8236,7 +9355,7 @@ Bun.build({
 
 ### onBeforeParse
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 onBeforeParse(
   args: { filter: RegExp; namespace?: string },
   callback: { napiModule: NapiModule; symbol: string; external?: unknown },
@@ -8257,9 +9376,7 @@ Share feedback, bug reports, and feature requests
 
 Whether you've found a bug, have a performance issue, or just want to suggest an improvement, here's how you can open a helpful issue:
 
-<Callout icon="discord">
-  For general questions, please join our [Discord](https://discord.com/invite/CXdq2DP29u).
-</Callout>
+<Callout icon="discord">For general questions, please join our [Discord](https://bun.com/discord).</Callout>
 
 ## Reporting Issues
 
@@ -8308,9 +9425,7 @@ Whether you've found a bug, have a performance issue, or just want to suggest an
       <Note>
         * For MacOS and Linux: copy the output of `uname -mprs`
         * For Windows: copy the output of this command in the powershell console:
-          ```powershell  theme={"theme":{"light":"github-light","dark":"dracula"}}
-          	"$([Environment]::OSVersion | ForEach-Object VersionString) $(if ([Environment]::Is64BitOperatingSystem) { "x64" } else { "x86" })"
-          ```
+          `"$([Environment]::OSVersion | ForEach-Object VersionString) $(if ([Environment]::Is64BitOperatingSystem) { "x64" } else { "x86" })"`
       </Note>
   </Step>
 </Steps>
@@ -8331,26 +9446,6 @@ echo "please document X" | bun feedback --email you@example.com
 
 You can provide feedback as text arguments, file paths, or piped input.
 
-***
-
-## CLI Usage
-
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun feedback [options] [feedback text ... | files ...]
-```
-
-### Contact Information
-
-<ParamField path="--email" type="string">
-  Set the email address used for this submission. Alias: <code>-e</code>
-</ParamField>
-
-### Help
-
-<ParamField path="--help" type="boolean">
-  Show this help message and exit. Alias: <code>-h</code>
-</ParamField>
-
 
 # Convert an ArrayBuffer to an array of numbers
 Source: https://bun.com/docs/guides/binary/arraybuffer-to-array
@@ -8359,7 +9454,7 @@ Source: https://bun.com/docs/guides/binary/arraybuffer-to-array
 
 To retrieve the contents of an `ArrayBuffer` as an array of numbers, create a [`Uint8Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) over of the buffer. and use the [`Array.from()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/from) method to convert it to an array.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const buf = new ArrayBuffer(64);
 const arr = new Uint8Array(buf);
 arr.length; // 64
@@ -8370,7 +9465,7 @@ arr[0]; // 0 (instantiated with all zeros)
 
 The `Uint8Array` class supports array indexing and iteration. However if you wish to convert the instance to a regular `Array`, use `Array.from()`. (This will likely be slower than using the `Uint8Array` directly.)
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const buf = new ArrayBuffer(64);
 const uintArr = new Uint8Array(buf);
 const regularArr = Array.from(uintArr);
@@ -8379,7 +9474,7 @@ const regularArr = Array.from(uintArr);
 
 ***
 
-See [Docs > API > Binary Data](https://bun.com/docs/api/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
+See [Docs > API > Binary Data](/runtime/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
 
 
 # Convert an ArrayBuffer to a Blob
@@ -8389,7 +9484,7 @@ Source: https://bun.com/docs/guides/binary/arraybuffer-to-blob
 
 A [`Blob`](https://developer.mozilla.org/en-US/docs/Web/API/Blob) can be constructed from an array of "chunks", where each chunk is a string, binary data structure, or another `Blob`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const buf = new ArrayBuffer(64);
 const blob = new Blob([buf]);
 ```
@@ -8398,7 +9493,7 @@ const blob = new Blob([buf]);
 
 By default the `type` of the resulting `Blob` will be unset. This can be set manually.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const buf = new ArrayBuffer(64);
 const blob = new Blob([buf], { type: "application/octet-stream" });
 blob.type; // => "application/octet-stream"
@@ -8406,7 +9501,7 @@ blob.type; // => "application/octet-stream"
 
 ***
 
-See [Docs > API > Binary Data](https://bun.com/docs/api/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
+See [Docs > API > Binary Data](/runtime/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
 
 
 # Convert an ArrayBuffer to a Buffer
@@ -8418,7 +9513,7 @@ The Node.js [`Buffer`](https://nodejs.org/api/buffer.html) API predates the intr
 
 Use the static `Buffer.from()` method to create a `Buffer` from an `ArrayBuffer`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const arrBuffer = new ArrayBuffer(64);
 const nodeBuffer = Buffer.from(arrBuffer);
 ```
@@ -8427,14 +9522,14 @@ const nodeBuffer = Buffer.from(arrBuffer);
 
 To create a `Buffer` that only views a portion of the underlying buffer, pass the offset and length to the constructor.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const arrBuffer = new ArrayBuffer(64);
 const nodeBuffer = Buffer.from(arrBuffer, 0, 16); // view first 16 bytes
 ```
 
 ***
 
-See [Docs > API > Binary Data](https://bun.com/docs/api/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
+See [Docs > API > Binary Data](/runtime/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
 
 
 # Convert an ArrayBuffer to a string
@@ -8444,7 +9539,7 @@ Source: https://bun.com/docs/guides/binary/arraybuffer-to-string
 
 Bun implements the Web-standard [`TextDecoder`](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder) class for converting between binary data types and strings.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const buf = new ArrayBuffer(64);
 const decoder = new TextDecoder();
 const str = decoder.decode(buf);
@@ -8452,7 +9547,7 @@ const str = decoder.decode(buf);
 
 ***
 
-See [Docs > API > Binary Data](https://bun.com/docs/api/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
+See [Docs > API > Binary Data](/runtime/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
 
 
 # Convert an ArrayBuffer to a Uint8Array
@@ -8462,7 +9557,7 @@ Source: https://bun.com/docs/guides/binary/arraybuffer-to-typedarray
 
 A `Uint8Array` is a *typed array*, meaning it is a mechanism for viewing the data in an underlying `ArrayBuffer`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const buffer = new ArrayBuffer(64);
 const arr = new Uint8Array(buffer);
 ```
@@ -8471,7 +9566,7 @@ const arr = new Uint8Array(buffer);
 
 Instances of other typed arrays can be created similarly.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const buffer = new ArrayBuffer(64);
 
 const arr1 = new Uint8Array(buffer);
@@ -8487,14 +9582,14 @@ const arr7 = new BigUint64Array(buffer);
 
 To create a typed array that only views a portion of the underlying buffer, pass the offset and length to the constructor.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const buffer = new ArrayBuffer(64);
 const arr = new Uint8Array(buffer, 0, 16); // view first 16 bytes
 ```
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils) for more useful utilities.
+See [Docs > API > Utils](/runtime/utils) for more useful utilities.
 
 
 # Convert a Blob to an ArrayBuffer
@@ -8504,14 +9599,14 @@ Source: https://bun.com/docs/guides/binary/blob-to-arraybuffer
 
 The [`Blob`](https://developer.mozilla.org/en-US/docs/Web/API/Blob) class provides a number of methods for consuming its contents in different formats, including `.arrayBuffer()`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const blob = new Blob(["hello world"]);
 const buf = await blob.arrayBuffer();
 ```
 
 ***
 
-See [Docs > API > Binary Data](https://bun.com/docs/api/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
+See [Docs > API > Binary Data](/runtime/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
 
 
 # Convert a Blob to a DataView
@@ -8521,14 +9616,14 @@ Source: https://bun.com/docs/guides/binary/blob-to-dataview
 
 The [`Blob`](https://developer.mozilla.org/en-US/docs/Web/API/Blob) class provides a number of methods for consuming its contents in different formats. This snippets reads the contents to an `ArrayBuffer`, then creates a `DataView` from the buffer.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const blob = new Blob(["hello world"]);
 const arr = new DataView(await blob.arrayBuffer());
 ```
 
 ***
 
-See [Docs > API > Binary Data](https://bun.com/docs/api/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
+See [Docs > API > Binary Data](/runtime/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
 
 
 # Convert a Blob to a ReadableStream
@@ -8538,14 +9633,14 @@ Source: https://bun.com/docs/guides/binary/blob-to-stream
 
 The [`Blob`](https://developer.mozilla.org/en-US/docs/Web/API/Blob) class provides a number of methods for consuming its contents in different formats, including `.stream()`. This returns `Promise<ReadableStream>`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const blob = new Blob(["hello world"]);
 const stream = await blob.stream();
 ```
 
 ***
 
-See [Docs > API > Binary Data](https://bun.com/docs/api/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
+See [Docs > API > Binary Data](/runtime/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
 
 
 # Convert a Blob to a string
@@ -8555,7 +9650,7 @@ Source: https://bun.com/docs/guides/binary/blob-to-string
 
 The [`Blob`](https://developer.mozilla.org/en-US/docs/Web/API/Blob) class provides a number of methods for consuming its contents in different formats, including `.text()`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const blob = new Blob(["hello world"]);
 const str = await blob.text();
 // => "hello world"
@@ -8563,7 +9658,7 @@ const str = await blob.text();
 
 ***
 
-See [Docs > API > Binary Data](https://bun.com/docs/api/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
+See [Docs > API > Binary Data](/runtime/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
 
 
 # Convert a Blob to a Uint8Array
@@ -8573,14 +9668,14 @@ Source: https://bun.com/docs/guides/binary/blob-to-typedarray
 
 The [`Blob`](https://developer.mozilla.org/en-US/docs/Web/API/Blob) class provides a number of methods for consuming its contents in different formats. This snippets reads the contents to an `ArrayBuffer`, then creates a `Uint8Array` from the buffer.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const blob = new Blob(["hello world"]);
 const arr = new Uint8Array(await blob.arrayBuffer());
 ```
 
 ***
 
-See [Docs > API > Binary Data](https://bun.com/docs/api/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
+See [Docs > API > Binary Data](/runtime/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
 
 
 # Convert a Buffer to an ArrayBuffer
@@ -8590,14 +9685,14 @@ Source: https://bun.com/docs/guides/binary/buffer-to-arraybuffer
 
 The Node.js [`Buffer`](https://nodejs.org/api/buffer.html) class provides a way to view and manipulate data in an underlying `ArrayBuffer`, which is available via the `buffer` property.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const nodeBuf = Buffer.alloc(64);
 const arrBuf = nodeBuf.buffer;
 ```
 
 ***
 
-See [Docs > API > Binary Data](https://bun.com/docs/api/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
+See [Docs > API > Binary Data](/runtime/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
 
 
 # Convert a Buffer to a blob
@@ -8607,14 +9702,14 @@ Source: https://bun.com/docs/guides/binary/buffer-to-blob
 
 A [`Blob`](https://developer.mozilla.org/en-US/docs/Web/API/Blob) can be constructed from an array of "chunks", where each chunk is a string, binary data structure (including `Buffer`), or another `Blob`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const buf = Buffer.from("hello");
 const blob = new Blob([buf]);
 ```
 
 ***
 
-See [Docs > API > Binary Data](https://bun.com/docs/api/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
+See [Docs > API > Binary Data](/runtime/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
 
 
 # Convert a Buffer to a ReadableStream
@@ -8624,7 +9719,7 @@ Source: https://bun.com/docs/guides/binary/buffer-to-readablestream
 
 The naive approach to creating a [`ReadableStream`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream) from a [`Buffer`](https://nodejs.org/api/buffer.html) is to use the `ReadableStream` constructor and enqueue the entire array as a single chunk. For a large buffer, this may be undesirable as this approach does not "streaming" the data in smaller chunks.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const buf = Buffer.from("hello world");
 const stream = new ReadableStream({
   start(controller) {
@@ -8638,7 +9733,7 @@ const stream = new ReadableStream({
 
 To stream the data in smaller chunks, first create a `Blob` instance from the `Buffer`. Then use the [`Blob.stream()`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/stream) method to create a `ReadableStream` that streams the data in chunks of a specified size.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const buf = Buffer.from("hello world");
 const blob = new Blob([buf]);
 const stream = blob.stream();
@@ -8648,7 +9743,7 @@ const stream = blob.stream();
 
 The chunk size can be set by passing a number to the `.stream()` method.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const buf = Buffer.from("hello world");
 const blob = new Blob([buf]);
 
@@ -8658,7 +9753,7 @@ const stream = blob.stream(1024);
 
 ***
 
-See [Docs > API > Binary Data](https://bun.com/docs/api/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
+See [Docs > API > Binary Data](/runtime/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
 
 
 # Convert a Buffer to a string
@@ -8668,7 +9763,7 @@ Source: https://bun.com/docs/guides/binary/buffer-to-string
 
 The [`Buffer`](https://nodejs.org/api/buffer.html) class provides a built-in `.toString()` method that converts a `Buffer` to a string.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const buf = Buffer.from("hello");
 const str = buf.toString();
 // => "hello"
@@ -8678,7 +9773,7 @@ const str = buf.toString();
 
 You can optionally specify an encoding and byte range.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const buf = Buffer.from("hello world!");
 const str = buf.toString("utf8", 0, 5);
 // => "hello"
@@ -8686,7 +9781,7 @@ const str = buf.toString("utf8", 0, 5);
 
 ***
 
-See [Docs > API > Binary Data](https://bun.com/docs/api/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
+See [Docs > API > Binary Data](/runtime/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
 
 
 # Convert a Buffer to a Uint8Array
@@ -8696,14 +9791,14 @@ Source: https://bun.com/docs/guides/binary/buffer-to-typedarray
 
 The Node.js [`Buffer`](https://nodejs.org/api/buffer.html) class extends [`Uint8Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array), so no conversion is needed. All properties and methods on `Uint8Array` are available on `Buffer`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const buf = Buffer.alloc(64);
 buf instanceof Uint8Array; // => true
 ```
 
 ***
 
-See [Docs > API > Binary Data](https://bun.com/docs/api/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
+See [Docs > API > Binary Data](/runtime/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
 
 
 # Convert a DataView to a string
@@ -8713,7 +9808,7 @@ Source: https://bun.com/docs/guides/binary/dataview-to-string
 
 If a [`DataView`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView) contains ASCII-encoded text, you can convert it to a string using the [`TextDecoder`](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder) class.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const dv: DataView = ...;
 const decoder = new TextDecoder();
 const str = decoder.decode(dv);
@@ -8721,7 +9816,7 @@ const str = decoder.decode(dv);
 
 ***
 
-See [Docs > API > Binary Data](https://bun.com/docs/api/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
+See [Docs > API > Binary Data](/runtime/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
 
 
 # Convert a Uint8Array to an ArrayBuffer
@@ -8731,7 +9826,7 @@ Source: https://bun.com/docs/guides/binary/typedarray-to-arraybuffer
 
 A [`Uint8Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) is a *typed array* class, meaning it is a mechanism for viewing data in an underlying `ArrayBuffer`. The underlying `ArrayBuffer` is accessible via the `buffer` property.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const arr = new Uint8Array(64);
 arr.buffer; // => ArrayBuffer(64)
 ```
@@ -8740,7 +9835,7 @@ arr.buffer; // => ArrayBuffer(64)
 
 The `Uint8Array` may be a view over a *subset* of the data in the underlying `ArrayBuffer`. In this case, the `buffer` property will return the entire buffer, and the `byteOffset` and `byteLength` properties will indicate the subset.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const arr = new Uint8Array(64, 16, 32);
 arr.buffer; // => ArrayBuffer(64)
 arr.byteOffset; // => 16
@@ -8749,7 +9844,7 @@ arr.byteLength; // => 32
 
 ***
 
-See [Docs > API > Binary Data](https://bun.com/docs/api/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
+See [Docs > API > Binary Data](/runtime/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
 
 
 # Convert a Uint8Array to a Blob
@@ -8759,7 +9854,7 @@ Source: https://bun.com/docs/guides/binary/typedarray-to-blob
 
 A [`Blob`](https://developer.mozilla.org/en-US/docs/Web/API/Blob) can be constructed from an array of "chunks", where each chunk is a string, binary data structure (including `Uint8Array`), or another `Blob`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const arr = new Uint8Array([0x68, 0x65, 0x6c, 0x6c, 0x6f]);
 const blob = new Blob([arr]);
 console.log(await blob.text());
@@ -8768,7 +9863,7 @@ console.log(await blob.text());
 
 ***
 
-See [Docs > API > Binary Data](https://bun.com/docs/api/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
+See [Docs > API > Binary Data](/runtime/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
 
 
 # Convert a Uint8Array to a Buffer
@@ -8778,14 +9873,14 @@ Source: https://bun.com/docs/guides/binary/typedarray-to-buffer
 
 The [`Buffer`](https://nodejs.org/api/buffer.html) class extends [`Uint8Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) with a number of additional methods. Use `Buffer.from()` to create a `Buffer` instance from a `Uint8Array`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const arr: Uint8Array = ...
 const buf = Buffer.from(arr);
 ```
 
 ***
 
-See [Docs > API > Binary Data](https://bun.com/docs/api/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
+See [Docs > API > Binary Data](/runtime/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
 
 
 # Convert a Uint8Array to a DataView
@@ -8795,14 +9890,14 @@ Source: https://bun.com/docs/guides/binary/typedarray-to-dataview
 
 A [`Uint8Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) is a *typed array* class, meaning it is a mechanism for viewing data in an underlying `ArrayBuffer`. The following snippet creates a \[`DataView`] instance over the same range of data as the `Uint8Array`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const arr: Uint8Array = ...
 const dv = new DataView(arr.buffer, arr.byteOffset, arr.byteLength);
 ```
 
 ***
 
-See [Docs > API > Binary Data](https://bun.com/docs/api/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
+See [Docs > API > Binary Data](/runtime/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
 
 
 # Convert a Uint8Array to a ReadableStream
@@ -8812,7 +9907,7 @@ Source: https://bun.com/docs/guides/binary/typedarray-to-readablestream
 
 The naive approach to creating a [`ReadableStream`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream) from a [`Uint8Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) is to use the [`ReadableStream`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream) constructor and enqueue the entire array as a single chunk. For larger chunks, this may be undesirable as it isn't actually "streaming" the data.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const arr = new Uint8Array(64);
 const stream = new ReadableStream({
   start(controller) {
@@ -8826,7 +9921,7 @@ const stream = new ReadableStream({
 
 To stream the data in smaller chunks, first create a `Blob` instance from the `Uint8Array`. Then use the [`Blob.stream()`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/stream) method to create a `ReadableStream` that streams the data in chunks of a specified size.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const arr = new Uint8Array(64);
 const blob = new Blob([arr]);
 const stream = blob.stream();
@@ -8836,7 +9931,7 @@ const stream = blob.stream();
 
 The chunk size can be set by passing a number to the `.stream()` method.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const arr = new Uint8Array(64);
 const blob = new Blob([arr]);
 
@@ -8846,7 +9941,7 @@ const stream = blob.stream(1024);
 
 ***
 
-See [Docs > API > Binary Data](https://bun.com/docs/api/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
+See [Docs > API > Binary Data](/runtime/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
 
 
 # Convert a Uint8Array to a string
@@ -8856,7 +9951,7 @@ Source: https://bun.com/docs/guides/binary/typedarray-to-string
 
 Bun implements the Web-standard [`TextDecoder`](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder) class for converting from binary data types like `Uint8Array` and strings.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const arr = new Uint8Array([104, 101, 108, 108, 111]);
 const decoder = new TextDecoder();
 const str = decoder.decode(arr);
@@ -8865,7 +9960,7 @@ const str = decoder.decode(arr);
 
 ***
 
-See [Docs > API > Binary Data](https://bun.com/docs/api/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
+See [Docs > API > Binary Data](/runtime/binary-data#conversion) for complete documentation on manipulating binary data with Bun.
 
 
 # Deploy a Bun application on AWS Lambda
@@ -8965,7 +10060,7 @@ In this guide, we will deploy a Bun HTTP server to AWS Lambda using a `Dockerfil
     echo $ECR_URI
     ```
 
-    ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
     [id].dkr.ecr.us-east-1.amazonaws.com/bun-lambda-demo
     ```
 
@@ -8988,7 +10083,7 @@ In this guide, we will deploy a Bun HTTP server to AWS Lambda using a `Dockerfil
     aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $ECR_URI
     ```
 
-    ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
     Login Succeeded
     ```
 
@@ -9021,7 +10116,7 @@ In this guide, we will deploy a Bun HTTP server to AWS Lambda using a `Dockerfil
     <Warning>Make sure you've selected the right region, this URL defaults to `us-east-1`.</Warning>
 
     <Frame>
-            <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda1.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=56e8b0e323726544e2a88c7e39cb2d50" alt="Create Function" data-og-width="3116" width="3116" data-og-height="2084" height="2084" data-path="images/guides/lambda1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda1.png?w=280&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=be1e07dd83ac2428f922dce05b7a5db7 280w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda1.png?w=560&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=2607219192945f0cce23b991c07a4ff2 560w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda1.png?w=840&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=930cc066927af65f4b1caadca36ab593 840w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda1.png?w=1100&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=27a4464f1a0a967fbe1d306cd7b24b66 1100w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda1.png?w=1650&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=2dfb69e43527bdff02c695f2bf023d5f 1650w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda1.png?w=2500&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=8588dcf38cd7ef5d005378006a00486d 2500w" />
+      <img alt="Create Function" />
     </Frame>
 
     Give the function a name, like `my-bun-function`.
@@ -9031,13 +10126,13 @@ In this guide, we will deploy a Bun HTTP server to AWS Lambda using a `Dockerfil
     Then, go to the **Container image URI** section, click on **Browse images**. Select the image we just pushed to the ECR repository.
 
     <Frame>
-            <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda2.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=89ab4c81547ef562733fb29b704a9e24" alt="Select Container Repository" data-og-width="4128" width="4128" data-og-height="2412" height="2412" data-path="images/guides/lambda2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda2.png?w=280&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=98f4649bd66f1c04f9216c8afdb774b8 280w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda2.png?w=560&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=ad4049426f74687b865836ffd9bd1564 560w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda2.png?w=840&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=4904d76d040f22f19e81674fe93b6d66 840w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda2.png?w=1100&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=006add82aa6d8d4d21a8e179d745d6dd 1100w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda2.png?w=1650&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=d513fab958cf6dcbd8491d7a17186e2c 1650w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda2.png?w=2500&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=2596c0352f274ed0a4eafdee8b6176a4 2500w" />
+      <img alt="Select Container Repository" />
     </Frame>
 
     Then, select the `latest` image, and click on **Select image**.
 
     <Frame>
-            <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda3.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=70906fbda8b366e972615bd297335e9d" alt="Select Container Image" data-og-width="4128" width="4128" data-og-height="2172" height="2172" data-path="images/guides/lambda3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda3.png?w=280&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=68027906d7eb4435bceb62ec4f1f9ea6 280w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda3.png?w=560&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=9a19378b316cf21766664902b25a6a6f 560w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda3.png?w=840&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=3daaba5b53626005d85940151a538b87 840w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda3.png?w=1100&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=d156a64e32e812c97c70e090bbeeae5b 1100w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda3.png?w=1650&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=bb7f5d83ac193b2736205ef35cf924e0 1650w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda3.png?w=2500&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=8a41f19e3674fed9542bf9b33294d89d 2500w" />
+      <img alt="Select Container Image" />
     </Frame>
   </Step>
 
@@ -9047,7 +10142,7 @@ In this guide, we will deploy a Bun HTTP server to AWS Lambda using a `Dockerfil
     Set this to **Enable**, with Auth Type **NONE**.
 
     <Frame>
-            <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda4.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=48620c8aeb9326875d97a9a17edc8b1e" alt="Set the Function URL" data-og-width="3116" width="3116" data-og-height="1524" height="1524" data-path="images/guides/lambda4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda4.png?w=280&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=3b2ce96581a8b1db46c298fe20b87aad 280w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda4.png?w=560&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=3b40b8a5e6a637e54b2f788063d561be 560w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda4.png?w=840&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=f392229622e663bb861333911b98d8fe 840w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda4.png?w=1100&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=8df1357cff6f0feaf38f3bd5e66c028e 1100w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda4.png?w=1650&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=6d4efed01b67c45288faca8c2c894889 1650w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda4.png?w=2500&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=96e2978d02762571bac5b56ef6dcd561 2500w" />
+      <img alt="Set the Function URL" />
     </Frame>
   </Step>
 
@@ -9055,7 +10150,7 @@ In this guide, we will deploy a Bun HTTP server to AWS Lambda using a `Dockerfil
     Click on **Create function** at the bottom of the page, this will create the function.
 
     <Frame>
-            <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda6.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=f615eda922b34ac37bc5e39a8f08ef25" alt="Create Function" data-og-width="4836" width="4836" data-og-height="2516" height="2516" data-path="images/guides/lambda6.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda6.png?w=280&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=330d7faad768b412e7d3868d7fa16b39 280w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda6.png?w=560&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=5479e1d1678c19a0739780e4dccaf95b 560w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda6.png?w=840&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=1f22688a1a937310024250ded4c93406 840w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda6.png?w=1100&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=cb57546fc313d0877e569b173de4df2b 1100w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda6.png?w=1650&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=f2e97207b160d7872ff00ad741fdb632 1650w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda6.png?w=2500&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=0523b6501d4eb45b25483006d8918930 2500w" />
+      <img alt="Create Function" />
     </Frame>
   </Step>
 
@@ -9063,7 +10158,7 @@ In this guide, we will deploy a Bun HTTP server to AWS Lambda using a `Dockerfil
     Once the function has been created you'll be redirected to the function's page, where you can see the function URL in the **"Function URL"** section.
 
     <Frame>
-            <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda5.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=5bc860978a6c636d49c1a73603d0655a" alt="Function URL" data-og-width="4792" width="4792" data-og-height="2500" height="2500" data-path="images/guides/lambda5.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda5.png?w=280&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=63fb11ed81703c7053832992716e33c5 280w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda5.png?w=560&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=e9a2e94b129f3cbb5d18511390dfd230 560w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda5.png?w=840&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=d93a2029078a2a31d95532d194d24d59 840w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda5.png?w=1100&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=99e2cfdeafd8f41414bf514da188dc6e 1100w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda5.png?w=1650&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=a53bb52b56a34858f23b773191c346d5 1650w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/lambda5.png?w=2500&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=9cc350917ff0977838f83099edbdbdc5 2500w" />
+      <img alt="Function URL" />
     </Frame>
   </Step>
 
@@ -9074,7 +10169,7 @@ In this guide, we will deploy a Bun HTTP server to AWS Lambda using a `Dockerfil
     curl -X GET https://[your-function-id].lambda-url.us-east-1.on.aws/
     ```
 
-    ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
     Hello from Bun on Lambda!
     ```
   </Step>
@@ -9110,7 +10205,7 @@ In this guide, we will deploy a Bun HTTP server to DigitalOcean using a `Dockerf
         In the DigitalOcean dashboard, go to [**Container Registry**](https://cloud.digitalocean.com/registry), and enter the details for the new registry.
 
         <Frame>
-                    <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-7.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=76ad48c8c2e29367ba96be65bd4c5d75" alt="DigitalOcean registry dashboard" data-og-width="5552" width="5552" data-og-height="2856" height="2856" data-path="images/guides/digitalocean-7.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-7.png?w=280&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=2d50bf6c92c4d14099dad4c5964ae069 280w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-7.png?w=560&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=f86f9e3c127de1ab43f8e95194d90029 560w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-7.png?w=840&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=7817d422bd320d839a09fe3dc45f7fef 840w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-7.png?w=1100&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=3a44c879ba5f8acead299abea0cccf85 1100w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-7.png?w=1650&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=ac07fb366e9499c68516f7c316b80363 1650w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-7.png?w=2500&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=020d245bf6ed61f318639e7ba2c1bc85 2500w" />
+          <img alt="DigitalOcean registry dashboard" />
         </Frame>
 
         Make sure the details are correct, then click **Create Registry**.
@@ -9121,7 +10216,7 @@ In this guide, we will deploy a Bun HTTP server to DigitalOcean using a `Dockerf
         doctl registry create bun-digitalocean-demo
         ```
 
-        ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+        ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
         Name                     Endpoint                                           Region slug
         bun-digitalocean-demo    registry.digitalocean.com/bun-digitalocean-demo    sfo2
         ```
@@ -9131,7 +10226,7 @@ In this guide, we will deploy a Bun HTTP server to DigitalOcean using a `Dockerf
     You should see the new registry in the [**DigitalOcean registry dashboard**](https://cloud.digitalocean.com/registry):
 
     <Frame>
-            <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-1.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=e4a3dd728868d106a62ec6d4268a508b" alt="DigitalOcean registry dashboard" data-og-width="2636" width="2636" data-og-height="1414" height="1414" data-path="images/guides/digitalocean-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-1.png?w=280&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=cc5388db2eda9b7fb2c2a0f76edd296b 280w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-1.png?w=560&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=6ff10221098b5980fc6c103ed023ee69 560w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-1.png?w=840&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=903064b4a07e961c26754ed0a3f2c294 840w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-1.png?w=1100&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=a9197eb37047b47393c4bae7e6695091 1100w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-1.png?w=1650&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=47651c0f96748a5d235eb176b5f4d677 1650w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-1.png?w=2500&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=66b961845357efc825476cbaaddb5d48 2500w" />
+      <img alt="DigitalOcean registry dashboard" />
     </Frame>
   </Step>
 
@@ -9190,7 +10285,7 @@ In this guide, we will deploy a Bun HTTP server to DigitalOcean using a `Dockerf
     doctl registry login
     ```
 
-    ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
     Successfully authenticated with registry.digitalocean.com
     ```
 
@@ -9213,7 +10308,7 @@ In this guide, we will deploy a Bun HTTP server to DigitalOcean using a `Dockerf
     Once the image is pushed, you should see it in the [**DigitalOcean registry dashboard**](https://cloud.digitalocean.com/registry):
 
     <Frame>
-            <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-2.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=f60f8f2d8b6c60c319267693b89298da" alt="DigitalOcean registry dashboard" data-og-width="2636" width="2636" data-og-height="1414" height="1414" data-path="images/guides/digitalocean-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-2.png?w=280&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=862c1b67054a4a3efbb0a9d8ae26a498 280w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-2.png?w=560&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=da9a4634b026017fc46447b369a19f99 560w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-2.png?w=840&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=98ae1da8904194ce3c52937e6235fe7c 840w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-2.png?w=1100&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=454c4066d7333c671cbc9a398f38a255 1100w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-2.png?w=1650&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=0250a9f1fd7f2f0a72f01128ce359bca 1650w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-2.png?w=2500&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=44691a1cc9c0878b50ee215ab4f8a6d5 2500w" />
+      <img alt="DigitalOcean registry dashboard" />
     </Frame>
   </Step>
 
@@ -9221,19 +10316,19 @@ In this guide, we will deploy a Bun HTTP server to DigitalOcean using a `Dockerf
     In the DigitalOcean dashboard, go to [**App Platform**](https://cloud.digitalocean.com/apps) > **Create App**. We can create a project directly from the container image.
 
     <Frame>
-            <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-3.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=b5cec0c6e18eaa1ca0f664bbd8edbbea" alt="DigitalOcean App Platform project dashboard" data-og-width="5272" width="5272" data-og-height="2828" height="2828" data-path="images/guides/digitalocean-3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-3.png?w=280&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=9a0525f7863013b2903a305d3fd2e8a1 280w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-3.png?w=560&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=96b84796e197fe1c282276fbdaeeb065 560w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-3.png?w=840&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=62e154160ee7542f4cf2f80e8f53c983 840w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-3.png?w=1100&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=317610f78b3b00a91e103f295882211a 1100w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-3.png?w=1650&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=7e6783cc8b4622e14d5382e7ef3b3497 1650w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-3.png?w=2500&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=2f90c9cad5f099708ffacf71b55d55bc 2500w" />
+      <img alt="DigitalOcean App Platform project dashboard" />
     </Frame>
 
     Make sure the details are correct, then click **Next**.
 
     <Frame>
-            <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-4.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=abec52c09a5fc79c1202000634d2f558" alt="DigitalOcean App Platform service dashboard" data-og-width="5272" width="5272" data-og-height="2828" height="2828" data-path="images/guides/digitalocean-4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-4.png?w=280&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=fab80cdae4dbad58eb9cbe56be6ed88f 280w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-4.png?w=560&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=41a86d18f076ad2fb2faa1b9748f4765 560w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-4.png?w=840&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=716341b0e5bf296819e0b400d6e62670 840w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-4.png?w=1100&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=ef22737553d289f061374ba7d1600422 1100w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-4.png?w=1650&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=f4b04bb7254e5e3534947791b20090a8 1650w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-4.png?w=2500&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=d032119e65e0c21e69b4717db1f0ce95 2500w" />
+      <img alt="DigitalOcean App Platform service dashboard" />
     </Frame>
 
     Review and configure resource settings, then click **Create app**.
 
     <Frame>
-            <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-6.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=f14ad53fb062419b9970bb3b1d970e43" alt="DigitalOcean App Platform service dashboard" data-og-width="5036" width="5036" data-og-height="2688" height="2688" data-path="images/guides/digitalocean-6.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-6.png?w=280&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=adca27a6e469312b762ba014123d0182 280w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-6.png?w=560&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=f759a11619c6ca414590af00292e88d4 560w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-6.png?w=840&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=debb071a49c1f0ead8de2b7250ca3435 840w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-6.png?w=1100&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=2a957db16fdd06cc3ae8c43545eab886 1100w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-6.png?w=1650&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=4ee794d2504b63e16c410bd1d48b329e 1650w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-6.png?w=2500&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=2b095223b3bac5db5d37b0532c02b7b1 2500w" />
+      <img alt="DigitalOcean App Platform service dashboard" />
     </Frame>
   </Step>
 
@@ -9241,7 +10336,7 @@ In this guide, we will deploy a Bun HTTP server to DigitalOcean using a `Dockerf
     🥳 Your app is now live! Once the app is created, you should see it in the App Platform dashboard with the public URL.
 
     <Frame>
-            <img src="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-5.png?fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=155602e07d2a55d62fc2c1ccf01a3903" alt="DigitalOcean App Platform app dashboard" data-og-width="5036" width="5036" data-og-height="2688" height="2688" data-path="images/guides/digitalocean-5.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-5.png?w=280&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=cb08825444bd33300dfa03a9d17011d0 280w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-5.png?w=560&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=8fc3f29014c4783083be8b36f065058e 560w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-5.png?w=840&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=ec468abadee2a0c4dc0f6445f33058e2 840w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-5.png?w=1100&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=0ebe95291e367125ec62d2530c8eb0ba 1100w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-5.png?w=1650&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=f46959e3d5e6eed4dc1c4a21912dea8c 1650w, https://mintcdn.com/bun-1dd33a4e/TVJ0wXBZobUdB01H/images/guides/digitalocean-5.png?w=2500&fit=max&auto=format&n=TVJ0wXBZobUdB01H&q=85&s=21948e30cf8c83ec2136e79fd3cba6a2 2500w" />
+      <img alt="DigitalOcean App Platform app dashboard" />
     </Frame>
   </Step>
 </Steps>
@@ -9276,7 +10371,7 @@ In this guide, we will deploy a Bun HTTP server to Google Cloud Run using a `Doc
     gcloud init
     ```
 
-    ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
     Welcome! This command will take you through the configuration of gcloud.
 
     You must sign in to continue. Would you like to sign in (Y/n)? Y
@@ -9305,7 +10400,7 @@ In this guide, we will deploy a Bun HTTP server to Google Cloud Run using a `Doc
     echo $PROJECT_ID $PROJECT_NUMBER
     ```
 
-    ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
     my-bun-app-... [PROJECT_NUMBER]
     ```
   </Step>
@@ -9317,7 +10412,7 @@ In this guide, we will deploy a Bun HTTP server to Google Cloud Run using a `Doc
     gcloud billing accounts list
     ```
 
-    ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
     ACCOUNT_ID            NAME                OPEN  MASTER_ACCOUNT_ID
     [BILLING_ACCOUNT_ID]  My Billing Account  True
     ```
@@ -9328,7 +10423,7 @@ In this guide, we will deploy a Bun HTTP server to Google Cloud Run using a `Doc
     gcloud billing projects link $PROJECT_ID --billing-account=[BILLING_ACCOUNT_ID]
     ```
 
-    ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
     billingAccountName: billingAccounts/[BILLING_ACCOUNT_ID]
     billingEnabled: true
     name: projects/my-bun-app-.../billingInfo
@@ -9408,7 +10503,7 @@ In this guide, we will deploy a Bun HTTP server to Google Cloud Run using a `Doc
     gcloud run deploy my-bun-app --source . --region=us-west1 --allow-unauthenticated
     ```
 
-    ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
     Deploying from source requires an Artifact Registry Docker repository to store built containers. A repository named
     [cloud-run-source-deploy] in region [us-west1] will be created.
 
@@ -9447,8 +10542,8 @@ This guide walks through deploying a Bun application with a PostgreSQL database 
 
 You can either follow this guide step-by-step or simply deploy the pre-configured template with one click:
 
-<a href="https://railway.com/deploy/bun-react-postgres?referralCode=Bun&utm_medium=integration&utm_source=template&utm_campaign=bun" target="_blank">
-  <img src="https://railway.com/button.svg" alt="Deploy on Railway" />
+<a href="https://railway.com/deploy/bun-react-postgres?referralCode=Bun&utm_medium=integration&utm_source=template&utm_campaign=bun">
+  <img alt="Deploy on Railway" />
 </a>
 
 ***
@@ -9595,7 +10690,7 @@ As an example, let's deploy a simple Express HTTP server to Render.
   <Step title="Step 1">
     Create a new GitHub repo named `myapp`. Git clone it locally.
 
-    ```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
     git clone git@github.com:my-github-username/myapp.git
     cd myapp
     ```
@@ -9604,7 +10699,7 @@ As an example, let's deploy a simple Express HTTP server to Render.
   <Step title="Step 2">
     Add the Express library.
 
-    ```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
     bun add express
     ```
   </Step>
@@ -9662,30 +10757,6 @@ You can view the [deploy logs](https://docs.render.com/logging#logs-for-an-indiv
 Source: https://bun.com/docs/guides/deployment/vercel
 
 
-
-export const ProductCard = ({img, href, title, description, model, type}) => {
-  return <a href={href} target="_blank" rel="noopener noreferrer" className="group">
-      <div className="flex flex-col gap-4 rounded-xl md:p-1">
-        <div className="w-full h-32 overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-800">
-          <img src={img} className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" alt={title} loading="lazy" />
-        </div>
-        <div className="flex flex-col gap-3 pb-2">
-          <h2 className="text-md font-medium text-gray-900 dark:text-gray-200 group-hover:text-gray-600 dark:group-hover:text-gray-400 transition-colors mb-[-8px]">
-            {title}
-          </h2>
-          <p className="text-gray-500 dark:text-gray-400 text-sm font-medium">{description}</p>
-          <div className="flex gap-2 mt-2 mb-1">
-            <span className="bg-gray-100 dark:bg-[#181817] text-gray-600 dark:text-white rounded-lg px-2 py-1 text-sm font-medium">
-              {model}
-            </span>
-            <span className="bg-primary-light dark:bg-primary-dark text-white dark:text-white rounded-lg px-2 py-1 text-sm font-medium">
-              {type}
-            </span>
-          </div>
-        </div>
-      </div>
-    </a>;
-};
 
 [Vercel](https://vercel.com/) is a cloud platform that lets you build, deploy, and scale your apps.
 
@@ -9762,8 +10833,8 @@ export const ProductCard = ({img, href, title, description, model, type}) => {
     console.log("runtime", process.versions.bun);
     ```
 
-    ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
-    runtime 1.3.2
+    ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
+    runtime 1.3.3
     ```
 
     [See the Vercel Bun Runtime documentation for feature support →](https://vercel.com/docs/functions/runtimes/bun#feature-support)
@@ -9791,7 +10862,7 @@ Initialize a fresh Astro app with `bun create astro`. The `create-astro` package
 bun create astro
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 ╭─────╮  Houston:
 │ ◠ ◡ ◠  We're glad to have you on board.
 ╰─────╯
@@ -9843,7 +10914,7 @@ By default, Bun will run the dev server with Node.js. To use the Bun runtime ins
 bunx --bun astro dev
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
   🚀  astro  v3.1.4 started in 200ms
 
   ┃ Local    http://localhost:4321/
@@ -9855,7 +10926,7 @@ bunx --bun astro dev
 Open [http://localhost:4321](http://localhost:4321) with your browser to see the result. Astro will hot-reload your app as you edit your source files.
 
 <Frame>
-  <img src="https://i.imgur.com/Dswiu6w.png" caption="An Astro v3 starter app running on Bun" />
+  <img />
 </Frame>
 
 ***
@@ -9886,7 +10957,7 @@ bun add discord.js
 
 ***
 
-Before we go further, we need to go to the [Discord developer portal](https://discord.com/developers/applications), login/signup, create a new *Application*, then create a new *Bot* within that application. Follow the [official guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot) for step-by-step instructions.
+Before we go further, we need to go to the [Discord developer portal](https://discord.com/developers/applications), login/signup, create a new *Application*, then create a new *Bot* within that application. Follow the [official guide](https://discordjs.guide/legacy/preparations/app-setup#creating-your-bot) for step-by-step instructions.
 
 ***
 
@@ -9894,8 +10965,8 @@ Once complete, you'll be presented with your bot's *private key*. Let's add this
 
 <Note>This is an example token that has already been invalidated.</Note>
 
-```txt .env.local icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
-DISCORD_TOKEN=DISCORD_TOKEN_REDACTED
+```ini .env.local icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+DISCORD_TOKEN=NzkyNzE1NDU0MTk2MDg4ODQy.X-hvzA.Ovy4MCQywSkoMRRclStW4xAYK7I
 ```
 
 ***
@@ -9935,7 +11006,7 @@ Now we can run our bot with `bun run`. It may take a several seconds for the cli
 bun run bot.ts
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 Ready! Logged in as my-bot#1234
 ```
 
@@ -10032,7 +11103,7 @@ The `-t` flag lets us specify a name for the image, and `--pull` tells Docker to
 docker build --pull -t bun-hello-world .
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 [+] Building 0.9s (21/21) FINISHED
  => [internal] load build definition from Dockerfile                                                                                     0.0s
  => => transferring dockerfile: 37B                                                                                                      0.0s
@@ -10062,7 +11133,7 @@ The `run` command prints a string representing the *container ID*.
 docker run -d -p 3000:3000 bun-hello-world
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 7f03e212a15ede8644379bce11a13589f563d3909a9640446c5bbefce993678d
 ```
 
@@ -10086,7 +11157,7 @@ If you can't find the container ID, you can use `docker ps` to list all running 
 docker ps
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
 7f03e212a15e        bun-hello-world     "bun run index.ts"       2 minutes ago       Up 2 minutes        0.0.0.0:3000->3000/tcp   flamboyant_cerf
 ```
@@ -10146,7 +11217,7 @@ Then run `index.ts` with Bun. Bun will automatically create `sqlite.db` and exec
 bun run index.ts
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
   text: "hello world"
 }
@@ -10245,7 +11316,7 @@ Then run this file.
 bun run seed.ts
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 Seeding complete.
 ```
 
@@ -10269,7 +11340,7 @@ Then run the file. You should see the three movies we inserted.
 bun run index.ts
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 [
   {
     id: 1,
@@ -10332,8 +11403,8 @@ Source: https://bun.com/docs/guides/ecosystem/express
 Express and other major Node.js HTTP libraries should work out of the box. Bun implements the [`node:http`](https://nodejs.org/api/http.html) and [`node:https`](https://nodejs.org/api/https.html) modules that these libraries rely on.
 
 <Note>
-  Refer to the [Runtime > Node.js APIs](https://bun.com/docs/runtime/nodejs-apis#node-http) page for more detailed
-  compatibility information.
+  Refer to the [Runtime > Node.js APIs](/runtime/nodejs-compat#node-http) page for more detailed compatibility
+  information.
 </Note>
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
@@ -10411,7 +11482,7 @@ We'll use the Gel CLI to initialize a Gel instance for our project. This creates
 gel project init
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 No `gel.toml` found in `/Users/colinmcd94/Documents/bun/fun/examples/my-gel-app` or above
 Do you want to initialize a new project? [Y/n]
 > Y
@@ -10445,7 +11516,7 @@ gel
 gel> select 1 + 1;
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 2
 ```
 
@@ -10486,7 +11557,7 @@ Then generate and apply an initial migration.
 gel migration create
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 Created /Users/colinmcd94/Documents/bun/fun/examples/my-gel-app/dbschema/migrations/00001.edgeql, id: m1uwekrn4ni4qs7ul7hfar4xemm5kkxlpswolcoyqj3xdhweomwjrq
 ```
 
@@ -10494,7 +11565,7 @@ Created /Users/colinmcd94/Documents/bun/fun/examples/my-gel-app/dbschema/migrati
 gel migrate
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 Applied m1uwekrn4ni4qs7ul7hfar4xemm5kkxlpswolcoyqj3xdhweomwjrq (00001.edgeql)
 ```
 
@@ -10549,7 +11620,7 @@ Then run this file with Bun.
 bun run seed.ts
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 Seeding complete.
 ```
 
@@ -10561,7 +11632,7 @@ Gel implements a number of code generation tools for TypeScript. To query our ne
 bunx @gel/generate edgeql-js
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 Generating query builder...
 Detected tsconfig.json, generating TypeScript files.
    To override this, use the --target flag.
@@ -10608,7 +11679,7 @@ Running the file with Bun, we can see the list of movies we inserted.
 bun run index.ts
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 [
   {
     title: "The Matrix",
@@ -10652,7 +11723,7 @@ Use `create-hono` to get started with one of Hono's project templates. Select `b
 bun create hono myapp
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 ✔ Which template do you want to use? › bun
 cloned honojs/starter#main to /path/to/myapp
 ✔ Copied project files
@@ -10760,13 +11831,13 @@ Let's run this with `bun run`.
 bun run index.ts
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 Moo!
 ```
 
 ***
 
-This is a simple introduction to using Mongoose with TypeScript and Bun. As you build your application, refer to the official [MongoDB](https://docs.mongodb.com/) and [Mongoose](https://mongoosejs.com/docs/) sites for complete documentation.
+This is a simple introduction to using Mongoose with TypeScript and Bun. As you build your application, refer to the official [MongoDB](https://www.mongodb.com/docs) and [Mongoose](https://mongoosejs.com/docs/) sites for complete documentation.
 
 
 # Use Neon Postgres through Drizzle ORM
@@ -10790,7 +11861,7 @@ bun add -D drizzle-kit
 
 Create a `.env.local` file and add your [Neon Postgres connection string](https://neon.tech/docs/connect/connect-from-any-app) to it.
 
-```txt .env.local icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ini .env.local icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 DATABASE_URL=postgresql://usertitle:password@ep-adj-noun-guid.us-east-1.aws.neon.tech/neondb?sslmode=require
 ```
 
@@ -10803,7 +11874,7 @@ import { neon } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-http";
 
 // Bun automatically loads the DATABASE_URL from .env.local
-// Refer to: https://bun.com/docs/runtime/env for more information
+// Refer to: https://bun.com/docs/runtime/environment-variables for more information
 const sql = neon(process.env.DATABASE_URL!);
 
 export const db = drizzle(sql);
@@ -10830,7 +11901,7 @@ Then run `index.ts` with Bun.
 bun run index.ts
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 [
   {
     text: "hello world",
@@ -10857,7 +11928,7 @@ export const authors = pgTable("authors", {
 
 We then use the `drizzle-kit` CLI to generate an initial SQL migration.
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 bunx drizzle-kit generate --dialect postgresql --schema ./schema.ts --out ./drizzle
 ```
 
@@ -10902,7 +11973,7 @@ We can run this script with `bun` to execute the migration.
 bun run migrate.ts
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 Migration completed
 ```
 
@@ -10952,7 +12023,7 @@ Then run this file.
 bun run seed.ts
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 Seeding completed
 ```
 
@@ -10976,7 +12047,7 @@ Then run the file. You should see the three authors we inserted.
 bun run index.ts
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 [
   {
     id: 1,
@@ -11026,7 +12097,7 @@ bun add @neondatabase/serverless
 
 Create a `.env.local` file and add your [Neon Postgres connection string](https://neon.tech/docs/connect/connect-from-any-app) to it.
 
-```sh .env.local icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ini .env.local icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 DATABASE_URL=postgresql://usertitle:password@ep-adj-noun-guid.us-east-1.aws.neon.tech/neondb?sslmode=require
 ```
 
@@ -11038,7 +12109,7 @@ Paste the following code into your project's `index.ts` file.
 import { neon } from "@neondatabase/serverless";
 
 // Bun automatically loads the DATABASE_URL from .env.local
-// Refer to: https://bun.com/docs/runtime/env for more information
+// Refer to: https://bun.com/docs/runtime/environment-variables for more information
 const sql = neon(process.env.DATABASE_URL);
 
 const rows = await sql`SELECT version()`;
@@ -11054,7 +12125,7 @@ Start the program using `bun ./index.ts`. The Postgres version should be printed
 bun ./index.ts
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 PostgreSQL 16.2 on x86_64-pc-linux-gnu, compiled by gcc (Debian 10.2.1-6) 10.2.1 20210110, 64-bit
 ```
 
@@ -11117,28 +12188,28 @@ Source: https://bun.com/docs/guides/ecosystem/nextjs
 
 Next.js applications on Bun can be deployed to various platforms.
 
-<Columns cols={3}>
-  <Card title="Vercel" href="/guides/deployment/vercel" icon="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/vercel.svg?fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=7b490676c38ef9af753b06839da7b0d5" data-og-width="24" width="24" data-og-height="24" height="24" data-path="icons/ecosystem/vercel.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/vercel.svg?w=280&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=2f69041eb662751245ec01ba3527ecd8 280w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/vercel.svg?w=560&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=609f20ff2ed7594be55b116e4494992e 560w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/vercel.svg?w=840&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=820754843eee374bc001239722843b66 840w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/vercel.svg?w=1100&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=54214a62c5e8e1759053c6564bdefa00 1100w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/vercel.svg?w=1650&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=9ad9d51c642614aeecc862e5eda92769 1650w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/vercel.svg?w=2500&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=31f64e55a394f091b6bd2ea1addcc81d 2500w">
+<Columns>
+  <Card title="Vercel" href="/guides/deployment/vercel" icon="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/vercel.svg?fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=7b490676c38ef9af753b06839da7b0d5">
     Deploy on Vercel
   </Card>
 
-  <Card title="Railway" href="/guides/deployment/railway" icon="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/railway.svg?fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=da50a9424b0121975a3bd68e7038425e" data-og-width="24" width="24" data-og-height="24" height="24" data-path="icons/ecosystem/railway.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/railway.svg?w=280&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=5d92b7b3a99cab4be57b47e98defbea7 280w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/railway.svg?w=560&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=4bc63226740ecf04c9b298ee1105c0e1 560w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/railway.svg?w=840&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=527f923f52727abc1ce67908e9c5b2ff 840w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/railway.svg?w=1100&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=bff160d79c9c66e4f7a13fb6939ffceb 1100w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/railway.svg?w=1650&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=eb43bbea39d2196b3fcb47c18e774088 1650w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/railway.svg?w=2500&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=58f7a6355b2dab425837e9db4acf5331 2500w">
+  <Card title="Railway" href="/guides/deployment/railway" icon="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/railway.svg?fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=da50a9424b0121975a3bd68e7038425e">
     Deploy on Railway
   </Card>
 
-  <Card title="DigitalOcean" href="/guides/deployment/digital-ocean" icon="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/digitalocean.svg?fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=b3f34ba0a9eb2c1968261738759f2542" data-og-width="24" width="24" data-og-height="24" height="24" data-path="icons/ecosystem/digitalocean.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/digitalocean.svg?w=280&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=f5bbb63d61a2efc0069e9c183d3b5e17 280w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/digitalocean.svg?w=560&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=85cb6a584256530a3ee9d24feb64270e 560w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/digitalocean.svg?w=840&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=cd335fd9d8044f4ed397aeae3bb1fbbd 840w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/digitalocean.svg?w=1100&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=7970f7f05261da6e74b82ff083407d12 1100w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/digitalocean.svg?w=1650&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=38ea910de0c72805687a5ce5eed5ec85 1650w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/digitalocean.svg?w=2500&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=791dfae56d923ad3b4138f2af0f166f3 2500w">
+  <Card title="DigitalOcean" href="/guides/deployment/digital-ocean" icon="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/digitalocean.svg?fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=b3f34ba0a9eb2c1968261738759f2542">
     Deploy on DigitalOcean
   </Card>
 
-  <Card title="AWS Lambda" href="/guides/deployment/aws-lambda" icon="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/aws.svg?fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=9733e5ae5faecf5974cbd02661e2b4f2" data-og-width="24" width="24" data-og-height="24" height="24" data-path="icons/ecosystem/aws.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/aws.svg?w=280&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=02e6a70e9cde46ee6585aa3039e69b78 280w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/aws.svg?w=560&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=a1b1e1e231ea958b59d5a34775895d0e 560w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/aws.svg?w=840&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=c8d2666a491fa6b47ea679c6cb65a4e4 840w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/aws.svg?w=1100&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=32bc998e13779a0aa66ce871ffe1e142 1100w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/aws.svg?w=1650&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=058e1867257a251103dc7aa9f18e978f 1650w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/aws.svg?w=2500&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=2c54181e45f6d9f7ce123e806fb82b20 2500w">
+  <Card title="AWS Lambda" href="/guides/deployment/aws-lambda" icon="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/aws.svg?fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=9733e5ae5faecf5974cbd02661e2b4f2">
     Deploy on AWS Lambda
   </Card>
 
-  <Card title="Google Cloud Run" href="/guides/deployment/google-cloud-run" icon="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/gcp.svg?fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=a99e6cb0cfadfeb9ea3b6451de38cfd6" data-og-width="24" width="24" data-og-height="24" height="24" data-path="icons/ecosystem/gcp.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/gcp.svg?w=280&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=a6f174aab45cb9ca3897b5778f7633b1 280w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/gcp.svg?w=560&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=cfad48954d945d8d67aba73f18d2aa13 560w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/gcp.svg?w=840&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=6ffa7b2f6e6c11ac40fc9a5488427774 840w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/gcp.svg?w=1100&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=b6dd2138983435a4d422b71b91d0b15f 1100w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/gcp.svg?w=1650&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=46ad1c3252441bd6fbc4bfb971d46f51 1650w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/gcp.svg?w=2500&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=79fc209305615cfabb18fbe87e222dfb 2500w">
+  <Card title="Google Cloud Run" href="/guides/deployment/google-cloud-run" icon="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/gcp.svg?fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=a99e6cb0cfadfeb9ea3b6451de38cfd6">
     Deploy on Google Cloud Run
   </Card>
 
-  <Card title="Render" href="/guides/deployment/render" icon="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/render.svg?fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=5ac8410728c8e2d747afc287b0b715d9" data-og-width="24" width="24" data-og-height="24" height="24" data-path="icons/ecosystem/render.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/render.svg?w=280&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=c0beb6dc253fcd42650723cd90bb5bd2 280w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/render.svg?w=560&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=00c29c4cf4115f8ba0daa533b4848488 560w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/render.svg?w=840&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=d5db21c928f4cd6b3e80a9ded655ec14 840w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/render.svg?w=1100&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=3fa7c5864b3dc8d83ff21dded48019f1 1100w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/render.svg?w=1650&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=368a4e41d28bcf0dd4098084ce7d3d46 1650w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/render.svg?w=2500&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=1043be998c07fb677d8f8d759e4f893f 2500w">
+  <Card title="Render" href="/guides/deployment/render" icon="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/render.svg?fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=5ac8410728c8e2d747afc287b0b715d9">
     Deploy on Render
   </Card>
 </Columns>
@@ -11147,12 +12218,12 @@ Next.js applications on Bun can be deployed to various platforms.
 
 ## Templates
 
-<Columns cols={2}>
-  <Card title="Bun + Next.js Basic Starter" img="https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-nextjs-basic.png?fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=2bc9edb73c9c49d88e8ced9e2158f75a" href="https://github.com/bun-templates/bun-nextjs-basic" arrow="true" cta="Go to template" data-og-width="2212" width="2212" data-og-height="1326" height="1326" data-path="images/templates/bun-nextjs-basic.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-nextjs-basic.png?w=280&fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=160758dc2a48557d0301e9c2fe829798 280w, https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-nextjs-basic.png?w=560&fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=0c9dcae75ad19b90177058dbae5f32af 560w, https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-nextjs-basic.png?w=840&fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=258cca0ee15886eca7311900830b6f55 840w, https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-nextjs-basic.png?w=1100&fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=cbcaa1b859dee4c29e8f66b312190d95 1100w, https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-nextjs-basic.png?w=1650&fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=e3159754a96b2df91abe8031fe28fdf3 1650w, https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-nextjs-basic.png?w=2500&fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=53b213380cf3557c76f878dea8a0dc4e 2500w">
+<Columns>
+  <Card title="Bun + Next.js Basic Starter" href="https://github.com/bun-templates/bun-nextjs-basic">
     A simple App Router starter with Bun, Next.js, and Tailwind CSS.
   </Card>
 
-  <Card title="Todo App with Next.js + Bun" img="https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-nextjs-todo.png?fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=e8f398caf487c6b925a53025c42f4dab" href="https://github.com/bun-templates/bun-nextjs-todo" arrow="true" cta="Go to template" data-og-width="2212" width="2212" data-og-height="1326" height="1326" data-path="images/templates/bun-nextjs-todo.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-nextjs-todo.png?w=280&fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=f6f04b64c40c8daaf8394b3c0882dcb2 280w, https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-nextjs-todo.png?w=560&fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=a01481b9ceca0962b512d9b30aed1cef 560w, https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-nextjs-todo.png?w=840&fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=72fccde7136063268cdcd85957d58a94 840w, https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-nextjs-todo.png?w=1100&fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=b028ce3baf3d39a3b80e6107d4780c36 1100w, https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-nextjs-todo.png?w=1650&fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=53e085fca400339cc39e1523b3c11528 1650w, https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-nextjs-todo.png?w=2500&fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=61fa70b5a2ac1b5035888634f053155f 2500w">
+  <Card title="Todo App with Next.js + Bun" href="https://github.com/bun-templates/bun-nextjs-todo">
     A full-stack todo application built with Bun, Next.js, and PostgreSQL.
   </Card>
 </Columns>
@@ -11173,11 +12244,11 @@ Bun supports [Nuxt](https://nuxt.com) out of the box. Initialize a Nuxt app with
 bunx nuxi init my-nuxt-app
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 ✔ Which package manager would you like to use?
 bun
 ◐ Installing dependencies...
-bun install v1.3.2 (16b4bf34)
+bun install v1.3.3 (16b4bf34)
  + @nuxt/devtools@0.8.2
  + nuxt@3.7.0
  785 packages installed [2.67s]
@@ -11201,7 +12272,7 @@ cd my-nuxt-app
 bun --bun run dev
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 nuxt dev
 Nuxi 3.6.5
 Nuxt 3.6.5 with Nitro 2.5.2
@@ -11235,6 +12306,12 @@ export default defineNuxtConfig({
     preset: "bun", // [!code ++]
   },
 });
+```
+
+Alternatively, you can set the preset via environment variable:
+
+```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+NITRO_PRESET=bun bun run build
 ```
 
 <Note>
@@ -11287,7 +12364,7 @@ Alternatively, you can create a PM2 configuration file. Create a file named `pm2
 
 ```js pm2.config.js icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 module.exports = {
-  title: "app", // Name of your application
+  name: "app", // Name of your application
   script: "index.ts", // Entry point of your application
   interpreter: "bun", // Bun interpreter
   env: {
@@ -11379,7 +12456,7 @@ Source: https://bun.com/docs/guides/ecosystem/prisma
      bunx --bun prisma migrate dev --name init
     ```
 
-    ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
     Environment variables loaded from .env
     Prisma schema loaded from prisma/schema.prisma
     Datasource "db": SQLite database "dev.db" at "file:./dev.db"
@@ -11447,7 +12524,7 @@ Source: https://bun.com/docs/guides/ecosystem/prisma
     bun run index.ts
     ```
 
-    ```txg  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```txg theme={"theme":{"light":"github-light","dark":"dracula"}}
     Created john-0.12802932895402364@example.com
     There are 1 users in the database.
     ```
@@ -11456,7 +12533,7 @@ Source: https://bun.com/docs/guides/ecosystem/prisma
     bun run index.ts
     ```
 
-    ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
     Created john-0.8671308799782803@example.com
     There are 2 users in the database.
     ```
@@ -11465,7 +12542,7 @@ Source: https://bun.com/docs/guides/ecosystem/prisma
     bun run index.ts
     ```
 
-    ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
     Created john-0.4465968383115295@example.com
     There are 3 users in the database.
     ```
@@ -11474,7 +12551,7 @@ Source: https://bun.com/docs/guides/ecosystem/prisma
 
 ***
 
-That's it! Now that you've set up Prisma using Bun, we recommend referring to the [official Prisma docs](https://www.prisma.io/docs/concepts/components/prisma-client) as you continue to develop your application.
+That's it! Now that you've set up Prisma using Bun, we recommend referring to the [official Prisma docs](https://www.prisma.io/docs/orm/prisma-client) as you continue to develop your application.
 
 
 # Use Prisma Postgres with Bun
@@ -11540,7 +12617,7 @@ Source: https://bun.com/docs/guides/ecosystem/prisma-postgres
   <Step title="Configure database connection">
     Set up your Postgres database URL in the `.env` file.
 
-    ```env .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```ini .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
     DATABASE_URL="postgresql://username:password@localhost:5432/mydb?schema=public"
     ```
   </Step>
@@ -11554,7 +12631,7 @@ Source: https://bun.com/docs/guides/ecosystem/prisma-postgres
     bunx --bun prisma migrate dev --name init
     ```
 
-    ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
     Environment variables loaded from .env
     Prisma schema loaded from prisma/schema.prisma
     Datasource "db": PostgreSQL database "mydb", schema "public" at "localhost:5432"
@@ -11619,7 +12696,7 @@ Source: https://bun.com/docs/guides/ecosystem/prisma-postgres
     bun run index.ts
     ```
 
-    ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
     There are 1 users in the database.
     ```
 
@@ -11627,7 +12704,7 @@ Source: https://bun.com/docs/guides/ecosystem/prisma-postgres
     bun run index.ts
     ```
 
-    ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
     There are 2 users in the database.
     ```
 
@@ -11635,7 +12712,7 @@ Source: https://bun.com/docs/guides/ecosystem/prisma-postgres
     bun run index.ts
     ```
 
-    ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
     There are 3 users in the database.
     ```
   </Step>
@@ -11659,7 +12736,7 @@ The `create-qwik` package detects when you are using `bunx` and will automatical
 bun create qwik
 ```
 
-```txts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txts theme={"theme":{"light":"github-light","dark":"dracula"}}
       ............
     .::: :--------:.
    .::::  .:-------:.
@@ -11712,14 +12789,14 @@ bun create qwik
 │  bun qwik add                                        │
 │                                                      │
 │  Relevant docs:                                      │
-│  https://qwik.builder.io/docs/getting-started/       │
+│  https://qwik.dev/docs/getting-started/              │
 │                                                      │
 │  Questions? Start the conversation at:               │
-│  https://qwik.builder.io/chat                        │
+│  https://qwik.dev/chat                               │
 │  https://twitter.com/QwikDev                         │
 │                                                      │
 │  Presentations, Podcasts and Videos:                 │
-│  https://qwik.builder.io/media/                      │
+│  https://qwik.dev/media/                             │
 │                                                      │
 │  Next steps:                                         │
 │  cd my-app                                           │
@@ -11740,7 +12817,7 @@ Run `bun run dev` to start the development server.
 bun run dev
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 $ vite--mode ssr
 
 VITE v4.4.7  ready in 1190 ms
@@ -11758,7 +12835,7 @@ Open [http://localhost:5173](http://localhost:5173) with your browser to see the
 
 ***
 
-Refer to the [Qwik docs](https://qwik.builder.io/docs/getting-started/) for complete documentation.
+Refer to the [Qwik docs](https://qwik.dev/docs/getting-started/) for complete documentation.
 
 
 # Build a React app with Bun
@@ -11832,7 +12909,7 @@ Initialize a Remix app with `create-remix`.
 bun create remix
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
  remix   v1.19.3 💿 Let's build a better website...
 
    dir   Where should we create your new project?
@@ -11864,7 +12941,7 @@ cd my-app
 bun run dev
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 $ remix dev
 
 💿  remix dev
@@ -11890,7 +12967,7 @@ To build and start your app, run `bun run build`
 bun run build
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 $ remix build
 info  building... (NODE_ENV=production)
 info  built (158ms)
@@ -11902,7 +12979,7 @@ Then `bun run start` from the project root.
 bun start
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 $ remix-serve ./build/index.js
 [remix-serve] http://localhost:3000 (http://192.168.86.237:3000)
 ```
@@ -11933,7 +13010,7 @@ bun add @sentry/bun
 
 Then, initialize the Sentry SDK with your Sentry DSN in your app's entry file. You can find your DSN in your Sentry project settings.
 
-```js sentry.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts sentry.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import * as Sentry from "@sentry/bun";
 
 // Ensure to call this before importing any other modules!
@@ -11950,7 +13027,7 @@ Sentry.init({
 
 You can verify that Sentry is working by capturing a test error:
 
-```js sentry.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts sentry.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 setTimeout(() => {
   try {
     foo();
@@ -11972,66 +13049,62 @@ Source: https://bun.com/docs/guides/ecosystem/solidstart
 
 
 
-<Warning>
-  SolidStart currently relies on Node.js APIs that Bun does not yet implement. The guide below uses Bun to initialize a
-  project and install dependencies, but it uses Node.js to run the dev server.
-</Warning>
-
-***
-
-Initialize a SolidStart app with `create-solid`.
+Initialize a SolidStart app with `create-solid`. You can specify the `--solidstart` flag to create a SolidStart project, and `--ts` for TypeScript support. When prompted for a template, select `basic` for a minimal starter app.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun create solid my-app
+bun create solid my-app --solidstart --ts
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
-create-solid version 0.2.31
-
-Welcome to the SolidStart setup wizard!
-
-There are definitely bugs and some feature might not work yet.
-If you encounter an issue, have a look at
-https://github.com/solidjs/solid-start/issues and open a new one,
-if it is not already tracked.
-
-✔ Which template do you want to use? › todomvc
-✔ Server Side Rendering? … yes
-✔ Use TypeScript? … yes
-cloned solidjs/solid-start#main to /path/to/my-app/.solid-start
-✔ Copied project files
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
+┌
+ Create-Solid v0.6.11
+│
+◇  Project Name
+│  my-app
+│
+◇  Which template would you like to use?
+│  basic
+│
+◇  Project created 🎉
+│
+◇  To get started, run: ─╮
+│                        │
+│  cd my-app             │
+│  bun install           │
+│  bun dev               │
+│                        │
+├────────────────────────╯
 ```
 
 ***
 
-As instructed by the `create-solid` CLI, let's install our dependencies.
+As instructed by the `create-solid` CLI, install the dependencies.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 cd my-app
 bun install
 ```
 
-***
-
-Then run the development server.
+Then run the development server with `bun dev`.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun run dev
-# or, equivalently
-bunx solid-start dev
+bun dev
 ```
 
-***
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
+$ vinxi dev
+vinxi v0.5.8
+vinxi starting dev server
+
+  ➜ Local:    http://localhost:3000/
+  ➜ Network:  use --host to expose
+```
 
 Open [localhost:3000](http://localhost:3000). Any changes you make to `src/routes/index.tsx` will be hot-reloaded automatically.
 
-<Frame>
-  ![SolidStart demo app](https://github.com/oven-sh/bun/assets/3084745/1e8043c4-49d1-498c-9add-c1eaab6c7167)
-</Frame>
-
 ***
 
-Refer to the [SolidStart website](https://start.solidjs.com/getting-started/what-is-solidstart) for complete framework documentation.
+Refer to the [SolidStart website](https://docs.solidjs.com/solid-start) for complete framework documentation.
 
 
 # Server-side render (SSR) a React component
@@ -12150,7 +13223,7 @@ Use `sv create my-app` to create a SvelteKit project with SvelteKit CLI. Answer 
 bunx sv create my-app
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 ┌  Welcome to the Svelte CLI! (v0.5.7)
 │
 ◇  Which template would you like?
@@ -12197,7 +13270,7 @@ cd my-app
 bun --bun run dev
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
   $ vite dev
   Forced re-optimization of dependencies
 
@@ -12228,7 +13301,7 @@ To build for production, you'll need to add the right SvelteKit adapter. Current
 
 Now, make the following changes to your `svelte.config.js`.
 
-```ts svelte.config.js icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js svelte.config.js icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import adapter from "@sveltejs/adapter-auto"; // [!code --]
 import adapter from "svelte-adapter-bun"; // [!code ++]
 import { vitePreprocess } from "@sveltejs/vite-plugin-svelte";
@@ -12258,7 +13331,7 @@ To build a production bundle:
 bun --bun run build
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
   $ vite build
   vite v5.4.10 building SSR bundle for production...
   "confetti" is imported from external module "@neoconfetti/svelte" but never used in "src/routes/sverdle/+page.svelte".
@@ -12359,7 +13432,7 @@ Check the status of your application with `systemctl status`. If you've started 
 systemctl status my-app
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 ● my-app.service - My App
      Loaded: loaded (/lib/systemd/system/my-app.service; enabled; preset: enabled)
      Active: active (running) since Thu 2023-10-12 11:34:08 UTC; 1h 8min ago
@@ -13122,28 +14195,28 @@ To host your TanStack Start app, you can use [Nitro](https://nitro.build/) or a 
   </Tab>
 </Tabs>
 
-<Columns cols={3}>
-  <Card title="Vercel" href="/guides/deployment/vercel" icon="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/vercel.svg?fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=7b490676c38ef9af753b06839da7b0d5" data-og-width="24" width="24" data-og-height="24" height="24" data-path="icons/ecosystem/vercel.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/vercel.svg?w=280&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=2f69041eb662751245ec01ba3527ecd8 280w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/vercel.svg?w=560&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=609f20ff2ed7594be55b116e4494992e 560w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/vercel.svg?w=840&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=820754843eee374bc001239722843b66 840w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/vercel.svg?w=1100&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=54214a62c5e8e1759053c6564bdefa00 1100w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/vercel.svg?w=1650&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=9ad9d51c642614aeecc862e5eda92769 1650w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/vercel.svg?w=2500&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=31f64e55a394f091b6bd2ea1addcc81d 2500w">
+<Columns>
+  <Card title="Vercel" href="/guides/deployment/vercel" icon="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/vercel.svg?fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=7b490676c38ef9af753b06839da7b0d5">
     Deploy on Vercel
   </Card>
 
-  <Card title="Render" href="/guides/deployment/render" icon="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/render.svg?fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=5ac8410728c8e2d747afc287b0b715d9" data-og-width="24" width="24" data-og-height="24" height="24" data-path="icons/ecosystem/render.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/render.svg?w=280&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=c0beb6dc253fcd42650723cd90bb5bd2 280w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/render.svg?w=560&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=00c29c4cf4115f8ba0daa533b4848488 560w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/render.svg?w=840&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=d5db21c928f4cd6b3e80a9ded655ec14 840w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/render.svg?w=1100&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=3fa7c5864b3dc8d83ff21dded48019f1 1100w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/render.svg?w=1650&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=368a4e41d28bcf0dd4098084ce7d3d46 1650w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/render.svg?w=2500&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=1043be998c07fb677d8f8d759e4f893f 2500w">
+  <Card title="Render" href="/guides/deployment/render" icon="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/render.svg?fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=5ac8410728c8e2d747afc287b0b715d9">
     Deploy on Render
   </Card>
 
-  <Card title="Railway" href="/guides/deployment/railway" icon="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/railway.svg?fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=da50a9424b0121975a3bd68e7038425e" data-og-width="24" width="24" data-og-height="24" height="24" data-path="icons/ecosystem/railway.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/railway.svg?w=280&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=5d92b7b3a99cab4be57b47e98defbea7 280w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/railway.svg?w=560&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=4bc63226740ecf04c9b298ee1105c0e1 560w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/railway.svg?w=840&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=527f923f52727abc1ce67908e9c5b2ff 840w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/railway.svg?w=1100&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=bff160d79c9c66e4f7a13fb6939ffceb 1100w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/railway.svg?w=1650&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=eb43bbea39d2196b3fcb47c18e774088 1650w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/railway.svg?w=2500&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=58f7a6355b2dab425837e9db4acf5331 2500w">
+  <Card title="Railway" href="/guides/deployment/railway" icon="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/railway.svg?fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=da50a9424b0121975a3bd68e7038425e">
     Deploy on Railway
   </Card>
 
-  <Card title="DigitalOcean" href="/guides/deployment/digital-ocean" icon="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/digitalocean.svg?fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=b3f34ba0a9eb2c1968261738759f2542" data-og-width="24" width="24" data-og-height="24" height="24" data-path="icons/ecosystem/digitalocean.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/digitalocean.svg?w=280&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=f5bbb63d61a2efc0069e9c183d3b5e17 280w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/digitalocean.svg?w=560&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=85cb6a584256530a3ee9d24feb64270e 560w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/digitalocean.svg?w=840&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=cd335fd9d8044f4ed397aeae3bb1fbbd 840w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/digitalocean.svg?w=1100&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=7970f7f05261da6e74b82ff083407d12 1100w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/digitalocean.svg?w=1650&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=38ea910de0c72805687a5ce5eed5ec85 1650w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/digitalocean.svg?w=2500&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=791dfae56d923ad3b4138f2af0f166f3 2500w">
+  <Card title="DigitalOcean" href="/guides/deployment/digital-ocean" icon="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/digitalocean.svg?fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=b3f34ba0a9eb2c1968261738759f2542">
     Deploy on DigitalOcean
   </Card>
 
-  <Card title="AWS Lambda" href="/guides/deployment/aws-lambda" icon="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/aws.svg?fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=9733e5ae5faecf5974cbd02661e2b4f2" data-og-width="24" width="24" data-og-height="24" height="24" data-path="icons/ecosystem/aws.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/aws.svg?w=280&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=02e6a70e9cde46ee6585aa3039e69b78 280w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/aws.svg?w=560&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=a1b1e1e231ea958b59d5a34775895d0e 560w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/aws.svg?w=840&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=c8d2666a491fa6b47ea679c6cb65a4e4 840w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/aws.svg?w=1100&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=32bc998e13779a0aa66ce871ffe1e142 1100w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/aws.svg?w=1650&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=058e1867257a251103dc7aa9f18e978f 1650w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/aws.svg?w=2500&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=2c54181e45f6d9f7ce123e806fb82b20 2500w">
+  <Card title="AWS Lambda" href="/guides/deployment/aws-lambda" icon="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/aws.svg?fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=9733e5ae5faecf5974cbd02661e2b4f2">
     Deploy on AWS Lambda
   </Card>
 
-  <Card title="Google Cloud Run" href="/guides/deployment/google-cloud-run" icon="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/gcp.svg?fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=a99e6cb0cfadfeb9ea3b6451de38cfd6" data-og-width="24" width="24" data-og-height="24" height="24" data-path="icons/ecosystem/gcp.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/gcp.svg?w=280&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=a6f174aab45cb9ca3897b5778f7633b1 280w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/gcp.svg?w=560&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=cfad48954d945d8d67aba73f18d2aa13 560w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/gcp.svg?w=840&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=6ffa7b2f6e6c11ac40fc9a5488427774 840w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/gcp.svg?w=1100&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=b6dd2138983435a4d422b71b91d0b15f 1100w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/gcp.svg?w=1650&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=46ad1c3252441bd6fbc4bfb971d46f51 1650w, https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/gcp.svg?w=2500&fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=79fc209305615cfabb18fbe87e222dfb 2500w">
+  <Card title="Google Cloud Run" href="/guides/deployment/google-cloud-run" icon="https://mintcdn.com/bun-1dd33a4e/cfVIaCNGtFU88Wgc/icons/ecosystem/gcp.svg?fit=max&auto=format&n=cfVIaCNGtFU88Wgc&q=85&s=a99e6cb0cfadfeb9ea3b6451de38cfd6">
     Deploy on Google Cloud Run
   </Card>
 </Columns>
@@ -13152,16 +14225,16 @@ To host your TanStack Start app, you can use [Nitro](https://nitro.build/) or a 
 
 ## Templates
 
-<Columns cols={2}>
-  <Card title="Todo App with Tanstack + Bun" img="https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-tanstack-todo.png?fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=2158d48f96cabb9a5e4d66ff94bab5fa" href="https://github.com/bun-templates/bun-tanstack-todo" arrow="true" cta="Go to template" data-og-width="2212" width="2212" data-og-height="1326" height="1326" data-path="images/templates/bun-tanstack-todo.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-tanstack-todo.png?w=280&fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=0e1f90a6dade2be32710ff67945bdd25 280w, https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-tanstack-todo.png?w=560&fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=8c6339f2027e3a6ebc86b93060e45fee 560w, https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-tanstack-todo.png?w=840&fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=56ebc5fb5d7176e5ee5198a5300160a0 840w, https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-tanstack-todo.png?w=1100&fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=3b1c86c693d452b801e5c0616e13bc5c 1100w, https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-tanstack-todo.png?w=1650&fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=f368130e0191ed8fa32ee53c9852676f 1650w, https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-tanstack-todo.png?w=2500&fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=c653afe62e8df7f16cc6a15b5bc06f16 2500w">
+<Columns>
+  <Card title="Todo App with Tanstack + Bun" href="https://github.com/bun-templates/bun-tanstack-todo">
     A Todo application built with Bun, TanStack Start, and PostgreSQL.
   </Card>
 
-  <Card title="Bun + TanStack Start Application" img="https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-tanstack-basic.png?fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=9636defcaa30d79a3e8fe00740b3846f" href="https://github.com/bun-templates/bun-tanstack-basic" arrow="true" cta="Go to template" data-og-width="2212" width="2212" data-og-height="1326" height="1326" data-path="images/templates/bun-tanstack-basic.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-tanstack-basic.png?w=280&fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=69800904d8b235c7c84f39c7474aa96f 280w, https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-tanstack-basic.png?w=560&fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=c28ae7ca097c319bedfac6ede7524f05 560w, https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-tanstack-basic.png?w=840&fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=33277701216f83bf535bc06bafa0473b 840w, https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-tanstack-basic.png?w=1100&fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=508b495c353078478353e57eee757834 1100w, https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-tanstack-basic.png?w=1650&fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=616c7f24b1c6c6c6ae096eee0a5f492b 1650w, https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-tanstack-basic.png?w=2500&fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=5ee6ef5e5def6b77964f0bdcc7134fd0 2500w">
+  <Card title="Bun + TanStack Start Application" href="https://github.com/bun-templates/bun-tanstack-basic">
     A TanStack Start template using Bun with SSR and file-based routing.
   </Card>
 
-  <Card title="Basic Bun + Tanstack Starter" img="https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-tanstack-start.png?fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=49d7a4fab3a407cae793c7348a633ca6" href="https://github.com/bun-templates/bun-tanstack-start" arrow="true" cta="Go to template" data-og-width="2212" width="2212" data-og-height="1326" height="1326" data-path="images/templates/bun-tanstack-start.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-tanstack-start.png?w=280&fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=a2fdd3cfd287eae37e993d313cb294a9 280w, https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-tanstack-start.png?w=560&fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=6bd00107343d858e7ef618bbb2801f34 560w, https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-tanstack-start.png?w=840&fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=b8f1e3a21be9c72f1533c3c7604fa592 840w, https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-tanstack-start.png?w=1100&fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=354f673b4b120d0f1ba31d5431b5bbe6 1100w, https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-tanstack-start.png?w=1650&fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=27eddabb06a64fb94f808d8f1aa02a09 1650w, https://mintcdn.com/bun-1dd33a4e/M5IN-LfyV8DoQVZm/images/templates/bun-tanstack-start.png?w=2500&fit=max&auto=format&n=M5IN-LfyV8DoQVZm&q=85&s=f4e3ff9ff0fd4cfe08d5906a41026c6c 2500w">
+  <Card title="Basic Bun + Tanstack Starter" href="https://github.com/bun-templates/bun-tanstack-start">
     The basic TanStack starter using the Bun runtime and Bun's file APIs.
   </Card>
 </Columns>
@@ -13198,7 +14271,7 @@ Source: https://bun.com/docs/guides/ecosystem/upstash
     The database page displays two connection methods; HTTP and TLS. For Bun's Redis client, you need the **TLS** connection details. This URL starts with `rediss://`.
 
     <Frame>
-            <img src="https://mintcdn.com/bun-1dd33a4e/ONaGWxnTD93zNXCt/images/guides/upstash-1.png?fit=max&auto=format&n=ONaGWxnTD93zNXCt&q=85&s=bf927cfe3f0c675c100ae9a2af1d687c" alt="Upstash Redis database page" data-og-width="3972" width="3972" data-og-height="1024" height="1024" data-path="images/guides/upstash-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/ONaGWxnTD93zNXCt/images/guides/upstash-1.png?w=280&fit=max&auto=format&n=ONaGWxnTD93zNXCt&q=85&s=512af46f5b587f814914cb5ad7d79ee6 280w, https://mintcdn.com/bun-1dd33a4e/ONaGWxnTD93zNXCt/images/guides/upstash-1.png?w=560&fit=max&auto=format&n=ONaGWxnTD93zNXCt&q=85&s=40dd2f78d8f60b59f24ab5160fc265cf 560w, https://mintcdn.com/bun-1dd33a4e/ONaGWxnTD93zNXCt/images/guides/upstash-1.png?w=840&fit=max&auto=format&n=ONaGWxnTD93zNXCt&q=85&s=e4b82c4ea36c2c04effd217639cd81f7 840w, https://mintcdn.com/bun-1dd33a4e/ONaGWxnTD93zNXCt/images/guides/upstash-1.png?w=1100&fit=max&auto=format&n=ONaGWxnTD93zNXCt&q=85&s=770b433ea87e69ef8a48fbecf962bd04 1100w, https://mintcdn.com/bun-1dd33a4e/ONaGWxnTD93zNXCt/images/guides/upstash-1.png?w=1650&fit=max&auto=format&n=ONaGWxnTD93zNXCt&q=85&s=cb8a2bd1eab3106bbca0e5bbc82480f9 1650w, https://mintcdn.com/bun-1dd33a4e/ONaGWxnTD93zNXCt/images/guides/upstash-1.png?w=2500&fit=max&auto=format&n=ONaGWxnTD93zNXCt&q=85&s=65612bc443777fefb30094d32879aa4a 2500w" />
+      <img alt="Upstash Redis database page" />
     </Frame>
   </Step>
 
@@ -13207,7 +14280,7 @@ Source: https://bun.com/docs/guides/ecosystem/upstash
 
     Set the `REDIS_URL` environment variable in your `.env` file using the Redis endpoint (not the REST URL):
 
-    ```env .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```ini .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
     REDIS_URL=rediss://********@********.upstash.io:6379
     ```
 
@@ -13251,7 +14324,7 @@ Source: https://bun.com/docs/guides/ecosystem/upstash
     console.log(counter);
     ```
 
-    ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
     1
     ```
 
@@ -13278,7 +14351,7 @@ Vite works out of the box with Bun. Get started with one of Vite's templates.
 bun create vite my-app
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 ✔ Select a framework: › React
 ✔ Select a variant: › TypeScript + SWC
 Scaffolding project in /path/to/my-app...
@@ -13335,7 +14408,7 @@ bunx --bun vite build
 
 ***
 
-This is a stripped down guide to get you started with Vite + Bun. For more information, see the [Vite documentation](https://vitejs.dev/guide/).
+This is a stripped down guide to get you started with Vite + Bun. For more information, see the [Vite documentation](https://vite.dev/guide/).
 
 
 # Extract links from a webpage using HTMLRewriter
@@ -13345,7 +14418,7 @@ Source: https://bun.com/docs/guides/html-rewriter/extract-links
 
 ## Extract links from a webpage
 
-Bun's [HTMLRewriter](https://bun.com/docs/api/html-rewriter) API can be used to efficiently extract links from HTML content. It works by chaining together CSS selectors to match the elements, text, and attributes you want to process. This is a simple example of how to extract links from a webpage. You can pass `.transform` a `Response`, `Blob`, or `string`.
+Bun's [HTMLRewriter](/runtime/html-rewriter) API can be used to efficiently extract links from HTML content. It works by chaining together CSS selectors to match the elements, text, and attributes you want to process. This is a simple example of how to extract links from a webpage. You can pass `.transform` a `Response`, `Blob`, or `string`.
 
 ```ts extract-links.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 async function extractLinks(url: string) {
@@ -13406,7 +14479,7 @@ const websiteLinks = await extractLinksFromURL("https://example.com");
 
 ***
 
-See [Docs > API > HTMLRewriter](https://bun.com/docs/api/html-rewriter) for complete documentation on HTML transformation with Bun.
+See [Docs > API > HTMLRewriter](/runtime/html-rewriter) for complete documentation on HTML transformation with Bun.
 
 
 # Extract social share images and Open Graph tags
@@ -13416,7 +14489,7 @@ Source: https://bun.com/docs/guides/html-rewriter/extract-social-meta
 
 ## Extract social share images and Open Graph tags
 
-Bun's [HTMLRewriter](https://bun.com/docs/api/html-rewriter) API can be used to efficiently extract social share images and Open Graph metadata from HTML content. This is particularly useful for building link preview features, social media cards, or web scrapers. We can use HTMLRewriter to match CSS selectors to HTML elements, text, and attributes we want to process.
+Bun's [HTMLRewriter](/runtime/html-rewriter) API can be used to efficiently extract social share images and Open Graph metadata from HTML content. This is particularly useful for building link preview features, social media cards, or web scrapers. We can use HTMLRewriter to match CSS selectors to HTML elements, text, and attributes we want to process.
 
 ```ts extract-social-meta.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 interface SocialMetadata {
@@ -13692,7 +14765,7 @@ We can define our HTML form in another file, `index.html`.
 
 At this point, we can run the server and visit [`localhost:4000`](http://localhost:4000) to see our form.
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun run index.ts
 Listening on http://localhost:4000
 ```
@@ -13703,7 +14776,7 @@ Our form will send a `POST` request to the `/action` endpoint with the form data
 
 First we use the [`.formData()`](https://developer.mozilla.org/en-US/docs/Web/API/Request/formData) method on the incoming `Request` to asynchronously parse its contents to a `FormData` instance. Then we can use the [`.get()`](https://developer.mozilla.org/en-US/docs/Web/API/FormData/get) method to extract the value of the `name` and `profilePicture` fields. Here `name` corresponds to a `string` and `profilePicture` is a `Blob`.
 
-Finally, we write the `Blob` to disk using [`Bun.write()`](https://bun.com/docs/api/file-io#writing-files-bun-write).
+Finally, we write the `Blob` to disk using [`Bun.write()`](/runtime/file-io#writing-files-bun-write).
 
 ```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const server = Bun.serve({
@@ -13741,7 +14814,7 @@ Source: https://bun.com/docs/guides/http/hot
 
 
 
-Bun supports the [`--hot`](https://bun.com/docs/runtime/hot#hot-mode) flag to run a file with hot reloading enabled. When any module or file changes, Bun re-runs the file.
+Bun supports the [`--hot`](/runtime/watch-mode#hot-mode) flag to run a file with hot reloading enabled. When any module or file changes, Bun re-runs the file.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun --hot run index.ts
@@ -13775,20 +14848,44 @@ In Bun, `fetch` supports sending requests through an HTTP or HTTPS proxy. This i
 ```ts proxy.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 await fetch("https://example.com", {
   // The URL of the proxy server
-  proxy: "https://usertitle:password@proxy.example.com:8080",
+  proxy: "https://username:password@proxy.example.com:8080",
 });
 ```
 
 ***
 
-The `proxy` option is a URL string that specifies the proxy server. It can include the username and password if the proxy requires authentication. It can be `http://` or `https://`.
+The `proxy` option can be a URL string or an object with `url` and optional `headers`. The URL can include the username and password if the proxy requires authentication. It can be `http://` or `https://`.
 
 ***
+
+## Custom proxy headers
+
+To send custom headers to the proxy server (useful for proxy authentication tokens, custom routing, etc.), use the object format:
+
+```ts proxy-headers.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+await fetch("https://example.com", {
+  proxy: {
+    url: "https://proxy.example.com:8080",
+    headers: {
+      "Proxy-Authorization": "Bearer my-token",
+      "X-Proxy-Region": "us-east-1",
+    },
+  },
+});
+```
+
+The `headers` property accepts a plain object or a `Headers` instance. These headers are sent directly to the proxy server in `CONNECT` requests (for HTTPS targets) or in the proxy request (for HTTP targets).
+
+If you provide a `Proxy-Authorization` header, it will override any credentials specified in the proxy URL.
+
+***
+
+## Environment variables
 
 You can also set the `$HTTP_PROXY` or `$HTTPS_PROXY` environment variable to the proxy URL. This is useful when you want to use the same proxy for all requests.
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
-HTTPS_PROXY=https://usertitle:password@proxy.example.com:8080 bun run index.ts
+HTTPS_PROXY=https://username:password@proxy.example.com:8080 bun run index.ts
 ```
 
 
@@ -13799,7 +14896,7 @@ Source: https://bun.com/docs/guides/http/server
 
 This starts an HTTP server listening on port `3000`. It demonstrates basic routing with a number of common responses and also handles POST data from standard forms or as JSON.
 
-See [`Bun.serve`](https://bun.com/docs/api/http) for details.
+See [`Bun.serve`](/runtime/http/server) for details.
 
 ```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const server = Bun.serve({
@@ -13848,7 +14945,7 @@ Source: https://bun.com/docs/guides/http/simple
 
 This starts an HTTP server listening on port `3000`. It responds to all requests with a `Response` with status `200` and body `"Welcome to Bun!"`.
 
-See [`Bun.serve`](https://bun.com/docs/api/http) for details.
+See [`Bun.serve`](/runtime/http/server) for details.
 
 ```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const server = Bun.serve({
@@ -13867,7 +14964,7 @@ Source: https://bun.com/docs/guides/http/stream-file
 
 
 
-This snippet reads a file from disk using [`Bun.file()`](https://bun.com/docs/api/file-io#reading-files-bun-file). This returns a `BunFile` instance, which can be passed directly into the `new Response` constructor.
+This snippet reads a file from disk using [`Bun.file()`](/runtime/file-io#reading-files-bun-file). This returns a `BunFile` instance, which can be passed directly into the `new Response` constructor.
 
 ```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const path = "/path/to/file.txt";
@@ -13895,7 +14992,7 @@ new Response(Bun.file("./img.png")).headers.get("Content-Type");
 
 ***
 
-Putting it all together with [`Bun.serve()`](https://bun.com/docs/api/http#bun-serve).
+Putting it all together with [`Bun.serve()`](/runtime/http/server).
 
 ```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // static file server
@@ -13910,7 +15007,7 @@ Bun.serve({
 
 ***
 
-See [Docs > API > File I/O](https://bun.com/docs/api/file-io#writing-files-bun-write) for complete documentation of `Bun.write()`.
+See [Docs > API > File I/O](/runtime/file-io#writing-files-bun-write) for complete documentation of `Bun.write()`.
 
 
 # Streaming HTTP Server with Async Iterators
@@ -13991,7 +15088,7 @@ Source: https://bun.com/docs/guides/http/tls
 
 
 
-Set the `tls` key to configure TLS. Both `key` and `cert` are required. The `key` should be the contents of your private key; `cert` should be the contents of your issued certificate. Use [`Bun.file()`](https://bun.com/docs/api/file-io#reading-files-bun-file) to read the contents.
+Set the `tls` key to configure TLS. Both `key` and `cert` are required. The `key` should be the contents of your private key; `cert` should be the contents of your issued certificate. Use [`Bun.file()`](/runtime/file-io#reading-files-bun-file) to read the contents.
 
 ```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const server = Bun.serve({
@@ -14023,682 +15120,6 @@ const server = Bun.serve({
 Source: https://bun.com/docs/guides/index
 
 A collection of code samples and walkthroughs for performing common tasks with Bun.
-
-export const GuidesList = () => {
-  const guidesData = {
-    hero: {
-      title: "Guides",
-      blurb: "A collection of code samples and walkthroughs for performing common tasks with Bun."
-    },
-    featured: [{
-      category: "Ecosystem",
-      title: "Use Tanstack Start with Bun",
-      href: "/guides/ecosystem/tanstack-start",
-      cta: "View guide"
-    }, {
-      category: "Ecosystem",
-      title: "Use Next.js with Bun",
-      href: "/guides/ecosystem/nextjs",
-      cta: "View guide"
-    }, {
-      category: "Ecosystem",
-      title: "Build a frontend using Vite and Bun",
-      href: "/guides/ecosystem/vite",
-      cta: "View guide"
-    }, {
-      category: "Runtime",
-      title: "Install TypeScript declarations for Bun",
-      href: "/guides/runtime/typescript",
-      cta: "View guide"
-    }, {
-      category: "HTTP",
-      title: "Write a simple HTTP server",
-      href: "/guides/http/simple",
-      cta: "View guide"
-    }, {
-      category: "WebSocket",
-      title: "Build a simple WebSocket server",
-      href: "/guides/websocket/simple",
-      cta: "View guide"
-    }],
-    categories: [{
-      key: "deployment",
-      title: "Deployment",
-      icon: "rocket",
-      items: [{
-        title: "Deploy Bun on Vercel",
-        href: "/guides/deployment/vercel"
-      }, {
-        title: "Deploy Bun on Railway",
-        href: "/guides/deployment/railway"
-      }, {
-        title: "Deploy Bun on Render",
-        href: "/guides/deployment/render"
-      }]
-    }, {
-      key: "binary",
-      title: "Binary data",
-      icon: "binary",
-      items: [{
-        title: "Convert an ArrayBuffer to an array of numbers",
-        href: "/guides/binary/arraybuffer-to-array"
-      }, {
-        title: "Convert an ArrayBuffer to a Blob",
-        href: "/guides/binary/arraybuffer-to-blob"
-      }, {
-        title: "Convert an ArrayBuffer to a Buffer",
-        href: "/guides/binary/arraybuffer-to-buffer"
-      }, {
-        title: "Convert an ArrayBuffer to a string",
-        href: "/guides/binary/arraybuffer-to-string"
-      }, {
-        title: "Convert an ArrayBuffer to a Uint8Array",
-        href: "/guides/binary/arraybuffer-to-typedarray"
-      }, {
-        title: "Convert a Blob to an ArrayBuffer",
-        href: "/guides/binary/blob-to-arraybuffer"
-      }, {
-        title: "Convert a Blob to a DataView",
-        href: "/guides/binary/blob-to-dataview"
-      }, {
-        title: "Convert a Blob to a ReadableStream",
-        href: "/guides/binary/blob-to-stream"
-      }, {
-        title: "Convert a Blob to a string",
-        href: "/guides/binary/blob-to-string"
-      }, {
-        title: "Convert a Blob to a Uint8Array",
-        href: "/guides/binary/blob-to-typedarray"
-      }, {
-        title: "Convert a Buffer to an ArrayBuffer",
-        href: "/guides/binary/buffer-to-arraybuffer"
-      }, {
-        title: "Convert a Buffer to a blob",
-        href: "/guides/binary/buffer-to-blob"
-      }, {
-        title: "Convert a Buffer to a ReadableStream",
-        href: "/guides/binary/buffer-to-readablestream"
-      }, {
-        title: "Convert a Buffer to a string",
-        href: "/guides/binary/buffer-to-string"
-      }, {
-        title: "Convert a Buffer to a Uint8Array",
-        href: "/guides/binary/buffer-to-typedarray"
-      }, {
-        title: "Convert a DataView to a string",
-        href: "/guides/binary/dataview-to-string"
-      }, {
-        title: "Convert a Uint8Array to an ArrayBuffer",
-        href: "/guides/binary/typedarray-to-arraybuffer"
-      }, {
-        title: "Convert a Uint8Array to a Blob",
-        href: "/guides/binary/typedarray-to-blob"
-      }, {
-        title: "Convert a Uint8Array to a Buffer",
-        href: "/guides/binary/typedarray-to-buffer"
-      }, {
-        title: "Convert a Uint8Array to a DataView",
-        href: "/guides/binary/typedarray-to-dataview"
-      }, {
-        title: "Convert a Uint8Array to a ReadableStream",
-        href: "/guides/binary/typedarray-to-readablestream"
-      }, {
-        title: "Convert a Uint8Array to a string",
-        href: "/guides/binary/typedarray-to-string"
-      }]
-    }, {
-      key: "ecosystem",
-      title: "Ecosystem",
-      icon: "puzzle",
-      items: [{
-        title: "Use Gel with Bun",
-        href: "/guides/ecosystem/gel"
-      }, {
-        title: "Use Prisma ORM with Bun",
-        href: "/guides/ecosystem/prisma"
-      }, {
-        title: "Use Prisma Postgres with Bun",
-        href: "/guides/ecosystem/prisma-postgres"
-      }, {
-        title: "Create a Discord bot",
-        href: "/guides/ecosystem/discordjs"
-      }, {
-        title: "Add Sentry to a Bun app",
-        href: "/guides/ecosystem/sentry"
-      }, {
-        title: "Use Drizzle ORM with Bun",
-        href: "/guides/ecosystem/drizzle"
-      }, {
-        title: "Build a React app with Bun",
-        href: "/guides/ecosystem/react"
-      }, {
-        title: "Run Bun as a daemon with PM2",
-        href: "/guides/ecosystem/pm2"
-      }, {
-        title: "Build an app with Nuxt and Bun",
-        href: "/guides/ecosystem/nuxt"
-      }, {
-        title: "Build an app with Qwik and Bun",
-        href: "/guides/ecosystem/qwik"
-      }, {
-        title: "Build an app with Astro and Bun",
-        href: "/guides/ecosystem/astro"
-      }, {
-        title: "Build an app with Remix and Bun",
-        href: "/guides/ecosystem/remix"
-      }, {
-        title: "Use TanStack Start with Bun",
-        href: "/guides/ecosystem/tanstack-start"
-      }, {
-        title: "Run Bun as a daemon with systemd",
-        href: "/guides/ecosystem/systemd"
-      }, {
-        title: "Build an app with Next.js and Bun",
-        href: "/guides/ecosystem/nextjs"
-      }, {
-        title: "Build an app with SvelteKit and Bun",
-        href: "/guides/ecosystem/sveltekit"
-      }, {
-        title: "Build a frontend using Vite and Bun",
-        href: "/guides/ecosystem/vite"
-      }, {
-        title: "Build an app with SolidStart and Bun",
-        href: "/guides/ecosystem/solidstart"
-      }, {
-        title: "Use Neon Postgres through Drizzle ORM",
-        href: "/guides/ecosystem/neon-drizzle"
-      }, {
-        title: "Build an HTTP server using Hono and Bun",
-        href: "/guides/ecosystem/hono"
-      }, {
-        title: "Use Neon\'s Serverless Postgres with Bun",
-        href: "/guides/ecosystem/neon-serverless-postgres"
-      }, {
-        title: "Build an HTTP server using Elysia and Bun",
-        href: "/guides/ecosystem/elysia"
-      }, {
-        title: "Containerize a Bun application with Docker",
-        href: "/guides/ecosystem/docker"
-      }, {
-        title: "Build an HTTP server using Express and Bun",
-        href: "/guides/ecosystem/express"
-      }, {
-        title: "Server-side render (SSR) a React component",
-        href: "/guides/ecosystem/ssr-react"
-      }, {
-        title: "Build an HTTP server using StricJS and Bun",
-        href: "/guides/ecosystem/stric"
-      }, {
-        title: "Read and write data to MongoDB using Mongoose and Bun",
-        href: "/guides/ecosystem/mongoose"
-      }]
-    }, {
-      key: "htmlrewriter",
-      title: "HTMLRewriter",
-      icon: "file-code-2",
-      items: [{
-        title: "Extract links from a webpage using HTMLRewriter",
-        href: "/guides/html-rewriter/extract-links"
-      }, {
-        title: "Extract social share images and Open Graph tags",
-        href: "/guides/html-rewriter/extract-social-meta"
-      }]
-    }, {
-      key: "http",
-      title: "HTTP",
-      icon: "globe",
-      items: [{
-        title: "Common HTTP server usage",
-        href: "/guides/http/server"
-      }, {
-        title: "Hot reload an HTTP server",
-        href: "/guides/http/hot"
-      }, {
-        title: "Write a simple HTTP server",
-        href: "/guides/http/simple"
-      }, {
-        title: "Start a cluster of HTTP servers",
-        href: "/guides/http/cluster"
-      }, {
-        title: "Configure TLS on an HTTP server",
-        href: "/guides/http/tls"
-      }, {
-        title: "Send an HTTP request using fetch",
-        href: "/guides/http/fetch"
-      }, {
-        title: "Proxy HTTP requests using fetch()",
-        href: "/guides/http/proxy"
-      }, {
-        title: "Stream a file as an HTTP Response",
-        href: "/guides/http/stream-file"
-      }, {
-        title: "Upload files via HTTP using FormData",
-        href: "/guides/http/file-uploads"
-      }, {
-        title: "fetch with unix domain sockets in Bun",
-        href: "/guides/http/fetch-unix"
-      }, {
-        title: "Streaming HTTP Server with Async Iterators",
-        href: "/guides/http/stream-iterator"
-      }, {
-        title: "Streaming HTTP Server with Node.js Streams",
-        href: "/guides/http/stream-node-streams-in-bun"
-      }]
-    }, {
-      key: "install",
-      title: "Package manager",
-      icon: "package",
-      items: [{
-        title: "Add a dependency",
-        href: "/guides/install/add"
-      }, {
-        title: "Add a Git dependency",
-        href: "/guides/install/add-git"
-      }, {
-        title: "Add a peer dependency",
-        href: "/guides/install/add-peer"
-      }, {
-        title: "Add a tarball dependency",
-        href: "/guides/install/add-tarball"
-      }, {
-        title: "Add a trusted dependency",
-        href: "/guides/install/trusted"
-      }, {
-        title: "Add an optional dependency",
-        href: "/guides/install/add-optional"
-      }, {
-        title: "Add a development dependency",
-        href: "/guides/install/add-dev"
-      }, {
-        title: "Using bun install with Artifactory",
-        href: "/guides/install/jfrog-artifactory"
-      }, {
-        title: "Generate a yarn-compatible lockfile",
-        href: "/guides/install/yarnlock"
-      }, {
-        title: "Migrate from npm install to bun install",
-        href: "/guides/install/from-npm-install-to-bun-install"
-      }, {
-        title: "Configuring a monorepo using workspaces",
-        href: "/guides/install/workspaces"
-      }, {
-        title: "Install a package under a different name",
-        href: "/guides/install/npm-alias"
-      }, {
-        title: "Configure git to diff Bun\'s lockb lockfile",
-        href: "/guides/install/git-diff-bun-lockfile"
-      }, {
-        title: "Install dependencies with Bun in GitHub Actions",
-        href: "/guides/install/cicd"
-      }, {
-        title: "Override the default npm registry for bun install",
-        href: "/guides/install/custom-registry"
-      }, {
-        title: "Using bun install with an Azure Artifacts npm registry",
-        href: "/guides/install/azure-artifacts"
-      }, {
-        title: "Configure a private registry for an organization scope with bun install",
-        href: "/guides/install/registry-scope"
-      }]
-    }, {
-      key: "processes",
-      title: "Processes",
-      icon: "cpu",
-      items: [{
-        title: "Read from stdin",
-        href: "/guides/process/stdin"
-      }, {
-        title: "Listen for CTRL+C",
-        href: "/guides/process/ctrl-c"
-      }, {
-        title: "Listen to OS signals",
-        href: "/guides/process/os-signals"
-      }, {
-        title: "Spawn a child process",
-        href: "/guides/process/spawn"
-      }, {
-        title: "Parse command-line arguments",
-        href: "/guides/process/argv"
-      }, {
-        title: "Read stderr from a child process",
-        href: "/guides/process/spawn-stderr"
-      }, {
-        title: "Read stdout from a child process",
-        href: "/guides/process/spawn-stdout"
-      }, {
-        title: "Get the process uptime in nanoseconds",
-        href: "/guides/process/nanoseconds"
-      }, {
-        title: "Spawn a child process and communicate using IPC",
-        href: "/guides/process/ipc"
-      }]
-    }, {
-      key: "read-file",
-      title: "Reading files",
-      icon: "file",
-      items: [{
-        title: "Read a JSON file",
-        href: "/guides/read-file/json"
-      }, {
-        title: "Check if a file exists",
-        href: "/guides/read-file/exists"
-      }, {
-        title: "Read a file to a Buffer",
-        href: "/guides/read-file/buffer"
-      }, {
-        title: "Read a file as a string",
-        href: "/guides/read-file/string"
-      }, {
-        title: "Get the MIME type of a file",
-        href: "/guides/read-file/mime"
-      }, {
-        title: "Read a file to a Uint8Array",
-        href: "/guides/read-file/uint8array"
-      }, {
-        title: "Read a file to an ArrayBuffer",
-        href: "/guides/read-file/arraybuffer"
-      }, {
-        title: "Watch a directory for changes",
-        href: "/guides/read-file/watch"
-      }, {
-        title: "Read a file as a ReadableStream",
-        href: "/guides/read-file/stream"
-      }]
-    }, {
-      key: "runtime",
-      title: "Runtime",
-      icon: "bot",
-      items: [{
-        title: "Delete files",
-        href: "/guides/runtime/delete-file"
-      }, {
-        title: "Delete directories",
-        href: "/guides/runtime/delete-directory"
-      }, {
-        title: "Import a JSON file",
-        href: "/guides/runtime/import-json"
-      }, {
-        title: "Import a TOML file",
-        href: "/guides/runtime/import-toml"
-      }, {
-        title: "Import a YAML file",
-        href: "/guides/runtime/import-yaml"
-      }, {
-        title: "Run a Shell Command",
-        href: "/guides/runtime/shell"
-      }, {
-        title: "Re-map import paths",
-        href: "/guides/runtime/tsconfig-paths"
-      }, {
-        title: "Set a time zone in Bun",
-        href: "/guides/runtime/timezone"
-      }, {
-        title: "Set environment variables",
-        href: "/guides/runtime/set-env"
-      }, {
-        title: "Import a HTML file as text",
-        href: "/guides/runtime/import-html"
-      }, {
-        title: "Read environment variables",
-        href: "/guides/runtime/read-env"
-      }, {
-        title: "Build-time constants with --define",
-        href: "/guides/runtime/build-time-constants"
-      }, {
-        title: "Debugging Bun with the web debugger",
-        href: "/guides/runtime/web-debugger"
-      }, {
-        title: "Install and run Bun in GitHub Actions",
-        href: "/guides/runtime/cicd"
-      }, {
-        title: "Install TypeScript declarations for Bun",
-        href: "/guides/runtime/typescript"
-      }, {
-        title: "Debugging Bun with the VS Code extension",
-        href: "/guides/runtime/vscode-debugger"
-      }, {
-        title: "Inspect memory usage using V8 heap snapshots",
-        href: "/guides/runtime/heap-snapshot"
-      }, {
-        title: "Define and replace static globals & constants",
-        href: "/guides/runtime/define-constant"
-      }, {
-        title: "Codesign a single-file JavaScript executable on macOS",
-        href: "/guides/runtime/codesign-macos-executable"
-      }]
-    }, {
-      key: "streams",
-      title: "Streams",
-      icon: "waves",
-      items: [{
-        title: "Convert a ReadableStream to JSON",
-        href: "/guides/streams/to-json"
-      }, {
-        title: "Convert a Node.js Readable to JSON",
-        href: "/guides/streams/node-readable-to-json"
-      }, {
-        title: "Convert a ReadableStream to a Blob",
-        href: "/guides/streams/to-blob"
-      }, {
-        title: "Convert a Node.js Readable to a Blob",
-        href: "/guides/streams/node-readable-to-blob"
-      }, {
-        title: "Convert a ReadableStream to a Buffer",
-        href: "/guides/streams/to-buffer"
-      }, {
-        title: "Convert a ReadableStream to a string",
-        href: "/guides/streams/to-string"
-      }, {
-        title: "Convert a Node.js Readable to a string",
-        href: "/guides/streams/node-readable-to-string"
-      }, {
-        title: "Convert a ReadableStream to a Uint8Array",
-        href: "/guides/streams/to-typedarray"
-      }, {
-        title: "Convert a ReadableStream to an ArrayBuffer",
-        href: "/guides/streams/to-arraybuffer"
-      }, {
-        title: "Convert a Node.js Readable to an Uint8Array",
-        href: "/guides/streams/node-readable-to-uint8array"
-      }, {
-        title: "Convert a Node.js Readable to an ArrayBuffer",
-        href: "/guides/streams/node-readable-to-arraybuffer"
-      }, {
-        title: "Convert a ReadableStream to an array of chunks",
-        href: "/guides/streams/to-array"
-      }]
-    }, {
-      key: "test",
-      title: "Test runner",
-      icon: "test-tube",
-      items: [{
-        title: "Mock functions in bun test",
-        href: "/guides/test/mock-functions"
-      }, {
-        title: "Spy on methods in bun test",
-        href: "/guides/test/spy-on"
-      }, {
-        title: "Using Testing Library with Bun",
-        href: "/guides/test/testing-library"
-      }, {
-        title: "Update snapshots in bun test",
-        href: "/guides/test/update-snapshots"
-      }, {
-        title: "Run tests in watch mode with Bun",
-        href: "/guides/test/watch-mode"
-      }, {
-        title: "Use snapshot testing in bun test",
-        href: "/guides/test/snapshot"
-      }, {
-        title: "Bail early with the Bun test runner",
-        href: "/guides/test/bail"
-      }, {
-        title: "Skip tests with the Bun test runner",
-        href: "/guides/test/skip-tests"
-      }, {
-        title: "Migrate from Jest to Bun's test runner",
-        href: "/guides/test/migrate-from-jest"
-      }, {
-        title: "Run your tests with the Bun test runner",
-        href: "/guides/test/run-tests"
-      }, {
-        title: "Set the system time in Bun's test runner",
-        href: "/guides/test/mock-clock"
-      }, {
-        title: "Write browser DOM tests with Bun and happy-dom",
-        href: "/guides/test/happy-dom"
-      }, {
-        title: "Set a per-test timeout with the Bun test runner",
-        href: "/guides/test/timeout"
-      }, {
-        title: 'Mark a test as a "todo" with the Bun test runner',
-        href: "/guides/test/todo-tests"
-      }, {
-        title: "Re-run tests multiple times with the Bun test runner",
-        href: "/guides/test/rerun-each"
-      }, {
-        title: "Set a code coverage threshold with the Bun test runner",
-        href: "/guides/test/coverage-threshold"
-      }, {
-        title: "Generate code coverage reports with the Bun test runner",
-        href: "/guides/test/coverage"
-      }, {
-        title: "import, require, and test Svelte components with bun test",
-        href: "/guides/test/svelte-test"
-      }]
-    }, {
-      key: "utilities",
-      title: "Utilities",
-      icon: "wrench",
-      items: [{
-        title: "Hash a password",
-        href: "/guides/util/hash-a-password"
-      }, {
-        title: "Generate a UUID",
-        href: "/guides/util/javascript-uuid"
-      }, {
-        title: "Escape an HTML string",
-        href: "/guides/util/escape-html"
-      }, {
-        title: "Get the current Bun version",
-        href: "/guides/util/version"
-      }, {
-        title: "Encode and decode base64 strings",
-        href: "/guides/util/base64"
-      }, {
-        title: "Check if two objects are deeply equal",
-        href: "/guides/util/deep-equals"
-      }, {
-        title: "Detect when code is executed with Bun",
-        href: "/guides/util/detect-bun"
-      }, {
-        title: "Get the directory of the current file",
-        href: "/guides/util/import-meta-dir"
-      }, {
-        title: "Get the file name of the current file",
-        href: "/guides/util/import-meta-file"
-      }, {
-        title: "Convert a file URL to an absolute path",
-        href: "/guides/util/file-url-to-path"
-      }, {
-        title: "Compress and decompress data with gzip",
-        href: "/guides/util/gzip"
-      }, {
-        title: "Convert an absolute path to a file URL",
-        href: "/guides/util/path-to-file-url"
-      }, {
-        title: "Get the path to an executable bin file",
-        href: "/guides/util/which-path-to-executable-bin"
-      }, {
-        title: "Sleep for a fixed number of milliseconds",
-        href: "/guides/util/sleep"
-      }, {
-        title: "Compress and decompress data with DEFLATE",
-        href: "/guides/util/deflate"
-      }, {
-        title: "Get the absolute path of the current file",
-        href: "/guides/util/import-meta-path"
-      }, {
-        title: "Check if the current file is the entrypoint",
-        href: "/guides/util/entrypoint"
-      }, {
-        title: "Get the absolute path to the current entrypoint",
-        href: "/guides/util/main"
-      }]
-    }, {
-      key: "websocket",
-      title: "WebSocket",
-      icon: "radio",
-      items: [{
-        title: "Build a simple WebSocket server",
-        href: "/guides/websocket/simple"
-      }, {
-        title: "Enable compression for WebSocket messages",
-        href: "/guides/websocket/compression"
-      }, {
-        title: "Build a publish-subscribe WebSocket server",
-        href: "/guides/websocket/pubsub"
-      }, {
-        title: "Set per-socket contextual data on a WebSocket",
-        href: "/guides/websocket/context"
-      }]
-    }, {
-      key: "write-file",
-      title: "Writing files",
-      icon: "file-pen",
-      items: [{
-        title: "Delete a file",
-        href: "/guides/write-file/unlink"
-      }, {
-        title: "Write to stdout",
-        href: "/guides/write-file/stdout"
-      }, {
-        title: "Write a Blob to a file",
-        href: "/guides/write-file/blob"
-      }, {
-        title: "Write a file to stdout",
-        href: "/guides/write-file/cat"
-      }, {
-        title: "Append content to a file",
-        href: "/guides/write-file/append"
-      }, {
-        title: "Write a string to a file",
-        href: "/guides/write-file/basic"
-      }, {
-        title: "Write a file incrementally",
-        href: "/guides/write-file/filesink"
-      }, {
-        title: "Write a Response to a file",
-        href: "/guides/write-file/response"
-      }, {
-        title: "Copy a file to another location",
-        href: "/guides/write-file/file-cp"
-      }, {
-        title: "Write a ReadableStream to a file",
-        href: "/guides/write-file/stream"
-      }]
-    }]
-  };
-  return <div id="guides-list">
-      {}
-      <div className="mb-12">
-        <h2 className="text-2xl font-bold mb-6">Featured</h2>
-        <Columns cols={3}>
-          {guidesData.featured.map(g => <Card key={g.href} title={g.title} href={g.href} cta={g.cta} />)}
-        </Columns>
-      </div>
-      {}
-      <div className="mb-8">
-        <h2 className="text-2xl font-bold mb-6">All Guides</h2>
-        {guidesData.categories.map(category => <div key={category.key} className="mb-8">
-            <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">{category.title}</h3>
-            <Columns cols={3}>
-              {category.items.map(guide => <Card key={guide.href} title={guide.title} description=" " href={guide.href} cta="" />)}
-            </Columns>
-          </div>)}
-      </div>
-    </div>;
-};
 
 <GuidesList />
 
@@ -14745,7 +15166,7 @@ bun add zod@next
 
 ***
 
-See [Docs > Package manager](https://bun.com/docs/cli/install) for complete documentation of Bun's package manager.
+See [Docs > Package manager](/pm/cli/install) for complete documentation of Bun's package manager.
 
 
 # Add a development dependency
@@ -14764,7 +15185,7 @@ bun add zod -d # shorthand
 
 This will add the package to `devDependencies` in `package.json`.
 
-```json  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```json theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
   "devDependencies": {
     "zod": "^3.0.0" // [!code ++]
@@ -14774,7 +15195,7 @@ This will add the package to `devDependencies` in `package.json`.
 
 ***
 
-See [Docs > Package manager](https://bun.com/docs/cli/install) for complete documentation of Bun's package manager.
+See [Docs > Package manager](/pm/cli/install) for complete documentation of Bun's package manager.
 
 
 # Add a Git dependency
@@ -14815,7 +15236,7 @@ bun add github:colinhacks/zod
 
 ***
 
-See [Docs > Package manager](https://bun.com/docs/cli/install) for complete documentation of Bun's package manager.
+See [Docs > Package manager](/pm/cli/install) for complete documentation of Bun's package manager.
 
 
 # Add an optional dependency
@@ -14843,7 +15264,7 @@ This will add the package to `optionalDependencies` in `package.json`.
 
 ***
 
-See [Docs > Package manager](https://bun.com/docs/cli/install) for complete documentation of Bun's package manager.
+See [Docs > Package manager](/pm/cli/install) for complete documentation of Bun's package manager.
 
 
 # Add a peer dependency
@@ -14864,7 +15285,7 @@ This will add the package to `peerDependencies` in `package.json`.
 ```json package.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
   "peerDependencies": {
-    "@types/bun": "^1.3.2" // [!code ++]
+    "@types/bun": "^1.3.3" // [!code ++]
   }
 }
 ```
@@ -14876,7 +15297,7 @@ Running `bun install` will install peer dependencies by default, unless marked o
 ```json package.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
   "peerDependencies": {
-    "@types/bun": "^1.3.2"
+    "@types/bun": "^1.3.3"
   },
   "peerDependenciesMeta": {
     "@types/bun": { // [!code ++]
@@ -14888,7 +15309,7 @@ Running `bun install` will install peer dependencies by default, unless marked o
 
 ***
 
-See [Docs > Package manager](https://bun.com/docs/cli/install) for complete documentation of Bun's package manager.
+See [Docs > Package manager](/pm/cli/install) for complete documentation of Bun's package manager.
 
 
 # Add a tarball dependency
@@ -14918,13 +15339,13 @@ Running this command will download, extract, and install the tarball to your pro
 
 The package `"zod"` can now be imported as usual.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { z } from "zod";
 ```
 
 ***
 
-See [Docs > Package manager](https://bun.com/docs/cli/install) for complete documentation of Bun's package manager.
+See [Docs > Package manager](/pm/cli/install) for complete documentation of Bun's package manager.
 
 
 # Using bun install with an Azure Artifacts npm registry
@@ -14959,9 +15380,9 @@ password = "$NPM_PASSWORD"
 
 ***
 
-Then assign your Azure Personal Access Token to the `NPM_PASSWORD` environment variable. Bun [automatically reads](https://bun.com/docs/runtime/env) `.env` files, so create a file called `.env` in your project root. There is no need to base-64 encode this token! Bun will do this for you.
+Then assign your Azure Personal Access Token to the `NPM_PASSWORD` environment variable. Bun [automatically reads](/runtime/environment-variables) `.env` files, so create a file called `.env` in your project root. There is no need to base-64 encode this token! Bun will do this for you.
 
-```txt .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ini .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 NPM_PASSWORD=<paste token here>
 ```
 
@@ -14971,7 +15392,7 @@ NPM_PASSWORD=<paste token here>
 
 ***
 
-To configure Azure Artifacts without `bunfig.toml`, you can set the `NPM_CONFIG_REGISTRY` environment variable. The URL should include `:username` and `:_password` as query parameters. Replace `<USERNAME>` and `<PASSWORD>` with the apprropriate values.
+To configure Azure Artifacts without `bunfig.toml`, you can set the `NPM_CONFIG_REGISTRY` environment variable. The URL should include `:username` and `:_password` as query parameters. Replace `<USERNAME>` and `<PASSWORD>` with the appropriate values.
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 NPM_CONFIG_REGISTRY=https://pkgs.dev.azure.com/my-azure-artifacts-user/_packaging/my-azure-artifacts-user/npm/registry/:username=<USERNAME>:_password=<PASSWORD>
@@ -15069,7 +15490,7 @@ registry = "https://usertitle:password@registry.npmjs.org"
 
 ***
 
-Your `bunfig.toml` can reference environment variables. Bun automatically loads environment variables from `.env.local`, `.env.[NODE_ENV]`, and `.env`. See [Docs > Environment variables](https://bun.com/docs/runtime/env) for more information.
+Your `bunfig.toml` can reference environment variables. Bun automatically loads environment variables from `.env.local`, `.env.[NODE_ENV]`, and `.env`. See [Docs > Environment variables](/runtime/environment-variables) for more information.
 
 ```toml bunfig.toml icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [install]
@@ -15078,7 +15499,7 @@ registry = { url = "https://registry.npmjs.org", token = "$npm_token" }
 
 ***
 
-See [Docs > Package manager](https://bun.com/docs/cli/install) for complete documentation of Bun's package manager.
+See [Docs > Package manager](/pm/cli/install) for complete documentation of Bun's package manager.
 
 
 # Migrate from npm install to bun install
@@ -15181,7 +15602,7 @@ bun update
 bun update @types/bun --latest
 
 # Update a dependency to a specific version
-bun update @types/bun@1.3.2
+bun update @types/bun@1.3.3
 
 # Update all dependencies to the latest versions
 bun update --latest
@@ -15197,7 +15618,7 @@ To view outdated dependencies, run `bun outdated`. This is like `npm outdated` b
 bun outdated
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 ┌────────────────────────────────────────┬─────────┬────────┬────────┐
 │ Package                                │ Current │ Update │ Latest │
 ├────────────────────────────────────────┼─────────┼────────┼────────┤
@@ -15236,7 +15657,7 @@ To list installed packages, you can use `bun pm ls`. This will list all the pack
 bun pm ls
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 my-pkg node_modules (781)
 ├── @types/node@20.16.5
 ├── @types/react@18.3.8
@@ -15251,7 +15672,7 @@ my-pkg node_modules (781)
 bun pm ls -a
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 my-pkg node_modules
 ├── @alloc/quick-lru@5.2.0
 ├── @isaacs/cliui@8.0.2
@@ -15273,7 +15694,7 @@ To create a package tarball, you can use `bun pm pack`. This will create a tarba
 bun pm pack
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 Total files: 46
 Shasum: 2ee19b6f0c6b001358449ca0eadead703f326216
 Integrity: sha512-ZV0lzWTEkGAMz[...]Gl4f8lA9sl97g==
@@ -15319,7 +15740,8 @@ Source: https://bun.com/docs/guides/install/git-diff-bun-lockfile
 
 <Note>
   Bun v1.1.39 introduced `bun.lock`, a JSONC formatted lockfile. `bun.lock` is human-readable and git-diffable without
-  configuration, at no cost to performance. [**Learn more.**](https://bun.com/docs/install/lockfile#text-based-lockfile)
+  configuration, at no cost to performance. In 1.2.0+ it is the default format used for new projects. [**Learn
+  more.**](/pm/lockfile#text-based-lockfile)
 </Note>
 
 ***
@@ -15412,7 +15834,7 @@ z.string();
 
 ***
 
-See [Docs > Package manager](https://bun.com/docs/cli/install) for complete documentation of Bun's package manager.
+See [Docs > Package manager](/pm/cli/install) for complete documentation of Bun's package manager.
 
 
 # Configure a private registry for an organization scope with bun install
@@ -15420,7 +15842,7 @@ Source: https://bun.com/docs/guides/install/registry-scope
 
 
 
-Private registries can be configured using either [`.npmrc`](https://bun.com/docs/install/npmrc) or [`bunfig.toml`](https://bun.com/docs/runtime/bunfig#install-registry). While both are supported, we recommend using **bunfig.toml** for enhanced flexibility and Bun-specific options.
+Private registries can be configured using either [`.npmrc`](/pm/npmrc) or [`bunfig.toml`](/runtime/bunfig#install-registry). While both are supported, we recommend using **bunfig.toml** for enhanced flexibility and Bun-specific options.
 
 To configure a registry for a particular npm scope:
 
@@ -15444,7 +15866,7 @@ To configure a registry for a particular npm scope:
 
 ***
 
-Your `bunfig.toml` can reference environment variables. Bun automatically loads environment variables from `.env.local`, `.env.[NODE_ENV]`, and `.env`. See [Docs > Environment variables](https://bun.com/docs/runtime/env) for more information.
+Your `bunfig.toml` can reference environment variables. Bun automatically loads environment variables from `.env.local`, `.env.[NODE_ENV]`, and `.env`. See [Docs > Environment variables](/runtime/environment-variables) for more information.
 
 ```toml bunfig.toml icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [install.scopes]
@@ -15453,7 +15875,7 @@ Your `bunfig.toml` can reference environment variables. Bun automatically loads 
 
 ***
 
-See [Docs > Package manager](https://bun.com/docs/cli/install) for complete documentation of Bun's package manager.
+See [Docs > Package manager](/pm/cli/install) for complete documentation of Bun's package manager.
 
 
 # Add a trusted dependency
@@ -15465,7 +15887,9 @@ Unlike other npm clients, Bun does not execute arbitrary lifecycle scripts for i
 
 <Note>
   Bun includes a default allowlist of popular packages containing `postinstall` scripts that are known to be safe. You
-  can see this list [here](https://github.com/oven-sh/bun/blob/main/src/install/default-trusted-dependencies.txt).
+  can see this list [here](https://github.com/oven-sh/bun/blob/main/src/install/default-trusted-dependencies.txt). This
+  default list only applies to packages installed from npm. For packages from other sources (such as `file:`, `link:`,
+  `git:`, or `github:` dependencies), you must explicitly add them to `trustedDependencies`.
 </Note>
 
 ***
@@ -15504,7 +15928,7 @@ bun install
 
 ***
 
-See [Docs > Package manager > Trusted dependencies](https://bun.com/docs/install/lifecycle) for complete documentation of trusted dependencies.
+See [Docs > Package manager > Trusted dependencies](/pm/lifecycle) for complete documentation of trusted dependencies.
 
 
 # Configuring a monorepo using workspaces
@@ -15575,7 +15999,7 @@ bun add zod
 
 ***
 
-See [Docs > Package manager](https://bun.com/docs/cli/install) for complete documentation of Bun's package manager.
+See [Docs > Package manager](/pm/cli/install) for complete documentation of Bun's package manager.
 
 
 # Generate a yarn-compatible lockfile
@@ -15585,12 +16009,13 @@ Source: https://bun.com/docs/guides/install/yarnlock
 
 <Note>
   Bun v1.1.39 introduced `bun.lock`, a JSONC formatted lockfile. `bun.lock` is human-readable and git-diffable without
-  configuration, at no cost to performance. [**Learn more.**](https://bun.com/docs/install/lockfile#text-based-lockfile)
+  configuration, at no cost to performance. In 1.2.0+ it is the default format used for new projects. [**Learn
+  more.**](/pm/lockfile#text-based-lockfile)
 </Note>
 
 ***
 
-Use the `--yarn` flag to generate a Yarn-compatible `yarn.lock` file (in addition to `bun.lock`).
+Use the `--yarn` flag to generate a Yarn-compatible `yarn.lock` file (in addition to `bun.lock{b}`).
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun install --yarn
@@ -15613,7 +16038,7 @@ To print a Yarn lockfile to your console without writing it to disk, "run" your 
 bun bun.lockb
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 # THIS IS AN AUTOGENERATED FILE. DO NOT EDIT THIS FILE DIRECTLY.
 # yarn lockfile v1
 # bun ./bun.lockb --hash: 9BFBF11D86084AAB-9418b03ff880c569-390CE6459EACEC9A...
@@ -15626,7 +16051,7 @@ abab@^2.0.6:
 
 ***
 
-See [Docs > Package manager](https://bun.com/docs/cli/install) for complete documentation of Bun's package manager.
+See [Docs > Package manager](/pm/cli/install) for complete documentation of Bun's package manager.
 
 
 # Parse command-line arguments
@@ -15648,7 +16073,7 @@ Running this file with arguments results in the following:
 bun run cli.ts --flag1 --flag2 value
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 [ '/path/to/bun', '/path/to/cli.ts', '--flag1', '--flag2', 'value' ]
 ```
 
@@ -15687,7 +16112,7 @@ then it outputs
 bun run cli.ts --flag1 --flag2 value
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
   flag1: true,
   flag2: "value",
@@ -15712,7 +16137,7 @@ process.on("SIGINT", () => {
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils) for more useful utilities.
+See [Docs > API > Utils](/runtime/utils) for more useful utilities.
 
 
 # Spawn a child process and communicate using IPC
@@ -15720,7 +16145,7 @@ Source: https://bun.com/docs/guides/process/ipc
 
 
 
-Use [`Bun.spawn()`](https://bun.com/docs/api/spawn) to spawn a child process. When spawning a second `bun` process, you can open a direct inter-process communication (IPC) channel between the two processes.
+Use [`Bun.spawn()`](/runtime/child-process) to spawn a child process. When spawning a second `bun` process, you can open a direct inter-process communication (IPC) channel between the two processes.
 
 <Note>
   This API is only compatible with other `bun` processes. Use `process.execPath` to get a path to the currently running
@@ -15782,7 +16207,7 @@ process.send({ message: "Hello from child as object" });
 
 ***
 
-See [Docs > API > Child processes](https://bun.com/docs/api/spawn) for complete documentation.
+See [Docs > API > Child processes](/runtime/child-process) for complete documentation.
 
 
 # Get the process uptime in nanoseconds
@@ -15792,13 +16217,13 @@ Source: https://bun.com/docs/guides/process/nanoseconds
 
 Use `Bun.nanoseconds()` to get the total number of nanoseconds the `bun` process has been alive.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.nanoseconds();
 ```
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils) for more useful utilities.
+See [Docs > API > Utils](/runtime/utils) for more useful utilities.
 
 
 # Listen to OS signals
@@ -15808,7 +16233,7 @@ Source: https://bun.com/docs/guides/process/os-signals
 
 Bun supports the Node.js `process` global, including the `process.on()` method for listening to OS signals.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 process.on("SIGINT", () => {
   console.log("Received SIGINT");
 });
@@ -15816,19 +16241,9 @@ process.on("SIGINT", () => {
 
 ***
 
-If you don't know which signal to listen for, you listen to the umbrella `"exit"` event.
-
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
-process.on("exit", code => {
-  console.log(`Process exited with code ${code}`);
-});
-```
-
-***
-
 If you don't know which signal to listen for, you listen to the [`"beforeExit"`](https://nodejs.org/api/process.html#event-beforeexit) and [`"exit"`](https://nodejs.org/api/process.html#event-exit) events.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 process.on("beforeExit", code => {
   console.log(`Event loop is empty!`);
 });
@@ -15840,7 +16255,7 @@ process.on("exit", code => {
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils) for more useful utilities.
+See [Docs > API > Utils](/runtime/utils) for more useful utilities.
 
 
 # Spawn a child process
@@ -15848,9 +16263,9 @@ Source: https://bun.com/docs/guides/process/spawn
 
 
 
-Use [`Bun.spawn()`](https://bun.com/docs/api/spawn) to spawn a child process.
+Use [`Bun.spawn()`](/runtime/child-process) to spawn a child process.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const proc = Bun.spawn(["echo", "hello"]);
 
 // await completion
@@ -15861,7 +16276,7 @@ await proc.exited;
 
 The second argument accepts a configuration object.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const proc = Bun.spawn(["echo", "Hello, world!"], {
   cwd: "/tmp",
   env: { FOO: "bar" },
@@ -15875,7 +16290,7 @@ const proc = Bun.spawn(["echo", "Hello, world!"], {
 
 By default, the `stdout` of the child process can be consumed as a `ReadableStream` using `proc.stdout`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const proc = Bun.spawn(["echo", "hello"]);
 
 const output = await proc.stdout.text();
@@ -15884,7 +16299,7 @@ output; // => "hello\n"
 
 ***
 
-See [Docs > API > Child processes](https://bun.com/docs/api/spawn) for complete documentation.
+See [Docs > API > Child processes](/runtime/child-process) for complete documentation.
 
 
 # Read stderr from a child process
@@ -15892,9 +16307,9 @@ Source: https://bun.com/docs/guides/process/spawn-stderr
 
 
 
-When using [`Bun.spawn()`](https://bun.com/docs/api/spawn), the child process inherits the `stderr` of the spawning process. If instead you'd prefer to read and handle `stderr`, set the `stderr` option to `"pipe"`.
+When using [`Bun.spawn()`](/runtime/child-process), the child process inherits the `stderr` of the spawning process. If instead you'd prefer to read and handle `stderr`, set the `stderr` option to `"pipe"`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const proc = Bun.spawn(["echo", "hello"], {
   stderr: "pipe",
 });
@@ -15906,7 +16321,7 @@ proc.stderr; // => ReadableStream
 
 To read `stderr` until the child process exits, use .text()
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const proc = Bun.spawn(["echo", "hello"], {
   stderr: "pipe",
 });
@@ -15919,7 +16334,7 @@ if (errors) {
 
 ***
 
-See [Docs > API > Child processes](https://bun.com/docs/api/spawn) for complete documentation.
+See [Docs > API > Child processes](/runtime/child-process) for complete documentation.
 
 
 # Read stdout from a child process
@@ -15927,9 +16342,9 @@ Source: https://bun.com/docs/guides/process/spawn-stdout
 
 
 
-When using [`Bun.spawn()`](https://bun.com/docs/api/spawn), the `stdout` of the child process can be consumed as a `ReadableStream` via `proc.stdout`.
+When using [`Bun.spawn()`](/runtime/child-process), the `stdout` of the child process can be consumed as a `ReadableStream` via `proc.stdout`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const proc = Bun.spawn(["echo", "hello"]);
 
 const output = await proc.stdout.text();
@@ -15940,7 +16355,7 @@ output; // => "hello"
 
 To instead pipe the `stdout` of the child process to `stdout` of the parent process, set "inherit".
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const proc = Bun.spawn(["echo", "hello"], {
   stdout: "inherit",
 });
@@ -15948,7 +16363,7 @@ const proc = Bun.spawn(["echo", "hello"], {
 
 ***
 
-See [Docs > API > Child processes](https://bun.com/docs/api/spawn) for complete documentation.
+See [Docs > API > Child processes](/runtime/child-process) for complete documentation.
 
 
 # Read from stdin
@@ -15975,7 +16390,7 @@ Running this file results in a never-ending interactive prompt that echoes whate
 bun run index.ts
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 Type something: hello
 You typed: hello
 Type something: hello again
@@ -16005,13 +16420,13 @@ This will print the input that is piped into the `bun` process.
 echo "hello" | bun run stdin.ts
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 Chunk: hello
 ```
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils) for more useful utilities.
+See [Docs > API > Utils](/runtime/utils) for more useful utilities.
 
 
 # Read a file to an ArrayBuffer
@@ -16030,7 +16445,7 @@ const buffer = await file.arrayBuffer();
 
 ***
 
-The binary content in the `ArrayBuffer` can then be read as a typed array, such as `Int8Array`. For `Uint8Array`, use [`.bytes()`](./uint8array).
+The binary content in the `ArrayBuffer` can then be read as a typed array, such as `Int8Array`. For `Uint8Array`, use [`.bytes()`](/guides/read-file/uint8array).
 
 ```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const buffer = await file.arrayBuffer();
@@ -16042,7 +16457,7 @@ bytes.length;
 
 ***
 
-Refer to the [Typed arrays](https://bun.com/docs/api/binary-data#typedarray) docs for more information on working with typed arrays in Bun.
+Refer to the [Typed arrays](/runtime/binary-data#typedarray) docs for more information on working with typed arrays in Bun.
 
 
 # Read a file to a Buffer
@@ -16064,7 +16479,7 @@ const buffer = Buffer.from(arrbuf);
 
 ***
 
-Refer to [Binary data > Buffer](https://bun.com/docs/api/binary-data#buffer) for more information on working with `Buffer` and other binary data formats in Bun.
+Refer to [Binary data > Buffer](/runtime/binary-data#buffer) for more information on working with `Buffer` and other binary data formats in Bun.
 
 
 # Check if a file exists
@@ -16083,7 +16498,7 @@ await file.exists(); // boolean;
 
 ***
 
-Refer to [API > File I/O](https://bun.com/docs/api/file-io) for more information on working with `BunFile`.
+Refer to [API > File I/O](/runtime/file-io) for more information on working with `BunFile`.
 
 
 # Read a JSON file
@@ -16113,7 +16528,7 @@ Source: https://bun.com/docs/guides/read-file/mime
 
 The `Bun.file()` function accepts a path and returns a `BunFile` instance. The `BunFile` class extends `Blob`, so use the `.type` property to read the MIME type.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const file = Bun.file("./package.json");
 file.type; // application/json
 
@@ -16126,7 +16541,7 @@ file.type; // image/png
 
 ***
 
-Refer to [API > File I/O](https://bun.com/docs/api/file-io) for more information on working with `BunFile`.
+Refer to [API > File I/O](/runtime/file-io) for more information on working with `BunFile`.
 
 
 # Read a file as a ReadableStream
@@ -16136,7 +16551,7 @@ Source: https://bun.com/docs/guides/read-file/stream
 
 The `Bun.file()` function accepts a path and returns a `BunFile` instance. The `BunFile` class extends `Blob` and allows you to lazily read the file in a variety of formats. Use `.stream()` to consume the file incrementally as a `ReadableStream`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const path = "/path/to/package.json";
 const file = Bun.file(path);
 
@@ -16147,7 +16562,7 @@ const stream = file.stream();
 
 The chunks of the stream can be consumed as an [async iterable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_async_iterator_and_async_iterable_protocols) using `for await`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 for await (const chunk of stream) {
   chunk; // => Uint8Array
 }
@@ -16155,7 +16570,7 @@ for await (const chunk of stream) {
 
 ***
 
-Refer to the [Streams](https://bun.com/docs/api/streams) documentation for more information on working with streams in Bun.
+Refer to the [Streams](/runtime/streams) documentation for more information on working with streams in Bun.
 
 
 # Read a file as a string
@@ -16165,7 +16580,7 @@ Source: https://bun.com/docs/guides/read-file/string
 
 The `Bun.file()` function accepts a path and returns a `BunFile` instance. The `BunFile` class extends `Blob` and allows you to lazily read the file in a variety of formats. Use `.text()` to read the contents as a string.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const path = "/path/to/file.txt";
 const file = Bun.file(path);
 
@@ -16177,7 +16592,7 @@ const text = await file.text();
 
 Any relative paths will be resolved relative to the project root (the nearest directory containing a `package.json` file).
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const path = "./file.txt";
 const file = Bun.file(path);
 ```
@@ -16192,7 +16607,7 @@ The `Bun.file()` function accepts a path and returns a `BunFile` instance. The `
 
 To read the file into a `Uint8Array` instance, retrieve the contents of the `BunFile` with `.bytes()`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const path = "/path/to/package.json";
 const file = Bun.file(path);
 
@@ -16204,7 +16619,7 @@ byteArray.length; // length of byteArray
 
 ***
 
-Refer to [API > Binary data > Typed arrays](https://bun.com/docs/api/binary-data#typedarray) for more information on working with `Uint8Array` and other binary data formats in Bun.
+Refer to [API > Binary data > Typed arrays](/runtime/binary-data#typedarray) for more information on working with `Uint8Array` and other binary data formats in Bun.
 
 
 # Watch a directory for changes
@@ -16216,7 +16631,7 @@ Bun implements the `node:fs` module, including the `fs.watch` function for liste
 
 This code block listens for changes to files in the current directory. By default this operation is *shallow*, meaning that changes to files in subdirectories will not be detected.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { watch } from "fs";
 
 const watcher = watch(import.meta.dir, (event, filename) => {
@@ -16228,7 +16643,7 @@ const watcher = watch(import.meta.dir, (event, filename) => {
 
 To listen to changes in subdirectories, pass the `recursive: true` option to `fs.watch`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { watch } from "fs";
 
 const watcher = watch(import.meta.dir, { recursive: true }, (event, relativePath) => {
@@ -16240,7 +16655,7 @@ const watcher = watch(import.meta.dir, { recursive: true }, (event, relativePath
 
 Using the `node:fs/promises` module, you can listen for changes using `for await...of` instead of a callback.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { watch } from "fs/promises";
 
 const watcher = watch(import.meta.dir);
@@ -16253,7 +16668,7 @@ for await (const event of watcher) {
 
 To stop listening for changes, call `watcher.close()`. It's common to do this when the process receives a `SIGINT` signal, such as when the user presses Ctrl-C.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { watch } from "fs";
 
 const watcher = watch(import.meta.dir, (event, filename) => {
@@ -16271,7 +16686,7 @@ process.on("SIGINT", () => {
 
 ***
 
-Refer to [API > Binary data > Typed arrays](https://bun.com/docs/api/binary-data#typedarray) for more information on working with `Uint8Array` and other binary data formats in Bun.
+Refer to [API > Binary data > Typed arrays](/runtime/binary-data#typedarray) for more information on working with `Uint8Array` and other binary data formats in Bun.
 
 
 # Build-time constants with --define
@@ -16384,7 +16799,7 @@ if (ENABLE_DEBUG) {
 }
 ```
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 # Production build - analytics enabled, debug disabled
 bun build --compile --define ENABLE_ANALYTICS=true --define ENABLE_DEBUG=false src/app.ts --outfile app-prod
 
@@ -16409,7 +16824,7 @@ const response = await fetch(CONFIG.apiUrl, {
 });
 ```
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun build --compile --define 'CONFIG={"apiUrl":"https://api.example.com","timeout":5000,"retries":3}' src/app.ts --outfile app
 ```
 
@@ -16421,7 +16836,7 @@ bun build --compile --define 'CONFIG={"apiUrl":"https://api.example.com","timeou
 
 Create different executables for different environments:
 
-```json  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```json theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
   "scripts": {
     "build:dev": "bun build --compile --define NODE_ENV='\"development\"' --define API_URL='\"http://localhost:3000\"' src/app.ts --outfile app-dev",
@@ -16435,7 +16850,7 @@ Create different executables for different environments:
 
 Generate build-time constants from shell commands:
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 # Use git to get current commit and timestamp
 bun build --compile \
   --define BUILD_VERSION="\"$(git describe --tags --always)\"" \
@@ -16448,7 +16863,7 @@ bun build --compile \
 
 Create a build script that automatically injects build metadata:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // build.ts
 import { $ } from "bun";
 
@@ -16477,7 +16892,7 @@ console.log(`Built with version ${version.trim()}`);
 
 Values must be valid JSON that will be parsed and inlined as JavaScript expressions:
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 # ✅ Strings must be JSON-quoted
 --define VERSION='"1.0.0"'
 
@@ -16501,7 +16916,7 @@ Values must be valid JSON that will be parsed and inlined as JavaScript expressi
 
 You can use property access patterns as keys, not just simple identifiers:
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 # ✅ Replace process.env.NODE_ENV with "production"
 --define 'process.env.NODE_ENV="production"'
 
@@ -16517,7 +16932,7 @@ You can use property access patterns as keys, not just simple identifiers:
 
 This is particularly useful for environment variables:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Before compilation
 if (process.env.NODE_ENV === "production") {
   console.log("Production mode");
@@ -16536,7 +16951,7 @@ console.log("Production mode");
 
 For TypeScript projects, declare your constants to avoid type errors:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // types/build-constants.d.ts
 declare const BUILD_VERSION: string;
 declare const BUILD_TIME: string;
@@ -16548,7 +16963,7 @@ declare const DEBUG: boolean;
 
 When building for multiple platforms, constants work the same way:
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 # Linux
 bun build --compile --target=bun-linux-x64 --define PLATFORM='"linux"' src/app.ts --outfile app-linux
 
@@ -16606,7 +17021,7 @@ jobs:
       # ...
       - uses: oven-sh/setup-bun@v2
         with: # [!code ++]
-          bun-version: 1.2.0 # or "latest", "canary", <sha> # [!code ++]
+          bun-version: 1.3.3 # or "latest", "canary", <sha> # [!code ++]
 ```
 
 ***
@@ -16621,7 +17036,7 @@ Fix the "can't be opened because it is from an unidentified developer" Gatekeepe
 
 Compile your executable using the `--compile` flag.
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun build --compile ./path/to/entry.ts --outfile myapp
 ```
 
@@ -16633,7 +17048,7 @@ List your available signing identities. One of these will be your signing identi
 security find-identity -v -p codesigning
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 1. XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX "Developer ID Application: Your Name (ZZZZZZZZZZ)"
    1 valid identities found
 ```
@@ -16691,7 +17106,7 @@ bun build --define process.env.NODE_ENV="'production'" src/index.ts # Build
 
 These statically-known values are used by Bun for dead code elimination and other optimizations.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 if (process.env.NODE_ENV === "production") {
   console.log("Production mode");
 } else {
@@ -16703,7 +17118,7 @@ if (process.env.NODE_ENV === "production") {
 
 Before the code reaches the JavaScript engine, Bun replaces `process.env.NODE_ENV` with `"production"`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 if ("production" === "production") { // [!code ++]
   console.log("Production mode");
 } else {
@@ -16717,7 +17132,7 @@ It doesn't stop there. Bun's optimizing transpiler is smart enough to do some ba
 
 Since `"production" === "production"` is always `true`, Bun replaces the entire expression with the `true` value.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 if (true) { // [!code ++]
   console.log("Production mode");
 } else {
@@ -16729,7 +17144,7 @@ if (true) { // [!code ++]
 
 And finally, Bun detects the `else` branch is not reachable, and eliminates it.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 console.log("Production mode");
 ```
 
@@ -16743,13 +17158,13 @@ Values can be strings, identifiers, properties, or JSON.
 
 To make all usages of `window` be `undefined`, you can use the following command.
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun --define window="undefined" src/index.ts
 ```
 
 This can be useful when Server-Side Rendering (SSR) or when you want to make sure that the code doesn't depend on the `window` object.
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 if (typeof window !== "undefined") {
   console.log("Client-side code");
 } else {
@@ -16759,7 +17174,7 @@ if (typeof window !== "undefined") {
 
 You can also set the value to be another identifier. For example, to make all usages of `global` be `globalThis`, you can use the following command.
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun --define global="globalThis" src/index.ts
 ```
 
@@ -16771,7 +17186,7 @@ bun --define global="globalThis" src/index.ts
 
 To replace all usages of `AWS` with the JSON object `{"ACCESS_KEY":"abc","SECRET_KEY":"def"}`, you can use the following command.
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 # JSON
 bun --define AWS='{"ACCESS_KEY":"abc","SECRET_KEY":"def"}' src/index.ts
 ```
@@ -16780,13 +17195,13 @@ Those will be transformed into the equivalent JavaScript code.
 
 From:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 console.log(AWS.ACCESS_KEY); // => "abc"
 ```
 
 To:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 console.log("abc");
 ```
 
@@ -16796,19 +17211,19 @@ You can also pass properties to the `--define` flag.
 
 For example, to replace all usages of `console.write` with `console.log`, you can use the following command
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun --define console.write=console.log src/index.ts
 ```
 
 That transforms the following input:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 console.write("Hello, world!");
 ```
 
 Into the following output:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 console.log("Hello, world!");
 ```
 
@@ -16860,7 +17275,7 @@ try {
 
 ***
 
-See [Docs > API > FileSystem](https://bun.com/docs/api/file-io) for more filesystem operations.
+See [Docs > API > FileSystem](/runtime/file-io) for more filesystem operations.
 
 
 # Delete files
@@ -16882,7 +17297,7 @@ const exists = await file.exists();
 
 ***
 
-See [Docs > API > FileSystem](https://bun.com/docs/api/file-io) for more filesystem operations.
+See [Docs > API > FileSystem](/runtime/file-io) for more filesystem operations.
 
 
 # Inspect memory usage using V8 heap snapshots
@@ -16911,7 +17326,9 @@ To view V8 heap snapshots in Chrome DevTools:
 3. Click the "Load" button (folder icon)
 4. Select your `.heapsnapshot` file
 
-<Frame><img src="https://mintcdn.com/bun-1dd33a4e/o4ey1PfJcT885lrd/images/chrome-devtools-memory.png?fit=max&auto=format&n=o4ey1PfJcT885lrd&q=85&s=8f11aeea8ad1f70974bb963f83c4decf" alt="Chrome DevTools Memory Tab" data-og-width="1770" width="1770" data-og-height="1201" height="1201" data-path="images/chrome-devtools-memory.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/o4ey1PfJcT885lrd/images/chrome-devtools-memory.png?w=280&fit=max&auto=format&n=o4ey1PfJcT885lrd&q=85&s=e6e1a5ebf8ad30c43544a41f085dbdfe 280w, https://mintcdn.com/bun-1dd33a4e/o4ey1PfJcT885lrd/images/chrome-devtools-memory.png?w=560&fit=max&auto=format&n=o4ey1PfJcT885lrd&q=85&s=303daf97c88002cd3765b80df8e64543 560w, https://mintcdn.com/bun-1dd33a4e/o4ey1PfJcT885lrd/images/chrome-devtools-memory.png?w=840&fit=max&auto=format&n=o4ey1PfJcT885lrd&q=85&s=84c80aef8460adb98de500d4bc7c8c4e 840w, https://mintcdn.com/bun-1dd33a4e/o4ey1PfJcT885lrd/images/chrome-devtools-memory.png?w=1100&fit=max&auto=format&n=o4ey1PfJcT885lrd&q=85&s=6b7e5032419ac91bc5711d87d0588e70 1100w, https://mintcdn.com/bun-1dd33a4e/o4ey1PfJcT885lrd/images/chrome-devtools-memory.png?w=1650&fit=max&auto=format&n=o4ey1PfJcT885lrd&q=85&s=dd9e20c03c566243048aae4d59999aa4 1650w, https://mintcdn.com/bun-1dd33a4e/o4ey1PfJcT885lrd/images/chrome-devtools-memory.png?w=2500&fit=max&auto=format&n=o4ey1PfJcT885lrd&q=85&s=ed77a018c5bd2a2ca06905dd96198c6a 2500w" /></Frame>
+<Frame>
+  <img alt="Chrome DevTools Memory Tab" />
+</Frame>
 
 
 # Import a HTML file as text
@@ -16974,7 +17391,82 @@ data.author.name; // => "John Dough"
 
 ***
 
-See [Docs > Runtime > TypeScript](https://bun.com/docs/runtime/typescript) for more information on using TypeScript with Bun.
+See [Docs > Runtime > TypeScript](/runtime/typescript) for more information on using TypeScript with Bun.
+
+
+# Import a JSON5 file
+Source: https://bun.com/docs/guides/runtime/import-json5
+
+
+
+Bun natively supports `.json5` imports.
+
+```json5 config.json5 icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+{
+  // Comments are allowed
+  database: {
+    host: "localhost",
+    port: 5432,
+    name: "myapp",
+  },
+
+  server: {
+    port: 3000,
+    timeout: 30,
+  },
+
+  features: {
+    auth: true,
+    rateLimit: true,
+  },
+}
+```
+
+***
+
+Import the file like any other source file.
+
+```ts config.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+import config from "./config.json5";
+
+config.database.host; // => "localhost"
+config.server.port; // => 3000
+config.features.auth; // => true
+```
+
+***
+
+You can also use named imports to destructure top-level properties:
+
+```ts config.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+import { database, server, features } from "./config.json5";
+
+console.log(database.name); // => "myapp"
+console.log(server.timeout); // => 30
+console.log(features.rateLimit); // => true
+```
+
+***
+
+For parsing JSON5 strings at runtime, use `Bun.JSON5.parse()`:
+
+```ts config.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+const data = JSON5.parse(`{
+  name: 'John Doe',
+  age: 30,
+  hobbies: [
+    'reading',
+    'coding',
+  ],
+}`);
+
+console.log(data.name); // => "John Doe"
+console.log(data.hobbies); // => ["reading", "coding"]
+```
+
+***
+
+See [Docs > API > JSON5](/runtime/json5) for complete documentation on JSON5 support in Bun.
 
 
 # Import a TOML file
@@ -17007,7 +17499,7 @@ data.author.name; // => "John Dough"
 
 ***
 
-See [Docs > Runtime > TypeScript](https://bun.com/docs/runtime/typescript) for more information on using TypeScript with Bun.
+See [Docs > Runtime > TypeScript](/runtime/typescript) for more information on using TypeScript with Bun.
 
 
 # Import a YAML file
@@ -17112,7 +17604,7 @@ export = contents;
 
 ***
 
-See [Docs > API > YAML](https://bun.com/docs/api/yaml) for complete documentation on YAML support in Bun.
+See [Docs > API > YAML](/runtime/yaml) for complete documentation on YAML support in Bun.
 
 
 # Read environment variables
@@ -17142,7 +17634,7 @@ To print all currently-set environment variables to the command line, run `bun -
 bun --print process.env
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 BAZ=stuff
 FOOBAR=aaaaaa
 <lots more lines>
@@ -17150,7 +17642,7 @@ FOOBAR=aaaaaa
 
 ***
 
-See [Docs > Runtime > Environment variables](https://bun.com/docs/runtime/env) for more information on using environment variables with Bun.
+See [Docs > Runtime > Environment variables](/runtime/environment-variables) for more information on using environment variables with Bun.
 
 
 # Set environment variables
@@ -17175,7 +17667,7 @@ Bun reads the following files automatically (listed in order of increasing prece
 * `.env.production`, `.env.development`, `.env.test` (depending on value of `NODE_ENV`)
 * `.env.local` (not loaded when `NODE_ENV=test`)
 
-```txt .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ini .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 FOO=hello
 BAR=world
 ```
@@ -17200,7 +17692,7 @@ Variables can also be set via the command line.
 
 ***
 
-See [Docs > Runtime > Environment variables](https://bun.com/docs/runtime/env) for more information on using environment variables with Bun.
+See [Docs > Runtime > Environment variables](/runtime/environment-variables) for more information on using environment variables with Bun.
 
 
 # Run a Shell Command
@@ -17243,7 +17735,7 @@ for await (const line of $`ls -l`.lines()) {
 
 ***
 
-See [Docs > API > Shell](https://bun.com/docs/runtime/shell) for complete documentation.
+See [Docs > API > Shell](/runtime/shell) for complete documentation.
 
 
 # Set a time zone in Bun
@@ -17313,7 +17805,7 @@ import { Button } from "@components/Button"; // imports from "./src/components/B
 
 ***
 
-See [Docs > Runtime > TypeScript](https://bun.com/docs/runtime/typescript) for more information on using TypeScript with Bun.
+See [Docs > Runtime > TypeScript](/runtime/typescript) for more information on using TypeScript with Bun.
 
 
 # Install TypeScript declarations for Bun
@@ -17365,7 +17857,7 @@ Below is the full set of recommended `compilerOptions` for a Bun project. With t
 
 ***
 
-Refer to [Ecosystem > TypeScript](https://bun.com/docs/runtime/typescript) for a complete guide to TypeScript support in Bun.
+Refer to [Ecosystem > TypeScript](/runtime/typescript) for a complete guide to TypeScript support in Bun.
 
 
 # Debugging Bun with the VS Code extension
@@ -17374,8 +17866,7 @@ Source: https://bun.com/docs/guides/runtime/vscode-debugger
 
 
 <Note>
-  VSCode extension support is currently buggy. We recommend the [Web
-  Debugger](https://bun.com/guides/runtime/web-debugger) for now.
+  VSCode extension support is currently buggy. We recommend the [Web Debugger](/guides/runtime/web-debugger) for now.
 </Note>
 
 Bun speaks the [WebKit Inspector Protocol](https://github.com/oven-sh/bun/blob/main/packages/bun-inspector-protocol/src/protocol/jsc/index.d.ts) so you can debug your code with an interactive debugger.
@@ -17422,7 +17913,7 @@ Source: https://bun.com/docs/guides/runtime/web-debugger
 
 
 
-Bun speaks the [WebKit Inspector Protocol](https://github.com/oven-sh/bun/blob/main/packages/bun-vscode/types/jsc.d.ts). To enable debugging when running code with Bun, use the `--inspect` flag. For demonstration purposes, consider the following simple web server.
+Bun speaks the [WebKit Inspector Protocol](https://github.com/oven-sh/bun/blob/main/packages/bun-inspector-protocol/src/protocol/jsc/index.d.ts). To enable debugging when running code with Bun, use the `--inspect` flag. For demonstration purposes, consider the following simple web server.
 
 ```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
@@ -17445,7 +17936,7 @@ Bun hosts a web-based debugger at [debug.bun.sh](https://debug.bun.sh). It is a 
 bun --inspect server.ts
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 ------------------ Bun Inspector ------------------
 Listening at:
   ws://localhost:6499/0tqxs9exrgrm
@@ -17528,7 +18019,7 @@ Source: https://bun.com/docs/guides/streams/node-readable-to-arraybuffer
 
 To convert a Node.js `Readable` stream to an `ArrayBuffer` in Bun, you can create a new `Response` object with the stream as the body, then use `arrayBuffer()` to read the stream into an `ArrayBuffer`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { Readable } from "stream";
 const stream = Readable.from(["Hello, ", "world!"]);
 const buf = await new Response(stream).arrayBuffer();
@@ -17542,7 +18033,7 @@ Source: https://bun.com/docs/guides/streams/node-readable-to-blob
 
 To convert a Node.js `Readable` stream to a [`Blob`](https://developer.mozilla.org/en-US/docs/Web/API/Blob) in Bun, you can create a new [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response) object with the stream as the body, then use [`response.blob()`](https://developer.mozilla.org/en-US/docs/Web/API/Response/blob) to read the stream into a [`Blob`](https://developer.mozilla.org/en-US/docs/Web/API/Blob).
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { Readable } from "stream";
 const stream = Readable.from(["Hello, ", "world!"]);
 const blob = await new Response(stream).blob();
@@ -17556,7 +18047,7 @@ Source: https://bun.com/docs/guides/streams/node-readable-to-json
 
 To convert a Node.js `Readable` stream to a JSON object in Bun, you can create a new [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response) object with the stream as the body, then use [`response.json()`](https://developer.mozilla.org/en-US/docs/Web/API/Response/json) to read the stream into a JSON object.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { Readable } from "stream";
 const stream = Readable.from([JSON.stringify({ hello: "world" })]);
 const json = await new Response(stream).json();
@@ -17571,7 +18062,7 @@ Source: https://bun.com/docs/guides/streams/node-readable-to-string
 
 To convert a Node.js `Readable` stream to a string in Bun, you can create a new [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response) object with the stream as the body, then use [`response.text()`](https://developer.mozilla.org/en-US/docs/Web/API/Response/text) to read the stream into a string.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { Readable } from "stream";
 const stream = Readable.from([Buffer.from("Hello, world!")]);
 const text = await new Response(stream).text();
@@ -17586,7 +18077,7 @@ Source: https://bun.com/docs/guides/streams/node-readable-to-uint8array
 
 To convert a Node.js `Readable` stream to an `Uint8Array` in Bun, you can create a new `Response` object with the stream as the body, then use `bytes()` to read the stream into an `Uint8Array`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { Readable } from "stream";
 const stream = Readable.from(["Hello, ", "world!"]);
 const buf = await new Response(stream).bytes();
@@ -17600,14 +18091,14 @@ Source: https://bun.com/docs/guides/streams/to-array
 
 Bun provides a number of convenience functions for reading the contents of a [`ReadableStream`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream) into different formats. The `Bun.readableStreamToArray` function reads the contents of a `ReadableStream` to an array of chunks.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const stream = new ReadableStream();
 const str = await Bun.readableStreamToArray(stream);
 ```
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils#bun-readablestreamto) for documentation on Bun's other `ReadableStream` conversion functions.
+See [Docs > API > Utils](/runtime/utils#bun-readablestreamto) for documentation on Bun's other `ReadableStream` conversion functions.
 
 
 # Convert a ReadableStream to an ArrayBuffer
@@ -17617,14 +18108,14 @@ Source: https://bun.com/docs/guides/streams/to-arraybuffer
 
 Bun provides a number of convenience functions for reading the contents of a [`ReadableStream`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream) into different formats.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const stream = new ReadableStream();
 const buf = await Bun.readableStreamToArrayBuffer(stream);
 ```
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils#bun-readablestreamto) for documentation on Bun's other `ReadableStream` conversion functions.
+See [Docs > API > Utils](/runtime/utils#bun-readablestreamto) for documentation on Bun's other `ReadableStream` conversion functions.
 
 
 # Convert a ReadableStream to a Blob
@@ -17634,14 +18125,14 @@ Source: https://bun.com/docs/guides/streams/to-blob
 
 Bun provides a number of convenience functions for reading the contents of a [`ReadableStream`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream) into different formats.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const stream = new ReadableStream();
 const blob = await Bun.readableStreamToBlob(stream);
 ```
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils#bun-readablestreamto) for documentation on Bun's other `ReadableStream` conversion functions.
+See [Docs > API > Utils](/runtime/utils#bun-readablestreamto) for documentation on Bun's other `ReadableStream` conversion functions.
 
 
 # Convert a ReadableStream to a Buffer
@@ -17651,7 +18142,7 @@ Source: https://bun.com/docs/guides/streams/to-buffer
 
 Bun provides a number of convenience functions for reading the contents of a [`ReadableStream`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream) into different formats. This snippet reads the contents of a `ReadableStream` to an [`ArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer), then creates a [`Buffer`](https://nodejs.org/api/buffer.html) that points to it.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const stream = new ReadableStream();
 const arrBuf = await Bun.readableStreamToArrayBuffer(stream);
 const nodeBuf = Buffer.from(arrBuf);
@@ -17659,7 +18150,7 @@ const nodeBuf = Buffer.from(arrBuf);
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils#bun-readablestreamto) for documentation on Bun's other `ReadableStream` conversion functions.
+See [Docs > API > Utils](/runtime/utils#bun-readablestreamto) for documentation on Bun's other `ReadableStream` conversion functions.
 
 
 # Convert a ReadableStream to JSON
@@ -17669,14 +18160,14 @@ Source: https://bun.com/docs/guides/streams/to-json
 
 Bun provides a number of convenience functions for reading the contents of a [`ReadableStream`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream) into different formats.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const stream = new ReadableStream();
 const json = await stream.json();
 ```
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils#bun-readablestreamto) for documentation on Bun's other `ReadableStream` conversion functions.
+See [Docs > API > Utils](/runtime/utils#bun-readablestreamto) for documentation on Bun's other `ReadableStream` conversion functions.
 
 
 # Convert a ReadableStream to a string
@@ -17686,14 +18177,14 @@ Source: https://bun.com/docs/guides/streams/to-string
 
 Bun provides a number of convenience functions for reading the contents of a [`ReadableStream`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream) into different formats.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const stream = new ReadableStream();
 const str = await Bun.readableStreamToText(stream);
 ```
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils#bun-readablestreamto) for documentation on Bun's other `ReadableStream` conversion functions.
+See [Docs > API > Utils](/runtime/utils#bun-readablestreamto) for documentation on Bun's other `ReadableStream` conversion functions.
 
 
 # Convert a ReadableStream to a Uint8Array
@@ -17703,7 +18194,7 @@ Source: https://bun.com/docs/guides/streams/to-typedarray
 
 Bun provides a number of convenience functions for reading the contents of a [`ReadableStream`](https://developer.mozilla.org/en-US/docs/Web/API/ReadableStream) into different formats. This snippet reads the contents of a `ReadableStream` to an [`ArrayBuffer`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer), then creates a [`Uint8Array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array) that points to the buffer.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const stream = new ReadableStream();
 const buf = await Bun.readableStreamToArrayBuffer(stream);
 const uint8 = new Uint8Array(buf);
@@ -17711,14 +18202,14 @@ const uint8 = new Uint8Array(buf);
 
 Additionally, there is a convenience method to convert to `Uint8Array` directly.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const stream = new ReadableStream();
 const uint8 = await Bun.readableStreamToBytes(stream);
 ```
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils#bun-readablestreamto) for documentation on Bun's other `ReadableStream` conversion functions.
+See [Docs > API > Utils](/runtime/utils#bun-readablestreamto) for documentation on Bun's other `ReadableStream` conversion functions.
 
 
 # Bail early with the Bun test runner
@@ -17743,13 +18234,13 @@ bun test --bail=10
 
 ***
 
-See [Docs > Test runner](https://bun.sh/docs/cli/test) for complete documentation of `bun test`.
+See [Docs > Test runner](/test) for complete documentation of `bun test`.
 
 
 # Selectively run tests concurrently with glob patterns
 Source: https://bun.com/docs/guides/test/concurrent-test-glob
 
-
+Set a glob pattern to decide which tests from which files run in parallel
 
 This guide demonstrates how to use the `concurrentTestGlob` option to selectively run tests concurrently based on file naming patterns.
 
@@ -17816,12 +18307,14 @@ test("fetch user data", async () => {
   expect(response.ok).toBe(true);
 });
 
-test("fetch posts", async () => {
+// can also use test.concurrent() for explicitly marking it as concurrent
+test.concurrent("fetch posts", async () => {
   const response = await fetch("/api/posts");
   expect(response.ok).toBe(true);
 });
 
-test("fetch comments", async () => {
+// can also use test.serial() for explicitly marking it as sequential
+test.serial("fetch comments", async () => {
   const response = await fetch("/api/comments");
   expect(response.ok).toBe(true);
 });
@@ -17907,7 +18400,7 @@ The coverage report lists the source files that were executed during the test ru
 bun test --coverage
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 
 test.test.ts:
 ✓ math > add [0.71ms]
@@ -17937,7 +18430,7 @@ coverage = true # always enable coverage
 
 ***
 
-Refer to [Docs > Test runner > Coverage](https://bun.sh/docs/test/coverage) for complete documentation on code coverage reporting in Bun.
+Refer to [Docs > Test runner > Coverage](/test/code-coverage) for complete documentation on code coverage reporting in Bun.
 
 
 # Set a code coverage threshold with the Bun test runner
@@ -17951,7 +18444,7 @@ Bun's test runner supports built-in code coverage reporting via the `--coverage`
 bun test --coverage
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 test.test.ts:
 ✓ math > add [0.71ms]
 ✓ math > multiply [0.03ms]
@@ -17987,7 +18480,7 @@ If your test suite does not meet this threshold, `bun test` will exit with a non
 bun test --coverage
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 <test output>
 $ echo $?
 1 # this is the exit code of the previous command
@@ -18005,7 +18498,7 @@ coverageThreshold = { lines = 0.5, functions = 0.7 }
 
 ***
 
-See [Docs > Test runner > Coverage](https://bun.sh/docs/test/coverage) for complete documentation on code coverage reporting in Bun.
+See [Docs > Test runner > Coverage](/test/code-coverage) for complete documentation on code coverage reporting in Bun.
 
 
 # Write browser DOM tests with Bun and happy-dom
@@ -18066,7 +18559,7 @@ With Happy DOM properly configured, this test runs as expected.
 bun test
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 
 dom.test.ts:
 ✓ set button text [0.82ms]
@@ -18079,7 +18572,7 @@ Ran 1 tests across 1 files. 1 total [125.00ms]
 
 ***
 
-Refer to the [Happy DOM repo](https://github.com/capricorn86/happy-dom) and [Docs > Test runner > DOM](https://bun.sh/docs/test/dom) for complete documentation on writing browser tests with Bun.
+Refer to the [Happy DOM repo](https://github.com/capricorn86/happy-dom) and [Docs > Test runner > DOM](/test/dom) for complete documentation on writing browser tests with Bun.
 
 
 # Migrate from Jest to Bun's test runner
@@ -18145,7 +18638,7 @@ describe("my test suite", () => {
 
 ***
 
-Bun implements the vast majority of Jest's matchers, but compatibility isn't 100% yet. Refer to the full compatibility table at [Docs > Test runner > Writing tests](https://bun.sh/docs/test/writing#matchers).
+Bun implements the vast majority of Jest's matchers, but compatibility isn't 100% yet. Refer to the full compatibility table at [Docs > Test runner > Writing tests](/test/writing-tests#matchers).
 
 Some notable missing features:
 
@@ -18157,7 +18650,7 @@ If you're using `testEnvironment: "jsdom"` to run your tests in a browser-like e
 
 At the moment jsdom does not work in Bun due to its internal use of V8 APIs. Track support for it [here](https://github.com/oven-sh/bun/issues/3554).
 
-```toml bunfig.toml theme={"theme":{"light":"github-light","dark":"dracula"}}
+```toml bunfig.toml icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [test]
 preload = ["./happy-dom.ts"]
 ```
@@ -18190,11 +18683,11 @@ bun test --timeout 10000
 
 Many other flags become irrelevant or obsolete when using `bun test`.
 
-* `transform` — Bun supports TypeScript & JSX. Other file types can be configured with [Plugins](https://bun.sh/docs/runtime/plugins).
+* `transform` — Bun supports TypeScript & JSX. Other file types can be configured with [Plugins](/runtime/plugins).
 * `extensionsToTreatAsEsm`
 * `haste` — Bun uses it's own internal source maps
 * `watchman`, `watchPlugins`, `watchPathIgnorePatterns` — use `--watch` to run tests in watch mode
-* `verbose` — set `logLevel: "debug"` in [`bunfig.toml`](https://bun.sh/docs/runtime/bunfig#loglevel)
+* `verbose` — set `logLevel: "debug"` in [`bunfig.toml`](/runtime/bunfig#loglevel)
 
 ***
 
@@ -18205,7 +18698,7 @@ Settings that aren't mentioned here are not supported or have no equivalent. Ple
 See also:
 
 * [Mark a test as a todo](/guides/test/todo-tests)
-* [Docs > Test runner > Writing tests](https://bun.sh/docs/test/writing)
+* [Docs > Test runner > Writing tests](/test/writing-tests)
 
 
 # Set the system time in Bun's test runner
@@ -18215,7 +18708,7 @@ Source: https://bun.com/docs/guides/test/mock-clock
 
 Bun's test runner supports setting the system time programmatically with the `setSystemTime` function.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { test, expect, setSystemTime } from "bun:test";
 
 test("party like it's 1999", () => {
@@ -18231,9 +18724,9 @@ test("party like it's 1999", () => {
 
 ***
 
-The `setSystemTime` function is commonly used on conjunction with [Lifecycle Hooks](https://bun.sh/docs/test/lifecycle) to configure a testing environment with a deterministic "fake clock".
+The `setSystemTime` function is commonly used on conjunction with [Lifecycle Hooks](/test/lifecycle) to configure a testing environment with a deterministic "fake clock".
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { test, expect, beforeAll, setSystemTime } from "bun:test";
 
 beforeAll(() => {
@@ -18248,7 +18741,7 @@ beforeAll(() => {
 
 To reset the system clock to the actual time, call `setSystemTime` with no arguments.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { test, expect, beforeAll, setSystemTime } from "bun:test";
 
 setSystemTime(); // reset to actual time
@@ -18256,7 +18749,7 @@ setSystemTime(); // reset to actual time
 
 ***
 
-See [Docs > Test Runner > Date and time](https://bun.sh/docs/test/time) for complete documentation on mocking with the Bun test runner.
+See [Docs > Test Runner > Date and time](/test/dates-times) for complete documentation on mocking with the Bun test runner.
 
 
 # Mock functions in `bun test`
@@ -18320,14 +18813,14 @@ test("random", async () => {
 
   expect(random).toHaveBeenCalled();
   expect(random).toHaveBeenCalledTimes(3);
-  expect(random.mock.args).toEqual([[1], [2], [3]]);
+  expect(random.mock.calls).toEqual([[1], [2], [3]]);
   expect(random.mock.results[0]).toEqual({ type: "return", value: a });
 });
 ```
 
 ***
 
-See [Docs > Test Runner > Mocks](https://bun.sh/docs/test/mocks) for complete documentation on mocking with the Bun test runner.
+See [Docs > Test Runner > Mocks](/test/mocks) for complete documentation on mocking with the Bun test runner.
 
 
 # Re-run tests multiple times with the Bun test runner
@@ -18344,7 +18837,7 @@ bun test --rerun-each 10
 
 ***
 
-See [Docs > Test runner](https://bun.sh/docs/cli/test) for complete documentation of `bun test`.
+See [Docs > Test runner](/test) for complete documentation of `bun test`.
 
 
 # Run your tests with the Bun test runner
@@ -18352,7 +18845,7 @@ Source: https://bun.com/docs/guides/test/run-tests
 
 
 
-Bun has a built-in [test runner](https://bun.sh/docs/cli/test) with a Jest-like `expect` API.
+Bun has a built-in [test runner](/test) with a Jest-like `expect` API.
 
 ***
 
@@ -18373,7 +18866,7 @@ Here's what the output of a typical test run looks like. In this case, there are
 bun test
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 test.test.js:
 ✓ add [0.87ms]
 ✓ multiply [0.02ms]
@@ -18400,7 +18893,7 @@ To only run certain test files, pass a positional argument to `bun test`. The ru
 bun test test3
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 test3.test.js:
 ✓ add [1.40ms]
 ✓ multiply [0.03ms]
@@ -18415,7 +18908,7 @@ Ran 2 tests across 1 files. [15.00ms]
 
 All tests have a name, defined using the first parameter to the `test` function. Tests can also be grouped into suites with `describe`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { test, expect, describe } from "bun:test";
 
 describe("math", () => {
@@ -18439,7 +18932,7 @@ Adding `-t add` will only run tests with "add" in the name. This works with test
 bun test -t add
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 test.test.js:
 ✓ add [1.79ms]
 » multiply
@@ -18461,7 +18954,7 @@ Ran 6 tests across 3 files. [59.00ms]
 
 ***
 
-See [Docs > Test Runner](https://bun.sh/docs/cli/test) for complete documentation on the test runner.
+See [Docs > Test Runner](/test) for complete documentation on the test runner.
 
 
 # Skip tests with the Bun test runner
@@ -18487,7 +18980,7 @@ Running `bun test` will not execute this test. It will be marked as skipped in t
 bun test
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 test.test.ts:
 ✓ add [0.03ms]
 ✓ multiply [0.02ms]
@@ -18505,7 +18998,7 @@ Ran 3 tests across 1 files. [74.00ms]
 See also:
 
 * [Mark a test as a todo](/guides/test/todo-tests)
-* [Docs > Test runner > Writing tests](https://bun.sh/docs/test/writing)
+* [Docs > Test runner > Writing tests](/test/writing-tests)
 
 
 # Use snapshot testing in `bun test`
@@ -18531,7 +19024,7 @@ The first time this test is executed, Bun will evaluate the value passed into `e
 bun test test/snap
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 test/snap.test.ts:
 ✓ snapshot [1.48ms]
 
@@ -18558,7 +19051,7 @@ test
 The `snap.test.ts.snap` file is a JavaScript file that exports a serialized version of the value passed into `expect()`. The `{foo: "bar"}` object has been serialized to JSON.
 
 ```js snap.test.ts.snap icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
-// Bun Snapshot v1, https://bun.sh/docs/test/snapshots
+// Bun Snapshot v1, https://bun.com/docs/test/snapshots
 
 exports[`snapshot 1`] = `
 {
@@ -18575,8 +19068,8 @@ Later, when this test file is executed again, Bun will read the snapshot file an
 bun test
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun test v1.3.2 (9c68abdb)
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun test v1.3.3 (9c68abdb)
 test/snap.test.ts:
 ✓ snapshot [1.05ms]
 
@@ -18594,8 +19087,8 @@ To update snapshots, use the `--update-snapshots` flag.
 bun test --update-snapshots
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun test v1.3.2 (9c68abdb)
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun test v1.3.3 (9c68abdb)
 test/snap.test.ts:
 ✓ snapshot [0.86ms]
 
@@ -18608,7 +19101,7 @@ Ran 1 tests across 1 files. [102.00ms]
 
 ***
 
-See [Docs > Test Runner > Snapshots](https://bun.sh/docs/test/snapshots) for complete documentation on snapshots with the Bun test runner.
+See [Docs > Test Runner > Snapshots](/test/snapshots) for complete documentation on snapshots with the Bun test runner.
 
 
 # Spy on methods in `bun test`
@@ -18618,7 +19111,7 @@ Source: https://bun.com/docs/guides/test/spy-on
 
 Use the `spyOn` utility to track method calls with Bun's test runner.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { test, expect, spyOn } from "bun:test";
 
 const leo = {
@@ -18635,7 +19128,7 @@ const spy = spyOn(leo, "sayHi");
 
 Once the spy is created, it can be used to write `expect` assertions relating to method calls.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { test, expect, spyOn } from "bun:test";
 
 const leo = {
@@ -18657,7 +19150,7 @@ test("turtles", () => { // [!code ++]
 
 ***
 
-See [Docs > Test Runner > Mocks](https://bun.sh/docs/test/mocks) for complete documentation on mocking with the Bun test runner.
+See [Docs > Test Runner > Mocks](/test/mocks) for complete documentation on mocking with the Bun test runner.
 
 
 # import, require, and test Svelte components with bun test
@@ -18675,7 +19168,7 @@ bun add @testing-library/svelte svelte@4 @happy-dom/global-registrator
 
 Then, save this plugin in your project.
 
-```ts svelte-loader.js icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts svelte-loader.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { plugin } from "bun";
 import { compile } from "svelte/compiler";
 import { readFileSync } from "fs";
@@ -18722,10 +19215,10 @@ Add this to `bunfig.toml` to tell Bun to preload the plugin, so it loads before 
 ```toml bunfig.toml icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [test]
 # Tell Bun to load this plugin before your tests run
-preload = ["./svelte-loader.js"]
+preload = ["./svelte-loader.ts"]
 
 # This also works:
-# test.preload = ["./svelte-loader.js"]
+# test.preload = ["./svelte-loader.ts"]
 ```
 
 ***
@@ -18783,7 +19276,7 @@ You can use [Testing Library](https://testing-library.com/) with Bun's test runn
 
 ***
 
-As a prerequisite to using Testing Library you will need to install [Happy Dom](https://github.com/capricorn86/happy-dom). ([see Bun's Happy DOM guide for more information](https://bun.sh/guides/test/happy-dom)).
+As a prerequisite to using Testing Library you will need to install [Happy Dom](https://github.com/capricorn86/happy-dom). ([see Bun's Happy DOM guide for more information](/guides/test/happy-dom)).
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun add -D @happy-dom/global-registrator
@@ -18799,7 +19292,7 @@ bun add -D @testing-library/react @testing-library/dom @testing-library/jest-dom
 
 ***
 
-Next you will need to create a preload script for Happy DOM and for Testing Library. For more details about the Happy DOM setup script see [Bun's Happy DOM guide](https://bun.sh/guides/test/happy-dom).
+Next you will need to create a preload script for Happy DOM and for Testing Library. For more details about the Happy DOM setup script see [Bun's Happy DOM guide](/guides/test/happy-dom).
 
 ```ts happydom.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { GlobalRegistrator } from "@happy-dom/global-registrator";
@@ -18851,7 +19344,7 @@ declare module "bun:test" {
 
 You should now be able to use Testing Library in your tests
 
-```ts matchers.d.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```tsx myComponent.test.tsx icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { test, expect } from "bun:test";
 import { screen, render } from "@testing-library/react";
 import { MyComponent } from "./myComponent";
@@ -18865,7 +19358,7 @@ test("Can use Testing Library", () => {
 
 ***
 
-Refer to the [Testing Library docs](https://testing-library.com/), [Happy DOM repo](https://github.com/capricorn86/happy-dom) and [Docs > Test runner > DOM](https://bun.sh/docs/test/dom) for complete documentation on writing browser tests with Bun.
+Refer to the [Testing Library docs](https://testing-library.com/), [Happy DOM repo](https://github.com/capricorn86/happy-dom) and [Docs > Test runner > DOM](/test/dom) for complete documentation on writing browser tests with Bun.
 
 
 # Set a per-test timeout with the Bun test runner
@@ -18883,7 +19376,7 @@ bun test --timeout 3000 # 3 seconds
 
 ***
 
-See [Docs > Test runner](https://bun.sh/docs/cli/test) for complete documentation of `bun test`.
+See [Docs > Test runner](/test) for complete documentation of `bun test`.
 
 
 # Mark a test as a "todo" with the Bun test runner
@@ -18908,7 +19401,7 @@ The output of `bun test` indicates how many `todo` tests were encountered.
 bun test
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 test.test.ts:
 ✓ add [0.03ms]
 ✓ multiply [0.02ms]
@@ -18925,7 +19418,7 @@ Ran 3 tests across 1 files. [74.00ms]
 
 Optionally, you can provide a test implementation.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { test, expect } from "bun:test";
 
 test.todo("unimplemented feature", () => {
@@ -18941,7 +19434,7 @@ If an implementation is provided, it will not be run unless the `--todo` flag is
 bun test --todo
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 my.test.ts:
 ✗ unimplemented feature
   ^ this test is marked as todo but passes. Remove `.todo` or check that test is correct.
@@ -18958,7 +19451,7 @@ $ echo $?
 See also:
 
 * [Skip a test](/guides/test/skip-tests)
-* [Docs > Test runner > Writing tests](https://bun.sh/docs/test/writing)
+* [Docs > Test runner > Writing tests](/test/writing-tests)
 
 
 # Update snapshots in `bun test`
@@ -18995,7 +19488,7 @@ To regenerate snapshots, use the `--update-snapshots` flag.
 bun test --update-snapshots
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 test/snap.test.ts:
 ✓ snapshot [0.86ms]
 
@@ -19008,7 +19501,7 @@ Ran 1 tests across 1 files. [102.00ms]
 
 ***
 
-See [Docs > Test Runner > Snapshots](https://bun.sh/docs/test/snapshots) for complete documentation on snapshots with the Bun test runner.
+See [Docs > Test Runner > Snapshots](/test/snapshots) for complete documentation on snapshots with the Bun test runner.
 
 
 # Run tests in watch mode with Bun
@@ -19033,7 +19526,7 @@ This will restart the running Bun process whenever a file change is detected. It
 
 ***
 
-See [Docs > Test Runner](https://bun.sh/docs/cli/test) for complete documentation on the test runner.
+See [Docs > Test Runner](/test) for complete documentation on the test runner.
 
 
 # Encode and decode base64 strings
@@ -19043,7 +19536,7 @@ Source: https://bun.com/docs/guides/util/base64
 
 Bun implements the Web-standard [`atob`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/atob) and [`btoa`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/btoa) functions for encoding and decoding base64 strings.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const data = "hello world";
 const encoded = btoa(data); // => "aGVsbG8gd29ybGQ="
 const decoded = atob(encoded); // => "hello world"
@@ -19051,7 +19544,7 @@ const decoded = atob(encoded); // => "hello world"
 
 ***
 
-See [Docs > Web APIs](https://bun.com/docs/runtime/web-apis) for a complete breakdown of the Web APIs implemented in Bun.
+See [Docs > Web APIs](/runtime/web-apis) for a complete breakdown of the Web APIs implemented in Bun.
 
 
 # Check if two objects are deeply equal
@@ -19059,7 +19552,7 @@ Source: https://bun.com/docs/guides/util/deep-equals
 
 
 
-Check if two objects are deeply equal. This is used internally by `expect().toEqual()` in Bun's [test runner](https://bun.com/docs/test/writing).
+Check if two objects are deeply equal. This is used internally by `expect().toEqual()` in Bun's [test runner](/test/writing-tests).
 
 ```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const a = { a: 1, b: 2, c: { d: 3 } };
@@ -19070,7 +19563,7 @@ Bun.deepEquals(a, b); // true
 
 ***
 
-Pass `true` as a third argument to enable strict mode. This is used internally by `expect().toStrictEqual()` in Bun's [test runner](https://bun.com/docs/test/writing).
+Pass `true` as a third argument to enable strict mode. This is used internally by `expect().toStrictEqual()` in Bun's [test runner](/test/writing-tests).
 
 The following examples would return `true` in non-strict mode but `false` in strict mode.
 
@@ -19093,7 +19586,7 @@ Bun.deepEquals(new Foo(), { a: 1 }, true); // false
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils) for more useful utilities.
+See [Docs > API > Utils](/runtime/utils) for more useful utilities.
 
 
 # Compress and decompress data with DEFLATE
@@ -19103,7 +19596,7 @@ Source: https://bun.com/docs/guides/util/deflate
 
 Use `Bun.deflateSync()` to compress a `Uint8Array` with DEFLATE.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const data = Buffer.from("Hello, world!");
 const compressed = Bun.deflateSync("Hello, world!");
 // => Uint8Array
@@ -19114,7 +19607,7 @@ const decompressed = Bun.inflateSync(compressed);
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils) for more useful utilities.
+See [Docs > API > Utils](/runtime/utils) for more useful utilities.
 
 
 # Detect when code is executed with Bun
@@ -19122,22 +19615,25 @@ Source: https://bun.com/docs/guides/util/detect-bun
 
 
 
-The recommended way to conditionally detect when code is being executed with `bun` is to check for the existence of the `Bun` global.
+The recommended way to detect when code is being executed with Bun is to check `process.versions.bun`. This works in both JavaScript and TypeScript without requiring any additional type definitions.
 
-This is similar to how you'd check for the existence of the `window` variable to detect when code is being executed in a browser.
-
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
-if (typeof Bun !== "undefined") {
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+if (process.versions.bun) {
   // this code will only run when the file is run with Bun
 }
 ```
 
 ***
 
-In TypeScript environments, the previous approach will result in a type error unless `@types/bun` is installed. To avoid this, you can check `process.versions` instead.
+Alternatively, you can check for the existence of the `Bun` global. This is similar to how you'd check for the existence of the `window` variable to detect when code is being executed in a browser.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
-if (process.versions.bun) {
+<Note>
+  This approach will result in a type error in TypeScript unless `@types/bun` is installed. You can install it with `bun
+      add -d @types/bun`.
+</Note>
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+if (typeof Bun !== "undefined") {
   // this code will only run when the file is run with Bun
 }
 ```
@@ -19148,7 +19644,7 @@ Source: https://bun.com/docs/guides/util/entrypoint
 
 
 
-Bun provides a handful of module-specific utilities on the [`import.meta`](https://bun.com/docs/api/import-meta) object. Use `import.meta.main` to check if the current file is the entrypoint of the current process.
+Bun provides a handful of module-specific utilities on the [`import.meta`](/runtime/module-resolution#import-meta) object. Use `import.meta.main` to check if the current file is the entrypoint of the current process.
 
 ```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 if (import.meta.main) {
@@ -19160,7 +19656,7 @@ if (import.meta.main) {
 
 ***
 
-See [Docs > API > import.meta](https://bun.com/docs/api/import-meta) for complete documentation.
+See [Docs > API > import.meta](/runtime/module-resolution#import-meta) for complete documentation.
 
 
 # Escape an HTML string
@@ -19178,14 +19674,14 @@ The `Bun.escapeHTML()` utility can be used to escape HTML characters in a string
 
 This function is optimized for large input. Non-string types will be converted to a string before escaping.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.escapeHTML("<script>alert('Hello World!')</script>");
 // &lt;script&gt;alert(&#x27;Hello World!&#x27;)&lt;&#x2F;script&gt;
 ```
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils) for more useful utilities.
+See [Docs > API > Utils](/runtime/utils) for more useful utilities.
 
 
 # Convert a file URL to an absolute path
@@ -19195,14 +19691,14 @@ Source: https://bun.com/docs/guides/util/file-url-to-path
 
 Use `Bun.fileURLToPath()` to convert a `file://` URL to an absolute path.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.fileURLToPath("file:///path/to/file.txt");
 // => "/path/to/file.txt"
 ```
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils) for more useful utilities.
+See [Docs > API > Utils](/runtime/utils) for more useful utilities.
 
 
 # Compress and decompress data with gzip
@@ -19212,7 +19708,7 @@ Source: https://bun.com/docs/guides/util/gzip
 
 Use `Bun.gzipSync()` to compress a `Uint8Array` with gzip.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const data = Buffer.from("Hello, world!");
 const compressed = Bun.gzipSync(data);
 // => Uint8Array
@@ -19223,7 +19719,7 @@ const decompressed = Bun.gunzipSync(compressed);
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils) for more useful utilities.
+See [Docs > API > Utils](/runtime/utils) for more useful utilities.
 
 
 # Hash a password
@@ -19233,7 +19729,7 @@ Source: https://bun.com/docs/guides/util/hash-a-password
 
 The `Bun.password.hash()` function provides a fast, built-in mechanism for securely hashing passwords in Bun. No third-party dependencies are required.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const password = "super-secure-pa$$word";
 
 const hash = await Bun.password.hash(password);
@@ -19244,7 +19740,7 @@ const hash = await Bun.password.hash(password);
 
 By default, this uses the [Argon2id](https://en.wikipedia.org/wiki/Argon2) algorithm. Pass a second argument to `Bun.password.hash()` to use a different algorithm or configure the hashing parameters.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const password = "super-secure-pa$$word";
 
 // use argon2 (default)
@@ -19258,7 +19754,7 @@ const argonHash = await Bun.password.hash(password, {
 
 Bun also implements the [bcrypt](https://en.wikipedia.org/wiki/Bcrypt) algorithm. Specify `algorithm: "bcrypt"` to use it.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // use bcrypt
 const bcryptHash = await Bun.password.hash(password, {
   algorithm: "bcrypt",
@@ -19270,7 +19766,7 @@ const bcryptHash = await Bun.password.hash(password, {
 
 Use `Bun.password.verify()` to verify a password. The algorithm and its parameters are stored in the hash itself, so re-specifying configuration is unnecessary.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const password = "super-secure-pa$$word";
 const hash = await Bun.password.hash(password);
 
@@ -19280,7 +19776,7 @@ const isMatch = await Bun.password.verify(password, hash);
 
 ***
 
-See [Docs > API > Hashing](https://bun.com/docs/api/hashing#bun-password) for complete documentation.
+See [Docs > API > Hashing](/runtime/hashing#bun-password) for complete documentation.
 
 
 # Get the directory of the current file
@@ -19288,7 +19784,7 @@ Source: https://bun.com/docs/guides/util/import-meta-dir
 
 
 
-Bun provides a handful of module-specific utilities on the [`import.meta`](https://bun.com/docs/api/import-meta) object.
+Bun provides a handful of module-specific utilities on the [`import.meta`](/runtime/module-resolution#import-meta) object.
 
 ```ts /a/b/c.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import.meta.dir; // => "/a/b"
@@ -19296,7 +19792,7 @@ import.meta.dir; // => "/a/b"
 
 ***
 
-See [Docs > API > import.meta](https://bun.com/docs/api/import-meta) for complete documentation.
+See [Docs > API > import.meta](/runtime/module-resolution#import-meta) for complete documentation.
 
 
 # Get the file name of the current file
@@ -19304,7 +19800,7 @@ Source: https://bun.com/docs/guides/util/import-meta-file
 
 
 
-Bun provides a handful of module-specific utilities on the [`import.meta`](https://bun.com/docs/api/import-meta) object. Use `import.meta.file` to retrieve the name of the current file.
+Bun provides a handful of module-specific utilities on the [`import.meta`](/runtime/module-resolution#import-meta) object. Use `import.meta.file` to retrieve the name of the current file.
 
 ```ts /a/b/c.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import.meta.file; // => "c.ts"
@@ -19312,7 +19808,7 @@ import.meta.file; // => "c.ts"
 
 ***
 
-See [Docs > API > import.meta](https://bun.com/docs/api/import-meta) for complete documentation.
+See [Docs > API > import.meta](/runtime/module-resolution#import-meta) for complete documentation.
 
 
 # Get the absolute path of the current file
@@ -19320,7 +19816,7 @@ Source: https://bun.com/docs/guides/util/import-meta-path
 
 
 
-Bun provides a handful of module-specific utilities on the [`import.meta`](https://bun.com/docs/api/import-meta) object. Use `import.meta.path` to retrieve the absolute path of the current file.
+Bun provides a handful of module-specific utilities on the [`import.meta`](/runtime/module-resolution#import-meta) object. Use `import.meta.path` to retrieve the absolute path of the current file.
 
 ```ts /a/b/c.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import.meta.path; // => "/a/b/c.ts"
@@ -19328,7 +19824,7 @@ import.meta.path; // => "/a/b/c.ts"
 
 ***
 
-See [Docs > API > import.meta](https://bun.com/docs/api/import-meta) for complete documentation.
+See [Docs > API > import.meta](/runtime/module-resolution#import-meta) for complete documentation.
 
 
 # Generate a UUID
@@ -19338,23 +19834,23 @@ Source: https://bun.com/docs/guides/util/javascript-uuid
 
 Use `crypto.randomUUID()` to generate a UUID v4. This API works in Bun, Node.js, and browsers. It requires no dependencies.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 crypto.randomUUID();
-// => "123e4567-e89b-12d3-a456-426614174000"
+// => "123e4567-e89b-42d3-a456-426614174000"
 ```
 
 ***
 
 In Bun, you can also use `Bun.randomUUIDv7()` to generate a [UUID v7](https://www.ietf.org/archive/id/draft-peabody-dispatch-new-uuid-format-01.html).
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.randomUUIDv7();
 // => "0196a000-bb12-7000-905e-8039f5d5b206"
 ```
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils) for more useful utilities.
+See [Docs > API > Utils](/runtime/utils) for more useful utilities.
 
 
 # Get the absolute path to the current entrypoint
@@ -19382,7 +19878,7 @@ The printed path corresponds to the file that is executed with `bun run`.
 bun run index.ts
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 /path/to/index.ts
 ```
 
@@ -19390,13 +19886,13 @@ bun run index.ts
 bun run foo.ts
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 /path/to/foo.ts
 ```
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils) for more useful utilities.
+See [Docs > API > Utils](/runtime/utils) for more useful utilities.
 
 
 # Convert an absolute path to a file URL
@@ -19406,14 +19902,14 @@ Source: https://bun.com/docs/guides/util/path-to-file-url
 
 Use `Bun.pathToFileURL()` to convert an absolute path to a `file://` URL.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.pathToFileURL("/path/to/file.txt");
 // => "file:///path/to/file.txt"
 ```
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils) for more useful utilities.
+See [Docs > API > Utils](/runtime/utils) for more useful utilities.
 
 
 # Sleep for a fixed number of milliseconds
@@ -19423,7 +19919,7 @@ Source: https://bun.com/docs/guides/util/sleep
 
 The `Bun.sleep` method provides a convenient way to create a void `Promise` that resolves in a fixed number of milliseconds.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // sleep for 1 second
 await Bun.sleep(1000);
 ```
@@ -19432,13 +19928,107 @@ await Bun.sleep(1000);
 
 Internally, this is equivalent to the following snippet that uses [`setTimeout`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout).
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 await new Promise(resolve => setTimeout(resolve, ms));
 ```
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils) for more useful utilities.
+See [Docs > API > Utils](/runtime/utils) for more useful utilities.
+
+
+# Upgrade Bun to the latest version
+Source: https://bun.com/docs/guides/util/upgrade
+
+
+
+Bun can upgrade itself using the built-in `bun upgrade` command. This is the fastest way to get the latest features and bug fixes.
+
+```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun upgrade
+```
+
+This downloads and installs the latest stable version of Bun, replacing the currently installed version.
+
+<Note>To see the current version of Bun, run `bun --version`.</Note>
+
+***
+
+## Verify the upgrade
+
+After upgrading, verify the new version:
+
+```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun --version
+# Output: 1.x.y
+
+# See the exact commit of the Bun binary
+bun --revision
+# Output: 1.x.y+abc123def
+```
+
+***
+
+## Upgrade to canary builds
+
+Canary builds are automatically released on every commit to the `main` branch. These are untested but useful for trying new features or verifying bug fixes before they're released.
+
+```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun upgrade --canary
+```
+
+<Warning>Canary builds are not recommended for production use. They may contain bugs or breaking changes.</Warning>
+
+***
+
+## Switch back to stable
+
+If you're on a canary build and want to return to the latest stable release:
+
+```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun upgrade --stable
+```
+
+***
+
+## Install a specific version
+
+To install a specific version of Bun, use the install script with a version tag:
+
+<Tabs>
+  <Tab title="macOS & Linux">
+    ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    curl -fsSL https://bun.sh/install | bash -s "bun-v1.3.3"
+    ```
+  </Tab>
+
+  <Tab title="Windows">
+    ```powershell PowerShell icon="windows" theme={"theme":{"light":"github-light","dark":"dracula"}}
+    iex "& {$(irm https://bun.sh/install.ps1)} -Version 1.3.3"
+    ```
+  </Tab>
+</Tabs>
+
+***
+
+## Package manager users
+
+If you installed Bun via a package manager, use that package manager to upgrade instead of `bun upgrade` to avoid conflicts.
+
+<Tip>
+  **Homebrew users** <br />
+  To avoid conflicts with Homebrew, use `brew upgrade bun` instead.
+
+  **Scoop users** <br />
+  To avoid conflicts with Scoop, use `scoop update bun` instead.
+</Tip>
+
+***
+
+## See also
+
+* [Installation](/installation) — Install Bun for the first time
+* [Update packages](/pm/cli/update) — Update dependencies to latest versions
 
 
 # Get the current Bun version
@@ -19449,7 +20039,7 @@ Source: https://bun.com/docs/guides/util/version
 Get the current version of Bun in a semver format.
 
 ```ts index.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
-Bun.version; // => "1.3.2"
+Bun.version; // => "1.3.3"
 ```
 
 ***
@@ -19462,7 +20052,7 @@ Bun.revision; // => "49231b2cb9aa48497ab966fc0bb6b742dacc4994"
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils) for more useful utilities.
+See [Docs > API > Utils](/runtime/utils) for more useful utilities.
 
 
 # Get the path to an executable bin file
@@ -19480,7 +20070,7 @@ Bun.which("bun"); // => "/home/user/.bun/bin/bun"
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils#bun-which) for complete documentation.
+See [Docs > API > Utils](/runtime/utils#bun-which) for complete documentation.
 
 
 # Enable compression for WebSocket messages
@@ -19524,7 +20114,7 @@ Source: https://bun.com/docs/guides/websocket/context
 
 When building a WebSocket server, it's typically necessary to store some identifying information or context associated with each connected client.
 
-With \[Bun.serve()]\([https://bun.com/docs/api/websockets](https://bun.com/docs/api/websockets) contextual-data), this "contextual data" is set when the connection is initially upgraded by passing a `data` parameter in the `server.upgrade()` call.
+With [Bun.serve()](/runtime/http/websockets#contextual-data), this "contextual data" is set when the connection is initially upgraded by passing a `data` parameter in the `server.upgrade()` call.
 
 ```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
@@ -19646,7 +20236,7 @@ Source: https://bun.com/docs/guides/websocket/simple
 
 
 
-Start a simple WebSocket server using [`Bun.serve`](https://bun.com/docs/api/http).
+Start a simple WebSocket server using [`Bun.serve`](/runtime/http/server).
 
 Inside `fetch`, we attempt to upgrade incoming `ws:` or `wss:` requests to WebSocket connections.
 
@@ -19691,7 +20281,7 @@ Bun implements the `node:fs` module, which includes the `fs.appendFile` and `fs.
 
 You can use `fs.appendFile` to asynchronously append data to a file, creating the file if it does not yet exist. The content can be a string or a `Buffer`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { appendFile } from "node:fs/promises";
 
 await appendFile("message.txt", "data to append");
@@ -19701,7 +20291,7 @@ await appendFile("message.txt", "data to append");
 
 To use the non-`Promise` API:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { appendFile } from "node:fs";
 
 appendFile("message.txt", "data to append", err => {
@@ -19714,7 +20304,7 @@ appendFile("message.txt", "data to append", err => {
 
 To specify the encoding of the content:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { appendFile } from "node:fs";
 
 appendFile("message.txt", "data to append", "utf8", callback);
@@ -19724,7 +20314,7 @@ appendFile("message.txt", "data to append", "utf8", callback);
 
 To append the data synchronously, use `fs.appendFileSync`:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { appendFileSync } from "node:fs";
 
 appendFileSync("message.txt", "data to append", "utf8");
@@ -19742,9 +20332,9 @@ Source: https://bun.com/docs/guides/write-file/basic
 
 This code snippet writes a string to disk at a particular *absolute path*.
 
-It uses the fast [`Bun.write()`](https://bun.com/docs/api/file-io#writing-files-bun-write) API to efficiently write data to disk. The first argument is a *destination*; the second is the *data* to write.
+It uses the fast [`Bun.write()`](/runtime/file-io#writing-files-bun-write) API to efficiently write data to disk. The first argument is a *destination*; the second is the *data* to write.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const path = "/path/to/file.txt";
 await Bun.write(path, "Lorem ipsum");
 ```
@@ -19753,7 +20343,7 @@ await Bun.write(path, "Lorem ipsum");
 
 Any relative paths will be resolved relative to the project root (the nearest directory containing a `package.json` file).
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const path = "./file.txt";
 await Bun.write(path, "Lorem ipsum");
 ```
@@ -19762,7 +20352,7 @@ await Bun.write(path, "Lorem ipsum");
 
 You can pass a `BunFile` as the destination. `Bun.write()` will write the data to its associated path.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const path = Bun.file("./file.txt");
 await Bun.write(path, "Lorem ipsum");
 ```
@@ -19771,7 +20361,7 @@ await Bun.write(path, "Lorem ipsum");
 
 `Bun.write()` returns the number of bytes written to disk.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const path = "./file.txt";
 const bytes = await Bun.write(path, "Lorem ipsum");
 // => 11
@@ -19779,7 +20369,7 @@ const bytes = await Bun.write(path, "Lorem ipsum");
 
 ***
 
-See [Docs > API > File I/O](https://bun.com/docs/api/file-io#writing-files-bun-write) for complete documentation of `Bun.write()`.
+See [Docs > API > File I/O](/runtime/file-io#writing-files-bun-write) for complete documentation of `Bun.write()`.
 
 
 # Write a Blob to a file
@@ -19789,9 +20379,9 @@ Source: https://bun.com/docs/guides/write-file/blob
 
 This code snippet writes a `Blob` to disk at a particular path.
 
-It uses the fast [`Bun.write()`](https://bun.com/docs/api/file-io#writing-files-bun-write) API to efficiently write data to disk. The first argument is a *destination*, like an absolute path or `BunFile` instance. The second argument is the *data* to write.
+It uses the fast [`Bun.write()`](/runtime/file-io#writing-files-bun-write) API to efficiently write data to disk. The first argument is a *destination*, like an absolute path or `BunFile` instance. The second argument is the *data* to write.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const path = "/path/to/file.txt";
 await Bun.write(path, "Lorem ipsum");
 ```
@@ -19800,7 +20390,7 @@ await Bun.write(path, "Lorem ipsum");
 
 The `BunFile` class extends `Blob`, so you can pass a `BunFile` directly into `Bun.write()` as well.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const path = "./out.txt";
 const data = Bun.file("./in.txt");
 
@@ -19810,7 +20400,7 @@ await Bun.write(path, data);
 
 ***
 
-See [Docs > API > File I/O](https://bun.com/docs/api/file-io#writing-files-bun-write) for complete documentation of `Bun.write()`.
+See [Docs > API > File I/O](/runtime/file-io#writing-files-bun-write) for complete documentation of `Bun.write()`.
 
 
 # Write a file to stdout
@@ -19818,7 +20408,7 @@ Source: https://bun.com/docs/guides/write-file/cat
 
 
 
-Bun exposes `stdout` as a `BunFile` with the `Bun.stdout` property. This can be used as a destination for [`Bun.write()`](https://bun.com/docs/api/file-io#writing-files-bun-write).
+Bun exposes `stdout` as a `BunFile` with the `Bun.stdout` property. This can be used as a destination for [`Bun.write()`](/runtime/file-io#writing-files-bun-write).
 
 This code writes a file to `stdout` similar to the `cat` command in Unix.
 
@@ -19830,7 +20420,7 @@ await Bun.write(Bun.stdout, file);
 
 ***
 
-See [Docs > API > File I/O](https://bun.com/docs/api/file-io#writing-files-bun-write) for complete documentation of `Bun.write()`.
+See [Docs > API > File I/O](/runtime/file-io#writing-files-bun-write) for complete documentation of `Bun.write()`.
 
 
 # Copy a file to another location
@@ -19840,16 +20430,16 @@ Source: https://bun.com/docs/guides/write-file/file-cp
 
 This code snippet copies a file to another location on disk.
 
-It uses the fast [`Bun.write()`](https://bun.com/docs/api/file-io#writing-files-bun-write) API to efficiently write data to disk. The first argument is a *destination*, like an absolute path or `BunFile` instance. The second argument is the *data* to write.
+It uses the fast [`Bun.write()`](/runtime/file-io#writing-files-bun-write) API to efficiently write data to disk. The first argument is a *destination*, like an absolute path or `BunFile` instance. The second argument is the *data* to write.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const file = Bun.file("/path/to/original.txt");
 await Bun.write("/path/to/copy.txt", file);
 ```
 
 ***
 
-See [Docs > API > File I/O](https://bun.com/docs/api/file-io#writing-files-bun-write) for complete documentation of `Bun.write()`.
+See [Docs > API > File I/O](/runtime/file-io#writing-files-bun-write) for complete documentation of `Bun.write()`.
 
 
 # Write a file incrementally
@@ -19861,7 +20451,7 @@ Bun provides an API for incrementally writing to a file. This is useful for writ
 
 Call `.writer()` on a `BunFile` to retrieve a `FileSink` instance. This instance can be used to efficiently buffer data and periodically "flush" it to disk. You can write & flush many times.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const file = Bun.file("/path/to/file.txt");
 const writer = file.writer();
 
@@ -19878,7 +20468,7 @@ writer.flush();
 
 The `.write()` method can accept strings or binary data.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 w.write("hello");
 w.write(Buffer.from("there"));
 w.write(new Uint8Array([0, 255, 128]));
@@ -19889,7 +20479,7 @@ writer.flush();
 
 The `FileSink` will also auto-flush when its internal buffer is full. You can configure the buffer size with the `highWaterMark` option.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const file = Bun.file("/path/to/file.txt");
 const writer = file.writer({ highWaterMark: 1024 * 1024 }); // 1MB
 ```
@@ -19898,13 +20488,13 @@ const writer = file.writer({ highWaterMark: 1024 * 1024 }); // 1MB
 
 When you're done writing to the file, call `.end()` to auto-flush the buffer and close the file.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 writer.end();
 ```
 
 ***
 
-Full documentation: [FileSink](https://bun.com/docs/api/file-io#incremental-writing-with-filesink).
+Full documentation: [FileSink](/runtime/file-io#incremental-writing-with-filesink).
 
 
 # Write a Response to a file
@@ -19914,9 +20504,9 @@ Source: https://bun.com/docs/guides/write-file/response
 
 This code snippet writes a `Response` to disk at a particular path. Bun will consume the `Response` body according to its `Content-Type` header.
 
-It uses the fast [`Bun.write()`](https://bun.com/docs/api/file-io#writing-files-bun-write) API to efficiently write data to disk. The first argument is a *destination*, like an absolute path or `BunFile` instance. The second argument is the *data* to write.
+It uses the fast [`Bun.write()`](/runtime/file-io#writing-files-bun-write) API to efficiently write data to disk. The first argument is a *destination*, like an absolute path or `BunFile` instance. The second argument is the *data* to write.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const result = await fetch("https://bun.com");
 const path = "./file.txt";
 await Bun.write(path, result);
@@ -19924,7 +20514,7 @@ await Bun.write(path, result);
 
 ***
 
-See [Docs > API > File I/O](https://bun.com/docs/api/file-io#writing-files-bun-write) for complete documentation of `Bun.write()`.
+See [Docs > API > File I/O](/runtime/file-io#writing-files-bun-write) for complete documentation of `Bun.write()`.
 
 
 # Write to stdout
@@ -19934,21 +20524,21 @@ Source: https://bun.com/docs/guides/write-file/stdout
 
 The `console.log` function writes to `stdout`. It will automatically append a line break at the end of the printed data.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 console.log("Lorem ipsum");
 ```
 
 ***
 
-For more advanced use cases, Bun exposes `stdout` as a `BunFile` via the `Bun.stdout` property. This can be used as a destination for [`Bun.write()`](https://bun.com/docs/api/file-io#writing-files-bun-write).
+For more advanced use cases, Bun exposes `stdout` as a `BunFile` via the `Bun.stdout` property. This can be used as a destination for [`Bun.write()`](/runtime/file-io#writing-files-bun-write).
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 await Bun.write(Bun.stdout, "Lorem ipsum");
 ```
 
 ***
 
-See [Docs > API > File I/O](https://bun.com/docs/api/file-io#writing-files-bun-write) for complete documentation of `Bun.write()`.
+See [Docs > API > File I/O](/runtime/file-io#writing-files-bun-write) for complete documentation of `Bun.write()`.
 
 
 # Write a ReadableStream to a file
@@ -19956,9 +20546,9 @@ Source: https://bun.com/docs/guides/write-file/stream
 
 
 
-To write a `ReadableStream` to disk, first create a `Response` instance from the stream. This `Response` can then be written to disk using [`Bun.write()`](https://bun.com/docs/api/file-io#writing-files-bun-write).
+To write a `ReadableStream` to disk, first create a `Response` instance from the stream. This `Response` can then be written to disk using [`Bun.write()`](/runtime/file-io#writing-files-bun-write).
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const stream: ReadableStream = ...;
 const path = "./file.txt";
 const response = new Response(stream);
@@ -19968,7 +20558,7 @@ await Bun.write(path, response);
 
 ***
 
-See [Docs > API > File I/O](https://bun.com/docs/api/file-io#writing-files-bun-write) for complete documentation of `Bun.write()`.
+See [Docs > API > File I/O](/runtime/file-io#writing-files-bun-write) for complete documentation of `Bun.write()`.
 
 
 # Delete a file
@@ -19978,7 +20568,7 @@ Source: https://bun.com/docs/guides/write-file/unlink
 
 The `Bun.file()` function accepts a path and returns a `BunFile` instance. Use the `.delete()` method to delete the file.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const path = "/path/to/file.txt";
 const file = Bun.file(path);
 
@@ -19987,7 +20577,7 @@ await file.delete();
 
 ***
 
-See [Docs > API > File I/O](https://bun.com/docs/api/file-io#reading-files-bun-file) for complete documentation of `Bun.file()`.
+See [Docs > API > File I/O](/runtime/file-io#reading-files-bun-file) for complete documentation of `Bun.file()`.
 
 
 # Welcome to Bun
@@ -19996,55 +20586,19 @@ Source: https://bun.com/docs/index
 Bun is an all-in-one toolkit for developing modern JavaScript/TypeScript applications.
 
 <CardGroup>
-  <Card
-    icon="cog"
-    title="Bun Runtime"
-    href="/runtime"
-    cta={
-    <span>
-      Get started with <code>bun run</code>
-    </span>
-  }
-  >
+  <Card icon="cog" title="Bun Runtime" href="/runtime">
     A fast JavaScript runtime designed as a drop-in replacement for Node.js
   </Card>
 
-  <Card
-    icon="box"
-    title="Bun Package Manager"
-    href="/pm/cli/install"
-    cta={
-    <span>
-      Get started with <code>bun install</code>
-    </span>
-  }
-  >
+  <Card icon="box" title="Bun Package Manager" href="/pm/cli/install">
     Install packages up to 30x faster than npm with a global cache and workspaces
   </Card>
 
-  <Card
-    icon="flask-conical"
-    title="Bun Test Runner"
-    href="/test"
-    cta={
-    <span>
-      Get started with <code>bun test</code>
-    </span>
-  }
-  >
+  <Card icon="flask-conical" title="Bun Test Runner" href="/test">
     Jest-compatible, TypeScript-first tests with snapshots, DOM, and watch mode
   </Card>
 
-  <Card
-    icon="combine"
-    title="Bun Bundler"
-    href="/bundler"
-    cta={
-    <span>
-      Get started with <code>bun build</code>
-    </span>
-  }
-  >
+  <Card icon="combine" title="Bun Bundler" href="/bundler">
     Bundle TypeScript, JSX, React & CSS for both browsers and servers
   </Card>
 </CardGroup>
@@ -20122,7 +20676,7 @@ Bun is designed from the ground-up with today's JavaScript ecosystem in mind.
 * **Speed**. Bun processes start [4x faster than Node.js](https://twitter.com/jarredsumner/status/1499225725492076544) currently (try it yourself!)
 * **TypeScript & JSX support**. You can directly execute `.jsx`, `.ts`, and `.tsx` files; Bun's transpiler converts these to vanilla JavaScript before execution.
 * **ESM & CommonJS compatibility**. The world is moving towards ES modules (ESM), but millions of packages on npm still require CommonJS. Bun recommends ES modules, but supports CommonJS.
-* **Web-standard APIs**. Bun implements standard Web APIs like `fetch`, `WebSocket`, and `ReadableStream`. Bun is powered by the JavaScriptCore engine, which is developed by Apple for Safari, so some APIs like [`Headers`](https://developer.mozilla.org/en-US/Web/API/Headers) and [`URL`](https://developer.mozilla.org/en-US/Web/API/URL) directly use [Safari's implementation](https://github.com/oven-sh/bun/blob/HEAD/src/bun.js/bindings/webcore/JSFetchHeaders.cpp).
+* **Web-standard APIs**. Bun implements standard Web APIs like `fetch`, `WebSocket`, and `ReadableStream`. Bun is powered by the JavaScriptCore engine, which is developed by Apple for Safari, so some APIs like [`Headers`](https://developer.mozilla.org/en-US/docs/Web/API/Headers) and [`URL`](https://developer.mozilla.org/en-US/docs/Web/API/URL) directly use [Safari's implementation](https://github.com/oven-sh/bun/blob/HEAD/src/bun.js/bindings/webcore/JSFetchHeaders.cpp).
 * **Node.js compatibility**. In addition to supporting Node-style module resolution, Bun aims for full compatibility with built-in Node.js globals (`process`, `Buffer`) and modules (`path`, `fs`, `http`, etc.) *This is an ongoing effort that is not complete.* Refer to the [compatibility page](/runtime/nodejs-compat) for the current status.
 
 Bun is more than a runtime. The long-term goal is to be a cohesive, infrastructural toolkit for building apps with JavaScript/TypeScript, including a package manager, transpiler, bundler, script runner, test runner, and more.
@@ -20131,7 +20685,7 @@ Bun is more than a runtime. The long-term goal is to be a cohesive, infrastructu
 # Installation
 Source: https://bun.com/docs/installation
 
-Install Bun
+Install Bun with npm, Homebrew, Docker, or the official script.
 
 ## Overview
 
@@ -20332,7 +20886,7 @@ Since Bun is a single binary, you can install older versions by re-running the i
     To install a specific version, pass the git tag to the install script:
 
     ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
-    curl -fsSL https://bun.com/install | bash -s "bun-v1.3.2"
+    curl -fsSL https://bun.com/install | bash -s "bun-v1.3.3"
     ```
   </Tab>
 
@@ -20340,7 +20894,7 @@ Since Bun is a single binary, you can install older versions by re-running the i
     On Windows, pass the version number to the PowerShell install script:
 
     ```powershell PowerShell icon="windows" theme={"theme":{"light":"github-light","dark":"dracula"}}
-    iex "& {$(irm https://bun.com/install.ps1)} -Version 1.3.2"
+    iex "& {$(irm https://bun.com/install.ps1)} -Version 1.3.3"
     ```
   </Tab>
 </Tabs>
@@ -20353,32 +20907,32 @@ To download Bun binaries directly, visit the [releases page on GitHub](https://g
 
 ### Latest Version Downloads
 
-<CardGroup cols={2}>
-  <Card icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/linux.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=300e7a130d2220736a473333f9679855" title="Linux x64" href="https://github.com/oven-sh/bun/releases/latest/download/bun-linux-x64.zip" data-og-width="216" width="216" data-og-height="256" height="256" data-path="icons/linux.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/linux.svg?w=280&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=a1021a1beb4958e46480099f004d26fe 280w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/linux.svg?w=560&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=69ac5104fde576781616421ac7b3612f 560w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/linux.svg?w=840&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=28ed8a8da79749aa69ffe58603a9b3fb 840w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/linux.svg?w=1100&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=edb9183e067c05653f419e105eead50e 1100w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/linux.svg?w=1650&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=e335840244e027300b2607eeec7a665a 1650w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/linux.svg?w=2500&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=35ebcef0ab95791178aa983028bd6622 2500w">
+<CardGroup>
+  <Card icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/linux.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=300e7a130d2220736a473333f9679855" title="Linux x64" href="https://github.com/oven-sh/bun/releases/latest/download/bun-linux-x64.zip">
     Standard Linux x64 binary
   </Card>
 
-  <Card icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/linux.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=300e7a130d2220736a473333f9679855" title="Linux x64 Baseline" href="https://github.com/oven-sh/bun/releases/latest/download/bun-linux-x64-baseline.zip" data-og-width="216" width="216" data-og-height="256" height="256" data-path="icons/linux.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/linux.svg?w=280&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=a1021a1beb4958e46480099f004d26fe 280w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/linux.svg?w=560&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=69ac5104fde576781616421ac7b3612f 560w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/linux.svg?w=840&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=28ed8a8da79749aa69ffe58603a9b3fb 840w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/linux.svg?w=1100&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=edb9183e067c05653f419e105eead50e 1100w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/linux.svg?w=1650&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=e335840244e027300b2607eeec7a665a 1650w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/linux.svg?w=2500&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=35ebcef0ab95791178aa983028bd6622 2500w">
+  <Card icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/linux.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=300e7a130d2220736a473333f9679855" title="Linux x64 Baseline" href="https://github.com/oven-sh/bun/releases/latest/download/bun-linux-x64-baseline.zip">
     For older CPUs without AVX2
   </Card>
 
-  <Card icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/windows.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=4588088d53614404d5bbf7ff09e683ed" title="Windows x64" href="https://github.com/oven-sh/bun/releases/latest/download/bun-windows-x64.zip" data-og-width="88" width="88" data-og-height="88" height="88" data-path="icons/windows.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/windows.svg?w=280&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=5d97f6a67886cf0b717207ba92259a46 280w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/windows.svg?w=560&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=ff8a13db3c0667f8029b30933dad367c 560w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/windows.svg?w=840&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=25b6bc6bef5ed05b83abaa79122d0af8 840w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/windows.svg?w=1100&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=bb8cdeb3ea1e93c9d16de8027c39704c 1100w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/windows.svg?w=1650&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=d06733f6f1ca3f67d30d0f84bfafc13b 1650w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/windows.svg?w=2500&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=261ee703aada9c4b60d6525e54193664 2500w">
+  <Card icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/windows.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=4588088d53614404d5bbf7ff09e683ed" title="Windows x64" href="https://github.com/oven-sh/bun/releases/latest/download/bun-windows-x64.zip">
     Standard Windows binary
   </Card>
 
-  <Card icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/windows.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=4588088d53614404d5bbf7ff09e683ed" title="Windows x64 Baseline" href="https://github.com/oven-sh/bun/releases/latest/download/bun-windows-x64-baseline.zip" data-og-width="88" width="88" data-og-height="88" height="88" data-path="icons/windows.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/windows.svg?w=280&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=5d97f6a67886cf0b717207ba92259a46 280w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/windows.svg?w=560&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=ff8a13db3c0667f8029b30933dad367c 560w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/windows.svg?w=840&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=25b6bc6bef5ed05b83abaa79122d0af8 840w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/windows.svg?w=1100&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=bb8cdeb3ea1e93c9d16de8027c39704c 1100w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/windows.svg?w=1650&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=d06733f6f1ca3f67d30d0f84bfafc13b 1650w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/windows.svg?w=2500&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=261ee703aada9c4b60d6525e54193664 2500w">
+  <Card icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/windows.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=4588088d53614404d5bbf7ff09e683ed" title="Windows x64 Baseline" href="https://github.com/oven-sh/bun/releases/latest/download/bun-windows-x64-baseline.zip">
     For older CPUs without AVX2
   </Card>
 
-  <Card icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/apple.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=0ac996da7680574a1630b68716af5714" title="macOS ARM64" href="https://github.com/oven-sh/bun/releases/latest/download/bun-darwin-aarch64.zip" data-og-width="842" width="842" data-og-height="1000" height="1000" data-path="icons/apple.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/apple.svg?w=280&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=55e8d5c21de2f491eaf39ab693083006 280w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/apple.svg?w=560&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c5a544fe09d36db1f9d9919e9a825fa6 560w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/apple.svg?w=840&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=e10081f77d9ede8d29b78e13e5b502dc 840w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/apple.svg?w=1100&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=b5f25aa4033416aadc22b0b6f0921027 1100w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/apple.svg?w=1650&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=eff94566f2f1854abffe67d4aaac270e 1650w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/apple.svg?w=2500&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=a6f601367f7ea4198eafcc7f598b00ac 2500w">
+  <Card icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/apple.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=0ac996da7680574a1630b68716af5714" title="macOS ARM64" href="https://github.com/oven-sh/bun/releases/latest/download/bun-darwin-aarch64.zip">
     Apple Silicon (M1/M2/M3)
   </Card>
 
-  <Card icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/apple.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=0ac996da7680574a1630b68716af5714" title="macOS x64" href="https://github.com/oven-sh/bun/releases/latest/download/bun-darwin-x64.zip" data-og-width="842" width="842" data-og-height="1000" height="1000" data-path="icons/apple.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/apple.svg?w=280&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=55e8d5c21de2f491eaf39ab693083006 280w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/apple.svg?w=560&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c5a544fe09d36db1f9d9919e9a825fa6 560w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/apple.svg?w=840&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=e10081f77d9ede8d29b78e13e5b502dc 840w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/apple.svg?w=1100&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=b5f25aa4033416aadc22b0b6f0921027 1100w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/apple.svg?w=1650&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=eff94566f2f1854abffe67d4aaac270e 1650w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/apple.svg?w=2500&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=a6f601367f7ea4198eafcc7f598b00ac 2500w">
+  <Card icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/apple.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=0ac996da7680574a1630b68716af5714" title="macOS x64" href="https://github.com/oven-sh/bun/releases/latest/download/bun-darwin-x64.zip">
     Intel Macs
   </Card>
 
-  <Card icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/linux.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=300e7a130d2220736a473333f9679855" title="Linux ARM64" href="https://github.com/oven-sh/bun/releases/latest/download/bun-linux-aarch64.zip" data-og-width="216" width="216" data-og-height="256" height="256" data-path="icons/linux.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/linux.svg?w=280&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=a1021a1beb4958e46480099f004d26fe 280w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/linux.svg?w=560&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=69ac5104fde576781616421ac7b3612f 560w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/linux.svg?w=840&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=28ed8a8da79749aa69ffe58603a9b3fb 840w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/linux.svg?w=1100&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=edb9183e067c05653f419e105eead50e 1100w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/linux.svg?w=1650&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=e335840244e027300b2607eeec7a665a 1650w, https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/linux.svg?w=2500&fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=35ebcef0ab95791178aa983028bd6622 2500w">
+  <Card icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/linux.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=300e7a130d2220736a473333f9679855" title="Linux ARM64" href="https://github.com/oven-sh/bun/releases/latest/download/bun-linux-aarch64.zip">
     ARM64 Linux systems
   </Card>
 </CardGroup>
@@ -20499,7 +21053,7 @@ Packages can declare executables in the `"bin"` field of their `package.json`. T
 
 These executables are commonly plain JavaScript files marked with a [shebang line](https://en.wikipedia.org/wiki/Shebang_\(Unix\)) to indicate which program should be used to execute them. The following file indicates that it should be executed with `node`.
 
-```ts dist/index.js icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js dist/index.js icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
 #!/usr/bin/env node
 
 console.log("Hello world!");
@@ -20520,6 +21074,8 @@ To pass additional command-line flags and arguments through to the executable, p
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bunx my-cli --foo bar
 ```
+
+***
 
 ## Shebangs
 
@@ -20547,8 +21103,60 @@ bunx --package @angular/cli ng
 
 To force bun to always be used with a script, use a shebang.
 
-```ts dist/index.js icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js dist/index.js icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
 #!/usr/bin/env bun
+```
+
+***
+
+## Usage
+
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
+bunx [flags] <package>[@version] [flags and arguments for the package]
+```
+
+Execute an npm package executable (CLI), automatically installing into a global shared cache if not installed in `node_modules`.
+
+### Flags
+
+<ParamField type="boolean">
+  Force the command to run with Bun instead of Node.js, even if the executable contains a Node shebang (`#!/usr/bin/env
+      node`)
+</ParamField>
+
+<ParamField type="string">
+  Specify package to install when binary name differs from package name
+</ParamField>
+
+<ParamField type="boolean">
+  Skip installation if package is not already installed
+</ParamField>
+
+<ParamField type="boolean">
+  Enable verbose output during installation
+</ParamField>
+
+<ParamField type="boolean">
+  Suppress output during installation
+</ParamField>
+
+### Examples
+
+```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+# Run Prisma migrations
+bunx prisma migrate
+
+# Format a file with Prettier
+bunx prettier foo.js
+
+# Run a specific version of a package
+bunx uglify-js@3.14.0 app.js
+
+# Use --package when binary name differs from package name
+bunx -p @angular/cli ng new my-app
+
+# Force running with Bun instead of Node.js, even if the executable contains a Node shebang
+bunx --bun vite dev foo.js
 ```
 
 
@@ -20927,7 +21535,7 @@ bun add --help
 
 <Note>
   **Note** — This would not modify package.json of your current project folder. **Alias** - `bun add --global`, `bun add
-    -g`, `bun install --global` and `bun install -g`
+      -g`, `bun install --global` and `bun install -g`
 </Note>
 
 To install a package globally, use the `-g`/`--global` flag. This will not modify the `package.json` of your current project. Typically this is used for installing command-line tools.
@@ -20937,7 +21545,7 @@ bun add --global cowsay # or `bun add -g cowsay`
 cowsay "Bun!"
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
  ______
 < Bun! >
  ------
@@ -21022,168 +21630,168 @@ This will add the following line to your `package.json`:
 
 ## CLI Usage
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun add <package> <@version>
 ```
 
 ### Dependency Management
 
-<ParamField path="--production" type="boolean">
+<ParamField type="boolean">
   Don't install devDependencies. Alias: <code>-p</code>
 </ParamField>
 
-<ParamField path="--omit" type="string">
+<ParamField type="string">
   Exclude <code>dev</code>, <code>optional</code>, or <code>peer</code> dependencies from install
 </ParamField>
 
-<ParamField path="--global" type="boolean">
+<ParamField type="boolean">
   Install globally. Alias: <code>-g</code>
 </ParamField>
 
-<ParamField path="--dev" type="boolean">
+<ParamField type="boolean">
   Add dependency to <code>devDependencies</code>. Alias: <code>-d</code>
 </ParamField>
 
-<ParamField path="--optional" type="boolean">
+<ParamField type="boolean">
   Add dependency to <code>optionalDependencies</code>
 </ParamField>
 
-<ParamField path="--peer" type="boolean">
+<ParamField type="boolean">
   Add dependency to <code>peerDependencies</code>
 </ParamField>
 
-<ParamField path="--exact" type="boolean">
+<ParamField type="boolean">
   Add the exact version instead of the <code>^</code> range. Alias: <code>-E</code>
 </ParamField>
 
-<ParamField path="--only-missing" type="boolean">
+<ParamField type="boolean">
   Only add dependencies to <code>package.json</code> if they are not already present
 </ParamField>
 
 ### Project Files & Lockfiles
 
-<ParamField path="--yarn" type="boolean">
+<ParamField type="boolean">
   Write a <code>yarn.lock</code> file (yarn v1). Alias: <code>-y</code>
 </ParamField>
 
-<ParamField path="--no-save" type="boolean">
+<ParamField type="boolean">
   Don't update <code>package.json</code> or save a lockfile
 </ParamField>
 
-<ParamField path="--save" type="boolean" default="true">
+<ParamField type="boolean">
   Save to <code>package.json</code> (true by default)
 </ParamField>
 
-<ParamField path="--frozen-lockfile" type="boolean">
+<ParamField type="boolean">
   Disallow changes to lockfile
 </ParamField>
 
-<ParamField path="--trust" type="boolean">
+<ParamField type="boolean">
   Add to <code>trustedDependencies</code> in the project's <code>package.json</code> and install the package(s)
 </ParamField>
 
-<ParamField path="--save-text-lockfile" type="boolean">
+<ParamField type="boolean">
   Save a text-based lockfile
 </ParamField>
 
-<ParamField path="--lockfile-only" type="boolean">
+<ParamField type="boolean">
   Generate a lockfile without installing dependencies
 </ParamField>
 
 ### Installation Control
 
-<ParamField path="--dry-run" type="boolean">
+<ParamField type="boolean">
   Don't install anything
 </ParamField>
 
-<ParamField path="--force" type="boolean">
+<ParamField type="boolean">
   Always request the latest versions from the registry & reinstall all dependencies. Alias: <code>-f</code>
 </ParamField>
 
-<ParamField path="--no-verify" type="boolean">
+<ParamField type="boolean">
   Skip verifying integrity of newly downloaded packages
 </ParamField>
 
-<ParamField path="--ignore-scripts" type="boolean">
+<ParamField type="boolean">
   Skip lifecycle scripts in the project's <code>package.json</code> (dependency scripts are never run)
 </ParamField>
 
-<ParamField path="--analyze" type="boolean">
-  Recursively analyze & install dependencies of files passed as arguments (using Bun's bundler). Alias:{" "}
+<ParamField type="boolean">
+  Recursively analyze & install dependencies of files passed as arguments (using Bun's bundler). Alias:
   <code>-a</code>
 </ParamField>
 
 ### Network & Registry
 
-<ParamField path="--ca" type="string">
+<ParamField type="string">
   Provide a Certificate Authority signing certificate
 </ParamField>
 
-<ParamField path="--cafile" type="string">
+<ParamField type="string">
   Same as <code>--ca</code>, but as a file path to the certificate
 </ParamField>
 
-<ParamField path="--registry" type="string">
+<ParamField type="string">
   Use a specific registry by default, overriding <code>.npmrc</code>, <code>bunfig.toml</code>, and environment
   variables
 </ParamField>
 
-<ParamField path="--network-concurrency" type="number" default="48">
+<ParamField type="number">
   Maximum number of concurrent network requests (default 48)
 </ParamField>
 
 ### Performance & Resource
 
-<ParamField path="--backend" type="string" default="clonefile">
-  Platform-specific optimizations for installing dependencies. Possible values: <code>clonefile</code> (default),{" "}
+<ParamField type="string">
+  Platform-specific optimizations for installing dependencies. Possible values: <code>clonefile</code> (default),
   <code>hardlink</code>, <code>symlink</code>, <code>copyfile</code>
 </ParamField>
 
-<ParamField path="--concurrent-scripts" type="number" default="5">
+<ParamField type="number">
   Maximum number of concurrent jobs for lifecycle scripts (default 5)
 </ParamField>
 
 ### Caching
 
-<ParamField path="--cache-dir" type="string">
+<ParamField type="string">
   Store & load cached data from a specific directory path
 </ParamField>
 
-<ParamField path="--no-cache" type="boolean">
+<ParamField type="boolean">
   Ignore manifest cache entirely
 </ParamField>
 
 ### Output & Logging
 
-<ParamField path="--silent" type="boolean">
+<ParamField type="boolean">
   Don't log anything
 </ParamField>
 
-<ParamField path="--verbose" type="boolean">
+<ParamField type="boolean">
   Excessively verbose logging
 </ParamField>
 
-<ParamField path="--no-progress" type="boolean">
+<ParamField type="boolean">
   Disable the progress bar
 </ParamField>
 
-<ParamField path="--no-summary" type="boolean">
+<ParamField type="boolean">
   Don't print a summary
 </ParamField>
 
 ### Global Configuration & Context
 
-<ParamField path="--config" type="string">
+<ParamField type="string">
   Specify path to config file (<code>bunfig.toml</code>). Alias: <code>-c</code>
 </ParamField>
 
-<ParamField path="--cwd" type="string">
+<ParamField type="string">
   Set a specific current working directory
 </ParamField>
 
 ### Help
 
-<ParamField path="--help" type="boolean">
+<ParamField type="boolean">
   Print this help menu. Alias: <code>-h</code>
 </ParamField>
 
@@ -21346,20 +21954,6 @@ The `bun` CLI contains a Node.js-compatible package manager designed to be a dra
   </Frame>
 </Note>
 
-<Accordion title="For Linux users">
-  The recommended minimum Linux Kernel version is 5.6. If you're on Linux kernel 5.1 - 5.5, `bun install` will work, but HTTP requests will be slow due to a lack of support for io\_uring's `connect()` operation.
-
-  If you're using Ubuntu 20.04, here's how to install a [newer kernel](https://wiki.ubuntu.com/Kernel/LTSEnablementStack):
-
-  ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
-  # If this returns a version >= 5.6, you don't need to do anything
-  uname -r
-
-  # Install the official Ubuntu hardware enablement kernel
-  sudo apt install --install-recommends linux-generic-hwe-20.04
-  ```
-</Accordion>
-
 To install all dependencies of a project:
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
@@ -21453,7 +22047,7 @@ For more information on filtering with `bun install`, refer to [Package Manager 
 
 Bun supports npm's `"overrides"` and Yarn's `"resolutions"` in `package.json`. These are mechanisms for specifying a version range for *metadependencies*—the dependencies of your dependencies. Refer to [Package manager > Overrides and resolutions](/pm/overrides) for complete documentation.
 
-```json package.json file="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```json package.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
   "name": "my-app",
   "dependencies": {
@@ -21476,7 +22070,7 @@ bun install --global cowsay # or `bun install -g cowsay`
 cowsay "Bun!"
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
  ______
 < Bun! >
  ------
@@ -21752,7 +22346,7 @@ bun stores normalized `cpu` and `os` values from npm in the lockfile, along with
 
 You can override the target platform for package selection:
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun install --cpu=x64 --os=linux
 ```
 
@@ -21776,7 +22370,7 @@ Prior to Bun 1.2, the lockfile was binary and called `bun.lockb`. Old lockfiles 
 
 To delete the cache:
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun pm cache rm
 # or
 rm -rf ~/.bun/install/cache
@@ -21788,28 +22382,28 @@ rm -rf ~/.bun/install/cache
 
 **`hardlink`** is the default backend on Linux. Benchmarking showed it to be the fastest on Linux.
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 rm -rf node_modules
 bun install --backend hardlink
 ```
 
 **`clonefile`** is the default backend on macOS. Benchmarking showed it to be the fastest on macOS. It is only available on macOS.
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 rm -rf node_modules
 bun install --backend clonefile
 ```
 
 **`clonefile_each_dir`** is similar to `clonefile`, except it clones each file individually per directory. It is only available on macOS and tends to perform slower than `clonefile`. Unlike `clonefile`, this does not recursively clone subdirectories in one system call.
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 rm -rf node_modules
 bun install --backend clonefile_each_dir
 ```
 
 **`copyfile`** is the fallback used when any of the above fail, and is the slowest. on macOS, it uses `fcopyfile()` and on linux it uses `copy_file_range()`.
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 rm -rf node_modules
 bun install --backend copyfile
 ```
@@ -21818,7 +22412,7 @@ bun install --backend copyfile
 
 If you install with `--backend=symlink`, Node.js won't resolve node\_modules of dependencies unless each dependency has its own node\_modules folder or you pass `--preserve-symlinks` to `node` or `bun`. See [Node.js documentation on `--preserve-symlinks`](https://nodejs.org/api/cli.html#--preserve-symlinks).
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 rm -rf node_modules
 bun install --backend symlink
 bun --preserve-symlinks ./my-file.js
@@ -21929,169 +22523,169 @@ bun install <name>@<version>
 
 ### General Configuration
 
-<ParamField path="--config" type="string">
+<ParamField type="string">
   Specify path to config file (bunfig.toml)
 </ParamField>
 
-<ParamField path="--cwd" type="string">
+<ParamField type="string">
   Set a specific cwd
 </ParamField>
 
 ### Dependency Scope & Management
 
-<ParamField path="--production" type="boolean">
+<ParamField type="boolean">
   Don't install devDependencies
 </ParamField>
 
-<ParamField path="--no-save" type="boolean">
+<ParamField type="boolean">
   Don't update package.json or save a lockfile
 </ParamField>
 
-<ParamField path="--save" type="boolean" default="true">
+<ParamField type="boolean">
   Save to package.json
 </ParamField>
 
-<ParamField path="--omit" type="string">
+<ParamField type="string">
   Exclude 'dev', 'optional', or 'peer' dependencies from install
 </ParamField>
 
-<ParamField path="--only-missing" type="boolean">
+<ParamField type="boolean">
   Only add dependencies to package.json if they are not already present
 </ParamField>
 
 ### Dependency Type & Versioning
 
-<ParamField path="--dev" type="boolean">
+<ParamField type="boolean">
   Add dependency to "devDependencies"
 </ParamField>
 
-<ParamField path="--optional" type="boolean">
+<ParamField type="boolean">
   Add dependency to "optionalDependencies"
 </ParamField>
 
-<ParamField path="--peer" type="boolean">
+<ParamField type="boolean">
   Add dependency to "peerDependencies"
 </ParamField>
 
-<ParamField path="--exact" type="boolean">
+<ParamField type="boolean">
   Add the exact version instead of the ^range
 </ParamField>
 
 ### Lockfile Control
 
-<ParamField path="--yarn" type="boolean">
+<ParamField type="boolean">
   Write a yarn.lock file (yarn v1)
 </ParamField>
 
-<ParamField path="--frozen-lockfile" type="boolean">
+<ParamField type="boolean">
   Disallow changes to lockfile
 </ParamField>
 
-<ParamField path="--save-text-lockfile" type="boolean">
+<ParamField type="boolean">
   Save a text-based lockfile
 </ParamField>
 
-<ParamField path="--lockfile-only" type="boolean">
+<ParamField type="boolean">
   Generate a lockfile without installing dependencies
 </ParamField>
 
 ### Network & Registry Settings
 
-<ParamField path="--ca" type="string">
+<ParamField type="string">
   Provide a Certificate Authority signing certificate
 </ParamField>
 
-<ParamField path="--cafile" type="string">
+<ParamField type="string">
   File path to Certificate Authority signing certificate
 </ParamField>
 
-<ParamField path="--registry" type="string">
+<ParamField type="string">
   Use a specific registry by default, overriding .npmrc, bunfig.toml and environment variables
 </ParamField>
 
 ### Installation Process Control
 
-<ParamField path="--dry-run" type="boolean">
+<ParamField type="boolean">
   Don't install anything
 </ParamField>
 
-<ParamField path="--force" type="boolean">
+<ParamField type="boolean">
   Always request the latest versions from the registry & reinstall all dependencies
 </ParamField>
 
-<ParamField path="--global" type="boolean">
+<ParamField type="boolean">
   Install globally
 </ParamField>
 
-<ParamField path="--backend" type="string" default="clonefile">
+<ParamField type="string">
   Platform-specific optimizations: "clonefile", "hardlink", "symlink", "copyfile"
 </ParamField>
 
-<ParamField path="--filter" type="string">
+<ParamField type="string">
   Install packages for the matching workspaces
 </ParamField>
 
-<ParamField path="--analyze" type="boolean">
+<ParamField type="boolean">
   Analyze & install all dependencies of files passed as arguments recursively
 </ParamField>
 
 ### Caching Options
 
-<ParamField path="--cache-dir" type="string">
+<ParamField type="string">
   Store & load cached data from a specific directory path
 </ParamField>
 
-<ParamField path="--no-cache" type="boolean">
+<ParamField type="boolean">
   Ignore manifest cache entirely
 </ParamField>
 
 ### Output & Logging
 
-<ParamField path="--silent" type="boolean">
+<ParamField type="boolean">
   Don't log anything
 </ParamField>
 
-<ParamField path="--verbose" type="boolean">
+<ParamField type="boolean">
   Excessively verbose logging
 </ParamField>
 
-<ParamField path="--no-progress" type="boolean">
+<ParamField type="boolean">
   Disable the progress bar
 </ParamField>
 
-<ParamField path="--no-summary" type="boolean">
+<ParamField type="boolean">
   Don't print a summary
 </ParamField>
 
 ### Security & Integrity
 
-<ParamField path="--no-verify" type="boolean">
+<ParamField type="boolean">
   Skip verifying integrity of newly downloaded packages
 </ParamField>
 
-<ParamField path="--trust" type="boolean">
+<ParamField type="boolean">
   Add to trustedDependencies in the project's package.json and install the package(s)
 </ParamField>
 
 ### Concurrency & Performance
 
-<ParamField path="--concurrent-scripts" type="number" default="5">
+<ParamField type="number">
   Maximum number of concurrent jobs for lifecycle scripts
 </ParamField>
 
-<ParamField path="--network-concurrency" type="number" default="48">
+<ParamField type="number">
   Maximum number of concurrent network requests
 </ParamField>
 
 ### Lifecycle Script Management
 
-<ParamField path="--ignore-scripts" type="boolean">
+<ParamField type="boolean">
   Skip lifecycle scripts in the project's package.json (dependency scripts are never run)
 </ParamField>
 
 ### Help Information
 
-<ParamField path="--help" type="boolean">
+<ParamField type="boolean">
   Print this help menu
 </ParamField>
 
@@ -22109,8 +22703,8 @@ cat package.json
 bun link
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun link v1.x (7416672e)
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun link v1.3.3 (7416672e)
 Success! Registered "cool-pkg"
 
 To use cool-pkg in a project, run:
@@ -22148,173 +22742,173 @@ cd /path/to/cool-pkg
 bun unlink
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun unlink v1.x (7416672e)
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun unlink v1.3.3 (7416672e)
 ```
 
 ***
 
 # CLI Usage
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun link <packages>
 ```
 
 ### Installation Scope
 
-<ParamField path="--global" type="boolean">
+<ParamField type="boolean">
   Install globally. Alias: <code>-g</code>
 </ParamField>
 
 ### Dependency Management
 
-<ParamField path="--production" type="boolean">
+<ParamField type="boolean">
   Don't install devDependencies. Alias: <code>-p</code>
 </ParamField>
 
-<ParamField path="--omit" type="string">
+<ParamField type="string">
   Exclude <code>dev</code>, <code>optional</code>, or <code>peer</code> dependencies from install
 </ParamField>
 
 ### Project Files & Lockfiles
 
-<ParamField path="--yarn" type="boolean">
+<ParamField type="boolean">
   Write a <code>yarn.lock</code> file (yarn v1). Alias: <code>-y</code>
 </ParamField>
 
-<ParamField path="--frozen-lockfile" type="boolean">
+<ParamField type="boolean">
   Disallow changes to lockfile
 </ParamField>
 
-<ParamField path="--save-text-lockfile" type="boolean">
+<ParamField type="boolean">
   Save a text-based lockfile
 </ParamField>
 
-<ParamField path="--lockfile-only" type="boolean">
+<ParamField type="boolean">
   Generate a lockfile without installing dependencies
 </ParamField>
 
-<ParamField path="--no-save" type="boolean">
+<ParamField type="boolean">
   Don't update <code>package.json</code> or save a lockfile
 </ParamField>
 
-<ParamField path="--save" type="boolean" default="true">
+<ParamField type="boolean">
   Save to <code>package.json</code> (true by default)
 </ParamField>
 
-<ParamField path="--trust" type="boolean">
+<ParamField type="boolean">
   Add to <code>trustedDependencies</code> in the project's <code>package.json</code> and install the package(s)
 </ParamField>
 
 ### Installation Control
 
-<ParamField path="--force" type="boolean">
+<ParamField type="boolean">
   Always request the latest versions from the registry & reinstall all dependencies. Alias: <code>-f</code>
 </ParamField>
 
-<ParamField path="--no-verify" type="boolean">
+<ParamField type="boolean">
   Skip verifying integrity of newly downloaded packages
 </ParamField>
 
-<ParamField path="--backend" type="string" default="clonefile">
-  Platform-specific optimizations for installing dependencies. Possible values: <code>clonefile</code> (default),{" "}
+<ParamField type="string">
+  Platform-specific optimizations for installing dependencies. Possible values: <code>clonefile</code> (default),
   <code>hardlink</code>, <code>symlink</code>, <code>copyfile</code>
 </ParamField>
 
-<ParamField path="--linker" type="string">
+<ParamField type="string">
   Linker strategy (one of <code>isolated</code> or <code>hoisted</code>)
 </ParamField>
 
-<ParamField path="--dry-run" type="boolean">
+<ParamField type="boolean">
   Don't install anything
 </ParamField>
 
-<ParamField path="--ignore-scripts" type="boolean">
+<ParamField type="boolean">
   Skip lifecycle scripts in the project's <code>package.json</code> (dependency scripts are never run)
 </ParamField>
 
 ### Network & Registry
 
-<ParamField path="--ca" type="string">
+<ParamField type="string">
   Provide a Certificate Authority signing certificate
 </ParamField>
 
-<ParamField path="--cafile" type="string">
+<ParamField type="string">
   Same as <code>--ca</code>, but as a file path to the certificate
 </ParamField>
 
-<ParamField path="--registry" type="string">
+<ParamField type="string">
   Use a specific registry by default, overriding <code>.npmrc</code>, <code>bunfig.toml</code>, and environment
   variables
 </ParamField>
 
-<ParamField path="--network-concurrency" type="number" default="48">
+<ParamField type="number">
   Maximum number of concurrent network requests (default 48)
 </ParamField>
 
 ### Performance & Resource
 
-<ParamField path="--concurrent-scripts" type="number" default="5">
+<ParamField type="number">
   Maximum number of concurrent jobs for lifecycle scripts (default 5)
 </ParamField>
 
 ### Caching
 
-<ParamField path="--cache-dir" type="string">
+<ParamField type="string">
   Store & load cached data from a specific directory path
 </ParamField>
 
-<ParamField path="--no-cache" type="boolean">
+<ParamField type="boolean">
   Ignore manifest cache entirely
 </ParamField>
 
 ### Output & Logging
 
-<ParamField path="--silent" type="boolean">
+<ParamField type="boolean">
   Don't log anything
 </ParamField>
 
-<ParamField path="--quiet" type="boolean">
+<ParamField type="boolean">
   Only show tarball name when packing
 </ParamField>
 
-<ParamField path="--verbose" type="boolean">
+<ParamField type="boolean">
   Excessively verbose logging
 </ParamField>
 
-<ParamField path="--no-progress" type="boolean">
+<ParamField type="boolean">
   Disable the progress bar
 </ParamField>
 
-<ParamField path="--no-summary" type="boolean">
+<ParamField type="boolean">
   Don't print a summary
 </ParamField>
 
 ### Platform Targeting
 
-<ParamField path="--cpu" type="string">
+<ParamField type="string">
   Override CPU architecture for optional dependencies (e.g., <code>x64</code>, <code>arm64</code>, <code>\*</code> for
   all)
 </ParamField>
 
-<ParamField path="--os" type="string">
+<ParamField type="string">
   Override operating system for optional dependencies (e.g., <code>linux</code>, <code>darwin</code>, <code>\*</code> for
   all)
 </ParamField>
 
 ### Global Configuration & Context
 
-<ParamField path="--config" type="string">
+<ParamField type="string">
   Specify path to config file (<code>bunfig.toml</code>). Alias: <code>-c</code>
 </ParamField>
 
-<ParamField path="--cwd" type="string">
+<ParamField type="string">
   Set a specific current working directory
 </ParamField>
 
 ### Help
 
-<ParamField path="--help" type="boolean">
+<ParamField type="boolean">
   Print this help menu. Alias: <code>-h</code>
 </ParamField>
 
@@ -22330,11 +22924,11 @@ Use `bun outdated` to check for outdated dependencies in your project. This comm
 bun outdated
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 | Package                        | Current | Update    | Latest     |
 | ------------------------------ | ------- | --------- | ---------- |
 | @sinclair/typebox              | 0.34.15 | 0.34.16   | 0.34.16    |
-| @types/bun (dev)               | 1.2.0   | 1.2.23    | 1.2.23     |
+| @types/bun (dev)               | 1.3.0   | 1.3.3     | 1.3.3      |
 | eslint (dev)                   | 8.57.1  | 8.57.1    | 9.20.0     |
 | eslint-plugin-security (dev)   | 2.1.1   | 2.1.1     | 3.0.1      |
 | eslint-plugin-sonarjs (dev)    | 0.23.0  | 0.23.0    | 3.0.1      |
@@ -22363,7 +22957,7 @@ To check if specific dependencies are outdated, pass the package names as positi
 bun outdated eslint-plugin-security eslint-plugin-sonarjs
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 | Package                        | Current | Update | Latest    |
 | ------------------------------ | ------- | ------ | --------- |
 | eslint-plugin-security (dev)   | 2.1.1   | 2.1.1  | 3.0.1     |
@@ -22374,10 +22968,10 @@ bun outdated eslint-plugin-security eslint-plugin-sonarjs
 You can also pass glob patterns to check for outdated packages:
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun outdated eslint*
+bun outdated 'eslint*'
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 | Package                        | Current | Update | Latest     |
 | ------------------------------ | ------- | ------ | ---------- |
 | eslint (dev)                   | 8.57.1  | 8.57.1 | 9.20.0     |
@@ -22391,10 +22985,10 @@ For example, to check for outdated `@types/*` packages:
 bun outdated '@types/*'
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 | Package            | Current | Update | Latest |
 | ------------------ | ------- | ------ | ------ |
-| @types/bun (dev)   | 1.2.0   | 1.2.23 | 1.2.23 |
+| @types/bun (dev)   | 1.3.0   | 1.3.3  | 1.3.3 |
 ```
 
 Or to exclude all `@types/*` packages:
@@ -22403,7 +22997,7 @@ Or to exclude all `@types/*` packages:
 bun outdated '!@types/*'
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 | Package                        | Current | Update    | Latest     |
 | ------------------------------ | ------- | --------- | ---------- |
 | @sinclair/typebox              | 0.34.15 | 0.34.16   | 0.34.16    |
@@ -22424,7 +23018,7 @@ Use the `--filter` flag to check for outdated dependencies in a different worksp
 bun outdated --filter='@monorepo/types'
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 | Package            | Current | Update | Latest |
 | ------------------ | ------- | ------ | ------ |
 | tsup (dev)         | 8.3.5   | 8.3.6  | 8.3.6  |
@@ -22437,7 +23031,7 @@ You can pass multiple `--filter` flags to check multiple workspaces:
 bun outdated --filter @monorepo/types --filter @monorepo/cli
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 | Package                        | Current | Update | Latest     |
 | ------------------------------ | ------- | ------ | ---------- |
 | eslint (dev)                 	 | 8.57.1  | 8.57.1 | 9.20.0     |
@@ -22454,7 +23048,7 @@ You can also pass glob patterns to filter by workspace names:
 bun outdated --filter='@monorepo/{types,cli}'
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 | Package                        | Current | Update | Latest     |
 | ------------------------------ | ------- | ------ | ---------- |
 | eslint (dev)                   | 8.57.1  | 8.57.1 | 9.20.0     |
@@ -22473,7 +23067,7 @@ bun outdated --filter='@monorepo/{types,cli}'
 bun outdated -r
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 ┌────────────────────┬─────────┬─────────┬─────────┬────────────────────────────────┐
 │ Package            │ Current │ Update  │ Latest  │ Workspace                      │
 ├────────────────────┼─────────┼─────────┼─────────┼────────────────────────────────┤
@@ -22521,136 +23115,136 @@ bun outdated <filter>
 
 ### General Options
 
-<ParamField path="-c, --config" type="string">
+<ParamField type="string">
   Specify path to config file (<code>bunfig.toml</code>)
 </ParamField>
 
-<ParamField path="--cwd" type="string">
+<ParamField type="string">
   Set a specific cwd
 </ParamField>
 
-<ParamField path="-h, --help" type="boolean">
+<ParamField type="boolean">
   Print this help menu
 </ParamField>
 
-<ParamField path="-F, --filter" type="string">
+<ParamField type="string">
   Display outdated dependencies for each matching workspace
 </ParamField>
 
 ### Output & Logging
 
-<ParamField path="--silent" type="boolean">
+<ParamField type="boolean">
   Don't log anything
 </ParamField>
 
-<ParamField path="--verbose" type="boolean">
+<ParamField type="boolean">
   Excessively verbose logging
 </ParamField>
 
-<ParamField path="--no-progress" type="boolean">
+<ParamField type="boolean">
   Disable the progress bar
 </ParamField>
 
-<ParamField path="--no-summary" type="boolean">
+<ParamField type="boolean">
   Don't print a summary
 </ParamField>
 
 ### Dependency Scope & Target
 
-<ParamField path="-p, --production" type="boolean">
+<ParamField type="boolean">
   Don't install devDependencies
 </ParamField>
 
-<ParamField path="--omit" type="string">
+<ParamField type="string">
   Exclude <code>dev</code>, <code>optional</code>, or <code>peer</code> dependencies from install
 </ParamField>
 
-<ParamField path="-g, --global" type="boolean">
+<ParamField type="boolean">
   Install globally
 </ParamField>
 
 ### Lockfile & Package.json
 
-<ParamField path="-y, --yarn" type="boolean">
+<ParamField type="boolean">
   Write a <code>yarn.lock</code> file (yarn v1)
 </ParamField>
 
-<ParamField path="--no-save" type="boolean">
+<ParamField type="boolean">
   Don't update <code>package.json</code> or save a lockfile
 </ParamField>
 
-<ParamField path="--save" type="boolean" default="true">
+<ParamField type="boolean">
   Save to <code>package.json</code> (true by default)
 </ParamField>
 
-<ParamField path="--frozen-lockfile" type="boolean">
+<ParamField type="boolean">
   Disallow changes to lockfile
 </ParamField>
 
-<ParamField path="--save-text-lockfile" type="boolean">
+<ParamField type="boolean">
   Save a text-based lockfile
 </ParamField>
 
-<ParamField path="--lockfile-only" type="boolean">
+<ParamField type="boolean">
   Generate a lockfile without installing dependencies
 </ParamField>
 
-<ParamField path="--trust" type="boolean">
+<ParamField type="boolean">
   Add to <code>trustedDependencies</code> in the project's <code>package.json</code> and install the package(s)
 </ParamField>
 
 ### Network & Registry
 
-<ParamField path="--ca" type="string">
+<ParamField type="string">
   Provide a Certificate Authority signing certificate
 </ParamField>
 
-<ParamField path="--cafile" type="string">
+<ParamField type="string">
   Same as <code>--ca</code>, but as a file path to the certificate
 </ParamField>
 
-<ParamField path="--registry" type="string">
+<ParamField type="string">
   Use a specific registry by default, overriding <code>.npmrc</code>, <code>bunfig.toml</code> and environment variables
 </ParamField>
 
-<ParamField path="--network-concurrency" type="number" default="48">
+<ParamField type="number">
   Maximum number of concurrent network requests (default 48)
 </ParamField>
 
 ### Caching
 
-<ParamField path="--cache-dir" type="string">
+<ParamField type="string">
   Store & load cached data from a specific directory path
 </ParamField>
 
-<ParamField path="--no-cache" type="boolean">
+<ParamField type="boolean">
   Ignore manifest cache entirely
 </ParamField>
 
 ### Execution Behavior
 
-<ParamField path="--dry-run" type="boolean">
+<ParamField type="boolean">
   Don't install anything
 </ParamField>
 
-<ParamField path="-f, --force" type="boolean">
+<ParamField type="boolean">
   Always request the latest versions from the registry & reinstall all dependencies
 </ParamField>
 
-<ParamField path="--no-verify" type="boolean">
+<ParamField type="boolean">
   Skip verifying integrity of newly downloaded packages
 </ParamField>
 
-<ParamField path="--ignore-scripts" type="boolean">
+<ParamField type="boolean">
   Skip lifecycle scripts in the project's <code>package.json</code> (dependency scripts are never run)
 </ParamField>
 
-<ParamField path="--backend" type="string" default="clonefile">
-  Platform-specific optimizations for installing dependencies. Possible values: <code>clonefile</code> (default),{" "}
+<ParamField type="string">
+  Platform-specific optimizations for installing dependencies. Possible values: <code>clonefile</code> (default),
   <code>hardlink</code>, <code>symlink</code>, <code>copyfile</code>
 </ParamField>
 
-<ParamField path="--concurrent-scripts" type="number" default="5">
+<ParamField type="number">
   Maximum number of concurrent jobs for lifecycle scripts (default 5)
 </ParamField>
 
@@ -22722,173 +23316,173 @@ bun patch-commit react
 
 # CLI Usage
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun patch <package>@<version>
 ```
 
 ### Patch Generation
 
-<ParamField path="--commit" type="boolean">
+<ParamField type="boolean">
   Install a package containing modifications in <code>dir</code>
 </ParamField>
 
-<ParamField path="--patches-dir" type="string">
+<ParamField type="string">
   The directory to put the patch file in (only if --commit is used)
 </ParamField>
 
 ### Dependency Management
 
-<ParamField path="--production" type="boolean">
+<ParamField type="boolean">
   Don't install devDependencies. Alias: <code>-p</code>
 </ParamField>
 
-<ParamField path="--ignore-scripts" type="boolean">
+<ParamField type="boolean">
   Skip lifecycle scripts in the project's <code>package.json</code> (dependency scripts are never run)
 </ParamField>
 
-<ParamField path="--trust" type="boolean">
+<ParamField type="boolean">
   Add to <code>trustedDependencies</code> in the project's <code>package.json</code> and install the package(s)
 </ParamField>
 
-<ParamField path="--global" type="boolean">
+<ParamField type="boolean">
   Install globally. Alias: <code>-g</code>
 </ParamField>
 
-<ParamField path="--omit" type="string">
+<ParamField type="string">
   Exclude <code>dev</code>, <code>optional</code>, or <code>peer</code> dependencies from install
 </ParamField>
 
 ### Project Files & Lockfiles
 
-<ParamField path="--yarn" type="boolean">
+<ParamField type="boolean">
   Write a <code>yarn.lock</code> file (yarn v1). Alias: <code>-y</code>
 </ParamField>
 
-<ParamField path="--no-save" type="boolean">
+<ParamField type="boolean">
   Don't update <code>package.json</code> or save a lockfile
 </ParamField>
 
-<ParamField path="--save" type="boolean" default="true">
+<ParamField type="boolean">
   Save to <code>package.json</code> (true by default)
 </ParamField>
 
-<ParamField path="--frozen-lockfile" type="boolean">
+<ParamField type="boolean">
   Disallow changes to lockfile
 </ParamField>
 
-<ParamField path="--save-text-lockfile" type="boolean">
+<ParamField type="boolean">
   Save a text-based lockfile
 </ParamField>
 
-<ParamField path="--lockfile-only" type="boolean">
+<ParamField type="boolean">
   Generate a lockfile without installing dependencies
 </ParamField>
 
 ### Installation Control
 
-<ParamField path="--backend" type="string" default="clonefile">
-  Platform-specific optimizations for installing dependencies. Possible values: <code>clonefile</code> (default),{" "}
+<ParamField type="string">
+  Platform-specific optimizations for installing dependencies. Possible values: <code>clonefile</code> (default),
   <code>hardlink</code>, <code>symlink</code>, <code>copyfile</code>
 </ParamField>
 
-<ParamField path="--linker" type="string">
+<ParamField type="string">
   Linker strategy (one of <code>isolated</code> or <code>hoisted</code>)
 </ParamField>
 
-<ParamField path="--dry-run" type="boolean">
+<ParamField type="boolean">
   Don't install anything
 </ParamField>
 
-<ParamField path="--force" type="boolean">
+<ParamField type="boolean">
   Always request the latest versions from the registry & reinstall all dependencies. Alias: <code>-f</code>
 </ParamField>
 
-<ParamField path="--no-verify" type="boolean">
+<ParamField type="boolean">
   Skip verifying integrity of newly downloaded packages
 </ParamField>
 
 ### Network & Registry
 
-<ParamField path="--ca" type="string">
+<ParamField type="string">
   Provide a Certificate Authority signing certificate
 </ParamField>
 
-<ParamField path="--cafile" type="string">
+<ParamField type="string">
   Same as <code>--ca</code>, but as a file path to the certificate
 </ParamField>
 
-<ParamField path="--registry" type="string">
+<ParamField type="string">
   Use a specific registry by default, overriding <code>.npmrc</code>, <code>bunfig.toml</code>, and environment
   variables
 </ParamField>
 
-<ParamField path="--network-concurrency" type="number" default="48">
+<ParamField type="number">
   Maximum number of concurrent network requests (default 48)
 </ParamField>
 
 ### Performance & Resource
 
-<ParamField path="--concurrent-scripts" type="number" default="5">
+<ParamField type="number">
   Maximum number of concurrent jobs for lifecycle scripts (default 5)
 </ParamField>
 
 ### Caching
 
-<ParamField path="--cache-dir" type="string">
+<ParamField type="string">
   Store & load cached data from a specific directory path
 </ParamField>
 
-<ParamField path="--no-cache" type="boolean">
+<ParamField type="boolean">
   Ignore manifest cache entirely
 </ParamField>
 
 ### Output & Logging
 
-<ParamField path="--silent" type="boolean">
+<ParamField type="boolean">
   Don't log anything
 </ParamField>
 
-<ParamField path="--quiet" type="boolean">
+<ParamField type="boolean">
   Only show tarball name when packing
 </ParamField>
 
-<ParamField path="--verbose" type="boolean">
+<ParamField type="boolean">
   Excessively verbose logging
 </ParamField>
 
-<ParamField path="--no-progress" type="boolean">
+<ParamField type="boolean">
   Disable the progress bar
 </ParamField>
 
-<ParamField path="--no-summary" type="boolean">
+<ParamField type="boolean">
   Don't print a summary
 </ParamField>
 
 ### Platform Targeting
 
-<ParamField path="--cpu" type="string">
+<ParamField type="string">
   Override CPU architecture for optional dependencies (e.g., <code>x64</code>, <code>arm64</code>, <code>\*</code> for
   all)
 </ParamField>
 
-<ParamField path="--os" type="string">
+<ParamField type="string">
   Override operating system for optional dependencies (e.g., <code>linux</code>, <code>darwin</code>, <code>\*</code> for
   all)
 </ParamField>
 
 ### Global Configuration & Context
 
-<ParamField path="--config" type="string">
+<ParamField type="string">
   Specify path to config file (<code>bunfig.toml</code>). Alias: <code>-c</code>
 </ParamField>
 
-<ParamField path="--cwd" type="string">
+<ParamField type="string">
   Set a specific current working directory
 </ParamField>
 
 ### Help
 
-<ParamField path="--help" type="boolean">
+<ParamField type="boolean">
   Print this help menu. Alias: <code>-h</code>
 </ParamField>
 
@@ -22926,7 +23520,7 @@ TARBALL=$(bun pm pack --quiet)
 echo "Created: $TARBALL"
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 Created: my-package-1.0.0.tgz
 ```
 
@@ -22956,7 +23550,7 @@ bun pm pack --destination ./dist
 bun pm pack
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun pack v1.2.19
 
 packed 131B package.json
@@ -22976,7 +23570,7 @@ Packed size: 249B
 bun pm pack --quiet
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 my-package-1.0.0.tgz
 ```
 
@@ -22990,7 +23584,7 @@ To print the path to the `bin` directory for the local project:
 bun pm bin
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 /path/to/current/project/node_modules/.bin
 ```
 
@@ -23000,7 +23594,7 @@ To print the path to the global `bin` directory:
 bun pm bin -g
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 <$HOME>/.bun/bin
 ```
 
@@ -23014,7 +23608,7 @@ bun pm ls
 bun list
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 /path/to/project node_modules (135)
 ├── eslint@8.38.0
 ├── react@18.2.0
@@ -23031,7 +23625,7 @@ bun pm ls --all
 bun list --all
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 /path/to/project node_modules (135)
 ├── @eslint-community/eslint-utils@4.4.0
 ├── @eslint-community/regexpp@4.5.0
@@ -23105,7 +23699,7 @@ To print current untrusted dependencies with scripts:
 bun pm untrusted
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 ./node_modules/@biomejs/biome @1.8.3
  » [postinstall]: node scripts/postinstall.js
 
@@ -23142,8 +23736,8 @@ To display current package version and help:
 bun pm version
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun pm version v1.3.2 (ca7428e9)
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun pm version v1.3.3 (ca7428e9)
 Current package version: v1.0.0
 
 Increment:
@@ -23176,7 +23770,7 @@ To bump the version in `package.json`:
 bun pm version patch
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 v1.0.1
 ```
 
@@ -23230,8 +23824,8 @@ Use `bun publish` to publish a package to the npm registry
 bun publish
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun publish v1.3.2 (ca7428e9)
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun publish v1.3.3 (ca7428e9)
 
 packed 203B package.json
 packed 224B README.md
@@ -23354,7 +23948,7 @@ bun publish dist
 
 ### Publishing Options
 
-<ParamField path="--access" type="string">
+<ParamField type="string">
   The `--access` flag can be used to set the access level of the package being published. The access level can be one of `public` or `restricted`. Unscoped packages are always public, and attempting to publish an unscoped package with `--access restricted` will result in an error.
 
   ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
@@ -23372,7 +23966,7 @@ bun publish dist
   ```
 </ParamField>
 
-<ParamField path="--tag" type="string" default="latest">
+<ParamField type="string">
   Set the tag of the package version being published. By default, the tag is `latest`. The initial version of a package is always given the `latest` tag in addition to the specified tag.
 
   ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
@@ -23381,7 +23975,7 @@ bun publish dist
 
   `--tag` can also be set in the `publishConfig` field of your `package.json`.
 
-  ```json package.json file="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
+  ```json package.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
   {
     "publishConfig": {
       "tag": "next" // [!code ++]
@@ -23390,20 +23984,20 @@ bun publish dist
   ```
 </ParamField>
 
-<ParamField path="--dry-run=<val>" type="string">
+<ParamField type="string">
   The `--dry-run` flag can be used to simulate the publish process without actually publishing the package. This is useful for verifying the contents of the published package without actually publishing the package.
 
-  ```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+  ```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
   bun publish --dry-run
   ```
 </ParamField>
 
-<ParamField path="--gzip-level" type="string" default="9">
+<ParamField type="string">
   Specify the level of gzip compression to use when packing the package. Only applies to `bun publish` without a tarball
   path argument. Values range from `0` to `9` (default is `9`).
 </ParamField>
 
-<ParamField path="--auth-type" type="string" default="web">
+<ParamField type="string">
   If you have 2FA enabled for your npm account, `bun publish` will prompt you for a one-time password. This can be done through a browser or the CLI. The `--auth-type` flag can be used to tell the npm registry which method you prefer. The possible values are `web` and `legacy`, with `web` being the default.
 
   ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
@@ -23415,7 +24009,7 @@ bun publish dist
   ```
 </ParamField>
 
-<ParamField path="--otp" type="string" default="web">
+<ParamField type="string">
   Provide a one-time password directly to the CLI. If the password is valid, this will skip the extra prompt for a one-time password before publishing. Example usage:
 
   ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
@@ -23432,21 +24026,21 @@ bun publish dist
 
 #### Custom Registry
 
-<ParamField path="--registry" type="string">
+<ParamField type="string">
   Specify registry URL, overriding .npmrc and bunfig.toml
 </ParamField>
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun publish --registry https://my-private-registry.com
 ```
 
 #### SSL Certificates
 
-<ParamField path="--ca" type="string">
+<ParamField type="string">
   Provide Certificate Authority signing certificate
 </ParamField>
 
-<ParamField path="--cafile" type="string">
+<ParamField type="string">
   Path to Certificate Authority certificate file
 </ParamField>
 
@@ -23464,25 +24058,25 @@ bun publish --registry https://my-private-registry.com
 
 #### Dependency Management
 
-<ParamField path="-p, --production" type="boolean">
+<ParamField type="boolean">
   Don't install devDependencies
 </ParamField>
 
-<ParamField path="--omit" type="string">
+<ParamField type="string">
   Exclude dependency types: `dev`, `optional`, or `peer`
 </ParamField>
 
-<ParamField path="-f, --force" type="boolean">
+<ParamField type="boolean">
   Always request the latest versions from the registry & reinstall all dependencies
 </ParamField>
 
 #### Script Control
 
-<ParamField path="--ignore-scripts" type="boolean">
+<ParamField type="boolean">
   Skip lifecycle scripts during packing and publishing
 </ParamField>
 
-<ParamField path="--trust" type="boolean">
+<ParamField type="boolean">
   Add packages to trustedDependencies and run their scripts
 </ParamField>
 
@@ -23493,47 +24087,47 @@ bun publish --registry https://my-private-registry.com
 
 #### File Management
 
-<ParamField path="--no-save" type="boolean">
+<ParamField type="boolean">
   Don't update package.json or lockfile
 </ParamField>
 
-<ParamField path="--frozen-lockfile" type="boolean">
+<ParamField type="boolean">
   Disallow changes to lockfile
 </ParamField>
 
-<ParamField path="--yarn" type="boolean">
+<ParamField type="boolean">
   Generate yarn.lock file (yarn v1 compatible)
 </ParamField>
 
 #### Performance
 
-<ParamField path="--backend" type="string">
+<ParamField type="string">
   Platform optimizations: `clonefile` (default), `hardlink`, `symlink`, or `copyfile`
 </ParamField>
 
-<ParamField path="--network-concurrency" type="number" default="48">
+<ParamField type="number">
   Maximum concurrent network requests
 </ParamField>
 
-<ParamField path="--concurrent-scripts" type="number" default="5">
+<ParamField type="number">
   Maximum concurrent lifecycle scripts
 </ParamField>
 
 #### Output Control
 
-<ParamField path="--silent" type="boolean">
+<ParamField type="boolean">
   Suppress all output
 </ParamField>
 
-<ParamField path="--verbose" type="boolean">
+<ParamField type="boolean">
   Show detailed logging
 </ParamField>
 
-<ParamField path="--no-progress" type="boolean">
+<ParamField type="boolean">
   Hide progress bar
 </ParamField>
 
-<ParamField path="--no-summary" type="boolean">
+<ParamField type="boolean">
   Don't print publish summary
 </ParamField>
 
@@ -23559,142 +24153,142 @@ bun remove <package>
 
 ### General Information
 
-<ParamField path="--help" type="boolean">
+<ParamField type="boolean">
   Print this help menu. Alias: <code>-h</code>
 </ParamField>
 
 ### Configuration
 
-<ParamField path="--config" type="string">
+<ParamField type="string">
   Specify path to config file (<code>bunfig.toml</code>). Alias: <code>-c</code>
 </ParamField>
 
 ### Package.json Interaction
 
-<ParamField path="--no-save" type="boolean">
+<ParamField type="boolean">
   Don't update <code>package.json</code> or save a lockfile
 </ParamField>
 
-<ParamField path="--save" type="boolean" default="true">
+<ParamField type="boolean">
   Save to <code>package.json</code> (true by default)
 </ParamField>
 
-<ParamField path="--trust" type="boolean">
+<ParamField type="boolean">
   Add to <code>trustedDependencies</code> in the project's <code>package.json</code> and install the package(s)
 </ParamField>
 
 ### Lockfile Behavior
 
-<ParamField path="--yarn" type="boolean">
+<ParamField type="boolean">
   Write a <code>yarn.lock</code> file (yarn v1). Alias: <code>-y</code>
 </ParamField>
 
-<ParamField path="--frozen-lockfile" type="boolean">
+<ParamField type="boolean">
   Disallow changes to lockfile
 </ParamField>
 
-<ParamField path="--save-text-lockfile" type="boolean">
+<ParamField type="boolean">
   Save a text-based lockfile
 </ParamField>
 
-<ParamField path="--lockfile-only" type="boolean">
+<ParamField type="boolean">
   Generate a lockfile without installing dependencies
 </ParamField>
 
 ### Dependency Filtering
 
-<ParamField path="--production" type="boolean">
+<ParamField type="boolean">
   Don't install devDependencies. Alias: <code>-p</code>
 </ParamField>
 
-<ParamField path="--omit" type="string">
+<ParamField type="string">
   Exclude <code>dev</code>, <code>optional</code>, or <code>peer</code> dependencies from install
 </ParamField>
 
 ### Network & Registry
 
-<ParamField path="--ca" type="string">
+<ParamField type="string">
   Provide a Certificate Authority signing certificate
 </ParamField>
 
-<ParamField path="--cafile" type="string">
+<ParamField type="string">
   Same as <code>--ca</code>, but as a file path to the certificate
 </ParamField>
 
-<ParamField path="--registry" type="string">
+<ParamField type="string">
   Use a specific registry by default, overriding <code>.npmrc</code>, <code>bunfig.toml</code> and environment variables
 </ParamField>
 
 ### Execution Control & Validation
 
-<ParamField path="--dry-run" type="boolean">
+<ParamField type="boolean">
   Don't install anything
 </ParamField>
 
-<ParamField path="--force" type="boolean">
+<ParamField type="boolean">
   Always request the latest versions from the registry & reinstall all dependencies. Alias: <code>-f</code>
 </ParamField>
 
-<ParamField path="--no-verify" type="boolean">
+<ParamField type="boolean">
   Skip verifying integrity of newly downloaded packages
 </ParamField>
 
 ### Output & Logging
 
-<ParamField path="--silent" type="boolean">
+<ParamField type="boolean">
   Don't log anything
 </ParamField>
 
-<ParamField path="--verbose" type="boolean">
+<ParamField type="boolean">
   Excessively verbose logging
 </ParamField>
 
-<ParamField path="--no-progress" type="boolean">
+<ParamField type="boolean">
   Disable the progress bar
 </ParamField>
 
-<ParamField path="--no-summary" type="boolean">
+<ParamField type="boolean">
   Don't print a summary
 </ParamField>
 
 ### Caching
 
-<ParamField path="--cache-dir" type="string">
+<ParamField type="string">
   Store & load cached data from a specific directory path
 </ParamField>
 
-<ParamField path="--no-cache" type="boolean">
+<ParamField type="boolean">
   Ignore manifest cache entirely
 </ParamField>
 
 ### Script Execution
 
-<ParamField path="--ignore-scripts" type="boolean">
+<ParamField type="boolean">
   Skip lifecycle scripts in the project's <code>package.json</code> (dependency scripts are never run)
 </ParamField>
 
-<ParamField path="--concurrent-scripts" type="number" default="5">
+<ParamField type="number">
   Maximum number of concurrent jobs for lifecycle scripts (default 5)
 </ParamField>
 
 ### Scope & Path
 
-<ParamField path="--global" type="boolean">
+<ParamField type="boolean">
   Install globally. Alias: <code>-g</code>
 </ParamField>
 
-<ParamField path="--cwd" type="string">
+<ParamField type="string">
   Set a specific cwd
 </ParamField>
 
 ### Advanced & Performance
 
-<ParamField path="--backend" type="string" default="clonefile">
-  Platform-specific optimizations for installing dependencies. Possible values: <code>clonefile</code> (default),{" "}
+<ParamField type="string">
+  Platform-specific optimizations for installing dependencies. Possible values: <code>clonefile</code> (default),
   <code>hardlink</code>, <code>symlink</code>, <code>copyfile</code>
 </ParamField>
 
-<ParamField path="--network-concurrency" type="number" default="48">
+<ParamField type="number">
   Maximum number of concurrent network requests (default 48)
 </ParamField>
 
@@ -23733,7 +24327,7 @@ This launches an interactive terminal interface that shows all outdated packages
 
 The interface displays packages grouped by dependency type:
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 ? Select packages to update - Space to toggle, Enter to confirm, a to select all, n to select none, i to invert, l to toggle latest
 
   dependencies                Current  Target   Latest
@@ -23844,140 +24438,140 @@ bun update <package> <version>
 
 ### Update Strategy
 
-<ParamField path="--force" type="boolean">
+<ParamField type="boolean">
   Always request the latest versions from the registry & reinstall all dependencies. Alias: <code>-f</code>
 </ParamField>
 
-<ParamField path="--latest" type="boolean">
+<ParamField type="boolean">
   Update packages to their latest versions
 </ParamField>
 
 ### Dependency Scope
 
-<ParamField path="--production" type="boolean">
+<ParamField type="boolean">
   Don't install devDependencies. Alias: <code>-p</code>
 </ParamField>
 
-<ParamField path="--global" type="boolean">
+<ParamField type="boolean">
   Install globally. Alias: <code>-g</code>
 </ParamField>
 
-<ParamField path="--omit" type="string">
+<ParamField type="string">
   Exclude <code>dev</code>, <code>optional</code>, or <code>peer</code> dependencies from install
 </ParamField>
 
 ### Project File Management
 
-<ParamField path="--yarn" type="boolean">
+<ParamField type="boolean">
   Write a <code>yarn.lock</code> file (yarn v1). Alias: <code>-y</code>
 </ParamField>
 
-<ParamField path="--no-save" type="boolean">
+<ParamField type="boolean">
   Don't update <code>package.json</code> or save a lockfile
 </ParamField>
 
-<ParamField path="--save" type="boolean" default="true">
+<ParamField type="boolean">
   Save to <code>package.json</code> (true by default)
 </ParamField>
 
-<ParamField path="--frozen-lockfile" type="boolean">
+<ParamField type="boolean">
   Disallow changes to lockfile
 </ParamField>
 
-<ParamField path="--save-text-lockfile" type="boolean">
+<ParamField type="boolean">
   Save a text-based lockfile
 </ParamField>
 
-<ParamField path="--lockfile-only" type="boolean">
+<ParamField type="boolean">
   Generate a lockfile without installing dependencies
 </ParamField>
 
 ### Network & Registry
 
-<ParamField path="--ca" type="string">
+<ParamField type="string">
   Provide a Certificate Authority signing certificate
 </ParamField>
 
-<ParamField path="--cafile" type="string">
+<ParamField type="string">
   Same as <code>--ca</code>, but as a file path to the certificate
 </ParamField>
 
-<ParamField path="--registry" type="string">
+<ParamField type="string">
   Use a specific registry by default, overriding <code>.npmrc</code>, <code>bunfig.toml</code> and environment variables
 </ParamField>
 
-<ParamField path="--network-concurrency" type="number" default="48">
+<ParamField type="number">
   Maximum number of concurrent network requests (default 48)
 </ParamField>
 
 ### Caching
 
-<ParamField path="--cache-dir" type="string">
+<ParamField type="string">
   Store & load cached data from a specific directory path
 </ParamField>
 
-<ParamField path="--no-cache" type="boolean">
+<ParamField type="boolean">
   Ignore manifest cache entirely
 </ParamField>
 
 ### Output & Logging
 
-<ParamField path="--silent" type="boolean">
+<ParamField type="boolean">
   Don't log anything
 </ParamField>
 
-<ParamField path="--verbose" type="boolean">
+<ParamField type="boolean">
   Excessively verbose logging
 </ParamField>
 
-<ParamField path="--no-progress" type="boolean">
+<ParamField type="boolean">
   Disable the progress bar
 </ParamField>
 
-<ParamField path="--no-summary" type="boolean">
+<ParamField type="boolean">
   Don't print a summary
 </ParamField>
 
 ### Script Execution
 
-<ParamField path="--ignore-scripts" type="boolean">
+<ParamField type="boolean">
   Skip lifecycle scripts in the project's <code>package.json</code> (dependency scripts are never run)
 </ParamField>
 
-<ParamField path="--concurrent-scripts" type="number" default="5">
+<ParamField type="number">
   Maximum number of concurrent jobs for lifecycle scripts (default 5)
 </ParamField>
 
 ### Installation Controls
 
-<ParamField path="--no-verify" type="boolean">
+<ParamField type="boolean">
   Skip verifying integrity of newly downloaded packages
 </ParamField>
 
-<ParamField path="--trust" type="boolean">
+<ParamField type="boolean">
   Add to <code>trustedDependencies</code> in the project's <code>package.json</code> and install the package(s)
 </ParamField>
 
-<ParamField path="--backend" type="string" default="clonefile">
-  Platform-specific optimizations for installing dependencies. Possible values: <code>clonefile</code> (default),{" "}
+<ParamField type="string">
+  Platform-specific optimizations for installing dependencies. Possible values: <code>clonefile</code> (default),
   <code>hardlink</code>, <code>symlink</code>, <code>copyfile</code>
 </ParamField>
 
 ### General & Environment
 
-<ParamField path="--config" type="string">
+<ParamField type="string">
   Specify path to config file (<code>bunfig.toml</code>). Alias: <code>-c</code>
 </ParamField>
 
-<ParamField path="--dry-run" type="boolean">
+<ParamField type="boolean">
   Don't install anything
 </ParamField>
 
-<ParamField path="--cwd" type="string">
+<ParamField type="string">
   Set a specific cwd
 </ParamField>
 
-<ParamField path="--help" type="boolean">
+<ParamField type="boolean">
   Print this help menu. Alias: <code>-h</code>
 </ParamField>
 
@@ -24012,7 +24606,7 @@ Check why a specific package is installed:
 bun why react
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 react@18.2.0
   └─ my-app@1.0.0 (requires ^18.0.0)
 ```
@@ -24023,7 +24617,7 @@ Check why all packages with a specific pattern are installed:
 bun why "@types/*"
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 @types/react@18.2.15
   └─ dev my-app@1.0.0 (requires ^18.0.0)
 
@@ -24037,7 +24631,7 @@ Show only top-level dependencies:
 bun why express --top
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 express@4.18.2
   └─ my-app@1.0.0 (requires ^4.18.2)
 ```
@@ -24048,7 +24642,7 @@ Limit the dependency tree depth:
 bun why express --depth 2
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 express@4.18.2
   └─ express-pollyfill@1.20.1 (requires ^4.18.2)
      └─ body-parser@1.20.1 (requires ^1.20.1)
@@ -24166,6 +24760,31 @@ Filters respect your [workspace configuration](/pm/workspaces): If you have a `p
 # in src/bar: runs myscript in src/foo, no need to cd!
 bun run --filter foo myscript
 ```
+
+### Parallel and sequential mode
+
+Combine `--filter` or `--workspaces` with `--parallel` or `--sequential` to run scripts across workspace packages with Foreman-style prefixed output:
+
+```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+# Run "build" in all matching packages concurrently
+bun run --parallel --filter '*' build
+
+# Run "build" in all workspace packages sequentially
+bun run --sequential --workspaces build
+
+# Run glob-matched scripts across all packages
+bun run --parallel --filter '*' "build:*"
+
+# Continue running even if one package's script fails
+bun run --parallel --no-exit-on-error --filter '*' test
+
+# Run multiple scripts across all packages
+bun run --parallel --filter '*' build lint
+```
+
+Each line of output is prefixed with the package and script name (e.g. `pkg-a:build | ...`). Without `--filter`/`--workspaces`, the prefix is just the script name (e.g. `build | ...`). When a package's `package.json` has no `name` field, the relative path from the workspace root is used instead.
+
+Use `--if-present` with `--workspaces` to skip packages that don't have the requested script instead of erroring.
 
 ### Dependency Order
 
@@ -24433,7 +25052,7 @@ Isolated installs are conceptually similar to pnpm, so migration should be strai
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 # Remove pnpm files
-$ rm -rf node_modules pnpm-lock.yaml
+rm -rf node_modules pnpm-lock.yaml
 
 # Install with Bun's isolated linker
 bun install --linker isolated
@@ -24511,6 +25130,13 @@ Instead of executing arbitrary scripts, Bun uses a "default-secure" approach. Yo
 Once added to `trustedDependencies`, install/re-install the package. Bun will read this field and run lifecycle scripts for `my-trusted-package`.
 
 The top 500 npm packages with lifecycle scripts are allowed by default. You can see the full list [here](https://github.com/oven-sh/bun/blob/main/src/install/default-trusted-dependencies.txt).
+
+<Note>
+  The default trusted dependencies list only applies to packages installed from npm. For packages from other sources
+  (such as `file:`, `link:`, `git:`, or `github:` dependencies), you must explicitly add them to `trustedDependencies`
+  to run their lifecycle scripts, even if the package name matches an entry in the default list. This prevents malicious
+  packages from spoofing trusted package names through local file paths or git repositories.
+</Note>
 
 ***
 
@@ -24661,6 +25287,7 @@ The following options are supported:
 * `username`
 * `_password` (base64 encoded password)
 * `_auth` (base64 encoded username:password, e.g. `btoa(username + ":" + password)`)
+* `email`
 
 The equivalent `bunfig.toml` option is to add a key in [`install.scopes`](/runtime/bunfig#install-registry):
 
@@ -24697,6 +25324,139 @@ The equivalent `bunfig.toml` option is [`install.exact`](/runtime/bunfig#install
 ```toml bunfig.toml icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [install]
 exact = true
+```
+
+### `ignore-scripts`: Skip lifecycle scripts
+
+Prevents running lifecycle scripts during installation:
+
+```ini .npmrc icon="npm" theme={"theme":{"light":"github-light","dark":"dracula"}}
+ignore-scripts=true
+```
+
+This is equivalent to using the `--ignore-scripts` flag with `bun install`.
+
+### `dry-run`: Preview changes without installing
+
+Shows what would be installed without actually installing:
+
+```ini .npmrc icon="npm" theme={"theme":{"light":"github-light","dark":"dracula"}}
+dry-run=true
+```
+
+The equivalent `bunfig.toml` option is [`install.dryRun`](/runtime/bunfig#install-dryrun):
+
+```toml bunfig.toml icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+[install]
+dryRun = true
+```
+
+### `cache`: Configure cache directory
+
+Set the cache directory path, or disable caching:
+
+```ini .npmrc icon="npm" theme={"theme":{"light":"github-light","dark":"dracula"}}
+# set a custom cache directory
+cache=/path/to/cache
+
+# or disable caching
+cache=false
+```
+
+The equivalent `bunfig.toml` option is [`install.cache`](/runtime/bunfig#install-cache):
+
+```toml bunfig.toml icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+[install.cache]
+# set a custom cache directory
+dir = "/path/to/cache"
+
+# or disable caching
+disable = true
+```
+
+### `ca` and `cafile`: Configure CA certificates
+
+Configure custom CA certificates for registry connections:
+
+```ini .npmrc icon="npm" theme={"theme":{"light":"github-light","dark":"dracula"}}
+# single CA certificate
+ca="-----BEGIN CERTIFICATE-----\n...\n-----END CERTIFICATE-----"
+
+# multiple CA certificates
+ca[]="-----BEGIN CERTIFICATE-----\n...\n-----END CERTIFICATE-----"
+ca[]="-----BEGIN CERTIFICATE-----\n...\n-----END CERTIFICATE-----"
+
+# or specify a path to a CA file
+cafile=/path/to/ca-bundle.crt
+```
+
+### `omit` and `include`: Control dependency types
+
+Control which dependency types are installed:
+
+```ini .npmrc icon="npm" theme={"theme":{"light":"github-light","dark":"dracula"}}
+# omit dev dependencies
+omit=dev
+
+# omit multiple types
+omit[]=dev
+omit[]=optional
+
+# include specific types (overrides omit)
+include=dev
+```
+
+Valid values: `dev`, `peer`, `optional`
+
+### `install-strategy` and `node-linker`: Installation strategy
+
+Control how packages are installed in `node_modules`. Bun supports two different configuration options for compatibility with different package managers.
+
+**npm's `install-strategy`:**
+
+```ini .npmrc icon="npm" theme={"theme":{"light":"github-light","dark":"dracula"}}
+# flat node_modules structure (default)
+install-strategy=hoisted
+
+# symlinked structure
+install-strategy=linked
+```
+
+**pnpm/yarn's `node-linker`:**
+
+The `node-linker` option controls the installation mode. Bun supports values from both pnpm and yarn:
+
+| Value          | Description                                      | Accepted by |
+| -------------- | ------------------------------------------------ | ----------- |
+| `isolated`     | Symlinked structure with isolated dependencies   | pnpm        |
+| `hoisted`      | Flat node\_modules structure                     | pnpm        |
+| `pnpm`         | Symlinked structure (same as `isolated`)         | yarn        |
+| `node-modules` | Flat node\_modules structure (same as `hoisted`) | yarn        |
+
+```ini .npmrc icon="npm" theme={"theme":{"light":"github-light","dark":"dracula"}}
+# symlinked/isolated mode
+node-linker=isolated
+node-linker=pnpm
+
+# flat/hoisted mode
+node-linker=hoisted
+node-linker=node-modules
+```
+
+### `public-hoist-pattern` and `hoist-pattern`: Control hoisting
+
+Control which packages are hoisted to the root `node_modules`:
+
+```ini .npmrc icon="npm" theme={"theme":{"light":"github-light","dark":"dracula"}}
+# packages matching this pattern will be hoisted to the root
+public-hoist-pattern=*eslint*
+
+# multiple patterns
+public-hoist-pattern[]=*eslint*
+public-hoist-pattern[]=*prettier*
+
+# control general hoisting behavior
+hoist-pattern=*
 ```
 
 
@@ -24961,8 +25721,7 @@ In the root `package.json`, the `"workspaces"` key is used to indicate which sub
 
 <Note>
   **Glob support** — Bun supports full glob syntax in `"workspaces"`, including negative patterns (e.g.
-  `!**/excluded/**`). See [here](https://bun.com/docs/api/glob#supported-glob-patterns) for a comprehensive list of
-  supported syntax.
+  `!**/excluded/**`). See [here](/runtime/glob#supported-glob-patterns) for a comprehensive list of supported syntax.
 </Note>
 
 ```json package.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
@@ -24987,7 +25746,7 @@ Each workspace has it's own `package.json`. When referencing other packages in t
 
 `bun install` will install dependencies for all workspaces in the monorepo, de-duplicating packages if possible. If you only want to install dependencies for specific workspaces, you can use the `--filter` flag.
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 # Install dependencies for all workspaces starting with `pkg-` except for `pkg-c`
 bun install --filter "pkg-*" --filter "!pkg-c"
 
@@ -25030,7 +25789,7 @@ updates every package that references it. See
   * 12x faster than `yarn install` (v1)
   * 8x faster than `pnpm install`
 
-  <Image src="https://user-images.githubusercontent.com/709451/212829600-77df9544-7c9f-4d8d-a984-b2cd0fd2aa52.png" />
+  <Image />
 </Note>
 
 
@@ -25067,7 +25826,7 @@ Bun has two heaps. One heap is for the JavaScript runtime and the other heap is 
 
 The `bun:jsc` module exposes a few functions for measuring memory usage:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { heapStats } from "bun:jsc";
 console.log(heapStats());
 ```
@@ -25181,14 +25940,14 @@ JavaScript is a garbage-collected language, not reference counted. It's normal a
 
 To force garbage collection to run manually:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.gc(true); // synchronous
 Bun.gc(false); // asynchronous
 ```
 
 Heap snapshots let you inspect what objects are not being freed. You can use the `bun:jsc` module to take a heap snapshot and then view it with Safari or WebKit GTK developer tools. To generate a heap snapshot:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { generateHeapSnapshot } from "bun";
 
 const snapshot = generateHeapSnapshot();
@@ -25203,13 +25962,13 @@ To view the snapshot, open the `heap.json` file in Safari's Developer Tools (or 
 4. Click "Import" and select your heap snapshot JSON
 
 <Frame>
-  <img src="https://user-images.githubusercontent.com/709451/204428943-ba999e8f-8984-4f23-97cb-b4e3e280363e.png" alt="Importing a heap snapshot" />
+  <img alt="Importing a heap snapshot" />
 </Frame>
 
 Once imported, you should see something like this:
 
 <Frame>
-  <img alt="Viewing heap snapshot in Safari" src="https://user-images.githubusercontent.com/709451/204429337-b0d8935f-3509-4071-b991-217794d1fb27.png" caption="Viewing heap snapshot in Safari Dev Tools" />
+  <img alt="Viewing heap snapshot in Safari" />
 </Frame>
 
 > The [web debugger](/runtime/debugger#inspect) also offers the timeline feature which allows you to track and examine the memory usage of the running debug session.
@@ -25222,7 +25981,7 @@ Bun uses mimalloc for the other heap. To report a summary of non-JavaScript memo
 MIMALLOC_SHOW_STATS=1 bun script.js
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 heap stats:    peak      total      freed    current       unit      count
   reserved:   64.0 MiB   64.0 MiB      0       64.0 MiB                        not all freed!
  committed:   64.0 MiB   64.0 MiB      0       64.0 MiB                        not all freed!
@@ -25254,6 +26013,26 @@ bun --cpu-prof script.js
 
 This generates a `.cpuprofile` file you can open in Chrome DevTools (Performance tab → Load profile) or VS Code's CPU profiler.
 
+### Markdown output
+
+Use `--cpu-prof-md` to generate a markdown CPU profile, which is grep-friendly and designed for LLM analysis:
+
+```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun --cpu-prof-md script.js
+```
+
+Both `--cpu-prof` and `--cpu-prof-md` can be used together to generate both formats at once:
+
+```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun --cpu-prof --cpu-prof-md script.js
+```
+
+You can also trigger profiling via the `BUN_OPTIONS` environment variable:
+
+```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+BUN_OPTIONS="--cpu-prof-md" bun script.js
+```
+
 ### Options
 
 ```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
@@ -25261,11 +26040,46 @@ bun --cpu-prof --cpu-prof-name my-profile.cpuprofile script.js
 bun --cpu-prof --cpu-prof-dir ./profiles script.js
 ```
 
-| Flag                         | Description          |
-| ---------------------------- | -------------------- |
-| `--cpu-prof`                 | Enable profiling     |
-| `--cpu-prof-name <filename>` | Set output filename  |
-| `--cpu-prof-dir <dir>`       | Set output directory |
+| Flag                         | Description                                                 |
+| ---------------------------- | ----------------------------------------------------------- |
+| `--cpu-prof`                 | Generate a `.cpuprofile` JSON file (Chrome DevTools format) |
+| `--cpu-prof-md`              | Generate a markdown CPU profile (grep/LLM-friendly)         |
+| `--cpu-prof-name <filename>` | Set output filename                                         |
+| `--cpu-prof-dir <dir>`       | Set output directory                                        |
+
+## Heap profiling
+
+Generate heap snapshots on exit to analyze memory usage and find memory leaks.
+
+```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun --heap-prof script.js
+```
+
+This generates a V8 `.heapsnapshot` file that can be loaded in Chrome DevTools (Memory tab → Load).
+
+### Markdown output
+
+Use `--heap-prof-md` to generate a markdown heap profile for CLI analysis:
+
+```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun --heap-prof-md script.js
+```
+
+<Note>If both `--heap-prof` and `--heap-prof-md` are specified, the markdown format is used.</Note>
+
+### Options
+
+```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun --heap-prof --heap-prof-name my-snapshot.heapsnapshot script.js
+bun --heap-prof --heap-prof-dir ./profiles script.js
+```
+
+| Flag                          | Description                                |
+| ----------------------------- | ------------------------------------------ |
+| `--heap-prof`                 | Generate a V8 `.heapsnapshot` file on exit |
+| `--heap-prof-md`              | Generate a markdown heap profile on exit   |
+| `--heap-prof-name <filename>` | Set output filename                        |
+| `--heap-prof-dir <dir>`       | Set output directory                       |
 
 
 # Bindgen
@@ -25324,7 +26138,7 @@ export const add = fn({
 
 This function declaration is equivalent to:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 /**
  * Throws if zero arguments are provided.
  * Wraps out of range numbers using modulo.
@@ -25378,7 +26192,7 @@ export const action = fn({
 
 In Zig, each variant gets a number, based on the order the schema defines.
 
-```zig  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```zig theme={"theme":{"light":"github-light","dark":"dracula"}}
 fn action1(a: i32) i32 {
   return a;
 }
@@ -25401,7 +26215,7 @@ To use [WebIDL's enumeration](https://webidl.spec.whatwg.org/#idl-enums) type, u
 
 An example of `stringEnum` as used in `fmt.zig` / `bun:internal-for-testing`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 export const Formatter = t.stringEnum("highlight-javascript", "escape-powershell");
 
 export const fmtString = fn({
@@ -25442,7 +26256,7 @@ Depending on the type, there are more attributes available. See the type definit
 
 Integer types allow customizing the overflow behavior with `clamp` or `enforceRange`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { t, fn } from "bindgen";
 
 export const add = fn({
@@ -25465,7 +26279,7 @@ Various Node.js validator functions such as `validateInteger`, `validateNumber`,
 
 Unlike `enforceRange`, which is taken from WebIDL, `validate*` functions are much more strict on the input they accept. For example, Node's numerical validator check `typeof value === 'number'`, while WebIDL uses `ToNumber` for lossy conversion.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { t, fn } from "bindgen";
 
 export const add = fn({
@@ -25508,29 +26322,29 @@ It is strongly recommended to use [PowerShell 7 (`pwsh.exe`)](https://learn.micr
 
 By default, running unverified scripts are blocked.
 
-```ps1  theme={"theme":{"light":"github-light","dark":"dracula"}}
-> Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
+```ps1 theme={"theme":{"light":"github-light","dark":"dracula"}}
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
 ```
 
 ### System Dependencies
 
 Bun v1.1 or later. We use Bun to run it's own code generators.
 
-```ps1  theme={"theme":{"light":"github-light","dark":"dracula"}}
-> irm bun.com/install.ps1 | iex
+```ps1 theme={"theme":{"light":"github-light","dark":"dracula"}}
+irm bun.sh/install.ps1 | iex
 ```
 
 [Visual Studio](https://visualstudio.microsoft.com) with the "Desktop Development with C++" workload. While installing, make sure to install Git as well, if Git for Windows is not already installed.
 
 Visual Studio can be installed graphically using the wizard or through WinGet:
 
-```ps1  theme={"theme":{"light":"github-light","dark":"dracula"}}
-> winget install "Visual Studio Community 2022" --override "--add Microsoft.VisualStudio.Workload.NativeDesktop Microsoft.VisualStudio.Component.Git " -s msstore
+```ps1 theme={"theme":{"light":"github-light","dark":"dracula"}}
+winget install "Visual Studio Community 2022" --override "--add Microsoft.VisualStudio.Workload.NativeDesktop Microsoft.VisualStudio.Component.Git " -s msstore
 ```
 
 After Visual Studio, you need the following:
 
-* LLVM 19.1.7
+* LLVM (19.1.7 for x64, 21.1.8 for ARM64)
 * Go
 * Rust
 * NASM
@@ -25542,11 +26356,19 @@ After Visual Studio, you need the following:
 
 [Scoop](https://scoop.sh) can be used to install these remaining tools easily.
 
-```ps1 Scoop theme={"theme":{"light":"github-light","dark":"dracula"}}
-> irm https://get.scoop.sh | iex
-> scoop install nodejs-lts go rust nasm ruby perl sccache
+```ps1 Scoop (x64) theme={"theme":{"light":"github-light","dark":"dracula"}}
+irm https://get.scoop.sh | iex
+scoop install nodejs-lts go rust nasm ruby perl ccache
 # scoop seems to be buggy if you install llvm and the rest at the same time
-> scoop install llvm@19.1.7
+scoop install llvm@19.1.7
+```
+
+For Windows ARM64, download LLVM 21.1.8 directly from GitHub releases (first version with ARM64 Windows builds):
+
+```ps1 ARM64 theme={"theme":{"light":"github-light","dark":"dracula"}}
+# Download and install LLVM for ARM64
+Invoke-WebRequest -Uri "https://github.com/llvm/llvm-project/releases/download/llvmorg-21.1.8/LLVM-21.1.8-woa64.exe" -OutFile "$env:TEMP\LLVM-21.1.8-woa64.exe"
+Start-Process -FilePath "$env:TEMP\LLVM-21.1.8-woa64.exe" -ArgumentList "/S" -Wait
 ```
 
 <Note>
@@ -25555,22 +26377,24 @@ After Visual Studio, you need the following:
   will conflict with MSVC and break the build.
 </Note>
 
-If you intend on building WebKit locally (optional), you should install these packages:
+If you intend on building WebKit locally (optional, x64 only), you should install these packages:
 
 ```ps1 Scoop theme={"theme":{"light":"github-light","dark":"dracula"}}
-> scoop install make cygwin python
+scoop install make cygwin python
 ```
+
+<Note>Cygwin is not required for ARM64 builds as WebKit is provided as a pre-built binary.</Note>
 
 From here on out, it is **expected you use a PowerShell Terminal with `.\scripts\vs-shell.ps1` sourced**. This script is available in the Bun repository and can be loaded by executing it:
 
-```ps1  theme={"theme":{"light":"github-light","dark":"dracula"}}
-> .\scripts\vs-shell.ps1
+```ps1 theme={"theme":{"light":"github-light","dark":"dracula"}}
+.\scripts\vs-shell.ps1
 ```
 
 To verify, you can check for an MSVC-only command line such as `mt.exe`
 
-```ps1  theme={"theme":{"light":"github-light","dark":"dracula"}}
-> Get-Command mt
+```ps1 theme={"theme":{"light":"github-light","dark":"dracula"}}
+Get-Command mt
 ```
 
 <Note>
@@ -25580,17 +26404,17 @@ To verify, you can check for an MSVC-only command line such as `mt.exe`
 
 ## Building
 
-```ps1  theme={"theme":{"light":"github-light","dark":"dracula"}}
-> bun run build
+```ps1 theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun run build
 
 # after the initial `bun run build` you can use the following to build
-> ninja -Cbuild/debug
+ninja -Cbuild/debug
 ```
 
 If this was successful, you should have a `bun-debug.exe` in the `build/debug` folder.
 
-```ps1  theme={"theme":{"light":"github-light","dark":"dracula"}}
-> .\build\debug\bun-debug.exe --revision
+```ps1 theme={"theme":{"light":"github-light","dark":"dracula"}}
+.\build\debug\bun-debug.exe --revision
 ```
 
 You should add this to `$Env:PATH`. The simplest way to do so is to open the start menu, type "Path", and then navigate the environment variables menu to add `C:\.....\bun\build\debug` to the user environment variable `PATH`. You should then restart your editor (if it does not update still, log out and log back in).
@@ -25604,17 +26428,17 @@ You should add this to `$Env:PATH`. The simplest way to do so is to open the sta
 
 You can run the test suite either using `bun test <path>` or by using the wrapper script `bun node:test <path>`. The `bun node:test` command runs every test file in a separate instance of bun.exe, to prevent a crash in the test runner from stopping the entire suite.
 
-```ps1  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ps1 theme={"theme":{"light":"github-light","dark":"dracula"}}
 # Setup
-> bun i --cwd packages\bun-internal-test
+bun i --cwd packages\bun-internal-test
 
 # Run the entire test suite with reporter
 # the package.json script "test" uses "build/debug/bun-debug.exe" by default
-> bun run test
+bun run test
 
 # Run an individual test file:
-> bun-debug test node\fs
-> bun-debug test "C:\bun\test\js\bun\resolve\import-meta.test.js"
+bun-debug test node\fs
+bun-debug test "C:\bun\test\js\bun\resolve\import-meta.test.js"
 ```
 
 ## Troubleshooting
@@ -25641,7 +26465,7 @@ If you are using Windows, please refer to [this guide](/project/building-windows
 
 A Nix flake is provided as an alternative to manual dependency installation:
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 nix develop
 # or explicitly use the pure shell
 # nix develop .#pure
@@ -25657,23 +26481,23 @@ Using your system's package manager, install Bun's dependencies:
 
 <CodeGroup>
   ```bash macOS (Homebrew) theme={"theme":{"light":"github-light","dark":"dracula"}}
-  $ brew install automake cmake coreutils gnu-sed go icu4c libiconv libtool ninja pkg-config rust ruby sccache
+  brew install automake ccache cmake coreutils gnu-sed go icu4c libiconv libtool ninja pkg-config rust ruby
   ```
 
   ```bash Ubuntu/Debian theme={"theme":{"light":"github-light","dark":"dracula"}}
-  $ sudo apt install curl wget lsb-release software-properties-common cargo cmake git golang libtool ninja-build pkg-config rustc ruby-full xz-utils
+  sudo apt install curl wget lsb-release software-properties-common cargo cmake git golang libtool ninja-build pkg-config rustc ruby-full xz-utils
   ```
 
   ```bash Arch theme={"theme":{"light":"github-light","dark":"dracula"}}
-  $ sudo pacman -S base-devel cmake git go libiconv libtool make ninja pkg-config python rust sed unzip ruby
+  sudo pacman -S base-devel cmake git go libiconv libtool make ninja pkg-config python rust sed unzip ruby
   ```
 
   ```bash Fedora theme={"theme":{"light":"github-light","dark":"dracula"}}
-  $ sudo dnf install cargo clang19 llvm19 lld19 cmake git golang libtool ninja-build pkg-config rustc ruby libatomic-static libstdc++-static sed unzip which libicu-devel 'perl(Math::BigInt)'
+  sudo dnf install cargo clang19 llvm19 lld19 cmake git golang libtool ninja-build pkg-config rustc ruby libatomic-static libstdc++-static sed unzip which libicu-devel 'perl(Math::BigInt)'
   ```
 
   ```bash openSUSE Tumbleweed theme={"theme":{"light":"github-light","dark":"dracula"}}
-  $ sudo zypper install go cmake ninja automake git icu rustup && rustup toolchain install stable
+  sudo zypper install go cmake ninja automake git icu rustup && rustup toolchain install stable
   ```
 </CodeGroup>
 
@@ -25683,56 +26507,41 @@ Before starting, you will need to already have a release build of Bun installed,
 
 <CodeGroup>
   ```bash Native theme={"theme":{"light":"github-light","dark":"dracula"}}
-  $ curl -fsSL https://bun.com/install | bash
+  curl -fsSL https://bun.com/install | bash
   ```
 
   ```bash npm theme={"theme":{"light":"github-light","dark":"dracula"}}
-  $ npm install -g bun
+  npm install -g bun
   ```
 
   ```bash Homebrew theme={"theme":{"light":"github-light","dark":"dracula"}}
-  $ brew tap oven-sh/bun
-  $ brew install bun
+  brew tap oven-sh/bun
+  brew install bun
   ```
 </CodeGroup>
 
-### Optional: Install `sccache`
+### Optional: Install `ccache`
 
-sccache is used to cache compilation artifacts, significantly speeding up builds. It must be installed with S3 support:
+ccache is used to cache compilation artifacts, significantly speeding up builds:
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 # For macOS
-$ brew install sccache
+brew install ccache
 
-# For Linux. Note that the version in your package manager may not have S3 support.
-$ cargo install sccache --features=s3
+# For Ubuntu/Debian
+sudo apt install ccache
+
+# For Arch
+sudo pacman -S ccache
+
+# For Fedora
+sudo dnf install ccache
+
+# For openSUSE
+sudo zypper install ccache
 ```
 
-This will install `sccache` with S3 support. Our build scripts will automatically detect and use `sccache` with our shared S3 cache. **Note**: Not all versions of `sccache` are compiled with S3 support, hence we recommend installing it via `cargo`.
-
-#### Registering AWS Credentials for `sccache` (Core Developers Only)
-
-Core developers have write access to the shared S3 cache. To enable write access, you must log in with AWS credentials. The easiest way to do this is to use the [`aws` CLI](https://aws.amazon.com/cli/) and invoke [`aws configure` to provide your AWS security info](https://docs.aws.amazon.com/cli/latest/reference/configure/).
-
-The `cmake` scripts should automatically detect your AWS credentials from the environment or the `~/.aws/credentials` file.
-
-<details>
-  <summary>Logging in to the `aws` CLI</summary>
-
-  1. Install the AWS CLI by following [the official guide](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html).
-  2. Log in to your AWS account console. A team member should provide you with your credentials.
-  3. Click your name in the top right > Security credentials.
-  4. Scroll to "Access keys" and create a new access key.
-  5. Run `aws configure` in your terminal and provide the access key ID and secret access key when prompted.
-</details>
-
-<details>
-  <summary>Common Issues You May Encounter</summary>
-
-  * To confirm that the cache is being used, you can use the `sccache --show-stats` command right after a build. This will expose very useful statistics, including cache hits/misses.
-  * If you have multiple AWS profiles configured, ensure that the correct profile is set in the `AWS_PROFILE` environment variable.
-  * `sccache` follows a server-client model. If you run into weird issues where `sccache` refuses to use S3, even though you have AWS credentials configured, try killing any running `sccache` servers with `sccache --stop-server` and then re-running the build.
-</details>
+Our build scripts will automatically detect and use `ccache` if available. You can check cache statistics with `ccache --show-stats`.
 
 ## Install LLVM
 
@@ -25740,24 +26549,24 @@ Bun requires LLVM 19 (`clang` is part of LLVM). This version requirement is to m
 
 <CodeGroup>
   ```bash macOS (Homebrew) theme={"theme":{"light":"github-light","dark":"dracula"}}
-  $ brew install llvm@19
+  brew install llvm@19
   ```
 
   ```bash Ubuntu/Debian theme={"theme":{"light":"github-light","dark":"dracula"}}
-  $ # LLVM has an automatic installation script that is compatible with all versions of Ubuntu
-  $ wget https://apt.llvm.org/llvm.sh -O - | sudo bash -s -- 19 all
+  # LLVM has an automatic installation script that is compatible with all versions of Ubuntu
+  wget https://apt.llvm.org/llvm.sh -O - | sudo bash -s -- 19 all
   ```
 
   ```bash Arch theme={"theme":{"light":"github-light","dark":"dracula"}}
-  $ sudo pacman -S llvm clang lld
+  sudo pacman -S llvm clang lld
   ```
 
   ```bash Fedora theme={"theme":{"light":"github-light","dark":"dracula"}}
-  $ sudo dnf install llvm clang lld-devel
+  sudo dnf install llvm clang lld-devel
   ```
 
   ```bash openSUSE Tumbleweed theme={"theme":{"light":"github-light","dark":"dracula"}}
-  $ sudo zypper install clang19 lld19 llvm19
+  sudo zypper install clang19 lld19 llvm19
   ```
 </CodeGroup>
 
@@ -25765,8 +26574,8 @@ If none of the above solutions apply, you will have to install it [manually](htt
 
 Make sure Clang/LLVM 19 is in your path:
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
-$ which clang-19
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
+which clang-19
 ```
 
 If not, run this to manually add it:
@@ -25775,12 +26584,12 @@ If not, run this to manually add it:
   ```bash macOS (Homebrew) theme={"theme":{"light":"github-light","dark":"dracula"}}
   # use fish_add_path if you're using fish
   # use path+="$(brew --prefix llvm@19)/bin" if you are using zsh
-  $ export PATH="$(brew --prefix llvm@19)/bin:$PATH"
+  export PATH="$(brew --prefix llvm@19)/bin:$PATH"
   ```
 
   ```bash Arch theme={"theme":{"light":"github-light","dark":"dracula"}}
   # use fish_add_path if you're using fish
-  $ export PATH="$PATH:/usr/lib/llvm19/bin"
+  export PATH="$PATH:/usr/lib/llvm19/bin"
   ```
 </CodeGroup>
 
@@ -25792,14 +26601,14 @@ If not, run this to manually add it:
 
 After cloning the repository, run the following command to build. This may take a while as it will clone submodules and build dependencies.
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun run build
 ```
 
 The binary will be located at `./build/debug/bun-debug`. It is recommended to add this to your `$PATH`. To verify the build worked, let's print the version number on the development build of Bun.
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
-$ build/debug/bun-debug --version
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
+build/debug/bun-debug --version
 x.y.z_debug
 ```
 
@@ -25811,7 +26620,7 @@ If you use a different editor, make sure that you tell ZLS to use the automatica
 
 We recommend adding `./build/debug` to your `$PATH` so that you can run `bun-debug` in your terminal:
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun-debug
 ```
 
@@ -25819,7 +26628,7 @@ bun-debug
 
 The `bd` package.json script compiles and runs a debug build of Bun, only printing the output of the build process if it fails.
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun bd <args>
 bun bd test foo.test.ts
 bun bd ./foo.ts
@@ -25853,7 +26662,7 @@ Certain modules like `node:fs`, `node:stream`, `bun:sqlite`, and `ws` are implem
 
 To compile a release build of Bun, run:
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun run build:release
 ```
 
@@ -25865,7 +26674,7 @@ To save you time spent building a release build locally, we provide a way to run
 
 To run a release build from a pull request, you can use the `bun-pr` npm package:
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 bunx bun-pr <pr-number>
 bunx bun-pr <branch-name>
 bunx bun-pr "https://github.com/oven-sh/bun/pull/1234566"
@@ -25874,7 +26683,7 @@ bunx bun-pr --asan <pr-number> # Linux x64 only
 
 This will download the release build from the pull request and add it to `$PATH` as `bun-${pr-number}`. You can then run the build with `bun-${pr-number}`.
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun-1234566 --version
 ```
 
@@ -25886,7 +26695,7 @@ This works by downloading the release build from the GitHub Actions artifacts on
 
 To build a release build with Address Sanitizer, run:
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun run build:release:asan
 ```
 
@@ -25896,25 +26705,20 @@ In CI, we run our test suite with at least one target that is built with Address
 
 WebKit is not cloned by default (to save time and disk space). To clone and build WebKit locally, run:
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 # Clone WebKit into ./vendor/WebKit
-$ git clone https://github.com/oven-sh/WebKit vendor/WebKit
+git clone https://github.com/oven-sh/WebKit vendor/WebKit
 
 # Check out the commit hash specified in `set(WEBKIT_VERSION <commit_hash>)` in cmake/tools/SetupWebKit.cmake
-$ git -C vendor/WebKit checkout <commit_hash>
+git -C vendor/WebKit checkout <commit_hash>
 
-# Make a debug build of JSC. This will output build artifacts in ./vendor/WebKit/WebKitBuild/Debug
-# Optionally, you can use `bun run jsc:build` for a release build
-bun run jsc:build:debug && rm vendor/WebKit/WebKitBuild/Debug/JavaScriptCore/DerivedSources/inspector/InspectorProtocolObjects.h
-
-# After an initial run of `make jsc-debug`, you can rebuild JSC with:
-$ cmake --build vendor/WebKit/WebKitBuild/Debug --target jsc && rm vendor/WebKit/WebKitBuild/Debug/JavaScriptCore/DerivedSources/inspector/InspectorProtocolObjects.h
-
-# Build bun with the local JSC build
+# Build bun with the local JSC build — this automatically configures and builds JSC
 bun run build:local
 ```
 
-Using `bun run build:local` will build Bun in the `./build/debug-local` directory (instead of `./build/debug`), you'll have to change a couple of places to use this new directory:
+`bun run build:local` handles everything: configuring JSC, building JSC, and building Bun. On subsequent runs, JSC will incrementally rebuild if any WebKit sources changed. `ninja -Cbuild/debug-local` also works after the first build, and will build Bun+JSC.
+
+The build output goes to `./build/debug-local` (instead of `./build/debug`), so you'll need to update a couple of places:
 
 * The first line in `src/js/builtins.d.ts`
 * The `CompilationDatabase` line in `.clangd` config should be `CompilationDatabase: build/debug-local`
@@ -25925,7 +26729,7 @@ Note that the WebKit folder, including build artifacts, is 8GB+ in size.
 
 If you are using a JSC debug build and using VScode, make sure to run the `C/C++: Select a Configuration` command to configure intellisense to find the debug headers.
 
-Note that if you change make changes to our [WebKit fork](https://github.com/oven-sh/WebKit), you will also have to change `SetupWebKit.cmake` to point to the commit hash.
+Note that if you make changes to our [WebKit fork](https://github.com/oven-sh/WebKit), you will also have to change `SetupWebKit.cmake` to point to the commit hash.
 
 ## Troubleshooting
 
@@ -25940,7 +26744,7 @@ The Clang compiler typically uses the `libstdc++` C++ standard library by defaul
 
 Bun relies on C++20 features like `std::span`, which are not available in GCC versions lower than 11. GCC 10 doesn't have all of the C++20 features implemented. As a result, running `make setup` may fail with the following error:
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 fatal error: 'span' file not found
 #include <span>
          ^~~~~~
@@ -25948,7 +26752,7 @@ fatal error: 'span' file not found
 
 The issue may manifest when initially running `bun setup` as Clang being unable to compile a simple program:
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 The C++ compiler
 
   "/usr/bin/clang++-19"
@@ -25958,44 +26762,44 @@ is not able to compile a simple test program.
 
 To fix the error, we need to update the GCC version to 11. To do this, we'll need to check if the latest version is available in the distribution's official repositories or use a third-party repository that provides GCC 11 packages. Here are general steps:
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
-$ sudo apt update
-$ sudo apt install gcc-11 g++-11
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
+sudo apt update
+sudo apt install gcc-11 g++-11
 # If the above command fails with `Unable to locate package gcc-11` we need
 # to add the APT repository
-$ sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
 # Now run `apt install` again
-$ sudo apt install gcc-11 g++-11
+sudo apt install gcc-11 g++-11
 ```
 
 Now, we need to set GCC 11 as the default compiler:
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
-$ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 100
-$ sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-11 100
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 100
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-11 100
 ```
 
 ### libarchive
 
 If you see an error on macOS when compiling `libarchive`, run:
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
-$ brew install pkg-config
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
+brew install pkg-config
 ```
 
 ### macOS `library not found for -lSystem`
 
 If you see this error when compiling, run:
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
-$ xcode-select --install
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
+xcode-select --install
 ```
 
 ### Cannot find `libatomic.a`
 
 Bun defaults to linking `libatomic` statically, as not all systems have it. If you are building on a distro that does not have a static libatomic available, you can run the following command to enable dynamic linking:
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun run build -DUSE_STATIC_LIBATOMIC=OFF
 ```
 
@@ -26125,7 +26929,7 @@ Build a minimal HTTP server with `Bun.serve`, run it locally, then evolve it by 
     bun init my-app
     ```
 
-    ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
     ✓ Select a project template: Blank
 
     - .gitignore
@@ -26147,7 +26951,7 @@ Build a minimal HTTP server with `Bun.serve`, run it locally, then evolve it by 
     bun run index.ts
     ```
 
-    ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
     Hello via Bun!
     ```
 
@@ -26174,7 +26978,7 @@ Build a minimal HTTP server with `Bun.serve`, run it locally, then evolve it by 
     bun run index.ts
     ```
 
-    ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
     Listening on http://localhost:3000
     ```
 
@@ -26191,7 +26995,7 @@ Build a minimal HTTP server with `Bun.serve`, run it locally, then evolve it by 
 
       Then add the following to your `compilerOptions` in `tsconfig.json`:
 
-      ```json tsconfig.json icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+      ```json tsconfig.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
       {
         "compilerOptions": {
           "lib": ["ESNext"],
@@ -26241,13 +27045,13 @@ Build a minimal HTTP server with `Bun.serve`, run it locally, then evolve it by 
     bun run index.ts
     ```
 
-    ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
     Listening on http://localhost:3000
     ```
 
     Visit [`http://localhost:3000/figlet`](http://localhost:3000/figlet) to test the server. You should see a simple page that says `"Bun!"` in ASCII art.
 
-    ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
     ____              _
     | __ ) _   _ _ __ | |
     |  _ \| | | | '_ \| |
@@ -26299,7 +27103,7 @@ Build a minimal HTTP server with `Bun.serve`, run it locally, then evolve it by 
     bun run index.ts
     ```
 
-    ```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
     Listening on http://localhost:3000
     ```
 
@@ -26315,7 +27119,7 @@ Build a minimal HTTP server with `Bun.serve`, run it locally, then evolve it by 
 
 Bun can also execute `"scripts"` from your `package.json`. Add the following script:
 
-```json package.json icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```json package.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
   "name": "quickstart",
   "module": "index.ts",
@@ -26339,11 +27143,465 @@ Then run it with `bun run start`.
 bun run start
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 Listening on http://localhost:3000
 ```
 
 <Note>⚡️ **Performance** — `bun run` is roughly 28x faster than `npm run` (6ms vs 170ms of overhead).</Note>
+
+
+# Archive
+Source: https://bun.com/docs/runtime/archive
+
+Create and extract tar archives with Bun's fast native implementation
+
+Bun provides a fast, native implementation for working with tar archives through `Bun.Archive`. It supports creating archives from in-memory data, extracting archives to disk, and reading archive contents without extraction.
+
+## Quickstart
+
+**Create an archive from files:**
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+const archive = new Bun.Archive({
+  "hello.txt": "Hello, World!",
+  "data.json": JSON.stringify({ foo: "bar" }),
+  "nested/file.txt": "Nested content",
+});
+
+// Write to disk
+await Bun.write("bundle.tar", archive);
+```
+
+**Extract an archive:**
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+const tarball = await Bun.file("package.tar.gz").bytes();
+const archive = new Bun.Archive(tarball);
+const entryCount = await archive.extract("./output");
+console.log(`Extracted ${entryCount} entries`);
+```
+
+**Read archive contents without extracting:**
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+const tarball = await Bun.file("package.tar.gz").bytes();
+const archive = new Bun.Archive(tarball);
+const files = await archive.files();
+
+for (const [path, file] of files) {
+  console.log(`${path}: ${await file.text()}`);
+}
+```
+
+## Creating Archives
+
+Use `new Bun.Archive()` to create an archive from an object where keys are file paths and values are file contents. By default, archives are uncompressed:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+// Creates an uncompressed tar archive (default)
+const archive = new Bun.Archive({
+  "README.md": "# My Project",
+  "src/index.ts": "console.log('Hello');",
+  "package.json": JSON.stringify({ name: "my-project" }),
+});
+```
+
+File contents can be:
+
+* **Strings** - Text content
+* **Blobs** - Binary data
+* **ArrayBufferViews** (e.g., `Uint8Array`) - Raw bytes
+* **ArrayBuffers** - Raw binary data
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+const data = "binary data";
+const arrayBuffer = new ArrayBuffer(8);
+
+const archive = new Bun.Archive({
+  "text.txt": "Plain text",
+  "blob.bin": new Blob([data]),
+  "bytes.bin": new Uint8Array([1, 2, 3, 4]),
+  "buffer.bin": arrayBuffer,
+});
+```
+
+### Writing Archives to Disk
+
+Use `Bun.write()` to write an archive to disk:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+// Write uncompressed tar (default)
+const archive = new Bun.Archive({
+  "file1.txt": "content1",
+  "file2.txt": "content2",
+});
+await Bun.write("output.tar", archive);
+
+// Write gzipped tar
+const compressed = new Bun.Archive({ "src/index.ts": "console.log('Hello');" }, { compress: "gzip" });
+await Bun.write("output.tar.gz", compressed);
+```
+
+### Getting Archive Bytes
+
+Get the archive data as bytes or a Blob:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+const archive = new Bun.Archive({ "hello.txt": "Hello, World!" });
+
+// As Uint8Array
+const bytes = await archive.bytes();
+
+// As Blob
+const blob = await archive.blob();
+
+// With gzip compression (set at construction)
+const gzipped = new Bun.Archive({ "hello.txt": "Hello, World!" }, { compress: "gzip" });
+const gzippedBytes = await gzipped.bytes();
+const gzippedBlob = await gzipped.blob();
+```
+
+## Extracting Archives
+
+### From Existing Archive Data
+
+Create an archive from existing tar/tar.gz data:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+// From a file
+const tarball = await Bun.file("package.tar.gz").bytes();
+const archiveFromFile = new Bun.Archive(tarball);
+```
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+// From a fetch response
+const response = await fetch("https://example.com/archive.tar.gz");
+const archiveFromFetch = new Bun.Archive(await response.blob());
+```
+
+### Extracting to Disk
+
+Use `.extract()` to write all files to a directory:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+const tarball = await Bun.file("package.tar.gz").bytes();
+const archive = new Bun.Archive(tarball);
+const count = await archive.extract("./extracted");
+console.log(`Extracted ${count} entries`);
+```
+
+The target directory is created automatically if it doesn't exist. Existing files are overwritten. The returned count includes files, directories, and symlinks (on POSIX systems).
+
+**Note**: On Windows, symbolic links in archives are always skipped during extraction. Bun does not attempt to create them regardless of privilege level. On Linux and macOS, symlinks are extracted normally.
+
+**Security note**: Bun.Archive validates paths during extraction, rejecting absolute paths (POSIX `/`, Windows drive letters like `C:\` or `C:/`, and UNC paths like `\\server\share`). Path traversal components (`..`) are normalized away (e.g., `dir/sub/../file` becomes `dir/file`) to prevent directory escape attacks.
+
+### Filtering Extracted Files
+
+Use glob patterns to extract only specific files. Patterns are matched against archive entry paths normalized to use forward slashes (`/`). Positive patterns specify what to include, and negative patterns (prefixed with `!`) specify what to exclude. Negative patterns are applied after positive patterns, so **using only negative patterns will match nothing** (you must include a positive pattern like `**` first):
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+const tarball = await Bun.file("package.tar.gz").bytes();
+const archive = new Bun.Archive(tarball);
+
+// Extract only TypeScript files
+const tsCount = await archive.extract("./extracted", { glob: "**/*.ts" });
+
+// Extract files from multiple directories
+const multiCount = await archive.extract("./extracted", {
+  glob: ["src/**", "lib/**"],
+});
+```
+
+Use negative patterns (prefixed with `!`) to exclude files. When mixing positive and negative patterns, entries must match at least one positive pattern and not match any negative pattern:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+// Extract everything except node_modules
+const distCount = await archive.extract("./extracted", {
+  glob: ["**", "!node_modules/**"],
+});
+
+// Extract source files but exclude tests
+const srcCount = await archive.extract("./extracted", {
+  glob: ["src/**", "!**/*.test.ts", "!**/__tests__/**"],
+});
+```
+
+## Reading Archive Contents
+
+### Get All Files
+
+Use `.files()` to get archive contents as a `Map` of `File` objects without extracting to disk. Unlike `extract()` which processes all entry types, `files()` returns only regular files (no directories):
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+const tarball = await Bun.file("package.tar.gz").bytes();
+const archive = new Bun.Archive(tarball);
+const files = await archive.files();
+
+for (const [path, file] of files) {
+  console.log(`${path}: ${file.size} bytes`);
+  console.log(await file.text());
+}
+```
+
+Each `File` object includes:
+
+* `name` - The file path within the archive (always uses forward slashes `/` as separators)
+* `size` - File size in bytes
+* `lastModified` - Modification timestamp
+* Standard `Blob` methods: `text()`, `arrayBuffer()`, `stream()`, etc.
+
+**Note**: `files()` loads file contents into memory. For large archives, consider using `extract()` to write directly to disk instead.
+
+### Error Handling
+
+Archive operations can fail due to corrupted data, I/O errors, or invalid paths. Use try/catch to handle these cases:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+try {
+  const tarball = await Bun.file("package.tar.gz").bytes();
+  const archive = new Bun.Archive(tarball);
+  const count = await archive.extract("./output");
+  console.log(`Extracted ${count} entries`);
+} catch (e: unknown) {
+  if (e instanceof Error) {
+    const error = e as Error & { code?: string };
+    if (error.code === "EACCES") {
+      console.error("Permission denied");
+    } else if (error.code === "ENOSPC") {
+      console.error("Disk full");
+    } else {
+      console.error("Archive error:", error.message);
+    }
+  } else {
+    console.error("Archive error:", String(e));
+  }
+}
+```
+
+Common error scenarios:
+
+* **Corrupted/truncated archives** - `new Archive()` loads the archive data; errors may be deferred until read/extract operations
+* **Permission denied** - `extract()` throws if the target directory is not writable
+* **Disk full** - `extract()` throws if there's insufficient space
+* **Invalid paths** - Operations throw for malformed file paths
+
+The count returned by `extract()` includes all successfully written entries (files, directories, and symlinks on POSIX systems).
+
+**Security note**: Bun.Archive automatically validates paths during extraction. Absolute paths (POSIX `/`, Windows drive letters, UNC paths) and unsafe symlink targets are rejected. Path traversal components (`..`) are normalized away to prevent directory escape.
+
+For additional security with untrusted archives, you can enumerate and validate paths before extraction:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+const archive = new Bun.Archive(untrustedData);
+const files = await archive.files();
+
+// Optional: Custom validation for additional checks
+for (const [path] of files) {
+  // Example: Reject hidden files
+  if (path.startsWith(".") || path.includes("/.")) {
+    throw new Error(`Hidden file rejected: ${path}`);
+  }
+  // Example: Whitelist specific directories
+  if (!path.startsWith("src/") && !path.startsWith("lib/")) {
+    throw new Error(`Unexpected path: ${path}`);
+  }
+}
+
+// Extract to a controlled destination
+await archive.extract("./safe-output");
+```
+
+When using `files()` with a glob pattern, an empty `Map` is returned if no files match:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+const matches = await archive.files("*.nonexistent");
+if (matches.size === 0) {
+  console.log("No matching files found");
+}
+```
+
+### Filtering with Glob Patterns
+
+Pass a glob pattern to filter which files are returned:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+// Get only TypeScript files
+const tsFiles = await archive.files("**/*.ts");
+
+// Get files in src directory
+const srcFiles = await archive.files("src/*");
+
+// Get all JSON files (recursive)
+const jsonFiles = await archive.files("**/*.json");
+
+// Get multiple file types with array of patterns
+const codeFiles = await archive.files(["**/*.ts", "**/*.js"]);
+```
+
+Supported glob patterns (subset of [Bun.Glob](/docs/api/glob) syntax):
+
+* `*` - Match any characters except `/`
+* `**` - Match any characters including `/`
+* `?` - Match single character
+* `[abc]` - Match character set
+* `{a,b}` - Match alternatives
+* `!pattern` - Exclude files matching pattern (negation). Must be combined with positive patterns; using only negative patterns matches nothing.
+
+See [Bun.Glob](/docs/api/glob) for the full glob syntax including escaping and advanced patterns.
+
+## Compression
+
+Bun.Archive creates uncompressed tar archives by default. Use `{ compress: "gzip" }` to enable gzip compression:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+// Default: uncompressed tar
+const archive = new Bun.Archive({ "hello.txt": "Hello, World!" });
+
+// Reading: automatically detects gzip
+const gzippedTarball = await Bun.file("archive.tar.gz").bytes();
+const readArchive = new Bun.Archive(gzippedTarball);
+
+// Enable gzip compression
+const compressed = new Bun.Archive({ "hello.txt": "Hello, World!" }, { compress: "gzip" });
+
+// Gzip with custom level (1-12)
+const maxCompression = new Bun.Archive({ "hello.txt": "Hello, World!" }, { compress: "gzip", level: 12 });
+```
+
+The options accept:
+
+* No options or `undefined` - Uncompressed tar (default)
+* `{ compress: "gzip" }` - Enable gzip compression at level 6
+* `{ compress: "gzip", level: number }` - Gzip with custom level 1-12 (1 = fastest, 12 = smallest)
+
+## Examples
+
+### Bundle Project Files
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+import { Glob } from "bun";
+
+// Collect source files
+const files: Record<string, string> = {};
+const glob = new Glob("src/**/*.ts");
+
+for await (const path of glob.scan(".")) {
+  // Normalize path separators to forward slashes for cross-platform compatibility
+  const archivePath = path.replaceAll("\\", "/");
+  files[archivePath] = await Bun.file(path).text();
+}
+
+// Add package.json
+files["package.json"] = await Bun.file("package.json").text();
+
+// Create compressed archive and write to disk
+const archive = new Bun.Archive(files, { compress: "gzip" });
+await Bun.write("bundle.tar.gz", archive);
+```
+
+### Extract and Process npm Package
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+const response = await fetch("https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz");
+const archive = new Bun.Archive(await response.blob());
+
+// Get package.json
+const files = await archive.files("package/package.json");
+const packageJson = files.get("package/package.json");
+
+if (packageJson) {
+  const pkg = JSON.parse(await packageJson.text());
+  console.log(`Package: ${pkg.name}@${pkg.version}`);
+}
+```
+
+### Create Archive from Directory
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+import { readdir } from "node:fs/promises";
+import { join } from "node:path";
+
+async function archiveDirectory(dir: string, compress = false): Promise<Bun.Archive> {
+  const files: Record<string, Blob> = {};
+
+  async function walk(currentDir: string, prefix: string = "") {
+    const entries = await readdir(currentDir, { withFileTypes: true });
+
+    for (const entry of entries) {
+      const fullPath = join(currentDir, entry.name);
+      const archivePath = prefix ? `${prefix}/${entry.name}` : entry.name;
+
+      if (entry.isDirectory()) {
+        await walk(fullPath, archivePath);
+      } else {
+        files[archivePath] = Bun.file(fullPath);
+      }
+    }
+  }
+
+  await walk(dir);
+  return new Bun.Archive(files, compress ? { compress: "gzip" } : undefined);
+}
+
+const archive = await archiveDirectory("./my-project", true);
+await Bun.write("my-project.tar.gz", archive);
+```
+
+## Reference
+
+> **Note**: The following type signatures are simplified for documentation purposes. See [`packages/bun-types/bun.d.ts`](https://github.com/oven-sh/bun/blob/main/packages/bun-types/bun.d.ts) for the full type definitions.
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+type ArchiveInput =
+  | Record<string, string | Blob | Bun.ArrayBufferView | ArrayBufferLike>
+  | Blob
+  | Bun.ArrayBufferView
+  | ArrayBufferLike;
+
+type ArchiveOptions = {
+  /** Compression algorithm. Currently only "gzip" is supported. */
+  compress?: "gzip";
+  /** Compression level 1-12 (default 6 when gzip is enabled). */
+  level?: number;
+};
+
+interface ArchiveExtractOptions {
+  /** Glob pattern(s) to filter extraction. Supports negative patterns with "!" prefix. */
+  glob?: string | readonly string[];
+}
+
+class Archive {
+  /**
+   * Create an Archive from input data
+   * @param data - Files to archive (as object) or existing archive data (as bytes/blob)
+   * @param options - Compression options. Uncompressed by default.
+   *                  Pass { compress: "gzip" } to enable compression.
+   */
+  constructor(data: ArchiveInput, options?: ArchiveOptions);
+
+  /**
+   * Extract archive to a directory
+   * @returns Number of entries extracted (files, directories, and symlinks)
+   */
+  extract(path: string, options?: ArchiveExtractOptions): Promise<number>;
+
+  /**
+   * Get archive as a Blob (uses compression setting from constructor)
+   */
+  blob(): Promise<Blob>;
+
+  /**
+   * Get archive as a Uint8Array (uses compression setting from constructor)
+   */
+  bytes(): Promise<Uint8Array<ArrayBuffer>>;
+
+  /**
+   * Get archive contents as File objects (regular files only, no directories)
+   */
+  files(glob?: string | readonly string[]): Promise<Map<string, File>>;
+}
+```
 
 
 # Auto-install
@@ -26464,14 +27722,14 @@ Below is a quick "cheat sheet" that doubles as a table of contents. Click an ite
 
 Until 2009, there was no language-native way to store and manipulate binary data in JavaScript. ECMAScript v5 introduced a range of new mechanisms for this. The most fundamental building block is `ArrayBuffer`, a simple data structure that represents a sequence of bytes in memory.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // this buffer can store 8 bytes
 const buf = new ArrayBuffer(8);
 ```
 
 Despite the name, it isn't an array and supports none of the array methods and operators one might expect. In fact, there is no way to directly read or write values from an `ArrayBuffer`. There's very little you can do with one except check its size and create "slices" from it.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const buf = new ArrayBuffer(8);
 buf.byteLength; // => 8
 
@@ -26487,7 +27745,7 @@ The `DataView` class is a lower-level interface for reading and manipulating the
 
 Below we create a new `DataView` and set the first byte to 3.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const buf = new ArrayBuffer(4);
 // [0b00000000, 0b00000000, 0b00000000, 0b00000000]
 
@@ -26499,7 +27757,7 @@ dv.getUint8(0); // => 3
 
 Now let's write a `Uint16` at byte offset `1`. This requires two bytes. We're using the value `513`, which is `2 * 256 + 1`; in bytes, that's `00000010 00000001`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 dv.setUint16(1, 513);
 // [0b00000011, 0b00000010, 0b00000001, 0b00000000]
 
@@ -26508,14 +27766,14 @@ console.log(dv.getUint16(1)); // => 513
 
 We've now assigned a value to the first three bytes in our underlying `ArrayBuffer`. Even though the second and third bytes were created using `setUint16()`, we can still read each of its component bytes using `getUint8()`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 console.log(dv.getUint8(1)); // => 2
 console.log(dv.getUint8(2)); // => 1
 ```
 
 Attempting to write a value that requires more space than is available in the underlying `ArrayBuffer` will cause an error. Below we attempt to write a `Float64` (which requires 8 bytes) at byte offset `0`, but there are only four total bytes in the buffer.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 dv.setFloat64(0, 3.1415);
 // ^ RangeError: Out of bounds access
 ```
@@ -26545,7 +27803,7 @@ Typed arrays are a family of classes that provide an `Array`-like interface for 
   scope. Think of it as an `interface` or an abstract class.
 </Note>
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const buffer = new ArrayBuffer(3);
 const arr = new Uint8Array(buffer);
 
@@ -26593,7 +27851,7 @@ The table below demonstrates how the bytes in an `ArrayBuffer` are interpreted w
 
 To create a typed array from a pre-defined `ArrayBuffer`:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // create typed array from ArrayBuffer
 const buf = new ArrayBuffer(10);
 const arr = new Uint8Array(buf);
@@ -26607,7 +27865,7 @@ console.log(arr); // => Uint8Array(10) [ 30, 60, 0, 0, 0, 0, 0, 0, 0, 0 ];
 
 If we tried to instantiate a `Uint32Array` from this same `ArrayBuffer`, we'd get an error.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const buf = new ArrayBuffer(10);
 const arr = new Uint32Array(buf);
 //          ^  RangeError: ArrayBuffer length minus the byteOffset
@@ -26618,7 +27876,7 @@ A `Uint32` value requires four bytes (16 bits). Because the `ArrayBuffer` is 10 
 
 To fix this, we can create a typed array over a particular "slice" of an `ArrayBuffer`. The `Uint16Array` below only "views" the *first* 8 bytes of the underlying `ArrayBuffer`. To achieve these, we specify a `byteOffset` of `0` and a `length` of `2`, which indicates the number of `Uint32` numbers we want our array to hold.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // create typed array from ArrayBuffer slice
 const buf = new ArrayBuffer(10);
 const arr = new Uint32Array(buf, 0, 2);
@@ -26634,7 +27892,7 @@ arr.length; // 2
 
 You don't need to explicitly create an `ArrayBuffer` instance; you can instead directly specify a length in the typed array constructor:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const arr2 = new Uint8Array(5);
 
 // all elements are initialized to zero
@@ -26643,7 +27901,7 @@ const arr2 = new Uint8Array(5);
 
 Typed arrays can also be instantiated directly from an array of numbers, or another typed array:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // from an array of numbers
 const arr1 = new Uint8Array([0, 1, 2, 3, 4, 5, 6, 7]);
 arr1[0]; // => 0;
@@ -26655,7 +27913,7 @@ const arr2 = new Uint8Array(arr);
 
 Broadly speaking, typed arrays provide the same methods as regular arrays, with a few exceptions. For example, `push` and `pop` are not available on typed arrays, because they would require resizing the underlying `ArrayBuffer`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const arr = new Uint8Array([0, 1, 2, 3, 4, 5, 6, 7]);
 
 // supports common array methods
@@ -26677,7 +27935,7 @@ It's worth specifically highlighting `Uint8Array`, as it represents a classic "b
 
 In Bun, and someday in other JavaScript engines, it has methods available for converting between byte arrays and serialized representations of those arrays as base64 or hex strings.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 new Uint8Array([1, 2, 3, 4, 5]).toBase64(); // "AQIDBA=="
 Uint8Array.fromBase64("AQIDBA=="); // Uint8Array(4) [1, 2, 3, 4, 5]
 
@@ -26687,7 +27945,7 @@ Uint8Array.fromHex("fffefdfcfb"); // Uint8Array(5) [255, 254, 253, 252, 251]
 
 It is the return value of [`TextEncoder#encode`](https://developer.mozilla.org/en-US/docs/Web/API/TextEncoder), and the input type of [`TextDecoder#decode`](https://developer.mozilla.org/en-US/docs/Web/API/TextDecoder), two utility classes designed to translate strings and various binary encodings, most notably `"utf-8"`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const encoder = new TextEncoder();
 const bytes = encoder.encode("hello world");
 // => Uint8Array(11) [ 104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100 ]
@@ -26701,7 +27959,7 @@ const text = decoder.decode(bytes);
 
 Bun implements `Buffer`, a Node.js API for working with binary data that pre-dates the introduction of typed arrays in the JavaScript spec. It has since been re-implemented as a subclass of `Uint8Array`. It provides a wide range of methods, including several Array-like and `DataView`-like methods.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const buf = Buffer.from("hello world");
 // => Buffer(11) [ 104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100 ]
 
@@ -26721,7 +27979,7 @@ For complete documentation, refer to the [Node.js documentation](https://nodejs.
 
 It isn't common to directly create `Blob` instances. More often, you'll receive instances of `Blob` from an external source (like an `<input type="file">` element in the browser) or library. That said, it is possible to create a `Blob` from one or more string or binary "blob parts".
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const blob = new Blob(["<html>Hello</html>"], {
   type: "text/html",
 });
@@ -26732,7 +27990,7 @@ blob.size; // => 19
 
 These parts can be `string`, `ArrayBuffer`, `TypedArray`, `DataView`, or other `Blob` instances. The blob parts are concatenated together in the order they are provided.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const blob = new Blob([
   "<html>",
   new Blob(["<body>"]),
@@ -26743,7 +28001,7 @@ const blob = new Blob([
 
 The contents of a `Blob` can be asynchronously read in various formats.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 await blob.text(); // => <html><body>hello</body></html>
 await blob.bytes(); // => Uint8Array (copies contents)
 await blob.arrayBuffer(); // => ArrayBuffer (copies contents)
@@ -26754,7 +28012,7 @@ await blob.stream(); // => ReadableStream
 
 `BunFile` is a subclass of `Blob` used to represent a lazily-loaded file on disk. Like `File`, it adds a `name` and `lastModified` property. Unlike `File`, it does not require the file to be loaded into memory.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const file = Bun.file("index.txt");
 // => BunFile
 ```
@@ -26765,7 +28023,7 @@ const file = Bun.file("index.txt");
 
 [`File`](https://developer.mozilla.org/en-US/docs/Web/API/File) is a subclass of `Blob` that adds a `name` and `lastModified` property. It's commonly used in the browser to represent files uploaded via a `<input type="file">` element. Node.js and Bun implement `File`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // on browser!
 // <input type="file" id="file" />
 
@@ -26773,7 +28031,7 @@ const files = document.getElementById("file").files;
 // => File[]
 ```
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const file = new File(["<html>Hello</html>"], "index.html", {
   type: "text/html",
 });
@@ -26799,7 +28057,7 @@ Bun implements the Web APIs [`ReadableStream`](https://developer.mozilla.org/en-
 
 To create a simple readable stream:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const stream = new ReadableStream({
   start(controller) {
     controller.enqueue("hello");
@@ -26811,7 +28069,7 @@ const stream = new ReadableStream({
 
 The contents of this stream can be read chunk-by-chunk with `for await` syntax.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 for await (const chunk of stream) {
   console.log(chunk);
 }
@@ -26834,19 +28092,19 @@ Since `ArrayBuffer` stores the data that underlies other binary structures like 
 
 #### To `TypedArray`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 new Uint8Array(buf);
 ```
 
 #### To `DataView`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 new DataView(buf);
 ```
 
 #### To `Buffer`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // create Buffer over entire ArrayBuffer
 Buffer.from(buf);
 
@@ -26858,19 +28116,19 @@ Buffer.from(buf, 0, 10);
 
 As UTF-8:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 new TextDecoder().decode(buf);
 ```
 
 #### To `number[]`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Array.from(new Uint8Array(buf));
 ```
 
 #### To `Blob`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 new Blob([buf], { type: "text/plain" });
 ```
 
@@ -26878,7 +28136,7 @@ new Blob([buf], { type: "text/plain" });
 
 The following snippet creates a `ReadableStream` and enqueues the entire `ArrayBuffer` as a single chunk.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 new ReadableStream({
   start(controller) {
     controller.enqueue(buf);
@@ -26890,7 +28148,7 @@ new ReadableStream({
 <Accordion title="With chunking">
   To stream the `ArrayBuffer` in chunks, use a `Uint8Array` view and enqueue each chunk.
 
-  ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+  ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
   const view = new Uint8Array(buf);
   const chunkSize = 1024;
 
@@ -26911,7 +28169,7 @@ new ReadableStream({
 
 This retrieves the underlying `ArrayBuffer`. Note that a `TypedArray` can be a view of a *slice* of the underlying buffer, so the sizes may differ.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 arr.buffer;
 ```
 
@@ -26919,13 +28177,13 @@ arr.buffer;
 
 To creates a `DataView` over the same byte range as the TypedArray.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 new DataView(arr.buffer, arr.byteOffset, arr.byteLength);
 ```
 
 #### To `Buffer`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Buffer.from(arr);
 ```
 
@@ -26933,26 +28191,26 @@ Buffer.from(arr);
 
 As UTF-8:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 new TextDecoder().decode(arr);
 ```
 
 #### To `number[]`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Array.from(arr);
 ```
 
 #### To `Blob`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // only if arr is a view of its entire backing TypedArray
 new Blob([arr.buffer], { type: "text/plain" });
 ```
 
 #### To `ReadableStream`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 new ReadableStream({
   start(controller) {
     controller.enqueue(arr);
@@ -26964,7 +28222,7 @@ new ReadableStream({
 <Accordion title="With chunking">
   To stream the `ArrayBuffer` in chunks, split the `TypedArray` into chunks and enqueue each one individually.
 
-  ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+  ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
   new ReadableStream({
     start(controller) {
       for (let i = 0; i < arr.length; i += chunkSize) {
@@ -26980,7 +28238,7 @@ new ReadableStream({
 
 #### To `ArrayBuffer`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 view.buffer;
 ```
 
@@ -26988,7 +28246,7 @@ view.buffer;
 
 Only works if the `byteLength` of the `DataView` is a multiple of the `BYTES_PER_ELEMENT` of the `TypedArray` subclass.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 new Uint8Array(view.buffer, view.byteOffset, view.byteLength);
 new Uint16Array(view.buffer, view.byteOffset, view.byteLength / 2);
 new Uint32Array(view.buffer, view.byteOffset, view.byteLength / 4);
@@ -26997,7 +28255,7 @@ new Uint32Array(view.buffer, view.byteOffset, view.byteLength / 4);
 
 #### To `Buffer`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Buffer.from(view.buffer, view.byteOffset, view.byteLength);
 ```
 
@@ -27005,25 +28263,25 @@ Buffer.from(view.buffer, view.byteOffset, view.byteLength);
 
 As UTF-8:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 new TextDecoder().decode(view);
 ```
 
 #### To `number[]`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Array.from(view);
 ```
 
 #### To `Blob`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 new Blob([view.buffer], { type: "text/plain" });
 ```
 
 #### To `ReadableStream`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 new ReadableStream({
   start(controller) {
     controller.enqueue(view.buffer);
@@ -27035,7 +28293,7 @@ new ReadableStream({
 <Accordion title="With chunking">
   To stream the `ArrayBuffer` in chunks, split the `DataView` into chunks and enqueue each one individually.
 
-  ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+  ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
   new ReadableStream({
     start(controller) {
       for (let i = 0; i < view.byteLength; i += chunkSize) {
@@ -27051,19 +28309,19 @@ new ReadableStream({
 
 #### To `ArrayBuffer`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 buf.buffer;
 ```
 
 #### To `TypedArray`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 new Uint8Array(buf);
 ```
 
 #### To `DataView`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 new DataView(buf.buffer, buf.byteOffset, buf.byteLength);
 ```
 
@@ -27071,37 +28329,37 @@ new DataView(buf.buffer, buf.byteOffset, buf.byteLength);
 
 As UTF-8:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 buf.toString();
 ```
 
 As base64:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 buf.toString("base64");
 ```
 
 As hex:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 buf.toString("hex");
 ```
 
 #### To `number[]`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Array.from(buf);
 ```
 
 #### To `Blob`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 new Blob([buf], { type: "text/plain" });
 ```
 
 #### To `ReadableStream`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 new ReadableStream({
   start(controller) {
     controller.enqueue(buf);
@@ -27113,7 +28371,7 @@ new ReadableStream({
 <Accordion title="With chunking">
   To stream the `ArrayBuffer` in chunks, split the `Buffer` into chunks and enqueue each one individually.
 
-  ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+  ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
   new ReadableStream({
     start(controller) {
       for (let i = 0; i < buf.length; i += chunkSize) {
@@ -27131,25 +28389,25 @@ new ReadableStream({
 
 The `Blob` class provides a convenience method for this purpose.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 await blob.arrayBuffer();
 ```
 
 #### To `TypedArray`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 await blob.bytes();
 ```
 
 #### To `DataView`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 new DataView(await blob.arrayBuffer());
 ```
 
 #### To `Buffer`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Buffer.from(await blob.arrayBuffer());
 ```
 
@@ -27157,19 +28415,19 @@ Buffer.from(await blob.arrayBuffer());
 
 As UTF-8:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 await blob.text();
 ```
 
 #### To `number[]`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Array.from(await blob.bytes());
 ```
 
 #### To `ReadableStream`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 blob.stream();
 ```
 
@@ -27177,7 +28435,7 @@ blob.stream();
 
 It's common to use [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response) as a convenient intermediate representation to make it easier to convert `ReadableStream` to other formats.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 stream; // ReadableStream
 
 const buffer = new Response(stream).arrayBuffer();
@@ -27187,7 +28445,7 @@ However this approach is verbose and adds overhead that slows down overall perfo
 
 #### To `ArrayBuffer`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // with Response
 new Response(stream).arrayBuffer();
 
@@ -27197,7 +28455,7 @@ Bun.readableStreamToArrayBuffer(stream);
 
 #### To `Uint8Array`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // with Response
 new Response(stream).bytes();
 
@@ -27207,7 +28465,7 @@ Bun.readableStreamToBytes(stream);
 
 #### To `TypedArray`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // with Response
 const buf = await new Response(stream).arrayBuffer();
 new Int8Array(buf);
@@ -27218,7 +28476,7 @@ new Int8Array(Bun.readableStreamToArrayBuffer(stream));
 
 #### To `DataView`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // with Response
 const buf = await new Response(stream).arrayBuffer();
 new DataView(buf);
@@ -27229,7 +28487,7 @@ new DataView(Bun.readableStreamToArrayBuffer(stream));
 
 #### To `Buffer`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // with Response
 const buf = await new Response(stream).arrayBuffer();
 Buffer.from(buf);
@@ -27242,7 +28500,7 @@ Buffer.from(Bun.readableStreamToArrayBuffer(stream));
 
 As UTF-8:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // with Response
 await new Response(stream).text();
 
@@ -27252,7 +28510,7 @@ await Bun.readableStreamToText(stream);
 
 #### To `number[]`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // with Response
 const arr = await new Response(stream).bytes();
 Array.from(arr);
@@ -27263,14 +28521,14 @@ Array.from(new Uint8Array(Bun.readableStreamToArrayBuffer(stream)));
 
 Bun provides a utility for resolving a `ReadableStream` to an array of its chunks. Each chunk may be a string, typed array, or `ArrayBuffer`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // with Bun function
 Bun.readableStreamToArray(stream);
 ```
 
 #### To `Blob`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 new Response(stream).blob();
 ```
 
@@ -27278,7 +28536,7 @@ new Response(stream).blob();
 
 To split a `ReadableStream` into two streams that can be consumed independently:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const [a, b] = stream.tee();
 ```
 
@@ -27339,7 +28597,7 @@ Click the link in the right column to jump to the associated documentation.
 | Stream Processing                | [`Bun.readableStreamTo*()`](/runtime/utils#bun-readablestreamto), `Bun.readableStreamToBytes()`, `Bun.readableStreamToBlob()`, `Bun.readableStreamToFormData()`, `Bun.readableStreamToJSON()`, `Bun.readableStreamToArray()`                                                                                           |
 | Memory & Buffer Management       | `Bun.ArrayBufferSink`, `Bun.allocUnsafe`, `Bun.concatArrayBuffers`                                                                                                                                                                                                                                                     |
 | Module Resolution                | [`Bun.resolveSync()`](/runtime/utils#bun-resolvesync)                                                                                                                                                                                                                                                                  |
-| Parsing & Formatting             | [`Bun.semver`](/runtime/semver), `Bun.TOML.parse`, [`Bun.color`](/runtime/color)                                                                                                                                                                                                                                       |
+| Parsing & Formatting             | [`Bun.semver`](/runtime/semver), `Bun.TOML.parse`, [`Bun.markdown`](/runtime/markdown), [`Bun.color`](/runtime/color)                                                                                                                                                                                                  |
 | Low-level / Internals            | `Bun.mmap`, `Bun.gc`, `Bun.generateHeapSnapshot`, [`bun:jsc`](https://bun.com/reference/bun/jsc)                                                                                                                                                                                                                       |
 
 
@@ -27452,11 +28710,33 @@ Bun supports the following loaders:
 
 ### `telemetry`
 
-The `telemetry` field permit to enable/disable the analytics records. Bun records bundle timings (so we can answer with data, "is Bun getting faster?") and feature usage (e.g., "are people actually using macros?"). The request body size is about 60 bytes, so it's not a lot of data. By default the telemetry is enabled. Equivalent of `DO_NOT_TRACK` env variable.
+The `telemetry` field is used to enable/disable analytics. By default, telemetry is enabled. This is equivalent to the `DO_NOT_TRACK` environment variable.
+
+Currently we do not collect telemetry and this setting is only used for enabling/disabling anonymous crash reports, but in the future we plan to collect information like which Bun APIs are used most or how long `bun build` takes.
 
 ```toml title="bunfig.toml" icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 telemetry = false
 ```
+
+### `env`
+
+Configure automatic `.env` file loading. By default, Bun automatically loads `.env` files. To disable this behavior:
+
+```toml title="bunfig.toml" icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+# Disable automatic .env file loading
+env = false
+```
+
+You can also use object syntax with the `file` property:
+
+```toml title="bunfig.toml" icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+[env]
+file = false
+```
+
+This is useful in production environments or CI/CD pipelines where you want to rely solely on system environment variables.
+
+Note: Explicitly provided environment files via `--env-file` will still be loaded even when default loading is disabled.
 
 ### `console`
 
@@ -27797,8 +29077,8 @@ To configure the directory where Bun installs globally installed binaries and CL
 Environment variable: `BUN_INSTALL_BIN`
 
 ```toml title="bunfig.toml" icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
-# where globally-installed package bins are linked
 [install]
+# where globally-installed package bins are linked
 globalBinDir = "~/.bun/bin"
 ```
 
@@ -27930,6 +29210,32 @@ editor = "code"
 # - "emacs"
 ```
 
+### `install.security.scanner`
+
+Configure a security scanner to scan packages for vulnerabilities before installation.
+
+First, install a security scanner from npm:
+
+```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun add -d @acme/bun-security-scanner
+```
+
+Then configure it in your `bunfig.toml`:
+
+```toml bunfig.toml icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+[install.security]
+scanner = "@acme/bun-security-scanner"
+```
+
+When a security scanner is configured:
+
+* Auto-install is automatically disabled for security
+* Packages are scanned before installation
+* Installation is cancelled if fatal issues are found
+* Security warnings are displayed during installation
+
+Learn more about [using and writing security scanners](/pm/security-scanner-api).
+
 ### `install.minimumReleaseAge`
 
 Configure a minimum age (in seconds) for npm package versions. Package versions published more recently than this threshold will be filtered out during installation. Default is `null` (disabled).
@@ -27986,14 +29292,14 @@ bun = true
 
 You can test this by running:
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun --bun which node # /path/to/bun
 bun which node # /path/to/node
 ```
 
 This option is equivalent to prefixing all `bun run` commands with `--bun`:
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun --bun run dev
 bun --bun dev
 bun run --bun dev
@@ -28017,23 +29323,23 @@ bun run dev
 echo "Running \"dev\"..."
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 Running "dev"...
 ```
 
 With this option, the command being run will not be printed to the console:
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun run dev
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 Running "dev"...
 ```
 
 This is equivalent to passing `--silent` to all `bun run` commands:
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun --silent run dev
 bun --silent dev
 bun run --silent dev
@@ -28055,7 +29361,7 @@ See the [introduction blog post](https://bun.com/blog/compile-and-run-c-in-js) f
 
 JavaScript:
 
-```ts hello.js icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts hello.ts icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { cc } from "bun:ffi";
 import source from "./hello.c" with { type: "file" };
 
@@ -28129,7 +29435,7 @@ You can also pass a `napi_env` to receive the N-API environment used to call the
 
 For example, if you have a string in C, you can return it to JavaScript like this:
 
-```ts hello.js theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts hello.ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { cc } from "bun:ffi";
 import source from "./hello.c" with { type: "file" };
 
@@ -28178,7 +29484,7 @@ napi_value hello(napi_env env) {
 
 The `library` array is used to specify the libraries that should be linked with the C code.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 type Library = string[];
 
 cc({
@@ -28191,7 +29497,7 @@ cc({
 
 The `symbols` object is used to specify the functions and variables that should be exposed to JavaScript.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 type Symbols = {
   [key: string]: {
     args: FFIType[];
@@ -28204,7 +29510,7 @@ type Symbols = {
 
 The `source` is a file path to the C code that should be compiled and linked with the JavaScript runtime.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 type Source = string | URL | BunFile;
 
 cc({
@@ -28222,7 +29528,7 @@ cc({
 
 The `flags` is an optional array of strings that should be passed to the TinyCC compiler.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 type Flags = string | string[];
 ```
 
@@ -28232,7 +29538,7 @@ These are flags like `-I` for include directories and `-D` for preprocessor defi
 
 The `define` is an optional object that should be passed to the TinyCC compiler.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 type Defines = Record<string, string>;
 
 cc({
@@ -28255,14 +29561,14 @@ Spawn child processes with `Bun.spawn` or `Bun.spawnSync`
 
 Provide a command as an array of strings. The result of `Bun.spawn()` is a `Bun.Subprocess` object.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const proc = Bun.spawn(["bun", "--version"]);
 console.log(await proc.exited); // 0
 ```
 
 The second argument to `Bun.spawn` is a parameters object that can be used to configure the subprocess.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const proc = Bun.spawn(["bun", "--version"], {
   cwd: "./path/to/subdir", // specify a working directory
   env: { ...process.env, FOO: "bar" }, // specify environment variables
@@ -28278,7 +29584,7 @@ proc.pid; // process ID of subprocess
 
 By default, the input stream of the subprocess is undefined; it can be configured with the `stdin` parameter.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const proc = Bun.spawn(["cat"], {
   stdin: await fetch("https://raw.githubusercontent.com/oven-sh/bun/main/examples/hashing.js"),
 });
@@ -28302,7 +29608,7 @@ console.log(text); // "const input = "hello world".repeat(400); ..."
 
 The `"pipe"` option lets incrementally write to the subprocess's input stream from the parent process.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const proc = Bun.spawn(["cat"], {
   stdin: "pipe", // return a FileSink for writing
 });
@@ -28323,7 +29629,7 @@ proc.stdin.end();
 
 Passing a `ReadableStream` to `stdin` lets you pipe data from a JavaScript `ReadableStream` directly to the subprocess's input:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const stream = new ReadableStream({
   start(controller) {
     controller.enqueue("Hello from ");
@@ -28345,10 +29651,10 @@ console.log(output); // "Hello from ReadableStream!"
 
 You can read results from the subprocess via the `stdout` and `stderr` properties. By default these are instances of `ReadableStream`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const proc = Bun.spawn(["bun", "--version"]);
 const text = await proc.stdout.text();
-console.log(text); // => "1.3.2\n"
+console.log(text); // => "1.3.3\n"
 ```
 
 Configure the output stream by passing one of the following values to `stdout/stderr`:
@@ -28529,7 +29835,7 @@ The `serialization` option controls the underlying communication format between 
 
 To disconnect the IPC channel from the parent process, call:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 childProc.disconnect();
 ```
 
@@ -28537,7 +29843,7 @@ childProc.disconnect();
 
 To use IPC between a `bun` process and a Node.js process, set `serialization: "json"` in `Bun.spawn`. This is because Node.js and Bun use different JavaScript engines with different object serialization formats.
 
-```ts bun-node-ipc.js icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js bun-node-ipc.js icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 if (typeof Bun !== "undefined") {
   const prefix = `[bun ${process.versions.bun} 🐇]`;
   const node = Bun.spawn({
@@ -28563,6 +29869,109 @@ if (typeof Bun !== "undefined") {
 
 ***
 
+## Terminal (PTY) support
+
+For interactive terminal applications, you can spawn a subprocess with a pseudo-terminal (PTY) attached using the `terminal` option. This makes the subprocess think it's running in a real terminal, enabling features like colored output, cursor movement, and interactive prompts.
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+const proc = Bun.spawn(["bash"], {
+  terminal: {
+    cols: 80,
+    rows: 24,
+    data(terminal, data) {
+      // Called when data is received from the terminal
+      process.stdout.write(data);
+    },
+  },
+});
+
+// Write to the terminal
+proc.terminal.write("echo hello\n");
+
+// Wait for the process to exit
+await proc.exited;
+
+// Close the terminal
+proc.terminal.close();
+```
+
+When the `terminal` option is provided:
+
+* The subprocess sees `process.stdout.isTTY` as `true`
+* `stdin`, `stdout`, and `stderr` are all connected to the terminal
+* `proc.stdin`, `proc.stdout`, and `proc.stderr` return `null` — use the terminal instead
+* Access the terminal via `proc.terminal`
+
+### Terminal options
+
+| Option  | Description                                                                                                                                                        | Default            |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------ |
+| `cols`  | Number of columns                                                                                                                                                  | `80`               |
+| `rows`  | Number of rows                                                                                                                                                     | `24`               |
+| `name`  | Terminal type for PTY configuration (set `TERM` env var separately via `env` option)                                                                               | `"xterm-256color"` |
+| `data`  | Callback when data is received `(terminal, data) => void`                                                                                                          | —                  |
+| `exit`  | Callback when PTY stream closes (EOF or error). `exitCode` is PTY lifecycle status (0=EOF, 1=error), not subprocess exit code. Use `proc.exited` for process exit. | —                  |
+| `drain` | Callback when ready for more data `(terminal) => void`                                                                                                             | —                  |
+
+### Terminal methods
+
+The `Terminal` object returned by `proc.terminal` has the following methods:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+// Write data to the terminal
+proc.terminal.write("echo hello\n");
+
+// Resize the terminal
+proc.terminal.resize(120, 40);
+
+// Set raw mode (disable line buffering and echo)
+proc.terminal.setRawMode(true);
+
+// Keep event loop alive while terminal is open
+proc.terminal.ref();
+proc.terminal.unref();
+
+// Close the terminal
+proc.terminal.close();
+```
+
+### Reusable Terminal
+
+You can create a terminal independently and reuse it across multiple subprocesses:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+await using terminal = new Bun.Terminal({
+  cols: 80,
+  rows: 24,
+  data(term, data) {
+    process.stdout.write(data);
+  },
+});
+
+// Spawn first process
+const proc1 = Bun.spawn(["echo", "first"], { terminal });
+await proc1.exited;
+
+// Reuse terminal for another process
+const proc2 = Bun.spawn(["echo", "second"], { terminal });
+await proc2.exited;
+
+// Terminal is closed automatically by `await using`
+```
+
+When passing an existing `Terminal` object:
+
+* The terminal can be reused across multiple spawns
+* You control when to close the terminal
+* The `exit` callback fires when you call `terminal.close()`, not when each subprocess exits
+* Use `proc.exited` to detect individual subprocess exits
+
+This is useful for running multiple commands in sequence through the same terminal session.
+
+<Note>Terminal support is only available on POSIX systems (Linux, macOS). It is not available on Windows.</Note>
+
+***
+
 ## Blocking API (`Bun.spawnSync()`)
 
 Bun provides a synchronous equivalent of `Bun.spawn` called `Bun.spawnSync`. This is a blocking API that supports the same inputs and parameters as `Bun.spawn`. It returns a `SyncSubprocess` object, which differs from `Subprocess` in a few ways.
@@ -28571,7 +29980,7 @@ Bun provides a synchronous equivalent of `Bun.spawn` called `Bun.spawnSync`. Thi
 2. The `stdout` and `stderr` properties are instances of `Buffer` instead of `ReadableStream`.
 3. There is no `stdin` property. Use `Bun.spawn` to incrementally write to the subprocess's input stream.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const proc = Bun.spawnSync(["echo", "hello"]);
 
 console.log(proc.stdout.toString());
@@ -28595,7 +30004,7 @@ Bun's `spawnSync` spawns processes 60% faster than the Node.js `child_process` m
 bun spawn.mjs
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 cpu: Apple M1 Max
 runtime: bun 1.x (arm64-darwin)
 
@@ -28608,7 +30017,7 @@ spawnSync echo hi  888.14 µs/iter    (821.83 µs … 1.2 ms) 905.92 µs      1 
 node spawn.node.mjs
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 cpu: Apple M1 Max
 runtime: node v18.9.1 (arm64-darwin)
 
@@ -28655,6 +30064,7 @@ namespace SpawnOptions {
     timeout?: number;
     killSignal?: string | number;
     maxBuffer?: number;
+    terminal?: TerminalOptions; // PTY support (POSIX only)
   }
 
   type Readable =
@@ -28683,10 +30093,11 @@ namespace SpawnOptions {
 }
 
 interface Subprocess extends AsyncDisposable {
-  readonly stdin: FileSink | number | undefined;
-  readonly stdout: ReadableStream<Uint8Array> | number | undefined;
-  readonly stderr: ReadableStream<Uint8Array> | number | undefined;
-  readonly readable: ReadableStream<Uint8Array> | number | undefined;
+  readonly stdin: FileSink | number | undefined | null;
+  readonly stdout: ReadableStream<Uint8Array<ArrayBuffer>> | number | undefined | null;
+  readonly stderr: ReadableStream<Uint8Array<ArrayBuffer>> | number | undefined | null;
+  readonly readable: ReadableStream<Uint8Array<ArrayBuffer>> | number | undefined | null;
+  readonly terminal: Terminal | undefined;
   readonly pid: number;
   readonly exited: Promise<number>;
   readonly exitCode: number | null;
@@ -28711,6 +30122,28 @@ interface SyncSubprocess {
   signalCode?: string;
   exitedDueToTimeout?: true;
   pid: number;
+}
+
+interface TerminalOptions {
+  cols?: number;
+  rows?: number;
+  name?: string;
+  data?: (terminal: Terminal, data: Uint8Array<ArrayBuffer>) => void;
+  /** Called when PTY stream closes (EOF or error). exitCode is PTY lifecycle status (0=EOF, 1=error), not subprocess exit code. */
+  exit?: (terminal: Terminal, exitCode: number, signal: string | null) => void;
+  drain?: (terminal: Terminal) => void;
+}
+
+interface Terminal extends AsyncDisposable {
+  readonly stdin: number;
+  readonly stdout: number;
+  readonly closed: boolean;
+  write(data: string | BufferSource): number;
+  resize(cols: number, rows: number): void;
+  setRawMode(enabled: boolean): void;
+  ref(): void;
+  unref(): void;
+  close(): void;
 }
 
 interface ResourceUsage {
@@ -28837,7 +30270,7 @@ You can pass in any of the following:
 
 The `"css"` format outputs valid CSS for use in stylesheets, inline styles, CSS variables, css-in-js, etc. It returns the most compact representation of the color as a string.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.color("red", "css"); // "red"
 Bun.color(0xff0000, "css"); // "#f000"
 Bun.color("#f00", "css"); // "red"
@@ -28858,7 +30291,7 @@ If the input is unknown or fails to parse, `Bun.color` returns `null`.
 
 The `"ansi"` format outputs ANSI escape codes for use in terminals to make text colorful.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.color("red", "ansi"); // "\u001b[38;2;255;0;0m"
 Bun.color(0xff0000, "ansi"); // "\u001b[38;2;255;0;0m"
 Bun.color("#f00", "ansi"); // "\u001b[38;2;255;0;0m"
@@ -28881,7 +30314,7 @@ The `"ansi-16m"` format outputs 24-bit ANSI colors for use in terminals to make 
 
 This converts the input color to RGBA, and then outputs that as an ANSI color.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.color("red", "ansi-16m"); // "\x1b[38;2;255;0;0m"
 Bun.color(0xff0000, "ansi-16m"); // "\x1b[38;2;255;0;0m"
 Bun.color("#f00", "ansi-16m"); // "\x1b[38;2;255;0;0m"
@@ -28892,7 +30325,7 @@ Bun.color("#ff0000", "ansi-16m"); // "\x1b[38;2;255;0;0m"
 
 The `"ansi-256"` format approximates the input color to the nearest of the 256 ANSI colors supported by some terminals.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.color("red", "ansi-256"); // "\u001b[38;5;196m"
 Bun.color(0xff0000, "ansi-256"); // "\u001b[38;5;196m"
 Bun.color("#f00", "ansi-256"); // "\u001b[38;5;196m"
@@ -28905,7 +30338,7 @@ To convert from RGBA to one of the 256 ANSI colors, we ported the algorithm that
 
 The `"ansi-16"` format approximates the input color to the nearest of the 16 ANSI colors supported by most terminals.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.color("red", "ansi-16"); // "\u001b[38;5;\tm"
 Bun.color(0xff0000, "ansi-16"); // "\u001b[38;5;\tm"
 Bun.color("#f00", "ansi-16"); // "\u001b[38;5;\tm"
@@ -28918,7 +30351,7 @@ This works by first converting the input to a 24-bit RGB color space, then to `a
 
 The `"number"` format outputs a 24-bit number for use in databases, configuration, or any other use case where a compact representation of the color is desired.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.color("red", "number"); // 16711680
 Bun.color(0xff0000, "number"); // 16711680
 Bun.color({ r: 255, g: 0, b: 0 }, "number"); // 16711680
@@ -28937,7 +30370,7 @@ You can use the `"{rgba}"`, `"{rgb}"`, `"[rgba]"` and `"[rgb]"` formats to get t
 
 The `"{rgba}"` format outputs an object with the red, green, blue, and alpha channels.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 type RGBAObject = {
   // 0 - 255
   r: number;
@@ -28952,7 +30385,7 @@ type RGBAObject = {
 
 Example:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.color("hsl(0, 0%, 50%)", "{rgba}"); // { r: 128, g: 128, b: 128, a: 1 }
 Bun.color("red", "{rgba}"); // { r: 255, g: 0, b: 0, a: 1 }
 Bun.color(0xff0000, "{rgba}"); // { r: 255, g: 0, b: 0, a: 1 }
@@ -28964,7 +30397,7 @@ To behave similarly to CSS, the `a` channel is a decimal number between `0` and 
 
 The `"{rgb}"` format is similar, but it doesn't include the alpha channel.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.color("hsl(0, 0%, 50%)", "{rgb}"); // { r: 128, g: 128, b: 128 }
 Bun.color("red", "{rgb}"); // { r: 255, g: 0, b: 0 }
 Bun.color(0xff0000, "{rgb}"); // { r: 255, g: 0, b: 0 }
@@ -28976,14 +30409,14 @@ Bun.color([255, 0, 0], "{rgb}"); // { r: 255, g: 0, b: 0 }
 
 The `"[rgba]"` format outputs an array with the red, green, blue, and alpha channels.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // All values are 0 - 255
 type RGBAArray = [number, number, number, number];
 ```
 
 Example:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.color("hsl(0, 0%, 50%)", "[rgba]"); // [128, 128, 128, 255]
 Bun.color("red", "[rgba]"); // [255, 0, 0, 255]
 Bun.color(0xff0000, "[rgba]"); // [255, 0, 0, 255]
@@ -28995,7 +30428,7 @@ Unlike the `"{rgba}"` format, the alpha channel is an integer between `0` and `2
 
 The `"[rgb]"` format is similar, but it doesn't include the alpha channel.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.color("hsl(0, 0%, 50%)", "[rgb]"); // [128, 128, 128]
 Bun.color("red", "[rgb]"); // [255, 0, 0]
 Bun.color(0xff0000, "[rgb]"); // [255, 0, 0]
@@ -29007,7 +30440,7 @@ Bun.color([255, 0, 0], "[rgb]"); // [255, 0, 0]
 
 The `"hex"` format outputs a lowercase hex string for use in CSS or other contexts.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.color("hsl(0, 0%, 50%)", "hex"); // "#808080"
 Bun.color("red", "hex"); // "#ff0000"
 Bun.color(0xff0000, "hex"); // "#ff0000"
@@ -29017,7 +30450,7 @@ Bun.color([255, 0, 0], "hex"); // "#ff0000"
 
 The `"HEX"` format is similar, but it outputs a hex string with uppercase letters instead of lowercase letters.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.color("hsl(0, 0%, 50%)", "HEX"); // "#808080"
 Bun.color("red", "HEX"); // "#FF0000"
 Bun.color(0xff0000, "HEX"); // "#FF0000"
@@ -29037,13 +30470,13 @@ console.log(color("#f00", "css"));
 
 Then, build the client-side code:
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun build ./client-side.ts
 ```
 
 This will output the following to `client-side.js`:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 // client-side.ts
 console.log("red");
 ```
@@ -29069,7 +30502,7 @@ Bun allows you to configure how deeply nested objects are displayed in `console.
 * **Configuration**: Set `console.depth` in your `bunfig.toml` for persistent configuration
 * **Default**: Objects are inspected to a depth of `2` levels
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 const nested = { a: { b: { c: { d: "deep" } } } };
 console.log(nested);
 // Default (depth 2): { a: { b: [Object] } }
@@ -29129,7 +30562,7 @@ Bun provides native APIs for working with HTTP cookies through `Bun.Cookie` and 
 
 `Bun.CookieMap` provides a Map-like interface for working with collections of cookies. It implements the `Iterable` interface, allowing you to use it with `for...of` loops and other iteration methods.
 
-```ts filename="cookies.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="cookies.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Empty cookie map
 const cookies = new Bun.CookieMap();
 
@@ -29153,7 +30586,7 @@ const cookies3 = new Bun.CookieMap([
 
 In Bun's HTTP server, the `cookies` property on the request object (in `routes`) is an instance of `CookieMap`:
 
-```ts filename="server.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="server.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const server = Bun.serve({
   routes: {
     "/": req => {
@@ -29188,7 +30621,7 @@ console.log("Server listening at: " + server.url);
 
 Retrieves a cookie by name. Returns `null` if the cookie doesn't exist.
 
-```ts filename="get-cookie.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="get-cookie.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Get by name
 const cookie = cookies.get("session");
 
@@ -29201,7 +30634,7 @@ if (cookie != null) {
 
 Checks if a cookie with the given name exists.
 
-```ts filename="has-cookie.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="has-cookie.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Check if cookie exists
 if (cookies.has("session")) {
   // Cookie exists
@@ -29216,7 +30649,7 @@ if (cookies.has("session")) {
 
 Adds or updates a cookie in the map. Cookies default to `{ path: "/", sameSite: "lax" }`.
 
-```ts filename="set-cookie.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="set-cookie.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Set by name and value
 cookies.set("session", "abc123");
 
@@ -29239,7 +30672,7 @@ cookies.set(cookie);
 
 Removes a cookie from the map. When applied to a Response, this adds a cookie with an empty string value and an expiry date in the past. A cookie will only delete successfully on the browser if the domain and path is the same as it was when the cookie was created.
 
-```ts filename="delete-cookie.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="delete-cookie.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Delete by name using default domain and path.
 cookies.delete("session");
 
@@ -29255,7 +30688,7 @@ cookies.delete({
 
 Converts the cookie map to a serializable format.
 
-```ts filename="cookie-to-json.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="cookie-to-json.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const json = cookies.toJSON();
 ```
 
@@ -29265,7 +30698,7 @@ Returns an array of values for Set-Cookie headers that can be used to apply all 
 
 When using `Bun.serve()`, you don't need to call this method explicitly. Any changes made to the `req.cookies` map are automatically applied to the response headers. This method is primarily useful when working with other HTTP server implementations.
 
-```ts filename="node-server.js" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js title="node-server.js" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { createServer } from "node:http";
 import { CookieMap } from "bun";
 
@@ -29292,7 +30725,7 @@ server.listen(3000, () => {
 
 `CookieMap` provides several methods for iteration:
 
-```ts filename="iterate-cookies.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="iterate-cookies.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Iterate over [name, cookie] entries
 for (const [name, value] of cookies) {
   console.log(`${name}: ${value}`);
@@ -29325,7 +30758,7 @@ cookies.forEach((value, name) => {
 
 Returns the number of cookies in the map.
 
-```ts filename="cookie-size.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="cookie-size.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 console.log(cookies.size); // Number of cookies
 ```
 
@@ -29333,7 +30766,7 @@ console.log(cookies.size); // Number of cookies
 
 `Bun.Cookie` represents an HTTP cookie with its name, value, and attributes.
 
-```ts filename="cookie-class.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="cookie-class.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { Cookie } from "bun";
 
 // Create a basic cookie
@@ -29363,7 +30796,7 @@ const objCookie = new Bun.Cookie({
 
 ### Constructors
 
-```ts filename="constructors.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="constructors.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Basic constructor with name/value
 new Bun.Cookie(name: string, value: string);
 
@@ -29379,7 +30812,7 @@ new Bun.Cookie(options: CookieInit);
 
 ### Properties
 
-```ts filename="cookie-properties.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="cookie-properties.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 cookie.name; // string - Cookie name
 cookie.value; // string - Cookie value
 cookie.domain; // string | null - Domain scope (null if not specified)
@@ -29398,7 +30831,7 @@ cookie.httpOnly; // boolean - Accessible only via HTTP (not JavaScript)
 
 Checks if the cookie has expired.
 
-```ts filename="is-expired.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="is-expired.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Expired cookie (Date in the past)
 const expiredCookie = new Bun.Cookie("name", "value", {
   expires: new Date(Date.now() - 1000),
@@ -29422,7 +30855,7 @@ console.log(sessionCookie.isExpired()); // false
 
 Returns a string representation of the cookie suitable for a `Set-Cookie` header.
 
-```ts filename="serialize-cookie.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="serialize-cookie.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const cookie = new Bun.Cookie("session", "abc123", {
   domain: "example.com",
   path: "/admin",
@@ -29442,7 +30875,7 @@ console.log(cookie.toString());
 
 Converts the cookie to a plain object suitable for JSON serialization.
 
-```ts filename="cookie-json.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="cookie-json.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const cookie = new Bun.Cookie("session", "abc123", {
   secure: true,
   httpOnly: true,
@@ -29469,7 +30902,7 @@ const jsonString = JSON.stringify(cookie);
 
 Parses a cookie string into a `Cookie` instance.
 
-```ts filename="parse-cookie.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="parse-cookie.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const cookie = Bun.Cookie.parse("name=value; Path=/; Secure; SameSite=Lax");
 
 console.log(cookie.name); // "name"
@@ -29483,7 +30916,7 @@ console.log(cookie.sameSite); // "lax"
 
 Factory method to create a cookie.
 
-```ts filename="cookie-from.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="cookie-from.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const cookie = Bun.Cookie.from("session", "abc123", {
   httpOnly: true,
   secure: true,
@@ -29493,7 +30926,7 @@ const cookie = Bun.Cookie.from("session", "abc123", {
 
 ## Types
 
-```ts filename="types.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="types.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 interface CookieInit {
   name?: string;
   value?: string;
@@ -29691,7 +31124,7 @@ Here's a cheat sheet explaining the functions of the control flow buttons.
 
 ### Visual Studio Code Debugger
 
-Experimental support for debugging Bun scripts is available in Visual Studio Code. To use it, you'll need to install the [Bun VSCode extension](https://bun.com/guides/runtime/vscode-debugger).
+Experimental support for debugging Bun scripts is available in Visual Studio Code. To use it, you'll need to install the [Bun VSCode extension](/guides/runtime/vscode-debugger).
 
 ***
 
@@ -29721,12 +31154,12 @@ await fetch("https://example.com", {
 });
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
-[fetch] $ curl --http1.1 "https://example.com/" -X POST -H "content-type: application/json" -H "Connection: keep-alive" -H "User-Agent: Bun/1.3.2" -H "Accept: */*" -H "Host: example.com" -H "Accept-Encoding: gzip, deflate, br" --compressed -H "Content-Length: 13" --data-raw "{\"foo\":\"bar\"}"
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
+[fetch] $ curl --http1.1 "https://example.com/" -X POST -H "content-type: application/json" -H "Connection: keep-alive" -H "User-Agent: Bun/1.3.3" -H "Accept: */*" -H "Host: example.com" -H "Accept-Encoding: gzip, deflate, br" --compressed -H "Content-Length: 13" --data-raw "{\"foo\":\"bar\"}"
 [fetch] > HTTP/1.1 POST https://example.com/
 [fetch] > content-type: application/json
 [fetch] > Connection: keep-alive
-[fetch] > User-Agent: Bun/1.3.2
+[fetch] > User-Agent: Bun/1.3.3
 [fetch] > Accept: */*
 [fetch] > Host: example.com
 [fetch] > Accept-Encoding: gzip, deflate, br
@@ -29762,11 +31195,11 @@ await fetch("https://example.com", {
 });
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 [fetch] > HTTP/1.1 POST https://example.com/
 [fetch] > content-type: application/json
 [fetch] > Connection: keep-alive
-[fetch] > User-Agent: Bun/1.3.2
+[fetch] > User-Agent: Bun/1.3.3
 [fetch] > Accept: */*
 [fetch] > Host: example.com
 [fetch] > Accept-Encoding: gzip, deflate, br
@@ -29796,7 +31229,7 @@ Bun automatically loads sourcemaps both at runtime when transpiling files on-dem
 
 To help with debugging, Bun automatically prints a small source-code preview when an unhandled exception or rejection occurs. You can simulate this behavior by calling `Bun.inspect(error)`:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Create an error
 const err = new Error("Something went wrong");
 console.log(Bun.inspect(err, { colors: true }));
@@ -29826,7 +31259,7 @@ Bun implements the [V8 Stack Trace API](https://v8.dev/docs/stack-trace-api), wh
 
 The `Error.prepareStackTrace` function is a global function that lets you customize the stack trace output. This function is called with the error object and an array of `CallSite` objects and lets you return a custom stack trace.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Error.prepareStackTrace = (err, stack) => {
   return stack.map(callSite => {
     return callSite.getFileName();
@@ -29892,7 +31325,7 @@ const fn = () => {
 fn();
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 Error: here!
     at myInner (file.js:4:15)
     at fn (file.js:8:5)
@@ -29926,7 +31359,7 @@ Bun reads the following files automatically (listed in order of increasing prece
 * `.env.production`, `.env.development`, `.env.test` (depending on value of `NODE_ENV`)
 * `.env.local`
 
-```txt .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ini .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 FOO=hello
 BAR=world
 ```
@@ -29950,13 +31383,13 @@ Variables can also be set via the command line.
 <Accordion title="Cross-platform solution with Windows">
   For a cross-platform solution, you can use [bun shell](/runtime/shell). For example, the `bun exec` command.
 
-  ```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+  ```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
   bun exec 'FOO=helloworld bun run dev'
   ```
 
   On Windows, `package.json` scripts called with `bun run` will automatically use the **bun shell**, making the following also cross-platform.
 
-  ```json package.json theme={"theme":{"light":"github-light","dark":"dracula"}}
+  ```json package.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
   "scripts": {
     "dev": "NODE_ENV=development bun --watch app.ts",
   },
@@ -29965,7 +31398,7 @@ Variables can also be set via the command line.
 
 Or programmatically by assigning a property to `process.env`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 process.env.FOO = "hello";
 ```
 
@@ -29975,11 +31408,28 @@ process.env.FOO = "hello";
 
 Bun supports `--env-file` to override which specific `.env` file to load. You can use `--env-file` when running scripts in bun's runtime, or when running package.json scripts.
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun --env-file=.env.1 src/index.ts
 
 bun --env-file=.env.abc --env-file=.env.def run build
 ```
+
+## Disabling automatic `.env` loading
+
+Use `--no-env-file` to disable Bun's automatic `.env` file loading. This is useful in production environments or CI/CD pipelines where you want to rely solely on system environment variables.
+
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun run --no-env-file index.ts
+```
+
+This can also be configured in `bunfig.toml`:
+
+```toml bunfig.toml icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+# Disable loading .env files
+env = false
+```
+
+Explicitly provided environment files via `--env-file` will still be loaded even when default loading is disabled.
 
 ***
 
@@ -29987,7 +31437,7 @@ bun --env-file=.env.abc --env-file=.env.def run build
 
 Bun supports double quotes, single quotes, and template literal backticks:
 
-```txt .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ini .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 FOO='hello'
 FOO="hello"
 FOO=`hello`
@@ -29997,18 +31447,18 @@ FOO=`hello`
 
 Environment variables are automatically *expanded*. This means you can reference previously-defined variables in your environment variables.
 
-```txt .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ini .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 FOO=world
 BAR=hello$FOO
 ```
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 process.env.BAR; // => "helloworld"
 ```
 
 This is useful for constructing connection strings or other compound values.
 
-```txt .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ini .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 DB_USER=postgres
 DB_PASSWORD=secret
 DB_HOST=localhost
@@ -30018,12 +31468,12 @@ DB_URL=postgres://$DB_USER:$DB_PASSWORD@$DB_HOST:$DB_PORT/$DB_NAME
 
 This can be disabled by escaping the `$` with a backslash.
 
-```txt .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ini .env icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 FOO=world
 BAR=hello\$FOO
 ```
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 process.env.BAR; // => "hello$FOO"
 ```
 
@@ -30035,20 +31485,20 @@ Generally speaking, you won't need `dotenv` or `dotenv-expand` anymore, because 
 
 The current environment variables can be accessed via `process.env`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 process.env.API_TOKEN; // => "secret"
 ```
 
 Bun also exposes these variables via `Bun.env` and `import.meta.env`, which is a simple alias of `process.env`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.env.API_TOKEN; // => "secret"
 import.meta.env.API_TOKEN; // => "secret"
 ```
 
 To print all currently-set environment variables to the command line, run `bun --print process.env`. This is useful for debugging.
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun --print process.env
 BAZ=stuff
 FOOBAR=aaaaaa
@@ -30059,14 +31509,14 @@ FOOBAR=aaaaaa
 
 In TypeScript, all properties of `process.env` are typed as `string | undefined`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.env.whatever;
 // string | undefined
 ```
 
 To get autocompletion and tell TypeScript to treat a variable as a non-optional string, we'll use [interface merging](https://www.typescriptlang.org/docs/handbook/declaration-merging.html#merging-interfaces).
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 declare module "bun" {
   interface Env {
     AWESOME: string;
@@ -30076,7 +31526,7 @@ declare module "bun" {
 
 Add this line to any file in your project. It will globally add the `AWESOME` property to `process.env` and `Bun.env`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 process.env.AWESOME; // => string
 ```
 
@@ -30109,7 +31559,7 @@ It is recommended to disable this cache when using ephemeral filesystems like Do
 
 To disable the runtime transpiler cache, set `BUN_RUNTIME_TRANSPILER_CACHE_PATH` to an empty string or the string `"0"`.
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 BUN_RUNTIME_TRANSPILER_CACHE_PATH=0 bun run dev
 ```
 
@@ -30141,7 +31591,7 @@ Use the built-in `bun:ffi` module to efficiently call native libraries from Java
 
 To print the version number of `sqlite3`:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { dlopen, FFIType, suffix } from "bun:ffi";
 
 // `suffix` is either "dylib", "so", or "dll" depending on the platform
@@ -30172,7 +31622,7 @@ console.log(`SQLite 3 version: ${sqlite3_libversion()}`);
 
 According to [our benchmark](https://github.com/oven-sh/bun/tree/main/bench/ffi), `bun:ffi` is roughly 2-6x faster than Node.js FFI via `Node-API`.
 
-<Image src="/images/ffi.png" height="400" />
+<Image />
 
 Bun generates & just-in-time compiles C bindings that efficiently convert values between JavaScript types and native types. To compile C, Bun embeds [TinyCC](https://github.com/TinyCC/tinycc), a small and fast C compiler.
 
@@ -30196,7 +31646,7 @@ zig build-lib add.zig -dynamic -OReleaseFast
 
 Pass a path to the shared library and a map of symbols to import into `dlopen`:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { dlopen, FFIType, suffix } from "bun:ffi";
 const { i32 } = FFIType;
 
@@ -30214,7 +31664,7 @@ console.log(lib.symbols.add(1, 2));
 
 ### Rust
 
-```rust  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```rust theme={"theme":{"light":"github-light","dark":"dracula"}}
 // add.rs
 #[no_mangle]
 pub extern "C" fn add(a: i32, b: i32) -> i32 {
@@ -30224,13 +31674,13 @@ pub extern "C" fn add(a: i32, b: i32) -> i32 {
 
 To compile:
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 rustc --crate-type cdylib add.rs
 ```
 
 ### C++
 
-```c  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```c theme={"theme":{"light":"github-light","dark":"dracula"}}
 #include <cstdint>
 
 extern "C" int32_t add(int32_t a, int32_t b) {
@@ -30240,7 +31690,7 @@ extern "C" int32_t add(int32_t a, int32_t b) {
 
 To compile:
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 zig build-lib add.cpp -dynamic -lc -lc++
 ```
 
@@ -30297,7 +31747,7 @@ JavaScript strings and C-like strings are different, and that complicates using 
 
 To solve this, `bun:ffi` exports `CString` which extends JavaScript's built-in `String` to support null-terminated strings and add a few extras:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 class CString extends String {
   /**
    * Given a `ptr`, this will automatically search for the closing `\0` character and transcode from UTF-8 to UTF-16 if necessary.
@@ -30319,19 +31769,19 @@ class CString extends String {
 
 To convert from a null-terminated string pointer to a JavaScript string:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const myString = new CString(ptr);
 ```
 
 To convert from a pointer with a known length to a JavaScript string:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const myString = new CString(ptr, 0, byteLength);
 ```
 
 The `new CString()` constructor clones the C string, so it is safe to continue using `myString` after `ptr` has been freed.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 my_library_free(myString.ptr);
 
 // this is safe because myString is a clone
@@ -30348,7 +31798,7 @@ When used in `returns`, `FFIType.cstring` coerces the pointer to a JavaScript `s
 
 To call a function pointer from JavaScript, use `CFunction`. This is useful if using Node-API (napi) with Bun, and you've already loaded some symbols.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { CFunction } from "bun:ffi";
 
 let myNativeLibraryGetVersion = /* somehow, you got this pointer */
@@ -30363,7 +31813,7 @@ getVersion();
 
 If you have multiple function pointers, you can define them all at once with `linkSymbols`:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { linkSymbols } from "bun:ffi";
 
 // getVersionPtrs defined elsewhere
@@ -30401,7 +31851,7 @@ const [major, minor, patch] = [lib.symbols.getMajor(), lib.symbols.getMinor(), l
 
 Use `JSCallback` to create JavaScript callback functions that can be passed to C/FFI functions. The C/FFI function can call into the JavaScript/TypeScript code. This is useful for asynchronous code or whenever you want to call into JavaScript code from C.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { dlopen, JSCallback, ptr, CString } from "bun:ffi";
 
 const {
@@ -30439,7 +31889,7 @@ When you're done with a JSCallback, you should call `close()` to free the memory
 
 Currently, thread-safe callbacks work best when run from another thread that is running JavaScript code, i.e. a [`Worker`](/runtime/workers). A future version of Bun will enable them to be called from any thread (such as new threads spawned by your native library that Bun is not aware of).
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const searchIterator = new JSCallback((ptr, length) => /hello/.test(new CString(ptr, length)), {
   returns: "bool",
   args: ["ptr", "usize"],
@@ -30450,7 +31900,7 @@ const searchIterator = new JSCallback((ptr, length) => /hello/.test(new CString(
 <Note>
   **⚡️ Performance tip** — For a slight performance boost, directly pass `JSCallback.prototype.ptr` instead of the `JSCallback` object:
 
-  ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+  ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
   const onResolve = new JSCallback(arg => arg === 42, {
     returns: "bool",
     args: ["i32"],
@@ -30479,11 +31929,13 @@ Bun represents [pointers](https://en.wikipedia.org/wiki/Pointer_\(computer_progr
   64-bit processors support up to [52 bits of addressable space](https://en.wikipedia.org/wiki/64-bit_computing#Limits_of_processors). [JavaScript numbers](https://en.wikipedia.org/wiki/Double-precision_floating-point_format#IEEE_754_double-precision_binary_floating-point_format:_binary64) support 53 bits of usable space, so that leaves us with about 11 bits of extra space.
 
   **Why not `BigInt`?** `BigInt` is slower. JavaScript engines allocate a separate `BigInt` which means they can't fit into a regular JavaScript value. If you pass a `BigInt` to a function, it will be converted to a `number`
+
+  **Windows Note**: The Windows API type HANDLE does not represent a virtual address, and using `ptr` for it will *not* work as expected. Use `u64` to safely represent HANDLE values.
 </Accordion>
 
 To convert from a `TypedArray` to a pointer:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { ptr } from "bun:ffi";
 let myTypedArray = new Uint8Array(32);
 const myPtr = ptr(myTypedArray);
@@ -30491,7 +31943,7 @@ const myPtr = ptr(myTypedArray);
 
 To convert from a pointer to an `ArrayBuffer`:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { ptr, toArrayBuffer } from "bun:ffi";
 let myTypedArray = new Uint8Array(32);
 const myPtr = ptr(myTypedArray);
@@ -30503,7 +31955,7 @@ myTypedArray = new Uint8Array(toArrayBuffer(myPtr, 0, 32), 0, 32);
 
 To read data from a pointer, you have two options. For long-lived pointers, use a `DataView`:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { toArrayBuffer } from "bun:ffi";
 let myDataView = new DataView(toArrayBuffer(myPtr, 0, 32));
 
@@ -30517,7 +31969,7 @@ console.log(
 
 For short-lived pointers, use `read`:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { read } from "bun:ffi";
 
 console.log(
@@ -30559,11 +32011,11 @@ If you want to track when a `TypedArray` is no longer in use from C or FFI, you 
 
 The expected signature is the same as in [JavaScriptCore's C API](https://developer.apple.com/documentation/javascriptcore/jstypedarraybytesdeallocator?language=objc):
 
-```c  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```c theme={"theme":{"light":"github-light","dark":"dracula"}}
 typedef void (*JSTypedArrayBytesDeallocator)(void *bytes, void *deallocatorContext);
 ```
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { toArrayBuffer } from "bun:ffi";
 
 // with a deallocatorContext:
@@ -30604,7 +32056,7 @@ If an API expects a pointer sized to something other than `char` or `u8`, make s
 
 Where FFI functions expect a pointer, pass a `TypedArray` of equivalent size:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { dlopen, FFIType } from "bun:ffi";
 
 const {
@@ -30635,7 +32087,7 @@ The [auto-generated wrapper](https://github.com/oven-sh/bun/blob/6a65631cbdcae75
 <Accordion title="Hardmode">
   If you don't want the automatic conversion or you want a pointer to a specific byte offset within the `TypedArray`, you can also directly get the pointer to the `TypedArray`:
 
-  ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+  ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
   import { dlopen, FFIType, ptr } from "bun:ffi";
 
   const {
@@ -30666,7 +32118,7 @@ The [auto-generated wrapper](https://github.com/oven-sh/bun/blob/6a65631cbdcae75
 
 ### Reading pointers
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const out = encode_png(
   // pixels will be passed as a pointer
   pixels,
@@ -30701,7 +32153,7 @@ Bun provides a set of optimized APIs for reading and writing files.
 
 Create a `BunFile` instance with the `Bun.file(path)` function. A `BunFile` represents a lazily-loaded file; initializing it does not actually read the file from disk.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const foo = Bun.file("foo.txt"); // relative to cwd
 foo.size; // number of bytes
 foo.type; // MIME type
@@ -30709,7 +32161,7 @@ foo.type; // MIME type
 
 The reference conforms to the [`Blob`](https://developer.mozilla.org/en-US/docs/Web/API/Blob) interface, so the contents can be read in various formats.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const foo = Bun.file("foo.txt");
 
 await foo.text(); // contents as a string
@@ -30721,14 +32173,14 @@ await foo.bytes(); // contents as Uint8Array
 
 File references can also be created using numerical [file descriptors](https://en.wikipedia.org/wiki/File_descriptor) or `file://` URLs.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.file(1234);
 Bun.file(new URL(import.meta.url)); // reference to the current file
 ```
 
 A `BunFile` can point to a location on disk where a file does not exist.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const notreal = Bun.file("notreal.txt");
 notreal.size; // 0
 notreal.type; // "text/plain;charset=utf-8"
@@ -30737,14 +32189,14 @@ const exists = await notreal.exists(); // false
 
 The default MIME type is `text/plain;charset=utf-8`, but it can be overridden by passing a second argument to `Bun.file`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const notreal = Bun.file("notreal.json", { type: "application/json" });
 notreal.type; // => "application/json;charset=utf-8"
 ```
 
 For convenience, Bun exposes `stdin`, `stdout` and `stderr` as instances of `BunFile`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.stdin; // readonly
 Bun.stdout;
 Bun.stderr;
@@ -30754,7 +32206,7 @@ Bun.stderr;
 
 You can delete a file by calling the `.delete()` function.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 await Bun.file("logs.json").delete();
 ```
 
@@ -30799,14 +32251,14 @@ All possible permutations are handled using the fastest available system calls o
 
 To write a string to disk:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const data = `It was the best of times, it was the worst of times.`;
 await Bun.write("output.txt", data);
 ```
 
 To copy a file to another location on disk:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const input = Bun.file("input.txt");
 const output = Bun.file("output.txt"); // doesn't exist yet!
 await Bun.write(output, input);
@@ -30814,7 +32266,7 @@ await Bun.write(output, input);
 
 To write a byte array to disk:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const encoder = new TextEncoder();
 const data = encoder.encode("datadatadata"); // Uint8Array
 await Bun.write("output.txt", data);
@@ -30822,14 +32274,14 @@ await Bun.write("output.txt", data);
 
 To write a file to `stdout`:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const input = Bun.file("input.txt");
 await Bun.write(Bun.stdout, input);
 ```
 
 To write the body of an HTTP response to disk:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const response = await fetch("https://bun.com");
 await Bun.write("index.html", response);
 ```
@@ -30840,14 +32292,14 @@ await Bun.write("index.html", response);
 
 Bun provides a native incremental file writing API called `FileSink`. To retrieve a `FileSink` instance from a `BunFile`:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const file = Bun.file("output.txt");
 const writer = file.writer();
 ```
 
 To incrementally write to the file, call `.write()`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const file = Bun.file("output.txt");
 const writer = file.writer();
 
@@ -30857,26 +32309,26 @@ writer.write("it was the worst of times\n");
 
 These chunks will be buffered internally. To flush the buffer to disk, use `.flush()`. This returns the number of flushed bytes.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 writer.flush(); // write buffer to disk
 ```
 
 The buffer will also auto-flush when the `FileSink`'s *high water mark* is reached; that is, when its internal buffer is full. This value can be configured.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const file = Bun.file("output.txt");
 const writer = file.writer({ highWaterMark: 1024 * 1024 }); // 1MB
 ```
 
 To flush the buffer and close the file:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 writer.end();
 ```
 
 Note that, by default, the `bun` process will stay alive until this `FileSink` is explicitly closed with `.end()`. To opt out of this behavior, you can "unref" the instance.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 writer.unref();
 
 // to "re-ref" it later
@@ -30893,7 +32345,7 @@ Bun's implementation of `node:fs` is fast, and we haven't implemented a Bun-spec
 
 To read a directory in Bun, use `readdir` from `node:fs`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { readdir } from "node:fs/promises";
 
 // read all the files in the current directory
@@ -30904,7 +32356,7 @@ const files = await readdir(import.meta.dir);
 
 To recursively read a directory in Bun, use `readdir` with `recursive: true`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { readdir } from "node:fs/promises";
 
 // read all the files in the current directory, recursively
@@ -30915,7 +32367,7 @@ const files = await readdir("../", { recursive: true });
 
 To recursively create a directory, use `mkdir` in `node:fs`:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { mkdir } from "node:fs/promises";
 
 await mkdir("path/to/dir", { recursive: true });
@@ -30945,13 +32397,15 @@ bun ./cat.ts ./path-to-file
 
 It runs 2x faster than GNU `cat` for large files on Linux.
 
-<Frame><img src="https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/cat.jpg?fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=cc26ce0444c5a5953dd346ee52deb3aa" alt="Cat screenshot" data-og-width="1194" width="1194" data-og-height="1143" height="1143" data-path="images/cat.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/cat.jpg?w=280&fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=b5eef4c3932d3ce4fe4d9d26d38796b2 280w, https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/cat.jpg?w=560&fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=56e438048342311306dac624b12f1531 560w, https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/cat.jpg?w=840&fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=2ddd508c4e72b7900ea6da3dc6f3b4b6 840w, https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/cat.jpg?w=1100&fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=018d1cb81b368954b4757487ffc8e749 1100w, https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/cat.jpg?w=1650&fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=17fdac76d0d63ad0facc20aa7f50230d 1650w, https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/cat.jpg?w=2500&fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=278f195f295bb5fbcd2ef04689d294c1 2500w" /></Frame>
+<Frame>
+  <img alt="Cat screenshot" />
+</Frame>
 
 ***
 
 ## Reference
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 interface Bun {
   stdin: BunFile;
   stdout: BunFile;
@@ -30999,7 +32453,7 @@ This API is primarily intended for library authors. At the moment only Next.js-s
 
 The `FileSystemRouter` class can resolve routes against a `pages` directory. (The Next.js 13 `app` directory is not yet supported.) Consider the following `pages` directory:
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 pages
 ├── index.tsx
 ├── settings.tsx
@@ -31033,7 +32487,7 @@ router.match("/");
 
 Query parameters will be parsed and returned in the `query` property.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 router.match("/settings?foo=bar");
 
 // =>
@@ -31051,7 +32505,7 @@ router.match("/settings?foo=bar");
 
 The router will automatically parse URL parameters and return them in the `params` property:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 router.match("/blog/my-cool-post");
 
 // =>
@@ -31069,19 +32523,19 @@ router.match("/blog/my-cool-post");
 
 The `.match()` method also accepts `Request` and `Response` objects. The `url` property will be used to resolve the route.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 router.match(new Request("https://example.com/blog/my-cool-post"));
 ```
 
 The router will read the directory contents on initialization. To re-scan the files, use the `.reload()` method.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 router.reload();
 ```
 
 ## Reference
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 interface Bun {
   class FileSystemRouter {
     constructor(params: {
@@ -31115,13 +32569,13 @@ File types and loaders supported by Bun's bundler and runtime
 
 The Bun bundler implements a set of default loaders out of the box. As a rule of thumb, the bundler and the runtime both support the same set of file types out of the box.
 
-`.js` `.cjs` `.mjs` `.mts` `.cts` `.ts` `.tsx` `.jsx` `.css` `.json` `.jsonc` `.toml` `.yaml` `.yml` `.txt` `.wasm` `.node` `.html` `.sh`
+`.js` `.cjs` `.mjs` `.mts` `.cts` `.ts` `.tsx` `.jsx` `.css` `.json` `.jsonc` `.json5` `.toml` `.yaml` `.yml` `.txt` `.wasm` `.node` `.html` `.sh`
 
 Bun uses the file extension to determine which built-in *loader* should be used to parse the file. Every loader has a name, such as `js`, `tsx`, or `json`. These names are used when building [plugins](/bundler/plugins) that extend Bun with custom loaders.
 
 You can explicitly specify which loader to use using the `'type'` import attribute.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import my_toml from "./my_file" with { type: "toml" };
 // or with dynamic imports
 const { default: my_toml } = await import("./my_file", { with: { type: "toml" } });
@@ -31159,14 +32613,14 @@ Strips out all TypeScript syntax, then behaves identically to the `js` loader. B
 
 JSON files can be directly imported.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import pkg from "./package.json";
 pkg.name; // => "my-package"
 ```
 
 During bundling, the parsed JSON is inlined into the bundle as a JavaScript object.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 var pkg = {
   name: "my-package",
   // ... other fields
@@ -31200,14 +32654,14 @@ If a `.json` file is passed as an entrypoint to the bundler, it will be converte
 
 JSONC (JSON with Comments) files can be directly imported. Bun will parse them, stripping out comments and trailing commas.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import config from "./config.jsonc";
 console.log(config);
 ```
 
 During bundling, the parsed JSONC is inlined into the bundle as a JavaScript object, identical to the `json` loader.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 var config = {
   option: "value",
 };
@@ -31223,7 +32677,7 @@ var config = {
 
 TOML files can be directly imported. Bun will parse them with its fast native TOML parser.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import config from "./bunfig.toml";
 config.logLevel; // => "debug"
 
@@ -31233,7 +32687,7 @@ config.logLevel; // => "debug"
 
 During bundling, the parsed TOML is inlined into the bundle as a JavaScript object.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 var config = {
   logLevel: "debug",
   // ...other fields
@@ -31265,7 +32719,7 @@ If a `.toml` file is passed as an entrypoint, it will be converted to a `.js` mo
 
 YAML files can be directly imported. Bun will parse them with its fast native YAML parser.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import config from "./config.yaml";
 console.log(config);
 
@@ -31275,7 +32729,7 @@ import data from "./data.txt" with { type: "yaml" };
 
 During bundling, the parsed YAML is inlined into the bundle as a JavaScript object.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 var config = {
   name: "my-app",
   version: "1.0.0",
@@ -31301,6 +32755,51 @@ If a `.yaml` or `.yml` file is passed as an entrypoint, it will be converted to 
   ```
 </CodeGroup>
 
+### `json5`
+
+**JSON5 loader**. Default for `.json5`.
+
+JSON5 files can be directly imported. Bun will parse them with its fast native JSON5 parser. JSON5 is a superset of JSON that supports comments, trailing commas, unquoted keys, single-quoted strings, and more.
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+import config from "./config.json5";
+console.log(config);
+
+// via import attribute:
+import data from "./data.txt" with { type: "json5" };
+```
+
+During bundling, the parsed JSON5 is inlined into the bundle as a JavaScript object.
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+var config = {
+  name: "my-app",
+  version: "1.0.0",
+  // ...other fields
+};
+```
+
+If a `.json5` file is passed as an entrypoint, it will be converted to a `.js` module that `export default`s the parsed object.
+
+<CodeGroup>
+  ```json5 Input theme={"theme":{"light":"github-light","dark":"dracula"}}
+  {
+    // Configuration
+    name: "John Doe",
+    age: 35,
+    email: "johndoe@example.com",
+  }
+  ```
+
+  ```ts Output theme={"theme":{"light":"github-light","dark":"dracula"}}
+  export default {
+    name: "John Doe",
+    age: 35,
+    email: "johndoe@example.com",
+  };
+  ```
+</CodeGroup>
+
 ### `text`
 
 **Text loader**. Default for `.txt`.
@@ -31308,7 +32807,7 @@ If a `.yaml` or `.yml` file is passed as an entrypoint, it will be converted to 
 The contents of the text file are read and inlined into the bundle as a string.
 Text files can be directly imported. The file is read and returned as a string.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import contents from "./file.txt";
 console.log(contents); // => "Hello, world!"
 
@@ -31319,7 +32818,7 @@ import html from "./index.html" with { type: "text" };
 
 When referenced during a build, the contents are inlined into the bundle as a string.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 var contents = `Hello, world!`;
 console.log(contents);
 ```
@@ -31342,7 +32841,7 @@ If a `.txt` file is passed as an entrypoint, it will be converted to a `.js` mod
 
 In the runtime, native addons can be directly imported.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import addon from "./addon.node";
 console.log(addon);
 ```
@@ -31355,7 +32854,7 @@ In the bundler, `.node` files are handled using the [`file`](#file) loader.
 
 In the runtime and bundler, SQLite databases can be directly imported. This will load the database using [`bun:sqlite`](/runtime/sqlite).
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import db from "./my.db" with { type: "sqlite" };
 ```
 
@@ -31365,7 +32864,7 @@ By default, the database is external to the bundle (so that you can potentially 
 
 You can change this behavior with the `"embed"` attribute:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // embed the database into the bundle
 import db from "./my.db" with { type: "sqlite", embed: "true" };
 ```
@@ -31454,7 +32953,7 @@ Currently, the list of selectors is:
 
 CSS files can be directly imported. This is primarily useful for [full-stack applications](/bundler/html-static) where CSS is bundled alongside HTML.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import "./styles.css";
 ```
 
@@ -31466,7 +32965,7 @@ There isn't any value returned from the import, it's only used for side effects.
 
 This loader is used to parse [Bun Shell](/runtime/shell) scripts. It's only supported when starting Bun itself, so it's not available in the bundler or in the runtime.
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun run ./script.sh
 ```
 
@@ -31483,7 +32982,7 @@ console.log(logo);
 
 *In the runtime*, Bun checks that the `logo.svg` file exists and converts it to an absolute path to the location of `logo.svg` on disk.
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun run logo.ts
 /path/to/project/logo.svg
 ```
@@ -31513,14 +33012,14 @@ This loader is copied into the `outdir` as-is. The name of the copied file is de
 <Accordion title="Fixing TypeScript import errors">
   If you're using TypeScript, you may get an error like this:
 
-  ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+  ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
   // TypeScript error
   // Cannot find module './logo.svg' or its corresponding type declarations.
   ```
 
   This can be fixed by creating `*.d.ts` file anywhere in your project (any name will work) with the following contents:
 
-  ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+  ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
   declare module "*.svg" {
     const content: string;
     export default content;
@@ -31540,7 +33039,7 @@ Use Bun's fast native implementation of file globbing
 
 **Scan a directory for files matching `*.ts`**:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { Glob } from "bun";
 
 const glob = new Glob("**/*.ts");
@@ -31553,7 +33052,7 @@ for await (const file of glob.scan(".")) {
 
 **Match a string against a glob pattern**:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { Glob } from "bun";
 
 const glob = new Glob("*.ts");
@@ -31564,7 +33063,7 @@ glob.match("index.js"); // => false
 
 `Glob` is a class which implements the following interface:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 class Glob {
   scan(root: string | ScanOptions): AsyncIterable<string>;
   scanSync(root: string | ScanOptions): Iterable<string>;
@@ -31621,7 +33120,7 @@ Bun supports the following glob patterns:
 
 ### `?` - Match any single character
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const glob = new Glob("???.ts");
 glob.match("foo.ts"); // => true
 glob.match("foobar.ts"); // => false
@@ -31629,7 +33128,7 @@ glob.match("foobar.ts"); // => false
 
 ### `*` - Matches zero or more characters, except for path separators (`/` or `\`)
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const glob = new Glob("*.ts");
 glob.match("index.ts"); // => true
 glob.match("src/index.ts"); // => false
@@ -31637,7 +33136,7 @@ glob.match("src/index.ts"); // => false
 
 ### `**` - Match any number of characters including `/`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const glob = new Glob("**/*.ts");
 glob.match("index.ts"); // => true
 glob.match("src/index.ts"); // => true
@@ -31646,7 +33145,7 @@ glob.match("src/index.js"); // => false
 
 ### `[ab]` - Matches one of the characters contained in the brackets, as well as character ranges
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const glob = new Glob("ba[rz].ts");
 glob.match("bar.ts"); // => true
 glob.match("baz.ts"); // => true
@@ -31655,7 +33154,7 @@ glob.match("bat.ts"); // => false
 
 You can use character ranges (e.g `[0-9]`, `[a-z]`) as well as the negation operators `^` or `!` to match anything *except* the characters contained within the braces (e.g `[^ab]`, `[!a-z]`)
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const glob = new Glob("ba[a-z][0-9][^4-9].ts");
 glob.match("bar01.ts"); // => true
 glob.match("baz83.ts"); // => true
@@ -31666,7 +33165,7 @@ glob.match("ba0a8.ts"); // => false
 
 ### `{a,b,c}` - Match any of the given patterns
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const glob = new Glob("{a,b,c}.ts");
 glob.match("a.ts"); // => true
 glob.match("b.ts"); // => true
@@ -31678,7 +33177,7 @@ These match patterns can be deeply nested (up to 10 levels), and contain any of 
 
 ### `!` - Negates the result at the start of a pattern
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const glob = new Glob("!index.ts");
 glob.match("index.ts"); // => false
 glob.match("foo.ts"); // => true
@@ -31686,7 +33185,7 @@ glob.match("foo.ts"); // => true
 
 ### `\` - Escapes any of the special characters above
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const glob = new Glob("\\!index.ts");
 glob.match("!index.ts"); // => true
 glob.match("index.ts"); // => false
@@ -31696,7 +33195,7 @@ glob.match("index.ts"); // => false
 
 Bun also implements Node.js's `fs.glob()` functions with additional features:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { glob, globSync, promises } from "node:fs";
 
 // Array of patterns
@@ -31804,7 +33303,7 @@ Bun provides a set of utility functions for hashing and verifying passwords with
 
 `Bun.password` is a collection of utility functions for hashing and verifying passwords with various cryptographically secure algorithms.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const password = "super-secure-pa$$word";
 
 const hash = await Bun.password.hash(password);
@@ -31816,7 +33315,7 @@ const isMatch = await Bun.password.verify(password, hash);
 
 The second argument to `Bun.password.hash` accepts a params object that lets you pick and configure the hashing algorithm.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const password = "super-secure-pa$$word";
 
 // use argon2 (default)
@@ -31837,7 +33336,7 @@ The algorithm used to create the hash is stored in the hash itself. When using `
 
 The `verify` function automatically detects the algorithm based on the input hash and use the correct verification method. It can correctly infer the algorithm from both PHC- or MCF-encoded hashes.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const password = "super-secure-pa$$word";
 
 const hash = await Bun.password.hash(password, {
@@ -31850,7 +33349,7 @@ const isMatch = await Bun.password.verify(password, hash);
 
 Synchronous versions of all functions are also available. Keep in mind that these functions are computationally expensive, so using a blocking API may degrade application performance.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const password = "super-secure-pa$$word";
 
 const hash = Bun.password.hashSync(password, {
@@ -31871,7 +33370,7 @@ In the following [Modular Crypt Format](https://passlib.readthedocs.io/en/stable
 
 Input:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 await Bun.password.hash("hello", {
   algorithm: "bcrypt",
 });
@@ -31879,7 +33378,7 @@ await Bun.password.hash("hello", {
 
 Output:
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 $2b$10$Lyj9kHYZtiyfxh2G60TEfeqs7xkkGiEFFDi3iJGc50ZG/XJ1sxIFi;
 ```
 
@@ -31892,7 +33391,7 @@ The format is composed of:
 
 By default, the bcrypt library truncates passwords longer than 72 bytes. In Bun, if you pass `Bun.password.hash` a password longer than 72 bytes and use the `bcrypt` algorithm, the password will be hashed via SHA-512 before being passed to bcrypt.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 await Bun.password.hash("hello".repeat(100), {
   algorithm: "bcrypt",
 });
@@ -31906,7 +33405,7 @@ In the following [PHC format](https://github.com/P-H-C/phc-string-format/blob/ma
 
 Input:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 await Bun.password.hash("hello", {
   algorithm: "argon2id",
 });
@@ -31914,7 +33413,7 @@ await Bun.password.hash("hello", {
 
 Output:
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 $argon2id$v=19$m=65536,t=2,p=1$xXnlSvPh4ym5KYmxKAuuHVlDvy2QGHBNuI6bJJrRDOs$2YY6M48XmHn+s5NoBaL+ficzXajq2Yj8wut3r0vnrwI
 ```
 
@@ -31936,14 +33435,14 @@ The format is composed of:
 
 The standard `Bun.hash` functions uses [Wyhash](https://github.com/wangyi-fudan/wyhash) to generate a 64-bit hash from an input of arbitrary size.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.hash("some data here");
 // 11562320457524636935n
 ```
 
 The input can be a string, `TypedArray`, `DataView`, `ArrayBuffer`, or `SharedArrayBuffer`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const arr = new Uint8Array([1, 2, 3, 4]);
 
 Bun.hash("some data here");
@@ -31954,14 +33453,14 @@ Bun.hash(new DataView(arr.buffer));
 
 Optionally, an integer seed can be specified as the second parameter. For 64-bit hashes seeds above `Number.MAX_SAFE_INTEGER` should be given as BigInt to avoid loss of precision.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.hash("some data here", 1234);
 // 15724820720172937558n
 ```
 
 Additional hashing algorithms are available as properties on `Bun.hash`. The API is the same for each, only changing the return type from number for 32-bit hashes to bigint for 64-bit hashes.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.hash.wyhash("data", 1234); // equivalent to Bun.hash()
 Bun.hash.crc32("data", 1234);
 Bun.hash.adler32("data", 1234);
@@ -32001,7 +33500,7 @@ Bun.hash.rapidhash("data", 1234);
 * `"shake128"`
 * `"shake256"`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const hasher = new Bun.CryptoHasher("sha256");
 hasher.update("hello world");
 hasher.digest();
@@ -32010,7 +33509,7 @@ hasher.digest();
 
 Once initialized, data can be incrementally fed to to the hasher using `.update()`. This method accepts `string`, `TypedArray`, and `ArrayBuffer`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const hasher = new Bun.CryptoHasher("sha256");
 
 hasher.update("hello world");
@@ -32026,7 +33525,7 @@ If a `string` is passed, an optional second parameter can be used to specify the
 | Character encodings        | `"utf8"` `"utf-8"` `"utf16le"` `"latin1"`   |
 | Legacy character encodings | `"ascii"` `"binary"` `"ucs2"` `"ucs-2"`     |
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 hasher.update("hello world"); // defaults to utf8
 hasher.update("hello world", "hex");
 hasher.update("hello world", "base64");
@@ -32035,7 +33534,7 @@ hasher.update("hello world", "latin1");
 
 After the data has been feed into the hasher, a final hash can be computed using `.digest()`. By default, this method returns a `Uint8Array` containing the hash.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const hasher = new Bun.CryptoHasher("sha256");
 hasher.update("hello world");
 
@@ -32045,7 +33544,7 @@ hasher.digest();
 
 The `.digest()` method can optionally return the hash as a string. To do so, specify an encoding:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 hasher.digest("base64");
 // => "uU0nuZNNPgilLlLX2n2r+sSE7+N6U4DukIj3rOLvzek="
 
@@ -32055,7 +33554,7 @@ hasher.digest("hex");
 
 Alternatively, the method can write the hash into a pre-existing `TypedArray` instance. This may be desirable in some performance-sensitive applications.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const arr = new Uint8Array(32);
 
 hasher.digest(arr);
@@ -32068,7 +33567,7 @@ console.log(arr);
 
 `Bun.CryptoHasher` can be used to compute HMAC digests. To do so, pass the key to the constructor.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const hasher = new Bun.CryptoHasher("sha256", "secret-key");
 hasher.update("hello world");
 console.log(hasher.digest("hex"));
@@ -32091,7 +33590,7 @@ Unlike the non-HMAC `Bun.CryptoHasher`, the HMAC `Bun.CryptoHasher` instance is 
 
 Other methods like `.copy()` and `.update()` are supported (as long as it's before `.digest()`), but methods like `.digest()` that finalize the hasher are not.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const hasher = new Bun.CryptoHasher("sha256", "secret-key");
 hasher.update("hello world");
 
@@ -32118,7 +33617,7 @@ HTMLRewriter lets you use CSS selectors to transform HTML documents. It works wi
 
 A common usecase is rewriting URLs in HTML content. Here's an example that rewrites image sources and link URLs to use a CDN domain:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Replace all images with a rickroll
 const rewriter = new HTMLRewriter().on("img", {
   element(img) {
@@ -32153,7 +33652,7 @@ console.log(result);
 
 This replaces all images with a thumbnail of Rick Astley and wraps each `<img>` in a link, producing a diff like this:
 
-```html  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```html theme={"theme":{"light":"github-light","dark":"dracula"}}
 <html>
   <body>
     <img src="/cat.jpg" /> <!-- [!code --] -->
@@ -32178,7 +33677,7 @@ Now every image on the page will be replaced with a thumbnail of Rick Astley, an
 
 HTMLRewriter can transform HTML from various sources. The input is automatically handled based on its type:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // From Response
 rewriter.transform(new Response("<div>content</div>"));
 
@@ -32201,7 +33700,7 @@ Note that Cloudflare Workers implementation of HTMLRewriter only supports `Respo
 
 The `on(selector, handlers)` method allows you to register handlers for HTML elements that match a CSS selector. The handlers are called for each matching element during parsing:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 rewriter.on("div.content", {
   // Handle elements
   element(element) {
@@ -32221,7 +33720,7 @@ rewriter.on("div.content", {
 
 The handlers can be asynchronous and return a Promise. Note that async operations will block the transformation until they complete:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 rewriter.on("div", {
   async element(element) {
     await Bun.sleep(1000);
@@ -32234,7 +33733,7 @@ rewriter.on("div", {
 
 The `on()` method supports a wide range of CSS selectors:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Tag selectors
 rewriter.on("p", handler);
 
@@ -32274,7 +33773,7 @@ rewriter.on("*", handler);
 
 Elements provide various methods for manipulation. All modification methods return the element instance for chaining:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 rewriter.on("div", {
   element(el) {
     // Attributes
@@ -32329,7 +33828,7 @@ rewriter.on("div", {
 
 Text handlers provide methods for text manipulation. Text chunks represent portions of text content and provide information about their position in the text node:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 rewriter.on("p", {
   text(text) {
     // Content
@@ -32353,7 +33852,7 @@ rewriter.on("p", {
 
 Comment handlers allow comment manipulation with similar methods to text nodes:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 rewriter.on("*", {
   comments(comment) {
     // Content
@@ -32377,7 +33876,7 @@ rewriter.on("*", {
 
 The `onDocument(handlers)` method allows you to handle document-level events. These handlers are called for events that occur at the document level rather than within specific elements:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 rewriter.onDocument({
   // Handle doctype
   doctype(doctype) {
@@ -32423,7 +33922,7 @@ HTMLRewriter operations can throw errors in several cases:
 
 Errors should be caught and handled appropriately:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 try {
   const result = rewriter.transform(input);
   // Process result
@@ -32450,7 +33949,7 @@ Bun provides a built-in API for working with cookies in HTTP requests and respon
 
 Read cookies from incoming requests using the `cookies` property on the `BunRequest` object:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
   routes: {
     "/profile": req => {
@@ -32472,7 +33971,7 @@ Bun.serve({
 
 To set cookies, use the `set` method on the `CookieMap` from the `BunRequest` object.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
   routes: {
     "/login": req => {
@@ -32502,7 +34001,7 @@ Bun.serve({
 
 To delete a cookie, use the `delete` method on the `request.cookies` (`CookieMap`) object:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
   routes: {
     "/logout": req => {
@@ -32538,13 +34037,15 @@ Bun.serve({
 
 In development mode, Bun will surface errors in-browser with a built-in error page.
 
-<Frame><img src="https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/exception_page.png?fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=26f9bec162e97288f1f0d736773b2b6e" alt="Bun's built-in 500 page" data-og-width="800" width="800" data-og-height="579" height="579" data-path="images/exception_page.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/exception_page.png?w=280&fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=77f5e65f2bd86c0c9f8aa548169764f6 280w, https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/exception_page.png?w=560&fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=87988ad4288c5a0a06214ef0d7687f87 560w, https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/exception_page.png?w=840&fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=5c605029819509b6e1dbba7ff684ef4f 840w, https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/exception_page.png?w=1100&fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=5b1da6d3ac8b8583e9869385c0c9a8eb 1100w, https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/exception_page.png?w=1650&fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=32e2a5d5903287da38118ea5016c44e1 1650w, https://mintcdn.com/bun-1dd33a4e/PY1574V41bdK8wNs/images/exception_page.png?w=2500&fit=max&auto=format&n=PY1574V41bdK8wNs&q=85&s=5015e6ff9569ae31243c6214021cd9f6 2500w" /></Frame>
+<Frame>
+  <img alt="Bun's built-in 500 page" />
+</Frame>
 
 ### `error` callback
 
 To handle server-side errors, implement an `error` handler. This function should return a `Response` to serve to the client when an error occurs. This response will supersede Bun's default error page in `development` mode.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
   fetch(req) {
     throw new Error("woops!");
@@ -32571,7 +34072,7 @@ Monitor server activity with built-in metrics
 
 Monitor server activity with built-in counters:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const server = Bun.serve({
   fetch(req, server) {
     return new Response(
@@ -32585,7 +34086,7 @@ const server = Bun.serve({
 
 Get count of subscribers for a WebSocket topic:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const server = Bun.serve({
   fetch(req, server) {
     const chatUsers = server.subscriberCount("chat");
@@ -32626,7 +34127,7 @@ Bun.serve({
 
 Routes in `Bun.serve()` receive a `BunRequest` (which extends [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request)) and return a [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response) or `Promise<Response>`. This makes it easier to use the same code for both sending & receiving HTTP requests.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Simplified for brevity
 interface BunRequest<T extends string> extends Request {
   params: Record<T, string>;
@@ -32640,7 +34141,7 @@ interface BunRequest<T extends string> extends Request {
 
 You can use async/await in route handlers to return a `Promise<Response>`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { sql, serve } from "bun";
 
 serve({
@@ -32658,7 +34159,7 @@ serve({
 
 You can also return a `Promise<Response>` from a route handler.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { sql, serve } from "bun";
 
 serve({
@@ -32686,7 +34187,7 @@ Routes are matched in order of specificity:
 3. Wildcard routes (`/users/*`)
 4. Global catch-all (`/*`)
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
   routes: {
     // Most specific first
@@ -32704,7 +34205,7 @@ Bun.serve({
 
 TypeScript parses route parameters when passed as a string literal, so that your editor will show autocomplete when accessing `request.params`.
 
-```ts title="index.ts" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts title="index.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import type { BunRequest } from "bun";
 
 Bun.serve({
@@ -32732,7 +34233,7 @@ Percent-encoded route parameter values are automatically decoded. Unicode charac
 
 Routes can also be `Response` objects (without the handler function). Bun.serve() optimizes it for zero-allocation dispatch - perfect for health checks, redirects, and fixed content:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
   routes: {
     // Health checks
@@ -32764,7 +34265,7 @@ Static route responses are cached for the lifetime of the server object. To relo
 
 When serving files in routes, there are two distinct behaviors depending on whether you buffer the file content or serve it directly:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
   routes: {
     // Static route - content is buffered in memory at startup
@@ -32802,7 +34303,7 @@ Bun.serve({
 
 To stream a file, return a `Response` object with a `BunFile` object as the body.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
   fetch(req) {
     return new Response(Bun.file("./hello.txt"));
@@ -32817,7 +34318,7 @@ Bun.serve({
 
 You can send part of a file using the [`slice(start, end)`](https://developer.mozilla.org/en-US/docs/Web/API/Blob/slice) method on the `Bun.file` object. This automatically sets the `Content-Range` and `Content-Length` headers on the `Response` object.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
   fetch(req) {
     // parse `Range` header
@@ -32841,7 +34342,7 @@ Bun.serve({
 
 The `fetch` handler handles incoming requests that weren't matched by any route. It receives a [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) object and returns a [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response) or [`Promise<Response>`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
   fetch(req) {
     const url = new URL(req.url);
@@ -32854,7 +34355,7 @@ Bun.serve({
 
 The `fetch` handler supports async/await:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { sleep, serve } from "bun";
 
 serve({
@@ -32869,7 +34370,7 @@ serve({
 
 Promise-based responses are also supported:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
   fetch(req) {
     // Forward the request to another server.
@@ -32880,7 +34381,7 @@ Bun.serve({
 
 You can also access the `Server` object from the `fetch` handler. It's the second argument passed to the `fetch` function.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // `server` is passed in as the second argument to `fetch`.
 const server = Bun.serve({
   fetch(req, server) {
@@ -32925,12 +34426,8 @@ const server = Bun.serve({
     // Redirect from /blog/hello to /blog/hello/world
     "/blog/hello": Response.redirect("/blog/hello/world"),
 
-    // Serve a file by buffering it in memory
-    "/favicon.ico": new Response(await Bun.file("./favicon.ico").bytes(), {
-      headers: {
-        "Content-Type": "image/x-icon",
-      },
-    }),
+    // Serve a file by lazily loading it into memory
+    "/favicon.ico": Bun.file("./favicon.ico"),
   },
 
   // (optional) fallback for unmatched routes:
@@ -32953,7 +34450,7 @@ Bun supports importing HTML files directly into your server code, enabling full-
 
 **Production (`bun build`):** When building with `bun build --target=bun`, the `import index from "./index.html"` statement resolves to a pre-built manifest object containing all bundled client assets. `Bun.serve` consumes this manifest to serve optimized assets with zero runtime bundling overhead. This is ideal for deploying to production.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import myReactSinglePageApp from "./index.html";
 
 Bun.serve({
@@ -32975,7 +34472,7 @@ For a complete guide on building full-stack applications with HTML imports, incl
 
 To configure which port and hostname the server will listen on, set `port` and `hostname` in the options object.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
   port: 8080, // defaults to $BUN_PORT, $PORT, $NODE_PORT otherwise 3000 // [!code ++]
   hostname: "mydomain.com", // defaults to "0.0.0.0" // [!code ++]
@@ -32987,7 +34484,7 @@ Bun.serve({
 
 To randomly select an available port, set `port` to `0`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const server = Bun.serve({
   port: 0, // random port // [!code ++]
   fetch(req) {
@@ -33001,7 +34498,7 @@ console.log(server.port);
 
 You can view the chosen port by accessing the `port` property on the server object, or by accessing the `url` property.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 console.log(server.port); // 3000
 console.log(server.url); // http://localhost:3000
 ```
@@ -33012,14 +34509,14 @@ Bun supports several options and environment variables to configure the default 
 
 * `--port` CLI flag
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun --port=4002 server.ts
 ```
 
 * `BUN_PORT` environment variable
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun_PORT=4002 bun server.ts
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
+BUN_PORT=4002 bun server.ts
 ```
 
 * `PORT` environment variable
@@ -33040,7 +34537,7 @@ NODE_PORT=4002 bun server.ts
 
 To listen on a [unix domain socket](https://en.wikipedia.org/wiki/Unix_domain_socket), pass the `unix` option with the path to the socket.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
   unix: "/tmp/my-socket.sock", // path to socket
   fetch(req) {
@@ -33053,7 +34550,7 @@ Bun.serve({
 
 Bun supports Linux abstract namespace sockets. To use an abstract namespace socket, prefix the `unix` path with a null byte.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
   unix: "\0my-abstract-socket", // abstract namespace socket
   fetch(req) {
@@ -33070,7 +34567,7 @@ Unlike unix domain sockets, abstract namespace sockets are not bound to the file
 
 To configure the idle timeout, set the `idleTimeout` field in Bun.serve.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
   // 10 seconds:
   idleTimeout: 10,
@@ -33090,14 +34587,16 @@ This is the maximum amount of time a connection is allowed to be idle before the
 Thus far, the examples on this page have used the explicit `Bun.serve` API. Bun also supports an alternate syntax.
 
 ```ts server.ts theme={"theme":{"light":"github-light","dark":"dracula"}}
-import { type Serve } from "bun";
+import type { Serve } from "bun";
 
 export default {
   fetch(req) {
     return new Response("Bun!");
   },
-} satisfies Serve;
+} satisfies Serve.Options<undefined>;
 ```
+
+The type parameter `<undefined>` represents WebSocket data — if you add a `websocket` handler with custom data attached via `server.upgrade(req, { data: ... })`, replace `undefined` with your data type.
 
 Instead of passing the server options into `Bun.serve`, `export default` it. This file can be executed as-is; when Bun sees a file with a `default` export containing a `fetch` handler, it passes it into `Bun.serve` under the hood.
 
@@ -33107,7 +34606,7 @@ Instead of passing the server options into `Bun.serve`, `export default` it. Thi
 
 Update routes without server restarts using `server.reload()`:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const server = Bun.serve({
   routes: {
     "/api/version": () => Response.json({ version: "1.0.0" }),
@@ -33130,7 +34629,7 @@ server.reload({
 
 To stop the server from accepting new connections:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const server = Bun.serve({
   fetch(req) {
     return new Response("Hello!");
@@ -33150,7 +34649,7 @@ By default, `stop()` allows in-flight requests and WebSocket connections to comp
 
 Control whether the server keeps the Bun process alive:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Don't keep process alive if server is the only thing running
 server.unref();
 
@@ -33162,7 +34661,7 @@ server.ref();
 
 Update the server's handlers without restarting:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const server = Bun.serve({
   routes: {
     "/api/version": Response.json({ version: "v1" }),
@@ -33193,7 +34692,7 @@ This is useful for development and hot reloading. Only `fetch`, `error`, and `ro
 
 Set a custom idle timeout for individual requests:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const server = Bun.serve({
   async fetch(req, server) {
     // Set 60 second timeout for this request
@@ -33213,7 +34712,7 @@ Pass `0` to disable the timeout for a request.
 
 Get client IP and port information:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const server = Bun.serve({
   fetch(req, server) {
     const address = server.requestIP(req);
@@ -33235,7 +34734,7 @@ Returns `null` for closed requests or Unix domain sockets.
 
 Monitor server activity with built-in counters:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const server = Bun.serve({
   fetch(req, server) {
     return new Response(
@@ -33249,7 +34748,7 @@ const server = Bun.serve({
 
 Get count of subscribers for a WebSocket topic:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const server = Bun.serve({
   fetch(req, server) {
     const chatUsers = server.subscriberCount("chat");
@@ -33278,7 +34777,7 @@ Bun.serve({
 });
 ```
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 require("http")
   .createServer((req, res) => res.end("Bun!"))
   .listen(8080);
@@ -33545,7 +35044,7 @@ Enable TLS in Bun.serve
 
 Bun supports TLS out of the box, powered by [BoringSSL](https://boringssl.googlesource.com/boringssl). Enable TLS by passing in a value for `key` and `cert`; both are required to enable TLS.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
   tls: {
     key: Bun.file("./key.pem"), // [!code ++]
@@ -33556,7 +35055,7 @@ Bun.serve({
 
 The `key` and `cert` fields expect the *contents* of your TLS key and certificate, *not a path to it*. This can be a string, `BunFile`, `TypedArray`, or `Buffer`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
   tls: {
     key: Bun.file("./key.pem"), // BunFile
@@ -33571,7 +35070,7 @@ Bun.serve({
 
 If your private key is encrypted with a passphrase, provide a value for `passphrase` to decrypt it.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
   tls: {
     key: Bun.file("./key.pem"),
@@ -33585,7 +35084,7 @@ Bun.serve({
 
 Optionally, you can override the trusted CA certificates by passing a value for `ca`. By default, the server will trust the list of well-known CAs curated by Mozilla. When `ca` is specified, the Mozilla list is overwritten.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
   tls: {
     key: Bun.file("./key.pem"), // path to TLS key
@@ -33599,7 +35098,7 @@ Bun.serve({
 
 To override Diffie-Hellman parameters:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
   tls: {
     dhParamsFile: "/path/to/dhparams.pem", // path to Diffie Hellman parameters // [!code ++]
@@ -33613,7 +35112,7 @@ Bun.serve({
 
 To configure the server name indication (SNI) for the server, set the `serverName` field in the `tls` object.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
   tls: {
     serverName: "my-server.com", // SNI // [!code ++]
@@ -33623,7 +35122,7 @@ Bun.serve({
 
 To allow multiple server names, pass an array of objects to `tls`, each with a `serverName` field.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
   tls: [
     {
@@ -33812,7 +35311,7 @@ Bun.serve({
 
 To connect to this server from the browser, create a new `WebSocket`.
 
-```ts browser.js icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js browser.js icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const socket = new WebSocket("ws://localhost:3000/chat");
 
 socket.addEventListener("message", event => {
@@ -33872,7 +35371,7 @@ console.log(`Listening on ${server.hostname}:${server.port}`);
 
 Calling `.publish(data)` will send the message to all subscribers of a topic *except* the socket that called `.publish()`. To send a message to all subscribers of a topic, use the `.publish()` method on the `Server` instance.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const server = Bun.serve({
   websocket: {
     // ...
@@ -33897,7 +35396,7 @@ Bun.serve({
 
 Compression can be enabled for individual messages by passing a `boolean` as the second argument to `.send()`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 ws.send("Hello world", true);
 ```
 
@@ -33917,7 +35416,7 @@ This gives you better control over backpressure in your server.
 
 By default, Bun will close a WebSocket connection if it is idle for 120 seconds. This can be configured with the `idleTimeout` parameter.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
   fetch(req, server) {}, // upgrade logic
   websocket: {
@@ -33928,7 +35427,7 @@ Bun.serve({
 
 Bun will also close a WebSocket connection if it receives a message that is larger than 16 MB. This can be configured with the `maxPayloadLength` parameter.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.serve({
   fetch(req, server) {}, // upgrade logic
   websocket: {
@@ -33943,7 +35442,7 @@ Bun.serve({
 
 Bun implements the `WebSocket` class. To create a WebSocket client that connects to a `ws://` or `wss://` server, create an instance of `WebSocket`, as you would in the browser.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const socket = new WebSocket("ws://localhost:3000");
 
 // With subprotocol negotiation
@@ -33954,7 +35453,7 @@ In browsers, the cookies that are currently set on the page will be sent with th
 
 For convenience, Bun lets you setting custom headers directly in the constructor. This is a Bun-specific extension of the `WebSocket` standard. *This will not work in browsers.*
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const socket = new WebSocket("ws://localhost:3000", {
   headers: {
     /* custom headers */
@@ -33964,7 +35463,7 @@ const socket = new WebSocket("ws://localhost:3000", {
 
 To add event listeners to the socket:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // message is received
 socket.addEventListener("message", event => {});
 
@@ -34102,7 +35601,7 @@ bun --watch run index.tsx
 <Note>
   When using `bun run`, put Bun flags like `--watch` immediately after `bun`.
 
-  ```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+  ```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
   bun --watch run dev # ✔️ do this
   bun run dev --watch # ❌ don't do this
   ```
@@ -34116,7 +35615,7 @@ bun --watch run index.tsx
   Compare to `npm run <script>` or `yarn <script>`
 </Note>
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun [bun flags] run <script> [script flags]
 ```
 
@@ -34139,12 +35638,12 @@ bun run clean
 rm -rf dist && echo 'Done.'
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 Cleaning...
 Done.
 ```
 
-Bun executes the script command in a subshell. On Linux & macOS, it checks for the following shells in order, using the first one it finds: `bash`, `sh`, `zsh`. On windows, it uses [bun shell](https://bun.com/docs/runtime/shell) to support bash-like syntax and many common commands.
+Bun executes the script command in a subshell. On Linux & macOS, it checks for the following shells in order, using the first one it finds: `bash`, `sh`, `zsh`. On Windows, it uses [bun shell](/runtime/shell) to support bash-like syntax and many common commands.
 
 <Note>⚡️ The startup time for `npm run` on Linux is roughly 170ms; with Bun it is `6ms`.</Note>
 
@@ -34160,7 +35659,7 @@ To see a list of available scripts, run `bun run` without any arguments.
 bun run
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 quickstart scripts:
 
  bun run clean
@@ -34203,7 +35702,7 @@ bun run --filter 'ba*' <script>
 
 will execute `<script>` in both `bar` and `baz`, but not in `foo`.
 
-Find more details in the docs page for [filter](https://bun.com/docs/cli/filter#running-scripts-with-filter).
+Find more details in the docs page for [filter](/pm/filter#running-scripts-with-filter).
 
 ## `bun run -` to pipe code from stdin
 
@@ -34213,7 +35712,7 @@ Find more details in the docs page for [filter](https://bun.com/docs/cli/filter#
 echo "console.log('Hello')" | bun run -
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 Hello
 ```
 
@@ -34224,7 +35723,7 @@ echo "console.log!('This is TypeScript!' as any)" > secretly-typescript.js
 bun run - < secretly-typescript.js
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 This is TypeScript!
 ```
 
@@ -34272,279 +35771,291 @@ When there is a package.json script and a file with the same name, `bun run` pri
 
 # CLI Usage
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun run <file or script>
 ```
 
 ### General Execution Options
 
-<ParamField path="--silent" type="boolean">
+<ParamField type="boolean">
   Don't print the script command
 </ParamField>
 
-<ParamField path="--if-present" type="boolean">
+<ParamField type="boolean">
   Exit without an error if the entrypoint does not exist
 </ParamField>
 
-<ParamField path="--eval" type="string">
+<ParamField type="string">
   Evaluate argument as a script. Alias: <code>-e</code>
 </ParamField>
 
-<ParamField path="--print" type="string">
+<ParamField type="string">
   Evaluate argument as a script and print the result. Alias: <code>-p</code>
 </ParamField>
 
-<ParamField path="--help" type="boolean">
+<ParamField type="boolean">
   Display this menu and exit. Alias: <code>-h</code>
 </ParamField>
 
 ### Workspace Management
 
-<ParamField path="--elide-lines" type="number" default="10">
+<ParamField type="number">
   Number of lines of script output shown when using --filter (default: 10). Set to 0 to show all lines
 </ParamField>
 
-<ParamField path="--filter" type="string">
+<ParamField type="string">
   Run a script in all workspace packages matching the pattern. Alias: <code>-F</code>
 </ParamField>
 
-<ParamField path="--workspaces" type="boolean">
+<ParamField type="boolean">
   Run a script in all workspace packages (from the <code>workspaces</code> field in <code>package.json</code>)
+</ParamField>
+
+<ParamField type="boolean">
+  Run multiple scripts or workspace scripts concurrently with prefixed output
+</ParamField>
+
+<ParamField type="boolean">
+  Run multiple scripts or workspace scripts one after another with prefixed output
+</ParamField>
+
+<ParamField type="boolean">
+  When using <code>--parallel</code> or <code>--sequential</code>, continue running other scripts when one fails
 </ParamField>
 
 ### Runtime & Process Control
 
-<ParamField path="--bun" type="boolean">
+<ParamField type="boolean">
   Force a script or package to use Bun's runtime instead of Node.js (via symlinking node). Alias: <code>-b</code>
 </ParamField>
 
-<ParamField path="--shell" type="string">
+<ParamField type="string">
   Control the shell used for <code>package.json</code> scripts. Supports either <code>bun</code> or <code>system</code>
 </ParamField>
 
-<ParamField path="--smol" type="boolean">
+<ParamField type="boolean">
   Use less memory, but run garbage collection more often
 </ParamField>
 
-<ParamField path="--expose-gc" type="boolean">
+<ParamField type="boolean">
   Expose <code>gc()</code> on the global object. Has no effect on <code>Bun.gc()</code>
 </ParamField>
 
-<ParamField path="--no-deprecation" type="boolean">
+<ParamField type="boolean">
   Suppress all reporting of the custom deprecation
 </ParamField>
 
-<ParamField path="--throw-deprecation" type="boolean">
+<ParamField type="boolean">
   Determine whether or not deprecation warnings result in errors
 </ParamField>
 
-<ParamField path="--title" type="string">
+<ParamField type="string">
   Set the process title
 </ParamField>
 
-<ParamField path="--zero-fill-buffers" type="boolean">
+<ParamField type="boolean">
   Boolean to force <code>Buffer.allocUnsafe(size)</code> to be zero-filled
 </ParamField>
 
-<ParamField path="--no-addons" type="boolean">
+<ParamField type="boolean">
   Throw an error if <code>process.dlopen</code> is called, and disable export condition <code>node-addons</code>
 </ParamField>
 
-<ParamField path="--unhandled-rejections" type="string">
-  One of <code>strict</code>, <code>throw</code>, <code>warn</code>, <code>none</code>, or{" "}
+<ParamField type="string">
+  One of <code>strict</code>, <code>throw</code>, <code>warn</code>, <code>none</code>, or
   <code>warn-with-error-code</code>
 </ParamField>
 
-<ParamField path="--console-depth" type="number" default="2">
+<ParamField type="number">
   Set the default depth for <code>console.log</code> object inspection (default: 2)
 </ParamField>
 
 ### Development Workflow
 
-<ParamField path="--watch" type="boolean">
+<ParamField type="boolean">
   Automatically restart the process on file change
 </ParamField>
 
-<ParamField path="--hot" type="boolean">
+<ParamField type="boolean">
   Enable auto reload in the Bun runtime, test runner, or bundler
 </ParamField>
 
-<ParamField path="--no-clear-screen" type="boolean">
+<ParamField type="boolean">
   Disable clearing the terminal screen on reload when --hot or --watch is enabled
 </ParamField>
 
 ### Debugging
 
-<ParamField path="--inspect" type="string">
+<ParamField type="string">
   Activate Bun's debugger
 </ParamField>
 
-<ParamField path="--inspect-wait" type="string">
+<ParamField type="string">
   Activate Bun's debugger, wait for a connection before executing
 </ParamField>
 
-<ParamField path="--inspect-brk" type="string">
+<ParamField type="string">
   Activate Bun's debugger, set breakpoint on first line of code and wait
 </ParamField>
 
 ### Dependency & Module Resolution
 
-<ParamField path="--preload" type="string">
+<ParamField type="string">
   Import a module before other modules are loaded. Alias: <code>-r</code>
 </ParamField>
 
-<ParamField path="--require" type="string">
+<ParamField type="string">
   Alias of --preload, for Node.js compatibility
 </ParamField>
 
-<ParamField path="--import" type="string">
+<ParamField type="string">
   Alias of --preload, for Node.js compatibility
 </ParamField>
 
-<ParamField path="--no-install" type="boolean">
+<ParamField type="boolean">
   Disable auto install in the Bun runtime
 </ParamField>
 
-<ParamField path="--install" type="string" default="auto">
-  Configure auto-install behavior. One of <code>auto</code> (default, auto-installs when no node\_modules),{" "}
+<ParamField type="string">
+  Configure auto-install behavior. One of <code>auto</code> (default, auto-installs when no node\_modules),
   <code>fallback</code> (missing packages only), <code>force</code> (always)
 </ParamField>
 
-<ParamField path="-i" type="boolean">
+<ParamField type="boolean">
   Auto-install dependencies during execution. Equivalent to --install=fallback
 </ParamField>
 
-<ParamField path="--prefer-offline" type="boolean">
+<ParamField type="boolean">
   Skip staleness checks for packages in the Bun runtime and resolve from disk
 </ParamField>
 
-<ParamField path="--prefer-latest" type="boolean">
+<ParamField type="boolean">
   Use the latest matching versions of packages in the Bun runtime, always checking npm
 </ParamField>
 
-<ParamField path="--conditions" type="string">
+<ParamField type="string">
   Pass custom conditions to resolve
 </ParamField>
 
-<ParamField path="--main-fields" type="string">
+<ParamField type="string">
   Main fields to lookup in <code>package.json</code>. Defaults to --target dependent
 </ParamField>
 
-<ParamField path="--preserve-symlinks" type="boolean">
+<ParamField type="boolean">
   Preserve symlinks when resolving files
 </ParamField>
 
-<ParamField path="--preserve-symlinks-main" type="boolean">
+<ParamField type="boolean">
   Preserve symlinks when resolving the main entry point
 </ParamField>
 
-<ParamField path="--extension-order" type="string" default=".tsx,.ts,.jsx,.js,.json">
+<ParamField type="string">
   Defaults to: <code>.tsx,.ts,.jsx,.js,.json</code>
 </ParamField>
 
 ### Transpilation & Language Features
 
-<ParamField path="--tsconfig-override" type="string">
+<ParamField type="string">
   Specify custom <code>tsconfig.json</code>. Default <code>\$cwd/tsconfig.json</code>
 </ParamField>
 
-<ParamField path="--define" type="string">
+<ParamField type="string">
   Substitute K:V while parsing, e.g. <code>--define process.env.NODE\_ENV:"development"</code>. Values are parsed as
   JSON. Alias: <code>-d</code>
 </ParamField>
 
-<ParamField path="--drop" type="string">
+<ParamField type="string">
   Remove function calls, e.g. <code>--drop=console</code> removes all <code>console.\*</code> calls
 </ParamField>
 
-<ParamField path="--loader" type="string">
-  Parse files with <code>.ext:loader</code>, e.g. <code>--loader .js:jsx</code>. Valid loaders: <code>js</code>,{" "}
-  <code>jsx</code>, <code>ts</code>, <code>tsx</code>, <code>json</code>, <code>toml</code>, <code>text</code>,{" "}
+<ParamField type="string">
+  Parse files with <code>.ext:loader</code>, e.g. <code>--loader .js:jsx</code>. Valid loaders: <code>js</code>,
+  <code>jsx</code>, <code>ts</code>, <code>tsx</code>, <code>json</code>, <code>toml</code>, <code>text</code>,
   <code>file</code>, <code>wasm</code>, <code>napi</code>. Alias: <code>-l</code>
 </ParamField>
 
-<ParamField path="--no-macros" type="boolean">
+<ParamField type="boolean">
   Disable macros from being executed in the bundler, transpiler and runtime
 </ParamField>
 
-<ParamField path="--jsx-factory" type="string">
+<ParamField type="string">
   Changes the function called when compiling JSX elements using the classic JSX runtime
 </ParamField>
 
-<ParamField path="--jsx-fragment" type="string">
+<ParamField type="string">
   Changes the function called when compiling JSX fragments
 </ParamField>
 
-<ParamField path="--jsx-import-source" type="string" default="react">
+<ParamField type="string">
   Declares the module specifier to be used for importing the jsx and jsxs factory functions. Default: <code>react</code>
 </ParamField>
 
-<ParamField path="--jsx-runtime" type="string" default="automatic">
+<ParamField type="string">
   <code>automatic</code> (default) or <code>classic</code>
 </ParamField>
 
-<ParamField path="--jsx-side-effects" type="boolean">
+<ParamField type="boolean">
   Treat JSX elements as having side effects (disable pure annotations)
 </ParamField>
 
-<ParamField path="--ignore-dce-annotations" type="boolean">
+<ParamField type="boolean">
   Ignore tree-shaking annotations such as <code>@**PURE**</code>
 </ParamField>
 
 ### Networking & Security
 
-<ParamField path="--port" type="number">
+<ParamField type="number">
   Set the default port for <code>Bun.serve</code>
 </ParamField>
 
-<ParamField path="--fetch-preconnect" type="string">
+<ParamField type="string">
   Preconnect to a URL while code is loading
 </ParamField>
 
-<ParamField path="--max-http-header-size" type="number" default="16384">
+<ParamField type="number">
   Set the maximum size of HTTP headers in bytes. Default is 16KiB
 </ParamField>
 
-<ParamField path="--dns-result-order" type="string" default="verbatim">
-  Set the default order of DNS lookup results. Valid orders: <code>verbatim</code> (default), <code>ipv4first</code>,{" "}
+<ParamField type="string">
+  Set the default order of DNS lookup results. Valid orders: <code>verbatim</code> (default), <code>ipv4first</code>,
   <code>ipv6first</code>
 </ParamField>
 
-<ParamField path="--use-system-ca" type="boolean">
+<ParamField type="boolean">
   Use the system's trusted certificate authorities
 </ParamField>
 
-<ParamField path="--use-openssl-ca" type="boolean">
+<ParamField type="boolean">
   Use OpenSSL's default CA store
 </ParamField>
 
-<ParamField path="--use-bundled-ca" type="boolean">
+<ParamField type="boolean">
   Use bundled CA store
 </ParamField>
 
-<ParamField path="--redis-preconnect" type="boolean">
+<ParamField type="boolean">
   Preconnect to <code>\$REDIS\_URL</code> at startup
 </ParamField>
 
-<ParamField path="--sql-preconnect" type="boolean">
+<ParamField type="boolean">
   Preconnect to PostgreSQL at startup
 </ParamField>
 
-<ParamField path="--user-agent" type="string">
+<ParamField type="string">
   Set the default User-Agent header for HTTP requests
 </ParamField>
 
 ### Global Configuration & Context
 
-<ParamField path="--env-file" type="string">
+<ParamField type="string">
   Load environment variables from the specified file(s)
 </ParamField>
 
-<ParamField path="--cwd" type="string">
+<ParamField type="string">
   Absolute path to resolve files & entry points from. This just changes the process' cwd
 </ParamField>
 
-<ParamField path="--config" type="string">
+<ParamField type="string">
   Specify path to Bun config file. Default <code>\$cwd/bunfig.toml</code>. Alias: <code>-c</code>
 </ParamField>
 
@@ -34552,17 +36063,480 @@ bun run <file or script>
 
 Run a JavaScript or TypeScript file:
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun run ./index.js
 bun run ./index.tsx
 ```
 
 Run a package.json script:
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun run dev
 bun run lint
 ```
+
+
+# JSON5
+Source: https://bun.com/docs/runtime/json5
+
+Use Bun's built-in support for JSON5 files through both runtime APIs and bundler integration
+
+In Bun, JSON5 is a first-class citizen alongside JSON, TOML, and YAML. You can:
+
+* Parse and stringify JSON5 with `Bun.JSON5.parse` and `Bun.JSON5.stringify`
+* `import` & `require` JSON5 files as modules at runtime (including hot reloading & watch mode support)
+* `import` & `require` JSON5 files in frontend apps via Bun's bundler
+
+***
+
+## Conformance
+
+Bun's JSON5 parser passes 100% of the [official JSON5 test suite](https://github.com/json5/json5-tests). The parser is written in Zig for optimal performance. You can view our [translated test suite](https://github.com/oven-sh/bun/blob/main/test/js/bun/json5/json5-test-suite.test.ts) to see every test case.
+
+***
+
+## Runtime API
+
+### `Bun.JSON5.parse()`
+
+Parse a JSON5 string into a JavaScript value.
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+import { JSON5 } from "bun";
+
+const data = JSON5.parse(`{
+  // JSON5 supports comments
+  name: 'my-app',
+  version: '1.0.0',
+  debug: true,
+
+  // trailing commas are allowed
+  tags: ['web', 'api',],
+}`);
+
+console.log(data);
+// {
+//   name: "my-app",
+//   version: "1.0.0",
+//   debug: true,
+//   tags: ["web", "api"]
+// }
+```
+
+#### Supported JSON5 Features
+
+JSON5 is a superset of JSON based on ECMAScript 5.1 syntax. It supports:
+
+* **Comments**: single-line (`//`) and multi-line (`/* */`)
+* **Trailing commas**: in objects and arrays
+* **Unquoted keys**: valid ECMAScript 5.1 identifiers can be used as keys
+* **Single-quoted strings**: in addition to double-quoted strings
+* **Multi-line strings**: using backslash line continuations
+* **Hex numbers**: `0xFF`
+* **Leading & trailing decimal points**: `.5` and `5.`
+* **Infinity and NaN**: positive and negative
+* **Explicit plus sign**: `+42`
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+const data = JSON5.parse(`{
+  // Unquoted keys
+  unquoted: 'keys work',
+
+  // Single and double quotes
+  single: 'single-quoted',
+  double: "double-quoted",
+
+  // Trailing commas
+  trailing: 'comma',
+
+  // Special numbers
+  hex: 0xDEADbeef,
+  half: .5,
+  to: Infinity,
+  nan: NaN,
+
+  // Multi-line strings
+  multiline: 'line 1 \
+line 2',
+}`);
+```
+
+#### Error Handling
+
+`Bun.JSON5.parse()` throws a `SyntaxError` if the input is invalid JSON5:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+try {
+  JSON5.parse("{invalid}");
+} catch (error) {
+  console.error("Failed to parse JSON5:", error.message);
+}
+```
+
+### `Bun.JSON5.stringify()`
+
+Stringify a JavaScript value to a JSON5 string.
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+import { JSON5 } from "bun";
+
+const str = JSON5.stringify({ name: "my-app", version: "1.0.0" });
+console.log(str);
+// {name:'my-app',version:'1.0.0'}
+```
+
+#### Pretty Printing
+
+Pass a `space` argument to format the output with indentation:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+const pretty = JSON5.stringify(
+  {
+    name: "my-app",
+    debug: true,
+    tags: ["web", "api"],
+  },
+  null,
+  2,
+);
+
+console.log(pretty);
+// {
+//   name: 'my-app',
+//   debug: true,
+//   tags: [
+//     'web',
+//     'api',
+//   ],
+// }
+```
+
+The `space` argument can be a number (number of spaces) or a string (used as the indent character):
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+// Tab indentation
+JSON5.stringify(data, null, "\t");
+```
+
+#### Special Values
+
+Unlike `JSON.stringify`, `JSON5.stringify` preserves special numeric values:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+JSON5.stringify({ inf: Infinity, ninf: -Infinity, nan: NaN });
+// {inf:Infinity,ninf:-Infinity,nan:NaN}
+```
+
+***
+
+## Module Import
+
+### ES Modules
+
+You can import JSON5 files directly as ES modules:
+
+```json5 config.json5 theme={"theme":{"light":"github-light","dark":"dracula"}}
+{
+  // Database configuration
+  database: {
+    host: "localhost",
+    port: 5432,
+    name: "myapp",
+  },
+
+  features: {
+    auth: true,
+    rateLimit: true,
+    analytics: false,
+  },
+}
+```
+
+#### Default Import
+
+```ts app.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+import config from "./config.json5";
+
+console.log(config.database.host); // "localhost"
+console.log(config.features.auth); // true
+```
+
+#### Named Imports
+
+You can destructure top-level properties as named imports:
+
+```ts app.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+import { database, features } from "./config.json5";
+
+console.log(database.host); // "localhost"
+console.log(features.rateLimit); // true
+```
+
+### CommonJS
+
+JSON5 files can also be required in CommonJS:
+
+```ts app.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+const config = require("./config.json5");
+console.log(config.database.name); // "myapp"
+
+// Destructuring also works
+const { database, features } = require("./config.json5");
+```
+
+***
+
+## Hot Reloading with JSON5
+
+When you run your application with `bun --hot`, changes to JSON5 files are automatically detected and reloaded:
+
+```json5 config.json5 theme={"theme":{"light":"github-light","dark":"dracula"}}
+{
+  server: {
+    port: 3000,
+    host: "localhost",
+  },
+  features: {
+    debug: true,
+    verbose: false,
+  },
+}
+```
+
+```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+import { server, features } from "./config.json5";
+
+Bun.serve({
+  port: server.port,
+  hostname: server.host,
+  fetch(req) {
+    if (features.verbose) {
+      console.log(`${req.method} ${req.url}`);
+    }
+    return new Response("Hello World");
+  },
+});
+```
+
+Run with hot reloading:
+
+```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun --hot server.ts
+```
+
+***
+
+## Bundler Integration
+
+When you import JSON5 files and bundle with Bun, the JSON5 is parsed at build time and included as a JavaScript module:
+
+```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun build app.ts --outdir=dist
+```
+
+This means:
+
+* Zero runtime JSON5 parsing overhead in production
+* Smaller bundle sizes
+* Tree-shaking support for unused properties (named imports)
+
+### Dynamic Imports
+
+JSON5 files can be dynamically imported:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+const config = await import("./config.json5");
+```
+
+
+# JSONL
+Source: https://bun.com/docs/runtime/jsonl
+
+Parse newline-delimited JSON (JSONL) with Bun's built-in streaming parser
+
+Bun has built-in support for parsing [JSONL](https://jsonlines.org/) (newline-delimited JSON), where each line is a separate JSON value. The parser is implemented in C++ using JavaScriptCore's optimized JSON parser and supports streaming use cases.
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+const results = Bun.JSONL.parse('{"name":"Alice"}\n{"name":"Bob"}\n');
+// [{ name: "Alice" }, { name: "Bob" }]
+```
+
+***
+
+## `Bun.JSONL.parse()`
+
+Parse a complete JSONL input and return an array of all parsed values.
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+import { JSONL } from "bun";
+
+const input = '{"id":1,"name":"Alice"}\n{"id":2,"name":"Bob"}\n{"id":3,"name":"Charlie"}\n';
+const records = JSONL.parse(input);
+console.log(records);
+// [
+//   { id: 1, name: "Alice" },
+//   { id: 2, name: "Bob" },
+//   { id: 3, name: "Charlie" }
+// ]
+```
+
+Input can be a string or a `Uint8Array`:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+const buffer = new TextEncoder().encode('{"a":1}\n{"b":2}\n');
+const results = Bun.JSONL.parse(buffer);
+// [{ a: 1 }, { b: 2 }]
+```
+
+When passed a `Uint8Array`, a UTF-8 BOM at the start of the buffer is automatically skipped.
+
+### Error handling
+
+If the input contains invalid JSON, `Bun.JSONL.parse()` throws a `SyntaxError`:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+try {
+  Bun.JSONL.parse('{"valid":true}\n{invalid}\n');
+} catch (error) {
+  console.error(error); // SyntaxError: Failed to parse JSONL
+}
+```
+
+***
+
+## `Bun.JSONL.parseChunk()`
+
+For streaming scenarios, `parseChunk` parses as many complete values as possible from the input and reports how far it got. This is useful when receiving data incrementally (e.g., from a network stream) and you need to know where to resume parsing.
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+const chunk = '{"id":1}\n{"id":2}\n{"id":3';
+
+const result = Bun.JSONL.parseChunk(chunk);
+console.log(result.values); // [{ id: 1 }, { id: 2 }]
+console.log(result.read); // 17 — characters consumed
+console.log(result.done); // false — incomplete value remains
+console.log(result.error); // null — no parse error
+```
+
+### Return value
+
+`parseChunk` returns an object with four properties:
+
+| Property | Type                  | Description                                                             |
+| -------- | --------------------- | ----------------------------------------------------------------------- |
+| `values` | `any[]`               | Array of successfully parsed JSON values                                |
+| `read`   | `number`              | Number of bytes (for `Uint8Array`) or characters (for strings) consumed |
+| `done`   | `boolean`             | `true` if the entire input was consumed with no remaining data          |
+| `error`  | `SyntaxError \| null` | Parse error, or `null` if no error occurred                             |
+
+### Streaming example
+
+Use `read` to slice off consumed input and carry forward the remainder:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+let buffer = "";
+
+async function processStream(stream: ReadableStream<string>) {
+  for await (const chunk of stream) {
+    buffer += chunk;
+    const result = Bun.JSONL.parseChunk(buffer);
+
+    for (const value of result.values) {
+      handleRecord(value);
+    }
+
+    // Keep only the unconsumed portion
+    buffer = buffer.slice(result.read);
+  }
+
+  // Handle any remaining data
+  if (buffer.length > 0) {
+    const final = Bun.JSONL.parseChunk(buffer);
+    for (const value of final.values) {
+      handleRecord(value);
+    }
+    if (final.error) {
+      console.error("Parse error in final chunk:", final.error.message);
+    }
+  }
+}
+```
+
+### Byte offsets with `Uint8Array`
+
+When the input is a `Uint8Array`, you can pass optional `start` and `end` byte offsets:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+const buf = new TextEncoder().encode('{"a":1}\n{"b":2}\n{"c":3}\n');
+
+// Parse starting from byte 8
+const result = Bun.JSONL.parseChunk(buf, 8);
+console.log(result.values); // [{ b: 2 }, { c: 3 }]
+console.log(result.read); // 24
+
+// Parse a specific range
+const partial = Bun.JSONL.parseChunk(buf, 0, 8);
+console.log(partial.values); // [{ a: 1 }]
+```
+
+The `read` value is always a byte offset into the original buffer, making it easy to use with `TypedArray.subarray()` for zero-copy streaming:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+let buf = new Uint8Array(0);
+
+async function processBinaryStream(stream: ReadableStream<Uint8Array>) {
+  for await (const chunk of stream) {
+    // Append chunk to buffer
+    const newBuf = new Uint8Array(buf.length + chunk.length);
+    newBuf.set(buf);
+    newBuf.set(chunk, buf.length);
+    buf = newBuf;
+
+    const result = Bun.JSONL.parseChunk(buf);
+
+    for (const value of result.values) {
+      handleRecord(value);
+    }
+
+    // Keep unconsumed bytes
+    buf = buf.slice(result.read);
+  }
+}
+```
+
+### Error recovery
+
+Unlike `parse()`, `parseChunk()` does not throw on invalid JSON. Instead, it returns the error in the `error` property, along with any values that were successfully parsed before the error:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+const input = '{"a":1}\n{invalid}\n{"b":2}\n';
+const result = Bun.JSONL.parseChunk(input);
+
+console.log(result.values); // [{ a: 1 }] — values parsed before the error
+console.log(result.error); // SyntaxError
+console.log(result.read); // 7 — position up to last successful parse
+```
+
+***
+
+## Supported value types
+
+Each line can be any valid JSON value, not just objects:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+const input = '42\n"hello"\ntrue\nnull\n[1,2,3]\n{"key":"value"}\n';
+const values = Bun.JSONL.parse(input);
+// [42, "hello", true, null, [1, 2, 3], { key: "value" }]
+```
+
+***
+
+## Performance notes
+
+* **ASCII fast path**: Pure ASCII input is parsed directly without copying, using a zero-allocation `StringView`.
+* **UTF-8 support**: Non-ASCII `Uint8Array` input is decoded to UTF-16 using SIMD-accelerated conversion.
+* **BOM handling**: UTF-8 BOM (`0xEF 0xBB 0xBF`) at the start of a `Uint8Array` is automatically skipped.
+* **Pre-built object shape**: The result object from `parseChunk` uses a cached structure for fast property access.
 
 
 # JSX
@@ -34594,7 +36568,7 @@ The following compiler options are respected.
 
 How JSX constructs are transformed into vanilla JavaScript internally. The table below lists the possible values of `jsx`, along with their transpilation of the following simple JSX component:
 
-```tsx  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```tsx theme={"theme":{"light":"github-light","dark":"dracula"}}
 <Box width={5}>Hello</Box>
 ```
 
@@ -34753,13 +36727,13 @@ import { hello } from "./hello.js"; // this also works
 Bun supports both ES modules (`import`/`export` syntax) and CommonJS modules (`require()`/`module.exports`). The following CommonJS version would also work in Bun.
 
 <CodeGroup>
-  ```ts index.js icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+  ```js index.js icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
   const { hello } = require("./hello");
 
   hello();
   ```
 
-  ```ts hello.js icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+  ```js hello.js icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/javascript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=81efd0ad0d779debfa163bfd906ef6a6" theme={"theme":{"light":"github-light","dark":"dracula"}}
   function hello() {
     console.log("Hello world!");
   }
@@ -34865,11 +36839,11 @@ The full specification of this algorithm are officially documented in the [Node.
 
 Bun supports `NODE_PATH` for additional module resolution directories:
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 NODE_PATH=./packages bun run src/index.js
 ```
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // packages/foo/index.js
 export const hello = "world";
 
@@ -34879,7 +36853,7 @@ import { hello } from "foo";
 
 Multiple paths use the platform's delimiter (`:` on Unix, `;` on Windows):
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 NODE_PATH=./packages:./lib bun run src/index.js  # Unix/macOS
 NODE_PATH=./packages;./lib bun run src/index.js  # Windows
 ```
@@ -35004,7 +36978,7 @@ Bun also supports [Node.js-style subpath imports](https://nodejs.org/api/package
 <Accordion title="Low-level details of CommonJS interop in Bun">
   Bun's JavaScript runtime has native support for CommonJS. When Bun's JavaScript transpiler detects usages of `module.exports`, it treats the file as CommonJS. The module loader will then wrap the transpiled module in a function shaped like this:
 
-  ```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+  ```js theme={"theme":{"light":"github-light","dark":"dracula"}}
   (function (module, exports, require) {
     // transpiled module
   })(module, exports, require);
@@ -35057,7 +37031,7 @@ Use Bun's DNS module to resolve DNS records
 
 Bun implements it's own `dns` module, and the `node:dns` module.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import * as dns from "node:dns";
 
 const addrs = await dns.promises.resolve4("bun.com", { ttl: true });
@@ -35065,7 +37039,7 @@ console.log(addrs);
 // => [{ address: "172.67.161.226", family: 4, ttl: 0 }, ...]
 ```
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { dns } from "bun";
 
 dns.prefetch("bun.com", 443);
@@ -35094,7 +37068,7 @@ Web browsers expose [`<link rel="dns-prefetch">`](https://developer.mozilla.org/
 
 In Bun, you can use the `dns.prefetch` API to achieve the same effect.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { dns } from "bun";
 
 dns.prefetch("my.database-host.com", 5432);
@@ -35108,13 +37082,13 @@ An example where you might want to use this is a database driver. When your appl
 
 To prefetch a DNS entry, you can use the `dns.prefetch` API. This API is useful when you know you'll need to connect to a host soon and want to avoid the initial DNS lookup.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 dns.prefetch(hostname: string, port: number): void;
 ```
 
 Here's an example:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { dns } from "bun";
 
 dns.prefetch("bun.com", 443);
@@ -35129,7 +37103,7 @@ await fetch("https://bun.com");
 
 To get the current cache stats, you can use the `dns.getCacheStats` API. This API returns an object with the following properties:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
   cacheHitsCompleted: number; // Cache hits completed
   cacheHitsInflight: number; // Cache hits in flight
@@ -35142,7 +37116,7 @@ To get the current cache stats, you can use the `dns.getCacheStats` API. This AP
 
 Example:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { dns } from "bun";
 
 const stats = dns.getCacheStats();
@@ -35154,7 +37128,7 @@ console.log(stats);
 
 Bun defaults to 30 seconds for the TTL of DNS cache entries. To change this, you can set the environment variable `$BUN_CONFIG_DNS_TIME_TO_LIVE_SECONDS`. For example, to set the TTL to 5 seconds:
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 BUN_CONFIG_DNS_TIME_TO_LIVE_SECONDS=5 bun run my-script.ts
 ```
 
@@ -35176,7 +37150,7 @@ Bun also implements `node:http`, but `fetch` is generally recommended instead.
 
 To send an HTTP request, use `fetch`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const response = await fetch("http://example.com");
 
 console.log(response.status); // => 200
@@ -35186,13 +37160,13 @@ const text = await response.text(); // or response.json(), response.formData(), 
 
 `fetch` also works with HTTPS URLs.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const response = await fetch("https://example.com");
 ```
 
 You can also pass `fetch` a [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request) object.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const request = new Request("http://example.com", {
   method: "POST",
   body: "Hello, world!",
@@ -35205,7 +37179,7 @@ const response = await fetch(request);
 
 To send a POST request, pass an object with the `method` property set to `"POST"`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const response = await fetch("http://example.com", {
   method: "POST",
   body: "Hello, world!",
@@ -35216,19 +37190,35 @@ const response = await fetch("http://example.com", {
 
 ### Proxying requests
 
-To proxy a request, pass an object with the `proxy` property set to a URL.
+To proxy a request, pass an object with the `proxy` property set to a URL string:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const response = await fetch("http://example.com", {
   proxy: "http://proxy.com",
 });
 ```
 
+You can also use an object format to send custom headers to the proxy server:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+const response = await fetch("http://example.com", {
+  proxy: {
+    url: "http://proxy.com",
+    headers: {
+      "Proxy-Authorization": "Bearer my-token",
+      "X-Custom-Proxy-Header": "value",
+    },
+  },
+});
+```
+
+The `headers` are sent directly to the proxy in `CONNECT` requests (for HTTPS targets) or in the proxy request (for HTTP targets). If you provide a `Proxy-Authorization` header, it overrides any credentials in the proxy URL.
+
 ### Custom headers
 
 To set custom headers, pass an object with the `headers` property set to an object.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const response = await fetch("http://example.com", {
   headers: {
     "X-Custom-Header": "value",
@@ -35238,7 +37228,7 @@ const response = await fetch("http://example.com", {
 
 You can also set headers using the [Headers](https://developer.mozilla.org/en-US/docs/Web/API/Headers) object.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const headers = new Headers();
 headers.append("X-Custom-Header", "value");
 
@@ -35262,7 +37252,7 @@ To read the response body, use one of the following methods:
 
 You can use async iterators to stream the response body.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const response = await fetch("http://example.com");
 
 for await (const chunk of response.body) {
@@ -35272,7 +37262,7 @@ for await (const chunk of response.body) {
 
 You can also more directly access the `ReadableStream` object.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const response = await fetch("http://example.com");
 
 const stream = response.body;
@@ -35285,7 +37275,7 @@ const { value, done } = await reader.read();
 
 You can also stream data in request bodies using a `ReadableStream`:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const stream = new ReadableStream({
   start(controller) {
     controller.enqueue("Hello");
@@ -35317,7 +37307,7 @@ When using streams with S3:
 
 To fetch a URL with a timeout, use `AbortSignal.timeout`:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const response = await fetch("http://example.com", {
   signal: AbortSignal.timeout(1000),
 });
@@ -35327,7 +37317,7 @@ const response = await fetch("http://example.com", {
 
 To cancel a request, use an `AbortController`:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const controller = new AbortController();
 
 const response = await fetch("http://example.com", {
@@ -35341,7 +37331,7 @@ controller.abort();
 
 To fetch a URL using a Unix domain socket, use the `unix: string` option:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const response = await fetch("https://hostname/a/path", {
   unix: "/var/run/path/to/unix.sock",
   method: "POST",
@@ -35356,7 +37346,7 @@ const response = await fetch("https://hostname/a/path", {
 
 To use a client certificate, use the `tls` option:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 await fetch("https://example.com", {
   tls: {
     key: Bun.file("/path/to/key.pem"),
@@ -35370,7 +37360,7 @@ await fetch("https://example.com", {
 
 To customize the TLS validation, use the `checkServerIdentity` option in `tls`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 await fetch("https://example.com", {
   tls: {
     checkServerIdentity: (hostname, peerCertificate) => {
@@ -35386,7 +37376,7 @@ This is similar to how it works in Node's `net` module.
 
 To disable TLS validation, set `rejectUnauthorized` to `false`:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 await fetch("https://example.com", {
   tls: {
     rejectUnauthorized: false,
@@ -35400,7 +37390,7 @@ This is especially useful to avoid SSL errors when using self-signed certificate
 
 In addition to the standard fetch options, Bun provides several extensions:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const response = await fetch("http://example.com", {
   // Control automatic response decompression (default: true)
   // Supports gzip, deflate, brotli (br), and zstd
@@ -35422,7 +37412,7 @@ Beyond HTTP(S), Bun's fetch supports several additional protocols:
 
 Bun supports fetching from S3 buckets directly.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Using environment variables for credentials
 const response = await fetch("s3://my-bucket/path/to/object");
 
@@ -35444,14 +37434,14 @@ You can read more about Bun's S3 support in the [S3](/runtime/s3) documentation.
 
 You can fetch local files using the `file:` protocol:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const response = await fetch("file:///path/to/file.txt");
 const text = await response.text();
 ```
 
 On Windows, paths are automatically normalized:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Both work on Windows
 const response = await fetch("file:///C:/path/to/file.txt");
 const response2 = await fetch("file:///c:/path\\to/file.txt");
@@ -35461,7 +37451,7 @@ const response2 = await fetch("file:///c:/path\\to/file.txt");
 
 Bun supports the `data:` URL scheme:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const response = await fetch("data:text/plain;base64,SGVsbG8sIFdvcmxkIQ==");
 const text = await response.text(); // "Hello, World!"
 ```
@@ -35470,7 +37460,7 @@ const text = await response.text(); // "Hello, World!"
 
 You can fetch blobs using URLs created by `URL.createObjectURL()`:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const blob = new Blob(["Hello, World!"], { type: "text/plain" });
 const url = URL.createObjectURL(blob);
 const response = await fetch(url);
@@ -35496,7 +37486,7 @@ Bun automatically sets the `Content-Type` header for request bodies when not exp
 
 To help with debugging, you can pass `verbose: true` to `fetch`:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const response = await fetch("http://example.com", {
   verbose: true,
 });
@@ -35504,10 +37494,10 @@ const response = await fetch("http://example.com", {
 
 This will print the request and response headers to your terminal:
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 [fetch] > HTTP/1.1 GET http://example.com/
 [fetch] > Connection: keep-alive
-[fetch] > User-Agent: Bun/1.3.2
+[fetch] > User-Agent: Bun/1.3.3
 [fetch] > Accept: */*
 [fetch] > Host: example.com
 [fetch] > Accept-Encoding: gzip, deflate, br, zstd
@@ -35543,7 +37533,7 @@ At every step of the way, Bun provides APIs to help you optimize the performance
 
 To prefetch a DNS entry, you can use the `dns.prefetch` API. This API is useful when you know you'll need to connect to a host soon and want to avoid the initial DNS lookup.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { dns } from "bun";
 
 dns.prefetch("bun.com");
@@ -35559,7 +37549,7 @@ To learn more about DNS caching in Bun, see the [DNS caching](/runtime/networkin
 
 To preconnect to a host, you can use the `fetch.preconnect` API. This API is useful when you know you'll need to connect to a host soon and want to start the initial DNS lookup, TCP socket connection, and TLS handshake early.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { fetch } from "bun";
 
 fetch.preconnect("https://bun.com");
@@ -35571,7 +37561,7 @@ Note: calling `fetch` immediately after `fetch.preconnect` will not make your re
 
 To preconnect to a host at startup, you can pass `--fetch-preconnect`:
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun --fetch-preconnect https://bun.com ./my-script.ts
 ```
 
@@ -35594,8 +37584,8 @@ When the limit is exceeded, the requests are queued and sent as soon as the next
 
 You can increase the maximum number of simultaneous connections via the `BUN_CONFIG_MAX_HTTP_REQUESTS` environment variable:
 
-```sh  theme={"theme":{"light":"github-light","dark":"dracula"}}
-bun_CONFIG_MAX_HTTP_REQUESTS=512 bun ./my-script.ts
+```sh theme={"theme":{"light":"github-light","dark":"dracula"}}
+BUN_CONFIG_MAX_HTTP_REQUESTS=512 bun ./my-script.ts
 ```
 
 The max value for this limit is currently set to 65,336. The maximum port number is 65,535, so it's quite difficult for any one computer to exceed this limit.
@@ -35613,7 +37603,7 @@ Bun goes to great lengths to optimize the performance of reading the response bo
 
 You can also use `Bun.write` to write the response body to a file on disk:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { write } from "bun";
 
 await write("output.txt", response);
@@ -35772,7 +37762,7 @@ const socket = await Bun.connect({
 
 To require TLS, specify `tls: true`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // The client
 const socket = await Bun.connect({
   // ... config
@@ -35821,7 +37811,7 @@ Both TCP servers and sockets can be hot reloaded with new handlers.
 
 Currently, TCP sockets in Bun do not buffer data. For performance-sensitive code, it's important to consider buffering carefully. For example, this:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 socket.write("h");
 socket.write("e");
 socket.write("l");
@@ -35831,7 +37821,7 @@ socket.write("o");
 
 ...performs significantly worse than this:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 socket.write("hello");
 ```
 
@@ -35878,14 +37868,14 @@ Use Bun's UDP API to implement services with advanced real-time requirements, su
 
 To create a new (bound) UDP socket:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const socket = await Bun.udpSocket({});
 console.log(socket.port); // assigned by the operating system
 ```
 
 Specify a port:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const socket = await Bun.udpSocket({
   port: 41234, // [!code ++]
 });
@@ -35897,7 +37887,7 @@ console.log(socket.port); // 41234
 
 Specify the data to send, as well as the destination port and address.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 socket.send("Hello, world!", 41234, "127.0.0.1");
 ```
 
@@ -35989,7 +37979,7 @@ has happened when:
 * `send` returns `false`
 * `sendMany` returns a number smaller than the number of packets you specified. In this case, the `drain` socket handler will be called once the socket becomes writable again:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const socket = await Bun.udpSocket({
   socket: {
     drain(socket) {
@@ -35997,6 +37987,57 @@ const socket = await Bun.udpSocket({
     },
   },
 });
+```
+
+### Socket options
+
+UDP sockets support setting various socket options:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+const socket = await Bun.udpSocket({});
+
+// Enable broadcasting to send packets to a broadcast address
+socket.setBroadcast(true);
+
+// Set the IP TTL (time to live) for outgoing packets
+socket.setTTL(64);
+```
+
+### Multicast
+
+Bun supports multicast operations for UDP sockets. Use `addMembership` and `dropMembership` to join and leave multicast groups:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+const socket = await Bun.udpSocket({});
+
+// Join a multicast group
+socket.addMembership("224.0.0.1");
+
+// Join with a specific interface
+socket.addMembership("224.0.0.1", "192.168.1.100");
+
+// Leave a multicast group
+socket.dropMembership("224.0.0.1");
+```
+
+Additional multicast options:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+// Set TTL for multicast packets (number of network hops)
+socket.setMulticastTTL(2);
+
+// Control whether multicast packets loop back to the local socket
+socket.setMulticastLoopback(true);
+
+// Specify which interface to use for outgoing multicast packets
+socket.setMulticastInterface("192.168.1.100");
+```
+
+For source-specific multicast (SSM), use `addSourceSpecificMembership` and `dropSourceSpecificMembership`:
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+socket.addSourceSpecificMembership("10.0.0.1", "232.0.0.1");
+socket.dropSourceSpecificMembership("10.0.0.1", "232.0.0.1");
 ```
 
 
@@ -36009,13 +38050,13 @@ Node-API is an interface for building native add-ons to Node.js. Bun implements 
 
 As in Node.js, `.node` files (Node-API modules) can be required directly in Bun.
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 const napi = require("./my-node-module.node");
 ```
 
 Alternatively, use `process.dlopen`:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 let mod = { exports: {} };
 process.dlopen(mod, "./my-node-module.node");
 ```
@@ -36172,7 +38213,7 @@ This page is updated regularly to reflect compatibility status of the latest ver
 
 ### [`node:v8`](https://nodejs.org/api/v8.html)
 
-🟡 `writeHeapSnapshot` and `getHeapSnapshot` are implemented. `serialize` and `deserialize` use JavaScriptCore's wire format instead of V8's. Other methods are not implemented. For profiling, use [`bun:jsc`](/project/benchmarking#bunjsc) instead.
+🟡 `writeHeapSnapshot` and `getHeapSnapshot` are implemented. `serialize` and `deserialize` use JavaScriptCore's wire format instead of V8's. Other methods are not implemented. For profiling, use [`bun:jsc`](/project/benchmarking#javascript-heap-stats) instead.
 
 ### [`node:vm`](https://nodejs.org/api/vm.html)
 
@@ -36188,7 +38229,7 @@ This page is updated regularly to reflect compatibility status of the latest ver
 
 ### [`node:inspector`](https://nodejs.org/api/inspector.html)
 
-🔴 Not implemented.
+🟡 Partially implemented. `Profiler` API is supported (`Profiler.enable`, `Profiler.disable`, `Profiler.start`, `Profiler.stop`, `Profiler.setSamplingInterval`). Other inspector APIs are not yet implemented.
 
 ### [`node:repl`](https://nodejs.org/api/repl.html)
 
@@ -36268,7 +38309,7 @@ The table below lists all globals implemented by Node.js and Bun's current compa
 
 ### [`CompressionStream`](https://developer.mozilla.org/en-US/docs/Web/API/CompressionStream)
 
-🔴 Not implemented.
+🟢 Fully implemented.
 
 ### [`console`](https://developer.mozilla.org/en-US/docs/Web/API/console)
 
@@ -36296,7 +38337,7 @@ The table below lists all globals implemented by Node.js and Bun's current compa
 
 ### [`DecompressionStream`](https://developer.mozilla.org/en-US/docs/Web/API/DecompressionStream)
 
-🔴 Not implemented.
+🟢 Fully implemented.
 
 ### [`Event`](https://developer.mozilla.org/en-US/docs/Web/API/Event)
 
@@ -36594,7 +38635,7 @@ Other common namespaces are:
 
 ### `onStart`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 onStart(callback: () => void): Promise<void> | void;
 ```
 
@@ -36651,7 +38692,7 @@ Note that `onStart()` callbacks (like every other lifecycle callback) do not hav
 
 ### `onResolve`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 onResolve(
   args: { filter: RegExp; namespace?: string },
   callback: (args: { path: string; importer: string }) => {
@@ -36692,7 +38733,7 @@ plugin({
 
 ### `onLoad`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 onLoad(
   args: { filter: RegExp; namespace?: string },
   defer: () => Promise<void>,
@@ -36870,7 +38911,7 @@ pub fn replace_foo_with_bar(handle: &mut OnBeforeParse) -> Result<()> {
 
 And to use it in Bun.build():
 
-```typescript  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```typescript theme={"theme":{"light":"github-light","dark":"dracula"}}
 import myNativeAddon from "./my-native-addon";
 Bun.build({
   entrypoints: ["./app.tsx"],
@@ -36898,7 +38939,7 @@ Bun.build({
 
 ### `onBeforeParse`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 onBeforeParse(
   args: { filter: RegExp; namespace?: string },
   callback: { napiModule: NapiModule; symbol: string; external?: unknown },
@@ -37505,8 +39546,8 @@ Production servers often read, upload, and write files to S3-compatible object s
 
 ### Bun's S3 API is fast
 
-<Frame caption="Left: Bun v1.1.44. Right: Node.js v23.6.0">
-  <img src="https://mintcdn.com/bun-1dd33a4e/DJXb5ll7I0cV-M4b/images/bun-s3-node.gif?s=2aa9cc04d2ae08fae0838cac5d18154b" alt="Bun's S3 API is fast" data-og-width="1800" width="1800" data-og-height="1095" height="1095" data-path="images/bun-s3-node.gif" data-optimize="true" data-opv="3" />
+<Frame>
+  <img alt="Bun's S3 API is fast" />
 </Frame>
 
 Bun provides fast, native bindings for interacting with S3-compatible object storage services. Bun's S3 API is designed to be simple and feel similar to fetch's `Response` and `Blob` APIs (like Bun's local filesystem APIs).
@@ -37633,6 +39674,18 @@ await s3file.write(JSON.stringify({ name: "John", age: 30 }), {
   type: "application/json",
 });
 
+// Write with content encoding (e.g. for pre-compressed data)
+await s3file.write(compressedData, {
+  type: "application/json",
+  contentEncoding: "gzip",
+});
+
+// Write with content disposition
+await s3file.write(pdfData, {
+  type: "application/pdf",
+  contentDisposition: 'attachment; filename="report.pdf"',
+});
+
 // Write using a writer (streaming)
 const writer = s3file.writer({ type: "application/json" });
 writer.write("Hello");
@@ -37686,7 +39739,13 @@ const download = s3.presign("my-file.txt"); // GET, text/plain, expires in 24 ho
 const upload = s3.presign("my-file", {
   expiresIn: 3600, // 1 hour
   method: "PUT",
-  type: "application/json", // No extension for inferring, so we can specify the content type to be JSON
+  type: "application/json", // Sets response-content-type in the presigned URL
+});
+
+// Presign with content disposition (e.g. force download with a specific filename)
+const downloadUrl = s3.presign("report.pdf", {
+  expiresIn: 3600,
+  contentDisposition: 'attachment; filename="quarterly-report.pdf"',
 });
 
 // You can call .presign() if on a file reference, but avoid doing so
@@ -37764,7 +39823,7 @@ const response = new Response(s3file);
 console.log(response);
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 Response (0 KB) {
   ok: false,
   url: "",
@@ -38038,7 +40097,7 @@ const exists = await client.exists("my-file.txt");
 
 `S3File` instances are created by calling the `S3Client` instance method or the `s3.file()` function. Like `Bun.file()`, `S3File` instances are lazy. They don't refer to something that necessarily exists at the time of creation. That's why all the methods that don't involve network requests are fully synchronous.
 
-```ts Type Reference icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240"  expandable theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts Type Reference icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" expandable theme={"theme":{"light":"github-light","dark":"dracula"}}
 interface S3File extends Blob {
   slice(start: number, end?: number): S3File;
   exists(): Promise<boolean>;
@@ -38087,7 +40146,7 @@ That means using `S3File` instances with `fetch()`, `Response`, and other web AP
 
 To read a partial range of a file, you can use the `slice` method.
 
-```ts s3.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240"  highlight={1} theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts s3.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" highlight={1} theme={"theme":{"light":"github-light","dark":"dracula"}}
 const partial = s3file.slice(0, 1024);
 
 // Read the partial range as a Uint8Array
@@ -38231,7 +40290,7 @@ This is equivalent to calling `new S3Client(credentials).list()`.
 
 To check if an S3 file exists, you can use the `S3Client.exists` static method.
 
-```ts s3.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240"  highlight={11} theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts s3.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" highlight={11} theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { S3Client } from "bun";
 
 const credentials = {
@@ -38295,7 +40354,7 @@ const credentials = {
 const stat = await S3Client.stat("my-file.txt", credentials);
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
   etag: "\"7a30b741503c0b461cc14157e2df4ad8\"",
   lastModified: 2025-01-07T00:19:10.000Z,
@@ -38373,24 +40432,28 @@ Store and retrieve sensitive credentials securely using the operating system's n
 ```typescript index.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { secrets } from "bun";
 
-const githubToken = await secrets.get({
+let githubToken: string | null = await secrets.get({
   service: "my-cli-tool",
   name: "github-token",
 });
 
 if (!githubToken) {
-  const response = await fetch("https://api.github.com/name", {
-    headers: { Authorization: `token ${githubToken}` },
-  });
-  console.log("Please enter your GitHub token");
-} else {
+  githubToken = prompt("Please enter your GitHub token");
+
   await secrets.set({
     service: "my-cli-tool",
     name: "github-token",
-    value: prompt("Please enter your GitHub token"),
+    value: githubToken,
   });
+
   console.log("GitHub token stored");
 }
+
+const response = await fetch("https://api.github.com/user", {
+  headers: { Authorization: `token ${githubToken}` },
+});
+
+console.log(`Logged in as ${(await response.json()).login}`);
 ```
 
 ***
@@ -38418,7 +40481,7 @@ All operations are asynchronous and non-blocking, running on Bun's threadpool.
 
 Retrieve a stored credential.
 
-```typescript  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```typescript theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { secrets } from "bun";
 
 const password = await Bun.secrets.get({
@@ -38444,7 +40507,7 @@ const password = await Bun.secrets.get("my-app", "alice@example.com");
 
 Store or update a credential.
 
-```typescript  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```typescript theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { secrets } from "bun";
 
 await secrets.set({
@@ -38469,7 +40532,7 @@ await secrets.set({
 
 Delete a stored credential.
 
-```typescript  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```typescript theme={"theme":{"light":"github-light","dark":"dracula"}}
 const deleted = await Bun.secrets.delete({
   service: "my-app",
   name: "alice@example.com",
@@ -38493,7 +40556,7 @@ const deleted = await Bun.secrets.delete({
 
 ### Storing CLI Tool Credentials
 
-```javascript  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```javascript theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Store GitHub CLI token (instead of ~/.config/gh/hosts.yml)
 await Bun.secrets.set({
   service: "my-app.com",
@@ -38528,7 +40591,7 @@ if (token) {
 
 ### Migrating from Plaintext Config Files
 
-```javascript  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```javascript theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Instead of storing in ~/.aws/credentials
 await Bun.secrets.set({
   service: "aws-cli",
@@ -38553,7 +40616,7 @@ const apiKey =
 
 ### Error Handling
 
-```javascript  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```javascript theme={"theme":{"light":"github-light","dark":"dracula"}}
 try {
   await Bun.secrets.set({
     service: "my-app",
@@ -38577,7 +40640,7 @@ if (password === null) {
 
 ### Updating Credentials
 
-```javascript  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```javascript theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Initial password
 await Bun.secrets.set({
   service: "email-server",
@@ -38659,7 +40722,7 @@ Unlike environment variables, `Bun.secrets`:
 1. **Use descriptive service names**: Match the tool or application name
    If you're building a CLI for external use, you probably should use a UTI (Uniform Type Identifier) for the service name.
 
-   ```javascript  theme={"theme":{"light":"github-light","dark":"dracula"}}
+   ```javascript theme={"theme":{"light":"github-light","dark":"dracula"}}
    // Good - matches the actual tool
    { service: "com.docker.hub", name: "username" }
    { service: "com.vercel.cli", name: "team-name" }
@@ -38681,7 +40744,7 @@ Unlike environment variables, `Bun.secrets`:
 
 ## TypeScript
 
-```typescript  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```typescript theme={"theme":{"light":"github-light","dark":"dracula"}}
 namespace Bun {
   interface SecretsOptions {
     service: string;
@@ -38718,7 +40781,7 @@ Returns `true` if `version` satisfies `range`, otherwise `false`.
 
 Example:
 
-```typescript  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```typescript theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { semver } from "bun";
 
 semver.satisfies("1.0.0", "^1.0.0"); // true
@@ -38743,7 +40806,7 @@ Returns `0` if `versionA` and `versionB` are equal, `1` if `versionA` is greater
 
 Example:
 
-```typescript  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```typescript theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { semver } from "bun";
 
 semver.order("1.0.0", "1.0.0"); // 0
@@ -38795,7 +40858,7 @@ await $`cat < ${response} | wc -c`; // 1256
 
 The simplest shell command is `echo`. To run it, use the `$` template literal tag:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 await $`echo "Hello World!"`; // Hello World!
@@ -38803,7 +40866,7 @@ await $`echo "Hello World!"`; // Hello World!
 
 By default, shell commands print to stdout. To quiet the output, call `.quiet()`:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 await $`echo "Hello World!"`.quiet(); // No output
@@ -38811,7 +40874,7 @@ await $`echo "Hello World!"`.quiet(); // No output
 
 What if you want to access the output of the command as text? Use `.text()`:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 // .text() automatically calls .quiet() for you
@@ -38822,7 +40885,7 @@ console.log(welcome); // Hello World!\n
 
 By default, `await`ing will return stdout and stderr as `Buffer`s.
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 const { stdout, stderr } = await $`echo "Hello!"`.quiet();
@@ -38837,7 +40900,7 @@ console.log(stderr); // Buffer(0) []
 
 By default, non-zero exit codes will throw an error. This `ShellError` contains information about the command run.
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 try {
@@ -38852,7 +40915,7 @@ try {
 
 Throwing can be disabled with `.nothrow()`. The result's `exitCode` will need to be checked manually.
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 const { stdout, stderr, exitCode } = await $`something-that-may-fail`.nothrow().quiet();
@@ -38867,7 +40930,7 @@ console.log(stderr);
 
 The default handling of non-zero exit codes can be configured by calling `.nothrow()` or `.throws(boolean)` on the `$` function itself.
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 // shell promises will not throw, meaning you will have to
 // check for `exitCode` manually on every shell command.
@@ -38904,7 +40967,7 @@ Bun Shell also supports redirecting from and to JavaScript objects.
 
 To redirect stdout to a JavaScript object, use the `>` operator:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 const buffer = Buffer.alloc(100);
@@ -38922,7 +40985,7 @@ The following JavaScript objects are supported for redirection to:
 
 To redirect the output from JavaScript objects to stdin, use the `<` operator:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 const response = new Response("hello i am a response body");
@@ -38940,7 +41003,7 @@ The following JavaScript objects are supported for redirection from:
 
 ### Example: Redirect stdin -> file
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 await $`cat < myfile.txt`;
@@ -38948,7 +41011,7 @@ await $`cat < myfile.txt`;
 
 ### Example: Redirect stdout -> file
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 await $`echo bun! > greeting.txt`;
@@ -38956,7 +41019,7 @@ await $`echo bun! > greeting.txt`;
 
 ### Example: Redirect stderr -> file
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 await $`bun run index.ts 2> errors.txt`;
@@ -38964,7 +41027,7 @@ await $`bun run index.ts 2> errors.txt`;
 
 ### Example: Redirect stderr -> stdout
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 // redirects stderr to stdout, so all output
@@ -38974,7 +41037,7 @@ await $`bun run ./index.ts 2>&1`;
 
 ### Example: Redirect stdout -> stderr
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 // redirects stdout to stderr, so all output
@@ -38986,7 +41049,7 @@ await $`bun run ./index.ts 1>&2`;
 
 Like in bash, you can pipe the output of one command to another:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 const result = await $`echo "Hello World!" | wc -w`.text();
@@ -38996,7 +41059,7 @@ console.log(result); // 2\n
 
 You can also pipe with JavaScript objects:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 const response = new Response("hello i am a response body");
@@ -39010,7 +41073,7 @@ console.log(result); // 6\n
 
 Command substitution allows you to substitute the output of another script into the current script:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 // Prints out the hash of the current commit
@@ -39019,7 +41082,7 @@ await $`echo Hash of current commit: $(git rev-parse HEAD)`;
 
 This is a textual insertion of the command's output and can be used to, for example, declare a shell variable:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 await $`
@@ -39059,7 +41122,7 @@ await $`
 
 Environment variables can be set like in bash:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 await $`FOO=foo bun -e 'console.log(process.env.FOO)'`; // foo\n
@@ -39067,7 +41130,7 @@ await $`FOO=foo bun -e 'console.log(process.env.FOO)'`; // foo\n
 
 You can use string interpolation to set environment variables:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 const foo = "bar123";
@@ -39077,7 +41140,7 @@ await $`FOO=${foo + "456"} bun -e 'console.log(process.env.FOO)'`; // bar123456\
 
 Input is escaped by default, preventing shell injection attacks:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 const foo = "bar123; rm -rf /tmp";
@@ -39091,7 +41154,7 @@ By default, `process.env` is used as the environment variables for all commands.
 
 You can change the environment variables for a single command by calling `.env()`:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 await $`echo $FOO`.env({ ...process.env, FOO: "bar" }); // bar
@@ -39099,7 +41162,7 @@ await $`echo $FOO`.env({ ...process.env, FOO: "bar" }); // bar
 
 You can change the default environment variables for all commands by calling `$.env`:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 $.env({ FOO: "bar" });
@@ -39113,7 +41176,7 @@ await $`echo $FOO`.env({ FOO: "baz" }); // baz
 
 You can reset the environment variables to the default by calling `$.env()` with no arguments:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 $.env({ FOO: "bar" });
@@ -39129,7 +41192,7 @@ await $`echo $FOO`.env(undefined); // ""
 
 You can change the working directory of a command by passing a string to `.cwd()`:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 await $`pwd`.cwd("/tmp"); // /tmp
@@ -39137,7 +41200,7 @@ await $`pwd`.cwd("/tmp"); // /tmp
 
 You can change the default working directory for all commands by calling `$.cwd`:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 $.cwd("/tmp");
@@ -39155,7 +41218,7 @@ await $`pwd`.cwd("/"); // /
 
 To read the output of a command as a string, use `.text()`:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 const result = await $`echo "Hello World!"`.text();
@@ -39167,7 +41230,7 @@ console.log(result); // Hello World!\n
 
 To read the output of a command as JSON, use `.json()`:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 const result = await $`echo '{"foo": "bar"}'`.json();
@@ -39179,7 +41242,7 @@ console.log(result); // { foo: "bar" }
 
 To read the output of a command line-by-line, use `.lines()`:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 for await (let line of $`echo "Hello World!"`.lines()) {
@@ -39189,7 +41252,7 @@ for await (let line of $`echo "Hello World!"`.lines()) {
 
 You can also use `.lines()` on a completed command:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 const search = "bun";
@@ -39203,7 +41266,7 @@ for await (let line of $`cat list.txt | grep ${search}`.lines()) {
 
 To read the output of a command as a Blob, use `.blob()`:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 const result = await $`echo "Hello World!"`.blob();
@@ -39218,7 +41281,7 @@ console.log(result); // Blob(13) { size: 13, type: "text/plain" }
 For cross-platform compatibility, Bun Shell implements a set of builtin commands, in addition to reading commands from the PATH environment variable.
 
 * `cd`: change the working directory
-* `ls`: list files in a directory
+* `ls`: list files in a directory (supports `-l` for long listing format)
 * `rm`: remove files and directories
 * `echo`: print text
 * `pwd`: print the working directory
@@ -39254,7 +41317,7 @@ Bun Shell also implements a set of utilities for working with shells.
 
 This function implements simple [brace expansion](https://www.gnu.org/software/bash/manual/html_node/Brace-Expansion.html) for shell commands:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 await $.braces(`echo {1,2,3}`);
@@ -39265,7 +41328,7 @@ await $.braces(`echo {1,2,3}`);
 
 Exposes Bun Shell's escaping logic as a function:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 console.log($.escape('$(foo) `bar` "baz"'));
@@ -39274,7 +41337,7 @@ console.log($.escape('$(foo) `bar` "baz"'));
 
 If you do not want your string to be escaped, wrap it in a `{ raw: 'str' }` object:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 await $`echo ${{ raw: '$(foo) `bar` "baz"' }}`;
@@ -39299,7 +41362,7 @@ echo "Hello World! pwd=$(pwd)"
 bun ./script.sh
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 Hello World! pwd=/home/demo
 ```
 
@@ -39309,7 +41372,7 @@ Scripts with Bun Shell are cross platform, which means they work on Windows:
 bun .\script.sh
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 Hello World! pwd=C:\Users\Demo
 ```
 
@@ -39331,7 +41394,7 @@ When parsing command arguments, it treats all *interpolated variables* as single
 
 This protects the Bun shell against **command injection**:
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 const userInput = "my-file.txt; rm -rf /";
@@ -39355,7 +41418,7 @@ execute a command which spawns a new shell (e.g. `bash -c`) with arguments.
 When you do this, you hand off control, and Bun's built-in protections no
 longer apply to the string interpreted by that new shell.
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 const userInput = "world; touch /tmp/pwned";
@@ -39372,7 +41435,7 @@ The Bun shell cannot know how an external command interprets its own
 command-line arguments. An attacker can supply input that the target program
 recognizes as one of its own options or flags, leading to unintended behavior.
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { $ } from "bun";
 
 // Malicious input formatted as a Git command-line flag
@@ -39506,7 +41569,7 @@ await mysql`INSERT INTO users ${mysql(newUsers)}`;
 <Accordion title="MySQL Connection String Formats">
   MySQL accepts various URL formats for connection strings:
 
-  ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+  ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
   // Standard mysql:// protocol
   new SQL("mysql://user:pass@localhost:3306/database");
   new SQL("mysql://user:pass@localhost/database"); // Default port 3306
@@ -39538,7 +41601,7 @@ await mysql`INSERT INTO users ${mysql(newUsers)}`;
 
 SQLite support is built into Bun.SQL, providing the same tagged template literal interface:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { SQL } from "bun";
 
 // In-memory database
@@ -39546,22 +41609,22 @@ const memory = new SQL(":memory:");
 const memory2 = new SQL("sqlite://:memory:");
 
 // File-based database
-const db = new SQL("sqlite://myapp.db");
+const sql1 = new SQL("sqlite://myapp.db");
 
 // Using options object
-const db2 = new SQL({
+const sql2 = new SQL({
   adapter: "sqlite",
   filename: "./data/app.db",
 });
 
 // For simple filenames, specify adapter explicitly
-const db3 = new SQL("myapp.db", { adapter: "sqlite" });
+const sql3 = new SQL("myapp.db", { adapter: "sqlite" });
 ```
 
 <Accordion title="SQLite Connection String Formats">
   SQLite accepts various URL formats for connection strings:
 
-  ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+  ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
   // Standard sqlite:// protocol
   new SQL("sqlite://path/to/database.db");
   new SQL("sqlite:path/to/database.db"); // Without slashes
@@ -39594,8 +41657,8 @@ const db3 = new SQL("myapp.db", { adapter: "sqlite" });
 <Accordion title="SQLite-Specific Options">
   SQLite databases support additional configuration options:
 
-  ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
-  const db = new SQL({
+  ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+  const sql = new SQL({
     adapter: "sqlite",
     filename: "app.db",
 
@@ -39621,7 +41684,7 @@ const db3 = new SQL("myapp.db", { adapter: "sqlite" });
 
 You can pass JavaScript values directly to the SQL template literal and escaping will be handled for you.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { sql } from "bun";
 
 // Basic insert with direct values
@@ -39648,7 +41711,7 @@ const [newUser] = await sql`
 
 You can also pass arrays of objects to the SQL template literal and it will be expanded to a `INSERT INTO ... VALUES ...` statement.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const users = [
   { name: "Alice", email: "alice@example.com" },
   { name: "Bob", email: "bob@example.com" },
@@ -39662,7 +41725,7 @@ await sql`INSERT INTO users ${sql(users)}`;
 
 You can use `sql(object, ...string)` to pick which columns to insert. Each of the columns must be defined on the object.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const user = {
   name: "Alice",
   email: "alice@example.com",
@@ -39683,14 +41746,14 @@ By default, Bun's SQL client returns query results as arrays of objects, where e
 
 The `sql``.values()` method returns rows as arrays of values rather than objects. Each row becomes an array where the values are in the same order as the columns in your query.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const rows = await sql`SELECT * FROM users`.values();
 console.log(rows);
 ```
 
 This returns something like:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 [
   ["Alice", "alice@example.com"],
   ["Bob", "bob@example.com"],
@@ -39703,7 +41766,7 @@ This returns something like:
 
 The `.raw()` method returns rows as arrays of `Buffer` objects. This can be useful for working with binary data or for performance reasons.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const rows = await sql`SELECT * FROM users`.raw();
 console.log(rows); // [[Buffer, Buffer], [Buffer, Buffer], [Buffer, Buffer]]
 ```
@@ -39718,7 +41781,7 @@ A common need in database applications is the ability to construct queries dynam
 
 When you need to reference tables or schemas dynamically, use the `sql()` helper to ensure proper escaping:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Safely reference tables dynamically
 await sql`SELECT * FROM ${sql("users")}`;
 
@@ -39730,7 +41793,7 @@ await sql`SELECT * FROM ${sql("public.users")}`;
 
 You can use the `sql()` helper to build queries with conditional clauses. This allows you to create flexible queries that adapt to your application's needs:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Optional WHERE clauses
 const filterAge = true;
 const minAge = 21;
@@ -39746,7 +41809,7 @@ await sql`
 
 You can use `sql(object, ...string)` to pick which columns to update. Each of the columns must be defined on the object. If the columns are not informed all keys will be used to update the row.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 await sql`UPDATE users SET ${sql(user, "name", "email")} WHERE id = ${user.id}`;
 // uses all keys from the object to update the row
 await sql`UPDATE users SET ${sql(user)} WHERE id = ${user.id}`;
@@ -39756,7 +41819,7 @@ await sql`UPDATE users SET ${sql(user)} WHERE id = ${user.id}`;
 
 Value lists can also be created dynamically, making where in queries simple too. Optionally you can pass a array of objects and inform what key to use to create the list.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 await sql`SELECT * FROM users WHERE id IN ${sql([1, 2, 3])}`;
 
 const users = [
@@ -39771,7 +41834,7 @@ await sql`SELECT * FROM users WHERE id IN ${sql(users, "id")}`;
 
 The `sql.array` helper creates PostgreSQL array literals from JavaScript arrays:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Create array literals for PostgreSQL
 await sql`INSERT INTO tags (items) VALUES (${sql.array(["red", "blue", "green"])})`;
 // Generates: INSERT INTO tags (items) VALUES (ARRAY['red', 'blue', 'green'])
@@ -39791,7 +41854,7 @@ The PostgreSQL wire protocol supports two types of queries: "simple" and "extend
 
 To run multiple statements in a single query, use `sql``.simple()`:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Multiple statements in one query
 await sql`
   SELECT 1;
@@ -39807,7 +41870,7 @@ Note that simple queries cannot use parameters (`${value}`). If you need paramet
 
 You can use the `sql.file` method to read a query from a file and execute it, if the file includes $1, $2, etc you can pass parameters to the query. If no parameters are used it can execute multiple commands per file.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const result = await sql.file("query.sql", [1, 2, 3]);
 ```
 
@@ -39815,7 +41878,7 @@ const result = await sql.file("query.sql", [1, 2, 3]);
 
 You can use the `sql.unsafe` function to execute raw SQL strings. Use this with caution, as it will not escape user input. Executing more than one command per query is allowed if no parameters are used.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Multiple commands without parameters
 const result = await sql.unsafe(`
   SELECT ${userColumns} FROM users;
@@ -39831,8 +41894,8 @@ const result = await sql.unsafe("SELECT " + dangerous + " FROM users WHERE id = 
 Bun's SQL is lazy, which means it will only start executing when awaited or executed with `.execute()`.
 You can cancel a query that is currently executing by calling the `cancel()` method on the query object.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
-const query = await sql`SELECT * FROM users`.execute();
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+const query = sql`SELECT * FROM users`.execute();
 setTimeout(() => query.cancel(), 100);
 await query;
 ```
@@ -39854,7 +41917,7 @@ MySQL is automatically selected when the connection string matches these pattern
 * `mysql://...` - MySQL protocol URLs
 * `mysql2://...` - MySQL2 protocol URLs (compatibility alias)
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // These all use MySQL automatically (no adapter needed)
 const sql1 = new SQL("mysql://user:pass@localhost/mydb");
 const sql2 = new SQL("mysql2://user:pass@localhost:3306/mydb");
@@ -39874,7 +41937,7 @@ SQLite is automatically selected when the connection string matches these patter
 * `file://...` - File protocol URLs
 * `file:...` - File protocol without slashes
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // These all use SQLite automatically (no adapter needed)
 const sql1 = new SQL(":memory:");
 const sql2 = new SQL("sqlite://app.db");
@@ -39890,7 +41953,7 @@ DATABASE_URL="file://./data/app.db" bun run app.js
 
 PostgreSQL is the default for connection strings that don't match MySQL or SQLite patterns:
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 # PostgreSQL is detected for these patterns
 DATABASE_URL="postgres://user:pass@localhost:5432/mydb" bun run app.js
 DATABASE_URL="postgresql://user:pass@localhost:5432/mydb" bun run app.js
@@ -39903,7 +41966,7 @@ DATABASE_URL="localhost:5432/mydb" bun run app.js
 
 MySQL connections can be configured via environment variables:
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 # Primary connection URL (checked first)
 MYSQL_URL="mysql://user:pass@localhost:3306/mydb"
 
@@ -39951,7 +42014,7 @@ If no connection URL is provided, the system checks for the following individual
 
 SQLite connections can be configured via `DATABASE_URL` when it contains a SQLite-compatible URL:
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 # These are all recognized as SQLite
 DATABASE_URL=":memory:"
 DATABASE_URL="sqlite://./app.db"
@@ -39966,7 +42029,7 @@ DATABASE_URL="file:///absolute/path/to/db.sqlite"
 
 Bun can preconnect to PostgreSQL at startup to improve performance by establishing database connections before your application code runs. This is useful for reducing connection latency on the first database query.
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 # Enable PostgreSQL preconnection
 bun --sql-preconnect index.js
 
@@ -39987,10 +42050,10 @@ You can configure your database connection manually by passing options to the SQ
 
 ### MySQL Options
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { SQL } from "bun";
 
-const db = new SQL({
+const sql = new SQL({
   // Required for MySQL when using options object
   adapter: "mysql",
 
@@ -40035,10 +42098,10 @@ const db = new SQL({
 
 ### PostgreSQL Options
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { SQL } from "bun";
 
-const db = new SQL({
+const sql = new SQL({
   // Connection details (adapter is auto-detected as PostgreSQL)
   url: "postgres://user:pass@localhost:5432/dbname",
 
@@ -40080,10 +42143,10 @@ const db = new SQL({
 
 ### SQLite Options
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { SQL } from "bun";
 
-const db = new SQL({
+const sql = new SQL({
   // Required for SQLite
   adapter: "sqlite",
   filename: "./data/app.db", // or ":memory:" for in-memory database
@@ -40120,7 +42183,7 @@ const db = new SQL({
 
 When clients need to use alternative authentication schemes such as access tokens or connections to databases with rotating passwords, provide either a synchronous or asynchronous function that will resolve the dynamic password value at connection time.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { SQL } from "bun";
 
 const sql = new SQL(url, {
@@ -40139,7 +42202,7 @@ const sql = new SQL(url, {
 
 SQLite executes queries synchronously, unlike PostgreSQL which uses asynchronous I/O. However, the API remains consistent using Promises:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const sqlite = new SQL("sqlite://app.db");
 
 // Works the same as PostgreSQL, but executes synchronously under the hood
@@ -40153,7 +42216,7 @@ const user = await sqlite`SELECT * FROM users WHERE id = ${userId}`;
 
 You can use PRAGMA statements to configure SQLite behavior:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const sqlite = new SQL("sqlite://app.db");
 
 // Enable foreign keys
@@ -40170,7 +42233,7 @@ const integrity = await sqlite`PRAGMA integrity_check`;
 
 SQLite has a more flexible type system than PostgreSQL:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // SQLite stores data in 5 storage classes: NULL, INTEGER, REAL, TEXT, BLOB
 const sqlite = new SQL("sqlite://app.db");
 
@@ -40198,7 +42261,7 @@ The `BEGIN` command is sent automatically, including any optional configurations
 
 ### Basic Transactions
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 await sql.begin(async tx => {
   // All queries in this function run in a transaction
   await tx`INSERT INTO users (name) VALUES (${"Alice"})`;
@@ -40211,7 +42274,7 @@ await sql.begin(async tx => {
 
 It's also possible to pipeline the requests in a transaction if needed by returning an array with queries from the callback function like this:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 await sql.begin(async tx => {
   return [
     tx`INSERT INTO users (name) VALUES (${"Alice"})`,
@@ -40224,7 +42287,7 @@ await sql.begin(async tx => {
 
 Savepoints in SQL create intermediate checkpoints within a transaction, enabling partial rollbacks without affecting the entire operation. They are useful in complex transactions, allowing error recovery and maintaining consistent results.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 await sql.begin(async tx => {
   await tx`INSERT INTO users (name) VALUES (${"Alice"})`;
 
@@ -40253,7 +42316,7 @@ PostgreSQL natively supports them through prepared transactions, while MySQL use
 
 If any exceptions occur during the distributed transaction and aren't caught, the system will automatically rollback all changes. When everything proceeds normally, you maintain the flexibility to either commit or rollback the transaction later.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Begin a distributed transaction
 await sql.beginDistributed("tx1", async tx => {
   await tx`INSERT INTO users (name) VALUES (${"Alice"})`;
@@ -40275,7 +42338,7 @@ Bun supports SCRAM-SHA-256 (SASL), MD5, and Clear Text authentication. SASL is r
 
 PostgreSQL supports different SSL/TLS modes to control how secure connections are established. These modes determine the behavior when connecting and the level of certificate verification performed.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const sql = new SQL({
   hostname: "localhost",
   username: "user",
@@ -40296,7 +42359,7 @@ const sql = new SQL({
 
 The SSL mode can also be specified in connection strings:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Using prefer mode
 const sql = new SQL("postgres://user:password@localhost/mydb?sslmode=prefer");
 
@@ -40310,8 +42373,8 @@ const sql = new SQL("postgres://user:password@localhost/mydb?sslmode=verify-full
 
 Bun's SQL client automatically manages a connection pool, which is a pool of database connections that are reused for multiple queries. This helps to reduce the overhead of establishing and closing connections for each query, and it also helps to manage the number of concurrent connections to the database.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
-const db = new SQL({
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+const sql = new SQL({
   // Pool configuration
   max: 20, // Maximum 20 concurrent connections
   idleTimeout: 30, // Close idle connections after 30s
@@ -40322,8 +42385,8 @@ const db = new SQL({
 
 No connection will be made until a query is made.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
-const sql = Bun.sql(); // no connection are created
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+const sql = Bun.SQL(); // no connection are created
 
 await sql`...`; // pool is started until max is reached (if possible), first available connection is used
 await sql`...`; // previous connection is reused
@@ -40345,7 +42408,7 @@ await sql.close({ timeout: 0 }); // close all connections from the pool immediat
 
 Bun enables you to reserve a connection from the pool, and returns a client that wraps the single connection. This can be used for running queries on an isolated connection.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Get exclusive connection from pool
 const reserved = await sql.reserve();
 
@@ -40369,7 +42432,7 @@ try {
 
 By default, Bun's SQL client automatically creates named prepared statements for queries where it can be inferred that the query is static. This provides better performance. However, you can change this behavior by setting `prepare: false` in the connection options:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const sql = new SQL({
   // ... other options ...
   prepare: false, // Disable persisting named prepared statements on the server
@@ -40401,7 +42464,7 @@ The client provides typed errors for different failure scenarios. Errors are dat
 
 ### Error Classes
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { SQL } from "bun";
 
 try {
@@ -40515,7 +42578,7 @@ SQLite errors provide error codes and numbers that correspond to SQLite's standa
 
   Example error handling:
 
-  ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+  ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
   const sqlite = new SQL("sqlite://app.db");
 
   try {
@@ -40538,7 +42601,7 @@ SQLite errors provide error codes and numbers that correspond to SQLite's standa
 
 Bun's SQL client includes special handling for large numbers that exceed the range of a 53-bit integer. Here's how it works:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { sql } from "bun";
 
 const [{ x, y }] = await sql`SELECT 9223372036854777 as x, 12345 as y`;
@@ -40553,7 +42616,7 @@ console.log(typeof y, y); // "number" 12345
 
 If you need large numbers as BigInt instead of strings, you can enable this by setting the `bigint` option to `true` when initializing the SQL client:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const sql = new SQL({
   bigint: true,
 });
@@ -40591,7 +42654,7 @@ The client automatically handles authentication plugin switching when requested 
 
 MySQL uses server-side prepared statements for all parameterized queries:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // This automatically creates a prepared statement on the server
 const user = await mysql`SELECT * FROM users WHERE id = ${userId}`;
 
@@ -40613,7 +42676,7 @@ const [users, orders, products] = await Promise.all([
 
 MySQL can return multiple result sets from multi-statement queries:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const mysql = new SQL("mysql://user:pass@localhost/mydb");
 
 // Multi-statement queries with simple() method
@@ -40631,7 +42694,7 @@ Bun.SQL automatically uses `utf8mb4` character set for MySQL connections, ensuri
 
 Bun automatically sends client information to MySQL for better monitoring:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // These attributes are sent automatically:
 // _client_name: "Bun"
 // _client_version: <bun version>
@@ -40692,7 +42755,7 @@ We also haven't implemented some of the more uncommon features like:
 
 ### Working with MySQL Result Sets
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Getting insert ID after INSERT
 const result = await mysql`INSERT INTO users (name) VALUES (${"Alice"})`;
 console.log(result.lastInsertRowid); // MySQL's LAST_INSERT_ID()
@@ -40708,7 +42771,7 @@ const uuid = await mysql`SELECT UUID() as id`;
 
 ### MySQL Error Handling
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 try {
   await mysql`INSERT INTO users (email) VALUES (${"duplicate@email.com"})`;
 } catch (error) {
@@ -40751,7 +42814,7 @@ try {
   <Accordion title="Are MySQL stored procedures supported?">
     Yes, stored procedures are fully supported including OUT parameters and multiple result sets:
 
-    ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
     // Call stored procedure
     const results = await mysql`CALL GetUserStats(${userId}, @total_orders)`;
 
@@ -40763,7 +42826,7 @@ try {
   <Accordion title="Can I use MySQL-specific SQL syntax?">
     Yes, you can use any MySQL-specific syntax:
 
-    ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+    ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
     // MySQL-specific syntax works fine
     await mysql`SET @user_id = ${userId}`;
     await mysql`SHOW TABLES`;
@@ -40804,7 +42867,7 @@ const query = db.query("select 'Hello world' as message;");
 query.get();
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 { message: "Hello world" }
 ```
 
@@ -40823,7 +42886,7 @@ Features include:
 
 The `bun:sqlite` module is roughly 3-6x faster than `better-sqlite3` and 8-9x faster than `deno.land/x/sqlite` for read queries. Each driver was benchmarked against the [Northwind Traders](https://github.com/jpwhite3/northwind-SQLite3/blob/46d5f8a64f396f87cd374d1600dbf521523980e8/Northwind_large.sqlite.zip) dataset. View and run the [benchmark source](https://github.com/oven-sh/bun/tree/main/bench/sqlite).
 
-<Frame caption="Benchmarked on an M1 MacBook Pro (64GB) running macOS 12.3.1">
+<Frame>
   ![SQLite benchmarks for Bun, better-sqlite3, and
   deno.land/x/sqlite](https://user-images.githubusercontent.com/709451/168459263-8cd51ca3-a924-41e9-908d-cf3478a3b7f3.png)
 </Frame>
@@ -40877,11 +42940,11 @@ import { Database } from "bun:sqlite";
 const strict = new Database(":memory:", { strict: true });
 
 // throws error because of the typo:
-const query = strict.query("SELECT $message;").all({ message: "Hello world" });
+const query = strict.query("SELECT $message;").all({ messag: "Hello world" });
 
 const notStrict = new Database(":memory:");
 // does not throw error:
-notStrict.query("SELECT $message;").all({ message: "Hello world" });
+notStrict.query("SELECT $message;").all({ messag: "Hello world" });
 ```
 
 ### Load via ES module import
@@ -40938,7 +43001,7 @@ import { Database } from "bun:sqlite";
 }
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 { message: "Hello world" }
 ```
 
@@ -40963,10 +43026,23 @@ const query = db.query(`select "Hello world" as message`);
 ```
 
 <Note>
-  Use the `.prepare()` method to prepare a query *without* caching it on the `Database` instance.
+  **What does "cached" mean?**
 
-  ```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
-  // compile the prepared statement
+  The caching refers to the **compiled prepared statement** (the SQL bytecode), not the query results. When you call `db.query()` with the same SQL string multiple times, Bun returns the same cached `Statement` object instead of recompiling the SQL.
+
+  It is completely safe to reuse a cached statement with different parameter values:
+
+  ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+  const query = db.query("SELECT * FROM users WHERE id = ?");
+  query.get(1); // ✓ Works
+  query.get(2); // ✓ Also works - parameters are bound fresh each time
+  query.get(3); // ✓ Still works
+  ```
+
+  Use `.prepare()` instead of `.query()` when you want a fresh `Statement` instance that isn't cached, for example if you're dynamically generating SQL and don't want to fill the cache with one-off queries.
+
+  ```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+  // compile the prepared statement without caching
   const query = db.prepare("SELECT * FROM foo WHERE bar = ?");
   ```
 </Note>
@@ -40980,7 +43056,7 @@ SQLite supports [write-ahead log mode](https://www.sqlite.org/wal.html) (WAL) wh
 To enable WAL mode, run this pragma query at the beginning of your application:
 
 ```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
-db.exec("PRAGMA journal_mode = WAL;");
+db.run("PRAGMA journal_mode = WAL;");
 ```
 
 <Accordion title="What is WAL mode?">
@@ -41056,7 +43132,7 @@ const query = db.query(`select $message;`);
 query.all({ $message: "Hello world" });
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 [{ message: "Hello world" }]
 ```
 
@@ -41071,7 +43147,7 @@ const query = db.query(`select $message;`);
 query.get({ $message: "Hello world" });
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 { $message: "Hello world" }
 ```
 
@@ -41079,14 +43155,14 @@ Internally, this calls [`sqlite3_reset`](https://www.sqlite.org/capi3ref.html#sq
 
 ### `.run()`
 
-Use `.run()` to run a query and get back `undefined`. This is useful for schema-modifying queries (e.g. `CREATE TABLE`) or bulk write operations.
+Use `.run()` to run a query and get back an object with execution metadata. This is useful for schema-modifying queries (e.g. `CREATE TABLE`) or bulk write operations.
 
 ```ts db.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" highlight={2} theme={"theme":{"light":"github-light","dark":"dracula"}}
 const query = db.query(`create table foo;`);
 query.run();
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
   lastInsertRowid: 0,
   changes: 0,
@@ -41119,7 +43195,7 @@ console.log(movies[0].isMarvel);
 console.log(first.isMarvel);
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 true
 true
 ```
@@ -41159,7 +43235,7 @@ query.values({ $message: "Hello world" });
 query.values(2);
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 [
   [ "Iron Man", 2008 ],
   [ "The Avengers", 2012 ],
@@ -41211,7 +43287,7 @@ const results = query.all({
 });
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 [{ "$bar": "bar" }]
 ```
 
@@ -41222,7 +43298,7 @@ const query = db.query("SELECT ?1, ?2");
 const results = query.all("hello", "goodbye");
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 [
 	{
 		"?1": "hello",
@@ -41255,7 +43331,7 @@ const result = query.get();
 console.log(result.max_int);
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 9007199254741093n
 ```
 
@@ -41276,7 +43352,7 @@ try {
 }
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 BigInt value '81129638414606663681390495662081' is out of range
 ```
 
@@ -41293,7 +43369,7 @@ const result = query.get();
 console.log(result.max_int);
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 9007199254741092
 ```
 
@@ -41360,7 +43436,7 @@ The driver will automatically [`begin`](https://www.sqlite.org/lang_transaction.
 
 Transactions also come with `deferred`, `immediate`, and `exclusive` versions.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 insertCats(cats); // uses "BEGIN"
 insertCats.deferred(cats); // uses "BEGIN DEFERRED"
 insertCats.immediate(cats); // uses "BEGIN IMMEDIATE"
@@ -41431,22 +43507,33 @@ class Database {
           readonly?: boolean;
           create?: boolean;
           readwrite?: boolean;
+          safeIntegers?: boolean;
+          strict?: boolean;
         },
   );
 
-  query<Params, ReturnType>(sql: string): Statement<Params, ReturnType>;
+  query<ReturnType, ParamsType>(sql: string): Statement<ReturnType, ParamsType>;
+  prepare<ReturnType, ParamsType>(sql: string): Statement<ReturnType, ParamsType>;
   run(sql: string, params?: SQLQueryBindings): { lastInsertRowid: number; changes: number };
   exec = this.run;
+
+  transaction(insideTransaction: (...args: any) => void): CallableFunction & {
+    deferred: (...args: any) => void;
+    immediate: (...args: any) => void;
+    exclusive: (...args: any) => void;
+  };
+
+  close(throwOnError?: boolean): void;
 }
 
-class Statement<Params, ReturnType> {
-  all(params: Params): ReturnType[];
-  get(params: Params): ReturnType | undefined;
-  run(params: Params): {
+class Statement<ReturnType, ParamsType> {
+  all(...params: ParamsType[]): ReturnType[];
+  get(...params: ParamsType[]): ReturnType | null;
+  run(...params: ParamsType[]): {
     lastInsertRowid: number;
     changes: number;
   };
-  values(params: Params): unknown[][];
+  values(...params: ParamsType[]): unknown[][];
 
   finalize(): void; // destroy statement and clean up resources
   toString(): string; // serialize to SQL
@@ -41457,7 +43544,7 @@ class Statement<Params, ReturnType> {
   paramsCount: number; // the number of parameters expected by the statement
   native: any; // the native object representing the statement
 
-  as(Class: new () => ReturnType): this;
+  as<T>(Class: new (...args: any[]) => T): Statement<T, ParamsType>;
 }
 
 type SQLQueryBindings =
@@ -41502,7 +43589,7 @@ Bun implements the Web APIs [`ReadableStream`](https://developer.mozilla.org/en-
 
 To create a simple `ReadableStream`:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const stream = new ReadableStream({
   start(controller) {
     controller.enqueue("hello");
@@ -41514,7 +43601,7 @@ const stream = new ReadableStream({
 
 The contents of a `ReadableStream` can be read chunk-by-chunk with `for await` syntax.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 for await (const chunk of stream) {
   console.log(chunk);
 }
@@ -41531,7 +43618,7 @@ Bun implements an optimized version of `ReadableStream` that avoid unnecessary d
 
 With a traditional `ReadableStream`, chunks of data are *enqueued*. Each chunk is copied into a queue, where it sits until the stream is ready to send more data.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const stream = new ReadableStream({
   start(controller) {
     controller.enqueue("hello");
@@ -41543,7 +43630,7 @@ const stream = new ReadableStream({
 
 With a direct `ReadableStream`, chunks of data are written directly to the stream. No queueing happens, and there's no need to clone the chunk data into memory. The `controller` API is updated to reflect this; instead of `.enqueue()` you call `.write`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const stream = new ReadableStream({
   type: "direct", // [!code ++]
   pull(controller) {
@@ -41561,7 +43648,7 @@ When using a direct `ReadableStream`, all chunk queueing is handled by the desti
 
 Bun also supports async generator functions as a source for `Response` and `Request`. This is an easy way to create a `ReadableStream` that fetches data from an asynchronous source.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const response = new Response(
   (async function* () {
     yield "hello";
@@ -41574,7 +43661,7 @@ await response.text(); // "helloworld"
 
 You can also use `[Symbol.asyncIterator]` directly.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const response = new Response({
   [Symbol.asyncIterator]: async function* () {
     yield "hello";
@@ -41587,7 +43674,7 @@ await response.text(); // "helloworld"
 
 If you need more granular control over the stream, `yield` will return the direct ReadableStream controller.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const response = new Response({
   [Symbol.asyncIterator]: async function* () {
     const controller = yield "hello";
@@ -41604,7 +43691,7 @@ await response.text(); // "hello"
 
 The `Bun.ArrayBufferSink` class is a fast incremental writer for constructing an `ArrayBuffer` of unknown size.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const sink = new Bun.ArrayBufferSink();
 
 sink.write("h");
@@ -41619,7 +43706,7 @@ sink.end();
 
 To instead retrieve the data as a `Uint8Array`, pass the `asUint8Array` option to the `start` method.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const sink = new Bun.ArrayBufferSink();
 sink.start({
   asUint8Array: true, // [!code ++]
@@ -41637,7 +43724,7 @@ sink.end();
 
 The `.write()` method supports strings, typed arrays, `ArrayBuffer`, and `SharedArrayBuffer`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 sink.write("h");
 sink.write(new Uint8Array([101, 108]));
 sink.write(Buffer.from("lo").buffer);
@@ -41647,7 +43734,7 @@ sink.end();
 
 Once `.end()` is called, no more data can be written to the `ArrayBufferSink`. However, in the context of buffering a stream, it's useful to continuously write data and periodically `.flush()` the contents (say, into a `WriteableStream`). To support this, pass `stream: true` to the constructor.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const sink = new Bun.ArrayBufferSink();
 sink.start({
   stream: true, // [!code ++]
@@ -41669,7 +43756,7 @@ The `.flush()` method returns the buffered data as an `ArrayBuffer` (or `Uint8Ar
 
 To manually set the size of the internal buffer in bytes, pass a value for `highWaterMark`:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const sink = new Bun.ArrayBufferSink();
 sink.start({
   highWaterMark: 1024 * 1024, // 1 MB  // [!code ++]
@@ -41731,19 +43818,19 @@ Create a new Bun project from a React component, a `create-<template>` npm packa
 
 Template a new Bun project with `bun create`. This is a flexible command that can be used to create a new project from a React component, a `create-<template>` npm package, a GitHub repo, or a local template.
 
-If you're looking to create a brand new empty project, use [`bun init`](https://bun.com/docs/cli/init).
+If you're looking to create a brand new empty project, use [`bun init`](/runtime/templating/init).
 
 ## From a React component
 
 `bun create ./MyComponent.tsx` turns an existing React component into a complete dev environment with hot reload and production builds in one command.
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
-$ bun create ./MyComponent.jsx # .tsx also supported
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun create ./MyComponent.jsx # .tsx also supported
 ```
 
 <Frame>
-  <video style={{ aspectRatio: "2062 / 1344", width: "100%", height: "100%", objectFit: "contain" }} loop autoPlay muted playsInline>
-    <source src="https://mintcdn.com/bun-1dd33a4e/q61zoUYDXrVRu-tH/images/bun-create-shadcn.mp4?fit=max&auto=format&n=q61zoUYDXrVRu-tH&q=85&s=92fcea5a9d403b155e943508fbb40a21" style={{ width: "100%", height: "100%", objectFit: "contain" }} type="video/mp4" data-path="images/bun-create-shadcn.mp4" />
+  <video>
+    <source type="video/mp4" />
   </video>
 </Frame>
 
@@ -41755,11 +43842,11 @@ $ bun create ./MyComponent.jsx # .tsx also supported
 
 When you run `bun create <component>`, Bun:
 
-1. Uses [Bun's JavaScript bundler](https://bun.com/docs/bundler) to analyze your module graph.
+1. Uses [Bun's JavaScript bundler](/bundler) to analyze your module graph.
 2. Collects all the dependencies needed to run the component.
 3. Scans the exports of the entry point for a React component.
 4. Generates a `package.json` file with the dependencies and scripts needed to run the component.
-5. Installs any missing dependencies using [`bun install --only-missing`](https://bun.com/docs/cli/install).
+5. Installs any missing dependencies using [`bun install --only-missing`](/pm/cli/install).
 6. Generates the following files:
    * `${component}.html`
    * `${component}.client.tsx` (entry point for the frontend)
@@ -41772,7 +43859,7 @@ When you run `bun create <component>`, Bun:
 
 When you run `bun create <component>`, Bun scans your JSX/TSX file for TailwindCSS class names (and any files it imports). If it detects TailwindCSS class names, it will add the following dependencies to your `package.json`:
 
-```json package.json icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```json package.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
   "dependencies": {
     "tailwindcss": "^4",
@@ -41875,7 +43962,7 @@ Bun's templater can be extended to support custom templates defined on your loca
 
 To create a local template, navigate to `$HOME/.bun-create` and create a new directory with the desired name of your template.
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 cd $HOME/.bun-create
 mkdir foo
 cd foo
@@ -41994,7 +44081,7 @@ Get started with Bun by scaffolding a new project with `bun init`.
 bun init my-app
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 ? Select a project template - Press return to submit.
 ❯ Blank
   React
@@ -42046,76 +44133,54 @@ bun init <folder?>
 
 ### Initialization Options
 
-<ParamField path="--yes" type="boolean">
-  {" "}
-
-  Accept all default prompts without asking questions. Alias: <code>-y</code>{" "}
+<ParamField type="boolean">
+  Accept all default prompts without asking questions. Alias: <code>-y</code>
 </ParamField>
 
-<ParamField path="--minimal" type="boolean">
-  {" "}
-
-  Only initialize type definitions (skip app scaffolding). Alias: <code>-m</code>{" "}
+<ParamField type="boolean">
+  Only initialize type definitions (skip app scaffolding). Alias: <code>-m</code>
 </ParamField>
 
 ### Project Templates
 
-<ParamField path="--react" type="string|boolean">
-  {" "}
-
+<ParamField type="string|boolean">
   Scaffold a React project. When used without a value, creates a baseline React app.
-  <br /> Accepts values for presets:{" "}
+  <br /> Accepts values for presets:
 
   <ul>
-    {" "}
-
     <li>
       <code>tailwind</code> – React app preconfigured with Tailwind CSS
     </li>
 
-    {" "}
-
     <li>
       <code>shadcn</code> – React app with <code>@shadcn/ui</code> and Tailwind CSS
     </li>
-
-    {" "}
   </ul>
 
-  {" "}
-
-  Examples:{" "}
+  Examples:
 
   <pre>
     <code>bun init --react bun init --react=tailwind bun init --react=shadcn</code>
   </pre>
-
-  {" "}
 </ParamField>
 
 ### Output & Files
 
-<ParamField path="(result)" type="info">
-  {" "}
-
+<ParamField type="info">
   Initializes project files and configuration for the chosen options (e.g., creating essential config files and a
-  starter directory structure). Exact files vary by template.{" "}
+  starter directory structure). Exact files vary by template.
 </ParamField>
 
 ### Global Configuration & Context
 
-<ParamField path="--cwd" type="string">
-  {" "}
-
-  Run <code>bun init</code> as if started in a different working directory (useful in scripts).{" "}
+<ParamField type="string">
+  Run <code>bun init</code> as if started in a different working directory (useful in scripts).
 </ParamField>
 
 ### Help
 
-<ParamField path="--help" type="boolean">
-  {" "}
-
-  Print this help menu. Alias: <code>-h</code>{" "}
+<ParamField type="boolean">
+  Print this help menu. Alias: <code>-h</code>
 </ParamField>
 
 ### Examples
@@ -42151,7 +44216,7 @@ Use Bun's transpiler to transpile JavaScript and TypeScript code
 
 Bun exposes its internal transpiler via the `Bun.Transpiler` class. To create an instance of Bun's transpiler:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const transpiler = new Bun.Transpiler({
   loader: "tsx", // "js | "jsx" | "ts" | "tsx"
 });
@@ -42199,7 +44264,7 @@ Transpile code synchronously with the `.transformSync()` method. Modules are not
 
 To override the default loader specified in the `new Bun.Transpiler()` constructor, pass a second argument to `.transformSync()`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 transpiler.transformSync("<div>hi!</div>", "tsx");
 ```
 
@@ -42215,7 +44280,7 @@ transpiler.transformSync("<div>hi!</div>", "tsx");
 
 The `transform()` method is an async version of `.transformSync()` that returns a `Promise<string>`.
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 const transpiler = new Bun.Transpiler({ loader: "jsx" });
 const result = await transpiler.transform("<div>hi!</div>");
 console.log(result);
@@ -42223,7 +44288,7 @@ console.log(result);
 
 Unless you're transpiling *many* large files, you should probably use `Bun.Transpiler.transformSync`. The cost of the threadpool will often take longer than actually transpiling code.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 await transpiler.transform("<div>hi!</div>", "tsx");
 ```
 
@@ -42415,7 +44480,7 @@ type Import = {
   // url() in CSS
   | "url-token"
   // The import was injected by Bun
-  | "internal" 
+  | "internal"
   // Entry point (not common)
   | "entry-point-build"
   | "entry-point-run"
@@ -42436,7 +44501,7 @@ A `string` containing the version of the `bun` CLI that is currently running.
 
 ```ts terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.version;
-// => "0.6.4"
+// => "1.3.3"
 ```
 
 ## `Bun.revision`
@@ -42463,7 +44528,7 @@ Bun.main;
 
 This is particular useful for determining whether a script is being directly executed, as opposed to being imported by another script.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 if (import.meta.path === Bun.main) {
   // this script is being directly executed
 } else {
@@ -42479,7 +44544,7 @@ This is analogous to the [`require.main = module` trick](https://stackoverflow.c
 
 Returns a `Promise` that resolves after the given number of milliseconds.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 console.log("hello");
 await Bun.sleep(1000);
 console.log("hello one second later!");
@@ -42487,7 +44552,7 @@ console.log("hello one second later!");
 
 Alternatively, pass a `Date` object to receive a `Promise` that resolves at that point in time.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const oneSecondInFuture = new Date(Date.now() + 1000);
 
 console.log("hello");
@@ -42501,7 +44566,7 @@ console.log("hello one second later!");
 
 A blocking synchronous version of `Bun.sleep`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 console.log("hello");
 Bun.sleepSync(1000); // blocks thread for one second
 console.log("hello one second later!");
@@ -42513,14 +44578,14 @@ console.log("hello one second later!");
 
 Returns the path to an executable, similar to typing `which` in your terminal.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const ls = Bun.which("ls");
 console.log(ls); // "/usr/bin/ls"
 ```
 
 By default Bun looks at the current `PATH` environment variable to determine the path. To configure `PATH`:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const ls = Bun.which("ls", {
   PATH: "/usr/local/bin:/usr/bin:/bin",
 });
@@ -42529,7 +44594,7 @@ console.log(ls); // "/usr/bin/ls"
 
 Pass a `cwd` option to resolve for executable from within a specific directory.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const ls = Bun.which("ls", {
   cwd: "/tmp",
   PATH: "",
@@ -42544,7 +44609,7 @@ You can think of this as a builtin alternative to the [`which`](https://www.npmj
 
 `Bun.randomUUIDv7()` returns a [UUID v7](https://www.ietf.org/archive/id/draft-peabody-dispatch-new-uuid-format-01.html#name-uuidv7-layout-and-bit-order), which is monotonic and suitable for sorting and databases.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { randomUUIDv7 } from "bun";
 
 const id = randomUUIDv7();
@@ -42557,7 +44622,7 @@ The `timestamp` parameter defaults to the current time in milliseconds. When the
 
 The final 8 bytes of the UUID are a cryptographically secure random value. It uses the same random number generator used by `crypto.randomUUID()` (which comes from BoringSSL, which in turn comes from the platform-specific system random number generator usually provided by the underlying hardware).
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 namespace Bun {
   function randomUUIDv7(encoding?: "hex" | "base64" | "base64url" = "hex", timestamp?: number = Date.now()): string;
   /**
@@ -42589,7 +44654,7 @@ const base64url = Bun.randomUUIDv7("base64url");
 
 Reads a promise's result without `await` or `.then`, but only if the promise has already fulfilled or rejected.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { peek } from "bun";
 
 const promise = Promise.resolve("hi");
@@ -42601,7 +44666,7 @@ console.log(result); // "hi"
 
 This is important when attempting to reduce number of extraneous microticks in performance-sensitive code. It's an advanced API and you probably shouldn't use it unless you know what you're doing.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { peek } from "bun";
 import { expect, test } from "bun:test";
 
@@ -42633,7 +44698,7 @@ test("peek", () => {
 
 The `peek.status` function lets you read the status of a promise without resolving it.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { peek } from "bun";
 import { expect, test } from "bun:test";
 
@@ -42653,21 +44718,21 @@ test("peek.status", () => {
 
 Opens a file in your default editor. Bun auto-detects your editor via the `$VISUAL` or `$EDITOR` environment variables.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const currentFile = import.meta.url;
 Bun.openInEditor(currentFile);
 ```
 
 You can override this via the `debug.editor` setting in your [`bunfig.toml`](/runtime/bunfig).
 
-```toml bunfig.toml theme={"theme":{"light":"github-light","dark":"dracula"}}
+```toml bunfig.toml icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
 [debug] # [!code ++]
 editor = "code" # [!code ++]
 ```
 
 Or specify an editor with the `editor` param. You can also specify a line and column number.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.openInEditor(import.meta.url, {
   editor: "vscode", // or "subl"
   line: 10,
@@ -42679,7 +44744,7 @@ Bun.openInEditor(import.meta.url, {
 
 Recursively checks if two objects are equivalent. This is used internally by `expect().toEqual()` in `bun:test`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const foo = { a: 1, b: 2, c: { d: 3 } };
 
 // true
@@ -42691,7 +44756,7 @@ Bun.deepEquals(foo, { a: 1, b: 2, c: { d: 4 } });
 
 A third boolean parameter can be used to enable "strict" mode. This is used by `expect().toStrictEqual()` in the test runner.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const a = { entries: [1, 2] };
 const b = { entries: [1, 2], extra: undefined };
 
@@ -42701,7 +44766,7 @@ Bun.deepEquals(a, b, true); // => false
 
 In strict mode, the following are considered unequal:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 // undefined values
 Bun.deepEquals({}, { a: undefined }, true); // false
 
@@ -42743,7 +44808,7 @@ Supports ANSI escape codes, emoji, and wide characters.
 
 Example usage:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.stringWidth("hello"); // => 5
 Bun.stringWidth("\u001b[31mhello\u001b[0m"); // => 5
 Bun.stringWidth("\u001b[31mhello\u001b[0m", { countAnsiEscapeCodes: true }); // => 12
@@ -42760,7 +44825,7 @@ existing code can be easily ported to Bun and vice versa.
 
 [In this benchmark](https://github.com/oven-sh/bun/blob/5147c0ba7379d85d4d1ed0714b84d6544af917eb/bench/snippets/string-width.mjs#L13), `Bun.stringWidth` is a \~6,756x faster than the `string-width` npm package for input larger than about 500 characters. Big thanks to [sindresorhus](https://github.com/sindresorhus) for their work on `string-width`!
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 ❯ bun string-width.mjs
 cpu: 13th Gen Intel(R) Core(TM) i9-13900
 runtime: bun 1.0.29 (x64-linux)
@@ -42879,7 +44944,7 @@ namespace Bun {
 
 Converts a `file://` URL to an absolute path.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const path = Bun.fileURLToPath(new URL("file:///foo/bar.txt"));
 console.log(path); // "/foo/bar.txt"
 ```
@@ -42890,7 +44955,7 @@ console.log(path); // "/foo/bar.txt"
 
 Converts an absolute path to a `file://` URL.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const url = Bun.pathToFileURL("/foo/bar.txt");
 console.log(url); // "file:///foo/bar.txt"
 ```
@@ -42901,7 +44966,7 @@ console.log(url); // "file:///foo/bar.txt"
 
 Compresses a `Uint8Array` using zlib's GZIP algorithm.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const buf = Buffer.from("hello".repeat(100)); // Buffer extends Uint8Array
 const compressed = Bun.gzipSync(buf);
 
@@ -42990,7 +45055,7 @@ Optionally, pass a parameters object as the second argument:
 
 Decompresses a `Uint8Array` using zlib's GUNZIP algorithm.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const buf = Buffer.from("hello".repeat(100)); // Buffer extends Uint8Array
 const compressed = Bun.gzipSync(buf);
 
@@ -43006,7 +45071,7 @@ dec.decode(uncompressed);
 
 Compresses a `Uint8Array` using zlib's DEFLATE algorithm.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const buf = Buffer.from("hello".repeat(100));
 const compressed = Bun.deflateSync(buf);
 
@@ -43022,7 +45087,7 @@ The second argument supports the same set of configuration options as [`Bun.gzip
 
 Decompresses a `Uint8Array` using zlib's INFLATE algorithm.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const buf = Buffer.from("hello".repeat(100));
 const compressed = Bun.deflateSync(buf);
 
@@ -43038,7 +45103,7 @@ dec.decode(decompressed);
 
 Compresses a `Uint8Array` using the Zstandard algorithm.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const buf = Buffer.from("hello".repeat(100));
 
 // Synchronous
@@ -43054,7 +45119,7 @@ const compressedLevel = Bun.zstdCompressSync(buf, { level: 6 });
 
 Decompresses a `Uint8Array` using the Zstandard algorithm.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const buf = Buffer.from("hello".repeat(100));
 const compressed = Bun.zstdCompressSync(buf);
 
@@ -43074,7 +45139,7 @@ dec.decode(decompressedSync);
 
 Serializes an object to a `string` exactly as it would be printed by `console.log`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const obj = { foo: "bar" };
 const str = Bun.inspect(obj);
 // => '{\nfoo: "bar" \n}'
@@ -43088,7 +45153,7 @@ const str = Bun.inspect(arr);
 
 This is the symbol that Bun uses to implement `Bun.inspect`. You can override this to customize how your objects are printed. It is identical to `util.inspect.custom` in Node.js.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 class Foo {
   [Bun.inspect.custom]() {
     return "foo";
@@ -43103,7 +45168,7 @@ console.log(foo); // => "foo"
 
 Format tabular data into a string. Like [`console.table`](https://developer.mozilla.org/en-US/docs/Web/API/console/table_static), except it returns a string rather than printing to the console.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 console.log(
   Bun.inspect.table([
     { a: 1, b: 2, c: 3 },
@@ -43123,7 +45188,7 @@ console.log(
 
 Additionally, you can pass an array of property names to display only a subset of properties.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 console.log(
   Bun.inspect.table(
     [
@@ -43144,7 +45209,7 @@ console.log(
 
 You can also conditionally enable ANSI colors by passing `{ colors: true }`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 console.log(
   Bun.inspect.table(
     [
@@ -43164,7 +45229,7 @@ console.log(
 
 Returns the number of nanoseconds since the current `bun` process started, as a `number`. Useful for high-precision timing and benchmarking.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.nanoseconds();
 // => 7288958
 ```
@@ -43175,7 +45240,7 @@ Bun.nanoseconds();
 
 Bun implements a set of convenience functions for asynchronously consuming the body of a `ReadableStream` and converting it to various binary formats.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const stream = (await fetch("https://bun.com")).body;
 stream; // => ReadableStream
 
@@ -43211,7 +45276,7 @@ await Bun.readableStreamToFormData(stream, multipartFormBoundary);
 
 Resolves a file path or module specifier using Bun's internal module resolution algorithm. The first argument is the path to resolve, and the second argument is the "root". If no match is found, an `Error` is thrown.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.resolveSync("./foo.ts", "/path/to/project");
 // => "/path/to/project/foo.ts"
 
@@ -43221,14 +45286,14 @@ Bun.resolveSync("zod", "/path/to/project");
 
 To resolve relative to the current working directory, pass `process.cwd()` or `"."` as the root.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.resolveSync("./foo.ts", process.cwd());
 Bun.resolveSync("./foo.ts", "/path/to/project");
 ```
 
 To resolve relative to the directory containing the current file, pass `import.meta.dir`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 Bun.resolveSync("./foo.ts", import.meta.dir);
 ```
 
@@ -43242,7 +45307,7 @@ Bun.resolveSync("./foo.ts", import.meta.dir);
 
 Strip ANSI escape codes from a string. This is useful for removing colors and formatting from terminal output.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const coloredText = "\u001b[31mHello\u001b[0m \u001b[32mWorld\u001b[0m";
 const plainText = Bun.stripANSI(coloredText);
 console.log(plainText); // => "Hello World"
@@ -43258,7 +45323,7 @@ console.log(Bun.stripANSI(formatted)); // => "Bold and underlined"
 bun bench/snippets/strip-ansi.mjs
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 cpu: Apple M3 Max
 runtime: bun 1.2.21 (arm64-darwin)
 
@@ -43281,7 +45346,7 @@ Bun.stripANSI 212,992 chars long-ansi    227.65 µs/iter 234.50 µs
 node bench/snippets/strip-ansi.mjs
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 cpu: Apple M3 Max
 runtime: node 24.6.0 (arm64-darwin)
 
@@ -43303,11 +45368,99 @@ npm/strip-ansi 212,992 chars long-ansi      1.36 ms/iter   1.38 ms
 
 ***
 
+## `Bun.wrapAnsi()`
+
+<Note>Drop-in replacement for `wrap-ansi` npm package</Note>
+
+`Bun.wrapAnsi(input: string, columns: number, options?: WrapAnsiOptions): string`
+
+Wrap text to a specified column width while preserving ANSI escape codes, hyperlinks, and handling Unicode/emoji width correctly. This is a native, high-performance alternative to the popular [`wrap-ansi`](https://www.npmjs.com/package/wrap-ansi) npm package.
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+// Basic wrapping at 20 columns
+Bun.wrapAnsi("The quick brown fox jumps over the lazy dog", 20);
+// => "The quick brown fox\njumps over the lazy\ndog"
+
+// Preserves ANSI escape codes
+Bun.wrapAnsi("\u001b[31mThe quick brown fox jumps over the lazy dog\u001b[0m", 20);
+// => "\u001b[31mThe quick brown fox\njumps over the lazy\ndog\u001b[0m"
+```
+
+### Options
+
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+Bun.wrapAnsi("Hello World", 5, {
+  hard: true, // Break words that exceed column width (default: false)
+  wordWrap: true, // Wrap at word boundaries (default: true)
+  trim: true, // Trim leading/trailing whitespace per line (default: true)
+  ambiguousIsNarrow: true, // Treat ambiguous-width characters as narrow (default: true)
+});
+```
+
+| Option              | Default | Description                                                                                                     |
+| ------------------- | ------- | --------------------------------------------------------------------------------------------------------------- |
+| `hard`              | `false` | If `true`, break words in the middle if they exceed the column width.                                           |
+| `wordWrap`          | `true`  | If `true`, wrap at word boundaries. If `false`, only break at explicit newlines.                                |
+| `trim`              | `true`  | If `true`, trim leading and trailing whitespace from each line.                                                 |
+| `ambiguousIsNarrow` | `true`  | If `true`, treat ambiguous-width Unicode characters as 1 column wide. If `false`, treat them as 2 columns wide. |
+
+TypeScript definition:
+
+```ts expandable theme={"theme":{"light":"github-light","dark":"dracula"}}
+namespace Bun {
+  export function wrapAnsi(
+    /**
+     * The string to wrap
+     */
+    input: string,
+    /**
+     * The maximum column width
+     */
+    columns: number,
+    /**
+     * Wrapping options
+     */
+    options?: {
+      /**
+       * If `true`, break words in the middle if they don't fit on a line.
+       * If `false`, only break at word boundaries.
+       *
+       * @default false
+       */
+      hard?: boolean;
+      /**
+       * If `true`, wrap at word boundaries when possible.
+       * If `false`, don't perform word wrapping (only wrap at explicit newlines).
+       *
+       * @default true
+       */
+      wordWrap?: boolean;
+      /**
+       * If `true`, trim leading and trailing whitespace from each line.
+       * If `false`, preserve whitespace.
+       *
+       * @default true
+       */
+      trim?: boolean;
+      /**
+       * When it's ambiguous and `true`, count ambiguous width characters as 1 character wide.
+       * If `false`, count them as 2 characters wide.
+       *
+       * @default true
+       */
+      ambiguousIsNarrow?: boolean;
+    },
+  ): string;
+}
+```
+
+***
+
 ## `serialize` & `deserialize` in `bun:jsc`
 
 To save a JavaScript value into an ArrayBuffer & back, use `serialize` and `deserialize` from the `"bun:jsc"` module.
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { serialize, deserialize } from "bun:jsc";
 
 const buf = serialize({ foo: "bar" });
@@ -43323,7 +45476,7 @@ Internally, [`structuredClone`](https://developer.mozilla.org/en-US/docs/Web/API
 
 The `estimateShallowMemoryUsageOf` function returns a best-effort estimate of the memory usage of an object in bytes, excluding the memory usage of properties or other objects it references. For accurate per-object memory usage, use `Bun.generateHeapSnapshot`.
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { estimateShallowMemoryUsageOf } from "bun:jsc";
 
 const obj = { foo: "bar" };
@@ -43434,7 +45587,7 @@ Use `bun --hot` to enable hot reloading when executing code with Bun. This is di
   This is not the same as hot reloading in the browser! Many frameworks provide a "hot reloading" experience, where you
   can edit & save your frontend code (say, a React component) and see the changes reflected in the browser without
   refreshing the page. Bun's `--hot` is the server-side equivalent of this experience. To get hot reloading in the
-  browser, use a framework like [Vite](https://vitejs.dev).
+  browser, use a framework like [Vite](https://vite.dev).
 </Note>
 
 ```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
@@ -43463,7 +45616,7 @@ If you run this file with `bun --hot server.ts`, you'll see the reload count inc
 bun --hot index.ts
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 Reloaded 1 times
 Reloaded 2 times
 Reloaded 3 times
@@ -43564,7 +45717,7 @@ worker.onmessage = event => {
 
 ### Worker thread
 
-```ts worker.ts  icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts worker.ts icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 // prevents TS errors
 declare var self: Worker;
 
@@ -43576,7 +45729,7 @@ self.onmessage = (event: MessageEvent) => {
 
 To prevent TypeScript errors when using `self`, add this line to the top of your worker file.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 declare var self: Worker;
 ```
 
@@ -43584,7 +45737,7 @@ You can use `import` and `export` syntax in your worker code. Unlike in browsers
 
 To simplify error handling, the initial script to load is resolved at the time `new Worker(url)` is called.
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 const worker = new Worker("/not-found.js");
 // throws an error immediately
 ```
@@ -43615,30 +45768,18 @@ const worker = new Worker("./worker.ts", {
 
 You can also pass a `blob:` URL to `Worker`. This is useful for creating workers from strings or other sources.
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
-const blob = new Blob(
-  [
-    `
-  self.onmessage = (event: MessageEvent) => postMessage(event.data)`,
-  ],
-  {
-    type: "application/typescript",
-  },
-);
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
+const blob = new Blob([`self.onmessage = (event: MessageEvent) => postMessage(event.data)`], {
+  type: "application/typescript",
+});
 const url = URL.createObjectURL(blob);
 const worker = new Worker(url);
 ```
 
 Like the rest of Bun, workers created from `blob:` URLs support TypeScript, JSX, and other file types out of the box. You can communicate it should be loaded via typescript either via `type` or by passing a `filename` to the `File` constructor.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
-const file = new File(
-  [
-    `
-  self.onmessage = (event: MessageEvent) => postMessage(event.data)`,
-  ],
-  "worker.ts",
-);
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
+const file = new File([`self.onmessage = (event: MessageEvent) => postMessage(event.data)`], "worker.ts");
 const url = URL.createObjectURL(file);
 const worker = new Worker(url);
 ```
@@ -43680,7 +45821,7 @@ With these fast paths, Bun's `postMessage` performs **2-241x faster** because th
 
 **Bun (with fast paths):**
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 postMessage({ prop: 11 chars string, ...9 more props }) - 648ns
 postMessage({ prop: 14 KB string, ...9 more props })    - 719ns
 postMessage({ prop: 3 MB string, ...9 more props })     - 1.26µs
@@ -43688,13 +45829,13 @@ postMessage({ prop: 3 MB string, ...9 more props })     - 1.26µs
 
 **Node.js v24.6.0 (for comparison):**
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 postMessage({ prop: 11 chars string, ...9 more props }) - 1.19µs
 postMessage({ prop: 14 KB string, ...9 more props })    - 2.69µs
 postMessage({ prop: 3 MB string, ...9 more props })     - 304µs
 ```
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 // String fast path - optimized
 postMessage("Hello, worker!");
 
@@ -43714,7 +45855,7 @@ postMessage({
 });
 ```
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 // On the worker thread, `postMessage` is automatically "routed" to the parent thread.
 postMessage({ hello: "world" });
 
@@ -43724,7 +45865,7 @@ worker.postMessage({ hello: "world" });
 
 To receive messages, use the [`message` event handler](https://developer.mozilla.org/en-US/docs/Web/API/Worker/message_event) on the worker and main thread.
 
-```js  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```js theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Worker thread:
 self.addEventListener("message", event => {
   console.log(event.data);
@@ -43850,7 +45991,7 @@ process.on("worker", worker => {
 
 You can check if you're in the main thread by checking `Bun.isMainThread`.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 if (Bun.isMainThread) {
   console.log("I'm the main thread");
 } else {
@@ -43886,7 +46027,7 @@ Bun's YAML parser currently passes over 90% of the official YAML test suite. Whi
 
 Parse a YAML string into a JavaScript object.
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 import { YAML } from "bun";
 const text = `
 name: John Doe
@@ -43912,7 +46053,7 @@ console.log(data);
 
 When parsing YAML with multiple documents (separated by `---`), `Bun.YAML.parse()` returns an array:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const multiDoc = `
 ---
 name: Document 1
@@ -43943,7 +46084,7 @@ Bun's YAML parser supports the full YAML 1.2 specification, including:
 * **Comments**: using `#`
 * **Directives**: `%YAML` and `%TAG`
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 const yaml = `
 # Employee record
 employee: &emp
@@ -43976,7 +46117,7 @@ const data = Bun.YAML.parse(yaml);
 
 `Bun.YAML.parse()` throws a `SyntaxError` if the YAML is invalid:
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 try {
   Bun.YAML.parse("invalid: yaml: content:");
 } catch (error) {
@@ -45121,16 +47262,18 @@ timeout = 10000
 
 ## Environment Variables
 
-You can also set environment variables in your configuration that affect test behavior:
+Environment variables for tests should be set using `.env` files. Bun automatically loads `.env` files from your project root. For test-specific variables, create a `.env.test` file:
 
-```toml title="bunfig.toml" icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
-[env]
-NODE_ENV = "test"
-DATABASE_URL = "postgresql://localhost:5432/test_db"
-LOG_LEVEL = "error"
+```ini title=".env.test" icon="settings" theme={"theme":{"light":"github-light","dark":"dracula"}}
+NODE_ENV=test
+DATABASE_URL=postgresql://localhost:5432/test_db
+LOG_LEVEL=error
+```
 
-[test]
-coverage = true
+Then load it with `--env-file`:
+
+```bash terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+bun test --env-file=.env.test
 ```
 
 ## Complete Configuration Example
@@ -45142,13 +47285,6 @@ Here's a comprehensive example showing all available test configuration options:
 # Install settings inherited by tests
 registry = "https://registry.npmjs.org/"
 exact = true
-
-[env]
-# Environment variables for tests
-NODE_ENV = "test"
-DATABASE_URL = "postgresql://localhost:5432/test_db"
-API_URL = "http://localhost:3001"
-LOG_LEVEL = "error"
 
 [test]
 # Test discovery
@@ -45549,7 +47685,7 @@ bun test
 ```
 
 ```
-bun test v1.3.2
+bun test v1.3.3
 
 dom.test.ts:
 ✓ dom test [0.82ms]
@@ -45933,7 +48069,7 @@ When using `--randomize`, the seed used for randomization will be displayed in t
 bun test --randomize
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 # ... test output ...
  --seed=12345
  2 pass
@@ -45985,7 +48121,7 @@ Bun supports the following lifecycle hooks:
 
 These hooks can be defined inside test files, or in a separate file that is preloaded with the `--preload` flag.
 
-```ts terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun test --preload ./setup.ts
 ```
 
@@ -46054,7 +48190,9 @@ See [Test > DOM Testing](/test/dom) for complete documentation.
 
 Bun's test runner is fast.
 
-<Frame><img src="https://mintcdn.com/bun-1dd33a4e/DJXb5ll7I0cV-M4b/images/buntest.jpeg?fit=max&auto=format&n=DJXb5ll7I0cV-M4b&q=85&s=385ddc5e64d35dd0534663d0f70ab116" alt="Running 266 React SSR tests faster than Jest can print its version number." data-og-width="2112" width="2112" data-og-height="716" height="716" data-path="images/buntest.jpeg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/bun-1dd33a4e/DJXb5ll7I0cV-M4b/images/buntest.jpeg?w=280&fit=max&auto=format&n=DJXb5ll7I0cV-M4b&q=85&s=3521449d084de759182add8a38c60c3d 280w, https://mintcdn.com/bun-1dd33a4e/DJXb5ll7I0cV-M4b/images/buntest.jpeg?w=560&fit=max&auto=format&n=DJXb5ll7I0cV-M4b&q=85&s=37c3031df9eea4fef6f01f5ed3d5619b 560w, https://mintcdn.com/bun-1dd33a4e/DJXb5ll7I0cV-M4b/images/buntest.jpeg?w=840&fit=max&auto=format&n=DJXb5ll7I0cV-M4b&q=85&s=0b4986c07b5afc3fd75f5b0da4151b56 840w, https://mintcdn.com/bun-1dd33a4e/DJXb5ll7I0cV-M4b/images/buntest.jpeg?w=1100&fit=max&auto=format&n=DJXb5ll7I0cV-M4b&q=85&s=780b91c86953d3c5ec6bd4d6c7fd90d4 1100w, https://mintcdn.com/bun-1dd33a4e/DJXb5ll7I0cV-M4b/images/buntest.jpeg?w=1650&fit=max&auto=format&n=DJXb5ll7I0cV-M4b&q=85&s=14077e0b0e1766552cd69981352275bc 1650w, https://mintcdn.com/bun-1dd33a4e/DJXb5ll7I0cV-M4b/images/buntest.jpeg?w=2500&fit=max&auto=format&n=DJXb5ll7I0cV-M4b&q=85&s=a29453d4a392600e61619bc16ee3e6a3 2500w" /></Frame>
+<Frame>
+  <img alt="Running 266 React SSR tests faster than Jest can print its version number." />
+</Frame>
 
 ## AI Agent Integration
 
@@ -46089,82 +48227,82 @@ This feature is particularly useful in AI-assisted development workflows where r
 
 # CLI Usage
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun test <patterns>
 ```
 
 ### Execution Control
 
-<ParamField path="--timeout" type="number" default="5000">
+<ParamField type="number">
   Set the per-test timeout in milliseconds (default 5000)
 </ParamField>
 
-<ParamField path="--rerun-each" type="number">
+<ParamField type="number">
   Re-run each test file <code>NUMBER</code> times, helps catch certain bugs
 </ParamField>
 
-<ParamField path="--concurrent" type="boolean">
+<ParamField type="boolean">
   Treat all tests as <code>test.concurrent()</code> tests
 </ParamField>
 
-<ParamField path="--randomize" type="boolean">
+<ParamField type="boolean">
   Run tests in random order
 </ParamField>
 
-<ParamField path="--seed" type="number">
+<ParamField type="number">
   Set the random seed for test randomization
 </ParamField>
 
-<ParamField path="--bail" type="number" default="1">
+<ParamField type="number">
   Exit the test suite after <code>NUMBER</code> failures. If you do not specify a number, it defaults to 1.
 </ParamField>
 
-<ParamField path="--max-concurrency" type="number" default="20">
+<ParamField type="number">
   Maximum number of concurrent tests to execute at once (default 20)
 </ParamField>
 
 ### Test Filtering
 
-<ParamField path="--todo" type="boolean">
+<ParamField type="boolean">
   Include tests that are marked with <code>test.todo()</code>
 </ParamField>
 
-<ParamField path="--test-name-pattern" type="string">
+<ParamField type="string">
   Run only tests with a name that matches the given regex. Alias: <code>-t</code>
 </ParamField>
 
 ### Reporting
 
-<ParamField path="--reporter" type="string">
+<ParamField type="string">
   Test output reporter format. Available: <code>junit</code> (requires --reporter-outfile), <code>dots</code>. Default:
   console output.
 </ParamField>
 
-<ParamField path="--reporter-outfile" type="string">
+<ParamField type="string">
   Output file path for the reporter format (required with --reporter)
 </ParamField>
 
-<ParamField path="--dots" type="boolean">
+<ParamField type="boolean">
   Enable dots reporter. Shorthand for --reporter=dots
 </ParamField>
 
 ### Coverage
 
-<ParamField path="--coverage" type="boolean">
+<ParamField type="boolean">
   Generate a coverage profile
 </ParamField>
 
-<ParamField path="--coverage-reporter" type="string" default="text">
+<ParamField type="string">
   Report coverage in <code>text</code> and/or <code>lcov</code>. Defaults to <code>text</code>
 </ParamField>
 
-<ParamField path="--coverage-dir" type="string" default="coverage">
+<ParamField type="string">
   Directory for coverage files. Defaults to <code>coverage</code>
 </ParamField>
 
 ### Snapshots
 
-<ParamField path="--update-snapshots" type="boolean">
+<ParamField type="boolean">
   Update snapshot files. Alias: <code>-u</code>
 </ParamField>
 
@@ -46457,7 +48595,7 @@ describe("outer describe", () => {
 });
 ```
 
-```txt  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```txt theme={"theme":{"light":"github-light","dark":"dracula"}}
 // Output order:
 // File beforeAll
 // Outer beforeAll
@@ -46987,26 +49125,26 @@ test("foo, bar, baz", () => {
   const barSpy = spyOn(barModule, "bar");
   const bazSpy = spyOn(bazModule, "baz");
 
-  // Original values
-  expect(fooSpy).toBe("foo");
-  expect(barSpy).toBe("bar");
-  expect(bazSpy).toBe("baz");
+  // Original implementations still work
+  expect(fooModule.foo()).toBe("foo");
+  expect(barModule.bar()).toBe("bar");
+  expect(bazModule.baz()).toBe("baz");
 
   // Mock implementations
   fooSpy.mockImplementation(() => 42);
   barSpy.mockImplementation(() => 43);
   bazSpy.mockImplementation(() => 44);
 
-  expect(fooSpy()).toBe(42);
-  expect(barSpy()).toBe(43);
-  expect(bazSpy()).toBe(44);
+  expect(fooModule.foo()).toBe(42);
+  expect(barModule.bar()).toBe(43);
+  expect(bazModule.baz()).toBe(44);
 
   // Restore all
   mock.restore();
 
-  expect(fooSpy()).toBe("foo");
-  expect(barSpy()).toBe("bar");
-  expect(bazSpy()).toBe("baz");
+  expect(fooModule.foo()).toBe("foo");
+  expect(barModule.bar()).toBe("bar");
+  expect(bazModule.baz()).toBe("baz");
 });
 ```
 
@@ -47014,10 +49152,10 @@ Using `mock.restore()` can reduce the amount of code in your tests by adding it 
 
 ## Vitest Compatibility
 
-For added compatibility with tests written for Vitest, Bun provides the `vi` global object as an alias for parts of the Jest mocking API:
+For added compatibility with tests written for Vitest, Bun provides the `vi` object as an alias for parts of the Jest mocking API:
 
 ```ts title="test.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
-import { test, expect } from "bun:test";
+import { test, expect, vi } from "bun:test";
 
 // Using the 'vi' alias similar to Vitest
 test("vitest compatibility", () => {
@@ -47158,7 +49296,7 @@ const complexMock = mock(input => {
 
 ### Use Type-Safe Mocks
 
-```ts  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```ts theme={"theme":{"light":"github-light","dark":"dracula"}}
 interface UserService {
   getUser(id: string): Promise<User>;
   createUser(data: CreateUserData): Promise<User>;
@@ -47513,7 +49651,7 @@ bun test --env-file .env.test
 
 ### Installation-related Flags
 
-```bash  theme={"theme":{"light":"github-light","dark":"dracula"}}
+```bash theme={"theme":{"light":"github-light","dark":"dracula"}}
 # Affect any network requests or auto-installs during test execution
 bun test --prefer-offline
 bun test --frozen-lockfile
@@ -47702,8 +49840,8 @@ your-project/
 
 The snapshot file contains:
 
-```txt title="snapshot file" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
-// Bun Snapshot v1, https://goo.gl/fbAQLP
+```ts title="__snapshots__/snap.test.ts.snap" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+// Bun Snapshot v1, https://bun.com/docs/test/snapshots
 
 exports[`snap 1`] = `"foo"`;
 ```
@@ -48070,7 +50208,7 @@ tests/
 
 When snapshots fail, you'll see a diff:
 
-```text title="diff" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```diff title="diff" icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
 - Expected
 + Received
 
@@ -48183,6 +50321,43 @@ test("wat", async () => {
 In `bun:test`, test timeouts throw an uncatchable exception to force the test to stop running and fail. We also kill any child processes that were spawned in the test to avoid leaving behind zombie processes lurking in the background.
 
 The default timeout for each test is 5000ms (5 seconds) if not overridden by this timeout option or `jest.setDefaultTimeout()`.
+
+## Retries and Repeats
+
+### test.retry
+
+Use the `retry` option to automatically retry a test if it fails. The test passes if it succeeds within the specified number of attempts. This is useful for flaky tests that may fail intermittently.
+
+```ts title="example.test.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+import { test } from "bun:test";
+
+test(
+  "flaky network request",
+  async () => {
+    const response = await fetch("https://example.com/api");
+    expect(response.ok).toBe(true);
+  },
+  { retry: 3 }, // Retry up to 3 times if the test fails
+);
+```
+
+### test.repeats
+
+Use the `repeats` option to run a test multiple times regardless of pass/fail status. The test fails if any iteration fails. This is useful for detecting flaky tests or stress testing. Note that `repeats: N` runs the test N+1 times total (1 initial run + N repeats).
+
+```ts title="example.test.ts" icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
+import { test } from "bun:test";
+
+test(
+  "ensure test is stable",
+  () => {
+    expect(Math.random()).toBeLessThan(1);
+  },
+  { repeats: 20 }, // Runs 21 times total (1 initial + 20 repeats)
+);
+```
+
+<Note>You cannot use both `retry` and `repeats` on the same test.</Note>
 
 ### 🧟 Zombie Process Killer
 
@@ -48758,7 +50933,7 @@ At this point, you should be able to reference the `Bun` global in your TypeScri
 
 Bun supports things like top-level await, JSX, and extensioned `.ts` imports, which TypeScript doesn't allow by default. Below is a set of recommended `compilerOptions` for a Bun project, so you can use these features without seeing compiler warnings from TypeScript.
 
-```json tsconfig.json icon="file-code" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```json tsconfig.json icon="file-json" theme={"theme":{"light":"github-light","dark":"dracula"}}
 {
   "compilerOptions": {
     // Environment setup & latest features
@@ -48792,7 +50967,7 @@ Bun supports things like top-level await, JSX, and extensioned `.ts` imports, wh
 
 If you run `bun init` in a new directory, this `tsconfig.json` will be generated for you. (The stricter flags are disabled by default.)
 
-```sh terminal 	icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
+```sh terminal icon="terminal" theme={"theme":{"light":"github-light","dark":"dracula"}}
 bun init
 ```
 

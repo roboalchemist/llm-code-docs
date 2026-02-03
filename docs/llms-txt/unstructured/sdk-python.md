@@ -1,11 +1,31 @@
 # Source: https://docs.unstructured.io/api-reference/legacy-api/partition/sdk-python.md
 
-# Source: https://docs.unstructured.io/api-reference/partition/sdk-python.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Python SDK
 
+<Note>
+  The following information applies to the legacy Unstructured Partition Endpoint.
+
+  Unstructured recommends that you use the
+  [on-demand jobs](/api-reference/workflow/overview#run-an-on-demand-job) functionality in the
+  [Unstructured API](/api-reference/overview) instead. Unstructured's on-demand jobs provide
+  many benefits over the legacy Unstructured Partition Endpoint, including support for:
+
+  * Production-level usage.
+  * Multiple local input files in batches.
+  * The latest and highest-performing models.
+  * Post-transform enrichments.
+  * All of Unstructured's chunking strategies.
+  * The generation of vector embeddings.
+
+  The Unstructured API also provides support for processing files and data in remote locations.
+</Note>
+
 The [Unstructured Python SDK](https://github.com/Unstructured-IO/unstructured-python-client) client allows you to send one file at a time for processing by
-the [Unstructured Partition Endpoint](/api-reference/partition/overview).
+the [Unstructured Partition Endpoint](/api-reference/legacy-api/partition/overview).
 
 To use the Python SDK, you'll first need to set an environment variable named `UNSTRUCTURED_API_KEY`,
 representing your Unstructured API key. To get your API key, do the following:
@@ -293,8 +313,8 @@ The parameter names used in this document are for the Python SDK, which follow s
 convention. Other than this difference in naming convention,
 the names used in the SDKs are the same across all methods.
 
-* Refer to the [API parameters](/api-reference/partition/api-parameters) page for the full list of available parameters.
-* Refer to the [Examples](/api-reference/partition/examples) page for some inspiration on using the parameters.
+* Refer to the [API parameters](/api-reference/legacy-api/partition/api-parameters) page for the full list of available parameters.
+* Refer to the [Examples](/api-reference/legacy-api/partition/examples) page for some inspiration on using the parameters.
 
 ## Migration guide
 

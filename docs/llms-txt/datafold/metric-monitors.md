@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/data-monitoring/monitors/metric-monitors.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Metric Monitors
 
 > Metric monitors detect anomalies in your data using ML-based algorithms or manual thresholds, supporting standard and custom metrics for tables or columns.

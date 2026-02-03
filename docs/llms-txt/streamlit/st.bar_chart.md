@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/charts/st.bar_chart
+
 # st.bar_chart
 
 Display a bar chart.

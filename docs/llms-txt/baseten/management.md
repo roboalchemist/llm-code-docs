@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/training/management.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Management
 
 > How to monitor, manage, and interact with your Baseten Training projects and jobs.
@@ -18,6 +22,21 @@ Once you have submitted training jobs, Baseten provides tools to manage your `Tr
   ```bash  theme={"system"}
   truss train view --project <project_id or project_name>
   ```
+
+* **Deleting a `TrainingProject`:** To delete a training project from the Baseten dashboard:
+
+  1. Select the training project you want to delete.
+  2. Type the project name (for example, `demo/qwen3-0.6b`) to confirm.
+  3. Select **Delete**.
+
+  <Warning>
+    When you delete a project, the following data is permanently deleted with no archival or recovery option:
+
+    * All undeployed [checkpoints](/training/concepts/checkpointing) from every job in the project
+    * All data in the project's [training cache](/training/concepts/cache) (`$BT_PROJECT_CACHE_DIR`)
+
+    Checkpoints that have been [deployed](/training/deployment) aren't affected.
+  </Warning>
 
 ## `TrainingJob` management
 
@@ -49,6 +68,17 @@ After submitting a job with `truss train push config.py`, you receive a `project
   truss train stop --all # Stops all active jobs; Will prompt the user for confirmation.
   ```
   This will transition the job to the `TRAINING_JOB_STOPPED` state.
+
+* **Deleting a `TrainingJob`:** To delete a training job from the Baseten dashboard:
+
+  1. Select the project containing the job.
+  2. Select the job you want to delete.
+  3. Type the job name (for example, `job-2`) to confirm.
+  4. Select **Delete**.
+
+  <Warning>
+    When you delete a job, all undeployed checkpoints are deleted permanently. There's no archival or recovery option. Checkpoints that have been [deployed](/training/deployment) aren't affected.
+  </Warning>
 
 * **Understanding Job Outputs & Checkpoints:**
   * The primary outputs of a successful `TrainingJob` are model **checkpoints** (if checkpointing is enabled and configured).

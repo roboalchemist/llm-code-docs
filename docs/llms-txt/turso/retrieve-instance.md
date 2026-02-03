@@ -1,64 +1,92 @@
 # Source: https://docs.turso.tech/api-reference/databases/retrieve-instance.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Retrieve Database Instance
 
 > Return the individual database instance by name.
 
+<RequestExample>
+  ```bash cURL theme={null}
+  curl -L https://api.turso.tech/v1/organizations/{organizationSlug}/databases/{databaseName}/instances/{instanceName} \
+    -H 'Authorization: Bearer TOKEN'
+  ```
+
+  ```ts Node.js theme={null}
+  import { createClient } from "@tursodatabase/api";
+
+  const turso = createClient({
+    org: "...",
+    token: "",
+  });
+
+  const instance = await turso.databases.retrieveInstance(
+    "my-db",
+    "instanceName",
+  );
+  ```
+</RequestExample>
+
+
 ## OpenAPI
 
 ````yaml GET /v1/organizations/{organizationSlug}/databases/{databaseName}/instances/{instanceName}
+openapi: 3.0.1
+info:
+  title: Turso Platform API
+  description: API description here
+  license:
+    name: MIT
+  version: 0.1.0
+servers:
+  - url: https://api.turso.tech
+    description: Turso's Platform API
+security: []
 paths:
-  path: >-
-    /v1/organizations/{organizationSlug}/databases/{databaseName}/instances/{instanceName}
-  method: get
-  servers:
-    - url: https://api.turso.tech
-      description: Turso's Platform API
-  request:
-    security: []
-    parameters:
-      path:
-        organizationSlug:
-          schema:
-            - type: string
-              required: true
-              description: The slug of the organization or user account.
-        databaseName:
-          schema:
-            - type: string
-              required: true
-              description: The name of the database.
-        instanceName:
-          schema:
-            - type: string
-              required: true
-              description: The name of the instance (location code).
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              instance:
-                allOf:
-                  - $ref: '#/components/schemas/Instance'
-        examples:
-          example:
-            value:
-              instance:
-                uuid: 0be90471-6906-11ee-8553-eaa7715aeaf2
-                name: lhr
-                type: primary
-                region: lhr
-                hostname: '[databaseName]-[organizationSlug].turso.io'
-        description: Successful response
-  deprecated: false
-  type: path
+  /v1/organizations/{organizationSlug}/databases/{databaseName}/instances/{instanceName}:
+    get:
+      summary: Retrieve Database Instance
+      description: Return the individual database instance by name.
+      operationId: getDatabaseInstance
+      parameters:
+        - $ref: '#/components/parameters/organizationSlug'
+        - $ref: '#/components/parameters/databaseName'
+        - $ref: '#/components/parameters/instanceName'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  instance:
+                    $ref: '#/components/schemas/Instance'
 components:
+  parameters:
+    organizationSlug:
+      in: path
+      name: organizationSlug
+      required: true
+      schema:
+        type: string
+      description: The slug of the organization or user account.
+    databaseName:
+      name: databaseName
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The name of the database.
+    instanceName:
+      name: instanceName
+      in: path
+      required: true
+      schema:
+        type: string
+      description: The name of the instance (location code).
   schemas:
     Instance:
       type: object

@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/installation/update_comfyui.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to Update ComfyUI
 
 > This section provides a comprehensive guide to updating ComfyUI

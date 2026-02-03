@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/reference/exa-for-sheets.md
+# Source: https://exa.ai/docs/reference/exa-for-sheets.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Exa for Google Sheets
 
@@ -294,8 +298,3 @@ Column C: =EXA_CONTENTS(B2)
 ## Github Repository
 
 Check out the [GitHub repository](https://github.com/exa-labs/exa-sheets).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

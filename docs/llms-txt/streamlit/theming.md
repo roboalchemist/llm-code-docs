@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/concepts/configuration/theming
+
 # Theming
 
 In this guide, we provide an overview of theming and visual customization of Streamlit apps. Streamlit themes are defined using configuration options, which are most commonly defined in a `.streamlit/config.toml` file. For more information about setting configuration options, see [Working with configuration options](/develop/concepts/configuration/options). For a complete list of configuration options and definitions, see the API reference for [config.toml](/develop/api-reference/configuration/config.toml#theme).

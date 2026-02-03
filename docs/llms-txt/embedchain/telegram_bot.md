@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/examples/telegram_bot.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 📱 Telegram Bot
 
 ### 🖼️ Template Setup
@@ -11,7 +15,7 @@
 
 <Tabs>
   <Tab title="docker">
-    ```bash
+    ```bash  theme={null}
     docker run --name telegram-bot -e OPENAI_API_KEY=sk-xxx -e TELEGRAM_BOT_TOKEN=xxx -p 8000:8000 embedchain/telegram-bot
     ```
 
@@ -35,7 +39,7 @@
 * Click on `Run` in the replit container and a URL will get generated for your bot.
 * Now set your webhook by running the following link in your browser:
 
-```url
+```url  theme={null}
 https://api.telegram.org/bot<Your_Telegram_Bot_Token>/setWebhook?url=<Replit_Generated_URL>
 ```
 

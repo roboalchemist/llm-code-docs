@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/tracing/association.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Associating Entities with Traces
 
 > How to associate traces with entities in your own application
@@ -56,8 +60,3 @@ OpenLLMetry allows you to easily mark traces with these IDs so you can track the
   );
   ```
 </CodeGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

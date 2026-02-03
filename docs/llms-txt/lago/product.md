@@ -1,8 +1,139 @@
 # Source: https://getlago.com/docs/changelog/product.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Product updates
 
 > New updates and improvements to Lago.
+
+<Update label="January 2026">
+  ## Offset unused amounts when terminating a subscription
+
+  <Frame>
+        <img src="https://mintcdn.com/lago-docs/oo_qfwAVn7lIoV6R/changelog/images/20260127-terminate-sub-offset-invoice.png?fit=max&auto=format&n=oo_qfwAVn7lIoV6R&q=85&s=b8cd3096f64ccf4d9e5fe1c5490245ee" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20260127-terminate-sub-offset-invoice.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/oo_qfwAVn7lIoV6R/changelog/images/20260127-terminate-sub-offset-invoice.png?w=280&fit=max&auto=format&n=oo_qfwAVn7lIoV6R&q=85&s=31c8b5526c839b4bfd3d1c1537cfd904 280w, https://mintcdn.com/lago-docs/oo_qfwAVn7lIoV6R/changelog/images/20260127-terminate-sub-offset-invoice.png?w=560&fit=max&auto=format&n=oo_qfwAVn7lIoV6R&q=85&s=19a8efd255621c459e64ccd9402f9b9a 560w, https://mintcdn.com/lago-docs/oo_qfwAVn7lIoV6R/changelog/images/20260127-terminate-sub-offset-invoice.png?w=840&fit=max&auto=format&n=oo_qfwAVn7lIoV6R&q=85&s=6ef72528a2989fa8abb6fd3ee9e17cb1 840w, https://mintcdn.com/lago-docs/oo_qfwAVn7lIoV6R/changelog/images/20260127-terminate-sub-offset-invoice.png?w=1100&fit=max&auto=format&n=oo_qfwAVn7lIoV6R&q=85&s=2dab2b0cdba6abe80e5ea27bda141e6a 1100w, https://mintcdn.com/lago-docs/oo_qfwAVn7lIoV6R/changelog/images/20260127-terminate-sub-offset-invoice.png?w=1650&fit=max&auto=format&n=oo_qfwAVn7lIoV6R&q=85&s=9501341cf7f000be8644ad2c63f419fd 1650w, https://mintcdn.com/lago-docs/oo_qfwAVn7lIoV6R/changelog/images/20260127-terminate-sub-offset-invoice.png?w=2500&fit=max&auto=format&n=oo_qfwAVn7lIoV6R&q=85&s=92567c3d6a222c8c18958d63c0291f66 2500w" />
+  </Frame>
+
+  With the new credit note offset settings, you can now apply this option when terminating a subscription to offset any unused amount due.
+  The used amount remains payable, while the remaining balance is automatically settled through a closing credit note.
+
+  [Learn more](/guide/subscriptions/terminate-subscription#generate-a-closing-credit-note-at-subscription-termination)
+
+  ## Fixed charges are now available in plans
+
+  <Frame>
+        <img src="https://mintcdn.com/lago-docs/Ca1O47E9sQgFCEsl/changelog/images/20260122-fixed-charge-in-plan.png?fit=max&auto=format&n=Ca1O47E9sQgFCEsl&q=85&s=c7b99a1b87646b2a94fc28afa045dbd2" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20260122-fixed-charge-in-plan.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/Ca1O47E9sQgFCEsl/changelog/images/20260122-fixed-charge-in-plan.png?w=280&fit=max&auto=format&n=Ca1O47E9sQgFCEsl&q=85&s=659fff160e9824147a996012fea697da 280w, https://mintcdn.com/lago-docs/Ca1O47E9sQgFCEsl/changelog/images/20260122-fixed-charge-in-plan.png?w=560&fit=max&auto=format&n=Ca1O47E9sQgFCEsl&q=85&s=e1ea09e25c5e5866913733f2d88b811e 560w, https://mintcdn.com/lago-docs/Ca1O47E9sQgFCEsl/changelog/images/20260122-fixed-charge-in-plan.png?w=840&fit=max&auto=format&n=Ca1O47E9sQgFCEsl&q=85&s=6056642e4d622ed97f758ccc6e30f422 840w, https://mintcdn.com/lago-docs/Ca1O47E9sQgFCEsl/changelog/images/20260122-fixed-charge-in-plan.png?w=1100&fit=max&auto=format&n=Ca1O47E9sQgFCEsl&q=85&s=7b18f4b7f036ba6ce13674d4156dbc9f 1100w, https://mintcdn.com/lago-docs/Ca1O47E9sQgFCEsl/changelog/images/20260122-fixed-charge-in-plan.png?w=1650&fit=max&auto=format&n=Ca1O47E9sQgFCEsl&q=85&s=d128ee39f359ff673848f13ee8be775b 1650w, https://mintcdn.com/lago-docs/Ca1O47E9sQgFCEsl/changelog/images/20260122-fixed-charge-in-plan.png?w=2500&fit=max&auto=format&n=Ca1O47E9sQgFCEsl&q=85&s=12cbe718bdef6781fbb71ed552340177 2500w" />
+  </Frame>
+
+  You can now add fixed charges to your plans to bill recurring fixed fees, independently of usage.
+
+  This unlocks common pricing patterns such as platform fees, seat licenses, support plans, or contractual fees.
+  Fixed charges are managed directly at the plan level and billed automatically with subscriptions.
+  There’s no need to rely on one-off invoices anymore.
+
+  [Learn more](/guide/plans/charges/fixed-charges)
+
+  ## Offset invoice amount due with credit notes
+
+  <Frame>
+        <img src="https://mintcdn.com/lago-docs/9PnpyCVeS_Odttuq/changelog/images/20260121-credit-note-offset.png?fit=max&auto=format&n=9PnpyCVeS_Odttuq&q=85&s=8d72fa1c22ec25fd8660dfa491e0398f" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20260121-credit-note-offset.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/9PnpyCVeS_Odttuq/changelog/images/20260121-credit-note-offset.png?w=280&fit=max&auto=format&n=9PnpyCVeS_Odttuq&q=85&s=78da117cc33507c7b1d96125d5fd94c5 280w, https://mintcdn.com/lago-docs/9PnpyCVeS_Odttuq/changelog/images/20260121-credit-note-offset.png?w=560&fit=max&auto=format&n=9PnpyCVeS_Odttuq&q=85&s=bdd990cbdd81be54072b2a5c76658aeb 560w, https://mintcdn.com/lago-docs/9PnpyCVeS_Odttuq/changelog/images/20260121-credit-note-offset.png?w=840&fit=max&auto=format&n=9PnpyCVeS_Odttuq&q=85&s=d73a1eca47d058f790561f04bfcdf419 840w, https://mintcdn.com/lago-docs/9PnpyCVeS_Odttuq/changelog/images/20260121-credit-note-offset.png?w=1100&fit=max&auto=format&n=9PnpyCVeS_Odttuq&q=85&s=307b92a9d94add27cb4e2817f0f955f1 1100w, https://mintcdn.com/lago-docs/9PnpyCVeS_Odttuq/changelog/images/20260121-credit-note-offset.png?w=1650&fit=max&auto=format&n=9PnpyCVeS_Odttuq&q=85&s=7d26b9fc2781dc45ba11f9978cae1e74 1650w, https://mintcdn.com/lago-docs/9PnpyCVeS_Odttuq/changelog/images/20260121-credit-note-offset.png?w=2500&fit=max&auto=format&n=9PnpyCVeS_Odttuq&q=85&s=10de6be7b88b137fa4a93fefcf0f44be 2500w" />
+  </Frame>
+
+  Overcharged a customer? Issued an invoice by mistake? No problem.
+
+  You can now use a credit note to offset the remaining amount due on an invoice.
+  The credited amount is immediately deducted from the invoice balance, keeping your records accurate and clean
+
+  [Learn more](/guide/invoicing/credit-notes/overview#offset)
+
+  ## Define custom roles and permissions
+
+  <Frame>
+        <img src="https://mintcdn.com/lago-docs/9PnpyCVeS_Odttuq/changelog/images/20260112-custom-roles-permissions.png?fit=max&auto=format&n=9PnpyCVeS_Odttuq&q=85&s=a6d051770a02ab9b97fc7ed1b3aad5fa" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20260112-custom-roles-permissions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/9PnpyCVeS_Odttuq/changelog/images/20260112-custom-roles-permissions.png?w=280&fit=max&auto=format&n=9PnpyCVeS_Odttuq&q=85&s=5cbcf8e4a29e9061dee6b077e08a6fa3 280w, https://mintcdn.com/lago-docs/9PnpyCVeS_Odttuq/changelog/images/20260112-custom-roles-permissions.png?w=560&fit=max&auto=format&n=9PnpyCVeS_Odttuq&q=85&s=bf44c73747ce0669bdcfcf6400c421eb 560w, https://mintcdn.com/lago-docs/9PnpyCVeS_Odttuq/changelog/images/20260112-custom-roles-permissions.png?w=840&fit=max&auto=format&n=9PnpyCVeS_Odttuq&q=85&s=8a13bb8e4f22594915674f0935715b67 840w, https://mintcdn.com/lago-docs/9PnpyCVeS_Odttuq/changelog/images/20260112-custom-roles-permissions.png?w=1100&fit=max&auto=format&n=9PnpyCVeS_Odttuq&q=85&s=90222d693c5c9170f78fce27abced382 1100w, https://mintcdn.com/lago-docs/9PnpyCVeS_Odttuq/changelog/images/20260112-custom-roles-permissions.png?w=1650&fit=max&auto=format&n=9PnpyCVeS_Odttuq&q=85&s=c1df528e66239a087688a01db96dbab1 1650w, https://mintcdn.com/lago-docs/9PnpyCVeS_Odttuq/changelog/images/20260112-custom-roles-permissions.png?w=2500&fit=max&auto=format&n=9PnpyCVeS_Odttuq&q=85&s=cac9e876d46b74071761f16884c431a4 2500w" />
+  </Frame>
+
+  We have introduced **Custom Roles and Permissions** to give organizations full control over user access within Lago and your billing data.
+  You can now create an **unlimited number of custom roles and define precise permission sets** that match your team's responsibilities and workflows. This allows you to grant users only the access they need, improving both security and operational clarity.
+
+  Key capabilities:
+
+  * Create and manage unlimited custom roles;
+  * Assign granular permissions to each role;
+  * Automatically propagate permission changes to all users assigned to a role; and
+  * Ensure continuous platform governance by maintaining at least one `admin` role at all times.
+
+  This update simplifies scaling billing operations across teams, strengthens access control enforcement, and allows permissions to evolve seamlessly as your organization grows.
+
+  [Learn more](/guide/security/rbac#custom-roles-and-permissions)
+</Update>
+
+<Update label="December 2025">
+  ## Connect AI Systems with Lago MCP Server
+
+  <Frame>
+        <img src="https://mintcdn.com/lago-docs/2-k0Uplnuzl9sCzZ/changelog/images/20251215mcp-server.png?fit=max&auto=format&n=2-k0Uplnuzl9sCzZ&q=85&s=fca42564bb0f785c1fa7f759d3d9ecd2" alt="" data-og-width="2560" width="2560" data-og-height="1440" height="1440" data-path="changelog/images/20251215mcp-server.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/2-k0Uplnuzl9sCzZ/changelog/images/20251215mcp-server.png?w=280&fit=max&auto=format&n=2-k0Uplnuzl9sCzZ&q=85&s=e6ebab646e7c8855bfa4b95ea2b62660 280w, https://mintcdn.com/lago-docs/2-k0Uplnuzl9sCzZ/changelog/images/20251215mcp-server.png?w=560&fit=max&auto=format&n=2-k0Uplnuzl9sCzZ&q=85&s=a7109174b044fc70f5b236f1d55ab96a 560w, https://mintcdn.com/lago-docs/2-k0Uplnuzl9sCzZ/changelog/images/20251215mcp-server.png?w=840&fit=max&auto=format&n=2-k0Uplnuzl9sCzZ&q=85&s=2e206ff9034596fbd3eb1a95c735241e 840w, https://mintcdn.com/lago-docs/2-k0Uplnuzl9sCzZ/changelog/images/20251215mcp-server.png?w=1100&fit=max&auto=format&n=2-k0Uplnuzl9sCzZ&q=85&s=d743f7d7c1b42a159860e2db89026195 1100w, https://mintcdn.com/lago-docs/2-k0Uplnuzl9sCzZ/changelog/images/20251215mcp-server.png?w=1650&fit=max&auto=format&n=2-k0Uplnuzl9sCzZ&q=85&s=dbb9d040456d29d78842aa8ca4a33460 1650w, https://mintcdn.com/lago-docs/2-k0Uplnuzl9sCzZ/changelog/images/20251215mcp-server.png?w=2500&fit=max&auto=format&n=2-k0Uplnuzl9sCzZ&q=85&s=681a66551c901773f8ad535d34285951 2500w" />
+  </Frame>
+
+  **The Lago MCP Server is now available!** Securely connect your AI ecosystem to enterprise billing data.
+
+  It allows you to connect AI systems, such as language models or other intelligent agents, with Lago's billing capabilities.
+  This enables you to build AI-powered applications that can autonomously manage billing operations, such as creating subscriptions, processing payments, and handling invoices.
+
+  [Learn more](/guide/ai-agents/mcp-server)
+
+  ## Multiple wallets are now available!
+
+  <Frame>
+        <img src="https://mintcdn.com/lago-docs/G305nmKw75YjDmnl/changelog/images/20251212-multiple-wallets.png?fit=max&auto=format&n=G305nmKw75YjDmnl&q=85&s=260d19067d0affb4b4addd6b3363454e" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20251212-multiple-wallets.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/G305nmKw75YjDmnl/changelog/images/20251212-multiple-wallets.png?w=280&fit=max&auto=format&n=G305nmKw75YjDmnl&q=85&s=1831fd74a5d3bf2706e01da1631342eb 280w, https://mintcdn.com/lago-docs/G305nmKw75YjDmnl/changelog/images/20251212-multiple-wallets.png?w=560&fit=max&auto=format&n=G305nmKw75YjDmnl&q=85&s=bf0672c3dade6454f2c6a21082863c1a 560w, https://mintcdn.com/lago-docs/G305nmKw75YjDmnl/changelog/images/20251212-multiple-wallets.png?w=840&fit=max&auto=format&n=G305nmKw75YjDmnl&q=85&s=c71513449af62e055fe1cbe0ec21df88 840w, https://mintcdn.com/lago-docs/G305nmKw75YjDmnl/changelog/images/20251212-multiple-wallets.png?w=1100&fit=max&auto=format&n=G305nmKw75YjDmnl&q=85&s=7611b361fe31ae10914fe1bc6b9e5dd2 1100w, https://mintcdn.com/lago-docs/G305nmKw75YjDmnl/changelog/images/20251212-multiple-wallets.png?w=1650&fit=max&auto=format&n=G305nmKw75YjDmnl&q=85&s=be8dfeb1e02d3accd60abb32077b7e53 1650w, https://mintcdn.com/lago-docs/G305nmKw75YjDmnl/changelog/images/20251212-multiple-wallets.png?w=2500&fit=max&auto=format&n=G305nmKw75YjDmnl&q=85&s=8cc94c1c34be05afbd327e6d1bca1234 2500w" />
+  </Frame>
+
+  You can now create more than one wallet per customer.
+  Each wallet has its own settings: define its priority, limit its scope to specific billable metrics, and configure dedicated recurring top-up rules to better control how credits are applied.
+
+  [Learn more](/guide/wallet-and-prepaid-credits/overview#create-wallets)
+
+  ## Invoice issuing date preferences
+
+  <Frame>
+        <img src="https://mintcdn.com/lago-docs/ohbbKz_vqNFVhtab/changelog/images/20251211-issuing-date-preferences.png?fit=max&auto=format&n=ohbbKz_vqNFVhtab&q=85&s=13040f1ffcea71e807852a7203d7189b" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20251211-issuing-date-preferences.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ohbbKz_vqNFVhtab/changelog/images/20251211-issuing-date-preferences.png?w=280&fit=max&auto=format&n=ohbbKz_vqNFVhtab&q=85&s=f712d055e96ddfe2fcaa5cff2971d4e6 280w, https://mintcdn.com/lago-docs/ohbbKz_vqNFVhtab/changelog/images/20251211-issuing-date-preferences.png?w=560&fit=max&auto=format&n=ohbbKz_vqNFVhtab&q=85&s=2b81f00f5a9556d13a909d36c53111cc 560w, https://mintcdn.com/lago-docs/ohbbKz_vqNFVhtab/changelog/images/20251211-issuing-date-preferences.png?w=840&fit=max&auto=format&n=ohbbKz_vqNFVhtab&q=85&s=2ac0a90076c6a8ac5106edbefe2d3945 840w, https://mintcdn.com/lago-docs/ohbbKz_vqNFVhtab/changelog/images/20251211-issuing-date-preferences.png?w=1100&fit=max&auto=format&n=ohbbKz_vqNFVhtab&q=85&s=530c14dce5af91da0c7276c218e0160b 1100w, https://mintcdn.com/lago-docs/ohbbKz_vqNFVhtab/changelog/images/20251211-issuing-date-preferences.png?w=1650&fit=max&auto=format&n=ohbbKz_vqNFVhtab&q=85&s=286834235fdb0696583d81b8323699bc 1650w, https://mintcdn.com/lago-docs/ohbbKz_vqNFVhtab/changelog/images/20251211-issuing-date-preferences.png?w=2500&fit=max&auto=format&n=ohbbKz_vqNFVhtab&q=85&s=dff797ec4b548bdac08c2a8c9853b80b 2500w" />
+  </Frame>
+
+  **Take full control of when your subscription invoices are dated.**
+
+  Many businesses need invoices dated on the last day of the billing period, not the first day of the next. This is mainly useful for revenue recognition, compliance, or cleaner accounting.
+  You can now configure this at the Billing Entity level (with per-customer overrides) using two new settings: **Issuing Date Anchor** and **Issuing Date Adjustment**.
+
+  For example, an October subscription invoice can now show October 31st instead of November 1st.
+
+  [Learn more](/guide/invoicing/invoicing-settings/issuing_date)
+
+  ## Metadata for credit notes
+
+  <Frame>
+        <img src="https://mintcdn.com/lago-docs/xt911pxAgX0AEljI/changelog/images/20251209-credit-note-metadata.png?fit=max&auto=format&n=xt911pxAgX0AEljI&q=85&s=c723e81cc04808ce69841099581185f2" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20251209-credit-note-metadata.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xt911pxAgX0AEljI/changelog/images/20251209-credit-note-metadata.png?w=280&fit=max&auto=format&n=xt911pxAgX0AEljI&q=85&s=3c6e8d11a86ffd8cbcfc4c509a38c607 280w, https://mintcdn.com/lago-docs/xt911pxAgX0AEljI/changelog/images/20251209-credit-note-metadata.png?w=560&fit=max&auto=format&n=xt911pxAgX0AEljI&q=85&s=d18e848d0596632080c1a8b36adc7922 560w, https://mintcdn.com/lago-docs/xt911pxAgX0AEljI/changelog/images/20251209-credit-note-metadata.png?w=840&fit=max&auto=format&n=xt911pxAgX0AEljI&q=85&s=8c4e55eb428134005de96173635deedc 840w, https://mintcdn.com/lago-docs/xt911pxAgX0AEljI/changelog/images/20251209-credit-note-metadata.png?w=1100&fit=max&auto=format&n=xt911pxAgX0AEljI&q=85&s=a208f655f894d7b95fc2ff616792b0fd 1100w, https://mintcdn.com/lago-docs/xt911pxAgX0AEljI/changelog/images/20251209-credit-note-metadata.png?w=1650&fit=max&auto=format&n=xt911pxAgX0AEljI&q=85&s=4daf59f9ffc6678d2be49652b139441b 1650w, https://mintcdn.com/lago-docs/xt911pxAgX0AEljI/changelog/images/20251209-credit-note-metadata.png?w=2500&fit=max&auto=format&n=xt911pxAgX0AEljI&q=85&s=7e46808754f33699e6c537a9eede11fa 2500w" />
+  </Frame>
+
+  You can now enrich your credit notes with custom metadata.
+  This allows teams to store key operational details — such as the reason for issuing the credit note, internal notes, or synchronization references for external tools.
+
+  [Learn more](/guide/invoicing/credit-notes/credit-note-metadata)
+
+  ## Agentic AI for Billing Operations
+
+  <Frame>
+        <img src="https://mintcdn.com/lago-docs/ohbbKz_vqNFVhtab/changelog/images/20251209-ai-agent-billing-assistant.png?fit=max&auto=format&n=ohbbKz_vqNFVhtab&q=85&s=0c6fcf96bae309445e4dbb571aa04a44" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20251209-ai-agent-billing-assistant.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ohbbKz_vqNFVhtab/changelog/images/20251209-ai-agent-billing-assistant.png?w=280&fit=max&auto=format&n=ohbbKz_vqNFVhtab&q=85&s=6164aaee74b2e2f7dd046eff00a9702d 280w, https://mintcdn.com/lago-docs/ohbbKz_vqNFVhtab/changelog/images/20251209-ai-agent-billing-assistant.png?w=560&fit=max&auto=format&n=ohbbKz_vqNFVhtab&q=85&s=1f2a0844e85f4d8595dbb2e7d0080cbf 560w, https://mintcdn.com/lago-docs/ohbbKz_vqNFVhtab/changelog/images/20251209-ai-agent-billing-assistant.png?w=840&fit=max&auto=format&n=ohbbKz_vqNFVhtab&q=85&s=08f25f4e18a46ebaa3397c938d6d907a 840w, https://mintcdn.com/lago-docs/ohbbKz_vqNFVhtab/changelog/images/20251209-ai-agent-billing-assistant.png?w=1100&fit=max&auto=format&n=ohbbKz_vqNFVhtab&q=85&s=b1d147dd6c89a79785c92764bfc4be19 1100w, https://mintcdn.com/lago-docs/ohbbKz_vqNFVhtab/changelog/images/20251209-ai-agent-billing-assistant.png?w=1650&fit=max&auto=format&n=ohbbKz_vqNFVhtab&q=85&s=471083bb1f150d07510fd3f9851314f5 1650w, https://mintcdn.com/lago-docs/ohbbKz_vqNFVhtab/changelog/images/20251209-ai-agent-billing-assistant.png?w=2500&fit=max&auto=format&n=ohbbKz_vqNFVhtab&q=85&s=2e636b68c0d7587c77821fe923603f7f 2500w" />
+  </Frame>
+
+  Introducing our 1st Lago AI Agent, called the **Billing Assistant**, a conversational assistant to help you manage billing operations using natural language.
+
+  This conversational assistant helps you **manage billing operations using natural language**, reducing the time spent on manual and repetitive tasks.
+
+  Ask questions, retrieve data, and perform actions across your billing entities, all through a simple chat interface.
+  Conversations are saved for context-aware follow-ups, and built-in safeguards require confirmation before executing any destructive actions.
+
+  [Learn more](/guide/ai-agents/billing-assistant)
+</Update>
 
 <Update label="November 2025">
   ## E-invoicing and compliant documents
@@ -22,7 +153,7 @@
 
   Feel free to contact the team or submit an open source contribution, especially for jurisdictions that share similar formats with minor adjustments.
 
-  [Learn more](/guide/invoicing/einvoicing)
+  [Learn more](/guide/invoicing/e-invoicing/overview)
 
   ## New integration mapping per Lago Billing Entity
 
@@ -929,7 +1060,7 @@
   You can now process refunds for prepaid credit bought within Lago directly, without needing to engage your payment provider.
   Lago takes care of the refund through its credit note module, enabling you to initiate the refund to the payment provider and automatically void the prepaid credit in the active wallet according to the wallet’s refund status.
 
-  [Learn more](/guide/credit-notes.mdx)
+  [Learn more](/guide/invoicing/credit-notes/overview)
 
   ## Customer Portal complete rework
 
@@ -1704,7 +1835,7 @@
 
   Display names can be defined via the user interface or the API (see `plan.invoice_display_name` and `charges.invoice_display_name`).
 
-  [Learn more](/guide/plans/charges/overview#update-invoice-display-names)
+  [Learn more](/guide/plans/charges/usage-based-charges#update-invoice-display-names)
 
   <Frame>
     ![](https://uploads-ssl.webflow.com/63569f390f3a7ad4c76d2bd6/651fffd240c8227ee8ccaf83_invoice_display_name.png)
@@ -2218,7 +2349,7 @@
   * **Refund the customer** (only for paid invoices)
   * **Credit back the customer's account**
 
-  Please refer to the [documentation](/guide/credit-notes) for more information on credit notes and credit methods.
+  Please refer to the [documentation](/guide/invoicing/credit-notes/overview) for more information on credit notes and credit methods.
 
   ## Timezones ✨
 

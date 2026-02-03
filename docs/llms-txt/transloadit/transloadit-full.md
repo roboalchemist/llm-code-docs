@@ -74,8 +74,8 @@ All meta data is available on a unique Assembly URL which contains the Assembly 
 ## Example integration code with Node.js
 
 ```js
-// npm install transloadit
-const { Transloadit } = require('transloadit')
+// npm install --save transloadit@^4.0.0
+import { Transloadit } from 'transloadit'
 
 const transloadit = new Transloadit({
   authKey: 'TRANSLOADIT_KEY',
@@ -122,6 +122,7 @@ console.log('✅ Success - Your resized image:', status?.results?.resize?.[0]?.s
 
 ### Available Robots
 
+- `/ai/chat` - Generate AI chat responses
 - `/audio/artwork` - Extract or insert audio artwork
 - `/audio/concat` - Concatenate audio
 - `/audio/encode` - Encode audio
@@ -142,6 +143,7 @@ console.log('✅ Success - Your resized image:', status?.results?.resize?.[0]?.s
 - `/document/convert` - Convert documents into different formats
 - `/document/merge` - Merge documents into one
 - `/document/ocr` - Recognize text in documents
+- `/document/optimize` - Reduce PDF file size
 - `/document/split` - Extract pages from a document
 - `/document/thumbs` - Extract thumbnail images from documents
 - `/dropbox/import` - Import files from Dropbox
@@ -808,8 +810,11 @@ const IgnoreErrorsSchema = z.object({
   ignore_errors: z
     .union([
       z.any(),
-      z.union([z.boolean(), z.array(z.enum(['meta', 'import']))]),
+      z.union([z.boolean(), z.array(z.enum(['meta', 'execute']))]),
     ])
+    .describe(
+      '\nIgnore errors during specific phases of processing.\n\nSetting this to `["meta"]` will cause the Robot to ignore errors during metadata extraction.\n\nSetting this to `["execute"]` will cause the Robot to ignore errors during the main execution phase.\n\nSetting this to `true` is equivalent to `["meta", "execute"]` and will ignore errors in both phases.\n',
+    )
     .default([]),
 })
 
@@ -1094,6 +1099,228 @@ const VideoPresetSchema = z.object({
 
 ```
 
+#### `/ai/chat`
+
+[/ai/chat docs](https://transloadit.com/docs/robots/ai-chat/)
+
+Robot Parameter Zod Schema:
+
+```ts
+const aiChatSchema = z
+  .object({
+    credentials: CredentialsSchema,
+    ignore_errors: IgnoreErrorsSchema,
+    output_meta: OutputMetaSchema,
+    result: ResultSchema,
+    use: UseSchema,
+    queue: z
+      .union([z.any(), z.literal('batch')])
+      .describe(
+        "Setting the queue to 'batch', manually downgrades the priority of jobs for this step to avoid consuming Priority job slots for jobs that don't need zero queue waiting times",
+      )
+      .optional(),
+    force_accept: z
+      .union([z.any(), z.union([z.boolean(), z.any()])])
+      .describe(
+        'Force a Robot to accept a file type it would have ignored.\n\nBy default, Robots ignore files they are not familiar with.\n[🤖/video/encode](https://transloadit.com/docs/robots/video-encode/), for\nexample, will happily ignore input images.\n\nWith the `force_accept` parameter set to `true`, you can force Robots to accept all files thrown at them.\nThis will typically lead to errors and should only be used for debugging or combatting edge cases.\n',
+      )
+      .default(false),
+    robot: z.literal('/ai/chat'),
+    model: z
+      .union([
+        z.any(),
+        z.union([
+          z.any(),
+          z.string().regex(new RegExp('^[a-z]+\\/[a-z0-9.-]+$')),
+        ]),
+        z.union([z.any(), z.literal('auto')]),
+      ])
+      .describe(
+        'The model to use. Transloadit can pick the best model for the job if you set this to "auto".',
+      )
+      .default('auto'),
+    format: z
+      .union([z.any(), z.enum(['json', 'text', 'meta'])])
+      .default('json'),
+    return_messages: z
+      .union([z.any(), z.enum(['all', 'last'])])
+      .default('last'),
+    schema: z
+      .union([z.any(), z.string()])
+      .describe('The JSON Schema that the LLM should output')
+      .optional(),
+    messages: z
+      .union([
+        z.any(),
+        z.union([z.any(), z.string()]),
+        z.union([
+          z.any(),
+          z.array(
+            z.union([
+              z
+                .object({
+                  role: z.literal('system'),
+                  content: z.string(),
+                  experimental_providerMetadata: z
+                    .record(
+                      z.record(
+                        z.union([
+                          z.string(),
+                          z.number(),
+                          z.boolean(),
+                          z.null(),
+                          z.array(z.any()),
+                          z.record(z.any()),
+                        ]),
+                      ),
+                    )
+                    .optional(),
+                })
+                .strict(),
+              z
+                .object({
+                  role: z.literal('user'),
+                  content: z.union([
+                    z.string(),
+                    z.array(
+                      z.union([
+                        z
+                          .object({
+                            type: z.literal('text'),
+                            text: z.string(),
+                            experimental_providerMetadata: z.any().optional(),
+                          })
+                          .strict(),
+                        z
+                          .object({
+                            type: z.literal('image'),
+                            image: z.union([
+                              z.string(),
+                              z.any(),
+                              z.any(),
+                              z.any(),
+                            ]),
+                            mimeType: z.string().optional(),
+                            experimental_providerMetadata: z.any().optional(),
+                          })
+                          .strict(),
+                        z
+                          .object({
+                            type: z.literal('file'),
+                            data: z.union([
+                              z.string(),
+                              z.any(),
+                              z.any(),
+                              z.any(),
+                            ]),
+                            mediaType: z.string(),
+                            experimental_providerMetadata: z.any().optional(),
+                          })
+                          .strict(),
+                      ]),
+                    ),
+                  ]),
+                  experimental_providerMetadata: z.any().optional(),
+                })
+                .strict(),
+              z
+                .object({
+                  role: z.literal('assistant'),
+                  content: z.union([
+                    z.string(),
+                    z.array(
+                      z.union([
+                        z.any(),
+                        z
+                          .object({
+                            type: z.literal('tool-call'),
+                            toolCallId: z.string(),
+                            toolName: z.string(),
+                            args: z.record(z.any()),
+                            experimental_providerMetadata: z.any().optional(),
+                          })
+                          .strict(),
+                      ]),
+                    ),
+                  ]),
+                  experimental_providerMetadata: z.any().optional(),
+                })
+                .strict(),
+              z
+                .object({
+                  role: z.literal('tool'),
+                  content: z.array(
+                    z
+                      .object({
+                        type: z.literal('tool-result'),
+                        toolCallId: z.string(),
+                        toolName: z.string(),
+                        result: z.any().optional(),
+                        experimental_content: z
+                          .array(
+                            z.union([
+                              z
+                                .object({
+                                  type: z.literal('text'),
+                                  text: z.string(),
+                                })
+                                .strict(),
+                              z
+                                .object({
+                                  type: z.literal('image'),
+                                  data: z.string(),
+                                  mimeType: z.string().optional(),
+                                })
+                                .strict(),
+                            ]),
+                          )
+                          .optional(),
+                        isError: z.boolean().optional(),
+                        experimental_providerMetadata: z.any().optional(),
+                      })
+                      .strict(),
+                  ),
+                  experimental_providerMetadata: z.any().optional(),
+                })
+                .strict(),
+            ]),
+          ),
+        ]),
+      ])
+      .describe('The prompt, or message history to send to the LLM.'),
+    system_message: z
+      .union([z.any(), z.string()])
+      .describe('Set the system/developer prompt, if the model allows it')
+      .optional(),
+    test_credentials: z
+      .union([z.any(), z.union([z.boolean(), z.any()])])
+      .describe('Use Transloadit-provided credentials for testing.')
+      .optional(),
+    mcp_servers: z
+      .union([
+        z.any(),
+        z.array(
+          z.union([
+            z.any(),
+            z
+              .object({
+                type: z.union([z.any(), z.enum(['sse', 'http'])]),
+                url: z.union([z.any(), z.string()]),
+                headers: z.record(z.union([z.any(), z.string()])).optional(),
+              })
+              .strict(),
+          ]),
+        ),
+      ])
+      .describe(
+        'The MCP servers to use. This is used to call tools from the LLM.',
+      )
+      .optional(),
+  })
+  .strict()
+
+```
+
 #### `/audio/artwork`
 
 [/audio/artwork docs](https://transloadit.com/docs/robots/audio-artwork/)
@@ -1104,6 +1331,7 @@ Robot Parameter Zod Schema:
 const audioArtworkSchema = z
   .object({
     preset: AudioPresetSchema,
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     ffmpeg_stack: FfmpegStackSchema,
@@ -1153,6 +1381,7 @@ Robot Parameter Zod Schema:
 const audioConcatSchema = z
   .object({
     preset: AudioPresetSchema,
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     ffmpeg_stack: FfmpegStackSchema,
@@ -1226,6 +1455,7 @@ Robot Parameter Zod Schema:
 const audioEncodeSchema = z
   .object({
     preset: AudioPresetSchema,
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     ffmpeg_stack: FfmpegStackSchema,
@@ -1279,6 +1509,7 @@ Robot Parameter Zod Schema:
 const audioLoopSchema = z
   .object({
     preset: AudioPresetSchema,
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     ffmpeg_stack: FfmpegStackSchema,
@@ -1342,6 +1573,7 @@ Robot Parameter Zod Schema:
 const audioMergeSchema = z
   .object({
     preset: AudioPresetSchema,
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     ffmpeg_stack: FfmpegStackSchema,
@@ -1412,6 +1644,7 @@ Robot Parameter Zod Schema:
 ```ts
 const audioWaveformSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     ffmpeg_stack: FfmpegStackSchema,
@@ -1460,16 +1693,6 @@ const audioWaveformSchema = z
         '\nThe height of the resulting image if the format `"image"` was selected.\n',
       )
       .default(64),
-    style: z
-      .union([
-        z.any(),
-        z.union([z.any(), z.literal(0)]),
-        z.union([z.any(), z.literal(1)]),
-      ])
-      .describe(
-        '\nEither a value of `0` or `1`, corresponding to using either the legacy waveform tool, or the new tool respectively, with the new tool offering an improved style. Other Robot parameters still function as described, with either tool.\n',
-      )
-      .default(0),
     antialiasing: z
       .union([
         z.any(),
@@ -1502,6 +1725,154 @@ const audioWaveformSchema = z
         '\nThe color used in the outer parts of the gradient. The format is "rrggbbaa" (red, green, blue, alpha).\n',
       )
       .default('000000ff'),
+    style: z
+      .union([
+        z.any(),
+        z
+          .enum(['v0', 'v1'])
+          .describe(
+            '\nWaveform style version.\n\n- `"v0"`: Legacy waveform generation (default).\n- `"v1"`: Advanced waveform generation with additional parameters.\n\nFor backwards compatibility, numeric values `0`, `1`, `2` are also accepted and mapped to `"v0"` (0) and `"v1"` (1/2).\n',
+          )
+          .default('v0'),
+      ])
+      .describe(
+        '\nWaveform style version.\n\n- `"v0"`: Legacy waveform generation (default).\n- `"v1"`: Advanced waveform generation with additional parameters.\n\nFor backwards compatibility, numeric values `0`, `1`, `2` are also accepted and mapped to `"v0"` (0) and `"v1"` (1/2).\n',
+      )
+      .optional(),
+    split_channels: z
+      .union([z.any(), z.union([z.boolean(), z.any()])])
+      .describe(
+        '\nAvailable when style is `"v1"`. If set to `true`, outputs multi-channel waveform data or image files, one per channel.\n',
+      )
+      .optional(),
+    zoom: z
+      .union([
+        z.string().regex(new RegExp('^\\d+(\\.\\d+)?$')),
+        z.any(),
+        z.number().int().gte(1),
+      ])
+      .describe(
+        '\nAvailable when style is `"v1"`. Zoom level in samples per pixel. This parameter cannot be used together with `pixels_per_second`.\n',
+      )
+      .optional(),
+    pixels_per_second: z
+      .union([
+        z.string().regex(new RegExp('^\\d+(\\.\\d+)?$')),
+        z.any(),
+        z.number().gt(0),
+      ])
+      .describe(
+        '\nAvailable when style is `"v1"`. Zoom level in pixels per second. This parameter cannot be used together with `zoom`.\n',
+      )
+      .optional(),
+    bits: z
+      .union([
+        z.any(),
+        z.union([z.any(), z.literal(8)]),
+        z.union([z.any(), z.literal(16)]),
+      ])
+      .describe(
+        '\nAvailable when style is `"v1"`. Bit depth for waveform data. Can be 8 or 16.\n',
+      )
+      .optional(),
+    start: z
+      .union([
+        z.string().regex(new RegExp('^\\d+(\\.\\d+)?$')),
+        z.any(),
+        z.number().gte(0),
+      ])
+      .describe('\nAvailable when style is `"v1"`. Start time in seconds.\n')
+      .optional(),
+    end: z
+      .union([
+        z.string().regex(new RegExp('^\\d+(\\.\\d+)?$')),
+        z.any(),
+        z.number().gte(0),
+      ])
+      .describe(
+        '\nAvailable when style is `"v1"`. End time in seconds (0 means end of audio).\n',
+      )
+      .optional(),
+    colors: z
+      .union([z.any(), z.enum(['audition', 'audacity'])])
+      .describe(
+        '\nAvailable when style is `"v1"`. Color scheme to use. Can be "audition" or "audacity".\n',
+      )
+      .optional(),
+    border_color: z
+      .union([z.any(), z.any()])
+      .describe(
+        '\nAvailable when style is `"v1"`. Border color in "rrggbbaa" format.\n',
+      )
+      .optional(),
+    waveform_style: z
+      .union([z.any(), z.enum(['normal', 'bars'])])
+      .describe(
+        '\nAvailable when style is `"v1"`. Waveform style. Can be "normal" or "bars".\n',
+      )
+      .optional(),
+    bar_width: z
+      .union([
+        z.string().regex(new RegExp('^\\d+(\\.\\d+)?$')),
+        z.any(),
+        z.number().int().gt(0),
+      ])
+      .describe(
+        '\nAvailable when style is `"v1"`. Width of bars in pixels when waveform_style is "bars".\n',
+      )
+      .optional(),
+    bar_gap: z
+      .union([
+        z.string().regex(new RegExp('^\\d+(\\.\\d+)?$')),
+        z.any(),
+        z.number().int().gte(0),
+      ])
+      .describe(
+        '\nAvailable when style is `"v1"`. Gap between bars in pixels when waveform_style is "bars".\n',
+      )
+      .optional(),
+    bar_style: z
+      .union([z.any(), z.enum(['square', 'rounded'])])
+      .describe(
+        '\nAvailable when style is `"v1"`. Bar style when waveform_style is "bars".\n',
+      )
+      .optional(),
+    axis_label_color: z
+      .union([z.any(), z.any()])
+      .describe(
+        '\nAvailable when style is `"v1"`. Color for axis labels in "rrggbbaa" format.\n',
+      )
+      .optional(),
+    no_axis_labels: z
+      .union([z.any(), z.union([z.boolean(), z.any()])])
+      .describe(
+        '\nAvailable when style is `"v1"`. If set to `true`, renders waveform image without axis labels.\n',
+      )
+      .optional(),
+    with_axis_labels: z
+      .union([z.any(), z.union([z.boolean(), z.any()])])
+      .describe(
+        '\nAvailable when style is `"v1"`. If set to `true`, renders waveform image with axis labels.\n',
+      )
+      .optional(),
+    amplitude_scale: z
+      .union([
+        z.string().regex(new RegExp('^\\d+(\\.\\d+)?$')),
+        z.any(),
+        z.number().gt(0),
+      ])
+      .describe('\nAvailable when style is `"v1"`. Amplitude scale factor.\n')
+      .optional(),
+    compression: z
+      .union([
+        z.string().regex(new RegExp('^\\d+(\\.\\d+)?$')),
+        z.any(),
+        z.number().int().gte(-1).lte(9),
+      ])
+      .describe(
+        '\nAvailable when style is `"v1"`. PNG compression level: 0 (none) to 9 (best), or -1 (default). Only applicable when format is "image".\n',
+      )
+      .optional(),
   })
   .strict()
 
@@ -1593,6 +1964,7 @@ Robot Parameter Zod Schema:
 const azureStoreSchema = z
   .object({
     credentials: CredentialsSchema,
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -1761,6 +2133,7 @@ Robot Parameter Zod Schema:
 const backblazeStoreSchema = z
   .object({
     credentials: CredentialsSchema,
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -1891,6 +2264,7 @@ Robot Parameter Zod Schema:
 const cloudfilesStoreSchema = z
   .object({
     credentials: CredentialsSchema,
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -2032,6 +2406,7 @@ Robot Parameter Zod Schema:
 const cloudflareStoreSchema = z
   .object({
     credentials: CredentialsSchema,
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -2194,6 +2569,7 @@ Robot Parameter Zod Schema:
 const digitaloceanStoreSchema = z
   .object({
     credentials: CredentialsSchema,
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -2260,6 +2636,7 @@ Robot Parameter Zod Schema:
 ```ts
 const documentAutorotateSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -2290,6 +2667,7 @@ Robot Parameter Zod Schema:
 ```ts
 const documentConvertSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -2430,6 +2808,7 @@ Robot Parameter Zod Schema:
 ```ts
 const documentMergeSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -2472,6 +2851,7 @@ Robot Parameter Zod Schema:
 ```ts
 const documentOcrSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -2521,6 +2901,87 @@ const documentOcrSchema = z
 
 ```
 
+#### `/document/optimize`
+
+[/document/optimize docs](https://transloadit.com/docs/robots/document-optimize/)
+
+Robot Parameter Zod Schema:
+
+```ts
+const documentOptimizeSchema = z
+  .object({
+    ignore_errors: IgnoreErrorsSchema,
+    output_meta: OutputMetaSchema,
+    result: ResultSchema,
+    use: UseSchema,
+    queue: z
+      .union([z.any(), z.literal('batch')])
+      .describe(
+        "Setting the queue to 'batch', manually downgrades the priority of jobs for this step to avoid consuming Priority job slots for jobs that don't need zero queue waiting times",
+      )
+      .optional(),
+    force_accept: z
+      .union([z.any(), z.union([z.boolean(), z.any()])])
+      .describe(
+        'Force a Robot to accept a file type it would have ignored.\n\nBy default, Robots ignore files they are not familiar with.\n[🤖/video/encode](https://transloadit.com/docs/robots/video-encode/), for\nexample, will happily ignore input images.\n\nWith the `force_accept` parameter set to `true`, you can force Robots to accept all files thrown at them.\nThis will typically lead to errors and should only be used for debugging or combatting edge cases.\n',
+      )
+      .default(false),
+    robot: z
+      .literal('/document/optimize')
+      .describe(
+        '\nThis Robot reduces PDF file sizes. It recompresses images, subsets fonts, and applies various optimizations to reduce file size while maintaining acceptable quality.\n\n## Quality Presets\n\nThe Robot supports four quality presets that control the trade-off between file size and quality:\n\n| Preset | DPI | Use Case | Typical Savings |\n|--------|-----|----------|-----------------|\n| `screen` | 72 | Screen viewing, smallest files | ~86% |\n| `ebook` | 150 | Good balance of quality/size | ~71% |\n| `printer` | 300 | Print quality | Moderate |\n| `prepress` | Highest | Press-ready, largest files | Minimal |\n',
+      ),
+    preset: z
+      .union([z.any(), z.enum(['screen', 'ebook', 'printer', 'prepress'])])
+      .describe(
+        '\nThe quality preset to use for optimization. Each preset provides a different balance between file size and quality:\n\n- `screen` - Lowest quality, smallest file size. Best for screen viewing only. Images are downsampled to 72 DPI.\n- `ebook` - Good balance of quality and size. Suitable for most purposes. Images are downsampled to 150 DPI.\n- `printer` - High quality suitable for printing. Images are kept at 300 DPI.\n- `prepress` - Highest quality for professional printing. Minimal compression applied.\n',
+      )
+      .default('ebook'),
+    image_dpi: z
+      .union([
+        z.string().regex(new RegExp('^\\d+(\\.\\d+)?$')),
+        z.any(),
+        z.number().int().gte(36).lte(600),
+      ])
+      .describe(
+        '\nTarget DPI (dots per inch) for embedded images. When specified, this overrides the DPI setting from the preset.\n\nHigher DPI values result in better image quality but larger file sizes. Lower values produce smaller files but may result in pixelated images when printed.\n\nCommon values:\n- 72 - Screen viewing\n- 150 - eBooks and general documents\n- 300 - Print quality\n- 600 - High-quality print\n',
+      )
+      .optional(),
+    compress_fonts: z
+      .union([z.any(), z.union([z.boolean(), z.any()])])
+      .describe(
+        '\nWhether to compress embedded fonts. When enabled, fonts are compressed to reduce file size.\n',
+      )
+      .default(true),
+    subset_fonts: z
+      .union([z.any(), z.union([z.boolean(), z.any()])])
+      .describe(
+        "\nWhether to subset embedded fonts, keeping only the glyphs that are actually used in the document. This can significantly reduce file size for documents that only use a small portion of a font's character set.\n",
+      )
+      .default(true),
+    remove_metadata: z
+      .union([z.any(), z.union([z.boolean(), z.any()])])
+      .describe(
+        '\nWhether to strip document metadata (title, author, keywords, etc.) from the PDF. This can provide a small reduction in file size and may be useful for privacy.\n',
+      )
+      .default(false),
+    linearize: z
+      .union([z.any(), z.union([z.boolean(), z.any()])])
+      .describe(
+        '\nWhether to linearize (optimize for Fast Web View) the output PDF. Linearized PDFs can begin displaying in a browser before they are fully downloaded, improving the user experience for web delivery.\n',
+      )
+      .default(true),
+    compatibility: z
+      .union([z.any(), z.enum(['1.4', '1.5', '1.6', '1.7', '2.0'])])
+      .describe(
+        '\nThe PDF version compatibility level. Lower versions have broader compatibility but fewer features. Higher versions support more advanced features but may not open in older PDF readers.\n\n- `1.4` - Acrobat 5 compatibility, most widely supported\n- `1.5` - Acrobat 6 compatibility\n- `1.6` - Acrobat 7 compatibility\n- `1.7` - Acrobat 8+ compatibility (default)\n- `2.0` - PDF 2.0 standard\n',
+      )
+      .default('1.7'),
+  })
+  .strict()
+
+```
+
 #### `/document/split`
 
 [/document/split docs](https://transloadit.com/docs/robots/document-split/)
@@ -2530,6 +2991,7 @@ Robot Parameter Zod Schema:
 ```ts
 const documentSplitSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -2570,6 +3032,7 @@ Robot Parameter Zod Schema:
 ```ts
 const documentThumbsSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -2813,6 +3276,7 @@ Robot Parameter Zod Schema:
 const dropboxStoreSchema = z
   .object({
     credentials: CredentialsSchema,
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -2855,6 +3319,7 @@ Robot Parameter Zod Schema:
 ```ts
 const edglyDeliverSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     queue: z
@@ -2888,6 +3353,7 @@ Robot Parameter Zod Schema:
 ```ts
 const fileCompressSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -2993,6 +3459,7 @@ Robot Parameter Zod Schema:
 ```ts
 const fileFilterSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -3011,7 +3478,7 @@ const fileFilterSchema = z
     robot: z
       .literal('/file/filter')
       .describe(
-        '\nThink of this <dfn>Robot</dfn> as an `if/else` condition for building advanced file conversion workflows. With it, you can filter and direct certain uploaded files depending on their metadata.\n\nThe <dfn>Robot</dfn> has two modes of operation:\n\n- Constructing conditions out of arrays with 3 members each. For example, `["${file.size}", "<=", "720"]`\n- Writing conditions in JavaScript. For example, `${file.size <= 720}`. See also [Dynamic Evaluation](https://transloadit.com/docs/topics/dynamic-evaluation/).\n\nPassing JavaScript allows you to implement logic as complex as you wish, however it’s slower than combining arrays of conditions, and will be charged for per invocation via [🤖/script/run](https://transloadit.com/docs/robots/script-run/).\n\n### Conditions as arrays\n\nThe `accepts` and `declines` parameters can each be set to an array of arrays with three members:\n\n1. A value or job variable, such as `${file.mime}`\n2. One of the following operators: `==`, `===`, `<`, `>`, `<=`, `>=`, `!=`, `!==`, `regex`, `!regex`\n3. A value or job variable, such as `50` or `"foo"`\n\nExamples:\n\n- `[["${file.meta.width}", ">", "${file.meta.height}"]]`\n- `[["${file.size}", "<=", "720"]]`\n- `[["720", ">=", "${file.size}"]]`\n- `[["${file.mime}", "regex", "image"]]`\n\n> [!Warning]\n> If you would like to match against a `null` value or a value that is not present (like an audio file does not have a `video_codec` property in its metadata), match against `""` (an empty string) instead. We’ll support proper matching against `null` in the future, but we cannot easily do so right now without breaking backwards compatibility.\n\n### Conditions as JavaScript\n\nThe `accepts` and `declines` parameters can each be set to strings of JavaScript, which return a boolean value.\n\nExamples:\n\n- `${file.meta.width > file.meta.height}`\n- `${file.size <= 720}`\n- `${/image/.test(file.mime)}`\n- `${Math.max(file.meta.width, file.meta.height) > 100}`\n\nAs indicated, we charge for this via [🤖/script/run](https://transloadit.com/docs/robots/script-run/). See also [Dynamic Evaluation](https://transloadit.com/docs/topics/dynamic-evaluation/) for more details on allowed syntax and behavior.\n',
+        '\nThink of this <dfn>Robot</dfn> as an `if/else` condition for building advanced file conversion workflows. With it, you can filter and direct certain uploaded files depending on their metadata.\n\nThe <dfn>Robot</dfn> has two modes of operation:\n\n- Constructing conditions out of arrays with 3 members each. For example, `["${file.size}", "<=", "720"]`\n- Writing conditions in JavaScript. For example, `${file.size <= 720}`. See also [Dynamic Evaluation](https://transloadit.com/docs/topics/dynamic-evaluation/).\n\nPassing JavaScript allows you to implement logic as complex as you wish, however it’s slower than combining arrays of conditions, and will be charged for per invocation via [🤖/script/run](https://transloadit.com/docs/robots/script-run/).\n\n### Conditions as arrays\n\nThe `accepts` and `declines` parameters can each be set to an array of arrays with three members:\n\n1. A value or job variable, such as `${file.mime}`\n2. One of the following operators: `==`, `===`, `<`, `>`, `<=`, `>=`, `!=`, `!==`, `regex`, `!regex`, `includes`, `!includes`\n3. A value or job variable, such as `50` or `"foo"`\n\nExamples:\n\n- `[["${file.meta.width}", ">", "${file.meta.height}"]]`\n- `[["${file.size}", "<=", "720"]]`\n- `[["720", ">=", "${file.size}"]]`\n- `[["${file.mime}", "regex", "image"]]`\n\nThe `includes` and `!includes` operators work with arrays or strings (strings use substring checks).\n\n> [!Warning]\n> If you would like to match against a `null` value or a value that is not present (like an audio file does not have a `video_codec` property in its metadata), match against `""` (an empty string) instead. We’ll support proper matching against `null` in the future, but we cannot easily do so right now without breaking backwards compatibility.\n\n### Conditions as JavaScript\n\nThe `accepts` and `declines` parameters can each be set to strings of JavaScript, which return a boolean value.\n\nExamples:\n\n- `${file.meta.width > file.meta.height}`\n- `${file.size <= 720}`\n- `${/image/.test(file.mime)}`\n- `${Math.max(file.meta.width, file.meta.height) > 100}`\n\nAs indicated, we charge for this via [🤖/script/run](https://transloadit.com/docs/robots/script-run/). See also [Dynamic Evaluation](https://transloadit.com/docs/topics/dynamic-evaluation/) for more details on allowed syntax and behavior.\n',
       ),
     accepts: z
       .union([
@@ -3363,6 +3830,7 @@ Robot Parameter Zod Schema:
 ```ts
 const fileHashSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -3406,6 +3874,7 @@ Robot Parameter Zod Schema:
 ```ts
 const filePreviewSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -3633,6 +4102,7 @@ Robot Parameter Zod Schema:
 ```ts
 const fileReadSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -3667,6 +4137,7 @@ Robot Parameter Zod Schema:
 ```ts
 const fileServeSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -3717,6 +4188,7 @@ Robot Parameter Zod Schema:
 ```ts
 const fileVerifySchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -3765,6 +4237,7 @@ Robot Parameter Zod Schema:
 ```ts
 const fileVirusscanSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -3882,6 +4355,7 @@ Robot Parameter Zod Schema:
 const ftpStoreSchema = z
   .object({
     credentials: CredentialsSchema,
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -4023,6 +4497,7 @@ Robot Parameter Zod Schema:
 const googleStoreSchema = z
   .object({
     credentials: CredentialsSchema,
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -4097,6 +4572,7 @@ Robot Parameter Zod Schema:
 ```ts
 const htmlConvertSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -4309,6 +4785,7 @@ Robot Parameter Zod Schema:
 ```ts
 const imageBgremoveSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -4339,6 +4816,12 @@ const imageBgremoveSchema = z
       .union([z.any(), z.enum(['transloadit', 'replicate', 'fal'])])
       .describe('Provider to use for removing the background.')
       .optional(),
+    model: z
+      .union([z.any(), z.string()])
+      .describe(
+        'Provider-specific model to use for removing the background. Mostly intended for testing and evaluation.',
+      )
+      .optional(),
   })
   .strict()
 
@@ -4353,6 +4836,7 @@ Robot Parameter Zod Schema:
 ```ts
 const imageDescribeSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -4414,6 +4898,7 @@ Robot Parameter Zod Schema:
 ```ts
 const imageFacedetectSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -4502,6 +4987,7 @@ Robot Parameter Zod Schema:
 ```ts
 const imageGenerateSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -4518,7 +5004,12 @@ const imageGenerateSchema = z
       )
       .default(false),
     robot: z.literal('/image/generate'),
-    model: z.union([z.any(), z.string()]),
+    model: z
+      .union([z.any(), z.string()])
+      .describe(
+        'The AI model to use for image generation. Defaults to google/nano-banana.',
+      )
+      .optional(),
     prompt: z
       .union([
         z.any(),
@@ -4526,7 +5017,7 @@ const imageGenerateSchema = z
       ])
       .describe('The prompt describing the desired image content.'),
     format: z
-      .union([z.any(), z.enum(['jpeg', 'png', 'gif', 'webp', 'svg'])])
+      .union([z.any(), z.enum(['jpeg', 'jpg', 'png', 'gif', 'webp', 'svg'])])
       .describe('Format of the generated image.')
       .optional(),
     seed: z
@@ -4569,6 +5060,10 @@ const imageGenerateSchema = z
       ])
       .describe('Number of image variants to generate.')
       .optional(),
+    provider: z
+      .union([z.any(), z.string()])
+      .describe('Provider for generating the image.')
+      .optional(),
   })
   .strict()
 
@@ -4583,6 +5078,7 @@ Robot Parameter Zod Schema:
 ```ts
 const imageMergeSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -4660,6 +5156,7 @@ Robot Parameter Zod Schema:
 ```ts
 const imageOcrSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -4718,6 +5215,7 @@ Robot Parameter Zod Schema:
 ```ts
 const imageOptimizeSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -4776,6 +5274,7 @@ Robot Parameter Zod Schema:
 ```ts
 const imageResizeSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -5669,6 +6168,7 @@ Robot Parameter Zod Schema:
 ```ts
 const metaWriteSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     ffmpeg_stack: FfmpegStackSchema,
@@ -5692,7 +6192,7 @@ const metaWriteSchema = z
         '\n**Note:** This <dfn>Robot</dfn> currently accepts images, videos and audio files.\n',
       ),
     data_to_write: z
-      .union([z.any(), z.object({}).catchall(z.any())])
+      .record(z.any())
       .describe(
         '\nA key/value map defining the metadata to write into the file.\n\nValid metadata keys can be found [here](https://exiftool.org/TagNames/EXIF.html). For example: `ProcessingSoftware`.\n',
       )
@@ -5811,6 +6311,7 @@ Robot Parameter Zod Schema:
 const minioStoreSchema = z
   .object({
     credentials: CredentialsSchema,
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -5989,6 +6490,7 @@ Robot Parameter Zod Schema:
 const s3StoreSchema = z
   .object({
     credentials: CredentialsSchema,
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -6094,6 +6596,7 @@ Robot Parameter Zod Schema:
 ```ts
 const scriptRunSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -6206,6 +6709,7 @@ Robot Parameter Zod Schema:
 const sftpStoreSchema = z
   .object({
     credentials: CredentialsSchema,
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -6271,6 +6775,7 @@ Robot Parameter Zod Schema:
 ```ts
 const speechTranscribeSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -6452,6 +6957,7 @@ Robot Parameter Zod Schema:
 const supabaseStoreSchema = z
   .object({
     credentials: CredentialsSchema,
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -6616,6 +7122,7 @@ Robot Parameter Zod Schema:
 const swiftStoreSchema = z
   .object({
     credentials: CredentialsSchema,
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -6684,6 +7191,7 @@ Robot Parameter Zod Schema:
 ```ts
 const textSpeakSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -6764,6 +7272,7 @@ Robot Parameter Zod Schema:
 ```ts
 const textTranslateSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -7047,6 +7556,7 @@ Robot Parameter Zod Schema:
 const tigrisStoreSchema = z
   .object({
     credentials: CredentialsSchema,
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -7117,6 +7627,7 @@ Robot Parameter Zod Schema:
 ```ts
 const tlcdnDeliverSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     queue: z
@@ -7151,6 +7662,7 @@ Robot Parameter Zod Schema:
 const tusStoreSchema = z
   .object({
     credentials: CredentialsSchema,
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -7226,6 +7738,7 @@ Robot Parameter Zod Schema:
 ```ts
 const uploadHandleSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     queue: z
@@ -7260,6 +7773,7 @@ Robot Parameter Zod Schema:
 const videoAdaptiveSchema = z
   .object({
     preset: VideoPresetSchema,
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     ffmpeg_stack: FfmpegStackSchema,
@@ -7349,6 +7863,7 @@ Robot Parameter Zod Schema:
 const videoConcatSchema = z
   .object({
     preset: VideoPresetSchema,
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     ffmpeg_stack: FfmpegStackSchema,
@@ -7432,6 +7947,7 @@ Robot Parameter Zod Schema:
 const videoEncodeSchema = z
   .object({
     preset: VideoPresetSchema,
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     ffmpeg_stack: FfmpegStackSchema,
@@ -7763,6 +8279,7 @@ Robot Parameter Zod Schema:
 const videoMergeSchema = z
   .object({
     preset: VideoPresetSchema,
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     ffmpeg_stack: FfmpegStackSchema,
@@ -7912,6 +8429,7 @@ Robot Parameter Zod Schema:
 ```ts
 const videoOndemandSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -9066,6 +9584,7 @@ Robot Parameter Zod Schema:
 const videoSubtitleSchema = z
   .object({
     preset: VideoPresetSchema,
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     ffmpeg_stack: FfmpegStackSchema,
@@ -9212,6 +9731,7 @@ Robot Parameter Zod Schema:
 ```ts
 const videoThumbsSchema = z
   .object({
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     ffmpeg_stack: FfmpegStackSchema,
@@ -9425,6 +9945,7 @@ Robot Parameter Zod Schema:
 const vimeoStoreSchema = z
   .object({
     credentials: CredentialsSchema,
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -9624,6 +10145,7 @@ Robot Parameter Zod Schema:
 const wasabiStoreSchema = z
   .object({
     credentials: CredentialsSchema,
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -9693,6 +10215,7 @@ Robot Parameter Zod Schema:
 const youtubeStoreSchema = z
   .object({
     credentials: CredentialsSchema,
+    ignore_errors: IgnoreErrorsSchema,
     output_meta: OutputMetaSchema,
     result: ResultSchema,
     use: UseSchema,
@@ -9800,4 +10323,4 @@ const youtubeStoreSchema = z
 - [llms-full](https://transloadit.com/llms-full.txt): LLMs full docs (270kb)
 - [Blog](https://transloadit.com/blog/): Latest news and updates
 
-this file is 456kB
+this file is 476kB

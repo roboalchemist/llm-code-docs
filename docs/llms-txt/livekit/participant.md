@@ -1,42 +1,38 @@
 # Source: https://docs.livekit.io/transport/media/ingress-egress/egress/participant.md
 
-# Source: https://docs.livekit.io/home/egress/participant.md
-
-LiveKit docs › Recording & export › Recording participants
+LiveKit docs › Media › Stream export & import › Egress › Participant & TrackComposite egress
 
 ---
 
-# Recording participants
+# Participant & TrackComposite egress
 
-> Record participants individually with the Egress API.
+> Record participants individually with the egress API.
 
-Some use cases require participants to be recorded individually instead of compositing them. LiveKit offers two options for recording participants individually. Both options support a wide range of [output options](https://docs.livekit.io/home/egress/outputs.md).
+Some use cases require participants to be recorded individually instead of compositing them. LiveKit offers two options for recording participants individually. Both options support a wide range of [output options](https://docs.livekit.io/transport/media/ingress-egress/egress/outputs.md).
 
-See the [Egress examples](https://docs.livekit.io/home/egress/examples.md) page for example usage.
+See the [Egress examples](https://docs.livekit.io/reference/other/egress/examples.md) page for example usage.
 
-## Participant Egress
+## Participant egress
 
-Participant Egress allows you to record a participant's audio and video tracks by providing the participant's identity. Participant Egress is designed to simplify the workflow of recording participants in a realtime session, and handles the changes in track state, such as when a track is muted.
+Participant egress allows you to record a participant's audio and video tracks by providing the participant's identity. Participant egress is designed to simplify the workflow of recording participants in a realtime session, and handles the changes in track state, such as when a track is muted.
 
-When a Participant Egress is requested, the Egress service joins the room and waits for the participant to join and publish tracks. Recording begins as soon as either audio or video tracks are published. The service automatically handles muted or unpublished tracks and stops recording when the participant leaves the room.
+When a participant egress is requested, the Egress service joins the room and waits for the participant to join and publish tracks. Recording begins as soon as either audio or video tracks are published. The service automatically handles muted or unpublished tracks and stops recording when the participant leaves the room.
 
-You can also record a participant’s screen share along with the screen share's audio. To enable this, pass `screen_share=true` when starting the Egress. The Egress service will identify tracks based on their `source` setting.
+You can also record a participant's screen share along with the screen share's audio. To enable this, pass `screen_share=true` when starting the Egress. The Egress service identifies tracks based on their `source` setting.
 
-## TrackComposite Egress
+## TrackComposite egress
 
-TrackComposite combines an audio and video track for output, as the name suggests.
+TrackComposite combines an audio and video track together for output. It allows for more precise control than participant egress because it allows you to specify which tracks to record using track IDs.
 
-It’s a more advanced version of Participant Egress, allowing you to specify which tracks to record — useful when precise control over track IDs is needed.
-
-One key difference with TrackComposite is that tracks must be published before starting the Egress. As a result, there may be a slight delay between when the track is published and when recording begins.
+A key difference between TrackComposite and participant egress is that tracks must be published _before_ starting the egress. As a result, there may be a slight delay between when the track is published and when recording begins.
 
 ## Examples
 
-For examples on using Participant or Track Composite Egress, please reference [Egress examples](https://docs.livekit.io/home/egress/examples.md).
+For examples on using participant or TrackComposite egress, please reference [Egress examples](https://docs.livekit.io/reference/other/egress/examples.md).
 
 ---
 
-This document was rendered at 2025-11-18T23:54:57.039Z.
-For the latest version of this document, see [https://docs.livekit.io/home/egress/participant.md](https://docs.livekit.io/home/egress/participant.md).
+This document was rendered at 2026-02-03T03:25:17.309Z.
+For the latest version of this document, see [https://docs.livekit.io/transport/media/ingress-egress/egress/participant.md](https://docs.livekit.io/transport/media/ingress-egress/egress/participant.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

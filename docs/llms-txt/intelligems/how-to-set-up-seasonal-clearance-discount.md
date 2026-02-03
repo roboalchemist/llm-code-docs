@@ -1,4 +1,4 @@
-# Source: https://docs.intelligems.io/offer-experiences/offers-library/how-to-set-up-seasonal-clearance-discount.md
+# Source: https://docs.intelligems.io/offer-personalizations/offers-library/how-to-set-up-seasonal-clearance-discount.md
 
 # How to Set Up Seasonal Clearance Discount
 
@@ -7,7 +7,7 @@
 You can use **Offers** to power your end-of-season clearance sales. This is ideal when you need to move through remaining inventory quickly, whether that’s last sizes, discontinued SKUs, or seasonal products. With Intelligems, you can easily set up an **extra discount** on your Sale Collection, layer on tiered discounts, and pair it with urgency messaging to drive faster sell-through.
 
 {% hint style="info" %}
-Offer Experiences are available on Core, Plus, and Blue Plans. Testing your Offers against each other is only available on Plus and Blue.
+Offer Personalizations are available on Core, Plus, and Blue Plans. Testing your Offers against each other is only available on Plus and Blue.
 {% endhint %}
 
 **Examples:** End-of-season extra 20% off, last-size markdowns
@@ -43,7 +43,7 @@ Offer Experiences are available on Core, Plus, and Blue Plans. Testing your Offe
 
 {% embed url="<https://www.loom.com/share/6b5e23efee78449b90d5901dccbfc89d?sid=c96ca0df-0bb7-4218-897e-1082c676fdbe>" %}
 
-1. Go to **Experiences → Offers**
+1. Go to Personalizations **→ Offers**
 2. Select **Amount Off Order**
 3. Add an **Offer name** (internal), e.g., *Extra 20% Off Sale Collection*
 4. Add a **Discount name** that customers will see in cart/checkout, e.g., *Extra 20% Off*

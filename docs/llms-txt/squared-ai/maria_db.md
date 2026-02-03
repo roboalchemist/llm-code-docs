@@ -2,25 +2,15 @@
 
 # Source: https://docs.squared.ai/guides/destinations/retl-destinations/database/maria_db.md
 
-# Source: https://docs.squared.ai/guides/sources/data-sources/maria_db.md
-
-# Source: https://docs.squared.ai/guides/destinations/retl-destinations/database/maria_db.md
-
-# Source: https://docs.squared.ai/guides/sources/data-sources/maria_db.md
-
-# Source: https://docs.squared.ai/guides/destinations/retl-destinations/database/maria_db.md
-
-# Source: https://docs.squared.ai/guides/sources/data-sources/maria_db.md
-
-# Source: https://docs.squared.ai/guides/destinations/retl-destinations/database/maria_db.md
-
-# Source: https://docs.squared.ai/guides/sources/data-sources/maria_db.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # MariaDB
 
 ## Connect AI Squared to MariaDB
 
-This guide will help you configure the MariaDB Connector in AI Squared to access and use your MariaDB data.
+This guide will help you configure the MariaDB Connector in AI Squared to access and transfer data to your MariaDB database.
 
 ### Prerequisites
 
@@ -68,9 +58,8 @@ After configuring the connector in your application:
 
 1. Save the configuration settings.
 2. Test the connection to MariaDB from your application to ensure everything is set up correctly.
-3. Run a test query or check the connection status to verify successful connectivity.
 
-Your MariaDB connector is now configured and ready to query data from your MariaDB service.
+By following these steps, you’ve successfully set up an MariaDB destination connector in AI Squared. You can now efficiently transfer data to your MariaDB endpoint for storage or further distribution within AI Squared.
 
 ### Supported sync modes
 

@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/billable-metrics/filters.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Filters
 
 > When setting up your pricing, you may want to filters events according to their property. To do so, you can create filters for your billable metric.

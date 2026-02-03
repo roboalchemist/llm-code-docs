@@ -2,33 +2,28 @@
 
 # Source: https://upstash.com/docs/vector/integrations/llamaindex.md
 
-# Source: https://upstash.com/docs/vector/tutorials/llamaindex.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://upstash.com/docs/vector/integrations/llamaindex.md
+# LlamaIndex with Upstash Vector
 
-# Source: https://upstash.com/docs/vector/tutorials/llamaindex.md
+You can use LlamaIndex with Upstash Vector to perform Retrieval-Augmented Generation (RAG). LlamaIndex is a powerful tool that integrates seamlessly with vector databases like Upstash Vector, enabling advanced query and response capabilities.
 
-# Source: https://upstash.com/docs/vector/integrations/llamaindex.md
+## Install
 
-# Source: https://upstash.com/docs/vector/tutorials/llamaindex.md
+```bash  theme={"system"}
+pip install llama-index upstash-vector llama-index-vector-stores-upstash python-dotenv
+```
 
-# Source: https://upstash.com/docs/vector/integrations/llamaindex.md
+## Setup
 
-# Source: https://upstash.com/docs/vector/tutorials/llamaindex.md
+First, create a Vector Index in the [Upstash Console](https://console.upstash.com). Configure the index with:
 
-# Source: https://upstash.com/docs/vector/integrations/llamaindex.md
+* **Dimensions**: 1536
+* **Distance Metric**: Cosine
 
-# Source: https://upstash.com/docs/vector/tutorials/llamaindex.md
-
-# RAG with LlamaIndex
-
-In this tutorial, we’ll demonstrate how to use Upstash Vector with LlamaIndex to perform RAG (Retrieval-Augmented Generation). We will upload a document about global warming and generate responses to our questions based on the contents of the document.
-
-### Installation and Setup
-
-First, we need to create a Vector Index in the [Upstash Console](https://console.upstash.com). Make sure to set the index dimensions to 1536 and the distance metric to Cosine. Once we have our index, we will copy the `UPSTASH_VECTOR_REST_URL` and `UPSTASH_VECTOR_REST_TOKEN` and paste them into our `.env` file. To learn more about index creation, you can check out our [getting started page](https://docs.upstash.com/vector/overall/getstarted).
-
-Add the following content to your `.env` file (replace with your actual URL, token and API key):
+Once the index is created, copy the `UPSTASH_VECTOR_REST_URL` and `UPSTASH_VECTOR_REST_TOKEN` and add them to your `.env` file along with your OpenAI API key:
 
 ```
 UPSTASH_VECTOR_REST_URL=your_upstash_url
@@ -36,80 +31,64 @@ UPSTASH_VECTOR_REST_TOKEN=your_upstash_token
 OPENAI_API_KEY=your_openai_api_key
 ```
 
-We now need to install the following libraries via PyPI:
+## Usage
 
-```bash  theme={"system"}
-pip install llama-index upstash-vector llama-index-vector-stores-upstash python-dotenv
-```
-
-### Code
-
-We will load our environment variables, initialize the index, and configure it to use the specified dimensions and distance metric.
+Here’s how you can integrate LlamaIndex with Upstash Vector:
 
 ```python  theme={"system"}
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader
 from llama_index.vector_stores.upstash import UpstashVectorStore
 from llama_index.core import StorageContext
-import openai
 import os
 from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
+
+# Set OpenAI API key
 openai.api_key = os.environ["OPENAI_API_KEY"]
 
-# Setup the Upstash vector store 
+# Initialize Upstash Vector store
 upstash_vector_store = UpstashVectorStore(
     url=os.environ["UPSTASH_VECTOR_REST_URL"],
     token=os.environ["UPSTASH_VECTOR_REST_TOKEN"],
 )
 
-# Read the document about global warming from the documents directory
+# Load documents using SimpleDirectoryReader
 documents = SimpleDirectoryReader("./documents/").load_data()
 
-# Initialize the storage context with the Upstash vector store
+# Create a storage context and initialize the index
 storage_context = StorageContext.from_defaults(vector_store=upstash_vector_store)
-
-# Create the index from the loaded document with 1536 dimensions and cosine distance
 index = VectorStoreIndex.from_documents(
     documents, storage_context=storage_context
 )
 ```
 
-Next, we will query the document:
+## Querying
+
+Once the index is created, you can query it to retrieve and generate responses based on document content.
 
 ```python  theme={"system"}
 # Initialize the query engine
 query_engine = index.as_query_engine()
 
-# Query the document about global warming
-res1 = query_engine.query("What is global warming?")
-print(res1)
+# Perform queries
+response_1 = query_engine.query("What is global warming?")
+print(response_1)
 
-res2 = query_engine.query("How should we modify our diets to reduce our carbon footprint?")
-print(res2)
+response_2 = query_engine.query("How can we reduce our carbon footprint?")
+print(response_2)
 ```
 
-### Sample Output
+## Notes
 
-Here is the output of the queries:
+* You can specify a namespace when creating the `UpstashVectorStore` instance:
+  ```python  theme={"system"}
+  vector_store = UpstashVectorStore(
+      url="your_upstash_url",
+      token="your_upstash_token",
+      namespace="your_namespace"
+  )
+  ```
 
-```
-Global warming refers to the long-term increase in Earth’s average temperature due to the accumulation of greenhouse gases (GHGs) such as carbon dioxide (CO2), methane (CH4), and nitrous oxide (N2O) in the atmosphere. The primary drivers of GHG emissions include the burning of fossil fuels for energy, industrial processes, deforestation, and unsustainable agricultural practices. As these gases trap heat, they create a “greenhouse effect,” leading to rising temperatures, melting polar ice caps, rising sea...
-
-Shifting towards plant-based diets, which emphasize the consumption of vegetables, fruits, legumes, grains, and nuts, can significantly reduce our carbon footprint. Plant-based diets have a much lower environmental footprint compared to animal-based foods, particularly red meat, which is highly resource-intensive and contributes disproportionately to greenhouse gas emissions. Studies have shown that reducing the consumption of animal-based foods and increasing the intake of plant-based foods can help red...
-```
-
-### Notes
-
-* Namespaces can be used to separate different types of documents. You can specify a namespace when creating the `UpstashVectorStore` instance:
-
-```
-vector_store = UpstashVectorStore(
-    url=your_upstash_url, 
-    token=your_upstash_token, 
-    namespace=your_namespace,
-    )
-```
-
-* To learn more about LlamaIndex and its integration with Upstash Vector, you can visit the [LlamaIndex documentation](https://docs.llamaindex.ai/en/latest).
+* Visit the [LlamaIndex documentation](https://docs.llamaindex.ai/en/latest) for more details.

@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/mlcd.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/mlcd.md
 
 # MLCD
 
@@ -55,15 +55,15 @@ print(f"Extracted features shape: {features.shape}")
 
 #### transformers.MLCDVisionConfig[[transformers.MLCDVisionConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/mlcd/configuration_mlcd.py#L24)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/mlcd/configuration_mlcd.py#L23)
 
-This is the configuration class to store the configuration of a [MLCDVisionModel](/docs/transformers/v5.0.0rc1/en/model_doc/mlcd#transformers.MLCDVisionModel). It is used to instantiate a MLCD
+This is the configuration class to store the configuration of a [MLCDVisionModel](/docs/transformers/v5.0.0/en/model_doc/mlcd#transformers.MLCDVisionModel). It is used to instantiate a MLCD
 vision encoder according to the specified arguments, defining the model architecture. Instantiating a configuration
 with the defaults will yield a similar configuration to that of the vision encoder of the MLCD
 [DeepGlint-AI/mlcd-vit-bigG-patch14-336](https://huggingface.co/DeepGlint-AI/mlcd-vit-bigG-patch14-336) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -112,11 +112,11 @@ initializer_factor (`float`, *optional*, defaults to 1.0) : A factor for initial
 
 #### transformers.MLCDVisionModel[[transformers.MLCDVisionModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/mlcd/modeling_mlcd.py#L506)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/mlcd/modeling_mlcd.py#L510)
 
 The vision model from M_L_C_D without any head or projection on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -124,12 +124,12 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.MLCDVisionModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/mlcd/modeling_mlcd.py#L521[{"name": "pixel_values", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
+forwardtransformers.MLCDVisionModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/mlcd/modeling_mlcd.py#L525[{"name": "pixel_values", "val": ": torch.FloatTensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [CLIPImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/clip#transformers.CLIPImageProcessor). See [CLIPImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details (`processor_class` uses
-  [CLIPImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/clip#transformers.CLIPImageProcessor) for processing images).0[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+  [CLIPImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/clip#transformers.CLIPImageProcessorFast). See [CLIPImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details (`processor_class` uses
+  [CLIPImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/clip#transformers.CLIPImageProcessorFast) for processing images).0[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MLCDVisionConfig](/docs/transformers/v5.0.0rc1/en/model_doc/mlcd#transformers.MLCDVisionConfig)) and inputs.
+elements depending on the configuration ([MLCDVisionConfig](/docs/transformers/v5.0.0/en/model_doc/mlcd#transformers.MLCDVisionConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
@@ -145,7 +145,7 @@ elements depending on the configuration ([MLCDVisionConfig](/docs/transformers/v
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [MLCDVisionModel](/docs/transformers/v5.0.0rc1/en/model_doc/mlcd#transformers.MLCDVisionModel) forward method, overrides the `__call__` special method.
+The [MLCDVisionModel](/docs/transformers/v5.0.0/en/model_doc/mlcd#transformers.MLCDVisionModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -154,14 +154,16 @@ the latter silently ignores them.
 Example:
 
 ```python
->>> import requests
+>>> import httpx
+>>> from io import BytesIO
 >>> from PIL import Image
 >>> from transformers import AutoProcessor, MLCDVisionModel
 >>> model = MLCDVisionModel.from_pretrained("DeepGlint-AI/mlcd-vit-bigG-patch14-448")
 >>> processor = AutoProcessor.from_pretrained("DeepGlint-AI/mlcd-vit-bigG-patch14-448")
 
 >>> url = "http://images.cocodataset.org/val2017/000000039769.jpg"
->>> image = Image.open(requests.get(url, stream=True).raw)
+>>> with httpx.stream("GET", url) as response:
+...     image = Image.open(BytesIO(response.read()))
 >>> inputs = processor(images=image, return_tensors="pt")
 
 >>> with torch.no_grad():
@@ -175,15 +177,15 @@ Example:
 
 **Parameters:**
 
-config ([MLCDVisionConfig](/docs/transformers/v5.0.0rc1/en/model_doc/mlcd#transformers.MLCDVisionConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([MLCDVisionConfig](/docs/transformers/v5.0.0/en/model_doc/mlcd#transformers.MLCDVisionConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MLCDVisionConfig](/docs/transformers/v5.0.0rc1/en/model_doc/mlcd#transformers.MLCDVisionConfig)) and inputs.
+elements depending on the configuration ([MLCDVisionConfig](/docs/transformers/v5.0.0/en/model_doc/mlcd#transformers.MLCDVisionConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing

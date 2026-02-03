@@ -1,5 +1,9 @@
 # Source: https://docs.solidfi.com/payments/check.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.solidfi.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Check
 
 > A guide to Checks

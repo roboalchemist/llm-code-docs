@@ -4,8 +4,6 @@
 title: Bedrock Prompt Router
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Bedrock Prompt Router
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.bedrock_prompt_router.dataset/index.html
 ---
 
 # Bedrock Prompt Router
@@ -18,18 +16,18 @@ aws.bedrock_prompt_router
 
 ## Fields
 
-| Title              | ID   | Type      | Data Type                      | Description |
-| ------------------ | ---- | --------- | ------------------------------ | ----------- |
-| _key               | core | string    |
-| account_id         | core | string    |
-| created_at         | core | timestamp | When the router was created.   |
-| description        | core | string    | The router's description.      |
-| fallback_model     | core | json      | The router's fallback model.   |
-| models             | core | json      | The router's models.           |
-| prompt_router_arn  | core | string    | The router's ARN.              |
-| prompt_router_name | core | string    | The router's name.             |
-| routing_criteria   | core | json      | The router's routing criteria. |
-| status             | core | string    | The router's status.           |
-| tags               | core | hstore    |
-| type               | core | string    | The summary's type.            |
-| updated_at         | core | timestamp | When the router was updated.   |
+| Title              | ID   | Type       | Data Type                      | Description |
+| ------------------ | ---- | ---------- | ------------------------------ | ----------- |
+| _key               | core | string     |
+| account_id         | core | string     |
+| created_at         | core | timestamp  | When the router was created.   |
+| description        | core | string     | The router's description.      |
+| fallback_model     | core | json       | The router's fallback model.   |
+| models             | core | json       | The router's models.           |
+| prompt_router_arn  | core | string     | The router's ARN.              |
+| prompt_router_name | core | string     | The router's name.             |
+| routing_criteria   | core | json       | The router's routing criteria. |
+| status             | core | string     | The router's status.           |
+| tags               | core | hstore_csv |
+| type               | core | string     | The summary's type.            |
+| updated_at         | core | timestamp  | When the router was updated.   |

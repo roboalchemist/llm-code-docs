@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/search-or-create.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add a search or create action
 
 > When adding a _search_ action type, you'll see the option to _Pair an existing search and a create to enable “Find or Create” functionality_ in the _Settings_ page. This embeds the _create_ inside the _search_ step to find or create items in one step of the Zap.

@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/reference/aptible-cli/cli-commands/cli-backup-restore.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # aptible backup:restore
 
 This command is used to [restore from a Database Backup](/core-concepts/managed-databases/managing-databases/database-backups#restoring-from-a-backup). This command creates a new database: it **does not overwrite your existing database.** In fact, it doesn't interact with your existing database at all. By default, all newly restored Databases are created as a 1GB [General Purpose Container Profile](/core-concepts/scaling/container-profiles#default-container-profile), however you can specify both container size and profile using the options.

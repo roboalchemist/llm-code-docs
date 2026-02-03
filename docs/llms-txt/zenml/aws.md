@@ -2,10 +2,6 @@
 
 # Source: https://docs.zenml.io/stacks/stack-components/container-registries/aws.md
 
-# Source: https://docs.zenml.io/stacks/stack-components/image-builders/aws.md
-
-# Source: https://docs.zenml.io/stacks/stack-components/container-registries/aws.md
-
 # Amazon Elastic Container Registry (ECR)
 
 The AWS container registry is a [container registry](https://docs.zenml.io/stacks/stack-components/container-registries) flavor provided with the ZenML `aws` integration and uses [Amazon ECR](https://aws.amazon.com/ecr/) to store container images.

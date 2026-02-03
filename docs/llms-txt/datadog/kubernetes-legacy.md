@@ -5,8 +5,7 @@ title: Legacy Kubernetes versions
 description: >-
   Installation instructions and configuration for Datadog Agent on legacy
   Kubernetes versions prior to 1.7.6
-breadcrumbs: Docs > Container Monitoring > Containers Guides > Legacy Kubernetes versions
-source_url: https://docs.datadoghq.com/guide/kubernetes-legacy/index.html
+breadcrumbs: Docs > Containers > Containers Guides > Legacy Kubernetes versions
 ---
 
 # Legacy Kubernetes versions

@@ -2,6 +2,8 @@
 
 # SAML SSO Overview
 
+Copy page
+
 This section describes how you can enable SAML Single Sign-On (SSO) for your organization in ConfigCat.
 
 SAML SSO allows your team members to sign up and log in to ConfigCat via their company accounts using your own Identity Provider (IdP).
@@ -10,7 +12,7 @@ Go to the [Authentication & Provisioning](https://app.configcat.com/organization
 
 ## Prerequisites[​](#prerequisites "Direct link to Prerequisites")
 
-* [Verified domain](https://configcat.com/docs/docs/advanced/team-management/domain-verification/.md)
+* [Verified domain](https://configcat.com/docs/advanced/team-management/domain-verification.md)
   <br />
   <!-- -->
   In order to configure SAML, you have to verify the ownership of the domain that your company uses for email addresses. This step is required because, at the beginning of the login process, we use the user's email domain to select the appropriate SAML Identity Provider.
@@ -20,13 +22,13 @@ Go to the [Authentication & Provisioning](https://app.configcat.com/organization
 
 We tested and validated the following SAML Identity Providers:
 
-* [Entra ID (Azure AD)](https://configcat.com/docs/docs/advanced/team-management/saml/identity-providers/azure-ad/.md)
-* [ADFS](https://configcat.com/docs/docs/advanced/team-management/saml/identity-providers/adfs/.md)
-* [Google](https://configcat.com/docs/docs/advanced/team-management/saml/identity-providers/google/.md)
-* [Okta](https://configcat.com/docs/docs/advanced/team-management/saml/identity-providers/okta/.md)
-* [Auth0](https://configcat.com/docs/docs/advanced/team-management/saml/identity-providers/auth0/.md)
-* [OneLogin](https://configcat.com/docs/docs/advanced/team-management/saml/identity-providers/onelogin/.md)
-* [Cloudflare Zero Trust](https://configcat.com/docs/docs/advanced/team-management/saml/identity-providers/cloudflare/.md)
+* [Entra ID (Azure AD)](https://configcat.com/docs/advanced/team-management/saml/identity-providers/azure-ad.md)
+* [ADFS](https://configcat.com/docs/advanced/team-management/saml/identity-providers/adfs.md)
+* [Google](https://configcat.com/docs/advanced/team-management/saml/identity-providers/google.md)
+* [Okta](https://configcat.com/docs/advanced/team-management/saml/identity-providers/okta.md)
+* [Auth0](https://configcat.com/docs/advanced/team-management/saml/identity-providers/auth0.md)
+* [OneLogin](https://configcat.com/docs/advanced/team-management/saml/identity-providers/onelogin.md)
+* [Cloudflare Zero Trust](https://configcat.com/docs/advanced/team-management/saml/identity-providers/cloudflare.md)
 
 info
 

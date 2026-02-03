@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/search/filter-by-metadata.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Filter by metadata
 
 > Narrow search results with metadata filtering.
@@ -195,7 +199,7 @@ The following code searches for the 3 records that are most semantically similar
         -H "Accept: application/json" \
         -H "Content-Type: application/json" \
         -H "Api-Key: $PINECONE_API_KEY" \
-        -H "X-Pinecone-API-Version: unstable" \
+        -H "X-Pinecone-Api-Version: unstable" \
         -d '{
               "query": {
                   "inputs": {"text": "Disease prevention"},
@@ -384,7 +388,7 @@ The following code searches for the 3 records that are most semantically similar
       curl "https://$INDEX_HOST/query" \
         -H "Api-Key: $PINECONE_API_KEY" \
         -H 'Content-Type: application/json' \
-        -H "X-Pinecone-API-Version: 2025-04" \
+        -H "X-Pinecone-Api-Version: 2025-10" \
         -d '{
               "vector": [0.0236663818359375,-0.032989501953125,...,-0.01041412353515625,0.0086669921875],
               "namespace": "example-namespace",
@@ -418,6 +422,10 @@ Pinecone's filtering language supports the following operators:
 
 <Note>
   Only `$and` and `$or` are allowed at the top level of the query expression.
+</Note>
+
+<Note>
+  Each `$in` or `$nin` operator accepts a maximum of 10,000 values. Exceeding this limit will cause the request to fail. For more information, see [Metadata filter limits](/reference/api/database-limits#metadata-filter-limits).
 </Note>
 
 For example, the following has a `"genre"` metadata field with a list of strings:

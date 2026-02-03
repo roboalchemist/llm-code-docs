@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/actions/hubspot-v2-create-object.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create HubSpot Object
 
 Create new contacts, deals, companies, and other HubSpot records from your workflows.

@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/deployments/deploying-galileo-eks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deploying Galileo on Amazon EKS
 
 > Deploy Galileo on Amazon EKS with a step-by-step guide for configuring, managing, and scaling Galileo's infrastructure using Kubernetes clusters.

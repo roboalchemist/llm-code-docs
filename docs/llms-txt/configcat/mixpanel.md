@@ -2,6 +2,8 @@
 
 # Mixpanel - Monitor your feature flag change events and feature flag analytics
 
+Copy page
+
 ## Overview[​](#overview "Direct link to Overview")
 
 There are two available integration opportunities between [ConfigCat and Mixpanel](https://mixpanel.com/partners/integrations/configcat):
@@ -76,7 +78,7 @@ Code samples:
 * Swift (iOS)
 * Other languages
 
-```
+```js
 const configCatClient = configcat.getClient("#YOUR_SDK_KEY", PollingMode.AutoPoll, {
     setupHooks: (hooks) =>
         hooks.on('flagEvaluated', evaluationDetails => {
@@ -92,9 +94,10 @@ const configCatClient = configcat.getClient("#YOUR_SDK_KEY", PollingMode.AutoPol
             mixpanel.people.set({ ["configcat_" + evaluationDetails.key]: evaluationDetails.value });
         }),
 });
-```
 
 ```
+
+```tsx
 <ConfigCatProvider
   sdkKey="#YOUR_SDK_KEY"
   pollingMode={PollingMode.AutoPoll}
@@ -115,9 +118,10 @@ const configCatClient = configcat.getClient("#YOUR_SDK_KEY", PollingMode.AutoPol
   }}
 >
 </ConfigCatProvider>
-```
 
 ```
+
+```python
 def on_flag_evaluated(evaluation_details):
     # Send an `$experiment_started` event.
     mixpanel.track(evaluation_details.user.get_identifier(), '$experiment_started',  {
@@ -137,9 +141,10 @@ client = configcatclient.get('#YOUR-SDK-KEY#',
         hooks=Hooks(on_flag_evaluated=on_flag_evaluated)
     )
 )
-```
 
 ```
+
+```ruby
 def on_flag_evaluated(evaluation_details):
     # Send an `$experiment_started` event.
     mixpanel.track(evaluation_details.user.get_identifier(), "$experiment_started",  {
@@ -159,9 +164,10 @@ client = ConfigCat.get("#YOUR-SDK-KEY#",
         hooks: ConfigCat::Hooks.new(on_flag_evaluated: method(:on_flag_evaluated))
     )
 )
-```
 
 ```
+
+```go
 mp := mixpanel.NewApiClient("#YOUR-MIXPANEL-PROJECT-TOKEN#")
 
 client := configcat.NewCustomClient(configcat.Config{SDKKey: "#YOUR-SDK-KEY#",
@@ -184,9 +190,10 @@ client := configcat.NewCustomClient(configcat.Config{SDKKey: "#YOUR-SDK-KEY#",
             },
         )
     }}})
-```
 
 ```
+
+```java
 ConfigCatClient client = ConfigCatClient.get("#YOUR-SDK-KEY#", options -> {
     options.hooks().addOnFlagEvaluated(details -> {
         // Send an `$experiment_started` event.
@@ -204,9 +211,10 @@ ConfigCatClient client = ConfigCatClient.get("#YOUR-SDK-KEY#", options -> {
         mixpanel.sendMessage(updateUser);
     });
 });
-```
 
 ```
+
+```java
 ConfigCatClient client = ConfigCatClient.get("#YOUR-SDK-KEY#", options -> {
     options.hooks().addOnFlagEvaluated(details -> {
         // Send an `$experiment_started` event.
@@ -220,9 +228,10 @@ ConfigCatClient client = ConfigCatClient.get("#YOUR-SDK-KEY#", options -> {
         mixpanel.getPeople().set("configcat_" + details.getKey(), details.getValue());
     });
 });
-```
 
 ```
+
+```swift
 let client = ConfigCatClient.get(sdkKey: "#YOUR-SDK-KEY#") { options in
     options.hooks.addOnFlagEvaluated { details in
         // Send an `$experiment_started` event.
@@ -237,6 +246,7 @@ let client = ConfigCatClient.get(sdkKey: "#YOUR-SDK-KEY#") { options in
         Mixpanel.mainInstance().people.set(properties: [ keyProperty: details.value])
     }
 }
+
 ```
 
 While our documentation primarily provides code examples for languages that Mixpanel natively supports and has an official SDK, you can integrate with other languages by sending an event to Mixpanel with a third-party SDK or with using the [Mixpanel's Track Events API](https://developer.mixpanel.com/reference/track-event).

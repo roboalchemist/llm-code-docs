@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/billable-metrics/recurring-vs-metered.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Recurring vs metered
 
 ## Recurring billable metrics[](#recurring "Direct link to heading")

@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/reference/aptible-cli/cli-commands/cli-db-modify.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # aptible db:modify
 
 This command modifies existing [Databases](/core-concepts/managed-databases/managing-databases/overview). Running this command does not cause downtime.

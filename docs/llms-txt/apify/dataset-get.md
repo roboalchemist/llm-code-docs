@@ -9,9 +9,9 @@ https://api.apify.com/v2/datasets/:datasetId
 ```
 
 
-Clientshttps://docs.apify.com/api/client/python/reference/class/DatasetClientAsync#gethttps://docs.apify.com/api/client/js/reference/class/DatasetClient#getReturns dataset object for given dataset ID.
+Returns dataset object for given dataset ID.
 
-This does not return dataset items, only information about the storage itself. To retrieve dataset items, use the https://docs.apify.com/api/v2/dataset-items-get.md endpoint.
+This does not return dataset items, only information about the storage itself. To retrieve dataset items, use the [List dataset items](https://docs.apify.com/api/v2/dataset-items-get.md) endpoint.
 
 note
 
@@ -24,6 +24,10 @@ There is a short period (up to 5 seconds) during which these counters may not ma
 ## Responses
 
 * 200
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

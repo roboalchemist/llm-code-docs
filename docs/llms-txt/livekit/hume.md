@@ -1,6 +1,6 @@
 # Source: https://docs.livekit.io/agents/models/tts/plugins/hume.md
 
-LiveKit docs › Models › Text-to-speech (TTS) › Plugins › Hume
+LiveKit docs › Models › TTS › Plugins › Hume
 
 ---
 
@@ -25,7 +25,7 @@ This section includes a brief overview of the Hume TTS plugin. For more informat
 Install the plugin from PyPI:
 
 ```shell
-uv add "livekit-agents[hume]~=1.2"
+uv add "livekit-agents[hume]~=1.3"
 
 ```
 
@@ -93,7 +93,7 @@ The following resources provide more information about using Hume with LiveKit A
 
 ---
 
-This document was rendered at 2025-11-18T23:55:13.628Z.
+This document was rendered at 2026-02-03T03:25:05.129Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/tts/plugins/hume.md](https://docs.livekit.io/agents/models/tts/plugins/hume.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

@@ -1,5 +1,9 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/ai-review-comments.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Review comments
 
 > Understanding Graphite Agent's feedback and how to get the most value from it
@@ -69,29 +73,45 @@ Graphite Agent catches code that was likely not meant to be committed:
 
 ## Tracking AI review impact
 
-You can monitor AI review activity and impact from the AI code review dashboard, accessible via the [AI code review settings page](https://app.graphite.com/ai-reviews).
+You can monitor AI review activity and impact from the [AI code review dashboard](https://app.graphite.com/ai-reviews). The dashboard is organized into tabs for easy navigation:
 
-<Frame>
-  <img src="https://mintcdn.com/graphite-58cc94ce/ICBXK7d1j0p5cvvq/images/ai-reviews-2.png?fit=max&auto=format&n=ICBXK7d1j0p5cvvq&q=85&s=8b24fe51f217281a66dccc2cecbcffe0" data-og-width="2560" width="2560" data-og-height="1504" height="1504" data-path="images/ai-reviews-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/graphite-58cc94ce/ICBXK7d1j0p5cvvq/images/ai-reviews-2.png?w=280&fit=max&auto=format&n=ICBXK7d1j0p5cvvq&q=85&s=fdaea466614b5f8979544b1cfdecdc44 280w, https://mintcdn.com/graphite-58cc94ce/ICBXK7d1j0p5cvvq/images/ai-reviews-2.png?w=560&fit=max&auto=format&n=ICBXK7d1j0p5cvvq&q=85&s=da540df77217edcf786b345cdc6fc7a6 560w, https://mintcdn.com/graphite-58cc94ce/ICBXK7d1j0p5cvvq/images/ai-reviews-2.png?w=840&fit=max&auto=format&n=ICBXK7d1j0p5cvvq&q=85&s=053ab7c64c0e6cac435d5dab5cf0eff3 840w, https://mintcdn.com/graphite-58cc94ce/ICBXK7d1j0p5cvvq/images/ai-reviews-2.png?w=1100&fit=max&auto=format&n=ICBXK7d1j0p5cvvq&q=85&s=cf42512a9576d9177999fd82bf1f8c5d 1100w, https://mintcdn.com/graphite-58cc94ce/ICBXK7d1j0p5cvvq/images/ai-reviews-2.png?w=1650&fit=max&auto=format&n=ICBXK7d1j0p5cvvq&q=85&s=9e6ead0d2af3154f06dad4edf70010bc 1650w, https://mintcdn.com/graphite-58cc94ce/ICBXK7d1j0p5cvvq/images/ai-reviews-2.png?w=2500&fit=max&auto=format&n=ICBXK7d1j0p5cvvq&q=85&s=b82207e768430427d18670ae16366309 2500w" />
+### Overview tab
+
+The **Overview** tab provides time-series metrics to help you understand your AI reviewer's performance:
+
+<Frame caption="The Overview tab shows issues found, acceptance rates, and category breakdown">
+  <img src="https://mintcdn.com/graphite-58cc94ce/5GxUKNqcuyEAkMh7/images/ai-reviews-2.png?fit=max&auto=format&n=5GxUKNqcuyEAkMh7&q=85&s=d7ab1bd1900d87b13d0f9b61af3db823" data-og-width="3394" width="3394" data-og-height="1810" height="1810" data-path="images/ai-reviews-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/graphite-58cc94ce/5GxUKNqcuyEAkMh7/images/ai-reviews-2.png?w=280&fit=max&auto=format&n=5GxUKNqcuyEAkMh7&q=85&s=0bf0c7ed3a3a29f3217ef84549bed7ff 280w, https://mintcdn.com/graphite-58cc94ce/5GxUKNqcuyEAkMh7/images/ai-reviews-2.png?w=560&fit=max&auto=format&n=5GxUKNqcuyEAkMh7&q=85&s=2af2501ffd5cda6133bdee8629075eb4 560w, https://mintcdn.com/graphite-58cc94ce/5GxUKNqcuyEAkMh7/images/ai-reviews-2.png?w=840&fit=max&auto=format&n=5GxUKNqcuyEAkMh7&q=85&s=e8b0ce12f004e51fd87117e2fca857ff 840w, https://mintcdn.com/graphite-58cc94ce/5GxUKNqcuyEAkMh7/images/ai-reviews-2.png?w=1100&fit=max&auto=format&n=5GxUKNqcuyEAkMh7&q=85&s=37b4227eb3b58d3e031a52849370cd50 1100w, https://mintcdn.com/graphite-58cc94ce/5GxUKNqcuyEAkMh7/images/ai-reviews-2.png?w=1650&fit=max&auto=format&n=5GxUKNqcuyEAkMh7&q=85&s=5c8bab6dc5f153ce18e8695f780c33ce 1650w, https://mintcdn.com/graphite-58cc94ce/5GxUKNqcuyEAkMh7/images/ai-reviews-2.png?w=2500&fit=max&auto=format&n=5GxUKNqcuyEAkMh7&q=85&s=c29d2af66266e25dd8e55dd751d71d32 2500w" />
 </Frame>
 
-The **Insights and metrics** section provides:
+* **Issues found**: Total issues identified, with a breakdown by category
+* **Issues accepted**: Number of issues that led to code changes
+* **Acceptance rate**: Percentage of suggestions that were accepted over time
+* **PRs reviewed**: Volume of pull requests analyzed
+* **Downvote rate**: Feedback tracking to identify areas for improvement
 
-* Total issues found across all reviewed PRs, broken down by category (logic bugs, security issues, edge cases, etc.)
-* Statistics on PRs reviewed and issues that led to fixes
-* Comment feedback metrics showing upvote/downvote rates
-* Visual breakdown of issue types discovered
+You can filter these metrics by:
 
-<Frame caption="The Highlights feed shows impactful issues caught by Graphite Agent">
-  <img src="https://mintcdn.com/graphite-58cc94ce/ICBXK7d1j0p5cvvq/images/ai-reviews-3.png?fit=max&auto=format&n=ICBXK7d1j0p5cvvq&q=85&s=b52980162334664fa01c861fc69c4d50" data-og-width="2560" width="2560" data-og-height="1504" height="1504" data-path="images/ai-reviews-3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/graphite-58cc94ce/ICBXK7d1j0p5cvvq/images/ai-reviews-3.png?w=280&fit=max&auto=format&n=ICBXK7d1j0p5cvvq&q=85&s=66330e5654e545542cbe0c38ee00695d 280w, https://mintcdn.com/graphite-58cc94ce/ICBXK7d1j0p5cvvq/images/ai-reviews-3.png?w=560&fit=max&auto=format&n=ICBXK7d1j0p5cvvq&q=85&s=b34880a3deca52d91236d17ec7a39741 560w, https://mintcdn.com/graphite-58cc94ce/ICBXK7d1j0p5cvvq/images/ai-reviews-3.png?w=840&fit=max&auto=format&n=ICBXK7d1j0p5cvvq&q=85&s=e047aeec7bdf05c291da84a7ffc2d19f 840w, https://mintcdn.com/graphite-58cc94ce/ICBXK7d1j0p5cvvq/images/ai-reviews-3.png?w=1100&fit=max&auto=format&n=ICBXK7d1j0p5cvvq&q=85&s=8fb1ca6e3268cd075b9634b2752315c3 1100w, https://mintcdn.com/graphite-58cc94ce/ICBXK7d1j0p5cvvq/images/ai-reviews-3.png?w=1650&fit=max&auto=format&n=ICBXK7d1j0p5cvvq&q=85&s=a89d4a3aa760b8a76fa462b2ece5923f 1650w, https://mintcdn.com/graphite-58cc94ce/ICBXK7d1j0p5cvvq/images/ai-reviews-3.png?w=2500&fit=max&auto=format&n=ICBXK7d1j0p5cvvq&q=85&s=98c38cccfde9b04dbb1b92b4d3042825 2500w" />
-</Frame>
+* **Time period**: Last 4 weeks, 8 weeks, 12 weeks, or all time
+* **Repository**: View metrics for specific repositories or across all repos
 
-The **Highlights** and **Feed** tabs let you:
+The category breakdown shows counts and acceptance rates for each issue type (logic bugs, security issues, edge cases, etc.), helping you understand where your reviewer adds the most value.
+
+### Comment feed tab
+
+The **Comment feed** tab lets you:
 
 * View all comments Graphite Agent has left across your repositories
 * Filter by category to focus on specific types of issues
 * See prevented bugs and their potential impact
 * Review code snippets with inline explanations
+
+<Frame caption="The Comment feed shows highlighted issues with code snippets and fix suggestions">
+  <img src="https://mintcdn.com/graphite-58cc94ce/5GxUKNqcuyEAkMh7/images/ai-reviews-3.png?fit=max&auto=format&n=5GxUKNqcuyEAkMh7&q=85&s=21146580cbd9cb0db774266c16adaf4d" data-og-width="3394" width="3394" data-og-height="1808" height="1808" data-path="images/ai-reviews-3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/graphite-58cc94ce/5GxUKNqcuyEAkMh7/images/ai-reviews-3.png?w=280&fit=max&auto=format&n=5GxUKNqcuyEAkMh7&q=85&s=0e0db5a0d0ae6ded3fcfe8983ca4841c 280w, https://mintcdn.com/graphite-58cc94ce/5GxUKNqcuyEAkMh7/images/ai-reviews-3.png?w=560&fit=max&auto=format&n=5GxUKNqcuyEAkMh7&q=85&s=f4e126bdaa65c31f28cfaff39d8d3a63 560w, https://mintcdn.com/graphite-58cc94ce/5GxUKNqcuyEAkMh7/images/ai-reviews-3.png?w=840&fit=max&auto=format&n=5GxUKNqcuyEAkMh7&q=85&s=e905e8267d3092e3b2614a5f4144486d 840w, https://mintcdn.com/graphite-58cc94ce/5GxUKNqcuyEAkMh7/images/ai-reviews-3.png?w=1100&fit=max&auto=format&n=5GxUKNqcuyEAkMh7&q=85&s=66485a487cb1c3d99bf33d1aeebfb991 1100w, https://mintcdn.com/graphite-58cc94ce/5GxUKNqcuyEAkMh7/images/ai-reviews-3.png?w=1650&fit=max&auto=format&n=5GxUKNqcuyEAkMh7&q=85&s=3233e85a8a9a4ac4d88b6b4901715fa9 1650w, https://mintcdn.com/graphite-58cc94ce/5GxUKNqcuyEAkMh7/images/ai-reviews-3.png?w=2500&fit=max&auto=format&n=5GxUKNqcuyEAkMh7&q=85&s=e8abaf29cb819877f6ed9c89102c291b 2500w" />
+</Frame>
+
+### Rules & exclusions tab
+
+The **Rules & exclusions** tab shows detailed analytics for your custom rules and exclusions. See [Measuring rule and exclusion effectiveness](/ai-review-customization#measuring-rule-and-exclusion-effectiveness) for more details.
 
 ## How to check AI review status
 
@@ -105,4 +125,4 @@ The status will show as:
 
 * **Running**: Graphite Agent is currently analyzing the PR
 * **Completed**: Graphite Agent has finished reviewing and left any relevant comments
-* **Not running**: The PR won't be analyzed (e.g., if the PR exceeds 100,000 characters)
+* **Not running**: The PR won't be analyzed (e.g., if the PR exceeds 200,000 characters)

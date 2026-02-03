@@ -1,100 +1,128 @@
-# Source: https://docs.baseten.co/inference/function-calling.md
+# Source: https://docs.baseten.co/engines/performance-concepts/function-calling.md
 
-# Function calling (tool use)
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-> Use an LLM to select amongst provided tools
+# Function calling
+
+> Tool selection and structured function calls with LLMs
 
 <Note>
-  Function calling requires an LLM deployed using the [TensorRT-LLM Engine
-  Builder](/development/model/performance/engine-builder-overview).
+  Function calling is supported by Baseten engines including [BIS-LLM](/engines/bis-llm/overview) and [Engine-Builder-LLM](/engines/engine-builder-llm/overview), as well as [Model APIs](/development/model-apis/overview) for instant access. It's also compatible with other inference frameworks like [vLLM](/examples/vllm) and [SGLang](/examples/sglang).
 </Note>
 
-To use function calling:
+## Overview
 
-1. Define a set of functions/tools in Python.
-2. Pass the function set to the LLM with the `tools` argument.
-3. Receive selected function(s) as output.
+*Function calling* (also known as *tool calling*) lets a model **choose a tool and produce arguments** based on a user request.
 
-With function calling, it's essential to understand that **the LLM itself is not capable of executing the code in the function**. Instead, the LLM is used to suggest appropriate function(s), if they exist, based on the prompt. Any code execution must be handled outside of the LLM call – a great use for [chains](/development/chain/overview).
+**Important:** the model **does not execute** your Python function. Your application must:
 
-## Define functions in Python
+1. run the tool, and
+2. optionally send the tool’s output back to the model to produce a final, user-facing response.
 
-Functions can be anything: API calls, ORM access, SQL queries, or just a script. It's essential that functions are well-documented; the LLM relies on the docstrings to select the correct function.
+This is a great fit for [chains](/development/chain/overview) and other orchestrators.
 
-As a simple example, consider the four basic functions of a calculator:
+***
+
+## How tool calling works
+
+A typical tool-calling loop looks like:
+
+1. **Send** the user message and a list of tools.
+2. The model returns either normal text or one or more **tool calls** (name and JSON arguments).
+3. **Execute** the tool calls in your application.
+4. **Send tool output** back to the model.
+5. Receive a **final response** or additional tool calls.
+
+***
+
+## 1. Define tools
+
+Tools can be anything: API calls, database queries, internal scripts, etc.
+
+Docstrings matter. Models use them to decide which tool to call and how to fill parameters:
 
 ```python  theme={"system"}
 def multiply(a: float, b: float):
-    """
-    A function that multiplies two numbers
+    """Multiply two numbers.
 
     Args:
-        a: The first number to multiply
-        b: The second number to multiply
+        a: The first number.
+        b: The second number.
     """
     return a * b
 
+
 def divide(a: float, b: float):
-    """
-    A function that divides two numbers
+    """Divide two numbers.
 
     Args:
-        a: The dividend
-        b: The divisor
+        a: The dividend.
+        b: The divisor (must be non-zero).
     """
     return a / b
 
+
 def add(a: float, b: float):
-    """
-    A function that adds two numbers
+    """Add two numbers.
 
     Args:
-        a: The first number
-        b: The second number
+        a: The first number.
+        b: The second number.
     """
     return a + b
 
+
 def subtract(a: float, b: float):
-    """
-    A function that subtracts two numbers
+    """Subtract two numbers.
 
     Args:
-        a: The number to subtract from
-        b: The number to subtract
+        a: The number to subtract from.
+        b: The number to subtract.
     """
     return a - b
 ```
 
-These functions must be serialized into LLM-accessible tools:
+### Tool-writing tips
+
+Design small, single-purpose tools and document constraints in docstrings (units, allowed values, required fields). Treat model-provided arguments as untrusted input and validate before execution.
+
+***
+
+## 2. Serialize functions
+
+Convert functions into JSON-schema tool definitions (OpenAI-compatible format):
 
 ```python  theme={"system"}
 from transformers.utils import get_json_schema
 
 calculator_functions = {
-    'multiply': multiply,
-    'divide': divide,
-    'add': add,
-    'subtract': subtract
+    "multiply": multiply,
+    "divide": divide,
+    "add": add,
+    "subtract": subtract,
 }
 
 tools = [get_json_schema(f) for f in calculator_functions.values()]
 ```
 
-## Pass functions to the LLM
+***
 
-The input spec for models like Llama 3.1 includes a `tools` key that we use to pass the functions:
+## 3. Call the model
+
+Include the `tools` array in your request:
 
 ```python  theme={"system"}
-import json
 import requests
 
 payload = {
     "messages": [
-        {"role": "system", "content": "You are a helpful assistant"},
-        {"role": "user", "content": "What is 3.14+3.14?"},
+        {"role": "system", "content": "You are a helpful assistant."},
+        {"role": "user", "content": "What is 3.14 + 3.14?"},
     ],
-    "tools": tools,  # tools are provided in the same format as OpenAI's API
-    "tool_choice": "auto",  # auto is default - the model will choose whether or not to make a function call
+    "tools": tools,
+    "tool_choice": "auto",  # default
 }
 
 MODEL_ID = ""
@@ -107,36 +135,83 @@ resp = requests.post(
 )
 ```
 
-### tool\_choice: auto (default) – may return a function
+***
 
-The default `tool_choice` option, `auto`, leaves it up to the LLM whether to return one function, multiple functions, or no functions at all, depending on what the model feels is most appropriate based on the prompt.
+## 4. Control tool selection
 
-### tool\_choice: required – will always return a function
-
-The `required` option for `tool_choice` means that the LLM is guaranteed to chose at least one function, no matter what.
-
-### tool\_choice: none – will always return a function
-
-The `none` option for `tool_choice` means that the LLM will **not** return a function, and will instead produce ordinary text output. This is useful when you want to provide the full context of a conversation without adding and dropping the `tools` parameter call-by-call.
-
-### tool\_choice: direct – will return a specified function
-
-You can also pass a specific function directly into the call, which is guaranteed to be returned. This is useful if you want to hardcode specific behavior into your model call for testing or conditional execution.
+Set `tool_choice` to control how the model uses tools. With `auto` (default), the model may respond with text or tool calls. With `required`, the model must return at least one tool call. With `none`, the model returns plain text only. To force a specific tool:
 
 ```python  theme={"system"}
 "tool_choice": {"type": "function", "function": {"name": "subtract"}}
 ```
 
-## Receive function(s) as output
+***
 
-When the model returns functions, they'll be a list that can be parsed as follows:
+## 5. Parse and execute tool calls
+
+Depending on the engine and model, tool calls are typically returned in an assistant message under `tool_calls`:
 
 ```python  theme={"system"}
-func_calls = json.loads(resp.text)
+import json
 
-# In this example, we execute the first function (one of +-/*) on the provided parameters
-func_call = func_calls[0]
-calculator_functions[func_call["name"]](**func_call["parameters"])
+data = resp.json()
+message = data["choices"][0]["message"]
+
+tool_calls = message.get("tool_calls") or []
+
+for tool_call in tool_calls:
+    name = tool_call["function"]["name"]
+    args = json.loads(tool_call["function"]["arguments"])
+
+    # Validate args in production.
+    result = calculator_functions[name](**args)
+    print(result)
 ```
 
-After reading the LLM's selection, your execution environment can run the necessary functions. For more on combining LLMs with other logic, see the [chains documentation](/development/chain/overview).
+### Full loop: send tool output back for a final answer
+
+If you want the model to turn raw tool output into a user-facing response, append the assistant message and a tool response with the matching `tool_call_id`:
+
+```python  theme={"system"}
+# Continue the conversation
+messages = payload["messages"]
+messages.append(message)  # assistant tool call message
+
+# Example: respond to the first tool call
+tool_call = tool_calls[0]
+name = tool_call["function"]["name"]
+args = json.loads(tool_call["function"]["arguments"])
+result = calculator_functions[name](**args)
+
+messages.append({
+    "role": "tool",
+    "tool_call_id": tool_call["id"],
+    "content": json.dumps({"result": result}),
+})
+
+final_payload = {
+    **payload,
+    "messages": messages,
+}
+
+final_resp = requests.post(
+    f"https://model-{MODEL_ID}.api.baseten.co/production/predict",
+    headers={"Authorization": f"Api-Key {BASETEN_API_KEY}"},
+    json=final_payload,
+)
+
+print(final_resp.json()["choices"][0]["message"].get("content"))
+```
+
+***
+
+## Practical tips
+
+Use low temperature (0.0–0.3) for reliable tool selection and argument values. Add `enum` and `required` constraints in your JSON schema to guide model outputs. Consider parallel tool calls only if your model supports them. Always validate and sanitize inputs before calling real systems.
+
+***
+
+## Further reading
+
+* [Chains](/development/chain/overview): Orchestrate multi-step workflows.
+* [Custom engine builder](/engines/engine-builder-llm/custom-engine-builder): Advanced configuration options.

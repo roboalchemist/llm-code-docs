@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/merchant-of-record/fees.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Fees
 
 > Transparent fees at a 20% discount vs. other MoRs
@@ -48,21 +52,17 @@ Therefore, we might need to intervene and even suspend your account unless swift
 
 ## Payout Fees
 
-While payouts may incur fees charged by the payout providers (such as Stripe), Polar does not add any extra fees or markup. These are strictly the provider’s fees, and Polar does not profit from them.
+While payouts may incur fees charged by our payout provider (Stripe), Polar does not add any extra fees or markup. These are strictly Stripe’s fees, and Polar does not profit from them.
 
 In addition, Polar offers manual withdrawals for developers. Keeping you in control of when to issue payouts.
 
 *Unless you have a Polar balance that you haven't withdrawn for several months, at which point we'll eventually need to trigger a payout on your behalf.*
 
-**Stripe**
+**Fees (Stripe)**
 
 * \$2 per month of active payout(s)
 * 0.25% + \$0.25 per payout
 * Cross border fees (currency conversion): 0.25% (EU) - 1% in other countries.
-
-**Open Collective (Deprecated for new users)**
-
-* 10% on amount transferred
 
 ## Volume pricing
 

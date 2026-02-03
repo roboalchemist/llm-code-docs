@@ -1,9 +1,13 @@
 # Source: https://docs.fireworks.ai/tools-sdks/python-client/sdk-reference.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Reference
 
 <Warning>
-  This SDK documentation applies to version [0.19.20](https://pypi.org/project/fireworks-ai/0.19.20/) and earlier. The Build SDK will be deprecated and replaced with version 1.0.0 of the SDK (see our [changelog](/updates/changelog#2025-11-12) for more details). Please migrate to the new SDK when it becomes available.
+  This SDK documentation applies to version [0.19.20](https://pypi.org/project/fireworks-ai/0.19.20/) and earlier. The Build SDK will be deprecated and replaced with version 1.0.0 of the SDK (see our [changelog](/updates/changelog#2025-11-12) for more details). Please migrate to the [new SDK](/tools-sdks/python-sdk).
 </Warning>
 
 # Resource types
@@ -26,7 +30,7 @@ class LLM()
 * `base_deployment_name` *str* - If a LoRA addon, the deployment name of the base model deployment
 * `peft_base_model` *str* - If this is a LoRA addon, the base model identifier (e.g., `accounts/fireworks/models/llama-v3p2-3b-instruct`)
 * `addons_enabled` *bool* - Whether LoRA addons are enabled for this LLM
-* `model_id` *str* - The identifier used under the hood to query this model (e.g., `accounts/my-account/deployedModels/my-deployed-model-abcdefg`)
+* `model_id` *str* - The identifier used under the hood to query this model (e.g., `accounts/my-account/deployments/my-deployment-12345678`)
 * `deployment_id` *str* - The deployment ID (e.g., `my-custom-deployment`)
 * `base_deployment_id` *str* - The base deployment ID for LoRA addons
 * `perf_metrics_in_response` *bool* - Whether performance metrics are included in responses
@@ -105,7 +109,7 @@ fine_tuned_with_lora.apply()
 
 **Deployment Configuration**
 
-* `id` *str, optional* - Deployment ID to identify the deployment. Required when deployment\_type is "on-demand". Can be any simple string (e.g., `"my-deployment"`) - does not need to follow the format `"accounts/account_id/deployments/model_id"`.
+* `id` *str, optional* - Deployment ID to identify the deployment. Required when deployment\_type is "on-demand". Can be any simple string (e.g., `"my-deployment"`) - does not need to follow the format `"accounts/account_id/deployments/deployment_id"`.
 * `deployment_display_name` *str, optional* - Display name for the deployment. Defaults to the filename where the LLM was instantiated. If a deployment with the same display name and model already exists, the SDK will try and re-use it.
 * `base_id` *str, optional* - Base deployment ID for LoRA addons. Required when deployment\_type is "on-demand-lora".
 
@@ -269,7 +273,7 @@ Returns a new LLM instance with the specified deployment type.
 
 **Arguments:**
 
-* `deployment_type` *str* - The deployment type to use ("serverless", "on-demand", "auto", or "on-demand-lora")
+* `deployment_type` *str* - The deployment type to use ("serverless", "on-demand", "auto", or "on-demand-lora"). Note: For LoRA models, only "on-demand" and "on-demand-lora" are supported.
 
 **Returns:**
 
@@ -406,18 +410,6 @@ Returns the model ID, which is the model name plus the deployment name if it exi
 
 ```python  theme={null}
 model_id = llm.model_id()
-```
-
-### `supports_serverless_lora()`
-
-Checks if the model supports serverless LoRA deployment.
-
-**Returns:**
-
-* True if the model supports serverless LoRA, False otherwise
-
-```python  theme={null}
-supports_lora = llm.supports_serverless_lora()
 ```
 
 ### `list_fireworks_models()`

@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/features/prompt-registry/placeholder-messages.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Placeholder Messages
 
 Placeholder Messages are a powerful feature that allows you to inject messages into a prompt template. By using the `placeholder` message role, you can define placeholders within your prompt template that can be replaced with full messages at runtime. This complements our standard [template variables](/features/prompt-registry/template-variables) feature, which allows you to insert simple values into your prompts.
@@ -37,8 +41,3 @@ promptlayer_client.run(
 ```
 
 Passed in messages must confirm to our [prompt blueprint](/quickstart-part-two#prompt-blueprint) format.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

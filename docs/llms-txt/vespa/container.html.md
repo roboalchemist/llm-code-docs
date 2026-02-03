@@ -4,18 +4,6 @@
 
 # Source: https://docs.vespa.ai/en/operations/self-managed/container.html.md
 
-# Source: https://docs.vespa.ai/en/reference/operations/metrics/container.html.md
-
-# Source: https://docs.vespa.ai/en/reference/applications/services/container.html.md
-
-# Source: https://docs.vespa.ai/en/operations/self-managed/container.html.md
-
-# Source: https://docs.vespa.ai/en/reference/operations/metrics/container.html.md
-
-# Source: https://docs.vespa.ai/en/reference/applications/services/container.html.md
-
-# Source: https://docs.vespa.ai/en/operations/self-managed/container.html.md
-
 # Container
 
  
@@ -114,5 +102,5 @@ where the resulting RMIREGISTRY and JMX lines determine port1 and port2, respect
 
 The state of each container is available in JConsole by pressing the Threads tab and selecting the thread of interest in the threads list. Threads of interest includes _search_, _connector_, _closer_, _transport_ and _acceptor_ (the latter four are used for backend communications).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

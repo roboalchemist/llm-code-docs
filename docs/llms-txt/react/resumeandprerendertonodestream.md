@@ -16,7 +16,7 @@ This API is specific to Node.js. Environments with [Web Streams,](https://develo
 
 ## Reference
 
-### `resumeAndPrerenderToNodeStream(reactNode, postponedState, options?)`
+### `resumeAndPrerenderToNodeStream(reactNode, postponedState, options?`
 
 Call `resumeAndPrerenderToNodeStream` to continue a prerendered React tree to a static HTML string.
 

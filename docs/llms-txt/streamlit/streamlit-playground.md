@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/get-started/installation/streamlit-playground
+
 # Use Streamlit Playground in your browser
 
 The fastest way to try out Streamlit is to try out our Playground! Streamlit Playground runs in your browser. Just visit the Playground, and a _limited_ version of Streamlit loads as browser scripts.

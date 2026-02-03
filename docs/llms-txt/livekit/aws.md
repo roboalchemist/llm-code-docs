@@ -12,53 +12,13 @@
 
 # Source: https://docs.livekit.io/agents/models/llm/plugins/aws.md
 
-# Source: https://docs.livekit.io/agents/models/stt/plugins/aws.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/aws.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/aws.md
-
-# Source: https://docs.livekit.io/agents/integrations/aws.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/aws.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/aws.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/aws.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/aws.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/aws.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/aws.md
-
-# Source: https://docs.livekit.io/agents/integrations/aws.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/aws.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/aws.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/aws.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/aws.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/aws.md
-
-# Source: https://docs.livekit.io/agents/integrations/aws.md
-
-# Source: https://docs.livekit.io/agents/models/tts/plugins/aws.md
-
-# Source: https://docs.livekit.io/agents/models/llm/plugins/aws.md
-
-# Source: https://docs.livekit.io/agents/models/stt/plugins/aws.md
-
-LiveKit docs › Partner spotlight › AWS › Amazon Transcribe STT Plugin
+LiveKit docs › Models › LLM › Plugins › AWS
 
 ---
 
-# Amazon Transcribe plugin guide
+# Amazon Bedrock LLM plugin guide
 
-> How to use the Amazon Transcribe STT plugin for LiveKit Agents.
+> How to use the Amazon Bedrock LLM plugin for LiveKit Agents.
 
 Available in:
 - [ ] Node.js
@@ -66,87 +26,87 @@ Available in:
 
 ## Overview
 
-This plugin allows you to use [Amazon Transcribe](https://docs.aws.amazon.com/transcribe/latest/dg/what-is.html) as an STT provider for your voice agents.
+This plugin allows you to use [Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html) as a LLM provider for your voice agents.
 
 ## Quick reference
 
-This section provides a brief overview of the Amazon Transcribe STT plugin. For more information, see [Additional resources](#additional-resources).
+This section includes a basic usage example and some reference material. For links to more detailed documentation, see [Additional resources](#additional-resources).
 
 ### Installation
 
 Install the plugin from PyPI:
 
 ```shell
-uv add "livekit-agents[aws]~=1.2"
+uv add "livekit-agents[aws]~=1.3"
 
 ```
 
 ### Authentication
 
-The Amazon Transcribe plugin requires an [AWS API key](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html).
-
-Set the following environment variables in your `.env` file:
+The AWS plugin requires AWS credentials. Set the following environment variables in your `.env` file:
 
 ```shell
-AWS_ACCESS_KEY_ID=<aws-access-key-id>
-AWS_SECRET_ACCESS_KEY=<aws-secret-access-key>
-AWS_DEFAULT_REGION=<aws-deployment-region>
+AWS_ACCESS_KEY_ID=<your-aws-access-key-id>
+AWS_SECRET_ACCESS_KEY=<your-aws-secret-access-key>
 
 ```
 
 ### Usage
 
-Use Amazon Transcribe STT in an `AgentSession` or as a standalone transcription service. For example, you can use this STT in the [Voice AI quickstart](https://docs.livekit.io/agents/start/voice-ai.md).
+Use Bedrock within an `AgentSession` or as a standalone LLM service. For example, you can use this LLM in the [Voice AI quickstart](https://docs.livekit.io/agents/start/voice-ai.md).
 
 ```python
 from livekit.plugins import aws
 
 session = AgentSession(
-   stt = aws.STT(
-      session_id="my-session-id",
-      language="en-US",
-      vocabulary_name="my-vocabulary",
-      vocab_filter_name="my-vocab-filter",
-      vocab_filter_method="mask",
-   ),
-   # ... llm, tts, etc.
+    llm=aws.LLM(
+        model="anthropic.claude-3-5-sonnet-20240620-v1:0",
+        temperature=0.8,
+    ),
+    # ... tts, stt, vad, turn_detection, etc.
 )
 
 ```
 
 ### Parameters
 
-This section describes some of the available parameters. See the [plugin reference](https://docs.livekit.io/reference/python/v1/livekit/plugins/aws/index.html.md#livekit.plugins.aws.STT) for a complete list of all available parameters.
+This section describes some of the available parameters. For a complete reference of all available parameters, see the [plugin reference](https://docs.livekit.io/reference/python/v1/livekit/plugins/aws/index.html.md#livekit.plugins.aws.LLM).
 
-- **`speech_region`** _(string)_ (optional) - Default: `us-east-1` - Environment: `AWS_DEFAULT_REGION`: The region of the AWS deployment. Required if the environment variable isn't set.
+- **`model`** _(string | TEXT_MODEL)_ (optional) - Default: `anthropic.claude-3-5-sonnet-20240620-v1:0`: The model to use for the LLM. For more information, see the documentation for the `modelId` parameter in the [Amazon Bedrock API reference](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/bedrock-runtime/client/converse_stream.html).
 
-- **`language`** _(string)_ (optional) - Default: `en-US`: The language of the audio. For a full list of supported languages, see the [Supported languages](https://docs.aws.amazon.com/transcribe/latest/dg/supported-languages.html) page.
+- **`region`** _(string)_ (optional) - Default: `us-east-1`: The region to use for AWS API requests.
 
-- **`vocabulary_name`** _(string)_ (optional) - Default: `None`: Name of the custom vocabulary you want to use when processing your transcription. To learn more, see [Custom vocabularies](https://docs.aws.amazon.com/transcribe/latest/dg/custom-vocabulary.html).
+- **`temperature`** _(float)_ (optional): Controls the randomness of the model's output. Higher values, for example 0.8, make the output more random, while lower values, for example 0.2, make it more focused and deterministic.
 
-- **`session_id`** _(string)_ (optional): Name for your transcription session. If left empty, Amazon Transcribe generates an ID and returns it in the response.
+Default values vary depending on the model you select. To learn more, see [Inference request parameters and response fields for foundation models](https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters.html).
 
-- **`vocab_filter_name`** _(string)_ (optional) - Default: `None`: Name of the custom vocabulary filter that you want to use when processing your transcription. To learn more, see [Using custom vocabulary filters to delete, mask, or flag words](https://docs.aws.amazon.com/transcribe/latest/dg/vocabulary-filtering.html).
+- **`tool_choice`** _([ToolChoice | Literal['auto', 'required', 'none']])_ (optional) - Default: `auto`: Controls how the model uses tools. Set to 'auto' to let the model decide, 'required' to force tool usage, or 'none' to disable tool usage.
 
-- **`vocab_filter_method`** _(string)_ (optional) - Default: `None`: Display method for the vocabulary filter. To learn more, see [Using custom vocabulary filters to delete, mask, or flag words](https://docs.aws.amazon.com/transcribe/latest/dg/vocabulary-filtering.html).
+## Amazon Nova Sonic
+
+To use Amazon Nova Sonic on AWS Bedrock, refer to the following integration guide:
+
+- **[Amazon Nova Sonic](https://docs.livekit.io/agents/models/realtime/plugins/nova-sonic.md)**: Integration guide for the Amazon Nova Sonic speech-to-speech model on AWS Bedrock.
 
 ## Additional resources
 
-The following resources provide more information about using Amazon Transcribe with LiveKit Agents.
+The following links provide more information about the Amazon Bedrock LLM plugin.
 
 - **[Python package](https://pypi.org/project/livekit-plugins-aws/)**: The `livekit-plugins-aws` package on PyPI.
 
-- **[Plugin reference](https://docs.livekit.io/reference/python/v1/livekit/plugins/aws/index.html.md#livekit.plugins.aws.STT)**: Reference for the Amazon Transcribe STT plugin.
+- **[Plugin reference](https://docs.livekit.io/reference/python/v1/livekit/plugins/aws/index.html.md#livekit.plugins.aws.LLM)**: Reference for the Amazon Bedrock LLM plugin.
 
-- **[GitHub repo](https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-aws)**: View the source or contribute to the LiveKit Amazon Transcribe STT plugin.
+- **[GitHub repo](https://github.com/livekit/agents/tree/main/livekit-plugins/livekit-plugins-aws)**: View the source or contribute to the LiveKit Amazon Bedrock LLM plugin.
 
-- **[AWS docs](https://docs.aws.amazon.com/transcribe/latest/dg/what-is.html)**: Amazon Transcribe's full docs site.
+- **[Bedrock docs](https://docs.aws.amazon.com/bedrock/latest/userguide/what-is-bedrock.html)**: Amazon Bedrock docs.
 
-- **[Voice AI quickstart](https://docs.livekit.io/agents/start/voice-ai.md)**: Get started with LiveKit Agents and Amazon Transcribe.
+- **[Voice AI quickstart](https://docs.livekit.io/agents/start/voice-ai.md)**: Get started with LiveKit Agents and Amazon Bedrock.
+
+- **[AWS ecosystem guide](https://docs.livekit.io/agents/integrations/aws.md)**: Overview of the entire AWS and LiveKit Agents integration.
 
 ---
 
-This document was rendered at 2025-11-18T23:55:06.997Z.
-For the latest version of this document, see [https://docs.livekit.io/agents/models/stt/plugins/aws.md](https://docs.livekit.io/agents/models/stt/plugins/aws.md).
+This document was rendered at 2026-02-03T03:24:59.609Z.
+For the latest version of this document, see [https://docs.livekit.io/agents/models/llm/plugins/aws.md](https://docs.livekit.io/agents/models/llm/plugins/aws.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

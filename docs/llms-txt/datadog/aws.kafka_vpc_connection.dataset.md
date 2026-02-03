@@ -4,8 +4,6 @@
 title: MSK VPC Connection
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > MSK VPC Connection
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.kafka_vpc_connection.dataset/index.html
 ---
 
 # MSK VPC Connection
@@ -27,7 +25,7 @@ aws.kafka_vpc_connection
 | security_groups    | core | array<string> | The list of security groups for the VPC connection.                           |
 | state              | core | string        | The state of VPC connection.                                                  |
 | subnets            | core | array<string> | The list of subnets for the VPC connection.                                   |
-| tags               | core | hstore        |
+| tags               | core | hstore_csv    |
 | target_cluster_arn | core | string        | The Amazon Resource Name (ARN) that uniquely identifies an MSK cluster.       |
 | vpc_connection_arn | core | string        | The Amazon Resource Name (ARN) that uniquely identifies a MSK VPC connection. |
 | vpc_id             | core | string        | The VPC Id for the VPC connection.                                            |

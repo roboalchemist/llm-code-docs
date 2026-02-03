@@ -26,6 +26,7 @@ import { LineElement } from '@mui/x-charts-premium';
 
 | Name | Type | Default | Required | Description |
 |------|------|---------|----------|-------------|
+| hidden | `bool` | - | No |  |
 | skipAnimation | `bool` | `false` | No |  |
 | slotProps | `object` | `{}` | No |  |
 | slots | `object` | `{}` | No |  |

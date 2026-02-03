@@ -6,7 +6,6 @@ description: >-
   Learn how to connect APM data with telemetry collected by additional Datadog
   products.
 breadcrumbs: Docs > APM > Correlate APM Data with Other Telemetry
-source_url: https://docs.datadoghq.com/other_telemetry/index.html
 ---
 
 # Correlate APM Data with Other Telemetry

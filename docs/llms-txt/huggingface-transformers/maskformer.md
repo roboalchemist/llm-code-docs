@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/maskformer.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/maskformer.md
 
 # MaskFormer
 
@@ -19,25 +19,25 @@ This model was contributed by [francesco](https://huggingface.co/francesco). The
 
 ## Usage tips
 
-- MaskFormer's Transformer decoder is identical to the decoder of [DETR](detr). During training, the authors of DETR did find it helpful to use auxiliary losses in the decoder, especially to help the model output the correct number of objects of each class. If you set the parameter `use_auxiliary_loss` of [MaskFormerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerConfig) to `True`, then prediction feedforward neural networks and Hungarian losses are added after each decoder layer (with the FFNs sharing parameters).
+- MaskFormer's Transformer decoder is identical to the decoder of [DETR](detr). During training, the authors of DETR did find it helpful to use auxiliary losses in the decoder, especially to help the model output the correct number of objects of each class. If you set the parameter `use_auxiliary_loss` of [MaskFormerConfig](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerConfig) to `True`, then prediction feedforward neural networks and Hungarian losses are added after each decoder layer (with the FFNs sharing parameters).
 - If you want to train the model in a distributed environment across multiple nodes, then one should update the
   `get_num_masks` function inside in the `MaskFormerLoss` class of `modeling_maskformer.py`. When training on multiple nodes, this should be
   set to the average number of target masks across all nodes, as can be seen in the original implementation [here](https://github.com/facebookresearch/MaskFormer/blob/da3e60d85fdeedcb31476b5edd7d328826ce56cc/mask_former/modeling/criterion.py#L169).
-- One can use [MaskFormerImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerImageProcessor) to prepare images for the model and optional targets for the model.
-- To get the final segmentation, depending on the task, you can call [post_process_semantic_segmentation()](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerImageProcessor.post_process_semantic_segmentation) or [post_process_panoptic_segmentation()](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerImageProcessor.post_process_panoptic_segmentation). Both tasks can be solved using [MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation) output, panoptic segmentation accepts an optional `label_ids_to_fuse` argument to fuse instances of the target object/s (e.g. sky) together.
+- One can use [MaskFormerImageProcessor](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerImageProcessor) to prepare images for the model and optional targets for the model.
+- To get the final segmentation, depending on the task, you can call [post_process_semantic_segmentation()](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerImageProcessor.post_process_semantic_segmentation) or [post_process_panoptic_segmentation()](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerImageProcessor.post_process_panoptic_segmentation). Both tasks can be solved using [MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation) output, panoptic segmentation accepts an optional `label_ids_to_fuse` argument to fuse instances of the target object/s (e.g. sky) together.
 
 ## Resources
 
 - All notebooks that illustrate inference as well as fine-tuning on custom data with MaskFormer can be found [here](https://github.com/NielsRogge/Transformers-Tutorials/tree/master/MaskFormer).
-- Scripts for finetuning `MaskFormer` with [Trainer](/docs/transformers/v5.0.0rc1/en/main_classes/trainer#transformers.Trainer) or [Accelerate](https://huggingface.co/docs/accelerate/index) can be found [here](https://github.com/huggingface/transformers/tree/main/examples/pytorch/instance-segmentation).
+- Scripts for finetuning `MaskFormer` with [Trainer](/docs/transformers/v5.0.0/en/main_classes/trainer#transformers.Trainer) or [Accelerate](https://huggingface.co/docs/accelerate/index) can be found [here](https://github.com/huggingface/transformers/tree/main/examples/pytorch/instance-segmentation).
 
 ## MaskFormer specific outputs[[transformers.models.maskformer.modeling_maskformer.MaskFormerModelOutput]]
 
 #### transformers.models.maskformer.modeling_maskformer.MaskFormerModelOutput[[transformers.models.maskformer.modeling_maskformer.MaskFormerModelOutput]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/maskformer/modeling_maskformer.py#L137)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/maskformer/modeling_maskformer.py#L135)
 
-Class for outputs of [MaskFormerModel](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerModel). This class returns all the needed hidden states to compute the logits.
+Class for outputs of [MaskFormerModel](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerModel). This class returns all the needed hidden states to compute the logits.
 
 **Parameters:**
 
@@ -55,28 +55,28 @@ transformer_decoder_hidden_states (`tuple(torch.FloatTensor)`, *optional*, retur
 
 hidden_states `tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) : Tuple of `torch.FloatTensor` containing `encoder_hidden_states`, `pixel_decoder_hidden_states` and `decoder_hidden_states`
 
-hidden_states (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) : Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, + one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+hidden_states (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) : Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, + one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
 
-attentions (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention heads.
+attentions (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention heads.
 
 #### transformers.models.maskformer.modeling_maskformer.MaskFormerForInstanceSegmentationOutput[[transformers.models.maskformer.modeling_maskformer.MaskFormerForInstanceSegmentationOutput]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/maskformer/modeling_maskformer.py#L183)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/maskformer/modeling_maskformer.py#L181)
 
-Class for outputs of [MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation).
+Class for outputs of [MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation).
 
-This output can be directly passed to [post_process_semantic_segmentation()](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerImageProcessor.post_process_semantic_segmentation) or or
-[post_process_instance_segmentation()](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerImageProcessor.post_process_instance_segmentation) or
-[post_process_panoptic_segmentation()](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerImageProcessor.post_process_panoptic_segmentation) depending on the task. Please, see
+This output can be directly passed to [post_process_semantic_segmentation()](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerImageProcessor.post_process_semantic_segmentation) or
+[post_process_instance_segmentation()](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerImageProcessor.post_process_instance_segmentation) or
+[post_process_panoptic_segmentation()](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerImageProcessor.post_process_panoptic_segmentation) depending on the task. Please, see
 [`~MaskFormerImageProcessor] for details regarding usage.
 
 **Parameters:**
 
 loss (`torch.Tensor`, *optional*) : The computed loss, returned when labels are present.
 
-class_queries_logits (`torch.FloatTensor`, *optional*, defaults to `None`) : A tensor of shape `(batch_size, num_queries, num_labels + 1)` representing the proposed classes for each query. Note the `+ 1` is needed because we incorporate the null class.
+class_queries_logits (`torch.FloatTensor | None.class_queries_logits`, defaults to `None`) : A tensor of shape `(batch_size, num_queries, num_labels + 1)` representing the proposed classes for each query. Note the `+ 1` is needed because we incorporate the null class.
 
-masks_queries_logits (`torch.FloatTensor`, *optional*, defaults to `None`) : A tensor of shape `(batch_size, num_queries, height, width)` representing the proposed masks for each query.
+masks_queries_logits (`torch.FloatTensor | None.masks_queries_logits`, defaults to `None`) : A tensor of shape `(batch_size, num_queries, height, width)` representing the proposed masks for each query.
 
 auxiliary_logits (`Dict[str, torch.FloatTensor]`, *optional*, returned when `output_auxiliary_logits=True`) : Dictionary containing auxiliary predictions for each decoder layer when auxiliary losses are enabled.
 
@@ -94,24 +94,24 @@ transformer_decoder_hidden_states (`tuple(torch.FloatTensor)`, *optional*, retur
 
 hidden_states `tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) : Tuple of `torch.FloatTensor` containing `encoder_hidden_states`, `pixel_decoder_hidden_states` and `decoder_hidden_states`.
 
-hidden_states (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) : Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, + one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+hidden_states (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) : Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, + one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
 
-attentions (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention heads.
+attentions (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention heads.
 
 ## MaskFormerConfig[[transformers.MaskFormerConfig]]
 
 #### transformers.MaskFormerConfig[[transformers.MaskFormerConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/maskformer/configuration_maskformer.py#L30)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/maskformer/configuration_maskformer.py#L27)
 
-This is the configuration class to store the configuration of a [MaskFormerModel](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerModel). It is used to instantiate a
+This is the configuration class to store the configuration of a [MaskFormerModel](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerModel). It is used to instantiate a
 MaskFormer model according to the specified arguments, defining the model architecture. Instantiating a
 configuration with the defaults will yield a similar configuration to that of the MaskFormer
 [facebook/maskformer-swin-base-ade](https://huggingface.co/facebook/maskformer-swin-base-ade) architecture trained
 on [ADE20k-150](https://huggingface.co/datasets/scene_parse_150).
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Currently, MaskFormer only supports the [Swin Transformer](swin) as backbone.
 
@@ -138,7 +138,7 @@ no_object_weight (`float`, *optional*, defaults to 0.1) : Weight to apply to the
 
 use_auxiliary_loss(`bool`, *optional*, defaults to `False`) : If `True` `MaskFormerForInstanceSegmentationOutput` will contain the auxiliary losses computed using the logits from each decoder's stage.
 
-backbone_config (`Dict`, *optional*) : The configuration passed to the backbone, if unset, the configuration corresponding to `swin-base-patch4-window12-384` will be used.
+backbone_config (`Union[dict, "PreTrainedConfig"]`, *optional*, defaults to `SwinConfig()`) : The configuration passed to the backbone, if unset, the configuration corresponding to `swin-base-patch4-window12-384` will be used.
 
 backbone (`str`, *optional*) : Name of backbone to use when `backbone_config` is `None`. If `use_pretrained_backbone` is `True`, this will load the corresponding pretrained weights from the timm or transformers library. If `use_pretrained_backbone` is `False`, this loads the backbone's config and uses that to initialize the backbone with random weights.
 
@@ -166,15 +166,15 @@ output_auxiliary_logits (`bool`, *optional*) : Should the model output its `auxi
 
 #### transformers.MaskFormerImageProcessor[[transformers.MaskFormerImageProcessor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/maskformer/image_processing_maskformer.py#L371)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/maskformer/image_processing_maskformer.py#L370)
 
 Constructs a MaskFormer image processor. The image processor can be used to prepare image(s) and optional targets
 for the model.
 
-This image processor inherits from [BaseImageProcessor](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#transformers.BaseImageProcessor) which contains most of the main methods. Users should
+This image processor inherits from [BaseImageProcessor](/docs/transformers/v5.0.0/en/main_classes/image_processor#transformers.BaseImageProcessor) which contains most of the main methods. Users should
 refer to this superclass for more information regarding those methods.
 
-preprocesstransformers.MaskFormerImageProcessor.preprocesshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/maskformer/image_processing_maskformer.py#L683[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]"}, {"name": "segmentation_maps", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "instance_id_to_semantic_id", "val": ": typing.Optional[dict[int, int]] = None"}, {"name": "do_resize", "val": ": typing.Optional[bool] = None"}, {"name": "size", "val": ": typing.Optional[dict[str, int]] = None"}, {"name": "size_divisor", "val": ": typing.Optional[int] = None"}, {"name": "resample", "val": ": typing.Optional[PIL.Image.Resampling] = None"}, {"name": "do_rescale", "val": ": typing.Optional[bool] = None"}, {"name": "rescale_factor", "val": ": typing.Optional[float] = None"}, {"name": "do_normalize", "val": ": typing.Optional[bool] = None"}, {"name": "image_mean", "val": ": typing.Union[float, list[float], NoneType] = None"}, {"name": "image_std", "val": ": typing.Union[float, list[float], NoneType] = None"}, {"name": "ignore_index", "val": ": typing.Optional[int] = None"}, {"name": "do_reduce_labels", "val": ": typing.Optional[bool] = None"}, {"name": "return_tensors", "val": ": typing.Union[str, transformers.utils.generic.TensorType, NoneType] = None"}, {"name": "data_format", "val": ": typing.Union[str, transformers.image_utils.ChannelDimension] = "}, {"name": "input_data_format", "val": ": typing.Union[str, transformers.image_utils.ChannelDimension, NoneType] = None"}, {"name": "pad_size", "val": ": typing.Optional[dict[str, int]] = None"}]
+preprocesstransformers.MaskFormerImageProcessor.preprocesshttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/maskformer/image_processing_maskformer.py#L682[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]"}, {"name": "segmentation_maps", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "instance_id_to_semantic_id", "val": ": dict[int, int] | None = None"}, {"name": "do_resize", "val": ": bool | None = None"}, {"name": "size", "val": ": dict[str, int] | None = None"}, {"name": "size_divisor", "val": ": int | None = None"}, {"name": "resample", "val": ": PIL.Image.Resampling | None = None"}, {"name": "do_rescale", "val": ": bool | None = None"}, {"name": "rescale_factor", "val": ": float | None = None"}, {"name": "do_normalize", "val": ": bool | None = None"}, {"name": "image_mean", "val": ": float | list[float] | None = None"}, {"name": "image_std", "val": ": float | list[float] | None = None"}, {"name": "ignore_index", "val": ": int | None = None"}, {"name": "do_reduce_labels", "val": ": bool | None = None"}, {"name": "return_tensors", "val": ": str | transformers.utils.generic.TensorType | None = None"}, {"name": "data_format", "val": ": str | transformers.image_utils.ChannelDimension = "}, {"name": "input_data_format", "val": ": str | transformers.image_utils.ChannelDimension | None = None"}, {"name": "pad_size", "val": ": dict[str, int] | None = None"}]
 
 **Parameters:**
 
@@ -205,7 +205,7 @@ num_labels (`int`, *optional*) : The number of labels in the segmentation map.
 pad_size (`Dict[str, int]`, *optional*) : The size `{"height": int, "width" int}` to pad the images to. Must be larger than any image size provided for preprocessing. If `pad_size` is not provided, images will be padded to the largest height and width in the batch.
 #### encode_inputs[[transformers.MaskFormerImageProcessor.encode_inputs]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/maskformer/image_processing_maskformer.py#L872)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/maskformer/image_processing_maskformer.py#L871)
 
 Pad images up to the largest image in a batch and create a corresponding `pixel_mask`.
 
@@ -223,15 +223,15 @@ segmentation_maps (`ImageInput`, *optional*) : The corresponding semantic segmen
 
 instance_id_to_semantic_id (`list[dict[int, int]]` or `dict[int, int]`, *optional*) : A mapping between object instance ids and class ids. If passed, `segmentation_maps` is treated as an instance segmentation map where each pixel represents an instance id. Can be provided as a single dictionary with a global/dataset-level mapping or as a list of dictionaries (one per image), to map instance ids in each image separately. 
 
-return_tensors (`str` or [TensorType](/docs/transformers/v5.0.0rc1/en/internal/file_utils#transformers.TensorType), *optional*) : If set, will return tensors instead of NumPy arrays. If set to `'pt'`, return PyTorch `torch.Tensor` objects. 
+return_tensors (`str` or [TensorType](/docs/transformers/v5.0.0/en/internal/file_utils#transformers.TensorType), *optional*) : If set, will return tensors instead of NumPy arrays. If set to `'pt'`, return PyTorch `torch.Tensor` objects. 
 
 pad_size (`Dict[str, int]`, *optional*) : The size `{"height": int, "width" int}` to pad the images to. Must be larger than any image size provided for preprocessing. If `pad_size` is not provided, images will be padded to the largest height and width in the batch.
 
 **Returns:**
 
-`[BatchFeature](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#transformers.BatchFeature)`
+`[BatchFeature](/docs/transformers/v5.0.0/en/main_classes/image_processor#transformers.BatchFeature)`
 
-A [BatchFeature](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#transformers.BatchFeature) with the following fields:
+A [BatchFeature](/docs/transformers/v5.0.0/en/main_classes/image_processor#transformers.BatchFeature) with the following fields:
 
 - **pixel_values** -- Pixel values to be fed to a model.
 - **pixel_mask** -- Pixel mask to be fed to a model (when `=True` or if `pixel_mask` is in
@@ -243,14 +243,14 @@ A [BatchFeature](/docs/transformers/v5.0.0rc1/en/main_classes/image_processor#tr
   `mask_labels[i][j]` if `class_labels[i][j]`.
 #### post_process_semantic_segmentation[[transformers.MaskFormerImageProcessor.post_process_semantic_segmentation]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/maskformer/image_processing_maskformer.py#L987)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/maskformer/image_processing_maskformer.py#L986)
 
-Converts the output of [MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation) into semantic segmentation maps. Only supports
+Converts the output of [MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation) into semantic segmentation maps. Only supports
 PyTorch.
 
 **Parameters:**
 
-outputs ([MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation)) : Raw outputs of the model.
+outputs ([MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation)) : Raw outputs of the model.
 
 target_sizes (`list[tuple[int, int]]`, *optional*) : List of length (batch_size), where each list item (`tuple[int, int]]`) corresponds to the requested final size (height, width) of each prediction. If left to None, predictions will not be resized.
 
@@ -263,7 +263,7 @@ corresponding to the target_sizes entry (if `target_sizes` is specified). Each e
 `torch.Tensor` correspond to a semantic class id.
 #### post_process_instance_segmentation[[transformers.MaskFormerImageProcessor.post_process_instance_segmentation]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/maskformer/image_processing_maskformer.py#L1037)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/maskformer/image_processing_maskformer.py#L1036)
 
 Converts the output of `MaskFormerForInstanceSegmentationOutput` into instance segmentation predictions. Only
 supports PyTorch. If instances could overlap, set either return_coco_annotation or return_binary_maps
@@ -271,7 +271,7 @@ to `True` to get the correct segmentation result.
 
 **Parameters:**
 
-outputs ([MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation)) : Raw outputs of the model.
+outputs ([MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation)) : Raw outputs of the model.
 
 threshold (`float`, *optional*, defaults to 0.5) : The probability score threshold to keep predicted instance masks.
 
@@ -300,14 +300,14 @@ A list of dictionaries, one per image, each dictionary containing two keys:
   - **score** -- Prediction score of segment with `segment_id`.
 #### post_process_panoptic_segmentation[[transformers.MaskFormerImageProcessor.post_process_panoptic_segmentation]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/maskformer/image_processing_maskformer.py#L1153)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/maskformer/image_processing_maskformer.py#L1152)
 
 Converts the output of `MaskFormerForInstanceSegmentationOutput` into image panoptic segmentation
 predictions. Only supports PyTorch.
 
 **Parameters:**
 
-outputs (`MaskFormerForInstanceSegmentationOutput`) : The outputs from [MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation).
+outputs (`MaskFormerForInstanceSegmentationOutput`) : The outputs from [MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation).
 
 threshold (`float`, *optional*, defaults to 0.5) : The probability score threshold to keep predicted instance masks.
 
@@ -338,51 +338,51 @@ A list of dictionaries, one per image, each dictionary containing two keys:
 
 #### transformers.MaskFormerImageProcessorFast[[transformers.MaskFormerImageProcessorFast]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/maskformer/image_processing_maskformer_fast.py#L99)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/maskformer/image_processing_maskformer_fast.py#L98)
 
 Constructs a fast Maskformer image processor.
 
-preprocesstransformers.MaskFormerImageProcessorFast.preprocesshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/maskformer/image_processing_maskformer_fast.py#L236[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]"}, {"name": "segmentation_maps", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "instance_id_to_semantic_id", "val": ": typing.Union[list[dict[int, int]], dict[int, int], NoneType] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.models.maskformer.image_processing_maskformer.MaskFormerImageProcessorKwargs]"}]- **images** (`Union[PIL.Image.Image, numpy.ndarray, torch.Tensor, list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]`) --
+preprocesstransformers.MaskFormerImageProcessorFast.preprocesshttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/maskformer/image_processing_maskformer_fast.py#L235[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]"}, {"name": "segmentation_maps", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "instance_id_to_semantic_id", "val": ": list[dict[int, int]] | dict[int, int] | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.models.maskformer.image_processing_maskformer.MaskFormerImageProcessorKwargs]"}]- **images** (`Union[PIL.Image.Image, numpy.ndarray, torch.Tensor, list, list, list]`) --
   Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If
   passing in images with pixel values between 0 and 1, set `do_rescale=False`.
 - **segmentation_maps** (`ImageInput`, *optional*) --
   The segmentation maps.
 - **instance_id_to_semantic_id** (`Union[list[dict[int, int]], dict[int, int]]`, *optional*) --
   A mapping from instance IDs to semantic IDs.
-- **do_convert_rgb** (`bool`, *optional*) --
+- **do_convert_rgb** (`bool | None.do_convert_rgb`) --
   Whether to convert the image to RGB.
-- **do_resize** (`bool`, *optional*) --
+- **do_resize** (`bool | None.do_resize`) --
   Whether to resize the image.
-- **size** (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) --
+- **size** (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) --
   Describes the maximum input dimensions to the model.
-- **crop_size** (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) --
+- **crop_size** (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) --
   Size of the output image after applying `center_crop`.
 - **resample** (`Annotated[Union[PILImageResampling, int, NoneType], None]`) --
   Resampling filter to use if resizing the image. This can be one of the enum `PILImageResampling`. Only
   has an effect if `do_resize` is set to `True`.
-- **do_rescale** (`bool`, *optional*) --
+- **do_rescale** (`bool | None.do_rescale`) --
   Whether to rescale the image.
-- **rescale_factor** (`float`, *optional*) --
+- **rescale_factor** (`float | None.rescale_factor`) --
   Rescale factor to rescale the image by if `do_rescale` is set to `True`.
-- **do_normalize** (`bool`, *optional*) --
+- **do_normalize** (`bool | None.do_normalize`) --
   Whether to normalize the image.
-- **image_mean** (`Union[float, list[float], tuple[float, ...], NoneType]`) --
+- **image_mean** (`float | list[float] | tuple[float, ...] | None.image_mean`) --
   Image mean to use for normalization. Only has an effect if `do_normalize` is set to `True`.
-- **image_std** (`Union[float, list[float], tuple[float, ...], NoneType]`) --
+- **image_std** (`float | list[float] | tuple[float, ...] | None.image_std`) --
   Image standard deviation to use for normalization. Only has an effect if `do_normalize` is set to
   `True`.
-- **do_pad** (`bool`, *optional*) --
+- **do_pad** (`bool | None.do_pad`) --
   Whether to pad the image. Padding is done either to the largest size in the batch
   or to a fixed square size per image. The exact padding strategy depends on the model.
-- **pad_size** (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) --
+- **pad_size** (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) --
   The size in `{"height": int, "width" int}` to pad the images to. Must be larger than any image size
   provided for preprocessing. If `pad_size` is not provided, images will be padded to the largest
   height and width in the batch. Applied only when `do_pad=True.`
-- **do_center_crop** (`bool`, *optional*) --
+- **do_center_crop** (`bool | None.do_center_crop`) --
   Whether to center crop the image.
-- **data_format** (`Union[~image_utils.ChannelDimension, str, NoneType]`) --
+- **data_format** (`str | ~image_utils.ChannelDimension | None.data_format`) --
   Only `ChannelDimension.FIRST` is supported. Added for compatibility with slow processors.
-- **input_data_format** (`Union[~image_utils.ChannelDimension, str, NoneType]`) --
+- **input_data_format** (`str | ~image_utils.ChannelDimension | None.input_data_format`) --
   The channel dimension format for the input image. If unset, the channel dimension format is inferred
   from the input image. Can be one of:
   - `"channels_first"` or `ChannelDimension.FIRST`: image in (num_channels, height, width) format.
@@ -390,13 +390,13 @@ preprocesstransformers.MaskFormerImageProcessorFast.preprocesshttps://github.com
   - `"none"` or `ChannelDimension.NONE`: image in (height, width) format.
 - **device** (`Annotated[Union[str, torch.device, NoneType], None]`) --
   The device to process the images on. If unset, the device is inferred from the input images.
-- **return_tensors** (`Annotated[Union[str, ~utils.generic.TensorType, NoneType], None]`) --
+- **return_tensors** (`Annotated[str | ~utils.generic.TensorType | None, None]`) --
   Returns stacked tensors if set to `pt, otherwise returns a list of tensors.
-- **disable_grouping** (`bool`, *optional*) --
+- **disable_grouping** (`bool | None.disable_grouping`) --
   Whether to disable grouping of images by size to process them individually and not in batches.
   If None, will be set to True if the images are on CPU, and False otherwise. This choice is based on
   empirical observations, as detailed here: https://github.com/huggingface/transformers/pull/38157
-- **image_seq_length** (`int`, *optional*) --
+- **image_seq_length** (`int | None.image_seq_length`) --
   The number of image tokens to be used for each image in the input.
   Added for backward compatibility but this should be set as a processor attribute in future models.
 - **size_divisor** (`.size_divisor`) --
@@ -415,49 +415,49 @@ preprocesstransformers.MaskFormerImageProcessorFast.preprocesshttps://github.com
 
 **Parameters:**
 
-images (`Union[PIL.Image.Image, numpy.ndarray, torch.Tensor, list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]`) : Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If passing in images with pixel values between 0 and 1, set `do_rescale=False`.
+images (`Union[PIL.Image.Image, numpy.ndarray, torch.Tensor, list, list, list]`) : Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If passing in images with pixel values between 0 and 1, set `do_rescale=False`.
 
 segmentation_maps (`ImageInput`, *optional*) : The segmentation maps.
 
 instance_id_to_semantic_id (`Union[list[dict[int, int]], dict[int, int]]`, *optional*) : A mapping from instance IDs to semantic IDs.
 
-do_convert_rgb (`bool`, *optional*) : Whether to convert the image to RGB.
+do_convert_rgb (`bool | None.do_convert_rgb`) : Whether to convert the image to RGB.
 
-do_resize (`bool`, *optional*) : Whether to resize the image.
+do_resize (`bool | None.do_resize`) : Whether to resize the image.
 
-size (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) : Describes the maximum input dimensions to the model.
+size (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) : Describes the maximum input dimensions to the model.
 
-crop_size (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) : Size of the output image after applying `center_crop`.
+crop_size (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) : Size of the output image after applying `center_crop`.
 
 resample (`Annotated[Union[PILImageResampling, int, NoneType], None]`) : Resampling filter to use if resizing the image. This can be one of the enum `PILImageResampling`. Only has an effect if `do_resize` is set to `True`.
 
-do_rescale (`bool`, *optional*) : Whether to rescale the image.
+do_rescale (`bool | None.do_rescale`) : Whether to rescale the image.
 
-rescale_factor (`float`, *optional*) : Rescale factor to rescale the image by if `do_rescale` is set to `True`.
+rescale_factor (`float | None.rescale_factor`) : Rescale factor to rescale the image by if `do_rescale` is set to `True`.
 
-do_normalize (`bool`, *optional*) : Whether to normalize the image.
+do_normalize (`bool | None.do_normalize`) : Whether to normalize the image.
 
-image_mean (`Union[float, list[float], tuple[float, ...], NoneType]`) : Image mean to use for normalization. Only has an effect if `do_normalize` is set to `True`.
+image_mean (`float | list[float] | tuple[float, ...] | None.image_mean`) : Image mean to use for normalization. Only has an effect if `do_normalize` is set to `True`.
 
-image_std (`Union[float, list[float], tuple[float, ...], NoneType]`) : Image standard deviation to use for normalization. Only has an effect if `do_normalize` is set to `True`.
+image_std (`float | list[float] | tuple[float, ...] | None.image_std`) : Image standard deviation to use for normalization. Only has an effect if `do_normalize` is set to `True`.
 
-do_pad (`bool`, *optional*) : Whether to pad the image. Padding is done either to the largest size in the batch or to a fixed square size per image. The exact padding strategy depends on the model.
+do_pad (`bool | None.do_pad`) : Whether to pad the image. Padding is done either to the largest size in the batch or to a fixed square size per image. The exact padding strategy depends on the model.
 
-pad_size (`Annotated[Union[int, list[int], tuple[int, ...], dict[str, int], NoneType], None]`) : The size in `{"height": int, "width" int}` to pad the images to. Must be larger than any image size provided for preprocessing. If `pad_size` is not provided, images will be padded to the largest height and width in the batch. Applied only when `do_pad=True.`
+pad_size (`Annotated[int | list[int] | tuple[int, ...] | dict[str, int] | None, None]`) : The size in `{"height": int, "width" int}` to pad the images to. Must be larger than any image size provided for preprocessing. If `pad_size` is not provided, images will be padded to the largest height and width in the batch. Applied only when `do_pad=True.`
 
-do_center_crop (`bool`, *optional*) : Whether to center crop the image.
+do_center_crop (`bool | None.do_center_crop`) : Whether to center crop the image.
 
-data_format (`Union[~image_utils.ChannelDimension, str, NoneType]`) : Only `ChannelDimension.FIRST` is supported. Added for compatibility with slow processors.
+data_format (`str | ~image_utils.ChannelDimension | None.data_format`) : Only `ChannelDimension.FIRST` is supported. Added for compatibility with slow processors.
 
-input_data_format (`Union[~image_utils.ChannelDimension, str, NoneType]`) : The channel dimension format for the input image. If unset, the channel dimension format is inferred from the input image. Can be one of: - `"channels_first"` or `ChannelDimension.FIRST`: image in (num_channels, height, width) format. - `"channels_last"` or `ChannelDimension.LAST`: image in (height, width, num_channels) format. - `"none"` or `ChannelDimension.NONE`: image in (height, width) format.
+input_data_format (`str | ~image_utils.ChannelDimension | None.input_data_format`) : The channel dimension format for the input image. If unset, the channel dimension format is inferred from the input image. Can be one of: - `"channels_first"` or `ChannelDimension.FIRST`: image in (num_channels, height, width) format. - `"channels_last"` or `ChannelDimension.LAST`: image in (height, width, num_channels) format. - `"none"` or `ChannelDimension.NONE`: image in (height, width) format.
 
 device (`Annotated[Union[str, torch.device, NoneType], None]`) : The device to process the images on. If unset, the device is inferred from the input images.
 
-return_tensors (`Annotated[Union[str, ~utils.generic.TensorType, NoneType], None]`) : Returns stacked tensors if set to `pt, otherwise returns a list of tensors.
+return_tensors (`Annotated[str | ~utils.generic.TensorType | None, None]`) : Returns stacked tensors if set to `pt, otherwise returns a list of tensors.
 
-disable_grouping (`bool`, *optional*) : Whether to disable grouping of images by size to process them individually and not in batches. If None, will be set to True if the images are on CPU, and False otherwise. This choice is based on empirical observations, as detailed here: https://github.com/huggingface/transformers/pull/38157
+disable_grouping (`bool | None.disable_grouping`) : Whether to disable grouping of images by size to process them individually and not in batches. If None, will be set to True if the images are on CPU, and False otherwise. This choice is based on empirical observations, as detailed here: https://github.com/huggingface/transformers/pull/38157
 
-image_seq_length (`int`, *optional*) : The number of image tokens to be used for each image in the input. Added for backward compatibility but this should be set as a processor attribute in future models.
+image_seq_length (`int | None.image_seq_length`) : The number of image tokens to be used for each image in the input. Added for backward compatibility but this should be set as a processor attribute in future models.
 
 size_divisor (`.size_divisor`) : The size by which to make sure both the height and width can be divided.
 
@@ -476,14 +476,14 @@ num_labels (`int`, *optional*) : The number of labels in the segmentation map.
   initialization.
 #### post_process_semantic_segmentation[[transformers.MaskFormerImageProcessorFast.post_process_semantic_segmentation]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/maskformer/image_processing_maskformer_fast.py#L409)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/maskformer/image_processing_maskformer_fast.py#L405)
 
-Converts the output of [MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation) into semantic segmentation maps. Only supports
+Converts the output of [MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation) into semantic segmentation maps. Only supports
 PyTorch.
 
 **Parameters:**
 
-outputs ([MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation)) : Raw outputs of the model.
+outputs ([MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation)) : Raw outputs of the model.
 
 target_sizes (`list[tuple[int, int]]`, *optional*) : List of length (batch_size), where each list item (`tuple[int, int]]`) corresponds to the requested final size (height, width) of each prediction. If left to None, predictions will not be resized.
 
@@ -496,7 +496,7 @@ corresponding to the target_sizes entry (if `target_sizes` is specified). Each e
 `torch.Tensor` correspond to a semantic class id.
 #### post_process_instance_segmentation[[transformers.MaskFormerImageProcessorFast.post_process_instance_segmentation]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/maskformer/image_processing_maskformer_fast.py#L460)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/maskformer/image_processing_maskformer_fast.py#L456)
 
 Converts the output of `MaskFormerForInstanceSegmentationOutput` into instance segmentation predictions. Only
 supports PyTorch. If instances could overlap, set either return_coco_annotation or return_binary_maps
@@ -504,7 +504,7 @@ to `True` to get the correct segmentation result.
 
 **Parameters:**
 
-outputs ([MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation)) : Raw outputs of the model.
+outputs ([MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation)) : Raw outputs of the model.
 
 threshold (`float`, *optional*, defaults to 0.5) : The probability score threshold to keep predicted instance masks.
 
@@ -533,14 +533,14 @@ A list of dictionaries, one per image, each dictionary containing two keys:
   - **score** -- Prediction score of segment with `segment_id`.
 #### post_process_panoptic_segmentation[[transformers.MaskFormerImageProcessorFast.post_process_panoptic_segmentation]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/maskformer/image_processing_maskformer_fast.py#L577)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/maskformer/image_processing_maskformer_fast.py#L573)
 
 Converts the output of `MaskFormerForInstanceSegmentationOutput` into image panoptic segmentation
 predictions. Only supports PyTorch.
 
 **Parameters:**
 
-outputs (`MaskFormerForInstanceSegmentationOutput`) : The outputs from [MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation).
+outputs (`MaskFormerForInstanceSegmentationOutput`) : The outputs from [MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation).
 
 threshold (`float`, *optional*, defaults to 0.5) : The probability score threshold to keep predicted instance masks.
 
@@ -571,11 +571,11 @@ A list of dictionaries, one per image, each dictionary containing two keys:
 
 #### transformers.MaskFormerModel[[transformers.MaskFormerModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/maskformer/modeling_maskformer.py#L1481)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/maskformer/modeling_maskformer.py#L1487)
 
 The bare Maskformer Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -583,10 +583,10 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.MaskFormerModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/maskformer/modeling_maskformer.py#L1491[{"name": "pixel_values", "val": ": Tensor"}, {"name": "pixel_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`) --
+forwardtransformers.MaskFormerModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/maskformer/modeling_maskformer.py#L1497[{"name": "pixel_values", "val": ": Tensor"}, {"name": "pixel_mask", "val": ": torch.Tensor | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [MaskFormerImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerImageProcessor). See `MaskFormerImageProcessor.__call__()` for details (`processor_class` uses
-  [MaskFormerImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerImageProcessor) for processing images).
+  [MaskFormerImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerImageProcessorFast). See [MaskFormerImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details (`processor_class` uses
+  [MaskFormerImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerImageProcessorFast) for processing images).
 - **pixel_mask** (`torch.Tensor` of shape `(batch_size, height, width)`, *optional*) --
   Mask to avoid performing attention on padding pixel values. Mask values selected in `[0, 1]`:
 
@@ -601,9 +601,9 @@ forwardtransformers.MaskFormerModel.forwardhttps://github.com/huggingface/transf
   Whether or not to return the attentions tensors of all attention layers. See `attentions` under returned
   tensors for more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.models.maskformer.modeling_maskformer.MaskFormerModelOutput](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.models.maskformer.modeling_maskformer.MaskFormerModelOutput) or `tuple(torch.FloatTensor)`A [transformers.models.maskformer.modeling_maskformer.MaskFormerModelOutput](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.models.maskformer.modeling_maskformer.MaskFormerModelOutput) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.models.maskformer.modeling_maskformer.MaskFormerModelOutput](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.models.maskformer.modeling_maskformer.MaskFormerModelOutput) or `tuple(torch.FloatTensor)`A [transformers.models.maskformer.modeling_maskformer.MaskFormerModelOutput](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.models.maskformer.modeling_maskformer.MaskFormerModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MaskFormerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerConfig)) and inputs.
+elements depending on the configuration ([MaskFormerConfig](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerConfig)) and inputs.
 
 - **encoder_last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, num_channels, height, width)`) -- Last hidden states (final feature map) of the last stage of the encoder model (backbone).
 - **pixel_decoder_last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, num_channels, height, width)`) -- Last hidden states (final feature map) of the last stage of the pixel decoder model (FPN).
@@ -619,16 +619,16 @@ elements depending on the configuration ([MaskFormerConfig](/docs/transformers/v
   transformer decoder at the output of each stage.
 - **hidden_states** `tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` containing `encoder_hidden_states`, `pixel_decoder_hidden_states` and
   `decoder_hidden_states`
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [MaskFormerModel](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerModel) forward method, overrides the `__call__` special method.
+The [MaskFormerModel](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -639,14 +639,16 @@ Examples:
 ```python
 >>> from transformers import AutoImageProcessor, MaskFormerModel
 >>> from PIL import Image
->>> import requests
+>>> import httpx
+>>> from io import BytesIO
 
 >>> # load MaskFormer fine-tuned on ADE20k semantic segmentation
 >>> image_processor = AutoImageProcessor.from_pretrained("facebook/maskformer-swin-base-ade")
 >>> model = MaskFormerModel.from_pretrained("facebook/maskformer-swin-base-ade")
 
 >>> url = "http://images.cocodataset.org/val2017/000000039769.jpg"
->>> image = Image.open(requests.get(url, stream=True).raw)
+>>> with httpx.stream("GET", url) as response:
+...     image = Image.open(BytesIO(response.read()))
 
 >>> inputs = image_processor(image, return_tensors="pt")
 
@@ -661,15 +663,15 @@ Examples:
 
 **Parameters:**
 
-config ([MaskFormerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([MaskFormerConfig](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.models.maskformer.modeling_maskformer.MaskFormerModelOutput](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.models.maskformer.modeling_maskformer.MaskFormerModelOutput) or `tuple(torch.FloatTensor)``
+`[transformers.models.maskformer.modeling_maskformer.MaskFormerModelOutput](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.models.maskformer.modeling_maskformer.MaskFormerModelOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.models.maskformer.modeling_maskformer.MaskFormerModelOutput](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.models.maskformer.modeling_maskformer.MaskFormerModelOutput) or a tuple of
+A [transformers.models.maskformer.modeling_maskformer.MaskFormerModelOutput](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.models.maskformer.modeling_maskformer.MaskFormerModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MaskFormerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerConfig)) and inputs.
+elements depending on the configuration ([MaskFormerConfig](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerConfig)) and inputs.
 
 - **encoder_last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, num_channels, height, width)`) -- Last hidden states (final feature map) of the last stage of the encoder model (backbone).
 - **pixel_decoder_last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, num_channels, height, width)`) -- Last hidden states (final feature map) of the last stage of the pixel decoder model (FPN).
@@ -685,11 +687,11 @@ elements depending on the configuration ([MaskFormerConfig](/docs/transformers/v
   transformer decoder at the output of each stage.
 - **hidden_states** `tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` containing `encoder_hidden_states`, `pixel_decoder_hidden_states` and
   `decoder_hidden_states`
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
@@ -699,12 +701,12 @@ elements depending on the configuration ([MaskFormerConfig](/docs/transformers/v
 
 #### transformers.MaskFormerForInstanceSegmentation[[transformers.MaskFormerForInstanceSegmentation]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/maskformer/modeling_maskformer.py#L1578)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/maskformer/modeling_maskformer.py#L1586)
 
-forwardtransformers.MaskFormerForInstanceSegmentation.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/maskformer/modeling_maskformer.py#L1660[{"name": "pixel_values", "val": ": Tensor"}, {"name": "mask_labels", "val": ": typing.Optional[list[torch.Tensor]] = None"}, {"name": "class_labels", "val": ": typing.Optional[list[torch.Tensor]] = None"}, {"name": "pixel_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_auxiliary_logits", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`) --
+forwardtransformers.MaskFormerForInstanceSegmentation.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/maskformer/modeling_maskformer.py#L1668[{"name": "pixel_values", "val": ": Tensor"}, {"name": "mask_labels", "val": ": list[torch.Tensor] | None = None"}, {"name": "class_labels", "val": ": list[torch.Tensor] | None = None"}, {"name": "pixel_mask", "val": ": torch.Tensor | None = None"}, {"name": "output_auxiliary_logits", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [MaskFormerImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerImageProcessor). See `MaskFormerImageProcessor.__call__()` for details (`processor_class` uses
-  [MaskFormerImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerImageProcessor) for processing images).
+  [MaskFormerImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerImageProcessorFast). See [MaskFormerImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details (`processor_class` uses
+  [MaskFormerImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerImageProcessorFast) for processing images).
 - **mask_labels** (`list[torch.Tensor]`, *optional*) --
   List of mask labels of shape `(num_labels, height, width)` to be fed to a model
 - **class_labels** (`list[torch.LongTensor]`, *optional*) --
@@ -726,14 +728,14 @@ forwardtransformers.MaskFormerForInstanceSegmentation.forwardhttps://github.com/
   Whether or not to return the attentions tensors of all attention layers. See `attentions` under returned
   tensors for more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.models.maskformer.modeling_maskformer.MaskFormerForInstanceSegmentationOutput](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.models.maskformer.modeling_maskformer.MaskFormerForInstanceSegmentationOutput) or `tuple(torch.FloatTensor)`A [transformers.models.maskformer.modeling_maskformer.MaskFormerForInstanceSegmentationOutput](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.models.maskformer.modeling_maskformer.MaskFormerForInstanceSegmentationOutput) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.models.maskformer.modeling_maskformer.MaskFormerForInstanceSegmentationOutput](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.models.maskformer.modeling_maskformer.MaskFormerForInstanceSegmentationOutput) or `tuple(torch.FloatTensor)`A [transformers.models.maskformer.modeling_maskformer.MaskFormerForInstanceSegmentationOutput](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.models.maskformer.modeling_maskformer.MaskFormerForInstanceSegmentationOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MaskFormerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerConfig)) and inputs.
+elements depending on the configuration ([MaskFormerConfig](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerConfig)) and inputs.
 
 - **loss** (`torch.Tensor`, *optional*) -- The computed loss, returned when labels are present.
-- **class_queries_logits** (`torch.FloatTensor`, *optional*, defaults to `None`) -- A tensor of shape `(batch_size, num_queries, num_labels + 1)` representing the proposed classes for each
+- **class_queries_logits** (`torch.FloatTensor | None.class_queries_logits`, defaults to `None`) -- A tensor of shape `(batch_size, num_queries, num_labels + 1)` representing the proposed classes for each
   query. Note the `+ 1` is needed because we incorporate the null class.
-- **masks_queries_logits** (`torch.FloatTensor`, *optional*, defaults to `None`) -- A tensor of shape `(batch_size, num_queries, height, width)` representing the proposed masks for each
+- **masks_queries_logits** (`torch.FloatTensor | None.masks_queries_logits`, defaults to `None`) -- A tensor of shape `(batch_size, num_queries, height, width)` representing the proposed masks for each
   query.
 - **auxiliary_logits** (`Dict[str, torch.FloatTensor]`, *optional*, returned when `output_auxiliary_logits=True`) -- Dictionary containing auxiliary predictions for each decoder layer when auxiliary losses are enabled.
 - **encoder_last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, num_channels, height, width)`) -- Last hidden states (final feature map) of the last stage of the encoder model (backbone).
@@ -750,16 +752,16 @@ elements depending on the configuration ([MaskFormerConfig](/docs/transformers/v
   of each stage.
 - **hidden_states** `tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` containing `encoder_hidden_states`, `pixel_decoder_hidden_states` and
   `decoder_hidden_states`.
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation) forward method, overrides the `__call__` special method.
+The [MaskFormerForInstanceSegmentation](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerForInstanceSegmentation) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -772,7 +774,8 @@ Semantic segmentation example:
 ```python
 >>> from transformers import AutoImageProcessor, MaskFormerForInstanceSegmentation
 >>> from PIL import Image
->>> import requests
+>>> import httpx
+>>> from io import BytesIO
 
 >>> # load MaskFormer fine-tuned on ADE20k semantic segmentation
 >>> image_processor = AutoImageProcessor.from_pretrained("facebook/maskformer-swin-base-ade")
@@ -781,7 +784,8 @@ Semantic segmentation example:
 >>> url = (
 ...     "https://huggingface.co/datasets/hf-internal-testing/fixtures_ade20k/resolve/main/ADE_val_00000001.jpg"
 ... )
->>> image = Image.open(requests.get(url, stream=True).raw)
+>>> with httpx.stream("GET", url) as response:
+...     image = Image.open(BytesIO(response.read()))
 >>> inputs = image_processor(images=image, return_tensors="pt")
 
 >>> outputs = model(**inputs)
@@ -805,14 +809,16 @@ Panoptic segmentation example:
 ```python
 >>> from transformers import AutoImageProcessor, MaskFormerForInstanceSegmentation
 >>> from PIL import Image
->>> import requests
+>>> import httpx
+>>> from io import BytesIO
 
 >>> # load MaskFormer fine-tuned on COCO panoptic segmentation
 >>> image_processor = AutoImageProcessor.from_pretrained("facebook/maskformer-swin-base-coco")
 >>> model = MaskFormerForInstanceSegmentation.from_pretrained("facebook/maskformer-swin-base-coco")
 
 >>> url = "http://images.cocodataset.org/val2017/000000039769.jpg"
->>> image = Image.open(requests.get(url, stream=True).raw)
+>>> with httpx.stream("GET", url) as response:
+...     image = Image.open(BytesIO(response.read()))
 >>> inputs = image_processor(images=image, return_tensors="pt")
 
 >>> outputs = model(**inputs)
@@ -832,7 +838,7 @@ Panoptic segmentation example:
 
 **Parameters:**
 
-pixel_values (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`) : The tensors corresponding to the input images. Pixel values can be obtained using [MaskFormerImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerImageProcessor). See `MaskFormerImageProcessor.__call__()` for details (`processor_class` uses [MaskFormerImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerImageProcessor) for processing images).
+pixel_values (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`) : The tensors corresponding to the input images. Pixel values can be obtained using [MaskFormerImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerImageProcessorFast). See [MaskFormerImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details (`processor_class` uses [MaskFormerImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerImageProcessorFast) for processing images).
 
 mask_labels (`list[torch.Tensor]`, *optional*) : List of mask labels of shape `(num_labels, height, width)` to be fed to a model
 
@@ -846,20 +852,20 @@ output_hidden_states (`bool`, *optional*) : Whether or not to return the hidden 
 
 output_attentions (`bool`, *optional*) : Whether or not to return the attentions tensors of all attention layers. See `attentions` under returned tensors for more detail.
 
-return_dict (`bool`, *optional*) : Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+return_dict (`bool`, *optional*) : Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 
 **Returns:**
 
-`[transformers.models.maskformer.modeling_maskformer.MaskFormerForInstanceSegmentationOutput](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.models.maskformer.modeling_maskformer.MaskFormerForInstanceSegmentationOutput) or `tuple(torch.FloatTensor)``
+`[transformers.models.maskformer.modeling_maskformer.MaskFormerForInstanceSegmentationOutput](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.models.maskformer.modeling_maskformer.MaskFormerForInstanceSegmentationOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.models.maskformer.modeling_maskformer.MaskFormerForInstanceSegmentationOutput](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.models.maskformer.modeling_maskformer.MaskFormerForInstanceSegmentationOutput) or a tuple of
+A [transformers.models.maskformer.modeling_maskformer.MaskFormerForInstanceSegmentationOutput](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.models.maskformer.modeling_maskformer.MaskFormerForInstanceSegmentationOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([MaskFormerConfig](/docs/transformers/v5.0.0rc1/en/model_doc/maskformer#transformers.MaskFormerConfig)) and inputs.
+elements depending on the configuration ([MaskFormerConfig](/docs/transformers/v5.0.0/en/model_doc/maskformer#transformers.MaskFormerConfig)) and inputs.
 
 - **loss** (`torch.Tensor`, *optional*) -- The computed loss, returned when labels are present.
-- **class_queries_logits** (`torch.FloatTensor`, *optional*, defaults to `None`) -- A tensor of shape `(batch_size, num_queries, num_labels + 1)` representing the proposed classes for each
+- **class_queries_logits** (`torch.FloatTensor | None.class_queries_logits`, defaults to `None`) -- A tensor of shape `(batch_size, num_queries, num_labels + 1)` representing the proposed classes for each
   query. Note the `+ 1` is needed because we incorporate the null class.
-- **masks_queries_logits** (`torch.FloatTensor`, *optional*, defaults to `None`) -- A tensor of shape `(batch_size, num_queries, height, width)` representing the proposed masks for each
+- **masks_queries_logits** (`torch.FloatTensor | None.masks_queries_logits`, defaults to `None`) -- A tensor of shape `(batch_size, num_queries, height, width)` representing the proposed masks for each
   query.
 - **auxiliary_logits** (`Dict[str, torch.FloatTensor]`, *optional*, returned when `output_auxiliary_logits=True`) -- Dictionary containing auxiliary predictions for each decoder layer when auxiliary losses are enabled.
 - **encoder_last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, num_channels, height, width)`) -- Last hidden states (final feature map) of the last stage of the encoder model (backbone).
@@ -876,11 +882,11 @@ elements depending on the configuration ([MaskFormerConfig](/docs/transformers/v
   of each stage.
 - **hidden_states** `tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` containing `encoder_hidden_states`, `pixel_decoder_hidden_states` and
   `decoder_hidden_states`.
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention

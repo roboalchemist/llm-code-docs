@@ -1,14 +1,4 @@
-# Source: https://docs.pinata.cloud/sdk/signatures/public/delete.md
-
-# Source: https://docs.pinata.cloud/sdk/signatures/private/delete.md
-
-# Source: https://docs.pinata.cloud/sdk/groups/public/delete.md
-
-# Source: https://docs.pinata.cloud/sdk/groups/private/delete.md
-
-# Source: https://docs.pinata.cloud/sdk/files/public/delete.md
-
-# Source: https://docs.pinata.cloud/sdk/files/private/delete.md
+# Source: https://docs.pinata.cloud/sdk/x402/payment-instructions/delete.md
 
 # Source: https://docs.pinata.cloud/sdk/signatures/public/delete.md
 
@@ -22,17 +12,9 @@
 
 # Source: https://docs.pinata.cloud/sdk/files/private/delete.md
 
-# Source: https://docs.pinata.cloud/sdk/signatures/public/delete.md
-
-# Source: https://docs.pinata.cloud/sdk/signatures/private/delete.md
-
-# Source: https://docs.pinata.cloud/sdk/groups/public/delete.md
-
-# Source: https://docs.pinata.cloud/sdk/groups/private/delete.md
-
-# Source: https://docs.pinata.cloud/sdk/files/public/delete.md
-
-# Source: https://docs.pinata.cloud/sdk/files/private/delete.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # delete
 

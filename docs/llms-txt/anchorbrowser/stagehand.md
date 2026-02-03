@@ -1,273 +1,376 @@
 # Source: https://docs.anchorbrowser.io/integrations/stagehand.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Stagehand
 
 > Integrate Stagehand with Anchor Browser for AI-powered browser automation
 
 ## Basic Usage
 
+This example demonstrates how to:
+
+1. Create an AnchorBrowser session using the AnchorBrowser SDK
+2. Get the CDP URL from the session
+3. Connect Stagehand to the browser via CDP
+4. Perform AI-powered browser automation
+
+### Prerequisites
+
 <CodeGroup>
-  ```python python theme={null}
-  import os
-  import asyncio
-  import aiohttp
-  import ssl
-  from typing import Optional, Dict, Any
-  from stagehand import Stagehand
-
-  ssl._create_default_https_context = ssl._create_unverified_context
-
-  API_KEY = os.environ.get("ANCHOR_API_KEY")
-  if not API_KEY:
-      raise ValueError("ANCHOR_API_KEY is not set")
-
-  async def create_browser_session() -> Dict[str, Any]:
-      async with aiohttp.ClientSession() as session:
-          async with session.post(
-              "https://api.anchorbrowser.io/v1/sessions",
-              headers={
-                  "anchor-api-key": API_KEY,
-                  "Content-Type": "application/json",
-              },
-              json={
-                  "session": {
-                      "proxy": {"active": True}
-                  },
-                  "browser": {
-                      "extra_stealth": {"active": True}
-                  }
-              },
-              ssl=False
-          ) as response:
-              if not response.ok:
-                  raise Exception(f"Failed to create session: {response.status}")
-              return (await response.json())["data"]
-
-  async def stop_browser_session(session_id: str):
-      async with aiohttp.ClientSession() as session:
-          async with session.delete(
-              f"https://api.anchorbrowser.io/v1/sessions/{session_id}",
-              headers={"anchor-api-key": API_KEY},
-              ssl=False
-          ) as response:
-              if response.ok:
-                  print(f"Session {session_id} stopped")
-
-  async def run_stagehand():
-      session_id: Optional[str] = None
-      stagehand: Optional[Stagehand] = None
-      
-      try:
-          session = await create_browser_session()
-          session_id = session["id"]
-          cdp_url = session["cdp_url"]
-          
-          # Check for GOOGLE_API_KEY
-          google_api_key = os.environ.get("GOOGLE_API_KEY")
-          if not google_api_key:
-              raise ValueError("Either GOOGLE_API_KEY must be set")
-          
-          
-          stagehand = Stagehand(
-              verbose=1,
-              log_level="info",
-              dom_settle_timeout_ms=60000,
-              model_name="google/gemini-2.5-pro",
-              env="LOCAL",
-              local_browser_launch_options={"cdp_url": cdp_url}
-          )
-          
-          await stagehand.init()
-          await stagehand.page.goto("https://example.com")
-          await stagehand.page.act("Click on Learn more link")
-          print(f"Current URL: {stagehand.page.url}")
-      finally:
-          if stagehand and not stagehand._closed:
-              await stagehand.close()
-          if session_id:
-              await stop_browser_session(session_id)
-
-  asyncio.run(run_stagehand())
+  ```bash python theme={null}
+  pip install stagehand anchorbrowser
   ```
 
-  ```javascript node.js theme={null}
+  ```bash node.js theme={null}
+  npm install @browserbasehq/stagehand anchorbrowser
+  ```
+</CodeGroup>
+
+Set the following environment variables:
+
+* `ANCHORBROWSER_API_KEY` - Your Anchorbrowser API key
+* `MODEL_API_KEY`, `OPENAI_API_KEY`, or `GOOGLE_API_KEY` - Your LLM provider API key
+
+<CodeGroup>
+  ```python python theme={null}
+  from __future__ import annotations
+
+  import asyncio
+  import os
+  import sys
+  from typing import Any, Optional
+
+  from anchorbrowser import AsyncAnchorbrowser
+
+  from stagehand import AsyncStagehand
+
+
+  async def main() -> None:
+      # 1. Check for required environment variables
+      anchor_api_key = os.environ.get("ANCHORBROWSER_API_KEY")
+      if not anchor_api_key:
+          sys.exit(
+              "❌ ANCHORBROWSER_API_KEY environment variable is required. "
+              "Get your API key from https://anchorbrowser.io"
+          )
+
+      model_api_key = os.environ.get("MODEL_API_KEY") or os.environ.get("OPENAI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
+      if not model_api_key:
+          sys.exit("❌ MODEL_API_KEY, OPENAI_API_KEY, or GOOGLE_API_KEY environment variable is required.")
+
+      # Detect model type from API key format
+      if model_api_key.startswith("AIza"):
+          model_name = "google/gemini-2.0-flash"
+          print(f"   Detected Google API key, using model: {model_name}")
+      else:
+          model_name = "openai/gpt-4o-mini"
+          print(f"   Detected OpenAI API key, using model: {model_name}")
+
+      anchorbrowser_session_id: Optional[str] = None
+      stagehand_session_id: Optional[str] = None
+
+      # Initialize Anchorbrowser client
+      anchor_client = AsyncAnchorbrowser(api_key=anchor_api_key)
+
+      try:
+          # 2. Create Anchorbrowser session using the SDK
+          print("🌐 Creating Anchorbrowser session...")
+          anchor_session = await anchor_client.sessions.create()
+          
+          if not anchor_session.data or not anchor_session.data.cdp_url:
+              raise ValueError(f"Anchorbrowser session did not return a CDP URL. Response: {anchor_session}")
+          
+          anchorbrowser_session_id = anchor_session.data.id
+          cdp_url = anchor_session.data.cdp_url
+          
+          print("✅ Anchorbrowser session created!")
+          print(f"   Session ID: {anchorbrowser_session_id}")
+          print(f"   CDP URL: {cdp_url}")
+
+          # 3. Initialize Stagehand with the CDP URL
+          print("\n🚀 Initializing Stagehand with CDP URL...")
+          async with AsyncStagehand(
+              server="local",
+              model_api_key=model_api_key,
+              local_openai_api_key=model_api_key,
+              local_ready_timeout_s=30.0,
+          ) as client:
+              # Start session with CDP URL pointing to Anchorbrowser
+              # Note: cdp_url must be inside launch_options for connecting to external browsers
+              session_response = await client.sessions.start(
+                  model_name=model_name,
+                  browser={
+                      "type": "local",
+                      "launch_options": {
+                          "cdp_url": cdp_url,
+                      },
+                  },
+              )
+              stagehand_session_id = session_response.data.session_id
+              print("✅ Stagehand initialized successfully!")
+              print(f"   Stagehand Session ID: {stagehand_session_id}")
+
+              try:
+                  # 4. Navigate to Hacker News
+                  print("\n📍 Navigating to Hacker News...")
+                  await client.sessions.navigate(
+                      id=stagehand_session_id,
+                      url="https://news.ycombinator.com",
+                  )
+                  print("✅ Navigation complete")
+
+                  # 5. Use Stagehand's AI-powered extraction
+                  print("\n🔍 Extracting top stories using AI...")
+                  extract_response = await client.sessions.extract(
+                      id=stagehand_session_id,
+                      instruction="Extract the titles and URLs of the first 5 stories on the page",
+                      schema={
+                          "type": "object",
+                          "properties": {
+                              "stories": {
+                                  "type": "array",
+                                  "items": {
+                                      "type": "object",
+                                      "properties": {
+                                          "title": {"type": "string"},
+                                          "url": {"type": "string"},
+                                      },
+                                      "required": ["title"],
+                                  },
+                              },
+                          },
+                          "required": ["stories"],
+                      },
+                  )
+
+                  print("\n📰 Extracted stories:")
+                  result: Any = extract_response.data.result
+                  if isinstance(result, dict) and "stories" in result:
+                      stories = result["stories"]
+                      if isinstance(stories, list):
+                          for i, story in enumerate(stories, 1):
+                              if isinstance(story, dict):
+                                  title = story.get("title", "N/A")
+                                  url = story.get("url")
+                                  print(f"   {i}. {title}")
+                                  if url:
+                                      print(f"      URL: {url}")
+                  else:
+                      print(f"   Raw result: {result}")
+
+                  # 6. Use Stagehand's observe to find clickable elements
+                  print("\n👁️  Observing page for login link...")
+                  observe_response = await client.sessions.observe(
+                      id=stagehand_session_id,
+                      instruction="find the login link",
+                  )
+                  actions = observe_response.data.result
+                  print(f"   Found {len(actions)} possible actions")
+                  if actions:
+                      print(f"   First action: {actions[0].description}")
+
+                  # 7. Use Stagehand's act to perform an action
+                  print("\n🖱️  Clicking on the first story...")
+                  act_response = await client.sessions.act(
+                      id=stagehand_session_id,
+                      input="click on the first story title",
+                  )
+                  print(f"   Act completed: {act_response.data.result.message}")
+
+                  # Wait a moment for navigation
+                  await asyncio.sleep(2)
+
+                  print("\n✅ Test completed successfully!")
+
+              finally:
+                  # 8. End the Stagehand session
+                  if stagehand_session_id:
+                      print("\n🛑 Ending Stagehand session...")
+                      await client.sessions.end(id=stagehand_session_id)
+                      print("✅ Stagehand session ended")
+
+      finally:
+          # 9. Delete the Anchorbrowser session using the SDK
+          if anchorbrowser_session_id:
+              print("\n🧹 Deleting Anchorbrowser session...")
+              try:
+                  await anchor_client.sessions.delete(anchorbrowser_session_id)
+                  print("✅ Anchorbrowser session deleted")
+              except Exception as e:
+                  print(f"⚠️  Failed to delete Anchorbrowser session: {e}")
+
+          # Close the Anchorbrowser client
+          await anchor_client.close()
+
+
+  if __name__ == "__main__":
+      asyncio.run(main())
+  ```
+
+  ```typescript node.js theme={null}
   import { Stagehand } from "@browserbasehq/stagehand";
+  import Anchorbrowser from "anchorbrowser";
+  import { z } from "zod";
 
-  // Disable TLS certificate verification for local development
-  process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
-
-  const API_KEY = process.env.ANCHOR_API_KEY || "";
-
-  // Stagehand configuration factory
-  const createStagehandConfig = () => {
-    // Check for GOOGLE_API_KEY
-    const googleApiKey = process.env.GOOGLE_API_KEY
-    if (!googleApiKey) {
-      throw new Error('Either GOOGLE_API_KEY must be set');
+  async function main(): Promise<void> {
+    // 1. Check for required environment variables
+    const anchorApiKey = process.env.ANCHORBROWSER_API_KEY;
+    if (!anchorApiKey) {
+      console.error(
+        "❌ ANCHORBROWSER_API_KEY environment variable is required. " +
+          "Get your API key from https://anchorbrowser.io"
+      );
+      process.exit(1);
     }
 
-    return {
-      verbose: 1,
-      disablePino: true,
-      logger: console.log,
-      domSettleTimeoutMs: 60_000,
-      actionTimeoutMs: 10_000,
-      navigationTimeoutMs: 15_000,
-      model: "google/gemini-2.5-pro", // Use 'model' instead of 'modelName'
-      // API key will auto-load from GOOGLE_API_KEY environment variable
-      env: "LOCAL",
-      localBrowserLaunchOptions: {
-        headless: false,
-        viewport: {
-          width: 1288,
-          height: 711,
-        },
-      },
-    };
-  };
-
-  // Browser configuration for Anchor
-  const browserConfiguration = {
-    session: {
-      proxy: {
-        active: true,
-      }
-    },
-    browser: {
-      extra_stealth: {
-        active: true
-      }
-    }
-  };
-
-  async function createBrowserSession() {
-    console.log(`Creating browser session with Anchor API...`);
-    const response = await fetch(`https://api.anchorbrowser.io/v1/sessions`, {
-      method: "POST",
-      headers: {
-        "anchor-api-key": API_KEY,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(browserConfiguration),
-    });
-
-    if (!response.ok) {
-      throw new Error(`Failed to create session: ${response.status} ${response.statusText}`);
+    const modelApiKey =
+      process.env.MODEL_API_KEY ||
+      process.env.OPENAI_API_KEY ||
+      process.env.GOOGLE_API_KEY;
+    if (!modelApiKey) {
+      console.error(
+        "❌ MODEL_API_KEY, OPENAI_API_KEY, or GOOGLE_API_KEY environment variable is required."
+      );
+      process.exit(1);
     }
 
-    const json = await response.json();
-    console.log(`Session created:`, json);
-    return json.data;
-  }
-
-  async function stopBrowserSession(sessionId) {
-    console.log(`Stopping browser session ${sessionId}...`);
-    const response = await fetch(`https://api.anchorbrowser.io/v1/sessions/${sessionId}`, {
-      method: "DELETE",
-      headers: {
-        "anchor-api-key": API_KEY,
-      },
-    });
-
-    if (response.ok) {
-      console.log(`Session ${sessionId} stopped successfully`);
+    // Detect model type from API key format
+    let modelName: string;
+    if (modelApiKey.startsWith("AIza")) {
+      modelName = "gemini-2.0-flash";
+      console.log(`   Detected Google API key, using model: ${modelName}`);
     } else {
-      console.error(`Failed to stop session ${sessionId}:`, response.statusText);
+      modelName = "gpt-4o-mini";
+      console.log(`   Detected OpenAI API key, using model: ${modelName}`);
     }
-  }
 
-  async function runStagehandTest() {
-    let sessionId;
-    let stagehand;
+    let anchorbrowserSessionId: string | undefined;
+    let stagehand: Stagehand | undefined;
+
+    // Initialize Anchorbrowser client
+    const anchorClient = new Anchorbrowser({
+      apiKey: anchorApiKey,
+    });
 
     try {
-      // Create Anchor browser session
-      const session = await createBrowserSession();
-      sessionId = session.id;
-      
-      // Use CDP URL from Anchor Browser session response
-      const cdpUrl = session.cdp_url;
-      console.log(`CDP URL: ${cdpUrl}`);
+      // 2. Create Anchorbrowser session using the SDK
+      console.log("🌐 Creating Anchorbrowser session...");
+      const anchorSession = await anchorClient.sessions.create();
 
-      // Initialize Stagehand with Anchor browser
+      if (!anchorSession.data?.cdp_url) {
+        throw new Error(
+          `Anchorbrowser session did not return a CDP URL. Response: ${JSON.stringify(anchorSession)}`
+        );
+      }
+
+      anchorbrowserSessionId = anchorSession.data.id;
+      const cdpUrl = anchorSession.data.cdp_url;
+
+      console.log("✅ Anchorbrowser session created!");
+      console.log(`   Session ID: ${anchorbrowserSessionId}`);
+      console.log(`   CDP URL: ${cdpUrl}`);
+
+      // 3. Initialize Stagehand V3 with the CDP URL
+      console.log("\n🚀 Initializing Stagehand V3 with CDP URL...");
       stagehand = new Stagehand({
-        ...createStagehandConfig(),
         env: "LOCAL",
+        model: modelName,
         localBrowserLaunchOptions: {
           cdpUrl: cdpUrl,
         },
+        verbose: 1,
       });
 
-      console.log("Stagehand initialized successfully");
-
-      // Initialize Stagehand before using it
-      console.log("Initializing Stagehand...");
       await stagehand.init();
-      console.log("Stagehand initialization completed");
+      console.log("✅ Stagehand V3 initialized successfully!");
 
-      // Get the Playwright page from the browser context
-      const page = stagehand.ctx.pages()[0];
-      if (!page) {
-        throw new Error("No page available in browser context");
-      }
-
-      // Example test: Navigate to a page and perform some actions
-      console.log("Navigating to test page...");
-      await page.goto("https://example.com");
-      
-      console.log("Attempting to click on Learn more link...");
       try {
-        // Use Stagehand's act method - it might be on the instance or via actHandler
-        await stagehand.act("Click on Learn more link");
-        console.log("Click action completed successfully");
-      } catch (error) {
-        console.log("Click action had timeout issues, but this is often expected for navigation:");
-        console.log(error.message);
-      }
-      
-      // Wait a bit for any navigation to complete
-      console.log("Waiting for navigation to complete...");
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      console.log("Taking a screenshot...");
-      const currentUrl = page.url();
-      console.log(`Current URL: ${currentUrl}`);
-      const screenshot = await page.screenshot();
-      console.log(`Screenshot taken, size: ${screenshot.length} bytes`);
-      
-      console.log("Test completed successfully!");
+        // Get the active page
+        const page = stagehand.context.activePage();
+        if (!page) {
+          throw new Error("No active page found");
+        }
 
-    } catch (error) {
-      console.error("Error during Stagehand test:", error);
-    } finally {
-      // Clean up
-      if (stagehand) {
-        try {
-          // Only close if Stagehand was successfully initialized
-          if (!stagehand.isClosed) {
-            await stagehand.close();
-            console.log("Stagehand closed");
-          }
-        } catch (error) {
-          console.error("Error closing Stagehand:", error);
+        // 4. Navigate to Hacker News
+        console.log("\n📍 Navigating to Hacker News...");
+        await page.goto("https://news.ycombinator.com");
+        console.log("✅ Navigation complete");
+
+        // 5. Use Stagehand's AI-powered extraction
+        console.log("\n🔍 Extracting top stories using AI...");
+        const StoriesSchema = z.object({
+          stories: z.array(
+            z.object({
+              title: z.string(),
+              url: z.string().optional(),
+            })
+          ),
+        });
+
+        const extractResult = await stagehand.extract(
+          "Extract the titles and URLs of the first 5 stories on the page",
+          StoriesSchema
+        );
+
+        console.log("\n📰 Extracted stories:");
+        if (extractResult.stories) {
+          extractResult.stories.forEach((story, i) => {
+            console.log(`   ${i + 1}. ${story.title}`);
+            if (story.url) {
+              console.log(`      URL: ${story.url}`);
+            }
+          });
+        }
+
+        // 6. Use Stagehand's observe to find clickable elements
+        console.log("\n👁️  Observing page for login link...");
+        const actions = await stagehand.observe("find the login link");
+        console.log(`   Found ${actions.length} possible actions`);
+        if (actions.length > 0) {
+          console.log(`   First action: ${actions[0].description}`);
+        }
+
+        // 7. Use Stagehand's act to perform an action
+        console.log("\n🖱️  Clicking on the first story...");
+        const actResult = await stagehand.act("click on the first story title");
+        console.log(`   Act completed: ${actResult.message}`);
+
+        // Wait a moment for navigation
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+
+        console.log("\n✅ Test completed successfully!");
+      } finally {
+        // 8. Close Stagehand
+        if (stagehand) {
+          console.log("\n🛑 Closing Stagehand...");
+          await stagehand.close();
+          console.log("✅ Stagehand closed");
         }
       }
-      
-      if (sessionId) {
-        await stopBrowserSession(sessionId);
+    } finally {
+      // 9. Delete the Anchorbrowser session using the SDK
+      if (anchorbrowserSessionId) {
+        console.log("\n🧹 Deleting Anchorbrowser session...");
+        try {
+          await anchorClient.sessions.delete(anchorbrowserSessionId);
+          console.log("✅ Anchorbrowser session deleted");
+        } catch (e) {
+          console.log(`⚠️  Failed to delete Anchorbrowser session: ${e}`);
+        }
       }
     }
   }
 
-  // Run the test
-  (async () => {
-    console.log("Starting Stagehand sanity test with Anchor...");
-    await runStagehandTest();
-    console.log("Test completed");
-  })();
+  main().catch((error) => {
+    console.error("Fatal error:", error);
+    process.exit(1);
+  });
   ```
 </CodeGroup>
 
 <Tip>
-  Set `GOOGLE_API_KEY` (or your LLM API key) in your environment variables for Stagehand to function.
+  Set `ANCHOR_BROWSER_API_KEY` for AnchorBrowser authentication, and one of `MODEL_API_KEY`, `OPENAI_API_KEY`, or `GOOGLE_API_KEY` for your LLM provider.
 </Tip>

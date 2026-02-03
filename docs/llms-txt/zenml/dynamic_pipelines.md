@@ -2,12 +2,8 @@
 
 # Dynamic Pipelines (Experimental)
 
-{% hint style="warning" %}
-**Experimental Feature**: Dynamic pipelines are currently an experimental feature. There are known issues and limitations, and the interface is subject to change. This feature is only supported by the `local`, `local_docker`, `kubernetes`, `sagemaker` and `vertex` orchestrators. If you encounter any issues or have feedback, please let us know at <https://github.com/zenml-io/zenml/issues>.
-{% endhint %}
-
 {% hint style="info" %}
-**Important**: Before using dynamic pipelines, please review the [Limitations and Known Issues](#limitations-and-known-issues) section below. This section contains critical information about requirements and known bugs that may affect your pipeline execution, especially when running remotely.
+Dynamic pipelines are supported by the `local`, `local_docker`, `kubernetes`, `sagemaker`, `vertex`, and `azureml` orchestrators. Review the [Limitations and Known Issues](#limitations-and-known-issues) section for important details about running remotely.
 {% endhint %}
 
 ## Why Dynamic Pipelines?
@@ -158,7 +154,7 @@ def cartesian_example():
     a = int_values()
     b = str_values()
     # Produces 2 * 3 = 6 mapped steps
-    combine.product(a, b)
+    do_something.product(a=a, b=b)
 ```
 
 #### Broadcasting inputs with unmapped(...)
@@ -217,9 +213,18 @@ Notes:
 * `results` is a future that refers to all outputs of all steps, and `unpack()` works for both `.map(...)` and `.product(...)`.
 * Each list contains future objects that refer to a single artifact.
 
-#### Pass artifact chunks manually
+#### Manual Looping: `.chunk()` vs `.load()`
 
-In some cases, you might want to loop over a sequence-like artifact manually and launch steps for only some items. You can do so efficiently by using the `artifact.chunk(...)` method:
+When looping over artifacts manually, you need two different operations:
+
+| Method        | Purpose                  | When to Use                               |
+| ------------- | ------------------------ | ----------------------------------------- |
+| `.load()`     | Gets the **actual data** | Making decisions, filtering, control flow |
+| `.chunk(idx)` | Creates a **DAG edge**   | Passing to downstream steps               |
+
+{% hint style="info" %}
+**Mental model**: `.chunk()` is for wiring (tells the orchestrator "this step depends on item X from upstream"), `.load()` is for decisions (gets values for your Python logic). You typically need both: load to iterate and decide, chunk to wire up the DAG.
+{% endhint %}
 
 ```python
 from zenml import pipeline, step
@@ -236,12 +241,10 @@ def compute(a: int) -> int:
 def custom_loop():
     ints = create_int_list()
 
+    # .load() to get values for Python control flow (iteration + filtering)
     for index, value in enumerate(ints.load()):
-        # Apply some filter
         if value % 2 == 0:
-            # Get the artifact chunk. Notice that we use `ints` here, which
-            # is a reference to the artifact and not the actual data that we
-            # loop over
+            # .chunk() to create DAG edge (wiring to downstream step)
             chunk = ints.chunk(index=index)
             compute(chunk)
 ```
@@ -342,13 +345,14 @@ When running multiple steps concurrently using `step.submit()`, a failure in one
 
 Dynamic pipelines are currently only supported by:
 
-* `local` orchestrator
-* `local_docker` orchestrator
-* `kubernetes` orchestrator
-* `sagemaker` orchestrator
-* `vertex` orchestrator
-
-Other orchestrators will raise an error if you try to run a dynamic pipeline with them.
+| Orchestrator                                                                                        | Isolated steps | Handles orchestration environment failures |
+| --------------------------------------------------------------------------------------------------- | :------------: | :----------------------------------------: |
+| [LocalOrchestrator](https://docs.zenml.io/stacks/stack-components/orchestrators/local)              |        ❌       |                      ❌                     |
+| [LocalDockerOrchestrator](https://docs.zenml.io/stacks/stack-components/orchestrators/local-docker) |        ❌       |                      ❌                     |
+| [KubernetesOrchestrator](https://docs.zenml.io/stacks/stack-components/orchestrators/kubernetes)    |        ✅       |                      ✅                     |
+| [VertexOrchestrator](https://docs.zenml.io/stacks/stack-components/orchestrators/vertex)            |        ✅       |                      ❌                     |
+| [SagemakerOrchestrator](https://docs.zenml.io/stacks/stack-components/orchestrators/sagemaker)      |        ✅       |                      ❌                     |
+| [AzureMLOrchestrator](https://docs.zenml.io/stacks/stack-components/orchestrators/azureml)          |        ✅       |                      ❌                     |
 
 ### Artifact Loading
 
@@ -383,3 +387,13 @@ Dynamic pipelines are ideal for:
 * **Multi-agent and collaborative AI workflows**: Building flexible, adaptive workflows where agents or LLM-driven components can be dynamically spawned, routed, or looped based on outputs, results, or user input
 
 For most standard ML workflows, traditional static pipelines are simpler and more maintainable. Use dynamic pipelines when you specifically need runtime flexibility that static pipelines cannot provide.
+
+## Real-World Example: Hierarchical Document Search
+
+The [`examples/hierarchical_doc_search_agent`](https://github.com/zenml-io/zenml/tree/main/examples/hierarchical_doc_search_agent) example combines dynamic pipelines with Pydantic AI agents for intelligent document traversal. It demonstrates:
+
+* Using `.with_options()` to pass parameters vs artifacts
+* The `.chunk()` vs `.load()` pattern: chunks for wiring the DAG, loads for making traversal decisions
+* Spawning steps dynamically based on AI agent decisions
+
+Each `traverse_node` call appears as a separate step in the DAG, created at runtime based on what the agent decides to explore.

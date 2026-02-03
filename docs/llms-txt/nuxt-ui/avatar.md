@@ -14,11 +14,11 @@ The Avatar uses the `<NuxtImg>` component when [`@nuxt/image`](https://github.co
 </template>
 ```
 
-<note>
+> [!NOTE]
+> You can pass any property from the HTML `<img>` element such as `alt`, `loading`, etc.
 
-You can pass any property from the HTML `<img>` element such as `alt`, `loading`, etc.
-
-</note>
+> [!TIP]
+> To opt-out of `@nuxt/image`, use the `as` prop: `:as="{ img: 'img' }"`.
 
 ### Src
 
@@ -40,11 +40,8 @@ Use the `size` prop to set the size of the Avatar.
 </template>
 ```
 
-<note>
-
-The `<img>` element's `width` and `height` are automatically set based on the `size` prop.
-
-</note>
+> [!NOTE]
+> The `<img>` element's `width` and `height` are automatically set based on the `size` prop.
 
 ### Icon
 
@@ -76,11 +73,8 @@ When no icon or text is provided, the **initials** of the `alt` prop is used as 
 </template>
 ```
 
-<note>
-
-The `alt` prop is passed to the `img` element as the `alt` attribute.
-
-</note>
+> [!NOTE]
+> The `alt` prop is passed to the `img` element as the `alt` attribute.
 
 ### Chip
 
@@ -143,12 +137,12 @@ interface AvatarProps {
   as?: any;
   src?: string | undefined;
   alt?: string | undefined;
-  icon?: string | object | undefined;
+  icon?: any;
   text?: string | undefined;
-  size?: "2xs" | "xs" | "sm" | "md" | "lg" | "xl" | "3xs" | "2xl" | "3xl" | undefined;
+  size?: "md" | "xs" | "sm" | "lg" | "xl" | "3xs" | "2xs" | "2xl" | "3xl" | undefined;
   chip?: boolean | ChipProps | undefined;
   ui?: { root?: ClassNameValue; image?: ClassNameValue; fallback?: ClassNameValue; icon?: ClassNameValue; } | undefined;
-  loading?: "lazy" | "eager" | undefined;
+  loading?: "eager" | "lazy" | undefined;
   referrerpolicy?: HTMLAttributeReferrerPolicy | undefined;
   crossorigin?: "" | "anonymous" | "use-credentials" | undefined;
   decoding?: "async" | "auto" | "sync" | undefined;
@@ -160,11 +154,9 @@ interface AvatarProps {
 }
 ```
 
-<callout icon="i-simple-icons-mdnwebdocs" target="_blank" to="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attributes">
-
-This component also supports all native `<img>` HTML attributes.
-
-</callout>
+> [!NOTE]
+> See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attributes
+> This component also supports all native `<img>` HTML attributes.
 
 ## Theme
 
@@ -219,8 +211,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/data2vec.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/data2vec.md
 
 # Data2Vec
 
@@ -29,9 +29,9 @@ The original code for vision can be found [here](https://github.com/facebookrese
 ## Usage tips
 
 - Data2VecAudio, Data2VecText, and Data2VecVision have all been trained using the same self-supervised learning method.
-- For Data2VecAudio, preprocessing is identical to [Wav2Vec2Model](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2#transformers.Wav2Vec2Model), including feature extraction
-- For Data2VecText, preprocessing is identical to [RobertaModel](/docs/transformers/v5.0.0rc1/en/model_doc/roberta#transformers.RobertaModel), including tokenization.
-- For Data2VecVision, preprocessing is identical to [BeitModel](/docs/transformers/v5.0.0rc1/en/model_doc/beit#transformers.BeitModel), including feature extraction.
+- For Data2VecAudio, preprocessing is identical to [Wav2Vec2Model](/docs/transformers/v5.0.0/en/model_doc/wav2vec2#transformers.Wav2Vec2Model), including feature extraction
+- For Data2VecText, preprocessing is identical to [RobertaModel](/docs/transformers/v5.0.0/en/model_doc/roberta#transformers.RobertaModel), including tokenization.
+- For Data2VecVision, preprocessing is identical to [BeitModel](/docs/transformers/v5.0.0/en/model_doc/beit#transformers.BeitModel), including feature extraction.
 
 ### Using Scaled Dot Product Attention (SDPA)
 
@@ -77,7 +77,7 @@ inference:
 
 A list of official Hugging Face and community (indicated by 🌎) resources to help you get started with Data2Vec.
 
-- [Data2VecVisionForImageClassification](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecVisionForImageClassification) is supported by this [example script](https://github.com/huggingface/transformers/tree/main/examples/pytorch/image-classification) and [notebook](https://colab.research.google.com/github/huggingface/notebooks/blob/main/examples/image_classification.ipynb).
+- [Data2VecVisionForImageClassification](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecVisionForImageClassification) is supported by this [example script](https://github.com/huggingface/transformers/tree/main/examples/pytorch/image-classification) and [notebook](https://colab.research.google.com/github/huggingface/notebooks/blob/main/examples/image_classification.ipynb).
 
 **Data2VecText documentation resources**
 
@@ -104,15 +104,15 @@ If you're interested in submitting a resource to be included here, please feel f
 
 #### transformers.Data2VecTextConfig[[transformers.Data2VecTextConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/configuration_data2vec_text.py#L24)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/configuration_data2vec_text.py#L23)
 
-This is the configuration class to store the configuration of a [Data2VecTextModel](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecTextModel) and [Data2VecTextModel](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecTextModel). It
+This is the configuration class to store the configuration of a [Data2VecTextModel](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecTextModel) and [Data2VecTextModel](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecTextModel). It
 is used to instantiate a Data2VecText model according to the specified arguments, defining the model architecture.
 Instantiating a configuration with the defaults will yield a similar configuration to that of the Data2VecText
 [facebook/data2vec-text-base](https://huggingface.co/facebook/data2vec-text-base) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Examples:
 
@@ -165,15 +165,15 @@ classifier_dropout (`float`, *optional*) : The dropout ratio for the classificat
 
 #### transformers.Data2VecAudioConfig[[transformers.Data2VecAudioConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/configuration_data2vec_audio.py#L26)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/configuration_data2vec_audio.py#L25)
 
-This is the configuration class to store the configuration of a [Data2VecAudioModel](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecAudioModel). It is used to instantiate
+This is the configuration class to store the configuration of a [Data2VecAudioModel](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecAudioModel). It is used to instantiate
 an Data2VecAudio model according to the specified arguments, defining the model architecture. Instantiating a
 configuration with the defaults will yield a similar configuration to that of the Data2VecAudio
 [facebook/data2vec-audio-base-960h](https://huggingface.co/facebook/data2vec-audio-base-960h) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -192,7 +192,7 @@ Example:
 
 **Parameters:**
 
-vocab_size (`int`, *optional*, defaults to 32) : Vocabulary size of the Data2VecAudio model. Defines the number of different tokens that can be represented by the `inputs_ids` passed when calling [Data2VecAudioModel](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecAudioModel). Vocabulary size of the model. Defines the different tokens that can be represented by the *inputs_ids* passed to the forward method of [Data2VecAudioModel](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecAudioModel).
+vocab_size (`int`, *optional*, defaults to 32) : Vocabulary size of the Data2VecAudio model. Defines the number of different tokens that can be represented by the `inputs_ids` passed when calling [Data2VecAudioModel](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecAudioModel). Vocabulary size of the model. Defines the different tokens that can be represented by the *inputs_ids* passed to the forward method of [Data2VecAudioModel](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecAudioModel).
 
 hidden_size (`int`, *optional*, defaults to 768) : Dimensionality of the encoder layers and the pooler layer.
 
@@ -210,7 +210,7 @@ activation_dropout (`float`, *optional*, defaults to 0.1) : The dropout ratio fo
 
 attention_dropout (`float`, *optional*, defaults to 0.1) : The dropout ratio for the attention probabilities.
 
-final_dropout (`float`, *optional*, defaults to 0.1) : The dropout probability for the final projection layer of [Data2VecAudioForCTC](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecAudioForCTC).
+final_dropout (`float`, *optional*, defaults to 0.1) : The dropout probability for the final projection layer of [Data2VecAudioForCTC](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecAudioForCTC).
 
 layerdrop (`float`, *optional*, defaults to 0.1) : The LayerDrop probability. See the [LayerDrop paper](see https://huggingface.co/papers/1909.11556) for more details.
 
@@ -310,11 +310,11 @@ semantic_loss_ignore_index (`int`, *optional*, defaults to 255) : The index that
 
 #### transformers.Data2VecAudioModel[[transformers.Data2VecAudioModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/modeling_data2vec_audio.py#L677)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/modeling_data2vec_audio.py#L673)
 
 The bare Data2Vec Audio Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -322,11 +322,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Data2VecAudioModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/modeling_data2vec_audio.py#L748[{"name": "input_values", "val": ": typing.Optional[torch.Tensor]"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "mask_time_indices", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **input_values** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.Data2VecAudioModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/modeling_data2vec_audio.py#L744[{"name": "input_values", "val": ": torch.Tensor | None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "mask_time_indices", "val": ": torch.FloatTensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **input_values** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Float values of input raw speech waveform. Values can be obtained by loading a `.flac` or `.wav` audio file
   into an array of type `list[float]`, a `numpy.ndarray` or a `torch.Tensor`, *e.g.* via the torchcodec library
   (`pip install torchcodec`) or the soundfile library (`pip install soundfile`).
-  To prepare the array into `input_values`, the [AutoProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoProcessor) should be used for padding and conversion
+  To prepare the array into `input_values`, the [AutoProcessor](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoProcessor) should be used for padding and conversion
   into a tensor of type `torch.FloatTensor`. See `processor_class.__call__` for details.
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Mask to avoid performing attention on padding token indices. Mask values selected in `[0, 1]`:
@@ -345,9 +345,9 @@ forwardtransformers.Data2VecAudioModel.forwardhttps://github.com/huggingface/tra
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.Wav2Vec2BaseModelOutput](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2#transformers.modeling_outputs.Wav2Vec2BaseModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.Wav2Vec2BaseModelOutput](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2#transformers.modeling_outputs.Wav2Vec2BaseModelOutput) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.Wav2Vec2BaseModelOutput](/docs/transformers/v5.0.0/en/model_doc/wav2vec2#transformers.modeling_outputs.Wav2Vec2BaseModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.Wav2Vec2BaseModelOutput](/docs/transformers/v5.0.0/en/model_doc/wav2vec2#transformers.modeling_outputs.Wav2Vec2BaseModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Data2VecAudioConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecAudioConfig)) and inputs.
+elements depending on the configuration ([Data2VecAudioConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecAudioConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **extract_features** (`torch.FloatTensor` of shape `(batch_size, sequence_length, conv_dim[-1])`) -- Sequence of extracted feature vectors of the last convolutional layer of the model.
@@ -360,7 +360,7 @@ elements depending on the configuration ([Data2VecAudioConfig](/docs/transformer
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [Data2VecAudioModel](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecAudioModel) forward method, overrides the `__call__` special method.
+The [Data2VecAudioModel](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecAudioModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -368,15 +368,15 @@ the latter silently ignores them.
 
 **Parameters:**
 
-config ([Data2VecAudioConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecAudioConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Data2VecAudioConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecAudioConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.Wav2Vec2BaseModelOutput](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2#transformers.modeling_outputs.Wav2Vec2BaseModelOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.Wav2Vec2BaseModelOutput](/docs/transformers/v5.0.0/en/model_doc/wav2vec2#transformers.modeling_outputs.Wav2Vec2BaseModelOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.Wav2Vec2BaseModelOutput](/docs/transformers/v5.0.0rc1/en/model_doc/wav2vec2#transformers.modeling_outputs.Wav2Vec2BaseModelOutput) or a tuple of
+A [transformers.modeling_outputs.Wav2Vec2BaseModelOutput](/docs/transformers/v5.0.0/en/model_doc/wav2vec2#transformers.modeling_outputs.Wav2Vec2BaseModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Data2VecAudioConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecAudioConfig)) and inputs.
+elements depending on the configuration ([Data2VecAudioConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecAudioConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **extract_features** (`torch.FloatTensor` of shape `(batch_size, sequence_length, conv_dim[-1])`) -- Sequence of extracted feature vectors of the last convolutional layer of the model.
@@ -394,11 +394,11 @@ elements depending on the configuration ([Data2VecAudioConfig](/docs/transformer
 
 #### transformers.Data2VecAudioForAudioFrameClassification[[transformers.Data2VecAudioForAudioFrameClassification]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/modeling_data2vec_audio.py#L1035)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/modeling_data2vec_audio.py#L1031)
 
 The Data2Vec Audio Model with a frame classification head on top for tasks like Speaker Diarization.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -406,11 +406,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Data2VecAudioForAudioFrameClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/modeling_data2vec_audio.py#L1067[{"name": "input_values", "val": ": typing.Optional[torch.Tensor]"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **input_values** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`) --
+forwardtransformers.Data2VecAudioForAudioFrameClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/modeling_data2vec_audio.py#L1063[{"name": "input_values", "val": ": torch.Tensor | None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "labels", "val": ": torch.Tensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **input_values** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`) --
   Float values of input raw speech waveform. Values can be obtained by loading a `.flac` or `.wav` audio file
   into an array of type `list[float]`, a `numpy.ndarray` or a `torch.Tensor`, *e.g.* via the torchcodec library
   (`pip install torchcodec`) or the soundfile library (`pip install soundfile`).
-  To prepare the array into `input_values`, the [AutoProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoProcessor) should be used for padding and conversion
+  To prepare the array into `input_values`, the [AutoProcessor](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoProcessor) should be used for padding and conversion
   into a tensor of type `torch.FloatTensor`. See `Data2VecAudioProcessor.__call__` for details.
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Mask to avoid performing attention on padding token indices. Mask values selected in `[0, 1]`:
@@ -430,9 +430,9 @@ forwardtransformers.Data2VecAudioForAudioFrameClassification.forwardhttps://gith
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Data2VecAudioConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecAudioConfig)) and inputs.
+elements depending on the configuration ([Data2VecAudioConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecAudioConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided)  -- Classification loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.num_labels)`) -- Classification scores (before SoftMax).
@@ -445,7 +445,7 @@ elements depending on the configuration ([Data2VecAudioConfig](/docs/transformer
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [Data2VecAudioForAudioFrameClassification](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecAudioForAudioFrameClassification) forward method, overrides the `__call__` special method.
+The [Data2VecAudioForAudioFrameClassification](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecAudioForAudioFrameClassification) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -479,15 +479,15 @@ Example:
 
 **Parameters:**
 
-config ([Data2VecAudioForAudioFrameClassification](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecAudioForAudioFrameClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Data2VecAudioForAudioFrameClassification](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecAudioForAudioFrameClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or a tuple of
+A [transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Data2VecAudioConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecAudioConfig)) and inputs.
+elements depending on the configuration ([Data2VecAudioConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecAudioConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided)  -- Classification loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.num_labels)`) -- Classification scores (before SoftMax).
@@ -505,11 +505,11 @@ elements depending on the configuration ([Data2VecAudioConfig](/docs/transformer
 
 #### transformers.Data2VecAudioForCTC[[transformers.Data2VecAudioForCTC]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/modeling_data2vec_audio.py#L816)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/modeling_data2vec_audio.py#L812)
 
 Data2VecAudio Model with a `language modeling` head on top for Connectionist Temporal Classification (CTC).
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -517,11 +517,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Data2VecAudioForCTC.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/modeling_data2vec_audio.py#L851[{"name": "input_values", "val": ": typing.Optional[torch.Tensor]"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "labels", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "**kwargs", "val": ""}]- **input_values** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.Data2VecAudioForCTC.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/modeling_data2vec_audio.py#L847[{"name": "input_values", "val": ": torch.Tensor | None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "labels", "val": ": torch.Tensor | None = None"}, {"name": "**kwargs", "val": ""}]- **input_values** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Float values of input raw speech waveform. Values can be obtained by loading a `.flac` or `.wav` audio file
   into an array of type `list[float]`, a `numpy.ndarray` or a `torch.Tensor`, *e.g.* via the torchcodec library
   (`pip install torchcodec`) or the soundfile library (`pip install soundfile`).
-  To prepare the array into `input_values`, the [AutoProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoProcessor) should be used for padding and conversion
+  To prepare the array into `input_values`, the [AutoProcessor](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoProcessor) should be used for padding and conversion
   into a tensor of type `torch.FloatTensor`. See `processor_class.__call__` for details.
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Mask to avoid performing attention on padding token indices. Mask values selected in `[0, 1]`:
@@ -537,14 +537,14 @@ forwardtransformers.Data2VecAudioForCTC.forwardhttps://github.com/huggingface/tr
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 - **labels** (`torch.LongTensor` of shape `(batch_size, target_length)`, *optional*) --
   Labels for connectionist temporal classification. Note that `target_length` has to be smaller or equal to
   the sequence length of the output logits. Indices are selected in `[-100, 0, ..., config.vocab_size - 1]`.
   All labels set to `-100` are ignored (masked), the loss is only computed for labels in `[0, ...,
-  config.vocab_size - 1]`.0[transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or a tuple of
+  config.vocab_size - 1]`.0[transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Data2VecAudioConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecAudioConfig)) and inputs.
+elements depending on the configuration ([Data2VecAudioConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecAudioConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
@@ -557,7 +557,7 @@ elements depending on the configuration ([Data2VecAudioConfig](/docs/transformer
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [Data2VecAudioForCTC](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecAudioForCTC) forward method, overrides the `__call__` special method.
+The [Data2VecAudioForCTC](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecAudioForCTC) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -598,15 +598,15 @@ Example:
 
 **Parameters:**
 
-config ([Data2VecAudioForCTC](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecAudioForCTC)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([`[Data2VecAudioForCTC](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecAudioForCTC)`]) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained)  method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or a tuple of
+A [transformers.modeling_outputs.CausalLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Data2VecAudioConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecAudioConfig)) and inputs.
+elements depending on the configuration ([Data2VecAudioConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecAudioConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
@@ -624,12 +624,12 @@ elements depending on the configuration ([Data2VecAudioConfig](/docs/transformer
 
 #### transformers.Data2VecAudioForSequenceClassification[[transformers.Data2VecAudioForSequenceClassification]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/modeling_data2vec_audio.py#L930)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/modeling_data2vec_audio.py#L926)
 
 Data2VecAudio Model with a sequence classification head on top (a linear layer over the pooled output) for tasks like
 SUPERB Keyword Spotting.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -637,11 +637,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Data2VecAudioForSequenceClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/modeling_data2vec_audio.py#L963[{"name": "input_values", "val": ": typing.Optional[torch.Tensor]"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "labels", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "**kwargs", "val": ""}]- **input_values** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`) --
+forwardtransformers.Data2VecAudioForSequenceClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/modeling_data2vec_audio.py#L959[{"name": "input_values", "val": ": torch.Tensor | None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "labels", "val": ": torch.Tensor | None = None"}, {"name": "**kwargs", "val": ""}]- **input_values** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`) --
   Float values of input raw speech waveform. Values can be obtained by loading a `.flac` or `.wav` audio file
   into an array of type `list[float]`, a `numpy.ndarray` or a `torch.Tensor`, *e.g.* via the torchcodec library
   (`pip install torchcodec`) or the soundfile library (`pip install soundfile`).
-  To prepare the array into `input_values`, the [AutoProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoProcessor) should be used for padding and conversion
+  To prepare the array into `input_values`, the [AutoProcessor](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoProcessor) should be used for padding and conversion
   into a tensor of type `torch.FloatTensor`. See `Data2VecAudioProcessor.__call__` for details.
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Mask to avoid performing attention on padding token indices. Mask values selected in `[0, 1]`:
@@ -657,13 +657,13 @@ forwardtransformers.Data2VecAudioForSequenceClassification.forwardhttps://github
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 - **labels** (`torch.LongTensor` of shape `(batch_size,)`, *optional*) --
   Labels for computing the sequence classification/regression loss. Indices should be in `[0, ...,
   config.num_labels - 1]`. If `config.num_labels == 1` a regression loss is computed (Mean-Square loss), If
-  `config.num_labels > 1` a classification loss is computed (Cross-Entropy).0[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
+  `config.num_labels > 1` a classification loss is computed (Cross-Entropy).0[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Data2VecAudioConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecAudioConfig)) and inputs.
+elements depending on the configuration ([Data2VecAudioConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecAudioConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).
@@ -676,7 +676,7 @@ elements depending on the configuration ([Data2VecAudioConfig](/docs/transformer
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [Data2VecAudioForSequenceClassification](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecAudioForSequenceClassification) forward method, overrides the `__call__` special method.
+The [Data2VecAudioForSequenceClassification](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecAudioForSequenceClassification) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -740,15 +740,15 @@ Example of multi-label classification:
 
 **Parameters:**
 
-config ([Data2VecAudioForSequenceClassification](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecAudioForSequenceClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Data2VecAudioForSequenceClassification](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecAudioForSequenceClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
+A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Data2VecAudioConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecAudioConfig)) and inputs.
+elements depending on the configuration ([Data2VecAudioConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecAudioConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).
@@ -766,11 +766,11 @@ elements depending on the configuration ([Data2VecAudioConfig](/docs/transformer
 
 #### transformers.Data2VecAudioForXVector[[transformers.Data2VecAudioForXVector]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/modeling_data2vec_audio.py#L1189)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/modeling_data2vec_audio.py#L1185)
 
 Data2VecAudio Model with an XVector feature extraction head on top for tasks like Speaker Verification.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -778,11 +778,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Data2VecAudioForXVector.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/modeling_data2vec_audio.py#L1239[{"name": "input_values", "val": ": typing.Optional[torch.Tensor]"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "labels", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "**kwargs", "val": ""}]- **input_values** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`) --
+forwardtransformers.Data2VecAudioForXVector.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/modeling_data2vec_audio.py#L1235[{"name": "input_values", "val": ": torch.Tensor | None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "labels", "val": ": torch.Tensor | None = None"}, {"name": "**kwargs", "val": ""}]- **input_values** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`) --
   Float values of input raw speech waveform. Values can be obtained by loading a `.flac` or `.wav` audio file
   into an array of type `list[float]`, a `numpy.ndarray` or a `torch.Tensor`, *e.g.* via the torchcodec library
   (`pip install torchcodec`) or the soundfile library (`pip install soundfile`).
-  To prepare the array into `input_values`, the [AutoProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoProcessor) should be used for padding and conversion
+  To prepare the array into `input_values`, the [AutoProcessor](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoProcessor) should be used for padding and conversion
   into a tensor of type `torch.FloatTensor`. See `Data2VecAudioProcessor.__call__` for details.
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Mask to avoid performing attention on padding token indices. Mask values selected in `[0, 1]`:
@@ -798,13 +798,13 @@ forwardtransformers.Data2VecAudioForXVector.forwardhttps://github.com/huggingfac
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 - **labels** (`torch.LongTensor` of shape `(batch_size,)`, *optional*) --
   Labels for computing the sequence classification/regression loss. Indices should be in `[0, ...,
   config.num_labels - 1]`. If `config.num_labels == 1` a regression loss is computed (Mean-Square loss), If
-  `config.num_labels > 1` a classification loss is computed (Cross-Entropy).0[transformers.modeling_outputs.XVectorOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.XVectorOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.XVectorOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.XVectorOutput) or a tuple of
+  `config.num_labels > 1` a classification loss is computed (Cross-Entropy).0[transformers.modeling_outputs.XVectorOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.XVectorOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.XVectorOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.XVectorOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Data2VecAudioConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecAudioConfig)) and inputs.
+elements depending on the configuration ([Data2VecAudioConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecAudioConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.xvector_output_dim)`) -- Classification hidden states before AMSoftmax.
@@ -818,7 +818,7 @@ elements depending on the configuration ([Data2VecAudioConfig](/docs/transformer
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [Data2VecAudioForXVector](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecAudioForXVector) forward method, overrides the `__call__` special method.
+The [Data2VecAudioForXVector](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecAudioForXVector) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -857,15 +857,15 @@ Example:
 
 **Parameters:**
 
-config ([Data2VecAudioForXVector](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecAudioForXVector)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Data2VecAudioForXVector](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecAudioForXVector)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.XVectorOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.XVectorOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.XVectorOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.XVectorOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.XVectorOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.XVectorOutput) or a tuple of
+A [transformers.modeling_outputs.XVectorOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.XVectorOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Data2VecAudioConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecAudioConfig)) and inputs.
+elements depending on the configuration ([Data2VecAudioConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecAudioConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.xvector_output_dim)`) -- Classification hidden states before AMSoftmax.
@@ -884,11 +884,11 @@ elements depending on the configuration ([Data2VecAudioConfig](/docs/transformer
 
 #### transformers.Data2VecTextModel[[transformers.Data2VecTextModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/modeling_data2vec_text.py#L548)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/modeling_data2vec_text.py#L553)
 
 The bare Data2Vec Text Text Model outputting raw hidden-states without any specific head on to.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -896,11 +896,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Data2VecTextModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/modeling_data2vec_text.py#L574[{"name": "input_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "token_type_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "encoder_hidden_states", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "encoder_attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.Data2VecTextModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/modeling_data2vec_text.py#L579[{"name": "input_ids", "val": ": torch.Tensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "token_type_ids", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.Tensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.Tensor | None = None"}, {"name": "encoder_hidden_states", "val": ": torch.Tensor | None = None"}, {"name": "encoder_attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.Tensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -939,8 +939,8 @@ forwardtransformers.Data2VecTextModel.forwardhttps://github.com/huggingface/tran
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -953,9 +953,9 @@ forwardtransformers.Data2VecTextModel.forwardhttps://github.com/huggingface/tran
 - **cache_position** (`torch.Tensor` of shape `(sequence_length)`, *optional*) --
   Indices depicting the position of the input sequence tokens in the sequence. Contrarily to `position_ids`,
   this tensor is not affected by padding. It is used to update the cache in the correct position and to infer
-  the complete sequence length.0[transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions) or a tuple of
+  the complete sequence length.0[transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Data2VecTextConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecTextConfig)) and inputs.
+elements depending on the configuration ([Data2VecTextConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecTextConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
@@ -976,12 +976,12 @@ elements depending on the configuration ([Data2VecTextConfig](/docs/transformers
 
   Attentions weights of the decoder's cross-attention layer, after the attention softmax, used to compute the
   weighted average in the cross-attention heads.
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and optionally if
   `config.is_encoder_decoder=True` in the cross-attention blocks) that can be used (see `past_key_values`
   input) to speed up sequential decoding.
-The [Data2VecTextModel](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecTextModel) forward method, overrides the `__call__` special method.
+The [Data2VecTextModel](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecTextModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -989,17 +989,17 @@ the latter silently ignores them.
 
 **Parameters:**
 
-config ([Data2VecTextModel](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecTextModel)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Data2VecTextModel](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecTextModel)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 add_pooling_layer (`bool`, *optional*, defaults to `True`) : Whether to add a pooling layer
 
 **Returns:**
 
-`[transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions) or a tuple of
+A [transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPoolingAndCrossAttentions) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Data2VecTextConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecTextConfig)) and inputs.
+elements depending on the configuration ([Data2VecTextConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecTextConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
@@ -1020,7 +1020,7 @@ elements depending on the configuration ([Data2VecTextConfig](/docs/transformers
 
   Attentions weights of the decoder's cross-attention layer, after the attention softmax, used to compute the
   weighted average in the cross-attention heads.
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks and optionally if
   `config.is_encoder_decoder=True` in the cross-attention blocks) that can be used (see `past_key_values`
@@ -1030,11 +1030,11 @@ elements depending on the configuration ([Data2VecTextConfig](/docs/transformers
 
 #### transformers.Data2VecTextForCausalLM[[transformers.Data2VecTextForCausalLM]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/modeling_data2vec_text.py#L737)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/modeling_data2vec_text.py#L742)
 
 Data2VecText Model with a `language modeling` head on top for CLM fine-tuning.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -1042,11 +1042,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Data2VecTextForCausalLM.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/modeling_data2vec_text.py#L761[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "token_type_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "encoder_hidden_states", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "encoder_attention_mask", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "past_key_values", "val": ": typing.Optional[tuple[tuple[torch.FloatTensor]]] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "logits_to_keep", "val": ": typing.Union[int, torch.Tensor] = 0"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.Data2VecTextForCausalLM.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/modeling_data2vec_text.py#L766[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.FloatTensor | None = None"}, {"name": "token_type_ids", "val": ": torch.LongTensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "encoder_hidden_states", "val": ": torch.FloatTensor | None = None"}, {"name": "encoder_attention_mask", "val": ": torch.FloatTensor | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "past_key_values", "val": ": tuple[tuple[torch.FloatTensor]] | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.Tensor | None = None"}, {"name": "logits_to_keep", "val": ": int | torch.Tensor = 0"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -1084,13 +1084,13 @@ forwardtransformers.Data2VecTextForCausalLM.forwardhttps://github.com/huggingfac
   Labels for computing the left-to-right language modeling loss (next word prediction). Indices should be in
   `[-100, 0, ..., config.vocab_size]` (see `input_ids` docstring) Tokens with indices set to `-100` are
   ignored (masked), the loss is only computed for the tokens with labels in `[0, ..., config.vocab_size]`
-- **past_key_values** (`tuple[tuple[torch.FloatTensor]]`, *optional*) --
+- **past_key_values** (`tuple`, *optional*) --
   Pre-computed hidden-states (key and values in the self-attention blocks and in the cross-attention
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -1104,14 +1104,14 @@ forwardtransformers.Data2VecTextForCausalLM.forwardhttps://github.com/huggingfac
   Indices depicting the position of the input sequence tokens in the sequence. Contrarily to `position_ids`,
   this tensor is not affected by padding. It is used to update the cache in the correct position and to infer
   the complete sequence length.
-- **logits_to_keep** (`Union[int, torch.Tensor]`, defaults to `0`) --
+- **logits_to_keep** (`Union[int, torch.Tensor]`, *optional*, defaults to `0`) --
   If an `int`, compute logits for the last `logits_to_keep` tokens. If `0`, calculate logits for all
   `input_ids` (special case). Only last token logits are needed for generation, and calculating them only for that
   token can save memory, which becomes pretty significant for long sequences or large vocabulary size.
   If a `torch.Tensor`, must be 1D corresponding to the indices to keep in the sequence length dimension.
-  This is useful when using packed tensor format (single dimension for batch and sequence length).0[transformers.modeling_outputs.CausalLMOutputWithCrossAttentions](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithCrossAttentions) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.CausalLMOutputWithCrossAttentions](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithCrossAttentions) or a tuple of
+  This is useful when using packed tensor format (single dimension for batch and sequence length).0[transformers.modeling_outputs.CausalLMOutputWithCrossAttentions](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithCrossAttentions) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.CausalLMOutputWithCrossAttentions](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithCrossAttentions) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Data2VecTextConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecTextConfig)) and inputs.
+elements depending on the configuration ([Data2VecTextConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecTextConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
@@ -1129,11 +1129,11 @@ elements depending on the configuration ([Data2VecTextConfig](/docs/transformers
 
   Cross attentions weights after the attention softmax, used to compute the weighted average in the
   cross-attention heads.
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.
-The [Data2VecTextForCausalLM](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecTextForCausalLM) forward method, overrides the `__call__` special method.
+The [Data2VecTextForCausalLM](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecTextForCausalLM) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -1158,15 +1158,15 @@ Example:
 
 **Parameters:**
 
-config ([Data2VecTextForCausalLM](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecTextForCausalLM)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Data2VecTextForCausalLM](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecTextForCausalLM)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.CausalLMOutputWithCrossAttentions](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithCrossAttentions) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.CausalLMOutputWithCrossAttentions](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithCrossAttentions) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.CausalLMOutputWithCrossAttentions](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithCrossAttentions) or a tuple of
+A [transformers.modeling_outputs.CausalLMOutputWithCrossAttentions](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithCrossAttentions) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Data2VecTextConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecTextConfig)) and inputs.
+elements depending on the configuration ([Data2VecTextConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecTextConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
@@ -1184,7 +1184,7 @@ elements depending on the configuration ([Data2VecTextConfig](/docs/transformers
 
   Cross attentions weights after the attention softmax, used to compute the weighted average in the
   cross-attention heads.
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.
@@ -1193,11 +1193,11 @@ elements depending on the configuration ([Data2VecTextConfig](/docs/transformers
 
 #### transformers.Data2VecTextForMaskedLM[[transformers.Data2VecTextForMaskedLM]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/modeling_data2vec_text.py#L839)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/modeling_data2vec_text.py#L844)
 
 The Data2Vec Text Model with a `language modeling` head on top."
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -1205,11 +1205,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Data2VecTextForMaskedLM.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/modeling_data2vec_text.py#L866[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "token_type_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "encoder_hidden_states", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "encoder_attention_mask", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.Data2VecTextForMaskedLM.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/modeling_data2vec_text.py#L871[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.FloatTensor | None = None"}, {"name": "token_type_ids", "val": ": torch.LongTensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "encoder_hidden_states", "val": ": torch.FloatTensor | None = None"}, {"name": "encoder_attention_mask", "val": ": torch.FloatTensor | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -1246,9 +1246,9 @@ forwardtransformers.Data2VecTextForMaskedLM.forwardhttps://github.com/huggingfac
 - **labels** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Labels for computing the masked language modeling loss. Indices should be in `[-100, 0, ...,
   config.vocab_size]` (see `input_ids` docstring) Tokens with indices set to `-100` are ignored (masked), the
-  loss is only computed for the tokens with labels in `[0, ..., config.vocab_size]`0[transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or a tuple of
+  loss is only computed for the tokens with labels in `[0, ..., config.vocab_size]`0[transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Data2VecTextConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecTextConfig)) and inputs.
+elements depending on the configuration ([Data2VecTextConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecTextConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Masked language modeling (MLM) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
@@ -1261,7 +1261,7 @@ elements depending on the configuration ([Data2VecTextConfig](/docs/transformers
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [Data2VecTextForMaskedLM](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecTextForMaskedLM) forward method, overrides the `__call__` special method.
+The [Data2VecTextForMaskedLM](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecTextForMaskedLM) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -1299,15 +1299,15 @@ Example:
 
 **Parameters:**
 
-config ([Data2VecTextForMaskedLM](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecTextForMaskedLM)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Data2VecTextForMaskedLM](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecTextForMaskedLM)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or a tuple of
+A [transformers.modeling_outputs.MaskedLMOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MaskedLMOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Data2VecTextConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecTextConfig)) and inputs.
+elements depending on the configuration ([Data2VecTextConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecTextConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Masked language modeling (MLM) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
@@ -1325,12 +1325,12 @@ elements depending on the configuration ([Data2VecTextConfig](/docs/transformers
 
 #### transformers.Data2VecTextForSequenceClassification[[transformers.Data2VecTextForSequenceClassification]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/modeling_data2vec_text.py#L921)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/modeling_data2vec_text.py#L926)
 
 Data2VecText Model transformer with a sequence classification/regression head on top (a linear layer on top of the
 pooled output) e.g. for GLUE tasks.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -1338,11 +1338,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Data2VecTextForSequenceClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/modeling_data2vec_text.py#L933[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "token_type_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.Data2VecTextForSequenceClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/modeling_data2vec_text.py#L938[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.FloatTensor | None = None"}, {"name": "token_type_ids", "val": ": torch.LongTensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -1370,9 +1370,9 @@ forwardtransformers.Data2VecTextForSequenceClassification.forwardhttps://github.
 - **labels** (`torch.LongTensor` of shape `(batch_size,)`, *optional*) --
   Labels for computing the sequence classification/regression loss. Indices should be in `[0, ...,
   config.num_labels - 1]`. If `config.num_labels == 1` a regression loss is computed (Mean-Square loss), If
-  `config.num_labels > 1` a classification loss is computed (Cross-Entropy).0[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
+  `config.num_labels > 1` a classification loss is computed (Cross-Entropy).0[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Data2VecTextConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecTextConfig)) and inputs.
+elements depending on the configuration ([Data2VecTextConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecTextConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).
@@ -1385,7 +1385,7 @@ elements depending on the configuration ([Data2VecTextConfig](/docs/transformers
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [Data2VecTextForSequenceClassification](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecTextForSequenceClassification) forward method, overrides the `__call__` special method.
+The [Data2VecTextForSequenceClassification](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecTextForSequenceClassification) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -1449,15 +1449,15 @@ Example of multi-label classification:
 
 **Parameters:**
 
-config ([Data2VecTextForSequenceClassification](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecTextForSequenceClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Data2VecTextForSequenceClassification](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecTextForSequenceClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
+A [transformers.modeling_outputs.SequenceClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SequenceClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Data2VecTextConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecTextConfig)) and inputs.
+elements depending on the configuration ([Data2VecTextConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecTextConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).
@@ -1475,12 +1475,12 @@ elements depending on the configuration ([Data2VecTextConfig](/docs/transformers
 
 #### transformers.Data2VecTextForMultipleChoice[[transformers.Data2VecTextForMultipleChoice]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/modeling_data2vec_text.py#L997)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/modeling_data2vec_text.py#L1002)
 
 The Data2Vec Text Model with a multiple choice classification head on top (a linear layer on top of the pooled output and a
 softmax) e.g. for RocStories/SWAG tasks.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -1488,11 +1488,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Data2VecTextForMultipleChoice.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/modeling_data2vec_text.py#L1008[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "token_type_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, num_choices, sequence_length)`) --
+forwardtransformers.Data2VecTextForMultipleChoice.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/modeling_data2vec_text.py#L1013[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "token_type_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.FloatTensor | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, num_choices, sequence_length)`) --
   Indices of input sequence tokens in the vocabulary.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **token_type_ids** (`torch.LongTensor` of shape `(batch_size, num_choices, sequence_length)`, *optional*) --
@@ -1522,9 +1522,9 @@ forwardtransformers.Data2VecTextForMultipleChoice.forwardhttps://github.com/hugg
 - **inputs_embeds** (`torch.FloatTensor` of shape `(batch_size, num_choices, sequence_length, hidden_size)`, *optional*) --
   Optionally, instead of passing `input_ids` you can choose to directly pass an embedded representation. This
   is useful if you want more control over how to convert `input_ids` indices into associated vectors than the
-  model's internal embedding lookup matrix.0[transformers.modeling_outputs.MultipleChoiceModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MultipleChoiceModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.MultipleChoiceModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MultipleChoiceModelOutput) or a tuple of
+  model's internal embedding lookup matrix.0[transformers.modeling_outputs.MultipleChoiceModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MultipleChoiceModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.MultipleChoiceModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MultipleChoiceModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Data2VecTextConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecTextConfig)) and inputs.
+elements depending on the configuration ([Data2VecTextConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecTextConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape *(1,)*, *optional*, returned when `labels` is provided) -- Classification loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, num_choices)`) -- *num_choices* is the second dimension of the input tensors. (see *input_ids* above).
@@ -1539,7 +1539,7 @@ elements depending on the configuration ([Data2VecTextConfig](/docs/transformers
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [Data2VecTextForMultipleChoice](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecTextForMultipleChoice) forward method, overrides the `__call__` special method.
+The [Data2VecTextForMultipleChoice](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecTextForMultipleChoice) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -1569,15 +1569,15 @@ Example:
 
 **Parameters:**
 
-config ([Data2VecTextForMultipleChoice](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecTextForMultipleChoice)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Data2VecTextForMultipleChoice](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecTextForMultipleChoice)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.MultipleChoiceModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MultipleChoiceModelOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.MultipleChoiceModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MultipleChoiceModelOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.MultipleChoiceModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.MultipleChoiceModelOutput) or a tuple of
+A [transformers.modeling_outputs.MultipleChoiceModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.MultipleChoiceModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Data2VecTextConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecTextConfig)) and inputs.
+elements depending on the configuration ([Data2VecTextConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecTextConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape *(1,)*, *optional*, returned when `labels` is provided) -- Classification loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, num_choices)`) -- *num_choices* is the second dimension of the input tensors. (see *input_ids* above).
@@ -1597,12 +1597,12 @@ elements depending on the configuration ([Data2VecTextConfig](/docs/transformers
 
 #### transformers.Data2VecTextForTokenClassification[[transformers.Data2VecTextForTokenClassification]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/modeling_data2vec_text.py#L1093)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/modeling_data2vec_text.py#L1098)
 
 The Data2Vec Text transformer with a token classification head on top (a linear layer on top of the hidden-states
 output) e.g. for Named-Entity-Recognition (NER) tasks.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -1610,11 +1610,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Data2VecTextForTokenClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/modeling_data2vec_text.py#L1108[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "token_type_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.Data2VecTextForTokenClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/modeling_data2vec_text.py#L1113[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.FloatTensor | None = None"}, {"name": "token_type_ids", "val": ": torch.LongTensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -1640,9 +1640,9 @@ forwardtransformers.Data2VecTextForTokenClassification.forwardhttps://github.com
   is useful if you want more control over how to convert `input_ids` indices into associated vectors than the
   model's internal embedding lookup matrix.
 - **labels** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
-  Labels for computing the token classification loss. Indices should be in `[0, ..., config.num_labels - 1]`.0[transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or a tuple of
+  Labels for computing the token classification loss. Indices should be in `[0, ..., config.num_labels - 1]`.0[transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Data2VecTextConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecTextConfig)) and inputs.
+elements depending on the configuration ([Data2VecTextConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecTextConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided)  -- Classification loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.num_labels)`) -- Classification scores (before SoftMax).
@@ -1655,7 +1655,7 @@ elements depending on the configuration ([Data2VecTextConfig](/docs/transformers
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [Data2VecTextForTokenClassification](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecTextForTokenClassification) forward method, overrides the `__call__` special method.
+The [Data2VecTextForTokenClassification](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecTextForTokenClassification) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -1694,15 +1694,15 @@ Example:
 
 **Parameters:**
 
-config ([Data2VecTextForTokenClassification](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecTextForTokenClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Data2VecTextForTokenClassification](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecTextForTokenClassification)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or a tuple of
+A [transformers.modeling_outputs.TokenClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.TokenClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Data2VecTextConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecTextConfig)) and inputs.
+elements depending on the configuration ([Data2VecTextConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecTextConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided)  -- Classification loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.num_labels)`) -- Classification scores (before SoftMax).
@@ -1720,12 +1720,12 @@ elements depending on the configuration ([Data2VecTextConfig](/docs/transformers
 
 #### transformers.Data2VecTextForQuestionAnswering[[transformers.Data2VecTextForQuestionAnswering]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/modeling_data2vec_text.py#L1155)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/modeling_data2vec_text.py#L1160)
 
 The Data2Vec Text transformer with a span classification head on top for extractive question-answering tasks like
 SQuAD (a linear layer on top of the hidden-states output to compute `span start logits` and `span end logits`).
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -1733,11 +1733,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Data2VecTextForQuestionAnswering.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/modeling_data2vec_text.py#L1166[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "token_type_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "start_positions", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "end_positions", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.Data2VecTextForQuestionAnswering.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/modeling_data2vec_text.py#L1171[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.FloatTensor | None = None"}, {"name": "token_type_ids", "val": ": torch.LongTensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "start_positions", "val": ": torch.LongTensor | None = None"}, {"name": "end_positions", "val": ": torch.LongTensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -1769,9 +1769,9 @@ forwardtransformers.Data2VecTextForQuestionAnswering.forwardhttps://github.com/h
 - **end_positions** (`torch.LongTensor` of shape `(batch_size,)`, *optional*) --
   Labels for position (index) of the end of the labelled span for computing the token classification loss.
   Positions are clamped to the length of the sequence (`sequence_length`). Position outside of the sequence
-  are not taken into account for computing the loss.0[transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or a tuple of
+  are not taken into account for computing the loss.0[transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Data2VecTextConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecTextConfig)) and inputs.
+elements depending on the configuration ([Data2VecTextConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecTextConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Total span extraction loss is the sum of a Cross-Entropy for the start and end positions.
 - **start_logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`) -- Span-start scores (before SoftMax).
@@ -1785,7 +1785,7 @@ elements depending on the configuration ([Data2VecTextConfig](/docs/transformers
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [Data2VecTextForQuestionAnswering](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecTextForQuestionAnswering) forward method, overrides the `__call__` special method.
+The [Data2VecTextForQuestionAnswering](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecTextForQuestionAnswering) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -1825,15 +1825,15 @@ Example:
 
 **Parameters:**
 
-config ([Data2VecTextForQuestionAnswering](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecTextForQuestionAnswering)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Data2VecTextForQuestionAnswering](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecTextForQuestionAnswering)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or a tuple of
+A [transformers.modeling_outputs.QuestionAnsweringModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.QuestionAnsweringModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Data2VecTextConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecTextConfig)) and inputs.
+elements depending on the configuration ([Data2VecTextConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecTextConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Total span extraction loss is the sum of a Cross-Entropy for the start and end positions.
 - **start_logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`) -- Span-start scores (before SoftMax).
@@ -1852,11 +1852,11 @@ elements depending on the configuration ([Data2VecTextConfig](/docs/transformers
 
 #### transformers.Data2VecVisionModel[[transformers.Data2VecVisionModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/modeling_data2vec_vision.py#L712)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/modeling_data2vec_vision.py#L711)
 
 The bare Data2Vec Vision Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -1864,10 +1864,10 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Data2VecVisionModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/modeling_data2vec_vision.py#L735[{"name": "pixel_values", "val": ": Tensor"}, {"name": "bool_masked_pos", "val": ": typing.Optional[torch.BoolTensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "interpolate_pos_encoding", "val": ": bool = False"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`) --
+forwardtransformers.Data2VecVisionModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/modeling_data2vec_vision.py#L734[{"name": "pixel_values", "val": ": Tensor"}, {"name": "bool_masked_pos", "val": ": torch.BoolTensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "interpolate_pos_encoding", "val": ": bool = False"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [BeitImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/beit#transformers.BeitImageProcessor). See `BeitImageProcessor.__call__()` for details (`processor_class` uses
-  [BeitImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/beit#transformers.BeitImageProcessor) for processing images).
+  [BeitImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/beit#transformers.BeitImageProcessorFast). See [BeitImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details (`processor_class` uses
+  [BeitImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/beit#transformers.BeitImageProcessorFast) for processing images).
 - **bool_masked_pos** (`torch.BoolTensor` of shape `(batch_size, num_patches)`, *optional*) --
   Boolean masked positions. Indicates which patches are masked (1) and which aren't (0).
 - **output_attentions** (`bool`, *optional*) --
@@ -1876,27 +1876,25 @@ forwardtransformers.Data2VecVisionModel.forwardhttps://github.com/huggingface/tr
 - **output_hidden_states** (`bool`, *optional*) --
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
-- **interpolate_pos_encoding** (`bool`, defaults to `False`) --
+- **interpolate_pos_encoding** (`bool`, *optional*, defaults to `False`) --
   Whether to interpolate the pre-trained position encodings.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0`transformers.models.data2vec.modeling_data2vec_vision.Data2VecVisionModelOutputWithPooling` or `tuple(torch.FloatTensor)`A `transformers.models.data2vec.modeling_data2vec_vision.Data2VecVisionModelOutputWithPooling` or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0`transformers.models.data2vec.modeling_data2vec_vision.Data2VecVisionModelOutputWithPooling` or `tuple(torch.FloatTensor)`A `transformers.models.data2vec.modeling_data2vec_vision.Data2VecVisionModelOutputWithPooling` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Data2VecVisionConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecVisionConfig)) and inputs.
+elements depending on the configuration ([Data2VecVisionConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecVisionConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) -- Sequence of hidden-states at the output of the last layer of the model.
-- **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Average of the last layer hidden states of the patch tokens (excluding the *[CLS]* token) if
-  *config.use_mean_pooling* is set to True. If set to False, then the final hidden state of the *[CLS]* token
-  will be returned.
-- **hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`, *optional*) -- Last layer hidden-state after a pooling operation on the spatial dimensions.
+- **hidden_states** (`tuple`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [Data2VecVisionModel](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecVisionModel) forward method, overrides the `__call__` special method.
+The [Data2VecVisionModel](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecVisionModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -1909,7 +1907,7 @@ Example:
 
 **Parameters:**
 
-config ([Data2VecVisionConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecVisionConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Data2VecVisionConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecVisionConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 add_pooling_layer (`bool`, *optional*, defaults to `False`) : Whether to add a pooling layer
 
@@ -1919,17 +1917,15 @@ add_pooling_layer (`bool`, *optional*, defaults to `False`) : Whether to add a p
 
 A `transformers.models.data2vec.modeling_data2vec_vision.Data2VecVisionModelOutputWithPooling` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Data2VecVisionConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecVisionConfig)) and inputs.
+elements depending on the configuration ([Data2VecVisionConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecVisionConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) -- Sequence of hidden-states at the output of the last layer of the model.
-- **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Average of the last layer hidden states of the patch tokens (excluding the *[CLS]* token) if
-  *config.use_mean_pooling* is set to True. If set to False, then the final hidden state of the *[CLS]* token
-  will be returned.
-- **hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`, *optional*) -- Last layer hidden-state after a pooling operation on the spatial dimensions.
+- **hidden_states** (`tuple`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
@@ -1939,12 +1935,12 @@ elements depending on the configuration ([Data2VecVisionConfig](/docs/transforme
 
 #### transformers.Data2VecVisionForImageClassification[[transformers.Data2VecVisionForImageClassification]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/modeling_data2vec_vision.py#L810)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/modeling_data2vec_vision.py#L809)
 
 Data2VecVision Model transformer with an image classification head on top (a linear layer on top of the average of
 the final hidden states of the patch tokens) e.g. for ImageNet.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -1952,10 +1948,10 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Data2VecVisionForImageClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/modeling_data2vec_vision.py#L823[{"name": "pixel_values", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "interpolate_pos_encoding", "val": ": bool = False"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
+forwardtransformers.Data2VecVisionForImageClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/modeling_data2vec_vision.py#L822[{"name": "pixel_values", "val": ": torch.Tensor | None = None"}, {"name": "labels", "val": ": torch.Tensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "interpolate_pos_encoding", "val": ": bool = False"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [BeitImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/beit#transformers.BeitImageProcessor). See `BeitImageProcessor.__call__()` for details (`processor_class` uses
-  [BeitImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/beit#transformers.BeitImageProcessor) for processing images).
+  [BeitImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/beit#transformers.BeitImageProcessorFast). See [BeitImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details (`processor_class` uses
+  [BeitImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/beit#transformers.BeitImageProcessorFast) for processing images).
 - **labels** (`torch.LongTensor` of shape `(batch_size,)`, *optional*) --
   Labels for computing the image classification/regression loss. Indices should be in `[0, ...,
   config.num_labels - 1]`. If `config.num_labels == 1` a regression loss is computed (Mean-Square loss), If
@@ -1966,12 +1962,12 @@ forwardtransformers.Data2VecVisionForImageClassification.forwardhttps://github.c
 - **output_hidden_states** (`bool`, *optional*) --
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
-- **interpolate_pos_encoding** (`bool`, defaults to `False`) --
+- **interpolate_pos_encoding** (`bool`, *optional*, defaults to `False`) --
   Whether to interpolate the pre-trained position encodings.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.ImageClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.ImageClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutput) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.ImageClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.ImageClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Data2VecVisionConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecVisionConfig)) and inputs.
+elements depending on the configuration ([Data2VecVisionConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecVisionConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).
@@ -1983,7 +1979,7 @@ elements depending on the configuration ([Data2VecVisionConfig](/docs/transforme
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [Data2VecVisionForImageClassification](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecVisionForImageClassification) forward method, overrides the `__call__` special method.
+The [Data2VecVisionForImageClassification](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecVisionForImageClassification) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -2015,15 +2011,15 @@ Example:
 
 **Parameters:**
 
-config ([Data2VecVisionConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecVisionConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Data2VecVisionConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecVisionConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.ImageClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.ImageClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.ImageClassifierOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutput) or a tuple of
+A [transformers.modeling_outputs.ImageClassifierOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.ImageClassifierOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Data2VecVisionConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecVisionConfig)) and inputs.
+elements depending on the configuration ([Data2VecVisionConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecVisionConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).
@@ -2040,11 +2036,11 @@ elements depending on the configuration ([Data2VecVisionConfig](/docs/transforme
 
 #### transformers.Data2VecVisionForSemanticSegmentation[[transformers.Data2VecVisionForSemanticSegmentation]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/modeling_data2vec_vision.py#L1117)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/modeling_data2vec_vision.py#L1116)
 
 The Data2Vec Vision Model with a semantic segmentation head on top e.g. for ADE20K, CityScapes.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -2052,10 +2048,10 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Data2VecVisionForSemanticSegmentation.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/data2vec/modeling_data2vec_vision.py#L1169[{"name": "pixel_values", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "interpolate_pos_encoding", "val": ": bool = False"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
+forwardtransformers.Data2VecVisionForSemanticSegmentation.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/data2vec/modeling_data2vec_vision.py#L1168[{"name": "pixel_values", "val": ": torch.Tensor | None = None"}, {"name": "labels", "val": ": torch.Tensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "interpolate_pos_encoding", "val": ": bool = False"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.Tensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [BeitImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/beit#transformers.BeitImageProcessor). See `BeitImageProcessor.__call__()` for details (`processor_class` uses
-  [BeitImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/beit#transformers.BeitImageProcessor) for processing images).
+  [BeitImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/beit#transformers.BeitImageProcessorFast). See [BeitImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details (`processor_class` uses
+  [BeitImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/beit#transformers.BeitImageProcessorFast) for processing images).
 - **labels** (`torch.LongTensor` of shape `(batch_size, height, width)`, *optional*) --
   Ground truth semantic segmentation maps for computing the loss. Indices should be in `[0, ...,
   config.num_labels - 1]`. If `config.num_labels > 1`, a classification loss is computed (Cross-Entropy).
@@ -2065,12 +2061,12 @@ forwardtransformers.Data2VecVisionForSemanticSegmentation.forwardhttps://github.
 - **output_hidden_states** (`bool`, *optional*) --
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
-- **interpolate_pos_encoding** (`bool`, defaults to `False`) --
+- **interpolate_pos_encoding** (`bool`, *optional*, defaults to `False`) --
   Whether to interpolate the pre-trained position encodings.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.SemanticSegmenterOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SemanticSegmenterOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.SemanticSegmenterOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SemanticSegmenterOutput) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.SemanticSegmenterOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SemanticSegmenterOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.SemanticSegmenterOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SemanticSegmenterOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Data2VecVisionConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecVisionConfig)) and inputs.
+elements depending on the configuration ([Data2VecVisionConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecVisionConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels, logits_height, logits_width)`) -- Classification scores for each pixel.
@@ -2092,7 +2088,7 @@ elements depending on the configuration ([Data2VecVisionConfig](/docs/transforme
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [Data2VecVisionForSemanticSegmentation](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecVisionForSemanticSegmentation) forward method, overrides the `__call__` special method.
+The [Data2VecVisionForSemanticSegmentation](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecVisionForSemanticSegmentation) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -2103,10 +2099,12 @@ Examples:
 ```python
 >>> from transformers import AutoImageProcessor, Data2VecVisionForSemanticSegmentation
 >>> from PIL import Image
->>> import requests
+>>> import httpx
+>>> from io import BytesIO
 
 >>> url = "http://images.cocodataset.org/val2017/000000039769.jpg"
->>> image = Image.open(requests.get(url, stream=True).raw)
+>>> with httpx.stream("GET", url) as response:
+...     image = Image.open(BytesIO(response.read()))
 
 >>> image_processor = AutoImageProcessor.from_pretrained("facebook/data2vec-vision-base")
 >>> model = Data2VecVisionForSemanticSegmentation.from_pretrained("facebook/data2vec-vision-base")
@@ -2119,15 +2117,15 @@ Examples:
 
 **Parameters:**
 
-config ([Data2VecVisionConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecVisionConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Data2VecVisionConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecVisionConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.SemanticSegmenterOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SemanticSegmenterOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.SemanticSegmenterOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SemanticSegmenterOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.SemanticSegmenterOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.SemanticSegmenterOutput) or a tuple of
+A [transformers.modeling_outputs.SemanticSegmenterOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.SemanticSegmenterOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Data2VecVisionConfig](/docs/transformers/v5.0.0rc1/en/model_doc/data2vec#transformers.Data2VecVisionConfig)) and inputs.
+elements depending on the configuration ([Data2VecVisionConfig](/docs/transformers/v5.0.0/en/model_doc/data2vec#transformers.Data2VecVisionConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Classification (or regression if config.num_labels==1) loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels, logits_height, logits_width)`) -- Classification scores for each pixel.

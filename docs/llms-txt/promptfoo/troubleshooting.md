@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/usage/troubleshooting/
+
 # Troubleshooting
 
 ## Log Files and Debugging

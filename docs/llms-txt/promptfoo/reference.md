@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/configuration/reference/
+
 # Configuration Reference - Complete API Documentation | Promptfoo
 
 ## Table of Contents

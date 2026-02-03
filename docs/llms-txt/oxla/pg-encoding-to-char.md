@@ -1,5 +1,9 @@
 # Source: https://docs.oxla.com/sql-reference/sql-functions/other-functions/pg-encoding-to-char.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.oxla.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # pg_encoding_to_char()
 
 ## Overview

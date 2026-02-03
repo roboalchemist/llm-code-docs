@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/enterprise/deployment/azure.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Azure deployment guide
 
 > Learn how to deploy LanceDB Enterprise on Azure with AKS, Private Link, and Blob Storage.
@@ -184,8 +188,3 @@ LanceDB Enterprise supports three deployment models on Azure:
 <Note>
   For private deployments, high performance at extreme scale, or if you have strict security requirements, [contact us about LanceDB Enterprise](mailto:contact@lancedb.com).
 </Note>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

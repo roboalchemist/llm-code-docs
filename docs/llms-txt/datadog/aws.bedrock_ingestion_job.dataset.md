@@ -4,8 +4,6 @@
 title: Bedrock Ingestion Job
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Bedrock Ingestion Job
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.bedrock_ingestion_job.dataset/index.html
 ---
 
 # Bedrock Ingestion Job
@@ -30,5 +28,5 @@ aws.bedrock_ingestion_job
 | started_at        | core | timestamp     | The time the data ingestion job started. If you stop a data ingestion job, the <code>startedAt</code> time is the time the job was started before the job was stopped. |
 | statistics        | core | json          | Contains statistics about the data ingestion job.                                                                                                                      |
 | status            | core | string        | The status of the data ingestion job.                                                                                                                                  |
-| tags              | core | hstore        |
+| tags              | core | hstore_csv    |
 | updated_at        | core | timestamp     | The time the data ingestion job was last updated. If you stop a data ingestion job, the <code>updatedAt</code> time is the time the job was stopped.                   |

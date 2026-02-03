@@ -2,13 +2,9 @@
 
 # Source: https://docs.comfy.org/built-in-nodes/partner-node/video/luma/luma-image-to-video.md
 
-# Source: https://docs.comfy.org/tutorials/partner-nodes/luma/luma-image-to-video.md
-
-# Source: https://docs.comfy.org/built-in-nodes/partner-node/video/luma/luma-image-to-video.md
-
-# Source: https://docs.comfy.org/tutorials/partner-nodes/luma/luma-image-to-video.md
-
-# Source: https://docs.comfy.org/built-in-nodes/partner-node/video/luma/luma-image-to-video.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Luma Image to Video - ComfyUI Native API Node Documentation
 

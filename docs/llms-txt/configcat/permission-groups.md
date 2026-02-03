@@ -2,28 +2,30 @@
 
 # Permission Groups
 
+Copy page
+
 With these endpoints you can manage your Permission Groups.
 
-[Here](https://configcat.com/docs/docs/advanced/team-management/team-management-basics/.md) you can read more about Permissions.
+[Here](https://configcat.com/docs/advanced/team-management/team-management-basics.md) you can read more about Permissions.
 
 <!-- -->
 
-## [ğŸ“„ï¸�<!-- --> <!-- -->List Permission Groups](https://configcat.com/docs/docs/api/reference/get-permission-groups/.md)
+## [📄️<!-- --> <!-- -->List Permission Groups](https://configcat.com/docs/api/reference/get-permission-groups.md)
 
-[This endpoint returns the list of the Permission Groups that belongs to the given Product identified by the](https://configcat.com/docs/docs/api/reference/get-permission-groups/.md)
+[This endpoint returns the list of the Permission Groups that belongs to the given Product identified by the](https://configcat.com/docs/api/reference/get-permission-groups.md)
 
-## [ğŸ“„ï¸�<!-- --> <!-- -->Create Permission Group](https://configcat.com/docs/docs/api/reference/create-permission-group/.md)
+## [📄️<!-- --> <!-- -->Create Permission Group](https://configcat.com/docs/api/reference/create-permission-group.md)
 
-[This endpoint creates a new Permission Group in a specified Product](https://configcat.com/docs/docs/api/reference/create-permission-group/.md)
+[This endpoint creates a new Permission Group in a specified Product](https://configcat.com/docs/api/reference/create-permission-group.md)
 
-## [ğŸ“„ï¸�<!-- --> <!-- -->Get Permission Group](https://configcat.com/docs/docs/api/reference/get-permission-group/.md)
+## [📄️<!-- --> <!-- -->Get Permission Group](https://configcat.com/docs/api/reference/get-permission-group.md)
 
-[This endpoint returns the metadata of a Permission Group](https://configcat.com/docs/docs/api/reference/get-permission-group/.md)
+[This endpoint returns the metadata of a Permission Group](https://configcat.com/docs/api/reference/get-permission-group.md)
 
-## [ğŸ“„ï¸�<!-- --> <!-- -->Update Permission Group](https://configcat.com/docs/docs/api/reference/update-permission-group/.md)
+## [📄️<!-- --> <!-- -->Update Permission Group](https://configcat.com/docs/api/reference/update-permission-group.md)
 
-[This endpoint updates a Permission Group identified by the \`permissionGroupId\` parameter.](https://configcat.com/docs/docs/api/reference/update-permission-group/.md)
+[This endpoint updates a Permission Group identified by the \`permissionGroupId\` parameter.](https://configcat.com/docs/api/reference/update-permission-group.md)
 
-## [ğŸ“„ï¸�<!-- --> <!-- -->Delete Permission Group](https://configcat.com/docs/docs/api/reference/delete-permission-group/.md)
+## [📄️<!-- --> <!-- -->Delete Permission Group](https://configcat.com/docs/api/reference/delete-permission-group.md)
 
-[This endpoint removes a Permission Group identified by the \`permissionGroupId\` parameter.](https://configcat.com/docs/docs/api/reference/delete-permission-group/.md)
+[This endpoint removes a Permission Group identified by the \`permissionGroupId\` parameter.](https://configcat.com/docs/api/reference/delete-permission-group.md)

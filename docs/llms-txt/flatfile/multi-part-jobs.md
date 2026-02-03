@@ -1,12 +1,16 @@
 # Source: https://flatfile.com/docs/guides/multi-part-jobs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Multi-Part Jobs
 
 > Split up Jobs into Parts
 
 A Job can be split up into multiple parts depending on the intended functionality. This can help spread out large data sets or long tasks across many separate listeners. When a job is split up into parts, the original part is considered the "parent" part and it's children are considered "parts". Each Part is considered it's own separate Job and has the full ecosystem of events attached to it. When all Job Parts have been completed, a new event `job:parts-completed` is emitted, so that you can listen for that event to complete the Parent Job. This event has a payload that has summary statistics about the parts.
 
-```json
+```json  theme={null}
 {
   "payload": {
     "parts": {
@@ -23,7 +27,7 @@ By inspecting this payload, you can determine if the all have completed successf
 
 Here's an example of a listener that creates parts and waits for the `job:parts-completed` event:
 
-```typescript
+```typescript  theme={null}
 import api from "@flatfile/api";
 import { FlatfileListener } from "@flatfile/listener";
 
@@ -80,7 +84,7 @@ export default function (listener: FlatfileListener) {
 
 Here's an example of a listener that does logic on each Part:
 
-```typescript
+```typescript  theme={null}
 import api from "@flatfile/api";
 import { FlatfileListener } from "@flatfile/listener";
 

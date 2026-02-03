@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/import/first.md
 ---
-# import/first&#x20;
 
 ### What it does
 

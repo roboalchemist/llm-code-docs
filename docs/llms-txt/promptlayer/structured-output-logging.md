@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/features/prompt-history/structured-output-logging.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Logging Structured Outputs
 
 ## Overview
@@ -386,8 +390,3 @@ Check your provider's documentation for specific schema requirements.
 * [Log Request API Reference](/reference/log-request) - Full API specification
 * [Metadata Documentation](/features/prompt-history/metadata) - Using metadata for tracking
 * [Tagging Requests](/features/prompt-history/tagging-requests) - Organizing requests with tags
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

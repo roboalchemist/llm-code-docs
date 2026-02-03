@@ -4,8 +4,6 @@
 title: API Gateway Account
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > API Gateway Account
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.apigateway_account.dataset/index.html
 ---
 
 # API Gateway Account
@@ -25,5 +23,5 @@ aws.apigateway_account
 | api_key_version     | core | string        | The version of the API keys used for the account.                                                                                    |
 | cloudwatch_role_arn | core | string        | The ARN of an Amazon CloudWatch role for the current Account.                                                                        |
 | features            | core | array<string> | A list of features supported for the account. When usage plans are enabled, the features list will include an entry of "UsagePlans". |
-| tags                | core | hstore        |
+| tags                | core | hstore_csv    |
 | throttle_settings   | core | json          | Specifies the API request limits configured for the current Account.                                                                 |

@@ -1,6 +1,7 @@
 # Source: https://langfuse.com/docs/observability/features/tags.md
 
 ---
+title: Add tags to observations and traces in Langfuse
 description: Tags help to filter and organize traces and observations in Langfuse based on use case, functions/apis used, environment and other criteria.
 sidebarTitle: Tags
 ---

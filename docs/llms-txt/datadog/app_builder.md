@@ -6,7 +6,6 @@ description: >-
   Low-code platform for building internal tools with drag-and-drop interface,
   JavaScript support, and integration with external services.
 breadcrumbs: Docs > App Builder
-source_url: https://docs.datadoghq.com/app_builder/index.html
 ---
 
 # App Builder

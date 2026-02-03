@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/lists-in-for-loops.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to Use Lists in For Loops
 
 > How to transform multi-select values into a usable format in Agent.ai workflows

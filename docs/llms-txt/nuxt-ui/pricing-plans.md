@@ -20,17 +20,18 @@ The PricingPlans component provides a flexible layout to display a list of [Pric
 </template>
 ```
 
-<tip>
-
-The grid columns will be automatically calculated based on the number of plans, this works with the `plans` prop but also with the default slot.
-
-</tip>
+> [!TIP]
+> The grid columns will be automatically calculated based on the number of plans, this works with the `plans` prop but also with the default slot.
 
 ### Plans
 
 Use the `plans` prop as an array of objects with the properties of the [PricingPlan](/docs/components/pricing-plan#props) component.
 
 ```vue
+<script setup lang="ts">
+import type { PricingPlanProps } from '@nuxt/ui'
+</script>
+
 <template>
   <UPricingPlans />
 </template>
@@ -41,22 +42,27 @@ Use the `plans` prop as an array of objects with the properties of the [PricingP
 Use the `orientation` prop to change the orientation of the PricingPlans. Defaults to `horizontal`.
 
 ```vue
+<script setup lang="ts">
+import type { PricingPlanProps } from '@nuxt/ui'
+</script>
+
 <template>
   <UPricingPlans orientation="vertical" />
 </template>
 ```
 
-<tip>
-
-When using the `plans` prop instead of the default slot, the `orientation` of the plans is automatically reversed, `horizontal` to `vertical` and vice versa.
-
-</tip>
+> [!TIP]
+> When using the `plans` prop instead of the default slot, the `orientation` of the plans is automatically reversed, `horizontal` to `vertical` and vice versa.
 
 ### Compact
 
 Use the `compact` prop to reduce the padding between the plans when one of the plans is scaled for a better visual balance.
 
 ```vue
+<script setup lang="ts">
+import type { PricingPlanProps } from '@nuxt/ui'
+</script>
+
 <template>
   <UPricingPlans compact />
 </template>
@@ -67,6 +73,10 @@ Use the `compact` prop to reduce the padding between the plans when one of the p
 Use the `scale` prop to adjust the spacing between the plans when one of the plans is scaled for a better visual balance.
 
 ```vue
+<script setup lang="ts">
+import type { PricingPlanProps } from '@nuxt/ui'
+</script>
+
 <template>
   <UPricingPlans scale />
 </template>
@@ -74,11 +84,8 @@ Use the `scale` prop to adjust the spacing between the plans when one of the pla
 
 ## Examples
 
-<note>
-
-While these examples use [Nuxt Content](https://content.nuxt.com), the components can be integrated with any content management system.
-
-</note>
+> [!NOTE]
+> While these examples use [Nuxt Content](https://content.nuxt.com), the components can be integrated with any content management system.
 
 ### Within a page
 
@@ -102,11 +109,8 @@ const { data: plans } = await useAsyncData('plans', () => queryCollection('plans
 </template>
 ```
 
-<note>
-
-In this example, the `plans` are fetched using `queryCollection` from the `@nuxt/content` module.
-
-</note>
+> [!NOTE]
+> In this example, the `plans` are fetched using `queryCollection` from the `@nuxt/content` module.
 
 ## API
 
@@ -198,8 +202,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

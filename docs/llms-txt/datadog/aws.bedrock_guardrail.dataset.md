@@ -4,8 +4,6 @@
 title: Bedrock Guardrail
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Bedrock Guardrail
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.bedrock_guardrail.dataset/index.html
 ---
 
 # Bedrock Guardrail
@@ -37,7 +35,7 @@ aws.bedrock_guardrail
 | sensitive_information_policy | core | json          | The sensitive information policy that was configured for the guardrail.                                                                                      |
 | status                       | core | string        | The status of the guardrail.                                                                                                                                 |
 | status_reasons               | core | array<string> | Appears if the status is FAILED. A list of reasons for why the guardrail failed to be created, updated, versioned, or deleted.                               |
-| tags                         | core | hstore        |
+| tags                         | core | hstore_csv    |
 | topic_policy                 | core | json          | The topic policy that was configured for the guardrail.                                                                                                      |
 | updated_at                   | core | timestamp     | The date and time at which the guardrail was updated.                                                                                                        |
 | version                      | core | string        | The version of the guardrail.                                                                                                                                |

@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/security.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Security
 
 > An overview of Resend security features and practices.

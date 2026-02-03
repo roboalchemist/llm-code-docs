@@ -1,4 +1,8 @@
-# Source: https://braintrust.dev/docs/guides/self-hosting/aws.md
+# Source: https://braintrust.dev/docs/admin/self-hosting/aws.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Self-host on AWS
 
@@ -26,7 +30,7 @@ Deploy the Braintrust data plane infrastructure in your AWS account.
 
     4. In `main.tf`, customize the Braintrust deployment settings.
 
-       The defaults are for suitable for a large production-sized deployment. Adjust them based on your needs, but keep in mind the [hardware requirements](/guides/self-hosting/index#hardware-requirements).
+       The defaults are for suitable for a large production-sized deployment. Adjust them based on your needs, but keep in mind the [hardware requirements](/admin/self-hosting/index#hardware-requirements).
   </Step>
 
   <Step title="Initialize AWS account">
@@ -113,8 +117,6 @@ Connect your Braintrust organization to your newly deployed data plane.
 
   <Step title="Verify the connection">
     The UI will automatically test the connection to your new data plane. Verify that the ping to each endpoint is successful.
-
-        <img src="https://mintcdn.com/braintrust/vRnsqWnu5sp0FN9X/images/guides/self-hosting/aws/Braintrust-API-URL-verify.png?fit=max&auto=format&n=vRnsqWnu5sp0FN9X&q=85&s=a3d73fd28eb1b5e7999962094786dd0b" alt="Verify Successful Ping" data-og-width="2040" width="2040" data-og-height="1026" height="1026" data-path="images/guides/self-hosting/aws/Braintrust-API-URL-verify.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/vRnsqWnu5sp0FN9X/images/guides/self-hosting/aws/Braintrust-API-URL-verify.png?w=280&fit=max&auto=format&n=vRnsqWnu5sp0FN9X&q=85&s=12d5222932ea9d9c2bf5fdf9d8ca9c8a 280w, https://mintcdn.com/braintrust/vRnsqWnu5sp0FN9X/images/guides/self-hosting/aws/Braintrust-API-URL-verify.png?w=560&fit=max&auto=format&n=vRnsqWnu5sp0FN9X&q=85&s=fbfddc6440d35b97502b01269ce7df0f 560w, https://mintcdn.com/braintrust/vRnsqWnu5sp0FN9X/images/guides/self-hosting/aws/Braintrust-API-URL-verify.png?w=840&fit=max&auto=format&n=vRnsqWnu5sp0FN9X&q=85&s=c9264196a6e01e9f92c54735d23c346a 840w, https://mintcdn.com/braintrust/vRnsqWnu5sp0FN9X/images/guides/self-hosting/aws/Braintrust-API-URL-verify.png?w=1100&fit=max&auto=format&n=vRnsqWnu5sp0FN9X&q=85&s=0ba20b9f54a339e5c51c0bb81331223b 1100w, https://mintcdn.com/braintrust/vRnsqWnu5sp0FN9X/images/guides/self-hosting/aws/Braintrust-API-URL-verify.png?w=1650&fit=max&auto=format&n=vRnsqWnu5sp0FN9X&q=85&s=20b708db0402f32e2844aa6abd56b1b7 1650w, https://mintcdn.com/braintrust/vRnsqWnu5sp0FN9X/images/guides/self-hosting/aws/Braintrust-API-URL-verify.png?w=2500&fit=max&auto=format&n=vRnsqWnu5sp0FN9X&q=85&s=55b3869d71c4f4342ddc69a6fcdedba3 2500w" />
   </Step>
 </Steps>
 
@@ -208,8 +210,3 @@ To connect Braintrust's VPC to other internal resources (like an LLM gateway), u
 
 * Create a VPC Endpoint Service for your internal resource, then create a VPC Interface Endpoint inside of the Braintrust "Quarantine" VPC
 * Set up VPC peering with the Braintrust "Quarantine" VPC
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

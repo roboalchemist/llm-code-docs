@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/custom-nodes/backend/server_overview.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Properties
 
 > Properties of a custom node
@@ -119,6 +123,15 @@ A good example of actually checking for changes is the code from the built-in Lo
         with open(image_path, 'rb') as f:
             m.update(f.read())
         return m.digest().hex()
+```
+
+#### SEARCH\_ALIASES
+
+Optional. A list of alternative names users might search for when looking for this node.
+This is included in the `/object_info` API response as `search_aliases`.
+
+```python  theme={null}
+SEARCH_ALIASES = ["text concat", "join text", "merge strings"]
 ```
 
 ### Other attributes

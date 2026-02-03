@@ -1,11 +1,8 @@
 # Source: https://rspack.dev/plugins/rspack/virtual-modules-plugin.md
 
-import { ApiMeta } from '@components/ApiMeta.tsx';
-
 # VirtualModulesPlugin
 
-<ApiMeta specific={['Rspack']} addedVersion="1.5.0" />
-
+[Added in v1.5.0](https://github.com/web-infra-dev/rspack/releases/tag/v1.5.0)Rspack only
 `VirtualModulesPlugin` allows you to create, modify, and delete files in memory, and Rspack treats these virtual files as if they were real files existing in the file system.
 
 This plugin is a Rust implementation of [webpack-virtual-modules](https://github.com/sysgears/webpack-virtual-modules), deeply integrated with Rspack to provide equivalent functionality with better performance.
@@ -24,8 +21,8 @@ new rspack.experiments.VirtualModulesPlugin({
 });
 ```
 
-* **Parameters:**
-  * `modules` (optional): An object where keys are file paths and values are file contents.
+- **Parameters:**
+  - `modules` (optional): An object where keys are file paths and values are file contents.
 
 ```js title="rspack.config.mjs"
 import { rspack } from '@rspack/core';
@@ -54,17 +51,17 @@ For example, invoking `writeModule` within the `beforeCompile` or `compile` hook
 will throw the following error: `Error: Virtual file store has not been initialized.`
 :::
 
-* **Type:**
+- **Type:**
 
 ```ts
 function writeModule(filePath: string, contents: string): void;
 ```
 
-* **Parameters:**
-  * `filePath`: The virtual file path relative to [compiler.context](/api/javascript-api/compiler.md#context)
-  * `contents`: The content of the virtual file
+- **Parameters:**
+  - `filePath`: The virtual file path relative to [compiler.context](/api/javascript-api/compiler.md#context)
+  - `contents`: The content of the virtual file
 
-* **Example:**
+- **Example:**
 
 ```js title="rspack.config.mjs"
 import { rspack } from '@rspack/core';

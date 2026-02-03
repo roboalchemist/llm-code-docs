@@ -35,27 +35,30 @@ fn test_add() {
 
 Rspack's test cases include the following:
 
-* Rspack core test cases are stored in the `tests/rspack-test` folder and will run the test cases by simulating the build process. In general, test cases should be added in this folder.
-* Test cases for other Rspack packages are stored in the `packages/{name}/tests` folder and should only be added or modified when modifying that package.
+- Rspack core test cases are stored in the `tests/rspack-test` folder and will run the test cases by simulating the build process. In general, test cases should be added in this folder.
+- Test cases for other Rspack packages are stored in the `packages/{name}/tests` folder and should only be added or modified when modifying that package.
 
 You can run Rspack tests by running `./x test unit` or `pnpm run test:unit` at the root folder.
 
 You can also go to the `tests/rspack-test` folder and run `npm run test` to run test cases and add some arguments:
 
-* **When refreshing test snapshots is needed**: Add `-u`, like `npm run test -- -u`
-* **When filtering test cases is needed**: Add `-t`, like `npm run test -- -t configCases/asset` to only run test cases from the `tests/rspack-test/configCases/asset` folder. Pattern matching supports regex, see [rstest](https://rstest.rs/config/test/testNamePattern) for details.
+- **When refreshing test snapshots is needed**: Add `-u`, like `npm run test -- -u`
+- **When filtering test cases is needed**: Add `-t`. Pattern matching supports regex, see [rstest](https://rstest.rs/config/test/testNamePattern) for details.
 
 ### Running tests
 
 You can run these test cases in the following ways:
 
-* Run `./x test unit` or `pnpm run test:unit` from the root directory.
-* Or run `npm run test` from the `tests/rspack-test` directory.
-* To update snapshots, run `npm run test -- -u` from the `tests/rspack-test` directory.
-* To pass specific rstest cli arguments, run `npm run test -- {args}` from the `tests/rspack-test` directory.
-* To filter specific test cases, run `npm run test -- -t path-of-spec` from the `tests/rspack-test` directory.
-  * Like `npm run test -- -t configCases/asset` to only run test cases from the `tests/rspack-test/configCases/asset` folder (config will be automatically mapped to configCases, and other folders will work in a similar way).
-* To use Rspack Wasm for running test cases, you need to additionally configure the following environment variables:
+- Run `./x test unit` or `pnpm run test:unit` from the root directory.
+- Or run `npm run test` from the `tests/rspack-test` directory.
+- To update snapshots, run `npm run test -- -u` from the `tests/rspack-test` directory.
+- To pass specific rstest cli arguments, run `npm run test -- {args}` from the `tests/rspack-test` directory.
+- To filter specific test cases, run `npm run test -- -t ${testPath}` where `testPath` can be either an absolute or relative path.
+  - For example:
+    - `npm run test -- -t hotCases/json/error-in-json` (or `npm run test -- -t /Users/rspack/tests/rspack-test/hotCases/json/error-in-json`) will run all tests in the `error-in-json` test case.
+    - `npm run test -- -t hotCases/json` (or `npm run test -- -t /Users/rspack/tests/rspack-test/hotCases/json`) will run all test cases in the `json` directory.
+    - `npm run test -- -t hotCases` (or `npm run test -- -t /Users/rspack/tests/rspack-test/hotCases`) will run all test cases in the `hotCases` directory.
+- To use Rspack Wasm for running test cases, you need to additionally configure the following environment variables:
   1. `NAPI_RS_FORCE_WASI=1`: Forces the use of Rspack Wasm instead of native binding
   2. `WASM=1`: Enables Wasm-specific test configurations
   3. `NODE_NO_WARNINGS=1`: Disables Node.js Wasm warnings.
@@ -84,21 +87,21 @@ The `{Name}.test.js` is the entry file for tests, which will walk the `{name}Cas
 
 The existing test types are:
 
-* [Normal](#normal): Used to test core build processes without configuration changes. This type is used when testing does not require adding `rspack.config.js`.
-* [Config](#config): Used to test build configuration options. If your test needs specific configuration added through `rspack.config.js` to run and does not fit other scenarios, use this test type.
-* [Hot](#hot): Used to test whether HMR runs correctly. This type includes HotNode with a fixed `target=async-node`, HotWeb with a fixed `target=web`, and HotWorker with a fixed `target=webworker`.
-* [HotSnapshot](#hotsnapshot): Used to test whether HMR can generate correct intermediate artifacts. This test type shares test cases with the Hot type and generates snapshots for incremental artifacts for each HMR.
-* [Watch](#watch): Used to test incremental compilation after modifying files in Watch mode.
-* [StatsOutput](#statsoutput): Used to test the console output log after the build ends.
-* [StatsAPI](#stats-api): Used to test the Stats object generated after the build ends.
-* [Diagnostic](#diagnostic): Used to test the formatted output information for warnings/errors generated during the build process.
-* [Hash](#hash): Used to test whether hash generation works correctly.
-* [Compiler](#compiler): Used to test Compiler/Compilation object APIs.
-* [Defaults](#defaults): Used to test the interaction between configuration options.
-* [Error](#error): Used to test the interaction between `compilation.errors` and `compilation.warnings`.
-* [Hook](#hook): Used to test various hook functionalities.
-* [TreeShaking](#treeshaking): Used to test Tree Shaking-related features.
-* [Builtin](#builtin): Used to test plugins with built-in native implementations.
+- [Normal](#normal): Used to test core build processes without configuration changes. This type is used when testing does not require adding `rspack.config.js`.
+- [Config](#config): Used to test build configuration options. If your test needs specific configuration added through `rspack.config.js` to run and does not fit other scenarios, use this test type.
+- [Hot](#hot): Used to test whether HMR runs correctly. This type includes HotNode with a fixed `target=async-node`, HotWeb with a fixed `target=web`, and HotWorker with a fixed `target=webworker`.
+- [HotSnapshot](#hotsnapshot): Used to test whether HMR can generate correct intermediate artifacts. This test type shares test cases with the Hot type and generates snapshots for incremental artifacts for each HMR.
+- [Watch](#watch): Used to test incremental compilation after modifying files in Watch mode.
+- [StatsOutput](#statsoutput): Used to test the console output log after the build ends.
+- [StatsAPI](#stats-api): Used to test the Stats object generated after the build ends.
+- [Diagnostic](#diagnostic): Used to test the formatted output information for warnings/errors generated during the build process.
+- [Hash](#hash): Used to test whether hash generation works correctly.
+- [Compiler](#compiler): Used to test Compiler/Compilation object APIs.
+- [Defaults](#defaults): Used to test the interaction between configuration options.
+- [Error](#error): Used to test the interaction between `compilation.errors` and `compilation.warnings`.
+- [Hook](#hook): Used to test various hook functionalities.
+- [TreeShaking](#treeshaking): Used to test Tree Shaking-related features.
+- [Builtin](#builtin): Used to test plugins with built-in native implementations.
 
 Please prioritize adding test cases within the above test types.
 
@@ -200,16 +203,16 @@ Uses the same test cases as `Hot{Target}`, and generates a `__snapshots__/{targe
 
 The snapshot structure is as follows:
 
-* **Changed Files**: Source code files that trigger this HMR build
-* **Asset Files**: Artifact files of this HMR build
-* **Manifest**: Contents of the `hot-update.json` metadata file for this HMR build, where:
-  * `"c"`: Id of the chunks to be updated in this HMR
-  * `"r"`: Id of the chunks to be removed in this HMR
-  * `"m"`: Id of the modules to be removed in this HMR
-* **Update**: Information about the `hot-update.js` patch file for this HMR build, including:
-  * **Changed Modules**: List of modules included in the patch
-  * **Changed Runtime Modules**: List of runtime modules included in the patch
-  * **Changed Content**: Snapshot of the patch code
+- **Changed Files**: Source code files that trigger this HMR build
+- **Asset Files**: Artifact files of this HMR build
+- **Manifest**: Contents of the `hot-update.json` metadata file for this HMR build, where:
+  - `"c"`: Id of the chunks to be updated in this HMR
+  - `"r"`: Id of the chunks to be removed in this HMR
+  - `"m"`: Id of the modules to be removed in this HMR
+- **Update**: Information about the `hot-update.js` patch file for this HMR build, including:
+  - **Changed Modules**: List of modules included in the patch
+  - **Changed Runtime Modules**: List of runtime modules included in the patch
+  - **Changed Content**: Snapshot of the patch code
 
 ### Watch
 
@@ -453,7 +456,7 @@ In this test case, the configuration is similar to a regular rspack project. You
 
 This test case is similar to a regular rspack project, and you can specify the build configuration by adding a `rspack.config.js`. However, depending on the directory, different snapshots of the products will be generated and stored in `__snapshots__/output.snap.txt`:
 
-* **plugin-css**: Snapshots of files with a `.css` extension
-* **plugin-css-modules**: Snapshots of files with `.css` and `.js` extensions
-* **plugin-html**: Snapshots of files with `.html` extension
-* **Other**: Snapshots of files with `.js` extension
+- **plugin-css**: Snapshots of files with a `.css` extension
+- **plugin-css-modules**: Snapshots of files with `.css` and `.js` extensions
+- **plugin-html**: Snapshots of files with `.html` extension
+- **Other**: Snapshots of files with `.js` extension

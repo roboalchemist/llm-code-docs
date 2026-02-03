@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/execution-flow/st.rerun
+
 # st.rerun
 
 Rerun the script immediately.

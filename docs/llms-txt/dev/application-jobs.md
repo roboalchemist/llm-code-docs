@@ -1,152 +1,106 @@
 # Source: https://dev.writer.com/api-reference/application-api/application-jobs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Retrieve all jobs
 
 > Retrieve all jobs created via the async API, linked to the provided application ID (or alias).
 
+<Info>No-code applications are now called [no-code agents](/no-code/introduction). The [Applications API](api-reference/application-api/applications), which you can use to programmatically interact with no-code agents, still uses the term `application` to minimize breaking changes.</Info>
+
+
 ## OpenAPI
 
 ````yaml get /v1/applications/{application_id}/jobs
+openapi: 3.0.3
+info:
+  title: API
+  version: '1.0'
+servers:
+  - url: https://api.writer.com
+security:
+  - bearerAuth: []
 paths:
-  path: /v1/applications/{application_id}/jobs
-  method: get
-  servers:
-    - url: https://api.writer.com
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: >-
-                Bearer authentication header of the form `Bearer <token>`, where
-                `<token>` is your [Writer API
-                key](https://dev.writer.com/api-reference/api-keys).
-          cookie: {}
-    parameters:
-      path:
-        application_id:
+  /v1/applications/{application_id}/jobs:
+    get:
+      tags:
+        - template
+      summary: Retrieve all jobs
+      description: >-
+        Retrieve all jobs created via the async API, linked to the provided
+        application ID (or alias).
+      parameters:
+        - name: application_id
+          in: path
+          description: The ID of the no-code app for which to retrieve jobs.
+          required: true
           schema:
-            - type: string
-              required: true
-              description: The ID of the no-code app for which to retrieve jobs.
-      query:
-        status:
+            type: string
+        - name: status
+          in: query
+          required: false
           schema:
-            - type: enum<string>
-              enum:
-                - in_progress
-                - failed
-                - completed
-              required: false
-              title: api_job_status
-              description: The status of the job.
-        offset:
+            $ref: '#/components/schemas/api_job_status'
+        - name: offset
+          in: query
+          description: The pagination offset for retrieving the jobs.
+          required: false
           schema:
-            - type: integer
-              required: false
-              description: The pagination offset for retrieving the jobs.
-        limit:
+            type: integer
+            format: int64
+        - name: limit
+          in: query
+          description: The pagination limit for retrieving the jobs.
+          required: false
           schema:
-            - type: integer
-              required: false
-              description: The pagination limit for retrieving the jobs.
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - lang: cURL
-        source: >-
-          curl --location --request GET
-          https://api.writer.com/v1/applications/{application_id}/jobs \
-           --header "Authorization: Bearer <token>"
-      - lang: JavaScript
-        source: |-
-          import Writer from 'writer-sdk';
-
-          const client = new Writer({
-            apiKey: process.env['WRITER_API_KEY'], // This is the default and can be omitted
-          });
-
-          async function main() {
-            // Automatically fetches more pages as needed.
-            for await (const applicationGenerateAsyncResponse of client.applications.jobs.list('application_id')) {
-              console.log(applicationGenerateAsyncResponse.id);
-            }
-          }
-
-          main();
-      - lang: Python
-        source: |-
-          import os
-          from writerai import Writer
-
-          client = Writer(
-              api_key=os.environ.get("WRITER_API_KEY"),  # This is the default and can be omitted
-          )
-          page = client.applications.jobs.list(
-              application_id="application_id",
-          )
-          page = page.result[0]
-          print(page.id)
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              result:
-                allOf:
-                  - type: array
-                    items:
-                      $ref: '#/components/schemas/get_async_application_job_response'
-              totalCount:
-                allOf:
-                  - type: integer
-                    format: int64
-                    description: The total number of jobs associated with the application.
-              pagination:
-                allOf:
-                  - type: object
-                    properties:
-                      offset:
-                        type: integer
-                        format: int64
-                        description: The pagination offset for retrieving the jobs.
-                      limit:
-                        type: integer
-                        format: int32
-                        description: The pagination limit for retrieving the jobs.
-            title: get_async_application_jobs_response
-            refIdentifier: '#/components/schemas/get_async_application_jobs_response'
-            requiredProperties:
-              - result
-        examples:
-          example:
-            value:
-              result:
-                - id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                  status: in_progress
-                  application_id: <string>
-                  created_at: '2023-11-07T05:31:56Z'
-                  updated_at: '2023-11-07T05:31:56Z'
-                  completed_at: '2023-11-07T05:31:56Z'
-                  data:
-                    title: <string>
-                    suggestion: <string>
-                  error: <string>
-              totalCount: 123
-              pagination:
-                offset: 123
-                limit: 123
-        description: Successful response
-  deprecated: false
-  type: path
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/get_async_application_jobs_response'
+      security:
+        - bearerAuth: []
 components:
   schemas:
+    api_job_status:
+      title: api_job_status
+      description: The status of the job.
+      type: string
+      enum:
+        - in_progress
+        - failed
+        - completed
+    get_async_application_jobs_response:
+      title: get_async_application_jobs_response
+      required:
+        - result
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/get_async_application_job_response'
+        totalCount:
+          type: integer
+          format: int64
+          description: The total number of jobs associated with the application.
+        pagination:
+          type: object
+          properties:
+            offset:
+              type: integer
+              format: int64
+              description: The pagination offset for retrieving the jobs.
+            limit:
+              type: integer
+              format: int32
+              description: The pagination limit for retrieving the jobs.
     get_async_application_job_response:
       title: get_async_application_job_response
       required:
@@ -178,20 +132,12 @@ components:
           format: date-time
           description: The timestamp when the job was completed.
         data:
+          $ref: '#/components/schemas/generate_application_response'
           type: object
           description: The result of the completed job, if applicable.
-          $ref: '#/components/schemas/generate_application_response'
         error:
           type: string
           description: The error message if the job failed.
-    api_job_status:
-      title: api_job_status
-      description: The status of the job.
-      type: string
-      enum:
-        - in_progress
-        - failed
-        - completed
     generate_application_response:
       title: generate_application_response
       required:
@@ -204,5 +150,14 @@ components:
         suggestion:
           type: string
           description: The response from the model specified in the application.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: >-
+        Bearer authentication header of the form `Bearer <token>`, where
+        `<token>` is your [Writer API
+        key](https://dev.writer.com/api-reference/api-keys).
 
 ````

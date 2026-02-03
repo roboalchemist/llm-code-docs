@@ -1,5 +1,9 @@
 # Source: https://dub.co/docs/concepts/webhooks/verify-webhook-requests.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dub.co/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Verify webhook requests
 
 > Learn how to verify webhook requests to ensure they're coming from Dub.

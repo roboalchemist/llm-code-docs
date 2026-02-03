@@ -1,8 +1,6 @@
-# Source: https://docs.livekit.io/deploy/agents/cloud/logs.md
+# Source: https://docs.livekit.io/deploy/agents/logs.md
 
-# Source: https://docs.livekit.io/agents/ops/deployment/logs.md
-
-LiveKit docs › Agent deployment › Deploying to LiveKit Cloud › Log collection
+LiveKit docs › Agent deployment › Log collection
 
 ---
 
@@ -12,7 +10,7 @@ LiveKit docs › Agent deployment › Deploying to LiveKit Cloud › Log collect
 
 ## Overview
 
-LiveKit Cloud provides realtime logging for your deployed agents, helping you monitor performance, debug issues, and understand your agent's behavior in production. Logs are collected from all phases of your agent's lifecycle—from build to runtime—and can be forwarded to external monitoring services such as [Datadog](https://www.datadoghq.com/), [CloudWatch](https://aws.amazon.com/cloudwatch/), [Sentry](https://sentry.io/), and [New Relic](https://newrelic.com/). You can also view some logs with the LiveKit CLI. LiveKit Cloud does not store runtime logs.
+LiveKit Cloud provides realtime logging for your deployed agents, helping you monitor performance, debug issues, and understand your agent's behavior in production. Logs are collected from all phases of your agent's lifecycle—from build to runtime—and can be forwarded to external monitoring services such as [Datadog](https://www.datadoghq.com/), [CloudWatch](https://aws.amazon.com/cloudwatch/), [Sentry](https://sentry.io/), and [New Relic](https://newrelic.com/). You can also view some logs with the LiveKit CLI.
 
 ## Log types
 
@@ -51,7 +49,7 @@ Build logs from more versions of your agent are available in the [LiveKit Cloud 
 
 ## View runtime logs
 
-Runtime logs are available as part of the [Agent observability](https://docs.livekit.io/agents/observability.md) feature in the LiveKit Cloud dashboard.
+Runtime logs are available as part of the [Agent observability](https://docs.livekit.io/deploy/observability/insights.md) feature in the LiveKit Cloud dashboard.
 
 ## Forward runtime logs
 
@@ -61,7 +59,7 @@ The currently supported destinations are Datadog, CloudWatch, Sentry, and New Re
 
 ### Datadog integration
 
-Add a [Datadog](https://docs.livekit.io/agents/ops/deployment/secrets.md) client token as a [secret](https://docs.livekit.io/agents/ops/deployment/secrets.md) to automatically enable log forwarding. If your account is in a region other than `us1`, you can also set the region. All runtime logs are automatically forwarded to your Datadog account.
+Add a [Datadog](https://docs.livekit.io/deploy/agents/secrets.md) client token as a [secret](https://docs.livekit.io/deploy/agents/secrets.md) to automatically enable log forwarding. If your account is in a region other than `us1`, you can also set the region. All runtime logs are automatically forwarded to your Datadog account.
 
 ```shell
 lk agent update-secrets --secrets "DATADOG_TOKEN=your-client-token"
@@ -84,7 +82,7 @@ The following log fields are set in Datadog for all log lines sent from LiveKit 
 
 ### CloudWatch integration
 
-Add a [CloudWatch](https://docs.livekit.io/agents/ops/deployment/secrets.md) `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` as [secrets](https://docs.livekit.io/agents/ops/deployment/secrets.md) to automatically enable log forwarding. The AWS region defaults to `us-west-2`, you can set it by setting the `AWS_REGION` secret. All runtime logs are automatically forwarded to your CloudWatch account.
+Add a [CloudWatch](https://docs.livekit.io/deploy/agents/secrets.md) `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` as [secrets](https://docs.livekit.io/deploy/agents/secrets.md) to automatically enable log forwarding. The AWS region defaults to `us-west-2`, you can set it by setting the `AWS_REGION` secret. All runtime logs are automatically forwarded to your CloudWatch account.
 
 ```shell
 lk agent update-secrets --secrets "AWS_ACCESS_KEY_ID=your-access-key-id" --secrets "AWS_SECRET_ACCESS_KEY=your-secret-access-key"
@@ -99,7 +97,7 @@ lk agent update-secrets --secrets "AWS_ACCESS_KEY_ID=your-access-key-id" --secre
 
 ### Sentry integration
 
-Add a [Sentry](https://docs.livekit.io/agents/ops/deployment/secrets.md) `SENTRY_DSN` as a [secret](https://docs.livekit.io/agents/ops/deployment/secrets.md) to automatically enable log forwarding. All runtime logs are automatically forwarded to your Sentry account.
+Add a [Sentry](https://docs.livekit.io/deploy/agents/secrets.md) `SENTRY_DSN` as a [secret](https://docs.livekit.io/deploy/agents/secrets.md) to automatically enable log forwarding. All runtime logs are automatically forwarded to your Sentry account.
 
 ```shell
 lk agent update-secrets --secrets "SENTRY_DSN=your-sentry-dsn"
@@ -110,14 +108,14 @@ lk agent update-secrets --secrets "SENTRY_DSN=your-sentry-dsn"
 
 ### New Relic integration
 
-Add a [New Relic](https://docs.livekit.io/agents/ops/deployment/secrets.md) `NEW_RELIC_LICENSE_KEY` as a [secret](https://docs.livekit.io/agents/ops/deployment/secrets.md) to automatically enable log forwarding. All runtime logs are automatically forwarded to your New Relic account.
+Add a [New Relic](https://docs.livekit.io/deploy/agents/secrets.md) `NEW_RELIC_LICENSE_KEY` as a [secret](https://docs.livekit.io/deploy/agents/secrets.md) to automatically enable log forwarding. All runtime logs are automatically forwarded to your New Relic account.
 
 ```shell
 lk agent update-secrets --secrets "NEW_RELIC_LICENSE_KEY=your-license-key"
 
 ```
 
-- **`NEW_RELIC_LICENSE_KEY`** _(string)_: Your New Relic [license key](https://docs.newrelic.com/docs/accounts/accounts-billing/account-setup/license-key-faq/).
+- **`NEW_RELIC_LICENSE_KEY`** _(string)_: Your New Relic [license key](https://docs.newrelic.com/docs/apis/intro-apis/new-relic-api-keys/).
 
 ## Log levels
 
@@ -132,23 +130,23 @@ For more information on log levels, see the [agent server options](https://docs.
 
 ## Log retention
 
-LiveKit Cloud does not store runtime logs. Build logs are stored indefinitely for the most recently deployed version.
+Agent build logs are stored indefinitely for the most recently deployed version. To learn about runtime log retention, see the [Agent Observability](https://docs.livekit.io/deploy/observability/insights/#retention-window) page.
 
 ## Additional resources
 
 The following resources may be helpful to design a logging strategy for your agent:
 
-- **[Agent observability](https://docs.livekit.io/agents/observability.md)**: Guide to monitoring your agent's behavior in production.
+- **[Agent observability](https://docs.livekit.io/deploy/observability.md)**: Guide to monitoring your agent's behavior in production.
 
 - **[Agent server options](https://docs.livekit.io/agents/server/options.md)**: Learn how to configure your agent server.
 
-- **[Secrets management](https://docs.livekit.io/agents/ops/deployment/secrets.md)**: Learn how to securely manage API keys for log forwarding.
+- **[Secrets management](https://docs.livekit.io/deploy/agents/secrets.md)**: Learn how to securely manage API keys for log forwarding.
 
-- **[Agents CLI reference](https://docs.livekit.io/agents/ops/deployment/cli.md)**: Reference for the agent deployment commands in the LiveKit CLI.
+- **[Agent CLI reference](https://docs.livekit.io/reference/other/agent-cli.md)**: Reference for the agent deployment commands in the LiveKit CLI.
 
 ---
 
-This document was rendered at 2025-11-18T23:55:17.904Z.
-For the latest version of this document, see [https://docs.livekit.io/agents/ops/deployment/logs.md](https://docs.livekit.io/agents/ops/deployment/logs.md).
+This document was rendered at 2026-02-03T03:25:22.372Z.
+For the latest version of this document, see [https://docs.livekit.io/deploy/agents/logs.md](https://docs.livekit.io/deploy/agents/logs.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

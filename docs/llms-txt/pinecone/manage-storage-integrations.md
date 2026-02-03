@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/operations/integrations/manage-storage-integrations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Manage storage integrations
 
 > Update and manage cloud storage integrations.

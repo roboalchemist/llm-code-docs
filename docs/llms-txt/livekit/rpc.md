@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/transport/data/rpc.md
 
-# Source: https://docs.livekit.io/home/client/data/rpc.md
-
-LiveKit docs › LiveKit SDKs › Realtime text & data › Remote method calls
+LiveKit docs › Data › Remote method calls
 
 ---
 
@@ -130,7 +128,7 @@ Use `localParticipant.performRpc` to call the registered RPC method on a remote 
 
 > ℹ️ **Hidden participants**
 > 
-> [Hidden participants](https://docs.livekit.io/home/get-started/api-primitives.md#hidden-participants) cannot call RPC methods. Any RPC attempt by a hidden participant fails with an error.
+> [Hidden participants](https://docs.livekit.io/intro/basics/rooms-participants-tracks/participants.md#hidden-participants) cannot call RPC methods. Any RPC attempt by a hidden participant fails with an error.
 
 **JavaScript**:
 
@@ -318,7 +316,7 @@ The following SDKs have full RPC examples.
 
 ---
 
-This document was rendered at 2025-11-18T23:54:52.151Z.
-For the latest version of this document, see [https://docs.livekit.io/home/client/data/rpc.md](https://docs.livekit.io/home/client/data/rpc.md).
+This document was rendered at 2026-02-03T03:25:19.053Z.
+For the latest version of this document, see [https://docs.livekit.io/transport/data/rpc.md](https://docs.livekit.io/transport/data/rpc.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

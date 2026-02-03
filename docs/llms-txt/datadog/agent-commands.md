@@ -6,7 +6,6 @@ description: >-
   Complete reference of Datadog Agent commands for starting, stopping,
   troubleshooting, and managing the Agent.
 breadcrumbs: Docs > Agent > Agent Configuration > Agent Commands
-source_url: https://docs.datadoghq.com/configuration/agent-commands/index.html
 ---
 
 # Agent Commands

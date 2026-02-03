@@ -1,11 +1,15 @@
 # Source: https://docs.galileo.ai/galileo/galileo-nlp-studio/galileo-product-features/actions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Actions
 
 > Actions help close the inspection loop and error discovery process. We support a number of actions.
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/galileo/images/actions.gif" />
+  <img src="https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/actions.gif?s=ac1cb22740a2dbba3d1132d5eceeb71b" data-og-width="600" width="600" data-og-height="126" height="126" data-path="images/actions.gif" data-optimize="true" data-opv="3" />
 </Frame>
 
 Generally these actions fall under two categories:

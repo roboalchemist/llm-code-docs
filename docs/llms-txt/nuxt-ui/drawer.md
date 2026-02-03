@@ -132,11 +132,8 @@ Use the `overlay` prop to control whether the Drawer has an overlay or not. Defa
 
 Use the `modal` prop to control whether the Drawer blocks interaction with outside content. Defaults to `true`.
 
-<note>
-
-When `modal` is set to `false`, the overlay is automatically disabled and outside content becomes interactive.
-
-</note>
+> [!NOTE]
+> When `modal` is set to `false`, the overlay is automatically disabled and outside content becomes interactive.
 
 ```vue
 <template>
@@ -153,17 +150,11 @@ When `modal` is set to `false`, the overlay is automatically disabled and outsid
 
 Use the `dismissible` prop to control whether the Drawer is dismissible when clicking outside of it or pressing escape. Defaults to `true`.
 
-<note>
+> [!NOTE]
+> A `close:prevent` event will be emitted when the user tries to close it.
 
-A `close:prevent` event will be emitted when the user tries to close it.
-
-</note>
-
-<tip>
-
-You can combine `modal: false` with `dismissible: false` to make the Drawer's background interactive without closing it.
-
-</tip>
+> [!TIP]
+> You can combine `modal: false` with `dismissible: false` to make the Drawer's background interactive without closing it.
 
 ```vue [DrawerDismissibleExample.vue]
 <script setup lang="ts">
@@ -204,34 +195,32 @@ Use the `should-scale-background` prop to scale the background when the Drawer i
 </template>
 ```
 
-<warning>
-
-Make sure to add the `data-vaul-drawer-wrapper` directive to a parent element of your app to make this work.
-
-```vue [app.vue]
-<template>
-  <UApp>
-    <div class="bg-default" data-vaul-drawer-wrapper>
-      <NuxtLayout>
-        <NuxtPage />
-      </NuxtLayout>
-    </div>
-  </UApp>
-</template>
-```
-
-```ts [nuxt.config.ts]
-export default defineNuxtConfig({
-  app: {
-    rootAttrs: {
-      'data-vaul-drawer-wrapper': '',
-      'class': 'bg-default'
-    }
-  }
-})
-```
-
-</warning>
+> [!WARNING]
+> Make sure to add the `data-vaul-drawer-wrapper` directive to a parent element of your app to make this work.
+> ```vue
+> <template>
+>   <UApp>
+>     <div class="bg-default" data-vaul-drawer-wrapper>
+>       <NuxtLayout>
+>         <NuxtPage />
+>       </NuxtLayout>
+>     </div>
+>   </UApp>
+> </template>
+> 
+> ```
+> 
+> ```ts
+> export default defineNuxtConfig({
+>   app: {
+>     rootAttrs: {
+>       'data-vaul-drawer-wrapper': '',
+>       'class': 'bg-default'
+>     }
+>   }
+> })
+> 
+> ```
 
 ## Examples
 
@@ -259,23 +248,11 @@ defineShortcuts({
 </template>
 ```
 
-<note>
+> [!NOTE]
+> In this example, leveraging [`defineShortcuts`](/docs/composables/define-shortcuts), you can toggle the Drawer by pressing .
 
-In this example, leveraging [`defineShortcuts`](/docs/composables/define-shortcuts), you can toggle the Drawer by pressing <kbd value="O">
-
-
-
-</kbd>
-
-.
-
-</note>
-
-<tip>
-
-This allows you to move the trigger outside of the Drawer or remove it entirely.
-
-</tip>
+> [!TIP]
+> This allows you to move the trigger outside of the Drawer or remove it entirely.
 
 ### Responsive drawer
 
@@ -709,8 +686,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/concepts/configuration/options
+
 # Working with configuration options
 
 Streamlit provides four different ways to set configuration options. This list is in reverse order of precedence, i.e. command line flags take precedence over environment variables when the same configuration option is provided multiple times.

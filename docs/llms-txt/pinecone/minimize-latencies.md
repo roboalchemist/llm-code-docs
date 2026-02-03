@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/troubleshooting/minimize-latencies.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Minimize latencies
 
 There are many aspects to consider to minimize latencies:
@@ -15,3 +19,7 @@ To minimize latency when accessing Pinecone:
 ## High query latencies with batching
 
 If you're batching queries, try reducing the number of queries per call to 1 query vector. You can make these [calls in parallel](/troubleshooting/parallel-queries) and expect roughly the same performance as with batching.
+
+## High latencies with fetch or include\_values
+
+For on-demand indexes, since vector values are retrieved from object storage, operations that return vector values (`fetch` operations or queries with `include_values=true`) may have increased latency. If you don't need the vector values, set `include_values=false` when querying, or use the [`query`](/reference/api/latest/data-plane/query) operation instead of `fetch` if you only need metadata or IDs. See [Decrease latency](/guides/optimize/decrease-latency#avoid-including-vector-values-when-not-needed) for more details.

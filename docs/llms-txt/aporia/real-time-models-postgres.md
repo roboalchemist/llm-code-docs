@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/storing-your-predictions/real-time-models-postgres.md
 
-# Source: https://docs.aporia.com/storing-your-predictions/real-time-models-postgres.md
-
-# Source: https://docs.aporia.com/v1/storing-your-predictions/real-time-models-postgres.md
-
 # Real-time Models (Postgres)
 
 For real-time models with mid-level throughput (e.g models with an HTTP endpoint such as `POST /predict`), you can insert predictions to a database such as [Postgres](https://www.postgresql.org/), [MySQL](https://www.mysql.com/), or even [Elasticsearch](https://www.elastic.co/).

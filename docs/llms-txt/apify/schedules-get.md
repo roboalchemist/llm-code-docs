@@ -9,7 +9,7 @@ https://api.apify.com/v2/schedules
 ```
 
 
-Clientshttps://docs.apify.com/api/client/python/reference/class/ScheduleCollectionClientAsync#listhttps://docs.apify.com/api/client/js/reference/class/ScheduleCollectionClient#listGets the list of schedules that the user created.
+Gets the list of schedules that the user created.
 
 The endpoint supports pagination using the `limit` and `offset` parameters. It will not return more than 1000 records.
 
@@ -20,6 +20,10 @@ By default, the records are sorted by the `createdAt` field in ascending order. 
 ## Responses
 
 * 200
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

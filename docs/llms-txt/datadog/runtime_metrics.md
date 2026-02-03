@@ -6,7 +6,6 @@ description: >-
   Gain additional insights into an application's performance with the runtime
   metrics associated with your traces.
 breadcrumbs: Docs > APM > APM Metrics > Runtime Metrics
-source_url: https://docs.datadoghq.com/metrics/runtime_metrics/index.html
 ---
 
 # Runtime Metrics

@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/Text2SQL-Data.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LLM Eval For Text2SQL
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/Text2SQL-Data/Text2SQL-Data.ipynb) by [Ankur Goyal](https://twitter.com/ankrgyl) on 2024-05-29</div>
@@ -675,8 +679,3 @@ Braintrust makes it easy to filter down to the regressions, and view a side-by-s
 In this cookbook, we walked through the process of building a dataset for a text2sql application. We started with a few handwritten examples, and iterated on the dataset by using an LLM to generate more examples. We used the eval framework to track our progress, and iterated on the model and dataset to improve the results. Finally, we tried out a more powerful model to see if it could improve the results.
 
 Happy evaling!
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

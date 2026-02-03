@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/howto/terraformprovider.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Terraform Provider
 
 You can use Upstash terraform provider to create your resources. API key is
@@ -10,7 +14,7 @@ required in order to create resources.
 Provider requires your email address and api key which can be created in
 console.
 
-```
+```tf  theme={"system"}
 provider "upstash" {
   email = ""
   api_key = ""
@@ -21,7 +25,7 @@ provider "upstash" {
 
 As input you need to give database name, region and type.
 
-```
+```tf  theme={"system"}
 resource "upstash_database" "mydb" {
   database_name = "testdblstr"
   region = "eu-west-1"
@@ -31,7 +35,7 @@ resource "upstash_database" "mydb" {
 
 You can output database credentials as following
 
-```
+```tf  theme={"system"}
 output "endpoint" {
   value = "${upstash_database.mydb.endpoint}"
 }

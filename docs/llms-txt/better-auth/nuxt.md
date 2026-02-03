@@ -6,11 +6,7 @@
 
 Better Auth Nuxt example.
 
-***
 
-title: Nuxt Example
-description: Better Auth Nuxt example.
---------------------------------------
 
 This is an example of how to use Better Auth with Nuxt.
 

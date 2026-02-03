@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/guard-for-in.md
 ---
-# eslint/guard-for-in&#x20;
 
 ### What it does
 

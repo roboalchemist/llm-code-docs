@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/common/concepts/access-anywhere.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Access Anywhere
 
 Upstash has integrated REST APIs into all its products to facilitate access from various runtime environments. This integration is particularly beneficial for edge runtimes like Cloudflare Workers and Vercel Edge, which do not permit TCP connections, and for serverless functions such as AWS Lambda, which are stateless and do not retain connection information between invocations.

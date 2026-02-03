@@ -4,11 +4,11 @@
 
 ## What is a Prompt?
 
-A Prompt is a parameterized natural language query you can name and save in Warp to use with [Agent Mode](https://docs.warp.dev/agents/using-agents).
+A Prompt is a parameterized natural language query you can name and save in Warp to use with [Agent Mode](https://docs.warp.dev/agents/using-agents/).
 
 Prompts are searchable and easily accessed from the [Command Palette](https://docs.warp.dev/terminal/command-palette) so you can find and execute them without switching context. They allow you to save and reuse specific and complex AI workflows, making it easier to repeat multi-step tasks with Agent Mode.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-4a7a7593ea9e583c8acde5950aff4814fd6953c1%2Fprompts-command-view.png?alt=media" alt="View of a Prompt in Warp Drive showing the command view interface"><figcaption><p>Command view of a Prompt in Warp Drive</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-4a7a7593ea9e583c8acde5950aff4814fd6953c1%2Fprompts-command-view.png?alt=media" alt="View of a Prompt in Warp Drive showing the command view interface"><figcaption><p>Command view of a Prompt in Warp Drive</p></figcaption></figure>
 
 ### Demo: Trigger Reusable Actions with Saved Prompts
 
@@ -27,7 +27,7 @@ You can create a new Prompt from Warp Drive by clicking the + button and selecti
 * Add a meaningful description that will be indexed for search (optional)
 * Add arguments, descriptions for arguments, and default values (optional)
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-b5f0aa58be3db8f09ff0288c2a04ee3d3c2a9b18%2Fprompts-edit-view.png?alt=media" alt="View of the Prompt editor interface showing the edit form with fields for name, query, description, and arguments"><figcaption><p>Edit view of a Prompt in Warp Drive</p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-b5f0aa58be3db8f09ff0288c2a04ee3d3c2a9b18%2Fprompts-edit-view.png?alt=media" alt="View of the Prompt editor interface showing the edit form with fields for name, query, description, and arguments"><figcaption><p>Edit view of a Prompt in Warp Drive</p></figcaption></figure>
 
 Once a Prompt has been created, you can edit it at any time, as long as you have access to an internet connection.
 
@@ -62,9 +62,9 @@ You can execute a Prompt in several ways:
 * From the [Command Palette](https://docs.warp.dev/terminal/command-palette) or [Command Search](https://docs.warp.dev/terminal/entry/command-search), search for a Prompt by name or type "prompts:" to see all available prompts and your prompt history
 * When a Prompt is selected, you can use `SHIFT-TAB` to cycle through the arguments.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-390738e6639a1537144c71a295dbf0f2de7c4103%2Fprompts-command-palette.png?alt=media" alt="Command Palette interface showing a search for Prompts with results displayed"><figcaption><p>Search for Prompts in the Command Palette with <code>CMD + P</code></p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-390738e6639a1537144c71a295dbf0f2de7c4103%2Fprompts-command-palette.png?alt=media" alt="Command Palette interface showing a search for Prompts with results displayed"><figcaption><p>Search for Prompts in the Command Palette with <code>CMD + P</code></p></figcaption></figure>
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-b88aa05c6d16d5d02a0f72d1976d33c2450f66fe%2Fprompts-command-search.png?alt=media" alt="Command Search interface showing a search for Prompts with results displayed"><figcaption><p>Search for Prompts in Command Search with <code>CTRL + R</code></p></figcaption></figure>
+<figure><img src="https://4009768362-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FPsjNxoJ0NFCXW6rRdHH3%2Fuploads%2Fgit-blob-b88aa05c6d16d5d02a0f72d1976d33c2450f66fe%2Fprompts-command-search.png?alt=media" alt="Command Search interface showing a search for Prompts with results displayed"><figcaption><p>Search for Prompts in Command Search with <code>CTRL + R</code></p></figcaption></figure>
 
 These options will paste the Prompt into your active terminal input. Prompt names and any relevant descriptions and arguments will be displayed in a dialog, so you can understand how to use the Prompt.
 

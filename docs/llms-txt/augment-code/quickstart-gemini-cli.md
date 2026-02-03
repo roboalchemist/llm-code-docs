@@ -1,15 +1,19 @@
 # Source: https://docs.augmentcode.com/context-services/mcp/quickstart-gemini-cli.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Quickstart (Gemini CLI)
 
 > Get started with Augment Context Engine MCP in Gemini CLI in minutes
 
 ## Quick Start with Gemini CLI
 
-### 1. Install Auggie CLI (Pre-release version)
+### 1. Install Auggie CLI
 
 ```bash  theme={null}
-npm install -g @augmentcode/auggie@prerelease
+npm install -g @augmentcode/auggie@latest
 ```
 
 ### 2. Sign in to Augment
@@ -38,9 +42,7 @@ Add the following configuration to your Gemini CLI settings file:
   "mcpServers": {
     "augment-context-engine": {
       "command": "auggie",
-      "args": [
-        "--mcp"
-      ]
+      "args": ["--mcp", "--mcp-auto-workspace"]
     }
   }
 }
@@ -51,27 +53,10 @@ Add the following configuration to your Gemini CLI settings file:
 Prompt the Gemini CLI with:
 
 ```
-"What is this project? Please use codebase retrieval tool to get the answer."
+Prompt: "What is this project? Please use codebase retrieval tool to get the answer."
 ```
 
 Gemini CLI should confirm it has access to the `codebase-retrieval` tool.
-
-## Configuration
-
-### Workspace Root
-
-Specify the workspace to index by adding the `-w` argument. Update the **/path/to/project**.
-
-```json  theme={null}
-{
-  "mcpServers": {
-    "augment-context-engine": {
-      "command": "auggie",
-      "args": ["-w", "/path/to/project", "--mcp"]
-    }
-  }
-}
-```
 
 ## Advanced: Non-Interactive Setup
 
@@ -100,7 +85,7 @@ Add the `env` section to your configuration:
   "mcpServers": {
     "augment-context-engine": {
       "command": "auggie",
-      "args": ["--mcp"],
+      "args": ["--mcp", "--mcp-auto-workspace"],
       "env": {
         "AUGMENT_API_TOKEN": "your-access-token",
         "AUGMENT_API_URL": "your-tenant-url"
@@ -111,25 +96,3 @@ Add the `env` section to your configuration:
 ```
 
 Replace `your-access-token` and `your-tenant-url` with the values from step 1.
-
-For a specific workspace:
-
-```json  theme={null}
-{
-  "mcpServers": {
-    "augment-context-engine": {
-      "command": "auggie",
-      "args": ["-w", "/path/to/project", "--mcp"],
-      "env": {
-        "AUGMENT_API_TOKEN": "your-access-token",
-        "AUGMENT_API_URL": "your-tenant-url"
-      }
-    }
-  }
-}
-```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.augmentcode.com/llms.txt

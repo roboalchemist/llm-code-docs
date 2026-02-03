@@ -2,41 +2,27 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hpersist.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hpersist.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hpersist.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hpersist.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hpersist.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hpersist.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hpersist.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hpersist.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hpersist.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hpersist.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # HPERSIST
 
-> Remove the expiration from one or more fields in a hash.
+> Remove the expiration from one or more hash fields.
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the hash.
 </ParamField>
 
-<ParamField body="field" type="string | number | (string | number)[]" required>
-  The field or fields to remove the expiration from.
+<ParamField body="fields" type="Union[str, List[str]]" required>
+  The field or list of fields within the hash to remove the expiry from.
 </ParamField>
 
 ## Response
 
-<ResponseField type="number[]" required>
+<ResponseField type="List[int]" required>
   A list of integers indicating the result for each field:
 
   * `-2` if the field does not exist in the hash or if the key doesn't exist.
@@ -47,12 +33,10 @@
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.hset("my-key", "my-field", "my-value");
-  await redis.hpexpire("my-key", "my-field", 1000);
+  ```py Example theme={"system"}
+  redis.hset(hash_name, field, value)
+  redis.hpexpire(hash_name, field, 1000)
 
-  const expirationRemoved = await redis.hpersist("my-key", "my-field");
-
-  console.log(expirationRemoved); // [1]
+  assert redis.hpersist(hash_name, field) == [1]
   ```
 </RequestExample>

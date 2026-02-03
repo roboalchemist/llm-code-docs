@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/reranking/eval.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Evaluating Hybrid Search Performance
 
 > Learn about evaluating hybrid search performance in LanceDB.
@@ -67,8 +71,3 @@ replacement for the search methods they supplement. They are complementary and i
 have to tune them together to get the best results. The latency vs. recall tradeoff is also an
 important factor to consider when choosing the reranker. Hopefully this evaluation
 gives you a starting point for your own experiments with hybrid search in LanceDB!
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

@@ -504,7 +504,7 @@ The `CreateRoom` function has been renamed to `NewRoom` to disambiguate it from 
 
 ---
 
-This document was rendered at 2025-12-31T18:29:41.171Z.
+This document was rendered at 2026-02-03T03:25:26.715Z.
 For the latest version of this document, see [https://docs.livekit.io/reference/migration-guides/migrate-from-v1.md](https://docs.livekit.io/reference/migration-guides/migrate-from-v1.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

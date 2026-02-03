@@ -1,5 +1,9 @@
 # Source: https://docs.openpipe.ai/base-models.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.openpipe.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Base Models
 
 > Train and compare across a range of the most powerful base models.

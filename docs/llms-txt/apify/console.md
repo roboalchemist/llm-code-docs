@@ -2,18 +2,6 @@
 
 # Source: https://docs.apify.com/platform/console.md
 
-# Source: https://docs.apify.com/platform/integrations/airtable/console.md
-
-# Source: https://docs.apify.com/platform/console.md
-
-# Source: https://docs.apify.com/platform/integrations/airtable/console.md
-
-# Source: https://docs.apify.com/platform/console.md
-
-# Source: https://docs.apify.com/platform/integrations/airtable/console.md
-
-# Source: https://docs.apify.com/platform/console.md
-
 # Apify Console
 
 **Learn about Apify Console's easy account creation and user-friendly homepage for efficient web scraping management.**
@@ -22,7 +10,7 @@
 
 ## Sign-up
 
-To use Apify Console, you first need to create an account. To create it please go to the https://console.apify.com/sign-up. At the moment we support 3 different methods of creating an account:
+To use Apify Console, you first need to create an account. To create it please go to the [sign-up page](https://console.apify.com/sign-up). At the moment we support 3 different methods of creating an account:
 
 ![Apify Console sign-up form](/assets/images/console-sign-up-form-46fd3325ba8e89ec2cf584d97323d97a.png)
 
@@ -36,7 +24,7 @@ CAPTCHA
 
 We are using Google reCaptcha to prevent spam accounts. Usually, you will not see it, but if Google evaluates your browser as suspicious, they will ask you to solve a reCaptcha before we create your account and send you the verification email.
 
-If you did not receive the email, you can visit the https://console.apify.com/sign-in. There, you will either proceed to our verification page right away, or you can sign in and will be redirected afterward. On the verification page, you can click on the **Resend verification email** button to send the email again.
+If you did not receive the email, you can visit the [sign-in page](https://console.apify.com/sign-in). There, you will either proceed to our verification page right away, or you can sign in and will be redirected afterward. On the verification page, you can click on the **Resend verification email** button to send the email again.
 
 ![Apify Console email verification page](/assets/images/console-email-verification-page-cd52c88d6687d43ae7540a0576cafff4.png)
 
@@ -50,7 +38,7 @@ If you already have an account in Apify Console connected to Google or GitHub, c
 
 ## Sign-in
 
-To sign in to your account, please go to the https://console.apify.com/sign-in. There, you can use any of the authentication methods you have set up for your account. If you have multiple authentication methods, you can choose which one you want to use by using the corresponding button or form.
+To sign in to your account, please go to the [sign-in page](https://console.apify.com/sign-in). There, you can use any of the authentication methods you have set up for your account. If you have multiple authentication methods, you can choose which one you want to use by using the corresponding button or form.
 
 If you sign in through email and password and have two-factor authentication enabled on your account, you will proceed to the two-factor authentication page after you enter your password. There, you will need to enter the code from your authenticator app to sign in. If you do not have two-factor authentication enabled, you will be directly redirected to Apify Console.
 
@@ -58,13 +46,13 @@ If you sign in through email and password and have two-factor authentication ena
 
 ### Forgotten password
 
-In case you forgot your password, you can click on the **Forgot your password?** link, which will redirect you to the https://console.apify.com/forgot-password. There, you will need to enter your email address and click on the **Reset password** button. We will then send an email to the address connected to your account with a link to the password reset page, which will allow you to change your password.
+In case you forgot your password, you can click on the **Forgot your password?** link, which will redirect you to the [forgot password page](https://console.apify.com/forgot-password). There, you will need to enter your email address and click on the **Reset password** button. We will then send an email to the address connected to your account with a link to the password reset page, which will allow you to change your password.
 
 ![Apify Console forgotten password page](/assets/images/console-forgotten-password-page-80595b60da993709cdae8a77443fb2fb.png)
 
 ## Adding different authentication methods
 
-After you create your account, you might still want to use the other authentication methods. To do that, go to the https://console.apify.com/settings/security section of your account settings. There, you will see all available authentication methods and their configuration.
+After you create your account, you might still want to use the other authentication methods. To do that, go to the [Login & Privacy](https://console.apify.com/settings/security) section of your account settings. There, you will see all available authentication methods and their configuration.
 
 ![Apify Console sign-in methods section on account page](/assets/images/console-sign-in-methods-section-52ce5a19f1238ec7a063b5c053f36493.png)
 
@@ -113,16 +101,16 @@ Keyboard Shortcuts
 | Settings       | GS     |
 | Billing        | GB     |
 
-| Tab name                                                          | Description                                                                                                                                                                                    |
-| ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| https://docs.apify.com/platform/console/store.md                  | Search for Actors that suit your web-scraping needs.                                                                                                                                           |
-| https://docs.apify.com/platform/actors.md                         | View recent & bookmarked Actors.                                                                                                                                                               |
-| https://docs.apify.com/platform/actors/running/runs-and-builds.md | View your recent runs.                                                                                                                                                                         |
-| https://docs.apify.com/platform/actors/running/tasks.md           | View your saved tasks.                                                                                                                                                                         |
-| https://docs.apify.com/platform/schedules.md                      | Schedule Actor runs & tasks to run at specified time.                                                                                                                                          |
-| https://docs.apify.com/platform/integrations.md                   | View your integrations.                                                                                                                                                                        |
-| https://docs.apify.com/platform/actors/development.md             | • My Actors - See Actors developed by you.<br />• Insights - see analytics for your Actors.<br />• Messaging - check on issues reported in your Actors or send emails to users of your Actors. |
-| https://docs.apify.com/platform/proxy.md                          | View your proxy usage & credentials                                                                                                                                                            |
-| https://docs.apify.com/platform/storage.md                        | View stored results of your runs in various data formats.                                                                                                                                      |
-| https://docs.apify.com/platform/console/billing.md                | Billing information, statistics and invoices.                                                                                                                                                  |
-| https://docs.apify.com/platform/console/settings.md               | Settings of your account.                                                                                                                                                                      |
+| Tab name                                                                  | Description                                                                                                                                                                                    |
+| ------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Apify Store](https://docs.apify.com/platform/console/store.md)           | Search for Actors that suit your web-scraping needs.                                                                                                                                           |
+| [Actors](https://docs.apify.com/platform/actors.md)                       | View recent & bookmarked Actors.                                                                                                                                                               |
+| [Runs](https://docs.apify.com/platform/actors/running/runs-and-builds.md) | View your recent runs.                                                                                                                                                                         |
+| [Saved tasks](https://docs.apify.com/platform/actors/running/tasks.md)    | View your saved tasks.                                                                                                                                                                         |
+| [Schedules](https://docs.apify.com/platform/schedules.md)                 | Schedule Actor runs & tasks to run at specified time.                                                                                                                                          |
+| [Integrations](https://docs.apify.com/platform/integrations.md)           | View your integrations.                                                                                                                                                                        |
+| [Development](https://docs.apify.com/platform/actors/development.md)      | • My Actors - See Actors developed by you.<br />• Insights - see analytics for your Actors.<br />• Messaging - check on issues reported in your Actors or send emails to users of your Actors. |
+| [Proxy](https://docs.apify.com/platform/proxy.md)                         | View your proxy usage & credentials                                                                                                                                                            |
+| [Storage](https://docs.apify.com/platform/storage.md)                     | View stored results of your runs in various data formats.                                                                                                                                      |
+| [Billing](https://docs.apify.com/platform/console/billing.md)             | Billing information, statistics and invoices.                                                                                                                                                  |
+| [Settings](https://docs.apify.com/platform/console/settings.md)           | Settings of your account.                                                                                                                                                                      |

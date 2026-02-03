@@ -20,7 +20,7 @@ LM Studio is available for macOS, Windows, and Linux.
 1. Download and run local LLMs like gpt-oss or Llama, Qwen
 2. Use a simple and flexible chat interface
 3. Connect MCP servers and use them with local models
-4. Search & download functionality (via Hugging Face 🤗)
+4. Search & download functionality (via Hugging Face ð¤)
 5. Serve local models on OpenAI-like endpoints, locally and on the network
 6. Manage your local models, prompts, and configurations
 
@@ -36,7 +36,7 @@ LM Studio supports running LLMs on Mac, Windows, and Linux using [`llama.cpp`](h
 
 On Apple Silicon Macs, LM Studio also supports running LLMs using Apple's [`MLX`](https://github.com/ml-explore/mlx).
 
-To install or manage LM Runtimes, press `⌘` `Shift` `R` on Mac or `Ctrl` `Shift` `R` on Windows/Linux.
+To install or manage LM Runtimes, press `â` `Shift` `R` on Mac or `Ctrl` `Shift` `R` on Windows/Linux.
 
 ## LM Studio as an MCP client
 
@@ -80,8 +80,7 @@ Join the LM Studio community on [Discord](https://discord.gg/aPQfnNkxGC) to ask 
 ## macOS
 
 - Chip: Apple Silicon (M1/M2/M3/M4).
-- macOS 13.4 or newer is required.
-  - For MLX models, macOS 14.0 or newer is required.
+- macOS 14.0 or newer is required.
 - 16GB+ RAM recommended.
   - You may still be able to use LM Studio on 8GB Macs, but stick to smaller models and modest context sizes.
 - Intel-based Macs are currently not supported. Chime in [here](https://github.com/lmstudio-ai/lmstudio-bug-tracker/issues/9) if you are interested in this.
@@ -219,11 +218,11 @@ LM Studio has a ChatGPT-like interface for chatting with local LLMs. You can cre
 
 ### Create a new chat
 
-You can create a new chat by clicking the "+" button or by using a keyboard shortcut: `⌘` + `N` on Mac, or `ctrl` + `N` on Windows / Linux.
+You can create a new chat by clicking the "+" button or by using a keyboard shortcut: `â` + `N` on Mac, or `ctrl` + `N` on Windows / Linux.
 
 ### Create a folder
 
-Create a new folder by clicking the new folder button or by pressing: `⌘` + `shift` + `N` on Mac, or `ctrl` + `shift` + `N` on Windows / Linux.
+Create a new folder by clicking the new folder button or by pressing: `â` + `shift` + `N` on Mac, or `ctrl` + `shift` + `N` on Windows / Linux.
 
 ### Drag and drop
 
@@ -231,7 +230,13 @@ You can drag and drop chats in and out of folders, and even drag folders into fo
 
 ### Duplicate chats
 
-You can duplicate a whole chat conversation by clicking the `•••` menu and selecting "Duplicate". If the chat has any files in it, they will be duplicated too.
+You can duplicate a whole chat conversation by clicking the `â¢â¢â¢` menu and selecting "Duplicate". If the chat has any files in it, they will be duplicated too.
+
+### Split view in chat
+
+You can view two chats side by side by dragging and dropping chat tabs to either half of the window. Alternatively, use the split view icon at the top right of a chat window to split left or right. 
+
+Close one side of the split view with the 'x' button in the top right of each pane.
 
 ## FAQ
 
@@ -280,7 +285,7 @@ LM Studio comes with a built-in model downloader that let's you download any sup
 
 You can search for models by keyword (e.g. `llama`, `gemma`, `lmstudio`), or by providing a specific `user/model` string. You can even insert full Hugging Face URLs into the search bar!
 
-###### Pro tip: you can jump to the Discover tab from anywhere by pressing `⌘` + `2` on Mac, or `ctrl` + `2` on Windows / Linux.
+###### Pro tip: you can jump to the Discover tab from anywhere by pressing `â` + `2` on Mac, or `ctrl` + `2` on Windows / Linux.
 
 ### Which download option to choose?
 
@@ -288,7 +293,7 @@ You will often see several options for any given model named things like `Q3_K_S
 
 Choose a 4-bit option or higher if your machine is capable enough for running it.
 
-<img src="/assets/docs/search.png" style="" data-caption="Hugging Face search results in LM Studio" />
+<img src="/assets/docs/search.webp" style="" data-caption="Hugging Face search results in LM Studio" />
 
 <hr>
 
@@ -746,7 +751,7 @@ New in 0.3.15: You can [import](/docs/app/presets/import) Presets from file or U
 
 Below is the anatomy of the Preset manager:
 
-<img src="/assets/docs/preset-widget-anatomy.png" style="width:70%" data-caption="The anatomy of the Preset manager in the settings sidebar.">
+<img src="/assets/docs/preset-widget-anatomy.webp" style="width:70%" data-caption="The anatomy of the Preset manager in the settings sidebar.">
 
 ## Importing, Publishing, and Updating Downloaded Presets
 
@@ -849,7 +854,7 @@ lms get neil/qwen3-thinking
 
 LM Studio manages config presets on disk. Presets are local and private by default. You or others can choose to share them by sharing the file.
 
-Click on the `•••` button in the Preset dropdown and select "Reveal in Finder" (or "Show in Explorer" on Windows).
+Click on the `â¢â¢â¢` button in the Preset dropdown and select "Reveal in Finder" (or "Show in Explorer" on Windows).
 <img src="/assets/docs/preset-reveal-in-finder.png" data-caption="Reveal Preset in your local file system" />
 
 This will download the preset file and automatically surface it in the preset dropdown in the app. 
@@ -872,7 +877,7 @@ This feature is early and we would love to hear your feedback. Please report bug
 
 ## Step 1: Click the Publish Button
 
-Identify the Preset you want to publish in the Preset dropdown. Click the `•••` button and select "Publish" from the menu.
+Identify the Preset you want to publish in the Preset dropdown. Click the `â¢â¢â¢` button and select "Publish" from the menu.
 
 <img src="/assets/docs/preset-publish-new.png" data-caption="Click the Publish button to publish your Preset to the LM Studio Hub." />
 
@@ -898,7 +903,7 @@ You can pull the latest revisions of your Presets, or presets you have imported 
 <hr>
 
 ## How to Pull Updates
-Click the `•••` button in the Preset dropdown and select "Pull" from the menu.
+Click the `â¢â¢â¢` button in the Preset dropdown and select "Pull" from the menu.
 
 <img src="/assets/docs/preset-pull-latest.png" data-caption="Pull the latest revisions of your or imported Presets." />
 
@@ -1033,7 +1038,7 @@ Here are some extreme examples that illustrate this concept:
 
 Prompt: "What is the quadratic equation formula?"
 
-In this case, both a 70B model and a 0.5B model are both very likely to give the standard formula `x = (-b ± √(b² - 4ac))/(2a)`. So if the draft model suggested this formula as the next tokens, the target model would likely accept it, making this an ideal case for speculative decoding to work efficiently.
+In this case, both a 70B model and a 0.5B model are both very likely to give the standard formula `x = (-b Â± â(bÂ² - 4ac))/(2a)`. So if the draft model suggested this formula as the next tokens, the target model would likely accept it, making this an ideal case for speculative decoding to work efficiently.
 
 #### 2. Creative Example: Story Generation
 
@@ -1072,18 +1077,18 @@ LM Studio aims to preserves the directory structure of models downloaded from Hu
 
 ```xml
 ~/.lmstudio/models/
-└── publisher/
-    └── model/
-        └── model-file.gguf
+âââ publisher/
+    âââ model/
+        âââ model-file.gguf
 ```
 
 For example, if you have a model named `ocelot-v1` published by `infra-ai`, the structure would look like this:
 
 ```xml
 ~/.lmstudio/models/
-└── infra-ai/
-    └── ocelot-v1/
-        └── ocelot-v1-instruct-q4_0.gguf
+âââ infra-ai/
+    âââ ocelot-v1/
+        âââ ocelot-v1-instruct-q4_0.gguf
 ```
 
 <hr>
@@ -1091,6 +1096,31 @@ For example, if you have a model named `ocelot-v1` published by `infra-ai`, the 
 ### Community
 
 Chat with other LM Studio users, discuss LLMs, hardware, and more on the [LM Studio Discord server](https://discord.gg/aPQfnNkxGC).
+
+
+### Parallel Requests
+
+> Enable parallel requests via continuous batching
+
+
+When loading a model, you can now set Max Concurrent Predictions to allow multiple requests to be processed in parallel, instead of queued. This is supported for LM Studio's llama.cpp engine, with MLX coming soon. 
+
+Please make sure your GGUF runtime is upgraded to llama.cpp v2.0.0.
+
+<hr>
+
+### Parallel Requests via Continuous Batching
+Parallel requests via continuous batching allows the LM Studio server to dynamically combine multiple requests into a single batch. This enables concurrent workflows and results in higher throughput.
+
+### Setting Max Concurrent Predictions
+
+Open the model loader and toggle on Manually choose model load parameters. Select a model to load, and toggle on Show advanced settings to set Max Concurrent Predictions. By default, Max Concurrent Predictions is set to 4.
+
+### Sending parallel requests to chats in Split View
+
+Use the [split view in chat feature](/docs/basics/chat) to send two requests simultaneously to two chats and view them side by side. 
+
+<img src="/assets/docs/parallel-requests.png" style="width:80%; margin-top:30px" data-caption="Send parallel requests using split view in chat" />
 
 
 ### Per-model Defaults
@@ -1108,9 +1138,9 @@ When the model is loaded anywhere in the app (including through [`lms load`](/do
 
 ### Setting default parameters for a model
 
-Head to the My Models tab and click on the gear ⚙️ icon to edit the model's default parameters.
+Head to the My Models tab and click on the gear âï¸ icon to edit the model's default parameters.
 
-<img src="/assets/docs/model-settings-gear.png" style="width:80%" data-caption="Click on the gear icon to edit the default load settings for a model.">
+<img src="/assets/docs/model-settings-gear.webp" style="width:80%" data-caption="Click on the gear icon to edit the default load settings for a model.">
 
 This will open a dialog where you can set the default parameters for the model.
 
@@ -1171,14 +1201,14 @@ However, you can customize the prompt template for any model.
 
 ### Overriding the Prompt Template for a Specific Model
 
-Head over to the My Models tab and click on the gear ⚙️ icon to edit the model's default parameters.
-###### Pro tip: you can jump to the My Models tab from anywhere by pressing `⌘` + `3` on Mac, or `ctrl` + `3` on Windows / Linux.
+Head over to the My Models tab and click on the gear âï¸ icon to edit the model's default parameters.
+###### Pro tip: you can jump to the My Models tab from anywhere by pressing `â` + `3` on Mac, or `ctrl` + `3` on Windows / Linux.
 
 ### Customize the Prompt Template
 
-###### 💡 In most cases you don't need to change the prompt template
+###### ð¡ In most cases you don't need to change the prompt template
 
-When a model doesn't come with a prompt template information, LM Studio will surface the `Prompt Template` config box in the **🧪 Advanced Configuration** sidebar.
+When a model doesn't come with a prompt template information, LM Studio will surface the `Prompt Template` config box in the **ð§ª Advanced Configuration** sidebar.
 
 <img src="/assets/docs/prompt-template.png" style="width:80%" data-caption="The Prompt Template config box in the chat sidebar">
 
@@ -1189,7 +1219,7 @@ You can make this config box always show up by right clicking the sidebar and se
 #### Jinja Template
 You can express the prompt template in Jinja.
 
-###### 💡 [Jinja](https://en.wikipedia.org/wiki/Jinja_(template_engine)) is a templating engine used to encode the prompt template in several popular LLM model file formats.
+###### ð¡ [Jinja](https://en.wikipedia.org/wiki/Jinja_(template_engine)) is a templating engine used to encode the prompt template in several popular LLM model file formats.
 
 #### Manual
 
@@ -1227,7 +1257,7 @@ You can jump to Settings from anywhere in the app by pressing `cmd` + `,` on mac
 
 <hr>
 
-#### Big thank you to community localizers 🙏
+#### Big thank you to community localizers ð
 
 - Spanish [@xtianpaiva](https://github.com/xtianpaiva), [@AlexisGross](https://github.com/AlexisGross), [@Tonband](https://github.com/Tonband)
 - Norwegian [@Exlo84](https://github.com/Exlo84)
@@ -1277,18 +1307,16 @@ LM Studio strings are maintained in https://github.com/lmstudio-ai/localization.
 See instructions for contributing [here](https://github.com/lmstudio-ai/localization/blob/main/README.md).
 
 
-### User, Power User, or Developer
+### User or Developer
 
-> Hide or reveal advanced features
+> Show more advanced settings and developer features
 
 
-### Selecting a UI Mode
+### Enable Developer Mode
 
-You can configure LM Studio to run in increasing levels of configurability.
+Developer Mode combines the previous Developer and Power User modes into a single mode with all advanced features enabled. You can enable Developer mode in Settings > Developer.
 
-Select between User, Power User, and Developer.
-
-<img src="/assets/docs/modes.png" style="width: 500px; margin-top:30px" data-caption="Choose a mode at the bottom of the app" />
+<img src="/assets/docs/enable-developermode.png" style="width:80%; margin-top:30px" data-caption="Enable developer mode in settings" />
 
 ### Which mode should I choose?
 
@@ -1296,13 +1324,12 @@ Select between User, Power User, and Developer.
 
 Show only the chat interface, and auto-configure everything. This is the best choice for beginners or anyone who's happy with the default settings.
 
-#### `Power User`
-
-Use LM Studio in this mode if you want access to configurable [load](/docs/configuration/load) and [inference](/docs/configuration/inference) parameters as well as advanced chat features such as [insert, edit, &amp; continue](/docs/advanced/context) (for either role, user or assistant).
 
 #### `Developer`
 
-Full access to all aspects in LM Studio. This includes keyboard shortcuts and development features. Check out the Developer section under Settings for more.
+Full access to all aspects in LM Studio. This includes keyboard shortcuts and development features. 
+
+Use LM Studio in this mode if you want access to configurable [load](/docs/configuration/load) and [inference](/docs/configuration/inference) parameters as well as advanced chat features such as [insert, edit, &amp; continue](/docs/advanced/context) (for either role, user or assistant).
 
 
 ### Color Themes
@@ -1323,7 +1350,7 @@ Choosing the "Auto" option will automatically switch between Light and Dark them
 
 # LM Studio Developer Docs
 
-> Build with LM Studio's local APIs and SDKs — TypeScript, Python, REST, and OpenAI‑compatible endpoints.
+> Build with LM Studio's local APIs and SDKs â TypeScript, Python, REST, and OpenAI and Anthropic-compatible endpoints.
 
 
 ```lms_hstack
@@ -1331,7 +1358,9 @@ Choosing the "Auto" option will automatically switch between Light and Dark them
 
 - TypeScript SDK: [lmstudio-js](/docs/typescript)
 - Python SDK: [lmstudio-python](/docs/python)
-- OpenAI‑compatible: [Chat, Responses, Embeddings](/docs/developer/openai-compat)
+- LM Studio REST API: [Stateful Chats, MCPs via API](/docs/developer/rest)
+- OpenAIâcompatible: [Chat, Responses, Embeddings](/docs/developer/openai-compat)
+- Anthropic-compatible: [Messages](/docs/developer/anthropic-compat)
 - LM Studio CLI: [`lms`](/docs/cli)
 
 :::split:::
@@ -1339,11 +1368,38 @@ Choosing the "Auto" option will automatically switch between Light and Dark them
 ## What you can build
 
 - Chat and text generation with streaming
+- Tool calling and local agents with MCP
 - Structured output (JSON schema)
-- Tool calling and local agents
 - Embeddings and tokenization
-- Model management (JIT load, TTL, auto‑evict)
+- Model management (load, download, list)
 ```
+
+## Install `llmster` for headless deployments
+
+`llmster` is LM Studio's core, packaged as a daemon for headless deployment on servers, cloud instances, or CI. The daemon runs standalone, and it is not dependent on the LM Studio GUI.
+
+**Mac / Linux**
+
+```bash
+curl -fsSL https://lmstudio.ai/install.sh | bash
+```
+
+**Windows**
+
+```powershell
+irm https://lmstudio.ai/install.ps1 | iex
+```
+
+**Basic usage**
+
+```bash
+lms daemon up          # Start the daemon
+lms get <model>        # Download a model
+lms server start       # Start the local server
+lms chat               # Open an interactive session
+```
+
+Learn more: [Headless deployments](/blog/0.4.0#deploy-on-servers-deploy-in-ci-deploy-anywhere)
 
 ## Super quick start
 
@@ -1382,29 +1438,30 @@ with lms.Client() as client:
 
 Full docs: [lmstudio-python](/docs/python), Source: [GitHub](https://github.com/lmstudio-ai/lmstudio-python)
 
-### Try a minimal HTTP request (OpenAI‑compatible)
+### HTTP (LM Studio REST API)
 
 ```bash
 lms server start --port 1234
 ```
 
 ```bash
-curl http://localhost:1234/v1/chat/completions \
+curl http://localhost:1234/api/v1/chat \
   -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $LM_API_TOKEN" \
   -d '{
     "model": "openai/gpt-oss-20b",
-    "messages": [{"role": "user", "content": "Who are you, and what can you do?"}]
+    "input": "Who are you, and what can you do?"
   }'
 ```
 
-Full docs: [OpenAI‑compatible endpoints](/docs/developer/openai-compat)
+Full docs: [LM Studio REST API](/docs/developer/rest)
 
 ## Helpful links
 
-- API Changelog: [/docs/developer/api-changelog](/docs/developer/api-changelog)
-- Local server basics: [/docs/developer/core](/docs/developer/core)
-- CLI reference: [/docs/cli](/docs/cli)
-- Community: [Discord](https://discord.gg/lmstudio)
+- [API Changelog](/docs/developer/api-changelog)
+- [Local server basics](/docs/developer/core)
+- [CLI reference](/docs/cli)
+- [Discord Community](https://discord.gg/lmstudio)
 
 
 ## API Changelog
@@ -1414,21 +1471,44 @@ Full docs: [OpenAI‑compatible endpoints](/docs/developer/openai-compat)
 
 ---
 
-###### LM Studio 0.3.29 • 2025‑10‑06
+###### LM Studio 0.4.1
+
+### Anthropic-compatible API
+
+- New Anthropic-compatible endpoint: `POST /v1/messages`.
+  - Use Claude code models with LM Studio
+  - See docs for more details: [/docs/developer/anthropic-compat](/docs/developer/anthropic-compat).
+
+---
+
+###### LM Studio 0.4.0
+
+### LM Studio native v1 REST API
+
+- Official release of LM Studio's native v1 REST API at `/api/v1/*` endpoints.
+  - [MCP via API](/docs/developer/core/mcp)
+  - [Stateful chats](/docs/developer/rest/stateful-chats)
+  - [Authentication](/docs/developer/core/authentication) configuration with API tokens
+  - Model [download](/docs/developer/rest/download), [load](/docs/developer/rest/load) and [unload](/docs/developer/rest/unload) endpoints
+  - See [overview](/docs/developer/rest) page for more details and [comparison](/docs/developer/rest#inference-endpoint-comparison) with OpenAI-compatible endpoints.
+
+---
+
+###### LM Studio 0.3.29 â¢Â 2025â10â06
 
 ### OpenAI `/v1/responses` and variant listing
 
-- New OpenAI‑compatible endpoint: `POST /v1/responses`.
+- New OpenAIâcompatible endpoint: `POST /v1/responses`.
   - Stateful interactions via `previous_response_id`.
-  - Custom tool calling and Remote MCP support (opt‑in).
-  - Reasoning support with `reasoning.effort` for `openai/gpt‑oss‑20b`.
+  - Custom tool calling and Remote MCP support (optâin).
+  - Reasoning support with `reasoning.effort` for `openai/gptâossâ20b`.
   - Streaming via SSE when `stream: true`.
-- CLI: `lms ls --variants` lists all variants for multi‑variant models.
+- CLI: `lms ls --variants` lists all variants for multiâvariant models.
 - Docs: [/docs/developer/openai-compat](/docs/developer/openai-compat). Full release notes: [/blog/lmstudio-v0.3.29](/blog/lmstudio-v0.3.29).
 
 ---
 
-###### LM Studio 0.3.27 • 2025‑09‑24
+###### LM Studio 0.3.27 â¢Â 2025â09â24
 
 ### CLI: model resource estimates, status, and interrupts
 
@@ -1436,92 +1516,92 @@ Full docs: [OpenAI‑compatible endpoints](/docs/developer/openai-compat)
 - `lms chat`: press `Ctrl+C` to interrupt an ongoing prediction.
 - `lms ps --json` now reports each model's generation status and the number of queued prediction requests.
 - CLI color contrast improved for light mode.
-- See docs: [/docs/cli/load](/docs/cli/load). Full release notes: [/blog/lmstudio-v0.3.27](/blog/lmstudio-v0.3.27).
+- See docs: [/docs/cli/local-models/load](/docs/cli/local-models/load). Full release notes: [/blog/lmstudio-v0.3.27](/blog/lmstudio-v0.3.27).
 
 ---
 
-###### LM Studio 0.3.26 • 2025‑09‑15
+###### LM Studio 0.3.26 â¢Â 2025â09â15
 
 ### CLI log streaming: server + model
 
 - `lms log stream` now supports multiple sources and filters.
   - `--source server` streams HTTP server logs (startup, endpoints, status)
   - `--source model --filter input,output` streams formatted user input and model output
-  - Append `--json` for machine‑readable logs; `--stats` adds tokens/sec and related metrics (model source)
-- See usage and examples: [/docs/cli/log-stream](/docs/cli/log-stream). Full release notes: [/blog/lmstudio-v0.3.26](/blog/lmstudio-v0.3.26).
+  - Append `--json` for machineâreadable logs; `--stats` adds tokens/sec and related metrics (model source)
+- See usage and examples: [/docs/cli/serve/log-stream](/docs/cli/serve/log-stream). Full release notes: [/blog/lmstudio-v0.3.26](/blog/lmstudio-v0.3.26).
 
 ---
 
-###### LM Studio 0.3.25 • 2025‑09‑04
+###### LM Studio 0.3.25 â¢Â 2025â09â04
 
 ### New model support (API)
 
-- Added support for NVIDIA Nemotron‑Nano‑v2 with tool‑calling via the OpenAI‑compatible endpoints [‡](/blog/lmstudio-v0.3.25).
-- Added support for Google EmbeddingGemma for the `/v1/embeddings` endpoint [‡](/blog/lmstudio-v0.3.25).
+- Added support for NVIDIA NemotronâNanoâv2 with toolâcalling via the OpenAIâcompatible endpoints [â¡](/blog/lmstudio-v0.3.25).
+- Added support for Google EmbeddingGemma for the `/v1/embeddings` endpoint [â¡](/blog/lmstudio-v0.3.25).
 
 ---
 
-###### LM Studio 0.3.24 • 2025‑08‑28
+###### LM Studio 0.3.24 â¢Â 2025â08â28
 
-### Seed‑OSS tool‑calling and template fixes
+### SeedâOSS toolâcalling and template fixes
 
-- Added support for ByteDance/Seed‑OSS including tool‑calling and prompt‑template compatibility fixes in the OpenAI‑compatible API [‡](/blog/lmstudio-v0.3.24).
-- Fixed cases where tool calls were not parsed for certain prompt templates [‡](/blog/lmstudio-v0.3.24).
-
----
-
-###### LM Studio 0.3.23 • 2025‑08‑12
-
-### Reasoning content and tool‑calling reliability
-
-- For `gpt‑oss` on `POST /v1/chat/completions`, reasoning content moves out of `message.content` and into `choices.message.reasoning` (non‑streaming) and `choices.delta.reasoning` (streaming), aligning with `o3‑mini` [‡](/blog/lmstudio-v0.3.23).
-- Tool names are normalized (e.g., snake_case) before being provided to the model to improve tool‑calling reliability [‡](/blog/lmstudio-v0.3.23).
-- Fixed errors for certain tools‑containing requests to `POST /v1/chat/completions` (e.g., "reading 'properties'") and non‑streaming tool‑call failures [‡](/blog/lmstudio-v0.3.23).
+- Added support for ByteDance/SeedâOSS including toolâcalling and promptâtemplate compatibility fixes in the OpenAIâcompatible API [â¡](/blog/lmstudio-v0.3.24).
+- Fixed cases where tool calls were not parsed for certain prompt templates [â¡](/blog/lmstudio-v0.3.24).
 
 ---
 
-###### LM Studio 0.3.19 • 2025‑07‑21
+###### LM Studio 0.3.23 â¢Â 2025â08â12
+
+### Reasoning content and toolâcalling reliability
+
+- For `gptâoss` on `POST /v1/chat/completions`, reasoning content moves out of `message.content` and into `choices.message.reasoning` (nonâstreaming) and `choices.delta.reasoning` (streaming), aligning with `o3âmini` [â¡](/blog/lmstudio-v0.3.23).
+- Tool names are normalized (e.g., snake_case) before being provided to the model to improve toolâcalling reliability [â¡](/blog/lmstudio-v0.3.23).
+- Fixed errors for certain toolsâcontaining requests to `POST /v1/chat/completions` (e.g., "reading 'properties'") and nonâstreaming toolâcall failures [â¡](/blog/lmstudio-v0.3.23).
+
+---
+
+###### LM Studio 0.3.19 â¢Â 2025â07â21
 
 ### Bug fixes for streaming and tool calls
 
-- Corrected usage statistics returned by OpenAI‑compatible streaming responses [‡](https://lmstudio.ai/blog/lmstudio-v0.3.19#:~:text=,OpenAI%20streaming%20responses%20were%20incorrect).
-- Improved handling of parallel tool calls via the streaming API [‡](https://lmstudio.ai/blog/lmstudio-v0.3.19#:~:text=,API%20were%20not%20handled%20correctly).
-- Fixed parsing of correct tool calls for certain Mistral models [‡](https://lmstudio.ai/blog/lmstudio-v0.3.19#:~:text=,Ryzen%20AI%20PRO%20300%20series).
+- Corrected usage statistics returned by OpenAIâcompatible streaming responses [â¡](https://lmstudio.ai/blog/lmstudio-v0.3.19#:~:text=,OpenAI%20streaming%20responses%20were%20incorrect).
+- Improved handling of parallel tool calls via the streaming API [â¡](https://lmstudio.ai/blog/lmstudio-v0.3.19#:~:text=,API%20were%20not%20handled%20correctly).
+- Fixed parsing of correct tool calls for certain Mistral models [â¡](https://lmstudio.ai/blog/lmstudio-v0.3.19#:~:text=,Ryzen%20AI%20PRO%20300%20series).
 
 ---
 
-###### LM Studio 0.3.18 • 2025‑07‑10
+###### LM Studio 0.3.18 â¢Â 2025â07â10
 
-### Streaming options and tool‑calling improvements
+### Streaming options and toolâcalling improvements
 
-- Added support for the `stream_options` object on OpenAI‑compatible endpoints. Setting `stream_options.include_usage` to `true` returns prompt and completion token usage during streaming [‡](https://lmstudio.ai/blog/lmstudio-v0.3.18#:~:text=%2A%20Added%20support%20for%20%60,to%20support%20more%20prompt%20templates).
-- Errors returned from streaming endpoints now follow the correct format expected by OpenAI clients [‡](https://lmstudio.ai/blog/lmstudio-v0.3.18#:~:text=,with%20proper%20chat%20templates).
-- Tool‑calling support added for Mistral v13 tokenizer models, using proper chat templates [‡](https://lmstudio.ai/blog/lmstudio-v0.3.18#:~:text=,with%20proper%20chat%20templates).
-- The `response_format.type` field now accepts `"text"` in chat‑completion requests [‡](https://lmstudio.ai/blog/lmstudio-v0.3.18#:~:text=,that%20are%20split%20across%20multiple).
-- Fixed bugs where parallel tool calls split across multiple chunks were dropped and where root‑level `$defs` in tool definitions were stripped [‡](https://lmstudio.ai/blog/lmstudio-v0.3.18#:~:text=,being%20stripped%20in%20tool%20definitions).
-
----
-
-###### LM Studio 0.3.17 • 2025‑06‑25
-
-### Tool‑calling reliability and token‑count updates
-
-- Token counts now include the system prompt and tool definitions [‡](https://lmstudio.ai/blog/lmstudio-v0.3.17#:~:text=,have%20a%20URL%20in%20the). This makes usage reporting more accurate for both the UI and the API.
-- Tool‑call argument tokens are streamed as they are generated [‡](https://lmstudio.ai/blog/lmstudio-v0.3.17#:~:text=Build%206), improving responsiveness when using streamed function calls.
-- Various fixes improve MCP and tool‑calling reliability, including correct handling of tools that omit a `parameters` object and preventing hangs when an MCP server reloads [‡](https://lmstudio.ai/blog/lmstudio-v0.3.17#:~:text=,tool%20calls%20would%20hang%20indefinitely).
+- Added support for the `stream_options` object on OpenAIâcompatible endpoints. Setting `stream_options.include_usage` to `true` returns prompt and completion token usage during streaming [â¡](https://lmstudio.ai/blog/lmstudio-v0.3.18#:~:text=%2A%20Added%20support%20for%20%60,to%20support%20more%20prompt%20templates).
+- Errors returned from streaming endpoints now follow the correct format expected by OpenAI clients [â¡](https://lmstudio.ai/blog/lmstudio-v0.3.18#:~:text=,with%20proper%20chat%20templates).
+- Toolâcalling support added for MistralÂ v13 tokenizer models, using proper chat templates [â¡](https://lmstudio.ai/blog/lmstudio-v0.3.18#:~:text=,with%20proper%20chat%20templates).
+- The `response_format.type` field now accepts `"text"` in chatâcompletion requests [â¡](https://lmstudio.ai/blog/lmstudio-v0.3.18#:~:text=,that%20are%20split%20across%20multiple).
+- Fixed bugs where parallel tool calls split across multiple chunks were dropped and where rootâlevel `$defs` in tool definitions were stripped [â¡](https://lmstudio.ai/blog/lmstudio-v0.3.18#:~:text=,being%20stripped%20in%20tool%20definitions).
 
 ---
 
-###### LM Studio 0.3.16 • 2025‑05‑23
+###### LM Studio 0.3.17 â¢Â 2025â06â25
 
-### Model capabilities in `GET /models`
+### Toolâcalling reliability and tokenâcount updates
 
-- The OpenAI‑compatible REST API (`/api/v0`) now returns a `capabilities` array in the `GET /models` response. Each model lists its supported capabilities (e.g. `"tool_use"`) [‡](https://lmstudio.ai/blog/lmstudio-v0.3.16#:~:text=,response) so clients can programmatically discover tool‑enabled models.
-- Fixed a streaming bug where an empty function name string was appended after the first packet of streamed tool calls [‡](https://lmstudio.ai/blog/lmstudio-v0.3.16#:~:text=%2A%20Bugfix%3A%20%5BOpenAI,packet%20of%20streamed%20function%20calls).
+- Token counts now include the system prompt and tool definitions [â¡](https://lmstudio.ai/blog/lmstudio-v0.3.17#:~:text=,have%20a%20URL%20in%20the). This makes usage reporting more accurate for both the UI and the API.
+- Toolâcall argument tokens are streamed as they are generated [â¡](https://lmstudio.ai/blog/lmstudio-v0.3.17#:~:text=Build%206), improving responsiveness when using streamed function calls.
+- Various fixes improve MCP and toolâcalling reliability, including correct handling of tools that omit a `parameters` object and preventing hangs when an MCP server reloads [â¡](https://lmstudio.ai/blog/lmstudio-v0.3.17#:~:text=,tool%20calls%20would%20hang%20indefinitely).
 
 ---
 
-###### [👾 LM Studio 0.3.15](/blog/lmstudio-v0.3.15) • 2025-04-24
+###### LM Studio 0.3.16 â¢Â 2025â05â23
+
+### Model capabilities in `GETÂ /models`
+
+- The OpenAIâcompatible REST API (`/api/v0`) now returns a `capabilities` array in the `GETÂ /models` response. Each model lists its supported capabilities (e.g. `"tool_use"`) [â¡](https://lmstudio.ai/blog/lmstudio-v0.3.16#:~:text=,response) so clients can programmatically discover toolâenabled models.
+- Fixed a streaming bug where an empty function name string was appended after the first packet of streamed tool calls [â¡](https://lmstudio.ai/blog/lmstudio-v0.3.16#:~:text=%2A%20Bugfix%3A%20%5BOpenAI,packet%20of%20streamed%20function%20calls).
+
+---
+
+###### [ð¾ LM Studio 0.3.15](/blog/lmstudio-v0.3.15) â¢ 2025-04-24
 
 ### Improved Tool Use API Support
 
@@ -1533,15 +1613,15 @@ OpenAI-like REST API now supports the `tool_choice` parameter:
 }
 ```
 
-- `"tool_choice": "none"` — Model will not call tools
-- `"tool_choice": "auto"` — Model decides
-- `"tool_choice": "required"` — Model must call tools (llama.cpp only)
+- `"tool_choice": "none"` â Model will not call tools
+- `"tool_choice": "auto"` â Model decides
+- `"tool_choice": "required"` â Model must call tools (llama.cpp only)
 
 Chunked responses now set `"finish_reason": "tool_calls"` when appropriate.
 
 ---
 
-###### [👾 LM Studio 0.3.14](/blog/lmstudio-v0.3.14) • 2025-03-27
+###### [ð¾ LM Studio 0.3.14](/blog/lmstudio-v0.3.14) â¢ 2025-03-27
 
 ### [API/SDK] Preset Support
 
@@ -1549,7 +1629,7 @@ RESTful API and SDKs support specifying presets in requests.
 
 _(example needed)_
 
-###### [👾 LM Studio 0.3.10](/blog/lmstudio-v0.3.10) • 2025-02-18
+###### [ð¾ LM Studio 0.3.10](/blog/lmstudio-v0.3.10) â¢ 2025-02-18
 
 ### Speculative Decoding API
 
@@ -1578,7 +1658,7 @@ Responses now include a `stats` object for speculative decoding:
 
 ---
 
-###### [👾 LM Studio 0.3.9](blog/lmstudio-v0.3.9) • 2025-01-30
+###### [ð¾ LM Studio 0.3.9](blog/lmstudio-v0.3.9) â¢ 2025-01-30
 
 ### Idle TTL and Auto Evict
 
@@ -1608,7 +1688,7 @@ Turn this on in App Settings > Developer.
 
 ---
 
-###### [👾 LM Studio 0.3.6](blog/lmstudio-v0.3.6) • 2025-01-06
+###### [ð¾ LM Studio 0.3.6](blog/lmstudio-v0.3.6) â¢ 2025-01-06
 
 ### Tool and Function Calling API
 
@@ -1618,7 +1698,7 @@ Docs: [Tool Use and Function Calling](/docs/developer/core/tools).
 
 ---
 
-###### [👾 LM Studio 0.3.5](blog/lmstudio-v0.3.5) • 2024-10-22
+###### [ð¾ LM Studio 0.3.5](blog/lmstudio-v0.3.5) â¢ 2024-10-22
 
 ### Introducing `lms get`: download models from the terminal
 
@@ -1642,6 +1722,749 @@ lms get deepseek-r1 --mlx
 
 
 ## core
+
+### Authentication
+
+> Using API Tokens in LM Studio
+
+
+##### Requires [LM Studio 0.4.0](/download) or newer.
+
+LM Studio supports API Tokens for authentication, providing a secure and convenient way to access the LM Studio API.
+
+### Require Authentication for each request
+
+By default, LM Studio does not require authentication for API requests. To enable authentication so that only requests with a valid API Token are accepted, toggle the switch in the Developers Page > Server Settings.
+
+```lms_info
+Once enabled, all requests made through the REST API, Python SDK, or Typescript SDK will need to include a valid API Token. See usage [below](#api-token-usage).
+```
+
+<img src="/assets/docs/require-auth.png" style="width: 75%;" data-caption="Enable authentication to require valid API tokens for all requests" />
+
+<img src="/assets/docs/multiple-tokens.png" style="width: 75%;" data-caption="Managing tokens in the server settings" />
+
+### Creating API Tokens
+
+To create API Tokens, click on Manage Tokens in the Server Settings. It will open the API Tokens modal where you can create, view, and delete API Tokens.
+
+<img src="/assets/docs/tokens-empty-modal.png" style="width: 75%;" data-caption="API Tokens Modal" />
+
+Create a token by clicking on the Create Token button. Provide a name for the token and select the desired permissions.
+
+<img src="/assets/docs/create-dave-token.png" style="width: 75%;" data-caption="Creating an API Token" />
+
+Once created, make sure to copy the token as it will not be shown again.
+
+<img src="/assets/docs/created-dave-token.png" style="width: 75%;" data-caption="API token created" />
+
+### Configuring API Token Permissions
+
+To edit the permissions of an existing API Token, click on the Edit button next to the token in the API Tokens modal. You can modify the name and permissions of the token.
+
+<img src="/assets/docs/edit-token.png" style="width: 75%;" data-caption="Editing an API Token" />
+
+## API Token Usage
+
+### Using API Tokens with REST API:
+
+```lms_noticechill
+The example below requires [allowing calling servers from mcp.json](/docs/developer/core/server/settings) to be enabled and the [Playwright MCP](https://github.com/microsoft/playwright-mcp) in mcp.json.
+```
+
+```bash
+curl -X POST \
+  http://localhost:1234/api/v1/chat \
+  -H "Authorization: Bearer $LM_API_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "ibm/granite-4-micro",
+    "input": "Open lmstudio.ai",
+    "integrations": [
+      {
+        "type": "plugin",
+        "id": "mcp/playwright",
+        "allowed_tools": ["browser_navigate"]
+      }
+    ],
+    "context_length": 8000
+  }'
+```
+
+### Using API Tokens with Python SDK
+
+To use API tokens with the Python SDK, see the [Python SDK guide](/docs/python/getting-started/authentication).
+
+### Using API Tokens with TypeScript SDK
+
+To use API tokens with the TypeScript SDK, see the [TS SDK guide](/docs/typescript/authentication).
+
+
+### Run LM Studio as a service (headless)
+
+> GUI-less operation of LM Studio: run in the background, start on machine login, and load models on demand
+
+
+LM Studio can be run as a service without the GUI. This is useful for running LM Studio on a server or in the background on your local machine. This works on Mac, Windows, and Linux machines with a graphical user interface.
+
+## Run LM Studio as a service
+
+Running LM Studio as a service consists of several new features intended to make it more efficient to use LM Studio as a developer tool.
+
+1. The ability to run LM Studio without the GUI
+2. The ability to start the LM Studio LLM server on machine login, headlessly
+3. On-demand model loading
+
+## Run the LLM service on machine login
+
+To enable this, head to app settings (`Cmd` / `Ctrl` + `,`) and check the box to run the LLM server on login.
+
+<img src="/assets/docs/headless-settings.webp" style="" data-caption="Enable the LLM server to start on machine login" />
+
+When this setting is enabled, exiting the app will minimize it to the system tray, and the LLM server will continue to run in the background.
+
+## Just-In-Time (JIT) model loading for REST endpoints
+
+Useful when utilizing LM Studio as an LLM service with other frontends or applications.
+
+<img src="/assets/docs/jit-loading.webp" style="" data-caption="Load models on demand" />
+
+#### When JIT loading is ON:
+
+- Calls to OpenAI-compatible `/v1/models` will return all downloaded models, not only the ones loaded into memory
+- Calls to inference endpoints will load the model into memory if it's not already loaded
+
+#### When JIT loading is OFF:
+
+- Calls to OpenAI-compatible `/v1/models` will return only the models loaded into memory
+- You have to first load the model into memory before being able to use it
+
+#### What about auto unloading?
+
+JIT loaded models will be auto-unloaded from memory by default after a set period of inactivity ([learn more](/docs/developer/core/ttl-and-auto-evict)).
+
+## Auto Server Start
+
+Your last server state will be saved and restored on app or service launch.
+
+To achieve this programmatically, you can use the following command:
+
+```bash
+lms server start
+```
+
+### Community
+
+Chat with other LM Studio developers, discuss LLMs, hardware, and more on the [LM Studio Discord server](https://discord.gg/aPQfnNkxGC).
+
+Please report bugs and issues in the [lmstudio-bug-tracker](https://github.com/lmstudio-ai/lmstudio-bug-tracker/issues) GitHub repository.
+
+
+### Setup llmster as a Startup Task on Linux
+
+> Configure llmster to run on startup using systemctl on Linux
+
+
+`llmster`, LM Studio's headless daemon, can be configured to run on startup. This guide covers setting up `llmster` to launch, load a model, and start an HTTP server automatically using `systemctl` on Linux.
+
+```lms_info
+This guide is for Linux systems without a graphical interface. For machines with a GUI, you can configure LM Studio to [run as a service on login](/docs/developer/core/headless) instead.
+```
+
+## Install the Daemon
+
+Run the following command to install `llmster`:
+
+```bash
+curl -fsSL https://lmstudio.ai/install.sh | bash
+```
+
+Verify the installation:
+
+```bash
+lms --help
+```
+
+## Download a Model
+
+Download a model to use with the server:
+
+```bash
+lms get openai/gpt-oss-20b
+```
+
+The output will show the model path. You'll need this for the systemd configuration.
+
+## Manual Test
+
+Before configuring systemd, verify everything works manually.
+
+Load the model:
+
+```bash
+lms load openai/gpt-oss-20b
+```
+
+Start the server:
+
+```bash
+lms server start
+```
+
+Verify the API is responding:
+
+```bash
+curl http://localhost:1234/v1/models
+```
+
+Stop the server when done testing:
+
+```bash
+lms server stop
+```
+
+## Create Systemd Service
+
+Create `/etc/systemd/system/lmstudio.service`. Replace `YOUR_USERNAME` with your username.
+
+```ini
+[Unit]
+Description=LM Studio Server
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+User=YOUR_USERNAME
+Environment="HOME=/home/YOUR_USERNAME"
+ExecStartPre=/home/YOUR_USERNAME/.lmstudio/bin/lms daemon up
+ExecStartPre=/home/YOUR_USERNAME/.lmstudio/bin/lms load openai/gpt-oss-20b --yes
+ExecStart=/home/YOUR_USERNAME/.lmstudio/bin/lms server start
+ExecStop=/home/YOUR_USERNAME/.lmstudio/bin/lms daemon down
+
+[Install]
+WantedBy=multi-user.target
+```
+
+This unit automatically loads the `openai/gpt-oss-20b` model on startup. Alternatively, you can avoid loading a specific model on startup and instead rely on [Just-In-Time (JIT) loading and Eviction](/docs/developer/core/ttl-and-auto-evict) in the server.
+
+## Enable and Start the Service
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable lmstudio.service
+sudo systemctl start lmstudio.service
+```
+
+## Verify
+
+Check the service status:
+
+```bash
+systemctl status lmstudio
+```
+
+Test the API:
+
+```bash
+curl http://localhost:1234/v1/models
+```
+
+## Service Management
+
+```bash
+# Stop the service
+sudo systemctl stop lmstudio
+
+# Restart the service
+sudo systemctl restart lmstudio
+
+# Disable auto-start
+sudo systemctl disable lmstudio
+```
+
+## Community
+
+Chat with other LM Studio developers, discuss LLMs, hardware, and more on the [LM Studio Discord server](https://discord.gg/aPQfnNkxGC).
+
+Please report bugs and issues in the [lmstudio-bug-tracker](https://github.com/lmstudio-ai/lmstudio-bug-tracker/issues) GitHub repository.
+
+
+### Using MCP via API
+
+> Learn how to use Model Context Protocol (MCP) servers with LM Studio API.
+
+
+##### Requires [LM Studio 0.4.0](/download) or newer.
+
+LM Studio supports Model Context Protocol (MCP) usage via API. MCP allows models to interact with external tools and services through standardized servers.
+
+## How it works
+
+MCP servers provide tools that models can call during chat requests. You can enable MCP servers in two ways: as ephemeral servers defined per-request, or as pre-configured servers in your `mcp.json` file.
+
+
+## Ephemeral vs mcp.json servers
+
+<table class="flexible-cols">
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>Ephemeral</th>
+      <th>mcp.json</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>How to specify in request</td>
+      <td><code>integrations</code> -> <code>"type": "ephemeral_mcp"</code></td>
+      <td><code>integrations</code> -> <code>"type": "plugin"</code></td>
+    </tr>
+    <tr>
+      <td>Configuration</td>
+      <td>Only defined per-request</td>
+      <td>Pre-configured in <code>mcp.json</code></td>
+    </tr>
+    <tr>
+      <td>Use case</td>
+      <td>One-off requests, remote MCP tool execution</td>
+      <td>MCP servers that require <code>command</code>, frequently used servers</td>
+    </tr>
+    <tr>
+      <td>Server ID</td>
+      <td>Specified via <code>server_label</code> in integration</td>
+      <td>Specified via <code>id</code> (e.g., <code>mcp/playwright</code>) in integration</td>
+    </tr>
+    <tr>
+      <td>Custom headers</td>
+      <td>Supported via <code>headers</code> field</td>
+      <td>Configured in <code>mcp.json</code></td>
+    </tr>
+  </tbody>
+</table>
+
+## Ephemeral MCP servers
+
+Ephemeral MCP servers are defined on-the-fly in each request. This is useful for testing or when you don't want to pre-configure servers.
+
+```lms_info
+Ephemeral MCP servers require the "Allow per-request MCPs" setting to be enabled in [Server Settings](/docs/developer/core/server/settings).
+```
+
+```lms_code_snippet
+variants:
+  curl:
+    language: bash
+    code: |
+      curl http://localhost:1234/api/v1/chat \
+        -H "Authorization: Bearer $LM_API_TOKEN" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "model": "ibm/granite-4-micro",
+          "input": "What is the top trending model on hugging face?",
+          "integrations": [
+            {
+              "type": "ephemeral_mcp",
+              "server_label": "huggingface",
+              "server_url": "https://huggingface.co/mcp",
+              "allowed_tools": ["model_search"]
+            }
+          ],
+          "context_length": 8000
+        }'
+  Python:
+    language: python
+    code: |
+      import os
+      import requests
+      import json
+
+      response = requests.post(
+        "http://localhost:1234/api/v1/chat",
+        headers={
+          "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
+          "Content-Type": "application/json"
+        },
+        json={
+          "model": "ibm/granite-4-micro",
+          "input": "What is the top trending model on hugging face?",
+          "integrations": [
+            {
+              "type": "ephemeral_mcp",
+              "server_label": "huggingface",
+              "server_url": "https://huggingface.co/mcp",
+              "allowed_tools": ["model_search"]
+            }
+          ],
+          "context_length": 8000
+        }
+      )
+      print(json.dumps(response.json(), indent=2))
+  TypeScript:
+    language: typescript
+    code: |
+      const response = await fetch("http://localhost:1234/api/v1/chat", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${process.env.LM_API_TOKEN}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          "model": "ibm/granite-4-micro",
+          "input": "What is the top trending model on hugging face?",
+          "integrations": [
+            {
+              "type": "ephemeral_mcp",
+              "server_label": "huggingface",
+              "server_url": "https://huggingface.co/mcp",
+              "allowed_tools": ["model_search"]
+            }
+          ],
+          "context_length": 8000
+        });
+      const data = await response.json();
+      console.log(data);
+```
+
+The model can now call tools from the specified MCP server:
+
+```lms_code_snippet
+variants:
+  response:
+    language: json
+    code: |
+      {
+        "model_instance_id": "ibm/granite-4-micro",
+        "output": [
+          {
+            "type": "reasoning",
+            "content": "..."
+          },
+          {
+            "type": "message",
+            "content": "..."
+          },
+          {
+            "type": "tool_call",
+            "tool": "model_search",
+            "arguments": {
+              "sort": "trendingScore",
+              "limit": 1
+            },
+            "output": "...",
+            "provider_info": {
+              "server_label": "huggingface",
+              "type": "ephemeral_mcp"
+            }
+          },
+          {
+            "type": "reasoning",
+            "content": "\n"
+          },
+          {
+            "type": "message",
+            "content": "The top trending model is ..."
+          }
+        ],
+        "stats": {
+          "input_tokens": 419,
+          "total_output_tokens": 362,
+          "reasoning_output_tokens": 195,
+          "tokens_per_second": 27.620159487314744,
+          "time_to_first_token_seconds": 1.437
+        },
+        "response_id": "resp_7c1a08e3d6e279efcfecb02df9de7cbd316e93422d0bb5cb"
+      }
+```
+
+## MCP servers from mcp.json
+
+MCP servers can be pre-configured in your `mcp.json` file. This is the recommended approach for using MCP servers that take actions on your computer (like [microsoft/playwright-mcp](https://github.com/microsoft/playwright-mcp)) and servers that you use frequently.
+
+```lms_info
+MCP servers from mcp.json require the "Allow calling servers from mcp.json" setting to be enabled in [Server Settings](/docs/developer/core/server/settings).
+```
+
+<img src="/assets/docs/mcp-editor.png" style="" data-caption="Editing mcp.json in LM Studio" />
+
+
+```lms_code_snippet
+variants:
+  curl:
+    language: bash
+    code: |
+      curl http://localhost:1234/api/v1/chat \
+        -H "Authorization: Bearer $LM_API_TOKEN" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "model": "ibm/granite-4-micro",
+          "input": "Open lmstudio.ai",
+          "integrations": ["mcp/playwright"],
+          "context_length": 8000,
+          "temperature": 0
+        }'
+  Python:
+    language: python
+    code: |
+      import os
+      import requests
+      import json
+
+      response = requests.post(
+        "http://localhost:1234/api/v1/chat",
+        headers={
+          "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
+          "Content-Type": "application/json"
+        },
+        json={
+          "model": "ibm/granite-4-micro",
+          "input": "Open lmstudio.ai",
+          "integrations": ["mcp/playwright"],
+          "context_length": 8000,
+          "temperature": 0
+        }
+      )
+      print(json.dumps(response.json(), indent=2))
+  TypeScript:
+    language: typescript
+    code: |
+      const response = await fetch("http://localhost:1234/api/v1/chat", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${process.env.LM_API_TOKEN}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          model: "ibm/granite-4-micro",
+          input: "Open lmstudio.ai",
+          integrations: ["mcp/playwright"],
+          context_length: 8000,
+          temperature: 0
+        })
+      });
+      const data = await response.json();
+      console.log(data);
+```
+
+The response includes tool calls from the configured MCP server:
+
+```lms_code_snippet
+variants:
+  response:
+    language: json
+    code: |
+      {
+        "model_instance_id": "ibm/granite-4-micro",
+        "output": [
+          {
+            "type": "reasoning",
+            "content": "..."
+          },
+          {
+            "type": "message",
+            "content": "..."
+          },
+          {
+            "type": "tool_call",
+            "tool": "browser_navigate",
+            "arguments": {
+              "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            },
+            "output": "...",
+            "provider_info": {
+              "plugin_id": "mcp/playwright",
+              "type": "plugin"
+            }
+          },
+          {
+            "type": "reasoning",
+            "content": "..."
+          },
+          {
+            "type": "message",
+            "content": "The YouTube video page for ..."
+          }
+        ],
+        "stats": {
+          "input_tokens": 2614,
+          "total_output_tokens": 594,
+          "reasoning_output_tokens": 389,
+          "tokens_per_second": 26.293245822877495,
+          "time_to_first_token_seconds": 0.154
+        },
+        "response_id": "resp_cdac6a9b5e2a40027112e441ce6189db18c9040f96736407"
+      }
+```
+
+## Restricting tool access
+
+For both ephemeral and mcp.json servers, you can limit which tools the model can call using the `allowed_tools` field. This is useful if you do not want certain tools from an MCP server to be used, and can speed up prompt processing due to the model receiving fewer tool definitions.
+
+```lms_code_snippet
+variants:
+  curl:
+    language: bash
+    code: |
+      curl http://localhost:1234/api/v1/chat \
+        -H "Authorization: Bearer $LM_API_TOKEN" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "model": "ibm/granite-4-micro",
+          "input": "What is the top trending model on hugging face?",
+          "integrations": [
+            {
+              "type": "ephemeral_mcp",
+              "server_label": "huggingface",
+              "server_url": "https://huggingface.co/mcp",
+              "allowed_tools": ["model_search"]
+            }
+          ],
+          "context_length": 8000
+        }'
+  Python:
+    language: python
+    code: |
+      import os
+      import requests
+      import json
+
+      response = requests.post(
+        "http://localhost:1234/api/v1/chat",
+        headers={
+          "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
+          "Content-Type": "application/json"
+        },
+        json={
+          "model": "ibm/granite-4-micro",
+          "input": "What is the top trending model on hugging face?",
+          "integrations": [
+            {
+              "type": "ephemeral_mcp",
+              "server_label": "huggingface",
+              "server_url": "https://huggingface.co/mcp",
+              "allowed_tools": ["model_search"]
+            }
+          ],
+          "context_length": 8000
+        }
+      )
+      print(json.dumps(response.json(), indent=2))
+  TypeScript:
+    language: typescript
+    code: |
+      const response = await fetch("http://localhost:1234/api/v1/chat", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${process.env.LM_API_TOKEN}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          model: "ibm/granite-4-micro",
+          input: "What is the top trending model on hugging face?",
+          integrations: [
+            {
+              type: "ephemeral_mcp",
+              server_label: "huggingface",
+              server_url: "https://huggingface.co/mcp",
+              allowed_tools: ["model_search"]
+            }
+          ],
+          context_length: 8000
+        })
+      });
+      const data = await response.json();
+      console.log(data);
+```
+
+If `allowed_tools` is not provided, all tools from the server are available to the model.
+
+## Custom headers for ephemeral servers
+
+When using ephemeral MCP servers that require authentication, you can pass custom headers:
+
+```lms_code_snippet
+variants:
+  curl:
+    language: bash
+    code: |
+      curl http://localhost:1234/api/v1/chat \
+        -H "Authorization: Bearer $LM_API_TOKEN" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "model": "ibm/granite-4-micro",
+          "input": "Give me details about my SUPER-SECRET-PRIVATE Hugging face model",
+          "integrations": [
+            {
+              "type": "ephemeral_mcp",
+              "server_label": "huggingface",
+              "server_url": "https://huggingface.co/mcp",
+              "allowed_tools": ["model_search"],
+              "headers": {
+                "Authorization": "Bearer <YOUR_HF_TOKEN>"
+              }
+            }
+          ],
+          "context_length": 8000
+        }'
+  Python:
+    language: python
+    code: |
+      import os
+      import requests
+      import json
+
+      response = requests.post(
+        "http://localhost:1234/api/v1/chat",
+        headers={
+          "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
+          "Content-Type": "application/json"
+        },
+        json={
+          "model": "ibm/granite-4-micro",
+          "input": "Give me details about my SUPER-SECRET-PRIVATE Hugging face model",
+          "integrations": [
+            {
+              "type": "ephemeral_mcp",
+              "server_label": "huggingface",
+              "server_url": "https://huggingface.co/mcp",
+              "allowed_tools": ["model_search"],
+              "headers": {
+                "Authorization": "Bearer <YOUR_HF_TOKEN>"
+              }
+            }
+          ],
+          "context_length": 8000
+        }
+      )
+      print(json.dumps(response.json(), indent=2))
+  TypeScript:
+    language: typescript
+    code: |
+      const response = await fetch("http://localhost:1234/api/v1/chat", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${process.env.LM_API_TOKEN}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          model: "ibm/granite-4-micro",
+          input: "Give me details about my SUPER-SECRET-PRIVATE Hugging face model",
+          integrations: [
+            {
+              type: "ephemeral_mcp",
+              server_label: "huggingface",
+              server_url: "https://huggingface.co/mcp",
+              allowed_tools: ["model_search"],
+              headers: {
+                Authorization: "Bearer <YOUR_HF_TOKEN>"
+              }
+            }
+          ],
+          context_length: 8000
+        })
+      const data = await response.json();
+      console.log(data);
+```
+
 
 ### Idle TTL and Auto-Evict
 
@@ -1733,71 +2556,6 @@ This feature works in tandem with TTL to provide better memory management for yo
 `TTL`: Time-To-Live, is a term borrowed from networking protocols and cache systems. It defines how long a resource can remain allocated before it's considered stale and evicted.
 
 
-### Run LM Studio as a service (headless)
-
-> GUI-less operation of LM Studio: run in the background, start on machine login, and load models on demand
-
-
-LM Studio can be run as a service without the GUI. This is useful for running LM Studio on a server or in the background on your local machine. This works on Mac, Windows, and Linux machines with a graphical user interface.
-
-## Run LM Studio as a service
-
-Running LM Studio as a service consists of several new features intended to make it more efficient to use LM Studio as a developer tool.
-
-1. The ability to run LM Studio without the GUI
-2. The ability to start the LM Studio LLM server on machine login, headlessly
-3. On-demand model loading
-
-## Run the LLM service on machine login
-
-To enable this, head to app settings (`Cmd` / `Ctrl` + `,`) and check the box to run the LLM server on login.
-
-<img src="/assets/docs/headless-settings.png" style="" data-caption="Enable the LLM server to start on machine login" />
-
-When this setting is enabled, exiting the app will minimize it to the system tray, and the LLM server will continue to run in the background.
-
-## Just-In-Time (JIT) model loading for OpenAI endpoints
-
-Useful when utilizing LM Studio as an LLM service with other frontends or applications.
-
-<img src="/assets/docs/jit-loading.png" style="" data-caption="Load models on demand" />
-
-#### When JIT loading is ON:
-
-- Call to `/v1/models` will return all downloaded models, not only the ones loaded into memory
-- Calls to inference endpoints will load the model into memory if it's not already loaded
-
-#### When JIT loading is OFF:
-
-- Call to `/v1/models` will return only the models loaded into memory
-- You have to first load the model into memory before being able to use it
-
-##### What about auto unloading?
-
-As of LM Studio 0.3.5, auto unloading is not yet in place. Models that are loaded via JIT loading will remain in memory until you unload them.
-We expect to implement more sophisticated memory management in the near future. Let us know if you have any feedback or suggestions.
-
-## Auto Server Start
-
-Your last server state will be saved and restored on app or service launch.
-
-To achieve this programmatically, you can use the following command:
-
-```bash
-lms server start
-```
-
-```lms_protip
-If you haven't already, bootstrap `lms` on your machine by following the instructions [here](/docs/cli).
-```
-
-### Community
-
-Chat with other LM Studio developers, discuss LLMs, hardware, and more on the [LM Studio Discord server](https://discord.gg/aPQfnNkxGC).
-
-Please report bugs and issues in the [lmstudio-bug-tracker](https://github.com/lmstudio-ai/lmstudio-bug-tracker/issues) GitHub repository.
-
-
 ### server
 
 ### LM Studio as a Local LLM API Server
@@ -1807,7 +2565,7 @@ Please report bugs and issues in the [lmstudio-bug-tracker](https://github.com/l
 
 You can serve local LLMs from LM Studio's Developer tab, either on `localhost` or on the network.
 
-LM Studio's APIs can be used through [REST API](/docs/developer/rest), client libraries like [lmstudio-js](/docs/typescript) and [lmstudio-python](/docs/python), and [OpenAI compatibility endpoints](/docs/developer/openai-compat)
+LM Studio's APIs can be used through [REST API](/docs/developer/rest), client libraries like [lmstudio-js](/docs/typescript) and [lmstudio-python](/docs/python), and compatibility endpoints like [OpenAI-compatible](/docs/developer/openai-compat) and [Anthropic-compatible](/docs/developer/anthropic-compat).
 
 <img src="/assets/docs/server.png" style="" data-caption="Load and serve LLMs from LM Studio" />
 
@@ -1831,7 +2589,8 @@ lms server start
 - [LM Studio REST API](/docs/developer/rest)
 - [TypeScript SDK](/docs/typescript) - `lmstudio-js`
 - [Python SDK](/docs/python) - `lmstudio-python`
-- [OpenAI compatibility endpoints](/docs/developer/openai-compat)
+- [OpenAI-compatible endpoints](/docs/developer/openai-compat)
+- [Anthropic-compatible endpoints](/docs/developer/anthropic-compat)
 
 
 #### Server Settings
@@ -1841,7 +2600,7 @@ lms server start
 
 You can configure server settings, such as the port number, whether to allow other API clients to access the server and MCP features.
 
-<img src="/assets/docs/server-config.png" style="" data-caption="Configure LM Studio API Server settings" />
+<img src="/assets/docs/server-settings.png" style="" data-caption="Configure LM Studio API Server settings" />
 
 
 ### Settings information
@@ -1852,13 +2611,21 @@ You can configure server settings, such as the port number, whether to allow oth
   optional: false
   description: Port number on which the LM Studio API server listens for incoming connections.
   unstyledName: true
+- name: Require Authentication
+  type: Switch
+  description: Require API clients to provide a valid API token via the `Authorization` header. Learn more in the [Authentication](/docs/developer/core/authentication) section.
+  unstyledName: true
 - name: Serve on Local Network
   type: Switch
   description: Allow other devices on the same local network to access the API server. Learn more in the [Serve on Local Network](/docs/developer/core/server/serve-on-network) section.
   unstyledName: true
-- name: Allow Per Request Remote MCPs
+- name: Allow per-request MCPs
   type: Switch
-  description: Enable sending requests to remote MCP (Model Control Protocol) servers on a per-request basis.
+  description: Allow API clients to use MCP (Model Context Protocol) servers that are not in your mcp.json. These MCP connections are ephemeral, only existing as long as the request. At the moment, only remote MCPs are supported.
+  unstyledName: true
+- name: Allow calling servers from mcp.json
+  type: Switch
+  description: Allow API clients to use servers you defined in your mcp.json in LM Studio. This can be a security risk if you've defined MCP servers that have access to your file system or private data. This option requires "Require Authentication" to be enabled.
   unstyledName: true
 - name: Enable CORS
   type: Switch
@@ -1899,14 +2666,2217 @@ Once enabled, the server will bind to your local network IP address instead of l
 
 ## rest
 
+## LM Studio API
+
+> LM Studio's REST API for local inference and model management
+
+
+LM Studio offers a powerful REST API with first-class support for local inference and model management. In addition to our native API, we provide OpenAI-compatible endpoints ([learn more](/docs/developer/openai-compat)) and Anthropic-compatible endpoints ([learn more](/docs/developer/anthropic-compat)).
+
+## What's new
+Previously, there was a [v0 REST API](/docs/developer/rest/endpoints). With LM Studio 0.4.0, we have officially released our native v1 REST API at `/api/v1/*` endpoints and recommend using it.
+
+The v1 REST API includes enhanced features such as:
+- [MCP via API](/docs/developer/core/mcp)
+- [Stateful chats](/docs/developer/rest/stateful-chats)
+- [Authentication](/docs/developer/core/authentication) configuration with API tokens
+- Model [download](/docs/developer/rest/download), [load](/docs/developer/rest/load) and [unload](/docs/developer/rest/unload) endpoints
+
+## Supported endpoints
+The following endpoints are available in LM Studio's v1 REST API.
+<table class="flexible-cols">
+  <thead>
+    <tr>
+      <th>Endpoint</th>
+      <th>Method</th>
+      <th>Docs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>/api/v1/chat</code></td>
+      <td><apimethod method="POST" /></td>
+      <td><a href="/docs/developer/rest/chat">Chat</a></td>
+    </tr>
+    <tr>
+      <td><code>/api/v1/models</code></td>
+      <td><apimethod method="GET" /></td>
+      <td><a href="/docs/developer/rest/list">List Models</a></td>
+    </tr>
+    <tr>
+      <td><code>/api/v1/models/load</code></td>
+      <td><apimethod method="POST" /></td>
+      <td><a href="/docs/developer/rest/load">Load</a></td>
+    </tr>
+    <tr>
+        <td><code>/api/v1/models/unload</code></td>
+        <td><apimethod method="POST" /></td>
+        <td><a href="/docs/developer/rest/unload">Unload</a></td>
+    </tr>
+    <tr>
+      <td><code>/api/v1/models/download</code></td>
+      <td><apimethod method="POST" /></td>
+      <td><a href="/docs/developer/rest/download">Download</a></td>
+    </tr>
+    <tr>
+      <td><code>/api/v1/models/download/status</code></td>
+      <td><apimethod method="GET" /></td>
+      <td><a href="/docs/developer/rest/download-status">Download Status</a></td>
+    </tr>
+  </tbody>
+</table>
+
+## Inference endpoint comparison
+The table below compares the features of LM Studio's `/api/v1/chat` endpoint with OpenAI-compatible and Anthropic-compatible inference endpoints.
+<table class="flexible-cols">
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th><a href="/docs/developer/rest/chat"><code>/api/v1/chat</code></a></th>
+      <th><a href="/docs/developer/openai-compat/responses"><code>/v1/responses</code></a></th>
+      <th><a href="/docs/developer/openai-compat/chat-completions"><code>/v1/chat/completions</code></a></th>
+      <th><a href="/docs/developer/anthropic-compat/messages"><code>/v1/messages</code></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Streaming</td>
+      <td>â</td>
+      <td>â</td>
+      <td>â</td>
+      <td>â</td>
+    </tr>
+    <tr>
+      <td>Stateful chat</td>
+      <td>â</td>
+      <td>â</td>
+      <td>â</td>
+      <td>â</td>
+    </tr>
+    <tr>
+      <td>Remote MCPs</td>
+      <td>â</td>
+      <td>â</td>
+      <td>â</td>
+      <td>â</td>
+    </tr>
+    <tr>
+      <td>MCPs you have in LM Studio</td>
+      <td>â</td>
+      <td>â</td>
+      <td>â</td>
+      <td>â</td>
+    </tr>
+    <tr>
+      <td>Custom tools</td>
+      <td>â</td>
+      <td>â</td>
+      <td>â</td>
+      <td>â</td>
+    </tr>
+    <tr>
+      <td>Include assistant messages in the request</td>
+      <td>â</td>
+      <td>â</td>
+      <td>â</td>
+      <td>â</td>
+    </tr>
+    <tr>
+      <td>Model load streaming events</td>
+      <td>â</td>
+      <td>â</td>
+      <td>â</td>
+      <td>â</td>
+    </tr>
+    <tr>
+      <td>Prompt processing streaming events</td>
+      <td>â</td>
+      <td>â</td>
+      <td>â</td>
+      <td>â</td>
+    </tr>
+    <tr>
+      <td>Specify context length in the request</td>
+      <td>â</td>
+      <td>â</td>
+      <td>â</td>
+      <td>â</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+Please report bugs by opening an issue on [Github](https://github.com/lmstudio-ai/lmstudio-bug-tracker/issues).
+
+
+### Get up and running with the LM Studio API
+
+> Download a model and start a simple Chat session using the REST API
+
+
+## Start the server
+
+[Install](/download) and launch LM Studio.
+
+Then ensure the server is running through the toggle at the top left of the Developer page, or through [lms](/docs/cli) in the terminal:
+
+```bash
+lms server start
+```
+
+By default, the server is available at `http://localhost:1234`.
+
+If you don't have a model downloaded yet, you can download the model:
+
+```bash
+lms get ibm/granite-4-micro
+```
+
+
+## API Authentication
+
+By default, the LM Studio API server does **not** require authentication. You can configure the server to require authentication by API token in the [server settings](/docs/developer/core/server/settings) for added security.
+
+To authenticate API requests, generate an API token from the Developer page in LM Studio, and include it in the `Authorization` header of your requests as follows: `Authorization: Bearer $LM_API_TOKEN`. Read more about authentication [here](/docs/developer/core/authentication).
+
+
+## Chat with a model
+
+Use the chat endpoint to send a message to a model. By default, the model will be automatically loaded if it is not already.
+
+The `/api/v1/chat` endpoint is stateful, which means you do not need to pass the full history in every request. Read more about it [here](/docs/developer/rest/stateful-chats).
+
+```lms_code_snippet
+variants:
+  curl:
+    language: bash
+    code: |
+      curl http://localhost:1234/api/v1/chat \
+        -H "Authorization: Bearer $LM_API_TOKEN" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "model": "ibm/granite-4-micro",
+          "input": "Write a short haiku about sunrise."
+        }'
+  Python:
+    language: python
+    code: |
+      import os
+      import requests
+      import json
+
+      response = requests.post(
+        "http://localhost:1234/api/v1/chat",
+        headers={
+          "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
+          "Content-Type": "application/json"
+        },
+        json={
+          "model": "ibm/granite-4-micro",
+          "input": "Write a short haiku about sunrise."
+        }
+      )
+      print(json.dumps(response.json(), indent=2))
+  TypeScript:
+    language: typescript
+    code: |
+      const response = await fetch("http://localhost:1234/api/v1/chat", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${process.env.LM_API_TOKEN}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          model: "ibm/granite-4-micro",
+          input: "Write a short haiku about sunrise."
+        })
+      });
+      const data = await response.json();
+      console.log(data);
+```
+
+See the full [chat](/docs/developer/rest/chat) docs for more details.
+
+## Use MCP servers via API
+
+
+Enable the model interact with ephemeral Model Context Protocol (MCP) servers in `/api/v1/chat` by specifying servers in the `integrations` field.
+
+```lms_code_snippet
+variants:
+  curl:
+    language: bash
+    code: |
+      curl http://localhost:1234/api/v1/chat \
+        -H "Authorization: Bearer $LM_API_TOKEN" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "model": "ibm/granite-4-micro",
+          "input": "What is the top trending model on hugging face?",
+          "integrations": [
+            {
+              "type": "ephemeral_mcp",
+              "server_label": "huggingface",
+              "server_url": "https://huggingface.co/mcp",
+              "allowed_tools": ["model_search"]
+            }
+          ],
+          "context_length": 8000
+        }'
+  Python:
+    language: python
+    code: |
+      import os
+      import requests
+      import json
+
+      response = requests.post(
+        "http://localhost:1234/api/v1/chat",
+        headers={
+          "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
+          "Content-Type": "application/json"
+        },
+        json={
+          "model": "ibm/granite-4-micro",
+          "input": "What is the top trending model on hugging face?",
+          "integrations": [
+            {
+              "type": "ephemeral_mcp",
+              "server_label": "huggingface",
+              "server_url": "https://huggingface.co/mcp",
+              "allowed_tools": ["model_search"]
+            }
+          ],
+          "context_length": 8000
+        }
+      )
+      print(json.dumps(response.json(), indent=2))
+  TypeScript:
+    language: typescript
+    code: |
+      const response = await fetch("http://localhost:1234/api/v1/chat", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${process.env.LM_API_TOKEN}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          model: "ibm/granite-4-micro",
+          input: "What is the top trending model on hugging face?",
+          integrations: [
+            {
+              type: "ephemeral_mcp",
+              server_label: "huggingface",
+              server_url: "https://huggingface.co/mcp",
+              allowed_tools: ["model_search"]
+            }
+          ],
+          context_length: 8000
+        })
+      const data = await response.json();
+      console.log(data);
+```
+
+You can also use locally configured MCP plugins (from your `mcp.json`) via the `integrations` field. Using locally run MCP plugins requires authentication via an API token passed through the `Authorization` header. Read more about authentication [here](/docs/developer/core/authentication).
+
+```lms_code_snippet
+variants:
+  curl:
+    language: bash
+    code: |
+      curl http://localhost:1234/api/v1/chat \
+        -H "Authorization: Bearer $LM_API_TOKEN" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "model": "ibm/granite-4-micro",
+          "input": "Open lmstudio.ai",
+          "integrations": [
+            {
+              "type": "plugin",
+              "id": "mcp/playwright",
+              "allowed_tools": ["browser_navigate"]
+            }
+          ],
+          "context_length": 8000
+        }'
+  Python:
+    language: python
+    code: |
+      import os
+      import requests
+      import json
+
+      response = requests.post(
+        "http://localhost:1234/api/v1/chat",
+        headers={
+          "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
+          "Content-Type": "application/json"
+        },
+        json={
+          "model": "ibm/granite-4-micro",
+          "input": "Open lmstudio.ai",
+          "integrations": [
+            {
+              "type": "plugin",
+              "id": "mcp/playwright",
+              "allowed_tools": ["browser_navigate"]
+            }
+          ],
+          "context_length": 8000
+        }
+      )
+      print(json.dumps(response.json(), indent=2))
+  TypeScript:
+    language: typescript
+    code: |
+      const response = await fetch("http://localhost:1234/api/v1/chat", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${process.env.LM_API_TOKEN}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          model: "ibm/granite-4-micro",
+          input: "Open lmstudio.ai",
+          integrations: [
+            {
+              type: "plugin",
+              id: "mcp/playwright",
+              allowed_tools: ["browser_navigate"]
+            }
+          ],
+          context_length: 8000
+        })
+      });
+      const data = await response.json();
+      console.log(data);
+```
+
+See the full [chat](/docs/developer/rest/chat) docs for more details.
+
+## Download a model
+
+Use the download endpoint to download models by identifier from the [LM Studio model catalog](https://lmstudio.ai/models), or by Hugging Face model URL.
+
+```lms_code_snippet
+variants:
+  curl:
+    language: bash
+    code: |
+      curl http://localhost:1234/api/v1/models/download \
+        -H "Authorization: Bearer $LM_API_TOKEN" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "model": "ibm/granite-4-micro"
+        }'
+  Python:
+    language: python
+    code: |
+      import os
+      import requests
+      import json
+
+      response = requests.post(
+        "http://localhost:1234/api/v1/models/download",
+        headers={
+          "Authorization": f"Bearer {os.environ['LM_API_TOKEN']}",
+          "Content-Type": "application/json"
+        },
+        json={"model": "ibm/granite-4-micro"}
+      )
+      print(json.dumps(response.json(), indent=2))
+  TypeScript:
+    language: typescript
+    code: |
+      const response = await fetch("http://localhost:1234/api/v1/models/download", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${process.env.LM_API_TOKEN}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          model: "ibm/granite-4-micro"
+        })
+      });
+      const data = await response.json();
+      console.log(data);
+```
+
+The response will return a `job_id` that you can use to track download progress.
+
+```lms_code_snippet
+variants:
+  curl:
+    language: bash
+    code: |
+      curl -H "Authorization: Bearer $LM_API_TOKEN" \
+        http://localhost:1234/api/v1/models/download/status/{job_id}
+  Python:
+    language: python
+    code: |
+      import os
+      import requests
+      import json
+
+      job_id = "your-job-id"
+      response = requests.get(
+        f"http://localhost:1234/api/v1/models/download/status/{job_id}",
+        headers={"Authorization": f"Bearer {os.environ['LM_API_TOKEN']}"}
+      )
+      print(json.dumps(response.json(), indent=2))
+  TypeScript:
+    language: typescript
+    code: |
+      const jobId = "your-job-id";
+      const response = await fetch(
+        `http://localhost:1234/api/v1/models/download/status/${jobId}`,
+        {
+          headers: {
+            "Authorization": `Bearer ${process.env.LM_API_TOKEN}`
+          }
+        }
+      );
+      const data = await response.json();
+      console.log(data);
+```
+
+See the [download](/docs/developer/rest/download) and [download status](/docs/developer/rest/download-status) docs for more details.
+
+
+### Stateful Chats
+
+> Learn how to maintain conversation context across multiple requests
+
+
+The `/api/v1/chat` endpoint is stateful by default. This means you don't need to pass the full conversation history in every request â LM Studio automatically stores and manages the context for you.
+
+## How it works
+
+When you send a chat request, LM Studio stores the conversation in a chat thread and returns a `response_id` in the response. Use this `response_id` in subsequent requests to continue the conversation.
+
+```lms_code_snippet
+title: Start a new conversation
+variants:
+  curl:
+    language: bash
+    code: |
+      curl http://localhost:1234/api/v1/chat \
+        -H "Authorization: Bearer $LM_API_TOKEN" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "model": "ibm/granite-4-micro",
+          "input": "My favorite color is blue."
+        }'
+```
+
+The response includes a `response_id`:
+
+```lms_info
+Every response includes an unique `response_id` that you can use to reference that specific point in the conversation for future requests. This allows you to branch conversations.
+```
+
+```lms_code_snippet
+title: Response
+variants:
+  response:
+    language: json
+    code: |
+      {
+        "model_instance_id": "ibm/granite-4-micro",
+        "output": [
+          {
+            "type": "message",
+            "content": "That's great! Blue is a beautiful color..."
+          }
+        ],
+        "response_id": "resp_abc123xyz..."
+      }
+```
+
+## Continue a conversation
+
+Pass the `previous_response_id` in your next request to continue the conversation. The model will remember the previous context.
+
+
+
+```lms_code_snippet
+title: Continue the conversation
+variants:
+  curl:
+    language: bash
+    code: |
+      curl http://localhost:1234/api/v1/chat \
+        -H "Authorization: Bearer $LM_API_TOKEN" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "model": "ibm/granite-4-micro",
+          "input": "What color did I just mention?",
+          "previous_response_id": "resp_abc123xyz..."
+        }'
+```
+
+The model can reference the previous message without you needing to resend it and will return a new `response_id` for further continuation.
+
+## Disable stateful storage
+
+If you don't want to store the conversation, set `store` to `false`. The response will not include a `response_id`.
+
+```lms_code_snippet
+title: Stateless chat
+variants:
+  curl:
+    language: bash
+    code: |
+      curl http://localhost:1234/api/v1/chat \
+        -H "Authorization: Bearer $LM_API_TOKEN" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "model": "ibm/granite-4-micro",
+          "input": "Tell me a joke.",
+          "store": false
+        }'
+```
+
+This is useful for one-off requests where you don't need to maintain context.
+
+
+### Streaming events
+
+> When you chat with a model with `stream` set to `true`, the response is sent as a stream of events using Server-Sent Events (SSE).
+
+
+Streaming events let you render chat responses incrementally over ServerâSent Events (SSE). When you call `POST /api/v1/chat` with `stream: true`, the server emits a series of named events that you can consume. These events arrive in order and may include multiple deltas (for reasoning and message content), tool call boundaries and payloads, and any errors encountered. The stream always begins with `chat.start` and concludes with `chat.end`, which contains the aggregated result equivalent to a nonâstreaming response.
+
+List of event types that can be sent in an `/api/v1/chat` response stream:
+- `chat.start`
+- `model_load.start`
+- `model_load.progress`
+- `model_load.end`
+- `prompt_processing.start`
+- `prompt_processing.progress`
+- `prompt_processing.end`
+- `reasoning.start`
+- `reasoning.delta`
+- `reasoning.end`
+- `tool_call.start`
+- `tool_call.arguments`
+- `tool_call.success`
+- `tool_call.failure`
+- `message.start`
+- `message.delta`
+- `message.end`
+- `error`
+- `chat.end`
+
+Events will be streamed out in the following raw format:
+```bash
+event: <event type>
+data: <JSON event data>
+```
+
+### `chat.start`
+````lms_hstack
+An event that is emitted at the start of a chat response stream.
+```lms_params
+- name: model_instance_id
+  type: string
+  description: Unique identifier for the loaded model instance that will generate the response.
+- name: type
+  type: '"chat.start"'
+  description: The type of the event. Always `chat.start`.
+```
+:::split:::
+```lms_code_snippet
+title: Example Event Data
+variants:
+  json:
+    language: json
+    code: |
+      {
+        "type": "chat.start",
+        "model_instance_id": "openai/gpt-oss-20b"
+      }
+```
+````
+
+### `model_load.start`
+````lms_hstack
+Signals the start of a model being loaded to fulfill the chat request. Will not be emitted if the requested model is already loaded.
+```lms_params
+- name: model_instance_id
+  type: string
+  description: Unique identifier for the model instance being loaded.
+- name: type
+  type: '"model_load.start"'
+  description: The type of the event. Always `model_load.start`.
+```
+:::split:::
+```lms_code_snippet
+title: Example Event Data
+variants:
+  json:
+    language: json
+    code: |
+      {
+        "type": "model_load.start",
+        "model_instance_id": "openai/gpt-oss-20b"
+      }
+```
+````
+
+### `model_load.progress`
+````lms_hstack
+Progress of the model load.
+```lms_params
+- name: model_instance_id
+  type: string
+  description: Unique identifier for the model instance being loaded.
+- name: progress
+  type: number
+  description: Progress of the model load as a float between `0` and `1`.
+- name: type
+  type: '"model_load.progress"'
+  description: The type of the event. Always `model_load.progress`.
+```
+:::split:::
+```lms_code_snippet
+title: Example Event Data
+variants:
+  json:
+    language: json
+    code: |
+      {
+        "type": "model_load.progress",
+        "model_instance_id": "openai/gpt-oss-20b",
+        "progress": 0.65
+      }
+```
+````
+
+### `model_load.end`
+````lms_hstack
+Signals a successfully completed model load.
+```lms_params
+- name: model_instance_id
+  type: string
+  description: Unique identifier for the model instance that was loaded.
+- name: load_time_seconds
+  type: number
+  description: Time taken to load the model in seconds.
+- name: type
+  type: '"model_load.end"'
+  description: The type of the event. Always `model_load.end`.
+```
+:::split:::
+```lms_code_snippet
+title: Example Event Data
+variants:
+  json:
+    language: json
+    code: |
+      {
+        "type": "model_load.end",
+        "model_instance_id": "openai/gpt-oss-20b",
+        "load_time_seconds": 12.34
+      }
+```
+````
+
+### `prompt_processing.start`
+````lms_hstack
+Signals the start of the model processing a prompt.
+```lms_params
+- name: type
+  type: '"prompt_processing.start"'
+  description: The type of the event. Always `prompt_processing.start`.
+```
+:::split:::
+```lms_code_snippet
+title: Example Event Data
+variants:
+  json:
+    language: json
+    code: |
+      {
+        "type": "prompt_processing.start"
+      }
+```
+````
+
+### `prompt_processing.progress`
+````lms_hstack
+Progress of the model processing a prompt.
+```lms_params
+- name: progress
+  type: number
+  description: Progress of the prompt processing as a float between `0` and `1`.
+- name: type
+  type: '"prompt_processing.progress"'
+  description: The type of the event. Always `prompt_processing.progress`.
+```
+:::split:::
+```lms_code_snippet
+title: Example Event Data
+variants:
+  json:
+    language: json
+    code: |
+      {
+        "type": "prompt_processing.progress",
+        "progress": 0.5
+      }
+```
+````
+
+### `prompt_processing.end`
+````lms_hstack
+Signals the end of the model processing a prompt.
+```lms_params
+- name: type
+  type: '"prompt_processing.end"'
+  description: The type of the event. Always `prompt_processing.end`.
+```
+:::split:::
+```lms_code_snippet
+title: Example Event Data
+variants:
+  json:
+    language: json
+    code: |
+      {
+        "type": "prompt_processing.end"
+      }
+```
+````
+
+### `reasoning.start`
+````lms_hstack
+Signals the model is starting to stream reasoning content.
+```lms_params
+- name: type
+  type: '"reasoning.start"'
+  description: The type of the event. Always `reasoning.start`.
+```
+:::split:::
+```lms_code_snippet
+title: Example Event Data
+variants:
+  json:
+    language: json
+    code: |
+      {
+        "type": "reasoning.start"
+      }
+```
+````
+
+### `reasoning.delta`
+````lms_hstack
+A chunk of reasoning content. Multiple deltas may arrive.
+```lms_params
+- name: content
+  type: string
+  description: Reasoning text fragment.
+- name: type
+  type: '"reasoning.delta"'
+  description: The type of the event. Always `reasoning.delta`.
+```
+:::split:::
+```lms_code_snippet
+title: Example Event Data
+variants:
+  json:
+    language: json
+    code: |
+      {
+        "type": "reasoning.delta",
+        "content": "Need to"
+      }
+```
+````
+
+### `reasoning.end`
+````lms_hstack
+Signals the end of the reasoning stream.
+```lms_params
+- name: type
+  type: '"reasoning.end"'
+  description: The type of the event. Always `reasoning.end`.
+```
+:::split:::
+```lms_code_snippet
+title: Example Event Data
+variants:
+  json:
+    language: json
+    code: |
+      {
+        "type": "reasoning.end"
+      }
+```
+````
+
+### `tool_call.start`
+````lms_hstack
+Emitted when the model starts a tool call.
+```lms_params
+- name: tool
+  type: string
+  description: Name of the tool being called.
+- name: provider_info
+  type: object
+  description: Information about the tool provider. Discriminated union upon possible provider types.
+  children:
+    - name: Plugin provider info
+      type: object
+      description: Present when the tool is provided by a plugin.
+      children:
+        - name: type
+          type: '"plugin"'
+          description: Provider type.
+        - name: plugin_id
+          type: string
+          description: Identifier of the plugin.
+    - name: Ephemeral MCP provider info
+      type: object
+      description: Present when the tool is provided by a ephemeral MCP server.
+      children:
+        - name: type
+          type: '"ephemeral_mcp"'
+          description: Provider type.
+        - name: server_label
+          type: string
+          description: Label of the MCP server.
+- name: type
+  type: '"tool_call.start"'
+  description: The type of the event. Always `tool_call.start`.
+```
+:::split:::
+```lms_code_snippet
+title: Example Event Data
+variants:
+  json:
+    language: json
+    code: |
+      {
+        "type": "tool_call.start",
+        "tool": "model_search",
+        "provider_info": {
+          "type": "ephemeral_mcp",
+          "server_label": "huggingface"
+        }
+      }
+```
+````
+
+### `tool_call.arguments`
+````lms_hstack
+Arguments streamed for the current tool call.
+```lms_params
+- name: tool
+  type: string
+  description: Name of the tool being called.
+- name: arguments
+  type: object
+  description: Arguments passed to the tool. Can have any keys/values depending on the tool definition.
+- name: provider_info
+  type: object
+  description: Information about the tool provider. Discriminated union upon possible provider types.
+  children:
+    - name: Plugin provider info
+      type: object
+      description: Present when the tool is provided by a plugin.
+      children:
+        - name: type
+          type: '"plugin"'
+          description: Provider type.
+        - name: plugin_id
+          type: string
+          description: Identifier of the plugin.
+    - name: Ephemeral MCP provider info
+      type: object
+      description: Present when the tool is provided by a ephemeral MCP server.
+      children:
+        - name: type
+          type: '"ephemeral_mcp"'
+          description: Provider type.
+        - name: server_label
+          type: string
+          description: Label of the MCP server.
+- name: type
+  type: '"tool_call.arguments"'
+  description: The type of the event. Always `tool_call.arguments`.
+```
+:::split:::
+```lms_code_snippet
+title: Example Event Data
+variants:
+  json:
+    language: json
+    code: |
+      {
+        "type": "tool_call.arguments",
+        "tool": "model_search",
+        "arguments": {
+          "sort": "trendingScore",
+          "limit": 1
+        },
+        "provider_info": {
+          "type": "ephemeral_mcp",
+          "server_label": "huggingface"
+        }
+      }
+```
+````
+
+### `tool_call.success`
+````lms_hstack
+Result of the tool call, along with the arguments used.
+```lms_params
+- name: tool
+  type: string
+  description: Name of the tool that was called.
+- name: arguments
+  type: object
+  description: Arguments that were passed to the tool.
+- name: output
+  type: string
+  description: Raw tool output string.
+- name: provider_info
+  type: object
+  description: Information about the tool provider. Discriminated union upon possible provider types.
+  children:
+    - name: Plugin provider info
+      type: object
+      description: Present when the tool is provided by a plugin.
+      children:
+        - name: type
+          type: '"plugin"'
+          description: Provider type.
+        - name: plugin_id
+          type: string
+          description: Identifier of the plugin.
+    - name: Ephemeral MCP provider info
+      type: object
+      description: Present when the tool is provided by a ephemeral MCP server.
+      children:
+        - name: type
+          type: '"ephemeral_mcp"'
+          description: Provider type.
+        - name: server_label
+          type: string
+          description: Label of the MCP server.
+- name: type
+  type: '"tool_call.success"'
+  description: The type of the event. Always `tool_call.success`.
+```
+:::split:::
+```lms_code_snippet
+title: Example Event Data
+variants:
+  json:
+    language: json
+    code: |
+      {
+        "type": "tool_call.success",
+        "tool": "model_search",
+        "arguments": {
+          "sort": "trendingScore",
+          "limit": 1
+        },
+        "output": "[{\"type\":\"text\",\"text\":\"Showing first 1 models...\"}]",
+        "provider_info": {
+          "type": "ephemeral_mcp",
+          "server_label": "huggingface"
+        }
+      }
+```
+````
+
+
+### `tool_call.failure`
+````lms_hstack
+Indicates that the tool call failed.
+```lms_params
+- name: reason
+  type: string
+  description: Reason for the tool call failure.
+- name: metadata
+  type: object
+  description: Metadata about the invalid tool call.
+  children:
+    - name: type
+      type: '"invalid_name" | "invalid_arguments"'
+      description: Type of error that occurred.
+    - name: tool_name
+      type: string
+      description: Name of the tool that was attempted to be called.
+    - name: arguments
+      type: object
+      optional: true
+      description: Arguments that were passed to the tool (only present for `invalid_arguments` errors).
+    - name: provider_info
+      type: object
+      optional: true
+      description: Information about the tool provider (only present for `invalid_arguments` errors).
+      children:
+        - name: type
+          type: '"plugin" | "ephemeral_mcp"'
+          description: Provider type.
+        - name: plugin_id
+          type: string
+          optional: true
+          description: Identifier of the plugin (when `type` is `"plugin"`).
+        - name: server_label
+          type: string
+          optional: true
+          description: Label of the MCP server (when `type` is `"ephemeral_mcp"`).
+- name: type
+  type: '"tool_call.failure"'
+  description: The type of the event. Always `tool_call.failure`.
+```
+:::split:::
+```lms_code_snippet
+title: Example Event Data
+variants:
+  json:
+    language: json
+    code: |
+      {
+        "type": "tool_call.failure",
+        "reason": "Cannot find tool with name open_browser.",
+        "metadata": {
+          "type": "invalid_name",
+          "tool_name": "open_browser"
+        }
+      }
+```
+````
+
+### `message.start`
+````lms_hstack
+Signals the model is about to stream a message.
+```lms_params
+- name: type
+  type: '"message.start"'
+  description: The type of the event. Always `message.start`.
+```
+:::split:::
+```lms_code_snippet
+title: Example Event Data
+variants:
+  json:
+    language: json
+    code: |
+      {
+        "type": "message.start"
+      }
+```
+````
+
+### `message.delta`
+````lms_hstack
+A chunk of message content. Multiple deltas may arrive.
+```lms_params
+- name: content
+  type: string
+  description: Message text fragment.
+- name: type
+  type: '"message.delta"'
+  description: The type of the event. Always `message.delta`.
+```
+:::split:::
+```lms_code_snippet
+title: Example Event Data
+variants:
+  json:
+    language: json
+    code: |
+      {
+        "type": "message.delta",
+        "content": "The current"
+      }
+```
+````
+
+### `message.end`
+````lms_hstack
+Signals the end of the message stream.
+```lms_params
+- name: type
+  type: '"message.end"'
+  description: The type of the event. Always `message.end`.
+```
+:::split:::
+```lms_code_snippet
+title: Example Event Data
+variants:
+  json:
+    language: json
+    code: |
+      {
+        "type": "message.end"
+      }
+```
+````
+
+### `error`
+````lms_hstack
+An error occurred during streaming. The final payload will still be sent in `chat.end` with whatever was generated.
+```lms_params
+- name: error
+  type: object
+  description: Error information.
+  children:
+    - name: type
+      type: '"invalid_request" | "unknown" | "mcp_connection_error" | "plugin_connection_error" | "not_implemented" | "model_not_found" | "job_not_found" | "internal_error"'
+      description: High-level error type.
+    - name: message
+      type: string
+      description: Human-readable error message.
+    - name: code
+      type: string
+      optional: true
+      description: More detailed error code (e.g., validation issue code).
+    - name: param
+      type: string
+      optional: true
+      description: Parameter associated with the error, if applicable.
+- name: type
+  type: '"error"'
+  description: The type of the event. Always `error`.
+```
+:::split:::
+```lms_code_snippet
+title: Example Event Data
+variants:
+  json:
+    language: json
+    code: |
+      {
+        "type": "error",
+        "error": {
+          "type": "invalid_request",
+          "message": "\"model\" is required",
+          "code": "missing_required_parameter",
+          "param": "model"
+        }
+      }
+```
+````
+
+### `chat.end`
+````lms_hstack
+Final event containing the full aggregated response, equivalent to the non-streaming `POST /api/v1/chat` response body.
+```lms_params
+- name: result
+  type: object
+  description: Final response with `model_instance_id`, `output`, `stats`, and optional `response_id`. See [non-streaming chat docs](/docs/developer/rest/chat) for more details.
+- name: type
+  type: '"chat.end"'
+  description: The type of the event. Always `chat.end`.
+```
+:::split:::
+```lms_code_snippet
+title: Example Event Data
+variants:
+  json:
+    language: json
+    code: |
+      {
+        "type": "chat.end",
+        "result": {
+          "model_instance_id": "openai/gpt-oss-20b",
+          "output": [
+            { "type": "reasoning", "content": "Need to call function." },
+            {
+              "type": "tool_call",
+              "tool": "model_search",
+              "arguments": { "sort": "trendingScore", "limit": 1 },
+              "output": "[{\"type\":\"text\",\"text\":\"Showing first 1 models...\"}]",
+              "provider_info": { "type": "ephemeral_mcp", "server_label": "huggingface" }
+            },
+            { "type": "message", "content": "The current topâtrending model is..." }
+          ],
+          "stats": {
+            "input_tokens": 329,
+            "total_output_tokens": 268,
+            "reasoning_output_tokens": 5,
+            "tokens_per_second": 43.73,
+            "time_to_first_token_seconds": 0.781
+          },
+          "response_id": "resp_02b2017dbc06c12bfc353a2ed6c2b802f8cc682884bb5716"
+        }
+      }
+```
+````
+
+
+### Chat with a model
+
+> Send a message to a model and receive a response. Supports MCP integration.
+
+
+````lms_hstack
+`POST /api/v1/chat`
+
+**Request body**
+```lms_params
+- name: model
+  type: string
+  optional: false
+  description: Unique identifier for the model to use.
+- name: input
+  type: string | array<object>
+  optional: false
+  description: Message to send to the model.
+  children:
+    - name: Input text
+      unstyledName: true
+      type: string
+      description: Text content of the message.
+    - name: Input object
+      unstyledName: true
+      type: object
+      description: Object representing a message with additional metadata.
+      children:
+        - name: Text Input
+          type: object
+          optional: true
+          description: Text input to provide user messages
+          children:
+            - name: type
+              type: '"message"'
+              optional: false
+              description: Type of input item.
+            - name: content
+              type: string
+              description: Text content of the message.
+              optional: false
+        - name: Image Input
+          type: object
+          optional: true
+          description: Image input to provide user messages
+          children:
+            - name: type
+              type: '"image"'
+              optional: false
+              description: Type of input item.
+            - name: data_url
+              type: string
+              description: Image data as a base64-encoded data URL.
+              optional: false
+- name: system_prompt
+  type: string
+  optional: true
+  description: System message that sets model behavior or instructions.
+- name: integrations
+  type: array<string | object>
+  optional: true
+  description: List of integrations (plugins, ephemeral MCP servers, etc...) to enable for this request.
+  children:
+    - name: Plugin id
+      unstyledName: true
+      type: string
+      description: Unique identifier of a plugin to use. Plugins contain `mcp.json` installed MCP servers (id `mcp/<server_label>`). Shorthand for plugin object with no custom configuration.
+    - name: Plugin
+      unstyledName: true
+      type: object
+      description: Specification of a plugin to use. Plugins contain `mcp.json` installed MCP servers (id `mcp/<server_label>`).
+      children:
+        - name: type
+          type: '"plugin"'
+          optional: false
+          description: Type of integration.
+        - name: id
+          type: string
+          optional: false
+          description: Unique identifier of the plugin.
+        - name: allowed_tools
+          type: array<string>
+          optional: true
+          description: List of tool names the model can call from this plugin. If not provided, all tools from the plugin are allowed.
+    - name: Ephemeral MCP server specification
+      unstyledName: true
+      type: object
+      description: Specification of an ephemeral MCP server. Allows defining MCP servers on-the-fly without needing to pre-configure them in your `mcp.json`.
+      children:
+        - name: type
+          type: '"ephemeral_mcp"'
+          optional: false
+          description: Type of integration.
+        - name: server_label
+          type: string
+          optional: false
+          description: Label to identify the MCP server.
+        - name: server_url
+          type: string
+          optional: false
+          description: URL of the MCP server.
+        - name: allowed_tools
+          type: array<string>
+          optional: true
+          description: List of tool names the model can call from this server. If not provided, all tools from the server are allowed.
+        - name: headers
+          type: object
+          optional: true
+          description: Custom HTTP headers to send with requests to the server.
+- name: stream
+  type: boolean
+  optional: true
+  description: Whether to stream partial outputs via SSE. Default `false`. See [streaming events](/docs/developer/rest/streaming-events) for more information.
+- name: temperature
+  type: number
+  optional: true
+  description: Randomness in token selection. 0 is deterministic, higher values increase creativity [0,1].
+- name: top_p
+  type: number
+  optional: true
+  description: Minimum cumulative probability for the possible next tokens [0,1].
+- name: top_k
+  type: integer
+  optional: true
+  description: Limits next token selection to top-k most probable tokens.
+- name: min_p
+  type: number
+  optional: true
+  description: Minimum base probability for a token to be selected for output [0,1].
+- name: repeat_penalty
+  type: number
+  optional: true
+  description: Penalty for repeating token sequences. 1 is no penalty, higher values discourage repetition.
+- name: max_output_tokens
+  type: integer
+  optional: true
+  description: Maximum number of tokens to generate.
+- name: reasoning
+  type: '"off" | "low" | "medium" | "high" | "on"'
+  optional: true
+  description: Reasoning setting. Will error if the model being used does not support the reasoning setting using. Defaults to the automatically chosen setting for the model.
+- name: context_length
+  type: integer
+  optional: true
+  description: Number of tokens to consider as context. Higher values recommended for MCP usage.
+- name: store
+  type: boolean
+  optional: true
+  description: Whether to store the chat. If set, response will return a `"response_id"` field. Default `true`.
+- name: previous_response_id
+  type: string
+  optional: true
+  description: Identifier of existing response to append to. Must start with `"resp_"`.
+```
+:::split:::
+```lms_code_snippet
+variants:
+  Request with MCP:
+    language: bash
+    code: |
+      curl http://localhost:1234/api/v1/chat \
+        -H "Authorization: Bearer $LM_API_TOKEN" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "model": "ibm/granite-4-micro",
+          "input": "Tell me the top trending model on hugging face and navigate to https://lmstudio.ai",
+          "integrations": [
+            {
+              "type": "ephemeral_mcp",
+              "server_label": "huggingface",
+              "server_url": "https://huggingface.co/mcp",
+              "allowed_tools": [
+                "model_search"
+              ]
+            },
+            {
+              "type": "plugin",
+              "id": "mcp/playwright",
+              "allowed_tools": [
+                "browser_navigate"
+              ]
+            }
+          ],
+          "context_length": 8000,
+          "temperature": 0
+        }'
+  Request with Images:
+    language: bash
+    code: |
+      # Image is a small red square encoded as a base64 data URL
+      curl http://localhost:1234/api/v1/chat \
+        -H "Authorization: Bearer $LM_API_TOKEN" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "model": "qwen/qwen3-vl-4b",
+          "input": [
+            {
+              "type": "text",
+              "content": "Describe this image in two sentences"
+            },
+            {
+              "type": "image",
+              "data_url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAFUlEQVR42mP8z8BQz0AEYBxVSF+FABJADveWkH6oAAAAAElFTkSuQmCC"
+            }
+          ],
+          "context_length": 2048,
+          "temperature": 0
+        }'
+```
+````
+
+---
+
+````lms_hstack
+**Response fields**
+```lms_params
+- name: model_instance_id
+  type: string
+  description: Unique identifier for the loaded model instance that generated the response.
+- name: output
+  type: array<object>
+  description: Array of output items generated. Each item can be one of three types.
+  children:
+    - name: Message
+      unstyledName: true
+      type: object
+      description: A text message from the model.
+      children:
+        - name: type
+          type: '"message"'
+          description: Type of output item.
+        - name: content
+          type: string
+          description: Text content of the message.
+    - name: Tool call
+      unstyledName: true
+      type: object
+      description: A tool call made by the model.
+      children:
+        - name: type
+          type: '"tool_call"'
+          description: Type of output item.
+        - name: tool
+          type: string
+          description: Name of the tool called.
+        - name: arguments
+          type: object
+          description: Arguments passed to the tool. Can have any keys/values depending on the tool definition.
+        - name: output
+          type: string
+          description: Result returned from the tool.
+        - name: provider_info
+          type: object
+          description: Information about the tool provider.
+          children:
+            - name: type
+              type: '"plugin" | "ephemeral_mcp"'
+              description: Provider type.
+            - name: plugin_id
+              type: string
+              optional: true
+              description: Identifier of the plugin (when `type` is `"plugin"`).
+            - name: server_label
+              type: string
+              optional: true
+              description: Label of the MCP server (when `type` is `"ephemeral_mcp"`).
+    - name: Reasoning
+      unstyledName: true
+      type: object
+      description: Reasoning content from the model.
+      children:
+        - name: type
+          type: '"reasoning"'
+          description: Type of output item.
+        - name: content
+          type: string
+          description: Text content of the reasoning.
+    - name: Invalid tool call
+      unstyledName: true
+      type: object
+      description: An invalid tool call made by the model - due to invalid tool name or tool arguments.
+      children:
+        - name: type
+          type: '"invalid_tool_call"'
+          description: Type of output item.
+        - name: reason
+          type: string
+          description: Reason why the tool call was invalid.
+        - name: metadata
+          type: object
+          description: Metadata about the invalid tool call.
+          children:
+            - name: type
+              type: '"invalid_name" | "invalid_arguments"'
+              description: Type of error that occurred.
+            - name: tool_name
+              type: string
+              description: Name of the tool that was attempted to be called.
+            - name: arguments
+              type: object
+              optional: true
+              description: Arguments that were passed to the tool (only present for `invalid_arguments` errors).
+            - name: provider_info
+              type: object
+              optional: true
+              description: Information about the tool provider (only present for `invalid_arguments` errors).
+              children:
+                - name: type
+                  type: '"plugin" | "ephemeral_mcp"'
+                  description: Provider type.
+                - name: plugin_id
+                  type: string
+                  optional: true
+                  description: Identifier of the plugin (when `type` is `"plugin"`).
+                - name: server_label
+                  type: string
+                  optional: true
+                  description: Label of the MCP server (when `type` is `"ephemeral_mcp"`).
+- name: stats
+  type: object
+  description: Token usage and performance metrics.
+  children:
+    - name: input_tokens
+      type: number
+      description: Number of input tokens. Includes formatting, tool definitions, and prior messages in the chat.
+    - name: total_output_tokens
+      type: number
+      description: Total number of output tokens generated.
+    - name: reasoning_output_tokens
+      type: number
+      description: Number of tokens used for reasoning.
+    - name: tokens_per_second
+      type: number
+      description: Generation speed in tokens per second.
+    - name: time_to_first_token_seconds
+      type: number
+      description: Time in seconds to generate the first token.
+    - name: model_load_time_seconds
+      type: number
+      optional: true
+      description: Time taken to load the model for this request in seconds. Present only if the model was not already loaded.
+- name: response_id
+  type: string
+  optional: true
+  description: Identifier of the response for subsequent requests. Starts with `"resp_"`. Present when `store` is `true`.
+```
+:::split:::
+```lms_code_snippet
+variants:
+  Request with MCP:
+    language: json
+    code: |
+      {
+        "model_instance_id": "ibm/granite-4-micro",
+        "output": [
+          {
+            "type": "tool_call",
+            "tool": "model_search",
+            "arguments": {
+              "sort": "trendingScore",
+              "query": "",
+              "limit": 1
+            },
+            "output": "...",
+            "provider_info": {
+              "server_label": "huggingface",
+              "type": "ephemeral_mcp"
+            }
+          },
+          {
+            "type": "message",
+            "content": "..."
+          },
+          {
+            "type": "tool_call",
+            "tool": "browser_navigate",
+            "arguments": {
+              "url": "https://lmstudio.ai"
+            },
+            "output": "...",
+            "provider_info": {
+              "plugin_id": "mcp/playwright",
+              "type": "plugin"
+            }
+          },
+          {
+            "type": "message",
+            "content": "**Top Trending Model on Huggingâ¯Face** ... Below is a quick snapshot of whatâs on the landing page ... more details on the model or LMâ¯Studio itself!"
+          }
+        ],
+        "stats": {
+          "input_tokens": 646,
+          "total_output_tokens": 586,
+          "reasoning_output_tokens": 0,
+          "tokens_per_second": 29.753900615398926,
+          "time_to_first_token_seconds": 1.088,
+          "model_load_time_seconds": 2.656
+        },
+        "response_id": "resp_4ef013eba0def1ed23f19dde72b67974c579113f544086de"
+      }
+  Request with Images:
+    language: json
+    code: |
+      {
+        "model_instance_id": "qwen/qwen3-vl-4b",
+        "output": [
+          {
+            "type": "message",
+            "content": "This image is a solid, vibrant red square that fills the entire frame, with no discernible texture, pattern, or other elements. It presents a minimalist, uniform visual field of pure red, evoking a sense of boldness or urgency."
+          }
+        ],
+        "stats": {
+          "input_tokens": 17,
+          "total_output_tokens": 50,
+          "reasoning_output_tokens": 0,
+          "tokens_per_second": 51.03762685242662,
+          "time_to_first_token_seconds": 0.814
+        },
+        "response_id": "resp_0182bd7c479d7451f9a35471f9c26b34de87a7255856b9a4"
+      }
+```
+````
+
+
+### List your models
+
+> Get a list of available models on your system, including both LLMs and embedding models.
+
+
+````lms_hstack
+`GET /api/v1/models`
+
+This endpoint has no request parameters.
+:::split:::
+```lms_code_snippet
+title: Example Request
+variants:
+  curl:
+    language: bash
+    code: |
+      curl http://localhost:1234/api/v1/models \
+        -H "Authorization: Bearer $LM_API_TOKEN"
+```
+````
+
+---
+
+````lms_hstack
+**Response fields**
+```lms_params
+- name: models
+  type: array
+  description: List of available models (both LLMs and embedding models).
+  children:
+    - name: type
+      type: '"llm" | "embedding"'
+      description: Type of model.
+    - name: publisher
+      type: string
+      description: Model publisher name.
+    - name: key
+      type: string
+      description: Unique identifier for the model.
+    - name: display_name
+      type: string
+      description: Human-readable model name.
+    - name: architecture
+      type: string | null
+      optional: true
+      description: Model architecture (e.g., "llama", "mistral"). Absent for embedding models.
+    - name: quantization
+      type: object | null
+      description: Quantization information for the model.
+      children:
+        - name: name
+          type: string | null
+          description: Quantization method name.
+        - name: bits_per_weight
+          type: number | null
+          description: Bits per weight for the quantization.
+    - name: size_bytes
+      type: number
+      description: Size of the model in bytes.
+    - name: params_string
+      type: string | null
+      description: Human-readable parameter count (e.g., "7B", "13B").
+    - name: loaded_instances
+      type: array
+      description: List of currently loaded instances of this model.
+      children:
+        - name: id
+          type: string
+          description: Unique identifier for the loaded model instance.
+        - name: config
+          type: object
+          description: Configuration for the loaded instance.
+          children:
+            - name: context_length
+              type: number
+              description: The maximum context length for the model in number of tokens.
+            - name: eval_batch_size
+              type: number
+              optional: true
+              description: Number of input tokens to process together in a single batch during evaluation. Absent for embedding models.
+            - name: flash_attention
+              type: boolean
+              optional: true
+              description: Whether Flash Attention is enabled for optimized attention computation. Absent for embedding models.
+            - name: num_experts
+              type: number
+              optional: true
+              description: Number of experts for MoE (Mixture of Experts) models. Absent for embedding models.
+            - name: offload_kv_cache_to_gpu
+              type: boolean
+              optional: true
+              description: Whether KV cache is offloaded to GPU memory. Absent for embedding models.
+    - name: max_context_length
+      type: number
+      description: Maximum context length supported by the model in number of tokens.
+    - name: format
+      type: '"gguf" | "mlx" | null'
+      description: Model file format.
+    - name: capabilities
+      type: object
+      optional: true
+      description: Model capabilities. Absent for embedding models.
+      children:
+        - name: vision
+          type: boolean
+          description: Whether the model supports vision/image inputs.
+        - name: trained_for_tool_use
+          type: boolean
+          description: Whether the model was trained for tool/function calling.
+    - name: description
+      type: string | null
+      optional: true
+      description: Model description. Absent for embedding models.
+```
+:::split:::
+```lms_code_snippet
+title: Response
+variants:
+  json:
+    language: json
+    code: |
+      {
+        "models": [
+          {
+            "type": "llm",
+            "publisher": "lmstudio-community",
+            "key": "gemma-3-270m-it-qat",
+            "display_name": "Gemma 3 270m Instruct Qat",
+            "architecture": "gemma3",
+            "quantization": {
+              "name": "Q4_0",
+              "bits_per_weight": 4
+            },
+            "size_bytes": 241410208,
+            "params_string": "270M",
+            "loaded_instances": [
+              {
+                "id": "gemma-3-270m-it-qat",
+                "config": {
+                  "context_length": 4096,
+                  "eval_batch_size": 512,
+                  "flash_attention": false,
+                  "num_experts": 0,
+                  "offload_kv_cache_to_gpu": true
+                }
+              }
+            ],
+            "max_context_length": 32768,
+            "format": "gguf",
+            "capabilities": {
+              "vision": false,
+              "trained_for_tool_use": false
+            },
+            "description": null
+          },
+          {
+            "type": "embedding",
+            "publisher": "gaianet",
+            "key": "text-embedding-nomic-embed-text-v1.5-embedding",
+            "display_name": "Nomic Embed Text v1.5",
+            "quantization": {
+              "name": "F16",
+              "bits_per_weight": 16
+            },
+            "size_bytes": 274290560,
+            "params_string": null,
+            "loaded_instances": [],
+            "max_context_length": 2048,
+            "format": "gguf"
+          }
+        ]
+      }
+```
+````
+
+
+### Load a model
+
+> Load an LLM or Embedding model into memory with custom configuration for inference
+
+````lms_hstack
+`POST /api/v1/models/load`
+
+**Request body**
+```lms_params
+- name: model
+  type: string
+  optional: false
+  description: Unique identifier for the model to load. Can be an LLM or embedding model.
+- name: context_length
+  type: number
+  optional: true
+  description: Maximum number of tokens that the model will consider.
+- name: eval_batch_size
+  type: number
+  optional: true
+  description: Number of input tokens to process together in a single batch during evaluation. Will only have an effect on LLMs loaded by LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
+- name: flash_attention
+  type: boolean
+  optional: true
+  description: Whether to optimize attention computation. Can decrease memory usage and improved generation speed. Will only have an effect on LLMs loaded by LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
+- name: num_experts
+  type: number
+  optional: true
+  description: Number of expert to use during inference for MoE (Mixture of Experts) models. Will only have an effect on MoE LLMs loaded by LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
+- name: offload_kv_cache_to_gpu
+  type: boolean
+  optional: true
+  description: Whether KV cache is offloaded to GPU memory. If false, KV cache is stored in CPU memory/RAM. Will only have an effect on LLMs loaded by LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
+- name: echo_load_config
+  type: boolean
+  optional: true
+  description: If true, echoes the final load configuration in the response under `"load_config"`. Default `false`.
+```
+:::split:::
+```lms_code_snippet
+title: Example Request
+variants:
+  curl:
+    language: bash
+    code: |
+      curl http://localhost:1234/api/v1/models/load \
+        -H "Authorization: Bearer $LM_API_TOKEN" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "model": "openai/gpt-oss-20b",
+          "context_length": 16384,
+          "flash_attention": true,
+          "echo_load_config": true,
+        }'
+```
+````
+
+---
+
+````lms_hstack
+**Response fields**
+```lms_params
+- name: type
+  type: '"llm" | "embedding"'
+  description: Type of the loaded model.
+- name: instance_id
+  type: string
+  description: Unique identifier for the loaded model instance.
+- name: load_time_seconds
+  type: number
+  description: Time taken to load the model in seconds.
+- name: status
+  type: '"loaded"'
+  description: Load status.
+- name: load_config
+  type: object
+  optional: true
+  description: The final configuration applied to the loaded model. This may include settings that were not specified in the request. Included only when `"echo_load_config"` is `true` in the request.
+  children:
+    - name: LLM load config
+      unstyledName: true
+      type: object
+      description: Configuration parameters specific to LLM models. `load_config` will be this type when `"type"` is `"llm"`. Only parameters that applied to the load will be present.
+      children:
+        - name: context_length
+          type: number
+          optional: false
+          description: Maximum number of tokens that the model will consider.
+        - name: eval_batch_size
+          type: number
+          optional: true
+          description: Number of input tokens to process together in a single batch during evaluation. Only present for models loaded with LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
+        - name: flash_attention
+          type: boolean
+          optional: true
+          description: Whether Flash Attention is enabled for optimized attention computation. Only present for models loaded with LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
+        - name: num_experts
+          type: number
+          optional: true
+          description: Number of experts for MoE (Mixture of Experts) models. Only present for MoE models loaded with LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
+        - name: offload_kv_cache_to_gpu
+          type: boolean
+          optional: true
+          description: Whether KV cache is offloaded to GPU memory. Only present for models loaded with LM Studio's [llama.cpp](https://github.com/ggml-org/llama.cpp)-based engine.
+    - name: Embedding model load config
+      unstyledName: true
+      type: object
+      description: Configuration parameters specific to embedding models. `load_config` will be this type when `"type"` is `"embedding"`. Only parameters that applied to the load will be present.
+      children:
+        - name: context_length
+          type: number
+          optional: false
+          description: Maximum number of tokens that the model will consider.
+```
+:::split:::
+```lms_code_snippet
+title: Response
+variants:
+  json:
+    language: json
+    code: |
+      {
+        "type": "llm",
+        "instance_id": "openai/gpt-oss-20b",
+        "load_time_seconds": 9.099,
+        "status": "loaded",
+        "load_config": {
+          "context_length": 16384,
+          "eval_batch_size": 512,
+          "flash_attention": true,
+          "offload_kv_cache_to_gpu": true,
+          "num_experts": 4
+        }
+      }
+```
+````
+
+
+### Download a model
+
+> Download LLMs and embedding models
+
+
+````lms_hstack
+`POST /api/v1/models/download`
+
+**Request body**
+```lms_params
+- name: model
+  type: string
+  optional: false
+  description: The model to download. Accepts [model catalog](https://lmstudio.ai/models) identifiers (e.g., `openai/gpt-oss-20b`) and exact Hugging Face links (e.g., `https://huggingface.co/lmstudio-community/gpt-oss-20b-GGUF`)
+- name: quantization
+  type: string
+  optional: true
+  description: Quantization level of the model to download (e.g., `Q4_K_M`). Only supported for Hugging Face links.
+```
+:::split:::
+```lms_code_snippet
+title: Example Request
+variants:
+  curl:
+    language: bash
+    code: |
+      curl http://localhost:1234/api/v1/models/download \
+        -H "Authorization: Bearer $LM_API_TOKEN" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "model": "ibm/granite-4-micro"
+        }'
+```
+````
+
+````lms_hstack
+**Response fields**
+
+Returns a download job status object. The response varies based on the download status.
+
+```lms_params
+- name: job_id
+  type: string
+  optional: true
+  description: Unique identifier for the download job. Absent when `status` is `already_downloaded`.
+- name: status
+  type: '"downloading" | "paused" | "completed" | "failed" | "already_downloaded"'
+  description: Current status of the download.
+- name: completed_at
+  type: string
+  optional: true
+  description: Download completion time in ISO 8601 format. Present when `status` is `completed`.
+- name: total_size_bytes
+  type: number
+  optional: true
+  description: Total size of the download in bytes. Absent when `status` is `already_downloaded`.
+- name: started_at
+  type: string
+  optional: true
+  description: Download start time in ISO 8601 format. Absent when `status` is `already_downloaded`.
+```
+:::split:::
+```lms_code_snippet
+title: Response
+variants:
+  json:
+    language: json
+    code: |
+      {
+        "job_id": "job_493c7c9ded",
+        "status": "downloading",
+        "total_size_bytes": 2279145003,
+        "started_at": "2025-10-03T15:33:23.496Z"
+      }
+```
+````
+
+
+### Unload a model
+
+> Unload a loaded model from memory
+
+````lms_hstack
+`POST /api/v1/models/unload`
+
+**Request body**
+```lms_params
+- name: instance_id
+  type: string
+  optional: false
+  description: Unique identifier of the model instance to unload.
+```
+:::split:::
+```lms_code_snippet
+title: Example Request
+variants:
+  curl:
+    language: bash
+    code: |
+      curl http://localhost:1234/api/v1/models/unload \
+        -H "Authorization: Bearer $LM_API_TOKEN" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "instance_id": "openai/gpt-oss-20b"
+        }'
+```
+````
+
+---
+
+````lms_hstack
+**Response fields**
+```lms_params
+- name: instance_id
+  type: string
+  description: Unique identifier for the unloaded model instance.
+```
+:::split:::
+```lms_code_snippet
+title: Response
+variants:
+  json:
+    language: json
+    code: |
+      {
+        "instance_id": "openai/gpt-oss-20b"
+      }
+```
+````
+
+
+### Get download status
+
+> Get the status of model downloads
+
+
+````lms_hstack
+`GET /api/v1/models/download/status/:job_id`
+
+**Path parameters**
+```lms_params
+- name: job_id
+  type: string
+  optional: false
+  description: The unique identifier of the download job. `job_id` is returned by the [download](/docs/developer/rest/download) endpoint when a download is initiated.
+```
+:::split:::
+```lms_code_snippet
+title: Example Request
+variants:
+  curl:
+    language: bash
+    code: |
+      curl -H "Authorization: Bearer $LM_API_TOKEN" \
+        http://localhost:1234/api/v1/models/download/status/job_493c7c9ded
+```
+````
+
+````lms_hstack
+**Response fields**
+
+Returns a single download job status object. The response varies based on the download status.
+
+```lms_params
+- name: job_id
+  type: string
+  description: Unique identifier for the download job.
+- name: status
+  type: '"downloading" | "paused" | "completed" | "failed"'
+  description: Current status of the download.
+- name: bytes_per_second
+  type: number
+  optional: true
+  description: Current download speed in bytes per second. Present when `status` is `downloading`.
+- name: estimated_completion
+  type: string
+  optional: true
+  description: Estimated completion time in ISO 8601 format. Present when `status` is `downloading`.
+- name: completed_at
+  type: string
+  optional: true
+  description: Download completion time in ISO 8601 format. Present when `status` is `completed`.
+- name: total_size_bytes
+  type: number
+  optional: true
+  description: Total size of the download in bytes.
+- name: downloaded_bytes
+  type: number
+  optional: true
+  description: Number of bytes downloaded so far.
+- name: started_at
+  type: string
+  optional: true
+  description: Download start time in ISO 8601 format.
+```
+:::split:::
+```lms_code_snippet
+title: Response
+variants:
+  json:
+    language: json
+    code: |
+      {
+        "job_id": "job_493c7c9ded",
+        "status": "completed",
+        "total_size_bytes": 2279145003,
+        "downloaded_bytes": 2279145003,
+        "started_at": "2025-10-03T15:33:23.496Z",
+        "completed_at": "2025-10-03T15:43:12.102Z"
+      }
+```
+````
+
+
 ### REST API v0
 
 > The REST API includes enhanced stats such as Token / Second and Time To First Token (TTFT), as well as rich information about models such as loaded vs unloaded, max context, quantization, and more.
 
 
+```lms_warning
+LM Studio now has a [v1 REST API](/docs/developer/rest)! We recommend using the v1 API for new projects!
+```
+
 ##### Requires [LM Studio 0.3.6](/download) or newer.
 
-LM Studio now has its own REST API, in addition to OpenAI compatibility mode ([learn more](/docs/developer/openai-compat)).
+LM Studio now has its own REST API, in addition to OpenAI-compatible endpoints ([learn more](/docs/developer/openai-compat)) and Anthropic-compatible endpoints ([learn more](/docs/developer/anthropic-compat)).
 
 The REST API includes enhanced stats such as Token / Second and Time To First Token (TTFT), as well as rich information about models such as loaded vs unloaded, max context, quantization, and more.
 
@@ -1941,7 +4911,7 @@ List all loaded and downloaded models
 **Example request**
 
 ```bash
-curl http://localhost:1234/api/v0/models
+curl -H "Authorization: Bearer $LM_API_TOKEN" http://localhost:1234/api/v0/models
 ```
 
 **Response format**
@@ -1996,7 +4966,7 @@ Get info about one specific model
 **Example request**
 
 ```bash
-curl http://localhost:1234/api/v0/models/qwen2-vl-7b-instruct
+curl -H "Authorization: Bearer $LM_API_TOKEN" http://localhost:1234/api/v0/models/qwen2-vl-7b-instruct
 ```
 
 **Response format**
@@ -2025,6 +4995,7 @@ Chat Completions API. You provide a messages array and receive the next assistan
 
 ```bash
 curl http://localhost:1234/api/v0/chat/completions \
+  -H "Authorization: Bearer $LM_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "granite-3.0-2b-instruct",
@@ -2092,6 +5063,7 @@ Text Completions API. You provide a prompt and receive a completion.
 
 ```bash
 curl http://localhost:1234/api/v0/completions \
+  -H "Authorization: Bearer $LM_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "granite-3.0-2b-instruct",
@@ -2154,6 +5126,7 @@ Text Embeddings API. You provide a text and a representation of the text as an e
 
 ```bash
 curl http://localhost:1234/api/v0/embeddings \
+  -H "Authorization: Bearer $LM_API_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "text-embedding-nomic-embed-text-v1.5",
@@ -2286,11 +5259,18 @@ const client = new OpenAI({
    }'
 ```
 
+
+## Using Codex with LM Studio
+
+Codex is supported because LM Studio implements the OpenAI-compatible `POST /v1/responses` endpoint.
+
+See: [Use Codex with LM Studio](/docs/integrations/codex) and [Responses](/docs/developer/openai-compat/responses).
+
 ---
 
 Other OpenAI client libraries should have similar options to set the base URL.
 
-If you're running into trouble, hop onto our [Discord](https://discord.gg/lmstudio) and enter the `#🔨-developers` channel.
+If you're running into trouble, hop onto our [Discord](https://discord.gg/lmstudio) and enter the `#ð¨-developers` channel.
 
 
 ### Structured Output
@@ -2500,37 +5480,37 @@ Tool use describes:
 ### High-level flow
 
 ```xml
-┌──────────────────────────┐
-│ SETUP: LLM + Tool list   │
-└──────────┬───────────────┘
-           ▼
-┌──────────────────────────┐
-│    Get user input        │◄────┐
-└──────────┬───────────────┘     │
-           ▼                     │
-┌──────────────────────────┐     │
-│ LLM prompted w/messages  │     │
-└──────────┬───────────────┘     │
-           ▼                     │
-     Needs tools?                │
-      │         │                │
-    Yes         No               │
-      │         │                │
-      ▼         └────────────┐   │
-┌─────────────┐              │   │
-│Tool Response│              │   │
-└──────┬──────┘              │   │
-       ▼                     │   │
-┌─────────────┐              │   │
-│Execute tools│              │   │
-└──────┬──────┘              │   │
-       ▼                     ▼   │
-┌─────────────┐          ┌───────────┐
-│Add results  │          │  Normal   │
-│to messages  │          │ response  │
-└──────┬──────┘          └─────┬─────┘
-       │                       ▲
-       └───────────────────────┘
+ââââââââââââââââââââââââââââ
+â SETUP: LLM + Tool list   â
+ââââââââââââ¬ââââââââââââââââ
+           â¼
+ââââââââââââââââââââââââââââ
+â    Get user input        âââââââ
+ââââââââââââ¬ââââââââââââââââ     â
+           â¼                     â
+ââââââââââââââââââââââââââââ     â
+â LLM prompted w/messages  â     â
+ââââââââââââ¬ââââââââââââââââ     â
+           â¼                     â
+     Needs tools?                â
+      â         â                â
+    Yes         No               â
+      â         â                â
+      â¼         ââââââââââââââ   â
+âââââââââââââââ              â   â
+âTool Responseâ              â   â
+ââââââââ¬âââââââ              â   â
+       â¼                     â   â
+âââââââââââââââ              â   â
+âExecute toolsâ              â   â
+ââââââââ¬âââââââ              â   â
+       â¼                     â¼   â
+âââââââââââââââ          âââââââââââââ
+âAdd results  â          â  Normal   â
+âto messages  â          â response  â
+ââââââââ¬âââââââ          âââââââ¬ââââââ
+       â                       â²
+       âââââââââââââââââââââââââ
 ```
 
 ### In-depth flow
@@ -3636,7 +6616,7 @@ Chat with other LM Studio users, discuss LLMs, hardware, and more on the [LM Stu
 
 
 - Method: `GET`
-- Returns the models visible to the server. The list may include all downloaded models when Just‑In‑Time loading is enabled.
+- Returns the models visible to the server. The list may include all downloaded models when JustâInâTime loading is enabled.
 
 ##### cURL
 
@@ -3653,7 +6633,7 @@ curl http://localhost:1234/v1/models
 - Method: `POST`
 - See OpenAI docs: https://platform.openai.com/docs/api-reference/responses
 
-##### cURL (non‑streaming)
+##### cURL (nonâstreaming)
 
 ```bash
 curl http://localhost:1234/v1/responses \
@@ -3665,7 +6645,7 @@ curl http://localhost:1234/v1/responses \
   }'
 ```
 
-##### Stateful follow‑up
+##### Stateful followâup
 
 Use the `id` from a previous response as `previous_response_id`.
 
@@ -3693,22 +6673,26 @@ curl http://localhost:1234/v1/responses \
 
 You will receive SSE events such as `response.created`, `response.output_text.delta`, and `response.completed`.
 
-##### Tools and Remote MCP (opt‑in)
+##### Tools and Remote MCP (optâin)
 
-Enable Remote MCP in the app (Developer → Settings). Example payload using an MCP server tool:
+Enable Remote MCP in the app (Developer â Settings). Example payload using an MCP server tool:
 
 ```bash
 curl http://localhost:1234/v1/responses \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "openai/gpt-oss-20b",
-    "tools": [{
-      "type": "mcp",
-      "server_label": "tiktoken",
-      "server_url": "https://gitmcp.io/openai/tiktoken",
-      "allowed_tools": ["fetch_tiktoken_documentation"]
-    }],
-    "input": "What is the first sentence of the tiktoken documentation?"
+    "model": "ibm/granite-4-micro",
+    "input": "What is the top trending model on hugging face?",
+    "tools": [
+      {
+        "type": "mcp",
+        "server_label": "huggingface",
+        "server_url": "https://huggingface.co/mcp",
+        "allowed_tools": [
+          "model_search"
+        ]
+      }
+    ]
   }'
 ```
 
@@ -3719,10 +6703,10 @@ curl http://localhost:1234/v1/responses \
 
 
 - Method: `POST`
-- Prompt template is applied automatically for chat‑tuned models
+- Prompt template is applied automatically for chatâtuned models
 - Provide inference parameters (temperature, top_p, etc.) in the payload
 - See OpenAI docs: https://platform.openai.com/docs/api-reference/chat
-- Tip: keep a terminal open with [`lms log stream`](/docs/cli/log-stream) to inspect model input
+- Tip: keep a terminal open with [`lms log stream`](/docs/cli/serve/log-stream) to inspect model input
 
 ##### Python example
 
@@ -3793,12 +6777,186 @@ print(get_embedding("Once upon a time, there was a cat."))
 ```lms_warning
 This endpoint is no longer supported by OpenAI. LM Studio continues to support it.
 
-Using this endpoint with chat‑tuned models may produce unexpected tokens. Prefer base models.
+Using this endpoint with chatâtuned models may produce unexpected tokens. Prefer base models.
 ```
 
 - Method: `POST`
 - Prompt template is not applied
 - See OpenAI docs: https://platform.openai.com/docs/api-reference/completions
+
+
+## anthropic-compat
+
+## Anthropic Compatibility Endpoints
+
+> Send Messages requests using the Anthropic-compatible API.
+
+
+### Supported endpoints
+
+<table class="flexible-cols">
+  <thead>
+    <tr>
+      <th>Endpoint</th>
+      <th>Method</th>
+      <th>Docs</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>/v1/messages</code></td>
+      <td><apimethod method="POST" /></td>
+      <td><a href="/docs/developer/anthropic-compat/messages">Messages</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+## Using Claude Code with LM Studio
+
+For a full walkthrough, see: [Use Claude Code with LM Studio](/docs/integrations/claude-code).
+
+```bash
+export ANTHROPIC_BASE_URL=http://localhost:1234
+export ANTHROPIC_AUTH_TOKEN=lmstudio
+claude --model openai/gpt-oss-20b
+```
+
+## Authentication headers
+
+When Require Authentication is enabled, LM Studio accepts both `x-api-key` and the standard `Authorization: Bearer <token>` header. To learn more about enabling auth in LM Studio, checkout [Authentication](/docs/developer/core/authentication).
+
+## Set the base URL to point to LM Studio
+
+Point your Anthropic client (or any HTTP request) at your local LM Studio server.
+
+Note: The following examples assume the server port is `1234`.
+
+### cURL example
+
+```diff
+- curl https://api.anthropic.com/v1/messages \
++ curl http://localhost:1234/v1/messages \
+   -H "Content-Type: application/json" \
++  -H "x-api-key: $LM_API_TOKEN" \
+   -d '{
+-    "model": "claude-4-5-sonnet",
++    "model": "ibm/granite-4-micro",
+     "max_tokens": 256,
+     "messages": [
+       {"role": "user", "content": "Write a haiku about local LLMs."}
+     ]
+   }'
+```
+
+### Python example
+
+```python
+from anthropic import Anthropic
+
+client = Anthropic(
+    base_url="http://localhost:1234",
+    api_key="lmstudio",
+)
+
+message = client.messages.create(
+    max_tokens=1024,
+    messages=[
+        {
+            "role": "user",
+            "content": "Hello from LM Studio",
+        }
+    ],
+    model="ibm/granite-4-micro",
+)
+
+print(message.content)
+```
+
+If you have not enabled Require Authentication, the `x-api-key` header is optional.
+For the Python example, you can also omit `api_key` when authentication is disabled.
+
+
+If you're running into trouble, hop onto our [Discord](https://discord.gg/lmstudio) and enter the developers channel.
+
+
+### Messages
+
+> Send a Messages request and get the assistant's response.
+
+
+- Method: `POST`
+- Endpoint: `/v1/messages`
+- See Anthropic docs: https://platform.claude.com/docs/en/api/messages/create
+
+##### cURL example
+
+```bash
+curl http://localhost:1234/v1/messages \
+  -H "Content-Type: application/json" \
+  -H "x-api-key: $LM_API_TOKEN" \
+  -d '{
+    "model": "ibm/granite-4-micro",
+    "max_tokens": 256,
+    "messages": [
+      {"role": "user", "content": "Say hello from LM Studio."}
+    ]
+  }'
+```
+
+If you have not enabled Require Authentication, the `x-api-key` header is optional.
+
+##### cURL (streaming)
+
+```bash
+curl http://localhost:1234/v1/messages \
+  -H "Content-Type: application/json" \
+  -H "x-api-key: $LM_API_TOKEN" \
+  -d '{
+    "model": "ibm/granite-4-micro",
+    "messages": [{"role": "user", "content": "Hello"}],
+    "max_tokens": 256,
+    "stream": true
+  }'
+```
+
+You will receive SSE events such as `message_start`, `content_block_start`, `content_block_delta`, `content_block_stop`, `message_delta`, and `message_stop`.
+
+##### cURL (tools)
+
+```bash
+curl http://localhost:1234/v1/messages \
+  -H "Content-Type: application/json" \
+  -H "x-api-key: $LM_API_TOKEN" \
+  -d '{
+    "model": "ibm/granite-4-micro",
+    "max_tokens": 1024,
+    "tools": [
+      {
+        "name": "get_weather",
+        "description": "Get the current weather in a given location",
+        "input_schema": {
+          "type": "object",
+          "properties": {
+            "location": {
+              "type": "string",
+              "description": "The city and state, e.g. San Francisco, CA"
+            }
+          },
+          "required": ["location"]
+        }
+      }
+    ],
+    "tool_choice": {"type": "any"},
+    "messages": [
+      {
+        "role": "user",
+        "content": "What is the weather like in San Francisco?"
+      }
+    ]
+  }'
+```
 
 
 # python
@@ -4180,6 +7338,68 @@ For example:
         >>> print(await model.respond(chat, on_message=chat.append))
         You asked for three fruits initially, then three more, so I've listed six fruits in total.
 
+```
+
+
+### Authentication
+
+> Using API Tokens in LM Studio
+
+
+##### Requires [LM Studio 0.4.0](/download) or newer.
+
+LM Studio supports API Tokens for authentication, providing a secure and convenient way to access the LM Studio API.
+
+By default, the LM Studio API runs **without enforcing authentication**. For production or shared environments, enable API Token authentication for secure access.
+
+```lms_info
+To enable API Token authentication, create tokens and control granular permissions, check [this guide](/docs/developer/core/authentication) for more details.
+```
+
+## Providing the API Token
+
+The API Token can be provided in two ways:
+
+1. **Environment Variable (Recommended)**: Set the `LM_API_TOKEN` environment variable, and the SDK will automatically read it.
+2. **Function Argument**: Pass the token directly as the `api_token` parameter.
+
+```lms_code_snippet
+  variants:
+    "Python (convenience API)":
+      language: python
+      code: |
+        import lmstudio as lms
+
+        # Configure the default client with an API token
+        lms.configure_default_client(api_token="your-token-here")
+
+        model = lms.llm()
+        result = model.respond("What is the meaning of life?")
+        print(result)
+
+    "Python (scoped resource API)":
+      language: python
+      code: |
+        import lmstudio as lms
+
+        # Pass api_token to the Client constructor
+        with lms.Client(api_token="your-token-here") as client:
+            model = client.llm.model()
+            result = model.respond("What is the meaning of life?")
+            print(result)
+
+    "Python (asynchronous API)":
+      language: python
+      code: |
+        # Note: assumes use of an async function or the "python -m asyncio" asynchronous REPL
+        # Requires Python SDK version 1.5.0 or later
+        import lmstudio as lms
+
+        # Pass api_token to the AsyncClient constructor
+        async with lms.AsyncClient(api_token="your-token-here") as client:
+            model = await client.llm.model()
+            result = await model.respond("What is the meaning of life?")
+            print(result)
 ```
 
 
@@ -5597,11 +8817,11 @@ We introduce the concept of execution "rounds" to describe the combined process 
 **Execution Round**
 
 ```
- • run a tool ->
- ↑   • provide the result to the LLM ->
- │       • wait for the LLM to generate a response
- │
- └────────────────────────────────────────┘ └➔ (return)
+ â¢ run a tool ->
+ â   â¢ provide the result to the LLM ->
+ â       â¢ wait for the LLM to generate a response
+ â
+ ââââââââââââââââââââââââââââââââââââââââââ ââ (return)
 ```
 
 A model might choose to run tools multiple times before returning a final result. For example, if the LLM is writing code, it might choose to compile or run the program, fix errors, and then run it again, rinse and repeat until it gets the desired result.
@@ -6703,6 +9923,59 @@ lms get qwen/qwen3-4b-2507
 Read more about `lms get` in LM Studio's CLI [here](./cli/get).
 
 
+## Authentication
+
+> Using API Tokens in LM Studio
+
+
+##### Requires [LM Studio 0.4.0](/download) or newer.
+
+LM Studio supports API Tokens for authentication, providing a secure and convenient way to access the LM Studio API.
+
+By default, the LM Studio API runs **without enforcing authentication**. For production or shared environments, enable API Token authentication for secure access.
+
+```lms_info
+To enable API Token authentication, create tokens and control granular permissions, check [this guide](/docs/developer/core/authentication) for more details.
+```
+
+## Providing the API Token
+
+There are two ways to provide the API Token when creating an instance of `LMStudioClient`:
+
+1. **Environment Variable (Recommended)**: Set the `LM_API_TOKEN` environment variable, and the SDK will automatically read it.
+2. **Function Argument**: Pass the token directly as the `apiToken` parameter in the constructor.
+
+```lms_code_snippet
+  variants:
+    Environment Variable:
+      language: typescript
+      code: |
+        // Set environment variables in your terminal before running the code:
+        // export LM_API_TOKEN="your-token-here"
+
+        import { LMStudioClient } from "@lmstudio/sdk";
+        // The SDK automatically reads from LM_API_TOKEN environment variable
+        const client = new LMStudioClient();
+
+        const model = await client.llm.model("qwen/qwen3-4b-2507");
+        const result = await model.respond("What is the meaning of life?");
+
+        console.info(result.content);
+    Function Argument:
+      language: typescript
+      code: |
+        import { LMStudioClient } from "@lmstudio/sdk";
+        const client = new LMStudioClient({
+          apiToken: "your-token-here",
+        });
+
+        const model = await client.llm.model("qwen/qwen3-4b-2507");
+        const result = await model.respond("What is the meaning of life?");
+
+        console.info(result.content);
+```
+
+
 ## Project Setup
 
 > Set up your `lmstudio-js` app or script.
@@ -7706,11 +10979,11 @@ We introduce the concept of execution "rounds" to describe the combined process 
 **Execution Round**
 
 ```
- • run a tool ->
- ↑   • provide the result to the LLM ->
- │       • wait for the LLM to generate a response
- │
- └────────────────────────────────────────┘ └➔ (return)
+ â¢ run a tool ->
+ â   â¢ provide the result to the LLM ->
+ â       â¢ wait for the LLM to generate a response
+ â
+ ââââââââââââââââââââââââââââââââââââââââââ ââ (return)
 ```
 
 A model might choose to run tools multiple times before returning a final result. For example, if the LLM is writing code, it might choose to compile or run the program, fix errors, and then run it again, rinse and repeat until it gets the desired result.
@@ -7742,6 +11015,8 @@ With this in mind, we say that the `.act()` API is an automatic "multi-round" to
           onMessage: (message) => console.info(message.toString()),
         });
 ```
+
+> **_NOTE:_**  at this time, this code expects zod v3
 
 ### What does it mean for an LLM to "use a tool"?
 
@@ -7958,7 +11233,7 @@ can essentially turn your LLMs into autonomous agents that can perform tasks on 
 
 Plugins extend LM Studio's functionality by providing "hook functions" that execute at specific points during operation.
 
-Plugins are currently written in JavaScript/TypeScript and run on Node.js v20.18.0. Python support is in development.
+Plugins are currently written in JavaScript/TypeScript and run on Node.js v22.21.1. Python support is in development.
 
 ## Getting Started
 
@@ -7978,7 +11253,7 @@ lms dev
 
 Your plugin will appear in LM Studio's plugin list. Development mode automatically rebuilds and reloads your plugin when you make code changes.
 
-You only need `lms dev` during development. When the plugin is installed, LM Studio automatically runs them as needed. Learn more about distributing and installing plugins in the [Sharing Plugins](./plugins/sharing) section.
+You only need `lms dev` during development. When the plugin is installed, LM Studio automatically runs them as needed. Learn more about distributing and installing plugins in the [Sharing Plugins](./plugins/publish-plugins) section.
 
 ## Next Steps
 
@@ -9592,7 +12867,7 @@ after the last request until the model unloads. See [Idle TTL](/docs/api/ttl-and
 - name: "xtcProbability"
   type: "number | false"
   optional: true
-  description: "Controls how often the XTC (Exclude Top Choices) sampling technique is applied during generation.\n\nXTC sampling can boost creativity and reduce clichés by occasionally filtering out common tokens. For example, if set to 0.3, there's a 30% chance that XTC sampling will be applied when generating each token.\n\nValue should be between 0 and 1. Set to false to disable XTC completely."
+  description: "Controls how often the XTC (Exclude Top Choices) sampling technique is applied during generation.\n\nXTC sampling can boost creativity and reduce clichÃ©s by occasionally filtering out common tokens. For example, if set to 0.3, there's a 30% chance that XTC sampling will be applied when generating each token.\n\nValue should be between 0 and 1. Set to false to disable XTC completely."
 
 - name: "xtcThreshold"
   type: "number | false"
@@ -9714,74 +12989,79 @@ You can access information about a loaded model using the `getInfo` method.
 
 # cli
 
-# `lms` — LM Studio's CLI
+# `lms` â LM Studio's CLI
 
 > Get starting with the `lms` command line utility.
 
 
-LM Studio ships with `lms`, a command line tool for scripting and automating your local LLM workflows.
+## Install `lms`
+
+`lms` ships with LM Studio, so you don't need to do any additional installation steps if you have LM Studio installed.
+
+Just open a terminal window and run `lms`:
+
+```shell
+lms --help
+```
+
+## Open source
 
 `lms` is **MIT Licensed** and is developed in this repository on GitHub: https://github.com/lmstudio-ai/lms
 
-<hr>
+## Command quick links
+
+| Command | Syntax | Docs |
+| --- | --- | --- |
+| Chat in the terminal | `lms chat` | [Guide](/docs/cli/local-models/chat) |
+| Download models | `lms get` | [Guide](/docs/cli/local-models/get) |
+| List your models | `lms ls` | [Guide](/docs/cli/local-models/ls) |
+| See models loaded into memory | `lms ps` | [Guide](/docs/cli/local-models/ps) |
+| Control the server | `lms server start` | [Guide](/docs/cli/serve/server-start) |
+| Manage the inference runtime | `lms runtime` | [Guide](/docs/cli/runtime) |
+
+
+### Verify the installation
 
 ```lms_info
-👉 You need to run LM Studio _at least once_ before you can use `lms`.
+ð You need to run LM Studio _at least once_ before you can use `lms`.
 ```
 
-### Install `lms`
+Open a terminal window and run `lms`.
 
-`lms` ships with LM Studio and can be found under `/bin` in the LM Studio's working directory.
-
-Use the following commands to add `lms` to your system path.
-
-#### Bootstrap `lms` on macOS or Linux
-
-Run the following command in your terminal:
-
-```bash
-~/.lmstudio/bin/lms bootstrap
-```
-
-#### Bootstrap `lms` on Windows
-
-Run the following command in **PowerShell**:
-
-```shell
-cmd /c %USERPROFILE%/.lmstudio/bin/lms.exe bootstrap
-```
-
-#### Verify the installation
-
-Open a **new terminal window** and run `lms`.
-
-This is the current output you will get:
-
-```bash
+```lms_terminal
 $ lms
-lms - LM Studio CLI - v0.2.22
-GitHub: https://github.com/lmstudio-ai/lmstudio-cli
 
-Usage
-lms <subcommand>
+lms is LM Studio's CLI utility for your models, server, and inference runtime. (v0.0.47)
 
-where <subcommand> can be one of:
+Usage: lms [options] [command]
 
-- status - Prints the status of LM Studio
-- server - Commands for managing the local server
-- ls - List all downloaded models
-- ps - List all loaded models
-- load - Load a model
-- unload - Unload a model
-- create - Create a new project with scaffolding
-- log - Log operations. Currently only supports streaming logs from LM Studio via `lms log stream`
-- version - Prints the version of the CLI
-- bootstrap - Bootstrap the CLI
+Local models
+   chat               Start an interactive chat with a model
+   get                Search and download models
+   load               Load a model
+   unload             Unload a model
+   ls                 List the models available on disk
+   ps                 List the models currently loaded in memory
+   import             Import a model file into LM Studio
 
-For more help, try running `lms <subcommand> --help`
+Serve
+   server             Commands for managing the local server
+   log                Log incoming and outgoing messages
+
+Runtime
+   runtime            Manage and update the inference runtime
+
+Develop & Publish (Beta)
+   clone              Clone an artifact from LM Studio Hub to a local folder
+   push               Uploads the artifact in the current folder to LM Studio Hub
+   dev                Starts a plugin dev server in the current folder
+   login              Authenticate with LM Studio
+
+Learn more:           https://lmstudio.ai/docs/developer
+Join our Discord:     https://discord.gg/lmstudio
 ```
 
-### Use `lms` to automate and debug your workflows
+## Use `lms` to automate and debug your workflows
 
 ### Start and stop the local server
 
@@ -9790,19 +13070,25 @@ lms server start
 lms server stop
 ```
 
+Learn more about [`lms server`](/docs/cli/serve/server-start).
+
 ### List the local models on the machine
 
 ```bash
 lms ls
 ```
 
-This will reflect the current LM Studio models directory, which you set in **📂 My Models** tab in the app.
+Learn more about [`lms ls`](/docs/cli/local-models/ls).
+
+This will reflect the current LM Studio models directory, which you set in **ð My Models** tab in the app.
 
 ### List the currently loaded models
 
 ```bash
 lms ps
 ```
+
+Learn more about [`lms ps`](/docs/cli/local-models/ps).
 
 ### Load a model (with options)
 
@@ -9815,26 +13101,195 @@ lms load [--gpu=max|auto|0.0-1.0] [--context-length=1-N]
 - Optionally, assign an identifier to your local LLM:
 
 ```bash
-lms load TheBloke/phi-2-GGUF --identifier="gpt-4-turbo"
+lms load openai/gpt-oss-20b --identifier="my-model-name"
 ```
 
 This is useful if you want to keep the model identifier consistent.
 
-### Unload models
-
+### Unload a model
 ```
 lms unload [--all]
 ```
 
-
-## `lms load`
-
-> Load a model into memory, set context length, GPU offload, TTL, or estimate memory usage without loading.
+Learn more about [`lms load and unload`](/docs/cli/local-models/load).
 
 
-The `lms load` command loads a model into memory. You can optionally set parameters such as context length, GPU offload, and TTL.
+## Contributing
 
-### Parameters 
+> Learn where to file issues and how to contribute to the `lms` CLI.
+
+
+The `lms` CLI is open source on GitHub: https://github.com/lmstudio-ai/lms
+
+If you spot a bug, want to request a feature, or plan to contribute:
+
+- File issues or feature requests in the GitHub repository.
+- Open pull requests against the `main` branch with a concise summary and testing notes.
+- Review the repository README for setup instructions and coding standards.
+
+
+## local-models
+
+### `lms chat`
+
+> Start a chat session with a local model from the command line.
+
+
+Use `lms chat` to talk to a local model directly in the terminal. This is handy for quick experiments or scripting.
+
+### Flags 
+```lms_params
+- name: "[model]"
+  type: "string"
+  optional: true
+  description: "Identifier of the model to use. If omitted, you will be prompted to pick one."
+- name: "-p, --prompt"
+  type: "string"
+  optional: true
+  description: "Send a one-off prompt and print the response to stdout before exiting"
+- name: "-s, --system-prompt"
+  type: "string"
+  optional: true
+  description: "Custom system prompt for the chat"
+- name: "--stats"
+  type: "flag"
+  optional: true
+  description: "Show detailed prediction statistics after each response"
+- name: "--ttl"
+  type: "number"
+  optional: true
+  description: "Seconds to keep the model loaded after the chat ends (default: 3600)"
+```
+
+### Start an interactive chat
+
+```shell
+lms chat
+```
+
+You will be prompted to pick a model if one is not provided.
+
+### Chat with a specific model
+
+```shell
+lms chat my-model
+```
+
+### Send a single prompt and exit
+
+Use `-p` to print the response to stdout and exit instead of staying interactive:
+
+```shell
+lms chat my-model -p "Summarize this release note"
+```
+
+### Set a system prompt
+
+```shell
+lms chat my-model -s "You are a terse assistant. Reply in two sentences."
+```
+
+### Keep the model loaded after chatting
+
+```shell
+lms chat my-model --ttl 600
+```
+
+### Pipe input from another command
+
+`lms chat` reads from stdin, so you can pipe content directly into a prompt:
+
+```shell
+cat my_file.txt | lms chat -p "Summarize this, please"
+```
+
+
+### `lms get`
+
+> Search and download models from the command line.
+
+
+The `lms get` command allows you to search and download models from online repositories. If no model is specified, it shows staff-picked recommendations.
+
+Models you download via `lms get` will be stored in your LM Studio model directory. 
+
+### Flags 
+```lms_params
+- name: "[modelName]"
+  type: "string"
+  optional: true
+  description: "The model to download. If omitted, staff picks are shown. For models with multiple quantizations, append '@' (e.g., 'llama-3.1-8b@q4_k_m')."
+- name: "--mlx"
+  type: "flag"
+  optional: true
+  description: "Include only MLX models in search results. If either '--mlx' or '--gguf' is set, only matching formats are shown; otherwise results match installed runtimes."
+- name: "--gguf"
+  type: "flag"
+  optional: true
+  description: "Include only GGUF models in search results. If either '--mlx' or '--gguf' is set, only matching formats are shown; otherwise results match installed runtimes."
+- name: "-n, --limit"
+  type: "number"
+  optional: true
+  description: "Limit the number of model options shown."
+- name: "--always-show-all-results"
+  type: "flag"
+  optional: true
+  description: "Always prompt you to choose from search results, even when there's an exact match."
+- name: "-a, --always-show-download-options"
+  type: "flag"
+  optional: true
+  description: "Always prompt you to choose a quantization, even when an exact match is auto-selected."
+```
+
+## Download a model
+
+Download a model by name:
+
+```shell
+lms get llama-3.1-8b
+```
+
+### Specify quantization
+
+Download a specific model quantization:
+
+```shell
+lms get llama-3.1-8b@q4_k_m
+```
+
+### Filter by format
+
+Show only MLX or GGUF models:
+
+```shell
+lms get --mlx
+lms get --gguf
+```
+
+### Control search results
+
+Limit the number of results:
+
+```shell
+lms get --limit 5
+```
+
+Always show all options:
+
+```shell
+lms get --always-show-all-results
+lms get --always-show-download-options
+```
+
+
+### `lms load`
+
+> Load or unload models, set context length, GPU offload, TTL, or estimate memory usage without loading.
+
+
+The `lms load` command loads a model into memory. You can optionally set parameters such as context length, GPU offload, and TTL. This guide also covers unloading models with `lms unload`.
+
+### Flags 
 ```lms_params
 - name: "[path]"
   type: "string"
@@ -9870,7 +13325,7 @@ Load a model into memory by running the following command:
 lms load <model_key>
 ```
 
-You can find the `model_key` by first running [`lms ls`](/docs/cli/ls) to list your locally downloaded models.
+You can find the `model_key` by first running [`lms ls`](/docs/cli/local-models/ls) to list your locally downloaded models.
 
 ### Set a custom identifier
 
@@ -9920,7 +13375,7 @@ Preview memory requirements before loading a model using `--estimate-only`:
 lms load --estimate-only <model_key>
 ```
 
-Optional flags such as `--context-length` and `--gpu` are honored and reflected in the estimate. The estimator accounts for factors like context length, flash attention, and whether the model is vision‑enabled.
+Optional flags such as `--context-length` and `--gpu` are honored and reflected in the estimate. The estimator accounts for factors like context length, flash attention, and whether the model is visionâenabled.
 
 Example:
 
@@ -9933,25 +13388,11 @@ Estimated Total Memory: 65.68 GB
 Estimate: This model may be loaded based on your resource guardrails settings.
 ```
 
-## Operate on a remote LM Studio instance
+## Unload models
 
-`lms load` supports the `--host` flag to connect to a remote LM Studio instance. 
+Use `lms unload` to remove models from memory.
 
-```shell
-lms load <model_key> --host <host>
-```
-
-For this to work, the remote LM Studio instance must be running and accessible from your local machine, e.g. be accessible on the same subnet.
-
-
-## `lms unload`
-
-> Unload one or all models from memory using the command line.
-
-
-The `lms unload` command unloads a model from memory. You can optionally specify a model key to unload a specific model, or use the `--all` flag to unload all models.
-
-### Parameters
+### Flags 
 ```lms_params
 - name: "[model_key]"
   type: "string"
@@ -9967,9 +13408,7 @@ The `lms unload` command unloads a model from memory. You can optionally specify
   description: "The host address of a remote LM Studio instance to connect to"
 ```
 
-## Unload a specific model
-
-Unload a single model from memory by running:
+### Unload a specific model
 
 ```shell
 lms unload <model_key>
@@ -9977,271 +13416,37 @@ lms unload <model_key>
 
 If no model key is provided, you will be prompted to select from currently loaded models.
 
-## Unload all models
-
-To unload all currently loaded models at once:
+### Unload all models
 
 ```shell
 lms unload --all
 ```
 
-## Operate on a remote LM Studio instance
-
-`lms unload` supports the `--host` flag to connect to a remote LM Studio instance:
+### Unload from a remote LM Studio instance
 
 ```shell
 lms unload <model_key> --host <host>
 ```
 
+## Operate on a remote LM Studio instance
+
+`lms load` supports the `--host` flag to connect to a remote LM Studio instance. 
+
+```shell
+lms load <model_key> --host <host>
+```
+
 For this to work, the remote LM Studio instance must be running and accessible from your local machine, e.g. be accessible on the same subnet.
 
-## `lms get`
 
-> Search and download models from the command line.
-
-
-The `lms get` command allows you to search and download models from online repositories. If no model is specified, it shows staff-picked recommendations.
-
-Models you download via `lms get` will be stored in your LM Studio model directory. 
-
-### Parameters
-```lms_params
-- name: "[search term]"
-  type: "string"
-  optional: true
-  description: "The model to download. For specific quantizations, append '@' (e.g., 'llama-3.1-8b@q4_k_m')"
-- name: "--mlx"
-  type: "flag"
-  optional: true
-  description: "Include MLX models in search results"
-- name: "--gguf"
-  type: "flag"
-  optional: true
-  description: "Include GGUF models in search results"
-- name: "--limit"
-  type: "number"
-  optional: true
-  description: "Limit the number of model options shown"
-- name: "--always-show-all-results"
-  type: "flag"
-  optional: true
-  description: "Always show search results, even with exact matches"
-- name: "--always-show-download-options"
-  type: "flag"
-  optional: true
-  description: "Always show quantization options, even with exact matches"
-- name: "--yes"
-  type: "flag"
-  optional: true
-  description: "Skip all confirmations. Uses first match and recommended quantization"
-```
-
-## Download a model
-
-Download a model by name:
-
-```shell
-lms get llama-3.1-8b
-```
-
-### Specify quantization
-
-Download a specific model quantization:
-
-```shell
-lms get llama-3.1-8b@q4_k_m
-```
-
-### Filter by format
-
-Show only MLX or GGUF models:
-
-```shell
-lms get --mlx
-lms get --gguf
-```
-
-### Control search results
-
-Limit the number of results:
-
-```shell
-lms get --limit 5
-```
-
-Always show all options:
-
-```shell
-lms get --always-show-all-results
-lms get --always-show-download-options
-```
-
-### Automated downloads
-
-For scripting, skip all prompts:
-
-```shell
-lms get llama-3.1-8b --yes
-```
-
-This will automatically select the first matching model and recommended quantization for your hardware.
-
-## `lms server start`
-
-> Start the LM Studio local server with customizable port and logging options.
-
-
-The `lms server start` command launches the LM Studio local server, allowing you to interact with loaded models via HTTP API calls.
-
-### Parameters
-```lms_params
-- name: "--port"
-  type: "number"
-  optional: true
-  description: "Port to run the server on. If not provided, uses the last used port"
-- name: "--cors"
-  type: "flag"
-  optional: true
-  description: "Enable CORS support for web application development. When not set, CORS is disabled"
-```
-
-## Start the server
-
-Start the server with default settings:
-
-```shell
-lms server start
-```
-
-### Specify a custom port
-
-Run the server on a specific port:
-
-```shell
-lms server start --port 3000
-```
-
-### Enable CORS support
-
-For usage with web applications or some VS Code extensions, you may need to enable CORS support:
-
-```shell
-lms server start --cors
-```
-
-Note that enabling CORS may expose your server to security risks, so use it only when necessary.
-
-### Check the server status
-
-See [`lms server status`](/docs/cli/server-status) for more information on checking the status of the server.
-
-## `lms server status`
-
-> Check the status of your running LM Studio server instance.
-
-
-The `lms server status` command displays the current status of the LM Studio local server, including whether it's running and its configuration.
-
-### Parameters
-```lms_params
-- name: "--json"
-  type: "flag"
-  optional: true
-  description: "Output the status in JSON format"
-- name: "--verbose"
-  type: "flag"
-  optional: true
-  description: "Enable detailed logging output"
-- name: "--quiet"
-  type: "flag"
-  optional: true
-  description: "Suppress all logging output"
-- name: "--log-level"
-  type: "string"
-  optional: true
-  description: "The level of logging to use. Defaults to 'info'"
-```
-
-## Check server status
-
-Get the basic status of the server:
-
-```shell
-lms server status
-```
-
-Example output:
-```
-The server is running on port 1234.
-```
-
-### Example usage
-
-```console
-➜  ~ lms server start
-Starting server...
-Waking up LM Studio service...
-Success! Server is now running on port 1234
-
-➜  ~ lms server status
-The server is running on port 1234.
-```
-
-### JSON output
-
-Get the status in machine-readable JSON format:
-
-```shell
-lms server status --json --quiet
-```
-
-Example output:
-```json
-{"running":true,"port":1234}
-```
-
-### Control logging output
-
-Adjust logging verbosity:
-
-```shell
-lms server status --verbose
-lms server status --quiet
-lms server status --log-level debug
-```
-
-You can only use one logging control flag at a time (`--verbose`, `--quiet`, or `--log-level`).
-
-## `lms server stop`
-
-> Stop the running LM Studio server instance.
-
-
-The `lms server stop` command gracefully stops the running LM Studio server.
-
-## Stop the server
-
-Stop the running server instance:
-
-```shell
-lms server stop
-```
-
-Example output:
-```
-Stopped the server on port 1234.
-```
-
-Any active request will be terminated when the server is stopped. You can restart the server using [`lms server start`](/docs/cli/server-start).
-
-## `lms ls`
+### `lms ls`
 
 > List all downloaded models in your LM Studio installation.
 
 
 The `lms ls` command displays a list of all models downloaded to your machine, including their size, architecture, and parameters.
 
-### Parameters
+### Flags 
 
 ```lms_params
 - name: "--llm"
@@ -10327,57 +13532,7 @@ lms ls --host <host>
 For this to work, the remote LM Studio instance must be running and accessible from your local machine, e.g. be accessible on the same subnet.
 
 
-## `lms push`
-
-> Upload a plugin, preset, or `model.yaml` to the LM Studio Hub.
-
-
-The `lms push` command packages the contents of the current directory and uploads
-it to the LM Studio Hub. You can use it to share presets, plugins, or
-[`model.yaml`](http://modelyaml.org) files.
-
-### Parameters
-```lms_params
-- name: "--overrides"
-  type: "string"
-  optional: true
-  description: "A JSON string of values to override in the manifest or metadata"
-- name: "--write-revision"
-  type: "flag"
-  optional: true
-  description: "Write the returned revision number to `manifest.json`"
-```
-
-## Upload a Plugin, Preset, or `model.yaml`
-
-Run `lms push` inside the directory that contains your plugin, preset, or `model.yaml` file:
-
-1. Navigate to the directory of your plugin, preset, or `model.yaml` file:
-```shell
-cd path/to/your/directory
-```
-2. Run the command:
-```shell
-lms push
-```
-
-The command uploads the artifact and prints the revision number. When used with
-`--write-revision`, the revision number is also written to the `manifest.json`
-file so you can track revisions in version control.
-
-This command works for [presets](/docs/app/presets),
-[plugins](/docs/typescript/plugins), and `model.yaml` files.
-
-### Example Usage with `--overrides`
-You can use the `--overrides` parameter to modify the metadata before pushing:
-
-```shell
-lms push --overrides '{"description": "new-description"}'
-```
-
-
-
-## `lms ps`
+### `lms ps`
 
 > Show information about currently loaded models from the command line.
 
@@ -10397,10 +13552,10 @@ Example output:
    LOADED MODELS
 
 Identifier: unsloth/deepseek-r1-distill-qwen-1.5b
-  • Type:  LLM
-  • Path: unsloth/DeepSeek-R1-Distill-Qwen-1.5B-GGUF/DeepSeek-R1-Distill-Qwen-1.5B-Q4_K_M.gguf
-  • Size: 1.12 GB
-  • Architecture: Qwen2
+  â¢ Type:  LLM
+  â¢ Path: unsloth/DeepSeek-R1-Distill-Qwen-1.5B-GGUF/DeepSeek-R1-Distill-Qwen-1.5B-Q4_K_M.gguf
+  â¢ Size: 1.12 GB
+  â¢ Architecture: Qwen2
 ```
 
 ### JSON output
@@ -10420,37 +13575,261 @@ lms ps --host <host>
 
 For this to work, the remote LM Studio instance must be running and accessible from your local machine, e.g. be accessible on the same subnet.
 
-## `lms log stream`
+
+### `lms import`
+
+> Import a local model file into your LM Studio models directory.
+
+
+Use `lms import` to bring an existing model file into LM Studio without downloading it.
+
+### Flags 
+```lms_params
+- name: "<file-path>"
+  type: "string"
+  optional: false
+  description: "Path to the model file to import"
+- name: "--user-repo"
+  type: "string"
+  optional: true
+  description: "Set the target folder as <user>/<repo>. Skips the categorization prompts."
+- name: "-y, --yes"
+  type: "flag"
+  optional: true
+  description: "Skip confirmations and try to infer the model location from the file name"
+- name: "-c, --copy"
+  type: "flag"
+  optional: true
+  description: "Copy the file instead of moving it"
+- name: "-L, --hard-link"
+  type: "flag"
+  optional: true
+  description: "Create a hard link instead of moving or copying the file"
+- name: "-l, --symbolic-link"
+  type: "flag"
+  optional: true
+  description: "Create a symbolic link instead of moving or copying the file"
+- name: "--dry-run"
+  type: "flag"
+  optional: true
+  description: "Do not perform the import, just show what would be done"
+```
+
+Only one of `--copy`, `--hard-link`, or `--symbolic-link` can be used at a time. If none is provided, `lms import` moves the file by default.
+
+### Import a model file
+
+```shell
+lms import ~/Downloads/model.gguf
+```
+
+### Keep the original file
+
+```shell
+lms import ~/Downloads/model.gguf --copy
+```
+
+### Pick the target folder yourself
+
+Use `--user-repo` to skip prompts and place the model in the chosen namespace:
+
+```shell
+lms import ~/Downloads/model.gguf --user-repo my-user/custom-models
+```
+
+### Dry run before importing
+
+```shell
+lms import ~/Downloads/model.gguf --dry-run
+```
+
+
+## serve
+
+### `lms server start`
+
+> Start the LM Studio local server with customizable port and logging options.
+
+
+The `lms server start` command launches the LM Studio local server, allowing you to interact with loaded models via HTTP API calls.
+
+### Flags 
+```lms_params
+- name: "--port"
+  type: "number"
+  optional: true
+  description: "Port to run the server on. If not provided, uses the last used port"
+- name: "--cors"
+  type: "flag"
+  optional: true
+  description: "Enable CORS support for web application development. When not set, CORS is disabled"
+```
+
+## Start the server
+
+Start the server with default settings:
+
+```shell
+lms server start
+```
+
+### Specify a custom port
+
+Run the server on a specific port:
+
+```shell
+lms server start --port 3000
+```
+
+### Enable CORS support
+
+For usage with web applications or some VS Code extensions, you may need to enable CORS support:
+
+```shell
+lms server start --cors
+```
+
+Note that enabling CORS may expose your server to security risks, so use it only when necessary.
+
+### Check the server status
+
+See [`lms server status`](/docs/cli/serve/server-status) for more information on checking the status of the server.
+
+
+### `lms server status`
+
+> Check the status of your running LM Studio server instance.
+
+
+The `lms server status` command displays the current status of the LM Studio local server, including whether it's running and its configuration.
+
+### Flags 
+```lms_params
+- name: "--json"
+  type: "flag"
+  optional: true
+  description: "Output the status in JSON format"
+- name: "--verbose"
+  type: "flag"
+  optional: true
+  description: "Enable detailed logging output"
+- name: "--quiet"
+  type: "flag"
+  optional: true
+  description: "Suppress all logging output"
+- name: "--log-level"
+  type: "string"
+  optional: true
+  description: "The level of logging to use. Defaults to 'info'"
+```
+
+## Check server status
+
+Get the basic status of the server:
+
+```shell
+lms server status
+```
+
+Example output:
+```
+The server is running on port 1234.
+```
+
+### Example usage
+
+```console
+â  ~ lms server start
+Starting server...
+Waking up LM Studio service...
+Success! Server is now running on port 1234
+
+â  ~ lms server status
+The server is running on port 1234.
+```
+
+### JSON output
+
+Get the status in machine-readable JSON format:
+
+```shell
+lms server status --json --quiet
+```
+
+Example output:
+```json
+{"running":true,"port":1234}
+```
+
+### Control logging output
+
+Adjust logging verbosity:
+
+```shell
+lms server status --verbose
+lms server status --quiet
+lms server status --log-level debug
+```
+
+You can only use one logging control flag at a time (`--verbose`, `--quiet`, or `--log-level`).
+
+
+### `lms server stop`
+
+> Stop the running LM Studio server instance.
+
+
+The `lms server stop` command gracefully stops the running LM Studio server.
+
+```shell
+lms server stop
+```
+
+Example output:
+```
+Stopped the server on port 1234.
+```
+
+Any active request will be terminated when the server is stopped. You can restart the server using [`lms server start`](/docs/cli/serve/server-start).
+
+
+### `lms log stream`
 
 > Stream logs from LM Studio. Useful for debugging prompts sent to the model.
 
 
 `lms log stream` lets you inspect the exact strings LM Studio sends to and receives from models, and (new in 0.3.26) stream server logs. This is useful for debugging prompt templates, model IO, and server operations.
 
-<hr>
+### Flags
 
-```lms_protip
-If you haven't already, bootstrap `lms` on your machine by following the instructions [here](/docs/cli).
+```lms_params
+- name: "-s, --source"
+  type: "string"
+  optional: true
+  description: "Source of logs: model or server (default: model)"
+- name: "--stats"
+  type: "flag"
+  optional: true
+  description: "Print prediction stats when available"
+- name: "--filter"
+  type: "string"
+  optional: true
+  description: "Filter for model source: input, output, or both"
+- name: "--json"
+  type: "flag"
+  optional: true
+  description: "Output logs as JSON (newline separated)"
 ```
 
-### Quick start (model input)
+### Quick start
 
-By default, `lms log stream` shows the formatted user message that is sent to the model:
+Stream model IO (default):
 
 ```shell
 lms log stream
 ```
 
-Send a message in Chat or call the local HTTP API to see logs.
-
-### Choose a source
-
-Use `--source` to select which logs to stream:
-
-- `--source model` (default) — model IO
-- `--source server` — HTTP API server logs (startup, endpoints, status)
-
-Example (server logs):
+Stream server logs:
 
 ```shell
 lms log stream --source server
@@ -10458,15 +13837,7 @@ lms log stream --source server
 
 ### Filter model logs
 
-When streaming `--source model`, filter by direction:
-
-- `--filter input` — formatted user message sent to the model
-- `--filter output` — model output (printed after completion)
-- `--filter input,output` — both user input and model output
-
-Examples:
-
-```shell
+```bash
 # Only the formatted user input
 lms log stream --source model --filter input
 
@@ -10477,40 +13848,348 @@ lms log stream --source model --filter output
 lms log stream --source model --filter input,output
 ```
 
-Note: model output is queued and printed once the message completes.
-
 ### JSON output and stats
 
-- Append `--json` to emit machine‑readable JSON logs:
+Emit JSON:
+
+  ```shell
+  lms log stream --source model --filter input,output --json
+  ```
+
+Include prediction stats:
+
+  ```shell
+  lms log stream --source model --filter output --stats
+  ```
+
+
+## runtime
+
+### `lms runtime`
+
+> Manage LM Studio inference runtimes from the CLI.
+
+
+Use `lms runtime` to list, download, switch, or remove inference runtimes without opening the app.
+
+### Commands
+
+- `lms runtime ls` â list installed runtimes.
+- `lms runtime get` â download a runtime.
+- `lms runtime select` â set the active runtime.
+- `lms runtime remove` â uninstall a runtime.
+- `lms runtime update` â update an installed runtime.
+
+### List installed runtimes
 
 ```shell
-lms log stream --source model --filter input,output --json
+lms runtime ls
 ```
 
-- Append `--stats` (model source) to include tokens/sec and related metrics:
+### Download a runtime
 
 ```shell
-lms log stream --source model --filter output --stats
+lms runtime get
 ```
 
-### Example (model input and output)
+### Switch to a runtime
+
+```shell
+lms runtime select
+```
+
+Follow the interactive prompts to choose the version you want.
+
+
+## develop-and-publish
+
+### `lms clone`
+
+> Clone an artifact from LM Studio Hub to a local folder (beta).
+
+
+Use `lms clone` to copy an artifact from LM Studio Hub onto your machine.
+
+### Flags
+```lms_params
+- name: "<artifact>"
+  type: "string"
+  optional: false
+  description: "Artifact identifier in the form owner/name"
+- name: "[path]"
+  type: "string"
+  optional: true
+  description: "Destination folder. Defaults to a new folder named after the artifact."
+```
+
+If no path is provided, `lms clone owner/name` creates a folder called `name` in the current directory. The command exits if the target path already exists.
+
+### Clone the latest revision
+
+```shell
+lms clone alice/sample-plugin
+```
+
+### Clone into a specific directory
+
+```shell
+lms clone alice/sample-plugin ./my-folder
+```
+
+
+### `lms push` (Beta)
+
+> Upload the current folder's artifact to LM Studio Hub (beta).
+
+
+Run `lms push` from inside a [plugin](/docs/typescript/plugins), [preset](/docs/app/presets), or [`model.yaml`](/docs/app/modelyaml) project to publish a new revision. If a `model.yaml` exists, the CLI will generate a `manifest.json` for you before pushing. 
+
+For plugins, the CLI will ask for confirmation unless you pass `-y`.
+
+### Publish the current folder
+
+```shell
+lms push
+```
+
+### Flags
+```lms_params
+- name: "--description"
+  type: "string"
+  optional: true
+  description: "Override the artifact description for this push"
+- name: "--overrides"
+  type: "string"
+  optional: true
+  description: "JSON string to override manifest fields (parsed with JSON.parse)"
+- name: "-y, --yes"
+  type: "flag"
+  optional: true
+  description: "Suppress confirmations and warnings"
+- name: "--private"
+  type: "flag"
+  optional: true
+  description: "Mark the artifact as private when first published"
+- name: "--write-revision"
+  type: "flag"
+  optional: true
+  description: "Write the returned revision number to manifest.json"
+```
+
+
+### Advanced 
+
+#### Publish quietly and keep the revision in manifest.json
+
+```shell
+lms push -y --write-revision
+```
+
+#### Override metadata for this upload
+
+```shell
+lms push --description "New beta build" --overrides '{"tags": ["beta"]}'
+```
+
+
+### `lms dev` (Beta)
+
+> Start a plugin dev server or install a local plugin (beta).
+
+
+Use `lms dev` inside a plugin project to run a local dev server that rebuilds and reloads on file changes.
+
+This feature is a part of LM Studio [Plugins](/docs/typescript/plugins), currently in private beta.
+
+### Run the dev plugin server
+
+```shell
+lms dev
+```
+
+This verifies `manifest.json`, installs dependencies if needed, and starts a watcher that rebuilds the plugin on changes. Supported runners: Node/ECMAScript and Deno.
+
+### Install the plugin instead of running dev
+
+```shell
+lms dev --install
+```
+
+### Flags
+```lms_params
+- name: "-i, --install"
+  type: "flag"
+  optional: true
+  description: "Install the plugin into LM Studio instead of running the dev server"
+- name: "--no-notify"
+  type: "flag"
+  optional: true
+  description: "Do not show the \"Plugin started\" notification in LM Studio"
+```
+
+### `lms login`
+
+> Authenticate with LM Studio Hub (beta).
+
+
+Use `lms login` to authenticate the CLI with LM Studio Hub.
+
+### Sign in with the browser
+
+```shell
+lms login
+```
+
+The CLI opens a browser window for authentication. If a browser cannot be opened automatically, copy the printed URL into your browser.
+
+### "CI style" login with pre-authenticated keys
 
 ```bash
-$ lms log stream --source model --filter input,output
-Streaming logs from LM Studio
-
-timestamp: 9/15/2025, 3:16:39 PM
-type: llm.prediction.input
-modelIdentifier: gpt-oss-20b-mlx
-modelPath: lmstudio-community/gpt-oss-20b-mlx-8bit
-input:
-<|start|>system<|message|>...<|end|><|start|>user<|message|>hello<|end|><|start|>assistant
-
-timestamp: 9/15/2025, 3:16:40 PM
-type: llm.prediction.output
-modelIdentifier: gpt-oss-20b-mlx
-output:
-Hello! 👋 How can I assist you today?
+lms login --with-pre-authenticated-keys \
+  --key-id <KEY_ID> \
+  --public-key <PUBLIC_KEY> \
+  --private-key <PRIVATE_KEY> 
 ```
+
+### Advanced Flags
+```lms_params
+- name: "--with-pre-authenticated-keys"
+  type: "flag"
+  optional: true
+  description: "Authenticate using pre-generated keys (CI/CD). Requires --key-id, --public-key, and --private-key."
+- name: "--key-id"
+  type: "string"
+  optional: true
+  description: "Key ID to use with --with-pre-authenticated-keys"
+- name: "--public-key"
+  type: "string"
+  optional: true
+  description: "Public key to use with --with-pre-authenticated-keys"
+- name: "--private-key"
+  type: "string"
+  optional: true
+  description: "Private key to use with --with-pre-authenticated-keys"
+```
+
+# integrations
+
+# Integrations
+
+> Use LM Studio with external tools and apps.
+
+
+Use LM Studio as a seamless, drop-in local backend for your favorite tools. 
+
+Whether you are using an IDE extension or a custom automation script, simply point your base URL to http://localhost:1234 to power your workflows with LM Studio and maintain complete control over your data privacy.
+
+We provide guides below for popular tools and are constantly expanding this list to include new integrations.
+
+## Available Integrations
+
+- [Claude Code](/docs/integrations/claude-code)
+- [Codex](/docs/integrations/codex)
+
+
+## Claude Code
+
+> Use Claude Code with LM Studio
+
+
+Claude Code can talk to LM Studio via the Anthropic-compatible `POST /v1/messages` endpoint.
+See: [Anthropic-compatible Messages endpoint](/docs/developer/anthropic-compat/messages).
+
+<img src="/assets/docs/claude-code.webp" style="width: 100%;" data-caption="Claude Code configured to use LM Studio via the Anthropic-compatible API" />
+
+### 1) Start LM Studio's local server
+
+Make sure LM Studio is running as a server (default port `1234`).
+
+You can start it from the app, or from the terminal with `lms`:
+
+```bash
+lms server start --port 1234
+```
+
+### 2) Configure Claude Code
+
+Set these environment variables so the `claude` CLI points to your local LM Studio:
+
+```bash
+export ANTHROPIC_BASE_URL=http://localhost:1234
+export ANTHROPIC_AUTH_TOKEN=lmstudio
+```
+
+
+Notes:
+- If Require Authentication is enabled, set `ANTHROPIC_AUTH_TOKEN` to your LM Studio API token. To learn more, see: [Authentication](/docs/developer/core/authentication).
+
+### 3) Run Claude Code against a local model
+
+```bash
+claude --model openai/gpt-oss-20b
+```
+
+```lms_protip
+Use a model (and server/model settings) with more than ~25k context length. Tools like Claude Code can consume a lot of context.
+```
+
+### 4) If Require Authentication is enabled, use your LM Studio API token
+
+If you turned on "Require Authentication" in LM Studio, create an API token and set:
+
+```bash
+export LM_API_TOKEN=<LMSTUDIO_TOKEN>
+export ANTHROPIC_AUTH_TOKEN=$LM_API_TOKEN
+```
+
+When Require Authentication is enabled, LM Studio accepts both `x-api-key` and `Authorization: Bearer <token>`.
+
+If you're running into trouble, hop onto our [Discord](https://discord.gg/lmstudio)
+
+
+## Codex
+
+> Use Codex with LM Studio
+
+
+Codex can talk to LM Studio via the OpenAI-compatible `POST /v1/responses` endpoint.
+See: [OpenAI-compatible Responses endpoint](/docs/developer/openai-compat/responses).
+
+<img src="/assets/docs/codex.webp" style="width: 100%;" data-caption="Codex configured to use LM Studio via the OpenAI-compatible API" />
+
+### 1) Start LM Studio's local server
+
+Make sure LM Studio is running as a server (default port `1234`).
+
+You can start it from the app, or from the terminal with `lms`:
+
+```bash
+lms server start --port 1234
+```
+
+### 2) Run Codex against a local model
+
+Run Codex as you normally would, but with the `--oss` flag to point it to LM Studio.
+
+Example:
+
+```bash
+codex --oss
+```
+
+
+By default, Codex will download and use [openai/gpt-oss-20b](https://lmstudio.ai/models/openai/gpt-oss-20b).
+
+```lms_protip
+Use a model (and server/model settings) with more than ~25k context length. Tools like Codex can consume a lot of context.
+```
+
+You can also use any other model you have available in LM Studio. For example:
+
+```bash
+codex --oss -m ibm/granite-4-micro
+```
+
+If you're running into trouble, hop onto our [Discord](https://discord.gg/lmstudio)
 
 

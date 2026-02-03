@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/concepts/architecture/widget-behavior
+
 # Widget behavior
 
 Widgets (like `st.button`, `st.selectbox`, and `st.text_input`) are at the heart of Streamlit apps. They are the interactive elements of Streamlit that pass information from your users into your Python code. Widgets are magical and often work how you want, but they can have surprising behavior in some situations. Understanding the different parts of a widget and the precise order in which events occur helps you achieve your desired results.

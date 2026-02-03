@@ -1,6 +1,12 @@
 # Source: https://docs.windsurf.com/security/reporting.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Reporting Security Concerns
+
+> Report security vulnerabilities to Windsurf securely via email with GPG encryption. Learn about our coordinated disclosure policy and safe harbor.
 
 Windsurf takes the security of our products and services seriously. If you believe you have found a security vulnerability in any Windsurf-owned services, please report it to us as described below.
 

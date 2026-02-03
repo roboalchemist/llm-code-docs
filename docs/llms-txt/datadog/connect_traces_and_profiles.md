@@ -4,7 +4,6 @@
 title: Investigate Slow Traces or Endpoints
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Continuous Profiler > Investigate Slow Traces or Endpoints
-source_url: https://docs.datadoghq.com/connect_traces_and_profiles/index.html
 ---
 
 # Investigate Slow Traces or Endpoints

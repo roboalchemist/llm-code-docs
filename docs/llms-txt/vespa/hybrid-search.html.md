@@ -15,7 +15,15 @@ The main goal is to set up a text search app that combines simple text scoring f
 
 **Prerequisites:**
 
-- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with Podman or [Docker](https://docs.docker.com/engine/install/) installed. See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings. For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html)
+- Linux, macOS or Windows 10 Pro on x86\_64 or arm64, with [Podman Desktop](https://podman.io/) or [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed, with an engine running. 
+  - Alternatively, start the Podman daemon:
+```
+$ podman machine init --memory 6000
+$ podman machine start
+```
+  - See [Docker Containers](/en/operations/self-managed/docker-containers.html) for system limits and other settings.
+
+- For CPUs older than Haswell (2013), see [CPU Support](/en/cpu-support.html).
 - Memory: Minimum 4 GB RAM dedicated to Docker/Podman. [Memory recommendations](/en/operations/self-managed/node-setup.html#memory-settings). 
 - Disk: Avoid `NO_SPACE` - the vespaengine/vespa container image + headroom for data requires disk space. [Read more](/en/writing/feed-block.html). 
 - [Homebrew](https://brew.sh/) to install the [Vespa CLI](/en/clients/vespa-cli.html), or download the Vespa CLI from [Github releases](https://github.com/vespa-engine/vespa/releases). 
@@ -982,7 +990,7 @@ $ docker rm -f vespa-hybrid
 
 1. Robertson, Stephen and Zaragoza, Hugo and others, 2009. The probabilistic relevance framework: BM25 and beyond. Foundations and Trends in Information Retrieval.&nbsp;[↩](#fnref:1)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

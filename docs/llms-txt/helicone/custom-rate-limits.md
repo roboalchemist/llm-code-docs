@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/features/advanced-usage/custom-rate-limits.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Custom LLM Rate Limits
 
 > Set custom rate limits for model provider API calls. Control usage by request count, cost, or custom properties to manage expenses and prevent unintended overuse.

@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/web-widget/installation/shopify.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Shopify
 
 > Learn how to add Chatling to your Shopify store

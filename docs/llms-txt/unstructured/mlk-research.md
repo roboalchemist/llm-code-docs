@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/examplecode/codesamples/api/mlk-research.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Historical research about Dr. Martin Luther King, Jr.
 
 The legacy of the [Reverend Dr. Martin Luther King, Jr.](https://thekingcenter.org/about-tkc/martin-luther-king-jr/)

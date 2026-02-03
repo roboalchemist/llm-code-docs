@@ -1,3 +1,5 @@
+# Source: https://github.com/huggingface/diffusers/blob/main/PHILOSOPHY.md
+
 # diffusers/PHILOSOPHY.md at main · huggingface/diffusers · GitHub
 
 The provided HTML content is a complex web page with various elements, including navigation menus, headers, and footers. The main content is the navigation menu, which is not typically represented in Markdown as it is a dynamic and interactive element. However, if we were to extract the main navigation menu as Markdown, we would need to focus on the navigation links and their destinations. Here is a simplified version of the main navigation menu in Markdown:

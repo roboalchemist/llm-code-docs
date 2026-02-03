@@ -1,3 +1,9 @@
+# Tanstack Router Documentation
+
+Source: https://tanstack.com/router/llms-full.txt
+
+---
+
 # TanStack Router
 
 The provided HTML content is primarily a navigation menu with links to various libraries (TanStack Router, TanStack Query, TanStack Table) and their respective documentation and contributors sections. The navigation menu is structured in a way that allows users to navigate through the different libraries and their respective documentation and contributors.

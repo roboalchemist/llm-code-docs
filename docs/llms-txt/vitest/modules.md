@@ -61,7 +61,7 @@ vi.mock(import('./example.js'), () => {
 ```
 
 ::: tip
-Remember that you can call `vi.mock` in a [setup file](/config/#setupfiles) to apply the module mock in every test file automatically.
+Remember that you can call `vi.mock` in a [setup file](/config/setupfiles) to apply the module mock in every test file automatically.
 :::
 
 ::: tip

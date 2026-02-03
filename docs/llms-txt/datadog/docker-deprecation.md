@@ -5,10 +5,7 @@ title: Docker Deprecation in Kubernetes
 description: >-
   Handle Docker runtime deprecation in Kubernetes by migrating to containerd or
   CRI-O container runtimes
-breadcrumbs: >-
-  Docs > Container Monitoring > Containers Guides > Docker Deprecation in
-  Kubernetes
-source_url: https://docs.datadoghq.com/guide/docker-deprecation/index.html
+breadcrumbs: Docs > Containers > Containers Guides > Docker Deprecation in Kubernetes
 ---
 
 # Docker Deprecation in Kubernetes

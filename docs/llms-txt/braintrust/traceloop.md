@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/integrations/sdk-integrations/traceloop.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # TraceLoop
 
 [TraceLoop OpenLLMetry](https://www.traceloop.com/docs) is an observability framework for LLM applications. Braintrust integrates with TraceLoop via OpenTelemetry to capture LLM calls, workflows, and application traces.
@@ -54,8 +58,3 @@ print(run_story_stream(client))
 
 * [TraceLoop OpenLLMetry documentation](https://www.traceloop.com/docs)
 * [Braintrust OpenTelemetry guide](/integrations/sdk-integrations/opentelemetry)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

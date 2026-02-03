@@ -1,58 +1,56 @@
 # Source: https://docs.galileo.ai/api-reference/health/healthcheck.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Healthcheck
+
+
 
 ## OpenAPI
 
-````yaml https://api.acme.rungalileo.io/public/v1/openapi.json get /v1/healthcheck
+````yaml https://api.staging.galileo.ai/public/v1/openapi.json get /v1/healthcheck
+openapi: 3.1.0
+info:
+  title: FastAPI
+  version: 0.1.0
+servers:
+  - url: https://api.staging.galileo.ai
+    description: Galileo Public APIs - staging
+security: []
 paths:
-  path: /v1/healthcheck
-  method: get
-  servers:
-    - url: https://api.acme.rungalileo.io
-      description: Galileo Public APIs - acme
-  request:
-    security: []
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              api_version:
-                allOf:
-                  - type: string
-                    title: Api Version
-              message:
-                allOf:
-                  - type: string
-                    title: Message
-              version:
-                allOf:
-                  - type: string
-                    title: Version
-            title: HealthcheckResponse
-            refIdentifier: '#/components/schemas/HealthcheckResponse'
-            requiredProperties:
-              - api_version
-              - message
-              - version
-        examples:
-          example:
-            value:
-              api_version: <string>
-              message: <string>
-              version: <string>
-        description: Successful Response
-  deprecated: false
-  type: path
+  /v1/healthcheck:
+    get:
+      tags:
+        - health
+      summary: Healthcheck
+      operationId: healthcheck_v1_healthcheck_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthcheckResponse'
 components:
-  schemas: {}
+  schemas:
+    HealthcheckResponse:
+      properties:
+        api_version:
+          type: string
+          title: Api Version
+        message:
+          type: string
+          title: Message
+        version:
+          type: string
+          title: Version
+      type: object
+      required:
+        - api_version
+        - message
+        - version
+      title: HealthcheckResponse
 
 ````

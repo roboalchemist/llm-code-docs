@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/integrations/llms/adding-custom-llms.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Adding Custom LLM APIs / Fine Tuned LLMs
 
 > Showcases how to use Galileo with any LLM API or custom fine-tuned LLMs, not supported out-of-the-box by Galileo.
@@ -12,14 +16,14 @@ In this guide, we showcase how to leverage Anthropic's `claude-3-sonnet` LLM wit
 
 First, install the required libraries. In this example - Galileo, Anthropic, and Langchain.
 
-```py
+```py  theme={null}
 
     pip install --upgrade promptquality langchain langchain-anthropic
 ```
 
 Here's a simple code snippet showing you how to query **any LLM of your choice** (in this case we're going with an Anthropic LLM) and log your results to Galileo.
 
-```py
+```py  theme={null}
 
 
     import os
@@ -55,7 +59,7 @@ Here's a simple code snippet showing you how to query **any LLM of your choice**
 
 You should see a result like shown below:
 
-```py
+```py  theme={null}
 
     👋 You have logged into 🔭 Galileo (https://your.galileo.console.url/) as galileo@rungalileo.io.
     Processing complete!

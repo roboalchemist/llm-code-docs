@@ -2,18 +2,6 @@
 
 # Source: https://docs.near.org/protocol/access-keys.md
 
-# Source: https://docs.near.org/api/rpc/access-keys.md
-
-# Source: https://docs.near.org/protocol/access-keys.md
-
-# Source: https://docs.near.org/api/rpc/access-keys.md
-
-# Source: https://docs.near.org/protocol/access-keys.md
-
-# Source: https://docs.near.org/api/rpc/access-keys.md
-
-# Source: https://docs.near.org/protocol/access-keys.md
-
 ---
 id: access-keys
 title: Access Keys

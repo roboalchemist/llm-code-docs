@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > APM > Tracing Guides > Tutorial - Enabling Tracing for a Go Application
   on Amazon ECS with Fargate
-source_url: https://docs.datadoghq.com/guide/tutorial-enable-go-aws-ecs-fargate/index.html
 ---
 
 # Tutorial - Enabling Tracing for a Go Application on Amazon ECS with Fargate

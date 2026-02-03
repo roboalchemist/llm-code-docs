@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > DDSQL Reference > Data Directory > AppIntegrations Event Integration
   Association
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.appintegrations_event_integration_association.dataset/index.html
 ---
 
 # AppIntegrations Event Integration Association
@@ -20,14 +18,14 @@ aws.appintegrations_event_integration_association
 
 ## Fields
 
-| Title                             | ID   | Type   | Data Type                                                                    | Description |
-| --------------------------------- | ---- | ------ | ---------------------------------------------------------------------------- | ----------- |
-| _key                              | core | string |
-| account_id                        | core | string |
-| client_association_metadata       | core | hstore | The metadata associated with the client.                                     |
-| client_id                         | core | string | The identifier for the client that is associated with the event integration. |
-| event_bridge_rule_name            | core | string | The name of the EventBridge rule.                                            |
-| event_integration_association_arn | core | string | The Amazon Resource Name (ARN) for the event integration association.        |
-| event_integration_association_id  | core | string | The identifier for the event integration association.                        |
-| event_integration_name            | core | string | The name of the event integration.                                           |
-| tags                              | core | hstore |
+| Title                             | ID   | Type       | Data Type                                                                    | Description |
+| --------------------------------- | ---- | ---------- | ---------------------------------------------------------------------------- | ----------- |
+| _key                              | core | string     |
+| account_id                        | core | string     |
+| client_association_metadata       | core | hstore     | The metadata associated with the client.                                     |
+| client_id                         | core | string     | The identifier for the client that is associated with the event integration. |
+| event_bridge_rule_name            | core | string     | The name of the EventBridge rule.                                            |
+| event_integration_association_arn | core | string     | The Amazon Resource Name (ARN) for the event integration association.        |
+| event_integration_association_id  | core | string     | The identifier for the event integration association.                        |
+| event_integration_name            | core | string     | The name of the event integration.                                           |
+| tags                              | core | hstore_csv |

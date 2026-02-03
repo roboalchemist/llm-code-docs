@@ -4,11 +4,7 @@
 
 Sign in with Ethereum plugin for Better Auth
 
-***
 
-title: Sign In With Ethereum (SIWE)
-description: Sign in with Ethereum plugin for Better Auth
----------------------------------------------------------
 
 The Sign in with Ethereum (SIWE) plugin allows users to authenticate using their Ethereum wallets following the [ERC-4361 standard](https://eips.ethereum.org/EIPS/eip-4361). This plugin provides flexibility by allowing you to implement your own message verification and nonce generation logic.
 
@@ -59,7 +55,7 @@ The Sign in with Ethereum (SIWE) plugin allows users to authenticate using their
 
     <Tabs items={["migrate", "generate"]}>
       <Tab value="migrate">
-        <CodeBlockTabs defaultValue="npm">
+        <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
           <CodeBlockTabsList>
             <CodeBlockTabsTrigger value="npm">
               npm
@@ -105,7 +101,7 @@ The Sign in with Ethereum (SIWE) plugin allows users to authenticate using their
       </Tab>
 
       <Tab value="generate">
-        <CodeBlockTabs defaultValue="npm">
+        <CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
           <CodeBlockTabsList>
             <CodeBlockTabsTrigger value="npm">
               npm

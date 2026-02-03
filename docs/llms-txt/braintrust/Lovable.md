@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/Lovable.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Evaluating and iterating on AI apps with Lovable
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/Lovable/Lovable.ipynb) by [Mengying Li](https://www.linkedin.com/in/mengyingli/) on 2025-12-08</div>
@@ -213,8 +217,8 @@ export default Eval("My Function Remote Eval", {
 To run the remote eval, start the dev server and tunnel:
 
 ```typescript  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
-npx braintrust eval my - function- eval.js--dev--dev - host 0.0.0.0 --dev - port 8400
-npx cloudflared tunnel--url http://localhost:8400
+npx braintrust eval my-function-eval.js --dev --dev-host 0.0.0.0 --dev-port 8400
+npx cloudflared tunnel --url http://localhost:8400
 ```
 
 Then, register the tunnel URL. You can do this from a playground or your project configuration.
@@ -257,12 +261,7 @@ You can ask Lovable to help you troubleshoot in the chat window.
 
 Now that you have a Lovable app with full observability and evaluation capabilities, you can:
 
-* Create [custom scorers](/core/functions/scorers) to evaluate AI quality against specific criteria
-* Build [evaluation datasets](/core/datasets) from production logs to continuously improve your app
-* Use the [playground](/core/playground) to experiment with prompts before deploying changes
+* Create [custom scorers](/evaluate/write-scorers) to evaluate AI quality against specific criteria
+* Build [evaluation datasets](/annotate/datasets) from production logs to continuously improve your app
+* Use the [playground](/evaluate/playgrounds) to experiment with prompts before deploying changes
 * Add more AI features to your Lovable app with confidence in their quality
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

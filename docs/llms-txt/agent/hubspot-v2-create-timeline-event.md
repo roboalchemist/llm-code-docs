@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/actions/hubspot-v2-create-timeline-event.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create Timeline Event
 
 Add custom events to the timeline of any HubSpot record - perfect for tracking activities that happen outside HubSpot.

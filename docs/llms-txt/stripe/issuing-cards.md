@@ -4,6 +4,10 @@
 
 Learn how to integrate Stripe Issuing with Financial Accounts for platforms.
 
+> #### Accounts v2 API compatibility
+> 
+> The Accounts v2 API doesn’t support Issuing workflows. If you have accounts created with Accounts v2, you can use Accounts v1 to manage the `treasury` and `card_issuing` capabilities. For details, see [Use Accounts as customers](https://docs.stripe.com/connect/use-accounts-as-customers.md).
+
 [Stripe Issuing](https://docs.stripe.com/issuing.md) lets you create physical and virtual cards using a financial account as the source of funds.
 
 ## Enable Issuing on connected accounts
@@ -139,10 +143,9 @@ params := &stripe.AccountUpdateParams{
       Requested: stripe.Bool(true),
     },
   },
-  Account: stripe.String("{{CONNECTED_ACCOUNT_ID}}"),
 }
 params.AddExtra("capabilities[treasury][requested]", true)
-result, err := sc.V1Accounts.Update(context.TODO(), params)
+result, err := sc.V1Accounts.Update(context.TODO(), "{{CONNECTED_ACCOUNT_ID}}", params)
 ```
 
 ```dotnet
@@ -152,17 +155,17 @@ var options = new AccountUpdateOptions
 {
     Capabilities = new AccountCapabilitiesOptions
     {
-        Treasury = new AccountCapabilitiesTreasuryOptions { Requested = true },
         CardIssuing = new AccountCapabilitiesCardIssuingOptions { Requested = true },
         Transfers = new AccountCapabilitiesTransfersOptions { Requested = true },
     },
 };
+options.AddExtraParam("capabilities[treasury][requested]", true);
 var client = new StripeClient("<<YOUR_SECRET_KEY>>");
 var service = client.V1.Accounts;
 Account account = service.Update("{{CONNECTED_ACCOUNT_ID}}", options);
 ```
 
-If successful, the response returns the connected account [`Account` object](https://docs.stripe.com/api/accounts/object.md) with the `capabilities` hash listing the requested capabilities as `active`.
+If successful, the response returns the connected account [Account object](https://docs.stripe.com/api/accounts/object.md) with the `capabilities` hash listing the requested capabilities as `active`.
 
 If you haven’t already, also request access to the `card_issuing` feature on the financial account.
 
@@ -279,13 +282,12 @@ const financialAccount = await stripe.treasury.financialAccounts.update(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.TreasuryFinancialAccountUpdateParams{
-  FinancialAccount: stripe.String("{{TREASURYFINANCIALACCOUNT_ID}}"),
-}
+params := &stripe.TreasuryFinancialAccountUpdateParams{}
 params.AddExtra("treasury[access][requested]", true)
 params.AddExtra("card_issuing[access][requested]", true)
 params.SetStripeAccount("{{CONNECTEDACCOUNT_ID}}")
-result, err := sc.V1TreasuryFinancialAccounts.Update(context.TODO(), params)
+result, err := sc.V1TreasuryFinancialAccounts.Update(
+  context.TODO(), "{{TREASURYFINANCIALACCOUNT_ID}}", params)
 ```
 
 ```dotnet

@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/core-concepts/analyzing-performance.md
 
-# Source: https://docs.aporia.com/core-concepts/analyzing-performance.md
-
-# Source: https://docs.aporia.com/v1/core-concepts/analyzing-performance.md
-
 # Analyzing Performance
 
 ### Your model's success is your success

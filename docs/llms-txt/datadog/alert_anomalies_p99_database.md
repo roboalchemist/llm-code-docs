@@ -8,7 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > APM > Tracing Guides > Alert on anomalous p99 latency of a database
   service
-source_url: https://docs.datadoghq.com/guide/alert_anomalies_p99_database/index.html
 ---
 
 # Alert on anomalous p99 latency of a database service

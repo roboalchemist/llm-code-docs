@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/database-data/mysqltool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # MySQL RAG Search
 
 > The `MySQLSearchTool` is designed to search MySQL databases and return the most relevant results.
@@ -57,10 +61,10 @@ tool = MySQLSearchTool(
             ),
         ),
         embedder=dict(
-            provider="google",
+            provider="google-generativeai",
             config=dict(
-                model="models/embedding-001",
-                task_type="retrieval_document",
+                model_name="gemini-embedding-001",
+                task_type="RETRIEVAL_DOCUMENT",
                 # title="Embeddings",
             ),
         ),

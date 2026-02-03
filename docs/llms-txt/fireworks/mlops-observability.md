@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/ecosystem/integrations/mlops-observability.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # MLOps & Observability
 
 > Track and monitor your Fireworks AI deployments with leading MLOps and observability platforms

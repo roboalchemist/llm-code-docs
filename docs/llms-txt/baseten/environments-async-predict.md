@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/reference/inference-api/predict-endpoints/environments-async-predict.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Async environment
 
 > Use this endpoint to call the model associated with the specified environment asynchronously.
@@ -90,7 +94,7 @@ Two types of rate limits apply when making async requests:
 
 * Calls to the `/async_predict` endpoint are limited to **200 requests per second**.
 
-* Each organization is limited to **5,000 `QUEUED` or `IN_PROGRESS` async requests**, summed across all deployments.
+* Each organization is limited to **50,000 `QUEUED` or `IN_PROGRESS` async requests**, summed across all deployments.
 
 If either limit is exceeded, subsequent `/async_predict` requests will receive a 429 status code.
 

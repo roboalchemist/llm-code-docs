@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/manage-data/fetch-data.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Fetch records
 
 > Retrieve complete records by ID or metadata filter.
@@ -14,6 +18,10 @@ To fetch records from a namespace based on their IDs, use the `fetch` operation 
 
 * `namespace`: The [namespace](/guides/index-data/indexing-overview#namespaces) containing the records to fetch. To use the default namespace, set this to `"__default__"`.
 * `ids`: The IDs of the records to fetch. Maximum of 1000.
+
+<Note>
+  For on-demand indexes, since vector values are retrieved from object storage, fetch operations may have increased latency. If you only need metadata or IDs, consider using the [`query`](/reference/api/latest/data-plane/query) operation with `include_values` set to `false` instead. See [Decrease latency](/guides/optimize/decrease-latency#avoid-including-vector-values-when-not-needed) for more details.
+</Note>
 
 <CodeGroup>
   ```Python Python theme={null}
@@ -131,7 +139,7 @@ To fetch records from a namespace based on their IDs, use the `fetch` operation 
 
   curl -X GET "https://$INDEX_HOST/vectors/fetch?ids=id-1&ids=id-2&namespace=example-namespace" \
     -H "Api-Key: $PINECONE_API_KEY" \
-    -H "X-Pinecone-API-Version: 2025-04"
+    -H "X-Pinecone-Api-Version: 2025-10"
   ```
 </CodeGroup>
 
@@ -264,16 +272,19 @@ The response looks like this:
 ## Fetch records by metadata
 
 <Warning>
-  This feature is in [early access](/release-notes/feature-availability) and is available only on the `2025-10` version of the API.
+  This feature is in [public preview](/release-notes/feature-availability).
 </Warning>
 
 To fetch records from a namespace based on their metadata values, use the `fetch_by_metadata` operation with the following parameters:
 
-* `namespace`: The [namespace](/guides/index-data/indexing-overview#namespaces) containing the records to fetch. To use the default namespace, set this to `"__default__"`.
-* `filter`: A [metadata filter expression](/guides/index-data/indexing-overview#metadata-filter-expressions) to match the records to fetch.
-* `limit`: The number of matching records to return. Defaults to 100. Maximum of 10,000.
+| Parameter         | Required | Description                                                                                                                                                                                                                                                                                                                                         |
+| :---------------- | :------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `filter`          | Yes      | A [metadata filter expression](/guides/index-data/indexing-overview#metadata-filter-expressions) describing the records to fetch. Must be present and non-empty.                                                                                                                                                                                    |
+| `limit`           | No       | The number of matching records to return. Defaults to 100 if not specified. Maximum of 10,000.                                                                                                                                                                                                                                                      |
+| `namespace`       | No       | The [namespace](/guides/index-data/indexing-overview#namespaces) containing the records to fetch. If omitted or set to an empty string, defaults to the default namespace. To explicitly use the default namespace, set this to `"__default__"`.                                                                                                    |
+| `paginationToken` | No       | The `next` token value from the `pagination` object found in a previous response. Include this value to fetch the next page of results, or omit it to start from the beginning. Must be used with the same `namespace` and `filter` parameters that generated it — using an existing token with different parameters will return incorrect results. |
 
-For example, the following code fetches 200 records with a `genre` field set to `documentary` from namespace `example-namespace`:
+For example, the following code fetches 2 records with a `genre` field set to `Action/Adventure` from the default namespace:
 
 ```shell curl theme={null}
 # To get the unique host for an index,
@@ -282,12 +293,12 @@ PINECONE_API_KEY="YOUR_API_KEY"
 INDEX_HOST="INDEX_HOST"
 
 curl -X POST "https://$INDEX_HOST/vectors/fetch_by_metadata" \
-  -H 'Api-Key: $PINECONE_API_KEY' \
-  -H 'Content-Type: application/json' \
-  -H "X-Pinecone-API-Version: 2025-10" \
+  -H "Api-Key: $PINECONE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "X-Pinecone-Api-Version: 2025-10" \
   -d '{
-    "namespace": "example-namespace",
-    "filter": {"rating": {"$lt": 5}},
+    "namespace": "__default__",
+    "filter": {"genre": {"$eq": "Action/Adventure"}},
     "limit": 2
   }'
 ```
@@ -297,41 +308,59 @@ The response looks like this:
 ```json curl theme={null}
 {
   "vectors": {
-    "id-1": {
-      "id": "id-1",
+    "0": {
+      "id": "0",
       "values": [
-        -0.0273742676,
-        -0.000517368317,
-        ...
+        0.0234527588, 0.0291595459 ...
       ],
       "metadata": {
-        "main_category": "Books",
-        "rating": 4,
-        "review": "Identical twins have only one purpose in movies and plays: to cause mass confusion...",
-        "title": "A comedy of twin-switching"
+        "box-office": 2923706026,
+        "genre": "Action/Adventure",
+        "summary": "On the alien world of Pandora, paraplegic Marine Jake Sully uses an avatar to walk again and becomes torn between his mission and protecting the planet's indigenous Na'vi people. The film stars Sam Worthington, Zoe Saldana, and Sigourney Weaver.",
+        "title": "Avatar",
+        "year": 2009
       }
     },
-    "id-2": {
-      "id": "id-2",
+    "1": {
+      "id": "1",
       "values": [
-        -0.00305938721,
-        0.0234375,
-        ...
+        0.0397644043, 0.013053894, ...
       ],
       "metadata": {
-        "main_category": "Automotive",
-        "rating": 1,
-        "review": "If I could rate this 1/2 a star I would! These both broke within 10 minutes  of using it. The only upside is the cloth is removable so it can be used with good old fashioned  elbow grease. Epic waste!",
-        "title": "Dont waste your money!"
+        "box-office": 2799439100,
+        "genre": "Action/Adventure",
+        "summary": "In the aftermath of Thanos wiping out half of the universe, the remaining Avengers assemble once more to undo the chaos, leading to a time-traveling adventure. Stars Robert Downey Jr., Chris Evans, and Scarlett Johansson.",
+        "title": "Avengers: Endgame",
+        "year": 2019
       }
     }
   },
-  "namespace": "example-namespace",
+  "namespace": "__default__",
   "usage": {
     "readUnits": 1
+  },
+  "pagination": {
+    "next": "Tm90aGluZyB0byBzZWUgaGVyZQo="
   }
 }
 ```
+
+To fetch the next page of results, set `paginationToken` to the value of `next`. For example:
+
+```shell curl theme={null}
+curl -X POST "https://$INDEX_HOST/vectors/fetch_by_metadata" \
+  -H "Api-Key: $PINECONE_API_KEY" \
+  -H "Content-Type: application/json" \
+  -H "X-Pinecone-Api-Version: 2025-10" \
+  -d '{
+    "namespace": "__default__",
+    "filter": {"genre": {"$eq": "Action/Adventure"}},
+    "limit": 2,
+    "paginationToken": "Tm90aGluZyB0byBzZWUgaGVyZQo="
+  }'
+```
+
+When there are more results available, the response includes a `pagination` object with a `next` token. When there are no more results, the response does not include a `pagination` object.
 
 ## Fetch limits
 

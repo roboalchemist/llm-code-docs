@@ -6,7 +6,6 @@ description: >-
   Learn how to install, configure, and manage the Datadog Agent when building
   from source code.
 breadcrumbs: Docs > Agent > Supported Platforms > Source Installation
-source_url: https://docs.datadoghq.com/supported_platforms/source/index.html
 ---
 
 # Source Installation

@@ -1,6 +1,4 @@
-# Source: https://raw.githubusercontent.com/ServiceStack/docs.servicestack.net/refs/heads/main/MyApp/_pages/vue/autoform.md
-
-## AutoForm
+# AutoForm
 
 The `AutoForm` component is a generic form component that can be used to create and wire a traditional Form for any Request DTO definition where successful responses can be handled with the `@success` event, e.g:
 
@@ -108,7 +106,7 @@ These Auto Forms are powered by the rich [App Metadata](/vue/use-metadata) surro
 
 ```html
 <div class="not-prose">
-    <auto-edit-form class="mx-auto max-w-3xl mb-4" v-model="booking" form-style="card" type="UpdateBooking" deleteType="DeleteBooking">
+    <auto-edit-form class="mx-auto max-w-3xl mb-4" v-model="booking" form-style="card" type="UpdateBooking" delete-type="DeleteBooking">
         <template #heading>
             <h3 class="text-xl font-semibold text-green-600">Change an existing Room Booking</h3>
         </template>
@@ -143,7 +141,7 @@ The same form rendered in a traditional inline form with a **card** formStyle wi
 ```
 
 ```html
-<auto-edit-form class="mx-auto max-w-3xl" v-model="booking" form-style="card" type="UpdateBooking" deleteType="DeleteBooking"></auto-edit-form>
+<auto-edit-form class="mx-auto max-w-3xl" v-model="booking" form-style="card" type="UpdateBooking" delete-type="DeleteBooking"></auto-edit-form>
 ```
 
 ### Form Fields

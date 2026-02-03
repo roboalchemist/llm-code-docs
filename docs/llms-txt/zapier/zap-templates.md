@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/publish/zap-templates.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Zap templates
 
 > Zapier empowers apps to do together what they can't on their own. With a bit of inspiration and creativity, your users can pull dozens of apps together into unique workflows to get more done with your app in far less time.
@@ -78,7 +82,7 @@ To get started, go to Zapier's [Zap template creator](https://zapier.com/webinte
 
 Select the trigger app by selecting it from the "Top Apps" list or searching for the app by name.
 
-> **Note:** Only Zapier integrations that have been launched publicly can be used in Zap templates. Integrations in `private` status cannot be used in a Zap template.
+> **Note:** Only Zapier integrations that have been launched publicly can be used in Zap templates. Integrations in `private` status cannot be used in a Zap template. You should also avoid selecting non-promoted versions of public integrations, that is, versions with version numbers or app tags like “Legacy” or “Deprecated”, as that would prevent the Zap template from being published.
 
 Choose the app's trigger from the dropdown that starts your Zap.
 
@@ -102,7 +106,7 @@ Select the action app by selecting it from the "Top Apps" list or searching for 
   <img src="https://cdn.zappy.app/c0cbc6d13991ee2e7bf16e62b8199b64.png" />
 </Frame>
 
-> **Note:** Only Zapier integrations that have been launched publicly can be used in Zap templates. Integrations in `private` status cannot be used in a Zap template.
+> **Note:** Only Zapier integrations that have been launched publicly can be used in Zap templates. Integrations in `private` status cannot be used in a Zap template. You should also avoid selecting non-promoted versions of public integrations, that is, versions with version numbers or app tags like “Legacy” or “Deprecated”, as that would prevent the Zap template from being published.
 
 Choose the app's action from the dropdown that you want to follow the trigger. Same as the trigger, the Zap template editor will load the sample data available for the selected action.
 

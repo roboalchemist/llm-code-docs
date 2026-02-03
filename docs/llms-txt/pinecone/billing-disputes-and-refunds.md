@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/troubleshooting/billing-disputes-and-refunds.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Billing disputes and refunds
 
 As a rule, Pinecone does not offer refunds for unused indexes. If you use a pod-based index, we charge only for the pods you use to create it, not per API call or query. Whether you have used your index or not does not factor into our billing.

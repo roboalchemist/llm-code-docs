@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/guides/open-rates.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Open rates are a vanity metric
 
 > And why that’s okay.

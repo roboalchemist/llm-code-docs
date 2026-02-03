@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/media/st.image
+
 # st.image
 
 Display an image or list of images.

@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/transport/media/ingress-egress/egress/autoegress.md
 
-# Source: https://docs.livekit.io/home/egress/autoegress.md
-
-LiveKit docs › Recording & export › Auto Egress
+LiveKit docs › Media › Stream export & import › Egress › Auto egress
 
 ---
 
@@ -12,9 +10,9 @@ LiveKit docs › Recording & export › Auto Egress
 
 ## Start recordings automatically
 
-Sometimes it's desirable to record every track published to the room, or to start recording the room as soon as it's created.
+To record every track published to the room or to start recording the room as soon as it's created, you can use auto egress.
 
-Autoegress is designed to simplify these workflows. When a room is created with `CreateRoom`, you can set the `egress` field to have it automatically record the room as a composite as well as each published track separately.
+Auto egress is designed to simplify these workflows. When a room is created with `CreateRoom`, you can set the `egress` field to have it automatically record the room as a composite as well as each published track separately.
 
 ## Examples
 
@@ -72,7 +70,7 @@ EOF
 
 ---
 
-This document was rendered at 2025-11-18T23:54:57.599Z.
-For the latest version of this document, see [https://docs.livekit.io/home/egress/autoegress.md](https://docs.livekit.io/home/egress/autoegress.md).
+This document was rendered at 2026-02-03T03:25:17.674Z.
+For the latest version of this document, see [https://docs.livekit.io/transport/media/ingress-egress/egress/autoegress.md](https://docs.livekit.io/transport/media/ingress-egress/egress/autoegress.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

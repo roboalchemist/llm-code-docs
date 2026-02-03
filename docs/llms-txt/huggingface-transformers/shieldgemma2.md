@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/shieldgemma2.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/shieldgemma2.md
 
 # ShieldGemma 2
 
@@ -74,22 +74,64 @@ print(output.probabilities)
 
 #### transformers.ShieldGemma2Processor[[transformers.ShieldGemma2Processor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/shieldgemma2/processing_shieldgemma2.py#L62)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/shieldgemma2/processing_shieldgemma2.py#L60)
+
+__call__transformers.ShieldGemma2Processor.__call__https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/shieldgemma2/processing_shieldgemma2.py#L84[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor'], NoneType] = None"}, {"name": "text", "val": " = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.models.shieldgemma2.processing_shieldgemma2.ShieldGemma2ProcessorKwargs]"}]- **images** -- A single image or a list of images to include in the batch.
+- **text** -- Not supported.
+- **videos** -- Not supported.
+- **audio** -- Not supported.
+- **kwargs** -- An optional dictionary of keyword arguments to configure the
+  processor. Possible values include:
+
+  *   `custom_policies`: Additional policy definitions that augment the `self.policy_definitions` passed
+    into the constructor. Note that `custom_policies` that share a key with `self.policy_definitions`
+    will override the policy description
+  *   `policies`: (Optional) a list of keys in the joint `self.policy_definitions | custom_policies`
+    dictionary of specific interest for the provided images. If empty or None, prompts will be
+    generated for every key in the joint dictionary.0A `BatchFeature` containing `input_ids`, `pixel_values`, etc. where each Tensor is of shape
+`(len(images) * len(policies), )`, and the order within the batch will be
+img1_policy1, ... img1_policyN, ... imgM_policyN.
+Generates a batch of inputs from the provided images.
+
+ShieldGemma was trained to classify image content for policy compliance using a specific prompt construction.
+This processor generates a batch of such prompts from the provided images by:
+
+1.  Creating a list of conversations, one for each `` pair;
+2.  Converting these conversations to text using `self.apply_chat_template()`; and
+3.  Encoding the conversations and images using the same techniques as `Gemma3Processor`.
+
+**Parameters:**
+
+images : A single image or a list of images to include in the batch.
+
+text : Not supported.
+
+videos : Not supported.
+
+audio : Not supported.
+
+kwargs : An optional dictionary of keyword arguments to configure the processor. Possible values include:  *   `custom_policies`: Additional policy definitions that augment the `self.policy_definitions` passed into the constructor. Note that `custom_policies` that share a key with `self.policy_definitions` will override the policy description *   `policies`: (Optional) a list of keys in the joint `self.policy_definitions | custom_policies` dictionary of specific interest for the provided images. If empty or None, prompts will be generated for every key in the joint dictionary.
+
+**Returns:**
+
+A `BatchFeature` containing `input_ids`, `pixel_values`, etc. where each Tensor is of shape
+`(len(images) * len(policies), )`, and the order within the batch will be
+img1_policy1, ... img1_policyN, ... imgM_policyN.
 
 ## ShieldGemma2Config[[transformers.ShieldGemma2Config]]
 
 #### transformers.ShieldGemma2Config[[transformers.ShieldGemma2Config]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/shieldgemma2/configuration_shieldgemma2.py#L25)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/shieldgemma2/configuration_shieldgemma2.py#L24)
 
-This is the configuration class to store the configuration of a [ShieldGemma2ForImageClassification](/docs/transformers/v5.0.0rc1/en/model_doc/shieldgemma2#transformers.ShieldGemma2ForImageClassification). It is used to instantiate an
+This is the configuration class to store the configuration of a [ShieldGemma2ForImageClassification](/docs/transformers/v5.0.0/en/model_doc/shieldgemma2#transformers.ShieldGemma2ForImageClassification). It is used to instantiate an
 ShieldGemma2ForImageClassification according to the specified arguments, defining the model architecture. Instantiating a configuration
 with the defaults will yield a similar configuration to that of the shieldgemma-2-4b-it.
 
 e.g. [google/gemma-3-4b](https://huggingface.co/google/gemma-3-4b)
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -132,11 +174,11 @@ initializer_range (`float`, *optional*, defaults to 0.02) : The standard deviati
 
 #### transformers.ShieldGemma2ForImageClassification[[transformers.ShieldGemma2ForImageClassification]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/shieldgemma2/modeling_shieldgemma2.py#L45)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/shieldgemma2/modeling_shieldgemma2.py#L43)
 
 The Shieldgemma2 Model with an image classification head on top e.g. for ImageNet.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -144,17 +186,17 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.ShieldGemma2ForImageClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/shieldgemma2/modeling_shieldgemma2.py#L73[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "pixel_values", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "token_type_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "logits_to_keep", "val": ": typing.Union[int, torch.Tensor] = 0"}, {"name": "**lm_kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.ShieldGemma2ForImageClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/shieldgemma2/modeling_shieldgemma2.py#L72[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "pixel_values", "val": ": torch.FloatTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "token_type_ids", "val": ": torch.LongTensor | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "logits_to_keep", "val": ": int | torch.Tensor = 0"}, {"name": "**lm_kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [Gemma3ImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/gemma3#transformers.Gemma3ImageProcessor). See [Gemma3ImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([ShieldGemma2Processor](/docs/transformers/v5.0.0rc1/en/model_doc/shieldgemma2#transformers.ShieldGemma2Processor) uses
-  [Gemma3ImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/gemma3#transformers.Gemma3ImageProcessor) for processing images).
+  [Gemma3ImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/gemma3#transformers.Gemma3ImageProcessorFast). See [Gemma3ImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([ShieldGemma2Processor](/docs/transformers/v5.0.0/en/model_doc/shieldgemma2#transformers.ShieldGemma2Processor) uses
+  [Gemma3ImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/gemma3#transformers.Gemma3ImageProcessorFast) for processing images).
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Mask to avoid performing attention on padding token indices. Mask values selected in `[0, 1]`:
 
@@ -171,8 +213,8 @@ forwardtransformers.ShieldGemma2ForImageClassification.forwardhttps://github.com
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -208,8 +250,8 @@ forwardtransformers.ShieldGemma2ForImageClassification.forwardhttps://github.com
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
-- **logits_to_keep** (`Union[int, torch.Tensor]`, defaults to `0`) --
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+- **logits_to_keep** (`Union[int, torch.Tensor]`, *optional*, defaults to `0`) --
   If an `int`, compute logits for the last `logits_to_keep` tokens. If `0`, calculate logits for all
   `input_ids` (special case). Only last token logits are needed for generation, and calculating them only for that
   token can save memory, which becomes pretty significant for long sequences or large vocabulary size.
@@ -231,7 +273,7 @@ policy as described. If you are only interested in the violative condition, use
 
 When used with the `ShieldGemma2Processor`, the `batch_size` will be equal to `len(images) * len(policies)`,
 and the order within the batch will be img1_policy1, ... img1_policyN, ... imgM_policyN.
-The [ShieldGemma2ForImageClassification](/docs/transformers/v5.0.0rc1/en/model_doc/shieldgemma2#transformers.ShieldGemma2ForImageClassification) forward method, overrides the `__call__` special method.
+The [ShieldGemma2ForImageClassification](/docs/transformers/v5.0.0/en/model_doc/shieldgemma2#transformers.ShieldGemma2ForImageClassification) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -263,7 +305,7 @@ Example:
 
 **Parameters:**
 
-config ([ShieldGemma2Config](/docs/transformers/v5.0.0rc1/en/model_doc/shieldgemma2#transformers.ShieldGemma2Config)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([ShieldGemma2Config](/docs/transformers/v5.0.0/en/model_doc/shieldgemma2#transformers.ShieldGemma2Config)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 

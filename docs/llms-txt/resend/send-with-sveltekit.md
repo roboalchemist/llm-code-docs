@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/send-with-sveltekit.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send emails with SvelteKit
 
 > Learn how to send your first email using SvelteKit and the Resend Node.js SDK.
@@ -16,16 +20,20 @@ To get the most out of this guide, you'll need to:
 Get the Resend Node.js SDK.
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":{"light":"github-light","dark":"vesper"}}
   npm install resend
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":{"light":"github-light","dark":"vesper"}}
   yarn add resend
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":{"light":"github-light","dark":"vesper"}}
   pnpm add resend
+  ```
+
+  ```bash bun theme={"theme":{"light":"github-light","dark":"vesper"}}
+  bun add resend
   ```
 </CodeGroup>
 
@@ -36,7 +44,7 @@ Create a [+server API route](https://svelte.dev/docs/kit/routing#server) under `
 The easiest way to send an email is by using the `html` parameter.
 
 <CodeGroup>
-  ```ts src/routes/send/+server.ts theme={null}
+  ```ts src/routes/send/+server.ts theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
   import { RESEND_API_KEY } from '$env/static/private'; // define in your .env file
 

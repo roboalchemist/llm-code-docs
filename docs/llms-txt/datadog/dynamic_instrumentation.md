@@ -6,7 +6,6 @@ description: >-
   Add instrumentation to your running production systems without restarts to
   collect logs, metrics, spans, and tags from any location in your code.
 breadcrumbs: Docs > APM > Application Instrumentation > Dynamic Instrumentation
-source_url: https://docs.datadoghq.com/trace_collection/dynamic_instrumentation/index.html
 ---
 
 # Dynamic Instrumentation
@@ -32,7 +31,7 @@ If you are interested in trying out the latest user experience improvements for 
 
 Dynamic Instrumentation requires the following:
 
-- [Datadog Agent](https://docs.datadoghq.com/agent/) 7.49.0 or higher is installed alongside your service.
+- [Datadog Agent](https://docs.datadoghq.com/agent/) 7.49.0 or higher (7.73.0+ for Go) is installed alongside your service.
 - [Remote Configuration](https://docs.datadoghq.com/tracing/guide/remote_config) is enabled in that Agent.
 - For Java applications, tracing library [`dd-trace-java`](https://github.com/DataDog/dd-trace-java) 1.34.0 or higher.
 - For Python applications, tracing library [`dd-trace-py`](https://github.com/DataDog/dd-trace-py) 2.2.0 or higher.
@@ -40,14 +39,23 @@ Dynamic Instrumentation requires the following:
 - For Node.js applications, tracing library [`dd-trace-js`](https://github.com/DataDog/dd-trace-js) 5.39.0 or higher.
 - (Limited Preview) For Ruby applications, tracing library [`dd-trace-rb`](https://github.com/DataDog/dd-trace-rb) 2.9.0 or higher.
 - (Limited Preview) For PHP applications, tracing library [`dd-trace-php`](https://github.com/DataDog/dd-trace-php) 1.5.0 or higher.
+- (Limited Preview) For Go applications, tracing library [`dd-trace-go`](https://github.com/DataDog/dd-trace-go) >=1.74.6 (major version 1), or >=2.2.3 (major version 2).
+- (Limited Preview) For Go applications, the Agent and your application must run on the same host, with Linux kernel >=5.17.
 - [Unified Service Tagging](https://docs.datadoghq.com/getting_started/tagging/unified_service_tagging/) tags `service`, `env`, and `version` are applied to your deployment.
 - Recommended, [autocomplete and search (in Preview)](https://docs.datadoghq.com/dynamic_instrumentation/symdb/) is enabled.
 - Recommended, [Source Code Integration](https://docs.datadoghq.com/integrations/guide/source-code-integration/) is set up for your service.
-- The **Dynamic Instrumentation Read Configuration** (`debugger_read`) permission is required to access the Dynamic Instrumentation page
-- The **Dynamic Instrumentation Write Configuration** (`debugger_write`) permission is required to create or modify instrumentations.
-- The **Dynamic Instrumentation Capture Variables** (`debugger_capture_variables`) permission is required to use the **Capture method parameters and local variables** option.
 
-For more information about roles and on how to assign roles to users, see [Role Based Access Control](https://docs.datadoghq.com/account_management/rbac/permissions#apm).
+### Permissions{% #permissions %}
+
+The following permissions are required to use Dynamic Instrumentation:
+
+- **Dynamic Instrumentation Read Configuration** (`debugger_read`) - Required to access the Dynamic Instrumentation page.
+- One of the following write permissions:
+  - **Dynamic Instrumentation Write Configuration** (`debugger_write`) - Required to create or modify instrumentations in any environment.
+  - **Dynamic Instrumentation Write Pre-Prod** (`debugger_write_preprod`) - Required to create or modify instrumentations in known pre-production environments only (such as staging or QA).
+- **Dynamic Instrumentation Capture Variables** (`debugger_capture_variables`) - Required to use the **Capture method parameters and local variables** option.
+
+For more information about roles and how to assign roles to users, see [Role Based Access Control](https://docs.datadoghq.com/account_management/rbac/permissions#apm).
 
 ### Create a logs index{% #create-a-logs-index %}
 
@@ -72,6 +80,7 @@ For more detailed instructions, select your runtime below:
 - [Node.js](https://docs.datadoghq.com/dynamic_instrumentation/enabling/nodejs)
 - [Ruby](https://docs.datadoghq.com/dynamic_instrumentation/enabling/ruby)
 - [PHP](https://docs.datadoghq.com/dynamic_instrumentation/enabling/php)
+- [Go](https://docs.datadoghq.com/dynamic_instrumentation/enabling/go)
 
 ### Limitations{% #limitations %}
 

@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/knowledge-agents/conversations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Conversations & Sharing
 
 > Manage conversations, share your knowledge agent, and create great user experiences

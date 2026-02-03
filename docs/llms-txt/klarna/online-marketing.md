@@ -101,7 +101,7 @@ Here, you'll find a variety of Klarna-approved messaging options for your market
 | Shop smart. Pay securely with Klarna. | **Shoppe smart. Bezahle sicher mit Klarna.** | \- |
 | Pay flexibly and securely with Klarna | **Bezahle flexibel und sicher mit Klarna** | \- |
 | You decide how you want to pay. With Klarna. | **Entscheide selbst, wie du bezahlst. Mit Klarna.** | \- |
-| Choose Klarna at checkout. Pay securely with buyer protection\*.\*Exclusions apply. Learn more at [<https: at="" kauferschutzrichtlinie="" www.klarna.com=""></https:>](https://www.klarna.com/at/kauferschutzrichtlinie/). | *Please do not use this messaging if your brand is operating in the travel, event tickets or gift cards category.* **Wähle Klarna am Checkout. Bezahle sicher mit Käuferschutz.\* ** | \| \*Es gelten Ausnahmen. Erfahre mehr unter [<https: at="" kauferschutzrichtlinie="" www.klarna.com=""></https:>](https://www.klarna.com/at/kauferschutzrichtlinie/). |
+| Choose Klarna at checkout. Pay securely with buyer protection\*.\*Exclusions apply. Learn more at [[https://www.klarna.com/at/kauferschutzrichtlinie/](https://www.klarna.com/at/kauferschutzrichtlinie/)](https://www.klarna.com/at/kauferschutzrichtlinie/). | *Please do not use this messaging if your brand is operating in the travel, event tickets or gift cards category.* **Wähle Klarna am Checkout. Bezahle sicher mit Käuferschutz.\* ** | \| \*Es gelten Ausnahmen. Erfahre mehr unter [[https://www.klarna.com/at/kauferschutzrichtlinie/](https://www.klarna.com/at/kauferschutzrichtlinie/)](https://www.klarna.com/at/kauferschutzrichtlinie/). |
 
 ##### Pay now messaging \| Sofort bezahlen
 
@@ -1230,7 +1230,45 @@ Here, you'll find a variety of Klarna-approved messaging options for your market
 
 ### Norway
 
-Here, you'll find a variety of Klarna-approved messaging options for your marketing touchpoints or co-marketing activities in Norway. Download the ready-made asset packs provided below. The content is currently being revamped and will be available soon.
+Here, you'll find a variety of Klarna-approved messaging options for your marketing touchpoints or co-marketing activities in Norway. Download the ready-made asset packs provided below.
+
+#### Downloadable ready-made assets
+
+{{CardList
+|id=norway_banners
+|cardListType=downloadable_assets
+|showAssetsGroupedHorizontally=false
+|bannerBackgroundColor=white
+|cards=
+{{Card
+|title=NO - Generic banners
+|image=NO-Genericbanners.zip
+|downloadBehaviour=null
+|contentType=NO Generic banners
+|assetSize=865035
+}}
+{{Card
+|title=NO - Generic Pay Later banners
+|image=NO-Genericpaylater.zip
+|downloadBehaviour=null
+|contentType=NO Generic Pay Later banners
+|assetSize=1408806
+}}
+{{Card
+|title=NO - Pay in X
+|image=NO-payinx.zip
+|downloadBehaviour=null
+|contentType=NO Pay in X
+|assetSize=151936
+}}
+{{Card
+|title=NO - Pay Later in 30
+|image=NO-payin30.zip
+|downloadBehaviour=null
+|contentType=NO Pay Later in 30
+|assetSize=850462
+}}
+}}
 
 <em>Poland</em>
 
@@ -2267,7 +2305,7 @@ Here, you'll find a variety of Klarna-approved messaging options for your market
 | **Australian** **English** | **Legal disclosures** |
 |----|----|
 | **Shop now. Pay in 4 with Klarna.\*** | \*Fees may apply. Learn more at[klarna.com/au/legal/.](http://klarna.com/au/legal/) |
-| **Split your purchases into 4 interest-free payments.\*** | \*Snooze fees and late fees may apply. Learn more at [<https: au="" legal="" www.klarna.com=""></https:>](https://www.klarna.com/au/legal/).   |
+| **Split your purchases into 4 interest-free payments.\*** | \*Snooze fees and late fees may apply. Learn more at [[https://www.klarna.com/au/legal/](https://www.klarna.com/au/legal/)](https://www.klarna.com/au/legal/).   |
 | **Get more time to pay with Klarna\*** | \*Fees may apply. Learn more at[klarna.com/au/legal/.](http://klarna.com/au/legal/) |
 | **Shop now. Pay over time with Klarna.\*** | \*Fees may apply. Learn more at[klarna.com/au/legal/.](http://klarna.com/au/legal/) |
 

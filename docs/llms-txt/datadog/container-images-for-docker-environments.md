@@ -6,10 +6,8 @@ description: >-
   Overview of available Datadog container images for Docker environments across
   different registries
 breadcrumbs: >-
-  Docs > Container Monitoring > Containers Guides > Container Images for Docker
+  Docs > Containers > Containers Guides > Container Images for Docker
   Environments
-source_url: >-
-  https://docs.datadoghq.com/guide/container-images-for-docker-environments/index.html
 ---
 
 # Container Images for Docker Environments

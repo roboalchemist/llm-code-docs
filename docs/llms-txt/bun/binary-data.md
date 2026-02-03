@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/runtime/binary-data.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Binary Data
 
 > Working with binary data in JavaScript

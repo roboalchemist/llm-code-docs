@@ -6,7 +6,6 @@ description: >-
   Automatically discover service dependencies like databases and queues through
   outbound request analysis.
 breadcrumbs: Docs > APM > Service Observability > Inferred services
-source_url: https://docs.datadoghq.com/services/inferred_services/index.html
 ---
 
 # Inferred services

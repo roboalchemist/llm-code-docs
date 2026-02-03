@@ -60,7 +60,8 @@ Choose one of the test groups, and empty your cart if it is not already. Add a p
   * When using a discount
   * Adding to cart from different locations on the site
   * Adding products from different shipping profiles and zones
-  * Test on multiple devices and browsers (such as desktop Chrome and mobile Safari) to confirm there are no discrepancies.
+  * Test on multiple devices and browsers (such as desktop Chrome and mobile Safari) to confirm there are no discrepancies
+  * Test using discounts to confirm shipping rates are still as expected
 
 Complete these steps in each test group, being sure to empty your cart when you switch to a new test group! If you notice any issues, or have any questions, please feel free to [reach out to Intelligems support!](https://portal.usepylon.com/intelligems/forms/intelligems-support-request)
 

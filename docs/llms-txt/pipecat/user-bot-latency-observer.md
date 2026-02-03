@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/utilities/observers/user-bot-latency-observer.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # User-Bot Latency Observer
 
 > Measure response time between user speech and bot responses in Pipecat
@@ -25,9 +29,7 @@ from pipecat.observers.loggers.user_bot_latency_log_observer import UserBotLaten
 
 task = PipelineTask(
     pipeline,
-    params=PipelineParams(
-        observers=[UserBotLatencyLogObserver()],
-    ),
+    params=PipelineParams(observers=[UserBotLatencyLogObserver()]),
 )
 ```
 
@@ -62,8 +64,3 @@ When the pipeline ends, comprehensive statistics are reported:
 
 * Only measures speech-to-speech latency (not text processing time)
 * Requires proper frame sequencing to work accurately
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

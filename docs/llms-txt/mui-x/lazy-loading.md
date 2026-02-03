@@ -2,10 +2,6 @@
 
 # Source: https://mui.com/x/react-tree-view/rich-tree-view/lazy-loading.md
 
-# Source: https://mui.com/x/react-data-grid/server-side-data/lazy-loading.md
-
-# Source: https://mui.com/x/react-tree-view/rich-tree-view/lazy-loading.md
-
 ---
 productId: x-tree-view
 title: Rich Tree View - Lazy loading

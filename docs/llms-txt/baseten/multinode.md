@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/training/concepts/multinode.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Multinode Training
 
 > Learn how to configure and run multinode training jobs with Baseten Training.
@@ -39,7 +43,7 @@ Checkpointing behavior varies across training frameworks in multinode setups. On
 
 ```bash  theme={"system"}
 # Use shared volume with job name for checkpointing
-ckpt_dir="${BT_RW_CACHE_DIR}/${BT_TRAINING_JOB_NAME}"
+ckpt_dir="${BT_PROJECT_CACHE_DIR}/${BT_TRAINING_JOB_NAME}"
 ```
 
 Then ensure you write to `ckpt_dir`. This ensures all nodes write to the same checkpoint location. For comprehensive framework-specific examples and patterns, see the [Training Cookbook](https://github.com/basetenlabs/ml-cookbook).

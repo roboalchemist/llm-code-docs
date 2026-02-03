@@ -1,3 +1,17 @@
+# Source: https://platform.claude.com/docs/en/api/typescript/beta/files.md
+
+# Source: https://platform.claude.com/docs/en/api/ruby/beta/files.md
+
+# Source: https://platform.claude.com/docs/en/api/python/beta/files.md
+
+# Source: https://platform.claude.com/docs/en/api/kotlin/beta/files.md
+
+# Source: https://platform.claude.com/docs/en/api/java/beta/files.md
+
+# Source: https://platform.claude.com/docs/en/api/go/beta/files.md
+
+# Source: https://platform.claude.com/docs/en/api/beta/files.md
+
 # Source: https://platform.claude.com/docs/en/build-with-claude/files.md
 
 # Files API

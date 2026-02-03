@@ -4,8 +4,6 @@
 title: AppSync GraphQL API
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > AppSync GraphQL API
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.appsync_api.dataset/index.html
 ---
 
 # AppSync GraphQL API
@@ -18,17 +16,17 @@ aws.appsync_api
 
 ## Fields
 
-| Title           | ID   | Type      | Data Type                                                                                                                                       | Description |
-| --------------- | ---- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| _key            | core | string    |
-| account_id      | core | string    |
-| api_arn         | core | string    | The Amazon Resource Name (ARN) for the Api.                                                                                                     |
-| api_id          | core | string    | The Api ID.                                                                                                                                     |
-| created         | core | timestamp | The date and time that the Api was created.                                                                                                     |
-| dns             | core | hstore    | The DNS records for the API. This will include an HTTP and a real-time endpoint.                                                                |
-| event_config    | core | json      | The Event API configuration. This includes the default authorization configuration for connecting, publishing, and subscribing to an Event API. |
-| name            | core | string    | The name of the Api.                                                                                                                            |
-| owner_contact   | core | string    | The owner contact information for the Api                                                                                                       |
-| tags            | core | hstore    |
-| waf_web_acl_arn | core | string    | The Amazon Resource Name (ARN) of the WAF web access control list (web ACL) associated with this Api, if one exists.                            |
-| xray_enabled    | core | bool      | A flag indicating whether to use X-Ray tracing for this Api.                                                                                    |
+| Title           | ID   | Type       | Data Type                                                                                                                                       | Description |
+| --------------- | ---- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| _key            | core | string     |
+| account_id      | core | string     |
+| api_arn         | core | string     | The Amazon Resource Name (ARN) for the Api.                                                                                                     |
+| api_id          | core | string     | The Api ID.                                                                                                                                     |
+| created         | core | timestamp  | The date and time that the Api was created.                                                                                                     |
+| dns             | core | hstore     | The DNS records for the API. This will include an HTTP and a real-time endpoint.                                                                |
+| event_config    | core | json       | The Event API configuration. This includes the default authorization configuration for connecting, publishing, and subscribing to an Event API. |
+| name            | core | string     | The name of the Api.                                                                                                                            |
+| owner_contact   | core | string     | The owner contact information for the Api                                                                                                       |
+| tags            | core | hstore_csv |
+| waf_web_acl_arn | core | string     | The Amazon Resource Name (ARN) of the WAF web access control list (web ACL) associated with this Api, if one exists.                            |
+| xray_enabled    | core | bool       | A flag indicating whether to use X-Ray tracing for this Api.                                                                                    |

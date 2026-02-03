@@ -1,12 +1,16 @@
 # Source: https://upstash.com/docs/workflow/howto/changes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Update a Workflow
 
 Workflows are composed of multiple steps. When you modify workflow code, it's important to consider how these changes might affect in-progress workflows.
 
 ## Issues
 
-You cannot change the step order of a existing workflow.
+You cannot change the step order of an existing workflow.
 
 If your code changes remove or reorder existing steps, in-progress workflows may attempt to continue from a point that no longer exists. This can lead to workflow failures, typically resulting in the following error:
 

@@ -1,8 +1,12 @@
-# Source: https://mintlify.com/docs/create/image-embeds.md
+# Source: https://www.mintlify.com/docs/create/image-embeds.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Images and embeds
 
-> Add images, videos, andiframes.
+> Add images, videos, and iframes.
 
 Add images, embed videos, and include interactive content with iframes to your documentation.
 
@@ -53,7 +57,7 @@ Use JSX inline styles with the `style` attribute to resize images:
 />
 ```
 
-#### Disable zoom functionality
+#### Disable image zoom
 
 To disable the default zoom on click for images, add the `noZoom` property:
 
@@ -103,6 +107,12 @@ To display different images for light and dark themes, use Tailwind CSS classes:
 />
 ```
 
+### SVG images
+
+SVG files that use `foreignObject` elements render differently in production than in local development. Mintlify's image CDN strips `foreignObject` from SVGs as a security measure, which can truncate or hide text and other embedded HTML content.
+
+This commonly affects SVGs exported from tools like [draw.io](https://www.drawio.com) that have HTML text formatting or word wrap turned on. To fix this, disable **Formatted Text** and **Word Wrap** on all labels in your diagram before exporting to SVG. See the [draw.io documentation](https://www.drawio.com/doc/faq/svg-export-text-problems) for more information on SVG exports.
+
 ## Videos
 
 Mintlify supports [HTML tags in Markdown](https://www.markdownguide.org/basic-syntax/#html), giving you flexibility to create rich content.
@@ -120,14 +130,13 @@ Embed YouTube videos using iframe elements:
   className="w-full aspect-video rounded-xl"
   src="https://www.youtube.com/embed/4KzFe50RQkQ"
   title="YouTube video player"
-  frameBorder="0"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
   allowFullScreen
 ></iframe>
 ```
 
 <Frame>
-  <iframe className="w-full aspect-video rounded-xl" src="https://www.youtube.com/embed/4KzFe50RQkQ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+  <iframe className="w-full aspect-video rounded-xl" src="https://www.youtube.com/embed/4KzFe50RQkQ" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
 </Frame>
 
 ### Self-hosted videos

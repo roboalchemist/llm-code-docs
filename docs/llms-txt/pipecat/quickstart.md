@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/getting-started/quickstart.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Quickstart
 
 > Run your first Pipecat bot in under 5 minutes
@@ -243,20 +247,19 @@ messages = [
 ]
 
 context = LLMContext(messages)
-context_aggregator = LLMContextAggregatorPair(context)
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(
+    context,
+    user_params=LLMUserAggregatorParams(
+        vad_analyzer=SileroVADAnalyzer(params=VADParams(stop_secs=0.2)),
+    ),
+)
 ```
 
 The context aggregator automatically collects user messages (after speech-to-text) and assistant responses (after text-to-speech), maintaining the conversation flow without manual intervention.
 
 ### RTVI Protocol
 
-When building web or mobile clients, you can use [Pipecat's client SDKs](/client/introduction) that communicate with your bot via the [RTVI (Real-Time Voice Interaction) protocol](/client/rtvi-standard). In our quickstart example, we initialize the RTVI processor to handle client-server messaging and events:
-
-```python  theme={null}
-rtvi = RTVIProcessor(config=RTVIConfig(config=[]))
-```
-
-See below for how we incorporate the RTVI processor into the pipeline.
+When building web or mobile clients, you can use [Pipecat's client SDKs](/client/introduction) that communicate with your bot via the [RTVI (Real-Time Voice Interaction) protocol](/client/rtvi-standard). Pipecat comes with RTVI enabled by default, allowing your the Pipecat server and client to exchange messages and events in real-time.
 
 ### Pipeline Configuration
 
@@ -265,14 +268,13 @@ The core of your bot is a Pipeline that processes data through a series of proce
 ```python  theme={null}
 # Create the pipeline with the processors
 pipeline = Pipeline([
-    transport.input(),              # Receive audio from browser
-    rtvi,                           # Protocol for client/server messaging and events
-    stt,                            # Speech-to-text (Deepgram)
-    context_aggregator.user(),      # Add user message to context
-    llm,                            # Language model (OpenAI)
-    tts,                            # Text-to-speech (Cartesia)
-    transport.output(),             # Send audio back to browser
-    context_aggregator.assistant(), # Add bot response to context
+    transport.input(),     # Receive audio from browser
+    stt,                   # Speech-to-text (Deepgram)
+    user_aggregator,       # Add user message to context
+    llm,                   # Language model (OpenAI)
+    tts,                   # Text-to-speech (Cartesia)
+    transport.output(),    # Send audio back to browser
+    assistant_aggregator,  # Add bot response to context
 ])
 ```
 
@@ -288,7 +290,6 @@ task = PipelineTask(
         enable_metrics=True,
         enable_usage_metrics=True,
     ),
-    observers=[RTVIObserver(rtvi)],
 )
 ```
 
@@ -347,12 +348,10 @@ async def bot(runner_args: RunnerArguments):
         "daily": lambda: DailyParams(
             audio_in_enabled=True,
             audio_out_enabled=True,
-            vad_analyzer=SileroVADAnalyzer(),
         ),
         "webrtc": lambda: TransportParams(
             audio_in_enabled=True,
             audio_out_enabled=True,
-            vad_analyzer=SileroVADAnalyzer(),
         ),
     }
 
@@ -402,8 +401,3 @@ Dive deeper into Pipecat's architecture and learn how to build custom solutions.
     30+ production-ready examples for inspiration
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

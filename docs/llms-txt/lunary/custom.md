@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/integrations/custom.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Step-by-Step Guide : Sending Events via the Lunary API
 
 If you'd like to report data from a platform not supported by our SDKs, this page is for you.
@@ -488,8 +492,3 @@ If you have feedback from the user, you can attach it to the `chat` run using a 
 ```
 
 The feedback will now cascade down to all the child runs within the UI, for easy filtering of positive and negative runs.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

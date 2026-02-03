@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/interface/settings/lite-graph.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ComfyUI LiteGraph (Canvas) Settings
 
 > Detailed description of ComfyUI graphics rendering engine LiteGraph setting options

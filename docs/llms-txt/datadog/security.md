@@ -1,10 +1,13 @@
+# Source: https://docs.datadoghq.com/getting_started/security.md
+
+# Source: https://docs.datadoghq.com/datadog_cloudcraft/overlays/security.md
+
 # Source: https://docs.datadoghq.com/security.md
 
 ---
 title: Datadog Security
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Datadog Security
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Datadog Security

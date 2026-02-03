@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/cli/commands/scan-git-changes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # scan git-changes
 
 > Scan for secrets in your uncommitted code

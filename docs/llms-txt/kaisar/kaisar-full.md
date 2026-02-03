@@ -10,7 +10,7 @@ Kaisar is a decentralized GPU network designed to provide unlimited computing po
 
 Our mission is to make computing scalable, accessible, and efficient by leveraging underutilized GPU resources from independent data centers, crypto miners, and consumer households. We aim to assemble over a million GPUs from these diverse sources to create a robust and decentralized computing infrastructure.
 
-\\
+<br>
 
 
 # Challenges
@@ -26,7 +26,7 @@ To gain insights into projected hardware use by AI Systems, [Stanford AI Index R
 
 <figure><img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXe_u0jdzSPhsoYrW8F2EZZvLp8euaPE7MIptNAaJrB6HXLqOB-94pttYH5_fx5KsKaf7hmfKVk-twi3IsWiWLx_th5XPsJSLkSwHNVOK7vxxoXBqJhC4OEz88s8wd8F-G9SUs0JNcyXSysaBBayg0gUzn0?key=UbI8YI3-VF8UhldN54mDkg" alt=""><figcaption></figcaption></figure>
 
-\\
+<br>
 
 
 # Cost challenges with traditional cloud GPU providers.
@@ -67,7 +67,7 @@ Kaisar's approach will reduce global dependence on centralized cloud providers a
 
 For more information on Kaisar solutions please check the Problem Statement/Solution page.
 
-\\
+<br>
 
 
 # Problem Statement
@@ -82,9 +82,9 @@ Meanwhile, a substantial portion of global GPU capacity remains underutilized:
 
 To address this imbalance, there is a critical need for solutions that can efficiently leverage this underutilized GPU capacity, integrating it seamlessly into existing workflows and meeting the surging demand for compute power without the prohibitive costs and constraints imposed by major cloud providers.
 
-\\
+<br>
 
-\\
+<br>
 
 
 # The Solution: Kaisar's Decentralized GPU Network
@@ -133,7 +133,7 @@ Kaisar is a Decentralized Physical Infrastructure Network (DePIN) optimized for 
 
 Kaisar operates on the peaq blockchain, which is optimized for Decentralized Physical Infrastructure Networks. The peaq blockchain supports scalable, decentralized AI/ML model training and provides a secure, cost-effective environment for managing GPU resources.
 
-\\
+<br>
 
 
 # What are the main products offered by Kaisar?
@@ -176,7 +176,7 @@ Kaisar GPU Container supports several major frameworks, including:
 
 These frameworks can be deployed using pre-built templates provided in the Kaisar portal.
 
-\\
+<br>
 
 
 # How do I deploy a GPU Container?
@@ -194,28 +194,28 @@ To deploy a GPU container follow step-by-step instructions from the Guides secti
 
 Kaisar accepts payments via USDT (Tether), and will soon support credit card payments for purchase of KAI tokens to use in Kaisar Decentralized Physical Infrastructure Network (DePIN).
 
-\\
+<br>
 
 
 # How is pricing determined?
 
 Pricing is based on the selected GPU model, the duration of use, and the pricing plan (on-demand, monthly, etc.).
 
-\\
+<br>
 
 
 # What GPUs are supported?
 
 Kaisar supports a range of GPUs, including the NVIDIA RTX series and AMD Ryzen series.
 
-\\
+<br>
 
 
 # How do I monitor my GPU container?
 
 You can monitor your GPU container from the dashboard, which displays metrics such as CPU, memory, network usage, and more.
 
-\\
+<br>
 
 
 # How does Kaisar ensure security of containers?
@@ -223,14 +223,14 @@ You can monitor your GPU container from the dashboard, which displays metrics su
 * Kaisar uses multiple layers of security, including robust access control and a secure cloud option for highly sensitive workloads.&#x20;
 * Kaisar transactions are facilitated through smart contracts on the peaq blockchain. Customers pay for compute clusters using KAI tokens, and providers receive rewards based on their GPU contributions.
 
-\\
+<br>
 
 
 # How do I get started with Kaisar?
 
 To get started, create an account on the [Kaisar portal](http://cloud.kaisar.io), log in, and explore the dashboard. You can deploy GPU containers, manage your account settings, and monitor your resources through the portal.
 
-\\
+<br>
 
 
 # Architecture Overview
@@ -608,7 +608,7 @@ As a Kaisar Provider on Kaisar Network, you contribute to supporting and expandi
 2. **Ensure Performance** – Provide your GPUs to support network reliability and security. Regularly monitor server performance to meet operational standards, prevent downtime, and ensure a smooth and efficient computing experience for users.
 3. **Manage & Earn** – Track your earnings from providing GPU resources, manage your servers efficiently, and oversee financial transactions with security. Use the platform’s tools to monitor service fees, claim rewards, and ensure smooth and transparent financial operations.
 
-Your contribution helps power a reliable and efficient cloud ecosystem.\\
+Your contribution helps power a reliable and efficient cloud ecosystem.<br>
 
 
 # Benefits of Running a Kaisar Provider
@@ -1429,8 +1429,7 @@ The Get Real campaign leverages 5% of peaq’s initial supply (210,000,000 PEAQ)
 
 To participate and earn rewards, follow these simple steps:
 
-1️⃣ **Download Kaisar Provider App** – Coming Soon.[\
-](https://drive.usercontent.google.com/download?id=1CpBXl2kGfWs9F9zjwQXab8ctxlG8EbWe)2️⃣ I**nstall and run the app** – Coming Soon.\
+1️⃣ **Download Kaisar Provider App** – Coming Soon.[<br>](https://drive.usercontent.google.com/download?id=1CpBXl2kGfWs9F9zjwQXab8ctxlG8EbWe)2️⃣ I**nstall and run the app** – Coming Soon.\
 3️⃣ **Complete the Quest** – Follow the necessary steps as outlined in the campaign.\
 4️⃣ **Unlock Your Rewards** – Receive $PEAQ as a reward for successfully becoming a provider.
 
@@ -1467,5 +1466,5835 @@ For any queries or assistance during the sale, please contact:
 * Kaisar is not liable for any financial losses, technical issues, or regulatory non-compliance arising from participation in the sale.
 * Participants are advised to perform due diligence and seek independent advice before committing funds.
 * By participating, individuals acknowledge and accept all terms and conditions outlined by Kaisar for the Checker Node Sale.
+
+
+# Introduction
+
+Welcome to the **Kaisar AI Ops** documentation.
+
+> Last updated: Nov 27, 2025
+
+## Overview
+
+Kaisar AI Ops is a comprehensive platform designed to streamline AI operations, monitoring, and management.
+
+## Key Features
+
+* **Dashboard**: Centralized view of your AI infrastructure.
+* **AI Tools**: Suite of tools for AI development and deployment.
+* **Monitoring**: Real-time insights and alerts.
+* **IAM & Security**: Robust role-based access control.
+
+## Architecture
+
+(Architecture diagram and description to be added)
+
+
+# Getting Started
+
+Welcome to Kaisar AI Ops! This section will guide you through the initial setup and help you get started with the platform.
+
+## What You'll Learn
+
+* System prerequisites and requirements
+* How to access the platform
+* Initial onboarding steps
+* Basic navigation and interface overview
+
+## Quick Links
+
+* [Prerequisites](https://docs.kaisar.io/kaisar-network/getting-started/getting-started/prerequisites) - System requirements and access setup
+* [Quick Start](https://docs.kaisar.io/kaisar-network/getting-started/getting-started/quick-start) - Get up and running in minutes
+* [Onboarding](https://docs.kaisar.io/kaisar-network/getting-started/getting-started/onboarding) - Complete onboarding guide
+
+## Overview
+
+Kaisar AI Ops is a unified platform for managing Deep Learning workflows and AI operations. The platform provides:
+
+* **Centralized Dashboard**: Monitor all your AI operations in one place
+* **Experiment Management**: Track and compare ML experiments
+* **Model Registry**: Version and deploy your models
+* **Dataset Management**: Organize and version your datasets
+* **Deployment Tools**: Deploy models to production environments
+
+Let's get started!
+
+
+# Prerequisites
+
+Before you start using Kaisar AI Ops, ensure you meet the following requirements.
+
+## System Requirements
+
+### Browser Compatibility
+
+* **Recommended**: Chrome 90+, Firefox 88+, Safari 14+, Edge 90+
+* **JavaScript**: Must be enabled
+* **Cookies**: Must be enabled for authentication
+
+### Network Requirements
+
+* Stable internet connection
+* Access to `https://ai.kaisar.io`
+* Firewall rules allowing HTTPS traffic
+
+## Access Requirements
+
+### User Account
+
+You need a valid user account to access Kaisar AI Ops. Contact your system administrator to:
+
+* Create your account
+* Assign appropriate roles and permissions
+* Provide login credentials
+
+### Authentication
+
+Kaisar AI Ops uses a centralized **Identity Provider** for authentication:
+
+* Single Sign-On (SSO) support
+* Multi-factor authentication (if enabled)
+* Role-based access control (RBAC)
+
+## Recommended Knowledge
+
+To get the most out of Kaisar AI Ops, familiarity with the following is helpful:
+
+* **Machine Learning Basics**: Understanding of ML workflows, training, and deployment
+* **Python**: For creating experiments and models
+* **Docker**: For containerized deployments
+* **REST APIs**: For programmatic access (optional)
+
+## Next Steps
+
+Once you have met the prerequisites, proceed to:
+
+* [Quick Start Guide](https://docs.kaisar.io/kaisar-network/getting-started/getting-started/quick-start)
+* [Onboarding](https://docs.kaisar.io/kaisar-network/getting-started/getting-started/onboarding)
+
+
+# Quick Start
+
+Get up and running with Kaisar AI Ops in just a few minutes.
+
+## Step 1: Access the Platform
+
+1. Navigate to <https://ai.kaisar.io>
+2. Click **"Access Dashboard"**
+3. Log in with your credentials
+
+![Kaisar AI Ops Homepage](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-ca0d8d4014d0c24c4bdde7b89cfa54aea812f385%2Fkaisar_homepage_1764148101914.png?alt=media)
+
+## Step 2: Explore the Dashboard
+
+After logging in, you'll see the main dashboard with an overview of your:
+
+* Recent experiments
+* Active deployments
+* System metrics
+* Quick actions
+
+![Dashboard](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-c743951a45e6a5935334a0107ead12c25f1e0be8%2Fkaisar_dashboard_1764148113793.png?alt=media)
+
+## Step 3: Navigate the Interface
+
+The main navigation menu is located on the left sidebar:
+
+* **Dashboard**: Overview and quick access
+* **Organization**: Manage groups, members, and agents
+* **Deep Learning Platform**:
+  * Experiments
+  * Models
+  * Datasets
+* **Deployments**: Manage model deployments
+
+## Step 4: Create Your First Experiment
+
+1. Click **Deep Learning Platform** → **Experiments**
+2. Click the **Create** button
+3. Fill in the experiment details:
+   * Name
+   * Description
+   * Configuration
+4. Click **Save**
+
+## Step 5: Explore Other Features
+
+Now that you're familiar with the basics, explore:
+
+* [User Guide](https://github.com/Kaisar-Network/docs/blob/kaisar-ai-ops/kaisar-ai-ops/user-guide/README.md) for detailed feature documentation
+* [Organization Management](https://github.com/Kaisar-Network/docs/blob/kaisar-ai-ops/kaisar-ai-ops/user-guide/iam-security.md) to manage team access
+* [Deployments](https://github.com/Kaisar-Network/docs/blob/kaisar-ai-ops/kaisar-ai-ops/user-guide/README.md) to deploy your models
+
+## Need Help?
+
+* Check the [Troubleshooting](https://docs.kaisar.io/kaisar-network/troubleshooting/troubleshooting) section
+* Contact support via the [Support](https://docs.kaisar.io/kaisar-network/troubleshooting/troubleshooting/support) page
+
+
+# Onboarding
+
+This guide will walk you through the complete onboarding process for Kaisar AI Ops.
+
+## Initial Setup
+
+### 1. Account Activation
+
+After receiving your account credentials:
+
+1. Navigate to <https://ai.kaisar.io>
+2. Log in with your provided credentials
+3. Update your profile information (if prompted)
+4. Set up multi-factor authentication (if required)
+
+### 2. Profile Configuration
+
+1. Click on your profile icon (top-right corner)
+2. Navigate to **Settings**
+3. Update:
+   * Display name
+   * Email preferences
+   * Notification settings
+   * Time zone
+
+### 3. Join Your Organization
+
+1. Navigate to **Organization** in the sidebar
+2. You should see your assigned organization(s)
+3. Verify your role and permissions
+4. Explore team members and groups
+
+![Organization View](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-11bbb60db66284af9e1c52275f596aaa623c9cdf%2Fsection_organization_1764148155747.png?alt=media)
+
+## Understanding Your Workspace
+
+### Dashboard Overview
+
+The dashboard provides:
+
+* **Recent Activity**: Your latest experiments and deployments
+* **Quick Stats**: Summary of resources and usage
+* **Notifications**: System alerts and updates
+* **Quick Actions**: Shortcuts to common tasks
+
+### Navigation Structure
+
+Familiarize yourself with the main sections:
+
+#### Deep Learning Platform
+
+* **Experiments**: Track ML training runs
+* **Models**: Manage trained models
+* **Datasets**: Organize training data
+
+#### Deployments
+
+* Deploy models to production
+* Monitor deployment health
+* Manage scaling and versions
+
+## First Tasks
+
+### Create Your First Experiment
+
+1. Go to **Deep Learning Platform** → **Experiments**
+2. Click **Create**
+3. Configure your experiment:
+   * Name and description
+   * Framework (PyTorch, TensorFlow, etc.)
+   * Compute resources
+   * Hyperparameters
+4. Submit the experiment
+
+![Experiments View](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-4ce087d91471886f1be85b6abd1dbb8835fc23a2%2Fsection_experiments_1764148174995.png?alt=media)
+
+### Upload a Dataset
+
+1. Go to **Deep Learning Platform** → **Datasets**
+2. Click **Create**
+3. Upload your dataset or connect to external storage
+4. Add metadata and tags
+
+![Datasets View](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-67828deab295ac67e068436d89e9815175df2a88%2Fsection_datasets_1764148213987.png?alt=media)
+
+### Register a Model
+
+1. Go to **Deep Learning Platform** → **Models**
+2. Click **Create**
+3. Upload or link your trained model
+4. Add version information and documentation
+
+![Models View](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-af01ec57317f84a9468adf2d3d47fd475a3088cb%2Fsection_models_1764148186732.png?alt=media)
+
+## Best Practices
+
+### Organization
+
+* Use clear, descriptive names for experiments, models, and datasets
+* Add tags for easy filtering and search
+* Document your work with descriptions and README files
+
+### Collaboration
+
+* Share experiments with team members
+* Use groups to organize team access
+* Comment on experiments for knowledge sharing
+
+### Security
+
+* Never share your credentials
+* Use API tokens for programmatic access
+* Review permissions regularly
+
+## Next Steps
+
+Now that you're onboarded:
+
+1. Explore the [User Guide](https://github.com/Kaisar-Network/docs/blob/kaisar-ai-ops/kaisar-ai-ops/user-guide/README.md) for detailed features
+2. Review [IAM & Security](https://github.com/Kaisar-Network/docs/blob/kaisar-ai-ops/kaisar-ai-ops/user-guide/iam-security.md) for access management
+3. Check [Troubleshooting](https://docs.kaisar.io/kaisar-network/troubleshooting/troubleshooting) for common issues
+
+## Getting Help
+
+If you need assistance:
+
+* Check the [FAQ](https://docs.kaisar.io/kaisar-network/troubleshooting/troubleshooting/faq)
+* Contact your team administrator
+* Reach out to [Support](https://docs.kaisar.io/kaisar-network/troubleshooting/troubleshooting/support)
+
+
+# Dashboard
+
+The Dashboard is your central hub for monitoring and managing all AI operations in Kaisar AI Ops.
+
+## Overview
+
+The dashboard provides a comprehensive view of:
+
+* Recent experiments and their status
+* Active deployments and health metrics
+* System resource usage
+* Quick access to common actions
+
+![Dashboard Overview](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-c743951a45e6a5935334a0107ead12c25f1e0be8%2Fkaisar_dashboard_1764148113793.png?alt=media)
+
+## Dashboard Components
+
+### 1. Navigation Sidebar
+
+Located on the left side, the sidebar provides access to:
+
+* **Dashboard**: Main overview (current page)
+* **Organization**: Team and access management
+* **Deep Learning Platform**: Experiments, Models, Datasets
+* **Deployments**: Production model deployments
+
+### 2. Main Content Area
+
+The central area displays:
+
+* **Activity Feed**: Recent experiments, deployments, and updates
+* **Status Cards**: Quick metrics and summaries
+* **Charts and Graphs**: Visual representation of performance metrics
+
+### 3. Top Bar
+
+The top navigation bar includes:
+
+* **Search**: Find experiments, models, datasets, or deployments
+* **Notifications**: System alerts and updates
+* **User Profile**: Access settings and logout
+
+## Key Features
+
+### Recent Activity
+
+View your most recent:
+
+* Experiment runs and their status (running, completed, failed)
+* Model deployments and updates
+* Dataset uploads and modifications
+* Team member activities
+
+### Quick Actions
+
+Common tasks accessible from the dashboard:
+
+* **Create Experiment**: Start a new ML training run
+* **Deploy Model**: Push a model to production
+* **Upload Dataset**: Add new training data
+* **View Metrics**: Check system performance
+
+### Metrics Overview
+
+Monitor key performance indicators:
+
+* **Active Experiments**: Number of currently running experiments
+* **Total Models**: Registered models in your organization
+* **Deployments**: Active production deployments
+* **Resource Usage**: Compute and storage utilization
+
+## Customization
+
+### Filtering and Sorting
+
+* Filter by date range, status, or owner
+* Sort by creation time, name, or status
+* Save custom views for quick access
+
+### Widgets
+
+Customize your dashboard by:
+
+* Adding or removing metric widgets
+* Rearranging layout
+* Setting default views
+
+## Navigation Tips
+
+### Keyboard Shortcuts
+
+* `Ctrl/Cmd + K`: Open search
+* `Ctrl/Cmd + N`: Create new experiment
+* `Ctrl/Cmd + D`: Go to dashboard
+
+### Quick Search
+
+Use the search bar to quickly find:
+
+* Experiments by name or ID
+* Models by version or tag
+* Datasets by name
+* Deployments by status
+
+## Best Practices
+
+1. **Check Daily**: Review your dashboard daily for updates and alerts
+2. **Monitor Failures**: Address failed experiments or deployments promptly
+3. **Track Resources**: Keep an eye on resource usage to avoid limits
+4. **Stay Organized**: Use tags and naming conventions for easy filtering
+
+
+# Groups
+
+Manage groups within your organization for team-based access control and hierarchy.
+
+![Groups List View](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-9c61b2040ae8351cf83cfc7dea33204d43644370%2Fgroups_list_view.png?alt=media)
+
+## Overview
+
+Groups allow you to organize members into logical units (e.g., teams, departments, projects) and assign permissions or resources to them collectively. Groups can be nested to create an organizational hierarchy.
+
+**Dashboard Summary**:
+
+* **Total Groups**: Total number of groups configured
+* **Parent Groups**: Number of root-level groups
+* **Sub Groups**: Number of nested groups
+* **Total Members**: Total users assigned to groups
+
+## Groups List
+
+The groups table displays:
+
+* **Group Name**: Name and description (e.g., "Quality Assurance", "Frontend Team")
+* **Parent Group**: The parent group name or "Root" if top-level
+* **Members**: Number of members in the group
+* **Status**: Active (green) or Inactive (gray)
+* **Created**: Date of creation
+* **Actions**: Edit, Delete, etc.
+
+## Creating a Group
+
+Navigate to **Organization** → **Groups** → Click **+ Create**
+
+![Create Group Form](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-b57ab29531817cee20743ca3f03d5b006c3e856d%2Fgroup_create_form.png?alt=media)
+
+### Group Information
+
+**Group Name**\* (Required)
+
+* Enter a descriptive name for the group
+* Example: `Quality Assurance`, `Engineering`, `Sales`
+* Helper text: "Enter a descriptive name for the group"
+
+**Description**
+
+* Optional description of the group's purpose
+* Example: "Testing and quality control team"
+
+**Parent Group**
+
+* Select a parent group to create hierarchy
+* Dropdown selection of existing groups
+* Helper text: "Select a parent group to create hierarchy"
+
+**Status**\* (Required)
+
+* Current status of the group
+* Options: `Active`, `Inactive`
+* Default: `Active`
+
+### Actions
+
+* **Cancel**: Discard changes
+* **Create Group**: Save the new group
+
+## Viewing Group Details
+
+To view detailed information about a group:
+
+1. Navigate to **Organization** → **Groups**
+2. Click on a group from the list
+3. View details in the modal dialog
+
+![View Group](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-9890467664ecffa38904c9c9134a3c732741ad75%2Fgroup_view_details.png?alt=media)
+
+**Details Panel**:
+
+* **Group Name**: e.g., "Quality Assurance"
+* **Description**: e.g., "Testing and quality control team"
+* **Parent Group**: Shows selected parent if any
+* **Status**: Active or Inactive
+
+## Editing a Group
+
+To update a group:
+
+1. Open group details
+2. Click **Edit** button
+3. Modify editable fields in the Edit Group modal
+
+![Edit Group](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-8c403b8032ab96c1f874e0eb62e20f46b2641db0%2Fgroup_edit_form.png?alt=media)
+
+4. Click **Update Group** to save changes
+
+**Editable Fields**:
+
+* ✅ Group Name
+* ✅ Description
+* ✅ Parent Group
+* ✅ Status
+
+## Group Hierarchy
+
+**Parent-Child Relationships**:
+
+* Groups can have one parent group
+* A parent group can have multiple child groups
+* Permissions and access can be inherited (depending on configuration)
+
+**Example Structure**:
+
+* **Engineering** (Parent)
+  * **Backend Team** (Child)
+  * **Frontend Team** (Child)
+  * **QA Team** (Child)
+
+## Managing Group Members
+
+(See [Members](https://docs.kaisar.io/kaisar-network/organization/members) for details on adding users to groups)
+
+## Best Practices
+
+* **Naming**: Use clear, consistent naming conventions
+* **Hierarchy**: Reflect your actual organizational structure
+* **Descriptions**: Provide clear descriptions for easier management
+* **Maintenance**: Deactivate groups that are no longer in use instead of deleting them immediately to preserve history
+
+## Next Steps
+
+* Add [Members](https://docs.kaisar.io/kaisar-network/organization/members) to your groups
+* Assign [Agents](https://docs.kaisar.io/kaisar-network/organization/agents) to groups
+* Configure group-level permissions
+
+
+# Members
+
+Manage organization members, their roles, and access permissions.
+
+![Members List View](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-4ba521ce0b4d2b882e9695acb27ad53ad11d8114%2Fmembers_list_view.png?alt=media)
+
+## Overview
+
+The Members section allows you to invite users to your organization, assign them roles, and manage their access to resources.
+
+**Dashboard Summary**:
+
+* **Total Members**: Total number of registered members
+* **Active**: Number of members with active status
+* **Inactive**: Number of members with inactive status
+* **Pending**: Number of invitations sent but not yet accepted
+
+## Members List
+
+The members table displays:
+
+* **Member**: Name and email address
+* **Role**: Assigned role (Admin, Manager, Developer, Analyst, Viewer)
+* **Department**: Assigned department (e.g., Engineering, Data Science)
+* **Status**: Active (green), Inactive (red), Pending (orange)
+* **Last Login**: Time since last activity
+* **Actions**: Edit, Delete, etc.
+
+## Creating a Member
+
+Navigate to **Organization** → **Members** → Click **+ Create**
+
+![Create Member Form](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-afdf4ed5c2c52f282ea48602760a6032f36ca199%2Fmember_create_form.png?alt=media)
+
+### Basic Information
+
+**Full Name**\* (Required)
+
+* Enter the member's full name
+
+**Email Address**\* (Required)
+
+* Enter the member's email address for invitation
+
+**Phone Number**
+
+* Optional contact number
+
+**Department**\* (Required)
+
+* Select or enter department name
+* Example: `Engineering`, `Data Science`
+
+**Job Title**
+
+* Optional job title
+
+### Role & Permissions
+
+**Role**\* (Required)
+
+* Select role from dropdown:
+  * **Admin**: Full access
+  * **Manager**: Manage resources and members
+  * **Developer**: Create and deploy resources
+  * **Analyst**: View and analyze data
+  * **Viewer**: Read-only access
+
+**Status**\* (Required)
+
+* Initial status: `Active` or `Inactive`
+
+**Permissions**
+
+* Granular permissions (e.g., `Manage Users`)
+
+### Group Assignments
+
+**Groups**
+
+* Assign member to specific groups for access control
+
+### Actions
+
+* **Cancel**: Discard changes
+* **Create Member**: Send invitation and create member
+
+## Viewing Member Details
+
+To view detailed information about a member:
+
+1. Navigate to **Organization** → **Members**
+2. Click on a member from the list
+3. View details in the modal dialog
+
+![View Member](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-cd8e34893ed7608974f7363dc5737e1a0ff7c81a%2Fmember_details_view.png?alt=media)
+
+**Details Panel**:
+
+* **Basic Information**: Name, Email, Phone, Department, Job Title
+* **Role & Permissions**: Role, Status, Permissions
+* **Group Assignments**: Assigned groups
+
+## Editing a Member
+
+To update a member's information or role:
+
+1. Open member details
+2. Click **Edit** button (or select Edit from list actions)
+3. Modify editable fields in the Edit Member modal
+
+![Edit Member](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-41f8ea1072eecb50ec3987343ec064b6a2631d14%2Fmember_edit_form.png?alt=media)
+
+4. Click **Update Member** to save changes
+
+**Editable Fields**:
+
+* ✅ Basic Information (Name, Email, Phone, Department, Job Title)
+* ✅ Role & Permissions (Role, Status, Permissions)
+* ✅ Group Assignments
+
+## Member Roles Explained
+
+| Role          | Description        | Key Permissions                                |
+| ------------- | ------------------ | ---------------------------------------------- |
+| **Admin**     | Full system access | Manage users, billing, settings, all resources |
+| **Manager**   | Team management    | Manage team members, view all resources        |
+| **Developer** | Builder access     | Create/Edit experiments, models, deployments   |
+| **Analyst**   | Data access        | View analytics, experiments, datasets          |
+| **Viewer**    | Read-only          | View resources only, no editing                |
+
+## Best Practices
+
+* **Least Privilege**: Assign the lowest role necessary for the user's tasks
+* **Groups**: Use groups for managing permissions at scale rather than individual assignments
+* **Regular Audits**: Periodically review member list and remove inactive users
+* **Department Tagging**: Use accurate department tags for better reporting and organization
+
+## Next Steps
+
+* Organize members into [Groups](https://docs.kaisar.io/kaisar-network/organization/groups)
+* Assign [Agents](https://docs.kaisar.io/kaisar-network/organization/agents) to members or groups
+
+
+# Agents
+
+Manage AI agents, their configurations, and monitoring.
+
+![Agents List View](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-1558d06e4adc193fa9ae11aef8d89fbe5b8079c0%2Fagents_list_view.png?alt=media)
+
+## Overview
+
+Agents are autonomous AI entities configured to perform specific tasks. This section allows you to manage their lifecycle, monitor their performance, and configure their behaviors.
+
+**Dashboard Summary**:
+
+* **Total Agents**: Total number of agents configured
+* **Active**: Number of agents currently active
+* **Error**: Number of agents in error state
+
+## Agents List
+
+The agents table displays:
+
+* **Agent**: Name and description (e.g., "Claude Assistant", "Code Reviewer")
+* **Type**: AI Provider (e.g., CLAUDE, OPENAI, CUSTOM)
+* **Status**: Current state (Active, Error, Maintenance, Busy, Inactive)
+* **Environment**: Runtime environment (e.g., x64 @ 8 GB)
+* **Last Heartbeat**: Time since last signal
+* **Created**: Creation date
+* **Actions**: Edit, Delete, etc.
+
+## Creating an Agent
+
+Navigate to **Organization** → **Agents** → Click **+ Create**
+
+![Create Agent Form](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-8151018e31691777167e95947de087ade45b0e8f%2Fagent_create_form.png?alt=media)
+
+### Basic Information
+
+**Agent Name**\* (Required)
+
+* A unique name to identify this agent
+* Example: `Claude Assistant`
+
+**Agent Type**\* (Required)
+
+* Select the AI provider for this agent
+* Options: `Claude (Anthropic)`, `OpenAI`, `Custom`
+
+**Description**\* (Required)
+
+* Brief description of what this agent does
+
+**Workspace Path**\* (Required)
+
+* File system path where agent files are stored
+* Example: `/workspace/agents/claude-assistant`
+
+### System Prompt
+
+**System Prompt**\* (Required)
+
+* Instructions that define the agent's behavior and personality
+* Example: "You are a helpful AI assistant. Always be professional and accurate."
+
+### Configuration
+
+**Model**
+
+* Model identifier (e.g., `claude-3-sonnet`, `gpt-4-turbo`)
+
+**Temperature**
+
+* Controls randomness (0 = deterministic, 1 = creative)
+
+**Max Tokens**
+
+* Maximum response length in tokens
+
+**Anthropic API Version** / **OpenAI Organization**
+
+* Provider-specific settings
+
+**Custom API Endpoint**
+
+* Full URL to your custom AI endpoint (if applicable)
+
+### Environment
+
+* Configure runtime environment variables and resources
+
+### Actions
+
+* **Cancel**: Discard changes
+* **Create Agent**: Submit and create the agent
+
+## Viewing Agent Details
+
+To view detailed information about an agent:
+
+1. Navigate to **Organization** → **Agents**
+2. Click on an agent from the list
+3. View details in the modal dialog
+
+![View Agent](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-4b8c13a64d21e5161c964f330b7e237e8ac15f49%2Fagent_view_details.png?alt=media)
+
+**Details Panel**:
+
+* **Basic Information**: Name, Type, Description, Workspace Path
+* **System Prompt**: View the current system prompt
+* **Configuration**: View model settings
+* **Environment**: View environment settings
+
+## Editing an Agent
+
+To update an agent's configuration:
+
+1. Open agent details
+2. Click **Edit** button (or select Edit from list actions)
+3. Modify editable fields in the Edit Agent modal
+
+![Edit Agent](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-b37a664c49222480429875a07c70993afbff68ef%2Fagent_edit_form.png?alt=media)
+
+4. Click **Update Agent** to save changes
+
+**Editable Fields**:
+
+* ✅ Basic Information (Name, Description, Workspace Path)
+* ✅ System Prompt
+* ✅ Configuration (Model, Temperature, etc.)
+* ✅ Environment
+
+## Best Practices
+
+* **Specific Prompts**: Write clear, specific system prompts to guide agent behavior
+* **Resource Allocation**: Monitor environment usage and adjust resources as needed
+* **Error Monitoring**: Check "Error" status agents immediately to resolve issues
+* **Version Control**: Keep track of changes to system prompts and configurations
+
+## Next Steps
+
+* Configure [Platform Connections](https://docs.kaisar.io/kaisar-network/agent-configuration/platform-connections) for your agents
+* Set up [Tools](https://docs.kaisar.io/kaisar-network/agent-configuration/tools) for your agents to use
+* Monitor agent activity in [Analytics](https://docs.kaisar.io/kaisar-network/deep-learning-platform/analytics)
+
+
+# Experiments
+
+Track your machine learning experiments with detailed logging and comparison tools.
+
+![Experiments View](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-4ce087d91471886f1be85b6abd1dbb8835fc23a2%2Fsection_experiments_1764148174995.png?alt=media)
+
+## Creating an Experiment
+
+Navigate to **Deep Learning Platform** → **Experiments** → Click **Create**
+
+![Create Experiment Form](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-ffd63a9210658c92f41ab435e5367d37853633a5%2Fcreate_experiment_form.png?alt=media)
+
+### Basic Information
+
+**Experiment Name**\* (Required)
+
+* Enter a descriptive name for the experiment
+* Example: `image-classification-resnet`, `nlp-sentiment-bert`
+
+**Description** (Optional)
+
+* Detailed description of experiment purpose and goals
+
+**Framework**\* (Required)
+
+* Select your ML framework from dropdown:
+  * PyTorch
+  * TensorFlow
+  * Scikit-learn
+  * Keras
+  * Others
+* Default: `pytorch`
+
+**Task Type**\* (Required)
+
+* Select the ML task type:
+  * Classification
+  * Regression
+  * Detection
+  * Segmentation
+  * Others
+* Default: `classification`
+
+**Model Type**\* (Required)
+
+* Specify the model architecture
+* Examples: ResNet, BERT, YOLO, Custom
+
+**Project ID** (Optional)
+
+* Link experiment to a specific project
+
+### Training Configuration
+
+**Epochs**\* (Required)
+
+* Number of training epochs
+* Example: `100`
+
+**Number of training epochs** (Helper text)
+
+* Additional context for epochs setting
+
+**Staging batch size** (Optional)
+
+* Batch size for staging/validation
+
+**Learning Rate**\* (Required)
+
+* Initial learning rate for training
+* Example: `0.001`
+* Helper text: "Valid learning rate"
+
+**Loss Function**\* (Required)
+
+* Select optimizer from dropdown:
+  * Adam
+  * SGD
+  * RMSprop
+  * Others
+* Default: `adam`
+
+**Loss Function**\* (Required)
+
+* Select loss function:
+  * Categorical Crossentropy
+  * Binary Crossentropy
+  * MSE
+  * Others
+* Default: `categorical_crossentropy`
+
+### Environment & Resources
+
+**Python Version**\* (Required)
+
+* Select Python version:
+  * Python 3.9
+  * Python 3.10
+  * Python 3.11
+* Default: `python`
+
+**GPU Required** (Checkbox)
+
+* Check if GPU is required for training
+
+**Memory Requirement (GB)**\* (Required)
+
+* Required memory in GB
+* Example: `8`, `16`, `32`
+
+**Required memory in GB** (Helper text)
+
+**CPU Cores**\* (Required)
+
+* Number of CPU cores needed
+* Example: `4`, `8`, `16`
+
+**Number of CPU cores** (Helper text)
+
+### Metadata
+
+**Tags** (Optional)
+
+* Comma-separated tags for organizing experiments
+* Example: `computer-vision, production, baseline`
+
+**Notes** (Optional)
+
+* Additional notes or comments about the experiment
+
+**Public Experiment** (Checkbox)
+
+* Make experiment visible to all organization members
+
+### Actions
+
+* **Cancel**: Discard and close the form
+* **Create Experiment**: Submit and create the experiment
+
+## Example Configuration
+
+```yaml
+Experiment Name: resnet50-imagenet-baseline
+Description: Baseline training of ResNet50 on ImageNet dataset
+Framework: PyTorch
+Task Type: Classification
+Model Type: ResNet50
+Epochs: 90
+Learning Rate: 0.1
+Loss Function: Adam
+Loss Function: Categorical Crossentropy
+Python Version: Python 3.9
+GPU Required: ✓
+Memory Requirement: 32 GB
+CPU Cores: 16
+Tags: computer-vision, classification, baseline
+Public Experiment: ✓
+```
+
+## Viewing Experiment Details
+
+To view detailed information about an experiment:
+
+1. Navigate to **Deep Learning Platform** → **Experiments**
+2. Click on an experiment from the list
+3. View comprehensive details in the modal dialog
+
+![View Experiment Details](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-4a706c615173433146d8a6bdf0c330e96c66507e%2Fexperiment_details_view.png?alt=media)
+
+**Details Panel Sections**:
+
+* **Basic Information**:
+  * Experiment Name: e.g., "Image Classification CNN"
+  * Description: Full description of the experiment
+  * Framework: TensorFlow, PyTorch, etc.
+  * Task Type: Classification, Regression, etc.
+  * Model Type: CNN, ResNet, Custom, etc.
+  * Project ID: Associated project
+* **Training Configuration**:
+  * Epochs: Number of training epochs (e.g., 100)
+  * Batch Size: Training batch size (e.g., 32)
+  * Learning Rate: Initial learning rate (e.g., 0.001)
+  * Optimizer: Adam, SGD, etc.
+  * Loss Function: Categorical Crossentropy, MSE, etc.
+* **Environment & Resources**:
+  * Python Version: e.g., Python 3.9
+  * GPU Required: Checkbox status
+  * Memory Requirement (GB): e.g., 8 GB
+  * CPU Cores: e.g., 4 cores
+* **Metadata**:
+  * Tags: Comma-separated tags
+  * Notes: Additional notes
+  * Public Experiment: Visibility status
+  * Creator and timestamps
+
+## Editing an Experiment
+
+To modify an experiment configuration:
+
+1. Navigate to the experiment details page
+2. Click **Edit** button (or three-dot menu → Edit)
+3. Modify editable fields in the Edit Experiment modal
+
+![Edit Experiment Form](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-55d68b7c74d4f80e8e8dd3a717409298fcfab770%2Fexperiment_edit_form.png?alt=media)
+
+4. Click **Update Experiment** to save changes
+
+> \[!NOTE] The Edit form looks very similar to the View form, but fields become editable and you'll see an "Update Experiment" button instead of just "Cancel".
+
+> \[!NOTE] You cannot edit core configuration (framework, resources, hyperparameters) of a running or completed experiment. To try different settings, clone the experiment instead.
+
+**Editable Fields**:
+
+* ✅ Description
+* ✅ Tags
+* ✅ Notes
+* ✅ Public/Private status
+* ❌ Framework (cannot edit)
+* ❌ Resources (cannot edit while running)
+* ❌ Hyperparameters (cannot edit)
+
+## Cloning an Experiment
+
+To create a copy of an experiment with modified settings:
+
+1. Open experiment details
+2. Click **Clone** button
+3. Modify configuration as needed
+4. Give it a new name
+5. Click **Create Experiment**
+
+**Use Cases**:
+
+* Try different hyperparameters
+* Run with more/less resources
+* Test on different datasets
+* Reproduce results
+
+## Deleting an Experiment
+
+To remove an experiment:
+
+1. Navigate to experiment details or list
+2. Click **Delete** button (trash icon)
+3. Confirm deletion in the dialog
+4. Experiment and associated data will be removed
+
+> \[!WARNING] Deleting an experiment will permanently remove:
+>
+> * Experiment configuration
+> * Training logs
+> * Metrics and charts
+> * Saved checkpoints (unless linked to a registered model)
+> * This action cannot be undone!
+
+**Before Deleting**:
+
+* Export important logs or metrics
+* Register any valuable models
+* Download artifacts if needed
+* Verify you have the correct experiment selected
+
+## Monitoring Experiments
+
+Once submitted, track your experiment:
+
+**Real-time Monitoring**
+
+* View live logs
+* Monitor resource utilization (CPU, GPU, memory)
+* Track metrics as they're logged
+* Receive alerts on failures
+
+**Experiment Status**
+
+* **Pending**: Waiting for resources
+* **Running**: Currently executing
+* **Completed**: Finished successfully
+* **Failed**: Encountered an error
+* **Stopped**: Manually stopped
+* **Cancelled**: Cancelled before starting
+
+**Actions Available**
+
+* **View Logs**: See stdout/stderr
+* **View Metrics**: Charts and graphs
+* **Stop**: Terminate running experiment
+* **Clone**: Create a copy with same config
+* **Compare**: Compare with other experiments
+* **Export**: Download results and artifacts
+
+## Comparing Experiments
+
+Compare multiple experiments side-by-side:
+
+1. **Select Experiments**: Check boxes for 2+ experiments
+2. **Click Compare**: Opens comparison view
+3. **View Differences**:
+   * Hyperparameters table
+   * Metrics charts (overlaid)
+   * Resource usage comparison
+   * Final results summary
+
+## Best Practices
+
+**Naming Conventions**
+
+```
+{model}-{dataset}-{variant}-{version}
+Examples:
+- resnet50-imagenet-baseline-v1
+- bert-squad-finetuned-v2
+```
+
+**Tagging Strategy**
+
+* **Domain**: `computer-vision`, `nlp`, `audio`
+* **Task**: `classification`, `detection`, `segmentation`
+* **Stage**: `exploration`, `tuning`, `production`
+
+**Resource Optimization**
+
+* Start with minimal resources, scale up as needed
+* Use GPU only when necessary
+* Monitor resource utilization
+
+## Next Steps
+
+* Register your trained model in [Models](https://docs.kaisar.io/kaisar-network/deep-learning-platform/models)
+* Deploy to production via [Deployments](https://docs.kaisar.io/kaisar-network/deep-learning-platform/deployments)
+* Monitor performance in [Analytics](https://docs.kaisar.io/kaisar-network/deep-learning-platform/analytics)
+
+
+# Models
+
+Manage your trained models with versioning and metadata.
+
+![Models View](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-af01ec57317f84a9468adf2d3d47fd475a3088cb%2Fsection_models_1764148186732.png?alt=media)
+
+## Registering a Model
+
+Navigate to **Deep Learning Platform** → **Models** → Click **Create**
+
+![Create Model Form](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-ff260cc30187e48676b271d5ccd07387cd263288%2Fcreate_model_form.png?alt=media)
+
+### Basic Information
+
+**Model Name**\* (Required)
+
+* Enter a descriptive name for the model
+* Example: `resnet50-imagenet`, `bert-sentiment`
+
+**Version**\* (Required)
+
+* Semantic version (major.minor.patch)
+* Default: `1.0.0`
+* Helper text: "Semantic version (major.minor.patch)"
+
+**Description** (Optional)
+
+* Detailed description of the model
+
+### Model Configuration
+
+**Framework**\* (Required)
+
+* Select framework from dropdown:
+  * PyTorch
+  * TensorFlow
+  * ONNX
+  * Scikit-learn
+  * Others
+
+**Task Type**\* (Required)
+
+* Select task type:
+  * Classification
+  * Regression
+  * Detection
+  * Segmentation
+  * Others
+* Default: `classification`
+
+**Model Type**\* (Required)
+
+* Select model architecture:
+  * Custom
+  * ResNet
+  * BERT
+  * YOLO
+  * Others
+* Default: `custom`
+
+**Status**\* (Required)
+
+* Select model status:
+  * Draft
+  * Training
+  * Completed
+  * Deployed
+  * Archived
+* Default: `draft`
+
+### Metadata
+
+**Tags** (Optional)
+
+* Comma-separated tags for organization
+* Example: `production, v1, optimized`
+
+**Author** (Optional)
+
+* Model creator or team name
+
+**License** (Optional)
+
+* Select license from dropdown:
+  * MIT
+  * Apache 2.0
+  * GPL
+  * Proprietary
+  * Others
+
+**Public Access** (Checkbox)
+
+* Make model accessible to all organization members
+
+### Actions
+
+* **Cancel**: Discard and close
+* **Create Model**: Submit and register the model
+
+## Example Configuration
+
+```yaml
+Model Name: resnet50-imagenet-v1
+Version: 1.0.0
+Description: ResNet50 trained on ImageNet-1K, 76.5% top-1 accuracy
+Framework: PyTorch
+Task Type: Classification
+Model Type: Custom
+Status: Draft
+Tags: computer-vision, production
+Author: ML Team
+License: MIT
+Public Access: ✓
+```
+
+## Viewing Model Details
+
+To view detailed information about a model:
+
+1. Navigate to **Deep Learning Platform** → **Models**
+2. Click on a model from the list
+3. View comprehensive details in the modal dialog
+
+![View Model Details](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-168d7d8cb797261acfaed323e347d5cfb595d739%2Fmodel_details_view.png?alt=media)
+
+**Details Panel Sections**:
+
+**Basic Information**:
+
+* **Model Name**: e.g., "XGBoost House Prices"
+* **Version**: Semantic version (e.g., 1.0.3)
+* **Description**: Full description of the model and its purpose
+
+**Model Configuration** (First Section):
+
+* **Model Name**: Display name
+* **Version**: Current version number
+* **Description**: Detailed model description
+
+**Model Configuration** (Second Section):
+
+* **Framework**: XGBoost, PyTorch, TensorFlow, etc.
+* **Task Type**: Regression, Classification, etc.
+* **Model Type**: Custom, ResNet, BERT, etc.
+* **Status**: Training, Draft, Completed, Deployed
+
+**Metadata**:
+
+* **Tags**: Comma-separated tags for organization
+* **Author**: Model creator or team name
+* **License**: Model license information
+
+## Editing a Model
+
+To update model information:
+
+1. Open model details page
+2. Click **Edit** button (or three-dot menu → Edit)
+3. Modify editable fields in the Edit Model modal
+
+![Edit Model Form](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-afba7be39b38d31db193e62de66b7ee09ab66e7e%2Fmodel_edit_form.png?alt=media)
+
+4. Click **Update Model** to save changes
+
+> \[!NOTE] The Edit form is identical to the View form, but with editable fields and an "Update Model" button.
+
+**Editable Fields**:
+
+* ✅ Description
+* ✅ Tags
+* ✅ Status (Draft, Training, Completed, Deployed, Archived)
+* ✅ Author
+* ✅ License
+* ✅ Public Access
+* ❌ Model Name (cannot edit)
+* ❌ Version (create new version instead)
+* ❌ Framework (cannot edit)
+
+## Creating a New Version
+
+To create a new version of an existing model:
+
+1. Open model details
+2. Click **New Version** button
+3. Enter new version number (e.g., 1.1.0 → 1.2.0)
+4. Upload new model artifacts
+5. Update description and metrics
+6. Click **Create**
+
+**Version Guidelines**:
+
+* **Major** (2.0.0): Breaking changes, new architecture
+* **Minor** (1.1.0): Improvements, new features
+* **Patch** (1.0.1): Bug fixes, minor updates
+
+## Downloading Model Artifacts
+
+To download model files:
+
+1. Open model details
+2. Navigate to **Artifacts** section
+3. Click **Download** on desired files:
+   * Model weights (.pt, .h5, .onnx)
+   * Configuration files
+   * Tokenizers/preprocessors
+   * README and documentation
+4. Files will be downloaded to your local machine
+
+## Deleting a Model
+
+To remove a model:
+
+1. Navigate to model details
+2. Click **Delete** button
+3. Confirm deletion
+
+> \[!WARNING] You cannot delete a model that is currently deployed. Stop all deployments first.
+
+**Before Deleting**:
+
+* Check for active deployments
+* Download artifacts if needed
+* Update dependent systems
+* Archive instead of delete if uncertain
+
+## Model Lifecycle Management
+
+**Model Stages**:
+
+1. **Development**: Under active development
+2. **Staging**: Ready for testing
+3. **Production**: Deployed to production
+4. **Archived**: No longer in use
+
+## Model Versioning Best Practices
+
+**Version Numbering**:
+
+* `1.0.0`: Initial production release
+* `1.1.0`: New features, improved accuracy
+* `1.1.1`: Bug fix, no architecture change
+* `2.0.0`: New architecture, breaking changes
+
+## Next Steps
+
+* Deploy your model via [Deployments](https://docs.kaisar.io/kaisar-network/deep-learning-platform/deployments)
+* Link to training [Experiments](https://docs.kaisar.io/kaisar-network/deep-learning-platform/experiments)
+* Monitor in [Analytics](https://docs.kaisar.io/kaisar-network/deep-learning-platform/analytics)
+
+
+# Datasets
+
+Organize and version your training data.
+
+![Datasets View](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-67828deab295ac67e068436d89e9815175df2a88%2Fsection_datasets_1764148213987.png?alt=media)
+
+## Creating a Dataset
+
+Navigate to **Deep Learning Platform** → **Datasets** → Click **Create**
+
+![Create Dataset Form](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-55febeb56bc870c92191dc87ba81eda2bfa53a84%2Fcreate_dataset_form.png?alt=media)
+
+### Basic Information
+
+**Dataset Name**\* (Required)
+
+* Enter a descriptive name for the dataset
+* Example: `imagenet-1k`, `coco-2017`, `custom-dataset`
+
+**Version**\* (Required)
+
+* Semantic version (major.minor.patch)
+* Default: `1.0.0`
+* Helper text: "Semantic version (major.minor.patch)"
+
+**Description**\* (Required)
+
+* Detailed description of dataset contents and purpose
+
+### Dataset Configuration
+
+**Dataset Type**\* (Required)
+
+* Select data type from dropdown:
+  * Tabular
+  * Image
+  * Text
+  * Audio
+  * Video
+  * Others
+* Default: `tabular`
+
+**Task Type**\* (Required)
+
+* Select task type:
+  * Classification
+  * Regression
+  * Detection
+  * Segmentation
+  * Others
+* Default: `classification`
+
+**Data Format**\* (Required)
+
+* Select file format:
+  * CSV
+  * JSON
+  * Parquet
+  * TFRecord
+  * Others
+* Default: `csv`
+
+**Status**\* (Required)
+
+* Current dataset status:
+  * Uploading
+  * Processing
+  * Ready
+  * Failed
+* Default: `uploading`
+
+### Metadata
+
+**Tags** (Optional)
+
+* Comma-separated tags for organization
+* Example: `computer-vision, training, augmented`
+
+**License** (Required)
+
+* Select license:
+  * MIT
+  * CC BY 4.0
+  * CC0
+  * Apache 2.0
+  * Proprietary
+* Default: `MIT`
+
+**Public Access** (Checkbox)
+
+* Make dataset accessible to all organization members
+
+### Actions
+
+* **Cancel**: Discard and close
+* **Create Dataset**: Submit and create the dataset
+
+## Example Configuration
+
+```yaml
+Dataset Name: imagenet-subset-2024
+Version: 1.0.0
+Description: ImageNet subset with 100 classes for quick experimentation
+Dataset Type: Tabular
+Task Type: Classification
+Data Format: CSV
+Status: Uploading
+Tags: computer-vision, subset, training
+License: MIT
+Public Access: ✓
+```
+
+## Viewing Dataset Details
+
+To view detailed information about a dataset:
+
+1. Navigate to **Deep Learning Platform** → **Datasets**
+2. Click on a dataset from the list
+3. View comprehensive details in the modal dialog
+
+![View Dataset Details](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-e0a84a22b6107276f1650d472c08996990e68472%2Fdataset_details_view.png?alt=media)
+
+**Details Panel Sections**:
+
+**Basic Information**:
+
+* **Dataset Name**: e.g., "Time Series Sales Data"
+* **Version**: Semantic version (e.g., 1.1.0)
+* **Description**: Full description of the dataset
+
+**Dataset Configuration**:
+
+* **Dataset Type**: Time Series, Tabular, Image, Text, Audio, Video
+* **Task Type**: Forecasting, Classification, Regression, etc.
+* **Data Format**: CSV, JSON, Parquet, TFRecord, etc.
+* **Status**: Processing, Uploading, Ready, Failed
+
+**Metadata**:
+
+* **Tags**: Comma-separated tags (e.g., "time-series,forecasting,sales,multivariate,business")
+* **License**: Proprietary, MIT, CC BY 4.0, etc.
+* **Public Access**: Checkbox for visibility
+
+## Editing a Dataset
+
+To update dataset information:
+
+1. Open dataset details page
+2. Click **Edit** button (or three-dot menu → Edit)
+3. Modify editable fields in the Edit Dataset modal
+
+![Edit Dataset Form](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-b54763aed9953abaa8ef2942e75f62934776132e%2Fdataset_edit_form.png?alt=media)
+
+4. Click **Update Dataset** to save changes
+
+> \[!NOTE] The Edit form is identical to the View form, but with editable fields and an "Update Dataset" button.
+
+**Editable Fields**:
+
+* ✅ Description
+* ✅ Tags
+* ✅ License
+* ✅ Public Access
+* ❌ Dataset Name (cannot edit)
+* ❌ Version (create new version instead)
+* ❌ Data Type (cannot edit)
+* ❌ Data Format (cannot edit)
+
+## Downloading Dataset
+
+To download dataset files:
+
+1. Open dataset details
+2. Click **Download** button
+3. Select download format:
+   * Original format
+   * Compressed archive
+   * Specific splits (train/val/test)
+4. Download will start
+
+**Download Options**:
+
+* Full dataset
+* Specific splits only
+* Sample subset
+* Metadata only
+
+## Creating a New Version
+
+To create a new version of a dataset:
+
+1. Open dataset details
+2. Click **New Version** button
+3. Enter new version number
+4. Upload updated data
+5. Document changes in description
+6. Click **Create**
+
+**When to Version**:
+
+* Added new samples
+* Fixed data errors
+* Changed preprocessing
+* Updated annotations
+* Removed corrupted files
+
+## Deleting a Dataset
+
+To remove a dataset:
+
+1. Navigate to dataset details
+2. Click **Delete** button
+3. Confirm deletion
+
+> \[!WARNING] You cannot delete a dataset that is being used by running experiments. Stop experiments first.
+
+**Before Deleting**:
+
+* Check for experiments using this dataset
+* Download data if needed
+* Update documentation
+* Consider archiving instead
+
+## Dataset Versioning
+
+**When to Create New Version**:
+
+* Added new samples
+* Fixed annotation errors
+* Changed preprocessing
+* Updated splits
+* Removed corrupted data
+
+## Best Practices
+
+**Organization**:
+
+* Use consistent naming conventions
+* Document data collection process
+* Include data cards/datasheets
+* Provide sample data for preview
+
+**Quality Control**:
+
+* Validate data integrity
+* Check for label errors
+* Monitor class balance
+* Document known issues
+
+## Next Steps
+
+* Use dataset in [Experiments](https://docs.kaisar.io/kaisar-network/deep-learning-platform/experiments)
+* Track data lineage
+* Monitor usage in [Analytics](https://docs.kaisar.io/kaisar-network/deep-learning-platform/analytics)
+
+
+# Cluster
+
+Manage and monitor your compute cluster nodes for ML workloads.
+
+![Cluster Overview](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-eb1b1e444152724673997582ca3178eac41c1d5d%2Fcluster_list_view.png?alt=media)
+
+## Overview
+
+The Cluster section provides comprehensive management of compute nodes that power your ML experiments, training jobs, and deployments. Monitor resource utilization, manage node configurations, and ensure optimal cluster health.
+
+## Cluster Dashboard
+
+The dashboard displays key cluster metrics at a glance:
+
+**Summary Cards**:
+
+* **Total Nodes**: Total number of nodes in the cluster
+* **Online**: Number of nodes currently online
+* **Busy**: Number of nodes actively processing workloads
+* **CPU Usage (%)**: Average CPU usage across cluster
+* **Memory Usage (%)**: Average memory usage across cluster
+
+## Node List View
+
+The cluster table shows all nodes with the following information:
+
+**Columns**:
+
+* **Node**: Node name and details (hostname, IP address)
+* **Type**: Node type (GPU, CPU)
+* **Status**: Current status (Online, Offline, Maintenance)
+* **Resources**: Available resources (CPU cores, RAM, GPU)
+* **Usage**: Real-time CPU and Memory usage with progress bars
+* **Jobs**: Running jobs count
+* **Uptime**: Node uptime duration
+* **Health**: Health status (Healthy, Warning, Critical)
+* **Actions**: Quick actions menu
+
+**Filtering and Search**:
+
+* Search by node name or IP
+* Filter by Type (GPU, CPU, All)
+* Filter by Status (Online, Offline, Busy, Maintenance)
+
+## Creating a Cluster Node
+
+Navigate to **Deep Learning Platform** → **Cluster** → Click **Create**
+
+![Create Cluster Node](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-e3ab7a5032fb62882c021a1e7b4579b8bdbfdb6a%2Fcluster_create_form.png?alt=media)
+
+### Basic Information
+
+**Node Name**\* (Required)
+
+* Unique identifier for the cluster node
+* Example: `gpu-node-01`, `cpu-node-high-mem`
+
+**Hostname**\* (Required)
+
+* Network hostname
+* Example: `gpu01.cluster.local`
+
+**IP Address**\* (Required)
+
+* IPv4 address of the node
+* Example: `192.168.1.101`
+
+**Node Type**\* (Required)
+
+* Select from dropdown: GPU, CPU
+* Default: `GPU`
+
+**Status**\* (Required)
+
+* Select from dropdown: Online, Offline
+* Default: `Online`
+
+### CPU Resources
+
+**CPU Cores**\* (Required)
+
+* Total number of CPU cores
+* Example: `16`
+
+**Total number of CPU Cores** (Helper text)
+
+**Available CPU Cores**\* (Required)
+
+* Number of available CPU cores
+* Example: `8`
+
+**Number of available CPU cores** (Helper text)
+
+### Memory Resources
+
+**Total Memory (GB)**\* (Required)
+
+* Total RAM in GB
+* Example: `64`
+
+**Total RAM in GB** (Helper text)
+
+**Available Memory (GB)**\* (Required)
+
+* Available RAM in GB
+* Example: `32`
+
+**Available memory (GB)** (Helper text)
+
+### GPU Resources (Optional)
+
+**GPU Count**
+
+* Number of GPUs (0 for CPU-only nodes)
+* Example: `0`, `4`, `8`
+
+**Number of GPUs (0 for CPU-only nodes)** (Helper text)
+
+**GPU Type**
+
+* Select GPU model from dropdown
+* Options: NVIDIA A100, NVIDIA V100, NVIDIA T4, etc.
+
+**GPU Memory per GPU (GB)**
+
+* Memory per GPU in GB
+* Example: `80` (for A100)
+
+**VRAM per GPU in GB** (Helper text)
+
+### Storage & Network
+
+**Total Storage (GB)**\* (Required)
+
+* Total disk storage in GB
+* Example: `1000`
+
+**Total disk space in GB** (Helper text)
+
+**Network Bandwidth (Mbps)**\* (Required)
+
+* Network bandwidth in Mbps
+* Example: `10000` (10 Gbps)
+
+**Network speed in Mbps** (Helper text)
+
+**Network Latency (ms)**\* (Required)
+
+* Average network latency in milliseconds
+* Example: `1`
+
+**Average network latency** (Helper text)
+
+### Configuration
+
+**Max Concurrent Jobs**\* (Required)
+
+* Maximum number of jobs that can run simultaneously
+* Example: `4`
+
+**Maximum number of jobs that can run simultaneously** (Helper text)
+
+**Priority**
+
+* Node priority (1-10, higher is better)
+* Example: `5`
+
+**Node priority (1-10, higher is better)** (Helper text)
+
+**Tags**
+
+* Comma-separated tags for categorization
+* Example: `production,high-memory,gpu`
+
+### Location (Optional)
+
+**Datacenter**
+
+* Datacenter location
+* Example: `Datacenter`
+
+**Rack**
+
+* Rack identifier
+* Example: `R-10`
+
+**Zone**
+
+* Availability zone
+* Example: `Zone-A`
+
+### Actions
+
+* **Cancel**: Discard and close
+* **Create Cluster Node**: Submit and create the node
+
+## Viewing Node Details
+
+To view detailed information about a cluster node:
+
+1. Navigate to **Deep Learning Platform** → **Cluster**
+2. Click on a node from the list
+3. View comprehensive details in the modal dialog
+
+![View Cluster Node](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-c5fb3b62ac87bc81b3fd451ca97fc398d34c604f%2Fcluster_details_view.png?alt=media)
+
+**Details Panel Sections**:
+
+**Basic Information**:
+
+* Node Name: e.g., "gpu-node-01"
+* Hostname: e.g., "gpu01.cluster.local"
+* IP Address: e.g., "192.168.1.101"
+* Node Type: GPU or CPU
+* Status: Online, Offline, Busy, Maintenance
+
+**CPU Resources**:
+
+* CPU Cores: Total cores (e.g., 32)
+* Total number of CPU cores
+* Available CPU Cores: Available cores (e.g., 11)
+* Number of available CPU cores
+
+**Memory Resources**:
+
+* Total Memory (GB): Total RAM (e.g., 128)
+* Total RAM in GB
+* Available Memory (GB): Available RAM (e.g., 32)
+* Available memory (GB)
+
+**GPU Resources (Optional)**:
+
+* GPU Count: Number of GPUs (e.g., 4)
+* Number of GPUs (0 for CPU-only nodes)
+* GPU Type: GPU model (e.g., A100)
+* GPU Memory per GPU (GB): VRAM per GPU (e.g., 80)
+* VRAM per GPU in GB
+
+**Storage & Network**:
+
+* Total Storage (GB): Total disk space
+* Total disk space in GB
+* Network Bandwidth (Mbps): Network speed
+* Network speed in Mbps
+* Network Latency (ms): Average latency
+* Network speed in Mbps
+
+**Configuration**:
+
+* Max Concurrent Jobs: Maximum simultaneous jobs
+* Maximum number of jobs that can run simultaneously
+* Priority: Node priority
+* Node priority (1-10, higher is better)
+* Tags: Comma-separated tags for categorization
+
+**Location (Optional)**:
+
+* Datacenter: Datacenter location
+* Rack: Rack identifier
+* Zone: Availability zone
+
+## Editing a Node
+
+To update node configuration:
+
+1. Open node details page
+2. Click **Edit** button (or three-dot menu → Edit)
+3. Modify editable fields in the Edit Cluster Node modal
+
+![Edit Cluster Node](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-c070253b720872ee5450c4afab2bbc40c5a7d8d4%2Fcluster_edit_form.png?alt=media)
+
+4. Click **Update Cluster Node** to save changes
+
+> \[!NOTE] The Edit form is identical to the View form, but with editable fields and an "Update Cluster Node" button.
+
+**Editable Fields**:
+
+* ✅ Hostname
+* ✅ Status (Online, Offline, Maintenance)
+* ✅ Available CPU Cores
+* ✅ Available Memory (GB)
+* ✅ GPU configuration
+* ✅ Storage & Network settings
+* ✅ Max Concurrent Jobs
+* ✅ Priority
+* ✅ Tags
+* ✅ Location information
+* ❌ Node Name (cannot edit)
+* ❌ IP Address (cannot edit)
+* ❌ Node Type (cannot edit)
+* ❌ Total CPU Cores (cannot edit)
+* ❌ Total Memory (cannot edit)
+
+## Node Management
+
+### Changing Node Status
+
+**Setting to Maintenance**:
+
+1. Open node details
+2. Click **Edit**
+3. Change Status to "Maintenance"
+4. Save changes
+5. Node will stop accepting new jobs
+
+**Bringing Node Online**:
+
+1. Open node details
+2. Click **Edit**
+3. Change Status to "Online"
+4. Save changes
+5. Node will start accepting jobs
+
+### Monitoring Node Health
+
+**Health Indicators**:
+
+* **Healthy** (Green): All systems normal
+* **Warning** (Orange): High resource usage or minor issues
+* **Critical** (Red): Node failure or severe issues
+
+**When to Check**:
+
+* High CPU/Memory usage (>90%)
+* Jobs failing frequently
+* Network connectivity issues
+* Hardware errors
+
+### Deleting a Node
+
+To remove a node from the cluster:
+
+1. Navigate to node details
+2. Click **Delete** button
+3. Confirm deletion
+
+> \[!WARNING] You cannot delete a node with running jobs. Stop or migrate jobs first.
+
+**Before Deleting**:
+
+* Ensure no jobs are running
+* Migrate important jobs to other nodes
+* Backup any local data
+* Update cluster capacity planning
+
+## Best Practices
+
+**Resource Allocation**:
+
+* Reserve some resources for system overhead
+* Don't allocate 100% of available resources
+* Monitor usage patterns and adjust
+
+**Node Naming**:
+
+* Use descriptive names: `gpu-node-01`, `cpu-highmem-02`
+* Include node type in name
+* Use consistent naming convention
+
+**Maintenance**:
+
+* Schedule regular maintenance windows
+* Update node status before maintenance
+* Monitor health indicators
+* Keep firmware and drivers updated
+
+**Tagging Strategy**:
+
+* Use tags for organization: `production`, `development`
+* Tag by capability: `high-memory`, `gpu`, `fast-storage`
+* Tag by location: `datacenter-a`, `rack-10`
+
+## Next Steps
+
+* Submit [Jobs](https://docs.kaisar.io/kaisar-network/deep-learning-platform/jobs) to cluster nodes
+* Run [Experiments](https://docs.kaisar.io/kaisar-network/deep-learning-platform/experiments) on GPU nodes
+* Monitor resource usage in [Analytics](https://docs.kaisar.io/kaisar-network/deep-learning-platform/analytics)
+* Deploy models via [Deployments](https://docs.kaisar.io/kaisar-network/deep-learning-platform/deployments)
+
+
+# Jobs
+
+Submit and manage training jobs on cluster resources.
+
+![Jobs Overview](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-48a776e177d6b5895b6dd63408a4290fcacfc60d%2Fjobs_list_view.png?alt=media)
+
+## Overview
+
+The Jobs section allows you to submit, monitor, and manage ML training jobs that run on cluster nodes. Track job status, progress, and resource utilization in real-time.
+
+## Jobs Dashboard
+
+The dashboard displays key job metrics at a glance:
+
+**Summary Cards**:
+
+* **Total Jobs**: Total number of jobs in the system
+* **Running**: Number of jobs currently running
+* **Completed**: Number of jobs completed successfully
+* **Failed**: Number of jobs that failed
+
+## Job List View
+
+The jobs table shows all submitted jobs with the following information:
+
+**Columns**:
+
+* **Job Name**: Job name and type (Training, Inference, etc.)
+* **Status**: Current status with color-coded badges
+* **Priority**: Job priority (High, Medium, Low)
+* **Experiment**: Associated experiment name
+* **Progress**: Progress bar with percentage
+* **Created**: Job creation date
+* **Actions**: Quick actions menu
+
+**Filtering and Search**:
+
+* Search by job name
+* Filter by status, priority, or experiment
+
+## Creating a Job
+
+Navigate to **Deep Learning Platform** → **Jobs** → Click **Create**
+
+![Create Job](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-0aafb742bf687d90f07e871d4394faaea90b7810%2Fjob_create_form.png?alt=media)
+
+### Basic Information
+
+**Job Name**\* (Required)
+
+* Enter a descriptive name for the job
+* Example: `BERT Fine-tuning - Sentiment Analysis`
+* Helper text: "Enter a descriptive name for the job"
+
+**Description**
+
+* Detailed description of the job
+* Example: "Fine-tuning BERT-base model for sentiment analysis on IMDB movie reviews"
+
+**Job Type**\* (Required)
+
+* Select from dropdown: Training, Inference, Hyperparameter Tuning, etc.
+* Default: `Training`
+* Helper text: "training"
+
+**Priority**\* (Required)
+
+* Select priority level: High, Medium, Low
+* Default: `High`
+* Helper text: "high"
+
+### Configuration
+
+**Epochs**
+
+* Number of training epochs
+* Example: `3`
+* Helper text: "Number of training epochs"
+
+**Batch Size**
+
+* Training batch size
+* Example: `16`
+* Helper text: "Training batch size"
+
+**Learning Rate**
+
+* Initial learning rate
+* Example: `0.00002`
+* Helper text: "Initial learning rate"
+
+**Optimizer**
+
+* Select optimizer from dropdown
+* Options: AdamW, Adam, SGD, etc.
+* Default: `AdamW`
+* Helper text: "adamw"
+
+### Resources
+
+**CPU Cores**
+
+* Number of CPU cores required
+* Example: `4`
+
+**Memory (GB)**
+
+* Memory allocation in GB
+* Example: `16`
+
+**GPU Count**
+
+* Number of GPUs required
+* Example: `0` (for CPU-only jobs)
+
+### Actions
+
+* **Cancel**: Discard and close
+* **Create Job**: Submit the job to the queue
+
+## Viewing Job Details
+
+To view detailed information about a job:
+
+1. Navigate to **Deep Learning Platform** → **Jobs**
+2. Click on a job from the list
+3. View comprehensive details in the modal dialog
+
+![View Job Details](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-da266bc2025ac5c0dbe66542a2683138c1fb7691%2Fjob_details_view.png?alt=media)
+
+**Details Panel Sections**:
+
+**Basic Information**:
+
+* **Job Name**: e.g., "BERT Fine-tuning - Sentiment Analysis"
+* **Description**: Full description of the job
+* **Job Type**: Training, Inference, etc.
+* **Priority**: High, Medium, Low
+
+**Configuration**:
+
+* **Epochs**: Number of training epochs (e.g., 3)
+* **Batch Size**: Training batch size (e.g., 16)
+* **Learning Rate**: Initial learning rate (e.g., 0.00002)
+* **Optimizer**: Optimizer used (e.g., AdamW)
+
+**Resources**:
+
+* **CPU Cores**: Allocated CPU cores (e.g., 4)
+* **Memory (GB)**: Allocated memory (e.g., 16)
+* **GPU Count**: Number of GPUs (e.g., 0)
+
+## Editing a Job
+
+To update job configuration:
+
+1. Open job details page
+2. Click **Edit** button (or three-dot menu → Edit)
+3. Modify editable fields in the Edit Job modal
+
+![Edit Job Form](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-ff7c5ba93d83d520e56fb6d7ab1598efd1d785ee%2Fjob_edit_form.png?alt=media)
+
+4. Click **Update Job** to save changes
+
+> \[!NOTE] You can only edit jobs that are in Pending or Failed status. Running or Completed jobs cannot be edited.
+
+**Editable Fields**:
+
+* ✅ Job Name
+* ✅ Description
+* ✅ Priority (can change to expedite or delay)
+* ✅ Configuration (epochs, batch size, learning rate, optimizer)
+* ✅ Resources (CPU, memory, GPU)
+* ❌ Job Type (cannot edit)
+* ❌ Status (managed by system)
+
+## Job Status
+
+**Status Types**:
+
+**Pending** (Orange):
+
+* Job is queued, waiting for resources
+* Will start when cluster resources become available
+
+**Running** (Blue):
+
+* Job is actively executing
+* Resources are allocated
+* Progress is being tracked
+
+**Completed** (Green):
+
+* Job finished successfully
+* Results are available
+* Resources have been released
+
+**Failed** (Red):
+
+* Job encountered an error
+* Check logs for error details
+* Can be restarted or debugged
+
+## Managing Jobs
+
+### Stopping a Running Job
+
+To stop a job that's currently running:
+
+1. Open job details or click actions menu
+2. Click **Stop** button
+3. Confirm action
+4. Job will be terminated and resources released
+
+> \[!WARNING] Stopping a job will lose all progress. Consider checkpointing your training jobs.
+
+### Restarting a Failed Job
+
+To restart a job that failed:
+
+1. Open failed job details
+2. Click **Restart** button
+3. Job will be resubmitted to the queue
+4. Monitor for success
+
+### Deleting a Job
+
+To remove a job:
+
+1. Navigate to job details or list
+2. Click **Delete** button
+3. Confirm deletion
+
+> \[!WARNING] Deleting a job will permanently remove:
+>
+> * Job configuration
+> * Training logs
+> * Checkpoints and outputs
+> * This action cannot be undone!
+
+**Before Deleting**:
+
+* Download important logs
+* Save model checkpoints
+* Export results if needed
+
+## Job Monitoring
+
+### Real-time Progress
+
+Monitor job progress in real-time:
+
+* Progress bar shows completion percentage
+* View live logs in job details
+* Track resource utilization
+* Monitor metrics and loss curves
+
+### Job Logs
+
+Access job logs:
+
+1. Open job details
+2. Navigate to **Logs** tab
+3. View stdout/stderr output
+4. Filter by log level
+5. Download logs for offline analysis
+
+### Resource Usage
+
+Monitor resource consumption:
+
+* CPU utilization
+* Memory usage
+* GPU utilization (if applicable)
+* Network I/O
+* Disk I/O
+
+## Job Scheduling
+
+**Priority-based Scheduling**:
+
+* **High** priority jobs run first
+* **Medium** priority jobs run when high-priority queue is empty
+* **Low** priority jobs run when resources are available
+
+**Resource Allocation**:
+
+* Jobs are matched to suitable cluster nodes
+* GPU jobs require GPU-enabled nodes
+* CPU/Memory requirements must be met
+
+**Queue Management**:
+
+* View pending jobs in queue
+* Estimate wait time based on current load
+* Adjust priority if needed
+
+## Best Practices
+
+**Job Naming**:
+
+* Use descriptive names: `bert-sentiment-imdb-v1`
+* Include model, task, and version
+* Keep names concise but informative
+
+**Resource Requests**:
+
+* Request only what you need
+* Don't over-allocate resources
+* Monitor actual usage and adjust
+
+**Checkpointing**:
+
+* Save checkpoints regularly
+* Enable auto-save in training code
+* Store checkpoints in persistent storage
+
+**Error Handling**:
+
+* Implement retry logic
+* Log errors comprehensively
+* Set up failure notifications
+
+**Priority Usage**:
+
+* Use High priority sparingly
+* Reserve for urgent production jobs
+* Most jobs should be Medium priority
+
+## Next Steps
+
+* Run jobs on [Cluster](https://docs.kaisar.io/kaisar-network/deep-learning-platform/cluster) nodes
+* Link jobs to [Experiments](https://docs.kaisar.io/kaisar-network/deep-learning-platform/experiments)
+* Monitor performance in [Analytics](https://docs.kaisar.io/kaisar-network/deep-learning-platform/analytics)
+* Deploy successful models via [Deployments](https://docs.kaisar.io/kaisar-network/deep-learning-platform/deployments)
+
+
+# Deployments
+
+Deploy your models to production with auto-scaling and load balancing.
+
+![Deployments View](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-8e280f6ec2b925174213e1212b6779e11ed5caaf%2Fsection_deployments_1764148292871.png?alt=media)
+
+## Creating a Deployment
+
+Navigate to **Deployments** → Click **Create**
+
+![Create Deployment Form](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-7b6971746661e0581696a0215d6a1e95e8bb0e05%2Fcreate_deployment_form.png?alt=media)
+
+### Basic Information
+
+**Deployment Name**\* (Required)
+
+* Enter a descriptive name for the deployment
+* Example: `resnet-prod`, `bert-api-v1`
+
+**Description** (Optional)
+
+* Deployment purpose and details
+
+**Model ID**\* (Required)
+
+* ID of the model to deploy
+* Helper text: "ID of the model to deploy"
+
+**Model Version**\* (Required)
+
+* Version of the model to deploy
+* Helper text: "Version of the model to deploy"
+
+**Environment**\* (Required)
+
+* Select deployment environment:
+  * Development
+  * Staging
+  * Production
+* Default: `development`
+
+### Resource Configuration
+
+**CPU Cores**\* (Required)
+
+* Number of CPU cores per instance
+* Example: `4`, `8`, `16`
+
+**Memory (GB)**\* (Required)
+
+* Memory allocation per instance in GB
+* Example: `8`, `16`, `32`
+
+**GPU Count** (Optional)
+
+* Number of GPUs (0 or GPU Count)
+* Default: `0`
+
+**GPU Type** (Optional)
+
+* Select GPU type if GPU Count > 0:
+  * NVIDIA T4
+  * NVIDIA V100
+  * NVIDIA A100
+
+**Min Replicas**\* (Required)
+
+* Minimum number of instances
+* Example: `1`, `2`
+
+**Max Replicas**\* (Required)
+
+* Maximum number of instances
+* Example: `10`, `20`
+
+**Target CPU Utilization (%)**\* (Required)
+
+* CPU threshold for scaling
+* Example: `70`, `80`
+
+**Target Memory Utilization (%)**\* (Required)
+
+* Memory threshold for scaling
+* Example: `80`, `90`
+
+### Scaling Configuration
+
+**Enable Auto-Scaling** (Checkbox)
+
+* Enable automatic scaling based on metrics
+
+When enabled:
+
+* **Min Instances**\*: Minimum instances to maintain
+* **Max Instances**\*: Maximum instances allowed
+* **Target GPU Utilization (%)**: GPU threshold
+* **Target Memory Utilization (%)**: Memory threshold
+
+### Load Balancer
+
+**Enable Load Balancer** (Checkbox)
+
+* Enable load balancing across instances
+
+When enabled:
+
+* **Service Type**\*: Round Robin, Least Connections, IP Hash
+* **Health Check URL**\*: Endpoint for health checks (e.g., `/health`)
+* **Health Check Interval (seconds)**\*: Frequency of health checks
+* **Sticky Sessions**: Enable session affinity
+
+### Actions
+
+* **Cancel**: Discard and close
+* **Create Deployment**: Submit and create the deployment
+
+## Example Configuration
+
+```yaml
+Deployment Name: resnet-production-v1
+Model ID: model_abc123
+Model Version: 1.0.0
+Environment: Development
+
+Resource Configuration:
+  CPU Cores: 4
+  Memory (GB): 16
+  GPU Count: 0
+  Min Replicas: 2
+  Max Replicas: 10
+
+Scaling:
+  Enable Auto-Scaling: ✓
+  Min Instances: 2
+  Max Instances: 10
+  Target CPU: 70%
+
+Load Balancer:
+  Enable: ✓
+  Service Type: Round Robin
+  Health Check URL: /health
+  Health Check Interval: 30s
+  Sticky Sessions: ✓
+```
+
+## Viewing Deployment Details
+
+To view detailed information about a deployment:
+
+1. Navigate to **Deployments**
+2. Click on a deployment from the list
+3. View comprehensive details in the modal dialog
+
+![View Deployment Details](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-36449470f401360fe63f3c58af0a7abd813c62d7%2Fdeployment_details_view.png?alt=media)
+
+**Details Panel Sections**:
+
+**Basic Information**:
+
+* **Deployment Name**: e.g., "BERT Sentiment API"
+* **Description**: Full description of the deployment
+* **Model ID**: ID of the deployed model (e.g., "model-001")
+* **Model Version**: Version being deployed (e.g., "v2.1.0")
+* **Environment**: Production, Staging, or Development
+* **Deployment Strategy**: Blue-Green, Rolling Update, Canary
+
+**Resource Configuration**:
+
+* **CPU Cores**: Number of CPU cores per instance (e.g., 4)
+* **Memory (GB)**: Memory allocation (e.g., 16 GB)
+* **GPU Count**: Number of GPUs (e.g., 2)
+* **GPU Type**: GPU model (e.g., A100, V100)
+* **Storage (GB)**: Storage allocation (e.g., 200 GB)
+* **Network Bandwidth (Mbps)**: Network bandwidth (e.g., 1000 Mbps)
+
+**Scaling Configuration**:
+
+* **Current Instances**: Number of running instances (e.g., 2)
+* **Enable Auto-Scaling**: Checkbox status
+* **Min Instances**: Minimum replicas (e.g., 2)
+* **Max Instances**: Maximum replicas (e.g., 10)
+* **Target CPU Utilization (%)**: CPU scaling threshold (e.g., 70%)
+* **Target GPU usage for trigger scaling**: GPU threshold
+* **Target Memory Utilization (%)**: Memory threshold (e.g., 80%)
+* **Target memory usage for trigger scaling**: Memory threshold
+
+**Load Balancer**:
+
+* **Enable Load Balancer**: Checkbox status
+* **Load Balancing Algorithm**: Round Robin, Least Connections, IP Hash
+* **Health Check Path**: Endpoint for health checks (e.g., "/health")
+* **Health Check Interval (seconds)**: Check frequency (e.g., 30)
+* **Sticky Sessions**: Checkbox for session affinity
+
+## Editing a Deployment
+
+To update deployment configuration:
+
+1. Open deployment details page
+2. Click **Edit** button (or three-dot menu → Edit)
+3. Modify editable fields in the Edit Deployment modal
+
+![Edit Deployment Form](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-bedcb9c10701fad02bdf47c6649a6609669a872c%2Fdeployment_edit_form.png?alt=media)
+
+4. Click **Update Deployment** to save changes
+
+> \[!NOTE] The Edit form is identical to the View form, but with editable fields and an "Update Deployment" button. Some changes may require a deployment restart.
+
+> \[!NOTE] Some changes may require a deployment restart to take effect.
+
+**Editable Fields**:
+
+* ✅ Description
+* ✅ Environment variables
+* ✅ Min/Max replicas
+* ✅ Auto-scaling thresholds
+* ✅ Health check settings
+* ✅ Load balancer configuration
+* ⚠️ CPU/Memory (requires restart)
+* ❌ Model ID (use Update Model instead)
+* ❌ Deployment name (cannot edit)
+
+## Updating Model Version
+
+To deploy a new model version:
+
+1. Open deployment details
+2. Click **Update Model** button
+3. Select new model version
+4. Choose update strategy:
+   * **Rolling Update**: Gradual replacement (zero downtime)
+   * **Blue-Green**: Switch all at once
+   * **Canary**: Test with small percentage first
+5. Click **Update**
+
+**Update Strategies**:
+
+**Rolling Update** (Recommended):
+
+* Gradually replaces old instances
+* Zero downtime
+* Automatic rollback on failure
+
+**Blue-Green**:
+
+* Deploys new version alongside old
+* Switches traffic all at once
+* Quick rollback possible
+
+**Canary**:
+
+* Routes small % of traffic to new version
+* Monitor performance
+* Gradually increase if successful
+
+## Scaling a Deployment
+
+**Manual Scaling**:
+
+1. Open deployment details
+2. Click **Scale** button
+3. Adjust number of replicas
+4. Click **Apply**
+
+**Auto-scaling**:
+
+1. Open deployment details
+2. Click **Edit**
+3. Enable auto-scaling
+4. Set min/max replicas
+5. Configure scaling triggers
+6. Save changes
+
+## Stopping a Deployment
+
+To temporarily stop a deployment:
+
+1. Open deployment details
+2. Click **Stop** button
+3. Confirm action
+4. All instances will shut down
+5. Endpoint will become unavailable
+
+**Use Cases**:
+
+* Maintenance window
+* Cost optimization
+* Testing in isolation
+
+## Restarting a Deployment
+
+To restart a stopped deployment:
+
+1. Open deployment details
+2. Click **Start** button
+3. Deployment will resume with previous configuration
+
+## Deleting a Deployment
+
+To permanently remove a deployment:
+
+1. Navigate to deployment details
+2. Click **Delete** button
+3. Confirm deletion
+
+> \[!WARNING] Deleting a deployment will:
+>
+> * Shut down all instances
+> * Remove the endpoint
+> * Delete deployment configuration
+> * This action cannot be undone!
+
+**Before Deleting**:
+
+* Stop sending traffic to the endpoint
+* Update client applications
+* Export logs if needed
+* Verify you have the correct deployment
+
+## Monitoring Deployments
+
+**Real-time Metrics**:
+
+* Request rate
+* Latency (p50, p95, p99)
+* Error rate
+* Resource usage
+
+**Actions**:
+
+* Scale up/down
+* Update model version
+* View logs
+* Rollback
+
+## Best Practices
+
+* Set appropriate min/max replicas
+* Configure auto-scaling thresholds
+* Enable health checks
+* Use load balancing for high traffic
+* Monitor performance continuously
+
+## Next Steps
+
+* Monitor in [Analytics](https://docs.kaisar.io/kaisar-network/deep-learning-platform/analytics)
+* View logs and metrics
+* Set up alerts
+
+
+# Analytics
+
+Monitor and analyze your ML operations with comprehensive analytics and insights.
+
+![Analytics Dashboard](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-4d79a8c4051c622332eef056669e8cba2bce4022%2Fanalytics_dashboard.png?alt=media)
+
+## Overview
+
+The Analytics Dashboard provides comprehensive insights and metrics for the Deep Learning Platform, helping you track performance, costs, and usage across all your ML operations.
+
+## Dashboard Summary Cards
+
+At the top of the dashboard, you'll see key metrics at a glance:
+
+**Active Experiments**
+
+* **Count**: Number of currently running ML experiments
+* **Trend**: Percentage change from previous period
+
+**Total Users**
+
+* **Count**: Total number of platform users
+* **Trend**: Percentage change from previous period
+
+**Deployed Models**
+
+* **Count**: Number of models in production
+* **Trend**: Percentage change from previous period
+
+**Total Projects**
+
+* **Count**: Number of active projects
+* **Trend**: Percentage change from previous period
+
+**GPU Utilization**
+
+* **Percentage**: Current GPU usage percentage
+* **Status**: Infrastructure cost with trend indicators
+
+**Total Cost** **Total Cost**
+
+* **Amount**: Total infrastructure cost
+* **Trend**: Percentage change from previous period
+
+## Detailed Analytics
+
+The dashboard provides detailed analytics with customizable time ranges (Last 24 Hours, Last 7 Days, Last 30 Days, etc.).
+
+**Available Actions**:
+
+* **Refresh**: Update data
+* **Print**: Print dashboard
+* **Export**: Export analytics data
+
+### System Performance
+
+Real-time monitoring of system resources:
+
+**CPU Usage**
+
+* Current utilization: 83.4%
+* Visual progress bar indicator
+* Color-coded (cyan)
+
+**Memory Usage**
+
+* Current utilization: 71.2%
+* Visual progress bar indicator
+* Color-coded (purple)
+
+**GPU Usage**
+
+* Current utilization: 89.1%
+* Visual progress bar indicator
+* Color-coded (green)
+
+**Disk Usage**
+
+* Current utilization: 45.0%
+* Visual progress bar indicator
+* Color-coded (lime green)
+
+### Real-time CPU Usage
+
+Interactive line chart showing CPU usage over time:
+
+* Time-series visualization
+* Real-time updates
+* Hover for detailed values
+* CPU % on Y-axis
+
+### Cost Analytics
+
+**Cost Analytics Chart**:
+
+* Area chart showing cost trends over time
+* Time-series data (hourly/daily)
+* Cost ($) on Y-axis
+* Visual trend analysis
+
+**Cost by Service** (Pie Chart):
+
+* **Data Transfer**: Largest portion (blue)
+* **GPU Compute**: Second largest (purple/pink)
+* **Load Balancing**: Smaller portion (cyan)
+* **Storage**: Smallest portion (pink)
+* Interactive legend
+
+### Model Performance Metrics
+
+Line chart tracking model performance:
+
+* **Accuracy**: Green line
+* **Precision**: Cyan line
+* **Recall**: Purple line
+* Time-series visualization
+* Performance trends over time
+
+### Cost by Environment
+
+Pie chart showing cost distribution:
+
+* **Development**: Largest portion (blue)
+* **Production**: Medium portion (purple/pink)
+* **Staging**: Smallest portion (pink)
+* Interactive breakdown
+
+## Key Features
+
+### Experiment Analytics
+
+* Training metrics over time
+* Hyperparameter impact analysis
+* Experiment comparison dashboards
+* Success/failure rates
+* Active experiment tracking
+
+### Model Performance
+
+* Model accuracy trends
+* Inference latency tracking
+* Model drift detection
+* Performance metrics visualization
+* Multi-metric comparison
+
+### Resource Usage
+
+* GPU/CPU utilization monitoring
+* Memory consumption tracking
+* Storage usage analysis
+* Real-time performance graphs
+* Resource optimization insights
+
+### Deployment Metrics
+
+* Request rate and throughput
+* Error rates and types
+* Latency percentiles (p50, p95, p99)
+* Uptime and availability
+* Deployment health status
+
+### Cost Analysis
+
+* Total infrastructure cost tracking
+* Cost breakdown by service
+* Cost by environment
+* Trend analysis
+* Budget monitoring
+
+## Using the Dashboard
+
+**Time Range Selection**:
+
+1. Click the time range dropdown (default: "Last 24 Hours")
+2. Select desired range:
+   * Last 24 Hours
+   * Last 7 Days
+   * Last 30 Days
+   * Custom range
+
+**Refreshing Data**:
+
+* Click **Refresh** button to update all metrics
+* Dashboard auto-refreshes periodically
+
+**Exporting Data**:
+
+1. Click **Export** button
+2. Choose export format
+3. Download analytics report
+
+**Printing**:
+
+* Click **Print** button to print current dashboard view
+
+## Monitoring Best Practices
+
+**Regular Monitoring**:
+
+* Check dashboard daily for anomalies
+* Monitor GPU utilization for optimization
+* Track cost trends to manage budget
+* Review model performance metrics
+
+**Setting Baselines**:
+
+* Establish normal ranges for metrics
+* Set up alerts for deviations
+* Track trends over time
+
+**Cost Optimization**:
+
+* Identify high-cost services
+* Optimize resource allocation
+* Monitor environment-specific costs
+* Review and adjust as needed
+
+## Next Steps
+
+* View detailed [Experiments](https://docs.kaisar.io/kaisar-network/deep-learning-platform/experiments) metrics
+* Monitor [Deployments](https://docs.kaisar.io/kaisar-network/deep-learning-platform/deployments) performance
+* Track [Models](https://docs.kaisar.io/kaisar-network/deep-learning-platform/models) accuracy
+* Optimize resource usage based on insights
+
+
+# Instructions
+
+Configure instructions and prompts for your AI agents.
+
+![Instructions Management](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-ec97c5c1f4cae2a56eb24c12df5cea992e75d4b5%2Finstructions_list_view.png?alt=media)
+
+## Overview
+
+The Instructions Management section allows you to create, manage, and organize instruction sets that define how your AI agents behave. Instructions include system prompts, role definitions, tasks, guidelines, and constraints.
+
+## Instructions Dashboard
+
+The dashboard displays key metrics at a glance:
+
+**Summary Cards**:
+
+* **Total Instructions**: Total number of instructions configured (system and agent-level)
+* **Active**: Number of active instructions
+* **Draft**: Number of draft instructions
+
+## Instruction List View
+
+The instructions table shows all instruction sets with the following information:
+
+**Columns**:
+
+* **Name**: Instruction name and description
+* **Type**: Instruction type with color-coded badges (Agent, System, Organization)
+* **Agent**: Associated agent name
+* **Sections**: Section badges (Context, Role, Tasks, Guidelines, Questions, Examples, Constraints)
+* **Priority**: Priority level (1-10)
+* **Status**: Current status (Active, Draft)
+* **Updated**: Last update date
+* **Actions**: Quick actions menu
+
+**Filtering and Search**:
+
+* Search by instruction name
+* Filter by Type (Agent, System, Organization)
+* Filter by Status (Active, Draft)
+* Filter by Agent
+
+## Creating an Instruction
+
+Navigate to **Agent Configuration** → **Instructions** → Click **Create**
+
+![Create Instruction](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-f149aa7f4bdf25333c5b5bd92c0df71c0717c4a0%2Finstruction_create_form.png?alt=media)
+
+### Basic Information
+
+**Instruction Name**\* (Required)
+
+* A descriptive name for this instruction set
+* Example: `Code Review Guidelines`
+
+**Instruction Type**\* (Required)
+
+* Select from dropdown: Agent, System, Organization
+* Default: `Agent`
+* Helper text: "Type determines scope and priority"
+
+**Priority**\* (Required)
+
+* Merge order (lower = higher priority)
+* Example: `2`
+* Helper text: "Merge order (lower = higher priority)"
+
+**Status**\* (Required)
+
+* Select from dropdown: Active, Draft
+* Default: `Active`
+* Helper text: "Current status of this instruction"
+
+### Instruction Sections
+
+The instruction sections define the complete behavior and guidelines for the agent. Click to expand/collapse each section.
+
+**Context**
+
+* Background information for the agent
+* Example: "You are reviewing code for best practices and potential issues."
+* Helper text: "Background information for the agent"
+
+**Role**
+
+* Define the agent's role or persona
+* Example: "Senior software engineer and code reviewer"
+* Helper text: "Define the agent's role or persona"
+
+**Tasks**
+
+* Specific tasks the agent should perform
+* Example: "Review code quality, suggest improvements, identify bugs"
+* Helper text: "Specific tasks the agent should perform"
+
+**Guidelines**
+
+* Guidelines and rules to follow
+* Example: "Focus on readability, performance, and maintainability"
+* Helper text: "Guidelines and rules to follow"
+
+**Questions**
+
+* Clarifying questions to ask
+* Example: (empty or specific questions)
+* Helper text: "Clarifying questions to ask"
+
+**Examples**
+
+* Example responses or interactions
+* Example: (empty or specific examples)
+* Helper text: "Example responses or interactions"
+
+**Constraints**
+
+* Limitations and things to avoid
+* Example: "Do not approve code with security vulnerabilities"
+* Helper text: "Limitations and things to avoid"
+
+### Advanced Settings
+
+Click to expand for additional configuration options (collapsed by default).
+
+### Actions
+
+* **Cancel**: Discard and close
+* **Create Instruction**: Save the instruction
+
+## Viewing Instruction Details
+
+To view detailed information about an instruction:
+
+1. Navigate to **Agent Configuration** → **Instructions**
+2. Click on an instruction from the list
+3. View comprehensive details in the modal dialog
+
+![View Instruction Details](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-e23d91eb337e5d919ff6b1d45081aab1dba7b56e%2Finstruction_details_view.png?alt=media)
+
+**Details Panel Sections**:
+
+**Basic Information**:
+
+* **Instruction Name**: e.g., "Code Review Guidelines"
+* **Instruction Type**: Agent, System, or Organization
+* **Priority**: Merge order number
+* **Status**: Active or Draft
+
+**Instruction Sections** (Expandable): All sections are displayed in read-only mode:
+
+* Context
+* Role
+* Tasks
+* Guidelines
+* Questions
+* Examples
+* Constraints
+
+**Advanced Settings** (Expandable): Additional configuration options if set.
+
+## Editing an Instruction
+
+To update an instruction:
+
+1. Open instruction details page
+2. Click **Edit** button (or three-dot menu → Edit)
+3. Modify editable fields in the Edit Instruction modal
+
+![Edit Instruction Form](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-b217fae0883017b23384e09a7c995162603a68d8%2Finstruction_edit_form.png?alt=media)
+
+4. Click **Update Instruction** to save changes
+
+> \[!NOTE] The Edit form is identical to the Create/View form, but with an "Update Instruction" button.
+
+**Editable Fields**:
+
+* ✅ Instruction Name
+* ✅ Priority
+* ✅ Status (Active ↔ Draft)
+* ✅ All instruction sections (Context, Role, Tasks, Guidelines, Questions, Examples, Constraints)
+* ✅ Advanced Settings
+* ❌ Instruction Type (cannot edit after creation)
+
+## Instruction Types
+
+**Agent Instructions**:
+
+* Specific to individual agents
+* Define agent-specific behavior
+* Override system defaults
+* Blue badge in list view
+
+**System Instructions**:
+
+* Apply to all agents by default
+* Lowest priority (merged first)
+* Define baseline behavior
+* Red badge in list view
+
+**Organization Instructions**:
+
+* Company-wide standards
+* Apply across all agents
+* Medium priority
+* Orange badge in list view
+
+## Priority and Merging
+
+**How Priority Works**:
+
+* Lower number = Higher priority
+* Instructions are merged in priority order
+* Higher priority instructions override lower ones
+
+**Merge Order**:
+
+1. System instructions (priority: -1)
+2. Organization instructions (priority: 0)
+3. Agent instructions (priority: 1, 2, 3, etc.)
+
+**Example**:
+
+* System Default: Priority -1 (applied first)
+* Organization Style: Priority 0 (overrides system)
+* Code Review: Priority 2 (final overrides)
+
+## Instruction Sections Explained
+
+**Context**:
+
+* Sets the scene for the agent
+* Provides background information
+* Explains the situation or environment
+
+**Role**:
+
+* Defines who the agent is
+* Sets the persona or character
+* Establishes expertise level
+
+**Tasks**:
+
+* Specific actions to perform
+* Clear, actionable items
+* What the agent should do
+
+**Guidelines**:
+
+* Rules and best practices
+* How to approach tasks
+* Quality standards
+
+**Questions**:
+
+* Clarifying questions to ask users
+* Information gathering prompts
+* Validation questions
+
+**Examples**:
+
+* Sample interactions
+* Expected responses
+* Format examples
+
+**Constraints**:
+
+* What NOT to do
+* Limitations and boundaries
+* Safety guidelines
+
+## Managing Instructions
+
+### Activating/Deactivating
+
+To change instruction status:
+
+1. Edit the instruction
+2. Change Status field
+3. Save changes
+
+**Active**: Instruction is in use **Draft**: Instruction is saved but not applied
+
+### Deleting an Instruction
+
+To remove an instruction:
+
+1. Navigate to instruction details or list
+2. Click **Delete** button
+3. Confirm deletion
+
+> \[!WARNING] Deleting an instruction will affect any agents using it. Make sure to update agent configurations before deleting.
+
+## Best Practices
+
+**Clear and Specific**:
+
+* Be explicit about expected behavior
+* Use clear, unambiguous language
+* Provide concrete examples
+
+**Structured Sections**:
+
+* Use all relevant sections
+* Keep sections focused
+* Avoid redundancy between sections
+
+**Priority Management**:
+
+* Use system instructions for defaults
+* Use organization instructions for company standards
+* Use agent instructions for specific behaviors
+* Keep priority numbers organized
+
+**Testing**:
+
+* Test instructions with agents
+* Verify behavior matches expectations
+* Iterate based on results
+
+**Version Control**:
+
+* Keep drafts for testing
+* Document changes in descriptions
+* Maintain instruction history
+
+**Security**:
+
+* Include safety constraints
+* Define boundaries clearly
+* Specify what agents should NOT do
+
+## Next Steps
+
+* Configure [Tools](https://docs.kaisar.io/kaisar-network/agent-configuration/tools) for your agents
+* Set up [Platform Connections](https://docs.kaisar.io/kaisar-network/agent-configuration/platform-connections)
+* Define [Routes](https://docs.kaisar.io/kaisar-network/agent-configuration/routes) for agent workflows
+* Link instructions to agents in [Organization → Agents](https://docs.kaisar.io/kaisar-network/organization/agents)
+
+
+# Tools
+
+Configure tools and capabilities available to your AI agents.
+
+![Tools Management](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-6f323fca00bd31bc1b4c38c0800e105a51991959%2Ftools_list_view.png?alt=media)
+
+## Overview
+
+The Tools Management section allows you to manage AI tools, MCP servers, and custom integrations that your agents can use to perform tasks and interact with external systems.
+
+## Tools Dashboard
+
+The dashboard displays key metrics at a glance:
+
+**Summary Cards**:
+
+* **Total Tools**: Total number of tools configured
+* **Active**: Number of active tools
+* **Disabled**: Number of disabled tools
+
+## Tool List View
+
+The tools table shows all available tools with the following information:
+
+**Columns**:
+
+* **Tool**: Tool name and icon
+* **Type**: Tool type with color-coded badges (Custom, MCP, Built-in)
+* **Agent**: Associated agent name
+* **Status**: Current status (Active, Disabled, Pending)
+* **Created**: Creation date
+* **Updated**: Last update date
+* **Actions**: Quick actions menu
+
+**Filtering and Search**:
+
+* Search by tool name
+* Filter by Type (Custom, MCP, Built-in)
+* Filter by Status (Active, Disabled, Pending)
+* Filter by Agent
+
+## Creating a Tool
+
+Navigate to **Agent Configuration** → **Tools** → Click **Create**
+
+![Create Tool](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-885b4dc8c7f2144f8cfbb9f7ba136f48bfc09390%2Ftool_create_form.png?alt=media)
+
+### Basic Information
+
+**Tool Name**\* (Required)
+
+* A descriptive name for this tool
+* Example: `Ticket Manager`
+* Helper text: "A descriptive name for this tool"
+
+**Tool Type**\* (Required)
+
+* Select from dropdown: Custom, MCP, Built-in
+* Default: `Custom`
+* Helper text: "Type of tool integration"
+
+**Status**\* (Required)
+
+* Select from dropdown: Active, Disabled, Pending
+* Default: `Active`
+* Helper text: "Current status of this tool"
+
+### Configuration
+
+Click to expand the Configuration section for tool-specific settings.
+
+**Search Engine**
+
+* Search engine to use
+* Dropdown selection
+* Helper text: "Search engine to use"
+
+**Max Results**
+
+* Maximum number of search results
+* Example: (empty or numeric value)
+* Helper text: "Maximum number of search results"
+
+**Allowed File Extensions**
+
+* Comma-separated list of allowed file extensions
+* Example: (empty or ".pdf,.doc,.txt")
+* Helper text: "Comma-separated list of allowed file extensions"
+
+**Max File Size (bytes)**
+
+* Maximum file size in bytes (e.g., 10485760 = 10MB)
+* Example: (empty or numeric value)
+* Helper text: "Maximum file size in bytes (e.g., 10485760 = 10MB)"
+
+**Base Path**
+
+* Base directory path for file operations
+* Example: (empty or "/path/to/directory")
+* Helper text: "Base directory path for file operations"
+
+**Connection String**
+
+* Database connection string
+* Example: (empty or connection string)
+* Helper text: "Database connection string"
+
+**Timeout (ms)**
+
+* Operation timeout in milliseconds
+* Example: (empty or numeric value)
+* Helper text: "Operation timeout in milliseconds"
+
+**API Endpoint**
+
+* External API endpoint URL
+* Example: `https://api.zendesk.com/v2`
+* Helper text: "External API endpoint URL"
+
+**Rate Limit (per minute)**
+
+* Maximum requests per minute
+* Example: `100`
+* Helper text: "Maximum requests per minute"
+
+**Retry Count**
+
+* Number of retry attempts on failure
+* Example: `3`
+* Helper text: "Number of retry attempts on failure"
+
+### Actions
+
+* **Cancel**: Discard and close
+* **Create Tool**: Save the tool
+
+## Viewing Tool Details
+
+To view detailed information about a tool:
+
+1. Navigate to **Agent Configuration** → **Tools**
+2. Click on a tool from the list
+3. View comprehensive details in the modal dialog
+
+![View Tool Details](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-7e71af86884d542e281f95ae43449c9cb2d9d9c9%2Ftool_details_view.png?alt=media)
+
+**Details Panel Sections**:
+
+**Basic Information**:
+
+* **Tool Name**: e.g., "Ticket Manager"
+* **Tool Type**: Custom, MCP, or Built-in
+* **Status**: Active, Disabled, or Pending
+
+**Configuration** (Expandable): All configuration fields are displayed in read-only mode:
+
+* Search Engine
+* Max Results
+* Allowed File Extensions
+* Max File Size (bytes)
+* Base Path
+* Connection String
+* Timeout (ms)
+* API Endpoint
+* Rate Limit (per minute)
+* Retry Count
+
+## Editing a Tool
+
+To update a tool:
+
+1. Open tool details page
+2. Click **Edit** button (or three-dot menu → Edit)
+3. Modify editable fields in the Edit Tool modal
+
+![Edit Tool Form](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-a8b9155d88c5a8cec2093a0f3c6e007a21fe5242%2Ftool_edit_form.png?alt=media)
+
+4. Click **Update Tool** to save changes
+
+> \[!NOTE] The Edit form is identical to the Create/View form, but with an "Update Tool" button.
+
+**Editable Fields**:
+
+* ✅ Tool Name
+* ✅ Status (Active ↔ Disabled ↔ Pending)
+* ✅ All configuration fields
+* ❌ Tool Type (cannot edit after creation)
+
+## Tool Types
+
+**Custom Tools**:
+
+* User-defined integrations
+* Custom API connections
+* Specific business logic
+* Orange badge in list view
+
+**MCP (Model Context Protocol) Tools**:
+
+* Standardized protocol tools
+* Pre-built integrations
+* Community-maintained
+* Purple badge in list view
+
+**Built-in Tools**:
+
+* Platform-provided tools
+* Core functionality
+* Maintained by Kaisar AI
+* Blue badge in list view
+
+## Tool Configuration Fields
+
+Different tool types may have different configuration fields:
+
+**API Integration Tools**:
+
+* API Endpoint
+* Rate Limit
+* Retry Count
+* Timeout
+
+**File Management Tools**:
+
+* Base Path
+* Allowed File Extensions
+* Max File Size
+
+**Database Tools**:
+
+* Connection String
+* Timeout
+* Retry Count
+
+**Search Tools**:
+
+* Search Engine
+* Max Results
+
+## Managing Tools
+
+### Enabling/Disabling Tools
+
+To change tool status:
+
+1. Edit the tool
+2. Change Status field
+3. Save changes
+
+**Active**: Tool is available for agents to use **Disabled**: Tool is not available **Pending**: Tool is being configured or tested
+
+### Assigning Tools to Agents
+
+Tools can be assigned to:
+
+* **Specific agents**: Only that agent can use the tool
+* **All Agents**: Available to all agents in the organization
+
+### Deleting a Tool
+
+To remove a tool:
+
+1. Navigate to tool details or list
+2. Click **Delete** button
+3. Confirm deletion
+
+> \[!WARNING] Deleting a tool will affect any agents using it. Make sure to update agent configurations before deleting.
+
+## Best Practices
+
+**Tool Configuration**:
+
+* Set appropriate rate limits
+* Configure timeouts properly
+* Validate API endpoints
+* Test before enabling
+
+**Security**:
+
+* Use secure API endpoints (HTTPS)
+* Store credentials securely
+* Limit file access paths
+* Validate file extensions
+
+**Performance**:
+
+* Set reasonable timeouts
+* Configure retry logic
+* Monitor tool usage
+* Optimize rate limits
+
+**Maintenance**:
+
+* Keep tools updated
+* Monitor error rates
+* Review logs regularly
+* Disable unused tools
+
+**Testing**:
+
+* Test tools before activation
+* Verify error handling
+* Check rate limits
+* Validate outputs
+
+## Tool Usage Monitoring
+
+**Metrics to Track**:
+
+* Number of calls per tool
+* Success/failure rates
+* Average response time
+* Error types and frequency
+
+**Alerts**:
+
+* Rate limit exceeded
+* High error rates
+* Timeout issues
+* API endpoint failures
+
+## Next Steps
+
+* Configure [Instructions](https://docs.kaisar.io/kaisar-network/agent-configuration/instructions) for tool usage
+* Set up [Platform Connections](https://docs.kaisar.io/kaisar-network/agent-configuration/platform-connections) for API access
+* Define [Routes](https://docs.kaisar.io/kaisar-network/agent-configuration/routes) that use these tools
+* Assign tools to agents in [Organization → Agents](https://docs.kaisar.io/kaisar-network/organization/agents)
+
+
+# Platform Connections
+
+Connect your AI agents to external platforms and services.
+
+![Platform Connections](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-4da44c7a420da8e6250b2ec33ec9f708b497131f%2Fplatform_connections_list_view.png?alt=media)
+
+## Overview
+
+Platform Connections allow you to integrate your AI agents with external platforms and services such as Discord, Telegram, Slack, webhooks, and more. Manage connections, credentials, and configurations in one centralized location.
+
+## Platform Connections Dashboard
+
+The dashboard displays key metrics at a glance:
+
+**Summary Cards**:
+
+* **Total Connections**: Total number of platform connections configured
+* **Connected**: Number of connections currently active and working
+* **Error**: Number of connections experiencing errors
+
+## Connection List View
+
+The connections table shows all platform connections with the following information:
+
+**Columns**:
+
+* **Connection**: Connection name and description
+* **Platform**: Platform type with icon (Webhook, Telegram, Teams, Discord, Slack)
+* **Status**: Current status (Active, Connected, Disconnected, Error)
+* **Agents**: Number of agents using this connection
+* **Last Connected**: Last connection time
+* **Enabled**: Enable/disable toggle
+* **Actions**: Quick actions menu
+
+**Filtering and Search**:
+
+* Search by connection name
+* Filter by Platform (Webhook, Telegram, Slack, Discord, Teams, etc.)
+* Filter by Status (Active, Connected, Disconnected, Error)
+
+## Creating a Platform Connection
+
+Navigate to **Agent Configuration** → **Platform Connections** → Click **Create**
+
+![Create Platform Connection](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-583f735a87bb5b528100cbb9054fa54ea336dc79%2Fplatform_connection_create_form.png?alt=media)
+
+### Basic Information
+
+**Connection Name**\* (Required)
+
+* A descriptive name for this connection
+* Example: `Analytics Webhook`
+* Helper text: "A descriptive name for this connection"
+
+**Platform**\* (Required)
+
+* Select platform from dropdown: Webhook, Discord, Telegram, Slack, Teams, etc.
+* Helper text: "Platform to connect to"
+
+**Description**
+
+* Optional description
+* Example: "Custom webhook for analytics and monitoring"
+* Helper text: "Optional description"
+
+**Enabled**
+
+* Checkbox to enable/disable the connection
+* Default: Unchecked
+
+### Discord Configuration
+
+Expandable section for Discord-specific settings.
+
+**Bot Token**\* (Required)
+
+* Discord bot token
+* Helper text: "Discord bot token"
+
+**Guild ID**
+
+* Discord server (guild) ID
+* Helper text: "Discord server (guild) ID"
+
+**Client ID**
+
+* Discord application client ID
+* Helper text: "Discord application client ID"
+
+### Telegram Configuration
+
+Expandable section for Telegram-specific settings.
+
+**Bot Token**\* (Required)
+
+* Telegram bot token
+* Helper text: "Telegram bot token"
+
+**Chat ID**
+
+* Telegram chat/channel ID
+* Helper text: "Telegram chat/channel ID"
+
+### Slack Configuration
+
+Expandable section for Slack-specific settings.
+
+**Bot Token**\* (Required)
+
+* Slack bot token
+* Helper text: "Slack bot token"
+
+**App Token**
+
+* Slack app-level token
+* Helper text: "Slack app-level token"
+
+**Signing Secret**
+
+* Slack signing secret for request verification
+* Helper text: "Slack signing secret for request verification"
+
+**Channel ID**
+
+* Slack channel ID
+* Helper text: "Slack channel ID"
+
+### Webhook Configuration
+
+Expandable section for Webhook-specific settings.
+
+**Webhook URL**\* (Required)
+
+* Webhook endpoint URL
+* Example: `https://analytics.company.com/webhook/dp`
+* Helper text: "Webhook endpoint URL"
+
+**Webhook Secret**
+
+* Secret key for webhook authentication
+* Example: `webhook_secret_key_encrypted`
+* Helper text: "Secret key for webhook authentication"
+
+### Advanced Settings
+
+Expandable section for advanced configuration options.
+
+### Rate Limits
+
+Expandable section for rate limiting configuration.
+
+### Actions
+
+* **Cancel**: Discard and close
+* **Create Platform Connection**: Save the connection
+
+## Viewing Connection Details
+
+To view detailed information about a connection:
+
+1. Navigate to **Agent Configuration** → **Platform Connections**
+2. Click on a connection from the list
+3. View comprehensive details in the modal dialog
+
+![View Platform Connection](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-82bf1a9634a1ed72da324ca8465bea6b48b67e0b%2Fplatform_connection_details_view.png?alt=media)
+
+**Details Panel Sections**:
+
+**Basic Information**:
+
+* **Connection Name**: e.g., "Analytics Webhook"
+* **Platform**: Webhook, Discord, Telegram, Slack, Teams, etc.
+* **Description**: Full description
+* **Enabled**: Checkbox status
+
+**Platform-Specific Configuration** (Expandable): All configuration fields are displayed in read-only mode based on the selected platform:
+
+* Discord: Bot Token, Guild ID, Client ID
+* Telegram: Bot Token, Chat ID
+* Slack: Bot Token, App Token, Signing Secret, Channel ID
+* Webhook: Webhook URL, Webhook Secret
+
+**Advanced Settings** (Expandable): Additional configuration options if set.
+
+**Rate Limits** (Expandable): Rate limiting configuration if set.
+
+## Editing a Connection
+
+To update a connection:
+
+1. Open connection details page
+2. Click **Edit** button (or three-dot menu → Edit)
+3. Modify editable fields in the Edit Platform Connection modal
+
+![Edit Platform Connection](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-ea4e032a3293f507d03020fc0f60470c0a0d6c9b%2Fplatform_connection_edit_form.png?alt=media)
+
+4. Click **Update Platform Connection** to save changes
+
+> \[!NOTE] The Edit form is identical to the Create/View form, but with an "Update Platform Connection" button.
+
+**Editable Fields**:
+
+* ✅ Connection Name
+* ✅ Description
+* ✅ Enabled (checkbox)
+* ✅ All platform-specific configuration fields
+* ✅ Advanced Settings
+* ✅ Rate Limits
+* ❌ Platform (cannot edit after creation)
+
+## Supported Platforms
+
+**Communication Platforms**:
+
+* **Discord**: Bot integration for Discord servers
+* **Telegram**: Bot integration for Telegram chats
+* **Slack**: Bot integration for Slack workspaces
+* **Microsoft Teams**: Integration for Teams channels
+
+**Webhooks**:
+
+* **Custom Webhooks**: HTTP endpoints for custom integrations
+* **Outgoing Webhooks**: Send data to external services
+* **Incoming Webhooks**: Receive data from external services
+
+**Other Platforms**:
+
+* Additional platforms may be available based on your configuration
+
+## Connection Status
+
+**Active** (Orange):
+
+* Connection is configured but not yet connected
+* Waiting for first connection
+
+**Connected** (Green):
+
+* Connection is active and working
+* Successfully communicating with platform
+
+**Disconnected** (Gray):
+
+* Connection was previously active but is now disconnected
+* May need reconfiguration or credential refresh
+
+**Error** (Red):
+
+* Connection has errors
+* Check credentials and configuration
+* Review error logs
+
+## Managing Connections
+
+### Enabling/Disabling Connections
+
+To change connection status:
+
+1. Toggle the **Enabled** switch in the list view, OR
+2. Edit the connection and check/uncheck the **Enabled** checkbox
+
+**Enabled**: Connection is active and available for agents **Disabled**: Connection is not available for use
+
+### Testing Connections
+
+To test a connection:
+
+1. Open connection details
+2. Click **Test Connection** button (if available)
+3. Verify connection status
+
+### Rotating Credentials
+
+To update credentials:
+
+1. Edit the connection
+2. Update bot tokens, secrets, or API keys
+3. Save changes
+4. Test the connection
+
+### Deleting a Connection
+
+To remove a connection:
+
+1. Navigate to connection details or list
+2. Click **Delete** button
+3. Confirm deletion
+
+> \[!WARNING] Deleting a connection will affect any agents using it. Make sure to update agent configurations before deleting.
+
+## Security Best Practices
+
+**Credential Management**:
+
+* Store credentials securely
+* Rotate tokens regularly
+* Use environment-specific credentials
+* Never share credentials
+
+**Access Control**:
+
+* Grant minimum required permissions
+* Use service accounts where possible
+* Monitor access logs
+* Audit connection usage
+
+**Network Security**:
+
+* Use HTTPS for webhooks
+* Validate webhook signatures
+* Implement rate limiting
+* Monitor for suspicious activity
+
+## Platform-Specific Guides
+
+### Discord Setup
+
+1. Create a Discord application at [Discord Developer Portal](https://discord.com/developers/applications)
+2. Create a bot and copy the bot token
+3. Copy the application client ID
+4. Copy the server (guild) ID
+5. Invite the bot to your server
+6. Configure the connection in Kaisar AI Ops
+
+### Telegram Setup
+
+1. Create a bot using [@BotFather](https://t.me/botfather)
+2. Copy the bot token
+3. Get the chat ID (use [@userinfobot](https://t.me/userinfobot))
+4. Configure the connection in Kaisar AI Ops
+
+### Slack Setup
+
+1. Create a Slack app at [Slack API](https://api.slack.com/apps)
+2. Enable Socket Mode and get app-level token
+3. Add bot token scopes
+4. Install app to workspace
+5. Copy bot token, app token, and signing secret
+6. Get channel ID
+7. Configure the connection in Kaisar AI Ops
+
+### Webhook Setup
+
+1. Set up an HTTP endpoint to receive webhooks
+2. Implement signature verification
+3. Copy the webhook URL
+4. Generate a secret key
+5. Configure the connection in Kaisar AI Ops
+
+## Troubleshooting
+
+**Connection Errors**:
+
+* Verify credentials are correct
+* Check platform API status
+* Review error logs
+* Test connection manually
+
+**Authentication Issues**:
+
+* Rotate credentials
+* Check token expiration
+* Verify permissions
+* Update scopes if needed
+
+**Rate Limiting**:
+
+* Configure rate limits
+* Monitor usage
+* Implement backoff strategies
+* Contact platform support if needed
+
+## Next Steps
+
+* Configure [Instructions](https://docs.kaisar.io/kaisar-network/agent-configuration/instructions) for platform-specific behavior
+* Enable [Tools](https://docs.kaisar.io/kaisar-network/agent-configuration/tools) for platform interactions
+* Define [Routes](https://docs.kaisar.io/kaisar-network/agent-configuration/routes) that use these connections
+* Assign connections to agents in [Organization → Agents](https://docs.kaisar.io/kaisar-network/organization/agents)
+
+
+# Routes
+
+Define workflows and routing logic for your AI agents.
+
+![Routes Management](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-069fda3ff91ed399fe4730229a1c02e40215d1f7%2Froutes_list_view.png?alt=media)
+
+## Overview
+
+Routes Management allows you to configure and manage API routes, webhooks, and endpoint routing for your AI agents. Define how incoming requests are handled, processed, and responded to.
+
+## Routes Dashboard
+
+The dashboard displays key metrics at a glance:
+
+**Summary Cards**:
+
+* **Total Routes**: Total number of routes configured
+* **Active**: Number of active routes
+* **Error**: Number of routes with errors
+
+## Route List View
+
+The routes table shows all configured routes with the following information:
+
+**Columns**:
+
+* **Route**: Route name and path
+* **Method**: HTTP method (POST, GET, etc.)
+* **Type**: Route type (Webhook, API, File, Redirect, Health)
+* **Status**: Current status (Active, Inactive)
+* **Priority**: Priority level (1-10)
+* **Requests**: Total number of requests
+* **Avg Response**: Average response time
+* **Actions**: Quick actions menu
+
+**Filtering and Search**:
+
+* Search by route name or path
+* Filter by Method (POST, GET, PUT, DELETE, etc.)
+* Filter by Type (Webhook, API, File, Redirect, Health)
+* Filter by Status (Active, Inactive)
+
+## Creating a Route
+
+Navigate to **Agent Configuration** → **Routes** → Click **Create**
+
+![Create Route](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-c2f801db666e23305f9feb776bf3e63603d9d0cc%2Froute_create_form.png?alt=media)
+
+### Basic Information
+
+**Route Name**\* (Required)
+
+* Descriptive name for this route
+* Example: `Discord Webhook`
+* Helper text: "Descriptive name for this route"
+
+**Path**\* (Required)
+
+* URL path pattern (use {param} for variables)
+* Example: `/webhook/discord/{server_id}`
+* Helper text: "URL path pattern (use {param} for variables)"
+
+**HTTP Method**\* (Required)
+
+* Select from dropdown: POST, GET, PUT, DELETE, PATCH
+* Helper text: "HTTP method for this route"
+
+**Route Type**\* (Required)
+
+* Select from dropdown: Webhook, API, File, Redirect, Health
+* Helper text: "Type of route endpoint"
+
+**Description**
+
+* Optional description
+* Example: "Webhook endpoint for Discord bot integration"
+* Helper text: "Optional description"
+
+### Configuration
+
+Expandable section for route configuration.
+
+**Priority**\* (Required)
+
+* Route matching priority (lower = higher priority)
+* Example: `1`
+* Helper text: "Route matching priority (lower = higher priority)"
+
+**Timeout (ms)**\* (Required)
+
+* Request timeout in milliseconds
+* Example: `30000`
+* Helper text: "Request timeout in milliseconds"
+
+**Retry Attempts**\* (Required)
+
+* Number of retry attempts on failure
+* Example: `3`
+* Helper text: "Number of retry attempts on failure"
+
+**Enabled**
+
+* Checkbox to enable/disable the route
+* Default: Unchecked
+
+**Authentication Required**
+
+* Checkbox to require authentication
+* Default: Unchecked
+
+### Handler Configuration
+
+Expandable section for handler-specific settings.
+
+**Response Type**
+
+* Type of response to return
+* Dropdown selection: JSON, Text, HTML, XML, etc.
+* Helper text: "Type of response to return"
+
+**Status Code**
+
+* HTTP status code for success
+* Example: `200`
+* Helper text: "HTTP status code for success"
+
+**Agent Prompt**
+
+* Prompt for AI agent processing
+* Large text area
+* Example: "You are a helpful Discord bot assistant. Respond professionally and concisely."
+* Helper text: "Prompt for AI agent processing"
+
+### Security
+
+Expandable section for security settings.
+
+**Require Authentication**
+
+* Checkbox to require authentication
+
+**Enable Rate Limiting**
+
+* Checkbox to enable rate limiting
+
+**Requests Limit**
+
+* Number of requests allowed
+* Example: `100`
+* Helper text: "Number of requests allowed"
+
+**Time Window (ms)**
+
+* Time window in milliseconds
+* Example: `60000`
+* Helper text: "Time window in milliseconds"
+
+### Rate Limits
+
+Expandable section for detailed rate limiting.
+
+**Requests per Minute**
+
+* Maximum requests per minute
+* Example: `100`
+* Helper text: "Maximum requests per minute"
+
+**Requests per Hour**
+
+* Maximum requests per hour
+* Example: `2000`
+* Helper text: "Maximum requests per hour"
+
+**Requests per Day**
+
+* Maximum requests per day
+* Example: `10000`
+* Helper text: "Maximum requests per day"
+
+**Burst Limit**
+
+* Maximum burst of requests
+* Example: `10`
+* Helper text: "Maximum burst of requests"
+
+### Actions
+
+* **Cancel**: Discard and close
+* **Create Route**: Save the route
+
+## Viewing Route Details
+
+To view detailed information about a route:
+
+1. Navigate to **Agent Configuration** → **Routes**
+2. Click on a route from the list
+3. View comprehensive details in the modal dialog
+
+![View Route Details](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-4d4b1c8a7d671e5b3370403722d1a11da302b5ca%2Froute_details_view.png?alt=media)
+
+**Details Panel Sections**:
+
+**Basic Information**:
+
+* **Route Name**: e.g., "Discord Webhook"
+* **Path**: e.g., `/webhook/discord/{server_id}`
+* **HTTP Method**: POST, GET, etc.
+* **Route Type**: Webhook, API, File, etc.
+* **Description**: Full description
+
+**Configuration**:
+
+* **Priority**: Route matching priority
+* **Timeout (ms)**: Request timeout
+* **Retry Attempts**: Number of retry attempts
+* **Enabled**: Checkbox status
+* **Authentication Required**: Checkbox status
+
+**Handler Configuration**:
+
+* **Response Type**: JSON, Text, HTML, etc.
+* **Status Code**: HTTP status code
+* **Agent Prompt**: Full prompt text
+
+**Security**:
+
+* **Require Authentication**: Checkbox status
+* **Enable Rate Limiting**: Checkbox status
+* **Requests Limit**: Number of requests allowed
+* **Time Window (ms)**: Time window
+
+**Rate Limits**:
+
+* **Requests per Minute**: Maximum per minute
+* **Requests per Hour**: Maximum per hour
+* **Requests per Day**: Maximum per day
+* **Burst Limit**: Maximum burst
+
+## Editing a Route
+
+To update a route:
+
+1. Open route details page
+2. Click **Edit** button (or three-dot menu → Edit)
+3. Modify editable fields in the Edit Route modal
+
+![Edit Route Form](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-6b88f7f267ed0b09aa19eb89e92dd442bf38063b%2Froute_edit_form.png?alt=media)
+
+4. Click **Update Route** to save changes
+
+> \[!NOTE] The Edit form is identical to the Create/View form, but with an "Update Route" button.
+
+**Editable Fields**:
+
+* ✅ Route Name
+* ✅ Description
+* ✅ Priority
+* ✅ Timeout
+* ✅ Retry Attempts
+* ✅ Enabled (checkbox)
+* ✅ Authentication Required (checkbox)
+* ✅ Handler Configuration (Response Type, Status Code, Agent Prompt)
+* ✅ Security settings
+* ✅ Rate Limits
+* ❌ Path (cannot edit after creation)
+* ❌ HTTP Method (cannot edit after creation)
+* ❌ Route Type (cannot edit after creation)
+
+## Route Types
+
+**Webhook**:
+
+* Receive webhooks from external services
+* Process incoming webhook payloads
+* Respond with custom data
+
+**API**:
+
+* RESTful API endpoints
+* Handle API requests and responses
+* Integrate with agent processing
+
+**File**:
+
+* File upload/download endpoints
+* Handle file operations
+* Process file content
+
+**Redirect**:
+
+* URL redirection routes
+* Forward requests to other endpoints
+* Handle legacy URLs
+
+**Health**:
+
+* Health check endpoints
+* Monitor service status
+* Return system health information
+
+## HTTP Methods
+
+**POST** (Blue badge):
+
+* Create new resources
+* Submit data
+* Trigger actions
+
+**GET** (Green badge):
+
+* Retrieve data
+* Read resources
+* Query information
+
+**PUT**:
+
+* Update entire resources
+* Replace data
+
+**PATCH**:
+
+* Partial updates
+* Modify specific fields
+
+**DELETE**:
+
+* Remove resources
+* Delete data
+
+## Route Priority
+
+**How Priority Works**:
+
+* Lower number = Higher priority
+* Routes are matched in priority order
+* First matching route handles the request
+
+**Priority Guidelines**:
+
+* 1-3: Critical routes (webhooks, authentication)
+* 4-6: Standard API routes
+* 7-9: Utility routes (redirects, static files)
+* 10+: Health checks, monitoring
+
+## Managing Routes
+
+### Enabling/Disabling Routes
+
+To change route status:
+
+1. Edit the route
+2. Check/uncheck the **Enabled** checkbox
+3. Save changes
+
+**Enabled**: Route is active and accepting requests **Disabled**: Route is not available
+
+### Testing Routes
+
+To test a route:
+
+1. Use API testing tools (Postman, curl)
+2. Send requests to the route path
+3. Verify response and behavior
+4. Check logs for errors
+
+**Example curl command**:
+
+```bash
+curl -X POST https://ai.kaisar.io/webhook/discord/12345 \
+  -H "Content-Type: application/json" \
+  -d '{"message": "Hello from Discord"}'
+```
+
+### Monitoring Route Performance
+
+**Metrics to Track**:
+
+* Total requests
+* Average response time
+* Error rate
+* Success rate
+
+**Performance Optimization**:
+
+* Set appropriate timeouts
+* Configure retry logic
+* Implement caching
+* Use rate limiting
+
+### Deleting a Route
+
+To remove a route:
+
+1. Navigate to route details or list
+2. Click **Delete** button
+3. Confirm deletion
+
+> \[!WARNING] Deleting a route will break any integrations using it. Make sure to update external services before deleting.
+
+## Security Best Practices
+
+**Authentication**:
+
+* Enable authentication for sensitive routes
+* Use API keys or tokens
+* Validate credentials on every request
+
+**Rate Limiting**:
+
+* Protect against abuse
+* Prevent DDoS attacks
+* Set reasonable limits
+
+**Input Validation**:
+
+* Validate all input data
+* Sanitize user input
+* Reject malformed requests
+
+**Error Handling**:
+
+* Don't expose sensitive information in errors
+* Log errors securely
+* Return appropriate status codes
+
+## Rate Limiting Configuration
+
+**Per Minute Limits**:
+
+* For high-frequency endpoints
+* Quick burst protection
+* Example: 100 requests/minute
+
+**Per Hour Limits**:
+
+* For moderate usage
+* Sustained traffic control
+* Example: 2000 requests/hour
+
+**Per Day Limits**:
+
+* For overall usage caps
+* Prevent excessive usage
+* Example: 10000 requests/day
+
+**Burst Limits**:
+
+* Allow temporary spikes
+* Handle sudden traffic
+* Example: 10 concurrent requests
+
+## Troubleshooting
+
+**Route Not Responding**:
+
+* Check if route is enabled
+* Verify path pattern
+* Check authentication settings
+* Review error logs
+
+**Timeout Errors**:
+
+* Increase timeout value
+* Optimize agent processing
+* Check external dependencies
+* Review retry settings
+
+**Rate Limit Exceeded**:
+
+* Adjust rate limits
+* Implement request queuing
+* Contact administrator
+* Review usage patterns
+
+**Authentication Failures**:
+
+* Verify credentials
+* Check authentication settings
+* Review API keys
+* Update tokens if expired
+
+## Next Steps
+
+* Configure [Instructions](https://docs.kaisar.io/kaisar-network/agent-configuration/instructions) for route handlers
+* Enable [Tools](https://docs.kaisar.io/kaisar-network/agent-configuration/tools) for route processing
+* Set up [Platform Connections](https://docs.kaisar.io/kaisar-network/agent-configuration/platform-connections) for webhooks
+* Link routes to agents in [Organization → Agents](https://docs.kaisar.io/kaisar-network/organization/agents)
+
+
+# Market Place
+
+Browse and deploy ready-to-use AI solution templates.
+
+![AI Solutions Market Place](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-7f909a4da99e8aae2104e1bcc5dfb4ed314e8333%2Fmarketplace_grid_view.png?alt=media)
+
+## Overview
+
+The AI Solutions Market Place provides a curated collection of pre-built AI solution templates that you can browse, customize, and deploy instantly. Each solution is production-ready and includes all necessary configurations, integrations, and best practices.
+
+## Market Place Interface
+
+**Search and Filter**:
+
+* **Search Templates**: Search by name, description, or keywords
+* **Category Filter**: Filter by solution category
+
+**Solution Categories**:
+
+* Marketing & Content
+* Customer Service
+* E-commerce
+* IT & DevOps
+* Finance & Accounting
+* Data Analytics
+* Sales & CRM
+* HR & Recruitment
+* Supply Chain
+* Legal & Compliance
+
+## Available Solutions
+
+The marketplace displays solutions in a grid layout with the following information for each:
+
+**Solution Card**:
+
+* **Category Badge**: Category name with rating (e.g., "Marketing & Content ⭐ 10")
+* **Solution Name**: Descriptive title
+* **Description**: Brief overview of capabilities
+* **Agents**: Number of agents included (e.g., "2 Agents")
+* **Models**: Number of models included (e.g., "2 Models")
+
+### Example Solutions
+
+**Marketing & Content**:
+
+1. **Content Generator Pro** ⭐ 10
+   * Generate blog posts, social media content, and marketing copy
+   * 2 Agents • 2 Models
+2. **Social Media Manager** ⭐ 8
+   * Schedule, post, and analyze social media content across platforms
+   * 2 Agents • 2 Models
+
+**Customer Service**:
+
+3. **AI Customer Support Bot** ⭐ 25
+   * Automated customer support with 24/7 availability and personalized responses
+   * 2 Agents • 2 Models
+4. **Customer Service Chatbot** ⭐ 12
+   * E-commerce chatbot for order tracking, returns, and product info
+   * 2 Agents • 2 Models
+
+**E-commerce**:
+
+5. **Product Recommendation Engine** ⭐ 20
+   * Personalized product recommendations based on user behavior and preferences
+   * 1 Agents • 2 Models
+6. **Lead Qualification Assistant** ⭐ 82
+   * Automatically qualify and score leads based on engagement and criteria
+   * 2 Agents • 2 Models
+
+**IT & DevOps**:
+
+7. **Code Review Assistant** ⭐ 21
+   * Automated code review with best practices and security checks
+   * 1 Agents • 2 Models
+8. **IT Support Automation** ⭐ 15
+   * Intelligent chatbot to resolve and route complex problems to specialists
+   * 2 Agents • 2 Models
+
+**Finance & Accounting**:
+
+9. **Invoice Processing Automation** ⭐ 7
+   * Extract, validate, and process invoices automatically
+   * 2 Agents • 2 Models
+
+**Data Analytics**:
+
+10. **Business Intelligence Assistant** ⭐ 23
+    * Natural language queries for business data and automated insights
+    * 2 Agents • 2 Models
+11. **Predictive Analytics Platform** ⭐ 8
+    * Machine learning models for forecasting and predictive analysis
+    * 1 Agents • 2 Models
+
+**Sales & CRM**:
+
+12. **Sales Email Automation** ⭐ 8
+    * Personalized outreach emails generated and sent at optimal times
+    * 1 Agents • 2 Models
+
+**HR & Recruitment**:
+
+13. **Resume Screening AI** ⭐ 10
+    * Automatically screen and rank candidates based on job requirements
+    * 1 Agents • 2 Models
+
+**Supply Chain**:
+
+14. **Inventory Optimization AI** ⭐ 10
+    * Predict demand and optimize inventory levels across locations
+    * 1 Agents • 2 Models
+
+**E-commerce**:
+
+15. **Dynamic Pricing Optimizer** ⭐ 18
+    * Real-time pricing optimization based on market conditions and demand
+    * 1 Agents • 2 Models
+
+**Legal & Compliance**:
+
+16. **Contract Review AI** ⭐ 14
+    * Analyze contracts for risks, obligations, and compliance issues
+    * 1 Agents • 2 Models
+
+## Viewing Solution Details
+
+Click on any solution card to view detailed information:
+
+![Solution Details](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-c77f07b77ea9e5db4bb40caec4e4587d95e15d5c%2Fmarketplace_solution_details.png?alt=media)
+
+**Solution Details Modal**:
+
+**Header**:
+
+* Solution name: e.g., "AI Customer Support Bot"
+* Service type badge: e.g., "Customer Service" (blue badge)
+* Status badge: e.g., "Productive v3" (green badge)
+
+**Description**:
+
+* Full description of the solution
+* Example: "A comprehensive AI-powered customer support solution that handles common inquiries, escalates complex issues, and provides personalized responses. Integrates with email, chat, and social media platforms."
+
+**Required Resources**:
+
+* **Agents**: Number and type (e.g., "Estimated Cost")
+* **Expertise**: Skill level required (e.g., "$150-300/month")
+* **AI Models**: Models included (e.g., "GPT-4, Claude 3")
+* **Tools & Integrations**: Required tools (e.g., "Email, Slack, Zendesk Integration, Knowledge Base")
+
+**Key Features**:
+
+* ✅ Multi-language support
+* ✅ Sentiment analysis
+* ✅ Ticket routing
+* ✅ Auto-responses
+
+**Use Cases**:
+
+* Help desk automation
+* FAQ handling
+* Ticket classification
+
+**Actions**:
+
+* **Close**: Close the modal
+* **Deploy (Coming Soon)**: Deploy the solution (button disabled)
+
+## Deploying Solutions
+
+> \[!NOTE] Deployment functionality is coming soon. Currently, you can browse and review solution details.
+
+**Planned Deployment Process**:
+
+1. Click **Deploy** button on solution details
+2. Review required resources and costs
+3. Configure deployment settings:
+   * Select agents
+   * Configure integrations
+   * Set environment variables
+4. Review and confirm
+5. Deploy to your organization
+
+## Solution Ratings
+
+**Rating System**:
+
+* ⭐ 1-10: New or niche solutions
+* ⭐ 11-20: Popular solutions
+* ⭐ 21-50: Highly popular solutions
+* ⭐ 50+: Most popular solutions
+
+Ratings indicate popularity and usage across the platform.
+
+## Solution Components
+
+**Agents**:
+
+* Pre-configured AI agents
+* Ready-to-use instructions
+* Optimized prompts
+
+**Models**:
+
+* Pre-trained models
+* Fine-tuned for specific tasks
+* Production-ready
+
+**Integrations**:
+
+* Platform connections
+* Third-party services
+* API integrations
+
+**Tools**:
+
+* Custom tools
+* Built-in capabilities
+* MCP integrations
+
+## Customization
+
+**After Deployment** (Coming Soon):
+
+* Modify agent instructions
+* Adjust model parameters
+* Configure integrations
+* Add custom tools
+* Update routes
+
+## Best Practices
+
+**Choosing Solutions**:
+
+* Review description and use cases
+* Check required resources
+* Verify integrations match your needs
+* Consider rating and popularity
+
+**Before Deployment**:
+
+* Understand resource requirements
+* Plan integration points
+* Prepare credentials
+* Review pricing
+
+**After Deployment**:
+
+* Test thoroughly
+* Monitor performance
+* Customize as needed
+* Gather feedback
+
+## Categories Explained
+
+**Marketing & Content**:
+
+* Content generation
+* Social media management
+* Marketing automation
+* SEO optimization
+
+**Customer Service**:
+
+* Support chatbots
+* Ticket automation
+* Customer engagement
+* Help desk solutions
+
+**E-commerce**:
+
+* Product recommendations
+* Pricing optimization
+* Order processing
+* Customer analytics
+
+**IT & DevOps**:
+
+* Code review
+* IT support
+* Infrastructure automation
+* DevOps workflows
+
+**Finance & Accounting**:
+
+* Invoice processing
+* Expense management
+* Financial analysis
+* Compliance automation
+
+**Data Analytics**:
+
+* Business intelligence
+* Predictive analytics
+* Data visualization
+* Reporting automation
+
+**Sales & CRM**:
+
+* Lead qualification
+* Email automation
+* Sales forecasting
+* CRM integration
+
+**HR & Recruitment**:
+
+* Resume screening
+* Candidate matching
+* Interview scheduling
+* Onboarding automation
+
+**Supply Chain**:
+
+* Inventory optimization
+* Demand forecasting
+* Logistics automation
+* Supplier management
+
+**Legal & Compliance**:
+
+* Contract review
+* Compliance checking
+* Legal research
+* Document analysis
+
+## Next Steps
+
+* Deploy solutions to [Instances](https://docs.kaisar.io/kaisar-network/ai-solutions/instances) (Coming Soon)
+* Monitor performance in [Analytics](https://docs.kaisar.io/kaisar-network/deep-learning-platform/analytics)
+* Configure agents in [Organization → Agents](https://docs.kaisar.io/kaisar-network/organization/agents)
+* Set up integrations in [Platform Connections](https://docs.kaisar.io/kaisar-network/agent-configuration/platform-connections)
+
+
+# Instances
+
+Manage your deployed AI solution instances.
+
+![Solution Instances](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-30683c17ab8875313a6e9dc0102a1d498f32d4e8%2Finstances_list_view.png?alt=media)
+
+## Overview
+
+The Solution Instances section allows you to manage, monitor, and configure all deployed AI solutions in your organization. Track performance, resource usage, and status of your AI assistants and tools.
+
+## Instances Dashboard
+
+The dashboard displays key metrics at a glance:
+
+**Summary Cards**:
+
+* **Total Instances**: Total number of deployed solution instances
+* **Active**: Number of instances currently active
+* **Running**: Number of instances currently running
+* **Error**: Number of instances experiencing errors
+
+## Instance List View
+
+The instances table shows all deployed solutions with the following information:
+
+**Columns**:
+
+* **Instance Name**: Name and description
+* **Category**: Solution category (e.g., Data Analytics, Marketing & Content)
+* **Status**: Current status (Active, Running, Error, Stopped)
+* **Deployed**: Deployment time
+* **Performance**: Request count and success rate
+* **Resources**: Agents and models used
+* **Actions**: Quick actions menu
+
+**Filtering and Search**:
+
+* Search by instance name
+* Filter by Category
+* Filter by Status
+
+## Viewing Instance Details
+
+To view detailed information about an instance:
+
+1. Navigate to **AI Solutions** → **Instances**
+2. Click on an instance from the list
+3. View comprehensive details in the modal dialog
+
+![View Instance](https://3962875474-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F01Fyr0ujWr1ipjmUOTbr%2Fuploads%2Fgit-blob-ee8c8fd557ff96311858a189689d1842830a197a%2Finstance_details_view.png?alt=media)
+
+**Instance Information**:
+
+**Instance Name**\*
+
+* Descriptive name for the instance
+* Example: `BI Assistant - Analytics Team`
+* Helper text: "Enter a descriptive name for this instance"
+
+**Solution Template**\*
+
+* ID of the solution template deployed
+* Example: `sol-016`
+* Helper text: "The ID of the solution template to deploy"
+
+**Description**
+
+* Description of the instance purpose
+* Example: "Natural language queries for business data"
+
+**Status**\*
+
+* Current operational status
+* Dropdown selection: Active, Running, Stopped, Error
+* Example: `Active`
+
+## Managing Instances
+
+### Starting and Stopping
+
+To change instance state:
+
+1. Edit the instance
+2. Change Status field (Running ↔ Stopped)
+3. Save changes
+
+**Running**: Instance is processing requests **Stopped**: Instance is paused and not consuming compute resources
+
+### Monitoring Performance
+
+**Key Metrics**:
+
+* **Requests**: Total number of requests processed
+* **Success Rate**: Percentage of successful requests
+* **Uptime**: Percentage of time available
+
+**Performance Analysis**:
+
+* Check error rates for debugging
+* Monitor request volume for scaling
+* Review uptime for SLA compliance
+
+### Resource Usage
+
+**Agents**:
+
+* Number of active agents in the instance
+* Affects concurrency and capability
+
+**Models**:
+
+* Number of AI models loaded
+* Affects memory usage and latency
+
+## Best Practices
+
+**Naming Conventions**:
+
+* Use descriptive names (e.g., "Department - Function")
+* Include environment (e.g., "Dev - Support Bot")
+
+**Resource Management**:
+
+* Stop unused instances to save costs
+* Monitor resource usage regularly
+* Scale resources based on demand
+
+**Maintenance**:
+
+* Update solution templates when available
+* Review error logs for "Error" status instances
+* Archive or delete obsolete instances
+
+## Next Steps
+
+* Browse [Market Place](https://docs.kaisar.io/kaisar-network/ai-solutions/market-place) for new solutions
+* Monitor in [Analytics](https://docs.kaisar.io/kaisar-network/deep-learning-platform/analytics)
+* Configure [Agents](https://docs.kaisar.io/kaisar-network/organization/agents)
+
+
+# Troubleshooting
+
+Common issues and solutions for Kaisar AI Ops.
+
+## Overview
+
+This section covers:
+
+* [FAQ](https://docs.kaisar.io/kaisar-network/troubleshooting/troubleshooting/faq) - Frequently asked questions
+* [Known Issues](https://docs.kaisar.io/kaisar-network/troubleshooting/troubleshooting/known-issues) - Current limitations
+* [Support](https://docs.kaisar.io/kaisar-network/troubleshooting/troubleshooting/support) - How to get help
+
+## Quick Troubleshooting
+
+### Cannot Log In
+
+**Symptoms**: Login page shows error or redirects back
+
+**Solutions**:
+
+1. Clear browser cache and cookies
+2. Try incognito/private mode
+3. Verify credentials with admin
+4. Check if MFA is required
+5. Try password reset
+
+### Experiment Won't Start
+
+**Symptoms**: Experiment stuck in "pending" status
+
+**Solutions**:
+
+1. Check resource quotas
+2. Verify compute resources are available
+3. Review experiment configuration
+4. Check cluster capacity
+5. View experiment logs for errors
+
+### Slow Dashboard Loading
+
+**Symptoms**: Dashboard takes long to load
+
+**Solutions**:
+
+1. Check internet connection
+2. Clear browser cache
+3. Reduce number of displayed items
+4. Check system status page
+5. Try different browser
+
+### API Requests Failing
+
+**Symptoms**: 401, 403, or 500 errors
+
+**Solutions**:
+
+1. Verify API token is valid
+2. Check token permissions
+3. Review rate limits
+4. Check API endpoint URL
+5. Verify request format
+
+## Common Error Messages
+
+### "Quota Exceeded"
+
+**Cause**: Resource limit reached
+
+**Solution**:
+
+1. Check current usage
+2. Clean up unused resources
+3. Request quota increase
+4. Optimize resource allocation
+
+### "Permission Denied"
+
+**Cause**: Insufficient permissions
+
+**Solution**:
+
+1. Check your role
+2. Request access from admin
+3. Verify resource sharing settings
+4. Check organization membership
+
+### "Resource Not Found"
+
+**Cause**: Invalid ID or deleted resource
+
+**Solution**:
+
+1. Verify resource ID
+2. Check if resource was deleted
+3. Ensure you have access
+4. Try listing resources first
+
+## Performance Issues
+
+### Slow Experiment Training
+
+**Possible Causes**:
+
+* Inefficient data loading
+* Suboptimal batch size
+* CPU bottleneck
+* Network I/O issues
+
+**Solutions**:
+
+1. Profile your code
+2. Optimize data pipeline
+3. Increase batch size
+4. Use data caching
+5. Check GPU utilization
+
+### High Memory Usage
+
+**Possible Causes**:
+
+* Large batch size
+* Memory leaks
+* Inefficient model architecture
+
+**Solutions**:
+
+1. Reduce batch size
+2. Use gradient accumulation
+3. Enable mixed precision training
+4. Profile memory usage
+5. Clear unused variables
+
+## Integration Issues
+
+### Authentication Service Failing
+
+**Solutions**:
+
+1. Verify Authentication Service is running
+2. Check client configuration
+3. Review realm settings
+4. Verify redirect URIs
+5. Check SSL certificates
+
+### Storage Connection Failed
+
+**Solutions**:
+
+1. Verify credentials
+2. Check bucket/container exists
+3. Review IAM permissions
+4. Test network connectivity
+5. Verify endpoint URL
+
+## Getting Help
+
+### Self-Service Resources
+
+* [FAQ](https://docs.kaisar.io/kaisar-network/troubleshooting/troubleshooting/faq) - Common questions
+* [User Guide](https://github.com/Kaisar-Network/docs/blob/kaisar-ai-ops/kaisar-ai-ops/user-guide/README.md) - Feature documentation
+* [API Reference](https://github.com/Kaisar-Network/docs/blob/kaisar-ai-ops/kaisar-ai-ops/api-reference/README.md) - API documentation
+
+### Contact Support
+
+* [Support Portal](https://docs.kaisar.io/kaisar-network/troubleshooting/troubleshooting/support) - Submit tickets
+* Email: <support@kaisar.io>
+* Slack: #kaisar-support
+
+### Community
+
+* GitHub Discussions
+* Stack Overflow (tag: kaisar-ai-ops)
+* Community Forum
+
+## Diagnostic Tools
+
+### Health Check
+
+Check system health:
+
+```bash
+curl https://ai.kaisar.io/health
+```
+
+### API Verification
+
+Verify API access:
+
+```bash
+curl -X GET https://ai.kaisar.io/api/v1/auth/verify \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+### Network Test
+
+Test connectivity:
+
+```bash
+ping ai.kaisar.io
+traceroute ai.kaisar.io
+```
+
+## Best Practices
+
+* ✅ Check system status before reporting issues
+* ✅ Collect error messages and logs
+* ✅ Try basic troubleshooting first
+* ✅ Document steps to reproduce
+* ✅ Include relevant screenshots
+* ✅ Provide system information
+
+## Next Steps
+
+* Review [FAQ](https://docs.kaisar.io/kaisar-network/troubleshooting/troubleshooting/faq) for common questions
+* Check [Known Issues](https://docs.kaisar.io/kaisar-network/troubleshooting/troubleshooting/known-issues)
+* Contact [Support](https://docs.kaisar.io/kaisar-network/troubleshooting/troubleshooting/support) if needed
+
+
+# FAQ
+
+Frequently asked questions about Kaisar AI Ops.
+
+## General
+
+### What is Kaisar AI Ops?
+
+Kaisar AI Ops is a unified platform for managing Deep Learning workflows and AI operations, providing tools for experiment tracking, model management, dataset versioning, and production deployment.
+
+### Who can use Kaisar AI Ops?
+
+Data scientists, ML engineers, researchers, and teams working on AI/ML projects.
+
+### Is there a free tier?
+
+Contact your administrator or sales team for pricing information.
+
+### What frameworks are supported?
+
+* PyTorch
+* TensorFlow
+* Scikit-learn
+* XGBoost
+* Custom frameworks via Docker
+
+## Getting Started
+
+### How do I get access?
+
+Contact your organization administrator to create an account and assign permissions.
+
+### Do I need to install anything?
+
+No, Kaisar AI Ops is web-based. However, you may want to install the CLI tool or SDK for programmatic access.
+
+### How do I reset my password?
+
+Click "Forgot Password" on the login page, or contact your administrator.
+
+## Experiments
+
+### How many experiments can I run simultaneously?
+
+This depends on your organization's quota and available compute resources. Check your quota in the dashboard.
+
+### Can I run experiments locally?
+
+Kaisar AI Ops is designed for cloud-based execution, but you can track local experiments using the SDK.
+
+### How long are experiment logs retained?
+
+Default retention is 30 days, but this can be configured by administrators.
+
+### Can I compare experiments?
+
+Yes, select multiple experiments and click "Compare" to view side-by-side metrics and configurations.
+
+## Models
+
+### How do I version my models?
+
+Use semantic versioning (e.g., 1.0.0) when registering models. Each version is tracked separately.
+
+### What model formats are supported?
+
+* PyTorch (.pt, .pth)
+* TensorFlow (SavedModel, .h5)
+* ONNX (.onnx)
+* Scikit-learn (pickle)
+* Custom formats
+
+### Can I deploy models to production?
+
+Yes, use the Deployments feature to deploy models with auto-scaling and monitoring.
+
+## Datasets
+
+### What's the maximum dataset size?
+
+This depends on your storage quota. Contact your administrator for limits.
+
+### Can I use external storage?
+
+Yes, Kaisar AI Ops supports S3, GCS, and Azure Blob Storage.
+
+### How do I version datasets?
+
+Create a new version when uploading updated data. Link experiments to specific dataset versions for reproducibility.
+
+## Deployments
+
+### How do I deploy a model?
+
+1. Register your model
+2. Navigate to Deployments
+3. Click "Create Deployment"
+4. Select your model and configure resources
+5. Click "Deploy"
+
+### Can deployments auto-scale?
+
+Yes, configure auto-scaling based on CPU usage, request rate, or custom metrics.
+
+### How do I monitor deployments?
+
+View real-time metrics in the Deployments section, including request rate, latency, and error rate.
+
+## Security & Access
+
+### How is authentication handled?
+
+Kaisar AI Ops uses a centralized Identity Provider for authentication, supporting SSO, SAML, and OAuth.
+
+### Can I use SSO?
+
+Yes, if configured by your administrator.
+
+### How do I create API tokens?
+
+Navigate to Profile → API Tokens → Create Token.
+
+### Are API tokens secure?
+
+Yes, but you should:
+
+* Never commit tokens to version control
+* Rotate tokens regularly
+* Use minimum required permissions
+* Store tokens securely
+
+## Billing & Usage
+
+### How am I charged?
+
+Charges typically include:
+
+* Compute hours (GPU/CPU)
+* Storage (datasets, models, logs)
+* API requests
+* Data transfer
+
+Contact your administrator for specific pricing.
+
+### How do I monitor usage?
+
+Navigate to Admin → Billing & Usage to view current usage and costs.
+
+### Can I set budget alerts?
+
+Yes, administrators can configure budget alerts and quotas.
+
+## API & Integration
+
+### Is there an API?
+
+Yes, a comprehensive REST API is available. See the [API Reference](https://github.com/Kaisar-Network/docs/blob/kaisar-ai-ops/kaisar-ai-ops/api-reference/README.md).
+
+### Are there SDKs?
+
+Yes, Python and JavaScript/TypeScript SDKs are available.
+
+### Can I integrate with CI/CD?
+
+Yes, Kaisar AI Ops supports webhooks and integrations with GitHub Actions, GitLab CI, and Jenkins.
+
+### Can I export data?
+
+Yes, you can export experiments, models, and datasets via the UI or API.
+
+## Troubleshooting
+
+### My experiment is stuck in "pending"
+
+Check:
+
+* Resource quotas
+* Cluster capacity
+* Experiment configuration
+* Logs for errors
+
+### I can't access a resource
+
+Verify:
+
+* Your permissions
+* Resource sharing settings
+* Organization membership
+
+### API requests are failing
+
+Check:
+
+* Token validity
+* Token permissions
+* Rate limits
+* Request format
+
+### Dashboard is slow
+
+Try:
+
+* Clearing browser cache
+* Reducing displayed items
+* Using a different browser
+* Checking internet connection
+
+## Support
+
+### How do I get help?
+
+* Check this FAQ
+* Review [Troubleshooting](https://docs.kaisar.io/kaisar-network/troubleshooting/troubleshooting)
+* Contact [Support](https://docs.kaisar.io/kaisar-network/troubleshooting/troubleshooting/support)
+* Join community forums
+
+### How do I report a bug?
+
+Submit a ticket via the [Support Portal](https://docs.kaisar.io/kaisar-network/troubleshooting/troubleshooting/support) with:
+
+* Steps to reproduce
+* Error messages
+* Screenshots
+* System information
+
+### Is there a community?
+
+Yes, join our:
+
+* GitHub Discussions
+* Stack Overflow (tag: kaisar-ai-ops)
+* Community Forum
+
+## Next Steps
+
+* Review [User Guide](https://github.com/Kaisar-Network/docs/blob/kaisar-ai-ops/kaisar-ai-ops/user-guide/README.md)
+* Check [Troubleshooting](https://docs.kaisar.io/kaisar-network/troubleshooting/troubleshooting)
+* Contact [Support](https://docs.kaisar.io/kaisar-network/troubleshooting/troubleshooting/support)
+
+
+# Known Issues
+
+Current limitations and known issues in Kaisar AI Ops.
+
+> \[!NOTE] This page is regularly updated. Last updated: 2024-01-15
+
+## Platform Issues
+
+### Cluster and Jobs Sections Not Accessible
+
+**Status**: Under Development **Severity**: Low **Description**: The "Cluster" and "Jobs" menu items are visible in the sidebar but not currently clickable or functional. **Workaround**: Use the Experiments feature for job submission. **ETA**: Q2 2024
+
+### Large Dataset Upload Timeout
+
+**Status**: Known Issue **Severity**: Medium **Description**: Uploading datasets larger than 10GB may timeout in the browser. **Workaround**: Use the CLI or API for large uploads, or split datasets into smaller chunks. **Fix**: Planned for next release
+
+### Dashboard Refresh Delay
+
+**Status**: Known Issue **Severity**: Low **Description**: Dashboard metrics may take up to 60 seconds to refresh. **Workaround**: Manually refresh the page for latest data. **Fix**: Under investigation
+
+## Experiments
+
+### GPU Memory Not Released
+
+**Status**: Known Issue **Severity**: Medium **Description**: In some cases, GPU memory is not fully released after experiment completion. **Workaround**: Restart the experiment or wait for automatic cleanup (5 minutes). **Fix**: Planned for v1.5
+
+### Experiment Logs Truncated
+
+**Status**: Known Issue **Severity**: Low **Description**: Experiment logs longer than 10MB may be truncated in the UI. **Workaround**: Download full logs via API or CLI. **Fix**: Improved log viewer in development
+
+### Concurrent Experiment Limit
+
+**Status**: By Design **Severity**: Low **Description**: Maximum 50 concurrent experiments per organization. **Workaround**: Queue additional experiments or request quota increase. **Note**: This is a configurable limit
+
+## Models
+
+### ONNX Model Preview Not Supported
+
+**Status**: Feature Request **Severity**: Low **Description**: ONNX models cannot be previewed in the UI. **Workaround**: Download and inspect locally. **ETA**: Q3 2024
+
+### Model Download Speed
+
+**Status**: Known Issue **Severity**: Low **Description**: Large model downloads (>5GB) may be slow. **Workaround**: Use direct S3/GCS access if configured. **Fix**: CDN integration planned
+
+## Deployments
+
+### Cold Start Latency
+
+**Status**: Known Issue **Severity**: Medium **Description**: First request to a deployment may take 30-60 seconds (cold start). **Workaround**: Configure minimum instances > 0 to keep instances warm. **Fix**: Improved cold start optimization in progress
+
+### Auto-scaling Delay
+
+**Status**: By Design **Severity**: Low **Description**: Auto-scaling takes 2-3 minutes to provision new instances. **Workaround**: Set appropriate min/max instances based on expected traffic. **Note**: This is normal cloud provider behavior
+
+## API
+
+### Rate Limit Headers Missing
+
+**Status**: Known Issue **Severity**: Low **Description**: Some API endpoints don't return rate limit headers. **Workaround**: Monitor 429 responses. **Fix**: Planned for v1.4
+
+### Webhook Retry Logic
+
+**Status**: Known Issue **Severity**: Medium **Description**: Failed webhooks are retried only 3 times. **Workaround**: Implement your own retry logic or use a message queue. **Fix**: Configurable retry policy in development
+
+## Browser Compatibility
+
+### Safari Private Mode Issues
+
+**Status**: Known Issue **Severity**: Low **Description**: Some features may not work in Safari Private Mode due to cookie restrictions. **Workaround**: Use normal browsing mode or a different browser. **Fix**: Under investigation
+
+### Internet Explorer Not Supported
+
+**Status**: By Design **Severity**: N/A **Description**: Internet Explorer is not supported. **Workaround**: Use Chrome, Firefox, Safari, or Edge. **Note**: No plans to support IE
+
+## Integrations
+
+### GitHub Enterprise Server
+
+**Status**: Limited Support **Severity**: Medium **Description**: GitHub Enterprise Server integration has limited functionality. **Workaround**: Use GitHub.com or manual Git integration. **Fix**: Full support planned for Q2 2024
+
+### Slack Notification Delays
+
+**Status**: Known Issue **Severity**: Low **Description**: Slack notifications may be delayed by 1-2 minutes. **Workaround**: Use email for time-critical notifications. **Fix**: Under investigation
+
+## Performance
+
+### Large Organization Slowdown
+
+**Status**: Known Issue **Severity**: Medium **Description**: Organizations with >10,000 experiments may experience slow dashboard loading. **Workaround**: Use filters and pagination, or archive old experiments. **Fix**: Database optimization in progress
+
+### Search Performance
+
+**Status**: Known Issue **Severity**: Low **Description**: Search may be slow for organizations with many resources. **Workaround**: Use specific filters to narrow results. **Fix**: Search index optimization planned
+
+## Security
+
+### MFA Recovery Codes
+
+**Status**: Known Issue **Severity**: Medium **Description**: Recovery codes are shown only once and cannot be regenerated. **Workaround**: Save recovery codes securely when first generated. **Fix**: Recovery code regeneration feature planned
+
+## Reporting Issues
+
+If you encounter an issue not listed here:
+
+1. Check the [FAQ](https://docs.kaisar.io/kaisar-network/troubleshooting/troubleshooting/faq)
+2. Review [Troubleshooting](https://docs.kaisar.io/kaisar-network/troubleshooting/troubleshooting)
+3. Search existing issues
+4. Submit a new issue via [Support](https://docs.kaisar.io/kaisar-network/troubleshooting/troubleshooting/support)
+
+When reporting, include:
+
+* Steps to reproduce
+* Expected vs. actual behavior
+* Error messages and logs
+* Browser/OS information
+* Screenshots if applicable
+
+## Workaround Index
+
+Quick reference for common workarounds:
+
+| Issue                   | Workaround                 |
+| ----------------------- | -------------------------- |
+| Large dataset upload    | Use CLI/API                |
+| GPU memory not released | Wait 5 minutes or restart  |
+| Slow dashboard          | Use filters and pagination |
+| Cold start latency      | Set min instances > 0      |
+| Webhook failures        | Implement retry logic      |
+| Safari private mode     | Use normal mode            |
+
+## Next Steps
+
+* Review [FAQ](https://docs.kaisar.io/kaisar-network/troubleshooting/troubleshooting/faq) for common questions
+* Check [Troubleshooting](https://docs.kaisar.io/kaisar-network/troubleshooting/troubleshooting) for solutions
+* Contact [Support](https://docs.kaisar.io/kaisar-network/troubleshooting/troubleshooting/support) for assistance
+
+
+# Support
+
+Get help with Kaisar AI Ops.
+
+## Support Channels
+
+### Self-Service Resources
+
+**Documentation**:
+
+* [User Guide](https://github.com/Kaisar-Network/docs/blob/kaisar-ai-ops/kaisar-ai-ops/user-guide/README.md) - Feature documentation
+* [Admin Guide](https://github.com/Kaisar-Network/docs/blob/kaisar-ai-ops/kaisar-ai-ops/admin-guide/README.md) - Administration
+* [API Reference](https://github.com/Kaisar-Network/docs/blob/kaisar-ai-ops/kaisar-ai-ops/api-reference/README.md) - API documentation
+* [FAQ](https://docs.kaisar.io/kaisar-network/troubleshooting/troubleshooting/faq) - Common questions
+* [Troubleshooting](https://docs.kaisar.io/kaisar-network/troubleshooting/troubleshooting) - Issue resolution
+
+**Community**:
+
+* GitHub Discussions: [github.com/kaisar-ai-ops/discussions](https://github.com/kaisar-ai-ops/discussions)
+* Stack Overflow: Tag questions with `kaisar-ai-ops`
+* Community Forum: [community.kaisar.io](https://community.kaisar.io)
+
+### Direct Support
+
+**Support Portal**:
+
+* URL: [support.kaisar.io](https://support.kaisar.io)
+* Submit tickets for technical issues
+* Track ticket status
+* View support history
+
+**Email Support**:
+
+* Email: <support@kaisar.io>
+* Response time: 24-48 hours (business days)
+* Include: Issue description, steps to reproduce, error messages
+
+**Slack Support** (Enterprise customers):
+
+* Channel: #kaisar-support
+* Response time: 4-8 hours (business hours)
+* For urgent issues
+
+**Phone Support** (Enterprise customers):
+
+* Available 24/7 for critical issues
+* Contact your account manager for phone number
+
+## Support Tiers
+
+### Community Support
+
+* Access to documentation
+* Community forums
+* GitHub Discussions
+* Stack Overflow
+
+### Standard Support
+
+* Email support (24-48 hour response)
+* Support portal access
+* Bug fixes and patches
+* Documentation updates
+
+### Premium Support
+
+* Priority email support (4-8 hour response)
+* Slack support channel
+* Phone support for critical issues
+* Dedicated support engineer
+* Quarterly business reviews
+
+### Enterprise Support
+
+* 24/7 phone support
+* 1-hour response for critical issues
+* Dedicated account manager
+* Custom SLAs
+* On-site support (if needed)
+* Training and onboarding
+
+## Submitting a Support Ticket
+
+### Before Submitting
+
+1. Check [FAQ](https://docs.kaisar.io/kaisar-network/troubleshooting/troubleshooting/faq) for common questions
+2. Review [Troubleshooting](https://docs.kaisar.io/kaisar-network/troubleshooting/troubleshooting) guide
+3. Search [Known Issues](https://docs.kaisar.io/kaisar-network/troubleshooting/troubleshooting/known-issues)
+4. Try basic troubleshooting steps
+
+### Required Information
+
+Include in your ticket:
+
+* **Summary**: Brief description of the issue
+* **Description**: Detailed explanation
+* **Steps to Reproduce**: How to recreate the issue
+* **Expected Behavior**: What should happen
+* **Actual Behavior**: What actually happens
+* **Error Messages**: Full error text
+* **Screenshots**: Visual evidence
+* **Environment**: Browser, OS, version
+* **Impact**: How it affects your work
+
+### Priority Levels
+
+**Critical (P1)**:
+
+* Production system down
+* Data loss or corruption
+* Security vulnerability
+* Response: 1 hour (Enterprise), 4 hours (Premium)
+
+**High (P2)**:
+
+* Major feature not working
+* Significant performance degradation
+* Workaround available
+* Response: 4 hours (Enterprise), 8 hours (Premium), 24 hours (Standard)
+
+**Medium (P3)**:
+
+* Minor feature issue
+* Workaround available
+* Non-critical bug
+* Response: 24 hours (Enterprise/Premium), 48 hours (Standard)
+
+**Low (P4)**:
+
+* Feature request
+* Documentation issue
+* Cosmetic bug
+* Response: 48 hours (Enterprise/Premium), 5 business days (Standard)
+
+## Support Ticket Template
+
+```
+Subject: [Component] Brief description
+
+Priority: [Critical/High/Medium/Low]
+
+Environment:
+- Browser: Chrome 120
+- OS: macOS 14.0
+- Kaisar AI Ops Version: 1.3.0
+
+Issue Description:
+[Detailed description of the issue]
+
+Steps to Reproduce:
+1. Navigate to...
+2. Click on...
+3. Observe...
+
+Expected Behavior:
+[What should happen]
+
+Actual Behavior:
+[What actually happens]
+
+Error Messages:
+[Copy/paste any error messages]
+
+Screenshots:
+[Attach screenshots]
+
+Impact:
+[How this affects your work]
+
+Additional Context:
+[Any other relevant information]
+```
+
+## Emergency Support
+
+For critical production issues (Enterprise customers only):
+
+1. **Call emergency hotline**: \[Contact your account manager]
+2. **Describe the issue**: Be clear and concise
+3. **Follow instructions**: Support engineer will guide you
+4. **Stay available**: Be ready for follow-up questions
+
+## Feature Requests
+
+### Submitting Feature Requests
+
+1. Check if feature already requested
+2. Submit via support portal or GitHub Discussions
+3. Include:
+   * Use case and business value
+   * Proposed solution
+   * Alternative solutions considered
+   * Impact on your workflow
+
+### Feature Request Process
+
+1. **Submitted**: Feature request received
+2. **Under Review**: Product team evaluates
+3. **Planned**: Added to roadmap
+4. **In Development**: Being built
+5. **Released**: Available in platform
+
+## Training & Onboarding
+
+### Self-Paced Learning
+
+* Documentation and guides
+* Video tutorials (coming soon)
+* Sample projects and notebooks
+
+### Instructor-Led Training
+
+* Live webinars (monthly)
+* Custom training sessions (Enterprise)
+* On-site training (Enterprise)
+
+### Certification Program
+
+* Kaisar AI Ops Certified User
+* Kaisar AI Ops Certified Administrator
+* Contact <training@kaisar.io>
+
+## Feedback
+
+We value your feedback:
+
+* **Product Feedback**: <feedback@kaisar.io>
+* **Documentation**: <docs@kaisar.io>
+* **General**: <info@kaisar.io>
+
+## Service Status
+
+Check system status:
+
+* Status Page: [status.kaisar.io](https://status.kaisar.io)
+* Subscribe to status updates
+* View incident history
+* Planned maintenance schedule
+
+## Contact Information
+
+**General Inquiries**:
+
+* Email: <info@kaisar.io>
+* Website: [kaisar.io](https://kaisar.io)
+
+**Sales**:
+
+* Email: <sales@kaisar.io>
+* Phone: Contact via website
+
+**Partnerships**:
+
+* Email: <partners@kaisar.io>
+
+**Security**:
+
+* Email: <security@kaisar.io>
+* PGP Key: Available on website
+
+## Next Steps
+
+* Submit a ticket via [Support Portal](https://support.kaisar.io)
+* Join [Community Forum](https://community.kaisar.io)
+* Review [FAQ](https://docs.kaisar.io/kaisar-network/troubleshooting/troubleshooting/faq) for quick answers
 
 

@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > APM > Tracing Guides > Understand Datadog retention policy to
   efficiently retain trace data
-source_url: https://docs.datadoghq.com/guide/leveraging_diversity_sampling/index.html
 ---
 
 # Understand Datadog retention policy to efficiently retain trace data

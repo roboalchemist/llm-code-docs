@@ -8,7 +8,6 @@ description: >-
   Complete reference of Datadog permissions, including managed roles, custom
   roles, sensitive permissions, and the permissions list.
 breadcrumbs: Docs > Account Management > Access Control > Datadog Role Permissions
-source_url: https://docs.datadoghq.com/rbac/permissions/index.html
 ---
 
 # Datadog Role Permissions
@@ -116,42 +115,45 @@ Find below the list of permissions for the apm assets:
 
 Find below the list of permissions for the access management assets:
 
-| Name                                                           | Description                                                                                                                                                                                                                                                                                                                | Default Role           |
-| -------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| User Access Invite(`user_access_invite`)                       | Invite other users to your organization.                                                                                                                                                                                                                                                                                   | Datadog Standard Role  |
-| User Access Manage(`user_access_manage`)                       | Disable users, manage user roles, manage SAML-to-role mappings, and configure logs restriction queries.                                                                                                                                                                                                                    | Datadog Admin Role     |
-| Service Account Write(`service_account_write`)                 | Create, disable, and use Service Accounts in your organization.                                                                                                                                                                                                                                                            | Datadog Admin Role     |
-| Org Management(`org_management`)                               | Edit org configurations, including authentication and certain security preferences such as configuring SAML, renaming an org, configuring allowed login methods, creating child orgs, subscribing & unsubscribing from apps in the marketplace, and enabling & disabling Remote Configuration for the entire organization. | Datadog Admin Role     |
-| Org Connections Write(`org_connections_write`)                 | Control which organizations can query your organization's data.                                                                                                                                                                                                                                                            | Datadog Admin Role     |
-| Org Connections Read(`org_connections_read`)                   | View which organizations can query data from your organization. Query data from other organizations.                                                                                                                                                                                                                       | Datadog Read Only Role |
-| Governance Console Read(`governance_console_read`)             | View the Governance Console.                                                                                                                                                                                                                                                                                               | Datadog Standard Role  |
-| Governance Console Write (Preview)(`governance_console_write`) | Enforce Governance controls via the Governance Console. Note: This permission is in Preview Mode and will be enforced soon.                                                                                                                                                                                                | Datadog Admin Role     |
+| Name                                                 | Description                                                                                                                                                                                                                                                                                                                | Default Role           |
+| ---------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| User Access Invite(`user_access_invite`)             | Invite other users to your organization.                                                                                                                                                                                                                                                                                   | Datadog Standard Role  |
+| User Access Manage(`user_access_manage`)             | Disable users, manage user roles, manage SAML-to-role mappings, and configure logs restriction queries.                                                                                                                                                                                                                    | Datadog Admin Role     |
+| Service Account Write(`service_account_write`)       | Create, disable, and use Service Accounts in your organization.                                                                                                                                                                                                                                                            | Datadog Admin Role     |
+| Org Management(`org_management`)                     | Edit org configurations, including authentication and certain security preferences such as configuring SAML, renaming an org, configuring allowed login methods, creating child orgs, subscribing & unsubscribing from apps in the marketplace, and enabling & disabling Remote Configuration for the entire organization. | Datadog Admin Role     |
+| Org Connections Write(`org_connections_write`)       | Control which organizations can query your organization's data.                                                                                                                                                                                                                                                            | Datadog Admin Role     |
+| Org Connections Read(`org_connections_read`)         | View which organizations can query data from your organization. Query data from other organizations.                                                                                                                                                                                                                       | Datadog Read Only Role |
+| Governance Console Read(`governance_console_read`)   | View the Governance Console.                                                                                                                                                                                                                                                                                               | Datadog Standard Role  |
+| Governance Console Write(`governance_console_write`) | Enforce Governance controls via the Governance Console.                                                                                                                                                                                                                                                                    | Datadog Admin Role     |
 
 ## App Builder & Workflow Automation{% #app-builder--workflow-automation %}
 
 Find below the list of permissions for the app builder & workflow automation assets:
 
-| Name                                                   | Description                                                                                                  | Default Role           |
-| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ---------------------- |
-| Workflows Read(`workflows_read`)                       | View workflows.                                                                                              | Datadog Read Only Role |
-| Workflows Write(`workflows_write`)                     | Create, edit, and delete workflows.                                                                          | Datadog Standard Role  |
-| Workflows Run(`workflows_run`)                         | Run workflows.                                                                                               | Datadog Standard Role  |
-| Connections Read(`connections_read`)                   | List and view available connections. Connections contain secrets that cannot be revealed.                    | Datadog Read Only Role |
-| Connections Write(`connections_write`)                 | Create and delete connections.                                                                               | Datadog Standard Role  |
-| Connections Resolve(`connections_resolve`)             | Resolve connections.                                                                                         | Datadog Standard Role  |
-| Apps View(`apps_run`)                                  | View and run Apps in App Builder.                                                                            | Datadog Standard Role  |
-| Apps Write(`apps_write`)                               | Create, edit, publish, and delete Apps in App Builder.                                                       | Datadog Standard Role  |
-| Private Action Runner Read(`on_prem_runner_read`)      | View and search Private Action Runners for Workflow Automation and App Builder.                              | Datadog Read Only Role |
-| Private Action Runner Contribute(`on_prem_runner_use`) | Attach a Private Action Runner to a connection.                                                              | Datadog Standard Role  |
-| Private Action Runner Write(`on_prem_runner_write`)    | Create and edit Private Action Runners for Workflow Automation and App Builder.                              | Datadog Admin Role     |
-| Actions Datastore Read(`apps_datastore_read`)          | Allows read access to the data within the Actions Datastore.                                                 | Datadog Read Only Role |
-| Actions Datastore Write(`apps_datastore_write`)        | Allows modification of data within the Actions Datastore, including adding, editing, and deleting records.   | Datadog Standard Role  |
-| Actions Datastore Manage(`apps_datastore_manage`)      | Allows management of the Actions Datastore, including creating, updating, and deleting the datastore itself. | Datadog Standard Role  |
-| Connection Groups Write(`connection_groups_write`)     | Create, delete and update connection groups.                                                                 | Datadog Standard Role  |
-| Connection Groups Read(`connection_groups_read`)       | Read and use connection groups.                                                                              | Datadog Read Only Role |
-| Actions Interface Run(`actions_interface_run`)         | Execute actions in the Bits AI Action Interface.                                                             | Datadog Standard Role  |
-| Forms Read(`apps_form_read`)                           | View and respond to Forms.                                                                                   | Datadog Read Only Role |
-| Forms Manage(`apps_form_manage`)                       | Create, update, and manage Forms.                                                                            | Datadog Standard Role  |
+| Name                                                   | Description                                                                                                          | Default Role           |
+| ------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| Workflows Read(`workflows_read`)                       | View workflows.                                                                                                      | Datadog Read Only Role |
+| Workflows Write(`workflows_write`)                     | Create, edit, and delete workflows.                                                                                  | Datadog Standard Role  |
+| Workflows Run(`workflows_run`)                         | Run workflows.                                                                                                       | Datadog Standard Role  |
+| Connections Read(`connections_read`)                   | List and view available connections. Connections contain secrets that cannot be revealed.                            | Datadog Read Only Role |
+| Connections Write(`connections_write`)                 | Create and delete connections.                                                                                       | Datadog Standard Role  |
+| Connections Resolve(`connections_resolve`)             | Resolve connections.                                                                                                 | Datadog Standard Role  |
+| Apps View(`apps_run`)                                  | View and run Apps in App Builder.                                                                                    | Datadog Standard Role  |
+| Apps Write(`apps_write`)                               | Create, edit, publish, and delete Apps in App Builder.                                                               | Datadog Standard Role  |
+| Private Action Runner Read(`on_prem_runner_read`)      | View and search Private Action Runners for Workflow Automation and App Builder.                                      | Datadog Read Only Role |
+| Private Action Runner Contribute(`on_prem_runner_use`) | Attach a Private Action Runner to a connection.                                                                      | Datadog Standard Role  |
+| Private Action Runner Write(`on_prem_runner_write`)    | Create and edit Private Action Runners for Workflow Automation and App Builder.                                      | Datadog Admin Role     |
+| Actions Datastore Read(`apps_datastore_read`)          | Allows read access to the data within the Actions Datastore.                                                         | Datadog Read Only Role |
+| Actions Datastore Write(`apps_datastore_write`)        | Allows modification of data within the Actions Datastore, including adding, editing, and deleting records.           | Datadog Standard Role  |
+| Actions Datastore Manage(`apps_datastore_manage`)      | Allows management of the Actions Datastore, including creating, updating, and deleting the datastore itself.         | Datadog Standard Role  |
+| Connection Groups Write(`connection_groups_write`)     | Create, delete and update connection groups.                                                                         | Datadog Standard Role  |
+| Connection Groups Read(`connection_groups_read`)       | Read and use connection groups.                                                                                      | Datadog Read Only Role |
+| Actions Interface Run(`actions_interface_run`)         | Execute actions in the Bits AI Action Interface.                                                                     | Datadog Standard Role  |
+| Forms Read(`apps_form_read`)                           | View and respond to Forms.                                                                                           | Datadog Read Only Role |
+| Forms Manage(`apps_form_manage`)                       | Create, update, and manage Forms.                                                                                    | Datadog Standard Role  |
+| Agent Builder Read (Preview)(`agent_builder_read`)     | View Agents in AgentBuilder. Note: This permission is in Preview Mode and will be enforced soon.                     | Datadog Read Only Role |
+| Agent Builder Write (Preview)(`agent_builder_write`)   | Create, edit, and delete Agents in AgentBuilder. Note: This permission is in Preview Mode and will be enforced soon. | Datadog Standard Role  |
+| Agent Builder Run (Preview)(`agent_builder_run`)       | Run agents in AgentBuilder. Note: This permission is in Preview Mode and will be enforced soon.                      | Datadog Standard Role  |
 
 ## Application Security{% #application-security %}
 
@@ -253,6 +255,8 @@ Find below the list of permissions for the cloud security platform assets:
 | Cloud Workload Security Agent Actions(`security_monitoring_cws_agent_rules_actions`)   | Managing actions on Cloud Workload Security Agent Rules.                                                                                                            | Datadog Admin Role     |
 | Security Comments Write(`security_comments_write`)                                     | Write comments into vulnerabilities.                                                                                                                                | Datadog Standard Role  |
 | Security Comments Read(`security_comments_read`)                                       | Read comments of vulnerabilities.                                                                                                                                   | Datadog Read Only Role |
+| Bits AI Security Analyst Investigations Write (Preview)(`bits_security_analyst_write`) | Run Bits AI security investigations. Note: This permission is in Preview Mode and will be enforced soon.                                                            | Datadog Admin Role     |
+| Bits AI Security Analyst Config Write (Preview)(`bits_security_analyst_config_write`)  | Edit Bits AI Security Analyst settings. Note: This permission is in Preview Mode and will be enforced soon.                                                         | Datadog Admin Role     |
 
 ## CoTerm{% #coterm %}
 
@@ -456,6 +460,15 @@ Log Management RBAC also includes two legacy permissions, superseded by finer-gr
 | [Logs Live Tail](https://docs.datadoghq.com/logs/guide/logs-rbac-permissions/#logs_live_tail)(`logs_live_tail`)                    | Access the live tail feature         | Datadog Read Only Role |
 | [Logs Read Index Data](https://docs.datadoghq.com/logs/guide/logs-rbac-permissions/#logs_read_index_data) (`logs_read_index_data`) | Read a subset log data (index based) | Datadog Read Only Role |
 
+## MCP{% #mcp %}
+
+Find below the list of permissions for the mcp assets:
+
+| Name                   | Description                    | Default Role           |
+| ---------------------- | ------------------------------ | ---------------------- |
+| MCP Write(`mcp_write`) | Write data via the MCP server. | Datadog Standard Role  |
+| MCP Read(`mcp_read`)   | Read data via the MCP server.  | Datadog Read Only Role |
+
 ## Metrics{% #metrics %}
 
 Find below the list of permissions for the metrics assets:
@@ -550,11 +563,13 @@ Find below the list of permissions for the processes assets:
 
 Find below the list of permissions for the product analytics assets:
 
-| Name                                                                   | Description                                                                                                   | Default Role           |
-| ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ---------------------- |
-| Profiles Read(`audience_management_read`)                              | View Audience Management data.                                                                                | Datadog Read Only Role |
-| Profiles Write(`audience_management_write`)                            | Modify Audience Management data.                                                                              | Datadog Standard Role  |
-| Product Analytics Apps Write (Preview)(`product_analytics_apps_write`) | Configure Product Analytics applications. Note: This permission is in Preview Mode and will be enforced soon. | Datadog Standard Role  |
+| Name                                                                          | Description                                                                                                   | Default Role           |
+| ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ---------------------- |
+| Profiles Read(`audience_management_read`)                                     | View Audience Management data.                                                                                | Datadog Read Only Role |
+| Profiles Write(`audience_management_write`)                                   | Modify Audience Management data.                                                                              | Datadog Standard Role  |
+| Product Analytics Apps Write (Preview)(`product_analytics_apps_write`)        | Configure Product Analytics applications. Note: This permission is in Preview Mode and will be enforced soon. | Datadog Standard Role  |
+| Product Analytics Saved Charts Read(`product_analytics_saved_widgets_read`)   | View saved Product Analytics charts.                                                                          | Datadog Read Only Role |
+| Product Analytics Saved Charts Write(`product_analytics_saved_widgets_write`) | Create, edit, and delete saved Product Analytics charts.                                                      | Datadog Standard Role  |
 
 ## Real User Monitoring{% #real-user-monitoring %}
 

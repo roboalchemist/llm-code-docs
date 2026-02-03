@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/api-reference/projectautomations/delete-project_automation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete project_automation
 
 > Delete a project_automation object by its id
@@ -302,6 +306,57 @@ components:
                 - event_type
                 - object_type
                 - retention_days
+            - type: object
+              properties:
+                event_type:
+                  type: string
+                  enum:
+                    - environment_update
+                  description: The type of automation.
+                environment_filter:
+                  type: array
+                  items:
+                    type: string
+                  description: Optional list of environment slugs to filter by
+                action:
+                  oneOf:
+                    - type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                            - webhook
+                          description: The type of action to take
+                        url:
+                          type: string
+                          description: The webhook URL to send the request to
+                      required:
+                        - type
+                        - url
+                    - type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                            - slack
+                          description: The type of action to take
+                        workspace_id:
+                          type: string
+                          description: The Slack workspace ID to post to
+                        channel:
+                          type: string
+                          description: The Slack channel ID to post to
+                        message_template:
+                          type: string
+                          description: Custom message template for the alert
+                      required:
+                        - type
+                        - workspace_id
+                        - channel
+                  description: The action to take when the automation rule is triggered
+              required:
+                - event_type
+                - action
           description: The configuration for the automation rule
       required:
         - id
@@ -331,7 +386,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

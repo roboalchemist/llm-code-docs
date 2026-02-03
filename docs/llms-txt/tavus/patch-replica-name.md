@@ -1,94 +1,100 @@
 # Source: https://docs.tavus.io/api-reference/phoenix-replica-model/patch-replica-name.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Rename Replica
 
 > This endpoint renames a single Replica by its unique identifier.
 
 
+
+
 ## OpenAPI
 
 ````yaml patch /v2/replicas/{replica_id}/name
+openapi: 3.0.3
+info:
+  title: Tavus Developer API Collection
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: https://tavusapi.com
+security:
+  - apiKey: []
+tags:
+  - name: Videos
+  - name: Replicas
+  - name: Conversations
+  - name: Personas
+  - name: Replacements
+  - name: Transcriptions
+  - name: Documents
 paths:
-  path: /v2/replicas/{replica_id}/name
-  method: patch
-  servers:
-    - url: https://tavusapi.com
-  request:
-    security:
-      - title: apiKey
-        parameters:
-          query: {}
-          header:
-            x-api-key:
-              type: apiKey
-          cookie: {}
+  /v2/replicas/{replica_id}/name:
     parameters:
-      path:
-        replica_id:
-          schema:
-            - type: string
-              required: true
-              description: The unique identifier of the persona.
-              example: rf3073f2dcc1
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              replica_name:
-                allOf:
-                  - type: string
-                    example: Rio
-            requiredProperties:
-              - replica_name
-        examples:
-          Rename Replica:
-            value:
-              replica_name: Rio
-  response:
-    '200':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: OK
-        examples: {}
-        description: OK
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
+      - name: replica_id
+        in: path
+        required: true
+        description: The unique identifier of the persona.
+        schema:
+          type: string
+          example: rf3073f2dcc1
+    patch:
+      tags:
+        - Replicas
+      summary: Rename Replica
+      description: |
+        This endpoint renames a single Replica by its unique identifier.
+      operationId: renameReplica
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                replica_name:
+                  type: string
+                  example: Rio
+              required:
+                - replica_name
+            examples:
+              Rename Replica:
+                value:
+                  replica_name: Rio
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
                     description: The error message.
                     example: Invalid replica_id
-        examples:
-          example:
-            value:
-              error: Invalid replica_id
-        description: Bad Request
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              message:
-                allOf:
-                  - type: string
+        '401':
+          description: UNAUTHORIZED
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
                     description: The error message.
                     example: Invalid access token
-        examples:
-          example:
-            value:
-              message: Invalid access token
-        description: UNAUTHORIZED
-  deprecated: false
-  type: path
+      security:
+        - apiKey: []
 components:
-  schemas: {}
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
 
 ````

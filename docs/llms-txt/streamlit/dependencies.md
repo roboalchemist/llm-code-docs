@@ -1,3 +1,7 @@
+# Source: https://docs.streamlit.io/knowledge-base/dependencies
+
+# Source: https://docs.streamlit.io/deploy/concepts/dependencies
+
 # Managing dependencies when deploying your app
 
 Before you began developing your app, you set up and configured your development environment by installing Python and Streamlit. When you deploy your app, you need to set up and configure your deployment environment in the same way. When you deploy your app to a cloud service, your app's [Python server](/develop/concepts/architecture/architecture#python-backend-server) will be running on a remote machine. This remote machine will not have access all the files and programs on your personal computer.

@@ -1,3 +1,5 @@
+# Source: https://preactjs.com/guide/v10/context#createcontext
+
 # Context
 
 Context is a way to pass data through the component tree without having to pass it through every component in-between via props. In a nutshell, it allows components anywhere in the hierarchy to subscribe to a value and get notified when it changes, bringing pub-sub-style updates to Preact.

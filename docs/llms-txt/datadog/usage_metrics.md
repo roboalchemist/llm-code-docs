@@ -4,7 +4,6 @@
 title: Estimated Usage Metrics
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Account Management > Billing > Estimated Usage Metrics
-source_url: https://docs.datadoghq.com/billing/usage_metrics/index.html
 ---
 
 # Estimated Usage Metrics

@@ -1,3 +1,17 @@
+# Source: https://platform.claude.com/docs/en/api/typescript/beta/files/download.md
+
+# Source: https://platform.claude.com/docs/en/api/ruby/beta/files/download.md
+
+# Source: https://platform.claude.com/docs/en/api/python/beta/files/download.md
+
+# Source: https://platform.claude.com/docs/en/api/kotlin/beta/files/download.md
+
+# Source: https://platform.claude.com/docs/en/api/java/beta/files/download.md
+
+# Source: https://platform.claude.com/docs/en/api/go/beta/files/download.md
+
+# Source: https://platform.claude.com/docs/en/api/beta/files/download.md
+
 # Source: https://platform.claude.com/docs/en/api/java/beta/files/download.md
 
 ## Download

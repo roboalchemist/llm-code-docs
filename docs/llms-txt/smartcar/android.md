@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/getting-started/tutorials/android.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Android Tutorial
 
 > In this tutorial, we will use the Android SDK to integrate Connect into your application.

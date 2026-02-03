@@ -1,56 +1,58 @@
 # Source: https://docs.squared.ai/api-reference/connectors/list_connectors.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Connectors
+
+
 
 ## OpenAPI
 
 ````yaml GET /api/v1/connectors
+openapi: 3.0.1
+info:
+  title: AI Squared API
+  version: 1.0.0
+servers:
+  - url: https://api.squared.ai
+security: []
 paths:
-  path: /api/v1/connectors
-  method: get
-  servers:
-    - url: https://api.squared.ai
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        type:
+  /api/v1/connectors:
+    get:
+      tags:
+        - Connectors
+      summary: Lists all connectors
+      parameters:
+        - name: type
+          in: query
+          required: true
           schema:
-            - type: enum<string>
-              enum:
-                - source
-                - destination
-              required: true
-              description: Type of the connector
-        category:
+            type: string
+            enum:
+              - source
+              - destination
+          description: Type of the connector
+        - name: category
+          in: query
+          required: true
           schema:
-            - type: enum<string>
-              enum:
-                - data
-                - ai_ml
-              required: true
-              description: Category of the connector
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: array
+            type: string
+            enum:
+              - data
+              - ai_ml
+          description: Category of the connector
+      responses:
+        '200':
+          description: A list of connectors
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -83,9 +85,8 @@ paths:
                               type: string
                             icon:
                               type: string
-              links:
-                allOf:
-                  - type: object
+                  links:
+                    type: object
                     properties:
                       self:
                         type: string
@@ -97,32 +98,14 @@ paths:
                         type: string
                       last:
                         type: string
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              data:
-                - id: <string>
-                  type: <string>
-                  attributes:
-                    name: <string>
-                    connector_type: <string>
-                    workspace_id: 123
-                    created_at: '2023-11-07T05:31:56Z'
-                    updated_at: '2023-11-07T05:31:56Z'
-                    configuration: {}
-                    connector_name: <string>
-                    icon: <string>
-              links:
-                self: <string>
-                first: <string>
-                prev: <string>
-                next: <string>
-                last: <string>
-        description: A list of connectors
-  deprecated: false
-  type: path
+                additionalProperties: false
+      security:
+        - bearerAuth: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 
 ````

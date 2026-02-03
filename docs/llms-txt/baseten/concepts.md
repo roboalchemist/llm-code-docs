@@ -1,52 +1,18 @@
 # Source: https://docs.baseten.co/inference/concepts.md
 
-# Source: https://docs.baseten.co/development/model/performance/concepts.md
-
 # Source: https://docs.baseten.co/development/concepts.md
 
 # Source: https://docs.baseten.co/development/chain/concepts.md
 
 # Source: https://docs.baseten.co/deployment/concepts.md
 
-# Source: https://docs.baseten.co/inference/concepts.md
-
-# Source: https://docs.baseten.co/development/model/performance/concepts.md
-
-# Source: https://docs.baseten.co/development/concepts.md
-
-# Source: https://docs.baseten.co/development/chain/concepts.md
-
-# Source: https://docs.baseten.co/deployment/concepts.md
-
-# Source: https://docs.baseten.co/inference/concepts.md
-
-# Source: https://docs.baseten.co/development/model/performance/concepts.md
-
-# Source: https://docs.baseten.co/development/concepts.md
-
-# Source: https://docs.baseten.co/development/chain/concepts.md
-
-# Source: https://docs.baseten.co/deployment/concepts.md
-
-# Source: https://docs.baseten.co/inference/concepts.md
-
-# Source: https://docs.baseten.co/development/model/performance/concepts.md
-
-# Source: https://docs.baseten.co/development/concepts.md
-
-# Source: https://docs.baseten.co/development/chain/concepts.md
-
-# Source: https://docs.baseten.co/deployment/concepts.md
-
-# Source: https://docs.baseten.co/development/concepts.md
-
-# Source: https://docs.baseten.co/development/chain/concepts.md
-
-# Source: https://docs.baseten.co/deployment/concepts.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Concepts
 
-Baseten provides a flexible and scalable infrastructure for deploying and managing machine learning models. This page introduces key concepts - [deployments](/deployment/deployments), [environments](/deployment/environments) , [resources](/deployment/resources) , and [autoscaling](/deployment/autoscaling) — that shape how models are served, tested, and optimized for performance and cost efficiency.
+Baseten provides a flexible and scalable infrastructure for deploying and managing machine learning models. This page introduces key concepts - [deployments](/deployment/deployments), [environments](/deployment/environments), [resources](/deployment/resources), and [autoscaling](/deployment/autoscaling) — that shape how models are served, tested, and optimized for performance and cost efficiency.
 
 ## Deployments
 

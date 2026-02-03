@@ -70,11 +70,8 @@ Use the `variant` prop to change the variant of the Alert.
 
 Use the `close` prop to display a [Button](/docs/components/button) to dismiss the Alert.
 
-<tip>
-
-An `update:open` event will be emitted when the close button is clicked.
-
-</tip>
+> [!TIP]
+> An `update:open` event will be emitted when the close button is clicked.
 
 ```vue
 <template>
@@ -100,23 +97,15 @@ Use the `close-icon` prop to customize the close button [Icon](/docs/components/
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.close` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.close` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.close` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.close` key.
 
 ### Actions
 
@@ -175,7 +164,7 @@ interface AlertProps {
   as?: any;
   title?: string | undefined;
   description?: string | undefined;
-  icon?: string | object | undefined;
+  icon?: any;
   avatar?: AvatarProps | undefined;
   color?: "error" | "primary" | "secondary" | "success" | "info" | "warning" | "neutral" | undefined;
   variant?: "solid" | "outline" | "soft" | "subtle" | undefined;
@@ -195,11 +184,11 @@ interface AlertProps {
    * Display a close button to dismiss the alert.
    * `{ size: 'md', color: 'neutral', variant: 'link' }`{lang="ts-type"}
    */
-  close?: boolean | Partial<ButtonProps> | undefined;
+  close?: boolean | Omit<ButtonProps, LinkPropsKeys> | undefined;
   /**
    * The icon displayed in the close button.
    */
-  closeIcon?: string | object | undefined;
+  closeIcon?: any;
   ui?: { root?: ClassNameValue; wrapper?: ClassNameValue; title?: ClassNameValue; description?: ClassNameValue; icon?: ClassNameValue; avatar?: ClassNameValue; avatarSize?: ClassNameValue; actions?: ClassNameValue; close?: ClassNameValue; } | undefined;
 }
 ```
@@ -488,8 +477,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/cli-list-profiles-commands.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # CLI list-profiles command
 
 > Use these options when using the `list-profiles` CLI command.
@@ -7,15 +11,15 @@
 Run the command like this:
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":"css-variables"}
   npx trigger.dev@latest list-profiles
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm dlx trigger.dev@latest list-profiles
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn dlx trigger.dev@latest list-profiles
   ```
 </CodeGroup>

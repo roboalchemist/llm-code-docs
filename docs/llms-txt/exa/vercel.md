@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/reference/vercel.md
+# Source: https://exa.ai/docs/reference/vercel.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # AI SDK by Vercel
 
@@ -85,7 +89,7 @@ webSearch({
   // Search settings
   type: "auto",           // "auto", "neural", "fast", "deep"
   category: "news",       // "company", "research paper", "news", "pdf", 
-                          // "github", "personal site", "linkedin profile", "financial report"
+                          // "github", "personal site", "people", "financial report"
   numResults: 10,
   
   // Filter by domain
@@ -149,8 +153,3 @@ const search = webSearch(config);
 * [API Dashboard](https://dashboard.exa.ai) - Try Exa API on the dashboard
 * [Get your API Keys](https://dashboard.exa.ai/api-keys) - Get your API keys
 * [Exa Website](https://exa.ai) - Learn more about Exa
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/indexes/pods/understanding-pod-based-indexes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Understanding pod-based indexes
 
 > Learn about pod-based index architecture and types

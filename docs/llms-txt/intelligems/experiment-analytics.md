@@ -15,6 +15,6 @@
 - [How Experiment Targeting Affects Analytics](/analytics/experiment-analytics/how-experiment-targeting-affects-analytics.md)
 - [Statistical Significance](/analytics/experiment-analytics/statistical-significance.md)
 - [Experiment Filters](/analytics/experiment-analytics/filters.md)
-- [Timeseries](/analytics/experiment-analytics/timeseries.md)
+- [Time Series](/analytics/experiment-analytics/timeseries.md)
 - [Tagging Orders by Test Group in Shopify](/analytics/experiment-analytics/tagging-orders-by-test-group-in-shopify.md): Show which test group is associated with orders in your Shopify store.
 - [Exporting Experiment Data](/analytics/experiment-analytics/exporting-data.md)

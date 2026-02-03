@@ -11,11 +11,13 @@ Tips and answers to FAQs about how to run Electric successfully.
 
 ## Local development
 
-### Slow shapes — why are my shapes slow in the browser in local development?
+### Slow shapes / slow HMR / slow dev server — why is my local development slow?
 
-Sometimes people encounter a mysterious slow-down with Electric in local development, when your web app is subscribed to 6 or more shapes. This slow-down is caused by a limitation of the legacy version of HTTP, 1.1.
+Sometimes people encounter mysterious slow-downs with Electric in local development — slow shape loading, sluggish HMR (Hot Module Replacement), or an unresponsive development server. This commonly happens when your web app is subscribed to 6 or more shapes. The slow-down is caused by a limitation of the legacy version of HTTP, 1.1.
 
 With HTTP/1.1, browsers only allow 6 simultaneous requests to a specific backend. This is because each HTTP/1.1 request uses its own expensive TCP connection. As shapes are loaded over HTTP, this means only 6 shapes can be getting updates with HTTP/1.1 due to this browser restriction. All other requests pause until there's an opening.
+
+This also affects your development server (Vite, webpack, etc.) because the browser's TCP connection limit is shared across all requests to your dev server — including HMR updates, asset loading, and shape sync. If Electric shapes are holding connections open, your HMR may take minutes instead of milliseconds.
 
 Luckily, HTTP/2, introduced in 2015, fixes this problem by *multiplexing* each request to a server over the same TCP connection. This allows essentially unlimited connections. HTTP/2 is standard across the vast majority of hosts now. Unfortunately it's not yet standard in local dev environments.
 
@@ -125,7 +127,7 @@ During development, you may want to clear this state. However, just restarting E
 
 ##### Solution — clear shape logs
 
-You can remove [`STORAGE_DIR`](https://electric-sql.com/docs/api/config#storage-dir) to delete all shape logs. This will ensure that following shape requests will be re-synced from scratch.
+You can remove [`STORAGE_DIR`](/docs/api/config#storage-dir) to delete all shape logs. This will ensure that following shape requests will be re-synced from scratch.
 
 ###### Using docker
 
@@ -164,7 +166,7 @@ This indicates that your client library or proxy layer is caching requests to El
 
 ##### Solution — clear your cache
 
-The problem will resolve itself as client/proxy caches empty. You can force this by clearing your client or proxy cache. See https://electric-sql.com/docs/api/http#control-messages for context on 409 messages.
+The problem will resolve itself as client/proxy caches empty. You can force this by clearing your client or proxy cache. See [Control messages](/docs/api/http#control-messages) for more context on 409 messages.
 
 ## Production
 
@@ -274,3 +276,71 @@ However, the proxy might not keep the response headers in which case the client 
 ##### Solution — configure proxy to keep headers
 
 Verify the proxy configuration and make sure it doesn't remove any of the `electric-...` headers.
+
+### 414 Request-URI Too Long — why are my subset snapshot requests failing?
+
+When using subset snapshots (via `requestSnapshot` or `fetchSnapshot`), you might encounter a `414 Request-URI Too Long` error:
+
+```
+Bandit.HTTPError: Request URI is too long
+```
+
+This happens when the subset parameters (especially `WHERE` clauses with many values) exceed the maximum URL length. This is common when:
+
+* Using `WHERE id = ANY($1)` with hundreds of IDs (typical in join queries)
+* TanStack DB generates large filter lists from JOIN operations
+* Any query with many positional parameters
+
+##### Solution — use POST requests for subset snapshots
+
+Instead of sending subset parameters as URL query parameters (GET), send them in the request body (POST). The Electric server supports both methods.
+
+**TypeScript Client**
+
+Set `subsetMethod: 'POST'` on the stream to use POST for all subset requests:
+
+```typescript
+const stream = new ShapeStream({
+  url: 'http://localhost:3000/v1/shape',
+  params: { table: 'items' },
+  log: 'changes_only',
+  subsetMethod: 'POST', // Use POST for all subset requests
+})
+
+// All subset requests will now use POST
+const { metadata, data } = await stream.requestSnapshot({
+  where: "id = ANY($1)",
+  params: { '1': '{id1,id2,id3,...hundreds more...}' },
+})
+```
+
+Or override per-request:
+
+```typescript
+const { metadata, data } = await stream.requestSnapshot({
+  where: "id = ANY($1)",
+  params: { '1': '{id1,id2,id3,...}' },
+  method: 'POST', // Use POST for this request only
+})
+```
+
+**Direct HTTP**
+
+Use POST with subset parameters in the JSON body:
+
+```sh
+curl -X POST 'http://localhost:3000/v1/shape?table=items&offset=123_4&handle=abc-123' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "where": "id = ANY($1)",
+    "params": {"1": "{id1,id2,id3,...}"},
+    "order_by": "created_at",
+    "limit": 100
+  }'
+```
+
+See the [HTTP API documentation](/docs/api/http#subset-snapshots) for more details.
+
+:::info Future change
+In Electric 2.0, GET requests for subset snapshots will be deprecated. Only POST will be supported. We recommend migrating to POST now to avoid future breaking changes.
+:::

@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/manage/migrate.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Migrate users to a new version
 
 > If this isn't the first time you've promoted your app - you might have users on older versions.

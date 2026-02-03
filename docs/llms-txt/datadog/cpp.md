@@ -2,6 +2,8 @@
 
 # Source: https://docs.datadoghq.com/tracing/trace_collection/compatibility/cpp.md
 
+# Source: https://docs.datadoghq.com/tracing/trace_collection/custom_instrumentation/cpp.md
+
 # Source: https://docs.datadoghq.com/tracing/trace_collection/dd_libraries/cpp.md
 
 ---
@@ -10,7 +12,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > APM > Application Instrumentation > Add the Datadog Tracing Library >
   Tracing C++ Applications
-source_url: https://docs.datadoghq.com/trace_collection/dd_libraries/cpp/index.html
 ---
 
 # Tracing C++ Applications

@@ -1,12 +1,13 @@
 # Source: https://turbo.build/guides/tools/eslint.md
 
 # ESLint
-Description: Learn how to use ESLint in a monorepo.
 
-import { Tabs, Tab } from 'fumadocs-ui/components/tabs';
-import { Callout } from '#components/callout';
-import { Files, Folder, File } from '#components/files';
-import { CreateTurboCallout } from './create-turbo-callout.tsx';
+<CopyPrompt
+  title="Set up ESLint in a Turborepo"
+  prompt={
+  "Set up ESLint in this Turborepo.\n1) Create a shared ESLint config package\n2) Configure packages to use the shared config\n3) Set up linting in turbo.json\n\nWalk me through each step."
+}
+/>
 
 ESLint is a static analysis tool for quickly finding and fixing problems in your JavaScript code.
 
@@ -74,7 +75,7 @@ Notably, the `next.js` and `react-internal.js` configurations use the `base.js` 
 
 In our `web` app, we first need to add `@repo/eslint-config` as a dependency.
 
-<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
+<PackageManagerTabs>
   <Tab value="pnpm">
     ```jsonc title="./apps/web/package.json"
     {
@@ -114,12 +115,11 @@ In our `web` app, we first need to add `@repo/eslint-config` as a dependency.
     }
     ```
   </Tab>
-</Tabs>
+</PackageManagerTabs>
 
 We can then import the configuration like this:
 
 ```js title="./apps/web/eslint.config.js"
-import { nextJsConfig } from '@repo/eslint-config/next-js';
 
 /** @type {import("eslint").Linter.Config} */
 export default nextJsConfig;
@@ -128,7 +128,6 @@ export default nextJsConfig;
 Additionally, you can add configuration specific to the package like this:
 
 ```js title="./apps/web/eslint.config.js"
-import { nextJsConfig } from '@repo/eslint-config/next-js';
 
 /** @type {import("eslint").Linter.Config} */
 export default [
@@ -193,8 +192,8 @@ A configuration for Next.js may look like this:
 /* Custom ESLint configuration for use with Next.js apps. */
 module.exports = {
   extends: [
-    'eslint-config-turbo',
-    'eslint-config-next',
+    "eslint-config-turbo",
+    "eslint-config-next",
     // ...your other ESLint configurations
   ].map(require.resolve),
   // ...your other configuration
@@ -222,7 +221,7 @@ Note that the ESLint dependencies are all listed here. This is useful, since it 
 
 In our `web` app, we first need to add `@repo/eslint-config` as a dependency.
 
-<Tabs groupId="package-manager" items={['pnpm', 'yarn', 'npm', 'bun']} persist>
+<PackageManagerTabs>
   <Tab value="pnpm">
     ```jsonc title="./apps/web/package.json"
     {
@@ -262,14 +261,14 @@ In our `web` app, we first need to add `@repo/eslint-config` as a dependency.
     }
     ```
   </Tab>
-</Tabs>
+</PackageManagerTabs>
 
 We can then import the config like this:
 
 ```js title="./apps/web/.eslintrc.js"
 module.exports = {
   root: true,
-  extends: ['@repo/eslint-config/next.js'],
+  extends: ["@repo/eslint-config/next.js"],
 };
 ```
 
@@ -289,13 +288,17 @@ The `package.json` for each package where you'd like to run ESLint should look l
 
 With your scripts prepared, you can then create your Turborepo task:
 
-```bash title="./turbo.json"
+```json title="./turbo.json"
 {
   "tasks": {
-    "lint": {}
+    "lint": {
+      "dependsOn": ["^lint"]
+    }
   }
 }
 ```
+
+Using `dependsOn` with `^lint` ensures that changes to dependencies like `@repo/eslint-config` will invalidate the cache for your `lint` task, even though the configuration package doesn't have a `lint` script itself.
 
 You can now run `turbo lint` with [global `turbo`](/docs/getting-started/installation#global-installation) or create a script in your root `package.json`:
 
@@ -306,3 +309,7 @@ You can now run `turbo lint` with [global `turbo`](/docs/getting-started/install
   }
 }
 ```
+
+---
+
+[View full sitemap](/sitemap.md)

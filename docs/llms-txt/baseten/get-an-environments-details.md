@@ -1,282 +1,105 @@
 # Source: https://docs.baseten.co/reference/management-api/environments/get-an-environments-details.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get environment
 
 > Gets an environment's details and returns the environment.
 
+
+
 ## OpenAPI
 
 ````yaml get /v1/models/{model_id}/environments/{env_name}
+openapi: 3.1.0
+info:
+  description: REST API for management of Baseten resources
+  title: Baseten management API
+  version: 1.0.0
+servers:
+  - url: https://api.baseten.co
+security:
+  - ApiKeyAuth: []
 paths:
-  path: /v1/models/{model_id}/environments/{env_name}
-  method: get
-  servers:
-    - url: https://api.baseten.co
-  request:
-    security:
-      - title: ApiKeyAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: apiKey
-              description: >-
-                You must specify the scheme 'Api-Key' in the Authorization
-                header. For example, `Authorization: Api-Key <Your_Api_Key>`
-          cookie: {}
+  /v1/models/{model_id}/environments/{env_name}:
     parameters:
-      path:
-        model_id:
-          schema:
-            - type: string
-              required: true
-        env_name:
-          schema:
-            - type: string
-              required: true
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - lang: bash
-        source: >
-          curl --request GET \
-
-          --url
-          https://api.baseten.co/v1/models/{model_id}/environments/{env_name} \
-
-          --header "Authorization: Api-Key $BASETEN_API_KEY"
-      - lang: python
-        source: >-
-          import requests
-
-          import os
-
-          API_KEY = os.environ.get("BASETEN_API_KEY", "<YOUR_API_KEY>")
-
-          url =
-          "https://api.baseten.co/v1/models/{model_id}/environments/{env_name}"
-
-
-          headers = {"Authorization": f"Api-Key {API_KEY}"}
-
-
-          response = requests.request(
-              "GET",
-              url,
-              headers=headers,
-              json={}
-          )
-
-
-          print(response.text)
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              name:
-                allOf:
-                  - description: Name of the environment
-                    title: Name
-                    type: string
-              created_at:
-                allOf:
-                  - description: Time the environment was created in ISO 8601 format
-                    format: date-time
-                    title: Created At
-                    type: string
-              model_id:
-                allOf:
-                  - description: Unique identifier of the model
-                    title: Model Id
-                    type: string
-              current_deployment:
-                allOf:
-                  - anyOf:
-                      - $ref: '#/components/schemas/DeploymentV1'
-                      - type: 'null'
-                    description: Current deployment of the environment
-              autoscaling_settings:
-                allOf:
-                  - $ref: '#/components/schemas/AutoscalingSettingsV1'
-                    description: Autoscaling settings for the environment
-              promotion_settings:
-                allOf:
-                  - $ref: '#/components/schemas/PromotionSettingsV1'
-                    description: Promotion settings for the environment
-              instance_type:
-                allOf:
-                  - $ref: '#/components/schemas/InstanceTypeV1'
-                    description: Instance type for the environment
-            title: EnvironmentV1
-            description: Environment for oracles.
-            refIdentifier: '#/components/schemas/EnvironmentV1'
-            requiredProperties:
-              - name
-              - created_at
-              - model_id
-              - current_deployment
-              - autoscaling_settings
-              - promotion_settings
-              - instance_type
-        examples:
-          example:
-            value:
-              name: <string>
-              created_at: '2023-11-07T05:31:56Z'
-              model_id: <string>
-              current_deployment:
-                id: <string>
-                created_at: '2023-11-07T05:31:56Z'
-                name: <string>
-                model_id: <string>
-                is_production: true
-                is_development: true
-                status: BUILDING
-                active_replica_count: 123
-                autoscaling_settings:
-                  min_replica: 123
-                  max_replica: 123
-                  autoscaling_window: 123
-                  scale_down_delay: 123
-                  concurrency_target: 123
-                  target_utilization_percentage: 123
-                instance_type_name: <string>
-                environment: <string>
-              autoscaling_settings:
-                min_replica: 123
-                max_replica: 123
-                autoscaling_window: 123
-                scale_down_delay: 123
-                concurrency_target: 123
-                target_utilization_percentage: 123
-              promotion_settings:
-                redeploy_on_promotion: true
-                rolling_deploy: true
-                ramp_up_while_promoting: true
-                ramp_up_duration_seconds: 600
-              instance_type:
-                id: <string>
-                name: <string>
-                memory_limit_mib: 123
-                millicpu_limit: 123
-                gpu_count: 123
-                gpu_type: <string>
-                gpu_memory_limit_mib: 123
-        description: Environment for oracles.
-  deprecated: false
-  type: path
+      - $ref: '#/components/parameters/model_id'
+      - $ref: '#/components/parameters/env_name'
+    get:
+      summary: Get an environment's details
+      description: Gets an environment's details and returns the environment.
+      responses:
+        '200':
+          description: Environment for oracles.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnvironmentV1'
 components:
+  parameters:
+    model_id:
+      schema:
+        type: string
+      name: model_id
+      in: path
+      required: true
+    env_name:
+      schema:
+        type: string
+      name: env_name
+      in: path
+      required: true
   schemas:
-    InstanceTypeV1:
-      description: An instance type.
+    EnvironmentV1:
+      description: Environment for oracles.
       properties:
-        id:
-          description: Identifier string for the instance type
-          title: Id
-          type: string
         name:
-          description: Display name of the instance type
+          description: Name of the environment
           title: Name
           type: string
-        memory_limit_mib:
-          description: Memory limit of the instance type in Mebibytes
-          title: Memory Limit Mib
-          type: integer
-        millicpu_limit:
-          description: CPU limit of the instance type in millicpu
-          title: Millicpu Limit
-          type: integer
-        gpu_count:
-          description: Number of GPUs on the instance type
-          title: Gpu Count
-          type: integer
-        gpu_type:
+        created_at:
+          description: Time the environment was created in ISO 8601 format
+          format: date-time
+          title: Created At
+          type: string
+        model_id:
+          description: Unique identifier of the model
+          title: Model Id
+          type: string
+        current_deployment:
           anyOf:
-            - type: string
+            - $ref: '#/components/schemas/DeploymentV1'
             - type: 'null'
-          description: Type of GPU on the instance type
-          title: Gpu Type
-        gpu_memory_limit_mib:
+          description: Current deployment of the environment
+        candidate_deployment:
           anyOf:
-            - type: integer
+            - $ref: '#/components/schemas/DeploymentV1'
             - type: 'null'
-          description: Memory limit of the GPU on the instance type in Mebibytes
-          title: Gpu Memory Limit Mib
+          default: null
+          description: >-
+            Candidate deployment being promoted to the environment, if a
+            promotion is in progress
+        autoscaling_settings:
+          $ref: '#/components/schemas/AutoscalingSettingsV1'
+          description: Autoscaling settings for the environment
+        promotion_settings:
+          $ref: '#/components/schemas/PromotionSettingsV1'
+          description: Promotion settings for the environment
+        instance_type:
+          $ref: '#/components/schemas/InstanceTypeV1'
+          description: Instance type for the environment
       required:
-        - id
         - name
-        - memory_limit_mib
-        - millicpu_limit
-        - gpu_count
-        - gpu_type
-        - gpu_memory_limit_mib
-      title: InstanceTypeV1
+        - created_at
+        - model_id
+        - current_deployment
+        - autoscaling_settings
+        - promotion_settings
+        - instance_type
+      title: EnvironmentV1
       type: object
-    AutoscalingSettingsV1:
-      description: Autoscaling settings for a deployment.
-      properties:
-        min_replica:
-          description: Minimum number of replicas
-          title: Min Replica
-          type: integer
-        max_replica:
-          description: Maximum number of replicas
-          title: Max Replica
-          type: integer
-        autoscaling_window:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          description: Timeframe of traffic considered for autoscaling decisions
-          title: Autoscaling Window
-        scale_down_delay:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          description: Waiting period before scaling down any active replica
-          title: Scale Down Delay
-        concurrency_target:
-          description: Number of requests per replica before scaling up
-          title: Concurrency Target
-          type: integer
-        target_utilization_percentage:
-          anyOf:
-            - type: integer
-            - type: 'null'
-          description: Target utilization percentage for scaling up/down.
-          title: Target Utilization Percentage
-      required:
-        - min_replica
-        - max_replica
-        - autoscaling_window
-        - scale_down_delay
-        - concurrency_target
-        - target_utilization_percentage
-      title: AutoscalingSettingsV1
-      type: object
-    DeploymentStatusV1:
-      description: The status of a deployment.
-      enum:
-        - BUILDING
-        - DEPLOYING
-        - DEPLOY_FAILED
-        - LOADING_MODEL
-        - ACTIVE
-        - UNHEALTHY
-        - BUILD_FAILED
-        - BUILD_STOPPED
-        - DEACTIVATING
-        - INACTIVE
-        - FAILED
-        - UPDATING
-        - SCALED_TO_ZERO
-        - WAKING_UP
-      title: DeploymentStatusV1
-      type: string
     DeploymentV1:
       description: A deployment of a model.
       properties:
@@ -345,6 +168,57 @@ components:
         - environment
       title: DeploymentV1
       type: object
+    AutoscalingSettingsV1:
+      description: Autoscaling settings for a deployment.
+      properties:
+        min_replica:
+          description: Minimum number of replicas
+          title: Min Replica
+          type: integer
+        max_replica:
+          description: Maximum number of replicas
+          title: Max Replica
+          type: integer
+        autoscaling_window:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Timeframe of traffic considered for autoscaling decisions
+          title: Autoscaling Window
+        scale_down_delay:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Waiting period before scaling down any active replica
+          title: Scale Down Delay
+        concurrency_target:
+          description: Number of requests per replica before scaling up
+          title: Concurrency Target
+          type: integer
+        target_utilization_percentage:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Target utilization percentage for scaling up/down.
+          title: Target Utilization Percentage
+        target_in_flight_tokens:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          default: null
+          description: >-
+            Target number of in-flight tokens for autoscaling decisions. Early
+            access only.
+          title: Target In Flight Tokens
+      required:
+        - min_replica
+        - max_replica
+        - autoscaling_window
+        - scale_down_delay
+        - concurrency_target
+        - target_utilization_percentage
+      title: AutoscalingSettingsV1
+      type: object
     PromotionSettingsV1:
       description: Promotion settings for promoting chains and oracles
       properties:
@@ -370,6 +244,12 @@ components:
           examples:
             - true
           title: Rolling Deploy
+        rolling_deploy_config:
+          anyOf:
+            - $ref: '#/components/schemas/RollingDeployConfigV1'
+            - type: 'null'
+          default: null
+          description: Rolling deploy configuration for promotions
         ramp_up_while_promoting:
           anyOf:
             - type: boolean
@@ -390,5 +270,128 @@ components:
           title: Ramp Up Duration Seconds
       title: PromotionSettingsV1
       type: object
+    InstanceTypeV1:
+      description: An instance type.
+      properties:
+        id:
+          description: Identifier string for the instance type
+          title: Id
+          type: string
+        name:
+          description: Display name of the instance type
+          title: Name
+          type: string
+        memory_limit_mib:
+          description: Memory limit of the instance type in Mebibytes
+          title: Memory Limit Mib
+          type: integer
+        millicpu_limit:
+          description: CPU limit of the instance type in millicpu
+          title: Millicpu Limit
+          type: integer
+        gpu_count:
+          description: Number of GPUs on the instance type
+          title: Gpu Count
+          type: integer
+        gpu_type:
+          anyOf:
+            - type: string
+            - type: 'null'
+          description: Type of GPU on the instance type
+          title: Gpu Type
+        gpu_memory_limit_mib:
+          anyOf:
+            - type: integer
+            - type: 'null'
+          description: Memory limit of the GPU on the instance type in Mebibytes
+          title: Gpu Memory Limit Mib
+      required:
+        - id
+        - name
+        - memory_limit_mib
+        - millicpu_limit
+        - gpu_count
+        - gpu_type
+        - gpu_memory_limit_mib
+      title: InstanceTypeV1
+      type: object
+    DeploymentStatusV1:
+      description: The status of a deployment.
+      enum:
+        - BUILDING
+        - DEPLOYING
+        - DEPLOY_FAILED
+        - LOADING_MODEL
+        - ACTIVE
+        - UNHEALTHY
+        - BUILD_FAILED
+        - BUILD_STOPPED
+        - DEACTIVATING
+        - INACTIVE
+        - FAILED
+        - UPDATING
+        - SCALED_TO_ZERO
+        - WAKING_UP
+      title: DeploymentStatusV1
+      type: string
+    RollingDeployConfigV1:
+      description: Rolling deploy config for promoting chains and oracles
+      properties:
+        rolling_deploy_strategy:
+          $ref: '#/components/schemas/RollingDeployStrategyV1'
+          default: REPLICA
+          description: The rolling deploy strategy to use for promotions.
+          examples:
+            - REPLICA
+        max_surge_percent:
+          default: 20
+          description: The maximum surge percentage for rolling deploys.
+          examples:
+            - 20
+          title: Max Surge Percent
+          type: integer
+        max_unavailable_percent:
+          default: 0
+          description: The maximum unavailable percentage for rolling deploys.
+          examples:
+            - 20
+          title: Max Unavailable Percent
+          type: integer
+        stabilization_time_seconds:
+          default: 0
+          description: The stabilization time in seconds for rolling deploys.
+          examples:
+            - 300
+          title: Stabilization Time Seconds
+          type: integer
+        promotion_cleanup_strategy:
+          $ref: '#/components/schemas/PromotionCleanupStrategyV1'
+          default: SCALE_TO_ZERO
+          description: The promotion cleanup strategy to use for rolling deploys.
+          examples:
+            - SCALE_TO_ZERO
+      title: RollingDeployConfigV1
+      type: object
+    RollingDeployStrategyV1:
+      description: The rolling deploy strategy.
+      enum:
+        - REPLICA
+      title: RollingDeployStrategyV1
+      type: string
+    PromotionCleanupStrategyV1:
+      description: The promotion cleanup strategy.
+      enum:
+        - KEEP
+        - SCALE_TO_ZERO
+      title: PromotionCleanupStrategyV1
+      type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: >-
+        You must specify the scheme 'Api-Key' in the Authorization header. For
+        example, `Authorization: Api-Key <Your_Api_Key>`
 
 ````

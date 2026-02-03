@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/self-hosting/ee.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Infisical Enterprise
 
 > Find out how to activate Infisical Enterprise edition (EE) features.
@@ -16,7 +20,7 @@ This guide walks through how you can use these paid features on a self-hosted in
   </Step>
 
   <Step title="Activate the license">
-    Depending on whether or not the environment where Infisical is deployed has internet access, you may be issued a regular license or an offline license.
+    Set your license key as the value of the **LICENSE\_KEY** environment variable within your Infisical instance.
 
     <Tabs>
       <Tab title="Regular License">
@@ -31,15 +35,17 @@ This guide walks through how you can use these paid features on a self-hosted in
       </Tab>
 
       <Tab title="Offline License">
-        * Assign the issued license key to the `LICENSE_KEY_OFFLINE` environment variable in your Infisical instance.
+        * Assign the issued offline license key to the `LICENSE_KEY` environment variable in your Infisical instance.
+
+        * The system will automatically detect that it's an offline license based on the key format.
 
         <Note>
-          How you set the environment variable will depend on the deployment method you used. Please refer to the documentation of your deployment method for specific instructions.
+          While the LICENSE\_KEY\_OFFLINE environment variable continues to be supported for compatibility with existing configurations, we recommend transitioning to LICENSE\_KEY for all license types going forward.
         </Note>
       </Tab>
     </Tabs>
 
-    Once your instance starts up, the license key will be validated and you’ll be able to use the paid features.
+    Once your instance starts up, the license key will be validated and you'll be able to use the paid features.
     However, when the license expires, Infisical will continue to run, but EE features will be disabled until the license is renewed or a new one is purchased.
   </Step>
 </Steps>

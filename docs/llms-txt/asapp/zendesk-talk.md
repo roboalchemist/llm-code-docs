@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/generativeagent/integrate/zendesk-talk.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Zendesk Talk
 
 > Learn how to integrate GenerativeAgent with Zendesk Talk for automated call handling and ticket creation
@@ -45,7 +49,7 @@ Before setting up the Zendesk Talk integration, you need:
 
 ## Understanding Your Routing Options
 
-Zendesk Talk only allows routing via Phone numbers. We enable this for Generative Agent by providing you with **one or more phone numbers** that are **mapped to specific GenerativeAgent tasks**. You need to route these phone numbers within your Zendesk environment.
+Zendesk Talk only allows routing via Phone numbers. We enable this for GenerativeAgent by providing you with **one or more phone numbers** that are **mapped to specific GenerativeAgent tasks**. You need to route these phone numbers within your Zendesk environment.
 
 The routing approach you choose depends on how you want callers to interact with GenerativeAgent:
 

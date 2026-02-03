@@ -2,7 +2,7 @@
 
 Highlighting data offers quick visual feedback for chart users. It can be used to emphasize a specific data point or series, or to fade out the rest of the chart. And it can be controlled by the user or synchronized across multiple charts.
 
-## Highlighting axis
+## Highlighting Axis
 
 You can highlight data based on mouse position. By default, those highlights are lines, but it can also be a vertical band if your x-axis uses `scaleType: 'band'`. On the chart, to customize this behavior, you can use:
 
@@ -96,7 +96,7 @@ export default function BandHighlight() {
 }
 ```
 
-## Highlighting series
+## Highlighting Series
 
 In parallel with the tooltip, you can highlight and fade elements. This kind of interaction is controlled by series properties `highlightScope` which contains two options:
 
@@ -331,7 +331,7 @@ export default function ElementHighlights() {
 
 ```
 
-## Controlled item highlight
+## Controlled Item Highlight
 
 The highlighted item can be controlled by using `highlightedItem` and `onHighlightChange`.
 
@@ -471,10 +471,9 @@ const barChartsProps: BarChartProps = {
   ],
   height: 400,
 };
-
 ```
 
-## Controlled axis highlight
+## Controlled Axis Highlight
 
 The highlighted axis item can be controlled by using `highlightedAxis` prop. Its value is an array of `{ axisId: string, dataIndex: number }` objects. An empty array means no highlight.
 

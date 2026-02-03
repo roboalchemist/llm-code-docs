@@ -1,5 +1,9 @@
 # Source: https://docs.agent.ai/user/agent-team.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.agent.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Adding Agents to Your Team
 
 The [**Agents Team**](https://agent.ai/user/team) page shows agents you’ve added to your team—this functions like a **bookmark list** for quick access to agents you use frequently.

@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xtrim.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xtrim.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xtrim.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xtrim.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xtrim.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xtrim.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xtrim.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xtrim.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xtrim.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xtrim.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # XTRIM
 
@@ -26,73 +12,50 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the stream.
 </ParamField>
 
-<ParamField body="options" type="object" required>
-  <Expandable title="properties">
-    <ParamField body="strategy" type="'MAXLEN' | 'MINID'" required>
-      The trimming strategy:
+<ParamField body="maxlen" type="int">
+  The maximum number of entries to keep in the stream. Mutually exclusive with `minid`.
+</ParamField>
 
-      * `MAXLEN`: Trim based on the maximum number of entries
-      * `MINID`: Trim based on the minimum ID
-    </ParamField>
+<ParamField body="approximate" type="bool" default="True">
+  Use approximate trimming (more efficient). When `True`, Redis may keep slightly more entries than specified. Defaults to `True`.
+</ParamField>
 
-    <ParamField body="threshold" type="number | string" required>
-      The threshold value for trimming:
+<ParamField body="minid" type="str">
+  The minimum ID to keep. Entries with IDs lower than this will be removed. Mutually exclusive with `maxlen`.
+</ParamField>
 
-      * For `MAXLEN`: The maximum number of entries to keep (number)
-      * For `MINID`: The minimum ID to keep (string). Entries with IDs lower than this will be removed
-    </ParamField>
-
-    <ParamField body="exactness" type="'~' | '='">
-      Use `~` for approximate trimming (more efficient, default) or `=` for exact trimming.
-    </ParamField>
-
-    <ParamField body="limit" type="number">
-      Limit how many entries will be trimmed at most (only valid with approximate trimming `~`).
-    </ParamField>
-  </Expandable>
+<ParamField body="limit" type="int">
+  Limit how many entries will be trimmed at most.
 </ParamField>
 
 ## Response
 
-<ResponseField type="number">
+<ResponseField type="int">
   The number of entries removed from the stream.
 </ResponseField>
 
 <RequestExample>
-  ```ts Approximate trim by max length theme={"system"}
-  const result = await redis.xtrim("mystream", {
-    strategy: "MAXLEN",
-    threshold: 100,
-    exactness: "~"
-  });
+  ```py Approximate trim (default) theme={"system"}
+  result = redis.xtrim("mystream", maxlen=50)
   ```
 
-  ```ts Exact trim by max length theme={"system"}
-  const result = await redis.xtrim("mystream", {
-    strategy: "MAXLEN", 
-    threshold: 50,
-    exactness: "="
-  });
+  ```py Approximate trim (explicit) theme={"system"}
+  result = redis.xtrim("mystream", maxlen=50, approximate=True)
   ```
 
-  ```ts Trim by minimum ID theme={"system"}
-  const result = await redis.xtrim("mystream", {
-    strategy: "MINID",
-    threshold: "1638360173533-0",
-    exactness: "="
-  });
+  ```py Exact trim theme={"system"}
+  result = redis.xtrim("mystream", maxlen=20, approximate=False)
   ```
 
-  ```ts Approximate trim with limit theme={"system"}
-  const result = await redis.xtrim("mystream", {
-    strategy: "MAXLEN",
-    threshold: 1000,
-    exactness: "~",
-    limit: 100
-  });
+  ```py Trim by minimum ID theme={"system"}
+  result = redis.xtrim("mystream", minid="1638360173533-0")
+  ```
+
+  ```py Approximate trim with limit theme={"system"}
+  result = redis.xtrim("mystream", maxlen=1000, approximate=True, limit=100)
   ```
 </RequestExample>

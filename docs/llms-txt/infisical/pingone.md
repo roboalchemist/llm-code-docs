@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/scim/pingone.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # PingOne SCIM
 
 > Learn how to configure SCIM provisioning with PingOne for Infisical.

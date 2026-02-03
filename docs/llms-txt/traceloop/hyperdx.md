@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/integrations/hyperdx.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LLM Observability with HyperDX and OpenLLMetry
 
 <Frame>
@@ -13,8 +17,3 @@ Just route the traces to HyperDX's endpoint and set the API key:
 TRACELOOP_BASE_URL=https://in-otel.hyperdx.io
 TRACELOOP_HEADERS="authorization=<YOUR_INGESTION_API_KEY>"
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

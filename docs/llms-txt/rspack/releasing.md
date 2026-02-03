@@ -14,15 +14,15 @@ The [full release workflow](https://github.com/web-infra-dev/rspack/actions/work
 
 During the release, the following binary artifacts for the target platforms are built:
 
-* x86\_64-unknown-linux-gnu
-* aarch64-unknown-linux-gnu
-* x86\_64-unknown-linux-musl
-* aarch64-unknown-linux-musl
-* i686-pc-windows-msvc
-* x86\_64-pc-windows-msvc
-* aarch64-pc-windows-msvc
-* x86\_64-apple-darwin
-* aarch64-apple-darwin
+- x86\_64-unknown-linux-gnu
+- aarch64-unknown-linux-gnu
+- x86\_64-unknown-linux-musl
+- aarch64-unknown-linux-musl
+- i686-pc-windows-msvc
+- x86\_64-pc-windows-msvc
+- aarch64-pc-windows-msvc
+- x86\_64-apple-darwin
+- aarch64-apple-darwin
 
 ### Release steps
 
@@ -60,8 +60,8 @@ git push origin release/vx.y.z
 4. Create a PR with the title `chore: release v1.0.0`.
 5. Run the [Ecosystem CI workflow](https://github.com/web-infra-dev/rspack/actions/workflows/ecosystem-ci.yml) to ensure all ecosystem projects are working properly.
 6. Run the full release workflow on the release branch:
-   * [Release Full](https://github.com/web-infra-dev/rspack/actions/workflows/release.yml): Publish npm packages to registry
-   * [Release Crates](https://github.com/web-infra-dev/rspack/actions/workflows/release-crates.yml): Publish Rust crates to crates.io
+   - [Release Full](https://github.com/web-infra-dev/rspack/actions/workflows/release.yml): Publish npm packages to registry
+   - [Release Crates](https://github.com/web-infra-dev/rspack/actions/workflows/release-crates.yml): Publish Rust crates to crates.io
 7. After the release, merge the PR to the `main` branch.
 8. Generate the [GitHub release note](https://github.com/web-infra-dev/rspack/releases), and add highlights information.
 

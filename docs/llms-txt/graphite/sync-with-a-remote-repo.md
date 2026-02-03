@@ -1,5 +1,9 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/sync-with-a-remote-repo.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Sync Changes From A Remote Repository
 
 > Learn how to sync changes from a remote repository with Graphite's CLI, managing branch updates and conflicts.

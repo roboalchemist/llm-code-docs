@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/qstash/howto/delete-schedule.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete Schedules
 
 Deleting schedules can be done using the [schedules api](/qstash/api/schedules/remove).

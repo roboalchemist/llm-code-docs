@@ -1,6 +1,8 @@
 # Source: https://infisical.com/docs/integrations/cicd/aws-amplify.md
 
-# Source: https://infisical.com/docs/integrations/cloud/aws-amplify.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # AWS Amplify
 
@@ -21,7 +23,7 @@ This approach enables you to fetch secrets from Infisical during Amplify build t
   <Tab title="Machine Identity (Recommended)">
     <Steps>
       <Step title="Create a machine identity">
-        Create a machine identtiy and connect it to your Infisical project. You can read more about how to use machine identities [here](/documentation/platform/identities/machine-identities). The machine identity will allow you to authenticate and fetch secrets from Infisical.
+        Create a machine identity and connect it to your Infisical project. You can read more about how to use machine identities [here](/documentation/platform/identities/machine-identities). The machine identity will allow you to authenticate and fetch secrets from Infisical.
       </Step>
 
       <Step title="Set the machine identity client ID and client secret as Amplify environment variables">
@@ -113,7 +115,7 @@ This approach enables you to fetch secrets from Infisical during Amplify build t
 
     <Steps>
       <Step title="Follow the AWS SSM Parameter Store Integration guide">
-        Follow the [Infisical AWS SSM Parameter Store Integration Guide](./aws-parameter-store) to set up the integration. Pause once you reach the step where it asks you to select the path you would like to sync.
+        Follow the [Infisical AWS SSM Parameter Store Secret Syncs Guide](../secret-syncs/aws-parameter-store) to set up the integration. Pause once you reach the step where it asks you to select the path you would like to sync.
       </Step>
 
       <Step title="Find your Amplify App ID">

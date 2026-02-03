@@ -7,6 +7,7 @@
 Vespa provides plugins for working with schemas and rank profiles in IDE's:
 
 - VSCode: [VS Code extension](https://marketplace.visualstudio.com/items?itemName=vespaai.vespa-language-support)
+- Cursor, code-server and other VS Code compatible IDEs: [VS Code extension in Open VSX registry](https://open-vsx.org/extension/vespaai/vespa-language-support)
 - IntelliJ, PyCharm or WebStorm: [Jetbrains plugin](https://plugins.jetbrains.com/plugin/18074-vespa-schema-language-support)
 - Vim: [neovim](https://blog.vespa.ai/interns-languageserver/#neovim-plugin)
 
@@ -14,5 +15,5 @@ If you are working with non-trivial Vespa applications, installing a plugin is h
 
  ![IDE demo](/assets/img/ide.gif)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

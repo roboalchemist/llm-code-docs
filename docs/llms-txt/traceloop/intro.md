@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/evaluators/intro.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Introduction
 
 > Evaluating workflows and LLM outputs
@@ -40,8 +44,3 @@ Evaluators can be used in multiple contexts within Traceloop:
 * **[Playgrounds](../playgrounds/quick-start)** - Test and iterate on your evaluators interactively, compare different configurations, and validate evaluation logic before deployment
 * **[Experiments](../experiments/introduction)** - Run systematic evaluations across datasets programmatically using the SDK, track performance metrics over time, and easily compare experiment results
 * **[Monitors](../monitoring/introduction)** - Continuously evaluate your LLM applications in production with real-time monitoring and alerting on quality degradation
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

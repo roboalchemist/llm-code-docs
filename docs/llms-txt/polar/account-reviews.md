@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/merchant-of-record/account-reviews.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # null
 
 As a Merchant of Record (MoR), we act as the reseller of digital goods and services. Therefore, we need to make sure that businesses using Polar complies with our [acceptable products & use](/merchant-of-record/acceptable-use) policies. Combined with continuously monitoring, reviewing and preventing fraud, unacceptable use, bad actors and high risk accounts.
@@ -21,7 +25,7 @@ We’ll soon offer the ability to submit all of this information in advance to s
 
 ### Continuous reviews (Async)
 
-We continuously monitor all transactions across our platform to proactively prevent fraud. In addition to performing asynchronous reviews of accounts at certain sale thresholds. These reviews are often completed within hours and without any additional information required from you.
+We continuously monitor all transactions across our platform to proactively prevent fraud. In addition to performing asynchronous reviews of accounts at certain sale thresholds. These reviews are often completed within a day or two and without any additional information required from you.
 
 You’ll get notified over email that a review is taking place. Payouts will be paused during this time, but it has no impact on your customers’ experience or ability to purchase, subscribe or checkout at any time.
 
@@ -95,3 +99,40 @@ For merchants who violate our [acceptable use policies](/merchant-of-record/acce
   * We pause payouts during the resolution process
   * We strive to collaborate with merchants on the best possible path forward. Clear fraud or abuse, however, is immediately blocked.
   * We have to cancel subscriptions and refund payments made in violation of our acceptable use policies for compliance and risk, and strive to do so in collaboration with the merchant.
+
+## Frequently Asked Questions
+
+### Why is my account under review again?
+
+Your account may go through multiple reviews as your business grows. We perform [continuous reviews](#continuous-reviews-async) at certain sales thresholds to maintain platform integrity and prevent fraud. This is a standard practice across payment platforms and is part of our ongoing risk management process.
+
+### Why do you need my social media in settings?
+
+We request social media information as part of our identity verification and fraud prevention processes. This helps us:
+
+* Verify that you're a real business or creator with an online presence
+* Understand your products and services better
+* Ensure compliance with our [acceptable use policies](/merchant-of-record/acceptable-use)
+
+Providing accurate social media information helps speed up the review process and demonstrates the legitimacy of your business.
+
+### Are social media settings visible publicly?
+
+No, your social media settings are not publicly visible. This information is used internally for verification and compliance purposes only. We treat all merchant information with strict confidentiality and use it solely for risk assessment and account review processes.
+
+### Why do I need to share a video recording showing the product working?
+
+To help us verify that everything is working correctly in line with our acceptable use policy, our team would ask you to share a 100% discount code by email. This is our preferred method, as it allows the team to go through the full journey themselves and confirm the automated fulfillment from an unpaid user to a paid user.
+
+Alternatively, you can provide a video recording that clearly shows the complete flow from an unpaid user to a paid user, including how the product is automatically accessible after purchase.
+
+### How does changing the admin of an organization work?
+
+To change the admin of an organization:
+
+1. Invite the new admin to the team via `Settings` > `Members` in the Polar dashboard
+2. Ask that new admin to complete identity verification under `Finance` > `Account` after logging in via that email in the Polar dashboard
+3. Make sure no payout is pending
+4. Send an email from the current admin email to our support confirming the transfer to the new admin
+
+If you need assistance with changing organization ownership or have special circumstances, please contact [support@polar.sh](mailto:support@polar.sh).

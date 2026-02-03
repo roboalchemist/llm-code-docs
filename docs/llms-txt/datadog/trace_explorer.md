@@ -4,7 +4,6 @@
 title: Trace Explorer
 description: Trace Explorer
 breadcrumbs: Docs > APM > Trace Explorer
-source_url: https://docs.datadoghq.com/trace_explorer/index.html
 ---
 
 # Trace Explorer

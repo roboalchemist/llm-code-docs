@@ -1,3 +1,5 @@
+# Source: https://clickwrap-developer.ironcladapp.com/recipes/javascript-library-clickwrap-sending-acceptance-manually.md
+
 # Ironclad Clickwrap API Documentation
 
 ## Recipes

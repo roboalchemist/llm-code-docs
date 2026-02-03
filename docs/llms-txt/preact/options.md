@@ -1,3 +1,5 @@
+# Source: https://preactjs.com/guide/v10/options
+
 # Option Hooks
 
 Callbacks for plugins that can change Preact's rendering.

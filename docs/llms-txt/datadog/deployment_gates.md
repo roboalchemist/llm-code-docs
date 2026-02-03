@@ -6,7 +6,6 @@ description: >-
   Reduce deployment incidents by automatically evaluating monitors and APM
   anomalies to halt releases when performance regressions are detected.
 breadcrumbs: Docs > Deployment Gates
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Deployment Gates

@@ -1,3 +1,5 @@
+# Source: https://github.com/huggingface/huggingface_hub/blob/main/CONTRIBUTING.md
+
 # huggingface_hub/CONTRIBUTING.md at main · huggingface/huggingface_hub · GitHub
 
 The provided HTML content is a complex navigation structure with multiple levels of nested elements. To convert this to Markdown, we need to extract the main navigation links and their sub-links, while excluding the header and footer sections.

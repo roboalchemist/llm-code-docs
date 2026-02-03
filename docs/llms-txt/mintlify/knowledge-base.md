@@ -1,24 +1,35 @@
-# Source: https://mintlify.com/docs/guides/knowledge-base.md
+# Source: https://www.mintlify.com/docs/guides/knowledge-base.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Create a knowledge base
 
 > Host your internal knowledge base on Mintlify to consolidate information for your team, improve search, and reduce maintenance burden.
 
-## Introduction
+An internal knowledge base helps your team find answers and maintain a source of truth. If your team has information spread across different channels and platforms, people might find inaccurate or no information when they search for answers. A centralized knowledge base solves this by putting answers where everyone can find them and giving your team a specific place to record shared knowledge.
 
-This guide shows you how to create an internal knowledge base on Mintlify. You'll set up a navigation structure, migrate content, configure authentication, and establish a maintenance process.
+Mintlify provides the infrastructure for knowledge bases that your entire team can contribute to.
 
-This guide assumes you are migrating content from an existing knowledge base to Mintlify. If you are creating a knowledge base with entirely new content, you can follow similar steps but skip the audit and migration steps.
+* **AI-powered search**: The [assistant](/ai/assistant) answers questions using your knowledge base content, so people find answers without knowing exactly where to look.
+* **Slack integrations**: Add the assistant to [Slack](/ai/slack-bot) so your team can ask questions and use the [agent](/agent/slack) to capture knowledge from conversations.
+* **Low-barrier contributions**: The [web editor](/editor) and [agent](/agent/quickstart) let anyone on your team update content without learning Git or Markdown.
+* **Authentication built-in**: Control access with [SSO or OAuth](/deploy/authentication-setup), and use [groups](/deploy/authentication-setup#control-access-with-groups) to show different content to different teams.
+
+## Prerequisites
 
 If you haven't created a Mintlify project yet, see the [Quickstart](/quickstart) to deploy your site.
-
-### Prerequisites
 
 * An authentication system (SSO or OAuth provider like Okta or Azure AD)
 * Control over your domain for hosting
 * Admin access to your Mintlify organization
 
-## Audit existing content
+## Migrate existing content
+
+If you're creating a knowledge base from scratch, skip to [Design the navigation structure](#design-the-navigation-structure).
+
+### Audit existing content
 
 Catalog the content you currently have in your existing knowledge base. This helps you understand what content you need to migrate, plan how to organize it in your new knowledge base, identify any gaps in your content, and confirm that you moved all of your content to your new knowledge base.
 
@@ -26,10 +37,10 @@ Catalog the content you currently have in your existing knowledge base. This hel
 * **Topics and content**: Informs your navigation structure and content organization.
 * **Current organization**: See how your content is currently organized and whether it matches your desired structure.
 * **Content types**: Determine any content conversion requirements for text, PDFs, videos, and embedded content.
-* **Metadata**: Identify any metadata that needs to be preserved like dates, authors, and tags.
+* **Metadata**: Identify any metadata to preserve like dates, authors, and tags.
 * **Access requirements**: Determine the best authentication approach for your knowledge base.
 
-## Export your existing content
+### Export your existing content
 
 Most knowledge base platforms support exporting content in standard formats. The format you choose depends on your current platform and your priorities.
 
@@ -45,7 +56,7 @@ Your navigation structure determines how people find content in your knowledge b
   Migrating is a good time to improve your structure. Consider whether your current organization actually works for your team, or if you can reorganize to make information easier to find.
 </Tip>
 
-Your `docs.json` file defines how your knowledge base is organized. Create this file at the root of your project repository.
+Your `docs.json` file defines the navigation structure of your knowledge base. Create this file at the root of your project repository.
 
 ```json  theme={null}
 {
@@ -91,7 +102,7 @@ Determine who needs access to what content in your knowledge base.
 
 If everyone should have access to the entire knowledge base, set up only [authentication](/deploy/authentication-setup).
 
-If you need to restrict access to certain content to specific users or groups, set up authentication and [personalization](/deploy/personalization-setup).
+If you need to restrict access to certain content to specific users or groups, set up authentication with [group-based access control](/deploy/authentication-setup#control-access-with-groups).
 
 ## Migrate your content
 
@@ -164,18 +175,56 @@ Move your exported content into a folder structure that matches the navigation s
   </Step>
 </Steps>
 
-## Optimize discoverability
+## Set up the assistant
 
-### Configure AI assistant
+The assistant is automatically enabled for Pro and Enterprise plans. The assistant lets your team ask questions and get answers with cited sources from your knowledge base.
 
-The [assistant](/ai/assistant) is automatically enabled for Pro and Custom plans. You can customize the assistant from your [dashboard](https://dashboard.mintlify.com/products/assistant/settings).
+Configure the assistant from your [dashboard](https://dashboard.mintlify.com/products/assistant/settings):
 
-* **Search sites**: Select additional sites other than your knowledge base that the assistant can search when responding to questions.
-* **Set sample questions**: Set default questions that appear when someone opens the assistant panel. If people have frequent questions like "how do I submit an expense report" or "what is the company's vacation policy", add them here to save people time.
+* **Sample questions**: Add common questions like "how do I submit an expense report" or "what is the vacation policy" so people can get answers with one click.
+* **Search sites**: Include additional sites the assistant can search when answering questions.
+* **Deflection email**: Set a support email for questions the assistant can't answer.
 
-### Slack integration
+### Add the assistant to Slack
 
-If your team uses Slack, you can add a [Slack bot](/ai/slack-bot) to your workspace. This lets your team query your knowledge base without leaving Slack.
+The [Slack bot](/ai/slack-bot) lets your team ask the assistant questions without leaving Slack. Create a channel where the bot responds to every message or let people @mention the bot in any channel.
+
+## Enable team contributions
+
+A knowledge base stays accurate when everyone can update it, not just the people who set it up. Mintlify provides three ways for team members to contribute quickly to your knowledge base.
+
+### Web editor
+
+The [web editor](/editor) lets anyone create and edit pages in their browser. Contributors can:
+
+* Edit pages visually or in Markdown.
+* Drag and drop to reorganize navigation.
+* Upload images and media.
+* Create branches and pull requests for review.
+
+This works well for subject matter experts who know the content but aren't comfortable with code workflows.
+
+### Agent
+
+The [agent](/agent/quickstart) in your dashboard creates documentation updates from natural language prompts. Describe what you want to change, and the agent creates a pull request with the updates.
+
+For example, a team member could prompt "add a section to the expense policy page explaining how to submit receipts for meals over \$50" and copy the existing expense policy page into the prompt. The agent would draft the content and open a PR for review.
+
+### Capture knowledge from Slack
+
+Teams share valuable information in Slack that often never makes it into documentation. The [agent in Slack](/agent/slack) can capture this knowledge and convert it into structured documentation.
+
+When someone shares useful information in a Slack thread, any team member can mention `@mintlify` with instructions to document it. The agent reads the conversation, extracts the relevant information, and creates a pull request. This is useful for capturing technical decisions, troubleshooting solutions, and process explanations while the context is still fresh.
+
+For example, if your team discussed how to configure a new integration in a thread, you could reply:
+
+> @mintlify Create a guide for configuring the Acme integration based on this conversation.
+
+The agent uses the thread context to create documentation that captures the key information from the discussion.
+
+### Locally
+
+Anyone with access to your knowledge base repository can work locally in their preferred editor and push changes to your repository.
 
 ## Establish maintenance workflows
 
@@ -234,8 +283,3 @@ Your knowledge base is ready to launch. After deploying:
 4. Review and update content regularly.
 
 The most successful knowledge bases evolve based on how teams actually use them.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://mintlify.com/docs/llms.txt

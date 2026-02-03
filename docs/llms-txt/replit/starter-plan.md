@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/billing/plans/starter-plan.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Starter Plan
 
 > Learn about the Starter plan features, limitations, and what you can build for Free.
@@ -69,9 +73,9 @@ Starter plan users get {FreeDeployments} free published app. Additional publishe
 
 Using Plan Mode requires Core. Plan Mode allows you to brainstorm ideas, plan work, and collaborate with Replit Agent without editing your app's code or data.
 
-### App Stacks
+### App Types
 
-Building other kinds of apps requires Core. Choose from a variety of pre-configured technology stacks including mobile apps, automation apps, data apps, and more.
+Building apps other than web and mobile apps require Core. Choose from a variety of pre-configured technology types including automation apps, data apps, and more.
 
 ## Upgrading to Core
 
@@ -102,8 +106,3 @@ Ready to start building? Here's how to get the most from your Starter plan:
 * **[Create your first app](/getting-started/quickstarts/ask-ai)**: Build a full-stack app
 * **[Try Design Mode](/replitai/design-mode)**: Create beautiful designs in under 2 minutes
 * **[Publish your app](/category/replit-deployments)**: Publish your deployment and share what you've built with others
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.replit.com/llms.txt

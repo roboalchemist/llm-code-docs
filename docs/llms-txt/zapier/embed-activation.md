@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/manage/embed-activation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Embed activation rates
 
 > Consider all the user clicks on Zap Templates surfaced in your embeds. The embed activation rate is the percentage of those Zaps that actually activated within 24 hours of creation, meaning the Zap ran at least one successful task. It measures the efefctiveness of the Zapier embeds in your product at converting user clicks on Zap Templates to Zap activations.

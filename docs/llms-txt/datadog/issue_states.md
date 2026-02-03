@@ -1,3 +1,5 @@
+# Source: https://docs.datadoghq.com/error_tracking/issue_states.md
+
 # Source: https://docs.datadoghq.com/tracing/error_tracking/issue_states.md
 
 ---
@@ -8,7 +10,6 @@ description: >-
 breadcrumbs: >-
   Docs > APM > Error Tracking for Backend Services > Issue States in Error
   Tracking
-source_url: https://docs.datadoghq.com/error_tracking/issue_states/index.html
 ---
 
 # Issue States in Error Tracking

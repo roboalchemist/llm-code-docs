@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/telemetry.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Telemetry
 
 > Understanding the telemetry data collected by CrewAI and how it contributes to the enhancement of the library.

@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > APM > Tracing Guides > Debug the slowest trace on the slowest endpoint
   of a web service
-source_url: https://docs.datadoghq.com/guide/slowest_request_daily/index.html
 ---
 
 # Debug the slowest trace on the slowest endpoint of a web service

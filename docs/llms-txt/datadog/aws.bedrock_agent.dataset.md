@@ -4,8 +4,6 @@
 title: Bedrock Agent
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Bedrock Agent
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.bedrock_agent.dataset/index.html
 ---
 
 # Bedrock Agent
@@ -46,5 +44,5 @@ aws.bedrock_agent
 | prepared_at                   | core | timestamp     | The time at which the agent was last prepared.                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 | prompt_override_configuration | core | json          | Contains configurations to override prompt templates in different parts of an agent sequence. For more information, see <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/advanced-prompts.html">Advanced prompts</a>.                                                                                                                                                                                                                                                                                     |
 | recommended_actions           | core | array<string> | Contains recommended actions to take for the agent-related API that you invoked to succeed.                                                                                                                                                                                                                                                                                                                                                                                                                            |
-| tags                          | core | hstore        |
+| tags                          | core | hstore_csv    |
 | updated_at                    | core | timestamp     | The time at which the agent was last updated.                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |

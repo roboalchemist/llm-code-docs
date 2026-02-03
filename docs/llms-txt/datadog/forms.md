@@ -4,7 +4,6 @@
 title: Forms
 description: Build forms to collect input, analyze responses, and trigger automations.
 breadcrumbs: Docs > Forms
-source_url: https://docs.datadoghq.com/forms/index.html
 ---
 
 # Forms

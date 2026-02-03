@@ -5,8 +5,7 @@ title: Kubernetes Autoscaling
 description: >-
   Automatically scale Kubernetes workloads using Datadog metrics and intelligent
   scaling recommendations
-breadcrumbs: Docs > Container Monitoring > Kubernetes Autoscaling
-source_url: https://docs.datadoghq.com/autoscaling/index.html
+breadcrumbs: Docs > Containers > Kubernetes Autoscaling
 ---
 
 # Kubernetes Autoscaling
@@ -43,15 +42,27 @@ Each cluster can have a maximum of 1000 workloads optimized with Datadog Kuberne
 ### Requirements{% #requirements %}
 
 - [Remote Configuration](https://docs.datadoghq.com/agent/remote_config) must be enabled both at the organization level and on the Agents in your target cluster. See [Enabling Remote Configuration](https://docs.datadoghq.com/agent/remote_config/?tab=configurationyamlfile#enabling-remote-configuration) for setup instructions.
+
 - [Helm](https://helm.sh/), for updating your Datadog Agent.
+
 - (For Datadog Operator users) [`kubectl` CLI](https://kubernetes.io/docs/tasks/tools/install-kubectl/), for updating the Datadog Agent.
-- Scaling recommendations are available for workloads monitored with Datadog Agent v7.50+, with the [Kubernetes State Core](https://docs.datadoghq.com/integrations/kubernetes_state_core/) integration enabled. Datadog recommends upgrading to the latest Datadog Agent version to deploy live Kubernetes Autoscaling.
+
+- When you are using live autoscaling, Datadog recommends using the latest Datadog Agent version. This helps ensure access to the latest improvements and optimizations. Scaling recommendations require the [Kubernetes State Core](https://docs.datadoghq.com/integrations/kubernetes_state_core/) integration to be enabled.
+
+| Feature                                                                                                            | Minimum Agent Version |
+| ------------------------------------------------------------------------------------------------------------------ | --------------------- |
+| In-app workload scaling recommendations                                                                            | 7.50+                 |
+| Live workload scaling                                                                                              | 7.66.1+               |
+| Argo Rollout recommendations and autoscaling                                                                       | 7.71+                 |
+| Cluster autoscaling ([preview sign-up](https://www.datadoghq.com/product-preview/kubernetes-cluster-autoscaling/)) | 7.72+                 |
+
 - The following user permissions:
+
   - Org Management (required for Remote Configuration)
   - API Keys Write (required for Remote Configuration)
-  - Workload Scaling Read
   - Workload Scaling Write
   - Autoscaling Manage
+
 - (Recommended) Linux kernel v5.19+ and cgroup v2
 
 ## Setup{% #setup %}
@@ -61,7 +72,7 @@ Each cluster can have a maximum of 1000 workloads optimized with Datadog Kuberne
 1. Ensure you are using Datadog Operator v1.16.0+. To upgrade your Datadog Operator:
 
 ```shell
-helm upgrade datadog-operator datadog/datadog-operator 
+helm upgrade datadog-operator datadog/datadog-operator
 ```
 Add the following to your `datadog-agent.yaml` configuration file:
 ```yaml

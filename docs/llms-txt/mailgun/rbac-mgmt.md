@@ -168,7 +168,7 @@ For enhanced security, configure IP allowlisting to restrict API access to speci
 
 # Related Resources
 
-- [Mailgun API Reference Documentation](https://documentation.mailgun.com/docs/mailgun/api-reference/)
+- [Mailgun API Reference Documentation](https://documentation.mailgun.com/docs/mailgun/api-reference/api-overview)
 - [Email Best Practices Guide](https://www.mailgun.com/resources/)
 - [Mailgun Security Features](https://www.mailgun.com/security/)
 - [Contact Mailgun Support](https://www.mailgun.com/support/)

@@ -2,23 +2,17 @@
 
 # Custom instructions with AGENTS.md
 
-Codex reads `AGENTS.md` files before doing any work. By layering global guidance with project-specific overrides, you can make every task start with consistent expectations—no matter which repository you open.
-
-This guide shows you how to:
-
-- understand how Codex discovers persistent guidance,
-- author global and per-project instruction files, and
-- verify that Codex honors your setup during real CLI runs.
+Codex reads `AGENTS.md` files before doing any work. By layering global guidance with project-specific overrides, you can start each task with consistent expectations, no matter which repository you open.
 
 ## How Codex discovers guidance
 
-Codex builds an instruction chain every time it starts. Discovery happens in precedence order:
+Codex builds an instruction chain when it starts (once per run; in the TUI this usually means once per launched session). Discovery follows this precedence order:
 
-1. **Global scope** — Codex checks your Codex home directory (defaults to `~/.codex`, or a custom path when you set `CODEX_HOME`). If `AGENTS.override.md` exists it wins; otherwise Codex reads `AGENTS.md`. Only the first non-empty file is used at this level.
-2. **Project scope** — Codex walks from the repository root down to your current working directory. In each directory it looks for `AGENTS.override.md`, then `AGENTS.md`, then any configured fallback names listed in `project_doc_fallback_filenames`. At most one file per directory is included.
-3. **Merge order** — Files are concatenated from the root down. Later files override earlier guidance because they appear closer to your current task.
+1. **Global scope:** In your Codex home directory (defaults to `~/.codex`, unless you set `CODEX_HOME`), Codex reads `AGENTS.override.md` if it exists. Otherwise, Codex reads `AGENTS.md`. Codex uses only the first non-empty file at this level.
+2. **Project scope:** Starting at the project root (typically the Git root), Codex walks down to your current working directory. If Codex cannot find a project root, it only checks the current directory. In each directory along the path, it checks for `AGENTS.override.md`, then `AGENTS.md`, then any fallback names in `project_doc_fallback_filenames`. Codex includes at most one file per directory.
+3. **Merge order:** Codex concatenates files from the root down, joining them with blank lines. Files closer to your current directory override earlier guidance because they appear later in the combined prompt.
 
-Codex skips empty files and stops once the combined size reaches the limit defined by `project_doc_max_bytes` (32 KiB by default). Raise the limit or split instructions across nested directories when you hit the cap.
+Codex skips empty files and stops adding files once the combined size reaches the limit defined by `project_doc_max_bytes` (32 KiB by default). For details on these knobs, see [Project instructions discovery](https://developers.openai.com/codex/config-advanced#project-instructions-discovery). Raise the limit or split instructions across nested directories when you hit the cap.
 
 ## Create global guidance
 
@@ -56,7 +50,7 @@ Use `~/.codex/AGENTS.override.md` when you need a temporary global override with
 
 Repository-level files keep Codex aware of project norms while still inheriting your global defaults.
 
-1. In your repository root, add an `AGENTS.md` that covers onboarding basics:
+1. In your repository root, add an `AGENTS.md` that covers basic setup:
 
    ```md
    # AGENTS.md
@@ -141,7 +135,7 @@ If your repository already uses a different filename (for example `TEAM_GUIDE.md
 
 2. Restart Codex or run a new command so the updated configuration loads.
 
-Now Codex checks each directory in this order: `AGENTS.override.md`, `AGENTS.md`, `TEAM_GUIDE.md`, `.agents.md`. The larger byte limit allows more combined guidance before truncation.
+Now Codex checks each directory in this order: `AGENTS.override.md`, `AGENTS.md`, `TEAM_GUIDE.md`, `.agents.md`. Filenames not on this list are ignored for instruction discovery. The larger byte limit allows more combined guidance before truncation.
 
 With the fallback list in place, Codex treats the alternate files as instructions:
 
@@ -183,22 +177,22 @@ CODEX_HOME=$(pwd)/.codex codex exec "List active instruction sources"
 
 Expected: The output lists files relative to the custom `.codex` directory.
 
-## Validate your setup
+## Verify your setup
 
 - Run `codex --ask-for-approval never "Summarize the current instructions."` from a repository root. Codex should echo guidance from global and project files in precedence order.
 - Use `codex --cd subdir --ask-for-approval never "Show which instruction files are active."` to confirm nested overrides replace broader rules.
-- Check `~/.codex/log/codex-tui.log` (or the most recent `session-*.jsonl` file when session logging is enabled) after a session if you need to audit which instruction files Codex loaded.
-- If instructions look stale, relaunch Codex in the target directory—Codex rebuilds the instruction chain on every run, so there is no cache to clear manually.
+- Check `~/.codex/log/codex-tui.log` (or the most recent `session-*.jsonl` file if you enabled session logging) after a session if you need to audit which instruction files Codex loaded.
+- If instructions look stale, restart Codex in the target directory. Codex rebuilds the instruction chain on every run (and at the start of each TUI session), so there is no cache to clear manually.
 
 ## Troubleshoot discovery issues
 
-- **Nothing loads** — Verify you are in the intended repository and that `codex status` reports the workspace root you expect. Ensure instruction files contain content; empty files are ignored.
-- **Wrong guidance appears** — Look for an `AGENTS.override.md` higher in the directory tree or under your Codex home. Rename or remove the override to fall back to the regular file.
-- **Fallback names are ignored** — Confirm the names are listed in `project_doc_fallback_filenames` without typos, then restart Codex so the updated config takes effect.
-- **Instructions truncated** — Raise `project_doc_max_bytes` or split large files across nested directories to keep critical guidance intact.
-- **Multiple profiles in use** — Print `echo $CODEX_HOME` before launching Codex. A non-default value points Codex at a different home directory than the one you edited.
+- **Nothing loads:** Verify you are in the intended repository and that `codex status` reports the workspace root you expect. Ensure instruction files contain content; Codex ignores empty files.
+- **Wrong guidance appears:** Look for an `AGENTS.override.md` higher in the directory tree or under your Codex home. Rename or remove the override to fall back to the regular file.
+- **Codex ignores fallback names:** Confirm you listed the names in `project_doc_fallback_filenames` without typos, then restart Codex so the updated configuration takes effect.
+- **Instructions truncated:** Raise `project_doc_max_bytes` or split large files across nested directories to keep critical guidance intact.
+- **Profile confusion:** Run `echo $CODEX_HOME` before launching Codex. A non-default value points Codex at a different home directory than the one you edited.
 
 ## Next steps
 
-- Check out the official [AGENTS.md](https://agents.md) website for more information.
-- Review [Prompting Codex](/codex/prompting) for conversational patterns that pair well with persistent guidance.
+- Visit the official [AGENTS.md](https://agents.md) website for more information.
+- Review [Prompting Codex](https://developers.openai.com/codex/prompting) for conversational patterns that pair well with persistent guidance.

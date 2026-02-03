@@ -19,7 +19,7 @@ You can find .NET Core Razor features documented in [razor.netcore.io](http://ra
 is maintained in our MVC NuGet package that can be installed with: 
 
 :::copy
-`<PackageReference Include="ServiceStack.Mvc" Version="8.*" />`
+`<PackageReference Include="ServiceStack.Mvc" Version="10.*" />`
 :::
 
 
@@ -84,7 +84,7 @@ With this feature we can use a `_id` directory name to declare an `id` variable 
 
 This will let you navigate to the `edit.cshtml` page directly to edit a contact using the ideal "pretty url" we want:
 
- - [/contacts/1/edit](http://validation.web-app.io/server-razor/contacts/1/edit)
+ - /contacts/1/edit
 
 Placeholders can be on both directory or file names, e.g:
 

@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/cli/init
+
 # streamlit init
 
 This command creates the files for a new Streamlit app.

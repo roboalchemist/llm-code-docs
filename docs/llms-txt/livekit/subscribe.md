@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/transport/media/subscribe.md
 
-# Source: https://docs.livekit.io/home/client/tracks/subscribe.md
-
-LiveKit docs › LiveKit SDKs › Realtime media › Subscribing to tracks
+LiveKit docs › Media › Subscribing to tracks
 
 ---
 
@@ -18,7 +16,7 @@ While connected to a room, a participant can receive and render any tracks publi
 
 Rendering media tracks starts with a subscription to receive the track data from the server.
 
-As mentioned in the guide on [rooms, participants, and tracks](https://docs.livekit.io/home/get-started/api-primitives.md), LiveKit models tracks with two constructs: `TrackPublication` and `Track`. Think of a `TrackPublication` as metadata for a track registered with the server and `Track` as the raw media stream. Track publications are always available to the client, even when the track is not subscribed to.
+As mentioned in the guide on [rooms, participants, and tracks](https://docs.livekit.io/intro/basics/rooms-participants-tracks.md), LiveKit models tracks with two constructs: `TrackPublication` and `Track`. Think of a `TrackPublication` as metadata for a track registered with the server and `Track` as the raw media stream. Track publications are always available to the client, even when the track is not subscribed to.
 
 Track subscription callbacks provide your app with both the `Track` and `TrackPublication` objects.
 
@@ -50,9 +48,9 @@ import { useTracks } from '@livekit/components-react';
 
 export const MyPage = () => {
   return (
-    <LiveKitRoom ...>
+    <SessionProvider session={/* ... */}>
       <MyComponent />
-    </LiveKitRoom>
+    </SessionProvider>
   )
 }
 
@@ -926,7 +924,7 @@ room.TrackSubscribed += (track, publication, participant) =>
 
 ---
 
-This document was rendered at 2025-11-18T23:54:50.878Z.
-For the latest version of this document, see [https://docs.livekit.io/home/client/tracks/subscribe.md](https://docs.livekit.io/home/client/tracks/subscribe.md).
+This document was rendered at 2026-02-03T03:25:16.065Z.
+For the latest version of this document, see [https://docs.livekit.io/transport/media/subscribe.md](https://docs.livekit.io/transport/media/subscribe.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/voyage/
+
 # Voyage AI
 
 [Voyage AI](https://www.voyageai.com/) is Anthropic's [recommended](https://docs.anthropic.com/en/docs/embeddings) embeddings provider. It supports [all models](https://docs.voyageai.com/docs/embeddings). Latest models include:

@@ -6,7 +6,6 @@ description: >-
   Learn how to configure resource-based sampling to control trace ingestion
   based on specific resources and endpoints for cost optimization.
 breadcrumbs: Docs > APM > Tracing Guides > Resource-based sampling
-source_url: https://docs.datadoghq.com/guide/resource_based_sampling/index.html
 ---
 
 # Resource-based sampling

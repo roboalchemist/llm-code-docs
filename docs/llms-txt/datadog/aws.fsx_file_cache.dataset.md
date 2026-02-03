@@ -4,8 +4,6 @@
 title: File Cache
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > File Cache
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.fsx_file_cache.dataset/index.html
 ---
 
 # File Cache
@@ -37,5 +35,5 @@ aws.fsx_file_cache
 | resource_arn                    | core | string        | The Amazon Resource Name (ARN) for a given resource. ARNs uniquely identify Amazon Web Services resources. We require an ARN when you need to specify a resource unambiguously across all of Amazon Web Services. For more information, see Amazon Resource Names (ARNs) in the Amazon Web Services General Reference.                                                                                                                                                          |
 | storage_capacity                | core | int64         | The storage capacity of the cache in gibibytes (GiB).                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | subnet_ids                      | core | array<string> | A list of subnet IDs that the cache will be accessible from. You can specify only one subnet ID in a call to the CreateFileCache operation.                                                                                                                                                                                                                                                                                                                                     |
-| tags                            | core | hstore        |
+| tags                            | core | hstore_csv    |
 | vpc_id                          | core | string        | The ID of your virtual private cloud (VPC). For more information, see VPC and subnets in the Amazon VPC User Guide.                                                                                                                                                                                                                                                                                                                                                             |

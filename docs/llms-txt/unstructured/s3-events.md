@@ -1,12 +1,16 @@
 # Source: https://docs.unstructured.io/examplecode/tools/s3-events.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Amazon S3 event triggers
 
 You can use Amazon S3 events, such as adding new files to—or updating existing files within—S3 buckets, to automatically run Unstructured ETL+ workflows
 that rely on those buckets as sources. This enables a no-touch approach to having Unstructured automatically process new and updated files in S3 buckets as they are added or updated.
 
 This example shows how to automate this process by adding an [AWS Lambda function](https://docs.aws.amazon.com/lambda/latest/dg/concepts-basics.html#gettingstarted-concepts-function) to your AWS account. This function runs
-whenever a new file is added to—or an existing file is updated within—the specified S3 bucket. This function then calls the [Unstructured Workflow Endpoint](/api-reference/workflow/overview) to automatically run the
+whenever a new file is added to—or an existing file is updated within—the specified S3 bucket. This function then calls the [Unstructured API's workflow operations](/api-reference/workflow/overview) to automatically run the
 specified corresponding Unstructured ETL+ workflow in your Unstructured account.
 
 <Note>
@@ -49,10 +53,10 @@ To use this example, you will need the following:
      c. Follow the on-screen instructions to finish generating the key.<br />
      d. Click the **Copy** icon next to your new key to add the key to your system's clipboard. If you lose this key, simply return and click the **Copy** icon again.<br />
 
-* The Unstructured Workflow Endpoint URL for your account, as follows:
+* The Unstructured API's workflow operations URL for your account, as follows:
 
   1. In the Unstructured UI, click **API Keys** on the sidebar.<br />
-  2. Note the value of the **Unstructured Workflow Endpoint** field.
+  2. Note the value of the **Unstructured API's workflow operations** field.
 
 * An S3 source connector in your Unstructured account. [Learn how](/ui/sources/s3).
 
@@ -152,7 +156,7 @@ To use this example, you will need the following:
 
 10. For **Value**, enter `<unstructured-api-url>/workflows/<workflow-id>/run`. Replace the following placeholders:
 
-    * Replace `<unstructured-api-url>` with your Unstructured Workflow Endpoint value.
+    * Replace `<unstructured-api-url>` with your Unstructured API's workflow operations value.
     * Replace `<workflow-id>` with the ID of your Unstructured workflow.
 
     The **Value** should now look similar to the following:

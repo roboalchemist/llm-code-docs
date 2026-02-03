@@ -14,14 +14,14 @@ The Vespa platform is open source, and can be deployed in self-managed systems a
 
 Documents that describe functionality with such limited applicability are clearly marked by one or more of the following chips:
 
-| Vespa CloudThis content is applicable to Vespa Cloud deployments. | Only applicable with Vespa Cloud deployments. |
-| Self-managedThis content is applicable to self-managed Vespa systems. | Only applicable with self-managed deployments. |
+| Vespa CloudThis content is applicable to Vespa Cloud deployments. | Only applicable to Vespa Cloud deployments. |
+| Self-managedThis content is applicable to self-managed Vespa systems. | Only applicable to self-managed deployments. |
 | EnterpriseNot open source: This functionality is only available commercially. | Not open source: Available commercially only (both self-managed and on cloud unless also marked by one of the other chips above). |
 
   
   
 
-For clarity, any document _not_ marked with any of these chips describes functionality that is open source and available both on with Vespa Cloud and self-managed deployments.
+For clarity, any document _not_ marked with any of these chips describes functionality that is open source and available both on Vespa Cloud and self-managed deployments.
 
 ## Contributing
 
@@ -55,5 +55,5 @@ Notes and other Important pieces of information are shown like:
 
  **Deprecated:** Deprecation warning here
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

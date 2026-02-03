@@ -12,14 +12,14 @@ We are developing Rspack 2.0 and Rsbuild 2.0, focusing on API and internal archi
 
 Key areas include:
 
-* **Streamlined outputs and APIs**: Redesigning output structure and webpack-specific APIs for better clarity and simplicity, while maintaining compatibility.
-* **Improved ESM output**: Enhancing ESM support and providing an out-of-the-box experience through Rsbuild and Rslib.
-* **Built-in RSC support**: Inspired by tools like Parcel, offering built-in support for React Server Components.
-* **More stable persistent cache**: Improving usability and reliability of persistent cache, with plans to enable it by default in development mode.
-* **Enable Native watcher**: Using native watcher to reduce rebuild latency and improve HMR performance.
-* **Core architecture optimization**: Refining the internal data flow to reduce memory usage and improve performance and maintainability.
-* **Migration to pure ESM packages**: Converting all npm packages to pure ESM format and dropping Node.js 18 support.
-* And more...
+- **Streamlined outputs and APIs**: Redesigning output structure and webpack-specific APIs for better clarity and simplicity, while maintaining compatibility.
+- **Improved ESM output**: Enhancing ESM support and providing an out-of-the-box experience through Rsbuild and Rslib.
+- **Built-in RSC support**: Inspired by tools like Parcel, offering built-in support for React Server Components.
+- **More stable persistent cache**: Improving usability and reliability of persistent cache, with plans to enable it by default in development mode.
+- **Enable Native watcher**: Using native watcher to reduce rebuild latency and improve HMR performance.
+- **Core architecture optimization**: Refining the internal data flow to reduce memory usage and improve performance and maintainability.
+- **Migration to pure ESM packages**: Converting all npm packages to pure ESM format and dropping Node.js 18 support.
+- And more...
 
 The first preview release is planned for **February 2026**. We will carefully review every breaking change to ensure a smooth upgrade path.
 
@@ -31,11 +31,11 @@ We are building a unified JavaScript toolchain centered around Rspack — [Rstac
 
 The main focus areas across Rstack tools include:
 
-* Rsbuild: Developing 2.0 alongside Rspack, focusing on performance and developer experience.
-* Rslib: Integrating Rspack's new ESM output, aiming for a 1.0 release once the APIs stabilize.
-* Rsdoctor: Expanding AI Agent support via MCP and adding new features such as tree-shaking analysis.
-* Rspress: Developing v2.0 with major architecture, UI, and feature improvements.
-* Rstest: Enhancing testing capabilities with browser mode and VS Code extension. See the [Rstest Roadmap](https://github.com/web-infra-dev/rstest/issues/85) for details.
+- Rsbuild: Developing 2.0 alongside Rspack, focusing on performance and developer experience.
+- Rslib: Integrating Rspack's new ESM output, aiming for a 1.0 release once the APIs stabilize.
+- Rsdoctor: Expanding AI Agent support via MCP and adding new features such as tree-shaking analysis.
+- Rspress: Developing v2.0 with major architecture, UI, and feature improvements.
+- Rstest: Enhancing testing capabilities with browser mode and VS Code extension. See the [Rstest Roadmap](https://github.com/web-infra-dev/rstest/issues/85) for details.
 
 ## Remote cache
 

@@ -1,10 +1,14 @@
 # Source: https://docs.embedchain.ai/components/data-sources/custom.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ⚙️ Custom
 
 When we say "custom", we mean that you can customize the loader and chunker to your needs. This is done by passing a custom loader and chunker to the `add` method.
 
-```python
+```python  theme={null}
 from embedchain import App
 import your_loader
 from my_module import CustomLoader
@@ -27,7 +31,7 @@ app.add("source", data_type="custom", loader=loader, chunker=chunker)
 
 Example:
 
-```python
+```python  theme={null}
 from embedchain import App
 from embedchain.loaders.github import GithubLoader
 

@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/zhang-hu-guan-li/plans/billing-policy.md
-
-# Source: https://gitbook.com/docs/documentation/fr/gestion-du-compte/plans/billing-policy.md
-
-# Source: https://gitbook.com/docs/account-management/plans/billing-policy.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/akaunto/plans/billing-policy.md
 
 # Source: https://gitbook.com/docs/documentation/zh/zhang-hu-guan-li/plans/billing-policy.md
 

@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Cloudcraft (Standalone) > Advanced > Fix "unable to verify AWS account"
   problem
-source_url: >-
-  https://docs.datadoghq.com/advanced/fix-unable-to-verify-aws-account-problem/index.html
 ---
 
 # Fix "unable to verify AWS account" problem

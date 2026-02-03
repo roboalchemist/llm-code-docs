@@ -12,50 +12,84 @@
 
 # Source: https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/using-dialog-designer/quick-overview.md
 
-# Source: https://docs.avaamo.com/user-guide/ref/avaamo-platform-api-documentation/quick-overview.md
-
-# Source: https://docs.avaamo.com/user-guide/how-to/build-agents/add-entity-types-to-agent/quick-overview.md
-
-# Source: https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/customize-your-skill/quick-overview.md
-
-# Source: https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/using-avaamo-answers-1/quick-overview.md
-
-# Source: https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/using-smalltalk/quick-overview.md
-
-# Source: https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/dynamic-q-and-a/quick-overview.md
-
-# Source: https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/using-dialog-designer/quick-overview.md
+# Source: https://docs.avaamo.com/user-guide/skills/dialog-skill/quick-overview.md
 
 # Quick overview
 
-Dialog skill allows you to create responses that require multi-step dialogs with the user for a given question to complete a task. Typically, Dialog skill is used for any custom skill that cannot be built using other skill types.&#x20;
+The Dialog skill in AI agents enables you to build agents that behave `deterministically` while still retaining `agentic flexibility`. It combines the structured reliability of dialog flows with the intelligence and spontaneity of AI-driven prompts, making it suitable for complex, real-world conversational scenarios.
 
-**Examples**: The following are a few examples where Dialog skill can be used to create multi-turn conversations:
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FxSyiYf35sgCcaKednsfY%2FScreenshot%202026-01-14%20at%202.32.49%E2%80%AFPM.png?alt=media&#x26;token=389d0042-6ed8-40a6-89ef-6d0129589f45" alt=""><figcaption></figcaption></figure>
 
-* Building flow for diagnosing a patient using symptoms.
-* Ordering a pizza.
-* Create an Insurance policy.
+### How does dialog skill works
 
-In the Avaamo Platform, you can create, design, and edit conversational flows quickly with minimal technical expertise using an interactive Dialog Designer. The following illustration depicts a sample flow of a pizza agent created using Dialog Designer:
+A dialog skill is built using two key components:
 
-![](https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-LpXFTiTgns4Ml77XGi3%2F-MEMexy42aJzwxL28Auw%2F-MEMt84-7RKTkldOyOxp%2Fhowto-dialog-overview.png?alt=media\&token=aa8e8f96-a716-4cfa-bdc2-d792cfc12623)
+1. **Prompt skill (orchestrator)**\
+   Acts as the entry point for every conversation. It decides `which dialog flow to invoke` based on user input.
+2. **Dialog skills (flows)**\
+   Handle structured conversations such as ordering, tracking, or support flows. These follow deterministic dialog logic similar to classic dialog skills.
 
-The following is an illustration of a Dialog skill response in a Pizza agent:
+**Conversation flow**
 
-![](https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2F68bZATIhKUE3QuE1wCPP%2Fimage.png?alt=media\&token=487dcd82-73d2-4026-b6c2-3e36494c7482)
+1. User message is first handled by the **prompt skill**.
+2. The prompt (orchestrator) identifies the intent using instructions.
+3. A function call transfers control to the relevant **dialog skill**.
+4. Subsequent messages are handled by that dialog flow.
+5. If the dialog skill cannot handle a message, control returns to the orchestrator.
 
-### Additional resources
+### Key concepts in dialog skill
 
-The following lists a few additional resources available for you to get started on Dialog skills:
+#### Instructions (replacing training data)
 
-* [Quick start video](https://docs.avaamo.com/user-guide/quick-start-tutorials/add-dialog-skill)
-* [Webinar on Introduction to v5.0 and Answers](https://docs.avaamo.com/user-guide/ref/webinars/introduction-to-v5.0-and-answers)
+Flow skill replaces rigid training data with **instructions**.
 
-### Next steps
+* Instructions define *when* a dialog flow should be invoked.
+* They are flexible and expressive (for example, “invoke this flow if the user chooses any non-veg item”).
+* This removes the need to maintain long lists of sample utterances.
 
-This section provides an in-depth understanding of the following:
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FF7GqwWbMOXwLM8Qu4D0d%2FScreenshot%202026-01-15%20at%2010.58.48%E2%80%AFAM.png?alt=media&#x26;token=1e5e0f50-c89d-47bf-b201-d44ab7429d57" alt=""><figcaption></figcaption></figure>
 
-* [Create a new Dialog skill](https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-dialog-skill): Start by creating a new Dialog skill or by importing from any one of the available skills. See [Import skill](https://docs.avaamo.com/user-guide/how-to/build-skills/manage-skill/import-and-re-import-skills), for more information.
-* [Build and manage Dialog skill](https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill): Add invocation intents to your Dialog skill and build a multi-turn conversation flow using an interactive flow designer.
-* [Test Dialog skill](https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/using-dialog-designer/test-skill): Test Dialog skill as you build using regression testing and agent simulator.
-* [Debug Dialog skill](https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/using-dialog-designer/debug-skill): Debug Dialog skill using insights, debug logs, and conversation history.
+Refer [Instructions](https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/add-user-intent/instructions), for more information.
+
+#### Agentic text&#x20;
+
+Flow skill contains a new response type called **Agentic Text**.
+
+* Instead of static responses, the agent uses instructions to generate responses dynamically.
+* Example:\
+  \&#xNAN;*“Ask the user what size of pizza they want.”*
+
+This enables more natural, less repetitive conversations.
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FZCOdcxR1maCaGKmEvG3t%2FScreenshot%202026-01-15%20at%2010.46.44%E2%80%AFAM.png?alt=media&#x26;token=ea7cf07d-a4ca-45c6-af6a-5d12133893aa" alt=""><figcaption></figcaption></figure>
+
+Refer [Agentic text](https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/using-dialog-designer/create-new-skill/build-skill-responses/add-skill-messages-responses#agentic-text), for more information.
+
+#### Entity definition
+
+Entity handling in the dialog skill is simplified and more flexible.
+
+Entities can be defined in one of the following ways:
+
+**Entity**
+
+* Define an entity with a name and a description.
+* The description is passed to the LLM to extract the entity value from user input.
+
+Example:
+
+Name: *pizza\_type*
+
+Description: *This is the size of the pizza, which can be small, medium, or large*
+
+**Entity extraction script**
+
+* Use a **JavaScript (JS) block** to extract entities.
+
+{% hint style="info" %}
+**Note:** If provided, the extraction script takes precedence over name and description.
+{% endhint %}
+
+<figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FSpP2F52kPnpetIbeiUYO%2FScreenshot%202026-01-15%20at%2010.52.10%E2%80%AFAM.png?alt=media&#x26;token=bdc0f013-015c-432a-98ca-8e8a96438f42" alt=""><figcaption></figcaption></figure>
+
+Refer [Invocation](https://docs.avaamo.com/user-guide/skills/dialog-skill/add-invocation), for more information.

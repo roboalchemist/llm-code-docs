@@ -1,10 +1,16 @@
-# Source: https://docs.perplexity.ai/getting-started/pricing.md
+# Source: https://docs.perplexity.ai/docs/getting-started/pricing.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Pricing
 
-<Note>
-  This page shows **pricing information** to help you understand API costs. For **billing setup**, payment methods, and usage monitoring, visit the [Admin section](/getting-started/api-groups).
-</Note>
+<Info>
+  This page shows **pricing information** to help you understand API costs.
+
+  For **billing setup**, payment methods, and usage monitoring, visit the [Admin section](/docs/getting-started/api-groups). For **rate limits**, see the [Rate Limits & Usage Tiers](/docs/admin/rate-limits-usage-tiers) page.
+</Info>
 
 ## Search API Pricing
 
@@ -16,10 +22,35 @@
   **No token costs:** Search API charges per request only, with no additional token-based pricing.
 </Note>
 
+## Agentic Research API Pricing
+
+The Agentic Research API provides access to third-party models from OpenAI, Anthropic, Google, and xAI with **transparent, token-based pricing** at direct provider rates with no markup.
+
+### Model Pricing
+
+Agentic Research API pricing varies by provider and model, with each provider offering multiple models at different price points.
+
+<Card title="View Complete Third-Party Model Pricing" icon="table" href="/docs/grounded-llm/responses/models">
+  See the full pricing breakdown for all available models from OpenAI, Anthropic, Google, and xAI, including cache rates and provider documentation links on the [Agentic Research API Models page](/docs/grounded-llm/responses/models).
+</Card>
+
+### Tool Pricing
+
+When using web search tools with the Agentic Research API:
+
+| Tool             |          Price          | Description                                           |
+| ---------------- | :---------------------: | ----------------------------------------------------- |
+| **`web_search`** |  \$0.005 per invocation | Performs web searches to retrieve current information |
+| **`fetch_url`**  | \$0.0005 per invocation | Fetches and extracts content from specific URLs       |
+
+<Note>
+  Tool costs are separate from model token costs. If a model makes 3 web searches during a request, you pay model tokens + (3 × \$0.005) for searches.
+</Note>
+
 ## Grounded LLM Pricing
 
 <Info>
-  **Total cost per query** = Token costs + Request fee (varies by search context size, applies to Sonar, Sonar Pro, Sonar Reasoning, and Sonar Reasoning Pro models only)
+  **Total cost per query** = Token costs + Request fee (varies by search context size, applies to Sonar, Sonar Pro, and Sonar Reasoning Pro models only)
 </Info>
 
 <Tabs>
@@ -32,7 +63,6 @@
     | ----------------------- | :------------------: | :-------------------: | :---------------------: | :--------------------: | :----------------------: |
     | **Sonar**               |          \$1         |          \$1          |            -            |            -           |             -            |
     | **Sonar Pro**           |          \$3         |          \$15         |            -            |            -           |             -            |
-    | **Sonar Reasoning**     |          \$1         |          \$5          |            -            |            -           |             -            |
     | **Sonar Reasoning Pro** |          \$2         |          \$8          |            -            |            -           |             -            |
     | **Sonar Deep Research** |          \$2         |          \$8          |           \$2           |           \$5          |            \$3           |
   </Tab>
@@ -46,7 +76,6 @@
     | ----------------------- | :--------------: | :-----------------: | :---------------: |
     | **Sonar**               |        \$5       |         \$8         |        \$12       |
     | **Sonar Pro**           |        \$6       |         \$10        |        \$14       |
-    | **Sonar Reasoning**     |        \$5       |         \$8         |        \$12       |
     | **Sonar Reasoning Pro** |        \$6       |         \$10        |        \$14       |
 
     <Note>
@@ -55,6 +84,28 @@
       * **High**: Maximum search depth, best for research
 
       [Learn more about search context →](../guides/search-context-size-guide)
+    </Note>
+  </Tab>
+
+  <Tab title="Pro Search Pricing">
+    ## Pro Search Pricing (Pro Search for Sonar Pro)
+
+    **Pro Search** enhances Sonar Pro with automated tool usage and multi-step reasoning. When enabled, the model can perform multiple web searches and fetch URL content to answer complex queries. [Learn more about Pro Search here](/docs/grounded-llm/chat-completions/pro-search/quickstart).
+
+    <Info>
+      Pro Search requires `stream: true` and is enabled via the `search_type` parameter in `web_search_options`.
+    </Info>
+
+    ### Search Type Options
+
+    | Search Type | Description                                        |   Request Fee (per 1K)   |
+    | ----------- | -------------------------------------------------- | :----------------------: |
+    | **`fast`**  | (default) Standard Sonar Pro behavior              |     \$6 / \$10 / \$14    |
+    | **`pro`**   | Multi-step tool usage for complex queries          |    \$14 / \$18 / \$22    |
+    | **`auto`**  | Automatic classification based on query complexity | Varies by classification |
+
+    <Note>
+      Request fees vary by search context size (Low / Medium / High). Token pricing remains the same as standard Sonar Pro (\$3 per 1M input, \$15 pe r 1M output).
     </Note>
   </Tab>
 </Tabs>
@@ -190,25 +241,3 @@
     </Tabs>
   </Card>
 </CardGroup>
-
-## Choosing the Right API
-
-### Search API
-
-| API            | Description                                    | Best For                                                                          |
-| -------------- | ---------------------------------------------- | --------------------------------------------------------------------------------- |
-| **Search API** | Raw web search results with advanced filtering | Custom search engines, research tools, competitive intelligence, news aggregation |
-
-### Sonar Models (Chat Completions)
-
-| Model                   | Description                                                    | Best For                                                         |
-| ----------------------- | -------------------------------------------------------------- | ---------------------------------------------------------------- |
-| **Sonar**               | Lightweight, cost-effective search model                       | Quick facts, news updates, simple Q\&A, high-volume applications |
-| **Sonar Pro**           | Advanced search with deeper content understanding              | Complex queries, competitive analysis, detailed research         |
-| **Sonar Reasoning**     | Quick problem-solving with step-by-step logic and search       | Logic puzzles, math problems, transparent reasoning              |
-| **Sonar Reasoning Pro** | Enhanced multi-step reasoning with web search                  | Complex problem-solving, research analysis, strategic planning   |
-| **Sonar Deep Research** | Exhaustive research and detailed report generation with search | Academic research, market analysis, comprehensive reports        |
-
-<Info>
-  **Need help choosing?** Use Search API when you want raw data to process yourself. Use Sonar models when you want AI-generated answers with search grounding.
-</Info>

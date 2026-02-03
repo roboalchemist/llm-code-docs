@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/agents/multimodality/vision.md
 
-# Source: https://docs.livekit.io/agents/build/vision.md
-
-LiveKit docs › Building voice agents › Vision
+LiveKit docs › Multimodality › Vision
 
 ---
 
@@ -20,7 +18,7 @@ This guide includes an overview of the vision features and code samples for each
 
 The agent's chat context supports images as well as text. You can add as many images as you want to the chat context, but keep in mind that larger context windows contribute to slow response times.
 
-To add an image to the chat context, create an `ImageContent` object and include it in a chat message. The image content can be a base 64 data URL, an external URL, or a frame from a [video track](https://docs.livekit.io/home/client/tracks.md).
+To add an image to the chat context, create an `ImageContent` object and include it in a chat message. The image content can be a base 64 data URL, an external URL, or a frame from a [video track](https://docs.livekit.io/transport/media.md).
 
 ### Load into initial context
 
@@ -48,7 +46,7 @@ def entrypoint(ctx: JobContext):
     await session.start(
         room=ctx.room,
         agent=Agent(chat_ctx=initial_ctx,),
-        # ... room_input_options, etc.
+        # ... room_options, etc.
     )        
 
 ```
@@ -112,7 +110,7 @@ import { type JobContext, defineAgent, llm, voice } from '@livekit/agents';
 
 ### Upload from frontend
 
-To upload an image from your frontend app, use the [sendFile method](https://docs.livekit.io/home/client/data/byte-streams.md#sending-files) of the LiveKit SDK. Add a byte stream handler to your agent to receive the image data and add it to the chat context. Here is a simple agent capable of receiving images from the user on the byte stream topic `"images"`:
+To upload an image from your frontend app, use the [sendFile method](https://docs.livekit.io/transport/data/byte-streams.md#sending-files) of the LiveKit SDK. Add a byte stream handler to your agent to receive the image data and add it to the chat context. Here is a simple agent capable of receiving images from the user on the byte stream topic `"images"`:
 
 ** Filename: `agent.py`**
 
@@ -441,11 +439,11 @@ Available in:
 > 
 > Live video input requires a realtime model with video support, such as [Gemini Live](https://docs.livekit.io/agents/models/realtime/plugins/gemini.md) or the [OpenAI Realtime API](https://docs.livekit.io/agents/models/realtime/plugins/openai.md).
 
-Set the `video_enabled` parameter to `True` in `RoomInputOptions` to enable live video input. Your agent automatically receives frames from the user's [camera](https://docs.livekit.io/home/client/tracks/publish.md) or [screen sharing](https://docs.livekit.io/home/client/tracks/screenshare.md) tracks, if available. Only the single most recently published video track is used.
+Set the `video_input` parameter to `True` in `RoomOptions` to enable live video input. Your agent automatically receives frames from the user's [camera](https://docs.livekit.io/transport/media/publish.md) or [screen sharing](https://docs.livekit.io/transport/media/screenshare.md) tracks, if available. Only the single most recently published video track is used.
 
 By default the agent samples one frame per second while the user speaks, and one frame every three seconds otherwise. Each frame is fit into 1024x1024 and encoded to JPEG. To override the frame rate, set `video_sampler` on the `AgentSession` with a custom instance.
 
-Video input is passive and has no effect on [turn detection](https://docs.livekit.io/agents/build/turns.md). To leverage live video input in a non-conversational context, use [manual turn control](https://docs.livekit.io/agents/build/turns.md#manual) and trigger LLM responses or tool calls on a timer or other schedule.
+Video input is passive and has no effect on [turn detection](https://docs.livekit.io/agents/logic/turns.md). To leverage live video input in a non-conversational context, use [manual turn control](https://docs.livekit.io/agents/build/turns.md#manual) and trigger LLM responses or tool calls on a timer or other schedule.
 
 The following example shows how to add Gemini Live vision to your [voice AI quickstart](https://docs.livekit.io/agents/start/voice-ai.md) agent:
 
@@ -471,8 +469,8 @@ async def my_agent(ctx: JobContext):
     await session.start(
         agent=VideoAssistant(),
         room=ctx.room,
-        room_input_options=RoomInputOptions(
-            video_enabled=True,
+        room_options=room_io.RoomOptions(
+            video_input=True,
             # ... noise_cancellation, etc.
         ),
     )
@@ -485,7 +483,7 @@ async def my_agent(ctx: JobContext):
 from livekit.agents import (
     AgentServer,
     AgentSession,
-    RoomInputOptions,
+    room_io
 )
 from livekit.plugins import google
 
@@ -497,19 +495,19 @@ The following documentation and examples can help you get started with vision in
 
 - **[Voice AI quickstart](https://docs.livekit.io/agents/start/voice-ai.md)**: Use the quickstart as a starting base for adding vision code.
 
-- **[Byte streams](https://docs.livekit.io/home/client/data/byte-streams.md)**: Send images from your frontend to your agent with byte streams.
+- **[Byte streams](https://docs.livekit.io/transport/data/byte-streams.md)**: Send images from your frontend to your agent with byte streams.
 
 - **[RoomIO](https://docs.livekit.io/agents/build.md#roomio)**: Learn more about `RoomIO` and how it manages tracks.
 
-- **[Vision Assistant](https://github.com/livekit-examples/vision-demo)**: A voice AI agent with video input powered by Gemini Live.
+- **[Gemini Vision Assistant](https://docs.livekit.io/recipes/gemini_live_vision.md)**: A voice AI agent with video input powered by Gemini Live.
 
-- **[Camera and microphone](https://docs.livekit.io/home/client/tracks/publish.md)**: Publish camera and microphone tracks from your frontend.
+- **[Camera and microphone](https://docs.livekit.io/transport/media/publish.md)**: Publish camera and microphone tracks from your frontend.
 
-- **[Screen sharing](https://docs.livekit.io/home/client/tracks/screenshare.md)**: Publish screen sharing tracks from your frontend.
+- **[Screen sharing](https://docs.livekit.io/transport/media/screenshare.md)**: Publish screen sharing tracks from your frontend.
 
 ---
 
-This document was rendered at 2025-11-18T23:55:03.810Z.
-For the latest version of this document, see [https://docs.livekit.io/agents/build/vision.md](https://docs.livekit.io/agents/build/vision.md).
+This document was rendered at 2026-02-03T03:24:55.406Z.
+For the latest version of this document, see [https://docs.livekit.io/agents/multimodality/vision.md](https://docs.livekit.io/agents/multimodality/vision.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

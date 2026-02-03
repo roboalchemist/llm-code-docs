@@ -2,18 +2,6 @@
 
 # Source: https://docs.apify.com/platform/integrations/gumloop/maps.md
 
-# Source: https://docs.apify.com/platform/integrations/make/maps.md
-
-# Source: https://docs.apify.com/platform/integrations/gumloop/maps.md
-
-# Source: https://docs.apify.com/platform/integrations/make/maps.md
-
-# Source: https://docs.apify.com/platform/integrations/gumloop/maps.md
-
-# Source: https://docs.apify.com/platform/integrations/make/maps.md
-
-# Source: https://docs.apify.com/platform/integrations/gumloop/maps.md
-
 # Gumloop - Google maps Actor integration
 
 Search, extract, and enrich business data from Google Maps in Gumloop.
@@ -75,6 +63,6 @@ You can pull the following types of place data from Google Maps using Gumloop’
 
 ## Other integrations
 
-* https://docs.apify.com/platform/integrations/gumloop/tiktok.md
-* https://docs.apify.com/platform/integrations/gumloop/instagram.md
-* https://docs.apify.com/platform/integrations/gumloop/youtube.md
+* [TikTok](https://docs.apify.com/platform/integrations/gumloop/tiktok.md)
+* [Instagram](https://docs.apify.com/platform/integrations/gumloop/instagram.md)
+* [YouTube](https://docs.apify.com/platform/integrations/gumloop/youtube.md)

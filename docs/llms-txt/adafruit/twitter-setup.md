@@ -1,5 +1,3 @@
-# Source: https://learn.adafruit.com/pi-thermal-printer/twitter-setup.md
-
 # Source: https://learn.adafruit.com/internet-of-things-printer/twitter-setup.md
 
 # Internet of Things Printer
@@ -75,7 +73,7 @@ No Longer Stocked
 [Adafruit METRO 328 - Arduino Compatible - with Headers](https://www.adafruit.com/product/2488)
 This is the&nbsp; **Adafruit METRO Arduino-Compatible - with&nbsp;headers.&nbsp;** It's a fully assembled and tested microcontroller and physical computing board with through-hole headers attached.&nbsp; If you don't want a&nbsp;Metro with the headers attached for...
 
-Out of Stock
+In Stock
 [Buy Now](https://www.adafruit.com/product/2488)
 [Related Guides to the Product](https://learn.adafruit.com/products/2488/guides)
 ### Ethernet Shield for Arduino - W5500 Chipset
@@ -125,18 +123,18 @@ No Longer Stocked
 
 ## Related Guides
 
+- [XBee Radios](https://learn.adafruit.com/xbee-radios.md)
+- [Adafruit VCNL4040 Proximity Sensor](https://learn.adafruit.com/adafruit-vcnl4040-proximity-sensor.md)
 - [Trinket / Gemma IR Control](https://learn.adafruit.com/trinket-gemma-ir-remote-control.md)
-- [Motorized Camera Slider MK3 ](https://learn.adafruit.com/motorized-camera-slider-mk3.md)
+- [IR Sensor](https://learn.adafruit.com/ir-sensor.md)
 - [Adafruit MENTA Kit](https://learn.adafruit.com/adafruit-menta-kit-mint-tin-arduino-compatible.md)
-- [Adafruit HUZZAH ESP8266 breakout](https://learn.adafruit.com/adafruit-huzzah-esp8266-breakout.md)
-- [Experimenter's Guide for Metro](https://learn.adafruit.com/experimenters-guide-for-metro.md)
-- [Arduin-o-Phone](https://learn.adafruit.com/arduin-o-phone-arduino-powered-diy-cellphone.md)
-- [CircuitPython Libraries on Linux and ODROID C2](https://learn.adafruit.com/circuitpython-libaries-linux-odroid-c2.md)
 - [A Z80 CP/M emulator for the SAMD51](https://learn.adafruit.com/z80-cpm-emulator-for-the-samd51-grand-central.md)
-- [Portable Solar Charging Tracker](https://learn.adafruit.com/portable-solar-charging-tracker.md)
-- [Arduino GPS Clock](https://learn.adafruit.com/arduino-clock.md)
-- [Fake TV Light for Engineers](https://learn.adafruit.com/fake-tv-light-for-engineers.md)
-- [Home Automation in the Cloud with the ESP8266 & Adafruit IO](https://learn.adafruit.com/home-automation-in-the-cloud-with-the-esp8266-and-adafruit-io.md)
-- [Ladyada's Learn Arduino - Lesson #1](https://learn.adafruit.com/ladyadas-learn-arduino-lesson-number-1.md)
 - [How to Find Hidden COM Ports](https://learn.adafruit.com/how-to-find-hidden-com-ports.md)
+- [CircuitPython Libraries on Linux and ODROID C2](https://learn.adafruit.com/circuitpython-libaries-linux-odroid-c2.md)
+- [Bootloading Basics](https://learn.adafruit.com/bootloader-basics.md)
 - [Overwatch Prop Gun: Lucio's Blaster Pt. 2](https://learn.adafruit.com/overwatch-lucio-gun-pt-2.md)
+- [Adafruit HUZZAH ESP8266 breakout](https://learn.adafruit.com/adafruit-huzzah-esp8266-breakout.md)
+- [Ladyada's Learn Arduino - Lesson #2](https://learn.adafruit.com/ladyadas-learn-arduino-lesson-number-2.md)
+- [Motorized Camera Slider MK3 ](https://learn.adafruit.com/motorized-camera-slider-mk3.md)
+- [Echo 2-XL](https://learn.adafruit.com/echo-2-xl.md)
+- [Building and Running MicroPython on the ESP8266](https://learn.adafruit.com/building-and-running-micropython-on-the-esp8266.md)

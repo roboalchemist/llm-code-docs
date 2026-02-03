@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/features/consistency.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Consistency
 
 Upstash utilizes a leader-based replication mechanism. Under this mechanism,

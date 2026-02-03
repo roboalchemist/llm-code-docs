@@ -4,56 +4,62 @@
 
 # Source: https://www.plain.com/docs/graphql/customers/get.md
 
-# Source: https://www.plain.com/docs/graphql/tiers/get.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://www.plain.com/docs/graphql/tenants/get.md
+# Fetch customers
 
-# Source: https://www.plain.com/docs/graphql/customers/get.md
+We provide a number of methods for fetching customers:
 
-# Source: https://www.plain.com/docs/graphql/tiers/get.md
+1. [Get customers](#get-customers) (To fetch more than one customer at a time)
+2. [Get customer by ID](#get-customer-by-id)
+3. [Get customer by email](#get-customer-by-email)
 
-# Source: https://www.plain.com/docs/graphql/tenants/get.md
+All of these endpoints require the following permissions:
 
-# Source: https://www.plain.com/docs/graphql/customers/get.md
+* `customer:read`
 
-# Source: https://www.plain.com/docs/graphql/tiers/get.md
+## Get customers
 
-# Source: https://www.plain.com/docs/graphql/tenants/get.md
+Our API allows you to fetch customers as a collection using `getCustomers` in our SDKs or the `customers` query in GraphQL. In both cases this endpoint supports [Pagination](/graphql/pagination).
 
-# Source: https://www.plain.com/docs/graphql/customers/get.md
+This is a very flexible endpoint which supports a variety of options for filtering and sorting, for full details try our [API explorer](https://app.plain.com/developer/api-explorer/) or [Typescript SDK](https://github.com/team-plain/typescript-sdk/).
 
-# Source: https://www.plain.com/docs/graphql/tiers/get.md
-
-# Get tiers
-
-For all of these queries you need the following permission:
-
-* `tier:read`
-
-## Get tiers
-
-Our API allows you to fetch tiers as a collection using `getTiers` in our SDKs or the `tiers` query in GraphQL. In both cases this endpoint supports [Pagination](/graphql/pagination).
-
-<Tabs>
+<Tabs items={[ 'Typescript SDK', 'GraphQL']}>
   <Tab title="Typescript SDK">
-    <Snippet file="typescript-sdk/get-tiers.mdx" />
+    <Snippet file="typescript-sdk/get-customers.mdx" />
   </Tab>
 
   <Tab title="GraphQL">
-    <Snippet file="graphql/get-tiers.mdx" />
+    <Snippet file="graphql/get-customers.mdx" />
   </Tab>
 </Tabs>
 
-### Get tier by ID
+## Get customer by ID
 
-If you know the tiers's ID in Plain you can use this method to fetch the tier.
+If you already have the ID of a customer from within Plain or one of our other endpoints you can fetch more details about them using `getCustomerById` in our SDKs or the `customer` query in GraphQL.
 
 <Tabs>
   <Tab title="Typescript SDK">
-    <Snippet file="typescript-sdk/get-tier-by-id.mdx" />
+    <Snippet file="typescript-sdk/get-customer-by-id.mdx" />
   </Tab>
 
   <Tab title="GraphQL">
-    <Snippet file="graphql/get-tier-by-id.mdx" />
+    <Snippet file="graphql/get-customer-by-id.mdx" />
+  </Tab>
+</Tabs>
+
+## Get customer by email
+
+To fetch a customer by email you can use `getCustomerByEmail` in our SDKs or the `customerByEmail` query in GraphQL.
+
+<Tabs>
+  <Tab title="Typescript SDK">
+    <Snippet file="typescript-sdk/get-customer-by-email.mdx" />
+  </Tab>
+
+  <Tab title="GraphQL">
+    <Snippet file="graphql/get-customer-by-email.mdx" />
   </Tab>
 </Tabs>

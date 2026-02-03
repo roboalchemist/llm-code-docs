@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/tutorials/databases/bigquery
+
 # Connect Streamlit to Google BigQuery
 
 This guide explains how to securely access a BigQuery database from Streamlit Community Cloud. It uses the [google-cloud-bigquery](https://googleapis.dev/python/bigquery/latest/index.html) library and Streamlit's [Secrets management](/develop/concepts/connections/secrets-management).

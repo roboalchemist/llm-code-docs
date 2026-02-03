@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/oxc/bad-replace-all-arg.md
 ---
-# oxc/bad-replace-all-arg&#x20;
 
 ### What it does
 

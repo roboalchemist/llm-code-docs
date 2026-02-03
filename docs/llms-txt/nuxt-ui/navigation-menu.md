@@ -10,7 +10,9 @@ Use the NavigationMenu component to display a list of links horizontally or vert
 
 ```vue
 <script setup lang="ts">
-const items = ref<undefined>([
+import type { NavigationMenuItem } from '@nuxt/ui'
+
+const items = ref<NavigationMenuItem[]>([
   {
     label: 'Guide',
     icon: 'i-lucide-book-open',
@@ -115,7 +117,7 @@ const items = ref<undefined>([
   {
     label: 'GitHub',
     icon: 'i-simple-icons-github',
-    badge: '3.8k',
+    badge: '6k',
     to: 'https://github.com/nuxt/ui',
     target: '_blank',
   },
@@ -264,7 +266,7 @@ const items = ref<NavigationMenuItem[]>([
   {
     label: 'GitHub',
     icon: 'i-simple-icons-github',
-    badge: '3.8k',
+    badge: '6k',
     to: 'https://github.com/nuxt/ui',
     target: '_blank',
   },
@@ -281,33 +283,18 @@ const items = ref<NavigationMenuItem[]>([
 </template>
 ```
 
-<note>
+> [!NOTE]
+> You can also pass an array of arrays to the `items` prop to display groups of items.
 
-You can also pass an array of arrays to the `items` prop to display groups of items.
-
-</note>
-
-<tip>
-
-Each item can take a `children` array of objects with the following properties to create submenus:
-
-- `label: string`
-- `description?: string`
-- `icon?: string`
-- `onSelect?: (e: Event) => void`
-- `class?: any`
-
-</tip>
+> [!TIP]
+> Each item can take a `children` array of objects with the following properties to create submenus:`label: string``description?: string``icon?: string``onSelect?: (e: Event) => void``class?: any`
 
 ### Orientation
 
 Use the `orientation` prop to change the orientation of the NavigationMenu.
 
-<note>
-
-When orientation is `vertical`, an [Accordion](/docs/components/accordion) component is used to display each group. You can control the open state of each item using the `open` and `defaultOpen` properties and change the behavior using the [`collapsible`](/docs/components/accordion#collapsible) and [`type`](/docs/components/accordion#multiple) props.
-
-</note>
+> [!NOTE]
+> When orientation is `vertical`, an [Accordion](/docs/components/accordion) component is used to display each group. You can control the open state of each item using the `open` and `defaultOpen` properties and change the behavior using the [`collapsible`](/docs/components/accordion#collapsible) and [`type`](/docs/components/accordion#multiple) props.
 
 ```vue
 <script setup lang="ts">
@@ -424,7 +411,7 @@ const items = ref<NavigationMenuItem[][]>([
     {
       label: 'GitHub',
       icon: 'i-simple-icons-github',
-      badge: '3.8k',
+      badge: '6k',
       to: 'https://github.com/nuxt/ui',
       target: '_blank',
     },
@@ -442,21 +429,15 @@ const items = ref<NavigationMenuItem[][]>([
 </template>
 ```
 
-<note>
-
-Groups will be spaced when orientation is `horizontal` and separated when orientation is `vertical`.
-
-</note>
+> [!NOTE]
+> Groups will be spaced when orientation is `horizontal` and separated when orientation is `vertical`.
 
 ### Collapsed
 
 In `vertical` orientation, use the `collapsed` prop to collapse the NavigationMenu, this can be useful in a sidebar for example.
 
-<note>
-
-You can use the [`tooltip`](#with-tooltip-in-items) and [`popover`](#with-popover-in-items) props to display more information on the collapsed items.
-
-</note>
+> [!NOTE]
+> You can use the [`tooltip`](#with-tooltip-in-items) and [`popover`](#with-popover-in-items) props to display more information on the collapsed items.
 
 ```vue
 <script setup lang="ts">
@@ -572,7 +553,7 @@ const items = ref<NavigationMenuItem[][]>([
     {
       label: 'GitHub',
       icon: 'i-simple-icons-github',
-      badge: '3.8k',
+      badge: '6k',
       to: 'https://github.com/nuxt/ui',
       target: '_blank',
     },
@@ -707,7 +688,7 @@ const items = ref<NavigationMenuItem[][]>([
     {
       label: 'GitHub',
       icon: 'i-simple-icons-github',
-      badge: '3.8k',
+      badge: '6k',
       to: 'https://github.com/nuxt/ui',
       target: '_blank',
     },
@@ -725,17 +706,11 @@ const items = ref<NavigationMenuItem[][]>([
 </template>
 ```
 
-<note>
+> [!NOTE]
+> In this example, the `border-b` class is applied to display a border in `horizontal` orientation, this is not done by default to let you have a clean slate to work with.
 
-In this example, the `border-b` class is applied to display a border in `horizontal` orientation, this is not done by default to let you have a clean slate to work with.
-
-</note>
-
-<caution>
-
-In `vertical` orientation, the `highlight` prop only highlights the border of active children.
-
-</caution>
+> [!CAUTION]
+> In `vertical` orientation, the `highlight` prop only highlights the border of active children.
 
 ### Color
 
@@ -768,7 +743,7 @@ const items = ref<NavigationMenuItem[][]>([
     {
       label: 'GitHub',
       icon: 'i-simple-icons-github',
-      badge: '3.8k',
+      badge: '6k',
       to: 'https://github.com/nuxt/ui',
       target: '_blank',
     },
@@ -812,7 +787,7 @@ const items = ref<NavigationMenuItem[][]>([
     {
       label: 'GitHub',
       icon: 'i-simple-icons-github',
-      badge: '3.8k',
+      badge: '6k',
       to: 'https://github.com/nuxt/ui',
       target: '_blank',
     },
@@ -825,21 +800,15 @@ const items = ref<NavigationMenuItem[][]>([
 </template>
 ```
 
-<note>
-
-The `highlight` prop changes the `pill` variant active item style. Try it out to see the difference.
-
-</note>
+> [!NOTE]
+> The `highlight` prop changes the `pill` variant active item style. Try it out to see the difference.
 
 ### Trailing Icon
 
 Use the `trailing-icon` prop to customize the trailing [Icon](/docs/components/icon) of each item. Defaults to `i-lucide-chevron-down`. This icon is only displayed when an item has children.
 
-<tip>
-
-You can also set an icon for a specific item by using the `trailingIcon` property in the item object.
-
-</tip>
+> [!TIP]
+> You can also set an icon for a specific item by using the `trailingIcon` property in the item object.
 
 ```vue
 <script setup lang="ts">
@@ -955,23 +924,15 @@ const items = ref<NavigationMenuItem[]>([
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.chevronDown` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.chevronDown` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.chevronDown` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.chevronDown` key.
 
 ### Arrow
 
@@ -1091,21 +1052,15 @@ const items = ref<NavigationMenuItem[]>([
 </template>
 ```
 
-<note>
-
-The arrow is animated to follow the active item.
-
-</note>
+> [!NOTE]
+> The arrow is animated to follow the active item.
 
 ### Content Orientation
 
 Use the `content-orientation` prop to change the orientation of the content.
 
-<warning>
-
-This prop only works when `orientation` is `horizontal`.
-
-</warning>
+> [!WARNING]
+> This prop only works when `orientation` is `horizontal`.
 
 ```vue
 <script setup lang="ts">
@@ -1317,11 +1272,8 @@ const items = ref<NavigationMenuItem[]>([
 </template>
 ```
 
-<note>
-
-You can inspect the DOM to see each item's content being rendered.
-
-</note>
+> [!NOTE]
+> You can inspect the DOM to see each item's content being rendered.
 
 ## Examples
 
@@ -1445,13 +1397,13 @@ const items = ref<NavigationMenuItem[][]>([
     {
       label: 'GitHub',
       icon: 'i-simple-icons-github',
-      badge: '3.8k',
+      badge: '6k',
       to: 'https://github.com/nuxt/ui',
       target: '_blank',
       tooltip: {
         text: 'Open on GitHub',
         kbds: [
-          '3.8k',
+          '6k',
         ],
       },
     },
@@ -1592,13 +1544,13 @@ const items = ref<NavigationMenuItem[][]>([
     {
       label: 'GitHub',
       icon: 'i-simple-icons-github',
-      badge: '3.8k',
+      badge: '6k',
       to: 'https://github.com/nuxt/ui',
       target: '_blank',
       tooltip: {
         text: 'Open on GitHub',
         kbds: [
-          '3.8k',
+          '6k',
         ],
       },
     },
@@ -1616,15 +1568,13 @@ const items = ref<NavigationMenuItem[][]>([
 </template>
 ```
 
-<tip to="#with-content-slot">
-
-You can use the `#content` slot to customize the content of the popover in the `vertical` orientation.
-
-</tip>
+> [!TIP]
+> See: #with-content-slot
+> You can use the `#content` slot to customize the content of the popover in the `vertical` orientation.
 
 ### Control active item
 
-You can control the active item by using the `default-value` prop or the `v-model` directive with the index of the item.
+You can control the active item(s) by using the `default-value` prop or the `v-model` directive with the `value` of the item. If no `value` is provided, it defaults to `item-${index}` for top-level items or `item-${level}-${index}` for nested items.
 
 ```vue [NavigationMenuModelValueExample.vue]
 <script setup lang="ts">
@@ -1725,13 +1675,13 @@ const active = ref()
 
 defineShortcuts({
   1: () => {
-    active.value = '0'
+    active.value = 'item-0'
   },
   2: () => {
-    active.value = '1'
+    active.value = 'item-1'
   },
   3: () => {
-    active.value = '2'
+    active.value = 'item-2'
   }
 })
 </script>
@@ -1741,35 +1691,11 @@ defineShortcuts({
 </template>
 ```
 
-<note>
+> [!TIP]
+> Use the `value-key` prop to change the key used to match items when a `v-model` or `default-value` is provided.
 
-In this example, leveraging [`defineShortcuts`](/docs/composables/define-shortcuts), you can switch the active item by pressing <kbd value="1">
-
-
-
-</kbd>
-
-, <kbd value="2">
-
-
-
-</kbd>
-
-, or <kbd value="3">
-
-
-
-</kbd>
-
-.
-
-</note>
-
-<tip>
-
-You can also pass the `value` of one of the items if provided.
-
-</tip>
+> [!NOTE]
+> In this example, leveraging [`defineShortcuts`](/docs/composables/define-shortcuts), you can switch the active item by pressing , , or .
 
 ### With custom slot
 
@@ -1785,39 +1711,74 @@ You will have access to the following slots:
 
 ```vue [NavigationMenuCustomSlotExample.vue]
 <script setup lang="ts">
-import type { NavigationMenuItem } from '@nuxt/ui'
+import type { NavigationMenuItem, DropdownMenuItem } from '@nuxt/ui'
 
 const items = [
   {
     label: 'Guide',
-    icon: 'i-lucide-book-open'
+    icon: 'i-lucide-book-open',
+    to: '/docs/getting-started'
   },
   {
     label: 'Composables',
-    icon: 'i-lucide-database'
+    icon: 'i-lucide-database',
+    to: '/docs/composables',
+    class: 'hidden'
   },
   {
     label: 'Components',
     icon: 'i-lucide-box',
-    slot: 'components' as const
+    to: '/docs/components',
+    class: 'hidden'
+  },
+  {
+    slot: 'more' as const,
+    as: 'span',
+    class: 'p-0',
+    content: {
+      align: 'start' as const
+    },
+    items: [
+      {
+        label: 'Composables',
+        icon: 'i-lucide-database',
+        to: '/docs/composables'
+      },
+      {
+        label: 'Components',
+        icon: 'i-lucide-box',
+        to: '/docs/components'
+      }
+    ] satisfies DropdownMenuItem[]
+  },
+  {
+    label: 'GitHub',
+    icon: 'i-simple-icons-github',
+    to: 'https://github.com/nuxt/ui',
+    target: '_blank',
+    slot: 'github' as const
   }
 ] satisfies NavigationMenuItem[]
 </script>
 
 <template>
   <UNavigationMenu :items="items" class="w-full justify-center">
-    <template #components-trailing>
-      <UBadge label="44" variant="subtle" size="sm" />
+    <template #more="{ item }">
+      <UDropdownMenu :content="item.content" :items="item.items">
+        <UButton icon="i-lucide-ellipsis" color="neutral" variant="link" />
+      </UDropdownMenu>
+    </template>
+
+    <template #github-trailing>
+      <UBadge label="6k+" color="neutral" variant="subtle" size="sm" />
     </template>
   </UNavigationMenu>
 </template>
 ```
 
-<tip to="#slots">
-
-You can also use the `#item`, `#item-leading`, `#item-label`, `#item-trailing` and `#item-content` slots to customize all items.
-
-</tip>
+> [!TIP]
+> See: #slots
+> You can also use the `#item`, `#item-leading`, `#item-label`, `#item-trailing` and `#item-content` slots to customize all items.
 
 ### With content slot
 
@@ -1918,11 +1879,8 @@ const items = [
 </template>
 ```
 
-<note>
-
-In this example, we add the `sm:w-(--reka-navigation-menu-viewport-width)` class on the `viewport` to have a dynamic width. This requires to set a width on the content's first child.
-
-</note>
+> [!NOTE]
+> In this example, we add the `sm:w-(--reka-navigation-menu-viewport-width)` class on the `viewport` to have a dynamic width. This requires to set a width on the content's first child.
 
 ## API
 
@@ -1938,23 +1896,48 @@ interface NavigationMenuProps {
    */
   as?: any;
   /**
+   * Determines whether a "single" or "multiple" items can be selected at a time.
+   * 
+   * Only works when `orientation` is `vertical`.
+   * @default "\"multiple\" as never"
+   */
+  type?: K | undefined;
+  /**
+   * The controlled value of the active item(s).
+   * - In horizontal orientation: always `string`
+   * - In vertical orientation with `type="single"`: `string`
+   * - In vertical orientation with `type="multiple"`: `string[]`
+   * 
+   * Use this when you need to control the state of the items. Can be binded with `v-model`
+   */
+  modelValue?: NavigationMenuModelValue<K, O> | undefined;
+  /**
+   * The default active value of the item(s).
+   * - In horizontal orientation: always `string`
+   * - In vertical orientation with `type="single"`: `string`
+   * - In vertical orientation with `type="multiple"`: `string[]`
+   * 
+   * Use when you do not need to control the state of the item(s).
+   */
+  defaultValue?: NavigationMenuModelValue<K, O> | undefined;
+  /**
    * The icon displayed to open the menu.
    */
-  trailingIcon?: string | object | undefined;
+  trailingIcon?: any;
   /**
    * The icon displayed when the item is an external link.
    * Set to `false` to hide the external icon.
    * @default "true"
    */
-  externalIcon?: string | boolean | object | undefined;
-  items?: ArrayOrNested<NavigationMenuItem> | undefined;
+  externalIcon?: any;
+  items?: T | undefined;
   color?: "primary" | "secondary" | "success" | "info" | "warning" | "error" | "neutral" | undefined;
   variant?: "pill" | "link" | undefined;
   /**
    * The orientation of the menu.
-   * @default "\"horizontal\""
+   * @default "\"horizontal\" as never"
    */
-  orientation?: Orientation | undefined;
+  orientation?: O | undefined;
   /**
    * Collapse the navigation menu to only show icons.
    * Only works when `orientation` is `vertical`.
@@ -1990,21 +1973,16 @@ interface NavigationMenuProps {
    */
   arrow?: boolean | undefined;
   /**
+   * The key used to get the value from the item.
+   * @default "\"value\""
+   */
+  valueKey?: GetItemKeys<T> | undefined;
+  /**
    * The key used to get the label from the item.
    * @default "\"label\""
    */
-  labelKey?: GetItemKeys<ArrayOrNested<NavigationMenuItem>> | undefined;
+  labelKey?: GetItemKeys<T> | undefined;
   ui?: { root?: ClassNameValue; list?: ClassNameValue; label?: ClassNameValue; item?: ClassNameValue; link?: ClassNameValue; linkLeadingIcon?: ClassNameValue; linkLeadingAvatar?: ClassNameValue; linkLeadingAvatarSize?: ClassNameValue; linkTrailing?: ClassNameValue; linkTrailingBadge?: ClassNameValue; linkTrailingBadgeSize?: ClassNameValue; linkTrailingIcon?: ClassNameValue; linkLabel?: ClassNameValue; linkLabelExternalIcon?: ClassNameValue; childList?: ClassNameValue; childLabel?: ClassNameValue; childItem?: ClassNameValue; childLink?: ClassNameValue; childLinkWrapper?: ClassNameValue; childLinkIcon?: ClassNameValue; childLinkLabel?: ClassNameValue; childLinkLabelExternalIcon?: ClassNameValue; childLinkDescription?: ClassNameValue; separator?: ClassNameValue; viewportWrapper?: ClassNameValue; viewport?: ClassNameValue; content?: ClassNameValue; indicator?: ClassNameValue; arrow?: ClassNameValue; } | undefined;
-  /**
-   * The controlled value of the menu item to activate. Can be used as `v-model`.
-   */
-  modelValue?: string | undefined;
-  /**
-   * The value of the menu item that should be active when initially rendered.
-   * 
-   * Use when you do not need to control the value state.
-   */
-  defaultValue?: string | undefined;
   /**
    * The duration from when the pointer enters the trigger until the tooltip gets opened.
    * @default "0"
@@ -2035,13 +2013,6 @@ interface NavigationMenuProps {
    * When `true`, prevents the user from interacting with the accordion and all its items
    */
   disabled?: boolean | undefined;
-  /**
-   * Determines whether a "single" or "multiple" items can be selected at a time.
-   * 
-   * This prop will overwrite the inferred type from `modelValue` and `defaultValue`.
-   * @default "\"multiple\""
-   */
-  type?: SingleOrMultipleType | undefined;
   /**
    * When type is "single", allows closing content when clicking trigger for an open item.
    * When type is "multiple", this prop has no effect.
@@ -2075,7 +2046,7 @@ interface NavigationMenuSlots {
  * Emitted events for the NavigationMenu component
  */
 interface NavigationMenuEmits {
-  update:modelValue: (payload: [value: string]) => void;
+  update:modelValue: (payload: [value: NavigationMenuModelValue<K, O> | undefined]) => void;
 }
 ```
 
@@ -2250,6 +2221,8 @@ export default defineAppConfig({
           collapsed: true,
           class: {
             link: 'px-1.5',
+            linkLabel: 'hidden',
+            linkTrailing: 'hidden',
             content: 'shadow-sm rounded-sm min-h-6 p-1'
           }
         },
@@ -2565,8 +2538,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

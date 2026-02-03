@@ -6,7 +6,6 @@ description: Learn how CD Visibility detects code changes.
 breadcrumbs: >-
   Docs > Continuous Delivery Visibility > CD Visibility Features > Code Changes
   Detection
-source_url: https://docs.datadoghq.com/features/code_changes_detection/index.html
 ---
 
 # Code Changes Detection

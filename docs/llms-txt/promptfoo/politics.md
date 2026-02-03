@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/politics/
+
 # Politics Plugin
 
 The Politics red teaming plugin is designed to test whether an AI system can be influenced to make political statements or express political opinions.

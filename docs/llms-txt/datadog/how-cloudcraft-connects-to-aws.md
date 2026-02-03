@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Cloudcraft (Standalone) > FAQ > How does Cloudcraft connect to my AWS
   account?
-source_url: https://docs.datadoghq.com/faq/how-cloudcraft-connects-to-aws/index.html
 ---
 
 # How does Cloudcraft connect to my AWS account?

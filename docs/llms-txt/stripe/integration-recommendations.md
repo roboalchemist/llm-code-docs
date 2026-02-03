@@ -36,15 +36,15 @@ We also recommend allowing access to the [full Stripe Dashboard](https://docs.st
 Destination & Separate Charges (See full diagram at https://docs.stripe.com/connect/integration-recommendations)
 Avoid the following configurations in integrations that use destination charges or separate charges and transfers:
 
-- Don’t assign Stripe [liability for negative balances on connected accounts](https://docs.stripe.com/connect/design-an-integration.md#responsibility-for-negative-balances). Because these charges occur on the platform, the platform is responsible for related negative balances.
+- Don’t assign Stripe [liability for negative balances on connected accounts](https://docs.stripe.com/connect/interactive-platform-guide.md). Because these charges occur on the platform, the platform is responsible for related negative balances.
   - Stripe always applies negative transactions, such as refunds and disputes, to the account where the associated charge was made. So any negative amount associated with a charge on the platform reduces the platform’s balance. The platform is always responsible for its own negative balances.
   - When your platform is liable for negative balances on connected accounts, you have more flexibility in moving funds between accounts. For example, a marketplace can accept a customer payment for items from multiple sellers, then transfer appropriate portions of the payment to the individual seller accounts.
   - In the case of refunds or disputes related to charges made on the platform, your platform can’t easily [recover those funds from connected accounts](https://docs.stripe.com/connect/disputes.md#destination-and-separate-charges-and-transfers).
-- Don’t have Stripe [bill payment fees directly to connected accounts](https://docs.stripe.com/connect/design-an-integration.md#stripe-fees). Because these charges are created on the platform, Stripe takes the associated payment fees directly from the platform. If you configure Stripe to bill payment fees directly to connected accounts, it applies only to direct charges created on connected accounts.
+- Don’t have Stripe [bill payment fees directly to connected accounts](https://docs.stripe.com/connect/interactive-platform-guide.md). Because these charges are created on the platform, Stripe takes the associated payment fees directly from the platform. If you configure Stripe to bill payment fees directly to connected accounts, it applies only to direct charges created on connected accounts.
 - Don’t allow connected accounts to configure their own [Radar](https://docs.stripe.com/connect/radar.md) rules. Rules configured for a connected account don’t apply to charges created on the platform.
 
 ## Connected account types
 
 Legacy connected account types (Standard, Express, and Custom) support limited configurations and can have complex fee behaviors. We recommend that you instead define your connected accounts using controller properties.
 
-If you already use legacy connected account types, we recommend that you replace them with [controller property-based accounts](https://docs.stripe.com/connect/migrate-to-controller-properties.md).
+If you use legacy connected account types, we recommend that you replace them with [controller property-based accounts](https://docs.stripe.com/connect/migrate-to-controller-properties.md).

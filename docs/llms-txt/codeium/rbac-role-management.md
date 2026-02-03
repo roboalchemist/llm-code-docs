@@ -2,21 +2,13 @@
 
 # Source: https://docs.windsurf.com/plugins/accounts/rbac-role-management.md
 
-# Source: https://docs.windsurf.com/windsurf/accounts/rbac-role-management.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/rbac-role-management.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/rbac-role-management.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/rbac-role-management.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/rbac-role-management.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/rbac-role-management.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Role Based Access & Management
 
-> Configure and manage role-based access controls, permissions, and user management for your Windsurf team
+> Configure RBAC permissions, create custom roles, and manage user access for Windsurf Teams and Enterprise plans.
 
 Windsurf's Role-Based Access Control system provides granular, role-based access to enterprise resources, enabling administrators to assign permissions and roles dynamically for secure and efficient access management.
 

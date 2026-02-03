@@ -39,7 +39,7 @@ Below, you can find two corresponding API schemas and examples for both endpoint
 ## API Schemas
 
 {% hint style="success" %}
-Now, all of our API schemas for video models use our new universal short URL — `https://api.aimlapi.com/v2/video/generations`. \
+Now, all of our API schemas for video models use our new universal short URL — `https://api.aimlapi.com/v2/video/generations`.\
 However, you can still call this model using the legacy URL that includes the vendor name.
 {% endhint %}
 
@@ -58,14 +58,14 @@ This endpoint creates and sends a video generation task to the server — and re
 ### Fetch the video
 
 After sending a request for video generation, this task is added to the queue. This endpoint lets you check the status of a video generation task using its `id`, obtained from the endpoint described above.\
-If the video generation task status is `complete`, the response will include the final result — with the generated video URL and additional metadata.
+If the video generation task status is `completed`, the response will include the final result — with the generated video URL and additional metadata.
 
-## GET /v2/generate/video/alibaba/generation
+## GET /v2/video/generations
 
 >
 
 ```json
-{"openapi":"3.0.0","info":{"title":"AI/ML Gateway","version":"1.0"},"servers":[{"url":"https://api.aimlapi.com"}],"security":[{"access-token":[]}],"components":{"securitySchemes":{"access-token":{"scheme":"bearer","bearerFormat":"<YOUR_AIMLAPI_KEY>","type":"http","description":"Bearer key"}},"schemas":{"Video.v2.PollVideoResponseDTO":{"type":"object","properties":{"id":{"type":"string","description":"The ID of the generated video."},"status":{"type":"string","enum":["queued","generating","completed","error"],"description":"The current status of the generation task."},"video":{"type":"object","nullable":true,"properties":{"url":{"type":"string","format":"uri","description":"The URL where the file can be downloaded from."},"duration":{"type":"number","nullable":true,"description":"The duration of the video."}},"required":["url"]},"duration":{"type":"number","nullable":true,"description":"The duration of the video."},"error":{"nullable":true,"description":"Description of the error, if any."},"meta":{"type":"object","nullable":true,"properties":{"usage":{"type":"object","nullable":true,"properties":{"tokens_used":{"type":"number","description":"The number of tokens consumed during generation."}},"required":["tokens_used"]}},"description":"Additional details about the generation."}},"required":["id","status"]}}},"paths":{"/v2/generate/video/alibaba/generation":{"get":{"operationId":"AlibabaControllerV2_fetchGeneration_v2","parameters":[{"name":"generation_id","required":true,"in":"query","schema":{"type":"string"}}],"responses":{"200":{"description":"Successfully generated video","content":{"application/json":{"schema":{"$ref":"#/components/schemas/Video.v2.PollVideoResponseDTO"}}}}},"tags":["Alibaba"]}}}}
+{"openapi":"3.0.0","info":{"title":"AIML API","version":"1.0.0"},"servers":[{"url":"https://api.aimlapi.com"}],"security":[{"access-token":[]}],"components":{"securitySchemes":{"access-token":{"scheme":"bearer","bearerFormat":"<YOUR_AIMLAPI_KEY>","type":"http","description":"Bearer key","in":"header"}}},"paths":{"/v2/video/generations":{"get":{"operationId":"_v2_video_generations","parameters":[{"name":"generation_id","required":true,"in":"query","schema":{"type":"string"}}],"responses":{"200":{"content":{"application/json":{"schema":{"type":"object","properties":{"id":{"type":"string","description":"The ID of the generated video."},"status":{"type":"string","enum":["queued","generating","completed","error"],"description":"The current status of the generation task."},"video":{"type":"object","nullable":true,"properties":{"url":{"type":"string","format":"uri","description":"The URL where the file can be downloaded from."}},"required":["url"]},"error":{"type":"object","nullable":true,"properties":{"name":{"type":"string"},"message":{"type":"string"}},"required":["name","message"],"description":"Description of the error, if any."},"meta":{"type":"object","nullable":true,"properties":{"usage":{"type":"object","nullable":true,"properties":{"credits_used":{"type":"number","description":"The number of tokens consumed during generation."}},"required":["credits_used"]}},"description":"Additional details about the generation."}},"required":["id","status"]}}}}}}}}}
 ```
 
 ## Full Example: Generating and Retrieving the Video From the Server
@@ -150,7 +150,7 @@ def main():
                 print("Still waiting... Checking again in 10 seconds.")
                 time.sleep(10)
             else:
-                print("Processing complete:/n", response_data)
+                print("Processing complete:\n", response_data)
                 return response_data
    
         print("Timeout reached. Stopping.")
@@ -393,7 +393,7 @@ Still waiting... Checking again in 10 seconds.
 Status: generating
 Still waiting... Checking again in 10 seconds.
 Status: completed
-Processing complete:/n {'id': 'a1bdaedd-4bd2-4cd3-8af4-4d9e6ebbce62', 'status': 'completed', 'video': {'url': 'https://cdn.aimlapi.com/alpaca/1d/9d/20250804/8ca6ec02/a1bdaedd-4bd2-4cd3-8af4-4d9e6ebbce62.mp4?Expires=1754374087&OSSAccessKeyId=LTAI5tRcsWJEymQaTsKbKqGf&Signature=8%2F2foeH6dJyUQBdXSSKn9qnJxQQ%3D'}}
+Processing complete:\n {'id': 'a1bdaedd-4bd2-4cd3-8af4-4d9e6ebbce62', 'status': 'completed', 'video': {'url': 'https://cdn.aimlapi.com/alpaca/1d/9d/20250804/8ca6ec02/a1bdaedd-4bd2-4cd3-8af4-4d9e6ebbce62.mp4?Expires=1754374087&OSSAccessKeyId=LTAI5tRcsWJEymQaTsKbKqGf&Signature=8%2F2foeH6dJyUQBdXSSKn9qnJxQQ%3D'}}
 ```
 
 {% endcode %}

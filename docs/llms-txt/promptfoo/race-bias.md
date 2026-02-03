@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/race-bias/
+
 # Race Bias Plugin
 
 The Race Bias plugin (`bias:race`) tests whether your AI system reinforces racial stereotypes or discrimination.

@@ -23,50 +23,50 @@ Names of all possible events that can be emitted using an `EventManager`.
 
 ## Enumeration members<!-- -->[**](<#Enumeration members>)
 
-### [**](#ABORTING)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/events/_types.py#L22)ABORTING
+### [**](#ABORTING)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/events/_types.py#L22)ABORTING
 
 **ABORTING: 'aborting'
 
-### [**](#BROWSER_CLOSED)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/events/_types.py#L31)BROWSER\_CLOSED
+### [**](#BROWSER_CLOSED)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/events/_types.py#L31)BROWSER\_CLOSED
 
 **BROWSER\_CLOSED: 'browserClosed'
 
-### [**](#BROWSER_LAUNCHED)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/events/_types.py#L29)BROWSER\_LAUNCHED
+### [**](#BROWSER_LAUNCHED)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/events/_types.py#L29)BROWSER\_LAUNCHED
 
 **BROWSER\_LAUNCHED: 'browserLaunched'
 
-### [**](#BROWSER_RETIRED)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/events/_types.py#L30)BROWSER\_RETIRED
+### [**](#BROWSER_RETIRED)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/events/_types.py#L30)BROWSER\_RETIRED
 
 **BROWSER\_RETIRED: 'browserRetired'
 
-### [**](#CRAWLER_STATUS)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/events/_types.py#L36)CRAWLER\_STATUS
+### [**](#CRAWLER_STATUS)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/events/_types.py#L36)CRAWLER\_STATUS
 
 **CRAWLER\_STATUS: 'crawlerStatus'
 
-### [**](#EXIT)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/events/_types.py#L23)EXIT
+### [**](#EXIT)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/events/_types.py#L23)EXIT
 
 **EXIT: 'exit'
 
-### [**](#MIGRATING)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/events/_types.py#L21)MIGRATING
+### [**](#MIGRATING)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/events/_types.py#L21)MIGRATING
 
 **MIGRATING: 'migrating'
 
-### [**](#PAGE_CLOSED)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/events/_types.py#L33)PAGE\_CLOSED
+### [**](#PAGE_CLOSED)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/events/_types.py#L33)PAGE\_CLOSED
 
 **PAGE\_CLOSED: 'pageClosed'
 
-### [**](#PAGE_CREATED)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/events/_types.py#L32)PAGE\_CREATED
+### [**](#PAGE_CREATED)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/events/_types.py#L32)PAGE\_CREATED
 
 **PAGE\_CREATED: 'pageCreated'
 
-### [**](#PERSIST_STATE)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/events/_types.py#L19)PERSIST\_STATE
+### [**](#PERSIST_STATE)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/events/_types.py#L19)PERSIST\_STATE
 
 **PERSIST\_STATE: 'persistState'
 
-### [**](#SESSION_RETIRED)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/events/_types.py#L26)SESSION\_RETIRED
+### [**](#SESSION_RETIRED)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/events/_types.py#L26)SESSION\_RETIRED
 
 **SESSION\_RETIRED: 'sessionRetired'
 
-### [**](#SYSTEM_INFO)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/events/_types.py#L20)SYSTEM\_INFO
+### [**](#SYSTEM_INFO)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/events/_types.py#L20)SYSTEM\_INFO
 
 **SYSTEM\_INFO: 'systemInfo'

@@ -1,5 +1,9 @@
 # Source: https://docs.pinata.cloud/files/presigned-urls.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Presigned URLs
 
 There are situations where you may need to upload a file client side instead of server side, but doing so might risk exposing an API key. To solve this you can create a presigned upload URL on the server and then pass it to the client for it to be consumed. Creating signed upload URLs can be done with either the [Files SDK](/sdk/upload/public/create-signed-url) or the [API](/api-reference/endpoint/create-signed-upload-url), and you can designate how long the URL is valid for, how large the file can be, the type of file allowed, or extra metadata like a name and [keyvalues](/files/key-files).

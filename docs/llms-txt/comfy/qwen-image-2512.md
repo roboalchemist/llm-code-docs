@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/image/qwen/qwen-image-2512.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Qwen-Image-2512 ComfyUI Native Workflow Example
 
 > Qwen-Image-2512 is the December update of Qwen-Image's text-to-image foundational model, featuring enhanced human realism, finer natural detail, and improved text rendering.
@@ -60,6 +64,10 @@
   </Tabs>
 </Tip>
 
+<a href="https://cloud.comfy.org/?template=image_qwen_Image_2512&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#7c3aed', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold', marginBottom: '1rem'}}>
+  Run on Comfy Cloud
+</a>
+
 ### 1. Workflow file
 
 After updating ComfyUI, you can find the workflow file from the templates, or drag the workflow below into ComfyUI to load it.
@@ -107,8 +115,3 @@ The workflow includes two subgraphs:
 │   └── 📂 vae/
 │          └── qwen_image_vae.safetensors
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.comfy.org/llms.txt

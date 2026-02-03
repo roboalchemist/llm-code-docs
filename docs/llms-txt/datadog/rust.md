@@ -4,14 +4,14 @@
 
 # Source: https://docs.datadoghq.com/tracing/trace_collection/custom_instrumentation/rust.md
 
-# Source: https://docs.datadoghq.com/tracing/trace_collection/automatic_instrumentation/dd_libraries/rust.md
+# Source: https://docs.datadoghq.com/tracing/trace_collection/dd_libraries/rust.md
 
 ---
 title: Tracing Rust Applications
 description: Set up the Datadog Rust SDK to send traces to Datadog.
-breadcrumbs: Docs > APM > Application Instrumentation > Tracing Rust Applications
-source_url: >-
-  https://docs.datadoghq.com/trace_collection/automatic_instrumentation/dd_libraries/rust/index.html
+breadcrumbs: >-
+  Docs > APM > Application Instrumentation > Add the Datadog Tracing Library >
+  Tracing Rust Applications
 ---
 
 # Tracing Rust Applications

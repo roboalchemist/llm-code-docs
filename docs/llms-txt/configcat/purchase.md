@@ -2,11 +2,13 @@
 
 # Plans, Purchase & Billing
 
+Copy page
+
 ## Plans[​](#plans "Direct link to Plans")
 
 ConfigCat is a feature flag service with unlimited team size, awesome support, and a reasonable price tag. You can use ConfigCat by subscribing with an email address which is free forever. Additionally, we offer three more plans with fewer limitations and more additional features. For a detailed comparison [check out the pricing table](https://configcat.com/pricing/).
 
-If you need a comprehensive table of all the business and technical limits of each plan, see the [Subscription Plan Limits Table](https://configcat.com/docs/docs/subscription-plan-limits/.md).
+If you need a comprehensive table of all the business and technical limits of each plan, see the [Subscription Plan Limits Table](https://configcat.com/docs/subscription-plan-limits.md).
 
 ### Shared vs Dedicated infrastructure[​](#shared-vs-dedicated-infrastructure "Direct link to Shared vs Dedicated infrastructure")
 
@@ -28,7 +30,7 @@ You can purchase a ConfigCat subscription plan on the [Plans page](https://app.c
 
 info
 
-You must have a [Billing Manager](https://configcat.com/docs/docs/organization/.md) role in your Organization to change or upgrade your plan.
+You must have a [Billing Manager](https://configcat.com/docs/organization.md) role in your Organization to change or upgrade your plan.
 
 ### Our payment provider[​](#our-payment-provider "Direct link to Our payment provider")
 
@@ -44,4 +46,4 @@ You can update your billing info on the [Manage Billing page](https://app.config
 
 info
 
-You must have a [Billing Manager](https://configcat.com/docs/docs/organization/.md) role in your Organization to update your billing info.
+You must have a [Billing Manager](https://configcat.com/docs/organization.md) role in your Organization to update your billing info.

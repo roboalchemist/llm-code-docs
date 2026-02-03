@@ -179,7 +179,7 @@ export default function MasterDetailEmailExample() {
 
 ## Implementing master-detail row panels
 
-To create master-detail row panels, pass a function to the `getDetailPanelContent` prop with the content to be rendered inside the panel.
+To create master-detail row panels, pass a function to the `getDetailPanelContent` prop that returns the content to be rendered inside the panel.
 You can use any valid React element—even another Data Grid.
 
 ```tsx
@@ -783,6 +783,14 @@ export default function LazyLoadingDetailPanel() {
 
 ```
 
+:::warning
+Lazy loading panels with auto height can lead to scrolling issues.
+This happens because panels that are re-mounted briefly have a smaller height than they had when they were removed from the DOM by the virtualizer.
+
+In that case, cache the last panel heights and provide those values from `getDetailPanelHeight`.
+Check the [Lazy loading detail panels with auto height](/x/react-data-grid/row-recipes/#lazy-loading-detail-panels-with-auto-height) recipe for implementation details.
+:::
+
 ## Using a detail panel as a form
 
 As an alternative to the built-in [row editing feature](/x/react-data-grid/editing/#row-editing), you can render a form component inside the detail panel so users can edit the row values.
@@ -976,7 +984,7 @@ If you'd rather set up the toggle with basic options preconfigured, you can spre
   columns={[
     {
       ...GRID_DETAIL_PANEL_TOGGLE_COL_DEF, // Already contains the right field
-      renderCell: (params) => <CustomDetailPanelToggle {...params}>
+      renderCell: (params) => <CustomDetailPanelToggle {...params} />,
     },
   ]}
 />
@@ -1390,6 +1398,7 @@ For more examples of how to customize master-detail row panels, check out the fo
 - [One expanded detail panel at a time](/x/react-data-grid/row-recipes/#one-expanded-detail-panel-at-a-time)
 - [Expand or collapse all detail panels](/x/react-data-grid/row-recipes/#expand-or-collapse-all-detail-panels)
 - [Toggling detail panels on row click](/x/react-data-grid/row-recipes/#toggling-detail-panels-on-row-click)
+- [Lazy loading detail panels with auto height](/x/react-data-grid/row-recipes/#lazy-loading-detail-panels-with-auto-height)
 
 ## apiRef
 

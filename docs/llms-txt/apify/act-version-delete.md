@@ -16,6 +16,10 @@ Deletes a specific version of Actor's source code.
 ## Responses
 
 * 204
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

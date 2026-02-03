@@ -2,10 +2,6 @@
 
 # Source: https://jam.dev/docs/jam-for-customer-support/hubspot.md
 
-# Source: https://jam.dev/docs/integrations/hubspot.md
-
-# Source: https://jam.dev/docs/jam-for-customer-support/hubspot.md
-
 # Hubspot
 
 1. Create a new Recording Link from the Jam browser extension

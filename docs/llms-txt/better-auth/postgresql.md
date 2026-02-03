@@ -4,11 +4,7 @@
 
 Integrate Better Auth with PostgreSQL.
 
-***
 
-title: PostgreSQL
-description: Integrate Better Auth with PostgreSQL.
----------------------------------------------------
 
 PostgreSQL is a powerful, open-source relational database management system known for its advanced features, extensibility, and support for complex queries and large datasets.
 Read more [here](https://www.postgresql.org/).
@@ -43,24 +39,33 @@ your database schema based on your Better Auth configuration and plugins.
   <thead>
     <tr className="border-b">
       <th>
-        <p className="font-bold text-[16px] mb-1">PostgreSQL Schema Generation</p>
+        <p className="font-bold text-[16px] mb-1">
+          PostgreSQL Schema Generation
+        </p>
       </th>
 
       <th>
-        <p className="font-bold text-[16px] mb-1">PostgreSQL Schema Migration</p>
+        <p className="font-bold text-[16px] mb-1">
+          PostgreSQL Schema Migration
+        </p>
       </th>
     </tr>
   </thead>
 
   <tbody>
     <tr className="h-10">
-      <td>â Supported</td>
-      <td>â Supported</td>
+      <td>
+        â Supported
+      </td>
+
+      <td>
+        â Supported
+      </td>
     </tr>
   </tbody>
 </table>
 
-<CodeBlockTabs defaultValue="npm">
+<CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
   <CodeBlockTabsList>
     <CodeBlockTabsTrigger value="npm">
       npm
@@ -104,7 +109,7 @@ your database schema based on your Better Auth configuration and plugins.
   </CodeBlockTab>
 </CodeBlockTabs>
 
-<CodeBlockTabs defaultValue="npm">
+<CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
   <CodeBlockTabsList>
     <CodeBlockTabsTrigger value="npm">
       npm

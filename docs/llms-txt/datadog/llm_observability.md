@@ -4,7 +4,6 @@
 title: LLM Observability
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > LLM Observability
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # LLM Observability
@@ -108,6 +107,7 @@ See the [Setup documentation](https://docs.datadoghq.com/llm_observability/setup
 
 ## Further Reading{% #further-reading %}
 
+- [Building reliable dashboard agents with Datadog LLM Observability](https://www.datadoghq.com/blog/llm-observability-at-datadog-dashboards)
 - [Driving AI ROI: How Datadog connects cost, performance, and infrastructure so you can scale responsibly](https://www.datadoghq.com/blog/manage-ai-cost-and-performance-with-datadog/)
 - [Datadog LLM Observability natively supports OpenTelemetry GenAI Semantic Conventions](https://www.datadoghq.com/blog/llm-otel-semantic-convention)
 - [Gain visibility into Strands Agents workflows with Datadog LLM Observability](https://www.datadoghq.com/blog/llm-aws-strands)

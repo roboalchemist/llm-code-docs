@@ -10,4 +10,4 @@ Learn how to integrate Juno with React. Follow our quickstart guide to set up yo
 
 [## ðï¸ Deploy
 
-Learn how to deploy your React project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/react/deploy.md)
+Learn how to deploy your React project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/react/deploy.md)

@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/nextjs/no-unwanted-polyfillio.md
 ---
-# nextjs/no-unwanted-polyfillio&#x20;
 
 ### What it does
 

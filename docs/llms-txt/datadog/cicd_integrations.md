@@ -6,7 +6,6 @@ description: >-
   Run Continuous Testing tests on-demand or at predefined intervals in your
   CI/CD pipelines.
 breadcrumbs: Docs > Continuous Testing > Continuous Testing and CI/CD
-source_url: https://docs.datadoghq.com/cicd_integrations/index.html
 ---
 
 # Continuous Testing and CI/CD

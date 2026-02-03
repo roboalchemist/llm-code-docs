@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/list/llen.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/llen.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/llen.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/llen.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/llen.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/llen.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/llen.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/llen.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/llen.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/llen.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # LLEN
 
@@ -26,20 +12,20 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the list.
 </ParamField>
 
 ## Response
 
-<ResponseField type="number" required>
+<ResponseField type="int" required>
   The length of the list at key.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.rpush("key", "a", "b", "c");
-  const length = await redis.llen("key");
-  console.log(length); // 3
+  ```py Example theme={"system"}
+  redis.rpush("key", "a", "b", "c")
+
+  assert redis.llen("key") == 3
   ```
 </RequestExample>

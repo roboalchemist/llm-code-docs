@@ -467,6 +467,170 @@ func terminal(_ terminal: Terminal, didChange connectionStatus: ConnectionStatus
 }
 ```
 
+### Streamlined connection with easyConnect 
+
+For smart readers and Tap to Pay integrations using iOS SDK 5.1 or newer, you can now use `Terminal.shared.easyConnect`, which combines discovery and connection into a single method call.
+
+*Before*
+
+#### Swift
+
+```swift
+// Step 1: Discover the reader
+Terminal.shared.discoverReaders(config, delegate: discoveryDelegate) { error in
+    if let error = error {
+        // Handle discovery error
+    }
+}
+
+// In your DiscoveryDelegate
+func terminal(_ terminal: Terminal, didUpdateDiscoveredReaders readers: [Reader]) {
+    guard let selectedReader = readers.first else { return }
+    // Step 2: Connect to the reader
+    Terminal.shared.connectReader(selectedReader, connectionConfig: connectionConfig) { reader, error in
+        if let reader = reader {
+            // Handle successful connection
+        } else if let error = error {
+            // Handle connection error
+        }
+    }
+}
+```
+
+#### Objective-C
+
+```objc
+// Step 1: Discover the reader
+[[SCPTerminal shared] discoverReaders:config
+                             delegate:discoveryDelegate
+                           completion:^(NSError * _Nullable error) {
+    if (error) {
+        // Handle discovery error
+    }
+}];
+
+// In your DiscoveryDelegate
+- (void)terminal:(SCPTerminal *)terminal didUpdateDiscoveredReaders:(NSArray<SCPReader *> *)readers {
+    SCPReader *selectedReader = readers.firstObject;
+    // Step 2: Connect to the reader
+    [[SCPTerminal shared] connectReader:selectedReader
+                       connectionConfig:connectionConfig
+                             completion:^(SCPReader * _Nullable reader, NSError * _Nullable error) {
+        if (reader) {
+            // Handle successful connection
+        } else if (error) {
+            // Handle connection error
+        }
+    }];
+}
+```
+
+*After*
+
+#### Swift
+
+```swift
+// Discover and connect in one step by providing discovery filter
+let discoveryConfig = try InternetDiscoveryConfigurationBuilder()
+    .setLocationId("tml_1234567890") // optional, specify your location ID
+    .setDiscoveryFilter(.bySerial("YOUR-READER-SERIAL-NUMBER"))
+    .build()
+
+let connectionConfig = try InternetConnectionConfigurationBuilder()
+    .setFailIfInUse(false)
+    .build()
+
+let easyConnectConfig = InternetEasyConnectConfiguration(
+    discoveryConfiguration: discoveryConfig,
+    connectionConfiguration: connectionConfig
+)
+
+Terminal.shared.easyConnect(
+    easyConnectConfig,
+    delegate: internetReaderDelegate
+) { reader, error in
+    if let reader = reader {
+        // Handle successful connection
+    } else if let error = error {
+        // Handle failure
+    }
+}
+```
+
+#### Objective-C
+
+```objc
+// Discover and connect in one step by providing discovery filter
+NSError *error = nil;
+SCPInternetDiscoveryConfiguration *discoveryConfig = [[[[SCPInternetDiscoveryConfigurationBuilder alloc] init]
+    setLocationId:@"YOUR-LOCATION-ID"] // optional
+    setDiscoveryFilter:[SCPDiscoveryFilter bySerial:@"YOUR-READER-SERIAL-NUMBER"]]
+    build:&error];
+
+SCPInternetConnectionConfiguration *connectionConfig = [[[SCPInternetConnectionConfigurationBuilder alloc] init]
+    setFailIfInUse:NO]
+    build:&error];
+
+SCPInternetEasyConnectConfiguration *easyConnectConfig =
+    [[SCPInternetEasyConnectConfiguration alloc]
+        initWithDiscoveryConfiguration:discoveryConfig
+               connectionConfiguration:connectionConfig];
+
+[[SCPTerminal shared] easyConnect:easyConnectConfig
+                         delegate:internetReaderDelegate
+                       completion:^(SCPReader * _Nullable reader, NSError * _Nullable error) {
+    if (reader) {
+        // Handle successful connection
+    } else if (error) {
+        // Handle failure
+    }
+}];
+```
+
+### Internet reader discovery filtering
+
+Internet reader discovery now supports filtering by reader ID or serial number. Set the `discoveryFilter` property on `InternetDiscoveryConfigurationBuilder` to discover a specific reader.
+
+*Before*
+
+#### Swift
+
+```swift
+let config = InternetDiscoveryConfigurationBuilder()
+    .setLocationId("tml_1234567890")
+    .build()
+```
+
+#### Objective-C
+
+```objc
+NSError *error = nil;
+SCPInternetDiscoveryConfiguration *config = [[[[SCPInternetDiscoveryConfigurationBuilder alloc] init]
+    setLocationId:@"tml_1234567890"]
+    build:&error];
+```
+
+*After*
+
+#### Swift
+
+```swift
+let config = try InternetDiscoveryConfigurationBuilder()
+    .setLocationId("tml_1234567890") // optional
+    .setDiscoveryFilter(.bySerial("READER-SERIAL-NUMBER")) // or .byReaderId("tmr_YOUR-READER-STRIPE-ID") to filter by reader id
+    .build()
+```
+
+#### Objective-C
+
+```objc
+NSError *error = nil;
+SCPInternetDiscoveryConfiguration *config = [[[[SCPInternetDiscoveryConfigurationBuilder alloc] init]
+    setLocationId:@"tml_1234567890"] // optional
+    setDiscoveryFilter:[SCPDiscoveryFilter bySerial:@"READER-SERIAL-NUMBER"]] // or [SCPDiscoveryFilter byReaderId:@"tmr_YOUR-READER-STRIPE-ID"] to filter by reader id
+    build:&error];
+```
+
 ## Payment acceptance and data collection
 
 ### Customer cancellation is now enabled by default
@@ -1167,7 +1331,7 @@ Internet reader discovery now supports filtering by reader ID or serial number. 
 #### Kotlin
 
 ```kotlin
-val config = InternetDiscoveryConfiguration(location = "loc_123")
+val config = InternetDiscoveryConfiguration(location = "tml_1234567890")
 ```
 
 #### Java
@@ -1175,7 +1339,7 @@ val config = InternetDiscoveryConfiguration(location = "loc_123")
 ```java
 InternetDiscoveryConfiguration config = new InternetDiscoveryConfiguration(
     0, // timeout in seconds
-    "loc_123",
+    "tml_1234567890",
 );
 ```
 
@@ -1185,7 +1349,7 @@ InternetDiscoveryConfiguration config = new InternetDiscoveryConfiguration(
 
 ```kotlin
 val config = InternetDiscoveryConfiguration(
-    location = "loc_123", // optional
+    location = "tml_1234567890", // optional
     discoveryFilter = DiscoveryFilter.BySerial("READER-SERIAL-NUMBER"), // or DiscoveryFilter.ByReaderId("tmr_YOUR-READER-STRIPE-ID) to filter by reader id
 )
 ```
@@ -1195,7 +1359,7 @@ val config = InternetDiscoveryConfiguration(
 ```java
 InternetDiscoveryConfiguration config = new InternetDiscoveryConfiguration(
     0, // timeout in seconds,
-    "loc_123", // optional
+    "tml_1234567890", // optional
     false, // is simulated
     new DiscoveryFilter.BySerial("READER-SERIAL-NUMBER") //  or new DiscoveryFilter.ByReaderId("tmr_YOUR-READER-STRIPE-ID) to filter by reader id
 );
@@ -1293,7 +1457,169 @@ RefundParameters refundParams = new RefundParameters.ByPaymentIntentId(
 ).build();
 ```
 
+## Update your Apps on Devices integration
+
+The Maven coordinates for the Apps on Devices feature have changed to `com.stripe:stripeterminal-appsondevices:5.0.0`. Update your build dependencies to point to the new artifact name. Stripe will no longer update the old `handoffclient` artifact.
+
+We renamed all `Handoff` class names to `AppsOnDevices` to better describe the feature’s functionality.
+
+*Before*
+
+#### Kotlin
+
+```kotlin
+dependencies {
+    implementation("com.stripe:stripeterminal-handoffclient:4.0.0")
+}
+```
+
+#### Groovy
+
+```java
+dependencies {
+    implementation 'com.stripe:stripeterminal-handoffclient:4.0.0'
+}
+```
+
+*After*
+
+#### Kotlin
+
+```kotlin
+dependencies {
+    implementation("com.stripe:stripeterminal-appsondevices:5.0.0")
+}
+```
+
+#### Groovy
+
+```java
+dependencies {
+    implementation 'com.stripe:stripeterminal-appsondevices:5.0.0'
+}
+```
+
+### Rename Handoff classes to AppsOnDevices
+
+We’ve renamed all `Handoff` class names to `AppsOnDevices` across discovery configuration, connection configuration, listeners, and token providers.
+
+*Before*
+
+#### Kotlin
+
+```kotlin
+val discoveryConfig = HandoffDiscoveryConfiguration()
+
+Terminal.getInstance().discoverReaders(
+    discoveryConfig,
+    object : DiscoveryListener {
+        override fun onUpdateDiscoveredReaders(readers: List<Reader>) {
+            val reader = readers.first()
+            val connectionConfig = HandoffConnectionConfiguration(
+                handoffReaderListener = object : HandoffReaderListener {
+                    override fun onDisconnect(reason: DisconnectReason) {
+                        // Handle disconnect
+                    }
+                }
+            )
+            Terminal.getInstance().connectReader(reader, connectionConfig, readerCallback)
+        }
+    }
+)
+
+val tokenProvider = HandoffConnectionTokenProvider()
+```
+
+#### Java
+
+```java
+HandoffDiscoveryConfiguration discoveryConfig = new HandoffDiscoveryConfiguration();
+
+Terminal.getInstance().discoverReaders(
+    discoveryConfig,
+    new DiscoveryListener() {
+        @Override
+        public void onUpdateDiscoveredReaders(@NotNull List<Reader> readers) {
+            Reader reader = readers.get(0);
+            HandoffConnectionConfiguration connectionConfig = new HandoffConnectionConfiguration(
+                new HandoffReaderListener() {
+                    @Override
+                    public void onDisconnect(@NotNull DisconnectReason reason) {
+                        // Handle disconnect
+                    }
+                }
+            );
+            Terminal.getInstance().connectReader(reader, connectionConfig, readerCallback);
+        }
+    }
+);
+
+HandoffConnectionTokenProvider tokenProvider = new HandoffConnectionTokenProvider();
+```
+
+*After*
+
+#### Kotlin
+
+```kotlin
+val discoveryConfig = AppsOnDevicesDiscoveryConfiguration()
+
+Terminal.getInstance().discoverReaders(
+    discoveryConfig,
+    object : DiscoveryListener {
+        override fun onUpdateDiscoveredReaders(readers: List<Reader>) {
+            val reader = readers.first()
+            val connectionConfig = AppsOnDevicesConnectionConfiguration(
+                appsOnDevicesListener = object : AppsOnDevicesListener {
+                    override fun onDisconnect(reason: DisconnectReason) {
+                        // Handle disconnect
+                    }
+                }
+            )
+            Terminal.getInstance().connectReader(reader, connectionConfig, readerCallback)
+        }
+    }
+)
+
+val tokenProvider = AppsOnDevicesConnectionTokenProvider()
+```
+
+#### Java
+
+```java
+AppsOnDevicesDiscoveryConfiguration discoveryConfig = new AppsOnDevicesDiscoveryConfiguration();
+
+Terminal.getInstance().discoverReaders(
+    discoveryConfig,
+    new DiscoveryListener() {
+        @Override
+        public void onUpdateDiscoveredReaders(@NotNull List<Reader> readers) {
+            Reader reader = readers.get(0);
+            AppsOnDevicesConnectionConfiguration connectionConfig = new AppsOnDevicesConnectionConfiguration(
+                new AppsOnDevicesListener() {
+                    @Override
+                    public void onDisconnect(@NotNull DisconnectReason reason) {
+                        // Handle disconnect
+                    }
+                }
+            );
+            Terminal.getInstance().connectReader(reader, connectionConfig, readerCallback);
+        }
+    }
+);
+
+AppsOnDevicesConnectionTokenProvider tokenProvider = new AppsOnDevicesConnectionTokenProvider();
+```
+
 ## Update Tap to Pay on Android integration
+
+### System requirements
+
+Tap to Pay on Android 5.0.0 and above requires your Android device to be running Android 13 or higher.
+
+This version also requires that your Android device’s KeyStore supports hardware-backed key agreements. This is checked automatically for you by `supportsReadersOfType()`, but can also be verified by checking that your device’s [`FEATURE_HARDWARE_KEYSTORE`](https://developer.android.com/reference/android/content/pm/PackageManager#FEATURE_HARDWARE_KEYSTORE) version is 100 or above. Since this requirement depends on the hardware capabilities of a device, it might not be met by devices that were originally released with Android 12 or lower, even if they’ve been upgraded to meet the Android 13 runtime requirement. This new requirement means that devices like the Samsung Galaxy Tab Active4 Pro are no longer supported in SDK versions 5.0.0 and above.
+
+For production environments, reader discovery fails with a `TAP_TO_PAY_INSECURE_ENVIRONMENT` error if developer options, USB or Wi-Fi debugging, or other debug options are enabled on the device. This doesn’t apply to usage of the simulated Tap to Pay reader.
 
 ### TapZone configuration refactoring
 

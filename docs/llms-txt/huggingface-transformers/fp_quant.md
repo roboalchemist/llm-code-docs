@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/quantization/fp_quant.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/quantization/fp_quant.md
 
 # FP-Quant
 

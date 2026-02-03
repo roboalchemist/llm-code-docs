@@ -1,4 +1,8 @@
-# Source: https://docs.perplexity.ai/faq/faq.md
+# Source: https://docs.perplexity.ai/docs/resources/faq.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Frequently Asked Questions
 
@@ -60,7 +64,6 @@
   <Accordion title="Why are the results from the API different from the UI? ">
     1. The API uses the same search system as the UI with differences in configuration—so their outputs may differ.
     2. The underlying AI model might differ between the API and the UI for a given query.
-    3. We give users the power to tune the API to their respective use cases using sampling parameters like `presence_penalty`, `top_p`, etc. Custom tuning to specific use cases might lead to less generalization compared to the UI. We set optimized defaults and recommend not to explicitly provide sampling parameters in your API requests.
   </Accordion>
 
   <Accordion title="Will user data submitted through the API be used for model training or other purposes?">
@@ -102,7 +105,7 @@
   </Accordion>
 
   <Accordion title="Do you expose CoTs if I use your reasoning APIs or Deep Research API?">
-    We expose the CoTs for Sonar Reasoning Pro and Sonar Reasoning. We don't currently expose the CoTs for Deep Research.
+    We expose the CoTs for Sonar Reasoning Pro. We don't currently expose the CoTs for Deep Research.
   </Accordion>
 
   <Accordion title="Are the reasoning tokens in Deep Research same as CoTs in the answer?">
@@ -127,7 +130,7 @@
       * The actual text is nested within a `content` array that contains objects with `type`, `text`, and an `annotations` array for additional context.
 
     * **Additional Fields:**
-      * Our API response provides extra meta-information (such as `status`, `error`, `incomplete_details`, `instructions`, and `max_output_tokens`) that are not present in standard OpenAI responses.
+      * Our API response provides extra meta-information (such as `status`, `error`, `instructions`, and `max_output_tokens`) that are not present in standard OpenAI responses.
       * The `usage` field also differs, offering detailed breakdowns of input and output tokens (including fields like `input_tokens_details` and `output_tokens_details`).
 
     These differences are intended to provide enhanced functionality and additional context while maintaining broad compatibility with OpenAI's API design.

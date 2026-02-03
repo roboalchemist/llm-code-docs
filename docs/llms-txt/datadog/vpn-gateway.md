@@ -6,7 +6,6 @@
 title: VPN Gateway Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > AWS Components > VPN Gateway Component
-source_url: https://docs.datadoghq.com/components-aws/vpn-gateway/index.html
 ---
 
 # VPN Gateway Component

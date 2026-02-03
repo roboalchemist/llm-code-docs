@@ -70,11 +70,8 @@ You can pass any property from the [Button](/docs/components/button) component t
 </template>
 ```
 
-<note>
-
-The close button is not displayed if the `#content` slot is used as it's a part of the header.
-
-</note>
+> [!NOTE]
+> The close button is not displayed if the `#content` slot is used as it's a part of the header.
 
 ### Close Icon
 
@@ -91,23 +88,15 @@ Use the `close-icon` prop to customize the close button [Icon](/docs/components/
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.close` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.close` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.close` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.close` key.
 
 ### Side
 
@@ -120,6 +109,21 @@ Use the `side` prop to set the side of the screen where the Slideover will slide
   
     <template #body>
       <Placeholder class="h-full min-h-48" />
+    </template></USlideover>
+</template>
+```
+
+### Inset `4.3+`
+
+Use the `inset` prop to inset the Slideover from the edges.
+
+```vue
+<template>
+  <USlideover side="right" inset title="Slideover with inset">
+    <UButton label="Open" color="neutral" variant="subtle" />
+  
+    <template #body>
+      <Placeholder class="min-w-96 min-h-96 size-full" />
     </template></USlideover>
 </template>
 ```
@@ -158,11 +162,8 @@ Use the `overlay` prop to control whether the Slideover has an overlay or not. D
 
 Use the `modal` prop to control whether the Slideover blocks interaction with outside content. Defaults to `true`.
 
-<note>
-
-When `modal` is set to `false`, the overlay is automatically disabled and outside content becomes interactive.
-
-</note>
+> [!NOTE]
+> When `modal` is set to `false`, the overlay is automatically disabled and outside content becomes interactive.
 
 ```vue
 <template>
@@ -179,17 +180,11 @@ When `modal` is set to `false`, the overlay is automatically disabled and outsid
 
 Use the `dismissible` prop to control whether the Slideover is dismissible when clicking outside of it or pressing escape. Defaults to `true`.
 
-<note>
+> [!NOTE]
+> A `close:prevent` event will be emitted when the user tries to close it.
 
-A `close:prevent` event will be emitted when the user tries to close it.
-
-</note>
-
-<tip>
-
-You can combine `modal: false` with `dismissible: false` to make the Slideover's background interactive without closing it.
-
-</tip>
+> [!TIP]
+> You can combine `modal: false` with `dismissible: false` to make the Slideover's background interactive without closing it.
 
 ```vue
 <template>
@@ -228,33 +223,18 @@ defineShortcuts({
 </template>
 ```
 
-<note>
+> [!NOTE]
+> In this example, leveraging [`defineShortcuts`](/docs/composables/define-shortcuts), you can toggle the Slideover by pressing .
 
-In this example, leveraging [`defineShortcuts`](/docs/composables/define-shortcuts), you can toggle the Slideover by pressing <kbd value="O">
-
-
-
-</kbd>
-
-.
-
-</note>
-
-<tip>
-
-This allows you to move the trigger outside of the Slideover or remove it entirely.
-
-</tip>
+> [!TIP]
+> This allows you to move the trigger outside of the Slideover or remove it entirely.
 
 ### Programmatic usage
 
 You can use the [`useOverlay`](/docs/composables/use-overlay) composable to open a Slideover programmatically.
 
-<warning>
-
-Make sure to wrap your app with the [`App`](/docs/components/app) component which uses the [`OverlayProvider`](https://github.com/nuxt/ui/blob/v4/src/runtime/components/OverlayProvider.vue) component.
-
-</warning>
+> [!WARNING]
+> Make sure to wrap your app with the [`App`](/docs/components/app) component which uses the [`OverlayProvider`](https://github.com/nuxt/ui/blob/v4/src/runtime/components/OverlayProvider.vue) component.
 
 First, create a slideover component that will be opened programmatically:
 
@@ -283,11 +263,8 @@ const emit = defineEmits<{ close: [boolean] }>()
 </template>
 ```
 
-<note>
-
-We are emitting a `close` event when the slideover is closed or dismissed here. You can emit any data through the `close` event, however, the event must be emitted in order to capture the return value.
-
-</note>
+> [!NOTE]
+> We are emitting a `close` event when the slideover is closed or dismissed here. You can emit any data through the `close` event, however, the event must be emitted in order to capture the return value.
 
 Then, use it in your app:
 
@@ -338,11 +315,8 @@ async function open() {
 </template>
 ```
 
-<tip>
-
-You can close the slideover within the slideover component by emitting `emit('close')`.
-
-</tip>
+> [!TIP]
+> You can close the slideover within the slideover component by emitting `emit('close')`.
 
 ### Nested slideovers
 
@@ -437,6 +411,10 @@ interface SlideoverProps {
    */
   side?: "right" | "top" | "bottom" | "left" | undefined;
   /**
+   * Whether to inset the slideover from the edges.
+   */
+  inset?: boolean | undefined;
+  /**
    * Render the slideover in a portal.
    * @default "true"
    */
@@ -446,11 +424,11 @@ interface SlideoverProps {
    * `{ size: 'md', color: 'neutral', variant: 'ghost' }`{lang="ts-type"}
    * @default "true"
    */
-  close?: boolean | Partial<ButtonProps> | undefined;
+  close?: boolean | Omit<ButtonProps, LinkPropsKeys> | undefined;
   /**
    * The icon displayed in the close button.
    */
-  closeIcon?: string | object | undefined;
+  closeIcon?: any;
   /**
    * When `false`, the slideover will not close when clicking outside or pressing escape.
    * @default "true"
@@ -527,16 +505,21 @@ export default defineAppConfig({
       variants: {
         side: {
           top: {
-            content: 'inset-x-0 top-0 max-h-full'
+            content: ''
           },
           right: {
-            content: 'right-0 inset-y-0 w-full max-w-md'
+            content: 'max-w-md'
           },
           bottom: {
-            content: 'inset-x-0 bottom-0 max-h-full'
+            content: ''
           },
           left: {
-            content: 'left-0 inset-y-0 w-full max-w-md'
+            content: 'max-w-md'
+          }
+        },
+        inset: {
+          true: {
+            content: 'rounded-lg'
           }
         },
         transition: {
@@ -546,6 +529,62 @@ export default defineAppConfig({
         }
       },
       compoundVariants: [
+        {
+          side: 'top',
+          inset: true,
+          class: {
+            content: 'max-h-[calc(100%-2rem)] inset-x-4 top-4'
+          }
+        },
+        {
+          side: 'top',
+          inset: false,
+          class: {
+            content: 'max-h-full inset-x-0 top-0'
+          }
+        },
+        {
+          side: 'right',
+          inset: true,
+          class: {
+            content: 'w-[calc(100%-2rem)] inset-y-4 right-4'
+          }
+        },
+        {
+          side: 'right',
+          inset: false,
+          class: {
+            content: 'w-full inset-y-0 right-0'
+          }
+        },
+        {
+          side: 'bottom',
+          inset: true,
+          class: {
+            content: 'max-h-[calc(100%-2rem)] inset-x-4 bottom-4'
+          }
+        },
+        {
+          side: 'bottom',
+          inset: false,
+          class: {
+            content: 'max-h-full inset-x-0 bottom-0'
+          }
+        },
+        {
+          side: 'left',
+          inset: true,
+          class: {
+            content: 'w-[calc(100%-2rem)] inset-y-4 left-4'
+          }
+        },
+        {
+          side: 'left',
+          inset: false,
+          class: {
+            content: 'w-full inset-y-0 left-0'
+          }
+        },
         {
           transition: true,
           side: 'top',
@@ -582,8 +621,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

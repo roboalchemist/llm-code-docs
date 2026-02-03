@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/frameworks/supabase-authentication.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Authenticating Supabase tasks: JWTs and service roles
 
 > Learn how to authenticate Supabase tasks using JWTs for Row Level Security (RLS) or service role keys for admin access.
@@ -14,7 +18,7 @@ To use JWTs with Supabase, you'll need to add the `SUPABASE_JWT_SECRET` environm
 
 This example code shows how to create a JWT token for a user and initialize a Supabase client with that token for authentication, allowing the task to perform database operations as that specific user. You can adapt this code to fit your own use case.
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 
 // The rest of your task code
 async run(payload: { user_id: string }) {
@@ -58,7 +62,7 @@ Using JWTs to authenticate Supabase operations is more secure than using service
 
 This example code creates a Supabase client with admin-level privileges using a service role key, bypassing all Row Level Security policies to allow unrestricted database access.
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 // Create a single Supabase client for interacting with your database
 // 'Database' supplies the type definitions to supabase-js
 const supabase = createClient<Database>(

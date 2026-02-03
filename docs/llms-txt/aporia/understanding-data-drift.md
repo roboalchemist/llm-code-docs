@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/core-concepts/understanding-data-drift.md
 
-# Source: https://docs.aporia.com/core-concepts/understanding-data-drift.md
-
-# Source: https://docs.aporia.com/v1/core-concepts/understanding-data-drift.md
-
 # Understanding Data Drift
 
 ### What is Data Drift?

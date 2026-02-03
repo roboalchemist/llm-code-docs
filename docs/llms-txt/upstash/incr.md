@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/string/incr.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/incr.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/incr.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/incr.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/incr.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/incr.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/incr.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/incr.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/string/incr.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/string/incr.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # INCR
 
@@ -28,20 +14,20 @@ If a key does not exist, it is initialized as 0 before performing the operation.
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key to increment.
 </ParamField>
 
 ## Response
 
-<ResponseField type="integer" required>
+<ResponseField type="int" required>
   The value at the key after the incrementing.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.set("key", 6);
-  await redis.incr("key");
-  // returns 7
+  ```py Example theme={"system"}
+  redis.set("key", 6)
+
+  assert redis.incr("key") == 7
   ```
 </RequestExample>

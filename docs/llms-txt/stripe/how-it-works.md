@@ -44,7 +44,7 @@ Learn more about [our available inventory](https://docs.stripe.com/climate/order
 
 ## Monitor supplier progress
 
-Because the carbon removal industry is in its early stages, it’s likely that some suppliers will be *delayed* (We consider a project to be delayed if it is unable to deliver by the original expected_delivery_year but expects to deliver within two years) or *fail* (We consider a project to have have failed if it is unable to deliver within 2 years of the original expected_delivery_year). Apart from conducting careful diligence, Frontier minimizes delivery delays and failures by actively monitoring progress against supplier-specific milestones, reallocating offtake agreements across suppliers as needed, and maintaining an inventory buffer.
+Because the carbon removal industry is in its early stages, it’s likely that some suppliers will be *delayed* (We consider a project to be delayed if it is unable to deliver by the original `expected_delivery_year` but expects to deliver within two years) or *fail* (We consider a project to have have failed if it is unable to deliver within 2 years of the original `expected_delivery_year`). Apart from conducting careful diligence, Frontier minimizes delivery delays and failures by actively monitoring progress against supplier-specific milestones, reallocating offtake agreements across suppliers as needed, and maintaining an inventory buffer.
 
 > If an order is delayed or fails, we’ll send you an email and the relevant webhook at least 60 days in advance.
 > 

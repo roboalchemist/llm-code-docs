@@ -4,8 +4,6 @@
 title: API Gateway Route Response
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > API Gateway Route Response
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.apigatewayv2_routeresponse.dataset/index.html
 ---
 
 # API Gateway Route Response
@@ -18,12 +16,12 @@ aws.apigatewayv2_routeresponse
 
 ## Fields
 
-| Title                      | ID   | Type   | Data Type                                                                                         | Description |
-| -------------------------- | ---- | ------ | ------------------------------------------------------------------------------------------------- | ----------- |
-| _key                       | core | string |
-| account_id                 | core | string |
-| model_selection_expression | core | string | Represents the model selection expression of a route response. Supported only for WebSocket APIs. |
-| response_models            | core | hstore | Represents the response models of a route response.                                               |
-| response_parameters        | core | string | Represents the response parameters of a route response.                                           |
-| route_response_id          | core | string | Represents the identifier of a route response.                                                    |
-| tags                       | core | hstore |
+| Title                      | ID   | Type       | Data Type                                                                                         | Description |
+| -------------------------- | ---- | ---------- | ------------------------------------------------------------------------------------------------- | ----------- |
+| _key                       | core | string     |
+| account_id                 | core | string     |
+| model_selection_expression | core | string     | Represents the model selection expression of a route response. Supported only for WebSocket APIs. |
+| response_models            | core | hstore     | Represents the response models of a route response.                                               |
+| response_parameters        | core | string     | Represents the response parameters of a route response.                                           |
+| route_response_id          | core | string     | Represents the identifier of a route response.                                                    |
+| tags                       | core | hstore_csv |

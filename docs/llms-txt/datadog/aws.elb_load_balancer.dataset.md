@@ -4,8 +4,6 @@
 title: Elastic Load Balancing Load Balancer
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Elastic Load Balancing Load Balancer
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.elb_load_balancer.dataset/index.html
 ---
 
 # Elastic Load Balancing Load Balancer
@@ -41,5 +39,5 @@ aws.elb_load_balancer
 | security_groups               | core | array<string> | The security groups for the load balancer. Valid only for load balancers in a VPC.                                                                                                                                                                                                   |
 | source_security_group         | core | json          | The security group for the load balancer, which you can use as part of your inbound rules for your registered instances. To only allow traffic from load balancers, add a security group rule that specifies this source security group as the inbound source.                       |
 | subnets                       | core | array<string> | The IDs of the subnets for the load balancer.                                                                                                                                                                                                                                        |
-| tags                          | core | hstore        |
+| tags                          | core | hstore_csv    |
 | vpc_id                        | core | string        | The ID of the VPC for the load balancer.                                                                                                                                                                                                                                             |

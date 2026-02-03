@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/security/audit-logs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Audit logs
 
 > The audit logs enable organization admins to efficiently track member activity, providing detailed records of who performed each action, what was done, and when it occurred.

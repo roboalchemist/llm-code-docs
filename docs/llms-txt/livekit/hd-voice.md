@@ -1,7 +1,5 @@
 # Source: https://docs.livekit.io/telephony/features/hd-voice.md
 
-# Source: https://docs.livekit.io/sip/hd-voice.md
-
 LiveKit docs › Features › HD voice
 
 ---
@@ -16,6 +14,10 @@ Modern cell phones can use VoIP for calls when connected via Wi-Fi or mobile dat
 
 LiveKit SIP supports wideband audio codecs such as G.722 out of the box, providing higher quality audio when used with HD Voice-capable SIP trunks or endpoints.
 
+> ℹ️ **Note**
+> 
+> Telnyx is currently the only provider that supports HD voice.
+
 ## Configuring Telnyx
 
 Telnyx supports HD Voice for customers in the US. To enable HD Voice with Telnyx, ensure the following are configured in your Telnyx portal:
@@ -23,13 +25,9 @@ Telnyx supports HD Voice for customers in the US. To enable HD Voice with Telnyx
 - `HD Voice feature` is enabled on the phone number you are trying to use (under Number -> Voice)
 - `G.722` codec is enabled on your SIP Trunk (under SIP Connection -> Inbound)- We recommend leaving G.711U enabled for compatibility.
 
-## Other Providers
-
-Currently, Twilio does not support HD voice. If you find other providers that support HD voice, please let us know so we can update this guide.
-
 ---
 
-This document was rendered at 2025-11-18T23:55:21.937Z.
-For the latest version of this document, see [https://docs.livekit.io/sip/hd-voice.md](https://docs.livekit.io/sip/hd-voice.md).
+This document was rendered at 2026-02-03T03:25:11.800Z.
+For the latest version of this document, see [https://docs.livekit.io/telephony/features/hd-voice.md](https://docs.livekit.io/telephony/features/hd-voice.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

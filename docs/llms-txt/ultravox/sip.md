@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/telephony/sip.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SIP Guide
 
 > Create incoming & outgoing SIP calls with Ultravox agents.
@@ -183,8 +187,3 @@ Using any other codec will cause calls to fail.
 ## Logs
 
 Once a call has ended, you can see SIP logs for the call using the [sip logs](/api-reference/calls/calls-sip-logs-get) endpoint.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

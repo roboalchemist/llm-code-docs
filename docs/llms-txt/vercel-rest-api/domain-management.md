@@ -1,5 +1,9 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/examples/domain-management.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Domain Management
 
 > Learn how to use the Vercel SDK through real-life examples.

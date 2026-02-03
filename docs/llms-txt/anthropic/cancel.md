@@ -1,8 +1,32 @@
 # Source: https://platform.claude.com/docs/en/api/typescript/messages/batches/cancel.md
 
-## Cancel
+# Source: https://platform.claude.com/docs/en/api/ruby/messages/batches/cancel.md
 
-`client.messages.batches.cancel(stringmessageBatchID, RequestOptionsoptions?): MessageBatch`
+# Source: https://platform.claude.com/docs/en/api/python/messages/batches/cancel.md
+
+# Source: https://platform.claude.com/docs/en/api/kotlin/messages/batches/cancel.md
+
+# Source: https://platform.claude.com/docs/en/api/java/messages/batches/cancel.md
+
+# Source: https://platform.claude.com/docs/en/api/go/messages/batches/cancel.md
+
+# Source: https://platform.claude.com/docs/en/api/typescript/beta/messages/batches/cancel.md
+
+# Source: https://platform.claude.com/docs/en/api/ruby/beta/messages/batches/cancel.md
+
+# Source: https://platform.claude.com/docs/en/api/python/beta/messages/batches/cancel.md
+
+# Source: https://platform.claude.com/docs/en/api/kotlin/beta/messages/batches/cancel.md
+
+# Source: https://platform.claude.com/docs/en/api/java/beta/messages/batches/cancel.md
+
+# Source: https://platform.claude.com/docs/en/api/go/beta/messages/batches/cancel.md
+
+# Source: https://platform.claude.com/docs/en/api/beta/messages/batches/cancel.md
+
+# Source: https://platform.claude.com/docs/en/api/messages/batches/cancel.md
+
+## Cancel
 
 **post** `/v1/messages/batches/{message_batch_id}/cancel`
 
@@ -12,15 +36,15 @@ The number of canceled requests is specified in `request_counts`. To determine w
 
 Learn more about the Message Batches API in our [user guide](https://docs.claude.com/en/docs/build-with-claude/batch-processing)
 
-### Parameters
+### Path Parameters
 
-- `messageBatchID: string`
+- `message_batch_id: string`
 
   ID of the Message Batch.
 
 ### Returns
 
-- `MessageBatch`
+- `MessageBatch = object { id, archived_at, cancel_initiated_at, 7 more }`
 
   - `id: string`
 
@@ -28,11 +52,11 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
     The format and length of IDs may change over time.
 
-  - `archived_at: string | null`
+  - `archived_at: string`
 
     RFC 3339 datetime string representing the time at which the Message Batch was archived and its results became unavailable.
 
-  - `cancel_initiated_at: string | null`
+  - `cancel_initiated_at: string`
 
     RFC 3339 datetime string representing the time at which cancellation was initiated for the Message Batch. Specified only if cancellation was initiated.
 
@@ -40,7 +64,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
     RFC 3339 datetime string representing the time at which the Message Batch was created.
 
-  - `ended_at: string | null`
+  - `ended_at: string`
 
     RFC 3339 datetime string representing the time at which processing for the Message Batch ended. Specified only once processing ends.
 
@@ -50,7 +74,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
     RFC 3339 datetime string representing the time at which the Message Batch will expire and end processing, which is 24 hours after creation.
 
-  - `processing_status: "in_progress" | "canceling" | "ended"`
+  - `processing_status: "in_progress" or "canceling" or "ended"`
 
     Processing status of the Message Batch.
 
@@ -94,7 +118,7 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
       This is zero until processing of the entire Message Batch has ended.
 
-  - `results_url: string | null`
+  - `results_url: string`
 
     URL to a `.jsonl` file containing the results of the Message Batch requests. Specified only once processing ends.
 
@@ -110,14 +134,9 @@ Learn more about the Message Batches API in our [user guide](https://docs.claude
 
 ### Example
 
-```typescript
-import Anthropic from '@anthropic-ai/sdk';
-
-const client = new Anthropic({
-  apiKey: process.env['ANTHROPIC_API_KEY'], // This is the default and can be omitted
-});
-
-const messageBatch = await client.messages.batches.cancel('message_batch_id');
-
-console.log(messageBatch.id);
+```http
+curl https://api.anthropic.com/v1/messages/batches/$MESSAGE_BATCH_ID/cancel \
+    -X POST \
+    -H 'anthropic-version: 2023-06-01' \
+    -H "X-Api-Key: $ANTHROPIC_API_KEY"
 ```

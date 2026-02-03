@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/monitors/missing-values.md
 
-# Source: https://docs.aporia.com/monitors-and-alerts/missing-values.md
-
-# Source: https://docs.aporia.com/v1/monitors/missing-values.md
-
 # Missing Values
 
 ### Why Monitor Missing Values?

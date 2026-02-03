@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/pharmacy/
+
 # Pharmacy Red-Teaming Plugins
 
 The Pharmacy Red-Teaming Plugins are a specialized suite designed for AI systems operating in pharmacy and pharmaceutical contexts. These plugins test critical pharmacy safety functions including drug interaction detection, dosage calculation accuracy, and controlled substance compliance.

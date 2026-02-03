@@ -1,0 +1,104 @@
+# Source: https://oxc.rs/docs/guide/usage/linter/rules/react/forbid-elements.md
+
+---
+url: /docs/guide/usage/linter/rules/react/forbid-elements.md
+---
+
+### What it does
+
+Allows you to configure a list of forbidden elements and to specify their desired replacements.
+
+### Why is this bad?
+
+You may want to forbid usage of certain elements in favor of others, e.g.
+forbid all `<div />` and use `<Box />` instead.
+
+### Examples
+
+Examples of **incorrect** code for this rule:
+
+```jsx
+// ["error", { "forbid": ["button"] }]
+<button />;
+React.createElement("button");
+
+// ["error", { "forbid": ["Modal"] }]
+<Modal />;
+React.createElement(Modal);
+
+// ["error", { "forbid": ["Namespaced.Element"] }]
+<Namespaced.Element />;
+React.createElement(Namespaced.Element);
+
+// ["error", { "forbid": [{ "element": "button", "message": "use <Button> instead" }, "input"] }]
+<div>
+  <button />
+  <input />
+</div>;
+React.createElement("div", {}, React.createElement("button", {}, React.createElement("input")));
+```
+
+Examples of **correct** code for this rule:
+
+```jsx
+// ["error", { "forbid": ["button"] }]
+<Button />
+
+// ["error", { "forbid": [{ "element": "button" }] }]
+<Button />
+```
+
+## Configuration
+
+This rule accepts a configuration object with the following properties:
+
+### forbid
+
+type: `array`
+
+List of forbidden elements, with optional messages for display with lint violations.
+
+Examples:
+
+* `["error, { "forbid": ["button"] }]`
+* `["error, { "forbid": [{ "element": "button", "message": "Use <Button> instead." }] }]`
+* `["error, { "forbid": [{ "element": "input" }] }]`
+
+#### forbid\[n]
+
+type: `object | string`
+
+A forbidden element, either as a plain element name or with a custom message.
+
+##### forbid\[n].element
+
+type: `string`
+
+##### forbid\[n].message
+
+type: `string`
+
+## How to use
+
+To **enable** this rule using the config file or in the CLI, you can use:
+
+::: code-group
+
+```json [Config (.oxlintrc.json)]
+{
+  "plugins": ["react"],
+  "rules": {
+    "react/forbid-elements": "error"
+  }
+}
+```
+
+```bash [CLI]
+oxlint --deny react/forbid-elements --react-plugin
+```
+
+:::
+
+## References
+
+* Rule Source

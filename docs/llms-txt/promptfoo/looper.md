@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/integrations/looper/
+
 # Setting up Promptfoo with Looper
 
 This guide shows you how to integrate **Promptfoo** evaluations into a Looper CI/CD workflow so that every pull‑request (and optional nightly job) automatically runs your prompt tests.

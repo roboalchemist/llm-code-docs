@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/examples/supabase-storage-upload.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Uploading files to Supabase Storage
 
 > This example demonstrates how to upload files to Supabase Storage using Trigger.dev.
@@ -17,7 +21,7 @@ This task downloads a video from a provided URL and uploads it to Supabase Stora
 
 ### Task code
 
-```ts trigger/supabase-storage-upload.ts theme={null}
+```ts trigger/supabase-storage-upload.ts theme={"theme":"css-variables"}
 import { createClient } from "@supabase/supabase-js";
 import { logger, task } from "@trigger.dev/sdk";
 import fetch from "node-fetch";
@@ -70,7 +74,7 @@ export const supabaseStorageUpload = task({
 
 To test this task in the dashboard, you can use the following payload:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "videoUrl": "<a-video-url>" // Replace <a-video-url> with the URL of the video you want to upload
 }
@@ -87,7 +91,7 @@ This task downloads a video from a provided URL, saves it to a temporary file, a
 
 ### Task code
 
-```ts trigger/supabase-storage-upload-s3.ts theme={null}
+```ts trigger/supabase-storage-upload-s3.ts theme={"theme":"css-variables"}
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { logger, task } from "@trigger.dev/sdk";
 import fetch from "node-fetch";
@@ -146,7 +150,7 @@ export const supabaseStorageUploadS3 = task({
 
 To test this task in the dashboard, you can use the following payload:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "videoUrl": "<a-video-url>" // Replace <a-video-url> with the URL of the video you want to upload
 }

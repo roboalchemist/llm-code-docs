@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xadd.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xadd.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xadd.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xadd.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xadd.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xadd.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xadd.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xadd.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/stream/xadd.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/stream/xadd.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # XADD
 
@@ -26,94 +12,53 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key to of the stream.
 </ParamField>
 
-<ParamField body="id" type="string | *" required>
+<ParamField body="id" type="str | *" required>
   The stream entry ID. If `*` is passed, a new ID will be generated
   automatically.
 </ParamField>
 
-<ParamField body="entries" type="Record<string, unknown>" required>
+<ParamField body="data" type="Dict[str, Any]" required>
   Key-value data to be appended to the stream.
 </ParamField>
 
-<ParamField body="options" type="object">
-  <Expandable title="properties">
-    <ParamField body="nomkStream" type="boolean">
-      Prevent creating the stream if it does not exist.
-    </ParamField>
+<ParamField body="maxlen" type="int">
+  The maximum number of entries to keep in the stream. Mutually exclusive with `minid`.
+</ParamField>
 
-    <ParamField body="trim" type="object">
-      Trim options for the stream.
+<ParamField body="approximate_trim" type="bool" default="True">
+  Use approximate trimming (more efficient). When `True`, Redis may keep slightly more entries than specified. Defaults to `True`.
+</ParamField>
 
-      <Expandable title="trim">
-        <ParamField body="type" type="'MAXLEN' | 'MINID'" required>
-          The trim strategy:
+<ParamField body="nomkstream" type="bool" default="False">
+  Prevent creating the stream if it does not exist. Defaults to `False`.
+</ParamField>
 
-          * `MAXLEN`: Trim based on the maximum number of entries
-          * `MINID`: Trim based on the minimum ID
-        </ParamField>
+<ParamField body="minid" type="str">
+  The minimum ID to keep. Entries with IDs lower than this will be removed. Mutually exclusive with `maxlen`.
+</ParamField>
 
-        <ParamField body="threshold" type="number | string" required>
-          The threshold value for trimming:
-
-          * For `MAXLEN`: The maximum number of entries to keep (number)
-          * For `MINID`: The minimum ID to keep (string)
-        </ParamField>
-
-        <ParamField body="comparison" type="'~' | '='" required>
-          The comparison operator:
-
-          * `~`: Approximate trimming (more efficient)
-          * `=`: Exact trimming
-        </ParamField>
-
-        <ParamField body="limit" type="number">
-          Limit how many entries will be trimmed at most
-        </ParamField>
-      </Expandable>
-    </ParamField>
-  </Expandable>
+<ParamField body="limit" type="int">
+  Limit how many entries will be trimmed at most (only valid with approximate trimming).
 </ParamField>
 
 ## Response
 
-<ResponseField type="string">The ID of the newly added entry.</ResponseField>
+<ResponseField type="str">The ID of the newly added entry.</ResponseField>
 
 <RequestExample>
-  ```ts Basic Example theme={"system"}
-  const result = await redis.xadd("mystream", "*", { name: "John Doe", age: 30 });
+  ```py Basic Example theme={"system"}
+  redis.xadd("mystream", "*", {"name": "John Doe", "age": 30})
   ```
 
-  ```ts With Custom ID theme={"system"}
-  const result = await redis.xadd("mystream", "1634567890123-0", { temperature: 25.5, humidity: 60 });
+  ```py With Custom ID theme={"system"}
+  redis.xadd("mystream", "1634567890123-0", {"temperature": 25.5, "humidity": 60})
   ```
 
-  ```ts Trimming with MAXLEN theme={"system"}
-  const result = await redis.xadd("mystream", "*", { event: "user_login", user_id: "12345" }, {
-    trim: {
-      type: "MAXLEN",
-      threshold: 1000,
-      comparison: "="
-    }
-  });
-  ```
-
-  ```ts Prevent Stream Creation theme={"system"}
-  const result = await redis.xadd("existing_stream", "*", { data: "value" }, {
-    nomkStream: true
-  });
-  ```
-
-  ```ts Trimming with MINID theme={"system"}
-  const result = await redis.xadd("mystream", "*", { action: "purchase", amount: 99.99 }, {
-    trim: {
-      type: "MINID",
-      threshold: "1634567890000-0",
-      comparison: "="
-    }
-  });
+  ```py Approximate trim with maxlen theme={"system"}
+  redis.xadd("mystream", "*", {"log_level": "error", "message": "Database connection failed"}, maxlen=100)
   ```
 </RequestExample>

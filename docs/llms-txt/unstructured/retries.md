@@ -1,11 +1,15 @@
 # Source: https://docs.unstructured.io/api-reference/workflow/retries.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Retries
 
 For the [Unstructured Python SDK](/api-reference/workflow/overview#unstructured-python-sdk),
-the [Unstructured Workflow Endpoint](/api-reference/workflow/overview) allows for retries with the
+the [Unstructured API's workflow operations](/api-reference/workflow/overview) allows for retries with the
 `RetryConfig` class when initializing the client, through the client's `retry_config` parameter.
-If a request to the Workflow Endpoint fails, the client will retry the
+If a request to the Unstructured API's workflow operations fails, the client will retry the
 request with an exponential backoff strategy up to a maximum interval of one minute. The
 function keeps retrying until the total elapsed time exceeds `max_elapsed_time`[\*](#parameter-names),
 which defaults to one hour. However, you can override these defaults, for example as follows:

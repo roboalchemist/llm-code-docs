@@ -1,5 +1,9 @@
 # Source: https://docs.tavily.com/documentation/search-crawler.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tavily Search Crawler
 
 Like any other search engine, Tavily Search has a crawler to discover new pages and index their content.
@@ -18,8 +22,3 @@ If your inquiry is about delisting web pages containing personal data about you,
 ### Reporting Non-Existent Pages
 
 In case Tavily Search is returning a page that no longer exists, and you would like to have it delisted, you may contact us at **[support@tavily.com](mailto:support@tavily.com)**.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt

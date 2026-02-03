@@ -8,9 +8,9 @@ Rspack provides the [output.publicPath](/config/output.md#outputpublicpath) opti
 
 Imagine the following scenarios:
 
-* Your static assets need to be deployed to a CDN
-* Your web application is not deployed under the root path of the domain
-* You need to use different assets paths for different environments (development, testing, or production)
+- Your static assets need to be deployed to a CDN
+- Your web application is not deployed under the root path of the domain
+- You need to use different assets paths for different environments (development, testing, or production)
 
 In these scenarios, configuring `output.publicPath` can help you load static assets correctly.
 
@@ -44,9 +44,9 @@ With this configuration, all assets will be loaded from the `/assets/` path, for
 
 :::tip
 
-* The value of `output.publicPath` usually ends with `/`.
-* Do not set `output.publicPath` to a relative path, such as `./assets/`. Using a relative path may cause assets to load incorrectly when they are located at different path depths.
-* If setting `output.publicPath` to an empty string, the asset URL path will be relative to the HTML page (same directory).
+- The value of `output.publicPath` usually ends with `/`.
+- Do not set `output.publicPath` to a relative path, such as `./assets/`. Using a relative path may cause assets to load incorrectly when they are located at different path depths.
+- If setting `output.publicPath` to an empty string, the asset URL path will be relative to the HTML page (same directory).
 
 :::
 
@@ -66,8 +66,8 @@ export default {
 
 With this configuration:
 
-* In the development mode, the assets access path is `http://[domain]/`, for example `http://localhost:8080/main.js`.
-* In the production mode, the assets access path is `https://cdn.example.com/`, for example `https://cdn.example.com/main.[hash].js`.
+- In the development mode, the assets access path is `http://[domain]/`, for example `http://localhost:8080/main.js`.
+- In the production mode, the assets access path is `https://cdn.example.com/`, for example `https://cdn.example.com/main.[hash].js`.
 
 ## Dynamically set publicPath
 

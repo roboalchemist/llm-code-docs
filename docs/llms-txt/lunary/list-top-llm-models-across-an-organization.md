@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/api/analytics/list-top-llm-models-across-an-organization.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List top LLM models across an organization
 
 > Returns the top models used across every project in the authenticated organization.
@@ -95,7 +99,3 @@ components:
         header: `Bearer 123e4567-e89b-12d3-a456-426614174000`.
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

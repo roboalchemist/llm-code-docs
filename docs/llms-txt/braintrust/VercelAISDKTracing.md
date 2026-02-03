@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/VercelAISDKTracing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tracing Vercel AI SDK applications
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/VercelAISDKTracing/vercel-ai-sdk-tracing.mdx) by [Phil Hetzel](https://www.linkedin.com/in/philliphetzel/) on 2025-05-15</div>
@@ -11,7 +15,7 @@ The open-source [Vercel AI SDK](https://ai-sdk.dev/) is a popular choice for bui
 To get started, make sure you have the following ready to go:
 
 * A [Braintrust account](https://www.braintrust.dev/signup) and API key
-* A [project](/core/projects) in Braintrust
+* A [project](/admin/projects) in Braintrust
 * An [OpenAI API key](https://platform.openai.com/)
 * [`npm`](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) installed
 
@@ -84,7 +88,7 @@ The `wrapAISDK` function wraps AI SDK functions like `streamText` and `generateT
   The `wrapAISDK` works with the Vercel AI SDK module. If you are not using the
   Vercel AI SDK and instead using a model provider's first-party library
   directly, you can [wrap your model
-  clients](https://www.braintrust.dev/docs/guides/traces/customize#wrapping-llm-clients)
+  clients](/instrument/custom-tracing#wrapping-llm-clients)
   with `wrapOpenAI` or `wrapAnthropic`.
 </Note>
 
@@ -249,10 +253,5 @@ Take note of how the `type` argument in both `traced` and `wrapTraced` change th
 
 ## Next steps
 
-* [Customize](/guides/traces/customize) and [extend](/guides/traces/extend) traces to better optimize for your use case
+* [Customize](/instrument/custom-tracing) and [extend](/instrument/advanced-tracing) traces to better optimize for your use case
 * Read more about [Brainstore](https://www.braintrust.dev/blog/brainstore), the database that powers the logging backend in Braintrust
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

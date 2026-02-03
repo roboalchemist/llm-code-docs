@@ -12,7 +12,7 @@ To respond to a dispute using Visa CE 3.0, the dispute must meet the following c
 
 - The disputed transaction must be a Visa transaction with [network reason code](https://docs.stripe.com/api/disputes/object.md#dispute_object-payment_method_details-card-network_reason_code) 10.4.
 - There must be at least two previous transactions that weren’t disputed, using the same payment method as the disputed transaction.
-  - The previous non-disputed transactions must be within 120-365 days of the disputed transaction.
+  - The previous non-disputed transactions must be within 120-364 days of the disputed transaction.
   - The previous non-disputed transactions must be paid, undisputed, and can’t be validation charges.
 - You must provide descriptions for the disputed transaction’s [product description](https://docs.stripe.com/api/disputes/object.md#dispute_object-evidence-enhanced_evidence-visa_compelling_evidence_3-disputed_transaction-product_description) and past undisputed transactions’ [product descriptions](https://docs.stripe.com/api/disputes/object.md#dispute_object-evidence-enhanced_evidence-visa_compelling_evidence_3-prior_undisputed_transactions-product_description).
 - You must categorize the disputed transaction as either `merchandise` or `services` in the [merchandise_or_services](https://docs.stripe.com/api/disputes/object.md#dispute_object-evidence-enhanced_evidence-visa_compelling_evidence_3-disputed_transaction-merchandise_or_services) field.

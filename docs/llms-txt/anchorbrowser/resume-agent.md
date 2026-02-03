@@ -1,116 +1,94 @@
 # Source: https://docs.anchorbrowser.io/api-reference/agentic-capabilities/resume-agent.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Resume Agent
 
 > Resumes the AI agent for the specified browser session.
 
+
+
 ## OpenAPI
 
 ````yaml openapi-mintlify.yaml post /v1/sessions/{session_id}/agent/resume
+openapi: 3.1.0
+info:
+  title: AnchorBrowser API
+  version: 1.0.0
+  description: APIs to manage all browser-related actions and configuration.
+servers:
+  - url: https://api.anchorbrowser.io
+    description: API server
+security: []
 paths:
-  path: /v1/sessions/{session_id}/agent/resume
-  method: post
-  servers:
-    - url: https://api.anchorbrowser.io
-      description: API server
-  request:
-    security:
-      - title: api key header
-        parameters:
-          query: {}
-          header:
-            anchor-api-key:
-              type: apiKey
-              description: API key passed in the header
-          cookie: {}
-    parameters:
-      path:
-        session_id:
+  /v1/sessions/{session_id}/agent/resume:
+    post:
+      tags:
+        - Agentic capabilities
+      summary: Resume Agent
+      description: Resumes the AI agent for the specified browser session.
+      parameters:
+        - name: session_id
+          in: path
+          required: true
+          description: The ID of the browser session
           schema:
-            - type: string
-              required: true
-              description: The ID of the browser session
-              format: uuid
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: object
-                    properties:
-                      status:
-                        type: string
-            refIdentifier: '#/components/schemas/SuccessResponse'
-        examples:
-          example:
-            value:
-              data:
-                status: <string>
-        description: Agent resumed successfully
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - &ref_0
-                    type: object
-                    properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Session is not running
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Session not found
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Failed to resume agent
-  deprecated: false
-  type: path
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Agent resumed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SuccessResponse'
+        '400':
+          description: Session is not running
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Session not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Failed to resume agent
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - api_key_header: []
 components:
-  schemas: {}
+  schemas:
+    SuccessResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            status:
+              type: string
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+  securitySchemes:
+    api_key_header:
+      type: apiKey
+      in: header
+      name: anchor-api-key
+      description: API key passed in the header
 
 ````

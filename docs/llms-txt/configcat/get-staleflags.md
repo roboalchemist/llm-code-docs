@@ -2,10 +2,7 @@
 
 # List Zombie (stale) flags for Product
 
-```
-GET 
-/v1/products/:productId/staleflags
-```
+Copy page
 
 This endpoint returns the list of Zombie (stale) flags for a given Product and the result can be optionally filtered by various parameters.
 

@@ -6,7 +6,6 @@ description: >-
   Manage users, teams, authentication, API keys, roles, and security settings
   for your Datadog organization from the Organization Settings section.
 breadcrumbs: Docs > Account Management > Organization Settings
-source_url: https://docs.datadoghq.com/org_settings/index.html
 ---
 
 # Organization Settings
@@ -151,10 +150,6 @@ The session duration can be configured within the following limits:
    alt="Max Session Duration Setting" /%}
 
 #### Idle time session duration configuration{% #idle-time-session-duration-configuration %}
-
-{% alert level="info" %}
-This feature is available in preview.
-{% /alert %}
 
 Users with the `Org Management` permission can enable or disable the idle time session timeout for their organization. When enabled, users are automatically signed out after 30 minutes of inactivity. The setting applies to all new web sessions created after you change it, and for all users, regardless of their role in the organization. It doesn't apply to Datadog mobile application sessions.
 

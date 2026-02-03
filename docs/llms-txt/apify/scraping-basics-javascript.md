@@ -51,62 +51,62 @@ As a scraper developer, you are not limited by whether certain data is available
 * Improve your productivity by building personal tools, such as your own real estate or rare sneakers watchdog.
 * Companies can hire you to build custom scrapers mining data important for their business.
 * Become an invaluable asset to data journalism, data science, or nonprofit teams working to make the world a better place.
-* You can publish your scrapers on platforms like the https://apify.com/store and earn money by renting them out to others.
+* You can publish your scrapers on platforms like the [Apify Store](https://apify.com/store) and earn money by renting them out to others.
 
 ### Why learn with Apify
 
-We are https://apify.com, a web scraping and automation platform. We do our best to build this course on top of open source technologies. That means what you learn applies to any scraping project, and you'll be able to run your scrapers on any computer. We will show you how a scraping platform can simplify your life, but that lesson is optional and designed to fit within our https://apify.com/pricing.
+We are [Apify](https://apify.com), a web scraping and automation platform. We do our best to build this course on top of open source technologies. That means what you learn applies to any scraping project, and you'll be able to run your scrapers on any computer. We will show you how a scraping platform can simplify your life, but that lesson is optional and designed to fit within our [free tier](https://apify.com/pricing).
 
 ## Course content
 
-## https://docs.apify.com/academy/scraping-basics-javascript/devtools-inspecting.md
+## [📄️ DevTools: Inspecting](https://docs.apify.com/academy/scraping-basics-javascript/devtools-inspecting.md)
 
-https://docs.apify.com/academy/scraping-basics-javascript/devtools-inspecting.md
+[Lesson about using the browser tools for developers to inspect and manipulate the structure of a website.](https://docs.apify.com/academy/scraping-basics-javascript/devtools-inspecting.md)
 
-## https://docs.apify.com/academy/scraping-basics-javascript/devtools-locating-elements.md
+## [📄️ DevTools: Locating HTML elements](https://docs.apify.com/academy/scraping-basics-javascript/devtools-locating-elements.md)
 
-https://docs.apify.com/academy/scraping-basics-javascript/devtools-locating-elements.md
+[Lesson about using the browser tools for developers to manually find products on an e-commerce website.](https://docs.apify.com/academy/scraping-basics-javascript/devtools-locating-elements.md)
 
-## https://docs.apify.com/academy/scraping-basics-javascript/devtools-extracting-data.md
+## [📄️ DevTools: Extracting data](https://docs.apify.com/academy/scraping-basics-javascript/devtools-extracting-data.md)
 
-https://docs.apify.com/academy/scraping-basics-javascript/devtools-extracting-data.md
+[Lesson about using the browser tools for developers to manually extract product data from an e-commerce website.](https://docs.apify.com/academy/scraping-basics-javascript/devtools-extracting-data.md)
 
-## https://docs.apify.com/academy/scraping-basics-javascript/downloading-html.md
+## [📄️ Downloading HTML](https://docs.apify.com/academy/scraping-basics-javascript/downloading-html.md)
 
-https://docs.apify.com/academy/scraping-basics-javascript/downloading-html.md
+[Lesson about building a Node.js application for watching prices. Using the Fetch API to download HTML code of a product listing page.](https://docs.apify.com/academy/scraping-basics-javascript/downloading-html.md)
 
-## https://docs.apify.com/academy/scraping-basics-javascript/parsing-html.md
+## [📄️ Parsing HTML](https://docs.apify.com/academy/scraping-basics-javascript/parsing-html.md)
 
-https://docs.apify.com/academy/scraping-basics-javascript/parsing-html.md
+[Lesson about building a Node.js application for watching prices. Using the Cheerio library to parse HTML code of a product listing page.](https://docs.apify.com/academy/scraping-basics-javascript/parsing-html.md)
 
-## https://docs.apify.com/academy/scraping-basics-javascript/locating-elements.md
+## [📄️ Locating HTML elements](https://docs.apify.com/academy/scraping-basics-javascript/locating-elements.md)
 
-https://docs.apify.com/academy/scraping-basics-javascript/locating-elements.md
+[Lesson about building a Node.js application for watching prices. Using the Cheerio library to locate products on the product listing page.](https://docs.apify.com/academy/scraping-basics-javascript/locating-elements.md)
 
-## https://docs.apify.com/academy/scraping-basics-javascript/extracting-data.md
+## [📄️ Extracting data from HTML](https://docs.apify.com/academy/scraping-basics-javascript/extracting-data.md)
 
-https://docs.apify.com/academy/scraping-basics-javascript/extracting-data.md
+[Lesson about building a Node.js application for watching prices. Using string manipulation to extract and clean data scraped from the product listing page.](https://docs.apify.com/academy/scraping-basics-javascript/extracting-data.md)
 
-## https://docs.apify.com/academy/scraping-basics-javascript/saving-data.md
+## [📄️ Saving data](https://docs.apify.com/academy/scraping-basics-javascript/saving-data.md)
 
-https://docs.apify.com/academy/scraping-basics-javascript/saving-data.md
+[Lesson about building a Node.js application for watching prices. Using the json2csv library to save data scraped from product listing pages in both JSON and CSV.](https://docs.apify.com/academy/scraping-basics-javascript/saving-data.md)
 
-## https://docs.apify.com/academy/scraping-basics-javascript/getting-links.md
+## [📄️ Getting links from HTML](https://docs.apify.com/academy/scraping-basics-javascript/getting-links.md)
 
-https://docs.apify.com/academy/scraping-basics-javascript/getting-links.md
+[Lesson about building a Node.js application for watching prices. Using the Cheerio library to locate links to individual product pages.](https://docs.apify.com/academy/scraping-basics-javascript/getting-links.md)
 
-## https://docs.apify.com/academy/scraping-basics-javascript/crawling.md
+## [📄️ Crawling websites](https://docs.apify.com/academy/scraping-basics-javascript/crawling.md)
 
-https://docs.apify.com/academy/scraping-basics-javascript/crawling.md
+[Lesson about building a Node.js application for watching prices. Using the Fetch API to follow links to individual product pages.](https://docs.apify.com/academy/scraping-basics-javascript/crawling.md)
 
-## https://docs.apify.com/academy/scraping-basics-javascript/scraping-variants.md
+## [📄️ Scraping product variants](https://docs.apify.com/academy/scraping-basics-javascript/scraping-variants.md)
 
-https://docs.apify.com/academy/scraping-basics-javascript/scraping-variants.md
+[Lesson about building a Node.js application for watching prices. Using browser DevTools to figure out how to extract product variants and exporting them as separate items.](https://docs.apify.com/academy/scraping-basics-javascript/scraping-variants.md)
 
-## https://docs.apify.com/academy/scraping-basics-javascript/framework.md
+## [📄️ Using a framework](https://docs.apify.com/academy/scraping-basics-javascript/framework.md)
 
-https://docs.apify.com/academy/scraping-basics-javascript/framework.md
+[Lesson about building a Node.js application for watching prices. Using the Crawlee framework to simplify creating a scraper.](https://docs.apify.com/academy/scraping-basics-javascript/framework.md)
 
-## https://docs.apify.com/academy/scraping-basics-javascript/platform.md
+## [📄️ Using a platform](https://docs.apify.com/academy/scraping-basics-javascript/platform.md)
 
-https://docs.apify.com/academy/scraping-basics-javascript/platform.md
+[Lesson about building a Node.js application for watching prices. Using the Apify platform to deploy a scraper.](https://docs.apify.com/academy/scraping-basics-javascript/platform.md)

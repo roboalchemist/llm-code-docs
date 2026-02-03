@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/basics/context/waitForWebhook.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # context.waitForWebhook
 
 `context.waitForWebhook()` pauses workflow execution until the webhook created by `createWebhook` is called or a timeout is reached.
@@ -76,8 +80,3 @@ export const { POST } = serve(async (context) => {
 ```
 
 For more complete examples and use cases, see [the page on webhooks](/workflow/features/webhooks).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://upstash.com/docs/llms.txt

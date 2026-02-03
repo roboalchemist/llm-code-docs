@@ -150,7 +150,7 @@ The `venice_parameters` object allows you to access Venice-specific features not
 | Parameter                            | Type    | Description                                                                                                                                                                                                                 | Default |
 | ------------------------------------ | ------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
 | `character_slug`                     | string  | The character slug of a public Venice character (discoverable as "Public ID" on the published character page)                                                                                                               | -       |
-| `strip_thinking_response`            | boolean | Strip `<think></think>` blocks from the response (applicable to reasoning/thinking models)                                                                                                                                  | `false` |
+| `strip_thinking_response`            | boolean | Strip `<think></think>` blocks from the response (models using legacy `<think>` tag format). See [Reasoning Models](/overview/guides/reasoning-models).                                                                     | `false` |
 | `disable_thinking`                   | boolean | On supported reasoning models, disable thinking and strip the `<think></think>` blocks from the response                                                                                                                    | `false` |
 | `enable_web_search`                  | string  | Enable web search for this request (`off`, `on`, `auto` - auto enables based on model's discretion)<br />Additional usage-based pricing applies, see [pricing](/overview/pricing#web-search-and-scraping).                  | `off`   |
 | `enable_web_scraping`                | boolean | Enable web scraping of URLs detected in the user message. Scraped content augments responses and bypasses web search<br />Additional usage-based pricing applies, see [pricing](/overview/pricing#web-search-and-scraping). | `false` |
@@ -160,8 +160,18 @@ The `venice_parameters` object allows you to access Venice-specific features not
 | `include_venice_system_prompt`       | boolean | Whether to include Venice's default system prompts alongside specified system prompts                                                                                                                                       | `true`  |
 
 <Note>
-  These parameters can also be specified as model suffixes appended to the model name (e.g., `qwen3-235b:enable_web_search=auto`). See [Model Feature Suffixes](/api-reference/endpoint/chat/model_feature_suffix) for details.
+  These parameters can also be specified as model suffixes appended to the model name (e.g., `llama-3.3-70b:enable_web_search=auto`). See [Model Feature Suffixes](/api-reference/endpoint/chat/model_feature_suffix) for details.
 </Note>
+
+### Prompt Caching
+
+Venice supports prompt caching on select models to reduce latency and costs for repeated content. For supported models, Venice automatically caches system prompts—no code changes required. You can also manually mark content for caching using the `cache_control` property on message content.
+
+| Parameter          | Type   | Description                                                                                                                                                                                          |
+| ------------------ | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `prompt_cache_key` | string | Optional routing hint to improve cache hit rates. When supplied, Venice routes requests to the same backend infrastructure, increasing the likelihood of cache hits across multi-turn conversations. |
+
+See [Prompt Caching](/overview/guides/prompt-caching) for details on how caching works, billing, and best practices.
 
 ## Response Headers Reference
 
@@ -230,7 +240,7 @@ The table below provides a comprehensive reference of all headers you may encoun
 
 ### Example: Accessing Response Headers
 
-```javascript  theme={null}
+```javascript theme={null}
 // After making an API request, access headers from the response object
 const requestId = response.headers.get('CF-RAY');
 const remainingRequests = response.headers.get('x-ratelimit-remaining-requests');
@@ -270,6 +280,10 @@ Venice maintains backward compatibility for v1 endpoints and parameters. For mod
 ## Swagger Configuration
 
 You can find the complete swagger definition for the Venice API here: [https://api.venice.ai/doc/api/swagger.yaml](https://api.venice.ai/doc/api/swagger.yaml)
+
+***
+
+<sub>Request fields not listed in this documentation may be passed through but are not validated or guaranteed to work.</sub>
 
 
 # Create API Key
@@ -355,11 +369,27 @@ Return details about user balances and rate limits.
 
 
 
+# Update API Key
+Source: https://docs.venice.ai/api-reference/endpoint/api_keys/update
+
+PATCH /api_keys
+Update an existing API key. The description, expiration date, and consumption limits can be updated.
+
+
+
 # Speech API (Beta)
 Source: https://docs.venice.ai/api-reference/endpoint/audio/speech
 
 POST /audio/speech
 Converts text to speech using various voice models and formats.
+
+
+
+# Transcriptions API (Beta)
+Source: https://docs.venice.ai/api-reference/endpoint/audio/transcriptions
+
+POST /audio/transcriptions
+Transcribes audio into the input language.
 
 
 
@@ -422,7 +452,7 @@ For additional examples, please see this [Postman Collection](https://www.postma
 Source: https://docs.venice.ai/api-reference/endpoint/chat/completions
 
 POST /chat/completions
-Run text inference based on the supplied parameters. Long running requests should use the streaming API by setting stream=true in your request.
+Run text inference based on the supplied parameters. Supports multimodal inputs including text, images (image_url), audio (input_audio), and video (video_url) for compatible models. Long running requests should use the streaming API by setting stream=true in your request.
 
 ## Postman Collection
 
@@ -529,11 +559,13 @@ Source: https://docs.venice.ai/api-reference/endpoint/image/edit
 POST /image/edit
 Edit or modify an image based on the supplied prompt. The image can be provided either as a multipart form-data file upload or as a base64-encoded string in a JSON request.
 
-## Experimental Endpoint
-
 <Warning>
   This is an experimental endpoint and may be subject to change.
 </Warning>
+
+<Info>
+  **Pricing:** Image editing/inpainting is priced at **\$0.04 per edit**, separate from image generation pricing.
+</Info>
 
 ## Postman Collection
 
@@ -551,6 +583,20 @@ Source: https://docs.venice.ai/api-reference/endpoint/image/generate
 
 POST /image/generate
 Generate an image based on input parameters
+
+## Resolution Options
+
+Some models support higher resolution outputs with resolution-based pricing. Pass the `resolution` parameter in your request:
+
+```json theme={null}
+{
+  "model": "nano-banana-pro",
+  "prompt": "a serene canal in venice at sunset",
+  "resolution": "2K"
+}
+```
+
+See the [Image Models](/models/image) page for available resolutions and pricing per model.
 
 ## Postman Collection
 
@@ -632,6 +678,44 @@ For additional examples, please see this [Postman Collection](https://www.postma
 ***
 
 
+# Complete Video
+Source: https://docs.venice.ai/api-reference/endpoint/video/complete
+
+POST /video/complete
+Delete a video generation request from storage after it has been successfully downloaded. Videos can be automatically deleted after retrieval by setting the `delete_media_on_completion` flag to true when calling the retrieve API.
+
+***
+
+
+# Queue Video Generation
+Source: https://docs.venice.ai/api-reference/endpoint/video/queue
+
+POST /video/queue
+Queue a new video generation request.
+
+Call `/video/quote` to get a price estimate, then poll `/video/retrieve` with the returned `queue_id` until complete.
+
+***
+
+
+# Quote Video Generation
+Source: https://docs.venice.ai/api-reference/endpoint/video/quote
+
+POST /video/quote
+Quote a video generation request based on pricing inputs (model, duration, resolution, aspect_ratio, audio). Returns the price in USD.
+
+***
+
+
+# Retrieve Video
+Source: https://docs.venice.ai/api-reference/endpoint/video/retrieve
+
+POST /video/retrieve
+Retrieve a video generation result. Returns the video file if completed, or a status if the request is still processing.
+
+***
+
+
 # Error Codes
 Source: https://docs.venice.ai/api-reference/error-codes
 
@@ -662,105 +746,237 @@ When an error occurs in the API, we return a consistent error response format th
 # Rate Limits
 Source: https://docs.venice.ai/api-reference/rate-limiting
 
-This page describes the request and token rate limits for the Venice API.
+Request and token rate limits for the Venice API.
 
-## Failed Request Rate Limits
+Rate limits vary by model and tier. You can check your exact limits anytime:
 
-Failed requests including 500 errors, 503 capacity errors, 429 rate limit errors are should be retried with exponential back off.
+<CardGroup>
+  <Card title="View Your Limits" icon="gauge-high" href="/api-reference/endpoint/api_keys/rate_limits?playground=open">
+    Interactive playground
+  </Card>
 
-For 429 rate limit errors, please use `x-ratelimit-reset-requests` and `x-ratelimit-remaining-requests` to determine when to next retry.
+  <Card title="Rate Limit Logs" icon="clock-rotate-left" href="/api-reference/endpoint/api_keys/rate_limit_logs?playground=open">
+    See which requests hit limits
+  </Card>
+</CardGroup>
 
-To protect our infrastructure from abuse, if an user generates more than 20 failed requests in a 30 second window, the API will return a 429 error indicating the error rate limit has been reached:
+```bash theme={null}
+curl https://api.venice.ai/api/v1/api_keys/rate_limits \
+  -H "Authorization: Bearer $VENICE_API_KEY"
+```
+
+## Default Limits
+
+### Text Models
+
+Text models are grouped into tiers based on size. Each model card on the [Models page](/models/text) displays its tier badge.
+
+| Tier | Requests/min | Tokens/min |
+| :--- | -----------: | ---------: |
+| XS   |          500 |  1,000,000 |
+| S    |           75 |    750,000 |
+| M    |           50 |    750,000 |
+| L    |           20 |    500,000 |
+
+<Accordion title="Which models are in each tier?">
+  **XS** `qwen3-4b` `llama-3.2-3b`
+
+  **S** `mistral-31-24b` `venice-uncensored`
+
+  **M** `llama-3.3-70b` `qwen3-next-80b` `google-gemma-3-27b-it`
+
+  **L** `qwen3-235b-a22b-instruct-2507` `qwen3-235b-a22b-thinking-2507` `deepseek-ai-DeepSeek-R1` `grok-41-fast` `kimi-k2-thinking` `gemini-3-pro-preview` `hermes-3-llama-3.1-405b` `qwen3-coder-480b-a35b-instruct` `zai-org-glm-4.7` `openai-gpt-oss-120b`
+</Accordion>
+
+### Other Models
+
+| Type             | Requests/min |
+| :--------------- | -----------: |
+| Image            |           20 |
+| Audio            |           60 |
+| Embedding        |          500 |
+| Video (queue)    |           40 |
+| Video (retrieve) |          120 |
+
+## Handling Errors
+
+Failed requests (500, 503, 429) should be retried with exponential backoff.
+
+For 429 errors specifically, check the `x-ratelimit-reset-requests` header for the exact Unix timestamp when you can retry. Most HTTP libraries have built-in retry mechanisms that handle this automatically.
+
+### Abuse Protection
+
+If you generate more than 20 failed requests in 30 seconds, the API will block further requests for 30 seconds:
 
 ```
-Too many failed attempts (> 20) resulting in a non-success status code. Please wait 30s and try again. See https://docs.venice.ai/api-reference/rate-limiting for more information.
+Too many failed attempts (> 20) resulting in a non-success status code. Please wait 30s and try again.
 ```
 
-## Paid Tier Rate Limits
+## Response Headers
 
-Rate limits apply to users who have purchased API credits or staked VVV to gain Diem.
+Every response includes these headers:
 
-Helpful links:
+| Header                           | Description                            |
+| :------------------------------- | :------------------------------------- |
+| `x-ratelimit-limit-requests`     | Max requests allowed in current window |
+| `x-ratelimit-remaining-requests` | Requests remaining in current window   |
+| `x-ratelimit-reset-requests`     | Unix timestamp when window resets      |
+| `x-ratelimit-limit-tokens`       | Max tokens allowed per minute          |
+| `x-ratelimit-remaining-tokens`   | Tokens remaining in current minute     |
+| `x-ratelimit-reset-tokens`       | Seconds until token limit resets       |
 
-* [Real time rate limits](https://docs.venice.ai/api-reference/endpoint/api_keys/rate_limits?playground=open)
-* [Rate limit logs](https://docs.venice.ai/api-reference/endpoint/api_keys/rate_limit_logs?playground=open) - View requests that have hit the rate limiter
+## Partner Tier
 
-<Note>We will continue to monitor usage. As we add compute capacity to the network, we will review these limits. If you are consistently hitting rate limits, please contact [**support@venice.ai**](mailto:support@venice.ai) or post in the #API channel in Discord for assistance and we can work with you to raise your limits.</Note>
+Partners get significantly higher rate limits:
 
-### Paid Tier - LLMs
+| Tier | Requests/min | Tokens/min |
+| :--- | -----------: | ---------: |
+| XS   |          500 |  2,000,000 |
+| S    |          150 |  1,500,000 |
+| M    |          100 |  1,500,000 |
+| L    |           60 |  1,000,000 |
+
+| Type      | Requests/min |
+| :-------- | -----------: |
+| Image     |           60 |
+| Audio     |          120 |
+| Embedding |          500 |
+
+If you're consistently hitting your rate limits and your usage patterns show **sustained demand over time**, reach out to discuss partner access: [api@venice.ai](mailto:api@venice.ai).
+
+Partner tier limits can be adjusted based on your specific needs.
+
+
+# Audio Models
+Source: https://docs.venice.ai/models/audio
+
+Text-to-speech models with multilingual voice support
+
+<div>Loading models...</div>
 
 ***
 
-| Model                 | Model ID          | Req / Min | Req / Day | Tokens / Min |
-| --------------------- | ----------------- | :-------: | :-------- | :----------: |
-| Llama 3.2 3B          | llama-3.2-3b      |    500    | 288,000   |   1,000,000  |
-| Venice Small          | qwen3-4b          |    500    | 288,000   |   1,000,000  |
-| Venice Uncensored 1.1 | venice-uncensored |     75    | 54,000    |    750,000   |
-| Venice Medium (3.1)   | mistral-31-24b    |     75    | 54,000    |    750,000   |
-| Llama 3.3 70B         | llama-3.3-70b     |     50    | 36,000    |    750,000   |
-| Venice Large 1.1      | qwen3-235b        |     20    | 15,000    |    750,000   |
+## Available Voices
 
-### Paid Tier - Image Models
+Kokoro TTS supports 60+ multilingual and stylistic voices:
 
-***
+| Voice ID     | Description              |
+| ------------ | ------------------------ |
+| `af_nova`    | Female, American English |
+| `am_liam`    | Male, American English   |
+| `bf_emma`    | Female, British English  |
+| `zf_xiaobei` | Female, Chinese          |
+| `jm_kumo`    | Male, Japanese           |
 
-| Model            | Model ID | Req / Min | Req / Day |
-| ---------------- | -------- | --------- | :-------- |
-| All Image Models | All      | 20        | 28,800    |
+<Note>
+  Voice is selected using the `voice` parameter in the request payload. See the [Audio Speech API](/api-reference/endpoint/audio/speech) for usage examples.
+</Note>
 
-### Paid Tier - Audio Models
 
-***
+# Embedding Models
+Source: https://docs.venice.ai/models/embeddings
 
-| Model            | Model ID | Req / Min | Req / Day |
-| ---------------- | -------- | :-------: | :-------: |
-| All Audio Models | All      |     60    |   86,400  |
+Text embeddings for semantic search and retrieval
 
-### Paid Tier - Embedding Models
+<div>Loading models...</div>
 
 ***
 
-| Model  | Model ID              | Req / Min | Req / Day | Tokens / Min |
-| ------ | --------------------- | :-------: | :-------- | :----------: |
-| BGE-M3 | text-embedding-bge-m3 |    500    | 288,000   |   1,000,000  |
-
-## Rate Limit and Consumption Headers
-
-You can monitor your API utilization and remaining requests by evaluating the following headers:
-
-<div style={{ overflowX: 'auto' }}>
-  | Header                                                                       | Description                                                                             |
-  | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
-  | <div style={{whiteSpace: 'nowrap'}}>**x-ratelimit-limit-requests**</div>     | The number of requests you've made in the current evaluation period.                    |
-  | <div style={{whiteSpace: 'nowrap'}}>**x-ratelimit-remaining-requests**</div> | The remaining requests you can make in the current evaluation period.                   |
-  | <div style={{whiteSpace: 'nowrap'}}>**x-ratelimit-reset-requests**</div>     | The unix time stamp when the rate limit will reset.                                     |
-  | <div style={{whiteSpace: 'nowrap'}}>**x-ratelimit-limit-tokens**</div>       | The number of total (prompt + completion) tokens used within a 1 minute sliding window. |
-  | <div style={{whiteSpace: 'nowrap'}}>**x-ratelimit-remaining-tokens**</div>   | The remaining number of total tokens that can be used during the evaluation period.     |
-  | <div style={{whiteSpace: 'nowrap'}}>**x-ratelimit-reset-tokens**</div>       | The duration of time in seconds until the token rate limit resets.                      |
-  | <div style={{whiteSpace: 'nowrap'}}>**x-venice-balance-diem**</div>          | The user's Diem balance before the request has been processed.                          |
-  | <div style={{whiteSpace: 'nowrap'}}>**x-venice-balance-usd**</div>           | The user's USD balance before the request has been processed.                           |
-</div>
+<Note>
+  See the [Embeddings API](/api-reference/endpoint/embeddings/generate) for usage examples.
+</Note>
 
 
-# Venice AI
+# Image Models
+Source: https://docs.venice.ai/models/image
+
+Image generation, upscaling, and editing models
+
+<div>Loading models...</div>
+
+***
+
+## Model Types
+
+* **Generation:** Create images from text prompts
+* **Upscale:** Enhance image resolution and quality
+* **Edit:** Modify existing images with inpainting
+
+<Note>
+  See the [Image Generate API](/api-reference/endpoint/image/generate) for text-to-image, [Upscale API](/api-reference/endpoint/image/upscale) for enhancement, and [Edit API](/api-reference/endpoint/image/edit) for inpainting.
+</Note>
+
+
+# Models
+Source: https://docs.venice.ai/models/overview
+
+Explore all available models on the Venice API
+
+<div>Loading models...</div>
+
+
+# Text Models
+Source: https://docs.venice.ai/models/text
+
+Chat, reasoning, and code generation models
+
+<div>Loading models...</div>
+
+***
+
+## Capabilities
+
+* **Function Calling:** Let the model invoke tools and external APIs
+* **Reasoning:** Extended thinking for complex problem-solving
+* **Vision:** Analyze images alongside text prompts
+* **Code:** Optimized for code generation and understanding
+
+<Note>
+  See the [Chat Completions API](/api-reference/endpoint/chat/completions) for usage examples.
+</Note>
+
+
+# Video Models
+Source: https://docs.venice.ai/models/video
+
+Text-to-video and image-to-video generation
+
+<div>Loading models...</div>
+
+## Model Types
+
+**Text to Video:** Generate videos from text prompts
+
+**Image to Video:** Animate static images into video clips
+
+<Note>
+  Video generation uses an async queue system. See the [Video Queue API](/api-reference/endpoint/video/queue) to start generation and [Video Retrieve API](/api-reference/endpoint/video/retrieve) to fetch results.
+</Note>
+
+## Pricing
+
+Adjust the dropdowns to see how duration, resolution, and audio affect the price. Models marked **FIXED** have a flat rate.
+
+For exact quotes before generation, use the [Video Quote API](/api-reference/endpoint/video/quote).
+
+
+# Venice API
 Source: https://docs.venice.ai/overview/about-venice
 
 
 
-# The AI platform that doesn't spy on you
-
 Build AI with no data retention, permissionless access, and compute you permanently own.
 
-<CardGroup cols={3}>
-  <Card title="Start Building" href="/overview/getting-started" target="_blank" icon="rocket">
+<CardGroup>
+  <Card title="Start Building" href="/overview/getting-started" icon="rocket">
     Make your first request in minutes.
   </Card>
 
-  <Card title="View Models" href="/overview/models" target="_blank" icon="database">
+  <Card title="View Models" href="/overview/models" icon="database">
     Compare capabilities, context, and base models.
   </Card>
 
-  <Card title="API Reference" href="/api-reference" target="_blank" icon="rectangle-code">
+  <Card title="API Reference" href="/api-reference" icon="rectangle-code">
     Endpoints, payloads, and examples.
   </Card>
 </CardGroup>
@@ -770,14 +986,20 @@ Build AI with no data retention, permissionless access, and compute you permanen
 Use your existing OpenAI code with just a base URL change.
 
 <CodeGroup>
-  ```bash Curl theme={null}
-  curl https://api.venice.ai/api/v1/chat/completions \
-    -H "Authorization: Bearer $VENICE_API_KEY" \
-    -H "Content-Type: application/json" \
-    -d '{
-      "model": "venice-uncensored",
-      "messages": [{"role": "user", "content": "Hello World!"}]
-    }'
+  ```python Python theme={null}
+  import openai
+
+  client = openai.OpenAI(
+      api_key="your-api-key",
+      base_url="https://api.venice.ai/api/v1"
+  )
+
+  response = client.chat.completions.create(
+      model="venice-uncensored",
+      messages=[{"role": "user", "content": "Hello World!"}]
+  )
+
+  print(response.choices[0].message.content)
   ```
 
   ```ts TypeScript theme={null}
@@ -796,20 +1018,14 @@ Use your existing OpenAI code with just a base URL change.
   console.log(completion.choices[0].message.content);
   ```
 
-  ```python Python theme={null}
-  import openai
-
-  client = openai.OpenAI(
-      api_key="your-api-key",
-      base_url="https://api.venice.ai/api/v1"
-  )
-
-  response = client.chat.completions.create(
-      model="venice-uncensored",
-      messages=[{"role": "user", "content": "Hello World!"}]
-  )
-
-  print(response.choices[0].message.content)
+  ```bash Curl theme={null}
+  curl https://api.venice.ai/api/v1/chat/completions \
+    -H "Authorization: Bearer $VENICE_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "venice-uncensored",
+      "messages": [{"role": "user", "content": "Hello World!"}]
+    }'
   ```
 
   ```go Go theme={null}
@@ -947,7 +1163,7 @@ Use your existing OpenAI code with just a base URL change.
 
 Access chat, image generation (generate/upscale/edit), audio (TTS), and characters.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Chat Completions" href="/api-reference/endpoint/chat/completions" icon="message">
     **Text + reasoning**
 
@@ -979,12 +1195,12 @@ Access chat, image generation (generate/upscale/edit), audio (TTS), and characte
 
 Copy a Model ID and use it as `model` in your requests.
 
-<Card title="Venice Large 1.1" icon="brain">
+<Card title="GLM 4.7" icon="brain">
   Flagship model for deep reasoning and production agents.
 
-  Model ID: `qwen3-235b`
-  Base: Qwen 3 235B (Venice‑tuned)
-  Context: 131k • Modalities: Text → Text
+  Model ID: `zai-org-glm-4.7`
+  Base: GLM 4.7
+  Context: 128k • Modalities: Text → Text
 
   **Use cases**
 
@@ -992,12 +1208,12 @@ Copy a Model ID and use it as `model` in your requests.
   * Complex code & system design
   * Long‑context reasoning
 
-  ```json  theme={null}
-  {"model":"qwen3-235b","messages":[{"role":"user","content":"Plan a zero‑downtime DB migration in 3 steps"}]}
+  ```json theme={null}
+  {"model":"zai-org-glm-4.7","messages":[{"role":"user","content":"Plan a zero‑downtime DB migration in 3 steps"}]}
   ```
 </Card>
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Venice Uncensored" icon="shield">
     **Unfiltered generation**
 
@@ -1007,12 +1223,12 @@ Copy a Model ID and use it as `model` in your requests.
 
     Context: 32k • Best for: uncensored creative, red‑team testing
 
-    ```json  theme={null}
+    ```json theme={null}
     {"model":"venice-uncensored","messages":[{"role":"user","content":"Write an unfiltered analysis of content moderation policies"}]}
     ```
   </Card>
 
-  <Card title="Venice Medium 3.1" icon="eye">
+  <Card title="Mistral 3.1 24B" icon="eye">
     **Vision + tools**
 
     Model ID: `mistral-31-24b`
@@ -1021,7 +1237,7 @@ Copy a Model ID and use it as `model` in your requests.
 
     Context: 131k • Supports: Vision, Function calling, image analysis
 
-    ```json  theme={null}
+    ```json theme={null}
     {"model":"mistral-31-24b","messages":[{"role":"user","content":"Describe this image"}]}
     ```
   </Card>
@@ -1035,22 +1251,22 @@ Copy a Model ID and use it as `model` in your requests.
 
     Context: 40k • Best for: chatbots, classification, light reasoning
 
-    ```json  theme={null}
+    ```json theme={null}
     {"model":"qwen3-4b","messages":[{"role":"user","content":"Summarize:"}]}
     ```
   </Card>
 
-  <Card title="Venice SD35" icon="image">
+  <Card title="Nano Banana Pro" icon="image">
     **Image generation**
 
-    Model ID: `venice-sd35`
+    Model ID: `nano-banana-pro`
 
-    Base model: SD3.5 Large
+    Base model: Nano Banana Pro
 
     Best for: Text‑to‑image, photorealism, product shots, light upscaling
 
-    ```json  theme={null}
-    {"model":"venice-sd35","prompt":"a serene canal in venice at sunset"}
+    ```json theme={null}
+    {"model":"nano-banana-pro","prompt":"a serene canal in venice at sunset"}
     ```
   </Card>
 </CardGroup>
@@ -1061,22 +1277,14 @@ Copy a Model ID and use it as `model` in your requests.
 
 Toggle on compatible models using `venice_parameters` or model suffixes
 
-<CardGroup cols={4}>
-  <Card title="Web Search" icon="globe">
-    **Real‑time web results**
-  </Card>
+<CardGroup>
+  <Card title="Web Search" icon="globe" />
 
-  <Card title="Reasoning Mode" icon="brain">
-    **Advanced reasoning**
-  </Card>
+  <Card title="Reasoning" icon="brain" />
 
-  <Card title="Vision Processing" icon="eye">
-    **Image understanding**
-  </Card>
+  <Card title="Vision" icon="eye" />
 
-  <Card title="Function Calling" icon="link">
-    **Tool use / APIs**
-  </Card>
+  <Card title="Tool Calling" icon="link" />
 </CardGroup>
 
 <Accordion title="Web Search Code Samples">
@@ -1088,7 +1296,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
       -H "Authorization: Bearer $VENICE_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
-        "model": "qwen3-235b",
+        "model": "zai-org-glm-4.7",
         "messages": [{"role": "user", "content": "What are the latest developments in AI?"}],
         "venice_parameters": {
           "enable_web_search": "auto"
@@ -1105,7 +1313,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
     });
 
     const completion = await openai.chat.completions.create({
-      model: "qwen3-235b",
+      model: "zai-org-glm-4.7",
       messages: [{ role: "user", content: "What are the latest developments in AI?" }],
       // @ts-ignore - Venice-specific parameter
       venice_parameters: {
@@ -1125,7 +1333,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
     )
 
     response = client.chat.completions.create(
-        model="qwen3-235b",
+        model="zai-org-glm-4.7",
         messages=[{"role": "user", "content": "What are the latest developments in AI?"}],
             extra_body={
             "venice_parameters": {
@@ -1161,7 +1369,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
         resp, err := client.CreateChatCompletion(
             context.Background(),
             openai.ChatCompletionRequest{
-                Model: "qwen3-235b:enable_web_search=on&enable_web_citations=true",
+                Model: "zai-org-glm-4.7:enable_web_search=on&enable_web_citations=true",
                 Messages: []openai.ChatCompletionMessage{
                     {
                         Role:    openai.ChatMessageRoleUser,
@@ -1191,7 +1399,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
     $client->setBaseUrl('https://api.venice.ai/api/v1');
 
     $response = $client->chat()->create([
-        'model' => 'qwen3-235b:enable_web_search=on&enable_web_citations=true',
+        'model' => 'zai-org-glm-4.7:enable_web_search=on&enable_web_citations=true',
         'messages' => [
             [
                 'role' => 'user',
@@ -1211,7 +1419,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
 
     var chatCompletion = await client.GetChatCompletionsAsync(new ChatCompletionOptions
     {
-        Model = "qwen3-235b:enable_web_search=on&enable_web_citations=true",
+        Model = "zai-org-glm-4.7:enable_web_search=on&enable_web_citations=true",
         Messages = { new ChatMessage(ChatRole.User, "What are the latest developments in AI?") }
     });
 
@@ -1236,7 +1444,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
             try {
                 ChatCompletionResponse response = client.chatCompletions().create(
                     ChatCompletionRequest.builder()
-                        .model("qwen3-235b:enable_web_search=on&enable_web_citations=true")
+                        .model("zai-org-glm-4.7:enable_web_search=on&enable_web_citations=true")
                         .messages(ChatMessage.of("What are the latest developments in AI?"))
                         .build()
                 );
@@ -1255,7 +1463,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
       -H "Authorization: Bearer $VENICE_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
-        "model": "qwen3-235b:enable_web_search=on&enable_web_citations=true",
+        "model": "zai-org-glm-4.7:enable_web_search=on&enable_web_citations=true",
         "messages": [{"role": "user", "content": "What are the latest developments in AI?"}]
       }'
     ```
@@ -1263,7 +1471,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
 </Accordion>
 
 <Accordion title="Reasoning Mode Code Samples">
-  Advanced step-by-step reasoning with visible thinking process. Available on **reasoning models**: `qwen3-4b`, `qwen3-235b`. Shows detailed problem-solving steps in `<think>` tags.
+  Advanced step-by-step reasoning with visible thinking process. Available on **reasoning models**: `qwen3-4b`, `deepseek-ai-DeepSeek-R1`. Shows detailed problem-solving steps in `<think>` tags.
 
   <CodeGroup>
     ```bash Curl theme={null}
@@ -1271,7 +1479,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
       -H "Authorization: Bearer $VENICE_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
-        "model": "qwen3-235b",
+        "model": "qwen3-4b",
         "messages": [{"role": "user", "content": "Solve: If x + 2y = 10 and 3x - y = 5, what are x and y?"}],
         "venice_parameters": {
           "strip_thinking_response": false
@@ -1288,7 +1496,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
     });
 
     const completion = await openai.chat.completions.create({
-      model: "qwen3-235b",
+      model: "qwen3-4b",
       messages: [{ role: "user", content: "Solve: If x + 2y = 10 and 3x - y = 5, what are x and y?" }],
       // @ts-ignore - Venice-specific parameter
       venice_parameters: {
@@ -1308,7 +1516,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
     )
 
     response = client.chat.completions.create(
-        model="qwen3-235b",
+        model="qwen3-4b",
         messages=[{"role": "user", "content": "Solve: If x + 2y = 10 and 3x - y = 5, what are x and y?"}],
         extra_body={
             "venice_parameters": {
@@ -1342,7 +1550,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
         resp, err := client.CreateChatCompletion(
             context.Background(),
             openai.ChatCompletionRequest{
-                Model: "qwen3-235b",
+                Model: "qwen3-4b",
                 Messages: []openai.ChatCompletionMessage{
                     {
                         Role:    openai.ChatMessageRoleUser,
@@ -1372,7 +1580,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
     $client->setBaseUrl('https://api.venice.ai/api/v1');
 
     $response = $client->chat()->create([
-        'model' => 'qwen3-235b',
+        'model' => 'qwen3-4b',
         'messages' => [
             [
                 'role' => 'user',
@@ -1392,7 +1600,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
 
     var chatCompletion = await client.GetChatCompletionsAsync(new ChatCompletionOptions
     {
-        Model = "qwen3-235b",
+        Model = "qwen3-4b",
         Messages = { new ChatMessage(ChatRole.User, "Solve: If x + 2y = 10 and 3x - y = 5, what are x and y?") }
     });
 
@@ -1417,7 +1625,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
             try {
                 ChatCompletionResponse response = client.chatCompletions().create(
                     ChatCompletionRequest.builder()
-                        .model("qwen3-235b")
+                        .model("qwen3-4b")
                         .messages(ChatMessage.of("Solve: If x + 2y = 10 and 3x - y = 5, what are x and y?"))
                         .build()
                 );
@@ -1436,7 +1644,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
       -H "Authorization: Bearer $VENICE_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
-        "model": "qwen3-235b:strip_thinking_response=true",
+        "model": "qwen3-4b:strip_thinking_response=true",
         "messages": [{"role": "user", "content": "Solve this math problem"}]
       }'
     ```
@@ -1444,7 +1652,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
 </Accordion>
 
 <Accordion title="Vision Processing Code Samples">
-  Image understanding and multimodal analysis. Available on **vision models**: `mistral-31-24b`. Upload images via base64 data URIs or URLs for analysis, description, and reasoning.
+  Image understanding and multimodal analysis. Available on **vision models**: `qwen3-vl-235b-a22b`. Upload images via base64 data URIs or URLs for analysis, description, and reasoning.
 
   <CodeGroup>
     ```bash Curl theme={null}
@@ -1452,7 +1660,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
       -H "Authorization: Bearer $VENICE_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
-        "model": "mistral-31-24b",
+        "model": "qwen3-vl-235b-a22b",
         "messages": [
           {
             "role": "user",
@@ -1474,7 +1682,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
     });
 
     const completion = await openai.chat.completions.create({
-      model: "mistral-31-24b",
+      model: "qwen3-vl-235b-a22b",
       messages: [
         {
           role: "user",
@@ -1498,7 +1706,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
     )
 
     response = client.chat.completions.create(
-        model="mistral-31-24b",
+        model="qwen3-vl-235b-a22b",
         messages=[
             {
                 "role": "user",
@@ -1535,7 +1743,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
         resp, err := client.CreateChatCompletion(
             context.Background(),
             openai.ChatCompletionRequest{
-                Model: "mistral-31-24b",
+                Model: "qwen3-vl-235b-a22b",
                 Messages: []openai.ChatCompletionMessage{
                     {
                         Role: openai.ChatMessageRoleUser,
@@ -1568,7 +1776,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
     $client->setBaseUrl('https://api.venice.ai/api/v1');
 
     $response = $client->chat()->create([
-        'model' => 'mistral-31-24b',
+        'model' => 'qwen3-vl-235b-a22b',
         'messages' => [
             [
                 'role' => 'user',
@@ -1591,7 +1799,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
 
     var chatCompletion = await client.GetChatCompletionsAsync(new ChatCompletionOptions
     {
-        Model = "mistral-31-24b",
+        Model = "qwen3-vl-235b-a22b",
         Messages = { 
             new ChatMessage(ChatRole.User, [
                 ChatMessageContentPart.CreateTextPart("What do you see in this image?"),
@@ -1619,7 +1827,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
             try {
                 ChatCompletionResponse response = client.chatCompletions().create(
                     ChatCompletionRequest.builder()
-                        .model("mistral-31-24b")
+                        .model("qwen3-vl-235b-a22b")
                         .messages(ChatMessage.builder()
                             .role(ChatMessage.Role.USER)
                             .content(ChatMessage.Content.ofMultiple(
@@ -1659,8 +1867,8 @@ Toggle on compatible models using `venice_parameters` or model suffixes
   </CodeGroup>
 </Accordion>
 
-<Accordion title="Function Calling Code Samples">
-  Tool use and external API integration. Available on **function calling models**: `qwen3-235b`, `qwen3-4b`, `mistral-31-24b`, `llama-3.2-3b`, `llama-3.3-70b`. Define tools for the model to call external APIs, databases, or custom functions.
+<Accordion title="Tool Calling Code Samples">
+  Tool use and external API integration. Available on **function calling models**: `zai-org-glm-4.7`, `qwen3-4b`, `mistral-31-24b`, `llama-3.2-3b`, `zai-org-glm-4.7`. Define tools for the model to call external APIs, databases, or custom functions.
 
   <CodeGroup>
     ```bash Curl theme={null}
@@ -1668,7 +1876,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
       -H "Authorization: Bearer $VENICE_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
-        "model": "qwen3-235b",
+        "model": "zai-org-glm-4.7",
         "messages": [{"role": "user", "content": "What is the weather like in New York?"}],
         "tools": [
           {
@@ -1698,7 +1906,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
     });
 
     const completion = await openai.chat.completions.create({
-      model: "qwen3-235b",
+      model: "zai-org-glm-4.7",
       messages: [{ role: "user", content: "What is the weather like in New York?" }],
       tools: [
         {
@@ -1730,7 +1938,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
     )
 
     response = client.chat.completions.create(
-        model="qwen3-235b",
+        model="zai-org-glm-4.7",
         messages=[{"role": "user", "content": "What is the weather like in New York?"}],
         tools=[
             {
@@ -1775,7 +1983,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
         resp, err := client.CreateChatCompletion(
             context.Background(),
             openai.ChatCompletionRequest{
-                Model: "qwen3-235b",
+                Model: "zai-org-glm-4.7",
                 Messages: []openai.ChatCompletionMessage{
                     {
                         Role:    openai.ChatMessageRoleUser,
@@ -1824,7 +2032,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
     $client->setBaseUrl('https://api.venice.ai/api/v1');
 
     $response = $client->chat()->create([
-        'model' => 'qwen3-235b',
+        'model' => 'zai-org-glm-4.7',
         'messages' => [
             [
                 'role' => 'user',
@@ -1863,7 +2071,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
 
     var chatCompletion = await client.GetChatCompletionsAsync(new ChatCompletionOptions
     {
-        Model = "qwen3-235b",
+        Model = "zai-org-glm-4.7",
         Messages = { new ChatMessage(ChatRole.User, "What is the weather like in New York?") },
         Tools = {
             ChatTool.CreateFunctionTool(
@@ -1904,7 +2112,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
             try {
                 ChatCompletionResponse response = client.chatCompletions().create(
                     ChatCompletionRequest.builder()
-                        .model("qwen3-235b")
+                        .model("zai-org-glm-4.7")
                         .messages(ChatMessage.of("What is the weather like in New York?"))
                         .tools(ChatCompletionTool.builder()
                             .type(ChatCompletionToolType.FUNCTION)
@@ -1937,7 +2145,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
       -H "Authorization: Bearer $VENICE_API_KEY" \
       -H "Content-Type: application/json" \
       -d '{
-        "model": "qwen3-235b:enable_web_search=auto",
+        "model": "zai-org-glm-4.7:enable_web_search=auto",
         "messages": [{"role": "user", "content": "What is the weather like in New York?"}],
         "tools": [
           {
@@ -1976,7 +2184,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
 
 ## Pricing Options
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Pro subscription" href="https://venice.ai/chat" icon="star">
     **\$10 in free credits**
 
@@ -2000,7 +2208,7 @@ Toggle on compatible models using `venice_parameters` or model suffixes
 
 Get your API key and make your first request.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Getting Started" href="/overview/getting-started" icon="rocket">
     Step-by-step guide to your first API call
   </Card>
@@ -2027,12 +2235,64 @@ Get your API key and make your first request.
 These docs are open source and can be contributed to on [Github](https://github.com/veniceai/api-docs). For additional guidance, see our blog post: ["How to use Venice API"](https://venice.ai/blog/how-to-use-venice-api)
 
 
+# Beta Models
+Source: https://docs.venice.ai/overview/beta-models
+
+Beta models available for testing and evaluation on the Venice API
+
+We sometimes release models in beta to gather feedback and confirm their performance before a full production rollout. Beta models are available to all users but are **not recommended for production use**.
+
+Beta status does not guarantee promotion to production. A beta model may be removed if it is too costly to run, performs poorly at scale, or raises safety concerns. Beta models can change without notice and may have limited documentation or support. Models that prove stable, broadly useful, and aligned with our standards are promoted to general availability.
+
+## Important Considerations
+
+When using beta models, keep in mind:
+
+* May be changed or removed at any time without the standard deprecation notice period
+* Not suitable for production applications or critical workflows
+* May have inconsistent performance, availability, or behavior
+* Limited or no migration support if removed
+* Best used for testing, evaluation, and experimental projects
+
+For production applications, we recommend using the stable models from our [main model lineup](/models/overview).
+
+## Current Beta Models
+
+The following models are currently available in beta.
+
+<div />
+
+### Checking Beta Status via the API
+
+You can check if a model is in beta by calling the [List Models](/api-reference/endpoint/models/list) endpoint. Beta models include a `betaModel` field set to `true` in their `model_spec`:
+
+```json theme={null}
+{
+  "id": "some-beta-model",
+  "model_spec": {
+    "name": "Some Beta Model",
+    "betaModel": true,
+    "privacy": "private"
+  },
+  "type": "text",
+  "object": "model",
+  "owned_by": "venice.ai"
+}
+```
+
+You can check `if (model.model_spec.betaModel)` to identify beta models and warn users or handle them differently in your application.
+
+## Join the Alpha Testing Program
+
+Want to help shape Venice's future models and features? Join our alpha testing program to get early access to new models before they're released publicly, provide feedback that influences development, and help us validate performance at scale.
+
+[Learn how to join the alpha testing group](https://venice.ai/faqs#how-do-i-join-the-beta-testing-group)
+
+
 # Deprecations
 Source: https://docs.venice.ai/overview/deprecations
 
 Model inclusion and lifecycle policy and deprecations for the Venice API
-
-## Model inclusion and lifecycle policy for the Venice API
 
 The Venice API exists to give developers unrestricted private access to production-grade models free from hidden filters or black-box decisions.
 
@@ -2068,56 +2328,30 @@ See the [Model Deprecation Tracker](#model-deprecation-tracker) below. For earli
 
 We carefully select which models to make available based on performance, reliability, and real-world developer needs. To be included, a model must demonstrate strong performance, behave consistently under OpenAI-compatible endpoints, and offer a clear improvement over at least one of the models we already support.
 
-Models we’re evaluating may first be released in beta to gather feedback and validate performance at scale.
+Models we're evaluating may first be released in [beta](/overview/beta-models) to gather feedback and validate performance at scale.
 
 We don’t expose models that are redundant, unproven, or not ready for consistent production use. Our goal is to keep the Venice API clean, capable, and optimized for what developers actually build.
 
-Learn more in [Model Deprecations](/overview/deprecations#model-deprecations) and <a href="/overview/models" target="_blank" rel="noopener noreferrer">Current Model List</a>.
+Learn more in [Model Deprecations](/overview/deprecations#model-deprecations) and <a href="/overview/models">Current Model List</a>.
 
 ## Versioning and Aliases
 
 All Venice models are identified by a unique, permanent ID. For example:
 
 `venice-uncensored`
-`qwen3-235b`
+`zai-org-glm-4.7`
 `llama-3.3-70b`
 `mistral-31-24b`
 
 Model IDs are stable. If there's a breaking change, we will release a new model ID (for example, add a version like v2). If there are no breaking changes, we may update the existing model and will communicate significant changes.
 
-To provide flexibility, Venice also maintains symbolic aliases — implemented through traits — that point to the recommended default model for a given task. Examples include:
+To provide flexibility, Venice also maintains symbolic aliases — implemented through traits — that point to the recommended default model for a given task:
 
-* `default` → currently routes to `llama-3.3-70b`
-* `function_calling_default` → currently routes to `llama-3.3-70b`
-* `default_vision` → currently routes to `mistral-31-24b`
-* `most_uncensored` → currently routes to `venice-uncensored`
-* `fastest` → currently routes to `llama-3.2-3b`
+<div />
 
 Traits offer a stable abstraction for selecting models while giving Venice the flexibility to improve the underlying implementation. Developers who prefer automatic access to the latest recommended models can rely on trait-based aliases.
 
 For applications that require strict consistency and predictable behavior, we recommend referencing fixed model IDs.
-
-## Beta Models
-
-We sometimes release models in beta to gather feedback and confirm their performance before a full production rollout. Beta models are available to all users but are **not recommended for production use**.
-
-Beta status does not guarantee promotion to production. A beta model may be removed if it is too costly to run, performs poorly at scale, or raises safety concerns. Beta models can change without notice and may have limited documentation or support. Models that prove stable, broadly useful, and aligned with our standards are promoted to general availability.
-
-**Important considerations for beta models:**
-
-* May be changed or removed at any time without the standard deprecation notice period
-* Not suitable for production applications or critical workflows
-* May have inconsistent performance, availability, or behavior
-* Limited or no migration support if removed
-* Best used for testing, evaluation, and experimental projects
-
-For production applications, we recommend using the stable models from our [main model lineup](/overview/models).
-
-### Join the Beta Testing Program
-
-Want to help shape Venice's future models and features? Join our beta testing program to get early access to new models before they're released publicly, provide feedback that influences development, and help us validate performance at scale.
-
-[Learn how to join the beta testing group](https://venice.ai/faqs#how-do-i-join-the-beta-testing-group)
 
 ## Feedback
 
@@ -2125,7 +2359,11 @@ You can submit your feedback or request through our [Featurebase portal](https:/
 
 ## Model Deprecation Tracker
 
-The following models are scheduled for deprecation. We recommend migrating to the suggested replacements before the removal date.
+The following models are scheduled for deprecation or have been recently deprecated. We recommend migrating to suggested replacements before the removal date. Models remain listed for 30 days after their removal date.
+
+<div />
+
+### Migration Guides
 
 <Note>
   **Migration Guide: `qwen3-235b`**
@@ -2140,9 +2378,27 @@ The following models are scheduled for deprecation. We recommend migrating to th
   **If you use `disable_thinking=true`**: Switch to `qwen3-235b-a22b-instruct-2507` before December 14.
 </Note>
 
-| Deprecated Model | Replacement                                                        | Removal by   | Status    | Reason                                                  |
-| ---------------- | ------------------------------------------------------------------ | ------------ | --------- | ------------------------------------------------------- |
-| `qwen3-235b`     | `qwen3-235b-a22b-thinking-2507` or `qwen3-235b-a22b-instruct-2507` | Dec 14, 2025 | Available | Splitting into specialized models with improved pricing |
+### Checking Deprecation Status via the API
+
+You can check if a model is scheduled for retirement by calling the [List Models](/api-reference/endpoint/models/list) endpoint. Models with a retirement date include a `deprecation` object in their `model_spec`:
+
+```json theme={null}
+{
+  "id": "some-model-id",
+  "model_spec": {
+    "name": "Some Model",
+    "privacy": "private",
+    "deprecation": {
+      "date": "2025-03-01T00:00:00.000Z"
+    }
+  },
+  "type": "text",
+  "object": "model",
+  "owned_by": "venice.ai"
+}
+```
+
+The `deprecation` object only appears when a model is scheduled for retirement. You can check `if (model.model_spec.deprecation)` to know if a model is being retired, and use the ISO 8601 date to warn users or plan migrations.
 
 
 # Getting Started
@@ -2164,13 +2420,13 @@ Get up and running with the Venice API in minutes. Generate an API key, make you
   <Step title="Set up your API key">
     Add your API key to your environment. You can export it in your shell:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     export VENICE_API_KEY='your-api-key-here'
     ```
 
     Or add it to a `.env` file in your project:
 
-    ```bash  theme={null}
+    ```bash theme={null}
     VENICE_API_KEY=your-api-key-here
     ```
   </Step>
@@ -2256,8 +2512,8 @@ Get up and running with the Venice API in minutes. Generate an API key, make you
     Venice has multiple models for different use cases. Popular choices:
 
     * `llama-3.3-70b` - Balanced performance, great for most use cases
-    * `qwen3-235b` - Most powerful flagship model for complex tasks
-    * `mistral-31-24b` - Vision + function calling support
+    * `zai-org-glm-4.7` - Flagship model for complex tasks and deep reasoning
+    * `qwen3-vl-235b-a22b` - Vision support
     * `venice-uncensored` - No content filtering
 
     <Card title="View All Models" icon="database" href="/overview/models">
@@ -2775,6 +3031,67 @@ The `tts-kokoro` model supports 60+ multilingual voices including `af_sky`, `af_
 
 See the [TTS API](/api-reference/endpoint/audio/speech) for all voice options.
 
+### Speech-to-Text
+
+Transcribe audio files to text:
+
+<CodeGroup>
+  ```python Python theme={null}
+  import os
+  import requests
+
+  url = "https://api.venice.ai/api/v1/audio/transcriptions"
+
+  with open("audio.mp3", "rb") as f:
+      response = requests.post(
+          url,
+          headers={"Authorization": f"Bearer {os.getenv('VENICE_API_KEY')}"},
+          files={"file": f},
+          data={
+              "model": "nvidia/parakeet-tdt-0.6b-v3",
+              "response_format": "json"
+          }
+      )
+
+  print(response.json())
+  ```
+
+  ```javascript Node.js theme={null}
+  import fs from 'fs';
+  import FormData from 'form-data';
+
+  const form = new FormData();
+  form.append('file', fs.createReadStream('audio.mp3'));
+  form.append('model', 'nvidia/parakeet-tdt-0.6b-v3');
+  form.append('response_format', 'json');
+
+  const response = await fetch('https://api.venice.ai/api/v1/audio/transcriptions', {
+      method: 'POST',
+      headers: {
+          'Authorization': `Bearer ${process.env.VENICE_API_KEY}`,
+          ...form.getHeaders()
+      },
+      body: form
+  });
+
+  const data = await response.json();
+  console.log(data);
+  ```
+
+  ```bash cURL theme={null}
+  curl --request POST \
+    --url https://api.venice.ai/api/v1/audio/transcriptions \
+    --header "Authorization: Bearer $VENICE_API_KEY" \
+    --form file=@audio.mp3 \
+    --form model=nvidia/parakeet-tdt-0.6b-v3 \
+    --form response_format=json
+  ```
+</CodeGroup>
+
+Supported formats: WAV, FLAC, MP3, M4A, AAC, MP4. Enable `timestamps=true` to get word-level timing data.
+
+See the [Transcriptions API](/api-reference/endpoint/audio/transcriptions) for all options.
+
 ### Embeddings
 
 Generate vector embeddings for semantic search, RAG, and recommendations:
@@ -2844,7 +3161,7 @@ See the [Embeddings API](/api-reference/endpoint/embeddings/generate) for batch 
 
 ### Vision (Multimodal)
 
-Analyze images alongside text using vision-capable models like `mistral-31-24b`:
+Analyze images alongside text using vision-capable models like `qwen3-vl-235b-a22b`:
 
 <CodeGroup>
   ```python Python theme={null}
@@ -2857,7 +3174,7 @@ Analyze images alongside text using vision-capable models like `mistral-31-24b`:
   )
 
   response = client.chat.completions.create(
-      model="mistral-31-24b",
+      model="qwen3-vl-235b-a22b",
       messages=[
           {
               "role": "user",
@@ -2884,7 +3201,7 @@ Analyze images alongside text using vision-capable models like `mistral-31-24b`:
   });
 
   const response = await client.chat.completions.create({
-      model: 'mistral-31-24b',
+      model: 'qwen3-vl-235b-a22b',
       messages: [
           {
               role: 'user',
@@ -2907,7 +3224,7 @@ Analyze images alongside text using vision-capable models like `mistral-31-24b`:
     -H "Authorization: Bearer $VENICE_API_KEY" \
     -H "Content-Type: application/json" \
     -d '{
-      "model": "mistral-31-24b",
+      "model": "qwen3-vl-235b-a22b",
       "messages": [
         {
           "role": "user",
@@ -2964,7 +3281,7 @@ Define functions that models can call to interact with external tools and APIs:
   ]
 
   response = client.chat.completions.create(
-      model="llama-3.3-70b",
+      model="zai-org-glm-4.7",
       messages=[{"role": "user", "content": "What's the weather in San Francisco?"}],
       tools=tools
   )
@@ -3001,7 +3318,7 @@ Define functions that models can call to interact with external tools and APIs:
   ];
 
   const response = await client.chat.completions.create({
-      model: 'llama-3.3-70b',
+      model: 'zai-org-glm-4.7',
       messages: [{ role: 'user', content: "What's the weather in San Francisco?" }],
       tools: tools
   });
@@ -3014,7 +3331,7 @@ Define functions that models can call to interact with external tools and APIs:
     -H "Authorization: Bearer $VENICE_API_KEY" \
     -H "Content-Type: application/json" \
     -d '{
-      "model": "llama-3.3-70b",
+      "model": "zai-org-glm-4.7",
       "messages": [
         {
           "role": "user",
@@ -3044,15 +3361,13 @@ Define functions that models can call to interact with external tools and APIs:
   ```
 </CodeGroup>
 
-**Supported models:** `llama-3.3-70b`, `qwen3-235b`, `mistral-31-24b`, `qwen3-4b`
-
 ***
 
 ## Next Steps
 
 Now that you've made your first requests, explore more of what Venice API has to offer:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Browse Models" icon="database" href="/overview/models">
     Compare all available models with their capabilities, pricing, and context limits
   </Card>
@@ -3072,7 +3387,7 @@ Now that you've made your first requests, explore more of what Venice API has to
 
 ### Additional Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Rate Limiting" icon="gauge" href="/api-reference/rate-limiting">
     Understand rate limits and best practices for production usage
   </Card>
@@ -3111,13 +3426,15 @@ Venice is supported with the following AI Agent communities.
 
 * [Eliza](https://github.com/ai16z/eliza) - Venice support introduced via this [PR](https://github.com/ai16z/eliza/pull/1008).
 
+* [Molt Bot](https://docs.molt.bot/providers/venice) - Discord bot with Venice API integration for easy AI-powered conversations. See the [Molt Bot Venice Provider Guide](https://docs.molt.bot/providers/venice) for setup instructions.
+
 ## Eliza Instructions
 
 To setup Eliza with Venice, follow these instructions. A full blog post with more detail can be found [here](https://venice.ai/blog/how-to-build-a-social-media-ai-agent-with-elizaos-venice-api).
 
 * Clone the Eliza repository:
 
-```bash  theme={null}
+```bash theme={null}
 # Clone the repository
 git clone https://github.com/ai16z/eliza.git
 ```
@@ -3128,13 +3445,13 @@ git clone https://github.com/ai16z/eliza.git
 
 * Create a new character in the `/characters/` folder with a filename similar to  `your_character.character.json`to specify the character profile, tools/functions, and Venice.ai as the model provider:
 
-```typescript  theme={null}
+```typescript theme={null}
    modelProvider: "venice"
 ```
 
 * Build the repo:
 
-```bash  theme={null}
+```bash theme={null}
 pnpm i
 pnpm build
 pnpm start
@@ -3142,13 +3459,286 @@ pnpm start
 
 * Start your character
 
-```bash  theme={null}
+```bash theme={null}
 pnpm start --characters="characters/<your_character>.character.json"
 ```
 
 * Start the local UI to chat with the agent
 
-<img src="https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/eliza-config.png?fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=d6dff632864fd7a54e6ba3d2d558fd0a" alt="" data-og-width="1172" width="1172" data-og-height="1002" height="1002" data-path="images/eliza-config.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/eliza-config.png?w=280&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=cf44735fc0525bf0427569ec6831c8ac 280w, https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/eliza-config.png?w=560&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=f1a8a917ac07b317bd0dc6f8d58b9e23 560w, https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/eliza-config.png?w=840&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=6ef04f414b49054af6f71e08102ceb7f 840w, https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/eliza-config.png?w=1100&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=6a4ca049a1f1e9f1c409fa5d5bc98ed1 1100w, https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/eliza-config.png?w=1650&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=6026f1fdf6cca494e93a94c68b8f57f6 1650w, https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/eliza-config.png?w=2500&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=ec0b898e6060ab5b2a1f62751a2ce78e 2500w" />
+<img alt="" />
+
+
+# Claude Code with Venice
+Source: https://docs.venice.ai/overview/guides/claude-code
+
+Use Claude Code CLI with Venice AI's Claude models
+
+[Claude Code](https://docs.anthropic.com/en/docs/claude-code) is Anthropic's CLI tool for agentic coding. This guide shows you how to run it through Venice AI for pay-per-token access to Claude Opus 4.5 and Sonnet 4.5.
+
+<CardGroup>
+  <Card title="Pay Per Token" icon="coins">
+    No subscription. Pay only for what you use
+  </Card>
+
+  <Card title="Claude Models" icon="microchip">
+    Access Opus 4.5 and Sonnet 4.5 through Venice
+  </Card>
+
+  <Card title="Prompt Caching" icon="bolt">
+    Venice caching works alongside Claude Code
+  </Card>
+</CardGroup>
+
+## Why You Need a Router
+
+Claude Code connects directly to Anthropic's API by default. To use it with Venice, you need [claude-code-router](https://github.com/musistudio/claude-code-router), an open-source local proxy that:
+
+<Steps>
+  <Step title="Intercepts" icon="hand">
+    Catches Claude Code's outgoing requests before they reach Anthropic
+  </Step>
+
+  <Step title="Transforms" icon="arrows-rotate">
+    Converts request format and maps model IDs (e.g., `claude-opus-45`)
+  </Step>
+
+  <Step title="Redirects" icon="route">
+    Forwards requests to Venice at `api.venice.ai/api/v1/chat/completions`
+  </Step>
+</Steps>
+
+***
+
+## Prerequisites
+
+<CardGroup>
+  <Card title="Venice Account" icon="user" href="https://venice.ai/settings/api">
+    With API credits
+  </Card>
+
+  <Card title="Node.js" icon="node-js" href="https://nodejs.org/">
+    v18 or higher
+  </Card>
+
+  <Card title="Claude Code" icon="terminal" href="https://docs.anthropic.com/en/docs/claude-code">
+    Installed via npm
+  </Card>
+</CardGroup>
+
+***
+
+## Setup
+
+<Steps>
+  <Step title="Install Claude Code">
+    If you haven't already, install Anthropic's Claude Code CLI:
+
+    ```bash theme={null}
+    npm install -g @anthropic-ai/claude-code
+    ```
+  </Step>
+
+  <Step title="Install the Router">
+    ```bash theme={null}
+    npm install -g claude-code-router
+    ```
+  </Step>
+
+  <Step title="Get Your API Key">
+    Generate a key from [venice.ai/settings/api](https://venice.ai/settings/api). You'll paste it directly in the config file in the next step.
+  </Step>
+
+  <Step title="Create Configuration">
+    Create the config directory:
+
+    ```bash theme={null}
+    mkdir -p ~/.claude-code-router
+    ```
+
+    Then create `~/.claude-code-router/config.json` with your preferred editor:
+
+    ```bash theme={null}
+    # Using nano
+    nano ~/.claude-code-router/config.json
+
+    # Or using VS Code
+    code ~/.claude-code-router/config.json
+    ```
+
+    Paste the following configuration:
+
+    ```json theme={null}
+    {
+      "APIKEY": "",
+      "LOG": true,
+      "LOG_LEVEL": "info",
+      "API_TIMEOUT_MS": 600000,
+      "HOST": "127.0.0.1",
+      "Providers": [
+        {
+          "name": "venice",
+          "api_base_url": "https://api.venice.ai/api/v1/chat/completions",
+          "api_key": "your-venice-api-key-here",
+          "models": [
+            "claude-opus-45",
+            "claude-sonnet-45"
+          ],
+          "transformer": {
+            "use": ["anthropic"]
+          }
+        }
+      ],
+      "Router": {
+        "default": "venice,claude-opus-45",
+        "think": "venice,claude-opus-45",
+        "background": "venice,claude-opus-45",
+        "longContext": "venice,claude-opus-45",
+        "longContextThreshold": 100000
+      }
+    }
+    ```
+
+    <Note>
+      If you modify `config.json` while the router is running, restart it with `ccr restart` to apply changes.
+    </Note>
+  </Step>
+
+  <Step title="Launch">
+    Start the router, then Claude Code:
+
+    ```bash theme={null}
+    ccr start
+    ccr code
+    ```
+
+    Or use the activation method:
+
+    ```bash theme={null}
+    eval "$(ccr activate)" && claude
+    ```
+  </Step>
+</Steps>
+
+***
+
+## Supported Models
+
+| Model             | Venice ID          | Best For                           |
+| ----------------- | ------------------ | ---------------------------------- |
+| Claude Opus 4.5   | `claude-opus-45`   | Complex reasoning, large refactors |
+| Claude Sonnet 4.5 | `claude-sonnet-45` | Fast iteration, everyday coding    |
+
+<Warning>
+  Claude Code only works with Claude models. While Venice supports GPT, DeepSeek, Grok, and others, Claude Code requires Claude-specific features like extended thinking. For other models, use Venice's [standard API](/api-reference/endpoint/chat/completions).
+</Warning>
+
+***
+
+## Router Features
+
+The router provides several useful features beyond basic routing:
+
+<AccordionGroup>
+  <Accordion title="Switch models on the fly">
+    Use the `/model` command inside Claude Code to switch models without restarting:
+
+    ```
+    /model venice,claude-sonnet-45
+    ```
+
+    Useful when you want Opus for complex tasks and Sonnet for quick iterations.
+  </Accordion>
+
+  <Accordion title="Visual configuration with UI mode">
+    Prefer a GUI? Launch the web-based config editor:
+
+    ```bash theme={null}
+    ccr ui
+    ```
+
+    This opens a browser interface for editing your `config.json` without touching the file directly.
+  </Accordion>
+
+  <Accordion title="Router scenarios explained">
+    The `Router` config section controls which model handles different task types:
+
+    | Scenario      | When it's used                                     |
+    | ------------- | -------------------------------------------------- |
+    | `default`     | General requests                                   |
+    | `think`       | Reasoning-heavy tasks (Plan Mode)                  |
+    | `background`  | Background operations                              |
+    | `longContext` | When context exceeds `longContextThreshold` tokens |
+
+    You can route different scenarios to different models. For example, use Sonnet for background tasks to save costs.
+  </Accordion>
+
+  <Accordion title="Debugging with logs">
+    If something isn't working, check the logs:
+
+    ```bash theme={null}
+    # Server logs (HTTP, API calls)
+    ~/.claude-code-router/logs/ccr-*.log
+
+    # Application logs (routing decisions)
+    ~/.claude-code-router/claude-code-router.log
+    ```
+
+    Set `"LOG_LEVEL": "debug"` in your config for more verbose output.
+  </Accordion>
+</AccordionGroup>
+
+***
+
+## Caching Behavior
+
+Venice [prompt caching](/overview/guides/prompt-caching) works alongside Claude Code's native cache markers. Venice automatically detects when Claude Code sends `cache_control` fields and adjusts its caching strategy accordingly.
+
+| Scenario                      | Cache TTL | Who Controls         |
+| ----------------------------- | --------- | -------------------- |
+| Default (recommended)         | 5 minutes | Claude Code + Venice |
+| With `cleancache` transformer | 1 hour    | Venice only          |
+
+<AccordionGroup>
+  <Accordion title="When NOT to use cleancache (most users)">
+    The default configuration lets both systems cooperate:
+
+    * Claude Code sends its native `cache_control` markers
+    * Venice adds caching around them with a 5-minute TTL
+    * Both systems share the 4-block cache limit
+
+    This works well for active coding sessions where you're making frequent requests.
+  </Accordion>
+
+  <Accordion title="When to use cleancache">
+    Add `cleancache` to the transformer if you:
+
+    * Are hitting the 4-block cache limit errors
+    * Experience strange caching behavior
+    * Prefer Venice's 1-hour TTL for longer sessions
+
+    ```json theme={null}
+    "transformer": {
+      "use": ["anthropic", "cleancache"]
+    }
+    ```
+
+    This strips Claude Code's cache markers, giving Venice full control with a longer TTL.
+  </Accordion>
+</AccordionGroup>
+
+***
+
+## Resources
+
+<CardGroup>
+  <Card title="Venice API Docs" icon="book" href="/api-reference/api-spec">
+    Full API reference
+  </Card>
+
+  <Card title="claude-code-router" icon="github" href="https://github.com/musistudio/claude-code-router">
+    Source code and issues
+  </Card>
+</CardGroup>
 
 
 # Generating an API Key
@@ -3165,7 +3755,7 @@ Venice's API is protected via API keys. To begin using the Venice API, you'll fi
     Within this dashboard, you're able to view your Diem and USD balances, your API Tier, your API Usage, and your API Keys.
 
     <Frame>
-      <img src="https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/guides/API-Overview.png?fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=0077ee4359a34036007b6cc94967adbf" alt="API Overview" data-og-width="2572" width="2572" data-og-height="1252" height="1252" data-path="images/guides/API-Overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/guides/API-Overview.png?w=280&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=e846521d3874f780ee11b5f2cfcd15ff 280w, https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/guides/API-Overview.png?w=560&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=aaaf8a8c96de1f9f48466ac82703caa7 560w, https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/guides/API-Overview.png?w=840&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=98918b29973a499c40b96c2ab87a6726 840w, https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/guides/API-Overview.png?w=1100&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=c7dedd1e4e2da578c3902ae2f0788101 1100w, https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/guides/API-Overview.png?w=1650&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=4deecf2a10e87e9142f83f0a1e641f29 1650w, https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/guides/API-Overview.png?w=2500&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=81f7e4f1b3713cf16c84d573a553f0ef 2500w" />
+      <img alt="API Overview" />
     </Frame>
   </Step>
 
@@ -3185,7 +3775,7 @@ Venice's API is protected via API keys. To begin using the Venice API, you'll fi
     * **Epoch Consumption Limits:** This allows you to create limits for API usage from the individual API key. You can choose to limit the Diem or USD amount allowable within a given epoch (24hrs).
 
     <Frame>
-      <img src="https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/guides/api-keys/create-key.png?fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=b053f218d2aaa8c88bbd802a7d6ddc50" alt="Generate New API Key" data-og-width="2624" width="2624" data-og-height="1296" height="1296" data-path="images/guides/api-keys/create-key.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/guides/api-keys/create-key.png?w=280&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=0f2afc0a5ff0d7082674fca359c3fa62 280w, https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/guides/api-keys/create-key.png?w=560&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=db9c8ffd40a01eac65f6c17e9f726838 560w, https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/guides/api-keys/create-key.png?w=840&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=92f9c039ea5dc316e59006b65dd1c41f 840w, https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/guides/api-keys/create-key.png?w=1100&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=c35cf11766f8c774e68d59ca9b6268d5 1100w, https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/guides/api-keys/create-key.png?w=1650&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=c5b95320320ddc865b5cad607ca8a100 1650w, https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/guides/api-keys/create-key.png?w=2500&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=9a5fe0e9e9151e795fd48b3422e965d0 2500w" />
+      <img alt="Generate New API Key" />
     </Frame>
   </Step>
 
@@ -3197,7 +3787,7 @@ Venice's API is protected via API keys. To begin using the Venice API, you'll fi
     </Warning>
 
     <Frame>
-      <img src="https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/guides/api-keys/result.png?fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=1a9ede76b5428bd0dc00291ea73d93f7" alt="Your API Key" data-og-width="1198" width="1198" data-og-height="660" height="660" data-path="images/guides/api-keys/result.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/guides/api-keys/result.png?w=280&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=deaf0f447a6aab1a230fd0f5bcf0fa94 280w, https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/guides/api-keys/result.png?w=560&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=e46d47c3e10195f5ad51fc7b5b7c33a6 560w, https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/guides/api-keys/result.png?w=840&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=12a4038b4af62c624f32c9c3968c0522 840w, https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/guides/api-keys/result.png?w=1100&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=b0f2e2f5da7c2e651739f72e56257781 1100w, https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/guides/api-keys/result.png?w=1650&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=8eb0819d5c5a50d74570b12634253311 1650w, https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/guides/api-keys/result.png?w=2500&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=1377d84068a97a6c209c5356069b4e8a 2500w" />
+      <img alt="Your API Key" />
     </Frame>
   </Step>
 </Steps>
@@ -3220,8 +3810,8 @@ To autonomously generate an API key within an agent, you must:
   <Step title="Stake VVV with Venice">
     Once funded, the agent will need to stake the VVV tokens within the [Venice Staking Smart Contract](https://basescan.org/address/0x321b7ff75154472b18edb199033ff4d116f340ff#code). To accomplish this you first must approve VVV tokens for staking, then execute a "stake" transaction.&#x20;
 
-    <Frame as="div">
-      <img src="https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/guides/SC-Stake.png?fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=6a2180bbdc58f95990e99568d7015bbc" alt="Smart Contract Staking" data-og-width="812" width="812" data-og-height="324" height="324" data-path="images/guides/SC-Stake.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/guides/SC-Stake.png?w=280&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=64d66069edc7f3060c1046bef50a2a18 280w, https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/guides/SC-Stake.png?w=560&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=b8e22d317889626cf500e3355e1b2b45 560w, https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/guides/SC-Stake.png?w=840&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=131a37bcfb65773721f179340ce2a390 840w, https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/guides/SC-Stake.png?w=1100&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=6b6c2ffa9d7d32c41b4e389f7b4747b3 1100w, https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/guides/SC-Stake.png?w=1650&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=91c6003ebbce068d5724090802f5be30 1650w, https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/guides/SC-Stake.png?w=2500&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=6c46ebbf0b5bc252ede57a11b096c71d 2500w" />
+    <Frame>
+      <img alt="Smart Contract Staking" />
     </Frame>
 
     When the transaction is complete, you will see the VVV tokens exit the wallet and sVVV tokens returned to your wallet. This indicates a successful stake.&#x20;
@@ -3329,6 +3919,8 @@ Here is a list of third party tools with Venice.ai integrations.
 
   * [ElizaOS](https://venice.ai/blog/how-to-launch-an-elizaos-agent-on-akash-using-venice-api-in-less-than-10-minutes) (via [Akash Template](https://console.akash.network/templates/akash-network-awesome-akash-Venice-ElizaOS))
 
+  * [Molt Bot](https://docs.molt.bot/providers/venice) Discord bot with Venice API integration.
+
 * Coding
 
   * [Cursor IDE](https://venice.ai/blog/how-to-code-with-the-venice-api-in-cursor-a-quick-guide)
@@ -3386,6 +3978,27 @@ Many users have requested access to Venice API docs and data in a format accepta
 [API Swagger](https://api.venice.ai/doc/api/swagger.yaml)
 
 [API Docs](https://github.com/veniceai/api-docs/archive/refs/heads/main.zip)
+
+
+# OpenClaw with Venice
+Source: https://docs.venice.ai/overview/guides/openclaw-bot
+
+Set up OpenClaw Discord bot with Venice API integration.
+
+[OpenClaw](https://openclaw.ai) is a Discord bot that enables AI-powered conversations in your server using the Venice API.
+
+<Card title="OpenClaw Venice Provider Guide" icon="arrow-up-right-from-square" href="https://docs.openclaw.ai/providers/venice">
+  Complete setup instructions and configuration options for using Venice with OpenClaw.
+</Card>
+
+## Quick Start
+
+1. Invite OpenClaw to your Discord server from [openclaw.ai](https://openclaw.ai)
+2. Get your Venice API Key by following our [API key generation guide](/overview/guides/generating-api-key)
+3. Configure Venice as your provider using the `/provider` command
+4. Start chatting with the bot
+
+For detailed instructions, visit the [official OpenClaw documentation](https://docs.openclaw.ai/providers/venice).
 
 
 # Using Postman
@@ -3454,6 +4067,635 @@ The collection includes examples for all Venice API endpoints:
 <Note>*Note: The Postman collection is regularly updated to reflect the latest API changes and features.*</Note>
 
 
+# Prompt Caching
+Source: https://docs.venice.ai/overview/guides/prompt-caching
+
+Reduce costs and latency by caching repeated prompt content
+
+Prompt caching stores processed input tokens so subsequent requests with identical prefixes can reuse them instead of reprocessing. This reduces latency (up to 80% for long prompts) and costs (up to 90% discount on cached tokens).
+
+Venice handles caching automatically for supported models, but understanding how each provider implements caching helps you maximize cache hit rates and minimize costs.
+
+## How Caching Works
+
+Caching operates on **prefix matching**: the system stores processed tokens and reuses them when subsequent requests start with the same content.
+
+Consider a chatbot with a 2,000-token system prompt:
+
+<Steps>
+  <Step title="Request 1">
+    System prompt (2,000 tokens) + user message (50 tokens)
+
+    **Processed**: 2,050 tokens · **From cache**: 0 tokens
+
+    Prefix written to cache.
+  </Step>
+
+  <Step title="Request 2">
+    System prompt (2,000 tokens) + user message (80 tokens)
+
+    **Processed**: 80 tokens · **From cache**: 2,000 tokens
+  </Step>
+
+  <Step title="Request 3">
+    System prompt (2,000 tokens) + user message (120 tokens)
+
+    **Processed**: 120 tokens · **From cache**: 2,000 tokens
+  </Step>
+</Steps>
+
+**Total without caching**: 2,050 + 2,080 + 2,120 = 6,250 tokens at full price
+
+**Total with caching**: 2,050 + 80 + 120 = 2,250 tokens at full price, 4,000 tokens at discounted rate
+
+<Warning>
+  Caching only works on the **prefix**. Any change to the beginning of your prompt invalidates the cache for everything that follows. Always put static content (system prompt, documents, examples) before dynamic content (user messages).
+</Warning>
+
+## Supported Models and Pricing
+
+<div>Loading...</div>
+
+<Note>
+  Claude Opus 4.5 charges a **premium rate** for cache writes (\$7.50/1M tokens vs \$6.00 for regular input). The first request populating the cache costs more, but subsequent cache hits save 90%. Other models don't charge extra for cache writes.
+</Note>
+
+## Provider-Specific Behavior
+
+Venice normalizes caching across providers. For most models, caching is automatic. Just send your requests and check the response for cache statistics. The exception is **Claude**, which requires explicit cache markers for optimal performance.
+
+Caching behavior is ultimately controlled by each provider and may change, so check provider docs for the latest details.
+
+| Model           | Provider  | Min Tokens | Cache Lifetime | Write Cost | Read Discount | Explicit Markers |
+| --------------- | --------- | ---------- | -------------- | ---------- | ------------- | ---------------- |
+| Claude Opus 4.5 | Anthropic | \~4,000    | 5 min          | +25%       | 90%           | Required         |
+| GPT-5.2         | OpenAI    | 1,024      | 5-10 min       | None       | 90%           | Not needed       |
+| Gemini          | Google    | \~1,024    | 1 hour         | None       | 75-90%        | Not needed       |
+| Grok            | xAI       | \~1,024    | 5 min          | None       | 75-88%        | Not needed       |
+| DeepSeek        | DeepSeek  | \~1,024    | 5 min          | None       | 50%           | Not needed       |
+| MiniMax         | MiniMax   | \~1,024    | 5 min          | None       | 90%           | Not needed       |
+| Kimi            | Moonshot  | \~1,024    | 5 min          | None       | 50%           | Not needed       |
+
+<Tip>
+  Venice automatically adds `cache_control` to system prompts for models that require explicit markers. You only need to add manual markers for caching content beyond the system prompt, like long documents in user messages.
+</Tip>
+
+### Claude Opus 4.5 (Anthropic)
+
+Claude requires explicit cache breakpoints. For fine-grained control beyond the system prompt, you can add additional breakpoints manually.
+
+**What you need to know:**
+
+* **Explicit markers required**: Add `cache_control: { "type": "ephemeral" }` to content blocks you want cached
+* **Up to 4 breakpoints per request**: The system uses the longest matching prefix
+* **Cache key is byte-exact**: Whitespace changes, different image encodings, or reordered tools break cache hits
+* **Cache-aware rate limits**: Cached tokens don't count against your ITPM limit, enabling higher effective throughput
+* **25% write premium**: First request costs more, but 90% savings on subsequent reads
+
+```json theme={null}
+{
+  "messages": [
+    {
+      "role": "system",
+      "content": [{
+        "type": "text",
+        "text": "You are a legal assistant...",
+        "cache_control": { "type": "ephemeral" }
+      }]
+    },
+    {
+      "role": "user", 
+      "content": [{
+        "type": "text",
+        "text": "[Long contract document...]",
+        "cache_control": { "type": "ephemeral" }
+      }]
+    },
+    { "role": "assistant", "content": "I've reviewed the contract." },
+    { "role": "user", "content": "What are the termination clauses?" }
+  ]
+}
+```
+
+Both the system prompt and document are cached. Follow-up questions reuse the cached context.
+
+### All Other Models
+
+Caching is **automatic**. No special parameters needed. Just ensure your prompts exceed \~1,024 tokens and use `prompt_cache_key` for consistent routing.
+
+## Request Parameters
+
+| Parameter          | Type   | Models | Description                                                                                                         |
+| ------------------ | ------ | ------ | ------------------------------------------------------------------------------------------------------------------- |
+| `prompt_cache_key` | string | All    | Routing hint for cache affinity. Requests with the same key are more likely to hit the same server with warm cache. |
+| `cache_control`    | object | Claude | Marks content blocks for caching. See Claude Opus 4.5 section.                                                      |
+
+### prompt\_cache\_key
+
+For multi-turn conversations or agentic workflows, use a consistent `prompt_cache_key` to improve cache hit rates:
+
+```json theme={null}
+{
+  "model": "claude-opus-45",
+  "prompt_cache_key": "session-abc-123",
+  "messages": [...]
+}
+```
+
+This routes requests to servers likely to have your context already cached. Use a session ID, conversation ID, or user ID as the key.
+
+## Response Fields
+
+The response `usage` object includes cache statistics:
+
+```json theme={null}
+{
+  "usage": {
+    "prompt_tokens": 5500,
+    "completion_tokens": 200,
+    "total_tokens": 5700,
+    "prompt_tokens_details": {
+      "cached_tokens": 5000,
+      "cache_creation_input_tokens": 0
+    }
+  }
+}
+```
+
+| Field                                               | Description                                           |
+| --------------------------------------------------- | ----------------------------------------------------- |
+| `prompt_tokens`                                     | Total input tokens in the request                     |
+| `prompt_tokens_details.cached_tokens`               | Tokens served from cache (billed at discounted rate)  |
+| `prompt_tokens_details.cache_creation_input_tokens` | Tokens written to cache (may incur premium on Claude) |
+
+**Billing breakdown** (using Claude Opus 4.5 as example):
+
+* 5000 cached tokens × \$0.60/1M = \$0.003
+* 500 uncached tokens × \$6.00/1M = \$0.003
+* Total: \$0.006 (vs \$0.033 without caching, 82% savings)
+
+## Best Practices
+
+### Structure prompts for caching
+
+Place static content at the beginning, dynamic content at the end.
+
+**Good structure**
+
+| Position | Content             | Cached? |
+| -------- | ------------------- | ------- |
+| 1        | System instructions | Yes     |
+| 2        | Reference documents | Yes     |
+| 3        | Few-shot examples   | Yes     |
+| 4        | User query          | No      |
+
+**Bad structure**
+
+| Position | Content             | Cached?                           |
+| -------- | ------------------- | --------------------------------- |
+| 1        | Current timestamp   | No (invalidates everything after) |
+| 2        | System instructions | No                                |
+| 3        | User query          | No                                |
+
+### Keep prefixes byte-identical
+
+Cache keys are computed from exact byte sequences. Even trivial differences break cache hits:
+
+* Different whitespace or newlines
+* Timestamps or request IDs in prompts
+* Randomized few-shot example ordering
+* Different formatting of the same content
+
+### Meet minimum token thresholds
+
+If your prompts are below the minimum (typically 1,024 tokens), caching won't activate. For small prompts, consider:
+
+* Adding more context or examples to reach the threshold
+* Bundling multiple small requests into batched prompts
+* Accepting that caching won't apply for simple queries
+
+### Use prompt\_cache\_key for conversations
+
+For multi-turn conversations, set a consistent `prompt_cache_key`:
+
+```json theme={null}
+// Turn 1
+{ "prompt_cache_key": "conv-xyz", "messages": [...] }
+
+// Turn 2
+{ "prompt_cache_key": "conv-xyz", "messages": [...] }
+
+// Turn 3
+{ "prompt_cache_key": "conv-xyz", "messages": [...] }
+```
+
+This improves the likelihood that all turns hit the same server with warm cache.
+
+### Monitor cache performance
+
+Track these metrics:
+
+* **Cache hit rate**: `cached_tokens / prompt_tokens`
+* **Cost savings**: Compare actual cost vs. uncached cost
+* **Latency reduction**: Time-to-first-token with vs. without cache hits
+
+If `cached_tokens` is consistently 0:
+
+1. Prompts may be below minimum token threshold
+2. Prompts may be changing between requests
+3. Requests may be hitting different servers (use `prompt_cache_key`)
+4. Cache may have expired (requests too infrequent)
+
+### Consider cache economics
+
+**Claude Opus 4.5 cache write premium**: First request costs 25% more, but 90% savings on subsequent reads.
+
+| Scenario                           | Cache write premium worth it?   |
+| ---------------------------------- | ------------------------------- |
+| 1 request with this prompt         | No (pay 25% more, no benefit)   |
+| 2+ requests with same prefix       | Yes (break even at 2nd request) |
+| Rapidly changing prompts           | No (constant write costs)       |
+| Stable system prompt, many queries | Yes (amortized over many reads) |
+
+## Cache Lifetime
+
+Caches expire after a period of inactivity (typically 5-10 minutes). This means:
+
+| Traffic pattern                     | Caching benefit                       |
+| ----------------------------------- | ------------------------------------- |
+| Continuous requests (\< 5 min gaps) | High: cache stays warm                |
+| Bursty traffic (gaps > 10 min)      | Limited: cache expires between bursts |
+| Sporadic requests (hours apart)     | None: cache always cold               |
+
+## Caching with Tools and Functions
+
+Function definitions can be cached along with system prompts:
+
+```json theme={null}
+{
+  "model": "claude-opus-45",
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "search_database",
+        "description": "Search the product database",
+        "parameters": { ... }
+      }
+    }
+  ],
+  "messages": [
+    {
+      "role": "system",
+      "content": [
+        {
+          "type": "text",
+          "text": "You are a shopping assistant...",
+          "cache_control": { "type": "ephemeral" }
+        }
+      ]
+    },
+    ...
+  ]
+}
+```
+
+The tool definitions become part of the cached prefix. If you have many tools, this can significantly reduce per-request costs.
+
+## Caching with Images and Documents
+
+For vision models, images can be included in cached content:
+
+```json theme={null}
+{
+  "model": "claude-opus-45",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "image_url",
+          "image_url": { "url": "data:image/png;base64,..." }
+        },
+        {
+          "type": "text",
+          "text": "This is the floor plan. I'll ask several questions about it.",
+          "cache_control": { "type": "ephemeral" }
+        }
+      ]
+    },
+    {
+      "role": "assistant",
+      "content": "I can see the floor plan. What would you like to know?"
+    },
+    {
+      "role": "user",
+      "content": "How many bedrooms are there?"
+    }
+  ]
+}
+```
+
+The image and initial context are cached, so follow-up questions about the same image don't re-process it.
+
+## Troubleshooting
+
+<Accordion title="cached_tokens is always 0">
+  | Cause             | Solution                                                          |
+  | ----------------- | ----------------------------------------------------------------- |
+  | Prompt too short  | Ensure prompt exceeds \~1,024 tokens (4,000 for Claude)           |
+  | Prefix changed    | Check for dynamic content at the start of your prompt             |
+  | First request     | Expected: first request writes to cache, subsequent requests read |
+  | Cache expired     | Reduce time between requests to under 5 minutes                   |
+  | Different servers | Add `prompt_cache_key` to route requests consistently             |
+</Accordion>
+
+<Accordion title="cache_creation_input_tokens on every request">
+  | Cause                  | Solution                                                                 |
+  | ---------------------- | ------------------------------------------------------------------------ |
+  | Prompt changing        | Remove timestamps, request IDs, or other dynamic content from the prefix |
+  | Missing cache\_control | For Claude, ensure `cache_control` marker is present on content blocks   |
+  | Below threshold        | Prompts under minimum token count don't trigger caching                  |
+</Accordion>
+
+<Accordion title="Higher costs than expected">
+  | Cause                | Solution                                                                   |
+  | -------------------- | -------------------------------------------------------------------------- |
+  | Cache write premium  | Claude charges 25% more for writes. Only worth it if you reuse the prompt. |
+  | Low reuse            | If each prompt is unique, you pay write costs without read benefits        |
+  | Bad prompt structure | Move dynamic content to the end so the prefix stays stable                 |
+</Accordion>
+
+
+# Reasoning Models
+Source: https://docs.venice.ai/overview/guides/reasoning-models
+
+Using reasoning models with visible thinking in the Venice API
+
+Some models think out loud before answering. They work through problems step by step, then give you a final answer. This makes them stronger at math, code, and logic-heavy tasks.
+
+**Supported models:** `claude-opus-45`, `grok-41-fast`, `kimi-k2-thinking`, `gemini-3-pro-preview`, `qwen3-235b-a22b-thinking-2507`, `qwen3-4b`, `deepseek-ai-DeepSeek-R1`
+
+## Reading the output
+
+Reasoning models return their thinking in one of two ways.
+
+### The `reasoning_content` field
+
+Models like `qwen3-235b-a22b-thinking-2507` return thinking in a separate `reasoning_content` field, keeping `content` clean:
+
+<CodeGroup>
+  ```python Python theme={null}
+  response = client.chat.completions.create(
+      model="qwen3-235b-a22b-thinking-2507",
+      messages=[{"role": "user", "content": "What is 15% of 240?"}]
+  )
+
+  thinking = response.choices[0].message.reasoning_content
+  answer = response.choices[0].message.content
+  ```
+
+  ```javascript Node.js theme={null}
+  const response = await client.chat.completions.create({
+      model: "qwen3-235b-a22b-thinking-2507",
+      messages: [{ role: "user", content: "What is 15% of 240?" }]
+  });
+
+  const thinking = response.choices[0].message.reasoning_content;
+  const answer = response.choices[0].message.content;
+  ```
+
+  ```bash cURL theme={null}
+  curl https://api.venice.ai/api/v1/chat/completions \
+    -H "Authorization: Bearer $VENICE_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "qwen3-235b-a22b-thinking-2507",
+      "messages": [{"role": "user", "content": "What is 15% of 240?"}]
+    }'
+  ```
+</CodeGroup>
+
+### `<think>` tags
+
+Other models (`qwen3-4b`, `deepseek-ai-DeepSeek-R1`) wrap thinking in `<think>` tags within the `content` field:
+
+```
+<think>
+The user wants 15% of 240.
+15% = 0.15
+0.15 × 240 = 36
+</think>
+
+15% of 240 is **36**.
+```
+
+Parse or strip as needed, or use `strip_thinking_response` to have Venice remove them server-side.
+
+### Streaming
+
+When streaming, `reasoning_content` arrives in the delta before the final answer:
+
+<CodeGroup>
+  ```python Python theme={null}
+  stream = client.chat.completions.create(
+      model="qwen3-235b-a22b-thinking-2507",
+      messages=[{"role": "user", "content": "Explain photosynthesis"}],
+      stream=True
+  )
+
+  for chunk in stream:
+      if chunk.choices:
+          delta = chunk.choices[0].delta
+          if delta.reasoning_content:
+              print(delta.reasoning_content, end="")
+          if delta.content:
+              print(delta.content, end="")
+  ```
+
+  ```javascript Node.js theme={null}
+  const stream = await client.chat.completions.create({
+      model: "qwen3-235b-a22b-thinking-2507",
+      messages: [{ role: "user", content: "Explain photosynthesis" }],
+      stream: true
+  });
+
+  for await (const chunk of stream) {
+      if (chunk.choices?.[0]?.delta) {
+          const delta = chunk.choices[0].delta;
+          if (delta.reasoning_content) process.stdout.write(delta.reasoning_content);
+          if (delta.content) process.stdout.write(delta.content);
+      }
+  }
+  ```
+
+  ```bash cURL theme={null}
+  curl https://api.venice.ai/api/v1/chat/completions \
+    -H "Authorization: Bearer $VENICE_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "qwen3-235b-a22b-thinking-2507",
+      "messages": [{"role": "user", "content": "Explain photosynthesis"}],
+      "stream": true
+    }'
+  ```
+</CodeGroup>
+
+For models using `<think>` tags, the thinking streams before the answer. Collect the full response, then parse.
+
+## Reasoning effort
+
+Reasoning models spend tokens "thinking" before they answer. The `reasoning_effort` parameter controls how much thinking the model does.
+
+| Value    | Behavior                                                                                                                   |
+| -------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `low`    | Minimal thinking. Fast and cheap. Best for simple factual questions.                                                       |
+| `medium` | Balanced thinking. The default for most tasks.                                                                             |
+| `high`   | Deep thinking. Slower and uses more tokens, but produces better answers on complex problems like math proofs or debugging. |
+
+<CodeGroup>
+  ```python Python theme={null}
+  response = client.chat.completions.create(
+      model="qwen3-235b-a22b-thinking-2507",
+      messages=[{"role": "user", "content": "Prove that there are infinitely many primes"}],
+      extra_body={"reasoning_effort": "high"}
+  )
+  ```
+
+  ```javascript Node.js theme={null}
+  const response = await client.chat.completions.create({
+      model: "qwen3-235b-a22b-thinking-2507",
+      messages: [{ role: "user", content: "Prove that there are infinitely many primes" }],
+      reasoning_effort: "high"
+  });
+  ```
+
+  ```bash cURL theme={null}
+  curl https://api.venice.ai/api/v1/chat/completions \
+    -H "Authorization: Bearer $VENICE_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "qwen3-235b-a22b-thinking-2507",
+      "messages": [{"role": "user", "content": "Prove that there are infinitely many primes"}],
+      "reasoning_effort": "high"
+    }'
+  ```
+</CodeGroup>
+
+Works on: `claude-opus-45`, `grok-41-fast`, `kimi-k2-thinking`, `gemini-3-pro-preview`, `qwen3-235b-a22b-thinking-2507`
+
+<Info>
+  Venice also accepts the OpenRouter format: `"reasoning": {"effort": "high"}`. Same behavior, different syntax.
+</Info>
+
+## Disabling reasoning
+
+Skip reasoning entirely for faster, cheaper responses:
+
+<CodeGroup>
+  ```python Python theme={null}
+  response = client.chat.completions.create(
+      model="qwen3-4b",
+      messages=[{"role": "user", "content": "What's the capital of France?"}],
+      extra_body={"venice_parameters": {"disable_thinking": True}}
+  )
+  ```
+
+  ```javascript Node.js theme={null}
+  const response = await client.chat.completions.create({
+      model: "qwen3-4b",
+      messages: [{ role: "user", content: "What's the capital of France?" }],
+      venice_parameters: { disable_thinking: true }
+  });
+  ```
+
+  ```bash cURL theme={null}
+  curl https://api.venice.ai/api/v1/chat/completions \
+    -H "Authorization: Bearer $VENICE_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "qwen3-4b",
+      "messages": [{"role": "user", "content": "What is the capital of France?"}],
+      "venice_parameters": {"disable_thinking": true}
+    }'
+  ```
+</CodeGroup>
+
+Or use an instruct model like `qwen3-235b-a22b-instruct-2507` instead.
+
+## Stripping thinking from responses
+
+For models using `<think>` tags, have Venice remove them server-side:
+
+<CodeGroup>
+  ```python Python theme={null}
+  response = client.chat.completions.create(
+      model="qwen3-4b",
+      messages=[{"role": "user", "content": "What is 15% of 240?"}],
+      extra_body={"venice_parameters": {"strip_thinking_response": True}}
+  )
+  ```
+
+  ```javascript Node.js theme={null}
+  const response = await client.chat.completions.create({
+      model: "qwen3-4b",
+      messages: [{ role: "user", content: "What is 15% of 240?" }],
+      venice_parameters: { strip_thinking_response: true }
+  });
+  ```
+
+  ```bash cURL theme={null}
+  curl https://api.venice.ai/api/v1/chat/completions \
+    -H "Authorization: Bearer $VENICE_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d '{
+      "model": "qwen3-4b",
+      "messages": [{"role": "user", "content": "What is 15% of 240?"}],
+      "venice_parameters": {"strip_thinking_response": true}
+    }'
+  ```
+</CodeGroup>
+
+Or use a model suffix: `qwen3-4b:strip_thinking_response=true`
+
+## Parameters
+
+| Parameter                 | Values            | Description              |
+| ------------------------- | ----------------- | ------------------------ |
+| `reasoning_effort`        | low, medium, high | Controls thinking depth  |
+| `reasoning.effort`        | low, medium, high | OpenRouter format        |
+| `disable_thinking`        | boolean           | Skips reasoning entirely |
+| `strip_thinking_response` | boolean           | Removes `<think>` tags   |
+
+Pass `disable_thinking` and `strip_thinking_response` in `venice_parameters`, or use them as [model suffixes](/api-reference/endpoint/chat/model_feature_suffix).
+
+## Deprecations
+
+<Warning>
+  **qwen3-235b → qwen3-235b-a22b-thinking-2507**
+
+  Starting **December 14, 2025**, `qwen3-235b` routes to `qwen3-235b-a22b-thinking-2507`.
+
+  **What changes:**
+
+  * `disable_thinking` gets ignored
+  * `<think>` tags no longer appear in `content`
+  * Thinking moves to `reasoning_content` instead
+
+  **What stays the same:**
+
+  * `strip_thinking_response` still works
+
+  **Action required:** If you parse `<think>` tags, switch to reading `reasoning_content`. If you use `disable_thinking=true`, switch to `qwen3-235b-a22b-instruct-2507` before December 14.
+</Warning>
+
+<Info>
+  `<think>` tags will eventually be deprecated across all models in favor of the `reasoning_content` field.
+</Info>
+
+For pricing and context limits, see [Current Models](/overview/models).
+
+
 # Structured Responses
 Source: https://docs.venice.ai/overview/guides/structured-responses
 
@@ -3465,7 +4707,7 @@ The structured output “response\_format” field utilizes the OpenAI API forma
 
 This functionality is not natively available for all models. Please refer to the models section [here](https://docs.venice.ai/api-reference/endpoint/models/list?playground=open), and look for “supportsResponseSchema” for applicable models.
 
-```json  theme={null}
+```json theme={null}
     {
       "id": "venice-uncensored",
       "type": "text",
@@ -3489,7 +4731,7 @@ Here is an example of an API call using response\_format to explain the step-by-
 
 You can see that the properties were configured to require both “steps” and “final\_answer” within the response. Within nesting, the steps category consists of both an “explanation” and an “output”, each as strings.
 
-```json  theme={null}
+```json theme={null}
 curl --request POST \
   --url https://api.venice.ai/api/v1/chat/completions \
   --header 'Authorization: Bearer <api-key>' \
@@ -3545,7 +4787,7 @@ curl --request POST \
 
 Here is the response that was received from the model. You can see that the structure followed the requirements by first providing the “steps” with the “explanation” and “output” of each step, and then the “final answer”.
 
-```json  theme={null}
+```json theme={null}
 {
   "steps": [
     {
@@ -3591,283 +4833,2655 @@ Here are some key requirements to keep in mind when using Structured Outputs via
 * Important: `strict` must be set to true for response\_format to work properly
 
 
-# Current Models
-Source: https://docs.venice.ai/overview/models
-
-Complete list of available models on Venice AI platform
-
-## Text Models
-
-| Model Name                                                                                               | Model ID                         | Price (in/out)  | Context Limit | Capabilities                | Traits                              |
-| -------------------------------------------------------------------------------------------------------- | -------------------------------- | --------------- | ------------- | --------------------------- | ----------------------------------- |
-| [Venice Uncensored 1.1](https://huggingface.co/cognitivecomputations/Dolphin-Mistral-24B-Venice-Edition) | `venice-uncensored`              | `$0.20 / $0.90` | 32,768        | —                           | most\_uncensored                    |
-| [Venice Small](https://huggingface.co/Qwen/Qwen3-4B)                                                     | `qwen3-4b`                       | `$0.05 / $0.15` | 32,768        | Function Calling, Reasoning | —                                   |
-| [Venice Medium (3.1)](https://huggingface.co/mistralai/Mistral-Small-3.1-24B-Instruct-2503)              | `mistral-31-24b`                 | `$0.50 / $2.00` | 131,072       | Function Calling, Vision    | default\_vision                     |
-| [Venice Large 1.1 (D)](https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507-FP8)                    | `qwen3-235b`                     | `$0.45 / $3.50` | 131,072       | Function Calling, Reasoning | —                                   |
-| [Qwen 3 235B A22B Thinking 2507](https://huggingface.co/Qwen/Qwen3-235B-A22B-Thinking-2507-FP8)          | `qwen3-235b-a22b-thinking-2507`  | `$0.45 / $3.50` | 131,072       | Function Calling, Reasoning | —                                   |
-| [Qwen 3 235B A22B Instruct 2507](https://huggingface.co/Qwen/Qwen3-235B-A22B-Instruct-2507-FP8)          | `qwen3-235b-a22b-instruct-2507`  | `$0.15 / $0.75` | 131,072       | Function Calling            | —                                   |
-| [Llama 3.2 3B](https://huggingface.co/meta-llama/Llama-3.2-3B)                                           | `llama-3.2-3b`                   | `$0.15 / $0.60` | 131,072       | Function Calling            | fastest                             |
-| [Llama 3.3 70B](https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct)                                | `llama-3.3-70b`                  | `$0.70 / $2.80` | 131,072       | Function Calling            | default, function\_calling\_default |
-| [Qwen 3 Coder 480B](https://huggingface.co/Qwen/Qwen3-Coder-480B-A35B-Instruct)                          | `qwen3-coder-480b-a35b-instruct` | `$0.75 / $3.00` | 262,144       | Function Calling            | default\_code                       |
-| [GLM 4.6](https://huggingface.co/zai-org/GLM-4.6)                                                        | `zai-org-glm-4.6`                | `$0.85 / $2.75` | 202,752       | Function Calling            | —                                   |
-
-*Pricing is per 1M tokens (input / output). Additional usage-based pricing applies when using `enable_web_search` or `enable_web_scraping`, see [search pricing details](/overview/pricing#web-search-and-scraping).*
-
-<Info>
-  **Model Change Notice**: Starting **December 14, 2025**, `qwen3-235b` will be deprecated and calls will automatically route to `qwen3-235b-a22b-thinking-2507`.
-
-  The `disable_thinking` parameter will be ignored. For non-thinking behavior, use `qwen3-235b-a22b-instruct-2507` directly. [Learn more about model changes](/overview/deprecations#model-deprecation-tracker).
-</Info>
-
-### Popular Text Models
-
-`zai-org-glm-4.6` GLM 4.6 - High-intelligence flagship model\
-`mistral-31-24b` Venice Medium (3.1) - Vision + function calling\
-`qwen3-4b` Venice Small - Fast, affordable for most tasks\
-`qwen3-235b-a22b-thinking-2507` Qwen 3 235B A22B Thinking - Advanced reasoning with thinking
-
-### Text Model Categories
-
-**Reasoning Models**
-
-`qwen3-235b-a22b-thinking-2507` Qwen 3 235B A22B Thinking - Advanced reasoning with thinking\
-`qwen3-4b` Venice Small - Efficient reasoning model
-
-**Vision-Capable Models**
-
-`mistral-31-24b` Venice Medium (3.1) - Vision-capable model\
-`google-gemma-3-27b-it` Google Gemma 3 27B (beta)
-
-**Cost-Optimized Models**
-
-`qwen3-4b` Venice Small - Best balance of speed and cost\
-`llama-3.2-3b` Llama 3.2 3B - Fastest for simple tasks\
-`qwen3-235b-a22b-instruct-2507` Qwen 3 235B A22B Instruct - Optimized high-performance
-
-**Uncensored Models**
-
-`venice-uncensored` Venice Uncensored 1.1 - No content filtering
-
-**High-Intelligence Models**
-
-`qwen3-235b-a22b-thinking-2507` Qwen 3 235B A22B Thinking - Most powerful flagship model\
-`zai-org-glm-4.6` GLM 4.6 - High-intelligence alternative\
-`deepseek-ai-DeepSeek-R1` DeepSeek R1 (beta) - Advanced reasoning model
-`llama-3.3-70b` Llama 3.3 70B - Balanced high-intelligence
-
-### Beta Models
-
-| Model Name                                                                             | Model ID                  | Price (in/out)  | Context Limit | Capabilities             | Traits |
-| -------------------------------------------------------------------------------------- | ------------------------- | --------------- | ------------- | ------------------------ | ------ |
-| [OpenAI GPT OSS 120B](https://huggingface.co/openai/gpt-oss-120b)                      | `openai-gpt-oss-120b`     | `$0.07 / $0.30` | 131,072       | Function Calling         | —      |
-| [Google Gemma 3 27B Instruct](https://huggingface.co/google/gemma-3-27b-it)            | `google-gemma-3-27b-it`   | `$0.12 / $0.20` | 202,752       | Function Calling, Vision | —      |
-| [Qwen 3 Next 80B](https://huggingface.co/Qwen/Qwen3-Next-80B-A3B-Instruct)             | `qwen3-next-80b`          | `$0.35 / $1.90` | 262,144       | Function Calling         | —      |
-| [DeepSeek R1](https://huggingface.co/deepseek-ai/DeepSeek-R1)                          | `deepseek-ai-DeepSeek-R1` | `$0.85 / $2.75` | 131,072       | Function Calling         | —      |
-| [Hermes 3 Llama 3.1 405B](https://huggingface.co/NousResearch/Hermes-3-Llama-3.1-405B) | `hermes-3-llama-3.1-405b` | `$1.10 / $3.00` | 131,072       | —                        | —      |
-
-<Warning>
-  **Beta models are experimental and not recommended for production use.** These models may be changed, removed, or replaced at any time without notice. Use them for testing and evaluation purposes only. For production applications, use the stable models listed above.
-</Warning>
-
-***
-
-## Image Models
-
-| Model Name                                                                     | Model ID          | Price   | Model Source               | Traits                 |
-| ------------------------------------------------------------------------------ | ----------------- | ------- | -------------------------- | ---------------------- |
-| [Venice SD35](https://huggingface.co/stabilityai/stable-diffusion-3.5-large)   | `venice-sd35`     | `$0.01` | Stable Diffusion 3.5 Large | default, eliza-default |
-| [HiDream](https://huggingface.co/HiDream-ai/HiDream-I1-Dev)                    | `hidream`         | `$0.01` | HiDream I1 Dev             | —                      |
-| [Qwen Image](https://huggingface.co/Qwen/Qwen-Image)                           | `qwen-image`      | `$0.01` | Qwen Image                 | —                      |
-| [Lustify SDXL](https://civitai.com/models/573152/lustify-sdxl-nsfw-checkpoint) | `lustify-sdxl`    | `$0.01` | Lustify SDXL               | —                      |
-| [Lustify v7](https://civitai.com/models/573152/lustify-sdxl-nsfw-checkpoint)   | `lustify-v7`      | `$0.01` | Lustify v7                 | —                      |
-| [Anime (WAI)](https://civitai.com/models/827184?modelVersionId=1761560)        | `wai-Illustrious` | `$0.01` | WAI-Illustrious            | —                      |
-
-### Popular Image Models
-
-`qwen-image` Qwen Image - Highest quality image generation\
-`venice-sd35` Venice SD35 - Default choice with Eliza integration\
-`lustify-sdxl` Lustify SDXL - Uncensored image generation\
-`hidream` HiDream - Production-ready generation
-
-### Image Model Categories
-
-**High-Quality Models**
-
-`qwen-image` Qwen Image - Highest quality output\
-`hidream` HiDream - Production-ready generation
-
-**Default Models**
-
-`venice-sd35` Venice SD35 - Default choice, Eliza-optimized
-
-**Special Purpose Models**
-
-`lustify-sdxl` Lustify SDXL - Adult content generation\
-`lustify-v7` Lustify v7 - Adult content generation\
-`wai-Illustrious` Anime (WAI) - Anime-style generation
-
-***
-
-## Audio Models
-
-### Text-to-Speech Models
-
-`tts-kokoro` Kokoro TTS - 60+ multilingual voices for natural speech
-
-| Model Name                                                         | Model ID     | Price                | Voices Available | Model Source |
-| ------------------------------------------------------------------ | ------------ | -------------------- | ---------------- | ------------ |
-| [Kokoro Text to Speech](https://huggingface.co/hexgrad/Kokoro-82M) | `tts-kokoro` | `$3.50` per 1M chars | 60+ voices       | Kokoro-82M   |
-
-<Note>
-  The tts-kokoro model supports a wide range of multilingual and stylistic voices (including af\_nova, am\_liam, bf\_emma, zf\_xiaobei, and jm\_kumo). Voice is selected using the voice parameter in the request payload.
-</Note>
-
-***
-
-## Embedding Models
-
-`text-embedding-bge-m3` BGE-M3 - Versatile embedding model for text similarity
-
-| Model Name                                           | Model ID                | Price                         | Model Source        |
-| ---------------------------------------------------- | ----------------------- | ----------------------------- | ------------------- |
-| [BGE-M3](https://huggingface.co/KimChen/bge-m3-GGUF) | `text-embedding-bge-m3` | `$0.15 / $0.60` per 1M tokens | KimChen/bge-m3-GGUF |
-
-## Image Processing Models
-
-`upscaler` Image Upscaler - Enhance image resolution up to 4x\
-`qwen-image` Qwen Image - Multimodal image editing model
-
-### Image Upscaler
-
-| Model Name | Model ID   | Price   | Upscale Options          |
-| ---------- | ---------- | ------- | ------------------------ |
-| Upscaler   | `upscaler` | `$0.01` | `2x ($0.02), 4x ($0.08)` |
-
-### Image Editing (Inpaint)
-
-| Model Name                                           | Model ID     | Price   | Model Source | Traits               |
-| ---------------------------------------------------- | ------------ | ------- | ------------ | -------------------- |
-| [Qwen Image](https://huggingface.co/Qwen/Qwen-Image) | `qwen-image` | `$0.04` | Qwen Image   | specialized\_editing |
-
-## Model Features
-
-* **Vision**: Ability to process and understand images
-* **Reasoning**: Advanced logical reasoning capabilities
-* **Function Calling**: Support for calling external functions and tools
-* **Traits**: Special characteristics or optimizations (e.g., fastest, most\_intelligent, most\_uncensored)
-
-## Usage Notes
-
-* Input pricing refers to tokens sent to the model
-* Output pricing refers to tokens generated by the model
-* Context limits define the maximum number of tokens the model can process in a single request
-* (D) Scheduled for deprecation. For timelines and migration guidance, see the [Deprecation Tracker](/overview/deprecations#model-deprecation-tracker).
-
-
 # API Pricing
 Source: https://docs.venice.ai/overview/pricing
 
 
 
-### Pro Users
-
-Pro subscribers receive a one-time \$10 API credit when upgrading to Pro. Use it to test and build small apps. You can scale your usage by buying credits, buying Diem, or staking VVV.
-
-### Paid Tier
-
-Choose how you pay for API usage:
-
-<Steps>
-  <Step title="Buy API Credits">
-    Pay in USD via the [API Dashboard](https://venice.ai/settings/api). Credits are applied to usage automatically.
-  </Step>
-
-  <Step title="Buy Diem (1 Diem = $1/day)">
-    Purchase Diem directly. Each Diem grants \$1 of compute per day at the same rates as USD.
-  </Step>
-
-  <Step title="Stake to Earn Diem (1 Diem = $1/day)">
-    Stake tokens to receive daily Diem allocations (each Diem grants \$1 of compute per day). Manage staking and Diem at the [Token Dashboard](https://venice.ai/token).
-  </Step>
-</Steps>
-
-## Model Pricing
-
 All prices are in USD. Diem users pay the same rates (1 Diem = \$1 of compute per day).
 
-### Chat Models
+## Text Models
 
-Prices per 1M tokens, with separate pricing for input and output tokens. You will only be charged for the tokens you use.
-You can estimate the token count of a chat request using [this calculator](https://quizgecko.com/tools/token-counter).
+### Chat Completions
 
-| Model                          | Model ID                         |  Input | Output | Capabilities                |
-| ------------------------------ | -------------------------------- | :----: | :----: | --------------------------- |
-| Venice Small                   | `qwen3-4b`                       | \$0.05 | \$0.15 | Function Calling, Reasoning |
-| Qwen 3 235B A22B Instruct 2507 | `qwen3-235b-a22b-instruct-2507`  | \$0.15 | \$0.75 | Function Calling            |
-| Llama 3.2 3B                   | `llama-3.2-3b`                   | \$0.15 | \$0.60 | Function Calling            |
-| Venice Uncensored              | `venice-uncensored`              | \$0.20 | \$0.90 | Uncensored                  |
-| Venice Large (D)               | `qwen3-235b`                     | \$0.45 | \$3.50 | Function Calling, Reasoning |
-| Qwen 3 235B A22B Thinking 2507 | `qwen3-235b-a22b-thinking-2507`  | \$0.45 | \$3.50 | Function Calling, Reasoning |
-| Venice Medium (3.1)            | `mistral-31-24b`                 | \$0.50 | \$2.00 | Function Calling, Vision    |
-| Llama 3.3 70B                  | `llama-3.3-70b`                  | \$0.70 | \$2.80 | Function Calling            |
-| Qwen 3 Coder 480B              | `qwen3-coder-480b-a35b-instruct` | \$0.75 | \$3.00 | Function Calling            |
-| GLM 4.6                        | `zai-org-glm-4.6`                | \$0.85 | \$2.75 | Function Calling            |
+<div>
+  <div>
+    <div>
+      <div>
+        <div>
+          <span>Grok Code Fast 1</span>
+          <code>grok-code-fast-1</code>
+        </div>
 
-#### Beta Chat Models
+        <div>
+          <span>Anonymized</span>
 
-| Model                          | Model ID                  |  Input | Output | Capabilities             |
-| ------------------------------ | ------------------------- | :----: | :----: | ------------------------ |
-| OpenAI GPT OSS 120B (beta)     | `openai-gpt-oss-120b`     | \$0.07 | \$0.30 | Function Calling         |
-| Google Gemma 3 27B (beta)      | `google-gemma-3-27b-it`   | \$0.12 | \$0.20 | Function Calling, Vision |
-| Qwen 3 Next 80B (beta)         | `qwen3-next-80b`          | \$0.35 | \$1.90 | Function Calling         |
-| DeepSeek R1 (beta)             | `deepseek-ai-DeepSeek-R1` | \$0.85 | \$2.75 | Function Calling         |
-| Hermes 3 Llama 3.1 405B (beta) | `hermes-3-llama-3.1-405b` | \$1.10 | \$3.00 |                          |
+          <span>
+            <svg>
+              <path />
 
-<Warning>
-  Beta models are experimental and not recommended for production use. These models may be changed, removed, or replaced at any time without notice. [Learn more about beta models](/overview/deprecations#beta-models)
-</Warning>
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+
+          <span>
+            <svg>
+              <polyline />
+
+              <polyline />
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Input Price</span>
+          <span>\$0.25</span>
+        </span>
+
+        <span>
+          <span>Output Price</span>
+          <span>\$1.87</span>
+        </span>
+
+        <span>
+          <span>Cache Read</span>
+          <span>\$0.03</span>
+        </span>
+
+        <span>
+          <span>Context</span>
+          <span>262K</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>DeepSeek V3.2</span>
+          <code>deepseek-v3.2</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Input Price</span>
+          <span>\$0.40</span>
+        </span>
+
+        <span>
+          <span>Output Price</span>
+          <span>\$1.00</span>
+        </span>
+
+        <span>
+          <span>Cache Read</span>
+          <span>\$0.20</span>
+        </span>
+
+        <span>
+          <span>Context</span>
+          <span>164K</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>MiniMax M2.1</span>
+          <code>minimax-m21</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+
+          <span>
+            <svg>
+              <polyline />
+
+              <polyline />
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Input Price</span>
+          <span>\$0.40</span>
+        </span>
+
+        <span>
+          <span>Output Price</span>
+          <span>\$1.60</span>
+        </span>
+
+        <span>
+          <span>Cache Read</span>
+          <span>\$0.04</span>
+        </span>
+
+        <span>
+          <span>Context</span>
+          <span>203K</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Grok 4.1 Fast</span>
+          <code>grok-41-fast</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+
+          <span>
+            <svg>
+              <path />
+
+              <circle />
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Input Price</span>
+          <span>\$0.50</span>
+        </span>
+
+        <span>
+          <span>Output Price</span>
+          <span>\$1.25</span>
+        </span>
+
+        <span>
+          <span>Cache Read</span>
+          <span>\$0.13</span>
+        </span>
+
+        <span>
+          <span>Context</span>
+          <span>262K</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>GLM 4.7</span>
+          <code>zai-org-glm-4.7</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Input Price</span>
+          <span>\$0.55</span>
+        </span>
+
+        <span>
+          <span>Output Price</span>
+          <span>\$2.65</span>
+        </span>
+
+        <span>
+          <span>Cache Read</span>
+          <span>\$0.11</span>
+        </span>
+
+        <span>
+          <span>Context</span>
+          <span>203K</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Gemini 3 Flash Preview</span>
+          <code>gemini-3-flash-preview</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+
+          <span>
+            <svg>
+              <path />
+
+              <circle />
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Input Price</span>
+          <span>\$0.70</span>
+        </span>
+
+        <span>
+          <span>Output Price</span>
+          <span>\$3.75</span>
+        </span>
+
+        <span>
+          <span>Cache Read</span>
+          <span>\$0.07</span>
+        </span>
+
+        <span>
+          <span>Context</span>
+          <span>262K</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Kimi K2 Thinking</span>
+          <code>kimi-k2-thinking</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+
+          <span>
+            <svg>
+              <polyline />
+
+              <polyline />
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Input Price</span>
+          <span>\$0.75</span>
+        </span>
+
+        <span>
+          <span>Output Price</span>
+          <span>\$3.20</span>
+        </span>
+
+        <span>
+          <span>Cache Read</span>
+          <span>\$0.38</span>
+        </span>
+
+        <span>
+          <span>Context</span>
+          <span>262K</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>GPT-5.2</span>
+          <code>openai-gpt-52</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Input Price</span>
+          <span>\$2.19</span>
+        </span>
+
+        <span>
+          <span>Output Price</span>
+          <span>\$17.50</span>
+        </span>
+
+        <span>
+          <span>Cache Read</span>
+          <span>\$0.22</span>
+        </span>
+
+        <span>
+          <span>Context</span>
+          <span>262K</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Gemini 3 Pro Preview</span>
+          <code>gemini-3-pro-preview</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+
+          <span>
+            <svg>
+              <path />
+
+              <circle />
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Input Price</span>
+          <span>\$2.50</span>
+        </span>
+
+        <span>
+          <span>Output Price</span>
+          <span>\$15.00</span>
+        </span>
+
+        <span>
+          <span>Cache Read</span>
+          <span>\$0.63</span>
+        </span>
+
+        <span>
+          <span>Context</span>
+          <span>203K</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Claude Opus 4.5</span>
+          <code>claude-opus-45</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+
+          <span>
+            <svg>
+              <path />
+
+              <circle />
+            </svg>
+          </span>
+
+          <span>
+            <svg>
+              <polyline />
+
+              <polyline />
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Input Price</span>
+          <span>\$6.00</span>
+        </span>
+
+        <span>
+          <span>Output Price</span>
+          <span>\$30.00</span>
+        </span>
+
+        <span>
+          <span>Cache Read</span>
+          <span>\$0.60</span>
+        </span>
+
+        <span>
+          <span>Cache Write</span>
+          <span>\$7.50</span>
+        </span>
+
+        <span>
+          <span>Context</span>
+          <span>203K</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>GPT-5.2 Codex</span><span>Beta</span>
+          <code>openai-gpt-52-codex</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+
+          <span>
+            <svg>
+              <path />
+
+              <circle />
+            </svg>
+          </span>
+
+          <span>
+            <svg>
+              <polyline />
+
+              <polyline />
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Input Price</span>
+          <span>\$2.19</span>
+        </span>
+
+        <span>
+          <span>Output Price</span>
+          <span>\$17.50</span>
+        </span>
+
+        <span>
+          <span>Cache Read</span>
+          <span>\$0.22</span>
+        </span>
+
+        <span>
+          <span>Context</span>
+          <span>262K</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Claude Sonnet 4.5</span><span>Beta</span>
+          <code>claude-sonnet-45</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+
+          <span>
+            <svg>
+              <path />
+
+              <circle />
+            </svg>
+          </span>
+
+          <span>
+            <svg>
+              <polyline />
+
+              <polyline />
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Input Price</span>
+          <span>\$3.75</span>
+        </span>
+
+        <span>
+          <span>Output Price</span>
+          <span>\$18.75</span>
+        </span>
+
+        <span>
+          <span>Cache Read</span>
+          <span>\$0.38</span>
+        </span>
+
+        <span>
+          <span>Cache Write</span>
+          <span>\$4.69</span>
+        </span>
+
+        <span>
+          <span>Context</span>
+          <span>203K</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Venice Small</span>
+          <code>qwen3-4b</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Input Price</span>
+          <span>\$0.05</span>
+        </span>
+
+        <span>
+          <span>Output Price</span>
+          <span>\$0.15</span>
+        </span>
+
+        <span>
+          <span>Context</span>
+          <span>33K</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Google Gemma 3 27B Instruct</span>
+          <code>google-gemma-3-27b-it</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+
+          <span>
+            <svg>
+              <path />
+
+              <circle />
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Input Price</span>
+          <span>\$0.12</span>
+        </span>
+
+        <span>
+          <span>Output Price</span>
+          <span>\$0.20</span>
+        </span>
+
+        <span>
+          <span>Context</span>
+          <span>203K</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Qwen 3 235B A22B Instruct 2507</span>
+          <code>qwen3-235b-a22b-instruct-2507</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Input Price</span>
+          <span>\$0.15</span>
+        </span>
+
+        <span>
+          <span>Output Price</span>
+          <span>\$0.75</span>
+        </span>
+
+        <span>
+          <span>Context</span>
+          <span>131K</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Llama 3.2 3B</span>
+          <code>llama-3.2-3b</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Input Price</span>
+          <span>\$0.15</span>
+        </span>
+
+        <span>
+          <span>Output Price</span>
+          <span>\$0.60</span>
+        </span>
+
+        <span>
+          <span>Context</span>
+          <span>131K</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Venice Uncensored 1.1</span>
+          <code>venice-uncensored</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+          <span>Uncensored</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Input Price</span>
+          <span>\$0.20</span>
+        </span>
+
+        <span>
+          <span>Output Price</span>
+          <span>\$0.90</span>
+        </span>
+
+        <span>
+          <span>Context</span>
+          <span>33K</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Qwen3 VL 235B</span>
+          <code>qwen3-vl-235b-a22b</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+
+          <span>
+            <svg>
+              <path />
+
+              <circle />
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Input Price</span>
+          <span>\$0.25</span>
+        </span>
+
+        <span>
+          <span>Output Price</span>
+          <span>\$1.50</span>
+        </span>
+
+        <span>
+          <span>Context</span>
+          <span>262K</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Qwen 3 235B A22B Thinking 2507</span>
+          <code>qwen3-235b-a22b-thinking-2507</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Input Price</span>
+          <span>\$0.45</span>
+        </span>
+
+        <span>
+          <span>Output Price</span>
+          <span>\$3.50</span>
+        </span>
+
+        <span>
+          <span>Context</span>
+          <span>131K</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Mistral 3.1 24B</span>
+          <code>mistral-31-24b</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+
+          <span>
+            <svg>
+              <path />
+
+              <circle />
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Input Price</span>
+          <span>\$0.50</span>
+        </span>
+
+        <span>
+          <span>Output Price</span>
+          <span>\$2.00</span>
+        </span>
+
+        <span>
+          <span>Context</span>
+          <span>131K</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Llama 3.3 70B</span>
+          <code>llama-3.3-70b</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Input Price</span>
+          <span>\$0.70</span>
+        </span>
+
+        <span>
+          <span>Output Price</span>
+          <span>\$2.80</span>
+        </span>
+
+        <span>
+          <span>Context</span>
+          <span>131K</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Qwen 3 Coder 480b</span>
+          <code>qwen3-coder-480b-a35b-instruct</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+
+          <span>
+            <svg>
+              <polyline />
+
+              <polyline />
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Input Price</span>
+          <span>\$0.75</span>
+        </span>
+
+        <span>
+          <span>Output Price</span>
+          <span>\$3.00</span>
+        </span>
+
+        <span>
+          <span>Context</span>
+          <span>262K</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>OpenAI GPT OSS 120B</span><span>Beta</span>
+          <code>openai-gpt-oss-120b</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Input Price</span>
+          <span>\$0.07</span>
+        </span>
+
+        <span>
+          <span>Output Price</span>
+          <span>\$0.30</span>
+        </span>
+
+        <span>
+          <span>Context</span>
+          <span>131K</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Qwen 3 Next 80b</span><span>Beta</span>
+          <code>qwen3-next-80b</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+
+          <span>
+            <svg>
+              <path />
+
+              <path />
+
+              <path />
+
+              <path />
+            </svg>
+          </span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Input Price</span>
+          <span>\$0.35</span>
+        </span>
+
+        <span>
+          <span>Output Price</span>
+          <span>\$1.90</span>
+        </span>
+
+        <span>
+          <span>Context</span>
+          <span>262K</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Hermes 3 Llama 3.1 405b</span><span>Beta</span>
+          <code>hermes-3-llama-3.1-405b</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Input Price</span>
+          <span>\$1.10</span>
+        </span>
+
+        <span>
+          <span>Output Price</span>
+          <span>\$3.00</span>
+        </span>
+
+        <span>
+          <span>Context</span>
+          <span>131K</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+*Prices per 1M tokens. [View all models →](/models/text)*
+
+### Embeddings
+
+<div>
+  <div>
+    <div>
+      <div>
+        <div>
+          <span>BGE-M3</span>
+          <code>text-embedding-bge-m3</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Input (per 1M tokens)</span>
+          <span>\$0.15</span>
+        </span>
+
+        <span>
+          <span>Output (per 1M tokens)</span>
+          <span>\$0.60</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+## Media Models
+
+### Image Generation
+
+<div>
+  <h4>Generation</h4>
+
+  <div>
+    <div>
+      <div>
+        <div>
+          <span>GPT Image 1.5</span>
+          <code>gpt-image-1-5</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Per Image</span>
+          <span>\$0.23</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Nano Banana Pro</span>
+          <code>nano-banana-pro</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>1K</span>
+          <span>\$0.18</span>
+        </span>
+
+        <span>
+          <span>2K</span>
+          <span>\$0.24</span>
+        </span>
+
+        <span>
+          <span>4K</span>
+          <span>\$0.35</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Flux 2 Max</span>
+          <code>flux-2-max</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Per Image</span>
+          <span>\$0.09</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>SeedreamV4.5</span>
+          <code>seedream-v4</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Per Image</span>
+          <span>\$0.05</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Flux 2 Pro</span>
+          <code>flux-2-pro</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Per Image</span>
+          <span>\$0.04</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Background Remover</span>
+          <code>bg-remover</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Per Image</span>
+          <span>\$0.02</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Venice SD35</span>
+          <code>venice-sd35</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Per Image</span>
+          <span>\$0.01</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>HiDream</span>
+          <code>hidream</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Per Image</span>
+          <span>\$0.01</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Lustify SDXL</span>
+          <code>lustify-sdxl</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Per Image</span>
+          <span>\$0.01</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Lustify v7</span>
+          <code>lustify-v7</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Per Image</span>
+          <span>\$0.01</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Qwen Image</span>
+          <code>qwen-image</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Per Image</span>
+          <span>\$0.01</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Anime (WAI)</span>
+          <code>wai-Illustrious</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Per Image</span>
+          <span>\$0.01</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Z-Image Turbo</span>
+          <code>z-image-turbo</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Per Image</span>
+          <span>\$0.01</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <h4>Upscaling</h4>
+
+  <div>
+    <div>
+      <div>
+        <div>
+          <span>Image Upscaler</span>
+          <code>upscaler</code>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>2x Upscale</span>
+          <span>\$0.02</span>
+        </span>
+
+        <span>
+          <span>4x Upscale</span>
+          <span>\$0.08</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <h4>Editing</h4>
+
+  <div>
+    <div>
+      <div>
+        <div>
+          <span>Qwen Edit 2511</span>
+          <code>qwen-edit</code>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Per Edit</span>
+          <span>\$0.04</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Qwen Image</span>
+          <code>qwen-image</code>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Per Edit</span>
+          <span>\$0.04</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+### Audio
+
+<div>
+  <h4>Text-to-Speech</h4>
+
+  <div>
+    <div>
+      <div>
+        <div>
+          <span>Kokoro Text to Speech</span>
+          <code>tts-kokoro</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Per 1M Characters</span>
+          <span>\$3.50</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <h4>Speech-to-Text</h4>
+
+  <div>
+    <div>
+      <div>
+        <div>
+          <span>Parakeet ASR</span>
+          <code>nvidia/parakeet-tdt-0.6b-v3</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Per Audio Second</span>
+          <span>\$0.0001</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+### Video
+
+<div>
+  <p>Video pricing varies by resolution and duration. Visit the <a href="/models/video">Video Models page</a> for exact quotes, or use the <a href="/api-reference/endpoint/video/quote">Video Quote API</a>.</p>
+
+  <div>
+    <div>
+      <div>
+        <div>
+          <span>Kling 2.5 Turbo Pro</span>
+          <code>kling-2.5-turbo-pro-text-to-video</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+          <span>Text to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Kling 2.5 Turbo Pro</span>
+          <code>kling-2.5-turbo-pro-image-to-video</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+          <span>Image to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Kling 2.6 Pro</span>
+          <code>kling-2.6-pro-text-to-video</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+          <span>Text to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Kling 2.6 Pro</span>
+          <code>kling-2.6-pro-image-to-video</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+          <span>Image to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Longcat Distilled</span>
+          <code>longcat-distilled-image-to-video</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+          <span>Image to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Longcat Distilled</span>
+          <code>longcat-distilled-text-to-video</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+          <span>Text to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Longcat Full Quality</span>
+          <code>longcat-image-to-video</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+          <span>Image to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Longcat Full Quality</span>
+          <code>longcat-text-to-video</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+          <span>Text to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>LTX Video 2.0 19B</span>
+          <code>ltx-2-19b-full-text-to-video</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+          <span>Text to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>LTX Video 2.0 19B</span>
+          <code>ltx-2-19b-full-image-to-video</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+          <span>Image to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>LTX Video 2.0 19B Distilled</span>
+          <code>ltx-2-19b-distilled-text-to-video</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+          <span>Text to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>LTX Video 2.0 19B Distilled</span>
+          <code>ltx-2-19b-distilled-image-to-video</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+          <span>Image to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>LTX Video 2.0 Fast</span>
+          <code>ltx-2-fast-image-to-video</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+          <span>Image to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>LTX Video 2.0 Fast</span>
+          <code>ltx-2-fast-text-to-video</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+          <span>Text to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>LTX Video 2.0 Full Quality</span>
+          <code>ltx-2-full-image-to-video</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+          <span>Image to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>LTX Video 2.0 Full Quality</span>
+          <code>ltx-2-full-text-to-video</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+          <span>Text to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Ovi</span>
+          <code>ovi-image-to-video</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+          <span>Image to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Sora 2</span>
+          <code>sora-2-image-to-video</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+          <span>Image to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Sora 2</span>
+          <code>sora-2-text-to-video</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+          <span>Text to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Sora 2 Pro</span>
+          <code>sora-2-pro-image-to-video</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+          <span>Image to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Sora 2 Pro</span>
+          <code>sora-2-pro-text-to-video</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+          <span>Text to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Veo 3 Fast</span>
+          <code>veo3-fast-text-to-video</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+          <span>Text to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Veo 3 Fast</span>
+          <code>veo3-fast-image-to-video</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+          <span>Image to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Veo 3 Full Quality</span>
+          <code>veo3-full-text-to-video</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+          <span>Text to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Veo 3 Full Quality</span>
+          <code>veo3-full-image-to-video</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+          <span>Image to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Veo 3.1 Fast</span>
+          <code>veo3.1-fast-text-to-video</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+          <span>Text to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Veo 3.1 Fast</span>
+          <code>veo3.1-fast-image-to-video</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+          <span>Image to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Veo 3.1 Full Quality</span>
+          <code>veo3.1-full-text-to-video</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+          <span>Text to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Veo 3.1 Full Quality</span>
+          <code>veo3.1-full-image-to-video</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+          <span>Image to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Wan 2.1 Pro</span>
+          <code>wan-2.1-pro-image-to-video</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+          <span>Image to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Wan 2.2 A14B</span>
+          <code>wan-2.2-a14b-text-to-video</code>
+        </div>
+
+        <div>
+          <span>Private</span>
+          <span>Text to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Wan 2.5 Preview</span>
+          <code>wan-2.5-preview-image-to-video</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+          <span>Image to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Wan 2.5 Preview</span>
+          <code>wan-2.5-preview-text-to-video</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+          <span>Text to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Wan 2.6</span>
+          <code>wan-2.6-image-to-video</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+          <span>Image to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Wan 2.6</span>
+          <code>wan-2.6-text-to-video</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+          <span>Text to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <div>
+          <span>Wan 2.6 Flash</span>
+          <code>wan-2.6-flash-image-to-video</code>
+        </div>
+
+        <div>
+          <span>Anonymized</span>
+          <span>Image to Video</span>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Pricing</span>
+          <span>Variable</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+## Additional Features
 
 ### Web Search and Scraping
 
-Web Search and Web Scraping features run on dedicated compute infrastructure designed for large-scale crawling and real-time content extraction. These features are usage-based and charged per API call when enabled:
+<div>
+  <div>
+    <div>
+      <div>
+        <div>
+          <span>Web Search</span>
+          <code>enable\_web\_search: true</code>
+        </div>
+      </div>
 
-| Feature      |  Venice Models  |   Other Models  | Parameters                  |
-| ------------ | :-------------: | :-------------: | --------------------------- |
-| Web Search   | \$10 / 1K calls | \$25 / 1K calls | `enable_web_search: true`   |
-| Web Scraping | \$10 / 1K calls | \$25 / 1K calls | `enable_web_scraping: true` |
+      <div>
+        <span>
+          <span>Per 1K Calls</span>
+          <span>\$10.00</span>
+        </span>
+      </div>
+    </div>
 
-**Venice Models**: `venice-uncensored`, `qwen3-4b`, `mistral-31-24b`, `qwen3-235b`
+    <div>
+      <div>
+        <div>
+          <span>Web Scraping</span>
+          <code>enable\_web\_scraping: true</code>
+        </div>
+      </div>
+
+      <div>
+        <span>
+          <span>Per 1K Calls</span>
+          <span>\$10.00</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
 
 <Info>
   Web Scraping automatically detects up to 3 URLs per message, scrapes and converts content into structured markdown, and adds the extracted text into model context. These charges apply in addition to standard model token pricing.
 </Info>
 
-### Embedding Models
+## Payment Options
 
-Prices per 1M tokens:
+<CardGroup>
+  <Card title="USD" icon="credit-card" href="https://venice.ai/settings/api">
+    Buy API credits with credit card. Credits never expire.
+  </Card>
 
-| Model  | Model ID                |  Input | Output |
-| ------ | ----------------------- | :----: | :----: |
-| BGE-M3 | `text-embedding-bge-m3` | \$0.15 | \$0.60 |
+  <Card title="Crypto" icon="bitcoin" href="https://venice.ai/settings/api">
+    Buy API credits with cryptocurrency. Same rates as USD.
+  </Card>
 
-### Image Models
+  <Card title="Stake DIEM" icon="coins" href="https://venice.ai/token">
+    Each Diem = \$1/day of credits that refresh daily.
+  </Card>
+</CardGroup>
 
-Image models are priced per generation:
+### Pro Users
 
-| Model                  |  Price |
-| ---------------------- | :----: |
-| Generation             | \$0.01 |
-| Upscale / Enhance (2x) | \$0.02 |
-| Upscale / Enhance (4x) | \$0.08 |
-| Edit (aka Inpaint)     | \$0.04 |
-
-### Audio Models
-
-Prices per 1M characters:
-
-| Model      | Model ID     |  Price |
-| ---------- | ------------ | :----: |
-| Kokoro TTS | `tts-kokoro` | \$3.50 |
+Pro subscribers receive a one-time \$10 API credit when upgrading to Pro. Use it to test and build small apps.
 
 
 # Privacy
@@ -3889,6 +7503,6 @@ The Venice API replicates the same technical architecture as the Venice platform
 
 **Venice does not store or log any prompt or model responses on our servers.** API calls are forwarded directly to GPUs running across a collection of decentralized providers over encrypted HTTPS paths.
 
-<img src="https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/privacy-architecture.png?fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=dc109b987638ae5757c4987a971ae809" alt="Venice AI Privacy Architecture" data-og-width="2042" width="2042" data-og-height="812" height="812" data-path="images/privacy-architecture.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/privacy-architecture.png?w=280&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=73d83e285d8065397e72037b907d1509 280w, https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/privacy-architecture.png?w=560&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=43300078e2e65b024c97164342926b05 560w, https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/privacy-architecture.png?w=840&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=2994c6fd3f18dd7a18fff305ebb02e2d 840w, https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/privacy-architecture.png?w=1100&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=e819afb6dd5d785c5fbb176f4b2cb40e 1100w, https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/privacy-architecture.png?w=1650&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=03b65f4716d95c25ab92e4e733405bc8 1650w, https://mintcdn.com/veniceai/IFxWLBK8qRcf4Dhb/images/privacy-architecture.png?w=2500&fit=max&auto=format&n=IFxWLBK8qRcf4Dhb&q=85&s=863ab31cb8e886e2f2f67975c6a7fcab 2500w" />
+<img alt="Venice AI Privacy Architecture" />
 
 

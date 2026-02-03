@@ -1,3 +1,5 @@
+# Source: https://docs.datadoghq.com/security/audit_trail.md
+
 # Source: https://docs.datadoghq.com/account_management/audit_trail.md
 
 ---
@@ -6,7 +8,6 @@ description: >-
   Monitor Datadog user activity, API requests, and resource changes with
   comprehensive audit logging for compliance, security, and governance.
 breadcrumbs: Docs > Account Management > Datadog Audit Trail
-source_url: https://docs.datadoghq.com/audit_trail/index.html
 ---
 
 # Datadog Audit Trail

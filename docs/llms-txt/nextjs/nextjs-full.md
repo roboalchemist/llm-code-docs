@@ -6,7 +6,7 @@ Source: https://nextjs.org/docs/llms-full.txt
 
 # Next.js Documentation
 
-@doc-version: >=15.0.0
+@doc-version: >=v16.1.6
 @doc-version-notes: Some features may have extended or refined behavior in minor or patch releases
 @router: App Router
 @router-note: Unless otherwise noted in each section, these documents apply to the App Router
@@ -37,24 +37,6 @@ If you're new to React or need a refresher, we recommend starting with our [Reac
 
 ## Next Steps
 
- - [Installation](/docs/app/getting-started/installation.md)
- - [Project Structure](/docs/app/getting-started/project-structure.md)
- - [Layouts and Pages](/docs/app/getting-started/layouts-and-pages.md)
- - [Linking and Navigating](/docs/app/getting-started/linking-and-navigating.md)
- - [Server and Client Components](/docs/app/getting-started/server-and-client-components.md)
- - [Cache Components](/docs/app/getting-started/cache-components.md)
- - [Fetching Data](/docs/app/getting-started/fetching-data.md)
- - [Updating Data](/docs/app/getting-started/updating-data.md)
- - [Caching and Revalidating](/docs/app/getting-started/caching-and-revalidating.md)
- - [Error Handling](/docs/app/getting-started/error-handling.md)
- - [CSS](/docs/app/getting-started/css.md)
- - [Image Optimization](/docs/app/getting-started/images.md)
- - [Font Optimization](/docs/app/getting-started/fonts.md)
- - [Metadata and OG images](/docs/app/getting-started/metadata-and-og-images.md)
- - [Route Handlers](/docs/app/getting-started/route-handlers.md)
- - [Proxy](/docs/app/getting-started/proxy.md)
- - [Deploying](/docs/app/getting-started/deploying.md)
- - [Upgrading](/docs/app/getting-started/upgrading.md)
 
 --------------------------------------------------------------------------------
 title: "Installation"
@@ -293,7 +275,7 @@ You can enable the plugin in VS Code by:
 
 ![TypeScript Command Palette](https://h8DxKfmAPhn8O0p3.public.blob.vercel-storage.com/docs/light/typescript-command-palette.png)
 
-See the [TypeScript reference](/docs/app/api-reference/config/next-config-js/typescript.md) page for more information.
+See the [TypeScript reference](/docs/app/api-reference/config/typescript.md) page for more information.
 
 ## Set up linting
 
@@ -377,7 +359,7 @@ Each of the `"paths"` are relative to the `baseUrl` location.
 
 
 --------------------------------------------------------------------------------
-title: "Project structure and organization"
+title: "Project Structure"
 description: "Learn the folder and file conventions in Next.js, and how to organize your project."
 source: "https://nextjs.org/docs/app/getting-started/project-structure"
 --------------------------------------------------------------------------------
@@ -405,22 +387,22 @@ Top-level folders are used to organize your application's code and static assets
 
 Top-level files are used to configure your application, manage dependencies, run proxy, integrate monitoring tools, and define environment variables.
 
-|                                                                              |                                         |
-| ---------------------------------------------------------------------------- | --------------------------------------- |
-| **Next.js**                                                                  |                                         |
-| [`next.config.js`](/docs/app/api-reference/config/next-config-js.md)            | Configuration file for Next.js          |
-| [`package.json`](/docs/app/getting-started/installation.md#manual-installation) | Project dependencies and scripts        |
-| [`instrumentation.ts`](/docs/app/guides/instrumentation.md)                     | OpenTelemetry and Instrumentation file  |
-| [`proxy.ts`](/docs/app/api-reference/file-conventions/proxy.md)                 | Next.js request proxy                   |
-| [`.env`](/docs/app/guides/environment-variables.md)                             | Environment variables                   |
-| [`.env.local`](/docs/app/guides/environment-variables.md)                       | Local environment variables             |
-| [`.env.production`](/docs/app/guides/environment-variables.md)                  | Production environment variables        |
-| [`.env.development`](/docs/app/guides/environment-variables.md)                 | Development environment variables       |
-| [`eslint.config.mjs`](/docs/app/api-reference/config/eslint.md)                 | Configuration file for ESLint           |
-| `.gitignore`                                                                 | Git files and folders to ignore         |
-| `next-env.d.ts`                                                              | TypeScript declaration file for Next.js |
-| `tsconfig.json`                                                              | Configuration file for TypeScript       |
-| `jsconfig.json`                                                              | Configuration file for JavaScript       |
+|                                                                              |                                                                                    |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| **Next.js**                                                                  |                                                                                    |
+| [`next.config.js`](/docs/app/api-reference/config/next-config-js.md)            | Configuration file for Next.js                                                     |
+| [`package.json`](/docs/app/getting-started/installation.md#manual-installation) | Project dependencies and scripts                                                   |
+| [`instrumentation.ts`](/docs/app/guides/instrumentation.md)                     | OpenTelemetry and Instrumentation file                                             |
+| [`proxy.ts`](/docs/app/api-reference/file-conventions/proxy.md)                 | Next.js request proxy                                                              |
+| [`.env`](/docs/app/guides/environment-variables.md)                             | Environment variables (should not be tracked by version control)                   |
+| [`.env.local`](/docs/app/guides/environment-variables.md)                       | Local environment variables (should not be tracked by version control)             |
+| [`.env.production`](/docs/app/guides/environment-variables.md)                  | Production environment variables (should not be tracked by version control)        |
+| [`.env.development`](/docs/app/guides/environment-variables.md)                 | Development environment variables (should not be tracked by version control)       |
+| [`eslint.config.mjs`](/docs/app/api-reference/config/eslint.md)                 | Configuration file for ESLint                                                      |
+| `.gitignore`                                                                 | Git files and folders to ignore                                                    |
+| [`next-env.d.ts`](/docs/app/api-reference/config/typescript.md#next-envdts)     | TypeScript declaration file for Next.js (should not be tracked by version control) |
+| `tsconfig.json`                                                              | Configuration file for TypeScript                                                  |
+| `jsconfig.json`                                                              | Configuration file for JavaScript                                                  |
 
 ### Routing Files
 
@@ -1303,7 +1285,7 @@ function HoverPrefetchLink({ href, children }) {
 
 React mitigates this with Selective Hydration and you can further improve this by:
 
-* Using the [`@next/bundle-analyzer`](/docs/app/guides/package-bundling.md#analyzing-javascript-bundles) plugin to identify and reduce bundle size by removing large dependencies.
+* Using the [`@next/bundle-analyzer`](/docs/app/guides/package-bundling.md#nextbundle-analyzer-for-webpack) plugin to identify and reduce bundle size by removing large dependencies.
 * Moving logic from the client to the server where possible. See the [Server and Client Components](/docs/app/getting-started/server-and-client-components.md) docs for guidance.
 
 ## Examples
@@ -1453,7 +1435,7 @@ Use **Server Components** when you need:
 
 For example, the `<Page>` component is a Server Component that fetches data about a post, and passes it as props to the `<LikeButton>` which handles client-side interactivity.
 
-```tsx filename="app/[id]/page.tsx" highlight={1,12} switcher
+```tsx filename="app/[id]/page.tsx" highlight={1,17} switcher
 import LikeButton from '@/app/ui/like-button'
 import { getPost } from '@/lib/data'
 
@@ -1662,7 +1644,7 @@ export default function Search() {
 
 You can pass data from Server Components to Client Components using props.
 
-```tsx filename="app/[id]/page.tsx" highlight={1,7} switcher
+```tsx filename="app/[id]/page.tsx" highlight={1,12} switcher
 import LikeButton from '@/app/ui/like-button'
 import { getPost } from '@/lib/data'
 
@@ -1832,6 +1814,191 @@ export default function RootLayout({ children }) {
 Your Server Component will now be able to directly render your provider, and all other Client Components throughout your app will be able to consume this context.
 
 > **Good to know**: You should render providers as deep as possible in the tree – notice how `ThemeProvider` only wraps `{children}` instead of the entire `<html>` document. This makes it easier for Next.js to optimize the static parts of your Server Components.
+
+### Sharing data with context and React.cache
+
+You can share fetched data across both Server and Client Components by combining [`React.cache`](https://react.dev/reference/react/cache) with context providers.
+
+Create a cached function that fetches data:
+
+```ts filename="app/lib/user.ts" switcher
+import { cache } from 'react'
+
+export const getUser = cache(async () => {
+  const res = await fetch('https://api.example.com/user')
+  return res.json()
+})
+```
+
+```js filename="app/lib/user.js" switcher
+import { cache } from 'react'
+
+export const getUser = cache(async () => {
+  const res = await fetch('https://api.example.com/user')
+  return res.json()
+})
+```
+
+Create a context provider that stores the promise:
+
+```tsx filename="app/user-provider.tsx" switcher
+'use client'
+
+import { createContext } from 'react'
+
+type User = {
+  id: string
+  name: string
+}
+
+export const UserContext = createContext<Promise<User> | null>(null)
+
+export default function UserProvider({
+  children,
+  userPromise,
+}: {
+  children: React.ReactNode
+  userPromise: Promise<User>
+}) {
+  return <UserContext value={userPromise}>{children}</UserContext>
+}
+```
+
+```jsx filename="app/user-provider.js" switcher
+'use client'
+
+import { createContext } from 'react'
+
+export const UserContext = createContext(null)
+
+export default function UserProvider({ children, userPromise }) {
+  return <UserContext value={userPromise}>{children}</UserContext>
+}
+```
+
+In a layout, pass the promise to the provider without awaiting:
+
+```tsx filename="app/layout.tsx" switcher
+import UserProvider from './user-provider'
+import { getUser } from './lib/user'
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  const userPromise = getUser() // Don't await
+
+  return (
+    <html>
+      <body>
+        <UserProvider userPromise={userPromise}>{children}</UserProvider>
+      </body>
+    </html>
+  )
+}
+```
+
+```jsx filename="app/layout.js" switcher
+import UserProvider from './user-provider'
+import { getUser } from './lib/user'
+
+export default function RootLayout({ children }) {
+  const userPromise = getUser() // Don't await
+
+  return (
+    <html>
+      <body>
+        <UserProvider userPromise={userPromise}>{children}</UserProvider>
+      </body>
+    </html>
+  )
+}
+```
+
+Client Components use [`use()`](https://react.dev/reference/react/use) to resolve the promise from context, wrapped in `<Suspense>` for fallback UI:
+
+```tsx filename="app/ui/profile.tsx" switcher
+'use client'
+
+import { use, useContext } from 'react'
+import { UserContext } from '../user-provider'
+
+export function Profile() {
+  const userPromise = useContext(UserContext)
+  if (!userPromise) {
+    throw new Error('useContext must be used within a UserProvider')
+  }
+  const user = use(userPromise)
+  return <p>Welcome, {user.name}</p>
+}
+```
+
+```jsx filename="app/ui/profile.js" switcher
+'use client'
+
+import { use, useContext } from 'react'
+import { UserContext } from '../user-provider'
+
+export function Profile() {
+  const userPromise = useContext(UserContext)
+  if (!userPromise) {
+    throw new Error('useContext must be used within a UserProvider')
+  }
+  const user = use(userPromise)
+  return <p>Welcome, {user.name}</p>
+}
+```
+
+```tsx filename="app/page.tsx" switcher
+import { Suspense } from 'react'
+import { Profile } from './ui/profile'
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading profile...</div>}>
+      <Profile />
+    </Suspense>
+  )
+}
+```
+
+```jsx filename="app/page.js" switcher
+import { Suspense } from 'react'
+import { Profile } from './ui/profile'
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading profile...</div>}>
+      <Profile />
+    </Suspense>
+  )
+}
+```
+
+Server Components can also call `getUser()` directly:
+
+```tsx filename="app/dashboard/page.tsx" switcher
+import { getUser } from '../lib/user'
+
+export default async function DashboardPage() {
+  const user = await getUser() // Cached - same request, no duplicate fetch
+  return <h1>Dashboard for {user.name}</h1>
+}
+```
+
+```jsx filename="app/dashboard/page.js" switcher
+import { getUser } from '../lib/user'
+
+export default async function DashboardPage() {
+  const user = await getUser() // Cached - same request, no duplicate fetch
+  return <h1>Dashboard for {user.name}</h1>
+}
+```
+
+Since `getUser` is wrapped with `React.cache`, multiple calls within the same request return the same memoized result, whether called directly in Server Components or resolved via context in Client Components.
+
+> **Good to know**: `React.cache` is scoped to the current request only. Each request gets its own memoization scope with no sharing between requests.
 
 ### Third-party components
 
@@ -2089,7 +2256,7 @@ export default async function Page() {
 }
 ```
 
-> **Good to know**: You can verify that a route was fully prerendered by checking the build output summary. Alternatively see what content was added to the static shell of any page by viewing the page source in your browser.
+> **Good to know**: You can verify that a route was fully prerendered by checking the build output summary. Alternatively, see what content was added to the static shell of any page by viewing the page source in your browser.
 
 ## Defer rendering to request time
 
@@ -2105,12 +2272,11 @@ External systems provide content asynchronously, which often takes an unpredicta
 
 In general, when you need the latest data from the source on each request (like real-time feeds or personalized content), defer rendering by providing fallback UI with a Suspense boundary.
 
-For example the `DynamicContent` component below uses multiple operations that are not automatically prerendered.
+For example, the `DynamicContent` component below uses multiple operations that are not automatically prerendered.
 
 ```tsx filename="page.tsx"
 import { Suspense } from 'react'
 import fs from 'node:fs/promises'
-import { setTimeout } from 'node:timers/promises'
 
 async function DynamicContent() {
   // Network request
@@ -2123,7 +2289,7 @@ async function DynamicContent() {
   const file = await fs.readFile('..', 'utf-8')
 
   // Simulating external system delay
-  await setTimeout(100) // from 'node:timers/promises'
+  await new Promise((resolve) => setTimeout(resolve, 100))
 
   return <div>Not in the static shell</div>
 }
@@ -2161,7 +2327,7 @@ A specific type of dynamic data that requires request context, only available wh
 * [`cookies()`](/docs/app/api-reference/functions/cookies.md) - User's cookie data
 * [`headers()`](/docs/app/api-reference/functions/headers.md) - Request headers
 * [`searchParams`](/docs/app/api-reference/file-conventions/page.md#searchparams-optional) - URL query parameters
-* [`params`](/docs/app/api-reference/file-conventions/page.md#params-optional) - Dynamic route parameters (unless at least one sample is provided via [`generateStaticParams`](/docs/app/api-reference/functions/generate-static-params.md))
+* [`params`](/docs/app/api-reference/file-conventions/page.md#params-optional) - Dynamic route parameters (unless at least one sample is provided via [`generateStaticParams`](/docs/app/api-reference/functions/generate-static-params.md)). See [Dynamic Routes with Cache Components](/docs/app/api-reference/file-conventions/dynamic-routes.md#with-cache-components) for detailed patterns.
 
 ```tsx filename="page.tsx"
 import { cookies, headers } from 'next/headers'
@@ -2177,7 +2343,7 @@ async function RuntimeData({ searchParams }) {
 }
 ```
 
-To use the `RuntimeData` component in, wrap it in a `<Suspense>` boundary:
+To use the `RuntimeData` component, wrap it in a `<Suspense>` boundary:
 
 ```tsx filename="page.tsx"
 export default async function Page(props) {
@@ -2197,6 +2363,10 @@ export default async function Page(props) {
 Use [`connection()`](/docs/app/api-reference/functions/connection.md) if you need to defer to request time without accessing any of the runtime APIs above.
 
 > **Good to know**: Runtime data cannot be cached with `use cache` because it requires request context. Components that access runtime APIs must always be wrapped in `<Suspense>`. However, you can extract values from runtime data and pass them as arguments to cached functions. See the [with runtime data](#with-runtime-data) section for an example.
+
+One approach for reading runtime data like cookies without blocking the static shell is to pass a promise to a client context provider. See [Sharing data with context and React.cache](/docs/app/getting-started/server-and-client-components.md#sharing-data-with-context-and-reactcache) for an example.
+
+> **Good to know:** `React.cache` operates in an isolated scope inside `use cache` boundaries. See [React.cache isolation](/docs/app/api-reference/directives/use-cache.md#reactcache-isolation) for more information.
 
 ### Non-deterministic operations
 
@@ -2377,7 +2547,7 @@ export default async function Page() {
 }
 ```
 
-All requests will be served a route containing same random numbers, timestamp, and UUID until the cache is revalidated.
+All requests will be served a route containing the same random numbers, timestamp, and UUID until the cache is revalidated.
 
 ### Tagging and revalidating
 
@@ -2507,6 +2677,12 @@ During prerendering the header (static) and the blog posts fetched from the API 
 
 When a user visits the page, they instantly see this prerendered shell with the header and blog posts. Only the personalized preferences need to stream in at request time since they depend on the user's cookies. This ensures fast initial page loads while still providing personalized content.
 
+## Metadata and Viewport
+
+`generateMetadata` and `generateViewport` are part of rendering your page or layout. During prerendering, their access to runtime data or uncached dynamic data is tracked separately from the rest of the page.
+
+If a page or layout is prerenderable but only metadata or viewport accesses uncached dynamic data or runtime data, Next.js requires an explicit choice: cache the data if possible, or signal that deferred rendering is intentional. See [Metadata with Cache Components](/docs/app/api-reference/functions/generate-metadata.md#with-cache-components) and [Viewport with Cache Components](/docs/app/api-reference/functions/generate-viewport.md#with-cache-components) for how to handle this.
+
 ## Enabling Cache Components
 
 You can enable Cache Components (which includes PPR) by adding the [`cacheComponents`](/docs/app/api-reference/config/next-config-js/cacheComponents.md) option to your Next config file:
@@ -2572,7 +2748,7 @@ export default function Page() {
 
 ### `dynamic = "force-static"`
 
-Start by removing it. When unhandled dynamic or runtime data access is detected during development and built time, Next.js raises an error. Otherwise, the [prerendering](#automatically-prerendered-content) step automatically extracts the static HTML shell.
+Start by removing it. When unhandled dynamic or runtime data access is detected during development and build time, Next.js raises an error. Otherwise, the [prerendering](#automatically-prerendered-content) step automatically extracts the static HTML shell.
 
 For dynamic data access, add [`use cache`](#using-use-cache) as close to the data access as possible with a long [`cacheLife`](/docs/app/api-reference/functions/cacheLife.md) like `'max'` to maintain cached behavior. If needed, add it at the top of the page or layout.
 
@@ -2652,7 +2828,7 @@ Learn more about the config option for Cache Components.
 - [cacheComponents](/docs/app/api-reference/config/next-config-js/cacheComponents.md)
   - Learn how to enable the cacheComponents flag in Next.js.
 - [use cache](/docs/app/api-reference/directives/use-cache.md)
-  - Learn how to use the use cache directive to cache data in your Next.js application.
+  - Learn how to use the "use cache" directive to cache data in your Next.js application.
 - [cacheLife](/docs/app/api-reference/functions/cacheLife.md)
   - Learn how to use the cacheLife function to set the cache expiration time for a cached function or component.
 - [cacheTag](/docs/app/api-reference/functions/cacheTag.md)
@@ -3134,7 +3310,7 @@ export default async function Page({ params }) {
 
 Start multiple requests by calling `fetch`, then await them with [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all). Requests begin as soon as `fetch` is called.
 
-```tsx filename="app/artist/[username]/page.tsx" highlight={3,8,23} switcher
+```tsx filename="app/artist/[username]/page.tsx" highlight={3,8,24} switcher
 import Albums from './albums'
 
 async function getArtist(username: string) {
@@ -3169,7 +3345,7 @@ export default async function Page({
 }
 ```
 
-```jsx filename="app/artist/[username]/page.js" highlight={3,8,19} switcher
+```jsx filename="app/artist/[username]/page.js" highlight={3,8,20} switcher
 import Albums from './albums'
 
 async function getArtist(username) {
@@ -3204,7 +3380,7 @@ export default async function Page({ params }) {
 
 ### Preloading data
 
-You can preload data by creating an utility function that you eagerly call above blocking requests. `<Item>` conditionally renders based on the `checkIsAvailable()` function.
+You can preload data by creating a utility function that you eagerly call above blocking requests. `<Item>` conditionally renders based on the `checkIsAvailable()` function.
 
 You can call `preload()` before `checkIsAvailable()` to eagerly initiate `<Item/>` data dependencies. By the time `<Item/>` is rendered, its data has already been fetched.
 
@@ -3308,7 +3484,7 @@ Learn more about the features mentioned in this page by reading the API Referenc
 
 --------------------------------------------------------------------------------
 title: "Updating Data"
-description: "Learn how to mutate data using Server Functions."
+description: "Learn how to mutate data using Server Functions and Server Actions in Next.js."
 source: "https://nextjs.org/docs/app/getting-started/updating-data"
 --------------------------------------------------------------------------------
 
@@ -3321,6 +3497,8 @@ You can update data in Next.js using React's [Server Functions](https://react.de
 A **Server Function** is an asynchronous function that runs on the server. They can be called from the client through a network request, which is why they must be asynchronous.
 
 In an `action` or mutation context, they are also called **Server Actions**.
+
+> **Good to know:** A Server Action is a Server Function used in a specific way (for handling form submissions and mutations). Server Function is the broader term.
 
 By convention, a Server Action is an async function used with [`startTransition`](https://react.dev/reference/react/startTransition). This happens automatically when the function is:
 
@@ -3731,7 +3909,7 @@ Calling `redirect` [throws](/docs/app/api-reference/functions/redirect.md#behavi
 
 You can `get`, `set`, and `delete` cookies inside a Server Action using the [`cookies`](/docs/app/api-reference/functions/cookies.md) API.
 
-When you [set or delete](/docs/app/api-reference/functions/cookies.md#understanding-cookie-behavior-in-server-actions) a cookie in a Server Action, Next.js re-renders the current page and its layouts on the server so the **UI reflects the new cookie value**.
+When you [set or delete](/docs/app/api-reference/functions/cookies.md#understanding-cookie-behavior-in-server-functions) a cookie in a Server Action, Next.js re-renders the current page and its layouts on the server so the **UI reflects the new cookie value**.
 
 > **Good to know**: The server update applies to the current React tree, re-rendering, mounting, or unmounting components, as needed. Client state is preserved for re-rendered components, and effects re-run if their dependencies changed.
 
@@ -5810,7 +5988,6 @@ export function proxy(request: NextRequest) {
 // Alternatively, you can use a default export:
 // export default function proxy(request: NextRequest) { ... }
 
-// See "Matching Paths" below to learn more
 export const config = {
   matcher: '/about/:path*',
 }
@@ -5827,11 +6004,12 @@ export function proxy(request) {
 // Alternatively, you can use a default export:
 // export default function proxy(request) { ... }
 
-// See "Matching Paths" below to learn more
 export const config = {
   matcher: '/about/:path*',
 }
 ```
+
+The `matcher` config allows you to filter Proxy to run on specific paths. See the [Matcher](/docs/app/api-reference/file-conventions/proxy.md#matcher) documentation for more details on path matching.
 
 Read more about [using `proxy`](/docs/app/guides/backend-for-frontend.md#proxy), or refer to the `proxy` [API reference](/docs/app/api-reference/file-conventions/proxy.md).
 ## API Reference
@@ -5925,6 +6103,7 @@ Refer to each provider's documentation for information on supported Next.js feat
 * [AWS Amplify Hosting](https://docs.amplify.aws/nextjs/start/quickstart/nextjs-app-router-client-components)
 * [Cloudflare](https://developers.cloudflare.com/workers/frameworks/framework-guides/nextjs)
 * [Deno Deploy](https://docs.deno.com/examples/next_tutorial)
+* [Firebase App Hosting](https://firebase.google.com/docs/app-hosting/get-started)
 * [Netlify](https://docs.netlify.com/frameworks/next-js/overview/#next-js-support-on-netlify)
 * [Vercel](https://vercel.com/docs/frameworks/nextjs)
 
@@ -6013,50 +6192,9 @@ source: "https://nextjs.org/docs/app/guides"
 
 
 
- - [Analytics](/docs/app/guides/analytics.md)
- - [Authentication](/docs/app/guides/authentication.md)
- - [Backend for Frontend](/docs/app/guides/backend-for-frontend.md)
- - [Caching](/docs/app/guides/caching.md)
- - [CI Build Caching](/docs/app/guides/ci-build-caching.md)
- - [Content Security Policy](/docs/app/guides/content-security-policy.md)
- - [CSS-in-JS](/docs/app/guides/css-in-js.md)
- - [Custom Server](/docs/app/guides/custom-server.md)
- - [Data Security](/docs/app/guides/data-security.md)
- - [Debugging](/docs/app/guides/debugging.md)
- - [Draft Mode](/docs/app/guides/draft-mode.md)
- - [Environment Variables](/docs/app/guides/environment-variables.md)
- - [Forms](/docs/app/guides/forms.md)
- - [ISR](/docs/app/guides/incremental-static-regeneration.md)
- - [Instrumentation](/docs/app/guides/instrumentation.md)
- - [Internationalization](/docs/app/guides/internationalization.md)
- - [JSON-LD](/docs/app/guides/json-ld.md)
- - [Lazy Loading](/docs/app/guides/lazy-loading.md)
- - [Development Environment](/docs/app/guides/local-development.md)
- - [Next.js MCP Server](/docs/app/guides/mcp.md)
- - [MDX](/docs/app/guides/mdx.md)
- - [Memory Usage](/docs/app/guides/memory-usage.md)
- - [Migrating](/docs/app/guides/migrating.md)
- - [Multi-tenant](/docs/app/guides/multi-tenant.md)
- - [Multi-zones](/docs/app/guides/multi-zones.md)
- - [OpenTelemetry](/docs/app/guides/open-telemetry.md)
- - [Package Bundling](/docs/app/guides/package-bundling.md)
- - [Prefetching](/docs/app/guides/prefetching.md)
- - [Production](/docs/app/guides/production-checklist.md)
- - [PWAs](/docs/app/guides/progressive-web-apps.md)
- - [Redirecting](/docs/app/guides/redirecting.md)
- - [Sass](/docs/app/guides/sass.md)
- - [Scripts](/docs/app/guides/scripts.md)
- - [Self-Hosting](/docs/app/guides/self-hosting.md)
- - [SPAs](/docs/app/guides/single-page-applications.md)
- - [Static Exports](/docs/app/guides/static-exports.md)
- - [Tailwind CSS v3](/docs/app/guides/tailwind-v3-css.md)
- - [Testing](/docs/app/guides/testing.md)
- - [Third Party Libraries](/docs/app/guides/third-party-libraries.md)
- - [Upgrading](/docs/app/guides/upgrading.md)
- - [Videos](/docs/app/guides/videos.md)
 
 --------------------------------------------------------------------------------
-title: "How to add analytics to your Next.js application"
+title: "Analytics"
 description: "Measure and track page performance using Next.js Speed Insights"
 source: "https://nextjs.org/docs/app/guides/analytics"
 --------------------------------------------------------------------------------
@@ -6210,7 +6348,7 @@ useReportWebVitals((metric) => {
 
 
 --------------------------------------------------------------------------------
-title: "How to implement authentication in Next.js"
+title: "Authentication"
 description: "Learn how to implement authentication in your Next.js application."
 source: "https://nextjs.org/docs/app/guides/authentication"
 --------------------------------------------------------------------------------
@@ -7590,7 +7728,7 @@ To continue learning about authentication and security, check out the following 
 
 
 --------------------------------------------------------------------------------
-title: "How to use Next.js as a backend for your frontend"
+title: "Backend for Frontend"
 description: "Learn how to use Next.js as a backend framework"
 source: "https://nextjs.org/docs/app/guides/backend-for-frontend"
 --------------------------------------------------------------------------------
@@ -8399,7 +8537,7 @@ Learn more about Route Handlers and Proxy
 
 
 --------------------------------------------------------------------------------
-title: "Caching in Next.js"
+title: "Caching"
 description: "An overview of caching mechanisms in Next.js."
 source: "https://nextjs.org/docs/app/guides/caching"
 --------------------------------------------------------------------------------
@@ -8974,7 +9112,7 @@ export const getItem = cache(async (id) => {
 
 
 --------------------------------------------------------------------------------
-title: "How to configure Continuous Integration (CI) build caching"
+title: "CI Build Caching"
 description: "Learn how to configure CI to cache Next.js builds"
 source: "https://nextjs.org/docs/app/guides/ci-build-caching"
 --------------------------------------------------------------------------------
@@ -9147,7 +9285,7 @@ stage("Build") {
 
 
 --------------------------------------------------------------------------------
-title: "How to set a Content Security Policy (CSP) for your Next.js application"
+title: "Content Security Policy"
 description: "Learn how to set a Content Security Policy (CSP) for your Next.js application."
 source: "https://nextjs.org/docs/app/guides/content-security-policy"
 --------------------------------------------------------------------------------
@@ -9431,9 +9569,11 @@ Consider nonces when:
 For applications that do not require nonces, you can set the CSP header directly in your [`next.config.js`](/docs/app/api-reference/config/next-config-js.md) file:
 
 ```js filename="next.config.js"
+const isDev = process.env.NODE_ENV === 'development'
+
 const cspHeader = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline';
+    script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''};
     style-src 'self' 'unsafe-inline';
     img-src 'self' blob: data:;
     font-src 'self';
@@ -9690,7 +9830,7 @@ const cspHeader = `
 
 
 --------------------------------------------------------------------------------
-title: "How to use CSS-in-JS libraries"
+title: "CSS-in-JS"
 description: "Use CSS-in-JS libraries with Next.js"
 source: "https://nextjs.org/docs/app/guides/css-in-js"
 --------------------------------------------------------------------------------
@@ -9938,7 +10078,7 @@ export default function RootLayout({ children }) {
 
 
 --------------------------------------------------------------------------------
-title: "How to set up a custom server in Next.js"
+title: "Custom Server"
 description: "Start a Next.js app programmatically using a custom server."
 source: "https://nextjs.org/docs/app/guides/custom-server"
 --------------------------------------------------------------------------------
@@ -9966,9 +10106,9 @@ const handle = app.getRequestHandler()
 
 app.prepare().then(() => {
   createServer((req, res) => {
-    const parsedUrl = parse(req.url!, true)
-    handle(req, res, parsedUrl)
+    handle(req, res)
   }).listen(port)
+})
 
   console.log(
     `> Server listening at http://localhost:${port} as ${
@@ -9990,9 +10130,9 @@ const handle = app.getRequestHandler()
 
 app.prepare().then(() => {
   createServer((req, res) => {
-    const parsedUrl = parse(req.url, true)
-    handle(req, res, parsedUrl)
+    handle(req, res)
   }).listen(port)
+})
 
   console.log(
     `> Server listening at http://localhost:${port} as ${
@@ -10042,7 +10182,7 @@ The returned `app` can then be used to let Next.js handle requests as required.
 
 
 --------------------------------------------------------------------------------
-title: "How to think about data security in Next.js"
+title: "Data Security"
 description: "Learn the built-in data security features in Next.js and learn best practices for protecting your application's data."
 source: "https://nextjs.org/docs/app/guides/data-security"
 --------------------------------------------------------------------------------
@@ -10435,13 +10575,11 @@ However, for this to happen, the captured variables are sent to the client and b
 
 ### Overwriting encryption keys (advanced)
 
-When self-hosting your Next.js application across multiple servers, each server instance may end up with a different encryption key, leading to potential inconsistencies.
+When **self-hosting** your Next.js application across multiple servers, each server instance may end up with a different encryption key, leading to potential inconsistencies.
 
 To mitigate this, you can overwrite the encryption key using the `process.env.NEXT_SERVER_ACTIONS_ENCRYPTION_KEY` environment variable. Specifying this variable ensures that your encryption keys are persistent across builds, and all server instances use the same key. This variable **must** be AES-GCM encrypted.
 
 This is an advanced use case where consistent encryption behavior across multiple deployments is critical for your application. You should consider standard security practices such key rotation and signing.
-
-> **Good to know:** Next.js applications deployed to Vercel automatically handle this.
 
 ### Allowed origins (advanced)
 
@@ -10523,7 +10661,7 @@ Learn more about the topics mentioned in this guide.
 
 
 --------------------------------------------------------------------------------
-title: "How to use debugging tools with Next.js"
+title: "Debugging"
 description: "Learn how to debug your Next.js application with VS Code, Chrome DevTools, or Firefox DevTools."
 source: "https://nextjs.org/docs/app/guides/debugging"
 --------------------------------------------------------------------------------
@@ -10692,7 +10830,7 @@ To learn more about how to use a JavaScript debugger, take a look at the followi
 
 
 --------------------------------------------------------------------------------
-title: "How to preview content with Draft Mode in Next.js"
+title: "Draft Mode"
 description: "Next.js has draft mode to toggle between static and dynamic pages. You can learn how it works with App Router here."
 source: "https://nextjs.org/docs/app/guides/draft-mode"
 --------------------------------------------------------------------------------
@@ -10912,7 +11050,7 @@ See the API reference for more information on how to use Draft Mode.
 
 
 --------------------------------------------------------------------------------
-title: "How to use environment variables in Next.js"
+title: "Environment Variables"
 description: "Learn to add and access environment variables in your Next.js application."
 source: "https://nextjs.org/docs/app/guides/environment-variables"
 --------------------------------------------------------------------------------
@@ -11158,7 +11296,7 @@ For example, if `NODE_ENV` is `development` and you define a variable in both `.
 
 
 --------------------------------------------------------------------------------
-title: "How to create forms with Server Actions"
+title: "Forms"
 description: "Learn how to create forms in Next.js with React Server Actions."
 source: "https://nextjs.org/docs/app/guides/forms"
 --------------------------------------------------------------------------------
@@ -11653,7 +11791,7 @@ This will trigger the submission of the nearest `<form>` ancestor, which will in
 
 
 --------------------------------------------------------------------------------
-title: "How to implement Incremental Static Regeneration (ISR)"
+title: "ISR"
 description: "Learn how to create or update static pages at runtime with Incremental Static Regeneration."
 source: "https://nextjs.org/docs/app/guides/incremental-static-regeneration"
 --------------------------------------------------------------------------------
@@ -12002,7 +12140,7 @@ Learn how to [configure ISR](/docs/app/guides/self-hosting.md#caching-and-isr) w
 
 
 --------------------------------------------------------------------------------
-title: "How to set up instrumentation"
+title: "Instrumentation"
 description: "Learn how to use instrumentation to run code at server startup in your Next.js app"
 source: "https://nextjs.org/docs/app/guides/instrumentation"
 --------------------------------------------------------------------------------
@@ -12174,11 +12312,7 @@ Finally, ensure all special files inside `app/` are nested under `app/[lang]`. T
 ```tsx filename="app/[lang]/page.tsx" switcher
 // You now have access to the current locale
 // e.g. /en-US/products -> `lang` is "en-US"
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ lang: string }>
-}) {
+export default async function Page({ params }: PageProps<'/[lang]'>) {
   const { lang } = await params
   return ...
 }
@@ -12192,6 +12326,8 @@ export default async function Page({ params }) {
   return ...
 }
 ```
+
+> **Good to know:** `PageProps` and `LayoutProps` are globally available TypeScript helpers that provide strong typing for route parameters. See [PageProps](/docs/app/api-reference/file-conventions/page.md#page-props-helper) and [LayoutProps](/docs/app/api-reference/file-conventions/layout.md#layout-props-helper) for more details.
 
 The root layout can also be nested in the new folder (e.g. `app/[lang]/layout.js`).
 
@@ -12227,8 +12363,12 @@ const dictionaries = {
   nl: () => import('./dictionaries/nl.json').then((module) => module.default),
 }
 
-export const getDictionary = async (locale: 'en' | 'nl') =>
-  dictionaries[locale]()
+export type Locale = keyof typeof dictionaries
+
+export const hasLocale = (locale: string): locale is Locale =>
+  locale in dictionaries
+
+export const getDictionary = async (locale: Locale) => dictionaries[locale]()
 ```
 
 ```js filename="app/[lang]/dictionaries.js" switcher
@@ -12239,31 +12379,39 @@ const dictionaries = {
   nl: () => import('./dictionaries/nl.json').then((module) => module.default),
 }
 
+export const hasLocale = (locale) => locale in dictionaries
+
 export const getDictionary = async (locale) => dictionaries[locale]()
 ```
 
 Given the currently selected language, we can fetch the dictionary inside of a layout or page.
 
-```tsx filename="app/[lang]/page.tsx" switcher
-import { getDictionary } from './dictionaries'
+Since `lang` is typed as `string`, using `hasLocale` narrows the type to your supported locales. It also ensures a 404 is returned if a translation is missing, rather than a runtime error.
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ lang: 'en' | 'nl' }>
-}) {
+```tsx filename="app/[lang]/page.tsx" switcher
+import { notFound } from 'next/navigation'
+import { getDictionary, hasLocale } from './dictionaries'
+
+export default async function Page({ params }: PageProps<'/[lang]'>) {
   const { lang } = await params
-  const dict = await getDictionary(lang) // en
+
+  if (!hasLocale(lang)) notFound()
+
+  const dict = await getDictionary(lang)
   return <button>{dict.products.cart}</button> // Add to Cart
 }
 ```
 
 ```jsx filename="app/[lang]/page.js" switcher
-import { getDictionary } from './dictionaries'
+import { notFound } from 'next/navigation'
+import { getDictionary, hasLocale } from './dictionaries'
 
 export default async function Page({ params }) {
   const { lang } = await params
-  const dict = await getDictionary(lang) // en
+
+  if (!hasLocale(lang)) notFound()
+
+  const dict = await getDictionary(lang)
   return <button>{dict.products.cart}</button> // Add to Cart
 }
 ```
@@ -12282,10 +12430,7 @@ export async function generateStaticParams() {
 export default async function RootLayout({
   children,
   params,
-}: Readonly<{
-  children: React.ReactNode
-  params: Promise<{ lang: 'en-US' | 'de' }>
-}>) {
+}: LayoutProps<'/[lang]'>) {
   return (
     <html lang={(await params).lang}>
       <body>{children}</body>
@@ -12322,7 +12467,7 @@ export default async function RootLayout({ children, params }) {
 
 
 --------------------------------------------------------------------------------
-title: "How to implement JSON-LD in your Next.js application"
+title: "JSON-LD"
 description: "Learn how to add JSON-LD to your Next.js application to describe your content to search engines and AI."
 source: "https://nextjs.org/docs/app/guides/json-ld"
 --------------------------------------------------------------------------------
@@ -12411,7 +12556,7 @@ const jsonLd: WithContext<Product> = {
 
 
 --------------------------------------------------------------------------------
-title: "How to lazy load Client Components and libraries"
+title: "Lazy Loading"
 description: "Lazy load imported libraries and React Components to improve your application's loading performance."
 source: "https://nextjs.org/docs/app/guides/lazy-loading"
 --------------------------------------------------------------------------------
@@ -12584,7 +12729,7 @@ const ClientComponent = dynamic(() =>
 
 
 --------------------------------------------------------------------------------
-title: "How to optimize your local development environment"
+title: "Development Environment"
 description: "Learn how to optimize your local development environment with Next.js."
 source: "https://nextjs.org/docs/app/guides/local-development"
 --------------------------------------------------------------------------------
@@ -12818,7 +12963,7 @@ Share the trace file generated in the [Turbopack Tracing](#turbopack-tracing) se
 
 
 --------------------------------------------------------------------------------
-title: "Enabling Next.js MCP Server for Coding Agents"
+title: "Next.js MCP Server"
 description: "Learn how to use Next.js MCP support to allow coding agents access to your application state"
 source: "https://nextjs.org/docs/app/guides/mcp"
 --------------------------------------------------------------------------------
@@ -12997,7 +13142,7 @@ This architecture decouples the agent interface from the internal implementation
 
 
 --------------------------------------------------------------------------------
-title: "How to use markdown and MDX in Next.js"
+title: "MDX"
 description: "Learn how to configure MDX and use it in your Next.js apps."
 source: "https://nextjs.org/docs/app/guides/mdx"
 --------------------------------------------------------------------------------
@@ -13622,7 +13767,7 @@ module.exports = withMDX({
 
 
 --------------------------------------------------------------------------------
-title: "How to optimize memory usage"
+title: "Memory Usage"
 description: "Optimize memory used by your application in development and production."
 source: "https://nextjs.org/docs/app/guides/memory-usage"
 --------------------------------------------------------------------------------
@@ -13804,12 +13949,9 @@ source: "https://nextjs.org/docs/app/guides/migrating"
 
 
 
- - [App Router](/docs/app/guides/migrating/app-router-migration.md)
- - [Create React App](/docs/app/guides/migrating/from-create-react-app.md)
- - [Vite](/docs/app/guides/migrating/from-vite.md)
 
 --------------------------------------------------------------------------------
-title: "How to migrate from Pages to the App Router"
+title: "App Router"
 description: "Learn how to upgrade your existing Next.js application from the Pages Router to the App Router."
 source: "https://nextjs.org/docs/app/guides/migrating/app-router-migration"
 --------------------------------------------------------------------------------
@@ -14750,7 +14892,7 @@ Next.js provides Codemod transformations to help upgrade your codebase when a fe
 
 
 --------------------------------------------------------------------------------
-title: "How to migrate from Create React App to Next.js"
+title: "Create React App"
 description: "Learn how to migrate your existing React application from Create React App to Next.js."
 source: "https://nextjs.org/docs/app/guides/migrating/from-create-react-app"
 --------------------------------------------------------------------------------
@@ -15341,7 +15483,7 @@ If everything worked, you now have a functioning Next.js application running as 
 
 
 --------------------------------------------------------------------------------
-title: "How to migrate from Vite to Next.js"
+title: "Vite"
 description: "Learn how to migrate your existing React application from Vite to Next.js."
 source: "https://nextjs.org/docs/app/guides/migrating/from-vite"
 --------------------------------------------------------------------------------
@@ -15947,7 +16089,7 @@ do next:
 
 
 --------------------------------------------------------------------------------
-title: "How to build multi-tenant apps in Next.js"
+title: "Multi-tenant"
 description: "Learn how to build multi-tenant apps with the App Router."
 source: "https://nextjs.org/docs/app/guides/multi-tenant"
 --------------------------------------------------------------------------------
@@ -15958,7 +16100,7 @@ If you are looking to build a single Next.js application that serves multiple te
 
 
 --------------------------------------------------------------------------------
-title: "How to build micro-frontends using multi-zones and Next.js"
+title: "Multi-zones"
 description: "Learn how to build micro-frontends using Next.js Multi-Zones to deploy multiple Next.js apps under a single domain."
 source: "https://nextjs.org/docs/app/guides/multi-zones"
 --------------------------------------------------------------------------------
@@ -16092,7 +16234,7 @@ See [`serverActions.allowedOrigins`](/docs/app/api-reference/config/next-config-
 
 
 --------------------------------------------------------------------------------
-title: "How to set up instrumentation with OpenTelemetry"
+title: "OpenTelemetry"
 description: "Learn how to instrument your Next.js app with OpenTelemetry."
 source: "https://nextjs.org/docs/app/guides/open-telemetry"
 --------------------------------------------------------------------------------
@@ -16434,20 +16576,71 @@ This zero-length span represents the time when the first byte has been sent in t
 
 
 --------------------------------------------------------------------------------
-title: "How to optimize package bundling"
-description: "Learn how to optimize your application's server and client bundles."
+title: "Package Bundling"
+description: "Learn how to analyze and optimize your application's server and client bundles with the Next.js Bundle Analyzer for Turbopack, and the `@next/bundle-analyzer` plugin for Webpack."
 source: "https://nextjs.org/docs/app/guides/package-bundling"
 --------------------------------------------------------------------------------
 
 # Package Bundling
 
-Bundling external packages can significantly improve the performance of your application. By default, packages imported inside Server Components and Route Handlers are automatically bundled by Next.js. This page will guide you through how to analyze and further optimize package bundling.&#x20;
+Bundling is the process of combining your application code and its dependencies into optimized output files for the client and server. Smaller bundles load faster, reduce JavaScript execution time, improve [Core Web Vitals](https://web.dev/articles/vitals), and lower server cold start times.
 
-## Analyzing JavaScript bundles
+Next.js automatically optimizes bundles by code splitting, tree-shaking, and other techniques. However, there are some cases where you may need to optimize your bundles manually.
 
-[`@next/bundle-analyzer`](https://www.npmjs.com/package/@next/bundle-analyzer) is a plugin for Next.js that helps you manage the size of your application bundles. It generates a visual report of the size of each package and their dependencies. You can use the information to remove large dependencies, split, or [lazy-load](/docs/app/guides/lazy-loading.md) your code.
+There are two tools for analyzing your application's bundles:
 
-### Installation
+* [Next.js Bundle Analyzer for Turbopack (experimental)](#nextjs-bundle-analyzer-experimental)
+* [`@next/bundle-analyzer` plugin for Webpack](#nextbundle-analyzer-for-webpack)
+
+This guide will walk you through how to use each tool and how to [optimize large bundles](#optimizing-large-bundles).
+
+## Next.js Bundle Analyzer (Experimental)
+
+> Available in v16.1 and later. You can share feedback in the [dedicated GitHub discussion](https://github.com/vercel/next.js/discussions/86731) and view the demo at [turbopack-bundle-analyzer-demo.vercel.sh](https://turbopack-bundle-analyzer-demo.vercel.sh/).
+
+The Next.js Bundle Analyzer is integrated with Turbopack's module graph. You can inspect server and client modules with precise import tracing, making it easier to find large dependencies. Open the interactive Bundle Analyzer demo to explore the module graph.
+
+### Step 1: Run the Turbopack Bundle Analyzer
+
+To get started, run the following command and open up the interactive view in your browser.
+
+```bash filename="Terminal"
+npx next experimental-analyze
+```
+
+### Step 2: Filter and inspect modules
+
+Within the UI, you can filter by route, environment (client or server), and type (JavaScript, CSS, JSON), or search by file:
+
+### Step 3: Trace modules with import chains
+
+The treemap shows each module as a rectangle. Where the size of the module is represented by the area of the rectangle.
+
+Click a module to see its size, inspect its full import chain and see exactly where it’s used in your application:
+
+![Image description missing](https://h8DxKfmAPhn8O0p3.public.blob.vercel-storage.com/docs/light/bundle-analyzer.png)
+
+### Step 4: Write output to disk for sharing or diffing
+
+If you want to share the analysis with teammates or compare bundle sizes before/after optimizations, you can skip the interactive view and save the analysis as a static file with the `--output` flag:
+
+```bash filename="Terminal"
+npx next experimental-analyze --output
+```
+
+This command writes the output to `.next/diagnostics/analyze`. You can copy this directory elsewhere to compare results:
+
+```bash filename="Terminal"
+cp -r .next/diagnostics/analyze ./analyze-before-refactor
+```
+
+> More options are available for the Bundle Analyzer, see Next.js CLI reference docs for the full list.
+
+## `@next/bundle-analyzer` for Webpack
+
+The [`@next/bundle-analyzer`](https://www.npmjs.com/package/@next/bundle-analyzer) is a plugin that helps you manage the size of your application bundles. It generates a visual report of the size of each package and their dependencies. You can use the information to remove large dependencies, split, or [lazy-load](/docs/app/guides/lazy-loading.md) your code.
+
+### Step 1: Installation
 
 Install the plugin by running the following command:
 
@@ -16472,7 +16665,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 module.exports = withBundleAnalyzer(nextConfig)
 ```
 
-### Generating a report
+### Step 2: Generating a report
 
 Run the following command to analyze your bundles:
 
@@ -16484,13 +16677,15 @@ ANALYZE=true yarn build
 ANALYZE=true pnpm build
 ```
 
-The report will open three new tabs in your browser, which you can inspect. Periodically evaluating your application's bundles can help you maintain application performance over time.
+The report will open three new tabs in your browser, which you can inspect.
 
-## Optimizing package imports
+## Optimizing large bundles
 
-Some packages, such as icon libraries, can export hundreds of modules, which can cause performance issues in development and production.
+Once you've identified a large module, the solution will depend on your use case. Below are common causes and how to fix them:
 
-You can optimize how these packages are imported by adding the [`optimizePackageImports`](/docs/app/api-reference/config/next-config-js/optimizePackageImports.md) option to your `next.config.js`. This option will only load the modules you *actually* use, while still giving you the convenience of writing import statements with many named exports.
+### Packages with many exports
+
+If you're using a package that exports hundreds of modules (such as icon and utility libraries), you can optimize how those imports are resolved using the [`optimizePackageImports`](/docs/app/api-reference/config/next-config-js/optimizePackageImports.md) option in your `next.config.js` file. This option will only load the modules you *actually* use, while still giving you the convenience of writing import statements with many named exports.
 
 ```js filename="next.config.js"
 /** @type {import('next').NextConfig} */
@@ -16503,11 +16698,88 @@ const nextConfig = {
 module.exports = nextConfig
 ```
 
-Next.js also optimizes some libraries automatically, thus they do not need to be included in the optimizePackageImports list. See the [full list](/docs/app/api-reference/config/next-config-js/optimizePackageImports.md).
+> **Good to know:** Next.js also optimizes some libraries automatically, thus they do not need to be included in the `optimizePackageImports` list. See the [full list](/docs/app/api-reference/config/next-config-js/optimizePackageImports.md) of supported packages.
 
-## Opting specific packages out of bundling
+### Heavy client workloads
 
-Since packages imported inside Server Components and Route Handlers are automatically bundled by Next.js, you can opt specific packages out of bundling using the [`serverExternalPackages`](/docs/app/api-reference/config/next-config-js/serverExternalPackages.md) option in your `next.config.js`.
+A common cause of large client bundles is doing expensive rendering work in Client Components. This often happens with libraries that exist only to transform data into UI, such as syntax highlighting, chart rendering, or markdown parsing.
+
+If that work does not require browser APIs or user interaction, it can be run in a Server Component.
+
+In this example, a prism based highlighter runs in a Client Component. Even though the final output is just a `<code>` block, the entire highlighting library is bundled into the client JavaScript bundle:
+
+```tsx filename="app/blog/[slug]/page.tsx"
+'use client'
+
+import Highlight from 'prism-react-renderer'
+import theme from 'prism-react-renderer/themes/github'
+
+export default function Page() {
+  const code = `export function hello() {
+    console.log("hi")
+  }`
+
+  return (
+    <article>
+      <h1>Blog Post Title</h1>
+
+      {/* The prism package and its tokenization logic are shipped to the client */}
+      <Highlight code={code} language="tsx" theme={theme}>
+        {({ className, style, tokens, getLineProps, getTokenProps }) => (
+          <pre className={className} style={style}>
+            <code>
+              {tokens.map((line, i) => (
+                <div key={i} {...getLineProps({ line })}>
+                  {line.map((token, key) => (
+                    <span key={key} {...getTokenProps({ token })} />
+                  ))}
+                </div>
+              ))}
+            </code>
+          </pre>
+        )}
+      </Highlight>
+    </article>
+  )
+}
+```
+
+This increases bundle size because the client must download and execute the highlighting library, even though the result is static HTML.
+
+Instead, move the highlighting logic to a Server Component and render the final HTML on the server. The client will only receive the rendered markup.
+
+```tsx filename="app/blog/[slug]/page.tsx"
+import { codeToHtml } from 'shiki'
+
+export default async function Page() {
+  const code = `export function hello() {
+    console.log("hi")
+  }`
+
+  // The Shiki package runs on the server and is never bundled for the client.
+  const highlightedHtml = await codeToHtml(code, {
+    lang: 'tsx',
+    theme: 'github-dark',
+  })
+
+  return (
+    <article>
+      <h1>Blog Post Title</h1>
+
+      {/* Client receives plain markup */}
+      <pre>
+        <code dangerouslySetInnerHTML={{ __html: highlightedHtml }} />
+      </pre>
+    </article>
+  )
+}
+```
+
+### Opting specific packages out of bundling
+
+Packages imported inside Server Components and Route Handlers are automatically bundled by Next.js.
+
+You can opt specific packages out of bundling using the [`serverExternalPackages`](/docs/app/api-reference/config/next-config-js/serverExternalPackages.md) option in your `next.config.js`.
 
 ```js filename="next.config.js"
 /** @type {import('next').NextConfig} */
@@ -16517,8 +16789,6 @@ const nextConfig = {
 
 module.exports = nextConfig
 ```
-
-Next.js includes a list of popular packages that currently are working on compatibility and automatically opt-ed out. See the [full list](/docs/app/api-reference/config/next-config-js/serverExternalPackages.md).
 
 
 Learn more about optimizing your application for production.
@@ -16901,7 +17171,7 @@ export function HoverPrefetchLink({ href, children }) {
 
 
 --------------------------------------------------------------------------------
-title: "How to optimize your Next.js application for production"
+title: "Production"
 description: "Recommendations to ensure the best performance and user experience before taking your Next.js application to production."
 source: "https://nextjs.org/docs/app/guides/production-checklist"
 --------------------------------------------------------------------------------
@@ -16988,7 +17258,7 @@ Before going to production, you can run `next build` to build your application l
 
 ### Analyzing bundles
 
-Use the [`@next/bundle-analyzer` plugin](/docs/app/guides/package-bundling.md#analyzing-javascript-bundles) to analyze the size of your JavaScript bundles and identify large modules and dependencies that might be impacting your application's performance.
+Use the [`@next/bundle-analyzer` plugin](/docs/app/guides/package-bundling.md#nextbundle-analyzer-for-webpack) to analyze the size of your JavaScript bundles and identify large modules and dependencies that might be impacting your application's performance.
 
 Additionally, the following tools can help you understand the impact of adding new dependencies to your application:
 
@@ -16999,7 +17269,7 @@ Additionally, the following tools can help you understand the impact of adding n
 
 
 --------------------------------------------------------------------------------
-title: "How to build a Progressive Web Application (PWA) with Next.js"
+title: "PWAs"
 description: "Learn how to build a Progressive Web Application (PWA) with Next.js."
 source: "https://nextjs.org/docs/app/guides/progressive-web-apps"
 --------------------------------------------------------------------------------
@@ -17660,7 +17930,264 @@ Learn more about defining [Content Security Policies](/docs/app/guides/content-s
 
 
 --------------------------------------------------------------------------------
-title: "How to handle redirects in Next.js"
+title: "Public pages"
+description: "Learn how to build public, "static" pages that share data across users, such as landing pages, list pages (products, blogs, etc.), marketing and news sites."
+source: "https://nextjs.org/docs/app/guides/public-static-pages"
+--------------------------------------------------------------------------------
+
+# Public pages
+
+Public pages show the same content to every user. Common examples include landing pages, marketing pages, and product pages.
+
+Since data is shared, these kind of pages can be [prerendered](/docs/app/glossary.md#prerendering) ahead of time and reused. This leads to faster page loads and lower server costs.
+
+This guide will show you how to build public pages that share data across users.
+
+## Example
+
+As an example, we'll build a product list page.
+
+We'll start with a static header, add a product list with async external data, and learn how to render it without blocking the response. Finally, we'll add a user-specific promotion banner without switching the entire page to [request-time rendering](/docs/app/glossary.md#request-time-rendering).
+
+You can find the resources used in this example here:
+
+* [Video](https://youtu.be/F6romq71KtI)
+* [Demo](https://cache-components-public-pages.labs.vercel.dev/)
+* [Code](https://github.com/vercel-labs/cache-components-public-pages)
+
+### Step 1: Add a simple header
+
+Let's start with a simple header.
+
+```tsx filename="app/products/page.tsx"
+// Static component
+function Header() {
+  return <h1>Shop</h1>
+}
+
+export default async function Page() {
+  return (
+    <>
+      <Header />
+    </>
+  )
+}
+```
+
+#### Static components
+
+The `<Header />` component doesn't depend on any inputs that change between requests, such as: external data, request headers, route params, the current time, or random values.
+
+Since its output never changes and can be determined ahead of time, this kind of component is called a **static** component. With no reason to wait for a request, Next.js can safely **prerender** the page at [build time](/docs/app/glossary.md#build-time).
+
+We can confirm this by running [`next build`](/docs/app/api-reference/cli/next.md#next-build-options).
+
+```bash filename="Terminal"
+Route (app)      Revalidate  Expire
+┌ ○ /products           15m      1y
+└ ○ /_not-found
+
+○  (Static)  prerendered as static content
+```
+
+Notice that the product route is marked as static, even though we didn't add any explicit configuration.
+
+### Step 2: Add the product list
+
+Now, let's fetch and render our product list.
+
+```tsx filename="app/products/page.tsx"
+import db from '@/db'
+import { List } from '@/app/products/ui'
+
+function Header() {}
+
+// Dynamic component
+async function ProductList() {
+  const products = await db.product.findMany()
+  return <List items={products} />
+}
+
+export default async function Page() {
+  return (
+    <>
+      <Header />
+      <ProductList />
+    </>
+  )
+}
+```
+
+Unlike the header, the product list depends on external data.
+
+#### Dynamic components
+
+Since this data **can** change over time, the rendered output is no longer guaranteed to be stable. This makes the product list a **dynamic** component.
+
+Without guidance, the framework assumes you want to fetch **fresh** data on every user request. This design choice reflects standard web behavior where a new server request renders the page.
+
+However, if this component is rendered at request time, fetching its data will delay the **entire** route from responding. If we refresh the page, we can see this happen.
+
+Even though the header is rendered instantly, it can't be sent to the browser until the product list has finished fetching.
+
+To protect us from this performance cliff, Next.js will show us a [warning](/docs/messages/blocking-route.md) the first time we **await** data: `Blocking data was accessed outside of Suspense`
+
+At this point, we have to decide how to **unblock** the response. Either:
+
+* [**Cache**](/docs/app/glossary.md#cache-components) the component, so it becomes **stable** and can be prerendered with the rest of the page.
+* [**Stream**](/docs/app/glossary.md#streaming) the component, so it becomes **non-blocking** and the rest of the page doesn't have to wait for it.
+
+In our case, the product catalog is shared across all users, so caching is the right choice.
+
+### Cache components
+
+We can mark a function as cacheable using the [`'use cache'`](/docs/app/api-reference/directives/use-cache.md) directive.
+
+```tsx filename="app/products/page.tsx"
+import db from '@/db'
+import { List } from '@/app/products/ui'
+
+function Header() {}
+
+// Cache component
+async function ProductList() {
+  'use cache'
+  const products = await db.product.findMany()
+  return <List items={products} />
+}
+
+export default async function Page() {
+  return (
+    <>
+      <Header />
+      <ProductList />
+    </>
+  )
+}
+```
+
+This turns it into a [cache component](/docs/app/glossary.md#cache-components). The first time it runs, whatever we return will be cached and reused.
+
+If a cache component's inputs are available **before** the request arrives, it can be prerendered just like a static component.
+
+If we refresh again, we can see the page loads instantly because the cache component doesn't block the response. And, if we run `next build` again, we can confirm the page is still static:
+
+```bash filename="Terminal"
+Route (app)      Revalidate  Expire
+┌ ○ /products           15m      1y
+└ ○ /_not-found
+
+○  (Static)  prerendered as static content
+```
+
+But, pages rarely stay static forever.
+
+### Step 3: Add a dynamic promotion banner
+
+Sooner or later, even simple pages need some dynamic content. To demonstrate this, let's add a promotional banner:
+
+```tsx filename="app/products/page.tsx"
+import db from '@/db'
+import { List, Promotion } from '@/app/products/ui'
+import { getPromotion } from '@/app/products/data'
+
+function Header() {}
+
+async function ProductList() {}
+
+// Dynamic component
+async function PromotionContent() {
+  const promotion = await getPromotion()
+  return <Promotion data={promotion} />
+}
+
+export default async function Page() {
+  return (
+    <>
+      <PromotionContent />
+      <Header />
+      <ProductList />
+    </>
+  )
+}
+```
+
+Once again, this starts off as dynamic. And as before, introducing blocking behavior triggers a Next.js warning.
+
+Last time, the data was shared, so it could be cached. This time, the promotion depends on request specific inputs like the user's location and A/B tests, so we can't cache our way out of the blocking behavior.
+
+### Partial prerendering
+
+Adding dynamic content doesn't mean we have to go back to a fully blocking render. We can unblock the response with streaming.
+
+Next.js supports streaming by default. We can use a [Suspense boundary](/docs/app/glossary.md#suspense-boundary) to tell the framework where to slice the streamed response into *chunks*, and what fallback UI to show while content loads.
+
+```tsx filename="app/products/page.tsx"
+import { Suspense } from 'react'
+import db from '@/db'
+import { List, Promotion, PromotionSkeleton } from '@/app/products/ui'
+import { getPromotion } from '@/app/products/data'
+
+function Header() {}
+
+async function ProductList() {}
+
+// Dynamic component (streamed)
+async function PromotionContent() {
+  const promotion = await getPromotion()
+  return <Promotion data={promotion} />
+}
+
+export default async function Page() {
+  return (
+    <>
+      <Suspense fallback={<PromotionSkeleton />}>
+        <PromotionContent />
+      </Suspense>
+      <Header />
+      <ProductList />
+    </>
+  )
+}
+```
+
+The fallback is prerendered alongside the rest of our static and cached content. The inner component streams in later, once its async work completes.
+
+With this change, Next.js can separate prerenderable work from request-time work and the route becomes [partially prerendered](/docs/app/glossary.md#partial-prerendering-ppr).
+
+Again, we can confirm this by running `next build`:
+
+```bash filename="Terminal"
+Route (app)      Revalidate  Expire
+┌ ◐ /products    15m      1y
+└ ◐ /_not-found
+
+◐  (Partial Prerender)  Prerendered as static HTML with dynamic server-streamed content
+```
+
+At [**build time**](/docs/app/glossary.md#build-time), most of the page, including the header, product list and promotion fallback, is rendered, cached and pushed to a content delivery network.
+
+At [**request time**](/docs/app/glossary.md#request-time), the prerendered part is served instantly from a CDN node close to the user.
+
+In parallel, the user specific promotion is rendered on the server, streamed to the client, and swapped into the fallback slot.
+
+If we refresh the page one last time, we can see most of the page loads instantly, while the dynamic parts stream in as they become available.
+
+### Next steps
+
+We've learned how to build mostly static pages that include pockets of dynamic content.
+
+We started with a static page, added async work, and resolved the blocking behavior by caching what could be prerendered, and streaming what couldn't.
+
+In future guides, we'll learn how to:
+
+* Revalidate prerendered pages or cached data.
+* Create variants of the same page with route params.
+* Create private pages with personalized user data.
+
+
+--------------------------------------------------------------------------------
+title: "Redirecting"
 description: "Learn the different ways to handle redirects in Next.js."
 source: "https://nextjs.org/docs/app/guides/redirecting"
 --------------------------------------------------------------------------------
@@ -17669,17 +18196,17 @@ source: "https://nextjs.org/docs/app/guides/redirecting"
 
 There are a few ways you can handle redirects in Next.js. This page will go through each available option, use cases, and how to manage large numbers of redirects.
 
-| API                                                           | Purpose                                           | Where                                             | Status Code                            |
-| ------------------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | -------------------------------------- |
-| [`redirect`](#redirect-function)                              | Redirect user after a mutation or event           | Server Components, Server Actions, Route Handlers | 307 (Temporary) or 303 (Server Action) |
-| [`permanentRedirect`](#permanentredirect-function)            | Redirect user after a mutation or event           | Server Components, Server Actions, Route Handlers | 308 (Permanent)                        |
-| [`useRouter`](#userouter-hook)                                | Perform a client-side navigation                  | Event Handlers in Client Components               | N/A                                    |
-| [`redirects` in `next.config.js`](#redirects-in-nextconfigjs) | Redirect an incoming request based on a path      | `next.config.js` file                             | 307 (Temporary) or 308 (Permanent)     |
-| [`NextResponse.redirect`](#nextresponseredirect-in-proxy)     | Redirect an incoming request based on a condition | Proxy                                             | Any                                    |
+| API                                                           | Purpose                                           | Where                                               | Status Code                            |
+| ------------------------------------------------------------- | ------------------------------------------------- | --------------------------------------------------- | -------------------------------------- |
+| [`redirect`](#redirect-function)                              | Redirect user after a mutation or event           | Server Components, Server Functions, Route Handlers | 307 (Temporary) or 303 (Server Action) |
+| [`permanentRedirect`](#permanentredirect-function)            | Redirect user after a mutation or event           | Server Components, Server Functions, Route Handlers | 308 (Permanent)                        |
+| [`useRouter`](#userouter-hook)                                | Perform a client-side navigation                  | Event Handlers in Client Components                 | N/A                                    |
+| [`redirects` in `next.config.js`](#redirects-in-nextconfigjs) | Redirect an incoming request based on a path      | `next.config.js` file                               | 307 (Temporary) or 308 (Permanent)     |
+| [`NextResponse.redirect`](#nextresponseredirect-in-proxy)     | Redirect an incoming request based on a condition | Proxy                                               | Any                                    |
 
 ## `redirect` function
 
-The `redirect` function allows you to redirect the user to another URL. You can call `redirect` in [Server Components](/docs/app/getting-started/server-and-client-components.md), [Route Handlers](/docs/app/api-reference/file-conventions/route.md), and [Server Actions](/docs/app/getting-started/updating-data.md).
+The `redirect` function allows you to redirect the user to another URL. You can call `redirect` in [Server Components](/docs/app/getting-started/server-and-client-components.md), [Route Handlers](/docs/app/api-reference/file-conventions/route.md), and [Server Functions](/docs/app/getting-started/updating-data.md).
 
 `redirect` is often used after a mutation or event. For example, creating a post:
 
@@ -17731,7 +18258,7 @@ See the [`redirect` API reference](/docs/app/api-reference/functions/redirect.md
 
 ## `permanentRedirect` function
 
-The `permanentRedirect` function allows you to **permanently** redirect the user to another URL. You can call `permanentRedirect` in [Server Components](/docs/app/getting-started/server-and-client-components.md), [Route Handlers](/docs/app/api-reference/file-conventions/route.md), and [Server Actions](/docs/app/getting-started/updating-data.md).
+The `permanentRedirect` function allows you to **permanently** redirect the user to another URL. You can call `permanentRedirect` in [Server Components](/docs/app/getting-started/server-and-client-components.md), [Route Handlers](/docs/app/api-reference/file-conventions/route.md), and [Server Functions](/docs/app/getting-started/updating-data.md).
 
 `permanentRedirect` is often used after a mutation or event that changes an entity's canonical URL, such as updating a user's profile URL after they change their username:
 
@@ -18187,7 +18714,7 @@ export function GET(request) {
 
 
 --------------------------------------------------------------------------------
-title: "How to use Sass"
+title: "Sass"
 description: "Style your Next.js application using Sass."
 source: "https://nextjs.org/docs/app/guides/sass"
 --------------------------------------------------------------------------------
@@ -18293,7 +18820,7 @@ export default function Page() {
 
 
 --------------------------------------------------------------------------------
-title: "How to load and optimize scripts"
+title: "Scripts"
 description: "Optimize 3rd party scripts with the built-in Script component."
 source: "https://nextjs.org/docs/app/guides/scripts"
 --------------------------------------------------------------------------------
@@ -18389,7 +18916,7 @@ Refer to the [`next/script`](/docs/app/api-reference/components/script.md#strate
 
 > **Warning:** The `worker` strategy is not yet stable and does not yet work with the App Router. Use with caution.
 
-Scripts that use the `worker` strategy are offloaded and executed in a web worker with [Partytown](https://partytown.builder.io/). This can improve the performance of your site by dedicating the main thread to the rest of your application code.
+Scripts that use the `worker` strategy are offloaded and executed in a web worker with [Partytown](https://partytown.qwik.dev/). This can improve the performance of your site by dedicating the main thread to the rest of your application code.
 
 This strategy is still experimental and can only be used if the `nextScriptWorkers` flag is enabled in `next.config.js`:
 
@@ -18407,7 +18934,7 @@ Then, run `next` (normally `npm run dev` or `yarn dev`) and Next.js will guide y
 npm run dev
 ```
 
-You'll see instructions like these: Please install Partytown by running `npm install @builder.io/partytown`
+You'll see instructions like these: Please install Partytown by running `npm install @qwik.dev/partytown`
 
 Once setup is complete, defining `strategy="worker"` will automatically instantiate Partytown in your application and offload the script to a web worker.
 
@@ -18435,7 +18962,7 @@ export default function Home() {
 }
 ```
 
-There are a number of trade-offs that need to be considered when loading a third-party script in a web worker. Please see Partytown's [tradeoffs](https://partytown.builder.io/trade-offs) documentation for more information.
+There are a number of trade-offs that need to be considered when loading a third-party script in a web worker. Please see Partytown's [tradeoffs](https://partytown.qwik.dev/trade-offs) documentation for more information.
 
 ### Inline Scripts
 
@@ -18556,7 +19083,7 @@ Learn more about the next/script API.
 
 
 --------------------------------------------------------------------------------
-title: "How to self-host your Next.js application"
+title: "Self-Hosting"
 description: "Learn how to self-host your Next.js application on a Node.js server, Docker image, or static HTML files (static exports)."
 source: "https://nextjs.org/docs/app/guides/self-hosting"
 --------------------------------------------------------------------------------
@@ -18763,7 +19290,7 @@ module.exports = {
 
 ## Usage with CDNs
 
-When using a CDN in front on your Next.js application, the page will include `Cache-Control: private` response header when dynamic APIs are accessed. This ensures that the resulting HTML page is marked as non-cacheable. If the page is fully prerendered to static, it will include `Cache-Control: public` to allow the page to be cached on the CDN.
+When using a CDN in front of your Next.js application, the page will include `Cache-Control: private` response header when dynamic APIs are accessed. This ensures that the resulting HTML page is marked as non-cacheable. If the page is fully prerendered to static, it will include `Cache-Control: public` to allow the page to be cached on the CDN.
 
 If you don't need a mix of both static and dynamic components, you can make your entire route static and cache the output HTML on a CDN. This Automatic Static Optimization is the default behavior when running `next build` if dynamic APIs are not used.
 
@@ -18777,7 +19304,7 @@ When stopping the server, ensure a graceful shutdown by sending `SIGINT` or `SIG
 
 
 --------------------------------------------------------------------------------
-title: "How to build single-page applications with Next.js"
+title: "SPAs"
 description: "Next.js fully supports building Single-Page Applications (SPAs)."
 source: "https://nextjs.org/docs/app/guides/single-page-applications"
 --------------------------------------------------------------------------------
@@ -19205,7 +19732,7 @@ If you are already using a SPA with the Pages Router, you can learn how to [incr
 
 
 --------------------------------------------------------------------------------
-title: "How to create a static export of your Next.js application"
+title: "Static Exports"
 description: "Next.js enables starting as a static site or Single-Page Application (SPA), then later optionally upgrading to use features that require a server."
 source: "https://nextjs.org/docs/app/guides/static-exports"
 --------------------------------------------------------------------------------
@@ -19522,7 +20049,7 @@ server {
 
 
 --------------------------------------------------------------------------------
-title: "How to install Tailwind CSS v3 in your Next.js application"
+title: "Tailwind CSS v3"
 description: "Style your Next.js Application using Tailwind CSS v3 for broader browser support."
 source: "https://nextjs.org/docs/app/guides/tailwind-v3-css"
 --------------------------------------------------------------------------------
@@ -19661,13 +20188,9 @@ Since `async` Server Components are new to the React ecosystem, some tools do no
 
 See the guides below to learn how to set up Next.js with these commonly used testing tools:
 
- - [Cypress](/docs/app/guides/testing/cypress.md)
- - [Jest](/docs/app/guides/testing/jest.md)
- - [Playwright](/docs/app/guides/testing/playwright.md)
- - [Vitest](/docs/app/guides/testing/vitest.md)
 
 --------------------------------------------------------------------------------
-title: "How to set up Cypress with Next.js"
+title: "Cypress"
 description: "Learn how to set up Cypress with Next.js for End-to-End (E2E) and Component Testing."
 source: "https://nextjs.org/docs/app/guides/testing/cypress"
 --------------------------------------------------------------------------------
@@ -19894,7 +20417,7 @@ You can learn more about Cypress and Continuous Integration from these resources
 
 
 --------------------------------------------------------------------------------
-title: "How to set up Jest with Next.js"
+title: "Jest"
 description: "Learn how to set up Jest with Next.js for Unit Testing and Snapshot Testing."
 source: "https://nextjs.org/docs/app/guides/testing/jest"
 --------------------------------------------------------------------------------
@@ -20132,7 +20655,7 @@ For further reading, you may find these resources helpful:
 
 
 --------------------------------------------------------------------------------
-title: "How to set up Playwright with Next.js"
+title: "Playwright"
 description: "Learn how to set up Playwright with Next.js for End-to-End (E2E) Testing."
 source: "https://nextjs.org/docs/app/guides/testing/playwright"
 --------------------------------------------------------------------------------
@@ -20232,7 +20755,7 @@ You can learn more about Playwright and Continuous Integration from these resour
 
 
 --------------------------------------------------------------------------------
-title: "How to set up Vitest with Next.js"
+title: "Vitest"
 description: "Learn how to set up Vitest with Next.js for Unit Testing."
 source: "https://nextjs.org/docs/app/guides/testing/vitest"
 --------------------------------------------------------------------------------
@@ -20384,7 +20907,7 @@ You may find these resources helpful:
 
 
 --------------------------------------------------------------------------------
-title: "How to optimize third-party libraries"
+title: "Third Party Libraries"
 description: "Optimize the performance of third-party libraries in your application with the `@next/third-parties` package."
 source: "https://nextjs.org/docs/app/guides/third-party-libraries"
 --------------------------------------------------------------------------------
@@ -20682,7 +21205,7 @@ export default function Page() {
 
 
 --------------------------------------------------------------------------------
-title: "Upgrade Guides"
+title: "Upgrading"
 description: "Learn how to upgrade to the latest versions of Next.js."
 source: "https://nextjs.org/docs/app/guides/upgrading"
 --------------------------------------------------------------------------------
@@ -20691,10 +21214,6 @@ source: "https://nextjs.org/docs/app/guides/upgrading"
 
 Learn how to upgrade to the latest versions of Next.js following the versions-specific guides:
 
- - [Codemods](/docs/app/guides/upgrading/codemods.md)
- - [Version 14](/docs/app/guides/upgrading/version-14.md)
- - [Version 15](/docs/app/guides/upgrading/version-15.md)
- - [Version 16](/docs/app/guides/upgrading/version-16.md)
 
 --------------------------------------------------------------------------------
 title: "Codemods"
@@ -20722,6 +21241,43 @@ Replacing `<transform>` and `<path>` with appropriate values.
 * `path` - files or directory to transform
 * `--dry` Do a dry-run, no code will be edited
 * `--print` Prints the changed output for comparison
+
+## Upgrade
+
+Upgrades your Next.js application, automatically running codemods and updating Next.js, React, and React DOM.
+
+```bash filename="Terminal"
+npx @next/codemod upgrade [revision]
+```
+
+### Options
+
+* `revision` (optional): Specify the upgrade type (`patch`, `minor`, `major`), an NPM dist tag (e.g. `latest`, `canary`, `rc`), or an exact version (e.g. `15.0.0`). Defaults to `minor` for stable versions.
+* `--verbose`: Show more detailed output during the upgrade process.
+
+For example:
+
+```bash filename="Terminal"
+# Upgrade to the latest patch (e.g. 16.0.7 -> 16.0.8)
+npx @next/codemod upgrade patch
+
+# Upgrade to the latest minor (e.g. 15.3.7 -> 15.4.8). This is the default.
+npx @next/codemod upgrade minor
+
+# Upgrade to the latest major (e.g. 15.5.7 -> 16.0.7)
+npx @next/codemod upgrade major
+
+# Upgrade to a specific version
+npx @next/codemod upgrade 16
+
+# Upgrade to the canary release
+npx @next/codemod upgrade canary
+```
+
+> **Good to know**:
+>
+> * If the target version is the same as or lower than your current version, the command exits without making changes.
+> * During the upgrade, you may be prompted to choose which Next.js codemods to apply and run React 19 codemods if upgrading React.
 
 ## Codemods
 
@@ -21376,7 +21932,7 @@ This is one case. All the cases that are transformed (and tested) can be found i
 
 
 --------------------------------------------------------------------------------
-title: "How to upgrade to version 14"
+title: "Version 14"
 description: "Upgrade your Next.js Application from Version 13 to 14."
 source: "https://nextjs.org/docs/app/guides/upgrading/version-14"
 --------------------------------------------------------------------------------
@@ -21415,7 +21971,7 @@ bun add next@next-14 react@18 react-dom@18 && bun add eslint-config-next@next-14
 
 
 --------------------------------------------------------------------------------
-title: "How to upgrade to version 15"
+title: "Version 15"
 description: "Upgrade your Next.js Application from Version 14 to 15."
 source: "https://nextjs.org/docs/app/guides/upgrading/version-15"
 --------------------------------------------------------------------------------
@@ -22016,7 +22572,7 @@ export function middleware(request: NextRequest) {
 
 
 --------------------------------------------------------------------------------
-title: "How to upgrade to version 16"
+title: "Version 16"
 description: "Upgrade your Next.js Application from Version 15 to 16."
 source: "https://nextjs.org/docs/app/guides/upgrading/version-16"
 --------------------------------------------------------------------------------
@@ -22031,9 +22587,11 @@ If you're using an AI coding assistant that supports the [Model Context Protocol
 
 #### Setup
 
-Add the following configuration to your MCP client, example:
+Add the following configuration to your MCP client, for each coding agent you can read [this section](https://github.com/vercel/next-devtools-mcp#mcp-client-configuration) for configuration details.
 
-```json
+**example:**
+
+```json filename=".mcp.json"
 {
   "mcpServers": {
     "next-devtools": {
@@ -22044,7 +22602,7 @@ Add the following configuration to your MCP client, example:
 }
 ```
 
-For more information, visit the [`next-devtools-mcp`](https://www.npmjs.com/package/next-devtools-mcp) package on npm to configure with your MCP client.
+For more information, visit the [`next-devtools-mcp`](https://github.com/vercel/next-devtools-mcp) documentation to configure with your MCP client.
 
 > **Note:** Using `next-devtools-mcp@latest` ensures that your MCP client will always use the latest version of the Next.js DevTools MCP server.
 
@@ -22380,8 +22938,8 @@ export async function generateSitemaps() {
 
 // Next.js 16 - asynchronous id access
 export default async function sitemap({ id }) {
-  const resolvedId = await id // id is now Promise<number>
-  const start = resolvedId * 50000
+  const resolvedId = await id // id is now Promise<string>
+  const start = Number(resolvedId) * 50000
   // ...
 }
 ```
@@ -23183,7 +23741,7 @@ The `unstable_rootParams` function has been removed. We are working on an altern
 
 
 --------------------------------------------------------------------------------
-title: "How to use and optimize videos"
+title: "Videos"
 description: "Recommendations and best practices for optimizing videos in your Next.js application."
 source: "https://nextjs.org/docs/app/guides/videos"
 --------------------------------------------------------------------------------
@@ -23467,14 +24025,6 @@ source: "https://nextjs.org/docs/app/api-reference"
 
 
 
- - [Directives](/docs/app/api-reference/directives.md)
- - [Components](/docs/app/api-reference/components.md)
- - [File-system conventions](/docs/app/api-reference/file-conventions.md)
- - [Functions](/docs/app/api-reference/functions.md)
- - [Configuration](/docs/app/api-reference/config.md)
- - [CLI](/docs/app/api-reference/cli.md)
- - [Edge Runtime](/docs/app/api-reference/edge.md)
- - [Turbopack](/docs/app/api-reference/turbopack.md)
 
 --------------------------------------------------------------------------------
 title: "Directives"
@@ -23486,15 +24036,10 @@ source: "https://nextjs.org/docs/app/api-reference/directives"
 
 The following directives are available:
 
- - [use cache](/docs/app/api-reference/directives/use-cache.md)
- - [use cache: private](/docs/app/api-reference/directives/use-cache-private.md)
- - [use cache: remote](/docs/app/api-reference/directives/use-cache-remote.md)
- - [use client](/docs/app/api-reference/directives/use-client.md)
- - [use server](/docs/app/api-reference/directives/use-server.md)
 
 --------------------------------------------------------------------------------
 title: "use cache"
-description: "Learn how to use the use cache directive to cache data in your Next.js application."
+description: "Learn how to use the "use cache" directive to cache data in your Next.js application."
 source: "https://nextjs.org/docs/app/api-reference/directives/use-cache"
 --------------------------------------------------------------------------------
 
@@ -23675,6 +24220,10 @@ async function CachedForm({ action }: { action: () => Promise<void> }) {
 
 ## Constraints
 
+Cached functions execute in an isolated environment. The following constraints ensure cache behavior remains predictable and secure.
+
+### Runtime APIs
+
 Cached functions and components **cannot** directly access runtime APIs like `cookies()`, `headers()`, or `searchParams`. Instead, read these values outside the cached scope and pass them as arguments.
 
 ### Runtime caching considerations
@@ -23691,6 +24240,34 @@ Runtime cache behavior depends on your hosting environment:
 If the default in-memory cache isn't enough, consider **[`use cache: remote`](/docs/app/api-reference/directives/use-cache-remote.md)** which allows platforms to provide a dedicated cache handler (like Redis or KV database). This helps reduce hits against data sources not scaled to your total traffic, though it comes with costs (storage, network latency, platform fees).
 
 Very rarely, for compliance requirements or when you can't refactor your code to pass runtime data as arguments to a `use cache` scope, you might need [`use cache: private`](/docs/app/api-reference/directives/use-cache-private.md).
+
+### React.cache isolation
+
+[`React.cache`](https://react.dev/reference/react/cache) operates in an isolated scope inside `use cache` boundaries. Values stored via `React.cache` outside a `use cache` function are not visible inside it.
+
+This means you cannot use `React.cache` to pass data into a `use cache` scope:
+
+```tsx
+import { cache } from 'react'
+
+const store = cache(() => ({ current: null as string | null }))
+
+function Parent() {
+  const shared = store()
+  shared.current = 'value from parent'
+  return <Child />
+}
+
+async function Child() {
+  'use cache'
+  const shared = store()
+  // shared.current is null, not 'value from parent'
+  // use cache has its own isolated React.cache scope
+  return <div>{shared.current}</div>
+}
+```
+
+This isolation ensures cached functions have predictable, self-contained behavior. To pass data into a `use cache` scope, use function arguments instead.
 
 ## `use cache` at runtime
 
@@ -24004,6 +24581,24 @@ export default function ClientComponent({ action }) {
 
 ## Troubleshooting
 
+### Debugging cache behavior
+
+#### Verbose logging
+
+Set `NEXT_PRIVATE_DEBUG_CACHE=1` for verbose cache logging:
+
+```bash
+NEXT_PRIVATE_DEBUG_CACHE=1 npm run dev
+# or for production
+NEXT_PRIVATE_DEBUG_CACHE=1 npm run start
+```
+
+> **Good to know:** This environment variable also logs ISR and other caching mechanisms. See [Verifying correct production behavior](/docs/app/guides/incremental-static-regeneration.md#verifying-correct-production-behavior) for more details.
+
+#### Console log replays
+
+In development, console logs from cached functions appear with a `Cache` prefix.
+
 ### Build Hangs (Cache Timeout)
 
 If your build hangs, you're accessing Promises that resolve to dynamic or runtime data, created outside a `use cache` boundary. The cached function waits for data that can't resolve during the build, causing a timeout after 50 seconds.
@@ -24102,7 +24697,7 @@ Learn how to [configure caching](/docs/app/guides/self-hosting.md#caching-and-is
 View related API references.
 
 - [use cache: private](/docs/app/api-reference/directives/use-cache-private.md)
-  - Learn how to use the `"use cache: private"` directive to enable runtime prefetching of personalized content in your Next.js application.
+  - Learn how to use the "use cache: private" directive to cache functions that access runtime request APIs.
 - [cacheComponents](/docs/app/api-reference/config/next-config-js/cacheComponents.md)
   - Learn how to enable the cacheComponents flag in Next.js.
 - [cacheLife](/docs/app/api-reference/config/next-config-js/cacheLife.md)
@@ -24119,15 +24714,28 @@ View related API references.
 
 --------------------------------------------------------------------------------
 title: "use cache: private"
-description: "Learn how to use the `"use cache: private"` directive to enable runtime prefetching of personalized content in your Next.js application."
+description: "Learn how to use the "use cache: private" directive to cache functions that access runtime request APIs."
 source: "https://nextjs.org/docs/app/api-reference/directives/use-cache-private"
 --------------------------------------------------------------------------------
 
 # use cache: private
 
-The `'use cache: private'` directive works just like [`use cache`](/docs/app/api-reference/directives/use-cache.md), but allows you to use runtime APIs like cookies, headers, or search params.
+> This feature is currently experimental and subject to change, it is not recommended for production.
 
-> **Good to know:** Unlike `use cache`, private caches are not prerendered statically as they contain personalized data that is not shared between users.
+The `'use cache: private'` directive allows functions to access runtime request APIs like `cookies()`, `headers()`, and `searchParams` within a cached scope. However, results are **never stored on the server**, they're cached only in the browser's memory and do not persist across page reloads.
+
+Reach for `'use cache: private'` when:
+
+* You want to cache a function that already accesses runtime data, and refactoring to [move the runtime access outside and pass values as arguments](/docs/app/getting-started/cache-components.md#with-runtime-data) is not practical.
+* Compliance requirements prevent storing certain data on the server, even temporarily
+
+Because this directive accesses runtime data, the function executes on every server render and is excluded from running during [static shell](/docs/app/getting-started/cache-components.md#how-rendering-works-with-cache-components) generation.
+
+It is **not** possible to configure custom cache handlers for `'use cache: private'`.
+
+For a comparison of the different cache directives, see [How `use cache: remote` differs from `use cache` and `use cache: private`](/docs/app/api-reference/directives/use-cache-remote.md#how-use-cache-remote-differs-from-use-cache-and-use-cache-private).
+
+> **Good to know**: This directive is marked as `experimental` because it depends on runtime prefetching, which is not yet stable. Runtime prefetching is an upcoming feature that will let the router prefetch past the [static shell](/docs/app/getting-started/cache-components.md#how-rendering-works-with-cache-components) into **any** cached scope, not just private caches.
 
 ## Usage
 
@@ -24154,12 +24762,20 @@ export default nextConfig
 
 Then add `'use cache: private'` to your function along with a `cacheLife` configuration.
 
+> **Good to know**: This directive is not available in Route Handlers.
+
 ### Basic example
+
+In this example, we demonstrate that you can access cookies within a `'use cache: private'` scope:
 
 ```tsx filename="app/product/[id]/page.tsx" switcher
 import { Suspense } from 'react'
 import { cookies } from 'next/headers'
 import { cacheLife, cacheTag } from 'next/cache'
+
+export async function generateStaticParams() {
+  return [{ id: '1' }]
+}
 
 export default async function ProductPage({
   params,
@@ -24193,7 +24809,7 @@ async function Recommendations({ productId }: { productId: string }) {
 async function getRecommendations(productId: string) {
   'use cache: private'
   cacheTag(`recommendations-${productId}`)
-  cacheLife({ stale: 60 }) // Minimum 30 seconds required for runtime prefetch
+  cacheLife({ stale: 60 })
 
   // Access cookies within private cache functions
   const sessionId = (await cookies()).get('session-id')?.value || 'guest'
@@ -24206,6 +24822,10 @@ async function getRecommendations(productId: string) {
 import { Suspense } from 'react'
 import { cookies } from 'next/headers'
 import { cacheLife, cacheTag } from 'next/cache'
+
+export async function generateStaticParams() {
+  return [{ id: '1' }]
+}
 
 export default async function ProductPage({ params }) {
   const { id } = await params
@@ -24235,7 +24855,7 @@ async function Recommendations({ productId }) {
 async function getRecommendations(productId) {
   'use cache: private'
   cacheTag(`recommendations-${productId}`)
-  cacheLife({ stale: 60 }) // Minimum 30 seconds required for runtime prefetch
+  cacheLife({ stale: 60 })
 
   // Access cookies within private cache functions
   const sessionId = (await cookies()).get('session-id')?.value || 'guest'
@@ -24243,6 +24863,8 @@ async function getRecommendations(productId) {
   return getPersonalizedRecommendations(productId, sessionId)
 }
 ```
+
+> **Good to know**: The `stale` time must be at least 30 seconds for runtime prefetching to work. See [`cacheLife` client router cache behavior](/docs/app/api-reference/functions/cacheLife.md#client-router-cache-behavior) for details.
 
 ## Request APIs allowed in private caches
 
@@ -24267,33 +24889,32 @@ The following request-specific APIs can be used inside `'use cache: private'` fu
 View related API references.
 
 - [use cache](/docs/app/api-reference/directives/use-cache.md)
-  - Learn how to use the use cache directive to cache data in your Next.js application.
+  - Learn how to use the "use cache" directive to cache data in your Next.js application.
 - [cacheComponents](/docs/app/api-reference/config/next-config-js/cacheComponents.md)
   - Learn how to enable the cacheComponents flag in Next.js.
-- [cacheHandlers](/docs/app/api-reference/config/next-config-js/cacheHandlers.md)
-  - Configure custom cache handlers for use cache directives in Next.js.
 - [cacheLife](/docs/app/api-reference/functions/cacheLife.md)
   - Learn how to use the cacheLife function to set the cache expiration time for a cached function or component.
 - [cacheTag](/docs/app/api-reference/functions/cacheTag.md)
   - Learn how to use the cacheTag function to manage cache invalidation in your Next.js application.
-- [Prefetching](/docs/app/guides/prefetching.md)
-  - Learn how to configure prefetching in Next.js
 
 
 --------------------------------------------------------------------------------
 title: "use cache: remote"
-description: "Learn how to use the `"use cache: remote"` directive to enable caching in dynamic contexts in your Next.js application."
+description: "Learn how to use the "use cache: remote" directive for persistent, shared caching using remote cache handlers."
 source: "https://nextjs.org/docs/app/api-reference/directives/use-cache-remote"
 --------------------------------------------------------------------------------
 
 # use cache: remote
 
-The `'use cache: remote'` directive enables caching of **shared data** in dynamic contexts where regular [`use cache`](/docs/app/api-reference/directives/use-cache.md) would not work, for example after calling [`await connection()`](/docs/app/api-reference/functions/connection.md), [`await cookies()`](/docs/app/api-reference/functions/cookies.md) or [`await headers()`](/docs/app/api-reference/functions/headers.md).
+While the `use cache` directive is sufficient for most application needs, you might occasionally notice that cached operations are re-running more often than expected, or that your upstream services (CMS, databases, external APIs) are getting more hits than you'd expect. This can happen because in-memory caching has inherent limitations:
 
-> **Good to know:**
->
-> * Results are stored in server-side cache handlers and shared across all users.
-> * For **user-specific data** that depends on [`await cookies()`](/docs/app/api-reference/functions/cookies.md) or [`await headers()`](/docs/app/api-reference/functions/headers.md), use [`'use cache: private'`](/docs/app/api-reference/directives/use-cache-private.md) instead.
+* Cache entries being evicted to make room for new ones
+* Memory constraints in your deployment environment
+* Cache not persisting across requests or server restarts
+
+Note that `use cache` still provides value beyond server-side caching: it informs Next.js what can be prefetched and defines stale times for client-side navigation.
+
+The `'use cache: remote'` directive lets you declaratively specify that a cached output should be stored in a **remote cache** instead of in-memory. While this gives you more durable caching for specific operations, it comes with tradeoffs: infrastructure cost and network latency during cache lookups.
 
 ## Usage
 
@@ -24318,222 +24939,144 @@ const nextConfig = {
 export default nextConfig
 ```
 
-Then add `'use cache: remote'` to your function that needs to cache data in a dynamic context.
+Then add `'use cache: remote'` to the functions or components where you've determined remote caching is justified. The handler implementation is configured via [`cacheHandlers`](/docs/app/api-reference/config/next-config-js/cacheHandlers.md), though hosting providers should typically provide this automatically. If you're self-hosting, see the `cacheHandlers` configuration reference to set up your cache storage.
 
-### Basic example
+### When to avoid remote caching
 
-Cache product pricing that needs to be fetched at request time but can be shared across all users. Use [`cacheLife`](/docs/app/api-reference/functions/cacheLife.md#custom-cache-profiles) to set the cache lifetime of the price.
+* If you already have a server-side cache key-value store wrapping your data layer, `use cache` may be sufficient to include data in the static shell without adding another caching layer
+* If operations are already fast (\< 50ms) due to proximity or local access, the remote cache lookup might not improve performance
+* If cache keys have mostly unique values per request (search filters, price ranges, user-specific parameters), cache utilization will be near-zero
+* If data changes frequently (seconds to minutes), cache hits will quickly go stale, leading to frequent misses and waiting for upstream revalidation
 
-```tsx filename="app/product/[id]/page.tsx" switcher
-import { Suspense } from 'react'
-import { connection } from 'next/server'
-import { cacheTag, cacheLife } from 'next/cache'
+### When remote caching makes sense
 
-export default async function ProductPage({
-  params,
-}: {
-  params: Promise<{ id: string }>
-}) {
-  const { id } = await params
+Remote caching provides the most value when content is deferred to request time (outside the static shell). This typically happens when a component accesses request values like [`cookies()`](/docs/app/api-reference/functions/cookies.md), [`headers()`](/docs/app/api-reference/functions/headers.md), or [`searchParams`](/docs/app/api-reference/file-conventions/page.md#searchparams-optional), placing it inside a Suspense boundary. In this context:
 
-  return (
-    <div>
-      <ProductDetails id={id} />
-      <Suspense fallback={<div>Loading price...</div>}>
-        <ProductPrice productId={id} />
-      </Suspense>
-    </div>
-  )
-}
+* Each request executes the component and looks up the cache
+* In serverless environments, each instance has its own ephemeral memory with low cache hit rates
+* Remote caching provides a shared cache across all instances, improving hit rates and reducing backend load
 
-function ProductDetails({ id }: { id: string }) {
-  return <div>Product: {id}</div>
-}
+Compelling scenarios for `'use cache: remote'`:
 
-async function ProductPrice({ productId }: { productId: string }) {
-  // Calling connection() makes this component dynamic, preventing
-  // it from being included in the static shell. This ensures the price
-  // is always fetched at request time.
-  await connection()
+* **Rate-limited APIs**: Your upstream service has rate limits or request quotas that you risk hitting
+* **Protecting slow backends**: Your database or API becomes a bottleneck under high traffic
+* **Expensive operations**: Database queries or computations that are costly to run repeatedly
+* **Flaky or unreliable services**: External services that occasionally fail or have availability issues
 
-  // Now we can cache the price in a remote cache handler.
-  // Regular 'use cache' would NOT work here because we're in a dynamic context.
-  const price = await getProductPrice(productId)
+In these cases, the cost and latency of remote caching is justified by avoiding worse outcomes (rate limit errors, backend overload, high compute bills, or degraded user experience).
 
-  return <div>Price: ${price}</div>
-}
+For static shell content, `use cache` is usually sufficient. However, if your static pages share data from an upstream that can't handle concurrent revalidation requests (like a rate-limited CMS), `use cache: remote` acts as a shared cache layer in front of that upstream. This is the same pattern as putting a key-value store in front of a database, but declared in your code rather than configured in infrastructure.
 
-async function getProductPrice(productId: string) {
-  'use cache: remote'
-  cacheTag(`product-price-${productId}`)
-  cacheLife({ expire: 3600 }) // 1 hour
-
-  // This database query is cached and shared across all users
-  return db.products.getPrice(productId)
-}
-```
-
-```jsx filename="app/product/[id]/page.js" switcher
-import { Suspense } from 'react'
-import { connection } from 'next/server'
-import { cacheTag, cacheLife } from 'next/cache'
-
-export default async function ProductPage({ params }) {
-  const { id } = await params
-
-  return (
-    <div>
-      <ProductDetails id={id} />
-      <Suspense fallback={<div>Loading price...</div>}>
-        <ProductPrice productId={id} />
-      </Suspense>
-    </div>
-  )
-}
-
-function ProductDetails({ id }) {
-  return <div>Product: {id}</div>
-}
-
-async function ProductPrice({ productId }) {
-  // Calling connection() makes this component dynamic, preventing
-  // it from being included in the static shell. This ensures the price
-  // is always fetched at request time.
-  await connection()
-
-  // Now we can cache the price in a remote cache handler.
-  // Regular 'use cache' would NOT work here because we're in a dynamic context.
-  const price = await getProductPrice(productId)
-
-  return <div>Price: ${price}</div>
-}
-
-async function getProductPrice(productId) {
-  'use cache: remote'
-  cacheTag(`product-price-${productId}`)
-  cacheLife({ expire: 3600 }) // 1 hour
-
-  // This database query is cached and shared across all users
-  return db.products.getPrice(productId)
-}
-```
-
-> **Note:** Regular [`use cache`](/docs/app/api-reference/directives/use-cache.md) will not cache anything when used in a dynamic context (after [`await connection()`](/docs/app/api-reference/functions/connection.md), [`await cookies()`](/docs/app/api-reference/functions/cookies.md), [`await headers()`](/docs/app/api-reference/functions/headers.md), etc.). Use `'use cache: remote'` to enable runtime caching in these scenarios.
-
-## How `use cache: remote` differs from `use cache` and `use cache: private`
+### How `use cache: remote` differs from `use cache` and `use cache: private`
 
 Next.js provides three caching directives, each designed for different use cases:
 
-| Feature                          | `use cache`                         | `'use cache: remote'`                                     | `'use cache: private'`              |
-| -------------------------------- | ----------------------------------- | --------------------------------------------------------- | ----------------------------------- |
-| **Works in dynamic context**     | No (requires static context)        | Yes (designed for dynamic contexts)                       | Yes                                 |
-| **Access to `await cookies()`**  | No                                  | No                                                        | Yes                                 |
-| **Access to `await headers()`**  | No                                  | No                                                        | Yes                                 |
-| **After `await connection()`**   | No (won't cache)                    | No                                                        | No                                  |
-| **Stored in cache handler**      | Yes (server-side)                   | Yes (server-side)                                         | No (client-side only)               |
-| **Cache scope**                  | Global (shared)                     | Global (shared)                                           | Per-user (isolated)                 |
-| **Supports runtime prefetching** | N/A (pre-rendered at build)         | No                                                        | Yes (when configured)               |
-| **Use case**                     | Static, shared content (build-time) | Dynamic, shared content in runtime contexts (per-request) | Personalized, user-specific content |
+| Feature                                 | `use cache`                     | `'use cache: remote'`             | `'use cache: private'` |
+| --------------------------------------- | ------------------------------- | --------------------------------- | ---------------------- |
+| **Server-side caching**                 | In-memory or cache handler      | Remote cache handler              | None                   |
+| **Cache scope**                         | Shared across all users         | Shared across all users           | Per-client (browser)   |
+| **Can access cookies/headers directly** | No (must pass as arguments)     | No (must pass as arguments)       | Yes                    |
+| **Server cache utilization**            | May be low outside static shell | High (shared across instances)    | N/A                    |
+| **Additional costs**                    | None                            | Infrastructure (storage, network) | None                   |
+| **Latency impact**                      | None                            | Cache handler lookup              | None                   |
 
-> **Note:** While you can't call `await cookies()` or `await headers()` inside `'use cache: remote'`, you can read the values before calling a function that is wrapped by `'use cache: remote'` and the arguments will be included in the cache key. Note that this is not recommended as it will dramatically increase the cache size and reduce the cache hit rate.
+### Caching with runtime data
 
-### When to use each directive
+Both `use cache` and `'use cache: remote'` directives can't access runtime data like cookies or search params directly, since this data isn't available when computing the cache. However, you can extract values from these APIs and pass them as arguments to cached functions. See [with runtime data](/docs/app/getting-started/cache-components.md#with-runtime-data) for this pattern.
 
-Choose the right caching directive based on your use case:
+In general, but most importantly for `'use cache: remote'`, be thoughtful about which values you include in cache keys. Each unique value creates a separate cache entry, reducing cache utilization. Consider this example with search filters:
 
-**Use [`use cache`](/docs/app/api-reference/directives/use-cache.md) when:**
+```tsx filename="app/products/[category]/page.tsx"
+import { Suspense } from 'react'
 
-* Content can be prerendered at build time
-* Content is shared across all users
-* Content doesn't depend on request-specific data
-
-**Use `'use cache: remote'` when:**
-
-* You need caching within dynamic context
-* Content is shared across users but must be rendered per-request (after `await connection()`)
-* You want to cache expensive operations in a server-side cache handler
-
-**Use [`'use cache: private'`](/docs/app/api-reference/directives/use-cache-private.md) when:**
-
-* Content is personalized per-user (depends on cookies, headers)
-* You need [runtime prefetching](/docs/app/guides/prefetching.md) of user-specific content
-* Content should never be shared between users
-
-## How it works
-
-The `'use cache: remote'` directive enables runtime caching of shared data in dynamic contexts by storing results in server-side cache handlers rather than prerendering at build time.
-
-### Dynamic context detection
-
-When Next.js encounters certain APIs like [`connection()`](/docs/app/api-reference/functions/connection.md), [`cookies()`](/docs/app/api-reference/functions/cookies.md), or [`headers()`](/docs/app/api-reference/functions/headers.md), the context becomes "dynamic". In a dynamic context:
-
-1. **Regular `use cache` stops working** - it won't cache anything
-2. **`'use cache: remote'` continues to work** - it is cached by a remote cache handler.
-3. **Results are stored server-side** in a key-value store configured for your deployment
-4. **Cached data is shared across requests** - reducing database load and origin requests
-
-> **Good to know:** Without `'use cache: remote'`, functions in dynamic contexts would execute on every request, potentially creating performance bottlenecks. Remote caching eliminates this issue by storing results in server-side cache handlers.
-
-### Storage behavior
-
-Remote caches are **persisted using server-side cache handlers**, which may include:
-
-* **Distributed key-value stores** (in-memory or persistent storage solutions)
-* **File system or in-memory storage** (often used in development or for custom deployments)
-* **Environment-specific caches** (provided by your hosting infrastructure)
-* **Custom or configured cache handlers** (depending on your application's setup)
-
-This means:
-
-1. Cached data is shared across all users and requests
-2. Cache entries persist beyond a single session
-3. Cache invalidation works via [`cacheTag`](/docs/app/api-reference/functions/cacheTag.md) and [`revalidateTag`](/docs/app/api-reference/functions/revalidateTag.md)
-4. Cache expiration is controlled by [`cacheLife`](/docs/app/api-reference/functions/cacheLife.md) configuration
-
-### Dynamic context example
-
-```tsx
-async function UserDashboard() {
-  // Calling connection() makes the context dynamic
-  await connection()
-
-  // Without any caching directive, this runs on every request
-  const stats = await getStats()
-
-  // With 'use cache: remote', this is cached in the remote handler
-  const analytics = await getAnalytics()
-
+export default async function ProductsPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ category: string }>
+  searchParams: Promise<{ minPrice?: string }>
+}) {
   return (
-    <div>
-      <Stats data={stats} />
-      <Analytics data={analytics} />
-    </div>
+    <Suspense fallback={<div>Loading...</div>}>
+      <ProductList params={params} searchParams={searchParams} />
+    </Suspense>
   )
 }
 
-async function getAnalytics() {
-  'use cache: remote'
-  cacheLife({ expire: 300 }) // 5 minutes
+async function ProductList({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ category: string }>
+  searchParams: Promise<{ minPrice?: string }>
+}) {
+  const { category } = await params
 
-  // This expensive operation is cached and shared across all requests
-  return fetchAnalyticsData()
+  const { minPrice } = await searchParams
+
+  // Cache only on category (few unique values)
+  // Don't include price filter (many unique values)
+  const products = await getProductsByCategory(category)
+
+  // Filter price in memory instead of creating cache entries
+  // for every price value
+  const filtered = minPrice
+    ? products.filter((p) => p.price >= parseFloat(minPrice))
+    : products
+
+  return <div>{/* render filtered products */}</div>
+}
+
+async function getProductsByCategory(category: string) {
+  'use cache: remote'
+  // Only category is part of the cache key
+  // Much better utilization than caching every price filter value
+  return db.products.findByCategory(category)
 }
 ```
 
-## Request APIs and remote caches
+In this example, the remote handler stores more data per cache entry (all products in a category) to achieve better cache hit rates. This is worth it when the cost of cache misses (hitting your backend) outweighs the storage cost of larger entries.
 
-While `'use cache: remote'` technically allows access to request-specific data by calling API's like [`cookies()`](/docs/app/api-reference/functions/cookies.md) and [`headers()`](/docs/app/api-reference/functions/headers.md) before calling a function that is wrapped by `'use cache: remote'`, it's generally not recommended to use them together:
+The same principle applies to user-specific data. Rather than caching per-user data directly, use user preferences to determine what shared data to cache.
 
-| API                                                                                   | Allowed in `use cache` | Allowed in `'use cache: remote'` | Recommended                                                                                |
-| ------------------------------------------------------------------------------------- | ---------------------- | -------------------------------- | ------------------------------------------------------------------------------------------ |
-| [`cookies()`](/docs/app/api-reference/functions/cookies.md)                              | No                     | No                               | Use [`'use cache: private'`](/docs/app/api-reference/directives/use-cache-private.md) instead |
-| [`headers()`](/docs/app/api-reference/functions/headers.md)                              | No                     | No                               | Use [`'use cache: private'`](/docs/app/api-reference/directives/use-cache-private.md) instead |
-| [`connection()`](/docs/app/api-reference/functions/connection.md)                        | No                     | No                               | No - these cannot ever be cached                                                           |
-| [`searchParams`](/docs/app/api-reference/file-conventions/page.md#searchparams-optional) | No                     | No                               | Use [`'use cache: private'`](/docs/app/api-reference/directives/use-cache-private.md) instead |
+For example, if users have a language preference in their session, extract that preference and use it to cache shared content:
 
-> **Important:** If you need to cache based on cookies, headers, or search params, use [`'use cache: private'`](/docs/app/api-reference/directives/use-cache-private.md) instead. Remote caches are shared across all users, so caching user-specific data in them can lead to incorrect results being served to different users.
+* Instead of remote caching `getUserProfile(sessionID)`, which creates one entry per user
+* Remote cache `getCMSContent(language)` to create one entry per language
 
-## Nesting rules
+```tsx filename="app/components/welcome-message.tsx"
+import { cookies } from 'next/headers'
+import { cacheLife } from 'next/cache'
+
+export async function WelcomeMessage() {
+  // Extract the language preference (not unique per user)
+  const language = (await cookies()).get('language')?.value || 'en'
+
+  // Cache based on language (few unique values: en, es, fr, de, etc.)
+  // All users who prefer 'en' share the same cache entry
+  const content = await getCMSContent(language)
+
+  return <div>{content.welcomeMessage}</div>
+}
+
+async function getCMSContent(language: string) {
+  'use cache: remote'
+  cacheLife({ expire: 3600 })
+  // Creates ~10-50 cache entries (one per language)
+  // instead of thousands (one per user)
+  return cms.getHomeContent(language)
+}
+```
+
+This way all users who prefer the same language share a cache entry, improving cache utilization and reducing load on your CMS.
+
+The pattern is the same in both examples: find the dimension with fewer unique values (category vs. price, language vs. user ID), cache on that dimension, and filter or select the rest in memory.
+
+If the service used by `getUserProfile` cannot scale with your frontend load, you may still be able to use the `use cache` directive with a short `cacheLife` for in-memory caching. However, for most user data, you likely want to fetch directly from the source (which might already be wrapped in a key/value store as mentioned in the guidelines above).
+
+Only use [`'use cache: private'`](/docs/app/api-reference/directives/use-cache-private.md) if you have compliance requirements or can't refactor to pass runtime data as arguments.
+
+### Nesting rules
 
 Remote caches have specific nesting rules:
 
@@ -24558,7 +25101,7 @@ async function innerRemote() {
 // VALID: Remote inside regular cache
 async function outerCache() {
   'use cache'
-  // If this is in a dynamic context, the inner remote cache will work
+  // The inner remote cache will work when deferred to request time
   const result = await innerRemote()
   return result
 }
@@ -24597,16 +25140,135 @@ async function innerPrivate() {
 
 The following examples demonstrate common patterns for using `'use cache: remote'`. For details about `cacheLife` parameters (`stale`, `revalidate`, `expire`), see the [`cacheLife` API reference](/docs/app/api-reference/functions/cacheLife.md).
 
-### Per-request database queries
+### With user preferences
 
-Cache expensive database queries that are accessed in dynamic contexts, reducing load on your database:
+Cache product pricing based on the user's currency preference. Since the currency is stored in a cookie, this component renders at request time. Remote caching is valuable here because all users with the same currency share the cached price, and in serverless environments, all instances share the same remote cache.
+
+```tsx filename="app/product/[id]/page.tsx" switcher
+import { Suspense } from 'react'
+import { cookies } from 'next/headers'
+import { cacheTag, cacheLife } from 'next/cache'
+
+export async function generateStaticParams() {
+  return [{ id: '1' }, { id: '2' }, { id: '3' }]
+}
+
+export default async function ProductPage({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}) {
+  const { id } = await params
+
+  return (
+    <div>
+      <ProductDetails id={id} />
+      <Suspense fallback={<div>Loading price...</div>}>
+        <ProductPrice productId={id} />
+      </Suspense>
+    </div>
+  )
+}
+
+function ProductDetails({ id }: { id: string }) {
+  return <div>Product: {id}</div>
+}
+
+async function ProductPrice({ productId }: { productId: string }) {
+  // Reading cookies defers this component to request time
+  const currency = (await cookies()).get('currency')?.value ?? 'USD'
+
+  // Cache the price per product and currency combination
+  // All users with the same currency share this cache entry
+  const price = await getProductPrice(productId, currency)
+
+  return (
+    <div>
+      Price: {price} {currency}
+    </div>
+  )
+}
+
+async function getProductPrice(productId: string, currency: string) {
+  'use cache: remote'
+  cacheTag(`product-price-${productId}`)
+  cacheLife({ expire: 3600 }) // 1 hour
+
+  // Cached per (productId, currency) - few currencies means high cache utilization
+  return db.products.getPrice(productId, currency)
+}
+```
+
+```jsx filename="app/product/[id]/page.js" switcher
+import { Suspense } from 'react'
+import { cookies } from 'next/headers'
+import { cacheTag, cacheLife } from 'next/cache'
+
+export async function generateStaticParams() {
+  return [{ id: '1' }, { id: '2' }, { id: '3' }]
+}
+
+export default async function ProductPage({ params }) {
+  const { id } = await params
+
+  return (
+    <div>
+      <ProductDetails id={id} />
+      <Suspense fallback={<div>Loading price...</div>}>
+        <ProductPrice productId={id} />
+      </Suspense>
+    </div>
+  )
+}
+
+function ProductDetails({ id }) {
+  return <div>Product: {id}</div>
+}
+
+async function ProductPrice({ productId }) {
+  // Reading cookies defers this component to request time
+  const currency = (await cookies()).get('currency')?.value ?? 'USD'
+
+  // Cache the price per product and currency combination
+  // All users with the same currency share this cache entry
+  const price = await getProductPrice(productId, currency)
+
+  return (
+    <div>
+      Price: {price} {currency}
+    </div>
+  )
+}
+
+async function getProductPrice(productId, currency) {
+  'use cache: remote'
+  cacheTag(`product-price-${productId}`)
+  cacheLife({ expire: 3600 }) // 1 hour
+
+  // Cached per (productId, currency) - few currencies means high cache utilization
+  return db.products.getPrice(productId, currency)
+}
+```
+
+### Reducing database load
+
+Cache expensive database queries, reducing load on your database. In this example, we don't access `cookies()`, `headers()`, or `searchParams`. If we had a requirement to not include these stats in the static shell, we could use [`connection()`](/docs/app/api-reference/functions/connection.md) to explicitly defer to request time:
 
 ```tsx filename="app/dashboard/page.tsx"
+import { Suspense } from 'react'
 import { connection } from 'next/server'
 import { cacheLife, cacheTag } from 'next/cache'
 
-export default async function DashboardPage() {
-  // Make context dynamic
+export default function DashboardPage() {
+  return (
+    <Suspense fallback={<div>Loading stats...</div>}>
+      <DashboardStats />
+    </Suspense>
+  )
+}
+
+async function DashboardStats() {
+  // Defer to request time
   await connection()
 
   const stats = await getGlobalStats()
@@ -24631,6 +25293,8 @@ async function getGlobalStats() {
 }
 ```
 
+With this setup, your upstream database sees at most one request per minute, regardless of how many users visit the dashboard.
+
 ### API responses in streaming contexts
 
 Cache API responses that are fetched during streaming or after dynamic operations:
@@ -24651,7 +25315,7 @@ export default async function FeedPage() {
 }
 
 async function FeedItems() {
-  // Dynamic context
+  // Defer to request time
   await connection()
 
   const items = await getFeedItems()
@@ -24679,7 +25343,7 @@ import { connection } from 'next/server'
 import { cacheLife } from 'next/cache'
 
 export default async function ReportsPage() {
-  // Dynamic security check
+  // Defer to request time (for security check)
   await connection()
 
   const report = await generateReport()
@@ -24778,7 +25442,7 @@ function ProductDetails({ product }) {
 }
 
 async function ProductPriceComponent({ productId }) {
-  // Make this component dynamic
+  // Defer to request time
   await connection()
 
   const price = await getProductPrice(productId)
@@ -24812,7 +25476,7 @@ function RecommendationsList({ items }) {
 > **Good to know**:
 >
 > * Remote caches are stored in server-side cache handlers and shared across all users
-> * Remote caches work in dynamic contexts where regular [`use cache`](/docs/app/api-reference/directives/use-cache.md) would fail
+> * `'use cache: remote'` works outside the static shell where [`use cache`](/docs/app/api-reference/directives/use-cache.md) may not provide server-side cache hits
 > * Use [`cacheTag()`](/docs/app/api-reference/functions/cacheTag.md) and [`revalidateTag()`](/docs/app/api-reference/functions/revalidateTag.md) to invalidate remote caches on-demand
 > * Use [`cacheLife()`](/docs/app/api-reference/functions/cacheLife.md) to configure cache expiration
 > * For user-specific data, use [`'use cache: private'`](/docs/app/api-reference/directives/use-cache-private.md) instead of `'use cache: remote'`
@@ -24837,9 +25501,9 @@ function RecommendationsList({ items }) {
 View related API references.
 
 - [use cache](/docs/app/api-reference/directives/use-cache.md)
-  - Learn how to use the use cache directive to cache data in your Next.js application.
+  - Learn how to use the "use cache" directive to cache data in your Next.js application.
 - [use cache: private](/docs/app/api-reference/directives/use-cache-private.md)
-  - Learn how to use the `"use cache: private"` directive to enable runtime prefetching of personalized content in your Next.js application.
+  - Learn how to use the "use cache: private" directive to cache functions that access runtime request APIs.
 - [cacheComponents](/docs/app/api-reference/config/next-config-js/cacheComponents.md)
   - Learn how to enable the cacheComponents flag in Next.js.
 - [cacheHandlers](/docs/app/api-reference/config/next-config-js/cacheHandlers.md)
@@ -25156,14 +25820,9 @@ source: "https://nextjs.org/docs/app/api-reference/components"
 
 
 
- - [Font](/docs/app/api-reference/components/font.md)
- - [Form Component](/docs/app/api-reference/components/form.md)
- - [Image Component](/docs/app/api-reference/components/image.md)
- - [Link Component](/docs/app/api-reference/components/link.md)
- - [Script Component](/docs/app/api-reference/components/script.md)
 
 --------------------------------------------------------------------------------
-title: "Font Module"
+title: "Font"
 description: "Optimizing loading web fonts with the built-in `next/font` loaders."
 source: "https://nextjs.org/docs/app/api-reference/components/font"
 --------------------------------------------------------------------------------
@@ -27108,6 +27767,28 @@ module.exports = {
 }
 ```
 
+#### `maximumResponseBody`
+
+The default image optimization loader will fetch source images up to 50 MB in size.
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    maximumResponseBody: 50_000_000,
+  },
+}
+```
+
+If you know all your source images are small, you can protect memory constrained servers by reducing this to a smaller value such as 5 MB.
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    maximumResponseBody: 5_000_000,
+  },
+}
+```
+
 #### `dangerouslyAllowLocalIP`
 
 In rare cases when self-hosting Next.js on a private network, you may want to allow optimizing images from local IP addresses on the same network. This is not recommended for most users because it could allow malicious users to access content on your internal network.
@@ -27594,6 +28275,7 @@ export default function Home() {
 
 | Version    | Changes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `v16.1.2`  | `maximumResponseBody` configuration added.                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | `v16.0.0`  | `qualities` default configuration changed to `[75]`, `preload` prop added, `priority` prop deprecated, `dangerouslyAllowLocalIP` config added, `maximumRedirects` config added.                                                                                                                                                                                                                                                                                                            |
 | `v15.3.0`  | `remotePatterns` added support for array of `URL` objects.                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | `v15.0.0`  | `contentDispositionType` configuration default changed to `attachment`.                                                                                                                                                                                                                                                                                                                                                                                                                    |
@@ -28778,28 +29460,6 @@ source: "https://nextjs.org/docs/app/api-reference/file-conventions"
 
 
 
- - [default.js](/docs/app/api-reference/file-conventions/default.md)
- - [Dynamic Segments](/docs/app/api-reference/file-conventions/dynamic-routes.md)
- - [error.js](/docs/app/api-reference/file-conventions/error.md)
- - [forbidden.js](/docs/app/api-reference/file-conventions/forbidden.md)
- - [instrumentation.js](/docs/app/api-reference/file-conventions/instrumentation.md)
- - [instrumentation-client.js](/docs/app/api-reference/file-conventions/instrumentation-client.md)
- - [Intercepting Routes](/docs/app/api-reference/file-conventions/intercepting-routes.md)
- - [layout.js](/docs/app/api-reference/file-conventions/layout.md)
- - [loading.js](/docs/app/api-reference/file-conventions/loading.md)
- - [mdx-components.js](/docs/app/api-reference/file-conventions/mdx-components.md)
- - [not-found.js](/docs/app/api-reference/file-conventions/not-found.md)
- - [page.js](/docs/app/api-reference/file-conventions/page.md)
- - [Parallel Routes](/docs/app/api-reference/file-conventions/parallel-routes.md)
- - [proxy.js](/docs/app/api-reference/file-conventions/proxy.md)
- - [public](/docs/app/api-reference/file-conventions/public-folder.md)
- - [route.js](/docs/app/api-reference/file-conventions/route.md)
- - [Route Groups](/docs/app/api-reference/file-conventions/route-groups.md)
- - [Route Segment Config](/docs/app/api-reference/file-conventions/route-segment-config.md)
- - [src](/docs/app/api-reference/file-conventions/src-folder.md)
- - [template.js](/docs/app/api-reference/file-conventions/template.md)
- - [unauthorized.js](/docs/app/api-reference/file-conventions/unauthorized.md)
- - [Metadata Files](/docs/app/api-reference/file-conventions/metadata.md)
 
 --------------------------------------------------------------------------------
 title: "default.js"
@@ -28865,7 +29525,7 @@ export default async function Default({ params }) {
 
 
 --------------------------------------------------------------------------------
-title: "Dynamic Route Segments"
+title: "Dynamic Segments"
 description: "Dynamic Route Segments can be used to programmatically generate route segments from dynamic data."
 source: "https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes"
 --------------------------------------------------------------------------------
@@ -28930,7 +29590,6 @@ export default function BlogPostPage({
 ```jsx filename="app/blog/[slug]/page.js" switcher
 'use client'
 import { use } from 'react'
-import { useParams } from 'next/navigation'
 
 export default function BlogPostPage({ params }) {
   const { slug } = use(params)
@@ -29008,6 +29667,151 @@ export default async function Page(props: PageProps<'/[locale]'>) {
 * Since the `params` prop is a promise. You must use `async`/`await` or React's use function to access the values.
   * In version 14 and earlier, `params` was a synchronous prop. To help with backwards compatibility, you can still access it synchronously in Next.js 15, but this behavior will be deprecated in the future.
 
+### With Cache Components
+
+When using [Cache Components](/docs/app/getting-started/cache-components.md) with dynamic route segments, how you handle params depends on whether you use [`generateStaticParams`](/docs/app/api-reference/functions/generate-static-params.md).
+
+Without `generateStaticParams`, param values are unknown during prerendering, making params runtime data. You must wrap param access in `<Suspense>` boundaries to provide fallback UI.
+
+With `generateStaticParams`, you provide sample param values that can be used at build time. The build process validates that dynamic content and other runtime APIs are correctly handled, then generates static HTML files for the samples. Pages rendered with runtime params are saved to disk after a successful first request.
+
+The sections below demonstrate both patterns.
+
+#### Without `generateStaticParams`
+
+All params are runtime data. Param access must be wrapped by Suspense fallback UI. Next.js generates a static shell at build time, and content loads on each request.
+
+> **Good to know**: You can also use [`loading.tsx`](/docs/app/api-reference/file-conventions/loading.md) for page-level fallback UI.
+
+```tsx filename="app/blog/[slug]/page.tsx"
+import { Suspense } from 'react'
+
+export default function Page({ params }: PageProps<'/blog/[slug]'>) {
+  return (
+    <div>
+      <h1>Blog Post</h1>
+      <Suspense fallback={<div>Loading...</div>}>
+        {params.then(({ slug }) => (
+          <Content slug={slug} />
+        ))}
+      </Suspense>
+    </div>
+  )
+}
+
+async function Content({ slug }: { slug: string }) {
+  const res = await fetch(`https://api.vercel.app/blog/${slug}`)
+  const post = await res.json()
+
+  return (
+    <article>
+      <h2>{post.title}</h2>
+      <p>{post.content}</p>
+    </article>
+  )
+}
+```
+
+#### With `generateStaticParams`
+
+Provide params ahead of time to prerender pages at build time. You can prerender all routes or a subset depending on your needs.
+
+During the build process, the route is executed with each sample param to collect the HTML result. If dynamic content or runtime data are accessed incorrectly, the build will fail.
+
+```tsx filename="app/blog/[slug]/page.tsx" highlight={3-5,8,19}
+import { Suspense } from 'react'
+
+export async function generateStaticParams() {
+  return [{ slug: '1' }, { slug: '2' }, { slug: '3' }]
+}
+
+export default async function Page({ params }: PageProps<'/blog/[slug]'>) {
+  const { slug } = await params
+
+  return (
+    <div>
+      <h1>Blog Post</h1>
+      <Content slug={slug} />
+    </div>
+  )
+}
+
+async function Content({ slug }: { slug: string }) {
+  const post = await getPost(slug)
+  return (
+    <article>
+      <h2>{post.title}</h2>
+      <p>{post.content}</p>
+    </article>
+  )
+}
+
+async function getPost(slug: string) {
+  'use cache'
+  const res = await fetch(`https://api.vercel.app/blog/${slug}`)
+  return res.json()
+}
+```
+
+Build-time validation only covers code paths that execute with the sample params. If your route has conditional logic that accesses runtime APIs for certain param values not in your samples, those branches won't be validated at build time:
+
+```tsx filename="app/blog/[slug]/page.tsx"
+import { cookies } from 'next/headers'
+
+export async function generateStaticParams() {
+  return [{ slug: 'public-post' }, { slug: 'hello-world' }]
+}
+
+export default async function Page({ params }: PageProps<'/blog/[slug]'>) {
+  const { slug } = await params
+
+  if (slug.startsWith('private-')) {
+    // This branch is never executed at build time
+    // Runtime requests for 'private-*' slugs will error
+    return <PrivatePost slug={slug} />
+  }
+
+  return <PublicPost slug={slug} />
+}
+
+async function PrivatePost({ slug }: { slug: string }) {
+  const token = (await cookies()).get('token')
+  // ... fetch and render private post using token for auth
+}
+```
+
+For runtime params not returned by `generateStaticParams`, validation occurs during the first request. In the example above, requests for slugs starting with `private-` will fail because `PrivatePost` accesses `cookies()` without a Suspense boundary. Other runtime params that don't hit the conditional branch will render successfully and be saved to disk for subsequent requests.
+
+To fix this, wrap `PrivatePost` with Suspense:
+
+```tsx filename="app/blog/[slug]/page.tsx" highlight={13-15}
+import { Suspense } from 'react'
+import { cookies } from 'next/headers'
+
+export async function generateStaticParams() {
+  return [{ slug: 'public-post' }, { slug: 'hello-world' }]
+}
+
+export default async function Page({ params }: PageProps<'/blog/[slug]'>) {
+  const { slug } = await params
+
+  if (slug.startsWith('private-')) {
+    return (
+      <Suspense fallback={<div>Loading...</div>}>
+        <PrivatePost slug={slug} />
+      </Suspense>
+    )
+  }
+
+  return <PublicPost slug={slug} />
+}
+
+async function PrivatePost({ slug }: { slug: string }) {
+  const token = (await cookies()).get('token')
+  // ... fetch and render private post using token for auth
+}
+```
+
 ## Examples
 
 ### With `generateStaticParams`
@@ -29035,6 +29839,63 @@ export async function generateStaticParams() {
 ```
 
 When using `fetch` inside the `generateStaticParams` function, the requests are [automatically deduplicated](/docs/app/guides/caching.md#request-memoization). This avoids multiple network calls for the same data Layouts, Pages, and other `generateStaticParams` functions, speeding up build time.
+
+### Dynamic GET Route Handlers with `generateStaticParams`
+
+`generateStaticParams` also works with dynamic [Route Handlers](/docs/app/api-reference/file-conventions/route.md) to statically generate API responses at build time:
+
+```ts filename="app/api/posts/[id]/route.ts" switcher
+export async function generateStaticParams() {
+  const posts: { id: number }[] = await fetch(
+    'https://api.vercel.app/blog'
+  ).then((res) => res.json())
+
+  return posts.map((post) => ({
+    id: `${post.id}`,
+  }))
+}
+
+export async function GET(
+  request: Request,
+  { params }: RouteContext<'/api/posts/[id]'>
+) {
+  const { id } = await params
+  const res = await fetch(`https://api.vercel.app/blog/${id}`)
+
+  if (!res.ok) {
+    return Response.json({ error: 'Post not found' }, { status: 404 })
+  }
+
+  const post = await res.json()
+  return Response.json(post)
+}
+```
+
+```js filename="app/api/posts/[id]/route.js" switcher
+export async function generateStaticParams() {
+  const posts = await fetch('https://api.vercel.app/blog').then((res) =>
+    res.json()
+  )
+
+  return posts.map((post) => ({
+    id: `${post.id}`,
+  }))
+}
+
+export async function GET(request, { params }) {
+  const { id } = await params
+  const res = await fetch(`https://api.vercel.app/blog/${id}`)
+
+  if (!res.ok) {
+    return Response.json({ error: 'Post not found' }, { status: 404 })
+  }
+
+  const post = await res.json()
+  return Response.json(post)
+}
+```
+
+In this example, route handlers for all blog post IDs returned by `generateStaticParams` will be statically generated at build time. Requests to other IDs will be handled dynamically at request time.
 ## Next Steps
 
 For more information on what to do next, we recommend the following sections
@@ -29991,8 +30852,10 @@ export default function RootLayout({ children }) {
 
 * The root layout **must** define `<html>` and `<body>` tags.
   * You should **not** manually add `<head>` tags such as `<title>` and `<meta>` to root layouts. Instead, you should use the [Metadata API](/docs/app/getting-started/metadata-and-og-images.md) which automatically handles advanced requirements such as streaming and de-duplicating `<head>` elements.
-* You can use [route groups](/docs/app/api-reference/file-conventions/route-groups.md) to create **multiple root layouts**.
-  * Navigating **across multiple root layouts** will cause a **full page load** (as opposed to a client-side navigation). For example, navigating from `/cart` that uses `app/(shop)/layout.js` to `/blog` that uses `app/(marketing)/layout.js` will cause a full page load. This **only** applies to multiple root layouts.
+* You can create **multiple root layouts**. Any layout without a `layout.js` above it is a root layout. Two common approaches:
+  * Using [route groups](/docs/app/api-reference/file-conventions/route-groups.md) like `app/(shop)/layout.js` and `app/(marketing)/layout.js`
+  * Omitting `app/layout.js` so layouts in subdirectories like `app/dashboard/layout.js` and `app/blog/layout.js` each become root layouts for their respective directories.
+  * Navigating **across multiple root layouts** will cause a **full page load** (as opposed to a client-side navigation).
 * The root layout can be under a **dynamic segment**, for example when implementing [internationalization](/docs/app/guides/internationalization.md) with `app/[lang]/layout.js`.
 
 ## Caveats
@@ -32418,7 +33281,7 @@ The codemod will rename the file and the function name from `middleware` to `pro
 
 
 --------------------------------------------------------------------------------
-title: "public Folder"
+title: "public"
 description: "Next.js allows you to serve static files, like images, in the public directory. You can learn how it works here."
 source: "https://nextjs.org/docs/app/api-reference/file-conventions/public-folder"
 --------------------------------------------------------------------------------
@@ -32792,6 +33655,14 @@ export async function GET(request, { params }) {
 | `app/items/[slug]/route.js` | `/items/a`  | `Promise<{ slug: 'a' }>` |
 | `app/items/[slug]/route.js` | `/items/b`  | `Promise<{ slug: 'b' }>` |
 | `app/items/[slug]/route.js` | `/items/c`  | `Promise<{ slug: 'c' }>` |
+
+#### Static Generation with `generateStaticParams`
+
+You can use [`generateStaticParams`](/docs/app/api-reference/functions/generate-static-params.md) with dynamic Route Handlers to statically generate responses at build time for specified params, while handling other params dynamically at request time.
+
+When using [Cache Components](/docs/app/getting-started/cache-components.md), you can combine `generateStaticParams` with `use cache` to enable data caching for both prerendered and runtime params.
+
+See the [generateStaticParams with Route Handlers](/docs/app/api-reference/functions/generate-static-params.md#with-route-handlers) documentation for examples and details.
 
 ### URL Query Parameters
 
@@ -33376,7 +34247,7 @@ See the [API reference](/docs/app/api-reference/functions/generate-static-params
 
 
 --------------------------------------------------------------------------------
-title: "src Folder"
+title: "src"
 description: "Save pages under the `src` folder as an alternative to the root `pages` directory."
 source: "https://nextjs.org/docs/app/api-reference/file-conventions/src-folder"
 --------------------------------------------------------------------------------
@@ -33684,7 +34555,7 @@ export default function UnauthorizedPage() {
 
 
 --------------------------------------------------------------------------------
-title: "Metadata Files API Reference"
+title: "Metadata Files"
 description: "API documentation for the metadata file conventions."
 source: "https://nextjs.org/docs/app/api-reference/file-conventions/metadata"
 --------------------------------------------------------------------------------
@@ -33702,11 +34573,6 @@ Once a file is defined, Next.js will automatically serve the file (with hashes i
 > * Special Route Handlers like [`sitemap.ts`](/docs/app/api-reference/file-conventions/metadata/sitemap.md), [`opengraph-image.tsx`](/docs/app/api-reference/file-conventions/metadata/opengraph-image.md), and [`icon.tsx`](/docs/app/api-reference/file-conventions/metadata/app-icons.md), and other [metadata files](/docs/app/api-reference/file-conventions/metadata.md) are cached by default.
 > * If using along with [`proxy.ts`](/docs/app/api-reference/file-conventions/proxy.md), [configure the matcher](/docs/app/api-reference/file-conventions/proxy.md#matcher) to exclude the metadata files.
 
- - [favicon, icon, and apple-icon](/docs/app/api-reference/file-conventions/metadata/app-icons.md)
- - [manifest.json](/docs/app/api-reference/file-conventions/metadata/manifest.md)
- - [opengraph-image and twitter-image](/docs/app/api-reference/file-conventions/metadata/opengraph-image.md)
- - [robots.txt](/docs/app/api-reference/file-conventions/metadata/robots.md)
- - [sitemap.xml](/docs/app/api-reference/file-conventions/metadata/sitemap.md)
 
 --------------------------------------------------------------------------------
 title: "favicon, icon, and apple-icon"
@@ -35095,7 +35961,7 @@ export async function generateSitemaps() {
 }
 
 export default async function sitemap(props: {
-  id: Promise<number>
+  id: Promise<string>
 }): Promise<MetadataRoute.Sitemap> {
   const id = await props.id
   // Google's limit is 50,000 URLs per sitemap
@@ -35165,7 +36031,7 @@ type Sitemap = Array<{
 
 | Version    | Changes                                                      |
 | ---------- | ------------------------------------------------------------ |
-| `v16.0.0`  | `id` is now a promise that resolves to a number.             |
+| `v16.0.0`  | `id` is now a promise that resolves to a `string`.           |
 | `v14.2.0`  | Add localizations support.                                   |
 | `v13.4.14` | Add `changeFrequency` and `priority` attributes to sitemaps. |
 | `v13.3.0`  | `sitemap` introduced.                                        |
@@ -35187,43 +36053,6 @@ source: "https://nextjs.org/docs/app/api-reference/functions"
 
 
 
- - [after](/docs/app/api-reference/functions/after.md)
- - [cacheLife](/docs/app/api-reference/functions/cacheLife.md)
- - [cacheTag](/docs/app/api-reference/functions/cacheTag.md)
- - [connection](/docs/app/api-reference/functions/connection.md)
- - [cookies](/docs/app/api-reference/functions/cookies.md)
- - [draftMode](/docs/app/api-reference/functions/draft-mode.md)
- - [fetch](/docs/app/api-reference/functions/fetch.md)
- - [forbidden](/docs/app/api-reference/functions/forbidden.md)
- - [generateImageMetadata](/docs/app/api-reference/functions/generate-image-metadata.md)
- - [generateMetadata](/docs/app/api-reference/functions/generate-metadata.md)
- - [generateSitemaps](/docs/app/api-reference/functions/generate-sitemaps.md)
- - [generateStaticParams](/docs/app/api-reference/functions/generate-static-params.md)
- - [generateViewport](/docs/app/api-reference/functions/generate-viewport.md)
- - [headers](/docs/app/api-reference/functions/headers.md)
- - [ImageResponse](/docs/app/api-reference/functions/image-response.md)
- - [NextRequest](/docs/app/api-reference/functions/next-request.md)
- - [NextResponse](/docs/app/api-reference/functions/next-response.md)
- - [notFound](/docs/app/api-reference/functions/not-found.md)
- - [permanentRedirect](/docs/app/api-reference/functions/permanentRedirect.md)
- - [redirect](/docs/app/api-reference/functions/redirect.md)
- - [refresh](/docs/app/api-reference/functions/refresh.md)
- - [revalidatePath](/docs/app/api-reference/functions/revalidatePath.md)
- - [revalidateTag](/docs/app/api-reference/functions/revalidateTag.md)
- - [unauthorized](/docs/app/api-reference/functions/unauthorized.md)
- - [unstable_cache](/docs/app/api-reference/functions/unstable_cache.md)
- - [unstable_noStore](/docs/app/api-reference/functions/unstable_noStore.md)
- - [unstable_rethrow](/docs/app/api-reference/functions/unstable_rethrow.md)
- - [updateTag](/docs/app/api-reference/functions/updateTag.md)
- - [useLinkStatus](/docs/app/api-reference/functions/use-link-status.md)
- - [useParams](/docs/app/api-reference/functions/use-params.md)
- - [usePathname](/docs/app/api-reference/functions/use-pathname.md)
- - [useReportWebVitals](/docs/app/api-reference/functions/use-report-web-vitals.md)
- - [useRouter](/docs/app/api-reference/functions/use-router.md)
- - [useSearchParams](/docs/app/api-reference/functions/use-search-params.md)
- - [useSelectedLayoutSegment](/docs/app/api-reference/functions/use-selected-layout-segment.md)
- - [useSelectedLayoutSegments](/docs/app/api-reference/functions/use-selected-layout-segments.md)
- - [userAgent](/docs/app/api-reference/functions/userAgent.md)
 
 --------------------------------------------------------------------------------
 title: "after"
@@ -35235,7 +36064,7 @@ source: "https://nextjs.org/docs/app/api-reference/functions/after"
 
 `after` allows you to schedule work to be executed after a response (or prerender) is finished. This is useful for tasks and other side effects that should not block the response, such as logging and analytics.
 
-It can be used in [Server Components](/docs/app/getting-started/server-and-client-components.md) (including [`generateMetadata`](/docs/app/api-reference/functions/generate-metadata.md)), [Server Actions](/docs/app/getting-started/updating-data.md), [Route Handlers](/docs/app/api-reference/file-conventions/route.md), and [Proxy](/docs/app/api-reference/file-conventions/proxy.md).
+It can be used in [Server Components](/docs/app/getting-started/server-and-client-components.md) (including [`generateMetadata`](/docs/app/api-reference/functions/generate-metadata.md)), [Server Functions](/docs/app/getting-started/updating-data.md), [Route Handlers](/docs/app/api-reference/file-conventions/route.md), and [Proxy](/docs/app/api-reference/file-conventions/proxy.md).
 
 The function accepts a callback that will be executed after the response (or prerender) is finished:
 
@@ -35289,7 +36118,7 @@ export default function Layout({ children }) {
 
 ### With request APIs
 
-You can use request APIs such as [`cookies`](/docs/app/api-reference/functions/cookies.md) and [`headers`](/docs/app/api-reference/functions/headers.md) inside `after` in [Server Actions](/docs/app/getting-started/updating-data.md) and [Route Handlers](/docs/app/api-reference/file-conventions/route.md). This is useful for logging activity after a mutation. For example:
+You can use request APIs such as [`cookies`](/docs/app/api-reference/functions/cookies.md) and [`headers`](/docs/app/api-reference/functions/headers.md) inside `after` in [Server Functions](/docs/app/getting-started/updating-data.md) and [Route Handlers](/docs/app/api-reference/file-conventions/route.md). This is useful for logging activity after a mutation. For example:
 
 ```ts filename="app/api/route.ts" highlight={2,7-9} switcher
 import { after } from 'next/server'
@@ -35896,7 +36725,7 @@ View related API references.
 - [cacheComponents](/docs/app/api-reference/config/next-config-js/cacheComponents.md)
   - Learn how to enable the cacheComponents flag in Next.js.
 - [use cache](/docs/app/api-reference/directives/use-cache.md)
-  - Learn how to use the use cache directive to cache data in your Next.js application.
+  - Learn how to use the "use cache" directive to cache data in your Next.js application.
 - [revalidateTag](/docs/app/api-reference/functions/revalidateTag.md)
   - API Reference for the revalidateTag function.
 - [cacheTag](/docs/app/api-reference/functions/cacheTag.md)
@@ -36104,7 +36933,7 @@ View related API references.
 - [cacheComponents](/docs/app/api-reference/config/next-config-js/cacheComponents.md)
   - Learn how to enable the cacheComponents flag in Next.js.
 - [use cache](/docs/app/api-reference/directives/use-cache.md)
-  - Learn how to use the use cache directive to cache data in your Next.js application.
+  - Learn how to use the "use cache" directive to cache data in your Next.js application.
 - [revalidateTag](/docs/app/api-reference/functions/revalidateTag.md)
   - API Reference for the revalidateTag function.
 - [cacheLife](/docs/app/api-reference/functions/cacheLife.md)
@@ -36182,7 +37011,7 @@ source: "https://nextjs.org/docs/app/api-reference/functions/cookies"
 
 # cookies
 
-`cookies` is an **async** function that allows you to read the HTTP incoming request cookies in [Server Components](/docs/app/getting-started/server-and-client-components.md), and read/write outgoing request cookies in [Server Actions](/docs/app/getting-started/updating-data.md) or [Route Handlers](/docs/app/api-reference/file-conventions/route.md).
+`cookies` is an **async** function that allows you to read the HTTP incoming request cookies in [Server Components](/docs/app/getting-started/server-and-client-components.md), and read/write outgoing request cookies in [Server Functions](/docs/app/getting-started/updating-data.md) or [Route Handlers](/docs/app/api-reference/file-conventions/route.md).
 
 ```tsx filename="app/page.tsx" switcher
 import { cookies } from 'next/headers'
@@ -36217,7 +37046,6 @@ The following methods are available:
 | `has('name')`               | Boolean          | Accepts a cookie name and returns a boolean based on if the cookie exists.      |
 | `set(name, value, options)` | -                | Accepts a cookie name, value, and options and sets the outgoing request cookie. |
 | `delete(name)`              | -                | Accepts a cookie name and deletes the cookie.                                   |
-| `clear()`                   | -                | Deletes all cookies.                                                            |
 | `toString()`                | String           | Returns a string representation of the cookies.                                 |
 
 ### Options
@@ -36248,26 +37076,26 @@ To learn more about these options, see the [MDN docs](https://developer.mozilla.
   * In version 14 and earlier, `cookies` was a synchronous function. To help with backwards compatibility, you can still access it synchronously in Next.js 15, but this behavior will be deprecated in the future.
 * `cookies` is a [Dynamic API](/docs/app/guides/caching.md#dynamic-rendering) whose returned values cannot be known ahead of time. Using it in a layout or page will opt a route into [dynamic rendering](/docs/app/guides/caching.md#dynamic-rendering).
 * The `.delete` method can only be called:
-  * In a [Server Action](/docs/app/getting-started/updating-data.md) or [Route Handler](/docs/app/api-reference/file-conventions/route.md).
+  * In a [Server Function](/docs/app/getting-started/updating-data.md) or [Route Handler](/docs/app/api-reference/file-conventions/route.md).
   * If it belongs to the same domain from which `.set` is called. For wildcard domains, the specific subdomain must be an exact match. Additionally, the code must be executed on the same protocol (HTTP or HTTPS) as the cookie you want to delete.
-* HTTP does not allow setting cookies after streaming starts, so you must use `.set` in a [Server Action](/docs/app/getting-started/updating-data.md) or [Route Handler](/docs/app/api-reference/file-conventions/route.md).
+* HTTP does not allow setting cookies after streaming starts, so you must use `.set` in a [Server Function](/docs/app/getting-started/updating-data.md) or [Route Handler](/docs/app/api-reference/file-conventions/route.md).
 
 ## Understanding Cookie Behavior in Server Components
 
 When working with cookies in Server Components, it's important to understand that cookies are fundamentally a client-side storage mechanism:
 
 * **Reading cookies** works in Server Components because you're accessing the cookie data that the client's browser sends to the server in the HTTP request headers.
-* **Setting cookies** cannot be done directly in a Server Component, even when using a Route Handler or Server Action. This is because cookies are actually stored by the browser, not the server.
+* **Setting cookies** is not supported during Server Component rendering. To modify cookies, invoke a Server Function from the client or use a Route Handler.
 
-The server can only send instructions (via `Set-Cookie` headers) to tell the browser to store cookies - the actual storage happens on the client side. This is why cookie operations that modify state (`.set`, `.delete`, `.clear`) must be performed in a Route Handler or Server Action where the response headers can be properly set.
+The server can only send instructions (via `Set-Cookie` headers) to tell the browser to store cookies - the actual storage happens on the client side. This is why cookie operations that modify state (`.set`, `.delete`) must be performed in a Server Function or Route Handler where the response headers can be properly set.
 
-## Understanding Cookie Behavior in Server Actions
+## Understanding Cookie Behavior in Server Functions
 
-After you set or delete a cookie in a Server Action, Next.js re-renders the current page and its layouts on the server so the UI reflects the new cookie value. See the [Caching guide](/docs/app/guides/caching.md#cookies).
+After you set or delete a cookie in a Server Function, Next.js can return both the updated UI and new data in a single server roundtrip when the function is used as a [Server Action](/docs/app/getting-started/updating-data.md#what-are-server-functions) (e.g., passed to a form's `action` prop). See the [Caching guide](/docs/app/guides/caching.md#cookies).
 
 The UI is not unmounted, but effects that depend on data coming from the server will re-run.
 
-To refresh cached data too, call [`revalidatePath`](/docs/app/api-reference/functions/revalidatePath.md) or [`revalidateTag`](/docs/app/api-reference/functions/revalidateTag.md) inside the action.
+To refresh cached data too, call [`revalidatePath`](/docs/app/api-reference/functions/revalidatePath.md) or [`revalidateTag`](/docs/app/api-reference/functions/revalidateTag.md) inside the function.
 
 ## Examples
 
@@ -36329,7 +37157,7 @@ export default async function Page() {
 
 ### Setting a cookie
 
-You can use the `(await cookies()).set(name, value, options)` method in a [Server Action](/docs/app/getting-started/updating-data.md) or [Route Handler](/docs/app/api-reference/file-conventions/route.md) to set a cookie. The [`options` object](#options) is optional.
+You can use the `(await cookies()).set(name, value, options)` method in a [Server Function](/docs/app/getting-started/updating-data.md) or [Route Handler](/docs/app/api-reference/file-conventions/route.md) to set a cookie. The [`options` object](#options) is optional.
 
 ```tsx filename="app/actions.ts" switcher
 'use server'
@@ -36767,7 +37595,7 @@ module.exports = {
 }
 ```
 
-`forbidden` can be invoked in [Server Components](/docs/app/getting-started/server-and-client-components.md), [Server Actions](/docs/app/getting-started/updating-data.md), and [Route Handlers](/docs/app/api-reference/file-conventions/route.md).
+`forbidden` can be invoked in [Server Components](/docs/app/getting-started/server-and-client-components.md), [Server Functions](/docs/app/getting-started/updating-data.md), and [Route Handlers](/docs/app/api-reference/file-conventions/route.md).
 
 ```tsx filename="app/auth/page.tsx" switcher
 import { verifySession } from '@/app/lib/dal'
@@ -38391,6 +39219,68 @@ Streaming metadata improves perceived performance by reducing [TTFB](https://dev
 
 Overriding `htmlLimitedBots` could lead to longer response times. Streaming metadata is an advanced feature, and the default should be sufficient for most cases.
 
+### With Cache Components
+
+When [Cache Components](/docs/app/getting-started/cache-components.md) is enabled, `generateMetadata` follows the same rules as other components. If metadata accesses runtime data (`cookies()`, `headers()`, `params`, `searchParams`) or performs uncached data fetching, it defers to request time.
+
+How Next.js handles this depends on the rest of your page:
+
+* **If other parts also defer to request time**: Prerendering generates a static shell, and metadata streams in with other deferred content.
+* **If the page or layout is otherwise fully prerenderable**: Next.js requires an explicit choice: cache the data if possible, or signal that deferred rendering is intentional.
+
+Streaming metadata at runtime while the rest of the page is fully prerenderable is not common. To ensure this behavior is intentional, an error is raised indicating which page or layout needs to be handled.
+
+To resolve this, you have two options. If metadata depends on external data but not runtime data, use `use cache`:
+
+```tsx filename="app/page.tsx" highlight={2}
+export async function generateMetadata() {
+  'use cache'
+  const { title, description } = await db.query('site-metadata')
+  return { title, description }
+}
+```
+
+If metadata genuinely requires runtime data, add a dynamic marker component to your page:
+
+```tsx filename="app/page.tsx" highlight={11-14,19,28}
+import { Suspense } from 'react'
+import { cookies } from 'next/headers'
+import { connection } from 'next/server'
+
+export async function generateMetadata() {
+  const token = (await cookies()).get('token')?.value
+  // ... use token to fetch personalized metadata
+  return { title: 'Personalized Title' }
+}
+
+const Connection = async () => {
+  await connection()
+  return null
+}
+
+async function DynamicMarker() {
+  return (
+    <Suspense>
+      <Connection />
+    </Suspense>
+  )
+}
+
+export default function Page() {
+  // DO NOT place await connection() here
+  // doing so prevents the article tag content from
+  // being included in the static shell
+  return (
+    <>
+      <article>Static content</article>
+      <DynamicMarker />
+    </>
+  )
+}
+```
+
+The `DynamicMarker` component renders nothing but tells Next.js the page has intentional dynamic content. By wrapping it in Suspense, the static content still prerenders normally.
+
 ### Ordering
 
 Metadata is evaluated in order, starting from the root segment down to the segment closest to the final `page.js` segment. For example:
@@ -38508,6 +39398,10 @@ View all the Metadata API options.
   - API documentation for the metadata file conventions.
 - [generateViewport](/docs/app/api-reference/functions/generate-viewport.md)
   - API Reference for the generateViewport function.
+- [Cache Components](/docs/app/getting-started/cache-components.md)
+  - Learn how to use Cache Components and combine the benefits of static and dynamic rendering.
+- [cacheComponents](/docs/app/api-reference/config/next-config-js/cacheComponents.md)
+  - Learn how to enable the cacheComponents flag in Next.js.
 
 
 --------------------------------------------------------------------------------
@@ -38542,7 +39436,7 @@ export async function generateSitemaps() {
 }
 
 export default async function sitemap(props: {
-  id: Promise<number>
+  id: Promise<string>
 }): Promise<MetadataRoute.Sitemap> {
   const id = await props.id
   // Google's limit is 50,000 URLs per sitemap
@@ -38585,7 +39479,7 @@ export default async function sitemap(props) {
 
 | Version   | Changes                                                                                                                                              |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `v16.0.0` | The `id` values returned from `generateSitemaps` are now passed as a promise to the sitemap function.                                                |
+| `v16.0.0` | The `id` values returned from `generateSitemaps` are now passed as a promise that resolves to a `string` to the sitemap function.                    |
 | `v15.0.0` | `generateSitemaps` now generates consistent URLs between development and production                                                                  |
 | `v13.3.2` | `generateSitemaps` introduced. In development, you can view the generated sitemap on `/.../sitemap.xml/[id]`. For example, `/product/sitemap.xml/1`. |
 ## Next Steps
@@ -38605,6 +39499,12 @@ source: "https://nextjs.org/docs/app/api-reference/functions/generate-static-par
 # generateStaticParams
 
 The `generateStaticParams` function can be used in combination with [dynamic route segments](/docs/app/api-reference/file-conventions/dynamic-routes.md) to [**statically generate**](/docs/app/guides/caching.md#static-rendering) routes at build time instead of on-demand at request time.
+
+`generateStaticParams` can be used with:
+
+* [Pages](/docs/app/api-reference/file-conventions/page.md) (`page.tsx`/`page.js`)
+* [Layouts](/docs/app/api-reference/file-conventions/layout.md) (`layout.tsx`/`layout.js`)
+* [Route Handlers](/docs/app/api-reference/file-conventions/route.md) (`route.ts`/`route.js`)
 
 ```tsx filename="app/blog/[slug]/page.tsx" switcher
 // Return a list of `params` to populate the [slug] dynamic segment
@@ -38892,11 +39792,79 @@ export async function generateStaticParams() {
 }
 ```
 
-> **Good to know:** You must always return an array from `generateStaticParams`, even if it's empty. Otherwise, the route will be dynamically rendered.
+> **Good to know:**
+>
+> * You must always return an array from `generateStaticParams`, even if it's empty. Otherwise, the route will be dynamically rendered.
 
 ```jsx filename="app/changelog/[slug]/page.js"
 export const dynamic = 'force-static'
 ```
+
+#### With Cache Components
+
+When using [Cache Components](/docs/app/getting-started/cache-components.md) with dynamic routes, `generateStaticParams` must return **at least one param**. Empty arrays cause a [build error](/docs/messages/empty-generate-static-params.md). This allows Cache Components to validate your route doesn't incorrectly access `cookies()`, `headers()`, or `searchParams` at runtime.
+
+> **Good to know**: If you don't know the actual param values at build time, you can return a placeholder param (e.g., `[{ slug: '__placeholder__' }]`) for validation, then handle it in your page with `notFound()`. However, this prevents build time validation from working effectively and may cause runtime errors.
+
+See the [dynamic routes section](/docs/app/api-reference/file-conventions/dynamic-routes.md#with-cache-components) for detailed walkthroughs.
+
+### With Route Handlers
+
+You can use `generateStaticParams` with [Route Handlers](/docs/app/api-reference/file-conventions/route.md) to statically generate API responses at build time:
+
+```ts filename="app/api/posts/[id]/route.ts" switcher
+export async function generateStaticParams() {
+  return [{ id: '1' }, { id: '2' }, { id: '3' }]
+}
+
+export async function GET(
+  request: Request,
+  { params }: RouteContext<'/api/posts/[id]'>
+) {
+  const { id } = await params
+  // This will be statically generated for IDs 1, 2, and 3
+  return Response.json({ id, title: `Post ${id}` })
+}
+```
+
+```js filename="app/api/posts/[id]/route.js" switcher
+export async function generateStaticParams() {
+  return [{ id: '1' }, { id: '2' }, { id: '3' }]
+}
+
+export async function GET(request, { params }) {
+  const { id } = await params
+  // This will be statically generated for IDs 1, 2, and 3
+  return Response.json({ id, title: `Post ${id}` })
+}
+```
+
+### Route Handlers with Cache Components
+
+When using [Cache Components](/docs/app/getting-started/cache-components.md), combine with `use cache` for optimal caching:
+
+```ts filename="app/api/posts/[id]/route.ts"
+export async function generateStaticParams() {
+  return [{ id: '1' }, { id: '2' }, { id: '3' }]
+}
+
+async function getPost(id: Promise<string>) {
+  'use cache'
+  const resolvedId = await id
+  const response = await fetch(`https://api.example.com/posts/${resolvedId}`)
+  return response.json()
+}
+
+export async function GET(
+  request: Request,
+  { params }: RouteContext<'/api/posts/[id]'>
+) {
+  const post = await getPost(params.then((p) => p.id))
+  return Response.json(post)
+}
+```
+
+See the [Route Handlers documentation](/docs/app/api-reference/file-conventions/route.md#static-generation-with-generatestaticparams) for more details.
 
 ### Disable rendering for unspecified paths
 
@@ -39240,6 +40208,50 @@ export const viewport = {
 <meta name="color-scheme" content="dark" />
 ```
 
+## With Cache Components
+
+When [Cache Components](/docs/app/getting-started/cache-components.md) is enabled, `generateViewport` follows the same rules as other components. If viewport accesses runtime data (`cookies()`, `headers()`, `params`, `searchParams`) or performs uncached data fetching, it defers to request time.
+
+Unlike metadata, viewport cannot be streamed because it affects initial page load UI. If `generateViewport` defers to request time, the page would need to block until resolved.
+
+If viewport depends on external data but not runtime data, use `use cache`:
+
+```tsx filename="app/layout.tsx" highlight={2}
+export async function generateViewport() {
+  'use cache'
+  const { width, initialScale } = await db.query('viewport-size')
+  return { width, initialScale }
+}
+```
+
+If viewport genuinely requires runtime data, wrap the document `<body>` in a Suspense boundary to signal that the entire route should be dynamic:
+
+```tsx filename="app/layout.tsx" highlight={1,11-15}
+import { Suspense } from 'react'
+import { cookies } from 'next/headers'
+
+export async function generateViewport() {
+  const cookieJar = await cookies()
+  return {
+    themeColor: cookieJar.get('theme-color')?.value,
+  }
+}
+
+export default function RootLayout({ children }) {
+  return (
+    <Suspense>
+      <html>
+        <body>{children}</body>
+      </html>
+    </Suspense>
+  )
+}
+```
+
+Caching is preferred because it allows static shell generation. Wrapping the document `body` in Suspense means there is no static shell or content to immediately send when a request arrives, making the entire route block until ready on every request.
+
+> **Good to know**: Use [multiple root layouts](/docs/app/api-reference/file-conventions/layout.md#root-layout) to isolate fully dynamic viewport to specific routes, while still letting other routes in your application generate a static shell.
+
 ## Types
 
 You can add type safety to your viewport object by using the `Viewport` type. If you are using the [built-in TypeScript plugin](/docs/app/api-reference/config/typescript.md) in your IDE, you do not need to manually add the type, but you can still explicitly add it if you want.
@@ -39309,6 +40321,10 @@ View all the Metadata API options.
 
 - [Metadata Files](/docs/app/api-reference/file-conventions/metadata.md)
   - API documentation for the metadata file conventions.
+- [Cache Components](/docs/app/getting-started/cache-components.md)
+  - Learn how to use Cache Components and combine the benefits of static and dynamic rendering.
+- [cacheComponents](/docs/app/api-reference/config/next-config-js/cacheComponents.md)
+  - Learn how to enable the cacheComponents flag in Next.js.
 
 
 --------------------------------------------------------------------------------
@@ -39676,7 +40692,7 @@ request.cookies.has('experiments')
 
 ### `clear()`
 
-Remove the `Set-Cookie` header from the request.
+Remove all cookies from the request.
 
 ```ts
 request.cookies.clear()
@@ -39763,6 +40779,17 @@ let response = NextResponse.next()
 response.cookies.getAll('experiments')
 // Alternatively, get all cookies for the response
 response.cookies.getAll()
+```
+
+### `has(name)`
+
+Given a cookie name, return `true` if the cookie exists on the response.
+
+```ts
+// Given incoming request /home
+let response = NextResponse.next()
+// Returns true if cookie exists, false if it does not
+response.cookies.has('experiments')
 ```
 
 ### `delete(name)`
@@ -39958,7 +40985,7 @@ source: "https://nextjs.org/docs/app/api-reference/functions/permanentRedirect"
 
 # permanentRedirect
 
-The `permanentRedirect` function allows you to redirect the user to another URL. `permanentRedirect` can be used in Server Components, Client Components, [Route Handlers](/docs/app/api-reference/file-conventions/route.md), and [Server Actions](/docs/app/getting-started/updating-data.md).
+The `permanentRedirect` function allows you to redirect the user to another URL. `permanentRedirect` can be used in Server Components, Client Components, [Route Handlers](/docs/app/api-reference/file-conventions/route.md), and [Server Functions](/docs/app/getting-started/updating-data.md).
 
 When used in a streaming context, this will insert a meta tag to emit the redirect on the client side. When used in a server action, it will serve a 303 HTTP redirect response to the caller. Otherwise, it will serve a 308 (Permanent) HTTP redirect response to the caller.
 
@@ -40024,7 +41051,7 @@ source: "https://nextjs.org/docs/app/api-reference/functions/redirect"
 
 # redirect
 
-The `redirect` function allows you to redirect the user to another URL. `redirect` can be used while rendering in [Server and Client Components](/docs/app/getting-started/server-and-client-components.md), [Route Handlers](/docs/app/api-reference/file-conventions/route.md), and [Server Actions](/docs/app/getting-started/updating-data.md).
+The `redirect` function allows you to redirect the user to another URL. `redirect` can be used while rendering in [Server and Client Components](/docs/app/getting-started/server-and-client-components.md), [Route Handlers](/docs/app/api-reference/file-conventions/route.md), and [Server Functions](/docs/app/getting-started/updating-data.md).
 
 When used in a [streaming context](/docs/app/getting-started/linking-and-navigating.md#streaming), this will insert a meta tag to emit the redirect on the client side. When used in a server action, it will serve a 303 HTTP redirect response to the caller. Otherwise, it will serve a 307 HTTP redirect response to the caller.
 
@@ -40691,7 +41718,7 @@ module.exports = {
 }
 ```
 
-`unauthorized` can be invoked in [Server Components](/docs/app/getting-started/server-and-client-components.md), [Server Actions](/docs/app/getting-started/updating-data.md), and [Route Handlers](/docs/app/api-reference/file-conventions/route.md).
+`unauthorized` can be invoked in [Server Components](/docs/app/getting-started/server-and-client-components.md), [Server Functions](/docs/app/getting-started/updating-data.md), and [Route Handlers](/docs/app/api-reference/file-conventions/route.md).
 
 ```tsx filename="app/dashboard/page.tsx" switcher
 import { verifySession } from '@/app/lib/dal'
@@ -42830,9 +43857,6 @@ source: "https://nextjs.org/docs/app/api-reference/config"
 
 
 
- - [next.config.js](/docs/app/api-reference/config/next-config-js.md)
- - [TypeScript](/docs/app/api-reference/config/typescript.md)
- - [ESLint](/docs/app/api-reference/config/eslint.md)
 
 --------------------------------------------------------------------------------
 title: "next.config.js"
@@ -42982,65 +44006,6 @@ expect(response.status).toEqual(307)
 expect(getRedirectUrl(response)).toEqual('https://nextjs.org/test2')
 ```
 
- - [experimental.adapterPath](/docs/app/api-reference/config/next-config-js/adapterPath.md)
- - [allowedDevOrigins](/docs/app/api-reference/config/next-config-js/allowedDevOrigins.md)
- - [appDir](/docs/app/api-reference/config/next-config-js/appDir.md)
- - [assetPrefix](/docs/app/api-reference/config/next-config-js/assetPrefix.md)
- - [authInterrupts](/docs/app/api-reference/config/next-config-js/authInterrupts.md)
- - [basePath](/docs/app/api-reference/config/next-config-js/basePath.md)
- - [browserDebugInfoInTerminal](/docs/app/api-reference/config/next-config-js/browserDebugInfoInTerminal.md)
- - [cacheComponents](/docs/app/api-reference/config/next-config-js/cacheComponents.md)
- - [cacheHandlers](/docs/app/api-reference/config/next-config-js/cacheHandlers.md)
- - [cacheLife](/docs/app/api-reference/config/next-config-js/cacheLife.md)
- - [compress](/docs/app/api-reference/config/next-config-js/compress.md)
- - [crossOrigin](/docs/app/api-reference/config/next-config-js/crossOrigin.md)
- - [cssChunking](/docs/app/api-reference/config/next-config-js/cssChunking.md)
- - [devIndicators](/docs/app/api-reference/config/next-config-js/devIndicators.md)
- - [distDir](/docs/app/api-reference/config/next-config-js/distDir.md)
- - [env](/docs/app/api-reference/config/next-config-js/env.md)
- - [expireTime](/docs/app/api-reference/config/next-config-js/expireTime.md)
- - [exportPathMap](/docs/app/api-reference/config/next-config-js/exportPathMap.md)
- - [generateBuildId](/docs/app/api-reference/config/next-config-js/generateBuildId.md)
- - [generateEtags](/docs/app/api-reference/config/next-config-js/generateEtags.md)
- - [headers](/docs/app/api-reference/config/next-config-js/headers.md)
- - [htmlLimitedBots](/docs/app/api-reference/config/next-config-js/htmlLimitedBots.md)
- - [httpAgentOptions](/docs/app/api-reference/config/next-config-js/httpAgentOptions.md)
- - [images](/docs/app/api-reference/config/next-config-js/images.md)
- - [cacheHandler](/docs/app/api-reference/config/next-config-js/incrementalCacheHandlerPath.md)
- - [inlineCss](/docs/app/api-reference/config/next-config-js/inlineCss.md)
- - [isolatedDevBuild](/docs/app/api-reference/config/next-config-js/isolatedDevBuild.md)
- - [logging](/docs/app/api-reference/config/next-config-js/logging.md)
- - [mdxRs](/docs/app/api-reference/config/next-config-js/mdxRs.md)
- - [onDemandEntries](/docs/app/api-reference/config/next-config-js/onDemandEntries.md)
- - [optimizePackageImports](/docs/app/api-reference/config/next-config-js/optimizePackageImports.md)
- - [output](/docs/app/api-reference/config/next-config-js/output.md)
- - [pageExtensions](/docs/app/api-reference/config/next-config-js/pageExtensions.md)
- - [poweredByHeader](/docs/app/api-reference/config/next-config-js/poweredByHeader.md)
- - [productionBrowserSourceMaps](/docs/app/api-reference/config/next-config-js/productionBrowserSourceMaps.md)
- - [proxyClientMaxBodySize](/docs/app/api-reference/config/next-config-js/proxyClientMaxBodySize.md)
- - [reactCompiler](/docs/app/api-reference/config/next-config-js/reactCompiler.md)
- - [reactMaxHeadersLength](/docs/app/api-reference/config/next-config-js/reactMaxHeadersLength.md)
- - [reactStrictMode](/docs/app/api-reference/config/next-config-js/reactStrictMode.md)
- - [redirects](/docs/app/api-reference/config/next-config-js/redirects.md)
- - [rewrites](/docs/app/api-reference/config/next-config-js/rewrites.md)
- - [sassOptions](/docs/app/api-reference/config/next-config-js/sassOptions.md)
- - [serverActions](/docs/app/api-reference/config/next-config-js/serverActions.md)
- - [serverComponentsHmrCache](/docs/app/api-reference/config/next-config-js/serverComponentsHmrCache.md)
- - [serverExternalPackages](/docs/app/api-reference/config/next-config-js/serverExternalPackages.md)
- - [staleTimes](/docs/app/api-reference/config/next-config-js/staleTimes.md)
- - [staticGeneration*](/docs/app/api-reference/config/next-config-js/staticGeneration.md)
- - [taint](/docs/app/api-reference/config/next-config-js/taint.md)
- - [trailingSlash](/docs/app/api-reference/config/next-config-js/trailingSlash.md)
- - [transpilePackages](/docs/app/api-reference/config/next-config-js/transpilePackages.md)
- - [turbopack](/docs/app/api-reference/config/next-config-js/turbopack.md)
- - [turbopackFileSystemCache](/docs/app/api-reference/config/next-config-js/turbopackFileSystemCache.md)
- - [typedRoutes](/docs/app/api-reference/config/next-config-js/typedRoutes.md)
- - [typescript](/docs/app/api-reference/config/next-config-js/typescript.md)
- - [urlImports](/docs/app/api-reference/config/next-config-js/urlImports.md)
- - [useLightningcss](/docs/app/api-reference/config/next-config-js/useLightningcss.md)
- - [viewTransition](/docs/app/api-reference/config/next-config-js/viewTransition.md)
- - [webpack](/docs/app/api-reference/config/next-config-js/webpack.md)
- - [webVitalsAttribution](/docs/app/api-reference/config/next-config-js/webVitalsAttribution.md)
 
 --------------------------------------------------------------------------------
 title: "experimental.adapterPath"
@@ -44233,11 +45198,11 @@ module.exports = {
 View related API references.
 
 - [use cache](/docs/app/api-reference/directives/use-cache.md)
-  - Learn how to use the use cache directive to cache data in your Next.js application.
+  - Learn how to use the "use cache" directive to cache data in your Next.js application.
 - [use cache: remote](/docs/app/api-reference/directives/use-cache-remote.md)
-  - Learn how to use the `"use cache: remote"` directive to enable caching in dynamic contexts in your Next.js application.
+  - Learn how to use the "use cache: remote" directive for persistent, shared caching using remote cache handlers.
 - [use cache: private](/docs/app/api-reference/directives/use-cache-private.md)
-  - Learn how to use the `"use cache: private"` directive to enable runtime prefetching of personalized content in your Next.js application.
+  - Learn how to use the "use cache: private" directive to cache functions that access runtime request APIs.
 - [cacheLife](/docs/app/api-reference/config/next-config-js/cacheLife.md)
   - Learn how to set up cacheLife configurations in Next.js.
 
@@ -44324,7 +45289,7 @@ The configuration object has key values with the following format:
 View related API references.
 
 - [use cache](/docs/app/api-reference/directives/use-cache.md)
-  - Learn how to use the use cache directive to cache data in your Next.js application.
+  - Learn how to use the "use cache" directive to cache data in your Next.js application.
 - [cacheHandlers](/docs/app/api-reference/config/next-config-js/cacheHandlers.md)
   - Configure custom cache handlers for use cache directives in Next.js.
 - [cacheLife](/docs/app/api-reference/functions/cacheLife.md)
@@ -45562,7 +46527,7 @@ export default function aioLoader({ src, width, quality }) {
 
 
 --------------------------------------------------------------------------------
-title: "Custom Next.js Cache Handler"
+title: "cacheHandler"
 description: "Configure the Next.js cache used for storing and revalidating data to use any external service like Redis, Memcached, or others."
 source: "https://nextjs.org/docs/app/api-reference/config/next-config-js/incrementalCacheHandlerPath"
 --------------------------------------------------------------------------------
@@ -45898,6 +46863,8 @@ source: "https://nextjs.org/docs/app/api-reference/config/next-config-js/optimiz
 --------------------------------------------------------------------------------
 
 # optimizePackageImports
+
+> This feature is currently experimental and subject to change, it is not recommended for production.
 
 Some packages can export hundreds or thousands of modules, which can cause performance issues in development and production.
 
@@ -47308,6 +48275,7 @@ module.exports = nextConfig
 
 Next.js includes a [short list of popular packages](https://github.com/vercel/next.js/blob/canary/packages/next/src/lib/server-external-packages.jsonc) that currently are working on compatibility and automatically opt-ed out:
 
+* `@alinea/generated`
 * `@appsignal/nodejs`
 * `@aws-sdk/client-s3`
 * `@aws-sdk/s3-presigned-post`
@@ -47328,6 +48296,7 @@ Next.js includes a [short list of popular packages](https://github.com/vercel/ne
 * `@statsig/statsig-node-core`
 * `@swc/core`
 * `@xenova/transformers`
+* `@zenstackhq/runtime`
 * `argon2`
 * `autoprefixer`
 * `aws-crt`
@@ -47361,6 +48330,9 @@ Next.js includes a [short list of popular packages](https://github.com/vercel/ne
 * `onnxruntime-node`
 * `oslo`
 * `pg`
+* `pino`
+* `pino-pretty`
+* `pino-roll`
 * `playwright`
 * `playwright-core`
 * `postcss`
@@ -47374,8 +48346,9 @@ Next.js includes a [short list of popular packages](https://github.com/vercel/ne
 * `sharp`
 * `shiki`
 * `sqlite3`
-* `ts-node`
+* `thread-stream`
 * `ts-morph`
+* `ts-node`
 * `typescript`
 * `vscode-oniguruma`
 * `webpack`
@@ -48097,7 +49070,7 @@ The option automatically adds a polyfill for debug IDs to the JavaScript bundle 
 
 
 --------------------------------------------------------------------------------
-title: "Turbopack FileSystem Caching"
+title: "turbopackFileSystemCache"
 description: "Learn how to enable FileSystem Caching for Turbopack builds"
 source: "https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopackFileSystemCache"
 --------------------------------------------------------------------------------
@@ -48108,7 +49081,7 @@ source: "https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopa
 
 Turbopack FileSystem Cache enables Turbopack to reduce work across `next dev` or `next build` commands. When enabled, Turbopack will save and restore data to the `.next` folder between builds, which can greatly speed up subsequent builds and dev sessions.
 
-> **Good to know:** The FileSystem Cache feature is Beta and is still under development. Users adopting should expect some stability issues. We recommend first adopting it for development.
+> **Good to know:** The FileSystem Cache feature is considered stable for development and experimental for production builds
 
 ```ts filename="next.config.ts" switcher
 import type { NextConfig } from 'next'
@@ -48143,6 +49116,7 @@ module.exports = nextConfig
 
 | Version   | Changes                                                        |
 | --------- | -------------------------------------------------------------- |
+| `v16.1.0` | FileSystem caching is enabled by default for development       |
 | `v16.0.0` | Beta release with separate flags for build and dev             |
 | `v15.5.0` | Persistent caching released as experimental on canary releases |
 
@@ -48171,19 +49145,37 @@ module.exports = nextConfig
 
 --------------------------------------------------------------------------------
 title: "typescript"
-description: "Next.js reports TypeScript errors by default. Learn to opt-out of this behavior here."
+description: "Configure how Next.js handles TypeScript errors during production builds and specify a custom tsconfig file."
 source: "https://nextjs.org/docs/app/api-reference/config/next-config-js/typescript"
 --------------------------------------------------------------------------------
 
 # typescript
+
+Configure TypeScript behavior with the `typescript` option in `next.config.js`:
+
+```js filename="next.config.js"
+module.exports = {
+  typescript: {
+    ignoreBuildErrors: false,
+    tsconfigPath: 'tsconfig.json',
+  },
+}
+```
+
+## Options
+
+| Option              | Type      | Default           | Description                                                      |
+| ------------------- | --------- | ----------------- | ---------------------------------------------------------------- |
+| `ignoreBuildErrors` | `boolean` | `false`           | Allow production builds to complete even with TypeScript errors. |
+| `tsconfigPath`      | `string`  | `'tsconfig.json'` | Path to a custom `tsconfig.json` file.                           |
+
+## `ignoreBuildErrors`
 
 Next.js fails your **production build** (`next build`) when TypeScript errors are present in your project.
 
 If you'd like Next.js to dangerously produce production code even when your application has errors, you can disable the built-in type checking step.
 
 If disabled, be sure you are running type checks as part of your build or deploy process, otherwise this can be very dangerous.
-
-Open `next.config.js` and enable the `ignoreBuildErrors` option in the `typescript` config:
 
 ```js filename="next.config.js"
 module.exports = {
@@ -48196,6 +49188,20 @@ module.exports = {
   },
 }
 ```
+
+## `tsconfigPath`
+
+Use a different TypeScript configuration file for builds or tooling:
+
+```js filename="next.config.js"
+module.exports = {
+  typescript: {
+    tsconfigPath: 'tsconfig.build.json',
+  },
+}
+```
+
+See the [TypeScript configuration](/docs/app/api-reference/config/typescript.md#custom-tsconfig-path) page for more details.
 
 
 --------------------------------------------------------------------------------
@@ -48386,7 +49392,7 @@ As this API evolves, we will update our documentation and share more examples. H
 
 
 --------------------------------------------------------------------------------
-title: "Custom Webpack Config"
+title: "webpack"
 description: "Learn how to customize the webpack config used by Next.js"
 source: "https://nextjs.org/docs/app/api-reference/config/next-config-js/webpack"
 --------------------------------------------------------------------------------
@@ -48522,7 +49528,7 @@ Now, when editing files, the custom plugin will be enabled. When running `next b
 
 The TypeScript plugin can help with:
 
-* Warning if the invalid values for [segment config options](/docs/app/api-reference/file-conventions/route-segment-config.md) are passed.
+* Warning if invalid values for [segment config options](/docs/app/api-reference/file-conventions/route-segment-config.md) are passed.
 * Showing available options and in-context documentation.
 * Ensuring the `'use client'` directive is used correctly.
 * Ensuring client hooks (like `useState`) are only used in Client Components.
@@ -48564,6 +49570,17 @@ Next.js generates global helpers for App Router route types. These are available
 * [`PageProps`](/docs/app/api-reference/file-conventions/page.md#page-props-helper)
 * [`LayoutProps`](/docs/app/api-reference/file-conventions/layout.md#layout-props-helper)
 * [`RouteContext`](/docs/app/api-reference/file-conventions/route.md#route-context-helper)
+
+## `next-env.d.ts`
+
+Next.js generates a `next-env.d.ts` file in your project root. This file references Next.js type definitions, allowing TypeScript to recognize non-code imports (images, stylesheets, etc.) and Next.js-specific types.
+
+Running `next dev`, `next build`, or [`next typegen`](/docs/app/api-reference/cli/next.md#next-typegen-options) regenerates this file.
+
+> **Good to know**:
+>
+> * We recommend adding `next-env.d.ts` to your `.gitignore` file.
+> * The file must be in your `tsconfig.json` `include` array (`create-next-app` does this automatically).
 
 ## Examples
 
@@ -48610,7 +49627,7 @@ NODE_OPTIONS=--experimental-transform-types next <command>
 
 #### For CommonJS Projects (Default)
 
-Although `next.config.ts` supports native ESM syntax on CommonJS projects, Node.js will still assume `next.config.ts` is a CommonJS file by default, resulting in Node.js reparsing the file as ESM when module syntax is detected. Therefore, we recommend using the `next.config.mts` file for CommonJS projects to explicitly indicate it's an ESM module:
+Although `next.config.ts` supports native ESM syntax in CommonJS projects, Node.js will still assume `next.config.ts` is a CommonJS file by default, resulting in Node.js reparsing the file as ESM when module syntax is detected. Therefore, we recommend using the `next.config.mts` file for CommonJS projects to explicitly indicate it's an ESM module:
 
 ```ts filename="next.config.mts"
 import type { NextConfig } from 'next'
@@ -48640,7 +49657,7 @@ Works in both the Pages and App Router for the `href` prop in `next/link`. In th
 
 Literal `href` strings are validated, while non-literal `href`s may require a cast with `as Route`.
 
-To opt-into this feature, `typedRoutes` need to be enabled and the project needs to be using TypeScript.
+To opt-into this feature, `typedRoutes` needs to be enabled and the project needs to be using TypeScript.
 
 ```ts filename="next.config.ts"
 import type { NextConfig } from 'next'
@@ -48881,7 +49898,7 @@ If you'd like Next.js to dangerously produce production code even when your appl
 
 If disabled, be sure you are running type checks as part of your build or deploy process, otherwise this can be very dangerous.
 
-Open `next.config.ts` and enable the `ignoreBuildErrors` option in the `typescript` config:
+Open `next.config.ts` and enable the `ignoreBuildErrors` option in the [`typescript`](/docs/app/api-reference/config/next-config-js/typescript.md) config:
 
 ```ts filename="next.config.ts"
 import type { NextConfig } from 'next'
@@ -48933,7 +49950,7 @@ When you need to declare custom types, you might be tempted to modify `next-env.
 
 
 --------------------------------------------------------------------------------
-title: "ESLint Plugin"
+title: "ESLint"
 description: "Learn how to use and configure the ESLint plugin to catch common issues and problems in a Next.js application."
 source: "https://nextjs.org/docs/app/api-reference/config/eslint"
 --------------------------------------------------------------------------------
@@ -49332,8 +50349,6 @@ Next.js comes with **two** Command Line Interface (CLI) tools:
 * **`create-next-app`**: Quickly create a new Next.js application using the default template or an [example](https://github.com/vercel/next.js/tree/canary/examples) from a public GitHub repository.
 * **`next`**: Run the Next.js development server, build your application, and more.
 
- - [create-next-app](/docs/app/api-reference/cli/create-next-app.md)
- - [next CLI](/docs/app/api-reference/cli/next.md)
 
 --------------------------------------------------------------------------------
 title: "create-next-app"
@@ -49478,15 +50493,16 @@ The following options are available:
 
 The following commands are available:
 
-| Command                                | Description                                                                                                   |
-| -------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| [`dev`](#next-dev-options)             | Starts Next.js in development mode with Hot Module Reloading, error reporting, and more.                      |
-| [`build`](#next-build-options)         | Creates an optimized production build of your application. Displaying information about each route.           |
-| [`start`](#next-start-options)         | Starts Next.js in production mode. The application should be compiled with `next build` first.                |
-| [`info`](#next-info-options)           | Prints relevant details about the current system which can be used to report Next.js bugs.                    |
-| [`telemetry`](#next-telemetry-options) | Allows you to enable or disable Next.js' completely anonymous telemetry collection.                           |
-| [`typegen`](#next-typegen-options)     | Generates TypeScript definitions for routes, pages, layouts, and route handlers without running a full build. |
-| [`upgrade`](#next-upgrade-options)     | Upgrades your Next.js application to the latest version.                                                      |
+| Command                                                      | Description                                                                                                   |
+| ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------- |
+| [`dev`](#next-dev-options)                                   | Starts Next.js in development mode with Hot Module Reloading, error reporting, and more.                      |
+| [`build`](#next-build-options)                               | Creates an optimized production build of your application. Displaying information about each route.           |
+| [`start`](#next-start-options)                               | Starts Next.js in production mode. The application should be compiled with `next build` first.                |
+| [`info`](#next-info-options)                                 | Prints relevant details about the current system which can be used to report Next.js bugs.                    |
+| [`telemetry`](#next-telemetry-options)                       | Allows you to enable or disable Next.js' completely anonymous telemetry collection.                           |
+| [`typegen`](#next-typegen-options)                           | Generates TypeScript definitions for routes, pages, layouts, and route handlers without running a full build. |
+| [`upgrade`](#next-upgrade-options)                           | Upgrades your Next.js application to the latest version.                                                      |
+| [`experimental-analyze`](#next-experimental-analyze-options) | Analyzes bundle output using Turbopack. Does not produce build artifacts.                                     |
 
 > **Good to know**: Running `next` without a command is an alias for `next dev`.
 
@@ -49639,7 +50655,7 @@ To ensure `next-env.d.ts` is present before type-checking run `next typegen`. Th
 
 > **Good to know**: `next typegen` loads your Next.js config (`next.config.js`, `next.config.mjs`, or `next.config.ts`) using the production build phase. Ensure any required environment variables and dependencies are available so the config can load correctly.
 
-## `next upgrade` options
+### `next upgrade` options
 
 `next upgrade` upgrades your Next.js application to the latest version.
 
@@ -49651,6 +50667,43 @@ The following options are available for the `next upgrade` command:
 | `[directory]`           | A directory with the Next.js application to upgrade. If not provided, the current directory will be used.                                          |
 | `--revision <revision>` | Specify a Next.js version or tag to upgrade to (e.g., `latest`, `canary`, `15.0.0`). Defaults to the release channel you have currently installed. |
 | `--verbose`             | Show verbose output during the upgrade process.                                                                                                    |
+
+### `next experimental-analyze` options
+
+`next experimental-analyze` analyzes your application's bundle output using [Turbopack](/docs/app/api-reference/turbopack.md). This command helps you understand the size and composition of your bundles, including JavaScript, CSS, and other assets. This command doesn't produce an application build.
+
+```bash filename="Terminal"
+npx next experimental-analyze
+```
+
+By default, the command starts a local server after analysis completes, allowing you to explore your bundle composition in the browser. The analyzer lets you:
+
+* Filter bundles by route and switch between client and server views
+* View the full import chain showing why a module is included
+* Trace imports across server-to-client component boundaries and dynamic imports
+
+See [Package Bundling](/docs/app/guides/package-bundling.md#optimizing-large-bundles) for optimization strategies.
+
+To write the analysis output to disk without starting the server, use the `--output` flag. The output is written to `.next/diagnostics/analyze` and contains static files that can be copied elsewhere or shared with others:
+
+```bash filename="Terminal"
+# Write output to .next/diagnostics/analyze
+npx next experimental-analyze --output
+
+# Copy the output for comparison with a future analysis
+cp -r .next/diagnostics/analyze ./analyze-before-refactor
+```
+
+The following options are available for the `next experimental-analyze` command:
+
+| Option          | Description                                                                                                                                   |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `-h, --help`    | Show all available options.                                                                                                                   |
+| `[directory]`   | A directory on which to analyze the application. If not provided, the current directory will be used.                                         |
+| `--no-mangling` | Disables [mangling](https://en.wikipedia.org/wiki/Name_mangling). This may affect performance and should only be used for debugging purposes. |
+| `--profile`     | Enables production [profiling for React](https://react.dev/reference/react/Profiler). This may affect performance.                            |
+| `-o, --output`  | Write analysis files to disk without starting the server. Output is written to `.next/diagnostics/analyze`.                                   |
+| `--port <port>` | Specify a port number to serve the analyzer on. (default: 4000, env: PORT)                                                                    |
 
 ## Examples
 
@@ -49750,6 +50803,7 @@ NODE_OPTIONS='--inspect' next
 
 | Version   | Changes                                                                         |
 | --------- | ------------------------------------------------------------------------------- |
+| `v16.1.0` | Add the `next experimental-analyze` command                                     |
 | `v16.0.0` | The JS bundle size metrics have been removed from `next build`                  |
 | `v15.5.0` | Add the `next typegen` command                                                  |
 | `v15.4.0` | Add `--debug-prerender` option for `next build` to help debug prerender errors. |
@@ -50107,34 +51161,14 @@ module.exports = {
 }
 ```
 
-### Bundle Sizes
-
-From our testing on production applications, we observed that Turbopack generally produces bundles that are similar in size to Webpack. However, the comparison can be difficult since turbopack tends to produce fewer but larger chunks. Our advice is to focus on higher level metrics like [Core Web Vitals](https://web.dev/articles/vitals) or your own application level metrics to compare performance across the two bundlers. We are however aware of one gap that can occasionally cause a large regression.
-
-Turbopack does not yet have an equivalent to the [Inner Graph Optimization](https://webpack.js.org/configuration/optimization/#optimizationinnergraph) in webpack which is enabled by default. This optimization is useful to tree shake large modules. For example:
-
-```js filename=large.module.js
-import heavy from 'some-heavy-dependency.js'
-
-export function usesHeavy() {
-  return heavy.run()
-}
-
-export const CONSTANT_VALUE = 3
-```
-
-If an application only uses `CONSTANT_VALUE` Turbopack will detect this and delete the `usesHeavy` export but not the corresponding `import`. However, with the Inner Graph Optimization, webpack can delete the `import` too which can drop the dependency as well.
-
-We are planning to offer an equivalent to the Inner Graph Optimization in Turbopack but it is still under development. If you are affected by this gap, consider manually splitting modules.
-
 ### Build Caching
 
-Webpack supports [disk build caching](https://webpack.js.org/configuration/cache/#cache) to improve build performance. Turbopack provides a similar opt-in feature, currently in beta. Starting with Next 16, you can enable Turbopack’s filesystem cache by setting the following experimental flags:
+Webpack supports [disk build caching](https://webpack.js.org/configuration/cache/#cache) to improve build performance. Turbopack provides a similar feature, currently in beta. Starting with Next 16, you can enable Turbopack’s filesystem cache by setting the following experimental flags:
 
-* [`experimental.turbopackFileSystemCacheForDev`](/docs/app/api-reference/config/next-config-js/turbopackFileSystemCache.md)
-* [`experimental.turbopackFileSystemCacheForBuild`](/docs/app/api-reference/config/next-config-js/turbopackFileSystemCache.md)
+* [`experimental.turbopackFileSystemCacheForDev`](/docs/app/api-reference/config/next-config-js/turbopackFileSystemCache.md) is enabled by default
+* [`experimental.turbopackFileSystemCacheForBuild`](/docs/app/api-reference/config/next-config-js/turbopackFileSystemCache.md) is currently opt-in
 
-> **Good to know:** For this reason, when comparing webpack and Turbopack performance, make sure to delete the `.next` folder between builds to see a fair comparison or enable the turbopack filesystem cache feature.
+> **Good to know:** For this reason, when comparing webpack and Turbopack performance, make sure to delete the `.next` folder between builds to see a fair cold build comparison or enable the turbopack filesystem cache feature to compare warm builds.
 
 ### Webpack plugins
 
@@ -50221,7 +51255,284 @@ Turbopack is a **Rust-based**, **incremental** bundler designed to make local de
 
 
 --------------------------------------------------------------------------------
-title: "Getting Started - Pages Router"
+title: "Glossary"
+description: "A glossary of common terms used in Next.js."
+source: "https://nextjs.org/docs/app/glossary"
+--------------------------------------------------------------------------------
+
+# Glossary
+
+# A
+
+## App Router
+
+The Next.js router introduced in version 13, built on top of React Server Components. It uses file-system based routing and supports layouts, nested routing, loading states, error handling, and more. Learn more in the [App Router documentation](/docs/app.md).
+
+# B
+
+## Build time
+
+The stage when your application is being compiled. During build time, Next.js transforms your code into optimized files for production, generates static pages, and prepares assets for deployment. See the [`next build` CLI reference](/docs/app/api-reference/cli/next.md#next-build-options).
+
+# C
+
+## Cache Components
+
+A feature that enables component and function-level caching using the [`"use cache"` directive](/docs/app/api-reference/directives/use-cache.md). Cache Components allows you to mix static, cached, and dynamic content within a single route by prerendering a static HTML shell that's served immediately, while dynamic content streams in when ready. Configure cache duration with [`cacheLife()`](/docs/app/api-reference/functions/cacheLife.md), tag cached data with [`cacheTag()`](/docs/app/api-reference/functions/cacheTag.md), and invalidate on-demand with [`updateTag()`](/docs/app/api-reference/functions/updateTag.md). Learn more in the [Cache Components guide](/docs/app/getting-started/cache-components.md).
+
+## Catch-all Segments
+
+Dynamic route segments that can match multiple URL parts using the `[...folder]/page.js` syntax. These segments capture all remaining URL segments and are useful for implementing features like documentation sites or file browsers. Learn more in [Dynamic Route Segments](/docs/app/api-reference/file-conventions/dynamic-routes.md#catch-all-segments).
+
+## Client Bundles
+
+JavaScript bundles sent to the browser. Next.js splits these automatically based on the [module graph](#module-graph) to reduce initial payload size and load only the necessary code for each page.
+
+## Client Component
+
+A React component that runs in the browser. In Next.js, Client Components can also be rendered on the server during initial page generation. They can use state, effects, event handlers, and browser APIs, and are marked with the [`"use client"` directive](#use-client-directive) at the top of a file. Learn more in [Server and Client Components](/docs/app/getting-started/server-and-client-components.md).
+
+## Client-side navigation
+
+A navigation technique where the page content updates dynamically without a full page reload. Next.js uses client-side navigation with the [`<Link>` component](/docs/app/api-reference/components/link.md), keeping shared layouts interactive and preserving browser state. Learn more in [Linking and Navigating](/docs/app/getting-started/linking-and-navigating.md#client-side-transitions).
+
+## Code Splitting
+
+The process of dividing your application into smaller JavaScript chunks based on routes. Instead of loading all code upfront, only the code needed for the current route is loaded, reducing initial load time. Next.js automatically performs code splitting based on routes. Learn more in the [Package Bundling guide](/docs/app/guides/package-bundling.md).
+
+# D
+
+## Dynamic rendering
+
+See [Request-time rendering](#request-time-rendering).
+
+## Dynamic route segments
+
+[Route segments](#route-segment) that are generated from data at request time. Created by wrapping a folder name in square brackets (e.g., `[slug]`), they allow you to create routes from dynamic data like blog posts or product pages. Learn more in [Dynamic Route Segments](/docs/app/api-reference/file-conventions/dynamic-routes.md).
+
+# E
+
+## Environment Variables
+
+Configuration values accessible at build time or request time. In Next.js, variables prefixed with `NEXT_PUBLIC_` are exposed to the browser, while others are only available server-side. Learn more in [Environment Variables](/docs/app/guides/environment-variables.md).
+
+## Error Boundary
+
+A React component that catches JavaScript errors in its child component tree and displays a fallback UI. In Next.js, create an [`error.js` file](/docs/app/api-reference/file-conventions/error.md) to automatically wrap a route segment in an error boundary. Learn more in [Error Handling](/docs/app/getting-started/error-handling.md).
+
+# F
+
+## Font Optimization
+
+Automatic font optimization using [`next/font`](/docs/app/api-reference/components/font.md). Next.js self-hosts fonts, eliminates layout shift, and applies best practices for performance. Works with Google Fonts and local font files. Learn more in [Fonts](/docs/app/getting-started/fonts.md).
+
+## File-system caching
+
+A Turbopack feature that stores compiler artifacts on disk between runs, reducing work across `next dev` or `next build` commands for significantly faster compile times. Learn more in [Turbopack FileSystem Caching](/docs/app/api-reference/config/next-config-js/turbopackFileSystemCache.md).
+
+# H
+
+## Hydration
+
+React's process of attaching event handlers to the DOM to make server-rendered static HTML interactive. During hydration, React reconciles the server-rendered markup with the client-side JavaScript. Learn more in [Server and Client Components](/docs/app/getting-started/server-and-client-components.md#how-do-server-and-client-components-work-in-nextjs).
+
+# I
+
+## Import Aliases
+
+Custom path mappings that provide shorthand references for frequently used directories. Import aliases reduce the complexity of relative imports and make code more readable and maintainable. Learn more in [Absolute Imports and Module Path Aliases](/docs/app/getting-started/installation.md#set-up-absolute-imports-and-module-path-aliases).
+
+## Incremental Static Regeneration (ISR)
+
+A technique that allows you to update static content without rebuilding the entire site. ISR enables you to use static generation on a per-page basis while revalidating pages in the background as traffic comes in. Learn more in the [ISR guide](/docs/app/guides/incremental-static-regeneration.md).
+
+> **Good to know**: In Next.js, ISR is also known as [Revalidation](#revalidation).
+
+## Intercepting Routes
+
+A routing pattern that allows loading a route from another part of your application within the current layout. Useful for displaying content (like modals) without the user switching context, while keeping the URL shareable. Learn more in [Intercepting Routes](/docs/app/api-reference/file-conventions/intercepting-routes.md).
+
+## Image Optimization
+
+Automatic image optimization using the [`<Image>` component](/docs/app/api-reference/components/image.md). Next.js optimizes images on-demand, serves them in modern formats like WebP, and automatically handles lazy loading and responsive sizing. Learn more in [Images](/docs/app/getting-started/images.md).
+
+# L
+
+## Layout
+
+UI that is shared between multiple pages. Layouts preserve state, remain interactive, and do not re-render on navigation. Defined by exporting a React component from a [`layout.js` file](/docs/app/api-reference/file-conventions/layout.md). Learn more in [Layouts and Pages](/docs/app/getting-started/layouts-and-pages.md).
+
+## Loading UI
+
+Fallback UI shown while a [route segment](#route-segment) is loading. Created by adding a [`loading.js` file](/docs/app/api-reference/file-conventions/loading.md) to a folder, which automatically wraps the page in a [Suspense boundary](#suspense-boundary). Learn more in [Loading UI](/docs/app/api-reference/file-conventions/loading.md).
+
+# M
+
+## Module Graph
+
+A graph of file dependencies in your app. Each file (module) is a node, and import/export relationships form the edges. Next.js analyzes this graph to determine optimal bundling and code-splitting strategies. Learn more in [Server and Client Components](/docs/app/getting-started/server-and-client-components.md#reducing-js-bundle-size).
+
+## Metadata
+
+Information about a page used by browsers and search engines, such as title, description, and Open Graph images. In Next.js, define metadata using the [`metadata` export](/docs/app/api-reference/functions/generate-metadata.md) or [`generateMetadata` function](/docs/app/api-reference/functions/generate-metadata.md) in layout or page files. Learn more in [Metadata and OG Images](/docs/app/getting-started/metadata-and-og-images.md).
+
+## Memoization
+
+Caching the return value of a function so that calling the same function multiple times during a render pass (request) only executes it once. In Next.js, fetch requests with the same URL and options are automatically memoized. Learn more about [React Cache](https://react.dev/reference/react/cache).
+
+## Middleware
+
+See [Proxy](#proxy).
+
+# N
+
+## Not Found
+
+A special component shown when a route doesn't exist or when the [`notFound()` function](/docs/app/api-reference/functions/not-found.md) is called. Created by adding a [`not-found.js` file](/docs/app/api-reference/file-conventions/not-found.md) to your app directory. Learn more in [Error Handling](/docs/app/getting-started/error-handling.md#not-found).
+
+# P
+
+## Private Folders
+
+Folders prefixed with an underscore (e.g., `_components`) that are excluded from the routing system. These folders are used for code organization and shared utilities without creating accessible routes. Learn more in [Private Folders](/docs/app/getting-started/project-structure.md#private-folders).
+
+## Page
+
+UI that is unique to a route. Defined by exporting a React component from a [`page.js` file](/docs/app/api-reference/file-conventions/page.md) within the `app` directory. Learn more in [Layouts and Pages](/docs/app/getting-started/layouts-and-pages.md).
+
+## Parallel Routes
+
+A pattern that allows simultaneously or conditionally rendering multiple pages within the same layout. Created using named slots with the `@folder` convention, useful for dashboards, modals, and complex layouts. Learn more in [Parallel Routes](/docs/app/api-reference/file-conventions/parallel-routes.md).
+
+## Partial Prerendering (PPR)
+
+A rendering optimization that combines static and dynamic rendering in a single route. The static shell is served immediately while dynamic content streams in when ready, providing the best of both rendering strategies. Learn more in [Cache Components](/docs/app/getting-started/cache-components.md).
+
+## Prefetching
+
+Loading a route in the background before the user navigates to it. Next.js automatically prefetches routes linked with the [`<Link>` component](/docs/app/api-reference/components/link.md) when they enter the viewport, making navigation feel instant. Learn more in the [Prefetching guide](/docs/app/guides/prefetching.md).
+
+## Prerendering
+
+When a component is rendered at [build time](#build-time) or in the background during [revalidation](#revalidation). The result is HTML and [RSC Payload](#rsc-payload), which can be cached and served from a CDN. Prerendering is the default for components that don't use [Request-time APIs](#request-time-apis).
+
+## Proxy
+
+A file ([`proxy.js`](/docs/app/api-reference/file-conventions/proxy.md)) that runs code on the server before request is completed. Used to implement server-side logic like logging, redirects, and rewrites. Formerly known as Middleware. Learn more in the [Proxy guide](/docs/app/getting-started/proxy.md).
+
+# R
+
+## Redirect
+
+Sending users from one URL to another. In Next.js, redirects can be configured in [`next.config.js`](/docs/app/api-reference/config/next-config-js/redirects.md), returned from [Proxy](/docs/app/api-reference/file-conventions/proxy.md), or triggered programmatically with the [`redirect()` function](/docs/app/api-reference/functions/redirect.md). Learn more in [Redirecting](/docs/app/guides/redirecting.md).
+
+## Request time
+
+The time when a user makes a request to your application. At request time, dynamic routes are rendered, cookies and headers are accessible, and request-specific data can be used.
+
+## Request-time APIs
+
+Functions that access request-specific data, causing a component to opt into [request-time rendering](#request-time-rendering). These include:
+
+* [`cookies()`](/docs/app/api-reference/functions/cookies.md) - Access request cookies
+* [`headers()`](/docs/app/api-reference/functions/headers.md) - Access request headers
+* [`searchParams`](/docs/app/api-reference/file-conventions/page.md#searchparams-optional) - Access URL query parameters
+* [`draftMode()`](/docs/app/api-reference/functions/draft-mode.md) - Enable or check draft mode
+
+## Request-time rendering
+
+When a component is rendered at [request time](#request-time) rather than [build time](#build-time). A component becomes dynamic when it uses [Request-time APIs](#request-time-apis).
+
+## Revalidation
+
+The process of updating cached data. Can be time-based (using [`cacheLife()`](/docs/app/api-reference/functions/cacheLife.md) to set cache duration) or on-demand (using [`cacheTag()`](/docs/app/api-reference/functions/cacheTag.md) to tag data, then [`updateTag()`](/docs/app/api-reference/functions/updateTag.md) to invalidate). Learn more in [Caching and Revalidating](/docs/app/getting-started/caching-and-revalidating.md).
+
+## Rewrite
+
+Mapping an incoming request path to a different destination path without changing the URL in the browser. Configured in [`next.config.js`](/docs/app/api-reference/config/next-config-js/rewrites.md) or returned from [Proxy](/docs/app/api-reference/file-conventions/proxy.md). Useful for proxying to external services or legacy URLs.
+
+## Route Groups
+
+A way to organize routes without affecting the URL structure. Created by wrapping a folder name in parentheses (e.g., `(marketing)`), route groups help organize related routes and enable per-group [layouts](#layout). Learn more in [Route Groups](/docs/app/api-reference/file-conventions/route-groups.md).
+
+## Route Handler
+
+A function that handles HTTP requests for a specific route, defined in a [`route.js` file](/docs/app/api-reference/file-conventions/route.md). Route Handlers use the Web Request and Response APIs and can handle `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `HEAD`, and `OPTIONS` methods. Learn more in [Route Handlers](/docs/app/getting-started/route-handlers.md).
+
+## Route Segment
+
+A part of the URL path (between two slashes) defined by a folder in the `app` directory. Each folder represents a segment in the URL structure. Learn more in [Project Structure](/docs/app/getting-started/project-structure.md).
+
+## RSC Payload
+
+The React Server Component Payload—a compact binary representation of the rendered React Server Components tree. Contains the rendered result of Server Components, placeholders for Client Components, and props passed between them. Learn more in [Server and Client Components](/docs/app/getting-started/server-and-client-components.md#how-do-server-and-client-components-work-in-nextjs).
+
+# S
+
+## Server Component
+
+The default component type in the App Router. Server Components render on the server, can fetch data directly, and don't add to the client JavaScript bundle. They cannot use state or browser APIs. Learn more in [Server and Client Components](/docs/app/getting-started/server-and-client-components.md).
+
+## Server Action
+
+A [Server Function](#server-function) that is passed to a Client Component as a prop or bound to a form action. Server Actions are commonly used for form submissions and data mutations. Learn more in [Server Actions and Mutations](/docs/app/getting-started/updating-data.md).
+
+## Server Function
+
+An asynchronous function that runs on the server, marked with the [`"use server"` directive](/docs/app/api-reference/directives/use-server.md). Server Functions can be invoked from Client Components. When passed as a prop to a Client Component or bound to a form action, they are called [Server Actions](#server-action). Learn more in [React Server Functions](https://react.dev/reference/rsc/server-functions).
+
+## Static Export
+
+A deployment mode that generates a fully static site with HTML, CSS, and JavaScript files. Enabled by setting `output: 'export'` in `next.config.js`. Static exports can be hosted on any static file server without a Node.js server. Learn more in [Static Exports](/docs/app/guides/static-exports.md).
+
+## Static rendering
+
+See [Prerendering](#prerendering).
+
+## Static Assets
+
+Files such as images, fonts, videos, and other media that are served directly without processing. Static assets are typically stored in the `public` directory and referenced by their relative paths. Learn more in [Static Assets](/docs/app/api-reference/file-conventions/public-folder.md).
+
+## Static Shell
+
+The prerendered HTML structure of a page that's served immediately to the browser. With [Partial Prerendering](#partial-prerendering-ppr), the static shell includes all statically renderable content plus [Suspense boundary](#suspense-boundary) fallbacks for dynamic content that streams in later.
+
+## Streaming
+
+A technique that allows the server to send parts of a page to the client as they become ready, rather than waiting for the entire page to render. Enabled automatically with [`loading.js`](/docs/app/api-reference/file-conventions/loading.md) or manual `<Suspense>` boundaries. Learn more in [Linking and Navigating - Streaming](/docs/app/getting-started/linking-and-navigating.md#streaming).
+
+## Suspense boundary
+
+A React [`<Suspense>`](https://react.dev/reference/react/Suspense) component that wraps async content and displays fallback UI while it loads. In Next.js, Suspense boundaries define where the [static shell](#static-shell) ends and [streaming](#streaming) begins, enabling [Partial Prerendering](#partial-prerendering-ppr).
+
+# T
+
+## Turbopack
+
+A fast, Rust-based bundler built for Next.js. Turbopack is the default bundler for `next dev` and available for `next build`. It provides significantly faster compilation times compared to Webpack. Learn more in [Turbopack](/docs/app/api-reference/turbopack.md).
+
+## Tree Shaking
+
+The process of removing unused code from your JavaScript bundles during the build process. Next.js automatically tree-shakes your code to reduce bundle sizes. Learn more in the [Package Bundling guide](/docs/app/guides/package-bundling.md).
+
+# U
+
+## `"use cache"` Directive
+
+A directive that marks a component or function as cacheable. It can be placed at the top of a file to indicate that all exports in the file are cacheable, or inline at the top of a function or component to mark that specific scope as cacheable. Learn more in the [`"use cache"` reference](/docs/app/api-reference/directives/use-cache.md).
+
+## `"use client"` Directive
+
+A special React directive that marks the boundary between server and client code. It must be placed at the top of a file, before any imports or other code. It indicates that React Components, helper functions, variable declarations, and all imported dependencies should be included in the [client bundle](#client-bundles). Learn more in the [`"use client"` reference](/docs/app/api-reference/directives/use-client.md).
+
+## `"use server"` Directive
+
+A directive that marks a function as a [Server Function](#server-function) that can be called from client-side code. It can be placed at the top of a file to indicate that all exports in the file are Server Functions, or inline at the top of a function to mark that specific function. Learn more in the [`"use server"` reference](/docs/app/api-reference/directives/use-server.md).
+
+
+
+--------------------------------------------------------------------------------
+title: "Getting Started"
 description: "Learn how to create full-stack web applications with Next.js with the Pages Router."
 source: "https://nextjs.org/docs/pages/getting-started"
 --------------------------------------------------------------------------------
@@ -50232,16 +51543,10 @@ source: "https://nextjs.org/docs/pages/getting-started"
 
 
 
- - [Installation](/docs/pages/getting-started/installation.md)
- - [Project Structure](/docs/pages/getting-started/project-structure.md)
- - [Images](/docs/pages/getting-started/images.md)
- - [Fonts](/docs/pages/getting-started/fonts.md)
- - [CSS](/docs/pages/getting-started/css.md)
- - [Deploying](/docs/pages/getting-started/deploying.md)
 
 --------------------------------------------------------------------------------
 title: "Installation"
-description: "Learn how to create a new Next.js application with the `create-next-app` CLI, and set up TypeScript, ESLint, and Module Path Aliases."
+description: "How to create a new Next.js application with `create-next-app`. Set up TypeScript, ESLint,and configure your `next.config.js` file."
 source: "https://nextjs.org/docs/pages/getting-started/installation"
 --------------------------------------------------------------------------------
 
@@ -50447,7 +51752,7 @@ export default function Page() {
 
 Next.js comes with built-in TypeScript support. To add TypeScript to your project, rename a file to `.ts` / `.tsx` and run `next dev`. Next.js will automatically install the necessary dependencies and add a `tsconfig.json` file with the recommended config options.
 
-See the [TypeScript reference](/docs/app/api-reference/config/next-config-js/typescript.md) page for more information.
+See the [TypeScript reference](/docs/app/api-reference/config/typescript.md) page for more information.
 
 ## Set up linting
 
@@ -50531,8 +51836,8 @@ Each of the `"paths"` are relative to the `baseUrl` location.
 
 
 --------------------------------------------------------------------------------
-title: "Project structure and organization"
-description: "Learn the folder and file conventions in Next.js, and how to organize your project."
+title: "Project Structure"
+description: "Learn about the folder and file conventions in a Next.js project, and how to organize your project."
 source: "https://nextjs.org/docs/pages/getting-started/project-structure"
 --------------------------------------------------------------------------------
 
@@ -50561,22 +51866,22 @@ Top-level folders are used to organize your application's code and static assets
 
 Top-level files are used to configure your application, manage dependencies, run proxy, integrate monitoring tools, and define environment variables.
 
-|                                                                              |                                         |
-| ---------------------------------------------------------------------------- | --------------------------------------- |
-| **Next.js**                                                                  |                                         |
-| [`next.config.js`](/docs/app/api-reference/config/next-config-js.md)            | Configuration file for Next.js          |
-| [`package.json`](/docs/app/getting-started/installation.md#manual-installation) | Project dependencies and scripts        |
-| [`instrumentation.ts`](/docs/app/guides/instrumentation.md)                     | OpenTelemetry and Instrumentation file  |
-| [`proxy.ts`](/docs/app/api-reference/file-conventions/proxy.md)                 | Next.js request proxy                   |
-| [`.env`](/docs/app/guides/environment-variables.md)                             | Environment variables                   |
-| [`.env.local`](/docs/app/guides/environment-variables.md)                       | Local environment variables             |
-| [`.env.production`](/docs/app/guides/environment-variables.md)                  | Production environment variables        |
-| [`.env.development`](/docs/app/guides/environment-variables.md)                 | Development environment variables       |
-| [`eslint.config.mjs`](/docs/app/api-reference/config/eslint.md)                 | Configuration file for ESLint           |
-| `.gitignore`                                                                 | Git files and folders to ignore         |
-| `next-env.d.ts`                                                              | TypeScript declaration file for Next.js |
-| `tsconfig.json`                                                              | Configuration file for TypeScript       |
-| `jsconfig.json`                                                              | Configuration file for JavaScript       |
+|                                                                              |                                                                                    |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| **Next.js**                                                                  |                                                                                    |
+| [`next.config.js`](/docs/app/api-reference/config/next-config-js.md)            | Configuration file for Next.js                                                     |
+| [`package.json`](/docs/app/getting-started/installation.md#manual-installation) | Project dependencies and scripts                                                   |
+| [`instrumentation.ts`](/docs/app/guides/instrumentation.md)                     | OpenTelemetry and Instrumentation file                                             |
+| [`proxy.ts`](/docs/app/api-reference/file-conventions/proxy.md)                 | Next.js request proxy                                                              |
+| [`.env`](/docs/app/guides/environment-variables.md)                             | Environment variables (should not be tracked by version control)                   |
+| [`.env.local`](/docs/app/guides/environment-variables.md)                       | Local environment variables (should not be tracked by version control)             |
+| [`.env.production`](/docs/app/guides/environment-variables.md)                  | Production environment variables (should not be tracked by version control)        |
+| [`.env.development`](/docs/app/guides/environment-variables.md)                 | Development environment variables (should not be tracked by version control)       |
+| [`eslint.config.mjs`](/docs/app/api-reference/config/eslint.md)                 | Configuration file for ESLint                                                      |
+| `.gitignore`                                                                 | Git files and folders to ignore                                                    |
+| [`next-env.d.ts`](/docs/app/api-reference/config/typescript.md#next-envdts)     | TypeScript declaration file for Next.js (should not be tracked by version control) |
+| `tsconfig.json`                                                              | Configuration file for TypeScript                                                  |
+| `jsconfig.json`                                                              | Configuration file for JavaScript                                                  |
 
 ### File conventions
 
@@ -50614,8 +51919,8 @@ Top-level files are used to configure your application, manage dependencies, run
 
 
 --------------------------------------------------------------------------------
-title: "Image Optimization"
-description: "Learn how to optimize images in Next.js"
+title: "Images"
+description: "Optimize your images with the built-in `next/image` component."
 source: "https://nextjs.org/docs/pages/getting-started/images"
 --------------------------------------------------------------------------------
 
@@ -50808,8 +52113,8 @@ See the API Reference for the full feature set of Next.js Image.
 
 
 --------------------------------------------------------------------------------
-title: "Font Optimization"
-description: "Learn how to optimize fonts in Next.js"
+title: "Fonts"
+description: "Learn how to use fonts in Next.js"
 source: "https://nextjs.org/docs/pages/getting-started/fonts"
 --------------------------------------------------------------------------------
 
@@ -50821,41 +52126,84 @@ The [`next/font`](/docs/app/api-reference/components/font.md) module automatical
 
 It includes **built-in self-hosting** for any font file. This means you can optimally load web fonts with no layout shift.
 
-To start using `next/font`, import it from [`next/font/local`](#local-fonts) or [`next/font/google`](#google-fonts), call it as a function with the appropriate options, and set the `className` of the element you want to apply the font to. For example:
+To start using `next/font`, import it from [`next/font/local`](#local-fonts) or [`next/font/google`](#google-fonts), call it as a function with the appropriate options, and set the `className` of the element you want to apply the font to. For example, you can apply fonts globally in your [Custom App](/docs/pages/building-your-application/routing/custom-app.md) (`pages/_app`):
 
-```tsx filename="app/layout.tsx" highlight={1,3-5,9} switcher
+```tsx filename="pages/_app.tsx" highlight={1,4-6,10} switcher
+import { Geist } from 'next/font/google'
+import type { AppProps } from 'next/app'
+
+const geist = Geist({
+  subsets: ['latin'],
+})
+
+export default function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <main className={geist.className}>
+      <Component {...pageProps} />
+    </main>
+  )
+}
+```
+
+```jsx filename="pages/_app.js" highlight={1,3-5,9} switcher
 import { Geist } from 'next/font/google'
 
 const geist = Geist({
   subsets: ['latin'],
 })
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function MyApp({ Component, pageProps }) {
   return (
-    <html lang="en" className={geist.className}>
-      <body>{children}</body>
-    </html>
+    <main className={geist.className}>
+      <Component {...pageProps} />
+    </main>
   )
 }
 ```
 
-```jsx filename="app/layout.js" highlight={1,3-5,9} switcher
+If you want to apply the font to the `<html>` element, you can use a [Custom Document](/docs/pages/building-your-application/routing/custom-document.md) (`pages/_document`):
+
+```tsx filename="pages/_document.tsx" highlight={2,4-6,10} switcher
+import { Html, Head, Main, NextScript } from 'next/document'
 import { Geist } from 'next/font/google'
 
 const geist = Geist({
   subsets: ['latin'],
 })
 
-export default function Layout({ children }) {
+export default function Document() {
   return (
-    <html className={geist.className}>
-      <body>{children}</body>
-    </html>
+    <Html lang="en" className={geist.className}>
+      <Head />
+      <body>
+        <Main />
+        <NextScript />
+      </body>
+    </Html>
   )
 }
 ```
 
-Fonts are scoped to the component they're used in. To apply a font to your entire application, add it to the [Root Layout](/docs/app/api-reference/file-conventions/layout.md#root-layout).
+```jsx filename="pages/_document.js" highlight={2,4-6,10} switcher
+import { Html, Head, Main, NextScript } from 'next/document'
+import { Geist } from 'next/font/google'
+
+const geist = Geist({
+  subsets: ['latin'],
+})
+
+export default function Document() {
+  return (
+    <Html lang="en" className={geist.className}>
+      <Head />
+      <body>
+        <Main />
+        <NextScript />
+      </body>
+    </Html>
+  )
+}
+```
 
 ## Google fonts
 
@@ -50863,66 +52211,60 @@ You can automatically self-host any Google Font. Fonts are included stored as st
 
 To start using a Google Font, import your chosen font from `next/font/google`:
 
-```tsx filename="app/layout.tsx" switcher
+```tsx filename="pages/_app.tsx" switcher
 import { Geist } from 'next/font/google'
+import type { AppProps } from 'next/app'
 
 const geist = Geist({
   subsets: ['latin'],
 })
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <html lang="en" className={geist.className}>
-      <body>{children}</body>
-    </html>
+    <main className={geist.className}>
+      <Component {...pageProps} />
+    </main>
   )
 }
 ```
 
-```jsx filename="app/layout.js" switcher
+```jsx filename="pages/_app.js" switcher
 import { Geist } from 'next/font/google'
 
 const geist = Geist({
   subsets: ['latin'],
 })
 
-export default function RootLayout({ children }) {
+export default function MyApp({ Component, pageProps }) {
   return (
-    <html lang="en" className={geist.className}>
-      <body>{children}</body>
-    </html>
+    <main className={geist.className}>
+      <Component {...pageProps} />
+    </main>
   )
 }
 ```
 
 We recommend using [variable fonts](https://fonts.google.com/variablefonts) for the best performance and flexibility. But if you can't use a variable font, you will need to specify a weight:
 
-```tsx filename="app/layout.tsx" highlight={4} switcher
+```tsx filename="pages/_app.tsx" highlight={5} switcher
 import { Roboto } from 'next/font/google'
+import type { AppProps } from 'next/app'
 
 const roboto = Roboto({
   weight: '400',
   subsets: ['latin'],
 })
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <html lang="en" className={roboto.className}>
-      <body>{children}</body>
-    </html>
+    <main className={roboto.className}>
+      <Component {...pageProps} />
+    </main>
   )
 }
 ```
 
-```jsx filename="app/layout.js"  highlight={4} switcher
+```jsx filename="pages/_app.js" highlight={4} switcher
 import { Roboto } from 'next/font/google'
 
 const roboto = Roboto({
@@ -50930,51 +52272,48 @@ const roboto = Roboto({
   subsets: ['latin'],
 })
 
-export default function RootLayout({ children }) {
+export default function MyApp({ Component, pageProps }) {
   return (
-    <html lang="en" className={roboto.className}>
-      <body>{children}</body>
-    </html>
+    <main className={roboto.className}>
+      <Component {...pageProps} />
+    </main>
   )
 }
 ```
 
 ## Local fonts
 
-To use a local font, import your font from `next/font/local` and specify the [`src`](/docs/app/api-reference/components/font.md#src) of your local font file. Fonts can be stored in the [`public`](/docs/app/api-reference/file-conventions/public-folder.md) folder or co-located inside the `app` folder. For example:
+To use a local font, import your font from `next/font/local` and specify the [`src`](/docs/pages/api-reference/components/font.md#src) of your local font file. Fonts can be stored in the [`public`](/docs/pages/api-reference/file-conventions/public-folder.md) folder or inside the `pages` folder. For example:
 
-```tsx filename="app/layout.tsx" switcher
+```tsx filename="pages/_app.tsx" switcher
 import localFont from 'next/font/local'
+import type { AppProps } from 'next/app'
 
 const myFont = localFont({
   src: './my-font.woff2',
 })
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <html lang="en" className={myFont.className}>
-      <body>{children}</body>
-    </html>
+    <main className={myFont.className}>
+      <Component {...pageProps} />
+    </main>
   )
 }
 ```
 
-```jsx filename="app/layout.js" switcher
+```jsx filename="pages/_app.js" switcher
 import localFont from 'next/font/local'
 
 const myFont = localFont({
   src: './my-font.woff2',
 })
 
-export default function RootLayout({ children }) {
+export default function MyApp({ Component, pageProps }) {
   return (
-    <html lang="en" className={myFont.className}>
-      <body>{children}</body>
-    </html>
+    <main className={myFont.className}>
+      <Component {...pageProps} />
+    </main>
   )
 }
 ```
@@ -51017,7 +52356,7 @@ See the API Reference for the full feature set of Next.js Font
 
 --------------------------------------------------------------------------------
 title: "CSS"
-description: "Learn about the different ways to add CSS to your application, including Tailwind CSS, CSS Modules, Global CSS, and more."
+description: "Learn about the different ways to add CSS to your application, including CSS Modules, Global CSS, Tailwind CSS, and more."
 source: "https://nextjs.org/docs/pages/getting-started/css"
 --------------------------------------------------------------------------------
 
@@ -51350,6 +52689,7 @@ Refer to each provider's documentation for information on supported Next.js feat
 * [AWS Amplify Hosting](https://docs.amplify.aws/nextjs/start/quickstart/nextjs-app-router-client-components)
 * [Cloudflare](https://developers.cloudflare.com/workers/frameworks/framework-guides/nextjs)
 * [Deno Deploy](https://docs.deno.com/examples/next_tutorial)
+* [Firebase App Hosting](https://firebase.google.com/docs/app-hosting/get-started)
 * [Netlify](https://docs.netlify.com/frameworks/next-js/overview/#next-js-support-on-netlify)
 * [Vercel](https://vercel.com/docs/frameworks/nextjs)
 
@@ -51369,42 +52709,10 @@ source: "https://nextjs.org/docs/pages/guides"
 
 
 
- - [Analytics](/docs/pages/guides/analytics.md)
- - [Authentication](/docs/pages/guides/authentication.md)
- - [Babel](/docs/pages/guides/babel.md)
- - [CI Build Caching](/docs/pages/guides/ci-build-caching.md)
- - [Content Security Policy](/docs/pages/guides/content-security-policy.md)
- - [CSS-in-JS](/docs/pages/guides/css-in-js.md)
- - [Custom Server](/docs/pages/guides/custom-server.md)
- - [Debugging](/docs/pages/guides/debugging.md)
- - [Draft Mode](/docs/pages/guides/draft-mode.md)
- - [Environment Variables](/docs/pages/guides/environment-variables.md)
- - [Forms](/docs/pages/guides/forms.md)
- - [ISR](/docs/pages/guides/incremental-static-regeneration.md)
- - [Instrumentation](/docs/pages/guides/instrumentation.md)
- - [Internationalization](/docs/pages/guides/internationalization.md)
- - [Lazy Loading](/docs/pages/guides/lazy-loading.md)
- - [MDX](/docs/pages/guides/mdx.md)
- - [Migrating](/docs/pages/guides/migrating.md)
- - [Multi-Zones](/docs/pages/guides/multi-zones.md)
- - [OpenTelemetry](/docs/pages/guides/open-telemetry.md)
- - [Package Bundling](/docs/pages/guides/package-bundling.md)
- - [PostCSS](/docs/pages/guides/post-css.md)
- - [Preview Mode](/docs/pages/guides/preview-mode.md)
- - [Production](/docs/pages/guides/production-checklist.md)
- - [Redirecting](/docs/pages/guides/redirecting.md)
- - [Sass](/docs/pages/guides/sass.md)
- - [Scripts](/docs/pages/guides/scripts.md)
- - [Self-Hosting](/docs/pages/guides/self-hosting.md)
- - [Static Exports](/docs/pages/guides/static-exports.md)
- - [Tailwind CSS](/docs/pages/guides/tailwind-v3-css.md)
- - [Testing](/docs/pages/guides/testing.md)
- - [Third Party Libraries](/docs/pages/guides/third-party-libraries.md)
- - [Upgrading](/docs/pages/guides/upgrading.md)
 
 --------------------------------------------------------------------------------
-title: "How to add analytics to your Next.js application"
-description: "Measure and track page performance using Next.js Speed Insights"
+title: "Analytics"
+description: "Measure and track page performance using Next.js"
 source: "https://nextjs.org/docs/pages/guides/analytics"
 --------------------------------------------------------------------------------
 
@@ -51554,8 +52862,8 @@ useReportWebVitals((metric) => {
 
 
 --------------------------------------------------------------------------------
-title: "How to implement authentication in Next.js"
-description: "Learn how to implement authentication in your Next.js application."
+title: "Authentication"
+description: "Learn how to implement authentication in Next.js, covering best practices, securing routes, authorization techniques, and session management."
 source: "https://nextjs.org/docs/pages/guides/authentication"
 --------------------------------------------------------------------------------
 
@@ -52036,7 +53344,7 @@ To continue learning about authentication and security, check out the following 
 
 
 --------------------------------------------------------------------------------
-title: "How to configure Babel in Next.js"
+title: "Babel"
 description: "Extend the babel preset added by Next.js with your own configs."
 source: "https://nextjs.org/docs/pages/guides/babel"
 --------------------------------------------------------------------------------
@@ -52108,7 +53416,7 @@ To learn more about the available options for each config, visit babel's [docume
 
 
 --------------------------------------------------------------------------------
-title: "How to configure Continuous Integration (CI) build caching"
+title: "CI Build Caching"
 description: "Learn how to configure CI to cache Next.js builds"
 source: "https://nextjs.org/docs/pages/guides/ci-build-caching"
 --------------------------------------------------------------------------------
@@ -52283,7 +53591,7 @@ stage("Build") {
 
 
 --------------------------------------------------------------------------------
-title: "How to set a Content Security Policy (CSP) for your Next.js application"
+title: "Content Security Policy"
 description: "Learn how to set a Content Security Policy (CSP) for your Next.js application."
 source: "https://nextjs.org/docs/pages/guides/content-security-policy"
 --------------------------------------------------------------------------------
@@ -52654,9 +53962,11 @@ Consider nonces when:
 For applications that do not require nonces, you can set the CSP header directly in your [`next.config.js`](/docs/app/api-reference/config/next-config-js.md) file:
 
 ```js filename="next.config.js"
+const isDev = process.env.NODE_ENV === 'development'
+
 const cspHeader = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline';
+    script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ''};
     style-src 'self' 'unsafe-inline';
     img-src 'self' blob: data:;
     font-src 'self';
@@ -52829,7 +54139,7 @@ const cspHeader = `
 
 
 --------------------------------------------------------------------------------
-title: "How to use CSS-in-JS libraries"
+title: "CSS-in-JS"
 description: "Use CSS-in-JS libraries with Next.js"
 source: "https://nextjs.org/docs/pages/guides/css-in-js"
 --------------------------------------------------------------------------------
@@ -52908,7 +54218,7 @@ Yes, if you disable JavaScript the CSS will still be loaded in the production bu
 
 
 --------------------------------------------------------------------------------
-title: "How to set up a custom server in Next.js"
+title: "Custom Server"
 description: "Start a Next.js app programmatically using a custom server."
 source: "https://nextjs.org/docs/pages/guides/custom-server"
 --------------------------------------------------------------------------------
@@ -52938,9 +54248,9 @@ const handle = app.getRequestHandler()
 
 app.prepare().then(() => {
   createServer((req, res) => {
-    const parsedUrl = parse(req.url!, true)
-    handle(req, res, parsedUrl)
+    handle(req, res)
   }).listen(port)
+})
 
   console.log(
     `> Server listening at http://localhost:${port} as ${
@@ -52962,9 +54272,9 @@ const handle = app.getRequestHandler()
 
 app.prepare().then(() => {
   createServer((req, res) => {
-    const parsedUrl = parse(req.url, true)
-    handle(req, res, parsedUrl)
+    handle(req, res)
   }).listen(port)
+})
 
   console.log(
     `> Server listening at http://localhost:${port} as ${
@@ -53030,8 +54340,8 @@ module.exports = {
 
 
 --------------------------------------------------------------------------------
-title: "How to use debugging tools with Next.js"
-description: "Learn how to debug your Next.js application with VS Code, Chrome DevTools, or Firefox DevTools."
+title: "Debugging"
+description: "Learn how to debug your Next.js application with VS Code or Chrome DevTools."
 source: "https://nextjs.org/docs/pages/guides/debugging"
 --------------------------------------------------------------------------------
 
@@ -53201,7 +54511,7 @@ To learn more about how to use a JavaScript debugger, take a look at the followi
 
 
 --------------------------------------------------------------------------------
-title: "How to preview content with Draft Mode in Next.js"
+title: "Draft Mode"
 description: "Next.js has draft mode to toggle between static and dynamic pages. You can learn how it works with Pages Router."
 source: "https://nextjs.org/docs/pages/guides/draft-mode"
 --------------------------------------------------------------------------------
@@ -53389,7 +54699,7 @@ This ensures that the bypass cookie can’t be guessed.
 
 
 --------------------------------------------------------------------------------
-title: "How to use environment variables in Next.js"
+title: "Environment Variables"
 description: "Learn to add and access environment variables in your Next.js application."
 source: "https://nextjs.org/docs/pages/guides/environment-variables"
 --------------------------------------------------------------------------------
@@ -53594,7 +54904,7 @@ For example, if `NODE_ENV` is `development` and you define a variable in both `.
 
 
 --------------------------------------------------------------------------------
-title: "How to create forms with API Routes"
+title: "Forms"
 description: "Learn how to handle form submissions and data mutations with Next.js."
 source: "https://nextjs.org/docs/pages/guides/forms"
 --------------------------------------------------------------------------------
@@ -53936,7 +55246,7 @@ export default async function handler(req, res) {
 
 
 --------------------------------------------------------------------------------
-title: "How to implement Incremental Static Regeneration (ISR)"
+title: "ISR"
 description: "Learn how to create or update static pages at runtime with Incremental Static Regeneration."
 source: "https://nextjs.org/docs/pages/guides/incremental-static-regeneration"
 --------------------------------------------------------------------------------
@@ -54249,7 +55559,7 @@ Learn how to [configure ISR](/docs/app/guides/self-hosting.md#caching-and-isr) w
 
 
 --------------------------------------------------------------------------------
-title: "How to set up instrumentation"
+title: "Instrumentation"
 description: "Learn how to use instrumentation to run code at server startup in your Next.js app"
 source: "https://nextjs.org/docs/pages/guides/instrumentation"
 --------------------------------------------------------------------------------
@@ -54347,7 +55657,7 @@ export async function register() {
 
 
 --------------------------------------------------------------------------------
-title: "How to implement internationalization in Next.js"
+title: "Internationalization"
 description: "Next.js has built-in support for internationalized routing and language detection. Learn more here."
 source: "https://nextjs.org/docs/pages/guides/internationalization"
 --------------------------------------------------------------------------------
@@ -54708,8 +56018,8 @@ export async function getStaticProps({ locale }) {
 
 
 --------------------------------------------------------------------------------
-title: "How to lazy load Client Components and libraries"
-description: "Lazy load imported libraries and React Components to improve your application's loading performance."
+title: "Lazy Loading"
+description: "Lazy load imported libraries and React Components to improve your application's overall loading performance."
 source: "https://nextjs.org/docs/pages/guides/lazy-loading"
 --------------------------------------------------------------------------------
 
@@ -54806,8 +56116,8 @@ export default function Page() {
 
 
 --------------------------------------------------------------------------------
-title: "How to use markdown and MDX in Next.js"
-description: "Learn how to configure MDX and use it in your Next.js apps."
+title: "MDX"
+description: "Learn how to configure MDX to write JSX in your markdown files."
 source: "https://nextjs.org/docs/pages/guides/mdx"
 --------------------------------------------------------------------------------
 
@@ -55447,12 +56757,9 @@ source: "https://nextjs.org/docs/pages/guides/migrating"
 
 
 
- - [App Router](/docs/pages/guides/migrating/app-router-migration.md)
- - [Create React App](/docs/pages/guides/migrating/from-create-react-app.md)
- - [Vite](/docs/pages/guides/migrating/from-vite.md)
 
 --------------------------------------------------------------------------------
-title: "How to migrate from Pages to the App Router"
+title: "App Router"
 description: "Learn how to upgrade your existing Next.js application from the Pages Router to the App Router."
 source: "https://nextjs.org/docs/pages/guides/migrating/app-router-migration"
 --------------------------------------------------------------------------------
@@ -56395,7 +57702,7 @@ Next.js provides Codemod transformations to help upgrade your codebase when a fe
 
 
 --------------------------------------------------------------------------------
-title: "How to migrate from Create React App to Next.js"
+title: "Create React App"
 description: "Learn how to migrate your existing React application from Create React App to Next.js."
 source: "https://nextjs.org/docs/pages/guides/migrating/from-create-react-app"
 --------------------------------------------------------------------------------
@@ -56988,7 +58295,7 @@ If everything worked, you now have a functioning Next.js application running as 
 
 
 --------------------------------------------------------------------------------
-title: "How to migrate from Vite to Next.js"
+title: "Vite"
 description: "Learn how to migrate your existing React application from Vite to Next.js."
 source: "https://nextjs.org/docs/pages/guides/migrating/from-vite"
 --------------------------------------------------------------------------------
@@ -57596,7 +58903,7 @@ do next:
 
 
 --------------------------------------------------------------------------------
-title: "How to build micro-frontends using multi-zones and Next.js"
+title: "Multi-Zones"
 description: "Learn how to build micro-frontends using Next.js Multi-Zones to deploy multiple Next.js apps under a single domain."
 source: "https://nextjs.org/docs/pages/guides/multi-zones"
 --------------------------------------------------------------------------------
@@ -57716,7 +59023,7 @@ Since the pages in different zones may be released at different times, feature f
 
 
 --------------------------------------------------------------------------------
-title: "How to set up instrumentation with OpenTelemetry"
+title: "OpenTelemetry"
 description: "Learn how to instrument your Next.js app with OpenTelemetry."
 source: "https://nextjs.org/docs/pages/guides/open-telemetry"
 --------------------------------------------------------------------------------
@@ -58063,7 +59370,7 @@ This zero-length span represents the time when the first byte has been sent in t
 
 
 --------------------------------------------------------------------------------
-title: "How to optimize package bundling"
+title: "Package Bundling"
 description: "Learn how to optimize your application's server and client bundles."
 source: "https://nextjs.org/docs/pages/guides/package-bundling"
 --------------------------------------------------------------------------------
@@ -58072,13 +59379,64 @@ source: "https://nextjs.org/docs/pages/guides/package-bundling"
 
 @router: Pages Router
 
-Bundling external packages can significantly improve the performance of your application.  By default, packages imported into your application are not bundled. This can impact performance or might not work if external packages are not pre-bundled, for example, if imported from a monorepo or `node_modules`. This page will guide you through how to analyze and configure package bundling.
+Bundling is the process of combining your application code and its dependencies into optimized output files for the client and server. Smaller bundles load faster, reduce JavaScript execution time, improve [Core Web Vitals](https://web.dev/articles/vitals), and lower server cold start times.
 
-## Analyzing JavaScript bundles
+Next.js automatically optimizes bundles by code splitting, tree-shaking, and other techniques. However, there are some cases where you may need to optimize your bundles manually.
 
-[`@next/bundle-analyzer`](https://www.npmjs.com/package/@next/bundle-analyzer) is a plugin for Next.js that helps you manage the size of your application bundles. It generates a visual report of the size of each package and their dependencies. You can use the information to remove large dependencies, split, or [lazy-load](/docs/app/guides/lazy-loading.md) your code.
+There are two tools for analyzing your application's bundles:
 
-### Installation
+* [Next.js Bundle Analyzer for Turbopack (experimental)](#nextjs-bundle-analyzer-experimental)
+* [`@next/bundle-analyzer` plugin for Webpack](#nextbundle-analyzer-for-webpack)
+
+This guide will walk you through how to use each tool and how to [optimize large bundles](#optimizing-large-bundles).
+
+## Next.js Bundle Analyzer (Experimental)
+
+> Available in v16.1 and later. You can share feedback in the [dedicated GitHub discussion](https://github.com/vercel/next.js/discussions/86731) and view the demo at [turbopack-bundle-analyzer-demo.vercel.sh](https://turbopack-bundle-analyzer-demo.vercel.sh/).
+
+The Next.js Bundle Analyzer is integrated with Turbopack's module graph. You can inspect server and client modules with precise import tracing, making it easier to find large dependencies. Open the interactive Bundle Analyzer demo to explore the module graph.
+
+### Step 1: Run the Turbopack Bundle Analyzer
+
+To get started, run the following command and open up the interactive view in your browser.
+
+```bash filename="Terminal"
+npx next experimental-analyze
+```
+
+### Step 2: Filter and inspect modules
+
+Within the UI, you can filter by route, environment (client or server), and type (JavaScript, CSS, JSON), or search by file:
+
+### Step 3: Trace modules with import chains
+
+The treemap shows each module as a rectangle. Where the size of the module is represented by the area of the rectangle.
+
+Click a module to see its size, inspect its full import chain and see exactly where it’s used in your application:
+
+![Image description missing](https://h8DxKfmAPhn8O0p3.public.blob.vercel-storage.com/docs/light/bundle-analyzer.png)
+
+### Step 4: Write output to disk for sharing or diffing
+
+If you want to share the analysis with teammates or compare bundle sizes before/after optimizations, you can skip the interactive view and save the analysis as a static file with the `--output` flag:
+
+```bash filename="Terminal"
+npx next experimental-analyze --output
+```
+
+This command writes the output to `.next/diagnostics/analyze`. You can copy this directory elsewhere to compare results:
+
+```bash filename="Terminal"
+cp -r .next/diagnostics/analyze ./analyze-before-refactor
+```
+
+> More options are available for the Bundle Analyzer, see Next.js CLI reference docs for the full list.
+
+## `@next/bundle-analyzer` for Webpack
+
+The [`@next/bundle-analyzer`](https://www.npmjs.com/package/@next/bundle-analyzer) is a plugin that helps you manage the size of your application bundles. It generates a visual report of the size of each package and their dependencies. You can use the information to remove large dependencies, split, or [lazy-load](/docs/app/guides/lazy-loading.md) your code.
+
+### Step 1: Installation
 
 Install the plugin by running the following command:
 
@@ -58103,7 +59461,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 module.exports = withBundleAnalyzer(nextConfig)
 ```
 
-### Generating a report
+### Step 2: Generating a report
 
 Run the following command to analyze your bundles:
 
@@ -58115,13 +59473,15 @@ ANALYZE=true yarn build
 ANALYZE=true pnpm build
 ```
 
-The report will open three new tabs in your browser, which you can inspect. Periodically evaluating your application's bundles can help you maintain application performance over time.
+The report will open three new tabs in your browser, which you can inspect.
 
-## Optimizing package imports
+## Optimizing large bundles
 
-Some packages, such as icon libraries, can export hundreds of modules, which can cause performance issues in development and production.
+Once you've identified a large module, the solution will depend on your use case. Below are common causes and how to fix them:
 
-You can optimize how these packages are imported by adding the [`optimizePackageImports`](/docs/app/api-reference/config/next-config-js/optimizePackageImports.md) option to your `next.config.js`. This option will only load the modules you *actually* use, while still giving you the convenience of writing import statements with many named exports.
+### Packages with many exports
+
+If you're using a package that exports hundreds of modules (such as icon and utility libraries), you can optimize how those imports are resolved using the [`optimizePackageImports`](/docs/app/api-reference/config/next-config-js/optimizePackageImports.md) option in your `next.config.js` file. This option will only load the modules you *actually* use, while still giving you the convenience of writing import statements with many named exports.
 
 ```js filename="next.config.js"
 /** @type {import('next').NextConfig} */
@@ -58134,11 +59494,88 @@ const nextConfig = {
 module.exports = nextConfig
 ```
 
-Next.js also optimizes some libraries automatically, thus they do not need to be included in the optimizePackageImports list. See the [full list](/docs/app/api-reference/config/next-config-js/optimizePackageImports.md).
+> **Good to know:** Next.js also optimizes some libraries automatically, thus they do not need to be included in the `optimizePackageImports` list. See the [full list](/docs/app/api-reference/config/next-config-js/optimizePackageImports.md) of supported packages.
 
-## Bundling specific packages
+### Heavy client workloads
 
-To bundle specific packages, you can use the [`transpilePackages`](/docs/app/api-reference/config/next-config-js/transpilePackages.md) option in your `next.config.js`. This option is useful for bundling external packages that are not pre-bundled, for example, in a monorepo or imported from `node_modules`.
+A common cause of large client bundles is doing expensive rendering work in Client Components. This often happens with libraries that exist only to transform data into UI, such as syntax highlighting, chart rendering, or markdown parsing.
+
+If that work does not require browser APIs or user interaction, it can be run in a Server Component.
+
+In this example, a prism based highlighter runs in a Client Component. Even though the final output is just a `<code>` block, the entire highlighting library is bundled into the client JavaScript bundle:
+
+```tsx filename="app/blog/[slug]/page.tsx"
+'use client'
+
+import Highlight from 'prism-react-renderer'
+import theme from 'prism-react-renderer/themes/github'
+
+export default function Page() {
+  const code = `export function hello() {
+    console.log("hi")
+  }`
+
+  return (
+    <article>
+      <h1>Blog Post Title</h1>
+
+      {/* The prism package and its tokenization logic are shipped to the client */}
+      <Highlight code={code} language="tsx" theme={theme}>
+        {({ className, style, tokens, getLineProps, getTokenProps }) => (
+          <pre className={className} style={style}>
+            <code>
+              {tokens.map((line, i) => (
+                <div key={i} {...getLineProps({ line })}>
+                  {line.map((token, key) => (
+                    <span key={key} {...getTokenProps({ token })} />
+                  ))}
+                </div>
+              ))}
+            </code>
+          </pre>
+        )}
+      </Highlight>
+    </article>
+  )
+}
+```
+
+This increases bundle size because the client must download and execute the highlighting library, even though the result is static HTML.
+
+Instead, move the highlighting logic to a Server Component and render the final HTML on the server. The client will only receive the rendered markup.
+
+```tsx filename="app/blog/[slug]/page.tsx"
+import { codeToHtml } from 'shiki'
+
+export default async function Page() {
+  const code = `export function hello() {
+    console.log("hi")
+  }`
+
+  // The Shiki package runs on the server and is never bundled for the client.
+  const highlightedHtml = await codeToHtml(code, {
+    lang: 'tsx',
+    theme: 'github-dark',
+  })
+
+  return (
+    <article>
+      <h1>Blog Post Title</h1>
+
+      {/* Client receives plain markup */}
+      <pre>
+        <code dangerouslySetInnerHTML={{ __html: highlightedHtml }} />
+      </pre>
+    </article>
+  )
+}
+```
+
+### External packages that aren't pre-bundled
+
+By default, packages imported into your application are not bundled. This can impact performance if external packages are not pre-bundled, for example, if imported from a monorepo or `node_modules`.
+
+To bundle specific packages, you can use the [`transpilePackages`](/docs/app/api-reference/config/next-config-js/transpilePackages.md) option in your `next.config.js`.
 
 ```js filename="next.config.js"
 /** @type {import('next').NextConfig} */
@@ -58149,9 +59586,7 @@ const nextConfig = {
 module.exports = nextConfig
 ```
 
-## Bundling all packages
-
-To automatically bundle all packages (default behavior in the App Router), you can use the [`bundlePagesRouterDependencies`](/docs/pages/api-reference/config/next-config-js/bundlePagesRouterDependencies.md) option in your `next.config.js`.
+To automatically bundle all packages, you can use the [`bundlePagesRouterDependencies`](/docs/pages/api-reference/config/next-config-js/bundlePagesRouterDependencies.md) option in your `next.config.js`.
 
 ```js filename="next.config.js"
 /** @type {import('next').NextConfig} */
@@ -58162,16 +59597,16 @@ const nextConfig = {
 module.exports = nextConfig
 ```
 
-## Opting specific packages out of bundling
+### Opting specific packages out of bundling
 
-If you have the [`bundlePagesRouterDependencies`](/docs/pages/api-reference/config/next-config-js/bundlePagesRouterDependencies.md) option enabled, you can opt specific packages out of automatic bundling using the [`serverExternalPackages`](/docs/pages/api-reference/config/next-config-js/serverExternalPackages.md) option in your `next.config.js`:
+If you identify packages that shouldn't be in the bundle, you can opt specific packages out of automatic bundling using the [`serverExternalPackages`](/docs/pages/api-reference/config/next-config-js/serverExternalPackages.md) option in your `next.config.js`:
 
 ```js filename="next.config.js"
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Automatically bundle external packages in the Pages Router:
+  // Automatically bundle external packages:
   bundlePagesRouterDependencies: true,
-  // Opt specific packages out of bundling for both App and Pages Router:
+  // Opt specific packages out of bundling:
   serverExternalPackages: ['package-name'],
 }
 
@@ -58186,7 +59621,7 @@ Learn more about optimizing your application for production.
 
 
 --------------------------------------------------------------------------------
-title: "How to configure PostCSS in Next.js"
+title: "PostCSS"
 description: "Extend the PostCSS config and plugins added by Next.js with your own."
 source: "https://nextjs.org/docs/pages/guides/post-css"
 --------------------------------------------------------------------------------
@@ -58355,7 +59790,7 @@ Do **not use `require()`** to import the PostCSS Plugins. Plugins must be provid
 
 
 --------------------------------------------------------------------------------
-title: "How to preview content with Preview Mode in Next.js"
+title: "Preview Mode"
 description: "Next.js has the preview mode for statically generated pages. You can learn how it works here."
 source: "https://nextjs.org/docs/pages/guides/preview-mode"
 --------------------------------------------------------------------------------
@@ -58614,7 +60049,7 @@ This ensures that the bypass cookie can’t be guessed.
 
 
 --------------------------------------------------------------------------------
-title: "How to optimize your Next.js application for production"
+title: "Production"
 description: "Recommendations to ensure the best performance and user experience before taking your Next.js application to production."
 source: "https://nextjs.org/docs/pages/guides/production-checklist"
 --------------------------------------------------------------------------------
@@ -58683,7 +60118,7 @@ Before going to production, you can run `next build` to build your application l
 
 ### Analyzing bundles
 
-Use the [`@next/bundle-analyzer` plugin](/docs/app/guides/package-bundling.md#analyzing-javascript-bundles) to analyze the size of your JavaScript bundles and identify large modules and dependencies that might be impacting your application's performance.
+Use the [`@next/bundle-analyzer` plugin](/docs/app/guides/package-bundling.md#nextbundle-analyzer-for-webpack) to analyze the size of your JavaScript bundles and identify large modules and dependencies that might be impacting your application's performance.
 
 Additionally, the following tools can help you understand the impact of adding new dependencies to your application:
 
@@ -58694,7 +60129,7 @@ Additionally, the following tools can help you understand the impact of adding n
 
 
 --------------------------------------------------------------------------------
-title: "How to handle redirects in Next.js"
+title: "Redirecting"
 description: "Learn the different ways to handle redirects in Next.js."
 source: "https://nextjs.org/docs/pages/guides/redirecting"
 --------------------------------------------------------------------------------
@@ -59114,8 +60549,8 @@ export default function handler(req, res) {
 
 
 --------------------------------------------------------------------------------
-title: "How to use Sass"
-description: "Style your Next.js application using Sass."
+title: "Sass"
+description: "Learn how to use Sass in your Next.js application."
 source: "https://nextjs.org/docs/pages/guides/sass"
 --------------------------------------------------------------------------------
 
@@ -59224,7 +60659,7 @@ export default function MyApp({ Component, pageProps }) {
 
 
 --------------------------------------------------------------------------------
-title: "How to load and optimize scripts"
+title: "Scripts"
 description: "Optimize 3rd party scripts with the built-in Script component."
 source: "https://nextjs.org/docs/pages/guides/scripts"
 --------------------------------------------------------------------------------
@@ -59269,7 +60704,7 @@ Refer to the [`next/script`](/docs/app/api-reference/components/script.md#strate
 
 > **Warning:** The `worker` strategy is not yet stable and does not yet work with the App Router. Use with caution.
 
-Scripts that use the `worker` strategy are offloaded and executed in a web worker with [Partytown](https://partytown.builder.io/). This can improve the performance of your site by dedicating the main thread to the rest of your application code.
+Scripts that use the `worker` strategy are offloaded and executed in a web worker with [Partytown](https://partytown.qwik.dev/). This can improve the performance of your site by dedicating the main thread to the rest of your application code.
 
 This strategy is still experimental and can only be used if the `nextScriptWorkers` flag is enabled in `next.config.js`:
 
@@ -59287,7 +60722,7 @@ Then, run `next` (normally `npm run dev` or `yarn dev`) and Next.js will guide y
 npm run dev
 ```
 
-You'll see instructions like these: Please install Partytown by running `npm install @builder.io/partytown`
+You'll see instructions like these: Please install Partytown by running `npm install @qwik.dev/partytown`
 
 Once setup is complete, defining `strategy="worker"` will automatically instantiate Partytown in your application and offload the script to a web worker.
 
@@ -59315,7 +60750,7 @@ export default function Home() {
 }
 ```
 
-There are a number of trade-offs that need to be considered when loading a third-party script in a web worker. Please see Partytown's [tradeoffs](https://partytown.builder.io/trade-offs) documentation for more information.
+There are a number of trade-offs that need to be considered when loading a third-party script in a web worker. Please see Partytown's [tradeoffs](https://partytown.qwik.dev/trade-offs) documentation for more information.
 
 #### Using custom Partytown configuration
 
@@ -59358,7 +60793,7 @@ In order to modify Partytown's configuration, the following conditions must be m
 
 > **Note**: If you are using an [asset prefix](/docs/pages/api-reference/config/next-config-js/assetPrefix.md) and would like to modify Partytown's default configuration, you must include it as part of the `lib` path.
 
-Take a look at Partytown's [configuration options](https://partytown.builder.io/configuration) to see the full list of other properties that can be added.
+Take a look at Partytown's [configuration options](https://partytown.qwik.dev/configuration) to see the full list of other properties that can be added.
 
 ### Inline Scripts
 
@@ -59475,7 +60910,7 @@ Learn more about the next/script API.
 
 
 --------------------------------------------------------------------------------
-title: "How to self-host your Next.js application"
+title: "Self-Hosting"
 description: "Learn how to self-host your Next.js application on a Node.js server, Docker image, or static HTML files (static exports)."
 source: "https://nextjs.org/docs/pages/guides/self-hosting"
 --------------------------------------------------------------------------------
@@ -59661,7 +61096,7 @@ if (process.env.NEXT_MANUAL_SIG_HANDLE) {
 
 
 --------------------------------------------------------------------------------
-title: "How to create a static export of your Next.js application"
+title: "Static Exports"
 description: "Next.js enables starting as a static site or Single-Page Application (SPA), then later optionally upgrading to use features that require a server."
 source: "https://nextjs.org/docs/pages/guides/static-exports"
 --------------------------------------------------------------------------------
@@ -59849,8 +61284,8 @@ server {
 
 
 --------------------------------------------------------------------------------
-title: "How to install Tailwind CSS v3 in your Next.js application"
-description: "Style your Next.js Application using Tailwind CSS v3 for broader browser support."
+title: "Tailwind CSS"
+description: "Style your Next.js Application using Tailwind CSS."
 source: "https://nextjs.org/docs/pages/guides/tailwind-v3-css"
 --------------------------------------------------------------------------------
 
@@ -59946,7 +61381,7 @@ As of Next.js 13.1, Tailwind CSS and PostCSS are supported with [Turbopack](http
 
 --------------------------------------------------------------------------------
 title: "Testing"
-description: "Learn how to set up Next.js with four commonly used testing tools — Cypress, Playwright, Vitest, and Jest."
+description: "Learn how to set up Next.js with three commonly used testing tools — Cypress, Playwright, Vitest, and Jest."
 source: "https://nextjs.org/docs/pages/guides/testing"
 --------------------------------------------------------------------------------
 
@@ -59968,14 +61403,10 @@ In React and Next.js, there are a few different types of tests you can write, ea
 
 See the guides below to learn how to set up Next.js with these commonly used testing tools:
 
- - [Cypress](/docs/pages/guides/testing/cypress.md)
- - [Jest](/docs/pages/guides/testing/jest.md)
- - [Playwright](/docs/pages/guides/testing/playwright.md)
- - [Vitest](/docs/pages/guides/testing/vitest.md)
 
 --------------------------------------------------------------------------------
-title: "How to set up Cypress with Next.js"
-description: "Learn how to set up Cypress with Next.js for End-to-End (E2E) and Component Testing."
+title: "Cypress"
+description: "Learn how to set up Next.js with Cypress for End-to-End (E2E) and Component Testing."
 source: "https://nextjs.org/docs/pages/guides/testing/cypress"
 --------------------------------------------------------------------------------
 
@@ -60195,8 +61626,8 @@ You can learn more about Cypress and Continuous Integration from these resources
 
 
 --------------------------------------------------------------------------------
-title: "How to set up Jest with Next.js"
-description: "Learn how to set up Jest with Next.js for Unit Testing and Snapshot Testing."
+title: "Jest"
+description: "Learn how to set up Next.js with Jest for Unit Testing."
 source: "https://nextjs.org/docs/pages/guides/testing/jest"
 --------------------------------------------------------------------------------
 
@@ -60525,8 +61956,8 @@ For further reading, you may find these resources helpful:
 
 
 --------------------------------------------------------------------------------
-title: "How to set up Playwright with Next.js"
-description: "Learn how to set up Playwright with Next.js for End-to-End (E2E) Testing."
+title: "Playwright"
+description: "Learn how to set up Next.js with Playwright for End-to-End (E2E) and Integration testing."
 source: "https://nextjs.org/docs/pages/guides/testing/playwright"
 --------------------------------------------------------------------------------
 
@@ -60627,8 +62058,8 @@ You can learn more about Playwright and Continuous Integration from these resour
 
 
 --------------------------------------------------------------------------------
-title: "How to set up Vitest with Next.js"
-description: "Learn how to set up Vitest with Next.js for Unit Testing."
+title: "Vitest"
+description: "Learn how to set up Next.js with Vitest and React Testing Library - two popular unit testing libraries."
 source: "https://nextjs.org/docs/pages/guides/testing/vitest"
 --------------------------------------------------------------------------------
 
@@ -60779,7 +62210,7 @@ You may find these resources helpful:
 
 
 --------------------------------------------------------------------------------
-title: "How to optimize third-party libraries"
+title: "Third Party Libraries"
 description: "Optimize the performance of third-party libraries in your application with the `@next/third-parties` package."
 source: "https://nextjs.org/docs/pages/guides/third-party-libraries"
 --------------------------------------------------------------------------------
@@ -61053,13 +62484,6 @@ source: "https://nextjs.org/docs/pages/guides/upgrading"
 
 Learn how to upgrade to the latest versions of Next.js following the versions-specific guides:
 
- - [Codemods](/docs/pages/guides/upgrading/codemods.md)
- - [Version 10](/docs/pages/guides/upgrading/version-10.md)
- - [Version 11](/docs/pages/guides/upgrading/version-11.md)
- - [Version 12](/docs/pages/guides/upgrading/version-12.md)
- - [Version 13](/docs/pages/guides/upgrading/version-13.md)
- - [Version 14](/docs/pages/guides/upgrading/version-14.md)
- - [Version 9](/docs/pages/guides/upgrading/version-9.md)
 
 --------------------------------------------------------------------------------
 title: "Codemods"
@@ -61089,6 +62513,43 @@ Replacing `<transform>` and `<path>` with appropriate values.
 * `path` - files or directory to transform
 * `--dry` Do a dry-run, no code will be edited
 * `--print` Prints the changed output for comparison
+
+## Upgrade
+
+Upgrades your Next.js application, automatically running codemods and updating Next.js, React, and React DOM.
+
+```bash filename="Terminal"
+npx @next/codemod upgrade [revision]
+```
+
+### Options
+
+* `revision` (optional): Specify the upgrade type (`patch`, `minor`, `major`), an NPM dist tag (e.g. `latest`, `canary`, `rc`), or an exact version (e.g. `15.0.0`). Defaults to `minor` for stable versions.
+* `--verbose`: Show more detailed output during the upgrade process.
+
+For example:
+
+```bash filename="Terminal"
+# Upgrade to the latest patch (e.g. 16.0.7 -> 16.0.8)
+npx @next/codemod upgrade patch
+
+# Upgrade to the latest minor (e.g. 15.3.7 -> 15.4.8). This is the default.
+npx @next/codemod upgrade minor
+
+# Upgrade to the latest major (e.g. 15.5.7 -> 16.0.7)
+npx @next/codemod upgrade major
+
+# Upgrade to a specific version
+npx @next/codemod upgrade 16
+
+# Upgrade to the canary release
+npx @next/codemod upgrade canary
+```
+
+> **Good to know**:
+>
+> * If the target version is the same as or lower than your current version, the command exits without making changes.
+> * During the upgrade, you may be prompted to choose which Next.js codemods to apply and run React 19 codemods if upgrading React.
 
 ## Codemods
 
@@ -61743,7 +63204,7 @@ This is one case. All the cases that are transformed (and tested) can be found i
 
 
 --------------------------------------------------------------------------------
-title: "How to upgrade to version 10"
+title: "Version 10"
 description: "Upgrade your Next.js Application from Version 9 to Version 10."
 source: "https://nextjs.org/docs/pages/guides/upgrading/version-10"
 --------------------------------------------------------------------------------
@@ -61776,7 +63237,7 @@ bun add next@10
 
 
 --------------------------------------------------------------------------------
-title: "How to upgrade to version 11"
+title: "Version 11"
 description: "Upgrade your Next.js Application from Version 10 to Version 11."
 source: "https://nextjs.org/docs/pages/guides/upgrading/version-11"
 --------------------------------------------------------------------------------
@@ -61932,7 +63393,7 @@ yarn add react@latest react-dom@latest
 
 
 --------------------------------------------------------------------------------
-title: "How to upgrade to version 12"
+title: "Version 12"
 description: "Upgrade your Next.js Application from Version 11 to Version 12."
 source: "https://nextjs.org/docs/pages/guides/upgrading/version-12"
 --------------------------------------------------------------------------------
@@ -62091,7 +63552,7 @@ If you are currently using the `target` option set to `serverless`, please read 
 
 
 --------------------------------------------------------------------------------
-title: "How to upgrade to version 13"
+title: "Version 13"
 description: "Upgrade your Next.js Application from Version 12 to 13."
 source: "https://nextjs.org/docs/pages/guides/upgrading/version-13"
 --------------------------------------------------------------------------------
@@ -62185,7 +63646,7 @@ See [Optimizing Fonts](/docs/pages/api-reference/components/font.md) to learn ho
 
 
 --------------------------------------------------------------------------------
-title: "How to upgrade to version 14"
+title: "Version 14"
 description: "Upgrade your Next.js Application from Version 13 to 14."
 source: "https://nextjs.org/docs/pages/guides/upgrading/version-14"
 --------------------------------------------------------------------------------
@@ -62226,7 +63687,7 @@ bun add next@next-14 react@18 react-dom@18 && bun add eslint-config-next@next-14
 
 
 --------------------------------------------------------------------------------
-title: "How to upgrade to version 9"
+title: "Version 9"
 description: "Upgrade your Next.js Application from Version 8 to Version 9."
 source: "https://nextjs.org/docs/pages/guides/upgrading/version-9"
 --------------------------------------------------------------------------------
@@ -62470,10 +63931,6 @@ source: "https://nextjs.org/docs/pages/building-your-application"
 
 
 
- - [Routing](/docs/pages/building-your-application/routing.md)
- - [Rendering](/docs/pages/building-your-application/rendering.md)
- - [Data Fetching](/docs/pages/building-your-application/data-fetching.md)
- - [Configuring](/docs/pages/building-your-application/configuring.md)
 
 --------------------------------------------------------------------------------
 title: "Routing"
@@ -62487,13 +63944,6 @@ source: "https://nextjs.org/docs/pages/building-your-application/routing"
 
 The Pages Router has a file-system based router built on concepts of pages. When a file is added to the `pages` directory it's automatically available as a route. Learn more about routing in the Pages Router:
 
- - [Pages and Layouts](/docs/pages/building-your-application/routing/pages-and-layouts.md)
- - [Dynamic Routes](/docs/pages/building-your-application/routing/dynamic-routes.md)
- - [Linking and Navigating](/docs/pages/building-your-application/routing/linking-and-navigating.md)
- - [Custom App](/docs/pages/building-your-application/routing/custom-app.md)
- - [Custom Document](/docs/pages/building-your-application/routing/custom-document.md)
- - [API Routes](/docs/pages/building-your-application/routing/api-routes.md)
- - [Custom Errors](/docs/pages/building-your-application/routing/custom-error.md)
 
 --------------------------------------------------------------------------------
 title: "Pages and Layouts"
@@ -63828,10 +65278,6 @@ We recommend using Static Generation over Server-side Rendering for performance 
 
 You can also use client-side data fetching along with Static Generation or Server-side Rendering. That means some parts of a page can be rendered entirely by clientside JavaScript. To learn more, take a look at the [Data Fetching](/docs/pages/building-your-application/data-fetching/client-side.md) documentation.
 
- - [Server-side Rendering (SSR)](/docs/pages/building-your-application/rendering/server-side-rendering.md)
- - [Static Site Generation (SSG)](/docs/pages/building-your-application/rendering/static-site-generation.md)
- - [Automatic Static Optimization](/docs/pages/building-your-application/rendering/automatic-static-optimization.md)
- - [Client-side Rendering (CSR)](/docs/pages/building-your-application/rendering/client-side-rendering.md)
 
 --------------------------------------------------------------------------------
 title: "Server-side Rendering (SSR)"
@@ -64242,11 +65688,6 @@ Data fetching in Next.js allows you to render your content in different ways, de
 * [Blog Starter Example](https://github.com/vercel/next.js/tree/canary/examples/blog-starter) ([Demo](https://next-blog-starter.vercel.app/))
 * [Static Tweet (Demo)](https://react-tweet.vercel.app/)
 
- - [getStaticProps](/docs/pages/building-your-application/data-fetching/get-static-props.md)
- - [getStaticPaths](/docs/pages/building-your-application/data-fetching/get-static-paths.md)
- - [Forms and Mutations](/docs/pages/building-your-application/data-fetching/forms-and-mutations.md)
- - [getServerSideProps](/docs/pages/building-your-application/data-fetching/get-server-side-props.md)
- - [Client-side Fetching](/docs/pages/building-your-application/data-fetching/client-side.md)
 
 --------------------------------------------------------------------------------
 title: "getStaticProps"
@@ -64922,7 +66363,6 @@ source: "https://nextjs.org/docs/pages/building-your-application/configuring"
 
 Next.js allows you to customize your project to meet specific requirements. This includes integrations with TypeScript, ESlint, and more, as well as internal configuration options such as Absolute Imports and Environment Variables.
 
- - [Error Handling](/docs/pages/building-your-application/configuring/error-handling.md)
 
 --------------------------------------------------------------------------------
 title: "Error Handling"
@@ -65047,17 +66487,10 @@ source: "https://nextjs.org/docs/pages/api-reference"
 
 
 
- - [Components](/docs/pages/api-reference/components.md)
- - [File-system conventions](/docs/pages/api-reference/file-conventions.md)
- - [Functions](/docs/pages/api-reference/functions.md)
- - [Configuration](/docs/pages/api-reference/config.md)
- - [CLI](/docs/pages/api-reference/cli.md)
- - [Edge Runtime](/docs/pages/api-reference/edge.md)
- - [Turbopack](/docs/pages/api-reference/turbopack.md)
 
 --------------------------------------------------------------------------------
 title: "Components"
-description: "API Reference for Next.js built-in components."
+description: "API Reference for Next.js built-in components in the Pages Router."
 source: "https://nextjs.org/docs/pages/api-reference/components"
 --------------------------------------------------------------------------------
 
@@ -65067,17 +66500,10 @@ source: "https://nextjs.org/docs/pages/api-reference/components"
 
 
 
- - [Font](/docs/pages/api-reference/components/font.md)
- - [Form](/docs/pages/api-reference/components/form.md)
- - [Head](/docs/pages/api-reference/components/head.md)
- - [Image](/docs/pages/api-reference/components/image.md)
- - [Image (Legacy)](/docs/pages/api-reference/components/image-legacy.md)
- - [Link](/docs/pages/api-reference/components/link.md)
- - [Script](/docs/pages/api-reference/components/script.md)
 
 --------------------------------------------------------------------------------
-title: "Font Module"
-description: "Optimizing loading web fonts with the built-in `next/font` loaders."
+title: "Font"
+description: "API Reference for the Font Module"
 source: "https://nextjs.org/docs/pages/api-reference/components/font"
 --------------------------------------------------------------------------------
 
@@ -65743,7 +67169,7 @@ When a font function is called on a page of your site, it is not globally availa
 
 
 --------------------------------------------------------------------------------
-title: "Form Component"
+title: "Form"
 description: "Learn how to use the `<Form>` component to handle form submissions and search params updates with client-side navigation."
 source: "https://nextjs.org/docs/pages/api-reference/components/form"
 --------------------------------------------------------------------------------
@@ -65894,7 +67320,7 @@ You **cannot** use `<Head>` to set attributes on `<html>` or `<body>` tags. This
 
 
 --------------------------------------------------------------------------------
-title: "Image Component"
+title: "Image"
 description: "Optimize Images in your Next.js Application using the built-in `next/image` Component."
 source: "https://nextjs.org/docs/pages/api-reference/components/image"
 --------------------------------------------------------------------------------
@@ -66627,6 +68053,28 @@ module.exports = {
 }
 ```
 
+#### `maximumResponseBody`
+
+The default image optimization loader will fetch source images up to 50 MB in size.
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    maximumResponseBody: 50_000_000,
+  },
+}
+```
+
+If you know all your source images are small, you can protect memory constrained servers by reducing this to a smaller value such as 5 MB.
+
+```js filename="next.config.js"
+module.exports = {
+  images: {
+    maximumResponseBody: 5_000_000,
+  },
+}
+```
+
 #### `dangerouslyAllowLocalIP`
 
 In rare cases when self-hosting Next.js on a private network, you may want to allow optimizing images from local IP addresses on the same network. This is not recommended for most users because it could allow malicious users to access content on your internal network.
@@ -67113,6 +68561,7 @@ export default function Home() {
 
 | Version    | Changes                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `v16.1.2`  | `maximumResponseBody` configuration added.                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | `v16.0.0`  | `qualities` default configuration changed to `[75]`, `preload` prop added, `priority` prop deprecated, `dangerouslyAllowLocalIP` config added, `maximumRedirects` config added.                                                                                                                                                                                                                                                                                                            |
 | `v15.3.0`  | `remotePatterns` added support for array of `URL` objects.                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | `v15.0.0`  | `contentDispositionType` configuration default changed to `attachment`.                                                                                                                                                                                                                                                                                                                                                                                                                    |
@@ -67807,8 +69256,8 @@ Auto-detection for animated files is best-effort and supports GIF, APNG, and Web
 
 
 --------------------------------------------------------------------------------
-title: "Link Component"
-description: "Enable fast client-side navigation with the built-in `next/link` component."
+title: "Link"
+description: "API reference for the `<Link>` component."
 source: "https://nextjs.org/docs/pages/api-reference/components/link"
 --------------------------------------------------------------------------------
 
@@ -68397,7 +69846,7 @@ export default function Home() {
 
 
 --------------------------------------------------------------------------------
-title: "Script Component"
+title: "Script"
 description: "Optimize third-party scripts in your Next.js application using the built-in `next/script` Component."
 source: "https://nextjs.org/docs/pages/api-reference/components/script"
 --------------------------------------------------------------------------------
@@ -68715,10 +70164,6 @@ source: "https://nextjs.org/docs/pages/api-reference/file-conventions"
 
 
 
- - [instrumentation.js](/docs/pages/api-reference/file-conventions/instrumentation.md)
- - [Proxy](/docs/pages/api-reference/file-conventions/proxy.md)
- - [public](/docs/pages/api-reference/file-conventions/public-folder.md)
- - [src Directory](/docs/pages/api-reference/file-conventions/src-folder.md)
 
 --------------------------------------------------------------------------------
 title: "instrumentation.js"
@@ -68865,8 +70310,8 @@ export function onRequestError() {
 
 
 --------------------------------------------------------------------------------
-title: "proxy.js"
-description: "API reference for the proxy.js file."
+title: "Proxy"
+description: "Learn how to use Proxy to run code before a request is completed."
 source: "https://nextjs.org/docs/pages/api-reference/file-conventions/proxy"
 --------------------------------------------------------------------------------
 
@@ -69594,7 +71039,7 @@ The codemod will rename the file and the function name from `middleware` to `pro
 
 
 --------------------------------------------------------------------------------
-title: "public Folder"
+title: "public"
 description: "Next.js allows you to serve static files, like images, in the public directory. You can learn how it works here."
 source: "https://nextjs.org/docs/pages/api-reference/file-conventions/public-folder"
 --------------------------------------------------------------------------------
@@ -69633,7 +71078,7 @@ The folder is also useful for `robots.txt`, `favicon.ico`, Google Site Verificat
 
 
 --------------------------------------------------------------------------------
-title: "src Folder"
+title: "src Directory"
 description: "Save pages under the `src` folder as an alternative to the root `pages` directory."
 source: "https://nextjs.org/docs/pages/api-reference/file-conventions/src-folder"
 --------------------------------------------------------------------------------
@@ -69666,7 +71111,7 @@ To use the `src` folder, move the `app` Router folder or `pages` Router folder t
 
 --------------------------------------------------------------------------------
 title: "Functions"
-description: "API Reference for Next.js Functions and Hooks."
+description: "API Reference for Functions and Hooks in Pages Router."
 source: "https://nextjs.org/docs/pages/api-reference/functions"
 --------------------------------------------------------------------------------
 
@@ -69676,15 +71121,6 @@ source: "https://nextjs.org/docs/pages/api-reference/functions"
 
 
 
- - [getInitialProps](/docs/pages/api-reference/functions/get-initial-props.md)
- - [getServerSideProps](/docs/pages/api-reference/functions/get-server-side-props.md)
- - [getStaticPaths](/docs/pages/api-reference/functions/get-static-paths.md)
- - [getStaticProps](/docs/pages/api-reference/functions/get-static-props.md)
- - [NextRequest](/docs/pages/api-reference/functions/next-request.md)
- - [NextResponse](/docs/pages/api-reference/functions/next-response.md)
- - [useReportWebVitals](/docs/pages/api-reference/functions/use-report-web-vitals.md)
- - [useRouter](/docs/pages/api-reference/functions/use-router.md)
- - [userAgent](/docs/pages/api-reference/functions/userAgent.md)
 
 --------------------------------------------------------------------------------
 title: "getInitialProps"
@@ -70472,7 +71908,7 @@ request.cookies.has('experiments')
 
 ### `clear()`
 
-Remove the `Set-Cookie` header from the request.
+Remove all cookies from the request.
 
 ```ts
 request.cookies.clear()
@@ -70565,6 +72001,17 @@ let response = NextResponse.next()
 response.cookies.getAll('experiments')
 // Alternatively, get all cookies for the response
 response.cookies.getAll()
+```
+
+### `has(name)`
+
+Given a cookie name, return `true` if the cookie exists on the response.
+
+```ts
+// Given incoming request /home
+let response = NextResponse.next()
+// Returns true if cookie exists, false if it does not
+response.cookies.has('experiments')
 ```
 
 ### `delete(name)`
@@ -70709,8 +72156,257 @@ function proxy(request: NextRequest) {
 
 
 --------------------------------------------------------------------------------
+title: "useParams"
+description: "API Reference for the useParams hook in the Pages Router."
+source: "https://nextjs.org/docs/pages/api-reference/functions/use-params"
+--------------------------------------------------------------------------------
+
+# useParams
+
+@router: Pages Router
+
+`useParams` is a hook that lets you read a route's [dynamic params](/docs/pages/building-your-application/routing/dynamic-routes.md) filled in by the current URL.
+
+```tsx filename="pages/shop/[slug].tsx" switcher
+import { useParams } from 'next/navigation'
+
+export default function ShopPage() {
+  const params = useParams<{ slug: string }>()
+
+  if (!params) {
+    // Render fallback UI while params are not yet available
+    return null
+  }
+
+  // Route -> /shop/[slug]
+  // URL -> /shop/shoes
+  // `params` -> { slug: 'shoes' }
+  return <>Shop: {params.slug}</>
+}
+```
+
+```jsx filename="pages/shop/[slug].js" switcher
+import { useParams } from 'next/navigation'
+
+export default function ShopPage() {
+  const params = useParams()
+
+  if (!params) {
+    // Render fallback UI while params are not yet available
+    return null
+  }
+
+  // Route -> /shop/[slug]
+  // URL -> /shop/shoes
+  // `params` -> { slug: 'shoes' }
+  return <>Shop: {params.slug}</>
+}
+```
+
+## Parameters
+
+```tsx
+const params = useParams()
+```
+
+`useParams` does not take any parameters.
+
+## Returns
+
+`useParams` returns an object containing the current route's filled in [dynamic parameters](/docs/pages/building-your-application/routing/dynamic-routes.md), or `null` during [pre-rendering](#behavior-during-pre-rendering).
+
+* Each property in the object is an active dynamic segment.
+* The property name is the segment's name, and the property value is what the segment is filled in with.
+* The property value will either be a `string` or array of `string`s depending on the [type of dynamic segment](/docs/pages/building-your-application/routing/dynamic-routes.md).
+* If the route contains no dynamic parameters, `useParams` returns an empty object.
+
+For example:
+
+| Route                        | URL         | `useParams()`             |
+| ---------------------------- | ----------- | ------------------------- |
+| `pages/shop/page.js`         | `/shop`     | `{}`                      |
+| `pages/shop/[slug].js`       | `/shop/1`   | `{ slug: '1' }`           |
+| `pages/shop/[tag]/[item].js` | `/shop/1/2` | `{ tag: '1', item: '2' }` |
+| `pages/shop/[...slug].js`    | `/shop/1/2` | `{ slug: ['1', '2'] }`    |
+
+> **Good to know**: `useParams` is a [React Hook](https://react.dev/learn#using-hooks) and cannot be used with classes.
+
+## Behavior
+
+### Behavior during pre-rendering
+
+For pages that are [statically optimized](/docs/pages/building-your-application/rendering/automatic-static-optimization.md), `useParams` will return `null` on the initial render. After hydration, the value will be updated to the actual params once the router is ready.
+
+This is because params cannot be known during static generation for dynamic routes.
+
+```tsx filename="pages/shop/[slug].tsx" switcher
+import { useParams } from 'next/navigation'
+
+export default function ShopPage() {
+  const params = useParams<{ slug: string }>()
+
+  if (!params) {
+    // Return a fallback UI while params are loading
+    // This prevents hydration mismatches
+    return <ShopPageSkeleton />
+  }
+
+  return <>Shop: {params.slug}</>
+}
+```
+
+```jsx filename="pages/shop/[slug].js" switcher
+import { useParams } from 'next/navigation'
+
+export default function ShopPage() {
+  const params = useParams()
+
+  if (!params) {
+    // Return a fallback UI while params are loading
+    // This prevents hydration mismatches
+    return <ShopPageSkeleton />
+  }
+
+  return <>Shop: {params.slug}</>
+}
+```
+
+### Using with `getServerSideProps`
+
+When using [`getServerSideProps`](/docs/pages/building-your-application/data-fetching/get-server-side-props.md), the page is server-rendered on each request and `useParams` will return the actual params immediately:
+
+```tsx filename="pages/shop/[slug].tsx" switcher
+import { useParams } from 'next/navigation'
+
+export default function ShopPage() {
+  const params = useParams<{ slug: string }>()
+
+  // With getServerSideProps, this fallback is never rendered because
+  // params is always available on the server. However, keeping
+  // the fallback allows this component to be reused on other pages
+  // that may not use getServerSideProps.
+  if (!params) {
+    return null
+  }
+
+  return <>Shop: {params.slug}</>
+}
+
+export async function getServerSideProps() {
+  return { props: {} }
+}
+```
+
+```jsx filename="pages/shop/[slug].js" switcher
+import { useParams } from 'next/navigation'
+
+export default function ShopPage() {
+  const params = useParams()
+
+  // With getServerSideProps, this fallback is never rendered because
+  // params is always available on the server. However, keeping
+  // the fallback allows this component to be reused on other pages
+  // that may not use getServerSideProps.
+  if (!params) {
+    return null
+  }
+
+  return <>Shop: {params.slug}</>
+}
+
+export async function getServerSideProps() {
+  return { props: {} }
+}
+```
+
+### Comparison with `router.query`
+
+`useParams` only returns the dynamic route parameters, whereas [`router.query`](/docs/pages/api-reference/functions/use-router.md#router-object) from `useRouter` includes both dynamic parameters and query string parameters.
+
+```tsx filename="pages/shop/[slug].tsx" switcher
+import { useRouter } from 'next/router'
+import { useParams } from 'next/navigation'
+
+export default function ShopPage() {
+  const router = useRouter()
+  const params = useParams()
+
+  // URL -> /shop/shoes?color=red
+
+  // router.query -> { slug: 'shoes', color: 'red' }
+  // params -> { slug: 'shoes' }
+
+  // ...
+}
+```
+
+```jsx filename="pages/shop/[slug].js" switcher
+import { useRouter } from 'next/router'
+import { useParams } from 'next/navigation'
+
+export default function ShopPage() {
+  const router = useRouter()
+  const params = useParams()
+
+  // URL -> /shop/shoes?color=red
+
+  // router.query -> { slug: 'shoes', color: 'red' }
+  // params -> { slug: 'shoes' }
+
+  // ...
+}
+```
+
+## Examples
+
+### Sharing components with App Router
+
+`useParams` from `next/navigation` works in both the Pages Router and App Router. This allows you to create shared components that work in either context:
+
+```tsx filename="components/breadcrumb.tsx" switcher
+import { useParams } from 'next/navigation'
+
+// This component works in both pages/ and app/
+export function Breadcrumb() {
+  const params = useParams<{ slug: string }>()
+
+  if (!params) {
+    // Fallback for Pages Router during pre-rendering
+    return <nav>Home / ...</nav>
+  }
+
+  return <nav>Home / {params.slug}</nav>
+}
+```
+
+```jsx filename="components/breadcrumb.js" switcher
+import { useParams } from 'next/navigation'
+
+// This component works in both pages/ and app/
+export function Breadcrumb() {
+  const params = useParams()
+
+  if (!params) {
+    // Fallback for Pages Router during pre-rendering
+    return <nav>Home / ...</nav>
+  }
+
+  return <nav>Home / {params.slug}</nav>
+}
+```
+
+> **Good to know**: When using this component in the App Router, `useParams` never returns `null`, so the fallback branch will not be rendered.
+
+## Version History
+
+| Version   | Changes                 |
+| --------- | ----------------------- |
+| `v13.3.0` | `useParams` introduced. |
+
+
+--------------------------------------------------------------------------------
 title: "useReportWebVitals"
-description: "API Reference for the useReportWebVitals function."
+description: "useReportWebVitals"
 source: "https://nextjs.org/docs/pages/api-reference/functions/use-report-web-vitals"
 --------------------------------------------------------------------------------
 
@@ -71460,6 +73156,331 @@ export default withRouter(MyComponent)
 
 
 --------------------------------------------------------------------------------
+title: "useSearchParams"
+description: "API Reference for the useSearchParams hook in the Pages Router."
+source: "https://nextjs.org/docs/pages/api-reference/functions/use-search-params"
+--------------------------------------------------------------------------------
+
+# useSearchParams
+
+@router: Pages Router
+
+`useSearchParams` is a hook that lets you read the current URL's **query string**.
+
+`useSearchParams` returns a **read-only** version of the [`URLSearchParams`](https://developer.mozilla.org/docs/Web/API/URLSearchParams) interface.
+
+```tsx filename="pages/dashboard.tsx" switcher
+import { useSearchParams } from 'next/navigation'
+
+export default function Dashboard() {
+  const searchParams = useSearchParams()
+
+  if (!searchParams) {
+    // Render fallback UI while search params are not yet available
+    return null
+  }
+
+  const search = searchParams.get('search')
+
+  // URL -> `/dashboard?search=my-project`
+  // `search` -> 'my-project'
+  return <>Search: {search}</>
+}
+```
+
+```jsx filename="pages/dashboard.js" switcher
+import { useSearchParams } from 'next/navigation'
+
+export default function Dashboard() {
+  const searchParams = useSearchParams()
+
+  if (!searchParams) {
+    // Render fallback UI while search params are not yet available
+    return null
+  }
+
+  const search = searchParams.get('search')
+
+  // URL -> `/dashboard?search=my-project`
+  // `search` -> 'my-project'
+  return <>Search: {search}</>
+}
+```
+
+## Parameters
+
+```tsx
+const searchParams = useSearchParams()
+```
+
+`useSearchParams` does not take any parameters.
+
+## Returns
+
+`useSearchParams` returns a **read-only** version of the [`URLSearchParams`](https://developer.mozilla.org/docs/Web/API/URLSearchParams) interface, or `null` during [pre-rendering](#behavior-during-pre-rendering).
+
+The interface includes utility methods for reading the URL's query string:
+
+* [`URLSearchParams.get()`](https://developer.mozilla.org/docs/Web/API/URLSearchParams/get): Returns the first value associated with the search parameter. For example:
+
+  | URL                  | `searchParams.get("a")`                                                                                         |
+  | -------------------- | --------------------------------------------------------------------------------------------------------------- |
+  | `/dashboard?a=1`     | `'1'`                                                                                                           |
+  | `/dashboard?a=`      | `''`                                                                                                            |
+  | `/dashboard?b=3`     | `null`                                                                                                          |
+  | `/dashboard?a=1&a=2` | `'1'` *- use [`getAll()`](https://developer.mozilla.org/docs/Web/API/URLSearchParams/getAll) to get all values* |
+
+* [`URLSearchParams.has()`](https://developer.mozilla.org/docs/Web/API/URLSearchParams/has): Returns a boolean value indicating if the given parameter exists. For example:
+
+  | URL              | `searchParams.has("a")` |
+  | ---------------- | ----------------------- |
+  | `/dashboard?a=1` | `true`                  |
+  | `/dashboard?b=3` | `false`                 |
+
+* Learn more about other **read-only** methods of [`URLSearchParams`](https://developer.mozilla.org/docs/Web/API/URLSearchParams), including the [`getAll()`](https://developer.mozilla.org/docs/Web/API/URLSearchParams/getAll), [`keys()`](https://developer.mozilla.org/docs/Web/API/URLSearchParams/keys), [`values()`](https://developer.mozilla.org/docs/Web/API/URLSearchParams/values), [`entries()`](https://developer.mozilla.org/docs/Web/API/URLSearchParams/entries), [`forEach()`](https://developer.mozilla.org/docs/Web/API/URLSearchParams/forEach), and [`toString()`](https://developer.mozilla.org/docs/Web/API/URLSearchParams/toString).
+
+> **Good to know**: `useSearchParams` is a [React Hook](https://react.dev/learn#using-hooks) and cannot be used with classes.
+
+## Behavior
+
+### Behavior during pre-rendering
+
+For pages that are [statically optimized](/docs/pages/building-your-application/rendering/automatic-static-optimization.md) (not using `getServerSideProps`), `useSearchParams` will return `null` during pre-rendering. After hydration, the value will be updated to the actual search params.
+
+This is because search params cannot be known during static generation as they depend on the request.
+
+```tsx filename="pages/dashboard.tsx" switcher
+import { useSearchParams } from 'next/navigation'
+
+export default function Dashboard() {
+  const searchParams = useSearchParams()
+
+  if (!searchParams) {
+    // Return a fallback UI while search params are loading
+    // This prevents hydration mismatches
+    return <DashboardSkeleton />
+  }
+
+  const search = searchParams.get('search')
+
+  return <>Search: {search}</>
+}
+```
+
+```jsx filename="pages/dashboard.js" switcher
+import { useSearchParams } from 'next/navigation'
+
+export default function Dashboard() {
+  const searchParams = useSearchParams()
+
+  if (!searchParams) {
+    // Return a fallback UI while search params are loading
+    // This prevents hydration mismatches
+    return <DashboardSkeleton />
+  }
+
+  const search = searchParams.get('search')
+
+  return <>Search: {search}</>
+}
+```
+
+### Using with `getServerSideProps`
+
+When using [`getServerSideProps`](/docs/pages/building-your-application/data-fetching/get-server-side-props.md), the page is server-rendered on each request and `useSearchParams` will return the actual search params immediately:
+
+```tsx filename="pages/dashboard.tsx" switcher
+import { useSearchParams } from 'next/navigation'
+
+export default function Dashboard() {
+  const searchParams = useSearchParams()
+
+  // With getServerSideProps, this fallback is never rendered because
+  // searchParams is always available on the server. However, keeping
+  // the fallback allows this component to be reused on other pages
+  // that may not use getServerSideProps.
+  if (!searchParams) {
+    return null
+  }
+
+  const search = searchParams.get('search')
+
+  return <>Search: {search}</>
+}
+
+export async function getServerSideProps() {
+  return { props: {} }
+}
+```
+
+```jsx filename="pages/dashboard.js" switcher
+import { useSearchParams } from 'next/navigation'
+
+export default function Dashboard() {
+  const searchParams = useSearchParams()
+
+  // With getServerSideProps, this fallback is never rendered because
+  // searchParams is always available on the server. However, keeping
+  // the fallback allows this component to be reused on other pages
+  // that may not use getServerSideProps.
+  if (!searchParams) {
+    return null
+  }
+
+  const search = searchParams.get('search')
+
+  return <>Search: {search}</>
+}
+
+export async function getServerSideProps() {
+  return { props: {} }
+}
+```
+
+## Examples
+
+### Updating search params
+
+You can use the [`useRouter`](/docs/pages/api-reference/functions/use-router.md) hook to update search params:
+
+```tsx filename="pages/dashboard.tsx" switcher
+import { useRouter } from 'next/router'
+import { useSearchParams } from 'next/navigation'
+import { useCallback } from 'react'
+
+export default function Dashboard() {
+  const router = useRouter()
+  const searchParams = useSearchParams()
+
+  const createQueryString = useCallback(
+    (name: string, value: string) => {
+      const params = new URLSearchParams(searchParams?.toString())
+      params.set(name, value)
+      return params.toString()
+    },
+    [searchParams]
+  )
+
+  if (!searchParams) {
+    return null
+  }
+
+  return (
+    <>
+      <p>Sort By</p>
+      <button
+        onClick={() => {
+          router.push(router.pathname + '?' + createQueryString('sort', 'asc'))
+        }}
+      >
+        ASC
+      </button>
+      <button
+        onClick={() => {
+          router.push(router.pathname + '?' + createQueryString('sort', 'desc'))
+        }}
+      >
+        DESC
+      </button>
+    </>
+  )
+}
+```
+
+```jsx filename="pages/dashboard.js" switcher
+import { useRouter } from 'next/router'
+import { useSearchParams } from 'next/navigation'
+import { useCallback } from 'react'
+
+export default function Dashboard() {
+  const router = useRouter()
+  const searchParams = useSearchParams()
+
+  const createQueryString = useCallback(
+    (name, value) => {
+      const params = new URLSearchParams(searchParams?.toString())
+      params.set(name, value)
+      return params.toString()
+    },
+    [searchParams]
+  )
+
+  if (!searchParams) {
+    return null
+  }
+
+  return (
+    <>
+      <p>Sort By</p>
+      <button
+        onClick={() => {
+          router.push(router.pathname + '?' + createQueryString('sort', 'asc'))
+        }}
+      >
+        ASC
+      </button>
+      <button
+        onClick={() => {
+          router.push(router.pathname + '?' + createQueryString('sort', 'desc'))
+        }}
+      >
+        DESC
+      </button>
+    </>
+  )
+}
+```
+
+### Sharing components with App Router
+
+`useSearchParams` from `next/navigation` works in both the Pages Router and App Router. This allows you to create shared components that work in either context:
+
+```tsx filename="components/search-bar.tsx" switcher
+import { useSearchParams } from 'next/navigation'
+
+// This component works in both pages/ and app/
+export function SearchBar() {
+  const searchParams = useSearchParams()
+
+  if (!searchParams) {
+    // Fallback for Pages Router during pre-rendering
+    return <input defaultValue="" placeholder="Search..." />
+  }
+
+  const search = searchParams.get('search') ?? ''
+
+  return <input defaultValue={search} placeholder="Search..." />
+}
+```
+
+```jsx filename="components/search-bar.js" switcher
+import { useSearchParams } from 'next/navigation'
+
+// This component works in both pages/ and app/
+export function SearchBar() {
+  const searchParams = useSearchParams()
+
+  if (!searchParams) {
+    // Fallback for Pages Router during pre-rendering
+    return <input defaultValue="" placeholder="Search..." />
+  }
+
+  const search = searchParams.get('search') ?? ''
+
+  return <input defaultValue={search} placeholder="Search..." />
+}
+```
+
+> **Good to know**: When using this component in the App Router, wrap it in a `<Suspense>` boundary for [static rendering](/docs/app/api-reference/functions/use-search-params.md#static-rendering) support.
+
+## Version History
+
+| Version   | Changes                       |
+| --------- | ----------------------------- |
+| `v13.0.0` | `useSearchParams` introduced. |
+
+
+--------------------------------------------------------------------------------
 title: "userAgent"
 description: "The userAgent helper extends the Web Request API with additional properties and methods to interact with the user agent object from the request."
 source: "https://nextjs.org/docs/pages/api-reference/functions/userAgent"
@@ -71555,13 +73576,10 @@ source: "https://nextjs.org/docs/pages/api-reference/config"
 
 
 
- - [next.config.js Options](/docs/pages/api-reference/config/next-config-js.md)
- - [TypeScript](/docs/pages/api-reference/config/typescript.md)
- - [ESLint](/docs/pages/api-reference/config/eslint.md)
 
 --------------------------------------------------------------------------------
-title: "next.config.js"
-description: "Learn how to configure your application with next.config.js."
+title: "next.config.js Options"
+description: "Learn about the options available in next.config.js for the Pages Router."
 source: "https://nextjs.org/docs/pages/api-reference/config/next-config-js"
 --------------------------------------------------------------------------------
 
@@ -71709,46 +73727,10 @@ expect(response.status).toEqual(307)
 expect(getRedirectUrl(response)).toEqual('https://nextjs.org/test2')
 ```
 
- - [experimental.adapterPath](/docs/pages/api-reference/config/next-config-js/adapterPath.md)
- - [allowedDevOrigins](/docs/pages/api-reference/config/next-config-js/allowedDevOrigins.md)
- - [assetPrefix](/docs/pages/api-reference/config/next-config-js/assetPrefix.md)
- - [basePath](/docs/pages/api-reference/config/next-config-js/basePath.md)
- - [bundlePagesRouterDependencies](/docs/pages/api-reference/config/next-config-js/bundlePagesRouterDependencies.md)
- - [compress](/docs/pages/api-reference/config/next-config-js/compress.md)
- - [crossOrigin](/docs/pages/api-reference/config/next-config-js/crossOrigin.md)
- - [devIndicators](/docs/pages/api-reference/config/next-config-js/devIndicators.md)
- - [distDir](/docs/pages/api-reference/config/next-config-js/distDir.md)
- - [env](/docs/pages/api-reference/config/next-config-js/env.md)
- - [exportPathMap](/docs/pages/api-reference/config/next-config-js/exportPathMap.md)
- - [generateBuildId](/docs/pages/api-reference/config/next-config-js/generateBuildId.md)
- - [generateEtags](/docs/pages/api-reference/config/next-config-js/generateEtags.md)
- - [headers](/docs/pages/api-reference/config/next-config-js/headers.md)
- - [httpAgentOptions](/docs/pages/api-reference/config/next-config-js/httpAgentOptions.md)
- - [images](/docs/pages/api-reference/config/next-config-js/images.md)
- - [isolatedDevBuild](/docs/pages/api-reference/config/next-config-js/isolatedDevBuild.md)
- - [onDemandEntries](/docs/pages/api-reference/config/next-config-js/onDemandEntries.md)
- - [optimizePackageImports](/docs/pages/api-reference/config/next-config-js/optimizePackageImports.md)
- - [output](/docs/pages/api-reference/config/next-config-js/output.md)
- - [pageExtensions](/docs/pages/api-reference/config/next-config-js/pageExtensions.md)
- - [poweredByHeader](/docs/pages/api-reference/config/next-config-js/poweredByHeader.md)
- - [productionBrowserSourceMaps](/docs/pages/api-reference/config/next-config-js/productionBrowserSourceMaps.md)
- - [experimental.proxyClientMaxBodySize](/docs/pages/api-reference/config/next-config-js/proxyClientMaxBodySize.md)
- - [reactStrictMode](/docs/pages/api-reference/config/next-config-js/reactStrictMode.md)
- - [redirects](/docs/pages/api-reference/config/next-config-js/redirects.md)
- - [rewrites](/docs/pages/api-reference/config/next-config-js/rewrites.md)
- - [serverExternalPackages](/docs/pages/api-reference/config/next-config-js/serverExternalPackages.md)
- - [trailingSlash](/docs/pages/api-reference/config/next-config-js/trailingSlash.md)
- - [transpilePackages](/docs/pages/api-reference/config/next-config-js/transpilePackages.md)
- - [turbopack](/docs/pages/api-reference/config/next-config-js/turbopack.md)
- - [typescript](/docs/pages/api-reference/config/next-config-js/typescript.md)
- - [urlImports](/docs/pages/api-reference/config/next-config-js/urlImports.md)
- - [useLightningcss](/docs/pages/api-reference/config/next-config-js/useLightningcss.md)
- - [webpack](/docs/pages/api-reference/config/next-config-js/webpack.md)
- - [webVitalsAttribution](/docs/pages/api-reference/config/next-config-js/webVitalsAttribution.md)
 
 --------------------------------------------------------------------------------
 title: "experimental.adapterPath"
-description: "Configure a custom adapter for Next.js to hook into the build process with modifyConfig and onBuildComplete callbacks."
+description: "Configure a custom adapter for Next.js to hook into the build process with modifyConfig and buildComplete callbacks."
 source: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/adapterPath"
 --------------------------------------------------------------------------------
 
@@ -72334,7 +74316,7 @@ We **do not recommend disabling compression** unless you have compression config
 
 --------------------------------------------------------------------------------
 title: "crossOrigin"
-description: "Use the `crossOrigin` option to add a crossOrigin tag on the `script` tags generated by `next/script`."
+description: "Use the `crossOrigin` option to add a crossOrigin tag on the `script` tags generated by `next/script` and `next/head`."
 source: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/crossOrigin"
 --------------------------------------------------------------------------------
 
@@ -72358,7 +74340,7 @@ module.exports = {
 
 --------------------------------------------------------------------------------
 title: "devIndicators"
-description: "Configuration options for the on-screen indicator that gives context about the current route you're viewing during development."
+description: "Optimized pages include an indicator to let you know if it's being statically optimized. You can opt-out of it here."
 source: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/devIndicators"
 --------------------------------------------------------------------------------
 
@@ -73467,7 +75449,7 @@ export default function aioLoader({ src, width, quality }) {
 
 --------------------------------------------------------------------------------
 title: "isolatedDevBuild"
-description: "Use isolated build outputs for development server to prevent conflicts with production builds."
+description: "Use isolated directories for development builds to prevent conflicts with production builds."
 source: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/isolatedDevBuild"
 --------------------------------------------------------------------------------
 
@@ -73552,6 +75534,8 @@ source: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/optim
 # optimizePackageImports
 
 @router: Pages Router
+
+> This feature is currently experimental and subject to change, it is not recommended for production.
 
 Some packages can export hundreds or thousands of modules, which can cause performance issues in development and production.
 
@@ -73834,7 +75818,7 @@ When the `productionBrowserSourceMaps` option is enabled, the source maps will b
 
 
 --------------------------------------------------------------------------------
-title: "proxyClientMaxBodySize"
+title: "experimental.proxyClientMaxBodySize"
 description: "Configure the maximum request body size when using proxy."
 source: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/proxyClientMaxBodySize"
 --------------------------------------------------------------------------------
@@ -74787,6 +76771,7 @@ module.exports = nextConfig
 
 Next.js includes a [short list of popular packages](https://github.com/vercel/next.js/blob/canary/packages/next/src/lib/server-external-packages.jsonc) that currently are working on compatibility and automatically opt-ed out:
 
+* `@alinea/generated`
 * `@appsignal/nodejs`
 * `@aws-sdk/client-s3`
 * `@aws-sdk/s3-presigned-post`
@@ -74807,6 +76792,7 @@ Next.js includes a [short list of popular packages](https://github.com/vercel/ne
 * `@statsig/statsig-node-core`
 * `@swc/core`
 * `@xenova/transformers`
+* `@zenstackhq/runtime`
 * `argon2`
 * `autoprefixer`
 * `aws-crt`
@@ -74840,6 +76826,9 @@ Next.js includes a [short list of popular packages](https://github.com/vercel/ne
 * `onnxruntime-node`
 * `oslo`
 * `pg`
+* `pino`
+* `pino-pretty`
+* `pino-roll`
 * `playwright`
 * `playwright-core`
 * `postcss`
@@ -74853,8 +76842,9 @@ Next.js includes a [short list of popular packages](https://github.com/vercel/ne
 * `sharp`
 * `shiki`
 * `sqlite3`
-* `ts-node`
+* `thread-stream`
 * `ts-morph`
+* `ts-node`
 * `typescript`
 * `vscode-oniguruma`
 * `webpack`
@@ -75257,13 +77247,31 @@ source: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/types
 
 @router: Pages Router
 
+Configure TypeScript behavior with the `typescript` option in `next.config.js`:
+
+```js filename="next.config.js"
+module.exports = {
+  typescript: {
+    ignoreBuildErrors: false,
+    tsconfigPath: 'tsconfig.json',
+  },
+}
+```
+
+## Options
+
+| Option              | Type      | Default           | Description                                                      |
+| ------------------- | --------- | ----------------- | ---------------------------------------------------------------- |
+| `ignoreBuildErrors` | `boolean` | `false`           | Allow production builds to complete even with TypeScript errors. |
+| `tsconfigPath`      | `string`  | `'tsconfig.json'` | Path to a custom `tsconfig.json` file.                           |
+
+## `ignoreBuildErrors`
+
 Next.js fails your **production build** (`next build`) when TypeScript errors are present in your project.
 
 If you'd like Next.js to dangerously produce production code even when your application has errors, you can disable the built-in type checking step.
 
 If disabled, be sure you are running type checks as part of your build or deploy process, otherwise this can be very dangerous.
-
-Open `next.config.js` and enable the `ignoreBuildErrors` option in the `typescript` config:
 
 ```js filename="next.config.js"
 module.exports = {
@@ -75276,6 +77284,20 @@ module.exports = {
   },
 }
 ```
+
+## `tsconfigPath`
+
+Use a different TypeScript configuration file for builds or tooling:
+
+```js filename="next.config.js"
+module.exports = {
+  typescript: {
+    tsconfigPath: 'tsconfig.build.json',
+  },
+}
+```
+
+See the [TypeScript configuration](/docs/app/api-reference/config/typescript.md#custom-tsconfig-path) page for more details.
 
 
 --------------------------------------------------------------------------------
@@ -75426,7 +77448,7 @@ module.exports = nextConfig
 
 
 --------------------------------------------------------------------------------
-title: "Custom Webpack Config"
+title: "webpack"
 description: "Learn how to customize the webpack config used by Next.js"
 source: "https://nextjs.org/docs/pages/api-reference/config/next-config-js/webpack"
 --------------------------------------------------------------------------------
@@ -75553,6 +77575,17 @@ To add TypeScript to an existing project, rename a file to `.ts` / `.tsx`. Run `
 
 > **Good to know**: If you already have a `jsconfig.json` file, copy the `paths` compiler option from the old `jsconfig.json` into the new `tsconfig.json` file, and delete the old `jsconfig.json` file.
 
+## `next-env.d.ts`
+
+Next.js generates a `next-env.d.ts` file in your project root. This file references Next.js type definitions, allowing TypeScript to recognize non-code imports (images, stylesheets, etc.) and Next.js-specific types.
+
+Running `next dev`, `next build`, or [`next typegen`](/docs/app/api-reference/cli/next.md#next-typegen-options) regenerates this file.
+
+> **Good to know**:
+>
+> * We recommend adding `next-env.d.ts` to your `.gitignore` file.
+> * The file must be in your `tsconfig.json` `include` array (`create-next-app` does this automatically).
+
 ## Examples
 
 ### Type Checking Next.js Configuration Files
@@ -75598,7 +77631,7 @@ NODE_OPTIONS=--experimental-transform-types next <command>
 
 #### For CommonJS Projects (Default)
 
-Although `next.config.ts` supports native ESM syntax on CommonJS projects, Node.js will still assume `next.config.ts` is a CommonJS file by default, resulting in Node.js reparsing the file as ESM when module syntax is detected. Therefore, we recommend using the `next.config.mts` file for CommonJS projects to explicitly indicate it's an ESM module:
+Although `next.config.ts` supports native ESM syntax in CommonJS projects, Node.js will still assume `next.config.ts` is a CommonJS file by default, resulting in Node.js reparsing the file as ESM when module syntax is detected. Therefore, we recommend using the `next.config.mts` file for CommonJS projects to explicitly indicate it's an ESM module:
 
 ```ts filename="next.config.mts"
 import type { NextConfig } from 'next'
@@ -75628,7 +77661,7 @@ Works in both the Pages and App Router for the `href` prop in `next/link`. In th
 
 Literal `href` strings are validated, while non-literal `href`s may require a cast with `as Route`.
 
-To opt-into this feature, `typedRoutes` need to be enabled and the project needs to be using TypeScript.
+To opt-into this feature, `typedRoutes` needs to be enabled and the project needs to be using TypeScript.
 
 ```ts filename="next.config.ts"
 import type { NextConfig } from 'next'
@@ -75926,7 +77959,7 @@ If you'd like Next.js to dangerously produce production code even when your appl
 
 If disabled, be sure you are running type checks as part of your build or deploy process, otherwise this can be very dangerous.
 
-Open `next.config.ts` and enable the `ignoreBuildErrors` option in the `typescript` config:
+Open `next.config.ts` and enable the `ignoreBuildErrors` option in the [`typescript`](/docs/app/api-reference/config/next-config-js/typescript.md) config:
 
 ```ts filename="next.config.ts"
 import type { NextConfig } from 'next'
@@ -75978,8 +78011,8 @@ When you need to declare custom types, you might be tempted to modify `next-env.
 
 
 --------------------------------------------------------------------------------
-title: "ESLint Plugin"
-description: "Learn how to use and configure the ESLint plugin to catch common issues and problems in a Next.js application."
+title: "ESLint"
+description: "Next.js reports ESLint errors and warnings during builds by default. Learn how to opt-out of this behavior here."
 source: "https://nextjs.org/docs/pages/api-reference/config/eslint"
 --------------------------------------------------------------------------------
 
@@ -76381,11 +78414,9 @@ Next.js comes with **two** Command Line Interface (CLI) tools:
 * **`create-next-app`**: Quickly create a new Next.js application using the default template or an [example](https://github.com/vercel/next.js/tree/canary/examples) from a public GitHub repository.
 * **`next`**: Run the Next.js development server, build your application, and more.
 
- - [create-next-app CLI](/docs/pages/api-reference/cli/create-next-app.md)
- - [next CLI](/docs/pages/api-reference/cli/next.md)
 
 --------------------------------------------------------------------------------
-title: "create-next-app"
+title: "create-next-app CLI"
 description: "Create Next.js apps using one command with the create-next-app CLI."
 source: "https://nextjs.org/docs/pages/api-reference/cli/create-next-app"
 --------------------------------------------------------------------------------
@@ -76531,15 +78562,16 @@ The following options are available:
 
 The following commands are available:
 
-| Command                                | Description                                                                                                   |
-| -------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| [`dev`](#next-dev-options)             | Starts Next.js in development mode with Hot Module Reloading, error reporting, and more.                      |
-| [`build`](#next-build-options)         | Creates an optimized production build of your application. Displaying information about each route.           |
-| [`start`](#next-start-options)         | Starts Next.js in production mode. The application should be compiled with `next build` first.                |
-| [`info`](#next-info-options)           | Prints relevant details about the current system which can be used to report Next.js bugs.                    |
-| [`telemetry`](#next-telemetry-options) | Allows you to enable or disable Next.js' completely anonymous telemetry collection.                           |
-| [`typegen`](#next-typegen-options)     | Generates TypeScript definitions for routes, pages, layouts, and route handlers without running a full build. |
-| [`upgrade`](#next-upgrade-options)     | Upgrades your Next.js application to the latest version.                                                      |
+| Command                                                      | Description                                                                                                   |
+| ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------- |
+| [`dev`](#next-dev-options)                                   | Starts Next.js in development mode with Hot Module Reloading, error reporting, and more.                      |
+| [`build`](#next-build-options)                               | Creates an optimized production build of your application. Displaying information about each route.           |
+| [`start`](#next-start-options)                               | Starts Next.js in production mode. The application should be compiled with `next build` first.                |
+| [`info`](#next-info-options)                                 | Prints relevant details about the current system which can be used to report Next.js bugs.                    |
+| [`telemetry`](#next-telemetry-options)                       | Allows you to enable or disable Next.js' completely anonymous telemetry collection.                           |
+| [`typegen`](#next-typegen-options)                           | Generates TypeScript definitions for routes, pages, layouts, and route handlers without running a full build. |
+| [`upgrade`](#next-upgrade-options)                           | Upgrades your Next.js application to the latest version.                                                      |
+| [`experimental-analyze`](#next-experimental-analyze-options) | Analyzes bundle output using Turbopack. Does not produce build artifacts.                                     |
 
 > **Good to know**: Running `next` without a command is an alias for `next dev`.
 
@@ -76692,7 +78724,7 @@ To ensure `next-env.d.ts` is present before type-checking run `next typegen`. Th
 
 > **Good to know**: `next typegen` loads your Next.js config (`next.config.js`, `next.config.mjs`, or `next.config.ts`) using the production build phase. Ensure any required environment variables and dependencies are available so the config can load correctly.
 
-## `next upgrade` options
+### `next upgrade` options
 
 `next upgrade` upgrades your Next.js application to the latest version.
 
@@ -76704,6 +78736,43 @@ The following options are available for the `next upgrade` command:
 | `[directory]`           | A directory with the Next.js application to upgrade. If not provided, the current directory will be used.                                          |
 | `--revision <revision>` | Specify a Next.js version or tag to upgrade to (e.g., `latest`, `canary`, `15.0.0`). Defaults to the release channel you have currently installed. |
 | `--verbose`             | Show verbose output during the upgrade process.                                                                                                    |
+
+### `next experimental-analyze` options
+
+`next experimental-analyze` analyzes your application's bundle output using [Turbopack](/docs/app/api-reference/turbopack.md). This command helps you understand the size and composition of your bundles, including JavaScript, CSS, and other assets. This command doesn't produce an application build.
+
+```bash filename="Terminal"
+npx next experimental-analyze
+```
+
+By default, the command starts a local server after analysis completes, allowing you to explore your bundle composition in the browser. The analyzer lets you:
+
+* Filter bundles by route and switch between client and server views
+* View the full import chain showing why a module is included
+* Trace imports across server-to-client component boundaries and dynamic imports
+
+See [Package Bundling](/docs/app/guides/package-bundling.md#optimizing-large-bundles) for optimization strategies.
+
+To write the analysis output to disk without starting the server, use the `--output` flag. The output is written to `.next/diagnostics/analyze` and contains static files that can be copied elsewhere or shared with others:
+
+```bash filename="Terminal"
+# Write output to .next/diagnostics/analyze
+npx next experimental-analyze --output
+
+# Copy the output for comparison with a future analysis
+cp -r .next/diagnostics/analyze ./analyze-before-refactor
+```
+
+The following options are available for the `next experimental-analyze` command:
+
+| Option          | Description                                                                                                                                   |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `-h, --help`    | Show all available options.                                                                                                                   |
+| `[directory]`   | A directory on which to analyze the application. If not provided, the current directory will be used.                                         |
+| `--no-mangling` | Disables [mangling](https://en.wikipedia.org/wiki/Name_mangling). This may affect performance and should only be used for debugging purposes. |
+| `--profile`     | Enables production [profiling for React](https://react.dev/reference/react/Profiler). This may affect performance.                            |
+| `-o, --output`  | Write analysis files to disk without starting the server. Output is written to `.next/diagnostics/analyze`.                                   |
+| `--port <port>` | Specify a port number to serve the analyzer on. (default: 4000, env: PORT)                                                                    |
 
 ## Examples
 
@@ -76803,6 +78872,7 @@ NODE_OPTIONS='--inspect' next
 
 | Version   | Changes                                                                         |
 | --------- | ------------------------------------------------------------------------------- |
+| `v16.1.0` | Add the `next experimental-analyze` command                                     |
 | `v16.0.0` | The JS bundle size metrics have been removed from `next build`                  |
 | `v15.5.0` | Add the `next typegen` command                                                  |
 | `v15.4.0` | Add `--debug-prerender` option for `next build` to help debug prerender errors. |
@@ -77164,34 +79234,14 @@ module.exports = {
 }
 ```
 
-### Bundle Sizes
-
-From our testing on production applications, we observed that Turbopack generally produces bundles that are similar in size to Webpack. However, the comparison can be difficult since turbopack tends to produce fewer but larger chunks. Our advice is to focus on higher level metrics like [Core Web Vitals](https://web.dev/articles/vitals) or your own application level metrics to compare performance across the two bundlers. We are however aware of one gap that can occasionally cause a large regression.
-
-Turbopack does not yet have an equivalent to the [Inner Graph Optimization](https://webpack.js.org/configuration/optimization/#optimizationinnergraph) in webpack which is enabled by default. This optimization is useful to tree shake large modules. For example:
-
-```js filename=large.module.js
-import heavy from 'some-heavy-dependency.js'
-
-export function usesHeavy() {
-  return heavy.run()
-}
-
-export const CONSTANT_VALUE = 3
-```
-
-If an application only uses `CONSTANT_VALUE` Turbopack will detect this and delete the `usesHeavy` export but not the corresponding `import`. However, with the Inner Graph Optimization, webpack can delete the `import` too which can drop the dependency as well.
-
-We are planning to offer an equivalent to the Inner Graph Optimization in Turbopack but it is still under development. If you are affected by this gap, consider manually splitting modules.
-
 ### Build Caching
 
-Webpack supports [disk build caching](https://webpack.js.org/configuration/cache/#cache) to improve build performance. Turbopack provides a similar opt-in feature, currently in beta. Starting with Next 16, you can enable Turbopack’s filesystem cache by setting the following experimental flags:
+Webpack supports [disk build caching](https://webpack.js.org/configuration/cache/#cache) to improve build performance. Turbopack provides a similar feature, currently in beta. Starting with Next 16, you can enable Turbopack’s filesystem cache by setting the following experimental flags:
 
-* [`experimental.turbopackFileSystemCacheForDev`](/docs/app/api-reference/config/next-config-js/turbopackFileSystemCache.md)
-* [`experimental.turbopackFileSystemCacheForBuild`](/docs/app/api-reference/config/next-config-js/turbopackFileSystemCache.md)
+* [`experimental.turbopackFileSystemCacheForDev`](/docs/app/api-reference/config/next-config-js/turbopackFileSystemCache.md) is enabled by default
+* [`experimental.turbopackFileSystemCacheForBuild`](/docs/app/api-reference/config/next-config-js/turbopackFileSystemCache.md) is currently opt-in
 
-> **Good to know:** For this reason, when comparing webpack and Turbopack performance, make sure to delete the `.next` folder between builds to see a fair comparison or enable the turbopack filesystem cache feature.
+> **Good to know:** For this reason, when comparing webpack and Turbopack performance, make sure to delete the `.next` folder between builds to see a fair cold build comparison or enable the turbopack filesystem cache feature to compare warm builds.
 
 ### Webpack plugins
 
@@ -77287,10 +79337,6 @@ source: "https://nextjs.org/docs/architecture"
 
 Learn about the Next.js architecture and how it works under the hood.
 
- - [Accessibility](/docs/architecture/accessibility.md)
- - [Fast Refresh](/docs/architecture/fast-refresh.md)
- - [Next.js Compiler](/docs/architecture/nextjs-compiler.md)
- - [Supported Browsers](/docs/architecture/supported-browsers.md)
 
 --------------------------------------------------------------------------------
 title: "Accessibility"
@@ -77943,7 +79989,7 @@ You can customize babel configuration. [Learn more here](/docs/pages/guides/babe
 
 
 --------------------------------------------------------------------------------
-title: "Next.js Community"
+title: "Community"
 description: "Get involved in the Next.js community."
 source: "https://nextjs.org/docs/community"
 --------------------------------------------------------------------------------
@@ -77957,7 +80003,7 @@ With over 5 million weekly downloads, Next.js has a large and active community o
 There are a couple of ways you can contribute to the development of Next.js:
 
 * [Documentation](/docs/community/contribution-guide.md): Suggest improvements or even write new sections to help our users understand how to use Next.js.
-* [Examples](https://github.com/vercel/next.js/tree/canary/contributing/examples): Help developers integrate Next.js with other tools and services by creating a new example or improving an existing one.
+* [Examples](https://github.com/vercel/next.js/tree/canary/examples): Help developers integrate Next.js with other tools and services by creating a new example or improving an existing one.
 * [Codebase](https://github.com/vercel/next.js/tree/canary/contributing/core): Learn more about the underlying architecture, contribute to bug fixes, errors, and suggest new features.
 
 ## Discussions
@@ -77976,11 +80022,9 @@ Follow Next.js on [Twitter](https://x.com/nextjs) for the latest updates, and su
 
 We believe in creating an inclusive, welcoming community. As such, we ask all members to adhere to our [Code of Conduct](https://github.com/vercel/next.js/blob/canary/CODE_OF_CONDUCT.md). This document outlines our expectations for participant behavior. We invite you to read it and help us maintain a safe and respectful environment.
 
- - [Contribution Guide](/docs/community/contribution-guide.md)
- - [Rspack](/docs/community/rspack.md)
 
 --------------------------------------------------------------------------------
-title: "Docs Contribution Guide"
+title: "Contribution Guide"
 description: "Learn how to contribute to Next.js Documentation"
 source: "https://nextjs.org/docs/community/contribution-guide"
 --------------------------------------------------------------------------------
@@ -78062,17 +80106,17 @@ For example, in the [functions API Reference](/docs/app/api-reference/functions.
 └── ...
 ```
 
-But, in the [routing section](/docs/app.md), the files are prefixed with a two-digit number, sorted in the order developers should learn these concepts:
+But, in the [app router section](/docs/app.md), the files are prefixed with a two-digit number, sorted in the order developers should learn these concepts:
 
 ```txt
-01-routing
-├── 01-defining-routes.mdx
-├── 02-pages.mdx
-├── 03-layouts-and-templates.mdx
+01-getting-started
+├── 01-installation.mdx
+├── 02-project-structure.mdx
+├── 03-layouts-and-pages.mdx
 └── ...
 ```
 
-To quickly find a page, you can use `⌘ + P` (Mac) or `Ctrl + P` (Windows) to open the search bar on VSCode. Then, type the slug of the page you're looking for. E.g. `defining-routes`
+To quickly find a page, you can use `⌘ + P` (Mac) or `Ctrl + P` (Windows) to open the search bar on VSCode. Then, type the slug of the page you're looking for. E.g. `installation`
 
 > **Why not use a manifest?**
 >
@@ -78394,7 +80438,7 @@ Thank you for contributing to the docs and being part of the Next.js community!
 
 
 --------------------------------------------------------------------------------
-title: "Rspack Integration"
+title: "Rspack"
 description: "Use the `next-rspack` plugin to bundle your Next.js with Rspack."
 source: "https://nextjs.org/docs/community/rspack"
 --------------------------------------------------------------------------------

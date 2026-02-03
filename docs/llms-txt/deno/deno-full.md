@@ -50,6 +50,47 @@ on our infrastructure.
 URL: https://docs.deno.com/deploy/changelog
 
 
+## January 27th, 2026
+
+### Features
+
+- Deno Deploy apps can now be configured through `deno.json` / `deno.jsonc`
+  files in addition to the dashboard settings.
+  - All app configuration options available in the dashboard are also available
+    in the `deno.json` file under the `deploy` section. This includes install
+    and build command, runtime configuration, and framework presets.
+  - When both dashboard and `deno.json` configuration are present, the
+    `deno.json` configuration takes precedence and overrides the app
+    configuration in the dashboard entirely.
+  - This makes it easier to manage app configuration as code, and keep it in
+    version control alongside your application code.
+  - [Learn more in the documentation.](/deploy/reference/builds/#editing-app-configuration-from-source-code)
+- You can now rename organizations and change their slugs from the organization
+  settings page.
+  - [Renaming an organization](/deploy/reference/organizations/#rename-an-organization)
+    updates its display name in the dashboard and invitation emails.
+  - [Changing the organization slug](/deploy/reference/organizations/#update-the-organization-slug)
+    updates the default domain for all apps in the organization. Note that this
+    will remove the old default domain.
+  - Learn more in the documentation.
+- Deno Deploy support tickets can now be viewed from the Deno Deploy dashboard.
+  - After submitting a support request via email to support@deno.com, you will
+    receive an automated reply with a link to claim your ticket.
+  - Claiming the ticket links it to your Deno Deploy account, allowing you to
+    track the status of your support request from the
+    [tickets dashboard](https://console.deno.com/tickets).
+- The
+  [`DENO_TIMELINE` environment variable](/deploy/reference/env-vars-and-contexts/#built-in-environment-variables)
+  is now available to applications at runtime, showing the timeline the
+  application is currently running in.
+
+### Bug fixes
+
+- Fixed an issue where the database explorer for linked Postgres databases
+  sometimes failed to load.
+- Fixed an issue where some builds would get stuck with an invalid build cache,
+  requiring manual intervention via support to resolve.
+
 ## December 18th, 2025
 
 ### Features
@@ -94,16 +135,17 @@ URL: https://docs.deno.com/deploy/changelog
   Code Execution) and
   [CVE-2025-55184/CVE-2025-67779](https://deno.com/blog/cve-2025-55184) (Denial
   of Service).
-- And one more thing at the end: we've quietly enabled our new sandboxes
+- And one more thing at the end: we've quietly enabled our new Deno Sandbox
   infrastructure for all Deno Deploy users to try.
-  - Sandboxes provide fully isolated Linux microVMs for you to run untrusted
+  - Deno Sandbox provides fully isolated Linux microVMs for you to run untrusted
     code in.
   - This is particularly useful for running third-party code, such as plugins,
     extensions, or user-generated or LLM-generated code, without risking the
     security of your application.
-  - We'll announce more details about sandboxes in the new year, so stay tuned!
-  - Try it out from the "Sandboxes" tab in the organization overview.
-  - [Learn more about sandboxes.](https://deno.com/deploy/sandboxes)
+  - We'll announce more details about Deno Sandbox in the new year, so stay
+    tuned!
+  - Try it out from the "Sandboxes" tab in the Deno Deploy console
+  - [Learn more about Deno Sandbox.](https://deno.com/deploy/sandbox)
 
 ### Bug fixes
 
@@ -3696,8 +3738,7 @@ all around the world, ready to handle all the traffic you expect.
 
 ## Next Steps
 
-Now that you've created your first deployment, you can
-[learn what kinds of apps](./use-cases.md) you can run on Deno Deploy, check out
+Now that you've created your first deployment, check out
 [what else you can do with deployctl](./deployctl.md), or keep reading to find
 out what other options you have to deploy your code to Deno Deploy. We're so
 excited to see what you'll ship with Deno Deploy!
@@ -4908,70 +4949,6 @@ section.
 
 ---
 
-# Deno Deploy Classic Use Cases
-
-URL: https://docs.deno.com/deploy/classic/use-cases
-
-
-:::info Legacy Documentation
-
-You are viewing legacy documentation for Deno Deploy Classic. We recommend
-migrating to the new
-<a href="/deploy/">Deno Deploy</a> platform.
-
-:::
-
-Some popular use-cases for Deno currently are:
-
-- [Middleware](#middleware)
-- [API servers](#api-servers)
-- [Full websites](#full-websites)
-
-## Middleware
-
-Middleware refers to bits of code that execute before and after the request gets
-to the application server. You'll be writing middleware if you want to execute
-some JavaScript or any other code very fast, early in the request. By deploying
-your middleware code at the edge, Deno Deploy Classic ensures the best
-performance for your app.
-
-Some examples include:
-
-- setting a cookie
-- serving different versions of a site depending on geolocation
-- path rewriting
-- redirecting requests
-- dynamically changing the HTML on its way back from the server before it gets
-  to the user.
-
-Deno Deploy Classic is a good alternative to other platforms you might be using
-to host your middleware right now, for example:
-
-- Cloudflare Workers
-- AWS Lambda@Edge
-- Traditional load balancers like nginx
-- Custom rules
-
-## API servers
-
-Deno is also a great fit for API servers. By deploying these servers "at the
-edge", closer to clients who are using them, Deno Deploy Classic is able to
-offer lower latency, improved performance, and reduced bandwidth costs compared
-to traditional hosting platforms like Heroku or even modern centralized hosting
-services like DigitalOcean.
-
-## Full websites
-
-We foresee a future where you can actually write your entire website on edge
-functions. Some examples of sites that are already doing this include:
-
-- [blog](https://github.com/ry/tinyclouds)
-- [chat](https://github.com/denoland/showcase_chat)
-- [calendly clone](https://github.com/denoland/meet-me)
-
-
----
-
 # Fulfillment Policy
 
 > Our policies regarding refunds and cancellations for Deno Deploy.
@@ -5771,16 +5748,20 @@ Deno KV is still in development and may change. To use it, you must pass the
 
 Let's walk through the key features of Deno KV.
 
-## Opening a database
+## Opening and closing a database
 
 In your Deno program, you can get a reference to a KV database using
-[`Deno.openKv()`](https://docs.deno.com/api/deno/~/Deno.openKv). You may pass in
-an optional file system path to where you'd like to store your database,
-otherwise one will be created for you based on the current working directory of
-your script.
+[`Deno.openKv()`](/api/deno/~/Deno.openKv). You may pass in an optional file
+system path to where you'd like to store your database, otherwise one will be
+created for you based on the current working directory of your script.
+
+To close the database connection, use the
+[`.close()`](https://docs.deno.com/api/deno/~/Deno.Kv#method_close_0) method.
 
 ```ts
 const kv = await Deno.openKv();
+// Execute some queries ...
+await kv.close();
 ```
 
 ## Creating, updating, and reading a key-value pair
@@ -6041,8 +6022,9 @@ special database addressing modes, see
 ## Next steps
 
 At this point, you're just beginning to scratch the surface with Deno KV. Be
-sure to check out our guide on the [Deno KV key space](./key_space), and a
-collection of [tutorials and example applications](../tutorials/index.md) here.
+sure to check out our guide on the [Deno KV key space](/deploy/kv/key_space/),
+and a collection of
+[tutorials and example applications](/examples/#unstable-apis) here.
 
 
 ---
@@ -7657,14 +7639,14 @@ one-to-one to git commits in your repository.
 
 Builds can be triggered in three ways:
 
-- **Manually from the UI**: Using the "Deploy Default Branch" button on the
-  builds page, which deploys the default git branch (usually `main`). The
-  dropdown menu lets you select a different branch.
+- **Automatically from GitHub**: When a new commit is pushed to a GitHub
+  repository linked to your app.
 
 - **Manually from the CLI**: Using the `deno deploy` command.
 
-- **Automatically from GitHub**: When a new commit is pushed to a GitHub
-  repository linked to your app.
+- **Manually from the UI**: Using the "Deploy Default Branch" button on the
+  builds page, which deploys the default git branch (usually `main`). The
+  dropdown menu lets you select a different branch.
 
 ## Build stages
 
@@ -7706,6 +7688,24 @@ increased for users on the Pro plan.
 ## App configuration
 
 App configuration defines how to convert source code into a deployable artifact.
+
+There are two places you can set app configuration:
+
+- **In source code**: Using a `deno.json` or `deno.jsonc` file in the
+  application directory.
+- **In the Deno Deploy dashboard**: Using the app configuration settings.
+
+If you specify both options, settings in the source code take precedence over
+those in the dashboard. You will be unable to edit any of the app configuration
+values in the dashboard if the most recent successful build used configuration
+from source code.
+
+The application directory must be configured through the dashboard. This setting
+is not configurable from source code, as it determines where to find the source
+code itself.
+
+### Editing app configuration in the dashboard
+
 You can modify app configuration in three places:
 
 - During app creation by clicking "Edit app config"
@@ -7715,7 +7715,7 @@ You can modify app configuration in three places:
 When creating an app, app configuration may be automatically detected from your
 repository if you're using a recognized framework or common build setup.
 
-### Configuration options
+#### Configuration options
 
 - **App directory**: The directory within the repository to use as the
   application root. Useful for monorepos. Defaults to the repository root.
@@ -7744,6 +7744,96 @@ repository if you're using a recognized framework or common build setup.
     - **Directory**: Folder containing static assets (e.g., `dist`, `.output`)
     - **Single page app mode** (optional): Serves `index.html` for paths that
       don't match static files instead of returning 404 errors
+
+- **Build timeout**: Maximum time allowed for the build process. Defaults to 5
+  minutes, can be increased to 15 minutes on the Pro plan.
+
+- **Build memory**: Amount of memory allocated to the build process. Defaults to
+  3 GB, can be increased to 4 GB on the Pro plan.
+
+### Editing app configuration from source code
+
+To configure your application from source code, add a `deno.json` or
+`deno.jsonc` file to the root of your application directory with a `deploy` key.
+If any of the following app configuration options are specified under this key,
+the entire configuration will be sourced from the file instead of the dashboard
+(any configuration specified in the dashboard will be ignored).
+
+#### `deno.json` options
+
+- `deploy.framework` (required unless `deploy.runtime` is set): The framework
+  preset to use, such as `nextjs` or `fresh`. Setting this option automatically
+  configures defaults for the framework. Available presets are listed in the
+  [framework integrations docs](./frameworks/).
+- `deploy.install` (optional): Shell command to install dependencies.
+- `deploy.build` (optional): Shell command to build the project.
+- `deploy.predeploy` (optional): Shell command to run after the build is
+  complete but before deployment, typically for tasks like database migrations.
+- `deploy.runtime` (required unless `deploy.framework` is set): Configuration
+  for how the app serves traffic. The app can either be static or dynamic, as
+  defined below:
+  - For dynamic apps:
+    - `deploy.runtime.type`: Must be set to `"dynamic"`, or omitted (dynamic is
+      the default).
+    - `deploy.runtime.entrypoint`: The JavaScript or TypeScript file to execute.
+    - `deploy.runtime.args` (optional): Command-line arguments to pass to the
+      application.
+    - `deploy.runtime.cwd` (optional): The working directory for the application
+      at runtime.
+  - For static apps:
+    - `deploy.runtime.type`: Must be set to `"static"`.
+    - `deploy.runtime.cwd`: Folder containing static assets (e.g., `dist`,
+      `.output`).
+    - `deploy.runtime.spa` (optional): If `true`, serves `index.html` for paths
+      that don't match static files instead of returning 404 errors.
+
+#### Examples
+
+**Example dynamic app configuration from `deno.json`:**
+
+```jsonc
+{
+  "deploy": {
+    "install": "npm install",
+    "build": "npm run build",
+    "predeploy": "deno run --allow-net --allow-env migrate.ts",
+    "runtime": {
+      "type": "dynamic",
+      "entrypoint": "./app/server.js",
+      "args": ["--port", "8080"],
+      "cwd": "./app"
+    }
+  }
+}
+```
+
+**Example static app configuration from `deno.jsonc`:**
+
+```jsonc
+{
+  "deploy": {
+    "install": "npm install",
+    "build": "npm run build",
+    "runtime": {
+      "type": "static",
+      "cwd": "./public",
+      "spa": true
+    }
+  }
+}
+```
+
+**Example framework preset configuration with Next.js from `deno.json`:**
+
+```jsonc
+{
+  "deploy": {
+    "framework": "nextjs",
+    "install": "npm install",
+    "build": "npm run build"
+  }
+}
+```
 
 ## Build environment
 
@@ -9806,6 +9896,11 @@ Deno Deploy provides these predefined environment variables in all contexts:
 
 - `DENO_DEPLOY_BUILD_ID`: The ID of the currently running revision.
 
+- `DENO_TIMELINE`: The timeline the application is currently running in.
+  Possible values are `production`, `git-branch/<branch-name>`, and
+  `preview/<revision-id>`. This is not set during builds, as builds are not
+  specific to any timeline.
+
 During builds, the environment variable `CI=1` is additionally set.
 
 
@@ -9837,7 +9932,7 @@ Feel like a framework is missing? Let us know in the
 
 ## Supported frameworks
 
-### Next.js
+### Next.js (`nextjs`)
 
 Next.js is a React framework for building full-stack web applications. You use
 React Components to build user interfaces, and Next.js for additional features
@@ -9854,7 +9949,7 @@ Next.js on Deno Deploy always builds in standalone mode.
 Tracing is supported out of the box, and Next.js automatically emits some spans
 for incoming requests, routing, rendering, and other operations.
 
-### Astro
+### Astro (`astro`)
 
 Astro is a web framework for building content-driven websites like blogs,
 marketing, and e-commerce. Astro leverages server rendering over client-side
@@ -9888,42 +9983,42 @@ Sharp image optimization is supported.
 
 The `astro:env` API is supported.
 
-### Nuxt
+### Nuxt (`nuxt`)
 
 Create high-quality web applications with Nuxt, the open source framework that
 makes full-stack development with Vue.js intuitive.
 
 Nuxt requires no additional setup.
 
-### SolidStart
+### SolidStart (`solidstart`)
 
 SolidStart is an open source meta-framework designed to unify components that
 make up a web application. It is built on top of Solid.
 
 SolidStart requires no additional setup.
 
-### SvelteKit
+### SvelteKit (`sveltekit`)
 
 SvelteKit is a framework for rapidly developing robust, performant web
 applications using Svelte.
 
 SvelteKit requires no additional setup.
 
-### Fresh
+### Fresh (`fresh`)
 
 Fresh is a full stack modern web framework for JavaScript and TypeScript
 developers. Fresh uses Preact as the JSX rendering engine.
 
 Fresh requires no additional setup.
 
-### Lume
+### Lume (`lume`)
 
 Lume is a static site generator for building fast and modern websites using
 Deno.
 
 Lume requires no additional setup.
 
-### Remix
+### Remix (`remix`)
 
 > ⚠️ **Experimental**: Remix is not yet fully supported. It is in the process of
 > being integrated into Deno Deploy. Some features may not work as expected.
@@ -10206,12 +10301,6 @@ organization members and appears in the organization dropdown in both Deno
 Deploy and Deploy Classic. The slug forms part of the default domain for all
 applications in the organization.
 
-:::caution
-
-Organizations cannot be renamed, nor can their slug be changed after creation.
-
-:::
-
 Every organization has a default domain used for production, git branch, and
 preview URLs for projects in that organization. For example, an organization
 with the slug `acme-inc` would have a default domain of `acme-inc.deno.net`.
@@ -10236,6 +10325,41 @@ Organization slugs must be unique across all Deno Deploy organizations and
 cannot match any existing project name in Deno Deploy Classic.
 
 :::
+
+## Update the organization name
+
+The organization name can be updated from the organization settings page in the
+Deno Deploy dashboard. The organization name is only cosmetic, and changing it
+does not affect any apps or domains. It is the display name of your
+organization, on the dashboard and in invitation emails.
+
+## Update the organization slug
+
+The organization slug can be updated from the organization settings page in the
+Deno Deploy dashboard. Changing the organization slug will update the default
+domain for all apps in the organization. For example, changing the slug from
+`acme-inc` to `acme-corp` will change the default domain from
+`acme-inc.deno.net` to `acme-corp.deno.net`.
+
+:::warning
+
+Changing the organization slug will immediately affect all apps in the
+organization that use the default domain. Any existing URLs using the old domain
+will stop working. You will need to update any bookmarks or links that use the
+old domain.
+
+After changing the organization slug, it can take multiple minutes for the new
+default domain to start working, due to TLS certificate provisioning. In this
+time, apps will be unreachable via the new default domain.
+
+Custom domains are not affected by changing the organization slug.
+
+:::
+
+This will also affect the URLs of resources inside of the organization on the
+Deno Deploy dashboard. For example, the URL for an app will change from
+`https://console.deno.com/acme-inc/my-app` to
+`https://console.deno.com/acme-corp/my-app`.
 
 ## Deleting an organization
 
@@ -10503,8 +10627,8 @@ applications, and within a few hundred milliseconds for larger applications.
 
 Deno Deploy uses multiple optimizations to enable fast cold starts:
 
-- Sandboxes and the Deno runtime are pre-provisioned to ensure they don't need
-  to be created from scratch when starting an application.
+- Linux microVMs and the Deno runtime are pre-provisioned to ensure they don't
+  need to be created from scratch when starting an application.
 
 - Applications start immediately when the client sends the first TCP packet to
   establish a TLS connection. For fast-starting applications, depending on the
@@ -10772,11 +10896,30 @@ URL: https://docs.deno.com/deploy/support/
 
 
 If you have any questions or feedback about Deno Deploy, please reach out to us
-on the [Deno Discord](https://discord.gg/deno) in the `#deploy` channel or
-[contact us](mailto:deploy@deno.com).
+on the [Deno Discord](https://discord.gg/deno) in the `#deploy` channel or send
+an email to support@deno.com.
 
 We are actively working on improving the platform and would love to hear your
 thoughts!
+
+## Support tickets
+
+When sending an email to support@deno.com, you will receive an automated reply
+with a support ticket number, and a link to claim your ticket.
+
+You can use this link to claim the ticket to your Deno Deploy account, allowing
+you to track the status of your support request using the
+[tickets dashboard](https://console.deno.com/tickets). This also allows our
+support team to know which account you are contacting us from, so we can provide
+better assistance.
+
+You can see ticket status updates and respond to any questions from our support
+team directly from the tickets dashboard. You will also receive email updates
+when there are changes to your ticket, and you can reply to those emails to
+provide additional information.
+
+If you did not receive an automated reply, please check your spam or junk mail
+folder.
 
 
 ---
@@ -11343,10 +11486,11 @@ to be in violation of the terms and conditions.
 
 > Learn how to access string and binary output from commands in a sandbox.
 
-URL: https://docs.deno.com/examples/sandboxes/access_output
+URL: https://docs.deno.com/examples/sandbox/access_output
 
 
-You can access string and binary output from commands in a sandbox.
+You can access string and binary output from commands in a sandbox. This example
+shows how to capture command output in whichever form your workflow needs:
 
 ```ts
 import { Sandbox } from "@deno/sandbox";
@@ -11364,6 +11508,17 @@ import fs from "node:fs";
 fs.writeFileSync("output.png", result.stdout!);
 ```
 
+Piping stdout lets you retrieve both the raw binary buffer and a decoded text
+view from the same command, so you can handle files that mix binary and textual
+data without re-running the command.
+
+Once you have the binary result, you can pass it directly to APIs such as
+`fs.writeFileSync` to persist artifacts generated inside the sandbox, making it
+easy to move data between the sandbox and your host environment
+
+This is useful when sandbox commands produce files (images, archives, etc.) that
+you need to consume programmatically rather than just printing to the console.
+
 
 ---
 
@@ -11371,10 +11526,12 @@ fs.writeFileSync("output.png", result.stdout!);
 
 > Learn how to cancel commands in a sandbox.
 
-URL: https://docs.deno.com/examples/sandboxes/command_cancellation
+URL: https://docs.deno.com/examples/sandbox/command_cancellation
 
 
-You can cancel commands in a sandbox using the `KillController` class.
+Being able to cancel sandbox commands is key when tasks hang or you need to
+enforce timeouts. You can cancel commands in a sandbox using the
+`KillController` class.
 
 ```ts
 import { KillController, Sandbox } from "@deno/sandbox";
@@ -11398,6 +11555,16 @@ try {
 }
 ```
 
+`KillController` lets you attach a cancellation signal to any sandbox command,
+so you can abort long-running processes if they exceed a limit or the user
+cancels the operation.
+
+After triggering `controller.kill()`, the awaiting call rejects; you can
+intercept that rejection to log, clean up, or retry as needed.
+
+This pattern keeps sandbox automation responsive and prevents orphaned processes
+from consuming resources indefinitely.
+
 
 ---
 
@@ -11405,10 +11572,16 @@ try {
 
 > Learn how to handle errors with custom error classes in a sandbox.
 
-URL: https://docs.deno.com/examples/sandboxes/custom_error_classes
+URL: https://docs.deno.com/examples/sandbox/custom_error_classes
 
 
 You can handle errors with custom error classes in a sandbox.
+
+Catching `SandboxCommandError` lets you differentiate sandbox command failures
+from other exceptions. When the error is the `SandboxCommandError` class, you
+can read structured fields such as `error.code` or format `error.message` to
+decide whether to retry, escalate, or map exit codes to your own domain-specific
+errors:
 
 ```ts
 import { Sandbox, SandboxCommandError } from "@deno/sandbox";
@@ -11425,6 +11598,9 @@ try {
 }
 ```
 
+This makes it easier to build higher-level automation that reacts intelligently
+to known failure modes instead of treating every thrown error the same.
+
 
 ---
 
@@ -11432,7 +11608,7 @@ try {
 
 > Learn how to set and get environment variables in a sandbox.
 
-URL: https://docs.deno.com/examples/sandboxes/environment_variables
+URL: https://docs.deno.com/examples/sandbox/environment_variables
 
 
 You can use the `sandbox.env.set()` method to set environment variables in a
@@ -11452,6 +11628,13 @@ const apiKey = await sandbox.sh`echo $API_KEY`.text();
 console.log("API_KEY:", apiKey.trim());
 ```
 
+Setting environment variables through `sandbox.env.set()` keeps configuration
+and secrets inside the sandbox, so scripts run with the expected context without
+hardcoding values in source files. That’s helpful when you need per-run
+configuration (API keys, modes like NODE_ENV) or want to propagate credentials
+to multiple commands securely. The variables stay scoped to the sandbox session
+and are available to any command you execute there.
+
 
 ---
 
@@ -11459,11 +11642,11 @@ console.log("API_KEY:", apiKey.trim());
 
 > Learn how to handle errors in a sandbox.
 
-URL: https://docs.deno.com/examples/sandboxes/error_handling
+URL: https://docs.deno.com/examples/sandbox/error_handling
 
 
-Commands in a sandbox throw by default on non-zero exit. You can use the
-`noThrow()` method to handle errors manually.
+Handling sandbox command failures explicitly gives you predictable recovery
+paths:
 
 ```ts
 import { Sandbox } from "@deno/sandbox";
@@ -11483,6 +11666,16 @@ console.log("Exit code:", result.status.code); // → 1
 console.log("Success:", result.status.success); // → false
 ```
 
+Deno Sandbox commands throw on any non-zero exit, so wrapping them in try/catch
+lets you surface clean error messages or trigger fallback logic instead of
+crashing the entire workflow.
+
+When you want to inspect failures without throwing, `.noThrow()` returns the
+full status object, so you can branch on `status.code` or `status.success`, log
+diagnostics, or retry specific commands without losing context. This pattern is
+essential for robust automation where commands might fail due to user input,
+transient network issues, or missing dependencies.
+
 
 ---
 
@@ -11490,7 +11683,7 @@ console.log("Success:", result.status.success); // → false
 
 > Learn how to evaluate JavaScript code in a sandbox.
 
-URL: https://docs.deno.com/examples/sandboxes/evaluating_javascript
+URL: https://docs.deno.com/examples/sandbox/evaluating_javascript
 
 
 You can evaluate JavaScript code in a sandbox using the `eval` function.
@@ -11500,7 +11693,7 @@ import { Sandbox } from "@deno/sandbox";
 
 await using sandbox = await Sandbox.create();
 
-const result = await sandbox.eval(`
+const result = await sandbox.deno.eval(`
   const a = 1;
   const b = 2;
   a + b;
@@ -11508,29 +11701,36 @@ const result = await sandbox.eval(`
 console.log("result:", result);
 ```
 
+Calling `sandbox.deno.eval()` lets you run arbitrary JavaScript snippets
+directly inside the sandbox’s Deno runtime without writing files or shelling
+out. This is useful when you want to prototype logic, run small computations, or
+inspect the sandbox environment itself quickly. Use it for dynamic scripts or
+exploratory debugging where creating a full module would be overkill.
+
 
 ---
 
-# Intereactive JavaScript REPL
+# Interactive JavaScript REPL
 
-> Learn how to provide an interactive JavaScript REPL in a sandbox.
+> Learn how to provide an interactive Deno REPL in a sandbox.
 
-URL: https://docs.deno.com/examples/sandboxes/javascript_repl
+URL: https://docs.deno.com/examples/sandbox/javascript_repl
 
 
-The `sandbox.repl()` method can be used to provide an interactive JavaScript
-REPL in a sandbox.
+A REPL (Read–Eval–Print Loop) is an interactive execution session where you type
+code, the environment reads it, evaluates it, prints the result, and then keeps
+the session alive so you can continue running more code while preserving state.
 
-This example shows how to start a JavaScript REPL in a sandbox and execute code
-interactively.
+The `repl()` method can be used to provide an interactive JavaScript REPL in a
+sandbox.
 
 ```ts
 import { Sandbox } from "@deno/sandbox";
 
 await using sandbox = await Sandbox.create();
 
-// Start a JavaScript REPL
-const repl = await sandbox.repl();
+// Start a Deno REPL
+const repl = await sandbox.deno.repl();
 
 // Execute code interactively, maintaining state
 await repl.eval("const x = 42;");
@@ -11542,56 +11742,11 @@ console.log("result:", result); // 50
 
 ---
 
-# Control sandbox lifetime
-
-> Learn how to control how long your sandbox stays alive using the lifetime option.
-
-URL: https://docs.deno.com/examples/sandboxes/lifetime_control
-
-
-You can control how long your sandbox stays alive using the lifetime option:
-
-```ts
-import { Sandbox } from "@deno/sandbox";
-
-// Default: "session" - sandbox shuts down when you close/dispose the client
-await using sandbox = await Sandbox.create({ lifetime: "session" });
-```
-
-Supported duration suffixes: `s` (seconds), `m` (minutes).
-
-Examples: `"30s"`, `"5m"`, `"90s"` .
-
-```ts
-import { Sandbox } from "@deno/sandbox";
-
-// Duration-based: keep sandbox alive for a specific time period
-// Useful when you want the sandbox to persist after the script exits
-const sandbox = await Sandbox.create({ lifetime: "5m" }); // 5 minutes
-const id = sandbox.id;
-// Close the *connection* to the sandbox; the sandbox keeps running
-await sandbox.close();
-
-// Later, reconnect to the same sandbox using its ID
-const reconnected = await Sandbox.connect({ id });
-await reconnected.sh`echo 'Still alive!'`;
-
-// You can still forcibly terminate it before its lifetime expires
-await reconnected.kill();
-// At this point, the sandbox is no longer reconnectable
-```
-
-> Need other lifetime modes? Contact
-> <a href="mailto:deploy@deno.com">deploy@deno.com</a>.
-
-
----
-
 # Configure sandbox memory
 
 > Learn how to configure the memory allocated to a sandbox
 
-URL: https://docs.deno.com/examples/sandboxes/memory
+URL: https://docs.deno.com/examples/sandbox/memory
 
 
 You can customize the amount of memory allocated to your sandbox using the
@@ -11612,11 +11767,21 @@ import { Sandbox } from "@deno/sandbox";
 await using sandbox = await Sandbox.create({ memoryMb: 4096 });
 
 // Check available memory
-const memInfo = await sandbox.eval<{ total: number }>(
+const memInfo = await sandbox.deno.eval<{ total: number }>(
   "Deno.systemMemoryInfo()",
 );
 console.log("Total memory:", memInfo.total);
 ```
+
+Configuring memoryMb when creating the sandbox lets you tune resource usage per
+workload. Lightweight tasks can run in smaller sandboxes to conserve resources,
+while data-heavy scripts or compilations can request up to 4 GB to avoid
+out-of-memory failures.
+
+Since you can programmatically inspect the sandbox’s memory via
+`Deno.systemMemoryInfo()`, you can verify allocations or adapt behavior based on
+the measured limits. This control helps match sandbox capacity to your needs,
+keeping performance predictable while managing costs.
 
 Memory limits (may change in the future):
 
@@ -11636,10 +11801,12 @@ configured value due to system overhead.
 
 > Learn how to spawn a subprocess, and get buffered output in a sandbox.
 
-URL: https://docs.deno.com/examples/sandboxes/spawn_subprocess
+URL: https://docs.deno.com/examples/sandbox/spawn_subprocess
 
 
-You can spawn subprocesses in a sandbox and get buffered output as seen below.
+You can spawn subprocesses in a sandbox and get buffered output. For example, to
+print the current working directory as seen below. This is useful for running
+shell commands and scripts.
 
 ```ts
 import { Sandbox } from "@deno/sandbox";
@@ -11650,7 +11817,8 @@ const text = await sandbox.sh`pwd`.text();
 console.log("result:", text); // → "/home/sandbox\n"
 ```
 
-For long‑running processes or large output, stream the stdout/stderr.
+For long‑running processes or large output, stream the stdout/stderr instead of
+buffering it all in memory.
 
 
 ---
@@ -11659,10 +11827,12 @@ For long‑running processes or large output, stream the stdout/stderr.
 
 > Learn how to provide SSH access to a sandbox.
 
-URL: https://docs.deno.com/examples/sandboxes/ssh_access
+URL: https://docs.deno.com/examples/sandbox/ssh_access
 
 
-The `sandbox.exposeSsh()` method can be used to provide SSH access to a sandbox.
+SSH access allows you to connect to a sandboxed environment securely over the
+SSH protocol. The `sandbox.exposeSsh()` method can be used to provide SSH access
+to a sandbox.
 
 ```ts
 import { Sandbox } from "@deno/sandbox";
@@ -11685,15 +11855,15 @@ await new Promise((resolve) => setTimeout(resolve, 10 * 60 * 1000)); // 10 minut
 
 > Learn how to stream output to a local file in a sandbox.
 
-URL: https://docs.deno.com/examples/sandboxes/stream_output
+URL: https://docs.deno.com/examples/sandbox/stream_output
 
 
-You can stream output to a local file in a sandbox.
+You can stream output to a local file in a sandbox. This avoids buffering entire
+large artifacts in memory.
 
-`child.stdout` is a Web `ReadableStream`.
-
-In Node, convert a Node `fs.WriteStream` to a Web `WritableStream` to pipe
-efficiently.
+If you generate something sizable inside the sandbox (like `big.txt` below), you
+can pipe it out chunk-by-chunk over a `ReadableStream`, converting Node’s
+`fs.WriteStream` to a Web `WritableStream` for efficient transfer.
 
 ```ts
 import { Sandbox } from "@deno/sandbox";
@@ -11703,7 +11873,7 @@ import { Writable } from "node:stream";
 await using sandbox = await Sandbox.create();
 
 // Create a large file in the sandbox
-await sandbox.writeTextFile("big.txt", "#".repeat(5_000_000));
+await sandbox.fs.writeTextFile("big.txt", "#".repeat(5_000_000));
 
 // Stream it out to a local file
 const child = await sandbox.spawn("cat", {
@@ -11717,6 +11887,10 @@ const status = await child.status;
 console.log("done:", status);
 ```
 
+This pattern keeps memory usage flat, works well for logs or big binaries, and
+lets you persist sandbox results on the host without temporary files or stdout
+truncation.
+
 
 ---
 
@@ -11724,10 +11898,14 @@ console.log("done:", status);
 
 > Learn how to use template literal commands with variable interpolation in a sandbox.
 
-URL: https://docs.deno.com/examples/sandboxes/template_literals
+URL: https://docs.deno.com/examples/sandbox/template_literals
 
 
-You can use template literal commands with variable interpolation in a sandbox.
+These conveniences help you script sandbox tasks quickly while keeping command
+construction correct and secure.
+
+Using `sandbox.sh` template literals lets you run shell commands inside the
+sandbox more safely and ergonomically:
 
 ```ts
 import { Sandbox } from "@deno/sandbox";
@@ -11748,6 +11926,93 @@ const data = await sandbox.sh`echo '{"count": 42}'`.json<{ count: number }>();
 console.log(data.count); // → 42
 ```
 
+Variables interpolated into the template literal are auto-escaped, so even
+awkward values like file names with spaces can be passed without worrying about
+quoting or injection.
+
+Arrays expand into multiple arguments automatically, making batch operations
+(e.g., deleting several files) concise without manual join logic. You can also
+chain helpers such as `.json()` to parse command output directly into typed data
+structures, eliminating brittle string parsing and keeping results strongly
+typed.
+
+
+---
+
+# Control sandbox timeout
+
+> Learn how to control how long your sandbox stays alive using the timeout option.
+
+URL: https://docs.deno.com/examples/sandbox/timeout_control
+
+
+You can control how long your sandbox stays alive using the timeout option.
+Controlling timeout lets you decide whether sandboxes vanish immediately when
+your script finishes or keep running for a set duration:
+
+```ts
+import { Sandbox } from "@deno/sandbox";
+
+// Default: "session" - sandbox shuts down when you close/dispose the client
+await using sandbox = await Sandbox.create({ timeout: "session" });
+```
+
+Supported duration suffixes: `s` (seconds), `m` (minutes).
+
+Examples: `"30s"`, `"5m"`, `"90s"` .
+
+```ts
+import { Sandbox } from "@deno/sandbox";
+
+// Duration-based: keep sandbox alive for a specific time period
+// Useful when you want the sandbox to persist after the script exits
+const sandbox = await Sandbox.create({ timeout: "5m" }); // 5 minutes
+const id = sandbox.id;
+// Close the *connection* to the sandbox; the sandbox keeps running
+await sandbox.close();
+
+// Later, reconnect to the same sandbox using its ID
+const reconnected = await Sandbox.connect({ id });
+await reconnected.sh`echo 'Still alive!'`;
+
+// You can still forcibly terminate it before its timeout elapses
+await reconnected.kill();
+// At this point, the sandbox is no longer reconnectable
+```
+
+The default "session" mode is fine for short-lived automation—resource cleanup
+happens as soon as the client disposes.
+
+Duration-based timeouts ("30s", "5m", etc.) let you close the client connection
+while the sandbox keeps state alive, so you can reconnect later (e.g., to
+inspect logs, rerun commands, or share the sandbox ID with another process)
+before the timeout expires.
+
+## Extend the timeout whenever you need
+
+You are not locked into the original duration. As long as you still hold a
+`Sandbox` instance (either the original handle or one reconnected via
+`Sandbox.connect()`), call `sandbox.extendTimeout()` with another duration
+string to push the expiry further out. Each call can add up to 30 minutes and
+returns a `Date` indicating the new shutdown time.
+
+```ts
+import { Sandbox } from "@deno/sandbox";
+
+const sandbox = await Sandbox.create({ timeout: "5m" });
+
+// Need more time later on? Extend in-place without disrupting running work.
+const newExpiry = await sandbox.extendTimeout("30m");
+console.log(`Sandbox now lives until ${newExpiry.toISOString()}`);
+```
+
+You still control lifecycle explicitly with a call to `kill()` to end the
+sandbox early if you no longer need it, useful if your job finishes sooner than
+expected.
+
+> Need other timeout modes? Contact
+> <a href="mailto:deploy@deno.com">deploy@deno.com</a>.
+
 
 ---
 
@@ -11755,11 +12020,11 @@ console.log(data.count); // → 42
 
 > Learn how to upload files and directories to a sandbox.
 
-URL: https://docs.deno.com/examples/sandboxes/upload_files
+URL: https://docs.deno.com/examples/sandbox/upload_files
 
 
 Copy files from your machine into the sandbox using
-`sandbox.upload(localPath, sandboxPath)`.
+`sandbox.fs.upload(localPath, sandboxPath)`.
 
 ```ts
 import { Sandbox } from "@deno/sandbox";
@@ -11767,11 +12032,17 @@ import { Sandbox } from "@deno/sandbox";
 await using sandbox = await Sandbox.create();
 
 // Upload a single file to a specific path in the sandbox
-await sandbox.upload("./README.md", "./readme-copy.md");
+await sandbox.fs.upload("./README.md", "./readme-copy.md");
 
 // Upload a local directory tree into the sandbox current directory
-await sandbox.upload("./my-project", ".");
+await sandbox.fs.upload("./my-project", ".");
 ```
+
+Uploading files or entire directories with `sandbox.fs.upload()` lets you bring
+your local artifacts into the sandbox environment before running commands there.
+This is useful when your workflow depends on existing source folders,
+configuration files, or test data—once uploaded, the sandbox can compile, test,
+or process them without remote Git access or manual copy/pasting.
 
 
 ---
@@ -11780,14 +12051,15 @@ await sandbox.upload("./my-project", ".");
 
 > Learn how to provide a VSCode instance in a sandbox.
 
-URL: https://docs.deno.com/examples/sandboxes/vscode_instance
+URL: https://docs.deno.com/examples/sandbox/vscode_instance
 
 
-The `sandbox.vscode()` method can be used to provide a VSCode instance in a
-sandbox.
-
-This example shows how to start a VSCode instance in a sandbox and print the url
-of the running instance which you can then open in your browser.
+Running `sandbox.exposeVscode()` spins up a full VS Code instance inside an
+isolated sandboxed environment and exposes its URL so you can open it in a
+browser. This is handy when you need a lightweight, disposable editor for demos,
+workshops, or remote debugging: you can provision VS Code on demand without
+installing anything locally, safely experiment with code inside a contained
+workspace, and tear it down automatically once you’re done.
 
 ```ts
 import { Sandbox } from "@deno/sandbox";
@@ -11795,7 +12067,7 @@ import { Sandbox } from "@deno/sandbox";
 await using sandbox = await Sandbox.create();
 
 // Start a VSCode instance
-const vscode = await sandbox.vscode();
+const vscode = await sandbox.exposeVscode();
 
 console.log(vscode.url); // print the url of the running instance
 await vscode.status; // wait until it exits
@@ -11808,14 +12080,14 @@ await vscode.status; // wait until it exits
 
 > Create a package.json, install deps, run a web framework (Express), and expose it publicly from a sandbox
 
-URL: https://docs.deno.com/examples/sandboxes/web_framework
+URL: https://docs.deno.com/examples/sandbox/web_framework
 
 
-In sandboxes, you can create a `package.json`, install dependencies, run a web
-framework (Express), and expose it publicly over HTTP.
+With Deno Sandbox you can create a `package.json`, install dependencies, run a
+web framework (such as Express), and expose it publicly over HTTP.
 
-This example shows how to create a minimal Express app inside the sandbox, runs
-it on port 3000, and exposes it publicly using `sandbox.exposeHttp()`.
+This example shows how to create a minimal Express app inside the sandbox, run
+it on port 3000, and expose it publicly using `sandbox.exposeHttp()`.
 
 ```ts
 import { Sandbox } from "@deno/sandbox";
@@ -11829,12 +12101,12 @@ const PACKAGE_JSON = {
   type: "module",
   dependencies: { express: "^4.19.2" },
 };
-await sandbox.writeTextFile(
+await sandbox.fs.writeTextFile(
   "package.json",
   JSON.stringify(PACKAGE_JSON, null, 2),
 );
 
-await sandbox.writeTextFile(
+await sandbox.fs.writeTextFile(
   "server.js",
   `import express from 'express';
 const app = express();
@@ -11848,7 +12120,7 @@ app.listen(3000, () => console.log('listening on :3000'));
 await sandbox.sh`deno install`;
 
 // 3) Start the server
-const server = await sandbox.createJsRuntime({ entrypoint: "server.js" });
+const server = await sandbox.deno.run({ entrypoint: "server.js" });
 
 // 4) Publish to the internet
 const publicUrl = await sandbox.exposeHttp({ port: 3000 });
@@ -27191,6 +27463,568 @@ Now that you have a basic understanding of how to use tRPC with Deno, you could:
    [any public cloud via Docker](https://docs.deno.com/runtime/tutorials/#deploying-deno-projects)
 
 🦕 Happy type safety coding with Deno and tRPC!
+
+
+---
+
+# title: Connect a Database to your local dev
+
+> Connect a Postgres database to your local development server with Deno Deploy and Deno's tunnel feature
+
+URL: https://docs.deno.com/examples/tutorials/tunnel_database
+
+
+In this tutorial, we'll show you how to connect a database to your local
+development server using Deno's tunnel feature and Deno Deploy. This allows you
+to work with databases in your local environment without complicated
+configuration.
+
+## Set up an app
+
+If you don't already have a local server application, you can create a simple
+with Svelte. We'll set up a basic notes app with Svelte for this tutorial:
+
+```sh
+npx sv create svelte-app
+```
+
+Select the default options for the prompts, then navigate into your new project
+directory:
+
+```sh
+cd svelte-app
+deno run dev
+```
+
+## Install a postgres driver and types
+
+To connect to a Postgres database, we'll use the popular
+[pg](https://www.npmjs.com/package/pg) client. Install the `pg` package and its
+types using with npm specifiers:
+
+```sh
+deno add npm:pg npm:@types/pg
+```
+
+This will add the necessary dependencies to your `deno.json` file.
+
+## Create a database migration script
+
+Next, create a new file called `migrate.ts` in your project directory. This
+script will connect to the Postgres database and create a sample table.
+
+```ts title="migrate.ts"
+import { Client } from "pg";
+const client = new Client();
+await client.connect();
+await client.query(
+  `CREATE TABLE IF NOT EXISTS notes (id SERIAL PRIMARY KEY, note TEXT)`,
+);
+await client.query(
+  `INSERT INTO notes (note) VALUES ('hello, this is seed data')`,
+);
+await client.end();
+```
+
+### Set up Vite to allow tunneling
+
+The Vite server used by Svelte is restricted to localhost by default, so to make
+it more widely available we'll make a small change to our `vite.config.js` file.
+Open `vite.config.js` and add a `server` section to set `allowedHosts: true`:
+
+```js title="vite.config.js"
+import { sveltekit } from "@sveltejs/kit/vite";
+import { defineConfig } from "vite";
+
+export default defineConfig({
+  plugins: [sveltekit()],
+  server: {
+    allowedHosts: true,
+  },
+});
+```
+
+## Deploy your app to Deno Deploy
+
+Next we'll deploy the Svelte app to Deno Deploy using the `deno deploy`
+subcommand. This will set us up a project to which we can connect our database.
+
+In your terminal, run:
+
+```sh
+deno deploy
+```
+
+Follow the prompts in your terminal to create a new Deno Deploy application, you
+may need to log in to your Deno Deploy console, and select an organization if
+you belong to more than one and create a new application for this project.
+
+## Provision a database on Deno Deploy
+
+Now it is time to provision a database for our application. Log in to you
+[Deno Deploy console](https://console.deno.com/) and click on the **Databases**
+tab. From there
+
+1. Click on the **+ Provision database** button.
+2. Select a Prisma Postgres database and click **Provision**.
+3. Give the database a name slug (eg `my-test-db`)
+4. Select the location closest to your users.
+5. Click **Provision database**.
+
+Once you have provisioned your database, click on it in the Databases tab, you
+can assign it to the app that you just deployed. Click on the _Assign_ button
+and select your app from the dropdown.
+
+If you click on the name of the database you will see its configuration page.
+This will list out the assigned apps and three database 'contexts', one for each
+environment (local, preview, production). These contexts allow you to test your
+database connection without affecting your production data.
+
+## Run the migration script
+
+Now that we have our database provisioned, we can run the migration script to
+create the sample table. We can do this simply with the `--tunnel` flag.
+
+```sh
+deno run --tunnel -A migrate.ts
+```
+
+This will automatically pull down the database connection information and run
+the migration script against the local database context.
+
+You can verify that the table was created and the seed data was inserted with
+the database explorer built into the Deno Deploy console. Navigate to your
+database's page in Deno Deploy and click on the **Explore** button on the local
+database context. You should see a single table with one entry in it.
+
+## Display the data from the database in your app
+
+Next, we can update our Svelte app to display the data from the database. Open
+the `src/routes/+page.svelte` file and update it to fetch the notes from the
+database.
+
+```svelte title="src/routes/+page.svelte"
+import { Client } from "pg";
+
+export const load = async () => {
+  const client = new Client();
+  await client.connect();
+  const res = await client.query(` SELECT note from notes; `);
+  await client.end();
+  return { notes: res.rows };
+};
+```
+
+Then, update the HTML to display the notes:
+
+```svelte title="src/routes/+page.svelte"
+<script>
+  let { data } = $props();
+</script>
+<h1>Welcome to SvelteKit</h1>
+<ul>
+  {#each data.notes as row}
+    <li>{row.note}</li>
+  {/each}
+</ul>
+```
+
+## Run your app with tunnel
+
+Now, you can use the `--tunnel` flag to run your Svelte app locally and see the
+data from the local database context:
+
+```sh
+deno run --tunnel dev
+```
+
+You should see a basic web page with your seed data displayed.
+
+## Run your migrations with a pre-deploy command
+
+When deploying your app to Deno Deploy, you don't want to run your migrations
+manually, instead you may want to ensure that your database migrations are run
+automatically before each deployment.
+
+We will edit our app's configuration in the Deno Deploy console to add a
+pre-deploy command that will run our migration script before each deployment.
+
+1. Go to your Deno Deploy project dashboard.
+2. Click on the **Settings** tab.
+3. Scroll down to the **App Configuration** section, click on the **Edit**
+   button.
+4. In the **Pre-deploy Command** field, enter the following command:
+
+```sh
+deno run -A migrate.ts
+```
+
+Now each time you deploy your app, the migration script will run first, ensuring
+that your database schema is up to date.
+
+You can test this by running the deployment command:
+
+```sh
+deno deploy --prod
+```
+
+To directly deploy to production. Once the deployment is complete you should be
+able to explore the production database context in the Deno Deploy console and
+see that the table has been created and the seed data inserted.
+
+## Update the data in the database
+
+You can now update the data in the databases using the database explorer in the
+Deno Deploy console (or by updating and running your migration script again with
+new data). In the database explorer, click on the notes table and edit the text.
+Click **save** and refresh the tab with your Svelte app to see the updated data.
+
+Try updating the data in the local, preview, and production database contexts to
+see how they are all separate.
+
+🦕 Now you can connect a database to your local development environment using
+the tunnel feature, making it easy to develop and test your app with real data
+without complex configuration!
+
+
+---
+
+# Local Telemetry with tunnel
+
+> Send telemetry from your local development server using Deno's tunnel feature
+
+URL: https://docs.deno.com/examples/tutorials/tunnel_telemetry
+
+
+Deno's tunnel feature allows you to expose your local development server to the
+internet securely. This is particularly useful for sending
+[Open Telemetry](https://opentelemetry.io/) data from your local server to Deno
+Deploy's telemetry monitoring services to help you debug and monitor your
+applications during development.
+
+In this tutorial, we'll show you how to see span and log data in your local
+projects with minimal setup using the `--tunnel` flag and Deno Deploy.
+
+## Set up an app
+
+You can use any application that runs a local server. For this tutorial, we'll
+use a simple Svelte app. If you already have a local server application, you can
+skip to
+[#Run your local app with the `--tunnel` flag](#run-your-local-app-with-the--tunnel-flag).
+
+First, set up a new Svelte project:
+
+```sh
+npx sv create svelte-app
+```
+
+Select the default options for the prompts, then navigate into your new project
+directory:
+
+```sh
+cd svelte-app
+deno run dev
+```
+
+You should now have a Svelte app running locally at `http://localhost:5173` (or
+another port if 5173 is already in use).
+
+## Set up Vite to allow tunneling
+
+The Vite server used by Svelte is restricted to localhost by default, so to make
+it more widely available we'll make a small change to our `vite.config.js` file.
+Open `vite.config.js` and add a `server` section to set `allowedHosts: true`:
+
+```js title="vite.config.js"
+import { sveltekit } from "@sveltejs/kit/vite";
+import { defineConfig } from "vite";
+
+export default defineConfig({
+  plugins: [sveltekit()],
+  server: {
+    allowedHosts: true,
+  },
+});
+```
+
+## Deploy your app with the Deno Deploy subcommand
+
+To use the tunnel feature, you'll need a deployed application so that Deno can
+provide you a url to tunnel to. You can deploy your app using the Deno Deploy
+subcommand:
+
+```sh
+deno deploy
+```
+
+Follow the prompts to create a new project or select an existing one. Once
+deployed, you'll receive a project URL.
+
+## Run your local app with the `--tunnel` flag
+
+Now you can run your local development server with the `--tunnel` flag, which
+will expose your local server to the internet via a secure tunnel.
+
+```sh
+deno run --tunnel dev
+```
+
+Open the returned tunnel URL in your browser, and you should see your local
+Svelte app being served. Any telemetry data generated by your local server will
+now be sent to Deno Deploy's telemetry monitoring services.
+
+## Example telemetry data
+
+In your `+page.server.ts` file, you can add some example telemetry data to see
+it in action. Add a fetch request to `https://example.com` and some console
+logs:
+
+```ts title="+page.server.ts"
+console.log("This is the server-side page module.");
+
+export const load = async ({ fetch }) => {
+  // Basic server-side fetch used for demonstration purposes
+  const response = await fetch("https://example.com");
+  const exampleHtml = await response.text();
+
+  return {
+    exampleHtml,
+  };
+};
+```
+
+When you access your app through the tunnel URL, this fetch request will be made
+and we should be able to see it in the telemetry data in Deno Deploy. To do so:
+
+1. Open the network tab of your browser's developer tools and look for the GET
+   request to your tunnel URL.
+2. Look at the response headers to find the `x-deno-trace-id` header, which
+   contains the trace ID for this request.
+3. Copy the trace ID.
+4. Go to your Deno Deploy console, navigate to your app and click on the
+   **Traces** tab.
+5. Paste the trace ID into the search bar to find the specific trace for your
+   request.
+
+Now you can drill down into the trace details to see the telemetry data, you
+should be able to see the GET request to your tunnel URL and the fetch request
+to `https://example.com` as part of the trace. These are all being captured from
+your local development server without any additional setup!
+
+You can also view the logs generate by a specific request by clicking on the
+**view logs** button next to a trace. If you see a trace at `/` you should see
+the "This is the server-side page module." which we logged to the console in the
+logs for that trace.
+
+🦕 JavaScript has a single event loop and asynchronous functions, it is very
+possible that your project is a busy JavaScript server with lots of logs and
+traces. The telemetry tooling in Deno Deploy is designed to help you explore and
+debug exceptions or performance issues, so don't be discouraged if you see a lot
+of data! Use the filtering and search features to help you find what you're
+looking for.
+
+
+---
+
+# Share your local server with Tunnel
+
+> Expose a public URL instantly with the --tunnel option
+
+URL: https://docs.deno.com/examples/tutorials/tunnel
+
+
+The `--tunnel` flag in Deno allows you to expose your local server to the
+internet instantly. This is particularly useful for testing webhooks, sharing
+your work with colleagues, or accessing your local server from different
+devices - for example testing your app on mobile devices.
+
+Because Deno's Tunnel feature creates a secure tunnel to your local server, you
+don't need to worry about configuring firewalls or port forwarding.
+
+We'll set up a simple app and show how to expose it publicly using the tunnel
+feature.
+
+## Set up an app
+
+You can use any application that runs a local server. For this tutorial, we'll
+use a simple Svelte app.
+
+First, set up a new Svelte project:
+
+```sh
+npx sv create svelte-app
+```
+
+Select the default options for the prompts, then navigate into your new project
+directory:
+
+```sh
+cd svelte-app
+deno run dev
+```
+
+You should now have a Svelte app running locally at `http://localhost:5173` (or
+another port if 5173 is already in use).
+
+## Set up Vite to allow tunneling
+
+The Vite server used by Svelte is restricted to localhost by default, so to make
+it more widely available we'll make a small change to our `vite.config.js` file.
+Open `vite.config.js` and add a `server` section to set `allowedHosts: true`:
+
+```js title="vite.config.js"
+import { sveltekit } from "@sveltejs/kit/vite";
+import { defineConfig } from "vite";
+
+export default defineConfig({
+  plugins: [sveltekit()],
+  server: {
+    allowedHosts: true,
+  },
+});
+```
+
+## Deploy your app with the Deno Deploy subcommand
+
+We're going to deploy this project with Deno Deploy using the `deno deploy`
+subcommand. This is only necessary to set us up a project url, which we'll be
+able to use later to share our local server.
+
+In your terminal, run:
+
+```sh
+deno deploy
+```
+
+Follow the prompts in your terminal to create a new Deno Deploy application, you
+may need to log in to your Deno Deploy console, and select an organization if
+you belong to more than one.
+
+Deploy will automatically recognize that this is a Svelte project and set the
+appropriate settings, so all we need to do is click **Create App** in the Deno
+Deploy console.
+
+## Tunnel to your local server
+
+The tunnel feature is built into the Deno CLI. It unlocks some of the powerful
+features of Deno deploy, but for your local server!
+
+To start a tunnel to your local server, run the following command in your
+project directory:
+
+```sh
+deno run --tunnel dev
+```
+
+If redirected to the browser, authenticate with your Deno Deploy account.
+
+This command will start your local server and create a secure tunnel to it.
+After a few moments, you should see output similar to this:
+
+```sh
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+You are connected to https://my-app-name.myusername.deno.net
+```
+
+That public url (`https://my-app-name.myusername.deno.net` in this example) is
+now accessible from anywhere on the internet! You can share this URL with others
+to access your local Svelte app, (much like ngrok or other tunneling services).
+
+You can make changes to your local code as normal, and the changes will be
+reflected at the public URL in real-time.
+
+## Configuring environment variables
+
+The tunnel feature allows your pull in environment variables from your Deno
+Deploy project. This is useful for testing features that rely on environment
+variables locally, without sharing sensitive information.
+
+Lets edit our Svelte app to display some environment variables and then set them
+in the Deno Deploy console and use them locally.
+
+First, lets add some TypeScript code to read environment variables in our Svelte
+app. Make a new file called `src/routes/+page.server.ts` with the following
+code:
+
+```ts title="src/routes/+page.server.ts"
+import type { PageServerLoad } from "./$types.d.ts";
+
+export const load: PageServerLoad = async () => {
+  return {
+    message: Deno.env.get("TUTORIAL_MESSAGE") ?? "set TUTORIAL_MESSAGE",
+    username: Deno.env.get("TUTORIAL_USERNAME") ?? "Svelte developer",
+    accent: Deno.env.get("TUTORIAL_ACCENT") ?? "#ff3e00",
+  };
+};
+```
+
+This will load three environment variables: `TUTORIAL_MESSAGE`,
+`TUTORIAL_USERNAME`, and `TUTORIAL_ACCENT`, or default values if they are not
+set.
+
+Then we'll modify our Svelte page to display these values:
+
+```svelte title="src/routes/+page.svelte"
+<script lang="ts">
+	export let data: {
+		message: string;
+		username: string;
+		accent: string;
+	};
+
+	const { message, username, accent } = data;
+</script>
+
+<h1>Environment variable demo</h1>
+<p>
+    This message is read from <code>PUBLIC_TUTORIAL_MESSAGE</code>:<br />
+    <strong style="color: {accent}">{message}</strong>
+</p>
+<p>
+    Hi <strong style="color: {accent}">{username}</strong>! Try editing your env variables and refresh the page to see the value change at build-time.
+</p>
+```
+
+Finally, we need to set these environment variables in the Deno Deploy console.
+
+Go to your Deno Deploy project dashboard, click on the **Settings** tab, then
+under the **Environment Variables** section, click **Create a new Environment
+Variable**.
+
+Click **+ Add Variable** three times to add the following variables:
+
+| Name              | Value                              |
+| ----------------- | ---------------------------------- |
+| TUTORIAL_MESSAGE  | This message is set in Deno Deploy |
+| TUTORIAL_USERNAME | [Your Name]                        |
+| TUTORIAL_ACCENT   | #0099ff                            |
+
+Click the **Save** button to save your environment variables.
+
+Now you can run your Svelte app with the tunnel again:
+
+```sh
+deno run --tunnel dev
+```
+
+And when you visit either the local or public URL, you should see your
+environment variables reflected in the app!
+
+You may have noticed, when creating the Environment Variables in the Deno Deploy
+console, that there was a **Contexts** dropdown. This allows you to set
+different environment variables for different deployment contexts, such as
+Production and local.
+
+Try creating different values for the `local` context, then run your app with
+the `---tunnel` flag to see the local context values in action.
+
+🦕 Now that you know how to use the '--tunnel' flag, you can securely expose
+your local development server to the internet and test environment-specific
+configurations with ease. Why not try adding a database connection next? Check
+out the [tunnel database tutorial](/examples/tunnel_database_tutorial/) to see
+how to connect your local app to a database using the tunnel feature.
 
 
 ---
@@ -44281,6 +45115,10 @@ vfox use --global deno
 </deno-tab>
 <deno-tab value="windows" label="Windows">
 
+**NOTE:** Deno requires Windows 10 version 1709, or Windows Server 2016 version
+1709 and up, due to requiring
+[IsWow64Process2](https://learn.microsoft.com/en-us/windows/win32/api/wow64apiset/nf-wow64apiset-iswow64process2).
+
 Using PowerShell (Windows):
 
 ```powershell
@@ -47195,6 +48033,46 @@ Watcher Process started.
 deno serve: Listening on http://0.0.0.0:8000/
 ```
 
+## Initialize an empty project
+
+Running `deno init --empty` bootstraps an empty project with a basic console
+log.
+
+```sh
+$ deno init --empty
+✅ Project initialized
+
+Run these commands to get started
+
+  # Run the program
+  deno run main.ts
+
+  # Run the program and watch for file changes
+  deno task dev
+```
+
+Your [`deno.json`](/runtime/fundamentals/configuration/) file will look like
+this:
+
+```json
+{
+  "tasks": {
+    "dev": "deno run --watch main.ts"
+  }
+}
+```
+
+Now, you can run the project, which
+[watches for changes](/runtime/getting_started/command_line_interface/#watch-mode),
+by running `deno task dev`.
+
+```sh
+$ deno task dev
+Task dev deno run --watch main.ts
+Watcher Process started.
+Hello world!
+```
+
 ## Generate a library project
 
 You can append a `--lib` flag to add extra parameters to your `deno.json`, such
@@ -48340,6 +49218,16 @@ To stop the run command use `ctrl + c`.
 
 ---
 
+# deno sandbox
+
+> Spin up a secure Linux microVM
+
+URL: https://docs.deno.com/runtime/reference/cli/sandbox
+
+
+
+---
+
 # deno serve
 
 > A flexible and configurable HTTP server for Deno
@@ -48950,6 +49838,46 @@ echo data[0-9].csv
 ```
 
 The supported glob characters are `*`, `?`, and `[`/`]`.
+
+### Shell options
+
+`deno task` supports shell options in Deno 2.6.6 and above to control glob
+expansion and pipeline behavior. By default, `failglob` and `globstar` are
+enabled.
+
+- **failglob** - When enabled, globs that don't match any files will cause an
+  error. Disable with `shopt -u failglob`.
+- **globstar** - When enabled, `**` matches zero or more directories. Disable
+  with `shopt -u globstar`.
+- **nullglob** - When enabled, globs that don't match any files expand to
+  nothing instead of the literal glob pattern. Enable with `shopt -s nullglob`.
+- **pipefail** - When enabled, the exit code of a pipeline is the exit code of
+  the last command to exit with a non-zero status, or zero if all commands exit
+  successfully. Enable with `set -o pipefail`.
+
+Examples:
+
+```jsonc title="deno.jsonc"
+{
+  "tasks": {
+    // disable failglob
+    "task1": "shopt -u failglob && rm -rf *.ts",
+    // disable failglob and enable nullglob
+    "task2": "shopt -u failglob && shopt -s nullglob && rm -rf *.ts",
+    // disable globstar
+    "task3": "shopt -u globstar && echo **/*.ts",
+    // enable pipefail
+    "task4": "set -o pipefail && cat missing.txt | echo 'hello'"
+  }
+}
+```
+
+:::note
+
+Shell options do not propagate to `deno task` subprocesses. Each `deno task`
+invocation starts with the default options.
+
+:::
 
 ## Built-in commands
 
@@ -51294,8 +52222,8 @@ registries. It does not expect any parameters.
 is a read only document that can be displayed in the client. This allows clients
 to access documents in the Deno cache, like remote modules and TypeScript
 library files built into Deno. The Deno language server will encode all internal
-files under the custom schema `deno:`, so clients should route all requests for
-the `deno:` schema back to the `deno/virtualTextDocument` API.
+files under the custom scheme `deno:`, so clients should route all requests for
+the `deno:` scheme back to the `deno/virtualTextDocument` API.
 
 It also supports a special URL of `deno:/status.md` which provides a markdown
 formatted text document that contains details about the status of the LSP for
@@ -53470,9 +54398,9 @@ URL: https://docs.deno.com/runtime/reference/std/async
 
 ## Overview
 
-<p>Provide helpers with asynchronous tasks like <a href="https://jsr.io/@std/async@1.0.16/doc/~/delay" rel="nofollow"><code>delays</code></a>,
-<a href="https://jsr.io/@std/async@1.0.16/doc/~/debounce" rel="nofollow"><code>debouncing</code></a>, <a href="https://jsr.io/@std/async@1.0.16/doc/~/retry" rel="nofollow"><code>retrying</code></a>, or
-<a href="https://jsr.io/@std/async@1.0.16/doc/~/pooledMap" rel="nofollow"><code>pooling</code></a>.</p>
+<p>Provide helpers with asynchronous tasks, like <a href="https://jsr.io/@std/async@1.1.1/doc/~/delay" rel="nofollow"><code>delay</code></a>,
+<a href="https://jsr.io/@std/async@1.1.1/doc/~/debounce" rel="nofollow"><code>debounce</code></a>, <a href="https://jsr.io/@std/async@1.1.1/doc/~/retry" rel="nofollow"><code>retry</code></a>, or
+<a href="https://jsr.io/@std/async@1.1.1/doc/~/pooledMap" rel="nofollow"><code>pooledMap</code></a>.</p>
 
 ```js
 import { delay } from "@std/async/delay";
@@ -54307,12 +55235,9 @@ console.log(new Uint8Array(hash));
 ```ts
 import { crypto } from "@std/crypto/crypto";
 
-const toHex = (bytes: Uint8Array) =>
-  Array.from(bytes).map((b) => b.toString(16).padStart(2, "0")).join("");
-
 const data = new TextEncoder().encode("hello");
 const buf = await crypto.subtle.digest("BLAKE3", data);
-console.log(toHex(new Uint8Array(buf))); // e.g. "ea..."
+console.log(new Uint8Array(buf).toHex()); // e.g. "ea..."
 ```
 
 ### Hash a file (BLAKE3)
@@ -55862,7 +56787,7 @@ therefore is not provided.</p>
 </blockquote>
 <h2 id="user-agent-handling">
 User agent handling</h2>
-<p>The <a href="https://jsr.io/@std/http@1.0.23/doc/~/UserAgent" rel="nofollow"><code>UserAgent</code></a> class provides user agent string parsing, allowing
+<p>The <a href="https://jsr.io/@std/http@1.0.24/doc/~/UserAgent" rel="nofollow"><code>UserAgent</code></a> class provides user agent string parsing, allowing
 a user agent flag to be semantically understood.</p>
 <p>For example to integrate the user agent provided in the header <code>User-Agent</code>
 in an http request would look like this:</p>
@@ -56919,7 +57844,6 @@ deno add jsr:@std/math
 
 <!-- custom:start -->
 <!-- Add persistent custom content below. This section is preserved across generations. -->
-
 <!-- custom:end -->
 
 
@@ -57767,10 +58691,10 @@ primary    │   │
 
 <h2 id="ranges">
 Ranges</h2>
-<p>A version <a href="https://jsr.io/@std/semver@1.0.7/doc/~/Range" rel="nofollow"><code>Range</code></a> is a set of <a href="https://jsr.io/@std/semver@1.0.7/doc/~/Comparator" rel="nofollow"><code>Comparator</code></a>s which specify
+<p>A version <a href="https://jsr.io/@std/semver@1.0.8/doc/~/Range" rel="nofollow"><code>Range</code></a> is a set of <a href="https://jsr.io/@std/semver@1.0.8/doc/~/Comparator" rel="nofollow"><code>Comparator</code></a>s which specify
 versions that satisfy the range.</p>
-<p>A <a href="https://jsr.io/@std/semver@1.0.7/doc/~/Comparator" rel="nofollow"><code>Comparator</code></a> is composed of an <a href="https://jsr.io/@std/semver@1.0.7/doc/~/Operator" rel="nofollow"><code>Operator</code></a> and a
-<a href="https://jsr.io/@std/semver@1.0.7/doc/~/SemVer" rel="nofollow">SemVer</a>. The set of primitive <code>operators</code> is:</p>
+<p>A <a href="https://jsr.io/@std/semver@1.0.8/doc/~/Comparator" rel="nofollow"><code>Comparator</code></a> is composed of an <a href="https://jsr.io/@std/semver@1.0.8/doc/~/Operator" rel="nofollow"><code>Operator</code></a> and a
+<a href="https://jsr.io/@std/semver@1.0.8/doc/~/SemVer" rel="nofollow">SemVer</a>. The set of primitive <code>operators</code> is:</p>
 <ul>
 <li><code>&lt;</code> Less than</li>
 <li><code>&lt;=</code> Less than or equal to</li>
@@ -57812,7 +58736,7 @@ aware of the risk. However, it is still not appropriate to assume that they have
 opted into taking a similar risk on the <em>next</em> set of prerelease versions.</p>
 <h4 id="prerelease-identifiers">
 Prerelease Identifiers</h4>
-<p>The method <a href="https://jsr.io/@std/semver@1.0.7/doc/~/increment" rel="nofollow"><code>increment</code></a> takes an additional <code>identifier</code> string
+<p>The method <a href="https://jsr.io/@std/semver@1.0.8/doc/~/increment" rel="nofollow"><code>increment</code></a> takes an additional <code>identifier</code> string
 argument that will append the value of the string as a prerelease identifier:</p>
 
 ```js
@@ -57953,7 +58877,7 @@ version <code>1.2.10</code> would not be greater than the range (because <code>2
 which is higher), nor less than the range (since <code>1.2.8</code> satisfies, which is
 lower), and it also does not satisfy the range.</p>
 <p>If you want to know if a version satisfies or does not satisfy a range, use the
-<a href="https://jsr.io/@std/semver@1.0.7/doc/~/satisfies" rel="nofollow"><code>satisfies</code></a> function.</p>
+<a href="https://jsr.io/@std/semver@1.0.8/doc/~/satisfies" rel="nofollow"><code>satisfies</code></a> function.</p>
 
 ### Add to your project
 
@@ -58894,11 +59818,11 @@ URL: https://docs.deno.com/runtime/reference/std/yaml
 
 ## Overview
 
-<p><a href="https://jsr.io/@std/yaml@1.0.10/doc/~/parse" rel="nofollow"><code>parse</code></a> and <a href="https://jsr.io/@std/yaml@1.0.10/doc/~/stringify" rel="nofollow"><code>stringify</code></a> for handling
+<p><a href="https://jsr.io/@std/yaml@1.0.11/doc/~/parse" rel="nofollow"><code>parse</code></a> and <a href="https://jsr.io/@std/yaml@1.0.11/doc/~/stringify" rel="nofollow"><code>stringify</code></a> for handling
 <a href="https://yaml.org/" rel="nofollow">YAML</a> encoded data.</p>
 <p>Ported from
 <a href="https://github.com/nodeca/js-yaml/commit/665aadda42349dcae869f12040d9b10ef18d12da" rel="nofollow">js-yaml v3.13.1</a>.</p>
-<p>Use <a href="https://jsr.io/@std/yaml@1.0.10/doc/~/parseAll" rel="nofollow"><code>parseAll</code></a> for parsing multiple documents in a single YAML
+<p>Use <a href="https://jsr.io/@std/yaml@1.0.11/doc/~/parseAll" rel="nofollow"><code>parseAll</code></a> for parsing multiple documents in a single YAML
 string.</p>
 <p>This package generally supports
 <a href="https://yaml.org/spec/1.2.2/" rel="nofollow">YAML 1.2.x</a> (latest) and some

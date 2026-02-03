@@ -450,14 +450,6 @@ Represents a monthly aggregation, detailing both the total count and the cumulat
 
 
 
-# Retrieve invoiced usage
-Source: https://getlago.com/docs/api-reference/analytics/invoiced-usage
-
-GET /analytics/invoiced_usage
-Reports a monthly analysis focused on the revenue generated from all usage-based fees. It exclusively accounts for revenue that has been formally invoiced. Importantly, this report does not include revenue related to the usage in the current billing period, limiting its scope to previously invoiced amounts.
-
-
-
 # Retrieve MRR (monthly recurring revenue)
 Source: https://getlago.com/docs/api-reference/analytics/mrr
 
@@ -474,6 +466,14 @@ Overdue balance is the total amount associated with overdue invoices (invoices w
 
 
 
+# Retrieve usage data
+Source: https://getlago.com/docs/api-reference/analytics/usage
+
+GET /analytics/usage
+Returns usages.
+
+
+
 # API standards
 Source: https://getlago.com/docs/api-reference/api-standards
 
@@ -485,7 +485,7 @@ Lago API endpoints follow common RESTful standards.
 
 Authentication is required for most endpoints, via an API key provided in the `Authorization` header as:
 
-```http  theme={"dark"}
+```http theme={"dark"}
 Authorization: Bearer <your_api_key>
 ```
 
@@ -511,7 +511,7 @@ GET /api/v1/subscriptions?page=1&per_page=20&external_customer_id=123
 
 In this case, the parameter will be described in the API reference as:
 
-<ParamField query="external_customer_id" type="string">
+<ParamField type="string">
   The customer external unique identifier (provided by your own application)
 
   Example: `"5eb02857-a71e-4ea2-bcf9-57d3a41bc6ba"`
@@ -527,7 +527,7 @@ GET /api/v1/applied_coupons?coupon_code[]=10_OFF&coupon_code[]=20_OFF
 
 In this case, the parameter will be described in the API reference as:
 
-<ParamField query="coupon_code[]" type="enum<string>[]">
+<ParamField type="enum<string>[]">
   The coupon codes to filter the applied coupons by.
 </ParamField>
 
@@ -1114,32 +1114,32 @@ This object represents a coupon applied to a customer. It can override the initi
 ## Attributes
 
 <ResponseField name="applied_coupon" type="object">
-  <Expandable title="object" defaultOpen="true">
-    <ResponseField name="lago_id" type="string" required>
+  <Expandable title="object">
+    <ResponseField name="lago_id" type="string">
       Unique identifier of the applied coupon, created by Lago.
     </ResponseField>
 
-    <ResponseField name="lago_coupon_id" type="string" required>
+    <ResponseField name="lago_coupon_id" type="string">
       Unique identifier of the coupon, created by Lago.
     </ResponseField>
 
-    <ResponseField name="coupon_name" type="string" required>
+    <ResponseField name="coupon_name" type="string">
       The name of the coupon.
     </ResponseField>
 
-    <ResponseField name="coupon_code" type="string" required>
+    <ResponseField name="coupon_code" type="string">
       Unique code used to identify the coupon.
     </ResponseField>
 
-    <ResponseField name="external_customer_id" type="string" required>
+    <ResponseField name="external_customer_id" type="string">
       The customer external unique identifier (provided by your own application)
     </ResponseField>
 
-    <ResponseField name="lago_customer_id" type="string" required>
+    <ResponseField name="lago_customer_id" type="string">
       Unique identifier of the customer, created by Lago.
     </ResponseField>
 
-    <ResponseField name="status" type="string" required>
+    <ResponseField name="status" type="string">
       The status of the coupon. Can be either `active` or `terminated`.
     </ResponseField>
 
@@ -1162,7 +1162,7 @@ This object represents a coupon applied to a customer. It can override the initi
       It indicates the exact moment when the coupon will expire and is no longer valid.
     </ResponseField>
 
-    <ResponseField name="frequency" type="string" required>
+    <ResponseField name="frequency" type="string">
       The type of frequency for the coupon. It can have three possible values: `once`, `recurring`, or `forever`.
 
       * If set to `once`, the coupon is applicable only for a single use.
@@ -1184,7 +1184,7 @@ This object represents a coupon applied to a customer. It can override the initi
       The percentage rate of the coupon. This field is required only for coupons with a `percentage` coupon type.
     </ResponseField>
 
-    <ResponseField name="created_at" type="string" required>
+    <ResponseField name="created_at" type="string">
       The date and time when the coupon was assigned to a customer. It is expressed in UTC format according to the ISO 8601 datetime standard.
     </ResponseField>
 
@@ -2206,6 +2206,40 @@ This endpoint retrieves an existing credit note.
   }
   ```
 </RequestExample>
+
+
+# Replace all metadata
+Source: https://getlago.com/docs/api-reference/credit-notes/metadata/create-metadata-cn
+
+POST /credit_notes/{lago_id}/metadata
+This endpoint replaces all existing metadata on a credit note with the provided key-value pairs.
+Any existing metadata keys not included in the request will be removed.
+
+
+
+# Delete a metadata
+Source: https://getlago.com/docs/api-reference/credit-notes/metadata/delete-a-metadata-cn
+
+DELETE /credit_notes/{lago_id}/metadata/{key}
+This endpoint removes a single metadata key from a credit note.
+
+
+
+# Delete all metadata
+Source: https://getlago.com/docs/api-reference/credit-notes/metadata/delete-all-metadata-cn
+
+DELETE /credit_notes/{lago_id}/metadata
+This endpoint removes all metadata from a credit note.
+
+
+
+# Udpate metadata
+Source: https://getlago.com/docs/api-reference/credit-notes/metadata/update-metadata-cn
+
+PATCH /credit_notes/{lago_id}/metadata
+This endpoint merges the provided metadata with existing metadata on the credit note.
+Existing keys not in the request are preserved. New keys are added, existing keys are updated.
+
 
 
 # Update a credit note
@@ -3436,11 +3470,11 @@ For some 4xx errors, the response body will include additional information to he
 
 ## Error fields
 
-<ResponseField name="status" type="number" required>
+<ResponseField name="status" type="number">
   The HTTP status code.
 </ResponseField>
 
-<ResponseField name="error" type="string" required>
+<ResponseField name="error" type="string">
   A generic error message.
 </ResponseField>
 
@@ -3463,7 +3497,7 @@ For some 4xx errors, the response body will include additional information to he
 
 ### bad\_request\_error
 
-```json  theme={"dark"}
+```json theme={"dark"}
 { "status": 400, "error": "BadRequest: [error.message]" }
 ```
 
@@ -3474,7 +3508,7 @@ For some 4xx errors, the response body will include additional information to he
 
 ### unauthorized\_error
 
-```json  theme={"dark"}
+```json theme={"dark"}
 { "status": 401, "error": "[message]" }
 ```
 
@@ -3485,7 +3519,7 @@ For some 4xx errors, the response body will include additional information to he
 
 ### forbidden\_error
 
-```json  theme={"dark"}
+```json theme={"dark"}
 { "status": 403, "error": "Forbidden", "code": "[error_code]" }
 ```
 
@@ -3497,7 +3531,7 @@ For some 4xx errors, the response body will include additional information to he
 
 ### not\_found\_error
 
-```json  theme={"dark"}
+```json theme={"dark"}
 { "status": 404, "error": "Not Found", "code": "[resource]_not_found" }
 ```
 
@@ -3530,7 +3564,7 @@ For some 4xx errors, the response body will include additional information to he
 
 ### method\_not\_allowed\_error
 
-```json  theme={"dark"}
+```json theme={"dark"}
 { "status": 405, "error": "Method Not Allowed", "code": "[error_code]" }
 ```
 
@@ -3570,43 +3604,43 @@ For some 4xx errors, the response body will include additional information to he
 
 ### validation\_errors
 
-```json  theme={"dark"}
+```json theme={"dark"}
 { "status": 422, "error": "Unprocessable Entity", "code": "validation_errors", "error_details": [validation_errors] }
 ```
 
 ### provider\_error
 
-```json  theme={"dark"}
+```json theme={"dark"}
 { "status": 422, "error": "Unprocessable Entity", "code": "provider_error", "provider": { "code": "[provider_code]" }, "error_details": [serialized_error] }
 ```
 
 ### third\_party\_error
 
-```json  theme={"dark"}
+```json theme={"dark"}
 { "status": 422, "error": "Unprocessable Entity", "code": "third_party_error", "error_details": { "third_party": "[third_party]", "thirdparty_error": "[error_message]" } }
 ```
 
 ### stripe\_required\_error
 
-```json  theme={"dark"}
+```json theme={"dark"}
 { "status": 422, "error": "Unprocessable Entity", "code": "stripe_required", "message": "Only Stripe is supported for authorization" }
 ```
 
 ### too\_many\_provider\_requests\_error
 
-```json  theme={"dark"}
+```json theme={"dark"}
 { "status": 429, "error": "Too Many Provider Requests", "code": "too_many_provider_requests", "error_details": { "provider_name": "[provider_name]", "message": "[message]" } }
 ```
 
 ### internal\_server\_error
 
-```json  theme={"dark"}
+```json theme={"dark"}
 { "status": 500, "errors": [{ "message": "[error_message]", "backtrace": [backtrace] }], "data": {} }
 ```
 
 ### health\_check\_error
 
-```json  theme={"dark"}
+```json theme={"dark"}
 { "version": "[version]", "github_url": "[url]", "message": "Unhealthy", "details": "[error_message]" }
 ```
 
@@ -3851,6 +3885,11 @@ Source: https://getlago.com/docs/api-reference/events/get-specific
 
 GET /events/{transaction_id}
 This endpoint is used for retrieving a specific usage measurement event that has been sent to a customer or a subscription.
+
+Note that transaction_id is unique per external_subscription_id so multiple subscriptions can share the same transaction_id. This endpoint will only return the first event found with the given transaction_id.
+
+WARNING: If your Lago organization is configured to use the Clickhouse-based event pipeline, multiple events can share the same `transaction_id` (with different timestamps). This endpoint will only return the first event found.
+
 
 <RequestExample>
   ```bash cURL theme={"dark"}
@@ -4205,7 +4244,7 @@ You must retrieve your API key from your account.
 
 <Tabs>
   <Tab title="Curl">
-    ```shell  theme={"dark"}
+    ```shell theme={"dark"}
     LAGO_URL="https://api.getlago.com"
     API_KEY="__YOUR_API_KEY__"
 
@@ -4219,13 +4258,13 @@ You must retrieve your API key from your account.
   <Tab title="Python">
     **Install package with pip**
 
-    ```bash  theme={"dark"}
+    ```bash theme={"dark"}
     pip install lago-python-client
     ```
 
     **Usage**
 
-    ```python  theme={"dark"}
+    ```python theme={"dark"}
     from lago_python_client import Client
 
     # By default, this connects to Lago's hosted servers in the US region.
@@ -4242,20 +4281,20 @@ You must retrieve your API key from your account.
   <Tab title="Ruby">
     **Add the gem in your Gemfile**
 
-    ```bash  theme={"dark"}
+    ```bash theme={"dark"}
     bundle add lago-ruby-client
     ```
 
     Or if bundler is not being used to manage dependencies, install the gem by
     executing:
 
-    ```bash  theme={"dark"}
+    ```bash theme={"dark"}
     gem install lago-ruby-client
     ```
 
     **Usage**
 
-    ```ruby  theme={"dark"}
+    ```ruby theme={"dark"}
     require 'lago-ruby-client'
 
     # By default, this will connect to the US region of Lago's hosted servers.
@@ -4279,13 +4318,13 @@ You must retrieve your API key from your account.
   <Tab title="Javascript">
     **Install package with npm**
 
-    ```bash  theme={"dark"}
+    ```bash theme={"dark"}
     npm install lago-javascript-client
     ```
 
     **Usage**
 
-    ```js  theme={"dark"}
+    ```js theme={"dark"}
     import { Client } from 'lago-javascript-client'
     // By default, this will connect to Lago's hosted servers in the US region.
     const client = Client('__YOUR_API_KEY__')
@@ -4301,13 +4340,13 @@ You must retrieve your API key from your account.
   <Tab title="Go">
     **Install package**
 
-    ```bash  theme={"dark"}
+    ```bash theme={"dark"}
     go get github.com/getlago/lago-go-client@v1
     ```
 
     **Usage**
 
-    ```go  theme={"dark"}
+    ```go theme={"dark"}
     import "github.com/getlago/lago-go-client"
 
     func main() {
@@ -5182,7 +5221,7 @@ Paginated responses include a `meta` object that provides detailed pagination in
 * `total_count`: The total number of records available.
 
 <ResponseExample>
-  ```json  theme={"dark"}
+  ```json theme={"dark"}
   {
     "coupons": [
       // ...
@@ -5199,17 +5238,17 @@ Paginated responses include a `meta` object that provides detailed pagination in
 
 ### Parameters
 
-<ParamField query="page" type="integer" required="false" default={1}>
+<ParamField type="integer">
   The page number to return.
 </ParamField>
 
-<ParamField query="per_page" type="integer" required="false">
+<ParamField type="integer">
   The number of results per page. In most cases, the default value is `100`.
 </ParamField>
 
 ### List response
 
-<ResponseField name="meta.current_page" type="number" required>
+<ResponseField name="meta.current_page" type="number">
   The current page number.
 </ResponseField>
 
@@ -5221,11 +5260,11 @@ Paginated responses include a `meta` object that provides detailed pagination in
   The previous page number.
 </ResponseField>
 
-<ResponseField name="meta.total_pages" type="number" required>
+<ResponseField name="meta.total_pages" type="number">
   The total number of pages.
 </ResponseField>
 
-<ResponseField name="meta.total_count" type="number" required>
+<ResponseField name="meta.total_count" type="number">
   The total number of records.
 </ResponseField>
 
@@ -5538,24 +5577,24 @@ The document template includes translation keys for:
 
 To add a new language:
 
-1. [Download the document template](https://uploads-ssl.webflow.com/635119506e36baf5c267fecd/657743325ca22f3e97f23728_doc-locales-invoice-templates.pdf) to see where each key is located;
+1. [Download the document template](http://d376nw0erossg9.cloudfront.net/doc-locales-template-copies.pdf) to see where each key is located;
 2. Use the text file below to provide translations for the new language; and
 3. Send the new text file to [hello@getlago.com](mailto:hello@getlago.com), so that we can review it and add it to the codebase.
 
 Thanks for your time and support!
 
-```json  theme={"dark"}
+```json theme={"dark"}
 en:
-  money:   
+  money:
     //[AA] format: $4,500.00
     format: '%u%n'
     decimal_mark: '.'
     thousands_separator: ','
   date:
-    formats: 
+    formats:
       //[AB] format: Dec. 01, 2022
       default: '%b. %d, %Y'
-    abbr_day_names: 
+    abbr_day_names:
       - Sun
       - Mon
       - Tue
@@ -5563,7 +5602,7 @@ en:
       - Thu
       - Fri
       - Sat
-    abbr_month_names: 
+    abbr_month_names:
       - Jan
       - Feb
       - Mar
@@ -5576,7 +5615,7 @@ en:
       - Oct
       - Nov
       - Dec
-    day_names: 
+    day_names:
       - Sunday
       - Monday
       - Tuesday
@@ -5584,7 +5623,7 @@ en:
       - Thursday
       - Friday
       - Saturday
-    month_names: 
+    month_names:
       - January
       - February
       - March
@@ -5609,69 +5648,70 @@ en:
 en:
   invoice:
     [1.1] document_name: "Invoice"
-    [1.2] document_tax_name: "Tax invoice"
-    [1.3] invoice_number: "Invoice Number"
-    [1.4] issue_date: "Issue Date"
-    [1.5] payment_term: "Net payment term"
-    [1.6] payment_term_days: "%{net_payment_term} days"
-    [1.7] bill_from: "From"
-    [1.8] bill_to: "Bill to"
-    [1.9] tax_identification_number: "Tax ID: %{tax_identification_number}"
-    [1.10] due_date: "Due %{date}"
-    [1.11] item: "Item"
-    [1.12] unit: "Unit"
-    [1.13] unit_price: "Unit price"
-    [1.14] tax_rate: "Tax rate"
-    [1.15] amount: "Amount"
-    [1.16] sub_total_without_tax: "Sub total (excl. tax)"
-    [1.17] tax_name: "%{name} (%{rate}% on %{amount})"
-    [1.18] sub_total_with_tax: "Sub total (incl. tax)"
-    [1.19] credit_notes: "Credit Notes"
-    [1.20] prepaid_credits: "Prepaid credits"
-    [1.21] total_due: "Total due"
-    [1.22] powered_by: "Powered by"
+    [1.2] invoice_number: "Invoice number"
+    [1.3] issue_date: "Issue date"
+    [1.4] payment_term: "Payment term"
+    [1.5] payment_term_days: "%{net_payment_term} days"
+    [1.6] bill_from: "From"
+    [1.7] bill_to: "Bill to"
+    [1.8] tax_identification_number: "Tax ID: %{tax_identification_number}"
+    [1.9] due_date: "Due %{date}"
+    [1.10] item: "Item"
+    [1.11] unit: "Unit"
+    [1.12] unit_price: "Unit price"
+    [1.13] tax_rate: "Tax rate"
+    [1.14] amount: "Amount (excl. tax)"
+    [1.15] sub_total_without_tax: "Sub total (excl. tax)"
+    [1.16] tax_name: "%{name} (%{rate}% on %{amount})"
+    [1.17] sub_total_with_tax: "Sub total (incl. tax)"
+    [1.18] credit_notes: "Credit notes"
+    [1.19] prepaid_credits: "Prepaid credits"
+    [1.20] total_due: "Total due"
+    [1.21] powered_by: "Powered by"
+
+    [AA] total_amount: "Total amount"
 
     [AC] details: "%{resource} details"
     [2.1] date_from: "Fees from"
     [2.2] date_to: "to"
-    [AD] subscription_interval: "%{plan_interval} subscription - %{plan_name}"
+    [AD] subscription_interval: "%{plan_interval} subscription fee - %{plan_name}"
     [2.3] weekly: "Weekly"
     [2.4] monthly: "Monthly"
     [2.5] quarterly: "Quarterly"
     [2.6] yearly: "Yearly"
 
     graduated & graduated percentage:
-      [2.7] fee_per_unit_for_the_first: "Fee per unit for the first {to}"
-      [2.8] fee_per_unit_for_the_next: "Fee per unit for the next §{from} to 8{to}"
-      [2.9] fee_per_unit_for_the_last: "Fee per unit for {from} and above"
-      [2.10] flat_fee_for_the_first: "Flat fee for first 8{to}"
-      [2.11] flat_fee_for_the_next "Flat fee for the next {from} to (to}"
-      [2.12] flat_fee_for_the_last: "Flat fee for {from} and above"
+      [2.7] fee_per_unit_for_the_first: "Fee per unit for the first %{to}"
+      [2.8] fee_per_unit_for_the_next: "Fee per unit for the next %{from} to %{to}"
+      [2.9] fee_per_unit_for_the_last: "Fee per unit for %{from} and above"
+      [2.10] flat_fee_for_the_first: "Flat fee for first %{to}"
+      [2.11] flat_fee_for_the_next: "Flat fee for next %{from} to %{to}"
+      [2.12] flat_fee_for_the_last: "Flat fee for %{from} and above"
       [2.13] sub_total: "Subtotal"
-    
+
     [2.14] fee_prorated: "The fee is prorated on days of usage, the displayed unit price is an average"
 
     package:
-      [2.15] free_units_for_the_first: "Free units for the first {count}"
+      [2.15] free_units_for_the_first: "Fee per unit for the first %{count}"
       [2.16] fee_per_package: "Fee per package"
-      [2.17] fee_per_package_unit_price: "§{amount} per {package_size}"
+      [2.17] fee_per_package_unit_price: "%{amount} per %{package_size}"
 
     percentage:
-      [2.18] total_event: "Total event"
+      [2.18] total_event: "Total events: %{total_events} transactions"
       [2.19] free_units_per_transaction:
         one: "Free units for 1 transaction"
-        other: "Free units for {count} transactions"
-      [2.20] percentage_rate_on_amount: "Rate on the amount"
-      [2.21] fee_per_transaction: "Fixed fee per transaction"
-      [2.22] adjustment_per_transaction: "Adjustment for min/max per transaction"
-  
-    [2.23] true_up_metric: "%{metric} • True-up"
+        other: "Free units for %{count} transactions"
+      [2.20] percentage_rate_on_amount: "Fee on the amount"
+      [2.21] fee_per_transaction: "Fee per transaction"
+      [2.22] adjustment_per_transaction: "Adjustment for min/ max per transaction"
+
+    [2.23] true_up_metric: "%{metric} • True up"
     [2.24] true_up_details: "Minimum spend of %{min_amount} prorated on days of usage"
-    
+
     volume:
       [2.25] fee_per_unit: "Fee per unit"
       [2.26] flat_fee_for_all_units: "Flat fee for all units"
-    
+
     [2.27] units_prorated_per_period: "Units prorated per second per %{period}"
     [2.28] week: "week"
     [2.29] month: "month"
@@ -5703,7 +5743,7 @@ en:
     total_unit: "Total number of units: %{units}"
     amount_with_tax: "Amount (incl. tax)"
     amount_without_tax: "Amount (excl. tax)"
-    
+
 
 =====================================================================
 
@@ -5715,19 +5755,19 @@ en:
     [5.3] invoice_number: "Invoice number"
     [5.4] issue_date: "Issue date"
     [5.5] credit_from: "From"
-    [5.6] credit_to: "Credit to"
-    [5.7] tax_identification_number: "ID fiscal: %{tax_identification_number}"
+    [5.6] credit_to: "Bill to"
+    [5.7] tax_identification_number: "Tax ID: %{tax_identification_number}"
     [5.8] refunded_notice: "Refunded on %{issuing_date}"
     [5.9] credited_notice: "Credited on customer balance on %{issuing_date}"
     [5.10] credited_refunded_notice: "Credited on customer balance and refunded on %{issuing_date}"
     [5.11] item: "Item"
     [5.12] tax_rate: "Tax rate"
     [5.13] amount: "Amount (excl. tax)"
-    [5.14] subscription: "Subscription"
-    [5.15] true_up_metric: "%{metric} • True-up"
+    [5.14] subscription: "Subscription - %{plan_name}"
+    [5.15] true_up_metric: "%{metric} • True up"
     [5.16] coupon_adjustment: "Coupons"
     [5.17] sub_total_without_tax: "Sub total (excl. tax)"
-    [5.18] tax: "%{name} (%{rate}% on %{amount})"
+    [5.18] tax: "Sales tax (%{rate}% on %{amount})"
     [5.19] credited_on_customer_balance: "Credited on customer balance"
     [5.20] refunded: "Refunded"
     [5.21] total: "Total"
@@ -5741,7 +5781,7 @@ en:
   email:
     invoice:
       finalized:
-        [6.1] subject: "Your invoice from {organization_name} #%{invoice_number}"
+        [6.1] subject: "Your invoice from %{organization_name} #%{invoice_number}"
         [6.2] invoice_from: "Invoice from %{organization_name}"
         [6.3] due_date: "Due %{date}"
         [6.4] invoice_number: "Invoice number"
@@ -5749,15 +5789,15 @@ en:
         [6.6] download: "Download invoice for details"
     credit_note:
       created:
-        [6.7] subject: "Your credit note from %{organization_name} #%{credit_note_number}"
-        [6.8] credit_note_from: "Credit note from %{organization_name}"
+        [6.7] subject: "Your credit note from from %{organization_name} #%{credit_note_number}"
+        [6.8] credit_note_from: "Credit note from from %{organization_name}"
         [6.9] refunded_notice: "Refunded on %{date}"
         [6.10] credited_notice: "Credited on customer balance on %{date}"
         [6.11] credited_refunded_notice: "Credited on customer balance and refunded on %{date}"
         [6.12] credit_note_number: "Credit note number"
         [6.13] invoice_number: "Invoice number"
         [6.14] issue_date: "Issue date"
-        [6.15] download: "Download invoice for details"
+        [6.15] download: "Download credit note for details"
     [6.98] questions: "Questions? Contact us at"
     [6.99] powered_by_lago: "Powered by"
 
@@ -5767,53 +5807,119 @@ en:
 
 en:
   customer_portal:
-    [7.1] powered_by: "Powered by"
-    [7.2] customer_information: "Customer information"
-    [7.3] name: "Name"
-    [7.4] name_not_provided: "Name not provided"
-    [7.5] legal_name: "Legal name"
-    [7.6] legal_name_not_provided: "Legal name not provided"
-    [7.7] legal_number: "Legal number"
-    [7.8] legal_number_not_provided: "Legal number not provided"
-    [7.9] tax_id: "Tax ID number"
-    [7.10] tax_id_not_provided: "Tax ID number not provided"
-    [7.11] email: "Email"
-    [7.12] email_not_provided: "Email not provided"
-    [7.13] address: "Address"
-    [7.14] address_not_provided: "Address not provided"
-    [7.15] invoice_history: "Invoice history"
-    [7.16] invoices_search: "Search invoices"
-    [7.17] issuing_date: "Issuing date"
-    [7.18] invoice_number: "Invoice number"
-    [7.19] amount: "Amount"
-    [7.20] payment: "Payment "
-    [7.21] download: "Download PDF"
-    [7.22] unpaid: "Unpaid"
-    [7.23] paid: "Paid"
-    [7.24] invoices_empty_state: "There are currently no invoices attached to this customer. Please check back later, or contact us if you notice any issues."
-    [7.25] expired_customer_portal_header: "For security reasons, this page has expired"
-    [7.26] error_customer_portal_header: "Something went wrong token is invalid or has expired"
-    [7.27] something_went_wrong: "Something went wrong"
-    [7.28] please_refresh: "Please refresh the page or contact us if the error persists."
-    [7.29] refresh: "Refresh the page"
-    [7.30] not_found: "This invoice cannot be found"
-    [7.31] change_keyword: "Could you enter another keyword?"
+    [7.1] page_title: "Manage your plans & billing"
+    [7.2] wallet: "Wallet"
+    [7.3] wallet_name_balance: "%{wallet_name} - Balance"
+    [7.4] wallet_credits_count: "%{credits_count} credit"
+    [7.5] wallet_credits_used: "Total credits used"
+    [7.6] top_up_wallet: "Top up wallet"
+    [7.7] wallet_expiry_date: "Expiry date"
+    [7.8] plans: "Plans"
+    [7.9] plan_name: "%{plan_name}"
+    [7.10] plan_price: "%{amount} (excl. tax) per %{interval}"
+    [7.11] plan_renews_on: "Your plan renews on %{date}"
+    [7.12] view_usage: "View usage"
+    [7.13] customer_information: "Customer information"
+    [7.14] edit_information: "Edit information"
+    [7.15] name: "Name"
+    [7.16] billing_email: "Billing email"
+    [7.17] legal_name: "Legal name"
+    [7.18] billing_address: "Billing address"
+    [7.19] legal_number: "Legal number"
+    [7.20] shipping_address: "Shipping address"
+    [7.21] address_not_provided: "Address not provided"
+    [7.22] invoice_history: "Invoice history"
+    [7.23] total_invoiced: "Total invoiced"
+    [7.24] total_overdue: "Total overdue"
+    [7.25] invoices_search: "Search"
+    [7.26] issuing_date: "Issuing date"
+    [7.27] invoice_type: "Type"
+    [7.28] invoice_number: "Invoice number"
+    [7.29] amount: "Amount"
+    [7.30] payment: "Payment"
+    [7.31] credits: "Credits"
+    [7.32] one_off_invoice: "One off invoice"
+    [7.33] advance_charges: "Advance charges"
+    [7.34] overdue: "Overdue"
+    [7.35] progressive_billing: "Progressive billing"
+    [7.36] subscription: "Subscription"
+    [7.37] unpaid: "Unpaid"
+    [7.38] load_more: "Load more"
 
+    edit_customer:
+      [8.1] page_title: "Edit Customer Information"
+      [8.2] general_information: "General information"
+      [8.3] customer_type: "Customer type"
+      [8.4] customer_type_placeholder: "Search or select a customer type"
+      [8.5] customer_name: "Customer name"
+      [8.6] customer_name_placeholder: "Type a customer name"
+      [8.7] first_name: "First name"
+      [8.8] last_name: "Last name"
+      [8.9] first_name_placeholder: "Type a first name"
+      [8.10] last_name_placeholder: "Type a last name"
+      [8.11] legal_name: "Legal name"
+      [8.12] legal_name_placeholder: "Type a legal name"
+      [8.13] tax_identification_number: "Tax identification number"
+      [8.14] tax_identification_number_placeholder: "Type a tax identification number"
+      [8.15] email: "Email"
+      [8.16] email_placeholder: "Type an email"
+      [8.17] billing_address: "Billing address"
+      [8.18] address: "Address"
+      [8.19] address_line_1: "Address line 1"
+      [8.20] address_line_2: "Address line 2"
+      [8.21] zip_code: "Zip code"
+      [8.22] city: "City"
+      [8.23] state: "State"
+      [8.24] country: "Country"
+      [8.25] shipping_address: "Shipping address (optional)"
+      [8.26] use_billing_address: "Use the same information from the billing address"
+      [8.27] shipping_address_label: "Address"
+      [8.28] shipping_address_line_1: "Address line 1"
+      [8.29] shipping_address_line_2: "Address line 2"
+      [8.30] shipping_zip_code: "Zip code"
+      [8.31] shipping_city: "City"
+      [8.32] shipping_state: "State"
+      [8.33] shipping_country: "Country"
+      [8.34] save_information: "Save information"
 
-=====================================================================
+    usage:
+      [9.1] page_title: "Usage"
+      [9.2] plan: "Plan"
+      [9.3] plan_price: "%{amount} (excl. tax) per %{interval}"
+      [9.4] plan_renews_on: "Your plan renews on %{date}"
+      [9.5] lifetime_usage: "Lifetime usage"
+      [9.6] lifetime_usage_period: "From %{from_date} to %{to_date}"
+      [9.7] total_lifetime_usage: "Total lifetime usage"
+      [9.8] last_threshold: "Last threshold: %{amount}"
+      [9.9] next_threshold: "Next threshold not set"
 
+    current_usage:
+      [10.1] page_title: "Usage"
+      [10.2] usage_period: "From %{from_date} to %{to_date}"
+      [10.3] current_usage_tab: "Current usage"
+      [10.4] projected_usage_tab: "Projected usage"
+      [10.5] total_current_usage: "Total current usage (excl. tax)"
+      [10.6] charge_name: "Charge name"
+      [10.7] current_units: "Current units"
+      [10.8] current_amount: "Current amount"
 
-en:
-  payment_receipt:
-    [8.1] document_name: "Receipt"
-    [8.2] receipt_number: "Receipt number"
-    [8.3] payment_method: "Payment method"
-    [8.4] paid_on: "Paid on %{date}"
-    [8.5] remaining_to_pay: "Remaining to pay %{amount}"
-    [8.6] download_invoice: "Download invoice"
-    [8.7] download_receipt: "Download receipt"
-    [8.8] payment_receipt_from: "Payment receipt from %{organization_name}"
-    [8.9] subject: "Your payment receipt from %{organization_name} #%{payment_receipt_number}"
+    projected_usage:
+      [11.1] total_projected_usage: "Total projected usage (excl. tax)"
+      [11.2] projected_units: "Projected units"
+      [11.3] projected_amount: "Projected amount"
+
+    top_up_wallet:
+      [12.1] page_title: "Top-Up Wallet"
+      [12.2] credits_to_purchase: "Credits to purchase"
+      [12.3] credits_unit: "credits"
+      [12.4] purchase_amount: "You will purchase %{amount}"
+      [12.5] top_up_credits: "Top up credits"
+
+    misc:
+      [13.1] total_overdue_tooltip: "Total from past due invoices. This is the amount you owe."
+      [13.2] company: "Company"
+      [13.3] individual: "Individual"
+      [13.4] download_pdf: "Download PDF"
 ```
 
 
@@ -7892,7 +7998,7 @@ the webhook will be sent again. Lago will try to send the webhook 3 times.
 
 `POST __WEBHOOK_URL__`
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "webhook_type": "__TYPE__",
   "object_type": "OBJECT_TYPE",
@@ -8071,7 +8177,7 @@ Below is a list of the event types we currently send. Please note that additiona
 
 ## Alerts
 
-<ParamField path="alerts.triggered" type="data.object">
+<ParamField type="data.object">
   Sent when a new usage alert threshold has been crossed.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/alertTriggered)
@@ -8079,19 +8185,19 @@ Below is a list of the event types we currently send. Please note that additiona
 
 ## Credit notes and refunds
 
-<ParamField path="credit_note.created" type="data.object">
+<ParamField type="data.object">
   Sent when a new credit note has been issued for a customer. This will allow your application to proceed with the refund.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/creditNoteCreated)
 </ParamField>
 
-<ParamField path="credit_note.generated" type="data.object">
+<ParamField type="data.object">
   Sent when the PDF file has been generated for a credit note. This will allow your application to retrieve the PDF credit note.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/creditNoteGenerated)
 </ParamField>
 
-<ParamField path="credit_note.refund_failure" type="data.object">
+<ParamField type="data.object">
   Sent when there is an error related to the refund process (i.e. the payment provider cannot refund the customer).
 
   [Schema example](https://swagger.getlago.com/#/webhooks/creditNoteRefundFailure)
@@ -8101,19 +8207,19 @@ Below is a list of the event types we currently send. Please note that additiona
 
 ### Basic customer information
 
-<ParamField path="customer.created" type="data.object">
+<ParamField type="data.object">
   Sent when a customer is successfully created in Lago.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/customerCreated)
 </ParamField>
 
-<ParamField path="customer.updated" type="data.object">
+<ParamField type="data.object">
   Sent when a customer is successfully updated in Lago.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/customerUpdated)
 </ParamField>
 
-<ParamField path="integration.provider_error" type="data.object">
+<ParamField type="data.object">
   Sent when an error was encountered while processing data on an integration
 
   [Schema example](https://swagger.getlago.com/#/webhooks/integrationProviderError)
@@ -8121,25 +8227,25 @@ Below is a list of the event types we currently send. Please note that additiona
 
 ### External payment providers
 
-<ParamField path="customer.payment_provider_created" type="data.object">
+<ParamField type="data.object">
   Sent when a customer is successfully created in the payment provider's application. This allows you to retrieve the identifier assigned to the customer by the payment service provider.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/customerPaymentProviderCreated)
 </ParamField>
 
-<ParamField path="customer.payment_provider_error" type="data.object">
+<ParamField type="data.object">
   Sent when there is an error related to the creation of a customer in the payment provider's system.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/customerPaymentProviderError)
 </ParamField>
 
-<ParamField path="customer.checkout_url_generated" type="data.object">
+<ParamField type="data.object">
   Sent when a checkout link is issued for a customer.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/customerCheckoutUrlGenerated)
 </ParamField>
 
-<ParamField path="customer.checkout_url_generated" type="data.object">
+<ParamField type="data.object">
   Sent when a checkout link is issued for a customer.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/customerCheckoutUrlGenerated)
@@ -8147,13 +8253,13 @@ Below is a list of the event types we currently send. Please note that additiona
 
 ### External accounting providers
 
-<ParamField path="customer.accounting_provider_created" type="data.object">
+<ParamField type="data.object">
   Sent when a customer is successfully created in the accounting provider's application (like NetSuite). This allows you to retrieve the identifier assigned to the customer by the accounting service provider.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/customerAccountingProviderCreated)
 </ParamField>
 
-<ParamField path="customer.accounting_provider_error" type="data.object">
+<ParamField type="data.object">
   Sent when there is an error related to the accounting provider sync. Usually occurs when something went wrong in the accounting service provider's application.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/customerAccountingProviderError)
@@ -8161,13 +8267,13 @@ Below is a list of the event types we currently send. Please note that additiona
 
 ### External CRM providers
 
-<ParamField path="customer.crm_provider_created" type="data.object">
+<ParamField type="data.object">
   Sent when a customer has been created in the CRM provider.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/customerCrmProviderCreated)
 </ParamField>
 
-<ParamField path="customer.crm_provider_error" type="data.object">
+<ParamField type="data.object">
   Sent when an error was encountered while syncing a customer to a CRM provider.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/customerCrmProviderError)
@@ -8175,13 +8281,13 @@ Below is a list of the event types we currently send. Please note that additiona
 
 ### External tax providers
 
-<ParamField path="customer.tax_provider_error" type="data.object">
+<ParamField type="data.object">
   Sent when there is an error related to the tax provider sync. This usually occurs due to issues with item mappings, customer definitions, or within the service provider's application.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/customerTaxProviderError)
 </ParamField>
 
-<ParamField path="customer.vies_check" type="data.object">
+<ParamField type="data.object">
   Sent when a VIES VAT number has been checked for a customer
 
   [Schema example](https://swagger.getlago.com/#/webhooks/customerViesCheck)
@@ -8189,14 +8295,14 @@ Below is a list of the event types we currently send. Please note that additiona
 
 ## Event ingestion
 
-<ParamField path="events.errors" type="data.object" deprecated="true">
+<ParamField type="data.object">
   This webhook is deprecated and will be removed in future versions of Lago.
   Sent by the health check process when some events received in the previous hour do not match the validation rules.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/eventsErrors)
 </ParamField>
 
-<ParamField path="events.error" type="data.object" deprecated="true">
+<ParamField type="data.object">
   This webhook is deprecated and no longer sent in Lago `v0.50.0-beta` and above. It was sent when there was an error related to the creation of an event.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/eventError)
@@ -8204,19 +8310,19 @@ Below is a list of the event types we currently send. Please note that additiona
 
 ## Features
 
-<ParamField path="feature.created" type="data.object">
+<ParamField type="data.object">
   Sent when a new feature is created.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/featureCreated)
 </ParamField>
 
-<ParamField path="feature.updated" type="data.object">
+<ParamField type="data.object">
   Sent when a new feature is updated.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/featureUpdated)
 </ParamField>
 
-<ParamField path="feature.deleted" type="data.object">
+<ParamField type="data.object">
   Sent when a new feature is deleted.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/featureDeleted)
@@ -8224,67 +8330,67 @@ Below is a list of the event types we currently send. Please note that additiona
 
 ## Invoices
 
-<ParamField path="invoice.drafted" type="data.object">
+<ParamField type="data.object">
   Sent when a new invoice is in draft.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/invoiceDrafted)
 </ParamField>
 
-<ParamField path="invoice.created" type="data.object">
+<ParamField type="data.object">
   Sent when an invoice is finalized. This event serves as a signal to your application that the invoice processing is complete and you can proceed with the necessary billing actions or procedures.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/invoiceCreated)
 </ParamField>
 
-<ParamField path="invoice.one_off_created" type="data.object">
+<ParamField type="data.object">
   Sent when a one-off invoice is created. Only add-ons can be applied to one-off invoices.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/invoiceOneOffCreated)
 </ParamField>
 
-<ParamField path="invoice.paid_credit_added" type="data.object">
+<ParamField type="data.object">
   Sent when prepaid credits have been paid and added to the customer's wallet. You can use this information to generate a PDF invoice or collect the payment.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/invoicePaidCreditAdded)
 </ParamField>
 
-<ParamField path="invoice.generated" type="data.object">
+<ParamField type="data.object">
   Sent when the PDF file has been generated for a customer invoice. This will allow your application to retrieve the PDF invoice.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/invoiceGenerated)
 </ParamField>
 
-<ParamField path="invoice.payment_status_updated" type="data.object">
+<ParamField type="data.object">
   Sent when the payment status of an invoice is updated based on information provided by the payment provider.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/invoicePaymentStatusUpdated)
 </ParamField>
 
-<ParamField path="invoice.payment_overdue" type="data.object">
+<ParamField type="data.object">
   Sent when the payment of an invoice is considered as overdue.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/invoicePaymentOverdue)
 </ParamField>
 
-<ParamField path="invoice.voided" type="data.object">
+<ParamField type="data.object">
   Sent when an invoice is voided.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/invoiceVoided)
 </ParamField>
 
-<ParamField path="invoice.payment_failure" type="data.object">
+<ParamField type="data.object">
   Sent when there is an error related to the payment process. Usually occurs when no valid payment method is defined for the customer in the payment service provider's application.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/invoicePaymentFailure)
 </ParamField>
 
-<ParamField path="invoice.payment_dispute_lost" type="data.object">
+<ParamField type="data.object">
   Sent whenever a dispute or a chargeback is lost within your payment provider.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/invoicePaymentDisputeLost)
 </ParamField>
 
-<ParamField path="invoice.resynced" type="data.object">
+<ParamField type="data.object">
   Sent when an invoice has been resynced with salesforce.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/invoiceResynced)
@@ -8292,32 +8398,32 @@ Below is a list of the event types we currently send. Please note that additiona
 
 ## Payments
 
-<ParamField path="payment.requires_action" type="data.object">
+<ParamField type="data.object">
   This message is triggered when a payment requires additional validation or confirmation, typically via 3D Secure (3DS). This is commonly seen in regions like India or when enhanced customer authentication is necessary.
   The `url` field contains the checkout link that initiates 3D Secure (3DS) validation for your customers. The `return_url` is the page displayed once the 3DS process is completed.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/paymentRequiresAction)
 </ParamField>
 
-<ParamField path="payment.requires_action" type="data.object">
+<ParamField type="data.object">
   This message is triggered when a an error was raised by a payment provider.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/paymentProviderError)
 </ParamField>
 
-<ParamField path="payment_request.created" type="data.object">
+<ParamField type="data.object">
   Sent when a manual payment request has been triggered, to request payment for the overdue balance.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/paymentRequestCreated)
 </ParamField>
 
-<ParamField path="payment_request.payment_failure" type="data.object">
+<ParamField type="data.object">
   Sent when the payment attached to a payment request has failed. The `provider_error` field indicates the error code and message from the payment provider.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/paymentRequestPaymentFailure)
 </ParamField>
 
-<ParamField path="payment_request.payment_status_updated" type="data.object">
+<ParamField type="data.object">
   Sent when the payment attached to a payment request is updated to a new payment status, through the \`payment\_status field.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/paymentRequestPaymentStatusUpdated)
@@ -8325,30 +8431,30 @@ Below is a list of the event types we currently send. Please note that additiona
 
 ## Payment receipts
 
-<ParamField path="payment_receipt.created" type="data.object">
+<ParamField type="data.object">
   Payment receipt object. Sent when a payment receipt is created.
   This event serves as a signal to your application that the receipt creation is complete and the payment has been recorded.
 </ParamField>
 
-<ParamField path="payment_receipt.generated" type="data.object">
+<ParamField type="data.object">
   Payment receipt object. Sent when the PDF file has been generated for a payment receipt. This will allow your application to retrieve the PDF receipt.
 </ParamField>
 
 ## Plans
 
-<ParamField path="plan.created" type="data.object">
+<ParamField type="data.object">
   Sent when a plan is created.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/planCreated)
 </ParamField>
 
-<ParamField path="plan.updated" type="data.object">
+<ParamField type="data.object">
   Sent when a plan is updated.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/planUpdated)
 </ParamField>
 
-<ParamField path="plan.deleted" type="data.object">
+<ParamField type="data.object">
   Sent when a plan is deleted.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/planDeleted)
@@ -8356,43 +8462,43 @@ Below is a list of the event types we currently send. Please note that additiona
 
 ## Subscriptions and fees
 
-<ParamField path="fee.created" type="data.object">
+<ParamField type="data.object">
   Sent when a fee for a charge to be paid in advance is created. You can use this information to collect the payment of the `pay_in_advance` fee. Useful for fintech companies that need to create a statement of transactions without invoicing.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/feeCreated)
 </ParamField>
 
-<ParamField path="fee.tax_provider_error" type="data.object">
+<ParamField type="data.object">
   Sent when an error was encountered while fetching taxes for a fee on a tax provider.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/feeTaxProviderError)
 </ParamField>
 
-<ParamField path="subscription.started" type="data.object">
+<ParamField type="data.object">
   Sent when a subscription starts. The `previous_plan_code` argument is filled if the subscription has been upgraded or downgraded.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/subscriptionStarted)
 </ParamField>
 
-<ParamField path="subscription.termination_alert" type="data.object">
+<ParamField type="data.object">
   Alert for imminent termination of subscriptions with set end dates, sent 45 days and 15 days prior (at fixed intervals).
 
   [Schema example](https://swagger.getlago.com/#/webhooks/subscriptionTerminationAlert)
 </ParamField>
 
-<ParamField path="subscription.terminated" type="data.object">
+<ParamField type="data.object">
   Sent when a subscription is terminated. The `next_plan_code` argument is filled if the subscription has been upgraded or downgraded.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/subscriptionTerminated)
 </ParamField>
 
-<ParamField path="subscription.trial_ended" type="data.object">
+<ParamField type="data.object">
   Sent when the free trial is ended for a subscription.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/subscriptionTrialEnded)
 </ParamField>
 
-<ParamField path="subscription.usage_threshold_reached" type="data.object">
+<ParamField type="data.object">
   Sent when a progressive billing threshold has been crossed.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/subscriptionUsageThresholdReached)
@@ -8400,37 +8506,37 @@ Below is a list of the event types we currently send. Please note that additiona
 
 ## Wallets and prepaid credits
 
-<ParamField path="wallet.created" type="data.object">
+<ParamField type="data.object">
   [Wallet object](/api-reference/wallets/wallet-object). Sent when a wallet is created.
 </ParamField>
 
-<ParamField path="wallet.updated" type="data.object">
+<ParamField type="data.object">
   [Wallet object](/api-reference/wallets/wallet-object). Sent when a wallet is updated. Please note that you won't receive this message if the wallet's ongoing balance is updated.
 </ParamField>
 
-<ParamField path="wallet.terminated" type="data.object">
+<ParamField type="data.object">
   [Wallet object](/api-reference/wallets/wallet-object). Sent when a wallet is terminated.
 </ParamField>
 
-<ParamField path="wallet.depleted_ongoing_balance" type="data.object">
+<ParamField type="data.object">
   Sent when the ongoing balance is negative or equal to 0.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/walletDepletedOngoingBalance)
 </ParamField>
 
-<ParamField path="wallet_transaction.created" type="data.object">
+<ParamField type="data.object">
   Sent when a wallet transaction is created. For example, when new credits have been paid or offered.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/walletTransactionCreated)
 </ParamField>
 
-<ParamField path="wallet_transaction.updated" type="data.object">
+<ParamField type="data.object">
   Sent when a wallet transaction is updated. For example, when wallet transaction is marked as settled.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/walletTransactionUpdated)
 </ParamField>
 
-<ParamField path="wallet_transaction.payment_failure" type="data.object">
+<ParamField type="data.object">
   Sent when a wallet transaction payment is declined.
 
   [Schema example](https://swagger.getlago.com/#/webhooks/walletTransactionPaymentFailure)
@@ -8442,11 +8548,138 @@ Source: https://getlago.com/docs/changelog/product
 
 New updates and improvements to Lago.
 
+<Update label="January 2026">
+  ## Offset unused amounts when terminating a subscription
+
+  <Frame>
+    <img alt="" />
+  </Frame>
+
+  With the new credit note offset settings, you can now apply this option when terminating a subscription to offset any unused amount due.
+  The used amount remains payable, while the remaining balance is automatically settled through a closing credit note.
+
+  [Learn more](/guide/subscriptions/terminate-subscription#generate-a-closing-credit-note-at-subscription-termination)
+
+  ## Fixed charges are now available in plans
+
+  <Frame>
+    <img alt="" />
+  </Frame>
+
+  You can now add fixed charges to your plans to bill recurring fixed fees, independently of usage.
+
+  This unlocks common pricing patterns such as platform fees, seat licenses, support plans, or contractual fees.
+  Fixed charges are managed directly at the plan level and billed automatically with subscriptions.
+  There’s no need to rely on one-off invoices anymore.
+
+  [Learn more](/guide/plans/charges/fixed-charges)
+
+  ## Offset invoice amount due with credit notes
+
+  <Frame>
+    <img alt="" />
+  </Frame>
+
+  Overcharged a customer? Issued an invoice by mistake? No problem.
+
+  You can now use a credit note to offset the remaining amount due on an invoice.
+  The credited amount is immediately deducted from the invoice balance, keeping your records accurate and clean
+
+  [Learn more](/guide/invoicing/credit-notes/overview#offset)
+
+  ## Define custom roles and permissions
+
+  <Frame>
+    <img alt="" />
+  </Frame>
+
+  We have introduced **Custom Roles and Permissions** to give organizations full control over user access within Lago and your billing data.
+  You can now create an **unlimited number of custom roles and define precise permission sets** that match your team's responsibilities and workflows. This allows you to grant users only the access they need, improving both security and operational clarity.
+
+  Key capabilities:
+
+  * Create and manage unlimited custom roles;
+  * Assign granular permissions to each role;
+  * Automatically propagate permission changes to all users assigned to a role; and
+  * Ensure continuous platform governance by maintaining at least one `admin` role at all times.
+
+  This update simplifies scaling billing operations across teams, strengthens access control enforcement, and allows permissions to evolve seamlessly as your organization grows.
+
+  [Learn more](/guide/security/rbac#custom-roles-and-permissions)
+</Update>
+
+<Update label="December 2025">
+  ## Connect AI Systems with Lago MCP Server
+
+  <Frame>
+    <img alt="" />
+  </Frame>
+
+  **The Lago MCP Server is now available!** Securely connect your AI ecosystem to enterprise billing data.
+
+  It allows you to connect AI systems, such as language models or other intelligent agents, with Lago's billing capabilities.
+  This enables you to build AI-powered applications that can autonomously manage billing operations, such as creating subscriptions, processing payments, and handling invoices.
+
+  [Learn more](/guide/ai-agents/mcp-server)
+
+  ## Multiple wallets are now available!
+
+  <Frame>
+    <img alt="" />
+  </Frame>
+
+  You can now create more than one wallet per customer.
+  Each wallet has its own settings: define its priority, limit its scope to specific billable metrics, and configure dedicated recurring top-up rules to better control how credits are applied.
+
+  [Learn more](/guide/wallet-and-prepaid-credits/overview#create-wallets)
+
+  ## Invoice issuing date preferences
+
+  <Frame>
+    <img alt="" />
+  </Frame>
+
+  **Take full control of when your subscription invoices are dated.**
+
+  Many businesses need invoices dated on the last day of the billing period, not the first day of the next. This is mainly useful for revenue recognition, compliance, or cleaner accounting.
+  You can now configure this at the Billing Entity level (with per-customer overrides) using two new settings: **Issuing Date Anchor** and **Issuing Date Adjustment**.
+
+  For example, an October subscription invoice can now show October 31st instead of November 1st.
+
+  [Learn more](/guide/invoicing/invoicing-settings/issuing_date)
+
+  ## Metadata for credit notes
+
+  <Frame>
+    <img alt="" />
+  </Frame>
+
+  You can now enrich your credit notes with custom metadata.
+  This allows teams to store key operational details — such as the reason for issuing the credit note, internal notes, or synchronization references for external tools.
+
+  [Learn more](/guide/invoicing/credit-notes/credit-note-metadata)
+
+  ## Agentic AI for Billing Operations
+
+  <Frame>
+    <img alt="" />
+  </Frame>
+
+  Introducing our 1st Lago AI Agent, called the **Billing Assistant**, a conversational assistant to help you manage billing operations using natural language.
+
+  This conversational assistant helps you **manage billing operations using natural language**, reducing the time spent on manual and repetitive tasks.
+
+  Ask questions, retrieve data, and perform actions across your billing entities, all through a simple chat interface.
+  Conversations are saved for context-aware follow-ups, and built-in safeguards require confirmation before executing any destructive actions.
+
+  [Learn more](/guide/ai-agents/billing-assistant)
+</Update>
+
 <Update label="November 2025">
   ## E-invoicing and compliant documents
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/DiPUE08_PSPM3KWj/changelog/images/20251119-einvoicing.png?fit=max&auto=format&n=DiPUE08_PSPM3KWj&q=85&s=b6180d0d2a19b9701f4d0a541198d264" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20251119-einvoicing.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/DiPUE08_PSPM3KWj/changelog/images/20251119-einvoicing.png?w=280&fit=max&auto=format&n=DiPUE08_PSPM3KWj&q=85&s=994e5c74c48e28352880ca2e6dde51b8 280w, https://mintcdn.com/lago-docs/DiPUE08_PSPM3KWj/changelog/images/20251119-einvoicing.png?w=560&fit=max&auto=format&n=DiPUE08_PSPM3KWj&q=85&s=6fa73b03f20eb95940b3bd1e9baee82d 560w, https://mintcdn.com/lago-docs/DiPUE08_PSPM3KWj/changelog/images/20251119-einvoicing.png?w=840&fit=max&auto=format&n=DiPUE08_PSPM3KWj&q=85&s=652e7963adf420a6c1ea1b44e8c9b978 840w, https://mintcdn.com/lago-docs/DiPUE08_PSPM3KWj/changelog/images/20251119-einvoicing.png?w=1100&fit=max&auto=format&n=DiPUE08_PSPM3KWj&q=85&s=ad952b0f6cdf828b432d9a29ad1f5eb0 1100w, https://mintcdn.com/lago-docs/DiPUE08_PSPM3KWj/changelog/images/20251119-einvoicing.png?w=1650&fit=max&auto=format&n=DiPUE08_PSPM3KWj&q=85&s=c5dd347de5c97cd0bc61803f5892db36 1650w, https://mintcdn.com/lago-docs/DiPUE08_PSPM3KWj/changelog/images/20251119-einvoicing.png?w=2500&fit=max&auto=format&n=DiPUE08_PSPM3KWj&q=85&s=bfefccd3ea0de35bddb3719dd9a184bf 2500w" />
+    <img alt="" />
   </Frame>
 
   Lago now generates invoices in the correct formats required for **E-invoicing integrations**. The first fully supported jurisdiction is France 🇫🇷, and **adding new jurisdictions is straightforward through template updates or open source contributions**.
@@ -8460,12 +8693,12 @@ New updates and improvements to Lago.
 
   Feel free to contact the team or submit an open source contribution, especially for jurisdictions that share similar formats with minor adjustments.
 
-  [Learn more](/guide/invoicing/einvoicing)
+  [Learn more](/guide/invoicing/e-invoicing/overview)
 
   ## New integration mapping per Lago Billing Entity
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/3psEkvr3S0fehsWy/changelog/images/20251119-integration-mapping-improvements.png?fit=max&auto=format&n=3psEkvr3S0fehsWy&q=85&s=5f253791a488f8409ac5850e07e14935" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20251119-integration-mapping-improvements.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/3psEkvr3S0fehsWy/changelog/images/20251119-integration-mapping-improvements.png?w=280&fit=max&auto=format&n=3psEkvr3S0fehsWy&q=85&s=7d85ac2d66cd333172ed35e12d428820 280w, https://mintcdn.com/lago-docs/3psEkvr3S0fehsWy/changelog/images/20251119-integration-mapping-improvements.png?w=560&fit=max&auto=format&n=3psEkvr3S0fehsWy&q=85&s=d5ed74844e83577904946601c674ff83 560w, https://mintcdn.com/lago-docs/3psEkvr3S0fehsWy/changelog/images/20251119-integration-mapping-improvements.png?w=840&fit=max&auto=format&n=3psEkvr3S0fehsWy&q=85&s=2a144d7ad036e38f1e9165df335904ea 840w, https://mintcdn.com/lago-docs/3psEkvr3S0fehsWy/changelog/images/20251119-integration-mapping-improvements.png?w=1100&fit=max&auto=format&n=3psEkvr3S0fehsWy&q=85&s=782a7dd09f1d87bbdb029588c3c12190 1100w, https://mintcdn.com/lago-docs/3psEkvr3S0fehsWy/changelog/images/20251119-integration-mapping-improvements.png?w=1650&fit=max&auto=format&n=3psEkvr3S0fehsWy&q=85&s=50bc3e46aa887db169f485c752f23531 1650w, https://mintcdn.com/lago-docs/3psEkvr3S0fehsWy/changelog/images/20251119-integration-mapping-improvements.png?w=2500&fit=max&auto=format&n=3psEkvr3S0fehsWy&q=85&s=441b4167343c717443584c04501f7327 2500w" />
+    <img alt="" />
   </Frame>
 
   We enhanced how accounting and tax integrations are configured with Lago.
@@ -8479,7 +8712,7 @@ New updates and improvements to Lago.
   ## Smarter Revenue Forecasts and Predictions with Lago
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MlLFRZhpgsAseaZL/changelog/images/20251029-forecasted-usage.png?fit=max&auto=format&n=MlLFRZhpgsAseaZL&q=85&s=eda926b96d79b78f208f47a3e5018d3a" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20251029-forecasted-usage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MlLFRZhpgsAseaZL/changelog/images/20251029-forecasted-usage.png?w=280&fit=max&auto=format&n=MlLFRZhpgsAseaZL&q=85&s=4ddd7d5f49b7db408fc46021b1c5f4be 280w, https://mintcdn.com/lago-docs/MlLFRZhpgsAseaZL/changelog/images/20251029-forecasted-usage.png?w=560&fit=max&auto=format&n=MlLFRZhpgsAseaZL&q=85&s=0b2b6000b9dbdf370eee7f9c8a5ea850 560w, https://mintcdn.com/lago-docs/MlLFRZhpgsAseaZL/changelog/images/20251029-forecasted-usage.png?w=840&fit=max&auto=format&n=MlLFRZhpgsAseaZL&q=85&s=75e309aea08c9d46bcb9180676860594 840w, https://mintcdn.com/lago-docs/MlLFRZhpgsAseaZL/changelog/images/20251029-forecasted-usage.png?w=1100&fit=max&auto=format&n=MlLFRZhpgsAseaZL&q=85&s=258f1be14459f784e7fc02331e7c1174 1100w, https://mintcdn.com/lago-docs/MlLFRZhpgsAseaZL/changelog/images/20251029-forecasted-usage.png?w=1650&fit=max&auto=format&n=MlLFRZhpgsAseaZL&q=85&s=e0969441ad9bcb02eb6742bc542ac545 1650w, https://mintcdn.com/lago-docs/MlLFRZhpgsAseaZL/changelog/images/20251029-forecasted-usage.png?w=2500&fit=max&auto=format&n=MlLFRZhpgsAseaZL&q=85&s=4f512029461f5611e9493a15bd6046c0 2500w" />
+    <img alt="" />
   </Frame>
 
   Forecasting revenue is notoriously challenging, especially for usage-based companies. Usage fluctuates over time, definitions of revenue vary from a company to another, and reliable prediction models are often missing.
@@ -8497,7 +8730,7 @@ New updates and improvements to Lago.
   ## Find customers faster with new filters
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/-184ly1EADmzIfI7/changelog/images/20251013-customers-filters.png?fit=max&auto=format&n=-184ly1EADmzIfI7&q=85&s=aa0c039dd5dd0741060c889f07747880" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20251013-customers-filters.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/-184ly1EADmzIfI7/changelog/images/20251013-customers-filters.png?w=280&fit=max&auto=format&n=-184ly1EADmzIfI7&q=85&s=467210624d6b7962862e83d08f50f19f 280w, https://mintcdn.com/lago-docs/-184ly1EADmzIfI7/changelog/images/20251013-customers-filters.png?w=560&fit=max&auto=format&n=-184ly1EADmzIfI7&q=85&s=28232356ec1c92bb802a021694a9b655 560w, https://mintcdn.com/lago-docs/-184ly1EADmzIfI7/changelog/images/20251013-customers-filters.png?w=840&fit=max&auto=format&n=-184ly1EADmzIfI7&q=85&s=73d69925be899dd4abcb5e9f90f45903 840w, https://mintcdn.com/lago-docs/-184ly1EADmzIfI7/changelog/images/20251013-customers-filters.png?w=1100&fit=max&auto=format&n=-184ly1EADmzIfI7&q=85&s=4f1493c1b21daa36c4312c749dc3b2ab 1100w, https://mintcdn.com/lago-docs/-184ly1EADmzIfI7/changelog/images/20251013-customers-filters.png?w=1650&fit=max&auto=format&n=-184ly1EADmzIfI7&q=85&s=3026a79a382174c2c085d95192cc407c 1650w, https://mintcdn.com/lago-docs/-184ly1EADmzIfI7/changelog/images/20251013-customers-filters.png?w=2500&fit=max&auto=format&n=-184ly1EADmzIfI7&q=85&s=0a6a5a1b56f187454ba7eebb7dc8a4ce 2500w" />
+    <img alt="" />
   </Frame>
 
   Quickly find the right customers by filtering your list (via API or UI) using metadata, active subscriptions, Tax ID, and more — making large datasets easier to navigate and act on.
@@ -8507,7 +8740,7 @@ New updates and improvements to Lago.
   ## Wallet transaction limits
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/WQO_b5_QF8VLV9zr/changelog/images/20251006-wallet-transaction-limits.png?fit=max&auto=format&n=WQO_b5_QF8VLV9zr&q=85&s=a861763b091c3394d79f38c57fcdd5a5" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20251006-wallet-transaction-limits.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/WQO_b5_QF8VLV9zr/changelog/images/20251006-wallet-transaction-limits.png?w=280&fit=max&auto=format&n=WQO_b5_QF8VLV9zr&q=85&s=bf8c0d80c15005f71e5045f681647a59 280w, https://mintcdn.com/lago-docs/WQO_b5_QF8VLV9zr/changelog/images/20251006-wallet-transaction-limits.png?w=560&fit=max&auto=format&n=WQO_b5_QF8VLV9zr&q=85&s=ea002bfaac4b3632896a5077c016524b 560w, https://mintcdn.com/lago-docs/WQO_b5_QF8VLV9zr/changelog/images/20251006-wallet-transaction-limits.png?w=840&fit=max&auto=format&n=WQO_b5_QF8VLV9zr&q=85&s=43ee935f5977147ad48f392779001687 840w, https://mintcdn.com/lago-docs/WQO_b5_QF8VLV9zr/changelog/images/20251006-wallet-transaction-limits.png?w=1100&fit=max&auto=format&n=WQO_b5_QF8VLV9zr&q=85&s=4c65c1cfd497e5da8371c45e08eb0f39 1100w, https://mintcdn.com/lago-docs/WQO_b5_QF8VLV9zr/changelog/images/20251006-wallet-transaction-limits.png?w=1650&fit=max&auto=format&n=WQO_b5_QF8VLV9zr&q=85&s=3a02598f3343246b5db1e61aa39f848d 1650w, https://mintcdn.com/lago-docs/WQO_b5_QF8VLV9zr/changelog/images/20251006-wallet-transaction-limits.png?w=2500&fit=max&auto=format&n=WQO_b5_QF8VLV9zr&q=85&s=7274f9126b4d120ab0a1ad50c4142bff 2500w" />
+    <img alt="" />
   </Frame>
 
   You can now define minimum and maximum amounts for each paid wallet transaction. Any top-up must stay within these boundaries; transactions below the minimum or above the maximum will be rejected. This ensures better control over wallet usage and prevents unexpected amounts being processed.
@@ -8521,7 +8754,7 @@ New updates and improvements to Lago.
   ## Wallet transaction name
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/cNw9QeTXl6O_coCv/changelog/images/20250924-wallet-transaction-name.png?fit=max&auto=format&n=cNw9QeTXl6O_coCv&q=85&s=82bc982dc5056878f3fad82c971eb16d" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20250924-wallet-transaction-name.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/cNw9QeTXl6O_coCv/changelog/images/20250924-wallet-transaction-name.png?w=280&fit=max&auto=format&n=cNw9QeTXl6O_coCv&q=85&s=aabf036657f82a532d4e38343df39a37 280w, https://mintcdn.com/lago-docs/cNw9QeTXl6O_coCv/changelog/images/20250924-wallet-transaction-name.png?w=560&fit=max&auto=format&n=cNw9QeTXl6O_coCv&q=85&s=eeee1a827de9cd62838015f4bd9bbf5c 560w, https://mintcdn.com/lago-docs/cNw9QeTXl6O_coCv/changelog/images/20250924-wallet-transaction-name.png?w=840&fit=max&auto=format&n=cNw9QeTXl6O_coCv&q=85&s=f5ea32356babfcb6e2938f5d43626b84 840w, https://mintcdn.com/lago-docs/cNw9QeTXl6O_coCv/changelog/images/20250924-wallet-transaction-name.png?w=1100&fit=max&auto=format&n=cNw9QeTXl6O_coCv&q=85&s=f2766efa7ad513563937db26751dc41b 1100w, https://mintcdn.com/lago-docs/cNw9QeTXl6O_coCv/changelog/images/20250924-wallet-transaction-name.png?w=1650&fit=max&auto=format&n=cNw9QeTXl6O_coCv&q=85&s=6c39c307be276c070f0b3c2e5d68a3a4 1650w, https://mintcdn.com/lago-docs/cNw9QeTXl6O_coCv/changelog/images/20250924-wallet-transaction-name.png?w=2500&fit=max&auto=format&n=cNw9QeTXl6O_coCv&q=85&s=6213d142351c5c2b1488e4fbe8b7aef4 2500w" />
+    <img alt="" />
   </Frame>
 
   Add context to your invoices by naming wallet transactions — whether they come from a manual top-up or a recurring rule.
@@ -8534,7 +8767,7 @@ New updates and improvements to Lago.
   ## Semiannual billing interval
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/pWuIxwtLygx-CYHG/changelog/images/20250829-semiannual-interval.png?fit=max&auto=format&n=pWuIxwtLygx-CYHG&q=85&s=04fde0374d2cbc978cce97cdd8255f22" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20250829-semiannual-interval.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/pWuIxwtLygx-CYHG/changelog/images/20250829-semiannual-interval.png?w=280&fit=max&auto=format&n=pWuIxwtLygx-CYHG&q=85&s=3af15be2f9948b671e5f2971dd859805 280w, https://mintcdn.com/lago-docs/pWuIxwtLygx-CYHG/changelog/images/20250829-semiannual-interval.png?w=560&fit=max&auto=format&n=pWuIxwtLygx-CYHG&q=85&s=2257a57ff97a954b3999e79f0ef28033 560w, https://mintcdn.com/lago-docs/pWuIxwtLygx-CYHG/changelog/images/20250829-semiannual-interval.png?w=840&fit=max&auto=format&n=pWuIxwtLygx-CYHG&q=85&s=6b83255ef48dd563dd359f0aae03472f 840w, https://mintcdn.com/lago-docs/pWuIxwtLygx-CYHG/changelog/images/20250829-semiannual-interval.png?w=1100&fit=max&auto=format&n=pWuIxwtLygx-CYHG&q=85&s=412e7f86be1534420393f5be660c8b9d 1100w, https://mintcdn.com/lago-docs/pWuIxwtLygx-CYHG/changelog/images/20250829-semiannual-interval.png?w=1650&fit=max&auto=format&n=pWuIxwtLygx-CYHG&q=85&s=593d7cfbbedcea6f6ace4649c4f6ca74 1650w, https://mintcdn.com/lago-docs/pWuIxwtLygx-CYHG/changelog/images/20250829-semiannual-interval.png?w=2500&fit=max&auto=format&n=pWuIxwtLygx-CYHG&q=85&s=f1c57cc9b4057fbf0c929e0b62edf316 2500w" />
+    <img alt="" />
   </Frame>
 
   In addition to weekly, monthly, quarterly, and yearly billing intervals, subscriptions can now also be billed on a **semiannual** basis.
@@ -8546,7 +8779,7 @@ New updates and improvements to Lago.
   ## Entitlements are now supported in Lago 🎉
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/f8pPc5WHtfVTrnGf/changelog/images/20250826-entitlements.jpg?fit=max&auto=format&n=f8pPc5WHtfVTrnGf&q=85&s=250ba108a42b48212876145eb492a8b1" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20250826-entitlements.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/f8pPc5WHtfVTrnGf/changelog/images/20250826-entitlements.jpg?w=280&fit=max&auto=format&n=f8pPc5WHtfVTrnGf&q=85&s=73c94dbcdc162e3350f374da44b03337 280w, https://mintcdn.com/lago-docs/f8pPc5WHtfVTrnGf/changelog/images/20250826-entitlements.jpg?w=560&fit=max&auto=format&n=f8pPc5WHtfVTrnGf&q=85&s=177a5358dd62131d17ea7b5512361576 560w, https://mintcdn.com/lago-docs/f8pPc5WHtfVTrnGf/changelog/images/20250826-entitlements.jpg?w=840&fit=max&auto=format&n=f8pPc5WHtfVTrnGf&q=85&s=29e7c2fbe1a86e58f612b70cfccafa15 840w, https://mintcdn.com/lago-docs/f8pPc5WHtfVTrnGf/changelog/images/20250826-entitlements.jpg?w=1100&fit=max&auto=format&n=f8pPc5WHtfVTrnGf&q=85&s=6214b403a9073feaa60da94ecabb1135 1100w, https://mintcdn.com/lago-docs/f8pPc5WHtfVTrnGf/changelog/images/20250826-entitlements.jpg?w=1650&fit=max&auto=format&n=f8pPc5WHtfVTrnGf&q=85&s=c144d333cbf81e25856042e98428ab84 1650w, https://mintcdn.com/lago-docs/f8pPc5WHtfVTrnGf/changelog/images/20250826-entitlements.jpg?w=2500&fit=max&auto=format&n=f8pPc5WHtfVTrnGf&q=85&s=ca0cf038b67473cbc5a80301cc0b830f 2500w" />
+    <img alt="" />
   </Frame>
 
   Until now, Lago supported subscriptions, discounts, prepaid credits, and usage-based charges. But one key piece was missing: **Entitlements**.
@@ -8570,7 +8803,7 @@ New updates and improvements to Lago.
   ## Revenue streams dashboard improvements
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/f8pPc5WHtfVTrnGf/changelog/images/20250821-revenue-streams-contra-revenue.png?fit=max&auto=format&n=f8pPc5WHtfVTrnGf&q=85&s=1527f6f95a408645c7e5e6cecfb995c9" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20250821-revenue-streams-contra-revenue.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/f8pPc5WHtfVTrnGf/changelog/images/20250821-revenue-streams-contra-revenue.png?w=280&fit=max&auto=format&n=f8pPc5WHtfVTrnGf&q=85&s=d25dbfe0935d2b0f7f77a1139250bfeb 280w, https://mintcdn.com/lago-docs/f8pPc5WHtfVTrnGf/changelog/images/20250821-revenue-streams-contra-revenue.png?w=560&fit=max&auto=format&n=f8pPc5WHtfVTrnGf&q=85&s=47e7ad78ac5957bf90e7d48bfeda41d4 560w, https://mintcdn.com/lago-docs/f8pPc5WHtfVTrnGf/changelog/images/20250821-revenue-streams-contra-revenue.png?w=840&fit=max&auto=format&n=f8pPc5WHtfVTrnGf&q=85&s=aa6e69eeab837ecd259180afdf7512eb 840w, https://mintcdn.com/lago-docs/f8pPc5WHtfVTrnGf/changelog/images/20250821-revenue-streams-contra-revenue.png?w=1100&fit=max&auto=format&n=f8pPc5WHtfVTrnGf&q=85&s=8b0ad61a7d0fccb043648dc5421c1110 1100w, https://mintcdn.com/lago-docs/f8pPc5WHtfVTrnGf/changelog/images/20250821-revenue-streams-contra-revenue.png?w=1650&fit=max&auto=format&n=f8pPc5WHtfVTrnGf&q=85&s=07146feaa90814bc897cd905905aae8c 1650w, https://mintcdn.com/lago-docs/f8pPc5WHtfVTrnGf/changelog/images/20250821-revenue-streams-contra-revenue.png?w=2500&fit=max&auto=format&n=f8pPc5WHtfVTrnGf&q=85&s=feaf61d506b81a755aafb2ace793485e 2500w" />
+    <img alt="" />
   </Frame>
 
   We've made some improvements to the Revenue Streams dashboard to make it more intuitive, espeicially for the gross vs net revenue calculation. We now display the contra revenue, including coupons, discounts, and credits.
@@ -8580,7 +8813,7 @@ New updates and improvements to Lago.
   ## Set service periods on one-off line items
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/changelog/images/20250814-billing-boundaries-one-off.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=1985c800cdb82958c8d1671b052fd0c5" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20250814-billing-boundaries-one-off.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/changelog/images/20250814-billing-boundaries-one-off.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=926674e47ec0d4b92e0252a7daa05360 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/changelog/images/20250814-billing-boundaries-one-off.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=683b175aefe35e837120f44fcd139a0f 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/changelog/images/20250814-billing-boundaries-one-off.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=fee261bc1974e0953c2638556862452e 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/changelog/images/20250814-billing-boundaries-one-off.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=6c6f17ddef70cef302d9cb1c56b33e78 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/changelog/images/20250814-billing-boundaries-one-off.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=571556d99a96101d681bee02d140003b 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/changelog/images/20250814-billing-boundaries-one-off.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=9ab9165c8de846556152aa7e870b70b9 2500w" />
+    <img alt="" />
   </Frame>
 
   You can now define a service period for one-off line items. Instead of recognizing them on a single date, they can cover a period — in the past, starting today, or in the future.
@@ -8591,7 +8824,7 @@ New updates and improvements to Lago.
   ## Terminate subscriptions without unwanted credit notes
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/changelog/images/20250814-terminate-sub-cn-choice.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=18c01da112411c92e556a5dc11c59e50" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20250814-terminate-sub-cn-choice.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/changelog/images/20250814-terminate-sub-cn-choice.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=d5e95d53daa358a8fb179078d30de707 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/changelog/images/20250814-terminate-sub-cn-choice.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=a8c457a222a6fd18fa6c4d1affd1bcb9 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/changelog/images/20250814-terminate-sub-cn-choice.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=d5efd27cbe199e5af164fb216bedc8ed 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/changelog/images/20250814-terminate-sub-cn-choice.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=c4dc92122c1fc2341dbaaad8ee55deea 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/changelog/images/20250814-terminate-sub-cn-choice.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=b29e325ed5311c67775d78521f3e67ac 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/changelog/images/20250814-terminate-sub-cn-choice.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=6d99e6405bf127ab6eee27aa2dab4dd1 2500w" />
+    <img alt="" />
   </Frame>
 
   By default, Lago issues a credit note when you terminate a **pay-in-advance** subscription. Now, you decide what happens: skip the credit note, credit the unused amount, or refund it.
@@ -8602,7 +8835,7 @@ New updates and improvements to Lago.
   ## Do not generate invoice at subscription termination
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/changelog/images/20250814-terminate-sub-no-invoice.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=44c1930cf0bb512589b71a17e32b9705" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20250814-terminate-sub-no-invoice.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/changelog/images/20250814-terminate-sub-no-invoice.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=0b523527c5da275b5197b51f5b39975c 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/changelog/images/20250814-terminate-sub-no-invoice.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=889edac90583cb5dad7b1114b4e764e2 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/changelog/images/20250814-terminate-sub-no-invoice.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=457206bdde5ba811362a08c279394fcc 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/changelog/images/20250814-terminate-sub-no-invoice.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=3407e329bd893b84e12bf7ea867ba676 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/changelog/images/20250814-terminate-sub-no-invoice.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=18afd7cef77b6ae46b8a4625a5f310a9 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/changelog/images/20250814-terminate-sub-no-invoice.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=8dacc009b71cf45745268f1150f72e6f 2500w" />
+    <img alt="" />
   </Frame>
 
   Created a subscription by mistake? You can now terminate it **without generating a closing invoice**, so you don’t have to deal with invoices that were never meant to exist.
@@ -8615,7 +8848,7 @@ New updates and improvements to Lago.
   ## Display the projected usage of your customers
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250728-projected-usage.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=c6be8953b745efada56ffbcd203b7de1" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20250728-projected-usage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250728-projected-usage.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=749c398d8c516689017e1fe90142a5a2 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250728-projected-usage.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=2fe02e42f009d7d723dda49199ad04aa 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250728-projected-usage.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=157562b350085825c8307576d9e4c018 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250728-projected-usage.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=d32436d80979fd602a46f98018c6cec4 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250728-projected-usage.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=be590f6e620624f8e5852ae6779a0565 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250728-projected-usage.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=bf32c8b12f0ffedc8e886bbdc030ab7b 2500w" />
+    <img alt="" />
   </Frame>
 
   Give your customers visibility into their upcoming bills, before the invoice drops.
@@ -8634,7 +8867,7 @@ New updates and improvements to Lago.
   ## Regenerate voided invoices
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/changelog/images/20250729-regenerate-voided-invoice.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=a314c2af1b3f4161672755a68d682864" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20250729-regenerate-voided-invoice.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/changelog/images/20250729-regenerate-voided-invoice.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=50b68f19699f7b74cbbb34cc2a4d3742 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/changelog/images/20250729-regenerate-voided-invoice.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=4821e62feec7cc4cc264fe752b969a09 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/changelog/images/20250729-regenerate-voided-invoice.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=12a7536730a8c6a74c2ab7fcff7a31fd 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/changelog/images/20250729-regenerate-voided-invoice.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=b96c9f6662e683e458deda24899f16d1 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/changelog/images/20250729-regenerate-voided-invoice.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=c0705ea3fbcffa6ce77a13ddc48f6299 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/changelog/images/20250729-regenerate-voided-invoice.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=9e1692c14aa459380e4fbca163b21970 2500w" />
+    <img alt="" />
   </Frame>
 
   We've just made it easier to **fix and reissue invoices** — no more starting from scratch. With our new **"Regenerate Voided Invoice"** feature, you can now recreate a voided invoice directly from the UI in just a few clicks.
@@ -8648,7 +8881,7 @@ New updates and improvements to Lago.
   ## Limit prepaid credits to specific billable metrics
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250729-prepaid-credits-scope-bm.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=aeb92de3ee77f12023c1c6c1a7a8a41a" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20250729-prepaid-credits-scope-bm.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250729-prepaid-credits-scope-bm.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=457b07071c9892355d55d30acfb1ce89 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250729-prepaid-credits-scope-bm.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=eb5d9a64c2b978e8869dd51cc1133c30 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250729-prepaid-credits-scope-bm.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=a531c4afc45c34b6f098a7bd595878b1 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250729-prepaid-credits-scope-bm.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=419f720e5ed53c69b1b5a2c4c7fc018f 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250729-prepaid-credits-scope-bm.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=c17c5263b52bb17dc96ae7fba5ac382b 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250729-prepaid-credits-scope-bm.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=860948c51c08da682d5ab8a6d271210d 2500w" />
+    <img alt="" />
   </Frame>
 
   If you're offering prepaid credits, great, you're riding the AI wave! But not all usage should be tied to credits. Some metrics are better off billed the old-fashioned way: with traditional payment methods.
@@ -8662,7 +8895,7 @@ New updates and improvements to Lago.
   ## Get payment links for pending invoices
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250728-paylink-button.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=3ddeb155370a4cb76a1ed24b5706b639" alt="" data-og-width="2476" width="2476" data-og-height="1214" height="1214" data-path="changelog/images/20250728-paylink-button.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250728-paylink-button.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=03ee9150ad232f3456e4c5f9f7e20595 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250728-paylink-button.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=4a484aa7e22f159d8c2296046542466c 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250728-paylink-button.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=13dba61a07ba38989fbb2e5ab8389b4c 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250728-paylink-button.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=a4b3291f6f221f2b60f9d35935fd7a9e 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250728-paylink-button.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=c22a6aa5faf5c03d6cce90a9f8fcf511 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250728-paylink-button.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=2a24202131a8456798621344896a318e 2500w" />
+    <img alt="" />
   </Frame>
 
   You're not a technical user, but your customer is asking for a way to pay an invoice generated through Lago. No worries, it's easy! Just click the “Get payment link” button to generate a secure checkout link you can share.
@@ -8670,7 +8903,7 @@ New updates and improvements to Lago.
   ## Custom pricing units for more flexible billing!
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250723-pricing-units.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=aaf74c72142d9d58a7985e8fdec7208f" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20250723-pricing-units.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250723-pricing-units.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=f30125f673cace1855b6a60f3de98e83 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250723-pricing-units.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=49738ddf5b0eafac8d57c937b86e4c24 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250723-pricing-units.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=fd5ae4020f01b19b3fc940e197c3310b 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250723-pricing-units.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=74b30c441914b06e10d982c4bd7d36df 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250723-pricing-units.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=9998cc1155c846d337a8b0295115ac2d 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250723-pricing-units.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=01a4ac68212eca0f21393919f82c01a7 2500w" />
+    <img alt="" />
   </Frame>
 
   You can now express charges in **pricing units** like `credits` or `tokens` — not just fiat currency.
@@ -8687,7 +8920,7 @@ New updates and improvements to Lago.
   ## Enforce login methods per organization
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250723-login-enforcement.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=1c0e9495384acb4045bbe04ad93dba22" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20250723-login-enforcement.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250723-login-enforcement.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=1540606fedbc8834249fcd7fb106a49c 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250723-login-enforcement.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=e647e204330e8dc17908a577c9161ee1 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250723-login-enforcement.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=20ffcb55a5c84662cbc9c726f2cb6fa7 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250723-login-enforcement.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=0723cbba7e022113cacb19473c2878be 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250723-login-enforcement.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=2c72e2f7a4265edb60c725a6ea5c1554 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250723-login-enforcement.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=58aba6a83f9f43a0c40ca429e5e1945d 2500w" />
+    <img alt="" />
   </Frame>
 
   You can now customize which login methods are allowed for each organization — including requiring SSO (e.g. Okta) while disabling others like email/password or Google.
@@ -8701,7 +8934,7 @@ New updates and improvements to Lago.
   ## New navigation bar
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250701-new-navigation.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=6f9fafc770e436539e8def8afaa6ffd0" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20250701-new-navigation.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250701-new-navigation.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=a918e2fee6a5f7536579efbe4b05b208 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250701-new-navigation.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=003676c3ebbf12fc6ed1ec47f99ec7f5 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250701-new-navigation.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=3f51f2bb03cf7fceb4617642809d6feb 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250701-new-navigation.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=2038584ffc004b863c282c4187eaf344 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250701-new-navigation.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=084b704e8fd648c1302836d8e216ae8a 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250701-new-navigation.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=aa772c6cc8d860e80b6e8a56470d70fe 2500w" />
+    <img alt="" />
   </Frame>
 
   July is here, and the sun is knocking on our door!
@@ -8713,7 +8946,7 @@ New updates and improvements to Lago.
   ## Track API requests with API Logs
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250625-api-logs.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=6e933d121c712c5e1136c7fe9e71018f" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20250625-api-logs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250625-api-logs.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=8eb8fcbcc4b6875d63aef731986cf029 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250625-api-logs.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=e6d4d445b6dd6411f86cd5aecbf23fde 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250625-api-logs.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=ebf2da0e30b51ab6187a35ab4c3f2e27 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250625-api-logs.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=a56965f49b208fbbfb8a034b350d3d06 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250625-api-logs.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=a88cec5e8cc4f6e9824615e7b4b14c40 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250625-api-logs.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=0d7c959ae549baa789353f5713f10ae7 2500w" />
+    <img alt="" />
   </Frame>
 
   ❓'Which endpoints have been used?'
@@ -8729,7 +8962,7 @@ New updates and improvements to Lago.
   ## Pricing group keys
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250620-pricing-group-keys.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=722d11438ed664cf455c17406be83bfb" alt="" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="changelog/images/20250620-pricing-group-keys.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250620-pricing-group-keys.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=3fb948a16ece0703e9975ec886d9e430 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250620-pricing-group-keys.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=88218eed0dec9afed7a1fdeb1699dda7 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250620-pricing-group-keys.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=e84053d10343b4ac432ca63513ec1570 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250620-pricing-group-keys.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=83b9ca8a7aed6728fda9b3832fe326ab 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250620-pricing-group-keys.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=fa1a920dc0862f5f0a89837ba5115ff4 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250620-pricing-group-keys.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=d41000bff05f2c58218cf49413fbd6a6 2500w" />
+    <img alt="" />
   </Frame>
 
   **Launch Week IV, Day 5: Pricing Group Keys**
@@ -8740,8 +8973,8 @@ New updates and improvements to Lago.
 
   When setting up a charge, you define the relevant keys. You don't need to predefine every possible value. Instead, Lago intelligently routes each usage event to the correct pricing group based on the attributes provided at runtime.
 
-  <Frame caption="Usage-based billing with group keys">
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250620-pricing-group-usage.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=64ef2bc44f4e366acb17f176ecb0b01c" alt="" data-og-width="786" width="786" data-og-height="566" height="566" data-path="changelog/images/20250620-pricing-group-usage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250620-pricing-group-usage.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=8de6b412f90b6e19351afc6708d116a6 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250620-pricing-group-usage.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=b22d9bed4590763c6beffea632f0db41 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250620-pricing-group-usage.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=1edb91c06b0a63c2e11a7c41f308f024 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250620-pricing-group-usage.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=fac5f98bf44f5d659570e32ab25876ed 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250620-pricing-group-usage.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=1d9bcaf261495dfa277301ea21322ae5 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250620-pricing-group-usage.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=7ae0f3f8b4653bc858b7b7d5b16da5f5 2500w" />
+  <Frame>
+    <img alt="" />
   </Frame>
 
   [Learn more](/guide/plans/charges/grouping#pricing-group-keys)
@@ -8749,7 +8982,7 @@ New updates and improvements to Lago.
   ## Prepaid credits limited to specific charges
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250619-wallet-scopes.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=6f0032b8b3f140b28e7400c3d8e851dd" alt="" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="changelog/images/20250619-wallet-scopes.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250619-wallet-scopes.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=559a76b8ab8336fce08259fee47984e0 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250619-wallet-scopes.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=9ab7062e6986f8d18a68258e163c831a 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250619-wallet-scopes.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=6fb2c2b141277e15a5a93868e786d39a 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250619-wallet-scopes.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=0f44b5f7e2e3d3276c020430e83948bf 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250619-wallet-scopes.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=32e01d5cdf4a42c988b180f9bb614550 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250619-wallet-scopes.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=b1d09dfca498b6884912c13f25efcb8c 2500w" />
+    <img alt="" />
   </Frame>
 
   **Launch Week IV, Day 4: Restrict Prepaid Credits to Specific Charges**
@@ -8761,7 +8994,7 @@ New updates and improvements to Lago.
   ## Avalara Tax Integration
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250618-avalara-integration.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=9f115209395b22badd47ac5263009f4a" alt="" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="changelog/images/20250618-avalara-integration.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250618-avalara-integration.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=4346ea7e221d2326217f5cf36c336338 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250618-avalara-integration.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=0a1841d082479378f2d354616325d859 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250618-avalara-integration.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=890b48a4cbd0093c8a5de03bd7ce97b9 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250618-avalara-integration.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=aeaccdb69412f4fdddcd8b2ed6629742 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250618-avalara-integration.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=72b5f0fdbc79fa61eb0b20b91b58c4e6 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250618-avalara-integration.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=7ab63bbc437ce462c3d69a36cd56cfa0 2500w" />
+    <img alt="" />
   </Frame>
 
   **Launch Week IV, Day 3: End Tax Guesswork — Lago x Avalara Integration**
@@ -8781,7 +9014,7 @@ New updates and improvements to Lago.
   ## Activity Logs
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250616-activity-logs.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=0958cabc0c6a80af9ae4bc9fb54254f2" alt="" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="changelog/images/20250616-activity-logs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250616-activity-logs.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=ae59e90d17e021a3f3e47a922c108852 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250616-activity-logs.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=6a1c6522479e324cdadb3c61ede0888c 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250616-activity-logs.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=474cbf480eede7a4acaf153128599a2e 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250616-activity-logs.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=ff5325b3316b2d931a1d8e33d09a473b 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250616-activity-logs.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=c22fa317dd9cf4efe20fb23bdb2854d5 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250616-activity-logs.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=3a0631b3619f77489b6ae2580cb45b98 2500w" />
+    <img alt="" />
   </Frame>
 
   **Launch Week IV, Day 2: Billing Activity Logs**
@@ -8803,7 +9036,7 @@ New updates and improvements to Lago.
   ## Budget & Usage Alerts
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250615-alerts.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=0b5a507bfd51523f129088cfc1f21463" alt="" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="changelog/images/20250615-alerts.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250615-alerts.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=17d5fa05a0cc9b42960b48f3b56d475a 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250615-alerts.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=07525a951c434aba994d3d1012cc79a9 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250615-alerts.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=8985b530632423347df84a1e872559a4 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250615-alerts.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=3aafe671566d40bb52beabf9dcfce97a 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250615-alerts.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=d026969869f0c228833efe3ec54987f7 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250615-alerts.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=8b65659bb58dad25af603dae3756f510 2500w" />
+    <img alt="" />
   </Frame>
 
   **Launch Week IV, Day 1: Budget & Usage Alerts!**
@@ -8824,7 +9057,7 @@ New updates and improvements to Lago.
   ## Multiple billing entities within a Lago account!
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250515-billing-entities.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=48cda437c9fe775b9b1876fa7c13130f" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20250515-billing-entities.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250515-billing-entities.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=97d6ccb868181c40501a2625e0ce088f 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250515-billing-entities.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=36138d6f0465142b4add5187a8301f4f 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250515-billing-entities.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=e7c118cc0805f5b6f8a4668ae570fb08 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250515-billing-entities.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=2beea3942d963d816a2f762ffec5b0f3 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250515-billing-entities.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=a897447b1186c9c248c38139835d0fe8 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250515-billing-entities.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=ba8c7ddf0679cfa6695660e8b186f35e 2500w" />
+    <img alt="" />
   </Frame>
 
   You can now manage multiple billing entities within a single Lago account.
@@ -8838,7 +9071,7 @@ New updates and improvements to Lago.
   Our new prepaid credits dashboard is now live in beta! You can now track the flow of your prepaid credits, including the amount of credits offered, paid, consumed, and voided.
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250425-analytics-prepaid-credits-flow.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=1fac506ac285a27520ebadd8381eea96" alt="" data-og-width="2880" width="2880" data-og-height="1840" height="1840" data-path="changelog/images/20250425-analytics-prepaid-credits-flow.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250425-analytics-prepaid-credits-flow.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=29a443f5cacf17627a9b59c9ffcc16e8 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250425-analytics-prepaid-credits-flow.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=a1e06ab192380fcc71bbab1bc25a2350 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250425-analytics-prepaid-credits-flow.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=5097a87d88c0a2275f396e8d81f57faf 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250425-analytics-prepaid-credits-flow.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=2dbed8ee6bf744074b433163af0bdf6b 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250425-analytics-prepaid-credits-flow.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=acb8226302e72e8eeeeecab92ddb6e88 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250425-analytics-prepaid-credits-flow.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=f39899ef11bc6df575eb64867f660283 2500w" />
+    <img alt="" />
   </Frame>
 
   [Learn more](../guide/analytics/prepaid-credits)
@@ -8848,7 +9081,7 @@ New updates and improvements to Lago.
   ## Idempotent payment URL generation
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250422-invoice-idempotent-checkout-url.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=6927c7622084a29a6818a90e87c594ec" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20250422-invoice-idempotent-checkout-url.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250422-invoice-idempotent-checkout-url.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=e0936d73007419a38c1df7843f35c714 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250422-invoice-idempotent-checkout-url.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=62714c7d2e1f1e94ba992262d5f4611d 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250422-invoice-idempotent-checkout-url.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=c662897fc2854d04ff9d5b8d73181ef3 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250422-invoice-idempotent-checkout-url.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=89023d1a425a1c9c233c638669ddad62 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250422-invoice-idempotent-checkout-url.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=e03d31ab426e21ef2ecd54e7dd3bc148 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250422-invoice-idempotent-checkout-url.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=f6feec690879707343fcbbeed128f603 2500w" />
+    <img alt="" />
   </Frame>
 
   We made the payment URL generation idempotent to safely share with your end customers.
@@ -8860,7 +9093,7 @@ New updates and improvements to Lago.
   ## Lago Data Pipeline is now in beta
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250417-lago-data-pipeline.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=14ecde3faa129758640f16599bba0ad3" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20250417-lago-data-pipeline.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250417-lago-data-pipeline.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=19416bc066313e9d79c9b5b0a8d61495 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250417-lago-data-pipeline.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=5aa3bdbfd62c370762bf9dd3d73f5c37 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250417-lago-data-pipeline.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=b7095029ebcb19f65788834e1f93d2e6 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250417-lago-data-pipeline.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=16193dc82e92ac490fa5e3ab7183f830 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250417-lago-data-pipeline.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=ea4805336245c82ecdbf9ec78488c9dc 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250417-lago-data-pipeline.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=43de7b4718ab5f9e733bef6dbd3a47ba 2500w" />
+    <img alt="" />
   </Frame>
 
   You need to **sync your Lago data to your data warehouse or cloud storage?** We've got you covered with a new native integration called `Lago Data Pipeline`!
@@ -8882,7 +9115,7 @@ New updates and improvements to Lago.
   ## Pay your Lago invoices with Moneyhash
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250415-moneyhash-integration.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=af1f2df698dfda1168d969bc49e0df27" alt="" data-og-width="2048" width="2048" data-og-height="1152" height="1152" data-path="changelog/images/20250415-moneyhash-integration.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250415-moneyhash-integration.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=722dbe06009c1f9283d6ffee3ae27947 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250415-moneyhash-integration.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=c94135b51437c4ba771551d3cae120de 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250415-moneyhash-integration.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=f4d0826f11c7f0401c1f7beba603c7ea 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250415-moneyhash-integration.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=0898ff4648c913eeb4b63901e531b73c 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250415-moneyhash-integration.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=7dc3e542663e14bf0a8298184482cf82 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250415-moneyhash-integration.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=13d918db84147f439e6dee7acf81b775 2500w" />
+    <img alt="" />
   </Frame>
 
   You can now pay your Lago invoices using [Moneyhash](https://moneyhash.io)!
@@ -8901,7 +9134,7 @@ New updates and improvements to Lago.
   ## Enhanced Revenue Streams and MRR dashboard are now live in Beta
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250414-revenue-streams-overview.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=a2e8fbc4474f7e895efd576a45d6245b" alt="" data-og-width="2208" width="2208" data-og-height="1744" height="1744" data-path="changelog/images/20250414-revenue-streams-overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250414-revenue-streams-overview.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=91b9a299491cf8abd3d515ba6cea7c01 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250414-revenue-streams-overview.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=6a594db314dd0b4da337adc4f17ed8c3 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250414-revenue-streams-overview.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=bc6a2302074f4d3e5a576916155e5fa4 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250414-revenue-streams-overview.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=0a9d2e50e420cc52fa2b1c3a2b604233 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250414-revenue-streams-overview.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=e6006384789481a377bf0031e4212ea4 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250414-revenue-streams-overview.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=2851ca861865c6ef1c3a3e4e591bd7f1 2500w" />
+    <img alt="" />
   </Frame>
 
   We've just launched Analytics v2 in beta for some premium customers! This upgraded experience brings deeper insights and more powerful tools to understand your revenue performance:
@@ -8918,7 +9151,7 @@ New updates and improvements to Lago.
   ## Rescue failed wallet transactions!
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250408-wallet-transaction-checkout-url.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=279f7694a9142aebf43824ba88f49002" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20250408-wallet-transaction-checkout-url.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250408-wallet-transaction-checkout-url.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=14935458d8a3a9828e284393f5b9e294 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250408-wallet-transaction-checkout-url.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=1c8ec2bd2b2e346bef49c4d94978bbe5 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250408-wallet-transaction-checkout-url.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=ac0d2930981024635db9ec53e8cde703 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250408-wallet-transaction-checkout-url.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=a2a3ac5d1064bf6cda43dfa1b700adda 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250408-wallet-transaction-checkout-url.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=df9565f254eb5ad67f2ea710a892fcaf 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250408-wallet-transaction-checkout-url.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=6f007be5388e9adec19154bba36ccaa2 2500w" />
+    <img alt="" />
   </Frame>
 
   Payment intent failed? No worries — we've added a new endpoint that generates a payment URL for pending and failed wallet transactions. This feature allows your customers to complete their wallet top-ups through a secure checkout page, similar to how invoice payments work.
@@ -8929,7 +9162,7 @@ New updates and improvements to Lago.
   ## Track every cent: Payment Receipts are now available!
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250407-receipt-document.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=bfa4d91525fe08a370f6eda478aec8c9" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20250407-receipt-document.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250407-receipt-document.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=be776d65d3baae296728e11066e4d6d0 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250407-receipt-document.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=174595fd61e4038c90c0942628ab5583 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250407-receipt-document.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=7d5a8051a75881ffda6369efaa2f65f6 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250407-receipt-document.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=34f605b8872af710af7a4a345580989f 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250407-receipt-document.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=a197ec7ee850eb2f700a348438beffc6 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250407-receipt-document.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=32c38488ee94a1f3f3bae89b2f05ef4b 2500w" />
+    <img alt="" />
   </Frame>
 
   <Info>
@@ -8945,7 +9178,7 @@ New updates and improvements to Lago.
   ## Disable pdf generation
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250324-pdf-no-generated.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=4f7319adad321c38d8a31c0beae91bba" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20250324-pdf-no-generated.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250324-pdf-no-generated.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=1fe0d0e0a81d81f41402a11bcbaa0577 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250324-pdf-no-generated.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=af5c021c2317e231baa9a071e2baaea8 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250324-pdf-no-generated.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=a63354dfc13ff697faafe2f595e747f1 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250324-pdf-no-generated.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=415ef93c18778e173e3f70b3b19e519a 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250324-pdf-no-generated.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=b8a9ae911d98e52d5c078051d3abcdc4 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250324-pdf-no-generated.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=6e806e0ba642e96f698301f14529136c 2500w" />
+    <img alt="" />
   </Frame>
 
   If you don’t rely on our PDFs, you can now configure Lago—via an environment variable—to skip PDF generation for invoices, credit notes, and receipts.
@@ -8963,7 +9196,7 @@ New updates and improvements to Lago.
   ## Enhanced wallet transaction details
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250320-wallet-transaction-details.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=2a7d8f0421220a9153d89dbd43d6bec9" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20250320-wallet-transaction-details.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250320-wallet-transaction-details.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=37d73cd57ebb5ed0b0e305d038ca12d2 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250320-wallet-transaction-details.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=6c43c327de39bde0858d3a6e3a1e242d 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250320-wallet-transaction-details.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=2eab13a4c8f4f6bbbbe18629b840fcc4 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250320-wallet-transaction-details.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=226dc4d23de7d56fce1d16756575e177 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250320-wallet-transaction-details.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=c7768568cdfc7f26807576cb3201f2f2 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250320-wallet-transaction-details.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=ca90c5505adcbf05ff9ec36e38ae84db 2500w" />
+    <img alt="" />
   </Frame>
 
   You can now view detailed information about a wallet transaction by simply clicking on it.
@@ -8973,7 +9206,7 @@ New updates and improvements to Lago.
   ## Failed wallet transaction
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250320-failed-wallet-transaction.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=013affb54695689ec30b9749854f94bf" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20250320-failed-wallet-transaction.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250320-failed-wallet-transaction.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=f58639270eb21d5148fb28ee42645e02 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250320-failed-wallet-transaction.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=7831f40133d72cb3e18adf4e9552318c 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250320-failed-wallet-transaction.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=fc2dca6f9d480c40f82a01cec9c48092 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250320-failed-wallet-transaction.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=65db353c65571ecd203146fa4249b81b 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250320-failed-wallet-transaction.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=46f60c304b9453667699f3f232379c71 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250320-failed-wallet-transaction.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=68ebd13b9a6ec2679699c51cc47e3d31 2500w" />
+    <img alt="" />
   </Frame>
 
   We’ve introduced the `failed` wallet transaction! Now, when a wallet transaction is linked to a failed payment, its status will automatically update from `pending` to `failed`.
@@ -8982,7 +9215,7 @@ New updates and improvements to Lago.
   ## Expiration date for wallet recurring transaction rule
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250313-expirat-at-recurring-transaction-rule.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=ad99456d538af2523201293c56dd030a" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20250313-expirat-at-recurring-transaction-rule.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250313-expirat-at-recurring-transaction-rule.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=a32b82914a8cc98f86159921db7b08b4 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250313-expirat-at-recurring-transaction-rule.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=4de0af5cd492545cf2935d3b39a216d8 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250313-expirat-at-recurring-transaction-rule.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=6906f216548798bb772892bf39143194 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250313-expirat-at-recurring-transaction-rule.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=1a843e552168bb87ca9eb5fe69ec4076 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250313-expirat-at-recurring-transaction-rule.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=34413d1e5b823be244dc4f9f72310713 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250313-expirat-at-recurring-transaction-rule.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=25bfc5908e442a64e7c2e8f064979e5e 2500w" />
+    <img alt="" />
   </Frame>
 
   As part of our initiative to enhance the wallet experience, we’ve introduced two new settings for wallet recurring transaction rules.
@@ -8997,7 +9230,7 @@ New updates and improvements to Lago.
   ## New webhook message on wallets
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250224-wallet-webhooks.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=32e1987ad57fb2edf21f6e186e315201" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20250224-wallet-webhooks.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250224-wallet-webhooks.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=7a932f1ce0f50b9a7693368abd4f1244 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250224-wallet-webhooks.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=388c3e0f3f24e650e3067911042aac15 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250224-wallet-webhooks.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=6840e16b06655f4c4e02f6f38db5224f 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250224-wallet-webhooks.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=0dc10cfce505e9bc6bdf57d7efe92ebf 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250224-wallet-webhooks.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=b14f392cce423945a98648cab0779731 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250224-wallet-webhooks.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=786c2c9fb22acc95683ad667f162ca20 2500w" />
+    <img alt="" />
   </Frame>
 
   We’ve introduced new webhook messages to help you better understand activity on your wallets. You can now listen to `wallet.created`, `wallet.updated`, and `wallet.terminated` events.
@@ -9007,7 +9240,7 @@ New updates and improvements to Lago.
   ## Pay Lago invoices via Bank Transfers
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250225-bank-transfers.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=c44a3d0173466b9c281bf414ca717d46" alt="" data-og-width="1200" width="1200" data-og-height="1200" height="1200" data-path="changelog/images/20250225-bank-transfers.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250225-bank-transfers.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=734ac84f2a09a5f7e44dfa5a06841d09 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250225-bank-transfers.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=3fbe0fa55aa13cab8f3eb6ac2e147d9e 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250225-bank-transfers.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=7a6a0eac49ea5fef2a279377e64e5376 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250225-bank-transfers.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=abb620bdc2c41d46b8b7f1623e97f166 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250225-bank-transfers.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=998c9b1ab6eacc6e1bc14b09bc9c1329 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250225-bank-transfers.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=69a69e36b0ed9eed61c2427f5ecaed0a 2500w" />
+    <img alt="" />
   </Frame>
 
   Lago now supports Stripe’s bank transfers (customer\_balance) for invoice payments. Supported methods:
@@ -9035,7 +9268,7 @@ New updates and improvements to Lago.
   ## To the moon: Crypto payments are now available
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250220-crypto-payments.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=31cfc51fb6e15bbf3ad86fc4b06785e1" alt="" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="changelog/images/20250220-crypto-payments.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250220-crypto-payments.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=cbcf62cbbfae34579b092d8587397c23 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250220-crypto-payments.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=9fef1369411ceedb7536105fbdf84a23 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250220-crypto-payments.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=bf94fc6fd0ce879e6fba759473aaccd8 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250220-crypto-payments.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=b06334f586b540ef503ed619ba0cf5a5 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250220-crypto-payments.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=4a7abcb4bbf407bb2ecb92c1b3aa6af6 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250220-crypto-payments.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=fa127db964153504f12598f6ac3560e4 2500w" />
+    <img alt="" />
   </Frame>
 
   Lago now supports crypto payments! Don't worry though, your customers won't be paying you in a dog meme coin anytime soon. For now, we support USDC/USDP payments if you're using Lago with Stripe payments.
@@ -9049,7 +9282,7 @@ New updates and improvements to Lago.
   ## Record payments and partial payments
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250217-manual-payment.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=5408f70fbad7fc77fab0b9eef16e52b4" alt="" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="changelog/images/20250217-manual-payment.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250217-manual-payment.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=26f78118f918efaed5663c3b7bd75837 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250217-manual-payment.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=3fa99dc74c4816934f96b69b5633f4b8 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250217-manual-payment.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=265061d12b79099576b74ab7398657a1 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250217-manual-payment.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=1c549d7891b95b1598d76ee1984f297b 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250217-manual-payment.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=faf040ae41f27865f947f05d1ae05dd3 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250217-manual-payment.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=e221f44a61ddc669b2244089c18225e3 2500w" />
+    <img alt="" />
   </Frame>
 
   <Info>
@@ -9065,7 +9298,7 @@ New updates and improvements to Lago.
   ## Partner billing & self-invoicing
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250217-partner-billing.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=5543876b38507ac8145ce804f5bf332c" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20250217-partner-billing.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250217-partner-billing.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=ab82ac023a48437f6e2a58735ff20337 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250217-partner-billing.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=8c1d24c688ce4d37b92d628857c35f3e 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250217-partner-billing.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=78cad8438e4efeaf4a1dc95ce2373b4a 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250217-partner-billing.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=b649b7837f3428cb08178cd809c76833 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250217-partner-billing.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=b61b478f701b02724d8a95dd0b93972f 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250217-partner-billing.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=42db4acb02f69f4c96b2782a2e55e552 2500w" />
+    <img alt="" />
   </Frame>
 
   <Info>
@@ -9085,7 +9318,7 @@ New updates and improvements to Lago.
   ## Back to the future with invoice previews
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250217-invoice-previews.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=4a318595b9e7b4e1aa54c3b19e0c4998" alt="" data-og-width="2400" width="2400" data-og-height="1260" height="1260" data-path="changelog/images/20250217-invoice-previews.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250217-invoice-previews.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=518f9d4ab68ca4e7cbf7412504c67b23 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250217-invoice-previews.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=f4b59ef6eb19cfbd5d9d747b22feb2d3 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250217-invoice-previews.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=d4407a7b8e9a8160a86636bf54c123e3 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250217-invoice-previews.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=0aa9f25e2169b93667c039d8ac9db1a5 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250217-invoice-previews.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=fc33b4b7af550f42ec634ba674530bb4 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250217-invoice-previews.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=5131c1aac044368780305cfcf797491f 2500w" />
+    <img alt="" />
   </Frame>
 
   <Info>
@@ -9107,7 +9340,7 @@ New updates and improvements to Lago.
   ## Add up to 10 webhook endpoints
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250206-10-webhook-endpoints.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=578ee00020c51176eb2e073bacb268e6" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20250206-10-webhook-endpoints.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250206-10-webhook-endpoints.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=6d6bb7946e0b9ae9b3883fdcd2cb597d 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250206-10-webhook-endpoints.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=28188310bed8581385a33b352397c05c 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250206-10-webhook-endpoints.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=0a4369b71b63feb2ff43af39bdf8218c 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250206-10-webhook-endpoints.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=8a58363eec5fbbd3826641907aebb8d0 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250206-10-webhook-endpoints.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=50dedd45833b18651fb5f6c98c9b7b0c 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250206-10-webhook-endpoints.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=d3897b44223a0e25fbda6504f8b4534c 2500w" />
+    <img alt="" />
   </Frame>
 
   We’ve increased the limit on the number of webhook endpoints available in your Lago app!
@@ -9118,7 +9351,7 @@ New updates and improvements to Lago.
   ## Add fees to your draft invoices
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250206-add-fee-draft-invoice.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=50e414d87194ad1f4db7788427e59eb0" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20250206-add-fee-draft-invoice.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250206-add-fee-draft-invoice.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=8aa355cbca8dc86f134539c5e666a245 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250206-add-fee-draft-invoice.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=c24e41e4509012f0e29f536c246f7636 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250206-add-fee-draft-invoice.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=1d2a29c94c8400a9b0cb8fe1062d4f34 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250206-add-fee-draft-invoice.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=e3ef871c2aa9c76e83da1cc571fce5e2 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250206-add-fee-draft-invoice.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=e8ae4caae507cbfd6bced2c04527d8bd 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250206-add-fee-draft-invoice.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=a28477f5619921d1140e07608351c9ac 2500w" />
+    <img alt="" />
   </Frame>
 
   As communicated, we no longer generate fees at 0 units, but you can still add them to Draft invoices if no event has been received.
@@ -9129,7 +9362,7 @@ New updates and improvements to Lago.
   ## Retrieve a wallet transaction endpoint
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250131-retrieve-wallet-transaction.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=467632f5318a01ef1c4776ce16d02814" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20250131-retrieve-wallet-transaction.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250131-retrieve-wallet-transaction.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=4bbd4c396190207c037b0fc131aed25b 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250131-retrieve-wallet-transaction.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=2852686f7381eb6bf8009b95ffbb8c31 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250131-retrieve-wallet-transaction.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=59317ecc94282f25cbf9b6c71dc3e326 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250131-retrieve-wallet-transaction.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=afb2b0a268d6d9e046df3cdcd1102f2b 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250131-retrieve-wallet-transaction.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=bbb449aadbb11488269d320388098b6d 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250131-retrieve-wallet-transaction.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=88a85c3fcfa5cf733ea60b2e3496271e 2500w" />
+    <img alt="" />
   </Frame>
 
   We’ve added a new endpoint to the wallet experience!
@@ -9140,7 +9373,7 @@ New updates and improvements to Lago.
   ## Let Lago sync your customers directly with Salesforce!
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250127-create-customer-lago-salesforce.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=44ccfb132746931677a17db6ddb9932e" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20250127-create-customer-lago-salesforce.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250127-create-customer-lago-salesforce.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=a0609e183491609e719fe389f75fa7bc 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250127-create-customer-lago-salesforce.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=965a7f71180fa76a2a6c87b0973ef5c3 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250127-create-customer-lago-salesforce.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=72d6a29b811a1c4548f119436c3bd242 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250127-create-customer-lago-salesforce.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=6b801cad25ec0d8448d0955b0281df42 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250127-create-customer-lago-salesforce.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=d15e207f1ce379399e3ca329e704d37b 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250127-create-customer-lago-salesforce.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=e3ef529801c5ad014e34faab72b39194 2500w" />
+    <img alt="" />
   </Frame>
 
   We’ve streamlined the Salesforce integration experience.
@@ -9159,7 +9392,7 @@ New updates and improvements to Lago.
   ## Display custom invoice sections
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250113-custom-invoice-section.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=02cb6888aa708c75ad923ab59c5c242b" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20250113-custom-invoice-section.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250113-custom-invoice-section.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=f32bba2ac09ad856b82ca45d981dbcbf 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250113-custom-invoice-section.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=8acec5c5885afaab1d6f2f68f19be880 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250113-custom-invoice-section.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=cfdca8b0a0e50da7ecc5b71a05aba735 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250113-custom-invoice-section.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=7136cac8c8cd2c32a171fa12647309c1 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250113-custom-invoice-section.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=e6ce96abe3e7a6c21833e4ca85395c9b 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250113-custom-invoice-section.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=1007ccd626393b6aaa99e6ee6f0129cc 2500w" />
+    <img alt="" />
   </Frame>
 
   Tailor invoices to each customer by adding personalized bank details!
@@ -9174,7 +9407,7 @@ New updates and improvements to Lago.
   ## Filter and export credit notes
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250102-export-credit-notes.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=7310b91445c3e5d9862a8a3bb13d4d8f" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20250102-export-credit-notes.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250102-export-credit-notes.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=f331d086d65a3f038d9ffe00d8efdebd 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250102-export-credit-notes.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=e915ebafafbdd2671b30416323e6f421 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250102-export-credit-notes.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=f77f0d720bb1d9acbf93bf7c78a7744a 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250102-export-credit-notes.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=c098f9c9aa3091393e2ccad415d24fec 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250102-export-credit-notes.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=99305a9f4cbd0ceca3e93868cb2b2dd6 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20250102-export-credit-notes.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=5913450b55076dbe1ce252c4876a655a 2500w" />
+    <img alt="" />
   </Frame>
 
   Users can now filter the list of credit notes (e.g. by currency, customer, issuing date, amount, reason, etc.) and the filtered list can then be exported from the user interface.
@@ -9191,7 +9424,7 @@ New updates and improvements to Lago.
   ## Granular API key permissions
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241104-api-permissions.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=cc41b8ee79a746409de82dc5681c00d6" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20241104-api-permissions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241104-api-permissions.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=e4f30c11118b933fafaa3e057afc6141 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241104-api-permissions.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=ef602d04c6eefca6ee345ef8c5ff8998 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241104-api-permissions.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=263d4e0fc9ee8baf4c8d097486a4b369 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241104-api-permissions.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=3ffe9c2535615f57644895f964c2c325 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241104-api-permissions.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=977f5c0f25a0d30b83a9afef74feb1b6 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241104-api-permissions.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=e6ed63536b28fd4f8e58daa12e5d66ec 2500w" />
+    <img alt="" />
   </Frame>
 
   You can now customize permissions for API keys in Lago! 🔒
@@ -9207,7 +9440,7 @@ New updates and improvements to Lago.
   ## Edit and delete dunning campaign
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241128-delete-dunning-campaign.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=bf8cdd8651788fde1a3672024c835ef7" alt="" data-og-width="2720" width="2720" data-og-height="1536" height="1536" data-path="changelog/images/20241128-delete-dunning-campaign.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241128-delete-dunning-campaign.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=4a5a3268ae07827b26901764d2950580 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241128-delete-dunning-campaign.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=0cdfff0bf63b1baad852aa8256c47ea9 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241128-delete-dunning-campaign.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=6b6dfc0cd57753ca6abebc9641936e4d 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241128-delete-dunning-campaign.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=b4661b42147f9da8e15865d3ecdca6ca 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241128-delete-dunning-campaign.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=7324eca55a0671a810c706a6cd56ddbd 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241128-delete-dunning-campaign.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=018601261b4f13d3ab24ce0ac89415c4 2500w" />
+    <img alt="" />
   </Frame>
 
   You can now instantly update dunning campaign thresholds, delays, and attempts to fit your needs—changes may trigger new attempts for linked customers. No longer need a campaign? Delete it! Customers will either switch to the default campaign or be excluded if none exists.
@@ -9217,7 +9450,7 @@ New updates and improvements to Lago.
   ## Create new API keys
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241126-add-api-key.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=f5dba0176843a1788b8f20876168c278" alt="" data-og-width="2720" width="2720" data-og-height="1768" height="1768" data-path="changelog/images/20241126-add-api-key.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241126-add-api-key.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=c99f071ac82df159887b693e747f40a2 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241126-add-api-key.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=0d4631095a766c9fa11541dc857769a9 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241126-add-api-key.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=f4ec47279ddc5da67f644e7c9f2338d2 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241126-add-api-key.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=c9d54c5387712b791df971458a9ef50d 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241126-add-api-key.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=a18c4e2f4e0e96e2344ab61efc49a73a 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241126-add-api-key.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=a1e5601dfeb3e22ebcdf5ef93cf65b64 2500w" />
+    <img alt="" />
   </Frame>
 
   <Info>
@@ -9233,7 +9466,7 @@ New updates and improvements to Lago.
   ## Schedule an API key rotation
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241126-schedule-rotate-api-keys.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=aafe12d4b722a9c70fffcecf9cca4bd2" alt="" data-og-width="2720" width="2720" data-og-height="1560" height="1560" data-path="changelog/images/20241126-schedule-rotate-api-keys.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241126-schedule-rotate-api-keys.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=b868e10dbae5bffe7ed1c83ad4818794 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241126-schedule-rotate-api-keys.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=eda888c29252d15b61d60cb3421682da 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241126-schedule-rotate-api-keys.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=26e98c8ae7aecdb61991a3faf768798d 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241126-schedule-rotate-api-keys.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=5cf9cdd032f82fabdf0fded7dbbc8c02 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241126-schedule-rotate-api-keys.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=76436841450a389970ecc0f45f3999a7 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241126-schedule-rotate-api-keys.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=c1fedce9cb12b1cc74ba86bd7b648c7b 2500w" />
+    <img alt="" />
   </Frame>
 
   <Info>
@@ -9247,7 +9480,7 @@ New updates and improvements to Lago.
   ## Rotate your API key
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241122-rotate-api-keys.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=87d3c6b533e1baf2457dc3422ed642ce" alt="" data-og-width="2720" width="2720" data-og-height="1536" height="1536" data-path="changelog/images/20241122-rotate-api-keys.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241122-rotate-api-keys.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=1634cebf26ae7dd47d6c050c7e497da8 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241122-rotate-api-keys.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=9a5f354ee131d391e98ed5c17f727aa2 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241122-rotate-api-keys.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=c9dd3dc212d1ce5602309dd94e219263 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241122-rotate-api-keys.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=a616361e83d94ff9de450a056ee6dbef 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241122-rotate-api-keys.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=645430c618ef17f37fbc8e3a3835afbb 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241122-rotate-api-keys.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=18d7ec47960c8b9c0361292e14443062 2500w" />
+    <img alt="" />
   </Frame>
 
   Oops! Think your API key might be exposed, or just want to rotate it to stay safe? No worries—you don’t need to reach out to us. You can now quickly roll your key anytime in the Developer section.
@@ -9257,7 +9490,7 @@ New updates and improvements to Lago.
   ## Automatic dunning: Payment reminders on autopilot
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241113-auto-dunning.gif?s=c5cbf6330a2b4e811c33ea346648a789" alt="" data-og-width="1800" width="1800" data-og-height="972" height="972" data-path="changelog/images/20241113-auto-dunning.gif" data-optimize="true" data-opv="3" />
+    <img alt="" />
   </Frame>
 
   For businesses billing on usage, keeping payments timely is essential. That's why we're introducing **Automatic Dunning**—a hands-off way to manage overdue invoices and keep cash flow steady.
@@ -9271,7 +9504,7 @@ New updates and improvements to Lago.
   ## Customizable rounding for usage metrics
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241113-rounding.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=3b12a6a33a7d43d32e49930f647d4d91" alt="" data-og-width="640" width="640" data-og-height="299" height="299" data-path="changelog/images/20241113-rounding.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241113-rounding.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=55c8b630ff8ac8703f9589d0030e9ed9 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241113-rounding.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=4f8236a3d5eba835856c2a0c048286df 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241113-rounding.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=be35cee0166bb53325b86086c8c96584 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241113-rounding.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=50c654b8e1d57ae7995062d228c5bfa4 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241113-rounding.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=23f9fe73cea63f5f609055998750e037 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241113-rounding.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=eae940b867fde79d92ce289934c97bc3 2500w" />
+    <img alt="" />
   </Frame>
 
   Previously, usage rounding in Lago was limited to a default precision. Now, with **Customizable Rounding Rules**, you have full control over how usage-based metrics are rounded.
@@ -9307,7 +9540,7 @@ New updates and improvements to Lago.
   ## Cascade plan editions to overridden subscriptions
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241113-cascade-plans-edits-to-overridden-sub.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=b4c26aee7832d7fc97ac3b1e87a9279c" alt="" data-og-width="2720" width="2720" data-og-height="1536" height="1536" data-path="changelog/images/20241113-cascade-plans-edits-to-overridden-sub.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241113-cascade-plans-edits-to-overridden-sub.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=537b468cac59aa8e61d3f70b8ff3edbd 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241113-cascade-plans-edits-to-overridden-sub.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=4abe666c00d755089fec9dbec304f51c 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241113-cascade-plans-edits-to-overridden-sub.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=cde954becb851d972411e33732d486a5 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241113-cascade-plans-edits-to-overridden-sub.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=0130bb92e7661146949f90d06dd4a1b5 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241113-cascade-plans-edits-to-overridden-sub.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=a5bc8ae43d06028623338a81e973d71e 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241113-cascade-plans-edits-to-overridden-sub.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=8f39efea8be98ea4d01926599f6505ab 2500w" />
+    <img alt="" />
   </Frame>
 
   You have now the flexibility to decide whether changes made to the parent plan should automatically cascade to all overridden subscriptions.
@@ -9318,7 +9551,7 @@ New updates and improvements to Lago.
   ## Sync billing data to HubSpot
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241105-sync-billing-data-hubspot.jpg?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=282f9d866e45e669ab0993c0bf1b2874" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20241105-sync-billing-data-hubspot.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241105-sync-billing-data-hubspot.jpg?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=86b95a1cbc78f2c9cb5ee5ffaee1e497 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241105-sync-billing-data-hubspot.jpg?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=4da33602b9db03c89364a48caf158cb8 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241105-sync-billing-data-hubspot.jpg?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=d5f6178fe90553b2f589ae3821663934 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241105-sync-billing-data-hubspot.jpg?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=6b7c76eab2dfd6b5eb22b722385996a3 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241105-sync-billing-data-hubspot.jpg?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=d11a8eec638b1d15d6a69e65e7768c8c 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241105-sync-billing-data-hubspot.jpg?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=464046d412bacc74acb8339d7514f3f3 2500w" />
+    <img alt="" />
   </Frame>
 
   With Lago’s new integration, you can now seamlessly sync billing data in real time to HubSpot. By connecting your Lago account to HubSpot, you’ll enable the following:
@@ -9332,7 +9565,7 @@ New updates and improvements to Lago.
   ## Quote in Salesforce CPQ, bill in Lago!
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241105-sync-billing-data-salesforce-cpq.jpg?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=c8e02afc4d20c590fd8555490d90e872" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20241105-sync-billing-data-salesforce-cpq.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241105-sync-billing-data-salesforce-cpq.jpg?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=626b25d8e5deed0e266abd20611b1c2e 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241105-sync-billing-data-salesforce-cpq.jpg?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=20c43586b8aea19730f9e8fcd6256c09 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241105-sync-billing-data-salesforce-cpq.jpg?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=613715ea70e093cee295b5b068f256d6 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241105-sync-billing-data-salesforce-cpq.jpg?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=71bd5930563a1da41617fc570b6dcd9f 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241105-sync-billing-data-salesforce-cpq.jpg?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=9f2557bef1ad5f09ca25cb8e13590a29 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241105-sync-billing-data-salesforce-cpq.jpg?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=42e521e7c5ab9bd9b5966a8b013f2d77 2500w" />
+    <img alt="" />
   </Frame>
 
   Our enhanced Salesforce package now enables you to use Salesforce CPQ for quoting leads and customers.
@@ -9344,7 +9577,7 @@ New updates and improvements to Lago.
   ## Dynamic pricing
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241105-dynamic-pricing.png?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=1f52d387354360636a114edceae33d7d" alt="" data-og-width="3456" width="3456" data-og-height="2157" height="2157" data-path="changelog/images/20241105-dynamic-pricing.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241105-dynamic-pricing.png?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=bc7c696bcdd3721e2cf19bc6faea7bfc 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241105-dynamic-pricing.png?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=17ead774e8582ed13f6b76333051c0ac 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241105-dynamic-pricing.png?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=8cab49fb302d0c65039647828dff39b4 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241105-dynamic-pricing.png?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=23592cc66cea4b200c941dc0f2819d49 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241105-dynamic-pricing.png?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=4a8a946c862245a2cf31ac9210fd7584 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241105-dynamic-pricing.png?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=5364742de5f9598c0d741675acf93b8a 2500w" />
+    <img alt="" />
   </Frame>
 
   Do your prices change dynamically based on a provider or complex in-house calculations?
@@ -9367,12 +9600,12 @@ New updates and improvements to Lago.
   You can now process refunds for prepaid credit bought within Lago directly, without needing to engage your payment provider.
   Lago takes care of the refund through its credit note module, enabling you to initiate the refund to the payment provider and automatically void the prepaid credit in the active wallet according to the wallet’s refund status.
 
-  [Learn more](/guide/credit-notes.mdx)
+  [Learn more](/guide/invoicing/credit-notes/overview)
 
   ## Customer Portal complete rework
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241031-customer-portal-rework.jpg?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=03999e1876ba4a2fe15c6e283eb2e344" alt="" data-og-width="2880" width="2880" data-og-height="3784" height="3784" data-path="changelog/images/20241031-customer-portal-rework.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241031-customer-portal-rework.jpg?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=498cd3515662a66b65a4f32d0e5248b6 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241031-customer-portal-rework.jpg?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=d1b83d43d567715c84977de29174ba15 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241031-customer-portal-rework.jpg?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=f960472de294e6c990cb44b51c138935 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241031-customer-portal-rework.jpg?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=415e534301167ea88c4e0f3707762a4e 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241031-customer-portal-rework.jpg?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=30e3edb8341bf46dc9db97a4c5b59de5 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241031-customer-portal-rework.jpg?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=cd7891a65a07706c6752aa981b89d0d4 2500w" />
+    <img alt="" />
   </Frame>
 
   We’ve **completely reworked the Customer Portal**. You can now embed the portal URL to display in real-time **plans and usage information**, **wallet data**, **customer info**, and **invoice lists**.
@@ -9384,7 +9617,7 @@ New updates and improvements to Lago.
   ## Usage ingestion sources
 
   <Frame>
-        <img src="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241031-ingest-usage-custom-sources.jpg?fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=46374e758f77940145b1ab37d46c89a3" alt="" data-og-width="2400" width="2400" data-og-height="1286" height="1286" data-path="changelog/images/20241031-ingest-usage-custom-sources.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241031-ingest-usage-custom-sources.jpg?w=280&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=6377f090cd985038ff840788f8ff0362 280w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241031-ingest-usage-custom-sources.jpg?w=560&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=a13c19fb5595c0f65cde407e06c26237 560w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241031-ingest-usage-custom-sources.jpg?w=840&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=99538c1d4d769559fea1bc041485ec4e 840w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241031-ingest-usage-custom-sources.jpg?w=1100&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=db91b2d10f7090c834ee14c114e6969e 1100w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241031-ingest-usage-custom-sources.jpg?w=1650&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=7c70ea7874d968305df0d52971788f42 1650w, https://mintcdn.com/lago-docs/MMCW0l-xl38H04bt/changelog/images/20241031-ingest-usage-custom-sources.jpg?w=2500&fit=max&auto=format&n=MMCW0l-xl38H04bt&q=85&s=c73670f640524b3ecc59d24c3b67bf15 2500w" />
+    <img alt="" />
   </Frame>
 
   Premium ingestion sources for metering and usage consumption are now **generally available**.
@@ -10142,7 +10375,7 @@ New updates and improvements to Lago.
 
   Display names can be defined via the user interface or the API (see `plan.invoice_display_name` and `charges.invoice_display_name`).
 
-  [Learn more](/guide/plans/charges/overview#update-invoice-display-names)
+  [Learn more](/guide/plans/charges/usage-based-charges#update-invoice-display-names)
 
   <Frame>
     ![](https://uploads-ssl.webflow.com/63569f390f3a7ad4c76d2bd6/651fffd240c8227ee8ccaf83_invoice_display_name.png)
@@ -10656,7 +10889,7 @@ New updates and improvements to Lago.
   * **Refund the customer** (only for paid invoices)
   * **Credit back the customer's account**
 
-  Please refer to the [documentation](/guide/credit-notes) for more information on credit notes and credit methods.
+  Please refer to the [documentation](/guide/invoicing/credit-notes/overview) for more information on credit notes and credit methods.
 
   ## Timezones ✨
 
@@ -11123,7 +11356,7 @@ Lago is API-first, the most loved billing solution on Github, and was voted Prod
 
 Lago raised a total of [\$22M of funding](https://techcrunch.com/2024/03/14/lago-a-paris-based-open-source-billing-platform-banks-22m/) from investors including Y Combinator, FirstMark Capital, SignalFire, [Meghan Gill](https://www.linkedin.com/in/meghanpgill/), who has led the monetization efforts of MongoDB for 14 years, [Romain Huet](https://www.linkedin.com/in/romainhuet/), former head of Developer Relations at Stripe - now leading OpenAI developer experience, and [Clément Delangue](https://www.linkedin.com/in/clementdelangue/), CEO of AI open platform Hugging Face.
 
-<iframe src="https://ghbtns.com/github-btn.html?user=getlago&repo=lago&type=star&count=true&size=large" frameborder="0" scrolling="0" width="150" height="30" title="GitHub" />
+<iframe title="GitHub" />
 
 ## 2. What does Lago do?
 
@@ -11138,7 +11371,7 @@ This includes, but is not limited to:
 
 **Features overview:**
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Real-time usage metering" href="https://www.getlago.com/products/metering">
     Lago’s event-based architecture provides a solid foundation for building a
     fair pricing model that scales with your business.
@@ -11281,7 +11514,7 @@ Keeping your data secure is critical to how Lago operates. Lago is SOC 2 Type 2 
 
 To protect access to and transmission of your data, Lago supports Single Sign-On (SSO) and Role-based access control (RBAC). SSO allows you to centrally manage your access and RBAC policies define how users interact with Lago, giving you the chance to minimize security vulnerability.
 
-Learn more about security at Lago [here](https://getlago.com/docs/guide/security/rbac).
+Learn more about security at Lago [here](/guide/security/rbac).
 
 ## 4. How is this different from the other billing tools?
 
@@ -11324,7 +11557,7 @@ That's where Lago, with its open-source metering and billing engine, comes in. L
 
 Lago’s infrastructure handles hundreds of thousands events per second and makes it easy to offer market-practices pricing features like per-token pricing, prepaid credits, real-time consumption monitoring and progressive billing.
 
-Use one of our templates to replicate the pricing of [OpenAI](https://getlago.com/docs/templates/per-token/openai) or [Mistral](https://getlago.com/docs/templates/per-token/mistral).
+Use one of our templates to replicate the pricing of [OpenAI](/templates/per-token/openai) or [Mistral](/templates/per-token/mistral).
 
 
 # Community
@@ -11347,7 +11580,7 @@ There are many ways to contribute to the Lago community. You can:
 * Contribute to the Lago codebase (learn more [here](https://github.com/getlago/lago/blob/main/CONTRIBUTING.md))
 * Report bugs or suggesting improvements ([here](https://github.com/getlago/lago/blob/main/CONTRIBUTING.md))
 
-For instance, our community played a pivotal role in introducing the "[Latest](https://docs.getlago.com/guide/billable-metrics/aggregation-types/overview)" aggregation type to Lago's product. Additionally, we regularly receive translation contributions from users in languages such as Italian, Spanish, and Norwegian.
+For instance, our community played a pivotal role in introducing the "[Latest](/guide/billable-metrics/aggregation-types/latest)" aggregation type to Lago's product. Additionally, we regularly receive translation contributions from users in languages such as Italian, Spanish, and Norwegian.
 
 Thanks to valuable contributions from our users, our community continues to grow stronger!
 
@@ -11363,12 +11596,12 @@ Source: https://getlago.com/docs/faq/deployment
 
 ## 1. Is this hard to set up?
 
-Lago is easy to set up, you can run our app in a few clicks by downloading our [Docker image](https://doc.getlago.com/guide/self-hosted/docker).
+Lago is easy to set up, you can run our app in a few clicks by downloading our [Docker image](/guide/lago-self-hosted/docker).
 If you have any questions, or want access to our [premium features and/or our cloud version (paying)](https://www.getlago.com/pricing), reach out via [Slack](https://www.getlago.com/slack) or send an email to [hello@getlago.com](mailto:hello@getlago.com); we'll get back to you shortly.
 
 ## 2. Can I self-host?
 
-Yes. Lago’s self-hosted version can be deployed on any infrastructure. We provide detailed instructions on [how to self-host Lago](https://docs.getlago.com/guide/self-hosted/docker).
+Yes. Lago’s self-hosted version can be deployed on any infrastructure. We provide detailed instructions on [how to self-host Lago](/guide/lago-self-hosted/docker).
 
 ## 3. How do I deploy?
 
@@ -11376,15 +11609,15 @@ There are three options:
 
 1. Lago Self-hosted:
 
-* Self-hosting the open-source product - Free, and self-serve [here](https://doc.getlago.com/guide/self-hosted/docker)
-* Self-hosting the premium product - Reach out [here](https://docs.google.com/forms/d/e/1FAIpQLSfKwXdwe3jIpPJuPs2Nmkw_3GqoUOEP1YxQ3B6frYfGgYJ11g/viewform?usp=send_form)
+* Self-hosting the open-source product - Free, and self-serve [here](/guide/lago-self-hosted/docker)
+* Self-hosting the premium product - Reach out [here](https://www.getlago.com/book-a-demo)
 
 2. Lago Cloud, with either US or EU hosting - There are only a few spots available to use this product at the moment, so we’ll ask you a couple of questions first, reach out [here](https://docs.google.com/forms/d/e/1FAIpQLSfKwXdwe3jIpPJuPs2Nmkw_3GqoUOEP1YxQ3B6frYfGgYJ11g/viewform?usp=send_form)
 3. Hybrid hosting: for Enterprise customers, Lago also offers cloud-prem or Virtual Private Cloud (VPC) deployments options
 
 ## 4. Can I get it live with my favorite hosting option?
 
-See our instructions to deploy Lago’s open source product [here](https://doc.getlago.com/guide/self-hosted/docker).
+See our instructions to deploy Lago’s open source product [here](/guide/lago-self-hosted/docker).
 Want to set it up differently? (Raise an issue)([https://github.com/getlago/lago/issues](https://github.com/getlago/lago/issues)) in the repo.
 
 
@@ -11474,11 +11707,11 @@ Contact us at [hello@getlago.com](mailto:hello@getlago.com) to discuss what feat
 
 Yes. Lago offers Enterprise plans with access to premium features listed [here](https://www.getlago.com/pricing). You have the flexibility to choose between cloud hosting or self-hosting options.
 
-Please reach out via [Slack](https://lago-community.slack.com/ssb/redirect) or [hello@getlago.com](mailto:hello@getlago.com) for further details.
+Please reach out via [Slack](https://www.getlago.com/slack) or [hello@getlago.com](mailto:hello@getlago.com) for further details.
 
 ## 4. Can I have a free trial for Lago Premium?
 
-You can use and/or try Lago forever-free product by downloading our self-hosted and open source product [here](https://doc.getlago.com/guide/introduction/welcome-to-lago). We unfortunately do not offer free trials for our premium plans (cloud or self-hosted).
+You can use and/or try Lago forever-free product by downloading our self-hosted and open source product [here](/guide/introduction/welcome-to-lago). We unfortunately do not offer free trials for our premium plans (cloud or self-hosted).
 
 In specific cases, our Solution Engineering team can organize ‘proofs of concepts’. Reach out via [Slack](https://www.getlago.com/slack) or [hello@getlago.com](mailto:hello@getlago.com) if you need help testing Lago.
 
@@ -11499,21 +11732,21 @@ To prepay for usage with lago follow this simple steps:
 3. Specify the number of credits to purchase; and
 4. Configure recurring top-up rules based on real-time consumption (threshold or interval top-ups)
 
-See a real-life example of prepaid credits with Mistral [here](https://docs.getlago.com/templates/per-token/mistral#step-3-prepay-usage-with-credits).
+See a real-life example of prepaid credits with Mistral [here](/templates/per-token/mistral).
 
 ## 2. Which payment methods does Lago support?
 
-Lago is agnostic and enables you to connect with any payment providers. Lago is already natively integrated with several payment providers ([see here](https://docs.getlago.com/guide/payments/overview)).
+Lago is agnostic and enables you to connect with any payment providers. Lago is already natively integrated with several payment providers ([see here](/guide/payments/payment-providers)).
 
 ## 3. Does Lago support invoicing?
 
 Yes. Without charging a percentage of billings, every plan includes built-in invoicing automation with native invoice generation.
 
-Lago enables you to issue invoices and send them to your customers via email. Lago offers advanced invoicing features, allowing you to customize invoice templates, and to include [customer metadata](https://docs.getlago.com/guide/customers/customer-metadata) & [credit notes](https://github.com/getlago/lago/wiki/Refunds,-Coupons-&-Credit-Notes:-why-they-are-different) in invoices and set [invoice grace periods](https://www.getlago.com/blog/grace-period-to-adjust-invoice-usage). These features can enhance invoicing operations and compliance.
+Lago enables you to issue invoices and send them to your customers via email. Lago offers advanced invoicing features, allowing you to customize invoice templates, and to include [customer metadata](/guide/customers/customer-metadata) & [credit notes](https://github.com/getlago/lago/wiki/Refunds,-Coupons-&-Credit-Notes:-why-they-are-different) in invoices and set [invoice grace periods](https://www.getlago.com/blog/grace-period-to-adjust-invoice-usage). These features can enhance invoicing operations and compliance.
 
-Additionally, Lago offers support for multiple languages for invoices and emails, making it a versatile solution for businesses operating in various countries or aiming for global expansion ([see more here](https://docs.getlago.com/api-reference/resources/locales)).
+Additionally, Lago offers support for multiple languages for invoices and emails, making it a versatile solution for businesses operating in various countries or aiming for global expansion ([see more here](/api-reference/resources/locales)).
 
-Companies also have the option to integrate our billing engine with an existing invoicing provider like Quickbooks, Netsuite, Bill.com, or Stripe. Learn more [here](https://docs.getlago.com/integrations/introduction).
+Companies also have the option to integrate our billing engine with an existing invoicing provider like Quickbooks, Netsuite, Bill.com, or Stripe. Learn more [here](/integrations/introduction).
 
 ## 4. Does Lago provide a customer self-service portal?
 
@@ -11525,7 +11758,7 @@ Lago is your go-to solution for in-depth analytics of your billing data. This gi
 
 Analytics dashboard are accessible through both user interface and dedicated API endpoints to obtain the insights that matter most to you, like your monthly recurring revenues (if you use Stripe, you probably know how [difficult it is to gather this info](https://www.getlago.com/blog/calculating-stripe-mrr-is-difficult))
 
-Learn more about analytics [here](https://docs.getlago.com/guide/analytics/overview).
+Learn more about analytics [here](/guide/analytics/overview).
 
 ## 6. Does Lago support different time zones?
 
@@ -11536,19 +11769,243 @@ Read more about why time zones matter [here](https://www.getlago.com/blog/bill-y
 
 All Lago’s plans offer native integrations with third party tools for payments (Stripe Payments, GoCardless, Adyen), accounting (NetSuite, QuickBooks), taxes (Anrok), CRM (Salesforce) and others.
 
-You can learn more about integrations [here](https://getlago.com/docs/integrations/introduction).
+You can learn more about integrations [here](/integrations/introduction).
 
 ## 8. Does Lago support taxation?
 
-Lago features automatic European tax detection integration for your customers. Learn more about Lago EU Taxes integration [here](https://getlago.com/docs/integrations/taxes/lago-eu-taxes).
+Lago features automatic European tax detection integration for your customers. Learn more about Lago EU Taxes integration [here](/integrations/taxes/lago-eu-taxes).
 
-You can also integrate with Anrok, the global sales tax platform for software companies. Learn more about this integration [here](https://getlago.com/docs/integrations/introduction#taxes-integrations).
+You can also integrate with Anrok, the global sales tax platform for software companies. Learn more about this integration [here](/integrations/introduction).
 
 ## 9. Does Lago process payments?
 
-Lago does not process payments directly but enables you to integrate with any payment processors (Stripe Payments, GoCardless, Adyen, etc). Learn more about payment integrations [here](https://getlago.com/docs/integrations/introduction#payments-integrations).
+Lago does not process payments directly but enables you to integrate with any payment processors (Stripe Payments, GoCardless, Adyen, etc). Learn more about payment integrations [here](/integrations/introduction).
 
 Lago will process and calculate how much you should charge a user and when, and send this information to your chosen payment gateway, so that your user can proceed to the actual payment. We also allow you to monitor payment status and track refunds.
+
+
+# The Billing Assistant (Beta)
+Source: https://getlago.com/docs/guide/ai-agents/billing-assistant
+
+Your AI-powered billing assistant for automating manual and repetitive billing operations.
+
+## Overview
+
+The Billing Assistant AI Agent is a conversational assistant designed to help you manage billing operations more efficiently. Instead of navigating through multiple screens or performing repetitive tasks manually, simply describe what you need in plain language and let the assistant handle it for you.
+
+<Frame>
+  <img />
+</Frame>
+
+## Billing assistant capabilities
+
+1. **Automate repetitive tasks:** Bulk updates, batch operations, and routine billing actions;
+2. **Query billing data instantly:** Get quick answers without clicking through multiple screens;
+3. **Streamline manual operations:** Create invoices, apply coupons, manage subscriptions and more, all through conversation;
+4. **Receive actionable responses:** Formatted results with clickable links to relevant records; and
+5. **Work faster with context:** The assistant remembers your past conversations for seamless follow-ups.
+
+## Getting started
+
+### Requirements
+
+To use the AI Agent, you need access to your Lago organization and have the AI chat permission enabled for your account.
+
+<Info>
+  **PREMIUM ADD-ON** ✨
+
+  This Billing Assistant Agent is in beta, and available upon request only. Please **[contact us](mailto:hello@getlago.com)** to get access to this premium feature.
+</Info>
+
+### How to use
+
+<Steps>
+  <Step title="Access the chat interface">
+    Open the AI Agent chat interface in your Lago dashboard.
+  </Step>
+
+  <Step title="Type your request">
+    Type your question or request in natural language.
+  </Step>
+
+  <Step title="Review and confirm">
+    Review the AI's response, which may include formatted tables, links, and actionable data.
+    You might need to confirm certain actions before they are executed.
+  </Step>
+
+  <Step title="Follow up as needed">
+    Continue the conversation with follow-up questions as needed
+  </Step>
+</Steps>
+
+## Available operations
+
+The Billing Assistant can help you with a wide range of billing operations:
+
+* **Invoices:** Retrieve invoice details, track payment status, handle failed invoices, refresh draft invoices and generate previews before finalizing charges.
+* **Customers:** Access customer information, create new customer records, and monitor current usage across your customer base.
+* **Subscriptions:** Manage the full subscription lifecycle, from creation through updates and termination.
+* **Events:** Review ingested usage events and send new events when needed.
+* **Payments:** Track payment activity and record new payments against outstanding invoices.
+* **Plans:** Browse your pricing plans and make updates to your plan catalog.
+* **Coupons:** View available discounts and apply them to customer accounts.
+* **Logs:** Investigate activity logs and API logs to troubleshoot issues or audit recent changes.
+
+The assistant can handle batch and concurrent operations, allowing you to perform actions on multiple records at once.
+
+## Example requests
+
+Here are some examples of how this AI Agent can help with your billing operations:
+
+<Accordion title="Querying data">
+  * *"Show me overdue invoices for the last 30 days"*
+  * *"List the latest activity logs"*
+  * *"What is the current usage for customer Acme Corp?"*
+  * *"Show me all subscriptions created this month"*
+  * *"What are the number of invoices generated last week?"*
+</Accordion>
+
+<Accordion title="Automating manual tasks">
+  * *"Create a new customer with email `gavin@hooli.com`"*
+  * *"Apply coupon `SUMMER20` to customer Acme Corp"*
+  * *"Retry all failed invoices from last week"*
+  * *"Update the billing email for customer xyz"*
+</Accordion>
+
+<Accordion title="Bulk operations">
+  * *"Apply coupon SUMMER20 to all US customers"*
+  * *"Generate invoice previews for all customers with active subscriptions"*
+  * *"List all overdue invoices and retry payments"*
+</Accordion>
+
+<Accordion title="Quick lookups">
+  * *"Download invoice `INV-001`"*
+  * *"What plans are available?"*
+  * *"Show me payment history for customer ID xyz"*
+</Accordion>
+
+## Destructive or important actions
+
+For operations that modify data, delete data or create any important billing operations, the Billing Assistant requires explicit confirmation to protect against accidental changes. Here is an example:
+
+* **You:** *"Terminate subscription for Acme Corp"*
+* **Billing Assistant:** *"This subscription is currently active (\$2,500/month). Type `CONFIRM` to proceed."*
+
+You must type `CONFIRM` to execute destructive actions such as terminating subscriptions, issuing invoices or refunds or removing customers.
+
+## Security
+
+The Billing Assistant AI Agent is designed with security as a priority:
+
+1. **Organization-scoped access:** You can only query and modify data within your own organization;
+2. **Permission-based:** Actions are limited to your account permissions;
+3. **No cross-tenant access:** Your data is isolated from other organizations;
+4. **Prompt injection protection:** The AI Agent is designed to ignore attempts to bypass security controls; and
+5. **Batch operation limits:** To prevent abuse, batch operations are capped and throttled to prevent excessive load.
+
+## Conversation history
+
+Your conversations with the Billing Assistant are saved, allowing you to:
+
+* Return to previous conversations;
+* Maintain context across sessions; and
+* Reference past queries and responses.
+
+Each conversation is named after your first message for easy identification.
+
+<Frame>
+  <img />
+</Frame>
+
+## Tips for best results
+
+* **Be specific:** "Show invoices over \$1,000 from last month" works better than "Show me some invoices";
+* **Use follow-ups:** After getting a list, ask follow-up questions like "Tell me more about the first one" or "Retry all of these";
+* **Specify timeframes:** Include date ranges when relevant ("in the last 30 days", "from Q3");
+* **Name entities clearly:** Use customer `external_id`, invoice `id`, or useful identfiers when you have them; and
+* **Chain tasks together:** Complete related operations in one conversation to save time.
+
+## Technical details
+
+### System Overview
+
+```mermaid theme={"dark"}
+flowchart LR
+    Frontend["Frontend<br/>(React)"]
+    LagoAPI["Lago API<br/>(Rails)"]
+    MCP["MCP Server<br/>(Rust)"]
+    Mistral["Mistral AI"]
+    LagoREST["Lago API<br/>(REST)"]
+
+    Frontend <-->|"GraphQL<br/>WebSocket"| LagoAPI
+    LagoAPI -->|"HTTP/SSE"| MCP
+    MCP <-->|"Agents API"| Mistral
+    MCP -->|"lago-rust-client"| LagoREST
+```
+
+### Technologies
+
+| Component  | Technology            | Purpose                           |
+| ---------- | --------------------- | --------------------------------- |
+| Frontend   | React + Apollo Client | Chat UI & GraphQL subscriptions   |
+| Backend    | Rails + Action Cable  | GraphQL API & WebSocket streaming |
+| MCP Server | Rust + rmcp           | Model Context Protocol server     |
+| AI Model   | Mistral Agents API    | LLM with function calling         |
+| API Client | lago-rust-client      | Type-safe Lago API interactions   |
+
+
+# Lago MCP Server
+Source: https://getlago.com/docs/guide/ai-agents/mcp-server
+
+Connect Lago live data, models, and billing logic to any AI system, bringing billing context and interactions everywhere.
+
+The [Lago MCP Server](https://github.com/getlago/lago-agent-toolkit) (Model Context Protocol) is written in Rust and provides AI assistants (like Claude) with direct access to Lago's billing data.
+The server acts as a bridge between AI models and the Lago API, enabling natural language queries about invoices, customers, and billing information.
+
+<Frame>
+  <img />
+</Frame>
+
+## Quick start using Claude Desktop
+
+### Configure Claude Desktop
+
+The easiest way to get started is using the pre-built Docker image with Claude Desktop:
+
+```json theme={"dark"}
+{
+  "mcpServers": {
+    "lago": {
+      "command": "docker",
+      "args": [
+        "run",
+        "--rm",
+        "-i",
+        "--name", "lago-mcp-server",
+        "-e", "LAGO_API_KEY=your_lago_api_key",
+        "-e", "LAGO_API_URL=https://api.getlago.com/api/v1",
+        "getlago/lago-mcp-server:latest"
+      ]
+    }
+  }
+}
+```
+
+### Set your credentials
+
+Simply replace your `LAGO_API_KEY` with your actual Lago API key. You can find this in your Lago dashboard under API settings.
+Also, make sure that you are using the right `LAGO_API_URL` for your Lago instance.
+
+### Start chatting
+
+Once configured, you can ask Claude natural language questions about your billing data:
+
+* "Show me all pending invoices from last month"
+* "Find all failed payment invoices"
+* "Give me the total amount of overdue invoices for the month of March 2025"
+
+The list of available commands and their descriptions can be found in the [Lago MCP Server GitHub repository](https://github.com/getlago/lago-agent-toolkit?tab=readme-ov-file#available-tools).
+You can contribute to the project by adding more commands or improving existing ones.
 
 
 # Alerts
@@ -11582,8 +12039,8 @@ Usage alerts are essential for effectively monitoring customer activity and mana
       The alert threshold `code` helps distinguish between different types of alert notifications. For example, some notifications may indicate a `soft` limit, while others may trigger a `hard` limit, each with different levels of urgency or action required.
     </Info>
 
-    <Frame caption="Create an alert">
-      <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/create-alerts.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=3a8b084fe9890415661ac49eab3fc022" data-og-width="2366" width="2366" data-og-height="1944" height="1944" data-path="guide/images/create-alerts.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/create-alerts.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=c9690ddf2baff17f90317fb5ae76476c 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/create-alerts.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=94d649bfb3d26ad51a6379dc44bd0ac5 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/create-alerts.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=50c6d33b197ccc8395c379c59bf8ee1d 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/create-alerts.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=3f3ecdbbaa59d19a9089540741bc50c3 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/create-alerts.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=530cb8014e64b6cd66e77ead2e1b6512 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/create-alerts.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=612eaf0dd3f0f5be8a78a31a16c2d03c 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -11639,7 +12096,7 @@ Lago supports the following alert types:
 
 After configuring an alert and starting to ingest usage, you can listen for the `alert.triggered` webhook message. These webhooks serve as notifications sent to your system, indicating when an alert threshold has been crossed, along with all the relevant alert details.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "webhook_type": "alert.triggered",
   "object_type": "triggered_alert",
@@ -11685,15 +12142,21 @@ The Forecasted Usage feature leverages machine learning to predict future usage.
 
 The forecasting system uses a machine learning pipeline that trains multiple models on historical usage data and generates probabilistic predictions for future periods.
 
-<Frame caption="Forecasted usage dashboard">
-  <img src="https://mintcdn.com/lago-docs/7U6qGW2huMnU4aEA/guide/analytics/images/forecasted-usage.png?fit=max&auto=format&n=7U6qGW2huMnU4aEA&q=85&s=e1bf64aec1297d4bd815d35f552360ab" data-og-width="3266" width="3266" data-og-height="1596" height="1596" data-path="guide/analytics/images/forecasted-usage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/7U6qGW2huMnU4aEA/guide/analytics/images/forecasted-usage.png?w=280&fit=max&auto=format&n=7U6qGW2huMnU4aEA&q=85&s=2fae69631146de4cb9141f5b1be62c7f 280w, https://mintcdn.com/lago-docs/7U6qGW2huMnU4aEA/guide/analytics/images/forecasted-usage.png?w=560&fit=max&auto=format&n=7U6qGW2huMnU4aEA&q=85&s=aab18cfcf3bd2ede312bd3e452e9a749 560w, https://mintcdn.com/lago-docs/7U6qGW2huMnU4aEA/guide/analytics/images/forecasted-usage.png?w=840&fit=max&auto=format&n=7U6qGW2huMnU4aEA&q=85&s=4dbf34ca6b9c37197ed689f2b904030e 840w, https://mintcdn.com/lago-docs/7U6qGW2huMnU4aEA/guide/analytics/images/forecasted-usage.png?w=1100&fit=max&auto=format&n=7U6qGW2huMnU4aEA&q=85&s=dcbad1da6393c357fe7317dde6580ee2 1100w, https://mintcdn.com/lago-docs/7U6qGW2huMnU4aEA/guide/analytics/images/forecasted-usage.png?w=1650&fit=max&auto=format&n=7U6qGW2huMnU4aEA&q=85&s=3d336704ce4dd3dfce49a0534d8df8c1 1650w, https://mintcdn.com/lago-docs/7U6qGW2huMnU4aEA/guide/analytics/images/forecasted-usage.png?w=2500&fit=max&auto=format&n=7U6qGW2huMnU4aEA&q=85&s=79e7207e549c852de4cf8066c96912a8 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## How forecasting works
 
 ### Data-driven predictions
 
-The ML pipeline use historical usage data, grouped by billable metric, subscription, charge, and charge filter to identify patterns and trends and train ML models. It then generates forecasts 12 months ahead at monthly granularity. As a rule of thumb, the forecasts are updated in the first 2 weeks of the month.
+The ML pipeline uses historical usage data, grouped by billable metric, subscription, charge, and charge filter to identify patterns and trends and train ML models.
+
+The target variable to forecast is future paid usage, as opposed to just invoiced usage which may or may not be eventually paid.
+
+The model generates forecasts for 12 months ahead at monthly granularity.
+
+As a rule of thumb, the forecasts are updated in the first 2 weeks of the month.
 
 ### Forecasting methods
 
@@ -11723,9 +12186,13 @@ All trained model forecasts include three scenarios:
 
 This probabilistic approach helps you understand the range of possible outcomes and plan accordingly.
 
+### Subscription growth
+
+We explicitly model the growth in the number of subscriptions using the historical data of your organization.
+
 ### Limitations
 
-The models forecast the future usage amounts for a subset of all potential future revenue sources. The forecasting currently does not take into account new customer growth or product launches directly.
+The models forecast the future usage amounts for a subset of all potential future revenue sources. For example, it doesn't explicitly account for new business products and features.
 Recently created and unused/deleted billable metrics and charges can be excluded from the forecasts.
 
 ## Filtering options
@@ -11774,8 +12241,8 @@ In essence, it's the amount you should expect to receive every month.
     1. Navigate to the "Analytics" section; and
     2. Access the "Gross Revenue" Dashboard.
 
-    <Frame caption="Gross revenue dashboard">
-      <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/gross-revenue.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=073c3d2537f69696487e9fb380d065de" data-og-width="1372" width="1372" data-og-height="684" height="684" data-path="guide/analytics/images/gross-revenue.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/gross-revenue.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=6fa699d13f542e385efc5870d6b16346 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/gross-revenue.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=b603792786e3472d27cc2016fc3017f4 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/gross-revenue.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=02a18bff09d42e15b062104960bcf6fd 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/gross-revenue.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=af158ce90917633d48a96be6aafd1f2f 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/gross-revenue.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=aed0f0427dbd25dfe32ba6e439adbdb2 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/gross-revenue.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=619068c7c839b2318ce175acf24ef1be 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -11912,8 +12379,8 @@ This feature proves valuable when you need to initiate a new payment intent or t
     1. Navigate to the "Analytics" section; and
     2. Access the "Outstanding invoices" Dashboard.
 
-    <Frame caption="Oustanding invoices dashboard">
-      <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/outstanding-invoices.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=6a599bb9df59eb3eb25a7494b229946c" data-og-width="1112" width="1112" data-og-height="702" height="702" data-path="guide/analytics/images/outstanding-invoices.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/outstanding-invoices.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=00a312d52c3f155de2a2d0b937b3ac3b 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/outstanding-invoices.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=4000d1e294bfa7bee2adf62a86057935 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/outstanding-invoices.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=bd52a2c88bced6619dc5c53de30e12e4 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/outstanding-invoices.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=ec6e3d969ca91ee9a7fe6067a35a7a34 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/outstanding-invoices.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=011deeaa1a47546360d6789b9f529860 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/outstanding-invoices.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=e4b3f2323153eb8c3272b332002c0ffe 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -12014,8 +12481,8 @@ The Overdue Invoices dashboard displays the total amount from your finalized inv
 
     It is not taking into account invoices that are disputed or voided.
 
-    <Frame caption="Overdue invoices dashboard">
-      <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/overdue-invoices.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=ebe3e51befaca14ea5058ac07b09f17a" data-og-width="893" width="893" data-og-height="79" height="79" data-path="guide/analytics/images/overdue-invoices.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/overdue-invoices.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=2e3a64760af2512937169e501c68d813 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/overdue-invoices.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=7dc8f755ac545941790706f438b2d33f 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/overdue-invoices.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=d49470bb22225652e0f771b1f15760bb 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/overdue-invoices.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=280e1c172c13c83296512c9203bb9c03 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/overdue-invoices.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=290d1f1e18da462bb9cc9f7011a7aa9f 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/overdue-invoices.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=69560f48a4c5b98f3027b606d502ff40 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -12105,8 +12572,8 @@ whether recurring or metered, are not factored into the MRR calculations. This d
 specifically reflect your subscription-based revenue, helping you gain a clear understanding of your core financial
 performance.
 
-<Frame caption="MRR overview and breakdown">
-  <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/mrr-breakdown.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=c323561d71d6fdc1bf2a92213e6bd5f1" data-og-width="3168" width="3168" data-og-height="1800" height="1800" data-path="guide/analytics/images/mrr-breakdown.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/mrr-breakdown.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=192813a5fb44615a679fe8ab05cfd982 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/mrr-breakdown.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=d2b6c3800bc596a90837639faee6d82f 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/mrr-breakdown.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=9117abcfa5d453ddcbcdd8b6801b3015 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/mrr-breakdown.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=060318e6616269dcd1785fe35273eadd 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/mrr-breakdown.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=daa777faef32f961ea2b7e55c7d2ea38 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/mrr-breakdown.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=31b3a78c095c9a848cc941e9c275a329 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Time-based MRR analysis
@@ -12160,8 +12627,8 @@ For the selected time period, you can track:
 The second graph of this page provides a detailed breakdown of your MRR by plans. You can also track the percentage of MRR each plan represents.
 This view allows you to analyze how different plans contribute to your overall monthly recurring revenue performance.
 
-<Frame caption="MRR by plans">
-  <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/mrr-by-plans.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=09dfed7a9559ceb066dd0464baa892ac" data-og-width="3168" width="3168" data-og-height="1008" height="1008" data-path="guide/analytics/images/mrr-by-plans.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/mrr-by-plans.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=15f195a94909e19a99970ab57ba03262 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/mrr-by-plans.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=761101b7e4d2a8c988e09c771a75d225 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/mrr-by-plans.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=092893919e115dc83f21e6ddd140cb80 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/mrr-by-plans.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=8ddb6a3fd31b5f0385b09798ba92af19 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/mrr-by-plans.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=b9312b902e71c343774c6f4be04b36e8 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/mrr-by-plans.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=85ac1b12275cc10895ca9b1b933a7245 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 
@@ -12216,8 +12683,8 @@ This graph displays the prepaid credits flows for a selected time period. It inc
 3. **Consumed credits**: The total amount of credits consumed by your customers; and
 4. **Voided credits**: The total amount of credits expired or voided.
 
-<Frame caption="Prepaid credits flows">
-  <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/analytics-prepaid-credits-flow.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=e2d4bce1495d35113eff355b8595a84d" data-og-width="2880" width="2880" data-og-height="1840" height="1840" data-path="guide/images/analytics-prepaid-credits-flow.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/analytics-prepaid-credits-flow.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=0b4f195c6e0dbc2fbec051416c8c980d 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/analytics-prepaid-credits-flow.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=f98432f667ac12e42c2139f14827656d 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/analytics-prepaid-credits-flow.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=7731c1db24599bdbc81a3050010c9041 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/analytics-prepaid-credits-flow.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=c47af67dc3887f9675b02d4ddfae3753 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/analytics-prepaid-credits-flow.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=7cb228d1a5d9329864a47be65b6aab8f 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/analytics-prepaid-credits-flow.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=4f0e1482ef9f857782ef7b27aa4a3c63 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Time-based prepaid credits analysis
@@ -12257,8 +12724,8 @@ The Revenue Streams dashboard provides a detailed breakdown of your revenue acro
 
 The data shown in the dashboard is based on generated invoices, not on usage in the current billing period. The revenue stream dates are the invoices creation dates.
 
-<Frame caption="Revenue streams dashboard">
-  <img src="https://mintcdn.com/lago-docs/a_duc9Ex4xZ4QFFn/guide/analytics/images/revenue-streams-details.png?fit=max&auto=format&n=a_duc9Ex4xZ4QFFn&q=85&s=75848d645f996ee5bc33aa40ad074e7b" data-og-width="2164" width="2164" data-og-height="1286" height="1286" data-path="guide/analytics/images/revenue-streams-details.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/a_duc9Ex4xZ4QFFn/guide/analytics/images/revenue-streams-details.png?w=280&fit=max&auto=format&n=a_duc9Ex4xZ4QFFn&q=85&s=c107f0b974bbc3aa66c4b230e53e3db3 280w, https://mintcdn.com/lago-docs/a_duc9Ex4xZ4QFFn/guide/analytics/images/revenue-streams-details.png?w=560&fit=max&auto=format&n=a_duc9Ex4xZ4QFFn&q=85&s=5213e26388e03c933b95d4cc8d3325bd 560w, https://mintcdn.com/lago-docs/a_duc9Ex4xZ4QFFn/guide/analytics/images/revenue-streams-details.png?w=840&fit=max&auto=format&n=a_duc9Ex4xZ4QFFn&q=85&s=9364a3b195ec41cf44599c82de22e8d0 840w, https://mintcdn.com/lago-docs/a_duc9Ex4xZ4QFFn/guide/analytics/images/revenue-streams-details.png?w=1100&fit=max&auto=format&n=a_duc9Ex4xZ4QFFn&q=85&s=96891214f1ad0cd1b2e5bd3d37dca1ce 1100w, https://mintcdn.com/lago-docs/a_duc9Ex4xZ4QFFn/guide/analytics/images/revenue-streams-details.png?w=1650&fit=max&auto=format&n=a_duc9Ex4xZ4QFFn&q=85&s=8a0f6333efdbd4788ebdc3d3e67c3893 1650w, https://mintcdn.com/lago-docs/a_duc9Ex4xZ4QFFn/guide/analytics/images/revenue-streams-details.png?w=2500&fit=max&auto=format&n=a_duc9Ex4xZ4QFFn&q=85&s=aa753a8e14164744245119a5445ee70e 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Time-based revenue streams analysis
@@ -12316,9 +12783,33 @@ For the selected time period, you can track:
 The second graph of this page provides a detailed breakdown of your revenue by plans and customers. You can also track the percentage of revenue each plan and customer represents.
 This view allows you to analyze how different plans and customers contribute to your overall business performance.
 
-<Frame caption="Revenue by plans and customers dashboard">
-  <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/revenue-by-plans-and-customers.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=fb9016a65c9b9e977de7c5bc3250654a" data-og-width="2208" width="2208" data-og-height="1136" height="1136" data-path="guide/analytics/images/revenue-by-plans-and-customers.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/revenue-by-plans-and-customers.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=783322eace9767a2797fd5665eaa7b66 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/revenue-by-plans-and-customers.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=f08beee3ca50601b34ade42705cdc94a 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/revenue-by-plans-and-customers.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=c4e344c59b7fa0b63123cd754f823d9f 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/revenue-by-plans-and-customers.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=62a2608214326bb87797d2b19563f416 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/revenue-by-plans-and-customers.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=a3df54ab06a5b4f8e42d6af7ef3430fd 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/analytics/images/revenue-by-plans-and-customers.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=0b5b134cd748de2c58fdddc8ebdd2c62 2500w" />
+<Frame>
+  <img />
 </Frame>
+
+
+# Usage
+Source: https://getlago.com/docs/guide/analytics/usage
+
+Usage analytics provide insights into how your customers are consuming usage-based services.
+
+## Usage overview & breakdown
+
+<Frame>
+  <img />
+</Frame>
+
+The first graph shows the total usage recorded over the selected time period. It provides an at a glance view of overall consumption patterns for usage based services. Usage is displayed as an aggregated total amount, allowing you to quickly understand how much usage has been recorded across all customers during that period.
+
+The second graph provides a detailed view of metered and recurring metrics. You can select a specific metric to explore its consumption in more detail. Depending on your analysis needs, you can view either `unit` or `amount` to focus on the number of units consumed or the total amount billed.
+
+### Time-based usage analysis
+
+You can analyze usage data using different time groupings:
+
+* **Daily**: View day-by-day usage breakdown
+* **Weekly**: Aggregate usage data by week
+* **Monthly**: See monthly usage trends and patterns
 
 
 # Aggregation examples
@@ -12388,8 +12879,8 @@ Source: https://getlago.com/docs/guide/billable-metrics/aggregation-types/count
 
 The count aggregation type is straightforward. It tallies the exact number of events received during a period.
 
-<Frame caption="COUNT calculation method">
-  <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/count.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=4a9878963e1f6d8c628cd34b09f40d7e" data-og-width="3840" width="3840" data-og-height="2160" height="2160" data-path="guide/images/count.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/count.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=ee6ed5716b08391a9391f8443d7fad82 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/count.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=a0792d8321cb48939ddd9a3aac2c4b84 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/count.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=9c49a8b13203441e0e0a946a837c2045 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/count.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=f204d63d7151abfa83dbbd02b912a0dc 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/count.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=01d31c43342b9d83ecb01e0407a7d133 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/count.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=7acc969d0c90c3e6e63771f1522ff3df 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## COUNT billable metric
@@ -12413,7 +12904,7 @@ The count aggregation type is straightforward. It tallies the exact number of ev
 
   <Tab title="API">
     <CodeGroup>
-      ```bash  theme={"dark"}
+      ```bash theme={"dark"}
           LAGO_URL="https://api.getlago.com"
           API_KEY="__YOUR_API_KEY__"
 
@@ -12438,7 +12929,7 @@ The count aggregation type is straightforward. It tallies the exact number of ev
 
 Lago calculates the `COUNT(events.code)` for the two following events received.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 //Event received #1
 {
     "transaction_id": "transaction_1",
@@ -12468,8 +12959,8 @@ Source: https://getlago.com/docs/guide/billable-metrics/aggregation-types/count-
 
 The unique count aggregation type counts only the unique values of a specified event property.
 
-<Frame caption="UNIQUE COUNT calculation method">
-  <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/count-unique.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=657c797f4174be09cdaba2e18cb88f29" data-og-width="3840" width="3840" data-og-height="2160" height="2160" data-path="guide/images/count-unique.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/count-unique.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=226ad4657f7e33612b7c3bb2bf38ee8d 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/count-unique.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=b2f8d1a4aa7433115e8873417480c63c 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/count-unique.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=a7a27759faa647394c1a1e6dffefae13 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/count-unique.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=9f626214c5e06e6bf55b4b050c2f22b6 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/count-unique.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=63493aa14e5a7d3aabe4e66b3e37396c 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/count-unique.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=444c611c9fa04bfadb7ab6c0dcd2941e 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## UNIQUE COUNT billable metric
@@ -12494,7 +12985,7 @@ The unique count aggregation type counts only the unique values of a specified e
 
   <Tab title="API">
     <CodeGroup>
-      ```bash  theme={"dark"}
+      ```bash theme={"dark"}
           LAGO_URL="https://api.getlago.com"
           API_KEY="__YOUR_API_KEY__"
 
@@ -12520,7 +13011,7 @@ The unique count aggregation type counts only the unique values of a specified e
 
 Lago calculates the `COUNT_DISTINCT(events.properties.property_name)` for the two following events received.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 //Event received #1
 {
     "transaction_id": "transaction_1",
@@ -12574,8 +13065,8 @@ Source: https://getlago.com/docs/guide/billable-metrics/aggregation-types/latest
 
 The latest aggregation type selects the most recent value of a specified event property from all received events.
 
-<Frame caption="LATEST calculation method">
-  <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/latest.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=881b2357be5ea1f21d6d24f9896b28bb" data-og-width="3840" width="3840" data-og-height="2160" height="2160" data-path="guide/images/latest.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/latest.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=8d93a27405897b16cbaf4be6a78e4671 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/latest.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=c13816ac4eeea97ee46836e26dabc0aa 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/latest.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=4890cd600d5690a6afd2ffbae48a182a 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/latest.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=55eae77ac032c46489625e131b5a2f1b 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/latest.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=08d574189f9ac2ce99bda89b87119e22 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/latest.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=2a2c5015686b862a4a915daf38550e9b 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## LATEST billable metric
@@ -12599,7 +13090,7 @@ The latest aggregation type selects the most recent value of a specified event p
 
   <Tab title="API">
     <CodeGroup>
-      ```bash  theme={"dark"}
+      ```bash theme={"dark"}
           LAGO_URL="https://api.getlago.com"
           API_KEY="__YOUR_API_KEY__"
 
@@ -12625,7 +13116,7 @@ The latest aggregation type selects the most recent value of a specified event p
 
 Lago calculates the `LAST_VALUE(events.properties.property_name) OVER ([PARTITION BY events.timestamp])` for the two following events received.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 //Event received #1
 {
     "transaction_id": "transaction_1",
@@ -12659,8 +13150,8 @@ Source: https://getlago.com/docs/guide/billable-metrics/aggregation-types/max
 
 The max aggregation type selects the highest value of a specified event property from all received events.
 
-<Frame caption="MAX calculation method">
-  <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/max.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=bc12c9f4a6871177870bdea52b3e8e50" data-og-width="3840" width="3840" data-og-height="2160" height="2160" data-path="guide/images/max.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/max.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=221b977bd9576cdacaeff49fdba94f87 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/max.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=e0fdc1f64f74e578bd060cac38b8c624 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/max.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=491ddd97368f5b638870d99a8e4a5e26 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/max.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=6b7ff4aaacdbe65c3b81e58e0e0b1663 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/max.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=71bc90fad70d568aa0a0266a37af17fe 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/max.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=0048229353198be4ba816821e0088c62 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## MAX billable metric
@@ -12684,7 +13175,7 @@ The max aggregation type selects the highest value of a specified event property
 
   <Tab title="API">
     <CodeGroup>
-      ```bash  theme={"dark"}
+      ```bash theme={"dark"}
           LAGO_URL="https://api.getlago.com"
           API_KEY="__YOUR_API_KEY__"
 
@@ -12710,7 +13201,7 @@ The max aggregation type selects the highest value of a specified event property
 
 Lago calculates the `MAX(events.properties.property_name)` for the two following events received.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 //Event received #1
 {
     "transaction_id": "transaction_1",
@@ -12767,8 +13258,8 @@ Source: https://getlago.com/docs/guide/billable-metrics/aggregation-types/sum
 
 The sum aggregation type adds up the value of a defined event property.
 
-<Frame caption="SUM calculation method">
-  <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/sum.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=b479a67d98f6b90a1a96e513116d8d57" data-og-width="3840" width="3840" data-og-height="2160" height="2160" data-path="guide/images/sum.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/sum.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=1d1c5263344b80fde7da3391f41153ee 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/sum.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=7e33fa557d288be9bc8b93146800f03c 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/sum.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=4b90c6c2d1e0251fa5cd528ff89392cc 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/sum.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=7243e47ffa7ff89ec25f01f01ae0ed95 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/sum.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=f138ab80d2ab6b4c0dc362d5b8b5f06f 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/sum.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=9f9e9fb78d9e7a19a4257691ec350213 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## SUM billable metric
@@ -12793,7 +13284,7 @@ The sum aggregation type adds up the value of a defined event property.
 
   <Tab title="API">
     <CodeGroup>
-      ```bash  theme={"dark"}
+      ```bash theme={"dark"}
           LAGO_URL="https://api.getlago.com"
           API_KEY="__YOUR_API_KEY__"
 
@@ -12819,7 +13310,7 @@ The sum aggregation type adds up the value of a defined event property.
 
 Lago calculates the `SUM(events.properties.property_name)` for the two following events received.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 //Event received #1
 {
     "transaction_id": "transaction_1",
@@ -12859,8 +13350,8 @@ This is especially handy for automated GB/second calculations, for instance.
   Feel free to reach out if you need additional proration options, such as hourly rates.
 </Info>
 
-<Frame caption="WEIGHTED SUM calculation method">
-  <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/weighted-sum.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=c263c2055939758c54dde6babf0fa3ca" data-og-width="3840" width="3840" data-og-height="2160" height="2160" data-path="guide/images/weighted-sum.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/weighted-sum.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=cb9bd9ba3dbf07d1a0cfe1d83fb6db21 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/weighted-sum.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=9bc0bd7bf3a41097fe1ad98522ece211 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/weighted-sum.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=afa71c4f21767771869ddf799e2bcb31 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/weighted-sum.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=c84b35df2f18d7201adb0e6defdadc48 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/weighted-sum.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=756e88339403e56212dd35591fc5bdd1 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/weighted-sum.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=0f7d4a1b363877c94221cbfb4837c7a9 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## WEIGHTED SUM billable metric
@@ -12886,7 +13377,7 @@ This is especially handy for automated GB/second calculations, for instance.
 
   <Tab title="API">
     <CodeGroup>
-      ```bash  theme={"dark"}
+      ```bash theme={"dark"}
           LAGO_URL="https://api.getlago.com"
           API_KEY="__YOUR_API_KEY__"
 
@@ -12913,7 +13404,7 @@ This is especially handy for automated GB/second calculations, for instance.
 
 Lago calculates the `SUM(events.properties.property_name) / (DATEDIFF(SECOND, timestamp.event_1, timestamp.event_2) + 1) * (DATEDIFF(SECOND, 'period_start', 'period_end') + 1)` for the two following events received.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 //Event received #1
 {
     "transaction_id": "transaction_1",
@@ -13092,7 +13583,7 @@ in all `finalized` invoices linked to these subscriptions.
 
 <Tabs>
   <Tab title="Dashboard">
-        <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/billable-metrics-delete-68cd9763df888a65237c8f0f5c85358a.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=97e5a6846e326e36d253d56e358f224f" alt="How to delete a billable metric" data-og-width="2880" width="2880" data-og-height="1562" height="1562" data-path="guide/images/billable-metrics-delete-68cd9763df888a65237c8f0f5c85358a.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/billable-metrics-delete-68cd9763df888a65237c8f0f5c85358a.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=3077a9023437c49b0cb532915bc9c615 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/billable-metrics-delete-68cd9763df888a65237c8f0f5c85358a.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=0be4549b1b0605f944549bc91a3f4a24 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/billable-metrics-delete-68cd9763df888a65237c8f0f5c85358a.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=078fc4953ee301b53cc0d10ca2bcc091 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/billable-metrics-delete-68cd9763df888a65237c8f0f5c85358a.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=e95d4d27e92f3b57b04083d00db779ec 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/billable-metrics-delete-68cd9763df888a65237c8f0f5c85358a.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=b3beaa52e3d53f77a66cc3090bbbb6c2 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/billable-metrics-delete-68cd9763df888a65237c8f0f5c85358a.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=026d805ad609ecf4892d22132180bbed 2500w" />
+    <img alt="How to delete a billable metric" />
   </Tab>
 
   <Tab title="API">
@@ -13130,8 +13621,8 @@ On the configuration page of your billable metric, you can define two filters: `
     2. Add a new filter; and
     3. Define your different filters.
 
-    <Frame caption="How to add filters">
-      <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/billable-metrics/images/add-filters.gif?s=56be8ef32890e201a8707ef1b07163c0" data-og-width="800" width="800" data-og-height="496" height="496" data-path="guide/billable-metrics/images/add-filters.gif" data-optimize="true" data-opv="3" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -13207,7 +13698,7 @@ You can also create billable metrics with dimensions
 
 You can edit billable metric filters associated with existing subscriptions. It’s important to note that making changes to these metric filters can have an impact on all plans where this billable metric is defined as a charge. Here’s an example to illustrate the impact of editing a billable metric:
 
-```json  theme={"dark"}
+```json theme={"dark"}
 From Payload A:
 {
   "billable_metric": {
@@ -13389,8 +13880,8 @@ When creating a billable metric, you can choose between using a simple aggregati
     * Test the custom expression; and
     * Save the billable metric.
 
-    <Frame caption="Create a custom expression for a billable metric">
-      <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/billable-metrics/images/custom-expression-creation.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=e2f0bb331d9fb36c03508d22e89f469a" data-og-width="1636" width="1636" data-og-height="1028" height="1028" data-path="guide/billable-metrics/images/custom-expression-creation.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/billable-metrics/images/custom-expression-creation.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=0615c5b804ca6aeca2b9e676f0095d55 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/billable-metrics/images/custom-expression-creation.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=25555214ba19e21d5987099622a11bb4 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/billable-metrics/images/custom-expression-creation.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=c4f1b3b10419a7162d451003a4a91a28 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/billable-metrics/images/custom-expression-creation.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=b5c2466a20ce5f7b9013fc26f6fa03f9 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/billable-metrics/images/custom-expression-creation.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=5ccf633dcaaaa9869ff4646d3a678517 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/billable-metrics/images/custom-expression-creation.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=7ea790e1f7efe7c3aa4bbec2cdec083f 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -13452,6 +13943,7 @@ A variety of SQL custom expressions are available for use. Here are a few exampl
 * **Concatenation:** `CONCAT(event.properties.user_id, '-', event.properties.app_id)`
 * **Math operations:** `(event.properties.cpu_number * 25 * event.properties.duration_msec) + (event.properties.memory_mb * 0.000001 * event.properties.duration_msec)`
 * **Rounding:** `ROUND(event.properties.duration_msec * 1000)`
+* **Least/Greatest:** `LEAST(event.properties.memory_mb, 10.0)`
 
 You can find the full list of supported expressions below:
 
@@ -13463,6 +13955,8 @@ You can find the full list of supported expressions below:
   * [`ROUND`](#ROUND)
   * [`FLOOR`](#FLOOR)
   * [`CEIL`](#CEIL)
+  * [`LEAST`](#LEAST)
+  * [`GREATEST`](#GREATEST)
 
 If you need a custom expression that isn't supported by default in Lago, **feel free to contact our team** or **consider contributing to the open-source version**.
 
@@ -13500,7 +13994,7 @@ Lago expressions may include basic operators:
 
 The `CONCAT` function is used to concatenate two or more strings.
 
-```SQL  theme={"dark"}
+```SQL theme={"dark"}
 CONCAT(str1, str2[,strs,...])
 ```
 
@@ -13520,7 +14014,7 @@ CONCAT(str1, str2[,strs,...])
 
 The `ROUND` function is used to round a number to a specified number of decimal places.
 
-```SQL  theme={"dark"}
+```SQL theme={"dark"}
 ROUND(value, precision)
 ```
 
@@ -13542,7 +14036,7 @@ ROUND(value, precision)
 
 The `FLOOR` function is used to round a number down to the nearest integer.
 
-```SQL  theme={"dark"}
+```SQL theme={"dark"}
 FLOOR(value, precision)
 ```
 
@@ -13564,7 +14058,7 @@ FLOOR(value, precision)
 
 The `CEIL` function is used to round a number up to the nearest integer.
 
-```SQL  theme={"dark"}
+```SQL theme={"dark"}
 CEIL(value, precision)
 ```
 
@@ -13582,6 +14076,46 @@ CEIL(value, precision)
 * `CEIL(14.2345, 2)` returns `14.24`
 * `CEIL(14.2345, -1)` returns `20`
 
+#### `LEAST`
+
+The `LEAST` function is used to find minimum of two or more numbers.
+
+```SQL theme={"dark"}
+LEAST(num1, num2[,nums,...])
+```
+
+**Parameters:**
+
+* `num1`: The first number to check minimum value
+* `num2`: The second number to check minimum value
+* `nums`: (Optional) Additional numbers to check minimum value.
+
+**Returns:** The minimum of the given numbers.
+
+**Examples:**
+
+* `LEAST(event.properties.disk1_usage_mb, event.properties.disk2_usage_mb, 10.0)`
+
+#### `GREATEST`
+
+The `GREATEST` function is used to find maximum of two or more numbers.
+
+```SQL theme={"dark"}
+GREATEST(num1, num2[,nums,...])
+```
+
+**Parameters:**
+
+* `num1`: The first number to check maximum value
+* `num2`: The second number to check maximum value
+* `nums`: (Optional) Additional numbers to check maximum value.
+
+**Returns:** The maximum of the given numbers.
+
+**Examples:**
+
+* `GREATEST(event.properties.memory_mb, 10.0)`
+
 ## Testing your SQL Custom Expression
 
 Lago provides a testing tool to help you validate the custom expressions you've created. A sample event is used to test your expression. You can override any field in the test event.
@@ -13592,8 +14126,8 @@ Keep the following in mind:
 * You can dynamically reference any event field within your expression; and
 * Use precise paths to reference fields accurately. For instance, to use the event timestamp, the path is `event.timestamp`. To reference a custom property sent with the event, the path is `event.properties.your_field`.
 
-<Frame caption="Test your custom expression">
-  <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/billable-metrics/images/test-custom-expression.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=b78b53417f8d4b209949406a3ec7f67d" data-og-width="1636" width="1636" data-og-height="1035" height="1035" data-path="guide/billable-metrics/images/test-custom-expression.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/billable-metrics/images/test-custom-expression.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=f683465854f1ff12c1f999b76dc770d5 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/billable-metrics/images/test-custom-expression.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=0d1e7564caafb1dfd8e9a738853e9609 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/billable-metrics/images/test-custom-expression.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=57594e02a1818bf2d8539fa81ea8865c 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/billable-metrics/images/test-custom-expression.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=797a6371857c0178823a892330a96c34 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/billable-metrics/images/test-custom-expression.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=cd947e95a2144fa086b03c644917d9bc 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/billable-metrics/images/test-custom-expression.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=d226499e7adb84b75f89fd71fcdbc7fd 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 
@@ -13625,7 +14159,7 @@ To create a billing entity, follow these steps:
 
   <Tab title="API">
     <CodeGroup>
-      ```bash  theme={"dark"}
+      ```bash theme={"dark"}
       # Create a billing entity
       LAGO_URL="https://api.getlago.com"
       API_KEY="__YOUR_API_KEY__"
@@ -13669,7 +14203,7 @@ To edit a billing entity:
 
   <Tab title="API">
     <CodeGroup>
-      ```bash  theme={"dark"}
+      ```bash theme={"dark"}
       # Update a billing entity
       LAGO_URL="https://api.getlago.com"
       API_KEY="__YOUR_API_KEY__"
@@ -13855,7 +14389,7 @@ When several coupons are applied to the customer account, they will be deducted 
 You can see the remaining value / number of remaining periods for each coupon in
 the **"Overview"** tab of the customer view.
 
-<img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/coupons-remaining.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=cba4f8414dbc2b96ba38bfcaa10b5826" alt="Customer account with several coupons" data-og-width="1495" width="1495" data-og-height="996" height="996" data-path="guide/images/coupons-remaining.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/coupons-remaining.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=4ae366689715a32acc7d797065eac70d 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/coupons-remaining.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=d9454adbefaff0ada9dc2d6ad6589b0f 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/coupons-remaining.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=ab3129149046f58a057cf18a459183ed 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/coupons-remaining.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=5adeefbf41c91a7b1a06508fb3710f2d 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/coupons-remaining.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=98f8538ac63aa4d610811cbb1e9f5455 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/coupons-remaining.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=d73e2c52d25b375bee63e4c43169efa6 2500w" />
+<img alt="Customer account with several coupons" />
 
 <Info>Coupons do not apply to add-ons or any other one-off charges.</Info>
 
@@ -13887,205 +14421,6 @@ To remove a coupon that has been applied to a customer and is still active:
 
 The coupon will instantly disappear from the customer view and will not be
 applied to the next invoice.
-
-
-# Credit notes
-Source: https://getlago.com/docs/guide/credit-notes
-
-
-
-<Info>
-  **PREMIUM FEATURE** ✨
-
-  Lago may automatically generate a credit note when a subscription is upgraded or
-  downgraded. However, only users with a premium license can manually generate
-  credit notes via the user interface or the API. Please
-  **[contact us](mailto:hello@getlago.com)** to get access to Lago Cloud and Lago
-  Self-Hosted Premium.
-</Info>
-
-Issue a credit note to refund or credit a `finalized` invoice back to your customer’s account.
-Credit notes can be issued for all types of invoices. However, please note that credit notes cannot be issued for prepaid credit purchases that have already been consumed or are linked to a terminated wallet.
-
-## Access credit notes creation flow[](#create-credit-notes "Direct link to heading")
-
-<Info>
-  Credit notes can only be issued for invoices with the status `finalized` and
-  an amount greater than zero.
-</Info>
-
-To create a credit note through the user interface:
-
-1. Go to the **"Customers"** section;
-2. Select a customer to open the customer view;
-3. Open the **"Invoices"** tab;
-4. Click an invoice to see its details; and
-5. Select **"Issue a credit note"** from the **"Actions"** dropdown (upper right corner).
-
-The credit note creation process varies depending on the payment status of the
-invoice:
-
-* If the payment status of the invoice is `pending` or `failed`, the credit note
-  will allow you to credit back the customer's account; and
-* If the payment status of the invoice is `succeeded`, the credit note will
-  allow you to credit back the customer's account and/or refund them.
-
-<Info>
-  For prepaid credits invoices, credit notes can only be issued for invoices with a `succeeded` payment status. These credit notes are refundable only for this type of invoice and will directly void prepaid credits in the associated wallet.
-</Info>
-
-<Info>
-  On subscription invoices, prepaid credits and credit notes applied cannot be refunded. These can only be credited back to the customer's account balance. Coupons are non-refundable and cannot be credited back to the customer's account.
-</Info>
-
-## Issue a credit note
-
-<Tabs>
-  <Tab title="Dashboard">
-    1. Select a reason from the list (e.g. duplicate charge, order cancelation,
-       etc.);
-    2. Add an internal note (optional);
-    3. Select the item(s) and enter the amount(s) you want to credit;
-    4. Select the credit method(s) (only available for paid invoices -
-       [learn more](#credit-methods)); and
-    5. Click **"Issue credit note"** to confirm.
-
-    <Info>
-      For each item, you must enter a credit amount equal to or less than the
-      initial amount of the item, excluding tax. The total amount of the credit note
-      cannot exceed the total amount of the invoice.
-    </Info>
-  </Tab>
-
-  <Tab title="API">
-    ```bash Create a credit note theme={"dark"}
-    LAGO_URL="https://api.getlago.com"
-    API_KEY="__YOUR_API_KEY__"
-
-      curl --location --request POST "$LAGO_URL/api/v1/credit_notes" \
-      --header "Authorization: Bearer $API_KEY" \
-      --header 'Content-Type: application/json' \
-      --data-raw '{
-        "credit_note": {
-          "invoice_id": "**LAGO_INVOICE_ID**",
-          "reason": "duplicated_charge",
-          "credit_amount_cents": 10,
-          "refund_amount_cents": 5,
-          "items": [
-            {
-              "fee_id": "__LAGO_FEE_ID__",
-              "amount_cents": 10
-            },
-            {
-              "fee_id": "__LAGO_FEE_ID__",
-              "amount_cents": 5
-            }
-          ]
-        }
-      }'
-
-    ```
-  </Tab>
-</Tabs>
-
-When the credit note is created, it will appear below the original invoice on
-the invoice details page and in the **"Credit notes"** tab of the customer view.
-In addition to this, a `credit_note.created` [webhook](/api-reference/webhooks/messages)
-will automatically be sent by Lago.
-
-You can link several credit notes to an invoice. Like invoices, credit notes
-have a unique number and can be downloaded in PDF format.
-
-<Frame caption="Credit note detail">
-  <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/credit-note-39fd904adb8cc192e4e78320171c388f.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=9b12ac4c555177c15d4810fae1751943" data-og-width="2880" width="2880" data-og-height="1568" height="1568" data-path="guide/images/credit-note-39fd904adb8cc192e4e78320171c388f.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/credit-note-39fd904adb8cc192e4e78320171c388f.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=fbdf29488833bfe20d9c0ae7d0fa0501 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/credit-note-39fd904adb8cc192e4e78320171c388f.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=2dfb48347bdf6260df6f3f851daeb755 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/credit-note-39fd904adb8cc192e4e78320171c388f.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=daba25976c384364ddc86aa7455f034e 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/credit-note-39fd904adb8cc192e4e78320171c388f.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=163271dbe716c9b295920f8b48d14e02 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/credit-note-39fd904adb8cc192e4e78320171c388f.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=7fbb395051d1537656990be232af75a6 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/credit-note-39fd904adb8cc192e4e78320171c388f.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=05df009ae57f6497e68dd6c458fbcf0f 2500w" />
-</Frame>
-
-## Credit methods[](#credit-methods "Direct link to heading")
-
-### Refund[](#refund "Direct link to heading")
-
-When a credit note involves a refund, the amount of the refund will be included in the `credit_note.created` [webhook](/api-reference/webhooks/messages), which allows you to proceed with the payment.
-
-The credit note will also contain a `refund_status` field, which can be set to `pending`, `succeeded`, or `failed`. You can update the refund status via the API.
-
-Refunding a prepaid credit invoice will automatically void the corresponding prepaid credits in the active wallet.
-
-<Tip>
-  If you use one of our native payment integrations, the refund process will
-  automatically be triggered by Lago.
-</Tip>
-
-### Credit note wallet[](#credit-note-wallet "Direct link to heading")
-
-The amount of the credit note that is not refunded is credited to the customer's
-account via a credit note wallet. The credit amount is included in the
-`credit_note.created` [webhook](/api-reference/webhooks/messages) and displayed on the
-credit note details page.
-
-<Info>
-  A credit note wallet is linked to a single credit note and therefore, to a
-  single invoice. If there are several credit notes linked to the customer's
-  account, Lago will create a credit note wallet for each of them.
-
-  Credit note wallets are different from wallets associated with [prepaid credits](/guide/wallet-and-prepaid-credits).
-</Info>
-
-The total amount available in the credit note wallets will be deducted from the
-subtotal of the customer's next invoice(s), after tax (see below).
-
-```
-## EXAMPLE OF INVOICE
-
-All subscriptions fee    $50.00
-All usage-based fees     $20.00
-Coupons                 -$10.00
--------------------------------
-Subtotal (excl. tax)     $60.00
-Tax (10%)                $ 6.00
--------------------------------
-Subtotal (incl. tax)     $66.00
-Credit notes             $20.00
-Prepaid credits          $30.00
--------------------------------
-Total                    $16.00
-```
-
-When the credit note wallet is created, the initial `credit_status` is
-`available`. Then when the amount of the credit note wallet is zero, the status
-switches to `consumed`.
-
-## Void available credit[](#void-credit-note "Direct link to heading")
-
-You can void the available credit linked to a specific credit note. To do so:
-
-<Tabs>
-  <Tab title="Dashboard">
-    1. Go to the **"Customers"** section;
-    2. Select a customer to open the customer view;
-    3. Open the **"Credit notes"** tab;
-    4. Click a credit note to see its details; and
-    5. Select **"Void credit available"** from the **"Actions"** dropdown (upper
-       right corner).
-
-    <Warning>
-      When voiding a credit note wallet, the remaining credit amount will be lost
-      and the `credit_status` will switch to `voided`. This action cannot be
-      canceled.
-    </Warning>
-  </Tab>
-
-  <Tab title="API">
-    ```bash Void a credit note theme={"dark"}
-    LAGO_URL="https://api.getlago.com"
-    CREDIT_NOTE_ID="__YOU_CREDIT_NOTE_ID__"
-    API_KEY="__YOUR_API_KEY__"
-
-    curl --location --request PUT "$LAGO_URL/api/v1/credit_notes/$CREDIT_NOTE_ID/void" \
-      --header "Authorization: Bearer $API_KEY" \
-      --header 'Content-Type: application/json'
-    ```
-  </Tab>
-</Tabs>
 
 
 # Customer management
@@ -14203,8 +14538,8 @@ During the billing period, the customer's current usage is visible in the
 
 <Tabs>
   <Tab title="Dashboard">
-    <Frame caption="Fetch customer's current usage">
-      <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-current-usage.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=bc625db77d8f8a7db945175773ca607d" data-og-width="1502" width="1502" data-og-height="888" height="888" data-path="guide/images/customer-current-usage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-current-usage.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=16d5c1833153e5f070462ccdb4447fa9 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-current-usage.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=87c07c9908f92141c3f8dc0cfbeea11e 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-current-usage.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=5f33fa3de25c4c1b20a1798296112d91 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-current-usage.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=d4a466a1ced8f47470c07423c8f47f21 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-current-usage.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=6fa5e84025d8fdd75b16c81573e00202 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-current-usage.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=c71bb1e7c708fb00870013a185520b51 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -14235,8 +14570,8 @@ The "**Billing overview**" lets you see in a glance where a customer stands in t
 
 <Tabs>
   <Tab title="Dashboard">
-    <Frame caption="Check a customer's billing status">
-      <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-billing-overview.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=2f6c65bfc38feb19c4c1b0c5912895e4" data-og-width="3340" width="3340" data-og-height="1698" height="1698" data-path="guide/images/customer-billing-overview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-billing-overview.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=663d72fa8eeb0ff42372b783a104f060 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-billing-overview.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=d061188370675a74f42a50224aa3f968 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-billing-overview.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=379bd7e6ac1b6b08671cb83161ad6a0a 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-billing-overview.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=31fe8287a7efc7a72eeea79595f755f0 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-billing-overview.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=9b61d4bd3cd857098664adb4605bca50 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-billing-overview.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=ae2186ad9e2e7f83501e5a06c936089b 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -14280,7 +14615,7 @@ If you do so:
 * The customer's active [wallet](/guide/wallet-and-prepaid-credits) will be immediately terminated and all remaining credits will be voided; and
 * All `draft` invoices associated with this customer account will be immediately finalized.
 
-`finalized` invoices and [credit notes](/guide/credit-notes) associated with the deleted customer remain available in the **"Invoices"** section of the user interface and can also be retrieved via the API.
+`finalized` invoices and [credit notes](/guide/invoicing/credit-notes/overview) associated with the deleted customer remain available in the **"Invoices"** section of the user interface and can also be retrieved via the API.
 
 It is possible to generate new credit notes and process refunds after the deletion of the customer.
 
@@ -14345,8 +14680,8 @@ To generate a customer portal URL that can be embedded into your product, you ha
 1. Use the [API endpoint](/api-reference/customers/customer-portal); or
 2. Click the Customer Portal link on a specific customer details view.
 
-<Frame caption="Customer portal access">
-  <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-portal-access.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=c7f31b9518b57f4eb72d2ffd1b8960d8" data-og-width="1503" width="1503" data-og-height="806" height="806" data-path="guide/images/customer-portal-access.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-portal-access.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=55ba91953290410c2b071ec68119d451 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-portal-access.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=187f83d6cf466742db2ec4c4742f0592 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-portal-access.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=72276c7c15e93d09a2d32868bc4a2ca9 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-portal-access.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=5638564063a6195c40dafd6eea787864 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-portal-access.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=e33928a54a70f5abaa1ba5ff34779f91 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-portal-access.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=ed619e165f4171954c70029605e2bd01 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Embedding the dashboard
@@ -14382,8 +14717,8 @@ The invoice history section provides a summary of both total invoices (everythin
 
 The Customer Portal allows your customers to retrieve all past invoices and download them with ease. Lago displays useful billing information such as the issuing date, invoice number, amount, and payment status (paid or unpaid). Additionally, your customers can filter the list and search for a specific invoice.
 
-<Frame caption="Invoices list - Customer Portal">
-  <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-portal-invoices-list.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=b27d45117cd36ecd3aa56fbae68536d8" data-og-width="2048" width="2048" data-og-height="1042" height="1042" data-path="guide/images/customer-portal-invoices-list.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-portal-invoices-list.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=b413c22545361876572a108007ede0dd 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-portal-invoices-list.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=33cbfffb96cf8215269a871564f3f935 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-portal-invoices-list.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=018a650ee84f82fe79f1a230179117df 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-portal-invoices-list.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=f5438a3a4a15a29247f41e702e6da2b0 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-portal-invoices-list.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=427ff390cb74d5a2e6795ec0d4fb81d0 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-portal-invoices-list.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=59243d3ed5e0f0926c79f6d56d6006ad 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### 2. Customer information
@@ -14392,8 +14727,8 @@ In addition to viewing their invoice list, customers can retrieve essential bill
 
 Customers can also update this information directly through the portal, ensuring that their billing details remain synchronized with the latest data.
 
-<Frame caption="Customer information - Customer Portal">
-  <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-information-portal.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=351266489a29c59b138092e193cad260" data-og-width="2842" width="2842" data-og-height="800" height="800" data-path="guide/images/customer-information-portal.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-information-portal.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=556a6a4d20d2545fae5b084bbc7e5981 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-information-portal.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=5fde55536dfc666a7e08468a023c9ac3 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-information-portal.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=3433002d1f39d2f3aef7f5710052f554 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-information-portal.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=7b1da2dc2593bae151e4dda5e0745a0b 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-information-portal.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=6b8f67841c62cd070165eae09643d813 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-information-portal.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=14da90d62355358aa0866f7145590a50 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### 3. Plans and usage information
@@ -14408,8 +14743,8 @@ Customers also have real-time access to comprehensive usage details, including:
 * A detailed usage report, showing the number of units consumed and associated costs; and
 * A full breakdown of usage by billing filters and groups.
 
-<Frame caption="Plans and usage - Customer Portal">
-  <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/plans-usage-portal.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=cf5e1c49f915c430e0e27483f941e926" data-og-width="2740" width="2740" data-og-height="1680" height="1680" data-path="guide/images/plans-usage-portal.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/plans-usage-portal.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=3699483086fd395d194682102ec57ff0 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/plans-usage-portal.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=0739b8e77932969b8fca8124e998a69e 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/plans-usage-portal.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=9fb2bb9b95e15736ed6b1b333e974df2 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/plans-usage-portal.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=4cb96fb04556c70b68ef9acfc8b90fd8 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/plans-usage-portal.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=881a0caa064ed93359d873d618e443ca 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/plans-usage-portal.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=761e6fad3666a4bd0830d5438156401b 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### 4. Prepaid credits information
@@ -14418,8 +14753,8 @@ The customer portal provides your customers with real-time access to their prepa
 
 Additionally, customers can top up their paid credits, ensuring their wallet is always sufficiently funded.
 
-<Frame caption="Prepaid credits - Customer Portal">
-  <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/prepaid-credits-portal.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=014bb72ea5d25f700c8cccc5d9b7bd74" data-og-width="2424" width="2424" data-og-height="608" height="608" data-path="guide/images/prepaid-credits-portal.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/prepaid-credits-portal.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=a928e0b0f09670973960e5454b514634 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/prepaid-credits-portal.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=3a9f2096d2afb84a6dca48735aad28d5 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/prepaid-credits-portal.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=a8780404aeeaa45b3d7bbf3bad108c2d 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/prepaid-credits-portal.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=23d7ddd4755eb42a5755f3fb9081715f 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/prepaid-credits-portal.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=e9c0788d2437e4821aca92ca40389a7e 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/prepaid-credits-portal.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=9a33cff5f7eda7e4c25349103be73a97 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 
@@ -14677,8 +15012,8 @@ When a customer has some invoices past their due date, their [overdue balance](h
   <Tab title="Dashboard">
     In the customer view, a "request payment” link appears within the overdue balance warning.
 
-    <Frame caption="Request payment for the overdue balance">
-      <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-request-overdue-balance-payment.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=d6455ecbd84e12473c5492b90b974830" data-og-width="1123" width="1123" data-og-height="485" height="485" data-path="guide/images/customer-request-overdue-balance-payment.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-request-overdue-balance-payment.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=4cfd9819856b9c751cf0cb274da5ccd7 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-request-overdue-balance-payment.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=4c26bebfc925d1262e33c6b3ecd8330f 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-request-overdue-balance-payment.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=39e4d6e27647be00ea9bf3db8f09c80a 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-request-overdue-balance-payment.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=63d5cb74b4733e456d7a8c7f73d77f93 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-request-overdue-balance-payment.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=584293d14b9731dc440e1cb97d43970d 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-request-overdue-balance-payment.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=47f0da5d7d7fb8c6170a6033df8ece82 2500w" />
+    <Frame>
+      <img />
     </Frame>
 
     By clicking on it, a panel opens so you can:
@@ -14687,8 +15022,8 @@ When a customer has some invoices past their due date, their [overdue balance](h
     * Review the email which will be sent in case the payment fails, or if no payment provider is linked
     * Confirm you want to request the payment.
 
-    <Frame caption="Preview the overdue balance payment request">
-      <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-overdue-balance-payment-preview.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=531e5841e1dce9c22aa2a5ae599830ee" data-og-width="1761" width="1761" data-og-height="1179" height="1179" data-path="guide/images/customer-overdue-balance-payment-preview.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-overdue-balance-payment-preview.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=b7317cbe3302facabe33b31ce2740976 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-overdue-balance-payment-preview.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=2af8d18b2c93e1dcbf6bf702891969b8 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-overdue-balance-payment-preview.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=73dbbbe4ba628d22a58c27a72e545aad 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-overdue-balance-payment-preview.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=7db48f886ae9efbe4053185fd1174111 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-overdue-balance-payment-preview.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=23687720dcd96a5e045ceb946eb8475f 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-overdue-balance-payment-preview.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=748091e70f722068d2ed44b3170a836a 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -14800,8 +15135,8 @@ For the cloud version, Lago uses [no-reply@getlago.com](mailto:no-reply@getlago.
 
 ## Email template
 
-<Frame caption="Email template">
-  <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/email-template.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=7825b52239e4e8c61e7124514c9c519f" data-og-width="2000" width="2000" data-og-height="1025" height="1025" data-path="guide/images/email-template.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/email-template.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=90f0da7814334fa75e6ad108a75e2fce 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/email-template.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=30de622b405a8093c0f7c9cbbd0bcfb3 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/email-template.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=f71c6a0fb0862ed0baad920fdc046a62 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/email-template.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=6de167b14e562b413376c673a71a4062 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/email-template.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=a8c284b36446af9cd1fe3d59064d45a2 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/email-template.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=862a608e87fb3999f7a7cfa6b5c1e44d 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 As mentioned above, some information in the email template can be customized based on the settings of your account, including:
@@ -14835,8 +15170,8 @@ In addition to the usage-based engine for allowances and quotas, Lago lets you d
 
     A feature in Lago represents a capability that can be gated behind a plan. It's not necessarily something you bill for directly, but rather something a customer gains access to based on their subscription.
 
-    <Frame caption="Features section with the list of features">
-      <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/features-list.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=5bb1b1fe6a101386fd890bddbdb03558" data-og-width="2880" width="2880" data-og-height="1600" height="1600" data-path="guide/images/features-list.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/features-list.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=46bb49f400207daa4207423fd676de6f 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/features-list.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=7f4ef0875b9da6dfeca1395d65280660 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/features-list.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=7d9d03621d54d8b5317609282b5b4940 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/features-list.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=ce23934d18e7d8cae0550f0308365df0 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/features-list.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=bae7f349959f86a671bf84aa2b367f66 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/features-list.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=3d71903d76f1125ead796a0a0d2a0498 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -14876,8 +15211,8 @@ In addition to the usage-based engine for allowances and quotas, Lago lets you d
       You can add an unlimited number of privileges to a feature.
     </Info>
 
-    <Frame caption="Add feature privileges">
-      <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/add-feature-privileges.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=90917e748e97a8d349bca79f17c68406" data-og-width="2880" width="2880" data-og-height="2360" height="2360" data-path="guide/images/add-feature-privileges.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/add-feature-privileges.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=e58360b2ad7d68aeab4d44c863c771ba 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/add-feature-privileges.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=df98fc4d50205b8bf3062279f715b733 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/add-feature-privileges.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=f3883a05fa2eaa080d2775f0722c0e34 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/add-feature-privileges.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=9a2e5471d40ea60bef1caef5de75bc0e 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/add-feature-privileges.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=b6dc9298246d5f3070b53fa432cd952e 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/add-feature-privileges.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=456930046eac925e0292325c30ccafee 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -14924,8 +15259,8 @@ In addition to the usage-based engine for allowances and quotas, Lago lets you d
 
     Entitlements define which features a customer is allowed to use based on the plan they are subscribed to. By assigning features to specific plans, you control access to functionality across your pricing tiers.
 
-    <Frame caption="Subscription and entitlement workflow">
-      <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/entitlements-subscription-workflow.jpg?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=b906f7138c976545d714910b360be93c" data-og-width="3728" width="3728" data-og-height="2340" height="2340" data-path="guide/images/entitlements-subscription-workflow.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/entitlements-subscription-workflow.jpg?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=01fc08d60ec7d805d755d735edc88a82 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/entitlements-subscription-workflow.jpg?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=9d17b6183a15c0825f1cfe8ee20be0e3 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/entitlements-subscription-workflow.jpg?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=c619803431146925c7e27d4bdccc3821 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/entitlements-subscription-workflow.jpg?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=b2ec86f36a74b668ed7ad33ad535ad9b 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/entitlements-subscription-workflow.jpg?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=1f1e743b0ec308b8392722eb33ccaf68 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/entitlements-subscription-workflow.jpg?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=8821cdfc63433811dc10dcf080cbe456 2500w" />
+    <Frame>
+      <img />
     </Frame>
 
     To assign features to a plan:
@@ -14935,8 +15270,8 @@ In addition to the usage-based engine for allowances and quotas, Lago lets you d
     3. Select the features you want to entitle for that plan; and
     4. Configure the values for each feature's privileges according to the plan's rules.
 
-    <Frame caption="Entitle features to a plan">
-      <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/plans-entitlements.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=5115a301b7794f3d96fd2526f57921e7" data-og-width="2720" width="2720" data-og-height="3058" height="3058" data-path="guide/images/plans-entitlements.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/plans-entitlements.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=16387592ca1060920352d8c4a252108c 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/plans-entitlements.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=172c661d5bcff41f36606856206ccbc6 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/plans-entitlements.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=b2ee1b604b285a8f36829665b962d844 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/plans-entitlements.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=4de192ad166fbd3887461b4ce107c321 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/plans-entitlements.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=2ed5d58b97a67f7fa26387be437bbc33 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/plans-entitlements.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=c52fa10de5fd5bcc9cada50071a38665 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -14998,7 +15333,7 @@ In addition to the usage-based engine for allowances and quotas, Lago lets you d
 
 You can retrieve the current list of entitled features for a subscription by calling the following endpoint:
 
-```bash  theme={"dark"}
+```bash theme={"dark"}
 curl --request GET \
   --url https://api.getlago.com/api/v1/subscriptions/{external_id}/entitlements \
   --header 'Authorization: Bearer <token>'
@@ -15026,8 +15361,8 @@ much more by scrolling down the page.
 
 <Tip>If an event is not shown in the UI, it has **not** been ingested.</Tip>
 
-<Frame caption="Accessing the events list">
-  <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/events/images/events-debugger-6bcbcf7e46f1bd4bb8a9b6e6964bba69.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=b8ce3364517f3abca106e86515e098db" data-og-width="2402" width="2402" data-og-height="1296" height="1296" data-path="guide/events/images/events-debugger-6bcbcf7e46f1bd4bb8a9b6e6964bba69.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/events/images/events-debugger-6bcbcf7e46f1bd4bb8a9b6e6964bba69.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=2f9a5c28c78aa24302eb854dd6749926 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/events/images/events-debugger-6bcbcf7e46f1bd4bb8a9b6e6964bba69.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=6199c096230abde12d6eac4fa85141ff 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/events/images/events-debugger-6bcbcf7e46f1bd4bb8a9b6e6964bba69.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=ae5728665c3fa95e1f95bea259c2a6d3 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/events/images/events-debugger-6bcbcf7e46f1bd4bb8a9b6e6964bba69.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=8ab83c47bb9f3032cdbf717a1b71382a 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/events/images/events-debugger-6bcbcf7e46f1bd4bb8a9b6e6964bba69.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=4b40bd99f0e2b563d5af9ec16c2556e4 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/events/images/events-debugger-6bcbcf7e46f1bd4bb8a9b6e6964bba69.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=78c2ab559626c4ad669ae1b9d1adc793 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Accessing a specific event[](#accessing-a-specific-event "Direct link to heading")
@@ -15087,7 +15422,7 @@ based on your customers' actions.
 To send usage events to Lago, you need to use the **Lago API**. A measurement
 event is JSON with the following fields:
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "transaction_id": "__TRANSACTION_ID__", // (Required) Unique identifier of the event
   "external_subscription_id": "__SUBSCRIPTION_ID__", // (Required) Unique identifier of your customer's subscription
@@ -15276,7 +15611,7 @@ Here is a list of sources you can use to ingest usage data. Some of these source
 
 Here is the list of usage ingestion and metering sources available in the free version of Lago.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="HTTP Client">
     Establishes a connection to a server and continuously sends requests for a specific message.
   </Card>
@@ -15286,7 +15621,13 @@ Here is the list of usage ingestion and metering sources available in the free v
 
 Here is the list of usage ingestion and metering sources available in the premium version of Lago.
 
-<CardGroup cols={2}>
+<Info>
+  **PREMIUM ADD-ON** ✨
+
+  Premium ingestion sources are available upon request only. Please **[contact us](mailto:hello@getlago.com)** to get access to this premium feature.
+</Info>
+
+<CardGroup>
   <Card title="AWS Kinesis">
     Receives messages from multiple Kinesis streams.
   </Card>
@@ -15362,8 +15703,8 @@ Learn how to retrieve usage data for both current and past billing periods.
     Notice that if the events were sent with timestamp in the future, they are taken into account in current usage. Yet, if you terminate the
     subscription before the timestamp of this event, it will be ignored in the termination invoice.
 
-    <Frame caption="Retrieving current usage">
-      <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/events/images/current-usage.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=00a9984c10ab7008e26d553a48a4fbbe" data-og-width="1286" width="1286" data-og-height="892" height="892" data-path="guide/events/images/current-usage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/events/images/current-usage.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=aa85af7189f14c7cc1be7efb1beec819 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/events/images/current-usage.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=66f67f85c0a4eb8327827534ccf7c2f2 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/events/images/current-usage.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=5668eb756e944fa45891879ae1fb93be 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/events/images/current-usage.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=d8e16ab43a77ce456cd41e6cb1c466db 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/events/images/current-usage.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=d70447564792e39725b3bff9c62184bb 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/events/images/current-usage.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=d00a5ffb685ac661061fa4dcba4a2b1d 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -15399,8 +15740,8 @@ Learn how to retrieve usage data for both current and past billing periods.
       Note: Recurring metrics, such as Seats, typically remain stable over time, unlike metered metrics which fluctuate. Therefore, the projected usage for a recurring metric is assumed to be equal to its current usage.
     </Info>
 
-    <Frame caption="Retrieving projected usage">
-      <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/events/images/projected-usage.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=08ea89b6e97cae45e8ce61223783b3c5" data-og-width="1316" width="1316" data-og-height="898" height="898" data-path="guide/events/images/projected-usage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/events/images/projected-usage.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=35a7dacf674e1dceeb8bcb1656103fd8 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/events/images/projected-usage.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=42b89127f444745be380cd9dda3828a6 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/events/images/projected-usage.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=3b7152c53830adf69a3c6eb0ef6f9d77 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/events/images/projected-usage.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=7f338ab827b12a7655f5ff0019a64e57 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/events/images/projected-usage.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=9b6a565e33c0d0cc3d175218a05d1673 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/events/images/projected-usage.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=4684f6027e9485ac9052eaf1c75df3d0 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -15653,7 +15994,7 @@ article, I will provide a high-level view of the technical challenges we faced
 while implementing hybrid pricing (based on subscription and usage) and what we
 learned during this journey.
 
-<img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/billing-nightmare-3c8b70de58b169f0a4f882549c9edcb7.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=a1e54883c9bc8b1ef60f7c68770945f0" alt="How engineers feel about building a billing system" data-og-width="2912" width="2912" data-og-height="1676" height="1676" data-path="guide/images/billing-nightmare-3c8b70de58b169f0a4f882549c9edcb7.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/billing-nightmare-3c8b70de58b169f0a4f882549c9edcb7.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=e2a7163661cfb2ab5566aab6a2ad002c 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/billing-nightmare-3c8b70de58b169f0a4f882549c9edcb7.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=ab5390c67f5ca064031e07fd04e927bf 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/billing-nightmare-3c8b70de58b169f0a4f882549c9edcb7.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=0e458725713a829740c20295eb189fab 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/billing-nightmare-3c8b70de58b169f0a4f882549c9edcb7.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=fa2bb2fe04632d9beeb8cfbd0822b67c 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/billing-nightmare-3c8b70de58b169f0a4f882549c9edcb7.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=3b462cf6d7184a5f57bada3a26acabb5 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/billing-nightmare-3c8b70de58b169f0a4f882549c9edcb7.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=f5ada161977b2a7044461e631a09c046 2500w" />
+<img alt="How engineers feel about building a billing system" />
 
 ## TL;DR: Billing is just 100x harder than you will ever think[](#tldr-billing-is-just-100x-harder-than-you-will-ever-think "Direct link to heading")
 
@@ -15768,17 +16109,17 @@ that they need to count the distinct number of users each month and reset this
 value to zero for the next billing period. In order to retrieve the number of
 unique visitors, they need to apply a 'distinct' function to deduplicate them.
 
-<img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/tracked-users-event-f81fc6d343efffad1c4b3355517d90db.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=95d5de61a7914f5dd89357fa3b583e61" alt="Event related to tracked users" data-og-width="1360" width="1360" data-og-height="670" height="670" data-path="guide/introduction/images/tracked-users-event-f81fc6d343efffad1c4b3355517d90db.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/tracked-users-event-f81fc6d343efffad1c4b3355517d90db.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=43e98b9dfcf4004781014500588c0e55 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/tracked-users-event-f81fc6d343efffad1c4b3355517d90db.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=6ffd152f2bf52ef33c9c1650181fa655 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/tracked-users-event-f81fc6d343efffad1c4b3355517d90db.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=1e7c0238fd82de21c225f52454517b31 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/tracked-users-event-f81fc6d343efffad1c4b3355517d90db.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=ba8c21704cd59e0171edf4df6e4f1ad4 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/tracked-users-event-f81fc6d343efffad1c4b3355517d90db.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=354802541addc272b3eb41e5d5465f2c 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/tracked-users-event-f81fc6d343efffad1c4b3355517d90db.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=28a8cb53dd62836fef55cd4f405744e2 2500w" />
+<img alt="Event related to tracked users" />
 
-<img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/tracked-users-aggregation-1c662afae3af55c1d1b43793d0f56cc8.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=cdd52be15a7121f487f2d1f31d9e37ee" alt="Event aggregation for tracked users" data-og-width="1360" width="1360" data-og-height="596" height="596" data-path="guide/introduction/images/tracked-users-aggregation-1c662afae3af55c1d1b43793d0f56cc8.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/tracked-users-aggregation-1c662afae3af55c1d1b43793d0f56cc8.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=904b1b516d424543c232eecaeb377bd2 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/tracked-users-aggregation-1c662afae3af55c1d1b43793d0f56cc8.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=4eafd1c1442192f0abbd37b96da6283c 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/tracked-users-aggregation-1c662afae3af55c1d1b43793d0f56cc8.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=025a03fe9aabd6d54958d77002e30fa4 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/tracked-users-aggregation-1c662afae3af55c1d1b43793d0f56cc8.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=d523c9dfe373ac24d36ff03f7c6718a4 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/tracked-users-aggregation-1c662afae3af55c1d1b43793d0f56cc8.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=60f8e693b3466fed5d4a03f6d0a93224 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/tracked-users-aggregation-1c662afae3af55c1d1b43793d0f56cc8.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=cfbdb7fd4822e1678576e49384b7006f 2500w" />
+<img alt="Event aggregation for tracked users" />
 
 Algolia tracks the number of API searches per month. This means they need to sum
 the number of monthly searches for each customer and reset this value to zero
 for the next billing period.
 
-<img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/api-search-event-9e90f7f9c063238a4e14cfd03d314a1e.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=912875c6fa61760195f79caf6f94cb5a" alt="Event related to API searches" data-og-width="1360" width="1360" data-og-height="670" height="670" data-path="guide/introduction/images/api-search-event-9e90f7f9c063238a4e14cfd03d314a1e.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/api-search-event-9e90f7f9c063238a4e14cfd03d314a1e.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=7882119de80ee4f9a10c4fe1ffc6a830 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/api-search-event-9e90f7f9c063238a4e14cfd03d314a1e.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=5a93e0484414070e16d65750069734c2 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/api-search-event-9e90f7f9c063238a4e14cfd03d314a1e.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=9a099667ac2fe916c6902424f45acc5e 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/api-search-event-9e90f7f9c063238a4e14cfd03d314a1e.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=1386cee4a45537d18b2ea4d8c9378e89 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/api-search-event-9e90f7f9c063238a4e14cfd03d314a1e.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=2419a58f9dcfe8c0e9b43f991f252131 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/api-search-event-9e90f7f9c063238a4e14cfd03d314a1e.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=944cffd10fdf54198a344099ab011f6f 2500w" />
+<img alt="Event related to API searches" />
 
-<img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/api-search-aggregation-23924f13dd3da2e5d73388afffe7e89a.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=1a6c3130e715353b46feaecd656ebeed" alt="Event aggregation for API searches" data-og-width="1360" width="1360" data-og-height="596" height="596" data-path="guide/introduction/images/api-search-aggregation-23924f13dd3da2e5d73388afffe7e89a.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/api-search-aggregation-23924f13dd3da2e5d73388afffe7e89a.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=a8d566cedde1842ecdd5b01232c435db 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/api-search-aggregation-23924f13dd3da2e5d73388afffe7e89a.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=0122a41da9e047d4ee1bf90196c54e7e 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/api-search-aggregation-23924f13dd3da2e5d73388afffe7e89a.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=d19fafbd3da95a69e25c676ed426ae2f 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/api-search-aggregation-23924f13dd3da2e5d73388afffe7e89a.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=0bb668fe6fdd541eaae0053c27bc1c6f 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/api-search-aggregation-23924f13dd3da2e5d73388afffe7e89a.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=699f58f47fb3b4de4579166bd552bad7 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/api-search-aggregation-23924f13dd3da2e5d73388afffe7e89a.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=bdc352791d5375fe2afdc06b3727d444 2500w" />
+<img alt="Event aggregation for API searches" />
 
 It becomes even more complex when you start calculating charges based on a
 timeframe. For instance, Snowflake charges for the compute usage of a data
@@ -15789,7 +16130,7 @@ Consider the example of a utility company that charges \$10 per kilowatt of
 electricity per hour. The illustration below shows what needs to be modeled and
 automated by the billing system.
 
-<img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/power-consumption-aba79c1bc4259e79144011519a519586.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=dbe1278b0ccadfe9f32c6ee2d9bb2683" alt="Power consumption diagram" data-og-width="2232" width="2232" data-og-height="1464" height="1464" data-path="guide/introduction/images/power-consumption-aba79c1bc4259e79144011519a519586.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/power-consumption-aba79c1bc4259e79144011519a519586.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=e924d607f35d3d96e6c2e8bc2fffe5ff 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/power-consumption-aba79c1bc4259e79144011519a519586.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=81b2afa5f8cdad2d5681a959a81abf17 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/power-consumption-aba79c1bc4259e79144011519a519586.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=304d1fb46ca56c52e608866fbf0f9ef8 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/power-consumption-aba79c1bc4259e79144011519a519586.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=513cc7e3af1127ab001381f5000c49c9 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/power-consumption-aba79c1bc4259e79144011519a519586.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=b433871572820932e7a05d46f77bd163 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/power-consumption-aba79c1bc4259e79144011519a519586.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=30908d91e34973d35581f89be97a927d 2500w" />
+<img alt="Power consumption diagram" />
 
 * **Hour 1**: 10 KW used for 0.5 hour = 5 KW (10 x 0.5)
 * **Hour 2**: 20 KW used for 1 hour = 20 KW (20 x 1)
@@ -15860,7 +16201,7 @@ Taxes are challenging and depend on multiple dimensions. Taxes depend on what
 you are selling, your home country and your customer's home country. In the
 simplest situations, your tax decision tree should look like this:
 
-<img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/taxes-vat-46fc3b96167c21bc33b279431aa187ca.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=1bdf900ce9d1e55b0cf14218d1e480ca" alt="Decision tree for taxes" data-og-width="4056" width="4056" data-og-height="1720" height="1720" data-path="guide/introduction/images/taxes-vat-46fc3b96167c21bc33b279431aa187ca.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/taxes-vat-46fc3b96167c21bc33b279431aa187ca.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=5d00055815cd06fd7958fa32c1b1ab1d 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/taxes-vat-46fc3b96167c21bc33b279431aa187ca.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=07892e5ecce776b700ea196867a6d5ac 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/taxes-vat-46fc3b96167c21bc33b279431aa187ca.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=0f5f6ac9c2d58c6ba4e2ac9592280d5c 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/taxes-vat-46fc3b96167c21bc33b279431aa187ca.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=51ba83687129930a0657bb41f1604dd6 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/taxes-vat-46fc3b96167c21bc33b279431aa187ca.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=63b220ec4b8300604660d093999799bd 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/introduction/images/taxes-vat-46fc3b96167c21bc33b279431aa187ca.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=1c0be1ded10b0e10dd28c213d71640e3 2500w" />
+<img alt="Decision tree for taxes" />
 
 Now, imagine that you sell different types of goods/services to different types
 of customers in 100+ countries. If you think the logic on paper looks complex,
@@ -15892,6 +16233,370 @@ internal processes require.
 
 If you're interested, you can [get started](https://www.getlago.com/get-started)
 here or [book a demo](https://getlago.com/book-a-demo).
+
+
+# Credit note metadata
+Source: https://getlago.com/docs/guide/invoicing/credit-notes/credit-note-metadata
+
+
+
+Metadata on a credit\_note object allows you to store additional structured information and context. This is especially useful when integrating Lago with external systems.
+For example, after creating a credit note, you can save your government-issued credit note ID, the synchronization status with your ERP, or any internal reference needed for your workflows.
+
+<Info>
+  Metadata is stored in the `credit_note` object but is **not** displayed on the PDF file.
+</Info>
+
+## Add metadata on credit note
+
+To add metadata:
+
+<Tabs>
+  <Tab title="Dashboard">
+    1. Go to the credit note detail page for the credit note you want to update.
+    2. Click **“Add metadata.”**
+    3. Enter your key–value pairs.
+    4. Click **Save** to confirm.
+  </Tab>
+
+  <Tab title="API — At credit note creation">
+    <CodeGroup>
+      ```bash Add metadata when creating a credit note theme={"dark"}
+      LAGO_URL="https://api.getlago.com"
+      INVOICE_ID="__YOU_INVOICE_ID__"
+      API_KEY="__YOUR_API_KEY__"
+
+      curl --location --request POST "$LAGO_URL/api/v1/credit_notes" \
+      --header "Authorization: Bearer $API_KEY" \
+      --header 'Content-Type: application/json' \
+      --data-raw '{
+      "credit_note": {
+        …
+        "metadata": {
+          "sync_to_netsuite": "false",
+          "sync_to_salesforce": "false"
+        }
+      }'
+      ```
+    </CodeGroup>
+  </Tab>
+
+  <Tab title="API — After credit note creation">
+    <CodeGroup>
+      ```bash Add metadata to an existing credit note theme={"dark"}
+      LAGO_URL="https://api.getlago.com"
+      INVOICE_ID="__YOU_INVOICE_ID__"
+      API_KEY="__YOUR_API_KEY__"
+
+      curl --location --request POST "$LAGO_URL/api/v1/credit_notes/:lago_id/metadata" \
+      --header "Authorization: Bearer $API_KEY" \
+      --header 'Content-Type: application/json' \
+      --data-raw '{
+        "metadata": {
+          "sync_to_netsuite": "false",
+          "sync_to_salesforce": "false"
+        }
+      }'
+      ```
+    </CodeGroup>
+  </Tab>
+</Tabs>
+
+## Edit metadata on credit note
+
+To edit metadata on a credit note:
+
+<Tabs>
+  <Tab title="Dashboard">
+    1. Navigate to the credit note detail page.
+    2. Click **“Edit metadata.”**
+    3. Add, update key–value pairs.
+    4. Save your changes.
+  </Tab>
+
+  <Tab title="API — Add or edit specific keys">
+    <CodeGroup>
+      ```bash Edit or add metadata on a credit note theme={"dark"}
+      LAGO_URL="https://api.getlago.com"
+      INVOICE_ID="__YOU_INVOICE_ID__"
+      API_KEY="__YOUR_API_KEY__"
+
+      curl --location --request PATCH "$LAGO_URL/api/v1/credit_notes/:lago_id/metadata" \
+      --header "Authorization: Bearer $API_KEY" \
+      --header 'Content-Type: application/json' \
+      --data-raw '{
+        "metadata": {
+          "sync_to_netsuite": "true",
+          "netsuite_id": "cn_1234567890"
+        }
+      }'
+      ```
+    </CodeGroup>
+  </Tab>
+
+  <Tab title="API — Replace all metadata">
+    <CodeGroup>
+      ```bash Replace all metadata on a credit note theme={"dark"}
+      LAGO_URL="https://api.getlago.com"
+      INVOICE_ID="__YOU_INVOICE_ID__"
+      API_KEY="__YOUR_API_KEY__"
+
+      curl --location --request POST "$LAGO_URL/api/v1/credit_notes/:lago_id/metadata" \
+      --header "Authorization: Bearer $API_KEY" \
+      --header 'Content-Type: application/json' \
+      --data-raw '{
+        "metadata": {
+          "sync_to_netsuite": "true",
+          "netsuite_id": "cn_1234567890"
+          "sync_to_salesforce": "false"
+        }
+      }'
+      ```
+    </CodeGroup>
+  </Tab>
+</Tabs>
+
+## Delete metadata on credit note
+
+To delete metadata on a credit note:
+
+<Tabs>
+  <Tab title="Dashboard">
+    1. Open the credit note detail page.
+    2. Click **“Edit metadata.”**
+    3. Click the trash icon next to the key–value pair you want to remove.
+    4. Save your changes.
+  </Tab>
+
+  <Tab title="API — Delete a specific ke">
+    <CodeGroup>
+      ```bash Delete a specific metadata key theme={"dark"}
+      LAGO_URL="https://api.getlago.com"
+      INVOICE_ID="__YOU_INVOICE_ID__"
+      API_KEY="__YOUR_API_KEY__"
+
+      curl --location --request DELETE "$LAGO_URL/api/v1/credit_notes/:lago_id/metadata/:key" \
+      --header "Authorization: Bearer $API_KEY" \
+      --header 'Content-Type: application/json'
+      ```
+    </CodeGroup>
+  </Tab>
+
+  <Tab title="API — Delete all metadata">
+    <CodeGroup>
+      ```bash Delete all metadata on a credit note theme={"dark"}
+      LAGO_URL="https://api.getlago.com"
+      INVOICE_ID="__YOU_INVOICE_ID__"
+      API_KEY="__YOUR_API_KEY__"
+
+      curl --location --request DELETE "$LAGO_URL/api/v1/credit_notes/:lago_id/metadata" \
+      --header "Authorization: Bearer $API_KEY" \
+      --header 'Content-Type: application/json'
+      ```
+    </CodeGroup>
+  </Tab>
+</Tabs>
+
+## Credit note metadata limitations
+
+1. A maximum of 50 metadata key–value pairs is allowed per credit note.
+2. Keys must be strings of up to 40 characters.
+3. Values must be strings of up to 255 characters.
+
+
+# Overview
+Source: https://getlago.com/docs/guide/invoicing/credit-notes/overview
+
+
+
+<Info>
+  **PREMIUM FEATURE** ✨
+
+  Lago may automatically generate a credit note when a subscription is upgraded or
+  downgraded. However, only users with a premium license can manually generate
+  credit notes via the user interface or the API. Please
+  **[contact us](mailto:hello@getlago.com)** to get access to Lago Cloud and Lago
+  Self-Hosted Premium.
+</Info>
+
+Use credit notes to correct an invoice while keeping your financial records accurate.
+Credit notes can be issued for **all invoice types**.
+
+## Access credit notes creation flow[](#create-credit-notes "Direct link to heading")
+
+<Info>
+  Credit notes can only be issued for invoices with status `finalized` and an amount **greater than zero**.
+</Info>
+
+To create a credit note from the Dashboard:
+
+1. Open the invoice
+2. Go to the **Credit notes** tab
+3. Click **Issue a credit note**
+
+The available methods depend on the payments recorded on the invoice:
+
+* Credit the full invoice amount (tax included) for future use
+* Refund the paid amount
+* Offset the remaining invoice amount due
+
+<Info>
+  For **subscription invoices**, prepaid credits and applied credit notes cannot be refunded.
+  They can only be credited back to the customer’s account for future use.
+  Coupons are non-refundable and cannot be credited back.
+</Info>
+
+### Prepaid credit invoices
+
+Prepaid credit invoices follow specific rules:
+
+* **If a payment is recorded:** You can refund the available wallet balance. This immediately voids the credits from the wallet.
+* **If no payment is recorded:** You can only offset the invoice. The wallet transaction is not settled and the wallet balance remains unchanged.
+
+## Issue a credit note
+
+<Tabs>
+  <Tab title="Dashboard">
+    1. Select a reason from the list (e.g. duplicate charge, order cancelation,
+       etc.);
+    2. Add an internal note (optional);
+    3. Select the item(s) and enter the amount(s) you want to credit;
+    4. Select the credit method(s) (only available for paid invoices -
+       [learn more](#credit-methods)); and
+    5. Click **"Issue credit note"** to confirm.
+
+    <Info>
+      For each item, you must enter a credit amount equal to or less than the
+      initial amount of the item, excluding tax. The total amount of the credit note
+      cannot exceed the total amount of the invoice.
+    </Info>
+  </Tab>
+
+  <Tab title="API">
+    ```bash Create a credit note theme={"dark"}
+    LAGO_URL="https://api.getlago.com"
+    API_KEY="__YOUR_API_KEY__"
+
+      curl --location --request POST "$LAGO_URL/api/v1/credit_notes" \
+      --header "Authorization: Bearer $API_KEY" \
+      --header 'Content-Type: application/json' \
+      --data-raw '{
+        "credit_note": {
+          "invoice_id": "**LAGO_INVOICE_ID**",
+          "reason": "duplicated_charge",
+          "credit_amount_cents": 10,
+          "refund_amount_cents": 5,
+          "offset_amount_cents": 0,
+          "items": [
+            {
+              "fee_id": "__LAGO_FEE_ID__",
+              "amount_cents": 10
+            },
+            {
+              "fee_id": "__LAGO_FEE_ID__",
+              "amount_cents": 5
+            }
+          ]
+        }
+      }'
+
+    ```
+  </Tab>
+</Tabs>
+
+Once created, the credit note:
+
+* Appears in the Credit notes tab of the customer and invoice views
+* Triggers a `credit_note.created`[webhook](/api-reference/webhooks/messages)
+
+You can issue **multiple credit notes** on a single invoice.
+Each credit note has a unique number and can be downloaded as a PDF.
+
+<Frame>
+  <img />
+</Frame>
+
+## Credit methods[](#credit-methods "Direct link to heading")
+
+### Offset[](#offset "Direct link to heading")
+
+If the invoice has an amount due greater than zero, you can offset it.
+This reduces the invoice amount due. Once it reaches zero, Lago automatically marks `invoice.payment_status` as `succeeded`.
+
+### Refund[](#refund "Direct link to heading")
+
+If a payment has been recorded, you can refund the paid amount.
+
+* If the customer is connected to a payment provider, Lago automatically triggers the refund.
+* The credit note includes a `refund_status`, updated to `pending`, `succeeded`, or `failed`.
+
+If no payment provider is connected, refund handling and `refund_status` updates are the user’s responsibility.
+
+### Credit note wallet[](#credit-note-wallet "Direct link to heading")
+
+You can credit an amount for future use instead of refunding it.
+The credited amount is stored in a single credit note wallet and visible in the customer’s Credit notes tab.
+This balance is automatically applied to future subscription invoices.
+
+<Info>
+  Credit note wallets are different from wallets associated with [prepaid credits](/guide/wallet-and-prepaid-credits).
+</Info>
+
+The total amount available in the credit note wallets will be deducted from the
+subtotal of the customer's next invoice(s), after tax (see below).
+
+```
+## EXAMPLE OF INVOICE
+
+All subscriptions fee    $50.00
+All usage-based fees     $20.00
+Coupons                 -$10.00
+-------------------------------
+Subtotal (excl. tax)     $60.00
+Tax (10%)                $ 6.00
+-------------------------------
+Subtotal (incl. tax)     $66.00
+Credit notes             $20.00
+Prepaid credits          $30.00
+-------------------------------
+Total                    $16.00
+```
+
+When a credit note wallet is created, its initial `credit_status` is set to `available`.
+Once the wallet balance reaches zero, the status automatically changes to consumed.
+
+## Void available credit[](#void-credit-note "Direct link to heading")
+
+You can still void any remaining credit linked to a specific credit note when needed. To do so:
+
+<Tabs>
+  <Tab title="Dashboard">
+    1. Go to the **"Customers"** section;
+    2. Select a customer to open the customer view;
+    3. Open the **"Credit notes"** tab;
+    4. Click a credit note to see its details; and
+    5. Select **"Void credit available"** from the **"Actions"** dropdown (upper
+       right corner).
+
+    <Warning>
+      When voiding a credit note wallet, the remaining credit amount will be lost
+      and the `credit_status` will switch to `voided`. This action cannot be
+      canceled.
+    </Warning>
+  </Tab>
+
+  <Tab title="API">
+    ```bash Void a credit note theme={"dark"}
+    LAGO_URL="https://api.getlago.com"
+    CREDIT_NOTE_ID="__YOU_CREDIT_NOTE_ID__"
+    API_KEY="__YOUR_API_KEY__"
+
+    curl --location --request PUT "$LAGO_URL/api/v1/credit_notes/$CREDIT_NOTE_ID/void" \
+      --header "Authorization: Bearer $API_KEY" \
+      --header 'Content-Type: application/json'
+    ```
+  </Tab>
+</Tabs>
 
 
 # Download invoices
@@ -15995,8 +16700,8 @@ Alternatively, you can **finalize them manually** via the UI or API.
 
 Once `finalized`, invoices are locked and trigger the `invoice.created` webhook.
 
-<Frame caption="Draft invoice in the Lago app">
-  <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/grace-period-draft-invoice-0a9ccbd1d7dc1b87faeb5a44abf484e1.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=c4ff1d6ecde4bf1acb615663920052a9" data-og-width="2880" width="2880" data-og-height="1570" height="1570" data-path="guide/invoicing/images/grace-period-draft-invoice-0a9ccbd1d7dc1b87faeb5a44abf484e1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/grace-period-draft-invoice-0a9ccbd1d7dc1b87faeb5a44abf484e1.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=0360101661ac307410007c9f1f165401 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/grace-period-draft-invoice-0a9ccbd1d7dc1b87faeb5a44abf484e1.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=54e0dcf003b5bcc55adbbbd51b6db02a 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/grace-period-draft-invoice-0a9ccbd1d7dc1b87faeb5a44abf484e1.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=d986c3cfbd8a34e16e2038b58f62eca2 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/grace-period-draft-invoice-0a9ccbd1d7dc1b87faeb5a44abf484e1.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=9a6b3975bf8427766d901557b15851f9 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/grace-period-draft-invoice-0a9ccbd1d7dc1b87faeb5a44abf484e1.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=f39645e0f5b5ba18bd8e888616b0cbfa 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/grace-period-draft-invoice-0a9ccbd1d7dc1b87faeb5a44abf484e1.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=8ce5b862c47ba74194ea7fbf61599086 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 <Info>
@@ -16004,19 +16709,132 @@ Once `finalized`, invoices are locked and trigger the `invoice.created` webhook.
 </Info>
 
 
-# E-invoicing
-Source: https://getlago.com/docs/guide/invoicing/einvoicing
+# E-Invoicing contributions
+Source: https://getlago.com/docs/guide/invoicing/e-invoicing/contributions
+
+Learn how to contribute new E-Invoicing formats and jurisdictions to Lago
+
+## Current state in Lago
+
+Lago currently supports two types of E-Invoicing formats: Cross Industry Invoices (CII) and Universal Business Language (UBL). Both implementations follow the French E-Invoicing structure.
+
+Some EU countries may use different naming conventions, but they generally rely on the same underlying CII or UBL data structures, with country specific additions or removals.
+
+This contribution guide is intended for developers who want to extend Lago's E-Invoicing capabilities to support additional jurisdictions or customize existing formats, especially for Peppol network compliance.
+
+## CII - Cross Industry Invoices (Factur-X)
+
+Cross Industry Invoices represent the hybrid format combining a PDF/A-3 file with an embedded XML file. The XML structure follows the CII standard, which is widely used in Europe, including France's Factur-X implementation.
+Lago supports e-invoicing for the following record types:
+
+* `invoice`
+* `credit_note`
+* `payments`
+
+Each record type has a dedicated `Builder` class responsible for generating the XML document in the required format.
+
+Builder classes are located at:
+
+```bash theme={"dark"}
+app/serializers/e_invoices/<invoices|credit_notes|payments>/<factur_x|ubl>/builder.rb
+```
+
+The Factur-X (CII) implementation lives in the Lago API project under:
+
+```bash theme={"dark"}
+app/serializers/e_invoices/factur_x
+```
+
+### Classes and XML Tags
+
+| Class                             | XML Tag                                               | Description                                          | Parameters / Notes                                                                                                                  |
+| --------------------------------- | ----------------------------------------------------- | ---------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `FacturX::CrossIndustryInvoice`   | `rsm:CrossIndustryInvoice`                            | Root element for the invoice and its direct children | Requires a Ruby block                                                                                                               |
+| `FacturX::Header`                 | `rsm:ExchangedDocument`                               | Header information for the document                  | `type_code`: document type<br />`notes`: optional additional information                                                            |
+| `FacturX::LineItem`               | `ram:IncludedSupplyChainTradeLineItem`                | Represents a single invoice line item                | `data`: `FacturX::LineItem::Data` containing item details                                                                           |
+| `FacturX::TradeAgreement`         | `ram:ApplicableHeaderTradeAgreement`                  | Commercial agreement details                         | `options`: optional `FacturX::TradeAgreement::Options`<br />`tax_registration`: controls tax registration rendering, default `true` |
+| `FacturX::TradeDelivery`          | `ram:ApplicableHeaderTradeDelivery`                   | Delivery information for goods or services           | `delivery_date`: date goods or services were delivered                                                                              |
+| `FacturX::TradeSettlement`        | `ram:ApplicableHeaderTradeSettlement`                 | Settlement and payment context                       | Requires a Ruby block                                                                                                               |
+| `FacturX::TradeSettlementPayment` | `ram:SpecifiedTradeSettlementPaymentMeans`            | Payment means used for settlement                    | No specific parameters                                                                                                              |
+| `FacturX::ApplicableTradeTax`     | `ram:ApplicableTradeTax`                              | Tax information applied to the invoice               | Multiple tax related parameters                                                                                                     |
+| `FacturX::TradeAllowanceCharge`   | `ram:SpecifiedTradeAllowanceCharge`                   | Allowances or charges applied to the invoice         | Multiple allowance and charge parameters                                                                                            |
+| `FacturX::PaymentTerms`           | `ram:SpecifiedTradePaymentTerms`                      | Defines payment terms                                | No specific parameters                                                                                                              |
+| `FacturX::MonetarySummation`      | `ram:SpecifiedTradeSettlementHeaderMonetarySummation` | Monetary totals and summaries                        | `amounts`: `FacturX::MonetarySummation::Amounts` with rendered values                                                               |
+
+## UBL - Universal Business Language
+
+Universal Business Language (UBL) is another widely adopted E-Invoicing standard, particularly in the Peppol network. UBL invoices are XML-only documents that follow a specific schema defined by OASIS.
+
+The UBL implementation is located in the Lago API project under:
+
+```bash theme={"dark"}
+app/serializers/e_invoices/ubl
+```
+
+## Contributing new jurisdictions - The example of Germany
+
+### Overview
+
+This guide outlines the steps to contribute a new E-Invoicing format for Germany, specifically the XRechnung and ZUGFeRD formats based on UBL and CII standards.
+
+Germany supports two e-invoicing formats:
+
+<Columns>
+  <Card title="ZUGFeRD 2.3.3 (EN 16931) Factur-X" icon="file">
+    This format combines a human readable PDF with embedded XML data. It is the most commonly used option due to lower implementation and operational costs compared to fiscal EDI based processes.
+  </Card>
+
+  <Card title="XRechnung UBL Invoice" icon="file-code">
+    This is a pure XML electronic invoice based on **UBL 2.1.** It follows German XRechnung semantic requirements and is typically transmitted via the PEPPOL network using the **PEPPOL BIS Billing 3.0** specification. It is used for German B2G compliance and EU wide interoperability.
+  </Card>
+</Columns>
+
+### Implementation notes
+
+**ZUGFeRD 2.3.3** has no differences compared to the French Factur-X implementation. Existing Factur-X code can be fully reused.
+**XRechnung** may require additional tags that are not present in the French UBL implementation. These tags should be added under the UBL folder.
+
+Example:
+
+* The `InvoicePeriod` tag is optional in standard UBL but required in XRechnung. It is currently not implemented in the French version.
+* Some tags present in the French implementation may not be valid for XRechnung. Rendering of such tags should be controlled via conditional logic based on `billing_entity.country`.
+
+```ruby theme={"dark"}
+def serialize
+  # other mandatory tags
+
+  render_specific_tag if conditions_met?
+
+  # other tags
+end
+
+private
+
+def conditions_met?
+  ["DE"].include?(billing_entity.country)
+end
+
+def render_specific_tag
+  xml["cac"].GermanySpecificTag(value)
+end
+```
+
+If a completely new and independent tag is required, create a dedicated class to render it. The corresponding `Builder` class should invoke it only when the conditions for the specific country or implementation are met.
+
+
+# Overview
+Source: https://getlago.com/docs/guide/invoicing/e-invoicing/overview
 
 Lago automatically generates e-invoices for your billing entities and customers that comply with local regulations
 
-## Overview
+## E-Invoicing principles
 
-E-invoicing is the automated exchange of invoice data between businesses in a structured digital format.
+E-Invoicing is the automated exchange of invoice data between businesses in a structured digital format.
 Governments require it to prevent tax fraud by tracking transactions in real-time, while businesses benefit from faster payments, fewer errors, and lower processing costs.
-Instead of sending PDFs or paper invoices that need manual entry, e-invoicing systems automatically validate and process invoice data, making the entire billing cycle more efficient.
-As more countries make e-invoicing mandatory, it's becoming the standard way businesses exchange invoices globally.
+Instead of sending PDFs or paper invoices that need manual entry, E-Invoicing systems automatically validate and process invoice data, making the entire billing cycle more efficient.
+As more countries make E-Invoicing mandatory, it's becoming the standard way businesses exchange invoices globally.
 
-## Supported E-invoicing jurisdictions
+## Supported E-Invoicing jurisdictions
 
 Lago issues compliant documents for **invoices**, **credit notes**, and **payment receipts** for the following jurisdictions:
 
@@ -16033,11 +16851,11 @@ Lago issues compliant documents for **invoices**, **credit notes**, and **paymen
 | **🇸🇦 Saudi Arabia** | ZATCA Standard Invoice   | XML only                        | UBL 2.1 with ZATCA extensions    | Soon (Q4 2025) |
 |                       | ZATCA Simplified Invoice | Embedded XML (PDF/A-3 with XML) | UBL 2.1 with ZATCA extensions    | Soon (Q4 2025) |
 
-## Activate E-invoicing in Lago
+## Activate E-Invoicing in Lago
 
-You can enable e-invoicing at the entity level. Each entity can have its own e-invoicing configuration based on its jurisdiction.
+You can enable E-Invoicing at the entity level. Each entity can have its own E-Invoicing configuration based on its jurisdiction.
 
-To activate e-invoicing:
+To activate E-Invoicing:
 
 1. Go to **Settings** in your Lago dashboard;
 2. **Select the entity** you want to update;
@@ -16045,25 +16863,25 @@ To activate e-invoicing:
 4. At the bottom of the form, toggle **E-invoicing on**.
 
 <Info>
-  The E-invoicing toggle appears only if Lago supports e-invoicing for the entity's country. If the option is not displayed, the country is currently not supported.
+  The E-Invoicing toggle appears only if Lago supports E-Invoicing for the entity's country. If the option is not displayed, the country is currently not supported.
 </Info>
 
-<Frame caption="Activate E-invoicing for a Lago entity">
-  <img src="https://mintcdn.com/lago-docs/X1qkZLBcXpZ7w2M4/guide/invoicing/images/activate-einvoicing.png?fit=max&auto=format&n=X1qkZLBcXpZ7w2M4&q=85&s=b34ac239e33b1a43a3d9929ebfcdd21f" data-og-width="2674" width="2674" data-og-height="1720" height="1720" data-path="guide/invoicing/images/activate-einvoicing.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/X1qkZLBcXpZ7w2M4/guide/invoicing/images/activate-einvoicing.png?w=280&fit=max&auto=format&n=X1qkZLBcXpZ7w2M4&q=85&s=211d67c6a6138598acc5cde8d652ffd1 280w, https://mintcdn.com/lago-docs/X1qkZLBcXpZ7w2M4/guide/invoicing/images/activate-einvoicing.png?w=560&fit=max&auto=format&n=X1qkZLBcXpZ7w2M4&q=85&s=7478b6d933c82b10331492c8786db5be 560w, https://mintcdn.com/lago-docs/X1qkZLBcXpZ7w2M4/guide/invoicing/images/activate-einvoicing.png?w=840&fit=max&auto=format&n=X1qkZLBcXpZ7w2M4&q=85&s=435f5934839f5af37cbbd14259102be4 840w, https://mintcdn.com/lago-docs/X1qkZLBcXpZ7w2M4/guide/invoicing/images/activate-einvoicing.png?w=1100&fit=max&auto=format&n=X1qkZLBcXpZ7w2M4&q=85&s=6dd4eb3c280295466dcd1c9080606b90 1100w, https://mintcdn.com/lago-docs/X1qkZLBcXpZ7w2M4/guide/invoicing/images/activate-einvoicing.png?w=1650&fit=max&auto=format&n=X1qkZLBcXpZ7w2M4&q=85&s=879d91c810eaa68e91298995c3b2ef95 1650w, https://mintcdn.com/lago-docs/X1qkZLBcXpZ7w2M4/guide/invoicing/images/activate-einvoicing.png?w=2500&fit=max&auto=format&n=X1qkZLBcXpZ7w2M4&q=85&s=f1b5a557ffbc0d98792a4cb48f159e10 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Formats and contributions
 
 The output type is typically either an **embedded XML file** (PDF/A-3 with XML) or a **standalone XML**, depending on the requirements of each jurisdiction.
 
-Lago supports two standard e-invoicing formats: **UBL (Universal Business Language)** and **CII (Cross Industry Invoice)**.
+Lago supports two standard E-Invoicing formats: **UBL (Universal Business Language)** and **CII (Cross Industry Invoice)**.
 Using Lago's core templates for these formats, you can extend or customize them to meet the specific requirements of additional jurisdictions.
 
-If your jurisdiction is not yet supported and you'd like to contribute to a new format, please **[contact us](mailto:hello@getlago.com)**.
+If your jurisdiction is not yet supported and you'd like to contribute to a new format, please **[contact us](mailto:hello@getlago.com)** or [visit this page](/guide/invoicing/e-invoicing/contributions).
 
 Here is an example of an Cross Industry Invoice (CII) XML file for Factur-X in France:
 
-```xml  theme={"dark"}
+```xml theme={"dark"}
 <?xml version="1.0" encoding="UTF-8"?>
 <rsm:CrossIndustryInvoice xmlns:rsm="urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100"
                           xmlns:qdt="urn:un:unece:uncefact:data:standard:QualifiedDataType:100"
@@ -16214,8 +17032,8 @@ With Lago, filtering your invoice list is straightforward and customizable. To f
 3. Select the **Filters options** for more advanced filtering criteria; and
 4. Click **Reset filters** to remove all active filters when needed.
 
-<Frame caption="Invoices filtering options">
-  <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/filters-and-quick-filters.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=ff67baaca7861289030ad5d3c3351e11" data-og-width="2884" width="2884" data-og-height="1274" height="1274" data-path="guide/invoicing/images/filters-and-quick-filters.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/filters-and-quick-filters.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=5cf0347d55f84143ffcdd59488c914c0 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/filters-and-quick-filters.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=e673537557afe234c785b75c2944b0c2 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/filters-and-quick-filters.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=efdac7be4cdc82c2022fb368675c34c6 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/filters-and-quick-filters.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=8905edc546861ddd7532f757d80f0195 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/filters-and-quick-filters.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=9e51355b7e1768ae53652860c3afab92 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/filters-and-quick-filters.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=58b3b40d328cb28cf9dd0ebc18cbd540 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 Here is the list of filter options you will encounter in Lago:
@@ -16238,8 +17056,8 @@ The first option is a basic invoice export. This process generates a CSV file co
 The exported CSV includes relevant invoice details and is sent to the email address of the user who requested the export.
 The download link for the CSV file remains valid for 7 days.
 
-<Frame caption="Basic invoices export in CSV">
-  <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/invoices-export.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=6f3dcad44d362255649459cec8df155c" data-og-width="2890" width="2890" data-og-height="1452" height="1452" data-path="guide/invoicing/images/invoices-export.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/invoices-export.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=0eea915cadcaee0c4fbff5ad0a2c9b3f 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/invoices-export.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=ee15e9b570896caa9f87c0ee561f14cb 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/invoices-export.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=c8b72ac4f3661ed68d2c54ff748c15b3 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/invoices-export.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=9b436cb103655993128d723dbebd1b44 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/invoices-export.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=ced2cea2fd67c5b55e943de6bdb6bff7 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/invoices-export.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=77c62f75e90ba426390eb92f08a54aa3 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Detailed invoice fees export
@@ -16248,8 +17066,8 @@ The second option is an advanced invoice export. This process generates a CSV fi
 based on the filters you have previously applied. The exported CSV includes detailed information on each fee and line item of your invoices, and is
 sent to the email address of the user who requested the export. The download link for the CSV file is valid for 7 days.
 
-<Frame caption="Advanced invoice fees export in CSV">
-  <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/fees-export.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=17666e52179aa39408bc5fb75759efc1" data-og-width="2898" width="2898" data-og-height="1550" height="1550" data-path="guide/invoicing/images/fees-export.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/fees-export.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=bb93569d052b4fc5073338533bd809bc 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/fees-export.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=f4bf3f8d268fcf645fb273c56e7e4268 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/fees-export.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=16cad2cbf9c8fb89776c551eea92abc8 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/fees-export.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=8ab265c4405f6cd0154622ac98df859f 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/fees-export.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=3cbef1ebef8a7901ee27f4c343c9f8d0 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/fees-export.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=28f2929512082ba305a92d507bee09c5 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Filter and export Credit notes[](#filter-and-export-credit-notes "Direct link to heading")
@@ -16264,11 +17082,11 @@ A fee is a line item in an invoice.
 
 There are few types of fees:
 
-* **Subscription fees** that correspond to the base amount of the plan;
-* **Charge fees** that correspond to usage-based charges (i.e. the costs
-  associated with each billable metric), this fee can be linked to a true-up fee;
-* **Add-on fees** that correspond to a line item appearing in a one off invoice; and
-* **Credits** that correspond to the consumed prepaid credits.
+* **Subscription fees** which correspond to the plan’s base amount;
+* **Fixed charge fees** which apply fixed recurring amounts defined by add-ons in plans;
+* **Charge fees** which represent usage-based costs tied to billable metrics in plans and can be linked to a true-up fee;
+* **Add-on fees** which appear as line items on one-off invoices;
+* **Credits** which reflect the purchase of prepaid credits.
 
 Information about fees includes (but is not limited to):
 
@@ -16280,55 +17098,60 @@ Information about fees includes (but is not limited to):
 The fee object is embedded within an invoice or credit note object, making it retrievable on its own.
 This is illustrated below.:
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
-  "fee": {
-    "lago_id": "e7e0ee24-7ef3-4b19-8bbf-fb0e75f5c79b",
-    "lago_group_id": null,
-    "lago_invoice_id": "ffbafe19-2b8d-4376-9510-314566b90724",
-    "lago_true_up_fee_id": null,
-    "lago_true_up_parent_fee_id": null,
-    "item": {
-      "type": "add_on",
-      "code": "test",
-      "name": "Test ",
-      "lago_item_id": "1e8d90cb-e305-438b-86b5-a566e97209d0",
-      "item_type": "AddOn"
-    },
-    "pay_in_advance": false,
-    "invoiceable": true,
-    "amount_cents": 10000,
-    "amount_currency": "USD",
-    "taxes_amount_cents": 3000,
-    "taxes_rate": 30.0,
-    "total_amount_cents": 13000,
-    "total_amount_currency": "USD",
-    "units": "1.0",
+  "lago_id": "294e38f1-898b-49c1-9f85-ce1178388c8b",
+  "lago_charge_id": null,
+  "lago_charge_filter_id": null,
+  "lago_fixed_charge_id": null,
+  "lago_invoice_id": "4d6b7c5a-ad44-44de-af30-755e4c0470f1",
+  "lago_true_up_fee_id": null,
+  "lago_true_up_parent_fee_id": null,
+  "lago_subscription_id": "c65448a6-a7ed-4037-8ad0-97140fa1a46e",
+  "external_subscription_id": "34f9febb-f501-4904-8f28-790bdb7c114a",
+  "lago_customer_id": "42a8e1ff-4518-4c19-aa7a-93299e87cd14",
+  "external_customer_id": "cus_fixed_charge",
+  "item": {
+    "type": "subscription",
+    "code": "Standard",
+    "name": "Standard",
     "description": "",
-    "unit_amount_cents": 10000,
-    "events_count": null,
-    "payment_status": "pending",
-    "created_at": "2023-07-06T21:01:41Z",
-    "succeeded_at": null,
-    "failed_at": null,
-    "refunded_at": null,
-    "vat_amount_cents": 3000,
-    "vat_amount_currency": "USD",
-    "applied_taxes": [
-      {
-        "lago_id": "3bdac336-af27-4be4-a4a5-58433f401708",
-        "lago_fee_id": "e7e0ee24-7ef3-4b19-8bbf-fb0e75f5c79b",
-        "lago_tax_id": "38325421-2145-4b79-bff1-d38a702afe3a",
-        "tax_name": "TVA",
-        "tax_code": "french_standard_vat",
-        "tax_rate": 20.0,
-        "tax_description": "French standard VAT",
-        "amount_cents": 2000,
-        "amount_currency": "USD",
-        "created_at": "2023-07-06T21:01:41Z"
-      }
-    ]
-  }
+    "invoice_display_name": null,
+    "filters": null,
+    "filter_invoice_display_name": null,
+    "lago_item_id": "c65448a6-a7ed-4037-8ad0-97140fa1a46e",
+    "item_type": "Subscription",
+    "grouped_by": {}
+  },
+  "pay_in_advance": true,
+  "invoiceable": true,
+  "amount_cents": 355,
+  "amount_currency": "USD",
+  "precise_amount": "3.548387096774193",
+  "precise_total_amount": "3.903225806451612",
+  "taxes_amount_cents": 36,
+  "taxes_precise_amount": "0.3548387096774193",
+  "taxes_rate": 10.0,
+  "total_aggregated_units": null,
+  "total_amount_cents": 391,
+  "total_amount_currency": "USD",
+  "units": "1.0",
+  "description": null,
+  "precise_unit_amount": "3.55",
+  "precise_coupons_amount_cents": "0.0",
+  "events_count": null,
+  "payment_status": "pending",
+  "created_at": "2026-01-22T09:37:03Z",
+  "succeeded_at": null,
+  "failed_at": null,
+  "refunded_at": null,
+  "amount_details": {
+    "plan_amount_cents": 1000
+  },
+  "self_billed": false,
+  "pricing_unit_details": null,
+  "from_date": "2026-01-21T12:00:00+00:00",
+  "to_date": "2026-02-01T11:59:59+00:00"
 }
 ```
 
@@ -16523,8 +17346,8 @@ A grace period is the number of days during which invoices remain in `draft` sta
 
 In the illustration below, the billing period spans one month, followed by a three-day grace period.
 
-<Frame caption="Illustration of the grace period">
-  <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/grace-period-timeline-299de2425036f803f20825e8a42ab401.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=afee61fdc5888fd171d35cfc57973f8d" data-og-width="1578" width="1578" data-og-height="280" height="280" data-path="guide/invoicing/images/grace-period-timeline-299de2425036f803f20825e8a42ab401.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/grace-period-timeline-299de2425036f803f20825e8a42ab401.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=df16ae69364c04a797bbcff9f494498f 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/grace-period-timeline-299de2425036f803f20825e8a42ab401.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=0a22023b459080e1b927b684fa0f1368 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/grace-period-timeline-299de2425036f803f20825e8a42ab401.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=df8a58fcca6cc1781f0760fd6ca403de 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/grace-period-timeline-299de2425036f803f20825e8a42ab401.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=fe41663b7eaa7bd8d393476f2037dcb6 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/grace-period-timeline-299de2425036f803f20825e8a42ab401.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=8b3f8ee3c210b0d7d21297a203a00fb2 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/grace-period-timeline-299de2425036f803f20825e8a42ab401.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=825b4a493461558a36fbb28b07776b20 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Define a grace period at billing entity level[](#define-a-grace-period-at-organization-level "Direct link to heading")
@@ -16693,6 +17516,82 @@ You can override this with a custom prefix to better reflect your internal conve
 This helps maintain consistency, clarity, and professionalism across your documents.
 
 
+# Issuing date preferences
+Source: https://getlago.com/docs/guide/invoicing/invoicing-settings/issuing_date
+
+Control when your subscription invoices are dated.
+
+## Overview
+
+**By default, Lago dates invoices on the first day of the new billing period** (e.g., November 1st for an October usage and subscription).
+Some businesses need invoices dated on the last day of the billing period instead (e.g., October 31st) for accounting or compliance reasons.
+This feature gives you control over the issuing date displayed on your invoices.
+
+Note that this is configured at the **Billing Entity level** and applies to all customers under that entity. However, you can override it for specific customers when needed.
+
+## Invoice settings
+
+### Issuing date anchor
+
+This setting determines which **issuing date** appears on your invoice.
+
+| Option                              | Description                                             | For Oct. billing period      |
+| ----------------------------------- | ------------------------------------------------------- | ---------------------------- |
+| `next_period_start` (default value) | Invoice dated on first day of next billing period       | Issuing Date: **November 1** |
+| `current_period_end`                | Invoice dated on last day of the current billing period | Issuing Date: **October 31** |
+
+### Issuing date adjustment
+
+This setting controls what happens when an invoice is finalized **after** the anchor date, especially when a grace period greater than 0 is configured.
+
+| Option                                   | Description                                                |
+| ---------------------------------------- | ---------------------------------------------------------- |
+| `align_with_finalization_date` (default) | Invoice date updates to actual finalization date           |
+| `keep_anchor`                            | Invoice keeps the anchor date regardless of when finalized |
+
+## Examples
+
+The following examples show how different combinations of settings affect the invoice issuing date for a subscription with a billing period from **October 1st to October 31st**.
+The grace period determines when the invoice is finalized after the billing period ends.
+
+| Anchor               | Adjustment                     | Grace Period | Invoice Issuing Date |
+| -------------------- | ------------------------------ | ------------ | -------------------- |
+| `next_period_start`  | `align_with_finalization_date` | 0 days       | **November 1**       |
+| `next_period_start`  | `align_with_finalization_date` | 2 days       | **November 3**       |
+| `next_period_start`  | `keep_anchor`                  | 2 days       | **November 1**       |
+| `current_period_end` | `align_with_finalization_date` | 2 days       | **November 3**       |
+| `current_period_end` | `keep_anchor`                  | 2 days       | **October 31**       |
+
+## Common use cases
+
+### Standard billing (default)
+
+| Field                                          | Value                          |
+| ---------------------------------------------- | ------------------------------ |
+| `subscription_invoice_issuing_date_anchor`     | `next_period_start`            |
+| `subscription_invoice_issuing_date_adjustment` | `align_with_finalization_date` |
+
+Best for most businesses. Invoice dates reflect when invoices are actually issued, which simplifies payment tracking and customer communication.
+
+### Period-end accounting
+
+| Field                                          | Value                |
+| ---------------------------------------------- | -------------------- |
+| `subscription_invoice_issuing_date_anchor`     | `current_period_end` |
+| `subscription_invoice_issuing_date_adjustment` | `keep_anchor`        |
+
+Ideal for businesses that need invoices dated within the same month as the service period for revenue recognition or accounting compliance. Example: An October subscription invoice will always show October 31, even if generated in November.
+
+### Fixed period start dates
+
+| Field                                          | Value               |
+| ---------------------------------------------- | ------------------- |
+| `subscription_invoice_issuing_date_anchor`     | `next_period_start` |
+| `subscription_invoice_issuing_date_adjustment` | `keep_anchor`       |
+
+Useful when you want consistent invoice dates aligned to billing cycle starts, regardless of processing delays. Example: Monthly invoices always dated on the 1st of each month.
+
+
 # Net payment term
 Source: https://getlago.com/docs/guide/invoicing/invoicing-settings/net-payment-term
 
@@ -16704,8 +17603,8 @@ This term not only affects the `payment_due_date` within the invoice payload but
 To illustrate, consider the following scenario:
 a billing cycle spanning one month, accompanied by a net payment term of 15 days.
 
-<Frame caption="Illustration of the net payment term period">
-  <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/net-payment-term-timeline.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=d8fe5ed46edc6680d9bb083596c4082e" data-og-width="2516" width="2516" data-og-height="508" height="508" data-path="guide/invoicing/images/net-payment-term-timeline.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/net-payment-term-timeline.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=83090b79ae431a19a41aa8973d088b18 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/net-payment-term-timeline.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=355ecbe3a8bd2263322e34f5d01f1fa4 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/net-payment-term-timeline.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=27cc5bfae5ede41ac274ec5ff93acb15 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/net-payment-term-timeline.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=9c71bf9073b858276201686e1b409956 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/net-payment-term-timeline.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=92a0e4d5e7837c95e95e1e96e82e853a 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/net-payment-term-timeline.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=4c036c7b8056f800f98c9dfeed4653e8 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Application scope[](#application-scope "Direct link to heading")
@@ -16886,8 +17785,8 @@ If you need granularity per customer, please refer to the **custom invoice secti
     4. Enter your text (maximum 600 characters); and
     5. Click **Save information** to confirm.
 
-    <Frame caption="Adding a custom footer via the user interface">
-      <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/custom-footer-3938263609cbf988b298c69afa2812e6.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=6d29f682672b6e4127ad17fe4fa7805d" data-og-width="2880" width="2880" data-og-height="1566" height="1566" data-path="guide/invoicing/images/custom-footer-3938263609cbf988b298c69afa2812e6.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/custom-footer-3938263609cbf988b298c69afa2812e6.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=1f86afeb76856ec97389dcb7842c7c7b 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/custom-footer-3938263609cbf988b298c69afa2812e6.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=31713102d33db1c3d31b88c44acd3621 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/custom-footer-3938263609cbf988b298c69afa2812e6.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=b860ddd5851df9a9c9e53cf2332b4d81 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/custom-footer-3938263609cbf988b298c69afa2812e6.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=31a2f5c17d86a21268940a8815a2a987 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/custom-footer-3938263609cbf988b298c69afa2812e6.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=4ee8618b1f81102bb15f64a12a882455 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/custom-footer-3938263609cbf988b298c69afa2812e6.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=bd24e5a0ce5349a286618d38f0fb79f1 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -16964,48 +17863,48 @@ Let your tax provider handle the complexity of tax logic! We support integration
 
 If you'd like to explore these integrations or be connected to a provider, feel free to contact us.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card
     title="Anrok"
     icon={
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="32" height="32" rx="8" fill="#1D192F" />
-      <path
-        d="M13.8039 8.80078C15.2157 8.80078 16.6275 8.80078 18.0392 8.80078C18.1333 8.98902 18.2141 9.18401 18.3239 9.364C19.8784 11.9154 21.4329 14.466 22.9953 17.0121C23.3153 17.5333 23.6643 18.0381 24 18.5503V20.2752C23.5224 21.0904 23.0408 21.9041 22.5694 22.7231C22.4643 22.906 22.3396 22.9833 22.1098 22.981C20.9741 22.9683 19.8384 22.969 18.7035 22.981C18.4659 22.9833 18.3263 22.9165 18.2063 22.7171C17.4306 21.4316 16.6424 20.1537 15.8573 18.8735C15.8024 18.7835 15.7388 18.698 15.6792 18.6103C15.6369 18.7183 15.6471 18.8023 15.6596 18.8863C15.8518 20.2174 15.4588 21.3476 14.4133 22.2633C13.7929 22.8063 13.0384 23.0515 12.2353 23.2008H11.451C11.3898 23.1798 11.331 23.1513 11.2682 23.14C9.71686 22.8633 8.69098 22.0061 8.1898 20.5797C8.10353 20.3352 8.06196 20.0772 8 19.8252C8 19.6002 8 19.3752 8 19.1502C8.02353 19.0677 8.05647 18.986 8.0698 18.902C8.36627 16.9821 10.2886 15.5947 12.3043 15.8287C13.1318 15.9247 13.8384 16.2591 14.4965 16.7414C14.4706 16.6266 14.4298 16.5276 14.3741 16.4369C13.6165 15.1979 12.8651 13.9553 12.0925 12.7253C11.9341 12.4733 11.9004 12.2829 12.0635 12.0144C12.4384 11.4001 12.7757 10.7657 13.1176 10.1342C13.3553 9.69398 13.5757 9.24551 13.8039 8.80078Z"
-        fill="white"
-      />
-    </svg>
-  }
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect width="32" height="32" rx="8" fill="#1D192F" />
+    <path
+      d="M13.8039 8.80078C15.2157 8.80078 16.6275 8.80078 18.0392 8.80078C18.1333 8.98902 18.2141 9.18401 18.3239 9.364C19.8784 11.9154 21.4329 14.466 22.9953 17.0121C23.3153 17.5333 23.6643 18.0381 24 18.5503V20.2752C23.5224 21.0904 23.0408 21.9041 22.5694 22.7231C22.4643 22.906 22.3396 22.9833 22.1098 22.981C20.9741 22.9683 19.8384 22.969 18.7035 22.981C18.4659 22.9833 18.3263 22.9165 18.2063 22.7171C17.4306 21.4316 16.6424 20.1537 15.8573 18.8735C15.8024 18.7835 15.7388 18.698 15.6792 18.6103C15.6369 18.7183 15.6471 18.8023 15.6596 18.8863C15.8518 20.2174 15.4588 21.3476 14.4133 22.2633C13.7929 22.8063 13.0384 23.0515 12.2353 23.2008H11.451C11.3898 23.1798 11.331 23.1513 11.2682 23.14C9.71686 22.8633 8.69098 22.0061 8.1898 20.5797C8.10353 20.3352 8.06196 20.0772 8 19.8252C8 19.6002 8 19.3752 8 19.1502C8.02353 19.0677 8.05647 18.986 8.0698 18.902C8.36627 16.9821 10.2886 15.5947 12.3043 15.8287C13.1318 15.9247 13.8384 16.2591 14.4965 16.7414C14.4706 16.6266 14.4298 16.5276 14.3741 16.4369C13.6165 15.1979 12.8651 13.9553 12.0925 12.7253C11.9341 12.4733 11.9004 12.2829 12.0635 12.0144C12.4384 11.4001 12.7757 10.7657 13.1176 10.1342C13.3553 9.69398 13.5757 9.24551 13.8039 8.80078Z"
+      fill="white"
+    />
+  </svg>
+}
     href="/integrations/taxes/anrok"
   >
     Anrok is a global sales tax platform built for software companies.
 
     <br />
 
-    <Tooltip tip="This integration is maintained by Lago.">Official</Tooltip>
+    <Tooltip>Official</Tooltip>
   </Card>
 
   <Card
     title="Avalara"
     icon={
-    <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-      <rect width="32" height="32" rx="8" fill="#FC6600"/>
-      <path d="M16.0214 20.1273c1.2869-1.6428 3.2301-3.7962 5.5121-5.482l.3861.9137c-3.5132 3.2686-5.2075 6.7646-5.9024 7.9399-.356-.6005-1.0037-1.8573-1.9817-3.3158l.682-1.6086c.4805.5448 1.304 1.5528 1.304 1.5528ZM21.1346 23.9751h2.7796l-2.4536-5.8724c-.7164.7592-1.3341 1.5142-1.8745 2.2305l1.5485 3.642ZM17.244 8.01367h-.0172H14.8032h-.0171L8.11581 23.9751h2.7796l4.8258-11.3759.2274-.6177h.1287l.2274.6177 1.4284 3.3716c.6348-.6349 1.3297-1.2611 2.059-1.8488L17.244 8.01367Z" fill="white"/>
-    </svg>
-  }
+  <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <rect width="32" height="32" rx="8" fill="#FC6600"/>
+    <path d="M16.0214 20.1273c1.2869-1.6428 3.2301-3.7962 5.5121-5.482l.3861.9137c-3.5132 3.2686-5.2075 6.7646-5.9024 7.9399-.356-.6005-1.0037-1.8573-1.9817-3.3158l.682-1.6086c.4805.5448 1.304 1.5528 1.304 1.5528ZM21.1346 23.9751h2.7796l-2.4536-5.8724c-.7164.7592-1.3341 1.5142-1.8745 2.2305l1.5485 3.642ZM17.244 8.01367h-.0172H14.8032h-.0171L8.11581 23.9751h2.7796l4.8258-11.3759.2274-.6177h.1287l.2274.6177 1.4284 3.3716c.6348-.6349 1.3297-1.2611 2.059-1.8488L17.244 8.01367Z" fill="white"/>
+  </svg>
+}
     href="/integrations/taxes/avalara"
   >
     AvaTax is a cloud-based tax calculation and compliance platform that helps businesses manage their sales tax obligations.
 
     <br />
 
-    <Tooltip tip="This integration is maintained by Lago.">Official</Tooltip>
+    <Tooltip>Official</Tooltip>
   </Card>
 </CardGroup>
 
@@ -17029,7 +17928,7 @@ Before applying taxes to invoices, you need to create a tax object at the organi
 
   <Tab title="API">
     <CodeGroup>
-      ```bash  theme={"dark"}
+      ```bash theme={"dark"}
       # Create a tax object
       LAGO_URL="https://api.getlago.com"
       API_KEY="__YOUR_API_KEY__"
@@ -17081,7 +17980,7 @@ When generating invoices, taxes can be applied at various levels and will impact
 
   <Tab title="API">
     <CodeGroup>
-      ```bash  theme={"dark"}
+      ```bash theme={"dark"}
       # Add taxes to a billing entity
       curl --location --request PUT "$LAGO_URL/api/v1/billing_entities/{code}" \
         --header "Authorization: Bearer $API_KEY" \
@@ -17107,14 +18006,14 @@ When generating invoices, taxes can be applied at various levels and will impact
     3. Select the appropriate tax
     4. Repeat for multiple taxes
 
-    <Frame caption="Add a tax to a customer">
-      <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-customer.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=858cac705129182e54178be90b5fba65" data-og-width="1794" width="1794" data-og-height="1216" height="1216" data-path="guide/invoicing/images/tax-on-customer.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-customer.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=7fbcab6d630c13f1324927fa8c556efc 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-customer.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=0e276a761e70f5d475cd5e18d9084d6c 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-customer.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=f0b8116615a0179765c2806b2dd95a92 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-customer.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=180e9832664794a1430ee7eec1619de9 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-customer.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=46d1d779688b62bdd1263c7d8d5b443a 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-customer.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=6b67d7129a49c56185787d95efcaa72f 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
   <Tab title="API">
     <CodeGroup>
-      ```bash  theme={"dark"}
+      ```bash theme={"dark"}
       # Add taxes to a customer
       curl --location --request PUT "$LAGO_URL/api/v1/customers" \
         --header "Authorization: Bearer $API_KEY" \
@@ -17143,14 +18042,14 @@ When generating invoices, taxes can be applied at various levels and will impact
     5. Note: taxes set at the charge level override the plan-level taxes
     6. Save and apply the plan to customers
 
-    <Frame caption="Add a tax to a charge">
-      <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-charges.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=9e25b170b107142b91ffb9fb4d4aeb4e" data-og-width="3541" width="3541" data-og-height="2147" height="2147" data-path="guide/invoicing/images/tax-on-charges.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-charges.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=98bdc42705f940fdcd59e90e86c61fae 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-charges.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=d581f93e68d438df9f9133c0f2683ec1 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-charges.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=3ae9436459c2705a6995312a7c296e13 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-charges.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=eed7db37cb1e51cde919c756d4917b06 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-charges.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=b42239d1030688267f0a9031370879d8 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-charges.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=48beadb921359b5a2ea2e28429fa1223 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
   <Tab title="API">
     <CodeGroup>
-      ```bash  theme={"dark"}
+      ```bash theme={"dark"}
       # Add taxes to a plan and its charges
       curl --location --request POST "$LAGO_URL/api/v1/plans" \
         --header "Authorization: Bearer $API_KEY" \
@@ -17195,14 +18094,14 @@ When generating invoices, taxes can be applied at various levels and will impact
     3. In the add-on settings, click **Add a tax rate**
     4. Complete creation and apply to customers via one-off invoices
 
-    <Frame caption="Add a tax to an add-on">
-      <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-add-on.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=ff040645a6866bfecdb33b97554c013d" data-og-width="2720" width="2720" data-og-height="1800" height="1800" data-path="guide/invoicing/images/tax-on-add-on.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-add-on.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=0df0cf19d385290484cc93e7d848faf4 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-add-on.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=6538476a1cf770ecfb452ccf284b9df1 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-add-on.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=d0f65639b5520a9ad7f9c8d9611a94f7 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-add-on.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=d8c8d27675f78dbf82aa6a78b3636793 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-add-on.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=0aaa3b07980c5ca79bdab92eea3f0bff 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/tax-on-add-on.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=f5c62bc570f5a3bbaaddad2c4869deb9 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
   <Tab title="API">
     <CodeGroup>
-      ```bash  theme={"dark"}
+      ```bash theme={"dark"}
       # Add tax to an add-on
       {
         "add_on": {
@@ -17295,7 +18194,7 @@ template.
 # Preview an invoice
 Source: https://getlago.com/docs/guide/invoicing/previews
 
-With Lago, you can preview invoices even if the customer doesn't exist yet or for an active subscription, allowing you to generate dry-run invoices or estimate potential bills.
+With Lago, you can preview invoices even if the customer doesn't exist yet, for pending subscriptions, or for active subscriptions.
 
 <Info>✨ This feature is only available via a premium licence. Please contact [hello@getlago.com](mailto:hello@getlago.com) to get access to Lago Cloud and Lago Self-Hosted Premium.</Info>
 
@@ -17310,7 +18209,7 @@ Lago returns an invoice payload detailing all line items, applying any eligible 
 To create a basic invoice preview for an existing customer, provide the appropriate customer `external_id` along with the relevant subscription or plan details.
 Lago will then generate a preview invoice on-demand, prorating all line items based on the `billing_time` (calendar or anniversary).
 
-```bash  theme={"dark"}
+```bash theme={"dark"}
   LAGO_URL="https://api.getlago.com"
   API_KEY="__YOUR_API_KEY__"
 
@@ -17346,6 +18245,31 @@ This instructs Lago to calculate and prorate all line items according to the dat
       "billing_time": "calendar",
       "subscription_at": "2025-01-25"
     }'
+```
+
+## Preview an invoice for a pending subscription
+
+You can preview an invoice for a subscription that has already been created but hasn't started yet (status: `pending`). This is useful when you've created a subscription with a future `subscription_at` date and want to estimate the upcoming charges.
+
+This method supports **subscriptions with price overrides**, making it ideal when your plans use zero pricing with subscription-level overrides.
+
+```bash theme={"dark"}
+LAGO_URL="https://api.getlago.com"
+API_KEY="__YOUR_API_KEY__"
+
+curl --location --request POST "$LAGO_URL/api/v1/invoices/preview" \
+  --header "Authorization: Bearer $API_KEY" \
+  --header 'Content-Type: application/json' \
+  --data-raw '{
+    "customer": {
+      "external_id": "hooli_1234"
+    },
+    "subscriptions": {
+      "external_ids": [
+        "subscription_external_id_1"
+      ]
+    }
+  }'
 ```
 
 ## Preview for non-existing customers
@@ -17608,8 +18532,8 @@ Here is the list of restrictions on voiding invoices:
     * If the invoice was already paid, you can optionally refund the original payment method using the credit note; and
     * Alternatively, the credit note can be retained on the customer's credit note account and used toward future invoices.
 
-    <Frame caption="Refund options when voiding an invoice">
-            <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/void-invoice-refund-options.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=84cb515727a3c001ea1c70d81e121611" alt="" data-og-width="1652" width="1652" data-og-height="1882" height="1882" data-path="guide/invoicing/images/void-invoice-refund-options.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/void-invoice-refund-options.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=0baad4d702b6d7f2b5152fcd7fd726f5 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/void-invoice-refund-options.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=e979116dadde6768c5d5523ee6ad14ec 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/void-invoice-refund-options.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=7fb0e44a8a63ecf60eea5370e74cf11f 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/void-invoice-refund-options.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=8f77105c341526dfc243a319db20703a 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/void-invoice-refund-options.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=6794b06ef8c99da8d5aea555be5fcd28 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/void-invoice-refund-options.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=9577b2731263b6942cd0a2827247a44e 2500w" />
+    <Frame>
+      <img alt="" />
     </Frame>
   </Tab>
 
@@ -17654,8 +18578,8 @@ Please note the following:
   Prepaid credits, coupons, or credit note balances available at the customer level may be applied to the regenerated invoice, so ensure the final amount matches the expected total after taxes and discounts.
 </Warning>
 
-<Frame caption="Regenerate a voided invoice">
-    <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/regenerate-voided-invoice.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=63c1a9ba37adda65235d3e6746f2de39" alt="" data-og-width="2916" width="2916" data-og-height="2030" height="2030" data-path="guide/invoicing/images/regenerate-voided-invoice.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/regenerate-voided-invoice.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=63bf8c393efe33a167b08c5b54ec16d9 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/regenerate-voided-invoice.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=bc33042fa3220928e42add71b4a65d7a 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/regenerate-voided-invoice.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=ecb127de6a8cc65d8b8d5744327673ed 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/regenerate-voided-invoice.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=ad9ee460a6dae24d28387966620c35d6 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/regenerate-voided-invoice.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=a69e5e79dcc3b77628861e8a18c7312e 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/invoicing/images/regenerate-voided-invoice.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=83d7e5dda6d001e12ef8321fae759f7f 2500w" />
+<Frame>
+  <img alt="" />
 </Frame>
 
 
@@ -17722,7 +18646,7 @@ docker-compose exec api rails c
 
 Use this to simulate a dry run invoice for a future date. Ensure to specify the correct subscription `external_id` and the targeted invoice issuance date.
 
-```ruby  theme={"dark"}
+```ruby theme={"dark"}
 # In the rails Console
 subscription = Subscription.find_by(external_id: 'YOUR_SUB_EXTERNAL_ID')
 date = DateTime.parse('2024-10-01').to_i
@@ -17734,7 +18658,7 @@ BillSubscriptionJob.perform_later([subscription], date)
 
 Use this to issue an invoice immmediately. Ensure to specify the correct subscription `external_id` and the current date.
 
-```ruby  theme={"dark"}
+```ruby theme={"dark"}
 # In the rails Console
 subscription = Subscription.find_by(external_id: 'YOUR_SUB_EXTERNAL_ID')
 timestamp = DateTime.parse('2024-04-01').to_i
@@ -17745,14 +18669,14 @@ BillSubscriptionJob.perform_now([subscription], timestamp, invoicing_reason: :su
 
 Use this to remove the cache on a specific subscription.
 
-```ruby  theme={"dark"}
+```ruby theme={"dark"}
 # In the rails Console
 Subscriptions::ChargeCacheService.expire_for_subscription(Subscription.find('YOUR_SUB_EXTERNAL_ID'))
 ```
 
 To remove the cache for all subscriptions, you can alternatively use this command:
 
-```ruby  theme={"dark"}
+```ruby theme={"dark"}
 # In the rails Console
 Subscription.find_each {|s| Subscriptions::ChargeCacheService.expire_for_subscription(s) }
 ```
@@ -17761,7 +18685,7 @@ Subscription.find_each {|s| Subscriptions::ChargeCacheService.expire_for_subscri
 
 Use this to view all changes applied to a subscription and identify which membership made those changes.
 
-```ruby  theme={"dark"}
+```ruby theme={"dark"}
 # In the rails Console
 subscription = Subscription.find_by(external_id: 'YOUR_SUB_EXTERNAL_ID')
 subscription.versions
@@ -17785,13 +18709,13 @@ Postgres can do it automatically for you. Make sure the `autovacuum_analyze_scal
 and `autovacuum_vacuum_scale_factor` are set to a sensible value. We recommend `0.1` by default,
 but it depends on the size of your tables.
 
-```sql  theme={"dark"}
+```sql theme={"dark"}
 SELECT
 	current_setting('autovacuum_analyze_scale_factor') AS analyze_scale_factor,
 	current_setting('autovacuum_vacuum_scale_factor') AS vacuum_scale_factor;
 ```
 
-```sql  theme={"dark"}
+```sql theme={"dark"}
 ALTER SYSTEM
 SET autovacuum_vacuum_scale_factor = 0.1;
 
@@ -17825,7 +18749,7 @@ SET (
 
 If you send events in batch, it's recommended to analyze and vacuum your `events` table after the batch is ingested:
 
-```sql  theme={"dark"}
+```sql theme={"dark"}
 VACUUM ANALYZE events;
 ```
 
@@ -17836,7 +18760,7 @@ before and after billing day.
 
 Check the state of your tables with the following query.
 
-```sql  theme={"dark"}
+```sql theme={"dark"}
 SELECT
     s.relname AS tname,
     (
@@ -17896,7 +18820,7 @@ Docker is the easiest way to get started with the self-hosted version of Lago.
 
 You can start using the app by using a one-click Docker command in a shell:
 
-```shell  theme={"dark"}
+```shell theme={"dark"}
 docker run -d --name lago -p 80:80 -p 3000:3000 getlago/lago:latest
 ```
 
@@ -17909,7 +18833,7 @@ at [http://localhost:3000](http://localhost:3000).
 
 If you don't want to use the one-click Docker command, you can start using Lago by running more advanced commands in a shell:
 
-```shell  theme={"dark"}
+```shell theme={"dark"}
 # Get the code
 git clone https://github.com/getlago/lago.git
 
@@ -18023,6 +18947,9 @@ application. You can override them to customise your setup.
 | `LAGO_USE_GCS`                        | false                                          | Use Google Cloud Service Cloud Storage for file storage, ⚠️ If you want to use GCS, you have to pass the credentials json key file to the api and worker service |
 | `LAGO_GCS_PROJECT`                    |                                                | GCS Project name                                                                                                                                                 |
 | `LAGO_GCS_BUCKET`                     |                                                | GCS Bucket Name                                                                                                                                                  |
+| `LAGO_GCS_CREDENTIALS`                |                                                | GCS Credentials JSON file path                                                                                                                                   |
+| `LAGO_GCS_IAM`                        | false                                          | GCS IAM Authentication                                                                                                                                           |
+| `LAGO_GCS_GSA_EMAIL`                  |                                                | GCS GSA Email                                                                                                                                                    |
 | `LAGO_PDF_URL`                        | [http://pdf:3000](http://pdf:3000)             | PDF Service URL on your infrastructure                                                                                                                           |
 | `LAGO_DISABLE_SIGNUP`                 |                                                | Disable Sign up when running Lago in self-hosted                                                                                                                 |
 | `LAGO_RAILS_STDOUT`                   | true                                           | Set to true to activate logs on containers                                                                                                                       |
@@ -18075,7 +19002,7 @@ two options to achieve this:
 
 * Run the script to generate the certificates
 
-```shell  theme={"dark"}
+```shell theme={"dark"}
 # Be sure to be in your lago folder
 ./extra/init-selfsigned.sh
 
@@ -18085,7 +19012,7 @@ two options to achieve this:
 * Take a look at the `docker-compose.yml` file and uncomment the part related to
   the Self-Signed certificate
 
-```yaml  theme={"dark"}
+```yaml theme={"dark"}
 volumes:
   - ./extra/nginx-selfsigned.conf:/etc/nginx/conf.d/default.conf
   - ./extra/ssl/nginx-selfsigned.crt:/etc/ssl/certs/nginx-selfsigned.crt
@@ -18096,7 +19023,7 @@ volumes:
 * You can now start the front application with a self signed SSL certificate
   support
 
-```shell  theme={"dark"}
+```shell theme={"dark"}
 docker-compose up front
 ```
 
@@ -18110,7 +19037,7 @@ docker-compose up front
 * Uncomment the [Cerbot lines](https://github.com/getlago/lago/blob/5d08b61f4f174f445b258005854aaa18ca049266/docker-compose.yml#L124-L129) in the `docker-compose.yml` file
 * Run the following script
 
-```shell  theme={"dark"}
+```shell theme={"dark"}
 # Be sure to be in your lago folder
 ./extra/init-letsencrypt.sh
 
@@ -18121,7 +19048,7 @@ docker-compose up front
 * Take a look at the `docker-compose.yml` file and uncomment all the parts
   related to the Let's Encrypt's support
 
-```yaml  theme={"dark"}
+```yaml theme={"dark"}
 command:
   '/bin/sh -c ''while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx
   -g "daemon off;"'''
@@ -18134,7 +19061,7 @@ volumes:
 
 * You can now start the front application with the signed certificate support
 
-```shell  theme={"dark"}
+```shell theme={"dark"}
 docker-compose up front
 ```
 
@@ -18183,16 +19110,20 @@ You have to set these variables to use AWS S3 Compatible Endpoints.
 
 You have to set those variables to use GCS Cloud Storage.
 
-| Name               | Description                                        |
-| ------------------ | -------------------------------------------------- |
-| `LAGO_USE_GCS`     | Set to "true" if you want to use GCS Cloud Storage |
-| `LAGO_GCS_PROJECT` | GCS Project name                                   |
-| `LAGO_GCS_BUCKET`  | GCS Bucket name                                    |
+| Name                   | Description                                        |
+| ---------------------- | -------------------------------------------------- |
+| `LAGO_USE_GCS`         | Set to "true" if you want to use GCS Cloud Storage |
+| `LAGO_GCS_PROJECT`     | GCS Project name                                   |
+| `LAGO_GCS_BUCKET`      | GCS Bucket name                                    |
+| `LAGO_GCS_CREDENTIALS` | GCS Credentials JSON file path                     |
+| `LAGO_GCS_IAM`         | GCS IAM Authentication                             |
+| `LAGO_GCS_GSA_EMAIL`   | GCS GSA Email                                      |
 
 In the `docker-compose.yml` file, you must uncomment the lines and pass the
 correct GCS credentials json file.
 
-```yaml  theme={"dark"}
+```yaml theme={"dark"}
+# Example using GCS Credentials File
 api:
   volumes:
     - gcs_keyfile.json:/app/gcs_keyfile.json
@@ -18237,7 +19168,7 @@ Lago provides versatile hosting options: on your local computer, a dedicated ser
 
 ## Officially Supported
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Docker" href="./docker">
     Install Lago on your infrastructure with Docker Compose for easy deployment.
   </Card>
@@ -18321,7 +19252,7 @@ won't be tracked anymore.
 
 ### billable\_metric\_created[](#billable%5Fmetric%5Fcreated "Direct link to heading")
 
-```javascript  theme={"dark"}
+```javascript theme={"dark"}
 Analytics.track(
   user_id: 'membership/f37a6b2e-1e79-4710-b0e2-9e451b532461',
   event: 'billable_metric_created',
@@ -18340,7 +19271,7 @@ Analytics.track(
 
 ### customer\_created[](#customer%5Fcreated "Direct link to heading")
 
-```javascript  theme={"dark"}
+```javascript theme={"dark"}
 Analytics.track(
   user_id: 'membership/4ad5b91f-2a42-4a58-9786-6c07fa03a3d4',
   event: 'customer_created',
@@ -18357,7 +19288,7 @@ Analytics.track(
 
 ### invoice\_created[](#invoice%5Fcreated "Direct link to heading")
 
-```javascript  theme={"dark"}
+```javascript theme={"dark"}
 Analytics.track(
   user_id: 'membership/f37a6b2e-1e79-4710-b0e2-9e451b532461',
   event: 'invoice_created',
@@ -18380,7 +19311,7 @@ Source: https://getlago.com/docs/guide/lago-self-hosted/update-instance
 Lago's speed is rapidly increasing—remarkably fast. Billing updates occur frequently, precisely every 1 or 2 weeks. Over the course of a year, we've completed over 70 releases, culminating in approximately 30 comprehensive product updates. Maintaining the currency of your self-hosted instance is paramount for optimal billing engine functionality and alignment with the newest features. Below is a guide to achieve this seamlessly, all within the span of just 5 seconds.
 
 <Frame type="glass">
-  <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/updates.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=d38fea58f8a50765387cf4ef3bf4c802" data-og-width="1456" width="1456" data-og-height="910" height="910" data-path="guide/images/updates.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/updates.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=3da91620d58ee73aca4be811564c7a46 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/updates.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=9d1ec7af9d9cc41332332df63000f098 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/updates.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=d79101aa013272ae7fcbcf75d179fe1a 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/updates.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=d865cff5b1aa90d5ee926b005ecc249d 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/updates.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=13a85f563c9b9ea0e83800a537ceb719 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/updates.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=0c3c60bb0c9982df30497b9d8a1dc1c1 2500w" />
+  <img />
 </Frame>
 
 ## Why update your Lago self-hosted instance?
@@ -18422,7 +19353,7 @@ downloaded the instance.
 
 In the repository directory, execute the following command to check the current Lago version:
 
-```bash  theme={"dark"}
+```bash theme={"dark"}
 git describe --tags --abbrev=0
 ```
 
@@ -18438,7 +19369,7 @@ Check the migration guides for (bridge releases)\[[https://getlago.com/docs/guid
 
 Still in the repository directory, execute the following command to pull the latest release from the remote repository:
 
-```bash  theme={"dark"}
+```bash theme={"dark"}
 # Fetch all tags
 git fetch --tags
 
@@ -18451,7 +19382,7 @@ This command fetches the most recent release from the remote repository and merg
 <Note>
   To fetch the code of a specif release, use the following command:
 
-  ```bash  theme={"dark"}
+  ```bash theme={"dark"}
   git checkout v1.29.0 # Replace with the right version number
   ```
 </Note>
@@ -18461,7 +19392,7 @@ This command fetches the most recent release from the remote repository and merg
 Once the code is up-to-date, navigate to the directory containing your Docker Compose file.
 Execute the following command to start the updated instance:
 
-```bash  theme={"dark"}
+```bash theme={"dark"}
 docker compose up
 ```
 
@@ -18606,7 +19537,7 @@ The `group_properties` object is deprecated and will be removed from `plans.char
 
 Please update all integrations currently using `plans.charges.group_properties` (see example below).
 
-```diff  theme={"dark"}
+```diff theme={"dark"}
 {
   "plans": {
     …
@@ -18670,7 +19601,7 @@ The `lago_group_id` field is deprecated and will be removed from `fees` on July 
 
 Please update all integrations currently using `fees.lago_group_id` or `invoice.fees.lago_group_id` (see example below).
 
-```diff  theme={"dark"}
+```diff theme={"dark"}
 {
   "fees": {
     …
@@ -18694,7 +19625,7 @@ The `charges_usage.groups` field is deprecated and will be removed from `custome
 
 Please update all integrations currently using `customer_usage.charges_usage.groups` (see example below).
 
-```diff  theme={"dark"}
+```diff theme={"dark"}
 {
   "customer_usage": {
     …
@@ -18741,7 +19672,7 @@ Sending `event.external_subscription_id` will be mandatory starting July 9, 2024
 
 Please update all integrations currently using `POST /events` (see example below).
 
-```diff  theme={"dark"}
+```diff theme={"dark"}
 {
   "event": {
     "transaction_id": "__UNIQUE_ID__",
@@ -18838,7 +19769,7 @@ One of the changes concerns zero fees, which have no accounting value but still 
 We know that some of our users have been relying on the `invoice.fees.from_date` and `invoice.fees.to_date` fields linked to zero fees for certain internal processes.
 Therefore, we have introduced a new `invoice.billing_periods` field to provide you with the dates of the billing period for each type of charge (see example below).
 
-```diff  theme={"dark"}
+```diff theme={"dark"}
 {
   "webhook_type": "invoice.created",
   "object_type": "invoice",
@@ -18998,7 +19929,7 @@ We're introducing the `billing_entity_id` field to fees to support new features 
 
 1. Install the new version of Lago (v1.25.0)
 2. Open the Rails console on your API server:
-   ```bash  theme={"dark"}
+   ```bash theme={"dark"}
    rails c
    ```
 3. Run the following commands in sequence:
@@ -19009,7 +19940,7 @@ We're introducing the `billing_entity_id` field to fees to support new features 
 
    a. Populate organization\_id from invoices:
 
-   ```ruby  theme={"dark"}
+   ```ruby theme={"dark"}
    DatabaseMigrations::PopulateFeesWithOrganizationFromInvoiceJob.perform_later
    ```
 
@@ -19021,7 +19952,7 @@ We're introducing the `billing_entity_id` field to fees to support new features 
 
    You can verify that the job is fully executed by running:
 
-   ```ruby  theme={"dark"}
+   ```ruby theme={"dark"}
    Fee.unscoped.where(organization_id: nil).where.not(invoice_id: nil).count
    ```
 
@@ -19029,7 +19960,7 @@ We're introducing the `billing_entity_id` field to fees to support new features 
 
    b. Populate organization\_id from subscriptions:
 
-   ```ruby  theme={"dark"}
+   ```ruby theme={"dark"}
    DatabaseMigrations::PopulateFeesWithOrganizationFromSubscriptionJob.perform_later
    ```
 
@@ -19041,7 +19972,7 @@ We're introducing the `billing_entity_id` field to fees to support new features 
 
    You can verify that the job is fully executed by running:
 
-   ```ruby  theme={"dark"}
+   ```ruby theme={"dark"}
    Fee.unscoped.where(organization_id: nil).where.not(subscription_id: nil).count
    ```
 
@@ -19049,7 +19980,7 @@ We're introducing the `billing_entity_id` field to fees to support new features 
 
    c. Verify that all fees have organization\_id:
 
-   ```ruby  theme={"dark"}
+   ```ruby theme={"dark"}
    Fee.unscoped.where(organization_id: nil).count
    ```
 
@@ -19057,7 +19988,7 @@ We're introducing the `billing_entity_id` field to fees to support new features 
 
    d. Populate billing\_entity\_id:
 
-   ```ruby  theme={"dark"}
+   ```ruby theme={"dark"}
    DatabaseMigrations::PopulateFeesWithBillingEntityIdJob.perform_later
    ```
 
@@ -19069,7 +20000,7 @@ We're introducing the `billing_entity_id` field to fees to support new features 
 
    e. Verify that all fees have billing\_entity\_id:
 
-   ```ruby  theme={"dark"}
+   ```ruby theme={"dark"}
    Fee.where(billing_entity_id: nil).count
    ```
 
@@ -19124,7 +20055,7 @@ We're introducing a data migration to ensure that `billing_entity_sequential_id`
 
 1. Install the new version of Lago (v1.28.1)
 2. Open the Rails console on your API server:
-   ```bash  theme={"dark"}
+   ```bash theme={"dark"}
    rails c
    ```
 3. Run the following command:
@@ -19133,7 +20064,7 @@ We're introducing a data migration to ensure that `billing_entity_sequential_id`
      All invoices are processed in background jobs, with 1000 invoices per batch. You can monitor the progress in the Sidekiq console by checking the batch number argument in the job details.
    </Note>
 
-   ```ruby  theme={"dark"}
+   ```ruby theme={"dark"}
    DatabaseMigrations::PopulateInvoicesBillingEntitySequentialIdJob.perform_later
    ```
 
@@ -19145,7 +20076,7 @@ We're introducing a data migration to ensure that `billing_entity_sequential_id`
 
    You can verify that the job is fully executed by running:
 
-   ```ruby  theme={"dark"}
+   ```ruby theme={"dark"}
    Invoice
      .where("organization_sequential_id != 0 AND billing_entity_sequential_id IS NULL")
      .or(Invoice.where("organization_sequential_id != 0 AND billing_entity_sequential_id != organization_sequential_id"))
@@ -19373,7 +20304,7 @@ These changes are made to increase the performannces of the application and to e
 2. Open a shell (bash) on your API server
 3. Run the migration task:
 
-```bash  theme={"dark"}
+```bash theme={"dark"}
 bundle exec rails migrations:fill_organization_id
 ```
 
@@ -19388,7 +20319,7 @@ The task will:
   The task will monitor the values and give you the number of remaing records.
 </Note>
 
-```bash  theme={"dark"}
+```bash theme={"dark"}
 ##################################
 Starting filling organization_id
 
@@ -19543,7 +20474,7 @@ These changes are made to:
 2. Open a shell (bash) on your API server
 3. Run the unified upgrade task:
 
-```bash  theme={"dark"}
+```bash theme={"dark"}
 bundle exec rails upgrade:perform_required_jobs
 ```
 
@@ -19571,21 +20502,26 @@ The Lago Team
 # Create add-ons
 Source: https://getlago.com/docs/guide/one-off-invoices/create-add-ons
 
-Add-ons are a useful feature that allows you to add a fixed charge that is not recurring to one-off invoices.  This can be used to apply one-time fees such as a setup fee, one-time payment, or customer success fee.
+Add-ons let you apply one-time fixed fees to plans or one-off invoices. They are commonly used for setup fees, one-off charges, or customer success fees.
+
+Add-ons represent non-recurring fixed charges. Once created, they can be:
+
+* Added to a plan as a [fixed charge](/guide/plans/charges/fixed-charges), or
+* Applied directly to a customer through a [one-off invoice](/guide/one-off-invoices/create-one-off-invoices)
 
 <Tabs>
   <Tab title="Dashboard">
-    To create an add-on through the user interface, follow these steps:
+    To create an add-on from the dashboard:
 
-    1. Access the **"Add-ons"** section via the side menu;
-    2. Click **"Add an add-on"**;
-    3. Choose a name, a code, and a description (optional) for your add-on;
-    4. Define its default value and currency (these values can be overwritten when creating the invoice); and
-    5. Click **"Add add-on"** to confirm.
+    1. Open the **Add-ons** section from the side menu
+    2. Click **Add an add-on**
+    3. Enter a name, code, and optional description
+    4. Define the default amount and currency *(these values can be overridden when issuing an invoice)*
+    5. Click **Add add-on** to confirm
   </Tab>
 
   <Tab title="API">
-    ```bash Create an add-on for "Setup Fees" theme={"dark"}
+    ```bash Create a Setup Fee add-on  theme={"dark"}
     LAGO_URL="https://api.getlago.com"
     API_KEY="__YOUR_API_KEY__"
 
@@ -19605,14 +20541,19 @@ Add-ons are a useful feature that allows you to add a fixed charge that is not r
   </Tab>
 </Tabs>
 
-In the add-ons section, you can edit or delete add-ons by clicking the ellipsis icon.
-Editing allows you to modify the name, code, description, and settings of the add-on, while deleting removes the add-on
-from the list (this action cannot be undone). Please note that you cannot edit or delete an add-on that has already been applied
-to a customer.
+## Use an add-on
 
-To assign an add-on to a customer, you need to create a one-off invoice.
-Simply select the add-on(s) you wish to apply from the add-ons section while creating the invoice, and the fixed charge
-will be added to the total amount due.
+Once created, an add-on can be:
+
+* Added to a **plan** as a fixed charge, or
+* Applied to a **specific customer** through a one-off invoice
+
+## Manage add-ons
+
+From the **Add-ons** section, you can edit or delete existing add-ons using the ellipsis menu.
+
+* **Editing** lets you update the name, code, description, and default values
+* **Deleting** permanently removes the add-on from all plans and subscriptions where it is used *(this action cannot be undone)*
 
 
 # Issue one-off invoices
@@ -19640,8 +20581,8 @@ Now that you have started the flow to create a one-off invoice, it's time to add
     5. Edit the description of the add-on displayed on the invoice; and
     6. Click **"Create"** to issue your one-off invoice.
 
-    <Frame caption="Adding add-ons to create a one-off invoice">
-      <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/one-off-invoices/images/one-off-invoices.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=55b9364f4527e1f460c01e30b79dc0c9" data-og-width="3456" width="3456" data-og-height="2161" height="2161" data-path="guide/one-off-invoices/images/one-off-invoices.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/one-off-invoices/images/one-off-invoices.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=a61de1aca48cea947f471f1493b5c693 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/one-off-invoices/images/one-off-invoices.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=55cbe0bbf8d69e16edd5d17f950ccfc8 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/one-off-invoices/images/one-off-invoices.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=ff0fe66f511e662f5dbdbfad43234861 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/one-off-invoices/images/one-off-invoices.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=5e24385ff259885fe3bde167b9802712 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/one-off-invoices/images/one-off-invoices.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=35f328231fe22ea1742863b39a32d63a 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/one-off-invoices/images/one-off-invoices.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=4703cf7483a4462bba763a83b6168abe 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -19736,9 +20677,8 @@ Pre-authorization can fail for several reasons:
 
 * Invalid card details;
 * Insufficient funds; and
-* 3D Secure authentication requirement.
 
-Please note that if 3D Secure authentication is required, it may prevent subscription creation.
+Please note that if 3DS is required during pre-authorization, the card is considered valid and the subscription is created.
 
 ## Understanding the limitations
 
@@ -19757,7 +20697,7 @@ You must manually specify the amount to authorize, as the final amount (includin
 
 ### Request format
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "authorization": {
     "amount_cents": 100,    // Amount in cents (e.g., 100 = 1 EUR)
@@ -19771,7 +20711,7 @@ You must manually specify the amount to authorize, as the final amount (includin
 
 ### Response format
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "status": 422,
   "error": "Unprocessable Entity",
@@ -19795,7 +20735,7 @@ You must manually specify the amount to authorize, as the final amount (includin
 # Payment providers integrations
 Source: https://getlago.com/docs/guide/payments/payment-providers
 
-Automatically collect payments from Payement Providers by using native integrations or webhook messages.
+Automatically collect payments from Payment Providers by using native integrations or webhook messages.
 
 ## Native payment providers integrations
 
@@ -19809,62 +20749,62 @@ Lago provides native, first-class integrations with leading payment providers. W
 
 Below is the exhaustive list of payment providers natively supported by Lago:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card
     title="GoCardless"
     icon={
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="32" height="32" rx="8" fill="#F1F252" />
-      <g clip-path="url(#clip0_4694_575)">
-        <path
-          d="M8 16.3853C8.00653 11.7542 11.5828 8 16.276 8C18.0772 8 19.0896 8.2923 19.0896 8.2923L22.0812 14.3849L22.0551 14.411L18.2013 12.1265C15.969 10.794 14.3458 10.1016 13.0263 10.1555C11.6334 10.1816 10.7957 11.3002 10.7957 12.925C10.8463 17.0777 14.803 22.1905 18.7255 22.1905C20.3307 22.1905 21.1651 21.6745 21.655 21.0507L15.8351 14.6821V14.6544H23.822C23.9314 15.2259 23.9918 15.804 24 16.3853C24 21.0458 20.4254 24.8 16.0114 24.8C11.5975 24.8 8 21.0458 8 16.3853Z"
-          fill="#1C1B18"
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect width="32" height="32" rx="8" fill="#F1F252" />
+    <g clip-path="url(#clip0_4694_575)">
+      <path
+        d="M8 16.3853C8.00653 11.7542 11.5828 8 16.276 8C18.0772 8 19.0896 8.2923 19.0896 8.2923L22.0812 14.3849L22.0551 14.411L18.2013 12.1265C15.969 10.794 14.3458 10.1016 13.0263 10.1555C11.6334 10.1816 10.7957 11.3002 10.7957 12.925C10.8463 17.0777 14.803 22.1905 18.7255 22.1905C20.3307 22.1905 21.1651 21.6745 21.655 21.0507L15.8351 14.6821V14.6544H23.822C23.9314 15.2259 23.9918 15.804 24 16.3853C24 21.0458 20.4254 24.8 16.0114 24.8C11.5975 24.8 8 21.0458 8 16.3853Z"
+        fill="#1C1B18"
+      />
+    </g>
+    <defs>
+      <clipPath id="clip0_4694_575">
+        <rect
+          width="16"
+          height="16.8"
+          fill="white"
+          transform="translate(8 8)"
         />
-      </g>
-      <defs>
-        <clipPath id="clip0_4694_575">
-          <rect
-            width="16"
-            height="16.8"
-            fill="white"
-            transform="translate(8 8)"
-          />
-        </clipPath>
-      </defs>
-    </svg>
-  }
+      </clipPath>
+    </defs>
+  </svg>
+}
     href="/integrations/payments/gocardless-integration"
   >
     GoCardless is the global leader of direct debits bank payments.
 
     <br />
 
-    <Tooltip tip="This integration is maintained by Lago.">Official</Tooltip>
+    <Tooltip>Official</Tooltip>
   </Card>
 
   <Card
     title="Stripe Payments"
     icon={
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="32" height="32" rx="8" fill="#6772E5" />
-      <path
-        d="M14.8624 12.7648C14.8624 12.0792 15.4268 11.8154 16.3617 11.8154C17.7021 11.8154 19.3953 12.2199 20.7358 12.9407V8.80877C19.2719 8.22859 17.8256 8 16.3617 8C12.7811 8 10.4 9.86379 10.4 12.976C10.4 17.8286 17.1023 17.055 17.1023 19.1474C17.1023 19.9561 16.3969 20.2199 15.4092 20.2199C13.9453 20.2199 12.0756 19.622 10.594 18.8132V22.9979C12.2343 23.7012 13.8923 24 15.4092 24C19.0778 24 21.6 22.1891 21.6 19.0418C21.5824 13.8023 14.8624 14.7341 14.8624 12.7648Z"
-        fill="white"
-      />
-    </svg>
-  }
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect width="32" height="32" rx="8" fill="#6772E5" />
+    <path
+      d="M14.8624 12.7648C14.8624 12.0792 15.4268 11.8154 16.3617 11.8154C17.7021 11.8154 19.3953 12.2199 20.7358 12.9407V8.80877C19.2719 8.22859 17.8256 8 16.3617 8C12.7811 8 10.4 9.86379 10.4 12.976C10.4 17.8286 17.1023 17.055 17.1023 19.1474C17.1023 19.9561 16.3969 20.2199 15.4092 20.2199C13.9453 20.2199 12.0756 19.622 10.594 18.8132V22.9979C12.2343 23.7012 13.8923 24 15.4092 24C19.0778 24 21.6 22.1891 21.6 19.0418C21.5824 13.8023 14.8624 14.7341 14.8624 12.7648Z"
+      fill="white"
+    />
+  </svg>
+}
     href="/integrations/payments/stripe-integration"
   >
     Stripe is a suite of APIs powering online payment processing, especially
@@ -19872,28 +20812,28 @@ Below is the exhaustive list of payment providers natively supported by Lago:
 
     <br />
 
-    <Tooltip tip="This integration is maintained by Lago.">Official</Tooltip>
+    <Tooltip>Official</Tooltip>
   </Card>
 
   <Card
     title="Adyen"
     icon={
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="32" height="32" rx="8" fill="#0ABF53" />
-      <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M24 11.1908V24H11.209C9.44433 24 8 22.5536 8 20.7864V17.2051C8 15.4378 9.44433 13.9915 11.209 13.9915H14.6705V19.0877C14.6705 19.5924 15.0828 20.0058 15.5875 20.0058H17.3294V12.9123C17.3294 12.4076 16.9171 11.9942 16.4125 11.9942H8.22924V8H20.791C22.5563 8 24 9.44635 24 11.1908Z"
-        fill="white"
-      />
-    </svg>
-  }
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect width="32" height="32" rx="8" fill="#0ABF53" />
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M24 11.1908V24H11.209C9.44433 24 8 22.5536 8 20.7864V17.2051C8 15.4378 9.44433 13.9915 11.209 13.9915H14.6705V19.0877C14.6705 19.5924 15.0828 20.0058 15.5875 20.0058H17.3294V12.9123C17.3294 12.4076 16.9171 11.9942 16.4125 11.9942H8.22924V8H20.791C22.5563 8 24 9.44635 24 11.1908Z"
+      fill="white"
+    />
+  </svg>
+}
     href="/integrations/payments/adyen-integration"
   >
     Adyen is an omnichannel payment processing company providing multiple ways
@@ -19901,49 +20841,49 @@ Below is the exhaustive list of payment providers natively supported by Lago:
 
     <br />
 
-    <Tooltip tip="This integration is maintained by Lago.">Official</Tooltip>
+    <Tooltip>Official</Tooltip>
   </Card>
 
   <Card
     title="Cashfree Payments"
     icon={
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"  width="32" height="32"><path fill="#1f074f" d="M10.41-.02h19.11a11.3 11.3 0 0 1 10.46 10.43v19.11a11.31 11.31 0 0 1-10.43 10.46h-19.1A11.3 11.3 0 0 1-.02 29.55v-19.1A11.3 11.3 0 0 1 10.41-.02Zm0 0"></path><path fill="#04aa60" d="M15.57 26.9h-.29V13.06a3.65 3.65 0 0 1 3.07-3.18c4.65-.02 9.3-.02 13.95-.02a3.59 3.59 0 0 1-3.2 3.6c-3.4.02-6.8.02-10.2.02 0 3.37 0 6.74-.02 10.11a3.65 3.65 0 0 1-2.03 2.96c-.4.2-.83.3-1.28.33Zm0 0"></path><path fill="#faaf16" d="M10.67 31.73h-.29V18.06c.16-1.5.94-2.56 2.34-3.15.41-.16.84-.23 1.28-.2.02 4.66 0 9.34-.05 14a3.58 3.58 0 0 1-3.28 3.02ZM20.05 14.7h7.8v.23a3.64 3.64 0 0 1-2.14 3.09c-.36.14-.73.23-1.12.27h-4.54V14.7Zm0 0"></path></svg>
-  }
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"  width="32" height="32"><path fill="#1f074f" d="M10.41-.02h19.11a11.3 11.3 0 0 1 10.46 10.43v19.11a11.31 11.31 0 0 1-10.43 10.46h-19.1A11.3 11.3 0 0 1-.02 29.55v-19.1A11.3 11.3 0 0 1 10.41-.02Zm0 0"></path><path fill="#04aa60" d="M15.57 26.9h-.29V13.06a3.65 3.65 0 0 1 3.07-3.18c4.65-.02 9.3-.02 13.95-.02a3.59 3.59 0 0 1-3.2 3.6c-3.4.02-6.8.02-10.2.02 0 3.37 0 6.74-.02 10.11a3.65 3.65 0 0 1-2.03 2.96c-.4.2-.83.3-1.28.33Zm0 0"></path><path fill="#faaf16" d="M10.67 31.73h-.29V18.06c.16-1.5.94-2.56 2.34-3.15.41-.16.84-.23 1.28-.2.02 4.66 0 9.34-.05 14a3.58 3.58 0 0 1-3.28 3.02ZM20.05 14.7h7.8v.23a3.64 3.64 0 0 1-2.14 3.09c-.36.14-.73.23-1.12.27h-4.54V14.7Zm0 0"></path></svg>
+}
     href="/integrations/payments/cashfree-integration"
   >
     Cashfree Payments is India's leading payments and API banking company.
 
     <br />
 
-    <Tooltip tip="This integration is community-maintained, and therefore Lago provides only limited support.">Community</Tooltip>
+    <Tooltip>Community</Tooltip>
   </Card>
 
   <Card
     title="Moneyhash"
     icon={
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 41 41" width="32" height="32"><g fill="#0C1E3D"><path d="M40.28 8.94a8 8 0 0 0-8-8h-24a8 8 0 0 0-8 8v13.88h13.9l1.04-3.45h-3.7l.57-2.55h3.74l1.57-5.38h3.23l-1.58 5.38h4.82l1.58-5.38h3.24l-1.57 5.38h13.16V8.94Z"></path><path d="M40.28 19.37H26.5l-1.03 3.45h3.8l-.58 2.55h-3.83l-1.48 5.07h-3.25l1.5-5.07h-4.8l-1.52 5.07H12.1l1.5-5.07H.28v7.57a8 8 0 0 0 8 8h24a8 8 0 0 0 8-8V19.37Z"></path><path d="m18.46 19.37-1 3.45h4.79l1-3.45h-4.79Z"></path></g></svg>
-  }
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 41 41" width="32" height="32"><g fill="#0C1E3D"><path d="M40.28 8.94a8 8 0 0 0-8-8h-24a8 8 0 0 0-8 8v13.88h13.9l1.04-3.45h-3.7l.57-2.55h3.74l1.57-5.38h3.23l-1.58 5.38h4.82l1.58-5.38h3.24l-1.57 5.38h13.16V8.94Z"></path><path d="M40.28 19.37H26.5l-1.03 3.45h3.8l-.58 2.55h-3.83l-1.48 5.07h-3.25l1.5-5.07h-4.8l-1.52 5.07H12.1l1.5-5.07H.28v7.57a8 8 0 0 0 8 8h24a8 8 0 0 0 8-8V19.37Z"></path><path d="m18.46 19.37-1 3.45h4.79l1-3.45h-4.79Z"></path></g></svg>
+}
     href="/integrations/payments/moneyhash-integration"
   >
     Moneyhash is the leading payment infrastructure software in Africa and the Middle East.
 
     <br />
 
-    <Tooltip tip="This integration is community-maintained, and therefore Lago provides only limited support.">Community</Tooltip>
+    <Tooltip>Community</Tooltip>
   </Card>
 
   <Card
     title="Custom payment integration"
     icon={
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 41" width="32" height="32"><rect width="41" height="41" fill="#0C1E3D" rx="8"/><text x="50%" y="50%" dy="0.35em" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle">?</text></svg>
-  }
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 41" width="32" height="32"><rect width="41" height="41" fill="#0C1E3D" rx="8"/><text x="50%" y="50%" dy="0.35em" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle">?</text></svg>
+}
     href="/integrations/payments/custom-payment-integration"
   >
     This guide helps you integrate Lago with a custom payment provider. Build your own integration by following these steps.
 
     <br />
 
-    <Tooltip tip="This integration is community-maintained, and therefore Lago provides only limited support.">Community</Tooltip>
+    <Tooltip>Community</Tooltip>
   </Card>
 </CardGroup>
 
@@ -19972,8 +20912,8 @@ To re-trigger the payment process through the user interface:
 4. Click the **ellipsis icon** on the right; and
 5. Select **"Resend for collection"**.
 
-<Frame caption="Payment retry via the invoice list">
-    <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/payments/images/retry-payment.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=3011a96c5a8a32b985c2c804989274a4" alt="" data-og-width="1524" width="1524" data-og-height="772" height="772" data-path="guide/payments/images/retry-payment.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/payments/images/retry-payment.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=5c72b1739fc9506fedfef43384778826 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/payments/images/retry-payment.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=ed3c63b06851ba05096f50ea2d43066b 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/payments/images/retry-payment.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=f000ce95a1ff6ce387d351f9cbc8916e 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/payments/images/retry-payment.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=583ef6126a16151731404f20d25f1c2a 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/payments/images/retry-payment.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=1764608516b903d31a79277956c6f60f 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/payments/images/retry-payment.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=b53b806e8ce1482449fbf463445204fd 2500w" />
+<Frame>
+  <img alt="" />
 </Frame>
 
 In the **"Outstanding"** and **"Overdue"** tabs of the **"Invoices"** section, you can also click **"Resend for collection"** in the upper right corner to re-trigger the payment process for all invoices in the respective lists.
@@ -20070,8 +21010,8 @@ Both partial and full payments can be recorded; however, an invoice's payment st
     5. Specify the payment amount (partial or full); and
     6. Confirm to record the payment.
 
-    <Frame caption="Record a manual payment">
-      <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/record-payment.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=b14f4093843aa685d9ce97a61a41ba56" data-og-width="2952" width="2952" data-og-height="2094" height="2094" data-path="guide/payments/images/record-payment.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/record-payment.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=fc0d01e283db089fa31fdba588b5bd4c 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/record-payment.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=971b00b2d7d261d967758d4aa043ddcf 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/record-payment.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=0b1c13d5897f2d53a60e0a9db749177e 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/record-payment.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=6bc625f308e3a18acf12cad4343f25c2 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/record-payment.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=918a5961c019022ecbfdbd122a096077 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/record-payment.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=6c08f4d84f8181c2132585d263d81575 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -20116,8 +21056,8 @@ billed in arrears.
     You can easily manage this billing settings through the user interface. Within the UI, you will find options to customize
     the invoice cadence by setting a charge as invoiced in arrears.
 
-    <Frame caption="Define a charge paid in arrears">
-      <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/charge-in-arrears-1d16763a9e4212018386d79e400eea2a.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=fbedaa93617058529d9a24565e9c1f60" data-og-width="1638" width="1638" data-og-height="1200" height="1200" data-path="guide/plans/images/charge-in-arrears-1d16763a9e4212018386d79e400eea2a.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/charge-in-arrears-1d16763a9e4212018386d79e400eea2a.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=e6c12b9ba4894ad4b8b8ca5973b38624 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/charge-in-arrears-1d16763a9e4212018386d79e400eea2a.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=c05b42b1337026da4012263d867c3640 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/charge-in-arrears-1d16763a9e4212018386d79e400eea2a.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=a39ca9ff2c19285454bd11b4abf15d6f 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/charge-in-arrears-1d16763a9e4212018386d79e400eea2a.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=865fbd2ceeea4b3821ca978c9ff20684 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/charge-in-arrears-1d16763a9e4212018386d79e400eea2a.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=ca6bbac67eb7b237a7e6c1dbc56f656d 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/charge-in-arrears-1d16763a9e4212018386d79e400eea2a.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=63f119945540e59539b705ef6455620e 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -20175,8 +21115,8 @@ where you need to bill customers instantly for usage-based actions, such as new 
     You can easily manage this billing settings through the user interface. Within the UI, you will find options to customize
     the invoice cadence by setting a charge as invoiced in arrears.
 
-    <Frame caption="Define a charge paid in arrears">
-      <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/charge-in-advance-5a13fc011d78a058f7767519c5817961.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=98670066a3fbbc6ae69a0cbc82d72ef4" data-og-width="1638" width="1638" data-og-height="1194" height="1194" data-path="guide/plans/images/charge-in-advance-5a13fc011d78a058f7767519c5817961.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/charge-in-advance-5a13fc011d78a058f7767519c5817961.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=7f1d5a2048e7e01096205f2c36ea0edd 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/charge-in-advance-5a13fc011d78a058f7767519c5817961.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=ca7499beb0102f82577793774e3ddb2b 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/charge-in-advance-5a13fc011d78a058f7767519c5817961.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=0c35480e7c43fe989c3c81cd9f981b02 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/charge-in-advance-5a13fc011d78a058f7767519c5817961.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=681ac1a8e1ddd752b8b0f5fa0e196a4a 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/charge-in-advance-5a13fc011d78a058f7767519c5817961.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=49354a70b8d942e1c0de8a63dd9d6dec 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/charge-in-advance-5a13fc011d78a058f7767519c5817961.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=cacd77fdc1d2e8123db1285a4c17b9cf 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -20248,7 +21188,7 @@ You can edit this custom price code and even overwrite it for a particular subsc
 
 Here is an example of a custom price model defining tiers across multiple properties:
 
-```json  theme={"dark"}
+```json theme={"dark"}
 "properties": {
     "custom_properties": {
         "ranges": [
@@ -20354,8 +21294,8 @@ calls and finally, \$0.10 for any additional unit.
 
 Please refer to the tooltip in the user interface for more information.
 
-<Frame caption="Configuration of the graduated charge model">
-  <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/graduated-charge-pricing-model-65dd3d428a7a5aaeb486e851adf029e7.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=f4678931b9017bddff6575a7d7ddb85c" data-og-width="1258" width="1258" data-og-height="828" height="828" data-path="guide/plans/images/graduated-charge-pricing-model-65dd3d428a7a5aaeb486e851adf029e7.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/graduated-charge-pricing-model-65dd3d428a7a5aaeb486e851adf029e7.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=d6ffd7e23bf5408233a661183e1c92cf 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/graduated-charge-pricing-model-65dd3d428a7a5aaeb486e851adf029e7.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=9b5987cbfa8bf5f6e27c38513567d62d 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/graduated-charge-pricing-model-65dd3d428a7a5aaeb486e851adf029e7.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=e2f03da153f0ec912b1522245885ff75 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/graduated-charge-pricing-model-65dd3d428a7a5aaeb486e851adf029e7.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=8741b420d2698c0d336a6687966e4b61 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/graduated-charge-pricing-model-65dd3d428a7a5aaeb486e851adf029e7.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=27cd0f385c5f63202859e8ffaf880d95 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/graduated-charge-pricing-model-65dd3d428a7a5aaeb486e851adf029e7.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=eccc9d317513d91e3553082f055c2bbf 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 
@@ -20397,8 +21337,8 @@ Let's take back the example of our API company. You may want to charge \$5 per
 100 units and offer the first 100 units. In this example, 201 units would cost
 \$0 (first 100 units) + \$5 (next 100 units) + \$5 (last unit) = \$10.
 
-<Frame caption="Configuration of the package charge model">
-  <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/package-pricing-charge-model-ff1836a27a037aaf14819bbdb70c836b.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=feecb48a5c55da3cdefb77b022c2d980" data-og-width="1284" width="1284" data-og-height="836" height="836" data-path="guide/plans/images/package-pricing-charge-model-ff1836a27a037aaf14819bbdb70c836b.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/package-pricing-charge-model-ff1836a27a037aaf14819bbdb70c836b.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=cfaf8145e9738baac7d8def7647ac2c5 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/package-pricing-charge-model-ff1836a27a037aaf14819bbdb70c836b.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=e3a7676054aaba7301c696cff19812f3 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/package-pricing-charge-model-ff1836a27a037aaf14819bbdb70c836b.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=80cdd1802f97544d2b0d9e92ea416e05 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/package-pricing-charge-model-ff1836a27a037aaf14819bbdb70c836b.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=b67196797d961f1d0a67b979c6cce55c 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/package-pricing-charge-model-ff1836a27a037aaf14819bbdb70c836b.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=49c6f9c692a2e319d24a248642eae47b 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/package-pricing-charge-model-ff1836a27a037aaf14819bbdb70c836b.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=0f45faf9756a131ee2aaf9c4b7e1d462 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 
@@ -20436,8 +21376,8 @@ units still apply. In the illustration below for instance, the first 3 events or
 <Info>**Premium feature ✨**: only users with a premium license can define a per-transaction spending minimum and maximum for the percentage pricing model.
 Please **[contact us](mailto:hello@getlago.com)** to get access to Lago Cloud and Lago Self-Hosted Premium.</Info>
 
-<Frame caption="Configuration of the percentage charge model">
-  <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/percentage-model-b2657bc04ac57c27cfe3bc3b830fd8dc.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=f88d747a5cfbf0dd3865507908d083d1" data-og-width="2380" width="2380" data-og-height="1616" height="1616" data-path="guide/plans/images/percentage-model-b2657bc04ac57c27cfe3bc3b830fd8dc.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/percentage-model-b2657bc04ac57c27cfe3bc3b830fd8dc.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=345e1e6d121a4587f8681f0ba2c74e0d 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/percentage-model-b2657bc04ac57c27cfe3bc3b830fd8dc.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=31c810fa90986722985c252298dbd713 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/percentage-model-b2657bc04ac57c27cfe3bc3b830fd8dc.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=453887e828e7bacab8b220bbf7cb547e 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/percentage-model-b2657bc04ac57c27cfe3bc3b830fd8dc.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=0b5865ea99ff6b4a7114c4365a5ce6b0 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/percentage-model-b2657bc04ac57c27cfe3bc3b830fd8dc.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=6f57fcdf334d0094d234c8632c8ef7a8 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/percentage-model-b2657bc04ac57c27cfe3bc3b830fd8dc.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=99782516dee5156893a52ffd89e7ff24 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 Consider the following list of events:
@@ -20509,8 +21449,8 @@ When a billable metric has defined filters, establish a set of filters to refine
     4. Set a price for this combination of filters; and
     5. Optionally, provide an Invoice display name.
 
-    <Frame caption="Set a price for a combination of filters">
-      <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/charge-with-filters.gif?s=b79807a228011c0b0fe23a78090bd5bb" data-og-width="2000" width="2000" data-og-height="1240" height="1240" data-path="guide/plans/images/charge-with-filters.gif" data-optimize="true" data-opv="3" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -20580,8 +21520,8 @@ When a billable metric has filters defined, set a default price on the charge le
     2. Add a default price;
     3. Set a price for this default price
 
-    <Frame caption="Set a default price for a charge handling groups">
-      <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/charge-with-groups-default-price.gif?s=efefaaa607a097f19162f735b447b353" data-og-width="2000" width="2000" data-og-height="1240" height="1240" data-path="guide/plans/images/charge-with-groups-default-price.gif" data-optimize="true" data-opv="3" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -20626,6 +21566,82 @@ When a billable metric has filters defined, set a default price on the charge le
 </Tip>
 
 
+# Fixed charge
+Source: https://getlago.com/docs/guide/plans/charges/fixed-charges
+
+Fixed charges are recurring fees tied to add-ons. They are billed independently of usage events and applied as a fixed amount on invoices.
+
+## Overview of charges[](#overview-of-charges "Direct link to heading")
+
+Fixed charges let you bill recurring fees that are not based on usage.
+They are tied to [add-ons](/guide/one-off-invoices/create-add-ons) and sit outside the event stream.
+
+Common examples include platform fees, seat licenses, or support packages.
+Unlike usage-based charges, fixed charges are billed as a fixed recurring amount.
+
+The units defined on the fixed charge are used by Lago to generate the fee on the invoice.
+
+## Charge models and billing behavior[](#charge-models "Direct link to heading")
+
+Fixed charges support a limited set of pricing options compared to [usage-based charges](/guide/plans/charges/usage-based-charges).
+They can use:
+
+* [Standard](/guide/plans/charges/charge-models/standard) or [graduated](/guide/plans/charges/charge-models/graduated) pricing models
+
+They can be configured to:
+
+* Be billed [in advance or in arrears](/guide/plans/charges/arrears-vs-advance)
+* Be billed [in full or prorated](/guide/plans/charges/prorated-vs-full)
+
+## Currency[](#charges-currency "Direct link to heading")
+
+All fixed charges use the same currency as the plan, ensuring consistency across invoices.
+
+## Trial period[](#trial-period-exclusion "Direct link to heading")
+
+Trial periods apply only to the plan’s base amount.
+Fixed charges are always billed, even during a trial.
+
+## Decimals precision[](#number-of-decimals "Direct link to heading")
+
+Fixed charges can be defined with up to 15 decimal places (for example: \$0.000123456789123).
+Fixed charges are invoiced in `amount_cents`, so Lago automatically rounds values when generating invoices (for example, USD 1102 `amount_cents` = \$11.02).
+
+## Edit a fixed charge[](#edit-fixed-charge "Direct link to heading")
+
+When editing a fixed charge, you can edit the amount and the unit already defined. You can choose when unit changes should apply:
+
+* **Apply now**: The new unit value is applied immediately. If the fixed charge is billed in advance, this may trigger invoice issuance.
+* **Apply at next billing period**: The new unit value is applied at the start of the subscription’s next billing period.
+
+This gives you control over whether changes impact current or future billing.
+
+<Info>
+  Editing a fixed charge unit may generate invoices when the charge is billed in advance and changes are applied immediately.\
+  Customers will receive an invoice reflecting this update.
+</Info>
+
+## Delete a fixed charge[](#delete-fixed-charge "Direct link to heading")
+
+You can delete a fixed-charge even if the plan is associated to active [subscriptions](/guide/subscriptions/assign-plan).
+
+Once deleted and saved:
+
+* The fixed-charge is immediately removed from all linked subscriptions
+* It is removed from all `draft` invoices.
+
+However, the fixed-charge will still appear on invoices `finalized` before the deletion.
+
+<Frame>
+  <img />
+</Frame>
+
+## Invoice display name[](#invoice-display-names "Direct link to heading")
+
+You can customize, during plan creation or edition, how a fixed-charge appears on invoices by setting an `invoice display name`.
+This name overrides the default fixed-charge name and is shown everywhere invoices are displayed.
+
+
 # Group keys
 Source: https://getlago.com/docs/guide/plans/charges/grouping
 
@@ -20657,13 +21673,13 @@ To define a pricing group key, you need to:
 
 Let's define a pricing group key called `regions` for a charge used to calculate Storage costs for your customers.
 
-<Frame caption="Define a pricing group key">
-  <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/pricing-group-key.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=b0573b6610633157243b8e56cbe9cea8" data-og-width="692" width="692" data-og-height="613" height="613" data-path="guide/plans/images/pricing-group-key.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/pricing-group-key.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=e7937975c5d443a96d76393304385989 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/pricing-group-key.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=34ee3c52d7aac0b84d67682bd5365208 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/pricing-group-key.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=f168d44f4dfe80cb3d5ae2342ea2b2d7 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/pricing-group-key.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=0321f0ba58c2308b509803366afdf184 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/pricing-group-key.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=b3a5635a17d06f9a70fe3b29b14a51b3 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/pricing-group-key.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=36599b9620a019525db7ab843d48262d 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 By sending usage events with a `regions` property, you can include any number of region values. Lago will automatically group and aggregate usage based on the values provided in your events.
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "event": {
     "transaction_id": "{{$randomUUID}}",
@@ -20677,8 +21693,8 @@ By sending usage events with a `regions` property, you can include any number of
 }
 ```
 
-<Frame caption="Calculate usage with pricing group values">
-  <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/pricing-group-usage.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=26c60d1276bd5a80e8e5bc95fb25eef4" data-og-width="786" width="786" data-og-height="566" height="566" data-path="guide/plans/images/pricing-group-usage.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/pricing-group-usage.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=abe26c08c32b182ef49a62d061c21bdd 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/pricing-group-usage.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=809fd1dda1f58ea6bfe0b856a6474f9c 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/pricing-group-usage.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=2b6085591b5e03c1fb69788c4a99f56a 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/pricing-group-usage.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=40a4a052647e9931f2153afe9325d88b 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/pricing-group-usage.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=65552da825392aee7c266217e810a6c5 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/pricing-group-usage.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=08e6626196280fcc0d2b39ac0272f9ef 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 
@@ -20717,8 +21733,8 @@ The invoice generated consolidates paid fees, is marked as paid, and will not be
     4. Define this charge as **paid in advance**; and
     5. Select the option that best suits your needs from the three available choices.
 
-    <Frame caption="Configure the charge invoicing strategy">
-      <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/instant-charge.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=9832a70b51e79b6cf7c7737dd6ea56c8" data-og-width="1296" width="1296" data-og-height="2248" height="2248" data-path="guide/plans/images/instant-charge.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/instant-charge.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=1a3d2dc05eb60c0df3ab13ad581e3269 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/instant-charge.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=f9dd5f7173ea126f4bd7d4b7cf9a4d9a 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/instant-charge.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=169252331f0085d36a3cda0484e107c5 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/instant-charge.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=c3ba619cb830fa854ee702f914888c26 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/instant-charge.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=1482b62d7ae6057ef045ff3715cde870 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/instant-charge.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=a739d2cb67658e736318d3b670f5483f 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -20867,78 +21883,6 @@ recurring charges and their implications within the Lago system.
     </CodeGroup>
   </Tab>
 </Tabs>
-
-
-# Overview
-Source: https://getlago.com/docs/guide/plans/charges/overview
-
-In addition to the price of the plan, you can charge your customers for usage.
-
-## Overview of charges[](#overview-of-charges "Direct link to heading")
-
-To incorporate usage-based charges into a plan, you can utilize existing billable metrics.
-This enables you to offer "pay-as-you-go" features.
-For instance, you can create charges based on the number of API calls, the
-number of active users, transactions, compute time, etc. These additional
-charges relate to the [billable metrics](/guide/billable-metrics/create-billable-metrics) defined previously.
-Here are some important details to consider regarding usage-based charges:
-
-## Currency of charges[](#charges-currency "Direct link to heading")
-
-All charges are denominated in the same currency as the plan to ensure consistency and transparency.
-
-## Trial period exclusions[](#trial-period-exclusion "Direct link to heading")
-
-It's important to note that the trial period exclusively applies to the base amount of the plan and does not extend
-to usage-based charges.
-
-## Number of decimals[](#number-of-decimals "Direct link to heading")
-
-Lago allows you create charges with up to fifteen decimals (e.g.
-\$0.000123456789123).
-
-Please note that charges are invoiced in `amount_cents`. Therefore, Lago
-automatically rounds prices (e.g. USD 1102 `amount_cents` = \$11.02).
-
-## Delete a charge[](#delete-charge "Direct link to heading")
-
-You may delete a charge included in a plan associated with existing
-[subscriptions](/guide/subscriptions/assign-plan).
-
-If you do so and save the change:
-
-* The charge will be immediately removed from all subscriptions linked to this
-  plan;
-* The charge will no longer be included in the
-  [current usage](/api-reference/customer-usage/customer-usage-object) of the customers
-  concerned; and
-* The charge will be immediately removed from all `draft` invoices associated
-  with these subscriptions.
-
-However, the charge will still be included in all `finalized` invoices
-associated with these subscriptions.
-
-<Info>
-  Deleting a charge does not delete the events associated with the corresponding
-  billable metric. If later you decide to add the charge back into the plan, the
-  events received before the deletion may be taken into account in the billing
-  process (depending on the limits of the billing period).
-</Info>
-
-<Frame caption="How to delete a charge">
-  <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/charges-delete-e8b82428bc7fe73f40f419fb6ee88dab.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=74bbf2112c864a65b69f1d230bc03c92" data-og-width="1636" width="1636" data-og-height="884" height="884" data-path="guide/plans/images/charges-delete-e8b82428bc7fe73f40f419fb6ee88dab.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/charges-delete-e8b82428bc7fe73f40f419fb6ee88dab.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=f1e007296dc4581ad8d07c7004f16b45 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/charges-delete-e8b82428bc7fe73f40f419fb6ee88dab.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=0bb99a3472f521b3ef820fdb0cd10c86 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/charges-delete-e8b82428bc7fe73f40f419fb6ee88dab.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=b446d8ef8f857cc62e47c78b2488b147 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/charges-delete-e8b82428bc7fe73f40f419fb6ee88dab.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=52a80e1e35f94b7e097259e758d2d1ae 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/charges-delete-e8b82428bc7fe73f40f419fb6ee88dab.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=0885dfcd14af6496b94ecc85b3387b2b 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/charges-delete-e8b82428bc7fe73f40f419fb6ee88dab.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=49202dc37f9892abf01bfa5057f1c589 2500w" />
-</Frame>
-
-## Update invoice display names[](#invoice-display-names "Direct link to heading")
-
-When creating or updating a charge within our system, you have the flexibility to customize the way it
-appears by overriding its default name. This can be achieved by defining an `invoice display name` for the charge.
-By doing so, the newly specified name will take precedence and be reflected across all relevant contexts,
-including prominently on the invoice template.
-
-<Frame caption="How to modify the invoice display name">
-  <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/invoice-display-name.gif?s=7ea713a92d62bb341b2d17c543901a3a" data-og-width="1158" width="1158" data-og-height="720" height="720" data-path="guide/plans/images/invoice-display-name.gif" data-optimize="true" data-opv="3" />
-</Frame>
 
 
 # Prorated vs Full
@@ -21163,6 +22107,80 @@ To define a charge spending minimum:
 </Tabs>
 
 
+# Usage based charge
+Source: https://getlago.com/docs/guide/plans/charges/usage-based-charges
+
+Usage-based charges let you bill customers based on actual consumption. They are tied to billable metrics and calculated from usage events collected during the billing period.
+
+## Overview of charges[](#overview-of-charges "Direct link to heading")
+
+Usage-based charges allow you to add pay-as-you-go pricing to a plan.
+Each charge is linked to an existing [billable metric](/guide/billable-metrics/create-billable-metrics) and calculated from the events collected during the billing period.
+
+Common examples include API calls, active users, transactions, or compute time.
+Pricing follows the charge configuration (tiers, aggregation, proration, etc.), ensuring invoices reflect real usage rather than a fixed amount.
+
+## Charge models and billing behavior[](#charge-models "Direct link to heading")
+
+Charges support a set of pricing options compared to the fixed charges.
+They can use:
+
+* [All charge models](/guide/plans/charges/charge-models).
+
+They can be configured to:
+
+* Be billed [in advance or in arrears](/guide/plans/charges/arrears-vs-advance);
+* Be billed [in full or prorated](/guide/plans/charges/prorated-vs-full);
+* Apply [spending minimums](/guide/plans/charges/spending-minimum) depending on the charge model;
+* Support [filters](/guide/plans/charges/charges-with-filters) to control which events are included in usage calculations;
+* Be grouped by [presentation keys](/guide/plans/charges/grouping) to display related usage together on invoices;
+* Be marked as [invoiceable or not](/guide/plans/charges/invoiceable-vs-noninvoiceable) when billed in advance, to avoid generating too many invoices from usage events.
+
+## Currency[](#charges-currency "Direct link to heading")
+
+All usage-based charges use the same currency as the plan, ensuring consistency across invoices.
+
+## Trial period[](#trial-period-exclusion "Direct link to heading")
+
+The trial period applies only to the plan’s base amount and does not cover usage-based charges.
+Usage events recorded during the trial are always considered and billed.
+
+## Decimals precision[](#number-of-decimals "Direct link to heading")
+
+Charges can be defined with up to 15 decimal places (for example: \$0.000123456789123).
+Charges are invoiced in `amount_cents`, so Lago automatically rounds values when generating invoices (for example, USD 1102 `amount_cents` = \$11.02).
+
+## Delete a charge[](#delete-charge "Direct link to heading")
+
+You can delete a charge even if the plan is associated to active [subscriptions](/guide/subscriptions/assign-plan).
+
+Once deleted and saved:
+
+* The charge is immediately removed from all linked subscriptions
+* It no longer appears in customer [current usage](/api-reference/customer-usage/customer-usage-object); and
+* It is removed from all `draft` invoices.
+
+However, the charge will still appear on invoices `finalized` before the deletion.
+
+<Info>
+  Deleting a charge does not delete the underlying events.\
+  If the charge is later re-added, previously collected events may be included in billing, depending on the billing period limits.
+</Info>
+
+<Frame>
+  <img />
+</Frame>
+
+## Invoice display name[](#invoice-display-names "Direct link to heading")
+
+You can customize, during plan creation or edition, how a charge appears on invoices by setting an `invoice display name`.
+This name overrides the default charge name and is shown everywhere invoices are displayed.
+
+<Frame>
+  <img />
+</Frame>
+
+
 # Commitments
 Source: https://getlago.com/docs/guide/plans/commitment
 
@@ -21210,8 +22228,8 @@ Conversely, if spending exceeds the minimum commitment, Lago will generate an in
     3. Define a **minimum commitment**; and
     4. Click **"Add plan"** to confirm.
 
-    <Frame caption="Define a minimum commitment">
-      <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/minimum-commitment-on-plan.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=7c4d75015b62584cea23adf8fb51c4f0" data-og-width="1702" width="1702" data-og-height="1408" height="1408" data-path="guide/payments/images/minimum-commitment-on-plan.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/minimum-commitment-on-plan.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=35bda87f1ea6af29729f7fe975f0af9d 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/minimum-commitment-on-plan.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=29b48e8f7da42bff66fd32efeae9071f 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/minimum-commitment-on-plan.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=a9d5612f2503bb65a63f2f375d69144e 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/minimum-commitment-on-plan.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=627421fb9618453e1bf232e8a6877e5d 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/minimum-commitment-on-plan.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=e3805690b2b5212615ff368994e11294 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/minimum-commitment-on-plan.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=fb4089f730a6a97a9af524127726df27 2500w" />
+    <Frame>
+      <img />
     </Frame>
 
     <Info>
@@ -21297,8 +22315,8 @@ Conversely, if spending exceeds the minimum commitment, Lago will generate an in
     2. Choose to assign a new plan or edit an existing subscription; and
     3. Override the default plan's minimum commitment with a new value.
 
-    <Frame caption="Overwriting a minimum commitment">
-      <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/overwriting-minimum-commitment.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=bd591710ee82e36b1cd1c95a7988360b" data-og-width="2914" width="2914" data-og-height="1338" height="1338" data-path="guide/payments/images/overwriting-minimum-commitment.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/overwriting-minimum-commitment.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=9b793845b05bbb8f457aba41528a83a2 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/overwriting-minimum-commitment.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=47e9b7992a2302e56ce9a3b8b4538441 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/overwriting-minimum-commitment.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=d47a5dc39679571621a1bdaac53f8838 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/overwriting-minimum-commitment.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=d47de28e5292730eba32eab0df197339 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/overwriting-minimum-commitment.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=73384b4647de667caa61cbfd5bead370 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/overwriting-minimum-commitment.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=407115f985ddef2d0f65ea0d9a3f041f 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -21468,39 +22486,52 @@ Source: https://getlago.com/docs/guide/plans/overview
 
 If Billable metrics are made to measure customer usage, Plans are made to apply prices to this usage.
 
-Note that you don't need to define a Billable metric to create a Plan. However,
-if you have usage feature to charge, the price of your Billable metrics is
-defined inside each Plan. Make sure to understand
-[how to create a Billable metric](/guide/billable-metrics/create-billable-metrics) first.
+## Plan overview[](#plan-overview "Direct link to heading")
+
+A plan defines how your products are priced and billed.
+It groups pricing, billing cadence, feature access, commitments, and invoicing rules. Plans often reflect your pricing page, but can also model custom or enterprise agreements.
+To bill a customer, a plan must be assigned to a subscription.
 
 ## Plan structure[](#plan-structure "Direct link to heading")
 
-A Plan defines the features your customers have access to, the prices paid to
-access them and the invoicing cadence. In order to invoice a Customer with Lago,
-you must assign a Plan to a customer.
-
-**But first, let's define the structure of a Plan:**
-
 <Tabs>
   <Tab title="Dashboard">
-    1. [The Plan basic informations](#plan-structure)
-       * A Plan `name`
-       * A Plan `code`
-       * A Plan `description`
-    2. [The Plan model](/guide/plans/plan-model)
-       * A Plan `interval`
-       * A Plan base `amount` with the `currency`
-       * Boolean to define if the Plan is paid **in advance** or **in arrears**
-       * A Plan `trial period` in days
-       * Taxes applied to this plan
-    3. [The additional charges](/guide/plans/charges) for this Plan (any Billable metrics
-       that have been created)
-       * A Charge `model`
-       * A Charge `amount` and its `currency` (automatically inherited from the
-         currency of the Plan)
-       * A Charge spending minimum
-       * Boolean to define if the Charge is paid **in advance** or **in arrears**
-       * Taxes applied to this charge (overriding the one defined on the plan)
+    A plan defines:
+
+    * The features customers can access
+    * The prices they pay
+    * How and when they are invoiced
+
+    To invoice a customer with Lago, a plan must be assigned to a subscription.
+    A plan is composed of the following elements:
+
+    1. [Basic informations](#plan-structure)
+       * Plan `name`
+       * Plan `code`
+       * Plan `description`
+       * Taxes applied at the plan level
+    2. [Plan model](/guide/plans/plan-model)
+       * Billing `interval` (monthly, yearly, etc.)
+       * Base amount and currency (subscription fee)
+       * Whether the subscription fee is billed `in advance` or `in arrears`
+       * Trial period (in days), applied to the subscription fees
+    3. [Fixed charges (add-ons)](/guide/plans/charges/fixed-charges)
+       * Charge `model`
+       * Pricing `properties` defined by the charge model
+       * Whether the fixed charge is billed `in advance` or `in arrears`
+       * Taxes applied to the fixed charge (overriding plan-level taxes if needed)
+    4. [Usage-based charges (billable metrics)](/guide/plans/charges/usage-based-charges)
+       * Charge `model`
+       * Pricing `properties` defined by the charge model
+       * Optional spending minimum
+       * Whether usage charge is billed `in advance` or `in arrears`
+       * Taxes applied to the charge (overriding plan-level taxes if needed)
+    5. [Minimum commitment](/guide/plans/commitment)
+       * A minimum amount applied across all invoices generated by the plan within a billing period.
+    6. [Entitlements](/guide/entitlements)
+       * Feature access and additional metadata attached to the plan.
+    7. [Progressive billing](/guide/plans/progressive-billing)
+       * Automatically triggers invoices when cumulative usage reaches predefined thresholds.
   </Tab>
 
   <Tab title="API">
@@ -21514,42 +22545,337 @@ you must assign a Plan to a customer.
       --header 'Content-Type: application/json' \
       --data-raw '{
          "plan": {
-            "name": "Premium",
-            "code": "premium",
+            "lago_id": "1a901a90-1a90-1a90-1a90-1a901a901a90",
+            "name": "Startup",
+            "invoice_display_name": "Startup plan",
+            "created_at": "2023-06-27T19:43:42Z",
+            "code": "startup",
             "interval": "monthly",
-            "description": "Premium plan for SMB customers",
-            "amount_cents": 50000,
+            "description": "",
+            "amount_cents": 10000,
             "amount_currency": "USD",
-            "trial_period": 3.0,
+            "trial_period": 5,
             "pay_in_advance": true,
-            "bill_charges_monthly": true,
-            "tax_codes": ["french_standard_vat"],
+            "bill_charges_monthly": null,
+            "bill_fixed_charges_monthly": null,
+            "minimum_commitment": {
+               "lago_id": "1a901a90-1a90-1a90-1a90-1a901a901a90",
+               "plan_code": "premium",
+               "amount_cents": 100000,
+               "invoice_display_name": "Minimum Commitment (C1)",
+               "interval": "monthly",
+               "created_at": "2022-04-29T08:59:51Z",
+               "updated_at": "2022-04-29T08:59:51Z",
+               "taxes": [
+               {
+                  "lago_id": "1a901a90-1a90-1a90-1a90-1a901a901a90",
+                  "name": "TVA",
+                  "code": "french_standard_vat",
+                  "description": "French standard VAT",
+                  "rate": 20,
+                  "created_at": "2023-07-06T14:35:58Z"
+               }
+               ]
+            },
             "charges": [
                {
-               "billable_metric_id": "__BILLABLE_METRIC_ID__",
-               "charge_model": "graduated",
-               "pay_in_advance": false,
+               "lago_id": "1a901a90-1a90-1a90-1a90-1a901a901a91",
+               "lago_billable_metric_id": "1a901a90-1a90-1a90-1a90-1a901a901a91",
+               "billable_metric_code": "requests",
+               "created_at": "2023-06-27T19:43:42Z",
+               "charge_model": "package",
                "invoiceable": true,
+               "invoice_display_name": "Setup",
+               "pay_in_advance": false,
+               "regroup_paid_fees": null,
+               "prorated": false,
+               "min_amount_cents": 3000,
+               "properties": {
+                  "amount": "30",
+                  "free_units": 100,
+                  "package_size": 1000
+               },
+               "filters": []
+               },
+               {
+               "lago_id": "1a901a90-1a90-1a90-1a90-1a901a901a92",
+               "lago_billable_metric_id": "1a901a90-1a90-1a90-1a90-1a901a901a92",
+               "billable_metric_code": "cpu",
+               "created_at": "2023-06-27T19:43:42Z",
+               "charge_model": "graduated",
+               "invoiceable": true,
+               "invoice_display_name": "Setup",
+               "pay_in_advance": false,
+               "regroup_paid_fees": null,
+               "prorated": false,
                "min_amount_cents": 0,
-               "tax_codes": ["french_standard_vat"],
                "properties": {
                   "graduated_ranges": [
                      {
-                        "to_value": 10,
-                        "from_value": 0,
-                        "flat_amount": "0",
-                        "per_unit_amount": "0.001"
+                     "from_value": 0,
+                     "to_value": 10,
+                     "flat_amount": "10",
+                     "per_unit_amount": "0.5"
                      },
                      {
-                        "to_value": null,
-                        "from_value": 11,
-                        "flat_amount": "0",
-                        "per_unit_amount": "0.0005"
+                     "from_value": 11,
+                     "to_value": null,
+                     "flat_amount": "0",
+                     "per_unit_amount": "0.4"
+                     }
+                  ]
+               },
+               "filters": []
+               },
+               {
+               "lago_id": "1a901a90-1a90-1a90-1a90-1a901a901a93",
+               "lago_billable_metric_id": "1a901a90-1a90-1a90-1a90-1a901a901a93",
+               "billable_metric_code": "seats",
+               "created_at": "2023-06-27T19:43:42Z",
+               "charge_model": "standard",
+               "invoiceable": true,
+               "invoice_display_name": "Setup",
+               "pay_in_advance": true,
+               "regroup_paid_fees": null,
+               "prorated": false,
+               "min_amount_cents": 0,
+               "properties": {},
+               "filters": [
+                  {
+                     "invoice_display_name": "Europe",
+                     "properties": {
+                     "amount": "10"
+                     },
+                     "values": {
+                     "region": ["Europe"]
+                     }
+                  },
+                  {
+                     "invoice_display_name": "USA",
+                     "properties": {
+                     "amount": "5"
+                     },
+                     "values": {
+                     "region": ["USA"]
+                     }
+                  },
+                  {
+                     "invoice_display_name": "Africa",
+                     "properties": {
+                     "amount": "8"
+                     },
+                     "values": {
+                     "region": ["Africa"]
+                     }
+                  }
+               ]
+               },
+               {
+               "lago_id": "1a901a90-1a90-1a90-1a90-1a901a901a94",
+               "lago_billable_metric_id": "1a901a90-1a90-1a90-1a90-1a901a901a94",
+               "billable_metric_code": "storage",
+               "created_at": "2023-06-27T19:43:42Z",
+               "charge_model": "volume",
+               "invoiceable": true,
+               "invoice_display_name": "Setup",
+               "pay_in_advance": false,
+               "regroup_paid_fees": null,
+               "prorated": false,
+               "min_amount_cents": 0,
+               "properties": {
+                  "volume_ranges": [
+                     {
+                     "from_value": 0,
+                     "to_value": 100,
+                     "flat_amount": "0",
+                     "per_unit_amount": "0"
+                     },
+                     {
+                     "from_value": 101,
+                     "to_value": null,
+                     "flat_amount": "0",
+                     "per_unit_amount": "0.5"
+                     }
+                  ]
+               },
+               "filters": []
+               },
+               {
+               "lago_id": "1a901a90-1a90-1a90-1a90-1a901a901a95",
+               "lago_billable_metric_id": "1a901a90-1a90-1a90-1a90-1a901a901a95",
+               "billable_metric_code": "payments",
+               "created_at": "2023-06-27T19:43:42Z",
+               "charge_model": "percentage",
+               "invoiceable": false,
+               "invoice_display_name": "Setup",
+               "pay_in_advance": true,
+               "regroup_paid_fees": "invoice",
+               "prorated": false,
+               "min_amount_cents": 0,
+               "properties": {
+                  "rate": "1",
+                  "fixed_amount": "0.5",
+                  "free_units_per_events": 5,
+                  "free_units_per_total_aggregation": "500"
+               },
+               "filters": []
+               }
+            ],
+            "fixed_charges": [
+               {
+               "lago_id": "1a901a90-1a90-1a90-1a90-1a901a901a90",
+               "lago_add_on_id": "2b802b80-2b80-2b80-2b80-2b802b802b80",
+               "code": "setup_fee",
+               "invoice_display_name": "Setup Fee",
+               "add_on_code": "setup",
+               "created_at": "2026-01-15T10:30:00Z",
+               "charge_model": "standard",
+               "pay_in_advance": true,
+               "prorated": false,
+               "properties": {
+                  "amount": "500"
+               },
+               "units": 1,
+               "lago_parent_id": null,
+               "taxes": [
+                  {
+                     "lago_id": "3c703c70-3c70-3c70-3c70-3c703c703c70",
+                     "name": "VAT",
+                     "code": "vat_20",
+                     "rate": 20,
+                     "description": "Standard VAT rate",
+                     "applied_to_organization": true,
+                     "created_at": "2026-01-01T00:00:00Z"
+                  }
+               ]
+               },
+               {
+               "lago_id": "4d604d60-4d60-4d60-4d60-4d604d604d60",
+               "lago_add_on_id": "5e505e50-5e50-5e50-5e50-5e505e505e50",
+               "code": "support_tier",
+               "invoice_display_name": "Support Tier",
+               "add_on_code": "premium_support",
+               "created_at": "2026-01-15T10:30:00Z",
+               "charge_model": "graduated",
+               "pay_in_advance": false,
+               "prorated": true,
+               "properties": {
+                  "graduated_ranges": [
+                     {
+                     "from_value": 0,
+                     "to_value": 10,
+                     "per_unit_amount": "5",
+                     "flat_amount": "200"
+                     },
+                     {
+                     "from_value": 11,
+                     "to_value": null,
+                     "per_unit_amount": "1",
+                     "flat_amount": "300"
+                     }
+                  ]
+               },
+               "units": 1,
+               "lago_parent_id": null,
+               "taxes": []
+               },
+               {
+               "lago_id": "6f406f40-6f40-6f40-6f40-6f406f406f40",
+               "lago_add_on_id": "7a307a30-7a30-7a30-7a30-7a307a307a30",
+               "code": "storage",
+               "invoice_display_name": "Storage Allocation",
+               "add_on_code": "cloud_storage",
+               "created_at": "2026-01-15T10:30:00Z",
+               "charge_model": "volume",
+               "pay_in_advance": false,
+               "prorated": false,
+               "properties": {
+                  "volume_ranges": [
+                     {
+                     "from_value": 0,
+                     "to_value": 100,
+                     "per_unit_amount": "2",
+                     "flat_amount": "1"
+                     },
+                     {
+                     "from_value": 101,
+                     "to_value": null,
+                     "per_unit_amount": "1",
+                     "flat_amount": "0"
+                     }
+                  ]
+               },
+               "units": 50,
+               "lago_parent_id": null,
+               "taxes": []
+               }
+            ],
+            "taxes": [
+               {
+               "lago_id": "1a901a90-1a90-1a90-1a90-1a901a901a90",
+               "name": "TVA",
+               "code": "french_standard_vat",
+               "description": "French standard VAT",
+               "rate": 20,
+               "created_at": "2023-07-06T14:35:58Z"
+               }
+            ],
+            "usage_thresholds": [
+               {
+               "lago_id": "1a901a90-1a90-1a90-1a90-1a901a901a90",
+               "threshold_display_name": "Threshold 1",
+               "amount_cents": 10000,
+               "recurring": true,
+               "created_at": "2023-06-27T19:43:42Z",
+               "updated_at": "2023-06-27T19:43:42Z"
+               }
+            ],
+            "entitlements": [
+               {
+               "entitlement": {
+                  "code": "seats",
+                  "name": "Number of seats",
+                  "description": "Number of users of the account",
+                  "privileges": [
+                     {
+                     "code": "max",
+                     "name": "Maximum",
+                     "value_type": "integer",
+                     "config": {},
+                     "value": 10
+                     },
+                     {
+                     "code": "max_admins",
+                     "name": "Max Admins",
+                     "value_type": "integer",
+                     "config": {},
+                     "value": 5
+                     },
+                     {
+                     "code": "root",
+                     "name": "Allow root user",
+                     "value_type": "boolean",
+                     "config": {},
+                     "value": true
+                     },
+                     {
+                     "code": "provider",
+                     "name": "SSO Provider",
+                     "value_type": "select",
+                     "value": "google",
+                     "config": {
+                        "select_options": ["google", "okta"]
+                     }
                      }
                   ]
                }
+               }
+            ],
+            "metadata": {
+               "external_id": "ext-123",
+               "synced_at": "2024-01-15",
+               "source": null
             }
-            ]
          }
       }'
       ```
@@ -21559,22 +22885,27 @@ you must assign a Plan to a customer.
 
 ## Editing Plans[](#editing-plans "Direct link to heading")
 
-Plans can be fully edited as long as they are not linked to a customer (i.e., no active [subscriptions](/guide/subscriptions/assign-plan)). Once a plan is assigned to a customer, you can modify subscription prices, add or remove charges, and adjust them. However, other settings—such as the “plan interval,” “pay in advance” options, and pro-rated charges—become fixed and cannot be edited once assigned to a customer.
+A plan can be fully edited as long as it is not linked to any active subscription.
 
-Any edits to a plan will instantly impact all subscriptions linked to it.
+Once a plan is assigned to a customer, some changes are still allowed. You can still update prices, add or remove charges, and adjust charge settings.
+However, core properties become locked, such as: billing interval, advance vs arrears configuration, proration rules.
 
-Please note: If this plan is linked to overridden subscriptions, you can choose to cascade or not these changes to these overridden subscriptions.
-When updating a plan via the API, use the `cascade_updates: true` property to ensure that overridden subscriptions are impacted by the changes.
+Some updates may trigger invoice issuance and will impact all subscriptions using the plan.
 
-To update plans that are already linked to customers, you will need to either remove all active subscriptions or create a new plan.
+If a plan is linked to overridden subscriptions, you can choose whether changes should apply to them.
+When updating a plan via the API, use `cascade_updates: true` to propagate updates to overridden subscriptions.
 
-To update a specific charge in a plan, the charge must first be removed, then re-added with the updated details.
+To update plans already linked to customers, you must either:
+
+* Remove all active subscriptions, or
+* Create a new plan and migrate subscriptions
+
+To update a specific charge, it must be removed and re-added with the new configuration.
 
 ## Deleting Plans[](#deleting-plans "Direct link to heading")
 
-Plans can be deleted regardless of whether they are linked to a subscription.
-
-Deleting a plan that is linked to a subscription will automatically terminate the subscription, and invoices will be generated.
+Plans can be deleted even if they are linked to active subscriptions.
+In that case, deleting the plan will automatically terminate the associated subscriptions and generate the corresponding invoices.
 
 
 # Plan model
@@ -21705,8 +23036,8 @@ When the lifetime usage reaches a specific threshold, Lago automatically trigger
 
 ## Setting up thresholds
 
-<Frame caption="Setting up thresholds">
-    <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-setting-up-thresholds.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=262ee75ce9ebe35deb96f6fc4bf4f5c1" alt="" data-og-width="3324" width="3324" data-og-height="1366" height="1366" data-path="guide/plans/images/progressive-billing-setting-up-thresholds.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-setting-up-thresholds.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=bd13dfa70744065bbdd1c76a58b1a492 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-setting-up-thresholds.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=dce9a91570daf38aeb50d2865ba16047 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-setting-up-thresholds.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=867216e054b3696fae8e050383e03990 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-setting-up-thresholds.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=6f7ec6d08facf2811bcb2ae19e42754a 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-setting-up-thresholds.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=e427803b72448a1f758d97f026cfff9a 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-setting-up-thresholds.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=672e96901d6c383b736fb29cea223706 2500w" />
+<Frame>
+  <img alt="" />
 </Frame>
 
 For the progressive billing feature, you can configure two types of thresholds: Step-Based Thresholds and Recurring Thresholds.
@@ -21725,8 +23056,8 @@ For the progressive billing feature, you can configure two types of thresholds: 
     3. Locate the Progressive Billing section; and
     4. Add your thresholds.
 
-    <Frame caption="Defining step-based thresholds">
-            <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-step-thresholds.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=24559ff19e41204afc4aa6e255b0dc88" alt="" data-og-width="1516" width="1516" data-og-height="1150" height="1150" data-path="guide/plans/images/progressive-billing-step-thresholds.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-step-thresholds.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=0297f92ef5674f76e89b274756c847c1 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-step-thresholds.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=f7ab2e23c88028459bc53e98d6542305 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-step-thresholds.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=bbedbab463df384ce956ae85445d5257 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-step-thresholds.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=00a479c77840753696ac06f885fdb51c 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-step-thresholds.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=7d190a2092f3c531c5fdbac1517d502c 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-step-thresholds.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=6eeeed13ca1b984ecb1cd2450671bf10 2500w" />
+    <Frame>
+      <img alt="" />
     </Frame>
   </Tab>
 
@@ -21792,8 +23123,8 @@ In the above example, Lago will issue an invoice when the specified threshold is
     4. Toggle the 'Recurring' switch; and
     5. Enter a name and define the recurring threshold amount.
 
-    <Frame caption="Defining a recurring threshold">
-            <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-recurring-threshold.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=cda9e27f64cba34635d50bd6dc52c9d6" alt="" data-og-width="1500" width="1500" data-og-height="1500" height="1500" data-path="guide/plans/images/progressive-billing-recurring-threshold.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-recurring-threshold.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=c66ddb3e932669cc9d8664eb38fbee09 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-recurring-threshold.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=db61e0271477677c41931be7d454e653 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-recurring-threshold.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=e0ed5bb253f5b77ff168f91277262653 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-recurring-threshold.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=517586406ff2582b9b6893c3a73db640 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-recurring-threshold.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=cee530df309e710126b4509ce8affd62 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-recurring-threshold.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=28a35ab0db4dd44c9a3224cd3413397f 2500w" />
+    <Frame>
+      <img alt="" />
     </Frame>
   </Tab>
 
@@ -21844,8 +23175,8 @@ In the above example, Lago will issue an invoice when the specified threshold is
 For our progressive billing feature, invoices are generated whenever a threshold is crossed, regardless of when it occurs within a billing period.
 However, there are a few specific behaviors and edge cases related to this feature that are important to consider.
 
-<Frame caption="Progressive billing invoice behavior">
-    <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-invoice-behavior.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=38b25d30778a9f8fc71ea7fcf9c31779" alt="" data-og-width="4438" width="4438" data-og-height="1048" height="1048" data-path="guide/plans/images/progressive-billing-invoice-behavior.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-invoice-behavior.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=3d302c291ad7417b4178f3b74ae564d7 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-invoice-behavior.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=3f0334569e26d13f0bca5c0e9874827e 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-invoice-behavior.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=f4e191270c0d35493276c370bec59332 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-invoice-behavior.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=a9a8585e28d2a372b425e2bc9d162130 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-invoice-behavior.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=ecf7df1296118fdf93cdea525101287a 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-invoice-behavior.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=d6d51af6a0eb3050e22b71ff15adb784 2500w" />
+<Frame>
+  <img alt="" />
 </Frame>
 
 ### Invoicing during job execution
@@ -21875,8 +23206,8 @@ It's important to note that the invoice template (as shown below) includes the f
 * An adjustment that excludes previously billed usage; and
 * A footer that provides context, explaining the reason for the invoice, including lifetime usage and the threshold that was crossed.
 
-<Frame caption="Progressive billing invoice detail">
-    <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-invoice-detail.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=3ee2c1215155bf28259bba27a415ced1" alt="" data-og-width="1598" width="1598" data-og-height="1806" height="1806" data-path="guide/plans/images/progressive-billing-invoice-detail.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-invoice-detail.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=b68ef48de7264d1efd66c45ea7b55f38 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-invoice-detail.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=26e1723aeb4687d740ecb33258aa8371 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-invoice-detail.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=ea9ffa7afbcf95656f08ae6496f74692 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-invoice-detail.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=0214fae9fd5c14a4d3b337098be07549 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-invoice-detail.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=2df6a15a9c59ffcfa700c8f2d850ad66 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/plans/images/progressive-billing-invoice-detail.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=a406abfadfd96833cdfa817292a9183f 2500w" />
+<Frame>
+  <img alt="" />
 </Frame>
 
 ### Grace period edge cases
@@ -21932,8 +23263,8 @@ To generate self-billed invoices, create your first partner by following these s
     3. Enable the **Partner** option by toggling it on.
     4. Fill in the customer’s billing information—this will be used to generate invoices.
 
-    <Frame caption="Mart a customer as partner in creation form">
-      <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-partner.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=dc8110822436a4b6cfd7affa40d4b9c1" data-og-width="3456" width="3456" data-og-height="2159" height="2159" data-path="guide/images/customer-partner.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-partner.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=3c7ce41b6a160a696cf68cb3ab9394eb 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-partner.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=88f28fff0aa4a4b47a686a6fdbe8215e 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-partner.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=3bc22828d6f09dcc05fb8a25229e3bb7 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-partner.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=f678a35a2f89584d39c56b2b32cbbe33 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-partner.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=a14f25198a694cc305664e3a1b0a4488 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/customer-partner.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=768d80ad37d111399e1d9627990012ef 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -21979,8 +23310,8 @@ Source: https://getlago.com/docs/guide/security/api-keys
 To copy your API key, go to the **Developers > API keys** section and click the Reveal button.
 This will display the selected API key, allowing you to copy it to your clipboard.
 
-<Frame caption="Reveal your API keys">
-  <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/security/images/reveal-api-key.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=2e281a1c80d756075f2fd5e0f7ef3d11" data-og-width="2720" width="2720" data-og-height="1536" height="1536" data-path="guide/security/images/reveal-api-key.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/security/images/reveal-api-key.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=9300e760a5cdc28c7d14130ad1305aa2 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/security/images/reveal-api-key.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=60e78fb55eb46625a44109e589a1b702 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/security/images/reveal-api-key.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=fe2ea651938bf638c19b87adacdfc140 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/security/images/reveal-api-key.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=54d15ce5b724c8815a8d51ec4d42b994 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/security/images/reveal-api-key.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=e86b03de7951491aee8767cd7a0d8fe9 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/security/images/reveal-api-key.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=ceec5ab391fe8ef4317c6aa715505d92 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Create an API key
@@ -22034,8 +23365,8 @@ Permissions can be set individually for each object, allowing `read`, `write`, o
 
 If an API key lacks the necessary permissions to access a specific endpoint, the API will deny the request and return an appropriate error response.
 
-<Frame caption="Permissions on API key">
-  <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/security/images/api-key-permissions.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=ee95b833eb61cdf7714c65497f39f5c8" data-og-width="836" width="836" data-og-height="591" height="591" data-path="guide/security/images/api-key-permissions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/security/images/api-key-permissions.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=3d9ba01fd0634919971255663a18e32f 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/security/images/api-key-permissions.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=a26ec9c54cc32f0f46c7cf9272f0e461 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/security/images/api-key-permissions.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=03f2252bd3cc600b39d34b82dde1f10b 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/security/images/api-key-permissions.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=9c6bc54c7ea3e797c8b26cbbe6229517 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/security/images/api-key-permissions.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=e78f3c1795f67191af9eb57f73f39f94 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/security/images/api-key-permissions.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=a1bcf4770f990fb8bd5955079ebb635c 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Delete an API key
@@ -22080,8 +23411,8 @@ Access to the activity log is limited to paid tiers:
     2. Select the **Activity Logs** tab; and
     3. View paginated activity logs directly in this section.
 
-    <Frame caption="Activity logs in the Developers Console">
-      <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/security/images/activity-logs.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=3923f2b8d01b83c73945fda3aa0d4b2f" data-og-width="2984" width="2984" data-og-height="2098" height="2098" data-path="guide/security/images/activity-logs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/security/images/activity-logs.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=cde02f1c47b1b1057576e8d640f9e18f 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/security/images/activity-logs.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=de59c03fbf3f0b48f1aa2592242187f4 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/security/images/activity-logs.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=c8d9e2c51f4dcd7799311476582c4a5a 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/security/images/activity-logs.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=6da1e1bb8dd40eb205bcbf7d5a8613f3 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/security/images/activity-logs.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=2a05e99a5ac726d5fedddbcd8474459b 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/security/images/activity-logs.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=7fd8a7a94bcf345fabaf4a7438339658 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -22158,8 +23489,8 @@ Access to the API requests logs is limited to paid tiers:
     2. Select the **API Logs** tab; and
     3. View paginated activity logs directly in this section.
 
-    <Frame caption="API logs in the Developers Console">
-      <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/security/images/api-logs.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=9d2f2309008b7d1275aaf70da71baa77" data-og-width="3396" width="3396" data-og-height="1964" height="1964" data-path="guide/security/images/api-logs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/security/images/api-logs.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=1e4c04d526d2c28d9a079f35ba436fa3 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/security/images/api-logs.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=f623d743cb4cac69b96020f51bc959c2 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/security/images/api-logs.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=95b7b85188ca593516335b70f89ee7bd 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/security/images/api-logs.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=19351e37fffd293ba67f5fe043a75195 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/security/images/api-logs.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=d3267fe9cca89cff1eeb33f8b6a78fb6 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/security/images/api-logs.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=da5c194777702d1e25767ad9467fc5b5 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -22209,109 +23540,63 @@ Source: https://getlago.com/docs/guide/security/rbac
 
 Define user roles & permissions in Lago.
 
-## Admin role
+<Info>
+  **PREMIUM ADD-ON** ✨
+
+  RBAC is only available to licensed users. Please [**contact us**](mailto:hello@getlago.com) to get access to this premium add-on.
+</Info>
+
+## System roles in Lago
+
+System roles are predefined by Lago and define the access scope and permissions granted to users within the Lago platform. Lago provides three primary system roles:
+
+### Admin role
 
 Admins wield full control over Lago, managing billable metrics, plans, customers, subscriptions, settings or financial analysis.
 Typically, developers with admin roles handle all critical billing operations. By default, the account creator is assigned the Admin role.
 
-<Info>
-  Only admins can invite new members and assign roles. Your account must always
-  have at least one admin.
-</Info>
-
-## Account manager role
+### Account manager role
 
 The Account manager role suits Sales or Customer Success Managers, enabling them to carry out billing tasks for customers.
 Account Managers can assign subscriptions, coupons, add-ons, and override prices but are not permitted to modify metrics or plans.
 
-## Finance & analyst role
+Here is the [full list of permissions](https://github.com/getlago/lago-api/blob/main/config/permissions.yml) for this pre-built role.
+
+### Finance & analyst role
 
 The Finance & analyst role is view-only, restricted from creating or editing metrics and plans, or assigning core billing actions such as coupons,
 subscriptions. It's ideal for analyzing financial data, reviewing invoices, and issuing credit notes as necessary.
 
-## Roles and permissions
+Here is the [full list of permissions](https://github.com/getlago/lago-api/blob/main/config/permissions.yml) for this pre-built role.
 
-| category          | name                  | description                                     | admin | manager | finance |
-| ----------------- | --------------------- | ----------------------------------------------- | ----- | ------- | ------- |
-| Analytics         | view                  | Access the Analytics Section                    | ✅     | ❌       | ✅       |
-| Billable Metrics  | view                  | Access Billable Metrics Section                 | ✅     | ❌       | ❌       |
-| Billable Metrics  | create                | Create a Billable Metric                        | ✅     | ❌       | ❌       |
-| Billable Metrics  | update                | Update a Billable Metric                        | ✅     | ❌       | ❌       |
-| Billable Metrics  | delete                | Delete a Billable Metric                        | ✅     | ❌       | ❌       |
-| Plans             | view                  | Access Plans Section                            | ✅     | ✅       | ✅       |
-| Plans             | create                | Create a New Plan                               | ✅     | ❌       | ❌       |
-| Plans             | update                | Update a Plan                                   | ✅     | ❌       | ❌       |
-| Plans             | delete                | Delete a Plan                                   | ✅     | ❌       | ❌       |
-| Plans             | create                | Duplicate a Plan                                | ✅     | ❌       | ❌       |
-| Addons            | view                  | Access Add-ons Section                          | ✅     | ✅       | ✅       |
-| Addons            | create                | Create a New Add-on                             | ✅     | ❌       | ❌       |
-| Addons            | update                | Update an Add-on                                | ✅     | ❌       | ❌       |
-| Addons            | delete                | Delete an Add-on                                | ✅     | ❌       | ❌       |
-| Coupons           | view                  | Access Coupons Section                          | ✅     | ✅       | ✅       |
-| Coupons           | create                | Create a New Coupon                             | ✅     | ❌       | ❌       |
-| Coupons           | update                | Update a Coupon                                 | ✅     | ❌       | ❌       |
-| Coupons           | delete                | Delete a Coupon                                 | ✅     | ❌       | ❌       |
-| Coupons           | update                | Terminate a Coupon                              | ✅     | ❌       | ❌       |
-| Coupons           | attach                | Apply a Coupon                                  | ✅     | ✅       | ❌       |
-| Coupons           | detach                | Remove a Coupon                                 | ✅     | ✅       | ❌       |
-| Customers         | view                  | Access Customers Section                        | ✅     | ✅       | ✅       |
-| Customers         | view                  | Access Customers Details                        | ✅     | ✅       | ✅       |
-| Customers         | create                | Create a New Customer                           | ✅     | ✅       | ❌       |
-| Customers         | update                | Update a Customer                               | ✅     | ✅       | ❌       |
-| Customers         | delete                | Delete a Customer                               | ✅     | ✅       | ❌       |
-| Subscriptions     | view                  | Access subscriptions                            | ✅     | ✅       | ✅       |
-| Subscriptions     | create                | Assign a New Plan                               | ✅     | ✅       | ❌       |
-| Subscriptions     | update                | Edit subscription                               | ✅     | ✅       | ❌       |
-| Subscriptions     | update                | Upgrade/downgrade                               | ✅     | ✅       | ❌       |
-| Subscriptions     | delete                | Delete subscription                             | ✅     | ✅       | ❌       |
-| Wallets           | create                | Create a Wallet                                 | ✅     | ✅       | ❌       |
-| Wallets           | update                | Edit a Wallet                                   | ✅     | ✅       | ❌       |
-| Wallets           | top\_up               | Top-up a Wallet                                 | ✅     | ✅       | ❌       |
-| Wallets           | terminate             | Terminate a Wallet                              | ✅     | ✅       | ❌       |
-| Invoices          | view                  | Access Invoice List                             | ✅     | ✅       | ✅       |
-| Invoices          | view                  | Download an Invoice                             | ✅     | ✅       | ✅       |
-| Invoices          | send                  | Resend an Invoice                               | ✅     | ✅       | ✅       |
-| Invoices          | update                | Update Payment Status                           | ✅     | ✅       | ✅       |
-| Invoices          | void                  | Void an Invoice                                 | ✅     | ✅       | ✅       |
-| Invoices          | create                | One-off Invoices                                | ✅     | ✅       | ✅       |
-| Invoices          | update                | Edit a Draft Invoice                            | ✅     | ✅       | ✅       |
-| Invoices          | update                | Refresh a Draft invoice                         | ✅     | ✅       | ✅       |
-| Invoices          | update                | Finalize a Draft invoice                        | ✅     | ✅       | ✅       |
-| Draft Invoices    | update                | Edit a Draft Invoice                            | ✅     | ✅       | ✅       |
-| Draft Invoices    | update                | Refresh a Draft invoice                         | ✅     | ✅       | ✅       |
-| Draft Invoices    | update                | Finalize a Draft invoice                        | ✅     | ✅       | ✅       |
-| Payments          | create                | Create a manual payment                         | ✅     | ✅       | ✅       |
-| Payments          | view                  | Access Payments list and details                | ✅     | ✅       | ✅       |
-| Credit Notes      | view                  | Access Credit Notes List                        | ✅     | ✅       | ✅       |
-| Credit Notes      | create                | Create a Credit Note                            | ✅     | ✅       | ✅       |
-| Credit Notes      | view                  | Download a Credit Note PDF                      | ✅     | ✅       | ✅       |
-| Credit Notes      | update                | Don't know what this is but there is a mutation | ✅     | ✅       | ✅       |
-| Credit Notes      | void                  | Void a Credit Note                              | ✅     | ✅       | ✅       |
-| Customer Settings | view                  | Access Customer’s Settings                      | ✅     | ✅       | ✅       |
-| Customer Settings | update:tax\_rates     | Add Tax Rates                                   | ✅     | ✅       | ✅       |
-| Customer Settings | update:payment\_terms | Edit Net Payment Terms                          | ✅     | ✅       | ✅       |
-| Customer Settings | update:grace\_period  | Edit Grace Period                               | ✅     | ✅       | ✅       |
-| Customer Settings | update:lang           | Edit Document Language                          | ✅     | ✅       | ✅       |
-| Developers        | manage                | Access Developers Section                       | ✅     | ❌       | ❌       |
-| Developers        | keys:manage           | Access API Keys                                 | ✅     | ❌       | ❌       |
-| Developers        | manage                | Access Events List                              | ✅     | ❌       | ❌       |
-| Developers        | manage                | Access Webhooks                                 | ✅     | ❌       | ❌       |
-| Organization      | view                  | Access Organization Settings                    | ✅     | ❌       | ✅       |
-| Organization      | update                | Edit Organization Information                   | ✅     | ❌       | ✅       |
-| Organization      | invoices:view         | Access Invoices’ Global Information             | ✅     | ❌       | ✅       |
-| Organization      | invoices:update       | Edit Invoices’ Global Information               | ✅     | ❌       | ✅       |
-| Organization      | taxes:view            | Access Global Taxes Information                 | ✅     | ❌       | ❌       |
-| Organization      | taxes:update          | Edit Global Taxes Information                   | ✅     | ❌       | ❌       |
-| Organization      | emails:view           | Access Emails Settings                          | ✅     | ❌       | ❌       |
-| Organization      | emails:update         | Edit Emails Settings                            | ✅     | ❌       | ❌       |
-| Organization      | integrations:view     | Access Integrations Section                     | ✅     | ❌       | ✅       |
-| Organization      | integrations:create   | Add an Integration                              | ✅     | ❌       | ✅       |
-| Organization      | integrations:update   | Edit an Integration                             | ✅     | ❌       | ✅       |
-| Organization      | integrations:delete   | Delete an Integration                           | ✅     | ❌       | ✅       |
-| Organization      | members:view          | Access Members Section                          | ✅     | ❌       | ❌       |
-| Organization      | members:create        | Add a Member and Choose Its Role                | ✅     | ❌       | ❌       |
-| Organization      | members:update        | Edit a Member and Its Role                      | ✅     | ❌       | ❌       |
-| Organization      | members:delete        | Delete a Member                                 | ✅     | ❌       | ❌       |
+## Custom roles and permissions
+
+<Info>
+  **PREMIUM ADD-ON** ✨
+
+  This add-on is available on demand only. Please [**contact us**](mailto:hello@getlago.com) to get access to this premium add-on.
+</Info>
+
+Custom roles enable you to **define tailored permission sets that align with your organization's specific requirements**. There is no limit to the number of custom roles you can create. This feature is designed around the following principles:
+
+* Updating the permissions of a role automatically updates the permissions for all users assigned to that role; and
+* At least one role with administrative permissions must always exist.
+
+[This document](https://github.com/getlago/lago-api/blob/main/config/permissions.yml) outlines all the potential permissions by object that can be assigned to a custom role.
+
+To create a custom role:
+
+1. Navigate to the **Settings** view in Lago;
+2. Access the **Roles & Permissions** section;
+3. Click on **Create Role**;
+4. Define the role `name`, `code` and `description`;
+5. Select the desired permissions from the list;
+6. Save the new custom role; and
+7. Assign users to the newly created custom role.
+
+<Frame>
+  <img />
+</Frame>
 
 
 # SOC 2 Type 2
@@ -22502,8 +23787,8 @@ Optimize billing for your customers by assigning subscriptions based on either c
     > Your customer signs up for the Premium plan, \$50 monthly, on August 10th. There are 22 days left until the end of the month, including August 10th. Therefore, the subscription fee for August is:
     > **22 days x \$50 / 31 days = \$35.48**
 
-    <Frame caption="Calendar billing cadence">
-      <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/calendar-date-227bf60245e9d3715d3383098c88c1b0.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=d88cd7ecd443337bed6d1cdbe9f10546" data-og-width="2628" width="2628" data-og-height="544" height="544" data-path="guide/subscriptions/images/calendar-date-227bf60245e9d3715d3383098c88c1b0.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/calendar-date-227bf60245e9d3715d3383098c88c1b0.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=7a9c4f409238c85e4a7d8bb426e0898e 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/calendar-date-227bf60245e9d3715d3383098c88c1b0.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=b50b4f46c0de6f70225242148d6252a5 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/calendar-date-227bf60245e9d3715d3383098c88c1b0.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=27e59883297ac3742bc94f4ea49a2de6 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/calendar-date-227bf60245e9d3715d3383098c88c1b0.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=2a7145595277945be7459a7cf52b7157 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/calendar-date-227bf60245e9d3715d3383098c88c1b0.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=99523f7ef52ed56f5ef3dc79e46c1f4c 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/calendar-date-227bf60245e9d3715d3383098c88c1b0.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=ba70f753427f51ca799467d991105178 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -22516,8 +23801,8 @@ Optimize billing for your customers by assigning subscriptions based on either c
     > If you choose to align the billing cycle with the anniversary date of the subscription, the customer will be billed every 10th of the month.
     > The first billing period will run from August 10th to September 9th.
 
-    <Frame caption="Anniversary billing cadence">
-      <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/anniversary-date-c66bee86224946e6e00af9c0cb7eedeb.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=f92c61993ef93e3947982f5a9e2bc7eb" data-og-width="2828" width="2828" data-og-height="636" height="636" data-path="guide/subscriptions/images/anniversary-date-c66bee86224946e6e00af9c0cb7eedeb.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/anniversary-date-c66bee86224946e6e00af9c0cb7eedeb.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=939ee142c5cd0837cca9964042edc46c 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/anniversary-date-c66bee86224946e6e00af9c0cb7eedeb.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=f0d8cd9d1777ca70a8af7a15d6eb19cf 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/anniversary-date-c66bee86224946e6e00af9c0cb7eedeb.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=e556ad1a682f174b468c18267f24abd3 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/anniversary-date-c66bee86224946e6e00af9c0cb7eedeb.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=48d636bb06cc04bb6347b672ea0224f5 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/anniversary-date-c66bee86224946e6e00af9c0cb7eedeb.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=123075ece332dbed0537dcadac351748 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/anniversary-date-c66bee86224946e6e00af9c0cb7eedeb.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=e4ddf49bfe07327dcf097a0da958143d 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 </Tabs>
@@ -22543,14 +23828,14 @@ However, you can decide to start a subscription **in the past** or **in the futu
 
     **Example 1:** Start date in the past and subscription fee to be paid in advance
 
-    <Frame caption="Illustration for start date in the past and subscription fee in advance">
-      <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/subscription-past-advance-0bedeeb9f9918608568ea7db6479e4ef.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=2d1c16233f9b058dd8e1c07faa091a48" data-og-width="2376" width="2376" data-og-height="646" height="646" data-path="guide/subscriptions/images/subscription-past-advance-0bedeeb9f9918608568ea7db6479e4ef.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/subscription-past-advance-0bedeeb9f9918608568ea7db6479e4ef.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=c2b8d71607234ea310e23ac106187d38 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/subscription-past-advance-0bedeeb9f9918608568ea7db6479e4ef.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=36f11d3a187e58445bcf4670c5ebbd42 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/subscription-past-advance-0bedeeb9f9918608568ea7db6479e4ef.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=537342eceddf180cef0f4fbd309470fe 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/subscription-past-advance-0bedeeb9f9918608568ea7db6479e4ef.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=b3e93130e7243f3f6587a3f6948657f9 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/subscription-past-advance-0bedeeb9f9918608568ea7db6479e4ef.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=7bc1e1a53ce9cb023ccb643db445fb40 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/subscription-past-advance-0bedeeb9f9918608568ea7db6479e4ef.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=e8dec36337f5c49b80e7c0f7236be6c5 2500w" />
+    <Frame>
+      <img />
     </Frame>
 
     **Example 2:** Start date in the past and subscription fee to be paid in arrears
 
-    <Frame caption="Illustration for start date in the past and subscription fee in advance">
-      <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/subscription-past-arrears-b4f22483b4ae3a358c0b27305e49a766.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=bfdbd259c51657f6e387fff3a8dca495" data-og-width="2376" width="2376" data-og-height="646" height="646" data-path="guide/subscriptions/images/subscription-past-arrears-b4f22483b4ae3a358c0b27305e49a766.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/subscription-past-arrears-b4f22483b4ae3a358c0b27305e49a766.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=bc415da8fd3db983f288cfe0b6ebf3f4 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/subscription-past-arrears-b4f22483b4ae3a358c0b27305e49a766.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=e893b5a1131d58c12bd8f0b005f4472c 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/subscription-past-arrears-b4f22483b4ae3a358c0b27305e49a766.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=5c4a1ebce1757912a18b9df525fac321 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/subscription-past-arrears-b4f22483b4ae3a358c0b27305e49a766.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=63cb2dd547d8db122004a366610a7dff 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/subscription-past-arrears-b4f22483b4ae3a358c0b27305e49a766.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=c5c6567f28f48747843bc01f6d78c05b 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/subscription-past-arrears-b4f22483b4ae3a358c0b27305e49a766.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=c174b469a139354ee1452bdb8df946c7 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -22564,14 +23849,14 @@ However, you can decide to start a subscription **in the past** or **in the futu
 
     **Example 3:** Start date in the future and subscription fee to be paid in advance
 
-    <Frame caption="Illustration for start date in the future and subscription fee in advance">
-      <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/subscription-future-advance-e0c8d632579fe11dfc530987d86ca211.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=3ccdc21fc650d742b1e96f76a6e91b8f" data-og-width="2376" width="2376" data-og-height="550" height="550" data-path="guide/subscriptions/images/subscription-future-advance-e0c8d632579fe11dfc530987d86ca211.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/subscription-future-advance-e0c8d632579fe11dfc530987d86ca211.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=1f160fae849e3ab4f48a0e5690bda0e1 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/subscription-future-advance-e0c8d632579fe11dfc530987d86ca211.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=37ca1fe293be8a564ccda45d88a9430b 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/subscription-future-advance-e0c8d632579fe11dfc530987d86ca211.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=9145d42b18a06e0b23ff585072b5344b 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/subscription-future-advance-e0c8d632579fe11dfc530987d86ca211.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=ba67ad2bff4840eb74631ae77ecdaeb3 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/subscription-future-advance-e0c8d632579fe11dfc530987d86ca211.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=b42e900c8b8428be78af8a5213b22b78 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/subscription-future-advance-e0c8d632579fe11dfc530987d86ca211.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=601c68ec4d2bc7cba7032a804046c8fe 2500w" />
+    <Frame>
+      <img />
     </Frame>
 
     **Example 4:** Start date in the future and subscription fee to be paid in arrears
 
-    <Frame caption="Illustration for start date in the future and subscription fee in arrears">
-      <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/subscription-future-arrears-8b99c7c98e2f8223d6282fd5f47a665a.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=2c97c5af07396e4941d69e034670a1f7" data-og-width="1188" width="1188" data-og-height="275" height="275" data-path="guide/subscriptions/images/subscription-future-arrears-8b99c7c98e2f8223d6282fd5f47a665a.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/subscription-future-arrears-8b99c7c98e2f8223d6282fd5f47a665a.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=d9e183a05a77bc6591bfb13dfc9d1505 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/subscription-future-arrears-8b99c7c98e2f8223d6282fd5f47a665a.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=0414a0be432a41004f3b0da98e2392f1 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/subscription-future-arrears-8b99c7c98e2f8223d6282fd5f47a665a.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=5d038ddc527c1e61f03b320485d42e8b 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/subscription-future-arrears-8b99c7c98e2f8223d6282fd5f47a665a.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=567da13a6f9ab973468970abe0ccee0d 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/subscription-future-arrears-8b99c7c98e2f8223d6282fd5f47a665a.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=40249d9c561553afae3046eee9eac29d 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/subscription-future-arrears-8b99c7c98e2f8223d6282fd5f47a665a.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=6f0e49dde27282d91af494de4d102610 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 </Tabs>
@@ -22873,11 +24158,12 @@ At termination, you can :
     In the Termination dialog, you can choose how to handle unused amounts:
 
     * **Skip** – Don’t generate a credit note.
+    * **Offset** — The unused due amount is offset against the invoice, reducing the remaining amount due.
     * **Refund** – If the invoice is paid or partially paid, the unused paid amount is refunded; any unpaid unused amount is credited back to the customer.
     * **Credit** (default) – The unused amount is credited back to the customer.
 
-    <Frame caption="Termination options">
-            <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/terminate-subscription-options.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=82cab54066906288f43fb1c967d12ae4" alt="" data-og-width="3456" width="3456" data-og-height="2161" height="2161" data-path="guide/subscriptions/images/terminate-subscription-options.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/terminate-subscription-options.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=0c0f96094f1e0ee775898b6ba4a475a6 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/terminate-subscription-options.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=a966b3418525f8c580c216446af60d07 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/terminate-subscription-options.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=ac64e9d9cf781b7fd8e2331ca9d465e1 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/terminate-subscription-options.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=405a6df075af6fcdf92b40093fc856f2 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/terminate-subscription-options.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=7af1d301742b5b5fe8471eacfc682094 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/subscriptions/images/terminate-subscription-options.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=883d81f577cb09d18dd5f6f1fd330f86 2500w" />
+    <Frame>
+      <img alt="" />
     </Frame>
   </Tab>
 
@@ -22999,6 +24285,12 @@ Prepaid credits increase predictability as they allow you to collect payments in
 
 ## Create wallets[](#create-wallets "Direct link to heading")
 
+You can create up to 5 active wallets per customer, each with its own settings. A wallet can be scoped to specific fees or billable metrics, include usage limitations, and define its own recurring top-up rules.
+
+When a subscription or progressive billing invoice is generated, Lago automatically applies available wallet credits to reduce the invoice total.
+
+You control the order in which wallets are applied using wallet priority, from 1 to 50 — where 1 is applied first and 50 last. This ensures credits are consumed exactly as intended.
+
 <Tabs>
   <Tab title="Dashboard">
     To create a wallet for one of your customers through the user interface:
@@ -23008,11 +24300,12 @@ Prepaid credits increase predictability as they allow you to collect payments in
     3. Open the **"Wallets"** and click **"Add a wallet & credits"** on the right;
     4. Choose a name for the wallet (optional);
     5. Set the credit value (e.g. 1 credit = \$5);
-    6. Enter the number of credits to be purchased and/or granted for free;
-    7. Define transaction metadata (optional & available only via API);
-    8. Determine whether the wallet transaction generates an invoice after a top-up or only following a successful payment;
-    9. Set the [expiration date](#expiration-date-and-termination) (optional); and
-    10. Click **"Add wallet & credits"** to confirm.
+    6. Define the wallet priority;
+    7. Enter the number of credits to be purchased and/or granted for free;
+    8. Define transaction metadata (optional & available only via API);
+    9. Determine whether the wallet transaction generates an invoice after a top-up or only following a successful payment;
+    10. Set the [expiration date](#expiration-date-and-termination) (optional); and
+    11. Click **"Add wallet & credits"** to confirm.
 
     <Info>
       If the currency of the customer is already defined, the currency of the wallet
@@ -23050,7 +24343,7 @@ Prepaid credits increase predictability as they allow you to collect payments in
   </Tab>
 </Tabs>
 
-<img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/new-wallet.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=c0a008e6c1b04855ead9ae514e580fdc" alt="Creation of a wallet via the user interface" data-og-width="3426" width="3426" data-og-height="2140" height="2140" data-path="guide/images/new-wallet.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/new-wallet.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=38e712fa83d2770f2a8a466a02ea9fd1 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/new-wallet.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=c112a24786b4e323bb7c4f5de831b754 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/new-wallet.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=e39856161f535cbb3741cfbd52d86f3f 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/new-wallet.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=d320d19e09f705a17808fd527cf7395c 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/new-wallet.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=abd0f2af02d99c76e20c689ab7cdc968 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/new-wallet.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=d108ed8dc7500834ad05cc47e9e75ea4 2500w" />
+<img alt="Creation of a wallet via the user interface" />
 
 Free credits are added to the customer's wallet instantly, while purchased
 credits are added to the wallet when payment is confirmed (see below).
@@ -23106,8 +24399,8 @@ By default, prepaid credits apply to all fee types—subscriptions, charges, and
     3. You can also limit wallet prepaid credits to specific billable metrics; and
     4. Keep in mind: selecting all items has the same effect as selecting none. For this reason, we recommend leaving all options unselected unless a specific restriction is needed.
 
-    <Frame caption="Limit wallet prepaid credits to specific objects">
-      <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/wallet-application-scope.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=89d63d930261356e64377932bcd57abd" data-og-width="1506" width="1506" data-og-height="850" height="850" data-path="guide/images/wallet-application-scope.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/wallet-application-scope.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=cfc319be1085940cf4513ea30805eab5 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/wallet-application-scope.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=c4216655d2d2c5287b615605d5ce8470 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/wallet-application-scope.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=14deb0c6ce9efadc8ff6faa9da590310 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/wallet-application-scope.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=0bcbd7c435ffb36a12e806c89ee6b12d 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/wallet-application-scope.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=e4912eea2c0d8b3bfc3f8f610e6d568b 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/wallet-application-scope.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=c68433d86634844306bc50a22818dbc9 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -23147,8 +24440,8 @@ When enabled, this option delays issuing an invoice for a wallet top-up until a 
     For each wallet, you can set minimum and maximum limits per paid transaction.
     When these limits are defined, any top-up attempt must fall within the specified range—transactions below the minimum or above the maximum will be rejected.
 
-    <Frame caption="Wallet transaction limits">
-      <img src="https://mintcdn.com/lago-docs/GNaCV_1x6xTnMzlW/guide/images/min-max-wallet-limits.png?fit=max&auto=format&n=GNaCV_1x6xTnMzlW&q=85&s=d757b2c6ae707d63808a1e98664e6a14" data-og-width="1102" width="1102" data-og-height="722" height="722" data-path="guide/images/min-max-wallet-limits.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/GNaCV_1x6xTnMzlW/guide/images/min-max-wallet-limits.png?w=280&fit=max&auto=format&n=GNaCV_1x6xTnMzlW&q=85&s=6d6687edba7b9bda402b6e191caaef7b 280w, https://mintcdn.com/lago-docs/GNaCV_1x6xTnMzlW/guide/images/min-max-wallet-limits.png?w=560&fit=max&auto=format&n=GNaCV_1x6xTnMzlW&q=85&s=aa164d8f9089f98d04eb6acc9c66621f 560w, https://mintcdn.com/lago-docs/GNaCV_1x6xTnMzlW/guide/images/min-max-wallet-limits.png?w=840&fit=max&auto=format&n=GNaCV_1x6xTnMzlW&q=85&s=fbe164be96eed48b77d8169800050d78 840w, https://mintcdn.com/lago-docs/GNaCV_1x6xTnMzlW/guide/images/min-max-wallet-limits.png?w=1100&fit=max&auto=format&n=GNaCV_1x6xTnMzlW&q=85&s=d9b404b45447eca7479e638d4b3f7a19 1100w, https://mintcdn.com/lago-docs/GNaCV_1x6xTnMzlW/guide/images/min-max-wallet-limits.png?w=1650&fit=max&auto=format&n=GNaCV_1x6xTnMzlW&q=85&s=adeac885687e3409b12055bad29a18be 1650w, https://mintcdn.com/lago-docs/GNaCV_1x6xTnMzlW/guide/images/min-max-wallet-limits.png?w=2500&fit=max&auto=format&n=GNaCV_1x6xTnMzlW&q=85&s=ac3732e20004ab72e30d68270c78f36e 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -23176,8 +24469,8 @@ When enabled, this option delays issuing an invoice for a wallet top-up until a 
 For a single transaction, you can ignore wallet limits at any time by adding the `ignore_paid_top_up_limits` flag to the payload, or by enabling the **Skip top-up limits for this transaction** option in the UI.
 This applies to both single transactions and automatic top-ups (recurring wallet transactions).
 
-<Frame caption="Skip wallet limits for a single transaction">
-  <img src="https://mintcdn.com/lago-docs/GNaCV_1x6xTnMzlW/guide/images/skip-wallet-limits.png?fit=max&auto=format&n=GNaCV_1x6xTnMzlW&q=85&s=dfd78574644cc307d12da73795a47cfd" data-og-width="905" width="905" data-og-height="431" height="431" data-path="guide/images/skip-wallet-limits.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/GNaCV_1x6xTnMzlW/guide/images/skip-wallet-limits.png?w=280&fit=max&auto=format&n=GNaCV_1x6xTnMzlW&q=85&s=fe28c24c7ba32ab2cbc432c705641e3f 280w, https://mintcdn.com/lago-docs/GNaCV_1x6xTnMzlW/guide/images/skip-wallet-limits.png?w=560&fit=max&auto=format&n=GNaCV_1x6xTnMzlW&q=85&s=7d1300f62462bcf8ea1cc7af4a6f0981 560w, https://mintcdn.com/lago-docs/GNaCV_1x6xTnMzlW/guide/images/skip-wallet-limits.png?w=840&fit=max&auto=format&n=GNaCV_1x6xTnMzlW&q=85&s=e4c171774a0f3fe4ea414cf900c01746 840w, https://mintcdn.com/lago-docs/GNaCV_1x6xTnMzlW/guide/images/skip-wallet-limits.png?w=1100&fit=max&auto=format&n=GNaCV_1x6xTnMzlW&q=85&s=5327116b5141116e90d73c8e2f08cc1d 1100w, https://mintcdn.com/lago-docs/GNaCV_1x6xTnMzlW/guide/images/skip-wallet-limits.png?w=1650&fit=max&auto=format&n=GNaCV_1x6xTnMzlW&q=85&s=d4a415e4e057f335b7b55b27e1fa962f 1650w, https://mintcdn.com/lago-docs/GNaCV_1x6xTnMzlW/guide/images/skip-wallet-limits.png?w=2500&fit=max&auto=format&n=GNaCV_1x6xTnMzlW&q=85&s=18d2aed87cc5b453c760235b4bef3290 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Expiration date and termination[](#expiration-date-and-termination "Direct link to heading")
@@ -23478,8 +24771,8 @@ By creating a webhook endpoint, you have two signature options.
     * The first is `JWT`, with a possibly lengthy payload header and potential size limits;
     * The second is `HMAC`, which features a shorter payload header and no size restrictions.
 
-    <Frame caption="Webhook endpoint signature">
-      <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/webhook-signature.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=86200416b2a5959b4f8b25233010f9d5" data-og-width="2128" width="2128" data-og-height="1300" height="1300" data-path="guide/images/webhook-signature.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/webhook-signature.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=6e7363d9cbb2e16caec24f0f7932ee2d 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/webhook-signature.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=6bf8451936b443056bd61f27da7f5249 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/webhook-signature.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=4d529141b427569ac5181c21c03a36a8 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/webhook-signature.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=ff5df538ab0f1b2abed040f0babeae4d 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/webhook-signature.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=c78979561a4520c9ccd087f4d3063d80 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/webhook-signature.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=e20c67cf5efd9983eca20338288a6d82 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Tab>
 
@@ -23507,8 +24800,8 @@ By creating a webhook endpoint, you have two signature options.
 
 To find your HMAC signature token, navigate to **Developers > Webhooks** and locate the **HMAC Signature Token**. Then, reveal and copy the key.
 
-<Frame caption="Locate your HMAC siganture token">
-  <img src="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/hmac-signature-token.png?fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=28386bce4de7802dd35bfa95d944df9f" data-og-width="2720" width="2720" data-og-height="1672" height="1672" data-path="guide/images/hmac-signature-token.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/hmac-signature-token.png?w=280&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=1173c2a642fbe6ba5f916ca1452d0077 280w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/hmac-signature-token.png?w=560&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=a7e991595ec2516790e3d33a0f672124 560w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/hmac-signature-token.png?w=840&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=9e40354356eae1cbf92866ac46a83e29 840w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/hmac-signature-token.png?w=1100&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=db59f6db5f2b7b93b9c415e951fdbc3a 1100w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/hmac-signature-token.png?w=1650&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=46e2708dda1df0c65c16f60f173bf2b9 1650w, https://mintcdn.com/lago-docs/L57i4PY_iDpAEuWL/guide/images/hmac-signature-token.png?w=2500&fit=max&auto=format&n=L57i4PY_iDpAEuWL&q=85&s=f5407e14524e7375e214cbbef2e126e3 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Accessing the webhook logs
@@ -23520,8 +24813,8 @@ Once a webhook is registered in the app, you can access the webhook logs:
 3. Click on the webhook endpoint to see the list of events; and
 4. Click the reload icon to see new events (optional).
 
-<Frame caption="Webhook logs">
-  <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/webhook-logs.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=915eaee9d5ef1281a68a1d92e8608ef1" data-og-width="2922" width="2922" data-og-height="1876" height="1876" data-path="guide/images/webhook-logs.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/webhook-logs.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=8784d75aa247121993863d81e040bb4a 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/webhook-logs.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=85b5eb3f5a24030c111e3919b84d1638 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/webhook-logs.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=8f46ac92702b8ce716a9ae5e3bcafcab 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/webhook-logs.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=5c546878d3f0328694cf70b2d70d0f8f 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/webhook-logs.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=08ee5ad8ee10ec9b4725adac75678c49 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/images/webhook-logs.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=586fc6260ecc836d36c92e56f6b0ec8f 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Accessing a specific event
@@ -23566,8 +24859,8 @@ Lago's native integration with NetSuite utilizes a [custom RESTlet script](https
 3. **Upload `ramda.min.js`**: This library is essential for using Lago and can be downloaded from [here](https://github.com/ramda/ramda/blob/master/dist/ramda.min.js); and
 4. Upload another file into the `Lago` folder and **paste the script provided by your Lago Account Manager**.
 
-<Frame caption="Upload scripts provided by Lago">
-  <img src="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/upload-netsuite-scripts.png?fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=6eecd5b84c99da35e7bf5ab62eb11558" data-og-width="1448" width="1448" data-og-height="446" height="446" data-path="integrations/images/upload-netsuite-scripts.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/upload-netsuite-scripts.png?w=280&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=b93c866c559879fac3e473ed58d04f60 280w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/upload-netsuite-scripts.png?w=560&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=f9c91675d2fa7f8aef628f43ae8006f3 560w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/upload-netsuite-scripts.png?w=840&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=9dd5f36b9d1d55baae994010da69ee7e 840w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/upload-netsuite-scripts.png?w=1100&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=1315d8ce3bf23065c6f8f40b2fb91797 1100w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/upload-netsuite-scripts.png?w=1650&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=ac0022905399f739f2b9721b89ba2be3 1650w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/upload-netsuite-scripts.png?w=2500&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=df2297e51ccafce7849975ea3f37eaa8 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Deploy Lago Scripts
@@ -23591,8 +24884,8 @@ Lago doesn't recognize the location field on invoices, which is mandatory by def
 3. Go to the **Screen Fields** tab; and
 4. Find the Location field and **uncheck both the Show and Mandatory checkboxes**.
 
-<Frame caption="Remove Locations on invoices">
-  <img src="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/netsuite-remove-locations-field.png?fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=1e948c38f227b06419704bd395549d10" data-og-width="2498" width="2498" data-og-height="424" height="424" data-path="integrations/images/netsuite-remove-locations-field.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/netsuite-remove-locations-field.png?w=280&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=2c876f022206d75caa3950dbe088ad3b 280w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/netsuite-remove-locations-field.png?w=560&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=47bc9f39e21011cf743113d1adb59fbe 560w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/netsuite-remove-locations-field.png?w=840&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=5290baec73bce86bd3798d7de6280af1 840w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/netsuite-remove-locations-field.png?w=1100&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=b9c008f28477fdb6ac659de556645e10 1100w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/netsuite-remove-locations-field.png?w=1650&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=f4d9d79f5d16c4b3ce8bdd8122b3234e 1650w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/netsuite-remove-locations-field.png?w=2500&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=a0ce8a7b4837fc7e5743839441c3016e 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 <Info>
@@ -23641,8 +24934,8 @@ To enable tax amount overrides for your Lago invoices synced to NetSuite, ensure
 4. Locate the **Tax / Tariff** section; and
 5. Set the item to **Taxable**.
 
-<Frame caption="Define Taxable items">
-  <img src="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/netsuite-taxable-items.png?fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=2edaea6acfbfc0c833cec14ad30786d8" data-og-width="2622" width="2622" data-og-height="830" height="830" data-path="integrations/images/netsuite-taxable-items.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/netsuite-taxable-items.png?w=280&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=30ebfba50a6c1625a077581ce6faa563 280w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/netsuite-taxable-items.png?w=560&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=0068c6594aecbabaee7a4a98ede71e21 560w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/netsuite-taxable-items.png?w=840&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=a88064467c3160ac5fe633f416732751 840w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/netsuite-taxable-items.png?w=1100&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=4ada2521c44be20c0438557a029e4d70 1100w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/netsuite-taxable-items.png?w=1650&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=0d180d2e33be40de3d57cf2727ecafd4 1650w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/netsuite-taxable-items.png?w=2500&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=005654905d06fa26f1d4e89c8e3f7d4d 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Connecting Lago to NetSuite
@@ -23665,8 +24958,8 @@ Enter the required integration details and follow these steps:
 
 The Client Credentials will be displayed. **Copy the `Consumer Key/Client ID` and `Consumer Secret/Client Secret`** and save them in a secure document for future reference, as this information will not be accessible once you leave the screen.
 
-<Frame caption="Create a new NetSuite Integration">
-  <img src="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/netstuite-tba-integration.png?fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=a8c34b0dd01da9ec2874b39812faee4e" data-og-width="2860" width="2860" data-og-height="1592" height="1592" data-path="integrations/images/netstuite-tba-integration.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/netstuite-tba-integration.png?w=280&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=bbb468eb034f0622002442219f14d264 280w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/netstuite-tba-integration.png?w=560&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=93089bdd89ba9fbb2ca6c5b8cf98f515 560w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/netstuite-tba-integration.png?w=840&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=bd9df02554760ec33074b3dc4793128c 840w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/netstuite-tba-integration.png?w=1100&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=cc88e1db00b8b7bbe3f000525693abc7 1100w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/netstuite-tba-integration.png?w=1650&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=e94e557e3881251171f3528a2ef5bf5f 1650w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/netstuite-tba-integration.png?w=2500&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=fc4cb0ce1c2b25691041b02514a8952e 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Create a new access token in NetSuite
@@ -23679,8 +24972,8 @@ The Client Credentials will be displayed. **Copy the `Consumer Key/Client ID` an
 
 The Token Credentials will be displayed. **Copy the `Token ID` and `Token Secret`** and save them in a secure document for future reference, as this information will not be accessible once you leave the screen.
 
-<Frame caption="Create a new NetSuite My Access Token">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/create-netsuite-token.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=63d76160ad91e24ec83ffbbf75fb5116" data-og-width="2892" width="2892" data-og-height="1344" height="1344" data-path="integrations/images/create-netsuite-token.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/create-netsuite-token.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=d9f265287dba3e6b681a798c9761607c 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/create-netsuite-token.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=2f41cd34115038b014994600cbe974a2 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/create-netsuite-token.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=0c79bf7d4b7ed71d11b1754cdc859ad0 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/create-netsuite-token.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=9a1a1185aabc529ef880e5d7d99480ba 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/create-netsuite-token.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=4d8200259d1777cc3bf6aa2900151750 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/create-netsuite-token.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=fb926bd48da233bc7be0c1cfbebeba7e 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Authentication flow
@@ -23706,8 +24999,8 @@ Here is a list of syncs and actions that Lago uses with NetSuite. Some are manda
 * `Credit Notes`: Syncs credit note data to NetSuite Credit Memos *(optional)*; and
 * `Payments`: Syncs payment data to NetSuite Customer Payments *(optional)*.
 
-<Frame caption="Connect Lago to NetSuite">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/connect-netsuite-to-lago.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=80b151fa5eb11750e0c1edb4ecc72bbe" data-og-width="3288" width="3288" data-og-height="1870" height="1870" data-path="integrations/images/connect-netsuite-to-lago.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/connect-netsuite-to-lago.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=cb7d3dfdd209f8a8f79017d24ed9e0be 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/connect-netsuite-to-lago.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=68d65bfd478e50f1aba9f0361b3b491b 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/connect-netsuite-to-lago.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=47812b46f83278765d174aa15c546c9f 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/connect-netsuite-to-lago.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=72c012d4b32549f4eb040592e7f25f17 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/connect-netsuite-to-lago.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=6f033566615a0fbe2f310024c5fc12b7 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/connect-netsuite-to-lago.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=6c4a8aca124a847877ce51ab71a1fe48 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Mapping items between Lago and NetSuite
@@ -23727,8 +25020,8 @@ Follow these steps to map items or tax items between Lago and NetSuite:
 4. Fill all the required fields; and
 5. Save your mapping.
 
-<Frame caption="Map items per entity and subsidiary between Lago and NetSuite">
-  <img src="https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/netsuite-entity-mapping.png?fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=5fcd8b92b7829e8ca3af43e487d35546" data-og-width="1451" width="1451" data-og-height="837" height="837" data-path="integrations/images/netsuite-entity-mapping.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/netsuite-entity-mapping.png?w=280&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=a9cfd318cafb91595783ee17c06f66c4 280w, https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/netsuite-entity-mapping.png?w=560&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=8201428b05475caf351da9e31443960c 560w, https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/netsuite-entity-mapping.png?w=840&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=f6c235a199ffe20046b72e8625495f3e 840w, https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/netsuite-entity-mapping.png?w=1100&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=038f9a865b868ebec7e63c9ac22fc6fa 1100w, https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/netsuite-entity-mapping.png?w=1650&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=ea887bcfbd32fb814bd4ad3925e7fc3e 1650w, https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/netsuite-entity-mapping.png?w=2500&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=4b6d56466ee55a6ad328ad5a94db907c 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 <Info>
@@ -23744,8 +25037,8 @@ To ensure continuous data synchronization between Lago and NetSuite, this fallba
   This mapping follows a one-to-many structure, meaning that a single fallback item can be used to handle multiple mapping issues.
 </Info>
 
-<Frame caption="Map a fallback item between Lago and NetSuite">
-  <img src="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/netsuite-fallback-item.png?fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=4d8243bb7a7f9335799d6245f83649ff" data-og-width="2384" width="2384" data-og-height="752" height="752" data-path="integrations/images/netsuite-fallback-item.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/netsuite-fallback-item.png?w=280&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=1246955d7d6bd78588a870d9350d2251 280w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/netsuite-fallback-item.png?w=560&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=709c95d07c3ed7735df29187606488c4 560w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/netsuite-fallback-item.png?w=840&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=af08879aff174e2674c82e271cd58814 840w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/netsuite-fallback-item.png?w=1100&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=ceca0638545d0931b0580505667f2946 1100w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/netsuite-fallback-item.png?w=1650&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=a3aab40a5f5d91522066bdf96cc97816 1650w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/netsuite-fallback-item.png?w=2500&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=1276454acedef57a900019af71c26757 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Mapping a tax item
@@ -23765,8 +25058,8 @@ Use the `id` for each item, found either in the UI or in the URL of the specific
   This mapping follows a one-to-many structure, meaning that a single tax item can be mapped to override all tax amounts issued by Lago.
 </Info>
 
-<Frame caption="Map a tax item between Lago and NetSuite">
-  <img src="https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/mapping-tax-item-netsuite.png?fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=b2c9e1b898589ab0c3a57007494eddde" data-og-width="1438" width="1438" data-og-height="978" height="978" data-path="integrations/images/mapping-tax-item-netsuite.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/mapping-tax-item-netsuite.png?w=280&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=e20b69e45fac6cd566242def41f5b4f9 280w, https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/mapping-tax-item-netsuite.png?w=560&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=690c4fc3250a5a91ce44f40db203e84c 560w, https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/mapping-tax-item-netsuite.png?w=840&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=0cbde9be85b191e2b5914960f57fa880 840w, https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/mapping-tax-item-netsuite.png?w=1100&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=b8afce8238b862617c5e5f425e23c95d 1100w, https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/mapping-tax-item-netsuite.png?w=1650&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=b1d71b304e57ee02273619cfb4722aac 1650w, https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/mapping-tax-item-netsuite.png?w=2500&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=548340b76caf34c83cf602fda3fb03f0 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Mapping default objects
@@ -23779,8 +25072,8 @@ whenever any of these objects appear on the final invoice sent to NetSuite. You 
   This mapping follows a one-to-many structure, meaning a single item can handle multiple mappings for coupons, credit notes, subscription fees, minimum commitments, and prepaid credits.
 </Info>
 
-<Frame caption="Map default items between Lago and NetSuite">
-  <img src="https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/mapping-default-items-netsuite.png?fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=d61fe929ecb657d575cd727aaa9e75ca" data-og-width="1458" width="1458" data-og-height="981" height="981" data-path="integrations/images/mapping-default-items-netsuite.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/mapping-default-items-netsuite.png?w=280&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=3f73d6b5b11289d9e6185e0eccdbeaa6 280w, https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/mapping-default-items-netsuite.png?w=560&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=e818162ffecaf65388db752e3df9a859 560w, https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/mapping-default-items-netsuite.png?w=840&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=769949f2549f74c97a740e159145064a 840w, https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/mapping-default-items-netsuite.png?w=1100&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=fbdcf0c2f5780c43a5ae014b5150e97f 1100w, https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/mapping-default-items-netsuite.png?w=1650&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=2b0e3349a3f4312bdedf46e41b43788b 1650w, https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/mapping-default-items-netsuite.png?w=2500&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=40091a94f419426f5a3223c58acb7850 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Mapping custom objects
@@ -23793,8 +25086,8 @@ You can override the default mapping for each Lago entity or NetSuite Subsidiary
   This mapping follows a one-to-one structure, meaning each billable metric or add-on must be mapped to a specific NetSuite item.
 </Info>
 
-<Frame caption="Map custom items between Lago and NetSuite">
-  <img src="https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/mapping-custom-items-netsuite.png?fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=e16372bfc57049e757d73ee551585332" data-og-width="1416" width="1416" data-og-height="906" height="906" data-path="integrations/images/mapping-custom-items-netsuite.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/mapping-custom-items-netsuite.png?w=280&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=6c60b25017c560ac7e9445ecd0408c56 280w, https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/mapping-custom-items-netsuite.png?w=560&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=1143165facffa85a1cd87a46100e87c0 560w, https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/mapping-custom-items-netsuite.png?w=840&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=b38479bd657f494845c0bada74d9f800 840w, https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/mapping-custom-items-netsuite.png?w=1100&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=a3fbe15ddd2d60289b927a6a91381318 1100w, https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/mapping-custom-items-netsuite.png?w=1650&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=ff485d25a6a8acf49d8c1f5b3bfd71e0 1650w, https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/mapping-custom-items-netsuite.png?w=2500&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=cc2a734ebfcebd0fc9c2326d2bb514c8 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Mapping currencies between Lago and NetSuite
@@ -23807,8 +25100,8 @@ This ensures that all financial data is accurately represented and synchronized 
 3. Click the **Add Currency mapping** button; and
 4. Map the Lago currency code with the currency ID used in NetSuite.
 
-<Frame caption="Map currencies between Lago and NetSuite">
-  <img src="https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/netsuite-currency-mapping.png?fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=1231174d97ea078c22137b8469400d05" data-og-width="1442" width="1442" data-og-height="968" height="968" data-path="integrations/images/netsuite-currency-mapping.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/netsuite-currency-mapping.png?w=280&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=e7e24f91d5d2884d754aa501bbde743d 280w, https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/netsuite-currency-mapping.png?w=560&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=4deabff55563fe0f91019f6aeca4527f 560w, https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/netsuite-currency-mapping.png?w=840&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=8cdb3daf0811985d4ce85077a34d766b 840w, https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/netsuite-currency-mapping.png?w=1100&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=6ab6e8cd8149dc56913683eeefc09a3d 1100w, https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/netsuite-currency-mapping.png?w=1650&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=684312d02ac0a2408ee45c2670da7aa7 1650w, https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/netsuite-currency-mapping.png?w=2500&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=9b5808b7c3fa194f082e301dbaa46dd2 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Customers synchronization
@@ -23829,8 +25122,8 @@ If the customer is successfully created in NetSuite, a new field will be display
   Customer creation from Lago to NetSuite happens in real-time with only a few seconds of delay.
 </Info>
 
-<Frame caption="Lago customer integrated with NetSuite">
-  <img src="https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/sync-customers-netsuite.png?fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=fa84f22cdf6785724db0610dc16dd730" data-og-width="1701" width="1701" data-og-height="799" height="799" data-path="integrations/images/sync-customers-netsuite.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/sync-customers-netsuite.png?w=280&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=82c0239a56e426cfad7ce3e610dbee1d 280w, https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/sync-customers-netsuite.png?w=560&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=b7bc25377cbb748f46a0bf8069c5273f 560w, https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/sync-customers-netsuite.png?w=840&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=cf3510eca624a8247c91e629a9684b90 840w, https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/sync-customers-netsuite.png?w=1100&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=324d7a7aa76d00384f4c7760d5719767 1100w, https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/sync-customers-netsuite.png?w=1650&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=a2106e03bc5e5a4aa22ef511e981d694 1650w, https://mintcdn.com/lago-docs/L98tGNZj-YiXbIo-/integrations/images/sync-customers-netsuite.png?w=2500&fit=max&auto=format&n=L98tGNZj-YiXbIo-&q=85&s=4beafd2eb65f94a60a80eb26d5f25116 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 The second option is to **import an existing NetSuite customer to a Lago customer**. Follow these steps:
@@ -23859,8 +25152,8 @@ If the invoice is successfully created in NetSuite, a new field will be displaye
   Invoice creation from Lago to NetSuite happens in real-time with only a few seconds of delay.
 </Info>
 
-<Frame caption="Sync Lago invoices to NetSuite">
-  <img src="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/sync-invoices-netsuite.png?fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=138ffe3d14f171fe12c32b929be37e5b" data-og-width="2832" width="2832" data-og-height="1890" height="1890" data-path="integrations/images/sync-invoices-netsuite.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/sync-invoices-netsuite.png?w=280&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=ba3171839997f090b736f8791360325c 280w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/sync-invoices-netsuite.png?w=560&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=4c88c9a1f427ef3db994faff3ff3a1fe 560w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/sync-invoices-netsuite.png?w=840&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=5c9704f9605cbd526dbd7888f11a3552 840w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/sync-invoices-netsuite.png?w=1100&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=8ecaaa6f005976320b5b550e8e719dd5 1100w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/sync-invoices-netsuite.png?w=1650&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=e5f93f6364d4f30105e6cf6162e17c36 1650w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/sync-invoices-netsuite.png?w=2500&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=9f7270edc88dae99849d1b98160ccafd 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Credit Notes synchronization
@@ -23915,8 +25208,8 @@ This ensures that your Lago instance is properly configured to communicate with 
 
 There you go, Lago is fully connected to Xero!
 
-<Frame caption="Granting access to Xero">
-  <img src="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-grant-access-lago.png?fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=136dcfdc508d4455ac20cd92ca9a0d07" data-og-width="1704" width="1704" data-og-height="1274" height="1274" data-path="integrations/images/xero-grant-access-lago.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-grant-access-lago.png?w=280&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=6a8abe996a41098fa5cac165692fa105 280w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-grant-access-lago.png?w=560&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=78bde6b6e1cf0e78e2f5e474a0fe5a0b 560w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-grant-access-lago.png?w=840&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=38559d471a47fac75ded96f73c48177e 840w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-grant-access-lago.png?w=1100&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=d469947557008e44473584c282448c84 1100w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-grant-access-lago.png?w=1650&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=9def0658b3587e28f0c1042e8e3f302a 1650w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-grant-access-lago.png?w=2500&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=cddd21cb972256cd38328dd4989a2652 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Enable actions and syncs
@@ -23930,8 +25223,8 @@ Here is a list of syncs and actions that Lago uses with Xero. Some are mandatory
 * `Credit Notes`: Syncs credit note data to Xero *(optional)*; and
 * `Payments`: Syncs payment data to Xero *(optional)*.
 
-<Frame caption="Granting access to Xero">
-  <img src="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-syncs-and-actions.png?fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=66956b6c07a4508bd59561103ca3679d" data-og-width="2172" width="2172" data-og-height="1416" height="1416" data-path="integrations/images/xero-syncs-and-actions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-syncs-and-actions.png?w=280&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=eefadf3561c6dab06780b7c821eddd13 280w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-syncs-and-actions.png?w=560&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=626ff82213aee3dd289fccb6aae8c8e2 560w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-syncs-and-actions.png?w=840&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=1197be77e5912525e6899cf6722a3e6e 840w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-syncs-and-actions.png?w=1100&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=7a8fec385c2e2660ff4e39ae1b42caa9 1100w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-syncs-and-actions.png?w=1650&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=d0923dc89f2afa2fe782f8390ddd3b5c 1650w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-syncs-and-actions.png?w=2500&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=199e6ed68bcf8d612aca4d530a570d76 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Mapping items between Lago and Xero
@@ -23955,8 +25248,8 @@ To ensure continuous data synchronization between Lago and Xero, this fallback i
   This mapping follows a one-to-many structure, meaning that a single fallback item can be used to handle multiple mapping issues.
 </Info>
 
-<Frame caption="Map a fallback item between Lago and Xero">
-  <img src="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-mapping-fallback-item.png?fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=e77837d63e7aff761b0e1e5ef4f4709d" data-og-width="2092" width="2092" data-og-height="1242" height="1242" data-path="integrations/images/xero-mapping-fallback-item.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-mapping-fallback-item.png?w=280&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=849f74bda445e6f92f3437d3d79fdb5e 280w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-mapping-fallback-item.png?w=560&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=69e18a0ddebb968fafa9803e42a7af92 560w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-mapping-fallback-item.png?w=840&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=b5f11bb5d7a1967b28e2f4f201bff621 840w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-mapping-fallback-item.png?w=1100&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=952b09b69b506d7c63da8c648804ca48 1100w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-mapping-fallback-item.png?w=1650&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=8196a6b20a42fd38555d91f945d1fc54 1650w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-mapping-fallback-item.png?w=2500&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=5382cc4e65703c28c9673c3d897d3fee 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Mapping a payment account (mandatory)
@@ -23972,8 +25265,8 @@ To set up a payment account in Xero, follow these steps:
 
 In Lago, you can now map it in the dedicated section '**Account linked to payments**'.
 
-<Frame caption="Map a fallback item between Lago and Xero">
-  <img src="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-create-payment-account.png?fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=46159cc8ebefb9bab73989fa04a7fa7a" data-og-width="2176" width="2176" data-og-height="1386" height="1386" data-path="integrations/images/xero-create-payment-account.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-create-payment-account.png?w=280&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=c540f8ea4105cb6c03c291b9fceb0009 280w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-create-payment-account.png?w=560&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=085a694c6b32552ee64da4467509c828 560w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-create-payment-account.png?w=840&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=c64420bd6c7d126a34808cad728b60aa 840w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-create-payment-account.png?w=1100&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=fbca42295842c131e23db6230d81e229 1100w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-create-payment-account.png?w=1650&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=f3d03b80ec0ba82c8cd80c2bffe5bd9b 1650w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-create-payment-account.png?w=2500&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=1670120d7d014c0bcfec8f1f2534a090 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Mapping custom objects
@@ -23985,8 +25278,8 @@ You need to map each of these individually. Lago will use the mapped items whene
   This mapping follows a one-to-one structure, meaning each billable metric or add-on must be mapped to a specific Xero item.
 </Info>
 
-<Frame caption="Map custom items between Lago and Xero">
-  <img src="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-mapping-custom-objects.png?fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=fe85c274e9dbe82d23b3aae7a5f3f400" data-og-width="2092" width="2092" data-og-height="1232" height="1232" data-path="integrations/images/xero-mapping-custom-objects.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-mapping-custom-objects.png?w=280&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=bb89a4aaf7a921e78c5dfb3ad616a97a 280w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-mapping-custom-objects.png?w=560&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=37ec3d51b73924236e5f1c6cb6869fd4 560w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-mapping-custom-objects.png?w=840&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=19b8991b694e0b73bc430327c4a5a060 840w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-mapping-custom-objects.png?w=1100&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=8a781d6baa843551bd65489cc8f7e518 1100w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-mapping-custom-objects.png?w=1650&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=8d7d4e4edceed71722ca6fd44a70651b 1650w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-mapping-custom-objects.png?w=2500&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=aa135cec45f3a1750f7c6be786a31052 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Customers synchronization
@@ -24006,8 +25299,8 @@ If the customer is successfully created in Xero, a new field will be displayed i
   Customer creation from Lago to Xero happens in real-time with only a few seconds of delay.
 </Info>
 
-<Frame caption="Lago customer integrated with Xero">
-  <img src="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-sync-customers.png?fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=b2f8bb8271f0afc2ce8cf9ed33d18391" data-og-width="2368" width="2368" data-og-height="992" height="992" data-path="integrations/images/xero-sync-customers.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-sync-customers.png?w=280&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=042c4265d037d56d143030b5a77b7675 280w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-sync-customers.png?w=560&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=4f81251b5d873d16dcaf47ae95dcf585 560w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-sync-customers.png?w=840&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=03ba2ba7cad4911d70b37aaa3c6b1577 840w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-sync-customers.png?w=1100&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=4327f5006d46c13331f0c05f9241e343 1100w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-sync-customers.png?w=1650&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=a52830360dc0c7802ed54b66d48ecebf 1650w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-sync-customers.png?w=2500&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=6a3b7893b45c7228d77991cabc769e79 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 The second option is to **import an existing Xero customer to a Lago customer**. Follow these steps:
@@ -24052,8 +25345,8 @@ If the invoice is successfully created in Xero, a new field will be displayed in
   Invoice creation from Lago to Xero happens in real-time with only a few seconds of delay.
 </Info>
 
-<Frame caption="Sync Lago invoices to Xero">
-  <img src="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-sync-invoices.png?fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=f3e2d051220bb2c7295adcf257080a41" data-og-width="2470" width="2470" data-og-height="1282" height="1282" data-path="integrations/images/xero-sync-invoices.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-sync-invoices.png?w=280&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=536ff8a2435ac4f12de743de75f47fff 280w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-sync-invoices.png?w=560&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=398aeb7459e6d83a4f1d064a993c07c4 560w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-sync-invoices.png?w=840&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=7403785be25cad2f18c4d079fa378db3 840w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-sync-invoices.png?w=1100&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=d1365e5651f427088d0e2680a184157d 1100w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-sync-invoices.png?w=1650&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=84342e829924fab2ef2bfb20911b625e 1650w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/xero-sync-invoices.png?w=2500&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=2e9c54acb5f6b28d79627bca5ca3e95e 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 **Here is the list of fields that is currently synced to Xero:**
@@ -24128,8 +25421,8 @@ When one of your customers is overconsuming during a period, you might need to w
 
 Here is a full workflow to create an alerting system based on your customers' current usage, using [N8N](https://n8n.io/), a powerful automation tool for developers.
 
-<Frame caption="N8N Alerting Workflow">
-  <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/n8n-current-usage-ffe518dc30433d5f993f3cfb67a31374.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=c075dfc7a1b578988ab22f5b41a7c08f" data-og-width="1582" width="1582" data-og-height="528" height="528" data-path="integrations/alerting/images/n8n-current-usage-ffe518dc30433d5f993f3cfb67a31374.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/n8n-current-usage-ffe518dc30433d5f993f3cfb67a31374.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=74d76664c50a70c238d522c9cad9139b 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/n8n-current-usage-ffe518dc30433d5f993f3cfb67a31374.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=9329f6cda847a075fe912913cbf778e3 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/n8n-current-usage-ffe518dc30433d5f993f3cfb67a31374.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=c08e0ec8cf515a9bac2b1fb5be0e5f75 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/n8n-current-usage-ffe518dc30433d5f993f3cfb67a31374.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=31cd55e45420f473282428d0a6d6a2b0 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/n8n-current-usage-ffe518dc30433d5f993f3cfb67a31374.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=e32fba23b5b4317493eae03b617786e6 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/n8n-current-usage-ffe518dc30433d5f993f3cfb67a31374.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=995bd576481e1e95b302cb3dc23ccc16 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 In this example, we are going to build an alert anytime a usage threshold is overcome. Here is a summary of this workflow:
@@ -24150,8 +25443,8 @@ The first node is repeatedly and automatically triggering the automation at a de
 
 This will trigger the flow automatically every 10 minutes. You can obviously change the value and the units to your preferred interval.
 
-<Frame caption="Cron expression">
-  <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/cron-alerting-a3cc55668cedb59003c788201dcfaf16.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=5279fc885f85e09ba9a07c88cbe597bc" data-og-width="2426" width="2426" data-og-height="702" height="702" data-path="integrations/alerting/images/cron-alerting-a3cc55668cedb59003c788201dcfaf16.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/cron-alerting-a3cc55668cedb59003c788201dcfaf16.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=2680cdb7bb68938e278c35622cddf216 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/cron-alerting-a3cc55668cedb59003c788201dcfaf16.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=48c45b85b682de4b5f9fd8444a06c5fa 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/cron-alerting-a3cc55668cedb59003c788201dcfaf16.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=bb8e9b47a86fe3bdd744fe055072a306 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/cron-alerting-a3cc55668cedb59003c788201dcfaf16.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=c57ae68d617017fb0d0b989fa1348ec1 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/cron-alerting-a3cc55668cedb59003c788201dcfaf16.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=c195d7f013b02637e1b2d38479e90523 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/cron-alerting-a3cc55668cedb59003c788201dcfaf16.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=3a03cf34fcb5700f652461b16d69e2ff 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## 2nd Node - Catch customers' current usage with a HTTP Request
@@ -24164,8 +25457,8 @@ This node is used to fetch current usage from Lago API, using a HTTP request.
 4. Make sure to set the `API_KEY` and the `Content-Type` as headers of your request; and
 5. Execute the node to fetch the payload from Lago's API.
 
-<Frame caption="Customer current usage">
-  <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/current-usage-http-request-f534e90c3cc02f462a65c859218ac063.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=3429e12a1edd5be24e332f9d7a9f40c1" data-og-width="2406" width="2406" data-og-height="812" height="812" data-path="integrations/alerting/images/current-usage-http-request-f534e90c3cc02f462a65c859218ac063.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/current-usage-http-request-f534e90c3cc02f462a65c859218ac063.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=b8bacb62dfef6a0c34e34766b211d859 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/current-usage-http-request-f534e90c3cc02f462a65c859218ac063.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=901f07bdab0e7c14e11e8279cfeaed1c 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/current-usage-http-request-f534e90c3cc02f462a65c859218ac063.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=df4df13e5d519291a01529667a116006 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/current-usage-http-request-f534e90c3cc02f462a65c859218ac063.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=28d075975ac0bca3baefbd108dc5a3a8 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/current-usage-http-request-f534e90c3cc02f462a65c859218ac063.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=098a6dd7a0dbf90a6a324b66eaf225f5 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/current-usage-http-request-f534e90c3cc02f462a65c859218ac063.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=0cab870929dfd8ff8feacdee737ede3e 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## 3rd Node - IF conditional statement to trigger messages under conditions
@@ -24185,8 +25478,8 @@ It is important to mention that:
 * You can add as many conditions as you need;
 * You could add an action when the condition is `FALSE`.
 
-<Frame caption="Customer current usage with if statement">
-  <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/if-statement-current-usage-4186fee96e606f9554fa1bbcd6f07f5b.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=4fba6213a0e749a27ec5143e3cb817c0" data-og-width="2418" width="2418" data-og-height="896" height="896" data-path="integrations/alerting/images/if-statement-current-usage-4186fee96e606f9554fa1bbcd6f07f5b.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/if-statement-current-usage-4186fee96e606f9554fa1bbcd6f07f5b.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=1d50416f9c9e87bb46ab48fa0cdd5581 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/if-statement-current-usage-4186fee96e606f9554fa1bbcd6f07f5b.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=07010fc773531a7ec41578b076f0f531 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/if-statement-current-usage-4186fee96e606f9554fa1bbcd6f07f5b.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=33b0361c338b3c69db679428fbfb8897 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/if-statement-current-usage-4186fee96e606f9554fa1bbcd6f07f5b.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=1c26ad8ce29e061af8544e6dcbe75e8b 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/if-statement-current-usage-4186fee96e606f9554fa1bbcd6f07f5b.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=959cffe30ad5344a540ef8e4d7a3269e 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/if-statement-current-usage-4186fee96e606f9554fa1bbcd6f07f5b.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=3097e183ca0425840a713a32ab0abc34 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## 4th Node - Send an alert message to Slack
@@ -24204,11 +25497,11 @@ This last node is used to trigger the message. In the example, we use a Slack ch
 </Tip>
 
 <Frame>
-  <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/slack-alert-current-usage-247e699c94c1e5ec0f8adaac4b7abe8e.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=0bbfbc9fbfac3cf33a0ddaa11479deca" data-og-width="2284" width="2284" data-og-height="1068" height="1068" data-path="integrations/alerting/images/slack-alert-current-usage-247e699c94c1e5ec0f8adaac4b7abe8e.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/slack-alert-current-usage-247e699c94c1e5ec0f8adaac4b7abe8e.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=38dfa4931998b7160a1c4a05066be0a1 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/slack-alert-current-usage-247e699c94c1e5ec0f8adaac4b7abe8e.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=caa867aecf5c207e5293ad7eacdbc504 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/slack-alert-current-usage-247e699c94c1e5ec0f8adaac4b7abe8e.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=7cc0ae21e81c0126628e3e31e0693c24 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/slack-alert-current-usage-247e699c94c1e5ec0f8adaac4b7abe8e.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=130250de6b0215f8dd127716d4b10751 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/slack-alert-current-usage-247e699c94c1e5ec0f8adaac4b7abe8e.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=da354b01f0428d81a10d44a63c77d303 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/slack-alert-current-usage-247e699c94c1e5ec0f8adaac4b7abe8e.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=0aaf29263edaefaee2a9b5d8f4e4c73d 2500w" />
+  <img />
 </Frame>
 
 <Frame>
-  <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/slack-alert-current-usage-message-dcd840bb5aa02098873410a83eb40776.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=f96a9e7442e9c0962a05b5d7c4909d14" data-og-width="1802" width="1802" data-og-height="356" height="356" data-path="integrations/alerting/images/slack-alert-current-usage-message-dcd840bb5aa02098873410a83eb40776.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/slack-alert-current-usage-message-dcd840bb5aa02098873410a83eb40776.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=a03405795a8e5d24111e49c7fbc7e5ed 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/slack-alert-current-usage-message-dcd840bb5aa02098873410a83eb40776.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=96cbe0cf3434c061c018fadf4fb2d229 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/slack-alert-current-usage-message-dcd840bb5aa02098873410a83eb40776.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=4ef75ca9625920ddf6e3d6370b5e96ed 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/slack-alert-current-usage-message-dcd840bb5aa02098873410a83eb40776.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=d71086acba592b5df51b628a05af663f 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/slack-alert-current-usage-message-dcd840bb5aa02098873410a83eb40776.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=8a375c62fc61dc1827dbeffb0af49105 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/slack-alert-current-usage-message-dcd840bb5aa02098873410a83eb40776.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=caade50850f12841db3507826c12c6ad 2500w" />
+  <img />
 </Frame>
 
 
@@ -24221,8 +25514,8 @@ Here is a typical use case of using Lago with Zapier to create powerful alerting
 
 ## Invoice Alerting Example (with Zapier)
 
-<Frame caption="invoice alerting flow">
-  <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/invoice-alerting-flow-6c86d0faab38b7740a20925797099c70.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=2292b4e46ab092c55ac33931ddcb2e9d" data-og-width="1444" width="1444" data-og-height="322" height="322" data-path="integrations/alerting/images/invoice-alerting-flow-6c86d0faab38b7740a20925797099c70.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/invoice-alerting-flow-6c86d0faab38b7740a20925797099c70.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=8d95d7de801293bcaebbcfcd7c91a293 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/invoice-alerting-flow-6c86d0faab38b7740a20925797099c70.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=4282d0c23f3aac4b6a947a3e3e5f0fce 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/invoice-alerting-flow-6c86d0faab38b7740a20925797099c70.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=8e2eb4032f711e78203b3f30a56a1af1 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/invoice-alerting-flow-6c86d0faab38b7740a20925797099c70.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=6b0cd395b585ef50d1eaefa45c22a75e 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/invoice-alerting-flow-6c86d0faab38b7740a20925797099c70.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=bc2d83ef1c0be803b4ba6e020da409aa 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/invoice-alerting-flow-6c86d0faab38b7740a20925797099c70.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=f59de6d8e51dfe175d000bd2c0eb1444 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 In this example, we are going to **build an alert anytime a new invoice is emitted**. To create this workflow, we are using:
@@ -24231,8 +25524,8 @@ In this example, we are going to **build an alert anytime a new invoice is emitt
 2. Zapier as an automation tool, to catch, tranform and send the data; and
 3. Slack as the "receiver" to alert your team anytime a new invoice is created.
 
-<Frame caption="Zapier alerting flow">
-  <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/zapier-flow-invoice-alerting-6916f7acabd57ddc10125d0fe1b9f7e1.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=a69497e86c4674d4d766d15c26b74344" data-og-width="1800" width="1800" data-og-height="744" height="744" data-path="integrations/alerting/images/zapier-flow-invoice-alerting-6916f7acabd57ddc10125d0fe1b9f7e1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/zapier-flow-invoice-alerting-6916f7acabd57ddc10125d0fe1b9f7e1.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=8a1c45bf6f18ca725d6e7cf2c896f6d5 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/zapier-flow-invoice-alerting-6916f7acabd57ddc10125d0fe1b9f7e1.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=99eef254cf2ed016cf2f2cb184428d13 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/zapier-flow-invoice-alerting-6916f7acabd57ddc10125d0fe1b9f7e1.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=de7cb23b05c1a295e41f19510a91c608 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/zapier-flow-invoice-alerting-6916f7acabd57ddc10125d0fe1b9f7e1.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=f485a3e31e1f7d1c05f6fa9cbf916757 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/zapier-flow-invoice-alerting-6916f7acabd57ddc10125d0fe1b9f7e1.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=1dc0ba1299f8a1b02ce938c44badf2f5 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/zapier-flow-invoice-alerting-6916f7acabd57ddc10125d0fe1b9f7e1.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=4d2d2392c478706a83961eec129cec67 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## 1. Catch a webhook when a new invoice is emitted
@@ -24255,7 +25548,7 @@ In Zapier, create a second action by clicking the `+` icon. This new event actio
 4. Run the script (code snippet below) in the **Code** section;
 5. Test the action. If valid, it returns a breakdown of fields.
 
-```javascript  theme={"dark"}
+```javascript theme={"dark"}
 var obj = JSON.parse(inputData.payload);
 
 if(obj.object_type == "invoice"){
@@ -24263,12 +25556,12 @@ if(obj.object_type == "invoice"){
 }
 ```
 
-<Frame caption="Script to tranform the invoice payload">
-  <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/script-invoice-alerting-ad7c8393f51e76b0601c2e153b1ee1dc.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=c5cb0c77f8d0a9ffc70fb8f7a7bba54b" data-og-width="1804" width="1804" data-og-height="1290" height="1290" data-path="integrations/alerting/images/script-invoice-alerting-ad7c8393f51e76b0601c2e153b1ee1dc.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/script-invoice-alerting-ad7c8393f51e76b0601c2e153b1ee1dc.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=656486dca10c29c272c21d7ae1f095c8 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/script-invoice-alerting-ad7c8393f51e76b0601c2e153b1ee1dc.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=2a6f59f425b1d3ac3be94805a34925ad 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/script-invoice-alerting-ad7c8393f51e76b0601c2e153b1ee1dc.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=0c8604fd8a326f5875af1b1c6219fac2 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/script-invoice-alerting-ad7c8393f51e76b0601c2e153b1ee1dc.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=1bb050918cb2954bf6b2eaf51193521b 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/script-invoice-alerting-ad7c8393f51e76b0601c2e153b1ee1dc.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=8c77add28a1a2dfde21bd1b7d8253d06 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/script-invoice-alerting-ad7c8393f51e76b0601c2e153b1ee1dc.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=e050b195ef28d452df44791242c6843b 2500w" />
+<Frame>
+  <img />
 </Frame>
 
-<Frame caption="Breakdown of the invoice payload">
-  <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/alerting-fields-breakdown-33a58492027cdcbfe5562d1c1cd96397.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=92c1b4cecc269f70f8cb1a8275ad06d6" data-og-width="1806" width="1806" data-og-height="1320" height="1320" data-path="integrations/alerting/images/alerting-fields-breakdown-33a58492027cdcbfe5562d1c1cd96397.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/alerting-fields-breakdown-33a58492027cdcbfe5562d1c1cd96397.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=c12afa94b745ab51d273fc4ae25984aa 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/alerting-fields-breakdown-33a58492027cdcbfe5562d1c1cd96397.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=9859c3c388fa171fab112ee9a5fae2c0 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/alerting-fields-breakdown-33a58492027cdcbfe5562d1c1cd96397.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=a81e03150612c42648359c20744ba11a 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/alerting-fields-breakdown-33a58492027cdcbfe5562d1c1cd96397.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=14e8f2d4d99c94925aed8d806118b1e3 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/alerting-fields-breakdown-33a58492027cdcbfe5562d1c1cd96397.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=a3c72da2764137d5fc832b87abed4c8e 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/alerting-fields-breakdown-33a58492027cdcbfe5562d1c1cd96397.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=a7fd5bc042e0790845e0096986c33da5 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## 3. Send a message to a Slack Channel
@@ -24285,12 +25578,12 @@ In Zapier, create a third action by clicking the `+` icon. This new event action
 
 By testing and validating the entire Zap, a Slack message is sent anytime a new invoice is emitted by Lago. You can use the same message example as detailed below:
 
-<Frame caption="Breakdown of the invoice payload">
-  <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/slack-message-example-228799226dec5760962b69c5e7816daf.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=83344caf2ba61cf3d4bc493f2a884a42" data-og-width="1804" width="1804" data-og-height="884" height="884" data-path="integrations/alerting/images/slack-message-example-228799226dec5760962b69c5e7816daf.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/slack-message-example-228799226dec5760962b69c5e7816daf.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=2757c149db8963ec19ee64cab0370f7d 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/slack-message-example-228799226dec5760962b69c5e7816daf.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=7cd7e76f7a5bdfabe268130734ac01b4 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/slack-message-example-228799226dec5760962b69c5e7816daf.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=be578f1e1015427c2da44599ca184118 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/slack-message-example-228799226dec5760962b69c5e7816daf.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=cc427430d954421d07024bda054ee4d2 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/slack-message-example-228799226dec5760962b69c5e7816daf.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=4ecf899381430f8d656641d541bf7ff3 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/slack-message-example-228799226dec5760962b69c5e7816daf.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=0dd69631542042529189ce39e7a55c09 2500w" />
+<Frame>
+  <img />
 </Frame>
 
-<Frame caption="Slack text message">
-  <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/slack-test-message-alerting-f3d6a83c9a3468528ebc31d9e57c1a47.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=9c5819bd2c6843587f1509d0a35b1301" data-og-width="1644" width="1644" data-og-height="286" height="286" data-path="integrations/alerting/images/slack-test-message-alerting-f3d6a83c9a3468528ebc31d9e57c1a47.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/slack-test-message-alerting-f3d6a83c9a3468528ebc31d9e57c1a47.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=c4e51217d861a0c8914974f89c7fc3ca 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/slack-test-message-alerting-f3d6a83c9a3468528ebc31d9e57c1a47.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=8ee32dfa4ce390242c1a2e3487166a03 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/slack-test-message-alerting-f3d6a83c9a3468528ebc31d9e57c1a47.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=17630dac8d4fcbb44a301f4e63ce1aa3 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/slack-test-message-alerting-f3d6a83c9a3468528ebc31d9e57c1a47.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=5244abab84d1a6f631831e011de1a4e7 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/slack-test-message-alerting-f3d6a83c9a3468528ebc31d9e57c1a47.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=86990119aa0c2355e0b846b85501135f 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/alerting/images/slack-test-message-alerting-f3d6a83c9a3468528ebc31d9e57c1a47.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=a099bc72875d932e3c8b33bc19616358 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 
@@ -24317,16 +25610,16 @@ Lago syncs billing data to HubSpot in real-time.
   As Lago needs to sync billing data to HubSpot custom objects, your HubSpot account needs to be on the **Sales Hub Enterprise** plan.
 </Info>
 
-<Frame caption="Lago to HubSpot object mapping">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-crm-integration-objects-mapping.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=38d032e0fd593f1066da319382f7cf3c" data-og-width="4852" width="4852" data-og-height="3334" height="3334" data-path="integrations/images/hubspot-crm-integration-objects-mapping.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-crm-integration-objects-mapping.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=d49ee8514d90e44ff4e7a8299c0b20d1 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-crm-integration-objects-mapping.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=e0a2b33920a35346a26a3e84c39540f7 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-crm-integration-objects-mapping.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=92d8d201f06b8372c3dd546feda7115e 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-crm-integration-objects-mapping.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=44124049515b6cb0eea4396b3185ba88 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-crm-integration-objects-mapping.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=b63cc27fe786ab355a2a2b1c5077592b 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-crm-integration-objects-mapping.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=135554a188a08deed26d5292ab9cccc5 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Integration configuration
 
 ### oAuth connection
 
-<Frame caption="Connect Lago to HubSpot through an oAuth connection">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-connect-screen.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=aede79be375948fb2411ffe12c7e1c30" data-og-width="2960" width="2960" data-og-height="1614" height="1614" data-path="integrations/images/hubspot-integration-connect-screen.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-connect-screen.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=b6843fc3c6e19d2f607d0c164a94e824 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-connect-screen.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=93b1653a60c68582e7e9adeda72f6b0f 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-connect-screen.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=0b1d28acad8751cc318bc3b0db3d3b3f 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-connect-screen.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=7918a6140569061bc7deac4804c0b0d5 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-connect-screen.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=7f7972169345dc1c1697aec51c4df530 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-connect-screen.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=39d1dce8a81a696835c0fd4ccdbc2635 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 To fully integrate Lago with HubSpot, start by connecting your Lago instance to a new HubSpot connection. You can have an unlimited number of HubSpot connections. First, link your HubSpot account to Lago. Once connected, activate the specific syncs and actions required for your use case. This ensures that your Lago instance is properly configured to communicate with HubSpot, enabling seamless data synchronization and management.
@@ -24339,8 +25632,8 @@ To fully integrate Lago with HubSpot, start by connecting your Lago instance to 
 
 There you go, Lago is fully connected to HubSpot!
 
-<Frame caption="Lago to HubSpot - oAuth connection flow">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-oauth-flow.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=4fdaa2061cb2d1dc5de11dc8eeb585a9" data-og-width="2818" width="2818" data-og-height="914" height="914" data-path="integrations/images/hubspot-integration-oauth-flow.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-oauth-flow.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=cd1f45ffa7509697a17f48aaba33e35e 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-oauth-flow.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=5cf953a83299c4f30275cb5e34670c34 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-oauth-flow.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=1467a4dbf116ac81b6318968292f97aa 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-oauth-flow.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=db8c4167f030108e3dfb1ff1996265e2 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-oauth-flow.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=5520e1a4175c9e4c002ac533196ca8b0 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-oauth-flow.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=169842d1de0d6ab0b14fbfd3d297b9f8 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### List of scopes
@@ -24360,8 +25653,8 @@ These fields are used to sync customer data between HubSpot and Lago.
 * `lago_tax_identification_number`: your customer's tax identification number in Lago; and
 * `lago_customer_link`: the URL path to the related Lago customer.
 
-<Frame caption="Custom properties deployed by Lago to HubSpot Companies and Contacts">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-custom-properties.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=363058945ac35435cb019928cead3d46" data-og-width="2540" width="2540" data-og-height="1070" height="1070" data-path="integrations/images/hubspot-integration-custom-properties.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-custom-properties.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=d5f2e626436f6edce39014ae53a9c1b0 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-custom-properties.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=23f6e87b2369b2efed55bbec82f35ccc 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-custom-properties.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=9d45a197d8a86386f63c205e5fad663f 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-custom-properties.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=7765cc95132b31410d18858d6f7a9dfb 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-custom-properties.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=53f0d1e4a60e0c89dceb94efa2e41be4 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-custom-properties.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=9580632923e18b967e9ef2098519fda5 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 <Info>
@@ -24426,12 +25719,12 @@ When you create or update a customer in Lago, the information is synced in real 
 * If `customer.customer_type` in Lago is `individual`, the data is synced as a HubSpot Contact record.
 * If `customer.customer_type` is undefined, the data is synced using the default Customer Object set at the connection level.
 
-<Frame caption="Customer syncs from Lago to HubSpot">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-customer-sync.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=4d8626209275712404ba7d3093248c0e" data-og-width="2942" width="2942" data-og-height="1262" height="1262" data-path="integrations/images/hubspot-integration-customer-sync.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-customer-sync.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=7b53c78a730992c688a056dd657b6f57 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-customer-sync.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=f674bd60e8d4b7ad57d78f53226fb855 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-customer-sync.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=9f95490129088b491275bdcb1168c08b 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-customer-sync.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=1ba243895ef167679afff17892c5b225 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-customer-sync.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=43984a900ba01f0b352a724dd7a6bbb4 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-customer-sync.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=9bab8facffca2b81dfe12632dfa73341 2500w" />
+<Frame>
+  <img />
 </Frame>
 
-<Frame caption="Example of a Company created by Lago">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-create-company.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=c796ff7a1a6a393b2a54b2d8564de2d1" data-og-width="2814" width="2814" data-og-height="786" height="786" data-path="integrations/images/hubspot-integration-create-company.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-create-company.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=3b4c35251c6bcf85530f13e43726c79d 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-create-company.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=c769760cac40189c5cbec4fbfe43b6b5 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-create-company.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=91ce92d2ef335b50005c524fb01466c8 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-create-company.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=8906f7511c05469fcacf757fb59cfb6c 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-create-company.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=f32d3d63502d7740db5b74492f9d1360 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/hubspot-integration-create-company.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=2a0af39abdb9c3eb032179bd4decb5b7 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 You can instruct Lago to automatically create a new Company or Contact in your HubSpot account, or link an existing one by pasting a HubSpot ID into the corresponding Lago customer record.
@@ -24465,8 +25758,8 @@ Lago syncs billing data to Salesforce in real-time.
 
 ## Object mapping
 
-<Frame caption="Lago to Salesforce CPQ object mapping">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/lago-salesforce-cpq-object-mapping.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=a646ca0a131b710cf646e32ef0f65fc4" data-og-width="2426" width="2426" data-og-height="2329" height="2329" data-path="integrations/images/lago-salesforce-cpq-object-mapping.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/lago-salesforce-cpq-object-mapping.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=2074d19a816be433815b89f5159bb289 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/lago-salesforce-cpq-object-mapping.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=0095b532290d41a42a7ba341f83e8b33 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/lago-salesforce-cpq-object-mapping.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=683cadec47743f88e9504366f415465c 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/lago-salesforce-cpq-object-mapping.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=2e950f7399c86bfcca505d56116c9ba5 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/lago-salesforce-cpq-object-mapping.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=ad29af718137fd5132f097622beb3881 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/lago-salesforce-cpq-object-mapping.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=97320e73a33de731de51cf7ea43f9b0e 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Pre-requisite:
@@ -24488,8 +25781,8 @@ You can initiate the installation process **by clicking on the provided link**, 
 page where you can follow step-by-step instructions for a seamless integration. If you have any questions or need assistance
 during the installation, our dedicated support team is here to help you every step of the way.
 
-<Frame caption="Install Lago Salesforce App package">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-install-salesforce-cpq-package.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=9d37c98c5ba3798cd80ec730b3021b26" data-og-width="1134" width="1134" data-og-height="811" height="811" data-path="integrations/data/images/lago-install-salesforce-cpq-package.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-install-salesforce-cpq-package.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=dfec8a447bb0c9d552b2bee0138d2eae 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-install-salesforce-cpq-package.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=83d34977c0e752689522835984619e95 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-install-salesforce-cpq-package.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=d559fcb89287fb062df939f010c7b2cb 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-install-salesforce-cpq-package.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=64c9dfc8523c2f161c0bbdcbea9ce468 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-install-salesforce-cpq-package.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=2fae745c8921314625b780774eccaf45 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-install-salesforce-cpq-package.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=b4aa32b89bf7f6a80e12d92570c104b8 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 To ensure a successful installation, please follow these steps:
@@ -24616,8 +25909,8 @@ Lago syncs billing data to Salesforce in real-time.
 
 ## Object mapping
 
-<Frame caption="Lago to Salesforce object mapping">
-  <img src="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/lago-salesforce-object-mapping.png?fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=327cb949a5c44c2e85701e06dbc790e6" data-og-width="4852" width="4852" data-og-height="4802" height="4802" data-path="integrations/images/lago-salesforce-object-mapping.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/lago-salesforce-object-mapping.png?w=280&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=2f37cb43a2263743b00f0ec41450861e 280w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/lago-salesforce-object-mapping.png?w=560&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=7952a75790aabca7bd6e06655425f749 560w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/lago-salesforce-object-mapping.png?w=840&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=00e766ae3bda706245dee5ffa2225b31 840w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/lago-salesforce-object-mapping.png?w=1100&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=c9f2523916cb5f4244aa09816a1e0784 1100w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/lago-salesforce-object-mapping.png?w=1650&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=c7f1be66a5392a3936d4824de5b338ec 1650w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/lago-salesforce-object-mapping.png?w=2500&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=dd0a996e71ffed58598364150782a518 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## I. Integration configuration
@@ -24630,14 +25923,14 @@ To gain premium access to our Salesforce Package application, please don't hesit
 * Code
 * Salesforce Instance (URL of your Salesforce instance)
 
-<Frame caption="Create new Salesforce integration in Lago">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/create-salesforce-integration.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=8e702f7cc2e5996e8ad72a9d1029c77e" data-og-width="525" width="525" data-og-height="400" height="400" data-path="integrations/data/images/create-salesforce-integration.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/create-salesforce-integration.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=2e09b01c5fe05c52ffcdd4e57a2ed085 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/create-salesforce-integration.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=e053dedb0adb28acd1c6bc637c6d7c2e 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/create-salesforce-integration.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=287b12f2c322ac12a46cef8baf47ca1f 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/create-salesforce-integration.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=3a6bafbcc24b161716c4874cf7e42eb1 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/create-salesforce-integration.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=d360a10147ffd6a8b306dfda3f7e093a 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/create-salesforce-integration.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=06ede403d3d46b3430fbd2e6e84bd0ed 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 Make note of the integration code as shown in the connection details - you'll need this later:
 
-<Frame caption="Salesforce integration connection details">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/salesforce-integration-details.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=1248d6de1e17b52e1166b6612870321e" data-og-width="649" width="649" data-og-height="433" height="433" data-path="integrations/data/images/salesforce-integration-details.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/salesforce-integration-details.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=9c85646394fca314384fa769697aa0a2 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/salesforce-integration-details.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=bd1aa6d0b94eaa219d2babc42a6602bf 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/salesforce-integration-details.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=00385971c3c661228ddf80e2c51516cc 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/salesforce-integration-details.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=1544b6beba50ff5200669ece20cb45ff 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/salesforce-integration-details.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=499b7f1710e69e04cd44dc115d515d81 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/salesforce-integration-details.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=81a04e985bcaa24c7e13d7f26d5b69de 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Install Salesforce CRM Package
@@ -24646,8 +25939,8 @@ You can initiate the installation process **by clicking on the provided link**, 
 page where you can follow step-by-step instructions for a seamless integration. If you have any questions or need assistance
 during the installation, our dedicated support team is here to help you every step of the way.
 
-<Frame caption="Install Lago Salesforce App package">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-install-salesforce-package.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=4579cd3c2b53cc46bdeac3edf344bc9c" data-og-width="2598" width="2598" data-og-height="1492" height="1492" data-path="integrations/data/images/lago-install-salesforce-package.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-install-salesforce-package.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=e9b7a9f25c532adbe2de24f582d42946 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-install-salesforce-package.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=4a534dd654157a342d6acd121e5a3da2 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-install-salesforce-package.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=1e5b0a2ae64c1b234db845f439a39672 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-install-salesforce-package.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=fd78656bd44b2d425a1cb6fb3aeb908f 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-install-salesforce-package.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=03f6c766006092d31c5730c0c789d65e 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-install-salesforce-package.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=a3b3352450d92d65579c929797c92606 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 To ensure a successful installation, please follow these steps:
@@ -24668,18 +25961,18 @@ After installation in Salesforce CRM, set up a webhook URL in Salesforce to rece
 This involves **configuring a new "Site" in Salesforce's setup section**.
 Note that the four main actions described below should be performed by a Salesforce Admin and is only required during the initial setup.
 
-<Steps titleSize="h3">
-  <Step title="Access the Site section in Salesforce" titleSize="h3">
+<Steps>
+  <Step title="Access the Site section in Salesforce">
     1. Click the gear icon in the upper right to access **Salesforce Setup**;
     2. Search and navigate to the Sites section; and
     3. Create a new Site (see picture below).
 
-    <Frame caption="Create a new Site in Salesforce">
-      <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/data/images/create-new-site-salesforce.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=ed85aeb0165c9c1b4ece92ce0451d8ea" data-og-width="3008" width="3008" data-og-height="1872" height="1872" data-path="integrations/data/images/create-new-site-salesforce.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/data/images/create-new-site-salesforce.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=8676dd7ea03d17760a758ebdb0d91a1d 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/data/images/create-new-site-salesforce.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=6f325eaed1c6e38512547afe535ac0fb 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/data/images/create-new-site-salesforce.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=6cfa13d18a2d5379af804516d53b40ee 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/data/images/create-new-site-salesforce.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=9b19d0717cefdbd618444cc2ae7fa1ae 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/data/images/create-new-site-salesforce.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=00b45d190cd6b1050864ace2c66fb9dd 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/data/images/create-new-site-salesforce.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=57c6248853b0b6b92d504b42b6bb0348 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Step>
 
-  <Step title="Create a new Site in Salesforce" titleSize="h3">
+  <Step title="Create a new Site in Salesforce">
     When creating a new site, follow these steps:
 
     1. Set a unique **Site Label**;
@@ -24691,12 +25984,12 @@ Note that the four main actions described below should be performed by a Salesfo
     7. Don't forget to **save the new site**: and
     8. **Activate the newly created site** by going to the Site Details and clicking the `Activate` button.
 
-    <Frame caption="New site creation flow in Salesforce">
-      <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/new-site-creation-flow-salesforce.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=e7c06d136a9a177ebe38ee8fcc739f4f" data-og-width="3002" width="3002" data-og-height="1864" height="1864" data-path="integrations/data/images/new-site-creation-flow-salesforce.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/new-site-creation-flow-salesforce.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=0c0d62582d2cf567dd961709beeca44a 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/new-site-creation-flow-salesforce.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=d35a590f4a0105fbb2e795a843b0d297 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/new-site-creation-flow-salesforce.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=5b6f8633bebef177cc43db96b70bdf1d 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/new-site-creation-flow-salesforce.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=ff38b2a620f834d8deccecfbb5fe25bf 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/new-site-creation-flow-salesforce.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=58b9b80e4a78fd486e5d985fba3adac5 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/new-site-creation-flow-salesforce.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=8690b321201acfd88bf3be3467dc8dce 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Step>
 
-  <Step title="Edit Public Access Settings in Salesforce" titleSize="h3">
+  <Step title="Edit Public Access Settings in Salesforce">
     To edit Public Access Settings for your new Site:
 
     1. Visit the site and click **Public Access Settings**;
@@ -24704,12 +25997,12 @@ Note that the four main actions described below should be performed by a Salesfo
     3. Add `LagoWebHookSubscriptionController` to **Enabled Apex Classes**; and
     4. Save your changes.
 
-    <Frame caption="Edit Salesforce's site Public Access Settings">
-      <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/edit-public-access-settings-salesforce.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=5def29ad6c6b60a05f4f28ef3fb8f608" data-og-width="3008" width="3008" data-og-height="1238" height="1238" data-path="integrations/data/images/edit-public-access-settings-salesforce.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/edit-public-access-settings-salesforce.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=7faf3c8e1fd125ee51e30810d2a0eac8 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/edit-public-access-settings-salesforce.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=f16f3d90b7880e74a19cbdb588408f2c 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/edit-public-access-settings-salesforce.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=9ff5f452c2ed432973d4f38cca1c6811 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/edit-public-access-settings-salesforce.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=5023ba90bdb460da2adc3c29342bcc6a 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/edit-public-access-settings-salesforce.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=78d76f800b1bfbddfe6ee8cf8019a7db 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/edit-public-access-settings-salesforce.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=c8841e4681746ddde3af087321609f3c 2500w" />
+    <Frame>
+      <img />
     </Frame>
   </Step>
 
-  <Step title="Paste the Webhook URL into Your Lago App" titleSize="h3">
+  <Step title="Paste the Webhook URL into Your Lago App">
     To set up the webhook URL for real-time data syncing between Lago and Salesforce, follow these steps:
 
     1. Return to your newly created site;
@@ -24718,8 +26011,8 @@ Note that the four main actions described below should be performed by a Salesfo
     4. Add the `https://` prefix to this domain name (e.g., `https://lago.my.salesforce-sites.com`); and
     5. Append `/services/apexrest/lago/api/Webhooks/incoming/pushDetails/` to the domain name (e.g., `https://lago.my.salesforce-sites.com/services/apexrest/lago/api/Webhooks/incoming/pushDetails/`).
 
-    <Frame caption="Find Salesforce's site domain name">
-      <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/find-domain-url-salesforce.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=5364ebdf4baaf2644c4be193a1e71bdb" data-og-width="2992" width="2992" data-og-height="862" height="862" data-path="integrations/data/images/find-domain-url-salesforce.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/find-domain-url-salesforce.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=240b5d79b3d55b8498542a22bc17f6dc 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/find-domain-url-salesforce.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=c89c2c3cb5ddc12054588f1565072aaa 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/find-domain-url-salesforce.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=9d9d11317c1c1ff795cec9b546698ef0 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/find-domain-url-salesforce.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=8ab7aca54676c85fec819b5e40667e3b 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/find-domain-url-salesforce.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=8f00d6a83f8e4248001b9d79753cc518 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/find-domain-url-salesforce.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=f34b3d82704bf0e51b5db7e023a8b8e0 2500w" />
+    <Frame>
+      <img />
     </Frame>
 
     Now, go to your Lago app and past this webhook into the webhook’s settings:
@@ -24732,16 +26025,16 @@ Note that the four main actions described below should be performed by a Salesfo
 
     Congratulations! You're ready to sync real-time data from Lago to Salesforce! 🎉
 
-    <Frame caption="Paste Salesforce webhook URL to Lago">
-      <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/integrations/data/images/add-salesforce-webhook-url.gif?s=888f1af4a3801f7a412f21ec98ad699e" data-og-width="1160" width="1160" data-og-height="720" height="720" data-path="integrations/data/images/add-salesforce-webhook-url.gif" data-optimize="true" data-opv="3" />
+    <Frame>
+      <img />
     </Frame>
   </Step>
 </Steps>
 
 ### Establish and finalize connection
 
-<Frame caption="Connect your Lago instance to Salesforce Lago App">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/salesforce-package-api-connection.gif?s=9de33c424d0b97a67ff2ab25db668404" data-og-width="800" width="800" data-og-height="604" height="604" data-path="integrations/data/images/salesforce-package-api-connection.gif" data-optimize="true" data-opv="3" />
+<Frame>
+  <img />
 </Frame>
 
 **Option 1: Configure a standard API Base URL**
@@ -24803,8 +26096,8 @@ To establish a new customer connection between Lago and Salesforce, follow these
 * For new Salesforce customers: Enable the Create automatically this customer option
 * For existing Salesforce customers: Enter the corresponding 'Salesforce Account ID'
 
-<Frame caption="Customer external apps connection interface">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-connect-customer-external-apps.gif?s=f499f9c7db6efe8dee116d45b877a743" data-og-width="800" width="800" data-og-height="413" height="413" data-path="integrations/data/images/lago-connect-customer-external-apps.gif" data-optimize="true" data-opv="3" />
+<Frame>
+  <img />
 </Frame>
 
 <Info>
@@ -24851,14 +26144,14 @@ Salesforce Account is created first, and that the Lago Customer's `external_sale
   and populate the Lago customer field called `external_salesforce_id`.
 </Warning>
 
-<Frame caption="Salesforce Account with Lago Customer information">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-synced-account-salesforce.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=2439df2c180d15b38aeffacc408c8e2b" data-og-width="2540" width="2540" data-og-height="574" height="574" data-path="integrations/data/images/lago-synced-account-salesforce.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-synced-account-salesforce.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=ddbaaa4516d82d0f55757891bca2c6a8 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-synced-account-salesforce.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=eaa6d65c60d646efde76df27a954bb8c 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-synced-account-salesforce.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=752cfd5e521462aadb5e2db01faaca36 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-synced-account-salesforce.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=467cfab76f992cbda8f0a7f4b4108be1 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-synced-account-salesforce.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=b648538ec9231f5c01f7621e33e5b5bc 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-synced-account-salesforce.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=8d8134729ced1b2c26f1cc93f69df011 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Sync subscriptions to Salesforce
 
-<Frame caption="Sync subscriptions data from Lago to Salesforce">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/sync-lago-subscriptions-salesforce.gif?s=a7a0b5a4cad68070a1cfe9ec0ec1d460" data-og-width="1156" width="1156" data-og-height="720" height="720" data-path="integrations/data/images/sync-lago-subscriptions-salesforce.gif" data-optimize="true" data-opv="3" />
+<Frame>
+  <img />
 </Frame>
 
 Whenever a subscription is created for a Lago Customer, the subscription details will be automatically
@@ -24877,8 +26170,8 @@ Note that this subcription is automatically linked to a Salesforce Account:
 
 ### Sync invoices to Salesforce
 
-<Frame caption="Sync invoices data from Lago to Salesforce">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/sync-lago-invoices-salesforce.gif?s=de599a22f7cc52e645b4e3c39e3008ad" data-og-width="1152" width="1152" data-og-height="720" height="720" data-path="integrations/data/images/sync-lago-invoices-salesforce.gif" data-optimize="true" data-opv="3" />
+<Frame>
+  <img />
 </Frame>
 
 Whenever an invoice is issued for a Lago Customer, the invoice details will be automatically
@@ -24950,8 +26243,8 @@ You can leverage Salesforce `Flows` to execute actions in Lago. Lago provides se
 
 #### Flow: `Lago Template - Create Customer in Lago on Account Create`
 
-<Frame caption="Use Lago template to create a customer on Account creation">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/lago-salesforce-flows-template.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=31f79ddbba7b2156ed8face59c260c6e" data-og-width="2964" width="2964" data-og-height="1242" height="1242" data-path="integrations/images/lago-salesforce-flows-template.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/lago-salesforce-flows-template.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=6e8a91db3f3c4331ed066d237debad17 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/lago-salesforce-flows-template.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=6911e1262c0c6b4c51831716a18346a5 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/lago-salesforce-flows-template.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=81d6d17475c76860435a01bb3d30c77d 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/lago-salesforce-flows-template.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=bf738ec447f298b8cd8ee8f49d434813 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/lago-salesforce-flows-template.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=1406aaf00e1ff4974e38033677ab958e 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/lago-salesforce-flows-template.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=510f8448d5416397d40888fa262b8e93 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 To create a customer in Lago upon the creation of a Salesforce Account, utilize the Flow template provided by Lago.
@@ -24966,8 +26259,8 @@ To create a customer in Lago upon the creation of a Salesforce Account, utilize 
 You have the **flexibility to modify various aspects of this flow, including the trigger conditions and field mappings**.
 By default, the action is initiated when a Lago ID is absent. Additionally, you can customize how fields are mapped from your Salesforce instance to Lago. You can also configure `customer type` to 'Individual' or 'Company' which creating customer from Salesforce to Lago.
 
-<Frame caption="Customize the flow">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/account-customer-flow.gif?s=4da6d2e6a0f887365090a88acfec4ad5" data-og-width="928" width="928" data-og-height="588" height="588" data-path="integrations/images/account-customer-flow.gif" data-optimize="true" data-opv="3" />
+<Frame>
+  <img />
 </Frame>
 
 ### Create subscriptions (automation)
@@ -24993,8 +26286,8 @@ This Flow is used to create intermediate records in Lago Objects - `Lago Subscri
     The default setting triggers plan assignment when a Salesforce Account links to a Lago customer and the **opportunity status changes to closed-won**.
     You can customize this flow to suit your specific needs. Moreover, you have the option to adjust the subscription fields and subscription charges fields being synchronized from Salesforce to Lago.
 
-    <Frame caption="Customize the flow">
-      <img src="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/sync-subscriptions-salesforce-lago-flow.gif?s=286cb904c546a3656d93d2bafa7cbaaa" data-og-width="1491" width="1491" data-og-height="837" height="837" data-path="integrations/images/sync-subscriptions-salesforce-lago-flow.gif" data-optimize="true" data-opv="3" />
+    <Frame>
+      <img />
     </Frame>
   </Step>
 
@@ -25037,8 +26330,8 @@ We also have option to create subscriptions in Lago directly from Salesforce usi
 
 Open any account which has `lago_id` populated. Click on `Lago Subscription` button; it will pop-up Lago Screen (make sure you've entered correct `Front End URL` in Lago Base Configuration page); enter correct username and password. Save. A new subscription will be directly created in Lago. And, if Webhooks are configured correctly, it will also create `Lago Subscription` record in Salesforce.
 
-<Frame caption="Lago Subscription from SF (iframe)">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/salesforce-lago-subscription-iframe.gif?s=637fd778740bf70ce9ca57cfd02427a3" data-og-width="1491" width="1491" data-og-height="837" height="837" data-path="integrations/data/images/salesforce-lago-subscription-iframe.gif" data-optimize="true" data-opv="3" />
+<Frame>
+  <img />
 </Frame>
 
 <Info>
@@ -25094,8 +26387,8 @@ We also have option to create one off invoice in Lago directly from Salesforce u
 
 Open any account which has `lago_id` populated. Click on `Lago Invoice` button; it will pop-up Lago Screen (make sure you've entered correct `Front End URL` in Lago Base Configuration page); enter correct username and password. Save. A new Invoice will be directly created in Lago. And, if Webhooks are configured correctly, it will also create `Lago Invoice` record in Salesforce.
 
-<Frame caption="Lago Invoice from SF (iframe)">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/salesforce-lago-invoice-iframe.gif?s=4b2df4226d4f70052063d7a9207bdf84" data-og-width="1491" width="1491" data-og-height="837" height="837" data-path="integrations/data/images/salesforce-lago-invoice-iframe.gif" data-optimize="true" data-opv="3" />
+<Frame>
+  <img />
 </Frame>
 
 <Info>
@@ -25120,8 +26413,8 @@ We can fetch Invoice line items manually for any invoices if required.
 2. Click on `Lago Sync Invoice Line Item` button. If button is not present on the layout, please add it on Page layout or Lightning record page.
 3. All lago items will be synced and available in `Lago Line Items` child custom object.
 
-<Frame caption="Get Invoice line items">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/sf-get-lago-invoice-line-items.gif?s=9eacece6db807fb218ced6de8254ec94" data-og-width="800" width="800" data-og-height="507" height="507" data-path="integrations/data/images/sf-get-lago-invoice-line-items.gif" data-optimize="true" data-opv="3" />
+<Frame>
+  <img />
 </Frame>
 
 ### Managing Coupons in Salesforce
@@ -25156,8 +26449,8 @@ Once your environment is configured, follow these steps to apply a coupon to a c
   * Synchronize the coupon with the customer's account in Lago
   * Enable the discount for future qualifying transactions
 
-<Frame caption="Apply Coupon on Accoun">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/sf-apply-coupon.gif?s=e27969af7660f656158111645f9eca1d" data-og-width="800" width="800" data-og-height="614" height="614" data-path="integrations/data/images/sf-apply-coupon.gif" data-optimize="true" data-opv="3" />
+<Frame>
+  <img />
 </Frame>
 
 #### Terminating Active Coupons
@@ -25229,16 +26522,16 @@ In airbyte:
 * Select getLago as a source of data; and
 * Paste your Lago private API key.
 
-<Frame caption="Lago data source in Airbyte">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-airbyte-source-e56dc399ab95d5f523683b5c62f3b3e5.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=8de8a86a55eba4f57719b41b7bea22a1" data-og-width="2858" width="2858" data-og-height="1466" height="1466" data-path="integrations/data/images/lago-airbyte-source-e56dc399ab95d5f523683b5c62f3b3e5.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-airbyte-source-e56dc399ab95d5f523683b5c62f3b3e5.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=8f4b5b5d4e7e25e8311b3b62b4d91509 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-airbyte-source-e56dc399ab95d5f523683b5c62f3b3e5.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=b42003dce0c49e99fdb6b6126746fa85 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-airbyte-source-e56dc399ab95d5f523683b5c62f3b3e5.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=c78702fe88eae7c8583ed35ff656eeee 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-airbyte-source-e56dc399ab95d5f523683b5c62f3b3e5.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=439146ea421972328a260899c0e8ace1 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-airbyte-source-e56dc399ab95d5f523683b5c62f3b3e5.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=175b4e64ccd16a99c5c29a58869090a3 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-airbyte-source-e56dc399ab95d5f523683b5c62f3b3e5.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=0114376a4288157769989ac63efa37ff 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## 2. Select a destination
 
 You can select any of the data destinations available in Airbyte. It could be a warehouse (BigQuery, Redshift, Snowflake...) or a file storage tool (S3, for instance). Please find here the entire list of [data destinations available in Airbyte](https://docs.airbyte.com/integrations/destinations/).
 
-<Frame caption="Destination in Airbyte">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/destination-airbyte-52676d7f8ffd515d98027fbe02eb2b05.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=d22ef1721d451312a2014a4c423d4ea8" data-og-width="2674" width="2674" data-og-height="866" height="866" data-path="integrations/data/images/destination-airbyte-52676d7f8ffd515d98027fbe02eb2b05.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/destination-airbyte-52676d7f8ffd515d98027fbe02eb2b05.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=bc539f62d8a15fe76169133532f69d39 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/destination-airbyte-52676d7f8ffd515d98027fbe02eb2b05.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=e63ab54c134997b4f1da58145d0aedba 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/destination-airbyte-52676d7f8ffd515d98027fbe02eb2b05.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=76a0abb74a69b90469fd429e47c41cd6 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/destination-airbyte-52676d7f8ffd515d98027fbe02eb2b05.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=677e1082965f00d06b441817284ea979 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/destination-airbyte-52676d7f8ffd515d98027fbe02eb2b05.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=61aa94f4f2c1b99ade8fd60051422815 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/destination-airbyte-52676d7f8ffd515d98027fbe02eb2b05.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=8c0fcf4ce9963e8dfad652f50df8f4e2 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## 3. Sync billing data
@@ -25251,16 +26544,16 @@ In the following example, we connected Lago billing data to Snowflake data wareh
 
 This action will populate Lago billing data into a warehouse (Snowflake in our example).
 
-<Frame caption="Lago data in Snowflake">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-data-snowflake-ec9a012ccb50edc332d6750de7246076.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=b77d199c49ce04e783e80c5c636cc9fd" data-og-width="2332" width="2332" data-og-height="786" height="786" data-path="integrations/data/images/lago-data-snowflake-ec9a012ccb50edc332d6750de7246076.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-data-snowflake-ec9a012ccb50edc332d6750de7246076.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=52a278072922422bd016521ab554c46e 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-data-snowflake-ec9a012ccb50edc332d6750de7246076.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=1b834ed829f48dae9482a758e0f5c64e 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-data-snowflake-ec9a012ccb50edc332d6750de7246076.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=da9eba3372493a417dd848f4c0965a3b 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-data-snowflake-ec9a012ccb50edc332d6750de7246076.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=fea183ed57767f471290e5ef0df205e4 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-data-snowflake-ec9a012ccb50edc332d6750de7246076.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=a247f0fc23037eadc5936dd6d70675d3 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/lago-data-snowflake-ec9a012ccb50edc332d6750de7246076.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=20b1ac77dd35169c1e9a0208c938118e 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## 4. Query Lago billing data
 
 Once the data has been populated in your destination, a warehouse in our example, you can easily query your billing data. Here is a query calculating your monthly revenue with Lago:
 
-<Frame caption="Query in snowflake">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/example-billing-query-snowflake-a4cf76e6bca92363215567a0e4e51f06.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=7b5a86ea97e04088f6087bc006e51d90" data-og-width="1646" width="1646" data-og-height="1362" height="1362" data-path="integrations/data/images/example-billing-query-snowflake-a4cf76e6bca92363215567a0e4e51f06.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/example-billing-query-snowflake-a4cf76e6bca92363215567a0e4e51f06.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=9405aa9ebba7efaa5780f1989b9655c1 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/example-billing-query-snowflake-a4cf76e6bca92363215567a0e4e51f06.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=52903fc775daa5fb892f048e85d3b9d0 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/example-billing-query-snowflake-a4cf76e6bca92363215567a0e4e51f06.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=b3273c026018de603cdd5dc2dadae315 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/example-billing-query-snowflake-a4cf76e6bca92363215567a0e4e51f06.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=b913d6c74ddaf2382a0b3f9cff6153c4 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/example-billing-query-snowflake-a4cf76e6bca92363215567a0e4e51f06.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=efb22c52978c37b2478d285ffad9cb54 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/data/images/example-billing-query-snowflake-a4cf76e6bca92363215567a0e4e51f06.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=0e2b544b1c94f5766f2c18f23365b793 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 
@@ -25268,6 +26561,12 @@ Once the data has been populated in your destination, a warehouse in our example
 Source: https://getlago.com/docs/integrations/data/lago-data-pipeline
 
 Sync your Lago data with your data warehouse or cloud storage
+
+<Info>
+  **PREMIUM ADD-ON** ✨
+
+  This Lago Data Pipeline feature is available upon request only. Please **[contact us](mailto:hello@getlago.com)** to get access to this premium feature.
+</Info>
 
 Lago Data Pipeline lets you automate the flow of your billing, subscription, and usage data into your analytics and storage systems.
 Whether you're running complex queries on warehouses, or simply building data visualization dashboards for your finance team, you can keep all your data in sync with just a few clicks.
@@ -25346,7 +26645,7 @@ In addition to this, you can use Lago to bill metering and overage. This informa
 
 [Oso's documentation](https://www.osohq.com/docs/guides/model/entitlements) explains the following example of entitlements properly.
 
-```ruby  theme={"dark"}
+```ruby theme={"dark"}
 actor User { }
  
 resource Organization {
@@ -25421,62 +26720,62 @@ Find all Lago integrations with third-party tools—whether for payment provider
 
 ## Payments integrations
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card
     title="GoCardless"
     icon={
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="32" height="32" rx="8" fill="#F1F252" />
-      <g clip-path="url(#clip0_4694_575)">
-        <path
-          d="M8 16.3853C8.00653 11.7542 11.5828 8 16.276 8C18.0772 8 19.0896 8.2923 19.0896 8.2923L22.0812 14.3849L22.0551 14.411L18.2013 12.1265C15.969 10.794 14.3458 10.1016 13.0263 10.1555C11.6334 10.1816 10.7957 11.3002 10.7957 12.925C10.8463 17.0777 14.803 22.1905 18.7255 22.1905C20.3307 22.1905 21.1651 21.6745 21.655 21.0507L15.8351 14.6821V14.6544H23.822C23.9314 15.2259 23.9918 15.804 24 16.3853C24 21.0458 20.4254 24.8 16.0114 24.8C11.5975 24.8 8 21.0458 8 16.3853Z"
-          fill="#1C1B18"
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect width="32" height="32" rx="8" fill="#F1F252" />
+    <g clip-path="url(#clip0_4694_575)">
+      <path
+        d="M8 16.3853C8.00653 11.7542 11.5828 8 16.276 8C18.0772 8 19.0896 8.2923 19.0896 8.2923L22.0812 14.3849L22.0551 14.411L18.2013 12.1265C15.969 10.794 14.3458 10.1016 13.0263 10.1555C11.6334 10.1816 10.7957 11.3002 10.7957 12.925C10.8463 17.0777 14.803 22.1905 18.7255 22.1905C20.3307 22.1905 21.1651 21.6745 21.655 21.0507L15.8351 14.6821V14.6544H23.822C23.9314 15.2259 23.9918 15.804 24 16.3853C24 21.0458 20.4254 24.8 16.0114 24.8C11.5975 24.8 8 21.0458 8 16.3853Z"
+        fill="#1C1B18"
+      />
+    </g>
+    <defs>
+      <clipPath id="clip0_4694_575">
+        <rect
+          width="16"
+          height="16.8"
+          fill="white"
+          transform="translate(8 8)"
         />
-      </g>
-      <defs>
-        <clipPath id="clip0_4694_575">
-          <rect
-            width="16"
-            height="16.8"
-            fill="white"
-            transform="translate(8 8)"
-          />
-        </clipPath>
-      </defs>
-    </svg>
-  }
+      </clipPath>
+    </defs>
+  </svg>
+}
     href="/integrations/payments/gocardless-integration"
   >
     GoCardless is the global leader of direct debits bank payments.
 
     <br />
 
-    <Tooltip tip="This integration is maintained by Lago.">Official</Tooltip>
+    <Tooltip>Official</Tooltip>
   </Card>
 
   <Card
     title="Stripe Payments"
     icon={
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="32" height="32" rx="8" fill="#6772E5" />
-      <path
-        d="M14.8624 12.7648C14.8624 12.0792 15.4268 11.8154 16.3617 11.8154C17.7021 11.8154 19.3953 12.2199 20.7358 12.9407V8.80877C19.2719 8.22859 17.8256 8 16.3617 8C12.7811 8 10.4 9.86379 10.4 12.976C10.4 17.8286 17.1023 17.055 17.1023 19.1474C17.1023 19.9561 16.3969 20.2199 15.4092 20.2199C13.9453 20.2199 12.0756 19.622 10.594 18.8132V22.9979C12.2343 23.7012 13.8923 24 15.4092 24C19.0778 24 21.6 22.1891 21.6 19.0418C21.5824 13.8023 14.8624 14.7341 14.8624 12.7648Z"
-        fill="white"
-      />
-    </svg>
-  }
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect width="32" height="32" rx="8" fill="#6772E5" />
+    <path
+      d="M14.8624 12.7648C14.8624 12.0792 15.4268 11.8154 16.3617 11.8154C17.7021 11.8154 19.3953 12.2199 20.7358 12.9407V8.80877C19.2719 8.22859 17.8256 8 16.3617 8C12.7811 8 10.4 9.86379 10.4 12.976C10.4 17.8286 17.1023 17.055 17.1023 19.1474C17.1023 19.9561 16.3969 20.2199 15.4092 20.2199C13.9453 20.2199 12.0756 19.622 10.594 18.8132V22.9979C12.2343 23.7012 13.8923 24 15.4092 24C19.0778 24 21.6 22.1891 21.6 19.0418C21.5824 13.8023 14.8624 14.7341 14.8624 12.7648Z"
+      fill="white"
+    />
+  </svg>
+}
     href="/integrations/payments/stripe-integration"
   >
     Stripe is a suite of APIs powering online payment processing, especially
@@ -25484,28 +26783,28 @@ Find all Lago integrations with third-party tools—whether for payment provider
 
     <br />
 
-    <Tooltip tip="This integration is maintained by Lago.">Official</Tooltip>
+    <Tooltip>Official</Tooltip>
   </Card>
 
   <Card
     title="Adyen"
     icon={
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="32" height="32" rx="8" fill="#0ABF53" />
-      <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M24 11.1908V24H11.209C9.44433 24 8 22.5536 8 20.7864V17.2051C8 15.4378 9.44433 13.9915 11.209 13.9915H14.6705V19.0877C14.6705 19.5924 15.0828 20.0058 15.5875 20.0058H17.3294V12.9123C17.3294 12.4076 16.9171 11.9942 16.4125 11.9942H8.22924V8H20.791C22.5563 8 24 9.44635 24 11.1908Z"
-        fill="white"
-      />
-    </svg>
-  }
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect width="32" height="32" rx="8" fill="#0ABF53" />
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M24 11.1908V24H11.209C9.44433 24 8 22.5536 8 20.7864V17.2051C8 15.4378 9.44433 13.9915 11.209 13.9915H14.6705V19.0877C14.6705 19.5924 15.0828 20.0058 15.5875 20.0058H17.3294V12.9123C17.3294 12.4076 16.9171 11.9942 16.4125 11.9942H8.22924V8H20.791C22.5563 8 24 9.44635 24 11.1908Z"
+      fill="white"
+    />
+  </svg>
+}
     href="/integrations/payments/adyen-integration"
   >
     Adyen is an omnichannel payment processing company providing multiple ways
@@ -25513,106 +26812,104 @@ Find all Lago integrations with third-party tools—whether for payment provider
 
     <br />
 
-    <Tooltip tip="This integration is maintained by Lago.">Official</Tooltip>
+    <Tooltip>Official</Tooltip>
   </Card>
 
   <Card
     title="Cashfree Payments"
     icon={
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"  width="32" height="32"><path fill="#1f074f" d="M10.41-.02h19.11a11.3 11.3 0 0 1 10.46 10.43v19.11a11.31 11.31 0 0 1-10.43 10.46h-19.1A11.3 11.3 0 0 1-.02 29.55v-19.1A11.3 11.3 0 0 1 10.41-.02Zm0 0"></path><path fill="#04aa60" d="M15.57 26.9h-.29V13.06a3.65 3.65 0 0 1 3.07-3.18c4.65-.02 9.3-.02 13.95-.02a3.59 3.59 0 0 1-3.2 3.6c-3.4.02-6.8.02-10.2.02 0 3.37 0 6.74-.02 10.11a3.65 3.65 0 0 1-2.03 2.96c-.4.2-.83.3-1.28.33Zm0 0"></path><path fill="#faaf16" d="M10.67 31.73h-.29V18.06c.16-1.5.94-2.56 2.34-3.15.41-.16.84-.23 1.28-.2.02 4.66 0 9.34-.05 14a3.58 3.58 0 0 1-3.28 3.02ZM20.05 14.7h7.8v.23a3.64 3.64 0 0 1-2.14 3.09c-.36.14-.73.23-1.12.27h-4.54V14.7Zm0 0"></path></svg>
-  }
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"  width="32" height="32"><path fill="#1f074f" d="M10.41-.02h19.11a11.3 11.3 0 0 1 10.46 10.43v19.11a11.31 11.31 0 0 1-10.43 10.46h-19.1A11.3 11.3 0 0 1-.02 29.55v-19.1A11.3 11.3 0 0 1 10.41-.02Zm0 0"></path><path fill="#04aa60" d="M15.57 26.9h-.29V13.06a3.65 3.65 0 0 1 3.07-3.18c4.65-.02 9.3-.02 13.95-.02a3.59 3.59 0 0 1-3.2 3.6c-3.4.02-6.8.02-10.2.02 0 3.37 0 6.74-.02 10.11a3.65 3.65 0 0 1-2.03 2.96c-.4.2-.83.3-1.28.33Zm0 0"></path><path fill="#faaf16" d="M10.67 31.73h-.29V18.06c.16-1.5.94-2.56 2.34-3.15.41-.16.84-.23 1.28-.2.02 4.66 0 9.34-.05 14a3.58 3.58 0 0 1-3.28 3.02ZM20.05 14.7h7.8v.23a3.64 3.64 0 0 1-2.14 3.09c-.36.14-.73.23-1.12.27h-4.54V14.7Zm0 0"></path></svg>
+}
     href="/integrations/payments/cashfree-integration"
   >
     Cashfree Payments is India's leading payments and API banking company.
 
     <br />
 
-    <Tooltip tip="This integration is community-maintained, and therefore Lago provides only limited support.">Community</Tooltip>
+    <Tooltip>Community</Tooltip>
   </Card>
 
   <Card
     title="Moneyhash"
     icon={
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 41 41" width="32" height="32"><g fill="#0C1E3D"><path d="M40.28 8.94a8 8 0 0 0-8-8h-24a8 8 0 0 0-8 8v13.88h13.9l1.04-3.45h-3.7l.57-2.55h3.74l1.57-5.38h3.23l-1.58 5.38h4.82l1.58-5.38h3.24l-1.57 5.38h13.16V8.94Z"></path><path d="M40.28 19.37H26.5l-1.03 3.45h3.8l-.58 2.55h-3.83l-1.48 5.07h-3.25l1.5-5.07h-4.8l-1.52 5.07H12.1l1.5-5.07H.28v7.57a8 8 0 0 0 8 8h24a8 8 0 0 0 8-8V19.37Z"></path><path d="m18.46 19.37-1 3.45h4.79l1-3.45h-4.79Z"></path></g></svg>
-  }
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 41 41" width="32" height="32"><g fill="#0C1E3D"><path d="M40.28 8.94a8 8 0 0 0-8-8h-24a8 8 0 0 0-8 8v13.88h13.9l1.04-3.45h-3.7l.57-2.55h3.74l1.57-5.38h3.23l-1.58 5.38h4.82l1.58-5.38h3.24l-1.57 5.38h13.16V8.94Z"></path><path d="M40.28 19.37H26.5l-1.03 3.45h3.8l-.58 2.55h-3.83l-1.48 5.07h-3.25l1.5-5.07h-4.8l-1.52 5.07H12.1l1.5-5.07H.28v7.57a8 8 0 0 0 8 8h24a8 8 0 0 0 8-8V19.37Z"></path><path d="m18.46 19.37-1 3.45h4.79l1-3.45h-4.79Z"></path></g></svg>
+}
     href="/integrations/payments/moneyhash-integration"
   >
     Moneyhash is the leading payment infrastructure software in Africa and the Middle East.
 
     <br />
 
-    <Tooltip tip="This integration is community-maintained, and therefore Lago provides only limited support.">Community</Tooltip>
+    <Tooltip>Community</Tooltip>
   </Card>
 
   <Card
     title="Custom payment integration"
     icon={
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 41" width="32" height="32"><rect width="41" height="41" fill="#0C1E3D" rx="8"/><text x="50%" y="50%" dy="0.35em" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle">?</text></svg>
-  }
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 41" width="32" height="32"><rect width="41" height="41" fill="#0C1E3D" rx="8"/><text x="50%" y="50%" dy="0.35em" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle">?</text></svg>
+}
     href="/integrations/payments/custom-payment-integration"
   >
     This guide helps you integrate Lago with a custom payment provider. Build your own integration by following these steps.
 
     <br />
 
-    <Tooltip tip="This integration is community-maintained, and therefore Lago provides only limited support.">Community</Tooltip>
+    <Tooltip>Community</Tooltip>
   </Card>
 </CardGroup>
 
 ## Accounting integrations
 
-{" "}
-
-<CardGroup cols={2}>
+<CardGroup>
   <Card
     title="NetSuite"
     icon={
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="32" height="32" rx="8" fill="black" />
-      <path
-        d="M25.1739 14.8219C24.7469 14.8219 24.3849 14.5342 24.2736 14.1443H26.6404L26.9653 13.6339H24.2736C24.3849 13.244 24.7469 12.9563 25.1739 12.9563H26.7982L27.1231 12.4457H25.1367C24.3384 12.4457 23.698 13.0956 23.698 13.8845C23.698 14.6828 24.3477 15.3232 25.1367 15.3232H26.8447L27.1694 14.8127H25.1739M18.398 15.3232H20.1152L20.44 14.8127H18.4445C17.9246 14.8127 17.5069 14.395 17.5069 13.8845C17.5069 13.3647 17.9246 12.9563 18.4445 12.9563H20.0688L20.3937 12.4457H18.4074C17.609 12.4457 16.9594 13.0956 16.9594 13.8845C16.9594 14.6828 17.609 15.3232 18.398 15.3232ZM7.88155 14.8219H6.27578C5.76533 14.8219 5.3476 14.4043 5.3476 13.8938C5.3476 13.374 5.76533 12.9656 6.27578 12.9656H7.87226C8.392 12.9656 8.80973 13.3832 8.80973 13.8938C8.80973 14.4043 8.392 14.8219 7.88155 14.8219ZM6.23861 15.3232H7.90943C8.70762 15.3232 9.34805 14.6828 9.34805 13.8845C9.34805 13.0863 8.70762 12.4457 7.90943 12.4457H6.23861C5.44971 12.4457 4.79999 13.0956 4.79999 13.8845C4.79999 14.6828 5.44971 15.3232 6.23861 15.3232ZM12.077 14.395C12.6153 14.395 13.0516 13.9588 13.0516 13.4204C13.0516 12.882 12.6153 12.4457 12.077 12.4457H9.65438V15.3232H10.2114V12.9563H12.04C12.2998 12.9563 12.5039 13.1605 12.5039 13.4204C12.5039 13.6803 12.2998 13.8845 12.04 13.8845H10.4804L12.1328 15.3232H12.9403L11.8263 14.3857H12.077M21.2383 14.8219V12.4457H20.6814V15.054C20.6814 15.1283 20.7094 15.1932 20.7649 15.249C20.8206 15.3047 20.8948 15.3325 20.9691 15.3325H23.4939L23.8187 14.8219H21.2383ZM14.4625 14.3115H15.9383L15.1587 13.0491L13.7199 15.3232H13.0608L14.8059 12.5943C14.8801 12.4829 15.0101 12.418 15.1494 12.418C15.2886 12.418 15.4093 12.4829 15.4835 12.5943L17.2377 15.3325H16.5881L16.2818 14.8219H14.7874L14.4625 14.3115Z"
-        fill="white"
-      />
-      <path
-        d="M5.06934 17.0605H5.80252L6.69323 18.9262V17.0605H7.16726V19.4365H6.47037L5.55208 17.4591V19.4271H5.06934V17.0605Z"
-        fill="white"
-      />
-      <path
-        d="M7.70514 17.0605H9.29274V17.4504H8.21547V18.0166H9.22741V18.4064H8.21547V19.0467H9.32976V19.4365H7.70514V17.0605Z"
-        fill="white"
-      />
-      <path
-        d="M10.3134 17.4504H9.60779V17.0605H11.5388V17.4504H10.8332V19.4365H10.3228V17.4504H10.3134Z"
-        fill="white"
-      />
-      <path
-        d="M12.1513 18.74C12.1605 18.9071 12.1791 19.2134 12.7266 19.2134C13.2186 19.2134 13.2836 18.9071 13.2836 18.7865C13.2836 18.5173 13.0702 18.4709 12.736 18.3874C12.374 18.2945 12.2163 18.2574 12.0955 18.1738C11.9007 18.0439 11.8449 17.8675 11.8449 17.7098C11.8449 17.2271 12.2998 17.0137 12.7453 17.0137C12.9031 17.0137 13.2186 17.0414 13.4136 17.2457C13.5435 17.3942 13.5528 17.552 13.5621 17.6541H13.2186C13.2001 17.357 12.9494 17.292 12.7175 17.292C12.3926 17.292 12.1883 17.4406 12.1883 17.6726C12.1883 17.8861 12.3276 17.951 12.6153 18.0254C13.1815 18.1738 13.2466 18.1831 13.3858 18.2759C13.6086 18.4245 13.6179 18.6472 13.6179 18.7493C13.6179 19.167 13.2929 19.4919 12.6803 19.4919C12.5039 19.4919 12.1328 19.4641 11.9471 19.2227C11.8079 19.0464 11.8079 18.8607 11.8079 18.74H12.1513Z"
-        fill="white"
-      />
-      <path
-        d="M14.4718 17.0605V18.527C14.4718 18.7777 14.5274 18.889 14.5738 18.9541C14.7224 19.149 14.9544 19.1861 15.1122 19.1861C15.7527 19.1861 15.7527 18.6849 15.7527 18.5086V17.0605H16.0682V18.527C16.0682 18.657 16.0682 18.9169 15.8733 19.1582C15.6413 19.4553 15.2793 19.4831 15.1029 19.4831C14.8801 19.4831 14.4811 19.4182 14.2676 19.1026C14.1933 19.0004 14.1283 18.8612 14.1283 18.5086V17.0605H14.4718Z"
-        fill="white"
-      />
-      <path
-        d="M16.7552 19.4365H17.0797V17.0605H16.7552V19.4365Z"
-        fill="white"
-      />
-      <path
-        d="M18.361 19.4365V17.3386H17.5625V17.0605H19.4746V17.3386H18.6768V19.4365H18.361Z"
-        fill="white"
-      />
-      <path
-        d="M19.8738 17.0605H21.3591V17.3386H20.1991V18.0812H21.3032V18.36H20.1991V19.149H21.3867V19.4365H19.8738V17.0605Z"
-        fill="white"
-      />
-    </svg>
-  }
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect width="32" height="32" rx="8" fill="black" />
+    <path
+      d="M25.1739 14.8219C24.7469 14.8219 24.3849 14.5342 24.2736 14.1443H26.6404L26.9653 13.6339H24.2736C24.3849 13.244 24.7469 12.9563 25.1739 12.9563H26.7982L27.1231 12.4457H25.1367C24.3384 12.4457 23.698 13.0956 23.698 13.8845C23.698 14.6828 24.3477 15.3232 25.1367 15.3232H26.8447L27.1694 14.8127H25.1739M18.398 15.3232H20.1152L20.44 14.8127H18.4445C17.9246 14.8127 17.5069 14.395 17.5069 13.8845C17.5069 13.3647 17.9246 12.9563 18.4445 12.9563H20.0688L20.3937 12.4457H18.4074C17.609 12.4457 16.9594 13.0956 16.9594 13.8845C16.9594 14.6828 17.609 15.3232 18.398 15.3232ZM7.88155 14.8219H6.27578C5.76533 14.8219 5.3476 14.4043 5.3476 13.8938C5.3476 13.374 5.76533 12.9656 6.27578 12.9656H7.87226C8.392 12.9656 8.80973 13.3832 8.80973 13.8938C8.80973 14.4043 8.392 14.8219 7.88155 14.8219ZM6.23861 15.3232H7.90943C8.70762 15.3232 9.34805 14.6828 9.34805 13.8845C9.34805 13.0863 8.70762 12.4457 7.90943 12.4457H6.23861C5.44971 12.4457 4.79999 13.0956 4.79999 13.8845C4.79999 14.6828 5.44971 15.3232 6.23861 15.3232ZM12.077 14.395C12.6153 14.395 13.0516 13.9588 13.0516 13.4204C13.0516 12.882 12.6153 12.4457 12.077 12.4457H9.65438V15.3232H10.2114V12.9563H12.04C12.2998 12.9563 12.5039 13.1605 12.5039 13.4204C12.5039 13.6803 12.2998 13.8845 12.04 13.8845H10.4804L12.1328 15.3232H12.9403L11.8263 14.3857H12.077M21.2383 14.8219V12.4457H20.6814V15.054C20.6814 15.1283 20.7094 15.1932 20.7649 15.249C20.8206 15.3047 20.8948 15.3325 20.9691 15.3325H23.4939L23.8187 14.8219H21.2383ZM14.4625 14.3115H15.9383L15.1587 13.0491L13.7199 15.3232H13.0608L14.8059 12.5943C14.8801 12.4829 15.0101 12.418 15.1494 12.418C15.2886 12.418 15.4093 12.4829 15.4835 12.5943L17.2377 15.3325H16.5881L16.2818 14.8219H14.7874L14.4625 14.3115Z"
+      fill="white"
+    />
+    <path
+      d="M5.06934 17.0605H5.80252L6.69323 18.9262V17.0605H7.16726V19.4365H6.47037L5.55208 17.4591V19.4271H5.06934V17.0605Z"
+      fill="white"
+    />
+    <path
+      d="M7.70514 17.0605H9.29274V17.4504H8.21547V18.0166H9.22741V18.4064H8.21547V19.0467H9.32976V19.4365H7.70514V17.0605Z"
+      fill="white"
+    />
+    <path
+      d="M10.3134 17.4504H9.60779V17.0605H11.5388V17.4504H10.8332V19.4365H10.3228V17.4504H10.3134Z"
+      fill="white"
+    />
+    <path
+      d="M12.1513 18.74C12.1605 18.9071 12.1791 19.2134 12.7266 19.2134C13.2186 19.2134 13.2836 18.9071 13.2836 18.7865C13.2836 18.5173 13.0702 18.4709 12.736 18.3874C12.374 18.2945 12.2163 18.2574 12.0955 18.1738C11.9007 18.0439 11.8449 17.8675 11.8449 17.7098C11.8449 17.2271 12.2998 17.0137 12.7453 17.0137C12.9031 17.0137 13.2186 17.0414 13.4136 17.2457C13.5435 17.3942 13.5528 17.552 13.5621 17.6541H13.2186C13.2001 17.357 12.9494 17.292 12.7175 17.292C12.3926 17.292 12.1883 17.4406 12.1883 17.6726C12.1883 17.8861 12.3276 17.951 12.6153 18.0254C13.1815 18.1738 13.2466 18.1831 13.3858 18.2759C13.6086 18.4245 13.6179 18.6472 13.6179 18.7493C13.6179 19.167 13.2929 19.4919 12.6803 19.4919C12.5039 19.4919 12.1328 19.4641 11.9471 19.2227C11.8079 19.0464 11.8079 18.8607 11.8079 18.74H12.1513Z"
+      fill="white"
+    />
+    <path
+      d="M14.4718 17.0605V18.527C14.4718 18.7777 14.5274 18.889 14.5738 18.9541C14.7224 19.149 14.9544 19.1861 15.1122 19.1861C15.7527 19.1861 15.7527 18.6849 15.7527 18.5086V17.0605H16.0682V18.527C16.0682 18.657 16.0682 18.9169 15.8733 19.1582C15.6413 19.4553 15.2793 19.4831 15.1029 19.4831C14.8801 19.4831 14.4811 19.4182 14.2676 19.1026C14.1933 19.0004 14.1283 18.8612 14.1283 18.5086V17.0605H14.4718Z"
+      fill="white"
+    />
+    <path
+      d="M16.7552 19.4365H17.0797V17.0605H16.7552V19.4365Z"
+      fill="white"
+    />
+    <path
+      d="M18.361 19.4365V17.3386H17.5625V17.0605H19.4746V17.3386H18.6768V19.4365H18.361Z"
+      fill="white"
+    />
+    <path
+      d="M19.8738 17.0605H21.3591V17.3386H20.1991V18.0812H21.3032V18.36H20.1991V19.149H21.3867V19.4365H19.8738V17.0605Z"
+      fill="white"
+    />
+  </svg>
+}
     href="/integrations/accounting/netsuite"
   >
     NetSuite is the leading integrated cloud business software for business
@@ -25620,120 +26917,118 @@ Find all Lago integrations with third-party tools—whether for payment provider
 
     <br />
 
-    <Tooltip tip="This integration is maintained by Lago.">Official</Tooltip>
+    <Tooltip>Official</Tooltip>
   </Card>
 
   <Card
     title="Xero"
     icon={
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="32" height="32" rx="8" fill="#00B9EA" />
-      <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M17.1815 16.0575C17.3085 15.9003 17.3564 15.6947 17.3156 15.478C17.1506 14.6924 16.7255 14.0632 16.0871 13.6582C15.6486 13.3781 15.1368 13.2299 14.6072 13.2299C14.0226 13.2299 13.4661 13.4068 12.9979 13.7409C12.2657 14.2637 11.8287 15.1183 11.8287 16.026C11.8287 16.2541 11.8568 16.4803 11.9123 16.6985C12.1937 17.8044 13.1396 18.6404 14.2668 18.7795C14.3757 18.7925 14.4849 18.7992 14.591 18.7992C14.8166 18.7992 15.0363 18.7705 15.2623 18.7114C15.5559 18.6404 15.8354 18.5211 16.0938 18.3564C16.3376 18.1976 16.5624 17.9837 16.7987 17.685L16.8142 17.6689C16.8929 17.5704 16.9294 17.4435 16.9143 17.321C16.9009 17.2115 16.8486 17.1169 16.7675 17.0547C16.6903 16.9952 16.5989 16.9621 16.509 16.9621C16.4192 16.9621 16.2937 16.994 16.1777 17.1457L16.1686 17.1579C16.1302 17.2091 16.0907 17.2623 16.0451 17.3147C15.8888 17.4908 15.7095 17.6362 15.512 17.7461C15.2294 17.8974 14.9239 17.9754 14.6048 17.9778C13.6027 17.9667 12.9892 17.2966 12.7494 16.6745C12.7118 16.5626 12.6848 16.4602 12.6674 16.3652C12.6674 16.3558 12.6662 16.3455 12.6659 16.3357L16.5458 16.3349C16.8154 16.329 17.041 16.2301 17.1815 16.0567V16.0575ZM12.6963 15.5276C12.9176 14.6561 13.6973 14.0478 14.593 14.0478C15.4887 14.0478 16.2696 14.6546 16.4916 15.5276H12.6959H12.6963ZM23.5399 15.9775C23.5399 16.368 23.2237 16.6855 22.835 16.6855C22.4463 16.6855 22.1285 16.368 22.1285 15.9775C22.1285 15.5871 22.4455 15.27 22.835 15.27C23.2245 15.27 23.5399 15.5875 23.5399 15.9775ZM19.8563 14.0675C19.838 14.0675 19.7672 14.0679 19.7011 14.0758C18.9028 14.1751 18.8232 14.562 18.8232 15.4874V18.3442C18.8232 18.5656 18.6439 18.7456 18.4235 18.7456C18.203 18.7456 18.0253 18.5656 18.0237 18.3442L18.0225 13.6992C18.0241 13.4746 18.1999 13.2989 18.4231 13.2989C18.596 13.2989 18.7496 13.4131 18.8023 13.5759C19.0765 13.3749 19.4019 13.269 19.7458 13.269L19.859 13.2705C20.0807 13.2705 20.2615 13.4514 20.2615 13.6736C20.2615 13.8958 20.091 14.0581 19.8559 14.0668L19.8563 14.0675ZM11.8034 18.0936C11.879 18.1704 11.9206 18.2709 11.9206 18.3773C11.9206 18.5999 11.7401 18.7807 11.518 18.7807C11.4104 18.7807 11.3071 18.7358 11.2279 18.6538L9.1603 16.5795L7.08356 18.6637C7.00599 18.7385 6.90545 18.7799 6.80057 18.7799C6.57972 18.7799 6.40002 18.5995 6.40002 18.3773C6.40002 18.2673 6.44396 18.1645 6.52391 18.0881L8.59273 16.0059L6.52074 13.9265C6.44277 13.8489 6.40002 13.7465 6.40002 13.6389C6.40002 13.4171 6.57972 13.2363 6.80057 13.2363C6.90743 13.2363 7.00757 13.2776 7.08356 13.3525L9.16228 15.4323L11.2331 13.3564C11.3095 13.2788 11.4108 13.2363 11.518 13.2363C11.7401 13.2363 11.9206 13.4167 11.9206 13.6389C11.9206 13.7465 11.8786 13.8469 11.803 13.9214L9.73262 16.0079L11.8034 18.094V18.0936ZM22.8346 13.1992C21.3088 13.1992 20.0676 14.4458 20.0676 15.9775C20.0676 17.5093 21.3088 18.7555 22.8346 18.7555C24.3604 18.7555 25.6 17.5093 25.6 15.9775C25.6 14.4458 24.3592 13.1992 22.8346 13.1992ZM22.8346 17.9246C21.7648 17.9246 20.8948 17.0511 20.8948 15.9779C20.8948 14.9047 21.7652 14.0289 22.8346 14.0289C23.904 14.0289 24.7724 14.9032 24.7724 15.9779C24.7724 17.0527 23.9033 17.9246 22.8346 17.9246Z"
-        fill="white"
-      />
-    </svg>
-  }
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect width="32" height="32" rx="8" fill="#00B9EA" />
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M17.1815 16.0575C17.3085 15.9003 17.3564 15.6947 17.3156 15.478C17.1506 14.6924 16.7255 14.0632 16.0871 13.6582C15.6486 13.3781 15.1368 13.2299 14.6072 13.2299C14.0226 13.2299 13.4661 13.4068 12.9979 13.7409C12.2657 14.2637 11.8287 15.1183 11.8287 16.026C11.8287 16.2541 11.8568 16.4803 11.9123 16.6985C12.1937 17.8044 13.1396 18.6404 14.2668 18.7795C14.3757 18.7925 14.4849 18.7992 14.591 18.7992C14.8166 18.7992 15.0363 18.7705 15.2623 18.7114C15.5559 18.6404 15.8354 18.5211 16.0938 18.3564C16.3376 18.1976 16.5624 17.9837 16.7987 17.685L16.8142 17.6689C16.8929 17.5704 16.9294 17.4435 16.9143 17.321C16.9009 17.2115 16.8486 17.1169 16.7675 17.0547C16.6903 16.9952 16.5989 16.9621 16.509 16.9621C16.4192 16.9621 16.2937 16.994 16.1777 17.1457L16.1686 17.1579C16.1302 17.2091 16.0907 17.2623 16.0451 17.3147C15.8888 17.4908 15.7095 17.6362 15.512 17.7461C15.2294 17.8974 14.9239 17.9754 14.6048 17.9778C13.6027 17.9667 12.9892 17.2966 12.7494 16.6745C12.7118 16.5626 12.6848 16.4602 12.6674 16.3652C12.6674 16.3558 12.6662 16.3455 12.6659 16.3357L16.5458 16.3349C16.8154 16.329 17.041 16.2301 17.1815 16.0567V16.0575ZM12.6963 15.5276C12.9176 14.6561 13.6973 14.0478 14.593 14.0478C15.4887 14.0478 16.2696 14.6546 16.4916 15.5276H12.6959H12.6963ZM23.5399 15.9775C23.5399 16.368 23.2237 16.6855 22.835 16.6855C22.4463 16.6855 22.1285 16.368 22.1285 15.9775C22.1285 15.5871 22.4455 15.27 22.835 15.27C23.2245 15.27 23.5399 15.5875 23.5399 15.9775ZM19.8563 14.0675C19.838 14.0675 19.7672 14.0679 19.7011 14.0758C18.9028 14.1751 18.8232 14.562 18.8232 15.4874V18.3442C18.8232 18.5656 18.6439 18.7456 18.4235 18.7456C18.203 18.7456 18.0253 18.5656 18.0237 18.3442L18.0225 13.6992C18.0241 13.4746 18.1999 13.2989 18.4231 13.2989C18.596 13.2989 18.7496 13.4131 18.8023 13.5759C19.0765 13.3749 19.4019 13.269 19.7458 13.269L19.859 13.2705C20.0807 13.2705 20.2615 13.4514 20.2615 13.6736C20.2615 13.8958 20.091 14.0581 19.8559 14.0668L19.8563 14.0675ZM11.8034 18.0936C11.879 18.1704 11.9206 18.2709 11.9206 18.3773C11.9206 18.5999 11.7401 18.7807 11.518 18.7807C11.4104 18.7807 11.3071 18.7358 11.2279 18.6538L9.1603 16.5795L7.08356 18.6637C7.00599 18.7385 6.90545 18.7799 6.80057 18.7799C6.57972 18.7799 6.40002 18.5995 6.40002 18.3773C6.40002 18.2673 6.44396 18.1645 6.52391 18.0881L8.59273 16.0059L6.52074 13.9265C6.44277 13.8489 6.40002 13.7465 6.40002 13.6389C6.40002 13.4171 6.57972 13.2363 6.80057 13.2363C6.90743 13.2363 7.00757 13.2776 7.08356 13.3525L9.16228 15.4323L11.2331 13.3564C11.3095 13.2788 11.4108 13.2363 11.518 13.2363C11.7401 13.2363 11.9206 13.4167 11.9206 13.6389C11.9206 13.7465 11.8786 13.8469 11.803 13.9214L9.73262 16.0079L11.8034 18.094V18.0936ZM22.8346 13.1992C21.3088 13.1992 20.0676 14.4458 20.0676 15.9775C20.0676 17.5093 21.3088 18.7555 22.8346 18.7555C24.3604 18.7555 25.6 17.5093 25.6 15.9775C25.6 14.4458 24.3592 13.1992 22.8346 13.1992ZM22.8346 17.9246C21.7648 17.9246 20.8948 17.0511 20.8948 15.9779C20.8948 14.9047 21.7652 14.0289 22.8346 14.0289C23.904 14.0289 24.7724 14.9032 24.7724 15.9779C24.7724 17.0527 23.9033 17.9246 22.8346 17.9246Z"
+      fill="white"
+    />
+  </svg>
+}
     href="/integrations/accounting/xero"
   >
     Xero is a cloud-based accounting software for small businesses.
 
     <br />
 
-    <Tooltip tip="This integration is maintained by Lago.">Official</Tooltip>
+    <Tooltip>Official</Tooltip>
   </Card>
 </CardGroup>
 
 ## Taxes integrations
 
-{" "}
-
-<CardGroup cols={2}>
+<CardGroup>
   <Card
     title="Anrok"
     icon={
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="32" height="32" rx="8" fill="#1D192F" />
-      <path
-        d="M13.8039 8.80078C15.2157 8.80078 16.6275 8.80078 18.0392 8.80078C18.1333 8.98902 18.2141 9.18401 18.3239 9.364C19.8784 11.9154 21.4329 14.466 22.9953 17.0121C23.3153 17.5333 23.6643 18.0381 24 18.5503V20.2752C23.5224 21.0904 23.0408 21.9041 22.5694 22.7231C22.4643 22.906 22.3396 22.9833 22.1098 22.981C20.9741 22.9683 19.8384 22.969 18.7035 22.981C18.4659 22.9833 18.3263 22.9165 18.2063 22.7171C17.4306 21.4316 16.6424 20.1537 15.8573 18.8735C15.8024 18.7835 15.7388 18.698 15.6792 18.6103C15.6369 18.7183 15.6471 18.8023 15.6596 18.8863C15.8518 20.2174 15.4588 21.3476 14.4133 22.2633C13.7929 22.8063 13.0384 23.0515 12.2353 23.2008H11.451C11.3898 23.1798 11.331 23.1513 11.2682 23.14C9.71686 22.8633 8.69098 22.0061 8.1898 20.5797C8.10353 20.3352 8.06196 20.0772 8 19.8252C8 19.6002 8 19.3752 8 19.1502C8.02353 19.0677 8.05647 18.986 8.0698 18.902C8.36627 16.9821 10.2886 15.5947 12.3043 15.8287C13.1318 15.9247 13.8384 16.2591 14.4965 16.7414C14.4706 16.6266 14.4298 16.5276 14.3741 16.4369C13.6165 15.1979 12.8651 13.9553 12.0925 12.7253C11.9341 12.4733 11.9004 12.2829 12.0635 12.0144C12.4384 11.4001 12.7757 10.7657 13.1176 10.1342C13.3553 9.69398 13.5757 9.24551 13.8039 8.80078Z"
-        fill="white"
-      />
-    </svg>
-  }
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect width="32" height="32" rx="8" fill="#1D192F" />
+    <path
+      d="M13.8039 8.80078C15.2157 8.80078 16.6275 8.80078 18.0392 8.80078C18.1333 8.98902 18.2141 9.18401 18.3239 9.364C19.8784 11.9154 21.4329 14.466 22.9953 17.0121C23.3153 17.5333 23.6643 18.0381 24 18.5503V20.2752C23.5224 21.0904 23.0408 21.9041 22.5694 22.7231C22.4643 22.906 22.3396 22.9833 22.1098 22.981C20.9741 22.9683 19.8384 22.969 18.7035 22.981C18.4659 22.9833 18.3263 22.9165 18.2063 22.7171C17.4306 21.4316 16.6424 20.1537 15.8573 18.8735C15.8024 18.7835 15.7388 18.698 15.6792 18.6103C15.6369 18.7183 15.6471 18.8023 15.6596 18.8863C15.8518 20.2174 15.4588 21.3476 14.4133 22.2633C13.7929 22.8063 13.0384 23.0515 12.2353 23.2008H11.451C11.3898 23.1798 11.331 23.1513 11.2682 23.14C9.71686 22.8633 8.69098 22.0061 8.1898 20.5797C8.10353 20.3352 8.06196 20.0772 8 19.8252C8 19.6002 8 19.3752 8 19.1502C8.02353 19.0677 8.05647 18.986 8.0698 18.902C8.36627 16.9821 10.2886 15.5947 12.3043 15.8287C13.1318 15.9247 13.8384 16.2591 14.4965 16.7414C14.4706 16.6266 14.4298 16.5276 14.3741 16.4369C13.6165 15.1979 12.8651 13.9553 12.0925 12.7253C11.9341 12.4733 11.9004 12.2829 12.0635 12.0144C12.4384 11.4001 12.7757 10.7657 13.1176 10.1342C13.3553 9.69398 13.5757 9.24551 13.8039 8.80078Z"
+      fill="white"
+    />
+  </svg>
+}
     href="/integrations/taxes/anrok"
   >
     Anrok is the global sales tax platform for software companies.
 
     <br />
 
-    <Tooltip tip="This integration is maintained by Lago.">Official</Tooltip>
+    <Tooltip>Official</Tooltip>
   </Card>
 
   <Card
     title="Avalara"
     icon={
-    <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-      <rect width="32" height="32" rx="8" fill="#FC6600"/>
-      <path d="M16.0214 20.1273c1.2869-1.6428 3.2301-3.7962 5.5121-5.482l.3861.9137c-3.5132 3.2686-5.2075 6.7646-5.9024 7.9399-.356-.6005-1.0037-1.8573-1.9817-3.3158l.682-1.6086c.4805.5448 1.304 1.5528 1.304 1.5528ZM21.1346 23.9751h2.7796l-2.4536-5.8724c-.7164.7592-1.3341 1.5142-1.8745 2.2305l1.5485 3.642ZM17.244 8.01367h-.0172H14.8032h-.0171L8.11581 23.9751h2.7796l4.8258-11.3759.2274-.6177h.1287l.2274.6177 1.4284 3.3716c.6348-.6349 1.3297-1.2611 2.059-1.8488L17.244 8.01367Z" fill="white"/>
-    </svg>
-  }
+  <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <rect width="32" height="32" rx="8" fill="#FC6600"/>
+    <path d="M16.0214 20.1273c1.2869-1.6428 3.2301-3.7962 5.5121-5.482l.3861.9137c-3.5132 3.2686-5.2075 6.7646-5.9024 7.9399-.356-.6005-1.0037-1.8573-1.9817-3.3158l.682-1.6086c.4805.5448 1.304 1.5528 1.304 1.5528ZM21.1346 23.9751h2.7796l-2.4536-5.8724c-.7164.7592-1.3341 1.5142-1.8745 2.2305l1.5485 3.642ZM17.244 8.01367h-.0172H14.8032h-.0171L8.11581 23.9751h2.7796l4.8258-11.3759.2274-.6177h.1287l.2274.6177 1.4284 3.3716c.6348-.6349 1.3297-1.2611 2.059-1.8488L17.244 8.01367Z" fill="white"/>
+  </svg>
+}
     href="/integrations/taxes/avalara"
   >
     AvaTax is a cloud-based tax calculation and compliance platform that helps businesses manage their sales tax obligations.
 
     <br />
 
-    <Tooltip tip="This integration is maintained by Lago.">Official</Tooltip>
+    <Tooltip>Official</Tooltip>
   </Card>
 
   <Card
     title="Lago EU Taxes"
     icon={
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="32" height="32" rx="8" fill="#19212E" />
-      <g clip-path="url(#clip0_4694_621)">
-        <path
-          opacity="0.6"
-          d="M24 15.8647C24 16.0887 23.992 16.3127 23.968 16.5367C23.96 16.7207 23.936 16.9047 23.904 17.0807C23.896 17.1367 23.888 17.1927 23.88 17.2407C23.848 17.4247 23.808 17.6007 23.76 17.7767C23.76 17.7927 23.76 17.8087 23.752 17.8247C23.752 17.8407 23.752 17.8487 23.744 17.8647C23.696 18.0647 23.632 18.2567 23.568 18.4487C23.552 18.4887 23.544 18.5287 23.52 18.5687C23.312 18.9607 22.808 19.1047 22.408 18.8727L17 15.7527C16.752 15.6087 16.6 15.3447 16.6 15.0567V8.80874C16.6 8.30473 17.056 7.92074 17.552 8.01674C17.76 8.05674 17.968 8.10474 18.176 8.16874C18.192 8.17674 18.208 8.17674 18.224 8.18474C18.4 8.23274 18.576 8.28874 18.744 8.35274C18.76 8.35274 18.776 8.36074 18.792 8.36874C18.88 8.40074 18.968 8.44074 19.056 8.48074C19.192 8.52874 19.328 8.59274 19.456 8.65674C19.496 8.67274 19.528 8.68874 19.56 8.70474C19.6 8.72874 19.64 8.74474 19.672 8.76874C19.688 8.77674 19.712 8.78474 19.728 8.79274C19.8 8.82474 19.864 8.86474 19.928 8.90474C19.944 8.91274 19.952 8.92073 19.968 8.92873C20.048 8.96873 20.12 9.01674 20.192 9.06474H20.2C20.36 9.16074 20.512 9.26474 20.664 9.37674C20.704 9.40074 20.744 9.42474 20.776 9.45674C20.896 9.54474 21.016 9.64074 21.136 9.74474C21.152 9.75274 21.16 9.76874 21.176 9.77674C21.48 10.0327 21.76 10.3127 22.024 10.6167C22.104 10.7047 22.176 10.7927 22.256 10.8887C22.384 11.0567 22.512 11.2327 22.632 11.4087C22.704 11.5127 22.768 11.6167 22.832 11.7207C22.92 11.8647 23 12.0087 23.08 12.1607C23.088 12.1847 23.104 12.2007 23.112 12.2247C23.2 12.3927 23.288 12.5687 23.36 12.7527C23.4 12.8487 23.44 12.9367 23.472 13.0327C23.496 13.0887 23.52 13.1447 23.536 13.2007C23.544 13.2247 23.552 13.2407 23.56 13.2647C23.584 13.3367 23.608 13.4167 23.632 13.4887C23.696 13.6887 23.752 13.8887 23.792 14.0967C23.816 14.2007 23.84 14.2967 23.856 14.4007C23.944 14.8727 23.992 15.3607 23.992 15.8647H24Z"
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect width="32" height="32" rx="8" fill="#19212E" />
+    <g clip-path="url(#clip0_4694_621)">
+      <path
+        opacity="0.6"
+        d="M24 15.8647C24 16.0887 23.992 16.3127 23.968 16.5367C23.96 16.7207 23.936 16.9047 23.904 17.0807C23.896 17.1367 23.888 17.1927 23.88 17.2407C23.848 17.4247 23.808 17.6007 23.76 17.7767C23.76 17.7927 23.76 17.8087 23.752 17.8247C23.752 17.8407 23.752 17.8487 23.744 17.8647C23.696 18.0647 23.632 18.2567 23.568 18.4487C23.552 18.4887 23.544 18.5287 23.52 18.5687C23.312 18.9607 22.808 19.1047 22.408 18.8727L17 15.7527C16.752 15.6087 16.6 15.3447 16.6 15.0567V8.80874C16.6 8.30473 17.056 7.92074 17.552 8.01674C17.76 8.05674 17.968 8.10474 18.176 8.16874C18.192 8.17674 18.208 8.17674 18.224 8.18474C18.4 8.23274 18.576 8.28874 18.744 8.35274C18.76 8.35274 18.776 8.36074 18.792 8.36874C18.88 8.40074 18.968 8.44074 19.056 8.48074C19.192 8.52874 19.328 8.59274 19.456 8.65674C19.496 8.67274 19.528 8.68874 19.56 8.70474C19.6 8.72874 19.64 8.74474 19.672 8.76874C19.688 8.77674 19.712 8.78474 19.728 8.79274C19.8 8.82474 19.864 8.86474 19.928 8.90474C19.944 8.91274 19.952 8.92073 19.968 8.92873C20.048 8.96873 20.12 9.01674 20.192 9.06474H20.2C20.36 9.16074 20.512 9.26474 20.664 9.37674C20.704 9.40074 20.744 9.42474 20.776 9.45674C20.896 9.54474 21.016 9.64074 21.136 9.74474C21.152 9.75274 21.16 9.76874 21.176 9.77674C21.48 10.0327 21.76 10.3127 22.024 10.6167C22.104 10.7047 22.176 10.7927 22.256 10.8887C22.384 11.0567 22.512 11.2327 22.632 11.4087C22.704 11.5127 22.768 11.6167 22.832 11.7207C22.92 11.8647 23 12.0087 23.08 12.1607C23.088 12.1847 23.104 12.2007 23.112 12.2247C23.2 12.3927 23.288 12.5687 23.36 12.7527C23.4 12.8487 23.44 12.9367 23.472 13.0327C23.496 13.0887 23.52 13.1447 23.536 13.2007C23.544 13.2247 23.552 13.2407 23.56 13.2647C23.584 13.3367 23.608 13.4167 23.632 13.4887C23.696 13.6887 23.752 13.8887 23.792 14.0967C23.816 14.2007 23.84 14.2967 23.856 14.4007C23.944 14.8727 23.992 15.3607 23.992 15.8647H24Z"
+        fill="white"
+      />
+      <path
+        d="M22.016 21.1287C21.928 21.2327 21.84 21.3367 21.736 21.4327C21.64 21.5367 21.536 21.6407 21.432 21.7287C20.856 22.2727 20.192 22.7287 19.464 23.0727C19.352 23.1287 19.232 23.1847 19.112 23.2327C19 23.2807 18.888 23.3287 18.776 23.3687C18.432 23.4967 18.08 23.6007 17.72 23.6807C17.6 23.7047 17.48 23.7287 17.36 23.7447C17.184 23.7767 17 23.8007 16.816 23.8247C16.544 23.8487 16.272 23.8647 16 23.8647C15.88 23.8647 15.768 23.8647 15.656 23.8567C15.536 23.8487 15.424 23.8487 15.304 23.8327C15.24 23.8327 15.184 23.8327 15.128 23.8167C14.888 23.7927 14.648 23.7527 14.416 23.7047C14.4 23.7047 14.384 23.6967 14.368 23.6967C11.264 23.0487 8.816 20.6087 8.168 17.5047C8.168 17.4807 8.16 17.4567 8.152 17.4327C8.112 17.2087 8.072 16.9767 8.048 16.7367C8.04 16.6807 8.032 16.6247 8.032 16.5607C8.016 16.4407 8.016 16.3287 8.008 16.2087C8 16.0967 8 15.9847 8 15.8647C8 15.3607 8.048 14.8727 8.136 14.4007C8.152 14.2967 8.176 14.2007 8.2 14.0967C8.24 13.8887 8.296 13.6887 8.36 13.4887C8.44 13.2327 8.528 12.9927 8.632 12.7527C8.728 12.5127 8.84 12.2807 8.968 12.0487C9.024 11.9367 9.088 11.8247 9.16 11.7207C9.224 11.6167 9.288 11.5127 9.36 11.4087C10.08 10.3367 11.048 9.44873 12.184 8.83273C12.416 8.70473 12.648 8.59274 12.888 8.49674C13.008 8.44074 13.128 8.39274 13.248 8.35274C13.36 8.31274 13.464 8.27274 13.576 8.24074C13.712 8.19274 13.856 8.15274 14 8.12074C14.096 8.08874 14.192 8.07274 14.288 8.04874C14.336 8.04074 14.392 8.02474 14.448 8.01674C14.936 7.92074 15.4 8.30473 15.4 8.80874V15.7447C15.4 16.0327 15.552 16.2967 15.8 16.4407L21.808 19.9047C22.248 20.1607 22.352 20.7527 22.016 21.1287Z"
+        fill="white"
+      />
+    </g>
+    <defs>
+      <clipPath id="clip0_4694_621">
+        <rect
+          width="16"
+          height="16"
           fill="white"
+          transform="translate(8 8)"
         />
-        <path
-          d="M22.016 21.1287C21.928 21.2327 21.84 21.3367 21.736 21.4327C21.64 21.5367 21.536 21.6407 21.432 21.7287C20.856 22.2727 20.192 22.7287 19.464 23.0727C19.352 23.1287 19.232 23.1847 19.112 23.2327C19 23.2807 18.888 23.3287 18.776 23.3687C18.432 23.4967 18.08 23.6007 17.72 23.6807C17.6 23.7047 17.48 23.7287 17.36 23.7447C17.184 23.7767 17 23.8007 16.816 23.8247C16.544 23.8487 16.272 23.8647 16 23.8647C15.88 23.8647 15.768 23.8647 15.656 23.8567C15.536 23.8487 15.424 23.8487 15.304 23.8327C15.24 23.8327 15.184 23.8327 15.128 23.8167C14.888 23.7927 14.648 23.7527 14.416 23.7047C14.4 23.7047 14.384 23.6967 14.368 23.6967C11.264 23.0487 8.816 20.6087 8.168 17.5047C8.168 17.4807 8.16 17.4567 8.152 17.4327C8.112 17.2087 8.072 16.9767 8.048 16.7367C8.04 16.6807 8.032 16.6247 8.032 16.5607C8.016 16.4407 8.016 16.3287 8.008 16.2087C8 16.0967 8 15.9847 8 15.8647C8 15.3607 8.048 14.8727 8.136 14.4007C8.152 14.2967 8.176 14.2007 8.2 14.0967C8.24 13.8887 8.296 13.6887 8.36 13.4887C8.44 13.2327 8.528 12.9927 8.632 12.7527C8.728 12.5127 8.84 12.2807 8.968 12.0487C9.024 11.9367 9.088 11.8247 9.16 11.7207C9.224 11.6167 9.288 11.5127 9.36 11.4087C10.08 10.3367 11.048 9.44873 12.184 8.83273C12.416 8.70473 12.648 8.59274 12.888 8.49674C13.008 8.44074 13.128 8.39274 13.248 8.35274C13.36 8.31274 13.464 8.27274 13.576 8.24074C13.712 8.19274 13.856 8.15274 14 8.12074C14.096 8.08874 14.192 8.07274 14.288 8.04874C14.336 8.04074 14.392 8.02474 14.448 8.01674C14.936 7.92074 15.4 8.30473 15.4 8.80874V15.7447C15.4 16.0327 15.552 16.2967 15.8 16.4407L21.808 19.9047C22.248 20.1607 22.352 20.7527 22.016 21.1287Z"
-          fill="white"
-        />
-      </g>
-      <defs>
-        <clipPath id="clip0_4694_621">
-          <rect
-            width="16"
-            height="16"
-            fill="white"
-            transform="translate(8 8)"
-          />
-        </clipPath>
-      </defs>
-    </svg>
-  }
+      </clipPath>
+    </defs>
+  </svg>
+}
     href="/integrations/taxes/lago-eu-taxes"
   >
     Lago now features an automatic European tax detection integration for your
@@ -25741,99 +27036,96 @@ Find all Lago integrations with third-party tools—whether for payment provider
 
     <br />
 
-    <Tooltip tip="This integration is maintained by Lago.">Official</Tooltip>
+    <Tooltip>Official</Tooltip>
   </Card>
 </CardGroup>
 
 ## CRM integrations
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card
     title="Salesforce CRM"
-    iconType="brand"
     icon={
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="32" height="32" rx="8" fill="#00A1E0" />
-      <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M14.1208 9.70778C14.8435 8.95546 15.8494 8.48958 16.9606 8.48958C18.4421 8.48958 19.7262 9.31269 20.4176 10.5391C21.0313 10.2648 21.6961 10.1231 22.3684 10.1234C25.0352 10.1234 27.2 12.3047 27.2 14.9962C27.2 17.6878 25.0352 19.869 22.3684 19.869C22.0424 19.869 21.7247 19.8363 21.4136 19.7744C20.8086 20.8526 19.6521 21.5852 18.3351 21.5852C17.799 21.5863 17.2696 21.4646 16.7877 21.2296C16.1745 22.6701 14.7464 23.6825 13.0837 23.6825C11.347 23.6825 9.87361 22.5877 9.30567 21.0485C9.05289 21.1019 8.79523 21.1287 8.53689 21.1285C6.47089 21.1285 4.79999 19.4329 4.79999 17.3505C4.79999 15.9512 5.55231 14.733 6.66844 14.0745C6.43165 13.529 6.30977 12.9406 6.31039 12.346C6.31039 9.94253 8.26115 8 10.6646 8C12.0721 8 13.3315 8.67083 14.1217 9.71206"
-        fill="white"
-      />
-      <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M18.0423 13.4844C18.0856 13.492 18.1285 13.5022 18.1706 13.5149C18.1798 13.5185 18.2047 13.5308 18.1945 13.5602L18.0952 13.8328C18.0869 13.8533 18.0812 13.8658 18.0389 13.8528C18.0284 13.8497 18.0127 13.8452 17.9725 13.8366C17.9432 13.8305 17.9049 13.8258 17.8658 13.8258C17.8186 13.8252 17.7716 13.832 17.7264 13.8459C17.6853 13.8594 17.648 13.8826 17.6177 13.9136C17.5853 13.9461 17.547 13.9934 17.5267 14.0521C17.4852 14.1716 17.4656 14.2976 17.4598 14.3346C17.4589 14.3402 17.4584 14.3438 17.4581 14.345H17.8732C17.9079 14.3448 17.919 14.361 17.9156 14.3868L17.8672 14.6568C17.8597 14.6959 17.8237 14.6946 17.8237 14.6946H17.396L17.1034 16.3497C17.0727 16.5209 17.0344 16.6677 16.9894 16.786C16.9438 16.9053 16.8963 16.9928 16.8206 17.0764C16.7507 17.1538 16.6716 17.211 16.5807 17.2439C16.4904 17.2765 16.3815 17.2933 16.262 17.2933C16.2049 17.2933 16.144 17.2922 16.0718 17.2752C16.0197 17.2629 15.9913 17.2542 15.9531 17.2405C15.9368 17.2347 15.9239 17.2144 15.9331 17.1887C15.9422 17.1627 16.0187 16.9524 16.0294 16.9248C16.0427 16.8911 16.0764 16.9039 16.0764 16.9039L16.078 16.9046C16.1003 16.914 16.1163 16.9207 16.1464 16.9267C16.1773 16.9328 16.2191 16.9381 16.2505 16.9381C16.307 16.9381 16.3585 16.9312 16.4033 16.9161C16.4575 16.8979 16.489 16.8667 16.5222 16.8243C16.5564 16.7806 16.5842 16.7202 16.6127 16.6397C16.6416 16.5582 16.6677 16.4505 16.6905 16.3196L16.9816 14.6946H16.6947C16.6601 14.6947 16.649 14.6786 16.6524 14.6527L16.7008 14.3828C16.7083 14.3435 16.7443 14.345 16.7443 14.345H17.0391L17.055 14.257C17.099 13.9963 17.1868 13.7982 17.3159 13.6681C17.4458 13.5371 17.631 13.4708 17.8658 13.4708C17.9249 13.4701 17.984 13.4747 18.0423 13.4844ZM12.3326 16.3625C12.3544 16.3625 12.3698 16.3448 12.3698 16.3231V13.5518C12.3698 13.5302 12.3544 13.5127 12.3326 13.5127H11.9883C11.9665 13.5127 11.951 13.5302 11.951 13.5518V16.3231C11.951 16.3448 11.9665 16.3625 11.9883 16.3625H12.3326ZM8.0689 16.1757C8.06217 16.1693 8.05113 16.1588 8.06277 16.1284L8.06244 16.1278L8.15298 15.8759C8.1673 15.8328 8.20023 15.8472 8.2134 15.8551C8.22351 15.8613 8.23254 15.8672 8.24188 15.8733C8.25557 15.8822 8.26989 15.8916 8.28912 15.9028C8.55663 16.0719 8.80348 16.0732 8.88094 16.0732C9.08013 16.0732 9.20442 15.967 9.20442 15.8246V15.8169C9.20442 15.6621 9.01346 15.6032 8.79286 15.5354L8.74414 15.5202C8.44123 15.4338 8.11693 15.3087 8.11693 14.9251V14.9173C8.11693 14.5535 8.41078 14.2991 8.83139 14.2991L8.87723 14.299C9.12416 14.299 9.36286 14.3706 9.53572 14.4759C9.55144 14.4853 9.56675 14.5035 9.55802 14.5276C9.54979 14.5507 9.473 14.7562 9.46419 14.7795C9.44797 14.8226 9.40336 14.7937 9.40336 14.7937C9.25273 14.7105 9.01732 14.6448 8.81978 14.6448C8.64199 14.6448 8.52675 14.7394 8.52675 14.8678V14.8755C8.52675 15.0253 8.72348 15.0897 8.95148 15.1636L8.9909 15.1763C9.29216 15.271 9.61482 15.4035 9.61482 15.7673V15.7751C9.61482 16.1685 9.3292 16.413 8.86991 16.413C8.64438 16.413 8.42872 16.3776 8.1999 16.2566C8.18991 16.2508 8.17992 16.2452 8.16995 16.2395C8.13719 16.221 8.10456 16.2026 8.07232 16.1793C8.07153 16.1782 8.07031 16.177 8.0689 16.1757ZM14.7935 16.1751C14.7867 16.1687 14.7755 16.1582 14.7872 16.1278L14.7862 16.1271L14.8768 15.8752C14.89 15.8341 14.9288 15.8492 14.9371 15.8545C14.9427 15.8581 14.9479 15.8615 14.9531 15.8649C14.9709 15.8765 14.9879 15.8876 15.0129 15.9021C15.2796 16.0712 15.5271 16.0725 15.6047 16.0725C15.8039 16.0725 15.9282 15.9663 15.9282 15.8239V15.8162C15.9282 15.6615 15.7381 15.6025 15.5167 15.5347L15.468 15.5196C15.1651 15.4331 14.8408 15.308 14.8408 14.9245V14.9166C14.8408 14.5528 15.1346 14.2985 15.5553 14.2985L15.6012 14.2983C15.8481 14.2983 16.0868 14.3699 16.2597 14.4753C16.2753 14.4847 16.2907 14.5029 16.2819 14.527C16.2745 14.55 16.1976 14.7556 16.1889 14.7789C16.1726 14.8219 16.128 14.7931 16.128 14.7931C15.9765 14.7099 15.7419 14.6441 15.5444 14.6441C15.3666 14.6441 15.2514 14.7388 15.2514 14.8672V14.8748C15.2514 15.0246 15.4481 15.089 15.6761 15.1629L15.7155 15.1757C16.0176 15.2703 16.3394 15.4028 16.3394 15.7667V15.7744C16.3394 16.1678 16.0538 16.4123 15.5945 16.4123C15.369 16.4123 15.1533 16.3769 14.9245 16.2559C14.9144 16.2501 14.9043 16.2444 14.8942 16.2387C14.8615 16.2203 14.8289 16.2019 14.7969 16.1786C14.7961 16.1775 14.7949 16.1764 14.7935 16.1751ZM19.2565 15.8785C19.3377 15.7542 19.3792 15.5789 19.3792 15.3567V15.3575C19.3792 15.1353 19.3382 14.9608 19.2565 14.8381C19.1759 14.7169 19.054 14.6579 18.8828 14.6579C18.7116 14.6579 18.5905 14.7163 18.5108 14.8381C18.4306 14.9608 18.3898 15.1353 18.3898 15.3575C18.3898 15.5797 18.4304 15.7559 18.5108 15.8793C18.5906 16.0017 18.7124 16.0612 18.8828 16.0612C19.0532 16.0612 19.1755 16.0012 19.2565 15.8785ZM19.5882 14.6118C19.6664 14.7056 19.7249 14.8175 19.7627 14.9451H19.7619C19.7993 15.0719 19.8183 15.211 19.8183 15.3575C19.8183 15.5048 19.7993 15.6431 19.7619 15.7699C19.724 15.8975 19.6655 16.0094 19.5874 16.1032C19.5092 16.1971 19.4096 16.2721 19.2927 16.3255C19.1759 16.3788 19.0376 16.406 18.882 16.406C18.7264 16.406 18.5882 16.3788 18.4704 16.3255C18.3536 16.272 18.2541 16.1971 18.1758 16.1032C18.0976 16.0094 18.0389 15.8975 18.0013 15.7699C17.9638 15.6431 17.9448 15.5048 17.9448 15.3575C17.9448 15.2102 17.9638 15.0719 18.0013 14.9451C18.0391 14.8175 18.0977 14.7056 18.1758 14.6118C18.254 14.5179 18.3536 14.4425 18.4704 14.3879C18.5882 14.3333 18.7256 14.3056 18.882 14.3056C19.0384 14.3056 19.1767 14.3331 19.2936 14.3879C19.4113 14.4422 19.5099 14.5179 19.5882 14.6118ZM22.8654 15.9755C22.8654 15.9755 22.9018 15.9614 22.9144 15.9987H22.9147L23.0094 16.2588C23.0214 16.2911 22.9937 16.3044 22.9937 16.3044C22.8489 16.3618 22.6472 16.4015 22.4505 16.4015C22.118 16.4015 21.8628 16.306 21.6932 16.1167C21.5237 15.9282 21.4381 15.6706 21.4381 15.3529C21.4381 15.2055 21.4591 15.0664 21.5006 14.9397C21.5426 14.8121 21.6052 14.7002 21.6875 14.6063C21.7698 14.5125 21.8735 14.437 21.9961 14.3824C22.1188 14.3278 22.262 14.3002 22.4233 14.3002C22.532 14.3002 22.6283 14.3068 22.7114 14.3195C22.8003 14.3329 22.9177 14.3647 22.9674 14.3842C22.9765 14.3877 23.0016 14.4001 22.9914 14.4293C22.9671 14.4978 22.9479 14.5503 22.9278 14.6056C22.9179 14.6327 22.9078 14.6604 22.8967 14.691C22.8823 14.7306 22.8523 14.7175 22.8523 14.7175C22.7255 14.6779 22.6045 14.6595 22.4465 14.6595C22.2571 14.6595 22.1139 14.7237 22.0209 14.8472C21.9267 14.9723 21.8742 15.1353 21.8736 15.3526C21.8728 15.5913 21.932 15.7674 22.0382 15.8769C22.1436 15.9863 22.2917 16.0415 22.4769 16.0415C22.5518 16.0415 22.6229 16.0365 22.6868 16.0264C22.7502 16.0166 22.8097 15.9968 22.8654 15.9755ZM23.5856 15.1425C23.5856 15.1426 23.5856 15.1426 23.5856 15.1427L23.5814 15.1425L23.5856 15.1425ZM23.5856 15.1425L24.5116 15.1427C24.5028 15.0233 24.4795 14.9167 24.426 14.8365C24.3453 14.715 24.2325 14.648 24.0621 14.648C23.8918 14.648 23.7705 14.7146 23.6909 14.8365C23.6378 14.9163 23.6039 15.0191 23.5856 15.1425ZM24.7116 14.5673C24.7642 14.6241 24.8452 14.7484 24.8778 14.871L24.8796 14.8713C24.9578 15.1457 24.9245 15.3854 24.919 15.425C24.9187 15.4276 24.9184 15.4293 24.9183 15.4302C24.9148 15.4636 24.8806 15.4639 24.8806 15.4639L23.58 15.4629C23.5875 15.6605 23.6352 15.7996 23.7307 15.8951C23.8245 15.9883 23.9735 16.0478 24.1752 16.0482C24.4565 16.0489 24.5909 15.9971 24.6829 15.9617C24.6918 15.9582 24.7003 15.9549 24.7085 15.9519C24.7085 15.9519 24.7444 15.939 24.7574 15.9745L24.8422 16.2124C24.8592 16.2525 24.8456 16.2664 24.8312 16.2744C24.7505 16.3197 24.553 16.4033 24.1776 16.4045C23.9957 16.4051 23.8369 16.3788 23.706 16.3282C23.5743 16.2772 23.4648 16.2047 23.3792 16.1117C23.2936 16.0195 23.2301 15.9084 23.1907 15.7816C23.1517 15.6557 23.1319 15.5166 23.1319 15.3668C23.1319 15.2203 23.151 15.0804 23.1888 14.9528C23.2267 14.8235 23.286 14.7108 23.365 14.6153C23.444 14.5198 23.5444 14.4434 23.6638 14.3873C23.7831 14.3316 23.9304 14.3042 24.0926 14.3042C24.2204 14.3039 24.347 14.3296 24.4646 14.3796C24.5461 14.4142 24.6276 14.4776 24.7116 14.5673ZM13.1898 15.1425C13.1897 15.1426 13.1897 15.1426 13.1897 15.1427L13.1856 15.1425L13.1898 15.1425ZM13.2951 14.8365C13.242 14.9163 13.2081 15.0191 13.1898 15.1425L14.1157 15.1427C14.1069 15.0233 14.0835 14.9167 14.0301 14.8365C13.9495 14.715 13.8367 14.648 13.6663 14.648C13.4959 14.648 13.3748 14.7146 13.2951 14.8365ZM14.3157 14.5673C14.3684 14.6241 14.4494 14.7484 14.482 14.871L14.4829 14.8713C14.5612 15.1457 14.5279 15.3854 14.5224 15.425C14.5221 15.4276 14.5218 15.4293 14.5218 15.4302C14.5182 15.4636 14.484 15.4639 14.484 15.4639L13.1835 15.4629C13.1909 15.6605 13.2386 15.7996 13.3341 15.8951C13.4279 15.9883 13.5777 16.0478 13.7786 16.0482C14.06 16.0489 14.1943 15.9971 14.2863 15.9617C14.2952 15.9582 14.3037 15.9549 14.312 15.9519C14.312 15.9519 14.3478 15.939 14.3609 15.9745L14.4457 16.2124C14.4627 16.2525 14.4491 16.2664 14.4348 16.2744C14.3541 16.3197 14.1566 16.4033 13.7812 16.4045C13.5985 16.4051 13.4404 16.3788 13.3096 16.3282C13.1779 16.2772 13.0684 16.2047 12.9828 16.1117C12.898 16.0195 12.8345 15.9084 12.7951 15.7816C12.7559 15.6557 12.7362 15.5166 12.7362 15.3668C12.7362 15.2203 12.7552 15.0804 12.793 14.9528C12.8309 14.8235 12.8904 14.7108 12.9691 14.6153C13.0482 14.5198 13.1486 14.4434 13.2679 14.3873C13.3873 14.3316 13.5346 14.3042 13.6968 14.3042C13.8246 14.3039 13.9512 14.3296 14.0688 14.3796C14.1503 14.4142 14.2318 14.4776 14.3157 14.5673ZM10.308 15.9134C10.3249 15.9398 10.332 15.9498 10.3829 15.9905L10.3837 15.9909C10.3829 15.9906 10.4997 16.0826 10.764 16.0667C10.95 16.0555 11.1146 16.02 11.1146 16.02H11.1144V15.4298C10.9978 15.412 10.8801 15.4019 10.7621 15.3998C10.4971 15.3965 10.3843 15.4938 10.3852 15.4936C10.307 15.5488 10.2691 15.6311 10.2691 15.7447C10.2691 15.8171 10.2823 15.8737 10.308 15.9134ZM10.6974 15.0711C10.7789 15.0711 10.8472 15.0729 10.8999 15.0768L10.9011 15.0799C10.9011 15.0799 11.004 15.0892 11.1151 15.1053V15.0504C11.1151 14.8775 11.079 14.7953 11.0081 14.7409C10.9357 14.6853 10.827 14.6569 10.6871 14.6569C10.6871 14.6569 10.371 14.6528 10.1216 14.7886C10.1101 14.7955 10.1003 14.7993 10.1003 14.7993C10.1003 14.7993 10.0691 14.8103 10.0576 14.7783L9.96546 14.5313C9.95147 14.4955 9.97715 14.4797 9.97715 14.4797C10.094 14.3882 10.3772 14.3332 10.3772 14.3332C10.471 14.3144 10.6282 14.3012 10.7254 14.3012C10.9846 14.3012 11.1846 14.3613 11.3213 14.4806C11.4584 14.6 11.5279 14.7934 11.5279 15.0535L11.5286 16.2388C11.5286 16.2388 11.5311 16.2731 11.499 16.2813C11.499 16.2813 11.4509 16.2944 11.4076 16.3043C11.2992 16.3278 11.1902 16.349 11.0809 16.3679C10.9524 16.3895 10.8199 16.4007 10.6866 16.4007C10.5598 16.4007 10.4446 16.3889 10.3425 16.3656C10.2396 16.3426 10.1505 16.3037 10.0783 16.2512C10.0057 16.1986 9.94746 16.1287 9.90875 16.0479C9.86924 15.9664 9.84924 15.8668 9.84924 15.7516C9.84924 15.638 9.8727 15.5376 9.91871 15.452C9.9643 15.3671 10.0288 15.2939 10.1072 15.238C10.1854 15.1817 10.2768 15.1394 10.378 15.112C10.4784 15.0849 10.5862 15.0711 10.6974 15.0711ZM21.3562 14.3939C21.3561 14.3986 21.3552 14.4033 21.3533 14.4076L21.3541 14.4023C21.3418 14.4377 21.2785 14.6154 21.2562 14.6747C21.2477 14.6973 21.2338 14.7126 21.2088 14.7098C21.2088 14.7098 21.1343 14.6923 21.0664 14.6923C21.0073 14.6923 20.9486 14.7006 20.8919 14.7169C20.8314 14.7356 20.7764 14.7687 20.7314 14.8132C20.6842 14.8593 20.6459 14.9236 20.6178 15.0041C20.5892 15.0856 20.5749 15.2148 20.5749 15.3449V16.3162C20.5749 16.3266 20.5707 16.3366 20.5634 16.344C20.556 16.3514 20.546 16.3556 20.5355 16.3556H20.1948C20.1843 16.3556 20.1743 16.3514 20.1669 16.344C20.1595 16.3366 20.1554 16.3266 20.1553 16.3162V14.3819C20.1553 14.3601 20.171 14.3426 20.1926 14.3426H20.5251C20.547 14.3426 20.5624 14.3601 20.5624 14.3819L20.5625 14.5399C20.6119 14.4724 20.701 14.4141 20.7815 14.3778C20.863 14.3412 20.9535 14.3137 21.1165 14.3239C21.2013 14.3292 21.3116 14.3525 21.3338 14.3609C21.3382 14.3626 21.3422 14.3652 21.3456 14.3685C21.349 14.3718 21.3516 14.3758 21.3535 14.3801C21.3553 14.3845 21.3562 14.3892 21.3562 14.3939Z"
-        fill="#00A1E0"
-      />
-    </svg>
-  }
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect width="32" height="32" rx="8" fill="#00A1E0" />
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M14.1208 9.70778C14.8435 8.95546 15.8494 8.48958 16.9606 8.48958C18.4421 8.48958 19.7262 9.31269 20.4176 10.5391C21.0313 10.2648 21.6961 10.1231 22.3684 10.1234C25.0352 10.1234 27.2 12.3047 27.2 14.9962C27.2 17.6878 25.0352 19.869 22.3684 19.869C22.0424 19.869 21.7247 19.8363 21.4136 19.7744C20.8086 20.8526 19.6521 21.5852 18.3351 21.5852C17.799 21.5863 17.2696 21.4646 16.7877 21.2296C16.1745 22.6701 14.7464 23.6825 13.0837 23.6825C11.347 23.6825 9.87361 22.5877 9.30567 21.0485C9.05289 21.1019 8.79523 21.1287 8.53689 21.1285C6.47089 21.1285 4.79999 19.4329 4.79999 17.3505C4.79999 15.9512 5.55231 14.733 6.66844 14.0745C6.43165 13.529 6.30977 12.9406 6.31039 12.346C6.31039 9.94253 8.26115 8 10.6646 8C12.0721 8 13.3315 8.67083 14.1217 9.71206"
+      fill="white"
+    />
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M18.0423 13.4844C18.0856 13.492 18.1285 13.5022 18.1706 13.5149C18.1798 13.5185 18.2047 13.5308 18.1945 13.5602L18.0952 13.8328C18.0869 13.8533 18.0812 13.8658 18.0389 13.8528C18.0284 13.8497 18.0127 13.8452 17.9725 13.8366C17.9432 13.8305 17.9049 13.8258 17.8658 13.8258C17.8186 13.8252 17.7716 13.832 17.7264 13.8459C17.6853 13.8594 17.648 13.8826 17.6177 13.9136C17.5853 13.9461 17.547 13.9934 17.5267 14.0521C17.4852 14.1716 17.4656 14.2976 17.4598 14.3346C17.4589 14.3402 17.4584 14.3438 17.4581 14.345H17.8732C17.9079 14.3448 17.919 14.361 17.9156 14.3868L17.8672 14.6568C17.8597 14.6959 17.8237 14.6946 17.8237 14.6946H17.396L17.1034 16.3497C17.0727 16.5209 17.0344 16.6677 16.9894 16.786C16.9438 16.9053 16.8963 16.9928 16.8206 17.0764C16.7507 17.1538 16.6716 17.211 16.5807 17.2439C16.4904 17.2765 16.3815 17.2933 16.262 17.2933C16.2049 17.2933 16.144 17.2922 16.0718 17.2752C16.0197 17.2629 15.9913 17.2542 15.9531 17.2405C15.9368 17.2347 15.9239 17.2144 15.9331 17.1887C15.9422 17.1627 16.0187 16.9524 16.0294 16.9248C16.0427 16.8911 16.0764 16.9039 16.0764 16.9039L16.078 16.9046C16.1003 16.914 16.1163 16.9207 16.1464 16.9267C16.1773 16.9328 16.2191 16.9381 16.2505 16.9381C16.307 16.9381 16.3585 16.9312 16.4033 16.9161C16.4575 16.8979 16.489 16.8667 16.5222 16.8243C16.5564 16.7806 16.5842 16.7202 16.6127 16.6397C16.6416 16.5582 16.6677 16.4505 16.6905 16.3196L16.9816 14.6946H16.6947C16.6601 14.6947 16.649 14.6786 16.6524 14.6527L16.7008 14.3828C16.7083 14.3435 16.7443 14.345 16.7443 14.345H17.0391L17.055 14.257C17.099 13.9963 17.1868 13.7982 17.3159 13.6681C17.4458 13.5371 17.631 13.4708 17.8658 13.4708C17.9249 13.4701 17.984 13.4747 18.0423 13.4844ZM12.3326 16.3625C12.3544 16.3625 12.3698 16.3448 12.3698 16.3231V13.5518C12.3698 13.5302 12.3544 13.5127 12.3326 13.5127H11.9883C11.9665 13.5127 11.951 13.5302 11.951 13.5518V16.3231C11.951 16.3448 11.9665 16.3625 11.9883 16.3625H12.3326ZM8.0689 16.1757C8.06217 16.1693 8.05113 16.1588 8.06277 16.1284L8.06244 16.1278L8.15298 15.8759C8.1673 15.8328 8.20023 15.8472 8.2134 15.8551C8.22351 15.8613 8.23254 15.8672 8.24188 15.8733C8.25557 15.8822 8.26989 15.8916 8.28912 15.9028C8.55663 16.0719 8.80348 16.0732 8.88094 16.0732C9.08013 16.0732 9.20442 15.967 9.20442 15.8246V15.8169C9.20442 15.6621 9.01346 15.6032 8.79286 15.5354L8.74414 15.5202C8.44123 15.4338 8.11693 15.3087 8.11693 14.9251V14.9173C8.11693 14.5535 8.41078 14.2991 8.83139 14.2991L8.87723 14.299C9.12416 14.299 9.36286 14.3706 9.53572 14.4759C9.55144 14.4853 9.56675 14.5035 9.55802 14.5276C9.54979 14.5507 9.473 14.7562 9.46419 14.7795C9.44797 14.8226 9.40336 14.7937 9.40336 14.7937C9.25273 14.7105 9.01732 14.6448 8.81978 14.6448C8.64199 14.6448 8.52675 14.7394 8.52675 14.8678V14.8755C8.52675 15.0253 8.72348 15.0897 8.95148 15.1636L8.9909 15.1763C9.29216 15.271 9.61482 15.4035 9.61482 15.7673V15.7751C9.61482 16.1685 9.3292 16.413 8.86991 16.413C8.64438 16.413 8.42872 16.3776 8.1999 16.2566C8.18991 16.2508 8.17992 16.2452 8.16995 16.2395C8.13719 16.221 8.10456 16.2026 8.07232 16.1793C8.07153 16.1782 8.07031 16.177 8.0689 16.1757ZM14.7935 16.1751C14.7867 16.1687 14.7755 16.1582 14.7872 16.1278L14.7862 16.1271L14.8768 15.8752C14.89 15.8341 14.9288 15.8492 14.9371 15.8545C14.9427 15.8581 14.9479 15.8615 14.9531 15.8649C14.9709 15.8765 14.9879 15.8876 15.0129 15.9021C15.2796 16.0712 15.5271 16.0725 15.6047 16.0725C15.8039 16.0725 15.9282 15.9663 15.9282 15.8239V15.8162C15.9282 15.6615 15.7381 15.6025 15.5167 15.5347L15.468 15.5196C15.1651 15.4331 14.8408 15.308 14.8408 14.9245V14.9166C14.8408 14.5528 15.1346 14.2985 15.5553 14.2985L15.6012 14.2983C15.8481 14.2983 16.0868 14.3699 16.2597 14.4753C16.2753 14.4847 16.2907 14.5029 16.2819 14.527C16.2745 14.55 16.1976 14.7556 16.1889 14.7789C16.1726 14.8219 16.128 14.7931 16.128 14.7931C15.9765 14.7099 15.7419 14.6441 15.5444 14.6441C15.3666 14.6441 15.2514 14.7388 15.2514 14.8672V14.8748C15.2514 15.0246 15.4481 15.089 15.6761 15.1629L15.7155 15.1757C16.0176 15.2703 16.3394 15.4028 16.3394 15.7667V15.7744C16.3394 16.1678 16.0538 16.4123 15.5945 16.4123C15.369 16.4123 15.1533 16.3769 14.9245 16.2559C14.9144 16.2501 14.9043 16.2444 14.8942 16.2387C14.8615 16.2203 14.8289 16.2019 14.7969 16.1786C14.7961 16.1775 14.7949 16.1764 14.7935 16.1751ZM19.2565 15.8785C19.3377 15.7542 19.3792 15.5789 19.3792 15.3567V15.3575C19.3792 15.1353 19.3382 14.9608 19.2565 14.8381C19.1759 14.7169 19.054 14.6579 18.8828 14.6579C18.7116 14.6579 18.5905 14.7163 18.5108 14.8381C18.4306 14.9608 18.3898 15.1353 18.3898 15.3575C18.3898 15.5797 18.4304 15.7559 18.5108 15.8793C18.5906 16.0017 18.7124 16.0612 18.8828 16.0612C19.0532 16.0612 19.1755 16.0012 19.2565 15.8785ZM19.5882 14.6118C19.6664 14.7056 19.7249 14.8175 19.7627 14.9451H19.7619C19.7993 15.0719 19.8183 15.211 19.8183 15.3575C19.8183 15.5048 19.7993 15.6431 19.7619 15.7699C19.724 15.8975 19.6655 16.0094 19.5874 16.1032C19.5092 16.1971 19.4096 16.2721 19.2927 16.3255C19.1759 16.3788 19.0376 16.406 18.882 16.406C18.7264 16.406 18.5882 16.3788 18.4704 16.3255C18.3536 16.272 18.2541 16.1971 18.1758 16.1032C18.0976 16.0094 18.0389 15.8975 18.0013 15.7699C17.9638 15.6431 17.9448 15.5048 17.9448 15.3575C17.9448 15.2102 17.9638 15.0719 18.0013 14.9451C18.0391 14.8175 18.0977 14.7056 18.1758 14.6118C18.254 14.5179 18.3536 14.4425 18.4704 14.3879C18.5882 14.3333 18.7256 14.3056 18.882 14.3056C19.0384 14.3056 19.1767 14.3331 19.2936 14.3879C19.4113 14.4422 19.5099 14.5179 19.5882 14.6118ZM22.8654 15.9755C22.8654 15.9755 22.9018 15.9614 22.9144 15.9987H22.9147L23.0094 16.2588C23.0214 16.2911 22.9937 16.3044 22.9937 16.3044C22.8489 16.3618 22.6472 16.4015 22.4505 16.4015C22.118 16.4015 21.8628 16.306 21.6932 16.1167C21.5237 15.9282 21.4381 15.6706 21.4381 15.3529C21.4381 15.2055 21.4591 15.0664 21.5006 14.9397C21.5426 14.8121 21.6052 14.7002 21.6875 14.6063C21.7698 14.5125 21.8735 14.437 21.9961 14.3824C22.1188 14.3278 22.262 14.3002 22.4233 14.3002C22.532 14.3002 22.6283 14.3068 22.7114 14.3195C22.8003 14.3329 22.9177 14.3647 22.9674 14.3842C22.9765 14.3877 23.0016 14.4001 22.9914 14.4293C22.9671 14.4978 22.9479 14.5503 22.9278 14.6056C22.9179 14.6327 22.9078 14.6604 22.8967 14.691C22.8823 14.7306 22.8523 14.7175 22.8523 14.7175C22.7255 14.6779 22.6045 14.6595 22.4465 14.6595C22.2571 14.6595 22.1139 14.7237 22.0209 14.8472C21.9267 14.9723 21.8742 15.1353 21.8736 15.3526C21.8728 15.5913 21.932 15.7674 22.0382 15.8769C22.1436 15.9863 22.2917 16.0415 22.4769 16.0415C22.5518 16.0415 22.6229 16.0365 22.6868 16.0264C22.7502 16.0166 22.8097 15.9968 22.8654 15.9755ZM23.5856 15.1425C23.5856 15.1426 23.5856 15.1426 23.5856 15.1427L23.5814 15.1425L23.5856 15.1425ZM23.5856 15.1425L24.5116 15.1427C24.5028 15.0233 24.4795 14.9167 24.426 14.8365C24.3453 14.715 24.2325 14.648 24.0621 14.648C23.8918 14.648 23.7705 14.7146 23.6909 14.8365C23.6378 14.9163 23.6039 15.0191 23.5856 15.1425ZM24.7116 14.5673C24.7642 14.6241 24.8452 14.7484 24.8778 14.871L24.8796 14.8713C24.9578 15.1457 24.9245 15.3854 24.919 15.425C24.9187 15.4276 24.9184 15.4293 24.9183 15.4302C24.9148 15.4636 24.8806 15.4639 24.8806 15.4639L23.58 15.4629C23.5875 15.6605 23.6352 15.7996 23.7307 15.8951C23.8245 15.9883 23.9735 16.0478 24.1752 16.0482C24.4565 16.0489 24.5909 15.9971 24.6829 15.9617C24.6918 15.9582 24.7003 15.9549 24.7085 15.9519C24.7085 15.9519 24.7444 15.939 24.7574 15.9745L24.8422 16.2124C24.8592 16.2525 24.8456 16.2664 24.8312 16.2744C24.7505 16.3197 24.553 16.4033 24.1776 16.4045C23.9957 16.4051 23.8369 16.3788 23.706 16.3282C23.5743 16.2772 23.4648 16.2047 23.3792 16.1117C23.2936 16.0195 23.2301 15.9084 23.1907 15.7816C23.1517 15.6557 23.1319 15.5166 23.1319 15.3668C23.1319 15.2203 23.151 15.0804 23.1888 14.9528C23.2267 14.8235 23.286 14.7108 23.365 14.6153C23.444 14.5198 23.5444 14.4434 23.6638 14.3873C23.7831 14.3316 23.9304 14.3042 24.0926 14.3042C24.2204 14.3039 24.347 14.3296 24.4646 14.3796C24.5461 14.4142 24.6276 14.4776 24.7116 14.5673ZM13.1898 15.1425C13.1897 15.1426 13.1897 15.1426 13.1897 15.1427L13.1856 15.1425L13.1898 15.1425ZM13.2951 14.8365C13.242 14.9163 13.2081 15.0191 13.1898 15.1425L14.1157 15.1427C14.1069 15.0233 14.0835 14.9167 14.0301 14.8365C13.9495 14.715 13.8367 14.648 13.6663 14.648C13.4959 14.648 13.3748 14.7146 13.2951 14.8365ZM14.3157 14.5673C14.3684 14.6241 14.4494 14.7484 14.482 14.871L14.4829 14.8713C14.5612 15.1457 14.5279 15.3854 14.5224 15.425C14.5221 15.4276 14.5218 15.4293 14.5218 15.4302C14.5182 15.4636 14.484 15.4639 14.484 15.4639L13.1835 15.4629C13.1909 15.6605 13.2386 15.7996 13.3341 15.8951C13.4279 15.9883 13.5777 16.0478 13.7786 16.0482C14.06 16.0489 14.1943 15.9971 14.2863 15.9617C14.2952 15.9582 14.3037 15.9549 14.312 15.9519C14.312 15.9519 14.3478 15.939 14.3609 15.9745L14.4457 16.2124C14.4627 16.2525 14.4491 16.2664 14.4348 16.2744C14.3541 16.3197 14.1566 16.4033 13.7812 16.4045C13.5985 16.4051 13.4404 16.3788 13.3096 16.3282C13.1779 16.2772 13.0684 16.2047 12.9828 16.1117C12.898 16.0195 12.8345 15.9084 12.7951 15.7816C12.7559 15.6557 12.7362 15.5166 12.7362 15.3668C12.7362 15.2203 12.7552 15.0804 12.793 14.9528C12.8309 14.8235 12.8904 14.7108 12.9691 14.6153C13.0482 14.5198 13.1486 14.4434 13.2679 14.3873C13.3873 14.3316 13.5346 14.3042 13.6968 14.3042C13.8246 14.3039 13.9512 14.3296 14.0688 14.3796C14.1503 14.4142 14.2318 14.4776 14.3157 14.5673ZM10.308 15.9134C10.3249 15.9398 10.332 15.9498 10.3829 15.9905L10.3837 15.9909C10.3829 15.9906 10.4997 16.0826 10.764 16.0667C10.95 16.0555 11.1146 16.02 11.1146 16.02H11.1144V15.4298C10.9978 15.412 10.8801 15.4019 10.7621 15.3998C10.4971 15.3965 10.3843 15.4938 10.3852 15.4936C10.307 15.5488 10.2691 15.6311 10.2691 15.7447C10.2691 15.8171 10.2823 15.8737 10.308 15.9134ZM10.6974 15.0711C10.7789 15.0711 10.8472 15.0729 10.8999 15.0768L10.9011 15.0799C10.9011 15.0799 11.004 15.0892 11.1151 15.1053V15.0504C11.1151 14.8775 11.079 14.7953 11.0081 14.7409C10.9357 14.6853 10.827 14.6569 10.6871 14.6569C10.6871 14.6569 10.371 14.6528 10.1216 14.7886C10.1101 14.7955 10.1003 14.7993 10.1003 14.7993C10.1003 14.7993 10.0691 14.8103 10.0576 14.7783L9.96546 14.5313C9.95147 14.4955 9.97715 14.4797 9.97715 14.4797C10.094 14.3882 10.3772 14.3332 10.3772 14.3332C10.471 14.3144 10.6282 14.3012 10.7254 14.3012C10.9846 14.3012 11.1846 14.3613 11.3213 14.4806C11.4584 14.6 11.5279 14.7934 11.5279 15.0535L11.5286 16.2388C11.5286 16.2388 11.5311 16.2731 11.499 16.2813C11.499 16.2813 11.4509 16.2944 11.4076 16.3043C11.2992 16.3278 11.1902 16.349 11.0809 16.3679C10.9524 16.3895 10.8199 16.4007 10.6866 16.4007C10.5598 16.4007 10.4446 16.3889 10.3425 16.3656C10.2396 16.3426 10.1505 16.3037 10.0783 16.2512C10.0057 16.1986 9.94746 16.1287 9.90875 16.0479C9.86924 15.9664 9.84924 15.8668 9.84924 15.7516C9.84924 15.638 9.8727 15.5376 9.91871 15.452C9.9643 15.3671 10.0288 15.2939 10.1072 15.238C10.1854 15.1817 10.2768 15.1394 10.378 15.112C10.4784 15.0849 10.5862 15.0711 10.6974 15.0711ZM21.3562 14.3939C21.3561 14.3986 21.3552 14.4033 21.3533 14.4076L21.3541 14.4023C21.3418 14.4377 21.2785 14.6154 21.2562 14.6747C21.2477 14.6973 21.2338 14.7126 21.2088 14.7098C21.2088 14.7098 21.1343 14.6923 21.0664 14.6923C21.0073 14.6923 20.9486 14.7006 20.8919 14.7169C20.8314 14.7356 20.7764 14.7687 20.7314 14.8132C20.6842 14.8593 20.6459 14.9236 20.6178 15.0041C20.5892 15.0856 20.5749 15.2148 20.5749 15.3449V16.3162C20.5749 16.3266 20.5707 16.3366 20.5634 16.344C20.556 16.3514 20.546 16.3556 20.5355 16.3556H20.1948C20.1843 16.3556 20.1743 16.3514 20.1669 16.344C20.1595 16.3366 20.1554 16.3266 20.1553 16.3162V14.3819C20.1553 14.3601 20.171 14.3426 20.1926 14.3426H20.5251C20.547 14.3426 20.5624 14.3601 20.5624 14.3819L20.5625 14.5399C20.6119 14.4724 20.701 14.4141 20.7815 14.3778C20.863 14.3412 20.9535 14.3137 21.1165 14.3239C21.2013 14.3292 21.3116 14.3525 21.3338 14.3609C21.3382 14.3626 21.3422 14.3652 21.3456 14.3685C21.349 14.3718 21.3516 14.3758 21.3535 14.3801C21.3553 14.3845 21.3562 14.3892 21.3562 14.3939Z"
+      fill="#00A1E0"
+    />
+  </svg>
+}
     href="/integrations/crm/salesforce-crm"
   >
     Salesforce CRM integration is used to sync data from Lago to Salesforce.
 
     <br />
 
-    <Tooltip tip="This integration is maintained by Lago.">Official</Tooltip>
+    <Tooltip>Official</Tooltip>
   </Card>
 
   <Card
     title="Salesforce CPQ"
-    iconType="brand"
     icon={
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="32" height="32" rx="8" fill="#00A1E0" />
-      <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M14.1208 9.70778C14.8435 8.95546 15.8494 8.48958 16.9606 8.48958C18.4421 8.48958 19.7262 9.31269 20.4176 10.5391C21.0313 10.2648 21.6961 10.1231 22.3684 10.1234C25.0352 10.1234 27.2 12.3047 27.2 14.9962C27.2 17.6878 25.0352 19.869 22.3684 19.869C22.0424 19.869 21.7247 19.8363 21.4136 19.7744C20.8086 20.8526 19.6521 21.5852 18.3351 21.5852C17.799 21.5863 17.2696 21.4646 16.7877 21.2296C16.1745 22.6701 14.7464 23.6825 13.0837 23.6825C11.347 23.6825 9.87361 22.5877 9.30567 21.0485C9.05289 21.1019 8.79523 21.1287 8.53689 21.1285C6.47089 21.1285 4.79999 19.4329 4.79999 17.3505C4.79999 15.9512 5.55231 14.733 6.66844 14.0745C6.43165 13.529 6.30977 12.9406 6.31039 12.346C6.31039 9.94253 8.26115 8 10.6646 8C12.0721 8 13.3315 8.67083 14.1217 9.71206"
-        fill="white"
-      />
-      <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M18.0423 13.4844C18.0856 13.492 18.1285 13.5022 18.1706 13.5149C18.1798 13.5185 18.2047 13.5308 18.1945 13.5602L18.0952 13.8328C18.0869 13.8533 18.0812 13.8658 18.0389 13.8528C18.0284 13.8497 18.0127 13.8452 17.9725 13.8366C17.9432 13.8305 17.9049 13.8258 17.8658 13.8258C17.8186 13.8252 17.7716 13.832 17.7264 13.8459C17.6853 13.8594 17.648 13.8826 17.6177 13.9136C17.5853 13.9461 17.547 13.9934 17.5267 14.0521C17.4852 14.1716 17.4656 14.2976 17.4598 14.3346C17.4589 14.3402 17.4584 14.3438 17.4581 14.345H17.8732C17.9079 14.3448 17.919 14.361 17.9156 14.3868L17.8672 14.6568C17.8597 14.6959 17.8237 14.6946 17.8237 14.6946H17.396L17.1034 16.3497C17.0727 16.5209 17.0344 16.6677 16.9894 16.786C16.9438 16.9053 16.8963 16.9928 16.8206 17.0764C16.7507 17.1538 16.6716 17.211 16.5807 17.2439C16.4904 17.2765 16.3815 17.2933 16.262 17.2933C16.2049 17.2933 16.144 17.2922 16.0718 17.2752C16.0197 17.2629 15.9913 17.2542 15.9531 17.2405C15.9368 17.2347 15.9239 17.2144 15.9331 17.1887C15.9422 17.1627 16.0187 16.9524 16.0294 16.9248C16.0427 16.8911 16.0764 16.9039 16.0764 16.9039L16.078 16.9046C16.1003 16.914 16.1163 16.9207 16.1464 16.9267C16.1773 16.9328 16.2191 16.9381 16.2505 16.9381C16.307 16.9381 16.3585 16.9312 16.4033 16.9161C16.4575 16.8979 16.489 16.8667 16.5222 16.8243C16.5564 16.7806 16.5842 16.7202 16.6127 16.6397C16.6416 16.5582 16.6677 16.4505 16.6905 16.3196L16.9816 14.6946H16.6947C16.6601 14.6947 16.649 14.6786 16.6524 14.6527L16.7008 14.3828C16.7083 14.3435 16.7443 14.345 16.7443 14.345H17.0391L17.055 14.257C17.099 13.9963 17.1868 13.7982 17.3159 13.6681C17.4458 13.5371 17.631 13.4708 17.8658 13.4708C17.9249 13.4701 17.984 13.4747 18.0423 13.4844ZM12.3326 16.3625C12.3544 16.3625 12.3698 16.3448 12.3698 16.3231V13.5518C12.3698 13.5302 12.3544 13.5127 12.3326 13.5127H11.9883C11.9665 13.5127 11.951 13.5302 11.951 13.5518V16.3231C11.951 16.3448 11.9665 16.3625 11.9883 16.3625H12.3326ZM8.0689 16.1757C8.06217 16.1693 8.05113 16.1588 8.06277 16.1284L8.06244 16.1278L8.15298 15.8759C8.1673 15.8328 8.20023 15.8472 8.2134 15.8551C8.22351 15.8613 8.23254 15.8672 8.24188 15.8733C8.25557 15.8822 8.26989 15.8916 8.28912 15.9028C8.55663 16.0719 8.80348 16.0732 8.88094 16.0732C9.08013 16.0732 9.20442 15.967 9.20442 15.8246V15.8169C9.20442 15.6621 9.01346 15.6032 8.79286 15.5354L8.74414 15.5202C8.44123 15.4338 8.11693 15.3087 8.11693 14.9251V14.9173C8.11693 14.5535 8.41078 14.2991 8.83139 14.2991L8.87723 14.299C9.12416 14.299 9.36286 14.3706 9.53572 14.4759C9.55144 14.4853 9.56675 14.5035 9.55802 14.5276C9.54979 14.5507 9.473 14.7562 9.46419 14.7795C9.44797 14.8226 9.40336 14.7937 9.40336 14.7937C9.25273 14.7105 9.01732 14.6448 8.81978 14.6448C8.64199 14.6448 8.52675 14.7394 8.52675 14.8678V14.8755C8.52675 15.0253 8.72348 15.0897 8.95148 15.1636L8.9909 15.1763C9.29216 15.271 9.61482 15.4035 9.61482 15.7673V15.7751C9.61482 16.1685 9.3292 16.413 8.86991 16.413C8.64438 16.413 8.42872 16.3776 8.1999 16.2566C8.18991 16.2508 8.17992 16.2452 8.16995 16.2395C8.13719 16.221 8.10456 16.2026 8.07232 16.1793C8.07153 16.1782 8.07031 16.177 8.0689 16.1757ZM14.7935 16.1751C14.7867 16.1687 14.7755 16.1582 14.7872 16.1278L14.7862 16.1271L14.8768 15.8752C14.89 15.8341 14.9288 15.8492 14.9371 15.8545C14.9427 15.8581 14.9479 15.8615 14.9531 15.8649C14.9709 15.8765 14.9879 15.8876 15.0129 15.9021C15.2796 16.0712 15.5271 16.0725 15.6047 16.0725C15.8039 16.0725 15.9282 15.9663 15.9282 15.8239V15.8162C15.9282 15.6615 15.7381 15.6025 15.5167 15.5347L15.468 15.5196C15.1651 15.4331 14.8408 15.308 14.8408 14.9245V14.9166C14.8408 14.5528 15.1346 14.2985 15.5553 14.2985L15.6012 14.2983C15.8481 14.2983 16.0868 14.3699 16.2597 14.4753C16.2753 14.4847 16.2907 14.5029 16.2819 14.527C16.2745 14.55 16.1976 14.7556 16.1889 14.7789C16.1726 14.8219 16.128 14.7931 16.128 14.7931C15.9765 14.7099 15.7419 14.6441 15.5444 14.6441C15.3666 14.6441 15.2514 14.7388 15.2514 14.8672V14.8748C15.2514 15.0246 15.4481 15.089 15.6761 15.1629L15.7155 15.1757C16.0176 15.2703 16.3394 15.4028 16.3394 15.7667V15.7744C16.3394 16.1678 16.0538 16.4123 15.5945 16.4123C15.369 16.4123 15.1533 16.3769 14.9245 16.2559C14.9144 16.2501 14.9043 16.2444 14.8942 16.2387C14.8615 16.2203 14.8289 16.2019 14.7969 16.1786C14.7961 16.1775 14.7949 16.1764 14.7935 16.1751ZM19.2565 15.8785C19.3377 15.7542 19.3792 15.5789 19.3792 15.3567V15.3575C19.3792 15.1353 19.3382 14.9608 19.2565 14.8381C19.1759 14.7169 19.054 14.6579 18.8828 14.6579C18.7116 14.6579 18.5905 14.7163 18.5108 14.8381C18.4306 14.9608 18.3898 15.1353 18.3898 15.3575C18.3898 15.5797 18.4304 15.7559 18.5108 15.8793C18.5906 16.0017 18.7124 16.0612 18.8828 16.0612C19.0532 16.0612 19.1755 16.0012 19.2565 15.8785ZM19.5882 14.6118C19.6664 14.7056 19.7249 14.8175 19.7627 14.9451H19.7619C19.7993 15.0719 19.8183 15.211 19.8183 15.3575C19.8183 15.5048 19.7993 15.6431 19.7619 15.7699C19.724 15.8975 19.6655 16.0094 19.5874 16.1032C19.5092 16.1971 19.4096 16.2721 19.2927 16.3255C19.1759 16.3788 19.0376 16.406 18.882 16.406C18.7264 16.406 18.5882 16.3788 18.4704 16.3255C18.3536 16.272 18.2541 16.1971 18.1758 16.1032C18.0976 16.0094 18.0389 15.8975 18.0013 15.7699C17.9638 15.6431 17.9448 15.5048 17.9448 15.3575C17.9448 15.2102 17.9638 15.0719 18.0013 14.9451C18.0391 14.8175 18.0977 14.7056 18.1758 14.6118C18.254 14.5179 18.3536 14.4425 18.4704 14.3879C18.5882 14.3333 18.7256 14.3056 18.882 14.3056C19.0384 14.3056 19.1767 14.3331 19.2936 14.3879C19.4113 14.4422 19.5099 14.5179 19.5882 14.6118ZM22.8654 15.9755C22.8654 15.9755 22.9018 15.9614 22.9144 15.9987H22.9147L23.0094 16.2588C23.0214 16.2911 22.9937 16.3044 22.9937 16.3044C22.8489 16.3618 22.6472 16.4015 22.4505 16.4015C22.118 16.4015 21.8628 16.306 21.6932 16.1167C21.5237 15.9282 21.4381 15.6706 21.4381 15.3529C21.4381 15.2055 21.4591 15.0664 21.5006 14.9397C21.5426 14.8121 21.6052 14.7002 21.6875 14.6063C21.7698 14.5125 21.8735 14.437 21.9961 14.3824C22.1188 14.3278 22.262 14.3002 22.4233 14.3002C22.532 14.3002 22.6283 14.3068 22.7114 14.3195C22.8003 14.3329 22.9177 14.3647 22.9674 14.3842C22.9765 14.3877 23.0016 14.4001 22.9914 14.4293C22.9671 14.4978 22.9479 14.5503 22.9278 14.6056C22.9179 14.6327 22.9078 14.6604 22.8967 14.691C22.8823 14.7306 22.8523 14.7175 22.8523 14.7175C22.7255 14.6779 22.6045 14.6595 22.4465 14.6595C22.2571 14.6595 22.1139 14.7237 22.0209 14.8472C21.9267 14.9723 21.8742 15.1353 21.8736 15.3526C21.8728 15.5913 21.932 15.7674 22.0382 15.8769C22.1436 15.9863 22.2917 16.0415 22.4769 16.0415C22.5518 16.0415 22.6229 16.0365 22.6868 16.0264C22.7502 16.0166 22.8097 15.9968 22.8654 15.9755ZM23.5856 15.1425C23.5856 15.1426 23.5856 15.1426 23.5856 15.1427L23.5814 15.1425L23.5856 15.1425ZM23.5856 15.1425L24.5116 15.1427C24.5028 15.0233 24.4795 14.9167 24.426 14.8365C24.3453 14.715 24.2325 14.648 24.0621 14.648C23.8918 14.648 23.7705 14.7146 23.6909 14.8365C23.6378 14.9163 23.6039 15.0191 23.5856 15.1425ZM24.7116 14.5673C24.7642 14.6241 24.8452 14.7484 24.8778 14.871L24.8796 14.8713C24.9578 15.1457 24.9245 15.3854 24.919 15.425C24.9187 15.4276 24.9184 15.4293 24.9183 15.4302C24.9148 15.4636 24.8806 15.4639 24.8806 15.4639L23.58 15.4629C23.5875 15.6605 23.6352 15.7996 23.7307 15.8951C23.8245 15.9883 23.9735 16.0478 24.1752 16.0482C24.4565 16.0489 24.5909 15.9971 24.6829 15.9617C24.6918 15.9582 24.7003 15.9549 24.7085 15.9519C24.7085 15.9519 24.7444 15.939 24.7574 15.9745L24.8422 16.2124C24.8592 16.2525 24.8456 16.2664 24.8312 16.2744C24.7505 16.3197 24.553 16.4033 24.1776 16.4045C23.9957 16.4051 23.8369 16.3788 23.706 16.3282C23.5743 16.2772 23.4648 16.2047 23.3792 16.1117C23.2936 16.0195 23.2301 15.9084 23.1907 15.7816C23.1517 15.6557 23.1319 15.5166 23.1319 15.3668C23.1319 15.2203 23.151 15.0804 23.1888 14.9528C23.2267 14.8235 23.286 14.7108 23.365 14.6153C23.444 14.5198 23.5444 14.4434 23.6638 14.3873C23.7831 14.3316 23.9304 14.3042 24.0926 14.3042C24.2204 14.3039 24.347 14.3296 24.4646 14.3796C24.5461 14.4142 24.6276 14.4776 24.7116 14.5673ZM13.1898 15.1425C13.1897 15.1426 13.1897 15.1426 13.1897 15.1427L13.1856 15.1425L13.1898 15.1425ZM13.2951 14.8365C13.242 14.9163 13.2081 15.0191 13.1898 15.1425L14.1157 15.1427C14.1069 15.0233 14.0835 14.9167 14.0301 14.8365C13.9495 14.715 13.8367 14.648 13.6663 14.648C13.4959 14.648 13.3748 14.7146 13.2951 14.8365ZM14.3157 14.5673C14.3684 14.6241 14.4494 14.7484 14.482 14.871L14.4829 14.8713C14.5612 15.1457 14.5279 15.3854 14.5224 15.425C14.5221 15.4276 14.5218 15.4293 14.5218 15.4302C14.5182 15.4636 14.484 15.4639 14.484 15.4639L13.1835 15.4629C13.1909 15.6605 13.2386 15.7996 13.3341 15.8951C13.4279 15.9883 13.5777 16.0478 13.7786 16.0482C14.06 16.0489 14.1943 15.9971 14.2863 15.9617C14.2952 15.9582 14.3037 15.9549 14.312 15.9519C14.312 15.9519 14.3478 15.939 14.3609 15.9745L14.4457 16.2124C14.4627 16.2525 14.4491 16.2664 14.4348 16.2744C14.3541 16.3197 14.1566 16.4033 13.7812 16.4045C13.5985 16.4051 13.4404 16.3788 13.3096 16.3282C13.1779 16.2772 13.0684 16.2047 12.9828 16.1117C12.898 16.0195 12.8345 15.9084 12.7951 15.7816C12.7559 15.6557 12.7362 15.5166 12.7362 15.3668C12.7362 15.2203 12.7552 15.0804 12.793 14.9528C12.8309 14.8235 12.8904 14.7108 12.9691 14.6153C13.0482 14.5198 13.1486 14.4434 13.2679 14.3873C13.3873 14.3316 13.5346 14.3042 13.6968 14.3042C13.8246 14.3039 13.9512 14.3296 14.0688 14.3796C14.1503 14.4142 14.2318 14.4776 14.3157 14.5673ZM10.308 15.9134C10.3249 15.9398 10.332 15.9498 10.3829 15.9905L10.3837 15.9909C10.3829 15.9906 10.4997 16.0826 10.764 16.0667C10.95 16.0555 11.1146 16.02 11.1146 16.02H11.1144V15.4298C10.9978 15.412 10.8801 15.4019 10.7621 15.3998C10.4971 15.3965 10.3843 15.4938 10.3852 15.4936C10.307 15.5488 10.2691 15.6311 10.2691 15.7447C10.2691 15.8171 10.2823 15.8737 10.308 15.9134ZM10.6974 15.0711C10.7789 15.0711 10.8472 15.0729 10.8999 15.0768L10.9011 15.0799C10.9011 15.0799 11.004 15.0892 11.1151 15.1053V15.0504C11.1151 14.8775 11.079 14.7953 11.0081 14.7409C10.9357 14.6853 10.827 14.6569 10.6871 14.6569C10.6871 14.6569 10.371 14.6528 10.1216 14.7886C10.1101 14.7955 10.1003 14.7993 10.1003 14.7993C10.1003 14.7993 10.0691 14.8103 10.0576 14.7783L9.96546 14.5313C9.95147 14.4955 9.97715 14.4797 9.97715 14.4797C10.094 14.3882 10.3772 14.3332 10.3772 14.3332C10.471 14.3144 10.6282 14.3012 10.7254 14.3012C10.9846 14.3012 11.1846 14.3613 11.3213 14.4806C11.4584 14.6 11.5279 14.7934 11.5279 15.0535L11.5286 16.2388C11.5286 16.2388 11.5311 16.2731 11.499 16.2813C11.499 16.2813 11.4509 16.2944 11.4076 16.3043C11.2992 16.3278 11.1902 16.349 11.0809 16.3679C10.9524 16.3895 10.8199 16.4007 10.6866 16.4007C10.5598 16.4007 10.4446 16.3889 10.3425 16.3656C10.2396 16.3426 10.1505 16.3037 10.0783 16.2512C10.0057 16.1986 9.94746 16.1287 9.90875 16.0479C9.86924 15.9664 9.84924 15.8668 9.84924 15.7516C9.84924 15.638 9.8727 15.5376 9.91871 15.452C9.9643 15.3671 10.0288 15.2939 10.1072 15.238C10.1854 15.1817 10.2768 15.1394 10.378 15.112C10.4784 15.0849 10.5862 15.0711 10.6974 15.0711ZM21.3562 14.3939C21.3561 14.3986 21.3552 14.4033 21.3533 14.4076L21.3541 14.4023C21.3418 14.4377 21.2785 14.6154 21.2562 14.6747C21.2477 14.6973 21.2338 14.7126 21.2088 14.7098C21.2088 14.7098 21.1343 14.6923 21.0664 14.6923C21.0073 14.6923 20.9486 14.7006 20.8919 14.7169C20.8314 14.7356 20.7764 14.7687 20.7314 14.8132C20.6842 14.8593 20.6459 14.9236 20.6178 15.0041C20.5892 15.0856 20.5749 15.2148 20.5749 15.3449V16.3162C20.5749 16.3266 20.5707 16.3366 20.5634 16.344C20.556 16.3514 20.546 16.3556 20.5355 16.3556H20.1948C20.1843 16.3556 20.1743 16.3514 20.1669 16.344C20.1595 16.3366 20.1554 16.3266 20.1553 16.3162V14.3819C20.1553 14.3601 20.171 14.3426 20.1926 14.3426H20.5251C20.547 14.3426 20.5624 14.3601 20.5624 14.3819L20.5625 14.5399C20.6119 14.4724 20.701 14.4141 20.7815 14.3778C20.863 14.3412 20.9535 14.3137 21.1165 14.3239C21.2013 14.3292 21.3116 14.3525 21.3338 14.3609C21.3382 14.3626 21.3422 14.3652 21.3456 14.3685C21.349 14.3718 21.3516 14.3758 21.3535 14.3801C21.3553 14.3845 21.3562 14.3892 21.3562 14.3939Z"
-        fill="#00A1E0"
-      />
-    </svg>
-  }
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect width="32" height="32" rx="8" fill="#00A1E0" />
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M14.1208 9.70778C14.8435 8.95546 15.8494 8.48958 16.9606 8.48958C18.4421 8.48958 19.7262 9.31269 20.4176 10.5391C21.0313 10.2648 21.6961 10.1231 22.3684 10.1234C25.0352 10.1234 27.2 12.3047 27.2 14.9962C27.2 17.6878 25.0352 19.869 22.3684 19.869C22.0424 19.869 21.7247 19.8363 21.4136 19.7744C20.8086 20.8526 19.6521 21.5852 18.3351 21.5852C17.799 21.5863 17.2696 21.4646 16.7877 21.2296C16.1745 22.6701 14.7464 23.6825 13.0837 23.6825C11.347 23.6825 9.87361 22.5877 9.30567 21.0485C9.05289 21.1019 8.79523 21.1287 8.53689 21.1285C6.47089 21.1285 4.79999 19.4329 4.79999 17.3505C4.79999 15.9512 5.55231 14.733 6.66844 14.0745C6.43165 13.529 6.30977 12.9406 6.31039 12.346C6.31039 9.94253 8.26115 8 10.6646 8C12.0721 8 13.3315 8.67083 14.1217 9.71206"
+      fill="white"
+    />
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M18.0423 13.4844C18.0856 13.492 18.1285 13.5022 18.1706 13.5149C18.1798 13.5185 18.2047 13.5308 18.1945 13.5602L18.0952 13.8328C18.0869 13.8533 18.0812 13.8658 18.0389 13.8528C18.0284 13.8497 18.0127 13.8452 17.9725 13.8366C17.9432 13.8305 17.9049 13.8258 17.8658 13.8258C17.8186 13.8252 17.7716 13.832 17.7264 13.8459C17.6853 13.8594 17.648 13.8826 17.6177 13.9136C17.5853 13.9461 17.547 13.9934 17.5267 14.0521C17.4852 14.1716 17.4656 14.2976 17.4598 14.3346C17.4589 14.3402 17.4584 14.3438 17.4581 14.345H17.8732C17.9079 14.3448 17.919 14.361 17.9156 14.3868L17.8672 14.6568C17.8597 14.6959 17.8237 14.6946 17.8237 14.6946H17.396L17.1034 16.3497C17.0727 16.5209 17.0344 16.6677 16.9894 16.786C16.9438 16.9053 16.8963 16.9928 16.8206 17.0764C16.7507 17.1538 16.6716 17.211 16.5807 17.2439C16.4904 17.2765 16.3815 17.2933 16.262 17.2933C16.2049 17.2933 16.144 17.2922 16.0718 17.2752C16.0197 17.2629 15.9913 17.2542 15.9531 17.2405C15.9368 17.2347 15.9239 17.2144 15.9331 17.1887C15.9422 17.1627 16.0187 16.9524 16.0294 16.9248C16.0427 16.8911 16.0764 16.9039 16.0764 16.9039L16.078 16.9046C16.1003 16.914 16.1163 16.9207 16.1464 16.9267C16.1773 16.9328 16.2191 16.9381 16.2505 16.9381C16.307 16.9381 16.3585 16.9312 16.4033 16.9161C16.4575 16.8979 16.489 16.8667 16.5222 16.8243C16.5564 16.7806 16.5842 16.7202 16.6127 16.6397C16.6416 16.5582 16.6677 16.4505 16.6905 16.3196L16.9816 14.6946H16.6947C16.6601 14.6947 16.649 14.6786 16.6524 14.6527L16.7008 14.3828C16.7083 14.3435 16.7443 14.345 16.7443 14.345H17.0391L17.055 14.257C17.099 13.9963 17.1868 13.7982 17.3159 13.6681C17.4458 13.5371 17.631 13.4708 17.8658 13.4708C17.9249 13.4701 17.984 13.4747 18.0423 13.4844ZM12.3326 16.3625C12.3544 16.3625 12.3698 16.3448 12.3698 16.3231V13.5518C12.3698 13.5302 12.3544 13.5127 12.3326 13.5127H11.9883C11.9665 13.5127 11.951 13.5302 11.951 13.5518V16.3231C11.951 16.3448 11.9665 16.3625 11.9883 16.3625H12.3326ZM8.0689 16.1757C8.06217 16.1693 8.05113 16.1588 8.06277 16.1284L8.06244 16.1278L8.15298 15.8759C8.1673 15.8328 8.20023 15.8472 8.2134 15.8551C8.22351 15.8613 8.23254 15.8672 8.24188 15.8733C8.25557 15.8822 8.26989 15.8916 8.28912 15.9028C8.55663 16.0719 8.80348 16.0732 8.88094 16.0732C9.08013 16.0732 9.20442 15.967 9.20442 15.8246V15.8169C9.20442 15.6621 9.01346 15.6032 8.79286 15.5354L8.74414 15.5202C8.44123 15.4338 8.11693 15.3087 8.11693 14.9251V14.9173C8.11693 14.5535 8.41078 14.2991 8.83139 14.2991L8.87723 14.299C9.12416 14.299 9.36286 14.3706 9.53572 14.4759C9.55144 14.4853 9.56675 14.5035 9.55802 14.5276C9.54979 14.5507 9.473 14.7562 9.46419 14.7795C9.44797 14.8226 9.40336 14.7937 9.40336 14.7937C9.25273 14.7105 9.01732 14.6448 8.81978 14.6448C8.64199 14.6448 8.52675 14.7394 8.52675 14.8678V14.8755C8.52675 15.0253 8.72348 15.0897 8.95148 15.1636L8.9909 15.1763C9.29216 15.271 9.61482 15.4035 9.61482 15.7673V15.7751C9.61482 16.1685 9.3292 16.413 8.86991 16.413C8.64438 16.413 8.42872 16.3776 8.1999 16.2566C8.18991 16.2508 8.17992 16.2452 8.16995 16.2395C8.13719 16.221 8.10456 16.2026 8.07232 16.1793C8.07153 16.1782 8.07031 16.177 8.0689 16.1757ZM14.7935 16.1751C14.7867 16.1687 14.7755 16.1582 14.7872 16.1278L14.7862 16.1271L14.8768 15.8752C14.89 15.8341 14.9288 15.8492 14.9371 15.8545C14.9427 15.8581 14.9479 15.8615 14.9531 15.8649C14.9709 15.8765 14.9879 15.8876 15.0129 15.9021C15.2796 16.0712 15.5271 16.0725 15.6047 16.0725C15.8039 16.0725 15.9282 15.9663 15.9282 15.8239V15.8162C15.9282 15.6615 15.7381 15.6025 15.5167 15.5347L15.468 15.5196C15.1651 15.4331 14.8408 15.308 14.8408 14.9245V14.9166C14.8408 14.5528 15.1346 14.2985 15.5553 14.2985L15.6012 14.2983C15.8481 14.2983 16.0868 14.3699 16.2597 14.4753C16.2753 14.4847 16.2907 14.5029 16.2819 14.527C16.2745 14.55 16.1976 14.7556 16.1889 14.7789C16.1726 14.8219 16.128 14.7931 16.128 14.7931C15.9765 14.7099 15.7419 14.6441 15.5444 14.6441C15.3666 14.6441 15.2514 14.7388 15.2514 14.8672V14.8748C15.2514 15.0246 15.4481 15.089 15.6761 15.1629L15.7155 15.1757C16.0176 15.2703 16.3394 15.4028 16.3394 15.7667V15.7744C16.3394 16.1678 16.0538 16.4123 15.5945 16.4123C15.369 16.4123 15.1533 16.3769 14.9245 16.2559C14.9144 16.2501 14.9043 16.2444 14.8942 16.2387C14.8615 16.2203 14.8289 16.2019 14.7969 16.1786C14.7961 16.1775 14.7949 16.1764 14.7935 16.1751ZM19.2565 15.8785C19.3377 15.7542 19.3792 15.5789 19.3792 15.3567V15.3575C19.3792 15.1353 19.3382 14.9608 19.2565 14.8381C19.1759 14.7169 19.054 14.6579 18.8828 14.6579C18.7116 14.6579 18.5905 14.7163 18.5108 14.8381C18.4306 14.9608 18.3898 15.1353 18.3898 15.3575C18.3898 15.5797 18.4304 15.7559 18.5108 15.8793C18.5906 16.0017 18.7124 16.0612 18.8828 16.0612C19.0532 16.0612 19.1755 16.0012 19.2565 15.8785ZM19.5882 14.6118C19.6664 14.7056 19.7249 14.8175 19.7627 14.9451H19.7619C19.7993 15.0719 19.8183 15.211 19.8183 15.3575C19.8183 15.5048 19.7993 15.6431 19.7619 15.7699C19.724 15.8975 19.6655 16.0094 19.5874 16.1032C19.5092 16.1971 19.4096 16.2721 19.2927 16.3255C19.1759 16.3788 19.0376 16.406 18.882 16.406C18.7264 16.406 18.5882 16.3788 18.4704 16.3255C18.3536 16.272 18.2541 16.1971 18.1758 16.1032C18.0976 16.0094 18.0389 15.8975 18.0013 15.7699C17.9638 15.6431 17.9448 15.5048 17.9448 15.3575C17.9448 15.2102 17.9638 15.0719 18.0013 14.9451C18.0391 14.8175 18.0977 14.7056 18.1758 14.6118C18.254 14.5179 18.3536 14.4425 18.4704 14.3879C18.5882 14.3333 18.7256 14.3056 18.882 14.3056C19.0384 14.3056 19.1767 14.3331 19.2936 14.3879C19.4113 14.4422 19.5099 14.5179 19.5882 14.6118ZM22.8654 15.9755C22.8654 15.9755 22.9018 15.9614 22.9144 15.9987H22.9147L23.0094 16.2588C23.0214 16.2911 22.9937 16.3044 22.9937 16.3044C22.8489 16.3618 22.6472 16.4015 22.4505 16.4015C22.118 16.4015 21.8628 16.306 21.6932 16.1167C21.5237 15.9282 21.4381 15.6706 21.4381 15.3529C21.4381 15.2055 21.4591 15.0664 21.5006 14.9397C21.5426 14.8121 21.6052 14.7002 21.6875 14.6063C21.7698 14.5125 21.8735 14.437 21.9961 14.3824C22.1188 14.3278 22.262 14.3002 22.4233 14.3002C22.532 14.3002 22.6283 14.3068 22.7114 14.3195C22.8003 14.3329 22.9177 14.3647 22.9674 14.3842C22.9765 14.3877 23.0016 14.4001 22.9914 14.4293C22.9671 14.4978 22.9479 14.5503 22.9278 14.6056C22.9179 14.6327 22.9078 14.6604 22.8967 14.691C22.8823 14.7306 22.8523 14.7175 22.8523 14.7175C22.7255 14.6779 22.6045 14.6595 22.4465 14.6595C22.2571 14.6595 22.1139 14.7237 22.0209 14.8472C21.9267 14.9723 21.8742 15.1353 21.8736 15.3526C21.8728 15.5913 21.932 15.7674 22.0382 15.8769C22.1436 15.9863 22.2917 16.0415 22.4769 16.0415C22.5518 16.0415 22.6229 16.0365 22.6868 16.0264C22.7502 16.0166 22.8097 15.9968 22.8654 15.9755ZM23.5856 15.1425C23.5856 15.1426 23.5856 15.1426 23.5856 15.1427L23.5814 15.1425L23.5856 15.1425ZM23.5856 15.1425L24.5116 15.1427C24.5028 15.0233 24.4795 14.9167 24.426 14.8365C24.3453 14.715 24.2325 14.648 24.0621 14.648C23.8918 14.648 23.7705 14.7146 23.6909 14.8365C23.6378 14.9163 23.6039 15.0191 23.5856 15.1425ZM24.7116 14.5673C24.7642 14.6241 24.8452 14.7484 24.8778 14.871L24.8796 14.8713C24.9578 15.1457 24.9245 15.3854 24.919 15.425C24.9187 15.4276 24.9184 15.4293 24.9183 15.4302C24.9148 15.4636 24.8806 15.4639 24.8806 15.4639L23.58 15.4629C23.5875 15.6605 23.6352 15.7996 23.7307 15.8951C23.8245 15.9883 23.9735 16.0478 24.1752 16.0482C24.4565 16.0489 24.5909 15.9971 24.6829 15.9617C24.6918 15.9582 24.7003 15.9549 24.7085 15.9519C24.7085 15.9519 24.7444 15.939 24.7574 15.9745L24.8422 16.2124C24.8592 16.2525 24.8456 16.2664 24.8312 16.2744C24.7505 16.3197 24.553 16.4033 24.1776 16.4045C23.9957 16.4051 23.8369 16.3788 23.706 16.3282C23.5743 16.2772 23.4648 16.2047 23.3792 16.1117C23.2936 16.0195 23.2301 15.9084 23.1907 15.7816C23.1517 15.6557 23.1319 15.5166 23.1319 15.3668C23.1319 15.2203 23.151 15.0804 23.1888 14.9528C23.2267 14.8235 23.286 14.7108 23.365 14.6153C23.444 14.5198 23.5444 14.4434 23.6638 14.3873C23.7831 14.3316 23.9304 14.3042 24.0926 14.3042C24.2204 14.3039 24.347 14.3296 24.4646 14.3796C24.5461 14.4142 24.6276 14.4776 24.7116 14.5673ZM13.1898 15.1425C13.1897 15.1426 13.1897 15.1426 13.1897 15.1427L13.1856 15.1425L13.1898 15.1425ZM13.2951 14.8365C13.242 14.9163 13.2081 15.0191 13.1898 15.1425L14.1157 15.1427C14.1069 15.0233 14.0835 14.9167 14.0301 14.8365C13.9495 14.715 13.8367 14.648 13.6663 14.648C13.4959 14.648 13.3748 14.7146 13.2951 14.8365ZM14.3157 14.5673C14.3684 14.6241 14.4494 14.7484 14.482 14.871L14.4829 14.8713C14.5612 15.1457 14.5279 15.3854 14.5224 15.425C14.5221 15.4276 14.5218 15.4293 14.5218 15.4302C14.5182 15.4636 14.484 15.4639 14.484 15.4639L13.1835 15.4629C13.1909 15.6605 13.2386 15.7996 13.3341 15.8951C13.4279 15.9883 13.5777 16.0478 13.7786 16.0482C14.06 16.0489 14.1943 15.9971 14.2863 15.9617C14.2952 15.9582 14.3037 15.9549 14.312 15.9519C14.312 15.9519 14.3478 15.939 14.3609 15.9745L14.4457 16.2124C14.4627 16.2525 14.4491 16.2664 14.4348 16.2744C14.3541 16.3197 14.1566 16.4033 13.7812 16.4045C13.5985 16.4051 13.4404 16.3788 13.3096 16.3282C13.1779 16.2772 13.0684 16.2047 12.9828 16.1117C12.898 16.0195 12.8345 15.9084 12.7951 15.7816C12.7559 15.6557 12.7362 15.5166 12.7362 15.3668C12.7362 15.2203 12.7552 15.0804 12.793 14.9528C12.8309 14.8235 12.8904 14.7108 12.9691 14.6153C13.0482 14.5198 13.1486 14.4434 13.2679 14.3873C13.3873 14.3316 13.5346 14.3042 13.6968 14.3042C13.8246 14.3039 13.9512 14.3296 14.0688 14.3796C14.1503 14.4142 14.2318 14.4776 14.3157 14.5673ZM10.308 15.9134C10.3249 15.9398 10.332 15.9498 10.3829 15.9905L10.3837 15.9909C10.3829 15.9906 10.4997 16.0826 10.764 16.0667C10.95 16.0555 11.1146 16.02 11.1146 16.02H11.1144V15.4298C10.9978 15.412 10.8801 15.4019 10.7621 15.3998C10.4971 15.3965 10.3843 15.4938 10.3852 15.4936C10.307 15.5488 10.2691 15.6311 10.2691 15.7447C10.2691 15.8171 10.2823 15.8737 10.308 15.9134ZM10.6974 15.0711C10.7789 15.0711 10.8472 15.0729 10.8999 15.0768L10.9011 15.0799C10.9011 15.0799 11.004 15.0892 11.1151 15.1053V15.0504C11.1151 14.8775 11.079 14.7953 11.0081 14.7409C10.9357 14.6853 10.827 14.6569 10.6871 14.6569C10.6871 14.6569 10.371 14.6528 10.1216 14.7886C10.1101 14.7955 10.1003 14.7993 10.1003 14.7993C10.1003 14.7993 10.0691 14.8103 10.0576 14.7783L9.96546 14.5313C9.95147 14.4955 9.97715 14.4797 9.97715 14.4797C10.094 14.3882 10.3772 14.3332 10.3772 14.3332C10.471 14.3144 10.6282 14.3012 10.7254 14.3012C10.9846 14.3012 11.1846 14.3613 11.3213 14.4806C11.4584 14.6 11.5279 14.7934 11.5279 15.0535L11.5286 16.2388C11.5286 16.2388 11.5311 16.2731 11.499 16.2813C11.499 16.2813 11.4509 16.2944 11.4076 16.3043C11.2992 16.3278 11.1902 16.349 11.0809 16.3679C10.9524 16.3895 10.8199 16.4007 10.6866 16.4007C10.5598 16.4007 10.4446 16.3889 10.3425 16.3656C10.2396 16.3426 10.1505 16.3037 10.0783 16.2512C10.0057 16.1986 9.94746 16.1287 9.90875 16.0479C9.86924 15.9664 9.84924 15.8668 9.84924 15.7516C9.84924 15.638 9.8727 15.5376 9.91871 15.452C9.9643 15.3671 10.0288 15.2939 10.1072 15.238C10.1854 15.1817 10.2768 15.1394 10.378 15.112C10.4784 15.0849 10.5862 15.0711 10.6974 15.0711ZM21.3562 14.3939C21.3561 14.3986 21.3552 14.4033 21.3533 14.4076L21.3541 14.4023C21.3418 14.4377 21.2785 14.6154 21.2562 14.6747C21.2477 14.6973 21.2338 14.7126 21.2088 14.7098C21.2088 14.7098 21.1343 14.6923 21.0664 14.6923C21.0073 14.6923 20.9486 14.7006 20.8919 14.7169C20.8314 14.7356 20.7764 14.7687 20.7314 14.8132C20.6842 14.8593 20.6459 14.9236 20.6178 15.0041C20.5892 15.0856 20.5749 15.2148 20.5749 15.3449V16.3162C20.5749 16.3266 20.5707 16.3366 20.5634 16.344C20.556 16.3514 20.546 16.3556 20.5355 16.3556H20.1948C20.1843 16.3556 20.1743 16.3514 20.1669 16.344C20.1595 16.3366 20.1554 16.3266 20.1553 16.3162V14.3819C20.1553 14.3601 20.171 14.3426 20.1926 14.3426H20.5251C20.547 14.3426 20.5624 14.3601 20.5624 14.3819L20.5625 14.5399C20.6119 14.4724 20.701 14.4141 20.7815 14.3778C20.863 14.3412 20.9535 14.3137 21.1165 14.3239C21.2013 14.3292 21.3116 14.3525 21.3338 14.3609C21.3382 14.3626 21.3422 14.3652 21.3456 14.3685C21.349 14.3718 21.3516 14.3758 21.3535 14.3801C21.3553 14.3845 21.3562 14.3892 21.3562 14.3939Z"
+      fill="#00A1E0"
+    />
+  </svg>
+}
     href="/integrations/crm/salesforce-cpq"
   >
     Salesforce CPQ extension for Lago's native Salesforce package.
 
     <br />
 
-    <Tooltip tip="This integration is maintained by Lago.">Official</Tooltip>
+    <Tooltip>Official</Tooltip>
   </Card>
 
   <Card
     title="HubSpot"
-    iconType="brand"
     icon={
-    <svg width="30" height="30" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="40" height="40" rx="12" fill="#FF7A59"/>
-  <path d="M26.0258 15.9023V13.0444C26.3965 12.8679 26.7103 12.5877 26.9308 12.2365C27.1513 11.8853 27.2694 11.4776 27.2712 11.0607V10.9951C27.2712 9.77961 26.3041 8.79425 25.1112 8.79425H25.0468C23.8538 8.79425 22.8867 9.77961 22.8867 10.9951V11.0607C22.8886 11.4776 23.0066 11.8853 23.2271 12.2365C23.4476 12.5877 23.7615 12.8679 24.1321 13.0444V15.9023C23.0668 16.0686 22.0634 16.5187 21.2237 17.207L13.5307 11.1019C13.5856 10.9002 13.6142 10.6927 13.6174 10.4845C13.6183 9.99397 13.4765 9.51421 13.2098 9.10587C12.9431 8.69754 12.5635 8.37896 12.1191 8.19045C11.6746 8.00194 11.1853 7.95196 10.713 8.04683C10.2407 8.1417 9.80657 8.37716 9.46561 8.72342C9.12465 9.06969 8.89214 9.51121 8.7975 9.99213C8.70285 10.473 8.75032 10.9718 8.9339 11.4252C9.11748 11.8786 9.42892 12.2664 9.82883 12.5395C10.2287 12.8125 10.6992 12.9586 11.1806 12.9592C11.6017 12.9572 12.015 12.8427 12.3791 12.627L19.9544 18.633C18.5617 20.7766 18.599 23.5704 20.0483 25.6747L17.7442 28.0229C17.5579 27.9623 17.364 27.93 17.1684 27.9273C16.065 27.9283 15.1711 28.84 15.1714 29.9643C15.1716 31.0884 16.0661 31.9997 17.1695 32C18.2729 32.0003 19.1678 31.0895 19.1687 29.9653C19.1661 29.7661 19.1345 29.5684 19.0748 29.3787L21.3541 27.0555C23.3907 28.6529 26.1879 28.7905 28.3661 27.4005C30.5443 26.0104 31.6435 23.386 31.1216 20.822C30.5997 18.2578 28.5669 16.2954 26.0258 15.9023ZM25.081 25.3019C24.6599 25.3135 24.2408 25.2389 23.8485 25.0827C23.4561 24.9265 23.0985 24.6918 22.7966 24.3924C22.4948 24.093 22.2549 23.7351 22.091 23.3397C21.9272 22.9443 21.8428 22.5194 21.8428 22.0902C21.8428 21.661 21.9272 21.2362 22.091 20.8408C22.2549 20.4454 22.4948 20.0874 22.7966 19.7881C23.0985 19.4887 23.4561 19.254 23.8485 19.0978C24.2408 18.9415 24.6599 18.867 25.081 18.8786C26.7779 18.9391 28.1231 20.3578 28.1241 22.0879C28.1248 23.8178 26.7811 25.238 25.0841 25.3003" fill="white"/>
-  </svg>
-  }
+  <svg width="30" height="30" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="40" height="40" rx="12" fill="#FF7A59"/>
+<path d="M26.0258 15.9023V13.0444C26.3965 12.8679 26.7103 12.5877 26.9308 12.2365C27.1513 11.8853 27.2694 11.4776 27.2712 11.0607V10.9951C27.2712 9.77961 26.3041 8.79425 25.1112 8.79425H25.0468C23.8538 8.79425 22.8867 9.77961 22.8867 10.9951V11.0607C22.8886 11.4776 23.0066 11.8853 23.2271 12.2365C23.4476 12.5877 23.7615 12.8679 24.1321 13.0444V15.9023C23.0668 16.0686 22.0634 16.5187 21.2237 17.207L13.5307 11.1019C13.5856 10.9002 13.6142 10.6927 13.6174 10.4845C13.6183 9.99397 13.4765 9.51421 13.2098 9.10587C12.9431 8.69754 12.5635 8.37896 12.1191 8.19045C11.6746 8.00194 11.1853 7.95196 10.713 8.04683C10.2407 8.1417 9.80657 8.37716 9.46561 8.72342C9.12465 9.06969 8.89214 9.51121 8.7975 9.99213C8.70285 10.473 8.75032 10.9718 8.9339 11.4252C9.11748 11.8786 9.42892 12.2664 9.82883 12.5395C10.2287 12.8125 10.6992 12.9586 11.1806 12.9592C11.6017 12.9572 12.015 12.8427 12.3791 12.627L19.9544 18.633C18.5617 20.7766 18.599 23.5704 20.0483 25.6747L17.7442 28.0229C17.5579 27.9623 17.364 27.93 17.1684 27.9273C16.065 27.9283 15.1711 28.84 15.1714 29.9643C15.1716 31.0884 16.0661 31.9997 17.1695 32C18.2729 32.0003 19.1678 31.0895 19.1687 29.9653C19.1661 29.7661 19.1345 29.5684 19.0748 29.3787L21.3541 27.0555C23.3907 28.6529 26.1879 28.7905 28.3661 27.4005C30.5443 26.0104 31.6435 23.386 31.1216 20.822C30.5997 18.2578 28.5669 16.2954 26.0258 15.9023ZM25.081 25.3019C24.6599 25.3135 24.2408 25.2389 23.8485 25.0827C23.4561 24.9265 23.0985 24.6918 22.7966 24.3924C22.4948 24.093 22.2549 23.7351 22.091 23.3397C21.9272 22.9443 21.8428 22.5194 21.8428 22.0902C21.8428 21.661 21.9272 21.2362 22.091 20.8408C22.2549 20.4454 22.4948 20.0874 22.7966 19.7881C23.0985 19.4887 23.4561 19.254 23.8485 19.0978C24.2408 18.9415 24.6599 18.867 25.081 18.8786C26.7779 18.9391 28.1231 20.3578 28.1241 22.0879C28.1248 23.8178 26.7811 25.238 25.0841 25.3003" fill="white"/>
+</svg>
+}
     href="/integrations/crm/hubspot"
   >
     HubSpot CRM integration is used to sync data from Lago to HubSpot.
 
     <br />
 
-    <Tooltip tip="This integration is maintained by Lago.">Official</Tooltip>
+    <Tooltip>Official</Tooltip>
   </Card>
 </CardGroup>
 
@@ -25844,41 +27136,40 @@ Find all Lago integrations with third-party tools—whether for payment provider
   [Suger.io](https://suger.io).
 </Info>
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card
     title="AWS Marketplace"
-    iconType="brand"
     icon={
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="32" height="32" rx="8" fill="#F3F4F6" />
-      <g clip-path="url(#clip0_4694_641)">
-        <path
-          d="M12.5749 16.2798C12.5749 16.4766 12.5962 16.6362 12.6334 16.7532C12.6807 16.8848 12.7375 17.0128 12.8036 17.1361C12.8302 17.1787 12.8408 17.2212 12.8408 17.2585C12.8408 17.3116 12.8089 17.3648 12.7398 17.418L12.4047 17.6414C12.3568 17.6733 12.309 17.6893 12.2664 17.6893C12.2132 17.6893 12.16 17.6627 12.1068 17.6148C12.0351 17.5378 11.971 17.4541 11.9154 17.3648C11.8622 17.2745 11.8089 17.1733 11.7505 17.051C11.3356 17.5404 10.8143 17.785 10.1867 17.785C9.73999 17.785 9.3836 17.6573 9.12295 17.4021C8.86237 17.1467 8.72942 16.8063 8.72942 16.3809C8.72942 15.9288 8.88898 15.5618 9.21343 15.2852C9.53782 15.0086 9.96869 14.8703 10.5165 14.8703C10.6974 14.8703 10.8835 14.8863 11.0803 14.9129C11.2771 14.9395 11.4792 14.982 11.692 15.0299V14.6416C11.692 14.2374 11.6068 13.9555 11.4419 13.7906C11.2718 13.6257 10.9845 13.5459 10.575 13.5459C10.3888 13.5459 10.1974 13.5672 10.0006 13.6151C9.80374 13.663 9.6123 13.7215 9.42614 13.7959C9.34106 13.8332 9.27724 13.8544 9.23997 13.8651C9.2027 13.8758 9.17616 13.881 9.15489 13.881C9.08041 13.881 9.0432 13.8278 9.0432 13.7161V13.4555C9.0432 13.3704 9.05387 13.3066 9.08041 13.2694C9.10702 13.2321 9.15489 13.1949 9.22937 13.1577C9.41551 13.0619 9.63889 12.9821 9.89949 12.9183C10.1602 12.8492 10.4368 12.8173 10.7293 12.8173C11.3623 12.8173 11.825 12.9609 12.1229 13.2481C12.4154 13.5353 12.5643 13.9714 12.5643 14.5565V16.2798H12.5749ZM10.4154 17.0882C10.591 17.0882 10.7718 17.0564 10.9633 16.9925C11.1548 16.9287 11.325 16.8117 11.4686 16.6521C11.5537 16.5511 11.6175 16.4394 11.6494 16.3117C11.6813 16.1841 11.7026 16.0298 11.7026 15.849V15.6256C11.5413 15.5864 11.3779 15.5562 11.2132 15.5352C11.0474 15.5141 10.8804 15.5035 10.7133 15.5032C10.3569 15.5032 10.0963 15.5724 9.92082 15.716C9.74532 15.8596 9.66018 16.0617 9.66018 16.3276C9.66018 16.5776 9.72399 16.7638 9.85695 16.8915C9.98463 17.0244 10.1708 17.0882 10.4154 17.0882ZM14.6864 17.6627C14.5907 17.6627 14.5269 17.6467 14.4843 17.6095C14.4418 17.5776 14.4045 17.5031 14.3726 17.4021L13.1228 13.2907C13.0908 13.1842 13.0748 13.1151 13.0748 13.0779C13.0748 12.9928 13.1174 12.9449 13.2025 12.9449H13.7237C13.8248 12.9449 13.894 12.9609 13.9312 12.9981C13.9737 13.03 14.0057 13.1045 14.0375 13.2055L14.9311 16.7266L15.7608 13.2055C15.7874 13.0992 15.8194 13.03 15.8618 12.9981C15.9044 12.9662 15.9789 12.9449 16.0747 12.9449H16.5001C16.6012 12.9449 16.6704 12.9609 16.7129 12.9981C16.7555 13.03 16.7927 13.1045 16.8139 13.2055L17.6543 16.7691L18.5744 13.2055C18.6063 13.0992 18.6436 13.03 18.6808 12.9981C18.7233 12.9662 18.7925 12.9449 18.8882 12.9449H19.3828C19.468 12.9449 19.5159 12.9875 19.5159 13.0779C19.5159 13.1045 19.5105 13.1311 19.5052 13.163C19.4999 13.1948 19.4893 13.2374 19.468 13.296L18.1861 17.4074C18.1542 17.5138 18.117 17.5829 18.0744 17.6148C18.0319 17.6467 17.9627 17.668 17.8724 17.668H17.415C17.3139 17.668 17.2447 17.6521 17.2021 17.6148C17.1596 17.5776 17.1224 17.5084 17.1011 17.4021L16.2766 13.9714L15.4576 17.3967C15.431 17.5031 15.3991 17.5723 15.3566 17.6095C15.314 17.6467 15.2395 17.6627 15.1438 17.6627H14.6864ZM21.5211 17.8063C21.2445 17.8063 20.9679 17.7744 20.702 17.7105C20.436 17.6467 20.2286 17.5775 20.0904 17.4978C20.0052 17.4499 19.9467 17.3968 19.9255 17.3489C19.9048 17.3019 19.8939 17.2512 19.8935 17.1999V16.9287C19.8935 16.817 19.9361 16.7638 20.0159 16.7638C20.0485 16.7639 20.0808 16.7693 20.1116 16.7798C20.1435 16.7905 20.1914 16.8117 20.2446 16.8329C20.4324 16.9156 20.6285 16.978 20.8296 17.0191C21.038 17.0613 21.25 17.0827 21.4626 17.0829C21.7977 17.0829 22.0583 17.0244 22.2391 16.9074C22.42 16.7904 22.5157 16.6202 22.5157 16.4021C22.5157 16.2532 22.4678 16.1309 22.3721 16.0298C22.2763 15.9287 22.0955 15.8384 21.8349 15.7532L21.0637 15.5139C20.6754 15.3916 20.3882 15.2107 20.2126 14.9713C20.0372 14.7373 19.9467 14.4767 19.9467 14.2001C19.9467 13.9768 19.9946 13.78 20.0904 13.6097C20.186 13.4396 20.3137 13.2907 20.4733 13.1736C20.6329 13.0513 20.8137 12.9609 21.0265 12.8971C21.2392 12.8332 21.4625 12.8066 21.6966 12.8066C21.8136 12.8066 21.9359 12.812 22.053 12.8279C22.1753 12.8438 22.287 12.8651 22.3987 12.8864C22.505 12.913 22.6061 12.9396 22.7019 12.9715C22.7976 13.0035 22.872 13.0353 22.9252 13.0672C22.9997 13.1098 23.0529 13.1524 23.0848 13.2002C23.1167 13.2428 23.1327 13.3013 23.1327 13.3757V13.6257C23.1327 13.7374 23.0901 13.7959 23.0103 13.7959C22.9678 13.7959 22.8986 13.7746 22.8083 13.7321C22.505 13.5938 22.1646 13.5246 21.787 13.5246C21.4839 13.5246 21.2445 13.5725 21.0796 13.6736C20.9148 13.7746 20.8296 13.9289 20.8296 14.1469C20.8296 14.2959 20.8828 14.4235 20.9892 14.5246C21.0955 14.6257 21.2924 14.7267 21.5743 14.8171L22.3295 15.0565C22.7125 15.1788 22.9891 15.349 23.154 15.567C23.3188 15.7851 23.3987 16.0351 23.3987 16.3117C23.3987 16.5404 23.3507 16.7478 23.2603 16.9287C23.1646 17.1095 23.0369 17.2691 22.872 17.3968C22.7071 17.5297 22.5104 17.6255 22.2817 17.6946C22.0423 17.7691 21.7923 17.8063 21.5211 17.8063Z"
-          fill="#252F3E"
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect width="32" height="32" rx="8" fill="#F3F4F6" />
+    <g clip-path="url(#clip0_4694_641)">
+      <path
+        d="M12.5749 16.2798C12.5749 16.4766 12.5962 16.6362 12.6334 16.7532C12.6807 16.8848 12.7375 17.0128 12.8036 17.1361C12.8302 17.1787 12.8408 17.2212 12.8408 17.2585C12.8408 17.3116 12.8089 17.3648 12.7398 17.418L12.4047 17.6414C12.3568 17.6733 12.309 17.6893 12.2664 17.6893C12.2132 17.6893 12.16 17.6627 12.1068 17.6148C12.0351 17.5378 11.971 17.4541 11.9154 17.3648C11.8622 17.2745 11.8089 17.1733 11.7505 17.051C11.3356 17.5404 10.8143 17.785 10.1867 17.785C9.73999 17.785 9.3836 17.6573 9.12295 17.4021C8.86237 17.1467 8.72942 16.8063 8.72942 16.3809C8.72942 15.9288 8.88898 15.5618 9.21343 15.2852C9.53782 15.0086 9.96869 14.8703 10.5165 14.8703C10.6974 14.8703 10.8835 14.8863 11.0803 14.9129C11.2771 14.9395 11.4792 14.982 11.692 15.0299V14.6416C11.692 14.2374 11.6068 13.9555 11.4419 13.7906C11.2718 13.6257 10.9845 13.5459 10.575 13.5459C10.3888 13.5459 10.1974 13.5672 10.0006 13.6151C9.80374 13.663 9.6123 13.7215 9.42614 13.7959C9.34106 13.8332 9.27724 13.8544 9.23997 13.8651C9.2027 13.8758 9.17616 13.881 9.15489 13.881C9.08041 13.881 9.0432 13.8278 9.0432 13.7161V13.4555C9.0432 13.3704 9.05387 13.3066 9.08041 13.2694C9.10702 13.2321 9.15489 13.1949 9.22937 13.1577C9.41551 13.0619 9.63889 12.9821 9.89949 12.9183C10.1602 12.8492 10.4368 12.8173 10.7293 12.8173C11.3623 12.8173 11.825 12.9609 12.1229 13.2481C12.4154 13.5353 12.5643 13.9714 12.5643 14.5565V16.2798H12.5749ZM10.4154 17.0882C10.591 17.0882 10.7718 17.0564 10.9633 16.9925C11.1548 16.9287 11.325 16.8117 11.4686 16.6521C11.5537 16.5511 11.6175 16.4394 11.6494 16.3117C11.6813 16.1841 11.7026 16.0298 11.7026 15.849V15.6256C11.5413 15.5864 11.3779 15.5562 11.2132 15.5352C11.0474 15.5141 10.8804 15.5035 10.7133 15.5032C10.3569 15.5032 10.0963 15.5724 9.92082 15.716C9.74532 15.8596 9.66018 16.0617 9.66018 16.3276C9.66018 16.5776 9.72399 16.7638 9.85695 16.8915C9.98463 17.0244 10.1708 17.0882 10.4154 17.0882ZM14.6864 17.6627C14.5907 17.6627 14.5269 17.6467 14.4843 17.6095C14.4418 17.5776 14.4045 17.5031 14.3726 17.4021L13.1228 13.2907C13.0908 13.1842 13.0748 13.1151 13.0748 13.0779C13.0748 12.9928 13.1174 12.9449 13.2025 12.9449H13.7237C13.8248 12.9449 13.894 12.9609 13.9312 12.9981C13.9737 13.03 14.0057 13.1045 14.0375 13.2055L14.9311 16.7266L15.7608 13.2055C15.7874 13.0992 15.8194 13.03 15.8618 12.9981C15.9044 12.9662 15.9789 12.9449 16.0747 12.9449H16.5001C16.6012 12.9449 16.6704 12.9609 16.7129 12.9981C16.7555 13.03 16.7927 13.1045 16.8139 13.2055L17.6543 16.7691L18.5744 13.2055C18.6063 13.0992 18.6436 13.03 18.6808 12.9981C18.7233 12.9662 18.7925 12.9449 18.8882 12.9449H19.3828C19.468 12.9449 19.5159 12.9875 19.5159 13.0779C19.5159 13.1045 19.5105 13.1311 19.5052 13.163C19.4999 13.1948 19.4893 13.2374 19.468 13.296L18.1861 17.4074C18.1542 17.5138 18.117 17.5829 18.0744 17.6148C18.0319 17.6467 17.9627 17.668 17.8724 17.668H17.415C17.3139 17.668 17.2447 17.6521 17.2021 17.6148C17.1596 17.5776 17.1224 17.5084 17.1011 17.4021L16.2766 13.9714L15.4576 17.3967C15.431 17.5031 15.3991 17.5723 15.3566 17.6095C15.314 17.6467 15.2395 17.6627 15.1438 17.6627H14.6864ZM21.5211 17.8063C21.2445 17.8063 20.9679 17.7744 20.702 17.7105C20.436 17.6467 20.2286 17.5775 20.0904 17.4978C20.0052 17.4499 19.9467 17.3968 19.9255 17.3489C19.9048 17.3019 19.8939 17.2512 19.8935 17.1999V16.9287C19.8935 16.817 19.9361 16.7638 20.0159 16.7638C20.0485 16.7639 20.0808 16.7693 20.1116 16.7798C20.1435 16.7905 20.1914 16.8117 20.2446 16.8329C20.4324 16.9156 20.6285 16.978 20.8296 17.0191C21.038 17.0613 21.25 17.0827 21.4626 17.0829C21.7977 17.0829 22.0583 17.0244 22.2391 16.9074C22.42 16.7904 22.5157 16.6202 22.5157 16.4021C22.5157 16.2532 22.4678 16.1309 22.3721 16.0298C22.2763 15.9287 22.0955 15.8384 21.8349 15.7532L21.0637 15.5139C20.6754 15.3916 20.3882 15.2107 20.2126 14.9713C20.0372 14.7373 19.9467 14.4767 19.9467 14.2001C19.9467 13.9768 19.9946 13.78 20.0904 13.6097C20.186 13.4396 20.3137 13.2907 20.4733 13.1736C20.6329 13.0513 20.8137 12.9609 21.0265 12.8971C21.2392 12.8332 21.4625 12.8066 21.6966 12.8066C21.8136 12.8066 21.9359 12.812 22.053 12.8279C22.1753 12.8438 22.287 12.8651 22.3987 12.8864C22.505 12.913 22.6061 12.9396 22.7019 12.9715C22.7976 13.0035 22.872 13.0353 22.9252 13.0672C22.9997 13.1098 23.0529 13.1524 23.0848 13.2002C23.1167 13.2428 23.1327 13.3013 23.1327 13.3757V13.6257C23.1327 13.7374 23.0901 13.7959 23.0103 13.7959C22.9678 13.7959 22.8986 13.7746 22.8083 13.7321C22.505 13.5938 22.1646 13.5246 21.787 13.5246C21.4839 13.5246 21.2445 13.5725 21.0796 13.6736C20.9148 13.7746 20.8296 13.9289 20.8296 14.1469C20.8296 14.2959 20.8828 14.4235 20.9892 14.5246C21.0955 14.6257 21.2924 14.7267 21.5743 14.8171L22.3295 15.0565C22.7125 15.1788 22.9891 15.349 23.154 15.567C23.3188 15.7851 23.3987 16.0351 23.3987 16.3117C23.3987 16.5404 23.3507 16.7478 23.2603 16.9287C23.1646 17.1095 23.0369 17.2691 22.872 17.3968C22.7071 17.5297 22.5104 17.6255 22.2817 17.6946C22.0423 17.7691 21.7923 17.8063 21.5211 17.8063Z"
+        fill="#252F3E"
+      />
+      <path
+        d="M22.5263 20.3902C20.7765 21.6827 18.234 22.3688 16.0481 22.3688C12.9844 22.3688 10.224 21.2359 8.13904 19.353C7.97414 19.2041 8.12304 19.002 8.31981 19.119C10.575 20.4275 13.3567 21.22 16.2342 21.22C18.1756 21.22 20.3084 20.8157 22.2711 19.986C22.5636 19.853 22.8135 20.1775 22.5263 20.3902ZM23.255 19.5605C23.0317 19.2733 21.7764 19.4222 21.2073 19.4913C21.037 19.5127 21.0104 19.3637 21.1647 19.252C22.1646 18.5499 23.8082 18.7521 23.9996 18.986C24.1911 19.2254 23.9464 20.8689 23.0103 21.6561C22.8668 21.7784 22.7285 21.7146 22.7923 21.5551C23.005 21.0285 23.4784 19.8424 23.255 19.5605Z"
+        fill="#FF9900"
+      />
+    </g>
+    <defs>
+      <clipPath id="clip0_4694_641">
+        <rect
+          width="16.128"
+          height="9.6"
+          fill="white"
+          transform="translate(8 12.8008)"
         />
-        <path
-          d="M22.5263 20.3902C20.7765 21.6827 18.234 22.3688 16.0481 22.3688C12.9844 22.3688 10.224 21.2359 8.13904 19.353C7.97414 19.2041 8.12304 19.002 8.31981 19.119C10.575 20.4275 13.3567 21.22 16.2342 21.22C18.1756 21.22 20.3084 20.8157 22.2711 19.986C22.5636 19.853 22.8135 20.1775 22.5263 20.3902ZM23.255 19.5605C23.0317 19.2733 21.7764 19.4222 21.2073 19.4913C21.037 19.5127 21.0104 19.3637 21.1647 19.252C22.1646 18.5499 23.8082 18.7521 23.9996 18.986C24.1911 19.2254 23.9464 20.8689 23.0103 21.6561C22.8668 21.7784 22.7285 21.7146 22.7923 21.5551C23.005 21.0285 23.4784 19.8424 23.255 19.5605Z"
-          fill="#FF9900"
-        />
-      </g>
-      <defs>
-        <clipPath id="clip0_4694_641">
-          <rect
-            width="16.128"
-            height="9.6"
-            fill="white"
-            transform="translate(8 12.8008)"
-          />
-        </clipPath>
-      </defs>
-    </svg>
-  }
+      </clipPath>
+    </defs>
+  </svg>
+}
     href="/integrations/marketplaces/aws-marketplace"
   >
     Quickly list, transact, and co-sell on AWS Marketplace with Lago, via
@@ -25886,77 +27177,76 @@ Find all Lago integrations with third-party tools—whether for payment provider
 
     <br />
 
-    <Tooltip tip="This integration is maintained by Lago.">Official</Tooltip>
+    <Tooltip>Official</Tooltip>
   </Card>
 
   <Card
     title="Azure Marketplace"
-    iconType="brand"
     icon={
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="32" height="32" rx="8" fill="#F3F4F6" />
-      <path
-        d="M13.3336 8.40328H18.0694L13.1532 23.081C13.1029 23.2321 13.0068 23.3635 12.8785 23.4567C12.7502 23.5498 12.5961 23.6001 12.438 23.6004H8.75239C8.63271 23.6001 8.51482 23.5712 8.40847 23.5159C8.30211 23.4606 8.21036 23.3805 8.14079 23.2824C8.07123 23.1843 8.02585 23.0709 8.00843 22.9515C7.991 22.8322 8.00203 22.7105 8.04058 22.5963L12.6218 8.91975C12.6721 8.76867 12.7682 8.63729 12.8965 8.54412C13.0248 8.45095 13.1789 8.40068 13.337 8.40039L13.3336 8.40328Z"
-        fill="url(#paint0_linear_4694_660)"
-      />
-      <path
-        d="M20.2153 18.248H12.7061C12.6363 18.248 12.5681 18.2692 12.5105 18.3088C12.4528 18.3484 12.4082 18.4045 12.3826 18.47C12.3571 18.5354 12.3516 18.6071 12.367 18.6757C12.3824 18.7443 12.418 18.8066 12.469 18.8545L17.2948 23.3932C17.4349 23.5245 17.6189 23.5978 17.8102 23.5986H22.0627L20.2153 18.248Z"
-        fill="#0078D4"
-      />
-      <path
-        d="M13.3338 8.40235C13.1742 8.40194 13.0185 8.45287 12.8896 8.54773C12.7606 8.64259 12.6651 8.77643 12.6168 8.92979L8.04422 22.5827C8.0034 22.6974 7.99058 22.8203 8.00685 22.941C8.02313 23.0618 8.06802 23.1768 8.13772 23.2763C8.20743 23.3759 8.29991 23.4571 8.40733 23.513C8.51475 23.569 8.63396 23.598 8.75488 23.5977H12.5344C12.6752 23.5724 12.8068 23.5099 12.9158 23.4165C13.0248 23.3231 13.1072 23.2023 13.1546 23.0662L14.0662 20.3581L17.3235 23.42C17.4601 23.5337 17.6313 23.5966 17.8085 23.5983H22.0461L20.1879 18.2477H14.7712L18.0868 8.40235H13.3338Z"
-        fill="url(#paint1_linear_4694_660)"
-      />
-      <path
-        d="M19.3827 8.91975C19.3324 8.76876 19.2364 8.63745 19.1082 8.54429C18.98 8.45113 18.826 8.4008 18.668 8.40039H13.3904C13.5485 8.4008 13.7024 8.45113 13.8306 8.54429C13.9588 8.63745 14.0548 8.76876 14.1051 8.91975L18.6863 22.5963C18.7246 22.7106 18.7353 22.8325 18.7176 22.9518C18.6998 23.0712 18.6542 23.1845 18.5843 23.2825C18.5145 23.3805 18.4225 23.4604 18.3159 23.5154C18.2094 23.5705 18.0914 23.5992 17.9716 23.5992H23.2498C23.3692 23.5986 23.4867 23.5694 23.5927 23.5141C23.6987 23.4587 23.7902 23.3788 23.8596 23.2809C23.929 23.183 23.9743 23.0698 23.9918 22.9508C24.0094 22.8318 23.9986 22.7103 23.9604 22.5963L19.3827 8.91975Z"
-        fill="url(#paint2_linear_4694_660)"
-      />
-      <defs>
-        <linearGradient
-          id="paint0_linear_4694_660"
-          x1="13.9006"
-          y1="9.54585"
-          x2="9.33658"
-          y2="23.3545"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stop-color="#114A8B" />
-          <stop offset="1" stop-color="#0669BC" />
-        </linearGradient>
-        <linearGradient
-          id="paint1_linear_4694_660"
-          x1="16.332"
-          y1="16.5579"
-          x2="15.4213"
-          y2="16.7984"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stop-opacity="0.3" />
-          <stop offset="0.071" stop-opacity="0.2" />
-          <stop offset="0.321" stop-opacity="0.1" />
-          <stop offset="0.623" stop-opacity="0.05" />
-          <stop offset="1" stop-opacity="0" />
-        </linearGradient>
-        <linearGradient
-          id="paint2_linear_4694_660"
-          x1="17.4622"
-          y1="8.98848"
-          x2="22.6733"
-          y2="22.5055"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stop-color="#3CCBF4" />
-          <stop offset="1" stop-color="#2892DF" />
-        </linearGradient>
-      </defs>
-    </svg>
-  }
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect width="32" height="32" rx="8" fill="#F3F4F6" />
+    <path
+      d="M13.3336 8.40328H18.0694L13.1532 23.081C13.1029 23.2321 13.0068 23.3635 12.8785 23.4567C12.7502 23.5498 12.5961 23.6001 12.438 23.6004H8.75239C8.63271 23.6001 8.51482 23.5712 8.40847 23.5159C8.30211 23.4606 8.21036 23.3805 8.14079 23.2824C8.07123 23.1843 8.02585 23.0709 8.00843 22.9515C7.991 22.8322 8.00203 22.7105 8.04058 22.5963L12.6218 8.91975C12.6721 8.76867 12.7682 8.63729 12.8965 8.54412C13.0248 8.45095 13.1789 8.40068 13.337 8.40039L13.3336 8.40328Z"
+      fill="url(#paint0_linear_4694_660)"
+    />
+    <path
+      d="M20.2153 18.248H12.7061C12.6363 18.248 12.5681 18.2692 12.5105 18.3088C12.4528 18.3484 12.4082 18.4045 12.3826 18.47C12.3571 18.5354 12.3516 18.6071 12.367 18.6757C12.3824 18.7443 12.418 18.8066 12.469 18.8545L17.2948 23.3932C17.4349 23.5245 17.6189 23.5978 17.8102 23.5986H22.0627L20.2153 18.248Z"
+      fill="#0078D4"
+    />
+    <path
+      d="M13.3338 8.40235C13.1742 8.40194 13.0185 8.45287 12.8896 8.54773C12.7606 8.64259 12.6651 8.77643 12.6168 8.92979L8.04422 22.5827C8.0034 22.6974 7.99058 22.8203 8.00685 22.941C8.02313 23.0618 8.06802 23.1768 8.13772 23.2763C8.20743 23.3759 8.29991 23.4571 8.40733 23.513C8.51475 23.569 8.63396 23.598 8.75488 23.5977H12.5344C12.6752 23.5724 12.8068 23.5099 12.9158 23.4165C13.0248 23.3231 13.1072 23.2023 13.1546 23.0662L14.0662 20.3581L17.3235 23.42C17.4601 23.5337 17.6313 23.5966 17.8085 23.5983H22.0461L20.1879 18.2477H14.7712L18.0868 8.40235H13.3338Z"
+      fill="url(#paint1_linear_4694_660)"
+    />
+    <path
+      d="M19.3827 8.91975C19.3324 8.76876 19.2364 8.63745 19.1082 8.54429C18.98 8.45113 18.826 8.4008 18.668 8.40039H13.3904C13.5485 8.4008 13.7024 8.45113 13.8306 8.54429C13.9588 8.63745 14.0548 8.76876 14.1051 8.91975L18.6863 22.5963C18.7246 22.7106 18.7353 22.8325 18.7176 22.9518C18.6998 23.0712 18.6542 23.1845 18.5843 23.2825C18.5145 23.3805 18.4225 23.4604 18.3159 23.5154C18.2094 23.5705 18.0914 23.5992 17.9716 23.5992H23.2498C23.3692 23.5986 23.4867 23.5694 23.5927 23.5141C23.6987 23.4587 23.7902 23.3788 23.8596 23.2809C23.929 23.183 23.9743 23.0698 23.9918 22.9508C24.0094 22.8318 23.9986 22.7103 23.9604 22.5963L19.3827 8.91975Z"
+      fill="url(#paint2_linear_4694_660)"
+    />
+    <defs>
+      <linearGradient
+        id="paint0_linear_4694_660"
+        x1="13.9006"
+        y1="9.54585"
+        x2="9.33658"
+        y2="23.3545"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stop-color="#114A8B" />
+        <stop offset="1" stop-color="#0669BC" />
+      </linearGradient>
+      <linearGradient
+        id="paint1_linear_4694_660"
+        x1="16.332"
+        y1="16.5579"
+        x2="15.4213"
+        y2="16.7984"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stop-opacity="0.3" />
+        <stop offset="0.071" stop-opacity="0.2" />
+        <stop offset="0.321" stop-opacity="0.1" />
+        <stop offset="0.623" stop-opacity="0.05" />
+        <stop offset="1" stop-opacity="0" />
+      </linearGradient>
+      <linearGradient
+        id="paint2_linear_4694_660"
+        x1="17.4622"
+        y1="8.98848"
+        x2="22.6733"
+        y2="22.5055"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stop-color="#3CCBF4" />
+        <stop offset="1" stop-color="#2892DF" />
+      </linearGradient>
+    </defs>
+  </svg>
+}
     href="/integrations/marketplaces/azure-marketplace"
   >
     Quickly list, transact, and co-sell on Azure Marketplace with Lago, via
@@ -25964,39 +27254,38 @@ Find all Lago integrations with third-party tools—whether for payment provider
 
     <br />
 
-    <Tooltip tip="This integration is maintained by Lago.">Official</Tooltip>
+    <Tooltip>Official</Tooltip>
   </Card>
 
   <Card
     title="GCP Marketplace"
-    iconType="brand"
     icon={
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="32" height="32" rx="8" fill="#F3F4F6" />
-      <path
-        d="M18.6254 13.1301L20.0081 11.7474L20.1002 11.1652C17.5806 8.87402 13.5752 9.13381 11.3038 11.7072C10.6729 12.422 10.2048 13.3131 9.95523 14.2332L10.4505 14.1635L13.2158 13.7074L13.4293 13.4891C14.6594 12.1381 16.7393 11.9564 18.1596 13.1058L18.6254 13.1301Z"
-        fill="#EA4335"
-      />
-      <path
-        d="M21.9778 14.1934C21.66 13.023 21.0074 11.9709 20.1002 11.166L18.1596 13.1066C18.564 13.4371 18.8881 13.8551 19.1075 14.3291C19.3268 14.8031 19.4357 15.3207 19.4259 15.8429V16.1874C20.3796 16.1874 21.1531 16.9607 21.1531 17.9145C21.1531 18.8684 20.3797 19.6223 19.4259 19.6223H15.9667L15.6271 19.9911V22.0627L15.9667 22.3877H19.4258C21.9069 22.407 23.9339 20.4308 23.9533 17.9497C23.9591 17.2093 23.7817 16.4789 23.4371 15.8236C23.0924 15.1682 22.5911 14.6082 21.9778 14.1934Z"
-        fill="#4285F4"
-      />
-      <path
-        d="M12.5123 22.3874H15.9666V19.622H12.5123C12.2678 19.6219 12.0262 19.569 11.804 19.4668L11.314 19.6172L9.92155 20.9999L9.80026 21.4705C10.5811 22.0601 11.5339 22.3917 12.5123 22.3874Z"
-        fill="#34A853"
-      />
-      <path
-        d="M12.5123 13.416C10.0312 13.4307 8.03188 15.4541 8.04667 17.9353C8.05074 18.619 8.21082 19.2928 8.51471 19.9052C8.81861 20.5177 9.25829 21.0528 9.80027 21.4696L11.804 19.4659C10.9347 19.0731 10.5484 18.0501 10.9411 17.1808C11.3339 16.3116 12.357 15.9252 13.2262 16.3179C13.6092 16.491 13.916 16.7978 14.0891 17.1808L16.0928 15.1771C15.6723 14.6273 15.1302 14.1822 14.5091 13.8767C13.8879 13.5712 13.2045 13.4135 12.5123 13.416Z"
-        fill="#FBBC05"
-      />
-    </svg>
-  }
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect width="32" height="32" rx="8" fill="#F3F4F6" />
+    <path
+      d="M18.6254 13.1301L20.0081 11.7474L20.1002 11.1652C17.5806 8.87402 13.5752 9.13381 11.3038 11.7072C10.6729 12.422 10.2048 13.3131 9.95523 14.2332L10.4505 14.1635L13.2158 13.7074L13.4293 13.4891C14.6594 12.1381 16.7393 11.9564 18.1596 13.1058L18.6254 13.1301Z"
+      fill="#EA4335"
+    />
+    <path
+      d="M21.9778 14.1934C21.66 13.023 21.0074 11.9709 20.1002 11.166L18.1596 13.1066C18.564 13.4371 18.8881 13.8551 19.1075 14.3291C19.3268 14.8031 19.4357 15.3207 19.4259 15.8429V16.1874C20.3796 16.1874 21.1531 16.9607 21.1531 17.9145C21.1531 18.8684 20.3797 19.6223 19.4259 19.6223H15.9667L15.6271 19.9911V22.0627L15.9667 22.3877H19.4258C21.9069 22.407 23.9339 20.4308 23.9533 17.9497C23.9591 17.2093 23.7817 16.4789 23.4371 15.8236C23.0924 15.1682 22.5911 14.6082 21.9778 14.1934Z"
+      fill="#4285F4"
+    />
+    <path
+      d="M12.5123 22.3874H15.9666V19.622H12.5123C12.2678 19.6219 12.0262 19.569 11.804 19.4668L11.314 19.6172L9.92155 20.9999L9.80026 21.4705C10.5811 22.0601 11.5339 22.3917 12.5123 22.3874Z"
+      fill="#34A853"
+    />
+    <path
+      d="M12.5123 13.416C10.0312 13.4307 8.03188 15.4541 8.04667 17.9353C8.05074 18.619 8.21082 19.2928 8.51471 19.9052C8.81861 20.5177 9.25829 21.0528 9.80027 21.4696L11.804 19.4659C10.9347 19.0731 10.5484 18.0501 10.9411 17.1808C11.3339 16.3116 12.357 15.9252 13.2262 16.3179C13.6092 16.491 13.916 16.7978 14.0891 17.1808L16.0928 15.1771C15.6723 14.6273 15.1302 14.1822 14.5091 13.8767C13.8879 13.5712 13.2045 13.4135 12.5123 13.416Z"
+      fill="#FBBC05"
+    />
+  </svg>
+}
     href="/integrations/marketplaces/gcp-marketplace"
   >
     Quickly list, transact, and co-sell on GCP Marketplace with Lago, via
@@ -26004,27 +27293,26 @@ Find all Lago integrations with third-party tools—whether for payment provider
 
     <br />
 
-    <Tooltip tip="This integration is maintained by Lago.">Official</Tooltip>
+    <Tooltip>Official</Tooltip>
   </Card>
 </CardGroup>
 
 ## Usage tracking integrations
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card
     title="Segment.com"
-    iconType="brand"
     icon={
-    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="32" height="32" rx="8" fill="#49B881"/>
-      <path d="M17.9688 18.6368H8.76831C8.34574 18.6368 8 18.3015 8 17.8916C8 17.4818 8.34574 17.1465 8.76831 17.1465H17.9688C18.3914 17.1465 18.7371 17.4818 18.7371 17.8916C18.7371 18.3015 18.3914 18.6368 17.9688 18.6368Z" fill="white"/>
-      <path d="M16.0096 23.2001C15.2605 23.2001 14.5114 23.0884 13.8007 22.8835C13.3974 22.7531 13.1669 22.3432 13.3013 21.952C13.4358 21.5608 13.8583 21.3373 14.2617 21.4677C14.8187 21.6353 15.4142 21.7285 16.0096 21.7285C18.6219 21.7285 20.8884 20.1078 21.6375 17.686C21.7527 17.2948 22.1945 17.0713 22.5978 17.1831C23.0012 17.2948 23.2317 17.7233 23.1164 18.1145C22.1369 21.151 19.2941 23.2001 16.0096 23.2001Z" fill="white"/>
-      <path d="M23.2317 14.8555H14.0312C13.6087 14.8555 13.2629 14.5202 13.2629 14.1104C13.2629 13.7006 13.6087 13.3652 14.0312 13.3652H23.2317C23.6543 13.3652 24 13.7006 24 14.1104C24 14.5202 23.6543 14.8555 23.2317 14.8555Z" fill="white"/>
-      <path d="M9.63265 14.8551C9.55582 14.8551 9.47899 14.8365 9.40216 14.8179C8.99879 14.7061 8.7683 14.2776 8.88355 13.8864C9.86314 10.8499 12.7059 8.80078 16.0096 8.80078C16.7587 8.80078 17.5078 8.91255 18.2185 9.11747C18.6218 9.24787 18.8523 9.6577 18.7179 10.0489C18.5834 10.4401 18.1609 10.6637 17.7575 10.5333C17.2005 10.3656 16.605 10.2724 16.0096 10.2724C13.3974 10.2724 11.1308 11.8931 10.3817 14.3149C10.2665 14.6502 9.95918 14.8551 9.63265 14.8551Z" fill="white"/>
-      <path d="M20.5618 12.0235C20.9861 12.0235 21.3301 11.6899 21.3301 11.2784C21.3301 10.8668 20.9861 10.5332 20.5618 10.5332C20.1375 10.5332 19.7935 10.8668 19.7935 11.2784C19.7935 11.6899 20.1375 12.0235 20.5618 12.0235Z" fill="white"/>
-      <path d="M11.4382 21.4864C11.8625 21.4864 12.2065 21.1528 12.2065 20.7412C12.2065 20.3297 11.8625 19.9961 11.4382 19.9961C11.0138 19.9961 10.6699 20.3297 10.6699 20.7412C10.6699 21.1528 11.0138 21.4864 11.4382 21.4864Z" fill="white"/>
-    </svg>
-  }
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="32" height="32" rx="8" fill="#49B881"/>
+    <path d="M17.9688 18.6368H8.76831C8.34574 18.6368 8 18.3015 8 17.8916C8 17.4818 8.34574 17.1465 8.76831 17.1465H17.9688C18.3914 17.1465 18.7371 17.4818 18.7371 17.8916C18.7371 18.3015 18.3914 18.6368 17.9688 18.6368Z" fill="white"/>
+    <path d="M16.0096 23.2001C15.2605 23.2001 14.5114 23.0884 13.8007 22.8835C13.3974 22.7531 13.1669 22.3432 13.3013 21.952C13.4358 21.5608 13.8583 21.3373 14.2617 21.4677C14.8187 21.6353 15.4142 21.7285 16.0096 21.7285C18.6219 21.7285 20.8884 20.1078 21.6375 17.686C21.7527 17.2948 22.1945 17.0713 22.5978 17.1831C23.0012 17.2948 23.2317 17.7233 23.1164 18.1145C22.1369 21.151 19.2941 23.2001 16.0096 23.2001Z" fill="white"/>
+    <path d="M23.2317 14.8555H14.0312C13.6087 14.8555 13.2629 14.5202 13.2629 14.1104C13.2629 13.7006 13.6087 13.3652 14.0312 13.3652H23.2317C23.6543 13.3652 24 13.7006 24 14.1104C24 14.5202 23.6543 14.8555 23.2317 14.8555Z" fill="white"/>
+    <path d="M9.63265 14.8551C9.55582 14.8551 9.47899 14.8365 9.40216 14.8179C8.99879 14.7061 8.7683 14.2776 8.88355 13.8864C9.86314 10.8499 12.7059 8.80078 16.0096 8.80078C16.7587 8.80078 17.5078 8.91255 18.2185 9.11747C18.6218 9.24787 18.8523 9.6577 18.7179 10.0489C18.5834 10.4401 18.1609 10.6637 17.7575 10.5333C17.2005 10.3656 16.605 10.2724 16.0096 10.2724C13.3974 10.2724 11.1308 11.8931 10.3817 14.3149C10.2665 14.6502 9.95918 14.8551 9.63265 14.8551Z" fill="white"/>
+    <path d="M20.5618 12.0235C20.9861 12.0235 21.3301 11.6899 21.3301 11.2784C21.3301 10.8668 20.9861 10.5332 20.5618 10.5332C20.1375 10.5332 19.7935 10.8668 19.7935 11.2784C19.7935 11.6899 20.1375 12.0235 20.5618 12.0235Z" fill="white"/>
+    <path d="M11.4382 21.4864C11.8625 21.4864 12.2065 21.1528 12.2065 20.7412C12.2065 20.3297 11.8625 19.9961 11.4382 19.9961C11.0138 19.9961 10.6699 20.3297 10.6699 20.7412C10.6699 21.1528 11.0138 21.4864 11.4382 21.4864Z" fill="white"/>
+  </svg>
+}
     href="/integrations/usage/segment"
   >
     Segment is used to track and ingest events that can be sent to Lago as
@@ -26032,25 +27320,25 @@ Find all Lago integrations with third-party tools—whether for payment provider
 
     <br />
 
-    <Tooltip tip="This integration is maintained by Lago.">Official</Tooltip>
+    <Tooltip>Official</Tooltip>
   </Card>
 
   <Card
     title="Hightouch"
     icon={
-    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect width="32" height="32" rx="8" fill="#4FC26B"/>
-      <g clip-path="url(#clip0_4694_561)">
-      <path d="M23.7159 19.0013H12.9987V8.28307C12.9987 8.12656 13.1253 8 13.2818 8H23.7169C23.8734 8 24 8.12656 24 8.28307V18.7182C23.999 18.8747 23.8725 19.0013 23.7159 19.0013Z" fill="white"/>
-      <path d="M12.7157 24.0007H8.28307C8.12656 24.0007 8 23.8741 8 23.7176V19.285C8 19.1285 8.12656 19.002 8.28307 19.002H12.9987V23.7176C12.9987 23.8741 12.8722 24.0007 12.7157 24.0007Z" fill="white"/>
-      </g>
-      <defs>
-      <clipPath id="clip0_4694_561">
-      <rect width="16" height="16" fill="white" transform="translate(8 8)"/>
-      </clipPath>
-      </defs>
-    </svg>
-  }
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="32" height="32" rx="8" fill="#4FC26B"/>
+    <g clip-path="url(#clip0_4694_561)">
+    <path d="M23.7159 19.0013H12.9987V8.28307C12.9987 8.12656 13.1253 8 13.2818 8H23.7169C23.8734 8 24 8.12656 24 8.28307V18.7182C23.999 18.8747 23.8725 19.0013 23.7159 19.0013Z" fill="white"/>
+    <path d="M12.7157 24.0007H8.28307C8.12656 24.0007 8 23.8741 8 23.7176V19.285C8 19.1285 8.12656 19.002 8.28307 19.002H12.9987V23.7176C12.9987 23.8741 12.8722 24.0007 12.7157 24.0007Z" fill="white"/>
+    </g>
+    <defs>
+    <clipPath id="clip0_4694_561">
+    <rect width="16" height="16" fill="white" transform="translate(8 8)"/>
+    </clipPath>
+    </defs>
+  </svg>
+}
     href="/integrations/usage/hightouch"
   >
     Reverse-ETL helping you sync data from any sources (database, warehouses,
@@ -26058,70 +27346,70 @@ Find all Lago integrations with third-party tools—whether for payment provider
 
     <br />
 
-    <Tooltip tip="This integration is maintained by Lago.">Official</Tooltip>
+    <Tooltip>Official</Tooltip>
   </Card>
 </CardGroup>
 
 ## Alerting integrations
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card
     title="Zapier"
     icon={
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="32" height="32" rx="8" fill="#FFF3E6" />
-      <g clip-path="url(#clip0_4694_681)">
-        <path
-          d="M10.0601 17.0488L10.057 17.0386L12.0487 15.1765V14.2793H8.85336V15.1765H10.7619L10.7651 15.1851L8.79287 17.0488V17.946H12.0808V17.0488H10.0601Z"
-          fill="#201515"
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect width="32" height="32" rx="8" fill="#FFF3E6" />
+    <g clip-path="url(#clip0_4694_681)">
+      <path
+        d="M10.0601 17.0488L10.057 17.0386L12.0487 15.1765V14.2793H8.85336V15.1765H10.7619L10.7651 15.1851L8.79287 17.0488V17.946H12.0808V17.0488H10.0601Z"
+        fill="#201515"
+      />
+      <path
+        d="M14.0421 14.1934C13.6735 14.1934 13.3731 14.2501 13.1409 14.3637C12.9247 14.4626 12.7425 14.6256 12.618 14.8316C12.499 15.0389 12.4242 15.2696 12.3987 15.5085L13.3682 15.6477C13.4033 15.4367 13.4734 15.2872 13.5786 15.1991C13.6982 15.1069 13.8456 15.0604 13.9952 15.0674C14.192 15.0674 14.3347 15.1212 14.4235 15.2286C14.5113 15.3361 14.556 15.4849 14.556 15.681V15.7787H13.6239C13.1493 15.7787 12.8084 15.8862 12.6012 16.1011C12.3939 16.316 12.2905 16.5997 12.2908 16.9521C12.2908 17.3131 12.3943 17.5817 12.6012 17.7579C12.8081 17.9342 13.0683 18.0217 13.3819 18.0206C13.7708 18.0206 14.07 17.884 14.2793 17.6107C14.403 17.4428 14.4913 17.2506 14.5387 17.0461H14.5739L14.7076 17.9433H15.5861V15.6713C15.5861 15.2018 15.4649 14.8381 15.2226 14.5802C14.9802 14.3223 14.5867 14.1934 14.0421 14.1934ZM14.3493 16.994C14.2099 17.1127 14.0274 17.1718 13.8001 17.1718C13.6128 17.1718 13.4827 17.1383 13.4098 17.0713C13.3742 17.0397 13.3459 17.0004 13.3269 16.9563C13.3079 16.9122 13.2986 16.8643 13.2998 16.8162C13.2977 16.7707 13.3047 16.7253 13.3204 16.6828C13.336 16.6402 13.36 16.6013 13.3908 16.5685C13.4241 16.5366 13.4635 16.5119 13.5064 16.4959C13.5494 16.4799 13.595 16.473 13.6407 16.4755H14.5576V16.5373C14.5595 16.6247 14.5417 16.7113 14.5056 16.7904C14.4694 16.8696 14.416 16.9393 14.3493 16.994Z"
+        fill="#201515"
+      />
+      <path
+        d="M20.8979 14.2793H19.86V17.9465H20.8979V14.2793Z"
+        fill="#201515"
+      />
+      <path
+        d="M27.0257 14.2793C26.7325 14.2793 26.5014 14.385 26.3324 14.5963C26.211 14.7481 26.1188 14.9725 26.0556 15.2694H26.0251L25.8894 14.2793H25.003V17.946H26.0409V16.0656C26.0409 15.8285 26.0953 15.6467 26.204 15.5203C26.3127 15.3939 26.5133 15.3307 26.8058 15.3307H27.1998V14.2793H27.0257Z"
+        fill="#201515"
+      />
+      <path
+        d="M23.974 14.398C23.7317 14.2508 23.426 14.1774 23.0571 14.1777C22.4763 14.1777 22.0218 14.3466 21.6935 14.6844C21.3653 15.0221 21.2011 15.4877 21.2011 16.0812C21.1928 16.44 21.2695 16.7955 21.4247 17.1175C21.5668 17.4044 21.7881 17.6426 22.0613 17.8025C22.3362 17.9648 22.6632 18.0461 23.0423 18.0464C23.3703 18.0464 23.6442 17.9948 23.8641 17.8917C24.0708 17.799 24.2508 17.6538 24.387 17.4699C24.5166 17.2894 24.6129 17.0862 24.671 16.8704L23.7767 16.6146C23.7391 16.755 23.6666 16.8831 23.5663 16.9864C23.4653 17.0896 23.2961 17.1411 23.0586 17.1411C22.7764 17.1411 22.5659 17.0586 22.4274 16.8935C22.3269 16.7742 22.2638 16.6039 22.2359 16.3831H24.6847C24.6947 16.28 24.7 16.1935 24.7 16.1236V15.8953C24.7059 15.5886 24.6438 15.2844 24.5185 15.0056C24.4012 14.7516 24.2113 14.5398 23.974 14.398ZM23.0271 15.0518C23.448 15.0518 23.6866 15.2633 23.7431 15.6863H22.2543C22.278 15.5452 22.3352 15.4121 22.4211 15.299C22.5575 15.1338 22.7595 15.0515 23.0271 15.0518Z"
+        fill="#201515"
+      />
+      <path
+        d="M20.3901 12.8011C20.312 12.7984 20.2342 12.8118 20.1612 12.8404C20.0883 12.869 20.0218 12.9123 19.9656 12.9677C19.9101 13.0236 19.8667 13.0907 19.838 13.1647C19.8093 13.2387 19.7959 13.3179 19.7988 13.3975C19.796 13.4775 19.8094 13.5573 19.8381 13.6318C19.8669 13.7063 19.9103 13.774 19.9658 13.8306C20.0213 13.8872 20.0876 13.9315 20.1606 13.9608C20.2336 13.9901 20.3117 14.0037 20.3901 14.0008C20.4679 14.0038 20.5456 13.9902 20.6181 13.9609C20.6905 13.9315 20.7562 13.8871 20.8109 13.8305C20.8652 13.7732 20.9076 13.7053 20.9355 13.6309C20.9635 13.5565 20.9764 13.4771 20.9735 13.3975C20.9771 13.3183 20.9645 13.2392 20.9364 13.1653C20.9084 13.0914 20.8656 13.0243 20.8108 12.9682C20.7559 12.9121 20.6902 12.8684 20.6179 12.8397C20.5455 12.811 20.4681 12.7981 20.3906 12.8017L20.3901 12.8011Z"
+        fill="#201515"
+      />
+      <path
+        d="M18.2463 14.1777C17.8928 14.1777 17.6087 14.2911 17.3941 14.5178C17.2352 14.6858 17.1186 14.9365 17.0442 15.2699H17.0111L16.8754 14.2798H15.9889V18.9989H17.0269V17.0552H17.0648C17.0964 17.1848 17.1408 17.3108 17.1973 17.4312C17.2851 17.6275 17.4291 17.7919 17.6103 17.9029C17.7981 18.0076 18.0097 18.0597 18.2237 18.0539C18.6582 18.0539 18.9891 17.8811 19.2164 17.5355C19.4436 17.1898 19.5573 16.7076 19.5573 16.0887C19.5573 15.4909 19.4473 15.023 19.2274 14.6849C19.0075 14.3468 18.6805 14.1777 18.2463 14.1777ZM18.3515 16.8349C18.2305 17.014 18.0411 17.1035 17.7834 17.1035C17.6771 17.1085 17.5711 17.0876 17.4744 17.0425C17.3776 16.9974 17.2927 16.9293 17.2268 16.844C17.0925 16.6718 17.0255 16.4359 17.0258 16.1365V16.0667C17.0258 15.7626 17.0928 15.5298 17.2268 15.3683C17.3608 15.2067 17.5463 15.1269 17.7834 15.1286C18.0457 15.1286 18.2363 15.2137 18.3552 15.3838C18.4741 15.554 18.5335 15.7912 18.5335 16.0957C18.5342 16.4105 18.4739 16.6569 18.3525 16.8349H18.3515Z"
+        fill="#201515"
+      />
+      <path
+        d="M8.39091 17.0488H4.8V17.9471H8.39091V17.0488Z"
+        fill="#FF4F00"
+      />
+    </g>
+    <defs>
+      <clipPath id="clip0_4694_681">
+        <rect
+          width="22.4"
+          height="6.22222"
+          fill="white"
+          transform="translate(4.8 12.8008)"
         />
-        <path
-          d="M14.0421 14.1934C13.6735 14.1934 13.3731 14.2501 13.1409 14.3637C12.9247 14.4626 12.7425 14.6256 12.618 14.8316C12.499 15.0389 12.4242 15.2696 12.3987 15.5085L13.3682 15.6477C13.4033 15.4367 13.4734 15.2872 13.5786 15.1991C13.6982 15.1069 13.8456 15.0604 13.9952 15.0674C14.192 15.0674 14.3347 15.1212 14.4235 15.2286C14.5113 15.3361 14.556 15.4849 14.556 15.681V15.7787H13.6239C13.1493 15.7787 12.8084 15.8862 12.6012 16.1011C12.3939 16.316 12.2905 16.5997 12.2908 16.9521C12.2908 17.3131 12.3943 17.5817 12.6012 17.7579C12.8081 17.9342 13.0683 18.0217 13.3819 18.0206C13.7708 18.0206 14.07 17.884 14.2793 17.6107C14.403 17.4428 14.4913 17.2506 14.5387 17.0461H14.5739L14.7076 17.9433H15.5861V15.6713C15.5861 15.2018 15.4649 14.8381 15.2226 14.5802C14.9802 14.3223 14.5867 14.1934 14.0421 14.1934ZM14.3493 16.994C14.2099 17.1127 14.0274 17.1718 13.8001 17.1718C13.6128 17.1718 13.4827 17.1383 13.4098 17.0713C13.3742 17.0397 13.3459 17.0004 13.3269 16.9563C13.3079 16.9122 13.2986 16.8643 13.2998 16.8162C13.2977 16.7707 13.3047 16.7253 13.3204 16.6828C13.336 16.6402 13.36 16.6013 13.3908 16.5685C13.4241 16.5366 13.4635 16.5119 13.5064 16.4959C13.5494 16.4799 13.595 16.473 13.6407 16.4755H14.5576V16.5373C14.5595 16.6247 14.5417 16.7113 14.5056 16.7904C14.4694 16.8696 14.416 16.9393 14.3493 16.994Z"
-          fill="#201515"
-        />
-        <path
-          d="M20.8979 14.2793H19.86V17.9465H20.8979V14.2793Z"
-          fill="#201515"
-        />
-        <path
-          d="M27.0257 14.2793C26.7325 14.2793 26.5014 14.385 26.3324 14.5963C26.211 14.7481 26.1188 14.9725 26.0556 15.2694H26.0251L25.8894 14.2793H25.003V17.946H26.0409V16.0656C26.0409 15.8285 26.0953 15.6467 26.204 15.5203C26.3127 15.3939 26.5133 15.3307 26.8058 15.3307H27.1998V14.2793H27.0257Z"
-          fill="#201515"
-        />
-        <path
-          d="M23.974 14.398C23.7317 14.2508 23.426 14.1774 23.0571 14.1777C22.4763 14.1777 22.0218 14.3466 21.6935 14.6844C21.3653 15.0221 21.2011 15.4877 21.2011 16.0812C21.1928 16.44 21.2695 16.7955 21.4247 17.1175C21.5668 17.4044 21.7881 17.6426 22.0613 17.8025C22.3362 17.9648 22.6632 18.0461 23.0423 18.0464C23.3703 18.0464 23.6442 17.9948 23.8641 17.8917C24.0708 17.799 24.2508 17.6538 24.387 17.4699C24.5166 17.2894 24.6129 17.0862 24.671 16.8704L23.7767 16.6146C23.7391 16.755 23.6666 16.8831 23.5663 16.9864C23.4653 17.0896 23.2961 17.1411 23.0586 17.1411C22.7764 17.1411 22.5659 17.0586 22.4274 16.8935C22.3269 16.7742 22.2638 16.6039 22.2359 16.3831H24.6847C24.6947 16.28 24.7 16.1935 24.7 16.1236V15.8953C24.7059 15.5886 24.6438 15.2844 24.5185 15.0056C24.4012 14.7516 24.2113 14.5398 23.974 14.398ZM23.0271 15.0518C23.448 15.0518 23.6866 15.2633 23.7431 15.6863H22.2543C22.278 15.5452 22.3352 15.4121 22.4211 15.299C22.5575 15.1338 22.7595 15.0515 23.0271 15.0518Z"
-          fill="#201515"
-        />
-        <path
-          d="M20.3901 12.8011C20.312 12.7984 20.2342 12.8118 20.1612 12.8404C20.0883 12.869 20.0218 12.9123 19.9656 12.9677C19.9101 13.0236 19.8667 13.0907 19.838 13.1647C19.8093 13.2387 19.7959 13.3179 19.7988 13.3975C19.796 13.4775 19.8094 13.5573 19.8381 13.6318C19.8669 13.7063 19.9103 13.774 19.9658 13.8306C20.0213 13.8872 20.0876 13.9315 20.1606 13.9608C20.2336 13.9901 20.3117 14.0037 20.3901 14.0008C20.4679 14.0038 20.5456 13.9902 20.6181 13.9609C20.6905 13.9315 20.7562 13.8871 20.8109 13.8305C20.8652 13.7732 20.9076 13.7053 20.9355 13.6309C20.9635 13.5565 20.9764 13.4771 20.9735 13.3975C20.9771 13.3183 20.9645 13.2392 20.9364 13.1653C20.9084 13.0914 20.8656 13.0243 20.8108 12.9682C20.7559 12.9121 20.6902 12.8684 20.6179 12.8397C20.5455 12.811 20.4681 12.7981 20.3906 12.8017L20.3901 12.8011Z"
-          fill="#201515"
-        />
-        <path
-          d="M18.2463 14.1777C17.8928 14.1777 17.6087 14.2911 17.3941 14.5178C17.2352 14.6858 17.1186 14.9365 17.0442 15.2699H17.0111L16.8754 14.2798H15.9889V18.9989H17.0269V17.0552H17.0648C17.0964 17.1848 17.1408 17.3108 17.1973 17.4312C17.2851 17.6275 17.4291 17.7919 17.6103 17.9029C17.7981 18.0076 18.0097 18.0597 18.2237 18.0539C18.6582 18.0539 18.9891 17.8811 19.2164 17.5355C19.4436 17.1898 19.5573 16.7076 19.5573 16.0887C19.5573 15.4909 19.4473 15.023 19.2274 14.6849C19.0075 14.3468 18.6805 14.1777 18.2463 14.1777ZM18.3515 16.8349C18.2305 17.014 18.0411 17.1035 17.7834 17.1035C17.6771 17.1085 17.5711 17.0876 17.4744 17.0425C17.3776 16.9974 17.2927 16.9293 17.2268 16.844C17.0925 16.6718 17.0255 16.4359 17.0258 16.1365V16.0667C17.0258 15.7626 17.0928 15.5298 17.2268 15.3683C17.3608 15.2067 17.5463 15.1269 17.7834 15.1286C18.0457 15.1286 18.2363 15.2137 18.3552 15.3838C18.4741 15.554 18.5335 15.7912 18.5335 16.0957C18.5342 16.4105 18.4739 16.6569 18.3525 16.8349H18.3515Z"
-          fill="#201515"
-        />
-        <path
-          d="M8.39091 17.0488H4.8V17.9471H8.39091V17.0488Z"
-          fill="#FF4F00"
-        />
-      </g>
-      <defs>
-        <clipPath id="clip0_4694_681">
-          <rect
-            width="22.4"
-            height="6.22222"
-            fill="white"
-            transform="translate(4.8 12.8008)"
-          />
-        </clipPath>
-      </defs>
-    </svg>
-  }
+      </clipPath>
+    </defs>
+  </svg>
+}
     href="/integrations/alerting/zapier"
   >
     Use Zapier and Lago to trigger billing automations, such as an invoice
@@ -26129,26 +27417,26 @@ Find all Lago integrations with third-party tools—whether for payment provider
 
     <br />
 
-    <Tooltip tip="This integration is maintained by Lago.">Official</Tooltip>
+    <Tooltip>Official</Tooltip>
   </Card>
 
   <Card
     title="N8N"
     icon={
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="32" height="32" rx="8" fill="#ED6C5D" />
-      <path
-        d="M23.6333 11.1992C22.7108 11.1992 21.9404 11.8415 21.7275 12.7117H18.9803C17.9058 12.7117 17.0238 13.6026 17.0238 14.711C17.0238 15.26 16.5879 15.7055 16.0506 15.7055H15.6553C15.4424 14.8353 14.6618 14.193 13.7495 14.193C12.827 14.193 12.0566 14.8353 11.8437 15.7055H10.2724C10.0595 14.8353 9.27897 14.193 8.36662 14.193C7.28194 14.193 6.4 15.0943 6.4 16.2027C6.4 17.3112 7.28194 18.2124 8.36662 18.2124C9.28911 18.2124 10.0595 17.5702 10.2724 16.7H11.8437C12.0566 17.5702 12.8371 18.2124 13.7495 18.2124C14.6618 18.2124 15.4323 17.5805 15.6553 16.7103H16.0506C16.5879 16.7103 17.0238 17.1558 17.0238 17.7048C17.0238 18.8029 17.8956 19.7042 18.9803 19.7042H19.619C19.8318 20.5743 20.6124 21.2166 21.5247 21.2166C22.6094 21.2166 23.4914 20.3154 23.4914 19.2069C23.4914 18.0985 22.6094 17.1972 21.5247 17.1972C20.6023 17.1972 19.8318 17.8395 19.619 18.7097H18.9803C18.443 18.7097 18.0071 18.2642 18.0071 17.7152C18.0071 17.1143 17.7436 16.5757 17.3279 16.2131C17.7436 15.8505 18.0071 15.3118 18.0071 14.711C18.0071 14.162 18.443 13.7165 18.9803 13.7165H21.7275C21.9404 14.5867 22.7209 15.229 23.6333 15.229C24.718 15.229 25.5999 14.3277 25.5999 13.2193C25.6101 12.1108 24.718 11.1992 23.6333 11.1992ZM8.36662 17.2283C7.81921 17.2283 7.37317 16.7725 7.37317 16.2131C7.37317 15.6537 7.81921 15.1979 8.36662 15.1979C8.91403 15.1979 9.36007 15.6537 9.36007 16.2131C9.37021 16.7725 8.92417 17.2283 8.36662 17.2283ZM13.7495 17.2283C13.2021 17.2283 12.756 16.7725 12.756 16.2131C12.756 15.6537 13.2021 15.1979 13.7495 15.1979C14.2969 15.1979 14.7429 15.6537 14.7429 16.2131C14.7531 16.7725 14.307 17.2283 13.7495 17.2283ZM21.5247 18.2021C22.0722 18.2021 22.5182 18.6579 22.5182 19.2173C22.5182 19.7767 22.0722 20.2325 21.5247 20.2325C20.9773 20.2325 20.5313 19.7767 20.5313 19.2173C20.5313 18.6579 20.9773 18.2021 21.5247 18.2021ZM23.6333 14.2345C23.0859 14.2345 22.6398 13.7787 22.6398 13.2193C22.6398 12.6599 23.0859 12.2041 23.6333 12.2041C24.1807 12.2041 24.6267 12.6599 24.6267 13.2193C24.6267 13.7787 24.1807 14.2345 23.6333 14.2345Z"
-        fill="white"
-      />
-    </svg>
-  }
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect width="32" height="32" rx="8" fill="#ED6C5D" />
+    <path
+      d="M23.6333 11.1992C22.7108 11.1992 21.9404 11.8415 21.7275 12.7117H18.9803C17.9058 12.7117 17.0238 13.6026 17.0238 14.711C17.0238 15.26 16.5879 15.7055 16.0506 15.7055H15.6553C15.4424 14.8353 14.6618 14.193 13.7495 14.193C12.827 14.193 12.0566 14.8353 11.8437 15.7055H10.2724C10.0595 14.8353 9.27897 14.193 8.36662 14.193C7.28194 14.193 6.4 15.0943 6.4 16.2027C6.4 17.3112 7.28194 18.2124 8.36662 18.2124C9.28911 18.2124 10.0595 17.5702 10.2724 16.7H11.8437C12.0566 17.5702 12.8371 18.2124 13.7495 18.2124C14.6618 18.2124 15.4323 17.5805 15.6553 16.7103H16.0506C16.5879 16.7103 17.0238 17.1558 17.0238 17.7048C17.0238 18.8029 17.8956 19.7042 18.9803 19.7042H19.619C19.8318 20.5743 20.6124 21.2166 21.5247 21.2166C22.6094 21.2166 23.4914 20.3154 23.4914 19.2069C23.4914 18.0985 22.6094 17.1972 21.5247 17.1972C20.6023 17.1972 19.8318 17.8395 19.619 18.7097H18.9803C18.443 18.7097 18.0071 18.2642 18.0071 17.7152C18.0071 17.1143 17.7436 16.5757 17.3279 16.2131C17.7436 15.8505 18.0071 15.3118 18.0071 14.711C18.0071 14.162 18.443 13.7165 18.9803 13.7165H21.7275C21.9404 14.5867 22.7209 15.229 23.6333 15.229C24.718 15.229 25.5999 14.3277 25.5999 13.2193C25.6101 12.1108 24.718 11.1992 23.6333 11.1992ZM8.36662 17.2283C7.81921 17.2283 7.37317 16.7725 7.37317 16.2131C7.37317 15.6537 7.81921 15.1979 8.36662 15.1979C8.91403 15.1979 9.36007 15.6537 9.36007 16.2131C9.37021 16.7725 8.92417 17.2283 8.36662 17.2283ZM13.7495 17.2283C13.2021 17.2283 12.756 16.7725 12.756 16.2131C12.756 15.6537 13.2021 15.1979 13.7495 15.1979C14.2969 15.1979 14.7429 15.6537 14.7429 16.2131C14.7531 16.7725 14.307 17.2283 13.7495 17.2283ZM21.5247 18.2021C22.0722 18.2021 22.5182 18.6579 22.5182 19.2173C22.5182 19.7767 22.0722 20.2325 21.5247 20.2325C20.9773 20.2325 20.5313 19.7767 20.5313 19.2173C20.5313 18.6579 20.9773 18.2021 21.5247 18.2021ZM23.6333 14.2345C23.0859 14.2345 22.6398 13.7787 22.6398 13.2193C22.6398 12.6599 23.0859 12.2041 23.6333 12.2041C24.1807 12.2041 24.6267 12.6599 24.6267 13.2193C24.6267 13.7787 24.1807 14.2345 23.6333 14.2345Z"
+      fill="white"
+    />
+  </svg>
+}
     href="/integrations/alerting/n8n"
   >
     Use n8n and Lago to trigger billing automations, such as an overconsumption
@@ -26156,64 +27444,64 @@ Find all Lago integrations with third-party tools—whether for payment provider
 
     <br />
 
-    <Tooltip tip="This integration is maintained by Lago.">Official</Tooltip>
+    <Tooltip>Official</Tooltip>
   </Card>
 </CardGroup>
 
 ## Data integrations
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card
     title="Lago Data Pipeline"
     icon={
-    <svg width="32" height="32" viewBox="0 0 121 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="120" height="120" rx="24" transform="matrix(-1 0 0 1 120.5 0)" fill="#19212E"/>
-    <g clip-path="url(#clip0_5538_27113)">
-    <g clip-path="url(#clip1_5538_27113)">
-    <path d="M30.875 64.7142C31.8393 70.9821 34.7321 76.6607 39.2857 81.2142C43.8393 85.7678 49.5178 88.6607 55.7857 89.6249C55.7857 89.5714 55.8392 89.5178 55.8392 89.4642V89.4107C55.8928 89.3035 55.8928 89.2499 55.9464 89.0892C56 88.9285 56.0535 88.7678 56.1071 88.6071C56.375 87.8571 56.5357 86.9999 56.6964 86.1428V86.0892C56.6964 85.9821 56.75 85.8749 56.75 85.7678V85.7142C56.75 85.6071 56.8035 85.4999 56.8035 85.4464V85.3392C56.8035 85.2321 56.8571 85.1249 56.8571 84.9642C56.9107 84.6964 56.9107 84.4285 56.9107 84.1071V83.9999C56.9107 83.9464 56.9107 83.8928 56.9107 83.8392V83.7321C56.9107 83.4107 56.9642 83.0892 56.9642 82.7142C56.9642 72.1071 48.2857 63.4285 37.6785 63.4285C37.3571 63.4285 36.9821 63.4285 36.6607 63.4285H36.5535C36.5 63.4285 36.4464 63.4285 36.3928 63.4285H36.2857C36.0178 63.4285 35.6964 63.4821 35.4285 63.5357C35.3214 63.5357 35.1607 63.5357 35 63.5892C34.8928 63.5892 34.7857 63.6428 34.7321 63.6428H34.6785C34.5714 63.6428 34.4643 63.6428 34.3571 63.6964H34.3035C33.4464 63.8571 32.6428 64.0714 31.7857 64.3392C31.625 64.3928 31.4643 64.4464 31.3035 64.4999C31.1964 64.5535 31.1428 64.5535 31.0357 64.6071H30.9821C30.9821 64.6607 30.9285 64.7142 30.875 64.7142Z" fill="white"/>
-    <path opacity="0.6" d="M30.5 60.3214H30.5536C31.0357 60.1607 31.5179 60.0535 32 59.8928C32.0536 59.8928 32.1071 59.8392 32.2143 59.8392C32.6429 59.7321 33.0714 59.625 33.5536 59.5714C33.5536 59.5714 33.5536 59.5714 33.6071 59.5714C33.7143 59.5714 33.875 59.5178 33.9821 59.5178H34.0893C34.25 59.5178 34.4107 59.4642 34.5179 59.4642C34.6786 59.4642 34.8929 59.4107 35 59.4107C35.3214 59.3571 35.6964 59.3571 36.0179 59.3035C36.125 59.3035 36.2321 59.3035 36.3393 59.3035H36.6071C36.9821 59.3035 37.3571 59.3035 37.7857 59.3035C50.8036 59.3035 61.3571 69.8571 61.3571 82.8749C61.3571 83.2499 61.3571 83.6249 61.3036 84.0535V84.3214C61.3036 84.4285 61.3036 84.5357 61.25 84.6428C61.1964 84.9642 61.1964 85.3392 61.1429 85.6607C61.1429 85.8214 61.0893 85.9821 61.0893 86.1428C61.0893 86.3035 61.0357 86.4642 61.0357 86.5714C60.9821 86.7857 60.9821 86.9464 60.9286 87.1071C60.7679 88.1249 60.5 89.1428 60.1786 90.1607C60.1786 90.1607 60.1786 90.1607 60.1786 90.2142C66.8214 90.3214 73.1428 88.2321 78.4464 84.2678C78.4464 84.1607 78.4464 84.0535 78.4464 84C78.4464 83.6785 78.4464 83.3035 78.4464 82.9821C78.4464 60.5357 60.1786 42.2678 37.7321 42.2678C37.4107 42.2678 37.0357 42.2678 36.7143 42.2678C36.6071 42.2678 36.5 42.2678 36.4464 42.2678C32.4821 47.3035 30.4464 53.6785 30.5 60.3214Z" fill="white"/>
-    <path opacity="0.3" d="M40.3036 37.7678C40.5179 37.7678 40.7857 37.8214 41 37.8214C41.375 37.8214 41.6964 37.875 42.0714 37.9286C42.1786 37.9286 42.3393 37.9286 42.4464 37.9821C42.5536 37.9821 42.6072 37.9821 42.7143 38.0357C43.3572 38.0893 44 38.1964 44.6429 38.3036C45.125 38.3571 45.5536 38.4643 46.0357 38.5178C46.3036 38.5714 46.625 38.625 46.8929 38.6786C47.2143 38.7321 47.5357 38.8393 47.9107 38.8928C48.0179 38.9464 48.1786 38.9464 48.2857 39C48.5 39.0536 48.7679 39.1071 48.9822 39.1607C49.0893 39.1607 49.1429 39.2143 49.25 39.2143C49.5179 39.2678 49.7857 39.3214 50 39.4286C50.1072 39.4821 50.2679 39.4821 50.375 39.5357C50.5893 39.5893 50.75 39.6428 50.9643 39.6964C51.125 39.75 51.2857 39.8036 51.3929 39.8571C51.6607 39.9107 51.875 40.0178 52.0893 40.0714C52.1429 40.0714 52.1964 40.125 52.25 40.125C52.5714 40.2321 52.8929 40.3393 53.2143 40.5C53.5893 40.6071 53.9107 40.7678 54.2322 40.875C54.4464 40.9286 54.6607 41.0357 54.8214 41.1428C55.0357 41.1964 55.1964 41.3036 55.4107 41.3571C55.7322 41.5178 56.1072 41.625 56.4286 41.7857C57.0179 42.0536 57.6072 42.3214 58.1964 42.6428C58.9464 43.0178 59.6429 43.3928 60.3929 43.8214C60.6072 43.9821 60.875 44.0893 61.0893 44.25C61.3572 44.4107 61.625 44.5714 61.9464 44.7857C62.2143 44.9464 62.4822 45.1071 62.6964 45.2678C62.9107 45.4286 63.1786 45.5893 63.3929 45.75C63.6072 45.9107 63.8214 46.0714 64.0357 46.2321C64.5714 46.6071 65.0536 46.9821 65.5357 47.3571C65.75 47.5178 65.9107 47.6786 66.125 47.8393C66.4464 48.1071 66.8214 48.4286 67.1429 48.6964C67.4107 48.9107 67.6786 49.1786 67.9464 49.3928C68.1607 49.5536 68.3214 49.7678 68.5357 49.9286C69.1786 50.5714 69.8214 51.1607 70.4643 51.8571C70.6786 52.0714 70.8393 52.2321 71 52.4464C71.2679 52.7143 71.4822 52.9821 71.6964 53.25C72.0179 53.5714 72.2857 53.9464 72.5536 54.2678C72.7143 54.4821 72.875 54.6428 73.0357 54.8571C73.4107 55.3393 73.7857 55.875 74.1607 56.3571C74.3214 56.5714 74.4822 56.7857 74.6429 57C74.8036 57.2143 74.9643 57.4821 75.125 57.6964C75.2857 57.9643 75.4464 58.1786 75.6072 58.4464C75.7679 58.7143 75.9822 58.9821 76.1429 59.3036C76.3036 59.5178 76.4107 59.7857 76.5714 60C77 60.6964 77.375 61.4464 77.75 62.1428C78.0714 62.7321 78.3393 63.3214 78.6072 63.9107C78.7679 64.2321 78.9286 64.5536 79.0357 64.9286C79.0893 65.0893 79.1964 65.3036 79.25 65.5178C79.3572 65.7321 79.4107 65.9464 79.5179 66.1071C79.6786 66.4286 79.7857 66.8036 79.8929 67.125C80 67.4464 80.1072 67.7678 80.2679 68.0893C80.2679 68.1428 80.3214 68.1964 80.3214 68.25C80.4286 68.4643 80.4822 68.7321 80.5357 68.9464C80.5893 69.1071 80.6429 69.2678 80.6964 69.375C80.75 69.5893 80.8036 69.75 80.8572 69.9643C80.9107 70.0714 80.9107 70.2321 80.9643 70.3393C81.0179 70.6071 81.125 70.875 81.1786 71.0893C81.1786 71.1428 81.2322 71.25 81.2322 71.3571C81.2857 71.5714 81.3393 71.8393 81.3929 72.0536C81.3929 72.1607 81.4464 72.2678 81.5 72.4286C81.5536 72.75 81.6607 73.0714 81.7143 73.4464C81.7679 73.7143 81.8214 73.9821 81.875 74.3036C81.9822 74.7857 82.0357 75.2143 82.0893 75.6964C82.1964 76.3393 82.25 76.9821 82.3572 77.625C82.3572 77.7321 82.3572 77.7857 82.4107 77.8928C82.4107 78 82.4107 78.1071 82.4643 78.2678C82.5179 78.6428 82.5179 78.9643 82.5714 79.3393C82.5714 79.5536 82.625 79.8214 82.625 80.0357C87.6607 74.7321 90.3929 67.7678 90.5 60.375C90.6072 52.5 87.6607 45 82.25 39.3214C82.0893 39.1071 81.875 38.9464 81.7143 38.7857C81.5536 38.625 81.3393 38.4107 81.1786 38.25C75.5536 32.9464 68.2143 30 60.5 30H60.125C52.7322 30.1071 45.7679 32.8393 40.3036 37.7678Z" fill="white"/>
-    </g>
-    </g>
-    <defs>
-    <clipPath id="clip0_5538_27113">
-    <rect width="60" height="60" fill="white" transform="matrix(-1 0 0 1 90.5 30)"/>
-    </clipPath>
-    <clipPath id="clip1_5538_27113">
-    <rect width="60" height="60" fill="white" transform="matrix(-1 0 0 1 90.5 30)"/>
-    </clipPath>
-    </defs>
-    </svg>
+  <svg width="32" height="32" viewBox="0 0 121 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="120" height="120" rx="24" transform="matrix(-1 0 0 1 120.5 0)" fill="#19212E"/>
+  <g clip-path="url(#clip0_5538_27113)">
+  <g clip-path="url(#clip1_5538_27113)">
+  <path d="M30.875 64.7142C31.8393 70.9821 34.7321 76.6607 39.2857 81.2142C43.8393 85.7678 49.5178 88.6607 55.7857 89.6249C55.7857 89.5714 55.8392 89.5178 55.8392 89.4642V89.4107C55.8928 89.3035 55.8928 89.2499 55.9464 89.0892C56 88.9285 56.0535 88.7678 56.1071 88.6071C56.375 87.8571 56.5357 86.9999 56.6964 86.1428V86.0892C56.6964 85.9821 56.75 85.8749 56.75 85.7678V85.7142C56.75 85.6071 56.8035 85.4999 56.8035 85.4464V85.3392C56.8035 85.2321 56.8571 85.1249 56.8571 84.9642C56.9107 84.6964 56.9107 84.4285 56.9107 84.1071V83.9999C56.9107 83.9464 56.9107 83.8928 56.9107 83.8392V83.7321C56.9107 83.4107 56.9642 83.0892 56.9642 82.7142C56.9642 72.1071 48.2857 63.4285 37.6785 63.4285C37.3571 63.4285 36.9821 63.4285 36.6607 63.4285H36.5535C36.5 63.4285 36.4464 63.4285 36.3928 63.4285H36.2857C36.0178 63.4285 35.6964 63.4821 35.4285 63.5357C35.3214 63.5357 35.1607 63.5357 35 63.5892C34.8928 63.5892 34.7857 63.6428 34.7321 63.6428H34.6785C34.5714 63.6428 34.4643 63.6428 34.3571 63.6964H34.3035C33.4464 63.8571 32.6428 64.0714 31.7857 64.3392C31.625 64.3928 31.4643 64.4464 31.3035 64.4999C31.1964 64.5535 31.1428 64.5535 31.0357 64.6071H30.9821C30.9821 64.6607 30.9285 64.7142 30.875 64.7142Z" fill="white"/>
+  <path opacity="0.6" d="M30.5 60.3214H30.5536C31.0357 60.1607 31.5179 60.0535 32 59.8928C32.0536 59.8928 32.1071 59.8392 32.2143 59.8392C32.6429 59.7321 33.0714 59.625 33.5536 59.5714C33.5536 59.5714 33.5536 59.5714 33.6071 59.5714C33.7143 59.5714 33.875 59.5178 33.9821 59.5178H34.0893C34.25 59.5178 34.4107 59.4642 34.5179 59.4642C34.6786 59.4642 34.8929 59.4107 35 59.4107C35.3214 59.3571 35.6964 59.3571 36.0179 59.3035C36.125 59.3035 36.2321 59.3035 36.3393 59.3035H36.6071C36.9821 59.3035 37.3571 59.3035 37.7857 59.3035C50.8036 59.3035 61.3571 69.8571 61.3571 82.8749C61.3571 83.2499 61.3571 83.6249 61.3036 84.0535V84.3214C61.3036 84.4285 61.3036 84.5357 61.25 84.6428C61.1964 84.9642 61.1964 85.3392 61.1429 85.6607C61.1429 85.8214 61.0893 85.9821 61.0893 86.1428C61.0893 86.3035 61.0357 86.4642 61.0357 86.5714C60.9821 86.7857 60.9821 86.9464 60.9286 87.1071C60.7679 88.1249 60.5 89.1428 60.1786 90.1607C60.1786 90.1607 60.1786 90.1607 60.1786 90.2142C66.8214 90.3214 73.1428 88.2321 78.4464 84.2678C78.4464 84.1607 78.4464 84.0535 78.4464 84C78.4464 83.6785 78.4464 83.3035 78.4464 82.9821C78.4464 60.5357 60.1786 42.2678 37.7321 42.2678C37.4107 42.2678 37.0357 42.2678 36.7143 42.2678C36.6071 42.2678 36.5 42.2678 36.4464 42.2678C32.4821 47.3035 30.4464 53.6785 30.5 60.3214Z" fill="white"/>
+  <path opacity="0.3" d="M40.3036 37.7678C40.5179 37.7678 40.7857 37.8214 41 37.8214C41.375 37.8214 41.6964 37.875 42.0714 37.9286C42.1786 37.9286 42.3393 37.9286 42.4464 37.9821C42.5536 37.9821 42.6072 37.9821 42.7143 38.0357C43.3572 38.0893 44 38.1964 44.6429 38.3036C45.125 38.3571 45.5536 38.4643 46.0357 38.5178C46.3036 38.5714 46.625 38.625 46.8929 38.6786C47.2143 38.7321 47.5357 38.8393 47.9107 38.8928C48.0179 38.9464 48.1786 38.9464 48.2857 39C48.5 39.0536 48.7679 39.1071 48.9822 39.1607C49.0893 39.1607 49.1429 39.2143 49.25 39.2143C49.5179 39.2678 49.7857 39.3214 50 39.4286C50.1072 39.4821 50.2679 39.4821 50.375 39.5357C50.5893 39.5893 50.75 39.6428 50.9643 39.6964C51.125 39.75 51.2857 39.8036 51.3929 39.8571C51.6607 39.9107 51.875 40.0178 52.0893 40.0714C52.1429 40.0714 52.1964 40.125 52.25 40.125C52.5714 40.2321 52.8929 40.3393 53.2143 40.5C53.5893 40.6071 53.9107 40.7678 54.2322 40.875C54.4464 40.9286 54.6607 41.0357 54.8214 41.1428C55.0357 41.1964 55.1964 41.3036 55.4107 41.3571C55.7322 41.5178 56.1072 41.625 56.4286 41.7857C57.0179 42.0536 57.6072 42.3214 58.1964 42.6428C58.9464 43.0178 59.6429 43.3928 60.3929 43.8214C60.6072 43.9821 60.875 44.0893 61.0893 44.25C61.3572 44.4107 61.625 44.5714 61.9464 44.7857C62.2143 44.9464 62.4822 45.1071 62.6964 45.2678C62.9107 45.4286 63.1786 45.5893 63.3929 45.75C63.6072 45.9107 63.8214 46.0714 64.0357 46.2321C64.5714 46.6071 65.0536 46.9821 65.5357 47.3571C65.75 47.5178 65.9107 47.6786 66.125 47.8393C66.4464 48.1071 66.8214 48.4286 67.1429 48.6964C67.4107 48.9107 67.6786 49.1786 67.9464 49.3928C68.1607 49.5536 68.3214 49.7678 68.5357 49.9286C69.1786 50.5714 69.8214 51.1607 70.4643 51.8571C70.6786 52.0714 70.8393 52.2321 71 52.4464C71.2679 52.7143 71.4822 52.9821 71.6964 53.25C72.0179 53.5714 72.2857 53.9464 72.5536 54.2678C72.7143 54.4821 72.875 54.6428 73.0357 54.8571C73.4107 55.3393 73.7857 55.875 74.1607 56.3571C74.3214 56.5714 74.4822 56.7857 74.6429 57C74.8036 57.2143 74.9643 57.4821 75.125 57.6964C75.2857 57.9643 75.4464 58.1786 75.6072 58.4464C75.7679 58.7143 75.9822 58.9821 76.1429 59.3036C76.3036 59.5178 76.4107 59.7857 76.5714 60C77 60.6964 77.375 61.4464 77.75 62.1428C78.0714 62.7321 78.3393 63.3214 78.6072 63.9107C78.7679 64.2321 78.9286 64.5536 79.0357 64.9286C79.0893 65.0893 79.1964 65.3036 79.25 65.5178C79.3572 65.7321 79.4107 65.9464 79.5179 66.1071C79.6786 66.4286 79.7857 66.8036 79.8929 67.125C80 67.4464 80.1072 67.7678 80.2679 68.0893C80.2679 68.1428 80.3214 68.1964 80.3214 68.25C80.4286 68.4643 80.4822 68.7321 80.5357 68.9464C80.5893 69.1071 80.6429 69.2678 80.6964 69.375C80.75 69.5893 80.8036 69.75 80.8572 69.9643C80.9107 70.0714 80.9107 70.2321 80.9643 70.3393C81.0179 70.6071 81.125 70.875 81.1786 71.0893C81.1786 71.1428 81.2322 71.25 81.2322 71.3571C81.2857 71.5714 81.3393 71.8393 81.3929 72.0536C81.3929 72.1607 81.4464 72.2678 81.5 72.4286C81.5536 72.75 81.6607 73.0714 81.7143 73.4464C81.7679 73.7143 81.8214 73.9821 81.875 74.3036C81.9822 74.7857 82.0357 75.2143 82.0893 75.6964C82.1964 76.3393 82.25 76.9821 82.3572 77.625C82.3572 77.7321 82.3572 77.7857 82.4107 77.8928C82.4107 78 82.4107 78.1071 82.4643 78.2678C82.5179 78.6428 82.5179 78.9643 82.5714 79.3393C82.5714 79.5536 82.625 79.8214 82.625 80.0357C87.6607 74.7321 90.3929 67.7678 90.5 60.375C90.6072 52.5 87.6607 45 82.25 39.3214C82.0893 39.1071 81.875 38.9464 81.7143 38.7857C81.5536 38.625 81.3393 38.4107 81.1786 38.25C75.5536 32.9464 68.2143 30 60.5 30H60.125C52.7322 30.1071 45.7679 32.8393 40.3036 37.7678Z" fill="white"/>
+  </g>
+  </g>
+  <defs>
+  <clipPath id="clip0_5538_27113">
+  <rect width="60" height="60" fill="white" transform="matrix(-1 0 0 1 90.5 30)"/>
+  </clipPath>
+  <clipPath id="clip1_5538_27113">
+  <rect width="60" height="60" fill="white" transform="matrix(-1 0 0 1 90.5 30)"/>
+  </clipPath>
+  </defs>
+  </svg>
 
-  }
+}
     href="/integrations/data/lago-data-pipeline"
   >
     Sync your Lago data to any data destinations by using our native data pipeline.
 
     <br />
 
-    <Tooltip tip="This integration is maintained by Lago.">Official</Tooltip>
+    <Tooltip>Official</Tooltip>
   </Card>
 
   <Card
     title="Airbyte (ETL)"
     icon={
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="32" height="32" rx="8" fill="#615EFF" />
-      <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M13.4556 9.94139C15.2255 8.01813 18.1562 7.45399 20.5657 8.56409C23.7669 10.039 24.935 13.7963 23.1919 16.695L19.2711 23.2076C19.0519 23.5717 18.6914 23.8371 18.2686 23.9459C17.8459 24.0547 17.3953 23.998 17.0159 23.7882L21.7627 15.9018C23.0274 13.798 22.1815 11.0714 19.8605 9.99805C18.1189 9.19258 15.9903 9.59479 14.7036 10.9801C13.9941 11.7405 13.5956 12.7226 13.5822 13.7435C13.5688 14.7647 13.9417 15.7556 14.6313 16.5331C14.7553 16.6726 14.8888 16.8041 15.0305 16.9265L12.2593 21.539C12.1508 21.7194 12.0066 21.8772 11.8348 22.0041C11.6626 22.1307 11.4666 22.2238 11.2572 22.2776C11.0479 22.3315 10.8294 22.3451 10.6146 22.3182C10.3998 22.2909 10.1926 22.2234 10.0045 22.1195L13.013 17.1122C12.5808 16.5138 12.2705 15.8423 12.0984 15.1334L10.2552 18.2076C10.036 18.5717 9.67545 18.8372 9.2527 18.9459C8.82995 19.0547 8.37936 18.9981 8 18.7882L12.7674 10.8574C12.966 10.5314 13.1963 10.2247 13.4556 9.94139ZM18.9583 12.4659C20.1065 13.1027 20.5028 14.5189 19.8385 15.6213L15.2671 23.2069C15.0479 23.571 14.6874 23.8364 14.2646 23.9452C13.8419 24.054 13.3913 23.9973 13.0119 23.7875L17.2568 16.7251C16.9161 16.6562 16.5953 16.5173 16.3162 16.3176C16.037 16.1179 15.8063 15.8626 15.6399 15.5692C15.4735 15.2754 15.3755 14.9508 15.3524 14.6171C15.3293 14.2835 15.3821 13.9491 15.5068 13.6372C15.6316 13.3252 15.8251 13.0426 16.0746 12.8093C16.3241 12.576 16.6232 12.3977 16.9512 12.2864C17.2796 12.1752 17.6289 12.1336 17.9753 12.1644C18.3218 12.1952 18.657 12.298 18.9583 12.4659ZM17.2955 13.8914C17.217 13.9495 17.1508 14.0215 17.1016 14.1041H17.1013C17.0268 14.2282 16.9921 14.3706 17.0018 14.5136C17.0116 14.6567 17.0655 14.7934 17.1562 14.9071C17.247 15.0207 17.371 15.1061 17.5121 15.1519C17.6535 15.1981 17.8057 15.2026 17.9497 15.1655C18.094 15.1285 18.2231 15.0512 18.3214 14.9435C18.4198 14.8357 18.4827 14.7025 18.5022 14.5605C18.5218 14.4185 18.4968 14.274 18.431 14.1453C18.3652 14.017 18.2607 13.91 18.1316 13.8383C18.0459 13.7907 17.9511 13.7599 17.8527 13.7473C17.7544 13.7351 17.6546 13.741 17.5591 13.7659C17.4636 13.791 17.3739 13.8334 17.2955 13.8914Z"
-        fill="white"
-      />
-    </svg>
-  }
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect width="32" height="32" rx="8" fill="#615EFF" />
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M13.4556 9.94139C15.2255 8.01813 18.1562 7.45399 20.5657 8.56409C23.7669 10.039 24.935 13.7963 23.1919 16.695L19.2711 23.2076C19.0519 23.5717 18.6914 23.8371 18.2686 23.9459C17.8459 24.0547 17.3953 23.998 17.0159 23.7882L21.7627 15.9018C23.0274 13.798 22.1815 11.0714 19.8605 9.99805C18.1189 9.19258 15.9903 9.59479 14.7036 10.9801C13.9941 11.7405 13.5956 12.7226 13.5822 13.7435C13.5688 14.7647 13.9417 15.7556 14.6313 16.5331C14.7553 16.6726 14.8888 16.8041 15.0305 16.9265L12.2593 21.539C12.1508 21.7194 12.0066 21.8772 11.8348 22.0041C11.6626 22.1307 11.4666 22.2238 11.2572 22.2776C11.0479 22.3315 10.8294 22.3451 10.6146 22.3182C10.3998 22.2909 10.1926 22.2234 10.0045 22.1195L13.013 17.1122C12.5808 16.5138 12.2705 15.8423 12.0984 15.1334L10.2552 18.2076C10.036 18.5717 9.67545 18.8372 9.2527 18.9459C8.82995 19.0547 8.37936 18.9981 8 18.7882L12.7674 10.8574C12.966 10.5314 13.1963 10.2247 13.4556 9.94139ZM18.9583 12.4659C20.1065 13.1027 20.5028 14.5189 19.8385 15.6213L15.2671 23.2069C15.0479 23.571 14.6874 23.8364 14.2646 23.9452C13.8419 24.054 13.3913 23.9973 13.0119 23.7875L17.2568 16.7251C16.9161 16.6562 16.5953 16.5173 16.3162 16.3176C16.037 16.1179 15.8063 15.8626 15.6399 15.5692C15.4735 15.2754 15.3755 14.9508 15.3524 14.6171C15.3293 14.2835 15.3821 13.9491 15.5068 13.6372C15.6316 13.3252 15.8251 13.0426 16.0746 12.8093C16.3241 12.576 16.6232 12.3977 16.9512 12.2864C17.2796 12.1752 17.6289 12.1336 17.9753 12.1644C18.3218 12.1952 18.657 12.298 18.9583 12.4659ZM17.2955 13.8914C17.217 13.9495 17.1508 14.0215 17.1016 14.1041H17.1013C17.0268 14.2282 16.9921 14.3706 17.0018 14.5136C17.0116 14.6567 17.0655 14.7934 17.1562 14.9071C17.247 15.0207 17.371 15.1061 17.5121 15.1519C17.6535 15.1981 17.8057 15.2026 17.9497 15.1655C18.094 15.1285 18.2231 15.0512 18.3214 14.9435C18.4198 14.8357 18.4827 14.7025 18.5022 14.5605C18.5218 14.4185 18.4968 14.274 18.431 14.1453C18.3652 14.017 18.2607 13.91 18.1316 13.8383C18.0459 13.7907 17.9511 13.7599 17.8527 13.7473C17.7544 13.7351 17.6546 13.741 17.5591 13.7659C17.4636 13.791 17.3739 13.8334 17.2955 13.8914Z"
+      fill="white"
+    />
+  </svg>
+}
     href="/integrations/data/airbyte"
   >
     Send billing data to any warehouses by using our integration with Airbyte
@@ -26221,59 +27509,59 @@ Find all Lago integrations with third-party tools—whether for payment provider
 
     <br />
 
-    <Tooltip tip="This integration is community-maintained, and therefore Lago provides only limited support.">Community</Tooltip>
+    <Tooltip>Community</Tooltip>
   </Card>
 </CardGroup>
 
 ## Entitlements integrations
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card
     title="Oso"
     icon={
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="32" height="32" rx="8" fill="#3D2798" />
-      <g clip-path="url(#clip0_4694_719)">
-        <path
-          d="M20.883 18.1542C20.592 18.1542 20.301 18.1542 20.01 18.1542C19.5634 18.1518 19.3466 17.9898 19.2297 17.5505C19.0905 17.0279 18.9698 16.5005 18.8272 15.979C18.7355 15.6423 18.5992 15.327 18.3422 15.0735C18.1933 14.9231 18.092 14.7318 18.0512 14.5238C18.01 14.3384 17.8538 14.2776 17.7297 14.405C17.4212 14.7227 17.0105 14.8619 16.638 15.0648C16.0497 15.3849 15.5541 15.7887 15.2655 16.4134C15.1283 16.7102 15.1831 16.8902 15.49 17.0007C15.6591 17.0532 15.8313 17.0951 16.0056 17.1262C16.2873 17.1904 16.4862 17.3486 16.5662 17.6327C16.6176 17.8137 16.5662 17.9431 16.3722 18.0132C16.123 18.1076 15.8588 18.156 15.5924 18.1557C15.0919 18.1518 14.5914 18.1557 14.0889 18.1557C13.5254 18.1557 13.2271 17.892 13.1718 17.3223C13.0904 16.4777 13.2436 15.6978 13.8159 15.0356C13.9081 14.9291 14.0855 14.8147 13.9769 14.6464C13.8799 14.5004 13.6971 14.5447 13.5487 14.5729C12.8605 14.7043 12.1573 14.8011 11.6088 15.2998C11.1766 15.689 10.7547 16.0923 10.5268 16.6475C10.3963 16.9657 10.4298 17.044 10.7552 17.1827C10.8886 17.2386 11.0263 17.2848 11.1607 17.3388C11.3212 17.4035 11.4381 17.5038 11.4332 17.6964C11.4284 17.8891 11.3275 18.0136 11.1577 18.0857C10.9749 18.1645 10.778 18.164 10.5855 18.165C10.1005 18.1679 9.61551 18.1616 9.13296 18.1557C8.98746 18.1557 8.84585 18.1406 8.7217 18.0418C8.61791 17.9601 8.49424 17.9684 8.37833 18.0224C7.49906 18.4311 6.54026 18.0448 6.14743 17.1262C5.97429 16.72 5.9258 16.3127 6.14307 15.9099C6.45685 15.3309 6.48256 14.6867 6.57228 14.0582C6.60648 13.8563 6.57518 13.6488 6.48303 13.4661C5.7318 12.0692 6.55045 10.0715 7.93458 9.2858C8.86768 8.75548 9.82987 8.29133 10.8929 8.06947C11.5772 7.92643 12.2412 8.0364 12.908 8.16143C13.8668 8.34048 14.8179 8.56039 15.7922 8.64796C16.218 8.69189 16.6469 8.69596 17.0735 8.66013C17.9912 8.5705 18.9176 8.66156 19.8005 8.92819C20.5959 9.16513 21.4136 9.11308 22.2254 9.08389C22.3383 9.07693 22.4451 9.03064 22.5276 8.95302C22.867 8.66889 23.2526 8.71801 23.5286 9.07513C23.6037 9.17243 23.7119 9.20358 23.8142 9.24591C24.5032 9.5233 25.1466 9.90333 25.7226 10.3732C26.097 10.6831 26.0941 10.8904 25.6605 11.1336C25.3928 11.284 25.2182 11.4465 25.2624 11.7734C25.2822 11.9194 25.1678 11.9432 25.0684 11.968C24.0291 12.24 22.9771 12.44 21.9029 12.5115C21.5485 12.531 21.1956 12.5734 20.8466 12.6385C20.6526 12.6769 20.5639 12.7844 20.5377 12.979C20.3665 14.2815 20.7462 15.455 21.3665 16.5725C21.4592 16.7389 21.6367 16.7983 21.7991 16.8645C22.0067 16.9516 22.2225 17.0187 22.4296 17.1077C22.6512 17.2011 22.8176 17.3544 22.8176 17.6142C22.8176 17.874 22.6056 17.9548 22.4155 18.0433C22.1667 18.1601 21.9 18.1635 21.6328 18.163H20.8825L20.883 18.1542ZM8.35844 17.4313C8.42973 17.1909 8.50055 16.9768 8.55681 16.7584C8.67902 16.2816 8.82305 15.8092 8.85554 15.3134C8.86136 15.2224 8.85556 15.1295 8.75468 15.0886C8.66157 15.0517 8.59463 15.11 8.54904 15.1767C8.27988 15.5688 7.97484 15.9366 7.74544 16.356C7.70525 16.4223 7.68463 16.4986 7.686 16.5761C7.68738 16.6536 7.71067 16.7292 7.75319 16.7939C7.90638 17.0479 8.11293 17.2654 8.35844 17.4313Z"
-          fill="#FDFDFE"
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 32 32"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect width="32" height="32" rx="8" fill="#3D2798" />
+    <g clip-path="url(#clip0_4694_719)">
+      <path
+        d="M20.883 18.1542C20.592 18.1542 20.301 18.1542 20.01 18.1542C19.5634 18.1518 19.3466 17.9898 19.2297 17.5505C19.0905 17.0279 18.9698 16.5005 18.8272 15.979C18.7355 15.6423 18.5992 15.327 18.3422 15.0735C18.1933 14.9231 18.092 14.7318 18.0512 14.5238C18.01 14.3384 17.8538 14.2776 17.7297 14.405C17.4212 14.7227 17.0105 14.8619 16.638 15.0648C16.0497 15.3849 15.5541 15.7887 15.2655 16.4134C15.1283 16.7102 15.1831 16.8902 15.49 17.0007C15.6591 17.0532 15.8313 17.0951 16.0056 17.1262C16.2873 17.1904 16.4862 17.3486 16.5662 17.6327C16.6176 17.8137 16.5662 17.9431 16.3722 18.0132C16.123 18.1076 15.8588 18.156 15.5924 18.1557C15.0919 18.1518 14.5914 18.1557 14.0889 18.1557C13.5254 18.1557 13.2271 17.892 13.1718 17.3223C13.0904 16.4777 13.2436 15.6978 13.8159 15.0356C13.9081 14.9291 14.0855 14.8147 13.9769 14.6464C13.8799 14.5004 13.6971 14.5447 13.5487 14.5729C12.8605 14.7043 12.1573 14.8011 11.6088 15.2998C11.1766 15.689 10.7547 16.0923 10.5268 16.6475C10.3963 16.9657 10.4298 17.044 10.7552 17.1827C10.8886 17.2386 11.0263 17.2848 11.1607 17.3388C11.3212 17.4035 11.4381 17.5038 11.4332 17.6964C11.4284 17.8891 11.3275 18.0136 11.1577 18.0857C10.9749 18.1645 10.778 18.164 10.5855 18.165C10.1005 18.1679 9.61551 18.1616 9.13296 18.1557C8.98746 18.1557 8.84585 18.1406 8.7217 18.0418C8.61791 17.9601 8.49424 17.9684 8.37833 18.0224C7.49906 18.4311 6.54026 18.0448 6.14743 17.1262C5.97429 16.72 5.9258 16.3127 6.14307 15.9099C6.45685 15.3309 6.48256 14.6867 6.57228 14.0582C6.60648 13.8563 6.57518 13.6488 6.48303 13.4661C5.7318 12.0692 6.55045 10.0715 7.93458 9.2858C8.86768 8.75548 9.82987 8.29133 10.8929 8.06947C11.5772 7.92643 12.2412 8.0364 12.908 8.16143C13.8668 8.34048 14.8179 8.56039 15.7922 8.64796C16.218 8.69189 16.6469 8.69596 17.0735 8.66013C17.9912 8.5705 18.9176 8.66156 19.8005 8.92819C20.5959 9.16513 21.4136 9.11308 22.2254 9.08389C22.3383 9.07693 22.4451 9.03064 22.5276 8.95302C22.867 8.66889 23.2526 8.71801 23.5286 9.07513C23.6037 9.17243 23.7119 9.20358 23.8142 9.24591C24.5032 9.5233 25.1466 9.90333 25.7226 10.3732C26.097 10.6831 26.0941 10.8904 25.6605 11.1336C25.3928 11.284 25.2182 11.4465 25.2624 11.7734C25.2822 11.9194 25.1678 11.9432 25.0684 11.968C24.0291 12.24 22.9771 12.44 21.9029 12.5115C21.5485 12.531 21.1956 12.5734 20.8466 12.6385C20.6526 12.6769 20.5639 12.7844 20.5377 12.979C20.3665 14.2815 20.7462 15.455 21.3665 16.5725C21.4592 16.7389 21.6367 16.7983 21.7991 16.8645C22.0067 16.9516 22.2225 17.0187 22.4296 17.1077C22.6512 17.2011 22.8176 17.3544 22.8176 17.6142C22.8176 17.874 22.6056 17.9548 22.4155 18.0433C22.1667 18.1601 21.9 18.1635 21.6328 18.163H20.8825L20.883 18.1542ZM8.35844 17.4313C8.42973 17.1909 8.50055 16.9768 8.55681 16.7584C8.67902 16.2816 8.82305 15.8092 8.85554 15.3134C8.86136 15.2224 8.85556 15.1295 8.75468 15.0886C8.66157 15.0517 8.59463 15.11 8.54904 15.1767C8.27988 15.5688 7.97484 15.9366 7.74544 16.356C7.70525 16.4223 7.68463 16.4986 7.686 16.5761C7.68738 16.6536 7.71067 16.7292 7.75319 16.7939C7.90638 17.0479 8.11293 17.2654 8.35844 17.4313Z"
+        fill="#FDFDFE"
+      />
+      <path
+        d="M12.455 22.1449C12.455 22.9997 12.086 23.6045 11.4444 23.8545C10.6776 24.1508 9.80513 23.9908 9.325 23.4322C8.80219 22.8241 8.78765 22.1089 9.0379 21.399C9.26244 20.7626 9.77604 20.4347 10.4409 20.3773C11.1931 20.3097 11.8319 20.5179 12.2354 21.2098C12.3965 21.4938 12.4728 21.8185 12.455 22.1449ZM11.7334 22.1784C11.7819 21.3416 11.1432 20.8595 10.3953 21.0361C9.96516 21.1378 9.70668 21.4307 9.64703 21.8607C9.57865 22.3531 9.58785 22.8479 10.0607 23.1685C10.4249 23.4162 10.827 23.4186 11.2101 23.2206C11.6228 23.007 11.7421 22.6197 11.7315 22.1784H11.7334Z"
+        fill="#FAFAFC"
+      />
+      <path
+        d="M21.368 22.1756C21.3728 23.2878 20.6856 23.988 19.5852 23.9904C18.5061 23.9933 17.8194 23.2947 17.8136 22.1878C17.8078 21.0809 18.4877 20.3692 19.5595 20.3633C20.6774 20.3575 21.3631 21.0445 21.368 22.1756ZM18.5347 22.1678C18.5289 22.5571 18.6065 22.9137 18.9474 23.1506C19.3194 23.409 19.7263 23.4226 20.1172 23.2212C20.5944 22.975 20.6701 22.5216 20.6449 22.036C20.6226 21.6074 20.4509 21.2746 20.044 21.0902C20.0151 21.0763 19.9855 21.0641 19.9552 21.0537C19.1797 20.8012 18.5367 21.3057 18.5347 22.1678Z"
+        fill="#FAFAFC"
+      />
+      <path
+        d="M15.0521 20.3633C15.6923 20.357 16.1603 20.5638 16.4542 21.0965C16.5439 21.26 16.526 21.3636 16.3203 21.3884C16.2564 21.3973 16.1939 21.4146 16.1346 21.44C15.9673 21.5101 15.8664 21.5086 15.7781 21.2979C15.6186 20.9175 14.8644 20.8114 14.5739 21.1062C14.3867 21.295 14.4512 21.5811 14.7107 21.7003C14.941 21.8068 15.1956 21.82 15.4381 21.8711C15.652 21.9112 15.8615 21.972 16.0638 22.0526C16.3936 22.1902 16.6176 22.4189 16.6506 22.7872C16.6855 23.1764 16.5657 23.5044 16.2301 23.733C15.6559 24.1222 14.5671 24.0624 14.0424 23.6094C13.8484 23.4361 13.7128 23.2066 13.6544 22.9526C13.6311 22.8641 13.6316 22.7926 13.7514 22.7823C13.7994 22.7759 13.8465 22.7643 13.892 22.7478C14.1268 22.6748 14.2975 22.6174 14.4149 22.9677C14.5657 23.4158 15.4023 23.5627 15.7815 23.2635C16.0337 23.0645 15.9988 22.7381 15.7088 22.5994C15.4798 22.4899 15.2281 22.468 14.9813 22.4199C14.7673 22.3814 14.5582 22.3189 14.3581 22.2335C13.9861 22.0676 13.7625 21.7927 13.7669 21.3719C13.7713 20.951 13.9895 20.6552 14.3712 20.4874C14.5855 20.3938 14.8186 20.3513 15.0521 20.3633Z"
+        fill="#FAF9FC"
+      />
+    </g>
+    <defs>
+      <clipPath id="clip0_4694_719">
+        <rect
+          width="20"
+          height="16"
+          fill="white"
+          transform="translate(6 8)"
         />
-        <path
-          d="M12.455 22.1449C12.455 22.9997 12.086 23.6045 11.4444 23.8545C10.6776 24.1508 9.80513 23.9908 9.325 23.4322C8.80219 22.8241 8.78765 22.1089 9.0379 21.399C9.26244 20.7626 9.77604 20.4347 10.4409 20.3773C11.1931 20.3097 11.8319 20.5179 12.2354 21.2098C12.3965 21.4938 12.4728 21.8185 12.455 22.1449ZM11.7334 22.1784C11.7819 21.3416 11.1432 20.8595 10.3953 21.0361C9.96516 21.1378 9.70668 21.4307 9.64703 21.8607C9.57865 22.3531 9.58785 22.8479 10.0607 23.1685C10.4249 23.4162 10.827 23.4186 11.2101 23.2206C11.6228 23.007 11.7421 22.6197 11.7315 22.1784H11.7334Z"
-          fill="#FAFAFC"
-        />
-        <path
-          d="M21.368 22.1756C21.3728 23.2878 20.6856 23.988 19.5852 23.9904C18.5061 23.9933 17.8194 23.2947 17.8136 22.1878C17.8078 21.0809 18.4877 20.3692 19.5595 20.3633C20.6774 20.3575 21.3631 21.0445 21.368 22.1756ZM18.5347 22.1678C18.5289 22.5571 18.6065 22.9137 18.9474 23.1506C19.3194 23.409 19.7263 23.4226 20.1172 23.2212C20.5944 22.975 20.6701 22.5216 20.6449 22.036C20.6226 21.6074 20.4509 21.2746 20.044 21.0902C20.0151 21.0763 19.9855 21.0641 19.9552 21.0537C19.1797 20.8012 18.5367 21.3057 18.5347 22.1678Z"
-          fill="#FAFAFC"
-        />
-        <path
-          d="M15.0521 20.3633C15.6923 20.357 16.1603 20.5638 16.4542 21.0965C16.5439 21.26 16.526 21.3636 16.3203 21.3884C16.2564 21.3973 16.1939 21.4146 16.1346 21.44C15.9673 21.5101 15.8664 21.5086 15.7781 21.2979C15.6186 20.9175 14.8644 20.8114 14.5739 21.1062C14.3867 21.295 14.4512 21.5811 14.7107 21.7003C14.941 21.8068 15.1956 21.82 15.4381 21.8711C15.652 21.9112 15.8615 21.972 16.0638 22.0526C16.3936 22.1902 16.6176 22.4189 16.6506 22.7872C16.6855 23.1764 16.5657 23.5044 16.2301 23.733C15.6559 24.1222 14.5671 24.0624 14.0424 23.6094C13.8484 23.4361 13.7128 23.2066 13.6544 22.9526C13.6311 22.8641 13.6316 22.7926 13.7514 22.7823C13.7994 22.7759 13.8465 22.7643 13.892 22.7478C14.1268 22.6748 14.2975 22.6174 14.4149 22.9677C14.5657 23.4158 15.4023 23.5627 15.7815 23.2635C16.0337 23.0645 15.9988 22.7381 15.7088 22.5994C15.4798 22.4899 15.2281 22.468 14.9813 22.4199C14.7673 22.3814 14.5582 22.3189 14.3581 22.2335C13.9861 22.0676 13.7625 21.7927 13.7669 21.3719C13.7713 20.951 13.9895 20.6552 14.3712 20.4874C14.5855 20.3938 14.8186 20.3513 15.0521 20.3633Z"
-          fill="#FAF9FC"
-        />
-      </g>
-      <defs>
-        <clipPath id="clip0_4694_719">
-          <rect
-            width="20"
-            height="16"
-            fill="white"
-            transform="translate(6 8)"
-          />
-        </clipPath>
-      </defs>
-    </svg>
-  }
+      </clipPath>
+    </defs>
+  </svg>
+}
     href="/integrations/entitlements/osohq"
   >
     Oso is an Authorization as service used for entitlements
 
-    <Tooltip tip="This integration is community-maintained, and therefore Lago provides only limited support.">Community</Tooltip>
+    <Tooltip>Community</Tooltip>
   </Card>
 </CardGroup>
 
@@ -26288,10 +27576,9 @@ If you're using Lago for metering and billing and looking to expand into AWS mar
 Their no-code, fully automated integration with Lago allows you to seamlessly track usage within your existing setup and allocate it across various cloud marketplaces.
 This approach eliminates the need for migration or complex engineering, ensuring a smooth and hassle-free transition.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card
     title="Documentation"
-    iconType="brand"
     icon={<svg width="30" height="30" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect width="40" height="40" rx="12" fill="#F3F4F6"/>
 <g clip-path="url(#clip0_3012_1142)">
@@ -26322,75 +27609,74 @@ If you're using Lago for metering and billing and looking to expand into Azure m
 Their no-code, fully automated integration with Lago allows you to seamlessly track usage within your existing setup and allocate it across various cloud marketplaces.
 This approach eliminates the need for migration or complex engineering, ensuring a smooth and hassle-free transition.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card
     title="Documentation"
-    iconType="brand"
     icon={
-    <svg
-      width="30"
-      height="30"
-      viewBox="0 0 40 40"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="40" height="40" rx="12" fill="#F3F4F6" />
-      <path
-        d="M17.6715 13.417H21.8065L17.514 26.1345C17.47 26.2654 17.3862 26.3792 17.2741 26.46C17.1621 26.5407 17.0276 26.5842 16.8895 26.5845H13.6715C13.567 26.5843 13.4641 26.5592 13.3712 26.5113C13.2783 26.4633 13.1982 26.394 13.1375 26.309C13.0767 26.224 13.0371 26.1257 13.0219 26.0223C13.0067 25.9189 13.0163 25.8134 13.05 25.7145L17.05 13.8645C17.0939 13.7336 17.1778 13.6197 17.2898 13.539C17.4019 13.4583 17.5364 13.4147 17.6745 13.4145L17.6715 13.417Z"
-        fill="url(#paint0_linear_3012_1160)"
-      />
-      <path
-        d="M23.68 21.947H17.1235C17.0626 21.947 17.003 21.9653 16.9527 21.9996C16.9023 22.0339 16.8634 22.0826 16.8411 22.1393C16.8187 22.196 16.814 22.2581 16.8274 22.3175C16.8409 22.377 16.8719 22.431 16.9165 22.4725L21.13 26.405C21.2523 26.5188 21.413 26.5823 21.58 26.583H25.293L23.68 21.947Z"
-        fill="#0078D4"
-      />
-      <path
-        d="M17.6715 13.417C17.5321 13.4166 17.3963 13.4608 17.2837 13.543C17.1711 13.6252 17.0877 13.7411 17.0455 13.874L13.053 25.7035C13.0174 25.8029 13.0062 25.9094 13.0204 26.014C13.0346 26.1186 13.0738 26.2183 13.1347 26.3045C13.1955 26.3908 13.2763 26.4611 13.3701 26.5096C13.4639 26.5581 13.5679 26.5833 13.6735 26.583H16.9735C17.0965 26.5611 17.2114 26.5069 17.3066 26.426C17.4017 26.3451 17.4736 26.2403 17.515 26.1225L18.311 23.776L21.155 26.429C21.2743 26.5275 21.4238 26.582 21.5785 26.5835H25.2785L23.656 21.9475H18.9265L21.8215 13.417H17.6715Z"
-        fill="url(#paint1_linear_3012_1160)"
-      />
-      <path
-        d="M22.953 13.8645C22.9091 13.7337 22.8253 13.6199 22.7134 13.5392C22.6014 13.4584 22.467 13.4148 22.329 13.4145H17.721C17.859 13.4148 17.9934 13.4584 18.1054 13.5392C18.2173 13.6199 18.3011 13.7337 18.345 13.8645L22.345 25.7145C22.3784 25.8136 22.3878 25.9191 22.3723 26.0225C22.3568 26.1259 22.3169 26.2242 22.2559 26.3091C22.195 26.394 22.1146 26.4632 22.0216 26.5109C21.9286 26.5586 21.8256 26.5835 21.721 26.5835H26.3295C26.4338 26.5829 26.5364 26.5577 26.629 26.5097C26.7215 26.4617 26.8014 26.3925 26.862 26.3077C26.9226 26.2228 26.9621 26.1248 26.9774 26.0217C26.9927 25.9186 26.9833 25.8133 26.95 25.7145L22.953 13.8645Z"
-        fill="url(#paint2_linear_3012_1160)"
-      />
-      <defs>
-        <linearGradient
-          id="paint0_linear_3012_1160"
-          x1="18.1666"
-          y1="14.407"
-          x2="14.2364"
-          y2="26.3895"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stop-color="#114A8B" />
-          <stop offset="1" stop-color="#0669BC" />
-        </linearGradient>
-        <linearGradient
-          id="paint1_linear_3012_1160"
-          x1="20.2893"
-          y1="20.4833"
-          x2="19.495"
-          y2="20.6948"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stop-opacity="0.3" />
-          <stop offset="0.071" stop-opacity="0.2" />
-          <stop offset="0.321" stop-opacity="0.1" />
-          <stop offset="0.623" stop-opacity="0.05" />
-          <stop offset="1" stop-opacity="0" />
-        </linearGradient>
-        <linearGradient
-          id="paint2_linear_3012_1160"
-          x1="21.2762"
-          y1="13.924"
-          x2="25.7656"
-          y2="25.659"
-          gradientUnits="userSpaceOnUse"
-        >
-          <stop stop-color="#3CCBF4" />
-          <stop offset="1" stop-color="#2892DF" />
-        </linearGradient>
-      </defs>
-    </svg>
-  }
+  <svg
+    width="30"
+    height="30"
+    viewBox="0 0 40 40"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect width="40" height="40" rx="12" fill="#F3F4F6" />
+    <path
+      d="M17.6715 13.417H21.8065L17.514 26.1345C17.47 26.2654 17.3862 26.3792 17.2741 26.46C17.1621 26.5407 17.0276 26.5842 16.8895 26.5845H13.6715C13.567 26.5843 13.4641 26.5592 13.3712 26.5113C13.2783 26.4633 13.1982 26.394 13.1375 26.309C13.0767 26.224 13.0371 26.1257 13.0219 26.0223C13.0067 25.9189 13.0163 25.8134 13.05 25.7145L17.05 13.8645C17.0939 13.7336 17.1778 13.6197 17.2898 13.539C17.4019 13.4583 17.5364 13.4147 17.6745 13.4145L17.6715 13.417Z"
+      fill="url(#paint0_linear_3012_1160)"
+    />
+    <path
+      d="M23.68 21.947H17.1235C17.0626 21.947 17.003 21.9653 16.9527 21.9996C16.9023 22.0339 16.8634 22.0826 16.8411 22.1393C16.8187 22.196 16.814 22.2581 16.8274 22.3175C16.8409 22.377 16.8719 22.431 16.9165 22.4725L21.13 26.405C21.2523 26.5188 21.413 26.5823 21.58 26.583H25.293L23.68 21.947Z"
+      fill="#0078D4"
+    />
+    <path
+      d="M17.6715 13.417C17.5321 13.4166 17.3963 13.4608 17.2837 13.543C17.1711 13.6252 17.0877 13.7411 17.0455 13.874L13.053 25.7035C13.0174 25.8029 13.0062 25.9094 13.0204 26.014C13.0346 26.1186 13.0738 26.2183 13.1347 26.3045C13.1955 26.3908 13.2763 26.4611 13.3701 26.5096C13.4639 26.5581 13.5679 26.5833 13.6735 26.583H16.9735C17.0965 26.5611 17.2114 26.5069 17.3066 26.426C17.4017 26.3451 17.4736 26.2403 17.515 26.1225L18.311 23.776L21.155 26.429C21.2743 26.5275 21.4238 26.582 21.5785 26.5835H25.2785L23.656 21.9475H18.9265L21.8215 13.417H17.6715Z"
+      fill="url(#paint1_linear_3012_1160)"
+    />
+    <path
+      d="M22.953 13.8645C22.9091 13.7337 22.8253 13.6199 22.7134 13.5392C22.6014 13.4584 22.467 13.4148 22.329 13.4145H17.721C17.859 13.4148 17.9934 13.4584 18.1054 13.5392C18.2173 13.6199 18.3011 13.7337 18.345 13.8645L22.345 25.7145C22.3784 25.8136 22.3878 25.9191 22.3723 26.0225C22.3568 26.1259 22.3169 26.2242 22.2559 26.3091C22.195 26.394 22.1146 26.4632 22.0216 26.5109C21.9286 26.5586 21.8256 26.5835 21.721 26.5835H26.3295C26.4338 26.5829 26.5364 26.5577 26.629 26.5097C26.7215 26.4617 26.8014 26.3925 26.862 26.3077C26.9226 26.2228 26.9621 26.1248 26.9774 26.0217C26.9927 25.9186 26.9833 25.8133 26.95 25.7145L22.953 13.8645Z"
+      fill="url(#paint2_linear_3012_1160)"
+    />
+    <defs>
+      <linearGradient
+        id="paint0_linear_3012_1160"
+        x1="18.1666"
+        y1="14.407"
+        x2="14.2364"
+        y2="26.3895"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stop-color="#114A8B" />
+        <stop offset="1" stop-color="#0669BC" />
+      </linearGradient>
+      <linearGradient
+        id="paint1_linear_3012_1160"
+        x1="20.2893"
+        y1="20.4833"
+        x2="19.495"
+        y2="20.6948"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stop-opacity="0.3" />
+        <stop offset="0.071" stop-opacity="0.2" />
+        <stop offset="0.321" stop-opacity="0.1" />
+        <stop offset="0.623" stop-opacity="0.05" />
+        <stop offset="1" stop-opacity="0" />
+      </linearGradient>
+      <linearGradient
+        id="paint2_linear_3012_1160"
+        x1="21.2762"
+        y1="13.924"
+        x2="25.7656"
+        y2="25.659"
+        gradientUnits="userSpaceOnUse"
+      >
+        <stop stop-color="#3CCBF4" />
+        <stop offset="1" stop-color="#2892DF" />
+      </linearGradient>
+    </defs>
+  </svg>
+}
     href="https://doc.suger.io/integrations/lago"
   >
     Quickly list, transact, and co-sell on Azure Marketplace with Lago, via
@@ -26409,49 +27695,48 @@ If you're using Lago for metering and billing and looking to expand into GCP mar
 Their no-code, fully automated integration with Lago allows you to seamlessly track usage within your existing setup and allocate it across various cloud marketplaces.
 This approach eliminates the need for migration or complex engineering, ensuring a smooth and hassle-free transition.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card
     title="Documentation"
-    iconType="brand"
     icon={
-    <svg
-      width="30"
-      height="30"
-      viewBox="0 0 40 40"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="40" height="40" rx="12" fill="#F3F4F6" />
-      <g clip-path="url(#clip0_3012_1182)">
-        <path
-          d="M21.9613 17.3098L23.2576 16.0135L23.3439 15.4677C20.9817 13.3198 17.2267 13.5633 15.0973 15.9759C14.5058 16.646 14.067 17.4814 13.833 18.344L14.2973 18.2786L16.8898 17.851L17.09 17.6464C18.2432 16.3799 20.1931 16.2095 21.5246 17.2871L21.9613 17.3098Z"
-          fill="#EA4335"
+  <svg
+    width="30"
+    height="30"
+    viewBox="0 0 40 40"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect width="40" height="40" rx="12" fill="#F3F4F6" />
+    <g clip-path="url(#clip0_3012_1182)">
+      <path
+        d="M21.9613 17.3098L23.2576 16.0135L23.3439 15.4677C20.9817 13.3198 17.2267 13.5633 15.0973 15.9759C14.5058 16.646 14.067 17.4814 13.833 18.344L14.2973 18.2786L16.8898 17.851L17.09 17.6464C18.2432 16.3799 20.1931 16.2095 21.5246 17.2871L21.9613 17.3098Z"
+        fill="#EA4335"
+      />
+      <path
+        d="M25.1042 18.3059C24.8063 17.2087 24.1945 16.2222 23.344 15.4677L21.5246 17.2871C21.9038 17.5969 22.2076 17.9888 22.4133 18.4331C22.6189 18.8775 22.721 19.3628 22.7118 19.8523V20.1753C23.6059 20.1753 24.331 20.9002 24.331 21.7945C24.331 22.6887 23.606 23.3955 22.7118 23.3955H19.4688L19.1504 23.7412V25.6833L19.4688 25.988H22.7117C25.0377 26.0062 26.9381 24.1534 26.9562 21.8274C26.9616 21.1333 26.7954 20.4485 26.4723 19.8342C26.1492 19.2198 25.6792 18.6948 25.1042 18.3059Z"
+        fill="#4285F4"
+      />
+      <path
+        d="M16.2303 25.9881H19.4687V23.3955H16.2303C16.001 23.3954 15.7745 23.3458 15.5663 23.25L15.1068 23.391L13.8015 24.6873L13.6877 25.1285C14.4198 25.6812 15.313 25.9921 16.2303 25.9881Z"
+        fill="#34A853"
+      />
+      <path
+        d="M16.2303 17.5782C13.9043 17.592 12.0299 19.4889 12.0438 21.815C12.0476 22.456 12.1977 23.0876 12.4826 23.6618C12.7675 24.236 13.1797 24.7376 13.6878 25.1284L15.5663 23.25C14.7514 22.8817 14.3891 21.9227 14.7574 21.1077C15.1256 20.2927 16.0847 19.9305 16.8996 20.2987C17.2587 20.461 17.5463 20.7486 17.7085 21.1077L19.5871 19.2292C19.1928 18.7137 18.6846 18.2965 18.1023 18.0101C17.52 17.7237 16.8793 17.5758 16.2303 17.5782Z"
+        fill="#FBBC05"
+      />
+    </g>
+    <defs>
+      <clipPath id="clip0_3012_1182">
+        <rect
+          width="15"
+          height="12"
+          fill="white"
+          transform="translate(12 14)"
         />
-        <path
-          d="M25.1042 18.3059C24.8063 17.2087 24.1945 16.2222 23.344 15.4677L21.5246 17.2871C21.9038 17.5969 22.2076 17.9888 22.4133 18.4331C22.6189 18.8775 22.721 19.3628 22.7118 19.8523V20.1753C23.6059 20.1753 24.331 20.9002 24.331 21.7945C24.331 22.6887 23.606 23.3955 22.7118 23.3955H19.4688L19.1504 23.7412V25.6833L19.4688 25.988H22.7117C25.0377 26.0062 26.9381 24.1534 26.9562 21.8274C26.9616 21.1333 26.7954 20.4485 26.4723 19.8342C26.1492 19.2198 25.6792 18.6948 25.1042 18.3059Z"
-          fill="#4285F4"
-        />
-        <path
-          d="M16.2303 25.9881H19.4687V23.3955H16.2303C16.001 23.3954 15.7745 23.3458 15.5663 23.25L15.1068 23.391L13.8015 24.6873L13.6877 25.1285C14.4198 25.6812 15.313 25.9921 16.2303 25.9881Z"
-          fill="#34A853"
-        />
-        <path
-          d="M16.2303 17.5782C13.9043 17.592 12.0299 19.4889 12.0438 21.815C12.0476 22.456 12.1977 23.0876 12.4826 23.6618C12.7675 24.236 13.1797 24.7376 13.6878 25.1284L15.5663 23.25C14.7514 22.8817 14.3891 21.9227 14.7574 21.1077C15.1256 20.2927 16.0847 19.9305 16.8996 20.2987C17.2587 20.461 17.5463 20.7486 17.7085 21.1077L19.5871 19.2292C19.1928 18.7137 18.6846 18.2965 18.1023 18.0101C17.52 17.7237 16.8793 17.5758 16.2303 17.5782Z"
-          fill="#FBBC05"
-        />
-      </g>
-      <defs>
-        <clipPath id="clip0_3012_1182">
-          <rect
-            width="15"
-            height="12"
-            fill="white"
-            transform="translate(12 14)"
-          />
-        </clipPath>
-      </defs>
-    </svg>
-  }
+      </clipPath>
+    </defs>
+  </svg>
+}
     href="https://doc.suger.io/integrations/lago"
   >
     Quickly list, transact, and co-sell on GCP Marketplace with Lago, via
@@ -26544,8 +27829,8 @@ In Adyen, to enable recurring payments for a stored payment method, follow these
 2. Check the box for Recurring Details; and
 3. Click Save.
 
-<Frame caption="Adyen recurring details option">
-  <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/adyen-recurring-options.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=15a285630f664dd66cef3363487398f8" data-og-width="2876" width="2876" data-og-height="908" height="908" data-path="guide/payments/images/adyen-recurring-options.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/adyen-recurring-options.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=32d18d69fb24212854b576bddbd2f054 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/adyen-recurring-options.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=ef69f8de9385890b424279c597c4fadd 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/adyen-recurring-options.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=2ef3d8350eb99fe564e5f1dd66ecad9a 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/adyen-recurring-options.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=e31779b4d4d6c95cbaa82c6967983273 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/adyen-recurring-options.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=3f6f8b7b0c8436bd4abc05f275f383d3 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/adyen-recurring-options.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=dd0d2dab04194b37f103c64416363cfe 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Setting up Adyen Webhook for listening to important events
@@ -26580,8 +27865,8 @@ If the customer does not already exist in Adyen, you can create them in Lago usi
 3. Keep the field associated with the **Adyen Payment Provider Customer ID** empty; and
 4. **Enable** the option to automatically create the customer in Adyen.
 
-<Frame caption="Adyen as PSP for new customer">
-  <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/adyen-new-customer.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=a3fd0428ee4d24e22c785b54a6971cd3" data-og-width="1460" width="1460" data-og-height="1042" height="1042" data-path="guide/payments/images/adyen-new-customer.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/adyen-new-customer.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=5fecb7e59fda893bdae842bc71bac0c4 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/adyen-new-customer.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=0e3689082116c06b915c4c12d21abe69 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/adyen-new-customer.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=d15acf6a7649c131c9d4761670c82c5f 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/adyen-new-customer.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=1cd2a9b98e074e134cf7be2328efb5c4 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/adyen-new-customer.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=b2b4f2d26f8fc9584ec7e65d243342d9 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/adyen-new-customer.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=f44922971a333b51c79108bbd0ecd811 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 Once the customer is added in Lago, they will be automatically synchronized with Adyen. Adyen will generate a unique Shopper ID, which will be stored in Lago. Typically, Adyen utilizes the Lago customer's **`external_id`** as the Shopper ID for seamless integration between the two platforms.
@@ -26610,8 +27895,8 @@ If the customer and direct debit mandate already exist in Adyen, you can create 
 
 By following these steps, you can integrate an existing customer from Adyen into Lago, ensuring synchronization and consistency between the two platforms.
 
-<Frame caption="Adyen as PSP for existing customer">
-  <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/adyen-migration.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=f497829607e4f538b68dc59277784ee8" data-og-width="1466" width="1466" data-og-height="666" height="666" data-path="guide/payments/images/adyen-migration.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/adyen-migration.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=f2dffbce9b7535c822f70671468f7ce0 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/adyen-migration.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=07d721f53246df839a1732d5561b8782 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/adyen-migration.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=60706c8d8d7a6c02b34f6e033a515f32 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/adyen-migration.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=82f8ccc4d7bac7c9dab60395bedb4ddf 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/adyen-migration.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=5577c5c7ea99e0ea7c836dad3c4b0d05 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/adyen-migration.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=775b529041be3c173472af97581032bf 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Redirect url after checkout[](#checkout-redirect-url "Direct link to heading")
@@ -26631,7 +27916,7 @@ When Lago automatically creates a customer in Adyen, you will receive a checkout
 
 The payload sent by Lago will have the following structure, with the checkout link stored under **`checkout_url`**:
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "webhook_type": "customer.checkout_url_generated",
   "object_type": "payment_provider_customer_checkout_url",
@@ -26651,8 +27936,8 @@ The payload sent by Lago will have the following structure, with the checkout li
 
 By utilizing this provided checkout link, your customers can perform a pre-authorization payment. It's important to note that the pre-authorization payment will not collect any funds from the customer. Once the pre-authorization is confirmed, Lago will send the payment method details and securely store them into Adyen for future transactions.
 
-<Frame caption="Adyen checkout with Lago">
-  <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/adyen-checkout.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=087f4a3cd8a98476624db5968f7d963d" data-og-width="2004" width="2004" data-og-height="1106" height="1106" data-path="guide/payments/images/adyen-checkout.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/adyen-checkout.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=de2235eb7b4e0f1e6df6a311219614fa 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/adyen-checkout.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=4ff86d152c8c50348680968931b0bb80 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/adyen-checkout.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=65a8406bb69f2c9f1514165e8eb2129b 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/adyen-checkout.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=f7b1f5f88860ebeea14b9d2d1a18ee99 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/adyen-checkout.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=64bdee8ff878ef57db1c928480d5fc59 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/adyen-checkout.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=107f8ae73b3b5c3a3e4d79e8c4e9485e 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Regenerate checkout link on demand
@@ -26660,7 +27945,7 @@ By utilizing this provided checkout link, your customers can perform a pre-autho
 In cases where your end customer has not had the opportunity to complete the checkout process to inform their payment method
 or wishes to modify the saved payment information, you can generate a new checkout link using the designated [endpoint](/api-reference/customers/psp-checkout-url).
 
-```json  theme={"dark"}
+```json theme={"dark"}
 POST /api/v1/customers/:customer_external_id/checkout_url
 ```
 
@@ -26691,7 +27976,7 @@ In the event of a **lost** chargeback (dispute) within Adyen, Lago initiates an 
 
 ## Watch the demo video
 
-<iframe width="100%" height="400" src="https://www.youtube.com/embed/Zh7NNbgS7Bo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen />
+<iframe title="YouTube video player" />
 
 
 # Cashfree Payments
@@ -26720,8 +28005,8 @@ To connect Cashfree to Lago, navigate to your Lago UI, then go to **Integrations
 5. Paste your Cashfree **Client Secret**.
 6. Provide the **redirect URL** to redirect your users when a payment is processed.
 
-<Frame caption="Connect your Cashfree account from Lago UI">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/cashfree-payment-connection-flow.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=1246341559125631cb74b1ea55bedea3" data-og-width="2938" width="2938" data-og-height="1528" height="1528" data-path="integrations/images/cashfree-payment-connection-flow.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/cashfree-payment-connection-flow.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=60f3da9ea560e9044f58e0a82de84997 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/cashfree-payment-connection-flow.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=1e039ffb21e8151d9672b278ea937084 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/cashfree-payment-connection-flow.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=e40bb338e4703ce293224e6466ad3b14 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/cashfree-payment-connection-flow.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=e61c6e97a21a65b6f96ecc084d8d5745 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/cashfree-payment-connection-flow.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=6b24a17e10a5c362ee16c1ffc90c03cb 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/cashfree-payment-connection-flow.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=cb75f920513019154011b5d0c2bfb9d9 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Create a webhook endpoint
@@ -26742,8 +28027,8 @@ via Cashfree Payments, you must create a webhook endpoint in Cashfree. To do so:
 3. Enter the following URL: `https://api.getlago.com/webhooks/cashfree/{{__YOUR_ORG_ID__}}?code={{__YOUR_CONNECTION_CODE}}` (you must replace `organization_id` with your Lago organization ID, and the `connection_code` by the targeted Lago connection); and
 4. Save the creation of this webhook endpoint.
 
-<Frame caption="Webhook endpoint creation in Cashfree Payments">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/cashfree-webhook-connection.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=3b5aef1459bbb62c6616d4e925b98f9a" data-og-width="2904" width="2904" data-og-height="1828" height="1828" data-path="integrations/images/cashfree-webhook-connection.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/cashfree-webhook-connection.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=ce492dbcbdcc40ae9016a1eeaf872d57 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/cashfree-webhook-connection.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=6ca5ac276a2654578065ec835df0b67b 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/cashfree-webhook-connection.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=9c236683e7ae77d86e184ff528d8d5be 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/cashfree-webhook-connection.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=c250eae2a5ed0bc5cc23d23652f5fb41 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/cashfree-webhook-connection.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=ec95b8169f752211b77fb0c567da27e2 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/cashfree-webhook-connection.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=33e411eaa280a54fe4eca8e10773594c 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Collect payments via Cashfree
@@ -26753,8 +28038,8 @@ via Cashfree Payments, you must create a webhook endpoint in Cashfree. To do so:
 To begin collecting payments for your Lago invoices via Cashfree, you need to link a Lago customer to a Cashfree connection.
 When creating or editing a customer in Lago, simply select the relevant Cashfree connection under **external apps** to enable invoice payments.
 
-<Frame caption="Link Lago Customers to Cashfree Payments">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/cashfree-link-lago-customer.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=175f66a895731fd91ab08d6818c474cf" data-og-width="1307" width="1307" data-og-height="993" height="993" data-path="integrations/images/cashfree-link-lago-customer.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/cashfree-link-lago-customer.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=ccd967b9c6c35bb5d6ada5ea46732de3 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/cashfree-link-lago-customer.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=65c9896bd5d3672edc43ea392d5765cf 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/cashfree-link-lago-customer.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=c19942859c2e5458ba98895aa399b62f 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/cashfree-link-lago-customer.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=297fc455ff368a7442cb83e36d9c48e8 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/cashfree-link-lago-customer.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=e09915411cd784719e78dc62f6ccff1e 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/cashfree-link-lago-customer.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=e6334d23518ba84e1d13c1a82dff4590 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Generate a checkout link
@@ -26809,8 +28094,8 @@ To connect to GoCardless through the user interface:
 When the OAuth connection is active, you will see the screen below, with your
 secret key.
 
-<Frame caption="Active OAuth connection with GoCardless">
-  <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-oauth-65c0e5a1a2767f606b55395e0ba394e4.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=0e65270af60f57bf264e7a8c4f65af18" data-og-width="2874" width="2874" data-og-height="1560" height="1560" data-path="guide/payments/images/gcl-oauth-65c0e5a1a2767f606b55395e0ba394e4.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-oauth-65c0e5a1a2767f606b55395e0ba394e4.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=be95fba47f0a070485b024b88b9ecf57 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-oauth-65c0e5a1a2767f606b55395e0ba394e4.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=5f4352e27dc09faeda30d6b52c420c07 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-oauth-65c0e5a1a2767f606b55395e0ba394e4.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=fdb2ef7d23682e67505609326776a6c9 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-oauth-65c0e5a1a2767f606b55395e0ba394e4.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=0b379e1724480e38be81b8c97997eb00 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-oauth-65c0e5a1a2767f606b55395e0ba394e4.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=310ca7d6ee66174a52ec76b2f3f5e028 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-oauth-65c0e5a1a2767f606b55395e0ba394e4.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=35850273cb3a2af8d52e2f3eb8b86238 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Create webhook endpoints[](#create-webhook-endpoints "Direct link to heading")
@@ -26836,8 +28121,8 @@ via GoCardless, you must create a webhook endpoint in GoCardless. To do so:
 6. Enter your secret key; and
 7. Click **"Create webhook endpoint"**.
 
-<Frame caption="Webhook endpoint creation in GoCardless">
-  <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-webhook-9e1e96b038542112b1609ebb70a9dda9.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=efbc4b2dcb527f6987b4f6b5030798a0" data-og-width="2880" width="2880" data-og-height="1568" height="1568" data-path="guide/payments/images/gcl-webhook-9e1e96b038542112b1609ebb70a9dda9.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-webhook-9e1e96b038542112b1609ebb70a9dda9.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=a3d207d3b84f2d731c066c4cd1ac8733 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-webhook-9e1e96b038542112b1609ebb70a9dda9.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=e37984d8a3562be95345636aee173db4 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-webhook-9e1e96b038542112b1609ebb70a9dda9.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=10050fa7fba82223ebc9a82f3b53983f 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-webhook-9e1e96b038542112b1609ebb70a9dda9.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=90752b6a798e38ad8b42e506067e66be 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-webhook-9e1e96b038542112b1609ebb70a9dda9.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=6d65d5289e6505ceedc5c00c6d6fdf58 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-webhook-9e1e96b038542112b1609ebb70a9dda9.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=c12fd8106214df5935a1548be2d7e487 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 In addition to this, you must create a webhook endpoint in Lago to retrieve the
@@ -26884,8 +28169,8 @@ must:
 The customer will automatically be added to GoCardless. GoCardless will then
 return the customer ID, which will be stored in Lago.
 
-<Frame caption="Creation of a new customer with GoCardless">
-  <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-customer-new-3f7f52c1614edb8b577b075e35de99fb.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=5d9e84c5decf88a1af44eaa1bd314ff3" data-og-width="1474" width="1474" data-og-height="1008" height="1008" data-path="guide/payments/images/gcl-customer-new-3f7f52c1614edb8b577b075e35de99fb.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-customer-new-3f7f52c1614edb8b577b075e35de99fb.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=329140933278b5d4e639fd9489c14cbd 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-customer-new-3f7f52c1614edb8b577b075e35de99fb.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=715c4852a91509df6b07576f30ecfd1f 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-customer-new-3f7f52c1614edb8b577b075e35de99fb.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=f18aedac90c87cfc79709c2df26c4fdc 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-customer-new-3f7f52c1614edb8b577b075e35de99fb.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=c4eb42a7fdd49d3212c4c0435c3bdce9 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-customer-new-3f7f52c1614edb8b577b075e35de99fb.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=41c0197d130969b4e38f078eeb738a4f 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-customer-new-3f7f52c1614edb8b577b075e35de99fb.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=4d6bf6b2d736d3fed8cfd78484adfb99 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 When the customer is successfully created, you will receive two
@@ -26909,8 +28194,8 @@ must:
 4. Provide the **GoCardless customer ID**; and
 5. **Disable** the option to automatically create the customer in GoCardless.
 
-<Frame caption="Migration of an existing GoCardless customer">
-  <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-customer-migration-959faab7b09d8c09866b477845ad8b3b.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=f9808d9c823ca7e6c0973ac3e46caf1a" data-og-width="1468" width="1468" data-og-height="836" height="836" data-path="guide/payments/images/gcl-customer-migration-959faab7b09d8c09866b477845ad8b3b.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-customer-migration-959faab7b09d8c09866b477845ad8b3b.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=1a93bde3e759b61d3d7be2ffae426f87 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-customer-migration-959faab7b09d8c09866b477845ad8b3b.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=24395b04980d15be6184dc8f90a21435 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-customer-migration-959faab7b09d8c09866b477845ad8b3b.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=e0920a4531918b2f11965f8bcb693067 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-customer-migration-959faab7b09d8c09866b477845ad8b3b.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=cce454c18d4f65254e3a27f9d681ec17 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-customer-migration-959faab7b09d8c09866b477845ad8b3b.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=3cd206364db176d1a53063a1bdf67e9e 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-customer-migration-959faab7b09d8c09866b477845ad8b3b.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=56603aa25f195ac9c62d1f83bf8e5be2 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Direct debit[](#direct-debit "Direct link to heading")
@@ -26932,8 +28217,8 @@ more information about payment timings, please consult the
   the currency of the plan associated with the customer's subscription.
 </Warning>
 
-<Frame caption="Direct debit setup with GoCardless">
-  <img src="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-mandate-c4e336d031a583d002189188ab2599e2.png?fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=50363be9c06763e42d16c7e1ef6561a0" data-og-width="2880" width="2880" data-og-height="1530" height="1530" data-path="guide/payments/images/gcl-mandate-c4e336d031a583d002189188ab2599e2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-mandate-c4e336d031a583d002189188ab2599e2.png?w=280&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=43d14edc9471628e66832c8359655c1d 280w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-mandate-c4e336d031a583d002189188ab2599e2.png?w=560&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=cbbd860d4177b65b245b8d77a7f9b6ed 560w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-mandate-c4e336d031a583d002189188ab2599e2.png?w=840&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=a6f57aabfa68aa5648c52c88c09268f7 840w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-mandate-c4e336d031a583d002189188ab2599e2.png?w=1100&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=c0b7a4e45019feadae42244d27058a3b 1100w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-mandate-c4e336d031a583d002189188ab2599e2.png?w=1650&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=a06a9bc3ddd2b6e0a7c1729fa35e5e0b 1650w, https://mintcdn.com/lago-docs/x0ux42rCkjpwz1jk/guide/payments/images/gcl-mandate-c4e336d031a583d002189188ab2599e2.png?w=2500&fit=max&auto=format&n=x0ux42rCkjpwz1jk&q=85&s=5d42eacb5c0d0a092e7655d484f8bfb4 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 Each time a new invoice with an **amount greater than zero** is generated by
@@ -26958,7 +28243,7 @@ If the payment fails, the status of the payment will switch from `pending` to
 In cases where your end customer has not had the opportunity to complete the checkout process to inform their payment method
 or wishes to modify the saved payment information, you can generate a new checkout link using the designated [endpoint](/api-reference/customers/psp-checkout-url).
 
-```json  theme={"dark"}
+```json theme={"dark"}
 POST /api/v1/customers/:customer_external_id/checkout_url
 ```
 
@@ -26992,8 +28277,8 @@ To connect Moneyhash to Lago, navigate to your Lago UI, then go to **Integration
 4. Paste your Moneyhash **API key**; and
 5. Paste your Moneyhash **Flow Id**.
 
-<Frame caption="Connect your Moneyhash account from Lago UI">
-  <img src="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/moneyhash-payment-integration.png?fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=cf1438ccc954a9c2929c0fd24d77884e" data-og-width="2692" width="2692" data-og-height="1430" height="1430" data-path="integrations/images/moneyhash-payment-integration.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/moneyhash-payment-integration.png?w=280&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=e3b738187f5a01cc034063f1bf5c114e 280w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/moneyhash-payment-integration.png?w=560&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=b19c3c25148143c10db151f237bb94a5 560w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/moneyhash-payment-integration.png?w=840&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=2f6d5849ac102d1230c32a96ea30361c 840w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/moneyhash-payment-integration.png?w=1100&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=4a2f79a15547174bccf6955a1929b853 1100w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/moneyhash-payment-integration.png?w=1650&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=989308cab8b9eba8a17934f98585a855 1650w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/images/moneyhash-payment-integration.png?w=2500&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=5df8dad7ac29f56553816e464e1c8ff4 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Create a webhook endpoint
@@ -27057,7 +28342,7 @@ Lago's native integration with Stripe allows you to collect payments automatical
 
 ## Watch the demo video
 
-<iframe width="100%" height="400" src="https://www.youtube.com/embed/NH8MCMaHeFM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen />
+<iframe title="YouTube video player" />
 
 ## Integration setup[](#integration-setup "Direct link to heading")
 
@@ -27106,8 +28391,8 @@ When adding customer information, you must:
 The customer will automatically be added to Stripe. Stripe will then return the
 customer ID, which will be stored in Lago.
 
-<Frame caption="Creation of a new customer with Stripe">
-  <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/payments/images/stripe-customer-new.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=f42a03276df140022f9da0acdbd0521f" data-og-width="997" width="997" data-og-height="998" height="998" data-path="guide/payments/images/stripe-customer-new.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/payments/images/stripe-customer-new.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=2f50b1e118a94b2fb1bcd868c303c155 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/payments/images/stripe-customer-new.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=176f278a2c6f7e08b6fbe65b5e834765 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/payments/images/stripe-customer-new.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=02a09872f94995b26a020f8d8765fa5e 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/payments/images/stripe-customer-new.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=66c72b3589246f6ee13ee11ac4df4c27 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/payments/images/stripe-customer-new.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=572565df5b271f5cdd8d500586f58f07 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/payments/images/stripe-customer-new.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=ff9174a147e5dee4860ceae50ceb96e9 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Existing customer[](#existing-customer "Direct link to heading")
@@ -27122,8 +28407,8 @@ information, you must:
 3. **Disable** the option to automatically create the customer in Stripe; and
 4. Define payment method options for this customer. Possible values are `card`, `link`, `sepa_debit`, `us_bank_account`, `bacs_debit`, `boleto`, `crypto` or `customer_balance`.
 
-<Frame caption="Migration of an existing Stripe customer">
-  <img src="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/payments/images/stripe-customer-migration.png?fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=b22df7a4757dd4bd783adaa3acc584da" data-og-width="901" width="901" data-og-height="1009" height="1009" data-path="guide/payments/images/stripe-customer-migration.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/payments/images/stripe-customer-migration.png?w=280&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=09bd56796bda77b26bfb904ea9479f02 280w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/payments/images/stripe-customer-migration.png?w=560&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=2e80d7bd96d31223b957f7ee8ca5d714 560w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/payments/images/stripe-customer-migration.png?w=840&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=1a4a3a06f672681fa374f0f59055e9c2 840w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/payments/images/stripe-customer-migration.png?w=1100&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=0b223a66dc73e7917237f59a129ca1f7 1100w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/payments/images/stripe-customer-migration.png?w=1650&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=eec5ae554dfa3d443863a357143a2e36 1650w, https://mintcdn.com/lago-docs/ugh-mbZn6BFsC-Za/guide/payments/images/stripe-customer-migration.png?w=2500&fit=max&auto=format&n=ugh-mbZn6BFsC-Za&q=85&s=f7f1a8dcd6f446d043b3fe7a664212b9 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Supported payment methods
@@ -27138,7 +28423,7 @@ The checkout URL provided by Lago is designed to handle multiple payment options
     Lago's Stripe integration includes a universal card payment method that supports various currencies, ideal for global transactions.
     This method is set as the default to facilitate recurring payments, ensuring Lago can process charges for your customers efficiently.
 
-    ```bash  theme={"dark"}
+    ```bash theme={"dark"}
         LAGO_URL="https://api.getlago.com"
     API_KEY="__YOUR_API_KEY__"
 
@@ -27170,7 +28455,7 @@ The checkout URL provided by Lago is designed to handle multiple payment options
       If you are using the `link` feature, it must be used in conjunction with `card`.
     </Warning>
 
-    ```bash  theme={"dark"}
+    ```bash theme={"dark"}
     LAGO_URL="https://api.getlago.com"
     API_KEY="__YOUR_API_KEY__"
 
@@ -27207,7 +28492,7 @@ The checkout URL provided by Lago is designed to handle multiple payment options
       If you are using the `customer_balance` payment method in Lago, no other payment method can be selected.
     </Warning>
 
-    ```bash  theme={"dark"}
+    ```bash theme={"dark"}
     LAGO_URL="https://api.getlago.com"
     API_KEY="__YOUR_API_KEY__"
 
@@ -27241,7 +28526,7 @@ The checkout URL provided by Lago is designed to handle multiple payment options
     The designated payment method for SEPA transactions within Lago is identified as `sepa_debit`.
     It's important to note that **this payment option is exclusive to invoices in `EUR` currency**.
 
-    ```bash  theme={"dark"}
+    ```bash theme={"dark"}
         LAGO_URL="https://api.getlago.com"
     API_KEY="__YOUR_API_KEY__"
 
@@ -27271,7 +28556,7 @@ The checkout URL provided by Lago is designed to handle multiple payment options
     The designated payment method for ACH transactions within Lago is identified as `us_bank_account`.
     It's important to note that **this payment option is exclusive to invoices in `USD` currency**.
 
-    ```bash  theme={"dark"}
+    ```bash theme={"dark"}
     LAGO_URL="https://api.getlago.com"
     API_KEY="__YOUR_API_KEY__"
 
@@ -27301,7 +28586,7 @@ The checkout URL provided by Lago is designed to handle multiple payment options
     The specific payment method for BACS transactions within Lago is designated as `bacs_debit`.
     It's important to note that **this payment method is exclusively for invoices in `GBP` currency.**
 
-    ```bash  theme={"dark"}
+    ```bash theme={"dark"}
     LAGO_URL="https://api.getlago.com"
     API_KEY="__YOUR_API_KEY__"
 
@@ -27330,7 +28615,7 @@ The checkout URL provided by Lago is designed to handle multiple payment options
     In Lago, this payment method is identified as `boleto`.
     Note that Boleto is only valid for invoices denominated in Brazilian Real (BRL). Additionally, Boleto payments cannot be refunded and are unlikely to be successfully disputed.
 
-    ```bash  theme={"dark"}
+    ```bash theme={"dark"}
     LAGO_URL="https://api.getlago.com"
     API_KEY="__YOUR_API_KEY__"
 
@@ -27357,7 +28642,7 @@ The checkout URL provided by Lago is designed to handle multiple payment options
   <Accordion title="Crypto (Stablecoins)" icon="btc">
     Lago invoices can be paid via Stripe Crypto for USD-denominated invoices only. Please note that payments must be made using stablecoins, such as USDC or USDP.
 
-    ```bash  theme={"dark"}
+    ```bash theme={"dark"}
     LAGO_URL="https://api.getlago.com"
     API_KEY="__YOUR_API_KEY__"
 
@@ -27392,7 +28677,7 @@ When Lago automatically creates a customer in Stripe, you will receive a checkou
 
 The payload sent by Lago will have the following structure, with the checkout link stored under `checkout_url`:
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "webhook_type": "customer.checkout_url_generated",
   "object_type": "payment_provider_customer_checkout_url",
@@ -27416,7 +28701,7 @@ By utilizing this provided checkout link, your customers can perform a pre-autho
 In cases where your end customer has not had the opportunity to complete the checkout process to inform their payment method
 or wishes to modify the saved payment information, you can generate a new checkout link using the designated [endpoint](/api-reference/customers/psp-checkout-url).
 
-```bash  theme={"dark"}
+```bash theme={"dark"}
 POST /api/v1/customers/:customer_external_id/checkout_url
 ```
 
@@ -27534,8 +28819,8 @@ Lago allows you to connect your different Anrok instances. For example, you coul
 3. Define a name and code for this connection; and
 4. Enter your Anrok API key
 
-<Frame caption="Connect Anrok to Lago">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-connection.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=adcaafd781d75b6cb42dab25b89d3da7" data-og-width="3456" width="3456" data-og-height="2159" height="2159" data-path="integrations/images/anrok-connection.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-connection.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=4fe5c8109527df0517663bedff335b76 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-connection.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=f9c23f47ccbaedfca67737b993995fcd 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-connection.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=38d1e936e486da128930bfc4f880b175 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-connection.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=314bbcf24a8a3b4f35f8cbc939814b58 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-connection.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=8ccc83c91a041c1a319260f1af56e05b 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-connection.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=991a1466deb3331f0dcd8600f2a8bea1 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Mapping items between Lago and Anrok (mandatory)
@@ -27559,8 +28844,8 @@ Follow these steps to map an item:
 
 The fallback item serves as a backup and is used if the mapping of other items is not defined. This dummy item ensures continuous data synchronization between Lago and Anrok in the event of mapping issues.
 
-<Frame caption="Mapping Lago item to Anrok">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-mapping.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=e2ece0865049ddb9b2c5ad9fbfd2a242" data-og-width="3457" width="3457" data-og-height="2157" height="2157" data-path="integrations/images/anrok-mapping.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-mapping.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=4ccbc0f39ba24dc14e7c54612c915ba8 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-mapping.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=9ac8fda88783cd53964e1308f8bdc60c 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-mapping.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=7d6f1eb3d26f9441fb0c0899a410cf84 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-mapping.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=81e8c02ae4f855218c198b3784a953f6 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-mapping.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=8bab61ede9a808c5cee38a8b46c87a60 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-mapping.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=31fae7d34229d92557addf72f657c7ac 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Customer configuration for tax calculation
@@ -27578,8 +28863,8 @@ The first option is to **automatically create a new customer from Lago to Anrok
 
 If the customer is successfully created in Anrok, a new field will be displayed in the Lago customer view, providing a direct link to the corresponding Anrok customer.
 
-<Frame caption="Create customer in Anrok">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-create-customer.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=99d478e4ae808994599e3e09ea6ca7e0" data-og-width="3456" width="3456" data-og-height="2157" height="2157" data-path="integrations/images/anrok-create-customer.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-create-customer.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=63f27d21a81b38cbb103c0572846bd18 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-create-customer.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=1195a6cb44857bf15f0b073e8ba7b597 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-create-customer.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=2be1488af924b902e9a6ab09eded855a 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-create-customer.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=34a895443acc0c4ea1df1544bb2d24f5 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-create-customer.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=6b467b6b1123e5f0ea47d8a1384ffdbb 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-create-customer.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=4247cc2360331b6346c13cb812414d86 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 The second option is to **import an existing Anrok customer to a Lago customer**. Follow these steps:
@@ -27592,8 +28877,8 @@ The second option is to **import an existing Anrok customer to a Lago customer*
 
 If the customer is successfully synced in Anrok, a new field will be displayed in the Lago customer view, providing a direct link to the corresponding Anrok customer.
 
-<Frame caption="Sync Anrok customer in Lago">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-sync-customer.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=527c239995a889046e3967126df84771" data-og-width="3455" width="3455" data-og-height="2162" height="2162" data-path="integrations/images/anrok-sync-customer.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-sync-customer.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=c0197dfe1d8e856cfe8fe7fc366f5e3c 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-sync-customer.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=97aa9fcacad0446bd9284c7ed81e09b6 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-sync-customer.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=d08b3d2340a36ea90c09dd32a1cfc17d 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-sync-customer.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=463f4701ecfbbd7fae2cc61efb467fb7 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-sync-customer.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=d8490e1b9e4d42574adcd554d5928a05 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-sync-customer.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=b4961d42e27afca040fddc671be7e37b 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 <Info>
@@ -27604,8 +28889,8 @@ If the customer is successfully synced in Anrok, a new field will be displayed i
 
 Anrok requires that each customer in Lago has a valid shipping address. If a shipping address is not available, Lago will default to using the billing address for tax calculation purposes. If both addresses are invalid or missing, Lago will be unable to generate the invoice, and the invoice status will be marked as failed. In such cases, you will be notified of the failure in the dashboard and via webhook.
 
-<Frame caption="Mapping Lago item to Anrok">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-failed-invoice.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=cb9a4e3e21389d95e7a9cd3759011143" data-og-width="3457" width="3457" data-og-height="2158" height="2158" data-path="integrations/images/anrok-failed-invoice.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-failed-invoice.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=ec2181e6239d54dfc17191e14c5b33cc 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-failed-invoice.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=37a5726a0a7fa353611e3a6c80334afe 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-failed-invoice.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=fd07b9568f7f8cd672fd4a22f915ceff 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-failed-invoice.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=13a5b3d9c061c2a638b1af84315f1cb5 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-failed-invoice.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=cf51386a1e093f0df580a794b589ca80 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-failed-invoice.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=a2b080966e79739a5527cc2d53e59442 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Tax identifier
@@ -27630,8 +28915,8 @@ When an invoice is in `draft` and encounters a tax synchronization error, you ha
 
 When an invoice fails due to a tax synchronization error, you have the option to manually re-sync each invoice individually from the invoice details page or via this [endpoint](/api-reference/invoices/retry_finalization). Alternatively, you can go to the integration settings and trigger a bulk invoice synchronization.
 
-<Frame caption="Mapping Lago item to Anrok">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-sync-all-invoices.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=402a43d6c59f6cd5041e0245fe1a8e2a" data-og-width="3457" width="3457" data-og-height="2158" height="2158" data-path="integrations/images/anrok-sync-all-invoices.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-sync-all-invoices.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=94f59c5268fd4a7b080900c6519c653e 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-sync-all-invoices.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=da05f83c8715e9bb85443f9a795b1337 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-sync-all-invoices.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=3f61c07f000caff81e8a63b281eacffc 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-sync-all-invoices.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=31068a2c97624bdfbab709b7ab6fe97b 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-sync-all-invoices.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=c96c1f7bf5525f05623d1479f973c1ac 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-sync-all-invoices.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=8297352caba4f2c056d1e3362b51e292 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Retry synchronization for voided / disputed invoices
@@ -27741,8 +29026,8 @@ Follow these steps to map an item:
 The fallback item serves as a backup and is used if the mapping of other items is not defined.
 This dummy item ensures continuous data synchronization between Lago and Avalara in the event of mapping issues.
 
-<Frame caption="Mapping Lago item to Avalara">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/avalara-mapping.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=be82aad6ded12c2aa8b204e7a5df46db" data-og-width="2777" width="2777" data-og-height="1632" height="1632" data-path="integrations/images/avalara-mapping.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/avalara-mapping.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=65ca8738ce48401d35c8b126500badb5 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/avalara-mapping.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=b128814f8caf272b6eca742118ec6478 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/avalara-mapping.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=8729d1743cc4b87abcff5c997fafe0b1 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/avalara-mapping.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=d78a64933317ad7d88ba9489b2390c83 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/avalara-mapping.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=f9fb9dee5012cd5edf25c469e29db88f 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/avalara-mapping.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=bc90f2edfb4687f7e8e1081c17f79cac 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Customer configuration for tax calculation
@@ -27762,8 +29047,8 @@ To create a new customer in Avalara directly from Lago:
 5. Check the box labeled "Create this customer automatically in Avalara"; and
 6. Save the customer to complete the process.
 
-<Frame caption="Automatically creating a new Avalara customer">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/avalara-create-customer.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=25c51ba8cabba42d9bc74abd60278311" data-og-width="2777" width="2777" data-og-height="1632" height="1632" data-path="integrations/images/avalara-create-customer.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/avalara-create-customer.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=77518d626314cbd2d3a2fb6aac68832c 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/avalara-create-customer.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=5d672d79ef68568e765471d73a7e5f16 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/avalara-create-customer.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=ae44bb61ecd9c9f5f07a53920896db7b 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/avalara-create-customer.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=40d47ea374a40785e2d368b99815f4b6 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/avalara-create-customer.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=886b46a6d11e3a0efd3292e1fd952463 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/avalara-create-customer.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=034799cc9b947b61e8b2502dc7ca3b3f 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 **Results:**
@@ -27781,8 +29066,8 @@ To link a Lago customer to an existing Avalara customer:
 4. Enter the existing Avalara customer ID in the designated field
 5. Save the customer to complete the import
 
-<Frame caption="Importing an existing Avalara customer">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/avalara-sync-customer.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=52886d12b136e0ef560606a412e43e77" data-og-width="2777" width="2777" data-og-height="1632" height="1632" data-path="integrations/images/avalara-sync-customer.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/avalara-sync-customer.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=3538e16d676e8db8c4ceb6c867134960 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/avalara-sync-customer.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=28a85cfc22ae1ba616031290545bfa35 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/avalara-sync-customer.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=6dfe3916d921d4d9429eab5be622dbaf 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/avalara-sync-customer.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=8cdaa51347941ce70db9bf7d128dfe91 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/avalara-sync-customer.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=a6e5b0a9e63b6181178b59e670d4fc4d 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/avalara-sync-customer.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=5aa3b84251b793cb0bc1cab10406fe7d 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 **Results**:
@@ -27797,8 +29082,8 @@ If a shipping address is not available, Lago will default to using the billing a
 If both addresses are invalid or missing, Lago will be unable to generate the invoice, and the invoice status will be marked as failed.
 In such cases, you will be notified of the failure in the dashboard and via webhook.
 
-<Frame caption="Mapping Lago item to Avalara">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-failed-invoice.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=cb9a4e3e21389d95e7a9cd3759011143" data-og-width="3457" width="3457" data-og-height="2158" height="2158" data-path="integrations/images/anrok-failed-invoice.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-failed-invoice.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=ec2181e6239d54dfc17191e14c5b33cc 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-failed-invoice.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=37a5726a0a7fa353611e3a6c80334afe 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-failed-invoice.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=fd07b9568f7f8cd672fd4a22f915ceff 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-failed-invoice.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=13a5b3d9c061c2a638b1af84315f1cb5 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-failed-invoice.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=cf51386a1e093f0df580a794b589ca80 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-failed-invoice.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=a2b080966e79739a5527cc2d53e59442 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Customer exemptions
@@ -27829,8 +29114,8 @@ When an invoice is in `draft` and encounters a tax synchronization error, you ha
 
 When an invoice fails due to a tax synchronization error, you have the option to manually re-sync each invoice individually from the invoice details page or via this [endpoint](/api-reference/invoices/retry_finalization). Alternatively, you can go to the integration settings and trigger a bulk invoice synchronization.
 
-<Frame caption="Mapping Lago item to Avalara">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-sync-all-invoices.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=402a43d6c59f6cd5041e0245fe1a8e2a" data-og-width="3457" width="3457" data-og-height="2158" height="2158" data-path="integrations/images/anrok-sync-all-invoices.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-sync-all-invoices.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=94f59c5268fd4a7b080900c6519c653e 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-sync-all-invoices.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=da05f83c8715e9bb85443f9a795b1337 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-sync-all-invoices.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=3f61c07f000caff81e8a63b281eacffc 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-sync-all-invoices.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=31068a2c97624bdfbab709b7ab6fe97b 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-sync-all-invoices.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=c96c1f7bf5525f05623d1479f973c1ac 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/anrok-sync-all-invoices.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=8297352caba4f2c056d1e3362b51e292 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Retry synchronization for voided / disputed invoices
@@ -27894,14 +29179,14 @@ ensuring your tax calculations are always up-to-date and compliant.
 Each tax rate begins with the `lago_` prefix, ensuring a uniform and easily identifiable format across your tax rate list.
 This systematic approach simplifies the management and recognition of these automated tax entries within your system.
 
-<Frame caption="Automated tax rates">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/automated-tax-rates.png?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=ef746ad0623c78dcb937f240813ba445" data-og-width="2404" width="2404" data-og-height="1352" height="1352" data-path="integrations/images/automated-tax-rates.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/automated-tax-rates.png?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=4ca1c55b6f6bf14d3dc9ecbb0b4513ce 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/automated-tax-rates.png?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=c1c84dda91591c671129ba3978057512 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/automated-tax-rates.png?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=73e75a0d26826a6689c9f4d3787e8bda 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/automated-tax-rates.png?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=80e9330fb9362e0df57edd579eb66248 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/automated-tax-rates.png?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=650304904caec553d1b607a91d15a0ac 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/automated-tax-rates.png?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=aaa1f951a8a8a41829ae836a59e294c1 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Auto-application of taxes: decision tree
 
-<Frame caption="Automated tax rates">
-  <img src="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/lago-eu-taxes-decision-tree.jpg?fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=0092646e2d989857a2059be8d9e7112e" data-og-width="8442" width="8442" data-og-height="4642" height="4642" data-path="integrations/images/lago-eu-taxes-decision-tree.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/lago-eu-taxes-decision-tree.jpg?w=280&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=223061ae8de7a00116ee8dcc08c49c0a 280w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/lago-eu-taxes-decision-tree.jpg?w=560&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=56e9a47b1f7690a76e4f55645321674b 560w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/lago-eu-taxes-decision-tree.jpg?w=840&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=1d1c020247bde317c6e9b61eeba0555d 840w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/lago-eu-taxes-decision-tree.jpg?w=1100&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=3707e6352a75ebd2b5f24c9627c56c09 1100w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/lago-eu-taxes-decision-tree.jpg?w=1650&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=3382e7939f0bc808bf1fa4533e976f31 1650w, https://mintcdn.com/lago-docs/xDoze7ebvXBe1su1/integrations/images/lago-eu-taxes-decision-tree.jpg?w=2500&fit=max&auto=format&n=xDoze7ebvXBe1su1&q=85&s=f65900990d5a968960b3fae0dae4c0bb 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 Lago's initial step in the automated tax application involves verifying if a customer has a `tax_identification_number`.
@@ -27979,8 +29264,8 @@ To accomplish this, you'll need first to create a source in Hightouch. This can 
 2. Add a **new source**; and
 3. Choose and set up a data source that is available in Hightouch (it could be a database, a warehouse or a spreadsheet, for instance).
 
-<Frame caption="Hightouch Sources">
-  <img src="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/hightouch-sources-3aa4046d89ec2208963b3e541408a249.png?fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=23c08f86883b1867132ea4c41179e758" data-og-width="3002" width="3002" data-og-height="1492" height="1492" data-path="integrations/usage/images/hightouch-sources-3aa4046d89ec2208963b3e541408a249.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/hightouch-sources-3aa4046d89ec2208963b3e541408a249.png?w=280&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=1ad2443857dbf5bca703d68967308712 280w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/hightouch-sources-3aa4046d89ec2208963b3e541408a249.png?w=560&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=4d4e4f357ab4c43532ccbd333513caf5 560w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/hightouch-sources-3aa4046d89ec2208963b3e541408a249.png?w=840&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=e98afe6670ec8fed5c23341fb18a0309 840w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/hightouch-sources-3aa4046d89ec2208963b3e541408a249.png?w=1100&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=c8f2206a211fd286a8b2fdac88a08270 1100w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/hightouch-sources-3aa4046d89ec2208963b3e541408a249.png?w=1650&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=5914f18e7473dd9543ff863b5ece08b7 1650w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/hightouch-sources-3aa4046d89ec2208963b3e541408a249.png?w=2500&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=cc3048597c1e6787983caf00d21472b8 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Use the HTTP Request destination
@@ -27992,8 +29277,8 @@ Lago uses Hightouch's HTTP Request to ingest usage. Here is how to set it up:
 3. Define your **Headers**. Lago requires `Authorization` (secret, used for the API Key) and `Content-Type: application/json` headers; and
 4. Save this newly created destination.
 
-<Frame caption="Hightouch HTTP Request Destination">
-  <img src="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/hightouch-http-destination-d613e2e5663423ea83712c055d893333.png?fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=3db4f863f80ce784b0a2bace0fc668be" data-og-width="3016" width="3016" data-og-height="1124" height="1124" data-path="integrations/usage/images/hightouch-http-destination-d613e2e5663423ea83712c055d893333.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/hightouch-http-destination-d613e2e5663423ea83712c055d893333.png?w=280&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=058a87165699c31febef340cdfe58cbb 280w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/hightouch-http-destination-d613e2e5663423ea83712c055d893333.png?w=560&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=0e5b7b4aa93202843852d938d05a1a09 560w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/hightouch-http-destination-d613e2e5663423ea83712c055d893333.png?w=840&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=d3aade7a6c70a42f48f8489cbffa3c5d 840w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/hightouch-http-destination-d613e2e5663423ea83712c055d893333.png?w=1100&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=2bf6615d8e3304102943c90779ed5649 1100w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/hightouch-http-destination-d613e2e5663423ea83712c055d893333.png?w=1650&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=1ca0d3605322bbf1622e0c337e3ffb4a 1650w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/hightouch-http-destination-d613e2e5663423ea83712c055d893333.png?w=2500&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=eef366e682ccd5bedba0f174c6680126 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Create a Sync
@@ -28012,7 +29297,7 @@ You can define manually the JSON payload that will be sent to Lago. Note that Hi
 
 Here is a JSON payload example to send usage events to Lago:
 
-```json  theme={"dark"}
+```json theme={"dark"}
 {
   "event": {
     "transaction_id": "{{ row.transactionId }}",
@@ -28033,15 +29318,15 @@ Here is a JSON payload example to send usage events to Lago:
 
 Note that you can test your sync with a data sample. As a result of this test, you should see data flowing into Lago, in the events list. Once you are ready to go, you can activate this sync, and define the periodic trigger.
 
-<Frame caption="Hightouch Test Sync with Lago">
-  <img src="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/sync-test-hightouch-34f6e41a10dd05b637841b6f4d1581fa.png?fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=e4f2232fcdfac5c82d7b335bc80835a7" data-og-width="2514" width="2514" data-og-height="1456" height="1456" data-path="integrations/usage/images/sync-test-hightouch-34f6e41a10dd05b637841b6f4d1581fa.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/sync-test-hightouch-34f6e41a10dd05b637841b6f4d1581fa.png?w=280&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=e4b1fdeff3b2e838fb5eb889f05a42b2 280w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/sync-test-hightouch-34f6e41a10dd05b637841b6f4d1581fa.png?w=560&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=64563ed74bf106539c7ec113349362bf 560w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/sync-test-hightouch-34f6e41a10dd05b637841b6f4d1581fa.png?w=840&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=5f0284f3109b97c6ad45f1070cb902c4 840w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/sync-test-hightouch-34f6e41a10dd05b637841b6f4d1581fa.png?w=1100&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=528bb6c00603940d451f0401dbd48cdd 1100w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/sync-test-hightouch-34f6e41a10dd05b637841b6f4d1581fa.png?w=1650&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=c277b00b39d65f7bcc9cc3e23af7981f 1650w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/sync-test-hightouch-34f6e41a10dd05b637841b6f4d1581fa.png?w=2500&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=14291930b149b4d9067762564c1b836d 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ## Hightouch to Lago - demo video
 
 If easier, please find a demo video explaining the full setup to send events from Hightouch to Lago.
 
-<iframe width="700" height="500" src="https://www.youtube.com/embed/2NBmQYjrz40" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen />
+<iframe title="YouTube video player" />
 
 
 # Segment
@@ -28075,23 +29360,23 @@ To accomplish this, you'll need to create a custom **Function** in Segment. This
 2. Click the **Functions** tab to access the custom Functions feature;
 3. Choose to create your first function and follow the prompts to set it up.
 
-<Frame caption="Segment Functions">
-  <img src="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/segment-catalog-1a7de549eb06d94a6a8ce92565e957a8.png?fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=ff517969f241be63547b33ea49004bbe" data-og-width="2996" width="2996" data-og-height="1100" height="1100" data-path="integrations/usage/images/segment-catalog-1a7de549eb06d94a6a8ce92565e957a8.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/segment-catalog-1a7de549eb06d94a6a8ce92565e957a8.png?w=280&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=c9c9ac87dfceb4f493fda384c89912ac 280w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/segment-catalog-1a7de549eb06d94a6a8ce92565e957a8.png?w=560&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=95d6a434fe5779dbeefeb446317b341a 560w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/segment-catalog-1a7de549eb06d94a6a8ce92565e957a8.png?w=840&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=f6be2cfb16a1fba4bec287e1906072a0 840w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/segment-catalog-1a7de549eb06d94a6a8ce92565e957a8.png?w=1100&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=a0d45aa8c4c78c9e43ea19efe71a368a 1100w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/segment-catalog-1a7de549eb06d94a6a8ce92565e957a8.png?w=1650&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=5a7277f21ebd155d00a9b09f7907d0fd 1650w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/segment-catalog-1a7de549eb06d94a6a8ce92565e957a8.png?w=2500&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=0d507105ef6bda9fbf0d6257b6adb1c2 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Use the Destination function
 
 Make sure to select the **Destination function**, as you want to send data from Segment to Lago.
 
-<Frame caption="Destinations function">
-  <img src="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/destination-function-segment-6131770a6f0e5b7c8e7bf694ca6339b3.png?fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=d374f48ed23590453a0e515f59ee209f" data-og-width="2972" width="2972" data-og-height="1336" height="1336" data-path="integrations/usage/images/destination-function-segment-6131770a6f0e5b7c8e7bf694ca6339b3.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/destination-function-segment-6131770a6f0e5b7c8e7bf694ca6339b3.png?w=280&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=ef7ae616454308379a8bc75b0ad6b300 280w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/destination-function-segment-6131770a6f0e5b7c8e7bf694ca6339b3.png?w=560&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=c233d58c76bb7408188eab4b4e049f7f 560w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/destination-function-segment-6131770a6f0e5b7c8e7bf694ca6339b3.png?w=840&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=5078d8c77475a801dee20929b82fb165 840w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/destination-function-segment-6131770a6f0e5b7c8e7bf694ca6339b3.png?w=1100&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=aa499ae038ee9e5ff5fd1a50e6ea8b80 1100w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/destination-function-segment-6131770a6f0e5b7c8e7bf694ca6339b3.png?w=1650&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=25614259cc3e0557685d8663b15ed2c3 1650w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/destination-function-segment-6131770a6f0e5b7c8e7bf694ca6339b3.png?w=2500&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=dd07ee38e7fa913c00a72112d196f572 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Post Request to Lago events
 
 To successfully integrate Lago with Segment, you'll need to replace the pre-written functions in the code editor with the following code. This example function, written by the Lago team, will catch a **Track** event from Segment, define the targeted endpoint (events) in Lago, build the body of the request, and finally post the event.
 
-```javascript  theme={"dark"}
+```javascript theme={"dark"}
 // Running everytime a Track call is made on Segment
 async function onTrack(event, settings) {
 
@@ -28137,8 +29422,8 @@ async function onTrack(event, settings) {
 
 By using a sample event, you can preview the incoming data fetched from a Segment event. This will help you post a request for existing data or debug.
 
-<Frame caption="Segment Sample Events">
-  <img src="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/test-mode-segment-747eee5ec2ff46a349064e3dbbf4a758.png?fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=d6cf9c31c718cd2644b9e31a1a3582c4" data-og-width="2980" width="2980" data-og-height="1252" height="1252" data-path="integrations/usage/images/test-mode-segment-747eee5ec2ff46a349064e3dbbf4a758.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/test-mode-segment-747eee5ec2ff46a349064e3dbbf4a758.png?w=280&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=30d89efe853a39f71efb95b90eab037c 280w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/test-mode-segment-747eee5ec2ff46a349064e3dbbf4a758.png?w=560&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=e71ec951a2779657a34f1e68ee5c438d 560w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/test-mode-segment-747eee5ec2ff46a349064e3dbbf4a758.png?w=840&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=47d88945009ac8abd815cab4b37d7ab3 840w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/test-mode-segment-747eee5ec2ff46a349064e3dbbf4a758.png?w=1100&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=55465e35c97b49ba1a81ce0cc32acf7a 1100w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/test-mode-segment-747eee5ec2ff46a349064e3dbbf4a758.png?w=1650&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=6d3653d73bef718a49be200b996cb0fe 1650w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/test-mode-segment-747eee5ec2ff46a349064e3dbbf4a758.png?w=2500&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=35c7df486902438b18e0f8bed5578f77 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Hide sensitive data
@@ -28153,8 +29438,8 @@ To create **Settings** variables:
 4. Define it as **Required** or **Optional**; and
 5. Mark is as **Sensitive** or not.
 
-<Frame caption="Hide sensitive data with settings variables">
-  <img src="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/segment-settings-variable-c19b5f3de23eec11ffe475e8272dc5ff.png?fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=2326eb0d7eb514d91a0450674b69723b" data-og-width="2972" width="2972" data-og-height="884" height="884" data-path="integrations/usage/images/segment-settings-variable-c19b5f3de23eec11ffe475e8272dc5ff.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/segment-settings-variable-c19b5f3de23eec11ffe475e8272dc5ff.png?w=280&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=f21e012320118d00552fd16448dd54fe 280w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/segment-settings-variable-c19b5f3de23eec11ffe475e8272dc5ff.png?w=560&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=e0cbd6961c1c0367e25ab8c1a7c9de2b 560w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/segment-settings-variable-c19b5f3de23eec11ffe475e8272dc5ff.png?w=840&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=3609285441cd9ae6d3fff1f24d10df98 840w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/segment-settings-variable-c19b5f3de23eec11ffe475e8272dc5ff.png?w=1100&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=72d1e99a079233d5a9b4d5d59935b6f7 1100w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/segment-settings-variable-c19b5f3de23eec11ffe475e8272dc5ff.png?w=1650&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=09e1278d6def1abfb87f5023bbb6c281 1650w, https://mintcdn.com/lago-docs/aaVDsanqVM_V30mw/integrations/usage/images/segment-settings-variable-c19b5f3de23eec11ffe475e8272dc5ff.png?w=2500&fit=max&auto=format&n=aaVDsanqVM_V30mw&q=85&s=10d5439ddb668f44296f5101ef95009a 2500w" />
+<Frame>
+  <img />
 </Frame>
 
 ### Send usage events to Lago
@@ -28165,7 +29450,7 @@ By running the function in Segment, this will send a test usage to Lago events. 
 
 If easier, please find a demo video explaining the full setup of custom functions to send event from Segment.com to Lago.
 
-<iframe width="700" height="500" src="https://www.youtube.com/embed/lyJmdh47JTE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen />
+<iframe title="YouTube video player" />
 
 
 # Clone Segment pricing
@@ -28175,7 +29460,7 @@ Replicate Segment's hybrid pricing model with Lago.
 
 Build a hybrid pricing and billing system like [Segment](https://segment.com/), the Customer Data Platform leader, based on subscription plans, with a usage-based component that makes your revenue grow with your users.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ZmoZUeJrPms?si=U8-dxW9B-Bw81ecK&start=38" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+<iframe title="YouTube video player" />
 
 ## Pricing structure
 
@@ -28847,204 +30132,204 @@ Whether you are an API company, a fintech scale-up, an established SaaS provider
 
 ## Per-token pricing (AI)
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card
     title="Mistral.ai"
     icon={
-    <svg
-      width="30px"
-      height="30px"
-      viewBox="0 0 256 233"
-      version="1.1"
-      xmlns="http://www.w3.org/2000/svg"
-      preserveAspectRatio="xMidYMid"
-    >
-      <g>
-        <rect
-          fill="#000000"
-          x="186.181818"
-          y="0"
-          width="46.5454545"
-          height="46.5454545"
-        ></rect>
-        <rect
-          fill="#F7D046"
-          x="209.454545"
-          y="0"
-          width="46.5454545"
-          height="46.5454545"
-        ></rect>
-        <rect
-          fill="#000000"
-          x="0"
-          y="0"
-          width="46.5454545"
-          height="46.5454545"
-        ></rect>
-        <rect
-          fill="#000000"
-          x="0"
-          y="46.5454545"
-          width="46.5454545"
-          height="46.5454545"
-        ></rect>
-        <rect
-          fill="#000000"
-          x="0"
-          y="93.0909091"
-          width="46.5454545"
-          height="46.5454545"
-        ></rect>
-        <rect
-          fill="#000000"
-          x="0"
-          y="139.636364"
-          width="46.5454545"
-          height="46.5454545"
-        ></rect>
-        <rect
-          fill="#000000"
-          x="0"
-          y="186.181818"
-          width="46.5454545"
-          height="46.5454545"
-        ></rect>
-        <rect
-          fill="#F7D046"
-          x="23.2727273"
-          y="0"
-          width="46.5454545"
-          height="46.5454545"
-        ></rect>
-        <rect
-          fill="#F2A73B"
-          x="209.454545"
-          y="46.5454545"
-          width="46.5454545"
-          height="46.5454545"
-        ></rect>
-        <rect
-          fill="#F2A73B"
-          x="23.2727273"
-          y="46.5454545"
-          width="46.5454545"
-          height="46.5454545"
-        ></rect>
-        <rect
-          fill="#000000"
-          x="139.636364"
-          y="46.5454545"
-          width="46.5454545"
-          height="46.5454545"
-        ></rect>
-        <rect
-          fill="#F2A73B"
-          x="162.909091"
-          y="46.5454545"
-          width="46.5454545"
-          height="46.5454545"
-        ></rect>
-        <rect
-          fill="#F2A73B"
-          x="69.8181818"
-          y="46.5454545"
-          width="46.5454545"
-          height="46.5454545"
-        ></rect>
-        <rect
-          fill="#EE792F"
-          x="116.363636"
-          y="93.0909091"
-          width="46.5454545"
-          height="46.5454545"
-        ></rect>
-        <rect
-          fill="#EE792F"
-          x="162.909091"
-          y="93.0909091"
-          width="46.5454545"
-          height="46.5454545"
-        ></rect>
-        <rect
-          fill="#EE792F"
-          x="69.8181818"
-          y="93.0909091"
-          width="46.5454545"
-          height="46.5454545"
-        ></rect>
-        <rect
-          fill="#000000"
-          x="93.0909091"
-          y="139.636364"
-          width="46.5454545"
-          height="46.5454545"
-        ></rect>
-        <rect
-          fill="#EB5829"
-          x="116.363636"
-          y="139.636364"
-          width="46.5454545"
-          height="46.5454545"
-        ></rect>
-        <rect
-          fill="#EE792F"
-          x="209.454545"
-          y="93.0909091"
-          width="46.5454545"
-          height="46.5454545"
-        ></rect>
-        <rect
-          fill="#EE792F"
-          x="23.2727273"
-          y="93.0909091"
-          width="46.5454545"
-          height="46.5454545"
-        ></rect>
-        <rect
-          fill="#000000"
-          x="186.181818"
-          y="139.636364"
-          width="46.5454545"
-          height="46.5454545"
-        ></rect>
-        <rect
-          fill="#EB5829"
-          x="209.454545"
-          y="139.636364"
-          width="46.5454545"
-          height="46.5454545"
-        ></rect>
-        <rect
-          fill="#000000"
-          x="186.181818"
-          y="186.181818"
-          width="46.5454545"
-          height="46.5454545"
-        ></rect>
-        <rect
-          fill="#EB5829"
-          x="23.2727273"
-          y="139.636364"
-          width="46.5454545"
-          height="46.5454545"
-        ></rect>
-        <rect
-          fill="#EA3326"
-          x="209.454545"
-          y="186.181818"
-          width="46.5454545"
-          height="46.5454545"
-        ></rect>
-        <rect
-          fill="#EA3326"
-          x="23.2727273"
-          y="186.181818"
-          width="46.5454545"
-          height="46.5454545"
-        ></rect>
-      </g>
-    </svg>
-  }
+  <svg
+    width="30px"
+    height="30px"
+    viewBox="0 0 256 233"
+    version="1.1"
+    xmlns="http://www.w3.org/2000/svg"
+    preserveAspectRatio="xMidYMid"
+  >
+    <g>
+      <rect
+        fill="#000000"
+        x="186.181818"
+        y="0"
+        width="46.5454545"
+        height="46.5454545"
+      ></rect>
+      <rect
+        fill="#F7D046"
+        x="209.454545"
+        y="0"
+        width="46.5454545"
+        height="46.5454545"
+      ></rect>
+      <rect
+        fill="#000000"
+        x="0"
+        y="0"
+        width="46.5454545"
+        height="46.5454545"
+      ></rect>
+      <rect
+        fill="#000000"
+        x="0"
+        y="46.5454545"
+        width="46.5454545"
+        height="46.5454545"
+      ></rect>
+      <rect
+        fill="#000000"
+        x="0"
+        y="93.0909091"
+        width="46.5454545"
+        height="46.5454545"
+      ></rect>
+      <rect
+        fill="#000000"
+        x="0"
+        y="139.636364"
+        width="46.5454545"
+        height="46.5454545"
+      ></rect>
+      <rect
+        fill="#000000"
+        x="0"
+        y="186.181818"
+        width="46.5454545"
+        height="46.5454545"
+      ></rect>
+      <rect
+        fill="#F7D046"
+        x="23.2727273"
+        y="0"
+        width="46.5454545"
+        height="46.5454545"
+      ></rect>
+      <rect
+        fill="#F2A73B"
+        x="209.454545"
+        y="46.5454545"
+        width="46.5454545"
+        height="46.5454545"
+      ></rect>
+      <rect
+        fill="#F2A73B"
+        x="23.2727273"
+        y="46.5454545"
+        width="46.5454545"
+        height="46.5454545"
+      ></rect>
+      <rect
+        fill="#000000"
+        x="139.636364"
+        y="46.5454545"
+        width="46.5454545"
+        height="46.5454545"
+      ></rect>
+      <rect
+        fill="#F2A73B"
+        x="162.909091"
+        y="46.5454545"
+        width="46.5454545"
+        height="46.5454545"
+      ></rect>
+      <rect
+        fill="#F2A73B"
+        x="69.8181818"
+        y="46.5454545"
+        width="46.5454545"
+        height="46.5454545"
+      ></rect>
+      <rect
+        fill="#EE792F"
+        x="116.363636"
+        y="93.0909091"
+        width="46.5454545"
+        height="46.5454545"
+      ></rect>
+      <rect
+        fill="#EE792F"
+        x="162.909091"
+        y="93.0909091"
+        width="46.5454545"
+        height="46.5454545"
+      ></rect>
+      <rect
+        fill="#EE792F"
+        x="69.8181818"
+        y="93.0909091"
+        width="46.5454545"
+        height="46.5454545"
+      ></rect>
+      <rect
+        fill="#000000"
+        x="93.0909091"
+        y="139.636364"
+        width="46.5454545"
+        height="46.5454545"
+      ></rect>
+      <rect
+        fill="#EB5829"
+        x="116.363636"
+        y="139.636364"
+        width="46.5454545"
+        height="46.5454545"
+      ></rect>
+      <rect
+        fill="#EE792F"
+        x="209.454545"
+        y="93.0909091"
+        width="46.5454545"
+        height="46.5454545"
+      ></rect>
+      <rect
+        fill="#EE792F"
+        x="23.2727273"
+        y="93.0909091"
+        width="46.5454545"
+        height="46.5454545"
+      ></rect>
+      <rect
+        fill="#000000"
+        x="186.181818"
+        y="139.636364"
+        width="46.5454545"
+        height="46.5454545"
+      ></rect>
+      <rect
+        fill="#EB5829"
+        x="209.454545"
+        y="139.636364"
+        width="46.5454545"
+        height="46.5454545"
+      ></rect>
+      <rect
+        fill="#000000"
+        x="186.181818"
+        y="186.181818"
+        width="46.5454545"
+        height="46.5454545"
+      ></rect>
+      <rect
+        fill="#EB5829"
+        x="23.2727273"
+        y="139.636364"
+        width="46.5454545"
+        height="46.5454545"
+      ></rect>
+      <rect
+        fill="#EA3326"
+        x="209.454545"
+        y="186.181818"
+        width="46.5454545"
+        height="46.5454545"
+      ></rect>
+      <rect
+        fill="#EA3326"
+        x="23.2727273"
+        y="186.181818"
+        width="46.5454545"
+        height="46.5454545"
+      ></rect>
+    </g>
+  </svg>
+}
     href="/templates/per-token/mistral"
   >
     Build a transparent per-token pricing like Mistral, the famous AI company,
@@ -29054,22 +30339,22 @@ Whether you are an API company, a fintech scale-up, an established SaaS provider
   <Card
     title="OpenAI"
     icon={
-    <svg
-      width="30px"
-      height="30px"
-      viewBox="0 0 512 512"
-      xmlns="http://www.w3.org/2000/svg"
-      fill-rule="evenodd"
-      clip-rule="evenodd"
-      stroke-linejoin="round"
-      stroke-miterlimit="2"
-    >
-      <path
-        d="M474.123 209.81c11.525-34.577 7.569-72.423-10.838-103.904-27.696-48.168-83.433-72.94-137.794-61.414a127.14 127.14 0 00-95.475-42.49c-55.564 0-104.936 35.781-122.139 88.593-35.781 7.397-66.574 29.76-84.637 61.414-27.868 48.167-21.503 108.72 15.826 150.007-11.525 34.578-7.569 72.424 10.838 103.733 27.696 48.34 83.433 73.111 137.966 61.585 24.084 27.18 58.833 42.835 95.303 42.663 55.564 0 104.936-35.782 122.139-88.594 35.782-7.397 66.574-29.76 84.465-61.413 28.04-48.168 21.676-108.722-15.654-150.008v-.172zm-39.567-87.218c11.01 19.267 15.139 41.803 11.354 63.65-.688-.516-2.064-1.204-2.924-1.72l-101.152-58.49a16.965 16.965 0 00-16.687 0L206.621 194.5v-50.232l97.883-56.597c45.587-26.32 103.732-10.666 130.052 34.921zm-227.935 104.42l49.888-28.9 49.887 28.9v57.63l-49.887 28.9-49.888-28.9v-57.63zm23.223-191.81c22.364 0 43.867 7.742 61.07 22.02-.688.344-2.064 1.204-3.097 1.72L186.666 117.26c-5.161 2.925-8.258 8.43-8.258 14.45v136.934l-43.523-25.116V130.333c0-52.64 42.491-95.13 95.131-95.302l-.172.172zM52.14 168.697c11.182-19.268 28.557-34.062 49.544-41.803V247.14c0 6.02 3.097 11.354 8.258 14.45l118.354 68.295-43.695 25.288-97.711-56.425c-45.415-26.32-61.07-84.465-34.75-130.052zm26.665 220.71c-11.182-19.095-15.139-41.802-11.354-63.65.688.516 2.064 1.204 2.924 1.72l101.152 58.49a16.965 16.965 0 0016.687 0l118.354-68.467v50.232l-97.883 56.425c-45.587 26.148-103.732 10.665-130.052-34.75h.172zm204.54 87.39c-22.192 0-43.867-7.741-60.898-22.02a62.439 62.439 0 003.097-1.72l101.152-58.317c5.16-2.924 8.429-8.43 8.257-14.45V243.527l43.523 25.116v113.022c0 52.64-42.663 95.303-95.131 95.303v-.172zM461.22 343.303c-11.182 19.267-28.729 34.061-49.544 41.63V264.687c0-6.021-3.097-11.526-8.257-14.45L284.893 181.77l43.523-25.116 97.883 56.424c45.587 26.32 61.07 84.466 34.75 130.053l.172.172z"
-        fill-rule="nonzero"
-      />
-    </svg>
-  }
+  <svg
+    width="30px"
+    height="30px"
+    viewBox="0 0 512 512"
+    xmlns="http://www.w3.org/2000/svg"
+    fill-rule="evenodd"
+    clip-rule="evenodd"
+    stroke-linejoin="round"
+    stroke-miterlimit="2"
+  >
+    <path
+      d="M474.123 209.81c11.525-34.577 7.569-72.423-10.838-103.904-27.696-48.168-83.433-72.94-137.794-61.414a127.14 127.14 0 00-95.475-42.49c-55.564 0-104.936 35.781-122.139 88.593-35.781 7.397-66.574 29.76-84.637 61.414-27.868 48.167-21.503 108.72 15.826 150.007-11.525 34.578-7.569 72.424 10.838 103.733 27.696 48.34 83.433 73.111 137.966 61.585 24.084 27.18 58.833 42.835 95.303 42.663 55.564 0 104.936-35.782 122.139-88.594 35.782-7.397 66.574-29.76 84.465-61.413 28.04-48.168 21.676-108.722-15.654-150.008v-.172zm-39.567-87.218c11.01 19.267 15.139 41.803 11.354 63.65-.688-.516-2.064-1.204-2.924-1.72l-101.152-58.49a16.965 16.965 0 00-16.687 0L206.621 194.5v-50.232l97.883-56.597c45.587-26.32 103.732-10.666 130.052 34.921zm-227.935 104.42l49.888-28.9 49.887 28.9v57.63l-49.887 28.9-49.888-28.9v-57.63zm23.223-191.81c22.364 0 43.867 7.742 61.07 22.02-.688.344-2.064 1.204-3.097 1.72L186.666 117.26c-5.161 2.925-8.258 8.43-8.258 14.45v136.934l-43.523-25.116V130.333c0-52.64 42.491-95.13 95.131-95.302l-.172.172zM52.14 168.697c11.182-19.268 28.557-34.062 49.544-41.803V247.14c0 6.02 3.097 11.354 8.258 14.45l118.354 68.295-43.695 25.288-97.711-56.425c-45.415-26.32-61.07-84.465-34.75-130.052zm26.665 220.71c-11.182-19.095-15.139-41.802-11.354-63.65.688.516 2.064 1.204 2.924 1.72l101.152 58.49a16.965 16.965 0 0016.687 0l118.354-68.467v50.232l-97.883 56.425c-45.587 26.148-103.732 10.665-130.052-34.75h.172zm204.54 87.39c-22.192 0-43.867-7.741-60.898-22.02a62.439 62.439 0 003.097-1.72l101.152-58.317c5.16-2.924 8.429-8.43 8.257-14.45V243.527l43.523 25.116v113.022c0 52.64-42.663 95.303-95.131 95.303v-.172zM461.22 343.303c-11.182 19.267-28.729 34.061-49.544 41.63V264.687c0-6.021-3.097-11.526-8.257-14.45L284.893 181.77l43.523-25.116 97.883 56.424c45.587 26.32 61.07 84.466 34.75 130.053l.172.172z"
+      fill-rule="nonzero"
+    />
+  </svg>
+}
     href="/templates/per-token/openai"
   >
     Replicate OpenAI's per-token pricing, the famous AI company behind GPT
@@ -29079,24 +30364,24 @@ Whether you are an API company, a fintech scale-up, an established SaaS provider
 
 ## Hybrid pricing
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card
     title="Segment"
     icon={
-    <svg
-      width="35"
-      height="35"
-      enable-background="new 0 0 1024 1024"
-      viewBox="0 0 1024 1024"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <circle cx="512" cy="512" fill="#52bd94" r="512" />
-      <path
-        d="m346.8 654.5c-16 0-29 13-29 29s13 29 29 29 29-13 29-29-13-29-29-29zm319.9-350.5c-16 0-29.1 12.9-29.1 29 0 16 12.9 29.1 29 29.1 16 0 29.1-12.9 29.1-29 0 0 0 0 0-.1 0-16-13-29-29-29zm-210.1 117.2v35.6c0 5.3 4.3 9.7 9.7 9.7h287.4c5.3 0 9.7-4.3 9.7-9.7v-35.6c0-5.3-4.4-9.7-9.7-9.7h-287.4c-5.4.1-9.7 4.4-9.7 9.7zm110.6 164.1v-35.5c0-5.3-4.3-9.7-9.7-9.7h-287.4c-5.3 0-9.7 4.3-9.7 9.7v35.5c0 5.3 4.3 9.7 9.7 9.7h287.4c5.4 0 9.7-4.3 9.7-9.7zm194-47.8c-1.6-2-3.8-3.3-6.4-3.6l-35.3-3.6c-5.2-.6-9.9 3.1-10.6 8.3-14.8 110.2-116.3 187.6-226.5 172.7-15.3-2.1-30.3-5.9-44.7-11.3-4.9-1.9-10.4.4-12.3 5.3l-13.5 32.7c-1 2.4-1 5.1 0 7.5s3 4.4 5.5 5.3c131.9 50.9 280.2-14.8 331.1-146.7 7.4-19.1 12.4-39 15-59.3.3-2.7-.5-5.3-2.3-7.3zm-498.7-81.6c-1.4-2.2-1.8-4.9-1.1-7.4 29-113.3 131.1-192.5 248-192.4 28.6 0 57.1 4.7 84.1 14.2 5 1.6 7.8 7 6.2 12-.1.2-.2.5-.3.7l-12.7 33.2c-1.8 4.9-7.2 7.5-12.1 5.7-21-7.2-43.1-10.8-65.3-10.8-46-.2-90.6 15.5-126.3 44.5-33.5 27.1-57.4 64.2-68.4 105.8-1.1 4.2-4.9 7.2-9.3 7.2-.7.1-1.5.1-2.2 0l-34.6-7.9c-2.6-.8-4.7-2.5-6-4.8z"
-        fill="#fff"
-      />
-    </svg>
-  }
+  <svg
+    width="35"
+    height="35"
+    enable-background="new 0 0 1024 1024"
+    viewBox="0 0 1024 1024"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle cx="512" cy="512" fill="#52bd94" r="512" />
+    <path
+      d="m346.8 654.5c-16 0-29 13-29 29s13 29 29 29 29-13 29-29-13-29-29-29zm319.9-350.5c-16 0-29.1 12.9-29.1 29 0 16 12.9 29.1 29 29.1 16 0 29.1-12.9 29.1-29 0 0 0 0 0-.1 0-16-13-29-29-29zm-210.1 117.2v35.6c0 5.3 4.3 9.7 9.7 9.7h287.4c5.3 0 9.7-4.3 9.7-9.7v-35.6c0-5.3-4.4-9.7-9.7-9.7h-287.4c-5.4.1-9.7 4.4-9.7 9.7zm110.6 164.1v-35.5c0-5.3-4.3-9.7-9.7-9.7h-287.4c-5.3 0-9.7 4.3-9.7 9.7v35.5c0 5.3 4.3 9.7 9.7 9.7h287.4c5.4 0 9.7-4.3 9.7-9.7zm194-47.8c-1.6-2-3.8-3.3-6.4-3.6l-35.3-3.6c-5.2-.6-9.9 3.1-10.6 8.3-14.8 110.2-116.3 187.6-226.5 172.7-15.3-2.1-30.3-5.9-44.7-11.3-4.9-1.9-10.4.4-12.3 5.3l-13.5 32.7c-1 2.4-1 5.1 0 7.5s3 4.4 5.5 5.3c131.9 50.9 280.2-14.8 331.1-146.7 7.4-19.1 12.4-39 15-59.3.3-2.7-.5-5.3-2.3-7.3zm-498.7-81.6c-1.4-2.2-1.8-4.9-1.1-7.4 29-113.3 131.1-192.5 248-192.4 28.6 0 57.1 4.7 84.1 14.2 5 1.6 7.8 7 6.2 12-.1.2-.2.5-.3.7l-12.7 33.2c-1.8 4.9-7.2 7.5-12.1 5.7-21-7.2-43.1-10.8-65.3-10.8-46-.2-90.6 15.5-126.3 44.5-33.5 27.1-57.4 64.2-68.4 105.8-1.1 4.2-4.9 7.2-9.3 7.2-.7.1-1.5.1-2.2 0l-34.6-7.9c-2.6-.8-4.7-2.5-6-4.8z"
+      fill="#fff"
+    />
+  </svg>
+}
     href="/templates/hybrid/segment"
   >
     Build a hybrid pricing and billing system like Segment, the CDP leader,
@@ -29107,24 +30392,24 @@ Whether you are an API company, a fintech scale-up, an established SaaS provider
 
 ## Per-transaction pricing
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card
     title="Stripe"
     icon={
-    <svg
-      width="30"
-      height="30"
-      viewBox="0 0 40 40"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect width="40" height="40" rx="12" fill="#6772E5" />
-      <path
-        d="M18.5779 15.956C18.5779 15.099 19.2834 14.7692 20.4521 14.7692C22.1276 14.7692 24.2441 15.2748 25.9197 16.1759V11.011C24.0898 10.2857 22.282 10 20.4521 10C15.9764 10 13 12.3297 13 16.22C13 22.2857 21.3779 21.3188 21.3779 23.9343C21.3779 24.9451 20.4961 25.2748 19.2614 25.2748C17.4316 25.2748 15.0945 24.5275 13.2425 23.5166V28.7474C15.2929 29.6265 17.3654 30 19.2614 30C23.8472 30 27 27.7364 27 23.8023C26.978 17.2529 18.5779 18.4176 18.5779 15.956Z"
-        fill="white"
-      />
-    </svg>
-  }
+  <svg
+    width="30"
+    height="30"
+    viewBox="0 0 40 40"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect width="40" height="40" rx="12" fill="#6772E5" />
+    <path
+      d="M18.5779 15.956C18.5779 15.099 19.2834 14.7692 20.4521 14.7692C22.1276 14.7692 24.2441 15.2748 25.9197 16.1759V11.011C24.0898 10.2857 22.282 10 20.4521 10C15.9764 10 13 12.3297 13 16.22C13 22.2857 21.3779 21.3188 21.3779 23.9343C21.3779 24.9451 20.4961 25.2748 19.2614 25.2748C17.4316 25.2748 15.0945 24.5275 13.2425 23.5166V28.7474C15.2929 29.6265 17.3654 30 19.2614 30C23.8472 30 27 27.7364 27 23.8023C26.978 17.2529 18.5779 18.4176 18.5779 15.956Z"
+      fill="white"
+    />
+  </svg>
+}
     href="/templates/per-transaction/stripe"
   >
     Implement a per-transaction pricing model like Stripe, the leading payments
@@ -29135,27 +30420,27 @@ Whether you are an API company, a fintech scale-up, an established SaaS provider
 
 ## Pay-as-you-go pricing
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card
     title="Algolia"
     icon={
-    <svg
-      width="30"
-      height="30"
-      viewBox="0 0 40 40"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M5.26659 0H34.7331C37.633 0 40.0004 2.35498 40.0004 5.2666V34.735C40.0004 37.635 37.6451 40 34.7331 40H5.26659C2.3666 40 0 37.6466 0 34.735V5.25337C0 2.35498 2.35326 0 5.26659 0Z"
-        fill="#5468FF"
-      />
-      <path
-        d="M24.1681 8.92938V7.55774C24.1681 7.09739 23.9852 6.65605 23.6588 6.33069C23.3335 6.00534 22.8919 5.82265 22.4311 5.82275H18.3831C17.9229 5.82265 17.4813 6.00534 17.1557 6.33069C16.83 6.65605 16.6468 7.09739 16.6465 7.55774V8.96606C16.6465 9.12278 16.7915 9.23271 16.9498 9.19603C18.095 8.86542 19.2812 8.6982 20.473 8.69941C21.6279 8.69941 22.7717 8.85603 23.876 9.15935C24.0236 9.19603 24.1681 9.08772 24.1681 8.92938ZM13.0732 10.7244L12.3814 10.0328C12.2203 9.87149 12.029 9.74347 11.8183 9.65628C11.6078 9.56898 11.3819 9.52401 11.154 9.52401C10.926 9.52401 10.7002 9.56898 10.4896 9.65628C10.279 9.74347 10.0876 9.87149 9.92652 10.0328L9.0998 10.8578C8.93824 11.0183 8.80992 11.2094 8.72241 11.4198C8.63491 11.6301 8.58984 11.8558 8.58984 12.0836C8.58984 12.3114 8.63491 12.537 8.72241 12.7474C8.80992 12.9578 8.93824 13.1488 9.0998 13.3094L9.77982 13.9893C9.88985 14.0978 10.0482 14.0727 10.1448 13.9644C10.546 13.4134 10.989 12.8941 11.4698 12.4111C11.9547 11.9246 12.4786 11.4786 13.0365 11.0777C13.1578 11.0044 13.1699 10.8344 13.0732 10.7244ZM20.4608 15.0794V21.0128C20.4608 21.1827 20.6447 21.3044 20.8013 21.2194L26.0757 18.4894C26.196 18.4294 26.2323 18.2827 26.1727 18.1628C25.0795 16.2444 23.0495 14.9344 20.7043 14.8494C20.5831 14.8494 20.4608 14.946 20.4608 15.0794ZM20.4608 29.3728C16.0628 29.3728 12.4895 25.8044 12.4895 21.4127C12.4895 17.0211 16.0628 13.4544 20.4608 13.4544C24.8612 13.4544 28.433 17.0211 28.433 21.4127C28.433 25.8044 24.8733 29.3728 20.4608 29.3728ZM20.4608 10.106C14.2144 10.106 9.1478 15.1661 9.1478 21.4127C9.1478 27.6611 14.2144 32.7095 20.4608 32.7095C26.7082 32.7095 31.7745 27.6494 31.7745 21.4011C31.7745 15.1527 26.7194 10.106 20.4608 10.106Z"
-        fill="white"
-      />
-    </svg>
-  }
+  <svg
+    width="30"
+    height="30"
+    viewBox="0 0 40 40"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M5.26659 0H34.7331C37.633 0 40.0004 2.35498 40.0004 5.2666V34.735C40.0004 37.635 37.6451 40 34.7331 40H5.26659C2.3666 40 0 37.6466 0 34.735V5.25337C0 2.35498 2.35326 0 5.26659 0Z"
+      fill="#5468FF"
+    />
+    <path
+      d="M24.1681 8.92938V7.55774C24.1681 7.09739 23.9852 6.65605 23.6588 6.33069C23.3335 6.00534 22.8919 5.82265 22.4311 5.82275H18.3831C17.9229 5.82265 17.4813 6.00534 17.1557 6.33069C16.83 6.65605 16.6468 7.09739 16.6465 7.55774V8.96606C16.6465 9.12278 16.7915 9.23271 16.9498 9.19603C18.095 8.86542 19.2812 8.6982 20.473 8.69941C21.6279 8.69941 22.7717 8.85603 23.876 9.15935C24.0236 9.19603 24.1681 9.08772 24.1681 8.92938ZM13.0732 10.7244L12.3814 10.0328C12.2203 9.87149 12.029 9.74347 11.8183 9.65628C11.6078 9.56898 11.3819 9.52401 11.154 9.52401C10.926 9.52401 10.7002 9.56898 10.4896 9.65628C10.279 9.74347 10.0876 9.87149 9.92652 10.0328L9.0998 10.8578C8.93824 11.0183 8.80992 11.2094 8.72241 11.4198C8.63491 11.6301 8.58984 11.8558 8.58984 12.0836C8.58984 12.3114 8.63491 12.537 8.72241 12.7474C8.80992 12.9578 8.93824 13.1488 9.0998 13.3094L9.77982 13.9893C9.88985 14.0978 10.0482 14.0727 10.1448 13.9644C10.546 13.4134 10.989 12.8941 11.4698 12.4111C11.9547 11.9246 12.4786 11.4786 13.0365 11.0777C13.1578 11.0044 13.1699 10.8344 13.0732 10.7244ZM20.4608 15.0794V21.0128C20.4608 21.1827 20.6447 21.3044 20.8013 21.2194L26.0757 18.4894C26.196 18.4294 26.2323 18.2827 26.1727 18.1628C25.0795 16.2444 23.0495 14.9344 20.7043 14.8494C20.5831 14.8494 20.4608 14.946 20.4608 15.0794ZM20.4608 29.3728C16.0628 29.3728 12.4895 25.8044 12.4895 21.4127C12.4895 17.0211 16.0628 13.4544 20.4608 13.4544C24.8612 13.4544 28.433 17.0211 28.433 21.4127C28.433 25.8044 24.8733 29.3728 20.4608 29.3728ZM20.4608 10.106C14.2144 10.106 9.1478 15.1661 9.1478 21.4127C9.1478 27.6611 14.2144 32.7095 20.4608 32.7095C26.7082 32.7095 31.7745 27.6494 31.7745 21.4011C31.7745 15.1527 26.7194 10.106 20.4608 10.106Z"
+      fill="white"
+    />
+  </svg>
+}
     href="/templates/payg/algolia"
   >
     Discover how Algolia, the search and discovery platform, increases
@@ -29166,21 +30451,21 @@ Whether you are an API company, a fintech scale-up, an established SaaS provider
   <Card
     title="Google BigQuery"
     icon={
-    <svg
-      width="30"
-      height="30"
-      viewBox="0 0 40 40"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+  <svg
+    width="30"
+    height="30"
+    viewBox="0 0 40 40"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
 <path d="M36.5364 20.2896C36.5364 19.0685 36.4268 17.8943 36.2233 16.7671H20.0039V23.4364H29.2721C28.8651 25.5813 27.6439 27.3973 25.8122 28.6185V32.9551H31.4013C34.6577 29.9492 36.5364 25.5343 36.5364 20.2896Z" fill="#4285F4"/>
 <path d="M20.0068 37.1177C24.6565 37.1177 28.5548 35.5834 31.4041 32.9533L25.815 28.6166C24.2808 29.6499 22.3238 30.2761 20.0068 30.2761C15.5292 30.2761 11.7249 27.2546 10.3628 23.1841H4.63281V27.6303C7.4665 33.2507 13.2748 37.1177 20.0068 37.1177Z" fill="#34A853"/>
 <path d="M10.3625 23.1695C10.0181 22.1363 9.81459 21.0403 9.81459 19.8975C9.81459 18.7546 10.0181 17.6587 10.3625 16.6254V12.1792H4.63253C3.45835 14.4962 2.78516 17.1108 2.78516 19.8975C2.78516 22.6842 3.45835 25.2987 4.63253 27.6158L9.09442 24.1402L10.3625 23.1695Z" fill="#FBBC05"/>
 <path d="M20.0068 9.53349C22.543 9.53349 24.7974 10.4102 26.5978 12.101L31.5294 7.16947C28.5391 4.38275 24.6565 2.67627 20.0068 2.67627C13.2748 2.67627 7.4665 6.54324 4.63281 12.1793L10.3628 16.6255C11.7249 12.555 15.5292 9.53349 20.0068 9.53349Z" fill="#EA4335"/>
-      <path
-      />
-    </svg>
-  }
+    <path
+    />
+  </svg>
+}
     href="/templates/payg/bigquery"
   >
     Implement a pay-as-you-go pricing model and offer free upfront credits to new users like Google BigQuery, the data analytics plaform.
@@ -29189,29 +30474,29 @@ Whether you are an API company, a fintech scale-up, an established SaaS provider
 
 ## Per-seat pricing
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card
     title="Notion"
     icon={
-    <svg
-      width="30"
-      height="30"
-      viewBox="0 0 39 40"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M3.07472 1.72564L25.2075 0.0908753C27.9262 -0.14232 28.6246 0.0148767 30.3342 1.25765L37.3993 6.23476C38.5644 7.09074 38.9524 7.32394 38.9524 8.25592V35.5526C38.9524 37.2634 38.3312 38.2753 36.1565 38.4297L10.4546 39.9865C8.82261 40.0637 8.04543 39.8305 7.19064 38.7413L1.98794 31.9759C1.05476 30.7307 0.667969 29.7987 0.667969 28.7091V4.44559C0.667969 3.04682 1.28916 1.88044 3.07472 1.72564Z"
-        fill="white"
-      />
-      <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M25.2075 0.0912753L3.07472 1.72604C1.28916 1.88044 0.667969 3.04722 0.667969 4.44559V28.7091C0.667969 29.7983 1.05476 30.7303 1.98794 31.9759L7.19064 38.7409C8.04543 39.8301 8.82261 40.0637 10.4546 39.9861L36.1569 38.4301C38.33 38.2753 38.9528 37.2634 38.9528 35.553V8.25632C38.9528 7.37233 38.6036 7.11754 37.5757 6.36315L30.3342 1.25765C28.625 0.0148767 27.9262 -0.14232 25.2075 0.0908753V0.0912753ZM11.0358 7.80953C8.93701 7.95072 8.46102 7.98272 7.26904 7.01354L4.2387 4.60319C3.93071 4.29119 4.0855 3.902 4.86149 3.8244L26.1383 2.26963C27.925 2.11364 28.8554 2.73642 29.5542 3.28041L33.2033 5.92436C33.3593 6.00316 33.7473 6.46835 33.2805 6.46835L11.3078 7.79113L11.0358 7.80953ZM8.58902 35.3198V12.147C8.58902 11.1351 8.89981 10.6683 9.83019 10.5899L35.0673 9.1123C35.9233 9.0351 36.3101 9.57909 36.3101 10.5895V33.6078C36.3101 34.6198 36.1541 35.4758 34.7569 35.553L10.6066 36.953C9.2094 37.0302 8.58942 36.565 8.58942 35.3198H8.58902ZM32.4286 13.3894C32.5834 14.0894 32.4286 14.7894 31.7286 14.8694L30.5646 15.1002V32.2091C29.5538 32.753 28.6234 33.0638 27.8458 33.0638C26.6031 33.0638 26.2927 32.6746 25.3619 31.5091L17.75 19.5333V31.1199L20.158 31.6651C20.158 31.6651 20.158 33.065 18.2152 33.065L12.8593 33.3758C12.7033 33.0638 12.8593 32.2867 13.4021 32.1319L14.8009 31.7439V16.4242L12.8597 16.267C12.7037 15.567 13.0917 14.5562 14.1797 14.4778L19.9264 14.091L27.8462 26.2216V15.4898L25.8275 15.2578C25.6715 14.4006 26.2927 13.7778 27.0687 13.7018L32.4286 13.3894Z"
-        fill="black"
-      />
-    </svg>
-  }
+  <svg
+    width="30"
+    height="30"
+    viewBox="0 0 39 40"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M3.07472 1.72564L25.2075 0.0908753C27.9262 -0.14232 28.6246 0.0148767 30.3342 1.25765L37.3993 6.23476C38.5644 7.09074 38.9524 7.32394 38.9524 8.25592V35.5526C38.9524 37.2634 38.3312 38.2753 36.1565 38.4297L10.4546 39.9865C8.82261 40.0637 8.04543 39.8305 7.19064 38.7413L1.98794 31.9759C1.05476 30.7307 0.667969 29.7987 0.667969 28.7091V4.44559C0.667969 3.04682 1.28916 1.88044 3.07472 1.72564Z"
+      fill="white"
+    />
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M25.2075 0.0912753L3.07472 1.72604C1.28916 1.88044 0.667969 3.04722 0.667969 4.44559V28.7091C0.667969 29.7983 1.05476 30.7303 1.98794 31.9759L7.19064 38.7409C8.04543 39.8301 8.82261 40.0637 10.4546 39.9861L36.1569 38.4301C38.33 38.2753 38.9528 37.2634 38.9528 35.553V8.25632C38.9528 7.37233 38.6036 7.11754 37.5757 6.36315L30.3342 1.25765C28.625 0.0148767 27.9262 -0.14232 25.2075 0.0908753V0.0912753ZM11.0358 7.80953C8.93701 7.95072 8.46102 7.98272 7.26904 7.01354L4.2387 4.60319C3.93071 4.29119 4.0855 3.902 4.86149 3.8244L26.1383 2.26963C27.925 2.11364 28.8554 2.73642 29.5542 3.28041L33.2033 5.92436C33.3593 6.00316 33.7473 6.46835 33.2805 6.46835L11.3078 7.79113L11.0358 7.80953ZM8.58902 35.3198V12.147C8.58902 11.1351 8.89981 10.6683 9.83019 10.5899L35.0673 9.1123C35.9233 9.0351 36.3101 9.57909 36.3101 10.5895V33.6078C36.3101 34.6198 36.1541 35.4758 34.7569 35.553L10.6066 36.953C9.2094 37.0302 8.58942 36.565 8.58942 35.3198H8.58902ZM32.4286 13.3894C32.5834 14.0894 32.4286 14.7894 31.7286 14.8694L30.5646 15.1002V32.2091C29.5538 32.753 28.6234 33.0638 27.8458 33.0638C26.6031 33.0638 26.2927 32.6746 25.3619 31.5091L17.75 19.5333V31.1199L20.158 31.6651C20.158 31.6651 20.158 33.065 18.2152 33.065L12.8593 33.3758C12.7033 33.0638 12.8593 32.2867 13.4021 32.1319L14.8009 31.7439V16.4242L12.8597 16.267C12.7037 15.567 13.0917 14.5562 14.1797 14.4778L19.9264 14.091L27.8462 26.2216V15.4898L25.8275 15.2578C25.6715 14.4006 26.2927 13.7778 27.0687 13.7018L32.4286 13.3894Z"
+      fill="black"
+    />
+  </svg>
+}
     href="/templates/per-seat/notion"
   >
     Set up a per-user pricing like Notion, the collaboration software for
@@ -29768,7 +31053,7 @@ In this article, you will learn how to offer free upfront credits for new users 
 This template is fitted for infra companies, like this BigQuery example, but is also widely used among AI companies to let new users try their products easily.
 [Mistral](https://mistral.ai/news/2024-ft-hackathon/#:~:text=We%20offer%20%24100%20free%20credits%20to%20selected%20hackathon%20participants) or [Perplexity](https://docs.perplexity.ai/docs/pricing#:~:text=pplx%2Dapi%20implements%20a%20usage,of%20free%20credit%20every%20month) are other great examples.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/EaRi97Q2BcQ?si=n1WP-vIdVvUzzk3v&start=67" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+<iframe title="YouTube video player" />
 
 ## Pricing structure
 
@@ -30988,7 +32273,7 @@ Replicate Mistral's per-token pricing model with Lago.
 In this article, you will learn how Mistral is using Lago to build a billing system based on AI tokens.
 This template is suitable for Large Language Model (LLM) and Generative AI companies whose pricing can vary based on the application or model used.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/qZLRsVOk-MY?si=xZN856Dod8YNRoob&start=176" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+<iframe title="YouTube video player" />
 
 ## Pricing structure
 
@@ -31793,7 +33078,7 @@ Replicate OpenAI's per-token pricing model with Lago.
 In this article, you will learn how to build a billing system with Lago based on tokens.
 This template is suitable for Large Language Model (LLM) and Generative AI companies whose pricing can vary based on the application or model used.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ulLpAn8_P9o?si=18NXjL8pITlrVuZ7&start=35" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+<iframe title="YouTube video player" />
 
 ## Pricing structure
 
@@ -32389,63 +33674,72 @@ For OpenAI, pricing depends on the language model used. Here are several price p
     2. Reference the customer's subscription with `external_subscription_id`
     3. Include usage and filters data in `properties`
 
-    <Tabs>
-      <Tab title="cURL">
-        ```bash highlight={10,11,12-16} theme={"dark"}
-        LAGO_URL="https://api.getlago.com"
-        API_KEY="__API_KEY__"
+    <CodeGroup>
+      ```bash cURL highlight={10,11,12-16} theme={"dark"}
+      LAGO_URL="https://api.getlago.com"
+      API_KEY="__API_KEY__"
 
-        curl --location --request POST "$LAGO_URL/api/v1/events" \
-          --header "Authorization: Bearer $API_KEY" \
-          --header 'Content-Type: application/json' \
-          --data-raw '{
-            "event": {
-              "transaction_id": "__TRANSACTION_ID__",
-              "code": "__BILLABLE_METRIC_CODE__",
-              "external_subscription_id": "__EXTERNAL_SUBSCRIPTION_ID__",
-              "properties": {
-                "total": 5000,
-                "model": "8k",
-                "type": "input"
-              }
+      curl --location --request POST "$LAGO_URL/api/v1/events" \
+        --header "Authorization: Bearer $API_KEY" \
+        --header 'Content-Type: application/json' \
+        --data-raw '{
+          "event": {
+            "transaction_id": "__TRANSACTION_ID__",
+            "code": "__BILLABLE_METRIC_CODE__",
+            "external_subscription_id": "__EXTERNAL_SUBSCRIPTION_ID__",
+            "properties": {
+              "total": 5000,
+              "model": "8k",
+              "type": "input"
             }
-          }'
-        ```
-      </Tab>
-
-      <Tab title="Python">
-        ```python highlight={9,10-15} theme={"dark"}
-        from lago_python_client.client import Client
-        from lago_python_client.exceptions import LagoApiError
-        from lago_python_client.models import Event
-
-        client = Client(api_key='__API_KEY__')
-
-        event = Event(
-          transaction_id="__TRANSACTION_ID__",
-          code="__BILLABLE_METRIC_CODE__",
-          external_subscription_id="__EXTERNAL_SUBSCRIPTION_ID__",
-          properties={
-            "total": 5000,
-            "model": "8k",
-            "type": "input"
           }
-        )
+        }'
+      ```
 
-        try:
-            client.events.create(event)
-        except LagoApiError as e:
-            repair_broken_state(e)  # do something on error or raise your own exception
-        ```
-      </Tab>
+      ```python Python highlight={9,10-15} theme={"dark"}
+      from lago_python_client.client import Client
+      from lago_python_client.exceptions import LagoApiError
+      from lago_python_client.models import Event
 
-      <Tab title="Ruby">
-        ```ruby highlight={7,8-13} theme={"dark"}
-        require 'lago-ruby-client'
+      client = Client(api_key='__API_KEY__')
 
-        client = Lago::Api::Client.new(api_key: '__API_KEY__')
+      event = Event(
+        transaction_id="__TRANSACTION_ID__",
+        code="__BILLABLE_METRIC_CODE__",
+        external_subscription_id="__EXTERNAL_SUBSCRIPTION_ID__",
+        properties={
+          "total": 5000,
+          "model": "8k",
+          "type": "input"
+        }
+      )
 
-        client.events.create(
+      try:
+          client.events.create(event)
+      except LagoApiError as e:
+          repair_broken_state(e)  # do something on error or raise your own exception
+      ```
+
+      ```ruby Ruby highlight={7,8-13} theme={"dark"}
+      require 'lago-ruby-client'
+
+      client = Lago::Api::Client.new(api_key: '__API_KEY__')
+
+      client.events.create(
+        transaction_id: "__TRANSACTION_ID__",
+        code: "__BILLABLE_METRIC_CODE__",
+        external_subscription_id: "__EXTERNAL_SUBSCRIPTION_ID__",
+        properties: {
+          total: 5000,
+          model: "8k",
+          type: "input"
+        }
+      )
+      ```
+
+      ```js Javascript highlight={4,5-10} theme={"dark"}
+      await client.events.createEvent({
+        event: {
           transaction_id: "__TRANSACTION_ID__",
           code: "__BILLABLE_METRIC_CODE__",
           external_subscription_id: "__EXTERNAL_SUBSCRIPTION_ID__",
@@ -32454,44 +33748,25 @@ For OpenAI, pricing depends on the language model used. Here are several price p
             model: "8k",
             type: "input"
           }
-        )
-        ```
-      </Tab>
-
-      <Tab title="Javascript">
-        ```js highlight={4,5-10} theme={"dark"}
-        await client.events.createEvent({
-          event: {
-            transaction_id: "__TRANSACTION_ID__",
-            code: "__BILLABLE_METRIC_CODE__",
-            external_subscription_id: "__EXTERNAL_SUBSCRIPTION_ID__",
-            properties: {
-              total: 5000,
-              model: "8k",
-              type: "input"
-            }
-          }
-        });
-        ```
-      </Tab>
-
-      <Tab title="Go">
-        ```go highlight={10-16} theme={"dark"}
-        eventInput := &lago.EventInput{
-          TransactionID:          "__TRANSACTION_ID__",
-          Code:                   "__BILLABLE_METRIC_CODE__",
-          ExternalSubscriptionID: "__EXTERNAL_SUBSCRIPTION_ID__",
-          Properties: map[string]interface{}{
-            "total": 5000,
-            "model": "8k",
-            "type":  "input",
-          },
         }
+      });
+      ```
 
-        event, err := client.Event().Create(ctx, eventInput)
-        ```
-      </Tab>
-    </Tabs>
+      ```go Go highlight={10-16} theme={"dark"}
+      eventInput := &lago.EventInput{
+        TransactionID:          "__TRANSACTION_ID__",
+        Code:                   "__BILLABLE_METRIC_CODE__",
+        ExternalSubscriptionID: "__EXTERNAL_SUBSCRIPTION_ID__",
+        Properties: map[string]interface{}{
+          "total": 5000,
+          "model": "8k",
+          "type":  "input",
+        },
+      }
+
+      event, err := client.Event().Create(ctx, eventInput)
+      ```
+    </CodeGroup>
 
     Refer to the [API reference](/api-reference/events/usage) to create an event.
   </Step>
@@ -32548,7 +33823,7 @@ Implement a per-transaction pricing model like Stripe, the leading payments infr
 In this article, you will learn how to build a per-transaction billing system with Lago, where a single event can trigger instant charges.
 This template is suitable for companies whose pricing depends on transactions, such as fintechs and marketplaces that deduct their fees from their customers' revenue.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/SBc7eB3T0rE?si=EAmRNU92Bgrh7w_B&start=62" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+<iframe title="YouTube video player" />
 
 ## Pricing structure
 
@@ -33243,46 +34518,17 @@ Source: https://getlago.com/docs/welcome
 
 
 
-export function openSearch() {
-  document.getElementById('search-bar-entry').click();
-}
+<div>
+  <div />
 
-
-<div className="relative w-full flex items-center justify-center" style={{ height: '24rem', overflow: 'hidden' }}>
-  <div id="background-div" class="absolute inset-0" style={{height: "24rem", backgroundSize: "cover", backgroundPosition: "center"}} />
-
-  <div style={{ position: 'absolute', textAlign: 'center', padding: '0 1rem', maxWidth: '100%', left: '50%', transform: 'translateX(-50%)' }}>
-    <h1
-      className="text-black dark:text-white"
-      style={{
-        marginTop: '4rem',
-        fontWeight: 300,
-        margin: '0',
-        textAlign: 'center',         
-        fontWeight: '500',
-        letterSpacing: '-0.03em',
-        fontSize: '72px',
-        lineHeight: 'normal'
-    }}
-    >
+  <div>
+    <h1>
       Welcome to Lago
     </h1>
 
-    <div className="flex items-center justify-center">
-      <div className="flex items-center justify-center" style={{ width: '100%' }}>
-        <button
-          type="button"
-          className="w-full lg:flex items-center text-sm leading-6 rounded-full py-2 pl-3 pr-3 shadow-sm text-gray-400 dark:text-white/50 bg-background-light dark:bg-background-dark dark:brightness-[1.1] dark:ring-1 dark:hover:brightness-[1.25] ring-1 ring-gray-400/20 hover:ring-gray-600/25 dark:ring-gray-600/30 dark:hover:ring-gray-500/30 focus:outline-primary"
-          id="home-search-entry"
-          style={{
-      marginTop: '2rem',
-      maxWidth: '200rem',
-      width: '100%',
-      margin: '2rem auto 0',
-      borderRadius: '0.5rem'
-    }}
-          onClick={openSearch}
-        >
+    <div>
+      <div>
+        <button type="button">
           Search our billing guides, API refs and more...
         </button>
       </div>
@@ -33290,158 +34536,92 @@ export function openSearch() {
   </div>
 </div>
 
-<div
-  style={{
-  marginTop: '0rem',
-  marginBottom: '8rem',
-  maxWidth: '70rem',
-  marginLeft: 'auto',
-  marginRight: 'auto',
-  paddingLeft: '1.25rem',
-  paddingRight: '1.25rem'
-}}
->
-  <h2
-    className="text-gray-900 dark:text-gray-200 text-center"
-    style={{
-    marginTop: '2rem',
-    marginBottom: '1rem',
-    fontWeight: '500',
-    fontSize: '1.5rem'
-  }}
-  >
+<div>
+  <h2>
     Get started with our billing docs and guides
   </h2>
 
-  <CardGroup cols={3}>
-    <Card href="https://getlago.com/docs/guide" horizontal={false}>
-      <div className="flex flex-col">
-        <div className="mb-4">
-          <svg
-            className="h-6 w-6 text-gray-900 dark:text-white"
-            style={{
-            maskImage: 'url("https://mintlify.b-cdn.net/v6.5.1/solid/play.svg")',
-            maskRepeat: 'no-repeat',
-            maskPosition: 'center center',
-            backgroundColor: 'currentColor'
-          }}
-          />
-        </div>
+  <div>
+    <a href="https://getlago.com/docs/guide">
+      <svg>
+        <path />
 
-        <div>
-          <h3 className="font-medium mb-1 text-gray-900 dark:text-white" style={{ fontSize: '1rem' }}>Guide</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-300" style={{ color: '#60646c' }}>Learn everything about Lago billing engine. Build your first plans in minutes.</p>
-        </div>
-      </div>
-    </Card>
+        <path />
 
-    <Card href="https://getlago.com/docs/api-reference" horizontal={false}>
-      <div className="flex flex-col">
-        <div className="mb-4">
-          <svg
-            className="h-6 w-6 text-gray-900 dark:text-white"
-            style={{
-            maskImage: 'url("https://mintlify.b-cdn.net/v6.5.1/solid/code-simple.svg")',
-            maskRepeat: 'no-repeat',
-            maskPosition: 'center center',
-            backgroundColor: 'currentColor'
-          }}
-          />
-        </div>
+        <path />
+      </svg>
 
-        <div>
-          <h3 className="font-medium mb-1 text-gray-900 dark:text-white" style={{ fontSize: '1rem' }}>API References</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-300" style={{ color: '#60646c' }}>Automate your billing actions with our API references and SDKs.</p>
-        </div>
-      </div>
-    </Card>
+      <h3>Guide</h3>
+      <p>Learn everything about Lago billing engine. Build your first plans in minutes.</p>
+    </a>
 
-    <Card href="https://getlago.com/slack" horizontal={false}>
-      <div className="flex flex-col">
-        <div className="mb-4">
-          <svg
-            className="h-6 w-6 text-gray-900 dark:text-white"
-            style={{
-            maskImage: 'url("https://mintlify.b-cdn.net/v6.6.0/brands/slack.svg")',
-            maskRepeat: 'no-repeat',
-            maskPosition: 'center center',
-            backgroundColor: 'currentColor'
-          }}
-          />
-        </div>
+    <a href="https://getlago.com/docs/api-reference">
+      <svg>
+        <path />
 
-        <div>
-          <h3 className="font-medium mb-1 text-gray-900 dark:text-white" style={{ fontSize: '1rem' }}>Community</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-300" style={{ color: '#60646c' }}>Ask questions, share your feedback and get help from the community.</p>
-        </div>
-      </div>
-    </Card>
-  </CardGroup>
+        <path />
+      </svg>
 
-  <CardGroup cols={3}>
-    <Card href="https://getlago.com/docs/templates" horizontal={false}>
-      <div className="flex flex-col">
-        <div className="mb-4">
-          <svg
-            className="h-6 w-6 text-gray-900 dark:text-white"
-            style={{
-            maskImage: 'url("https://mintlify.b-cdn.net/v6.5.1/solid/books.svg")',
-            maskRepeat: 'no-repeat',
-            maskPosition: 'center center',
-            backgroundColor: 'currentColor'
-          }}
-          />
-        </div>
+      <h3>API References</h3>
+      <p>Automate your billing actions with our API references and SDKs.</p>
+    </a>
 
-        <div>
-          <h3 className="font-medium mb-1 text-gray-900 dark:text-white" style={{ fontSize: '1rem' }}>Templates</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-300" style={{ color: '#60646c' }}>Clone and replicate billing templates from top-tier companies.</p>
-        </div>
-      </div>
-    </Card>
+    <a href="https://getlago.com/slack">
+      <svg>
+        <path />
 
-    <Card href="https://getlago.com/docs/changelog" horizontal={false}>
-      <div className="flex flex-col">
-        <div className="mb-4">
-          <svg
-            className="h-6 w-6 text-gray-900 dark:text-white"
-            style={{
-            maskImage: 'url("https://mintlify.b-cdn.net/v6.5.1/solid/bullhorn.svg")',
-            maskRepeat: 'no-repeat',
-            maskPosition: 'center center',
-            backgroundColor: 'currentColor'
-          }}
-          />
-        </div>
+        <path />
 
-        <div>
-          <h3 className="font-medium mb-1 text-gray-900 dark:text-white" style={{ fontSize: '1rem' }}>Changelog</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-300" style={{ color: '#60646c' }}>See the latest product updates and improvements.</p>
-        </div>
-      </div>
-    </Card>
+        <path />
 
-    <Card href="https://getlago.com/blog" horizontal={false}>
-      <div className="flex flex-col">
-        <div className="mb-4">
-          <svg
-            className="h-6 w-6 text-gray-900 dark:text-white"
-            style={{
-            maskImage: 'url("https://mintlify.b-cdn.net/v6.5.1/solid/block-quote.svg")',
-            maskRepeat: 'no-repeat',
-            maskPosition: 'center center',
-            backgroundColor: 'currentColor'
-          }}
-          />
-        </div>
+        <path />
+      </svg>
 
-        <div>
-          <h3 className="font-medium mb-1 text-gray-900 dark:text-white" style={{ fontSize: '1rem' }}>Blog</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-300" style={{ color: '#60646c' }}>Read the latest news, billing tips and articles from the Lago team.</p>
-        </div>
-      </div>
-    </Card>
-  </CardGroup>
+      <h3>Community</h3>
+      <p>Ask questions, share your feedback and get help from the community.</p>
+    </a>
+  </div>
+
+  <div>
+    <a href="https://getlago.com/docs/templates">
+      <svg>
+        <path />
+
+        <path />
+
+        <path />
+
+        <path />
+      </svg>
+
+      <h3>Templates</h3>
+      <p>Clone and replicate billing templates from top-tier companies.</p>
+    </a>
+
+    <a href="https://getlago.com/docs/changelog">
+      <svg>
+        <path />
+
+        <path />
+
+        <path />
+      </svg>
+
+      <h3>Changelog</h3>
+      <p>See the latest product updates and improvements.</p>
+    </a>
+
+    <a href="https://getlago.com/blog">
+      <svg>
+        <path />
+
+        <path />
+      </svg>
+
+      <h3>Blog</h3>
+      <p>Read the latest news, billing tips and articles from the Lago team.</p>
+    </a>
+  </div>
 </div>
 
 

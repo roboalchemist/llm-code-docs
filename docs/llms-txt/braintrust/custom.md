@@ -1,20 +1,25 @@
 # Source: https://braintrust.dev/docs/integrations/ai-providers/custom.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Custom providers
 
 > Set up custom AI providers with Braintrust for evaluation and tracing
 
 Braintrust supports custom AI providers, allowing you to integrate any AI model or endpoint into your evaluation and tracing workflows. This includes custom models from existing providers, self-hosted models, or proprietary AI services.
 
+Custom providers appear alongside standard providers in model selection dropdowns.
+
 ## Setup
 
 If you have custom models as part of your OpenAI or other accounts, or if you're running your own AI endpoints, you can add them to Braintrust by configuring a custom provider.
 
-1. Navigate to [**AI providers**](https://www.braintrust.dev/app/settings/providers) in your Braintrust dashboard
-2. Select **Add provider** and **Custom**
-3. Configure your custom endpoint with the required parameters
-
-<img src="https://mintcdn.com/braintrust/fCv0O2xOtLGPYu6L/images/custom-model.png?fit=max&auto=format&n=fCv0O2xOtLGPYu6L&q=85&s=1bf5f2b8e41eb919ade8cd5ee1ebeed5" className="box-content" alt="Add provider dialog in Braintrust" data-og-width="884" width="884" data-og-height="717" height="717" data-path="images/custom-model.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/fCv0O2xOtLGPYu6L/images/custom-model.png?w=280&fit=max&auto=format&n=fCv0O2xOtLGPYu6L&q=85&s=478612a5e799be2c78cf633e097b4ee8 280w, https://mintcdn.com/braintrust/fCv0O2xOtLGPYu6L/images/custom-model.png?w=560&fit=max&auto=format&n=fCv0O2xOtLGPYu6L&q=85&s=81e321d96b1914f603ca14e0e80fe312 560w, https://mintcdn.com/braintrust/fCv0O2xOtLGPYu6L/images/custom-model.png?w=840&fit=max&auto=format&n=fCv0O2xOtLGPYu6L&q=85&s=e102ed7d02057ec23d9ab876fef466fd 840w, https://mintcdn.com/braintrust/fCv0O2xOtLGPYu6L/images/custom-model.png?w=1100&fit=max&auto=format&n=fCv0O2xOtLGPYu6L&q=85&s=43a331ca884ddfba2d2e96d3230451ee 1100w, https://mintcdn.com/braintrust/fCv0O2xOtLGPYu6L/images/custom-model.png?w=1650&fit=max&auto=format&n=fCv0O2xOtLGPYu6L&q=85&s=c940280bc008063ce0a24b69cb9a06cf 1650w, https://mintcdn.com/braintrust/fCv0O2xOtLGPYu6L/images/custom-model.png?w=2500&fit=max&auto=format&n=fCv0O2xOtLGPYu6L&q=85&s=d07315510c81c38fd38f95b6059f7182 2500w" />
+1. Go to <Icon icon="settings-2" /> **Settings**.
+2. Under **Organization** or **Project**, select **AI providers**.
+3. Under **Custom providers**, click **Create**.
+4. Configure your custom endpoint with the required parameters.
 
 ### Configuration options
 
@@ -44,7 +49,7 @@ X-Model: {{model}}
 
 ### Streaming support
 
-If your endpoint doesn't support streaming natively, set the "Endpoint supports streaming" flag to false. Braintrust will automatically convert the response to streaming format, allowing your models to work in the playground and other streaming contexts.
+If your endpoint supports streaming natively, enable **This endpoint supports streaming**. Braintrust will automatically convert the response to streaming format, allowing your models to work in the playground and other streaming contexts.
 
 ### Model metadata
 
@@ -55,12 +60,12 @@ You can optionally specify:
 * **Output cost**: Cost per million output tokens (for experiment cost estimation)
 
 <Note>
-  API keys are encrypted using 256-bit AES-GCM encryption and are not stored or logged by Braintrust.
+  API keys are encrypted at rest using [transparent data encryption](https://en.wikipedia.org/wiki/Transparent_data_encryption) with a [unique 256-bit key and nonce](https://libsodium.gitbook.io/doc/secret-key_cryptography/aead).
 </Note>
 
 ## Trace logs with custom providers
 
-[Trace](/guides/traces) custom provider LLM calls for observability and monitoring.
+[Trace](/instrument/custom-tracing) custom provider LLM calls for observability and monitoring.
 
 ### Automatic tracing
 
@@ -174,7 +179,7 @@ For more control over tracing, you can manually log calls to your custom provide
 
 ## Evaluations
 
-Evaluations distill the non-deterministic outputs of custom models into an effective feedback loop that enables you to ship more reliable, higher quality products. Braintrust `Eval` is a simple function composed of a dataset of user inputs, a task, and a set of scorers. To learn more about evaluations, see the [Experiments guide](/core/experiments).
+Evaluations distill the non-deterministic outputs of custom models into an effective feedback loop that enables you to ship more reliable, higher quality products. Braintrust `Eval` is a simple function composed of a dataset of user inputs, a task, and a set of scorers. To learn more about evaluations, see the [Experiments guide](/evaluate/run-evaluations).
 
 ### Basic evaluation setup
 
@@ -381,10 +386,5 @@ For proprietary or enterprise AI services:
 4. Enable or disable streaming based on service capabilities
 
 <Note>
-  Test your custom provider configuration in a Braintrust [Playground](/core/playground) before running large-scale evaluations to ensure everything is working correctly.
+  Test your custom provider configuration in a Braintrust [Playground](/evaluate/playgrounds) before running large-scale evaluations to ensure everything is working correctly.
 </Note>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

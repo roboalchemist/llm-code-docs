@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/examples/job-search-with-exa.md
+# Source: https://exa.ai/docs/examples/job-search-with-exa.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Job Search with Exa
 
@@ -33,8 +37,3 @@ For example, Exa excels at finding similar things.
 * **Shopping**: if you want a similar (but cheaper) shirt, paste a link to your shirt and it'll give you hundreds like it
 * **Research**: paste a link to a research paper to find hundreds of other relevant papers
 * **Startups**: if you're building a startup, find your competitors by searching a link to your startup
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

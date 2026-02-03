@@ -8,120 +8,303 @@
 
 # Source: https://configcat.com/docs/advanced/code-references/overview.md
 
-# Source: https://configcat.com/docs/integrations/overview.md
+# Scan & Upload Code References Overview
 
-# Source: https://configcat.com/docs/sdk-reference/overview.md
+Copy page
 
-# Source: https://configcat.com/docs/sdk-reference/openfeature/overview.md
+ConfigCat's<!-- --> [CLI](https://configcat.com/docs/advanced/cli.md) <!-- -->has the ability to scan your source code for feature flag and setting usages and upload the found code references to ConfigCat.
 
-# Source: https://configcat.com/docs/sdk-reference/js/overview.md
+This feature makes the elimination of the technical debt easier, as it can show which repositories reference your feature flags and settings in one centralized place on your [Dashboard](https://app.configcat.com).
 
-# Source: https://configcat.com/docs/advanced/code-references/overview.md
+You can integrate the CLI into your CI/CD pipeline or use it with other execution mechanisms like scheduled jobs or VCS push triggered workflows.
 
-# Source: https://configcat.com/docs/integrations/overview.md
+## Scan[​](#scan "Direct link to Scan")
 
-# Source: https://configcat.com/docs/sdk-reference/overview.md
+The following example shows a simple scan execution that prints the scan result to the console. The `scan` command searches for every feature flag and setting key defined within a selected Config.
 
-# Source: https://configcat.com/docs/sdk-reference/openfeature/overview.md
+![ConfigCat scan command in action](/docs/assets/cli/cli-scan.gif)
 
-# Source: https://configcat.com/docs/sdk-reference/js/overview.md
+If you want to see this in action on your project, run the following command in its root folder:
 
-# Source: https://configcat.com/docs/advanced/code-references/overview.md
+```bash
+configcat scan . --print
 
-# Source: https://configcat.com/docs/integrations/overview.md
+```
 
-# Source: https://configcat.com/docs/sdk-reference/overview.md
+See the `scan` command's [reference documentation](https://configcat.github.io/cli/configcat-scan.html) for all available command parameters.
 
-# Source: https://configcat.com/docs/sdk-reference/openfeature/overview.md
+### Deleted Flags[​](#deleted-flags "Direct link to Deleted Flags")
 
-# Source: https://configcat.com/docs/sdk-reference/js/overview.md
+As part of the scanning operation, the CLI gathers all deleted feature flags and settings from the last 180 days and looks for their usage in your source code. When it finds a reference to a deleted feature flag or setting, it prints a warning that lists their keys.
 
-# Source: https://configcat.com/docs/advanced/code-references/overview.md
+```bash
+[warning]: 5 deleted feature flag/setting reference(s) found in 4 file(s). Keys: [featureThatWasDeleted1, featureThatWasDeleted2]
 
-# Source: https://configcat.com/docs/integrations/overview.md
+```
 
-# Source: https://configcat.com/docs/sdk-reference/overview.md
+### Exclude Flags from Scanning[​](#exclude-flags-from-scanning "Direct link to Exclude Flags from Scanning")
 
-# Source: https://configcat.com/docs/sdk-reference/openfeature/overview.md
+There's an option to exclude feature flags or settings from the scanning operation by their keys.
 
-# Source: https://configcat.com/docs/sdk-reference/js/overview.md
+```bash
+configcat scan <dir> --exclude-flag-keys featureFlagToExclude1 featureFlagToExclude2
 
-# Source: https://configcat.com/docs/advanced/code-references/overview.md
+```
 
-# Source: https://configcat.com/docs/integrations/overview.md
+## Config ID[​](#config-id "Direct link to Config ID")
 
-# Integrations Overview
+In non-interactive environments, like in a CI/CD pipeline, you have to pass the ID of your ConfigCat Config that you want to scan against. The scanner will use this ID to determine which feature flags & settings to search for in your source code.
 
-Streamline your workflows by integrating ConfigCat with your essential tools and platforms. Leverage these integrations to manage feature flags efficiently and enhance collaboration across your tech stack. Explore our available integrations below to maximize the impact of feature flags in your development process.
+To get the ID of a Config, follow the steps below:
 
-## Amplitude[​](#amplitude "Direct link to Amplitude")
+1. Go to your [ConfigCat Dashboard](https://app.configcat.com), select the desired Config, and click the code references icon on one of your feature flags.
 
-Monitor your feature flag changes in Amplitude, and send feature flag evaluation analytics to Amplitude Experiments. [See the detailed guide](https://configcat.com/docs/docs/integrations/amplitude/.md)
+![ConfigCat code references button](/docs/assets/cli/scan/code_ref.png)
 
-## Bitbucket Pipe[​](#bitbucket-pipe "Direct link to Bitbucket Pipe")
+2. Copy the Config ID from the highlighted box.
 
-Scan your code repository to identify unused feature flags, helping you maintain a clean and efficient codebase. [See the detailed guide](https://configcat.com/docs/docs/integrations/bitbucket/.md)
+![ConfigCat Config ID](/docs/assets/cli/scan/config_id.png)
 
-## Bitrise Step[​](#bitrise-step "Direct link to Bitrise Step")
+## How Scanning Works[​](#how-scanning-works "Direct link to How Scanning Works")
 
-Scan your code repository to identify unused feature flags, helping you maintain a clean and efficient codebase. [See the detailed guide](https://configcat.com/docs/docs/integrations/bitrise/.md)
+The scanner looks for feature flag and setting keys between quotation marks (`'` `"` `` ` ``) in the first place.
 
-## CircleCI Orb[​](#circleci-orb "Direct link to CircleCI Orb")
+info
 
-Scan your code repository to identify unused feature flags, helping you maintain a clean and efficient codebase. [See the detailed guide](https://configcat.com/docs/docs/integrations/circleci/.md)
+There's an option to extend the feature flag and setting key usage regex patterns with the `--usage-patterns` argument of the `scan` command.
 
-## DataDog[​](#datadog "Direct link to DataDog")
+```bash
+configcat scan <dir> --usage-patterns "<pattern1>" "<pattern2>"
 
-Monitor feature flag events in real-time. Feature flag changes will appear as events in Datadog, tagged with relevant product, config, and environment details. [See the detailed guide](https://configcat.com/docs/docs/integrations/datadog/.md)
+```
 
-## GitHub Action[​](#github-action "Direct link to GitHub Action")
+Usage patterns can also be set via the `CONFIGCAT_USAGE_PATTERNS` environment variable as a comma delimited list.
 
-Discover feature flag usages in your source code and upload the found code references to ConfigCat. [See the detailed guide](https://configcat.com/docs/docs/integrations/github/.md)
+```bash
+export CONFIGCAT_USAGE_PATTERNS="<pattern1>,<pattern2>";
 
-## Google Analytics[​](#google-analytics "Direct link to Google Analytics")
+```
 
-Log feature flag evaluations into Google Analytics experiments for advanced analytics and A/B test results. [See the detailed guide](https://configcat.com/docs/docs/integrations/google-analytics/.md)
+The regex pattern must include the `CC_KEY` placeholder that represents the actual feature flag or setting key in your code. For example, the following pattern allows the recognition of Ruby symbols as flag key usages:
 
-## JetBrains/IntelliJ IDE plugin[​](#jetbrainsintellij-ide-plugin "Direct link to JetBrains/IntelliJ IDE plugin")
+```bash
+configcat scan <dir> --usage-patterns ":CC_KEY"
 
-Manage your feature flags from JetBrains/IntelliJ IDE. [See the detailed guide](https://configcat.com/docs/docs/integrations/intellij/.md)
+```
 
-## Jira Cloud Plugin[​](#jira-cloud-plugin "Direct link to Jira Cloud Plugin")
+It will match the following usage:
 
-Link ConfigCat feature flags to Jira issues, enabling you to turn features on or off, add targeting or percentage rules right from Jira. [See the detailed guide](https://configcat.com/docs/docs/integrations/jira/.md)
+```ruby
+if FeatureFlags.enabled(:my_feature_key)
+  #...
+end
 
-## Mixpanel[​](#mixpanel "Direct link to Mixpanel")
+```
 
-This integration enables you to log feature flag data into Mixpanel, providing insights into user interactions and experiment results. [See the detailed guide](https://configcat.com/docs/docs/integrations/mixpanel/.md)
+### Aliases[​](#aliases "Direct link to Aliases")
 
-## monday.com[​](#mondaycom "Direct link to monday.com")
+The found keys' context is examined for **aliases**, like variables, constants, or enumerations used to store these keys. **Aliases** are treated as indirect references and are included in the searching process.
 
-Turn features On / Off right from a linked item on your monday.com board. [See the detailed guide](https://configcat.com/docs/docs/integrations/monday/.md)
+For example, the following `C#` constant's name (`MyAwesomeFeature`) will be recognized as an alias:
 
-## Slack[​](#slack "Direct link to Slack")
+```csharp
+public static class FeatureFlagKeys
+{
+    public const string MyAwesomeFeature = "my_awesome_feature";
+}
 
-Receive instant notifications in Slack about feature flag updates, ensuring everyone is always in the loop. [See the detailed guide](https://configcat.com/docs/docs/integrations/slack/.md)
+```
 
-## Terraform[​](#terraform "Direct link to Terraform")
+The scanner will treat this constant's usage as an indirect reference to the flag.
 
-Configure and access ConfigCat resources via Terraform. [See the detailed guide](https://configcat.com/docs/docs/integrations/terraform/.md)
+```csharp
+if (await configCatClient.GetValueAsync(FeatureFlagKeys.MyAwesomeFeature, false))
+{
+    // the feature is on.
+}
 
-## Trello Power-Up[​](#trello-power-up "Direct link to Trello Power-Up")
+```
 
-Turn features On / Off right from a linked card on your Trello board. [See the detailed guide](https://configcat.com/docs/docs/integrations/trello/.md)
+info
 
-## Twilio Segment[​](#twilio-segment "Direct link to Twilio Segment")
+The alias recognition **adapts to the characteristics of different languages**.<br /><!-- -->For example, it can find aliases in `Go` constants/variable assignments:
 
-Track feature flag evaluations and monitor change events. This integration allows you to analyze user interactions and experiment results seamlessly. [See the detailed guide](https://configcat.com/docs/docs/integrations/segment/.md)
+```go
+const (
+	myAwesomeFeature string = "my_awesome_feature"
+)
 
-## Visual Studio Code[​](#visual-studio-code "Direct link to Visual Studio Code")
+myAwesomeFeature := "my_awesome_feature"
 
-Manage your feature flags from VSCode. [See the detailed guide](https://configcat.com/docs/docs/integrations/vscode/.md)
+```
 
-## Zapier Zap[​](#zapier-zap "Direct link to Zapier Zap")
+And in `Swift` enums/variable assignments as well:
 
-Integrate ConfigCat with Zapier to automate workflows and connect with over 2,000 web services. [See the detailed guide](https://configcat.com/docs/docs/integrations/zapier/.md)
+```swift
+enum FlagKeys : String {
+  case MyAwesomeFeature = "my_awesome_feature"
+}
 
-## Zoho Flow[​](#zoho-flow "Direct link to Zoho Flow")
+let myAwesomeFeature: String = "my_awesome_feature"
 
-Integrate ConfigCat with Zoho Flow to connect with over 500 web apps and automate your feature flag workflows without any coding. [See the detailed guide](https://configcat.com/docs/docs/integrations/zoho-flow/.md)
+```
+
+You can check [here](https://raw.githubusercontent.com/configcat/cli/main/test/ConfigCat.Cli.Tests/alias.txt) a bunch of other samples that we tested.
+
+info
+
+An alias must be at least **30% identical to the feature flag/setting key**. The similarity check is case insensitive and ignores `_` characters. This behavior prevents false recognitions in expressions like `<input type="text" value="my_awesome_feature">` where `value` shouldn't be treated as alias.
+
+### Custom alias match patterns[​](#custom-alias-match-patterns "Direct link to Custom alias match patterns")
+
+There's an option to set custom regex patterns for identifying additional aliases. The `scan` command accepts a list of patterns via the `--alias-patterns` argument.
+
+```bash
+configcat scan <dir> --alias-patterns "<pattern1>" "<pattern2>"
+
+```
+
+The CLI also accepts patterns from the `CONFIGCAT_ALIAS_PATTERNS` environment variable as a comma delimited list.
+
+```bash
+export CONFIGCAT_ALIAS_PATTERNS="<pattern1>,<pattern2>";
+
+```
+
+#### Match pattern format[​](#match-pattern-format "Direct link to Match pattern format")
+
+The regex pattern must include at least one capture group that represents the actual alias. When more than one group is defined, the first one is selected. To bind the actual flag keys to aliases, the CLI uses a `CC_KEY` placeholder to inject the known keys into the pattern.
+
+For example, the following pattern allows to find aliases that point to Ruby symbols:
+
+```bash
+configcat scan <dir> --alias-patterns "(\w+) = client\.get_value\(:CC_KEY"
+
+```
+
+It will match to the following usage:
+
+```ruby
+# 'my_feature_enabled' is now treated as an alias to the 'my_feature_key' flag.
+my_feature_enabled = client.get_value(:my_feature_key, false)
+
+```
+
+note
+
+The CLI implicitly adds the optional `` ` ``, `'`, `"` wrapping around flag keys, so you don't have to wrap the `CC_KEY` placeholder manually.
+
+For example, the pattern `(\w+) = CC_KEY` will either match to `alias = flag_key`, `alias = "flag_key"`, `alias = 'flag_key'`, or ``alias = `flag_key` ``.
+
+### Wrappers[​](#wrappers "Direct link to Wrappers")
+
+In addition to aliases, the scanner also looks for different feature flag/setting key usage patterns. This helps to recognize functions and properties used to wrap direct ConfigCat SDK calls as indirect references. Aliases are also included in this search.
+
+For example, the scanner will treat the `IsMyAwesomeFeatureEnabled` function of the following `C#` wrapper class as an indirect reference:
+
+```csharp
+public class FeatureFlagProvider
+{
+  public async Task<bool> IsMyAwesomeFeatureEnabled(bool defaultValue = false)
+  {
+    return await configCatClient.GetValueAsync("my_awesome_feature", defaultValue);
+  }
+}
+
+```
+
+And will include its usage in the scan report:
+
+```csharp
+if (await featureFlagProvider.IsMyAwesomeFeatureEnabled())
+{
+  // the feature is on.
+}
+
+```
+
+info
+
+The scanner uses the following patterns to look for wrapper usages (case insensitive):
+
+* `[.|->|::]{settingKeyOrAlias}`
+* `[.|->|::]get{settingKeyOrAlias}`
+* `[.|->|::]is{settingKeyOrAlias}`
+* `[.|->|::]is{settingKeyOrAlias}enabled`
+
+Given the key/alias `my_awesome_feature`, the scanner will find any of the following usage examples:
+
+* `.my_awesome_feature` (also: `->my_awesome_feature` / `::my_awesome_feature`)
+* `.MY_AWESOME_FEATURE` (also: `->MY_AWESOME_FEATURE` / `::MY_AWESOME_FEATURE`)
+* `.get_my_awesome_feature` (also: `->get_my_awesome_feature` / `::get_my_awesome_feature`)
+* `.GET_MY_AWESOME_FEATURE` (also: `->GET_MY_AWESOME_FEATURE` / `::GET_MY_AWESOME_FEATURE`)
+* `.is_my_awesome_feature` (also: `->is_my_awesome_feature` / `::is_my_awesome_feature`)
+* `.is_my_awesome_feature_enabled` (also: `->is_my_awesome_feature_enabled` / `::is_my_awesome_feature_enabled`)
+* `.myAwesomeFeature` (also: `->myAwesomeFeature` / `::myAwesomeFeature`)
+* `.getMyAwesomeFeature` (also: `->getMyAwesomeFeature` / `::getMyAwesomeFeature`)
+* `.isMyAwesomeFeature` (also: `->isMyAwesomeFeature` / `::isMyAwesomeFeature`)
+* `.isMyAwesomeFeatureEnabled` (also: `->isMyAwesomeFeatureEnabled` / `::isMyAwesomeFeatureEnabled`)
+* `.IsMyAwesomeFeatureEnabled` (also: `->IsMyAwesomeFeatureEnabled` / `::IsMyAwesomeFeatureEnabled`)
+
+## Upload Scan Reports[​](#upload-scan-reports "Direct link to Upload Scan Reports")
+
+You have the option to upload scan reports for each branch of your repository to ConfigCat. Each scan report is associated to one of these branches.
+
+The following screenshot shows how an uploaded report looks like.
+
+![ConfigCat code references report](/docs/assets/cli/scan/scan_report.png)
+
+### Scanning Git Repositories[​](#scanning-git-repositories "Direct link to Scanning Git Repositories")
+
+The `scan` command automatically detects when it's being executed on a git repository. It collects additional information from Git like the current **branch name**, the actual **commit hash**, and each active **remote branch**. These extra details are used to enrich the uploaded report on the ConfigCat Dashboard with links to your actual source code.
+
+info
+
+If you are not using Git as VCS, you have to set at least the `--branch` parameter of the `scan` command.
+
+### Template URLs[​](#template-urls "Direct link to Template URLs")
+
+The `scan` command's `--file-url-template` and `--commit-url-template` parameters are used for generating links to your repository. Based on the information available during the scanning, the CLI replaces the corresponding template parameters to generate the actual links.
+
+* **File URL template**: Used to generate VCS file links.<br /><!-- -->Available template parameters:
+
+  * `commitHash`
+  * `filePath`
+  * `lineNumber`
+
+  With the following example template URL: `https://github.com/my/repo/blob/{commitHash}/{filePath}#L{lineNumber}`<br /><!-- -->For the file `src/example.js`, the result is: `https://github.com/my/repo/blob/4451d61b63a4b4499ed5c607be6c40ce9eeadb9c/src/example.js#L69`
+
+* **Commit URL template**: Used to generate VCS commit links.<br /><!-- -->Available template parameters:
+
+  * `commitHash`
+
+  With the following example template URL: `https://github.com/my/repo/commit/{commitHash}`<br /><!-- -->For the commit hash `4451d61b63a4b4499ed5c607be6c40ce9eeadb9c`, the result is: `https://github.com/my/repo/commit/4451d61b63a4b4499ed5c607be6c40ce9eeadb9c`
+
+info
+
+When these template URLs are not set, the uploaded report will not contain VCS links.
+
+### Stale Branches[​](#stale-branches "Direct link to Stale Branches")
+
+When the scan is executed on a Git repository, the CLI attaches the currently active remote branches to the uploaded report. This information is used for cleaning up each stale report that belongs to a deleted branch.
+
+### CI/CD Integrations[​](#cicd-integrations "Direct link to CI/CD Integrations")
+
+We prepared the following integrations to simplify the usage of the scanner in your CI/CD workflow:
+
+* [GitHub Action](https://configcat.com/docs/advanced/code-references/github-action.md)
+* [CircleCI Orb](https://configcat.com/docs/advanced/code-references/circleci-orb.md)
+* [GitLab CI/CD](https://configcat.com/docs/advanced/code-references/gitlab-ci.md)
+* [Azure DevOps](https://configcat.com/docs/advanced/code-references/azure-devops.md)
+* [Bitbucket Pipe](https://configcat.com/docs/advanced/code-references/bitbucket-pipe.md)
+* [Bitrise Step](https://configcat.com/docs/advanced/code-references/bitrise-step.md)
+
+### Manual Integration[​](#manual-integration "Direct link to Manual Integration")
+
+If your workflow doesn't have an integration, you can follow the instructions [here](https://configcat.com/docs/advanced/code-references/manual.md) to set scan executions directly with the ConfigCat CLI.
+
+## Ignore Files[​](#ignore-files "Direct link to Ignore Files")
+
+The `scan` command respects all include and exclude patterns listed inside `.gitignore` and `.ignore` files within the scanned directory. In addition, you can create an extra `.ccignore` file with patterns that the scanner must take into account.
+
+Each pattern must follow the [gitignore pattern format](https://git-scm.com/docs/gitignore#_pattern_format).

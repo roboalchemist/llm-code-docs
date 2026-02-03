@@ -4,7 +4,6 @@
 title: Application Instrumentation
 description: Get Started with Datadog APM
 breadcrumbs: Docs > APM > Application Instrumentation
-source_url: https://docs.datadoghq.com/trace_collection/index.html
 ---
 
 # Application Instrumentation

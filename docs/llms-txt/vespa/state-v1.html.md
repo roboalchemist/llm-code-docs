@@ -67,7 +67,7 @@ Returns a mandatory service [version](#version). Example:
 /state/v1/health
 ```
 
-Returns the service status, with [time](#time), [status](#status) and [metrics](#metrics). Metrics contains `requestsPerSecond` and `latencySeconds`, see [StateHandler](https://github.com/vespa-engine/vespa/blob/master/container-core/src/main/java/com/yahoo/container/jdisc/state/StateHandler.java).
+Returns the service status, with [time](#time), [status](#status) and [metrics](#metrics). Metrics contains `requestsPerSecond` and `latencySeconds`, see [StateHandler](https://github.com/vespa-engine/vespa/blob/master/container-disc/src/main/java/com/yahoo/container/jdisc/state/StateHandler.java).
 
 Example:
 
@@ -205,7 +205,7 @@ code
 - down
 - initializing
 
-Containers with the [query API](../../querying/query-api.html) enabled return `initializing` while waiting for content nodes to start, see [example](https://github.com/vespa-engine/sample-apps/tree/master/examples/operations/multinode-HA). `up` means that the service is fully up. Assume status `down` if no response. Refer to [StateMonitor](https://github.com/vespa-engine/vespa/blob/master/container-core/src/main/java/com/yahoo/container/jdisc/state/StateMonitor.java) for implementation.
+Containers with the [query API](../../querying/query-api.html) enabled return `initializing` while waiting for content nodes to start, see [example](https://github.com/vespa-engine/sample-apps/tree/master/examples/operations/multinode-HA). `up` means that the service is fully up. Assume status `down` if no response. Refer to [StateMonitor](https://github.com/vespa-engine/vespa/blob/master/container-disc/src/main/java/com/yahoo/container/jdisc/state/StateMonitor.java) for implementation.
 
  |
 | 
@@ -294,5 +294,5 @@ rate
 
  | values | Number | Metric rate: _count_ divided by _snapshot interval_. |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

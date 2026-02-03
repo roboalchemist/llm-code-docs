@@ -11,7 +11,7 @@ the Dockerfile if present, or falling back to the user's home directory if not -
 
 ### Cloning Repositories
 
-Daytona SDK provides an option to clone Git repositories into Sandboxes using Python and TypeScript. You can clone public or private repositories, specific branches, and authenticate using personal access tokens.
+Daytona SDK provides an option to clone Git repositories into Sandboxes using Python, TypeScript, and Ruby. You can clone public or private repositories, specific branches, and authenticate using personal access tokens.
 
 ```python
 # Basic clone
@@ -64,11 +64,35 @@ await sandbox.git.clone(
 ```
 
 
-See: [clone (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitclone), [clone (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#clone)
+```ruby
+# Basic clone
+sandbox.git.clone(
+  url: 'https://github.com/user/repo.git',
+  path: 'workspace/repo'
+)
+
+# Clone with authentication
+sandbox.git.clone(
+  url: 'https://github.com/user/repo.git',
+  path: 'workspace/repo',
+  username: 'git',
+  password: 'personal_access_token'
+)
+
+# Clone specific branch
+sandbox.git.clone(
+  url: 'https://github.com/user/repo.git',
+  path: 'workspace/repo',
+  branch: 'develop'
+)
+```
+
+
+See: [clone (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitclone), [clone (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#clone), [clone (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/git.md#clone)
 
 ### Repository Status
 
-Daytona SDK provides an option to check the status of Git repositories in Sandboxes. You can get the current branch, modified files, number of commits ahead and behind main branch using Python and TypeScript.
+Daytona SDK provides an option to check the status of Git repositories in Sandboxes. You can get the current branch, modified files, number of commits ahead and behind main branch using Python, TypeScript, and Ruby.
 
 ```python
 # Get repository status
@@ -104,7 +128,25 @@ response.branches.forEach(branch => {
 ```
 
 
-See: [status (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitstatus), [status (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#status)
+```ruby
+# Get repository status
+status = sandbox.git.status('workspace/repo')
+puts "Current branch: #{status.current_branch}"
+puts "Commits ahead: #{status.ahead}"
+puts "Commits behind: #{status.behind}"
+status.file_status.each do |file|
+  puts "File: #{file.name}"
+end
+
+# List branches
+response = sandbox.git.branches('workspace/repo')
+response.branches.each do |branch|
+  puts "Branch: #{branch}"
+end
+```
+
+
+See: [status (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitstatus), [status (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#status), [status (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/git.md#status)
 
 ## Branch Operations
 
@@ -112,7 +154,7 @@ Daytona SDK provides an option to manage branches in Git repositories. You can c
 
 ### Managing Branches
 
-Daytona SDK provides an option to create, switch, and delete branches in Git repositories using Python and TypeScript.
+Daytona SDK provides an option to create, switch, and delete branches in Git repositories using Python, TypeScript, and Ruby.
 
 ```python
 # Create new branch
@@ -139,11 +181,23 @@ await sandbox.git.deleteBranch("workspace/repo", "feature/old-feature");
 ```
 
 
-See: [create_branch (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitcreate_branch), [checkout_branch (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitcheckout_branch), [delete_branch (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitdelete_branch), [createBranch (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#createbranch), [checkoutBranch (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#checkoutbranch), [deleteBranch (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#deletebranch)
+```ruby
+# Create new branch
+sandbox.git.create_branch('workspace/repo', 'feature/new-feature')
+
+# Switch branch
+sandbox.git.checkout_branch('workspace/repo', 'feature/new-feature')
+
+# Delete branch
+sandbox.git.delete_branch('workspace/repo', 'feature/old-feature')
+```
+
+
+See: [create_branch (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitcreate_branch), [checkout_branch (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitcheckout_branch), [delete_branch (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitdelete_branch), [createBranch (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#createbranch), [checkoutBranch (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#checkoutbranch), [deleteBranch (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#deletebranch), [create_branch (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/git.md#create_branch), [checkout_branch (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/git.md#checkout_branch), [delete_branch (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/git.md#delete_branch)
 
 ## Staging and Committing
 
-Daytona SDK provides an option to stage and commit changes in Git repositories. You can stage specific files, all changes, and commit with a message using Python and TypeScript.
+Daytona SDK provides an option to stage and commit changes in Git repositories. You can stage specific files, all changes, and commit with a message using Python, TypeScript, and Ruby.
 
 ### Working with Changes
 
@@ -172,7 +226,19 @@ await sandbox.git.commit("workspace/repo", "feat: add new feature", "John Doe", 
 ```
 
 
-See: [add (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitadd), [commit (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitcommit), [add (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#add), [commit (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#commit)
+```ruby
+# Stage specific files
+sandbox.git.add('workspace/repo', ['file1.txt', 'file2.txt'])
+
+# Stage all changes
+sandbox.git.add('workspace/repo', ['.'])
+
+# Commit changes
+sandbox.git.commit('workspace/repo', 'feat: add new feature', 'John Doe', 'john@example.com')
+```
+
+
+See: [add (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitadd), [commit (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitcommit), [add (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#add), [commit (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#commit), [add (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/git.md#add), [commit (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/git.md#commit)
 
 ## Remote Operations
 
@@ -180,7 +246,7 @@ Daytona SDK provides an option to work with remote repositories in Git.
 
 ### Working with Remotes
 
-Daytona SDK provides an option to push and pull changes using Python and TypeScript.
+Daytona SDK provides an option to push and pull changes using Python, TypeScript, and Ruby.
 
 ```python
 # Push changes
@@ -199,4 +265,13 @@ await sandbox.git.pull("workspace/repo");
 ```
 
 
-See: [push (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitpush), [pull (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitpull), [push (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#push), [pull (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#pull)
+```ruby
+# Push changes
+sandbox.git.push('workspace/repo')
+
+# Pull changes
+sandbox.git.pull('workspace/repo')
+```
+
+
+See: [push (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitpush), [pull (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitpull), [push (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#push), [pull (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#pull), [push (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/git.md#push), [pull (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/git.md#pull)

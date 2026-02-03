@@ -376,9 +376,9 @@ params := &stripe.PaymentIntentConfirmParams{
   RadarOptions: &stripe.PaymentIntentConfirmRadarOptionsParams{
     Session: stripe.String("{{RADAR_SESSION_ID}}"),
   },
-  Intent: stripe.String("{{PAYMENT_INTENT_ID}}"),
 }
-result, err := sc.V1PaymentIntents.Confirm(context.TODO(), params)
+result, err := sc.V1PaymentIntents.Confirm(
+  context.TODO(), "{{PAYMENT_INTENT_ID}}", params)
 ```
 
 ```dotnet

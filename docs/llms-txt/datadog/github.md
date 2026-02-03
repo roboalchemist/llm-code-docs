@@ -9,7 +9,6 @@ description: >-
   GitHub team structure, including nested teams. Allow Datadog to use GitHub as
   a source for Teams data.
 breadcrumbs: Docs > Account Management > Teams > Provision Datadog Teams with GitHub
-source_url: https://docs.datadoghq.com/teams/github/index.html
 ---
 
 # Provision Datadog Teams with GitHub

@@ -4,7 +4,6 @@
 title: Trace Retention
 description: Learn how to control trace retention with retention filters.
 breadcrumbs: Docs > APM > The Trace Pipeline > Trace Retention
-source_url: https://docs.datadoghq.com/trace_pipeline/trace_retention/index.html
 ---
 
 # Trace Retention
@@ -144,7 +143,7 @@ The set of data captured by diversity sampling is not uniformly sampled (that is
 
 The flat 1% sampling captures:
 
-1. All **traces correlated with 1% of ingested RUM sessions**, ensuring all indexed sessions have associated trace data. This improves [correlation between APM and RUM](https://docs.datadoghq.com/tracing/other_telemetry/rum/), allowing you to debug user issues by viewing both frontend sessions and backend traces together. The sample is applied based on the `session_id`, meaning all traces linked to the same RUM session share a consistent indexing decision.
+1. All **traces correlated with 1% of ingested RUM sessions which had traces ingested**, ensuring you can always find some indexed sessions have associated trace data. This improves [correlation between APM and RUM](https://docs.datadoghq.com/tracing/other_telemetry/rum/), allowing you to debug user issues by viewing both frontend sessions and backend traces together. The sample is applied based on the `session_id`, meaning all traces linked to the same RUM session share a consistent indexing decision.
 1. A **uniform 1% sample** of [ingested spans](https://docs.datadoghq.com/tracing/trace_pipeline/ingestion_controls/), applied based on the `trace_id` so all spans in the same trace share the same sampling decision. Use this sample for general system health monitoring and trend analysis.
 
 This sampling mechanism is uniform, and it is proportionally representative of the full ingested traffic. As a result, low-traffic services and endpoints might be missing from that dataset if you filter on a short time frame.
@@ -207,7 +206,7 @@ The `retained_by` attribute is present on all retained spans. Its value is:
 - `retained_by:diversity_sampling` if the span was captured by diversity sampling (part of the Intelligent retention filter).
 - `retained_by:flat_sampled` if the span was indexed by the 1% flat sampling. Filter further by retention reason:
   - `@retention_reason:rum` for traces linked to RUM sessions sampled based on the `session_id`. Use this to analyze traces correlated with user sessions.
-  - `@retention_reason:apm` for traces sampled uniformly based on the `trace_id`. Use this for general performance trends and system-wide analysis.
+  - `@retention_reason:trace` for traces sampled uniformly based on the `trace_id`. Use this for general performance trends and system-wide analysis.
 
 {% image
    source="https://datadog-docs.imgix.net/images/tracing/trace_indexing_and_ingestion/retention_filters/trace_analytics.3ad6f52206b269d6d19edf7f88239772.png?auto=format"
@@ -219,6 +218,7 @@ Spans indexed by the intelligent retention filter are **excluded** from APM trac
 
 ## Further Reading{% #further-reading %}
 
+- [Unify and correlate frontend and backend data with retention filters](https://www.datadoghq.com/blog/rum-apm-retention-filters)
 - [Ingestion Mechanisms](https://docs.datadoghq.com/tracing/trace_pipeline/ingestion_mechanisms)
 - [Ingestion Controls](https://docs.datadoghq.com/tracing/trace_pipeline/ingestion_controls/)
 - [Usage Metrics](https://docs.datadoghq.com/tracing/trace_pipeline/metrics/)

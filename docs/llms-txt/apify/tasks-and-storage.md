@@ -1,6 +1,6 @@
 # Source: https://docs.apify.com/academy/expert-scraping-with-apify/tasks-and-storage.md
 
-# III - Tasks & storage
+# Tasks & storage
 
 **Understand how to save the configurations for Actors with Actor tasks. Also, learn about storage and the different types Apify offers.**
 
@@ -18,10 +18,10 @@ Storage allows us to save persistent data for further processing. As you'll lear
 
 ## Learning 🧠
 
-* Check out https://docs.apify.com/platform/actors/running/tasks.md.
-* Read about the https://docs.apify.com/platform/storage/dataset.md on the Apify platform.
-* Understand the https://docs.apify.com/platform/storage/usage.md#named-and-unnamed-storages.
-* Learn about the https://docs.apify.com/sdk/js/reference/class/Dataset and https://docs.apify.com/sdk/js/reference/class/KeyValueStore objects in the Apify SDK.
+* Check out [the docs about Actor tasks](https://docs.apify.com/platform/actors/running/tasks.md).
+* Read about the [two main storage options](https://docs.apify.com/platform/storage/dataset.md) on the Apify platform.
+* Understand the [crucial differences between named and unnamed storages](https://docs.apify.com/platform/storage/usage.md#named-and-unnamed-storages).
+* Learn about the [Dataset](https://docs.apify.com/sdk/js/reference/class/Dataset) and [KeyValueStore](https://docs.apify.com/sdk/js/reference/class/KeyValueStore) objects in the Apify SDK.
 
 ## Knowledge check 📝
 
@@ -29,8 +29,8 @@ Storage allows us to save persistent data for further processing. As you'll lear
 2. What are the differences between default (unnamed) and named storage? Which one would you use for everyday usage?
 3. What is data retention, and how does it work for all types of storages (default and named)?
 
-https://docs.apify.com/academy/expert-scraping-with-apify/solutions/using-storage-creating-tasks.md
+[Solution](https://docs.apify.com/academy/expert-scraping-with-apify/solutions/using-storage-creating-tasks.md)
 
 ## Next up
 
-The https://docs.apify.com/academy/expert-scraping-with-apify/apify-api-and-client.md is very exciting, as it will unlock the ability to seamlessly integrate your Apify Actors into your own external projects and applications with the Apify API.
+The [next lesson](https://docs.apify.com/academy/expert-scraping-with-apify/apify-api-and-client.md) is very exciting, as it will unlock the ability to seamlessly integrate your Apify Actors into your own external projects and applications with the Apify API.

@@ -4,8 +4,6 @@
 title: EC2 Launch Template Version
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > EC2 Launch Template Version
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.ec2_launch_template_version.dataset/index.html
 ---
 
 # EC2 Launch Template Version
@@ -18,18 +16,18 @@ aws.ec2_launch_template_version
 
 ## Fields
 
-| Title                       | ID   | Type      | Data Type                                             | Description |
-| --------------------------- | ---- | --------- | ----------------------------------------------------- | ----------- |
-| _key                        | core | string    |
-| account_id                  | core | string    |
-| create_time                 | core | timestamp | The time the version was created.                     |
-| created_by                  | core | string    | The principal that created the version.               |
-| default_version             | core | bool      | Indicates whether the version is the default version. |
-| launch_template_data        | core | json      | Information about the launch template.                |
-| launch_template_id          | core | string    | The ID of the launch template.                        |
-| launch_template_name        | core | string    | The name of the launch template.                      |
-| launch_template_version_arn | core | string    |
-| operator                    | core | json      | The entity that manages the launch template.          |
-| tags                        | core | hstore    |
-| version_description         | core | string    | The description for the version.                      |
-| version_number              | core | int64     | The version number.                                   |
+| Title                       | ID   | Type       | Data Type                                             | Description |
+| --------------------------- | ---- | ---------- | ----------------------------------------------------- | ----------- |
+| _key                        | core | string     |
+| account_id                  | core | string     |
+| create_time                 | core | timestamp  | The time the version was created.                     |
+| created_by                  | core | string     | The principal that created the version.               |
+| default_version             | core | bool       | Indicates whether the version is the default version. |
+| launch_template_data        | core | json       | Information about the launch template.                |
+| launch_template_id          | core | string     | The ID of the launch template.                        |
+| launch_template_name        | core | string     | The name of the launch template.                      |
+| launch_template_version_arn | core | string     |
+| operator                    | core | json       | The entity that manages the launch template.          |
+| tags                        | core | hstore_csv |
+| version_description         | core | string     | The description for the version.                      |
+| version_number              | core | int64      | The version number.                                   |

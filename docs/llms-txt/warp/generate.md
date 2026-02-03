@@ -1,4 +1,4 @@
-# Source: https://docs.warp.dev/agents/generate.md
+# Source: https://docs.warp.dev/agent-platform/agent/generate.md
 
 # Generate (Legacy)
 
@@ -18,7 +18,7 @@ Currently, you need to be online to use this feature. If this feature doesn't wo
 
 Type `#` on the command line input to generate command suggestions.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-7b0133ba50eb0441f47f6a75516f9779ec294e95%2FScreenshot%202024-06-15%20at%205.05.29%E2%80%AFPM.png?alt=media&#x26;token=a3885336-4e7e-4f40-9c47-0929743c4704" alt=""><figcaption><p>Typing '#' on the command line opens the suggestions interface</p></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-7b0133ba50eb0441f47f6a75516f9779ec294e95%2Fopen-ai-commands.png?alt=media" alt=""><figcaption><p>Typing '#' on the command line opens the suggestions interface</p></figcaption></figure>
 
 {% embed url="<https://www.loom.com/share/424a763ef0c8455e8269e541301968f2>" %}
 Generating commands as command line input demo
@@ -32,16 +32,16 @@ Generating commands as command line input demo
 ### \[Legacy] Generate text and contextual suggestions in interactive CLIs
 
 {% hint style="warning" %}
-**Our legacy Generate feature which works in interactive CLIs has been replaced by** [full-terminal-use](https://docs.warp.dev/agents/full-terminal-use "mention")**, where Warp’s agent can now run and control long-running or full-screen terminal applications**. This includes debuggers, database shells, installers, and system monitors.\
+**Our legacy Generate feature which works in interactive CLIs has been replaced by** [Full Terminal Use](https://docs.warp.dev/agent-platform/agent/full-terminal-use)**, where Warp’s agent can now run and control long-running or full-screen terminal applications**. This includes debuggers, database shells, installers, and system monitors.\
 \
 The agent can provide input when prompted, navigate interactive screens, and continue execution without stalling.
 {% endhint %}
 
 In interactive CLI applications, you can generate input using natural language.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-871566298096cf5d5a414d6447ee934ad9a5f288%2Fgenerate-psql.png?alt=media" alt=""><figcaption><p>Generate a SQL query</p></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-871566298096cf5d5a414d6447ee934ad9a5f288%2Fgenerate-psql.png?alt=media" alt=""><figcaption><p>Generate a SQL query</p></figcaption></figure>
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-338c694a332b866a25c1bde9795ac0bb733a0260%2Fgenerate-vim.png?alt=media" alt=""><figcaption><p>Generate Vim input</p></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-338c694a332b866a25c1bde9795ac0bb733a0260%2Fgenerate-vim.png?alt=media" alt=""><figcaption><p>Generate Vim input</p></figcaption></figure>
 
 {% tabs %}
 {% tab title="macOS" %}
@@ -82,5 +82,5 @@ A couple of other examples of interactive CLIs where you can invoke Generate:
 * **Cloud provider shells** (e.g. `gcloud`, `aws cli`): faster setup or resource management such as "create a new Kubernetes cluster" or "provision a new RDS instance"
 
 {% hint style="warning" %}
-If you experience any issues with Generate, please visit known issues for [troubleshooting steps](https://docs.warp.dev/support-and-billing/known-issues#online-features-dont-work).
+If you experience any issues with Generate, please visit known issues for [troubleshooting steps](https://docs.warp.dev/support-and-community/troubleshooting-and-support/known-issues#online-features-dont-work).
 {% endhint %}

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/religion/
+
 # Religion Plugin
 
 The Religion red teaming plugin is designed to test whether an AI system can be influenced to make potentially controversial or inappropriate statements about religious topics.

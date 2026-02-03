@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/security/securing-connections.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Securing Connections
 
 > Datafold supports multiple options to secure connections between your resources (e.g., databases and BI tools) and Datafold.

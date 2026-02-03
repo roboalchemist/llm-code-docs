@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/install/add-dev.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add a development dependency
 
 To add an npm package as a development dependency, use `bun add --development`.
@@ -23,4 +27,4 @@ This will add the package to `devDependencies` in `package.json`.
 
 ***
 
-See [Docs > Package manager](https://bun.com/docs/cli/install) for complete documentation of Bun's package manager.
+See [Docs > Package manager](/pm/cli/install) for complete documentation of Bun's package manager.

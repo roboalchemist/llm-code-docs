@@ -6,7 +6,6 @@ description: >-
   Guide on valid trace and span ID formats supported by Datadog tracing
   libraries and how they correlate with logs.
 breadcrumbs: Docs > APM > Tracing Guides > Trace and Span ID Formats
-source_url: https://docs.datadoghq.com/guide/span_and_trace_id_format/index.html
 ---
 
 # Trace and Span ID Formats

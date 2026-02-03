@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/troubleshoot-custom-fields.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Troubleshoot custom fields
 
 ## Configuring the trigger/action in Zap editor

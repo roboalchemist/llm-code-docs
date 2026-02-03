@@ -101,10 +101,8 @@ result, err := sc.V1Invoices.Create(context.TODO(), params)
 ```dotnet
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
-var options = new InvoiceCreateOptions
-{
-    AutomaticallyFinalizesAt = DateTimeOffset.FromUnixTimeSeconds(1748799295).UtcDateTime,
-};
+var options = new InvoiceCreateOptions();
+options.AddExtraParam("automatically_finalizes_at", 1748799295);
 var client = new StripeClient("<<YOUR_SECRET_KEY>>");
 var service = client.V1.Invoices;
 Invoice invoice = service.Create(options);

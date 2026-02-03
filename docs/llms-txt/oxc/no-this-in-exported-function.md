@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/oxc/no-this-in-exported-function.md
 ---
-# oxc/no-this-in-exported-function&#x20;
 
 ### What it does
 

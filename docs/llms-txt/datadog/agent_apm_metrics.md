@@ -6,7 +6,6 @@ description: >-
   Reference list of all APM metrics sent by the Datadog Agent for monitoring
   trace processing and Agent performance.
 breadcrumbs: Docs > APM > APM Troubleshooting > APM metrics sent by the Datadog Agent
-source_url: https://docs.datadoghq.com/troubleshooting/agent_apm_metrics/index.html
 ---
 
 # APM metrics sent by the Datadog Agent

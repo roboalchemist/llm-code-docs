@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Continuous Integration Visibility > CI Pipeline Visibility in Datadog >
   Adding Custom Tags and Measures to Pipeline Traces
-source_url: https://docs.datadoghq.com/pipelines/custom_tags_and_measures/index.html
 ---
 
 # Adding Custom Tags and Measures to Pipeline Traces

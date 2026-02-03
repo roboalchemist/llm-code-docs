@@ -1,3 +1,5 @@
+# Source: https://docs.datadoghq.com/getting_started/containers/autodiscovery.md
+
 # Source: https://docs.datadoghq.com/agent/troubleshooting/autodiscovery.md
 
 ---
@@ -6,7 +8,6 @@ description: >-
   Debug Docker Agent Autodiscovery configuration issues and resolve template
   loading problems with configcheck commands.
 breadcrumbs: Docs > Agent > Agent Troubleshooting > Autodiscovery Troubleshooting
-source_url: https://docs.datadoghq.com/troubleshooting/autodiscovery/index.html
 ---
 
 # Autodiscovery Troubleshooting

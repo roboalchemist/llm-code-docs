@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/tools/custom/parameter-overrides.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Parameter Overrides
 
 > Advanced parameter customization for fine-tuned tool behavior across different agents and calls.
@@ -313,8 +317,3 @@ When using agents, parameter overrides can include template variables:
   }
 }
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

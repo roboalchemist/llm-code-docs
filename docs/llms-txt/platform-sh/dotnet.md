@@ -6,7 +6,7 @@
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 Upsun supports deploying .NET applications by allowing developers to define a build process and pass its variables to the .NET Core build environment.
 
@@ -17,9 +17,7 @@ You can select the major and minor version.
 Patch versions are applied periodically for bug fixes and the like.
 When you deploy your app, you always get the latest available patches.
 
-   - 7.0
-
-   - 6.0
+   - 10.0
 
    - 8.0
 
@@ -40,7 +38,7 @@ For example:
 applications:
   # The app's name, which must be unique within the project.
   myapp:
-    type: 'dotnet:8.0'
+    type: 'dotnet:10.0'
 ```
 
 ## Building the application
@@ -51,7 +49,7 @@ with the default [framework-dependent deployment](https://docs.microsoft.com/en-
 ```yaml  {location=".upsun/config.yaml"}
 applications:
   myapp:
-    type: 'dotnet:8.0'
+    type: 'dotnet:10.0'
     hooks:
       build: |
         set -xe
@@ -80,7 +78,7 @@ Also, should the program terminate for any reason, it's automatically restarted.
 Note that the start command _must_ run in the foreground.
 
 Incoming requests are passed to the application using either a TCP (default) or Unix socket.
-The application must use the [appropriate environment variable](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#where-to-listen) to determine the URI to listen on.
+The application must use the [appropriate environment variable](https://docs.upsun.com/create-apps/image-properties/web.md#where-to-listen) to determine the URI to listen on.
 For a TCP socket ([recommended](https://go.microsoft.com/fwlink/?linkid=874850)), the application must listen on `http://127.0.0.1`,
 using the `PORT` environment variable.
 
@@ -98,7 +96,7 @@ while routing other traffic to the .NET application.
 ```yaml  {location=".upsun/config.yaml"}
 applications:
   myapp:
-    type: 'dotnet:8.0'
+    type: 'dotnet:10.0'
     web:
       locations:
         "/":
@@ -119,7 +117,7 @@ You can also route all requests to the application unconditionally:
 ```yaml  {location=".upsun/config.yaml"}
 applications:
   myapp:
-    type: 'dotnet:8.0'
+    type: 'dotnet:10.0'
     web:
       locations:
         "/":

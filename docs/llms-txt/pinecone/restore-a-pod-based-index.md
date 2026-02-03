@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/indexes/pods/restore-a-pod-based-index.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Restore a pod-based index
 
 > Restore pod-based indexes from collections
@@ -144,7 +148,7 @@ To create a pod-based index from a [collection](/guides/manage-data/back-up-an-i
     -H "Accept: application/json" \
     -H "Content-Type: application/json" \
     -H "Api-Key: $PINECONE_API_KEY" \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
            "name": "docs-example",
            "dimension": 128,

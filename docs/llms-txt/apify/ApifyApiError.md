@@ -2,18 +2,6 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/class/ApifyApiError.md
 
-# Source: https://docs.apify.com/api/client/python/reference/class/ApifyApiError.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/ApifyApiError.md
-
-# Source: https://docs.apify.com/api/client/python/reference/class/ApifyApiError.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/ApifyApiError.md
-
-# Source: https://docs.apify.com/api/client/python/reference/class/ApifyApiError.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/ApifyApiError.md
-
 # ApifyApiError<!-- -->
 
 An `ApifyApiError` is thrown for successful HTTP requests that reach the API, but the API responds with an error response. Typically, those are rate limit errors and internal errors, which are automatically retried, or validation errors, which are thrown immediately, because a correction by the user is needed.
@@ -48,13 +36,13 @@ An `ApifyApiError` is thrown for successful HTTP requests that reach the API, bu
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#attempt)[**](https://github.com/apify/apify-client-js/blob/master/src/apify_api_error.ts#L46)attempt
+### [**](#attempt)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/apify_api_error.ts#L46)attempt
 
 **attempt: number
 
 Number of the API call attempt.
 
-### [**](#cause)[**](https://undefined/apify/apify-client-js/blob/master/website/node_modules/typescript/src/lib.es2022.error.d.ts#L24)externaloptionalinheritedcause
+### [**](#cause)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/website/node_modules/typescript/src/lib.es2022.error.d.ts#L24)externaloptionalinheritedcause
 
 **cause?
 
@@ -64,13 +52,13 @@ Number of the API call attempt.
 
 Inherited from Error.cause
 
-### [**](#clientMethod)[**](https://github.com/apify/apify-client-js/blob/master/src/apify_api_error.ts#L31)clientMethod
+### [**](#clientMethod)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/apify_api_error.ts#L31)clientMethod
 
 **clientMethod: string
 
 The invoked resource client and the method. Known issue: Sometimes it displays as `unknown` because it can't be parsed from a stack trace.
 
-### [**](#data)[**](https://github.com/apify/apify-client-js/blob/master/src/apify_api_error.ts#L67)optionaldata
+### [**](#data)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/apify_api_error.ts#L67)optionaldata
 
 **data?
 
@@ -80,7 +68,7 @@ The invoked resource client and the method. Known issue: Sometimes it displays a
 
 Additional data provided by the API about the error
 
-### [**](#httpMethod)[**](https://github.com/apify/apify-client-js/blob/master/src/apify_api_error.ts#L51)optionalhttpMethod
+### [**](#httpMethod)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/apify_api_error.ts#L51)optionalhttpMethod
 
 **httpMethod?
 
@@ -90,25 +78,25 @@ Additional data provided by the API about the error
 
 HTTP method of the API call.
 
-### [**](#message)[**](https://undefined/apify/apify-client-js/blob/master/website/node_modules/typescript/src/lib.es5.d.ts#L1077)externalinheritedmessage
+### [**](#message)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/website/node_modules/typescript/src/lib.es5.d.ts#L1077)externalinheritedmessage
 
 **message: string
 
 Inherited from Error.message
 
-### [**](#name)[**](https://github.com/apify/apify-client-js/blob/master/src/apify_api_error.ts#L25)name
+### [**](#name)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/apify_api_error.ts#L25)name
 
 **name: string
 
 Overrides Error.name
 
-### [**](#originalStack)[**](https://github.com/apify/apify-client-js/blob/master/src/apify_api_error.ts#L62)originalStack
+### [**](#originalStack)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/apify_api_error.ts#L62)originalStack
 
 **originalStack: string
 
 Original stack trace of the exception. It is replaced by a more informative stack with API call information.
 
-### [**](#path)[**](https://github.com/apify/apify-client-js/blob/master/src/apify_api_error.ts#L56)optionalpath
+### [**](#path)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/apify_api_error.ts#L56)optionalpath
 
 **path?
 
@@ -118,7 +106,7 @@ Original stack trace of the exception. It is replaced by a more informative stac
 
 Full path of the API endpoint (URL excluding origin).
 
-### [**](#stack)[**](https://undefined/apify/apify-client-js/blob/master/website/node_modules/typescript/src/lib.es5.d.ts#L1078)externaloptionalinheritedstack
+### [**](#stack)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/website/node_modules/typescript/src/lib.es5.d.ts#L1078)externaloptionalinheritedstack
 
 **stack?
 
@@ -128,13 +116,13 @@ Full path of the API endpoint (URL excluding origin).
 
 Inherited from Error.stack
 
-### [**](#statusCode)[**](https://github.com/apify/apify-client-js/blob/master/src/apify_api_error.ts#L36)statusCode
+### [**](#statusCode)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/apify_api_error.ts#L36)statusCode
 
 **statusCode: number
 
 HTTP status code of the error.
 
-### [**](#type)[**](https://github.com/apify/apify-client-js/blob/master/src/apify_api_error.ts#L41)optionaltype
+### [**](#type)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/apify_api_error.ts#L41)optionaltype
 
 **type?
 
@@ -144,7 +132,7 @@ HTTP status code of the error.
 
 The type of the error, as returned by the API.
 
-### [**](#stackTraceLimit)[**](https://undefined/apify/apify-client-js/blob/master/node_modules/@types/node/globals.d.ts#L68)staticexternalinheritedstackTraceLimit
+### [**](#stackTraceLimit)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/globals.d.ts#L68)staticexternalinheritedstackTraceLimit
 
 **stackTraceLimit: number
 
@@ -158,7 +146,7 @@ If set to a non-number value, or set to a negative number, stack traces will not
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#captureStackTrace)[**](https://undefined/apify/apify-client-js/blob/master/node_modules/@types/node/globals.d.ts#L52)staticexternalinheritedcaptureStackTrace
+### [**](#captureStackTrace)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/globals.d.ts#L52)staticexternalinheritedcaptureStackTrace
 
 * ****captureStackTrace**(targetObject, constructorOpt): void
 
@@ -211,7 +199,7 @@ If set to a non-number value, or set to a negative number, stack traces will not
 
   #### Returns void
 
-### [**](#prepareStackTrace)[**](https://undefined/apify/apify-client-js/blob/master/node_modules/@types/node/globals.d.ts#L56)staticexternalinheritedprepareStackTrace
+### [**](#prepareStackTrace)[**](https://undefined/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/node_modules/@types/node/globals.d.ts#L56)staticexternalinheritedprepareStackTrace
 
 * ****prepareStackTrace**(err, stackTraces): any
 

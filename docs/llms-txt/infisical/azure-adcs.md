@@ -2,17 +2,9 @@
 
 # Source: https://infisical.com/docs/documentation/platform/pki/ca/azure-adcs.md
 
-# Source: https://infisical.com/docs/integrations/app-connections/azure-adcs.md
-
-# Source: https://infisical.com/docs/documentation/platform/pki/ca/azure-adcs.md
-
-# Source: https://infisical.com/docs/integrations/app-connections/azure-adcs.md
-
-# Source: https://infisical.com/docs/documentation/platform/pki/ca/azure-adcs.md
-
-# Source: https://infisical.com/docs/integrations/app-connections/azure-adcs.md
-
-# Source: https://infisical.com/docs/documentation/platform/pki/ca/azure-adcs.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Microsoft AD CS
 

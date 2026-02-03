@@ -1,50 +1,52 @@
 # Source: https://docs.squared.ai/api-reference/connectors/discover.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Connector Catalog
+
+
 
 ## OpenAPI
 
 ````yaml GET /api/v1/connectors/{id}/discover
+openapi: 3.0.1
+info:
+  title: AI Squared API
+  version: 1.0.0
+servers:
+  - url: https://api.squared.ai
+security: []
 paths:
-  path: /api/v1/connectors/{id}/discover
-  method: get
-  servers:
-    - url: https://api.squared.ai
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path:
-        id:
+  /api/v1/connectors/{id}/discover:
+    get:
+      tags:
+        - Connectors
+      summary: Discovers catalog information for a specified connector
+      parameters:
+        - name: id
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: Unique ID of the connector
-      query:
-        refresh:
+            type: string
+          description: Unique ID of the connector
+        - name: refresh
+          in: query
+          required: false
           schema:
-            - type: boolean
-              required: false
-              description: Set to true to force refresh the catalog
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: object
+            type: boolean
+          description: Set to true to force refresh the catalog
+      responses:
+        '200':
+          description: Catalog information for the connector
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
                     properties:
                       id:
                         type: string
@@ -81,28 +83,14 @@ paths:
                                       type: string
                           catalog_hash:
                             type: string
-            additionalProperties: false
-        examples:
-          example:
-            value:
-              data:
-                id: <string>
-                type: <string>
-                attributes:
-                  connector_id: 123
-                  workspace_id: 123
-                  catalog:
-                    streams:
-                      - name: <string>
-                        action: <string>
-                        json_schema: {}
-                        url: <string>
-                        request_method: <string>
-                  catalog_hash: <string>
-        description: Catalog information for the connector
-  deprecated: false
-  type: path
+                additionalProperties: false
+      security:
+        - bearerAuth: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 
 ````

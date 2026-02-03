@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/deployments/deploying-galileo-eks-zero-access.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Zero Access Deployment | Galileo on EKS
 
 > Create a private Kubernetes Cluster with EKS in your AWS Account, upload containers to your container registry, and deploy Galileo.
@@ -17,7 +21,7 @@
 
 To use [`eksctl`](https://eksctl.io/introduction/#installation) via CloudShell in the AWS console, open a CloudShell session and do the following:
 
-```sh
+```sh  theme={null}
 # Create directory
 mkdir -p $HOME/.local/bin
 cd $HOME/.local/bin
@@ -53,7 +57,7 @@ The cluster itself can be deployed in a single command using [eksctl](https://ek
 
 With the yaml file saved, run the following command to deploy the cluster:
 
-```sh
+```sh  theme={null}
 eksctl create cluster -f galileo-cluster.yaml
 ```
 
@@ -80,13 +84,11 @@ Except where specifically noted, these steps are to be performed on a machine wi
 2. Generate the cluster config file by running `aws eks update-kubeconfig --name $CLUSTER_NAME --region $REGION`
 
 3. If using a bastion machine, prepare the required environment with the following:
-
    1. Either `scp` or copy and paste the contents of `~/.kube/config` from your local machine to the same directory on the bastion
 
    2. `scp` the provided `deployment-manifest.yaml` file to the working directory of the bastion
 
 4. With your VPN connected, or if using a bastion, ssh'ing into the bastion's shell:
-
    1. Run `kubectl cluster-info` to verify your cluster config is set appropriately. If the cluster information is returned, you can proceed with the deployment.
 
    2. Run `kubectl apply -f deployment-manifest.yaml` to deploy the Galileo applications. Re-run this command if there are errors related to custom resources not being defined as there are sometimes race conditions when applying large templates.

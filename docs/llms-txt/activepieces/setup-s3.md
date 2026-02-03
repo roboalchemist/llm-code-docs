@@ -1,5 +1,9 @@
 # Source: https://www.activepieces.com/docs/install/guides/setup-s3.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to Setup S3
 
 > Configure S3-compatible storage for files and run logs
@@ -25,8 +29,3 @@ It's recommended to start with the database and switch to S3 if needed. After sw
 <Tip>
   **Friendly Tip #1**: If the S3 bucket supports signed URLs but needs to be accessible over a public network, you can set `AP_S3_USE_SIGNED_URLS` to `true` to route traffic directly to S3 and reduce heavy traffic on your API server.
 </Tip>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.activepieces.com/docs/llms.txt

@@ -4,13 +4,11 @@
 
 Cover increased refunds and chargebacks by adding funds to your balance.
 
-If you want to add funds to pay out to connected accounts, see how to [add funds to your platform balance](https://docs.stripe.com/connect/top-ups.md).
+To add funds to pay out to connected accounts, [add funds to your platform balance](https://docs.stripe.com/connect/top-ups.md).
 
 To maintain stability in your business when your account has a negative balance or when you expect an increase in customer refunds or disputes, you can add funds directly to your Stripe balance using a wire or bank transfer.
 
-> #### Minimum balances
-> 
-> For businesses using automatic payouts, we recommend that you set a [minimum balance](https://docs.stripe.com/payouts/minimum-balances-for-automatic-payouts.md) to ensure timely processing of refunds.
+For businesses using automatic payouts, we recommend that you set a [minimum balance](https://docs.stripe.com/payouts/minimum-balances-for-automatic-payouts.md) to ensure timely processing of refunds.
 
 ## Payment method availability
 
@@ -18,15 +16,13 @@ In several markets, funds are added to a Stripe VBAN (which helps reconciliation
 
 In other markets, funds are added using a wire transfer, which follows slightly different times and processes. Only wire transfers are available in the following regions and countries: AMER (Canada), EMEA (Non-EUR Currency markets: BG, CZ, HU, LI, GI, RO), APAC (AU, NZ, SG, HK, IN, TH, MY), and LatAm (BR, MX). Stripe VBAN isn’t available in these regions and countries.
 
-## Selecting where to add funds
-
-### Payments balance
+## Payments balance
 
 In the US, UK, and JP, you can add funds directly to the payments balance. We recommend this option for most businesses because it avoids transiting funds through a separate balance.
 
 For businesses using automatic payouts, funds added to the payments balance in excess of the [minimum balance](https://docs.stripe.com/payouts/minimum-balances-for-automatic-payouts.md) are paid out in the next payout. You can configure your payout schedule and minimum balance settings in your [Payout settings](https://dashboard.stripe.com/settings/payouts).
 
-### Refunds and disputes balance
+## Refunds and disputes balance
 
 You can also add funds to the **Future refunds or disputes balance** ([refund_and_dispute_prefunding](https://docs.stripe.com/api/balance/balance_object.md#balance_object-refund_and_dispute_prefunding)), which is a separate balance. These funds are never included in an automatic payout, but you can initiate a manual payout at any time.
 
@@ -48,7 +44,7 @@ This section outlines the steps to send funds from your bank using the Dashboard
 
 You can send funds from an external bank account to fund your financial account. In the US, you can send funds with an ACH transfer or wire. With ACH, funds are available in about 3 days after you initiate the transfer from your bank. With wire transfers, funds are available within the day. Additional charges apply if funding with a wire.
 
-1. On the [Balances](https://dashboard.stripe.com/balances) page, click **Top up**.
+1. On the [Balances](https://dashboard.stripe.com/balances) page, click **Add funds**.
 1. Select the balance to add money to.
 1. Select **Manually transfer** from your bank and click **Next**.
 1. Use the account details to send money through ACH, RTP, a wire, or other local payment from your bank.

@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/features/prompt-registry/structured-outputs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Structured Outputs
 
 Structured outputs ensure LLM responses follow specific formats, making them easier to use in your applications. For more advanced structured data requirements, you may also want to check out our [Tool Calling documentation](/features/prompt-registry/tool-calling).
@@ -405,8 +409,3 @@ response = pl.run(
 * Only Jinja2 format works for variables in structured outputs
 * Ensure all variables used in the schema are provided
 * Use proper JSON formatting with variables
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

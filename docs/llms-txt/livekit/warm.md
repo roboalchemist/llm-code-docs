@@ -44,7 +44,38 @@ In order for your agent to transfer calls to another number, you must have an [o
 > 
 > You can test warm transfer functionality using the [Agent Playground](https://docs.livekit.io/agents/start/playground.md). Speak to your agent and request a transfer. Outbound trunking is _required_ to make the call to the supervisor. However, inbound call support can be added at any time.
 
-## Agent set up
+## Warm transfer task
+
+Available in (BETA):
+- [ ] Node.js
+- [x] Python
+
+The warm transfer task is a prebuilt agent task that automatically orchestrates the warm transfer [workflow](#how-it-works). To execute a warm transfer, call the task with the supervisor's phone number and the outbound trunk ID.
+
+```python
+from livekit.agents.beta.workflows import WarmTransferTask
+
+result = await WarmTransferTask(
+    target_phone_number=<supervisor-phone-number>,  # Supervisor's phone number
+    sip_trunk_id=<outbound-trunk-id>,               # Outbound trunk ID
+    chat_ctx=self.chat_ctx,                         # Conversation history
+)
+
+```
+
+To learn more about additional parameters and customization, see [WarmTransferTask](https://docs.livekit.io/agents/logic/tasks.md#warmtransfertask).
+
+### Example
+
+For a full Python example, see the following.
+
+- **[Warm Transfer](https://github.com/livekit/agents/tree/main/examples/warm-transfer)**: Transfer calls from an AI agent to a human operator with context.
+
+## Manual warm transfer workflow
+
+LiveKit recommends using the [warm transfer task](#task) for most use cases. If you need more control over the transfer process, the following sections can help you implement warm transfer manually.
+
+### Agent setup
 
 You need two agent sessions to complete a warm transfer. For warm transfer, each session is a private [room](https://docs.livekit.io/intro/basics/rooms-participants-tracks/rooms.md) for communicating individually with the caller and the supervisor, before connecting them. This is different from the more common multi-agent use case, where different agents are coordinated within a single session.
 
@@ -52,7 +83,7 @@ The first session is the caller's session. This agent speaks with the caller and
 
 The second session is the supervisor's session. This session is configured for a specific purpose: Providing a summary to the supervisor and connecting them with the caller. In this topic, an agent named `TransferAgent` is used for this purpose.
 
-## Session management
+### Session management
 
 A custom session management class is required to track state across calls and participants, and for methods for managing the transfer workflow.
 
@@ -69,7 +100,7 @@ Session management methods can be used by both agents and can include the follow
 - Moving the supervisor into the caller's room.
 - Returning to the caller if the supervisor is unavailable.
 
-## Warm transfer workflow
+### Warm transfer workflow
 
 The following diagram shows the detailed workflow for a warm transfer.
 
@@ -99,7 +130,7 @@ D --> |3 TransferAgent moves Supervisor to Call room| A[Caller]
 3. After the supervisor is informed, the `TransferAgent` moves the supervisor to the call room. At this point, the `SupportAgent` can provide an introduction between the caller and supervisor.
 4. The `TransferAgent` leaves the consultation room and the `SupportAgent` leaves the call room, leaving the caller and supervisor to continue the call.
 
-### Step 1: Initiate transfer process
+#### Step 1: Initiate transfer process
 
 Initiating the transfer involves multiple sub-steps:
 
@@ -109,7 +140,7 @@ Initiating the transfer involves multiple sub-steps:
 - Connect the `TransferAgent` to the consultation room.
 - Dial the supervisor.
 
-#### Place caller on hold
+##### Place caller on hold
 
 The first step in the transfer process is to place the caller on hold. This means disabling audio input and output for the caller, and optionally playing hold music.
 
@@ -135,7 +166,7 @@ customerSession.output.setAudioEnabled(false);
 
 To play hold music in Python, see [Background audio](https://docs.livekit.io/agents/build/audio.md#background-audio). In Node.js, see [Publishing local audio files](https://docs.livekit.io/transport/media/raw-tracks.md#publishing-local-audio-files).
 
-#### Token generation
+##### Token generation
 
 The `TransferAgent` needs a token to join the consultation room. Generate a token with the appropriate permissions:
 
@@ -200,7 +231,7 @@ const token = await accessToken.toJwt();
 
 To learn more about authentication tokens, see [Authentication](https://docs.livekit.io/frontends/authentication.md).
 
-#### Create the consultation room
+##### Create the consultation room
 
 Use `rtc.Room` to create the consultation room:
 
@@ -233,7 +264,7 @@ const consultRoom = new Room();
 
 ```
 
-#### Connect the `TransferAgent` to the consultation room
+##### Connect the `TransferAgent` to the consultation room
 
 Use the token you generated to connect the `TransferAgent` to the consultation room:
 
@@ -259,7 +290,7 @@ consultRoom.connect(process.env.LIVEKIT_URL, token);
 
 ```
 
-#### Call the supervisor
+##### Call the supervisor
 
 After you create the consultation room, and connect the `TransferAgent` to it, call the supervisor to add them to the room. Use the `CreateSIPParticipant` API to dial the supervisor. Set the SIP outbound trunk ID and supervisor contact number. The `room_name` is the name of the consultation room you used when you created the authentication token, and the `participant_identity` is the identity of the supervisor.
 
@@ -312,7 +343,7 @@ await sipClient.createSIPParticipant(sipTrunkID, supervisorContact, consultRoomN
 
 ```
 
-### Step 2: Summarize the call
+#### Step 2: Summarize the call
 
 In order to summarize the call, the `TransferAgent` needs to get the conversation history from the `SupportAgent`. To do this, pass the conversation history when you create `TransferAgent`:
 
@@ -395,7 +426,7 @@ supervisor_agent = new TransferAgent(prevCtx=self.customer_session.chatCtx);
 
 ```
 
-### Step 3: Move the supervisor to the call room
+#### Step 3: Move the supervisor to the call room
 
 After the `TransferAgent` summarizes the call, and the supervisor is ready to talk to the customer, use the `MoveParticipant` API to move the supervisor to the call room where the caller is on hold.
 
@@ -427,17 +458,20 @@ roomService.moveParticipant(consultRoomName, supervisorIdentity, customerRoomNam
 
 After the supervisor is in the call room, the `SupportAgent` can provide an introduction between the caller and supervisor before disconnecting from the room.
 
-### Step 4: Disconnect agents from rooms
+#### Step 4: Disconnect agents from rooms
 
 You can disconnect the `TransferAgent` before you move the supervisor to the call room. The `SupportAgent` can leave when the supervisor is moved into the call room, or after providing an introduction.
 
 To learn more, see [Ending the session](https://docs.livekit.io/agents/server/job.md#session-shutdown).
 
-## Example
+### Server API references
 
-For a full Python example, see the following.
+To learn more about the server APIs used for a manually executed warm transfer, see the following reference topics:
 
-- **[Warm Transfer](https://github.com/livekit/agents/tree/main/examples/warm-transfer)**: Transfer calls from an AI agent to a human operator with context.
+- [Token creation](https://docs.livekit.io/frontends/authentication/tokens.md#token-creation)
+- [Create a room](https://docs.livekit.io/intro/basics/rooms-participants-tracks/rooms.md#create-a-room)
+- [CreateSIPParticipant](https://docs.livekit.io/reference/telephony/sip-api.md#createsipparticipant)
+- [MoveParticipant](https://docs.livekit.io/intro/basics/rooms-participants-tracks/participants.md#moveparticipant)
 
 ## Additional workflow scenarios
 
@@ -445,18 +479,9 @@ You can customize a call's workflow based on the consultation with the superviso
 
 You can choose to use both warm and [cold transfer](https://docs.livekit.io/telephony/features/transfers/cold.md) depending on the context of the call. If a caller requests to be transferred directly to a specific person or department, the agent can inform the caller they are initiating the transfer, then transfer the caller directly using the SIP REFER method. In that case, the agent isn't involved after they initiate the transfer.
 
-## Server API references
-
-To learn more about the server APIs used for warm transfer, see the following reference topics:
-
-- [Creating a token](https://docs.livekit.io/frontends/authentication/tokens.md#creating-a-token)
-- [Create a room](https://docs.livekit.io/intro/basics/rooms-participants-tracks/rooms.md#create-a-room)
-- [CreateSIPParticipant](https://docs.livekit.io/reference/telephony/sip-api.md#createsipparticipant)
-- [MoveParticipant](https://docs.livekit.io/intro/basics/rooms-participants-tracks/participants.md#moveparticipant)
-
 ---
 
-This document was rendered at 2025-12-31T18:29:35.573Z.
+This document was rendered at 2026-02-03T03:25:11.655Z.
 For the latest version of this document, see [https://docs.livekit.io/telephony/features/transfers/warm.md](https://docs.livekit.io/telephony/features/transfers/warm.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

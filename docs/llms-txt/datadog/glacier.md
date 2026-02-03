@@ -4,7 +4,6 @@
 title: Glacier Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > AWS Components > Glacier Component
-source_url: https://docs.datadoghq.com/components-aws/glacier/index.html
 ---
 
 # Glacier Component

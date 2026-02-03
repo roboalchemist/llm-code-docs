@@ -1,188 +1,153 @@
-# Source: https://docs.exa.ai/reference/team-management/list-api-keys.md
+# Source: https://exa.ai/docs/reference/team-management/list-api-keys.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # List API Keys
 
 > Retrieve all API keys belonging to your team with their metadata.
 
+<Card title="Get your Exa API key" icon="key" horizontal href="https://dashboard.exa.ai/api-keys" />
+
+## Overview
+
+The List API Keys endpoint returns all API keys associated with your team. This includes the key ID, name, rate limit, and creation timestamp for each key.
+
+## Response Format
+
+The response includes an array of API key objects with the following information:
+
+* **id**: Unique identifier for the API key
+* **name**: Human-readable name (if provided during creation)
+* **rateLimit**: Rate limit in requests per minute (if set)
+* **createdAt**: ISO 8601 timestamp of when the key was created
+
+
 ## OpenAPI
 
 ````yaml get /api-keys
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: Team Management API
+  description: >-
+    API for managing API keys within teams. Provides CRUD operations for
+    creating, listing, updating, and deleting API keys with team-based access
+    controls.
+servers:
+  - url: https://admin-api.exa.ai/team-management
+security:
+  - apikey: []
 paths:
-  path: /api-keys
-  method: get
-  servers:
-    - url: https://admin-api.exa.ai/team-management
-  request:
-    security:
-      - title: apikey
-        parameters:
-          query: {}
-          header:
-            x-api-key:
-              type: apiKey
-              description: Service API key for team authentication
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        api_key_id:
+  /api-keys:
+    get:
+      tags:
+        - Team Management
+      summary: List API Keys
+      description: >-
+        Returns all API keys belonging to the authenticated team. Includes ID,
+        name, and rate limit for each key.
+      operationId: list-api-keys
+      parameters:
+        - name: api_key_id
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-              description: Optional API key ID to retrieve a specific key
-              format: uuid
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: List all API keys
-        lang: bash
-        source: |
-          curl -X GET 'https://admin-api.exa.ai/team-management/api-keys' \
-            -H 'x-api-key: YOUR-SERVICE-KEY'
-      - label: List all API keys
-        lang: python
-        source: |
-          import requests
-
-          headers = {
-              'x-api-key': 'YOUR-SERVICE-KEY'
-          }
-
-          response = requests.get(
-              'https://admin-api.exa.ai/team-management/api-keys',
-              headers=headers
-          )
-
-          print(response.json())
-      - label: List all API keys
-        lang: javascript
-        source: >
-          const response = await
-          fetch('https://admin-api.exa.ai/team-management/api-keys', {
-            method: 'GET',
-            headers: {
-              'x-api-key': 'YOUR-SERVICE-KEY'
-            }
-          });
-
-
-          const result = await response.json();
-
-          console.log(result);
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              apiKeys:
-                allOf:
-                  - type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                          format: uuid
-                        name:
-                          type: string
-                        rateLimit:
-                          type: integer
-                          nullable: true
-          - type: object
-            properties:
-              apiKey:
-                allOf:
+            type: string
+            format: uuid
+          description: Optional API key ID to retrieve a specific key
+      responses:
+        '200':
+          description: List of API keys retrieved successfully
+          content:
+            application/json:
+              schema:
+                oneOf:
                   - type: object
                     properties:
-                      id:
-                        type: string
-                        format: uuid
-                      name:
-                        type: string
-                      rateLimit:
-                        type: integer
-                        nullable: true
-                      teamId:
-                        type: string
-                        format: uuid
-                      createdAt:
-                        type: string
-                        format: date-time
-        examples:
-          example:
-            value:
-              apiKeys:
-                - id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                  name: <string>
-                  rateLimit: 123
-        description: List of API keys retrieved successfully
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
+                      apiKeys:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: string
+                              format: uuid
+                            name:
+                              type: string
+                            rateLimit:
+                              type: integer
+                              nullable: true
+                  - type: object
+                    properties:
+                      apiKey:
+                        type: object
+                        properties:
+                          id:
+                            type: string
+                            format: uuid
+                          name:
+                            type: string
+                          rateLimit:
+                            type: integer
+                            nullable: true
+                          teamId:
+                            type: string
+                            format: uuid
+                          createdAt:
+                            type: string
+                            format: date-time
+        '400':
+          description: Bad request - invalid API key ID format
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
                     example: Invalid API key ID format. Must be a valid UUID.
-        examples:
-          example:
-            value:
-              error: Invalid API key ID format. Must be a valid UUID.
-        description: Bad request - invalid API key ID format
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
+        '401':
+          description: Unauthorized - Invalid or missing service key
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
                     example: Unauthorized
-        examples:
-          example:
-            value:
-              error: Unauthorized
-        description: Unauthorized - Invalid or missing service key
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
+        '403':
+          description: Forbidden - insufficient permissions to access this API key
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
                     example: Insufficient permissions to access this API key
-        examples:
-          example:
-            value:
-              error: Insufficient permissions to access this API key
-        description: Forbidden - insufficient permissions to access this API key
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
+        '404':
+          description: Not found - API key or team not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
                     examples:
                       - API key not found
                       - Team not found
-        examples:
-          example:
-            value:
-              error: API key not found
-        description: Not found - API key or team not found
-  deprecated: false
-  type: path
+      security:
+        - apikey: []
 components:
-  schemas: {}
+  securitySchemes:
+    apikey:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Service API key for team authentication
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

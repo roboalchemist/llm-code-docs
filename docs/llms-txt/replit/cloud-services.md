@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/category/cloud-services.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Cloud Services
 
 > Learn how to publish your Replit Apps and manage cloud storage and databases to build production-ready applications.

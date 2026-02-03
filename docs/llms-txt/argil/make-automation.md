@@ -1,5 +1,9 @@
 # Source: https://docs.argil.ai/resources/make-automation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.argil.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create a Make automation with Argil
 
 > Step by step tutorial on Make

@@ -1,4 +1,4 @@
-# Source: https://docs.warp.dev/ambient-agents/ambient-agents-overview.md
+# Source: https://docs.warp.dev/agent-platform/ambient-agents/ambient-agents-overview.md
 
 # Ambient Agents Overview
 
@@ -6,7 +6,7 @@
 **Beta**: Ambient Agents are currently in beta. APIs, CLI commands, and product behavior may change. If you have feedback, reach out in the [Warp Community Slack](https://go.warp.dev/join-preview).
 {% endhint %}
 
-Warp’s Ambient Agents are **cloud connected**, **background agents** built on the [Warp Platform](https://docs.warp.dev/platform/warp-platform). They run automatically in response to system events, schedules, or integrations. Together with Warp’s interactive agent (in the desktop app), they support both real-time, human-in-the-loop work and fully autonomous execution.
+Warp's Ambient Agents are **cloud connected**, **background agents** built on the [Warp Platform](https://docs.warp.dev/agent-platform/platform/warp-platform). They run automatically in response to system events, schedules, or integrations.
 
 {% embed url="<https://www.youtube.com/watch?v=V-8_fZExlFQ>" %}
 
@@ -27,12 +27,12 @@ Ambient Agents are designed for situations where:
 
 ### What is an Ambient Agent run?
 
-An Ambient Agent run is represented as an agent task. A task is created when a trigger fires (for example a webhook event or schedule) or when a user starts a run explicitly.&#x20;
+An Ambient Agent run is represented as an agent task. A task is created when a trigger fires (for example a webhook event or schedule) or when a user starts a run explicitly.
 
 Each task includes:
 
 * **Inputs**: a prompt, and often additional context from the triggering system (for example a Slack message, PR metadata, or CI logs).
-* **Execution context (optional)**: an [Environment](https://docs.warp.dev/platform/cli/integrations-and-environments#what-is-an-environment) that defines the repo, image, and startup commands the agent should run with.
+* **Execution context (optional)**: an [Environment](https://docs.warp.dev/reference/cli/integrations-and-environments#what-is-an-environment) that defines the repo, image, and startup commands the agent should run with.
 * **Lifecycle state**: created → running → completed / failed.
 * **Persistent record**: status, metadata, and a session transcript that can be reviewed after the task completes.
 
@@ -43,17 +43,15 @@ If you are evaluating whether something should be an Ambient Agent, a good test 
 
 ### How Ambient Agents work
 
-Ambient Agents run on the [Warp Platform](https://docs.warp.dev/platform/warp-platform), which provides the primitives for triggering work, orchestrating tasks, executing agents (optionally in Environments), injecting secrets, and inspecting results. You can adopt them incrementally, but most production deployments follow the same structure:
+Ambient Agents run on the [Warp Platform](https://docs.warp.dev/agent-platform/platform/warp-platform), which provides the primitives for triggering work, orchestrating tasks, executing agents (optionally in Environments), injecting secrets, and inspecting results.
 
 * Something **triggers** an agent task.
 * The **orchestrator creates** and tracks the task.
-* The agent **executes** on a host, optionally inside an [environment](https://docs.warp.dev/platform/cli/integrations-and-environments#what-is-an-environment), with whatever [secrets](https://docs.warp.dev/ambient-agents/agent-secrets) and credentials it needs.
-
-The exact way tasks are triggered and executed depends on your deployment model (for example CLI-only, Warp-hosted orchestration, or self-hosted execution). Those options are covered in the [Deployment Patterns](https://docs.warp.dev/platform/deployment-patterns) pages.
+* The agent **executes** on a host, optionally inside an [environment](https://docs.warp.dev/reference/cli/integrations-and-environments#what-is-an-environment), with whatever [secrets](https://docs.warp.dev/agent-platform/ambient-agents/agent-secrets) and credentials it needs. The exact way tasks are triggered and executed depends on your deployment model (for example CLI-only, Warp-hosted orchestration, or self-hosted execution). Those options are covered in the [Deployment Patterns](https://docs.warp.dev/agent-platform/platform/deployment-patterns) pages.
 
 ### What you get by default
 
-Because Ambient Agents run on the [Warp Platform](https://docs.warp.dev/platform/warp-platform), each run is tracked and produces a persistent record that can be observed, shared, and audited (even if execution happens outside the Warp app).
+Because Ambient Agents run on the [Warp Platform](https://docs.warp.dev/agent-platform/platform/warp-platform), each run is tracked and produces a persistent record that can be observed, shared, and audited (even if execution happens outside the Warp app).
 
 #### Observability and steerability
 
@@ -61,17 +59,17 @@ Ambient Agent tasks are designed to be inspectable by the team:
 
 * [Agent Session Sharing](https://docs.warp.dev/knowledge-and-collaboration/session-sharing/ambient-agents-session-sharing) lets authorized teammates attach to a running task to monitor progress and, where supported, steer the agent while it runs.
 * Each run produces a session transcript and task metadata, which provides a record of what the agent did.
-* A [management experience](https://docs.warp.dev/ambient-agents/managing-ambient-agents) surfaces task status and history.
+* A [management experience](https://docs.warp.dev/agent-platform/ambient-agents/managing-ambient-agents) surfaces task status and history.
 
 #### Centralized configuration
 
-Ambient Agent workflows often rely on shared configuration such as [MCP servers](https://docs.warp.dev/ambient-agents/mcp-servers-for-agents), rules, saved prompts, environment variables, and [secrets](https://docs.warp.dev/ambient-agents/agent-secrets).&#x20;
+Ambient Agent workflows often rely on shared configuration such as [MCP servers](https://docs.warp.dev/agent-platform/ambient-agents/mcp-servers-for-agents), rules, saved prompts, environment variables, and [secrets](https://docs.warp.dev/agent-platform/ambient-agents/agent-secrets).
 
 Warp supports centralized configuration so the same workflow behaves consistently across triggers (for example Slack + CI + schedules), without duplicating setup in every system.
 
 #### API access to tasks
 
-The Warp Platform exposes task visibility via the [**Agent API and SDKs**](https://docs.warp.dev/platform/agent-api-and-sdk), so teams can…
+The Warp Platform exposes task visibility via the [**Agent API and SDKs**](https://docs.warp.dev/reference/api-and-sdk/README), so teams can…
 
 * Query which tasks are running or have run.
 * Fetch task metadata and outcomes.
@@ -79,21 +77,19 @@ The Warp Platform exposes task visibility via the [**Agent API and SDKs**](https
 
 ### Using Ambient Agents with or without Warp’s app
 
-Ambient Agents do not require the Warp desktop app. Teams can deploy and operate them through the Warp Platform using:&#x20;
+Ambient Agents do not require the Warp desktop app. Teams can deploy and operate them through the [Warp Platform](https://docs.warp.dev/agent-platform/platform/warp-platform) using:
 
-* [Warp CLI](https://docs.warp.dev/platform/cli)
+* [Warp CLI](https://docs.warp.dev/reference/cli/README)
 * Web surfaces (where available)
 * [Agent Session Sharing](https://docs.warp.dev/knowledge-and-collaboration/session-sharing/agent-session-sharing)
-* [Agent Management UX](https://docs.warp.dev/agents/using-agents/managing-agents)
-* Admin settings and [APIs](https://docs.warp.dev/platform/agent-api-and-sdk)
-
-If your team also uses Warp’s terminal, you get an additional workflow: tasks launched via the CLI can be handed off into an interactive session for review, edits, or continuation.
+* \[Agent Management UX]\(../agent/using-agents/managing-agents.md
+* Admin settings and [APIs](https://docs.warp.dev/reference/api-and-sdk/README) If your team also uses Warp’s terminal, you get an additional workflow: tasks launched via the CLI can be handed off into an interactive session for review, edits, or continuation.
 
 ***
 
 ### Team and billing requirements
 
-Ambient Agents and [integrations](https://docs.warp.dev/integrations) run on the [Warp Platform](https://docs.warp.dev/platform/warp-platform) control plane, and usage is billed using AI credits. Credits are shared at the team level.
+Ambient Agents and [integrations](https://docs.warp.dev/agent-platform/integrations/integrations-overview) run on the [Warp Platform](https://docs.warp.dev/agent-platform/platform/warp-platform) control plane, and usage is billed using AI credits.
 
 To run **integrations (and most Ambient Agent automation)**, your team must meet the following requirements:
 
@@ -102,11 +98,11 @@ To run **integrations (and most Ambient Agent automation)**, your team must meet
   * Not supported: Pro, Turbo, Lightspeed, legacy Business
   * Your plan must support add-on credits.
 * **Credit requirements**
-  * Your team must have at least 20 [add-on credits](https://docs.warp.dev/support-and-billing/plans-and-pricing/add-on-credits) available to run an integration.
+* Your team must have at least 20 [add-on credits](https://docs.warp.dev/support-and-community/plans-and-billing/add-on-credits) available to run an integration.
   * Integration usage is billed to the team’s add-on credit balance.
   * Ambient Agents and integrations do not draw from personal monthly base credits.
 
-For more details, please refer to: [team-access-billing-and-identity-permissions](https://docs.warp.dev/platform/team-access-billing-and-identity-permissions "mention")
+For more details, please refer to: [Team Access Billing And Identity Permissions](https://docs.warp.dev/agent-platform/platform/team-access-billing-and-identity-permissions)
 
 {% hint style="warning" %}
 If the team’s add-on credit balance reaches zero, integrations and Ambient Agent runs that require add-on credits will not be able to execute until credits are replenished.
@@ -116,11 +112,11 @@ If the team’s add-on credit balance reaches zero, integrations and Ambient Age
 
 ### Learn more
 
-* [warp-platform](https://docs.warp.dev/platform/warp-platform "mention") — CLI, Agent API/SDK, orchestration, tasks, environments, hosts, integrations, and more.
-* [cli](https://docs.warp.dev/platform/cli "mention") — shows how to run Warp’s agent in non-interactive mode from CI, scripts, or remote machines, including auth and common commands.
-* [integrations-and-environments](https://docs.warp.dev/platform/cli/integrations-and-environments "mention") — explains how triggers (Slack/Linear/webhooks/schedules) create agent tasks and how environments provide the runtime context (repo, image, startup commands).
-* [agent-api-and-sdk](https://docs.warp.dev/platform/agent-api-and-sdk "mention") — documents the REST API for creating, querying, and monitoring agent tasks programmatically.
-* [agent-secrets](https://docs.warp.dev/ambient-agents/agent-secrets "mention") — covers how to store, scope, and inject credentials into agent runs safely.
-* [mcp-servers-for-agents](https://docs.warp.dev/ambient-agents/mcp-servers-for-agents "mention") — describes how to configure MCP servers for agent tool access and how MCP configuration is applied across runs.
-* [deployment-patterns](https://docs.warp.dev/platform/deployment-patterns "mention") (beta) — compares common ways to deploy Ambient Agents and when to use each.
-* [team-access-billing-and-identity-permissions](https://docs.warp.dev/platform/team-access-billing-and-identity-permissions "mention") — explains team-level requirements, credit billing behavior, and the permission model for who can run, view, and steer Ambient Agent tasks.
+* [Warp Platform](https://docs.warp.dev/agent-platform/platform/warp-platform) — CLI, Agent API/SDK, orchestration, tasks, environments, hosts, integrations, and more.
+* [Warp CLI](https://docs.warp.dev/reference/cli/README) — shows how to run Warp's agent in non-interactive mode from CI, scripts, or remote machines, including auth and common commands.
+* [Integrations and Environments](https://docs.warp.dev/reference/cli/integrations-and-environments) — explains how triggers (Slack/Linear/webhooks/schedules) create agent tasks and how environments provide the runtime context (repo, image, startup commands).
+* [Agent API and SDK](https://docs.warp.dev/reference/api-and-sdk/README) — documents the REST API for creating, querying, and monitoring agent tasks programmatically.
+* [Agent Secrets](https://docs.warp.dev/agent-platform/ambient-agents/agent-secrets) — covers how to store, scope, and inject credentials into agent runs safely.
+* [MCP Servers for Agents](https://docs.warp.dev/agent-platform/ambient-agents/mcp-servers-for-agents) — describes how to configure MCP servers for agent tool access and how MCP configuration is applied across runs.
+* [Deployment Patterns](https://docs.warp.dev/agent-platform/platform/deployment-patterns) (beta) — compares common ways to deploy Ambient Agents and when to use each.
+* [Team Access Billing And Identity Permissions](https://docs.warp.dev/agent-platform/platform/team-access-billing-and-identity-permissions) — explains team-level requirements, credit billing behavior, and the permission model for who can run, view, and steer Ambient Agent tasks.

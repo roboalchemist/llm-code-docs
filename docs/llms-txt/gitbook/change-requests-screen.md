@@ -1,8 +1,14 @@
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/collaboration/change-requests/change-requests-screen.md
+
+# Source: https://gitbook.com/docs/documentation/zh/collaboration/change-requests/change-requests-screen.md
+
+# Source: https://gitbook.com/docs/documentation/fr/collaboration/change-requests/change-requests-screen.md
+
 # Source: https://gitbook.com/docs/collaboration/change-requests/change-requests-screen.md
 
 # Change requests screen
 
-The change requests screen in GitBook makes it easy to view and manage active change requests in your organization.&#x20;
+The change requests screen in GitBook makes it easy to view and manage active change requests in your organization.
 
 In this screen, you can see open change requests, merge finished ones, and even collaborate with GitBook Agent to work on updates — all from a single, unified page.
 
@@ -10,7 +16,7 @@ In this screen, you can see open change requests, merge finished ones, and even 
 
 ### Navigating the change request screen
 
-Every change request within your organization will appear in the change requests screen, and can be filtered by drafts, in review, merged, and archived.&#x20;
+Every change request within your organization will appear in the change requests screen, and can be filtered by drafts, in review, merged, and archived.
 
 Additionally, you can filter change requests [created by GitBook Agent](https://gitbook.com/docs/gitbook-agent/automatic-documentation-suggestions).
 
@@ -20,10 +26,10 @@ To view more detailed information about a change request, click the **Edit** but
 
 ### Reviewing a change request
 
-When someone requests your review on a change request, you can edit the content and leave feedback right from the change requests screen.&#x20;
+When someone requests your review on a change request, you can edit the content and leave feedback right from the change requests screen.
 
 You can either request changes if you think it still needs work, or approve the change request, to signal it's ready to merge.
 
 Most reviews will take place in the change request’s [comments](https://gitbook.com/docs/collaboration/comments), where collaborators can share feedback and have discussions about specific content blocks, or the change request as a whole.
 
-Additionally, you can [review a change request with GitBook Agent](https://gitbook.com/docs/gitbook-agent/review-change-requests-with-gitbook-agent), allowing you to plan, check, and continue working on changes.&#x20;
+Additionally, you can [review a change request with GitBook Agent](https://gitbook.com/docs/gitbook-agent/review-change-requests-with-gitbook-agent), allowing you to plan, check, and continue working on changes.

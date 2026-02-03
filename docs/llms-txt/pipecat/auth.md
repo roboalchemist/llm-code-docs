@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/cli/cloud/auth.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # auth
 
 > Authentication and authorization commands
@@ -90,8 +94,3 @@ pipecat cloud --config
 <Card title="More about user accounts" icon="people-group" href="/deployment/pipecat-cloud/fundamentals/accounts-and-organizations">
   Managing your account and collaborating on agents as part of a team
 </Card>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

@@ -4,8 +4,6 @@
 title: AppStream 2.0 Application
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > AppStream 2.0 Application
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.appstream_application.dataset/index.html
 ---
 
 # AppStream 2.0 Application
@@ -35,5 +33,5 @@ aws.appstream_application
 | metadata          | core | hstore        | Additional attributes that describe the application.                         |
 | name              | core | string        | The name of the application.                                                 |
 | platforms         | core | array<string> | The platforms on which the application can run.                              |
-| tags              | core | hstore        |
+| tags              | core | hstore_csv    |
 | working_directory | core | string        | The working directory for the application.                                   |

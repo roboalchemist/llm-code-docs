@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/noise/handling-background-speakers.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Handling Background Speakers
 
 > Built-in filtering to focus on the primary speaker in multi-speaker environments.
@@ -31,8 +35,3 @@ Ultravox employs sophisticated techniques to handle these challenging scenarios:
 **Real-time Processing** → All speaker detection and filtering happens in real-time without adding latency to the conversation.
 
 The result is cleaner voice interactions where your AI agent responds to the intended speaker, reducing confusion and improving conversation quality in complex acoustic environments.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

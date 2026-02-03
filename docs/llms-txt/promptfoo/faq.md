@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/faq/
+
 # Frequently asked questions
 
 ## What is Promptfoo?

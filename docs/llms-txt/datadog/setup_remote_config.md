@@ -6,7 +6,6 @@ description: >-
   Configure Remote Configuration with Fleet Automation to enable Agent flares,
   remote upgrades, and centralized configuration management.
 breadcrumbs: Docs > Agent > Agent Guides > Remote Configuration for Fleet Automation
-source_url: https://docs.datadoghq.com/guide/setup_remote_config/index.html
 ---
 
 # Remote Configuration for Fleet Automation

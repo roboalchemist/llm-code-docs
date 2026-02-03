@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/send-with-astro.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send emails with Astro
 
 > Learn how to send your first email using Astro, Resend, and Node.js.
@@ -24,16 +28,20 @@ If you prefer to watch a video, check out our video walkthrough below.
 Install Resend for Node.js.
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":{"light":"github-light","dark":"vesper"}}
   npm install resend
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":{"light":"github-light","dark":"vesper"}}
   yarn add resend
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":{"light":"github-light","dark":"vesper"}}
   pnpm add resend
+  ```
+
+  ```bash bun theme={"theme":{"light":"github-light","dark":"vesper"}}
+  bun add resend
   ```
 </CodeGroup>
 
@@ -45,7 +53,7 @@ Because Astro builds a static site by default, [install an SSR adapter](https://
 
 [Create an API key](https://resend.com/api-keys) in Resend and add it to your `.env` file to keep your API key secret.
 
-```ini .env theme={null}
+```ini .env theme={"theme":{"light":"github-light","dark":"vesper"}}
 RESEND_API_KEY="re_xxxxxxxxx"
 ```
 
@@ -56,7 +64,7 @@ Create an [Astro Action](https://docs.astro.build/en/guides/actions/) under `act
 The easiest way to send an email is with the `html` parameter.
 
 <CodeGroup>
-  ```ts src/actions/index.ts theme={null}
+  ```ts src/actions/index.ts theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { ActionError, defineAction } from 'astro:actions';
   import { Resend } from 'resend';
 

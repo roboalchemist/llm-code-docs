@@ -1,18 +1,22 @@
 # Source: https://docs.asapp.com/agent-desk/digital-agent-desk/agent-sso.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Agent SSO
 
 > Learn how to use Single Sign-On (SSO) to authenticate agents and admin users to the Digital Agent Desk.
 
-ASAPP recommends for our customers to use SSO to authenticate agents and admin users to our applications.
+ASAPP recommends that customers use SSO to authenticate agents and admin users to our applications.
 
 In this scenario:
 
-1. ASAPP is the Service Provider (SP) with the customer acting as the Identity Provider (IDP).
+1. ASAPP acts as the Service Provider (SP) while the customer serves as the Identity Provider (IDP).
 2. The customer's authentication system performs user authentication using their existing customer credentials.
-3. ASAPP supports Service Provider Initiated SSO. Customers will provide the SSO URL to the agents and admins.
+3. ASAPP supports Service Provider Initiated SSO. Customers provide the SSO URL to agents and admins.
 4. The URL points to the customer's SSO service, which will authenticate the users via their authentication system.
-5. Once the user is authenticated, the customer's SSO service will send a SAML assertion, which includes some user information to ASAPP's SSO service.
+5. Once ASAPP authenticates the user, the customer's SSO service sends a SAML assertion with user information to ASAPP's SSO service.
 6. ASAPP uses the information inside the SAML assertion to identify the user and redirect them to the appropriate application.
 
 The diagram below illustrates the IDP-initiated SSO flow.
@@ -25,11 +29,11 @@ The diagram below illustrates the IDP-initiated SSO flow.
 
 ### Environments
 
-ASAPP supports SSO in non-production and production environments. It is strongly recommended that customers configure SSO in both environments as well.
+ASAPP supports SSO in non-production and production environments. We strongly recommend that customers configure SSO in both environments.
 
 ### Exchange of SAML metadata
 
-Both ASAPP and the customer generate their respective SAML metadata and send the metadata files to one another. The metadata will be different for each environment, therefore they need to be generated once per environment.
+Both ASAPP and the customer generate their respective SAML metadata and exchange the metadata files. Each environment requires different metadata, so teams must generate metadata once per environment.
 
 Sample metadata file content:
 
@@ -61,34 +65,34 @@ Location="https://auth.asapp.com/auth/realms/hudson/broker/hudson-saml/endpoint"
 
 ### SAML Profile Configuration
 
-Next, ASAPP and the customer configures their respective SSO service with each other's SAML profile. This can be achieved by importing the SAML metadata into the SSO service (if it supports a metadata import feature).
+Next, ASAPP and the customer configure their respective SSO services with each other's SAML profile. Teams can achieve this by importing the SAML metadata into the SSO service (if it supports a metadata import feature).
 
 ### SAML Attributes Configuration
 
-SAML Attributes are key-value fields within the SAML message (also called SAML assertion) that is being sent from the Identity Provider (IDP) to the Service Provider (SP).
+SAML Attributes are key-value fields within the SAML message (also called SAML assertion) that the Identity Provider (IDP) sends to the Service Provider (SP).
 
 ASAPP requires the following fields to be included with the SAML assertion
 
-| **Attribute Name** | **Required** | **Description**                                                                                                                                                                                                                        | **Example**                                 |
-| :----------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------ |
-| userId             | yes          | user's unique identifier used for authentication. Can be a unique readable value such as user's email or an opaque identifier such as a customer's internal user ID.                                                                   | [jdoe@company.com](mailto:jdoe@company.com) |
-| firstName          | yes          | user's first name                                                                                                                                                                                                                      | John                                        |
-| lastName           | yes          | user's last name                                                                                                                                                                                                                       | Doe                                         |
-| nameAlias          | yes          | user's display name. Allows an agent, based on their personal preference or company's privacy policy, to set an alias to show to the customers they are chatting with. If this is not sent then the agent firstName will be displayed. | John Doe                                    |
-| roles              | yes          | the roles the user has within the ASAPP platform. Typically mapped to one or more AD Security Groups on the IDP.                                                                                                                       | representative\|manager                     |
+| **Attribute Name** | **Required** | **Description**                                                                                                                                                                                                                        | **Example**                                 |         |
+| :----------------- | :----------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------ | ------- |
+| userId             | yes          | user's unique identifier used for authentication. Can be a unique readable value such as user's email or an opaque identifier such as a customer's internal user ID.                                                                   | [jdoe@company.com](mailto:jdoe@company.com) |         |
+| firstName          | yes          | user's first name                                                                                                                                                                                                                      | John                                        |         |
+| lastName           | yes          | user's last name                                                                                                                                                                                                                       | Doe                                         |         |
+| nameAlias          | yes          | user's display name. Allows an agent, based on their personal preference or company's privacy policy, to set an alias to show to the customers they are chatting with. If this is not sent then the agent firstName will be displayed. | John Doe                                    |         |
+| roles              | yes          | the roles the user has within the ASAPP platform. Typically mapped to one or more AD Security Groups on the IDP.                                                                                                                       | representative                              | manager |
 
 The following fields are not **required** but **desired** to further automate the agent Desk configuration:
 
-| **Attribute Name** | **Required** | **Description**                                                                                                                                                                   | **Example**           |
-| :----------------- | :----------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------------------- |
-| groups             | no           | group(s) the user belongs to. This attribute controls the queue(s) that a user is assigned to. Not to be confused with the AD Security Groups (see the **roles** attribute above) | residential\|business |
-| concurrency        | no           | number of concurrent chats the user can handle                                                                                                                                    | 5                     |
+| **Attribute Name** | **Required** | **Description**                                                                                                                                                                   | **Example** |          |
+| :----------------- | :----------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :---------- | -------- |
+| groups             | no           | group(s) the user belongs to. This attribute controls the queue(s) that a user is assigned to. Not to be confused with the AD Security Groups (see the **roles** attribute above) | residential | business |
+| concurrency        | no           | number of concurrent chats the user can handle                                                                                                                                    | 5           |          |
 
 In addition, any custom fields can be configured in the SAML assertion. See the section below for more details.
 
 ### Sending User Data via SAML
 
-ASAPP uses the SAML attribute fields to keep the user data up-to-date in our system. It also allows us to register a new user automatically when a new user logs into the ASAPP application for the first time.
+ASAPP uses SAML attribute fields to keep user data current in our system. This also allows us to register new users automatically when they log into the ASAPP application for the first time.
 
 In addition to the required fields that ASAPP needs to identify the user, customers can send additional fields in the SAML assertion that can be used for other purposes such as Reporting. An example can be the Agent Location. These fields are specific per customers. The name and possible values of these fields need to be agreed upon and configured prior to the SAML implementation.
 

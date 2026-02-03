@@ -1,10 +1,22 @@
 # Source: https://modelcontextprotocol.io/community/antitrust.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://modelcontextprotocol.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Antitrust Policy
 
 > MCP Project Antitrust Policy for participants and contributors
 
 **Effective: September 29, 2025**
+
+<Note>
+  This policy applies when participating in MCP meetings, Working Groups,
+  Interest Groups, and other collaborative forums where competitors may be
+  present. Most individual contributors working on code or documentation don't
+  need to worry about this in day-to-day work - it's primarily relevant for
+  group discussions about standards and specifications.
+</Note>
 
 ## Introduction
 

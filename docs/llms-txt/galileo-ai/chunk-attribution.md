@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-guardrail-metrics/chunk-attribution.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Chunk Attribution
 
 > Understand Galileo's Chunk Attribution Metric
@@ -19,13 +23,11 @@ Chunk Attribution is closely related to Chunk Utilization: Attribution measures 
 Chunk Attribution can help you iterate on your RAG pipeline in several different ways:
 
 * *Tuning the number of retrieved chunks.*
-
   * If your system is producing satisfactory responses, but many chunks are Not Attributed, then you may be able to reduce the number of chunks retrieved per example without adversely impacting response quality.
 
   * This will improve the efficiency of the system, resulting in lower cost and latency.
 
 * *"Debugging" anomalous model behavior in individual examples.*
-
   * If a specific model response is unsatisfactory or unusual, and you want to understand why, Attribution can help you zero in on the chunks that affected the response.
 
   * This lets you get to the root of the issue more quickly when inspecting individual examples.

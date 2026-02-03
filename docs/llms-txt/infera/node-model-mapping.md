@@ -1,64 +1,59 @@
 # Source: https://docs.infera.org/api-reference/endpoint/node-model-mapping.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.infera.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Node Model Mapping
+
+
 
 ## OpenAPI
 
 ````yaml get /node_model_mapping
+openapi: 3.1.0
+info:
+  title: FastAPI
+  version: 0.1.0
+servers:
+  - url: https://api.infera.org/
+    description: Infera production servers
+security: []
 paths:
-  path: /node_model_mapping
-  method: get
-  servers:
-    - url: https://api.infera.org/
-      description: Infera production servers
-  request:
-    security: []
-    parameters:
-      path: {}
-      query:
-        time_frame:
+  /node_model_mapping:
+    get:
+      summary: Node Model Mapping
+      operationId: node_model_mapping_node_model_mapping_get
+      parameters:
+        - name: time_frame
+          in: query
+          required: true
           schema:
-            - type: integer
-              required: true
-              title: Time Frame
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: any
-        examples:
-          example:
-            value: <any>
-        description: Successful Response
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    type: array
-                    title: Detail
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+            type: integer
+            title: Time Frame
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
 components:
   schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     ValidationError:
       properties:
         loc:

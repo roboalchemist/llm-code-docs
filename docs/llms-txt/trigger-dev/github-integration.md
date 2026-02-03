@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/github-integration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # GitHub integration
 
 > Automatically deploy your tasks on every push to your GitHub repository.
@@ -122,7 +126,7 @@ Example `.npmrc` file containing credentials for a private npm registry and a Gi
 
 Encode it to base64:
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 # Encode your .npmrc file
 cat .npmrc | base64
 ```

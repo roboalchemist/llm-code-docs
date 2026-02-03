@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/chatbot/ai/set-ai-model.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Setting the AI model
 
 > Learn how to set the LLM model used by the AI.

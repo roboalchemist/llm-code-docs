@@ -1,3 +1,5 @@
+# Source: https://docs.slack.dev/tools/slack-cli/
+
 # Slack CLI
 
 The Slack command-line interface (CLI) allows you to create and manage Slack apps from the command line. Use it in combination with the Deno Slack SDK, or the Bolt frameworks for JavaScript and Python.

@@ -8,7 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > Continuous Testing > Continuous Testing and CI/CD > Continuous Testing
   and Datadog CI Azure DevOps Extension
-source_url: https://docs.datadoghq.com/cicd_integrations/azure_devops_extension/index.html
 ---
 
 # Continuous Testing and Datadog CI Azure DevOps Extension

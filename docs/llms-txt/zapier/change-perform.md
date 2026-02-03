@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/manage/change-perform.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Update perform method for polling trigger
 
 ## Change scenario

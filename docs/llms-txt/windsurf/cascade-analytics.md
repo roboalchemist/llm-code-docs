@@ -2,23 +2,13 @@
 
 # Source: https://docs.windsurf.com/plugins/accounts/api-reference/cascade-analytics.md
 
-# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/cascade-analytics.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/api-reference/cascade-analytics.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/cascade-analytics.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/api-reference/cascade-analytics.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/cascade-analytics.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/api-reference/cascade-analytics.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/cascade-analytics.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Get Cascade Analytics
 
-> Query Cascade-specific usage metrics and data
+> Query Cascade-specific usage metrics including lines suggested/accepted, model usage, credit consumption, and tool usage statistics.
 
 ## Overview
 

@@ -2,32 +2,82 @@
 
 # Source: https://docs.chatling.ai/api-reference/v2/contacts/retrieve-contact.md
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/hubspot/retrieve-contact.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.chatling.ai/api-reference/v2/contacts/retrieve-contact.md
+# Retrieve contact
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/hubspot/retrieve-contact.md
+> Retrieve a contact by its ID.
 
-# Source: https://docs.chatling.ai/api-reference/v2/contacts/retrieve-contact.md
+## Request parameters
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/hubspot/retrieve-contact.md
+### Path
 
-# Source: https://docs.chatling.ai/api-reference/v2/contacts/retrieve-contact.md
+<ParamField path="contactId" type="string" required>
+  The contact ID.
+</ParamField>
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/hubspot/retrieve-contact.md
+<ParamField path="chatbotId" type="string" required>
+  The chatbot ID.
+</ParamField>
 
-# Source: https://docs.chatling.ai/api-reference/v2/contacts/retrieve-contact.md
+## Response
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/hubspot/retrieve-contact.md
+<ResponseField name="status" type="string">
+  The status of the request. Will be `success` if the request was successful, otherwise `error`.
+</ResponseField>
 
-# Retrieve Contact
+<ResponseField name="data" type="object">
+  <Expandable title="properties">
+    <ResponseField name="id" type="integer">
+      The unique identifier of the contact.
+    </ResponseField>
 
-> Retrieve contacts from HubSpot to use in your chatbot.
+    <ResponseField name="name" type="string">
+      The name of the contact.
+    </ResponseField>
 
-With this block, you can retrieve contacts from HubSpot and use them in your chatbot.
+    <ResponseField name="email" type="string">
+      The email address of the contact.
+    </ResponseField>
 
-## Configuration
+    <ResponseField name="job_title" type="string">
+      The job title of the contact.
+    </ResponseField>
 
-1. Click the `Connect account` button under the Account field to connect your HubSpot account to Chatling or select an existing connection.
-2. The `Search method` determines how the contact is found in HubSpot. You can either search by the contact's ID or email address. You can enter variables to make the search dynamic.
-3. Add the contact's properties you want to retrieve and select a variable for each property.
+    <ResponseField name="phone" type="string">
+      The phone number of the contact.
+    </ResponseField>
+
+    <ResponseField name="website" type="string">
+      The website URL of the contact.
+    </ResponseField>
+
+    <ResponseField name="company" type="string">
+      The company name of the contact.
+    </ResponseField>
+
+    <ResponseField name="created_at" type="string">
+      The date and time when the contact was created.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseExample>
+  ```json  theme={null}
+  {
+      "status": "success",
+      "data": {
+          "id": "qtr89df0-112d-d197-b541-3f8674663246",
+          "name": "Mark Zuckerberg",
+          "email": "mark@meta.com",
+          "job_title": "CEO",
+          "phone": "555-555-5555",
+          "website": "https://meta.com",
+          "company": "Meta Inc.",
+          "created_at": "2024-06-08T13:38:33+00:00"
+      }
+  }
+  ```
+</ResponseExample>

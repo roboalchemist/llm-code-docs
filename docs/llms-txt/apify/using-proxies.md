@@ -4,15 +4,19 @@
 
 **Learn how to use and automagically rotate proxies in your scrapers by using Crawlee, and a bit about how to obtain pools of proxies.**
 
+Updates coming
+
+This lesson is subject to change because it currently relies on code from our archived **Web scraping basics for JavaScript devs** course. For now you can still access the archived course, but we plan to completely retire it in a few months. This lesson will be updated to remove the dependency.
+
 ***
 
-In the https://docs.apify.com/academy/web-scraping-for-beginners/crawling/pro-scraping.md course, we learned about the power of Crawlee, and how it can streamline the development process of web crawlers. You've already seen how powerful the `crawlee` package is; however, what you've been exposed to thus far is only the tip of the iceberg.
+In the [Web scraping basics for JavaScript devs](https://docs.apify.com/academy/scraping-basics-javascript/legacy/crawling/pro-scraping.md) course, we learned about the power of Crawlee, and how it can streamline the development process of web crawlers. You've already seen how powerful the `crawlee` package is; however, what you've been exposed to thus far is only the tip of the iceberg.
 
 Because proxies are so widely used in the scraping world, Crawlee has built-in features for implementing them in an effective way. One of the main functionalities that comes baked into Crawlee is proxy rotation, which is when each request is sent through a different proxy from a proxy pool.
 
 ## Implementing proxies in a scraper
 
-Let's borrow some scraper code from the end of the https://docs.apify.com/academy/web-scraping-for-beginners/crawling/pro-scraping.md lesson in our **Web scraping basics for JavaScript devs** course and paste it into a new file called **proxies.js**. This code enqueues all of the product links on https://demo-webstore.apify.org's on-sale page, then makes a request to each product page and scrapes data about each one:
+Let's borrow some scraper code from the end of the [pro-scraping](https://docs.apify.com/academy/scraping-basics-javascript/legacy/crawling/pro-scraping.md) lesson in our **Web scraping basics for JavaScript devs** course and paste it into a new file called **proxies.js**. This code enqueues all of the product links on [demo-webstore.apify.org](https://demo-webstore.apify.org)'s on-sale page, then makes a request to each product page and scrapes data about each one:
 
 
 ```
@@ -58,7 +62,7 @@ await crawler.run();
 ```
 
 
-In order to implement a proxy pool, we will first need some proxies. We'll quickly use the free https://apify.com/mstephen190/proxy-scraper on the Apify platform to get our hands on some quality proxies. Next, we'll need to set up a https://crawlee.dev/api/core/class/ProxyConfiguration and configure it with our custom proxies, like so:
+In order to implement a proxy pool, we will first need some proxies. We'll quickly use the free [proxy scraper](https://apify.com/mstephen190/proxy-scraper) on the Apify platform to get our hands on some quality proxies. Next, we'll need to set up a [ProxyConfiguration](https://crawlee.dev/api/core/class/ProxyConfiguration) and configure it with our custom proxies, like so:
 
 
 ```
@@ -129,7 +133,7 @@ These logs confirm that our proxies are being used and rotated successfully by C
 
 ## Higher level proxy scraping
 
-Though we will discuss it more in-depth in future courses, it is still important to mention that Crawlee has integrated support for the Apify SDK, which supports https://apify.com/proxy - a service that provides access to pools of both residential and datacenter IP addresses. A `proxyConfiguration` using Apify Proxy might look something like this:
+Though we will discuss it more in-depth in future courses, it is still important to mention that Crawlee has integrated support for the Apify SDK, which supports [Apify Proxy](https://apify.com/proxy) - a service that provides access to pools of both residential and datacenter IP addresses. A `proxyConfiguration` using Apify Proxy might look something like this:
 
 
 ```
@@ -145,4 +149,4 @@ Notice that we didn't provide it a list of proxy URLs. This is because the `SHAD
 
 ## Next up
 
-https://docs.apify.com/academy/anti-scraping/mitigation/generating-fingerprints.md, we'll be checking out how to use two npm packages to generate and inject https://docs.apify.com/academy/anti-scraping/techniques/fingerprinting.md.
+[Next up](https://docs.apify.com/academy/anti-scraping/mitigation/generating-fingerprints.md), we'll be checking out how to use two npm packages to generate and inject [browser fingerprints](https://docs.apify.com/academy/anti-scraping/techniques/fingerprinting.md).

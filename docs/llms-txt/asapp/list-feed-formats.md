@@ -1,100 +1,97 @@
 # Source: https://docs.asapp.com/apis/file-exporter/list-feed-formats.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List feed formats
 
 > Lists feed formats for a company feed/version/
 
 
+
+
 ## OpenAPI
 
 ````yaml api-specs/fileexporter.yaml post /fileexporter/v1/static/listfeedformats
+openapi: 3.0.1
+info:
+  title: File Exporter API
+  description: >
+    The File Exporter API is a batch mechanism for exporting data to your data
+    warehouse. The service provides a file link to access requested data based
+    on the  parameters of the request that include the feed, version, format,
+    date, and time interval of interest.
+  version: 1.0.0
+servers:
+  - url: https://api.sandbox.asapp.com
+security:
+  - API-ID: []
+    API-Secret: []
+tags:
+  - name: File Exporter
+    description: API to get client exports
 paths:
-  path: /fileexporter/v1/static/listfeedformats
-  method: post
-  servers:
-    - url: https://api.sandbox.asapp.com
-  request:
-    security:
-      - title: API ID & API Secret
-        parameters:
-          query: {}
-          header:
-            asapp-api-id:
-              type: apiKey
-            asapp-api-secret:
-              type: apiKey
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              feed:
-                allOf:
-                  - type: string
+  /fileexporter/v1/static/listfeedformats:
+    post:
+      tags:
+        - File Exporter
+      summary: List feed formats
+      description: |
+        Lists feed formats for a company feed/version/
+      operationId: listFeedFormats
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              description: Get format for a company feed/version
+              type: object
+              properties:
+                feed:
+                  type: string
+                  example: feed_test
+                version:
+                  type: string
+                  example: '1'
+              required:
+                - feed
+                - version
+              example:
+                feed: feed_test
+                version: '1'
+      responses:
+        '200':
+          description: Successfully requested feed formats
+          content:
+            application/json:
+              schema:
+                description: Get formats for a company feed
+                type: object
+                properties:
+                  feed:
+                    type: string
                     example: feed_test
-              version:
-                allOf:
-                  - type: string
+                  version:
+                    type: string
                     example: '1'
-            required: true
-            description: Get format for a company feed/version
-            requiredProperties:
-              - feed
-              - version
-            example:
-              feed: feed_test
-              version: '1'
-        examples:
-          example:
-            value:
-              feed: feed_test
-              version: '1'
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              feed:
-                allOf:
-                  - type: string
-                    example: feed_test
-              version:
-                allOf:
-                  - type: string
-                    example: '1'
-              formats:
-                allOf:
-                  - type: array
+                  formats:
+                    type: array
                     items:
                       type: string
                     example:
                       - jsonl
                       - csv
-            description: Get formats for a company feed
-        examples:
-          example:
-            value:
-              feed: feed_test
-              version: '1'
-              formats:
-                - jsonl
-                - csv
-        description: Successfully requested feed formats
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        '400':
+          description: 400 - Bad request
+          content:
+            application/json:
+              schema:
+                description: Bad request response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 400-01
                       message: Bad request
@@ -113,23 +110,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Bad request response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 400-01
-                message: Bad request
-        description: 400 - Bad request
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        '401':
+          description: 401 - Unauthorized
+          content:
+            application/json:
+              schema:
+                description: Unauthorized response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 401-01
                       message: Unauthorized
@@ -148,23 +138,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Unauthorized response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 401-01
-                message: Unauthorized
-        description: 401 - Unauthorized
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        '403':
+          description: 403 - Forbidden
+          content:
+            application/json:
+              schema:
+                description: Forbidden response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 403-01
                       message: Forbidden Response
@@ -183,23 +166,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Forbidden response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 403-01
-                message: Forbidden Response
-        description: 403 - Forbidden
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        '404':
+          description: 404 - Not Found
+          content:
+            application/json:
+              schema:
+                description: Not Found response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 404-01
                       message: Not Found
@@ -218,23 +194,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Not Found response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 404-01
-                message: Not Found
-        description: 404 - Not Found
-    '409':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        '409':
+          description: 409 - Conflict
+          content:
+            application/json:
+              schema:
+                description: Conflict response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 409-01
                       message: Conflict
@@ -253,23 +222,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Conflict response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 409-01
-                message: Conflict
-        description: 409 - Conflict
-    '413':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        '413':
+          description: 413 - Request Entity Too Large
+          content:
+            application/json:
+              schema:
+                description: Request Entity Too Large response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 413-01
                       message: Request Entity Too Large
@@ -288,23 +250,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Request Entity Too Large response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 413-01
-                message: Request Entity Too Large
-        description: 413 - Request Entity Too Large
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        '422':
+          description: 422 - Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                description: Unprocessable Entity response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 422-01
                       message: Unprocessable Entity
@@ -323,23 +278,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Unprocessable Entity response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 422-01
-                message: Unprocessable Entity
-        description: 422 - Unprocessable Entity
-    '429':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        '429':
+          description: 429 - Too Many Requests
+          content:
+            application/json:
+              schema:
+                description: Too Many Requests response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 429-01
                       message: Too Many Requests
@@ -358,23 +306,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Too Many Requests response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 429-01
-                message: Too Many Requests
-        description: 429 - Too Many Requests
-    '503':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        '503':
+          description: 503 - Service Unavailable
+          content:
+            application/json:
+              schema:
+                description: Service Unavailable response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 503-01
                       message: Service Unavailable
@@ -393,23 +334,16 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Service Unavailable response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 503-01
-                message: Service Unavailable
-        description: 503 - Service Unavailable
-    default:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - example:
+        default:
+          description: 500 - Internal Server Error
+          content:
+            application/json:
+              schema:
+                description: Default error response
+                type: object
+                properties:
+                  error:
+                    example:
                       requestId: 8e033668-9f1a-11ec-b909-0242ac120002
                       code: 500-01
                       message: Internal server error
@@ -428,18 +362,15 @@ paths:
                     required:
                       - requestId
                       - message
-            description: Default error response
-        examples:
-          example:
-            value:
-              error:
-                requestId: 8e033668-9f1a-11ec-b909-0242ac120002
-                code: 500-01
-                message: Internal server error
-        description: 500 - Internal Server Error
-  deprecated: false
-  type: path
 components:
-  schemas: {}
+  securitySchemes:
+    API-ID:
+      type: apiKey
+      in: header
+      name: asapp-api-id
+    API-Secret:
+      type: apiKey
+      in: header
+      name: asapp-api-secret
 
 ````

@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Continuous Integration Visibility > CI Pipeline Visibility in Datadog >
   Send Custom Pipelines to Datadog
-source_url: https://docs.datadoghq.com/pipelines/custom/index.html
 ---
 
 # Send Custom Pipelines to Datadog

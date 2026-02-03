@@ -16,10 +16,6 @@
 
 # Source: https://mikro-orm.io/api/better-sqlite/class/MikroORM.md
 
-# Source: https://mikro-orm.io/api/core/class/MikroORM.md
-
-# Source: https://mikro-orm.io/api/better-sqlite/class/MikroORM.md
-
 # MikroORM<!-- --> \<EM>
 
 Helper class for bootstrapping the MikroORM.

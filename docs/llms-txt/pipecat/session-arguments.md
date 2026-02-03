@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/deployment/pipecat-cloud/sdk-reference/session-arguments.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Session Arguments
 
 > Understanding the arguments received by bot entry points
@@ -81,8 +85,3 @@ async def bot(args: WebSocketRunnerArguments):
 <ParamField path="websocket" type="WebSocket">
   The FastAPI WebSocket connection used to communicate with the client.
 </ParamField>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

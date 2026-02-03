@@ -1,5 +1,9 @@
 # Source: https://docs.unifygtm.com/tutorials/how-to-create-an-audience.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to Create an Audience
 
 > Create dynamic lists of companies and people to view and act on.

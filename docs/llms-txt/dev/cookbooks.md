@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/cookbooks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Cookbooks
 
 [Writer Cookbooks](https://github.com/writer/cookbooks) are step-by-step guides to help you implement tasks and solve common problems using Writer. Each recipe includes code snippets, explanations, and best practices to enhance your understanding of the Writer platform.
@@ -66,7 +70,7 @@
   </Card>
 
   <Card title="Knowledge Graph tool calling" href="https://github.com/writer/cookbooks/blob/main/tool_calling/tool_calling_kg.ipynb">
-    Access a Knowledge Graph in a chat with a Palmyra LLM.
+    Access a Knowledge Graph in a chat.
   </Card>
 </CardGroup>
 
@@ -102,7 +106,7 @@
   </Card>
 
   <Card title="Knowledge Graph tool calling" href="https://github.com/writer/cookbooks/blob/main/tool_calling/tool_calling_kg.ipynb">
-    Access a Knowledge Graph in a chat with a Palmyra LLM.
+    Access a Knowledge Graph in a chat.
   </Card>
 
   <Card title="Streaming tool calls" href="https://github.com/writer/cookbooks/blob/main/tool_calling/tool_calling_streaming.ipynb">
@@ -125,10 +129,6 @@
 ### Tools
 
 <CardGroup cols={3}>
-  <Card title="Medical comprehend" href="https://github.com/writer/cookbooks/blob/main/tools/medical_comprehend.ipynb">
-    Analyze unstructured medical text and extract entities.
-  </Card>
-
   <Card title="PDF parser" href="https://github.com/writer/cookbooks/blob/main/tools/pdf_parser.ipynb">
     Parse a PDF file and extract the text as text or markdown.
   </Card>

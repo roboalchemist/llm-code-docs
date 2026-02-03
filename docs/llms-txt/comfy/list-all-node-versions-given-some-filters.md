@@ -1,175 +1,117 @@
 # Source: https://docs.comfy.org/api-reference/registry/list-all-node-versions-given-some-filters.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List all node versions given some filters.
+
+
 
 ## OpenAPI
 
 ````yaml https://api.comfy.org/openapi get /versions
+openapi: 3.0.2
+info:
+  title: Comfy API
+  version: '1.0'
+servers:
+  - url: https://api.comfy.org
+security: []
 paths:
-  path: /versions
-  method: get
-  servers:
-    - url: https://api.comfy.org
-  request:
-    security: []
-    parameters:
-      path: {}
-      query:
-        nodeId:
+  /versions:
+    get:
+      tags:
+        - Registry
+      summary: List all node versions given some filters.
+      operationId: ListAllNodeVersions
+      parameters:
+        - in: query
+          name: nodeId
           schema:
-            - type: string
-        statuses:
+            type: string
+        - explode: true
+          in: query
+          name: statuses
           schema:
-            - type: array
-              items:
-                allOf:
-                  - $ref: '#/components/schemas/NodeVersionStatus'
+            items:
+              $ref: '#/components/schemas/NodeVersionStatus'
+            type: array
           style: form
-          explode: true
-        include_status_reason:
+        - in: query
+          name: include_status_reason
           schema:
-            - type: boolean
-              default: false
-        page:
+            default: false
+            type: boolean
+        - description: The page number to retrieve.
+          in: query
+          name: page
           schema:
-            - type: integer
-              description: The page number to retrieve.
-              default: 1
-        pageSize:
+            default: 1
+            type: integer
+        - description: The number of items to include per page.
+          in: query
+          name: pageSize
           schema:
-            - type: integer
-              description: The number of items to include per page.
-              default: 10
-        status_reason:
+            default: 10
+            type: integer
+        - description: search for status_reason, case insensitive
+          in: query
+          name: status_reason
           schema:
-            - type: string
-              description: search for status_reason, case insensitive
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              page:
-                allOf:
-                  - description: Current page number
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  page:
+                    description: Current page number
                     type: integer
-              pageSize:
-                allOf:
-                  - description: Maximum number of node versions per page. Maximum is 100.
+                  pageSize:
+                    description: Maximum number of node versions per page. Maximum is 100.
                     type: integer
-              total:
-                allOf:
-                  - description: Total number of node versions available
+                  total:
+                    description: Total number of node versions available
                     type: integer
-              totalPages:
-                allOf:
-                  - description: Total number of pages available
+                  totalPages:
+                    description: Total number of pages available
                     type: integer
-              versions:
-                allOf:
-                  - items:
+                  versions:
+                    items:
                       $ref: '#/components/schemas/NodeVersion'
                     type: array
-        examples:
-          example:
-            value:
-              page: 123
-              pageSize: 123
-              total: 123
-              totalPages: 123
-              versions:
-                - changelog: <string>
-                  comfy_node_extract_status: <string>
-                  createdAt: '2023-11-07T05:31:56Z'
-                  dependencies:
-                    - <string>
-                  deprecated: true
-                  downloadUrl: <string>
-                  id: <string>
-                  node_id: <string>
-                  status: NodeVersionStatusActive
-                  status_reason: <string>
-                  supported_accelerators:
-                    - <string>
-                  supported_comfyui_frontend_version: <string>
-                  supported_comfyui_version: <string>
-                  supported_os:
-                    - <string>
-                  tags:
-                    - <string>
-                  tags_admin:
-                    - <string>
-                  version: <string>
-        description: List of all node versions
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - &ref_0
-                    type: string
-              message:
-                allOf:
-                  - &ref_1
-                    type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: &ref_2
-              - error
-              - message
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Invalid input, object invalid
-    '403':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-              message:
-                allOf:
-                  - *ref_1
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Node banned
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-              message:
-                allOf:
-                  - *ref_1
-            refIdentifier: '#/components/schemas/ErrorResponse'
-            requiredProperties: *ref_2
-        examples:
-          example:
-            value:
-              error: <string>
-              message: <string>
-        description: Internal server error
-  deprecated: false
-  type: path
+                type: object
+          description: List of all node versions
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Invalid input, object invalid
+        '403':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Node banned
+        '500':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Internal server error
 components:
   schemas:
+    NodeVersionStatus:
+      enum:
+        - NodeVersionStatusActive
+        - NodeVersionStatusDeleted
+        - NodeVersionStatusBanned
+        - NodeVersionStatusPending
+        - NodeVersionStatusFlagged
+      type: string
     NodeVersion:
       properties:
         changelog:
@@ -235,13 +177,15 @@ components:
             unique for the node.
           type: string
       type: object
-    NodeVersionStatus:
-      enum:
-        - NodeVersionStatusActive
-        - NodeVersionStatusDeleted
-        - NodeVersionStatusBanned
-        - NodeVersionStatusPending
-        - NodeVersionStatusFlagged
-      type: string
+    ErrorResponse:
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+      required:
+        - error
+        - message
+      type: object
 
 ````

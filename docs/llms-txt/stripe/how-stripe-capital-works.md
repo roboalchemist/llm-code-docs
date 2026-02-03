@@ -6,9 +6,15 @@ Learn how Stripe Capital provides financing for eligible businesses.
 
 If you’re a *Connect* (Connect is Stripe's solution for multi-party businesses, such as marketplace or software platforms, to route payments between sellers, customers, and other recipients) platform and you want to provide financing to your connected accounts, see [How Capital for platforms works](https://docs.stripe.com/capital/how-capital-for-platforms-works.md) instead.
 
-Stripe Capital works differently by country. Capital is currently available in the United States (US), United Kingdom (GB), France (FR), Germany (DE), and Australia (AU).
+### Available in
 
-Select your country to learn how Capital works:
+- AU
+- DE
+- FR
+- GB
+- US
+
+Stripe Capital varies by country. Select your country to learn how Capital works:
 
 #### US
 
@@ -20,8 +26,10 @@ Stripe, with our financial partner, uses a combination of eligibility criteria (
 
 Each offer specifies the type of financing being offered, which might be a loan or merchant cash advance. You can’t request a particular financing type under the Stripe Capital program.
 
-- **Merchant cash advance:** A merchant cash advance is a purchase of a the future receivables for a business by YouLend; it’s not a loan or credit transaction. Purchased receivables are withheld from the payment processing volume of the business in a percentage specified in the YouLend Advance Agreement. Unlike a loan, there’s no fixed payment schedule or periodic debits. Instead, the payments that a business needs to make vary based on payment processing volumes.
-- **Loans:** Business-purpose term loans are made by Celtic Bank to eligible businesses. These loans have a maximum term, and periodic payments. If withholdings from payment processing receivables don’t meet a minimum amount (typically on a 30 or 60-day basis), shortfalls are debited from a linked bank account.
+| **Merchant cash advance** | A merchant cash advance is YouLend’s purchase of your business’s future receivables; it isn’t a loan or a credit transaction. Stripe withholds the purchased receivables from your payment processing volume at the percentage stated in your YouLend Advance Agreement. Unlike a loan, you don’t have a fixed payment schedule or periodic debits. Your payments vary with your payment processing volume.                                                                                                                                                                                                                                                                                                                                                                            |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Loans**                 | Celtic Bank issues business-purpose term loans to eligible businesses. These loans have a maximum term and periodic payments. If withholdings from your payment processing receivables don’t meet the minimum amount (typically on a 30- or 60-day basis), Stripe debits the shortfall from your linked bank account or account balance.
+  - **Line of credit**: You might be given a choice to borrow (up to a prequalified credit limit) through a line of credit. Apply to draw the exact amount you need within your available limit and access the remaining capital for 90 days. As you make repayments, your available credit replenishes, so you can request more capital. After 90 days, we reevaluate your credit limit. We review and approve each draw as a separate loan. |
 
 ## Eligibility
 
@@ -29,7 +37,7 @@ Stripe, together with our financing partner, determines your eligibility for an 
 
 You might see a banner in the Stripe Dashboard that indicates that you’re on track for a future offer. This isn’t a guarantee of a future offer or of specific terms and doesn’t reflect a credit decision or evaluation.
 
-> If your business has multiple Stripe accounts, a financing offer might be generated based on the combined information from those accounts. Changes to one account without corresponding updates to others might affect your financing eligibility. This includes changes to your business name, Employee Identification Number (EIN), and business address.
+If your business has multiple Stripe accounts, a financing offer might be generated based on the combined information from those accounts. Changes to one account without corresponding updates to others might affect your financing eligibility. This includes changes to your business name, Employee Identification Number (EIN), and business address.
 
 ### Minimum eligibility requirements
 
@@ -46,25 +54,27 @@ Meeting the minimum eligibility requirements doesn’t guarantee that your busin
 
 In addition to the minimum requirements, Capital’s underwriting models might evaluate other characteristics of your business to determine eligibility. We’ve highlighted some key considerations:
 
-- **A growing business.** How much you process through Stripe influences the size of your financing offer. Businesses with positive growth trajectories are more likely to be eligible for an offer.
-- **A steady processing record.** A consistent, steady processing record with limited periods of low or zero volume shows stability in your business and increases your likelihood of qualifying for an offer.
-- **A large customer base.** Businesses with more customers are more likely to be eligible for an offer.
-- **A low dispute rate.** Businesses with low rates of unresolved chargebacks are more likely to qualify for funding.
+- **A growing business**: How much you process through Stripe influences the size of your financing offer. Businesses with positive growth trajectories are more likely to be eligible for an offer.
+- **A steady processing record**: A consistent processing record with few periods of low or zero volume shows stability and increases your chance to qualify.
+- **A large customer base**: Businesses with more customers are more likely to be eligible for an offer.
+- **A low dispute rate**: Businesses with low rates of unresolved chargebacks are more likely to qualify for funding.
 
 ### Additional steps you can take
 
 The more information we can see about the health of your business, the better we can evaluate your eligibility for a Capital offer.
 
-- **Connect your business bank account.** Securely [linking your bank account](https://docs.stripe.com/get-started/account/linked-external-accounts.md) lets Stripe view your bank balances and transactions to better determine your eligibility for an offer.
-- **Bring more processing volume onto Stripe.** Our underwriting model is based on the payment volume that you process on Stripe. Shifting transaction volume from other payment sources onto Stripe increases your overall Stripe processing volume and improves your likelihood of receiving an offer.
+- **Connect your business bank account**: Securely [linking your bank account](https://docs.stripe.com/get-started/account/linked-external-accounts.md) lets Stripe view your bank balances and transactions to better determine your eligibility for an offer.
+- **Bring more processing volume onto Stripe**: Our underwriting model is based on the payment volume that you process on Stripe. Shifting transaction volume from other payment sources onto Stripe increases your overall Stripe processing volume and improves your likelihood of receiving an offer.
 
 ### Future eligibility terms
 
-We base future eligibility and offer terms on your current processing activity on Stripe. Many factors influence this decision, including your Stripe activity, risk assessments, industry standards, and evolving market conditions. We evaluate these elements continuously. Also keep in mind that:
+We base future eligibility and offer terms on your current processing activity on Stripe. Many factors influence this decision, including your Stripe activity, risk assessments, industry standards, and evolving market conditions. We evaluate these elements continuously.
 
-- We don’t offer account-specific insights regarding future eligibility.
-- We don’t have emergency or on-demand access to Capital.
-- We don’t offer a manual review process for account eligibility.
+We don’t:
+
+- Offer account-specific insights regarding future eligibility.
+- Have emergency or on-demand access to Capital.
+- Offer a manual review process for account eligibility.
 
 ### Get feedback on your eligibility
 
@@ -112,19 +122,16 @@ If you’re unable to meet your minimum for one or more periods, reach out to su
 
 The following example scenarios demonstrate how the minimum payment process works for loans.
 
-**Example 1: You successfully meet your minimum through daily sales deductions.**
-
-- Your minimum amount is 2,000 USD for the 60-day period ending on March 1.
-- In that period, you repaid 2,500 USD of your loan balance through Stripe deducting a fixed percentage of your sales volume (the repayment rate).
-- You’ve successfully met your minimum plus an additional 500 USD toward your total balance for this payment period.
-- In the next 60-day period, you still must meet the minimum of 2,000 USD.
-
-**Example 2: You don’t meet your minimum through daily sales deductions.**
-
-- Your minimum is 2,000 USD for the 60-day period ending on March 1.
-- In that period, you repaid 1,500 USD of your loan balance through Stripe deducting a fixed percentage of your sales volume (the repayment rate).
-- On March 1, you still owe 500 USD toward your minimum (2,000 USD – 1,500 USD = 500 USD) and you must pay the remaining balance of your minimum.
-- On March 1, Stripe automatically debits 500 USD from your bank account or account balance to meet your minimum.
+| Scenario                                                          | Minimum payment process                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| You successfully meet your minimum through daily sales deductions | - Your minimum amount is 2,000 USD for the 60-day period ending on March 1.
+  - In that period, you repaid 2,500 USD of your loan balance through Stripe deducting a fixed percentage of your sales volume (the repayment rate).
+  - You’ve met your minimum and paid an additional 500 USD toward your total balance for this payment period
+  - In the next 60-day period, you still must meet the 2,000 USD minimum.                                                 |
+| You don’t meet your minimum through daily sales deductions        | - Your minimum is 2,000 USD for the 60-day period ending on March 1.
+  - In that period, you repaid 1,500 USD of your loan balance through Stripe deducting a fixed percentage of your sales volume (the repayment rate).
+  - On March 1, you still owe 500 USD toward your minimum (2,000 USD minus 1,500 USD) and must pay the remaining balance.
+  - On March 1, Stripe automatically debits 500 USD from your bank account or account balance to meet your minimum. |
 
 ## Security interests
 
@@ -156,7 +163,7 @@ We assess every business regularly, even those actively paying on a financing of
 
 You might see a banner in the Stripe Dashboard that indicates that you’re on track for a future offer. This isn’t a guarantee of a future offer or of specific terms and doesn’t reflect a credit decision or evaluation.
 
-> If your business has multiple Stripe accounts, a financing offer might be generated based on the combined information from  those accounts. Changes to one account without corresponding updates to others might affect your financing eligibility. This includes changes to your business name, Employee Identification Number (EIN), and business address.
+If your business has multiple Stripe accounts, a financing offer might be generated based on the combined information from  those accounts. Changes to one account without corresponding updates to others might affect your financing eligibility. This includes changes to your business name, Employee Identification Number (EIN), and business address.
 
 ### Minimum eligibility requirements
 
@@ -176,12 +183,12 @@ Additionally, the person applying for and guaranteeing the offer must:
 
 Meeting the minimum eligibility requirements doesn’t guarantee that your business qualifies for a Stripe Capital offer. In addition to the minimum requirements, Stripe, along with our partner, YouLend, evaluate many other characteristics of your business to determine eligibility. We’ve highlighted some key considerations:
 
-- **A growing business.** How much you process through Stripe influences the size of your funding offer. Businesses with positive growth trajectories are more likely to be eligible for an offer.
-- **A steady processing record.** A consistent, steady processing record with limited periods of low or zero volume shows stability in your business and increases your likelihood of qualifying for an offer.
-- **A large customer base.** Businesses with more customers are more likely to be eligible for an offer.
-- **A low dispute rate.** Businesses with low rates of unresolved chargebacks are more likely to qualify for funding.
+- **A growing business**: How much you process through Stripe influences the size of your funding offer. Businesses with positive growth trajectories are more likely to be eligible for an offer.
+- **A steady processing record**: A consistent processing record with few periods of low or zero volume shows stability and increases your chance to qualify for an offer.
+- **A large customer base**: Businesses with more customers are more likely to be eligible for an offer.
+- **A low dispute rate**: Businesses with low rates of unresolved chargebacks are more likely to qualify for funding.
 
-[Learn more about how Stripe uses and protects your business’ data](https://stripe.com/gb/privacy-center/legal#stripe-capital).
+[Learn more about how Stripe uses and protects your business’s data](https://stripe.com/gb/privacy-center/legal#stripe-capital).
 
 ### Additional steps you can take
 
@@ -249,7 +256,7 @@ To qualify for an offer through Stripe Capital, your business must:
 
 - Be located or incorporated in France.
 - Have processed payments on Stripe for at least 3 months.
-- Have a processing volume of 5,000 EUR an average processing volume of 1,000 EUR for the last 3 months.
+- Have a processing volume of 5,000 EUR and an average processing volume of 1,000 EUR for the last 3 months.
 - Be in good standing with Stripe Capital. If your business previously applied for a Capital offer and was rejected, you’re ineligible to receive a new offer for 90 days.
 
 Additionally, the person applying for and guaranteeing the offer must:
@@ -262,12 +269,12 @@ Meeting the minimum eligibility requirements doesn’t guarantee that your busin
 
 In addition to the minimum requirements, Stripe, along with our partner, YouLend, evaluate many other characteristics of your business to determine eligibility. We’ve highlighted some key considerations:
 
-- **A growing business.** How much you process through Stripe influences the size of your funding offer. Businesses with positive growth trajectories are more likely to be eligible for an offer.
-- **A steady processing record.** A consistent, steady processing record with limited periods of low or zero volume shows stability in your business and increases your likelihood of qualifying for an offer.
-- **A large customer base.** Businesses with more customers are more likely to be eligible for an offer.
-- **A low dispute rate.** Businesses with low rates of unresolved chargebacks are more likely to qualify for funding.
+- **A growing business**: How much you process through Stripe influences the size of your funding offer. Businesses with positive growth trajectories are more likely to be eligible for an offer.
+- **A steady processing record**: A consistent, steady processing record with limited periods of low or zero volume shows stability in your business and increases your likelihood of qualifying for an offer.
+- **A large customer base**: Businesses with more customers are more likely to be eligible for an offer.
+- **A low dispute rate**: Businesses with low rates of unresolved chargebacks are more likely to qualify for funding.
 
-[Learn more about how Stripe uses and protects your business’ data](https://stripe.com/fr/privacy-center/legal#stripe-capital).
+[Learn more about how Stripe uses and protects your business’s data](https://stripe.com/fr/privacy-center/legal#stripe-capital).
 
 ### Additional steps you can take
 
@@ -293,7 +300,7 @@ Applicants who are the director and a beneficial owner of the business must prov
 
 ## Payment
 
-The total amount you owe is your financing amount plus a fixed fee, which is paid throughout the course of the financing. You won’t pay any interest, early payment fees or origination fees. You’ll automatically pay both the financing and the fixed fee through a percentage of your sales until you pay the total amount you owe. This means you pay more when business is busy and less if things slow down.
+The total amount you owe is your financing amount plus a fixed fee, which is paid throughout the course of the financing. You won’t pay any interest, early payment fees or origination fees. You’ll automatically pay both the financing and the fixed fee through a percentage of your sales until you pay the total amount you owe. This means you pay more when business is busy and less if things slow down. This is subject to a minimum weekly repayment amount that we expect your sales to exceed, but which you’re obligated to pay under your Business Loan Agreement.
 
 ## Additional financing
 
@@ -327,7 +334,7 @@ We assess every business regularly, even those actively paying on a financing of
 
 You might see a banner in the Stripe Dashboard that indicates that you’re on track for a future offer. This isn’t a guarantee of a future offer or of specific terms and doesn’t reflect a credit decision or evaluation.
 
-> If your business has multiple Stripe accounts, a financing offer might be generated based on the combined information from  those accounts. Changes to one account without corresponding updates to others might affect your financing eligibility. This includes changes to your business name, business identification number, and business address.
+If your business has multiple Stripe accounts, a financing offer might be generated based on the combined information from  those accounts. Changes to one account without corresponding updates to others might affect your financing eligibility. This includes changes to your business name, business identification number, and business address.
 
 ### Minimum eligibility requirements
 
@@ -335,7 +342,7 @@ To qualify for an offer through Stripe Capital, your business must:
 
 - Be located or incorporated in Germany.
 - Have processed payments on Stripe for at least 3 months.
-- Have an average processing volume of 1,000 EUR for the last 3 months.
+- Have a processing volume of 5,000 EUR and an average processing volume of 1,000 EUR for the last 3 months.
 - Be in good standing with Stripe Capital. If your business previously applied for a Capital offer and was rejected, you’re ineligible to receive a new offer for 90 days.
 
 Additionally, the person applying for and guaranteeing the offer must:
@@ -348,10 +355,10 @@ Meeting the minimum eligibility requirements doesn’t guarantee that your busin
 
 In addition to the minimum requirements, Stripe, along with our partner, YouLend, evaluate many other characteristics of your business to determine eligibility. We’ve highlighted some key considerations:
 
-- **A growing business.** How much you process through Stripe influences the size of your funding offer. Businesses with positive growth trajectories are more likely to be eligible for an offer.
-- **A steady processing record.** A consistent, steady processing record with limited periods of low or zero volume shows stability in your business and increases your likelihood of qualifying for an offer.
-- **A large customer base.** Businesses with more customers are more likely to be eligible for an offer.
-- **A low dispute rate.** Businesses with low rates of unresolved chargebacks are more likely to qualify for funding.
+- **A growing business**: How much you process through Stripe influences the size of your funding offer. Businesses with positive growth trajectories are more likely to be eligible for an offer.
+- **A steady processing record:** A consistent, steady processing record with limited periods of low or zero volume shows stability in your business and increases your likelihood of qualifying for an offer.
+- **A large customer base**: Businesses with more customers are more likely to be eligible for an offer.
+- **A low dispute rate**: Businesses with low rates of unresolved chargebacks are more likely to qualify for funding.
 
 [Learn more about how Stripe uses and protects your business’ data](https://stripe.com/de/privacy-center/legal#stripe-capital).
 
@@ -395,13 +402,13 @@ If you apply for and are approved for the second financing offer with a 15% paym
 
 Tax reporting often depends on your specific situation, so we recommend that you contact a tax advisor to ensure appropriate accounting.
 
-For additional assistance, contact our partner, YouLend, at [stripe-assistance@youlend.com](mailto:stripe-assistance@youlend.com).
+For additional assistance, contact our partner, YouLend, at [stripe-kundenservice@youlend.com](mailto:stripe-kundenservice@youlend.com).
 
 *All financing requests are subject to final review before approval. Financing is provided in cooperation with YouLend GmBH and its affiliates. Technical support and customer management provided by YouLend GmBH. Stripe Technology Europe holds a license for loan brokerage pursuant to Sect. 34c para. 1 sentence. 1 no. 2 of the German Trade Ordinance. Competent Supervisory Authority: Industrie- und Handelskammer für München und Oberbayern, 80333 München.*
 
 #### AU
 
-Stripe Capital offers financing for eligible Australian businesses processing payments through Stripe. We don’t charge early repayment fees or late fees. Instead, the total amount you owe is your loan amount plus a fixed fee. Your payments are a percentage of your sales and adjust to your processing volume on Stripe.
+Stripe Capital offers financing for eligible Australian businesses processing payments through Stripe. We don’t charge early repayment fees or late fees. Instead, the total amount you owe is your loan amount plus a fixed fee. Your payments are a percentage of your sales and adjust to your processing volume on Stripe. Stripe has a referral arrangement with Fundbox, an external finance provider.
 
 ## Eligibility
 
@@ -415,7 +422,7 @@ For questions regarding eligibility, [email our partner, Fundbox](mailto:stripe-
 
 You might see a banner in the Stripe Dashboard that indicates that you could be eligible for a future offer. This isn’t a guarantee of a future offer, or a promise of specific terms, and it doesn’t reflect a credit decision or evaluation.
 
-> If your business has multiple Stripe accounts, we might generate a financing offer based on the combined information from those accounts. Changes to one account without corresponding updates to others might affect your financing eligibility. This includes changes to your business name, business identification number, and business address.
+If your business has multiple Stripe accounts, we might generate a financing offer based on the combined information from those accounts. Changes to one account without corresponding updates to others might affect your financing eligibility. This includes changes to your business name, business identification number, and business address.
 
 ### Minimum eligibility requirements
 
@@ -473,20 +480,18 @@ You generally pay Stripe Capital financing through withholding from payment proc
 
 You can also make manual payments toward your minimum through your Dashboard. You can view your minimum in the Capital tab of your Dashboard or in your loan agreement. If you can’t meet your minimum for one or more periods, contact our financing partner, Fundbox, at stripe-capital@fundbox.com and they can work with you to get back in compliance and meet your loan obligations. If you continue to miss your minimums, we might take additional action, as detailed in your loan agreement.
 
-The following example scenarios demonstrate how the minimum payment process works for loans. **Example 1**: You successfully meet your minimum through daily sales deductions.
+The following example scenarios demonstrate how the minimum payment process works for loans.
 
-- Your minimum amount is 2,000 AUD for the 60-day period ending on March 1.
-- In that period, you repaid 2,500 AUD of your loan balance through Stripe deducting a fixed percentage of your sales volume (the repayment rate).
-- You’ve successfully met your minimum plus an additional 500 AUD toward your total balance for this payment period.
-- In the next 60-day period, you still must meet the minimum of 2,000 AUD.
-- 
-
-**Example 2**: You don’t meet your minimum through daily sales deductions.
-
-- Your minimum is 2,000 AUD for the 60-day period ending on March 1.
-- In that period, you repaid 1,500 AUD of your loan balance through Stripe deducting a fixed percentage of your sales volume (the repayment rate).
-- On March 1, you still owe 500 AUD toward your minimum (2,000 AUD − 1,500 AUD = 500 AUD) and you must pay the remaining balance of your minimum.
-- On March 1, Stripe automatically debits 500 AUD from your bank account or account balance to meet your minimum.
+| Example scenario                                                   | Minimum payment process                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| ------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| You successfully meet your minimum through daily sales deductions. | - Your minimum amount is 2,000 AUD for the 60-day period ending on March 1.
+  - In that period, you repaid 2,500 AUD of your loan balance through Stripe deducting a fixed percentage of your sales volume (the repayment rate).
+  - You’ve met your minimum and paid an additional 500 AUD toward your total balance for this payment period.
+  - In the next 60-day period, you still must meet the 2,000 AUD minimum.                                                                 |
+| You don’t meet your minimum through daily sales deductions.        | - Your minimum is 2,000 AUD for the 60-day period ending on March 1.
+  - In that period, you repaid 1,500 AUD of your loan balance through Stripe deducting a fixed percentage of your sales volume (the repayment rate).
+  - On March 1, you still owe 500 AUD toward your minimum (2,000 AUD minus 1,500 AUD). You must pay the remaining balance of your minimum.
+  - On March 1, Stripe automatically debits 500 AUD from your bank account or account balance to meet your minimum. |
 
 ## Additional financing
 
@@ -496,4 +501,4 @@ As you pay your financing, we automatically evaluate your business for a new off
 
 Tax reporting is often dependent on your specific situation, so we recommend that you contact a tax advisor to ensure appropriate accounting.
 
-Financing is provided by Fundbox, an external third-party provider, with payments facilitated by Stripe. Funding amounts, rates, and terms are based on review and approval of a completed application, and are subject to change. Financing offers might require additional documentation.
+Financing is provided by Fundbox, an external finance provider, with payments facilitated by Stripe. Funding amounts, rates, and terms are based on review and approval of a completed application, and are subject to change. Financing offers might require additional documentation.

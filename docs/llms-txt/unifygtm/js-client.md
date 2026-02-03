@@ -1,5 +1,9 @@
 # Source: https://docs.unifygtm.com/developers/intent-client/js-client.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # JavaScript Client
 
 > Install the Unify Intent client in a frontend web application framework.

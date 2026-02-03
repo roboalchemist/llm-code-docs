@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/deploy/streamlit-community-cloud/manage-your-account/workspace-settings
+
 # Workspace settings
 
 From your workspace settings you can [Manage your account](/deploy/streamlit-community-cloud/manage-your-account), see your [App resources and limits](/deploy/streamlit-community-cloud/manage-your-app#app-resources-and-limits) and access support resources.

@@ -1,4 +1,4 @@
-# Source: https://docs.warp.dev/support-and-billing/known-issues.md
+# Source: https://docs.warp.dev/support-and-community/troubleshooting-and-support/known-issues.md
 
 # Known Issues
 
@@ -16,7 +16,7 @@ To enable Blocks over SSH, Warp uses an SSH Wrapper function; navigate to settin
 
 ### Online features don't work
 
-There is a known issue that can occur that causes online features to break ([Warp AI](https://docs.warp.dev/agents/agents-overview), [Generate](https://docs.warp.dev/agents/generate), [Block Sharing](https://docs.warp.dev/terminal/blocks/block-sharing), [Refer a Friend](https://docs.warp.dev/community/refer-a-friend) ). This is due to the login token going stale, typically due to a password change, and can be resolved by the following steps:
+There is a known issue that can occur that causes online features to break ([Warp AI](https://docs.warp.dev/agent-platform/agent/agents-overview), [Generate](https://docs.warp.dev/agent-platform/agent/generate), [Block Sharing](https://docs.warp.dev/terminal/blocks/block-sharing), [Refer a Friend](https://docs.warp.dev/support-and-community/community/refer-a-friend) ). This is due to the login token going stale, typically due to a password change, and can be resolved by the following steps:
 
 {% tabs %}
 {% tab title="macOS" %}
@@ -27,7 +27,7 @@ There is a known issue that can occur that causes online features to break ([War
 sudo security delete-generic-password -l "dev.warp.Warp-Stable" $HOME/Library/Keychains/login.keychain
 ```
 
-2. [Login to Warp](https://docs.warp.dev/getting-started/readme#logging-into-warp)
+2. [Login to Warp](https://docs.warp.dev/support-and-community/troubleshooting-and-support/broken-reference)
    {% endtab %}
 
 {% tab title="Windows" %}
@@ -38,7 +38,7 @@ sudo security delete-generic-password -l "dev.warp.Warp-Stable" $HOME/Library/Ke
 Remove-Item $env:LOCALAPPDATA\warp\Warp\data\*-User
 ```
 
-2. [Login to Warp](https://docs.warp.dev/getting-started/readme#logging-into-warp)
+2. [Login to Warp](https://docs.warp.dev/support-and-community/troubleshooting-and-support/broken-reference)
    {% endtab %}
 
 {% tab title="Linux" %}
@@ -50,7 +50,7 @@ Remove-Item $env:LOCALAPPDATA\warp\Warp\data\*-User
 rm -f ${XDG_STATE_HOME:-$HOME/.local/state}/warp-terminal/*-User
 ```
 
-3. [Login to Warp](https://docs.warp.dev/getting-started/readme#logging-into-warp)
+3. [Login to Warp](https://docs.warp.dev/support-and-community/troubleshooting-and-support/broken-reference)
    {% endtab %}
    {% endtabs %}
 
@@ -69,7 +69,7 @@ export LANG=zh_CN.UTF-8
 
 ### Warp fails to render a window
 
-This can likely occur due to some corruption in the local sqlite db. You may see a similar error your [logs](https://docs.warp.dev/sending-us-feedback#gathering-warp-logs):
+This can likely occur due to some corruption in the local sqlite db. You may see a similar error your [logs](https://github.com/warpdotdev/gitbook/blob/main/docs/README.md#gathering-warp-logs):
 
 {% code overflow="wrap" %}
 
@@ -79,7 +79,7 @@ This can likely occur due to some corruption in the local sqlite db. You may see
 
 {% endcode %}
 
-To try and resolve the issue of Warp not rendering a window, [delete the Session Restoration SQLite database files](https://docs.warp.dev/terminal/sessions/session-restoration#session-restoration-database).
+To try and resolve the issue of Warp not rendering a window, rename the SQLite database found in the [following locations](https://docs.warp.dev/terminal/sessions/session-restoration#session-restoration-database).
 
 ### Misc.
 
@@ -91,7 +91,7 @@ To try and resolve the issue of Warp not rendering a window, [delete the Session
 
 ## Agent Mode
 
-* Note that Agent Mode blocks are not shareable during [session sharing](https://docs.warp.dev/knowledge-and-collaboration/session-sharing). Participants will be able to share regular shell commands that are run, but will not be able to share AI interactions (requested commands, AI blocks, etc.).
+* Note that Agent Mode blocks are not shareable during [session sharing](https://docs.warp.dev/warp/knowledge-and-collaboration/session-sharing/). Participants will be able to share regular shell commands that are run, but will not be able to share AI interactions (requested commands, AI blocks, etc.).
 * Block actions such as [Block Sharing](https://docs.warp.dev/terminal/blocks/block-sharing) are not available on Agent Mode AI blocks.
 * Agents do not have up-to-date information on several commands’ completion specs
 * Agent Mode works better with Warp's default prompt settings, where the prompt starts on a new line, than it does with a same-line prompt. If you are using the same-line prompt, the cursor will jump from the end of the single line to the start of the input box when you switch to Agent Mode.
@@ -104,7 +104,7 @@ There is an issue in fish shell version 3.6 and below that causes the `read` bui
 
 ### Warp shell loads slowly due to EDR
 
-If you comment out the rc files (i.e. `~/.zshrc`, `~/.bashrc`, `~/.config/fish/config.fish`), and still notice a slowdown on loading the shell. It could be due to an Endpoint Detection and Response or EDR (i.e. Sentinel One, CrowdStrike, Carbon Black) causing the issue. Please restart your system and see if the issue persists. If so, please [Send us Feedback](https://docs.warp.dev/support-and-billing/sending-us-feedback) and provide details of your EDR, OS, shell, etc.
+If you comment out the rc files (i.e. `~/.zshrc`, `~/.bashrc`, `~/.config/fish/config.fish`), and still notice a slowdown on loading the shell. It could be due to an Endpoint Detection and Response or EDR (i.e. Sentinel One, CrowdStrike, Carbon Black) causing the issue. Please restart your system and see if the issue persists. If so, please [Send us Feedback](https://github.com/warpdotdev/gitbook/blob/main/docs/README.md) and provide details of your EDR, OS, shell, etc.
 
 ### Configuring and debugging your RC files
 
@@ -223,25 +223,25 @@ The following non exhaustive list of plugins, prompts, or tools can cause potent
 On macOS, you may be [denied permission to SSH](https://github.com/warpdotdev/Warp/issues/5550) from Warp into other devices in your local network and see an error like: `ssh: connect to host <host_name> port 22: Undefined error: 0`.\
 To resolve this issue, go to `Mac > System Settings > Privacy & Security > Local Network`, and add Warp.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-6886ea3629f42a3a01ade46e1411531e2b27c882%2Fmac-ssh-permission.png?alt=media" alt=""><figcaption><p>Mac SSH permission error</p></figcaption></figure>
+<figure><img src="https://2974137108-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FD4dBaHbuMVNs0iB2iqZ1%2Fuploads%2Fgit-blob-6886ea3629f42a3a01ade46e1411531e2b27c882%2Fmac-ssh-permission.png?alt=media" alt=""><figcaption><p>Mac SSH permission error</p></figcaption></figure>
 
 **Unexpected loss of permission on macOS**
 
-On macOS, you may see a `Operation not permitted` error when trying to run commands in directories that have already been granted macOS permissions (Documents, Downloads, Desktop, etc). The best workaround at this time, is to [apply any pending Updates](https://docs.warp.dev/support-and-billing/updating-warp) so that the new Warp binary has the correct permissions. We are and tracking this issue [here](https://github.com/warpdotdev/Warp/issues/3009).
+On macOS, you may see a `Operation not permitted` error when trying to run commands in directories that have already been granted macOS permissions (Documents, Downloads, Desktop, etc). The best workaround at this time, is to [apply any pending Updates](https://docs.warp.dev/support-and-community/troubleshooting-and-support/updating-warp) so that the new Warp binary has the correct permissions. We are and tracking this issue [here](https://github.com/warpdotdev/Warp/issues/3009).
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-370abd65f5c5fdf62512be8fd49ae0fa8e84f974%2FCleanShot%202024-11-01%20at%2013.37.01.png?alt=media&#x26;token=f3733e94-d28c-433e-b78b-fd78d2f10bb5" alt=""><figcaption><p>Permission error on macOS</p></figcaption></figure>
+<figure><img src="https://2974137108-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FD4dBaHbuMVNs0iB2iqZ1%2Fuploads%2Fgit-blob-370abd65f5c5fdf62512be8fd49ae0fa8e84f974%2Fpermission-error-macos.png?alt=media" alt=""><figcaption><p>Permission error on macOS</p></figcaption></figure>
 
 **Auto-Update error on macOS**
 
-Warp may have an error opening after auto-update on macOS Ventura. This issue has been resolved for current and future releases of Warp. To avoid the issue, [update Warp](https://docs.warp.dev/support-and-billing/updating-warp) *before* you upgrade to macOS Ventura.\
+Warp may have an error opening after auto-update on macOS Ventura. This issue has been resolved for current and future releases of Warp. To avoid the issue, [update Warp](https://docs.warp.dev/support-and-community/troubleshooting-and-support/updating-warp) *before* you upgrade to macOS Ventura.\
 \
 If you experience an error opening Warp, please try the following:
 
 * Go to the macOS Applications folder, right-click on Warp, choose Open, then the '"Warp" is damaged' dialog will have the option to click the Open button.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-82a70bea410ba4f025216d258f10a8a71956613b%2Fopen-warp-mac.gif?alt=media" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://2974137108-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FD4dBaHbuMVNs0iB2iqZ1%2Fuploads%2Fgit-blob-82a70bea410ba4f025216d258f10a8a71956613b%2Fopen-warp-mac.gif?alt=media" alt=""><figcaption></figcaption></figure>
 
-* If the above doesn't work, [uninstall Warp](https://docs.warp.dev/support-and-billing/uninstalling-warp), then [re-install Warp](https://docs.warp.dev/getting-started/readme).
+* If the above doesn't work, [uninstall Warp](https://github.com/warpdotdev/gitbook/blob/main/docs/support-and-community/troubleshooting-and-support/uninstalling-warp.md), then [re-install Warp](https://docs.warp.dev/support-and-community/troubleshooting-and-support/broken-reference).
 
 **Running x86 commands with macOS**
 
@@ -261,7 +261,7 @@ The following feature are not supported in Warp on Windows. Please track the rel
 
 **Warp won't run on Windows**
 
-We're tracking some issues on Windows where [Warp crashes on startup](https://github.com/warpdotdev/Warp/issues/5840) or doesn't render, with some possible workarounds below. If none of the workarounds help, please open a [new GitHub issue](https://github.com/warpdotdev/warp/issues/new/choose) and include [logs](https://docs.warp.dev/sending-us-feedback#gathering-warp-logs), installation (Baremetal or VM, x86\_64 or ARM64), and the issue you had.
+We're tracking some issues on Windows where [Warp crashes on startup](https://github.com/warpdotdev/Warp/issues/5840) or doesn't render, with some possible workarounds below. If none of the workarounds help, please open a [new GitHub issue](https://github.com/warpdotdev/warp/issues/new/choose) and include [logs](https://github.com/warpdotdev/gitbook/blob/main/docs/README.md#gathering-warp-logs), installation (Baremetal or VM, x86\_64 or ARM64), and the issue you had.
 
 * Graphics
   * You can select the graphics backend used to render new Warp windows in the Settings menu, under `Features` > `System` > `Preferred graphics backend`.
@@ -284,7 +284,7 @@ $env:WGPU_BACKEND="vulkan,gl"; & "$env:PROGRAMFILES\Warp\warp.exe"
 {% tab title="Linux" %}
 **Warp won't run on Linux**
 
-We're tracking some issues on Linux where a [Warp window doesn't show/render](https://github.com/warpdotdev/Warp/issues/4215) and won't run in [Virtual Machines](https://github.com/warpdotdev/Warp/issues/4476), over [remote desktops](https://github.com/warpdotdev/Warp/issues/4435), or on [WSL](https://github.com/warpdotdev/Warp/issues/4240). Some possible workarounds are below. If none of the workarounds help, please open a [new GitHub issue](https://github.com/warpdotdev/warp/issues/new/choose) and include [logs](https://docs.warp.dev/sending-us-feedback#gathering-warp-logs) with your Linux distro, installation (WSL, Baremetal or VM, x86\_64 or ARM64), and the issue you had.
+We're tracking some issues on Linux where a [Warp window doesn't show/render](https://github.com/warpdotdev/Warp/issues/4215) and won't run in [Virtual Machines](https://github.com/warpdotdev/Warp/issues/4476), over [remote desktops](https://github.com/warpdotdev/Warp/issues/4435), or on [WSL](https://github.com/warpdotdev/Warp/issues/4240). Some possible workarounds are below. If none of the workarounds help, please open a [new GitHub issue](https://github.com/warpdotdev/warp/issues/new/choose) and include [logs](https://github.com/warpdotdev/gitbook/blob/main/docs/README.md#gathering-warp-logs) with your Linux distro, installation (WSL, Baremetal or VM, x86\_64 or ARM64), and the issue you had.
 
 {% hint style="info" %}
 
@@ -331,6 +331,6 @@ rm warpdotdev.gpg
 sudo apt update && sudo apt install warp-terminal
 ```
 
-See the instructions for other Linux distros on our [Quick Start Guide](https://docs.warp.dev/getting-started/readme#linux).
+See the instructions for other Linux distros on our [Quick Start Guide](https://docs.warp.dev/support-and-community/troubleshooting-and-support/broken-reference).
 {% endtab %}
 {% endtabs %}

@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/runs/metadata.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Run metadata
 
 > Attach a small amount of data to a run and update it as the run progresses.
@@ -10,7 +14,7 @@ You can attach up to 256KB of metadata to a run, which you can then access from 
 
 Add metadata to a run when triggering by passing it as an object to the `trigger` function:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 const handle = await myTask.trigger(
   { message: "hello world" },
   { metadata: { user: { name: "Eric", id: "user_1234" } } }
@@ -19,7 +23,7 @@ const handle = await myTask.trigger(
 
 You can get the current metadata at any time by calling `metadata.get()` or `metadata.current()` (only inside a run):
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -38,7 +42,7 @@ export const myTask = task({
 
 Any of these methods can be called anywhere "inside" the run function, or a function called from the run function:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -56,7 +60,7 @@ async function doSomeWork() {
 
 If you call any of the metadata methods outside of the run function, they will have no effect:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { metadata } from "@trigger.dev/sdk";
 
 // Somewhere outside of the run function
@@ -75,7 +79,7 @@ This means it's safe to call these methods anywhere in your code, and they will 
 These methods also work inside any task lifecycle hook, either attached to the specific task or the global hooks defined in your `trigger.config.ts` file.
 
 <CodeGroup>
-  ```ts myTasks.ts theme={null}
+  ```ts myTasks.ts theme={"theme":"css-variables"}
   import { task, metadata } from "@trigger.dev/sdk";
 
   export const myTask = task({
@@ -92,7 +96,7 @@ These methods also work inside any task lifecycle hook, either attached to the s
   });
   ```
 
-  ```ts trigger.config.ts theme={null}
+  ```ts trigger.config.ts theme={"theme":"css-variables"}
   import { defineConfig, metadata } from "@trigger.dev/sdk";
 
   export default defineConfig({
@@ -114,7 +118,7 @@ All metadata update methods (accept for `flush` and `stream`) are synchronous an
 
 Set the value of a key in the metadata object:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -136,7 +140,7 @@ export const myTask = task({
 
 Delete a key from the metadata object:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -158,7 +162,7 @@ export const myTask = task({
 
 Replace the entire metadata object with a new object:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -177,7 +181,7 @@ export const myTask = task({
 
 Append a value to an array in the metadata object:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -198,7 +202,7 @@ export const myTask = task({
 
 Remove a value from an array in the metadata object:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -222,7 +226,7 @@ export const myTask = task({
 
 Increment a numeric value in the metadata object:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -243,7 +247,7 @@ export const myTask = task({
 
 Decrement a numeric value in the metadata object:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -271,7 +275,7 @@ export const myTask = task({
 
 Capture a stream of values and make the stream available when using Realtime. See our [Realtime Streams v2](/tasks/streams) documentation for the recommended approach.
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -299,7 +303,7 @@ export const myTask = task({
 
 `metadata.stream` accepts any `AsyncIterable` or `ReadableStream` object. The stream will be captured and made available in the Realtime API. So for example, you could pass the body of a fetch response to `metadata.stream` to capture the response body and make it available in Realtime:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -333,7 +337,7 @@ export const myTask = task({
 
 Or the results of a streaming call to the OpenAI SDK:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 import OpenAI from "openai";
 
@@ -369,7 +373,7 @@ export const myTask = task({
 
 Flush the metadata to the database. The SDK will automatically flush the metadata periodically, so you don't need to call this method unless you need to ensure that the metadata is persisted immediately.
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -388,7 +392,7 @@ export const myTask = task({
 
 All of the update methods can be chained together in a fluent API:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -409,7 +413,7 @@ Tasks that have been triggered by a parent task (a.k.a. a "child task") can upda
 
 To update the parent task's metadata, use the `metadata.parent` accessor:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const myParentTask = task({
@@ -434,7 +438,7 @@ export const childTask = task({
 
 All of the update methods are available on `metadata.parent` and `metadata.root`:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 metadata.parent.set("progress", 0.5);
 metadata.parent.append("logs", "Step 1 complete");
 metadata.parent.remove("logs", "Step 1 complete");
@@ -452,7 +456,7 @@ metadata.root.stream("llm", readableStream); // Use streams.pipe() instead (v4.1
 
 You can also chain the update methods together:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 metadata.parent
   .set("progress", 0.1)
   .append("logs", "Step 1 complete")
@@ -464,7 +468,7 @@ metadata.parent
 
 An example of where you might use parent and root updates is in a task that triggers multiple child tasks in parallel. You could use the parent metadata to track the progress of the child tasks and update the parent task's progress as each child task completes:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { CSVRow, UploadedFileData, parseCSVFromUrl } from "@/utils";
 import { batch, logger, metadata, schemaTask } from "@trigger.dev/sdk";
 
@@ -518,7 +522,7 @@ Using metadata updates in conjunction with our [Realtime React hooks](/realtime/
 
 Track progress with percentage and current step:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const batchProcessingTask = task({
@@ -545,7 +549,7 @@ export const batchProcessingTask = task({
 
 Append log entries while maintaining status:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const deploymentTask = task({
@@ -579,7 +583,7 @@ export const deploymentTask = task({
 
 Store user information and notification preferences:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const userTask = task({
@@ -612,7 +616,7 @@ export const userTask = task({
 
 Metadata is NOT propagated to child tasks. If you want to pass metadata to a child task, you must do so explicitly:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 
 export const myTask = task({
@@ -628,7 +632,7 @@ export const myTask = task({
 
 The metadata APIs are currently loosely typed, accepting any object that is JSON-serializable:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 // ❌ You can't pass a top-level array
 const handle = await myTask.trigger(
   { message: "hello world" },
@@ -663,7 +667,7 @@ const handle = await myTask.trigger(
 
 We recommend wrapping the metadata API in a [Zod](https://zod.dev) schema (or your validator library of choice) to provide type safety:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { task, metadata } from "@trigger.dev/sdk";
 import { z } from "zod";
 
@@ -706,7 +710,7 @@ You can view the metadata for a run in the Trigger.dev dashboard. The metadata w
 
 You can use the `runs.retrieve()` SDK function to get the metadata for a run:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { runs } from "@trigger.dev/sdk";
 
 const run = await runs.retrieve("run_1234");

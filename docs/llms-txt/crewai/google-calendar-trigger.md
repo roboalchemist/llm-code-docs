@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/enterprise/guides/google-calendar-trigger.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Google Calendar Trigger
 
 > Kick off crews when Google Calendar events are created, updated, or cancelled
@@ -9,7 +13,8 @@
 Use the Google Calendar trigger to launch automations whenever calendar events change. Common use cases include briefing a team before a meeting, notifying stakeholders when a critical event is cancelled, or summarizing daily schedules.
 
 <Tip>
-  Make sure Google Calendar is connected in **Tools & Integrations** and enabled for the deployment you want to automate.
+  Make sure Google Calendar is connected in **Tools & Integrations** and enabled
+  for the deployment you want to automate.
 </Tip>
 
 ## Enabling the Google Calendar Trigger
@@ -53,7 +58,9 @@ crewai triggers run google_calendar/event_changed
 The `crewai triggers run` command will execute your crew with a complete Calendar payload, allowing you to test your parsing logic before deployment.
 
 <Warning>
-  Use `crewai triggers run google_calendar/event_changed` (not `crewai run`) to simulate trigger execution during development. After deployment, your crew will automatically receive the trigger payload.
+  Use `crewai triggers run google_calendar/event_changed` (not `crewai run`) to
+  simulate trigger execution during development. After deployment, your crew
+  will automatically receive the trigger payload.
 </Warning>
 
 ## Monitoring Executions

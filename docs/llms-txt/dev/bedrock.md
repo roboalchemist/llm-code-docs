@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/integrations/bedrock.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Invoke Palmyra models on Amazon Bedrock
 
 Palmyra X5 and Palmyra X4 are available on [Amazon Bedrock](https://aws.amazon.com/bedrock/).

@@ -1,5 +1,9 @@
 # Source: https://dub.co/docs/api-reference/publishable-keys.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dub.co/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Publishable keys
 
 > Learn how publishable keys work on Dub.

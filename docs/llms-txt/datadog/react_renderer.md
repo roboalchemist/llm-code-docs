@@ -6,7 +6,6 @@ description: >-
   Render custom React components by defining component code, input props, and
   the initial component state.
 breadcrumbs: Docs > App Builder > Components > React Renderer
-source_url: https://docs.datadoghq.com/app_builder/components/react_renderer/index.html
 ---
 
 # React Renderer

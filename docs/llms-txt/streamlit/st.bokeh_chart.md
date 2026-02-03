@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/charts/st.bokeh_chart
+
 # st.bokeh_chart
 
 Display an interactive Bokeh chart.

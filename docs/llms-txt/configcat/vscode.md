@@ -2,6 +2,8 @@
 
 # Visual Studio Code - Manage your feature flags from VSCode
 
+Copy page
+
 [ConfigCat's Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=ConfigCat.configcat-feature-flags) to manage feature flags from Visual Studio Code.
 
 Connect your ConfigCat Product and Config to your Visual Studio Code Workspace. Find your Feature Flag's usages in your code easily. Turn features On/Off right from VSCode. You can also easily modify the linked flags to edit or add new Targeting or Percentage Rules.
@@ -81,7 +83,7 @@ Your browser does not support the video tag.
 3. Select the Environment.
 4. See the Feature Flag in the opened tab.
 5. You can turn your features On / Off right from the opened tab.
-6. You can add new Targeting Rules with User, Segment or Prerequisite conditions with a large selection of Comparators. [Read more about Targeting.](https://configcat.com/docs/docs/targeting/targeting-overview/.md)
+6. You can add new Targeting Rules with User, Segment or Prerequisite conditions with a large selection of Comparators. [Read more about Targeting.](https://configcat.com/docs/targeting/targeting-overview.md)
 7. You can add new Percentage Options to Feature Flags or Targeting Rules
 
 #### Create a new Feature Flag[​](#create-a-new-feature-flag "Direct link to Create a new Feature Flag")

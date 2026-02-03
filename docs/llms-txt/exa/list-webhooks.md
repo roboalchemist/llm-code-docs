@@ -1,126 +1,101 @@
-# Source: https://docs.exa.ai/websets/api/webhooks/list-webhooks.md
+# Source: https://exa.ai/docs/websets/api/webhooks/list-webhooks.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # List webhooks
 
 > Get a list of all webhooks in your account.
 The results come in pages. Use `limit` to set how many webhooks to get per page (up to 200). Use `cursor` to get the next page of results.
 
+
+
 ## OpenAPI
 
 ````yaml get /v0/webhooks
+openapi: 3.1.0
+info:
+  title: Websets
+  description: ''
+  version: '0'
+  contact: {}
+servers:
+  - url: https://api.exa.ai/websets/
+    description: Production
+security: []
+tags: []
 paths:
-  path: /v0/webhooks
-  method: get
-  servers:
-    - url: https://api.exa.ai/websets/
-      description: Production
-  request:
-    security:
-      - title: api key
-        parameters:
-          query: {}
-          header:
-            x-api-key:
-              type: apiKey
-              description: Your Exa API key
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        cursor:
+  /v0/webhooks:
+    get:
+      tags:
+        - Webhooks
+      summary: List webhooks
+      description: >-
+        Get a list of all webhooks in your account.
+
+        The results come in pages. Use `limit` to set how many webhooks to get
+        per page (up to 200). Use `cursor` to get the next page of results.
+      operationId: webhooks-list
+      parameters:
+        - name: cursor
+          required: false
+          in: query
+          description: The cursor to paginate through the results
           schema:
-            - type: string
-              required: false
-              description: The cursor to paginate through the results
-              minLength: 1
-        limit:
+            minLength: 1
+            type: string
+        - name: limit
+          required: false
+          in: query
+          description: The number of results to return
           schema:
-            - type: number
-              required: false
-              description: The number of results to return
-              maximum: 200
-              minimum: 1
-              default: 25
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: JavaScript
-        lang: javascript
-        source: |-
-          // npm install exa-js
-          import Exa from 'exa-js';
-          const exa = new Exa('YOUR_EXA_API_KEY');
-
-          const webhooks = await exa.websets.webhooks.list();
-
-          console.log(`Found ${webhooks.data.length} webhooks`);
-          webhooks.data.forEach(webhook => {
-            console.log(`- ${webhook.id}: ${webhook.url}`);
-          });
-      - label: Python
-        lang: python
-        source: |-
-          # pip install exa-py
-          from exa_py import Exa
-          exa = Exa('YOUR_EXA_API_KEY')
-
-          webhooks = exa.websets.webhooks.list()
-
-          print(f'Found {len(webhooks.data)} webhooks')
-          for webhook in webhooks.data:
-              print(f'- {webhook.id}: {webhook.url}')
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type:
-                      - array
-                    items:
-                      type:
-                        - object
-                      $ref: '#/components/schemas/Webhook'
-                    description: The list of webhooks
-              hasMore:
-                allOf:
-                  - type:
-                      - boolean
-                    description: Whether there are more results to paginate through
-              nextCursor:
-                allOf:
-                  - type: string
-                    description: The cursor to paginate through the next set of results
-                    nullable: true
-            refIdentifier: '#/components/schemas/ListWebhooksResponse'
-            requiredProperties:
-              - data
-              - hasMore
-              - nextCursor
-        examples:
-          example:
-            value:
-              data:
-                - id: <string>
-                  object: webhook
-                  status: active
-                  events:
-                    - webset.created
-                  url: <string>
-                  secret: <string>
-                  metadata: {}
-                  createdAt: '2023-11-07T05:31:56Z'
-                  updatedAt: '2023-11-07T05:31:56Z'
-              hasMore: true
-              nextCursor: <string>
-        description: List of webhooks
-  deprecated: false
-  type: path
+            minimum: 1
+            maximum: 200
+            default: 25
+            type: number
+      responses:
+        '200':
+          description: List of webhooks
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListWebhooksResponse'
+          headers:
+            X-Request-Id:
+              schema:
+                type: string
+              description: Unique identifier for the request.
+              example: req_N6SsgoiaOQOPqsYKKiw5
+              required: true
+      security:
+        - api_key: []
 components:
   schemas:
+    ListWebhooksResponse:
+      type:
+        - object
+      properties:
+        data:
+          type:
+            - array
+          items:
+            $ref: '#/components/schemas/Webhook'
+            type:
+              - object
+          description: The list of webhooks
+        hasMore:
+          type:
+            - boolean
+          description: Whether there are more results to paginate through
+        nextCursor:
+          type: string
+          description: The cursor to paginate through the next set of results
+          nullable: true
+      required:
+        - data
+        - hasMore
+        - nextCursor
     Webhook:
       type:
         - object
@@ -145,9 +120,9 @@ components:
           type:
             - array
           items:
+            $ref: '#/components/schemas/EventType'
             type:
               - string
-            $ref: '#/components/schemas/EventType'
           minItems: 1
           description: The events to trigger the webhook
         url:
@@ -211,9 +186,11 @@ components:
         - monitor.run.completed
         - webset.export.created
         - webset.export.completed
+  securitySchemes:
+    api_key:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: Your Exa API key
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

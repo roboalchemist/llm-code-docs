@@ -4,7 +4,6 @@
 title: AKS Workload Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: 'Docs > Cloudcraft (Standalone) > Components: Azure > AKS Workload Component'
-source_url: https://docs.datadoghq.com/components-azure/aks-workload/index.html
 ---
 
 # AKS Workload Component

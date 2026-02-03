@@ -18,6 +18,10 @@ The fields `plan`, `email` and `profile` are omitted when this endpoint is acces
 ## Responses
 
 * 200
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/SpamClassifier.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Classifying spam using structured outputs
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/SpamClassifier/SpamClassifier.mdx) by [Ornella Altunyan](https://twitter.com/ornelladotcom) on 2025-02-08</div>
@@ -8,7 +12,7 @@ When building AI applications that require consistent, structured responses, you
 Generally, if you're using a model from OpenAI, you'd just use [structured outputs](https://platform.openai.com/docs/guides/structured-outputs).
 If you want to use models from Anthropic, however, you'd need to take a different approach and use their [Tool](https://docs.anthropic.com/en/docs/build-with-claude/tool-use) feature, or use prompt engineering to get the desired response.
 
-In the [Braintrust Playground](/core/playground), it's easy to use either AI provider with structured outputs by simply selecting **Structured output** from the output dropdown menu and defining a JSON schema. If you use the [AI proxy](/guides/proxy), you can also use OpenAI SDKs in your code to speak structured outputs to Anthropic models. Structured outputs work in Braintrust for most LLMs.
+In the [Braintrust Playground](/evaluate/playgrounds), it's easy to use either AI provider with structured outputs by simply selecting **Structured output** from the output dropdown menu and defining a JSON schema. If you use the [AI proxy](/deploy/ai-proxy), you can also use OpenAI SDKs in your code to speak structured outputs to Anthropic models. Structured outputs work in Braintrust for most LLMs.
 
 In this cookbook, we'll explore how to use structured outputs and Anthropic models in the playground to classify spam in text messages.
 
@@ -123,11 +127,6 @@ If changing the prompt doesn't yield the desired results, you can experiment wit
 
 In addition to changing your prompt definition and model, you can also:
 
-* Add more [custom scorers](/core/functions/scorers#custom-scorers)
-* Use a larger or more custom [dataset](/core/datasets)
-* Write more complex [structured output](/core/functions/prompts#structured-outputs) JSON schema
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt
+* Add more [custom scorers](/evaluate/write-scorers#custom-scorers)
+* Use a larger or more custom [dataset](/annotate/datasets)
+* Write more complex [structured output](/evaluate/write-prompts#structured-outputs) JSON schema

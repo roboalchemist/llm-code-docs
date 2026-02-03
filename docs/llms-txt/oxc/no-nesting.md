@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/promise/no-nesting.md
 ---
-# promise/no-nesting&#x20;
 
 ### What it does
 

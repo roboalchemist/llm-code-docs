@@ -4,8 +4,6 @@
 title: CloudFormation Resourcescan
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > CloudFormation Resourcescan
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.cloudformation_resourcescan.dataset/index.html
 ---
 
 # CloudFormation Resourcescan
@@ -32,4 +30,4 @@ aws.cloudformation_resourcescan
 | start_time           | core | timestamp     | The time that the resource scan was started.                                                                                                                                                                                                                                                               |
 | status               | core | string        | Status of the resource scan. <dl> <dt> IN_PROGRESS </dt> <dd> The resource scan is still in progress. </dd> <dt> COMPLETE </dt> <dd> The resource scan is complete. </dd> <dt> EXPIRED </dt> <dd> The resource scan has expired. </dd> <dt> FAILED </dt> <dd> The resource scan has failed. </dd> </dl>    |
 | status_reason        | core | string        | The reason for the resource scan status, providing more information if a failure happened.                                                                                                                                                                                                                 |
-| tags                 | core | hstore        |
+| tags                 | core | hstore_csv    |

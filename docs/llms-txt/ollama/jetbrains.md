@@ -1,5 +1,9 @@
 # Source: https://docs.ollama.com/integrations/jetbrains.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ollama.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # JetBrains
 
 <Note>This example uses **IntelliJ**; same steps apply to other JetBrains IDEs (e.g., PyCharm).</Note>

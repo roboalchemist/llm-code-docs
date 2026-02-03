@@ -1,4 +1,4 @@
-# Source: https://docs.warp.dev/integrations/slack.md
+# Source: https://docs.warp.dev/agent-platform/integrations/slack.md
 
 # Slack
 
@@ -45,7 +45,7 @@ Agents keep you informed directly in Slack via:
 * Checkpoints indicating major steps completed
 * A session-sharing link that opens a live terminal view of the remote agent
 
-[ambient-agents-session-sharing](https://docs.warp.dev/knowledge-and-collaboration/session-sharing/ambient-agents-session-sharing "mention") works in Warp or in your browser and supports multiple teammates joining the same live session.
+[Ambient Agents Session Sharing](https://docs.warp.dev/knowledge-and-collaboration/session-sharing/ambient-agents-session-sharing) works in Warp or in your browser and supports multiple teammates joining the same live session.
 
 ### Joining the live remote session
 
@@ -81,7 +81,7 @@ Because PRs are created as you, the workflow slots seamlessly into your team’s
 
 ### How to configure the Slack integration
 
-Setup involves two steps, powered by the [cli](https://docs.warp.dev/platform/cli "mention")
+Setup involves two steps, powered by the [Warp CLI](https://docs.warp.dev/reference/cli/README).
 
 #### 1. Create an environment
 
@@ -103,11 +103,11 @@ warp environment create \
   --setup-command "<command>"
 ```
 
-* **Guided setup using `/create-environment`** ( [slash-commands](https://docs.warp.dev/agents/slash-commands "mention"))
+* **Guided setup using `/create-environment`** ( [Slash Commands](https://docs.warp.dev/agent-platform/agent/slash-commands))
 
   This flow analyzes your repos, recommends a Docker image, suggests setup commands, and can build + push a custom image if needed.
 
-See the [Environment Setup](https://docs.warp.dev/integrations/integrations-overview) docs for detailed instructions.
+See the [Environment Setup](https://docs.warp.dev/agent-platform/integrations/integrations-overview) docs for detailed instructions.
 
 #### 2. Create the Slack integration
 
@@ -147,15 +147,15 @@ To remove the Warp app from your Slack workspace:
 5. Scroll to the bottom and select **Remove App**.
 6. Confirm the removal.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-d1cf0fe6e7b0ea723e9133bbd12361b14df3ee8b%2Fdelete-warpy.png?alt=media" alt=""><figcaption><p>Warpy is just an internal Slackbot, your Warp slackbot should be called Warp.</p></figcaption></figure>
+Once removed, Slack will immediately disable the integration for all teammates.
 
-<figure><img src="https://2297236823-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-MbqIgTw17KQvq_DQuRr%2Fuploads%2Fgit-blob-2241f1e227f9036171d894743eeeeefdf1ec6ea8%2Fremove-slack-app.png?alt=media" alt=""><figcaption></figcaption></figure>
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-d1cf0fe6e7b0ea723e9133bbd12361b14df3ee8b%2Fdelete-warpy.png?alt=media" alt=""><figcaption><p>Warpy is just an internal Slackbot, your Warp slackbot should be called Warp.</p></figcaption></figure>
 
-Once removed, Slack will immediately disable the integration for all teammates. If you reinstall later, you’ll need to complete the setup flow again from the Warp CLI.
+<figure><img src="https://769506432-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FAULCelT4yIUOcSwWWvPk%2Fuploads%2Fgit-blob-2241f1e227f9036171d894743eeeeefdf1ec6ea8%2Fremove-slack-app.png?alt=media" alt=""><figcaption></figcaption></figure>
 
 ### Troubleshooting
 
-If something isn’t working—missing repos, Slack not detecting @Warp, PR failures, or environment configuration issues—see the [Integrations Troubleshooting](https://docs.warp.dev/integrations-overview#troubleshooting) page. It covers:
+If something isn’t working—missing repos, Slack not detecting @Warp, PR failures, or environment configuration issues—see the [Integrations Troubleshooting](https://docs.warp.dev/agent-platform/integrations-overview#troubleshooting) page. It covers:
 
 * GitHub authorization and repo access
 * Docker image pull errors

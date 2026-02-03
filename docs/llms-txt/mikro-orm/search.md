@@ -10,22 +10,13 @@
 
 [6.6](https://mikro-orm.io/docs/quick-start.md)
 
-* [Next](https://mikro-orm.io/docs/next/quick-start)
+* [7.0 (next)](https://mikro-orm.io/docs/next/quick-start)
 * [6.6](https://mikro-orm.io/docs/quick-start.md)
-* [6.5](https://mikro-orm.io/docs/6.5/quick-start)
-* [6.4](https://mikro-orm.io/docs/6.4/quick-start)
-* [6.3](https://mikro-orm.io/docs/6.3/quick-start)
-* [6.2](https://mikro-orm.io/docs/6.2/quick-start)
-* [6.1](https://mikro-orm.io/docs/6.1/quick-start)
-* [6.0](https://mikro-orm.io/docs/6.0/quick-start)
 * [5.9](https://mikro-orm.io/docs/5.9/installation)
-* [4.5](https://mikro-orm.io/docs/4.5/installation)
-* [3.6](https://mikro-orm.io/docs/3.6)
-* [2.7](https://mikro-orm.io/docs/2.7)
 
 [Docs](https://mikro-orm.io/docs/quick-start.md)[API](https://mikro-orm.io/api.md)[FAQ](https://mikro-orm.io/docs/faq.md)[Blog](https://mikro-orm.io/blog.md)[Changelog](https://mikro-orm.io/api/core/changelog.md)
 
-[latest: v6.6.2](https://mikro-orm.io/versions.md)[Discord](https://discord.gg/w8bjxFHS7X "Chat on Discord")[GitHub](https://github.com/mikro-orm/mikro-orm "View on GitHub")[Twitter](https://twitter.com/MikroORM "Twitter")
+[latest: v6.6.4](https://mikro-orm.io/versions.md)[Discord](https://discord.gg/w8bjxFHS7X "Chat on Discord")[GitHub](https://github.com/mikro-orm/mikro-orm "View on GitHub")[Twitter](https://twitter.com/MikroORM "Twitter")
 
 Search
 
@@ -33,7 +24,7 @@ Search
 
 Type your search here
 
-Next (current)
+7.0 (next) (current)
 
 Powered by[](https://www.algolia.com/)
 
@@ -59,7 +50,7 @@ Powered by[](https://www.algolia.com/)
 
 ![MikroORM](/img/logo-header.svg)
 
-Copyright © 2018-2025 Martin Adámek. Built with Docusaurus.
+Copyright © 2018-2026 Martin Adámek. Built with Docusaurus.
 
 <!-- -->
 

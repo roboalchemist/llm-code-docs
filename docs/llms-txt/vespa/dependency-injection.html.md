@@ -147,7 +147,7 @@ Upon deployment, the Container will first instantiate `MyDependencyProvider`, an
 
 A provider can declare constructor dependencies, just like any other component.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

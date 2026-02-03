@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/generativeagent/integrate/example-interactions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Example Interactions
 
 While each type of integration may have some subtle differences on how replies are handled and sent to back to end users. They all still follow the same basic interaction pattern. These examples show some example scenarios, the API calls you would make, and the events you would receive.

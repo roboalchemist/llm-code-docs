@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/tutorials/authentication/microsoft
+
 # Use Microsoft Entra to authenticate users
 
 [Microsoft Identity Platform](https://learn.microsoft.com/en-us/entra/identity-platform/v2-overview) is a service within Microsoft Entra that lets you build applications to authenticate users. Your applications can use personal, work, and school accounts managed by Microsoft.

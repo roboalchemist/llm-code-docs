@@ -1,7 +1,5 @@
 # Source: https://rspack.dev/plugins/webpack/banner-plugin.md
 
-import { Table } from '@builtIns';
-
 # BannerPlugin
 
 ```js
@@ -12,7 +10,7 @@ Adds a banner to the top or bottom of each generated chunk.
 
 ## Options
 
-* **Type:**
+- **Type:**
 
 ```ts
 type BannerFunction = (args: {
@@ -34,80 +32,19 @@ type BannerPluginOptions = {
 type BannerPluginArgument = BannerContent | BannerPluginOptions;
 ```
 
-* **Default:** `undefined`
+- **Default:** `undefined`
 
-<Table
-  header={[
-  {
-    name: 'Name',
-    key: 'name',
-  },
-  {
-    name: 'Type',
-    key: 'type',
-  },
-  {
-    name: 'Default',
-    key: 'default',
-  },
-  {
-    name: 'Description',
-    key: 'description',
-  },
-]}
-  body={[
-  {
-    name: '`banner`',
-    type: '`BannerFunction|string`',
-    default: 'undefined',
-    description: 'Specifies the banner, it will be wrapped in a comment.',
-  },
-  {
-    name: '`entryOnly`',
-    type: '`boolean|undefined`',
-    default: 'undefined',
-    description:
-      'If true, the banner will only be added to the entry chunks.',
-  },
-  {
-    name: '`footer`',
-    type: '`boolean|undefined`',
-    default: 'undefined',
-    description: 'If true, banner will be placed at the end of the output.',
-  },
-  {
-    name: '`raw`',
-    type: '`boolean|undefined`',
-    default: 'undefined',
-    description: 'If true, banner will not be wrapped in a comment.',
-  },
-  {
-    name: '`stage`',
-    type: '`number|undefined`',
-    default: '`PROCESS_ASSETS_STAGE_ADDITIONS`(-100)',
-    description:
-      'The stage of the compilation in which the banner should be injected.',
-  },
-  {
-    name: '`test`',
-    type: '`BannerRules|undefined`',
-    default: 'undefined',
-    description: 'Include all modules that pass test assertion.',
-  },
-  {
-    name: '`include`',
-    type: '`BannerRules|undefined`',
-    default: 'undefined',
-    description: 'Include all modules matching any of these conditions.',
-  },
-  {
-    name: '`exclude`',
-    type: '`BannerRules|undefined`',
-    default: 'undefined',
-    description: 'Exclude all modules matching any of these conditions.',
-  },
-]}
-/>
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `banner` | `BannerFunction|string` | undefined | Specifies the banner, it will be wrapped in a comment. |
+| `entryOnly` | `boolean|undefined` | undefined | If true, the banner will only be added to the entry chunks. |
+| `footer` | `boolean|undefined` | undefined | If true, banner will be placed at the end of the output. |
+| `raw` | `boolean|undefined` | undefined | If true, banner will not be wrapped in a comment. |
+| `stage` | `number|undefined` | `PROCESS_ASSETS_STAGE_ADDITIONS`(-100) | The stage of the compilation in which the banner should be injected. |
+| `test` | `BannerRules|undefined` | undefined | Include all modules that pass test assertion. |
+| `include` | `BannerRules|undefined` | undefined | Include all modules matching any of these conditions. |
+| `exclude` | `BannerRules|undefined` | undefined | Exclude all modules matching any of these conditions. |
+
 
 ## Examples
 

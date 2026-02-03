@@ -6,7 +6,6 @@ description: >-
   Control network access to Datadog by restricting API and UI access to specific
   IP addresses or CIDR ranges for enterprise security.
 breadcrumbs: Docs > Account Management > IP Allowlist
-source_url: https://docs.datadoghq.com/org_settings/ip_allowlist/index.html
 ---
 
 # IP Allowlist

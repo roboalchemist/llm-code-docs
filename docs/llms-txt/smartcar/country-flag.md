@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/connect/advanced-config/country-flag.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Country Selection
 
 > By default Connect will launch based on the devices location impacting the brands that are available to the user e.g. Renault is only available in Europe.

@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/guides/custom-extractors.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Custom Extractors
 
 > Build custom file processing plugins to handle unique data formats and transform files into structured data
@@ -21,7 +25,7 @@ Common use cases include:
 
 Custom extractors are built using the `@flatfile/util-extractor` utility, which provides a standardized framework for file processing:
 
-```javascript
+```javascript  theme={null}
 import { Extractor } from "@flatfile/util-extractor";
 
 export const MyCustomExtractor = (options = {}) => {
@@ -31,7 +35,7 @@ export const MyCustomExtractor = (options = {}) => {
 
 Once you've created your extractor, you must register it in a [listener](/core-concepts/listeners) to be used. This will ensure that the extractor responds to the `file:created` [event](/reference/events#file%3Acreated) and processes your files.
 
-```javascript
+```javascript  theme={null}
 // . . . other imports
 import { MyCustomExtractor } from "./my-custom-extractor";
 
@@ -45,7 +49,7 @@ export default function (listener) {
 
 To support multiple file extensions, use a RegExp pattern:
 
-```javascript
+```javascript  theme={null}
 // Support both .pipe and .custom extensions
 export const MultiExtensionExtractor = (options = {}) => {
   return Extractor(/\.(pipe|custom)$/i, "pipe", parseCustomFormat, options);
@@ -82,7 +86,7 @@ Remember that custom extractors are powerful tools for handling unique data form
 
 Install the required packages. You may also want to review our [Coding Tutorial](/coding-tutorial/overview) if you haven't created a [Listener](/core-concepts/listeners) yet.
 
-```bash
+```bash  theme={null}
 npm install @flatfile/util-extractor @flatfile/listener @flatfile/api
 ```
 
@@ -90,13 +94,13 @@ npm install @flatfile/util-extractor @flatfile/listener @flatfile/api
 
 Let's create a simple custom extractor for a pipe-delimited format. This will be used to process files with the `.pipe` or `.psv` extension that look like this:
 
-```psv
+```psv  theme={null}
 name|email|phone
 John Doe|john@example.com|123-456-7890
 Jane Smith|jane@example.com|098-765-4321
 ```
 
-```javascript
+```javascript  theme={null}
 import { Extractor } from "@flatfile/util-extractor";
 
 // Parser function - converts Buffer to WorkbookCapture
@@ -141,7 +145,7 @@ export const CustomPipeExtractor = (options = {}) => {
 
 And now let's import and register it in your [Listener](/core-concepts/listeners).
 
-```javascript
+```javascript  theme={null}
 // . . . other imports
 import { CustomPipeExtractor } from "./custom-pipe-extractor";
 
@@ -159,7 +163,7 @@ That's it! Your extractor is now registered and will be used to process pipe-del
 
 Let's construct an Extractor to handle files that contain multiple data sections. This will be used to process files with the `.multi` or `.sections` extension that look like this:
 
-```text
+```text  theme={null}
 ---SECTION---
 SHEET:Sheet1
 name,email,phone
@@ -173,7 +177,7 @@ John Smith,john@example.com,098-765-4322
 ---SECTION---
 ```
 
-```javascript
+```javascript  theme={null}
 function parseMultiSheetFormat(buffer) {
   const content = buffer.toString('utf-8');
   const sections = content.split('---SECTION---');
@@ -213,7 +217,7 @@ export const MultiSheetExtractor = (options = {}) => {
 
 Now let's register it in your [Listener](/core-concepts/listeners).
 
-```javascript
+```javascript  theme={null}
 // . . . other imports
 import { MultiSheetExtractor } from "./multi-sheet-extractor";
 
@@ -227,9 +231,7 @@ export default function (listener) {
 
 This example will be used to process binary files with structured data. This will be used to process binary files with the `.bin` or `.dat` extension. Due to the nature of binary format, we can't easily present a sample import here.
 
-{/* TODO: Add a sample import here. I can't figure out how to get Mintlify to respect asset download links. */}
-
-```javascript
+```javascript  theme={null}
 function parseBinaryFormat(buffer) {
   // Example: Custom binary format with header + records
   let offset = 0;
@@ -283,7 +285,7 @@ export const BinaryExtractor = (options = {}) => {
 
 And, once again, let's register it in your [Listener](/core-concepts/listeners).
 
-```javascript
+```javascript  theme={null}
 // . . . other imports
 import { BinaryExtractor } from "./binary-extractor";
 
@@ -297,7 +299,7 @@ export default function (listener) {
 
 Create a flexible extractor that can be configured for different formats. This will be used to process files in a manner that handles different delimiters, line endings, and other formatting options.
 
-```javascript
+```javascript  theme={null}
 function createConfigurableParser(config) {
   return function parseConfigurableFormat(buffer) {
     const content = buffer.toString(config.encoding || 'utf-8');
@@ -391,7 +393,7 @@ Now let's register two different configurable extractors in our [Listener](/core
 
 The first will be used to process files with the `.custom` extension that look like this, while transforming dates and amount values:
 
-```text
+```text  theme={null}
 Extraneous text
 More extraneous text
 name & date & amount
@@ -401,7 +403,7 @@ Jane Smith & 1/2/2021 & 200.00
 
 The second will be used to process files with the `.pipe` or `.special` extension that look like this:
 
-```text
+```text  theme={null}
 Extraneous text
 More extraneous text
 name|date|amount
@@ -409,7 +411,7 @@ John Doe|2021-01-01|100.00
 Jane Smith|2021-01-02|200.00
 ```
 
-```javascript
+```javascript  theme={null}
 // . . . other imports
 import { ConfigurableExtractor } from "./configurable-extractor";
 
@@ -442,7 +444,7 @@ export default function (listener) {
 
 ### API
 
-```typescript
+```typescript  theme={null}
 function Extractor(
   fileExt: string | RegExp,
   extractorType: string,
@@ -485,7 +487,7 @@ Your `parseBuffer` function receives additional options beyond what you pass to 
 
 The parser function must return a `WorkbookCapture` object:
 
-```javascript
+```javascript  theme={null}
 const workbookCapture = {
   "SheetName1": {
     headers: ["field1", "field2", "field3"],
@@ -514,7 +516,7 @@ const workbookCapture = {
 
 Each cell value should use the `Flatfile.RecordData` format:
 
-```javascript
+```javascript  theme={null}
 const recordData = {
   field1: { value: "john@example.com" },
   field2: { value: "John Doe" },
@@ -540,7 +542,7 @@ const recordData = {
 
 ### TypeScript Interfaces
 
-```typescript
+```typescript  theme={null}
 type ParserFunction = (
   buffer: Buffer,
   options: any
@@ -568,7 +570,7 @@ type SheetCapture = {
 * Check [Listener](/core-concepts/listeners) is properly deployed and running
 * Enable debug logging to see processing details
 
-```javascript
+```javascript  theme={null}
 const extractor = CustomExtractor({
   debug: true
 }); // Make sure file extensions match in the Extractor call
@@ -584,7 +586,7 @@ const extractor = CustomExtractor({
 * Validate input data before processing
 * Return helpful error messages
 
-```javascript
+```javascript  theme={null}
 function parseCustomFormat(buffer) {
   try {
     const content = buffer.toString('utf-8');
@@ -611,7 +613,7 @@ function parseCustomFormat(buffer) {
 * Implement streaming for very large files
 * Use parallel processing carefully
 
-```javascript
+```javascript  theme={null}
 const extractor = CustomExtractor({
   chunkSize: 1000,  // Smaller chunks
   parallel: 1       // Reduce parallelization
@@ -628,7 +630,7 @@ const extractor = CustomExtractor({
 * Use appropriate chunk sizes
 * Consider parallel processing for I/O-bound operations
 
-```javascript
+```javascript  theme={null}
 // Optimize for large files
 const extractor = CustomExtractor({
   chunkSize: 5000,

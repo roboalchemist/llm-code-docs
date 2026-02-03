@@ -4,7 +4,6 @@
 title: Query Syntax
 description: Global search of all your traces with tags
 breadcrumbs: Docs > APM > Trace Explorer > Query Syntax
-source_url: https://docs.datadoghq.com/trace_explorer/query_syntax/index.html
 ---
 
 # Query Syntax

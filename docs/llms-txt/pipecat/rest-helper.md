@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/utilities/daily/rest-helper.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # DailyRESTHelper
 
 > Classes and methods for interacting with the Daily API to manage rooms and tokens
@@ -100,7 +104,7 @@ Properties that configure a Daily room's behavior and features.
 </ResponseField>
 
 <ResponseField name="enable_recording" type="string" optional>
-  Recording settings ("cloud", "local", or "raw-tracks")
+  Recording settings ("cloud", "cloud-audio-only", "local", or "raw-tracks")
 </ResponseField>
 
 <ResponseField name="geo" type="string" optional>
@@ -129,6 +133,12 @@ Properties that configure a Daily room's behavior and features.
 
 The class also includes a `sip_endpoint` property that returns the SIP endpoint URI if available.
 
+`enable_recording` also supports `cloud-audio-only`, which records the call server-side and produces an audio-only MPEG-4 file with `.m4a` file extension and content type as `audio/mp4`. This recording setting behaves like `cloud`, except the `layout` options do not apply because there are no video tracks. Note: you can retrieve the resulting `.m4a` recordings via the [Daily REST API](https://docs.daily.co/reference/rest-api/recordings), in the same way you fetch `cloud` recording assets.
+
+<Tip>
+  If you're already using `enable_recording="cloud"` and want to switch to audio-only without changing your code, you can set `force_audio_only_recording: 1` on your Daily domain. This forces all cloud recordings to be audio-only (`.m4a` instead of `.mp4`) and skips recording video tracks even if they are present. This is useful when you want to transition to audio-only recordings immediately while avoiding an application redeploy. Switching `force_audio_only_recording: 0` will allow recording video tracks.
+</Tip>
+
 ```python  theme={null}
 import time
 from pipecat.transports.services.helpers.daily_rest import (
@@ -141,7 +151,7 @@ properties = DailyRoomProperties(
     exp=time.time() + 3600,  # 1 hour from now
     enable_chat=True,
     enable_emoji_reactions=True,
-    enable_recording="cloud",
+    enable_recording="cloud-audio-only",
     geo="us-west",
     max_participants=50,
     sip=DailyRoomSipParams(display_name="conference"),
@@ -292,7 +302,7 @@ Properties for configuring a Daily meeting token.
 </ResponseField>
 
 <ResponseField name="enable_recording" type="string" optional>
-  Recording settings ("cloud", "local", or "raw-tracks")
+  Recording settings ("cloud", "cloud-audio-only", "local", or "raw-tracks")
 </ResponseField>
 
 <ResponseField name="enable_prejoin_ui" type="boolean" optional>
@@ -326,10 +336,16 @@ token_params = DailyMeetingTokenParams(
         user_name="John Doe",
         enable_screenshare=True,
         start_video_off=True,
+        enable_recording="cloud-audio-only",
+        start_cloud_recording=True,
         permissions={"canSend": ["video", "audio"]}
     )
 )
 ```
+
+<Warning>
+  Recording type: ‎`cloud` will produce files with a ‎`.mp4` extension, while ‎`cloud-audio-only` will produce files with a ‎`.m4a` extension.
+</Warning>
 
 ## Initialize DailyRESTHelper
 
@@ -481,8 +497,3 @@ Extracts the room name from a Daily room URL.
 room_name = helper.get_name_from_url("https://your-domain.daily.co/my-room")
 print(f"Room name: {room_name}")  # Outputs: "my-room"
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

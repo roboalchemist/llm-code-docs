@@ -104,7 +104,7 @@ interface SeparatorProps {
   /**
    * Display an icon in the middle.
    */
-  icon?: string | object | undefined;
+  icon?: any;
   /**
    * Display an avatar in the middle.
    */
@@ -116,7 +116,7 @@ interface SeparatorProps {
    * The orientation of the separator.
    * @default "\"horizontal\""
    */
-  orientation?: DataOrientation | undefined;
+  orientation?: "horizontal" | "vertical" | undefined;
   ui?: { root?: ClassNameValue; border?: ClassNameValue; container?: ClassNameValue; icon?: ClassNameValue; avatar?: ClassNameValue; avatarSize?: ClassNameValue; label?: ClassNameValue; } | undefined;
   /**
    * Whether or not the component is purely decorative. <br>When `true`, accessibility-related attributes
@@ -291,8 +291,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

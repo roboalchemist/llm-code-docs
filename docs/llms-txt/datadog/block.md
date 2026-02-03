@@ -4,7 +4,6 @@
 title: Block Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: 'Docs > Cloudcraft (Standalone) > Components: Common > Block Component'
-source_url: https://docs.datadoghq.com/components-common/block/index.html
 ---
 
 # Block Component

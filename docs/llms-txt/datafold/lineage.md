@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/data-explorer/lineage.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Lineage
 
 > Datafold offers a column-level and tabular lineage view.

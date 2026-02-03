@@ -17,15 +17,10 @@ It requires two props:
 - `state` - a reactive object holding the form's state.
 - `schema` - any [Standard Schema](https://github.com/standard-schema/standard-schema) or [Superstruct](https://github.com/ianstormtaylor/superstruct).
 
-<warning>
+> [!WARNING]
+> No validation library is included by default, ensure you install the one you need.
 
-**No validation library is included** by default, ensure you **install the one you need**.
-
-</warning>
-
-<tabs className="gap-0">
-
-```vue [FormExampleValibot.vue]
+```vue
 <script setup lang="ts">
 import * as v from 'valibot'
 import type { FormSubmitEvent } from '@nuxt/ui'
@@ -64,9 +59,10 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     </UButton>
   </UForm>
 </template>
+
 ```
 
-```vue [FormExampleZod.vue]
+```vue
 <script setup lang="ts">
 import * as z from 'zod'
 import type { FormSubmitEvent } from '@nuxt/ui'
@@ -105,9 +101,10 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     </UButton>
   </UForm>
 </template>
+
 ```
 
-```vue [FormExampleRegle.vue]
+```vue
 <script setup lang="ts">
 import { useRegle, type InferInput } from '@regle/core'
 import { required, email, minLength, withMessage } from '@regle/rules'
@@ -142,9 +139,10 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     </UButton>
   </UForm>
 </template>
+
 ```
 
-```vue [FormExampleYup.vue]
+```vue
 <script setup lang="ts">
 import { object, string } from 'yup'
 import type { InferType } from 'yup'
@@ -186,9 +184,10 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     </UButton>
   </UForm>
 </template>
+
 ```
 
-```vue [FormExampleJoi.vue]
+```vue
 <script setup lang="ts">
 import Joi from 'joi'
 import type { FormSubmitEvent } from '@nuxt/ui'
@@ -227,9 +226,10 @@ async function onSubmit(event: FormSubmitEvent<typeof state>) {
     </UButton>
   </UForm>
 </template>
+
 ```
 
-```vue [FormExampleSuperstruct.vue]
+```vue
 <script setup lang="ts">
 import { object, string, nonempty, refine } from 'superstruct'
 import type { Infer } from 'superstruct'
@@ -270,9 +270,8 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
     </UButton>
   </UForm>
 </template>
-```
 
-</tabs>
+```
 
 Errors are reported directly to the [FormField](/docs/components/form-field) component based on the `name` or `error-pattern` prop. This means the validation rules defined for the `email` attribute in your schema will be applied to `<FormField name="email">`.
 
@@ -287,11 +286,8 @@ The validation function must return a list of errors with the following attribut
 - `message` - the error message to display.
 - `name` - the `name` of the `FormField` to send the error to.
 
-<tip>
-
-It can be used alongside the `schema` prop to handle complex use cases.
-
-</tip>
+> [!TIP]
+> It can be used alongside the `schema` prop to handle complex use cases.
 
 ```vue [FormExampleBasic.vue]
 <script setup lang="ts">
@@ -345,11 +341,8 @@ The Form component automatically triggers validation when an input emits an `inp
 
 You can control when validation happens this using the `validate-on` prop.
 
-<tip>
-
-The form always validates on submit.
-
-</tip>
+> [!TIP]
+> The form always validates on submit.
 
 ```vue [FormExampleElements.vue]
 <script setup lang="ts">
@@ -501,11 +494,8 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 </template>
 ```
 
-<tip>
-
-You can use the [`useFormField`](/docs/composables/use-form-field) composable to implement this inside your own components.
-
-</tip>
+> [!TIP]
+> You can use the [`useFormField`](/docs/composables/use-form-field) composable to implement this inside your own components.
 
 ### Error event
 
@@ -734,15 +724,15 @@ interface FormProps {
   /**
    * Schema to validate the form state. Supports Standard Schema objects, Yup, Joi, and Superstructs.
    */
-  schema?: FormSchema | undefined;
+  schema?: S | undefined;
   /**
    * An object representing the current state of the form.
    */
-  state?: Partial<any> | undefined;
+  state?: (N extends false ? Partial<InferInput<S>> : never) | undefined;
   /**
    * Custom validation function to validate the form state.
    */
-  validate?: ((state: Partial<any>) => FormError<string>[] | Promise<FormError<string>[]>) | undefined;
+  validate?: ((state: Partial<InferInput<S>>) => FormError<string>[] | Promise<FormError<string>[]>) | undefined;
   /**
    * The list of input events that trigger the form validation.
    */
@@ -755,7 +745,7 @@ interface FormProps {
    * Path of the form's state within it's parent form.
    * Used for nesting forms. Only available if `nested` is true.
    */
-  name?: string | undefined;
+  name?: (N extends true ? string : never) | undefined;
   /**
    * Delay in milliseconds before validating the form on input events.
    * @default "300"
@@ -765,11 +755,11 @@ interface FormProps {
    * If true, applies schema transformations on submit.
    * @default "true as T"
    */
-  transform?: boolean | undefined;
+  transform?: T | undefined;
   /**
    * If true, this form will attach to its parent Form and validate at the same time.
    */
-  nested?: boolean | undefined;
+  nested?: N | undefined;
   /**
    * When `true`, all form elements will be disabled on `@submit` event.
    * This will cause any focused input elements to lose their focus state.
@@ -786,11 +776,9 @@ interface FormProps {
 }
 ```
 
-<callout icon="i-simple-icons-mdnwebdocs" target="_blank" to="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attributes">
-
-This component also supports all native `<form>` HTML attributes.
-
-</callout>
+> [!NOTE]
+> See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form#attributes
+> This component also supports all native `<form>` HTML attributes.
 
 ### Slots
 
@@ -810,7 +798,7 @@ interface FormSlots {
  * Emitted events for the Form component
  */
 interface FormEmits {
-  submit: (payload: [event: FormSubmitEvent<any>]) => void;
+  submit: (payload: [event: FormSubmitEvent<FormData<S, T>>]) => void;
   error: (payload: [event: FormErrorEvent]) => void;
 }
 ```
@@ -1459,8 +1447,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

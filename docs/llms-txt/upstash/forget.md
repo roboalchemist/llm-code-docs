@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/json/forget.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/forget.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/forget.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/forget.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/forget.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/forget.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/forget.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/forget.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/forget.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/forget.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # JSON.FORGET
 
@@ -26,22 +12,22 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the json entry.
 </ParamField>
 
-<ParamField body="path" type="string" default="$">
-  The path to forget.
+<ParamField body="path" type="str" required>
+  The path to forget. `$` is the root.
 </ParamField>
 
 ## Response
 
-<ResponseField type="integer" required>
+<ResponseField type="int" required>
   How many paths were deleted.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.json.forget("key", "$.path.to.value");
+  ```py Example theme={"system"}
+  redis.json.forget("key", "$.path.to.value")
   ```
 </RequestExample>

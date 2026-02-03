@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/getting-started/setup/ai-console.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AI Console
 
 > Central dashboard for configuring and managing ASAPP products
@@ -21,16 +25,16 @@ AI Console allows you to set up and manage ASAPP products.
 You can configure the following products:
 
 * [GenerativeAgent](/generativeagent): Configure Tasks, Functions, Knowledge Bases, and more.
-* [ASAPP Messaging](/messaging-platform): Configure intents, flows, response libraries, and other ASAPP Messaging settings.
-  * [Queues and Routing](/messaging-platform/digital-agent-desk/queues-and-routing)
-  * [Virtual Agent](/messaging-platform/virtual-agent)
+* [ASAPP Messaging](/agent-desk): Configure intents, flows, response libraries, and other ASAPP Messaging settings.
+  * [Queues and Routing](/agent-desk/digital-agent-desk/queues-and-routing)
+  * [Virtual Agent](/agent-desk/virtual-agent)
   * [End Customer IP Blocking](/security/external-ip-blocking)
-* [AutoCompose](/autocompose): Configure responses and other settings for AutoCompose.
-* [AutoSummary](/autosummary): Try out AutoSummary within the AI Console.
+* [AI Compose](/ai-productivity/ai-compose): Configure responses and other settings for AI Compose.
+* [AI Summary](/ai-productivity/ai-summary): Try out AI Summary within the AI Console.
 
-## Manage Company Resource
+## Manage Company Resources
 
-**Company Resources** are shared entities that are used across multiple ASAPP products.
+**Company Resources** are shared entities that multiple ASAPP products use.
 
 <Frame>
   <img src="https://mintcdn.com/asapp/bSPknm73NAzIX3Ak/images/getting-started/aic/company-resources.png?fit=max&auto=format&n=bSPknm73NAzIX3Ak&q=85&s=b371421bced66bed5996f4ce3c8aab60" width="400px" alt="Company Resources in AI Console" data-og-width="683" data-og-height="521" data-path="images/getting-started/aic/company-resources.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/asapp/bSPknm73NAzIX3Ak/images/getting-started/aic/company-resources.png?w=280&fit=max&auto=format&n=bSPknm73NAzIX3Ak&q=85&s=b7b9d20e2cd706d6ea82da38a1835639 280w, https://mintcdn.com/asapp/bSPknm73NAzIX3Ak/images/getting-started/aic/company-resources.png?w=560&fit=max&auto=format&n=bSPknm73NAzIX3Ak&q=85&s=2c6b1a3cde5d18f5b8d3fc3a1431780c 560w, https://mintcdn.com/asapp/bSPknm73NAzIX3Ak/images/getting-started/aic/company-resources.png?w=840&fit=max&auto=format&n=bSPknm73NAzIX3Ak&q=85&s=be28a6721b0e871c3e9b6980ff3a2a3b 840w, https://mintcdn.com/asapp/bSPknm73NAzIX3Ak/images/getting-started/aic/company-resources.png?w=1100&fit=max&auto=format&n=bSPknm73NAzIX3Ak&q=85&s=f1ea7aafaccf579c8a6a32999f4269de 1100w, https://mintcdn.com/asapp/bSPknm73NAzIX3Ak/images/getting-started/aic/company-resources.png?w=1650&fit=max&auto=format&n=bSPknm73NAzIX3Ak&q=85&s=5db63b7911a4832f10e66fabac2e5da5 1650w, https://mintcdn.com/asapp/bSPknm73NAzIX3Ak/images/getting-started/aic/company-resources.png?w=2500&fit=max&auto=format&n=bSPknm73NAzIX3Ak&q=85&s=50e4ab92056c2eb3b9d54a3516e4852b 2500w" />
@@ -85,7 +89,7 @@ Now that you understand the AI Console, here are the recommended next steps to g
     Set up and configure GenerativeAgent for your use cases.
   </Card>
 
-  <Card title="ASAPP Messaging Platform" href="/messaging-platform">
+  <Card title="ASAPP Messaging Platform" href="/agent-desk">
     Configure your messaging platform with intents, flows, and virtual agents.
   </Card>
 

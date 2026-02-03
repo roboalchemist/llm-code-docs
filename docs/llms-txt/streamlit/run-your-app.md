@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/concepts/architecture/run-your-app
+
 # Run your Streamlit app
 
 Working with Streamlit is simple. First you sprinkle a few Streamlit commands into a normal Python script, and then you run it. We list a few ways to run your script, depending on your use case.

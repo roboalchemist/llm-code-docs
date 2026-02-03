@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/quantization/spqr.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/quantization/spqr.md
 
 # SpQR
 
@@ -9,7 +9,7 @@ The [SpQR](https://hf.co/papers/2306.03078) quantization algorithm involves a 16
 > [!TIP]
 > To quantize a model with SpQR, refer to the [Vahe1994/SpQR](https://github.com/Vahe1994/SpQR) repository.
 
-Load a SpQR-quantized model with [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained).
+Load a SpQR-quantized model with [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained).
 
 ```python
 from transformers import AutoTokenizer, AutoModelForCausalLM

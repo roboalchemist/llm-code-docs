@@ -4,7 +4,6 @@
 title: CD Visibility in Datadog
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Continuous Delivery Visibility > CD Visibility in Datadog
-source_url: https://docs.datadoghq.com/deployments/index.html
 ---
 
 # CD Visibility in Datadog

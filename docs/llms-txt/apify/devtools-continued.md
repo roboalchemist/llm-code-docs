@@ -1,14 +1,16 @@
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction/devtools-continued.md
 
-# Source: https://docs.apify.com/academy/web-scraping-for-beginners/data-extraction/devtools-continued.md
-
 # Extracting data with DevTools
 
 **Continue learning how to extract data from a website using browser DevTools, CSS selectors, and JavaScript via the DevTools console.**
 
+Archived course
+
+This is an archive of our old course. Check out our new [Web scraping basics for JavaScript devs](https://docs.apify.com/academy/scraping-basics-javascript.md) course instead! We plan to completely retire this old course in a few months.
+
 ***
 
-In the previous parts of the DevTools tutorial, we were able to extract information about a single product from the Sales collection of the https://warehouse-theme-metal.myshopify.com/collections/sales. If you missed the previous lessons, please go through them to understand the basic concepts. You don't need any of the code from there, though. We will start from scratch.
+In the previous parts of the DevTools tutorial, we were able to extract information about a single product from the Sales collection of the [Warehouse store](https://warehouse-theme-metal.myshopify.com/collections/sales). If you missed the previous lessons, please go through them to understand the basic concepts. You don't need any of the code from there, though. We will start from scratch.
 
 ## Find all product elements
 
@@ -29,7 +31,7 @@ The `length` property of `products` tells us how many products we have in the li
 
 ## Looping over elements
 
-> https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration if you need to refresh the concept of loops in programming.
+> [Visit this tutorial](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration) if you need to refresh the concept of loops in programming.
 
 Now, we will loop over each product and print their titles. We will use a so-called `for..of` loop to do it. It is a loop that iterates through all items of an array.
 
@@ -49,7 +51,7 @@ for (const product of products) {
 ```
 
 
-> https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of about the `for..of` loop.
+> [Learn more](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of) about the `for..of` loop.
 
 ![Print all products\&#39; text](/assets/images/devtools-product-titles-707d5bbdd367173c973801350f61e859.png)
 
@@ -57,7 +59,7 @@ for (const product of products) {
 
 We will add the price extraction from the previous lesson to the loop. We will also save all the data to an array so that we can work with it. Run this in the Console:
 
-> The `results.push()` function takes its argument and pushes (adds) it to the `results` array. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push.
+> The `results.push()` function takes its argument and pushes (adds) it to the `results` array. [Learn more about it here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/push).
 
 
 ```
@@ -101,4 +103,4 @@ And third, we wrapped this data extraction logic in a **loop** to automatically 
 
 And that's it! With a bit of trial and error, you will be able to extract data from any webpage that's loaded in your browser. This is a useful skill on its own. It will save you time copy-pasting stuff when you need data for a project.
 
-More importantly though, it taught you the basics to start programming your own scrapers. In the https://docs.apify.com/academy/web-scraping-for-beginners/data-extraction/computer-preparation.md, we will teach you how to create your own web data extraction script using JavaScript and Node.js.
+More importantly though, it taught you the basics to start programming your own scrapers. In the [next lessons](https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction/computer-preparation.md), we will teach you how to create your own web data extraction script using JavaScript and Node.js.

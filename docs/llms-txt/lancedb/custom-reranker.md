@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/reranking/custom-reranker.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Building Custom Rerankers
 
 > Learn how to create custom rerankers in LanceDB by extending the base Reranker class.
@@ -110,8 +114,3 @@ query, and accepts any other `CohereReranker` params as `kwargs`.
   and just as easily convert the DataFrame back to PyArrow tables using `pa.Table.from_pandas()` method
   as shown in the example above.
 </Card>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

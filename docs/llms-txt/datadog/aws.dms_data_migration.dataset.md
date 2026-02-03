@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > DDSQL Reference > Data Directory > Database Migration Service Data
   Migration Task
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.dms_data_migration.dataset/index.html
 ---
 
 # Database Migration Service Data Migration Task
@@ -40,5 +38,5 @@ aws.dms_data_migration
 | service_access_role_arn    | core | string        | The IAM role that the data migration uses to access Amazon Web Services resources.                                        |
 | source_data_settings       | core | json          | Specifies information about the data migration's source data provider.                                                    |
 | stop_reason                | core | string        | The reason the data migration last stopped.                                                                               |
-| tags                       | core | hstore        |
+| tags                       | core | hstore_csv    |
 | target_data_settings       | core | json          | Specifies information about the data migration's target data provider.                                                    |

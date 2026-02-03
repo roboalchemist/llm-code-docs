@@ -1,5 +1,9 @@
 # Source: https://docs.ollama.com/integrations/codex.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ollama.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Codex
 
 ## Install
@@ -12,7 +16,21 @@ npm install -g @openai/codex
 
 ## Usage with Ollama
 
-<Note>Codex requires a larger context window. It is recommended to use a context window of at least 32K tokens.</Note>
+<Note>Codex requires a larger context window. It is recommended to use a context window of at least 64k tokens.</Note>
+
+### Quick setup
+
+```
+ollama launch codex
+```
+
+To configure without launching:
+
+```shell  theme={"system"}
+ollama launch codex --config
+```
+
+### Manual setup
 
 To use `codex` with Ollama, use the `--oss` flag:
 

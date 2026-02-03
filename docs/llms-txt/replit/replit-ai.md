@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/category/replit-ai.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Replit AI
 
 > Replit's AI-powered tools help you turn ideas into production-ready apps.
@@ -21,9 +25,8 @@ Replit AI transforms how you build software with Agent, our AI-powered developme
 
 <Tip>
   **New with Agent 3** - Extended autonomous builds with minimal supervision,
-  App Testing for self-validation, two ways to start an app (design-first vs.
-  full app first), and Agents & Automations for building your own autonomous
-  systems.
+  App Testing for self-validation, Fast and Full build modes, and Agents & Automations
+  for building your own autonomous systems.
 </Tip>
 
 ## What you can build
@@ -37,19 +40,19 @@ With Agent, you can:
 
 Learn more about Agent in the following video:
 
-<YouTubeEmbed videoId="QiW2hXEphpI" title="Replit Agent Overview" />
+<YouTubeEmbed videoId="4FxNXFOdt6w" title="Replit Agent 3 First Look" />
 
 ## Getting started
 
 The fastest way to experience Replit AI is to create your first app with Agent:
 
 1. **Start with Agent**: Follow the [Create with AI](/getting-started/quickstarts/ask-ai/) quickstart to build an app from scratch
-2. **Choose how to start**: Try "Design & Iterate" for rapid prototyping or "Build Full App" to get a functional MVP on the first run
+2. **Choose your build mode**: Select Fast for lightweight apps or prototypes (\~3-5 mins) or use the default full build for a thorough implementation of your request (\~10+ mins)
 3. **Experience Agent 3's autonomy**: Customize Agent's **[Autonomy Level](/replitai/autonomy-level)** while it tests itself with **App Testing**
 4. **Set up billing**: Configure [usage alerts and budgets](/billing/managing-spend) to control your AI spending
 
 <Warning>
-  Agent and Advanced Assistant are premium features that charge your Replit account
+  Agent is a premium feature that charges your Replit account
   based on usage. For pricing information and billing policies, see [Replit AI Billing](/billing/ai-billing/).
 </Warning>
 
@@ -113,7 +116,7 @@ Agent uses transparent, effort-based pricing designed to provide value at every 
 * Simple changes cost less than complex builds
 * One meaningful checkpoint per request
 * Extended autonomous builds with less supervision and self-testing capabilities
-* Advanced capabilities like Dynamic Intelligence (High Power)
+* Advanced capabilities for complex builds
 * Agent 3 features: App Testing, build modes, and Agents & Automations
 
 Learn more about [AI billing](/billing/ai-billing) and how to [manage your spend](/billing/managing-spend).
@@ -134,9 +137,5 @@ Ready to start building with Agent? Choose your path:
 
   <Card title="Quick Start" href="/getting-started/quickstarts/ask-ai" icon="rocket">
     Build your first autonomous AI-powered app in minutes
-  </Card>
-
-  <Card title="Dynamic Intelligence" href="/replitai/dynamic-intelligence" icon="brain">
-    Explore advanced Agent capabilities and features
   </Card>
 </CardGroup>

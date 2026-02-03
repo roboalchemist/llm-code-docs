@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/curly.md
 ---
-# eslint/curly&#x20;
 
 ### What it does
 
@@ -126,12 +125,12 @@ while (foo) {
 }
 ```
 
-#### `{ "consistent": true }`
+#### `"consistent"`
 
-When enabled, `consistent: true` enforces consistent use of braces within an `if-else` chain.
+When enabled, `"consistent"` enforces consistent use of braces within an `if-else` chain.
 If one branch of the chain uses braces, then all branches must use braces, even if not strictly required by the first option.
 
-Examples of **incorrect** code with `"multi"` and `consistent: true`:
+Examples of **incorrect** code with `"multi"` and `"consistent"`:
 
 ```js
 /* curly: ["error", "multi", "consistent"] */
@@ -148,7 +147,7 @@ else {
 }
 ```
 
-Examples of **correct** code with `"multi"` and `consistent: true`:
+Examples of **correct** code with `"multi"` and `"consistent"`:
 
 ```js
 /* curly: ["error", "multi", "consistent"] */
@@ -168,7 +167,7 @@ if (foo) {
 }
 ```
 
-Examples of **incorrect** code with `"multi-line"` and `consistent: true`:
+Examples of **incorrect** code with `"multi-line"` and `"consistent"`:
 
 ```js
 /* curly: ["error", "multi-line", "consistent"] */
@@ -178,7 +177,7 @@ if (foo) {
 } else baz();
 ```
 
-Examples of **correct** code with `"multi-line"` and `consistent: true`:
+Examples of **correct** code with `"multi-line"` and `"consistent"`:
 
 ```js
 /* curly: ["error", "multi-line", "consistent"] */
@@ -190,7 +189,7 @@ if (foo) {
 }
 ```
 
-Examples of **incorrect** code with `"multi-or-nest"` and `consistent: true`:
+Examples of **incorrect** code with `"multi-or-nest"` and `"consistent"`:
 
 ```js
 /* curly: ["error", "multi-or-nest", "consistent"] */
@@ -200,7 +199,7 @@ if (foo) {
 } else qux();
 ```
 
-Examples of **correct** code with `"multi-or-nest"` and `consistent: true`:
+Examples of **correct** code with `"multi-or-nest"` and `"consistent"`:
 
 ```js
 /* curly: ["error", "multi-or-nest", "consistent"] */
@@ -214,28 +213,39 @@ if (foo) {
 
 ## Configuration
 
-This rule accepts a configuration object with the following properties:
+Configuration for the curly rule, specified as an array of one or two elements.
 
-### consistent
+Examples:
 
-type: `boolean`
+* `["all"]` - Require braces in all cases (default)
+* `["multi"]` - Require braces only for multi-statement blocks
+* `["multi-line"]` - Require braces for multi-line blocks
+* `["multi-or-nest"]` - Require braces for nested or multi-line blocks
+* `["multi", "consistent"]` - Multi mode with consistent braces in if-else chains
 
-default: `false`
-
-Whether to enforce consistent use of curly braces in if-else chains.
-
-### curlyType
+### The 1st option
 
 type: `"all" | "multi" | "multi-line" | "multi-or-nest"`
 
-default: `"all"`
+The enforcement type for the curly rule.
 
-Which type of curly brace enforcement to use.
+#### `"all"`
 
-* `"all"`: require braces in all cases
-* `"multi"`: require braces only for multi-statement blocks
-* `"multi-line"`: require braces only for multi-line blocks
-* `"multi-or-nest"`: require braces for multi-line blocks or when nested
+Require braces in all cases (default)
+
+#### `"multi"`
+
+Require braces only when there are multiple statements in the block
+
+#### `"multi-line"`
+
+Require braces when the block spans multiple lines
+
+#### `"multi-or-nest"`
+
+Require braces when the block is nested or spans multiple lines
+
+### The 2nd option
 
 ## How to use
 

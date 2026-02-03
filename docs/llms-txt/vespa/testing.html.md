@@ -2,14 +2,6 @@
 
 # Source: https://docs.vespa.ai/en/reference/applications/testing.html.md
 
-# Source: https://docs.vespa.ai/en/applications/testing.html.md
-
-# Source: https://docs.vespa.ai/en/reference/applications/testing.html.md
-
-# Source: https://docs.vespa.ai/en/applications/testing.html.md
-
-# Source: https://docs.vespa.ai/en/reference/applications/testing.html.md
-
 # Basic HTTP testing
 
  
@@ -161,5 +153,5 @@ All requests and responses must be in JSON format. The tests allow simple JSON v
 
 Note that the empty object `{ }` matches any other object, and can be used to fill elements of an array that require no further validation.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

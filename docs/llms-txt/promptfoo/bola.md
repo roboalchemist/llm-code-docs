@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/bola/
+
 # BOLA (Broken Object Level Authorization) Plugin
 
 The BOLA (Broken Object Level Authorization) red teaming plugin is designed to test an AI system's vulnerability to attacks that attempt to access or modify resources belonging to other users or outside the authorized scope ([OWASP API 1](https://owasp.org/www-project-api-security/)).

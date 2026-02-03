@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/self-host/hybrid-deployment.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Hybrid Deployment
 
 > Set up Traceloop with data sovereignty
@@ -96,8 +100,3 @@ The Hybrid deployment model allows you to maintain full control over your data s
 
 * [Schedule a support call](https://calendly.com/d/cq42-93s-kcx)
 * Join our [community Slack](https://traceloop.com/slack)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

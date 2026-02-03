@@ -3,11 +3,10 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/no-unused-labels.md
 ---
-# eslint/no-unused-labels&#x20;
 
 ### What it does
 
-Disallow unused labels
+Disallow unused labels.
 
 ### Why is this bad?
 

@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/dashboard/receiving/custom-domains.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Custom Receiving Domains
 
 > Receive emails using your own domain.
@@ -51,7 +55,7 @@ In your application, create a new route that can accept `POST` requests.
 
 For example, here's how you can add an API route in a Next.js application:
 
-```js app/api/events/route.ts theme={null}
+```js app/api/events/route.ts theme={"theme":{"light":"github-light","dark":"vesper"}}
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
@@ -66,9 +70,9 @@ export const POST = async (request: NextRequest) => {
 };
 ```
 
-Once you receive the email event, you can process the email body and attachments. We also recommend implementing [webhook request verification](/dashboard/webhooks/verify-webhooks-requests) to secure your webhook endpoint.
+Once you receive the email event, you can process the email body and attachments. We also recommend implementing [webhook request verification](/webhooks/verify-webhooks-requests) to secure your webhook endpoint.
 
-```json  theme={null}
+```json  theme={"theme":{"light":"github-light","dark":"vesper"}}
 {
   "type": "email.received",
   "created_at": "2024-02-22T23:41:12.126Z",

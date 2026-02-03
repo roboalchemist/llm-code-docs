@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/widgets/st.text_area
+
 # st.text_area
 
 Display a multi-line text input widget.

@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/guides/security_compliance/data_handling.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Zero Data Retention
 
 > Data retention policies at Fireworks
@@ -12,8 +16,6 @@ Fireworks has Zero Data Retention by default. Specifically, this means
   * More technically: prompt and generation data exist only in volatile memory for the duration of the request. If [prompt caching](https://docs.fireworks.ai/guides/prompt-caching#data-privacy) is active, some prompt data (and associated KV caches) can be stored in volatile memory for several minutes. In either case, prompt and generation data are not logged into any persistent storage.
 * Fireworks logs metadata (e.g. number of tokens in a request) as required to deliver the service.
 * Users can explicitly opt-in to log prompt and generation data for certain advanced features (e.g. FireOptimizer).
-* For proprietary Fireworks models (e.g. f1, FireFunction), prompt and generation data may be logged to enable bulk analytics to improve the model.
-  * In this case, the model description will contain an explicit message about logging.
 
 ## Response API data retention
 

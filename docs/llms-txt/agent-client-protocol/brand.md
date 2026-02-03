@@ -1,5 +1,9 @@
 # Source: https://agentclientprotocol.com/brand.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://agentclientprotocol.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Brand
 
 > Assets for the Agent Client Protocol brand.
@@ -25,8 +29,3 @@ We don't enforce the use of one version over the other, meaning you can choose t
 <Frame>
   <img src="https://mintcdn.com/zed-685ed6d6/0gwpXYa47bQsPCSW/assets/acp-docs-logo-mark.webp?fit=max&auto=format&n=0gwpXYa47bQsPCSW&q=85&s=3ab81fb3792f3c613bcecafec5da05cf" alt="Agentic Client Protocol Logomark" data-og-width="3840" width="3840" data-og-height="2160" height="2160" data-path="assets/acp-docs-logo-mark.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/zed-685ed6d6/0gwpXYa47bQsPCSW/assets/acp-docs-logo-mark.webp?w=280&fit=max&auto=format&n=0gwpXYa47bQsPCSW&q=85&s=33123e71c5c96bcd99dcdfc985d682a1 280w, https://mintcdn.com/zed-685ed6d6/0gwpXYa47bQsPCSW/assets/acp-docs-logo-mark.webp?w=560&fit=max&auto=format&n=0gwpXYa47bQsPCSW&q=85&s=1b77814322c2607aaba4c0f051accd88 560w, https://mintcdn.com/zed-685ed6d6/0gwpXYa47bQsPCSW/assets/acp-docs-logo-mark.webp?w=840&fit=max&auto=format&n=0gwpXYa47bQsPCSW&q=85&s=b44744e4e0a4c41632445f19245db490 840w, https://mintcdn.com/zed-685ed6d6/0gwpXYa47bQsPCSW/assets/acp-docs-logo-mark.webp?w=1100&fit=max&auto=format&n=0gwpXYa47bQsPCSW&q=85&s=a4f1156b5781cd743dd66b4d8b890ecf 1100w, https://mintcdn.com/zed-685ed6d6/0gwpXYa47bQsPCSW/assets/acp-docs-logo-mark.webp?w=1650&fit=max&auto=format&n=0gwpXYa47bQsPCSW&q=85&s=6672b8bd73cab06c1426d8ee183de7ca 1650w, https://mintcdn.com/zed-685ed6d6/0gwpXYa47bQsPCSW/assets/acp-docs-logo-mark.webp?w=2500&fit=max&auto=format&n=0gwpXYa47bQsPCSW&q=85&s=d39cbbe01181dc721f7c849759862e0c 2500w" />
 </Frame>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://agentclientprotocol.com/llms.txt

@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/authenticated-access/setting-up-auth0.md
-
-# Source: https://gitbook.com/docs/documentation/fr/publishing-documentation/authenticated-access/setting-up-auth0.md
-
-# Source: https://gitbook.com/docs/publishing-documentation/authenticated-access/setting-up-auth0.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/publishing-documentation/authenticated-access/setting-up-auth0.md
 
 # Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/authenticated-access/setting-up-auth0.md
 
@@ -24,22 +20,19 @@ To setup your GitBook site with authenticated access using Auth0, the process lo
 
 {% stepper %}
 {% step %}
-
-#### [Create a new application in Auth0](#id-1.-create-a-new-application-in-auth0)
+[**Create a new application in Auth0**](#id-1.-create-a-new-application-in-auth0)
 
 Create an Auth0 application in your Auth0 dashboard.
 {% endstep %}
 
 {% step %}
-
-#### [Install and configure the Auth0 integration](#id-2.-install-and-configure-the-auth0-integration)
+[**Install and configure the Auth0 integration**](#id-2.-install-and-configure-the-auth0-integration)
 
 Install the Auth0 integration and add the required configuration to your GitBook site.
 {% endstep %}
 
 {% step %}
-
-#### [Configure Auth0 for Adaptive content (optional)](#id-3.-configure-auth0-for-adaptive-content-optional)
+[**Configure Auth0 for Adaptive content (optional)**](#id-3.-configure-auth0-for-adaptive-content-optional)
 
 Configure Auth0 to work with adaptive content in GitBook.
 {% endstep %}

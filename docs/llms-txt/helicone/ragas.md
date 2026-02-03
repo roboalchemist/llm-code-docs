@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/other-integrations/ragas.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Ragas Integration
 
 > Integrate Helicone with Ragas, an open-source framework for evaluating Retrieval-Augmented Generation (RAG) systems. Monitor and analyze the performance of your RAG pipelines.

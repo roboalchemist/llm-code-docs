@@ -1,5 +1,9 @@
 # Source: https://docs.argil.ai/resources/api-pricings.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.argil.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # API - Pricing
 
 > Here are the pricings for the API

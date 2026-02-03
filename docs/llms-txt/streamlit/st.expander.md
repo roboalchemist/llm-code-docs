@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/layout/st.expander
+
 # st.expander
 
 Insert a multi-element container that can be expanded/collapsed.

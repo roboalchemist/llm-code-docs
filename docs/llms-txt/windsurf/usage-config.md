@@ -2,23 +2,13 @@
 
 # Source: https://docs.windsurf.com/plugins/accounts/api-reference/usage-config.md
 
-# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/usage-config.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/api-reference/usage-config.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/usage-config.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/api-reference/usage-config.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/usage-config.md
-
-# Source: https://docs.windsurf.com/plugins/accounts/api-reference/usage-config.md
-
-# Source: https://docs.windsurf.com/windsurf/accounts/api-reference/usage-config.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Set Usage Configuration
 
-> Configure usage caps for add-on credits
+> Set or clear add-on credit caps at team, group, or user level for enterprise billing management.
 
 ## Overview
 
@@ -27,7 +17,7 @@ Set or clear usage caps on add-on credits for your organization. You can scope t
 ## Request
 
 <ParamField body="service_key" type="string" required>
-  Your service key with appropriate permissions
+  Your service key with "Billing Write" permissions
 </ParamField>
 
 ### Credit Cap Configuration (Choose One)

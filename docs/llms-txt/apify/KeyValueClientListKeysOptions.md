@@ -2,6 +2,8 @@
 
 # KeyValueClientListKeysOptions<!-- -->
 
+Options for listing keys in a Key-Value Store.
+
 ### Hierarchy
 
 * *KeyValueClientListKeysOptions*
@@ -19,7 +21,7 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#collection)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/key_value_store.ts#L359)optionalcollection
+### [**](#collection)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/key_value_store.ts#L558)optionalcollection
 
 **collection?
 
@@ -27,7 +29,7 @@
 
 : string
 
-### [**](#exclusiveStartKey)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/key_value_store.ts#L358)optionalexclusiveStartKey
+### [**](#exclusiveStartKey)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/key_value_store.ts#L557)optionalexclusiveStartKey
 
 **exclusiveStartKey?
 
@@ -35,7 +37,7 @@
 
 : string
 
-### [**](#limit)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/key_value_store.ts#L357)optionallimit
+### [**](#limit)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/key_value_store.ts#L556)optionallimit
 
 **limit?
 
@@ -43,7 +45,7 @@
 
 : number
 
-### [**](#prefix)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/key_value_store.ts#L360)optionalprefix
+### [**](#prefix)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/key_value_store.ts#L559)optionalprefix
 
 **prefix?
 
@@ -51,7 +53,7 @@
 
 : string
 
-### [**](#signature)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/key_value_store.ts#L361)optionalsignature
+### [**](#signature)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/key_value_store.ts#L560)optionalsignature
 
 **signature?
 

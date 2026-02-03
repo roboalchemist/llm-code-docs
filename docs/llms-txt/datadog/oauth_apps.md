@@ -6,7 +6,6 @@ description: >-
   Manage and monitor OAuth applications in your organization, including
   permissions, user access, and application status controls.
 breadcrumbs: Docs > Account Management > OAuth Apps
-source_url: https://docs.datadoghq.com/org_settings/oauth_apps/index.html
 ---
 
 # OAuth Apps

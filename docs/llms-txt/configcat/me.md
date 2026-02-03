@@ -2,8 +2,10 @@
 
 # Me
 
+Copy page
+
 Information about the current user.
 
 <!-- -->
 
-## [ğŸ“„ï¸�<!-- --> <!-- -->Get authenticated user details](https://configcat.com/docs/docs/api/reference/get-me/.md)
+## [📄️<!-- --> <!-- -->Get authenticated user details](https://configcat.com/docs/api/reference/get-me.md)

@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/agent-desk/integrations/chat-instead/android.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Android
 
 <Frame>
@@ -12,7 +16,7 @@ Chat Instead requires ASAPP Android Chat SDK 8.0.0 or later, and a valid phone n
 
 ## Phone Formats
 
-Chat Instead accepts a wide variety of formats. See [tools.ietf.org/html/rfc3966](https://tools.ietf.org/html/rfc3966) for the precise definition. For example, it will accept: "+1 (555) 555-5555" and "555-555-5555".
+Chat Instead accepts a wide variety of formats. See [tools.ietf.org/html/rfc3966](https://tools.ietf.org/html/rfc3966) for the precise definition. For example, Chat Instead accepts: "+1 (555) 555-5555" and "555-555-5555".
 
 ## Getting Started
 
@@ -42,12 +46,12 @@ After that, be sure to call the `ASAPPChatInsteadButton.init` method. Only the p
    ```
    to initialize Chat Instead. Depending on cache, this will trigger a network call so channels are "immediately" available to the user once the fragment is displayed.
    Along with an optional header and a chat icon, you can pass callbacks to be notified when a channel is tapped or an error on a channel happens.
-   ASAPP makes both callbacks after Chat Instead has tried to act on the tap.
+   ASAPP makes both callbacks after Chat Instead tries to act on the tap.
 2. Display Channels
    With the instance returned by `ASAPPChatInstead.init`, call `ASAPPChatInstead.show` whenever you want to display the [BottomSheetDialogFragment](https://developer.android.com/reference/com/google/android/material/bottomsheet/BottomSheetDialogFragment?hl=en). Depending on cache, this might show a loading state.
 3. Clear Chat Instead (optional)
    You can interrupt the Chat Instead initial network call, if you call `ASAPPChatInstead.clear`. ASAPP advises you to add the call `onDestroy` for Activities and `onDetachedFromWindow` for Fragments.
-   If you call `ASAPPChatInstead.clear` after you create the [BottomSheetDialogFragment](https://developer.android.com/reference/com/google/android/material/bottomsheet/BottomSheetDialogFragment?hl=en) view, it will have no effect.
+   If you call `ASAPPChatInstead.clear` after you create the [BottomSheetDialogFragment](https://developer.android.com/reference/com/google/android/material/bottomsheet/BottomSheetDialogFragment?hl=en) view, it has no effect.
 
 ## Error Handling and Debugging
 
@@ -58,7 +62,7 @@ Alternatively, you can set callbacks with `ASAPPChatInstead.init`.
 
 #### Crash Caused by UnsupportedOperationException when Displaying the Fragment
 
-This occurs whenever `asapp_primary` is not defined in the style used by the calling Activity. Please refer to **Customization > Colors**.
+This occurs whenever someone does not define `asapp_primary` in the style that the calling Activity uses. Please refer to **Customization > Colors**.
 
 #### "Unknown Channel" in the Log or the onError Callback
 
@@ -84,11 +88,11 @@ Chat Instead supports these configurations seamlessly.
 
 ### Header
 
-By default it will use the text in `R.string.asapp_chat_instead_default_header`. You can send a different string when initializing Chat Instead, but it's important to know the ASAPP Backend will overwrite it if the call is successful.
+By default, Chat Instead uses the text in `R.string.asapp_chat_instead_default_header`. You can send a different string when initializing Chat Instead, but the ASAPP Backend overwrites it if the call succeeds.
 
 ### Chat Icon
 
-You can customize the SDK Chat channel icon. By default it will be tinted with `asapp_primary` and `asapp_on_primary`.
+You can customize the SDK Chat channel icon. By default, the system tints it with `asapp_primary` and `asapp_on_primary`.
 
 <Note>
   If you customize the icon, make sure to test how it looks in Night Mode (a.k.a. Dark Mode).
@@ -107,9 +111,9 @@ Chat Instead uses the ASAPP text styles and colors. For more information on how 
 Chat Instead receives configuration information from ASAPP's Backend (BE), in addition to the channels to display. The configuration enables/disables the feature and selects the device type (mobile, tablet, none). Contact your Implementation Manager at ASAPP if you have any questions.
 
 <Note>
-  It's important to know how the BE affects customization. If you provide a header, the BE will overwrite it. On the other hand, the BE cannot overwrite the phone number.
+  It's important to know how the BE affects customization. If you provide a header, the BE overwrites it. On the other hand, the BE cannot overwrite the phone number.
 </Note>
 
 ## Cache
 
-Chat Instead will temporarily cache the displayed channels to provide a better user experience. The cache is warmed at instantiation. The information will persist through phone restarts. As usual, it won't survive an uninstall or a "clear cache" in App info.
+Chat Instead will temporarily cache the displayed channels to provide a better user experience. The cache is warmed at instantiation. The information persists through phone restarts. As usual, it does not survive an uninstall or a "clear cache" in App info.

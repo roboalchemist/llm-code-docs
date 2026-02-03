@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/askfred/use-cases.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Use Cases
 
 > Common use cases and example questions for AskFred - meeting summaries, action items, decisions, and more
@@ -273,8 +277,3 @@ mutation TopicTracking {
     Explore all available parameters and options
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.fireflies.ai/llms.txt

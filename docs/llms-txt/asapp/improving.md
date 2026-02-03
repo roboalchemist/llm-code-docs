@@ -1,12 +1,14 @@
 # Source: https://docs.asapp.com/generativeagent/configuring/tasks-and-functions/improving.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Improving Tasks
 
 > Learn how to improve task performance
 
-GenerativeAgent uses LLMs and other generative AI technology, allowing for human-like interactions and reasoning but also requiring careful consideration on the instructions and functions you define to ensure it behaves as expected.
-
-Creating successful tasks is an iterative process. We have multiple resources and tools to help improve task performance:
+Tasks have a number of features and tools available to improve performance. Use these resources to optimize your tasks:
 
 <CardGroup>
   <Card href="/generativeagent/configuring/task-best-practices" title="Task Best Practices">
@@ -22,7 +24,7 @@ Creating successful tasks is an iterative process. We have multiple resources an
   </Card>
 
   <Card href="/generativeagent/configuring/tasks-and-functions/trial-mode" title="Trial Mode">
-    Use Trial Mode to test whether GenerativeAgent can use new Functions correctly before full rolling them out in production.
+    Use Trial Mode to test whether GenerativeAgent can use new Functions correctly before rolling them out fully in production.
   </Card>
 
   <Card href="/generativeagent/configuring/tasks-and-functions/keep-fields" title="Keep Fields">

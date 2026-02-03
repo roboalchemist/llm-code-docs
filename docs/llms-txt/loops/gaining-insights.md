@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/deliverability/gaining-insights.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Insights from Google Postmaster
 
 > Gmail doesn't report spam reports to Loops, so setting up Google Postmaster is key to getting an idea of your deliverability performance in Gmail.

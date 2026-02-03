@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/frameworks/rtvi/rtvi-processor.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # RTVIProcessor
 
 > Core coordinator for RTVI protocol communication
@@ -8,23 +12,31 @@ The `RTVIProcessor` manages bidirectional communication between clients and your
 
 ## Initialization
 
-Add the `RTVIProcessor` to your pipeline:
+`RTVIProcessor` is automatically added to your pipeline when you create a `PipelineTask`. Access it via `task.rtvi`:
 
 ```python  theme={null}
-from pipecat.processors.rtvi import RTVIProcessor, RTVIConfig, RTVIServiceConfig
-
-# Create the RTVIProcessor
-rtvi = RTVIProcessor(config=RTVIConfig(config=[]))
-
-# Add to pipeline
 pipeline = Pipeline([
     transport.input(),
-    rtvi,
     stt,
     # ... other processors ...
     transport.output()
 ])
+
+task = PipelineTask(pipeline)
+
+# Access the processor
+rtvi = task.rtvi
 ```
+
+To provide a custom processor (e.g., for [Google RTVI](./google-rtvi-observer)):
+
+```python  theme={null}
+from pipecat.services.google.rtvi import GoogleRTVIProcessor
+
+task = PipelineTask(pipeline, rtvi_processor=GoogleRTVIProcessor())
+```
+
+To disable RTVI entirely, set `enable_rtvi=False`.
 
 ## Readiness Protocol
 
@@ -218,8 +230,3 @@ await rtvi.push_frame(frame)
 ```
 
 The client receives these messages through the `onServerMessage` callback or `serverMessage` event.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

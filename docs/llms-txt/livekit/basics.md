@@ -24,6 +24,12 @@ The LiveKit CLI provides command-line tools for managing LiveKit Cloud projects,
 
 - **[LiveKit CLI overview](https://docs.livekit.io/intro/basics/cli.md)**: Learn how to use the LiveKit CLI to manage projects and create applications.
 
+### LiveKit Cloud
+
+LiveKit Cloud is a fully managed, globally distributed platform for building, hosting, and operating AI agent applications at scale. It combines realtime audio, video, and data streaming with agent development tools, managed agent hosting, built-in inference, native telephony, and production-grade observability in a single, cohesive platform.
+
+- **[LiveKit Cloud](https://docs.livekit.io/intro/cloud.md)**: Learn about LiveKit Cloud's features, benefits, and how it compares to self-hosted deployments.
+
 ### Connecting to LiveKit
 
 Connect your applications to LiveKit servers using access tokens, WebRTC connections, and platform-specific SDKs. Understanding how to establish and manage connections is essential for building realtime applications.
@@ -44,7 +50,7 @@ Build AI agents that join LiveKit rooms as participants, process realtime media 
 
 ---
 
-This document was rendered at 2025-12-31T18:29:31.489Z.
+This document was rendered at 2026-02-03T03:24:51.447Z.
 For the latest version of this document, see [https://docs.livekit.io/intro/basics.md](https://docs.livekit.io/intro/basics.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

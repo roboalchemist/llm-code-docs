@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/swin2sr.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/swin2sr.md
 
 # Swin2SR
 
@@ -28,11 +28,11 @@ A demo Space for image super-resolution with SwinSR can be found [here](https://
 
 #### transformers.Swin2SRImageProcessor[[transformers.Swin2SRImageProcessor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/swin2sr/image_processing_swin2sr.py#L44)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/swin2sr/image_processing_swin2sr.py#L41)
 
 Constructs a Swin2SR image processor.
 
-preprocesstransformers.Swin2SRImageProcessor.preprocesshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/swin2sr/image_processing_swin2sr.py#L117[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]"}, {"name": "do_rescale", "val": ": typing.Optional[bool] = None"}, {"name": "rescale_factor", "val": ": typing.Optional[float] = None"}, {"name": "do_pad", "val": ": typing.Optional[bool] = None"}, {"name": "size_divisor", "val": ": typing.Optional[int] = None"}, {"name": "return_tensors", "val": ": typing.Union[str, transformers.utils.generic.TensorType, NoneType] = None"}, {"name": "data_format", "val": ": typing.Union[str, transformers.image_utils.ChannelDimension] = "}, {"name": "input_data_format", "val": ": typing.Union[str, transformers.image_utils.ChannelDimension, NoneType] = None"}]- **images** (`ImageInput`) --
+preprocesstransformers.Swin2SRImageProcessor.preprocesshttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/swin2sr/image_processing_swin2sr.py#L114[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]"}, {"name": "do_rescale", "val": ": bool | None = None"}, {"name": "rescale_factor", "val": ": float | None = None"}, {"name": "do_pad", "val": ": bool | None = None"}, {"name": "size_divisor", "val": ": int | None = None"}, {"name": "return_tensors", "val": ": str | transformers.utils.generic.TensorType | None = None"}, {"name": "data_format", "val": ": str | transformers.image_utils.ChannelDimension = "}, {"name": "input_data_format", "val": ": str | transformers.image_utils.ChannelDimension | None = None"}]- **images** (`ImageInput`) --
   Image to preprocess. Expects a single or batch of images with pixel values ranging from 0 to 255. If
   passing in images with pixel values between 0 and 1, set `do_rescale=False`.
 - **do_rescale** (`bool`, *optional*, defaults to `self.do_rescale`) --
@@ -72,25 +72,25 @@ rescale_factor (`int` or `float`, *optional*, defaults to `1/255`) : Scale facto
 
 #### transformers.Swin2SRImageProcessorFast[[transformers.Swin2SRImageProcessorFast]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/swin2sr/image_processing_swin2sr_fast.py#L42)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/swin2sr/image_processing_swin2sr_fast.py#L39)
 
 Constructs a fast Swin2Sr image processor.
 
-preprocesstransformers.Swin2SRImageProcessorFast.preprocesshttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/swin2sr/image_processing_swin2sr_fast.py#L54[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.models.swin2sr.image_processing_swin2sr.Swin2SRImageProcessorKwargs]"}]
+preprocesstransformers.Swin2SRImageProcessorFast.preprocesshttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/swin2sr/image_processing_swin2sr_fast.py#L51[{"name": "images", "val": ": typing.Union[ForwardRef('PIL.Image.Image'), numpy.ndarray, ForwardRef('torch.Tensor'), list['PIL.Image.Image'], list[numpy.ndarray], list['torch.Tensor']]"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.models.swin2sr.image_processing_swin2sr.Swin2SRImageProcessorKwargs]"}]
 
 ## Swin2SRConfig[[transformers.Swin2SRConfig]]
 
 #### transformers.Swin2SRConfig[[transformers.Swin2SRConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/swin2sr/configuration_swin2sr.py#L24)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/swin2sr/configuration_swin2sr.py#L23)
 
-This is the configuration class to store the configuration of a [Swin2SRModel](/docs/transformers/v5.0.0rc1/en/model_doc/swin2sr#transformers.Swin2SRModel). It is used to instantiate a Swin
+This is the configuration class to store the configuration of a [Swin2SRModel](/docs/transformers/v5.0.0/en/model_doc/swin2sr#transformers.Swin2SRModel). It is used to instantiate a Swin
 Transformer v2 model according to the specified arguments, defining the model architecture. Instantiating a
 configuration with the defaults will yield a similar configuration to that of the Swin Transformer v2
 [caidas/swin2sr-classicalsr-x2-64](https://huggingface.co/caidas/swin2sr-classicalsr-x2-64) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -155,11 +155,11 @@ upsampler (`str`, *optional*, defaults to `"pixelshuffle"`) : The reconstruction
 
 #### transformers.Swin2SRModel[[transformers.Swin2SRModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/swin2sr/modeling_swin2sr.py#L708)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/swin2sr/modeling_swin2sr.py#L722)
 
 The bare Swin2Sr Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -167,10 +167,10 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Swin2SRModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/swin2sr/modeling_swin2sr.py#L750[{"name": "pixel_values", "val": ": FloatTensor"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`) --
+forwardtransformers.Swin2SRModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/swin2sr/modeling_swin2sr.py#L764[{"name": "pixel_values", "val": ": FloatTensor"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [Swin2SRImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/swin2sr#transformers.Swin2SRImageProcessor). See [Swin2SRImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details (`processor_class` uses
-  [Swin2SRImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/swin2sr#transformers.Swin2SRImageProcessor) for processing images).
+  [Swin2SRImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/swin2sr#transformers.Swin2SRImageProcessorFast). See [Swin2SRImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details (`processor_class` uses
+  [Swin2SRImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/swin2sr#transformers.Swin2SRImageProcessorFast) for processing images).
 - **output_attentions** (`bool`, *optional*) --
   Whether or not to return the attentions tensors of all attention layers. See `attentions` under returned
   tensors for more detail.
@@ -178,9 +178,9 @@ forwardtransformers.Swin2SRModel.forwardhttps://github.com/huggingface/transform
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or `tuple(torch.FloatTensor)`A [transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Swin2SRConfig](/docs/transformers/v5.0.0rc1/en/model_doc/swin2sr#transformers.Swin2SRConfig)) and inputs.
+elements depending on the configuration ([Swin2SRConfig](/docs/transformers/v5.0.0/en/model_doc/swin2sr#transformers.Swin2SRConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
@@ -192,7 +192,7 @@ elements depending on the configuration ([Swin2SRConfig](/docs/transformers/v5.0
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [Swin2SRModel](/docs/transformers/v5.0.0rc1/en/model_doc/swin2sr#transformers.Swin2SRModel) forward method, overrides the `__call__` special method.
+The [Swin2SRModel](/docs/transformers/v5.0.0/en/model_doc/swin2sr#transformers.Swin2SRModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -205,15 +205,15 @@ Example:
 
 **Parameters:**
 
-config ([Swin2SRModel](/docs/transformers/v5.0.0rc1/en/model_doc/swin2sr#transformers.Swin2SRModel)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Swin2SRModel](/docs/transformers/v5.0.0/en/model_doc/swin2sr#transformers.Swin2SRModel)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or a tuple of
+A [transformers.modeling_outputs.BaseModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Swin2SRConfig](/docs/transformers/v5.0.0rc1/en/model_doc/swin2sr#transformers.Swin2SRConfig)) and inputs.
+elements depending on the configuration ([Swin2SRConfig](/docs/transformers/v5.0.0/en/model_doc/swin2sr#transformers.Swin2SRConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
 - **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
@@ -230,11 +230,11 @@ elements depending on the configuration ([Swin2SRConfig](/docs/transformers/v5.0
 
 #### transformers.Swin2SRForImageSuperResolution[[transformers.Swin2SRForImageSuperResolution]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/swin2sr/modeling_swin2sr.py#L941)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/swin2sr/modeling_swin2sr.py#L955)
 
 Swin2SR Model transformer with an upsampler head on top for image super resolution and restoration.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -242,10 +242,10 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.Swin2SRForImageSuperResolution.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/swin2sr/modeling_swin2sr.py#L968[{"name": "pixel_values", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
+forwardtransformers.Swin2SRForImageSuperResolution.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/swin2sr/modeling_swin2sr.py#L982[{"name": "pixel_values", "val": ": torch.FloatTensor | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [Swin2SRImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/swin2sr#transformers.Swin2SRImageProcessor). See [Swin2SRImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details (`processor_class` uses
-  [Swin2SRImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/swin2sr#transformers.Swin2SRImageProcessor) for processing images).
+  [Swin2SRImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/swin2sr#transformers.Swin2SRImageProcessorFast). See [Swin2SRImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details (`processor_class` uses
+  [Swin2SRImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/swin2sr#transformers.Swin2SRImageProcessorFast) for processing images).
 - **labels** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Labels for computing the masked language modeling loss. Indices should either be in `[0, ...,
   config.vocab_size]` or -100 (see `input_ids` docstring). Tokens with indices set to `-100` are ignored
@@ -257,9 +257,9 @@ forwardtransformers.Swin2SRForImageSuperResolution.forwardhttps://github.com/hug
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0`transformers.modeling_outputs.ImageSuperResolutionOutput` or `tuple(torch.FloatTensor)`A `transformers.modeling_outputs.ImageSuperResolutionOutput` or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0`transformers.modeling_outputs.ImageSuperResolutionOutput` or `tuple(torch.FloatTensor)`A `transformers.modeling_outputs.ImageSuperResolutionOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Swin2SRConfig](/docs/transformers/v5.0.0rc1/en/model_doc/swin2sr#transformers.Swin2SRConfig)) and inputs.
+elements depending on the configuration ([Swin2SRConfig](/docs/transformers/v5.0.0/en/model_doc/swin2sr#transformers.Swin2SRConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Reconstruction loss.
 - **reconstruction** (`torch.FloatTensor` of shape `(batch_size, num_channels, height, width)`) -- Reconstructed images, possibly upscaled.
@@ -271,7 +271,7 @@ elements depending on the configuration ([Swin2SRConfig](/docs/transformers/v5.0
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
   heads.
-The [Swin2SRForImageSuperResolution](/docs/transformers/v5.0.0rc1/en/model_doc/swin2sr#transformers.Swin2SRForImageSuperResolution) forward method, overrides the `__call__` special method.
+The [Swin2SRForImageSuperResolution](/docs/transformers/v5.0.0/en/model_doc/swin2sr#transformers.Swin2SRForImageSuperResolution) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -282,7 +282,8 @@ Example:
 >>> import torch
 >>> import numpy as np
 >>> from PIL import Image
->>> import requests
+>>> import httpx
+>> from io import BytesIO
 
 >>> from transformers import AutoImageProcessor, Swin2SRForImageSuperResolution
 
@@ -290,7 +291,8 @@ Example:
 >>> model = Swin2SRForImageSuperResolution.from_pretrained("caidas/swin2SR-classical-sr-x2-64")
 
 >>> url = "https://huggingface.co/spaces/jjourney1125/swin2sr/resolve/main/samples/butterfly.jpg"
->>> image = Image.open(requests.get(url, stream=True).raw)
+>>> with httpx.stream("GET", url) as response:
+...     image = Image.open(BytesIO(response.read()))
 >>> # prepare image for the model
 >>> inputs = processor(image, return_tensors="pt")
 
@@ -306,7 +308,7 @@ Example:
 
 **Parameters:**
 
-config ([Swin2SRForImageSuperResolution](/docs/transformers/v5.0.0rc1/en/model_doc/swin2sr#transformers.Swin2SRForImageSuperResolution)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([Swin2SRForImageSuperResolution](/docs/transformers/v5.0.0/en/model_doc/swin2sr#transformers.Swin2SRForImageSuperResolution)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
@@ -314,7 +316,7 @@ config ([Swin2SRForImageSuperResolution](/docs/transformers/v5.0.0rc1/en/model_d
 
 A `transformers.modeling_outputs.ImageSuperResolutionOutput` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([Swin2SRConfig](/docs/transformers/v5.0.0rc1/en/model_doc/swin2sr#transformers.Swin2SRConfig)) and inputs.
+elements depending on the configuration ([Swin2SRConfig](/docs/transformers/v5.0.0/en/model_doc/swin2sr#transformers.Swin2SRConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Reconstruction loss.
 - **reconstruction** (`torch.FloatTensor` of shape `(batch_size, num_channels, height, width)`) -- Reconstructed images, possibly upscaled.

@@ -7,7 +7,7 @@ The project timezone affects [automated backups](https://docs.upsun.com../enviro
 The project timezone doesn't affect:
 
 - [App runtime](https://docs.upsun.com/create-apps/timezone.md).
-- [Cron jobs](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#crons).
+- [Cron jobs](https://docs.upsun.com/create-apps/image-properties/crons.md).
 - [System logs](https://docs.upsun.com/increase-observability/logs.md). UTC is the default timezone for all logs.
 
 To change the timezone for a project, follow these steps:

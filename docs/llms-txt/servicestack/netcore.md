@@ -100,13 +100,13 @@ This makes the `x` .NET Core tool globally available which can be run without ar
 That can be used to create new projects with:
  
 :::sh
-x new `<template-name>` `<project-name>`
+npx create-net `<template-name>` `<project-name>`
 :::
  
 Example of creating a new **Vue SPA** project called **Acme**:
  
 :::sh
-x new vue-spa Acme
+npx create-net vue-spa Acme
 :::
  
 The resulting `Acme.sln` can be opened in VS 2017 which will automatically restore and install both the .NET and npm packages upon first load and build. This can take a while to install all client and server dependencies, once finished the `wwwroot` folder will be populated with your generated Webpack App contained within a `/dist` folder alongside a generated `index.html` page. After these are generated you can run your App with **F5** to run your project as normal:
@@ -223,7 +223,7 @@ dotnet tool install --global x
 Then create a new project with:
 
 :::sh
-x new web-corefx AcmeNetFx
+npx create-net web-corefx AcmeNetFx
 :::
 
 Which can then be opened in your preferred VS.NET or Project Rider C# IDE.
@@ -295,7 +295,7 @@ public class Program
 
 
 Alternatively you can start with any of the [.NET Core Templates](https://github.com/NetCoreTemplates/) which 
-uses ASP .NET Core's recommended [Top-level statements](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/program-structure/top-level-statements) for its [Program.cs](https://github.com/NetCoreTemplates/razor-pages/blob/main/MyApp/Program.cs) Startup class, e.g:
+uses ASP .NET Core's recommended [Top-level statements](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/program-structure/top-level-statements) for its [Program.cs](https://github.com/LegacyTemplates/razor-pages/blob/main/MyApp/Program.cs) Startup class, e.g:
 
 ```csharp
 var builder = WebApplication.CreateBuilder(args);

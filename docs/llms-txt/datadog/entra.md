@@ -10,7 +10,6 @@ description: >-
 breadcrumbs: >-
   Docs > Account Management > Single Sign On With SAML > Microsoft Entra ID SAML
   IdP
-source_url: https://docs.datadoghq.com/saml/entra/index.html
 ---
 
 # Microsoft Entra ID SAML IdP

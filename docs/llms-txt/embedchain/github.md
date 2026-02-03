@@ -1,10 +1,14 @@
 # Source: https://docs.embedchain.ai/components/data-sources/github.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 📝 Github
 
 1. Setup the Github loader by configuring the Github account with username and personal access token (PAT). Check out [this](https://docs.github.com/en/enterprise-server@3.6/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token) link to learn how to create a PAT.
 
-```Python
+```Python  theme={null}
 from embedchain.loaders.github import GithubLoader
 
 loader = GithubLoader(
@@ -16,7 +20,7 @@ loader = GithubLoader(
 
 2. Once you setup the loader, you can create an app and load data using the above Github loader
 
-```Python
+```Python  theme={null}
 import os
 from embedchain.pipeline import Pipeline as App
 
@@ -46,7 +50,7 @@ The `add` function of the app will accept any valid github query with qualifiers
 
 3. We automatically create a chunker to chunk your GitHub data, however if you wish to provide your own chunker class. Here is how you can do that:
 
-```Python
+```Python  theme={null}
 from embedchain.chunkers.common_chunker import CommonChunker
 from embedchain.config.add_config import ChunkerConfig
 

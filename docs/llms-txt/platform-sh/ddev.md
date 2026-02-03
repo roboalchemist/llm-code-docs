@@ -1,17 +1,5 @@
 # Source: https://docs.upsun.com/development/local/ddev.md
 
-# Source: https://docs.upsun.com/guides/laravel/local-development/ddev.md
-
-# Source: https://docs.upsun.com/guides/django/local/ddev.md
-
-# Source: https://docs.upsun.com/development/local/ddev.md
-
-# Source: https://docs.upsun.com/guides/laravel/local-development/ddev.md
-
-# Source: https://docs.upsun.com/guides/django/local/ddev.md
-
-# Source: https://docs.upsun.com/development/local/ddev.md
-
 # Use DDEV for local development
 
 

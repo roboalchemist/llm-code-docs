@@ -1,5 +1,9 @@
 # Source: https://docs.turso.tech/sdk/ts/guides/qwik.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.turso.tech/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Qwik + Turso
 
 > Set up Turso in your Qwik project in minutes

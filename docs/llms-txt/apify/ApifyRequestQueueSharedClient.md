@@ -2,9 +2,13 @@
 
 # ApifyRequestQueueSharedClient<!-- -->
 
-An Apify platform implementation of the request queue client.
+Internal request queue client implementation for multi-consumer scenarios on the Apify platform.
 
-This implementation supports multiple producers and multiple consumers scenario.
+This implementation is optimized for scenarios where multiple clients concurrently fetch and process requests from the same queue. It makes more frequent API calls to ensure consistency across all consumers and uses request locking to prevent duplicate processing.
+
+This class is used internally by `ApifyRequestQueueClient` when `access='shared'` is specified.
+
+Public methods are not individually documented as they implement the interface defined in `RequestQueueClient`.
 
 ## Index[**](#Index)
 
@@ -20,62 +24,66 @@ This implementation supports multiple producers and multiple consumers scenario.
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#__init__)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_request_queue_shared_client.py#L35)\_\_init\_\_
+### [**](#__init__)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_request_queue_shared_client.py#L40)\_\_init\_\_
 
 * ****\_\_init\_\_**(\*, api\_client, metadata, cache\_size, metadata\_getter): None
 
-- Initialize a new instance.
+- Initialize a new shared request queue client instance.
 
-  Preferably use the `ApifyRequestQueueClient.open` class method to create a new instance.
+  Use `ApifyRequestQueueClient.open(access='shared')` instead of calling this directly.
 
   ***
 
   #### Parameters
 
   * ##### keyword-onlyapi\_client: RequestQueueClientAsync
+
+    The Apify API client for request queue operations.
+
   * ##### keyword-onlymetadata: RequestQueueMetadata
+
+    Initial metadata for the request queue.
+
   * ##### keyword-onlycache\_size: int
+
+    Maximum number of requests to cache locally.
+
   * ##### keyword-onlymetadata\_getter: Callable\[\[], Coroutine\[Any, Any, [ApifyRequestQueueMetadata](https://docs.apify.com/sdk/python/sdk/python/reference/class/ApifyRequestQueueMetadata.md)]]
+
+    Async function to fetch current metadata from the API.
 
   #### Returns None
 
-### [**](#add_batch_of_requests)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_request_queue_shared_client.py#L83)add\_batch\_of\_requests
+### [**](#add_batch_of_requests)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_request_queue_shared_client.py#L82)add\_batch\_of\_requests
 
 * **async **add\_batch\_of\_requests**(requests, \*, forefront): AddRequestsResponse
 
-- Add a batch of requests to the queue.
+- Specific implementation of this method for the RQ shared access mode.
 
   ***
 
   #### Parameters
 
   * ##### requests: Sequence\[Request]
-
-    The requests to add.
-
   * ##### optionalkeyword-onlyforefront: bool = <!-- -->False
-
-    Whether to add the requests to the beginning of the queue.
 
   #### Returns AddRequestsResponse
 
-### [**](#fetch_next_request)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_request_queue_shared_client.py#L195)fetch\_next\_request
+### [**](#fetch_next_request)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_request_queue_shared_client.py#L170)fetch\_next\_request
 
 * **async **fetch\_next\_request**(): Request | None
 
-- Return the next request in the queue to be processed.
-
-  Once you successfully finish processing of the request, you need to call `mark_request_as_handled` to mark the request as handled in the queue. If there was some error in processing the request, call `reclaim_request` instead, so that the queue will give the request to some other consumer in another call to the `fetch_next_request` method.
+- Specific implementation of this method for the RQ shared access mode.
 
   ***
 
   #### Returns Request | None
 
-### [**](#get_request)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_request_queue_shared_client.py#L176)get\_request
+### [**](#get_request)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_request_queue_shared_client.py#L166)get\_request
 
 * **async **get\_request**(unique\_key): Request | None
 
-- Get a request by unique key.
+- Specific implementation of this method for the RQ shared access mode.
 
   ***
 
@@ -83,56 +91,43 @@ This implementation supports multiple producers and multiple consumers scenario.
 
   * ##### unique\_key: str
 
-    Unique key of the request to get.
-
   #### Returns Request | None
 
-### [**](#is_empty)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_request_queue_shared_client.py#L341)is\_empty
+### [**](#is_empty)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_request_queue_shared_client.py#L288)is\_empty
 
 * **async **is\_empty**(): bool
 
-- Check if the queue is empty.
+- Specific implementation of this method for the RQ shared access mode.
 
   ***
 
   #### Returns bool
 
-### [**](#mark_request_as_handled)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_request_queue_shared_client.py#L246)mark\_request\_as\_handled
+### [**](#mark_request_as_handled)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_request_queue_shared_client.py#L212)mark\_request\_as\_handled
 
 * **async **mark\_request\_as\_handled**(request): ProcessedRequest | None
 
-- Mark a request as handled after successful processing.
-
-  Handled requests will never again be returned by the `fetch_next_request` method.
+- Specific implementation of this method for the RQ shared access mode.
 
   ***
 
   #### Parameters
 
   * ##### request: Request
-
-    The request to mark as handled.
 
   #### Returns ProcessedRequest | None
 
-### [**](#reclaim_request)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/storage_clients/_apify/_request_queue_shared_client.py#L287)reclaim\_request
+### [**](#reclaim_request)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/storage_clients/_apify/_request_queue_shared_client.py#L244)reclaim\_request
 
 * **async **reclaim\_request**(request, \*, forefront): ProcessedRequest | None
 
-- Reclaim a failed request back to the queue.
-
-  The request will be returned for processing later again by another call to `fetch_next_request`.
+- Specific implementation of this method for the RQ shared access mode.
 
   ***
 
   #### Parameters
 
   * ##### request: Request
-
-    The request to return to the queue.
-
   * ##### optionalkeyword-onlyforefront: bool = <!-- -->False
-
-    Whether to add the request to the head or the end of the queue.
 
   #### Returns ProcessedRequest | None

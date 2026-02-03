@@ -4,11 +4,7 @@
 
 Generate and verify single-use token
 
-***
 
-title: One-Time Token Plugin
-description: Generate and verify single-use token
--------------------------------------------------
 
 The One-Time Token (OTT) plugin provides functionality to generate and verify secure, single-use session tokens. These are commonly used for across domains authentication.
 
@@ -57,6 +53,7 @@ The One-Time Token (OTT) plugin provides functionality to generate and verify se
 
 Generate a token using `auth.api.generateOneTimeToken` or `authClient.oneTimeToken.generate`
 
+
 ### Client Side
 
 ```ts
@@ -77,15 +74,17 @@ const data = await auth.api.generateOneTimeToken({
 
 ```ts
 type generateOneTimeToken = {
-
+  
 }
 ```
+
 
 This will return a `token` that is attached to the current session which can be used to verify the one-time token. By default, the token will expire in 3 minutes.
 
 ### 2. Verify the Token
 
 When the user clicks the link or submits the token, use the `auth.api.verifyOneTimeToken` or `authClient.oneTimeToken.verify` method in another API route to validate it.
+
 
 ### Client Side
 
@@ -109,13 +108,14 @@ const data = await auth.api.verifyOneTimeToken({
 
 ```ts
 type verifyOneTimeToken = {
-    /**
-     * The token to verify. 
-     */
-    token: string = "some-token"
-
+      /**
+       * The token to verify. 
+       */
+      token: string = "some-token"
+  
 }
 ```
+
 
 This will return the session that was attached to the token.
 

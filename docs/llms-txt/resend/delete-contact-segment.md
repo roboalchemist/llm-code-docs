@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/api-reference/contacts/delete-contact-segment.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete Contact Segment
 
 > Remove an existing contact from a segment.
@@ -51,7 +55,7 @@ Either `id` or `email` must be provided.
 </ResendParamField>
 
 <RequestExample>
-  ```ts Node.js theme={null}
+  ```ts Node.js theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -69,7 +73,7 @@ Either `id` or `email` must be provided.
   });
   ```
 
-  ```php PHP theme={null}
+  ```php PHP theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   // Remove by contact id
@@ -85,7 +89,7 @@ Either `id` or `email` must be provided.
   );
   ```
 
-  ```python Python theme={null}
+  ```python Python theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = 're_xxxxxxxxx'
@@ -99,7 +103,7 @@ Either `id` or `email` must be provided.
   response = resend.Contacts.Segments.remove(params)
   ```
 
-  ```ruby Ruby theme={null}
+  ```ruby Ruby theme={"theme":{"light":"github-light","dark":"vesper"}}
   require 'resend'
 
   Resend.api_key = 're_xxxxxxxxx'
@@ -117,7 +121,7 @@ Either `id` or `email` must be provided.
   )
   ```
 
-  ```go Go theme={null}
+  ```go Go theme={"theme":{"light":"github-light","dark":"vesper"}}
   package main
 
   import (
@@ -129,9 +133,7 @@ Either `id` or `email` must be provided.
 
   func main() {
   	ctx := context.TODO()
-  	apiKey := "re_xxxxxxxxx"
-
-  	client := resend.NewClient(apiKey)
+  	client := resend.NewClient("re_xxxxxxxxx")
 
   	// Remove by contact id
   	removeParams := &resend.RemoveContactSegmentRequest{
@@ -159,7 +161,7 @@ Either `id` or `email` must be provided.
   }
   ```
 
-  ```rust Rust theme={null}
+  ```rust Rust theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::{Resend, Result};
 
   #[tokio::main]
@@ -188,7 +190,7 @@ Either `id` or `email` must be provided.
   }
   ```
 
-  ```java Java theme={null}
+  ```java Java theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -214,7 +216,7 @@ Either `id` or `email` must be provided.
   }
   ```
 
-  ```csharp .NET theme={null}
+  ```csharp .NET theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
 
   IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
@@ -225,7 +227,7 @@ Either `id` or `email` must be provided.
   );
   ```
 
-  ```bash cURL theme={null}
+  ```bash cURL theme={"theme":{"light":"github-light","dark":"vesper"}}
   // Update by contact id
   curl -X DELETE 'https://api.resend.com/contacts/e169aa45-1ecf-4183-9955-b1499d5701d3/segments/78261eea-8f8b-4381-83c6-79fa7120f1cf' \
        -H 'Authorization: Bearer re_xxxxxxxxx'
@@ -238,7 +240,7 @@ Either `id` or `email` must be provided.
 </RequestExample>
 
 <ResponseExample>
-  ```json Response theme={null}
+  ```json Response theme={"theme":{"light":"github-light","dark":"vesper"}}
   {
     "id": "78261eea-8f8b-4381-83c6-79fa7120f1cf",
     "deleted": true

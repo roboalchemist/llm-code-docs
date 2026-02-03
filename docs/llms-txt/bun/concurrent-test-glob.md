@@ -1,6 +1,12 @@
 # Source: https://bun.com/docs/guides/test/concurrent-test-glob.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Selectively run tests concurrently with glob patterns
+
+> Set a glob pattern to decide which tests from which files run in parallel
 
 This guide demonstrates how to use the `concurrentTestGlob` option to selectively run tests concurrently based on file naming patterns.
 
@@ -67,12 +73,14 @@ test("fetch user data", async () => {
   expect(response.ok).toBe(true);
 });
 
-test("fetch posts", async () => {
+// can also use test.concurrent() for explicitly marking it as concurrent
+test.concurrent("fetch posts", async () => {
   const response = await fetch("/api/posts");
   expect(response.ok).toBe(true);
 });
 
-test("fetch comments", async () => {
+// can also use test.serial() for explicitly marking it as sequential
+test.serial("fetch comments", async () => {
   const response = await fetch("/api/comments");
   expect(response.ok).toBe(true);
 });

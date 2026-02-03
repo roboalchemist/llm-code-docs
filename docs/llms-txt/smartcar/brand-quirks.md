@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/help/brand-quirks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Brand Quirks
 
 > Brand specific quirks to keep in mind while building out your application.
@@ -33,14 +37,6 @@ Smartcar API will throw a CONNECTED\_SERVICES\_ACCOUNT - SUBSCRIPTION when the d
 BYD accounts can only maintain one active session at a time. Vehicle owners should sign in with a dedicated BYD login for Smartcar that is separate from the credentials used in the BYD mobile app. If the same account signs into the OEM app after connecting through Smartcar, the Smartcar session will be revoked and require re-authentication.
 
 If customers reach out about being logged out of their BYD mobile app, we recommend instructing users to create a secondary BYD account exclusively for your app.
-
-## Ford/Lincoln
-
-### Authentication
-
-Connecting Ford and Lincoln vehicles requires the use of one of our mobile SDKs. We currently offer SDKs for iOS, Android, and Flutter. Smartcar's Connect SDKs will redirect to Ford’s site to handle the authentication process when the user logs in.
-
-**Authentication via non-mobile platforms such as web browsers is not supported at this time**. See [Connect SDKs](/connect/connect-sdks) for our latest SDKs.
 
 ## GM (Buick, Chevrolet, Cadillac, GMC)
 
@@ -84,6 +80,12 @@ The app appears to have an option to edit notifications, but as of Feb 2024 they
 
 If you request control\_charge permissions for PSA EVs, upon login owners will be presented with a PIN and MFA screen in Connect upon submitting their credentials. They will need to have set this up on their OEMs application in order to grant your application this permission.
 
+## Polestar
+
+### Stop charge command limitations
+
+Smartcar cannot fulfill stop charge commands if the vehicle is below 40% state of charge due to limitations with the current Polestar APIs.
+
 ## Rivian
 
 ### MFA
@@ -107,13 +109,21 @@ Tesla now requires virtual keys for 3rd-party applications in order to issue com
 * All Cybertrucks, Model 3 and Model Y
 * 2021+ Model S and X
 
-Please see [Virtual Keys](oem-integrations/tesla/virtual-key-tesla) for more information.
+Please see [Virtual Keys](/help/oem-integrations/tesla/virtual-key-tesla) for more information.
+
+### Enterprise Tenant Configuration
+
+<Warning>
+  For enterprise customers, Tesla tenant setup must occur **before** any customer-facing Tesla vehicles are onboarded. Configure this during initial implementation, coordinated with Smartcar.
+</Warning>
+
+Changing Tesla tenant configurations after vehicles are already connected will require all affected users to re-authenticate. See [OEM Migrations and Re-authentication](/connect/re-auth/oem-migrations) for guidance on handling this scenario.
 
 ## Volkswagen
 
 ### Control charge limits
 
-Volkswagen only allows 15 charge commands (start/stop charge) before the vehicle needs to be driven again in order to start responding to start/stop requests.
+Volkswagen limits charge commands to safeguard battery longevity based on environmental and system conditions. Excessive consecutive requests may result in being temporarily rate limited. To restore functionality, the vehicle must be driven again.
 
 ### CONNECTED\_SERVICES\_ACCOUNT errors on lock/unlock commands
 

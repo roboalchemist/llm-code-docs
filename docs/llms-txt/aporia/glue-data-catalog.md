@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/data-sources/glue-data-catalog.md
 
-# Source: https://docs.aporia.com/data-sources/glue-data-catalog.md
-
-# Source: https://docs.aporia.com/v1/data-sources/glue-data-catalog.md
-
 # Glue Data Catalog
 
 This guide describes how to use the Glue Data Catalog data source in order to monitor a new ML Model in production.&#x20;

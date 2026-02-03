@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/jsdoc/require-returns-description.md
 ---
-# jsdoc/require-returns-description&#x20;
 
 ### What it does
 

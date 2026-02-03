@@ -1,5 +1,9 @@
 # Source: https://gofastmcp.com/python-sdk/fastmcp-server-event_store.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # event_store
 
 # `fastmcp.server.event_store`
@@ -70,8 +74,3 @@ Replay events that occurred after the specified event ID.
 **Returns:**
 
 * The stream ID of the replayed events, or None if the event ID was not found
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://gofastmcp.com/llms.txt

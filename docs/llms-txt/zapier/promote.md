@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/manage/promote.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Promote a version
 
 > After your integration has entered the beta or public status, you can set a new default version for public use. This process is called promoting a version.

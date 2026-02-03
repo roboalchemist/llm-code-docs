@@ -4,12 +4,6 @@
 
 # Source: https://docs.avaamo.com/user-guide/llamb/regression-testing/best-practices.md
 
-# Source: https://docs.avaamo.com/user-guide/ref/best-practices.md
-
-# Source: https://docs.avaamo.com/user-guide/how-to/build-skills/create-skill/customize-your-skill/best-practices.md
-
-# Source: https://docs.avaamo.com/user-guide/llamb/regression-testing/best-practices.md
-
 # Best Practices
 
 * Collaborate with **subject matter experts** to build a regression test file during the discovery phase.

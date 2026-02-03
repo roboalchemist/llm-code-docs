@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/medical/
+
 # Medical Red-Teaming Plugins
 
 The Medical Red-Teaming Plugins are a comprehensive suite of tests designed specifically for AI systems operating in healthcare contexts. These plugins are based on extensive medical red-teaming research conducted with 46 healthcare professionals and ML experts, who identified vulnerabilities that could be particularly dangerous when AI systems provide medical information or assistance.

@@ -83,11 +83,8 @@ const items = ref<SelectItem[]>([
 </template>
 ```
 
-<caution>
-
-When using objects, you need to reference the `value` property of the object in the `v-model` directive or the `default-value` prop.
-
-</caution>
+> [!CAUTION]
+> When using objects, you need to reference the `value` property of the object in the `v-model` directive or the `default-value` prop.
 
 You can also pass an array of arrays to the `items` prop to display separated groups of items.
 
@@ -149,6 +146,9 @@ const items = ref<SelectItem[]>([
 </template>
 ```
 
+> [!TIP]
+> Use the `by` prop to compare objects by a field instead of reference when the `model-value` is an object.
+
 ### Multiple
 
 Use the `multiple` prop to allow multiple selections, the selected items will be separated by a comma in the trigger.
@@ -168,11 +168,8 @@ const items = ref<undefined>([
 </template>
 ```
 
-<caution>
-
-Ensure to pass an array to the `default-value` prop or the `v-model` directive.
-
-</caution>
+> [!CAUTION]
+> Ensure to pass an array to the `default-value` prop or the `v-model` directive.
 
 ### Placeholder
 
@@ -250,11 +247,8 @@ const items = ref<undefined>([
 </template>
 ```
 
-<note>
-
-The `highlight` prop is used here to show the focus state. It's used internally when a validation error occurs.
-
-</note>
+> [!NOTE]
+> The `highlight` prop is used here to show the focus state. It's used internally when a validation error occurs.
 
 ### Variant
 
@@ -332,23 +326,15 @@ const items = ref<undefined>([
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.chevronDown` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.chevronDown` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.chevronDown` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.chevronDown` key.
 
 ### Selected Icon
 
@@ -369,23 +355,15 @@ const items = ref<undefined>([
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.check` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.check` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.check` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.check` key.
 
 ### Avatar
 
@@ -445,23 +423,15 @@ const items = ref<undefined>([
 </template>
 ```
 
-<framework-only>
-<template v-slot:nuxt="">
-<tip to="/docs/getting-started/integrations/icons/nuxt#theme">
+**Nuxt:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/nuxt#theme
+> You can customize this icon globally in your `app.config.ts` under `ui.icons.loading` key.
 
-You can customize this icon globally in your `app.config.ts` under `ui.icons.loading` key.
-
-</tip>
-</template>
-
-<template v-slot:vue="">
-<tip to="/docs/getting-started/integrations/icons/vue#theme">
-
-You can customize this icon globally in your `vite.config.ts` under `ui.icons.loading` key.
-
-</tip>
-</template>
-</framework-only>
+**Vue:**
+> [!TIP]
+> See: /docs/getting-started/integrations/icons/vue#theme
+> You can customize this icon globally in your `vite.config.ts` under `ui.icons.loading` key.
 
 ### Disabled
 
@@ -563,17 +533,11 @@ const icon = computed(() => items.value.find(item => item.value === value.value)
 </template>
 ```
 
-<note>
+> [!NOTE]
+> In this example, the icon is computed from the `value` property of the selected item.
 
-In this example, the icon is computed from the `value` property of the selected item.
-
-</note>
-
-<tip>
-
-You can also use the `#leading` slot to display the selected icon.
-
-</tip>
+> [!TIP]
+> You can also use the `#leading` slot to display the selected icon.
 
 ### With avatar in items
 
@@ -628,17 +592,11 @@ const avatar = computed(() => items.value.find(item => item.value === value.valu
 </template>
 ```
 
-<note>
+> [!NOTE]
+> In this example, the avatar is computed from the `value` property of the selected item.
 
-In this example, the avatar is computed from the `value` property of the selected item.
-
-</note>
-
-<tip>
-
-You can also use the `#leading` slot to display the selected avatar.
-
-</tip>
+> [!TIP]
+> You can also use the `#leading` slot to display the selected avatar.
 
 ### With chip in items
 
@@ -695,11 +653,8 @@ function getChip(value: string) {
 </template>
 ```
 
-<note>
-
-In this example, the `#leading` slot is used to display the selected chip.
-
-</note>
+> [!NOTE]
+> In this example, the `#leading` slot is used to display the selected chip.
 
 ### Control open state
 
@@ -721,17 +676,8 @@ defineShortcuts({
 </template>
 ```
 
-<note>
-
-In this example, leveraging [`defineShortcuts`](/docs/composables/define-shortcuts), you can toggle the Select by pressing <kbd value="O">
-
-
-
-</kbd>
-
-.
-
-</note>
+> [!NOTE]
+> In this example, leveraging [`defineShortcuts`](/docs/composables/define-shortcuts), you can toggle the Select by pressing .
 
 ### With rotating icon
 
@@ -801,6 +747,70 @@ function getUserAvatar(value: string) {
 </template>
 ```
 
+### With infinite scroll `4.4+`
+
+You can use the [`useInfiniteScroll`](https://vueuse.org/core/useInfiniteScroll/) composable to load more data as the user scrolls.
+
+```vue [SelectInfiniteScrollExample.vue]
+<script setup lang="ts">
+import { useInfiniteScroll } from '@vueuse/core'
+
+type User = {
+  firstName: string
+}
+
+type UserResponse = {
+  users: User[]
+  total: number
+  skip: number
+  limit: number
+}
+
+const skip = ref(0)
+
+const { data, status, execute } = await useFetch('https://dummyjson.com/users?limit=10&select=firstName', {
+  key: 'select-menu-users-infinite-scroll',
+  params: { skip },
+  transform: (data?: UserResponse) => {
+    return data?.users.map(user => user.firstName)
+  },
+  lazy: true,
+  immediate: false
+})
+
+const users = ref<string[]>([])
+
+watch(data, () => {
+  users.value = [
+    ...users.value,
+    ...(data.value || [])
+  ]
+})
+
+execute()
+
+const select = useTemplateRef('select')
+
+onMounted(() => {
+  useInfiniteScroll(() => select.value?.viewportRef, () => {
+    skip.value += 10
+  }, {
+    canLoadMore: () => {
+      return status.value !== 'pending'
+    }
+  })
+})
+</script>
+
+<template>
+  <USelect
+    ref="select"
+    placeholder="Select user"
+    :items="users"
+  />
+</template>
+```
+
 ### With full content width
 
 You can expand the content to the full width of its items by adding the `min-w-fit` class on the `ui.content` slot.
@@ -843,23 +853,20 @@ const { data: users } = await useFetch('https://jsonplaceholder.typicode.com/use
 </template>
 ```
 
-<tip>
-
-You can also change the content width globally in your `app.config.ts`:
-
-```text
-export default defineAppConfig({
-  ui: {
-    select: {
-      slots: {
-        content: 'min-w-fit'
-      }
-    }
-  }
-})
-```
-
-</tip>
+> [!TIP]
+> You can also change the content width globally in your `app.config.ts`:
+> ```text
+> export default defineAppConfig({
+>   ui: {
+>     select: {
+>       slots: {
+>         content: 'min-w-fit'
+>       }
+>     }
+>   }
+> })
+> 
+> ```
 
 ## API
 
@@ -881,19 +888,19 @@ interface SelectProps {
   /**
    * The icon displayed to open the menu.
    */
-  trailingIcon?: string | object | undefined;
+  trailingIcon?: any;
   /**
    * The icon displayed when an item is selected.
    */
-  selectedIcon?: string | object | undefined;
+  selectedIcon?: any;
   /**
    * The content of the menu.
    */
-  content?: (Omit<SelectContentProps, "as" | "asChild" | "forceMount"> & Partial<EmitsToProps<SelectContentImplEmits>>) | undefined;
+  content?: (Omit<SelectContentProps, "asChild" | "as" | "forceMount"> & Partial<EmitsToProps<SelectContentImplEmits>>) | undefined;
   /**
    * Display an arrow alongside the menu.
    */
-  arrow?: boolean | Omit<SelectArrowProps, "as" | "asChild"> | undefined;
+  arrow?: boolean | Omit<SelectArrowProps, "asChild" | "as"> | undefined;
   /**
    * Render the menu in a portal.
    * @default "true"
@@ -903,30 +910,31 @@ interface SelectProps {
    * When `items` is an array of objects, select the field to use as the value.
    * @default "\"value\" as never"
    */
-  valueKey?: GetItemKeys<ArrayOrNested<SelectItem>> | undefined;
+  valueKey?: VK | undefined;
   /**
    * When `items` is an array of objects, select the field to use as the label.
    * @default "\"label\""
    */
-  labelKey?: GetItemKeys<ArrayOrNested<SelectItem>> | undefined;
+  labelKey?: GetItemKeys<T> | undefined;
   /**
    * When `items` is an array of objects, select the field to use as the description.
    * @default "\"description\""
    */
-  descriptionKey?: GetItemKeys<ArrayOrNested<SelectItem>> | undefined;
-  items?: ArrayOrNested<SelectItem> | undefined;
+  descriptionKey?: GetItemKeys<T> | undefined;
+  items?: T | undefined;
   /**
    * The value of the Select when initially rendered. Use when you do not need to control the state of the Select.
    */
-  defaultValue?: any;
+  defaultValue?: GetModelValue<T, VK, M> | undefined;
   /**
    * The controlled value of the Select. Can be bind as `v-model`.
    */
-  modelValue?: any;
+  modelValue?: GetModelValue<T, VK, M> | undefined;
+  modelModifiers?: Omit<ModelModifiers<GetModelValue<T, VK, M>>, "lazy"> | undefined;
   /**
    * Whether multiple options can be selected or not.
    */
-  multiple?: boolean | undefined;
+  multiple?: M | undefined;
   /**
    * Highlight the ring color like a focus state.
    */
@@ -964,7 +972,7 @@ interface SelectProps {
   /**
    * Display an icon based on the `leading` and `trailing` props.
    */
-  icon?: string | object | undefined;
+  icon?: any;
   /**
    * Display an avatar on the left side.
    */
@@ -976,7 +984,7 @@ interface SelectProps {
   /**
    * Display an icon on the left side.
    */
-  leadingIcon?: string | object | undefined;
+  leadingIcon?: any;
   /**
    * When `true`, the icon will be displayed on the right side.
    */
@@ -988,7 +996,7 @@ interface SelectProps {
   /**
    * The icon when the `loading` prop is `true`.
    */
-  loadingIcon?: string | object | undefined;
+  loadingIcon?: any;
   form?: string | undefined;
   formaction?: string | undefined;
   formenctype?: string | undefined;
@@ -998,11 +1006,9 @@ interface SelectProps {
 }
 ```
 
-<callout icon="i-simple-icons-mdnwebdocs" target="_blank" to="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attributes">
-
-This component also supports all native `<button>` HTML attributes.
-
-</callout>
+> [!NOTE]
+> See: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attributes
+> This component also supports all native `<button>` HTML attributes.
 
 ### Slots
 
@@ -1031,7 +1037,7 @@ interface SelectSlots {
  * Emitted events for the Select component
  */
 interface SelectEmits {
-  update:modelValue: (payload: [value: any]) => void;
+  update:modelValue: (payload: [value: GetModelValue<T, VK, M>]) => void;
   update:open: (payload: [value: boolean]) => void;
   change: (payload: [event: Event]) => void;
   blur: (payload: [event: FocusEvent]) => void;
@@ -1078,6 +1084,44 @@ When accessing the component via a template ref, you can use the following:
         
         <span class="sBMFI">
           HTMLButtonElement
+        </span>
+        
+        <span class="sMK4o">
+          |
+        </span>
+        
+        <span class="sBMFI">
+          null
+        </span>
+        
+        <span class="sMK4o">
+          >
+        </span>
+      </code>
+    </td>
+  </tr>
+  
+  <tr>
+    <td>
+      <code className="language-ts-type shiki shiki-themes material-theme-lighter material-theme material-theme-palenight" language="ts-type" style="">
+        <span class="sBMFI">
+          viewportRef
+        </span>
+      </code>
+    </td>
+    
+    <td>
+      <code className="language-ts-type shiki shiki-themes material-theme-lighter material-theme material-theme-palenight" language="ts-type" style="">
+        <span class="sBMFI">
+          Ref
+        </span>
+        
+        <span class="sMK4o">
+          <
+        </span>
+        
+        <span class="sBMFI">
+          HTMLDivElement
         </span>
         
         <span class="sMK4o">
@@ -1430,8 +1474,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

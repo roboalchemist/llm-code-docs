@@ -1,10 +1,23 @@
 # Source: https://docs.tavily.com/documentation/best-practices/best-practices-crawl.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavily.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Best Practices for Crawl
 
-> Learn how to effectively use Tavily's Crawl API to extract and process web content.
+> Learn how to optimize crawl parameters, focus your crawls, and efficiently extract content from websites.
 
-## When to Use `crawl` vs `map`
+## Crawl vs Map
+
+Understanding when to use each API:
+
+| Feature                | Crawl                        | Map                      |
+| ---------------------- | ---------------------------- | ------------------------ |
+| **Content extraction** | Full content                 | URLs only                |
+| **Use case**           | Deep content analysis        | Site structure discovery |
+| **Speed**              | Slower (extracts content)    | Faster (URLs only)       |
+| **Best for**           | RAG, analysis, documentation | Sitemap generation       |
 
 ### Use Crawl when you need:
 
@@ -21,6 +34,135 @@
 * Sitemap generation
 * Path pattern matching
 * Domain structure analysis
+
+## Crawl Parameters
+
+### Instructions
+
+Guide the crawl with natural language to focus on relevant content:
+
+```json  theme={null}
+{
+  "url": "example.com",
+  "max_depth": 2,
+  "instructions": "Find all documentation pages about Python"
+}
+```
+
+**When to use instructions:**
+
+* To focus crawling on specific topics or content types
+* When you need semantic filtering of pages
+* For agentic use cases where relevance is critical
+
+### Chunks per Source
+
+Control the amount of content returned per page to prevent context window explosion:
+
+```json  theme={null}
+{
+  "url": "example.com",
+  "instructions": "Find all documentation about authentication",
+  "chunks_per_source": 3
+}
+```
+
+**Key benefits:**
+
+* Returns only relevant content snippets (max 500 characters each) instead of full page content
+* Prevents context window from exploding in agentic use cases
+* Chunks appear in `raw_content` as: `<chunk 1> [...] <chunk 2> [...] <chunk 3>`
+
+> `chunks_per_source` is only available when instructions are provided.
+
+### Depth and breadth
+
+| Parameter     | Description                                     | Impact                     |
+| ------------- | ----------------------------------------------- | -------------------------- |
+| `max_depth`   | How many levels deep to crawl from starting URL | Exponential latency growth |
+| `max_breadth` | Maximum links to follow per page                | Horizontal spread          |
+| `limit`       | Total maximum pages to crawl                    | Hard cap on pages          |
+
+**Performance tip:** Each level of depth increases crawl time exponentially. Start with `max_depth=1` and increase as needed.
+
+```json  theme={null}
+// Conservative crawl
+{
+  "url": "example.com",
+  "max_depth": 1,
+  "max_breadth": 20,
+  "limit": 20
+}
+
+// Comprehensive crawl
+{
+  "url": "example.com",
+  "max_depth": 3,
+  "max_breadth": 100,
+  "limit": 500
+}
+```
+
+## Filtering and Focusing
+
+### Path patterns
+
+Use regex patterns to include or exclude specific paths:
+
+```json  theme={null}
+// Target specific sections
+{
+  "url": "example.com",
+  "select_paths": ["/blog/.*", "/docs/.*", "/guides/.*"],
+  "exclude_paths": ["/private/.*", "/admin/.*", "/test/.*"]
+}
+
+// Paginated content
+{
+  "url": "example.com/blog",
+  "max_depth": 2,
+  "select_paths": ["/blog/.*", "/blog/page/.*"],
+  "exclude_paths": ["/blog/tag/.*"]
+}
+```
+
+### Domain filtering
+
+Control which domains to crawl:
+
+```json  theme={null}
+// Stay within subdomain
+{
+  "url": "docs.example.com",
+  "select_domains": ["^docs.example.com$"],
+  "max_depth": 2
+}
+
+// Exclude specific domains
+{
+  "url": "example.com",
+  "exclude_domains": ["^ads.example.com$", "^tracking.example.com$"],
+  "max_depth": 2
+}
+```
+
+### Extract depth
+
+Controls extraction quality vs. speed.
+
+| Depth             | When to use                            |
+| ----------------- | -------------------------------------- |
+| `basic` (default) | Simple content, faster processing      |
+| `advanced`        | Complex pages, tables, structured data |
+
+```json  theme={null}
+{
+  "url": "docs.example.com",
+  "max_depth": 2,
+  "extract_depth": "advanced",
+  "select_paths": ["/docs/.*"]
+}
+```
 
 ## Use Cases
 
@@ -97,8 +239,7 @@ For content that updates frequently:
 {
   "url": "api.example.com",
   "max_depth": 1,
-  "max_breadth": 100,
-  "extract_depth": "basic"
+  "max_breadth": 100
 }
 ```
 
@@ -116,8 +257,8 @@ For content requiring authentication:
 {
   "url": "help.example.com",
   "max_depth": 2,
-  "select_domains": ["^help\.example\.com$"],
-  "exclude_domains": ["^public\.example\.com$"]
+  "select_domains": ["^help.example.com$"],
+  "exclude_domains": ["^public.example.com$"]
 }
 ```
 
@@ -180,21 +321,14 @@ When you have specific paths to crawl:
 }
 ```
 
-## Performance Considerations
+## Performance Optimization
 
 ### Depth vs. Performance
 
 * Each level of depth increases crawl time exponentially
-* Start with `max_depth: 1` and increase as needed
-* Use `max_breadth` to control horizontal expansion
-* Set appropriate `limit` to prevent excessive crawling
-
-### Resource Optimization
-
-* Use `basic` extract\_depth for simple content
-* Use `advanced` extract\_depth only when needed
-* Set appropriate `max_breadth` based on site structure
-* Use `select_paths` and `exclude_paths` to focus crawling
+* Start with max\_depth: 1 and increase as needed
+* Use max\_breadth to control horizontal expansion
+* Set appropriate limit to prevent excessive crawling
 
 ### Rate Limiting
 
@@ -202,56 +336,6 @@ When you have specific paths to crawl:
 * Implement appropriate delays between requests
 * Monitor API usage and limits
 * Use appropriate error handling for rate limits
-
-## Best Practices Summary
-
-1. **Start Small**
-   * Begin with limited depth and breadth
-   * Gradually increase based on needs
-   * Monitor performance and adjust
-
-2. **Be Specific**
-   * Use path patterns to focus crawling
-   * Exclude irrelevant sections
-
-3. **Optimize Resources**
-   * Choose appropriate extract\_depth
-   * Set reasonable limits
-   * Use include\_images only when needed
-
-4. **Handle Errors**
-   * Implement retry logic
-   * Monitor failed results
-   * Handle rate limits appropriately
-
-5. **Security**
-   * Respect robots.txt
-   * Use appropriate authentication
-   * Exclude sensitive paths
-
-6. **Integration**
-   * Plan for data processing
-   * Consider storage requirements
-   * Design for scalability
-
-## Common Pitfalls
-
-1. **Excessive Depth**
-   * Avoid setting max\_depth too high
-   * Start with 1-2 levels
-   * Increase only if necessary
-
-2. **Unfocused Crawling**
-   * Use instructions for guidance
-
-3. **Resource Overuse**
-   * Monitor API usage
-   * Set appropriate limits
-   * Use basic extract\_depth when possible
-
-4. **Missing Content**
-   * Verify path patterns
-   * Monitor crawl coverage
 
 ## Integration with Map
 
@@ -262,31 +346,58 @@ Consider using Map before Crawl to:
 3. Plan crawl strategy
 4. Validate URL patterns
 
-Example workflow:
+**Example workflow:**
 
 1. Use Map to get site structure
 2. Analyze paths and patterns
 3. Configure Crawl with discovered paths
 4. Execute focused crawl
 
-## Conclusion
+**Benefits:**
 
-Tavily's Crawl API is powerful for extracting structured content from websites. By following these best practices, you can:
+* Discover site structure before crawling
+* Identify relevant path patterns
+* Avoid unnecessary crawling
+* Validate URL patterns work correctly
 
-* Optimize crawl performance
-* Ensure complete coverage
-* Maintain resource efficiency
-* Build robust content extraction pipelines
+## Common Pitfalls
 
-Remember to:
+### Excessive depth
 
-* Start with limited scope
-* Use appropriate parameters
-* Monitor performance
-* Handle errors gracefully
-* Respect site policies
+* **Problem:** Setting `max_depth=4` or higher
+* **Impact:** Exponential crawl time, unnecessary pages
+* **Solution:** Start with 1-2 levels, increase only if needed
 
+### Unfocused crawling
 
----
+* **Problem:** No `instructions` provided, crawling entire site
+* **Impact:** Wasted resources, irrelevant content, context explosion
+* **Solution:** Use instructions to focus the crawl semantically
 
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.tavily.com/llms.txt
+### Missing limits
+
+* **Problem:** No `limit` parameter set
+* **Impact:** Runaway crawls, unexpected costs
+* **Solution:** Always set a reasonable `limit` value
+
+### Ignoring failed results
+
+* **Problem:** Not checking which pages failed extraction
+* **Impact:** Incomplete data, missed content
+* **Solution:** Monitor failed results and adjust parameters
+
+## Summary
+
+* Use instructions and chunks\_per\_source for focused, relevant results in agentic use cases
+* Start with conservative parameters (`max_depth=1, max_breadth=20`)
+* Use path patterns to focus crawling on relevant content
+* Choose appropriate extract\_depth based on content complexity
+* Set reasonable limits to prevent excessive crawling
+* Monitor failed results and adjust patterns accordingly
+* Use Map first to understand site structure
+* Implement error handling for rate limits and failures
+* Respect robots.txt and site policies
+* Optimize for your use case (speed vs. completeness)
+* Process results incrementally rather than waiting for full crawl
+
+> Crawling is powerful but resource-intensive. Focus your crawls, start small, monitor results, and scale gradually based on actual needs.

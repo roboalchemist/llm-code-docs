@@ -1,3 +1,7 @@
+# Source: https://www.promptfoo.dev/docs/model-audit/ci-cd/
+
+# Source: https://www.promptfoo.dev/docs/integrations/ci-cd/
+
 # CI/CD Integration for LLM Evaluation and Security
 
 Integrate promptfoo into your CI/CD pipelines to automatically evaluate prompts, test for security vulnerabilities, and ensure quality before deployment. This guide covers modern CI/CD workflows for both quality testing and security scanning.

@@ -1,5 +1,9 @@
 # Source: https://graphite-58cc94ce.mintlify.dev/docs/update-mid-stack-branches.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://graphite-58cc94ce.mintlify.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Update Mid Stack Branches
 
 > Learn how to make changes to mid-stack branches and auto-restack seamlessly with Graphite CLI.

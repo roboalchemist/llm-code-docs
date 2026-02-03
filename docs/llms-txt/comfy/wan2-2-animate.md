@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/video/wan/wan2-2-animate.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Wan2.2 Animate ComfyUI native workflow
 
 > Unified character animation and replacement framework with precise motion and expression replication.
@@ -41,7 +45,7 @@ It can also replace characters in a video with animated characters, preserving t
 
     <Tab title="Desktop or Cloud users">
       * The Desktop is base on ComfyUI stable release, it will auto-update when there is a new Desktop stable release available.
-      * [Cloud](https://cloud.comfy.org) will update after ComfyUI stable release, we will update the Cloud after ComfyUI stable release.
+      * [Cloud](https://cloud.comfy.org) will update after ComfyUI stable release.
 
       So, if you find any core node missing in this document, it might be because the new core nodes have not yet been released in the latest stable version. Please wait for the next stable release.
     </Tab>
@@ -63,6 +67,10 @@ Download the following workflow file and drag it into ComfyUI to load the workfl
 
 <a className="prose" target="_blank" href="https://raw.githubusercontent.com/Comfy-Org/workflow_templates/refs/heads/main/templates/video_wan2_2_14B_animate.json" style={{ display: 'inline-block', backgroundColor: '#0078D6', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
   <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Download JSON Workflow</p>
+</a>
+
+<a className="prose" target="_blank" href="https://cloud.comfy.org/?template=video_wan2_2_14B_animate&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28A745', color: '#FFFFFF', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
+  <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Run on Comfy Cloud</p>
 </a>
 
 Download materials below as input:

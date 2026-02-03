@@ -21,7 +21,7 @@ The Agent.ai Python SDK provides a simple way to interact with the Agent.ai Acti
 
 **Installation:**
 
-```bash  theme={null}
+```bash theme={null}
 pip install agentai
 ```
 
@@ -36,7 +36,7 @@ The Agent.ai JavaScript SDK allows you to integrate Agent.ai actions into your J
 
 **Installation:**
 
-```bash  theme={null}
+```bash theme={null}
 # Using yarn
 yarn add @agentai/agentai
 
@@ -55,7 +55,7 @@ The MCP (Multi-Channel Platform) Server provides a server-side implementation of
 
 **Installation:**
 
-```bash  theme={null}
+```bash theme={null}
 # Using yarn
 yarn add @agentai/mcp-server
 
@@ -281,7 +281,7 @@ Convert uploaded files to different formats, such as PDF, TXT, or PNG, within wo
 * **Document Management**: Convert user-uploaded files to preferred formats.
 * **Data Transformation**: Process files for compatibility with downstream actions.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/WWRn_d4uQhc?si=x_FTZ9AG0fzuNuOR" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+<iframe />
 
 ## Configuration Fields
 
@@ -346,7 +346,7 @@ Source: https://docs.agent.ai/actions/end_statement
 
 Mark the end of If/Else blocks or For loops - required to close conditional logic or iteration blocks.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/vG61oEyqDtQ?si=VA1yu9ouWYYhN7HD" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+<iframe />
 
 Mark the end of conditional blocks - closes For Loops, If Conditions, and other control flow actions.
 
@@ -751,7 +751,7 @@ Source: https://docs.agent.ai/actions/for_loop
 
 Repeat actions for each item in a list or a specific number of times - automate repetitive tasks efficiently.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/3J3TKMJ4pXI?si=vFycP1JMoowvaJqe" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+<iframe />
 
 Process multiple items one at a time - perfect for updating, analyzing, or taking action on lists of records.
 
@@ -2080,7 +2080,7 @@ another_property=another_value
 
 **Or JSON:**
 
-```json  theme={null}
+```json theme={null}
 {
   "custom_field": "value",
   "another_field": "[variable]"
@@ -2108,7 +2108,7 @@ The action returns the created engagement record.
 
 **Example output saved to `created_note`:**
 
-```javascript  theme={null}
+```javascript theme={null}
 {
   "id": "123456789",
   "engagement_type": "note",
@@ -2220,7 +2220,7 @@ The action returns the created engagement record.
 
 **Webhook payload:**
 
-```json  theme={null}
+```json theme={null}
 {
   "contact_id": "123456",
   "duration_minutes": "15",
@@ -3386,7 +3386,7 @@ The action returns a **list of engagement records**, each containing engagement 
 
 **Example output saved to `deal_engagements`:**
 
-```javascript  theme={null}
+```javascript theme={null}
 [
   {
     "id": "123456",
@@ -3889,7 +3889,7 @@ The action returns a **list of timeline events**, each containing event details.
 
 **Example output saved to `deal_timeline`:**
 
-```javascript  theme={null}
+```javascript theme={null}
 [
   {
     "id": "evt_12345",
@@ -5832,7 +5832,7 @@ Source: https://docs.agent.ai/actions/if_else
 
 Run actions only when certain conditions are met - perfect for conditional logic and branching workflows.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/SICac2Zw9kQ?si=q3q2WjgUBd74pvlk" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+<iframe />
 
 Run actions only when certain conditions are met - perfect for conditional logic and branching workflows.
 
@@ -6350,7 +6350,7 @@ Trigger another agent to perform additional processing or data handling within w
 * **Multi-Agent Workflows**: Delegate tasks to specialized agents.
 * **Cross-Functionality**: Utilize existing agent capabilities for enhanced results.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/DqWPxjlsT6o?si=uf7kUR209DgbpGpT" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+<iframe />
 
 ## Configuration Fields
 
@@ -6390,7 +6390,7 @@ The Invoke Web API action allows your agents to make RESTful API calls to extern
 * **Third-Party Integrations**: Access services that expose information via REST APIs 
 * **Enriching Workflows**: Incorporate external data sources into your agent's processing
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/WWRn_d4uQhc?si=4bQ0c4K2Dm5m_hwG" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+<iframe />
 
 ## **How to Configure Web API Calls**
 
@@ -6518,7 +6518,7 @@ Save text content as a downloadable file in various formats, including PDF, Micr
 * **Report Generation**: Create downloadable reports from workflow data.
 * **Documentation**: Generate and save technical documentation or user guides.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/EAbJ9ksHbP8?si=Oyym3CNsMFR98heg" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+<iframe />
 
 ## Configuration Fields
 
@@ -6626,7 +6626,7 @@ Fetch search results from Google or YouTube for specific queries, providing valu
 * **Market Research**: Gather data on trends or competitors.
 * **Content Discovery**: Find relevant articles or videos for your workflow.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/U7CpTt-Fpco?si=EhprGYprRGY5vuTm" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+<iframe />
 
 ## Configuration Fields
 
@@ -6670,7 +6670,7 @@ Send messages to specified recipients, such as emails with formatted content or 
 * **Customer Communication**: Notify users about updates or confirmations.
 * **Team Collaboration**: Share workflow results via email.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/dimzBWcPcX0?si=lNJ0mWxvj-9YDR-F" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+<iframe />
 
 ## Configuration Fields
 
@@ -6715,7 +6715,7 @@ Serverless Functions allow your agents to execute custom code in the cloud witho
 * **Advanced Data Processing**: Perform complex calculations and transformations
 * **Extended Functionality**: Add capabilities not available in standard Agent.ai actions
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/n5nTAzKGy18?si=6iUG3xZu3ekwG3GU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+<iframe title="YouTube video player" />
 
 ## **How Serverless Functions Work**
 
@@ -6776,13 +6776,13 @@ When your agent runs a serverless function, any context variables created earlie
 
 Understanding how to access these variables is key to using serverless functions effectively.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/bGnCZpjKJWw?si=oeyi6XDsFcW-sTOl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+<iframe title="YouTube video player" />
 
 ### Inspecting the Event Structure
 
 To inspect the data being passed to your function, you can set up a basic debug function. This is helpful for confirming that your agent variables are available and structured as expected.
 
-```python  theme={null}
+```python theme={null}
 import json
 
 def execute(event, context):
@@ -6809,7 +6809,7 @@ This nested context object contains your agent's variables—such as out\_topic,
 
 Once you understand the structure, you can write your function to access specific values like this:
 
-```python  theme={null}
+```python theme={null}
 import json
 
 def execute(event, context):
@@ -6858,7 +6858,7 @@ Source: https://docs.agent.ai/actions/set-variable
 
 Create or update variables during workflow execution - store values, build counters, calculate totals, or save results for later actions.
 
-<img src="https://mintcdn.com/agentai/UYmyskpA4wsMD1WI/images/set_variable.png?fit=max&auto=format&n=UYmyskpA4wsMD1WI&q=85&s=7b7eb43e684aeb09dc2dcbec1f2c055d" alt="Set Variable Pn" data-og-width="1194" width="1194" data-og-height="1148" height="1148" data-path="images/set_variable.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/UYmyskpA4wsMD1WI/images/set_variable.png?w=280&fit=max&auto=format&n=UYmyskpA4wsMD1WI&q=85&s=dc714a20e0020bb27efce40ed8fadda7 280w, https://mintcdn.com/agentai/UYmyskpA4wsMD1WI/images/set_variable.png?w=560&fit=max&auto=format&n=UYmyskpA4wsMD1WI&q=85&s=2f14286f91b09bccc6ba1493548f7e8f 560w, https://mintcdn.com/agentai/UYmyskpA4wsMD1WI/images/set_variable.png?w=840&fit=max&auto=format&n=UYmyskpA4wsMD1WI&q=85&s=0b6ce0c1b590a3fb33749806a0eb9681 840w, https://mintcdn.com/agentai/UYmyskpA4wsMD1WI/images/set_variable.png?w=1100&fit=max&auto=format&n=UYmyskpA4wsMD1WI&q=85&s=58fffd19d8edf62b8d4bc84f274d0bd4 1100w, https://mintcdn.com/agentai/UYmyskpA4wsMD1WI/images/set_variable.png?w=1650&fit=max&auto=format&n=UYmyskpA4wsMD1WI&q=85&s=9e4010787ea8b5794f8af5803b27f6af 1650w, https://mintcdn.com/agentai/UYmyskpA4wsMD1WI/images/set_variable.png?w=2500&fit=max&auto=format&n=UYmyskpA4wsMD1WI&q=85&s=092b65ef7234c0d728a3775fb1a49e82 2500w" />
+<img alt="Set Variable Pn" />
 
 **Common uses:**
 
@@ -7583,7 +7583,7 @@ Perform a YouTube search and retrieve results for specified queries.
 * **Content Discovery**: Find relevant YouTube videos for research or campaigns.
 * **Trend Monitoring**: Identify trending videos or topics.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/yrHbh5pnCW8?si=_nhWaN3B6auJXZX1" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+<iframe />
 
 ## Configuration Fields
 
@@ -7606,7 +7606,7 @@ Source: https://docs.agent.ai/ai-agents-explained
 
 Understanding the basics of AI agents for beginners
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/RbnXeQkzyWg?si=WjE6maYfY5K5qmfl" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+<iframe />
 
 # **What Is an AI Agent?**
 
@@ -7988,7 +7988,7 @@ Knowledge bases and files can be used in certain agent actions like:
 
 [Get Data from Builder’s Knowledge Base](https://docs.agent.ai/actions/get_data_from_builders_knowledgebase)
 
-<img src="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/kb-files.png?fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=730204d9290bf377707a3ab0072881f0" alt="Kb Files Pn" data-og-width="2664" width="2664" data-og-height="754" height="754" data-path="images/kb-files.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/kb-files.png?w=280&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=a5b891ee317f6ba5a16ee9b27b46d0ee 280w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/kb-files.png?w=560&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=e2a9e11070102606ff5dd5097a790ac1 560w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/kb-files.png?w=840&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=b97b500d38305e802608585e0a3a5f44 840w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/kb-files.png?w=1100&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=702b08dd5bc3b019ce919d453bc7a83e 1100w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/kb-files.png?w=1650&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=1c554607a1f6dcd81024a1a8113bc030 1650w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/kb-files.png?w=2500&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=aca9743abff6c295486536ca865baa9f 2500w" />
+<img alt="Kb Files Pn" />
 
 On this page, you can see how many files and vectors are in each knowledge base. Vectors are small chunks of text from your uploaded files that have been converted into a format the AI can search and understand. They help the agent find and respond with the right information.
 
@@ -8002,7 +8002,7 @@ You can edit the name or description by clicking the **Edit** icon. You can also
 
 In the “Files” section, you can upload files directly to a knowledge base. You can also click on a file name to preview its contents or click the **trash** icon next to a file to delete it.
 
-<img src="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/kb-files2.png?fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=f4f5d95282f94f0221428a3b460f765a" alt="Kb Files2 Pn" data-og-width="2668" width="2668" data-og-height="1008" height="1008" data-path="images/kb-files2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/kb-files2.png?w=280&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=d29d8cb68ff5d05d4f434f083627a78c 280w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/kb-files2.png?w=560&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=48a15e0ad069899e2170192203f712b4 560w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/kb-files2.png?w=840&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=e3d81b444c35d5fb3ef58f69d968d828 840w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/kb-files2.png?w=1100&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=c72338f19f115233eb83ab38bb1c92d8 1100w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/kb-files2.png?w=1650&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=72aa218950d65035c768015c4256e0eb 1650w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/kb-files2.png?w=2500&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=4da0de5d76393258905c4bcb6a9d57d5 2500w" />
+<img alt="Kb Files2 Pn" />
 
 If you have any questions about setting up Knowledge Bases or managing your files in [Agent.ai](http://Agent.ai), please reach out to our [support team](https://agent.ai/feedback).
 
@@ -8089,7 +8089,7 @@ Notes:
 
 ## Visual
 
-<img src="https://mintcdn.com/agentai/6I_mB495iSFC6FbT/images/lead-magnet-hero.svg?fit=max&auto=format&n=6I_mB495iSFC6FbT&q=85&s=3517dab5a2cc74dd0c6b22da59b881bd" alt="Lead Magnet Flow" data-og-width="920" width="920" data-og-height="240" height="240" data-path="images/lead-magnet-hero.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/6I_mB495iSFC6FbT/images/lead-magnet-hero.svg?w=280&fit=max&auto=format&n=6I_mB495iSFC6FbT&q=85&s=c540792eb205be3d28499bc8a74d2da5 280w, https://mintcdn.com/agentai/6I_mB495iSFC6FbT/images/lead-magnet-hero.svg?w=560&fit=max&auto=format&n=6I_mB495iSFC6FbT&q=85&s=97446eae5af18b507cc8e7d0cfe54608 560w, https://mintcdn.com/agentai/6I_mB495iSFC6FbT/images/lead-magnet-hero.svg?w=840&fit=max&auto=format&n=6I_mB495iSFC6FbT&q=85&s=aa20f5da15b550eb512fb69212d451c0 840w, https://mintcdn.com/agentai/6I_mB495iSFC6FbT/images/lead-magnet-hero.svg?w=1100&fit=max&auto=format&n=6I_mB495iSFC6FbT&q=85&s=4b3a47a5dcb067d5719e78fc0d5ab97c 1100w, https://mintcdn.com/agentai/6I_mB495iSFC6FbT/images/lead-magnet-hero.svg?w=1650&fit=max&auto=format&n=6I_mB495iSFC6FbT&q=85&s=985f732eb62e26eaf30ff9d55c6355c1 1650w, https://mintcdn.com/agentai/6I_mB495iSFC6FbT/images/lead-magnet-hero.svg?w=2500&fit=max&auto=format&n=6I_mB495iSFC6FbT&q=85&s=53e64063e8f48e9209767a05988c35c5 2500w" />
+<img alt="Lead Magnet Flow" />
 
 
 # Builder Overview
@@ -8113,7 +8113,7 @@ The builder has 2 sections: the core Builder canvas and settings. Most informati
 
 Let's start with the settings panel. Here we define how the agent will show up when users try to use it and how it will show up in the marketplace.
 
-<img alt="Builder Settings panel" classname="hidden dark:block" src="https://mintcdn.com/agentai/UYmyskpA4wsMD1WI/settings.png?fit=max&auto=format&n=UYmyskpA4wsMD1WI&q=85&s=a5d86a8701f7f4b2ff3527bebcf5d5a2" title={true} data-og-width="858" width="858" data-og-height="1811" height="1811" data-path="settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/UYmyskpA4wsMD1WI/settings.png?w=280&fit=max&auto=format&n=UYmyskpA4wsMD1WI&q=85&s=17fb33cd34b88e21590d158354ca4a91 280w, https://mintcdn.com/agentai/UYmyskpA4wsMD1WI/settings.png?w=560&fit=max&auto=format&n=UYmyskpA4wsMD1WI&q=85&s=4472d69c1d317db4e04671a7bc15193d 560w, https://mintcdn.com/agentai/UYmyskpA4wsMD1WI/settings.png?w=840&fit=max&auto=format&n=UYmyskpA4wsMD1WI&q=85&s=70d9ac45d0bd8ad2e65b546c86e88b4b 840w, https://mintcdn.com/agentai/UYmyskpA4wsMD1WI/settings.png?w=1100&fit=max&auto=format&n=UYmyskpA4wsMD1WI&q=85&s=911f8112ed78a0d721910fc578b08c69 1100w, https://mintcdn.com/agentai/UYmyskpA4wsMD1WI/settings.png?w=1650&fit=max&auto=format&n=UYmyskpA4wsMD1WI&q=85&s=0400d3f76d69d94bb14adaabc58f0314 1650w, https://mintcdn.com/agentai/UYmyskpA4wsMD1WI/settings.png?w=2500&fit=max&auto=format&n=UYmyskpA4wsMD1WI&q=85&s=39099a46005e443f3a8ecb27d27916c7 2500w" />
+<img alt="Builder Settings panel" title={true} />
 
 #### Required Information
 
@@ -8151,7 +8151,7 @@ The following settings allow you to control behavior of your agent's that you ma
 
 Triggers determine when the Agent will be run. You can see and configure triggers at the top of the Builder canvas.
 
-<img src="https://mintcdn.com/agentai/UYmyskpA4wsMD1WI/images/triggers_new_builder_new.png?fit=max&auto=format&n=UYmyskpA4wsMD1WI&q=85&s=fa1ff0383f2ed78d08bd04cf0f41067c" alt="Triggers New Builder New Pn" data-og-width="2406" width="2406" data-og-height="1818" height="1818" data-path="images/triggers_new_builder_new.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/UYmyskpA4wsMD1WI/images/triggers_new_builder_new.png?w=280&fit=max&auto=format&n=UYmyskpA4wsMD1WI&q=85&s=628009e89273f80d8fadb2866ddeea4f 280w, https://mintcdn.com/agentai/UYmyskpA4wsMD1WI/images/triggers_new_builder_new.png?w=560&fit=max&auto=format&n=UYmyskpA4wsMD1WI&q=85&s=303be235769bca37f84c22aa71ab491f 560w, https://mintcdn.com/agentai/UYmyskpA4wsMD1WI/images/triggers_new_builder_new.png?w=840&fit=max&auto=format&n=UYmyskpA4wsMD1WI&q=85&s=8e9366ef53bcc8099c7cad1b751c9f2e 840w, https://mintcdn.com/agentai/UYmyskpA4wsMD1WI/images/triggers_new_builder_new.png?w=1100&fit=max&auto=format&n=UYmyskpA4wsMD1WI&q=85&s=81de1c4061a27d5a02f61b5148f68f95 1100w, https://mintcdn.com/agentai/UYmyskpA4wsMD1WI/images/triggers_new_builder_new.png?w=1650&fit=max&auto=format&n=UYmyskpA4wsMD1WI&q=85&s=be9d8dac145fdaa6520f340b7b5d691e 1650w, https://mintcdn.com/agentai/UYmyskpA4wsMD1WI/images/triggers_new_builder_new.png?w=2500&fit=max&auto=format&n=UYmyskpA4wsMD1WI&q=85&s=963caf3771e6453c8608b187d9846da5 2500w" />
+<img alt="Triggers New Builder New Pn" />
 
 There are a variety of ways to trigger and agent:
 
@@ -8177,6 +8177,8 @@ Enabling user configured schedules allows users of your agent to set up recurrin
 #### **Enable agent via email**
 
 When this setting is enabled, the agent will also be accessible via email. Users can email the agent's address and receive a full response back.
+
+Email-triggered agents can now also support file attachments. When an incoming email includes an attachment, the file is automatically uploaded and made available to your workflow. You can reference it in subsequent steps just like any other user-provided file.
 
 <Note>
   Agents will only respond to emails sent from the same address you use to log into [Agent.ai](http://Agent.ai).
@@ -8228,7 +8230,7 @@ To trigger this agent via webhook: 
 
 In the Actions section of the Builder, users define the steps the agent will perform. Each action is a building block in your workflow, and the order of these actions will determine how the agent operates. Below is a breakdown of the available actions and how you can use them effectively.
 
-<img alt="Builder Triggers panel" classname="hidden dark:block" src="https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/actions_new_builder.png?fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=52b187a836a5dbcebbd8ef603e12ee1b" title={true} data-og-width="1590" width="1590" data-og-height="1522" height="1522" data-path="actions_new_builder.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/actions_new_builder.png?w=280&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=6958c24d6c4dd84f37178c79e8ed5526 280w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/actions_new_builder.png?w=560&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=c8d1c4a06c435e17deb67031351f9945 560w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/actions_new_builder.png?w=840&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=a143fe82672155c426520e67d66671aa 840w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/actions_new_builder.png?w=1100&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=858defd14cf477dc5a8ce5b9163c0daf 1100w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/actions_new_builder.png?w=1650&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=7aec6b4cbdbc3bf05d90ee264cf7bbbc 1650w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/actions_new_builder.png?w=2500&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=1c5d246a22a3c625ed871c978a188bfa 2500w" />
+<img alt="Builder Triggers panel" title={true} />
 
 The builder provides a rich library of actions, organized into categories to help you find the right tool for the job. Here's a high-level overview of each category and what it's used for.
 
@@ -8260,7 +8262,7 @@ Leverage the power of large language models (LLMs) to perform complex tasks. The
 
 Deliver meaningful, formatted results that can be communicated or saved for further use. Create engaging outputs like email messages, blog posts, Google Docs, or formatted tables based on workflow data. For example, send users a custom report via email, save generated content as a document, or display a summary table directly on the interface—ensuring results are clear, actionable, and easy to understand.
 
-<img alt="Builder Triggers panel" classname="hidden dark:block" src="https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/action_library.png?fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=b7ae5e49ae650517b0af12b30cbf7c1c" title={true} data-og-width="1704" width="1704" data-og-height="1810" height="1810" data-path="action_library.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/action_library.png?w=280&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=56ad80777b51b475958979d190487710 280w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/action_library.png?w=560&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=2abd573d9c88312f443b1ed79ee7d61b 560w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/action_library.png?w=840&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=8ff1752de13eb6e398cfef35f87c7a1c 840w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/action_library.png?w=1100&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=dd357511b97c3da134980181cead7395 1100w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/action_library.png?w=1650&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=7660a78aba04b22a3c52b87ccbe3ada9 1650w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/action_library.png?w=2500&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=7ef81872f4281230fb42e0ff243b9d61 2500w" />
+<img alt="Builder Triggers panel" title={true} />
 
 We'll run through each available action in the Actions page.
 
@@ -8276,7 +8278,7 @@ The "Preview" panel is an essential tool for testing and debugging your agent as
 
 To start a preview, simply add an action that requires user input (like "Get User Input") and fill in the required fields. The agent will automatically run up to that first input step. From there, you can continue the run step-by-step.
 
-<img src="https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/preview_init.png?fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=09c2143ff4e87f737dd4486622511db0" alt="Preview Init Pn" data-og-width="1322" width="1322" data-og-height="1392" height="1392" data-path="images/preview_init.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/preview_init.png?w=280&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=3d7dca97d8cc609255188e8a08204dac 280w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/preview_init.png?w=560&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=9168e1893ff78f455e57bf6d819935fe 560w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/preview_init.png?w=840&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=c024baf8044f85b22ae7673503c86d55 840w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/preview_init.png?w=1100&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=1cfc2b087811e54b7af6078f44b69707 1100w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/preview_init.png?w=1650&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=ae3d503e69b0baf4197ab507d129fd29 1650w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/preview_init.png?w=2500&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=8ed0289b973481291811a9f3d70a12b8 2500w" />
+<img alt="Preview Init Pn" />
 
 ### Details Toggle
 
@@ -8285,14 +8287,14 @@ The "Details" toggle at the top of the panel allows you to switch between two vi
 * **Simple View (Details Off):** This view shows you the inputs and outputs of your agent, just as a user would see them. It's great for testing the overall user experience.
 * **Detailed View (Details On):** This view provides a step-by-step log of your agent's execution. It's an essential tool for debugging, as it allows you to see the inner workings of your agent.
 
-<img src="https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/preview_details.png?fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=7269e345639bf61f10820e1cd9dc3562" alt="Preview Details Pn" data-og-width="1322" width="1322" data-og-height="1392" height="1392" data-path="images/preview_details.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/preview_details.png?w=280&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=8eefc3e910d05c4d1d7d00ade075f680 280w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/preview_details.png?w=560&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=cfc4057780c373bcc2679d1776f29ca5 560w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/preview_details.png?w=840&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=2b7ebd4aef2c823ac419cf9bd5b8fcf2 840w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/preview_details.png?w=1100&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=2e7792043090dbcce64849f9092ca68f 1100w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/preview_details.png?w=1650&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=3b7155d38e054cb886ae6393c5016427 1650w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/preview_details.png?w=2500&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=82d04fb7df1435a93135465561dbf60b 2500w" />
+<img alt="Preview Details Pn" />
 
 When you turn on the "Details" toggle, you'll see a log of every action your agent has performed. Each entry in the log corresponds to a step in your agent's workflow and is broken down into two main sections:
 
 * **Log:** This section provides a summary of what happened during the step. It will show you the action that was run, whether it was successful, and how long it took.
 * **Context:** This section shows you the state of all the variables in your agent *after* the step was completed. This is incredibly useful for debugging, as you can see exactly what data the agent was working with at any given point.
 
-<img src="https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/Screenshot2025-08-25at7.03.10PM.png?fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=a85cc3e16f59f8bc195458b3d9bc3c9f" alt="Screenshot 2025-08-25 at 7.03.10 PM.png" data-og-width="1212" width="1212" data-og-height="1066" height="1066" data-path="images/Screenshot2025-08-25at7.03.10PM.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/Screenshot2025-08-25at7.03.10PM.png?w=280&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=5a12584414ccc8d851344d2ba0bba301 280w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/Screenshot2025-08-25at7.03.10PM.png?w=560&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=036ba73aaad83bf9be554a2afc3dbb8f 560w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/Screenshot2025-08-25at7.03.10PM.png?w=840&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=563d043380dfbcb279b5d509e501f482 840w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/Screenshot2025-08-25at7.03.10PM.png?w=1100&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=27414e55867408e12b18cf05b4d62b26 1100w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/Screenshot2025-08-25at7.03.10PM.png?w=1650&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=3c9ebab8cefc45ccd49ae299a3fa34f7 1650w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/Screenshot2025-08-25at7.03.10PM.png?w=2500&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=156c28584e90628826fd8d26b9802cae 2500w" />
+<img alt="Screenshot 2025-08-25 at 7.03.10 PM.png" />
 
 ### Restarting and rerunning steps
 
@@ -8305,7 +8307,7 @@ The Preview panel makes it easy to iterate on your agent's design without having
 
   For example, if you have a 10-step agent and you modify step 5, the agent will preserve the results of steps 1-4 and restart the run from step 5. This is a huge time-saver when you're building complex agents.
 
-<img src="https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/Screenshot2025-08-25at7.05.12PM.png?fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=82f24dc744b3281e14d015d1ef5cc9c4" alt="Screenshot 2025-08-25 at 7.05.12 PM.png" data-og-width="1272" width="1272" data-og-height="162" height="162" data-path="images/Screenshot2025-08-25at7.05.12PM.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/Screenshot2025-08-25at7.05.12PM.png?w=280&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=e2d754b15710db0e62f90ad227c7e5a2 280w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/Screenshot2025-08-25at7.05.12PM.png?w=560&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=30968d00dd9515c450343458acc09c34 560w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/Screenshot2025-08-25at7.05.12PM.png?w=840&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=b153ef4544b325aa338a406e960d31ca 840w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/Screenshot2025-08-25at7.05.12PM.png?w=1100&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=ff46d14195764868b2319b8b30195bb4 1100w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/Screenshot2025-08-25at7.05.12PM.png?w=1650&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=b09516e16a6c76b0f2d613f2f8abef32 1650w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/Screenshot2025-08-25at7.05.12PM.png?w=2500&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=35762105fdc97c334502a05bea2e05aa 2500w" />
+<img alt="Screenshot 2025-08-25 at 7.05.12 PM.png" />
 
 
 # Policy for Public Agents
@@ -8356,6 +8358,91 @@ This is the Agent.ai policy for publishing public agents. Below you’ll find th
 * Are changed in a way that violates our Terms of Service.
 
 
+# Reviews And Feedback
+Source: https://docs.agent.ai/builder/reviews-and-feedback
+
+Agent.ai provides a centralized place for builders to view, respond to, and manage feedback from users.
+
+This includes both feedback left after individual agent runs and general feedback submitted by users outside of a specific run.
+
+All feedback is accessible from the **Agent Builder → Reviews & Feedback** section.
+
+## Types of Feedback
+
+[Agent.ai](http://Agent.ai) supports two types of user feedback:
+
+### Run Feedback
+
+Run feedback is collected after a user runs an agent.
+
+Users can leave:
+
+* A thumbs up or thumbs down
+* Optional written feedback tied to that specific run
+
+This feedback helps builders understand how agents perform in real usage.
+
+### General Agent Feedback
+
+Users can also share feedback about an agent at any time, outside of a specific run.
+
+This feedback is submitted through a dedicated feedback page accessible from the agent’s profile.
+
+Users can find this option under:\
+**Agent Profile → “Share Feedback with Builder”**
+
+## Unified Feedback Dashboard
+
+All run feedback and general agent feedback appear in one place.
+
+You can find this dashboard in:\
+**Agent Builder → Reviews & Feedback → User Feedback**
+
+From this view, builders can:
+
+* Review all feedback in a single feed
+* See whether feedback is tied to a specific run
+* Track open and resolved feedback items
+
+## Responding to Feedback
+
+When a user submits feedback:
+
+* Builders receive an email notification with a direct link to the feedback
+* Builders can reply directly from the Reviews & Feedback dashboard
+* Users receive email notifications when builders respond
+
+This allows builders to acknowledge feedback, ask follow-up questions, or provide updates.
+
+### Resolving Feedback
+
+Once feedback has been addressed, builders can mark it as resolved.
+
+This helps:
+
+* Keep the feedback inbox organized
+* Track which items still need attention
+* Maintain a clear feedback workflow over time
+
+## Feedback Stats
+
+The Reviews & Feedback section also provides high-level feedback metrics, including:
+
+* Counts of positive and negative feedback
+* Total feedback volume
+* Review-related statistics at a glance
+
+These metrics help builders monitor agent performance and user sentiment over time.
+
+## Getting Started
+
+To view feedback for an agent you’ve built:
+
+1. Open the agent in the Agent Builder
+2. Click the **Reviews** icon in the builder sidebar
+3. Select the **User Feedback** tab
+
+
 # Using Secrets in Agent.ai
 Source: https://docs.agent.ai/builder/secrets
 
@@ -8373,7 +8460,7 @@ Use a secret whenever you're working with:
 * Authorization tokens
 * Other sensitive config values you don’t want exposed in your agent steps
 
-<img src="https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/secrets.png?fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=91ec146116757d831aed47442d2f5a62" alt="Secrets Pn" data-og-width="2734" width="2734" data-og-height="794" height="794" data-path="images/secrets.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/secrets.png?w=280&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=e8219845fce5443fd4e30766fed32534 280w, https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/secrets.png?w=560&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=0c0dd8cc637413305f82b13b1dab345d 560w, https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/secrets.png?w=840&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=f16011724a7c46f94db3726016115b05 840w, https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/secrets.png?w=1100&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=eca83c1dbf4b6a19907018630d18bcb3 1100w, https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/secrets.png?w=1650&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=8b588f2298369a0aef153c78f5bb27d3 1650w, https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/secrets.png?w=2500&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=b8b0779f4f161c4dd45ef65f73b71039 2500w" />
+<img alt="Secrets Pn" />
 
 ## How to Add a Secret
 
@@ -8396,7 +8483,7 @@ Anywhere you'd normally paste an API key or token in a REST call or prompt, use 
 
 For example, in your REST action’s header:
 
-```json  theme={null}
+```json theme={null}
 {
   "Authorization": "Bearer {{secrets.weather_api_key}}"
 }
@@ -8404,7 +8491,7 @@ For example, in your REST action’s header:
 
 Or directly in your request URL or body:
 
-```json  theme={null}
+```json theme={null}
 {
   "url": "https://api.example.com/data?key={{secrets.weather_api_key}}"
 }
@@ -8426,7 +8513,7 @@ Source: https://docs.agent.ai/builder/serverless-functions
 
 Builders can use the **Call Serverless Function** action to execute custom code as part of advanced agent workflows. Once a serverless function has been created, it will appear on the **Serverless Functions** page, accessible from the profile navigation menu.
 
-<img src="https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/serverless-functions.png?fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=537084f4e4a4ba0a6df7da783d8335bb" alt="Serverless Functions Pn" data-og-width="2710" width="2710" data-og-height="684" height="684" data-path="images/serverless-functions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/serverless-functions.png?w=280&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=4d1f4756baf4c4a78599622dbc87f20c 280w, https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/serverless-functions.png?w=560&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=1fdc591cf7ea5fcc14b15b6697b9529c 560w, https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/serverless-functions.png?w=840&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=952c6dcccebf5807ee54174af3b507c7 840w, https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/serverless-functions.png?w=1100&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=68b9dbdf853025008a5bfd8a820608d9 1100w, https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/serverless-functions.png?w=1650&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=93567539754e05a88e4cbaee76f02dd5 1650w, https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/serverless-functions.png?w=2500&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=99ef8d4203ca7f76ae730153d3d52c9e 2500w" />
+<img alt="Serverless Functions Pn" />
 
 From this page, you can view key details about each function and take the following actions:
 
@@ -8459,7 +8546,7 @@ For example, a snippet with the name signature could be used as `{{snippets.sign
 
 You can add, edit, or delete snippets from this page.
 
-<img src="https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/snippets.png?fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=9c97fdb0dcc715904a9ecfb05f0ece9c" alt="Snippets Pn" data-og-width="2708" width="2708" data-og-height="700" height="700" data-path="images/snippets.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/snippets.png?w=280&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=a267ca672ee2e1fb33be8dc209d85130 280w, https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/snippets.png?w=560&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=0c19929fd58e3edde741cf34aec062c7 560w, https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/snippets.png?w=840&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=729d1d23c7a419ad13cba1b52320eb18 840w, https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/snippets.png?w=1100&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=b73f5b54fc1866149ddc1061455cf7d8 1100w, https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/snippets.png?w=1650&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=a1d5c8ac5474cdd2d10f1ba5e6195044 1650w, https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/snippets.png?w=2500&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=43ce462d5e0eb71ea6993f1f7ac8d18f 2500w" />
+<img alt="Snippets Pn" />
 
 Reach out to our [support team](https://agent.ai/feedback) if you need help with snippets.
 
@@ -9037,6 +9124,152 @@ A few great next steps to go from first success to repeatable impact.
 * Add a [Lead Magnet](./lead-magnet) to capture opt-ins and sync to HubSpot
 
 
+# Using Agent.ai with Linkedin
+Source: https://docs.agent.ai/builder/using-linkedin
+
+Agent.ai supports a set of LinkedIn data actions that allow builders to enrich agents with profile, company, job, and post-level information from LinkedIn.
+
+These actions can be used to power use cases like meeting preparation, recruiting research, sales prospecting, market analysis, and content monitoring.
+
+All LinkedIn actions are available in the **Agent Builder → Get Data** category.
+
+## LinkedIn Profile Actions
+
+Use these actions to find and enrich individual LinkedIn profiles.
+
+### Find LinkedIn Profile
+
+Search for a LinkedIn profile using identifying information such as name and context.
+
+**Common use cases**
+
+* Resolving a LinkedIn profile from a name
+* Matching a contact to the correct LinkedIn URL
+* Pre-step before pulling profile or activity data
+
+### Get LinkedIn Profile Details
+
+Retrieve structured information about a LinkedIn profile.
+
+**Includes (when publicly available)**
+
+* Name and headline
+* Current role and company
+* Location
+* Summary and experience details
+
+**Common use cases**
+
+* Contact enrichment
+* Meeting prep and background research
+* Prospect qualification
+
+### Get LinkedIn Activity
+
+Retrieve recent public activity associated with a LinkedIn profile.
+
+**Includes (when available)**
+
+* Recent posts
+* Engagement signals (likes, comments, reactions)
+
+**Common use cases**
+
+* Personalization for outreach
+* Conversation starters
+* Monitoring thought leadership or activity
+
+## LinkedIn People Search
+
+### Search LinkedIn People
+
+Search for LinkedIn profiles using name-based and contextual criteria.
+
+**Common use cases**
+
+* Finding potential candidates
+* Building prospect lists
+* Researching people in specific roles or industries
+
+## LinkedIn Company Actions
+
+Use these actions to work with company-level LinkedIn data.
+
+### Get LinkedIn Company Profile
+
+Retrieve structured information about a LinkedIn company page.
+
+**Includes (when publicly available)**
+
+* Company name and description
+* Industry and location
+* Company size and metadata
+
+**Common use cases**
+
+* Account research
+* Market analysis
+* Company enrichment workflows
+
+### Get LinkedIn Company Posts
+
+Retrieve recent public posts from a LinkedIn company page.
+
+**Common use cases**
+
+* Competitive monitoring
+* Content analysis
+* Tracking company announcements or activity
+
+## LinkedIn Job Actions
+
+Use these actions to work with LinkedIn job listings.
+
+### Get LinkedIn Job Posting
+
+Extract details from a specific LinkedIn job posting URL.
+
+**Includes**
+
+* Job title
+* Company
+* Location
+* Description and role details
+
+### Search LinkedIn Jobs
+
+Search for LinkedIn job postings using filters such as:
+
+* Location
+* Job type
+* Experience level
+* Remote options
+
+**Common use cases**
+
+* Job market research
+* Recruiting workflows
+* Talent landscape analysis
+
+## LinkedIn Post Actions
+
+### Get LinkedIn Posts
+
+Retrieve a specific LinkedIn post or article by URL.
+
+**Common use cases**
+
+* Analyzing post content
+* Tracking engagement
+* Referencing or summarizing LinkedIn posts
+
+## Notes on LinkedIn Data
+
+* All LinkedIn actions return **publicly available data**
+* Data availability may vary by profile, company, or post
+* Some profiles or activity may not return results due to privacy or visibility settings
+
+
 # Explore and Clone Existing Agent Flows
 Source: https://docs.agent.ai/clone-agents
 
@@ -9048,7 +9281,7 @@ Note: Outside of starter agents, only agents that have **Allow other builders to
 
 ## Enable Visibility for Your Agent
 
-<img src="https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/allow_builders_to_view_actions_new.png?fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=4c72f608218b9c0dbd0b58d8fd45ca1f" alt="Enable Agent Visibility Pn" data-og-width="2308" width="2308" data-og-height="666" height="666" data-path="allow_builders_to_view_actions_new.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/allow_builders_to_view_actions_new.png?w=280&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=619dfbb100153f2049c2682e0966958a 280w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/allow_builders_to_view_actions_new.png?w=560&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=3774175017af6276ef3b3f2caca737aa 560w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/allow_builders_to_view_actions_new.png?w=840&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=2426f33f019f16769032f0db46a99c5d 840w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/allow_builders_to_view_actions_new.png?w=1100&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=e57968d2860895621dfea918b0c0f684 1100w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/allow_builders_to_view_actions_new.png?w=1650&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=41d0442c90990d9f188fc412b13590aa 1650w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/allow_builders_to_view_actions_new.png?w=2500&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=1496cf832a102805e9286b439736080b 2500w" />
+<img alt="Enable Agent Visibility Pn" />
 
 If you want other builders to be able to view and clone your agent:
 
@@ -9058,13 +9291,13 @@ If you want other builders to be able to view and clone your agent:
 
 ## View an Agent's Actions
 
-<img src="https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/view-agent-actions.png?fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=e81feae2ed1c848eecd4220a038b43ae" alt="View Agent Actions Pn" data-og-width="2588" width="2588" data-og-height="694" height="694" data-path="images/view-agent-actions.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/view-agent-actions.png?w=280&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=69daad8a3d81a2587b1086990ad6268f 280w, https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/view-agent-actions.png?w=560&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=4bd908a8f5aea888612d95c91bc395c5 560w, https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/view-agent-actions.png?w=840&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=4bcfa70841bec5cbc76f0e8a6472383d 840w, https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/view-agent-actions.png?w=1100&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=37f5e90cde9cc894a9d3ce15932e0ad5 1100w, https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/view-agent-actions.png?w=1650&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=34d40d879a2422401f690e664883ce92 1650w, https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/view-agent-actions.png?w=2500&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=3f77c1db1231a85369645a5e70fbb676 2500w" />
+<img alt="View Agent Actions Pn" />
 
 To see how another builder's agent works (if it's been made visible), go to the agent run page and click **View Agent Flow** to explore the full flow.
 
 ## Clone an Agent
 
-<img src="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/clone-agent.png?fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=d2f692144339f97df7b683ade8c2339f" alt="Clone Agent Pn" data-og-width="2744" width="2744" data-og-height="998" height="998" data-path="images/clone-agent.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/clone-agent.png?w=280&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=cc726ba510d7a4d285bfd33162c11e9a 280w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/clone-agent.png?w=560&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=f0c0d25a8c956dc1f153f16525427951 560w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/clone-agent.png?w=840&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=192aaa09144a85b50d3605353f378095 840w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/clone-agent.png?w=1100&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=bfab7a5fb8c0242a631cdca61a5af4a5 1100w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/clone-agent.png?w=1650&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=a921a81fdec799f373589a04bfc6a6da 1650w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/clone-agent.png?w=2500&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=34f712fa742b6bc992dd36f2a8e0c0de 2500w" />
+<img alt="Clone Agent Pn" />
 
 Once you're viewing an agent's flow, click **Clone Agent** to copy it to your builder account and open it in the editor.
 
@@ -9076,11 +9309,101 @@ You can try it yourself by cloning this [test agent](https://agent.ai/agent/test
 
 In the Builder Tool, you can also clone your own agent to make changes and test things without messing with your existing, working agent. You can do this by opening the agent editor, clicking the **three dots** next to your agent's Publish Changes button and selecting **Clone**.
 
-<img src="https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/clone_agent_from_top_bar.png?fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=1ea50ae568148ee36f8501dd49e83dcd" alt="Clone Agent From Top Bar Pn" data-og-width="2412" width="2412" data-og-height="366" height="366" data-path="images/clone_agent_from_top_bar.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/clone_agent_from_top_bar.png?w=280&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=2a9fd8b3e0f7e080efa2cea23d2e14cb 280w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/clone_agent_from_top_bar.png?w=560&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=f49811dce30013ea49c8a60a8a7ee6b6 560w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/clone_agent_from_top_bar.png?w=840&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=69c2dfe04b3445e499053b08fd6bc442 840w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/clone_agent_from_top_bar.png?w=1100&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=b88d47350c45deefe16d244ee74859b0 1100w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/clone_agent_from_top_bar.png?w=1650&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=4633ee2726389137ddab770afd8bbcad 1650w, https://mintcdn.com/agentai/_VdnuioxFuZgtZH4/images/clone_agent_from_top_bar.png?w=2500&fit=max&auto=format&n=_VdnuioxFuZgtZH4&q=85&s=bdea22fc5db6f2b65286e096898996da 2500w" />
+<img alt="Clone Agent From Top Bar Pn" />
 
 ## Need Help?
 
 If you have any questions about cloning agents or making your own agents visible to the community, please reach out to our [support team](https://agent.ai/feedback).
+
+
+# Calendar Connections & Data Usage
+Source: https://docs.agent.ai/guides/using-agent-ai/connect-your-calendar
+
+This document explains how calendar connections work in Agent.ai, what data is accessed, and how that data is used and protected.
+
+## How to Connect Your Calendar
+
+You can connect your calendar in two ways:
+
+### Option 1: From the Connections Page
+
+1. Navigate to the [**Connections**](https://agent.ai/user/connections#configure-meeting-agents) page.
+2. Find the calendar section.
+3. Click **Connect**.
+4. You’ll be redirected to a Composio authorization screen.
+5. Choose the calendar account you want to connect.
+6. Review the requested permissions and approve access.
+7. You’ll be redirected back to [Agent.ai](http://Agent.ai) and your calendar will be connected.
+
+### Option 2: During Agent Setup
+
+1. Run either the **Meeting Prep** or **Meeting Follow-up** agent.
+2. If your calendar isn’t connected yet, you’ll be prompted to do so as part of the setup flow.
+3. Follow the on-screen steps to authorize access via Composio.
+
+## How to Disconnect Your Calendar or Revoke Access
+
+You can disconnect your calendar at any time using either of the methods below.
+
+### Option 1: From the Connections Page
+
+1. Go to the [**Connections**](https://agent.ai/user/connections#configure-meeting-agents) page.
+2. Locate your connected calendar.
+3. Click **Disconnect**.
+
+### Option 2: From the Agent Page
+
+1. Open the **Meeting Prep** or **Meeting Follow-up** agent.
+2. Click the **settings icon** in the top-right corner of the agent page.
+3. Select **Disconnect calendar**.
+
+Once disconnected, agents will no longer be able to access your calendar data.
+
+## What is Composio?
+
+[Agent.ai](http://Agent.ai) uses **Composio** to securely connect your calendar to agents.
+
+Composio is a trusted integration layer that allows you to authorize third‑party tools (like calendars) without sharing your login credentials directly with [Agent.ai](http://Agent.ai). You’ll see Composio referenced during the connection flow because it handles authentication and permission management on your behalf.
+
+## What Information We Access When You Connect Your Calendar
+
+### Meeting Information We Collect
+
+Agents may access the same information that any meeting invitee can see, including:
+
+* Meeting title
+* Meeting description
+* Location (meeting link or physical address)
+* Duration and timing details
+* Any other information visible to meeting invitees
+
+This access is limited to what’s required for the agent’s functionality.
+
+## What We **Don’t** Access
+
+We do **not** access:
+
+* Content from other apps or services
+* Calendar data beyond what’s needed for agent functionality
+* Historical events outside the relevant time window for your agent
+* Personal information not directly related to calendar events
+
+## How We Use Your Data
+
+* Meeting data is used **exclusively** to power agent outputs (such as summaries or follow‑ups).
+* We do **not** train AI models on your calendar data.
+* We do **not** sell or share this data with third parties.
+* Data is stored for **5 years** under our current retention policy, unless deleted sooner upon request.
+
+## Your Data Rights
+
+You’re always in control of your data.
+
+* You can request deletion of your data at any time.
+* Upon request, we’ll permanently remove all meeting recordings, transcriptions, and associated data.
+* To initiate a data deletion request, contact our support team at [support@agent.ai](mailto:support@agent.ai).
+
+We take data privacy seriously and are committed to handling your information responsibly and transparently.
 
 
 # Best Practices
@@ -10046,7 +10369,7 @@ Track these to measure your agent's effectiveness:
 
 You now have advanced techniques for building exceptional knowledge agents:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Troubleshooting" icon="triangle-exclamation" href="/knowledge-agents/troubleshooting">
     Solve specific issues and optimize performance
   </Card>
@@ -10664,7 +10987,7 @@ After setting up your configuration:
 
 Now that you understand configuration:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Add Knowledge" icon="book" href="/knowledge-agents/knowledge-base">
     Train your agent with domain expertise
   </Card>
@@ -11284,7 +11607,7 @@ Should I prepare a summary to start there?'"
 
 Now that you understand conversation management and sharing:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Best Practices" icon="star" href="/knowledge-agents/best-practices">
     Learn advanced techniques for building exceptional knowledge agents
   </Card>
@@ -11829,7 +12152,7 @@ After adding knowledge, test if the agent can retrieve it:
 
 Now that you understand the knowledge base system:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Configure Your Agent" icon="sliders" href="/knowledge-agents/configuration">
     Write system prompts that encourage knowledge use
   </Card>
@@ -12198,7 +12521,7 @@ Ready to build your powerful AI assistant?
   Build your first knowledge agent in under 10 minutes
 </Card>
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Configure Your Agent" icon="sliders" href="/knowledge-agents/configuration">
     Set up system prompts, personality, and sample questions
   </Card>
@@ -12530,7 +12853,7 @@ Congratulations! You now have a working knowledge agent that:
 
 Now that you have a basic knowledge agent, here's how to make it even more powerful:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Deep Dive: Configuration" icon="sliders" href="/knowledge-agents/configuration">
     Learn advanced system prompt techniques and personality configuration
   </Card>
@@ -13344,7 +13667,7 @@ Test confirmation flows:
 
 Now that you understand how to give your knowledge agent powerful action-taking capabilities:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Manage Conversations" icon="messages" href="/knowledge-agents/conversations">
     Learn about conversation management, sharing, and user experience
   </Card>
@@ -14293,7 +14616,7 @@ Before making your agent public:
 
 ### Documentation Resources
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Configuration Guide" icon="sliders" href="/knowledge-agents/configuration">
     Review how to write system instructions
   </Card>
@@ -14328,7 +14651,7 @@ Source: https://docs.agent.ai/lists-in-for-loops
 
 How to transform multi-select values into a usable format in Agent.ai workflows
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/qy84PxZPFhw?si=eNa6AxbJavt7EbiE" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+<iframe />
 
 ## **Overview**
 
@@ -14473,28 +14796,6 @@ The ideal approach is often to start with a model that balances your primary req
 In the **LLM Engine** dropdown, there's a section labeled **"Legacy Models Soon To Be Deprecated"**. These are models we plan to remove soon, and we’ll automatically migrate agents using them to a recommended alternative.
 
 
-# How Credits Work
-Source: https://docs.agent.ai/marketplace-credits
-
-Agent.ai uses credits to enable usage and reward actions in the community.
-
-## **Agent.ai's Mission**
-
-Agent.ai is free to use and build with.
-
-As a platform, Agent.ai's goal is to build the world's best professional marketplace for AI agents.
-
-## **How Credits Fit In**
-
-Credits are an agent.ai marketplace currency with no monetary value. Credits cannot be bought, sold, or exchanged for money. They exist to enable usage of the platform and reward actions in the communiuty.
-
-Generally speaking, running an agent costs 1 credit.
-
-You can earn more credits by performing actions like completing your profile or referring new users. Additionally, [Agent.ai](http://Agent.ai) replenishes credits on a weekly basis — if your balance falls below 25, we’ll automatically top it back up to 100.
-
-If you ever do happen to hit your credit limit (most people won't) and can't run agents because you need more credits, let us know — we're happy to top you back up.
-
-
 # MCP Server
 Source: https://docs.agent.ai/mcp-server
 
@@ -14535,7 +14836,7 @@ Choose your AI assistant below for step-by-step instructions:
 
     Click on your profile icon in ChatGPT and select **Settings** from the dropdown menu.
 
-        <img src="https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step1.jpg?fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=aeea20bf88170321b06c13a69761029c" alt="ChatGPT Settings" data-og-width="1370" width="1370" data-og-height="1206" height="1206" data-path="images/mcp/chatgpt/chatgpt_step1.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step1.jpg?w=280&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=362d9b38dbf947cb8c1bc5c6ea3b36eb 280w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step1.jpg?w=560&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=db09d6dd1991b208740ca4876ca864da 560w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step1.jpg?w=840&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=45475194ceefc958e291a6a679b951d9 840w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step1.jpg?w=1100&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=d7d1bc627531adac66e3c223e7fb98b9 1100w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step1.jpg?w=1650&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=88884732296ba0576c086068dad202a9 1650w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step1.jpg?w=2500&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=9cbf5fa9df48d72b42cdfb75f5a55c14 2500w" />
+    <img alt="ChatGPT Settings" />
 
     ***
 
@@ -14543,7 +14844,7 @@ Choose your AI assistant below for step-by-step instructions:
 
     Go to the **Apps & Connectors** section and click on **Advanced Settings** to enable Developer mode.
 
-        <img src="https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step2.jpg?fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=f596ed4105e4b861f557ef666f841509" alt="ChatGPT Apps & Connectors" data-og-width="1380" width="1380" data-og-height="1212" height="1212" data-path="images/mcp/chatgpt/chatgpt_step2.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step2.jpg?w=280&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=43c016cea43f701c7f6da711744843e3 280w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step2.jpg?w=560&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=a40b76b8bb41acff563a97bb5bca19a6 560w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step2.jpg?w=840&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=dd67001cd0a5607698a457c5875c8c6b 840w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step2.jpg?w=1100&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=31804338f7475b4bb05d86746584b974 1100w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step2.jpg?w=1650&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=58e6d76d7b1f9d37a15650f5b8fcd233 1650w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step2.jpg?w=2500&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=f2393d2319cd90f27cc56aa5269fb625 2500w" />
+    <img alt="ChatGPT Apps & Connectors" />
 
     ***
 
@@ -14551,7 +14852,7 @@ Choose your AI assistant below for step-by-step instructions:
 
     Toggle on Developer mode to access connector features.
 
-        <img src="https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step3.jpg?fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=8e67c22898eea5678497639a96ad1138" alt="ChatGPT Developer Mode" data-og-width="1366" width="1366" data-og-height="1208" height="1208" data-path="images/mcp/chatgpt/chatgpt_step3.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step3.jpg?w=280&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=8820396478807218486227215c455a21 280w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step3.jpg?w=560&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=5bc3504a65c5dd0f2b39c8560f771a6a 560w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step3.jpg?w=840&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=7982f3d4a71b3b64f477453cc1340a27 840w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step3.jpg?w=1100&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=d0b91a06f953cb5da630899ac2b32b5f 1100w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step3.jpg?w=1650&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=5106700bb474caac4e10ab627d4d4bc7 1650w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step3.jpg?w=2500&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=93d3c388e734f1a7042afd66ba296802 2500w" />
+    <img alt="ChatGPT Developer Mode" />
 
     ***
 
@@ -14559,7 +14860,7 @@ Choose your AI assistant below for step-by-step instructions:
 
     Once in Developer Mode, click **Create (new connector)** in the top right of the "Apps and Connectors" section.
 
-        <img src="https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step4.0.jpg?fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=1fa51f3d12a78dc052b378535ccb9e5b" alt="ChatGPT Create Button" data-og-width="1372" width="1372" data-og-height="1214" height="1214" data-path="images/mcp/chatgpt/chatgpt_step4.0.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step4.0.jpg?w=280&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=4b27e0ae0fbf9d96f944bd7c6bbab3c6 280w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step4.0.jpg?w=560&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=6320a6e71d98273a7ef08b71deb69405 560w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step4.0.jpg?w=840&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=efe3bd6d1be896ab1eb5f4d0665ebe96 840w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step4.0.jpg?w=1100&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=be5d83453f6efd9a1c284d60f9fd28a7 1100w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step4.0.jpg?w=1650&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=6659d6cc04c952bc19f4398e15184b76 1650w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step4.0.jpg?w=2500&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=f4cd24394230d949eddeb4dadd26c168 2500w" />
+    <img alt="ChatGPT Create Button" />
 
     Enter **Agent.ai Tools** as the name and paste this URL:
 
@@ -14569,7 +14870,7 @@ Choose your AI assistant below for step-by-step instructions:
 
     Select **OAuth** for authentication and click **Create**. You'll be taken to sign in with your Agent.ai account.
 
-        <img src="https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step4.jpg?fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=cc11cb2147507caecd0f7ef047e56246" alt="ChatGPT Create Connector" data-og-width="902" width="902" data-og-height="1310" height="1310" data-path="images/mcp/chatgpt/chatgpt_step4.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step4.jpg?w=280&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=55f5ff181b98d1eac16459e0ea6a766e 280w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step4.jpg?w=560&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=4a4fb2e6e791c77a806a99c5f54fcac3 560w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step4.jpg?w=840&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=e4c3c038143168c173667d2a6ef3f170 840w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step4.jpg?w=1100&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=5565aa65e02f0ebf3edf80b5e6ca32d3 1100w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step4.jpg?w=1650&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=66f1ef9ba63a7ee698816b6ac1c12cea 1650w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step4.jpg?w=2500&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=0a16e4071630571a98a3993177bdf14e 2500w" />
+    <img alt="ChatGPT Create Connector" />
 
     ***
 
@@ -14577,9 +14878,9 @@ Choose your AI assistant below for step-by-step instructions:
 
     Click the **"+"** icon in ChatGPT, select **"More"** from the dropdown, then select your Agent.ai connector.
 
-        <img src="https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step5.jpg?fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=7cd2250cbfcbc79edc88c2ad7b0f0d66" alt="ChatGPT Use Connector" data-og-width="1360" width="1360" data-og-height="1144" height="1144" data-path="images/mcp/chatgpt/chatgpt_step5.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step5.jpg?w=280&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=98bc477c781ba5c93ddc04dc2885b279 280w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step5.jpg?w=560&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=499bc77cb2a049d139acc94e6945d763 560w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step5.jpg?w=840&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=debc04f58e4cf67a37be1584b3694b94 840w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step5.jpg?w=1100&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=9a9d09b7785978edf4d75aef1d476fb4 1100w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step5.jpg?w=1650&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=87637418d1f0cb495253c42c8d7e4841 1650w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step5.jpg?w=2500&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=015bccd18cbb6f2f167baaa6516b0141 2500w" />
+    <img alt="ChatGPT Use Connector" />
 
-        <img src="https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step5.1.jpg?fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=54df2490eebae585594fc8681b47b35b" alt="ChatGPT Select Agent.ai" data-og-width="1394" width="1394" data-og-height="494" height="494" data-path="images/mcp/chatgpt/chatgpt_step5.1.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step5.1.jpg?w=280&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=5298c8956b0bc3342dc4591b1359158c 280w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step5.1.jpg?w=560&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=69530520a8fdc4394a8ba2b463543fd8 560w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step5.1.jpg?w=840&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=df9becb70e22a42a1f447e86c52faa89 840w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step5.1.jpg?w=1100&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=f92b605d67616f4f7ba0b58799d1597d 1100w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step5.1.jpg?w=1650&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=3e47281020b72c12e777843eedd4b9bb 1650w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/chatgpt/chatgpt_step5.1.jpg?w=2500&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=3d67ac7eca6e34d1a3088c538332c647 2500w" />
+    <img alt="ChatGPT Select Agent.ai" />
 
     <Check>
       **You're all set!** All your Agent.ai tools and agents are now available in ChatGPT. Try asking ChatGPT to use one of your agents or actions!
@@ -14591,7 +14892,7 @@ Choose your AI assistant below for step-by-step instructions:
 
     In [Claude](https://claude.ai), go to **Settings** → **Connectors** section, then click **"Add custom connector"**.
 
-        <img src="https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/claude/claude.step1.jpg?fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=90d4c358987bfb442bf29058179afdca" alt="Claude Settings" data-og-width="2438" width="2438" data-og-height="1778" height="1778" data-path="images/mcp/claude/claude.step1.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/claude/claude.step1.jpg?w=280&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=0f197e1c82b114449df0e195b2045c2a 280w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/claude/claude.step1.jpg?w=560&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=9be0d9ff599ee01f2fea2fdebff66107 560w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/claude/claude.step1.jpg?w=840&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=a0a206e70e481eeff4796d856c26bcb5 840w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/claude/claude.step1.jpg?w=1100&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=740f9477d98d0bcba89657f1b3b5fdea 1100w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/claude/claude.step1.jpg?w=1650&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=d98ff27f85caf919920dfbbb7ad01ba5 1650w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/claude/claude.step1.jpg?w=2500&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=04a93b6e2e297c700ebe08fad75bb138 2500w" />
+    <img alt="Claude Settings" />
 
     ***
 
@@ -14605,7 +14906,7 @@ Choose your AI assistant below for step-by-step instructions:
 
     Click **"Add"** and you'll be taken to sign in with your Agent.ai account.
 
-        <img src="https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/claude/claude.step2.jpg?fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=feb07dc34a9095ce217872890caa6b9e" alt="Claude Add Connector" data-og-width="1088" width="1088" data-og-height="926" height="926" data-path="images/mcp/claude/claude.step2.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/claude/claude.step2.jpg?w=280&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=294c2959db1ba07b66f4d5b3ab75ebb5 280w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/claude/claude.step2.jpg?w=560&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=109b33c8ff6b88ec021f7a8f6bdd29f3 560w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/claude/claude.step2.jpg?w=840&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=9127fb1aa41dc6ea58d9adc81f75e6b3 840w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/claude/claude.step2.jpg?w=1100&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=d3242cb9cccaac0713dc11cc196fb252 1100w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/claude/claude.step2.jpg?w=1650&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=cfc24b4848e4a163731def5dc5d79c22 1650w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/claude/claude.step2.jpg?w=2500&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=b0ccb407afcf68dac4206eb9b2ab3031 2500w" />
+    <img alt="Claude Add Connector" />
 
     ***
 
@@ -14613,7 +14914,7 @@ Choose your AI assistant below for step-by-step instructions:
 
     Click the **Tools icon** in Claude, toggle on your Agent.ai connector, and start using your tools!
 
-        <img src="https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/claude/claude.step3.jpg?fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=54f5233695248f75dc5c9cdbc7fd8d87" alt="Claude Enable and Chat" data-og-width="1438" width="1438" data-og-height="1274" height="1274" data-path="images/mcp/claude/claude.step3.jpg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/claude/claude.step3.jpg?w=280&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=b1993edf3ac32dc423b28c783e09ac59 280w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/claude/claude.step3.jpg?w=560&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=da1b677dc71461e1bdebd892fad6bef9 560w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/claude/claude.step3.jpg?w=840&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=f1ee8ce26bc36838d20df2961806e9e4 840w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/claude/claude.step3.jpg?w=1100&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=3f787101dd1d20cf70e6788a805edfdf 1100w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/claude/claude.step3.jpg?w=1650&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=48ef7c33c04b82bd2af86a0ba01a99b5 1650w, https://mintcdn.com/agentai/G4nQBlJJdQEu3WdT/images/mcp/claude/claude.step3.jpg?w=2500&fit=max&auto=format&n=G4nQBlJJdQEu3WdT&q=85&s=dca5d960a0afa22f02b4e7b0994f7e50 2500w" />
+    <img alt="Claude Enable and Chat" />
 
     <Check>
       **You're all set!** All your Agent.ai tools and agents are now available in Claude. Just mention your agents or ask Claude to use specific tools!
@@ -14627,7 +14928,7 @@ Choose your AI assistant below for step-by-step instructions:
     2. Navigate to **MCP** or **Model Context Protocol** section
     3. Add a new MCP server with this configuration:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "agentai": {
         "url": "https://mcp.agent.ai/mcp"
@@ -14704,7 +15005,7 @@ This is a great way to verify everything is working before using it with your AI
   2. Open Claude Desktop Settings → Developer → Edit Config
   3. Add this configuration:
 
-  ```json  theme={null}
+  ```json theme={null}
   {
     "mcpServers": {
       "agentai": {
@@ -14730,7 +15031,7 @@ This is a great way to verify everything is working before using it with your AI
   2. Open Claude Desktop Settings → Developer → Edit Config
   3. Add this configuration:
 
-  ```json  theme={null}
+  ```json theme={null}
   {
     "mcpServers": {
       "agentai": {
@@ -14806,7 +15107,7 @@ This is a great way to verify everything is working before using it with your AI
 
   For custom MCP clients:
 
-  ```javascript  theme={null}
+  ```javascript theme={null}
   import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 
   const client = new Client({
@@ -14856,7 +15157,7 @@ When working with data in [Agent.ai](http://Agent.ai), you might find that the d
 
 ## Create Better Formatting Prompts
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/yJmF7c0N4Vg?si=oISTh9cgo7pxkAkZ" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+<iframe />
 
 ### Step 1: Identify the Formatting Issue
 
@@ -14896,7 +15197,7 @@ Tweet Details: Date: \[Date] Content: \[Tweet content] Retweets: \[Number] Impre
 
 ## Create Markdown Tables
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ZHsrNv82B6U?si=sZ97MKlX8CjdMOLL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+<iframe title="YouTube video player" />
 
 ### Step 1: Set Up Your Agent's Data Collection
 
@@ -14928,7 +15229,7 @@ This will ensure that your table displays correctly with proper columns, rows, a
 
 ## Create Interactive HTML Output
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/-3FHfdikyf8?si=0ZNsXsecJ7uKA2Xc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen />
+<iframe title="YouTube video player" />
 
 ### Structuring Your Content
 
@@ -14997,7 +15298,7 @@ How to build a Company Research agent in Agent.ai
 
 Need to quickly research companies before meetings or sales calls? This guide will show you how to build a simple AI agent that can automatically research any company and provide information about their products and industry. You don't need technical skills—just follow these steps to create your own company research assistant.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/j2wG29JRx6U?si=S8vUiBHyycE7T5eP" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+<iframe />
 
 # **Step 1: Create a New Agent**
 
@@ -15083,7 +15384,7 @@ How to build an Executive News agent
 
 Need to stay updated on the latest news about specific executives? You can build a simple agent that searches Google News for recent articles about an executive and provides you with a summarized report. This guide will walk you through creating an agent that gathers and summarizes news about any executive from the past week.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/QTlrTpbcJJw?si=V8tLcnlYqYRcm2E5" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+<iframe />
 
 # **Step 1: Plan Your Agent's Workflow**
 
@@ -15151,7 +15452,7 @@ How to build an Executive Tweet Analyzer agent
 
 When you're preparing for important meetings or trying to understand an executive's public persona, analyzing their Twitter activity can provide valuable insights. This guide will walk you through creating an agent that fetches and summarizes an executive's recent tweets using [Agent.ai](http://Agent.ai).
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/1UqmkC8rhyk?si=sgtkG7g3iuFtaTM4" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+<iframe />
 
 # **Step 1: Create a New Agent**
 
@@ -15325,7 +15626,7 @@ This workflow automatically enriches contacts the moment they're created or upda
 6. **Method:** POST
 7. **Payload:**
 
-```json  theme={null}
+```json theme={null}
 {
   "_hubspot_portal": "[portal.id]",
   "contact_id": "[contact.hs_object_id]",
@@ -15481,7 +15782,7 @@ Return as JSON with keys: company_overview, news_summary, talking_points, releva
 
 **For contact "John Doe, VP Engineering at Acme Corp":**
 
-```json  theme={null}
+```json theme={null}
 {
   "company_overview": "Acme Corp is a fast-growing enterprise AI platform company based in San Francisco. Recently raised $50M Series B led by Sequoia Capital, indicating strong investor confidence and expansion plans. Focus on enterprise machine learning solutions.",
 
@@ -15825,7 +16126,7 @@ This workflow automates the transition from sales to customer success when a dea
 6. **Method:** POST
 7. **Payload:**
 
-```json  theme={null}
+```json theme={null}
 {
   "_hubspot_portal": "{{portal.id}}",
   "deal_id": "{{deal.hs_object_id}}",
@@ -16084,7 +16385,7 @@ View in HubSpot: [link to deal]
 
 **For "Acme Corp - Enterprise License" deal:**
 
-```json  theme={null}
+```json theme={null}
 {
   "complexity": "High",
 
@@ -16532,7 +16833,7 @@ Return as JSON with keys: health_score, risks, next_steps, close_likelihood
 
 **For a deal named "Acme Corp - Enterprise License":**
 
-```json  theme={null}
+```json theme={null}
 {
   "health_score": 7,
   "risks": "Customer has not responded to follow-up in 5 days. Technical questions from demo suggest potential integration concerns. Close date is 30 days away but no next meeting scheduled.",
@@ -16751,7 +17052,7 @@ How to build a LinkedIn Research agent
 
 Building an Executive Research agent with [Agent.ai](http://Agent.ai) allows you to automatically gather and summarize information about executives from their LinkedIn profiles and posts. This guide will walk you through creating an agent that takes a LinkedIn handle as input, retrieves profile data and recent posts, and generates a comprehensive summary.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/qTn6fc_vICE?si=amGeexutAwndCSoH" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
+<iframe />
 
 # **Before You Begin**
 
@@ -16864,7 +17165,7 @@ Before setting up the Salesforce integration with [Agent.ai](http://Agent.ai), e
 
 Verify your [Agent.ai](http://Agent.ai) webhook is functional by testing it with cURL first. This confirms the endpoint is working and helps you understand the expected request/response format:
 
-```bash  theme={null}
+```bash theme={null}
 curl -L -X POST -H 'Content-Type: application/json' \
 'https://api-lr.agent.ai/v1/agent/YOUR_AGENT_ID/webhook/YOUR_WEBHOOK_ID' \
 -d '{"input_name":"Test User"}'
@@ -17138,13 +17439,13 @@ In this tab, you can see:
   Click any agent response to view the full output.
 </Tip>
 
-<img src="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/agent-runs1.png?fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=5f549de1c7bd0f608eb8fa299b52fb33" alt="Agent Runs1 Pn" data-og-width="2522" width="2522" data-og-height="1092" height="1092" data-path="images/agent-runs1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/agent-runs1.png?w=280&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=80066cba665093eb6e62236823c8d61a 280w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/agent-runs1.png?w=560&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=570bf4c6c217e767a147145c0505c481 560w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/agent-runs1.png?w=840&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=ffb57bdea1507fd29d0917f8c62471e7 840w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/agent-runs1.png?w=1100&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=21df924ab6d004d2976128ff87979ed4 1100w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/agent-runs1.png?w=1650&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=323dff85aaa532d4b77e2c7e346ade6b 1650w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/agent-runs1.png?w=2500&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=603f483a07d66bac5ef6c481808db590 2500w" />
+<img alt="Agent Runs1 Pn" />
 
 ### Scheduled Runs
 
 The **Scheduled Runs** tab shows agents that are set to run on a recurring schedule. You can **update how often they run** or **delete the scheduled run** if it’s no longer needed.
 
-<img src="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/agent-runs2.png?fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=2ab16bc41debdf87e7a077f0217e7406" alt="Agent Runs2 Pn" data-og-width="2522" width="2522" data-og-height="804" height="804" data-path="images/agent-runs2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/agent-runs2.png?w=280&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=6197df544fee87cf14be4bbffaacf573 280w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/agent-runs2.png?w=560&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=4c5789bf6eef39f6864a0b28f2e18a8f 560w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/agent-runs2.png?w=840&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=0045e4db423b7766b8c60ba3050bafa9 840w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/agent-runs2.png?w=1100&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=d7c81180fb6e49bd4a6caa6662bb9c78 1100w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/agent-runs2.png?w=1650&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=c892d8135d017663688d5923d7f2ec3c 1650w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/agent-runs2.png?w=2500&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=fe43e8f7a680b783b154e2b581f8ad9d 2500w" />
+<img alt="Agent Runs2 Pn" />
 
 Questions about a recent agent run? Reach out to our [support team](https://agent.ai/feedback).
 
@@ -17164,7 +17465,7 @@ To **remove** an agent from your team, just click the **Team** button again to u
   Think of an agent team as your saved agent library.
 </Tip>
 
-<img src="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/agent-team.png?fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=a565bc9c7138ca0a3746ed9d9ffa2287" alt="Agent Team Pn" data-og-width="2304" width="2304" data-og-height="1250" height="1250" data-path="images/agent-team.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/agent-team.png?w=280&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=dad03112f23e11ec735ac56f7bc8aa5f 280w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/agent-team.png?w=560&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=ed5e47fe02ab7c1f107c5570c6c64427 560w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/agent-team.png?w=840&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=8752f7260cbf662870f423cc14574088 840w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/agent-team.png?w=1100&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=c184942e03dbd5eb94380d36d72ea0e2 1100w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/agent-team.png?w=1650&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=38b3dde3d0a19d1f1026135ff7128fb9 1650w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/agent-team.png?w=2500&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=2a52212967eddf58e2d00907b728ec46 2500w" />
+<img alt="Agent Team Pn" />
 
 Reach out to our [support team](https://agent.ai/feedback) if you need any help with your agent team.
 
@@ -17207,7 +17508,7 @@ Connect your HubSpot portal to enable agents to perform CRM-related actions, inc
 * View which agents have private access to your portal
 * Click **Connect More Portals** to add additional HubSpot accounts
 
-<img src="https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/vendors.png?fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=2e65c0653329251f9d7a42b68ea474c1" alt="Vendors Pn" data-og-width="2764" width="2764" data-og-height="1238" height="1238" data-path="images/vendors.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/vendors.png?w=280&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=f2664fca599ac591a1e177bdc9917fb8 280w, https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/vendors.png?w=560&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=051a205b4264c410082759e6a646170a 560w, https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/vendors.png?w=840&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=57d7d2c3cfd9bd73b3067de1916b20d7 840w, https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/vendors.png?w=1100&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=9f58518be4e24edf47d96a5532a8c3ef 1100w, https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/vendors.png?w=1650&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=4607fcf44e58e6d244e467b04593eae6 1650w, https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/vendors.png?w=2500&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=d3ef7f5496629f5aa1dec2c9bd50f74a 2500w" />
+<img alt="Vendors Pn" />
 
 ## API
 
@@ -17221,7 +17522,7 @@ Your [API key](https://agent.ai/user/integrations#api) allows you to integrate [
   Keep your API key private. It grants access to your [**Agent.ai**](http://Agent.ai) account and credit usage—treat it like a password. Don’t share it or commit it to public repositories.
 </Warning>
 
-<img src="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/apiupdated.png?fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=2adb245de837217018a0024e7c8df61b" alt="Apiupdated Pn" data-og-width="2654" width="2654" data-og-height="1118" height="1118" data-path="images/apiupdated.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/apiupdated.png?w=280&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=eca580cc811a4fe5e71f2846830b2d87 280w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/apiupdated.png?w=560&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=8d8ca7c01c634748b457361493503dde 560w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/apiupdated.png?w=840&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=d4faa246df333349164646276cc9efaf 840w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/apiupdated.png?w=1100&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=fe365d98d9165dce10ad6f4e303496ae 1100w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/apiupdated.png?w=1650&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=3a393a547e1af5eb8cc61a06db09a920 1650w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/apiupdated.png?w=2500&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=e7274bc7dc7359455c1adc3967402d85 2500w" />
+<img alt="Apiupdated Pn" />
 
 ## MCP
 
@@ -17238,7 +17539,7 @@ Choose which agents you’d like to expose to your MCP environment:
 
 Check the boxes you want, then click **Save**.
 
-<img src="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/mcp1updated.png?fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=681ac51e8ce7b8a122399d065d58f4cd" alt="Mcp1updated Pn" data-og-width="2642" width="2642" data-og-height="1042" height="1042" data-path="images/mcp1updated.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/mcp1updated.png?w=280&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=03a33bd678540b9929dc8ebae7ecb0e7 280w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/mcp1updated.png?w=560&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=697eb94179f1bf3bd4041310f0ae980d 560w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/mcp1updated.png?w=840&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=515cf141dac3a1d91bac51e975c419ae 840w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/mcp1updated.png?w=1100&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=ad0d5d18759362d45dbd5c49b4f91e33 1100w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/mcp1updated.png?w=1650&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=a598635a70eea9e2f9652740b1de2192 1650w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/mcp1updated.png?w=2500&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=82b72aeeb65df30324f1b2d4d02de8cc 2500w" />
+<img alt="Mcp1updated Pn" />
 
 ### Connection Methods
 
@@ -17248,13 +17549,13 @@ You can also add external MCP servers to use within Agent.ai (more below).
 
 For full setup instructions, see the [**MCP Integration Guide**](https://docs.agent.ai/mcp-server).
 
-<img src="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/mcp2updated.png?fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=dd7d1034b7941de4720773ed0e7c39a9" alt="Mcp2updated Pn" data-og-width="2650" width="2650" data-og-height="1492" height="1492" data-path="images/mcp2updated.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/mcp2updated.png?w=280&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=f5f4f66706d5f420e5d74975273850f6 280w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/mcp2updated.png?w=560&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=1c04e3a71b7c1b2f61fead98ffe7d2d6 560w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/mcp2updated.png?w=840&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=1d64986d976f1128ca2b4523ea770925 840w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/mcp2updated.png?w=1100&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=3ce8982b2248b5a07eb1fdbf394deb9d 1100w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/mcp2updated.png?w=1650&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=bcae47c5a8127835661ea0529c724438 1650w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/mcp2updated.png?w=2500&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=86f5e1e96a444702b9e38c87e927c6a6 2500w" />
+<img alt="Mcp2updated Pn" />
 
 ## MCP Chat
 
 After adding MCP servers to Agent.ai, you can select them and chat with them in [MCP Chat](https://agent.ai/user/integrations#mcpchat).
 
-<img src="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/mcpchat.png?fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=2b529b859c06a866cb9ce8ae0659a6a6" alt="Mcpchat Pn" data-og-width="2672" width="2672" data-og-height="1090" height="1090" data-path="images/mcpchat.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/mcpchat.png?w=280&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=df07fe1f3d9c535f174d21825dedf31a 280w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/mcpchat.png?w=560&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=0ad2c261b9a76cd57d2dd0d59ab675a3 560w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/mcpchat.png?w=840&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=5e99e2a210d18a7c4b199d73a13b0fcd 840w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/mcpchat.png?w=1100&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=b2c21db68ca4713a731ebfc021b2cdd1 1100w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/mcpchat.png?w=1650&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=a9b09a4bca45bf55899d40c5a7a57c6f 1650w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/mcpchat.png?w=2500&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=94b9e4208633b19de79ea1551c0a5f8b 2500w" />
+<img alt="Mcpchat Pn" />
 
 Reach out to our [**support team**](https://agent.ai/feedback) if you have any questions about integrations or navigating [Agent.ai](http://Agent.ai).
 
@@ -17270,7 +17571,7 @@ To create your builer profile:
 2. Select **Create Public Profile**
 3. Click **Create profile** or **Connect to X**
 
-<img src="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/profile1.png?fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=07259003eb0e9ceec0ee736aa9dcc0ea" alt="Profile1 Pn" data-og-width="2404" width="2404" data-og-height="1342" height="1342" data-path="images/profile1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/profile1.png?w=280&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=40480058bb14dac7f6764cfdd07f45f8 280w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/profile1.png?w=560&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=b1b1a3d87d920699c63064555712b98d 560w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/profile1.png?w=840&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=1710a7352d6b12db25c43d4633f5c2dc 840w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/profile1.png?w=1100&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=e5a31075fe963de3a2102f404e38f0b5 1100w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/profile1.png?w=1650&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=b65f97fbbeb332fb305f4947f38089f9 1650w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/profile1.png?w=2500&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=0084a94175dddedc8a732ce28046fa55 2500w" />
+<img alt="Profile1 Pn" />
 
 Your builder profile includes:
 
@@ -17283,7 +17584,7 @@ Your builder profile includes:
 
 After updating these details, click **Save** to create your profile.
 
-<img src="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/profile2.png?fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=44420fca82299aa493c9c09d783eeffd" alt="Profile2 Pn" data-og-width="2350" width="2350" data-og-height="1506" height="1506" data-path="images/profile2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/profile2.png?w=280&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=3891fa087644501d3eba2484d7dfdb4e 280w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/profile2.png?w=560&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=6172135fc42762403e13ce6b4cc66aa5 560w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/profile2.png?w=840&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=bc919bdc2b0a0967fd9bd9a1f90a3664 840w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/profile2.png?w=1100&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=d2d3b1c10a37852ff408d8f88d48e685 1100w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/profile2.png?w=1650&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=d9dc97324382d6726757f8c00bda3ac5 1650w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/profile2.png?w=2500&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=633a12f708820b3c5c919f8aa9389429 2500w" />
+<img alt="Profile2 Pn" />
 
 To edit an existing profile:
 
@@ -17311,7 +17612,7 @@ On this page, you can:
   Clear, specific requests are more likely to get picked up by builders.
 </Tip>
 
-<img src="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/request-agent-1.png?fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=ac0df4637c2c1963f77465702cb01b9e" alt="Request Agent 1 Pn" data-og-width="2870" width="2870" data-og-height="1504" height="1504" data-path="images/request-agent-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/request-agent-1.png?w=280&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=0fbec53c5dd651237d0af3aafaa0748f 280w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/request-agent-1.png?w=560&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=bfc20f20abc0186d8ce7e5b6a73b17db 560w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/request-agent-1.png?w=840&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=e3d03d763f680672fbdec06204973d47 840w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/request-agent-1.png?w=1100&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=bfe5dcb9da736b780ad93e99c2d94a36 1100w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/request-agent-1.png?w=1650&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=a7286fd70a3443b352d79b6c4a482012 1650w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/request-agent-1.png?w=2500&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=3a4cb14634c88f05102201e0126f342a 2500w" />
+<img alt="Request Agent 1 Pn" />
 
 ## How to Submit a Request
 
@@ -17322,7 +17623,7 @@ Click **Add a Request** to open the submission form. Then:
 3. Optionally select a category to help others find it
 4. Click **Submit Post**
 
-<img src="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/request-agent-2.png?fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=3b697120098a5e3c2e4dca52978b960b" alt="Request Agent 2 Pn" data-og-width="2872" width="2872" data-og-height="1202" height="1202" data-path="images/request-agent-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/request-agent-2.png?w=280&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=01c4f70b9ca56f40ae1e0a6857aee9b0 280w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/request-agent-2.png?w=560&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=ad6bb03dcc074409de386bd87c058eb8 560w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/request-agent-2.png?w=840&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=f40f75a5dd3bdea6f062935a6250ab17 840w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/request-agent-2.png?w=1100&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=668437b86d4ac3f293f9099200d059d7 1100w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/request-agent-2.png?w=1650&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=921e27dfab41d1f1f0e1b03c4b90c428 1650w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/request-agent-2.png?w=2500&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=16d00d9303878abef5ba908f2c18bdd7 2500w" />
+<img alt="Request Agent 2 Pn" />
 
 ## What happens after you submit?
 
@@ -17347,7 +17648,7 @@ To update your user context:
 1. Go to **User Context** in your [profile settings](https://agent.ai/user/settings)
 2. Fill out any fields you’d like agents to reference in their responses
 
-<img src="https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/usercontextupdated.png?fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=c41220f9523d7af6d3c6ad1688286ff7" alt="Usercontextupdated Pn" data-og-width="2624" width="2624" data-og-height="944" height="944" data-path="images/usercontextupdated.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/usercontextupdated.png?w=280&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=accf261423ac4546c800b68df5598b23 280w, https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/usercontextupdated.png?w=560&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=7a33c19a9a12be26323e9a744089837d 560w, https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/usercontextupdated.png?w=840&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=262bb7037ba26c3e82cafeb62f224143 840w, https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/usercontextupdated.png?w=1100&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=739e716f98c1194de2a782fedbdbc0f5 1100w, https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/usercontextupdated.png?w=1650&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=5d8519a4ccbb6391fc9d8909d9b389e3 1650w, https://mintcdn.com/agentai/aY3WeNa_RVWXvaNU/images/usercontextupdated.png?w=2500&fit=max&auto=format&n=aY3WeNa_RVWXvaNU&q=85&s=cd53420966442a1b8bfae0abd402ab73 2500w" />
+<img alt="Usercontextupdated Pn" />
 
 ## Notifications
 
@@ -17358,7 +17659,7 @@ Manage when you receive email notifications from [Agent.ai](http://Agent.ai). Yo
 
 To update your [notification preferences](https://agent.ai/user/settings#notifications), check or uncheck the boxes, then click **Save**.
 
-<img src="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/notificationsupdated.png?fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=4ca97accbe17bad21d104c35b915760e" alt="Notificationsupdated Pn" data-og-width="1652" width="1652" data-og-height="644" height="644" data-path="images/notificationsupdated.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/notificationsupdated.png?w=280&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=13c88e7cfb70596a93a83c69a68021eb 280w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/notificationsupdated.png?w=560&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=80ca30616ca3c761104654883809c5c6 560w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/notificationsupdated.png?w=840&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=6b8d71ca132448af6a44e69a129bb465 840w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/notificationsupdated.png?w=1100&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=64b29c0ead812a35c5b41658af24d066 1100w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/notificationsupdated.png?w=1650&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=a8deec6d728ce0a7f0aa7d06cfb37133 1650w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/notificationsupdated.png?w=2500&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=d7853433940b30dbf143fb93c98829b5 2500w" />
+<img alt="Notificationsupdated Pn" />
 
 ## Credits
 
@@ -17373,7 +17674,7 @@ On \[this page][https://agent.ai/user/integrations#api](https://agent.ai/user/in
 
 * If you have a gift code, enter it in the field provided and click **Redeem a gift code** to add more credits to your account
 
-<img src="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/creditsupdated.png?fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=3664279a33c29293873e2c0f49eae989" alt="Creditsupdated Pn" data-og-width="2706" width="2706" data-og-height="1350" height="1350" data-path="images/creditsupdated.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/creditsupdated.png?w=280&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=cb5a08b5df24e7f2758e25dbe707c4af 280w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/creditsupdated.png?w=560&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=7b7fa13b5ab8940430839f29f7ff9c07 560w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/creditsupdated.png?w=840&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=69f0c63e567b4aa0358c1d4f77a72e6a 840w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/creditsupdated.png?w=1100&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=18aa55515e251620a543a588b754deac 1100w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/creditsupdated.png?w=1650&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=ae57a9431d26706c5f7dcf98f279abd4 1650w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/creditsupdated.png?w=2500&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=7faa5adda1b23d761a98dfc8b2018cf9 2500w" />
+<img alt="Creditsupdated Pn" />
 
 ## Account
 
@@ -17389,7 +17690,7 @@ To delete your account:
   This action is irreversible. All agents, data, and settings will be permanently removed.
 </Warning>
 
-<img src="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/accountupdated.png?fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=ffd9216150be8e8cc233a888bfcd1288" alt="Accountupdated Pn" data-og-width="1528" width="1528" data-og-height="564" height="564" data-path="images/accountupdated.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/agentai/124P12t85CIi-2hH/images/accountupdated.png?w=280&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=bf0c26d9ba775ccd1c1e612e32feefeb 280w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/accountupdated.png?w=560&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=6a5cf153a6727e60484190ce4ecded70 560w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/accountupdated.png?w=840&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=114057674961175beaba37148ff0103f 840w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/accountupdated.png?w=1100&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=47cae2f8d2bf099d947372eaa480973b 1100w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/accountupdated.png?w=1650&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=be15ac226d1f7eee2e9bef184d4481a4 1650w, https://mintcdn.com/agentai/124P12t85CIi-2hH/images/accountupdated.png?w=2500&fit=max&auto=format&n=124P12t85CIi-2hH&q=85&s=955859dee2d5f2852911e76c6348af62 2500w" />
+<img alt="Accountupdated Pn" />
 
 Reach out to our [**support team**](https://agent.ai/feedback) if you have any questions about user settings or navigating [Agent.ai](http://Agent.ai).
 
@@ -17399,13 +17700,11 @@ Source: https://docs.agent.ai/welcome
 
 
 
-## What is Agent.AI?
+## What is Agent.ai?
 
-Agent.AI is the #1 Professional Network For A.I. Agents (also, the only professional network for A.I. agents).
-It is a marketplace and professional network for AI agents and the people who love them.
-Here, you can discover, connect with and hire AI agents to do useful things.
+Agent.ai is the #1 Professional Marketplace For AI Agents (also, the only professional marketplace for AI agents). It is a marketplace and professional network for AI agents and the people who love them. Here, you can discover, connect with and hire AI agents to do useful things.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="For Users" icon="stars">
     Discover, connect with and hire AI agents to do useful things
   </Card>
@@ -17419,7 +17718,7 @@ Here, you can discover, connect with and hire AI agents to do useful things.
 
 Not at all! Our platform is a no-code platform, where you can drag and drop various components together to build AI agents.
 
-Our builder had dozens of actions that can grab data from various data sources (i.e. X. Bluesky, LinkedIn, Google) and use any frontier LLM (i.e. OpenAI's 4o and o1, Google's Gemini models, Anthropic's Claude models, as well as open source Meta Llama 3s and Mistral models) in an intuitive interface.
+Our builder has dozens of actions that can grab data from various data sources (i.e. X. Bluesky, LinkedIn, Google) and use any frontier LLM (i.e. OpenAI's 4o and o1, Google's Gemini models, Anthropic's Claude models, as well as open source Meta Llama 3s and Mistral models) in an intuitive interface.
 
 For those users looking for can code and are looking for more advanced functionality, you can even use third party APIs and write serverless functions to interact with your agent's steps.
 

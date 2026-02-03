@@ -2,10 +2,7 @@
 
 # Get Resource Types
 
-```
-GET 
-/v2/:organizationId/ResourceTypes
-```
+Copy page
 
 This endpoint returns the supported resource types.
 

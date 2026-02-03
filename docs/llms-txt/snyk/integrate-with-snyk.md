@@ -10,7 +10,7 @@ Snyk offers security guardrails through Snyk Studio, including its integration w
 
 Snyk provides information about:
 
-* [Snyk Studio and Secure at inception](https://docs.snyk.io/integrations/snyk-studio-agentic-integrations/snyk-studio-and-secure-at-inception)
+* [Snyk Studio and Secure at inception](https://docs.snyk.io/integrations/snyk-studio-agentic-integrations/distribution-at-scale)
 * [Quickstart guides for several AI assistants](https://docs.snyk.io/integrations/snyk-studio-agentic-integrations/quickstart-guides-for-snyk-studio)
 * [Troubleshooting for the Snyk MCP Server](https://docs.snyk.io/integrations/snyk-studio-agentic-integrations/troubleshooting)
 * [Usage analytics](https://docs.snyk.io/integrations/snyk-studio-agentic-integrations/usage-analytics)

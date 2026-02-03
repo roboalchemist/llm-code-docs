@@ -2,13 +2,9 @@
 
 # Source: https://docs.ultravox.ai/api-reference/introduction.md
 
-# Source: https://docs.ultravox.ai/sdk-reference/introduction.md
-
-# Source: https://docs.ultravox.ai/api-reference/introduction.md
-
-# Source: https://docs.ultravox.ai/sdk-reference/introduction.md
-
-# Source: https://docs.ultravox.ai/api-reference/introduction.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Ultravox REST API Overview
 
@@ -110,8 +106,3 @@ See [Scaling & Call Concurrency](/gettingstarted/concurrency) for more details o
 If you want to quickly experiment with prompts and voices, the fastest way to do that is in the [Ultravox Dashboard](https://app.ultravox.ai/playground).
 
 You can also paste in an Ultravox API key throughout the API reference (look for "Authorization" and paste your key where it asks for `X-API-Key`) and test the REST API endpoints.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

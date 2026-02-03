@@ -1,8 +1,13 @@
 # Source: https://rspack.dev/plugins/webpack/environment-plugin.md
 
-import WebpackLicense from '@components/WebpackLicense';
+CC 4.0 License> The content of this section is derived from the content of the following links and is subject to the CC BY 4.0 license.
+> 
+> - [https://webpack.js.org/plugins/environment-plugin/](https://webpack.js.org/plugins/environment-plugin/)
+> 
+> The following contents can be assumed to be the result of modifications and deletions based on the original contents if not specifically stated.
+> 
+> 
 
-<WebpackLicense from="https://webpack.js.org/plugins/environment-plugin/" />
 
 # EnvironmentPlugin
 
@@ -10,7 +15,7 @@ The `EnvironmentPlugin` is shorthand for using the [`DefinePlugin`](/plugins/web
 
 ## Options
 
-* **Type:** `string[] | Record<string, string>`
+- **Type:** `string[] | Record<string, string>`
 
 ## Examples
 

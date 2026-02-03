@@ -36,7 +36,7 @@ Note that by default, the `quality` parameter is set to `'medium'`. The output i
 >
 
 ```json
-{"openapi":"3.0.0","info":{"title":"AIML API","version":"1.0.0"},"servers":[{"url":"https://api.aimlapi.com"}],"paths":{"/v1/images/generations":{"post":{"operationId":"_v1_images_generations","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"model":{"type":"string","enum":["openai/gpt-image-1"]},"prompt":{"type":"string","maxLength":32000,"description":"The text prompt describing the content, style, or composition of the image to be generated."},"background":{"type":"string","enum":["transparent","opaque","auto"],"default":"auto","description":"Allows to set transparency for the background of the generated image(s). When auto is used, the model will automatically determine the best background for the image.\nIf transparent, the output format needs to support transparency, so it should be set to either png (default value) or webp."},"moderation":{"type":"string","enum":["low","auto"],"default":"auto","description":"Control the content-moderation level for images."},"n":{"type":"number","enum":[1],"default":1,"description":"The number of images to generate."},"output_compression":{"type":"integer","minimum":0,"maximum":100,"default":100,"description":"The compression level (0-100%) for the generated images."},"output_format":{"type":"string","enum":["png","jpeg","webp"],"default":"png","description":"The format of the generated image."},"quality":{"type":"string","enum":["low","high","medium"],"default":"medium","description":"The quality of the image that will be generated."},"size":{"type":"string","enum":["1024x1024","1024x1536","1536x1024"],"default":"1024x1024","description":"The size of the generated image."},"response_format":{"type":"string","enum":["url","b64_json"],"default":"url","description":"The format in which the generated images are returned."}},"required":["model","prompt"],"title":"openai/gpt-image-1"}}}},"responses":{"200":{"content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"array","nullable":true,"items":{"type":"object","properties":{"url":{"type":"string","nullable":true,"description":"The URL where the file can be downloaded from."},"b64_json":{"type":"string","nullable":true,"description":"The base64-encoded JSON of the generated image."}}},"description":"The list of generated images."},"meta":{"type":"object","nullable":true,"properties":{"usage":{"type":"object","nullable":true,"properties":{"tokens_used":{"type":"number","description":"The number of tokens consumed during generation."}},"required":["tokens_used"]}},"description":"Additional details about the generation."}}}}}}}}}}}
+{"openapi":"3.0.0","info":{"title":"AIML API","version":"1.0.0"},"servers":[{"url":"https://api.aimlapi.com"}],"paths":{"/v1/images/generations":{"post":{"operationId":"_v1_images_generations","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"model":{"type":"string","enum":["openai/gpt-image-1"]},"prompt":{"type":"string","maxLength":32000,"description":"The text prompt describing the content, style, or composition of the image to be generated."},"background":{"type":"string","enum":["transparent","opaque","auto"],"default":"auto","description":"Allows to set transparency for the background of the generated image(s). When auto is used, the model will automatically determine the best background for the image.\nIf transparent, the output format needs to support transparency, so it should be set to either png (default value) or webp."},"moderation":{"type":"string","enum":["low","auto"],"default":"auto","description":"Control the content-moderation level for images."},"n":{"type":"number","enum":[1],"default":1,"description":"The number of images to generate."},"output_compression":{"type":"integer","minimum":0,"maximum":100,"default":100,"description":"The compression level (0-100%) for the generated images."},"output_format":{"type":"string","enum":["png","jpeg","webp"],"default":"png","description":"The format of the generated image."},"quality":{"type":"string","enum":["low","high","medium"],"default":"medium","description":"The quality of the image that will be generated."},"size":{"type":"string","enum":["1024x1024","1024x1536","1536x1024"],"default":"1024x1024","description":"The size of the generated image."},"response_format":{"type":"string","enum":["url","b64_json"],"default":"url","description":"The format in which the generated images are returned."}},"required":["model","prompt"],"title":"openai/gpt-image-1"}}}},"responses":{"200":{"content":{"application/json":{"schema":{"type":"object","properties":{"data":{"type":"array","nullable":true,"items":{"type":"object","properties":{"url":{"type":"string","nullable":true,"description":"The URL where the file can be downloaded from."},"b64_json":{"type":"string","nullable":true,"description":"The base64-encoded JSON of the generated image."}}},"description":"The list of generated images."},"meta":{"type":"object","nullable":true,"properties":{"usage":{"type":"object","nullable":true,"properties":{"credits_used":{"type":"number","description":"The number of tokens consumed during generation."}},"required":["credits_used"]}},"description":"Additional details about the generation."}}}}}}}}}}}
 ```
 
 ### Edit image
@@ -77,8 +77,8 @@ def main():
             "Content-Type": "application/json",
         },
         json={
-            "prompt": "Add a crown",
             "model": "openai/gpt-image-1",
+            "prompt": "A T-Rex relaxing on a beach, lying on a sun lounger and wearing sunglasses. Realistic photo.",
             "size": "1024x1024"
         }
     )
@@ -191,7 +191,6 @@ Let's generate an image using two input images and a prompt that defines how the
 ```python
 from openai import OpenAI
 
-
 def main():
     client = OpenAI(
         api_key="<YOUR_AIMLAPI_KEY>",
@@ -209,7 +208,6 @@ def main():
 
     print("Generation:", result)
 
-
 if __name__ == "__main__":
     main()
 ```
@@ -223,7 +221,6 @@ if __name__ == "__main__":
 ```javascript
 import fs from 'fs';
 import OpenAI, { toFile } from 'openai';
-
 
 const main = async () => {
   const client = new OpenAI({
@@ -296,7 +293,6 @@ In this example, we’ll provide the model with our previously generated image o
 ```python
 from openai import OpenAI
 
-
 def main():
     client = OpenAI(
         api_key="<YOUR_AIMLAPI_KEY>",
@@ -309,7 +305,6 @@ def main():
         mask=open('t-rex-alpha_mask.png', 'rb'),
         prompt="Remove this from the picture"
     )
-
     print("Generation:", result)
 
 
@@ -326,7 +321,6 @@ if __name__ == "__main__":
 ```python
 import fs from 'fs';
 import OpenAI, { toFile } from 'openai';
-
 
 const main = async () => {
   const client = new OpenAI({

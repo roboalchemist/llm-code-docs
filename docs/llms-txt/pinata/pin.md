@@ -1,5 +1,9 @@
 # Source: https://docs.pinata.cloud/api-reference/endpoint/x402/pin.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Upload a File
 
 > Uploads a file to Pinata's public IPFS network
@@ -12,12 +16,12 @@
 
 ## Example Usage
 
-In order to access these endpoints you will need to use either [`x402-axios`](https://www.npmjs.com/package/x402-axios) or [`x402-fetch`](https://www.npmjs.com/package/x402-fetch). Once installed you will also need either [Viem](https://viem.sh) or a Coinbase developer account. From there you can create an `account` locally or through the CDP Wallet API.
+In order to access these endpoints you will need to use either [`@x402/axios`](https://www.npmjs.com/package/@x402/axios) or [`@x402/fetch`](https://www.npmjs.com/package/@x402/fetch). Once installed you will also need either [Viem](https://viem.sh) or a Coinbase developer account. From there you can create an `account` locally or through the CDP Wallet API.
 
 When you make a request to one of the Pinata x402 endpoints it will return a 402 error saying payment is required. Then the `fetchWithPayment` method from the fetch or axios library will make a second requst for the requested payment amount. After payment is settled then you can use the returned presigned URL to upload the file to Pinata.
 
 ```typescript  theme={null}
-import { wrapFetchWithPayment, decodeXPaymentResponse } from "x402-fetch";
+import { wrapFetchWithPayment, decodeXPaymentResponse } from "@x402/fetch";
 import { account } from "./viem";
 
 const fetchWithPayment = wrapFetchWithPayment(fetch, account);
@@ -58,7 +62,7 @@ fetchWithPayment(url, {
 Uploading files to Public IPFS means you can access them through a gateway like `https://ipfs.io/ipfs/:CID`. If you upload a file as `private` then it will not be accessible on public IPFS, so in order to access it you need to create a temporary access URL. This flow is similar to the previous one, except you would provide the CID that you uploded previously that you would like to access. After a successful payment the server will return a URL you can access the file with.
 
 ```typescript  theme={null}
-import { wrapFetchWithPayment, decodeXPaymentResponse } from "x402-fetch";
+import { wrapFetchWithPayment, decodeXPaymentResponse } from "@x402/fetch";
 import { account } from "./viem";
 
 const fetchWithPayment = wrapFetchWithPayment(fetch, account);
@@ -143,7 +147,3 @@ components:
       description: Base64 encoded x402 payment payload
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pinata.cloud/llms.txt

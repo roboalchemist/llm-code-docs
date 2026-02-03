@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build-cli/making-http-requests.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Making HTTP requests
 
 > How to make HTTP requests from your Zapier integration to interact with your API

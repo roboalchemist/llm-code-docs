@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/guides/assistant/retrieve-context-snippets.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Retrieve context snippets
 
 > Access relevant context and citations from Pinecone Assistant.
@@ -51,7 +55,7 @@ You can [retrieve context snippets](/reference/api/latest/assistant/context_assi
     -H "Api-Key: $PINECONE_API_KEY" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
       "query": "Who is the CFO of Netflix?"
   }'
@@ -134,7 +138,7 @@ While additional tokens will be used for other parameters, adjusting the `top_k`
     -H "Api-Key: $PINECONE_API_KEY" \
     -H "accept: application/json" \
     -H "Content-Type: application/json" \
-    -H "X-Pinecone-API-Version: 2025-04" \
+    -H "X-Pinecone-Api-Version: 2025-10" \
     -d '{
       "query": "Who is the CFO of Netflix?",
       "top_k": 10,

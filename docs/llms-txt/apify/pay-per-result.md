@@ -8,9 +8,35 @@
 
 <!-- -->
 
+Pay per result is deprecated
+
+This pricing model is deprecated and will be removed in 2026. You can migrate to , and the migration is backward compatible.
+
 In this model, you set a price per 1,000 results. Users are charged based on the number of results your Actor produces and stores in the run's default dataset. Your profit is calculated as 80% of the revenue minus platform usage costs.
 
 The details on how your cost is computed can be found in .
+
+## One click migration to PPE
+
+Select your PPR Actor, go to the **Publication** tab, open the **Monetization** section, and click the **Migrate to pay per event** button.
+
+![Migration button](/assets/images/ppr-to-ppe-migration-button-dced77efb3b642bef1f00a13250d15bf.png)
+
+### Why should I migrate
+
+The pay per event pricing model offers superior flexibility in charging not only for the results but also for any event. This helps you to pass on the costs of external APIs or additional processing directly to your users, price different functionalities of your Actor differently, avoid revenue loss from small but usage-heavy runs, and more.
+
+Given that the pay per event model is fully compatible with pay per result, and to bring more simplicity to users of your Actors, we are fully deprecating PPR in favor of PPE. The migration is completely automatic and fully backward compatible.
+
+### What happens during migration
+
+The migration switches your pricing model from pay per result to pay per event. Your price per 1,000 results is automatically converted to an equivalent `apify-default-dataset-item` [event](https://docs.apify.com/platform/actors/publishing/monetize/pay-per-event.md#use-synthetic-default-dataset-item-event-apify-default-dataset-item) price. This change does not count towards the pricing change limits that you are allowed to do once every 30 days.
+
+**Code changes:** No changes to your Actor code are required if it already respects the `ACTOR_MAX_PAID_DATASET_ITEMS` environment variable (the price limit set by users).
+
+**After migration:** With [pay per event](https://docs.apify.com/platform/actors/publishing/monetize/pay-per-event.md), you can define additional custom events beyond dataset items.
+
+**Respecting user spending limits:** You can continue using the `ACTOR_MAX_PAID_DATASET_ITEMS` environment variable to respect user-specified price limits.
 
 ## How is profit computed
 
@@ -31,7 +57,7 @@ PPR charges based on the number of results produced. PPE lets you define pricing
 
 Learn more about PPE
 
-If you want to learn more about PPE, refer to the https://docs.apify.com/platform/actors/publishing/monetize/pay-per-event.md section.
+If you want to learn more about PPE, refer to the [pay per event](https://docs.apify.com/platform/actors/publishing/monetize/pay-per-event.md) section.
 
 ## Best practices for PPR Actors
 
@@ -39,7 +65,7 @@ To ensure profitability, check the following best practices.
 
 ### Set memory limits
 
-Set memory limits using `minMemoryMbytes` and `maxMemoryMbytes` in your https://docs.apify.com/platform/actors/development/actor-definition/actor-json file to control platform usage costs.
+Set memory limits using `minMemoryMbytes` and `maxMemoryMbytes` in your [actor.json](https://docs.apify.com/platform/actors/development/actor-definition/actor-json) file to control platform usage costs.
 
 
 ```
@@ -55,7 +81,7 @@ Set memory limits using `minMemoryMbytes` and `maxMemoryMbytes` in your https://
 
 Memory requirements for browser-based scraping
 
-When using browser automation tools like https://pptr.dev/ or https://playwright.dev/ for web scraping, increase the memory limits to accommodate the browser's memory usage.
+When using browser automation tools like [Puppeteer](https://pptr.dev/) or [Playwright](https://playwright.dev/) for web scraping, increase the memory limits to accommodate the browser's memory usage.
 
 ### Implement the `ACTOR_MAX_PAID_DATASET_ITEMS` check
 
@@ -207,7 +233,7 @@ You make your Actor PPR and set the price to be *$1/1,000 results*. During the f
 
 Your profit and costs are computed *only from the first two users* since they are on Apify paid plans.
 
-The platform usage costs are just examples, but you can see the actual costs in the https://docs.apify.com/platform/actors/publishing/monetize/pricing-and-costs.md#computing-your-costs-for-ppe-and-ppr-actors section.
+The platform usage costs are just examples, but you can see the actual costs in the [Computing your costs for PPE and PPR Actors](https://docs.apify.com/platform/actors/publishing/monetize/pricing-and-costs.md#computing-your-costs-for-ppe-and-ppr-actors) section.
 
 ### Revenue breakdown
 
@@ -217,4 +243,4 @@ The platform usage costs are just examples, but you can see the actual costs in 
 
 ## Next steps
 
-* Check out the https://docs.apify.com/platform/actors/publishing/monetize/pricing-and-costs.md section to learn how to compute your costs.
+* Check out the [Pricing and costs](https://docs.apify.com/platform/actors/publishing/monetize/pricing-and-costs.md) section to learn how to compute your costs.

@@ -1,21 +1,21 @@
-# Source: https://docs.intelligems.io/offer-experiences/quantity-buttons.md
+# Source: https://docs.intelligems.io/offer-personalizations/quantity-buttons.md
 
 # Quantity Buttons
 
 ### Overview
 
-Quantity Buttons replace standard quantity selectors within an Offer Experience with promotional buttons that highlight savings and encourage larger purchases. They showcase volume discounts and tiered pricing to drive higher average order values.
+Quantity Buttons replace standard quantity selectors within an Offer Personalization with promotional buttons that highlight savings and encourage larger purchases. They showcase volume discounts and tiered pricing to drive higher average order values.
 
 {% hint style="warning" %}
 **Important:**
 
-* Quantity Buttons are automatically installed via the Intelligems script
+* Quantity Buttons are automatically installed via the Intelligems script. If you are not seeing them when you preview your Offer on an eligible product, please see [the below](#installing-the-quantity-buttons) for help.&#x20;
 * You must select specific products for Quantity Buttons to be available as a component option when setting up an Offer
-* To set up a Price Test with Quantity Buttons [follow these steps](https://github.com/intelligems-io/docs/blob/main/public-docs/offer-experiences/broken-reference/README.md).
+* To set up a Price Test with Quantity Buttons [follow these steps](https://docs.intelligems.io/offer-experiences/how-to-set-up-a-price-test-with-quantity-buttons).
   {% endhint %}
 
 {% hint style="info" %}
-**Note**: Quantity Buttons are only available on Volume discount Offers.
+**Note**: Quantity Buttons are only available on Quantity Discounts.
 {% endhint %}
 
 <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-21edf96134456a2cc03b1c219bee7850a3385430%2FQuantity%20button%20config5.png?alt=media" alt=""><figcaption></figcaption></figure>
@@ -23,7 +23,9 @@ Quantity Buttons replace standard quantity selectors within an Offer Experience 
 ### Key Features
 
 * **Multiple Button Styles**: Choose from Classic List, Image Cards, or Compact layouts
-* **Dynamic Pricing Display**: Real-time pricing, savings calculations, and discount percentages
+* **Dynamic Pricing Display**: Real-time pricing, savings calculations, price per item, and discount percentages
+* **Choose Default Variant:** Choose which variant is selected as default - instead of the lowest or single unit, you can select a higher tier to increase AOV
+* **Show Prices per Item:** Update the price shown on PDP as a price per item for multiple units
 * **Enhanced Text Customization**: Add badges, labels, subtitles, and custom messaging
 * **Free Shipping & Gift Integration**: Display badges and callouts directly on buttons
 
@@ -99,7 +101,7 @@ Space-saving horizontal layout for quick comparison. Perfect for limited space a
 
 ### How It Works
 
-**Volume discount Offers:**
+**Quantity Discount Offers:**
 
 1. Configure discount trigger and discount value
 2. Add specific products this Offer should apply to (cannot be left empty for all products)
@@ -122,16 +124,25 @@ Space-saving horizontal layout for quick comparison. Perfect for limited space a
 * **A/B Testing**: Test layouts, messaging, and promotional strategies
   {% endhint %}
 
-### Troubleshooting
+### Installing the Quantity Buttons&#x20;
 
-**Buttons Not Appearing**: Verify Offer is active, products selected, and requirements met
+Quantity Buttons are automatically installed on your product pages once the [Intelligems script](https://docs.intelligems.io/getting-started/adding-intelligems-script-to-your-theme) is added to your theme. Our script detects the standard quantity selector on your product detail pages and installs the buttons there.
 
-**Pricing Issues**: Check discount calculations and product pricing in offer settings
+**When will I see the buttons?** The buttons will appear on your product pages once you've either:
 
-**Variable Display**: Verify variable syntax and test with different product selections
+* Started previewing an Offer with Quantity Buttons enabled, or
+* Launched a live Offer with Quantity Buttons enabled
 
-**Previous Variant & Quantity buttons displaying:** Hide these elements with a Content Edit
+**What if the buttons aren't showing up?** If you don't see the buttons, your theme may use a custom quantity selector that differs from the standard format. To resolve this, add the following snippet to your product page (PDP) liquid code:
 
-Still having trouble? Email <support@intelligems.io>
+```liquid
+<ig-volume-quantity-widget></ig-volume-quantity-widget>
+```
 
-Last updated: 7/29/25
+**What if the buttons are showing up, but not in the correct location?** If you see the buttons but they are not in the location you would like them to be on your PDP, your theme may use a custom quantity selector that differs from the standard format. To resolve this, add the following snippet to your product page (PDP) liquid code in the location you would like the buttons to be:
+
+```liquid
+<ig-volume-quantity-widget></ig-volume-quantity-widget>
+```
+
+This will ensure the buttons display correctly on your site. Please reach out to our support team [here](https://portal.usepylon.com/intelligems/forms/intelligems-support-request) if you would like help completing this!&#x20;

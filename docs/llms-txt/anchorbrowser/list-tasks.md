@@ -1,140 +1,226 @@
 # Source: https://docs.anchorbrowser.io/api-reference/tasks/list-tasks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Tasks
 
 > Retrieves a paginated list of all tasks for the authenticated team. Tasks are returned 
 with their latest version information and metadata.
 
 
+
+
 ## OpenAPI
 
 ````yaml openapi-mintlify.yaml get /v1/task
+openapi: 3.1.0
+info:
+  title: AnchorBrowser API
+  version: 1.0.0
+  description: APIs to manage all browser-related actions and configuration.
+servers:
+  - url: https://api.anchorbrowser.io
+    description: API server
+security: []
 paths:
-  path: /v1/task
-  method: get
-  servers:
-    - url: https://api.anchorbrowser.io
-      description: API server
-  request:
-    security:
-      - title: api key header
-        parameters:
-          query: {}
-          header:
-            anchor-api-key:
-              type: apiKey
-              description: API key passed in the header
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        page:
+  /v1/task:
+    get:
+      tags:
+        - Tasks
+      summary: List Tasks
+      description: >
+        Retrieves a paginated list of all tasks for the authenticated team.
+        Tasks are returned 
+
+        with their latest version information and metadata.
+      parameters:
+        - name: page
+          in: query
+          required: false
+          description: Page number
           schema:
-            - type: string
-              required: false
-              description: Page number
-              default: '1'
-        limit:
+            type: string
+            pattern: ^[1-9]\d*$
+            default: '1'
+        - name: limit
+          in: query
+          required: false
+          description: Number of tasks per page
           schema:
-            - type: string
-              required: false
-              description: Number of tasks per page
-              default: '10'
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: object
-                    properties:
-                      tasks:
-                        type: array
-                        items:
-                          $ref: '#/components/schemas/Task'
-                      total:
-                        type: integer
-                        minimum: 0
-                        description: Total number of tasks
-                      page:
-                        type: integer
-                        minimum: 1
-                        description: Current page number
-                      limit:
-                        type: integer
-                        minimum: 1
-                        maximum: 100
-                        description: Number of tasks per page
-                    required:
-                      - tasks
-                      - total
-                      - page
-                      - limit
-            refIdentifier: '#/components/schemas/TaskListResponse'
-        examples:
-          example:
-            value:
-              data:
-                tasks:
-                  - id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                    name: <string>
-                    teamId: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                    description: <string>
-                    latestVersion: <string>
-                    code: <string>
-                    language: typescript
-                    browserConfiguration:
-                      initial_url: <string>
-                      recording:
-                        active: true
-                      proxy:
-                        active: true
-                        type: anchor_proxy
-                        country_code: af
-                        region: <string>
-                        city: <string>
-                      timeout:
-                        max_duration: 123
-                        idle_timeout: 123
-                      live_view:
-                        read_only: true
-                    deleted: true
-                    createdAt: '2023-11-07T05:31:56Z'
-                    updatedAt: '2023-11-07T05:31:56Z'
-                total: 1
-                page: 2
-                limit: 50
-        description: List of tasks retrieved successfully
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: object
-                    properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Failed to list tasks
-  deprecated: false
-  type: path
+            type: string
+            pattern: ^[1-9]\d*$
+            default: '10'
+      responses:
+        '200':
+          description: List of tasks retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskListResponse'
+        '500':
+          description: Failed to list tasks
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - api_key_header: []
 components:
   schemas:
+    TaskListResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            tasks:
+              type: array
+              items:
+                $ref: '#/components/schemas/Task'
+            total:
+              type: integer
+              minimum: 0
+              description: Total number of tasks
+            page:
+              type: integer
+              minimum: 1
+              description: Current page number
+            limit:
+              type: integer
+              minimum: 1
+              maximum: 100
+              description: Number of tasks per page
+          required:
+            - tasks
+            - total
+            - page
+            - limit
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+    Task:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique identifier for the task
+        name:
+          type: string
+          pattern: ^[a-zA-Z0-9_-]+$
+          minLength: 1
+          maxLength: 255
+          description: Task name (letters, numbers, hyphens, and underscores only)
+        teamId:
+          type: string
+          format: uuid
+          description: Team identifier that owns this task
+        description:
+          type: string
+          maxLength: 1000
+          description: Optional description of the task
+        latestVersion:
+          type: string
+          description: Latest version identifier (draft, latest, or version number)
+        code:
+          type: string
+          description: Base64 encoded task code
+        language:
+          type: string
+          enum:
+            - typescript
+          description: Programming language for the task
+        browserConfiguration:
+          $ref: '#/components/schemas/SessionConfig'
+          description: Browser configuration for task execution
+        deleted:
+          type: boolean
+          description: Whether the task is soft deleted
+        createdAt:
+          type: string
+          format: date-time
+          description: Task creation timestamp
+        updatedAt:
+          type: string
+          format: date-time
+          description: Task last update timestamp
+      required:
+        - id
+        - name
+        - teamId
+        - latestVersion
+        - code
+        - language
+        - deleted
+        - createdAt
+        - updatedAt
+    SessionConfig:
+      type: object
+      description: Session-related configurations.
+      properties:
+        initial_url:
+          type: string
+          format: uri
+          description: >-
+            The URL to navigate to when the browser session starts. If not
+            provided, the browser will load an empty page.
+        tags:
+          type: array
+          items:
+            type: string
+          description: >-
+            Custom labels to categorize and identify browser sessions. Useful
+            for filtering, organizing, and tracking sessions across your
+            workflows.
+          example:
+            - production
+            - scraping
+            - customer-123
+        recording:
+          type: object
+          description: Configuration for session recording.
+          properties:
+            active:
+              type: boolean
+              description: >-
+                Enable or disable video recording of the browser session.
+                Defaults to `true`.
+        proxy:
+          $ref: '#/components/schemas/ProxyConfig'
+        timeout:
+          type: object
+          description: Timeout configurations for the browser session.
+          properties:
+            max_duration:
+              type: integer
+              description: >-
+                Maximum time (in minutes) the session can run before
+                automatically terminating. Defaults to `20`. Set to `-1` to
+                disable this limit.
+            idle_timeout:
+              type: integer
+              description: >-
+                Time (in minutes) the session waits for new connections after
+                all others are closed before stopping. Defaults to `5`. Set to
+                `-1` to disable this limit.
+        live_view:
+          type: object
+          description: Configuration for live viewing the browser session.
+          properties:
+            read_only:
+              type: boolean
+              description: >-
+                Enable or disable read-only mode for live viewing. Defaults to
+                `false`.
     ProxyConfig:
       description: |
         Proxy Documentation available at [Proxy Documentation](/advanced/proxy)
@@ -240,6 +326,156 @@ components:
         - username
         - password
         - active
+    AnchorProxyCountryCode:
+      type: string
+      title: anchor_proxy
+      enum:
+        - af
+        - al
+        - dz
+        - ad
+        - ao
+        - as
+        - ag
+        - ar
+        - am
+        - aw
+        - au
+        - at
+        - az
+        - bs
+        - bh
+        - bb
+        - by
+        - be
+        - bz
+        - bj
+        - bm
+        - bo
+        - ba
+        - br
+        - bg
+        - bf
+        - cm
+        - ca
+        - cv
+        - td
+        - cl
+        - co
+        - cg
+        - cr
+        - ci
+        - hr
+        - cu
+        - cy
+        - cz
+        - dk
+        - dm
+        - do
+        - ec
+        - eg
+        - sv
+        - ee
+        - et
+        - fo
+        - fi
+        - fr
+        - gf
+        - pf
+        - ga
+        - gm
+        - ge
+        - de
+        - gh
+        - gi
+        - gr
+        - gd
+        - gp
+        - gt
+        - gg
+        - gn
+        - gw
+        - gy
+        - ht
+        - hn
+        - hu
+        - is
+        - in
+        - ir
+        - iq
+        - ie
+        - il
+        - it
+        - jm
+        - jp
+        - jo
+        - kz
+        - kw
+        - kg
+        - lv
+        - lb
+        - ly
+        - li
+        - lt
+        - lu
+        - mk
+        - ml
+        - mt
+        - mq
+        - mr
+        - mx
+        - md
+        - mc
+        - me
+        - ma
+        - nl
+        - nz
+        - ni
+        - ng
+        - 'no'
+        - pk
+        - pa
+        - py
+        - pe
+        - ph
+        - pl
+        - pt
+        - pr
+        - qa
+        - ro
+        - lc
+        - sm
+        - sa
+        - sn
+        - rs
+        - sc
+        - sl
+        - sk
+        - si
+        - so
+        - za
+        - kr
+        - es
+        - sr
+        - se
+        - ch
+        - sy
+        - st
+        - tw
+        - tj
+        - tg
+        - tt
+        - tn
+        - tr
+        - tc
+        - ua
+        - ae
+        - us
+        - uy
+        - uz
+        - ve
+        - ye
+      default: us
     ResidentialCountryCode:
       type: string
       title: anchor_residential
@@ -725,256 +961,11 @@ components:
         - ve
         - ye
       default: us
-    AnchorProxyCountryCode:
-      type: string
-      title: anchor_proxy
-      enum:
-        - af
-        - al
-        - dz
-        - ad
-        - ao
-        - as
-        - ag
-        - ar
-        - am
-        - aw
-        - au
-        - at
-        - az
-        - bs
-        - bh
-        - bb
-        - by
-        - be
-        - bz
-        - bj
-        - bm
-        - bo
-        - ba
-        - br
-        - bg
-        - bf
-        - cm
-        - ca
-        - cv
-        - td
-        - cl
-        - co
-        - cg
-        - cr
-        - ci
-        - hr
-        - cu
-        - cy
-        - cz
-        - dk
-        - dm
-        - do
-        - ec
-        - eg
-        - sv
-        - ee
-        - et
-        - fo
-        - fi
-        - fr
-        - gf
-        - pf
-        - ga
-        - gm
-        - ge
-        - de
-        - gh
-        - gi
-        - gr
-        - gd
-        - gp
-        - gt
-        - gg
-        - gn
-        - gw
-        - gy
-        - ht
-        - hn
-        - hu
-        - is
-        - in
-        - ir
-        - iq
-        - ie
-        - il
-        - it
-        - jm
-        - jp
-        - jo
-        - kz
-        - kw
-        - kg
-        - lv
-        - lb
-        - ly
-        - li
-        - lt
-        - lu
-        - mk
-        - ml
-        - mt
-        - mq
-        - mr
-        - mx
-        - md
-        - mc
-        - me
-        - ma
-        - nl
-        - nz
-        - ni
-        - ng
-        - 'no'
-        - pk
-        - pa
-        - py
-        - pe
-        - ph
-        - pl
-        - pt
-        - pr
-        - qa
-        - ro
-        - lc
-        - sm
-        - sa
-        - sn
-        - rs
-        - sc
-        - sl
-        - sk
-        - si
-        - so
-        - za
-        - kr
-        - es
-        - sr
-        - se
-        - ch
-        - sy
-        - st
-        - tw
-        - tj
-        - tg
-        - tt
-        - tn
-        - tr
-        - tc
-        - ua
-        - ae
-        - us
-        - uy
-        - uz
-        - ve
-        - ye
-      default: us
-    SessionConfig:
-      type: object
-      description: Session-related configurations.
-      properties:
-        initial_url:
-          type: string
-          format: uri
-          description: >-
-            The URL to navigate to when the browser session starts. If not
-            provided, the browser will load an empty page.
-        recording:
-          type: object
-          description: Configuration for session recording.
-          properties:
-            active:
-              type: boolean
-              description: >-
-                Enable or disable video recording of the browser session.
-                Defaults to `true`.
-        proxy:
-          $ref: '#/components/schemas/ProxyConfig'
-        timeout:
-          type: object
-          description: Timeout configurations for the browser session.
-          properties:
-            max_duration:
-              type: integer
-              description: >-
-                Maximum amount of time (in minutes) for the browser to run
-                before terminating. Defaults to `20`.
-            idle_timeout:
-              type: integer
-              description: >-
-                The amount of time (in minutes) the browser session waits for
-                new connections after all others are closed before stopping.
-                Defaults to `5`.
-        live_view:
-          type: object
-          description: Configuration for live viewing the browser session.
-          properties:
-            read_only:
-              type: boolean
-              description: >-
-                Enable or disable read-only mode for live viewing. Defaults to
-                `false`.
-    Task:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Unique identifier for the task
-        name:
-          type: string
-          pattern: ^[a-zA-Z0-9_-]+$
-          minLength: 1
-          maxLength: 255
-          description: Task name (letters, numbers, hyphens, and underscores only)
-        teamId:
-          type: string
-          format: uuid
-          description: Team identifier that owns this task
-        description:
-          type: string
-          maxLength: 1000
-          description: Optional description of the task
-        latestVersion:
-          type: string
-          description: Latest version identifier (draft, latest, or version number)
-        code:
-          type: string
-          description: Base64 encoded task code
-        language:
-          type: string
-          enum:
-            - typescript
-          description: Programming language for the task
-        browserConfiguration:
-          $ref: '#/components/schemas/SessionConfig'
-          description: Browser configuration for task execution
-        deleted:
-          type: boolean
-          description: Whether the task is soft deleted
-        createdAt:
-          type: string
-          format: date-time
-          description: Task creation timestamp
-        updatedAt:
-          type: string
-          format: date-time
-          description: Task last update timestamp
-      required:
-        - id
-        - name
-        - teamId
-        - latestVersion
-        - code
-        - language
-        - deleted
-        - createdAt
-        - updatedAt
+  securitySchemes:
+    api_key_header:
+      type: apiKey
+      in: header
+      name: anchor-api-key
+      description: API key passed in the header
 
 ````

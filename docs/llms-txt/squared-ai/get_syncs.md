@@ -1,50 +1,53 @@
 # Source: https://docs.squared.ai/api-reference/syncs/get_syncs.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List Syncs
+
+
 
 ## OpenAPI
 
 ````yaml GET /api/v1/syncs
+openapi: 3.0.1
+info:
+  title: AI Squared API
+  version: 1.0.0
+servers:
+  - url: https://api.squared.ai
+security: []
 paths:
-  path: /api/v1/syncs
-  method: get
-  servers:
-    - url: https://api.squared.ai
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        page[number]:
+  /api/v1/syncs:
+    get:
+      tags:
+        - Syncs
+      summary: List all sync operations
+      operationId: listSyncs
+      parameters:
+        - name: page[number]
+          in: query
+          required: false
           schema:
-            - type: integer
-              required: false
-              description: Page number for pagination
-        page[size]:
+            type: integer
+          description: Page number for pagination
+        - name: page[size]
+          in: query
+          required: false
           schema:
-            - type: integer
-              required: false
-              description: Number of items per page for pagination
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: array
+            type: integer
+          description: Number of items per page for pagination
+      responses:
+        '200':
+          description: A list of sync operations
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
                     items:
                       type: object
                       properties:
@@ -88,9 +91,8 @@ paths:
                               type: string
                             status:
                               type: string
-              links:
-                allOf:
-                  - type: object
+                  links:
+                    type: object
                     properties:
                       self:
                         type: string
@@ -107,38 +109,16 @@ paths:
                       last:
                         type: string
                         format: uri
-            requiredProperties:
-              - data
-              - links
-        examples:
-          example:
-            value:
-              data:
-                - id: <string>
-                  type: syncs
-                  attributes:
-                    source_id: 123
-                    destination_id: 123
-                    model_id: 123
-                    configuration: {}
-                    schedule_type: automated
-                    sync_mode: full_refresh
-                    sync_interval: 123
-                    sync_interval_unit: minutes
-                    cron_expression: <string>
-                    cursor_field: <string>
-                    stream_name: <string>
-                    status: <string>
-              links:
-                self: <string>
-                first: <string>
-                prev: <string>
-                next: <string>
-                last: <string>
-        description: A list of sync operations
-  deprecated: false
-  type: path
+                required:
+                  - data
+                  - links
+      security:
+        - bearerAuth: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 
 ````

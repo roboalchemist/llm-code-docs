@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/blueprints/for-eachloop.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # For-each loop
 
 export const item_0 = undefined
@@ -66,7 +70,7 @@ When the **For-each loop** block is done, it moves to the next block connected t
         <code>\[]</code>
       </td>
 
-      <td>The item value will be passed in the execution environment and will be available at @{item_0}, its id at @{itemId_0}. You can use either a list or a dictionary.</td>
+      <td>The item value will be passed in the execution environment. It will be available at @{item_0}, and its ID at @{itemId_0}. You can use either a list or a dictionary.</td>
 
       <td>
         <span>-</span>

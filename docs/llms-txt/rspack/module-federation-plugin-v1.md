@@ -1,7 +1,5 @@
 # Source: https://rspack.dev/plugins/webpack/module-federation-plugin-v1.md
 
-import { Stability } from '@components/ApiMeta';
-
 # ModuleFederationPluginV1
 
 This plugin corresponds to Module Federation v1.0, which is the [ModuleFederationPlugin in webpack](https://webpack.js.org/plugins/module-federation-plugin/).

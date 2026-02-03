@@ -144,7 +144,9 @@ def main():
                         help='HuggingFace model path for MLX fallback')
     args = parser.parse_args()
 
-    docs_root = Path('/Users/joe/github/llm-code-docs/docs')
+    # Determine docs root relative to this script
+    script_dir = Path(__file__).resolve().parent
+    docs_root = script_dir.parent / 'docs'
 
     print("Scanning for HTML files...", file=sys.stderr)
     html_files = find_html_files(docs_root, args.site)

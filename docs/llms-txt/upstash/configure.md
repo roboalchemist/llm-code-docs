@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/howto/configure.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Configure a Run
 
 You can configure a workflow run when starting it. The following are the options you can configure:
@@ -7,7 +11,6 @@ You can configure a workflow run when starting it. The following are the options
 1. Retries: The number of retry attempt Upstash Workflow does when a step fails in the workflow run
 2. Retry Delay: The delay strategy between retries when Upstash Workflow attempts retries.
 3. Flow Control: The rate, period and parallelism that steps should respect and logical grouping key to share with other workflow runs.
-4. Failure Function: You can enable or disable failure function execution for the workflow run.
 
 You can pass these configuration options when starting a workflow run:
 
@@ -24,17 +27,9 @@ const { workflowRunId } = await client.trigger({
         key: "limit-ads",
         rate: 1,
         parallelism: 10
-    },
-    useFailureFunction: true,
-    keepTriggerConfig: true,
+    }
 });
 ```
-
-<Warning>
-  You must set `keepTriggerConfig: true` to enable workflow run configuration.
-  If this flag is not provided, your configuration will **not be applied** and the workflow will fall back to default values instead.
-  This option is disabled by default for backward compatibility.
-</Warning>
 
 The workflow run configuration does **not** apply to `context.call()` and `context.invoke()` steps.
 These steps accept their own configuration options, allowing fine-grained control over external requests.

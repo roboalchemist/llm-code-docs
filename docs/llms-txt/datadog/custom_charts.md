@@ -6,7 +6,6 @@ description: >-
   Create custom charts in apps using Vega-Lite specifications to visualize data
   from queries with various chart types and styles.
 breadcrumbs: Docs > App Builder > Components > Custom Charts
-source_url: https://docs.datadoghq.com/app_builder/components/custom_charts/index.html
 ---
 
 # Custom Charts

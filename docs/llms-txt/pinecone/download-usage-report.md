@@ -2,21 +2,9 @@
 
 # Source: https://docs.pinecone.io/guides/assistant/admin/download-usage-report.md
 
-# Source: https://docs.pinecone.io/guides/organizations/manage-billing/download-usage-report.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/download-usage-report.md
-
-# Source: https://docs.pinecone.io/guides/organizations/manage-billing/download-usage-report.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/download-usage-report.md
-
-# Source: https://docs.pinecone.io/guides/organizations/manage-billing/download-usage-report.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/download-usage-report.md
-
-# Source: https://docs.pinecone.io/guides/organizations/manage-billing/download-usage-report.md
-
-# Source: https://docs.pinecone.io/guides/assistant/admin/download-usage-report.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Download a usage report
 

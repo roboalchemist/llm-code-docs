@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/learn/llm-connections.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Connect to any LLM
 
 > Comprehensive guide on integrating CrewAI with various Large Language Models (LLMs) using LiteLLM, including supported providers and configuration options.

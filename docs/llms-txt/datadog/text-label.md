@@ -4,7 +4,6 @@
 title: Text label Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: 'Docs > Cloudcraft (Standalone) > Components: Common > Text label Component'
-source_url: https://docs.datadoghq.com/components-common/text-label/index.html
 ---
 
 # Text label Component

@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/loop-builder.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Loop builder
 
 > Loops let you send emails based on something happening, like a contact property updating, a new contact being created or an external event happening in another platform.

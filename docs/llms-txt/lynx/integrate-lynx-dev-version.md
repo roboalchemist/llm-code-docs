@@ -28,11 +28,11 @@ You can find the development version corresponding to your release version at [g
       Update your `Podfile` to use the dev version of the Lynx component.
 
       ```ruby title="Podfile"
-      pod 'Lynx', '3.4.1' # [!code --]
-      pod 'Lynx', '3.4.1-dev' # [!code ++]
+      pod 'Lynx', '3.6.0' # [!code --]
+      pod 'Lynx', '3.6.0-dev' # [!code ++]
 
-      pod 'LynxDevtool', '3.4.1' # [!code --]
-      pod 'LynxDevtool', '3.4.1-dev' # [!code ++]
+      pod 'LynxDevtool', '3.6.0' # [!code --]
+      pod 'LynxDevtool', '3.6.0-dev' # [!code ++]
       ```
 
       ### Install Dependencies
@@ -58,17 +58,17 @@ You can find the development version corresponding to your release version at [g
       <Tabs groupId="impl-android">
         <Tab label="build.gradle">
           ```groovy
-          - implementation ("org.lynxsdk.lynx:lynx:3.4.1")
-          + implementation ("org.lynxsdk.lynx:lynx:3.4.1-dev") {
+          - implementation ("org.lynxsdk.lynx:lynx:3.6.0")
+          + implementation ("org.lynxsdk.lynx:lynx:3.6.0-dev") {
           +   // Exclude the lynx-trace module to avoid including it transitively
           +  exclude group: 'org.lynxsdk.lynx', module: 'lynx-trace'
           + }
 
-          - implementation ("org.lynxsdk.lynx:lynx-trace:3.4.1")
-          + implementation ("org.lynxsdk.lynx:lynx-trace:3.4.1-dev")
+          - implementation ("org.lynxsdk.lynx:lynx-trace:3.6.0")
+          + implementation ("org.lynxsdk.lynx:lynx-trace:3.6.0-dev")
 
-          - implementation ("org.lynxsdk.lynx:lynx-devtool:3.4.1")
-          + implementation ("org.lynxsdk.lynx:lynx-devtool:3.4.1") {
+          - implementation ("org.lynxsdk.lynx:lynx-devtool:3.6.0")
+          + implementation ("org.lynxsdk.lynx:lynx-devtool:3.6.0") {
           +   // Exclude the lynx-trace and lynx module to avoid including it transitively
           +   exclude group: 'org.lynxsdk.lynx', module: 'lynx-trace'
           +   exclude group: 'org.lynxsdk.lynx', module: 'lynx'
@@ -80,17 +80,17 @@ You can find the development version corresponding to your release version at [g
         <Tab label="build.gradle.kts">
           ```kotlin
 
-          - implementation ("org.lynxsdk.lynx:lynx:3.4.1")
-          + implementation ("org.lynxsdk.lynx:lynx:3.4.1-dev") {
+          - implementation ("org.lynxsdk.lynx:lynx:3.6.0")
+          + implementation ("org.lynxsdk.lynx:lynx:3.6.0-dev") {
           +   // Exclude the lynx-trace module to avoid including it transitively
           +  exclude(group = "org.lynxsdk.lynx", module = "lynx-trace")
           + }
 
-          - implementation ("org.lynxsdk.lynx:lynx-trace:3.4.1")
-          + implementation ("org.lynxsdk.lynx:lynx-trace:3.4.1-dev")
+          - implementation ("org.lynxsdk.lynx:lynx-trace:3.6.0")
+          + implementation ("org.lynxsdk.lynx:lynx-trace:3.6.0-dev")
 
-          - implementation ("org.lynxsdk.lynx:lynx-devtool:3.4.1")
-          + implementation ("org.lynxsdk.lynx:lynx-devtool:3.4.1") {
+          - implementation ("org.lynxsdk.lynx:lynx-devtool:3.6.0")
+          + implementation ("org.lynxsdk.lynx:lynx-devtool:3.6.0") {
           +   // Exclude the lynx-trace and lynx module to avoid including it transitively
           +   exclude(group = "org.lynxsdk.lynx", module = "lynx-trace")'
           +   exclude(group = 'org.lynxsdk.lynx', module = 'lynx')
@@ -122,10 +122,10 @@ You can find the development version corresponding to your release version at [g
 
       ```json5
       "dependencies": {
-        "@lynx/lynx": "3.5.1", // [!code --]
-        "@lynx/lynx_devtool": "3.5.1", // [!code --]
-        "@lynx/lynx": "3.5.1-dev", // [!code ++]
-        "@lynx/lynx_devtool": "3.5.1-dev", // [!code ++]
+        "@lynx/lynx": "3.6.0", // [!code --]
+        "@lynx/lynx_devtool": "3.6.0", // [!code --]
+        "@lynx/lynx": "3.6.0-dev", // [!code ++]
+        "@lynx/lynx_devtool": "3.6.0-dev", // [!code ++]
       }
       ```
 

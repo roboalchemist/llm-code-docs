@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/reference/aptible-cli/cli-commands/cli-log-drain-create-syslog.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # aptible log_drain:create:syslog
 
 This command lets you create a [Log Drain](/core-concepts/observability/logs/log-drains/overview) to forward your container logs to an [Syslog TCP+TLS destination](/core-concepts/observability/logs/log-drains/syslog-log-drains) of your choice.

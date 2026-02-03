@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/request-signing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Request signing
 
 We sign outbound requests we make to your target URLs with a HMAC signature using a shared secret key. This allows you to verify that the request was made by Plain and not a third party.

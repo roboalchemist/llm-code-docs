@@ -64,7 +64,7 @@ It is important to undeploy the Vespa application(s) first. After running the Te
 
 **Identities restricted by domain**: If your GCP organization is using[domain restriction for identities](https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains)you will need to permit Vespa.ai GCP identities to be added to your project. For Vespa Cloud the organization ID to allow identities from is: _1056130768533_, and the Google Customer ID is _C00u32w3e_.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

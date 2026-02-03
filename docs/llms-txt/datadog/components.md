@@ -6,7 +6,6 @@ description: >-
   Comprehensive reference for App Builder UI components including buttons,
   forms, tables, charts, and interactive elements.
 breadcrumbs: Docs > App Builder > Components
-source_url: https://docs.datadoghq.com/app_builder/components/index.html
 ---
 
 # Components
@@ -22,7 +21,7 @@ This product is not supported for your selected [Datadog site](https://docs.data
 
 This page provides a list of UI components that you can use when creating apps in App Builder.
 
-Many component properties allow you to select from provided values. If you want to use an expression for a property's value, click **</>** next to the property to use the code editor. For more information on using JavaScript in App Builder, see [JavaScript Expressions](https://docs.datadoghq.com/service_management/app_builder/expressions).
+Many component properties allow you to select from provided values. If you want to use an expression for a property's value, click **</>** next to the property to use the code editor. For more information on using JavaScript in App Builder, see [JavaScript Expressions](https://docs.datadoghq.com/service_management/app_builder/expressions). For more information about saving your components as a template, see [Reusable Modules](https://docs.datadoghq.com/actions/app_builder/components/reusable_modules/).
 
 {% collapsible-section %}
 ### Button

@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/billable-metrics/rounding.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Rounding
 
 > Lago aggregates your events in real time. You can add rounding rules to the final result.

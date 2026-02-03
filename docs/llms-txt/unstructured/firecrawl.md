@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/examplecode/tools/firecrawl.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Firecrawl
 
 [Firecrawl](https://firecrawl.dev/) is a tool that allows you to crawl websites and extract data from them.
@@ -154,7 +158,7 @@ This walkthrough uses the popular Python package and project manager [uv](https:
 
   <Step title="Create a venv virtual environment">
     To isolate and manage your project's code dependencies, you should create a virtual environment. This walkthrough uses
-    the popular Python virtual environment manager [venv](https://docs.python.org/3/library/venv.html) (although `venv` is not required to use CrewAI or the Unstructured Workflow Endpoint MCP Server).
+    the popular Python virtual environment manager [venv](https://docs.python.org/3/library/venv.html) (although `venv` is not required to use CrewAI or the Unstructured API's workflow operations MCP Server).
     From the root of your project directory, use `uv` to create a virtual environment with `venv` by running the following command:
 
     ```bash  theme={null}

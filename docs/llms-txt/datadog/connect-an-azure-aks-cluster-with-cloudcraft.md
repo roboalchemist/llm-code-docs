@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Cloudcraft (Standalone) > Getting started > Connect an Azure AKS
   Cluster with Cloudcraft
-source_url: >-
-  https://docs.datadoghq.com/getting-started/connect-an-azure-aks-cluster-with-cloudcraft/index.html
 ---
 
 # Connect an Azure AKS Cluster with Cloudcraft

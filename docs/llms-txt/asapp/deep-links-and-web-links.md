@@ -2,21 +2,9 @@
 
 # Source: https://docs.asapp.com/agent-desk/integrations/android-sdk/deep-links-and-web-links.md
 
-# Source: https://docs.asapp.com/agent-desk/integrations/ios-sdk/deep-links-and-web-links.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/android-sdk/deep-links-and-web-links.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/ios-sdk/deep-links-and-web-links.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/android-sdk/deep-links-and-web-links.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/ios-sdk/deep-links-and-web-links.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/android-sdk/deep-links-and-web-links.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/ios-sdk/deep-links-and-web-links.md
-
-# Source: https://docs.asapp.com/agent-desk/integrations/android-sdk/deep-links-and-web-links.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Deep Links and Web Links
 
@@ -36,7 +24,7 @@ ASAPP provides an `Activity` instance for convenience, in case you need to start
 
 ### Example: Parsing and Opening Deep Links in Your Activity
 
-If your app receives deep links through an Intent, you can extract the parameters and forward them to the ASAPP SDK when reopening a chat.
+If your app receives deep links through an Intent, you can extract the parameters and forward them to the ASAPP SDK when you reopen a chat.
 
 ```kotlin  theme={null}
 object AppDeepLinkHelper {
@@ -107,7 +95,7 @@ Please see the Android documentation on [Handling Android App Links](https://dev
 
 ### Connecting the Pieces
 
-Once you set up a custom URL scheme for your app and handle deep links into your application, you can start chat to pass any data payload extracted from the link:
+Once you set up a custom URL scheme for your app and handle deep links into your application, you can start chat to pass any data payload that you extract from the link:
 
 ```json  theme={null}
 ASAPP.instance.openChat(context, asappIntent= mapOf("Code": "EXAMPLE_INTENT"))

@@ -10,7 +10,7 @@
 
 At Apify, when we talk about a README, we don’t mean a guide mainly aimed at developers that explains what a project is, how to set it up, or how to contribute to it. At least, not in its traditional sense.
 
-You could argue our notion of README is closer to this https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes:
+You could argue our notion of README is closer to this [one described on GitHub](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-readmes):
 
 README files typically include information on:
 
@@ -161,9 +161,9 @@ To embed a YouTube video, all you have to do is include its URL. No further form
 
 Try Carbon for code
 
-If you want to add snippets of code anywhere in your README, you can use https://github.com/carbon-app/carbon.
+If you want to add snippets of code anywhere in your README, you can use [Carbon](https://github.com/carbon-app/carbon).
 
-If you need quick Markdown guidance, check out https://www.markdownguide.org/cheat-sheet/
+If you need quick Markdown guidance, check out [https://www.markdownguide.org/cheat-sheet/](https://www.markdownguide.org/cheat-sheet/)
 
 ## README and SEO
 
@@ -209,7 +209,7 @@ If your page has a video, it has a better chance of ranking higher in Google.
 
 The README should serve as a fallback for your users if something isn't immediately obvious in the input schema. There's also only that much space in the input schema and the tooltips, so naturally, if you want to provide more details about something, e.g. input, formatting, or expectations, you should put it in the README and refer to it from the relevant place in the input schema.
 
-Learn about https://docs.apify.com/academy/actor-marketing-playbook/product-optimization/how-to-create-a-great-input-schema.md
+Learn about [How to create a great input schema](https://docs.apify.com/academy/actor-marketing-playbook/product-optimization/how-to-create-a-great-input-schema.md)
 
 ## Readme elements template
 
@@ -258,7 +258,7 @@ For better user experience, Apify Console automatically renders every YouTube UR
 3. Output
 
    * Mention "You can download the dataset extracted by (Actor name) in various formats such as JSON, HTML, CSV, or Excel.”
-   * Add a simplified JSON dataset example, like here https://apify.com/compass/crawler-google-places#output-example
+   * Add a simplified JSON dataset example, like here [https://apify.com/compass/crawler-google-places#output-example](https://apify.com/compass/crawler-google-places#output-example)
 
 4. Tips or Advanced options section
 
@@ -268,6 +268,6 @@ If you want some general tips on how to make a GitHub README that stands out, ch
 
 ## Resources
 
-https://towardsdatascience.com/build-a-stunning-readme-for-your-github-profile-9b80434fe5d7
+[Build a Stunning README For Your GitHub Profile](https://towardsdatascience.com/build-a-stunning-readme-for-your-github-profile-9b80434fe5d7)
 
-https://yushi95.medium.com/how-to-create-a-beautiful-readme-for-your-github-profile-36957caa711c
+[How to Create a Beautiful README for Your GitHub Profile](https://yushi95.medium.com/how-to-create-a-beautiful-readme-for-your-github-profile-36957caa711c)

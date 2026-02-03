@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/features/integrations/affonso.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Affonso Affiliates with Polar
 
 This guide explains how to integrate
@@ -108,7 +112,7 @@ const referralId = window.affonso_referral;
 // Create checkout session with Polar
 const checkout = await polar.checkouts.create({
   products: ["your_product_id"],
-  success_url: "https://your-site.com/success",
+  success_url: "https://your-app.com/success",
   metadata: {
     affonso_referral: referralId, // Include referral ID from Affonso
   }

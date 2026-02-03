@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/common/account/teams.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Teams and Users
 
 Team management enables collaboration with other users. You can create a team and invite people to join by using their email addresses. Team members will have access to databases created under the team based on their assigned roles.

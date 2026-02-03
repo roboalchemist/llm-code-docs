@@ -13,7 +13,7 @@ Learn how to gain API access.
 
 Before you begin using the Quo API, ensure you have:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="An active Quo subscription" icon="check">
     Need an account? Follow our [account creation
     guide](https://support.openphone.com/hc/en-us/articles/1500009886621-How-to-create-an-OpenPhone-account).
@@ -138,7 +138,7 @@ Fetch a paginated list of calls associated with a specific OpenPhone number and 
 # Changelog
 Source: https://www.quo.com/docs/mdx/api-reference/changelog
 
-Stay up to date with the latest improvements to the API.
+Stay up to date with the latest improvements to the API. View [main product Changelog.](https://support.quo.com/changelog)
 
 <Update label="January 22, 2025" description="1.2.0">
   ### Minor Changes
@@ -309,7 +309,7 @@ The Quo API enables developers to integrate powerful communication features dire
 
 ## Key features
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="REST architecture" icon="code">
     Industry-standard REST API design with JSON responses for easy integration
   </Card>
@@ -399,7 +399,7 @@ Quo implements rate limiting to ensure API stability and fair usage.
 
 Each API key may make up to **10 requests per second.**
 
-Exceeding this limit may result in `429` status code errors. If you'd like to request a higher rate limit, reach out to us at [support+developers@quo.com](mailto:support+developers@quo.com).
+Exceeding this limit may result in `429` status code errors.
 
 <Tip>
   Implement request throttling in your application to stay within rate limits and optimize API usage.
@@ -455,21 +455,6 @@ You are now ready to send your first text message! Once you send your text messa
 ### Summary
 
 You are now able to send a text message to anyone in US or Canada. By using the API, you are able to programmatically send texts to your customers.
-
-
-# Technology partners
-Source: https://www.quo.com/docs/mdx/api-reference/tech-partner
-
-Integrate Quo to give your app powerful communication and AI features.
-
-**Interested in becoming a Quo technology partner?**\
-Technology partners are builders who create integrations between Quo and other platforms. By integrating with Quo, you can deliver seamless communication workflows and enhanced functionality to your users.
-
-Start by [**signing up**](https://my.quo.com/signup) for a Quo account for a free 7-day trial. When you're ready, submit the form below to request access to a free sandbox account for development and testing.
-
-<Icon icon="hand-point-right" iconType="regular" /> [Request demo account](https://openphone.typeform.com/to/Mdiga17a)
-
-Questions? Email our Partnerships team at [partners@quo.com](mailto:partners@quo.com).
 
 
 # Get a user by ID
@@ -583,7 +568,7 @@ Before beginning development with an LLM, gather and prepare the necessary docum
 
 ### Working with LLMs
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Clear goals" icon="bullseye">
     Start by clearly describing your integration objectives to the LLM
   </Card>
@@ -632,7 +617,7 @@ Here's a practical example of how to instruct an LLM to help build with our API:
 
 <AccordionGroup>
   <Accordion title="Sample project: message sender">
-    ```text  theme={null}
+    ```text theme={null}
     I want to build an application that:
     1. Displays a list of all my phone numbers
     2. Allows me to select a number to send a message with
@@ -644,7 +629,7 @@ Here's a practical example of how to instruct an LLM to help build with our API:
   </Accordion>
 
   <Accordion title="Contact management example">
-    ```text  theme={null}
+    ```text theme={null}
     Help me create a system to:
     1. Sync contacts from my CRM
     2. Update contact details automatically
@@ -656,7 +641,7 @@ Here's a practical example of how to instruct an LLM to help build with our API:
 
 ## Integration patterns
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Message automation" icon="robot">
     Automate message handling and responses
   </Card>
@@ -703,40 +688,48 @@ Here's a practical example of how to instruct an LLM to help build with our API:
 </Info>
 
 
-# Integration contacts
+# External contacts
 Source: https://www.quo.com/docs/mdx/guides/contacts
 
-Learn more about working with contacts via the Quo API.
+Learn about working with contacts imported via the Quo API or native integrations.
 
-## Understanding integration contacts
+## Understanding external contacts
 
-Integration contacts are contacts that are created and managed through the Quo API. They provide a programmatic way to import contact records from external sources into your Quo workspace.
+External contacts are contacts that originate from outside the Quo app: either created through the Quo API or synced via native integrations (such as CRM or other connected platforms). These contacts allow you to centralize contact records from multiple sources within your Quo workspace.
 
 ### Key characteristics
 
-<CardGroup cols={1}>
-  <Card title="Distinct from app contacts">
-    Integration contacts are separate from contacts created directly in the Quo app, with their own specific behaviors and management flow.
+<CardGroup>
+  <Card title="Distinct from app-created contacts">
+    External contacts are separate from contacts created directly in the Quo app, with their own specific behaviors depending on how they were created.
   </Card>
 
-  <Card title="API-first management">
-    These contacts are designed to be managed exclusively through API endpoints, enabling automated contact management and integration with your existing systems. They cannot be modified or deleted within Quo.
+  <Card title="Two sources, different behaviors">
+    External contacts can come from two sources: the Quo API or native integrations and each has different editability rules within the Quo app.
+  </Card>
+</CardGroup>
+
+### Editability by source
+
+<CardGroup>
+  <Card title="API-created contacts" icon="code">
+    Contacts created via the Quo API can be updated directly within the Quo app. You can also continue managing them programmatically through API endpoints.
+  </Card>
+
+  <Card title="Native integration contacts" icon="plug">
+    Contacts synced from native integrations remain read-only within Quo. Any changes must be made in the source system and synced back to Quo.
   </Card>
 </CardGroup>
 
 ### Important behaviors and limitations
 
-<CardGroup cols={1}>
+<CardGroup>
   <Card title="Preserving contact IDs">
-    When you create an integration contact using the `POST /contacts` endpoint, it's essential to save the `id` returned in the response. This `id` will be required for all future operations involving the contact.
+    When you create a contact using the `POST /contacts` endpoint, it's essential to save the `id` returned in the response. This `id` will be required for all future API operations involving the contact.
   </Card>
 
   <Card title="Visibility in the Quo app">
-    After creating an integration contact, it will only appear in the Quo app—whether in the conversation list, contact list, or search results—if there's an associated conversation with a matching phone number.
-  </Card>
-
-  <Card title="Read-only status">
-    At present, integration contacts are read-only within the Quo app. To make any updates or changes to an integration contact, you will need to use the `PATCH /contacts/:id` endpoint.
+    After creating an API contact, it will only appear in the Quo app—whether in the conversation list, contact list, or search results—if there's an associated conversation with a matching phone number.
   </Card>
 </CardGroup>
 
@@ -745,7 +738,7 @@ Integration contacts are contacts that are created and managed through the Quo A
 Quo organizes contact information using two distinct field types. Understanding these is crucial for effective contact management.
 
 <AccordionGroup>
-  <Accordion title="Default fields" defaultOpen={true}>
+  <Accordion title="Default fields">
     Every contact in Quo includes these predefined fields:
 
     * First Name
@@ -775,7 +768,7 @@ Quo organizes contact information using two distinct field types. Understanding 
   </Accordion>
 </AccordionGroup>
 
-## Creating and managing contacts
+## Creating and managing contacts via API
 
 Follow these steps to effectively create and manage contacts through the API:
 
@@ -787,7 +780,7 @@ Follow these steps to effectively create and manage contacts through the API:
   <Step title="Prepare contact data">
     Structure your contact data according to both default and custom fields:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "defaultFields": {
         "firstName": "John",
@@ -811,7 +804,7 @@ Follow these steps to effectively create and manage contacts through the API:
   </Step>
 
   <Step title="Manage the contact">
-    Use the saved contact ID with the `PATCH /contacts/:id` endpoint for any future updates to the contact's information.
+    Update contacts either within the Quo app or programmatically using the `PATCH /contacts/:id` endpoint with the saved contact ID.
   </Step>
 </Steps>
 
@@ -858,7 +851,7 @@ This guide provides a foundation for implementing a one-way sync from Google She
 
     ##### 2.2 Create a new Node.js project and initialize it
 
-    ```bash  theme={null}
+    ```bash theme={null}
     mkdir quo-sync
     cd quo-sync
     npm init -y
@@ -866,13 +859,13 @@ This guide provides a foundation for implementing a one-way sync from Google She
 
     ##### 2.3 Install required packages
 
-    ```bash  theme={null}
+    ```bash theme={null}
     npm install googleapis axios dotenv node-cron
     ```
 
     ##### 2.4 Create a .env file to store environment variables
 
-    ```bash  theme={null}
+    ```bash theme={null}
     QUO_API_KEY=your_quo_api_key
     GOOGLE_APPLICATION_CREDENTIALS=path/to/your/credentials.json
     GOOGLE_SHEET_ID=your_google_sheet_id
@@ -882,7 +875,7 @@ This guide provides a foundation for implementing a one-way sync from Google She
   <Accordion title="3. Implement the sync process">
     ##### 3.1 Create a new file named `sync.js` and add the setup functions
 
-    ```js  theme={null}
+    ```js theme={null}
     require("dotenv").config();
     const { google } = require("googleapis");
     const axios = require("axios");
@@ -906,7 +899,7 @@ This guide provides a foundation for implementing a one-way sync from Google She
 
     ##### 3.2 Add the Quo API helper functions
 
-    ```js  theme={null}
+    ```js theme={null}
     async function createQuoContact(contactData) {
       const response = await quo.post("/contacts", contactData);
       return response.data.data;
@@ -920,7 +913,7 @@ This guide provides a foundation for implementing a one-way sync from Google She
 
     ##### 3.3 Add the Google Sheets to Quo contacts mapping function
 
-    ```js  theme={null}
+    ```js theme={null}
     function mapFields(sheetRow) {
       if (!sheetRow.firstName) {
         console.warn("Missing required firstName in row: ", sheetRow);
@@ -943,7 +936,7 @@ This guide provides a foundation for implementing a one-way sync from Google She
 
     ##### 3.4 Add the Google Sheets helper functions
 
-    ```js  theme={null}
+    ```js theme={null}
     async function getGoogleSheetsData() {
       const sheets = google.sheets({ version: "v4", googleAuth });
 
@@ -977,7 +970,7 @@ This guide provides a foundation for implementing a one-way sync from Google She
 
     ##### 3.4 Finally, tie it all together
 
-    ```js  theme={null}
+    ```js theme={null}
     async function syncContacts() {
       const sheetContacts = await getGoogleSheetsData();
 
@@ -1001,7 +994,7 @@ This guide provides a foundation for implementing a one-way sync from Google She
   </Accordion>
 
   <Accordion title="4. Running the sync process">
-    ```bash  theme={null}
+    ```bash theme={null}
     node sync.js
     ```
 
@@ -1029,7 +1022,9 @@ A reference for API-generated webhook payloads.
 
 Quo API webhooks allow developers to receive real-time notifications for various events, such as calls, messages, and transcripts. By integrating webhooks into your workflows, you can automate processes, enhance user experiences, and seamlessly connect Quo with other systems.
 
-<Note>**Important note:** Webhooks created in the Quo app are not compatible with those created via the API. You cannot access or modify app webhooks through the API, or API webhooks in the app.</Note>
+<Note>
+  **Important note:** Webhooks created in the Quo app are not compatible with those created via the API. You cannot access or modify app webhooks through the API, or API webhooks in the app.
+</Note>
 
 ## Webhooks payload sample data models
 
@@ -1037,10 +1032,9 @@ Each webhook event provides a structured payload with specific data. We've provi
 
 ### Calls
 
-These webhooks are triggered in response  in response to call-related events: `call.ringing`, `call.completed`, and `call.recording.completed`.
-The following is an example of the payload for a `call.ringing` event.
+These webhooks are triggered in response  in response to call-related events: `call.ringing`, `call.completed`, and `call.recording.completed`. The following is an example of the payload for a `call.ringing` event.
 
-```json  theme={null}
+```json theme={null}
 {
   "id": "EV0ea54cadfbf342e6ac4ca1f22ed1700c",
   "object": "event",
@@ -1066,7 +1060,10 @@ The following is an example of the payload for a `call.ringing` event.
           "+15555555555"
         ],
         "updatedAt": "2022-01-01T00:00:00Z",
-        "userId": "USlHhXmRMz"
+        "userId": "USlHhXmRMz",
+		"contactIds": [
+			"6824dfb69aee85c132b7dg65"
+		]
       }
   }
 }
@@ -1076,7 +1073,7 @@ The following is an example of the payload for a `call.ringing` event.
 
 This webhook is triggered in response to a `call.summary.completed` event.
 
-```json  theme={null}
+```json theme={null}
 {
   "id": "EV0ea54cadfbf342e6ac4ca1f22ed1700c",
   "object": "event",
@@ -1093,7 +1090,10 @@ This webhook is triggered in response to a `call.summary.completed` event.
       ],
       "nextSteps": [
         "Bring an umbrella."
-      ]
+      ],
+	  "contactIds": [
+		"6824dfb69aee85c132b7dg65"
+	  ]
     }
   }
 }
@@ -1103,7 +1103,7 @@ This webhook is triggered in response to a `call.summary.completed` event.
 
 This webhook is triggered in response to a `call.transcript.completed` event.
 
-```json  theme={null}
+```json theme={null}
 {
   "id": "EV0ea54cadfbf342e6ac4ca1f22ed1700c",
   "object": "event",
@@ -1125,7 +1125,10 @@ This webhook is triggered in response to a `call.transcript.completed` event.
         }
       ],
       "duration": 5,
-      "status": "completed"
+      "status": "completed",
+	  "contactIds": [
+		"6824dfb69aee85c132b7dg65"
+	  ]
     }
   }
 }
@@ -1135,7 +1138,7 @@ This webhook is triggered in response to a `call.transcript.completed` event.
 
 This webhook is triggered in response to message events such as `message.received` and `message.delivered`. Below is a sample payload for a `message.received` event.
 
-```json  theme={null}
+```json theme={null}
 {
   "id": "EVc67ec998b35c41d388af50799aeeba3e",
   "object": "event",
@@ -1153,7 +1156,10 @@ This webhook is triggered in response to message events such as `message.receive
       "status": "delivered",
       "createdAt": "2022-01-23T16:55:52.420Z",
       "userId": "USu5AsEHuQ",
-      "phoneNumberId": "PNtoDbDhuz"
+      "phoneNumberId": "PNtoDbDhuz",
+	  "contactIds": [
+	  	"6824dfb69aee85c132b7dg65"
+	  ]
     }
   }
 }
@@ -1173,7 +1179,7 @@ Source: https://www.quo.com/docs/mdx/pricing-support/minimizing-costs
 
 We’ve provided the below tips to help you minimize segment counts and save money.
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Watch Your character count" icon="square-1">
     Standard Latin alphabet characters, numbers, and basic punctuation use 160 characters per segment.
   </Card>
@@ -1213,14 +1219,14 @@ At Quo, we believe in transparent and fair pricing. Sometimes it can be hard to 
 
 Our pricing is based on message segments, making it easy to calculate costs:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Local (US and Canada) SMS" icon="location-pin">
     <p>\$0.01 per segment</p>
   </Card>
 
   <Card title="International SMS" icon="globe">
     <p>\$0.01 + country-specific rate per segment</p>
-    <p className="text-sm">Rates vary by destination country</p>
+    <p>Rates vary by destination country</p>
   </Card>
 </CardGroup>
 
@@ -1230,31 +1236,54 @@ Our pricing is based on message segments, making it easy to calculate costs:
 
 ## Understanding message segments
 
-A message segment is our basic billing unit. Learn more below:
+A **segment** is the basic unit we use to calculate SMS billing. Every message you send is divided into one or more segments based on two factors:
 
-<AccordionGroup>
-  <Accordion title="Segment length">
-    Each segment can contain up to 160 standard characters (letters, numbers, spaces, basic punctuation)
-  </Accordion>
+1. **Message length** (character count)
+2. **Character type** (standard or special characters)
 
-  <Accordion title="Special characters">
-    Messages with special characters (é, ñ, emoji) have a 70 character limit per segment
-  </Accordion>
+## How character types affect segment size
 
-  <Accordion title="Long messages">
-    Messages longer than one segment are automatically split and billed as multiple segments
-  </Accordion>
+### Standard GSM characters
 
-  <Accordion title="Segment calculator">
-    Use our recommended [Segment Calculator](https://twiliodeved.github.io/message-segment-calculator/) to estimate message costs
-  </Accordion>
-</AccordionGroup>
+Messages using only standard GSM-7 characters fit **up to 160 characters per segment**.
+
+Standard characters include:
+
+* Letters (A-Z, a-z)
+* Numbers (0-9)
+* Spaces
+* Basic punctuation (. , ! ? - etc.)
+
+### Special/Non-GSM characters
+
+<Info>
+  **If your message contains even one special character, the entire message is billed at the 70-character limit** — not just the portion with special characters. This often results in more segments and higher costs than you might expect.
+</Info>
+
+Messages containing **any** special characters fit only **up to 70 characters per segment**.
+
+Special characters include:
+
+* Accented letters (é, ñ, ü)
+* Curly/smart quotes (" " ' ')
+* Emojis (😊, 🚀, ✨)
+* Many international characters
+
+## Tools and optimization
+
+### Segment calculator
+
+Use our [Segment Calculator](https://twiliodeved.github.io/message-segment-calculator/) tool to estimate costs before sending messages. This helps you optimize your message length and content to avoid unexpected charges.
+
+### Smart encoding
+
+The Quo API automatically enables **smart encoding** to minimize segment usage and reduce costs wherever possible. This feature works behind the scenes to choose the most efficient encoding for your messages.
 
 ## API message types
 
 You're only charged for outgoing API-powered messages, which include:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Direct API Usage" icon="code">
     Messages sent through direct API calls
   </Card>
@@ -1296,7 +1325,9 @@ We use a credit-based system for all API messaging charges:
 
 ### Support & assistance
 
-<Info>Need help understanding our pricing or managing your costs? Our team is here to help. Email us at [support+developers@quo.com](mailto:support+developers@quo.com) with any questions. </Info>
+<Info>
+  Need help understanding our pricing or managing your costs? Our team is here to help. Email us at [support+developers@quo.com](mailto:support+developers@quo.com) with any questions.
+</Info>
 
 
 # Terms of Service

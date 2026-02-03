@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/plugins/what3words.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # What3Words Converter Plugin
 
 > Automatically convert What3Words addresses into standard geographic data including country codes, nearest places, and latitude/longitude coordinates using the official What3Words API.
@@ -12,7 +16,7 @@ This is useful for any data import workflow where users provide locations using 
 
 Install the plugin using npm:
 
-```bash
+```bash  theme={null}
 npm install @flatfile/plugin-convert-what3words
 ```
 
@@ -55,7 +59,7 @@ The plugin is configured through the `convertWhat3words` function, which accepts
 Apply the What3Words converter to a specific sheet:
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { convertWhat3words } from '@flatfile/plugin-convert-what3words';
 
@@ -73,7 +77,7 @@ Apply the What3Words converter to a specific sheet:
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { convertWhat3words } from '@flatfile/plugin-convert-what3words';
 
@@ -97,7 +101,7 @@ Apply the What3Words converter to a specific sheet:
 Configure the plugin to run on all sheets by omitting the `sheetSlug` option:
 
 <CodeGroup>
-  ```javascript JavaScript
+  ```javascript JavaScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { convertWhat3words } from '@flatfile/plugin-convert-what3words';
 
@@ -115,7 +119,7 @@ Configure the plugin to run on all sheets by omitting the `sheetSlug` option:
   }
   ```
 
-  ```typescript TypeScript
+  ```typescript TypeScript theme={null}
   import { FlatfileListener } from '@flatfile/listener';
   import { convertWhat3words } from '@flatfile/plugin-convert-what3words';
 

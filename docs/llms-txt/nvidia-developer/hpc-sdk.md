@@ -10,7 +10,7 @@ The NVIDIA HPC Software Development Kit (SDK) includes the proven compilers, lib
 
 The NVIDIA HPC SDK C, C++, and Fortran compilers support GPU acceleration of HPC modeling and simulation applications with standard C++ and Fortran, OpenACC® directives, and CUDA®. GPU-accelerated math libraries maximize performance on common HPC algorithms, and optimized communications libraries enable standards-based multi-GPU and scalable systems programming. Performance profiling and debugging tools simplify porting and optimization of HPC applications, and containerization tools enable easy deployment on-premises or in the cloud. With support for NVIDIA GPUs and Arm or x86-64 CPUs running Linux, the HPC SDK provides the tools you need to build NVIDIA GPU-accelerated HPC applications.
 
-[Download Now](https://developer.nvidia.com/nvidia-hpc-sdk-downloads)[Get Container](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/nvhpc)
+[Download Now](/hpc-sdk/downloads)[Get Container](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/nvhpc)
 
 * * *
 
@@ -168,6 +168,6 @@ HPC Compiler Support Services provide access to NVIDIA technical experts, includ
 
 ## Get Started
 
-[Download](/nvidia-hpc-sdk-downloads)
+[Download](/hpc-sdk/downloads)
 
 

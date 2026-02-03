@@ -4,7 +4,6 @@
 title: Log Management Billing
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Account Management > Billing > Log Management Billing
-source_url: https://docs.datadoghq.com/billing/log_management/index.html
 ---
 
 # Log Management Billing

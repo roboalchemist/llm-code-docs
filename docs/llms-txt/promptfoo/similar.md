@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/configuration/expected-outputs/similar/
+
 # Similarity (embeddings)
 
 The `similar` assertion checks if an embedding of the LLM's output is semantically similar to the expected value, using a configurable similarity or distance metric with a threshold.

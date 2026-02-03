@@ -11,7 +11,7 @@ B0 makes browser automation easy. Just describe what you want to do, and B0 does
 
 B0 is the easiest way to automate anything on the web. Just tell B0 what you want to do in plain English, and it handles the rest.
 
-<video autoPlay loop src="https://mintcdn.com/anchor-b3ec2715/V6tjZpqsv8Tyl1ck/images/b0-preview.mp4?fit=max&auto=format&n=V6tjZpqsv8Tyl1ck&q=85&s=6ae6c70e6c678bfb1c7cdaec842f6517" data-path="images/b0-preview.mp4" />
+<video />
 
 ## [Try it now!](https://b0.dev)
 
@@ -45,11 +45,11 @@ B0 takes your prompt and runs the following process:
 
 This feature allows you to show B0 the flow you want manually, while recording, B0 analyzes what's done and with the context of the prompt, it will generate the deterministic code as expected.
 
-<img src="https://mintcdn.com/anchor-b3ec2715/51vS79ehAZFEznST/images/b0-manual-demonstration.png?fit=max&auto=format&n=51vS79ehAZFEznST&q=85&s=6d45d070f6f7dd24bada20af287cfb66" data-og-width="1466" width="1466" data-og-height="330" height="330" data-path="images/b0-manual-demonstration.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/51vS79ehAZFEznST/images/b0-manual-demonstration.png?w=280&fit=max&auto=format&n=51vS79ehAZFEznST&q=85&s=d833cadf7b1e637a5533db09d6a7e562 280w, https://mintcdn.com/anchor-b3ec2715/51vS79ehAZFEznST/images/b0-manual-demonstration.png?w=560&fit=max&auto=format&n=51vS79ehAZFEznST&q=85&s=05c5cbaefb0e5b481f992a70a24107d0 560w, https://mintcdn.com/anchor-b3ec2715/51vS79ehAZFEznST/images/b0-manual-demonstration.png?w=840&fit=max&auto=format&n=51vS79ehAZFEznST&q=85&s=551228c0b41872cbecf85670d4c11164 840w, https://mintcdn.com/anchor-b3ec2715/51vS79ehAZFEznST/images/b0-manual-demonstration.png?w=1100&fit=max&auto=format&n=51vS79ehAZFEznST&q=85&s=ced400956a586275b6162fa44c17975d 1100w, https://mintcdn.com/anchor-b3ec2715/51vS79ehAZFEznST/images/b0-manual-demonstration.png?w=1650&fit=max&auto=format&n=51vS79ehAZFEznST&q=85&s=2c8a5bc6bfa595bb2e52b0befc2ac36f 1650w, https://mintcdn.com/anchor-b3ec2715/51vS79ehAZFEznST/images/b0-manual-demonstration.png?w=2500&fit=max&auto=format&n=51vS79ehAZFEznST&q=85&s=0862f91a14c5fd7707b40f79858acb86 2500w" />
+<img />
 
 ## Core Advantages
 
-<CardGroup cols={3}>
+<CardGroup>
   <Card title="Reduced Costs" icon="dollar">
     Agent costs applied only on task creation. Any additional run doesn't require an agent involvement.
   </Card>
@@ -63,198 +63,9 @@ This feature allows you to show B0 the flow you want manually, while recording, 
   </Card>
 </CardGroup>
 
-<Info>
+<Note>
   **Need help?** B0 works best when you describe exactly what you want to do. Be specific about which websites, what actions to take, and what results you expect. You can also show B0 how to do it by demonstrating the steps yourself.
-</Info>
-
-
-# Self-healing
-Source: https://docs.anchorbrowser.io/B0-self-healing
-
-Automatically detect and fix task failures with runtime agent intervention
-
-Self-healing enables your tasks to automatically recover from errors by triggering a runtime agent to complete the execution and generate updated code.
-
-## How self-healing works
-
-When self-healing is enabled, B0 monitors task execution for specific error states. If a self-healing trigger is detected, the system automatically:
-
-<Steps>
-  <Step title="Runtime agent intervention">
-    A runtime agent takes over the current task execution to complete it successfully.
-  </Step>
-
-  <Step title="Agent evaluation">
-    The completed task is analyzed and compared against the original code to identify the root cause of the failure.
-  </Step>
-
-  <Step title="Code generation">
-    A new version of the task code is generated with the necessary fixes applied.
-  </Step>
-
-  <Step title="Deployment">
-    The updated code can be automatically deployed or manually reviewed before deployment.
-  </Step>
-</Steps>
-
-## Enable self-healing
-
-Self-healing is configured at the task level. You can enable it when creating or updating a task.
-
-```python  theme={null}
-from anchor_sdk import Anchor
-
-anchor = Anchor(api_key="your_api_key")
-
-# Create a task with self-healing enabled
-task = anchor.tasks.create(
-    name="form_submission",
-    prompt="Fill out the contact form on example.com",
-    self_healing=True,
-    self_healing_config={
-        "auto_deploy": True,
-        "trigger_on": ["timeout", "element_not_found", "navigation_error"]
-    }
-)
-```
-
-```typescript  theme={null}
-import { Anchor } from '@anchor-sdk/client';
-
-const anchor = new Anchor({ apiKey: 'your_api_key' });
-
-// Create a task with self-healing enabled
-const task = await anchor.tasks.create({
-  name: 'form_submission',
-  prompt: 'Fill out the contact form on example.com',
-  selfHealing: true,
-  selfHealingConfig: {
-    autoDeploy: true,
-    triggerOn: ['timeout', 'element_not_found', 'navigation_error']
-  }
-});
-```
-
-## Configure self-healing triggers
-
-You can specify which error states should trigger self-healing. By default, common failure scenarios are monitored.
-
-```python  theme={null}
-# Configure specific error triggers
-task = anchor.tasks.update(
-    task_id="task_123",
-    self_healing_config={
-        "trigger_on": [
-            "timeout",
-            "element_not_found",
-            "navigation_error",
-            "authentication_failure",
-            "captcha_detected"
-        ],
-        "max_attempts": 3,
-        "auto_deploy": False
-    }
-)
-```
-
-```typescript  theme={null}
-// Configure specific error triggers
-const task = await anchor.tasks.update({
-  taskId: 'task_123',
-  selfHealingConfig: {
-    triggerOn: [
-      'timeout',
-      'element_not_found',
-      'navigation_error',
-      'authentication_failure',
-      'captcha_detected'
-    ],
-    maxAttempts: 3,
-    autoDeploy: false
-  }
-});
-```
-
-## Auto-deploy fixes
-
-When `auto_deploy` is enabled, the system automatically deploys the updated code after successful validation. This ensures your tasks continue running without manual intervention.
-
-```python  theme={null}
-# Enable auto-deploy for immediate fixes
-task = anchor.tasks.create(
-    name="data_extraction",
-    prompt="Extract product prices from the catalog",
-    self_healing=True,
-    self_healing_config={
-        "auto_deploy": True,
-        "validation_required": True
-    }
-)
-```
-
-```typescript  theme={null}
-// Enable auto-deploy for immediate fixes
-const task = await anchor.tasks.create({
-  name: 'data_extraction',
-  prompt: 'Extract product prices from the catalog',
-  selfHealing: true,
-  selfHealingConfig: {
-    autoDeploy: true,
-    validationRequired: true
-  }
-});
-```
-
-## Monitor self-healing events
-
-Track when self-healing is triggered and review the changes made to your tasks.
-
-```python  theme={null}
-# Get self-healing history for a task
-healing_events = anchor.tasks.get_healing_events(task_id="task_123")
-
-for event in healing_events:
-    print(f"Triggered at: {event.timestamp}")
-    print(f"Error type: {event.error_type}")
-    print(f"Status: {event.status}")
-    print(f"Code version: {event.new_version}")
-```
-
-```typescript  theme={null}
-// Get self-healing history for a task
-const healingEvents = await anchor.tasks.getHealingEvents({ taskId: 'task_123' });
-
-healingEvents.forEach(event => {
-  console.log(`Triggered at: ${event.timestamp}`);
-  console.log(`Error type: ${event.errorType}`);
-  console.log(`Status: ${event.status}`);
-  console.log(`Code version: ${event.newVersion}`);
-});
-```
-
-## Disable self-healing
-
-You can disable self-healing at any time for a specific task.
-
-```python  theme={null}
-# Disable self-healing
-task = anchor.tasks.update(
-    task_id="task_123",
-    self_healing=False
-)
-```
-
-```typescript  theme={null}
-// Disable self-healing
-const task = await anchor.tasks.update({
-  taskId: 'task_123',
-  selfHealing: false
-});
-```
-
-<Info>
-  Self-healing uses runtime agents to fix errors, which incurs additional costs. Configure triggers carefully to balance reliability and cost efficiency.
-</Info>
+</Note>
 
 
 # Ad Blocker
@@ -264,9 +75,9 @@ Block ads, trackers, and unwanted content in your browser sessions
 
 Ad blocking is enabled by default in Anchor Browser. It blocks ads, trackers, and malicious content to improve page load times and create cleaner automation.
 
-<Info>
+<Note>
   Ad blocking is enabled by default. Disable it only if you need to test ad-related functionality.
-</Info>
+</Note>
 
 ## Quick Start
 
@@ -367,7 +178,7 @@ Create up to 5,000 browser sessions in a single API call for large-scale automat
 
 ### 1. Create a Batch
 
-```javascript  theme={null}
+```javascript theme={null}
 const response = await fetch('https://api.anchorbrowser.io/v1/batch-sessions', {
   method: 'POST',
   headers: {
@@ -398,7 +209,7 @@ console.log('Batch ID:', batchId);
 
 ### 2. Monitor Progress
 
-```javascript  theme={null}
+```javascript theme={null}
 const response = await fetch(`https://api.anchorbrowser.io/v1/batch-sessions/${batchId}`, {
   headers: { 'anchor-api-key': process.env.ANCHOR_API_KEY }
 });
@@ -410,7 +221,7 @@ console.log(`Completed: ${status.data.completed_requests}/${status.data.total_re
 
 ### 3. Use Sessions
 
-```javascript  theme={null}
+```javascript theme={null}
 import { chromium } from 'playwright';
 
 const sessions = status.data.sessions.filter(s => s.status === 'completed');
@@ -428,7 +239,7 @@ for (const session of sessions) {
 
 ## Polling Strategy
 
-```javascript  theme={null}
+```javascript theme={null}
 async function waitForBatchCompletion(batchId, maxWaitMinutes = 10) {
   const maxWaitMs = maxWaitMinutes * 60 * 1000;
   let checkInterval = 5000;
@@ -454,7 +265,7 @@ async function waitForBatchCompletion(batchId, maxWaitMinutes = 10) {
 
 ## Parameters
 
-<ResponseField name="count" type="number" required>
+<ResponseField name="count" type="number">
   Number of browser sessions to create (1-1000)
 </ResponseField>
 
@@ -501,7 +312,7 @@ Anchor Browser offers a live view feature that allows you to embed an interactiv
 
 Headful mode provides a single URL to view the full chrome view, including the address bar. This ensures the presented tab is always the active tab and provides the best user experience.
 
-<img className="hidden dark:block mx-auto" src="https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/vnc-live-view.png?fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=774f0fea0d9359730307c6a21e50ae9c" alt="Browser Live View in Headful Mode" width="560" data-og-width="1210" data-og-height="1200" data-path="images/vnc-live-view.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/vnc-live-view.png?w=280&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=d875e016f7db64278e379367ca390fe0 280w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/vnc-live-view.png?w=560&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=9a23de6e2ced15f1d732e848dd4d35db 560w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/vnc-live-view.png?w=840&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=7504a6d074157d0fa130bab9426c062e 840w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/vnc-live-view.png?w=1100&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=afdb86cec4a4a69e1fbc6ca67bce875b 1100w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/vnc-live-view.png?w=1650&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=efe659aa8b61706a3671cecaf2e1d6e8 1650w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/vnc-live-view.png?w=2500&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=59bd34e12c9baf0775ab4354033a275d 2500w" />
+<img alt="Browser Live View in Headful Mode" />
 
 To create a browser in headful mode, simply [create a session](/sdk-reference/browser-sessions/start-browser-session):
 
@@ -547,7 +358,7 @@ To create a browser in headful mode, simply [create a session](/sdk-reference/br
 
 Then, use the `live_view_url` from the response to embed the live view directly into an iframe:
 
-```html  theme={null}
+```html theme={null}
 <iframe 
   src="{{live_view_url}}" 
   sandbox="allow-same-origin allow-scripts" 
@@ -562,7 +373,7 @@ Then, use the `live_view_url` from the response to embed the live view directly 
 
 To use the fullscreen view, replace the live view URL with the following:
 
-```html  theme={null}
+```html theme={null}
 <iframe src="{{live_view_url}}" ...></iframe>
 ```
 
@@ -570,7 +381,7 @@ To use the fullscreen view, replace the live view URL with the following:
 
 To prevent the end user from interacting with the browser, add the `style="pointer-events: none;"` attribute to the iframe:
 
-```html  theme={null}
+```html theme={null}
 <iframe 
   src="{{live_view_url}}" 
   sandbox="allow-same-origin allow-scripts" 
@@ -579,9 +390,9 @@ To prevent the end user from interacting with the browser, add the `style="point
 </iframe>
 ```
 
-<Info>
+<Note>
   This feature is available for both headful and headless modes.
-</Info>
+</Note>
 
 ## Headless Mode
 
@@ -625,13 +436,13 @@ To obtain the browser live session URL in headless mode, start by [creating a se
   ```
 </CodeGroup>
 
-<img className="hidden dark:block mx-auto" src="https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/cdp-live-view.png?fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=dc51ac109c87e8f58ff04aefd508ebf5" alt="Browser Live View in Headless Mode" width="560" data-og-width="1453" data-og-height="908" data-path="images/cdp-live-view.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/cdp-live-view.png?w=280&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=e64815d70775202b79f6bdb6c235f4a8 280w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/cdp-live-view.png?w=560&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=8eaac5ad8646f317a2353c45cefc7a99 560w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/cdp-live-view.png?w=840&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=aaa90eca3e4841e2c93e259e552d961a 840w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/cdp-live-view.png?w=1100&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=95d9c93aaef81b668948cbad33ebe118 1100w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/cdp-live-view.png?w=1650&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=fdfbcd53824a5960bb2ad3faa38b64b0 1650w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/cdp-live-view.png?w=2500&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=019129bf8c0aa2a4bbf861f2370e7132 2500w" />
+<img alt="Browser Live View in Headless Mode" />
 
 <Warning>The live\_view\_url currently points to the browser default first page.</Warning>
 
 Then, use the **create-session** response to embed the live view URL directly into an iframe:
 
-```html  theme={null}
+```html theme={null}
 <iframe src="{{live_view_url}}" sandbox="allow-same-origin allow-scripts" allow="clipboard-read; clipboard-write" style="border: 0px; display: block; width: 100%; height: 100%; position: absolute; top: 0px; left: 0px;"></iframe>
 ```
 
@@ -645,26 +456,28 @@ Source: https://docs.anchorbrowser.io/advanced/captcha-solving
 
 Anchor browser solves CAPTCHA challenges using a vision-based approach, along with extension-based fallbacks. The vision-based approach imitates human behavior to solve any CAPTCHA (including Cloudflare) without multiple challenges.
 
-<Note> CAPTCHA solving works best with proxy enabled. Bot detectors would likely fail CAPTCHA solving attempts that are performed without Proxy.</Note>
+<Note> Proxy is required for CAPTCHA solving configuration.</Note>
 
 For the full list of available options, view the [interactive api documentation](/api-reference)
 
-### CAPTCHA solving Configuration
+### Enable CAPTCHA solving
 
 <CodeGroup>
   ```javascript node.js theme={null}
-  import AnchorBrowser from 'anchorbrowser';
+  import Anchorbrowser from 'anchorbrowser';
 
   (async () => {
-    const anchorClient = new AnchorBrowser({apiKey: process.env.ANCHOR_API_KEY});
+    const anchorClient = new Anchorbrowser({apiKey: process.env.ANCHOR_API_KEY});
     
     const session = await anchorClient.sessions.create({
       browser: {
         captcha_solver: {
-          active: true, // Visual CAPTCHA solving
-          // Optional: Text-based CAPTCHA (both selectors below)
-          image_selector: 'ol_capcha img',
-          input_selector: 'ol-captcha input'
+          active: true
+        }
+      },
+      session: {
+        proxy: {
+          active: true  // Required
         }
       }
     });
@@ -680,17 +493,72 @@ For the full list of available options, view the [interactive api documentation]
   anchor_client = Anchorbrowser(api_key=os.getenv("ANCHOR_API_KEY"))
 
   session = anchor_client.sessions.create(
-      browser={
-          "captcha_solver": {
-              "active": True,   # Visual CAPTCHA solving
-              # Optional: Text-based CAPTCHA (defaults to false)
-  	     "image_selector": 'ol_capcha img',
-              "input_selector": 'ol-captcha'
-          }
+      browser= {
+        "captcha_solver": {
+          "active": True
+        }
+      },
+      session= {
+        "proxy": {
+          "active": true  # Required
+        }
       }
   )
 
   print("Session created with CAPTCHA solver:", session.data.id)
+  ```
+</CodeGroup>
+
+#### Configure Text-based CAPTCHA solving
+
+<CodeGroup>
+  ```javascript node.js theme={null}
+  import AnchorBrowser from 'anchorbrowser';
+
+  (async () => {
+    const anchorClient = new AnchorBrowser({apiKey: process.env.ANCHOR_API_KEY});
+    
+    const session = await anchorClient.sessions.create({
+      browser: {
+        captcha_solver: {
+          active: true,
+          image_selector: 'ol_capcha img',
+          input_selector: 'ol-captcha input'
+        }
+      },
+      session: {
+        proxy: {
+          active: true  // Required
+        }
+      }
+    });
+    
+    console.log("Session created with text-based CAPTCHA solver:", session.data.id);
+  })().catch(console.error);
+  ```
+
+  ```python python theme={null}
+  import os
+  from anchorbrowser import Anchorbrowser
+
+  anchor_client = Anchorbrowser(api_key=os.getenv("ANCHOR_API_KEY"))
+
+  session = anchor_client.sessions.create(
+      browser={
+          "captcha_solver": {
+              "active": True,
+              "image_selector": 'ol_capcha img',
+              "input_selector": 'ol-captcha input'
+          }
+      },
+      session= {
+        "proxy": {
+          "active": true  # Required
+        }
+      }
+  )
+
+  print("Session created with text-based CAPTCHA solver:", session.data.id)
   ```
 </CodeGroup>
 
@@ -702,7 +570,7 @@ Authenticate browser sessions with Cloudflare Web Bot Auth
 
 Anchor Browser supports Cloudflare Web Bot Auth HTTP message signing for browser sessions. This allows you to identify as Anchor Browser to websites that require Cloudflare's web bot authentication, enabling access to protected content and avoiding bot detection.
 
-<img src="https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/cloudflare-web-bot-auth.png?fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=b2984b651bdbcdcac0b5de047aaaa235" alt="WebBotAuth.io Test" data-og-width="2312" width="2312" data-og-height="1596" height="1596" data-path="images/cloudflare-web-bot-auth.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/cloudflare-web-bot-auth.png?w=280&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=f5da1d90e9b8b83c88479cc09146814f 280w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/cloudflare-web-bot-auth.png?w=560&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=56c6267dceb9af68f4f71768c2b71a13 560w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/cloudflare-web-bot-auth.png?w=840&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=738dd9761b84d23f7c39212086b44a74 840w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/cloudflare-web-bot-auth.png?w=1100&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=3935a01ebbecc250f0eb2b6d4e6c75a6 1100w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/cloudflare-web-bot-auth.png?w=1650&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=a36017e34d5aa25d77c33b037a5087b6 1650w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/cloudflare-web-bot-auth.png?w=2500&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=a2eb0efd8893fbcc7a441e2769a0bb7c 2500w" />
+<img alt="WebBotAuth.io Test" />
 
 ## How It Works
 
@@ -719,7 +587,7 @@ When you enable web bot auth, Anchor Browser automatically identifies all HTTP r
 
 ### Browser Configuration
 
-```typescript  theme={null}
+```typescript theme={null}
 {
   "browser": {
     "web_bot_auth": {
@@ -800,7 +668,7 @@ A **Dedicated Sticky IP** ensures that a specific profile uses by default the sa
   <Step title="Enable sticky IP in profile creation">
     Use the [Create Profile API](https://docs.anchorbrowser.io/api-reference/profiles/create-profile?playground=open) to create a profile with a dedicated sticky IP by setting:
 
-    ```json  theme={null}
+    ```json theme={null}
     {
       "dedicated_sticky_ip": true
     }
@@ -863,7 +731,7 @@ Your extension ZIP file must contain a valid `manifest.json` with basic extensio
 
 ### Example Manifest
 
-```json  theme={null}
+```json theme={null}
 {
   "manifest_version": 3,
   "name": "My Extension",
@@ -936,6 +804,11 @@ Source: https://docs.anchorbrowser.io/advanced/file-download
 Anchor Browser supports two methods for downloading files during your browser sessions:
 
 1. **Traditional Downloads**: Files are downloaded to the browser instance and then uploaded to S3 for retrieval
+
+<Note>
+  To download PDF files directly instead of viewing them in the browser, set `pdf_viewer` to `false` when creating your session.
+</Note>
+
 2. **P2P Downloads**: Files are captured directly in the browser using peer-to-peer technology, bypassing S3 storage
 
 ## Traditional File Downloads
@@ -945,6 +818,25 @@ The following examples demonstrate how to download a file using the traditional 
 <Steps>
   <Step title="Create a browser session">
     Use the [create session](api-reference/browser-sessions/start-browser-session) API to create a new browser session.
+    To enable automatic PDF downloads, include the following `browser` configuration:
+
+    <CodeGroup>
+      ```tsx node.js theme={null}
+      browser: {
+          pdf_viewer: {
+              active: false
+              }
+          }
+      ```
+
+      ```python python theme={null}
+      "browser": {
+          "pdf_viewer": {
+              "active": False
+              }
+          }
+      ```
+    </CodeGroup>
   </Step>
 
   <Step title="Browse and download a file">
@@ -1015,7 +907,7 @@ Source: https://docs.anchorbrowser.io/advanced/mcp
 
 Use Anchor with Model Context Protocol (MCP) in your preferred agentic tools via our hosted service
 
-<img src="https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp_logo.png?fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=ec164cf1532c41350abe6f1dd8c52e73" alt="Model Context Protocol" style={{width: "200px", margin: "20px 0"}} data-og-width="485" width="485" data-og-height="514" height="514" data-path="images/mcp_logo.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp_logo.png?w=280&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=a7afe80fed92f76a00fce74df69f33de 280w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp_logo.png?w=560&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=a7a9af2ab0e76f6de65611ff785bd01a 560w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp_logo.png?w=840&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=f954470c4999efd6b83502c4b5463626 840w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp_logo.png?w=1100&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=f288405c55b1fcb1c6d51ce232b468c2 1100w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp_logo.png?w=1650&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=54292ecf2eab83c5e92a2c9a65028bfb 1650w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp_logo.png?w=2500&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=e9432402a01b3bcf1a46bbfffcc5d4f9 2500w" />
+<img alt="Model Context Protocol" />
 
 ## Overview
 
@@ -1054,19 +946,19 @@ For advanced customization needs, see our [Open Source MCP Server](/advanced/mcp
     <Step title="Open Command Palette">
       Press Command+Shift+P (Mac) or Ctrl+Shift+P (Linux/Windows) and select "Open MCP Configuration File"
 
-      <img src="https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp-get-settings.png?fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=9f606f6e01b9349d29486f6aa07887c9" alt="Get Cursor MCP Settings" data-og-width="584" width="584" data-og-height="142" height="142" data-path="images/mcp-get-settings.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp-get-settings.png?w=280&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=e3a2038dbcf254fa9e7aa68ac0d3769a 280w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp-get-settings.png?w=560&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=52d90c6964443d2251c86a5642411bc3 560w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp-get-settings.png?w=840&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=e0e6dca0909fd24039a08d0e5a0646f3 840w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp-get-settings.png?w=1100&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=e699101125102f5c00c26b065647503d 1100w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp-get-settings.png?w=1650&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=209ce2728e69454757aa78a8ddc6bb86 1650w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp-get-settings.png?w=2500&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=10a51f81358611b2addf885168c425f5 2500w" />
+      <img alt="Get Cursor MCP Settings" />
     </Step>
 
     <Step title="Open MCP Configurations">
       Click on "Add Custom MCP" or "New MCP Server" if you already have some pre-configured.
 
-      <img src="https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp-add-custom.png?fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=f9c59aeb3f93c01d4a4f0dd8e27f182e" alt="Add Custom MCP Server" data-og-width="684" width="684" data-og-height="386" height="386" data-path="images/mcp-add-custom.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp-add-custom.png?w=280&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=1c5cdfaca98a21287cb871c3d5489537 280w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp-add-custom.png?w=560&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=19d6138b9456e0d7e4c4a8150792d2f2 560w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp-add-custom.png?w=840&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=eba04cf29df505ad5e306cc2a0e16dab 840w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp-add-custom.png?w=1100&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=1af12c87e58e90ab4463c325dea85ec3 1100w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp-add-custom.png?w=1650&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=36fcb3e4e1526a4d95184e2ce697be8f 1650w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp-add-custom.png?w=2500&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=b8e994dff3fd82848ac1ac8158699f36 2500w" />
+      <img alt="Add Custom MCP Server" />
     </Step>
 
     <Step title="Add MCP Server">
       Add inside the `mcpServers` object the following:
 
-      ```json  theme={null}
+      ```json theme={null}
       "Anchor Browser Agent": {
           "url": "https://api.anchorbrowser.io/mcp",
           "headers": {
@@ -1075,9 +967,9 @@ For advanced customization needs, see our [Open Source MCP Server](/advanced/mcp
       }
       ```
 
-      <Info>
+      <Note>
         If you don't have your Anchor API key yet, you can get it from [Anchor UI](https://app.anchorbrowser.io/api-keys).
-      </Info>
+      </Note>
 
       You should now see Anchor MCP server in the list of MCP servers in Cursor. It should say '24 tools enabled'. If you don't see it, disable and re-enable Anchor MCP server, or wait a little longer.
     </Step>
@@ -1095,7 +987,7 @@ For advanced customization needs, see our [Open Source MCP Server](/advanced/mcp
     <Step title="Configure MCP Server">
       Add to your VS Code MCP configuration file:
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "mcpServers": {
           "anchor-browser": {
@@ -1126,7 +1018,7 @@ For advanced customization needs, see our [Open Source MCP Server](/advanced/mcp
     <Step title="Add Anchor MCP">
       Add the following to your configuration:
 
-      ```json  theme={null}
+      ```json theme={null}
       {
         "mcpServers": {
           "anchor-browser": {
@@ -1154,7 +1046,7 @@ Once configured, you can use Anchor Browser directly in your conversations with 
 
 The hosted MCP integration provides access to all main Anchor capabilities:
 
-<img src="https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp-available-tools.png?fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=68a79a28abe6fb15867d9d7c4bb0ab01" alt="MCP Tools" data-og-width="661" width="661" data-og-height="251" height="251" data-path="images/mcp-available-tools.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp-available-tools.png?w=280&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=8f3476ea57f00ada07f85918a746b6e1 280w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp-available-tools.png?w=560&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=9f73492430d7ca1c0469f8dc113b89dc 560w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp-available-tools.png?w=840&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=e87ee1f04a1cbf3b647fa0d482d8be4f 840w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp-available-tools.png?w=1100&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=66a89d35761d5041c93d0bf50d70d69f 1100w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp-available-tools.png?w=1650&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=44f22f895f9135bca3e4a3c8072bf11b 1650w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp-available-tools.png?w=2500&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=faacc3792e9a53842205f6738aa4245c 2500w" />
+<img alt="MCP Tools" />
 
 <Expandable title="Test Generator Example">
   ### Test Generator Example
@@ -1174,12 +1066,12 @@ The hosted MCP integration provides access to all main Anchor capabilities:
   3. return the director of the last movie
   ```
 
-  <video autoPlay muted loop playsInline src="https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/garfield-test-generator.mp4?fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=9174bc30dd24beede6a343fb305f7b7b" alt="Test Generator" data-path="images/garfield-test-generator.mp4" />
+  <video alt="Test Generator" />
 
   <Expandable title="garfield-test.spec.ts File">
     That is the generated test file:
 
-    ```js  theme={null}
+    ```js theme={null}
     import { test, expect } from '@playwright/test';
 
     test('Find director of the last Garfield movie', async ({ page }) => {
@@ -1234,13 +1126,13 @@ You can also use the hosted MCP service programmatically in your Python applicat
 
 ### Installation
 
-```bash  theme={null}
+```bash theme={null}
 pip install mcp
 ```
 
 ### Basic Example
 
-```python  theme={null}
+```python theme={null}
 import asyncio
 from mcp.client.streamable_http import streamablehttp_client
 from mcp import ClientSession
@@ -1267,7 +1159,7 @@ asyncio.run(list_tools())
 
 The hosted MCP service works in CI/CD environments without requiring local browser installations:
 
-```yaml  theme={null}
+```yaml theme={null}
 # GitHub Actions example
 name: AI Browser Testing
 on: [push, pull_request]
@@ -1309,15 +1201,15 @@ Self-host Anchor MCP server with customizable Playwright integration for your sp
 
 # Anchor MCP Server (Open Source)
 
-<img src="https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp_logo.png?fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=ec164cf1532c41350abe6f1dd8c52e73" alt="Model Context Protocol" style={{width: "200px", margin: "20px 0"}} data-og-width="485" width="485" data-og-height="514" height="514" data-path="images/mcp_logo.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp_logo.png?w=280&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=a7afe80fed92f76a00fce74df69f33de 280w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp_logo.png?w=560&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=a7a9af2ab0e76f6de65611ff785bd01a 560w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp_logo.png?w=840&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=f954470c4999efd6b83502c4b5463626 840w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp_logo.png?w=1100&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=f288405c55b1fcb1c6d51ce232b468c2 1100w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp_logo.png?w=1650&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=54292ecf2eab83c5e92a2c9a65028bfb 1650w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/mcp_logo.png?w=2500&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=e9432402a01b3bcf1a46bbfffcc5d4f9 2500w" />
+<img alt="Model Context Protocol" />
 
 A Model Context Protocol (MCP) server that provides browser automation capabilities using [Anchor Browser](https://anchorbrowser.io)'s remote browser service with [Playwright](https://playwright.dev). This server enables LLMs to interact with web pages through Anchor's cloud-based browsers with built-in proxies, stealth features, and advanced capabilities.
 
 This is based on the open source repository at [browsermcp-com/mcp](https://github.com/browsermcp-com/mcp), which extends Microsoft's Playwright MCP with Anchor Browser's cloud infrastructure.
 
-<Info>
+<Note>
   Looking for our hosted MCP service? Check out [MCP - Hosted Version](/advanced/mcp) for zero-setup integration.
-</Info>
+</Note>
 
 ## When to Use Open Source MCP
 
@@ -1351,7 +1243,7 @@ Choose the open source version when you need:
 
 Since this is a custom Anchor MCP server, you need to build it locally:
 
-```bash  theme={null}
+```bash theme={null}
 # Clone the repository
 git clone https://github.com/browsermcp-com/mcp.git
 cd mcp
@@ -1373,7 +1265,7 @@ npm run build
 
 Add to your `~/.cursor/mcp.json`:
 
-```json  theme={null}
+```json theme={null}
 {
   "mcpServers": {
     "anchor-browser": {
@@ -1393,7 +1285,7 @@ Add to your `~/.cursor/mcp.json`:
 
 Add to your MCP configuration:
 
-```json  theme={null}
+```json theme={null}
 {
   "mcpServers": {
     "anchor-browser": {
@@ -1413,7 +1305,7 @@ Add to your MCP configuration:
 
 Add to your `claude_desktop_config.json`:
 
-```json  theme={null}
+```json theme={null}
 {
   "mcpServers": {
     "anchor-browser": {
@@ -1437,7 +1329,7 @@ After updating the configuration, restart your MCP client (Cursor, VS Code, etc.
 
 The Anchor MCP server supports essential configuration options:
 
-```bash  theme={null}
+```bash theme={null}
 node cli.js --help
 ```
 
@@ -1448,7 +1340,7 @@ node cli.js --help
 
 ### Example with Options:
 
-```json  theme={null}
+```json theme={null}
 {
   "mcpServers": {
     "anchor-browser": {
@@ -1485,7 +1377,7 @@ The open source MCP server can be deployed in production environments:
 
 ### CI/CD Integration Example
 
-```yaml  theme={null}
+```yaml theme={null}
 # GitHub Actions with self-hosted MCP
 name: E2E Testing
 on: [push, pull_request]
@@ -1557,13 +1449,13 @@ Events are user-scoped and work across multiple browser instances.
 
   ### Signal an Event
 
-  ```http  theme={null}
+  ```http theme={null}
   POST https://api.anchorbrowser.io/api/v1/events/{eventName}
   ```
 
   ### Wait for an Event
 
-  ```http  theme={null}
+  ```http theme={null}
   POST https://api.anchorbrowser.io/api/v1/events/{eventName}/wait
   ```
 
@@ -1576,7 +1468,7 @@ Events are user-scoped and work across multiple browser instances.
 
 Handle MFA codes during automated login flows:
 
-```javascript  theme={null}
+```javascript theme={null}
 // In your browser automation script
 async function handleMFAFlow() {
   await page.fill('#username', 'user@example.com');
@@ -1593,7 +1485,7 @@ async function handleMFAFlow() {
 }
 ```
 
-```javascript  theme={null}
+```javascript theme={null}
 // In your external system (mobile app, webhook, etc.)
 async function sendMFACode(code) {
   await signalEvent('mfa_code', { code });
@@ -1658,14 +1550,14 @@ async function sendMFACode(code) {
 
 **Signal First, Wait Later** (immediate consumption):
 
-```javascript  theme={null}
+```javascript theme={null}
 await signalEvent("data", { value: "preloaded" });
 const data = await waitForEvent("data", 1000); // Short timeout
 ```
 
 **Wait First, Signal Later** (typical MFA flow):
 
-```javascript  theme={null}
+```javascript theme={null}
 const waitPromise = waitForEvent("mfa_code", 60000);
 // ... other operations ...
 const mfaData = await waitPromise;
@@ -2209,7 +2101,7 @@ class AnchorBrowser(BasePlaywrightComputer):
 
 The integrated computer use agent works seamlessly with OpenAI's vision models:
 
-```python  theme={null}
+```python theme={null}
 # Initialize the agent with your session
 agent = AnchorBrowser(width=1440, height=900, session_id="your-session-id")
 
@@ -2470,9 +2362,9 @@ Block cookie banners and consent dialogs in your browser sessions
 
 Popup blocking is enabled by default in Anchor Browser. It blocks cookie banners and consent dialogs to create cleaner automation experiences.
 
-<Info>
+<Note>
   Popup blocking is enabled by default. Disable it only if you need to test popup-related functionality.
-</Info>
+</Note>
 
 ## Quick Start
 
@@ -2587,7 +2479,11 @@ Source: https://docs.anchorbrowser.io/advanced/proxy
 
 
 
-Anchor provides proxy configurations to help you access websites from different geographic locations. You can use custom proxies or leverage Anchor's built-in proxy infrastructure for localization.
+Anchor provides proxy configurations to access websites from different geographic locations, configurable down to the **city level.** Use custom proxies or Anchor's built-in proxy for localization.
+
+<Warning>
+  Anchor Browser infrastructure is fully hosted in the US. For GDPR compliance, upgrade to the [Growth tier](https://app.anchorbrowser.io/billing) or [contact support](https://mail.google.com/mail/?view=cm\&fs=1\&to=support@anchorbrowser.io\&su=Full%20GDPR%20Compatibility%20Request).
+</Warning>
 
 #### Quick Start Example
 
@@ -2597,20 +2493,18 @@ Here's a simple example of how to use Anchor's built-in proxy:
   ```javascript node.js theme={null}
   import AnchorBrowser from 'anchorbrowser';
 
-  (async () => {
-    const anchor_client = new AnchorBrowser({apiKey: process.env.ANCHOR_API_KEY});
-    
-    const session = await anchor_client.sessions.create({
+  const anchor_client = new AnchorBrowser({apiKey: process.env.ANCHOR_API_KEY});
+
+  const session = await anchor_client.sessions.create({
       session: {
         proxy: {
           active: true,
           country_code: 'gb',
         }
       }
-    });
-    
-    console.log("Session created:", session.data);
-  })().catch(console.error);
+  });
+
+  console.log("Session created:", session.data);
   ```
 
   ```python python theme={null}
@@ -2620,12 +2514,12 @@ Here's a simple example of how to use Anchor's built-in proxy:
   anchor_client = Anchorbrowser(api_key=os.getenv("ANCHOR_API_KEY"))
 
   session = anchor_client.sessions.create(
-      session={
-          'proxy': {
-              'active': True,
-              'country_code': 'gb',
-          }
+    session={
+      'proxy': {
+          'active': True,
+          'country_code': 'gb',
       }
+    }
   )
   print("Session created:", session.data)
   ```
@@ -2663,23 +2557,21 @@ Anchor Browser supports the following proxy protocols:
   ```javascript node.js theme={null}
   import AnchorBrowser from 'anchorbrowser';
 
-  (async () => {
-    const anchorClient = new AnchorBrowser({apiKey: process.env.ANCHOR_API_KEY});
-    
-    const response = await anchorClient.sessions.create({
-      session: {
-        proxy: {
-          active: true
-          type: 'custom',
-          server: 'proxy.example.com:port',
-          username: 'myUser',
-          password: 'myPassword',
-        }
+  const anchorClient = new AnchorBrowser({apiKey: process.env.ANCHOR_API_KEY});
+
+  const response = await anchorClient.sessions.create({
+    session: {
+      proxy: {
+        active: true
+        type: 'custom',
+        server: 'proxy.example.com:port',
+        username: 'myUser',
+        password: 'myPassword',
       }
-    });
+    }
+  });
     
-    console.log('Session created:', response.data);
-  })().catch(console.error);
+  console.log('Session created:', response.data);
   ```
 
   ```python python theme={null}
@@ -2690,15 +2582,15 @@ Anchor Browser supports the following proxy protocols:
   anchor_client = Anchorbrowser(api_key=os.getenv('ANCHOR_API_KEY'))
 
   response = anchor_client.sessions.create(
-      session={
-          'proxy': {
-              'active': True
-              'type': 'custom',
-              'server': 'proxy.example.com:port',
-              'username': 'myUser',
-              'password': 'myPassword',
-          }
+    session={
+      'proxy': {
+          'active': True
+          'type': 'custom',
+          'server': 'proxy.example.com:port',
+          'username': 'myUser',
+          'password': 'myPassword',
       }
+    }
   )
 
   print('Session created:')
@@ -2726,22 +2618,20 @@ For even more precise geographic targeting, you can specify both `region` and `c
   ```javascript node.js theme={null}
   import AnchorBrowser from 'anchorbrowser';
 
-  (async () => {
-    const anchorClient = new AnchorBrowser({apiKey: process.env.ANCHOR_API_KEY});
-    
-    const response = await anchorClient.sessions.create({
-      session: {
-        proxy: {
-          active: true,
-          country_code: 'us',
-          region: 'ca',
-          city: 'los-angeles'
-        }
+  const anchorClient = new AnchorBrowser({apiKey: process.env.ANCHOR_API_KEY});
+
+  const response = await anchorClient.sessions.create({
+    session: {
+      proxy: {
+        active: true,
+        country_code: 'us',
+        region: 'ca',
+        city: 'los-angeles'
       }
-    });
+    }
+  });
     
-    console.log('Session created:', response.data);
-  })().catch(console.error);
+  console.log('Session created:', response.data);
   ```
 
   ```python python theme={null}
@@ -2825,153 +2715,6 @@ For even more precise geographic targeting, you can specify both `region` and `c
   </Tab>
 </Tabs>
 
-{/* # Gov Proxy
-  |Afghanistan|af|
-  |Albania|al|
-  |Algeria|dz|
-  |Andorra|ad|
-  |Angola|ao|
-  |American Samoa|as|
-  |Antigua and Barbuda|ag|
-  |Argentina|ar|
-  |Armenia|am|
-  |Aruba|aw|
-  |Australia|au|
-  |Austria|at|
-  |Azerbaijan|az|
-  |Bahamas|bs|
-  |Bahrain|bh|
-  |Barbados|bb|
-  |Belarus|by|
-  |Belgium|be|
-  |Belize|bz|
-  |Benin|bj|
-  |Bermuda|bm|
-  |Bolivia|bo|
-  |Bosnia and Herzegovina|ba|
-  |Brazil|br|
-  |Bulgaria|bg|
-  |Burkina Faso|bf|
-  |Cameroon|cm|
-  |Canada|ca|
-  |Cape Verde|cv|
-  |Chad|td|
-  |Chile|cl|
-  |Colombia|co|
-  |Congo|cg|
-  |Costa Rica|cr|
-  |Côte d’Ivoire|ci|
-  |Croatia|hr|
-  |Cuba|cu|
-  |Cyprus|cy|
-  |Czech Republic|cz|
-  |Denmark|dk|
-  |Dominica|dm|
-  |Dominican Republic|do|
-  |Ecuador|ec|
-  |Egypt|eg|
-  |El Salvador|sv|
-  |Estonia|ee|
-  |Ethiopia|et|
-  |Faroe Islands|fo|
-  |Finland|fi|
-  |France|fr|
-  |French Guiana|gf|
-  |French Polynesia|pf|
-  |Gabon|ga|
-  |Gambia|gm|
-  |Georgia|ge|
-  |Germany|de|
-  |Ghana|gh|
-  |Gibraltar|gi|
-  |Greece|gr|
-  |Grenada|gd|
-  |Guadeloupe|gp|
-  |Guatemala|gt|
-  |Guernsey|gg|
-  |Guinea|gn|
-  |Guinea-Bissau|gw|
-  |Guyana|gy|
-  |Haiti|ht|
-  |Honduras|hn|
-  |Hungary|hu|
-  |Iceland|is|
-  |India|in|
-  |Iran|ir|
-  |Iraq|iq|
-  |Ireland|ie|
-  |Israel|il|
-  |Italy|it|
-  |Jamaica|jm|
-  |Japan|jp|
-  |Jordan|jo|
-  |Kazakhstan|kz|
-  |Kuwait|kw|
-  |Kyrgyzstan|kg|
-  |Latvia|lv|
-  |Lebanon|lb|
-  |Libya|ly|
-  |Liechtenstein|li|
-  |Lithuania|lt|
-  |Luxembourg|lu|
-  |Macedonia|mk|
-  |Mali|ml|
-  |Malta|mt|
-  |Martinique|mq|
-  |Mauritania|mr|
-  |Mexico|mx|
-  |Moldova|md|
-  |Monaco|mc|
-  |Montenegro|me|
-  |Morocco|ma|
-  |Netherlands|nl|
-  |New Zealand|nz|
-  |Nicaragua|ni|
-  |Nigeria|ng|
-  |Norway|no|
-  |Pakistan|pk|
-  |Panama|pa|
-  |Paraguay|py|
-  |Peru|pe|
-  |Philippines|ph|
-  |Poland|pl|
-  |Portugal|pt|
-  |Puerto Rico|pr|
-  |Qatar|qa|
-  |Romania|ro|
-  |Saint Lucia|lc|
-  |San Marino|sm|
-  |Saudi Arabia|sa|
-  |Senegal|sn|
-  |Serbia|rs|
-  |Seychelles|sc|
-  |Sierra Leone|sl|
-  |Slovakia|sk|
-  |Slovenia|si|
-  |Somalia|so|
-  |South Africa|za|
-  |South Korea|kr|
-  |Spain|es|
-  |Suriname|sr|
-  |Sweden|se|
-  |Switzerland|ch|
-  |Syria|sy|
-  |São Tomé and Príncipe|st|
-  |Taiwan|tw|
-  |Tajikistan|tj|
-  |Togo|tg|
-  |Trinidad and Tobago|tt|
-  |Tunisia|tn|
-  |Turkey|tr|
-  |Turks and Caicos Islands|tc|
-  |Ukraine|ua|
-  |United Arab Emirates|ae|
-  |United States|us|
-  |Uruguay|uy|
-  |Uzbekistan|uz|
-  |Venezuela|ve|
-  |Yemen|ye| */}
-
 
 # Session Timeout
 Source: https://docs.anchorbrowser.io/advanced/session-timeout
@@ -3053,11 +2796,11 @@ Create, manage, and execute reusable browser automation tasks
 
 The Tasks API enables you to **create, version, and execute reusable browser automation code** in your Anchor Browser sessions. Tasks allow you to:
 
-<img className="mx-auto" src="https://mintcdn.com/anchor-b3ec2715/tCZ8ZZdZSDFlzsaC/images/tasks-dashboard.webp?fit=max&auto=format&n=tCZ8ZZdZSDFlzsaC&q=85&s=e09aa109ce8d538f24e6ec9f962aee96" alt="Tasks dashboard showing task management interface" data-og-width="3114" width="3114" data-og-height="990" height="990" data-path="images/tasks-dashboard.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/tCZ8ZZdZSDFlzsaC/images/tasks-dashboard.webp?w=280&fit=max&auto=format&n=tCZ8ZZdZSDFlzsaC&q=85&s=402d433a756f4e156b514486f590ef4f 280w, https://mintcdn.com/anchor-b3ec2715/tCZ8ZZdZSDFlzsaC/images/tasks-dashboard.webp?w=560&fit=max&auto=format&n=tCZ8ZZdZSDFlzsaC&q=85&s=2bdebe264cab33f3181ea8365a706842 560w, https://mintcdn.com/anchor-b3ec2715/tCZ8ZZdZSDFlzsaC/images/tasks-dashboard.webp?w=840&fit=max&auto=format&n=tCZ8ZZdZSDFlzsaC&q=85&s=69819a8b4ae6165048f21b31e817f930 840w, https://mintcdn.com/anchor-b3ec2715/tCZ8ZZdZSDFlzsaC/images/tasks-dashboard.webp?w=1100&fit=max&auto=format&n=tCZ8ZZdZSDFlzsaC&q=85&s=9a081e4540b6ec2c02479956bdaed79c 1100w, https://mintcdn.com/anchor-b3ec2715/tCZ8ZZdZSDFlzsaC/images/tasks-dashboard.webp?w=1650&fit=max&auto=format&n=tCZ8ZZdZSDFlzsaC&q=85&s=bf7882bf4eb1281c5aeb9cea27015f2d 1650w, https://mintcdn.com/anchor-b3ec2715/tCZ8ZZdZSDFlzsaC/images/tasks-dashboard.webp?w=2500&fit=max&auto=format&n=tCZ8ZZdZSDFlzsaC&q=85&s=329285515c213c06247e7cd8c2f115cf 2500w" />
+<img alt="Tasks dashboard showing task management interface" />
 
-<Info>
+<Note>
   Tasks are executed in a secure sandbox environment and can access the full Anchor Browser API for automation capabilities.
-</Info>
+</Note>
 
 ## Creating Your First Task
 
@@ -3069,9 +2812,9 @@ For reliable execution, **follow these guidelines:**
 * **Export** a single **default async function.**
 * In that function, **return** whatever your workflow requires as **output** (e.g., status, messages, domain data).
 
-<Info>
+<Note>
   Tasks can receive values as inputs. **All input names must be prefixed with `ANCHOR_`**
-</Info>
+</Note>
 
 ### Basic Task Example
 
@@ -3208,7 +2951,11 @@ Create your task in Anchor:
       ```
     </CodeGroup>
 
-    <img className="mx-auto" src="https://mintcdn.com/anchor-b3ec2715/tCZ8ZZdZSDFlzsaC/images/tasks-run.webp?fit=max&auto=format&n=tCZ8ZZdZSDFlzsaC&q=85&s=490b5c70ac63d3e3679f00b57ab07a57" alt="Running a task with inputs" data-og-width="3394" width="3394" data-og-height="1860" height="1860" data-path="images/tasks-run.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/tCZ8ZZdZSDFlzsaC/images/tasks-run.webp?w=280&fit=max&auto=format&n=tCZ8ZZdZSDFlzsaC&q=85&s=ecd2573a4b04cd5434164c79c29aed51 280w, https://mintcdn.com/anchor-b3ec2715/tCZ8ZZdZSDFlzsaC/images/tasks-run.webp?w=560&fit=max&auto=format&n=tCZ8ZZdZSDFlzsaC&q=85&s=27bf90d63c0a344a98e8e9ac7ea36c28 560w, https://mintcdn.com/anchor-b3ec2715/tCZ8ZZdZSDFlzsaC/images/tasks-run.webp?w=840&fit=max&auto=format&n=tCZ8ZZdZSDFlzsaC&q=85&s=5c0691a4162ef9063a9b124912135c62 840w, https://mintcdn.com/anchor-b3ec2715/tCZ8ZZdZSDFlzsaC/images/tasks-run.webp?w=1100&fit=max&auto=format&n=tCZ8ZZdZSDFlzsaC&q=85&s=b75f0ffee38daef512a7453f72a7e47d 1100w, https://mintcdn.com/anchor-b3ec2715/tCZ8ZZdZSDFlzsaC/images/tasks-run.webp?w=1650&fit=max&auto=format&n=tCZ8ZZdZSDFlzsaC&q=85&s=f5c8df3e1aefb4bd75970063ad871fd8 1650w, https://mintcdn.com/anchor-b3ec2715/tCZ8ZZdZSDFlzsaC/images/tasks-run.webp?w=2500&fit=max&auto=format&n=tCZ8ZZdZSDFlzsaC&q=85&s=4d194a4374e773c0d481515d66c65c31 2500w" />
+    <Note>
+      By default, the browser session is automatically closed when the task ends. Set `cleanupSessions: false` to keep the session open after task execution.
+    </Note>
+
+    <img alt="Running a task with inputs" />
   </Step>
 
   <Step title="Deploy Task">
@@ -3270,7 +3017,7 @@ When you set `async: true`, the API returns immediately with a confirmation that
   execution = client.task.run(
       task_id=task_id,
       version="1",
-      async=True,  # Enable async execution
+      async_=True,  # Enable async execution
       inputs={
           "ANCHOR_TARGET_URL": "https://example.com",
           "ANCHOR_MAX_PAGES": "10"
@@ -3326,7 +3073,7 @@ After starting an async task, you can check its execution status and results by 
 
 **Example response:**
 
-```json  theme={null}
+```json theme={null}
 {
   "data": {
     "results": [
@@ -3430,7 +3177,7 @@ For async tasks, you can implement polling to wait for completion:
   execution = client.task.run(
       task_id=task_id,
       version="1",
-      async=True,
+      async_=True,
       inputs={"ANCHOR_TARGET_URL": "https://example.com"}
   )
 
@@ -3917,7 +3664,7 @@ See Anchor Browser package for LangChain on [PyPi](https://pypi.org/project/lang
 
 Install the `langchain-anchorbrowser` package:
 
-```bash  theme={null}
+```bash theme={null}
 pip install langchain-anchorbrowser
 ```
 
@@ -3925,7 +3672,7 @@ pip install langchain-anchorbrowser
 
 Import and utilize your intended tool. The full list of Anchor Browser available tools see **Tool Features** table in [Anchor Browser tool page](/docs/integrations/tools/anchor_browser)
 
-```python  theme={null}
+```python theme={null}
 from langchain_anchorbrowser import AnchorContentTool
 
 # Get Markdown Content for https://www.anchorbrowser.io
@@ -3947,7 +3694,7 @@ Source: https://docs.anchorbrowser.io/agentic-browser-control/agentic-file-usage
 Upload ZIP files to browser sessions for AI agents to use
 
 <Warning>
-  **Compatibility Note**: Only works with the `browser-use` agent framework. Not supported with OpenAI CUA.
+  **Compatibility Note**: Only works with the `browser-use` agent. Not supported with `openai-cua`, `gemini-computer-use`, and `anthropic-cua`.
 </Warning>
 
 ## Quick Start
@@ -3958,61 +3705,48 @@ Upload a ZIP file containing resources that your AI agent can use to complete ta
 
 <CodeGroup>
   ```javascript node.js theme={null}
-  const AnchorClient = require('anchorbrowser');
-  const { chromium } = require('playwright');
-  const JSZip = require('jszip');
+  import Anchorbrowser from 'anchorbrowser';
+  import JSZip from 'jszip';
 
   const ANCHOR_API_KEY = process.env.ANCHOR_API_KEY;
 
-  (async () => {
-    // Initialize Anchor client
-    const anchorClient = new AnchorClient({
-      apiKey: ANCHOR_API_KEY,
+  // Initialize Anchor client
+  const anchorClient = new Anchorbrowser({
+    apiKey: ANCHOR_API_KEY,
+  });
+
+  // Create a new session
+  const session = await anchorClient.sessions.create();
+  console.log('session live view url:', session.data?.live_view_url);
+  const sessionId = session.data?.id;
+
+  // 1. Create a test ZIP file with content
+  const zip = new JSZip();
+  zip.file('test.txt', 'Hello from Anchor!\nThis is a test file for the agent.');
+  const zipBlob = await zip.generateAsync({ type: 'blob' });
+  const zipFile = new File([zipBlob], 'test-data.zip', { type: 'application/zip' });
+
+  console.log(`Uploading file to session...`);
+  // 2. Upload to browser session
+  const fileUploadResult = await anchorClient.sessions.agent.files.upload(sessionId!, {
+    file: zipFile
+  });
+  console.log('Upload result:', fileUploadResult);
+
+  // 3. Use uploaded files with AI agent
+  const result = await anchorClient.agent.task('upload a file to the server', {
+    taskOptions: {
+        url: 'https://v0-download-and-upload-text.vercel.app/',
+      },
+    sessionId: sessionId
     });
-
-    // Create a new session
-    const session = await anchorClient.sessions.create();
-    console.log('session live view url:', session.data.live_view_url);
-    const sessionId = session.data.id;
-    const cdp_url = session.data.cdp_url;
-
-    // 1. Create a test ZIP file with content
-    const zip = new JSZip();
-    zip.file('test.txt', 'Hello from Anchor!\nThis is a test file for the agent.');
-    const zipBlob = await zip.generateAsync({ type: 'blob' });
-    
-    const formData = new FormData();
-    formData.append('file', zipBlob, 'test-data.zip');
-
-    // 2. Upload to browser session
-    const result = await anchorClient.sessions.agent.files.upload(sessionId, {
-      file: zipBlob
-    });
-    console.log('Upload result:', result);
-
-    // 3. Connect to the browser session and use uploaded files with AI agent
-    const browser = await chromium.connectOverCDP(cdp_url);
-    const context = browser.contexts()[0];
-    const page = context.pages()[0];
-
-    // Navigate to a website where you want to use the uploaded files
-    await page.goto('https://v0-download-and-upload-text.vercel.app/');
-
-    // Use AI agent to interact with the page using uploaded files
-    const ai = context.serviceWorkers()[0];
-    const aiResult = await ai.evaluate("upload a file to the server");
-    console.log('AI agent result:', aiResult);
-    
-    // Close browser to end the script
-    await browser.close();
-  })();
+  console.log('AI agent result:', result);
   ```
 
   ```python python theme={null}
   import os
   import zipfile
   import tempfile
-  import requests
   from anchorbrowser import Anchorbrowser
 
   ANCHOR_API_KEY = os.getenv("ANCHOR_API_KEY")
@@ -4024,7 +3758,6 @@ Upload a ZIP file containing resources that your AI agent can use to complete ta
   session = anchor_client.sessions.create()
   print('session live view url:', session.data.live_view_url)
   session_id = session.data.id
-  cdp_url = session.data.cdp_url
 
   # 1. Create a test ZIP file with content
   with tempfile.NamedTemporaryFile(suffix='.zip', delete=False) as temp_zip:
@@ -4043,16 +3776,14 @@ Upload a ZIP file containing resources that your AI agent can use to complete ta
 
   print('Upload result:', result)
 
-  # 3. Navigate to a website where you want to use the uploaded files
-  anchor_client.sessions.goto(session_id=session_id, url="https://v0-download-and-upload-text.vercel.app/")
-
-  # 4. Connect to the browser session and use uploaded files with AI agent
-  ai_result = anchor_client.tools.perform_web_task(
-      prompt="upload test.txt to the server", 
-      # prompt="list me all files you have access to", 
-      session_id=session_id,
-  )
-  print('AI agent result:', ai_result)
+  # 3. Use uploaded files with AI agent
+  result = anchor_client.agent.task('upload a file to the server',
+      task_options={
+          "url": 'https://v0-download-and-upload-text.vercel.app/',
+        },
+        session_id=session_id,
+      )
+  print('AI agent result:', result)
   ```
 </CodeGroup>
 
@@ -4066,15 +3797,15 @@ Source: https://docs.anchorbrowser.io/agentic-browser-control/ai-task-completion
 
 Anchor Browser delivers a state-of-the-art 89% Score on the industry-standard benchmark WebVoyager, leveraging browser-use as a core component of the automation capability.
 
-<video autoPlay muted loop playsInline className="w-full aspect-video" src="https://mintcdn.com/anchor-b3ec2715/PYJUK4ovynFtrEAT/images/video-playground.mp4?fit=max&auto=format&n=PYJUK4ovynFtrEAT&q=85&s=9597d75a98b85978c08b9861c99474f4" data-path="images/video-playground.mp4" />
+<video />
 
 ## The agent task method
 
 Anchor Browser provides within its SDK the `agent.task` method that enables natural language control over web browsing sessions. This capability allows you to **automate complex web tasks without coding the whole flow.**
 
-<Info>
+<Note>
   Looking for Tasks? Visit the [Tasks Page](/advanced/tasks).
-</Info>
+</Note>
 
 ### Code Example
 
@@ -4082,32 +3813,30 @@ Anchor Browser provides within its SDK the `agent.task` method that enables natu
   ```javascript node.js theme={null}
   import Anchorbrowser from 'anchorbrowser';
 
-  (async () => {
-    const anchorClient = new Anchorbrowser({
-      apiKey: process.env.ANCHORBROWSER_API_KEY
-    });
+  const anchorClient = new Anchorbrowser({
+    apiKey: process.env.ANCHORBROWSER_API_KEY
+  });
 
-    const response = await anchorClient.agent.task(
-      'Extract the main heading',                     // Required
-      {
-        taskOptions: {
-          url: 'https://example.com',                 // Either sessionId or url is required
-          humanIntervention: true,                    // Allow human intervention during task execution
-          detectElements: true,                       // Improves the agent's ability to identify and interact with UI elements
-          maxSteps: 40,                               // Maximum number of steps the agent can take
-          agent: 'browser-use',                       // browser-use (default), openai-cua, or gemini-computer-use
-          provider: 'groq',                           // For browser-use agent only, openai, gemini, groq, azure, xai
-          model: 'openai/gpt-oss-120b',               // For browser-use agent only, see model list below
-          extendedSystemMessage: 'Focus on extracting the main heading from the page',
-          secretValues: {                             // Secret values to pass to the agent for secure credential handling
-            API_KEY: 'your-secret-key'
-          }
+  const response = await anchorClient.agent.task(
+    'Extract the main heading',                     // Required
+    {
+      taskOptions: {
+        url: 'https://example.com',                 // Either sessionId or url is required
+        humanIntervention: false,                   // Disable human intervention during task execution (disabled by default)
+        detectElements: true,                       // Improves the agent's ability to identify and interact with UI elements
+        maxSteps: 40,                               // Maximum number of steps the agent can take
+        agent: 'browser-use',                       // browser-use (default), openai-cua, or gemini-computer-use
+        provider: 'openai',                         // For browser-use agent only, openai, gemini, groq, azure, xai
+        model: 'gpt-5',                             // For browser-use agent only, see model list below
+        extendedSystemMessage: 'Focus on extracting the main heading from the page',
+        secretValues: {                             // Secret values to pass to the agent for secure credential handling
+          API_KEY: 'your-secret-key'
         }
       }
-    );
+    }
+  );
 
-    console.log(response);
-  })();
+  console.log(response);
   ```
 
   ```python python theme={null}
@@ -4120,12 +3849,12 @@ Anchor Browser provides within its SDK the `agent.task` method that enables natu
       'Extract the main heading',                    # Required
       task_options={
           url='https://example.com',                 # Either session_id or url is required
-          human_intervention=True,                   # Allow human intervention during task execution
+          human_intervention=False,                  # Disable human intervention during task execution (disabled by default)
           detect_elements=True,                      # Improves the agent's ability to identify and interact with UI elements
           max_steps=40,                              # Maximum number of steps the agent can take
           agent='browser-use',                       # browser-use (default), openai-cua, or gemini-computer-use
-          provider='groq',                           # For browser-use agent only, openai, gemini, groq, azure, xai
-          model='openai/gpt-oss-120b',               # For browser-use agent only, see model list below
+          provider='openai',                           # For browser-use agent only, openai, gemini, groq, azure, xai
+          model='gpt-5',               # For browser-use agent only, see model list below
           extended_system_message='Focus on extracting the main heading from the page',
           secret_values={                            # Secret values to pass to the agent for secure credential handling
               'API_KEY': 'your-secret-key'
@@ -4144,38 +3873,30 @@ The following demonstrates using **Zod** and **Pydantic** to utilize the structu
 
 <CodeGroup>
   ```javascript node.js theme={null}
-  // Create a browser session and get references
-  const browser = await anchorClient.browser.create();
-  const context = browser.contexts()[0];
-  const page = context.pages()[0];
-  const ai = context.serviceWorkers()[0]; // Get the AI service worker
+  import { z } from 'zod';
+  import { zodToJsonSchema } from 'zod-to-json-schema';
+
+  const anchorClient = new Anchorbrowser()
 
   // Define the expected output structure using Zod schema
   const outputSchema = z.object({
     nodes_cpu_usage: z.array(
       z.object({
-        node: z.string(),           // Node name
-        cluster: z.string(),        // Cluster identifier
-        cpu_avg_percentage: z.number(), // CPU usage percentage
+        node: z.string(),                 // Node name
+        cluster: z.string(),              // Cluster identifier
+        cpu_avg_percentage: z.number(),   // CPU usage percentage
       })
     )
   });
 
-  // Create task payload with structured output schema
-  const taskPayload = {
-    output_schema: z.toJSONSchema(outputSchema);,      // Define expected output structure
-    prompt: 'Collect the node names and their CPU average %',
-  };
-
-  // Navigate to the target page
-  await page.goto("https://play.grafana.org/a/grafana-k8s-app/navigation/nodes?from=now-1h&to=now&refresh=1m");
-
   // Execute the AI task with structured output
-  const result = await ai.evaluate(JSON.stringify(taskPayload));
+  const result = await anchorClient.agent.task('Collect the node names and their CPU average %', {
+    taskOptions: {
+      outputSchema: zodToJsonSchema(outputSchema), // Convert to JSON Schema
+      url: 'https://play.grafana.org/a/grafana-k8s-app/navigation/nodes?from=now-1h&to=now&refresh=1m',
+    }
+  });
   console.info(result);
-
-  // Clean up browser resources
-  await browser.close();
   ```
 
   ```python python theme={null}
@@ -4188,107 +3909,42 @@ The following demonstrates using **Zod** and **Pydantic** to utilize the structu
   class OutputSchema(BaseModel):
       nodes_cpu_usage: List[NodeCpuUsage]  # List of node CPU usage data
 
-  with sync_playwright() as p:
-      # Connect to the browser session
-      browser = p.chromium.connect_over_cdp(cdp_url)
-      context = browser.contexts[0]
-      
-      # Find the AI service worker
-      ai = next((sw for sw in context.service_workers if sw.url.startswith("chrome-extension://bppehibnhionalpjigdjdilknbljaeai")), None)
-      page = context.pages[0]
+  # Create task payload with structured output schema
+  task_payload = {
+      'prompt': 'Collect the node names and their CPU average %',
+      'output_schema': OutputSchema.model_json_schema()  # Convert to JSON Schema
+  }
 
-      # Create task payload with structured output schema
-      task_payload = {
-          'prompt': 'Collect the node names and their CPU average %',
-          'output_schema': OutputSchema.model_json_schema()  # Convert Pydantic model to JSON Schema
+  result = anchor_client.agent.task('Collect the node names and their CPU average %',
+      task_options={
+          'output_schema': OutputSchema.model_json_schema(),
+          'url': 'https://play.grafana.org/a/grafana-k8s-app/navigation/nodes?from=now-1h&to=now&refresh=1m',
       }
-
-      # Navigate to the target page
-      page.goto("https://play.grafana.org/a/grafana-k8s-app/navigation/nodes?from=now-1h&to=now&refresh=1m")
-      
-      # Execute the AI task with structured output
-      result = ai.evaluate(json.dumps(task_payload))
-      print(result)
-      
-      # Clean up browser resources
-      browser.close()
+  )
+  print(result)
   ```
 </CodeGroup>
-
-<Expandable title="The Browser AI Object">
-  ## The Browser AI Object
-
-  Anchor Browser comes with an embedded AI component, that allows to control the browser or extract data using natural language. This capability allows to **use the browser without any coding.**
-
-  ### Code Example
-
-  <CodeGroup>
-    ```javascript node.js theme={null}
-    import Anchorbrowser from "anchorbrowser";
-
-    (async () => {
-      const anchor_client = new Anchorbrowser({apiKey: process.env.ANCHORBROWSER_API_KEY});
-      
-      // Create a browser session
-      const browser = await anchor_client.browser.create();
-      const page = browser.contexts()[0].pages()[0];
-      
-      // Get the AI service worker
-      const ai = context.serviceWorkers().find(sw => 
-        sw.url().includes('chrome-extension://bppehibnhionalpjigdjdilknbljaeai/background.js')
-      );
-
-      await page.goto("http://docs.anchorbrowser.io/", {waitUntil:'domcontentloaded'});
-
-      // Use the embedded 'ai' object
-      const result = await ai.evaluate('Find the last game played by Milwaukee in the NBA and return the result');
-
-      await browser.close();
-      console.log(result);
-    })();
-    ```
-
-    ```python python theme={null}
-    from anchorbrowser import Anchorbrowser
-
-    anchor_client = Anchorbrowser(api_key='your-api-key')
-
-    # Create a browser session
-    browser = await anchor_client.browser.create()
-    page = browser.contexts()[0].pages()[0]
-
-    # Get the AI service worker
-    context = browser.contexts()[0]
-    ai = next((sw for sw in context.service_workers if sw.url.startswith("chrome-extension://bppehibnhionalpjigdjdilknbljaeai")), None)
-
-    await page.goto("http://docs.anchorbrowser.io/", wait_until='domcontentloaded')
-
-    # Use the embedded 'ai' object
-    result = await ai.evaluate('Find the last game played by Milwaukee in the NBA and return the result')
-
-    await browser.close()
-    print(result)
-
-    ```
-  </CodeGroup>
-</Expandable>
 
 <Expandable title="Configuration Options">
   ## Configuration Options
 
   The AI agent can be configured with the following parameters:
 
+  <Note>
+    Parameter names use `snake_case` in Python and `camelCase` in JavaScript/TypeScript (e.g., `max_steps` vs `maxSteps`).
+  </Note>
+
   * **agent** (string): AI agent to use (`browser-use`, `openai-cua`, `gemini-computer-use`). Defaults to `browser-use`.
-  * **secret\_values** (object): Secret values to pass to the agent for secure credential handling.
-  * **human\_intervention** (boolean): Allow human intervention during task execution.
+  * **secret\_values** | **secretValues** (object): Secret values to pass to the agent for secure credential handling.
+  * **human\_intervention** | **humanIntervention** (boolean): Allow human intervention during task execution.
   * **provider** (string): AI provider to use (`openai`, `gemini`, `groq`, `azure`, `xai`).
   * **model** (string): Specific model to use (see [Available Models](#available-models) below).
   * **url** (string): Target URL to navigate to before executing the task.
-  * **output\_schema** (object): JSON Schema defining the expected structure of the output data.
-  * **max\_steps** (integer): Maximum number of steps the agent can take (default: 40).
-  * **detect\_elements** (boolean): Enable element detection for better interaction accuracy.
-  * **extended\_system\_message** (string): Custom system message to provide additional context or instructions to the agent.
-  * **use\_vision** (boolean): Enable vision capabilities for enhanced visual understanding.
+  * **output\_schema** | **outputSchema** (object): JSON Schema defining the expected structure of the output data.
+  * **max\_steps** | **maxSteps** (integer): Maximum number of steps the agent can take (default: 40).
+  * **detect\_elements** | **detectElements** (boolean): Enable element detection for better interaction accuracy.
+  * **extended\_system\_message** | **extendedSystemMessage** (string): Custom system message to provide additional context or instructions to the agent.
+  * **use\_vision** | **useVision** (boolean): Enable vision capabilities for enhanced visual understanding.
 </Expandable>
 
 ## Secret Values
@@ -4298,10 +3954,11 @@ The following demonstrates using **Zod** and **Pydantic** to utilize the structu
 
 ## Available Models For Browser-Use
 
-<Expandable title="Available Models" defaultOpen>
+<Expandable title="Available Models">
   <Tabs>
     <Tab title="OpenAI">
-      <div className="grid grid-cols-3 gap-2">
+      <div>
+        <div>gpt-5.2</div>
         <div>gpt-5</div>
         <div>gpt-5-mini</div>
         <div>gpt-5-nano</div>
@@ -4313,16 +3970,20 @@ The following demonstrates using **Zod** and **Pydantic** to utilize the structu
     </Tab>
 
     <Tab title="Gemini">
-      <div className="grid grid-cols-3 gap-2">
+      <div>
+        <div>gemini-3-flash-preview</div>
+        <div>gemini-3-pro-preview</div>
         <div>gemini-2.5-flash</div>
+        <div>gemini-2.5-flash-lite</div>
+        <div>gemini-2.5-pro</div>
         <div>gemini-2.0-flash</div>
         <div>gemini-2.0-flash-exp</div>
-        <div>gemini-2.0-flash-lite-preview-02-05</div>
+        <div>gemini-2.0-flash-lite</div>
       </div>
     </Tab>
 
     <Tab title="Groq">
-      <div className="grid grid-cols-3 gap-2">
+      <div>
         <div>openai/gpt-oss-120b</div>
         <div>meta-llama/llama-4-maverick-17b-128e-instruct</div>
         <div>meta-llama/llama-4-scout-17b-16e-instruct</div>
@@ -4331,7 +3992,7 @@ The following demonstrates using **Zod** and **Pydantic** to utilize the structu
     </Tab>
 
     <Tab title="Azure">
-      <div className="grid grid-cols-3 gap-2">
+      <div>
         <div>o4-mini</div>
         <div>o3</div>
         <div>o3-mini</div>
@@ -4340,6 +4001,644 @@ The following demonstrates using **Zod** and **Pydantic** to utilize the structu
     </Tab>
   </Tabs>
 </Expandable>
+
+
+# Async Perform Web Task
+Source: https://docs.anchorbrowser.io/agentic-browser-control/async-perform-web-task
+
+Run perform-web-task asynchronously and poll for results
+
+## Basic Usage
+
+To run `perform-web-task` asynchronously, set the `async` parameter to `true` in your request. The API will return immediately with a `workflow_id` that you can use to poll for results.
+
+<CodeGroup>
+  ```javascript node.js theme={null}
+  import Anchorbrowser from 'anchorbrowser';
+
+  const anchorClient = new Anchorbrowser({
+  apiKey: process.env.ANCHORBROWSER_API_KEY
+  });
+
+  // Start async task
+  const response = await anchorClient.tools.performWebTask({
+  prompt: 'Extract the main heading and first paragraph from the page',
+  url: 'https://docs.anchorbrowser.io',
+  async: true
+  });
+
+  console.log('Workflow ID:', response.data.workflow_id);
+  console.log('Status:', response.data.status);
+  ```
+
+  ```python python theme={null}
+  from anchorbrowser import Anchorbrowser
+  import os
+
+  anchor_client = Anchorbrowser(api_key=os.environ.get("ANCHORBROWSER_API_KEY"))
+
+  # Start async task
+  response = anchor_client.tools.perform_web_task(
+      prompt='Extract the main heading and first paragraph from the page',
+      url='https://docs.anchorbrowser.io',
+      async_=True
+  )
+
+  print('Workflow ID:', response.data.workflow_id)
+  print('Status:', response.data.status)
+  ```
+</CodeGroup>
+
+<Expandable title="Parameters">
+  ## Parameters
+
+  The async `perform-web-task` accepts the following parameters:
+
+  | Parameter            | Type    | Required | Description                                                                                                                                                     |
+  | -------------------- | ------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | `prompt`             | string  | Yes      | The task to be autonomously completed                                                                                                                           |
+  | `url`                | string  | No       | The URL of the webpage. If not provided, the tool will use the current page in the session                                                                      |
+  | `sessionId`          | string  | No       | An optional browser session identifier to reference an existing running browser session. When passed, the tool will be executed on the provided browser session |
+  | `async`              | boolean | No       | Whether to run the task asynchronously. If `true`, the task will be run asynchronously and the response will include a workflow ID. Defaults to `false`         |
+  | `agent`              | string  | No       | The AI agent to use for task completion. Options: `browser-use` (default), `openai-cua`, `gemini-computer-use`, `anthropic-cua`                                 |
+  | `provider`           | string  | No       | The AI provider to use for task completion. Options: `openai`, `gemini`, `groq`, `azure`, `xai`                                                                 |
+  | `model`              | string  | No       | The specific model to use for task completion. See [Available Models](/agentic-browser-control/ai-task-completion#available-models) for more information        |
+  | `detect_elements`    | boolean | No       | Enable element detection for better interaction accuracy. Improves the agent's ability to identify and interact with UI elements                                |
+  | `human_intervention` | boolean | No       | Allow human intervention during task execution. When enabled, the agent can request human input for ambiguous situations                                        |
+  | `max_steps`          | integer | No       | Maximum number of steps the agent can take to complete the task. Defaults to `200`                                                                              |
+  | `secret_values`      | object  | No       | Secret values to pass to the agent for secure credential handling. Keys and values are passed as environment variables to the agent                             |
+  | `highlight_elements` | boolean | No       | Whether to highlight elements during task execution for better visibility                                                                                       |
+  | `output_schema`      | object  | No       | JSON Schema defining the expected structure of the output data                                                                                                  |
+</Expandable>
+
+## Polling for Results
+
+After starting an async task, you'll receive a `workflow_id` in the response. Use this ID to poll the status endpoint until the task completes.
+
+### Status Endpoint
+
+<CodeGroup>
+  ```javascript node.js theme={null}
+  const statusResponse = await anchorClient.tools.getPerformWebTaskStatus(workflowId);
+
+  // Status can be: 'RUNNING', 'COMPLETED', or 'FAILED'
+  if (statusResponse.data.status === 'RUNNING') {
+      console.log('Still running...');
+  } else if (statusResponse.data.status === 'COMPLETED') {
+      console.log('Result:', statusResponse.data.result);
+  } else if (statusResponse.data.status === 'FAILED') {
+      console.error('Error:', statusResponse.data.error);
+  }
+  ```
+
+  ```python python theme={null}
+  status_response = anchor_client.tools.get_perform_web_task_status(workflow_id)
+
+  # Status can be: 'RUNNING', 'COMPLETED', or 'FAILED'
+  if status_response['data']['status'] == 'RUNNING':
+      print('Still running...')
+  elif status_response['data']['status'] == 'COMPLETED':
+      print('Result:', status_response['data']['result'])
+  elif status_response['data']['status'] == 'FAILED':
+      print('Error:', status_response['data']['error'])
+  ```
+</CodeGroup>
+
+### Response Statuses
+
+* **`RUNNING`**: The workflow is currently executing
+* **`COMPLETED`**: The workflow has completed. The `result` field contains the task output as a string.
+
+<Note>
+  The status will be `COMPLETED` even if the agent fails to complete the task, since the workflow execution itself succeeded. Always check the `result` field to verify whether the agent completed the task successfully or encountered an error.
+</Note>
+
+* **`FAILED`**: The workflow has failed. The `error` field contains the error message
+
+## Complete Example
+
+<CodeGroup>
+  ```javascript node.js theme={null}
+  import Anchorbrowser from 'anchorbrowser';
+
+  (async () => {
+    const anchorClient = new Anchorbrowser({
+      apiKey: process.env.ANCHORBROWSER_API_KEY
+    });
+
+    // Start multiple async tasks in parallel
+    const responses = await Promise.all([
+      anchorClient.tools.performWebTask({
+        prompt: 'Extract the main heading',
+        url: 'https://docs.anchorbrowser.io',
+        async: true
+      }),
+      anchorClient.tools.performWebTask({
+        prompt: 'Get the first paragraph',
+        url: 'https://example.com',
+        async: true
+      })
+    ]);
+
+    const workflowIds = responses.map(response => response.data.workflow_id);
+    console.log('Started', workflowIds.length, 'tasks');
+
+    // Poll all tasks
+    const results = await Promise.all(
+      workflowIds.map(async (wokflowId) => {
+        let status = 'RUNNING';
+        while (status === 'RUNNING') {
+          await new Promise(resolve => setTimeout(resolve, 2000));
+          const statusResponse = await anchorClient.tools.getPerformWebTaskStatus(wokflowId);
+          status = statusResponse.data.status;
+
+          if (status === 'COMPLETED') {
+            return statusResponse.data.result;
+          } else if (status === 'FAILED') {
+            throw new Error(statusResponse.data.error);
+          }
+        }
+      })
+    );
+
+    console.log('All tasks completed:', results);
+  })();
+  ```
+
+  ```python python theme={null}
+  from anchorbrowser import Anchorbrowser
+  import os
+  import time
+  import requests
+
+  anchor_client = Anchorbrowser(api_key=os.environ.get("ANCHORBROWSER_API_KEY"))
+
+  # Start multiple async tasks in parallel
+  responses = [
+      anchor_client.tools.perform_web_task(
+          prompt='Extract the main heading',
+          url='https://docs.anchorbrowser.io',
+          async_=True
+      ),
+      anchor_client.tools.perform_web_task(
+          prompt='Get the first paragraph',
+          url='https://example.com',
+          async_=True
+      )
+  ]
+
+  workflow_ids = [response.data.workflow_id for response in responses]
+  print('Started', len(workflow_ids), 'tasks')
+
+  # Poll all tasks
+  results = []
+  for workflow_id in workflow_ids:
+      status = 'RUNNING'
+      while status == 'RUNNING':
+          time.sleep(2)
+
+          status_response = anchor_client.tools.get_perform_web_task_status(workflow_id)
+          status = status_response['data']['status']
+
+          if status == 'COMPLETED':
+              results.append(status_response['data']['result'])
+              break
+          elif status == 'FAILED':
+              raise Exception(status_response['data']['error'])
+
+  print('All tasks completed:', results)
+  ```
+</CodeGroup>
+
+
+# Anthropic Computer Use
+Source: https://docs.anchorbrowser.io/agentic-browser-control/computer-use-agents/anthropic
+
+Use Claude models with native computer use capabilities for browser automation
+
+Anthropic's Claude models with Computer Use capabilities enable AI agents to interact with web browsers through screenshots and native computer control actions.
+
+## Overview
+
+Anthropic Computer Use (`anthropic-cua`) leverages Claude's vision and reasoning capabilities to:
+
+* Analyze screenshots of web pages
+* Identify interactive elements
+* Execute precise mouse and keyboard actions
+* Complete complex multi-step workflows
+
+## Supported Models
+
+| Model             | Model ID                     | Best For                                                 |
+| ----------------- | ---------------------------- | -------------------------------------------------------- |
+| Claude Opus 4.5   | `claude-opus-4-5-20251101`   | Most advanced reasoning, complex workflows **(default)** |
+| Claude Sonnet 4.5 | `claude-sonnet-4-5-20250929` | Balanced performance, general automation                 |
+| Claude Opus 4     | `claude-opus-4-20250514`     | Advanced coding and agentic tasks                        |
+| Claude Sonnet 4   | `claude-sonnet-4-20250514`   | Fast, reliable automation                                |
+
+## Code Example
+
+<CodeGroup>
+  ```javascript node.js theme={null}
+  import Anchorbrowser from 'anchorbrowser';
+
+  const anchorClient = new Anchorbrowser({
+    apiKey: process.env.ANCHORBROWSER_API_KEY
+  });
+
+  const response = await anchorClient.agent.task(
+    'Navigate to GitHub and find the anchorbrowser repository',
+    {
+      taskOptions: {
+        url: 'https://github.com',
+        agent: 'anthropic-cua',
+        // model: 'claude-opus-4-5-20251101',  // Default model
+        maxSteps: 30
+      }
+    }
+  );
+
+  console.log(response);
+  ```
+
+  ```python python theme={null}
+  from anchorbrowser import Anchorbrowser
+  import os
+
+  anchor_client = Anchorbrowser(api_key=os.environ.get("ANCHORBROWSER_API_KEY"))
+
+  response = anchor_client.agent.task(
+      'Navigate to GitHub and find the anchorbrowser repository',
+      task_options={
+          'url': 'https://github.com',
+          'agent': 'anthropic-cua',
+          # 'model': 'claude-opus-4-5-20251101',  # Default model
+          'max_steps': 30
+      }
+  )
+
+  print(response)
+  ```
+</CodeGroup>
+
+## Configuration Options
+
+| Parameter       | Type    | Description                                                                      |
+| --------------- | ------- | -------------------------------------------------------------------------------- |
+| `agent`         | string  | Must be `anthropic-cua`                                                          |
+| `model`         | string  | Claude model to use (default: `claude-opus-4-5-20251101`)                        |
+| `url`           | string  | Starting URL for the task                                                        |
+| `max_steps`     | integer | Maximum actions the agent can take                                               |
+| `output_schema` | object  | JSON Schema for structured output                                                |
+| `secret_values` | object  | Secure credentials (see [Secret Values](/agentic-browser-control/secret-values)) |
+
+## Secure Credentials with Secret Values
+
+Anthropic CUA fully supports secret values for secure credential handling. Secrets are never exposed to the AI model.
+
+<CodeGroup>
+  ```javascript node.js theme={null}
+  const response = await anchorClient.agent.task(
+    'Login to the dashboard and download my latest report',
+    {
+      taskOptions: {
+        url: 'https://app.example.com/login',
+        agent: 'anthropic-cua',
+        secretValues: {
+          EMAIL: process.env.APP_EMAIL,
+          PASSWORD: process.env.APP_PASSWORD
+        }
+      }
+    }
+  );
+  ```
+
+  ```python python theme={null}
+  response = anchor_client.agent.task(
+      'Login to the dashboard and download my latest report',
+      task_options={
+          'url': 'https://app.example.com/login',
+          'agent': 'anthropic-cua',
+          'secret_values': {
+              'EMAIL': os.environ.get('APP_EMAIL'),
+              'PASSWORD': os.environ.get('APP_PASSWORD')
+          }
+      }
+  )
+  ```
+</CodeGroup>
+
+Learn more about [domain-scoped secrets and TOTP support](/agentic-browser-control/secret-values).
+
+## Best Practices
+
+* **Opus 4.5 is the default** - most capable model for complex workflows
+* **Use Sonnet 4.5** for faster automation when speed is important
+* **Provide clear, specific prompts** describing the exact task to complete
+
+
+# Gemini Computer Use
+Source: https://docs.anchorbrowser.io/agentic-browser-control/computer-use-agents/gemini
+
+Use Google Gemini models for screenshot-based browser automation
+
+Google's Gemini Computer Use agent (`gemini-computer-use`) enables AI-powered browser automation through visual understanding and multi-turn interactions.
+
+## Overview
+
+Gemini Computer Use leverages Google's multimodal AI capabilities to:
+
+* Process and understand web page screenshots
+* Plan and execute multi-step browser interactions
+* Handle complex visual layouts and dynamic content
+* Integrate with Google's AI ecosystem
+
+## Supported Models
+
+| Model                   | Model ID                                  | Best For                                  |
+| ----------------------- | ----------------------------------------- | ----------------------------------------- |
+| Gemini 2.5 Computer Use | `gemini-2.5-computer-use-preview-10-2025` | Screenshot-based automation **(default)** |
+
+## Code Example
+
+<CodeGroup>
+  ```javascript node.js theme={null}
+  import Anchorbrowser from 'anchorbrowser';
+
+  const anchorClient = new Anchorbrowser({
+    apiKey: process.env.ANCHORBROWSER_API_KEY
+  });
+
+  const response = await anchorClient.agent.task(
+    'Search for the latest AI news and summarize the top 3 articles',
+    {
+      taskOptions: {
+        url: 'https://news.google.com',
+        agent: 'gemini-computer-use',
+        // model: 'gemini-2.5-computer-use-preview-10-2025',  // Default model
+        maxSteps: 25,
+        outputSchema: {
+          type: 'object',
+          properties: {
+            articles: {
+              type: 'array',
+              items: {
+                type: 'object',
+                properties: {
+                  title: { type: 'string' },
+                  summary: { type: 'string' },
+                  source: { type: 'string' }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  );
+
+  console.log(response);
+  ```
+
+  ```python python theme={null}
+  from anchorbrowser import Anchorbrowser
+  import os
+
+  anchor_client = Anchorbrowser(api_key=os.environ.get("ANCHORBROWSER_API_KEY"))
+
+  response = anchor_client.agent.task(
+      'Search for the latest AI news and summarize the top 3 articles',
+      task_options={
+          'url': 'https://news.google.com',
+          'agent': 'gemini-computer-use',
+          # 'model': 'gemini-2.5-computer-use-preview-10-2025',  # Default model
+          'max_steps': 25,
+          'output_schema': {
+              'type': 'object',
+              'properties': {
+                  'articles': {
+                      'type': 'array',
+                      'items': {
+                          'type': 'object',
+                          'properties': {
+                              'title': {'type': 'string'},
+                              'summary': {'type': 'string'},
+                              'source': {'type': 'string'}
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  )
+
+  print(response)
+  ```
+</CodeGroup>
+
+## Configuration Options
+
+| Parameter       | Type    | Description                                                                      |
+| --------------- | ------- | -------------------------------------------------------------------------------- |
+| `agent`         | string  | Must be `gemini-computer-use`                                                    |
+| `model`         | string  | Gemini model to use (default: `gemini-2.5-computer-use-preview-10-2025`)         |
+| `url`           | string  | Starting URL for the task                                                        |
+| `max_steps`     | integer | Maximum actions the agent can take                                               |
+| `output_schema` | object  | JSON Schema for structured output                                                |
+| `secret_values` | object  | Secure credentials (see [Secret Values](/agentic-browser-control/secret-values)) |
+
+## Secure Credentials with Secret Values
+
+Gemini Computer Use fully supports secret values for secure credential handling. Secrets are never exposed to the AI model.
+
+<CodeGroup>
+  ```javascript node.js theme={null}
+  const response = await anchorClient.agent.task(
+    'Login to the dashboard and download my latest report',
+    {
+      taskOptions: {
+        url: 'https://app.example.com/login',
+        agent: 'gemini-computer-use',
+        secretValues: {
+          EMAIL: process.env.APP_EMAIL,
+          PASSWORD: process.env.APP_PASSWORD
+        }
+      }
+    }
+  );
+  ```
+
+  ```python python theme={null}
+  response = anchor_client.agent.task(
+      'Login to the dashboard and download my latest report',
+      task_options={
+          'url': 'https://app.example.com/login',
+          'agent': 'gemini-computer-use',
+          'secret_values': {
+              'EMAIL': os.environ.get('APP_EMAIL'),
+              'PASSWORD': os.environ.get('APP_PASSWORD')
+          }
+      }
+  )
+  ```
+</CodeGroup>
+
+Learn more about [domain-scoped secrets and TOTP support](/agentic-browser-control/secret-values).
+
+## Best Practices
+
+* **gemini-2.5-computer-use-preview is the default** - optimized for screenshot-based automation
+* **Leverage structured output** with `output_schema` for reliable data extraction
+* **Provide clear, specific prompts** describing the exact task to complete
+
+
+# OpenAI Computer Use
+Source: https://docs.anchorbrowser.io/agentic-browser-control/computer-use-agents/openai
+
+Use OpenAI models with computer use capabilities for browser automation
+
+OpenAI's Computer Use Agent (`openai-cua`) leverages GPT models with vision and reasoning capabilities for screenshot-based browser automation.
+
+## Overview
+
+OpenAI Computer Use provides:
+
+* **Screenshot-based interactions** for visual understanding of web pages
+* **Advanced reasoning** powered by GPT models
+* **High accuracy** for complex web interactions
+* **Structured outputs** for reliable data extraction
+
+## Supported Models
+
+| Model                | Model ID               | Best For                                  |
+| -------------------- | ---------------------- | ----------------------------------------- |
+| Computer Use Preview | `computer-use-preview` | Screenshot-based automation **(default)** |
+
+## Code Example
+
+<CodeGroup>
+  ```javascript node.js theme={null}
+  import Anchorbrowser from 'anchorbrowser';
+
+  const anchorClient = new Anchorbrowser({
+    apiKey: process.env.ANCHORBROWSER_API_KEY
+  });
+
+  const response = await anchorClient.agent.task(
+    'Find the pricing information and extract the plan details',
+    {
+      taskOptions: {
+        url: 'https://example.com/pricing',
+        agent: 'openai-cua',
+        // model: 'computer-use-preview',  // Default model
+        maxSteps: 25,
+        outputSchema: {
+          type: 'object',
+          properties: {
+            plans: {
+              type: 'array',
+              items: {
+                type: 'object',
+                properties: {
+                  name: { type: 'string' },
+                  price: { type: 'string' },
+                  features: { type: 'array', items: { type: 'string' } }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  );
+
+  console.log(response);
+  ```
+
+  ```python python theme={null}
+  from anchorbrowser import Anchorbrowser
+  import os
+
+  anchor_client = Anchorbrowser(api_key=os.environ.get("ANCHORBROWSER_API_KEY"))
+
+  response = anchor_client.agent.task(
+      'Find the pricing information and extract the plan details',
+      task_options={
+          'url': 'https://example.com/pricing',
+          'agent': 'openai-cua',
+          # 'model': 'computer-use-preview',  # Default model
+          'max_steps': 25,
+          'output_schema': {
+              'type': 'object',
+              'properties': {
+                  'plans': {
+                      'type': 'array',
+                      'items': {
+                          'type': 'object',
+                          'properties': {
+                              'name': {'type': 'string'},
+                              'price': {'type': 'string'},
+                              'features': {'type': 'array', 'items': {'type': 'string'}}
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  )
+
+  print(response)
+  ```
+</CodeGroup>
+
+## Configuration Options
+
+| Parameter       | Type    | Description                                                                      |
+| --------------- | ------- | -------------------------------------------------------------------------------- |
+| `agent`         | string  | Must be `openai-cua`                                                             |
+| `model`         | string  | OpenAI model to use (default: `computer-use-preview`)                            |
+| `url`           | string  | Starting URL for the task                                                        |
+| `max_steps`     | integer | Maximum actions the agent can take                                               |
+| `output_schema` | object  | JSON Schema for structured output                                                |
+| `secret_values` | object  | Secure credentials (see [Secret Values](/agentic-browser-control/secret-values)) |
+
+## Secure Credentials with Secret Values
+
+OpenAI CUA fully supports secret values for secure credential handling. Secrets are never exposed to the AI model.
+
+<CodeGroup>
+  ```javascript node.js theme={null}
+  const response = await anchorClient.agent.task(
+    'Login to the dashboard and download my latest report',
+    {
+      taskOptions: {
+        url: 'https://app.example.com/login',
+        agent: 'openai-cua',
+        secretValues: {
+          EMAIL: process.env.APP_EMAIL,
+          PASSWORD: process.env.APP_PASSWORD
+        }
+      }
+    }
+  );
+  ```
+
+  ```python python theme={null}
+  response = anchor_client.agent.task(
+      'Login to the dashboard and download my latest report',
+      task_options={
+          'url': 'https://app.example.com/login',
+          'agent': 'openai-cua',
+          'secret_values': {
+              'EMAIL': os.environ.get('APP_EMAIL'),
+              'PASSWORD': os.environ.get('APP_PASSWORD')
+          }
+      }
+  )
+  ```
+</CodeGroup>
+
+Learn more about [domain-scoped secrets and TOTP support](/agentic-browser-control/secret-values).
 
 
 # Human-in-the-Loop
@@ -4488,34 +4787,36 @@ Source: https://docs.anchorbrowser.io/agentic-browser-control/secret-values
 
 Securely pass credentials and sensitive data to AI agents
 
-Secret values allow you to securely pass credentials, API keys, and other sensitive data to AI agents during task execution. These values are not logged or stored anywhere.
+Secret values allow you to securely pass credentials, API keys, and other sensitive data to AI agents during task execution. These values are automatically handled at type-time, never logged, and never exposed to the AI model.
+
+Secret values work with all agent types: `browser-use`, `openai-cua`, `anthropic-cua`, and `gemini-computer-use`.
 
 ## Basic Usage
+
+Pass credentials as key-value pairs in `secretValues`. The agent will securely use these values when logging into websites or filling forms.
 
 <CodeGroup>
   ```javascript node.js theme={null}
   import Anchorbrowser from 'anchorbrowser';
 
-  (async () => {
-    const anchorClient = new Anchorbrowser({
-      apiKey: process.env.ANCHORBROWSER_API_KEY
-    });
+  const anchorClient = new Anchorbrowser({
+    apiKey: process.env.ANCHORBROWSER_API_KEY
+  });
 
-    const response = await anchorClient.agent.task(
-      'Login to linkedin, approve all friend requests, search for "Anchorbrowser" and send a connection request',
-      {
-        taskOptions: {
-          url: 'https://linkedin.com',
-          secretValues: {
-            LINKEDIN_EMAIL: process.env.LINKEDIN_EMAIL,
-            LINKEDIN_PASSWORD: process.env.LINKEDIN_PASSWORD
-          }
+  const response = await anchorClient.agent.task(
+    'Login to LinkedIn and send a connection request to the Anchorbrowser team',
+    {
+      taskOptions: {
+        url: 'https://linkedin.com',
+        secretValues: {
+          LINKEDIN_EMAIL: process.env.LINKEDIN_EMAIL,
+          LINKEDIN_PASSWORD: process.env.LINKEDIN_PASSWORD
         }
       }
-    );
+    }
+  );
 
-    console.log(response);
-  })();
+  console.log(response);
   ```
 
   ```python python theme={null}
@@ -4525,7 +4826,7 @@ Secret values allow you to securely pass credentials, API keys, and other sensit
   anchor_client = Anchorbrowser(api_key=os.environ.get("ANCHORBROWSER_API_KEY"))
 
   response = anchor_client.agent.task(
-      'Login to linkedin, approve all friend requests, search for "Anchorbrowser" and send a connection request',
+      'Login to LinkedIn and send a connection request to the Anchorbrowser team',
       task_options={
           'url': 'https://linkedin.com',
           'secret_values': {
@@ -4540,32 +4841,366 @@ Secret values allow you to securely pass credentials, API keys, and other sensit
 </CodeGroup>
 
 <Tip>
-  Secret values are the recommended way to handle any sensitive data in AI agent tasks. Never include credentials directly in prompts or system messages.
+  Secret values are the recommended way to handle any sensitive data in AI agent tasks. Never include credentials directly in prompts.
 </Tip>
 
+## Domain-Scoped Secrets
 
-# End All Sessions
-Source: https://docs.anchorbrowser.io/api-reference/browser-sessions/end-all-sessions
+For enhanced security, you can scope secrets to specific domains. Secrets will only be available when the browser is on a matching domain - preventing credential exposure on the wrong site.
 
-openapi-mintlify.yaml delete /v1/sessions/all
-Terminates all active browser sessions associated with the provided API key.
+<CodeGroup>
+  ```javascript node.js theme={null}
+  import Anchorbrowser from 'anchorbrowser';
+
+  const anchorClient = new Anchorbrowser({
+    apiKey: process.env.ANCHORBROWSER_API_KEY
+  });
+
+  const response = await anchorClient.agent.task(
+    'Login to LinkedIn, then login to Gmail and check my inbox',
+    {
+      taskOptions: {
+        url: 'https://linkedin.com',
+        agent: 'anthropic-cua',
+        secretValues: {
+          // Only available on linkedin.com
+          '*.linkedin.com': {
+            LINKEDIN_EMAIL: process.env.LINKEDIN_EMAIL,
+            LINKEDIN_PASSWORD: process.env.LINKEDIN_PASSWORD
+          },
+          // Only available on google.com
+          '*.google.com': {
+            GOOGLE_EMAIL: process.env.GOOGLE_EMAIL,
+            GOOGLE_PASSWORD: process.env.GOOGLE_PASSWORD
+          }
+        }
+      }
+    }
+  );
+
+  console.log(response);
+  ```
+
+  ```python python theme={null}
+  from anchorbrowser import Anchorbrowser
+  import os
+
+  anchor_client = Anchorbrowser(api_key=os.environ.get("ANCHORBROWSER_API_KEY"))
+
+  response = anchor_client.agent.task(
+      'Login to LinkedIn, then login to Gmail and check my inbox',
+      task_options={
+          'url': 'https://linkedin.com',
+          'agent': 'anthropic-cua',
+          'secret_values': {
+              # Only available on linkedin.com
+              '*.linkedin.com': {
+                  'LINKEDIN_EMAIL': os.environ.get('LINKEDIN_EMAIL'),
+                  'LINKEDIN_PASSWORD': os.environ.get('LINKEDIN_PASSWORD')
+              },
+              # Only available on google.com
+              '*.google.com': {
+                  'GOOGLE_EMAIL': os.environ.get('GOOGLE_EMAIL'),
+                  'GOOGLE_PASSWORD': os.environ.get('GOOGLE_PASSWORD')
+              }
+          }
+      }
+  )
+
+  print(response)
+  ```
+</CodeGroup>
+
+### Domain Pattern Examples
+
+| Pattern                | Matches                                  |
+| ---------------------- | ---------------------------------------- |
+| `*.linkedin.com`       | `www.linkedin.com`, `login.linkedin.com` |
+| `linkedin.com`         | `linkedin.com`, `www.linkedin.com`       |
+| `https://*.google.com` | Only HTTPS Google subdomains             |
+| `*`                    | All domains (use sparingly)              |
+
+<Warning>
+  Domain-scoped secrets are only available when the browser URL matches the pattern. If the agent navigates to a different domain, those secrets won't be accessible.
+</Warning>
+
+## TOTP / Two-Factor Authentication
+
+Secret values support automatic TOTP code generation for 2FA. Use the `bu_2fa_code` suffix for your TOTP secret key:
+
+<CodeGroup>
+  ```javascript node.js theme={null}
+  const response = await anchorClient.agent.task(
+    'Login to the app and complete 2FA verification',
+    {
+      taskOptions: {
+        url: 'https://secure-app.example.com/login',
+        secretValues: {
+          EMAIL: process.env.APP_EMAIL,
+          PASSWORD: process.env.APP_PASSWORD,
+          // TOTP secret - generates a fresh 6-digit code automatically
+          APP_2FA_bu_2fa_code: process.env.APP_TOTP_SECRET
+        }
+      }
+    }
+  );
+  ```
+
+  ```python python theme={null}
+  response = anchor_client.agent.task(
+      'Login to the app and complete 2FA verification',
+      task_options={
+          'url': 'https://secure-app.example.com/login',
+          'secret_values': {
+              'EMAIL': os.environ.get('APP_EMAIL'),
+              'PASSWORD': os.environ.get('APP_PASSWORD'),
+              # TOTP secret - generates a fresh 6-digit code automatically
+              'APP_2FA_bu_2fa_code': os.environ.get('APP_TOTP_SECRET')
+          }
+      }
+  )
+  ```
+</CodeGroup>
+
+## Best Practices
+
+<CardGroup>
+  <Card title="Use Environment Variables" icon="leaf">
+    Never hardcode secrets in your code. Always load from environment variables or a secrets manager.
+  </Card>
+
+  <Card title="Scope to Domains" icon="lock">
+    Use domain-scoped secrets for multi-site tasks to prevent credential leakage.
+  </Card>
+
+  <Card title="Meaningful Key Names" icon="tag">
+    Use clear, descriptive key names like `LINKEDIN_PASSWORD` instead of `PASS1`.
+  </Card>
+
+  <Card title="Minimal Exposure" icon="eye-slash">
+    Only include secrets that the task actually needs.
+  </Card>
+</CardGroup>
+
+## Security Guarantees
+
+| Guarantee                 | Description                                               |
+| ------------------------- | --------------------------------------------------------- |
+| **Never logged**          | Secret values are excluded from all logs and telemetry    |
+| **Never sent to AI**      | Real values are never visible to the AI model             |
+| **Type-time replacement** | Secrets are only used at the moment of typing             |
+| **Domain isolation**      | Domain-scoped secrets are only available on matching URLs |
+| **No storage**            | Secrets are processed in-memory and never persisted       |
 
 
+# Authenticated Applications (Early Availability)
+Source: https://docs.anchorbrowser.io/essentials/authenticated-applications
 
-# List All Sessions Status
-Source: https://docs.anchorbrowser.io/api-reference/browser-sessions/list-all-sessions-status
+Define target websites, configure supported login methods (auth flows), let end-users authenticate via an [Embeddable UI](/essentials/embedding-identity-ui), and create pre-authenticated browser sessions to those websites.
 
-openapi-mintlify.yaml get /v1/sessions/all/status
-Retrieves status information for all browser sessions associated with the API key.
+<Warning>
+  This feature is currently in **Early Availability**. Contact [**support**](mailto:support@anchorbrowser.io) to enable this feature.
+</Warning>
 
+<Steps>
+  <Step title="Create an Application">
+    <CodeGroup>
+      ```javascript node.js theme={null}
+      import Anchorbrowser from 'anchorbrowser';
 
+      const anchorClient = new Anchorbrowser();
 
-# Start Browser Session
-Source: https://docs.anchorbrowser.io/api-reference/browser-sessions/start-browser-session
+      // Create an application for a target website
+      const app = await anchorClient.applications.create({
+        name: 'My LinkedIn User',
+        source: 'linkedin.com'
+      });
 
-openapi-mintlify.yaml post /v1/sessions
-Allocates a new browser session for the user, with optional configurations for ad-blocking, captcha solving, proxy usage, and idle timeout.
+      console.log(app.id);
+      ```
 
+      ```python python theme={null}
+      from anchorbrowser import Anchorbrowser
+
+      anchor_client = Anchorbrowser()
+
+      # Create an application for a target website
+      app = anchor_client.applications.create(
+          name="My LinkedIn User",
+          source="linkedin.com"
+      )
+
+      print(app.id)
+      ```
+
+      ```bash cURL theme={null}
+      curl -X POST "https://api.anchorbrowser.io/v1/applications" \
+        -H "anchor-api-key: YOUR_API_KEY" \
+        -H "Content-Type: application/json" \
+        -d '{"name": "My LinkedIn User", "source": "linkedin.com"}'
+      ```
+    </CodeGroup>
+  </Step>
+
+  <Step title="Configure Auth Flow for the Application">
+    Applications support multiple authentication flows: `username_password`, `authenticator`, and `custom`.
+
+    <CodeGroup>
+      ```javascript node.js theme={null}
+      await anchorClient.applications.authFlows.create(app.id, {
+        name: 'Email Login with authenticator',
+        methods: ['username_password', 'authenticator']
+      });
+      ```
+
+      ```python python theme={null}
+      anchor_client.applications.auth_flows.create(
+          application_id=app.id,
+          name="Email Login with authenticator",
+          methods=["username_password", "authenticator"]
+      )
+      ```
+
+      ```bash cURL theme={null}
+      curl -X POST "https://api.anchorbrowser.io/v1/applications/{app_id}/auth-flows" \
+        -H "anchor-api-key: YOUR_API_KEY" \
+        -H "Content-Type: application/json" \
+        -d '{"name": "Email Login with authenticator", "methods": ["username_password", "authenticator"]}'
+      ```
+    </CodeGroup>
+  </Step>
+
+  <Step title="Create Identity">
+    Create an identity with credentials for the application.
+
+    <CodeGroup>
+      ```javascript node.js theme={null}
+      const identity = await anchorClient.identities.create({
+        source: 'https://linkedin.com',
+        name: 'John Doe',
+        credentials: [{
+          type: 'username_password',
+          username: 'john@example.com',
+          password: 'secret'
+        }]
+      });
+
+      console.log(identity.id);
+      ```
+
+      ```python python theme={null}
+      identity = anchor_client.identities.create(
+          source="https://linkedin.com",
+          name="John Doe",
+          credentials=[{
+              "type": "username_password",
+              "username": "john@example.com",
+              "password": "secret"
+          }]
+      )
+
+      print(identity.id)
+      ```
+
+      ```bash cURL theme={null}
+      curl -X POST "https://api.anchorbrowser.io/v1/identities" \
+        -H "anchor-api-key: YOUR_API_KEY" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "source": "https://linkedin.com",
+          "name": "John Doe",
+          "credentials": [{
+            "type": "username_password",
+            "username": "john@example.com",
+            "password": "secret"
+          }]
+        }'
+      ```
+    </CodeGroup>
+
+    <Tip>
+      For end-user self-service authentication, use the [Embeddable Identity UI](/essentials/embedding-identity-ui).
+    </Tip>
+  </Step>
+
+  <Step title="Create Authenticated Sessions">
+    Use the identity ID to create an authenticated browser session.
+
+    <CodeGroup>
+      ```javascript node.js theme={null}
+      import Anchorbrowser from 'anchorbrowser';
+
+      const anchorClient = new Anchorbrowser();
+      const identityId = "your-identity-id";
+      const session = await anchorClient.sessions.create({
+          // Recommended settings for authenticated sessions.
+          session: {
+              proxy: {
+                  active: true,
+              }
+          },
+          browser: {
+              captcha_solver: {
+                  active: true,
+              },
+              extra_stealth: {
+                  active: true,
+              }
+          },
+
+          // Identity to authenticate with.
+          identities: [{ id: identityId }]
+      });
+
+      console.log(session.data.id);
+      ```
+
+      ```python python theme={null}
+      from anchorbrowser import Anchorbrowser
+
+      anchor_client = Anchorbrowser()
+      identity_id = "your-identity-id"
+      session = anchor_client.sessions.create(
+          # Recommended settings for authenticated sessions.
+          session={
+              "proxy": {
+                  "active": True,
+              }
+          },
+          browser={
+              "captcha_solver": {
+                  "active": True,
+              },
+              "extra_stealth": {
+                  "active": True,
+              }
+          },
+
+          # Identity to authenticate with.
+          identities=[{"id": identity_id}]
+      )
+
+      print(session.data.id)
+      ```
+    </CodeGroup>
+  </Step>
+</Steps>
+
+## Related
+
+<CardGroup>
+  <Card title="Embedding End-User Authentication UI" icon="window" href="/essentials/embedding-identity-ui">
+    Embed the authentication flow in your app
+  </Card>
+
+  <Card title="Browser Profiles" icon="fingerprint" href="/essentials/authentication-and-identity">
+    Alternative approach using browser profiles
+  </Card>
+
+  <Card title="API Reference" icon="code" href="/api-reference/applications-early-availability/">
+    Applications and Identities endpoints
+  </Card>
+</CardGroup>
 
 
 # Browser Profiles (Authenticated sessions)
@@ -4582,7 +5217,7 @@ The following guide explains how to create and use Identity Profiles in Anchor B
 
 ## Quick start - Create and use a profile
 
-<Expandable title="Via SDK" defaultOpen>
+<Expandable title="Via SDK">
   <Steps>
     <Step title="Start a session with a new profile">
       Create a session via SDK, Make sure to configure the new profile to persist.
@@ -4760,12 +5395,12 @@ The following guide explains how to create and use Identity Profiles in Anchor B
   </Steps>
 </Expandable>
 
-<Expandable title="Via UI" defaultOpen>
+<Expandable title="Via UI">
   <Steps>
     <Step title="Start a session with a new profile">
       Through the Anchor playground, create a profile on the configuration area. Then, click to start a session.
 
-      <img src="https://mintcdn.com/anchor-b3ec2715/gNwz9f2wKiBAjmbK/images/profile-create.png?fit=max&auto=format&n=gNwz9f2wKiBAjmbK&q=85&s=ba567b5ede7d85d69a465d727b6793cf" alt="Create profile in playground" data-og-width="848" width="848" data-og-height="692" height="692" data-path="images/profile-create.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/gNwz9f2wKiBAjmbK/images/profile-create.png?w=280&fit=max&auto=format&n=gNwz9f2wKiBAjmbK&q=85&s=6588b9f06bf34183b74ab4d2df0f2b1d 280w, https://mintcdn.com/anchor-b3ec2715/gNwz9f2wKiBAjmbK/images/profile-create.png?w=560&fit=max&auto=format&n=gNwz9f2wKiBAjmbK&q=85&s=253c8033f42cb35319e507f16c8637b5 560w, https://mintcdn.com/anchor-b3ec2715/gNwz9f2wKiBAjmbK/images/profile-create.png?w=840&fit=max&auto=format&n=gNwz9f2wKiBAjmbK&q=85&s=6c4ac0b9bcd85a57b47e103c3981f4df 840w, https://mintcdn.com/anchor-b3ec2715/gNwz9f2wKiBAjmbK/images/profile-create.png?w=1100&fit=max&auto=format&n=gNwz9f2wKiBAjmbK&q=85&s=18dcf1a0098c0bd979f802cdd469f986 1100w, https://mintcdn.com/anchor-b3ec2715/gNwz9f2wKiBAjmbK/images/profile-create.png?w=1650&fit=max&auto=format&n=gNwz9f2wKiBAjmbK&q=85&s=9beac8d27ee4256120853639e9b3dc47 1650w, https://mintcdn.com/anchor-b3ec2715/gNwz9f2wKiBAjmbK/images/profile-create.png?w=2500&fit=max&auto=format&n=gNwz9f2wKiBAjmbK&q=85&s=bf988345d1448fca3a2e00d64062f733 2500w" />
+      <img alt="Create profile in playground" />
     </Step>
 
     <Step title="Authenticate Once">
@@ -4776,20 +5411,463 @@ The following guide explains how to create and use Identity Profiles in Anchor B
       Save the profile using the 'Save Profile' button in the Anchor Browser Playground.
       <Note>This operation will end the current playground browser session</Note>
 
-      <img src="https://mintcdn.com/anchor-b3ec2715/gNwz9f2wKiBAjmbK/images/profile-save.png?fit=max&auto=format&n=gNwz9f2wKiBAjmbK&q=85&s=d8ffb3b7d286d0f96fb0e52787f6458e" alt="Save profile in playground" data-og-width="624" width="624" data-og-height="188" height="188" data-path="images/profile-save.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/gNwz9f2wKiBAjmbK/images/profile-save.png?w=280&fit=max&auto=format&n=gNwz9f2wKiBAjmbK&q=85&s=21499a1a7e89195e28d06a8c17c24d19 280w, https://mintcdn.com/anchor-b3ec2715/gNwz9f2wKiBAjmbK/images/profile-save.png?w=560&fit=max&auto=format&n=gNwz9f2wKiBAjmbK&q=85&s=40bb58135dafbe0818db43d842fdebe4 560w, https://mintcdn.com/anchor-b3ec2715/gNwz9f2wKiBAjmbK/images/profile-save.png?w=840&fit=max&auto=format&n=gNwz9f2wKiBAjmbK&q=85&s=aa655f1cdb5e843abd0b1d1531ddc511 840w, https://mintcdn.com/anchor-b3ec2715/gNwz9f2wKiBAjmbK/images/profile-save.png?w=1100&fit=max&auto=format&n=gNwz9f2wKiBAjmbK&q=85&s=ad3506904c5f9c804423b402d41f37b4 1100w, https://mintcdn.com/anchor-b3ec2715/gNwz9f2wKiBAjmbK/images/profile-save.png?w=1650&fit=max&auto=format&n=gNwz9f2wKiBAjmbK&q=85&s=8ad71b63014b649bdf365cd4199746d7 1650w, https://mintcdn.com/anchor-b3ec2715/gNwz9f2wKiBAjmbK/images/profile-save.png?w=2500&fit=max&auto=format&n=gNwz9f2wKiBAjmbK&q=85&s=4556fc858758e7fdbb3904ee4598fcad 2500w" />
+      <img alt="Save profile in playground" />
 
       Then approve it in the popup window 'Yes, Save and Terminate'
 
-      <img src="https://mintcdn.com/anchor-b3ec2715/gNwz9f2wKiBAjmbK/images/profile-confirm.png?fit=max&auto=format&n=gNwz9f2wKiBAjmbK&q=85&s=cf881132cfe21e46430f42af6096cbef" alt="Confirm profile save" data-og-width="1128" width="1128" data-og-height="364" height="364" data-path="images/profile-confirm.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/gNwz9f2wKiBAjmbK/images/profile-confirm.png?w=280&fit=max&auto=format&n=gNwz9f2wKiBAjmbK&q=85&s=3381963e33a467191992cecaf7fb3e36 280w, https://mintcdn.com/anchor-b3ec2715/gNwz9f2wKiBAjmbK/images/profile-confirm.png?w=560&fit=max&auto=format&n=gNwz9f2wKiBAjmbK&q=85&s=e565f397c48a94d9470107adc639da39 560w, https://mintcdn.com/anchor-b3ec2715/gNwz9f2wKiBAjmbK/images/profile-confirm.png?w=840&fit=max&auto=format&n=gNwz9f2wKiBAjmbK&q=85&s=5012d3d96ffa834d35c807cda269dd32 840w, https://mintcdn.com/anchor-b3ec2715/gNwz9f2wKiBAjmbK/images/profile-confirm.png?w=1100&fit=max&auto=format&n=gNwz9f2wKiBAjmbK&q=85&s=a24ac054c186218c096c8fd019237a48 1100w, https://mintcdn.com/anchor-b3ec2715/gNwz9f2wKiBAjmbK/images/profile-confirm.png?w=1650&fit=max&auto=format&n=gNwz9f2wKiBAjmbK&q=85&s=ace5599dbc198f265fa84e5c05927575 1650w, https://mintcdn.com/anchor-b3ec2715/gNwz9f2wKiBAjmbK/images/profile-confirm.png?w=2500&fit=max&auto=format&n=gNwz9f2wKiBAjmbK&q=85&s=a60df27d31fb2870f8603a32bcb399a5 2500w" />
+      <img alt="Confirm profile save" />
     </Step>
 
     <Step title="Use the profile in other sessions">
       Select the saved profile from the dropdown in the playground configuration area when starting a new session.
 
-      <img src="https://mintcdn.com/anchor-b3ec2715/gNwz9f2wKiBAjmbK/images/profile-reuse.png?fit=max&auto=format&n=gNwz9f2wKiBAjmbK&q=85&s=328c09eda74988b1c2523a70c8222bb6" alt="Reuse saved profile" data-og-width="814" width="814" data-og-height="606" height="606" data-path="images/profile-reuse.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/gNwz9f2wKiBAjmbK/images/profile-reuse.png?w=280&fit=max&auto=format&n=gNwz9f2wKiBAjmbK&q=85&s=4a97928d72444823fe9ccf0f818bf2c6 280w, https://mintcdn.com/anchor-b3ec2715/gNwz9f2wKiBAjmbK/images/profile-reuse.png?w=560&fit=max&auto=format&n=gNwz9f2wKiBAjmbK&q=85&s=9636dd11441a35651b4684412ce215ac 560w, https://mintcdn.com/anchor-b3ec2715/gNwz9f2wKiBAjmbK/images/profile-reuse.png?w=840&fit=max&auto=format&n=gNwz9f2wKiBAjmbK&q=85&s=a1fbd4add893479082e43d3049c6f086 840w, https://mintcdn.com/anchor-b3ec2715/gNwz9f2wKiBAjmbK/images/profile-reuse.png?w=1100&fit=max&auto=format&n=gNwz9f2wKiBAjmbK&q=85&s=18c75651bc923ebcfba73330b686463b 1100w, https://mintcdn.com/anchor-b3ec2715/gNwz9f2wKiBAjmbK/images/profile-reuse.png?w=1650&fit=max&auto=format&n=gNwz9f2wKiBAjmbK&q=85&s=d31a31a62a61d3ce598bc22623499b1e 1650w, https://mintcdn.com/anchor-b3ec2715/gNwz9f2wKiBAjmbK/images/profile-reuse.png?w=2500&fit=max&auto=format&n=gNwz9f2wKiBAjmbK&q=85&s=aaf09a7f38ac9c4f1a8c17448f91ddc5 2500w" />
+      <img alt="Reuse saved profile" />
     </Step>
   </Steps>
 </Expandable>
+
+
+# Embedding End-User Authentication UI (Early Availability)
+Source: https://docs.anchorbrowser.io/essentials/embedding-identity-ui
+
+Anchor provides an embeddable identity creation flow that allows end-users to authenticate to third-party websites directly from your application, enabling [authenticated browser sessions](/essentials/authenticated-applications).
+
+<Warning>
+  This feature is currently in **Early Availability**. Contact [**support**](mailto:support@anchorbrowser.io) to enable this feature.
+</Warning>
+
+## Prerequisites
+
+Before integrating the embedded identity flow, ensure the following are configured:
+
+1. **[Create an Application](/essentials/authenticated-applications)** - Define the target website users will authenticate to via the Anchor Dashboard or API
+2. **[Configure Authentication Flows](/essentials/authenticated-applications#configure-auth-flow-for-the-application)** - Set up the supported login methods.
+
+## Overview
+
+<Steps>
+  <Step title="Generate a Token">
+    Create a one-time token that authorizes the identity creation flow.
+
+    <CodeGroup>
+      ```javascript node.js theme={null}
+      import Anchorbrowser from 'anchorbrowser';
+
+      const anchorClient = new Anchorbrowser();
+
+      // Generate a token for identity creation
+      const tokenResponse = await anchorClient.applications.createIdentityToken(
+          'your-application-id',
+          { callbackUrl: 'https://your-app.com/identity-callback' }
+      );
+
+      console.log(tokenResponse.token);
+      // Use this token to redirect the user
+      ```
+
+      ```python python theme={null}
+      from anchorbrowser import Anchorbrowser
+
+      anchor_client = Anchorbrowser()
+
+      # Generate a token for identity creation
+      token_response = anchor_client.applications.create_identity_token(
+          application_id="your-application-id",
+          callback_url="https://your-app.com/identity-callback"
+      )
+
+      print(token_response.token)
+      # Use this token to redirect the user
+      ```
+
+      ```bash cURL theme={null}
+      curl -X POST "https://api.anchorbrowser.io/v1/applications/{application_id}/tokens" \
+        -H "anchor-api-key: YOUR_API_KEY" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "callbackUrl": "https://your-app.com/identity-callback"
+        }'
+      ```
+    </CodeGroup>
+
+    <Warning>
+      The `callbackUrl` must use HTTPS. Store the token securely and use it immediately - tokens are single-use and expire
+      after 15 minutes.
+    </Warning>
+  </Step>
+
+  <Step title="Redirect User to Identity Creation">
+    Redirect the user to the Anchor identity creation page with the generated token:
+
+    ```
+    https://app.anchorbrowser.io/identity/create?token={token}
+    ```
+
+    <CodeGroup>
+      ```javascript Frontend (React) theme={null}
+      function CreateIdentityButton({ token }) {
+        const handleClick = () => {
+          window.location.href = `https://app.anchorbrowser.io/identity/create?token=${token}`;
+        };
+
+        return <button onClick={handleClick}>Connect Your Account</button>;
+      }
+      ```
+    </CodeGroup>
+
+    The user will be guided through the authentication process for the target website configured in the application.
+  </Step>
+
+  <Step title="Handle the Callback">
+    After the user successfully creates an identity, Anchor redirects them to the `callbackUrl` with the identity ID:
+
+    ```
+    https://your-app.com/identity-callback?identityId={identity_id}
+    ```
+
+    <CodeGroup>
+      ```javascript Express.js theme={null}
+      app.get('/identity-callback', async (req, res) => {
+        const { identityId } = req.query;
+
+        if (!identityId) {
+          return res.status(400).send('Missing identity ID');
+        }
+
+        // Store the mapping between the user and the Anchor identity
+        await saveUserIdentityMapping(req.user.id, identityId);
+
+        // Optionally, update the identity with an external user ID
+
+        res.redirect('/dashboard?connected=true');
+      });
+      ```
+
+      ```python Flask theme={null}
+      @app.route('/identity-callback')
+      def identity_callback():
+          identity_id = request.args.get('identityId')
+
+          if not identity_id:
+              return 'Missing identity ID', 400
+
+          # Store the mapping between the user and the Anchor identity
+          save_user_identity_mapping(current_user.id, identity_id)
+
+          # Optionally, update the identity with an external user ID (See next step)
+
+          return redirect('/dashboard?connected=true')
+      ```
+    </CodeGroup>
+  </Step>
+
+  <Step title="Update Identity Metadata (Optional)">
+    Update the identity with additional metadata to maintain a mapping between users and their Anchor identities:
+
+    <CodeGroup>
+      ```javascript node.js theme={null}
+      import Anchorbrowser from 'anchorbrowser';
+
+      const anchorClient = new Anchorbrowser();
+
+      // Update identity with external user ID
+      const updatedIdentity = await anchorClient.identities.update('your-identity-id', {
+        name: 'User Display Name',
+        metadata: {
+          externalUserId: 'your-user-id-123',
+          plan: 'premium',
+          connectedAt: new Date().toISOString(),
+        },
+      });
+      ```
+
+      ```python python theme={null}
+      from anchorbrowser import Anchorbrowser
+
+      anchor_client = Anchorbrowser()
+
+      # Update identity with external user ID
+      updated_identity = anchor_client.identities.update(
+          identity_id='your-identity-id',
+          name="User Display Name",
+          metadata={
+              "externalUserId": "your-user-id-123",
+              "plan": "premium",
+              "connectedAt": datetime.now().isoformat()
+          }
+      )
+      ```
+
+      ```bash cURL theme={null}
+      curl -X PUT "https://api.anchorbrowser.io/v1/identities/{identity_id}" \
+        -H "anchor-api-key: YOUR_API_KEY" \
+        -H "Content-Type: application/json" \
+        -d '{
+          "name": "User Display Name",
+          "metadata": {
+            "externalUserId": "your-user-id-123",
+            "plan": "premium"
+          }
+        }'
+      ```
+    </CodeGroup>
+  </Step>
+
+  <Step title="Create Authenticated Sessions">
+    Once an identity ID is available, use it to create authenticated browser sessions:
+
+    <CodeGroup>
+      ```javascript node.js theme={null}
+      import Anchorbrowser from 'anchorbrowser';
+
+      const anchorClient = new Anchorbrowser();
+      const identityId = "your-identity-id";
+      const session = await anchorClient.sessions.create({
+          // Recommended settings for authenticated sessions.
+          session: {
+              proxy: {
+                  active: true,
+              }
+          },
+          browser: {
+              captcha_solver: {
+                  active: true,
+              },
+              extra_stealth: {
+                  active: true,
+              }
+          },
+
+          // Identity to authenticate with.
+          identities: [{ id: identityId }]
+      });
+
+      console.log(session.data.id);
+      ```
+
+      ```python python theme={null}
+      from anchorbrowser import Anchorbrowser
+
+      anchor_client = Anchorbrowser()
+      identity_id = "your-identity-id"
+      session = anchor_client.sessions.create(
+          # Recommended settings for authenticated sessions.
+          session={
+              "proxy": {
+                  "active": True,
+              }
+          },
+          browser={
+              "captcha_solver": {
+                  "active": True,
+              },
+              "extra_stealth": {
+                  "active": True,
+              }
+          },
+
+          # Identity to authenticate with.
+          identities=[{"id": identity_id}]
+      )
+
+      print(session.data.id)
+      ```
+
+      ```bash cURL theme={null}
+      curl -X POST "https://api.anchorbrowser.io/v1/sessions" \
+        -H "anchor-api-key: YOUR_API_KEY" \
+        -H "Content-Type: application/json" \
+        -d '{
+        "browser": {
+          "captcha_solver": {
+            "active": true
+          },
+          "extra_stealth": {
+            "active": true
+          }
+        },
+        "session": {
+          "proxy": {
+            "active": true
+          }
+        },
+        "identities": [
+          {
+            "id": "your-identity-id"
+          }
+        ]
+      }'
+      ```
+    </CodeGroup>
+
+    The browser session will automatically be authenticated to the target website using the stored identity.
+  </Step>
+</Steps>
+
+## Complete Integration Example
+
+Here's a complete example showing the full flow:
+
+<CodeGroup>
+  ```javascript node.js (Express) theme={null}
+  import express from 'express';
+  import Anchorbrowser from 'anchorbrowser';
+
+  const app = express();
+  const anchorClient = new Anchorbrowser();
+
+  const APPLICATION_ID = 'your-application-id';
+
+  // Step 1: Initiate identity creation
+  app.post('/api/connect-account', async (req, res) => {
+    const userId = req.user.id;
+
+    // Generate token with callback URL
+    const tokenResponse = await anchorClient.applications.createIdentityToken(APPLICATION_ID, {
+      callbackUrl: `https://your-app.com/api/identity-callback`,
+    });
+
+    // Store token-to-user mapping for callback verification
+    await storeTokenMapping(tokenResponse.tokenHash, userId);
+
+    // Return redirect URL to frontend
+    res.json({
+      redirectUrl: `https://app.anchorbrowser.io/identity/create?token=${tokenResponse.token}`,
+    });
+  });
+
+  // Step 2: Handle callback after identity creation
+  app.get('/api/identity-callback', async (req, res) => {
+    const { identityId } = req.query;
+
+    // Save identity mapping
+    await saveIdentityMapping(req.user.id, identityId);
+
+    // Update identity with external reference
+    await anchorClient.identities.update(identityId, {
+      metadata: { externalUserId: req.user.id },
+    });
+
+    res.redirect('/dashboard?connected=true');
+  });
+
+  // Step 3: Use identity in browser sessions
+  app.post('/api/run-automation', async (req, res) => {
+    const identityId = await getUserIdentity(req.user.id);
+
+    const session = await anchorClient.sessions.create({
+      browser: {
+        identities: [{ id: identityId }],
+      },
+    });
+
+    // Run your automation with the authenticated session
+    // ...
+
+    res.json({ sessionId: session.id });
+  });
+  ```
+
+  ```python python (Flask) theme={null}
+  from flask import Flask, request, redirect, jsonify
+  from anchorbrowser import Anchorbrowser
+
+  app = Flask(__name__)
+  anchor_client = Anchorbrowser()
+
+  APPLICATION_ID = "your-application-id"
+
+  # Step 1: Initiate identity creation
+  @app.route("/api/connect-account", methods=["POST"])
+  def connect_account():
+      user_id = request.user.id
+
+      # Generate token with callback URL
+      token_response = anchor_client.applications.identities.tokens.create(
+          application_id=APPLICATION_ID,
+          callback_url="https://your-app.com/api/identity-callback"
+      )
+
+      # Store token-to-user mapping for callback verification
+      store_token_mapping(token_response.token_hash, user_id)
+
+      # Return redirect URL to frontend
+      return jsonify({
+          "redirectUrl": f"https://app.anchorbrowser.io/identity/create?token={token_response.token}"
+      })
+
+  # Step 2: Handle callback after identity creation
+  @app.route("/api/identity-callback")
+  def identity_callback():
+      identity_id = request.args.get("identityId")
+
+      # Save identity mapping
+      save_identity_mapping(request.user.id, identity_id)
+
+      # Update identity with external reference
+      anchor_client.identities.update(
+          identity_id=identity_id,
+          metadata={"externalUserId": request.user.id}
+      )
+
+      return redirect("/dashboard?connected=true")
+
+  # Step 3: Use identity in browser sessions
+  @app.route("/api/run-automation", methods=["POST"])
+  def run_automation():
+      identity_id = get_user_identity(request.user.id)
+
+      session = anchor_client.sessions.create(
+          # Recommended settings for authenticated sessions.
+          session={
+              "proxy": {
+                  "active": True,
+              }
+          },
+          browser={
+              "captcha_solver": {
+                  "active": True,
+              },
+              "extra_stealth": {
+                  "active": True,
+              }
+          },
+
+          # Identity to authenticate with.
+          identities=[{"id": identity_id}]
+      )
+
+      # Run your automation with the authenticated session
+      # ...
+
+      return jsonify({"sessionId": session.id})
+  ```
+</CodeGroup>
+
+## Best Practices
+
+<CardGroup>
+  <Card title="Secure Token Handling" icon="lock">
+    Generate tokens server-side and never expose your API key to the frontend. Tokens are single-use and should be used immediately.
+  </Card>
+
+  <Card title="Store Identity Mappings" icon="database">
+    Maintain a mapping between your users and their Anchor identity IDs in your database for future session creation.
+  </Card>
+
+  <Card title="Use Metadata" icon="tags">
+    Store your external user ID in the identity metadata to easily correlate identities with your users.
+  </Card>
+
+  <Card title="Handle Errors" icon="triangle-exclamation">
+    Implement proper error handling for cases where identity creation fails or the user cancels the flow.
+  </Card>
+</CardGroup>
+
+## Related Resources
+
+* [Authenticated Applications](/essentials/authenticated-applications) - Define target websites, authentication flows, and create pre-authenticated browser sessions
+* [Browser Profiles](/essentials/authentication-and-identity) - Alternative approach using browser profiles
 
 
 # Session Recording
@@ -4930,7 +6008,7 @@ Recordings are accessible both through our API and the web UI (see below).
 
   In order to create a session through the UI with recording enabled use the [playground](https://app.anchorbrowser.io/playground), it will be recorded by default.
 
-  <img className="mx-auto" src="https://mintcdn.com/anchor-b3ec2715/Fx9t9aj1txSbvvH0/images/recording-ui-start-session.png?fit=max&auto=format&n=Fx9t9aj1txSbvvH0&q=85&s=283f14ef3a6948ccee4b9194851beb2c" alt="Starting a session to be recorded in the playground" width="700" data-og-width="3678" data-og-height="1250" data-path="images/recording-ui-start-session.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/Fx9t9aj1txSbvvH0/images/recording-ui-start-session.png?w=280&fit=max&auto=format&n=Fx9t9aj1txSbvvH0&q=85&s=e42185db96b105a25fcbf83d1123dc62 280w, https://mintcdn.com/anchor-b3ec2715/Fx9t9aj1txSbvvH0/images/recording-ui-start-session.png?w=560&fit=max&auto=format&n=Fx9t9aj1txSbvvH0&q=85&s=1da30b3e0075a8957ca7214d9b5a8a38 560w, https://mintcdn.com/anchor-b3ec2715/Fx9t9aj1txSbvvH0/images/recording-ui-start-session.png?w=840&fit=max&auto=format&n=Fx9t9aj1txSbvvH0&q=85&s=aaeffb38ba44be49c7052976c6792a92 840w, https://mintcdn.com/anchor-b3ec2715/Fx9t9aj1txSbvvH0/images/recording-ui-start-session.png?w=1100&fit=max&auto=format&n=Fx9t9aj1txSbvvH0&q=85&s=dae7a0f792a768e6bc5da970c3f46c51 1100w, https://mintcdn.com/anchor-b3ec2715/Fx9t9aj1txSbvvH0/images/recording-ui-start-session.png?w=1650&fit=max&auto=format&n=Fx9t9aj1txSbvvH0&q=85&s=c8db8e3e8c88076b129bb639f4937841 1650w, https://mintcdn.com/anchor-b3ec2715/Fx9t9aj1txSbvvH0/images/recording-ui-start-session.png?w=2500&fit=max&auto=format&n=Fx9t9aj1txSbvvH0&q=85&s=a5c55a0f68a04a3513393383bdab2dd7 2500w" />
+  <img alt="Starting a session to be recorded in the playground" />
 
   ## Session Recordings
 
@@ -4940,15 +6018,381 @@ Recordings are accessible both through our API and the web UI (see below).
     If a session is still running, the link in the session history page will take you to the session's live view instead of the recording. Once the session ends, the link will point to the recording.
   </Warning>
 
-  <img className="mx-auto" src="https://mintcdn.com/anchor-b3ec2715/Fx9t9aj1txSbvvH0/images/recording-ui-session-history.png?fit=max&auto=format&n=Fx9t9aj1txSbvvH0&q=85&s=0c9dbea9a2d36c8464678bdfc9d47bc7" alt="Session history dashboard showing list of sessions" data-og-width="3346" width="3346" data-og-height="832" height="832" data-path="images/recording-ui-session-history.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/Fx9t9aj1txSbvvH0/images/recording-ui-session-history.png?w=280&fit=max&auto=format&n=Fx9t9aj1txSbvvH0&q=85&s=6b0c406064ea72da7d436427032be429 280w, https://mintcdn.com/anchor-b3ec2715/Fx9t9aj1txSbvvH0/images/recording-ui-session-history.png?w=560&fit=max&auto=format&n=Fx9t9aj1txSbvvH0&q=85&s=17c22d02134427ad9d674b782b38bfc1 560w, https://mintcdn.com/anchor-b3ec2715/Fx9t9aj1txSbvvH0/images/recording-ui-session-history.png?w=840&fit=max&auto=format&n=Fx9t9aj1txSbvvH0&q=85&s=745af978c9b3c2cdd66966e2981108c0 840w, https://mintcdn.com/anchor-b3ec2715/Fx9t9aj1txSbvvH0/images/recording-ui-session-history.png?w=1100&fit=max&auto=format&n=Fx9t9aj1txSbvvH0&q=85&s=300e4abe7c7b707b109a7adf0a2fa34b 1100w, https://mintcdn.com/anchor-b3ec2715/Fx9t9aj1txSbvvH0/images/recording-ui-session-history.png?w=1650&fit=max&auto=format&n=Fx9t9aj1txSbvvH0&q=85&s=647e621174a1141302580fae54641dfc 1650w, https://mintcdn.com/anchor-b3ec2715/Fx9t9aj1txSbvvH0/images/recording-ui-session-history.png?w=2500&fit=max&auto=format&n=Fx9t9aj1txSbvvH0&q=85&s=ab03169a008eec5b47f8727dfd5db7d6 2500w" />
+  <img alt="Session history dashboard showing list of sessions" />
 
   ## Recording Playback
 
   When you click on a session recording, the playback interface will be opened.
   You can use it to view the recording, navigate through it, and download it as MP4 file.
 
-  <img className="mx-auto" src="https://mintcdn.com/anchor-b3ec2715/Fx9t9aj1txSbvvH0/images/recording-ui-session-history-download.png?fit=max&auto=format&n=Fx9t9aj1txSbvvH0&q=85&s=34752c0c995dd14c0bce7339156b5435" alt="Recording playback interface with video controls" width="800" data-og-width="3470" data-og-height="1710" data-path="images/recording-ui-session-history-download.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/Fx9t9aj1txSbvvH0/images/recording-ui-session-history-download.png?w=280&fit=max&auto=format&n=Fx9t9aj1txSbvvH0&q=85&s=6ee49cd051fde3fc372b5b7a230e06f8 280w, https://mintcdn.com/anchor-b3ec2715/Fx9t9aj1txSbvvH0/images/recording-ui-session-history-download.png?w=560&fit=max&auto=format&n=Fx9t9aj1txSbvvH0&q=85&s=08821fb3bb16337e1bce7551d0c2e56a 560w, https://mintcdn.com/anchor-b3ec2715/Fx9t9aj1txSbvvH0/images/recording-ui-session-history-download.png?w=840&fit=max&auto=format&n=Fx9t9aj1txSbvvH0&q=85&s=80c1551ce2e36dcbc7fe273b1503df85 840w, https://mintcdn.com/anchor-b3ec2715/Fx9t9aj1txSbvvH0/images/recording-ui-session-history-download.png?w=1100&fit=max&auto=format&n=Fx9t9aj1txSbvvH0&q=85&s=fd0e35092af137db0a83e2b5c060ed9b 1100w, https://mintcdn.com/anchor-b3ec2715/Fx9t9aj1txSbvvH0/images/recording-ui-session-history-download.png?w=1650&fit=max&auto=format&n=Fx9t9aj1txSbvvH0&q=85&s=ce0d3ca2bf6a23730f11e169544e1530 1650w, https://mintcdn.com/anchor-b3ec2715/Fx9t9aj1txSbvvH0/images/recording-ui-session-history-download.png?w=2500&fit=max&auto=format&n=Fx9t9aj1txSbvvH0&q=85&s=30ed67282de00d1c3deec661b02ed684 2500w" />
+  <img alt="Recording playback interface with video controls" />
 </Expandable>
+
+
+# Extra Stealth Mode
+Source: https://docs.anchorbrowser.io/essentials/stealth
+
+Advanced anti-detection and browser fingerprinting protection for automated browsing
+
+<Note>
+  Extra Stealth is available on our **Growth tier**.
+
+  [Upgrade Now](https://app.anchorbrowser.io/billing)
+</Note>
+
+Anchor Browser provides built-in stealth capabilities that help avoid detection by anti-bot systems and website fingerprinting. These features enable automated browsing that mimics human behavior and bypasses common detection mechanisms.
+
+## What is Extra Stealth Mode?
+
+Extra Stealth Mode leverages a specialized Chrome browser environment that provides:
+
+* 🔒 **Advanced Anti-Detection** - Bypass sophisticated bot detection systems and CAPTCHAs
+* 🛡️ **Automation Consistency** - Maintain consistent access without getting blocked
+* 👤 **Human-Like Behavior** - Mimic real user patterns to avoid suspicion
+
+<Note>
+  Alternative Cloudflare-verified access to webpages is available through our [Cloudflare Web Bot Auth Integration](/advanced/cloudflare-web-bot-auth).
+</Note>
+
+## Quick start - Enable stealth features
+
+<Steps>
+  <Step title="Create a session with extra stealth enabled">
+    Create a browser session with extra stealth features enabled using the SDK:
+
+    <Warning>
+      Extra stealth mode requires proxy configuration to be active. **If proxy is disabled, extra stealth will be automatically disabled** by the system.
+
+      Read more about [Proxy Configuration](/advanced/proxy)
+    </Warning>
+
+    <CodeGroup>
+      ```JavaScript node.js theme={null}
+      import Anchorbrowser from "anchorbrowser";
+
+      const anchorClient = new Anchorbrowser()
+      const session = await anchorClient.sessions.create({
+          browser: {
+              extra_stealth: {
+                  active: true
+              }
+          },
+          session: {
+              proxy: {
+                  active: true
+              }
+          }
+      });
+
+      console.log(session);
+      ```
+
+      ```python python theme={null}
+      from anchorbrowser import Anchorbrowser
+      import os
+
+      anchorClient = Anchorbrowser(api_key=os.getenv("ANCHOR_API_KEY"))
+      session = anchorClient.sessions.create(
+          browser={
+              "extra_stealth": {
+                  "active": True
+              }
+          },
+          session={
+              "proxy": {
+                  "active": True
+              }
+          }
+      )
+      print(session)
+      ```
+    </CodeGroup>
+  </Step>
+
+  <Step title="Use the session for automated browsing">
+    Once your stealth session is created, you can use it for automated browsing that bypasses common detection mechanisms:
+
+    <CodeGroup>
+      ```JavaScript node.js theme={null}
+      import Anchorbrowser from "anchorbrowser";
+
+      const anchorClient = new Anchorbrowser()
+       
+      // Create stealth session
+      const session = await anchorClient.sessions.create({
+          browser: {
+              extra_stealth: {
+                  active: true
+              }
+          },
+          session: {
+              proxy: {
+                  active: true
+              }
+          }
+       })
+
+      // Use the session for automated tasks
+      const result = await anchorClient.agent.task(
+          "Navigate to a website and check if I'm detected as a bot",
+          {
+              sessionId: session.data.id
+          }
+      );
+
+      console.log(result);
+      ```
+
+      ```python python theme={null}
+      from anchorbrowser import Anchorbrowser
+      import os
+
+      anchorClient = Anchorbrowser(api_key=os.getenv("ANCHOR_API_KEY"))
+
+      # Create stealth session
+      session = anchorClient.sessions.create(
+          browser={
+              "extra_stealth": {
+                  "active": True
+              }
+          },
+          session={
+              "proxy": {
+                  "active": True
+              }
+          }
+      )
+
+      # Use the session for automated tasks
+      result = anchorClient.agent.task(
+          session_options=session,
+          prompt="Navigate to a website and check if I'm detected as a bot"
+      )
+
+      print(result)
+      ```
+    </CodeGroup>
+  </Step>
+</Steps>
+
+## Usage with Profiles
+
+Use stealth mode with saved browser profiles for persistent authenticated sessions:
+
+<CodeGroup>
+  ```JavaScript node.js theme={null}
+  import Anchorbrowser from "anchorbrowser";
+
+  const anchorClient = new Anchorbrowser()
+  const session = await anchorClient.sessions.create({
+      browser: {
+          extra_stealth: {
+              active: true
+          },
+          profile: {
+              name: 'stealth-profile',
+              persist: true   // Only on Profile Creation
+          }
+      },
+      session: {
+          proxy: {
+              active: true
+          }
+      }
+  })
+  console.log(session)
+
+  ```
+
+  ```python python theme={null}
+  from anchorbrowser import Anchorbrowser
+  import os
+
+  anchorClient = Anchorbrowser(api_key=os.getenv("ANCHOR_API_KEY"))
+  session = anchorClient.sessions.create(
+      browser={
+          "extra_stealth": {
+              "active": True
+          },
+          "profile": {
+              "name": "stealth-profile",
+              "persist": true   # Only on Profile Creation
+          }
+      },
+      session={
+          "proxy": {
+              "active": True
+          }
+      }
+  )
+  print(session)
+  ```
+</CodeGroup>
+
+## Enabling Console Logs
+
+<Warning>
+  When extra stealth mode is enabled, `page.on('console')` events are **disabled by default** to prevent detection. If you need to capture console output, you must explicitly enable it.
+</Warning>
+
+To receive console log events while using extra stealth, enable `console_logs` in your session configuration:
+
+<CodeGroup>
+  ```javascript node.js theme={null}
+  import Anchorbrowser from "anchorbrowser";
+
+  const anchorClient = new Anchorbrowser();
+
+  const session = await anchorClient.sessions.create({
+    browser: {
+      extra_stealth: { active: true },
+      console_logs: { active: true }
+    },
+    session: {
+      proxy: { active: true }
+    }
+  });
+
+  // Connect to the browser
+  const browser = await anchorClient.browser.connect(session.data.id);
+  const context = browser.contexts()[0];
+  const page = context.pages()[0];
+
+  // Now page.on('console') will work
+  page.on('console', (msg) => {
+    console.log(`[${msg.type()}] ${msg.text()}`);
+  });
+
+  await page.goto("https://example.com");
+  ```
+
+  ```python python theme={null}
+  from anchorbrowser import Anchorbrowser
+  import os
+
+  anchor_client = Anchorbrowser(api_key=os.getenv("ANCHOR_API_KEY"))
+
+  session = anchor_client.sessions.create(
+      browser={
+          "extra_stealth": {"active": True},
+          "console_logs": {"active": True}
+      },
+      session={
+          "proxy": {"active": True}
+      }
+  )
+
+  # Connect to the browser
+  with anchor_client.browser.connect(session.data.id) as browser:
+      context = browser.contexts[0]
+      page = context.pages[0]
+
+      # Now page.on('console') will work
+      def handle_console(msg):
+          print(f"[{msg.type}] {msg.text}")
+
+      page.on("console", handle_console)
+
+      page.goto("https://example.com")
+  ```
+</CodeGroup>
+
+## Catching Captcha Events
+
+When using stealth mode with captcha solving enabled, you can listen to captcha lifecycle events via CDP (Chrome DevTools Protocol). This allows you to track when captchas are detected, solved, or failed.
+
+<CodeGroup>
+  ```javascript node.js theme={null}
+  import Anchorbrowser from "anchorbrowser";
+
+  const anchorClient = new Anchorbrowser();
+
+  // Create a session with extra stealth and captcha solving enabled
+  const session = await anchorClient.sessions.create({
+    browser: {
+      extra_stealth: { active: true },
+      captcha_solver: { active: true }
+    },
+    session: {
+      proxy: { active: true }
+    }
+  });
+
+  // Connect to the browser
+  const browser = await anchorClient.browser.connect(session.data.id);
+  const context = browser.contexts()[0];
+  const page = context.pages()[0];
+
+  // Create CDP session and listen to captcha events
+  const client = await context.newCDPSession(page);
+
+  client.on('Captcha.lifecycle', (event) => {
+    if (event.name === 'detected') {
+      console.log(`${event.captchaType} captcha detected on ${event.url}`);
+    }
+    
+    if (event.name === 'solved') {
+      console.log(`Captcha solved in ${event.timeToSolve}ms`);
+    }
+
+    if (event.name === 'failed') {
+      console.log(`Captcha failed: ${event.error}`);
+    }
+  });
+
+  // Navigate to a page with captcha
+  await page.goto("https://example.com");
+  ```
+
+  ```python python theme={null}
+  from anchorbrowser import Anchorbrowser
+  import os
+
+  anchor_client = Anchorbrowser(api_key=os.getenv("ANCHOR_API_KEY"))
+
+  # Create a session with extra stealth and captcha solving enabled
+  session = anchor_client.sessions.create(
+      browser={
+          "extra_stealth": {"active": True},
+          "captcha_solver": {"active": True}
+      },
+      session={
+          "proxy": {"active": True}
+      }
+  )
+
+  # Connect to the browser
+  with anchor_client.browser.connect(session.data.id) as browser:
+      context = browser.contexts[0]
+      page = context.pages[0]
+
+      # Create CDP session and listen to captcha events
+      client = context.new_cdp_session(page)
+
+      def handle_captcha_event(event):
+          if event["name"] == "detected":
+              print(f"{event['captchaType']} captcha detected on {event['url']}")
+          
+          if event["name"] == "solved":
+              print(f"Captcha solved in {event['timeToSolve']}ms")
+          
+          if event["name"] == "failed":
+              print(f"Captcha failed: {event['error']}")
+
+      client.on("Captcha.lifecycle", handle_captcha_event)
+
+      # Navigate to a page with captcha
+      page.goto("https://example.com")
+  ```
+</CodeGroup>
+
+### Event Types
+
+| Event Name | Description                                   | Properties                      |
+| ---------- | --------------------------------------------- | ------------------------------- |
+| `detected` | Fired when a captcha is detected on the page  | `captchaType`, `url`            |
+| `solved`   | Fired when the captcha is successfully solved | `timeToSolve` (in milliseconds) |
+| `failed`   | Fired when captcha solving fails              | `error`                         |
 
 
 # Tools - Browser Control API
@@ -4975,19 +6419,35 @@ Source: https://docs.anchorbrowser.io/examples/buyer-intent
 
 The following example use-case shows how to find buyer-intent data based on Github stargazers of a Github project named 'Airflow'. A star from a person that works for a significant corporation can be a hint of buying intent in the data pipelines space.
 
-```tsx node.js theme={null}
-import { chromium } from 'playwright';
+<CodeGroup>
+  ```tsx node.js theme={null}
+  const result = await anchorClient.agent.task(
+    `On the current stargazers list, return the GitHub profile URLs of all users
+    that are a part of a well-known company. Then, do this for the first 3 pages
+    using the "page" query parameter.
+    Return a JSON array result: ["url1", "url2", ...].`,
+    {
+      taskOptions: {
+        url: 'https://github.com/apache/airflow/stargazers?page=1',
+      }
+    }
+  )
+  console.log(result);
+  ```
 
-const browser = await chromium.connectOverCDP(connectionString); // Fill in the browser CDP string
-const context = browser.contexts()[0];
-const ai = context.serviceWorkers()[0];
-const page = context.pages()[0];
-
-await page.goto("https://github.com/apache/airflow/stargazers?page=1");
-
-const result = await ai.evaluate('On the current stargazers list, return the GitHub profile URLs of all users that are a part of a well-known company. Then, do this for the first 3 pages using the "page" query parameter. Return a JSON array result: ["url1", "url2", ...].')
-console.log(result);
-```
+  ```python python theme={null}
+  result = anchor_client.agent.task(
+    '''On the current stargazers list, return the GitHub profile URLs of all users
+    that are a part of a well-known company. Then, do this for the first 3 pages
+    using the "page" query parameter.
+    Return a JSON array result: ["url1", "url2", ...].''',
+    task_options={
+      'url': 'https://github.com/apache/airflow/stargazers?page=1',
+    }
+  )
+  print(result)
+  ```
+</CodeGroup>
 
 
 # Configuration Collection
@@ -4997,18 +6457,29 @@ Source: https://docs.anchorbrowser.io/examples/configuration-collection
 
 The following example shows how to collect configuration data that is not exposed through an API from a SaaS service (Grafana) configuration page.
 
-```tsx node.js theme={null}
-import { chromium } from 'playwright';
+<CodeGroup>
+  ```tsx node.js theme={null}
+  const result = await anchorClient.agent.task(
+    'Collect the node names and their CPU average %, return in JSON array',
+    {
+      taskOptions: {
+        url: 'https://play.grafana.org/a/grafana-k8s-app/navigation/nodes',
+      }
+    }
+  )
+  console.log(result);
+  ```
 
-const browser = await chromium.connectOverCDP(connectionString);
-const context = browser.contexts()[0];
-const ai = context.serviceWorkers()[0];
-const page = context.pages()[0];
-
-await page.goto("https://play.grafana.org/a/grafana-k8s-app/navigation/nodes?from=now-1h&to=now&refresh=1m", { waitUntil: 'domcontentloaded' });
-const result = await ai.evaluate('Collect the node names and their CPU average %, return in JSON array')
-console.log(result);
-```
+  ```python python theme={null}
+  result = anchor_client.agent.task(
+    'Collect the node names and their CPU average %, return in JSON array',
+    task_options={
+      'url': 'https://play.grafana.org/a/grafana-k8s-app/navigation/nodes',
+    }
+  )
+  print(result)
+  ```
+</CodeGroup>
 
 
 # Form Filling Automation
@@ -5018,19 +6489,27 @@ Source: https://docs.anchorbrowser.io/examples/form-filling
 
 The following example shows form filling, including the ability to self-complete missing data in the form filling process.
 
-```tsx node.js theme={null}
-import { chromium } from 'playwright';
+<CodeGroup>
+  ```tsx node.js theme={null}
+  const result = await anchorClient.agent.task(
+    `Go to https://www.wix.com/demone2/nicol-rider, read the resume,
+    understand the details, and complete the form at
+    https://formspree.io/library/donation/charity-donation-form/preview.html
+    as if you were her. Limit the donation to $10.`
+  )
+  console.log(result);
+  ```
 
-const browser = await chromium.connectOverCDP(connectionString);
-const context = browser.contexts()[0];
-const ai = context.serviceWorkers()[0];
-const page = context.pages()[0];
-
-page.goto('https://www.wix.com/demone2/nicol-rider');
-
-const result = await ai.evaluate('Read the resume, understand the details, and complete the form at https://formspree.io/library/donation/charity-donation-form/preview.html as if you were her. Limit the donation to $10.');
-console.info(result);
-```
+  ```python python theme={null}
+  result = anchor_client.agent.task(
+    '''Go to https://www.wix.com/demone2/nicol-rider, read the resume,
+    understand the details, and complete the form at
+    https://formspree.io/library/donation/charity-donation-form/preview.html
+    as if you were her. Limit the donation to $10.'''
+  )
+  print(result)
+  ```
+</CodeGroup>
 
 
 # Deep Research
@@ -5040,22 +6519,59 @@ Source: https://docs.anchorbrowser.io/examples/research-task
 
 The following example demonstrates how to use Anchor Browser to perform web research tasks.
 
-```tsx node.js theme={null}
-import { chromium } from 'playwright';
+<CodeGroup>
+  ```tsx node.js theme={null}
+  import Anchorbrowser from 'anchorbrowser';
 
-const browser = await chromium.connectOverCDP(connectionString);
-const context = browser.contexts()[0];
-const ai = context.serviceWorkers()[0];
-const page = context.pages()[0];
+  const anchorClient = new Anchorbrowser()
+  const session = await anchorClient.sessions.create()
+  const sessionId = session.data?.id
 
-await page.goto("http://docs.anchorbrowser.io/", { waitUntil: 'domcontentloaded' });
+  const result = await anchorClient.agent.task(
+    `Find the most recent NBA game played by the Milwaukee Bucks
+     and provide the result.`,
+    {
+      taskOptions: {
+        url: 'https://nba.com/',
+      },
+      sessionId: sessionId,
+    }
+  )
+  console.log(result)
 
-const result = await ai.evaluate('Find the most recent NBA game played by the Milwaukee Bucks and provide the result.')
-console.log(result);
+  const author = await anchorClient.agent.task(
+    `Find an article discussing the game and provide the author's name.`,
+    {
+      sessionId: sessionId,
+    }
+  )
+  console.log(author)
+  ```
 
-const author = await ai.evaluate('Find an article discussing the game and provide the author\'s name.')
-console.log(author);
-```
+  ```python python theme={null}
+  from anchorbrowser import Anchorbrowser
+
+  anchor_client = Anchorbrowser()
+  session = anchor_client.sessions.create()
+  session_id = session.data.id
+
+  result = anchor_client.agent.task(
+    '''Find the most recent NBA game played by the Milwaukee Bucks
+       and provide the result.''',
+    task_options={
+      'url': 'https://nba.com/',
+    },
+    session_id=session_id,
+  )
+  print(result)
+
+  author = anchor_client.agent.task(
+    'Find an article discussing the game and provide the author\'s name.',
+    session_id=session_id,
+  )
+  print(author)
+  ```
+</CodeGroup>
 
 
 # 1Password
@@ -5067,9 +6583,9 @@ Securely inject 1Password secrets into your browser sessions
 
 The 1Password integration **enables your AI agent to securely authenticate with services** during browser automation by injecting secrets, credentials, and other sensitive data from your 1Password vaults directly into your Anchor Browser sessions. This gives your AI agent the ability to log into websites, access APIs, and perform authenticated actions **without you needing to hardcode credentials** in your automation scripts.
 
-<Info>
+<Note>
   The actual secret values are **never exposed** to the AI agent, logs, API responses, or any other output
-</Info>
+</Note>
 
 ## Prerequisites
 
@@ -5098,7 +6614,7 @@ Before you can use the 1Password integration, you need:
 
 Create a 1Password integration using the AnchorBrowser API:
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST https://api.anchorbrowser.io/v1/integrations \
   -H "anchor-api-key: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
@@ -5116,7 +6632,7 @@ curl -X POST https://api.anchorbrowser.io/v1/integrations \
 
 **Response:**
 
-```json  theme={null}
+```json theme={null}
 {
   "data": {
     "integration": {
@@ -5140,7 +6656,7 @@ Once you've created a 1Password integration, you can use it in your browser sess
 
 Load all secrets from your 1Password vaults:
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST https://api.anchorbrowser.io/v1/sessions \
   -H "anchor-api-key: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
@@ -5161,7 +6677,7 @@ curl -X POST https://api.anchorbrowser.io/v1/sessions \
 
 Load only specific secrets using 1Password secret references:
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST https://api.anchorbrowser.io/v1/sessions \
   -H "anchor-api-key: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
@@ -5217,9 +6733,9 @@ The conversion follows these rules:
 3. Convert to uppercase
 4. Prefix with `OP_`
 
-<Info>
+<Note>
   **AI Agent Security**: When your AI agent accesses these environment variables, it can use them for authentication with external services, but the actual credential values are never visible in the agent's output, logs, or responses. The credentials are used transparently by the browser environment for authentication purposes only.
-</Info>
+</Note>
 
 ### Example: Using Secrets in Automation
 
@@ -5302,14 +6818,14 @@ The conversion follows these rules:
 
 ### List All Integrations
 
-```bash  theme={null}
+```bash theme={null}
 curl -X GET https://api.anchorbrowser.io/v1/integrations \
   -H "anchor-api-key: YOUR_API_KEY"
 ```
 
 **Response:**
 
-```json  theme={null}
+```json theme={null}
 {
   "data": {
     "integrations": [
@@ -5326,14 +6842,14 @@ curl -X GET https://api.anchorbrowser.io/v1/integrations \
 
 ### Delete an Integration
 
-```bash  theme={null}
+```bash theme={null}
 curl -X DELETE https://api.anchorbrowser.io/v1/integrations/550e8400-e29b-41d4-a716-446655440000 \
   -H "anchor-api-key: YOUR_API_KEY"
 ```
 
 **Response:**
 
-```json  theme={null}
+```json theme={null}
 {
   "data": {
     "integration": {
@@ -5439,7 +6955,7 @@ Source: https://docs.anchorbrowser.io/integrations/browseruse-deployment
   <Step title="Optional - Live view the browser">
     Use the `live_view_url` returned on the first step to view the browser session in real-time, or to embed it as a UI component
 
-    ```html  theme={null}
+    ```html theme={null}
     <!-- Make sure to replace <session_id> with the 
         actual session ID from the first step -->
     <iframe src="https://live.anchorbrowser.io?sessionId=<session_id>" 
@@ -5460,11 +6976,11 @@ Blazing Fast, Accurate Browser Agents
 
 # Anchor Browser + Groq: Blazing, Accurate Fast Browser Agents
 
-[Groq](https://groq.com/) is the fast inference paltform, providing llm APIs with low time-to-first-token and time-to-response
+[Groq](https://groq.com/) is the fast inference platform, providing llm APIs with low time-to-first-token and time-to-response
 
 ## Python Quickstart (2 minutes to hello world)
 
-<img className="hidden dark:block mx-auto" src="https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/groq-anchor-playground.png?fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=7a628c94f9a80d560c7664e965fdc451" alt="AI Form Filling with Groq on Anchor Browser" width="560" data-og-width="1336" data-og-height="969" data-path="images/groq-anchor-playground.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/groq-anchor-playground.png?w=280&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=003e9557182c3dd79e0c22e0cb76bed3 280w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/groq-anchor-playground.png?w=560&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=813eb1eaef7450e1a03505b5c7c5e194 560w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/groq-anchor-playground.png?w=840&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=5e08519c0ab54aaed7edddcf45fb4df8 840w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/groq-anchor-playground.png?w=1100&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=45cc91d6dee32c0356971f291713a4d8 1100w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/groq-anchor-playground.png?w=1650&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=0ff2e7f7531242a396b342d381bd7569 1650w, https://mintcdn.com/anchor-b3ec2715/hJc2I0-WvjLCCXOl/images/groq-anchor-playground.png?w=2500&fit=max&auto=format&n=hJc2I0-WvjLCCXOl&q=85&s=4bedd82f2a614b424e741666b92ceabc 2500w" />
+<img alt="AI Form Filling with Groq on Anchor Browser" />
 
 ### Prerequisites
 
@@ -5478,7 +6994,7 @@ Blazing Fast, Accurate Browser Agents
 2. **Install dependencies:**
    Install the [Anchor Browser Python SDK](https://docs.anchorbrowser.io/quickstart/use-via-sdk?utm_source=groq). ([Typescript SDK](https://docs.anchorbrowser.io/quickstart/use-via-sdk?utm_source=groq) is also available).
 
-```bash  theme={null}
+```bash theme={null}
 pip install anchorbrowser pydantic
 ```
 
@@ -5562,17 +7078,17 @@ Use our modules to enhance your automation workflows with Anchor Browser powerfu
 
 ### Module Selection
 
-<img className="mx-auto" src="https://mintcdn.com/anchor-b3ec2715/0TI4YPzESGTYVajD/images/make-anchor-modules.webp?fit=max&auto=format&n=0TI4YPzESGTYVajD&q=85&s=8944e76c70c83066ef0454a772019bca" alt="Our Modules when creating a new scenario" width="500" data-og-width="2336" data-og-height="1138" data-path="images/make-anchor-modules.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/0TI4YPzESGTYVajD/images/make-anchor-modules.webp?w=280&fit=max&auto=format&n=0TI4YPzESGTYVajD&q=85&s=f995a66ef674481347c22377fe40f332 280w, https://mintcdn.com/anchor-b3ec2715/0TI4YPzESGTYVajD/images/make-anchor-modules.webp?w=560&fit=max&auto=format&n=0TI4YPzESGTYVajD&q=85&s=3f388af020f3681047cbab2093db819d 560w, https://mintcdn.com/anchor-b3ec2715/0TI4YPzESGTYVajD/images/make-anchor-modules.webp?w=840&fit=max&auto=format&n=0TI4YPzESGTYVajD&q=85&s=84268d4ba89d514ba9e911bca97bb7ba 840w, https://mintcdn.com/anchor-b3ec2715/0TI4YPzESGTYVajD/images/make-anchor-modules.webp?w=1100&fit=max&auto=format&n=0TI4YPzESGTYVajD&q=85&s=7c6c327430e58c425cd0df67dc05bfb8 1100w, https://mintcdn.com/anchor-b3ec2715/0TI4YPzESGTYVajD/images/make-anchor-modules.webp?w=1650&fit=max&auto=format&n=0TI4YPzESGTYVajD&q=85&s=e882d21baf525cb348a141a0897afc2c 1650w, https://mintcdn.com/anchor-b3ec2715/0TI4YPzESGTYVajD/images/make-anchor-modules.webp?w=2500&fit=max&auto=format&n=0TI4YPzESGTYVajD&q=85&s=a8d09d0d7681c2617bab047872035405 2500w" />
+<img alt="Our Modules when creating a new scenario" />
 
 Use our [AI Task Completion](/agentic-browser-control/ai-task-completion) module to perform various tasks in a single module.
 
-<img className="mx-auto" src="https://mintcdn.com/anchor-b3ec2715/0TI4YPzESGTYVajD/images/make-perform-task.webp?fit=max&auto=format&n=0TI4YPzESGTYVajD&q=85&s=434497ef348642d5a1e44d4e03eca5a4" alt="Our AI Web Task module" width="500" data-og-width="2338" data-og-height="1122" data-path="images/make-perform-task.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/0TI4YPzESGTYVajD/images/make-perform-task.webp?w=280&fit=max&auto=format&n=0TI4YPzESGTYVajD&q=85&s=b53aceb4030115cb98e40b56a2022392 280w, https://mintcdn.com/anchor-b3ec2715/0TI4YPzESGTYVajD/images/make-perform-task.webp?w=560&fit=max&auto=format&n=0TI4YPzESGTYVajD&q=85&s=6d82ea594c8f6651a3686736f25bd3ba 560w, https://mintcdn.com/anchor-b3ec2715/0TI4YPzESGTYVajD/images/make-perform-task.webp?w=840&fit=max&auto=format&n=0TI4YPzESGTYVajD&q=85&s=e43f00168efafd3e6006988f33857173 840w, https://mintcdn.com/anchor-b3ec2715/0TI4YPzESGTYVajD/images/make-perform-task.webp?w=1100&fit=max&auto=format&n=0TI4YPzESGTYVajD&q=85&s=c43ad6bff98f700ffb0c12d7068f875f 1100w, https://mintcdn.com/anchor-b3ec2715/0TI4YPzESGTYVajD/images/make-perform-task.webp?w=1650&fit=max&auto=format&n=0TI4YPzESGTYVajD&q=85&s=888f05741a0c749f7a3fd4dbd9aec545 1650w, https://mintcdn.com/anchor-b3ec2715/0TI4YPzESGTYVajD/images/make-perform-task.webp?w=2500&fit=max&auto=format&n=0TI4YPzESGTYVajD&q=85&s=b55ea2e2946036c3dd8f6b580bcb2e71 2500w" />
+<img alt="Our AI Web Task module" />
 
 ### Basic Workflow
 
 Here is a basic workflow that uses our modules to perform a task, capture a screenshot and save it to a file both in google drive and slack.
 
-<img className="mx-auto" src="https://mintcdn.com/anchor-b3ec2715/0TI4YPzESGTYVajD/images/make-workflow-example.webp?fit=max&auto=format&n=0TI4YPzESGTYVajD&q=85&s=70d74e2251b792af86d8534d1403e88a" alt="Basic Anchor Browser workflow" width="800" data-og-width="3066" data-og-height="1252" data-path="images/make-workflow-example.webp" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/0TI4YPzESGTYVajD/images/make-workflow-example.webp?w=280&fit=max&auto=format&n=0TI4YPzESGTYVajD&q=85&s=107e666a2a8dc5873066f96e0567da45 280w, https://mintcdn.com/anchor-b3ec2715/0TI4YPzESGTYVajD/images/make-workflow-example.webp?w=560&fit=max&auto=format&n=0TI4YPzESGTYVajD&q=85&s=4b59ba56fb37e634da92a6bdc12093bf 560w, https://mintcdn.com/anchor-b3ec2715/0TI4YPzESGTYVajD/images/make-workflow-example.webp?w=840&fit=max&auto=format&n=0TI4YPzESGTYVajD&q=85&s=a746c3ae7ef8575a2b5cdaf597c9cdf7 840w, https://mintcdn.com/anchor-b3ec2715/0TI4YPzESGTYVajD/images/make-workflow-example.webp?w=1100&fit=max&auto=format&n=0TI4YPzESGTYVajD&q=85&s=f3441c23788888b594e3b1fa680f40e6 1100w, https://mintcdn.com/anchor-b3ec2715/0TI4YPzESGTYVajD/images/make-workflow-example.webp?w=1650&fit=max&auto=format&n=0TI4YPzESGTYVajD&q=85&s=2535eeb75ebf6ef78408d8de45d84285 1650w, https://mintcdn.com/anchor-b3ec2715/0TI4YPzESGTYVajD/images/make-workflow-example.webp?w=2500&fit=max&auto=format&n=0TI4YPzESGTYVajD&q=85&s=fe4dc617260e8283cecf74d736fc10d7 2500w" />
+<img alt="Basic Anchor Browser workflow" />
 
 ***
 
@@ -5598,27 +7114,27 @@ Use our node to enhance your automation workflows with Anchor Browser powerful t
 
 Install the Anchor Browser node from the n8n community nodes:
 
-```bash  theme={null}
+```bash theme={null}
 npm install n8n-nodes-anchorbrowser
 ```
 
-<img className="mx-auto" src="https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-installation.png?fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=bdbf1f9fbfb6d6e593060696e7de0ea6" alt="Installing the Anchor Browser node" width="800" data-og-width="1086" data-og-height="571" data-path="images/n8n-installation.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-installation.png?w=280&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=a6b1ddbafa86e314cf40ececc3558149 280w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-installation.png?w=560&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=37cf76e29700daa6f9397473bd1d5384 560w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-installation.png?w=840&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=029e78ec94ae5a2609a490621466d2af 840w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-installation.png?w=1100&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=90487db004567ce10f6d84939bc47575 1100w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-installation.png?w=1650&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=a4e2aadb133aea9c13e182c7ef6fc76c 1650w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-installation.png?w=2500&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=7edaee54e4241f32ea6521b0b086df88 2500w" />
+<img alt="Installing the Anchor Browser node" />
 
 ### Credentials Setup
 
 Set up your Anchor Browser API credentials:
 
-<img className="mx-auto" src="https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-credentials-configuration.png?fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=f4908f006f676b6c1a3a99d5b60749b1" alt="Credentials configuration" width="800" data-og-width="2774" data-og-height="1196" data-path="images/n8n-credentials-configuration.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-credentials-configuration.png?w=280&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=9eb56afb6fbdf944680908329c8b2b19 280w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-credentials-configuration.png?w=560&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=208850d2a5f87938fbdd577ad82956a2 560w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-credentials-configuration.png?w=840&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=b2bf2aee2b133b5b0cfe195e8921bff8 840w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-credentials-configuration.png?w=1100&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=a85c81bcaabb1cbb21c2ff1efbbad3e8 1100w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-credentials-configuration.png?w=1650&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=29090a3111ffe0e2ad43df9b7cb60bb9 1650w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-credentials-configuration.png?w=2500&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=5f0a6064aab776ef63b8f54896ed1abc 2500w" />
+<img alt="Credentials configuration" />
 
 Make sure after saving that the connection is tested successfully.
 
-<img className="mx-auto" src="https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-credentials-tested.png?fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=d7fa6587c5df436ad4e1d8f6fbee1c1e" alt="Credentials tested successfully" width="800" data-og-width="1916" data-og-height="124" data-path="images/n8n-credentials-tested.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-credentials-tested.png?w=280&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=05c561f3eafb10af685fb6ba60ee22d2 280w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-credentials-tested.png?w=560&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=8cf1f7fe8838e522c302adb2b5ce2035 560w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-credentials-tested.png?w=840&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=81e61342ad5a2042e2d022bbafcae582 840w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-credentials-tested.png?w=1100&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=f91724ba2c02a242f161f663fb7b0a91 1100w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-credentials-tested.png?w=1650&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=e86445ae52b573bcc56be79a12b93fe0 1650w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-credentials-tested.png?w=2500&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=6acb1c20731dc97795e576e6bff1ff4a 2500w" />
+<img alt="Credentials tested successfully" />
 
 ### Node Selection
 
-<img className="mx-auto" src="https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-node-selection.png?fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=f39f51ebc954673f0f7f7d96f59809a9" alt="Our Node when creating a new workflow" width="300" data-og-width="772" data-og-height="1654" data-path="images/n8n-node-selection.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-node-selection.png?w=280&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=155d9f56c71e5f78b4839de8f2d951e3 280w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-node-selection.png?w=560&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=61e46dbff207aae2d6542e4f14f67afd 560w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-node-selection.png?w=840&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=2f91cdb0ac1470487e401887d6a46e56 840w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-node-selection.png?w=1100&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=1be7f6d3c680367a2ebe435b6e8086ee 1100w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-node-selection.png?w=1650&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=a1df72676300338c167d8d215eb44a42 1650w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-node-selection.png?w=2500&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=bed5e94161f3c9e5553e3dc335dbf4bf 2500w" />
+<img alt="Our Node when creating a new workflow" />
 
-<img className="mx-auto" src="https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-node-run.png?fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=60612dbca9e6c3eed89b07238ba00c71" alt="Basic Anchor Browser workflow" width="800" data-og-width="784" data-og-height="312" data-path="images/n8n-node-run.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-node-run.png?w=280&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=f90a40985a621d490bd856c57b9852d2 280w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-node-run.png?w=560&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=eb24db0c4c6b218d82588909fc3b6229 560w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-node-run.png?w=840&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=a420b1cafe4242f96aa0fc77014844e9 840w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-node-run.png?w=1100&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=ffb1b5d8de9f0f3f726c01d0da1bbf40 1100w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-node-run.png?w=1650&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=5b800670ee445ea195d5b468c18c5f3f 1650w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-node-run.png?w=2500&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=ba449e4f92e336b5fde0f819300bbb28 2500w" />
+<img alt="Basic Anchor Browser workflow" />
 
 Use our [AI Task Completion](/agentic-browser-control/ai-task-completion) node to perform various tasks in a single operation.
 
@@ -5626,15 +7142,15 @@ Use our [AI Task Completion](/agentic-browser-control/ai-task-completion) node t
 
 Configure your Anchor Browser node with the necessary settings, and then Execute step.
 
-<img className="mx-auto" src="https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-node-configuration.png?fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=bfb1411283bfa197eb1b505e2229dd50" alt="Node configuration settings" width="400" data-og-width="790" data-og-height="1360" data-path="images/n8n-node-configuration.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-node-configuration.png?w=280&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=7ca70b76893babac116d2c5d22cf0a26 280w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-node-configuration.png?w=560&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=2e8fcc7934d9da0dcc91a69112218b12 560w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-node-configuration.png?w=840&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=12d3db5060438894d10dcf18647769ef 840w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-node-configuration.png?w=1100&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=e3e995a4e891c192ae1cf8441e8917c0 1100w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-node-configuration.png?w=1650&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=9a356f87ed9650eda17defbacb6402f4 1650w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-node-configuration.png?w=2500&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=3bc8d72b4aad420e7583c18f69fbe5eb 2500w" />
+<img alt="Node configuration settings" />
 
 ### Task Configuration
 
 Configure your browser automation task:
 
-<img className="mx-auto" src="https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-perform-task-configuration.png?fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=54a5e3d64b73c4be20a8ab311abaea79" alt="Task configuration settings" width="800" data-og-width="2312" data-og-height="1168" data-path="images/n8n-perform-task-configuration.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-perform-task-configuration.png?w=280&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=ffc06bc671bfef9a54d573465db218e8 280w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-perform-task-configuration.png?w=560&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=fb4b3d3137262ad6cf072ef531eed3f2 560w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-perform-task-configuration.png?w=840&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=b7f6677a12e5af6548b14ec976fb5128 840w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-perform-task-configuration.png?w=1100&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=b73ed2579adc82d436d9f45ea4246c25 1100w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-perform-task-configuration.png?w=1650&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=d1e6ad7bae091977315b1cd5ebf4f0b2 1650w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-perform-task-configuration.png?w=2500&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=fc69ce2be92d7f94208f84c2af693edc 2500w" />
+<img alt="Task configuration settings" />
 
-<img className="mx-auto" src="https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-perform-task-prompt.png?fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=3aafb1c6ad2d8bf9908e5115f151aea4" alt="Task prompt configuration" width="400" data-og-width="732" data-og-height="800" data-path="images/n8n-perform-task-prompt.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-perform-task-prompt.png?w=280&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=9fd0b64af26ccaeff16f3302cde99737 280w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-perform-task-prompt.png?w=560&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=bc04de15a060969105c887b3bd5d3720 560w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-perform-task-prompt.png?w=840&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=344e843a692181dcff2a2eee7248023e 840w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-perform-task-prompt.png?w=1100&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=7e724e58634cf790a387fba13ae9eb69 1100w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-perform-task-prompt.png?w=1650&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=1b84c16fd04ab7e3e11cdbf84f1c62d3 1650w, https://mintcdn.com/anchor-b3ec2715/ccHz1UBXtcWV4T-s/images/n8n-perform-task-prompt.png?w=2500&fit=max&auto=format&n=ccHz1UBXtcWV4T-s&q=85&s=93c28b1c17b37a11b8b734b3061e91b8 2500w" />
+<img alt="Task prompt configuration" />
 
 ***
 
@@ -5658,7 +7174,7 @@ Automate critical Airtable database workflows with Playwright when APIs aren't a
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -5666,7 +7182,7 @@ npm install playwright
 
 Create scripts for common Airtable tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -5726,7 +7242,7 @@ Automate critical Attio CRM workflows with Playwright when APIs aren't available
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -5734,7 +7250,7 @@ npm install playwright
 
 Create scripts for common Attio tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -5789,7 +7305,7 @@ Automate critical Bill.com accounts payable workflows with Playwright when APIs 
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -5797,7 +7313,7 @@ npm install playwright
 
 Create scripts for common Bill.com tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -5858,7 +7374,7 @@ Automate critical ClickUp project management workflows with Playwright when APIs
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -5866,7 +7382,7 @@ npm install playwright
 
 Create scripts for common ClickUp tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -5924,7 +7440,7 @@ Automate critical CrowdStrike security workflows with Playwright when APIs aren'
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -5932,7 +7448,7 @@ npm install playwright
 
 Create scripts for common CrowdStrike tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -5994,7 +7510,7 @@ Automate critical DocuSign electronic signature workflows with Playwright when A
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -6002,7 +7518,7 @@ npm install playwright
 
 Create scripts for common DocuSign tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -6062,7 +7578,7 @@ Automate critical Dropbox file management workflows with Playwright when APIs ar
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -6070,7 +7586,7 @@ npm install playwright
 
 Create scripts for common Dropbox tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -6128,7 +7644,7 @@ Automate critical Figma design workflows with Playwright when APIs aren't availa
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -6136,7 +7652,7 @@ npm install playwright
 
 Create scripts for common Figma actions:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -6200,7 +7716,7 @@ Automate critical HubSpot CRM workflows with Playwright when APIs aren't availab
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -6208,7 +7724,7 @@ npm install playwright
 
 Create scripts for common HubSpot tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -6264,7 +7780,7 @@ Automate critical Jira project management workflows with Playwright when APIs ar
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -6272,7 +7788,7 @@ npm install playwright
 
 Create scripts for common Jira tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -6327,7 +7843,7 @@ Automate critical Miro collaboration workflows with Playwright when APIs aren't 
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -6335,7 +7851,7 @@ npm install playwright
 
 Create scripts for common Miro actions:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -6399,7 +7915,7 @@ Automate critical Monday.com project management workflows with Playwright when A
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -6407,7 +7923,7 @@ npm install playwright
 
 Create scripts for common Monday.com tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -6473,7 +7989,7 @@ Automate critical NetSuite workflows with Playwright when APIs aren't available 
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -6481,7 +7997,7 @@ npm install playwright
 
 Create scripts for common NetSuite tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -6528,7 +8044,7 @@ Automate critical Notion workspace workflows with Playwright when APIs aren't av
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -6536,7 +8052,7 @@ npm install playwright
 
 Create scripts for common Notion tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -6590,7 +8106,7 @@ Automate critical Pipedrive CRM workflows with Playwright when APIs aren't avail
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -6598,7 +8114,7 @@ npm install playwright
 
 Create scripts for common Pipedrive tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -6652,7 +8168,7 @@ Automate critical Sage Intacct financial workflows with Playwright when APIs are
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -6660,7 +8176,7 @@ npm install playwright
 
 Create scripts for common Intacct tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -6709,7 +8225,7 @@ Automate critical Salesforce CRM workflows with Playwright when APIs aren't avai
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -6718,7 +8234,7 @@ npm install playwright
 **Option 1: Direct Login (Basic)**
 Store credentials securely using environment variables:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 // Use environment variables for security
 const SALESFORCE_USERNAME = process.env.SALESFORCE_USERNAME;
 const SALESFORCE_PASSWORD = process.env.SALESFORCE_PASSWORD;
@@ -6792,7 +8308,7 @@ Automate critical SAP S/4HANA workflows with Playwright when APIs aren't availab
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -6800,7 +8316,7 @@ npm install playwright
 
 Create scripts for common SAP tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -6848,7 +8364,7 @@ Automate critical ServiceNow IT service management workflows with Playwright whe
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -6856,7 +8372,7 @@ npm install playwright
 
 Create scripts for common ServiceNow tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -6920,7 +8436,7 @@ Automate critical Tableau dashboard workflows with Playwright when APIs aren't a
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 
 ```
@@ -6929,7 +8445,7 @@ npm install playwright
 
 Create scripts for common Tableau tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -6981,7 +8497,7 @@ Automate critical UiPath RPA management workflows with Playwright when APIs aren
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -6989,7 +8505,7 @@ npm install playwright
 
 Create scripts for common UiPath tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -7049,7 +8565,7 @@ Automate critical Wrike project management workflows with Playwright when APIs a
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -7057,7 +8573,7 @@ npm install playwright
 
 Create scripts for common Wrike tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -7124,7 +8640,7 @@ Automate critical Zendesk customer service workflows with Playwright when APIs a
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -7132,7 +8648,7 @@ npm install playwright
 
 Create scripts for common Zendesk tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -7183,7 +8699,7 @@ Test your Apache Superset dashboards and data exploration workflows with Playwri
 
 Install Playwright and configure for Superset testing:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -7191,7 +8707,7 @@ npm install playwright
 
 Create tests for dashboard and chart functionality:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { test, expect } from '@playwright/test';
 
 test('dashboard loads with correct charts', async ({ page }) => {
@@ -7243,7 +8759,7 @@ Test your Grafana dashboards and monitoring workflows with Playwright's end-to-e
 
 Install Playwright and configure for Grafana testing:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -7251,7 +8767,7 @@ npm install playwright
 
 Create tests for dashboard functionality:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { test, expect } from '@playwright/test';
 
 test('dashboard loads with correct panels', async ({ page }) => {
@@ -7298,7 +8814,7 @@ Test your OpenHands AI development workflows with Playwright's end-to-end testin
 
 Install Playwright and configure for OpenHands testing:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -7306,7 +8822,7 @@ npm install playwright
 
 Create tests for AI agent functionality:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { test, expect } from '@playwright/test';
 
 test('chat interface loads and responds', async ({ page }) => {
@@ -7364,7 +8880,7 @@ Test your Storybook components directly with Playwright's component testing fram
 
 Install the required packages:
 
-```bash  theme={null}
+```bash theme={null}
 npm install @storybook/react/experimental-playwright @playwright/experimental-ct-react
 ```
 
@@ -7372,7 +8888,7 @@ npm install @storybook/react/experimental-playwright @playwright/experimental-ct
 
 Create tests that mount your stories:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { createTest } from '@storybook/react/experimental-playwright';
 import { test as base } from '@playwright/experimental-ct-react';
 import stories from './Button.stories.portable';
@@ -7412,7 +8928,7 @@ Test your Twenty CRM workflows with Playwright's end-to-end testing framework. Y
 
 Install Playwright and configure for Twenty testing:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -7420,7 +8936,7 @@ npm install playwright
 
 Create tests for CRM functionality:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { test, expect } from '@playwright/test';
 
 test('creates new contact successfully', async ({ page }) => {
@@ -7478,7 +8994,7 @@ Automate critical BLM mineral operations reporting workflows with Playwright whe
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -7486,7 +9002,7 @@ npm install playwright
 
 Create scripts for common [BLM Form 3510](https://www.blm.gov/sites/blm.gov/files/uploads/Services_National-Operations-Center_Eforms_Fluid-and-Solid-Minerals_3510-001.pdf) tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -7565,7 +9081,7 @@ Automate Bureau of Prisons administrative request workflows with Playwright when
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -7573,7 +9089,7 @@ npm install playwright
 
 Create scripts for common [BOP Form BP-S0243](https://www.bop.gov/policy/forms/BP_A0243.pdf) tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -7662,7 +9178,7 @@ Automate critical CBP Form 7501 entry documentation workflows with Playwright wh
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -7670,7 +9186,7 @@ npm install playwright
 
 Create scripts for common [CBP Form 7501](https://www.cbp.gov/sites/default/files/2025-07/CBP_Form_7501.pdf) tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -7754,7 +9270,7 @@ Automate USDA average adjusted gross income (AGI) certification workflows with P
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -7762,7 +9278,7 @@ npm install playwright
 
 Create scripts for common [CCC Form 941](https://www.farmers.gov/sites/default/files/documents/form-ccc-941.pdf) tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -7850,7 +9366,7 @@ Automate CMS Medicare provider enrollment and certification workflows with Playw
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -7858,7 +9374,7 @@ npm install playwright
 
 Create scripts for common [CMS Form 10069](https://www.cms.gov/medicare/cms-forms/cms-forms/downloads/cms10069.pdf) tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -7994,7 +9510,7 @@ Automate federal student loan general forbearance request workflows with Playwri
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -8002,7 +9518,7 @@ npm install playwright
 
 Create scripts for common [DOE Form 1845-0031](https://studentaid.gov/sites/default/files/GeneralForbearance.pdf) tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -8117,7 +9633,7 @@ Automate Department of Justice identity certification workflows with Playwright 
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -8125,7 +9641,7 @@ npm install playwright
 
 Create scripts for common [DOJ Form 361](https://www.justice.gov/ust/file/doj361_form.pdf/dl?inline) tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -8300,7 +9816,7 @@ Automate critical EPA hazardous waste notification workflows with Playwright whe
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -8308,7 +9824,7 @@ npm install playwright
 
 Create scripts for common [EPA Form 8700-22](https://www.epa.gov/sites/default/files/2018-05/documents/uniform_hazardous_waste_manifest.pdf) tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -8383,7 +9899,7 @@ Automate critical FDA food facility registration workflows with Playwright when 
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -8391,7 +9907,7 @@ npm install playwright
 
 Create scripts for common [FDA Form 2579](https://www.fda.gov/media/144454/download) tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -8468,7 +9984,7 @@ Automate critical FinCEN 105 Currency and Monetary Instrument Report workflows w
 
 ## Setup
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -8476,7 +9992,7 @@ npm install playwright
 
 Create scripts for common [FinCEN 105](https://www.fincen.gov/system/files/shared/fin105_cmir.pdf) tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -8541,7 +10057,7 @@ Automate FMCSA motor carrier surety bond and trust fund filing workflows with Pl
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -8549,7 +10065,7 @@ npm install playwright
 
 Create scripts for common [FMCSA Form BMC-40](https://www.fmcsa.dot.gov/sites/fmcsa.dot.gov/files/2025-09/BMC-40%20Form.pdf) tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -8697,7 +10213,7 @@ Automate FMCSA motor carrier operating authority application workflows with Play
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -8705,7 +10221,7 @@ npm install playwright
 
 Create scripts for common [FMCSA Form OP-1](https://www.fmcsa.dot.gov/sites/fmcsa.dot.gov/files/2025-09/OP-1%20Form.pdf) tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -8931,7 +10447,7 @@ Automate FMCSA passenger carrier operating authority application workflows with 
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -8939,7 +10455,7 @@ npm install playwright
 
 Create scripts for common [FMCSA Form OP-1(P)](https://www.fmcsa.dot.gov/sites/fmcsa.dot.gov/files/2025-09/OP-1%28P%29%20Form.pdf) tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -9133,7 +10649,7 @@ Automate Chapter 7 bankruptcy means test and current monthly income statement wo
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -9141,7 +10657,7 @@ npm install playwright
 
 Create scripts for common [Form 122A-1](https://www.uscourts.gov/file/26712/download) tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -9344,7 +10860,7 @@ Automate TreasuryDirect account authorization workflows with Playwright when API
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -9352,7 +10868,7 @@ npm install playwright
 
 Create scripts for common [FS Form 5444](https://www.treasurydirect.gov/forms/acctauth.pdf) tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -9517,7 +11033,7 @@ Automate USDA Farm Service Agency commodity storage report workflows with Playwr
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -9525,7 +11041,7 @@ npm install playwright
 
 Create scripts for common [FSA Form 578](https://www.fsa.usda.gov/documents/fsa-578) tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -9713,7 +11229,7 @@ Automate critical IRS Form 8300 cash payment reporting workflows with Playwright
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -9721,7 +11237,7 @@ npm install playwright
 
 Create scripts for common [IRS Form 8300](https://www.irs.gov/pub/irs-pdf/f8300.pdf) tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -9805,7 +11321,7 @@ Automate IRS Individual Taxpayer Identification Number (ITIN) application workfl
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -9813,7 +11329,7 @@ npm install playwright
 
 Create scripts for common [IRS Form W-7](https://www.irs.gov/pub/irs-pdf/fw7.pdf) tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -10023,7 +11539,7 @@ Automate Department of Labor Office of Workers' Compensation Programs claim subm
 
 Install Playwright and configure authentication:
 
-```bash  theme={null}
+```bash theme={null}
 npm install playwright
 ```
 
@@ -10031,7 +11547,7 @@ npm install playwright
 
 Create scripts for common [OWCP Form 915](https://www.dol.gov/sites/dolgov/files/owcp/dfec/regs/compliance/owcp-915.pdf) tasks:
 
-```JavaScript  theme={null}
+```JavaScript theme={null}
 import { chromium } from 'playwright';
 
 const browser = await chromium.launch();
@@ -10237,473 +11753,6 @@ Playwright handles injury documentation, medical verification, and OWCP submissi
 Run your Playwright OWCP automations on cloud browsers with enterprise-grade reliability and persistent workers' compensation system sessions. Learn more and get started for free: [https://anchorbrowser.io](https://anchorbrowser.io)
 
 
-# USCIS Form I-9
-Source: https://docs.anchorbrowser.io/integrations/open-source/playwright/government/USA/federal/ucis-i9
-
-Automate employment eligibility verification workflows with Playwright when APIs aren't available.
-
-# How to Automate USCIS Form I-9 with Playwright
-
-Automate USCIS employment eligibility verification workflows with Playwright when APIs aren't available or sufficient. You'll eliminate manual onboarding documentation and reduce compliance errors by automating repetitive employee verification processes. Use Playwright to interact with E-Verify and USCIS systems programmatically.
-
-[View USCIS developer resources](https://www.uscis.gov/tools) for available APIs when applicable.
-
-## Setup
-
-Install Playwright and configure authentication:
-
-```bash  theme={null}
-npm install playwright
-```
-
-## Automate Workflows
-
-Create scripts for common [USCIS Form I-9](https://www.uscis.gov/sites/default/files/document/forms/i-9.pdf) tasks:
-
-```JavaScript  theme={null}
-import { chromium } from 'playwright';
-
-const browser = await chromium.launch();
-const page = await browser.newPage();
-
-// Navigate to E-Verify system
-await page.goto('https://www.e-verify.gov/');
-await page.fill('[data-testid="username"]', process.env.EVERIFY_USERNAME);
-await page.fill('[data-testid="password"]', process.env.EVERIFY_PASSWORD);
-await page.click('[data-testid="login-button"]');
-
-// Start new I-9 form
-await page.click('[data-testid="new-case"]');
-await page.click('[data-testid="form-i9"]');
-await page.selectOption('[name="form_version"]', '11_21_2023');
-
-// Employer information
-await page.fill('[name="employer_name"]', 'TechVentures Solutions Inc');
-await page.fill('[name="employer_ein"]', '12-3456789');
-await page.fill('[name="employer_address"]', '2800 Corporate Drive, Suite 500');
-await page.fill('[name="employer_city"]', 'San Jose');
-await page.selectOption('[name="employer_state"]', 'CA');
-await page.fill('[name="employer_zip"]', '95134');
-
-// Section 1: Employee Information and Attestation
-// Employee personal information
-await page.fill('[name="last_name"]', 'Rodriguez');
-await page.fill('[name="first_name"]', 'Maria');
-await page.fill('[name="middle_initial"]', 'C');
-await page.fill('[name="other_last_names"]', 'Garcia');
-
-// Address
-await page.fill('[name="address"]', '456 Apartment Street, Unit 12B');
-await page.fill('[name="city"]', 'San Jose');
-await page.selectOption('[name="state"]', 'CA');
-await page.fill('[name="zip"]', '95110');
-
-// Date of birth and contact
-await page.fill('[name="date_of_birth"]', '07/15/1992');
-await page.fill('[name="ssn"]', '123-45-6789');
-await page.fill('[name="email"]', 'maria.rodriguez@email.com');
-await page.fill('[name="phone"]', '408-555-0189');
-
-// Citizenship/immigration status
-await page.selectOption('[name="citizenship_status"]', 'us_citizen');
-
-// Employee attestation
-await page.check('[name="employee_aware_penalties"]');
-await page.fill('[name="employee_signature"]', 'Maria C Rodriguez');
-await page.fill('[name="employee_signature_date"]', '03/01/2025');
-
-// Preparer/translator (if applicable)
-await page.selectOption('[name="preparer_used"]', 'no');
-
-// Section 2: Employer Review and Verification
-// Document verification - List A (identity and employment authorization)
-await page.selectOption('[name="document_list"]', 'list_a');
-await page.selectOption('[name="list_a_document"]', 'us_passport');
-await page.fill('[name="document_title"]', 'U.S. Passport');
-await page.fill('[name="issuing_authority"]', 'U.S. Department of State');
-await page.fill('[name="document_number"]', '123456789');
-await page.fill('[name="expiration_date"]', '06/15/2030');
-
-// Alternative: List B and List C documents
-// Uncomment if using List B + List C instead of List A
-/*
-await page.selectOption('[name="document_list"]', 'list_b_and_c');
-
-// List B - Identity document
-await page.selectOption('[name="list_b_document"]', 'drivers_license');
-await page.fill('[name="list_b_document_title"]', 'Driver\'s License');
-await page.fill('[name="list_b_issuing_authority"]', 'California DMV');
-await page.fill('[name="list_b_document_number"]', 'D1234567');
-await page.fill('[name="list_b_expiration"]', '07/15/2029');
-
-// List C - Employment authorization document
-await page.selectOption('[name="list_c_document"]', 'social_security_card');
-await page.fill('[name="list_c_document_title"]', 'Social Security Card');
-await page.fill('[name="list_c_issuing_authority"]', 'Social Security Administration');
-await page.fill('[name="list_c_document_number"]', '123-45-6789');
-*/
-
-// Physical examination of documents
-await page.check('[name="documents_appear_genuine"]');
-await page.check('[name="documents_relate_to_employee"]');
-await page.fill('[name="first_day_of_employment"]', '03/15/2025');
-
-// Additional information
-await page.fill('[name="employer_business_name"]', 'TechVentures Solutions Inc');
-await page.fill('[name="employer_representative_name"]', 'Jennifer HR Manager');
-await page.fill('[name="employer_representative_title"]', 'Human Resources Manager');
-
-// Employer certification
-await page.check('[name="certify_examination_completed"]');
-await page.fill('[name="employer_signature"]', 'Jennifer HR Manager');
-await page.fill('[name="employer_signature_date"]', '03/01/2025');
-
-// Section 3: Reverification and Rehires (if applicable)
-await page.selectOption('[name="section_3_required"]', 'no');
-
-// E-Verify case creation (if enrolled)
-await page.check('[name="create_everify_case"]');
-await page.fill('[name="hire_date"]', '03/15/2025');
-await page.selectOption('[name="employee_type"]', 'regular_full_time');
-
-// Supporting documentation upload
-await page.click('[data-testid="upload-document-front"]');
-await page.setInputFiles('[name="document_image_front"]', './documents/passport_photo_page.pdf');
-await page.click('[data-testid="upload-document-back"]');
-await page.setInputFiles('[name="document_image_back"]', './documents/passport_signature_page.pdf');
-
-// Record retention information
-await page.fill('[name="retention_start_date"]', '03/01/2025');
-await page.selectOption('[name="storage_location"]', 'secure_digital_system');
-await page.fill('[name="retention_period_years"]', '3');
-
-// Remote verification (if applicable)
-await page.selectOption('[name="remote_verification"]', 'no');
-
-// Quality assurance review
-await page.check('[name="qa_documents_legible"]');
-await page.check('[name="qa_dates_consistent"]');
-await page.check('[name="qa_sections_complete"]');
-await page.check('[name="qa_signatures_present"]');
-
-// Compliance notes
-await page.fill('[name="internal_notes"]', 'Employee provided original U.S. passport. Documents examined in person on 3/1/25. All information verified and accurate. E-Verify case will be created upon hire date.');
-
-// Authorized representative information
-await page.fill('[name="hr_contact_name"]', 'Jennifer HR Manager');
-await page.fill('[name="hr_contact_email"]', 'hr@techventures.com');
-await page.fill('[name="hr_contact_phone"]', '408-555-0100');
-
-// Company location for this employee
-await page.fill('[name="work_location_address"]', '2800 Corporate Drive, Suite 500');
-await page.fill('[name="work_location_city"]', 'San Jose');
-await page.selectOption('[name="work_location_state"]', 'CA');
-await page.fill('[name="work_location_zip"]', '95134');
-
-// Supervisor information
-await page.fill('[name="supervisor_name"]', 'David Engineering Manager');
-await page.fill('[name="supervisor_email"]', 'dmanager@techventures.com');
-await page.fill('[name="department"]', 'Software Engineering');
-
-// Job title and details
-await page.fill('[name="job_title"]', 'Software Engineer II');
-await page.fill('[name="employee_id"]', 'EMP-2025-0789');
-await page.selectOption('[name="employment_type"]', 'permanent_full_time');
-await page.fill('[name="annual_salary"]', '125000');
-
-// Final certification
-await page.check('[name="certify_compliance"]');
-await page.check('[name="acknowledge_penalties"]');
-await page.check('[name="agree_to_retention_requirements"]');
-
-await page.click('[data-testid="submit-i9"]');
-
-// Download completed form
-await page.click('[data-testid="download-i9-pdf"]');
-
-await browser.close();
-```
-
-Playwright handles document validation, data verification, and USCIS submission processes automatically. You can automate new hire onboarding, reverification workflows, and compliance audits.
-
-## Scale your USCIS Form I-9 automation with Anchor Browser
-
-Run your Playwright USCIS automations on cloud browsers with enterprise-grade reliability and persistent employment verification sessions. Learn more and get started for free: [https://anchorbrowser.io](https://anchorbrowser.io)
-
-
-# VA Form 21-526EZ
-Source: https://docs.anchorbrowser.io/integrations/open-source/playwright/government/USA/federal/va-21-526ez
-
-Automate VA disability compensation application workflows with Playwright when APIs aren't available.
-
-# How to Automate VA Form 21-526EZ with Playwright
-
-Automate VA disability compensation and related benefits application workflows with Playwright when APIs aren't available or sufficient. You'll eliminate manual claims processing and reduce approval delays by automating repetitive VA disability documentation processes. Use Playwright to interact with VA.gov systems programmatically.
-
-[View VA developer resources](https://developer.va.gov/) for available APIs when applicable.
-
-## Setup
-
-Install Playwright and configure authentication:
-
-```bash  theme={null}
-npm install playwright
-```
-
-## Automate Workflows
-
-Create scripts for common [VA Form 21-526EZ](https://www.vba.va.gov/pubs/forms/VBA-21-526EZ-ARE.pdf) tasks:
-
-```JavaScript  theme={null}
-import { chromium } from 'playwright';
-
-const browser = await chromium.launch();
-const page = await browser.newPage();
-
-// Navigate to VA.gov
-await page.goto('https://www.va.gov/find-forms/'');
-
-// Start new disability claim
-await page.click('[data-testid="start-new-claim"]');
-await page.selectOption('[name="claim_type"]', 'original_claim');
-
-// Veteran information
-await page.fill('[name="last_name"]', 'Martinez');
-await page.fill('[name="first_name"]', 'James');
-await page.fill('[name="middle_name"]', 'Michael');
-await page.fill('[name="suffix"]', '');
-await page.fill('[name="ssn"]', '123-45-6789');
-await page.fill('[name="va_file_number"]', 'C-12345678');
-
-// Contact information
-await page.fill('[name="date_of_birth"]', '08/15/1985');
-await page.selectOption('[name="gender"]', 'male');
-
-// Mailing address
-await page.fill('[name="address_line_1"]', '789 Veterans Boulevard');
-await page.fill('[name="address_line_2"]', 'Apt 4D');
-await page.fill('[name="city"]', 'Jacksonville');
-await page.selectOption('[name="state"]', 'FL');
-await page.fill('[name="zip"]', '32202');
-await page.selectOption('[name="country"]', 'USA');
-
-// Phone numbers
-await page.fill('[name="phone_home"]', '904-555-0123');
-await page.fill('[name="phone_mobile"]', '904-555-0124');
-await page.fill('[name="email"]', 'jmartinez@email.com');
-
-// Contact preferences
-await page.check('[name="contact_by_email"]');
-await page.check('[name="contact_by_phone"]');
-
-// Service information
-await page.selectOption('[name="branch_of_service"]', 'army');
-await page.fill('[name="service_number"]', 'US-123456789');
-
-// Service period 1
-await page.fill('[name="service_start_date_1"]', '06/15/2003');
-await page.fill('[name="service_end_date_1"]', '08/20/2011');
-await page.selectOption('[name="separation_type_1"]', 'honorable');
-
-// Service period 2 (if applicable)
-await page.click('[data-testid="add-service-period"]');
-await page.fill('[name="service_start_date_2"]', '09/01/2011');
-await page.fill('[name="service_end_date_2"]', '05/30/2015');
-await page.selectOption('[name="separation_type_2"]', 'honorable');
-
-// Reserve/National Guard service
-await page.check('[name="reserve_service"]');
-await page.fill('[name="reserve_component"]', 'Army National Guard');
-await page.fill('[name="unit_name"]', '53rd Infantry Brigade Combat Team');
-await page.fill('[name="unit_phone"]', '904-555-0200');
-
-// Combat service
-await page.check('[name="served_in_combat"]');
-await page.fill('[name="combat_locations"]', 'Iraq (2007-2008), Afghanistan (2010-2011)');
-
-// Prisoner of war
-await page.selectOption('[name="pow_status"]', 'no');
-
-// Medals and awards
-await page.fill('[name="awards"]', 'Bronze Star, Purple Heart, Combat Infantryman Badge, Army Commendation Medal');
-
-// Disabilities being claimed
-// Condition 1: PTSD
-await page.click('[data-testid="add-disability"]');
-await page.fill('[name="condition_name_1"]', 'Post-Traumatic Stress Disorder (PTSD)');
-await page.selectOption('[name="condition_cause_1"]', 'combat');
-await page.fill('[name="condition_start_date_1"]', '09/2008');
-await page.fill('[name="condition_description_1"]', 'Recurring nightmares, flashbacks to combat situations, anxiety, hypervigilance, difficulty sleeping. Symptoms began during deployment to Iraq and have persisted.');
-
-// Condition 2: Tinnitus
-await page.click('[data-testid="add-disability"]');
-await page.fill('[name="condition_name_2"]', 'Tinnitus');
-await page.selectOption('[name="condition_cause_2"]', 'noise_exposure');
-await page.fill('[name="condition_start_date_2"]', '06/2007');
-await page.fill('[name="condition_description_2"]', 'Constant ringing in both ears. Began after prolonged exposure to weapons fire and explosions during combat operations.');
-
-// Condition 3: Lower back injury
-await page.click('[data-testid="add-disability"]');
-await page.fill('[name="condition_name_3"]', 'Chronic Lower Back Pain');
-await page.selectOption('[name="condition_cause_3"]', 'injury');
-await page.fill('[name="condition_start_date_3"]', '03/2010');
-await page.fill('[name="condition_description_3"]', 'Lumbar spine injury from IED blast. Chronic pain, limited range of motion, difficulty standing for extended periods.');
-
-// Condition 4: Knee injury
-await page.click('[data-testid="add-disability"]');
-await page.fill('[name="condition_name_4"]', 'Right Knee Injury');
-await page.selectOption('[name="condition_cause_4"]', 'injury');
-await page.fill('[name="condition_start_date_4"]', '03/2010');
-await page.fill('[name="condition_description_4"]', 'Right knee damaged in same IED incident. Torn meniscus, chronic pain, instability, arthritis.');
-
-// Treatment history
-await page.check('[name="receiving_va_care"]');
-await page.fill('[name="va_facility_1"]', 'Malcom Randall VA Medical Center');
-await page.fill('[name="va_facility_city_1"]', 'Gainesville');
-await page.selectOption('[name="va_facility_state_1"]', 'FL');
-await page.fill('[name="va_treatment_dates_1"]', '2015 - Present');
-
-// Private medical treatment
-await page.check('[name="private_treatment"]');
-await page.fill('[name="private_provider_1"]', 'Dr. Sarah Orthopedic Surgeon');
-await page.fill('[name="private_facility_1"]', 'Jacksonville Orthopedic Center');
-await page.fill('[name="private_address_1"]', '456 Medical Plaza');
-await page.fill('[name="private_city_1"]', 'Jacksonville');
-await page.selectOption('[name="private_state_1"]', 'FL');
-await page.fill('[name="private_zip_1"]', '32207');
-await page.fill('[name="private_treatment_dates_1"]', '2012-2015');
-
-// Mental health treatment
-await page.fill('[name="mental_health_provider"]', 'Dr. Michael Psychiatrist');
-await page.fill('[name="mental_health_facility"]', 'Veterans Mental Health Clinic');
-await page.fill('[name="mental_health_dates"]', '2015 - Present');
-
-// Hospitalizations
-await page.check('[name="hospitalizations"]');
-await page.fill('[name="hospital_name_1"]', 'Walter Reed Army Medical Center');
-await page.fill('[name="hospital_admission_date_1"]', '04/01/2010');
-await page.fill('[name="hospital_discharge_date_1"]', '04/15/2010');
-await page.fill('[name="hospital_reason_1"]', 'Treatment for injuries sustained in IED explosion');
-
-// Supporting documents
-await page.click('[data-testid="upload-dd214"]');
-await page.setInputFiles('[name="discharge_papers"]', './documents/dd214.pdf');
-await page.click('[data-testid="upload-service-medical"]');
-await page.setInputFiles('[name="service_medical_records"]', './documents/service_treatment_records.pdf');
-await page.click('[data-testid="upload-private-medical"]');
-await page.setInputFiles('[name="private_medical_records"]', './documents/private_treatment_records.pdf');
-await page.click('[data-testid="upload-buddy-statements"]');
-await page.setInputFiles('[name="buddy_statements"]', './documents/witness_statements.pdf');
-
-// Special circumstances
-await page.check('[name="combat_related"]');
-await page.check('[name="caused_by_service"]');
-
-// Homelessness
-await page.selectOption('[name="homeless_status"]', 'at_risk');
-await page.fill('[name="homeless_contact"]', 'Florida Veterans Affairs Office');
-await page.fill('[name="homeless_phone"]', '904-555-0300');
-
-// Terminal illness
-await page.selectOption('[name="terminal_illness"]', 'no');
-
-// Fully developed claim
-await page.check('[name="fdc_election"]');
-await page.check('[name="understand_fdc"]');
-
-// Direct deposit information
-await page.check('[name="direct_deposit"]');
-await page.selectOption('[name="account_type"]', 'checking');
-await page.fill('[name="routing_number"]', '063100277');
-await page.fill('[name="account_number"]', '123456789012');
-await page.fill('[name="bank_name"]', 'Navy Federal Credit Union');
-
-// Payment address (if different)
-await page.selectOption('[name="payment_address_same"]', 'yes');
-
-// Dependents
-await page.check('[name="has_dependents"]');
-
-// Spouse information
-await page.fill('[name="spouse_first_name"]', 'Jennifer');
-await page.fill('[name="spouse_middle_name"]', 'Ann');
-await page.fill('[name="spouse_last_name"]', 'Martinez');
-await page.fill('[name="spouse_ssn"]', '987-65-4321');
-await page.fill('[name="spouse_dob"]', '11/20/1987');
-await page.fill('[name="marriage_date"]', '06/15/2012');
-await page.selectOption('[name="marriage_type"]', 'ceremonial');
-
-// Children
-await page.click('[data-testid="add-child"]');
-await page.fill('[name="child_first_name_1"]', 'Emily');
-await page.fill('[name="child_middle_name_1"]', 'Rose');
-await page.fill('[name="child_last_name_1"]', 'Martinez');
-await page.fill('[name="child_ssn_1"]', '234-56-7890');
-await page.fill('[name="child_dob_1"]', '08/10/2013');
-await page.selectOption('[name="child_relationship_1"]', 'biological');
-await page.check('[name="child_unmarried_1"]');
-await page.check('[name="child_under_18_1"]');
-
-// Employment information
-await page.selectOption('[name="employment_status"]', 'unemployed');
-await page.fill('[name="last_employment_date"]', '03/2015');
-await page.fill('[name="unable_to_work_date"]', '03/2015');
-await page.fill('[name="unemployment_reason"]', 'Service-connected disabilities prevent full-time employment');
-
-// Education and training
-await page.check('[name="using_gi_bill"]');
-await page.fill('[name="school_name"]', 'Florida State College at Jacksonville');
-await page.fill('[name="education_start_date"]', '08/2016');
-
-// Other benefits
-await page.check('[name="receiving_ssdi"]');
-await page.fill('[name="ssdi_start_date"]', '01/2016');
-await page.fill('[name="ssdi_monthly_amount"]', '1500');
-
-// Military retirement
-await page.selectOption('[name="receiving_military_retirement"]', 'no');
-
-// VA pension
-await page.selectOption('[name="receiving_va_pension"]', 'no');
-
-// Intent to file date
-await page.fill('[name="intent_to_file_date"]', '01/15/2025');
-
-// Certification and signatures
-await page.check('[name="certify_accuracy"]');
-await page.check('[name="certify_authorization"]');
-await page.check('[name="understand_penalties"]');
-await page.check('[name="authorize_disclosure"]');
-await page.check('[name="agree_to_exam"]');
-
-// Privacy act notice acknowledgment
-await page.check('[name="privacy_act_acknowledged"]');
-
-// Veteran signature
-await page.fill('[name="veteran_signature"]', 'James Michael Martinez');
-await page.fill('[name="signature_date"]', '03/10/2025');
-
-// Representative information (if applicable)
-await page.selectOption('[name="has_representative"]', 'yes');
-await page.fill('[name="representative_name"]', 'Veterans Service Organization - DAV');
-await page.fill('[name="representative_phone"]', '904-555-0400');
-await page.fill('[name="representative_email"]', 'davjacksonville@dav.org');
-
-await page.click('[data-testid="submit-claim"]');
-
-// Download confirmation
-await page.click('[data-testid="download-confirmation"]');
-
-await browser.close();
-```
-
-Playwright handles medical documentation, service verification, and VA submission processes automatically. You can automate disability claims, dependency declarations, and benefit application workflows.
-
-## Scale your VA Form 21-526EZ automation with Anchor Browser
-
-Run your Playwright VA automations on cloud browsers with enterprise-grade reliability and persistent veterans benefits sessions. Learn more and get started for free: [https://anchorbrowser.io](https://anchorbrowser.io)
-
-
 # Integrate Playwright with Anchor Browser
 Source: https://docs.anchorbrowser.io/integrations/open-source/playwright/index
 
@@ -10771,6 +11820,85 @@ This gives you all of Playwright's power while eliminating infrastructure comple
 * [Browser Configuration](/api-reference/browser-sessions/start-browser-session#body-browser) - Advanced browser settings and options
 
 
+# Integrate Puppeteer with Anchor Browser
+Source: https://docs.anchorbrowser.io/integrations/open-source/puppeteer/index
+
+Integrate Puppeteer and Anchor Browser
+
+# What is Puppeteer?
+
+[Puppeteer](https://pptr.dev/) is Google's Node.js library for controlling headless Chrome or Chromium browsers via the DevTools Protocol. It provides a high-level API for browser automation, making it one of the most widely adopted tools for web scraping, testing, and automated interactions.
+
+## Why Puppeteer + Anchor Browser?
+
+Anchor Browser leverages Puppeteer's mature CDP (Chrome DevTools Protocol) integration to provide seamless cloud browser automation. While Puppeteer handles the low-level browser control, Anchor Browser adds:
+
+* Cloud-hosted browser instances - No local browser management required
+* AI-powered interactions - Natural language task execution beyond traditional scripting
+* Enterprise security - Isolated environments with authentication and proxy support
+* Self-healing automations - Built-in error recovery and adaptation to website changes
+
+### Key Puppeteer Capabilities
+
+* CDP Native - Direct Chrome DevTools Protocol integration for precise browser control
+* Lightweight & Fast - Minimal overhead with direct browser communication
+* Extensive Ecosystem - Rich plugin ecosystem and community support
+* Network Interception - Capture and modify network requests and responses
+* PDF Generation - Convert web pages to PDFs with full rendering support
+
+### How It Works with Anchor Browser
+
+When you connect to Anchor Browser, you're using Puppeteer's familiar API but with cloud-hosted browsers:
+
+```javascript node.js theme={null}
+import AnchorClient from 'anchorbrowser';
+import puppeteer from 'puppeteer-core';
+
+const anchorClient = new AnchorClient({
+  apiKey: process.env.ANCHOR_API_KEY,
+});
+
+// First create a session
+const session = await anchorClient.sessions.create();
+const cdpUrl = session.data.cdp_url;
+const sessionId = session.data.id;
+
+// Connect Puppeteer to the Anchor CDP session
+const browser = await puppeteer.connect({
+  browserWSEndpoint: cdpUrl,
+  defaultViewport: null,
+});
+
+// Open a page and navigate
+const page = await browser.newPage();
+await page.goto('https://example.com');
+console.log('Page title:', await page.title());
+
+// Disconnect Puppeteer (doesn't close the Anchor session)
+await browser.disconnect();
+
+// Close the session via SDK
+await anchorClient.sessions.delete(sessionId);
+```
+
+This gives you all of Puppeteer's power while eliminating infrastructure complexity and adding enterprise features.
+
+### Use Cases
+
+* Web Scraping - Extract data from dynamic JavaScript-heavy websites
+* PDF Generation - Generate PDFs from web pages with precise rendering
+* Screenshot Capture - Automated screenshot generation for monitoring and testing
+* Form Automation - Automate form submissions and multi-step workflows
+* Network Analysis - Intercept and analyze network traffic for debugging
+* Performance Profiling - Measure page load times and runtime performance
+
+## Next Steps
+
+* [Quick Start with Puppeteer](/quickstart/use-via-code) - Get started in 5 minutes
+* [Examples](/examples/form-filling) - Real-world Puppeteer automation scripts
+* [Browser Configuration](/api-reference/browser-sessions/start-browser-session#body-browser) - Advanced browser settings and options
+
+
 # Stagehand
 Source: https://docs.anchorbrowser.io/integrations/stagehand
 
@@ -10778,270 +11906,369 @@ Integrate Stagehand with Anchor Browser for AI-powered browser automation
 
 ## Basic Usage
 
+This example demonstrates how to:
+
+1. Create an AnchorBrowser session using the AnchorBrowser SDK
+2. Get the CDP URL from the session
+3. Connect Stagehand to the browser via CDP
+4. Perform AI-powered browser automation
+
+### Prerequisites
+
 <CodeGroup>
-  ```python python theme={null}
-  import os
-  import asyncio
-  import aiohttp
-  import ssl
-  from typing import Optional, Dict, Any
-  from stagehand import Stagehand
-
-  ssl._create_default_https_context = ssl._create_unverified_context
-
-  API_KEY = os.environ.get("ANCHOR_API_KEY")
-  if not API_KEY:
-      raise ValueError("ANCHOR_API_KEY is not set")
-
-  async def create_browser_session() -> Dict[str, Any]:
-      async with aiohttp.ClientSession() as session:
-          async with session.post(
-              "https://api.anchorbrowser.io/v1/sessions",
-              headers={
-                  "anchor-api-key": API_KEY,
-                  "Content-Type": "application/json",
-              },
-              json={
-                  "session": {
-                      "proxy": {"active": True}
-                  },
-                  "browser": {
-                      "extra_stealth": {"active": True}
-                  }
-              },
-              ssl=False
-          ) as response:
-              if not response.ok:
-                  raise Exception(f"Failed to create session: {response.status}")
-              return (await response.json())["data"]
-
-  async def stop_browser_session(session_id: str):
-      async with aiohttp.ClientSession() as session:
-          async with session.delete(
-              f"https://api.anchorbrowser.io/v1/sessions/{session_id}",
-              headers={"anchor-api-key": API_KEY},
-              ssl=False
-          ) as response:
-              if response.ok:
-                  print(f"Session {session_id} stopped")
-
-  async def run_stagehand():
-      session_id: Optional[str] = None
-      stagehand: Optional[Stagehand] = None
-      
-      try:
-          session = await create_browser_session()
-          session_id = session["id"]
-          cdp_url = session["cdp_url"]
-          
-          # Check for GOOGLE_API_KEY
-          google_api_key = os.environ.get("GOOGLE_API_KEY")
-          if not google_api_key:
-              raise ValueError("Either GOOGLE_API_KEY must be set")
-          
-          
-          stagehand = Stagehand(
-              verbose=1,
-              log_level="info",
-              dom_settle_timeout_ms=60000,
-              model_name="google/gemini-2.5-pro",
-              env="LOCAL",
-              local_browser_launch_options={"cdp_url": cdp_url}
-          )
-          
-          await stagehand.init()
-          await stagehand.page.goto("https://example.com")
-          await stagehand.page.act("Click on Learn more link")
-          print(f"Current URL: {stagehand.page.url}")
-      finally:
-          if stagehand and not stagehand._closed:
-              await stagehand.close()
-          if session_id:
-              await stop_browser_session(session_id)
-
-  asyncio.run(run_stagehand())
+  ```bash python theme={null}
+  pip install stagehand anchorbrowser
   ```
 
-  ```javascript node.js theme={null}
+  ```bash node.js theme={null}
+  npm install @browserbasehq/stagehand anchorbrowser
+  ```
+</CodeGroup>
+
+Set the following environment variables:
+
+* `ANCHORBROWSER_API_KEY` - Your Anchorbrowser API key
+* `MODEL_API_KEY`, `OPENAI_API_KEY`, or `GOOGLE_API_KEY` - Your LLM provider API key
+
+<CodeGroup>
+  ```python python theme={null}
+  from __future__ import annotations
+
+  import asyncio
+  import os
+  import sys
+  from typing import Any, Optional
+
+  from anchorbrowser import AsyncAnchorbrowser
+
+  from stagehand import AsyncStagehand
+
+
+  async def main() -> None:
+      # 1. Check for required environment variables
+      anchor_api_key = os.environ.get("ANCHORBROWSER_API_KEY")
+      if not anchor_api_key:
+          sys.exit(
+              "❌ ANCHORBROWSER_API_KEY environment variable is required. "
+              "Get your API key from https://anchorbrowser.io"
+          )
+
+      model_api_key = os.environ.get("MODEL_API_KEY") or os.environ.get("OPENAI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
+      if not model_api_key:
+          sys.exit("❌ MODEL_API_KEY, OPENAI_API_KEY, or GOOGLE_API_KEY environment variable is required.")
+
+      # Detect model type from API key format
+      if model_api_key.startswith("AIza"):
+          model_name = "google/gemini-2.0-flash"
+          print(f"   Detected Google API key, using model: {model_name}")
+      else:
+          model_name = "openai/gpt-4o-mini"
+          print(f"   Detected OpenAI API key, using model: {model_name}")
+
+      anchorbrowser_session_id: Optional[str] = None
+      stagehand_session_id: Optional[str] = None
+
+      # Initialize Anchorbrowser client
+      anchor_client = AsyncAnchorbrowser(api_key=anchor_api_key)
+
+      try:
+          # 2. Create Anchorbrowser session using the SDK
+          print("🌐 Creating Anchorbrowser session...")
+          anchor_session = await anchor_client.sessions.create()
+          
+          if not anchor_session.data or not anchor_session.data.cdp_url:
+              raise ValueError(f"Anchorbrowser session did not return a CDP URL. Response: {anchor_session}")
+          
+          anchorbrowser_session_id = anchor_session.data.id
+          cdp_url = anchor_session.data.cdp_url
+          
+          print("✅ Anchorbrowser session created!")
+          print(f"   Session ID: {anchorbrowser_session_id}")
+          print(f"   CDP URL: {cdp_url}")
+
+          # 3. Initialize Stagehand with the CDP URL
+          print("\n🚀 Initializing Stagehand with CDP URL...")
+          async with AsyncStagehand(
+              server="local",
+              model_api_key=model_api_key,
+              local_openai_api_key=model_api_key,
+              local_ready_timeout_s=30.0,
+          ) as client:
+              # Start session with CDP URL pointing to Anchorbrowser
+              # Note: cdp_url must be inside launch_options for connecting to external browsers
+              session_response = await client.sessions.start(
+                  model_name=model_name,
+                  browser={
+                      "type": "local",
+                      "launch_options": {
+                          "cdp_url": cdp_url,
+                      },
+                  },
+              )
+              stagehand_session_id = session_response.data.session_id
+              print("✅ Stagehand initialized successfully!")
+              print(f"   Stagehand Session ID: {stagehand_session_id}")
+
+              try:
+                  # 4. Navigate to Hacker News
+                  print("\n📍 Navigating to Hacker News...")
+                  await client.sessions.navigate(
+                      id=stagehand_session_id,
+                      url="https://news.ycombinator.com",
+                  )
+                  print("✅ Navigation complete")
+
+                  # 5. Use Stagehand's AI-powered extraction
+                  print("\n🔍 Extracting top stories using AI...")
+                  extract_response = await client.sessions.extract(
+                      id=stagehand_session_id,
+                      instruction="Extract the titles and URLs of the first 5 stories on the page",
+                      schema={
+                          "type": "object",
+                          "properties": {
+                              "stories": {
+                                  "type": "array",
+                                  "items": {
+                                      "type": "object",
+                                      "properties": {
+                                          "title": {"type": "string"},
+                                          "url": {"type": "string"},
+                                      },
+                                      "required": ["title"],
+                                  },
+                              },
+                          },
+                          "required": ["stories"],
+                      },
+                  )
+
+                  print("\n📰 Extracted stories:")
+                  result: Any = extract_response.data.result
+                  if isinstance(result, dict) and "stories" in result:
+                      stories = result["stories"]
+                      if isinstance(stories, list):
+                          for i, story in enumerate(stories, 1):
+                              if isinstance(story, dict):
+                                  title = story.get("title", "N/A")
+                                  url = story.get("url")
+                                  print(f"   {i}. {title}")
+                                  if url:
+                                      print(f"      URL: {url}")
+                  else:
+                      print(f"   Raw result: {result}")
+
+                  # 6. Use Stagehand's observe to find clickable elements
+                  print("\n👁️  Observing page for login link...")
+                  observe_response = await client.sessions.observe(
+                      id=stagehand_session_id,
+                      instruction="find the login link",
+                  )
+                  actions = observe_response.data.result
+                  print(f"   Found {len(actions)} possible actions")
+                  if actions:
+                      print(f"   First action: {actions[0].description}")
+
+                  # 7. Use Stagehand's act to perform an action
+                  print("\n🖱️  Clicking on the first story...")
+                  act_response = await client.sessions.act(
+                      id=stagehand_session_id,
+                      input="click on the first story title",
+                  )
+                  print(f"   Act completed: {act_response.data.result.message}")
+
+                  # Wait a moment for navigation
+                  await asyncio.sleep(2)
+
+                  print("\n✅ Test completed successfully!")
+
+              finally:
+                  # 8. End the Stagehand session
+                  if stagehand_session_id:
+                      print("\n🛑 Ending Stagehand session...")
+                      await client.sessions.end(id=stagehand_session_id)
+                      print("✅ Stagehand session ended")
+
+      finally:
+          # 9. Delete the Anchorbrowser session using the SDK
+          if anchorbrowser_session_id:
+              print("\n🧹 Deleting Anchorbrowser session...")
+              try:
+                  await anchor_client.sessions.delete(anchorbrowser_session_id)
+                  print("✅ Anchorbrowser session deleted")
+              except Exception as e:
+                  print(f"⚠️  Failed to delete Anchorbrowser session: {e}")
+
+          # Close the Anchorbrowser client
+          await anchor_client.close()
+
+
+  if __name__ == "__main__":
+      asyncio.run(main())
+  ```
+
+  ```typescript node.js theme={null}
   import { Stagehand } from "@browserbasehq/stagehand";
+  import Anchorbrowser from "anchorbrowser";
+  import { z } from "zod";
 
-  // Disable TLS certificate verification for local development
-  process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
-
-  const API_KEY = process.env.ANCHOR_API_KEY || "";
-
-  // Stagehand configuration factory
-  const createStagehandConfig = () => {
-    // Check for GOOGLE_API_KEY
-    const googleApiKey = process.env.GOOGLE_API_KEY
-    if (!googleApiKey) {
-      throw new Error('Either GOOGLE_API_KEY must be set');
+  async function main(): Promise<void> {
+    // 1. Check for required environment variables
+    const anchorApiKey = process.env.ANCHORBROWSER_API_KEY;
+    if (!anchorApiKey) {
+      console.error(
+        "❌ ANCHORBROWSER_API_KEY environment variable is required. " +
+          "Get your API key from https://anchorbrowser.io"
+      );
+      process.exit(1);
     }
 
-    return {
-      verbose: 1,
-      disablePino: true,
-      logger: console.log,
-      domSettleTimeoutMs: 60_000,
-      actionTimeoutMs: 10_000,
-      navigationTimeoutMs: 15_000,
-      model: "google/gemini-2.5-pro", // Use 'model' instead of 'modelName'
-      // API key will auto-load from GOOGLE_API_KEY environment variable
-      env: "LOCAL",
-      localBrowserLaunchOptions: {
-        headless: false,
-        viewport: {
-          width: 1288,
-          height: 711,
-        },
-      },
-    };
-  };
-
-  // Browser configuration for Anchor
-  const browserConfiguration = {
-    session: {
-      proxy: {
-        active: true,
-      }
-    },
-    browser: {
-      extra_stealth: {
-        active: true
-      }
-    }
-  };
-
-  async function createBrowserSession() {
-    console.log(`Creating browser session with Anchor API...`);
-    const response = await fetch(`https://api.anchorbrowser.io/v1/sessions`, {
-      method: "POST",
-      headers: {
-        "anchor-api-key": API_KEY,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(browserConfiguration),
-    });
-
-    if (!response.ok) {
-      throw new Error(`Failed to create session: ${response.status} ${response.statusText}`);
+    const modelApiKey =
+      process.env.MODEL_API_KEY ||
+      process.env.OPENAI_API_KEY ||
+      process.env.GOOGLE_API_KEY;
+    if (!modelApiKey) {
+      console.error(
+        "❌ MODEL_API_KEY, OPENAI_API_KEY, or GOOGLE_API_KEY environment variable is required."
+      );
+      process.exit(1);
     }
 
-    const json = await response.json();
-    console.log(`Session created:`, json);
-    return json.data;
-  }
-
-  async function stopBrowserSession(sessionId) {
-    console.log(`Stopping browser session ${sessionId}...`);
-    const response = await fetch(`https://api.anchorbrowser.io/v1/sessions/${sessionId}`, {
-      method: "DELETE",
-      headers: {
-        "anchor-api-key": API_KEY,
-      },
-    });
-
-    if (response.ok) {
-      console.log(`Session ${sessionId} stopped successfully`);
+    // Detect model type from API key format
+    let modelName: string;
+    if (modelApiKey.startsWith("AIza")) {
+      modelName = "gemini-2.0-flash";
+      console.log(`   Detected Google API key, using model: ${modelName}`);
     } else {
-      console.error(`Failed to stop session ${sessionId}:`, response.statusText);
+      modelName = "gpt-4o-mini";
+      console.log(`   Detected OpenAI API key, using model: ${modelName}`);
     }
-  }
 
-  async function runStagehandTest() {
-    let sessionId;
-    let stagehand;
+    let anchorbrowserSessionId: string | undefined;
+    let stagehand: Stagehand | undefined;
+
+    // Initialize Anchorbrowser client
+    const anchorClient = new Anchorbrowser({
+      apiKey: anchorApiKey,
+    });
 
     try {
-      // Create Anchor browser session
-      const session = await createBrowserSession();
-      sessionId = session.id;
-      
-      // Use CDP URL from Anchor Browser session response
-      const cdpUrl = session.cdp_url;
-      console.log(`CDP URL: ${cdpUrl}`);
+      // 2. Create Anchorbrowser session using the SDK
+      console.log("🌐 Creating Anchorbrowser session...");
+      const anchorSession = await anchorClient.sessions.create();
 
-      // Initialize Stagehand with Anchor browser
+      if (!anchorSession.data?.cdp_url) {
+        throw new Error(
+          `Anchorbrowser session did not return a CDP URL. Response: ${JSON.stringify(anchorSession)}`
+        );
+      }
+
+      anchorbrowserSessionId = anchorSession.data.id;
+      const cdpUrl = anchorSession.data.cdp_url;
+
+      console.log("✅ Anchorbrowser session created!");
+      console.log(`   Session ID: ${anchorbrowserSessionId}`);
+      console.log(`   CDP URL: ${cdpUrl}`);
+
+      // 3. Initialize Stagehand V3 with the CDP URL
+      console.log("\n🚀 Initializing Stagehand V3 with CDP URL...");
       stagehand = new Stagehand({
-        ...createStagehandConfig(),
         env: "LOCAL",
+        model: modelName,
         localBrowserLaunchOptions: {
           cdpUrl: cdpUrl,
         },
+        verbose: 1,
       });
 
-      console.log("Stagehand initialized successfully");
-
-      // Initialize Stagehand before using it
-      console.log("Initializing Stagehand...");
       await stagehand.init();
-      console.log("Stagehand initialization completed");
+      console.log("✅ Stagehand V3 initialized successfully!");
 
-      // Get the Playwright page from the browser context
-      const page = stagehand.ctx.pages()[0];
-      if (!page) {
-        throw new Error("No page available in browser context");
-      }
-
-      // Example test: Navigate to a page and perform some actions
-      console.log("Navigating to test page...");
-      await page.goto("https://example.com");
-      
-      console.log("Attempting to click on Learn more link...");
       try {
-        // Use Stagehand's act method - it might be on the instance or via actHandler
-        await stagehand.act("Click on Learn more link");
-        console.log("Click action completed successfully");
-      } catch (error) {
-        console.log("Click action had timeout issues, but this is often expected for navigation:");
-        console.log(error.message);
-      }
-      
-      // Wait a bit for any navigation to complete
-      console.log("Waiting for navigation to complete...");
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      console.log("Taking a screenshot...");
-      const currentUrl = page.url();
-      console.log(`Current URL: ${currentUrl}`);
-      const screenshot = await page.screenshot();
-      console.log(`Screenshot taken, size: ${screenshot.length} bytes`);
-      
-      console.log("Test completed successfully!");
+        // Get the active page
+        const page = stagehand.context.activePage();
+        if (!page) {
+          throw new Error("No active page found");
+        }
 
-    } catch (error) {
-      console.error("Error during Stagehand test:", error);
-    } finally {
-      // Clean up
-      if (stagehand) {
-        try {
-          // Only close if Stagehand was successfully initialized
-          if (!stagehand.isClosed) {
-            await stagehand.close();
-            console.log("Stagehand closed");
-          }
-        } catch (error) {
-          console.error("Error closing Stagehand:", error);
+        // 4. Navigate to Hacker News
+        console.log("\n📍 Navigating to Hacker News...");
+        await page.goto("https://news.ycombinator.com");
+        console.log("✅ Navigation complete");
+
+        // 5. Use Stagehand's AI-powered extraction
+        console.log("\n🔍 Extracting top stories using AI...");
+        const StoriesSchema = z.object({
+          stories: z.array(
+            z.object({
+              title: z.string(),
+              url: z.string().optional(),
+            })
+          ),
+        });
+
+        const extractResult = await stagehand.extract(
+          "Extract the titles and URLs of the first 5 stories on the page",
+          StoriesSchema
+        );
+
+        console.log("\n📰 Extracted stories:");
+        if (extractResult.stories) {
+          extractResult.stories.forEach((story, i) => {
+            console.log(`   ${i + 1}. ${story.title}`);
+            if (story.url) {
+              console.log(`      URL: ${story.url}`);
+            }
+          });
+        }
+
+        // 6. Use Stagehand's observe to find clickable elements
+        console.log("\n👁️  Observing page for login link...");
+        const actions = await stagehand.observe("find the login link");
+        console.log(`   Found ${actions.length} possible actions`);
+        if (actions.length > 0) {
+          console.log(`   First action: ${actions[0].description}`);
+        }
+
+        // 7. Use Stagehand's act to perform an action
+        console.log("\n🖱️  Clicking on the first story...");
+        const actResult = await stagehand.act("click on the first story title");
+        console.log(`   Act completed: ${actResult.message}`);
+
+        // Wait a moment for navigation
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+
+        console.log("\n✅ Test completed successfully!");
+      } finally {
+        // 8. Close Stagehand
+        if (stagehand) {
+          console.log("\n🛑 Closing Stagehand...");
+          await stagehand.close();
+          console.log("✅ Stagehand closed");
         }
       }
-      
-      if (sessionId) {
-        await stopBrowserSession(sessionId);
+    } finally {
+      // 9. Delete the Anchorbrowser session using the SDK
+      if (anchorbrowserSessionId) {
+        console.log("\n🧹 Deleting Anchorbrowser session...");
+        try {
+          await anchorClient.sessions.delete(anchorbrowserSessionId);
+          console.log("✅ Anchorbrowser session deleted");
+        } catch (e) {
+          console.log(`⚠️  Failed to delete Anchorbrowser session: ${e}`);
+        }
       }
     }
   }
 
-  // Run the test
-  (async () => {
-    console.log("Starting Stagehand sanity test with Anchor...");
-    await runStagehandTest();
-    console.log("Test completed");
-  })();
+  main().catch((error) => {
+    console.error("Fatal error:", error);
+    process.exit(1);
+  });
   ```
 </CodeGroup>
 
 <Tip>
-  Set `GOOGLE_API_KEY` (or your LLM API key) in your environment variables for Stagehand to function.
+  Set `ANCHOR_BROWSER_API_KEY` for AnchorBrowser authentication, and one of `MODEL_API_KEY`, `OPENAI_API_KEY`, or `GOOGLE_API_KEY` for your LLM provider.
 </Tip>
 
 
@@ -11052,13 +12279,13 @@ Welcome to Anchor Browser
 
 Anchor is the platform for AI Agentic browser automation, which solves the challenge of automating workflows for web applications that lack APIs or have limited API coverage.
 
-<video autoPlay muted loop className="w-full aspect-video" src="https://mintcdn.com/anchor-b3ec2715/PYJUK4ovynFtrEAT/images/video-playground.mp4?fit=max&auto=format&n=PYJUK4ovynFtrEAT&q=85&s=9597d75a98b85978c08b9861c99474f4" data-path="images/video-playground.mp4" />
+<video />
 
 It simplifies the creation, deployment, and management of browser-based automations, transforming complex web interactions into simple API endpoints.
 
 ## Getting started
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Quick start" icon="rocket" href="/quickstart/use-via-sdk">
     Get up and running with our quickstart guides, whether you code or don't
   </Card>
@@ -11072,7 +12299,7 @@ It simplifies the creation, deployment, and management of browser-based automati
 
 Explore advanced features and capabilities
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Connect to AI Agent Frameworks" icon="palette" href="/agent-frameworks/connect-to-agent-frameworks">
     Seamlessly integrate with leading AI agent frameworks.
   </Card>
@@ -11091,102 +12318,6 @@ Explore advanced features and capabilities
 </CardGroup>
 
 
-# Pricing
-Source: https://docs.anchorbrowser.io/pricing
-
-Simple, transparent pricing for Anchor Browser automation platform
-
-# Simple, Transparent Pricing
-
-Pay only for what you use. No hidden fees, no surprises.
-
-## Pricing Structure
-
-<CardGroup cols={4}>
-  <Card title="Browser Creation" icon="browser">
-    **\$0.01 per browser**
-
-    Every new browser instance created incurs the minimal fee, ensuring cost-effective scaling of your automation workflows.
-  </Card>
-
-  <Card title="Browser Usage" icon="clock">
-    **\$0.05 per browser hour**
-
-    Charges are based on the total active time of the browser session, calculated to the nearest full minute.
-  </Card>
-
-  <Card title="Anchor Proxy" icon="shield">
-    **\$8 per GB**
-
-    High-speed, secure connections with residential or mobile IP addresses for seamless automation across the web.
-  </Card>
-
-  <Card title="AI Steps" icon="brain">
-    **\$0.01 per step**
-
-    Each AI task can consist of multiple steps, depending on its length and complexity.
-  </Card>
-</CardGroup>
-
-# Plans
-
-Select the plan that matches your automation needs and scale.
-
-<CardGroup cols={3}>
-  <Card>
-    # Free
-
-    **\$5 free credits per month**
-
-    Perfect for early exploration and learning the basics.
-
-    * Up to 5 concurrent browsers
-    * Up to 500 browser sessions
-    * Web proxy available
-    * Automated Captcha bypass
-  </Card>
-
-  <Card>
-    # Starter
-
-    **From \$20.00/month**
-
-    Cloudflare Verified Browser Agents with automated captcha bypass.
-
-    * Up to 25 concurrent browsers
-    * Run on any geolocation
-    * Authenticated (Logged in) Browsers
-    * Built in and custom proxy support
-  </Card>
-
-  <Card>
-    # Growth
-
-    **From \$1,500/month**
-
-    Enterprise-grade solution with full compliance and security.
-
-    * Up to 100 concurrent browsers
-    * SOC2 Type 2, ISO27001, HIPAA, GDPR
-    * Anchor Chromium - Full stealth solution
-    * BAA, DPA, SLA Guarantee
-  </Card>
-</CardGroup>
-
-## Example Calculation
-
-<Card title="Cost Breakdown Example">
-  **Scenario**: 10 browsers running for 5 hours, using 2GB of residential proxy data
-
-  | Service          | Calculation                    | Cost        |
-  | ---------------- | ------------------------------ | ----------- |
-  | Browser Creation | 10 browsers × \$0.01           | \$0.10      |
-  | Browser Hours    | 10 browsers × 5 hours × \$0.05 | \$2.50      |
-  | Proxy Data       | 2GB × \$8                      | \$16.00     |
-  | **Total**        |                                | **\$18.60** |
-</Card>
-
-
 # API Quick Start
 Source: https://docs.anchorbrowser.io/quickstart/use-via-api
 
@@ -11196,7 +12327,7 @@ Our APIs can be used directly (See our [API Reference](/api-reference)) or throu
 
 Pick your preferred platform to view a quick-start for its usage:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Direct API Usage" icon="code" href="/api-reference">
     Use the API directly as you like, See our [API Reference](/api-reference) for more details.
   </Card>
@@ -11936,189 +13067,6 @@ The Anchor Browser SDK provides several advantages over direct API usage:
 * Check out [Advanced Proxy Configuration](/advanced/proxy) for location-specific browsing
 
 
-# Trust & Security
-Source: https://docs.anchorbrowser.io/security
-
-
-
-Anchor was engineered from the ground up to be the definitive secure browser solution, empowering developers to deploy to production with confidence. We provide the essential security backbone and advanced capabilities required to build the next generation of browser-based workloads.
-
-This document outlines the security framework of Anchor Browser, covering:
-
-* The reasons why leading enterprises build their solutions on Anchor Browser.
-* An overview of our comprehensive Security Architecture.
-
-For a detailed report on our compliance and security posture, please visit the [Anchor Trust Portal](https://trust.anchorbrowser.io/)
-
-## Why Enterprise solutions are built on Anchor Browser
-
-Anchor Browser is the result of deep security expertise from industry veterans, with our team hailing from leaders in cybersecurity such as SentinelOne, Noname Security (acquired by Akamai), and various specialized intelligence units. This collective experience has allowed us to embed robust security capabilities directly into the browser, giving our customers a distinct advantage in enterprise trust, security, and compliance.
-
-### 1. Advanced Features for a More Secure End Solution
-
-* **Complete Browser Isolation & Disposal**: Anchor creates a dedicated, isolated virtual machine (VM) for each browser instance. This VM is permanently terminated and erased upon session completion, ensuring that browsers are never reused and data remnants are eliminated.
-
-* **Official Headful Browser Environments**: As the sole provider of secured and sandboxed environments using the official "Headful" browser operation mode, Anchor runs browsers as they were designed to be run. This ensures maximum stability and leverages the most rigorously tested and penetration-tested browser architecture.
-
-* **Integrated Domain & Network Guardrails**: Anchor implements default network protections to shield customers from malicious websites. We also offer the ability to define granular whitelists of allowed domains, providing precise control over network access at the browser level.
-
-* **Secure Authentication & Credential Management**: With Anchor, customers are never required to store credentials on our platform. Our browsers enable authenticated workflows using secure, encrypted, session-based authentication, eliminating the risks associated with stored credential-based logins.
-
-* **Strict Tenant Isolation**: Anchor enforces rigorous logical isolation between all tenants. This architectural constraint guarantees the integrity and confidentiality of each customer's data.
-
-* **Secure Peer-to-Peer File Transfers**: Secure Peer-to-Peer File Transfers: Uniquely, Anchor facilitates secure file downloads through a peer-to-peer mechanism. File downloads initiated in the browser are transferred directly to the customer's environment, meaning no file artifacts are ever created or stored on Anchor's infrastructure.
-
-### 2. A Secure-by-Design Architecture
-
-Anchor is built on a secure-by-design methodology. This principle ensures that the default configuration is always the most secure, significantly reducing the risk of misconfiguration errors and providing a foundation of trust from the moment you start.
-
-### 3. Shared Responsibility Model
-
-Our shared responsibility model clearly defines the security obligations of both Anchor and our customers. This well defined ownership perimeter approach ensures that all aspects of security are managed effectively, from the underlying infrastructure we secure to the applications you build on top of it.
-
-### 4. Vetted and Audited Supply Chain
-
-We maintain a rigorous security review and auditing process for our entire supply chain. Every component and third-party vendor is scrutinized to ensure they meet our high security standards, protecting our platform and our customers from upstream vulnerabilities.
-
-## Product Architecture & Security Design
-
-### Critical Security Controls
-
-#### Storage of customer data
-
-A core principle of Anchor Browser is minimizing data persistence. By design, we do not store customer data from within the browser sessions. Each browser instance runs in a dedicated, ephemeral virtual machine that is completely destroyed upon session termination. This means that any data accessed, generated, or downloaded during a session is either transferred directly to the customer's own environment via our secure peer-to-peer capability or is irretrievably deleted with the virtual machine. The only customer data we store is essential account and configuration information required for providing our service, such as user roles and network guardrail settings.
-
-#### Confidentiality & Protection of Customer Data
-
-We enforce strict measures to ensure the confidentiality and integrity of all customer data and platform interactions.
-
-* Strict Tenant Isolation: Our architecture guarantees that each customer's browser instances are logically and physically isolated from one another. There is no possibility of cross-tenant data access.
-* Ephemeral Environments: Browsers are never reused between sessions or customers. Every session starts with a pristine, isolated browser instance that is terminated and wiped clean after use, eliminating the risk of data leakage.
-* Principle of Least Privilege: Access to all systems and data is governed by the principle of least privilege. Our employees are only granted the minimum level of access necessary to perform their job functions.
-
-#### Data Encryption
-
-Anchor employs robust encryption protocols to protect data at every stage.
-
-* Encryption in Transit: All data transmitted between your local machine and the Anchor Browser instance, as well as any communication with our platform services, is encrypted using industry-standard TLS 1.2 or higher. We enforce the use of strong cipher suites to protect against eavesdropping and man-in-the-middle attacks.
-* Encryption at Rest: While we minimize data storage, any essential configuration data or account information stored on our platform is encrypted at rest using AES-256, one of the strongest block ciphers available.
-
-#### Reliability, Backup, and Business Continuity
-
-Anchor is architected for high availability and resilience to ensure uninterrupted service.
-
-* Redundant Architecture: Our infrastructure is deployed across multiple availability zones within our cloud provider's environment. This design protects against single-point-of-failure scenarios and ensures high uptime.
-* Automated Backups: We perform regular, automated backups of critical platform configuration data. These backups are encrypted and stored securely, allowing for swift recovery in the unlikely event of a major disruption.
-* Disaster Recovery: We maintain a comprehensive business continuity and disaster recovery plan that is regularly tested. This plan ensures that we can restore critical operations within a defined Recovery Time Objective (RTO).
-
-#### Return of Customer Data
-
-Given our ephemeral architecture, there is no session data to return. Any files downloaded during a session are transferred directly to your premises. As for your account and configuration data, you can request a copy of this information at any time during your service agreement. Upon termination of your contract, all associated account data will be permanently deleted from our systems in accordance with our data retention policy.
-
-#### Certifications
-
-Anchor is committed to meeting and exceeding industry standards for security and compliance. We have achieved key certifications that formally validate our security controls and demonstrate our commitment to protecting customer data:
-
-* **SOC 2 Type II**: Anchor has achieved SOC 2 Type II compliance, demonstrating our commitment to security, availability, processing integrity, confidentiality, and privacy controls.
-* **ISO 27001**: We are ISO 27001 certified, meeting the international standard for information security management systems.
-* **HIPAA**: Anchor is HIPAA compliant, ensuring the protection of healthcare-related data and meeting the requirements of the Health Insurance Portability and Accountability Act.
-* **GDPR**: We maintain GDPR compliance, protecting the privacy and data rights of European Union residents.
-
-For the most up-to-date information on our certification status and detailed compliance reports, please visit the [Anchor Trust Portal](https://trust.anchorbrowser.io/).
-
-<div style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', gap: '2rem', margin: '2rem 0', flexWrap: 'wrap' }}>
-  <img src="https://cdn.prod.website-files.com/64009032676f244c7bf002fd/678a6d6fc5825e05c17510b8_678a6d497673e6547fd00d40_aicpa-soc-logo-PNG.png" alt="SOC 2 Compliance" style={{ width: '90px', height: 'auto' }} />
-
-  <img src="https://cms-assets.recognizeapp.com/wp-content/uploads/2022/05/06175813/ISO27001.png" alt="ISO 27001 Certification" style={{ width: '90px', height: 'auto' }} />
-
-  <img src="https://i0.wp.com/beltlinehealth.com/wp-content/uploads/2022/02/hipaa_blue.png?fit=500%2C265&ssl=1" alt="HIPAA Compliance" style={{ width: '90px', height: 'auto' }} />
-
-  <img src="https://www.loginradius.com/_next/static/media/gdpr-compliant.6f6aef57.webp" alt="GDPR Compliance" style={{ width: '90px', height: 'auto' }} />
-</div>
-
-#### Audits
-
-Anchor engages independent, third-party auditors to conduct regular penetration tests and security assessments of our platform. These rigorous audits help us identify and remediate potential vulnerabilities, ensuring our defenses remain robust against emerging threats. A summary of our latest audit findings can be made available to customers upon request and under a Non-Disclosure Agreement (NDA).
-
-#### Security Logs
-
-We maintain detailed security logs to monitor for and investigate any suspicious activity.
-
-* Audit Trails: We capture comprehensive audit logs of all administrative actions taken within the Anchor platform, such as changes to user permissions or security settings. Access to these logs is restricted to authorized personnel.
-* Immutable Logging: Logs are stored in a secure, tamper-evident manner to ensure their integrity for forensic analysis and compliance purposes.
-
-#### Personnel Practices
-
-Our commitment to security extends to our internal team and practices.
-
-* Security Training: We conduct mandatory security awareness training for all employees upon hiring and on an ongoing basis. This training covers data privacy, threat detection, and secure coding practices.
-* Access Control: Access to our production environment is strictly controlled and limited to a small number of authorized engineers. We enforce multi-factor authentication (MFA) for all internal systems to add a critical layer of security.
-
-
-# Zero Data Retention (ZDR) Mode
-Source: https://docs.anchorbrowser.io/security/zdr-mode
-
-Enhanced security mode that disables all video and log recordings to prevent sensitive data retention
-
-Zero Data Retention (ZDR) Mode is an enhanced security feature that completely disables video recordings and log recordings for your Anchor account. This mode is designed for organizations handling highly sensitive data that require absolute assurance that no session artifacts are retained on the Anchor platform.
-
-## What is ZDR Mode?
-
-When ZDR Mode is enabled, Anchor disables all recording capabilities for your account, including:
-
-* **Video recordings**: No screen recordings or visual captures of browser sessions
-* **Log recordings**: No session logs or activity records
-
-This ensures that no sensitive data from your browser sessions is retained on the Anchor platform, providing an additional layer of data protection beyond our standard ephemeral architecture.
-
-## When to use ZDR Mode
-
-ZDR Mode is recommended for organizations that:
-
-* Handle highly regulated or classified information
-* Require strict data residency and retention policies
-* Work with sensitive customer data that must not be recorded
-* Need to comply with specific industry regulations prohibiting data retention
-* Operate in environments where even temporary recording poses compliance risks
-
-## How ZDR Mode works
-
-Once enabled, ZDR Mode:
-
-1. Disables all video recording functionality for browser sessions
-2. Prevents session logs from being captured or stored
-3. Maintains all other Anchor security features, including ephemeral VMs and tenant isolation
-4. Applies to all browser sessions created under your account
-
-Note that ZDR Mode does not affect the core functionality of Anchor Browser. All browser automation, authentication, and networking capabilities remain fully operational.
-
-## Enabling ZDR Mode
-
-ZDR Mode is enabled manually by the Anchor team. To request ZDR Mode for your account:
-
-1. Contact your Anchor account representative or reach out to [support@anchorbrowser.io](mailto:support@anchorbrowser.io)
-2. Provide your account details and business justification for requiring ZDR Mode
-3. The Anchor team will review your request and enable ZDR Mode for your account
-4. You will receive confirmation once ZDR Mode has been activated
-
-## Important considerations
-
-* **Debugging limitations**: With ZDR Mode enabled, you will not have access to video recordings or logs for troubleshooting session issues. Ensure your application has adequate logging and monitoring in place.
-* **Permanent setting**: Once enabled, ZDR Mode typically remains active for the duration of your service agreement. Contact the Anchor team if you need to modify this setting.
-* **No self-service**: ZDR Mode cannot be toggled on or off by customers. All changes must be requested through the Anchor team.
-
-## Compliance and security
-
-ZDR Mode complements Anchor's existing security architecture, which includes:
-
-* Ephemeral virtual machines that are destroyed after each session
-* Strict tenant isolation
-* Encryption in transit and at rest
-* SOC 2 Type II, ISO 27001, HIPAA, and GDPR compliance
-
-For more information about Anchor's security framework, see our [Trust & Security](/security) documentation or visit the [Anchor Trust Portal](https://trust.anchorbrowser.io/).
-
-
 # List Agent Resources
 Source: https://docs.anchorbrowser.io/api-reference/agentic-capabilities/list-agent-resources
 
@@ -12157,11 +13105,130 @@ Resources are then accessible to AI agents for task completion and automation.
 
 
 
+# Get Perform Web Task Status
+Source: https://docs.anchorbrowser.io/api-reference/ai-tools/get-perform-web-task-status
+
+openapi-mintlify.yaml get /v1/tools/perform-web-task/{workflowId}/status
+Get the status of an asynchronous perform-web-task execution by workflow ID.
+
+
+
 # Perform Web Task
 Source: https://docs.anchorbrowser.io/api-reference/ai-tools/perform-web-task
 
 openapi-mintlify.yaml post /v1/tools/perform-web-task
 Start from a URL and perform the given task.
+
+
+
+# Create Application
+Source: https://docs.anchorbrowser.io/api-reference/applications-early-availability/create-application
+
+openapi-mintlify.yaml post /v1/applications
+Creates a new application for identity management.
+
+**Beta** Capability. [Contact support](mailto:support@anchorbrowser.io) to enable.
+
+
+
+
+# Create Authentication Flow
+Source: https://docs.anchorbrowser.io/api-reference/applications-early-availability/create-authentication-flow
+
+openapi-mintlify.yaml post /v1/applications/{applicationId}/auth-flows
+Creates a new authentication flow for an application.
+
+**Beta** Capability. [Contact support](mailto:support@anchorbrowser.io) to enable.
+
+
+
+
+# Create Identity Token
+Source: https://docs.anchorbrowser.io/api-reference/applications-early-availability/create-identity-token
+
+openapi-mintlify.yaml post /v1/applications/{applicationId}/tokens
+Creates an identity token for a specific application. This token is used to initiate
+an authentication flow for linking user identities to the application.
+
+The callback URL must use HTTPS and is where the user will be redirected after authentication.
+
+
+
+
+# Delete Application
+Source: https://docs.anchorbrowser.io/api-reference/applications-early-availability/delete-application
+
+openapi-mintlify.yaml delete /v1/applications/{applicationId}
+Deletes an existing application.
+
+**Beta** Capability. [Contact support](mailto:support@anchorbrowser.io) to enable.
+
+
+
+
+# Delete Authentication Flow
+Source: https://docs.anchorbrowser.io/api-reference/applications-early-availability/delete-authentication-flow
+
+openapi-mintlify.yaml delete /v1/applications/{applicationId}/auth-flows/{authFlowId}
+Deletes an existing authentication flow.
+
+**Beta** Capability. [Contact support](mailto:support@anchorbrowser.io) to enable.
+
+
+
+
+# Get Application
+Source: https://docs.anchorbrowser.io/api-reference/applications-early-availability/get-application
+
+openapi-mintlify.yaml get /v1/applications/{applicationId}
+Retrieves details of a specific application by its ID.
+
+**Beta** Capability. [Contact support](mailto:support@anchorbrowser.io) to enable.
+
+
+
+
+# List Application Authentication Flows
+Source: https://docs.anchorbrowser.io/api-reference/applications-early-availability/list-application-authentication-flows
+
+openapi-mintlify.yaml get /v1/applications/{applicationId}/auth-flows
+Retrieves all authentication flows for a specific application.
+
+**Beta** Capability. [Contact support](mailto:support@anchorbrowser.io) to enable.
+
+
+
+
+# List Application Identities
+Source: https://docs.anchorbrowser.io/api-reference/applications-early-availability/list-application-identities
+
+openapi-mintlify.yaml get /v1/applications/{applicationId}/identities
+Retrieves all identities associated with a specific application.
+
+**Beta** Capability. [Contact support](mailto:support@anchorbrowser.io) to enable.
+
+
+
+
+# List Applications
+Source: https://docs.anchorbrowser.io/api-reference/applications-early-availability/list-applications
+
+openapi-mintlify.yaml get /v1/applications
+Retrieves all applications for the authenticated team.
+
+**Beta** Capability. [Contact support](mailto:support@anchorbrowser.io) to enable.
+
+
+
+
+# Update Authentication Flow
+Source: https://docs.anchorbrowser.io/api-reference/applications-early-availability/update-authentication-flow
+
+openapi-mintlify.yaml patch /v1/applications/{applicationId}/auth-flows/{authFlowId}
+Updates an existing authentication flow.
+
+**Beta** Capability. [Contact support](mailto:support@anchorbrowser.io) to enable.
+
 
 
 
@@ -12184,6 +13251,14 @@ openapi-mintlify.yaml get /v1/batch-sessions/{batch_id}
 Retrieves detailed status information for a specific batch, including progress,
 individual session details, and any errors that occurred.
 
+
+
+
+# End All Sessions
+Source: https://docs.anchorbrowser.io/api-reference/browser-sessions/end-all-sessions
+
+openapi-mintlify.yaml delete /v1/sessions/all
+Terminates all active browser sessions associated with the provided API key.
 
 
 
@@ -12211,11 +13286,27 @@ Retrieves a list of pages associated with a specific browser session.
 
 
 
+# List All Sessions Status
+Source: https://docs.anchorbrowser.io/api-reference/browser-sessions/list-all-sessions-status
+
+openapi-mintlify.yaml get /v1/sessions/all/status
+Retrieves status information for all browser sessions associated with the API key.
+
+
+
 # List Session Downloads
 Source: https://docs.anchorbrowser.io/api-reference/browser-sessions/list-session-downloads
 
 openapi-mintlify.yaml get /v1/sessions/{session_id}/downloads
 Retrieves metadata of files downloaded during a browser session. Requires a valid API key for authentication.
+
+
+
+# Start Browser Session
+Source: https://docs.anchorbrowser.io/api-reference/browser-sessions/start-browser-session
+
+openapi-mintlify.yaml post /v1/sessions
+Allocates a new browser session for the user, with optional configurations for ad-blocking, captcha solving, proxy usage, and idle timeout.
 
 
 
@@ -12280,6 +13371,61 @@ Source: https://docs.anchorbrowser.io/api-reference/extensions/upload-extension
 
 openapi-mintlify.yaml post /v1/extensions
 Upload a new browser extension as a ZIP file. The extension will be validated and stored for use in browser sessions.
+
+
+
+# Create Identity
+Source: https://docs.anchorbrowser.io/api-reference/identities-early-availability/create-identity
+
+openapi-mintlify.yaml post /v1/identities
+Creates a new identity with credentials for authentication.
+
+**Beta** Capability. [Contact support](mailto:support@anchorbrowser.io) to enable.
+
+
+
+
+# Delete Identity
+Source: https://docs.anchorbrowser.io/api-reference/identities-early-availability/delete-identity
+
+openapi-mintlify.yaml delete /v1/identities/{identityId}
+Deletes an existing identity.
+
+**Beta** Capability. [Contact support](mailto:support@anchorbrowser.io) to enable.
+
+
+
+
+# Get Identity
+Source: https://docs.anchorbrowser.io/api-reference/identities-early-availability/get-identity
+
+openapi-mintlify.yaml get /v1/identities/{identityId}
+Retrieves details of a specific identity by its ID.
+
+**Beta** Capability. [Contact support](mailto:support@anchorbrowser.io) to enable.
+
+
+
+
+# Get Identity Credentials
+Source: https://docs.anchorbrowser.io/api-reference/identities-early-availability/get-identity-credentials
+
+openapi-mintlify.yaml get /v1/identities/{identityId}/credentials
+Retrieves the credentials for a specific identity. This endpoint returns sensitive credential data.
+
+**Beta** Capability. [Contact support](mailto:support@anchorbrowser.io) to enable.
+
+
+
+
+# Update Identity
+Source: https://docs.anchorbrowser.io/api-reference/identities-early-availability/update-identity
+
+openapi-mintlify.yaml put /v1/identities/{identityId}
+Updates an existing identity's name, metadata, or credentials.
+
+**Beta** Capability. [Contact support](mailto:support@anchorbrowser.io) to enable.
+
 
 
 
@@ -12672,5 +13818,757 @@ Source: https://docs.anchorbrowser.io/api-reference/tools/screenshot-webpage
 openapi-mintlify.yaml post /v1/tools/screenshot
 This endpoint captures a screenshot of the specified webpage using Chromium. Users can customize the viewport dimensions and capture options.
 
+
+
+# USCIS Form I-9
+Source: https://docs.anchorbrowser.io/integrations/open-source/playwright/government/USA/federal/ucis-i9
+
+Automate employment eligibility verification workflows with Playwright when APIs aren't available.
+
+# How to Automate USCIS Form I-9 with Playwright
+
+Automate USCIS employment eligibility verification workflows with Playwright when APIs aren't available or sufficient. You'll eliminate manual onboarding documentation and reduce compliance errors by automating repetitive employee verification processes. Use Playwright to interact with E-Verify and USCIS systems programmatically.
+
+[View USCIS developer resources](https://www.uscis.gov/tools) for available APIs when applicable.
+
+## Setup
+
+Install Playwright and configure authentication:
+
+```bash theme={null}
+npm install playwright
+```
+
+## Automate Workflows
+
+Create scripts for common [USCIS Form I-9](https://www.uscis.gov/sites/default/files/document/forms/i-9.pdf) tasks:
+
+```JavaScript theme={null}
+import { chromium } from 'playwright';
+
+const browser = await chromium.launch();
+const page = await browser.newPage();
+
+// Navigate to E-Verify system
+await page.goto('https://www.e-verify.gov/');
+await page.fill('[data-testid="username"]', process.env.EVERIFY_USERNAME);
+await page.fill('[data-testid="password"]', process.env.EVERIFY_PASSWORD);
+await page.click('[data-testid="login-button"]');
+
+// Start new I-9 form
+await page.click('[data-testid="new-case"]');
+await page.click('[data-testid="form-i9"]');
+await page.selectOption('[name="form_version"]', '11_21_2023');
+
+// Employer information
+await page.fill('[name="employer_name"]', 'TechVentures Solutions Inc');
+await page.fill('[name="employer_ein"]', '12-3456789');
+await page.fill('[name="employer_address"]', '2800 Corporate Drive, Suite 500');
+await page.fill('[name="employer_city"]', 'San Jose');
+await page.selectOption('[name="employer_state"]', 'CA');
+await page.fill('[name="employer_zip"]', '95134');
+
+// Section 1: Employee Information and Attestation
+// Employee personal information
+await page.fill('[name="last_name"]', 'Rodriguez');
+await page.fill('[name="first_name"]', 'Maria');
+await page.fill('[name="middle_initial"]', 'C');
+await page.fill('[name="other_last_names"]', 'Garcia');
+
+// Address
+await page.fill('[name="address"]', '456 Apartment Street, Unit 12B');
+await page.fill('[name="city"]', 'San Jose');
+await page.selectOption('[name="state"]', 'CA');
+await page.fill('[name="zip"]', '95110');
+
+// Date of birth and contact
+await page.fill('[name="date_of_birth"]', '07/15/1992');
+await page.fill('[name="ssn"]', '123-45-6789');
+await page.fill('[name="email"]', 'maria.rodriguez@email.com');
+await page.fill('[name="phone"]', '408-555-0189');
+
+// Citizenship/immigration status
+await page.selectOption('[name="citizenship_status"]', 'us_citizen');
+
+// Employee attestation
+await page.check('[name="employee_aware_penalties"]');
+await page.fill('[name="employee_signature"]', 'Maria C Rodriguez');
+await page.fill('[name="employee_signature_date"]', '03/01/2025');
+
+// Preparer/translator (if applicable)
+await page.selectOption('[name="preparer_used"]', 'no');
+
+// Section 2: Employer Review and Verification
+// Document verification - List A (identity and employment authorization)
+await page.selectOption('[name="document_list"]', 'list_a');
+await page.selectOption('[name="list_a_document"]', 'us_passport');
+await page.fill('[name="document_title"]', 'U.S. Passport');
+await page.fill('[name="issuing_authority"]', 'U.S. Department of State');
+await page.fill('[name="document_number"]', '123456789');
+await page.fill('[name="expiration_date"]', '06/15/2030');
+
+// Alternative: List B and List C documents
+// Uncomment if using List B + List C instead of List A
+/*
+await page.selectOption('[name="document_list"]', 'list_b_and_c');
+
+// List B - Identity document
+await page.selectOption('[name="list_b_document"]', 'drivers_license');
+await page.fill('[name="list_b_document_title"]', 'Driver\'s License');
+await page.fill('[name="list_b_issuing_authority"]', 'California DMV');
+await page.fill('[name="list_b_document_number"]', 'D1234567');
+await page.fill('[name="list_b_expiration"]', '07/15/2029');
+
+// List C - Employment authorization document
+await page.selectOption('[name="list_c_document"]', 'social_security_card');
+await page.fill('[name="list_c_document_title"]', 'Social Security Card');
+await page.fill('[name="list_c_issuing_authority"]', 'Social Security Administration');
+await page.fill('[name="list_c_document_number"]', '123-45-6789');
+*/
+
+// Physical examination of documents
+await page.check('[name="documents_appear_genuine"]');
+await page.check('[name="documents_relate_to_employee"]');
+await page.fill('[name="first_day_of_employment"]', '03/15/2025');
+
+// Additional information
+await page.fill('[name="employer_business_name"]', 'TechVentures Solutions Inc');
+await page.fill('[name="employer_representative_name"]', 'Jennifer HR Manager');
+await page.fill('[name="employer_representative_title"]', 'Human Resources Manager');
+
+// Employer certification
+await page.check('[name="certify_examination_completed"]');
+await page.fill('[name="employer_signature"]', 'Jennifer HR Manager');
+await page.fill('[name="employer_signature_date"]', '03/01/2025');
+
+// Section 3: Reverification and Rehires (if applicable)
+await page.selectOption('[name="section_3_required"]', 'no');
+
+// E-Verify case creation (if enrolled)
+await page.check('[name="create_everify_case"]');
+await page.fill('[name="hire_date"]', '03/15/2025');
+await page.selectOption('[name="employee_type"]', 'regular_full_time');
+
+// Supporting documentation upload
+await page.click('[data-testid="upload-document-front"]');
+await page.setInputFiles('[name="document_image_front"]', './documents/passport_photo_page.pdf');
+await page.click('[data-testid="upload-document-back"]');
+await page.setInputFiles('[name="document_image_back"]', './documents/passport_signature_page.pdf');
+
+// Record retention information
+await page.fill('[name="retention_start_date"]', '03/01/2025');
+await page.selectOption('[name="storage_location"]', 'secure_digital_system');
+await page.fill('[name="retention_period_years"]', '3');
+
+// Remote verification (if applicable)
+await page.selectOption('[name="remote_verification"]', 'no');
+
+// Quality assurance review
+await page.check('[name="qa_documents_legible"]');
+await page.check('[name="qa_dates_consistent"]');
+await page.check('[name="qa_sections_complete"]');
+await page.check('[name="qa_signatures_present"]');
+
+// Compliance notes
+await page.fill('[name="internal_notes"]', 'Employee provided original U.S. passport. Documents examined in person on 3/1/25. All information verified and accurate. E-Verify case will be created upon hire date.');
+
+// Authorized representative information
+await page.fill('[name="hr_contact_name"]', 'Jennifer HR Manager');
+await page.fill('[name="hr_contact_email"]', 'hr@techventures.com');
+await page.fill('[name="hr_contact_phone"]', '408-555-0100');
+
+// Company location for this employee
+await page.fill('[name="work_location_address"]', '2800 Corporate Drive, Suite 500');
+await page.fill('[name="work_location_city"]', 'San Jose');
+await page.selectOption('[name="work_location_state"]', 'CA');
+await page.fill('[name="work_location_zip"]', '95134');
+
+// Supervisor information
+await page.fill('[name="supervisor_name"]', 'David Engineering Manager');
+await page.fill('[name="supervisor_email"]', 'dmanager@techventures.com');
+await page.fill('[name="department"]', 'Software Engineering');
+
+// Job title and details
+await page.fill('[name="job_title"]', 'Software Engineer II');
+await page.fill('[name="employee_id"]', 'EMP-2025-0789');
+await page.selectOption('[name="employment_type"]', 'permanent_full_time');
+await page.fill('[name="annual_salary"]', '125000');
+
+// Final certification
+await page.check('[name="certify_compliance"]');
+await page.check('[name="acknowledge_penalties"]');
+await page.check('[name="agree_to_retention_requirements"]');
+
+await page.click('[data-testid="submit-i9"]');
+
+// Download completed form
+await page.click('[data-testid="download-i9-pdf"]');
+
+await browser.close();
+```
+
+Playwright handles document validation, data verification, and USCIS submission processes automatically. You can automate new hire onboarding, reverification workflows, and compliance audits.
+
+## Scale your USCIS Form I-9 automation with Anchor Browser
+
+Run your Playwright USCIS automations on cloud browsers with enterprise-grade reliability and persistent employment verification sessions. Learn more and get started for free: [https://anchorbrowser.io](https://anchorbrowser.io)
+
+
+# VA Form 21-526EZ
+Source: https://docs.anchorbrowser.io/integrations/open-source/playwright/government/USA/federal/va-21-526ez
+
+Automate VA disability compensation application workflows with Playwright when APIs aren't available.
+
+# How to Automate VA Form 21-526EZ with Playwright
+
+Automate VA disability compensation and related benefits application workflows with Playwright when APIs aren't available or sufficient. You'll eliminate manual claims processing and reduce approval delays by automating repetitive VA disability documentation processes. Use Playwright to interact with VA.gov systems programmatically.
+
+[View VA developer resources](https://developer.va.gov/) for available APIs when applicable.
+
+## Setup
+
+Install Playwright and configure authentication:
+
+```bash theme={null}
+npm install playwright
+```
+
+## Automate Workflows
+
+Create scripts for common [VA Form 21-526EZ](https://www.vba.va.gov/pubs/forms/VBA-21-526EZ-ARE.pdf) tasks:
+
+```JavaScript theme={null}
+import { chromium } from 'playwright';
+
+const browser = await chromium.launch();
+const page = await browser.newPage();
+
+// Navigate to VA.gov
+await page.goto('https://www.va.gov/find-forms/'');
+
+// Start new disability claim
+await page.click('[data-testid="start-new-claim"]');
+await page.selectOption('[name="claim_type"]', 'original_claim');
+
+// Veteran information
+await page.fill('[name="last_name"]', 'Martinez');
+await page.fill('[name="first_name"]', 'James');
+await page.fill('[name="middle_name"]', 'Michael');
+await page.fill('[name="suffix"]', '');
+await page.fill('[name="ssn"]', '123-45-6789');
+await page.fill('[name="va_file_number"]', 'C-12345678');
+
+// Contact information
+await page.fill('[name="date_of_birth"]', '08/15/1985');
+await page.selectOption('[name="gender"]', 'male');
+
+// Mailing address
+await page.fill('[name="address_line_1"]', '789 Veterans Boulevard');
+await page.fill('[name="address_line_2"]', 'Apt 4D');
+await page.fill('[name="city"]', 'Jacksonville');
+await page.selectOption('[name="state"]', 'FL');
+await page.fill('[name="zip"]', '32202');
+await page.selectOption('[name="country"]', 'USA');
+
+// Phone numbers
+await page.fill('[name="phone_home"]', '904-555-0123');
+await page.fill('[name="phone_mobile"]', '904-555-0124');
+await page.fill('[name="email"]', 'jmartinez@email.com');
+
+// Contact preferences
+await page.check('[name="contact_by_email"]');
+await page.check('[name="contact_by_phone"]');
+
+// Service information
+await page.selectOption('[name="branch_of_service"]', 'army');
+await page.fill('[name="service_number"]', 'US-123456789');
+
+// Service period 1
+await page.fill('[name="service_start_date_1"]', '06/15/2003');
+await page.fill('[name="service_end_date_1"]', '08/20/2011');
+await page.selectOption('[name="separation_type_1"]', 'honorable');
+
+// Service period 2 (if applicable)
+await page.click('[data-testid="add-service-period"]');
+await page.fill('[name="service_start_date_2"]', '09/01/2011');
+await page.fill('[name="service_end_date_2"]', '05/30/2015');
+await page.selectOption('[name="separation_type_2"]', 'honorable');
+
+// Reserve/National Guard service
+await page.check('[name="reserve_service"]');
+await page.fill('[name="reserve_component"]', 'Army National Guard');
+await page.fill('[name="unit_name"]', '53rd Infantry Brigade Combat Team');
+await page.fill('[name="unit_phone"]', '904-555-0200');
+
+// Combat service
+await page.check('[name="served_in_combat"]');
+await page.fill('[name="combat_locations"]', 'Iraq (2007-2008), Afghanistan (2010-2011)');
+
+// Prisoner of war
+await page.selectOption('[name="pow_status"]', 'no');
+
+// Medals and awards
+await page.fill('[name="awards"]', 'Bronze Star, Purple Heart, Combat Infantryman Badge, Army Commendation Medal');
+
+// Disabilities being claimed
+// Condition 1: PTSD
+await page.click('[data-testid="add-disability"]');
+await page.fill('[name="condition_name_1"]', 'Post-Traumatic Stress Disorder (PTSD)');
+await page.selectOption('[name="condition_cause_1"]', 'combat');
+await page.fill('[name="condition_start_date_1"]', '09/2008');
+await page.fill('[name="condition_description_1"]', 'Recurring nightmares, flashbacks to combat situations, anxiety, hypervigilance, difficulty sleeping. Symptoms began during deployment to Iraq and have persisted.');
+
+// Condition 2: Tinnitus
+await page.click('[data-testid="add-disability"]');
+await page.fill('[name="condition_name_2"]', 'Tinnitus');
+await page.selectOption('[name="condition_cause_2"]', 'noise_exposure');
+await page.fill('[name="condition_start_date_2"]', '06/2007');
+await page.fill('[name="condition_description_2"]', 'Constant ringing in both ears. Began after prolonged exposure to weapons fire and explosions during combat operations.');
+
+// Condition 3: Lower back injury
+await page.click('[data-testid="add-disability"]');
+await page.fill('[name="condition_name_3"]', 'Chronic Lower Back Pain');
+await page.selectOption('[name="condition_cause_3"]', 'injury');
+await page.fill('[name="condition_start_date_3"]', '03/2010');
+await page.fill('[name="condition_description_3"]', 'Lumbar spine injury from IED blast. Chronic pain, limited range of motion, difficulty standing for extended periods.');
+
+// Condition 4: Knee injury
+await page.click('[data-testid="add-disability"]');
+await page.fill('[name="condition_name_4"]', 'Right Knee Injury');
+await page.selectOption('[name="condition_cause_4"]', 'injury');
+await page.fill('[name="condition_start_date_4"]', '03/2010');
+await page.fill('[name="condition_description_4"]', 'Right knee damaged in same IED incident. Torn meniscus, chronic pain, instability, arthritis.');
+
+// Treatment history
+await page.check('[name="receiving_va_care"]');
+await page.fill('[name="va_facility_1"]', 'Malcom Randall VA Medical Center');
+await page.fill('[name="va_facility_city_1"]', 'Gainesville');
+await page.selectOption('[name="va_facility_state_1"]', 'FL');
+await page.fill('[name="va_treatment_dates_1"]', '2015 - Present');
+
+// Private medical treatment
+await page.check('[name="private_treatment"]');
+await page.fill('[name="private_provider_1"]', 'Dr. Sarah Orthopedic Surgeon');
+await page.fill('[name="private_facility_1"]', 'Jacksonville Orthopedic Center');
+await page.fill('[name="private_address_1"]', '456 Medical Plaza');
+await page.fill('[name="private_city_1"]', 'Jacksonville');
+await page.selectOption('[name="private_state_1"]', 'FL');
+await page.fill('[name="private_zip_1"]', '32207');
+await page.fill('[name="private_treatment_dates_1"]', '2012-2015');
+
+// Mental health treatment
+await page.fill('[name="mental_health_provider"]', 'Dr. Michael Psychiatrist');
+await page.fill('[name="mental_health_facility"]', 'Veterans Mental Health Clinic');
+await page.fill('[name="mental_health_dates"]', '2015 - Present');
+
+// Hospitalizations
+await page.check('[name="hospitalizations"]');
+await page.fill('[name="hospital_name_1"]', 'Walter Reed Army Medical Center');
+await page.fill('[name="hospital_admission_date_1"]', '04/01/2010');
+await page.fill('[name="hospital_discharge_date_1"]', '04/15/2010');
+await page.fill('[name="hospital_reason_1"]', 'Treatment for injuries sustained in IED explosion');
+
+// Supporting documents
+await page.click('[data-testid="upload-dd214"]');
+await page.setInputFiles('[name="discharge_papers"]', './documents/dd214.pdf');
+await page.click('[data-testid="upload-service-medical"]');
+await page.setInputFiles('[name="service_medical_records"]', './documents/service_treatment_records.pdf');
+await page.click('[data-testid="upload-private-medical"]');
+await page.setInputFiles('[name="private_medical_records"]', './documents/private_treatment_records.pdf');
+await page.click('[data-testid="upload-buddy-statements"]');
+await page.setInputFiles('[name="buddy_statements"]', './documents/witness_statements.pdf');
+
+// Special circumstances
+await page.check('[name="combat_related"]');
+await page.check('[name="caused_by_service"]');
+
+// Homelessness
+await page.selectOption('[name="homeless_status"]', 'at_risk');
+await page.fill('[name="homeless_contact"]', 'Florida Veterans Affairs Office');
+await page.fill('[name="homeless_phone"]', '904-555-0300');
+
+// Terminal illness
+await page.selectOption('[name="terminal_illness"]', 'no');
+
+// Fully developed claim
+await page.check('[name="fdc_election"]');
+await page.check('[name="understand_fdc"]');
+
+// Direct deposit information
+await page.check('[name="direct_deposit"]');
+await page.selectOption('[name="account_type"]', 'checking');
+await page.fill('[name="routing_number"]', '063100277');
+await page.fill('[name="account_number"]', '123456789012');
+await page.fill('[name="bank_name"]', 'Navy Federal Credit Union');
+
+// Payment address (if different)
+await page.selectOption('[name="payment_address_same"]', 'yes');
+
+// Dependents
+await page.check('[name="has_dependents"]');
+
+// Spouse information
+await page.fill('[name="spouse_first_name"]', 'Jennifer');
+await page.fill('[name="spouse_middle_name"]', 'Ann');
+await page.fill('[name="spouse_last_name"]', 'Martinez');
+await page.fill('[name="spouse_ssn"]', '987-65-4321');
+await page.fill('[name="spouse_dob"]', '11/20/1987');
+await page.fill('[name="marriage_date"]', '06/15/2012');
+await page.selectOption('[name="marriage_type"]', 'ceremonial');
+
+// Children
+await page.click('[data-testid="add-child"]');
+await page.fill('[name="child_first_name_1"]', 'Emily');
+await page.fill('[name="child_middle_name_1"]', 'Rose');
+await page.fill('[name="child_last_name_1"]', 'Martinez');
+await page.fill('[name="child_ssn_1"]', '234-56-7890');
+await page.fill('[name="child_dob_1"]', '08/10/2013');
+await page.selectOption('[name="child_relationship_1"]', 'biological');
+await page.check('[name="child_unmarried_1"]');
+await page.check('[name="child_under_18_1"]');
+
+// Employment information
+await page.selectOption('[name="employment_status"]', 'unemployed');
+await page.fill('[name="last_employment_date"]', '03/2015');
+await page.fill('[name="unable_to_work_date"]', '03/2015');
+await page.fill('[name="unemployment_reason"]', 'Service-connected disabilities prevent full-time employment');
+
+// Education and training
+await page.check('[name="using_gi_bill"]');
+await page.fill('[name="school_name"]', 'Florida State College at Jacksonville');
+await page.fill('[name="education_start_date"]', '08/2016');
+
+// Other benefits
+await page.check('[name="receiving_ssdi"]');
+await page.fill('[name="ssdi_start_date"]', '01/2016');
+await page.fill('[name="ssdi_monthly_amount"]', '1500');
+
+// Military retirement
+await page.selectOption('[name="receiving_military_retirement"]', 'no');
+
+// VA pension
+await page.selectOption('[name="receiving_va_pension"]', 'no');
+
+// Intent to file date
+await page.fill('[name="intent_to_file_date"]', '01/15/2025');
+
+// Certification and signatures
+await page.check('[name="certify_accuracy"]');
+await page.check('[name="certify_authorization"]');
+await page.check('[name="understand_penalties"]');
+await page.check('[name="authorize_disclosure"]');
+await page.check('[name="agree_to_exam"]');
+
+// Privacy act notice acknowledgment
+await page.check('[name="privacy_act_acknowledged"]');
+
+// Veteran signature
+await page.fill('[name="veteran_signature"]', 'James Michael Martinez');
+await page.fill('[name="signature_date"]', '03/10/2025');
+
+// Representative information (if applicable)
+await page.selectOption('[name="has_representative"]', 'yes');
+await page.fill('[name="representative_name"]', 'Veterans Service Organization - DAV');
+await page.fill('[name="representative_phone"]', '904-555-0400');
+await page.fill('[name="representative_email"]', 'davjacksonville@dav.org');
+
+await page.click('[data-testid="submit-claim"]');
+
+// Download confirmation
+await page.click('[data-testid="download-confirmation"]');
+
+await browser.close();
+```
+
+Playwright handles medical documentation, service verification, and VA submission processes automatically. You can automate disability claims, dependency declarations, and benefit application workflows.
+
+## Scale your VA Form 21-526EZ automation with Anchor Browser
+
+Run your Playwright VA automations on cloud browsers with enterprise-grade reliability and persistent veterans benefits sessions. Learn more and get started for free: [https://anchorbrowser.io](https://anchorbrowser.io)
+
+
+# Pricing
+Source: https://docs.anchorbrowser.io/pricing
+
+Simple, transparent pricing for Anchor Browser automation platform
+
+# Simple, Transparent Pricing
+
+Pay only for what you use. No hidden fees, no surprises.
+
+## Pricing Structure
+
+<CardGroup>
+  <Card title="Browser Creation" icon="browser">
+    **\$0.01 per browser**
+
+    Every new browser instance created incurs the minimal fee, ensuring cost-effective scaling of your automation workflows.
+  </Card>
+
+  <Card title="Browser Usage" icon="clock">
+    **\$0.05 per browser hour**
+
+    Charges are based on the total active time of the browser session, calculated to the nearest full minute.
+  </Card>
+
+  <Card title="Anchor Proxy" icon="shield">
+    **\$8 per GB**
+
+    High-speed, secure connections with residential or mobile IP addresses for seamless automation across the web.
+  </Card>
+
+  <Card title="AI Steps" icon="brain">
+    **\$0.01 per step**
+
+    Each AI task can consist of multiple steps, depending on its length and complexity.
+  </Card>
+</CardGroup>
+
+# Plans
+
+Select the plan that matches your automation needs and scale.
+
+<CardGroup>
+  <Card>
+    # Free
+
+    **\$5 free credits per month**
+
+    Perfect for early exploration and learning the basics.
+
+    * Up to 5 concurrent browsers
+    * Up to 500 browser sessions
+    * Web proxy available
+    * Automated Captcha bypass
+  </Card>
+
+  <Card>
+    # Starter
+
+    **From \$20.00/month**
+
+    Cloudflare Verified Browser Agents with automated captcha bypass.
+
+    * Up to 25 concurrent browsers
+    * Run on any geolocation
+    * Authenticated (Logged in) Browsers
+    * Built in and custom proxy support
+  </Card>
+
+  <Card>
+    # Growth
+
+    **From \$1,500/month**
+
+    Enterprise-grade solution with full compliance and security.
+
+    * Up to 100 concurrent browsers
+    * SOC2 Type 2, ISO27001, HIPAA, GDPR
+    * Anchor Chromium - Full stealth solution
+    * BAA, DPA, SLA Guarantee
+  </Card>
+</CardGroup>
+
+## Example Calculation
+
+<Card title="Cost Breakdown Example">
+  **Scenario**: 10 browsers running for 5 hours, using 2GB of residential proxy data
+
+  | Service          | Calculation                    | Cost        |
+  | ---------------- | ------------------------------ | ----------- |
+  | Browser Creation | 10 browsers × \$0.01           | \$0.10      |
+  | Browser Hours    | 10 browsers × 5 hours × \$0.05 | \$2.50      |
+  | Proxy Data       | 2GB × \$8                      | \$16.00     |
+  | **Total**        |                                | **\$18.60** |
+</Card>
+
+
+# Trust & Security
+Source: https://docs.anchorbrowser.io/security
+
+
+
+Anchor was engineered from the ground up to be the definitive secure browser solution, empowering developers to deploy to production with confidence. We provide the essential security backbone and advanced capabilities required to build the next generation of browser-based workloads.
+
+This document outlines the security framework of Anchor Browser, covering:
+
+* The reasons why leading enterprises build their solutions on Anchor Browser.
+* An overview of our comprehensive Security Architecture.
+
+For a detailed report on our compliance and security posture, please visit the [Anchor Trust Portal](https://trust.anchorbrowser.io/)
+
+## Why Enterprise solutions are built on Anchor Browser
+
+Anchor Browser is the result of deep security expertise from industry veterans, with our team hailing from leaders in cybersecurity such as SentinelOne, Noname Security (acquired by Akamai), and various specialized intelligence units. This collective experience has allowed us to embed robust security capabilities directly into the browser, giving our customers a distinct advantage in enterprise trust, security, and compliance.
+
+### 1. Advanced Features for a More Secure End Solution
+
+* **Complete Browser Isolation & Disposal**: Anchor creates a dedicated, isolated virtual machine (VM) for each browser instance. This VM is permanently terminated and erased upon session completion, ensuring that browsers are never reused and data remnants are eliminated.
+
+* **Official Headful Browser Environments**: As the sole provider of secured and sandboxed environments using the official "Headful" browser operation mode, Anchor runs browsers as they were designed to be run. This ensures maximum stability and leverages the most rigorously tested and penetration-tested browser architecture.
+
+* **Integrated Domain & Network Guardrails**: Anchor implements default network protections to shield customers from malicious websites. We also offer the ability to define granular whitelists of allowed domains, providing precise control over network access at the browser level.
+
+* **Secure Authentication & Credential Management**: With Anchor, customers are never required to store credentials on our platform. Our browsers enable authenticated workflows using secure, encrypted, session-based authentication, eliminating the risks associated with stored credential-based logins.
+
+* **Strict Tenant Isolation**: Anchor enforces rigorous logical isolation between all tenants. This architectural constraint guarantees the integrity and confidentiality of each customer's data.
+
+* **Secure Peer-to-Peer File Transfers**: Secure Peer-to-Peer File Transfers: Uniquely, Anchor facilitates secure file downloads through a peer-to-peer mechanism. File downloads initiated in the browser are transferred directly to the customer's environment, meaning no file artifacts are ever created or stored on Anchor's infrastructure.
+
+### 2. A Secure-by-Design Architecture
+
+Anchor is built on a secure-by-design methodology. This principle ensures that the default configuration is always the most secure, significantly reducing the risk of misconfiguration errors and providing a foundation of trust from the moment you start.
+
+### 3. Shared Responsibility Model
+
+Our shared responsibility model clearly defines the security obligations of both Anchor and our customers. This well defined ownership perimeter approach ensures that all aspects of security are managed effectively, from the underlying infrastructure we secure to the applications you build on top of it.
+
+### 4. Vetted and Audited Supply Chain
+
+We maintain a rigorous security review and auditing process for our entire supply chain. Every component and third-party vendor is scrutinized to ensure they meet our high security standards, protecting our platform and our customers from upstream vulnerabilities.
+
+## Product Architecture & Security Design
+
+### Critical Security Controls
+
+#### Storage of customer data
+
+A core principle of Anchor Browser is minimizing data persistence. By design, we do not store customer data from within the browser sessions. Each browser instance runs in a dedicated, ephemeral virtual machine that is completely destroyed upon session termination. This means that any data accessed, generated, or downloaded during a session is either transferred directly to the customer's own environment via our secure peer-to-peer capability or is irretrievably deleted with the virtual machine. The only customer data we store is essential account and configuration information required for providing our service, such as user roles and network guardrail settings.
+
+#### Data Residency
+
+Anchor Browser infrastructure is by default fully hosted in the United States. All customer data, including browser sessions, account information, and configuration data, is processed and stored exclusively in the AWS `us-east-2` data center in Ohio.
+
+For organizations requiring EU-based infrastructure with full GDPR compliance, we offer dedicated European data residency in the AWS `eu-central-1` data center in Frankfurt on the Growth plan. Contact us at [support@anchorbrowser.io](mailto:support@anchorbrowser.io) or [schedule a call](https://cal.com/team/anchor-browser/30-min-meeting) to get started.
+
+#### Confidentiality & Protection of Customer Data
+
+We enforce strict measures to ensure the confidentiality and integrity of all customer data and platform interactions.
+
+* Strict Tenant Isolation: Our architecture guarantees that each customer's browser instances are logically and physically isolated from one another. There is no possibility of cross-tenant data access.
+* Ephemeral Environments: Browsers are never reused between sessions or customers. Every session starts with a pristine, isolated browser instance that is terminated and wiped clean after use, eliminating the risk of data leakage.
+* Principle of Least Privilege: Access to all systems and data is governed by the principle of least privilege. Our employees are only granted the minimum level of access necessary to perform their job functions.
+
+#### Data Encryption
+
+Anchor employs robust encryption protocols to protect data at every stage.
+
+* Encryption in Transit: All data transmitted between your local machine and the Anchor Browser instance, as well as any communication with our platform services, is encrypted using industry-standard TLS 1.2 or higher. We enforce the use of strong cipher suites to protect against eavesdropping and man-in-the-middle attacks.
+* Encryption at Rest: While we minimize data storage, any essential configuration data or account information stored on our platform is encrypted at rest using AES-256, one of the strongest block ciphers available.
+
+#### Reliability, Backup, and Business Continuity
+
+Anchor is architected for high availability and resilience to ensure uninterrupted service.
+
+* Redundant Architecture: Our infrastructure is deployed across multiple availability zones within our cloud provider's environment. This design protects against single-point-of-failure scenarios and ensures high uptime.
+* Automated Backups: We perform regular, automated backups of critical platform configuration data. These backups are encrypted and stored securely, allowing for swift recovery in the unlikely event of a major disruption.
+* Disaster Recovery: We maintain a comprehensive business continuity and disaster recovery plan that is regularly tested. This plan ensures that we can restore critical operations within a defined Recovery Time Objective (RTO).
+
+#### Return of Customer Data
+
+Given our ephemeral architecture, there is no session data to return. Any files downloaded during a session are transferred directly to your premises. As for your account and configuration data, you can request a copy of this information at any time during your service agreement. Upon termination of your contract, all associated account data will be permanently deleted from our systems in accordance with our data retention policy.
+
+#### Certifications
+
+Anchor is committed to meeting and exceeding industry standards for security and compliance. We have achieved key certifications that formally validate our security controls and demonstrate our commitment to protecting customer data:
+
+* **SOC 2 Type II**: Anchor has achieved SOC 2 Type II compliance, demonstrating our commitment to security, availability, processing integrity, confidentiality, and privacy controls.
+* **ISO 27001**: We are ISO 27001 certified, meeting the international standard for information security management systems.
+* **HIPAA**: Anchor is HIPAA compliant, ensuring the protection of healthcare-related data and meeting the requirements of the Health Insurance Portability and Accountability Act.
+* **GDPR**: We maintain GDPR compliance, protecting the privacy and data rights of European Union residents.
+
+For the most up-to-date information on our certification status and detailed compliance reports, please visit the [Anchor Trust Portal](https://trust.anchorbrowser.io/).
+
+<div>
+  <img alt="SOC 2 Compliance" />
+
+  <img alt="ISO 27001 Certification" />
+
+  <img alt="HIPAA Compliance" />
+
+  <img alt="GDPR Compliance" />
+</div>
+
+#### Audits
+
+Anchor engages independent, third-party auditors to conduct regular penetration tests and security assessments of our platform. These rigorous audits help us identify and remediate potential vulnerabilities, ensuring our defenses remain robust against emerging threats. A summary of our latest audit findings can be made available to customers upon request and under a Non-Disclosure Agreement (NDA).
+
+#### Security Logs
+
+We maintain detailed security logs to monitor for and investigate any suspicious activity.
+
+* Audit Trails: We capture comprehensive audit logs of all administrative actions taken within the Anchor platform, such as changes to user permissions or security settings. Access to these logs is restricted to authorized personnel.
+* Immutable Logging: Logs are stored in a secure, tamper-evident manner to ensure their integrity for forensic analysis and compliance purposes.
+
+#### Personnel Practices
+
+Our commitment to security extends to our internal team and practices.
+
+* Security Training: We conduct mandatory security awareness training for all employees upon hiring and on an ongoing basis. This training covers data privacy, threat detection, and secure coding practices.
+* Access Control: Access to our production environment is strictly controlled and limited to a small number of authorized engineers. We enforce multi-factor authentication (MFA) for all internal systems to add a critical layer of security.
+
+
+# Zero Data Retention (ZDR) Mode
+Source: https://docs.anchorbrowser.io/security/zdr-mode
+
+Enhanced security mode that disables all video and log recordings to prevent sensitive data retention
+
+Zero Data Retention (ZDR) Mode is an enhanced security feature that completely disables video recordings and log recordings for your Anchor account. This mode is designed for organizations handling highly sensitive data that require absolute assurance that no session artifacts are retained on the Anchor platform.
+
+## What is ZDR Mode?
+
+When ZDR Mode is enabled, Anchor disables all recording capabilities for your account, including:
+
+* **Video recordings**: No screen recordings or visual captures of browser sessions
+* **Log recordings**: No session logs or activity records
+
+This ensures that no sensitive data from your browser sessions is retained on the Anchor platform, providing an additional layer of data protection beyond our standard ephemeral architecture.
+
+## When to use ZDR Mode
+
+ZDR Mode is recommended for organizations that:
+
+* Handle highly regulated or classified information
+* Require strict data residency and retention policies
+* Work with sensitive customer data that must not be recorded
+* Need to comply with specific industry regulations prohibiting data retention
+* Operate in environments where even temporary recording poses compliance risks
+
+## How ZDR Mode works
+
+Once enabled, ZDR Mode:
+
+1. Disables all video recording functionality for browser sessions
+2. Prevents session logs from being captured or stored
+3. Maintains all other Anchor security features, including ephemeral VMs and tenant isolation
+4. Applies to all browser sessions created under your account
+
+Note that ZDR Mode does not affect the core functionality of Anchor Browser. All browser automation, authentication, and networking capabilities remain fully operational.
+
+## Enabling ZDR Mode
+
+ZDR Mode is enabled manually by the Anchor team. To request ZDR Mode for your account:
+
+1. Contact your Anchor account representative or reach out to [support@anchorbrowser.io](mailto:support@anchorbrowser.io)
+2. Provide your account details and business justification for requiring ZDR Mode
+3. The Anchor team will review your request and enable ZDR Mode for your account
+4. You will receive confirmation once ZDR Mode has been activated
+
+## Important considerations
+
+* **Debugging limitations**: With ZDR Mode enabled, you will not have access to video recordings or logs for troubleshooting session issues. Ensure your application has adequate logging and monitoring in place.
+* **Permanent setting**: Once enabled, ZDR Mode typically remains active for the duration of your service agreement. Contact the Anchor team if you need to modify this setting.
+* **No self-service**: ZDR Mode cannot be toggled on or off by customers. All changes must be requested through the Anchor team.
+
+## Compliance and security
+
+ZDR Mode complements Anchor's existing security architecture, which includes:
+
+* Ephemeral virtual machines that are destroyed after each session
+* Strict tenant isolation
+* Encryption in transit and at rest
+* SOC 2 Type II, ISO 27001, HIPAA, and GDPR compliance
+
+For more information about Anchor's security framework, see our [Trust & Security](/security) documentation or visit the [Anchor Trust Portal](https://trust.anchorbrowser.io/).
 
 

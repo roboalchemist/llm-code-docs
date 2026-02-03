@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/errors/connect-errors/invalid-subscription.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Invalid Subscription
 
 > This error occurs when a user’s vehicle is compatible but their connected services subscription is inactive because either it has expired or it has never been activated.

@@ -1,247 +1,203 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/logdrains/creates-a-new-integration-log-drain-deprecated.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Creates a new Integration Log Drain (deprecated)
 
 > Creates an Integration log drain. This endpoint must be called with an OAuth2 client (integration), since log drains are tied to integrations. If it is called with a different token type it will produce a 400 error.
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples post /v2/integrations/log-drains
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v2/integrations/log-drains
-  method: post
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        teamId:
+  /v2/integrations/log-drains:
+    post:
+      tags:
+        - logDrains
+      summary: Creates a new Integration Log Drain (deprecated)
+      description: >-
+        Creates an Integration log drain. This endpoint must be called with an
+        OAuth2 client (integration), since log drains are tied to integrations.
+        If it is called with a different token type it will produce a 400 error.
+      operationId: createLogDrain
+      parameters:
+        - description: The Team identifier to perform the request on behalf of.
+          in: query
+          name: teamId
           schema:
-            - type: string
-              description: The Team identifier to perform the request on behalf of.
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-        slug:
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        - description: The Team slug to perform the request on behalf of.
+          in: query
+          name: slug
           schema:
-            - type: string
-              description: The Team slug to perform the request on behalf of.
-              example: my-team-url-slug
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              name:
-                allOf:
-                  - description: The name of the log drain
-                    example: My first log drain
-                    maxLength: 100
-                    pattern: ^[A-z0-9_ -]+$
+            type: string
+            example: my-team-url-slug
+      requestBody:
+        content:
+          application/json:
+            schema:
+              properties:
+                name:
+                  description: The name of the log drain
+                  example: My first log drain
+                  maxLength: 100
+                  pattern: ^[A-z0-9_ -]+$
+                  type: string
+                projectIds:
+                  minItems: 1
+                  maxItems: 50
+                  type: array
+                  items:
+                    pattern: ^[a-zA-z0-9_]+$
                     type: string
-              projectIds:
-                allOf:
-                  - minItems: 1
-                    maxItems: 50
-                    type: array
-                    items:
-                      pattern: ^[a-zA-z0-9_]+$
-                      type: string
-              secret:
-                allOf:
-                  - description: >-
-                      A secret to sign log drain notification headers so a
-                      consumer can verify their authenticity
-                    example: a1Xsfd325fXcs
-                    maxLength: 100
-                    pattern: ^[A-z0-9_ -]+$
+                secret:
+                  description: >-
+                    A secret to sign log drain notification headers so a
+                    consumer can verify their authenticity
+                  example: a1Xsfd325fXcs
+                  maxLength: 100
+                  pattern: ^[A-z0-9_ -]+$
+                  type: string
+                deliveryFormat:
+                  description: The delivery log format
+                  example: json
+                  enum:
+                    - json
+                    - ndjson
+                url:
+                  description: >-
+                    The url where you will receive logs. The protocol must be
+                    `https://` or `http://` when type is `json` and `ndjson`.
+                  example: https://example.com/log-drain
+                  format: uri
+                  pattern: ^https?://
+                  type: string
+                sources:
+                  type: array
+                  uniqueItems: true
+                  items:
                     type: string
-              deliveryFormat:
-                allOf:
-                  - description: The delivery log format
-                    example: json
                     enum:
-                      - json
-                      - ndjson
-              url:
-                allOf:
-                  - description: >-
-                      The url where you will receive logs. The protocol must be
-                      `https://` or `http://` when type is `json` and `ndjson`.
-                    example: https://example.com/log-drain
-                    format: uri
-                    pattern: ^https?://
+                      - static
+                      - lambda
+                      - build
+                      - edge
+                      - external
+                      - firewall
+                  minItems: 1
+                headers:
+                  description: Headers to be sent together with the request
+                  type: object
+                  additionalProperties:
                     type: string
-              sources:
-                allOf:
-                  - type: array
-                    uniqueItems: true
-                    items:
-                      type: string
-                      enum:
-                        - static
-                        - lambda
-                        - build
-                        - edge
-                        - external
-                        - firewall
-                    minItems: 1
-              headers:
-                allOf:
-                  - description: Headers to be sent together with the request
-                    type: object
-                    additionalProperties:
-                      type: string
-              environments:
-                allOf:
-                  - type: array
-                    uniqueItems: true
-                    items:
-                      type: string
-                      enum:
-                        - preview
-                        - production
-                    minItems: 1
-            required: true
-            requiredProperties:
-              - name
-              - url
-        examples:
-          example:
-            value:
-              name: My first log drain
-              projectIds:
-                - <string>
-              secret: a1Xsfd325fXcs
-              deliveryFormat: json
-              url: https://example.com/log-drain
-              sources:
-                - static
-              headers: {}
-              environments:
-                - preview
-    codeSamples:
-      - label: createLogDrain
-        lang: go
-        source: "package main\n\nimport(\n\t\"os\"\n\t\"github.com/vercel/vercel\"\n\t\"context\"\n\t\"github.com/vercel/vercel/models/operations\"\n\t\"log\"\n)\n\nfunc main() {\n    s := vercel.New(\n        vercel.WithSecurity(os.Getenv(\"VERCEL_BEARER_TOKEN\")),\n    )\n\n    ctx := context.Background()\n    res, err := s.LogDrains.CreateLogDrain(ctx, nil, nil, &operations.CreateLogDrainRequestBody{\n        Name: \"My first log drain\",\n        Secret: vercel.String(\"a1Xsfd325fXcs\"),\n        DeliveryFormat: operations.DeliveryFormatJSON.ToPointer(),\n        URL: \"https://example.com/log-drain\",\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Object != nil {\n        // handle response\n    }\n}"
-      - label: createLogDrain
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.logDrains.createLogDrain({
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-              slug: "my-team-url-slug",
-              requestBody: {
-                name: "My first log drain",
-                secret: "a1Xsfd325fXcs",
-                deliveryFormat: "json",
-                url: "https://example.com/log-drain",
-              },
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              clientId:
-                allOf:
-                  - type: string
+                environments:
+                  type: array
+                  uniqueItems: true
+                  items:
+                    type: string
+                    enum:
+                      - preview
+                      - production
+                  minItems: 1
+              required:
+                - name
+                - url
+              type: object
+        required: true
+      responses:
+        '200':
+          description: The log drain was successfully created
+          content:
+            application/json:
+              schema:
+                properties:
+                  clientId:
+                    type: string
                     description: >-
                       The oauth2 client application id that created this log
                       drain
                     example: oac_xRhY4LAB7yLhUADD69EvV7ct
-              configurationId:
-                allOf:
-                  - type: string
+                  configurationId:
+                    type: string
                     description: The client configuration this log drain was created with
                     example: icfg_3bwCLgxL8qt5kjRLcv2Dit7F
-              createdAt:
-                allOf:
-                  - type: number
+                  createdAt:
+                    type: number
                     description: A timestamp that tells you when the log drain was created
                     example: 1558531915505
-              id:
-                allOf:
-                  - type: string
+                  id:
+                    type: string
                     description: >-
                       The unique identifier of the log drain. Always prefixed
                       with `ld_`
                     example: ld_nBuA7zCID8g4QZ8g
-              deliveryFormat:
-                allOf:
-                  - type: string
+                  deliveryFormat:
+                    type: string
                     enum:
                       - json
                       - ndjson
-                      - syslog
                       - protobuf
                     description: The delivery log format
                     example: json
-              name:
-                allOf:
-                  - type: string
+                  name:
+                    type: string
                     description: The name of the log drain
                     example: My first log drain
-              ownerId:
-                allOf:
-                  - type: string
+                  ownerId:
+                    type: string
                     description: >-
                       The identifier of the team or user whose events will
                       trigger the log drain
                     example: kr1PsOIzqEL5Xg6M4VZcZosf
-              projectId:
-                allOf:
-                  - nullable: true
+                  projectId:
+                    nullable: true
                     type: string
                     example: AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb
-              projectIds:
-                allOf:
-                  - items:
+                  projectIds:
+                    items:
                       type: string
                     type: array
                     description: >-
                       The identifier of the projects this log drain is
                       associated with
                     example: AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb
-              url:
-                allOf:
-                  - type: string
+                  url:
+                    type: string
                     description: The URL to call when logs are generated
                     example: https://example.com/log-drain
-              sources:
-                allOf:
-                  - items:
+                  sources:
+                    items:
                       type: string
                       enum:
+                        - external
                         - build
                         - edge
                         - lambda
                         - static
-                        - external
                         - firewall
                         - redirect
                       description: >-
@@ -257,9 +213,8 @@ paths:
                     example:
                       - build
                       - edge
-              createdFrom:
-                allOf:
-                  - type: string
+                  createdFrom:
+                    type: string
                     enum:
                       - integration
                       - self-served
@@ -267,16 +222,14 @@ paths:
                       Whether the log drain was created by an integration or by
                       a user
                     example: integration
-              headers:
-                allOf:
-                  - additionalProperties:
+                  headers:
+                    additionalProperties:
                       type: string
                     type: object
                     description: The headers to send with the request
                     example: '{"Authorization": "Bearer 123"}'
-              environments:
-                allOf:
-                  - items:
+                  environments:
+                    items:
                       type: string
                       enum:
                         - production
@@ -288,19 +241,16 @@ paths:
                     description: The environment of log drain
                     example:
                       - production
-              branch:
-                allOf:
-                  - type: string
+                  branch:
+                    type: string
                     description: The branch regexp of log drain
                     example: feature/*
-              samplingRate:
-                allOf:
-                  - type: number
+                  samplingRate:
+                    type: number
                     description: The sampling rate of log drain
                     example: 0.5
-              source:
-                allOf:
-                  - oneOf:
+                  source:
+                    oneOf:
                       - properties:
                           kind:
                             type: string
@@ -323,70 +273,33 @@ paths:
                           integrationConfigurationId:
                             type: string
                         required:
-                          - kind
-                          - integrationId
                           - integrationConfigurationId
+                          - integrationId
+                          - kind
                         type: object
-            requiredProperties:
-              - createdAt
-              - id
-              - name
-              - ownerId
-              - url
-              - source
-        examples:
-          example:
-            value:
-              clientId: oac_xRhY4LAB7yLhUADD69EvV7ct
-              configurationId: icfg_3bwCLgxL8qt5kjRLcv2Dit7F
-              createdAt: 1558531915505
-              id: ld_nBuA7zCID8g4QZ8g
-              deliveryFormat: json
-              name: My first log drain
-              ownerId: kr1PsOIzqEL5Xg6M4VZcZosf
-              projectId: AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb
-              projectIds: AbCgVkqoxXeXCDWehVir51LHGrrcWL4mkYm14W6UBPWQeb
-              url: https://example.com/log-drain
-              sources:
-                - build
-                - edge
-              createdFrom: integration
-              headers: '{"Authorization": "Bearer 123"}'
-              environments:
-                - production
-              branch: feature/*
-              samplingRate: 0.5
-              source:
-                kind: self-served
-        description: The log drain was successfully created
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: |-
-              One of the provided values in the request body is invalid.
-              The provided token is not from an OAuth2 Client
-        examples: {}
-        description: |-
-          One of the provided values in the request body is invalid.
-          The provided token is not from an OAuth2 Client
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-  deprecated: false
-  type: path
+                required:
+                  - createdAt
+                  - id
+                  - name
+                  - ownerId
+                  - source
+                  - url
+                type: object
+        '400':
+          description: |-
+            One of the provided values in the request body is invalid.
+            The provided token is not from an OAuth2 Client
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+      security:
+        - bearerToken: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

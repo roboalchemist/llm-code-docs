@@ -4,7 +4,6 @@
 title: Manage Your User Profile
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > Account Management > Manage Your User Profile
-source_url: https://docs.datadoghq.com/account-management/manage-user-profile/index.html
 ---
 
 # Manage Your User Profile

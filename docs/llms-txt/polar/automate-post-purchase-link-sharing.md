@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/guides/automate-post-purchase-link-sharing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to automatically share links to customers after purchase
 
 > Learn how to use the Custom Benefit to automatically share links with customers after purchase.
@@ -10,7 +14,7 @@
   <Step title="Go to Benefits">
     In the Polar dashboard sidebar, click on **Benefits**.
 
-    You can also go directly to `https://polar.sh/dashboard/${org_slug}/benefits`.
+    You can also go directly to `https://polar.sh/dashboard/${org_slug}/products/benefits`.
 
     <img height="200" src="https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/benefits-page.png?fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=70fa50c0ac36ad18b5199025e96d47c0" data-og-width="1753" data-og-height="895" data-path="assets/guides/automate-post-purchase-link-sharing/benefits-page.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/benefits-page.png?w=280&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=9f717248844b61b4347678adb69f8657 280w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/benefits-page.png?w=560&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=5171950de488357cb3b38122fb008276 560w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/benefits-page.png?w=840&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=e1d3afe3cff8bf002e577a4e58986378 840w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/benefits-page.png?w=1100&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=f1be4c81a66d425ea6a12bcf6b20410a 1100w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/benefits-page.png?w=1650&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=3cdb04a1f9025903f47e41040272eda8 1650w, https://mintcdn.com/polar/rKs2Fff6lka61O-Y/assets/guides/automate-post-purchase-link-sharing/benefits-page.png?w=2500&fit=max&auto=format&n=rKs2Fff6lka61O-Y&q=85&s=556dbf78588e017661df839a3209cb55 2500w" />
   </Step>

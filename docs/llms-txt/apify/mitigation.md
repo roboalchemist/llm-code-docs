@@ -6,8 +6,8 @@
 
 ***
 
-In the https://docs.apify.com/academy/anti-scraping/techniques.md section of this course, you learned about multiple methods websites use to prevent bots from accessing their content. This **Mitigation** section will be all about how to circumvent these protections using various different techniques.
+In the [techniques](https://docs.apify.com/academy/anti-scraping/techniques.md) section of this course, you learned about multiple methods websites use to prevent bots from accessing their content. This **Mitigation** section will be all about how to circumvent these protections using various different techniques.
 
 ## Next up
 
-In the https://docs.apify.com/academy/anti-scraping/mitigation/proxies.md of this section, you'll be learning about what proxies are and how to use them in your own crawler.
+In the [first lesson](https://docs.apify.com/academy/anti-scraping/mitigation/proxies.md) of this section, you'll be learning about what proxies are and how to use them in your own crawler.

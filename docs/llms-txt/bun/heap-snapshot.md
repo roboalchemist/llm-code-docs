@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/runtime/heap-snapshot.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Inspect memory usage using V8 heap snapshots
 
 Bun implements V8's heap snapshot API, which allows you to create snapshots of the heap at runtime. This helps debug memory leaks in your JavaScript/TypeScript application.

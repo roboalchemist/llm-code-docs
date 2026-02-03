@@ -449,9 +449,9 @@ const customer = await stripe.customers.retrieve(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.CustomerRetrieveParams{Customer: stripe.String("{{CUSTOMER_ID}}")}
+params := &stripe.CustomerRetrieveParams{}
 params.AddExpand("invoice_credit_balance")
-result, err := sc.V1Customers.Retrieve(context.TODO(), params)
+result, err := sc.V1Customers.Retrieve(context.TODO(), "{{CUSTOMER_ID}}", params)
 ```
 
 ```dotnet

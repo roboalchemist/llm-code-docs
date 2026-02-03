@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/quickstart.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Quickstart
 
 > Augment is the developer AI for teams that deeply understands your codebase and how you build software. Your code, your dependencies, and your best practices are all at your fingertips.

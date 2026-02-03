@@ -4,7 +4,6 @@
 title: Subnet Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > AWS Components > Subnet Component
-source_url: https://docs.datadoghq.com/components-aws/subnet/index.html
 ---
 
 # Subnet Component

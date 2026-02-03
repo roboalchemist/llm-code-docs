@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/cloud-services/deployments/domain-purchasing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Domain Purchasing
 
 > Purchase and connect domains for your Replit published apps directly within the platform to make your apps accessible with custom URLs.

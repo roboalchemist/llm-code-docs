@@ -4,7 +4,6 @@
 title: SaltStack
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Agent > Supported Platforms > SaltStack
-source_url: https://docs.datadoghq.com/supported_platforms/saltstack/index.html
 ---
 
 # SaltStack

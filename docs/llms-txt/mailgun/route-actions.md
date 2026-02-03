@@ -35,7 +35,7 @@ When you specify a URL, Mailgun will notify you when the email arrives along wit
 store(notify="http://mydomain.com/callback")
 ```
 
-If you don't specify a URL with the notify parameter, the message will still be stored and you can get the message later through the [Messages API](https://mailgun-docs.redoc.ly/docs/mailgun/api-reference/openapi-final/tag/Messages/#tag/Messages/operation/httpapi.(*apiHandler).handler-fm-21). You can see a full list of parameters we will post/return to you below.
+If you don't specify a URL with the notify parameter, the message will still be stored and you can get the message later through the [Messages API](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/messages/post-v3--domain-name--messages). You can see a full list of parameters we will post/return to you below.
 
 ### Stop()
 

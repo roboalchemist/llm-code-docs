@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/reference/telephony/phone-numbers-api.md
 
-# Source: https://docs.livekit.io/sip/phone-numbers-api.md
-
-LiveKit docs › Reference › Phone numbers API
+LiveKit docs › Telephony › Phone Numbers API
 
 ---
 
@@ -12,20 +10,16 @@ LiveKit docs › Reference › Phone numbers API
 
 ## Overview
 
-LiveKit provides Phone Numbers APIs that let you search for, purchase, and manage phone numbers for your SIP apps. These APIs are available with LiveKit server SDKs and CLI:
+LiveKit provides Phone Numbers APIs that let you search for, purchase, and manage [phone numbers](https://docs.livekit.io/telephony/start/phone-numbers.md) for your telephony apps. These APIs are available with LiveKit server SDKs and CLI:
 
 - [Go SIP client](https://pkg.go.dev/github.com/livekit/server-sdk-go/v2#SIPClient)
-- [JS SIP client](https://docs.livekit.io/server-sdk-js/classes/SipClient.html.md)
+- [JS SIP client](https://docs.livekit.io/reference/server-sdk-js/classes/SipClient.html.md)
 - [Ruby SIP client](https://github.com/livekit/server-sdk-ruby/blob/main/lib/livekit/sip_service_client.rb)
 - [Python SIP client](https://docs.livekit.io/reference/python/v1/livekit/api/sip_service.html.md)
 - [Java SIP client](https://github.com/livekit/server-sdk-kotlin/blob/main/src/main/kotlin/io/livekit/server/SipServiceClient.kt)
 - [CLI](https://github.com/livekit/livekit-cli/blob/main/cmd/lk/sip.go)
 
-> ❗ **Important**
-> 
-> Requests to the Phone Number API require the SIP `admin` permission unless otherwise noted. To create a token with the appropriate grant, see [SIP grant](https://docs.livekit.io/home/get-started/authentication.md#sip-grant).
-
-To learn more about additional APIs, see [SIP APIs](https://docs.livekit.io/sip/api.md) and [Server APIs](https://docs.livekit.io/reference/server/server-apis.md).
+To learn more about additional APIs, see [SIP APIs](https://docs.livekit.io/reference/telephony/sip-api.md) and [Server APIs](https://docs.livekit.io/reference/server/server-apis.md).
 
 ### Using endpoints
 
@@ -256,7 +250,7 @@ Enum. Valid values are as follows:
 
 ---
 
-This document was rendered at 2025-11-18T23:55:22.533Z.
-For the latest version of this document, see [https://docs.livekit.io/sip/phone-numbers-api.md](https://docs.livekit.io/sip/phone-numbers-api.md).
+This document was rendered at 2026-02-03T03:25:13.547Z.
+For the latest version of this document, see [https://docs.livekit.io/reference/telephony/phone-numbers-api.md](https://docs.livekit.io/reference/telephony/phone-numbers-api.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

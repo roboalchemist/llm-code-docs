@@ -1,113 +1,94 @@
 # Source: https://docs.anchorbrowser.io/api-reference/tasks/get-task-execution-result.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Task Execution Result
 
 > Retrieves a single execution result by its ID. This endpoint is useful for polling
 execution status in async mode or retrieving detailed execution information.
 
 
+
+
 ## OpenAPI
 
 ````yaml openapi-mintlify.yaml get /v1/task/{taskId}/executions/{executionId}
+openapi: 3.1.0
+info:
+  title: AnchorBrowser API
+  version: 1.0.0
+  description: APIs to manage all browser-related actions and configuration.
+servers:
+  - url: https://api.anchorbrowser.io
+    description: API server
+security: []
 paths:
-  path: /v1/task/{taskId}/executions/{executionId}
-  method: get
-  servers:
-    - url: https://api.anchorbrowser.io
-      description: API server
-  request:
-    security:
-      - title: api key header
-        parameters:
-          query: {}
-          header:
-            anchor-api-key:
-              type: apiKey
-              description: API key passed in the header
-          cookie: {}
-    parameters:
-      path:
-        taskId:
+  /v1/task/{taskId}/executions/{executionId}:
+    get:
+      tags:
+        - Tasks
+      summary: Get Task Execution Result
+      description: >
+        Retrieves a single execution result by its ID. This endpoint is useful
+        for polling
+
+        execution status in async mode or retrieving detailed execution
+        information.
+      parameters:
+        - name: taskId
+          in: path
+          required: true
+          description: The ID of the task
           schema:
-            - type: string
-              required: true
-              description: The ID of the task
-              format: uuid
-        executionId:
+            type: string
+            format: uuid
+        - name: executionId
+          in: path
+          required: true
+          description: The ID of the execution result
           schema:
-            - type: string
-              required: true
-              description: The ID of the execution result
-              format: uuid
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - $ref: '#/components/schemas/TaskExecutionResult'
-            refIdentifier: '#/components/schemas/TaskExecutionResultResponse'
-        examples:
-          example:
-            value:
-              data:
-                id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                taskVersionId: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                version: <string>
-                status: success
-                output: <string>
-                errorMessage: <string>
-                startTime: '2023-11-07T05:31:56Z'
-                executionTime: 123
-        description: Execution result retrieved successfully
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - &ref_0
-                    type: object
-                    properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Task or execution result not found
-    '500':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Failed to retrieve execution result
-  deprecated: false
-  type: path
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Execution result retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TaskExecutionResultResponse'
+        '404':
+          description: Task or execution result not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Failed to retrieve execution result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - api_key_header: []
 components:
   schemas:
+    TaskExecutionResultResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/TaskExecutionResult'
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
     TaskExecutionResult:
       type: object
       properties:
@@ -154,5 +135,11 @@ components:
         - version
         - status
         - startTime
+  securitySchemes:
+    api_key_header:
+      type: apiKey
+      in: header
+      name: anchor-api-key
+      description: API key passed in the header
 
 ````

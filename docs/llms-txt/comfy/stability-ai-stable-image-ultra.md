@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/built-in-nodes/partner-node/image/stability-ai/stability-ai-stable-image-ultra.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Stability Stable Image Ultra - ComfyUI Native Node Documentation
 
 > A node that generates high-quality images using Stability AI's ultra stable diffusion model

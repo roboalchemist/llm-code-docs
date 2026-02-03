@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/util/deflate.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Compress and decompress data with DEFLATE
 
 Use `Bun.deflateSync()` to compress a `Uint8Array` with DEFLATE.
@@ -15,4 +19,4 @@ const decompressed = Bun.inflateSync(compressed);
 
 ***
 
-See [Docs > API > Utils](https://bun.com/docs/api/utils) for more useful utilities.
+See [Docs > API > Utils](/runtime/utils) for more useful utilities.

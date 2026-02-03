@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/trigger.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Trigger
 
 Every Zap has a single trigger. Triggers are how your app's users can start automated workflows whenever an item is added or updated in your app. New or updated contacts, database records, blog posts, subscribers, form entries and project tasks, are examples of items that can be used to trigger a Zap.

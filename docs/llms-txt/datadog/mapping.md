@@ -6,7 +6,6 @@ description: >-
   Map SAML identity provider attributes to Datadog roles and teams for automated
   user provisioning and access control management.
 breadcrumbs: Docs > Account Management > Single Sign On With SAML > SAML Group Mapping
-source_url: https://docs.datadoghq.com/saml/mapping/index.html
 ---
 
 # SAML Group Mapping

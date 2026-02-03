@@ -17,7 +17,7 @@ Alternatively, use code generation to get a _concrete document type_, a `Documen
     <groupId>com.yahoo.vespa</groupId>
     <artifactId>vespa-documentgen-plugin</artifactId>
     <!-- Find latest version at[search.maven.org/search?q=g:com.yahoo.vespa%20a:vespa-documentgen-plugin](https://search.maven.org/search?q=g:com.yahoo.vespa%20a:vespa-documentgen-plugin)-->
-    <version>8.617.12</version>
+    <version>8.634.24</version>
     <configuration>\<schemasDirectory\>etc/schemas\</schemasDirectory\></configuration>
     <executions>
         <execution>
@@ -130,5 +130,5 @@ public class ConcreteDocDocProc extends DocumentProcessor {
 
 Concrete document types are not supported for document updates or removes.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

@@ -4,8 +4,6 @@
 title: EKS EKS Anywhere Subscription
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > EKS EKS Anywhere Subscription
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.eks_eks_anywhere_subscription.dataset/index.html
 ---
 
 # EKS EKS Anywhere Subscription
@@ -33,5 +31,5 @@ aws.eks_eks_anywhere_subscription
 | license_type     | core | string        | The type of licenses included in the subscription. Valid value is CLUSTER. With the CLUSTER license type, each license covers support for a single EKS Anywhere cluster. |
 | licenses         | core | json          | Includes all of the claims in the license token necessary to validate the license for extended support.                                                                  |
 | status           | core | string        | The status of a subscription.                                                                                                                                            |
-| tags             | core | hstore        |
+| tags             | core | hstore_csv    |
 | term             | core | json          | An EksAnywhereSubscriptionTerm object.                                                                                                                                   |

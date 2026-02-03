@@ -57,9 +57,7 @@ You can display logos in two ways:
 
 1. Using the default slot to have complete control over the content
 
-<tabs className="gap-0">
-
-```vue [PageLogosWithItems.vue]
+```vue
 <script setup lang="ts">
 const items = [
   'i-simple-icons-github',
@@ -74,9 +72,10 @@ const items = [
 <template>
   <UPageLogos title="Trusted by the best front-end teams" :items="items" />
 </template>
+
 ```
 
-```vue [PageLogosWithSlot.vue]
+```vue
 <template>
   <UPageLogos title="Trusted by the best front-end teams">
     <UIcon name="i-simple-icons-github" class="size-10 shrink-0" />
@@ -87,9 +86,8 @@ const items = [
     <UIcon name="i-simple-icons-facebook" class="size-10 shrink-0" />
   </UPageLogos>
 </template>
-```
 
-</tabs>
+```
 
 ### Marquee
 
@@ -112,11 +110,9 @@ const items = ref<undefined>([
 </template>
 ```
 
-<note to="/docs/components/marquee">
-
-When you use `marquee` mode, you can customize its behavior by passing props. For more info, check out the [Marquee](/docs/components/marquee) component.
-
-</note>
+> [!NOTE]
+> See: /docs/components/marquee
+> When you use `marquee` mode, you can customize its behavior by passing props. For more info, check out the `Marquee` component.
 
 ## API
 
@@ -178,8 +174,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

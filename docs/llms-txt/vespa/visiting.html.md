@@ -308,7 +308,7 @@ Check [multinode-HA](https://github.com/vespa-engine/sample-apps/tree/master/exa
 
 Another source of this error can be an unresponsive container instance, e.g. during overload.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

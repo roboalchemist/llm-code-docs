@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Cloudcraft (Standalone) > Account Management > Create a Strong Password
   and Protect Your Data
-source_url: >-
-  https://docs.datadoghq.com/account-management/create-strong-password/index.html
 ---
 
 # Create a Strong Password and Protect Your Data

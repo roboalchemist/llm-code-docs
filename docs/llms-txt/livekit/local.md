@@ -1,7 +1,5 @@
 # Source: https://docs.livekit.io/transport/self-hosting/local.md
 
-# Source: https://docs.livekit.io/home/self-hosting/local.md
-
 LiveKit docs › Self-hosting › Running locally
 
 ---
@@ -51,7 +49,7 @@ API secret: secret
 
 ```
 
-To customize your setup for production, refer to our [deployment guides](https://docs.livekit.io/home/self-hosting/deployment/).
+To customize your setup for production, refer to our [deployment guides](https://docs.livekit.io/transport/self-hosting/deployment.md).
 
 > 💡 **Tip**
 > 
@@ -59,7 +57,7 @@ To customize your setup for production, refer to our [deployment guides](https:/
 
 ---
 
-This document was rendered at 2025-11-18T23:54:59.795Z.
-For the latest version of this document, see [https://docs.livekit.io/home/self-hosting/local.md](https://docs.livekit.io/home/self-hosting/local.md).
+This document was rendered at 2026-02-03T03:25:20.157Z.
+For the latest version of this document, see [https://docs.livekit.io/transport/self-hosting/local.md](https://docs.livekit.io/transport/self-hosting/local.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

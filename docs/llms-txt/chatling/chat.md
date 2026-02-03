@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/api-reference/v2/ai-kb/chat.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Chat with Knowledge Base AI
 
 > Chat with the AI using the knowledge base as the response source.

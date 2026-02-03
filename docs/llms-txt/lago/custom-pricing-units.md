@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/plans/custom-pricing-units.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Custom pricing units
 
 > A pricing unit works like a custom currency, allowing you to express charges in something other than fiat (e.g., credits or tokens).

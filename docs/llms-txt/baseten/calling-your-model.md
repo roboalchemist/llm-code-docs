@@ -1,14 +1,47 @@
 # Source: https://docs.baseten.co/inference/calling-your-model.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Call your model
 
 > Run inference on deployed models
 
-Once deployed, your model is accessible via an [API endpoint](/reference/inference-api/overview). To make an inference request, you'll need:
+Once deployed, your model is accessible through an [API endpoint](/reference/inference-api/overview). To make an inference request, you'll need:
 
-* **Model ID**
-* An [API key](https://app.baseten.co/settings/api_keys) for your Baseten account.
-* **JSON-serializable model input**
+* **Model ID**: Found in the Baseten dashboard or returned when you deploy.
+* **[API key](/organization/api-keys)**: Authenticates your requests.
+* **JSON-serializable model input**: The data your model expects.
+
+## Authentication
+
+Include your API key in the `Authorization` header:
+
+```sh  theme={"system"}
+curl -X POST https://model-YOUR_MODEL_ID.api.baseten.co/environments/production/predict \
+  -H "Authorization: Api-Key $BASETEN_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"prompt": "Hello, world!"}'
+```
+
+In Python with requests:
+
+```python  theme={"system"}
+import requests
+import os
+
+api_key = os.environ["BASETEN_API_KEY"]
+model_id = "YOUR_MODEL_ID"
+
+response = requests.post(
+    f"https://model-{model_id}.api.baseten.co/environments/production/predict",
+    headers={"Authorization": f"Api-Key {api_key}"},
+    json={"prompt": "Hello, world!"},
+)
+
+print(response.json())
+```
 
 ## Predict API endpoints
 
@@ -27,7 +60,7 @@ Custom servers support both `predict` endpoints as well as a special `sync` endp
 https://model-{model-id}.api.baseten.co/environments/{production}/sync/{route}
 ```
 
-Here are a few example for the given example that show how the sync endpoint maps to the custom server's routes.
+Here are a few examples that show how the sync endpoint maps to the custom server's routes.
 
 * `https://model-{model_id}.../sync/health` -> `/health`
 * `https://model-{model_id}.../sync/items` -> `/items`
@@ -35,7 +68,7 @@ Here are a few example for the given example that show how the sync endpoint map
 
 ## OpenAI SDK
 
-When deploying a model with Engine Builder, you will get an OpenAI compatible server. If you are already using one of the OpenAI SDKs, you will simply need to update the base url to your Baseten model URL and include your Baseten API Key.
+When deploying a model with Engine-Builder, you will get an OpenAI compatible server. If you are already using one of the OpenAI SDKs, you will simply need to update the base url to your Baseten model URL and include your Baseten API Key.
 
 ```python  theme={"system"}
 import os

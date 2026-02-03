@@ -1,12 +1,16 @@
 # Source: https://docs.anchorbrowser.io/integrations/groq.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Groq GPT-OSS
 
 > Blazing Fast, Accurate Browser Agents
 
 # Anchor Browser + Groq: Blazing, Accurate Fast Browser Agents
 
-[Groq](https://groq.com/) is the fast inference paltform, providing llm APIs with low time-to-first-token and time-to-response
+[Groq](https://groq.com/) is the fast inference platform, providing llm APIs with low time-to-first-token and time-to-response
 
 ## Python Quickstart (2 minutes to hello world)
 

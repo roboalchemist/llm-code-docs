@@ -1,5 +1,9 @@
 # Source: https://docs.squared.ai/getting-started/setup.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Setting Up Your Account
 
 > Learn how to create an account, manage workspaces, and define user roles and permissions in AI Squared.

@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/graphql-api/mutation/update-meeting-state.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Update Meeting State
 
 > Use the API to pause or resume recording for a live meeting
@@ -195,8 +199,3 @@ List of possible error codes that may be returned by the `updateMeetingState` mu
     Create soundbites during a live meeting
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.fireflies.ai/llms.txt

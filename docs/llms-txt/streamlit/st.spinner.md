@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/status/st.spinner
+
 # st.spinner
 
 Display a loading spinner while executing a block of code.

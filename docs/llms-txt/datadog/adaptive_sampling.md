@@ -6,7 +6,6 @@ description: >-
   Automatically adjust sampling rates to match specific budgets while
   maintaining visibility over service endpoints.
 breadcrumbs: Docs > APM > The Trace Pipeline > Adaptive Sampling
-source_url: https://docs.datadoghq.com/trace_pipeline/adaptive_sampling/index.html
 ---
 
 # Adaptive Sampling

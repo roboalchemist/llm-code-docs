@@ -4,8 +4,6 @@
 title: EC2 Placement Group
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > EC2 Placement Group
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.ec2_placement_group.dataset/index.html
 ---
 
 # EC2 Placement Group
@@ -18,15 +16,15 @@ aws.ec2_placement_group
 
 ## Fields
 
-| Title           | ID   | Type   | Data Type                                                                                           | Description |
-| --------------- | ---- | ------ | --------------------------------------------------------------------------------------------------- | ----------- |
-| _key            | core | string |
-| account_id      | core | string |
-| group_arn       | core | string | The Amazon Resource Name (ARN) of the placement group.                                              |
-| group_id        | core | string | The ID of the placement group.                                                                      |
-| group_name      | core | string | The name of the placement group.                                                                    |
-| partition_count | core | int64  | The number of partitions. Valid only if strategy is set to partition.                               |
-| spread_level    | core | string | The spread level for the placement group. Only Outpost placement groups can be spread across hosts. |
-| state           | core | string | The state of the placement group.                                                                   |
-| strategy        | core | string | The placement strategy.                                                                             |
-| tags            | core | hstore |
+| Title           | ID   | Type       | Data Type                                                                                           | Description |
+| --------------- | ---- | ---------- | --------------------------------------------------------------------------------------------------- | ----------- |
+| _key            | core | string     |
+| account_id      | core | string     |
+| group_arn       | core | string     | The Amazon Resource Name (ARN) of the placement group.                                              |
+| group_id        | core | string     | The ID of the placement group.                                                                      |
+| group_name      | core | string     | The name of the placement group.                                                                    |
+| partition_count | core | int64      | The number of partitions. Valid only if strategy is set to partition.                               |
+| spread_level    | core | string     | The spread level for the placement group. Only Outpost placement groups can be spread across hosts. |
+| state           | core | string     | The state of the placement group.                                                                   |
+| strategy        | core | string     | The placement strategy.                                                                             |
+| tags            | core | hstore_csv |

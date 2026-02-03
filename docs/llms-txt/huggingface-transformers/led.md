@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/led.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/led.md
 
 # LED
 
@@ -11,7 +11,7 @@ You can find all the original [LED] checkpoints under the [Ai2](https://huggingf
 >
 > Click on the LED models in the right sidebar for more examples of how to apply LED to different language tasks.
 
-The example below demonstrates how to summarize text with [Pipeline](/docs/transformers/v5.0.0rc1/en/main_classes/pipelines#transformers.Pipeline), [AutoModel](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoModel), and from the command line.
+The example below demonstrates how to summarize text with [Pipeline](/docs/transformers/v5.0.0/en/main_classes/pipelines#transformers.Pipeline), [AutoModel](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoModel), and from the command line.
 
 ```python
 import torch
@@ -100,10 +100,10 @@ print(tokenizer.decode(output[0], skip_special_tokens=True))
 
 ## Notes
 
-- [LEDForConditionalGeneration](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.LEDForConditionalGeneration) is an extension of [BartForConditionalGeneration](/docs/transformers/v5.0.0rc1/en/model_doc/bart#transformers.BartForConditionalGeneration) exchanging the traditional self-attention layer with Longformer's chunked self-attention layer. [LEDTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/longformer#transformers.RobertaTokenizer) is an alias of [BartTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/longformer#transformers.RobertaTokenizer).
-- LED pads the `input_ids` to be a multiple of `config.attention_window` if required. A small speedup is gained when [LEDTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/longformer#transformers.RobertaTokenizer) is used with the `pad_to_multiple_of` argument.
+- [LEDForConditionalGeneration](/docs/transformers/v5.0.0/en/model_doc/led#transformers.LEDForConditionalGeneration) is an extension of [BartForConditionalGeneration](/docs/transformers/v5.0.0/en/model_doc/bart#transformers.BartForConditionalGeneration) exchanging the traditional self-attention layer with Longformer's chunked self-attention layer. [LEDTokenizer](/docs/transformers/v5.0.0/en/model_doc/mvp#transformers.RobertaTokenizer) is an alias of [BartTokenizer](/docs/transformers/v5.0.0/en/model_doc/mvp#transformers.RobertaTokenizer).
+- LED pads the `input_ids` to be a multiple of `config.attention_window` if required. A small speedup is gained when [LEDTokenizer](/docs/transformers/v5.0.0/en/model_doc/mvp#transformers.RobertaTokenizer) is used with the `pad_to_multiple_of` argument.
 - LED works best on long-range sequence-to-sequence tasks where the `input_ids` are significantly longer than 1024 tokens.
-- LED uses global attention by means of the `global_attention_mask` (see [LongformerModel](/docs/transformers/v5.0.0rc1/en/model_doc/longformer#transformers.LongformerModel)). For summarization, it is advised to put global attention only on the first `` token. For question answering, it is advised to put global attention on all tokens of the question.
+- LED uses global attention by means of the `global_attention_mask` (see [LongformerModel](/docs/transformers/v5.0.0/en/model_doc/longformer#transformers.LongformerModel)). For summarization, it is advised to put global attention only on the first `` token. For question answering, it is advised to put global attention on all tokens of the question.
 - To fine-tune LED on all 16384 parameters, gradient checkpointing can be enabled in case training leads to out-of-memory (OOM) errors. Enable gradient checkpointing by adding `model.gradient_checkpointing_enable()` and setting `use_cache=False` to disable the caching mechanism to save memory.
 - Inputs should be padded on the right because LED uses absolute position embeddings.
 
@@ -116,15 +116,15 @@ print(tokenizer.decode(output[0], skip_special_tokens=True))
 
 #### transformers.LEDConfig[[transformers.LEDConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/led/configuration_led.py#L26)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/led/configuration_led.py#L23)
 
-This is the configuration class to store the configuration of a [LEDModel](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.LEDModel). It is used to instantiate an LED
+This is the configuration class to store the configuration of a [LEDModel](/docs/transformers/v5.0.0/en/model_doc/led#transformers.LEDModel). It is used to instantiate an LED
 model according to the specified arguments, defining the model architecture. Instantiating a configuration with the
 defaults will yield a similar configuration to that of the LED
 [allenai/led-base-16384](https://huggingface.co/allenai/led-base-16384) architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -143,7 +143,7 @@ Example:
 
 **Parameters:**
 
-vocab_size (`int`, *optional*, defaults to 50265) : Vocabulary size of the LED model. Defines the number of different tokens that can be represented by the `inputs_ids` passed when calling [LEDModel](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.LEDModel).
+vocab_size (`int`, *optional*, defaults to 50265) : Vocabulary size of the LED model. Defines the number of different tokens that can be represented by the `inputs_ids` passed when calling [LEDModel](/docs/transformers/v5.0.0/en/model_doc/led#transformers.LEDModel).
 
 d_model (`int`, *optional*, defaults to 1024) : Dimensionality of the layers and the pooler layer.
 
@@ -185,7 +185,7 @@ use_cache (`bool`, *optional*, defaults to `True`) : Whether or not the model sh
 
 #### transformers.RobertaTokenizer[[transformers.RobertaTokenizer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/roberta/tokenization_roberta.py#L31)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/roberta/tokenization_roberta.py#L28)
 
 Construct a RoBERTa tokenizer (backed by HuggingFace's tokenizers library). Based on Byte-Pair-Encoding.
 
@@ -209,10 +209,10 @@ call it on some text, but since the model was not pretrained this way, it might 
 
 When used with `is_split_into_words=True`, this tokenizer needs to be instantiated with `add_prefix_space=True`.
 
-This tokenizer inherits from [TokenizersBackend](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should refer to
+This tokenizer inherits from [TokenizersBackend](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should refer to
 this superclass for more information regarding those methods.
 
-get_special_tokens_masktransformers.RobertaTokenizer.get_special_tokens_maskhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_base.py#L1335[{"name": "token_ids_0", "val": ": list[int]"}, {"name": "token_ids_1", "val": ": Optional[list[int]] = None"}, {"name": "already_has_special_tokens", "val": ": bool = False"}]- **token_ids_0** -- List of IDs for the (possibly already formatted) sequence.
+get_special_tokens_masktransformers.RobertaTokenizer.get_special_tokens_maskhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_base.py#L1330[{"name": "token_ids_0", "val": ": list[int]"}, {"name": "token_ids_1", "val": ": list[int] | None = None"}, {"name": "already_has_special_tokens", "val": ": bool = False"}]- **token_ids_0** -- List of IDs for the (possibly already formatted) sequence.
 - **token_ids_1** -- Unused when `already_has_special_tokens=True`. Must be None in that case.
 - **already_has_special_tokens** -- Whether the sequence is already formatted with special tokens.0A list of integers in the range [0, 1]1 for a special token, 0 for a sequence token.
 
@@ -254,13 +254,13 @@ trim_offsets (`bool`, *optional*, defaults to `True`) : Whether the post process
 1 for a special token, 0 for a sequence token.
 #### save_vocabulary[[transformers.RobertaTokenizer.save_vocabulary]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_tokenizers.py#L384)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_tokenizers.py#L408)
 
 ## LEDTokenizerFast[[transformers.RobertaTokenizer]]
 
 #### transformers.RobertaTokenizer[[transformers.RobertaTokenizer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/roberta/tokenization_roberta.py#L31)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/roberta/tokenization_roberta.py#L28)
 
 Construct a RoBERTa tokenizer (backed by HuggingFace's tokenizers library). Based on Byte-Pair-Encoding.
 
@@ -284,7 +284,7 @@ call it on some text, but since the model was not pretrained this way, it might 
 
 When used with `is_split_into_words=True`, this tokenizer needs to be instantiated with `add_prefix_space=True`.
 
-This tokenizer inherits from [TokenizersBackend](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should refer to
+This tokenizer inherits from [TokenizersBackend](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.TokenizersBackend) which contains most of the main methods. Users should refer to
 this superclass for more information regarding those methods.
 
 **Parameters:**
@@ -317,7 +317,7 @@ trim_offsets (`bool`, *optional*, defaults to `True`) : Whether the post process
 
 #### transformers.models.led.modeling_led.LEDEncoderBaseModelOutput[[transformers.models.led.modeling_led.LEDEncoderBaseModelOutput]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/led/modeling_led.py#L1088)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/led/modeling_led.py#L1091)
 
 Base class for LEDEncoder's outputs, with potential hidden states, local and global attentions.
 
@@ -325,7 +325,7 @@ Base class for LEDEncoder's outputs, with potential hidden states, local and glo
 
 last_hidden_state (`.last_hidden_state` of shape `(batch_size, sequence_length, hidden_size)`) : Sequence of hidden-states at the output of the last layer of the model.
 
-hidden_states (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) : Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, + one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+hidden_states (`tuple[torch.FloatTensor, ...] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) : Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, + one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
 
 attentions (`tuple(torch.FloatTensor)`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, x + attention_window + 1)`, where `x` is the number of tokens with global attention mask.  Local attentions weights after the attention softmax, used to compute the weighted average in the self-attention heads. Those are the attention weights from every token in the sequence to every token with global attention (first `x` values) and to every token in the attention window (remaining `attention_window + 1` values). Note that the first `x` values refer to tokens with fixed positions in the text, but the remaining `attention_window + 1` values refer to tokens with relative positions: the attention weight of a token to itself is located at index `x + attention_window / 2` and the `attention_window / 2` preceding (succeeding) values are the attention weights to the `attention_window / 2` preceding (succeeding) tokens. If the attention window contains a token with global attention, the attention weight at the corresponding index is set to 0; the value should be accessed from the first `x` attention weights. If a token has global attention, the attention weights to all other tokens in `attentions` is set to 0, the values should be accessed from `global_attentions`.
 
@@ -333,7 +333,7 @@ global_attentions (`tuple(torch.FloatTensor)`, *optional*, returned when `output
 
 #### transformers.models.led.modeling_led.LEDSeq2SeqModelOutput[[transformers.models.led.modeling_led.LEDSeq2SeqModelOutput]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/led/modeling_led.py#L1127)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/led/modeling_led.py#L1130)
 
 Base class for model encoder's outputs that also contains : pre-computed hidden states that can speed up sequential
 decoding.
@@ -342,25 +342,25 @@ decoding.
 
 last_hidden_state (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) : Sequence of hidden-states at the output of the last layer of the decoder of the model.  If `past_key_values` is used only the last hidden-state of the sequences of shape `(batch_size, 1, hidden_size)` is output.
 
-past_key_values (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) : It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).  Contains pre-computed hidden-states (key and values in the attention blocks) of the decoder that can be used (see `past_key_values` input) to speed up sequential decoding.
+past_key_values (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) : It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).  Contains pre-computed hidden-states (key and values in the attention blocks) of the decoder that can be used (see `past_key_values` input) to speed up sequential decoding.
 
-decoder_hidden_states (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) : Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, + one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.  Hidden-states of the decoder at the output of each layer plus the initial embedding outputs.
+decoder_hidden_states (`tuple[torch.FloatTensor, ...] | None.decoder_hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) : Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, + one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.  Hidden-states of the decoder at the output of each layer plus the initial embedding outputs.
 
-decoder_attentions (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights of the decoder, after the attention softmax, used to compute the weighted average in the self-attention heads.
+decoder_attentions (`tuple[torch.FloatTensor, ...] | None.decoder_attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights of the decoder, after the attention softmax, used to compute the weighted average in the self-attention heads.
 
-cross_attentions (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights of the decoder's cross-attention layer, after the attention softmax, used to compute the weighted average in the cross-attention heads.
+cross_attentions (`tuple[torch.FloatTensor, ...] | None.cross_attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights of the decoder's cross-attention layer, after the attention softmax, used to compute the weighted average in the cross-attention heads.
 
-encoder_last_hidden_state (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*, defaults to `None`) : Sequence of hidden-states at the output of the last layer of the encoder of the model.
+encoder_last_hidden_state (`torch.FloatTensor | None.encoder_last_hidden_state` of shape `(batch_size, sequence_length, hidden_size)`, defaults to `None`) : Sequence of hidden-states at the output of the last layer of the encoder of the model.
 
-encoder_hidden_states (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) : Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, + one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.  Hidden-states of the encoder at the output of each layer plus the initial embedding outputs.
+encoder_hidden_states (`tuple[torch.FloatTensor, ...] | None.encoder_hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) : Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, + one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.  Hidden-states of the encoder at the output of each layer plus the initial embedding outputs.
 
-encoder_attentions (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights of the encoder, after the attention softmax, used to compute the weighted average in the self-attention heads.
+encoder_attentions (`tuple[torch.FloatTensor, ...] | None.encoder_attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights of the encoder, after the attention softmax, used to compute the weighted average in the self-attention heads.
 
 encoder_global_attentions (`tuple(torch.FloatTensor)`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, x)`, where `x` is the number of tokens with global attention mask.  Global attentions weights after the attention softmax, used to compute the weighted average in the self-attention heads. Those are the attention weights from every token with global attention to every token in the sequence.
 
 #### transformers.models.led.modeling_led.LEDSeq2SeqLMOutput[[transformers.models.led.modeling_led.LEDSeq2SeqLMOutput]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/led/modeling_led.py#L1165)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/led/modeling_led.py#L1168)
 
 Base class for sequence-to-sequence language models outputs.
 
@@ -370,25 +370,25 @@ loss (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is
 
 logits (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) : Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
 
-past_key_values (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) : It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).  Contains pre-computed hidden-states (key and values in the attention blocks) of the decoder that can be used (see `past_key_values` input) to speed up sequential decoding.
+past_key_values (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) : It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).  Contains pre-computed hidden-states (key and values in the attention blocks) of the decoder that can be used (see `past_key_values` input) to speed up sequential decoding.
 
-decoder_hidden_states (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) : Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, + one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.  Hidden-states of the decoder at the output of each layer plus the initial embedding outputs.
+decoder_hidden_states (`tuple[torch.FloatTensor, ...] | None.decoder_hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) : Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, + one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.  Hidden-states of the decoder at the output of each layer plus the initial embedding outputs.
 
-decoder_attentions (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights of the decoder, after the attention softmax, used to compute the weighted average in the self-attention heads.
+decoder_attentions (`tuple[torch.FloatTensor, ...] | None.decoder_attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights of the decoder, after the attention softmax, used to compute the weighted average in the self-attention heads.
 
-cross_attentions (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights of the decoder's cross-attention layer, after the attention softmax, used to compute the weighted average in the cross-attention heads.
+cross_attentions (`tuple[torch.FloatTensor, ...] | None.cross_attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights of the decoder's cross-attention layer, after the attention softmax, used to compute the weighted average in the cross-attention heads.
 
-encoder_last_hidden_state (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*, defaults to `None`) : Sequence of hidden-states at the output of the last layer of the encoder of the model.
+encoder_last_hidden_state (`torch.FloatTensor | None.encoder_last_hidden_state` of shape `(batch_size, sequence_length, hidden_size)`, defaults to `None`) : Sequence of hidden-states at the output of the last layer of the encoder of the model.
 
-encoder_hidden_states (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) : Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, + one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.  Hidden-states of the encoder at the output of each layer plus the initial embedding outputs.
+encoder_hidden_states (`tuple[torch.FloatTensor, ...] | None.encoder_hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) : Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, + one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.  Hidden-states of the encoder at the output of each layer plus the initial embedding outputs.
 
-encoder_attentions (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights of the encoder, after the attention softmax, used to compute the weighted average in the self-attention heads.
+encoder_attentions (`tuple[torch.FloatTensor, ...] | None.encoder_attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights of the encoder, after the attention softmax, used to compute the weighted average in the self-attention heads.
 
 encoder_global_attentions (`tuple(torch.FloatTensor)`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, x)`, where `x` is the number of tokens with global attention mask.  Global attentions weights after the attention softmax, used to compute the weighted average in the self-attention heads. Those are the attention weights from every token with global attention to every token in the sequence.
 
 #### transformers.models.led.modeling_led.LEDSeq2SeqSequenceClassifierOutput[[transformers.models.led.modeling_led.LEDSeq2SeqSequenceClassifierOutput]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/led/modeling_led.py#L1203)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/led/modeling_led.py#L1206)
 
 Base class for outputs of sequence-to-sequence sentence classification models.
 
@@ -398,25 +398,25 @@ loss (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `label` is 
 
 logits (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) : Classification (or regression if config.num_labels==1) scores (before SoftMax).
 
-past_key_values (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) : It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).  Contains pre-computed hidden-states (key and values in the attention blocks) of the decoder that can be used (see `past_key_values` input) to speed up sequential decoding.
+past_key_values (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) : It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).  Contains pre-computed hidden-states (key and values in the attention blocks) of the decoder that can be used (see `past_key_values` input) to speed up sequential decoding.
 
-decoder_hidden_states (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) : Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, + one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.  Hidden-states of the decoder at the output of each layer plus the initial embedding outputs.
+decoder_hidden_states (`tuple[torch.FloatTensor, ...] | None.decoder_hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) : Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, + one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.  Hidden-states of the decoder at the output of each layer plus the initial embedding outputs.
 
-decoder_attentions (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights of the decoder, after the attention softmax, used to compute the weighted average in the self-attention heads.
+decoder_attentions (`tuple[torch.FloatTensor, ...] | None.decoder_attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights of the decoder, after the attention softmax, used to compute the weighted average in the self-attention heads.
 
-cross_attentions (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights of the decoder's cross-attention layer, after the attention softmax, used to compute the weighted average in the cross-attention heads.
+cross_attentions (`tuple[torch.FloatTensor, ...] | None.cross_attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights of the decoder's cross-attention layer, after the attention softmax, used to compute the weighted average in the cross-attention heads.
 
-encoder_last_hidden_state (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*, defaults to `None`) : Sequence of hidden-states at the output of the last layer of the encoder of the model.
+encoder_last_hidden_state (`torch.FloatTensor | None.encoder_last_hidden_state` of shape `(batch_size, sequence_length, hidden_size)`, defaults to `None`) : Sequence of hidden-states at the output of the last layer of the encoder of the model.
 
-encoder_hidden_states (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) : Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, + one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.  Hidden-states of the encoder at the output of each layer plus the initial embedding outputs.
+encoder_hidden_states (`tuple[torch.FloatTensor, ...] | None.encoder_hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) : Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, + one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.  Hidden-states of the encoder at the output of each layer plus the initial embedding outputs.
 
-encoder_attentions (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights of the encoder, after the attention softmax, used to compute the weighted average in the self-attention heads.
+encoder_attentions (`tuple[torch.FloatTensor, ...] | None.encoder_attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights of the encoder, after the attention softmax, used to compute the weighted average in the self-attention heads.
 
 encoder_global_attentions (`tuple(torch.FloatTensor)`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, x)`, where `x` is the number of tokens with global attention mask.  Global attentions weights after the attention softmax, used to compute the weighted average in the self-attention heads. Those are the attention weights from every token with global attention to every token in the sequence.
 
 #### transformers.models.led.modeling_led.LEDSeq2SeqQuestionAnsweringModelOutput[[transformers.models.led.modeling_led.LEDSeq2SeqQuestionAnsweringModelOutput]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/led/modeling_led.py#L1241)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/led/modeling_led.py#L1244)
 
 Base class for outputs of sequence-to-sequence question answering models.
 
@@ -424,23 +424,23 @@ Base class for outputs of sequence-to-sequence question answering models.
 
 loss (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) : Total span extraction loss is the sum of a Cross-Entropy for the start and end positions.
 
-start_logits (`torch.FloatTensor` of shape `(batch_size, sequence_length)`, *optional*, defaults to `None`) : Span-start scores (before SoftMax).
+start_logits (`torch.FloatTensor | None.start_logits` of shape `(batch_size, sequence_length)`, defaults to `None`) : Span-start scores (before SoftMax).
 
-end_logits (`torch.FloatTensor` of shape `(batch_size, sequence_length)`, *optional*, defaults to `None`) : Span-end scores (before SoftMax).
+end_logits (`torch.FloatTensor | None.end_logits` of shape `(batch_size, sequence_length)`, defaults to `None`) : Span-end scores (before SoftMax).
 
-past_key_values (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) : It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).  Contains pre-computed hidden-states (key and values in the attention blocks) of the decoder that can be used (see `past_key_values` input) to speed up sequential decoding.
+past_key_values (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) : It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).  Contains pre-computed hidden-states (key and values in the attention blocks) of the decoder that can be used (see `past_key_values` input) to speed up sequential decoding.
 
-decoder_hidden_states (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) : Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, + one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.  Hidden-states of the decoder at the output of each layer plus the initial embedding outputs.
+decoder_hidden_states (`tuple[torch.FloatTensor, ...] | None.decoder_hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) : Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, + one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.  Hidden-states of the decoder at the output of each layer plus the initial embedding outputs.
 
-decoder_attentions (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights of the decoder, after the attention softmax, used to compute the weighted average in the self-attention heads.
+decoder_attentions (`tuple[torch.FloatTensor, ...] | None.decoder_attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights of the decoder, after the attention softmax, used to compute the weighted average in the self-attention heads.
 
-cross_attentions (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights of the decoder's cross-attention layer, after the attention softmax, used to compute the weighted average in the cross-attention heads.
+cross_attentions (`tuple[torch.FloatTensor, ...] | None.cross_attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights of the decoder's cross-attention layer, after the attention softmax, used to compute the weighted average in the cross-attention heads.
 
-encoder_last_hidden_state (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*, defaults to `None`) : Sequence of hidden-states at the output of the last layer of the encoder of the model.
+encoder_last_hidden_state (`torch.FloatTensor | None.encoder_last_hidden_state` of shape `(batch_size, sequence_length, hidden_size)`, defaults to `None`) : Sequence of hidden-states at the output of the last layer of the encoder of the model.
 
-encoder_hidden_states (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) : Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, + one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.  Hidden-states of the encoder at the output of each layer plus the initial embedding outputs.
+encoder_hidden_states (`tuple[torch.FloatTensor, ...] | None.encoder_hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) : Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, + one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.  Hidden-states of the encoder at the output of each layer plus the initial embedding outputs.
 
-encoder_attentions (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights of the encoder, after the attention softmax, used to compute the weighted average in the self-attention heads.
+encoder_attentions (`tuple[torch.FloatTensor, ...] | None.encoder_attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, sequence_length)`.  Attentions weights of the encoder, after the attention softmax, used to compute the weighted average in the self-attention heads.
 
 encoder_global_attentions (`tuple(torch.FloatTensor)`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) : Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, x)`, where `x` is the number of tokens with global attention mask.  Global attentions weights after the attention softmax, used to compute the weighted average in the self-attention heads. Those are the attention weights from every token with global attention to every token in the sequence.
 
@@ -448,11 +448,11 @@ encoder_global_attentions (`tuple(torch.FloatTensor)`, *optional*, returned when
 
 #### transformers.LEDModel[[transformers.LEDModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/led/modeling_led.py#L1750)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/led/modeling_led.py#L1753)
 
 The bare Led Model outputting raw hidden-states without any specific head on top.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -460,11 +460,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.LEDModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/led/modeling_led.py#L1776[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "decoder_input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "decoder_attention_mask", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "encoder_outputs", "val": ": typing.Optional[tuple[tuple[torch.FloatTensor]]] = None"}, {"name": "global_attention_mask", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "decoder_inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.LEDModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/led/modeling_led.py#L1779[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "decoder_input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "decoder_attention_mask", "val": ": torch.LongTensor | None = None"}, {"name": "encoder_outputs", "val": ": tuple[tuple[torch.FloatTensor]] | None = None"}, {"name": "global_attention_mask", "val": ": torch.FloatTensor | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "decoder_inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.Tensor | None = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -477,8 +477,8 @@ forwardtransformers.LEDModel.forwardhttps://github.com/huggingface/transformers/
 - **decoder_input_ids** (`torch.LongTensor` of shape `(batch_size, target_sequence_length)`, *optional*) --
   Indices of decoder input sequence tokens in the vocabulary.
 
-  Indices can be obtained using `LedTokenizer`. See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using `LedTokenizer`. See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 
@@ -491,7 +491,7 @@ forwardtransformers.LEDModel.forwardhttps://github.com/huggingface/transformers/
   If you want to change padding behavior, you should read `modeling_led._prepare_decoder_inputs` and modify
   to your needs. See diagram 1 in [the paper](https://huggingface.co/papers/1910.13461) for more information on the
   default strategy.
-- **encoder_outputs** (`tuple[tuple[torch.FloatTensor]]`, *optional*) --
+- **encoder_outputs** (`tuple`, *optional*) --
   Tuple consists of (`last_hidden_state`, *optional*: `hidden_states`, *optional*: `attentions`)
   `last_hidden_state` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) is a sequence of
   hidden-states at the output of the last layer of the encoder. Used in the cross-attention of the decoder.
@@ -510,8 +510,8 @@ forwardtransformers.LEDModel.forwardhttps://github.com/huggingface/transformers/
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -540,42 +540,42 @@ forwardtransformers.LEDModel.forwardhttps://github.com/huggingface/transformers/
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 - **cache_position** (`torch.Tensor` of shape `(sequence_length)`, *optional*) --
   Indices depicting the position of the input sequence tokens in the sequence. Contrarily to `position_ids`,
   this tensor is not affected by padding. It is used to update the cache in the correct position and to infer
-  the complete sequence length.0[transformers.models.led.modeling_led.LEDSeq2SeqModelOutput](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.models.led.modeling_led.LEDSeq2SeqModelOutput) or `tuple(torch.FloatTensor)`A [transformers.models.led.modeling_led.LEDSeq2SeqModelOutput](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.models.led.modeling_led.LEDSeq2SeqModelOutput) or a tuple of
+  the complete sequence length.0[transformers.models.led.modeling_led.LEDSeq2SeqModelOutput](/docs/transformers/v5.0.0/en/model_doc/led#transformers.models.led.modeling_led.LEDSeq2SeqModelOutput) or `tuple(torch.FloatTensor)`A [transformers.models.led.modeling_led.LEDSeq2SeqModelOutput](/docs/transformers/v5.0.0/en/model_doc/led#transformers.models.led.modeling_led.LEDSeq2SeqModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([LEDConfig](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.LEDConfig)) and inputs.
+elements depending on the configuration ([LEDConfig](/docs/transformers/v5.0.0/en/model_doc/led#transformers.LEDConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the decoder of the model.
 
   If `past_key_values` is used only the last hidden-state of the sequences of shape `(batch_size, 1,
   hidden_size)` is output.
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the attention blocks) of the decoder that can be
   used (see `past_key_values` input) to speed up sequential decoding.
-- **decoder_hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **decoder_hidden_states** (`tuple[torch.FloatTensor, ...] | None.decoder_hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the decoder at the output of each layer plus the initial embedding outputs.
-- **decoder_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **decoder_attentions** (`tuple[torch.FloatTensor, ...] | None.decoder_attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights of the decoder, after the attention softmax, used to compute the weighted average in the
   self-attention heads.
-- **cross_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **cross_attentions** (`tuple[torch.FloatTensor, ...] | None.cross_attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights of the decoder's cross-attention layer, after the attention softmax, used to compute the
   weighted average in the cross-attention heads.
-- **encoder_last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*, defaults to `None`) -- Sequence of hidden-states at the output of the last layer of the encoder of the model.
-- **encoder_hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **encoder_last_hidden_state** (`torch.FloatTensor | None.encoder_last_hidden_state` of shape `(batch_size, sequence_length, hidden_size)`, defaults to `None`) -- Sequence of hidden-states at the output of the last layer of the encoder of the model.
+- **encoder_hidden_states** (`tuple[torch.FloatTensor, ...] | None.encoder_hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the encoder at the output of each layer plus the initial embedding outputs.
-- **encoder_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **encoder_attentions** (`tuple[torch.FloatTensor, ...] | None.encoder_attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights of the encoder, after the attention softmax, used to compute the weighted average in the
@@ -586,7 +586,7 @@ elements depending on the configuration ([LEDConfig](/docs/transformers/v5.0.0rc
   Global attentions weights after the attention softmax, used to compute the weighted average in the
   self-attention heads. Those are the attention weights from every token with global attention to every token
   in the sequence.
-The [LEDModel](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.LEDModel) forward method, overrides the `__call__` special method.
+The [LEDModel](/docs/transformers/v5.0.0/en/model_doc/led#transformers.LEDModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -594,44 +594,44 @@ the latter silently ignores them.
 
 **Parameters:**
 
-config ([LEDConfig](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.LEDConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([LEDConfig](/docs/transformers/v5.0.0/en/model_doc/led#transformers.LEDConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.models.led.modeling_led.LEDSeq2SeqModelOutput](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.models.led.modeling_led.LEDSeq2SeqModelOutput) or `tuple(torch.FloatTensor)``
+`[transformers.models.led.modeling_led.LEDSeq2SeqModelOutput](/docs/transformers/v5.0.0/en/model_doc/led#transformers.models.led.modeling_led.LEDSeq2SeqModelOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.models.led.modeling_led.LEDSeq2SeqModelOutput](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.models.led.modeling_led.LEDSeq2SeqModelOutput) or a tuple of
+A [transformers.models.led.modeling_led.LEDSeq2SeqModelOutput](/docs/transformers/v5.0.0/en/model_doc/led#transformers.models.led.modeling_led.LEDSeq2SeqModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([LEDConfig](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.LEDConfig)) and inputs.
+elements depending on the configuration ([LEDConfig](/docs/transformers/v5.0.0/en/model_doc/led#transformers.LEDConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the decoder of the model.
 
   If `past_key_values` is used only the last hidden-state of the sequences of shape `(batch_size, 1,
   hidden_size)` is output.
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the attention blocks) of the decoder that can be
   used (see `past_key_values` input) to speed up sequential decoding.
-- **decoder_hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **decoder_hidden_states** (`tuple[torch.FloatTensor, ...] | None.decoder_hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the decoder at the output of each layer plus the initial embedding outputs.
-- **decoder_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **decoder_attentions** (`tuple[torch.FloatTensor, ...] | None.decoder_attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights of the decoder, after the attention softmax, used to compute the weighted average in the
   self-attention heads.
-- **cross_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **cross_attentions** (`tuple[torch.FloatTensor, ...] | None.cross_attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights of the decoder's cross-attention layer, after the attention softmax, used to compute the
   weighted average in the cross-attention heads.
-- **encoder_last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*, defaults to `None`) -- Sequence of hidden-states at the output of the last layer of the encoder of the model.
-- **encoder_hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **encoder_last_hidden_state** (`torch.FloatTensor | None.encoder_last_hidden_state` of shape `(batch_size, sequence_length, hidden_size)`, defaults to `None`) -- Sequence of hidden-states at the output of the last layer of the encoder of the model.
+- **encoder_hidden_states** (`tuple[torch.FloatTensor, ...] | None.encoder_hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the encoder at the output of each layer plus the initial embedding outputs.
-- **encoder_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **encoder_attentions** (`tuple[torch.FloatTensor, ...] | None.encoder_attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights of the encoder, after the attention softmax, used to compute the weighted average in the
@@ -647,11 +647,11 @@ elements depending on the configuration ([LEDConfig](/docs/transformers/v5.0.0rc
 
 #### transformers.LEDForConditionalGeneration[[transformers.LEDForConditionalGeneration]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/led/modeling_led.py#L1894)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/led/modeling_led.py#L1897)
 
 The LED Model with a language modeling head. Can be used for summarization.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -659,11 +659,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.LEDForConditionalGeneration.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/led/modeling_led.py#L1926[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "decoder_input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "decoder_attention_mask", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "encoder_outputs", "val": ": typing.Optional[tuple[tuple[torch.FloatTensor]]] = None"}, {"name": "global_attention_mask", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "decoder_inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.LEDForConditionalGeneration.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/led/modeling_led.py#L1929[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "decoder_input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "decoder_attention_mask", "val": ": torch.LongTensor | None = None"}, {"name": "encoder_outputs", "val": ": tuple[tuple[torch.FloatTensor]] | None = None"}, {"name": "global_attention_mask", "val": ": torch.FloatTensor | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "decoder_inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.Tensor | None = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -676,8 +676,8 @@ forwardtransformers.LEDForConditionalGeneration.forwardhttps://github.com/huggin
 - **decoder_input_ids** (`torch.LongTensor` of shape `(batch_size, target_sequence_length)`, *optional*) --
   Indices of decoder input sequence tokens in the vocabulary.
 
-  Indices can be obtained using `LedTokenizer`. See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using `LedTokenizer`. See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 
@@ -690,7 +690,7 @@ forwardtransformers.LEDForConditionalGeneration.forwardhttps://github.com/huggin
   If you want to change padding behavior, you should read `modeling_led._prepare_decoder_inputs` and modify
   to your needs. See diagram 1 in [the paper](https://huggingface.co/papers/1910.13461) for more information on the
   default strategy.
-- **encoder_outputs** (`tuple[tuple[torch.FloatTensor]]`, *optional*) --
+- **encoder_outputs** (`tuple`, *optional*) --
   Tuple consists of (`last_hidden_state`, *optional*: `hidden_states`, *optional*: `attentions`)
   `last_hidden_state` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) is a sequence of
   hidden-states at the output of the last layer of the encoder. Used in the cross-attention of the decoder.
@@ -709,8 +709,8 @@ forwardtransformers.LEDForConditionalGeneration.forwardhttps://github.com/huggin
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -743,40 +743,40 @@ forwardtransformers.LEDForConditionalGeneration.forwardhttps://github.com/huggin
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 - **cache_position** (`torch.Tensor` of shape `(sequence_length)`, *optional*) --
   Indices depicting the position of the input sequence tokens in the sequence. Contrarily to `position_ids`,
   this tensor is not affected by padding. It is used to update the cache in the correct position and to infer
-  the complete sequence length.0[transformers.models.led.modeling_led.LEDSeq2SeqLMOutput](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.models.led.modeling_led.LEDSeq2SeqLMOutput) or `tuple(torch.FloatTensor)`A [transformers.models.led.modeling_led.LEDSeq2SeqLMOutput](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.models.led.modeling_led.LEDSeq2SeqLMOutput) or a tuple of
+  the complete sequence length.0[transformers.models.led.modeling_led.LEDSeq2SeqLMOutput](/docs/transformers/v5.0.0/en/model_doc/led#transformers.models.led.modeling_led.LEDSeq2SeqLMOutput) or `tuple(torch.FloatTensor)`A [transformers.models.led.modeling_led.LEDSeq2SeqLMOutput](/docs/transformers/v5.0.0/en/model_doc/led#transformers.models.led.modeling_led.LEDSeq2SeqLMOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([LEDConfig](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.LEDConfig)) and inputs.
+elements depending on the configuration ([LEDConfig](/docs/transformers/v5.0.0/en/model_doc/led#transformers.LEDConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the attention blocks) of the decoder that can be
   used (see `past_key_values` input) to speed up sequential decoding.
-- **decoder_hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **decoder_hidden_states** (`tuple[torch.FloatTensor, ...] | None.decoder_hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the decoder at the output of each layer plus the initial embedding outputs.
-- **decoder_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **decoder_attentions** (`tuple[torch.FloatTensor, ...] | None.decoder_attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights of the decoder, after the attention softmax, used to compute the weighted average in the
   self-attention heads.
-- **cross_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **cross_attentions** (`tuple[torch.FloatTensor, ...] | None.cross_attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights of the decoder's cross-attention layer, after the attention softmax, used to compute the
   weighted average in the cross-attention heads.
-- **encoder_last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*, defaults to `None`) -- Sequence of hidden-states at the output of the last layer of the encoder of the model.
-- **encoder_hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **encoder_last_hidden_state** (`torch.FloatTensor | None.encoder_last_hidden_state` of shape `(batch_size, sequence_length, hidden_size)`, defaults to `None`) -- Sequence of hidden-states at the output of the last layer of the encoder of the model.
+- **encoder_hidden_states** (`tuple[torch.FloatTensor, ...] | None.encoder_hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the encoder at the output of each layer plus the initial embedding outputs.
-- **encoder_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **encoder_attentions** (`tuple[torch.FloatTensor, ...] | None.encoder_attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights of the encoder, after the attention softmax, used to compute the weighted average in the
@@ -787,7 +787,7 @@ elements depending on the configuration ([LEDConfig](/docs/transformers/v5.0.0rc
   Global attentions weights after the attention softmax, used to compute the weighted average in the
   self-attention heads. Those are the attention weights from every token with global attention to every token
   in the sequence.
-The [LEDForConditionalGeneration](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.LEDForConditionalGeneration) forward method, overrides the `__call__` special method.
+The [LEDForConditionalGeneration](/docs/transformers/v5.0.0/en/model_doc/led#transformers.LEDForConditionalGeneration) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -846,280 +846,42 @@ Example Conditional generation :
 
 **Parameters:**
 
-config ([LEDConfig](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.LEDConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([LEDConfig](/docs/transformers/v5.0.0/en/model_doc/led#transformers.LEDConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.models.led.modeling_led.LEDSeq2SeqLMOutput](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.models.led.modeling_led.LEDSeq2SeqLMOutput) or `tuple(torch.FloatTensor)``
+`[transformers.models.led.modeling_led.LEDSeq2SeqLMOutput](/docs/transformers/v5.0.0/en/model_doc/led#transformers.models.led.modeling_led.LEDSeq2SeqLMOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.models.led.modeling_led.LEDSeq2SeqLMOutput](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.models.led.modeling_led.LEDSeq2SeqLMOutput) or a tuple of
+A [transformers.models.led.modeling_led.LEDSeq2SeqLMOutput](/docs/transformers/v5.0.0/en/model_doc/led#transformers.models.led.modeling_led.LEDSeq2SeqLMOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([LEDConfig](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.LEDConfig)) and inputs.
+elements depending on the configuration ([LEDConfig](/docs/transformers/v5.0.0/en/model_doc/led#transformers.LEDConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss.
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the attention blocks) of the decoder that can be
   used (see `past_key_values` input) to speed up sequential decoding.
-- **decoder_hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **decoder_hidden_states** (`tuple[torch.FloatTensor, ...] | None.decoder_hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the decoder at the output of each layer plus the initial embedding outputs.
-- **decoder_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **decoder_attentions** (`tuple[torch.FloatTensor, ...] | None.decoder_attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights of the decoder, after the attention softmax, used to compute the weighted average in the
   self-attention heads.
-- **cross_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **cross_attentions** (`tuple[torch.FloatTensor, ...] | None.cross_attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights of the decoder's cross-attention layer, after the attention softmax, used to compute the
   weighted average in the cross-attention heads.
-- **encoder_last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*, defaults to `None`) -- Sequence of hidden-states at the output of the last layer of the encoder of the model.
-- **encoder_hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **encoder_last_hidden_state** (`torch.FloatTensor | None.encoder_last_hidden_state` of shape `(batch_size, sequence_length, hidden_size)`, defaults to `None`) -- Sequence of hidden-states at the output of the last layer of the encoder of the model.
+- **encoder_hidden_states** (`tuple[torch.FloatTensor, ...] | None.encoder_hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the encoder at the output of each layer plus the initial embedding outputs.
-- **encoder_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
-  sequence_length)`.
-
-  Attentions weights of the encoder, after the attention softmax, used to compute the weighted average in the
-  self-attention heads.
-- **encoder_global_attentions** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, x)`,
-  where `x` is the number of tokens with global attention mask.
-
-  Global attentions weights after the attention softmax, used to compute the weighted average in the
-  self-attention heads. Those are the attention weights from every token with global attention to every token
-  in the sequence.
-
-## LEDForSequenceClassification[[transformers.LEDForSequenceClassification]]
-
-#### transformers.LEDForSequenceClassification[[transformers.LEDForSequenceClassification]]
-
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/led/modeling_led.py#L2091)
-
-LED model with a sequence classification/head on top (a linear layer on top of the pooled output) e.g. for GLUE
-tasks.
-
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
-library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
-etc.)
-
-This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/nn.html#torch.nn.Module) subclass.
-Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
-and behavior.
-
-forwardtransformers.LEDForSequenceClassification.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/led/modeling_led.py#L2111[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "decoder_input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "decoder_attention_mask", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "encoder_outputs", "val": ": typing.Optional[tuple[tuple[torch.FloatTensor]]] = None"}, {"name": "global_attention_mask", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "decoder_inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
-  Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
-
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
-
-  [What are input IDs?](../glossary#input-ids)
-- **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
-  Mask to avoid performing attention on padding token indices. Mask values selected in `[0, 1]`:
-
-  - 1 for tokens that are **not masked**,
-  - 0 for tokens that are **masked**.
-
-  [What are attention masks?](../glossary#attention-mask)
-- **decoder_input_ids** (`torch.LongTensor` of shape `(batch_size, target_sequence_length)`, *optional*) --
-  Indices of decoder input sequence tokens in the vocabulary.
-
-  Indices can be obtained using `LedTokenizer`. See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
-
-  [What are input IDs?](../glossary#input-ids)
-
-  LED uses the `eos_token_id` as the starting token for `decoder_input_ids` generation. If `past_key_values`
-  is used, optionally only the last `decoder_input_ids` have to be input (see `past_key_values`).
-- **decoder_attention_mask** (`torch.LongTensor` of shape `(batch_size, target_sequence_length)`, *optional*) --
-  Default behavior: generate a tensor that ignores pad tokens in `decoder_input_ids`. Causal mask will also
-  be used by default.
-
-  If you want to change padding behavior, you should read `modeling_led._prepare_decoder_inputs` and modify
-  to your needs. See diagram 1 in [the paper](https://huggingface.co/papers/1910.13461) for more information on the
-  default strategy.
-- **encoder_outputs** (`tuple[tuple[torch.FloatTensor]]`, *optional*) --
-  Tuple consists of (`last_hidden_state`, *optional*: `hidden_states`, *optional*: `attentions`)
-  `last_hidden_state` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) is a sequence of
-  hidden-states at the output of the last layer of the encoder. Used in the cross-attention of the decoder.
-- **global_attention_mask** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`, *optional*) --
-  Mask to decide the attention given on each token, local attention or global attention for the encoder.
-  Tokens with global attention attends to all other tokens, and all other tokens attend to them. This is
-  important for task-specific finetuning because it makes the model more flexible at representing the task.
-  For example, for classification, the  token should be given global attention. For QA, all question
-  tokens should also have global attention. Please refer to the [Longformer
-  paper](https://huggingface.co/papers/2004.05150) for more details. Mask values selected in `[0, 1]`:
-
-  - 0 for local attention (a sliding window attention),
-  - 1 for global attention (tokens that attend to all other tokens, and all other tokens attend to them).
-- **inputs_embeds** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) --
-  Optionally, instead of passing `input_ids` you can choose to directly pass an embedded representation. This
-  is useful if you want more control over how to convert `input_ids` indices into associated vectors than the
-  model's internal embedding lookup matrix.
-- **decoder_inputs_embeds** (`torch.FloatTensor` of shape `(batch_size, target_sequence_length, hidden_size)`, *optional*) --
-  Optionally, instead of passing `decoder_input_ids` you can choose to directly pass an embedded
-  representation. If `past_key_values` is used, optionally only the last `decoder_inputs_embeds` have to be
-  input (see `past_key_values`). This is useful if you want more control over how to convert
-  `decoder_input_ids` indices into associated vectors than the model's internal embedding lookup matrix.
-
-  If `decoder_input_ids` and `decoder_inputs_embeds` are both unset, `decoder_inputs_embeds` takes the value
-  of `inputs_embeds`.
-- **labels** (`torch.LongTensor` of shape `(batch_size,)`, *optional*) --
-  Labels for computing the sequence classification/regression loss. Indices should be in `[0, ...,
-  config.num_labels - 1]`. If `config.num_labels > 1` a classification loss is computed (Cross-Entropy).
-- **use_cache** (`bool`, *optional*) --
-  If set to `True`, `past_key_values` key value states are returned and can be used to speed up decoding (see
-  `past_key_values`).
-- **output_attentions** (`bool`, *optional*) --
-  Whether or not to return the attentions tensors of all attention layers. See `attentions` under returned
-  tensors for more detail.
-- **output_hidden_states** (`bool`, *optional*) --
-  Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
-  more detail.
-- **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.models.led.modeling_led.LEDSeq2SeqSequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.models.led.modeling_led.LEDSeq2SeqSequenceClassifierOutput) or `tuple(torch.FloatTensor)`A [transformers.models.led.modeling_led.LEDSeq2SeqSequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.models.led.modeling_led.LEDSeq2SeqSequenceClassifierOutput) or a tuple of
-`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([LEDConfig](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.LEDConfig)) and inputs.
-
-- **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `label` is provided) -- Classification (or regression if config.num_labels==1) loss.
-- **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-
-  Contains pre-computed hidden-states (key and values in the attention blocks) of the decoder that can be
-  used (see `past_key_values` input) to speed up sequential decoding.
-- **decoder_hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
-  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
-
-  Hidden-states of the decoder at the output of each layer plus the initial embedding outputs.
-- **decoder_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
-  sequence_length)`.
-
-  Attentions weights of the decoder, after the attention softmax, used to compute the weighted average in the
-  self-attention heads.
-- **cross_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
-  sequence_length)`.
-
-  Attentions weights of the decoder's cross-attention layer, after the attention softmax, used to compute the
-  weighted average in the cross-attention heads.
-- **encoder_last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*, defaults to `None`) -- Sequence of hidden-states at the output of the last layer of the encoder of the model.
-- **encoder_hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
-  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
-
-  Hidden-states of the encoder at the output of each layer plus the initial embedding outputs.
-- **encoder_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
-  sequence_length)`.
-
-  Attentions weights of the encoder, after the attention softmax, used to compute the weighted average in the
-  self-attention heads.
-- **encoder_global_attentions** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length, x)`,
-  where `x` is the number of tokens with global attention mask.
-
-  Global attentions weights after the attention softmax, used to compute the weighted average in the
-  self-attention heads. Those are the attention weights from every token with global attention to every token
-  in the sequence.
-The [LEDForSequenceClassification](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.LEDForSequenceClassification) forward method, overrides the `__call__` special method.
-
-Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
-instance afterwards instead of this since the former takes care of running the pre and post processing steps while
-the latter silently ignores them.
-
-Example of single-label classification:
-
-```python
->>> import torch
->>> from transformers import AutoTokenizer, LEDForSequenceClassification
-
->>> tokenizer = AutoTokenizer.from_pretrained("allenai/led-base-16384")
->>> model = LEDForSequenceClassification.from_pretrained("allenai/led-base-16384")
-
->>> inputs = tokenizer("Hello, my dog is cute", return_tensors="pt")
-
->>> with torch.no_grad():
-...     logits = model(**inputs).logits
-
->>> predicted_class_id = logits.argmax().item()
->>> model.config.id2label[predicted_class_id]
-...
-
->>> # To train a model on `num_labels` classes, you can pass `num_labels=num_labels` to `.from_pretrained(...)`
->>> num_labels = len(model.config.id2label)
->>> model = LEDForSequenceClassification.from_pretrained("allenai/led-base-16384", num_labels=num_labels)
-
->>> labels = torch.tensor([1])
->>> loss = model(**inputs, labels=labels).loss
->>> round(loss.item(), 2)
-...
-```
-
-Example of multi-label classification:
-
-```python
->>> import torch
->>> from transformers import AutoTokenizer, LEDForSequenceClassification
-
->>> tokenizer = AutoTokenizer.from_pretrained("allenai/led-base-16384")
->>> model = LEDForSequenceClassification.from_pretrained("allenai/led-base-16384", problem_type="multi_label_classification")
-
->>> inputs = tokenizer("Hello, my dog is cute", return_tensors="pt")
-
->>> with torch.no_grad():
-...     logits = model(**inputs).logits
-
->>> predicted_class_ids = torch.arange(0, logits.shape[-1])[torch.sigmoid(logits).squeeze(dim=0) > 0.5]
-
->>> # To train a model on `num_labels` classes, you can pass `num_labels=num_labels` to `.from_pretrained(...)`
->>> num_labels = len(model.config.id2label)
->>> model = LEDForSequenceClassification.from_pretrained(
-...     "allenai/led-base-16384", num_labels=num_labels, problem_type="multi_label_classification"
-... )
-
->>> labels = torch.sum(
-...     torch.nn.functional.one_hot(predicted_class_ids[None, :].clone(), num_classes=num_labels), dim=1
-... ).to(torch.float)
->>> loss = model(**inputs, labels=labels).loss
-```
-
-**Parameters:**
-
-config ([LEDConfig](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.LEDConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
-
-**Returns:**
-
-`[transformers.models.led.modeling_led.LEDSeq2SeqSequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.models.led.modeling_led.LEDSeq2SeqSequenceClassifierOutput) or `tuple(torch.FloatTensor)``
-
-A [transformers.models.led.modeling_led.LEDSeq2SeqSequenceClassifierOutput](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.models.led.modeling_led.LEDSeq2SeqSequenceClassifierOutput) or a tuple of
-`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([LEDConfig](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.LEDConfig)) and inputs.
-
-- **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `label` is provided) -- Classification (or regression if config.num_labels==1) loss.
-- **logits** (`torch.FloatTensor` of shape `(batch_size, config.num_labels)`) -- Classification (or regression if config.num_labels==1) scores (before SoftMax).
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-
-  Contains pre-computed hidden-states (key and values in the attention blocks) of the decoder that can be
-  used (see `past_key_values` input) to speed up sequential decoding.
-- **decoder_hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
-  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
-
-  Hidden-states of the decoder at the output of each layer plus the initial embedding outputs.
-- **decoder_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
-  sequence_length)`.
-
-  Attentions weights of the decoder, after the attention softmax, used to compute the weighted average in the
-  self-attention heads.
-- **cross_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
-  sequence_length)`.
-
-  Attentions weights of the decoder's cross-attention layer, after the attention softmax, used to compute the
-  weighted average in the cross-attention heads.
-- **encoder_last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*, defaults to `None`) -- Sequence of hidden-states at the output of the last layer of the encoder of the model.
-- **encoder_hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
-  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
-
-  Hidden-states of the encoder at the output of each layer plus the initial embedding outputs.
-- **encoder_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **encoder_attentions** (`tuple[torch.FloatTensor, ...] | None.encoder_attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights of the encoder, after the attention softmax, used to compute the weighted average in the
@@ -1135,12 +897,12 @@ elements depending on the configuration ([LEDConfig](/docs/transformers/v5.0.0rc
 
 #### transformers.LEDForQuestionAnswering[[transformers.LEDForQuestionAnswering]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/led/modeling_led.py#L2236)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/led/modeling_led.py#L2089)
 
 The Led transformer with a span classification head on top for extractive question-answering tasks like
 SQuAD (a linear layer on top of the hidden-states output to compute `span start logits` and `span end logits`).
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -1148,11 +910,11 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.LEDForQuestionAnswering.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/led/modeling_led.py#L2249[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "decoder_input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "decoder_attention_mask", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "encoder_outputs", "val": ": typing.Optional[tuple[tuple[torch.FloatTensor]]] = None"}, {"name": "global_attention_mask", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "start_positions", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "end_positions", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "decoder_inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.LEDForQuestionAnswering.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/led/modeling_led.py#L2102[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "decoder_input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "decoder_attention_mask", "val": ": torch.LongTensor | None = None"}, {"name": "encoder_outputs", "val": ": tuple[tuple[torch.FloatTensor]] | None = None"}, {"name": "global_attention_mask", "val": ": torch.FloatTensor | None = None"}, {"name": "start_positions", "val": ": torch.LongTensor | None = None"}, {"name": "end_positions", "val": ": torch.LongTensor | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "decoder_inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "**kwargs", "val": ""}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -1165,8 +927,8 @@ forwardtransformers.LEDForQuestionAnswering.forwardhttps://github.com/huggingfac
 - **decoder_input_ids** (`torch.LongTensor` of shape `(batch_size, target_sequence_length)`, *optional*) --
   Indices of decoder input sequence tokens in the vocabulary.
 
-  Indices can be obtained using `LedTokenizer`. See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using `LedTokenizer`. See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 
@@ -1179,7 +941,7 @@ forwardtransformers.LEDForQuestionAnswering.forwardhttps://github.com/huggingfac
   If you want to change padding behavior, you should read `modeling_led._prepare_decoder_inputs` and modify
   to your needs. See diagram 1 in [the paper](https://huggingface.co/papers/1910.13461) for more information on the
   default strategy.
-- **encoder_outputs** (`tuple[tuple[torch.FloatTensor]]`, *optional*) --
+- **encoder_outputs** (`tuple`, *optional*) --
   Tuple consists of (`last_hidden_state`, *optional*: `hidden_states`, *optional*: `attentions`)
   `last_hidden_state` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) is a sequence of
   hidden-states at the output of the last layer of the encoder. Used in the cross-attention of the decoder.
@@ -1223,37 +985,37 @@ forwardtransformers.LEDForQuestionAnswering.forwardhttps://github.com/huggingfac
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.models.led.modeling_led.LEDSeq2SeqQuestionAnsweringModelOutput](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.models.led.modeling_led.LEDSeq2SeqQuestionAnsweringModelOutput) or `tuple(torch.FloatTensor)`A [transformers.models.led.modeling_led.LEDSeq2SeqQuestionAnsweringModelOutput](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.models.led.modeling_led.LEDSeq2SeqQuestionAnsweringModelOutput) or a tuple of
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.0[transformers.models.led.modeling_led.LEDSeq2SeqQuestionAnsweringModelOutput](/docs/transformers/v5.0.0/en/model_doc/led#transformers.models.led.modeling_led.LEDSeq2SeqQuestionAnsweringModelOutput) or `tuple(torch.FloatTensor)`A [transformers.models.led.modeling_led.LEDSeq2SeqQuestionAnsweringModelOutput](/docs/transformers/v5.0.0/en/model_doc/led#transformers.models.led.modeling_led.LEDSeq2SeqQuestionAnsweringModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([LEDConfig](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.LEDConfig)) and inputs.
+elements depending on the configuration ([LEDConfig](/docs/transformers/v5.0.0/en/model_doc/led#transformers.LEDConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Total span extraction loss is the sum of a Cross-Entropy for the start and end positions.
-- **start_logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`, *optional*, defaults to `None`) -- Span-start scores (before SoftMax).
-- **end_logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`, *optional*, defaults to `None`) -- Span-end scores (before SoftMax).
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **start_logits** (`torch.FloatTensor | None.start_logits` of shape `(batch_size, sequence_length)`, defaults to `None`) -- Span-start scores (before SoftMax).
+- **end_logits** (`torch.FloatTensor | None.end_logits` of shape `(batch_size, sequence_length)`, defaults to `None`) -- Span-end scores (before SoftMax).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the attention blocks) of the decoder that can be
   used (see `past_key_values` input) to speed up sequential decoding.
-- **decoder_hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **decoder_hidden_states** (`tuple[torch.FloatTensor, ...] | None.decoder_hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the decoder at the output of each layer plus the initial embedding outputs.
-- **decoder_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **decoder_attentions** (`tuple[torch.FloatTensor, ...] | None.decoder_attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights of the decoder, after the attention softmax, used to compute the weighted average in the
   self-attention heads.
-- **cross_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **cross_attentions** (`tuple[torch.FloatTensor, ...] | None.cross_attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights of the decoder's cross-attention layer, after the attention softmax, used to compute the
   weighted average in the cross-attention heads.
-- **encoder_last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*, defaults to `None`) -- Sequence of hidden-states at the output of the last layer of the encoder of the model.
-- **encoder_hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **encoder_last_hidden_state** (`torch.FloatTensor | None.encoder_last_hidden_state` of shape `(batch_size, sequence_length, hidden_size)`, defaults to `None`) -- Sequence of hidden-states at the output of the last layer of the encoder of the model.
+- **encoder_hidden_states** (`tuple[torch.FloatTensor, ...] | None.encoder_hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the encoder at the output of each layer plus the initial embedding outputs.
-- **encoder_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **encoder_attentions** (`tuple[torch.FloatTensor, ...] | None.encoder_attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights of the encoder, after the attention softmax, used to compute the weighted average in the
@@ -1264,7 +1026,7 @@ elements depending on the configuration ([LEDConfig](/docs/transformers/v5.0.0rc
   Global attentions weights after the attention softmax, used to compute the weighted average in the
   self-attention heads. Those are the attention weights from every token with global attention to every token
   in the sequence.
-The [LEDForQuestionAnswering](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.LEDForQuestionAnswering) forward method, overrides the `__call__` special method.
+The [LEDForQuestionAnswering](/docs/transformers/v5.0.0/en/model_doc/led#transformers.LEDForQuestionAnswering) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -1304,43 +1066,43 @@ Example:
 
 **Parameters:**
 
-config ([LEDForQuestionAnswering](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.LEDForQuestionAnswering)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([LEDForQuestionAnswering](/docs/transformers/v5.0.0/en/model_doc/led#transformers.LEDForQuestionAnswering)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.models.led.modeling_led.LEDSeq2SeqQuestionAnsweringModelOutput](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.models.led.modeling_led.LEDSeq2SeqQuestionAnsweringModelOutput) or `tuple(torch.FloatTensor)``
+`[transformers.models.led.modeling_led.LEDSeq2SeqQuestionAnsweringModelOutput](/docs/transformers/v5.0.0/en/model_doc/led#transformers.models.led.modeling_led.LEDSeq2SeqQuestionAnsweringModelOutput) or `tuple(torch.FloatTensor)``
 
-A [transformers.models.led.modeling_led.LEDSeq2SeqQuestionAnsweringModelOutput](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.models.led.modeling_led.LEDSeq2SeqQuestionAnsweringModelOutput) or a tuple of
+A [transformers.models.led.modeling_led.LEDSeq2SeqQuestionAnsweringModelOutput](/docs/transformers/v5.0.0/en/model_doc/led#transformers.models.led.modeling_led.LEDSeq2SeqQuestionAnsweringModelOutput) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([LEDConfig](/docs/transformers/v5.0.0rc1/en/model_doc/led#transformers.LEDConfig)) and inputs.
+elements depending on the configuration ([LEDConfig](/docs/transformers/v5.0.0/en/model_doc/led#transformers.LEDConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Total span extraction loss is the sum of a Cross-Entropy for the start and end positions.
-- **start_logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`, *optional*, defaults to `None`) -- Span-start scores (before SoftMax).
-- **end_logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length)`, *optional*, defaults to `None`) -- Span-end scores (before SoftMax).
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **start_logits** (`torch.FloatTensor | None.start_logits` of shape `(batch_size, sequence_length)`, defaults to `None`) -- Span-start scores (before SoftMax).
+- **end_logits** (`torch.FloatTensor | None.end_logits` of shape `(batch_size, sequence_length)`, defaults to `None`) -- Span-end scores (before SoftMax).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the attention blocks) of the decoder that can be
   used (see `past_key_values` input) to speed up sequential decoding.
-- **decoder_hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **decoder_hidden_states** (`tuple[torch.FloatTensor, ...] | None.decoder_hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the decoder at the output of each layer plus the initial embedding outputs.
-- **decoder_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **decoder_attentions** (`tuple[torch.FloatTensor, ...] | None.decoder_attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights of the decoder, after the attention softmax, used to compute the weighted average in the
   self-attention heads.
-- **cross_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **cross_attentions** (`tuple[torch.FloatTensor, ...] | None.cross_attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights of the decoder's cross-attention layer, after the attention softmax, used to compute the
   weighted average in the cross-attention heads.
-- **encoder_last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*, defaults to `None`) -- Sequence of hidden-states at the output of the last layer of the encoder of the model.
-- **encoder_hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **encoder_last_hidden_state** (`torch.FloatTensor | None.encoder_last_hidden_state` of shape `(batch_size, sequence_length, hidden_size)`, defaults to `None`) -- Sequence of hidden-states at the output of the last layer of the encoder of the model.
+- **encoder_hidden_states** (`tuple[torch.FloatTensor, ...] | None.encoder_hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the encoder at the output of each layer plus the initial embedding outputs.
-- **encoder_attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **encoder_attentions** (`tuple[torch.FloatTensor, ...] | None.encoder_attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights of the encoder, after the attention softmax, used to compute the weighted average in the

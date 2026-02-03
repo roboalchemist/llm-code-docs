@@ -9,13 +9,17 @@ https://api.apify.com/v2/request-queues/:queueId
 ```
 
 
-Clientshttps://docs.apify.com/api/client/python/reference/class/RequestQueueClientAsync#gethttps://docs.apify.com/api/client/js/reference/class/RequestQueueClient#getReturns queue object for given queue ID.
+Returns queue object for given queue ID.
 
 ## Request
 
 ## Responses
 
 * 200
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/events/events-list.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Events list
 
 > By ingesting events, you can see them flowing in the Lago application by using the events list. It allows you to take a deeper look at ingested events and detect possible warnings.

@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/text/st.badge
+
 # st.badge
 
 Display a colored badge with an icon and label.

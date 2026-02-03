@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo/gen-ai-studio-products/galileo-evaluate/how-to/a-b-compare-prompts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # A/B Compare Prompts
 
 > Easily compare multiple LLM runs in a single screen for better decision making
@@ -10,7 +14,7 @@ Galileo allows you to compare multiple evaluation runs side-by-side. This lets y
 
 To enter the *Compare Runs* mode, select the runs you want to compare from your and click "Compare Runs" on the Action Bar.
 
-![Compare Runs](https://mintlify.s3.us-west-1.amazonaws.com/galileo/images/a-b-compare.gif)
+<img src="https://mintcdn.com/galileo/foTqVxFiTFn9-DRK/images/a-b-compare.gif?s=e81d4492e050c7651cf7f415385890d0" alt="Compare Runs" data-og-width="600" width="600" data-og-height="186" height="186" data-path="images/a-b-compare.gif" data-optimize="true" data-opv="3" />
 
 <Info>For two runs to be comparable, the same evaluation dataset must be used to create them.</Info>
 Once you're in *Compare Runs* you can:

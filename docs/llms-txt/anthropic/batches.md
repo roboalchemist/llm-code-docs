@@ -1,5 +1,33 @@
 # Source: https://platform.claude.com/docs/en/api/typescript/messages/batches.md
 
+# Source: https://platform.claude.com/docs/en/api/ruby/messages/batches.md
+
+# Source: https://platform.claude.com/docs/en/api/python/messages/batches.md
+
+# Source: https://platform.claude.com/docs/en/api/kotlin/messages/batches.md
+
+# Source: https://platform.claude.com/docs/en/api/java/messages/batches.md
+
+# Source: https://platform.claude.com/docs/en/api/go/messages/batches.md
+
+# Source: https://platform.claude.com/docs/en/api/typescript/beta/messages/batches.md
+
+# Source: https://platform.claude.com/docs/en/api/ruby/beta/messages/batches.md
+
+# Source: https://platform.claude.com/docs/en/api/python/beta/messages/batches.md
+
+# Source: https://platform.claude.com/docs/en/api/kotlin/beta/messages/batches.md
+
+# Source: https://platform.claude.com/docs/en/api/java/beta/messages/batches.md
+
+# Source: https://platform.claude.com/docs/en/api/go/beta/messages/batches.md
+
+# Source: https://platform.claude.com/docs/en/api/beta/messages/batches.md
+
+# Source: https://platform.claude.com/docs/en/api/messages/batches.md
+
+# Source: https://platform.claude.com/docs/en/api/typescript/messages/batches.md
+
 # Batches
 
 ## Create

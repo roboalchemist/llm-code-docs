@@ -1,9 +1,13 @@
 # Source: https://rspack.dev/config/externals.md
 
-import WebpackLicense from '@components/WebpackLicense';
-import { Stability } from '../../../components/ApiMeta';
+CC 4.0 License> The content of this section is derived from the content of the following links and is subject to the CC BY 4.0 license.
+> 
+> - [https://webpack.js.org/configuration/externals/](https://webpack.js.org/configuration/externals/)
+> 
+> The following contents can be assumed to be the result of modifications and deletions based on the original contents if not specifically stated.
+> 
+> 
 
-<WebpackLicense from="https://webpack.js.org/configuration/externals/" />
 
 # Externals
 
@@ -11,9 +15,9 @@ The `externals` configuration option provides a way of excluding dependencies fr
 
 ## externals
 
-* **Type:** `string | object | function | RegExp | Array<string | object | function | RegExp>`
+- **Type:** `string | object | function | RegExp | Array<string | object | function | RegExp>`
 
-**Prevent bundling** of certain `import`ed packages and instead retrieve these *external dependencies* at runtime.
+**Prevent bundling** of certain `import`ed packages and instead retrieve these _external dependencies_ at runtime.
 
 For example, to include [jQuery](https://jquery.com/) from a CDN instead of bundling it:
 
@@ -112,13 +116,13 @@ export default {
 ### object
 
 :::warning
-An object with `{ root, commonjs, commonjs2, amd, ... }` is only allowed for [`libraryTarget: 'umd'`](/config/output.md#outputlibrarytarget) and [`externalsType: 'umd'`](#externalstype). It's not allowed for other library targets.
+An object with `{ root, commonjs, commonjs2, amd, ... }` is only allowed for [`library.type: 'umd'`](/config/output.md#outputlibrarytarget) and [`externalsType: 'umd'`](#externalstype). It's not allowed for other library targets.
 :::
 
 ```js title="rspack.config.mjs"
 export default {
   externals: {
-    // When `libraryTarget: 'umd'` and `externalsType: 'umd'`, the following format must be strictly followed:
+    // When `library.type: 'umd'` and `externalsType: 'umd'`, the following format must be strictly followed:
     lodash: {
       root: '_', // indicates global variable
       commonjs: 'lodash',
@@ -133,26 +137,28 @@ This syntax is used to describe all the possible ways that an external library c
 
 ### function
 
-* **Type:**
-  * `function ({ context, request, contextInfo, getResolve }, callback)`
-  * `function ({ context, request, contextInfo, getResolve }) => promise`
+- **Type:**
+  - `function ({ context, request, contextInfo, getResolve }, callback)`
+  - `function ({ context, request, contextInfo, getResolve }) => promise`
 
 It might be useful to define your own function to control the behavior of what you want to externalize from Rspack. [webpack-node-externals](https://www.npmjs.com/package/webpack-node-externals), for example, excludes all modules from the `node_modules` directory and provides options to allowlist packages.
 
 Here're arguments the function can receive:
 
-* `ctx` (`object`): Object containing details of the file.
-  * `ctx.context` (`string`): The directory of the file which contains the import.
-  * `ctx.request` (`string`): The import path being requested.
-  * `ctx.contextInfo` (`object`): Contains information about the issuer (e.g. the layer and compiler)
-  * `ctx.getResolve`: Get a resolve function with the current resolver options.
-* `callback` (`function (err, result, type)`): Callback function used to indicate how the module should be externalized.
+- `ctx` (`object`): Object containing details of the file.
+  - `ctx.context` (`string`): The directory of the file which contains the import.
+  - `ctx.request` (`string`): The import path being requested.
+  - `ctx.contextInfo` (`object`): Contains information about the issuer (e.g. the layer and compiler)
+  - `ctx.getResolve`: Get a resolve function with the current resolver options.
+- `callback` (`function (err, result, type)`): Callback function used to indicate how the module should be externalized.
 
 The callback function takes three arguments:
 
-* `err` (`Error`): Used to indicate if there has been an error while externalizing the import. If there is an error, this should be the only parameter used.
-* `result` (`string | string[] | object`): Describes the external module with the other external formats ([`string`](#string), [`string[]`](#string-array), or [`object`](#object))
-* `type` (`string`): Optional parameter that indicates the module [external type](#externalstype) (if it has not already been indicated in the `result` parameter).
+- `err` (`Error`): Used to indicate if there has been an error while externalizing the import. If there is an error, this should be the only parameter used.
+- `result` (`string | string[] | object | boolean`): Describes the external module.
+  - `string | string[] | object`: Describes the external module with the other external formats ([`string`](#string), [`string[]`](#string-array), or [`object`](#object)).
+  - `boolean`: Passing `true` externalizes the dependency using the original request path as the external module name. Passing `false` tells Rspack to skip the remaining external configuration and bundle the dependency instead.
+- `type` (`string`): Optional parameter that indicates the module [external type](#externalstype) (if it has not already been indicated in the `result` parameter).
 
 As an example, to externalize all imports where the import path matches a regular expression you could do the following:
 
@@ -276,34 +282,34 @@ export default {
 
 ## externalsType
 
-* **Type:** `string`
-* **Default:** `'var'`
+- **Type:** `string`
+- **Default:** `'var'`
 
-Specify the default type of externals. `amd`, `umd`, `system` and `jsonp` externals **depend on the [`output.libraryTarget`](/config/output.md#outputlibrarytarget)** being set to the same value e.g. you can only consume `amd` externals within an `amd` library.
+Specify the default type of externals. `amd`, `umd`, `system` and `jsonp` externals **depend on the [`output.library.type`](/config/output.md#outputlibrarytype)** being set to the same value e.g. you can only consume `amd` externals within an `amd` library.
 
 Supported types:
 
-* `'amd'`
-* `'amd-require'`
-* `'assign'` - same as `'var'`
-* [`'commonjs'`](#externalstypecommonjs)
-* `'commonjs-module'`
-* [`'global'`](#externalstypeglobal)
-* [`'module'`](#externalstypemodule)
-* [`'import'`](#externalstypeimport) - uses `import()` to load a native ECMAScript module (async module)
-* [`'module-import'`](#externalstypemodule-import)
-* [`'commonjs-import'`](#externalstypecommonjs-import)
-* `'jsonp'`
-* [`'node-commonjs'`](#externalstypenode-commonjs)
-* [`'promise'`](#externalstypepromise) - same as `'var'` but awaits the result (async module)
-* [`'self'`](#externalstypeself)
-* `'system'`
-* [`'script'`](#externalstypescript)
-* [`'this'`](#externalstypethis)
-* `'umd'`
-* `'umd2'`
-* [`'var'`](#externalstypevar)
-* [`'window'`](#externalstypewindow)
+- `'amd'`
+- `'amd-require'`
+- `'assign'` - same as `'var'`
+- [`'commonjs'`](#externalstypecommonjs)
+- `'commonjs-module'`
+- [`'global'`](#externalstypeglobal)
+- [`'module'`](#externalstypemodule)
+- [`'import'`](#externalstypeimport) - uses `import()` to load a native ECMAScript module (async module)
+- [`'module-import'`](#externalstypemodule-import)
+- [`'commonjs-import'`](#externalstypecommonjs-import)
+- `'jsonp'`
+- [`'node-commonjs'`](#externalstypenode-commonjs)
+- [`'promise'`](#externalstypepromise) - same as `'var'` but awaits the result (async module)
+- [`'self'`](#externalstypeself)
+- `'system'`
+- [`'script'`](#externalstypescript)
+- [`'this'`](#externalstypethis)
+- `'umd'`
+- `'umd2'`
+- [`'var'`](#externalstypevar)
+- [`'window'`](#externalstypewindow)
 
 ```js title="rspack.config.mjs"
 export default {
@@ -827,7 +833,7 @@ jq('.my-element').animate(/* ... */);
 
 ## externalsPresets
 
-* **Type:** `object`
+- **Type:** `object`
 
 Enable presets of externals for specific targets.
 

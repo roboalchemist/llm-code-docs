@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/get_started/cloud.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Comfy Cloud
 
 > Get started with Comfy Cloud to run ComfyUI workflows in the cloud without local installation
@@ -36,15 +40,15 @@ ComfyUI Cloud is the cloud version of ComfyUI with the same features as the loca
 
 ComfyUI offers both an official cloud version, [Comfy Cloud](https://comfy.org/cloud), and an open-source self-hosted version. If you have a powerful GPU, running ComfyUI locally is a great option. The cloud version, on the other hand, is an online service that's ready to use instantly—simply open the URL, no installation or setup required.
 
-| Category                | Comfy Cloud                                                                | Self-hosted (local ComfyUI)                                                                                                                        |
-| ----------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Cost**                | Monthly Subscription                                                       | Free                                                                                                                                               |
-| **GPU**                 | Powerful A100s with 40GB+ VRAM                                             | Bring your own GPU                                                                                                                                 |
-| **Technical Knowledge** | No technical knowledge required.                                           | While desktop and portable give you easy ways to get started, you'll need to troubleshoot custom node installations and local installation issues. |
-| **Custom Nodes**        | Use pre-installed custom nodes and never worry about compatibility issues. | Install any custom node you want, but you'll need to manage it yourself.                                                                           |
-| **Models**              | Use pre-installed models. Upload your own models (coming soon).            | Use any models you want, but you'll need to download them first.                                                                                   |
-| **Notable Differences** | Easy to onboard your team                                                  | Works offline, infinitely customizable                                                                                                             |
-| **Get started**         | [Run ComfyUI Cloud](https://comfy.org/cloud)                               | [Install ComfyUI locally](/installation/system_requirements)                                                                                       |
+| Category                | Comfy Cloud                                                                                               | Self-hosted (local ComfyUI)                                                                                                                        |
+| ----------------------- | --------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Cost**                | Monthly Subscription                                                                                      | Free                                                                                                                                               |
+| **GPU**                 | Powerful Blackwell RTX 6000 Pros                                                                          | Bring your own GPU                                                                                                                                 |
+| **Technical Knowledge** | No technical knowledge required.                                                                          | While desktop and portable give you easy ways to get started, you'll need to troubleshoot custom node installations and local installation issues. |
+| **Custom Nodes**        | Use pre-installed custom nodes and never worry about compatibility issues.                                | Install any custom node you want, but you'll need to manage it yourself.                                                                           |
+| **Models**              | Use pre-installed models. Import LoRA models from Civitai. Import models from Hugging Face (coming soon). | Use any models you want, but you'll need to download them first.                                                                                   |
+| **Notable Differences** | Easy to onboard your team                                                                                 | Works offline, infinitely customizable                                                                                                             |
+| **Get started**         | [Run ComfyUI Cloud](https://comfy.org/cloud)                                                              | [Install ComfyUI locally](/installation/system_requirements)                                                                                       |
 
 ## Pricing and subscription
 
@@ -135,6 +139,10 @@ If you have any thoughts, suggestions, or run into any issues, simply click the 
 ## Next steps
 
 <CardGroup cols={2}>
+  <Card title="Cloud API" icon="code" href="/development/cloud/overview">
+    Programmatically run workflows via the Cloud API
+  </Card>
+
   <Card title="Tutorials" icon="book" href="/tutorials/basic/text-to-image">
     Explore tutorials to learn ComfyUI workflows
   </Card>

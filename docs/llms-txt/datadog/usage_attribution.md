@@ -4,7 +4,6 @@
 title: Usage Attribution
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Account Management > Billing > Usage Attribution
-source_url: https://docs.datadoghq.com/billing/usage_attribution/index.html
 ---
 
 # Usage Attribution

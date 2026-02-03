@@ -14,7 +14,9 @@ As you complete each item and check it off, the state of each checkbox is stored
 - [ ] Setup branding
       The verification experience shows your company name, logo, and color. Make sure to configure the [branding settings](https://dashboard.stripe.com/settings/branding) for your account before going live.
 
-- [ ] Confirm pricing
+- [ ] Understand pricing & billing
+      [Stripe Identity](https://stripe.com/pricing#identity) pricing is usage-based and charges apply for each *completed* verification. Make sure you understand how these charges appear on your invoice and how they interact with other Stripe products. See [Billing for Stripe Identity](https://support.stripe.com/questions/billing-for-stripe-identity) for a detailed breakdown of costs and billing descriptors.
+
 - [ ] Limit the number of submission attempts
       To prevent fraudsters from abusing your verification flow and incurring charges on your account, we recommend that you limit the number of times a user can verify themselves.
 
@@ -27,8 +29,8 @@ As you complete each item and check it off, the state of each checkbox is stored
 - [ ] Handle session link expiration
       If your integration uses the [web redirect session url](https://docs.stripe.com/identity/verify-identity-documents.md?platform=web&type=modal#create-a-verificationsession) or you [create verification links from the Stripe Dashboard](https://docs.stripe.com/identity/verify-identity-documents.md?platform=no-code&type=dashboard#share-verification-link), you must handle link expiration. The links expire 48 hours after creation and are single-use. You can refresh a link in the API using [retrieve the verification session](https://docs.stripe.com/api/identity/verification_sessions/retrieve.md) or by clicking **Copy link** on the verification session’s detail page in the [Dashboard](https://dashboard.stripe.com/identity/verification-sessions).
 
-- [ ] Provide an alternative verification method
-      Stripe Identity may not be able to verify all of your users. For example, your user might decline to be verified using biometric technology, they might attempt to verify with an unsupported document type, or they might not be covered by Identity’s [verification checks](https://docs.stripe.com/identity/verification-checks.md). We recommend that you provide alternative ways to verify your user, such as reaching out to your support team. In some jurisdictions, privacy laws (such as GDPR) might require you to offer a non-biometric verification option for users who decline to consent to using their biometric information.
+- [ ] Update your support process with an alternative verification method
+      Stripe Identity might not be able to verify all of your users. For example, your user might decline to be verified using biometric technology, they might attempt to verify with an unsupported document type, or they might not be covered by Identity’s [verification checks](https://docs.stripe.com/identity/verification-checks.md). We recommend that you provide alternative ways to verify your user, and update your support process to handle new questions from users. In some jurisdictions, privacy laws (such as GDPR) might require you to offer a non-biometric verification option for users who decline to consent to using their biometric information.
 
 - [ ] Follow webhook best practices
       If your integration depends on [webhooks](https://docs.stripe.com/webhooks.md), make sure you’ve [tested](https://docs.stripe.com/identity/handle-verification-outcomes.md#test) that your integration handles Identity events correctly and that you’re following the [Best practices for using webhooks](https://docs.stripe.com/webhooks.md#best-practices).
@@ -47,10 +49,10 @@ As you complete each item and check it off, the state of each checkbox is stored
 - [ ] Explain ID verification and Stripe Identity to your customers
       Add information to your site answering common questions about identity verification and your use of Stripe Identity. See the [FAQ template](https://docs.stripe.com/identity/explaining-identity.md).
 
-- [ ] Explain to your users how to delete their data from Stripe’s servers
+- [ ] Explain to your users how to delete their data from Stripe's servers
       When your users request their data to be deleted, [redact the VerificationSession](https://docs.stripe.com/identity/verification-sessions.md#redact) and let your users know that they’ll need to contact Stripe support to remove their data from Stripe’s servers. You could add the following paragraph to your application:
 
-      > We use Stripe for identity document verification. Stripe retains a copy of all the data provided as part of a verification. You may also have consented to allow Stripe to use your data to improve their technology. You can delete your information from Stripe’s servers or revoke your consent by visiting https://support.stripe.com.
+      > We use Stripe for identity document verification. Stripe retains a copy of all the data provided as part of a verification. You may also have consented to allow Stripe to use your data to improve their technology. You can delete your information from Stripe’s servers or revoke your consent by contacting us using the form at Stripe support: https://support.stripe.com.
 
 ## See also
 

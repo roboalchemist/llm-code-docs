@@ -6,7 +6,6 @@ description: >-
   Guide to managing official Datadog integrations using the datadog-agent
   integration command, including install, remove, show, and freeze operations.
 breadcrumbs: Docs > Agent > Agent Guides > Integration Management
-source_url: https://docs.datadoghq.com/guide/integration-management/index.html
 ---
 
 # Integration Management

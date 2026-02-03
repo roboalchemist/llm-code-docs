@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/built-in-nodes/partner-node/image/recraft/recraft-image-to-image.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Recraft Image to Image - ComfyUI Native Node Documentation
 
 > A Recraft Partner node that generates new images based on text prompts and reference images

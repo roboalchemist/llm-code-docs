@@ -1,14 +1,10 @@
-# Source: https://www.better-auth.com/llms.txt/docs/errors/no_callback_url.md
+# Source: https://www.better-auth.com/llms.txt/docs/reference/errors/no_callback_url.md
 
-# No callback URL
+# no_callback_url
 
 The callback URL was not found in the request.
 
-***
 
-title: No callback URL
-description: The callback URL was not found in the request.
------------------------------------------------------------
 
 ## What is it?
 

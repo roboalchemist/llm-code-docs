@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/jsdoc/require-param-type.md
 ---
-# jsdoc/require-param-type&#x20;
 
 ### What it does
 

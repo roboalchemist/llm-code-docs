@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/guides/microsoft-power-apps.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Microsoft Power Apps
 
 > Learn how to manage secrets in Microsoft Power Apps with Infisical.

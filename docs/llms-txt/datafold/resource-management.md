@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/faq/resource-management.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Resource Management
 
 <Accordion title="What is Datafold’s resource consumption footprint? How will Datafold affect my data warehouse costs?">

@@ -1,5 +1,9 @@
 # Source: https://docs.squared.ai/open-source/community-support/commit-message-guidelines.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Commit Message Guidelines
 
 Multiwoven follows the following format for all commit messages.

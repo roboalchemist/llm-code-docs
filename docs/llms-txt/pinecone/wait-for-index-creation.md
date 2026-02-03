@@ -1,5 +1,9 @@
 # Source: https://docs.pinecone.io/troubleshooting/wait-for-index-creation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Wait for index creation to be complete
 
 Pinecone index creation involves several different subsystems, including one which accepts the job of creating the index and one that actually performs the action. The Python SDK and the REST API are designed to interact with the first system during index creation but not the second.

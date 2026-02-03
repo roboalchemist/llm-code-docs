@@ -8,7 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > Account Management > Account Management Guides > Access Your Support
   Ticket
-source_url: https://docs.datadoghq.com/guide/access-your-support-ticket/index.html
 ---
 
 # Access Your Support Ticket

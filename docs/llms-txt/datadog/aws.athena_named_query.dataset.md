@@ -4,8 +4,6 @@
 title: Athena Named Query
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Athena Named Query
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.athena_named_query.dataset/index.html
 ---
 
 # Athena Named Query
@@ -18,14 +16,14 @@ aws.athena_named_query
 
 ## Fields
 
-| Title          | ID   | Type   | Data Type                                                | Description |
-| -------------- | ---- | ------ | -------------------------------------------------------- | ----------- |
-| _key           | core | string |
-| account_id     | core | string |
-| database       | core | string | The database to which the query belongs.                 |
-| description    | core | string | The query description.                                   |
-| name           | core | string | The query name.                                          |
-| named_query_id | core | string | The unique identifier of the query.                      |
-| query_string   | core | string | The SQL statements that make up the query.               |
-| tags           | core | hstore |
-| work_group     | core | string | The name of the workgroup that contains the named query. |
+| Title          | ID   | Type       | Data Type                                                | Description |
+| -------------- | ---- | ---------- | -------------------------------------------------------- | ----------- |
+| _key           | core | string     |
+| account_id     | core | string     |
+| database       | core | string     | The database to which the query belongs.                 |
+| description    | core | string     | The query description.                                   |
+| name           | core | string     | The query name.                                          |
+| named_query_id | core | string     | The unique identifier of the query.                      |
+| query_string   | core | string     | The SQL statements that make up the query.               |
+| tags           | core | hstore_csv |
+| work_group     | core | string     | The name of the workgroup that contains the named query. |

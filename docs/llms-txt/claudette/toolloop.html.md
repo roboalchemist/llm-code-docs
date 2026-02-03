@@ -113,7 +113,7 @@ r.content
     - Retrieving customer C1
     tool_use
 
-    [ToolUseBlock(id='toolu_01UNkDiQYoKg5QFH1xzP6yNf', input={'customer_id': 'C1'}, name='get_customer_info', type='tool_use')]
+    [ToolUseBlock(id='toolu_01LJ2mkQDqRdToAFHbCosv26', input={'customer_id': 'C1'}, name='get_customer_info', type='tool_use')]
 
 Claude asks us to use a tool. Claudette handles that automatically by
 just calling it again:
@@ -139,7 +139,7 @@ r.content
     tool_use
 
     [TextBlock(citations=None, text="I'll help you cancel all orders for customer C1. First, let me retrieve the customer's information to see what orders they have.", type='text'),
-     ToolUseBlock(id='toolu_01XgFYAbdNXZafQVfBCvnuiP', input={'customer_id': 'C1'}, name='get_customer_info', type='tool_use')]
+     ToolUseBlock(id='toolu_01G48VxPvsqRmUfRNWbz5JAf', input={'customer_id': 'C1'}, name='get_customer_info', type='tool_use')]
 
 ## Tool loop
 
@@ -155,97 +155,25 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### Chat.toolloop
 
->  Chat.toolloop (pr, max_steps=10, cont_func:<built-
->                     infunctioncallable>=<function noop>, final_prompt='You
->                     have no more tool uses. Please summarize your findings. If
->                     you did not complete your goal please tell the user what
->                     further work needs to be done so they can choose how best
->                     to proceed.', temp=None, maxtok=4096, maxthinktok=0,
->                     stream=False, prefill='', tool_choice:Optional[dict]=None)
+``` python
+
+def toolloop(
+    pr, # Prompt to pass to Claude
+    max_steps:int=10, # Maximum number of tool requests to loop through
+    cont_func:callable=noop, # Function that stops loop if returns False
+    final_prompt:str='You have no more tool uses. Please summarize your findings. If you did not complete your goal please tell the user what further work needs to be done so they can choose how best to proceed.', # Prompt to add if last message is a tool call
+    temp:NoneType=None, # Temperature
+    maxtok:int=4096, # Maximum tokens
+    maxthinktok:int=0, # Maximum thinking tokens
+    stream:bool=False, # Stream response?
+    prefill:str='', # Optional prefill to pass to Claude as start of its response
+    tool_choice:Optional=None, # Optionally force use of some tool
+):
+
+```
 
 *Add prompt `pr` to dialog and get a response from Claude, automatically
 following up with `tool_use` messages*
-
-<table>
-<colgroup>
-<col style="width: 6%" />
-<col style="width: 25%" />
-<col style="width: 34%" />
-<col style="width: 34%" />
-</colgroup>
-<thead>
-<tr>
-<th></th>
-<th><strong>Type</strong></th>
-<th><strong>Default</strong></th>
-<th><strong>Details</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>pr</td>
-<td></td>
-<td></td>
-<td>Prompt to pass to Claude</td>
-</tr>
-<tr>
-<td>max_steps</td>
-<td>int</td>
-<td>10</td>
-<td>Maximum number of tool requests to loop through</td>
-</tr>
-<tr>
-<td>cont_func</td>
-<td>callable</td>
-<td>noop</td>
-<td>Function that stops loop if returns False</td>
-</tr>
-<tr>
-<td>final_prompt</td>
-<td>str</td>
-<td>You have no more tool uses. Please summarize your findings. If you
-did not complete your goal please tell the user what further work needs
-to be done so they can choose how best to proceed.</td>
-<td>Prompt to add if last message is a tool call</td>
-</tr>
-<tr>
-<td>temp</td>
-<td>NoneType</td>
-<td>None</td>
-<td>Temperature</td>
-</tr>
-<tr>
-<td>maxtok</td>
-<td>int</td>
-<td>4096</td>
-<td>Maximum tokens</td>
-</tr>
-<tr>
-<td>maxthinktok</td>
-<td>int</td>
-<td>0</td>
-<td>Maximum thinking tokens</td>
-</tr>
-<tr>
-<td>stream</td>
-<td>bool</td>
-<td>False</td>
-<td>Stream response?</td>
-</tr>
-<tr>
-<td>prefill</td>
-<td>str</td>
-<td></td>
-<td>Optional prefill to pass to Claude as start of its response</td>
-</tr>
-<tr>
-<td>tool_choice</td>
-<td>Optional</td>
-<td>None</td>
-<td>Optionally force use of some tool</td>
-</tr>
-</tbody>
-</table>
 
 <details open class="code-fold">
 <summary>Exported source</summary>
@@ -298,14 +226,15 @@ for o in r: display(o)
 
     - Retrieving customer C1
 
-ToolUseBlock(id=‘toolu_01UNkDiQYoKg5QFH1xzP6yNf’, input={‘customer_id’:
-‘C1’}, name=‘get_customer_info’, type=‘tool_use’)
+\[ToolUseBlock(id=‘toolu_01LJ2mkQDqRdToAFHbCosv26’,
+input={‘customer_id’: ‘C1’}, name=‘get_customer_info’,
+type=‘tool_use’)\]
 
 <details>
 
-- id: `msg_018rqaE1gPNU2mML3zf3SXjw`
+- id: `msg_01F1ruk8y7TsTrhpWTkBc67e`
 - content:
-  `[{'id': 'toolu_01UNkDiQYoKg5QFH1xzP6yNf', 'input': {'customer_id': 'C1'}, 'name': 'get_customer_info', 'type': 'tool_use'}]`
+  `[{'id': 'toolu_01LJ2mkQDqRdToAFHbCosv26', 'input': {'customer_id': 'C1'}, 'name': 'get_customer_info', 'type': 'tool_use'}]`
 - model: `claude-sonnet-4-5-20250929`
 - role: `assistant`
 - stop_reason: `tool_use`
@@ -323,7 +252,7 @@ ToolUseBlock(id=‘toolu_01UNkDiQYoKg5QFH1xzP6yNf’, input={‘customer_id’:
                             "19.99, 'status': 'Shipped'}, {'id': 'O2', "
                             "'product': 'Gadget B', 'quantity': 1, 'price': "
                             "49.99, 'status': 'Processing'}]}",
-                 'tool_use_id': 'toolu_01UNkDiQYoKg5QFH1xzP6yNf',
+                 'tool_use_id': 'toolu_01LJ2mkQDqRdToAFHbCosv26',
                  'type': 'tool_result'}],
   'role': 'user'}
 ```
@@ -332,7 +261,7 @@ The email address for customer C1 (John Doe) is **john@example.com**.
 
 <details>
 
-- id: `msg_01GupT7xVPKaRoL7vdngR8HN`
+- id: `msg_019Z6rMioA6RExGgXKGnusiM`
 - content:
   `[{'citations': None, 'text': 'The email address for customer C1 (John Doe) is **john@example.com**.', 'type': 'text'}]`
 - model: `claude-sonnet-4-5-20250929`
@@ -351,7 +280,7 @@ The full set of tool loop messages is stored in the `value` attr:
 pprint(r.value, width=120)
 ```
 
-    [{'content': [{'id': 'toolu_01UNkDiQYoKg5QFH1xzP6yNf',
+    [{'content': [{'id': 'toolu_01LJ2mkQDqRdToAFHbCosv26',
                    'input': {'customer_id': 'C1'},
                    'name': 'get_customer_info',
                    'type': 'tool_use'}],
@@ -360,12 +289,10 @@ pprint(r.value, width=120)
                               "[{'id': 'O1', 'product': 'Widget A', 'quantity': 2, 'price': 19.99, 'status': 'Shipped'}, "
                               "{'id': 'O2', 'product': 'Gadget B', 'quantity': 1, 'price': 49.99, 'status': "
                               "'Processing'}]}",
-                   'tool_use_id': 'toolu_01UNkDiQYoKg5QFH1xzP6yNf',
+                   'tool_use_id': 'toolu_01LJ2mkQDqRdToAFHbCosv26',
                    'type': 'tool_result'}],
       'role': 'user'},
-     {'content': [{'citations': None,
-                   'text': 'The email address for customer C1 (John Doe) is **john@example.com**.',
-                   'type': 'text'}],
+     {'content': [{'text': 'The email address for customer C1 (John Doe) is **john@example.com**.', 'type': 'text'}],
       'role': 'assistant'}]
 
 Let’s see if it can handle the multi-stage process now:
@@ -387,9 +314,9 @@ the customer’s information to see what orders they have.
 
 <details>
 
-- id: `msg_011VS1WvApB4uyNBH7fmmfPD`
+- id: `msg_01XdX15ZJuePtveCDsM41WMm`
 - content:
-  `[{'citations': None, 'text': "I'll help you cancel all orders for customer C1. First, let me retrieve the customer's information to see what orders they have.", 'type': 'text'}, {'id': 'toolu_01XgFYAbdNXZafQVfBCvnuiP', 'input': {'customer_id': 'C1'}, 'name': 'get_customer_info', 'type': 'tool_use'}]`
+  `[{'citations': None, 'text': "I'll help you cancel all orders for customer C1. First, let me retrieve the customer's information to see what orders they have.", 'type': 'text'}, {'id': 'toolu_01G48VxPvsqRmUfRNWbz5JAf', 'input': {'customer_id': 'C1'}, 'name': 'get_customer_info', 'type': 'tool_use'}]`
 - model: `claude-sonnet-4-5-20250929`
 - role: `assistant`
 - stop_reason: `tool_use`
@@ -407,7 +334,7 @@ the customer’s information to see what orders they have.
                             "19.99, 'status': 'Shipped'}, {'id': 'O2', "
                             "'product': 'Gadget B', 'quantity': 1, 'price': "
                             "49.99, 'status': 'Processing'}]}",
-                 'tool_use_id': 'toolu_01XgFYAbdNXZafQVfBCvnuiP',
+                 'tool_use_id': 'toolu_01G48VxPvsqRmUfRNWbz5JAf',
                  'type': 'tool_result'}],
   'role': 'user'}
 ```
@@ -422,9 +349,9 @@ Let me cancel both orders for you.
 
 <details>
 
-- id: `msg_01A4D3bFhsbzZYAxdc9TasgN`
+- id: `msg_01CWangwZyHeqyk5m8MeSwP4`
 - content:
-  `[{'citations': None, 'text': 'Now I can see that customer C1 (John Doe) has 2 orders:\n- Order O1: Widget A (Status: Shipped)\n- Order O2: Gadget B (Status: Processing)\n\nLet me cancel both orders for you.', 'type': 'text'}, {'id': 'toolu_016QpMzbu4hd42vur1G9zv22', 'input': {'order_id': 'O1'}, 'name': 'cancel_order', 'type': 'tool_use'}, {'id': 'toolu_01SdshdbS5Ax3rqaimNKVQ2g', 'input': {'order_id': 'O2'}, 'name': 'cancel_order', 'type': 'tool_use'}]`
+  `[{'citations': None, 'text': 'Now I can see that customer C1 (John Doe) has 2 orders:\n- Order O1: Widget A (Status: Shipped)\n- Order O2: Gadget B (Status: Processing)\n\nLet me cancel both orders for you.', 'type': 'text'}, {'id': 'toolu_01Lm2DE8sU5kBASiTXDa77zP', 'input': {'order_id': 'O1'}, 'name': 'cancel_order', 'type': 'tool_use'}, {'id': 'toolu_01CQ7U8kyyvWRE8kTGfxVto5', 'input': {'order_id': 'O2'}, 'name': 'cancel_order', 'type': 'tool_use'}]`
 - model: `claude-sonnet-4-5-20250929`
 - role: `assistant`
 - stop_reason: `tool_use`
@@ -437,10 +364,10 @@ Let me cancel both orders for you.
 
 ``` python
 { 'content': [ { 'content': 'True',
-                 'tool_use_id': 'toolu_016QpMzbu4hd42vur1G9zv22',
+                 'tool_use_id': 'toolu_01Lm2DE8sU5kBASiTXDa77zP',
                  'type': 'tool_result'},
                { 'content': 'True',
-                 'tool_use_id': 'toolu_01SdshdbS5Ax3rqaimNKVQ2g',
+                 'tool_use_id': 'toolu_01CQ7U8kyyvWRE8kTGfxVto5',
                  'type': 'tool_result'}],
   'role': 'user'}
 ```
@@ -453,7 +380,7 @@ Both orders have been cancelled successfully.
 
 <details>
 
-- id: `msg_01FFa3BoB6LFDexidGZmN9rE`
+- id: `msg_0133SZjYiBzUkej4NSzChNWh`
 - content:
   `[{'citations': None, 'text': "Perfect! I've successfully cancelled all orders for customer C1 (John Doe):\n- ✓ Order O1 (Widget A) - Cancelled\n- ✓ Order O2 (Gadget B) - Cancelled\n\nBoth orders have been cancelled successfully.", 'type': 'text'}]`
 - model: `claude-sonnet-4-5-20250929`
@@ -478,9 +405,9 @@ Let me check the current status of order O2 for you.
 
 <details>
 
-- id: `msg_01NaWdtu7o751BcPQ29LtC43`
+- id: `msg_016cS3SURc48upqKf4hBLPMX`
 - content:
-  `[{'citations': None, 'text': 'Let me check the current status of order O2 for you.', 'type': 'text'}, {'id': 'toolu_01MTz9kUGmqMYvMKmFDmSSDZ', 'input': {'order_id': 'O2'}, 'name': 'get_order_details', 'type': 'tool_use'}]`
+  `[{'citations': None, 'text': 'Let me check the current status of order O2 for you.', 'type': 'text'}, {'id': 'toolu_01Kzj8EBHHxbTAnrohSNt7vk', 'input': {'order_id': 'O2'}, 'name': 'get_order_details', 'type': 'tool_use'}]`
 - model: `claude-sonnet-4-5-20250929`
 - role: `assistant`
 - stop_reason: `tool_use`
@@ -494,7 +421,7 @@ Let me check the current status of order O2 for you.
 ``` python
 { 'content': [ { 'content': "{'id': 'O2', 'product': 'Gadget B', 'quantity': "
                             "1, 'price': 49.99, 'status': 'Cancelled'}",
-                 'tool_use_id': 'toolu_01MTz9kUGmqMYvMKmFDmSSDZ',
+                 'tool_use_id': 'toolu_01Kzj8EBHHxbTAnrohSNt7vk',
                  'type': 'tool_result'}],
   'role': 'user'}
 ```
@@ -506,7 +433,7 @@ Status: Cancelled
 
 <details>
 
-- id: `msg_01YXqvgBF3ya7gq4W6q2i4JP`
+- id: `msg_01NLEeZkoDPTVyps2dJoYC4x`
 - content:
   `[{'citations': None, 'text': 'Order O2 is now showing a status of **Cancelled**. This confirms that the cancellation we performed earlier was successful. The order details are:\n- Order ID: O2\n- Product: Gadget B\n- Quantity: 1\n- Price: $49.99\n- Status: Cancelled', 'type': 'text'}]`
 - model: `claude-sonnet-4-5-20250929`
@@ -538,9 +465,9 @@ division as the divisor for the next operation.
 
 <details>
 
-- id: `msg_01MUa2fiBDjbEDWZjJvk3JVK`
+- id: `msg_012jpk6qp7u58WMkKv5VWwsv`
 - content:
-  `[{'citations': None, 'text': "I'll calculate this sequence step by step, using the result from each division as the divisor for the next operation.", 'type': 'text'}, {'id': 'toolu_01Rw5TJPAR6vmKJKi6xXcQhy', 'input': {'a': 43, 'b': 23454}, 'name': 'mydiv', 'type': 'tool_use'}]`
+  `[{'citations': None, 'text': "I'll calculate this sequence step by step, using the result from each division as the divisor for the next operation.", 'type': 'text'}, {'id': 'toolu_01TcqArsz5skzgeZSHACNpFL', 'input': {'a': 43, 'b': 23454}, 'name': 'mydiv', 'type': 'tool_use'}]`
 - model: `claude-sonnet-4-5-20250929`
 - role: `assistant`
 - stop_reason: `tool_use`
@@ -553,18 +480,19 @@ division as the divisor for the next operation.
 
 ``` python
 { 'content': [ { 'content': '0.001833375969983798',
-                 'tool_use_id': 'toolu_01Rw5TJPAR6vmKJKi6xXcQhy',
+                 'tool_use_id': 'toolu_01TcqArsz5skzgeZSHACNpFL',
                  'type': 'tool_result'}],
   'role': 'user'}
 ```
 
-I was able to complete 2 out of 4 steps in the sequence:
+I was able to complete 2 out of 4 steps in the sequence before running
+out of tool uses. Here’s what was calculated:
 
-**Completed calculations:** 1. 43 ÷ 23454 = 0.001833375969983798 2. 652
-÷ 0.001833375969983798 = 355628.0930232558
+**Completed:** 1. 43 ÷ 23454 = 0.001833375969983798 2. 652 ÷
+0.001833375969983798 = 355628.0930232558
 
-**Remaining calculations needed:** 3. 6843 ÷ 355628.0930232558 = (not
-calculated) 4. 321 ÷ (result from step 3) = (not calculated)
+**Still needed:** 3. 6843 ÷ 355628.0930232558 = (not calculated) 4. 321
+÷ (result from step 3) = (not calculated)
 
 To complete this sequence, you would need to: - Divide 6843 by
 355628.0930232558 - Then divide 321 by that result to get the final
@@ -574,16 +502,16 @@ Would you like me to continue with these remaining calculations?
 
 <details>
 
-- id: `msg_01UDEttPc4AtaZ7UW6iSrzja`
+- id: `msg_01GNzpAuTG1LtRm8z8rjnXV4`
 - content:
-  `[{'citations': None, 'text': 'I was able to complete 2 out of 4 steps in the sequence:\n\n**Completed calculations:**\n1. 43 ÷ 23454 = 0.001833375969983798\n2. 652 ÷ 0.001833375969983798 = 355628.0930232558\n\n**Remaining calculations needed:**\n3. 6843 ÷ 355628.0930232558 = (not calculated)\n4. 321 ÷ (result from step 3) = (not calculated)\n\nTo complete this sequence, you would need to:\n- Divide 6843 by 355628.0930232558\n- Then divide 321 by that result to get the final answer\n\nWould you like me to continue with these remaining calculations?', 'type': 'text'}]`
+  `[{'citations': None, 'text': "I was able to complete 2 out of 4 steps in the sequence before running out of tool uses. Here's what was calculated:\n\n**Completed:**\n1. 43 ÷ 23454 = 0.001833375969983798\n2. 652 ÷ 0.001833375969983798 = 355628.0930232558\n\n**Still needed:**\n3. 6843 ÷ 355628.0930232558 = (not calculated)\n4. 321 ÷ (result from step 3) = (not calculated)\n\nTo complete this sequence, you would need to:\n- Divide 6843 by 355628.0930232558\n- Then divide 321 by that result to get the final answer\n\nWould you like me to continue with these remaining calculations?", 'type': 'text'}]`
 - model: `claude-sonnet-4-5-20250929`
 - role: `assistant`
 - stop_reason: `end_turn`
 - stop_sequence: `None`
 - type: `message`
 - usage:
-  `{'cache_creation': {'ephemeral_1h_input_tokens': 0, 'ephemeral_5m_input_tokens': 0}, 'cache_creation_input_tokens': 0, 'cache_read_input_tokens': 0, 'input_tokens': 875, 'output_tokens': 189, 'server_tool_use': None, 'service_tier': 'standard'}`
+  `{'cache_creation': {'ephemeral_1h_input_tokens': 0, 'ephemeral_5m_input_tokens': 0}, 'cache_creation_input_tokens': 0, 'cache_read_input_tokens': 0, 'input_tokens': 875, 'output_tokens': 198, 'server_tool_use': None, 'service_tier': 'standard'}`
 
 </details>
 
@@ -597,9 +525,9 @@ I’ll try dividing 1 by 0 to see what happens:
 
 <details>
 
-- id: `msg_01XTWA1AQUkEJNzYf3T1B9ED`
+- id: `msg_01Y8hq6xRjtB3jpnKUjcShHH`
 - content:
-  `[{'citations': None, 'text': "I'll try dividing 1 by 0 to see what happens:", 'type': 'text'}, {'id': 'toolu_01JDEbRiFzFuY2jyrNDf1B5S', 'input': {'a': 1, 'b': 0}, 'name': 'mydiv', 'type': 'tool_use'}]`
+  `[{'citations': None, 'text': "I'll try dividing 1 by 0 to see what happens:", 'type': 'text'}, {'id': 'toolu_016iCAFGa523mQc3JKCiWQRH', 'input': {'a': 1, 'b': 0}, 'name': 'mydiv', 'type': 'tool_use'}]`
 - model: `claude-sonnet-4-5-20250929`
 - role: `assistant`
 - stop_reason: `tool_use`
@@ -614,21 +542,21 @@ I’ll try dividing 1 by 0 to see what happens:
 { 'content': [ { 'content': 'Traceback (most recent call last):\n'
                             '  File '
                             '"/Users/jhoward/aai-ws/toolslm/toolslm/funccall.py", '
-                            'line 203, in call_func\n'
-                            '    try: return func(**fc_inputs)\n'
-                            '                ^^^^^^^^^^^^^^^^^\n'
+                            'line 215, in call_func\n'
+                            '    try: return func(**inps)\n'
+                            '                ^^^^^^^^^^^^\n'
                             '  File '
                             '"/Users/jhoward/aai-ws/claudette/claudette/core.py", '
-                            'line 416, in wrapper\n'
+                            'line 439, in wrapper\n'
                             '    return func(*new_args, **new_kwargs)\n'
                             '           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n'
                             '  File '
-                            '"/var/folders/51/b2_szf2945n072c0vj2cyty40000gn/T/ipykernel_6794/246724137.py", '
+                            '"/var/folders/51/b2_szf2945n072c0vj2cyty40000gn/T/ipykernel_73559/246724137.py", '
                             'line 3, in mydiv\n'
                             '    return a / b\n'
                             '           ~~^~~\n'
                             'ZeroDivisionError: division by zero\n',
-                 'tool_use_id': 'toolu_01JDEbRiFzFuY2jyrNDf1B5S',
+                 'tool_use_id': 'toolu_016iCAFGa523mQc3JKCiWQRH',
                  'type': 'tool_result'}],
   'role': 'user'}
 ```
@@ -641,7 +569,7 @@ division operation failed in the `mydiv` function.
 
 <details>
 
-- id: `msg_01Sw5N8P1c9XhQLN39ZzA9Jf`
+- id: `msg_01RcdGpMqujYsp2zEh13aKvf`
 - content:
   `[{'citations': None, 'text': 'As expected, dividing by zero produces a **ZeroDivisionError** with the message "division by zero". This is Python\'s standard exception for attempting to divide a number by zero, which is mathematically undefined. The error shows the full traceback indicating where the division operation failed in the`mydiv`function.', 'type': 'text'}]`
 - model: `claude-sonnet-4-5-20250929`
@@ -650,7 +578,7 @@ division operation failed in the `mydiv` function.
 - stop_sequence: `None`
 - type: `message`
 - usage:
-  `{'cache_creation': {'ephemeral_1h_input_tokens': 0, 'ephemeral_5m_input_tokens': 0}, 'cache_creation_input_tokens': 0, 'cache_read_input_tokens': 0, 'input_tokens': 883, 'output_tokens': 70, 'server_tool_use': None, 'service_tier': 'standard'}`
+  `{'cache_creation': {'ephemeral_1h_input_tokens': 0, 'ephemeral_5m_input_tokens': 0}, 'cache_creation_input_tokens': 0, 'cache_read_input_tokens': 0, 'input_tokens': 882, 'output_tokens': 70, 'server_tool_use': None, 'service_tier': 'standard'}`
 
 </details>
 
@@ -677,9 +605,9 @@ the customer’s information to see what orders they have.
 
 <details>
 
-- id: `msg_01CjkmD6YX3i6LbeUej7edtE`
+- id: `msg_01Qz5tYWK1jA8kete3Ub2dNt`
 - content:
-  `[{'citations': None, 'text': "I'll help you cancel all orders for customer C1. First, let me retrieve the customer's information to see what orders they have.", 'type': 'text'}, {'id': 'toolu_01HaQmr74BoNN3XNfNfSKbLB', 'input': {'customer_id': 'C1'}, 'name': 'get_customer_info', 'type': 'tool_use'}]`
+  `[{'citations': None, 'text': "I'll help you cancel all orders for customer C1. First, let me retrieve the customer's information to see what orders they have.", 'type': 'text'}, {'id': 'toolu_019nveAUbHYAQ11nprLdWAQR', 'input': {'customer_id': 'C1'}, 'name': 'get_customer_info', 'type': 'tool_use'}]`
 - model: `claude-sonnet-4-5-20250929`
 - role: `assistant`
 - stop_reason: `tool_use`
@@ -690,7 +618,7 @@ the customer’s information to see what orders they have.
 
 </details>
 
-    {'role': 'user', 'content': [{'type': 'tool_result', 'tool_use_id': 'toolu_01HaQmr74BoNN3XNfNfSKbLB', 'content': "{'name': 'John Doe', 'email': 'john@example.com', 'phone': '123-456-7890', 'orders': [{'id': 'O1', 'product': 'Widget A', 'quantity': 2, 'price': 19.99, 'status': 'Shipped'}, {'id': 'O2', 'product': 'Gadget B', 'quantity': 1, 'price': 49.99, 'status': 'Processing'}]}"}]}
+    {'role': 'user', 'content': [{'type': 'tool_result', 'tool_use_id': 'toolu_019nveAUbHYAQ11nprLdWAQR', 'content': "{'name': 'John Doe', 'email': 'john@example.com', 'phone': '123-456-7890', 'orders': [{'id': 'O1', 'product': 'Widget A', 'quantity': 2, 'price': 19.99, 'status': 'Shipped'}, {'id': 'O2', 'product': 'Gadget B', 'quantity': 1, 'price': 49.99, 'status': 'Processing'}]}"}]}
     Now I can see that customer C1 (John Doe) has 2 orders:
     - Order O1: Widget A (Status: Shipped)
     - Order O2: Gadget B (Status: Processing)
@@ -705,9 +633,9 @@ Let me cancel both orders for you.
 
 <details>
 
-- id: `msg_0127zBtyJtktUS9HW4fNq3iL`
+- id: `msg_01MhvyKhRtSdsCmTfbSuWwE7`
 - content:
-  `[{'citations': None, 'text': 'Now I can see that customer C1 (John Doe) has 2 orders:\n- Order O1: Widget A (Status: Shipped)\n- Order O2: Gadget B (Status: Processing)\n\nLet me cancel both orders for you.', 'type': 'text'}, {'id': 'toolu_01EoqC3BMp4mt2ViNbpij8se', 'input': {'order_id': 'O1'}, 'name': 'cancel_order', 'type': 'tool_use'}, {'id': 'toolu_01YBurdCRXvmXcRZoHJaA3Wk', 'input': {'order_id': 'O2'}, 'name': 'cancel_order', 'type': 'tool_use'}]`
+  `[{'citations': None, 'text': 'Now I can see that customer C1 (John Doe) has 2 orders:\n- Order O1: Widget A (Status: Shipped)\n- Order O2: Gadget B (Status: Processing)\n\nLet me cancel both orders for you.', 'type': 'text'}, {'id': 'toolu_01DheUnWexZKYKSi211SgGLM', 'input': {'order_id': 'O1'}, 'name': 'cancel_order', 'type': 'tool_use'}, {'id': 'toolu_01HhVbewBrXzyGSfeWMeTEEt', 'input': {'order_id': 'O2'}, 'name': 'cancel_order', 'type': 'tool_use'}]`
 - model: `claude-sonnet-4-5-20250929`
 - role: `assistant`
 - stop_reason: `tool_use`
@@ -718,7 +646,7 @@ Let me cancel both orders for you.
 
 </details>
 
-    {'role': 'user', 'content': [{'type': 'tool_result', 'tool_use_id': 'toolu_01EoqC3BMp4mt2ViNbpij8se', 'content': 'True'}, {'type': 'tool_result', 'tool_use_id': 'toolu_01YBurdCRXvmXcRZoHJaA3Wk', 'content': 'True'}]}
+    {'role': 'user', 'content': [{'type': 'tool_result', 'tool_use_id': 'toolu_01DheUnWexZKYKSi211SgGLM', 'content': 'True'}, {'type': 'tool_result', 'tool_use_id': 'toolu_01HhVbewBrXzyGSfeWMeTEEt', 'content': 'True'}]}
     Perfect! I've successfully cancelled all orders for customer C1 (John Doe):
     - ✓ Order O1 (Widget A) - Cancelled
     - ✓ Order O2 (Gadget B) - Cancelled
@@ -733,7 +661,7 @@ Both orders have been cancelled successfully.
 
 <details>
 
-- id: `msg_01QkFGn5qnJCqFBxA7szWShC`
+- id: `msg_01NgJQktChmU3RrU4xUpXTKq`
 - content:
   `[{'citations': None, 'text': "Perfect! I've successfully cancelled all orders for customer C1 (John Doe):\n- ✓ Order O1 (Widget A) - Cancelled\n- ✓ Order O2 (Gadget B) - Cancelled\n\nBoth orders have been cancelled successfully.", 'type': 'text'}]`
 - model: `claude-sonnet-4-5-20250929`
@@ -756,99 +684,25 @@ target="_blank" style="float:right; font-size:smaller">source</a>
 
 ### AsyncChat.toolloop
 
->  AsyncChat.toolloop (pr, max_steps=10, cont_func:<built-
->                          infunctioncallable>=<function noop>,
->                          final_prompt='You have no more tool uses. Please
->                          summarize your findings. If you did not complete your
->                          goal please tell the user what further work needs to
->                          be done so they can choose how best to proceed.',
->                          temp=None, maxtok=4096, maxthinktok=0, stream=False,
->                          prefill='',
->                          tool_choice:Union[str,bool,dict,NoneType]=None)
+``` python
+
+def toolloop(
+    pr, # Prompt to pass to Claude
+    max_steps:int=10, # Maximum number of tool requests to loop through
+    cont_func:callable=noop, # Function that stops loop if returns False
+    final_prompt:str='You have no more tool uses. Please summarize your findings. If you did not complete your goal please tell the user what further work needs to be done so they can choose how best to proceed.', # Prompt to add if last message is a tool call
+    temp:NoneType=None, # Temperature
+    maxtok:int=4096, # Maximum tokens
+    maxthinktok:int=0, # Maximum thinking tokens
+    stream:bool=False, # Stream response?
+    prefill:str='', # Optional prefill to pass to Claude as start of its response
+    tool_choice:Union=None, # Optionally force use of some tool
+):
+
+```
 
 *Add prompt `pr` to dialog and get a response from Claude, automatically
 following up with `tool_use` messages*
-
-<table>
-<colgroup>
-<col style="width: 6%" />
-<col style="width: 25%" />
-<col style="width: 34%" />
-<col style="width: 34%" />
-</colgroup>
-<thead>
-<tr>
-<th></th>
-<th><strong>Type</strong></th>
-<th><strong>Default</strong></th>
-<th><strong>Details</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>pr</td>
-<td></td>
-<td></td>
-<td>Prompt to pass to Claude</td>
-</tr>
-<tr>
-<td>max_steps</td>
-<td>int</td>
-<td>10</td>
-<td>Maximum number of tool requests to loop through</td>
-</tr>
-<tr>
-<td>cont_func</td>
-<td>callable</td>
-<td>noop</td>
-<td>Function that stops loop if returns False</td>
-</tr>
-<tr>
-<td>final_prompt</td>
-<td>str</td>
-<td>You have no more tool uses. Please summarize your findings. If you
-did not complete your goal please tell the user what further work needs
-to be done so they can choose how best to proceed.</td>
-<td>Prompt to add if last message is a tool call</td>
-</tr>
-<tr>
-<td>temp</td>
-<td>NoneType</td>
-<td>None</td>
-<td>Temperature</td>
-</tr>
-<tr>
-<td>maxtok</td>
-<td>int</td>
-<td>4096</td>
-<td>Maximum tokens</td>
-</tr>
-<tr>
-<td>maxthinktok</td>
-<td>int</td>
-<td>0</td>
-<td>Maximum thinking tokens</td>
-</tr>
-<tr>
-<td>stream</td>
-<td>bool</td>
-<td>False</td>
-<td>Stream response?</td>
-</tr>
-<tr>
-<td>prefill</td>
-<td>str</td>
-<td></td>
-<td>Optional prefill to pass to Claude as start of its response</td>
-</tr>
-<tr>
-<td>tool_choice</td>
-<td>Union</td>
-<td>None</td>
-<td>Optionally force use of some tool</td>
-</tr>
-</tbody>
-</table>
 
 <details open class="code-fold">
 <summary>Exported source</summary>
@@ -895,15 +749,15 @@ async for o in r: print(o)
 ```
 
     - Retrieving customer C1
-    Message(id='msg_018rqaE1gPNU2mML3zf3SXjw', content=[ToolUseBlock(id='toolu_01UNkDiQYoKg5QFH1xzP6yNf', input={'customer_id': 'C1'}, name='get_customer_info', type='tool_use')], model='claude-sonnet-4-5-20250929', role='assistant', stop_reason='tool_use', stop_sequence=None, type='message', usage=In: 757; Out: 58; Cache create: 0; Cache read: 0; Total Tokens: 815; Search: 0)
-    {'role': 'user', 'content': [{'type': 'tool_result', 'tool_use_id': 'toolu_01UNkDiQYoKg5QFH1xzP6yNf', 'content': "{'name': 'John Doe', 'email': 'john@example.com', 'phone': '123-456-7890', 'orders': [{'id': 'O1', 'product': 'Widget A', 'quantity': 2, 'price': 19.99, 'status': 'Shipped'}, {'id': 'O2', 'product': 'Gadget B', 'quantity': 1, 'price': 49.99, 'status': 'Processing'}]}"}]}
-    Message(id='msg_01GupT7xVPKaRoL7vdngR8HN', content=[TextBlock(citations=None, text='The email address for customer C1 (John Doe) is **john@example.com**.', type='text')], model='claude-sonnet-4-5-20250929', role='assistant', stop_reason='end_turn', stop_sequence=None, type='message', usage=In: 953; Out: 24; Cache create: 0; Cache read: 0; Total Tokens: 977; Search: 0)
+    Message(id='msg_01F1ruk8y7TsTrhpWTkBc67e', content=[ToolUseBlock(id='toolu_01LJ2mkQDqRdToAFHbCosv26', input={'customer_id': 'C1'}, name='get_customer_info', type='tool_use')], model='claude-sonnet-4-5-20250929', role='assistant', stop_reason='tool_use', stop_sequence=None, type='message', usage=In: 757; Out: 58; Cache create: 0; Cache read: 0; Total Tokens: 815; Search: 0)
+    {'role': 'user', 'content': [{'type': 'tool_result', 'tool_use_id': 'toolu_01LJ2mkQDqRdToAFHbCosv26', 'content': "{'name': 'John Doe', 'email': 'john@example.com', 'phone': '123-456-7890', 'orders': [{'id': 'O1', 'product': 'Widget A', 'quantity': 2, 'price': 19.99, 'status': 'Shipped'}, {'id': 'O2', 'product': 'Gadget B', 'quantity': 1, 'price': 49.99, 'status': 'Processing'}]}"}]}
+    Message(id='msg_019Z6rMioA6RExGgXKGnusiM', content=[TextBlock(citations=None, text='The email address for customer C1 (John Doe) is **john@example.com**.', type='text')], model='claude-sonnet-4-5-20250929', role='assistant', stop_reason='end_turn', stop_sequence=None, type='message', usage=In: 953; Out: 24; Cache create: 0; Cache read: 0; Total Tokens: 977; Search: 0)
 
 ``` python
 pprint(r.value)
 ```
 
-    [{'content': [{'id': 'toolu_01UNkDiQYoKg5QFH1xzP6yNf',
+    [{'content': [{'id': 'toolu_01LJ2mkQDqRdToAFHbCosv26',
                    'input': {'customer_id': 'C1'},
                    'name': 'get_customer_info',
                    'type': 'tool_use'}],
@@ -914,10 +768,10 @@ pprint(r.value)
                               "19.99, 'status': 'Shipped'}, {'id': 'O2', "
                               "'product': 'Gadget B', 'quantity': 1, 'price': "
                               "49.99, 'status': 'Processing'}]}",
-                   'tool_use_id': 'toolu_01UNkDiQYoKg5QFH1xzP6yNf',
+                   'tool_use_id': 'toolu_01LJ2mkQDqRdToAFHbCosv26',
                    'type': 'tool_result'}],
       'role': 'user'},
-     {'content': [{'citations': None,
+     {'content': [{'citations': {},
                    'text': 'The email address for customer C1 (John Doe) is '
                            '**john@example.com**.',
                    'type': 'text'}],
@@ -1006,7 +860,7 @@ information during the loop:
 it returns `False`, stops the loop:
 
 ``` python
-def _cont_decline(call, resp, asst): return resp['content'][0]['content'] != '#DECLINED#'
+def _cont_decline(call, resp, asst): return resp['content'][0].get('content') != '#DECLINED#'
 ```
 
 Now we can try our code interpreter. We start by asking for a function
@@ -1019,57 +873,56 @@ that multiplies together the ascii values of each character in `s` using `reduce
 for o in chat.toolloop(pr, cont_func=_cont_decline): display(o)
 ```
 
-I’ll create a 1-line function that calculates a checksum by multiplying
-ASCII values using `reduce`.
+I’ll create a 1-line `checksum` function that uses `reduce` to multiply
+the ASCII values of each character in a string.
 
 <details>
 
-- id: `msg_01NVeigaUgg3ghtVngPjF1GH`
+- id: `msg_01NfL3YNWTZ2Chst88nr3iPu`
 - content:
-  `[{'citations': None, 'text': "I'll create a 1-line function that calculates a checksum by multiplying ASCII values using`reduce`.", 'type': 'text'}, {'id': 'toolu_01DhN8hY138gKHtEH6tUV4DT', 'input': {'code': '\nchecksum = lambda s: functools.reduce(lambda x, y: x * y, [ord(c) for c in s], 1)\n\n# Test it\nprint(checksum("abc"))\nprint(checksum("hello"))\nprint(checksum("A"))\n'}, 'name': 'run_cell', 'type': 'tool_use'}]`
+  `[{'citations': None, 'text': "I'll create a 1-line`checksum`function that uses`reduce`to multiply the ASCII values of each character in a string.", 'type': 'text'}, {'id': 'toolu_01GgTqM917BzHJ4MjpwZFwTF', 'input': {'code': '\nchecksum = lambda s: functools.reduce(operator.mul, (ord(c) for c in s), 1)\n\n# Test it\nprint(checksum("abc"))\nprint(checksum("hello"))\nprint(checksum("A"))\n'}, 'name': 'run_cell', 'type': 'tool_use'}]`
 - model: `claude-sonnet-4-5-20250929`
 - role: `assistant`
 - stop_reason: `tool_use`
 - stop_sequence: `None`
 - type: `message`
 - usage:
-  `{'cache_creation': {'ephemeral_1h_input_tokens': 0, 'ephemeral_5m_input_tokens': 0}, 'cache_creation_input_tokens': 0, 'cache_read_input_tokens': 0, 'input_tokens': 927, 'output_tokens': 140, 'server_tool_use': None, 'service_tier': 'standard'}`
+  `{'cache_creation': {'ephemeral_1h_input_tokens': 0, 'ephemeral_5m_input_tokens': 0}, 'cache_creation_input_tokens': 0, 'cache_read_input_tokens': 0, 'input_tokens': 927, 'output_tokens': 141, 'server_tool_use': None, 'service_tier': 'standard'}`
 
 </details>
 
 ``` python
 { 'content': [ { 'content': '941094\n13599570816\n65\n',
-                 'tool_use_id': 'toolu_01DhN8hY138gKHtEH6tUV4DT',
+                 'tool_use_id': 'toolu_01GgTqM917BzHJ4MjpwZFwTF',
                  'type': 'tool_result'}],
   'role': 'user'}
 ```
 
-Perfect! I’ve created the 1-line `checksum` function:
+Perfect! I’ve created the `checksum` function as a one-liner that: -
+Uses `functools.reduce` with `operator.mul` to multiply values
+together - Converts each character to its ASCII value using `ord(c)` -
+Uses a generator expression `(ord(c) for c in s)` to iterate through the
+string - Starts with an initial value of `1` (the identity for
+multiplication)
 
-``` python
-checksum = lambda s: functools.reduce(lambda x, y: x * y, [ord(c) for c in s], 1)
-```
-
-This function: - Takes a string `s` as input - Converts each character
-to its ASCII value using `ord(c)` - Uses `functools.reduce` to multiply
-all the ASCII values together - Starts with an initial value of `1` (so
-empty strings return 1)
-
-For example: - `checksum("abc")` = 97 × 98 × 99 = 941,094 -
-`checksum("A")` = 65
+The test shows it working correctly: - `"abc"` → 97 × 98 × 99 =
+941,094 - `"hello"` → 104 × 101 × 108 × 108 × 111 = 13,599,570,816 -
+`"A"` → 65
 
 <details>
 
-- id: `msg_01M2Vfk3tU6jRyz64pbbndVa`
+- id: `msg_01L1Et5ywM28AckqGct1Ce4A`
 - content:
-  `[{'citations': None, 'text': 'Perfect! I\'ve created the 1-line`checksum```` function:\n\n```python\nchecksum = lambda s: functools.reduce(lambda x, y: x * y, [ord(c) for c in s], 1)\n```\n\nThis function:\n- Takes a string ````s`as input\n- Converts each character to its ASCII value using`ord(c)`\n- Uses`functools.reduce`to multiply all the ASCII values together\n- Starts with an initial value of`1`(so empty strings return 1)\n\nFor example:\n-`checksum(“abc”)`= 97 × 98 × 99 = 941,094\n-`checksum(“A”)`= 65', 'type': 'text'}]`
+  `[{'citations': None, 'text': 'Perfect! I\'ve created the`checksum`function as a one-liner that:\n- Uses`functools.reduce`with`operator.mul`to multiply values together\n- Converts each character to its ASCII value using`ord(c)`\n- Uses a generator expression`(ord(c)
+  for c in
+  s)`to iterate through the string\n- Starts with an initial value of`1`(the identity for multiplication)\n\nThe test shows it working correctly:\n-`“abc”`→ 97 × 98 × 99 = 941,094\n-`“hello”`→ 104 × 101 × 108 × 108 × 111 = 13,599,570,816\n-`“A”`→ 65', 'type': 'text'}]`
 - model: `claude-sonnet-4-5-20250929`
 - role: `assistant`
 - stop_reason: `end_turn`
 - stop_sequence: `None`
 - type: `message`
 - usage:
-  `{'cache_creation': {'ephemeral_1h_input_tokens': 0, 'ephemeral_5m_input_tokens': 0}, 'cache_creation_input_tokens': 0, 'cache_read_input_tokens': 0, 'input_tokens': 1089, 'output_tokens': 166, 'server_tool_use': None, 'service_tier': 'standard'}`
+  `{'cache_creation': {'ephemeral_1h_input_tokens': 0, 'ephemeral_5m_input_tokens': 0}, 'cache_creation_input_tokens': 0, 'cache_read_input_tokens': 0, 'input_tokens': 1090, 'output_tokens': 175, 'server_tool_use': None, 'service_tier': 'standard'}`
 
 </details>
 
@@ -1081,26 +934,52 @@ pr = 'Use it to get the checksum of the username of this session.'
 for o in chat.toolloop(pr): display(o)
 ```
 
-Now I’ll calculate the checksum for “Jeremy”:
+    Looking up username
+
+I’ll get the username of this session and then calculate its checksum.
 
 <details>
 
-- id: `msg_01YPXH51W3y6XMZzkWM1dDY2`
+- id: `msg_01HrZAji8SwDbRhbb79cUZHo`
 - content:
-  `[{'citations': None, 'text': 'Now I\'ll calculate the checksum for "Jeremy":', 'type': 'text'}, {'id': 'toolu_01MBWQiC8Y1XhskYP38veXT5', 'input': {'code': '\nusername = "Jeremy"\nresult = checksum(username)\nprint(f"Username: {username}")\nprint(f"Checksum: {result}")\n'}, 'name': 'run_cell', 'type': 'tool_use'}]`
+  `[{'citations': None, 'text': "I'll get the username of this session and then calculate its checksum.", 'type': 'text'}, {'id': 'toolu_01MzJHgGgQdJ5Pc9e5s35ddF', 'input': {}, 'name': 'get_user', 'type': 'tool_use'}]`
 - model: `claude-sonnet-4-5-20250929`
 - role: `assistant`
 - stop_reason: `tool_use`
 - stop_sequence: `None`
 - type: `message`
 - usage:
-  `{'cache_creation': {'ephemeral_1h_input_tokens': 0, 'ephemeral_5m_input_tokens': 0}, 'cache_creation_input_tokens': 0, 'cache_read_input_tokens': 0, 'input_tokens': 1337, 'output_tokens': 101, 'server_tool_use': None, 'service_tier': 'standard'}`
+  `{'cache_creation': {'ephemeral_1h_input_tokens': 0, 'ephemeral_5m_input_tokens': 0}, 'cache_creation_input_tokens': 0, 'cache_read_input_tokens': 0, 'input_tokens': 1282, 'output_tokens': 52, 'server_tool_use': None, 'service_tier': 'standard'}`
+
+</details>
+
+``` python
+{ 'content': [ { 'content': 'Jeremy',
+                 'tool_use_id': 'toolu_01MzJHgGgQdJ5Pc9e5s35ddF',
+                 'type': 'tool_result'}],
+  'role': 'user'}
+```
+
+Now I’ll calculate the checksum for “Jeremy”:
+
+<details>
+
+- id: `msg_01Fdq1ViEfUg6kzGPrYeeVa6`
+- content:
+  `[{'citations': None, 'text': 'Now I\'ll calculate the checksum for "Jeremy":', 'type': 'text'}, {'id': 'toolu_016XwiSjzxo2sgJTiZw2gFH8', 'input': {'code': '\nusername = "Jeremy"\nresult = checksum(username)\nprint(f"Username: {username}")\nprint(f"Checksum: {result}")\n'}, 'name': 'run_cell', 'type': 'tool_use'}]`
+- model: `claude-sonnet-4-5-20250929`
+- role: `assistant`
+- stop_reason: `tool_use`
+- stop_sequence: `None`
+- type: `message`
+- usage:
+  `{'cache_creation': {'ephemeral_1h_input_tokens': 0, 'ephemeral_5m_input_tokens': 0}, 'cache_creation_input_tokens': 0, 'cache_read_input_tokens': 0, 'input_tokens': 1347, 'output_tokens': 101, 'server_tool_use': None, 'service_tier': 'standard'}`
 
 </details>
 
 ``` python
 { 'content': [ { 'content': 'Username: Jeremy\nChecksum: 1134987783204\n',
-                 'tool_use_id': 'toolu_01MBWQiC8Y1XhskYP38veXT5',
+                 'tool_use_id': 'toolu_016XwiSjzxo2sgJTiZw2gFH8',
                  'type': 'tool_result'}],
   'role': 'user'}
 ```
@@ -1112,7 +991,7 @@ This is calculated by multiplying the ASCII values: 74 × 101 × 114 × 101
 
 <details>
 
-- id: `msg_01KTBJvn3HStGjvqBp9GGopb`
+- id: `msg_01CfuVuK1hbYq6o61cv7ddp8`
 - content:
   `[{'citations': None, 'text': 'The checksum of the username "Jeremy" is **1,134,987,783,204**.\n\nThis is calculated by multiplying the ASCII values: 74 × 101 × 114 × 101 × 109 × 121 = 1,134,987,783,204', 'type': 'text'}]`
 - model: `claude-sonnet-4-5-20250929`
@@ -1121,6 +1000,6 @@ This is calculated by multiplying the ASCII values: 74 × 101 × 114 × 101
 - stop_sequence: `None`
 - type: `message`
 - usage:
-  `{'cache_creation': {'ephemeral_1h_input_tokens': 0, 'ephemeral_5m_input_tokens': 0}, 'cache_creation_input_tokens': 0, 'cache_read_input_tokens': 0, 'input_tokens': 1465, 'output_tokens': 69, 'server_tool_use': None, 'service_tier': 'standard'}`
+  `{'cache_creation': {'ephemeral_1h_input_tokens': 0, 'ephemeral_5m_input_tokens': 0}, 'cache_creation_input_tokens': 0, 'cache_read_input_tokens': 0, 'input_tokens': 1475, 'output_tokens': 69, 'server_tool_use': None, 'service_tier': 'standard'}`
 
 </details>

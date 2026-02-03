@@ -2,25 +2,70 @@
 
 # Functions
 
-The `Functions` section allows you to define and configure the functions your agent can execute during customer interactions. This feature enables the agent to perform specific tasks dynamically based on user inputs or system triggers.
+The `Functions` section allows you to define and configure the functions your agent can execute during customer interactions. This feature enables the agent to perform specific tasks dynamically in response to user inputs or system triggers.
 
 <figure><img src="https://2934665269-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F-LpXFTiTgns4Ml77XGi3%2Fuploads%2FnaR6cFsMQxYUMhFN5CLV%2FScreenshot%202025-12-09%20at%202.40.54%E2%80%AFPM.png?alt=media&#x26;token=fcb03aef-0c4c-44c6-b682-cea3ec862558" alt=""><figcaption></figcaption></figure>
 
 ### **Key Components**
 
-1. **Function List:**
-   * Displays the list of existing functions configured for the agent.
-   * Click `Add New` to create a new function.
-   * Functions can be deleted using the trash icon.
-2. **Name:**
-   * Enter a unique name for the function to identify it within the system.
-3. **Declaration:**
-   * Define the function structure here.
-   * This typically includes the function’s name, parameters, and expected behavior.
-4. **Definition:**
-   * Specifies how the function operates and what output it should generate.
-   * Can include logic or conditions for execution.
-   * You can also make use of built-in definitions.&#x20;
+**Function List:**
+
+* Displays the list of existing functions configured for the agent.
+* Click `Add New` to create a new function.
+* Functions can be deleted using the trash icon.
+
+**Name:**
+
+Enter a unique name for the function to identify it within the system.
+
+**Declaration:**
+
+The Declaration defines the function contract. It tells the agent what the function is, when it should be called, and what inputs it requires.
+
+Example declaration
+
+```js
+{
+  "name": "confirm_appointment",
+  "description": "Function to confirm that a user will be able to make it to an appointment.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "appointment_dat_id": {
+        "type": "string",
+        "description": "Appointment DAT ID"
+      }
+    },
+    "required": ["appointment_dat_id"]
+  }
+}
+```
+
+**Definition:**
+
+The Definition contains the function's execution logic. This logic runs only after the function is invoked based on the declaration.
+
+Example definition (corresponding to the above declaration)
+
+```javascript
+if (context.variables.authentication_status !== true) {
+  return {
+    success: false,
+    msg: "User not authenticated."
+  };
+}
+
+let MRN = await Storage.user.get("mrn_id");
+
+if (!context.variables.appointments) {
+  console.log("\n fetch future appointments has not been called yet");
+  return {
+    success: false,
+    avm_instruction:
+      "Call fetch_future_appointments function first, get the list of appointments and then confirm appointment."
+  };
+}
+```
 
 ### **Usage**
 

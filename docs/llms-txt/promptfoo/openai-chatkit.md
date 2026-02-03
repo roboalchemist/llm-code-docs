@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/openai-chatkit/
+
 # OpenAI ChatKit
 
 Evaluate [ChatKit](https://platform.openai.com/docs/guides/chatkit) workflows from OpenAI's Agent Builder. This provider uses Playwright to automate the ChatKit web component since workflows don't expose a REST API.

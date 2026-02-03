@@ -14,9 +14,26 @@ In an Rspack project, you can enable Rsdoctor by following these steps:
 
 1. Install the `@rsdoctor/rspack-plugin` plugin:
 
-import { PackageManagerTabs } from '@theme';
 
-<PackageManagerTabs command="add @rsdoctor/rspack-plugin -D" />
+```sh [npm]
+npm add @rsdoctor/rspack-plugin -D
+```
+
+```sh [yarn]
+yarn add @rsdoctor/rspack-plugin -D
+```
+
+```sh [pnpm]
+pnpm add @rsdoctor/rspack-plugin -D
+```
+
+```sh [bun]
+bun add @rsdoctor/rspack-plugin -D
+```
+
+```sh [deno]
+deno add npm:@rsdoctor/rspack-plugin -D
+```
 
 2. Register the `RsdoctorRspackPlugin` plugin in the [plugins](/config/plugins.md) option of Rspack:
 

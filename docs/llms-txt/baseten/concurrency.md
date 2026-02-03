@@ -1,4 +1,8 @@
-# Source: https://docs.baseten.co/development/model/performance/concurrency.md
+# Source: https://docs.baseten.co/development/model/concurrency.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Request concurrency
 
@@ -6,7 +10,7 @@
 
 Configuring concurrency optimizes **model performance**, balancing **throughput** and **latency**.
 
-In Baseten & Truss, concurrency is managed at **two levels**:
+In Baseten and Truss, concurrency is managed at **two levels**:
 
 1. **Concurrency Target** – Limits the number of requests **sent** to a single replica.
 2. **Predict Concurrency** – Limits how many requests the predict function handles **inside the model container**.

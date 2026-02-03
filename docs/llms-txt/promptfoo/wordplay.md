@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/wordplay/
+
 # Wordplay Plugin
 
 The Wordplay red teaming plugin tests whether an AI system can be tricked into generating profanity or offensive language through innocent-seeming wordplay like riddles, rhyming games, and word puzzles.

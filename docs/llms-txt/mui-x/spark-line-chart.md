@@ -35,21 +35,26 @@ import { SparkLineChart } from '@mui/x-charts-premium';
 | disableClipping | `bool` | `false` | No |  |
 | disableVoronoi | `bool` | - | No |  |
 | height | `number` | - | No |  |
+| hiddenItems | `Array<{ dataIndex?: number, seriesId?: number \| string, type: 'bar' } \| { dataIndex?: number, seriesId?: number \| string, type: 'line' } \| { dataIndex?: number, seriesId?: number \| string, type: 'scatter' } \| { dataIndex?: number, seriesId?: number \| string, type: 'pie' } \| { dataIndex?: number, seriesId?: number \| string, type: 'radar' }>` | - | No |  |
 | highlightedAxis | `Array<{ axisId: number \| string, dataIndex: number }>` | - | No |  |
 | highlightedItem | `{ dataIndex?: number, seriesId: number \| string }` | - | No |  |
 | id | `string` | - | No |  |
+| initialHiddenItems | `Array<{ dataIndex?: number, seriesId?: number \| string, type: 'bar' } \| { dataIndex?: number, seriesId?: number \| string, type: 'line' } \| { dataIndex?: number, seriesId?: number \| string, type: 'scatter' } \| { dataIndex?: number, seriesId?: number \| string, type: 'pie' } \| { dataIndex?: number, seriesId?: number \| string, type: 'radar' }>` | - | No |  |
 | localeText | `object` | - | No |  |
 | margin | `number \| { bottom?: number, left?: number, right?: number, top?: number }` | `5` | No |  |
 | onAxisClick | `function(event: MouseEvent, data: null \| ChartsAxisData) => void` | - | No |  |
+| onHiddenItemsChange | `function(hiddenItems: Array<VisibilityIdentifier>) => void` | - | No |  |
 | onHighlightChange | `function(highlightedItem: HighlightItemData \| null) => void` | - | No |  |
 | onHighlightedAxisChange | `function(axisItems: Array<AxisItemIdentifier>) => void` | - | No |  |
 | onItemClick | `function(event: MouseEvent, scatterItemIdentifier: ScatterItemIdentifier) => void` | - | No |  |
+| onTooltipItemChange | `function(tooltipItem: SeriesItemIdentifier<TSeries> \| null) => void` | - | No |  |
 | plotType | `'bar' \| 'line'` | `'line'` | No |  |
 | showHighlight | `bool` | `false` | No |  |
 | showTooltip | `bool` | `false` | No |  |
 | skipAnimation | `bool` | - | No |  |
 | slotProps | `object` | `{}` | No |  |
 | slots | `object` | `{}` | No |  |
+| tooltipItem | `{ dataIndex: number, seriesId: number \| string, type: 'bar' } \| { dataIndex?: number, seriesId: number \| string, type: 'line' } \| { dataIndex: number, seriesId: number \| string, type: 'scatter' } \| { dataIndex: number, seriesId: number \| string, type: 'pie' } \| { dataIndex?: number, seriesId: number \| string, type: 'radar' }` | - | No |  |
 | valueFormatter | `function(value: number) => string` | `(value: number | null) => (value === null ? '' : value.toString())` | No |  |
 | voronoiMaxRadius | `'item' \| number` | - | No |  |
 | width | `number` | - | No |  |

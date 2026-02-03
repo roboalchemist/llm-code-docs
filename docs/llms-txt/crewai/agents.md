@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/concepts/agents.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Agents
 
 > Detailed guide on creating and managing agents within the CrewAI framework.
@@ -16,7 +20,10 @@ In the CrewAI framework, an `Agent` is an autonomous unit that can:
 * Delegate tasks when allowed
 
 <Tip>
-  Think of an agent as a specialized team member with specific skills, expertise, and responsibilities. For example, a `Researcher` agent might excel at gathering and analyzing information, while a `Writer` agent might be better at creating content.
+  Think of an agent as a specialized team member with specific skills,
+  expertise, and responsibilities. For example, a `Researcher` agent might excel
+  at gathering and analyzing information, while a `Writer` agent might be better
+  at creating content.
 </Tip>
 
 <Note type="info" title="Enterprise Enhancement: Visual Agent Builder">
@@ -139,7 +146,8 @@ class LatestAiDevelopmentCrew():
 ```
 
 <Note>
-  The names you use in your YAML files (`agents.yaml`) should match the method names in your Python code.
+  The names you use in your YAML files (`agents.yaml`) should match the method
+  names in your Python code.
 </Note>
 
 ### Direct Code Definition
@@ -310,8 +318,9 @@ multimodal_agent = Agent(
   * `"unsafe"`: Direct execution (use only in trusted environments)
 
 <Note>
-  This runs a default Docker image. If you want to configure the docker image, the checkout the Code Interpreter Tool in the tools section.
-  Add the code interpreter tool as a tool in the agent as a tool parameter.
+  This runs a default Docker image. If you want to configure the docker image,
+  the checkout the Code Interpreter Tool in the tools section. Add the code
+  interpreter tool as a tool in the agent as a tool parameter.
 </Note>
 
 #### Advanced Features
@@ -327,11 +336,15 @@ multimodal_agent = Agent(
 * `response_template`: Formats agent responses
 
 <Note>
-  When using custom templates, ensure that both `system_template` and `prompt_template` are defined. The `response_template` is optional but recommended for consistent output formatting.
+  When using custom templates, ensure that both `system_template` and
+  `prompt_template` are defined. The `response_template` is optional but
+  recommended for consistent output formatting.
 </Note>
 
 <Note>
-  When using custom templates, you can use variables like `{role}`, `{goal}`, and `{backstory}` in your templates. These will be automatically populated during execution.
+  When using custom templates, you can use variables like `{role}`, `{goal}`,
+  and `{backstory}` in your templates. These will be automatically populated
+  during execution.
 </Note>
 
 ## Agent Tools
@@ -376,7 +389,8 @@ analyst = Agent(
 ```
 
 <Note>
-  When `memory` is enabled, the agent will maintain context across multiple interactions, improving its ability to handle complex, multi-step tasks.
+  When `memory` is enabled, the agent will maintain context across multiple
+  interactions, improving its ability to handle complex, multi-step tasks.
 </Note>
 
 ## Context Window Management
@@ -548,7 +562,10 @@ agent = Agent(
 ```
 
 <Note>
-  The context window management feature works automatically in the background. You don't need to call any special functions - just set `respect_context_window` to your preferred behavior and CrewAI handles the rest!
+  The context window management feature works automatically in the background.
+  You don't need to call any special functions - just set
+  `respect_context_window` to your preferred behavior and CrewAI handles the
+  rest!
 </Note>
 
 ## Direct Agent Interaction with `kickoff()`
@@ -645,7 +662,9 @@ asyncio.run(main())
 ```
 
 <Note>
-  The `kickoff()` method uses a `LiteAgent` internally, which provides a simpler execution flow while preserving all of the agent's configuration (role, goal, backstory, tools, etc.).
+  The `kickoff()` method uses a `LiteAgent` internally, which provides a simpler
+  execution flow while preserving all of the agent's configuration (role, goal,
+  backstory, tools, etc.).
 </Note>
 
 ## Important Considerations and Best Practices
@@ -701,16 +720,19 @@ asyncio.run(main())
 ## Troubleshooting Common Issues
 
 1. **Rate Limiting**: If you're hitting API rate limits:
+
    * Implement appropriate `max_rpm`
    * Use caching for repetitive operations
    * Consider batching requests
 
 2. **Context Window Errors**: If you're exceeding context limits:
+
    * Enable `respect_context_window`
    * Use more efficient prompts
    * Clear agent memory periodically
 
 3. **Code Execution Issues**: If code execution fails:
+
    * Verify Docker is installed for safe mode
    * Check execution permissions
    * Review code sandbox settings

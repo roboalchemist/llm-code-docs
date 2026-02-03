@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/security/sso.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Single Sign-On (SSO)
 
 ## Google SSO

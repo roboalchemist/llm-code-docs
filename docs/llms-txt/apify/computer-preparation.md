@@ -1,10 +1,12 @@
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction/computer-preparation.md
 
-# Source: https://docs.apify.com/academy/web-scraping-for-beginners/data-extraction/computer-preparation.md
-
 # Prepare your computer for programming
 
 **Set up your computer to be able to code scrapers with Node.js and JavaScript. Download Node.js and npm and run a Hello World script.**
+
+Archived course
+
+This is an archive of our old course. Check out our new [Web scraping basics for JavaScript devs](https://docs.apify.com/academy/scraping-basics-javascript.md) course instead! We plan to completely retire this old course in a few months.
 
 ***
 
@@ -14,11 +16,11 @@ Before you can start writing scraper code, you need to have your computer set up
 
 Let's start with the installation of Node.js. Node.js is an engine for running JavaScript, quite similar to the browser console we used in the previous lessons. You feed it JavaScript code, and it executes it for you. Why not just use the browser console? Because it's limited in its capabilities. Node.js is way more powerful and is much better suited for coding scrapers.
 
-If you're on macOS, use https://blog.apify.com/how-to-install-nodejs/. If you're using Windows https://nodejs.org/en/download/. And if you're on Linux, use your package manager to install `nodejs`.
+If you're on macOS, use [this tutorial to install Node.js](https://blog.apify.com/how-to-install-nodejs/). If you're using Windows [visit the official Node.js website](https://nodejs.org/en/download/). And if you're on Linux, use your package manager to install `nodejs`.
 
 ## Install a text editor
 
-Many text editors are available for you to choose from when programming. You might already have a preferred one so feel free to use that. Make sure it has syntax highlighting and support for Node.js. If you don't have a text editor, we suggest starting with VSCode. It's free, very popular, and well maintained. https://code.visualstudio.com/download.
+Many text editors are available for you to choose from when programming. You might already have a preferred one so feel free to use that. Make sure it has syntax highlighting and support for Node.js. If you don't have a text editor, we suggest starting with VSCode. It's free, very popular, and well maintained. [Download it here](https://code.visualstudio.com/download).
 
 Once you downloaded and installed it, you can open a folder where we will build your scraper. We recommend starting with a new, empty folder.
 
@@ -67,4 +69,4 @@ You should see **Hello World** printed in your terminal. If you do, congratulati
 
 ## Next up
 
-You have your computer set up correctly for development, and you've run your first script. Great! In the https://docs.apify.com/academy/web-scraping-for-beginners/data-extraction/project-setup.md we'll set up your project to download a website's HTML using Node.js instead of a browser.
+You have your computer set up correctly for development, and you've run your first script. Great! In the [next lesson](https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction/project-setup.md) we'll set up your project to download a website's HTML using Node.js instead of a browser.

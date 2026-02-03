@@ -1,5 +1,9 @@
 # Source: https://docs.giselles.ai/en/glossary/ai-parameters.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.giselles.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AI Parameters
 
 > Dictionary of Generation Parameters Used Across AI Models in Giselle.
@@ -32,6 +36,30 @@ Please note that definitions and availability of generation parameters may vary 
 * **Recommended use:**
   * Adjust based on desired response length and API/model token limits.
   * Essential for cost management and resource optimization.
+
+## Reasoning Parameters
+
+### Reasoning Effort
+
+* **Definition:** Controls how many reasoning tokens the model generates before producing a response. Higher levels result in more thorough reasoning at the cost of increased latency.
+* **Range:** Model-dependent. GPT-5.2 supports `none`, `low`, `medium`, `high`, `xhigh`. Traditional models support `minimal`, `low`, `medium`, `high`.
+* **Default:** `none` for GPT-5.2/5.1 models, `medium` for traditional models.
+* **Recommended use:**
+  * `none`: Low-latency interactions where quick responses are prioritized.
+  * `low` to `medium`: Balanced reasoning for general tasks.
+  * `high` to `xhigh`: Complex problem-solving, deep analysis, and tasks requiring thorough reasoning.
+
+### Text Verbosity
+
+* **Definition:** Determines how many output tokens are generated. Controls the length and detail of the model's response.
+* **Range:** `low`, `medium`, `high`.
+* **Default:** `medium`.
+* **Recommended use:**
+  * `low`: Concise answers, simple code generation (e.g., SQL queries), situations where brevity is preferred.
+  * `medium`: Balanced output length for most tasks.
+  * `high`: Thorough explanations, extensive code refactoring, detailed documentation.
+
+> **Note:** Text verbosity sets a general token range at the system prompt level, but actual output can still be influenced by prompting within that range.
 
 ## Text-Specific Parameters
 
@@ -79,6 +107,7 @@ Please note that definitions and availability of generation parameters may vary 
 * **Definition:** Maximum tokens/models can "remember" or process at once.
 * **Typical values:**
   * Gemini: up to 1M tokens.
+  * GPT-5.2: 400k tokens.
   * GPT-4o: 128k tokens.
   * Claude: up to 200k tokens.
 * **Recommended use:**

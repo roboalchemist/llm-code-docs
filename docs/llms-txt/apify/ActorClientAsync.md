@@ -39,7 +39,7 @@ Async sub-client for manipulating a single Actor.
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#__init__)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/actor.py#L522)\_\_init\_\_
+### [**](#__init__)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/actor.py#L548)\_\_init\_\_
 
 * ****\_\_init\_\_**(\*, base\_url, root\_client, http\_client, resource\_id, resource\_path, params): None
 
@@ -77,7 +77,7 @@ Async sub-client for manipulating a single Actor.
 
   #### Returns None
 
-### [**](#build)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/actor.py#L788)build
+### [**](#build)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/actor.py#L822)build
 
 * **async **build**(\*, version\_number, beta\_packages, tag, use\_cache, wait\_for\_finish): dict
 
@@ -111,7 +111,7 @@ Async sub-client for manipulating a single Actor.
 
   #### Returns dict
 
-### [**](#builds)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/actor.py#L832)builds
+### [**](#builds)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/actor.py#L866)builds
 
 * ****builds**(): [BuildCollectionClientAsync](https://docs.apify.com/api/client/python/api/client/python/reference/class/BuildCollectionClientAsync.md)
 
@@ -121,7 +121,7 @@ Async sub-client for manipulating a single Actor.
 
   #### Returns [BuildCollectionClientAsync](https://docs.apify.com/api/client/python/api/client/python/reference/class/BuildCollectionClientAsync.md)
 
-### [**](#call)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/actor.py#L710)call
+### [**](#call)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/actor.py#L744)call
 
 * **async **call**(\*, run\_input, content\_type, build, max\_items, max\_total\_charge\_usd, restart\_on\_error, memory\_mbytes, timeout\_secs, webhooks, force\_permission\_level, wait\_secs, logger): dict | None
 
@@ -185,7 +185,7 @@ Async sub-client for manipulating a single Actor.
 
   #### Returns dict | None
 
-### [**](#default_build)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/actor.py#L840)default\_build
+### [**](#default_build)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/actor.py#L874)default\_build
 
 * **async **default\_build**(\*, wait\_for\_finish): [BuildClientAsync](https://docs.apify.com/api/client/python/api/client/python/reference/class/BuildClientAsync.md)
 
@@ -203,7 +203,7 @@ Async sub-client for manipulating a single Actor.
 
   #### Returns [BuildClientAsync](https://docs.apify.com/api/client/python/api/client/python/reference/class/BuildClientAsync.md)
 
-### [**](#delete)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/actor.py#L631)delete
+### [**](#delete)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/actor.py#L665)delete
 
 * **async **delete**(): None
 
@@ -215,7 +215,7 @@ Async sub-client for manipulating a single Actor.
 
   #### Returns None
 
-### [**](#get)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/actor.py#L526)get
+### [**](#get)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/actor.py#L552)get
 
 * **async **get**(): dict | None
 
@@ -227,7 +227,7 @@ Async sub-client for manipulating a single Actor.
 
   #### Returns dict | None
 
-### [**](#last_run)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/actor.py#L874)last\_run
+### [**](#last_run)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/actor.py#L908)last\_run
 
 * ****last\_run**(\*, status, origin): [RunClientAsync](https://docs.apify.com/api/client/python/api/client/python/reference/class/RunClientAsync.md)
 
@@ -249,7 +249,7 @@ Async sub-client for manipulating a single Actor.
 
   #### Returns [RunClientAsync](https://docs.apify.com/api/client/python/api/client/python/reference/class/RunClientAsync.md)
 
-### [**](#runs)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/actor.py#L836)runs
+### [**](#runs)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/actor.py#L870)runs
 
 * ****runs**(): [RunCollectionClientAsync](https://docs.apify.com/api/client/python/api/client/python/reference/class/RunCollectionClientAsync.md)
 
@@ -259,7 +259,7 @@ Async sub-client for manipulating a single Actor.
 
   #### Returns [RunCollectionClientAsync](https://docs.apify.com/api/client/python/api/client/python/reference/class/RunCollectionClientAsync.md)
 
-### [**](#start)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/actor.py#L638)start
+### [**](#start)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/actor.py#L672)start
 
 * **async **start**(\*, run\_input, content\_type, build, max\_items, max\_total\_charge\_usd, restart\_on\_error, memory\_mbytes, timeout\_secs, force\_permission\_level, wait\_for\_finish, webhooks): dict
 
@@ -321,9 +321,9 @@ Async sub-client for manipulating a single Actor.
 
   #### Returns dict
 
-### [**](#update)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/actor.py#L536)update
+### [**](#update)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/actor.py#L562)update
 
-* **async **update**(\*, name, title, description, seo\_title, seo\_description, versions, restart\_on\_error, is\_public, is\_deprecated, is\_anonymously\_runnable, categories, default\_run\_build, default\_run\_max\_items, default\_run\_memory\_mbytes, default\_run\_timeout\_secs, example\_run\_input\_body, example\_run\_input\_content\_type, actor\_standby\_is\_enabled, actor\_standby\_desired\_requests\_per\_actor\_run, actor\_standby\_max\_requests\_per\_actor\_run, actor\_standby\_idle\_timeout\_secs, actor\_standby\_build, actor\_standby\_memory\_mbytes, pricing\_infos): dict
+* **async **update**(\*, name, title, description, seo\_title, seo\_description, versions, restart\_on\_error, is\_public, is\_deprecated, is\_anonymously\_runnable, categories, default\_run\_build, default\_run\_max\_items, default\_run\_memory\_mbytes, default\_run\_timeout\_secs, example\_run\_input\_body, example\_run\_input\_content\_type, actor\_standby\_is\_enabled, actor\_standby\_desired\_requests\_per\_actor\_run, actor\_standby\_max\_requests\_per\_actor\_run, actor\_standby\_idle\_timeout\_secs, actor\_standby\_build, actor\_standby\_memory\_mbytes, pricing\_infos, actor\_permission\_level, tagged\_builds): dict
 
 - Update the Actor with the specified fields.
 
@@ -429,9 +429,17 @@ Async sub-client for manipulating a single Actor.
 
     A list of objects that describes the pricing of the Actor.
 
+  * ##### optionalkeyword-onlyactor\_permission\_level: ActorPermissionLevel | None = <!-- -->None
+
+    The permission level of the Actor on Apify platform.
+
+  * ##### optionalkeyword-onlytagged\_builds: dict\[str, None | dict\[str, str]] | None = <!-- -->None
+
+    A dictionary mapping build tag names to their settings. Use it to create, update, or remove build tags. To assign a tag, provide a dict with 'buildId' key. To remove a tag, set its value to None. Example: {'latest': {'buildId': 'abc'}, 'beta': None}.
+
   #### Returns dict
 
-### [**](#validate_input)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/actor.py#L921)validate\_input
+### [**](#validate_input)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/actor.py#L955)validate\_input
 
 * **async **validate\_input**(run\_input, \*, build\_tag, content\_type): bool
 
@@ -455,7 +463,7 @@ Async sub-client for manipulating a single Actor.
 
   #### Returns bool
 
-### [**](#version)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/actor.py#L906)version
+### [**](#version)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/actor.py#L940)version
 
 * ****version**(version\_number): [ActorVersionClientAsync](https://docs.apify.com/api/client/python/api/client/python/reference/class/ActorVersionClientAsync.md)
 
@@ -471,7 +479,7 @@ Async sub-client for manipulating a single Actor.
 
   #### Returns [ActorVersionClientAsync](https://docs.apify.com/api/client/python/api/client/python/reference/class/ActorVersionClientAsync.md)
 
-### [**](#versions)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/actor.py#L902)versions
+### [**](#versions)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/actor.py#L936)versions
 
 * ****versions**(): [ActorVersionCollectionClientAsync](https://docs.apify.com/api/client/python/api/client/python/reference/class/ActorVersionCollectionClientAsync.md)
 
@@ -481,7 +489,7 @@ Async sub-client for manipulating a single Actor.
 
   #### Returns [ActorVersionCollectionClientAsync](https://docs.apify.com/api/client/python/api/client/python/reference/class/ActorVersionCollectionClientAsync.md)
 
-### [**](#webhooks)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/resource_clients/actor.py#L917)webhooks
+### [**](#webhooks)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/resource_clients/actor.py#L951)webhooks
 
 * ****webhooks**(): [WebhookCollectionClientAsync](https://docs.apify.com/api/client/python/api/client/python/reference/class/WebhookCollectionClientAsync.md)
 
@@ -493,7 +501,7 @@ Async sub-client for manipulating a single Actor.
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#http_client)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/base/base_client.py#L94)http\_client
+### [**](#http_client)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/base/base_client.py#L94)http\_client
 
 **http\_client: [HTTPClient](https://docs.apify.com/api/client/python/api/client/python/reference/class/HTTPClient.md) | [HTTPClientAsync](https://docs.apify.com/api/client/python/api/client/python/reference/class/HTTPClientAsync.md)
 
@@ -501,19 +509,19 @@ Inherited from [BaseClientAsync.http\_client](https://docs.apify.com/api/client/
 
 Overrides [\_BaseBaseClient.http\_client](https://docs.apify.com/api/client/python/api/client/python/reference/class/_BaseBaseClient.md#http_client)
 
-### [**](#params)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/base/base_client.py#L17)params
+### [**](#params)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/base/base_client.py#L17)params
 
 **params: dict
 
 Inherited from [\_BaseBaseClient.params](https://docs.apify.com/api/client/python/api/client/python/reference/class/_BaseBaseClient.md#params)
 
-### [**](#resource_id)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/base/base_client.py#L15)resource\_id
+### [**](#resource_id)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/base/base_client.py#L15)resource\_id
 
 **resource\_id: str | None
 
 Inherited from [\_BaseBaseClient.resource\_id](https://docs.apify.com/api/client/python/api/client/python/reference/class/_BaseBaseClient.md#resource_id)
 
-### [**](#root_client)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/base/base_client.py#L95)root\_client
+### [**](#root_client)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/base/base_client.py#L95)root\_client
 
 **root\_client: [ApifyClient](https://docs.apify.com/api/client/python/api/client/python/reference/class/ApifyClient.md) | [ApifyClientAsync](https://docs.apify.com/api/client/python/api/client/python/reference/class/ApifyClientAsync.md)
 
@@ -521,7 +529,7 @@ Inherited from [BaseClientAsync.root\_client](https://docs.apify.com/api/client/
 
 Overrides [\_BaseBaseClient.root\_client](https://docs.apify.com/api/client/python/api/client/python/reference/class/_BaseBaseClient.md#root_client)
 
-### [**](#url)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/clients/base/base_client.py#L16)url
+### [**](#url)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/clients/base/base_client.py#L16)url
 
 **url: str
 

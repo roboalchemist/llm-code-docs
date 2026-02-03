@@ -21,7 +21,7 @@ A single page of items returned from a list() method.
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#__init__)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/_types.py#L35)\_\_init\_\_
+### [**](#__init__)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/_types.py#L34)\_\_init\_\_
 
 * ****\_\_init\_\_**(data): None
 
@@ -37,37 +37,37 @@ A single page of items returned from a list() method.
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#count)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/_types.py#L20)count
+### [**](#count)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/_types.py#L19)count
 
 **count: int
 
 Count of the returned objects on this page.
 
-### [**](#desc)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/_types.py#L32)desc
+### [**](#desc)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/_types.py#L31)desc
 
 **desc: bool
 
 Whether the listing is descending or not.
 
-### [**](#items)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/_types.py#L17)items
+### [**](#items)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/_types.py#L16)items
 
 **items: [list](https://docs.apify.com/api/client/python/api/client/python/reference/class/RequestQueueCollectionClient.md#list)\[[T](https://docs.apify.com/api/client/python/api/client/python/reference.md#T)]
 
 List of returned objects on this page.
 
-### [**](#limit)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/_types.py#L26)limit
+### [**](#limit)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/_types.py#L25)limit
 
 **limit: int
 
 The offset of the first object specified in the API call
 
-### [**](#offset)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/_types.py#L23)offset
+### [**](#offset)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/_types.py#L22)offset
 
 **offset: int
 
 The limit on the number of returned objects offset specified in the API call.
 
-### [**](#total)[**](https://undefined/apify/apify-client-python/blob/master//src/apify_client/_types.py#L29)total
+### [**](#total)[**](https://undefined/apify/apify-client-python/blob/25ff4e51e07fe25d1d338b042eacba1ec0c63e84//src/apify_client/_types.py#L28)total
 
 **total: int
 

@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/galileo-ai-research/rag-quality-metrics-using-luna.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Rag Quality Metrics Using Luna
 
 > This page provides a brief overview of the research behind Galileo's RAG Quality Metrics.
@@ -39,7 +43,7 @@ Luna is a DeBERTa-large encoder that has been fine-tuned to predict RAG Quality 
 RAG quality metrics are derived from the output token probabilities as illustrated in the Figure below.
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/galileo/images/rag-luna-1.png" />
+  <img src="https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/rag-luna-1.png?fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=958e543d626b89eaba57b252469e8e67" data-og-width="825" width="825" data-og-height="732" height="732" data-path="images/rag-luna-1.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/rag-luna-1.png?w=280&fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=825ee1f9d4920a5f709878a4c8988df6 280w, https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/rag-luna-1.png?w=560&fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=894ee51316c8e70caeccb7e56fcb6955 560w, https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/rag-luna-1.png?w=840&fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=18e342410b7f5e3d4ad020830e33e81b 840w, https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/rag-luna-1.png?w=1100&fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=b3624f9a7ccae3d19233bf56b61cf606 1100w, https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/rag-luna-1.png?w=1650&fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=97082198a42e4dbd7bf14144c35ce32c 1650w, https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/rag-luna-1.png?w=2500&fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=c66ac9cc76a45d774bdaed0466061889 2500w" />
 </Frame>
 
 The example in the Figure above returns
@@ -63,5 +67,5 @@ Luna has been trained and evaluated on a broad range of domains and RAG task-typ
 * For Relevance (Rel) and Utilization(Util) we measure **RMSE: Root Mean Squared Error**. Measures model's Chunk Relevance and Chunk Utilization proximity to ground truth. Range \[0-1], lower is better.
 
 <Frame>
-  <img src="https://mintlify.s3.us-west-1.amazonaws.com/galileo/images/rag-luna-2.png" />
+  <img src="https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/rag-luna-2.png?fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=6e14272cdee8d9fad99545cb44da1fe4" data-og-width="1044" width="1044" data-og-height="270" height="270" data-path="images/rag-luna-2.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/rag-luna-2.png?w=280&fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=284e4e69769fbf740d613512b55fde16 280w, https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/rag-luna-2.png?w=560&fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=48b5d25016524b42b93a165736bd2286 560w, https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/rag-luna-2.png?w=840&fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=2a68db5f476ae9453a573bdc3ba4302a 840w, https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/rag-luna-2.png?w=1100&fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=2313401678ba2486ccacb891e427d85b 1100w, https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/rag-luna-2.png?w=1650&fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=a2c93cc7bc8348888c0b8069611ec68a 1650w, https://mintcdn.com/galileo/PnVQRYgzV1f_rIIL/images/rag-luna-2.png?w=2500&fit=max&auto=format&n=PnVQRYgzV1f_rIIL&q=85&s=f69880d07b96dfacfea6dd6eb6e30e7a 2500w" />
 </Frame>

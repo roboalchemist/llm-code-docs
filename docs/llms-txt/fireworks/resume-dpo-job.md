@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/api-reference/resume-dpo-job.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Resume Dpo Job
 
 
@@ -10,7 +14,7 @@
 openapi: 3.1.0
 info:
   title: Gateway REST API
-  version: 4.15.25
+  version: 4.21.6
 servers:
   - url: https://api.fireworks.ai
 security:
@@ -89,7 +93,19 @@ components:
         wandbConfig:
           $ref: '#/components/schemas/gatewayWandbConfig'
           description: The Weights & Biases team/user account for logging job progress.
-      title: 'Next ID: 15'
+        trainerLogsSignedUrl:
+          type: string
+          description: |-
+            The signed URL for the trainer logs file (stdout/stderr).
+            Only populated if the account has trainer log reading enabled.
+          readOnly: true
+        lossConfig:
+          $ref: '#/components/schemas/gatewayReinforcementLearningLossConfig'
+          description: |-
+            Loss configuration for the training job.
+            If not specified, defaults to DPO loss.
+            Set method to ORPO for ORPO training.
+      title: 'Next ID: 16'
       required:
         - dataset
     gatewayJobState:
@@ -186,10 +202,18 @@ components:
           type: integer
           format: int32
           title: Number of steps for learning rate warm up
+        batchSizeSamples:
+          type: integer
+          format: int32
+          description: The number of samples per gradient batch.
+        optimizerWeightDecay:
+          type: number
+          format: float
+          description: Weight decay (L2 regularization) for optimizer.
       title: |-
         BaseTrainingConfig contains common configuration fields shared across
         different training job types.
-        Next ID: 19
+        Next ID: 22
     gatewayWandbConfig:
       type: object
       properties:
@@ -217,6 +241,23 @@ components:
         logging which
 
         will be used by a training job.
+    gatewayReinforcementLearningLossConfig:
+      type: object
+      properties:
+        method:
+          $ref: '#/components/schemas/ReinforcementLearningLossConfigMethod'
+        klBeta:
+          type: number
+          format: float
+          description: |-
+            KL coefficient (beta) override for GRPO-like methods.
+            If unset, the trainer default is used.
+      description: >-
+        Loss method + hyperparameters for reinforcement-learning-style
+        fine-tuning (e.g. RFT / RL trainers).
+
+        For preference jobs (DPO API), the default loss method is GRPO when
+        METHOD_UNSPECIFIED.
     gatewayCode:
       type: string
       enum:
@@ -399,6 +440,8 @@ components:
         - US_GEORGIA_3
         - NA_BRITISHCOLUMBIA_1
         - US_GEORGIA_4
+        - EU_ICELAND_3
+        - US_OHIO_1
       default: REGION_UNSPECIFIED
       description: |-
         - US_IOWA_1: GCP us-central1 (Iowa)
@@ -434,7 +477,26 @@ components:
          - US_GEORGIA_3: Alicloud us-southeast-1
          - NA_BRITISHCOLUMBIA_1: Fluidstack ca-west-1
          - US_GEORGIA_4: DigitalOcean us-atl1 MI350X
+         - EU_ICELAND_3: Crusoe eu-iceland1 (Anysphere BYOC) [HIDE_FROM_DOCS]
+         - US_OHIO_1: Lambda us-midwest-2 (Ohio)
       title: 'Next ID: 35'
+    ReinforcementLearningLossConfigMethod:
+      type: string
+      enum:
+        - METHOD_UNSPECIFIED
+        - GRPO
+        - DAPO
+        - DPO
+        - ORPO
+        - GSPO_TOKEN
+      default: METHOD_UNSPECIFIED
+      title: |-
+        - METHOD_UNSPECIFIED: Defaults to GRPO
+         - GRPO: Group Relative Policy Optimization (default for preference jobs)
+         - DAPO: Decoupled Alignment Preference Optimization
+         - DPO: Direct Preference Optimization
+         - ORPO: Odds Ratio Preference Optimization (reference-free)
+         - GSPO_TOKEN: Group Sequence Policy Optimization (token-level)
   securitySchemes:
     BearerAuth:
       type: http
@@ -445,7 +507,3 @@ components:
       bearerFormat: API_KEY
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.fireworks.ai/llms.txt

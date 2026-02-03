@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/tutorials/build-a-notion-powered-website.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Build a Notion-powered website
 
 > Learn how to build a website that uses Notion as a Content Management System (CMS) with Replit Agent.
@@ -16,22 +20,6 @@ export const YouTubeEmbed = ({videoId, title = "YouTube video", startAt}) => {
       <iframe src={url} title={title} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
     </Frame>;
 };
-
-export const AuthorCard = ({img = "https://replit.com/cdn-cgi/image/width=256,quality=80,format=auto/https://storage.googleapis.com/replit/images/1730840970400_e885f16578bbbb227adbfeb7b979be34.jpeg", href = "https://youtube.com/@mattpalmer", name = "Matt Palmer", role = "Head of Developer Relations"}) => {
-  return <a href={href} target="_blank" className="card block not-prose font-normal group relative my-2 ring-2 ring-transparent rounded-xl bg-white/50 dark:bg-codeblock/50 border border-gray-100 shadow-md dark:shadow-none shadow-gray-300/10 dark:border-gray-800/50 overflow-hidden cursor-pointer hover:!border-primary dark:hover:!border-primary-light">
-      <div className="flex items-center gap-2 p-4">
-        <div className="flex-shrink-0">
-          <img src={img} alt={name} className="w-12 h-12 rounded-full object-cover" />
-        </div>
-        <div className="flex-grow">
-          <h3 className="text-base font-semibold mb-0.5 text-inherit">{name}</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400 m-0">{role}</p>
-        </div>
-      </div>
-    </a>;
-};
-
-<AuthorCard />
 
 ## Build a Notion-powered blog with Replit Agent
 

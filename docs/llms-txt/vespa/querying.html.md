@@ -34,13 +34,7 @@ vespa query "select * from sources * where true"
 
 You can add the `-v` option to see the HTTP request that this becomes.
 
-You can also send the query parameters[as a JSON payload](../querying/query-api.html#http) instead of as request parameters:
-
-```
-$ curl -H "Content-Type: application/json" \
---data '{"yql" : "select * from sources * where true"}' \
-endpoint-url/search/
-```
+On Vespa Cloud your application will by default get an mTLS certificate that you use to make requests. If you want to use an access token, you can [add one in the console](../security/guide#configuring-tokens).
 
 ## Query request parameters
 
@@ -48,6 +42,14 @@ In addition to the YQL parameter, you can send other query request parameters to
 
 ```
 vespa query -v "select * from sources * where true" "timeout=100ms"
+```
+
+You can also send the query parameters[as a JSON payload](../querying/query-api.html#http) instead of as request parameters:
+
+```
+$ curl -H "Content-Type: application/json" \
+--data '{"yql" : "select * from sources * where true"}' \
+endpoint-url/search/
 ```
 
 To see all the parameters accepted, see the [query API reference](../reference/api/query.html).
@@ -94,7 +96,7 @@ $ vespa query "select * from sources * where (({targetHits: 10}nearestNeighbor(m
 
 #### Next: [Ranking](ranking.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

@@ -33,10 +33,30 @@ Now that you are on your site, use the preview widget to toggle between your tes
 
   <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2Fgit-blob-db71becacc192f075f3615a2501c2a3a7d2c2b68%2FScreenshot%202023-10-20%20at%203.38.01%20PM.png?alt=media" alt=""><figcaption></figcaption></figure>
 * [ ] Does a Shopify preview bar show at the bottom of your window when you are in a test theme? This shouldn't happen; confirm that the Intelligems JavaScript is in all themes included in the test in both the theme.liquid and the checkout.liquid files.
+* [ ] **Key Steps:**
+
+  1. Enter preview mode in the control group
+  2. Open JavaScript Console (`Cmd+Option+J` Mac / `Ctrl+Shift+J` Windows)
+  3. Type `Shopify.theme` to see current theme details
+  4. Switch groups and check that theme changes
+
+  **What to verify:** Control shows your live theme name and version, variant shows the different test theme name and version.
+
+{% embed url="<https://www.loom.com/share/2d8b66808aa64e038e76dd60d5f49bcb>" %}
 
 #### Theme Template Tests
 
 * [ ] When you switch test groups in the dropdown, are the correct templates used where they are being tested? You can check this based on differences that you know of in the templates.
+* [ ] **Key Steps:**
+
+  1. Start in preview mode on the control group
+  2. Open Chrome Developer Tools → JavaScript Console (`Cmd+Option+J` Mac / `Ctrl+Shift+J` Windows)
+  3. Type `_template` to see the current template name
+  4. Switch groups and verify the template name changes
+
+  **What to verify:** Control shows base template (e.g., `product`), variant shows template with suffix (e.g., `product.123456`)
+
+{% embed url="<https://www.loom.com/share/a0252eca479a4ea3b092089e15343e45>" %}
 
 #### Page Redirect Tests
 

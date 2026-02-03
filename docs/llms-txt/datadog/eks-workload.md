@@ -4,7 +4,6 @@
 title: EKS Workload Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > AWS Components > EKS Workload Component
-source_url: https://docs.datadoghq.com/components-aws/eks-workload/index.html
 ---
 
 # EKS Workload Component

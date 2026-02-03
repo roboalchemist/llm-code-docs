@@ -1,3 +1,9 @@
+# Openai Platform Documentation
+
+Source: https://platform.openai.com/.well-known/llms-full.txt
+
+---
+
 # OpenAI Platform
 
 ```markdown

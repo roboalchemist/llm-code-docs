@@ -6,7 +6,6 @@ description: >-
   Comprehensive guide to APM trace metrics including namespace, types (hits,
   errors, latency, Apdex), and how they're calculated from application traffic.
 breadcrumbs: Docs > APM > APM Metrics > Trace Metrics
-source_url: https://docs.datadoghq.com/metrics/metrics_namespace/index.html
 ---
 
 # Trace Metrics

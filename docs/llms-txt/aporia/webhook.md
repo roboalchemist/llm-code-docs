@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/integrations/webhook.md
 
-# Source: https://docs.aporia.com/integrations/webhook.md
-
-# Source: https://docs.aporia.com/v1/integrations/webhook.md
-
 # Webhook
 
 Aporia allows you to send alerts generated from Aporia’s monitors to any system using webhooks.

@@ -1,4 +1,8 @@
-# Source: https://braintrust.dev/docs/integrations/sdk-integrations/claude-code.md
+# Source: https://braintrust.dev/docs/integrations/developer-tools/claude-code.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Claude Code
 
@@ -239,10 +243,5 @@ rm ~/.claude/state/braintrust_hook.log
 Now that you have both plugins set up:
 
 * **Explore your traces**: Navigate to your project in Braintrust and explore the hierarchical trace structure.
-* **Run evaluations**: Check out the [evaluation guide](/docs/guides/evals) to learn evaluation patterns.
+* **Run evaluations**: Check out the [evaluation guide](/evaluate/run-evaluations) to learn evaluation patterns.
 * **Browse examples**: The [braintrust-claude-plugin repository](https://github.com/braintrustdata/braintrust-claude-plugin) includes evaluation suites that demonstrate the plugin's capabilities.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

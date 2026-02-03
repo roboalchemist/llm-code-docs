@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/sso/pingone-oidc.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # PingOne OIDC
 
 > Learn how to configure PingOne OIDC for Infisical SSO.

@@ -33,7 +33,11 @@ You build your frontend using the frameworks you love â React, SvelteKit, N
 
 Need backend logic? Just drop in a serverless function written in Rust or TypeScript.
 
-Everything gets bundled into a single deployable WebAssembly (WASM) container. One artifact. One push. That's your app. It runs in an unstoppable environment that holds its entire state â data, logic, and storage.
+Everything gets bundled into a single deployable WebAssembly (WASM) container. One artifact. One push. That's your app.
+
+It runs in an unstoppable environment that holds its entire state â data, logic, and storage.
+
+No cold starts. Your functions execute instantly.
 
 And here's the beauty of it: Juno controls nothing.
 
@@ -191,7 +195,7 @@ yarn add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
 pnpm add @junobuild/core @icp-sdk/core @icp-sdk/auth @dfinity/utils
 ```
 
-2.  Initialize your satellite in your web app:
+2.  Initialize your Satellite in your web app:
 
 ```
 import { initSatellite } from "@junobuild/core";await initSatellite();
@@ -274,7 +278,7 @@ This enables:
 *   A smooth dev loop, from prototype to deployment
 *   A unique way to build, debug, and validate smart contract logic and frontend behavior â all in one place
 
-![A screenshot of the DEV Console UI login screen](/assets/images/login-c6e898b09eac53a54e6f2d2e2b27e03e.webp)
+![A screenshot of the DEV Console UI login screen](/assets/images/login-22bd49b1624f8c4c89c5c1e33b2fc70c.png)
 
 ---
 
@@ -382,8 +386,8 @@ Likewise, not all services are mounted by default - but they can be turned on (o
 | ICP Index | â   | â   |
 | NNS Governance | â   | â   |
 | Cycles Minting (CMC) | â   | â   |
-| Cycles Ledger | â   | â   |
-| Cycles Index | â   | â   |
+| Cycles Ledger | â   | â   |
+| Cycles Index | â   | â   |
 | Registry | â   | â   |
 | SNS | â   | â   |
 | NNS-dapp | â   | â   |
@@ -453,16 +457,16 @@ await initSatellite({  satelliteId: "aaaaa-bbbbb-ccccc-ddddd-cai",  container: f
 
 The admin server running on port `5999` provides a variety of internal management. Below are some tips and example scripts to make use of this little server.
 
-### Get ICP
+### Get Cycles
 
-If you're using the full environment, the Console UI includes a "Get ICP" button in the wallet. It's a quick way to get ICP out of the box.
+If you're using the full environment, the Console UI includes a "Get Cycles" button in the wallet. It's a quick way to get Cycles out of the box.
 
-![A screenshot of the wallet with the Get ICP call to action of Console UI in dev mode](/assets/images/wallet-45c84f1968e0c6a2749b439aace1b0c1.webp)
+![A screenshot of the wallet with the Get Cycles call to action of Console UI in dev mode](/assets/images/wallet-2337251849c790b75db91656c65e61d5.png)
 
-You might want to transfer some ICP from the ledger to a specified principal, which can be particularly useful when you're just getting started developing your app and no users currently own ICP. This can be achieved by querying:
+You might want to transfer some Cycles from the ledger to a specified principal, which can be particularly useful when you're just getting started developing your app and no users currently own Cycles. This can be achieved by querying:
 
 ```
-http://localhost:5999/ledger/transfer/?to=$PRINCIPAL
+http://localhost:5999/ledger/transfer/?to=$PRINCIPAL&ledgerId=um5iw-rqaaa-aaaaq-qaaba-cai&amount330000000000000
 ```
 
 For example, you can use the following script:
@@ -473,18 +477,29 @@ For example, you can use the following script:
 
 # Create a Satellite
 
-When you're ready to deploy your project to production, you'll need to create a [satellite](/docs/terminology.md#satellite).
+When you're ready to deploy your project to production, you'll need to create a [Satellite](/docs/terminology.md#satellite).
 
-1.  To get started, sign-in to the Juno [console](https://console.juno.build). If you are a new developer on Juno and the Internet Computer, you may be prompted to create your first anonymous [Internet Identity](/docs/terminology.md#internet-identity).
-2.  Click **Launch a new satellite**.
-3.  Enter a name for your satellite (note: this is for display purposes only and does not need to be unique).
-4.  Confirm with **Create a Satellite.**
-5.  The platform will then create your satellite and provision its resources.
-6.  Once the process is complete, click **Continue** to access the overview page.
+1.  To get started, sign-in to the Juno [Console](https://console.juno.build).
+2.  Click **Launch your first Satellite**.
+3.  Enter a name for your Satellite (note: this is for display purposes only and does not need to be unique).
+4.  Select whether you're deploying a **Website** or **Application**.
+5.  Confirm with **Create a Satellite.**
+6.  The platform will then create your Satellite and provision its resources.
+7.  Once the process is complete, click **Continue** to access the service page.
 
 ð Youâre all set! You can now deploy your frontend app, static website, or publish your serverless functions to production.
 
 â¡ï¸ Continue with the [deployment](/docs/category/deployment.md) guides to take the next step.
+
+---
+
+**Note:**
+
+Choose **Website** if you're deploying a static site, blog, portfolio, etc.
+
+Choose **Application** if your project needs user sign-in, data management, or serverless functions.
+
+You can change this later in your Satellite "Hosting" settings.
 
 # Development
 
@@ -905,7 +920,7 @@ import { signIn } from "@junobuild/core";await signIn({  google: {    redirect: 
 After authentication, Google redirects the user back to your app with a signed token. You must handle that redirect on the route that matches your configured `redirectUrl`. For example, `/auth/callback/google`.
 
 ```
-import { handleRedirectCallback } from "@junobuild/core";await handleRedirectCallback();
+import { handleRedirectCallback } from "@junobuild/core";await handleRedirectCallback({ google: null });
 ```
 
 If the callback is successful, the user is signed in and a session is created.
@@ -979,7 +994,7 @@ If you prefer to control this part as well, or if you want to improve redundancy
 
 [Internet Identity](https://identity.ic0.app) lets users authenticate securely and anonymously through a decentralized identity system built for the Internet Computer.
 
-When a user signs in with Internet Identity, they confirm their identity through the provider. If successful, a session is created automatically and the user can interact with your satellite.
+When a user signs in with Internet Identity, they confirm their identity through the provider. If successful, a session is created automatically and the user can interact with your Satellite.
 
 Authentication with Internet Identity offers strong privacy guarantees and complete isolation between domains by design.
 
@@ -1014,9 +1029,9 @@ Internet Identity sign-in can be customized with options that let you control se
 | --- | --- | --- | --- |
 | `maxTimeToLiveInNanoseconds` | `BigInt(4 * 60 * 60 * 1000 * 1000 * 1000)` | **4 hours** | Maximum lifetime of the user's session in **nanoseconds**. Once expired, the session cannot be extended. |
 | `windowed` | `boolean` | `true` | By default, the authentication flow is presented in a popup window on desktop that is automatically centered on the browser. This behavior can be turned off by setting the option to `false`, causing the authentication flow to happen in a separate tab instead. |
-| `derivationOrigin` | `string` or `URL` |     | The main domain to be used to ensure your users are identified with the same public ID, regardless of which of your satellite's URLs they use to access your application. |
+| `derivationOrigin` | `string` or `URL` |     | The main domain to be used to ensure your users are identified with the same public ID, regardless of which of your Satellite's URLs they use to access your application. |
 | `onProgress` | `(progress) => void` |     | Callback for provider sign-in and user creation/loading. |
-| `domain` | `internetcomputer.org` or `ic0.app` or `id.ai` | `internetcomputer.org` | The domain on which to open Internet Identity. |
+| `domain` | `id.ai` or `internetcomputer.org` or `ic0.app` | `id.ai` | The domain on which to open Internet Identity. |
 
 Example with options:
 
@@ -1068,7 +1083,7 @@ If you're unsure which domain to use as the primary domain, here are two common 
     
     *   You're still experimenting with your domain setup and might change it later.
     *   You're not ready to commit to a long-term domain.
-    *   You plan to host multiple satellites under different domains and don't want to tie user identity to just one.
+    *   You plan to host multiple Satellites under different domains and don't want to tie user identity to just one.
 
 Choosing the right derivation origin early helps avoid identity issues later, but both approaches are valid depending on your goals.
 
@@ -1419,9 +1434,9 @@ Permissions define who can read and write documents in a collection. Writing inc
 | Permission | Description |
 | --- | --- |
 | **Public** | Anyone can read or write documents in the collection. |
-| **Private** | Only the creator (owner) of a document can read or write to it. However, note that since satellite administrators manage the underlying infrastructure, they have the technical ability to modify access rules by changing its source code. |
-| **Managed** | The owner of a document, the administrator and editor of the satellite can read or write to it in the collection. |
-| **Restricted** | Only satellite administrator and editor can read or write any document in the collection. |
+| **Private** | Only the creator (owner) of a document can read or write to it. However, note that since Satellite administrators manage the underlying infrastructure, they have the technical ability to modify access rules by changing its source code. |
+| **Managed** | The owner of a document, the administrator and editor of the Satellite can read or write to it in the collection. |
+| **Restricted** | Only Satellite administrator and editor can read or write any document in the collection. |
 
 If not set to immutable, you can modify the permissions at any time, and the changes will take effect immediately.
 
@@ -1499,7 +1514,7 @@ To update a document, use the `setDoc` function with its current version to vali
 import { setDoc } from "@junobuild/core";await setDoc({  collection: "my_collection_key",  doc: {    key: myId,    data: myExample,    version: 3n  }});
 ```
 
-The `version` must match the current version of the last document within the satellite; otherwise, the call will fail. This prevents unexpected concurrent overwrites, which is useful, for example, if your users use your projects simultaneously on multiple devices.
+The `version` must match the current version of the last document within the Satellite; otherwise, the call will fail. This prevents unexpected concurrent overwrites, which is useful, for example, if your users use your projects simultaneously on multiple devices.
 
 **Tip:**
 
@@ -1655,7 +1670,7 @@ To delete a document, use the `deleteDoc` function, which performs version valid
 import { deleteDoc } from "@junobuild/core";await deleteDoc({  collection: "my_collection_key",  doc: myDoc});
 ```
 
-The document must include the current `version` from the latest entry within the satellite; otherwise, the call will fail. This prevents unexpected concurrent overwrites, which is particularly useful if your users access your projects simultaneously on multiple devices.
+The document must include the current `version` from the latest entry within the Satellite; otherwise, the call will fail. This prevents unexpected concurrent overwrites, which is particularly useful if your users access your projects simultaneously on multiple devices.
 
 ### Delete multiple documents
 
@@ -2098,7 +2113,7 @@ The list below outlines the available hosting options you can configure to tailo
 
 ### Source
 
-The `source` field specifies the directory that contains the built assets for your satellite. This is typically the output directory generated by your build process after running a command like `npm run build`.
+The `source` field specifies the directory that contains the built assets for your Satellite. This is typically the output directory generated by your build process after running a command like `npm run build`.
 
 Commonly, or if you are using the templates, these are the folders that can be set as the `source` field:
 
@@ -2109,7 +2124,7 @@ Commonly, or if you are using the templates, these are the folders that can be s
 | SvelteKit | `build` |
 | Angular | `dist/<your-project-name>/browser` |
 
-Juno uses this directory to locate the files that will be deployed as part of your satellite. Ensure that this directory includes all the necessary assets, such as HTML, JavaScript, CSS, and any other static or dynamic resources your application requires.
+Juno uses this directory to locate the files that will be deployed as part of your Satellite. Ensure that this directory includes all the necessary assets, such as HTML, JavaScript, CSS, and any other static or dynamic resources your application requires.
 
 juno.config.js
 
@@ -2119,7 +2134,7 @@ import { defineConfig } from "@junobuild/config";export default defineConfig({  
 
 ### Ignore files
 
-The `ignore` attribute allows you to exclude certain files from being deployed to your satellite.
+The `ignore` attribute allows you to exclude certain files from being deployed to your Satellite.
 
 This attribute works similarly to Git's `.gitignore`, and you can specify which files to ignore using globs.
 
@@ -2133,7 +2148,7 @@ import { defineConfig } from "@junobuild/config";export default defineConfig({  
 
 ### HTTP Headers
 
-Headers allow the client and the satellite to pass additional information along with a request or a response. Some sets of headers can affect how the browser handles the page and its content.
+Headers allow the client and the Satellite to pass additional information along with a request or a response. Some sets of headers can affect how the browser handles the page and its content.
 
 For instance, you may want to set a specific `Cache-Control` for performance reasons.
 
@@ -2159,7 +2174,7 @@ The `headers` is an array of objects, each containing `key` and `value`, and the
 
 By default, all unknown paths are automatically rewritten to `/index.html`. However, if you wish to serve a custom `404 Not Found` error when a user attempts to access a non-existent page, you can do so without requiring additional configuration.
 
-Simply upload a custom `404.html` file to your satellite that should be served from the root path of your site.
+Simply upload a custom `404.html` file to your Satellite that should be served from the root path of your site.
 
 ### Redirects
 
@@ -2281,7 +2296,7 @@ import { defineConfig } from "@junobuild/config";export default defineConfig({  
 
 ### Encoding types
 
-When deploying, the CLI automatically maps the encoding type based on the file extension. The encoding information is then used in the satellite to provide the appropriate HTTP response header `Content-Encoding`.
+When deploying, the CLI automatically maps the encoding type based on the file extension. The encoding information is then used in the Satellite to provide the appropriate HTTP response header `Content-Encoding`.
 
 The default mappings are as follows:
 
@@ -2346,7 +2361,7 @@ This section covers how to configure and manage your custom domain in Juno, incl
 To connect your custom domain, follow these steps:
 
 1.  Start the custom domain wizard from the Juno console [hosting](https://console.juno.build/hosting) page
-2.  Enter the desired domain name for your satellite
+2.  Enter the desired domain name for your Satellite
 3.  Log into your domain provider's site and configure the DNS records as indicated by Juno
 4.  Continue the process in Juno
 
@@ -2447,9 +2462,9 @@ Assets are publicly accessible on the Internet regardless of the permission sche
 | Permission | Description |
 | --- | --- |
 | **Public** | Anyone can read or write assets in the collection. |
-| **Private** | Only the creator (owner) of the asset can read or write to it. However, note that since satellite administrators manage the underlying infrastructure, they have the technical ability to modify access rules by changing its source code. |
-| **Managed** | The owner of an asset, the administrator and editor of the satellite can read or write to it in the collection. |
-| **Restricted** | Only satellite administrator and editor can read or write any asset in the collection. |
+| **Private** | Only the creator (owner) of the asset can read or write to it. However, note that since Satellite administrators manage the underlying infrastructure, they have the technical ability to modify access rules by changing its source code. |
+| **Managed** | The owner of an asset, the administrator and editor of the Satellite can read or write to it in the collection. |
+| **Restricted** | Only Satellite administrator and editor can read or write any asset in the collection. |
 
 If not set to immutable, you can modify the permissions at any time, and the changes will take effect immediately.
 
@@ -5573,7 +5588,7 @@ Learn how to integrate Juno with Angular. Follow our quickstart guide to set up 
 
 [## ðï¸ Deploy
 
-Learn how to deploy your Angular project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/angular/deploy.md)
+Learn how to deploy your Angular project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/angular/deploy.md)
 
 # Astro
 
@@ -5585,7 +5600,7 @@ Learn how to integrate Juno with Astro. Follow our quickstart guide to set up yo
 
 [## ðï¸ Deploy
 
-Learn how to deploy your Astro project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/astro/deploy.md)
+Learn how to deploy your Astro project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/astro/deploy.md)
 
 # Docusaurus
 
@@ -5593,7 +5608,7 @@ Explore how to deploy a Juno project developed with Docusaurus.
 
 [## ðï¸ Deploy
 
-Learn how to deploy your Docusaurus project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/docusaurus/deploy.md)
+Learn how to deploy your Docusaurus project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/docusaurus/deploy.md)
 
 # End-to-End Testing
 
@@ -5865,7 +5880,7 @@ Learn how to integrate Juno with React. Follow our quickstart guide to set up yo
 
 [## ðï¸ Deploy
 
-Learn how to deploy your React project to Juno. Follow the deployment guide to configure static exports, set up your satellite, and publish your site to production.](/docs/guides/react/deploy.md)
+Learn how to deploy your React project to Juno. Follow the deployment guide to configure static exports, set up your Satellite, and publish your site to production.](/docs/guides/react/deploy.md)
 
 # Code Functions in Rust
 
@@ -6873,7 +6888,7 @@ Below are key considerations to ensure efficient and cost-effective deployment o
 
 ### Build Reproducibility
 
-Only new resources will be deployed to your satellite. Changes are detected through sha256 comparison. Therefore, ensuring the build reproducibility of your application is crucial to accurately identify and deploy the necessary updates.
+Only new resources will be deployed to your Satellite. Changes are detected through sha256 comparison. Therefore, ensuring the build reproducibility of your application is crucial to accurately identify and deploy the necessary updates.
 
 ### Deployment Costs
 
@@ -8079,7 +8094,7 @@ juno hosting deploy
 
 # Monitoring
 
-Keeping your modules running smoothly is essential for any application. The monitoring feature ensures your [Mission Control](/docs/terminology.md#mission-control) (your wallet) and modules â Satellites and Orbiter (Analytics) â stay operational by automatically refilling cycles when they run low. This helps prevent unexpected downtime, allowing you to focus on building and growing your product without worrying about cycle balances.
+Keeping your modules running smoothly is essential for any application. The monitoring feature ensures your modules â Satellites and Orbiter (Analytics) â stay operational by automatically refilling cycles when they run low. This helps prevent unexpected downtime, allowing you to focus on building and growing your product without worrying about cycle balances.
 
 ![A screenshot of the monitoring overview within Juno Console](/assets/images/monitoring-dashboard-caf86757b1501c3fe41cbae3cffa3ff3.webp)
 
@@ -8088,23 +8103,23 @@ Keeping your modules running smoothly is essential for any application. The moni
 ## Features
 
 *   **Cycle refilling**: Monitored modules are automatically topped up when their balance falls below what's needed to stay active.
-*   **Self-Monitoring**: Your Mission Control ensures that both your wallet and modules maintain sufficient cycles, with full control remaining in your hands at all times.
-*   **Automatic ICP Conversion**: Can mint new cycles from the ICP in your wallet, ensuring your modules stay adequately funded.
+*   **Self-Monitoring**: The monitoring monitors itself to maintain sufficient cycles, with full control remaining in your hands at all times.
 *   **Hourly Checks**: The system evaluates balances once an hour.
+*   **Automatic ICP Conversion**: Can mint new cycles from the ICP in your wallet, ensuring your modules stay adequately funded.
 
 ---
 
 ## Why Enable Monitoring?
 
-When a smart contract runs out of [cycles](/docs/terminology.md#cycles) on the [Internet Computer](https://internetcomputer.org), it stops functioning, which can disrupt your application or service. Enabling monitoring provides peace of mind by automating the management of cycles, ensuring your modules are always ready to perform. It also saves a little time by eliminating the need for manual top-ups.
+When a container runs out of [cycles](/docs/terminology.md#cycles) on the [Internet Computer](https://internetcomputer.org), it stops functioning, which can disrupt your application or service. Enabling monitoring provides peace of mind by automating the management of cycles, ensuring your modules are always ready to perform. It also saves a little time by eliminating the need for manual top-ups.
 
-It's important to note that if your wallet or a module run out of cycles, they will enter a grace period. During this time, the module stops working but can still be restored. If no action is taken, the module eventually gets deleted, resulting in the permanent loss of its data and functionality.
+It's important to note that if your modules run out of cycles, they will enter a grace period. During this time, the module stops working but can still be restored. If no action is taken, the module eventually gets deleted, resulting in the permanent loss of its data and functionality.
 
 ---
 
 ## How does it work?
 
-Monitoring runs hourly within your Mission Control, which acts as the central hub for managing all monitored modules. The process follows these steps:
+Monitoring runs hourly within a dedicated service called Mission Control, which acts as the central hub for managing all monitored modules. The process follows these steps:
 
 ---
 
@@ -8193,9 +8208,14 @@ In the case of failed attempts (e.g., when Mission Control or a module could not
 
 ## Configuration
 
-To enable monitoring, go to the [Monitoring Section](https://console.juno.build/monitoring) in the Juno Console. Start the wizard by clicking **Enable Auto-Refill** and follow the prompts to select the modules you want to monitor, choose a pre-defined strategy or create a custom one, and enable the feature.
+To enable monitoring, go to the [Monitoring Section](https://console.juno.build/monitoring) in the Juno Console. Start the wizard by clicking **Get started** and follow the prompts to:
 
-The wizard simplifies the setup process, making it easy to configure monitoring according to your needs.
+*   Create the Mission Control service
+*   Select the modules you want to monitor
+*   Choose a pre-defined strategy or create a custom one
+*   Enable the feature
+
+The wizard guides you through the setup process, making it easy to configure monitoring according to your needs.
 
 # Snapshots
 
@@ -8243,13 +8263,11 @@ This should be used carefully though, as snapshots also include elements such as
 
 # Access Keys
 
-Access keys play a crucial role in granting permissions to Mission Controls, Satellites or Analytics within Juno.
+Access keys play a crucial role in granting permissions to Mission Controls, Satellites or Orbiters within Juno.
 
-When you sign in to Juno's [Console](/docs/terminology.md#console) using [Internet Identity](https://internetcomputer.org/internet-identity), you â and no one else (including not Juno) â become the owner of your [mission control](/docs/terminology.md#mission-control). This information is then sent back to your browser, where you can manage your modules.
+When you sign in to Juno's [Console](/docs/terminology.md#console) (for example, with Internet Identity) and create modules, you â and no one else, not even Juno â become their owner.
 
 ![Juno&#39;s console flow](/assets/images/console-d0903e4989f7c4db5f4e85567211d266.png)
-
-When you create a [satellite](/docs/terminology.md#satellite), you and your mission control become its owners. Per extension, you â and no one else (including not Juno) â own your satellite.
 
 **Note:**
 
@@ -8268,7 +8286,7 @@ Each access key is assigned a **role** that defines what it can do:
 | **Write** | Editor | â   | â   | â   | â   |
 | **Submit** | Submitter | â   | â   | â   | â   |
 
-An **administrator** can perform tasks such as configuring or deploying an app, topping up a mission control or satellite, creating a new collection in the [datastore](/docs/build/datastore.md) or [storage](/docs/build/storage.md), or configuring a custom domain in the [hosting](/docs/build/hosting.md).
+An **administrator** can perform tasks such as configuring or deploying an app, topping up a module, creating a new collection in the [datastore](/docs/build/datastore.md) or [storage](/docs/build/storage.md), or configuring a custom domain in the [hosting](/docs/build/hosting.md).
 
 An **editor** can publish new serverless function versions to a Satelliteâs CDN, deploy your frontend application, and read data from a collection. However, it cannot directly upgrade a Satellite or start/stop a module.
 
@@ -8334,7 +8352,7 @@ When you run the command, the CLI checks if an access key is already present on 
 
 ### Generate a new access key
 
-To **generate a new access key** and attach it to your desired Mission Controls and Satellites, you can run:
+To **generate a new access key** and attach it to your desired module, you can run:
 
 ```
 juno login
@@ -8385,10 +8403,6 @@ Juno provides supporting services to manage your projects, while keeping everyth
 
 The Console is a platform for managing your projects. It runs as its own container, combining a user interface with orchestration logic.
 
-It only holds one piece of data: a keypair linking each developer's anonymous ID to their Mission Control ID.
-
-When you sign in, the Console returns your Mission Control ID. From there, all project management happens under your control. The Console does not have access to your apps, your data, or your infrastructure.
-
 It provides services such as:
 
 *   Creating, upgrading, and deleting Satellites.
@@ -8423,13 +8437,7 @@ While it functions as a CDN, technically it's not a traditional content delivery
 
 ## Developer-Owned Spaces
 
-### Mission Control
-
-Mission Control is your personal management container. It tracks your Satellites and Orbiters, and it acts as your wallet.
-
-You use it for example to spin up new containers or provide [cycles](/docs/terminology.md#cycles) to keep your modules running. It serves as your central hub for managing projects and resources.
-
-Mission Control belongs to you. No one else can access it â not Juno, not the Console, not any other service.
+Juno's architecture is built on a microservices approach, where each component runs independently as its own WASM container, giving you modular control over your infrastructure.
 
 ### Satellites
 
@@ -8444,6 +8452,12 @@ Satellites are your applications. Each one is a self-contained unit that bundles
 ### Orbiters
 
 Orbiters provide analytics â a decentralized alternative to services like Google Analytics. Orbiters collect traffic, page views, and device information, under your ownership and without exposing user data to third parties.
+
+### Mission Control
+
+Mission Control is an optional monitoring service that automatically tracks and maintains your Satellites and Orbiters.
+
+When enabled, it monitors [cycles](/docs/terminology.md#cycles) balances across your modules and automatically tops them up when needed, ensuring your applications stay running without manual intervention.
 
 ---
 
@@ -8712,7 +8726,7 @@ For most applications, we recommend using the default subnets and staying on the
 
 | Subnet ID | Type | Canisters (Running/Stopped) | Nodes (Up/Total) |
 | --- | --- | --- | --- |
-| 6pbhf-qzpdk-kuqbr-pklfa-5ehhf-jfjps-zsj6q-57nrl-kzhpd-mu7hc-vae | Juno's Subnet | 35885/697 | 13/13 |
+| 6pbhf-qzpdk-kuqbr-pklfa-5ehhf-jfjps-zsj6q-57nrl-kzhpd-mu7hc-vae | Juno's Subnet | 36101/703 | 13/13 |
 | pzp6e-ekpqk-3c5x7-2h6so-njoeq-mt45d-h3h6c-q3mxf-vpeq5-fk5o7-yae | Fiduciary | 3564/12 | 34/34 |
 | bkfrj-6k62g-dycql-7h53p-atvkj-zg4to-gaogh-netha-ptybj-ntsgw-rqe | European | 25096/663 | 13/13 |
 | brlsh-zidhj-3yy3e-6vqbz-7xnih-xeq2l-as5oc-g32c4-i5pdn-2wwof-oae |     | 35432/815 | 13/13 |
@@ -8745,95 +8759,94 @@ For most applications, we recommend using the default subnets and staying on the
 
 # Wallet
 
-This section provides guidance on managing your assets and cycles with your [wallet](/docs/terminology.md#wallet), which are essential for maintaining and providing enough resources for your modules in the Juno ecosystem.
+This section provides guidance on managing your cycles with your wallet (your account), which are essential for maintaining and providing enough resources for your modules in the Juno ecosystem.
 
 **Important:**
 
-Just like your modules, your wallet is fully under your control â Juno cannot access, move, or recover the ICP or cycles held inside.
+Just like your modules, your wallet is under your control â Juno cannot access, move, or recover the cycles held inside.
 
-Because of this non-custodial model, there are no refunds, reversals, or recovery options. Always double-check destination addresses before sending funds.
+Because of this model, there are no refunds, reversals, or recovery options. Always double-check destination addresses before sending funds.
 
-As a best practice, we recommend not holding large amounts of ICP in your Juno wallet unless necessary. Use it as a utility wallet for fueling your modules â not as a long-term vault.
+As a best practice, we recommend not holding large amounts of cycles unless necessary. Use it as a utility for fueling your modules â not as a long-term vault.
 
-We also recommend enabling [monitoring](/docs/management/monitoring.md) to ensure your Mission Control stays alive and responsive at all times.
-
----
-
-## What are ICP?
-
-ICP are the native cryptocurrency of the [Internet Computer](https://internetcomputer.org). They provide utility for powering the network and are also used for governance.
-
-One key usage is converting ICP tokens to cycles, which are used to cover the computational and storage costs of running modules.
+We also recommend enabling [monitoring](/docs/management/monitoring.md) to ensure your projects and analytics stay alive and responsive at all times.
 
 ---
 
-## Why do I need ICP?
+## What are Cycles?
 
-Given that Juno is built on top of the Internet Computer (see [architecture](/docs/miscellaneous/architecture.md)), your modules require cycles to stay alive.
+Cycles are used to pay for infrastructure usage. Your Satellite, Mission Control or Orbiter consume cycles while they are active.
 
-While you donât necessarily need ICP in the Juno ecosystem since you can acquire cycles with Stripe through [cycle.express](https://cycle.express), having some ICP can still be interesting.
+The amount of cycles available determines whether a module will be active, inactive, or eventually decommissioned (deleted).
 
-It provides independence by allowing you to top up your modules without relying on third-party services. Depending on how you obtain your tokens, using ICP can also help lower transaction costs and offers interoperability with other Internet Computer projects, making it a flexible and practical option.
+This ensures that related costs cannot surpass the amount of cycles available.
 
----
+Think of cycles like prepaid mobile data:
 
-## Buying ICP
-
-To get ICP from the outside world into your wallet, you can use most cryptocurrency exchange platforms that allow you to buy ICP (refer to this [list](https://coinranking.com/fr/coin/aMNLwaUbY+internetcomputerdfinity-icp/exchanges) of major ones). These platforms let you convert dollars (or other currencies) into ICP. Keep in mind that exchanges charge a fee for this service.
-
-Once you have obtained ICP on those platforms, you can initiate a transaction to send it to your wallet. For this purpose, you will need to provide a destination address where the ICP should be sent. This destination address corresponds to the [Account Identifier](/docs/terminology.md#account-identifier) of your wallet.
-
-You can locate the destination address in Juno's [console](https://console.juno.build). Once you've logged in, go to your [wallet](https://console.juno.build/wallet) and click "Receive".
-
-![A screenshot of the wallet with the &quot;Receive&quot; button](/assets/images/wallet-receive-dbb873738cb48ce074e1201c3fff535f.png)
-
-Select "Account identifier".
-
-![A screenshot of the wallet &quot;Receive&quot; modal with an arrow pointing to the Account Identifier option](/assets/images/wallet-receive-account-identifier-e320146e191bcf52d00d22238a92bb4b.png)
-
-Either copy your account identifier or use the provided QR code. This is the address you should use to receive ICP from the outside world.
-
-![A screenshot of the Account Identifier and QR code](/assets/images/wallet-receive-account-identifier-qrcode-ea0f266be5c83547e4843d4a4b5a7a4b.png)
+*   Just like your mobile plan allows you to make calls and browse the internet, cycles enable your containers to process computations and store data.
+*   When your data (cycles) runs out, your service becomes inactive.
+*   To keep your modules running smoothly, you need to top up your cycles regularly (manually or automatically).
+*   If you donât top it up, after some time, it will be decommissioned, similar to losing your prepaid number due to prolonged inactivity.
 
 ---
 
-## Receiving ICP
+## Buying Cycles
 
-If you already hold ICP, you can transfer it from wallets within the ecosystem such as the [NNS dapp](https://nns.internetcomputer.org/), [OISY](https://oisy.com) or [others](https://internetcomputer.org/ecosystem?tag=Wallet).
+The easiest way to purchase cycles â and get the best deal â is through [Cycle.express](https://cycle.express), which lets you pay with a credit card via Stripe.
 
-To initiate a transaction to send it to your wallet, you will need to provide a destination address, which in this case is your wallet ID.
+The service is integrated directly into the Juno Console. From your wallet, click "Buy" and follow the steps.
 
-You can locate your wallet ID in Juno's [console](https://console.juno.build). Once you've logged in, go to your [wallet](https://console.juno.build/wallet), where the information is easy to find.
+**Note:**
 
-![A screenshot of the wallet with &quot;Wallet ID&quot; information](/assets/images/wallet-id-a806ae0c58411c9129c604868d98f7b0.png)
+The default purchase amount is $1 USD. You can change this amount on Stripe's payment page (maximum $100).
 
-If you wish to use a QR code, click "Receive" and select "Wallet ID".
-
-![A screenshot of the wallet &quot;Receive&quot; modal with an arrow pointing to the Wallet ID option](/assets/images/wallet-receive-wallet-id-da09f22b7fe82d18b42836c013d451cd.png)
-
-Either copy your account identifier or use the provided QR code. This is the address you should use to transfer ICP within the ecosystem.
-
-![A screenshot of the Wallet ID and QR code](/assets/images/wallet-receive-wallet-id-qrcode-de9cc6b8681da618c8758a364fb18d05.png)
-
-If you are using OISY, you can also connect this third-party wallet to Juno's console to initiate the transaction and proceed with the approval. This eliminates the need to copy, paste, or scan any addresses.
-
-![A screenshot of the wallet &quot;Receive&quot; modal with an arrow pointing to the OISY option](/assets/images/wallet-receive-oisy-a6dabf8ca3d87e45da773c58f8a0eda3.png)
+![A screenshot of where to find the call to action Buy](/assets/images/wallet-buy-fddf8fcc9927dd1923600a7e2283aeef.png)
 
 ---
 
-## Send ICP
+## Receiving Cycles
 
-Sending ICP to the ecosystem or the outside world can be initiated from your wallet in Juno's [console](https://console.juno.build). To start a transaction, click "Send".
+If you already hold cycles or want to swap some, you can use the [OISY Wallet](https://oisy.com).
 
-![A screenshot of the wallet with the &quot;Send&quot; button](/assets/images/wallet-send-09f0b1267286be0ebb67a985e432deb8.png)
+To initiate a transaction manually, you will need to provide a destination address. To find it in the [console](https://console.juno.build), open the shortcut to your [wallet](https://console.juno.build/wallet) and click "Receive" select "Wallet ID".
 
-Enter the destination wallet ID or account identifier where you want to send ICP, along with the amount.
+![A screenshot of where to find the call to action Receive](/assets/images/wallet-receive-78153f6bf10b0507baf66fb0d01fec5d.png)
 
-![A screenshot of the wallet send form](/assets/images/wallet-send-form-03440e3f0718c16c0b08a70cfa18d0ee.png)
+![A screenshot of where to find the link to the Wallet ID](/assets/images/wallet-receive-wallet-id-b4f97e0e100bf750a8a962309f6d05df.png)
+
+You can also connect OISY to Juno's console to initiate the transaction and proceed with the approval. This eliminates the need to copy, paste, or scan any addresses.
+
+![A screenshot of the wallet &quot;Receive&quot; modal with an arrow pointing to the OISY option](/assets/images/wallet-receive-oisy-a48815e1d68d20fc10c13548b53fbc69.png)
+
+---
+
+## Send Cycles
+
+Sending Cycles to the ecosystem or the outside world can be initiated from your wallet in Juno's [console](https://console.juno.build). To start a transaction, click "Send".
+
+**Important:**
+
+Sending cycles transfers them to another wallet. To add manually cycles (resources) to your modules (Satellites, Orbiters, or Mission Control), use the **Top-up** feature instead.
+
+![A screenshot of the wallet with the &quot;Send&quot; button](/assets/images/wallet-send-966cfbae083d2287efaa23ad4a754177.png)
+
+Enter the destination wallet ID or account identifier where you want to send cycles, along with the amount.
+
+![A screenshot of the wallet send form](/assets/images/wallet-send-form-53bc9d2aa33d85a71542462d52464313.png)
 
 Review the transaction details and confirm to execute it.
 
-![A screenshot of the wallet send review mask](/assets/images/wallet-send-review-52b726f5d9cc0977a04dba319dfa1ec3.png)
+![A screenshot of the wallet send review mask](/assets/images/wallet-send-review-0d7e6b1fac55e36bdf0fe94f47dea223.png)
+
+---
+
+## ICP
+
+For convenience, the developer wallet can hold ICP tokens as well. When its balance is greater than zero, a conversion feature lets you easily convert them to cycles.
+
+You can also receive and send ICP for backwards compatibility with Mission Control.
+
+Cycles remain the recommended approach for all operations.
 
 # Workarounds
 
@@ -8845,12 +8858,6 @@ This page is dedicated to helping you make the most of Juno features, even when 
 
 Although Juno does not yet support direct satellite transfers - such as if you want to hand over a project to your friends or colleagues - you can use the following steps as a workaround:
 
-**Note:**
-
-There is no "account" on Juno. The Console solely holds a key-pair list of the developer IDs with their respective Mission Control IDs. All data and control are entirely managed by you.
-
-Nevertheless, for this tutorial, "account" refers to someone able to sign in into the Juno Console and who has a Mission Control.
-
 #### 1\. Add the new access key to the Satellite
 
 **Danger:**
@@ -8859,28 +8866,27 @@ Never ever add access keys to your modules without being absolutely certain of t
 
 In your satellite, assign the access key of the destination account with administrative permissions:
 
-*   The Mission Control ID
 *   The Developer ID (available under "Preferences")
 
-In other words, ask your friend or colleague for their Developer ID and Mission Control ID, and add those as new access keys. Again, **please be absolutely certain** before adding the controllers.
+In other words, ask your friend or colleague for their Developer ID, and add it as new access keys. Again, **please be absolutely certain** before adding the controllers.
 
 #### 2\. Attach Satellite in destination account
 
-The destination account â your friend or colleague â can use the "Attach Satellite" feature in their [Mission Control](https://console.juno.build/mission-control/). To do this, they will need the Satellite ID.
+The destination account â your friend or colleague â can use the "Attach Satellite" feature available in the launchpad of the [Console](https://console.juno.build) (the "Home" screen). To do this, they will need the Satellite ID.
 
-By doing so, and because you have set them as a controller in the previous step, the Satellite you are transferring will be linked with their account and made available in the Console.
+By doing so, and because you have set them as an administrator in the previous step, the Satellite you are transferring will be linked with their account and made available in the Console.
 
 **Tip:**
 
 At this stage, the satellite is linked to both accounts, making it accessible from each. If your goal is to share the satellite, you can consider this process complete and stop here. Otherwise, continue with the next steps.
 
-#### 3\. Remove Unnecessary Controllers
+#### 3\. Remove Unnecessary Access Keys
 
-The destination account â your friend or colleague, who is now the owner of the satellite â can then remove the access key(s) that should no longer be listed, specifically your own Developer ID and your Mission Control ID.
+The destination account â your friend or colleague, who is now the owner of the satellite â can then remove the access key(s) that should no longer be listed, specifically your own Developer ID and, if you got one, your Mission Control ID.
 
 #### 4\. Confirm and Detach
 
-Wait for confirmation that the destination account has completed all the steps and successfully taken over the satellite. Once confirmed, you can remove the satellite from your console using the "Detach Satellite" option available in the satellite overview.
+Wait for confirmation that the destination account has completed all the steps and successfully taken over the satellite. Once confirmed, you can remove the satellite from your console using the "Detach Satellite" option available in the Satellite overview.
 
 ---
 
@@ -8896,7 +8902,7 @@ Sharing the same identity also means sharing access to the same wallet linked to
 
 #### 1\. Create a new identity
 
-Go to [identity.internetcomputer.org](https://identity.internetcomputer.org) and create a new identity.
+Go to [id.ai](https://id.ai) and create a new identity.
 
 #### 2\. Set up
 
@@ -8908,7 +8914,7 @@ Arrange a call or meeting with the person you want to share the identity with, a
 
 #### 4\. Sign into your Internet Identity
 
-Once ready, sign again into [identity.internetcomputer.org](https://identity.internetcomputer.org) using the newly created identity.
+Once ready, sign again into [id.ai](https://id.ai) using the newly created identity.
 
 #### 5\. Add a new passkey
 
@@ -8916,7 +8922,7 @@ Click "Add new passkey" to initiate the process of adding the other personâ
 
 #### 6\. Share the generated link
 
-A link (e.g.,`https://identity.internetcomputer.org/?action=add-passkey&ii=1122333` for an identity number `1122333`) will be generated and valid for 15 minutes. Copy and send this link to the person you want to share the identity with.
+A link (e.g.,`https://id.ai/pair#12345`) will be generated and valid for 15 minutes. Copy and send this link to the person you want to share the identity with.
 
 #### 7\. Approve the new passkey
 
@@ -8982,7 +8988,7 @@ The authentication process requires a browser.
 
 If you've previously authenticated your terminal and decide to log in again, the CLI will prompt you about reusing your existing access key.
 
-This allows you to reuse your authorization, especially when creating new modules like satellites or orbiters.
+This allows you to reuse your authorization, especially when creating new modules like Satellites or Orbiters.
 
 ---
 
@@ -8990,7 +8996,7 @@ This allows you to reuse your authorization, especially when creating new module
 
 **Caution:**
 
-This action currently does not remove the controllers from satellites and/or mission control and/or orbiter. It only logs out your local machine by removing the locally saved key (principal).
+This action currently does not remove the controllers from Satellites and/or Mission Control and/or Orbiter. It only logs out your local machine by removing the locally saved key (principal).
 
 Log out of the current device. â ï¸ This action does not remove the access keys from the module.
 
@@ -9020,7 +9026,7 @@ Usage: juno hosting clear [options]Options:  -f, --fullPath        Clear a parti
 
 **Note:**
 
-This command removes existing files from the satellite and only affects the app assets, your frontend. Your user's uploaded files will not be cleared from your custom collections in the storage.
+This command removes existing files from the Satellite and only affects the app assets, your frontend. Your user's uploaded files will not be cleared from your custom collections in the storage.
 
 ---
 
@@ -9402,7 +9408,7 @@ If you are using a framework like Next.js or Vite, Juno provides plugins to simp
 
 ### Source
 
-The `source` field specifies the directory that contains the built assets for your satellite. This is typically the output directory generated by your build process after running a command like `npm run build`.
+The `source` field specifies the directory that contains the built assets for your Satellite. This is typically the output directory generated by your build process after running a command like `npm run build`.
 
 Commonly, or if you are using the templates, these are the folders that can be set as the `source` field:
 
@@ -9413,7 +9419,7 @@ Commonly, or if you are using the templates, these are the folders that can be s
 | SvelteKit | `build` |
 | Angular | `dist/<your-project-name>/browser` |
 
-Juno uses this directory to locate the files that will be deployed as part of your satellite. Ensure that this directory includes all the necessary assets, such as HTML, JavaScript, CSS, and any other static or dynamic resources your application requires.
+Juno uses this directory to locate the files that will be deployed as part of your Satellite. Ensure that this directory includes all the necessary assets, such as HTML, JavaScript, CSS, and any other static or dynamic resources your application requires.
 
 juno.config.js
 
@@ -9423,7 +9429,7 @@ import { defineConfig } from "@junobuild/config";export default defineConfig({  
 
 ### Ignore files
 
-The `ignore` attribute allows you to exclude certain files from being deployed to your satellite.
+The `ignore` attribute allows you to exclude certain files from being deployed to your Satellite.
 
 This attribute works similarly to Git's `.gitignore`, and you can specify which files to ignore using globs.
 
@@ -9516,7 +9522,7 @@ import { defineConfig } from "@junobuild/config";export default defineConfig({  
 
 ### Encoding
 
-When deploying, the CLI automatically maps the encoding type based on the file extension. The encoding information is then used in the satellite to provide the appropriate HTTP response header `Content-Encoding`.
+When deploying, the CLI automatically maps the encoding type based on the file extension. The encoding information is then used in the Satellite to provide the appropriate HTTP response header `Content-Encoding`.
 
 The default mappings are as follows:
 
@@ -9572,7 +9578,7 @@ The `storage` configuration accepts the following options and parameters:
 
 #### HTTP Headers
 
-Headers allow the client and the satellite to pass additional information along with a request or a response. Some sets of headers can affect how the browser handles the page and its content.
+Headers allow the client and the Satellite to pass additional information along with a request or a response. Some sets of headers can affect how the browser handles the page and its content.
 
 For instance, you may want to set a specific `Cache-Control` for performance reasons.
 
@@ -9740,7 +9746,7 @@ Orbiters are an optional component of your application used for analytics.
 
 ### ID
 
-An orbiter has a unique identifier (id). This ID is used to reference the orbiter during operations and deployments.
+An Orbiter has a unique identifier (id). This ID is used to reference the Orbiter during operations and deployments.
 
 **Tip:**
 
@@ -9809,7 +9815,7 @@ You can customize the ports exposed by the emulator:
 | Field | Description | Default |
 | --- | --- | --- |
 | server | The local Internet Computer replica port. Your app or project interacts with it. | `5987` |
-| admin | Admin server used for internal tasks (e.g., ICP transfer). | `5999` |
+| admin | Admin server used for internal tasks (e.g., Cycles transfer). | `5999` |
 | console | Console UI port (only used with `skylab`). | `5866` |
 
 **Note:**
@@ -10302,13 +10308,13 @@ However, in some cases, it may be useful to explicitly reference their IDs or UR
 | Service | Canister ID |
 | --- | --- |
 | [Internet Identity](https://dashboard.internetcomputer.org/canister/rdmx6-jaaaa-aaaaa-aaadq-cai) | `rdmx6-jaaaa-aaaaa-aaadq-cai` |
+| [Cycles Ledger](https://dashboard.internetcomputer.org/canister/um5iw-rqaaa-aaaaq-qaaba-cai) | `um5iw-rqaaa-aaaaq-qaaba-cai` |
+| [Cycles Index](https://dashboard.internetcomputer.org/canister/ul4oc-4iaaa-aaaaq-qaabq-cai) | `ul4oc-4iaaa-aaaaq-qaabq-cai` |
 | [ICP Ledger](https://dashboard.internetcomputer.org/canister/ryjl3-tyaaa-aaaaa-aaaba-cai) | `ryjl3-tyaaa-aaaaa-aaaba-cai` |
 | [ICP Index](https://dashboard.internetcomputer.org/canister/qhbym-qaaaa-aaaaa-aaafq-cai) | `qhbym-qaaaa-aaaaa-aaafq-cai` |
 | [CMC (Cycles Minting Canister)](https://dashboard.internetcomputer.org/canister/rkp4c-7iaaa-aaaaa-aaaca-cai) | `rkp4c-7iaaa-aaaaa-aaaca-cai` |
 | [NNS Governance](https://dashboard.internetcomputer.org/canister/rrkah-fqaaa-aaaaa-aaaaq-cai) | `rrkah-fqaaa-aaaaa-aaaaq-cai` |
 | [Registry](https://dashboard.internetcomputer.org/canister/rwlgt-iiaaa-aaaaa-aaaaa-cai) | `rwlgt-iiaaa-aaaaa-aaaaa-cai` |
-| [Cycles Ledger](https://dashboard.internetcomputer.org/canister/um5iw-rqaaa-aaaaq-qaaba-cai) | `um5iw-rqaaa-aaaaq-qaaba-cai` |
-| [Cycles Index](https://dashboard.internetcomputer.org/canister/ul4oc-4iaaa-aaaaq-qaabq-cai) | `ul4oc-4iaaa-aaaaq-qaabq-cai` |
 | [SNS-Wasm](https://dashboard.internetcomputer.org/canister/qaa6y-5yaaa-aaaaa-aaafa-cai) | `qaa6y-5yaaa-aaaaa-aaafa-cai` |
 | [NNS-dapp](https://dashboard.internetcomputer.org/canister/qoctq-giaaa-aaaaa-aaaea-cai) | `qoctq-giaaa-aaaaa-aaaea-cai` |
 
@@ -11830,7 +11836,7 @@ For reproducibility, developers can run the official Docker build for Juno and i
 
 ### What happens if Juno disappears?
 
-In the unlikely event of Juno's disappearance, you, as the sole controller of your [mission control](/docs/terminology.md#mission-control) and [satellites](/docs/terminology.md#satellite), would retain full control over your creations. They would continue to function independently without any reliance on Juno.
+In the unlikely event of Juno's disappearance, you retain full control over your creations. They would continue to function independently without any reliance on Juno.
 
 ### Can I just deploy my website on the Internet Computer?
 
@@ -11844,7 +11850,7 @@ No, Juno is an independent project. In 2024, we received a [Developer Grant](htt
 
 No, Juno does not exert any control over developers' work. Juno is designed to provide developers with true control and autonomy over their projects.
 
-Developers have full ownership and control over their [mission control](/docs/terminology.md#mission-control), [satellites](/docs/terminology.md#satellite), and the applications they build on the platform.
+Developers have full ownership and control over their modules, and the applications they build on the platform.
 
 Juno's philosophy aligns with the principles of Web3, empowering developers with transparency, decentralization, and the freedom to create and innovate without external interference.
 
@@ -11888,8 +11894,8 @@ Do you have more questions or need further assistance? Feel free to reach out to
 
 Juno has a simple starting point:
 
-*   â Free to get started: new developers receive credits to create one managing container and one project container.
-*   ð° Pay as you grow: additional modules (for projects or analytics) cost 0.4 ICP each to create.
+*   â Free to get started: new developers receive credits to create a container for their first project, with initial resources included, ready to use.
+*   ð° Pay as you grow: additional modules (for projects, monitoring or analytics) cost 3 T Cycles each to create.
 *   ð¦ Operating costs: ongoing costs for storage, compute, and deployments are paid with cycles.
 
 From there, you can dive into the details below to estimate storage, deployment, and data costs more precisely.
@@ -11898,27 +11904,34 @@ From there, you can dive into the details below to estimate storage, deployment,
 
 ## Operating costs
 
-As the owner of your mission control, satellites and orbiters, you are responsible for their operating costs.
+As the owner of your Mission Control, Satellites and Orbiters, you are responsible for their operating costs.
 
 To ensure that your infrastructure usage is covered, you must maintain a minimum balance of [cycles](/docs/terminology.md#cycles).
 
 You can top up your cycle balance in the Juno [console](https://console.juno.build/) through one of the following methods:
 
-*   Using ICP from your wallet.
 *   Purchasing cycles with Stripe, thanks to our friends at [cycle.express](https://cycle.express).
+*   Using cycles from your [wallet](/docs/miscellaneous/wallet.md).
 *   Transferring cycles between modules, such as moving cycles from one Satellite to another.
 
 ---
 
 ## Transaction costs
 
-New developers who join Juno are granted credits to create a mission control and their initial [satellite](/docs/terminology.md#satellite).
+New developers who join Juno are granted credits to create an initial [Satellite](/docs/terminology.md#satellite).
 
-To create additional satellites, a fee of 0.4 ICP is necessary, along with the infrastructure costs for setting up the container.
+To create additional Satellites, a fee of 3 T Cycles is necessary, along with the infrastructure costs for setting up the container.
 
-Similarly, enabling analytics by creating an [orbiter](/docs/terminology.md#orbiter) entails a fee of 0.4 ICP.
+Similarly, enabling analytics by creating an [Orbiter](/docs/terminology.md#orbiter) or monitoring with a [Mission Control](/docs/terminology.md#mission-control) entails a fee of 3 T Cycles.
 
-Please note that additional transaction fees may be introduced in the future, and pricing and models are subject to change.
+Each module is provisioned with approximately 1.5 T Cycles in usable resources.
+
+**Note:**
+
+*   For backwards compatibility, modules can still be created using Mission Control (deprecated). The transaction cost for this approach is 1.5 ICP.
+    
+*   Additional transaction fees may be introduced in the future, and pricing and models are subject to change.
+    
 
 ---
 
@@ -11946,17 +11959,17 @@ To calculate the estimated monthly cost for 1 gigabyte of storage, you can refer
 
 Based on our experimentation, deploying an entire website, such as the website [http://juno.build](http://juno.build), which consists of approximately 900 files (including compressed versions of the files) and is 40 MB in size, is estimated to cost around 0.114 T Cycles, which converts to 0.0105 ICP ($0.15).
 
-It's important to note that subsequent deployments of your project can have significantly lower costs if the build consistency of your application is maintained. Juno only uploads new files to your satellites, which helps reduce costs compared to initial deployments.
+It's important to note that subsequent deployments of your project can have significantly lower costs if the build consistency of your application is maintained. Juno only uploads new files to your Satellites, which helps reduce costs compared to initial deployments.
 
 ### Data
 
 Querying data on the Internet Computer is currently free, so there are no additional costs to expect when reading data.
 
-In terms of persisting data, based on our experience, storing 100 instances of a JSON sample data with approximately 90 fields, totaling around 900 bytes, costs approximately 0.0005 TCycles or 0.00017 ICP ($0.000675). This means that the cost for a single transaction of this nature would be approximately 0.000005 TCycles or 0.0000017 ICP ($0.00000675).
+In terms of persisting data, based on our experience, storing 100 instances of a JSON sample data with approximately 90 fields, totaling around 900 bytes, costs approximately 0.0005 TCycles ($0.000675). This means that the cost for a single transaction of this nature would be approximately 0.000005 TCycles or 0.0000017 ICP ($0.00000675).
 
 **Note:**
 
-Pricing information was last reviewed on Sept. 26, 2025.
+Pricing information was last reviewed on Jan. 7, 2026.
 
 Figures are estimates and may change as the Internet Computer evolves.
 
@@ -11964,13 +11977,9 @@ Figures are estimates and may change as the Internet Computer evolves.
 
 In Juno, we use some terms that may be unfamiliar to some. This page provides a summary of the most commonly used terms.
 
-## Account Identifier
-
-An "Account Identifier" is an address, serving as the textual representation of an account on the Internet Computer (ICP) ledger. It can represent an account owned by an individual or a smart contract.
-
 ## Canister
 
-A canister is the term for a smart contract on the Internet Computer. It includes both logic and state (memory), bundled together and deployed as a WebAssembly (WASM) container.
+A canister is the term for a container on the Internet Computer. It includes both logic and state (memory), bundled together and deployed as a WebAssembly (WASM).
 
 All ([modules](#modules)) in Juno â such as ([satellites](#satellite)), ([mission controls](#mission-control)), and ([orbiters](#orbiter)) â are canisters under the hood.
 
@@ -11988,7 +11997,7 @@ For current usage and setup, refer to the [Access Keys documentation](/docs/misc
 
 ## Cycles
 
-Cycles are used to pay for [infrastructure](/docs/miscellaneous/infrastructure.md) usage. Your [mission control](/docs/terminology.md#mission-control) or [satellite](/docs/terminology.md#satellite) consumes cycles while it's active.
+Cycles are used to pay for [infrastructure](/docs/miscellaneous/infrastructure.md) usage. Your [satellite](/docs/terminology.md#satellite), [mission control](/docs/terminology.md#mission-control) or [orbiter](/docs/terminology.md#orbiter) consume cycles while they are active.
 
 The amount of cycles available determines whether a module will be active, inactive, or eventually decommissioned (deleted).
 
@@ -12001,17 +12010,9 @@ Think of cycles like prepaid mobile data:
 *   To keep your modules running smoothly, you need to top up your cycles regularly (manually or automatically).
 *   If you donât top it up, after some time, it will be decommissioned, similar to losing your prepaid number due to prolonged inactivity.
 
-Learn more about [computation and storage costs](https://internetcomputer.org/docs/current/developer-docs/gas-cost).
-
 ## Doc
 
 "doc" is a commonly used shorthand in Juno for a "document of the Datastore". Wherever you see the term "doc" in the codebase or documentation, it refers specifically to a document entity managed by the [Datastore](/docs/build/datastore.md). This abbreviation is used for brevity and consistency throughout the project.
-
-## ICP
-
-The ICP token is the cryptocurrency used to pay for transactions on Juno's [infrastructure](/docs/miscellaneous/infrastructure.md).
-
-It can also be converted into cycles, which are used to pay for computation and storage. Unlike the market price of ICP, the price of cycles remains constant, ensuring predictable costs for infrastructure usage.
 
 ## Internet Identity
 
@@ -12021,13 +12022,9 @@ It is free and passwordless. It integrates WebAuthn for maximum compatibility an
 
 ## Mission control
 
-Mission control is the command center for your project. It is under your exclusive control, allowing it, for example, to hold ICP and perform various operations such as topping up your modules.
+Mission Control is an optional monitoring service. When enabled, it automatically monitors and tops up your Satellites and Orbiters to keep them running smoothly.
 
-Think of it like the command center for a space mission. Just as NASA's mission control coordinates spacecraft and satellites, your mission control manages all your [satellites](/docs/terminology.md#satellite) or ([orbiters](#orbiter)).
-
-Because it can hold ICP and is only controlled by you, your mission control also functions as your ([wallet](#wallet)).
-
-For a schematic representation, refer to the [Architecture](/docs/miscellaneous/architecture.md) documentation page.
+Think of it like the command center for a space mission. Just as NASA's Mission Control monitors spacecraft and Satellites, your Mission Control watches over all your modules and ensures they have the resources they need.
 
 ## Modules
 
@@ -12039,7 +12036,7 @@ It acts as a comprehensive entity, encompassing memory, permission checks, and o
 
 ## Orbiter
 
-An orbiter is an optional module you can enable for analytics. It helps you gather valuable, anonymous insights about your users.
+An Orbiter is an optional module you can enable for analytics. It helps you gather valuable, anonymous insights about your users.
 
 ## Principal
 
@@ -12051,9 +12048,9 @@ Learn more about [principals](https://internetcomputer.org/docs/current/referenc
 
 ## Satellite
 
-A satellite is a container for your application. It holds your projectâs data, storage, application bundle, and assets.
+A Satellite is a container for your application. It holds your projectâs data, storage, application bundle, and assets.
 
-Each satellite is commonly dedicated to a single application.
+Each Satellite is commonly dedicated to a single application.
 
 ## Subnet
 
@@ -12071,15 +12068,17 @@ By picking the right group (or subnet), everyone can play faster and have more f
 
 ## Wallet
 
-A wallet is your secure repository for managing and storing crypto money. Your wallet is controlled exclusively by you, ensuring that no one, including Juno, can ever access it.
+A wallet is your secure repository for managing and storing resources in Juno.
 
-Think of it like a digital vault:
+Think of it like a prepaid account:
 
-*   It securely stores your ICP tokens.
-*   It acts as your gateway for transactions within the Juno ecosystem.
-*   It allows you to top up your modules with cycles.
+*   It holds your available resources (cycles).
+*   It lets you allocate resources to your projects and modules - e.g. with top-up.
+*   It's automatically created when you sign in to the Console.
 
-Because your wallet is also your ([mission-control](#mission-control)), which requires resources to stay alive, we recommend holding a reasonable amount of tokens. Think of it like a day-to-day wallet for frequent operations rather than one for savings.
+Your wallet is tied to your identity, which is generated when you first log in.
+
+For more information see [Wallet](/docs/miscellaneous/wallet.md) documentation.
 
 # Troubleshooting
 
@@ -12141,7 +12140,7 @@ To resolve this issue, make sure your SDK is correctly configured by following t
 
 ### Invalid character: "<"
 
-When you scaffold an app with a template, the `juno.config` file includes placeholder values for the satellite IDs:
+When you scaffold an app with a template, the `juno.config` file includes placeholder values for the Satellite IDs:
 
 ```
 import { defineConfig } from "@junobuild/config";export default defineConfig({  satellite: {    ids: {      development: "<DEV_SATELLITE_ID>",      production: "<PROD_SATELLITE_ID>"    },    source: "dist"  }});
@@ -12151,7 +12150,7 @@ If you start your frontend development server without replacing these placeholde
 
 This happens because the app tries to parse the config at runtime and encounters the invalid placeholder character `<` in the ID values.
 
-Continue with your setup or tutorial until you receive your actual satellite ID(s). Once youâve updated the config with real values, make sure to restart your development server.
+Continue with your setup or tutorial until you receive your actual Satellite ID(s). Once youâve updated the config with real values, make sure to restart your development server.
 
 **Note:**
 

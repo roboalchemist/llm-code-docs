@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/deployments/sso-integration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # SSO Integration
 
 > This page covers our SSO Integration support with information we need to setup SSO for your Galileo cluster.
@@ -36,7 +40,6 @@ If your provider is not listed above, additional SSO providers can be added on-d
 2. Set **Sign-in redirect URIs** to `https://{CONSOLE_URL}/api/auth/callback/okta`, and **Sign-out redirect URIs** to `https://{CONSOLE_URL}`.
 
 3. Share **Issuer URL**, **Client ID** and **Client Secret** with Galileo
-
    1. Find **Issuer URL** in Security -> API in admin panel. Audience should be `api://default`
 
 ### Microsoft Entra ID (formerly Azure Active Directory)
@@ -44,7 +47,6 @@ If your provider is not listed above, additional SSO providers can be added on-d
 1. Follow [this guide](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-register-app) to create a new application. Under **Redirect URI**, set type to **Web** and URI to `https://{CONSOLE_URL}/api/auth/callback/azure-ad`
 
 2. Go to **Token configuration** page, **Add Optional Claim**, choose **ID** token and **email** claim.
-
    1. Please ensure each user has the **email** set in the **Contact Information** properties. We will use this email as the account on Galileo.
 
 3. Go to **Certificates & secrets** page, click **New Client Secret** and create a new secret.
@@ -62,7 +64,6 @@ If your provider is not listed above, additional SSO providers can be added on-d
 ### Custom OIDC Provider
 
 1. Create an application/client with **OIDC** as the protocol, **Web Application** as the application type, **Authorization Code** as the Grant Type
-
    1. Please ensure **email** claim is returned as part of the **ID Token**
 
 2. Set **Sign-in redirect URIs** to `https://{CONSOLE_URL}/api/auth/callback/custom`, and **Sign-out redirect URIs** to `https://{CONSOLE_URL}`, **Web origins** to `https://{CONSOLE_URL}`

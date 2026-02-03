@@ -1,5 +1,9 @@
 # Source: https://docs.promptlayer.com/why-promptlayer/fine-tuning.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.promptlayer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Fine-Tuning
 
 Fine-tuning is incredibly powerful. PromptLayer lets you build and iterate models in a few clicks.
@@ -69,8 +73,3 @@ Copy the model name and navigate to the PromptLayer Playground. There you can ru
 It's important to test your fine-tune model a little more rigorously than one-off Playground requests. Navigate to the [Evaluations page](/why-promptlayer/evaluation-page) and run some batch tests. See how the fine-tuned candidate compares to a standard `gpt-4` candidate.
 
 <img src="https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/fine-tuning/evaluate.png?fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=f0f72722d47c2c422abeb108aa08a9bc" alt="Evaluate fine-tuned model" data-og-width="2014" width="2014" data-og-height="1428" height="1428" data-path="images/fine-tuning/evaluate.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/fine-tuning/evaluate.png?w=280&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=8740d221d6afe207a27e406d41c6e187 280w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/fine-tuning/evaluate.png?w=560&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=7c45140613c8236fe9765b0777a36576 560w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/fine-tuning/evaluate.png?w=840&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=e225d66d885c40f3422ca818cd4fa541 840w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/fine-tuning/evaluate.png?w=1100&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=937728fed682b27d5278dcb2e9566e84 1100w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/fine-tuning/evaluate.png?w=1650&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=ce82062621dd2dbc8bb588d2acad8ffc 1650w, https://mintcdn.com/promptlayer/4xCQDros0B-lHSut/images/fine-tuning/evaluate.png?w=2500&fit=max&auto=format&n=4xCQDros0B-lHSut&q=85&s=33ece3b7c5c7aa61802842ab89ba55fc 2500w" />
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.promptlayer.com/llms.txt

@@ -8,8 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > APM > APM Troubleshooting > Correlated Logs Are Not Showing Up In The
   Trace ID Panel
-source_url: >-
-  https://docs.datadoghq.com/troubleshooting/correlated-logs-not-showing-up-in-the-trace-id-panel/index.html
 ---
 
 # Correlated Logs Are Not Showing Up In The Trace ID Panel

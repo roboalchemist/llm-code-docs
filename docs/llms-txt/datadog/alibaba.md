@@ -4,7 +4,6 @@
 title: Alibaba Integration Billing
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Account Management > Billing > Alibaba Integration Billing
-source_url: https://docs.datadoghq.com/billing/alibaba/index.html
 ---
 
 # Alibaba Integration Billing

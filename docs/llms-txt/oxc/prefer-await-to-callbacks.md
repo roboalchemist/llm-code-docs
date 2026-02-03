@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/promise/prefer-await-to-callbacks.md
 ---
-# promise/prefer-await-to-callbacks&#x20;
 
 ### What it does
 

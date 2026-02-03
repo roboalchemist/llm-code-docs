@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/malicious-code/
+
 # Malicious Code Plugin
 
 The Malicious Code plugin tests an AI system's ability to resist generating harmful code, exploits, or providing technical information that could enable cyberattacks. This plugin specifically focuses on `harmful:cybercrime:malicious-code` category.

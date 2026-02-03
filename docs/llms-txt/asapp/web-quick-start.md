@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/agent-desk/integrations/web-sdk/web-quick-start.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Web Quick Start
 
 If you want to start fast, follow these steps:
@@ -45,7 +49,7 @@ To initialize the ASAPP Chat SDK, call the `ASAPP('load')` method as seen below:
 </script> 
 ```
 
-**Note:** The `APIHostname` and `AppId` values will be provided to you by ASAPP after coordination between your organization and your ASAPP Implementation Manager. Once these values have been determined and provided, you can make the following updates:
+**Note:** ASAPP will provide the `APIHostname` and `AppId` values to you after coordination between your organization and your ASAPP Implementation Manager. Once ASAPP determines and provides these values, you can make the following updates:
 
 1. Replace `API_HOSTNAME` with the hostname of your ASAPP API location. This string will look something like
 
@@ -55,7 +59,7 @@ To initialize the ASAPP Chat SDK, call the `ASAPP('load')` method as seen below:
 
 2. Replace `APP_ID` with your Company Marker identifier. This string will look something like `'examplecompany'`.
 
-Calling `ASAPP('load')` will make a network request to your APIHostname and determine whether or not it should display the Chat SDK Badge. The Badge will display based on your company's business hours, your trigger settings, and whether or not you have enabled the SDK in your Admin control panel.
+Calling `ASAPP('load')` will make a network request to your APIHostname and determine whether or not it should display the Chat SDK Badge. The Badge displays based on your company's business hours, your trigger settings, and whether or not you have enabled the SDK in your Admin control panel.
 
 For more advanced ways to display the ASAPP Chat SDK, see the [JavaScript API Documentation](/agent-desk/integrations/web-sdk/web-javascript-api "Web JavaScript API").
 

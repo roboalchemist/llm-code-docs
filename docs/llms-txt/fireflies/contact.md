@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/schema/contact.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Contact
 
 > Schema for Contact
@@ -31,8 +35,3 @@
     Query users in your team
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.fireflies.ai/llms.txt

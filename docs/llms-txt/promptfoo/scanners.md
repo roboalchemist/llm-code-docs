@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/model-audit/scanners/
+
 # ModelAudit Scanners
 
 ModelAudit includes specialized scanners for different model formats and file types. Each scanner is designed to identify specific security issues relevant to that format.

@@ -1,10 +1,11 @@
+# Source: https://docs.datadoghq.com/dashboards/widgets/image.md
+
 # Source: https://docs.datadoghq.com/cloudcraft/components-common/image.md
 
 ---
 title: Image Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: 'Docs > Cloudcraft (Standalone) > Components: Common > Image Component'
-source_url: https://docs.datadoghq.com/components-common/image/index.html
 ---
 
 # Image Component

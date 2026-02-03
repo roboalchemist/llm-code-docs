@@ -1,16 +1,17 @@
 # Source: https://gofastmcp.com/servers/auth/oauth-proxy.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # OAuth Proxy
 
 > Bridge traditional OAuth providers to work seamlessly with MCP's authentication flow.
 
 export const VersionBadge = ({version}) => {
-  return <code className="version-badge-container">
-            <p className="version-badge">
-                <span className="version-badge-label">New in version:</span> 
-                <code className="version-badge-version">{version}</code>
-            </p>
-        </code>;
+  return <Badge stroke size="lg" icon="gift" iconType="regular" className="version-badge">
+            New in version <code>{version}</code>
+        </Badge>;
 };
 
 <VersionBadge version="2.12.0" />
@@ -132,23 +133,26 @@ mcp = FastMCP(name="My Server", auth=auth)
   <ParamField body="issuer_url" type="AnyHttpUrl | str | None">
     Issuer URL for OAuth authorization server metadata (defaults to `base_url`).
 
-    When mounting your MCP server under a path prefix (e.g., `/api`), set this to your root-level URL to avoid 404 logs during OAuth discovery. MCP clients try path-scoped discovery first per RFC 8414, which will fail if your auth server metadata is at the root level.
+    When `issuer_url` has a path component (either explicitly or by defaulting from `base_url`), FastMCP creates path-aware discovery routes per RFC 8414. For example, if `base_url` is `http://localhost:8000/api`, the authorization server metadata will be at `/.well-known/oauth-authorization-server/api`.
 
-    **Example with mounting:**
+    **Default behavior (recommended for most cases):**
 
     ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
     auth = GitHubProvider(
         base_url="http://localhost:8000/api",  # OAuth endpoints under /api
-        issuer_url="http://localhost:8000"     # Auth server metadata at root
+        # issuer_url defaults to base_url - path-aware discovery works automatically
     )
     ```
 
-    Without `issuer_url`, clients will attempt `/.well-known/oauth-authorization-server/api` (404) before falling back to `/.well-known/oauth-authorization-server` (success). Setting `issuer_url` to the root eliminates the 404 attempt.
+    **When to set explicitly:**
+    Set `issuer_url` to root level only if you want multiple MCP servers to share a single discovery endpoint:
 
-    **When to use:**
-
-    * **Default (`None`)**: Use `base_url` as issuer - simple deployments at root path
-    * **Root-level URL**: Mounting under a path prefix - avoids 404 logs
+    ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+    auth = GitHubProvider(
+        base_url="http://localhost:8000/api",
+        issuer_url="http://localhost:8000"  # Shared root-level discovery
+    )
+    ```
 
     See the [HTTP Deployment guide](/deployment/http#mounting-authenticated-servers) for complete mounting examples.
   </ParamField>
@@ -303,6 +307,24 @@ mcp = FastMCP(name="My Server", auth=auth)
     <Warning>
       Disabling consent removes an important security layer. Only disable for local development or testing environments where you fully control all connecting clients.
     </Warning>
+  </ParamField>
+
+  <ParamField body="consent_csp_policy" type="str | None" default="None">
+    Content Security Policy for the consent page.
+
+    * `None` (default): Uses the built-in CSP policy with appropriate directives for form submission
+    * Empty string `""`: Disables CSP entirely (no meta tag rendered)
+    * Custom string: Uses the provided value as the CSP policy
+
+    This is useful for organizations that have their own CSP policies and need to override or disable FastMCP's built-in CSP directives.
+
+    ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+    # Disable CSP entirely (let org CSP policies apply)
+    auth = OAuthProxy(..., consent_csp_policy="")
+
+    # Use custom CSP policy
+    auth = OAuthProxy(..., consent_csp_policy="default-src 'self'; style-src 'unsafe-inline'")
+    ```
   </ParamField>
 </Card>
 
@@ -545,29 +567,23 @@ The consent page automatically displays your server's name, icon, and website UR
 * [MCP Security Best Practices](https://modelcontextprotocol.io/specification/2025-06-18/basic/security_best_practices#confused-deputy-problem) - Official specification guidance
 * [Confused Deputy Attacks Explained](https://den.dev/blog/mcp-confused-deputy-api-management/) - Detailed walkthrough by Den Delimarsky
 
-## Environment Configuration
+## Production Configuration
 
-<VersionBadge version="2.12.1" />
-
-For production deployments, configure the OAuth proxy through environment variables instead of hardcoding credentials:
-
-```bash  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-# Specify the provider implementation
-export FASTMCP_SERVER_AUTH=fastmcp.server.auth.providers.github.GitHubProvider
-
-# Provider-specific credentials
-export FASTMCP_SERVER_AUTH_GITHUB_CLIENT_ID="Ov23li..."
-export FASTMCP_SERVER_AUTH_GITHUB_CLIENT_SECRET="abc123..."
-export FASTMCP_SERVER_AUTH_GITHUB_BASE_URL="https://your-production-server.com"
-```
-
-With environment configuration, your server code simplifies to:
+For production deployments, load sensitive credentials from environment variables:
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+import os
 from fastmcp import FastMCP
+from fastmcp.server.auth.providers.github import GitHubProvider
 
-# Authentication automatically configured from environment
-mcp = FastMCP(name="My Server")
+# Load secrets from environment variables
+auth = GitHubProvider(
+    client_id=os.environ.get("GITHUB_CLIENT_ID"),
+    client_secret=os.environ.get("GITHUB_CLIENT_SECRET"),
+    base_url=os.environ.get("BASE_URL", "https://your-production-server.com")
+)
+
+mcp = FastMCP(name="My Server", auth=auth)
 
 @mcp.tool
 def protected_tool(data: str) -> str:
@@ -577,3 +593,5 @@ def protected_tool(data: str) -> str:
 if __name__ == "__main__":
     mcp.run(transport="http", port=8000)
 ```
+
+This keeps secrets out of your codebase while maintaining explicit configuration.

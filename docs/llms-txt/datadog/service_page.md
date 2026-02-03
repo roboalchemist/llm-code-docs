@@ -6,7 +6,6 @@ description: >-
   Comprehensive service overview with health metrics, dependencies, deployments,
   error tracking, and security insights.
 breadcrumbs: Docs > APM > Service Observability > Service Page
-source_url: https://docs.datadoghq.com/services/service_page/index.html
 ---
 
 # Service Page

@@ -1,15 +1,19 @@
 # Source: https://docs.augmentcode.com/context-services/mcp/quickstart-kiro.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Quickstart (Kiro)
 
 > Get started with Augment Context Engine MCP in Kiro in minutes
 
 ## Quick Start with Kiro
 
-### 1. Install Auggie CLI (Pre-release version)
+### 1. Install Auggie CLI
 
 ```bash  theme={null}
-npm install -g @augmentcode/auggie@prerelease
+npm install -g @augmentcode/auggie@latest
 ```
 
 ### 2. Sign in to Augment
@@ -34,7 +38,7 @@ Paste this configuration:
   "mcpServers": {
     "Augment-Context-Engine": {
       "command": "auggie",
-      "args": ["--mcp", "-m", "default", "-w", "./"],
+      "args": ["--mcp", "--mcp-auto-workspace"],
       "disabled": false,
       "autoApprove": ["codebase-retrieval"]
     }
@@ -49,8 +53,3 @@ Prompt: "Do you have access to the Augment codebase retrieval tool?"
 ```
 
 Kiro should confirm it has access to the `codebase-retrieval` tool.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.augmentcode.com/llms.txt

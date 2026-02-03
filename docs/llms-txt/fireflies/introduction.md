@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/getting-started/introduction.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Introduction
 
 > Welcome to Fireflies public API documentation.

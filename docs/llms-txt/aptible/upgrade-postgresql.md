@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/database-guides/upgrade-postgresql.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Upgrade PostgreSQL with logical replication
 
 The goal of this guide is to [upgrade a PostgreSQL Database](/core-concepts/managed-databases/managing-databases/database-upgrade-methods) to a newer version by means of [logical replication](/core-concepts/managed-databases/managing-databases/database-upgrade-methods#logical-replication). Aptible uses [pglogical](https://github.com/2ndQuadrant/pglogical) to create logical replicas.

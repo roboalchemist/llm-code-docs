@@ -1,103 +1,99 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/access-groups/list-members-of-an-access-group.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List members of an access group
 
 > List members of an access group
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v1/access-groups/{idOrName}/members
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v1/access-groups/{idOrName}/members
-  method: get
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path:
-        idOrName:
+  /v1/access-groups/{idOrName}/members:
+    get:
+      tags:
+        - access-groups
+      summary: List members of an access group
+      description: List members of an access group
+      operationId: listAccessGroupMembers
+      parameters:
+        - name: idOrName
+          description: The ID or name of the Access Group.
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              description: The ID or name of the Access Group.
-              example: ag_pavWOn1iLObbXLRiwVvzmPrTWyTf
-      query:
-        limit:
+            type: string
+            description: The ID or name of the Access Group.
+            example: ag_pavWOn1iLObbXLRiwVvzmPrTWyTf
+        - name: limit
+          description: Limit how many access group members should be returned.
+          in: query
+          required: false
           schema:
-            - type: integer
-              required: false
-              description: Limit how many access group members should be returned.
-              maximum: 100
-              minimum: 1
-              example: 20
-        next:
+            description: Limit how many access group members should be returned.
+            example: 20
+            type: integer
+            minimum: 1
+            maximum: 100
+        - name: next
+          description: Continuation cursor to retrieve the next page of results.
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-              description: Continuation cursor to retrieve the next page of results.
-        search:
+            description: Continuation cursor to retrieve the next page of results.
+            type: string
+        - name: search
+          description: Search project members by their name, username, and email.
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-              description: Search project members by their name, username, and email.
-        teamId:
+            description: Search project members by their name, username, and email.
+            type: string
+        - description: The Team identifier to perform the request on behalf of.
+          in: query
+          name: teamId
           schema:
-            - type: string
-              description: The Team identifier to perform the request on behalf of.
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-        slug:
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        - description: The Team slug to perform the request on behalf of.
+          in: query
+          name: slug
           schema:
-            - type: string
-              description: The Team slug to perform the request on behalf of.
-              example: my-team-url-slug
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: listAccessGroupMembers
-        lang: go
-        source: "package main\n\nimport(\n\t\"os\"\n\t\"github.com/vercel/vercel\"\n\t\"context\"\n\t\"github.com/vercel/vercel/models/operations\"\n\t\"log\"\n)\n\nfunc main() {\n    s := vercel.New(\n        vercel.WithSecurity(os.Getenv(\"VERCEL_BEARER_TOKEN\")),\n    )\n\n    ctx := context.Background()\n    res, err := s.AccessGroups.ListAccessGroupMembers(ctx, operations.ListAccessGroupMembersRequest{\n        IDOrName: \"ag_pavWOn1iLObbXLRiwVvzmPrTWyTf\",\n        Limit: vercel.Int64(20),\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Object != nil {\n        // handle response\n    }\n}"
-      - label: listAccessGroupMembers
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.accessGroups.listAccessGroupMembers({
-              idOrName: "ag_pavWOn1iLObbXLRiwVvzmPrTWyTf",
-              limit: 20,
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-              slug: "my-team-url-slug",
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              members:
-                allOf:
-                  - items:
+            type: string
+            example: my-team-url-slug
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                properties:
+                  members:
+                    items:
                       properties:
                         avatar:
                           type: string
@@ -124,14 +120,13 @@ paths:
                             - CONTRIBUTOR
                       required:
                         - email
+                        - teamRole
                         - uid
                         - username
-                        - teamRole
                       type: object
                     type: array
-              pagination:
-                allOf:
-                  - properties:
+                  pagination:
+                    properties:
                       count:
                         type: number
                       next:
@@ -141,48 +136,23 @@ paths:
                       - count
                       - next
                     type: object
-            requiredProperties:
-              - members
-              - pagination
-        examples:
-          example:
-            value:
-              members:
-                - avatar: <string>
-                  email: <string>
-                  uid: <string>
-                  username: <string>
-                  name: <string>
-                  createdAt: <string>
-                  teamRole: OWNER
-              pagination:
-                count: 123
-                next: <string>
-        description: ''
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: One of the provided values in the request query is invalid.
-        examples: {}
-        description: One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-  deprecated: false
-  type: path
+                required:
+                  - members
+                  - pagination
+                type: object
+        '400':
+          description: One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+      security:
+        - bearerToken: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

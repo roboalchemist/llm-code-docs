@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/transport/data/packets.md
 
-# Source: https://docs.livekit.io/home/client/data/packets.md
-
-LiveKit docs › LiveKit SDKs › Realtime text & data › Data packets
+LiveKit docs › Data › Data packets
 
 ---
 
@@ -16,7 +14,7 @@ Use `LocalParticipant.publishData` or [RoomService.SendData](https://docs.liveki
 
 > ℹ️ **Note**
 > 
-> This is a low-level API meant for advanced control over individual packet behavior. For most use cases, consider using the higher-level [text streams](https://docs.livekit.io/home/client/data/text-streams.md), [byte streams](https://docs.livekit.io/home/client/data/byte-streams.md), or [RPC](https://docs.livekit.io/home/client/data/rpc.md) features.
+> This is a low-level API meant for advanced control over individual packet behavior. For most use cases, consider using the higher-level [text streams](https://docs.livekit.io/transport/data/text-streams.md), [byte streams](https://docs.livekit.io/transport/data/byte-streams.md), or [RPC](https://docs.livekit.io/transport/data/rpc.md) features.
 
 ### Delivery options
 
@@ -227,7 +225,7 @@ room.DataReceived += (data, participant, kind) =>
 
 ---
 
-This document was rendered at 2025-11-18T23:54:52.338Z.
-For the latest version of this document, see [https://docs.livekit.io/home/client/data/packets.md](https://docs.livekit.io/home/client/data/packets.md).
+This document was rendered at 2026-02-03T03:25:19.218Z.
+For the latest version of this document, see [https://docs.livekit.io/transport/data/packets.md](https://docs.livekit.io/transport/data/packets.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

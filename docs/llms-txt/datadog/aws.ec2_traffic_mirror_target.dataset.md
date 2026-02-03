@@ -4,8 +4,6 @@
 title: Traffic Mirror Target
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Traffic Mirror Target
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.ec2_traffic_mirror_target.dataset/index.html
 ---
 
 # Traffic Mirror Target
@@ -18,15 +16,15 @@ aws.ec2_traffic_mirror_target
 
 ## Fields
 
-| Title                             | ID   | Type   | Data Type                                                    | Description |
-| --------------------------------- | ---- | ------ | ------------------------------------------------------------ | ----------- |
-| _key                              | core | string |
-| account_id                        | core | string |
-| description                       | core | string | Information about the Traffic Mirror target.                 |
-| gateway_load_balancer_endpoint_id | core | string | The ID of the Gateway Load Balancer endpoint.                |
-| network_interface_id              | core | string | The network interface ID that is attached to the target.     |
-| network_load_balancer_arn         | core | string | The Amazon Resource Name (ARN) of the Network Load Balancer. |
-| owner_id                          | core | string | The ID of the account that owns the Traffic Mirror target.   |
-| tags                              | core | hstore |
-| traffic_mirror_target_id          | core | string | The ID of the Traffic Mirror target.                         |
-| type                              | core | string | The type of Traffic Mirror target.                           |
+| Title                             | ID   | Type       | Data Type                                                    | Description |
+| --------------------------------- | ---- | ---------- | ------------------------------------------------------------ | ----------- |
+| _key                              | core | string     |
+| account_id                        | core | string     |
+| description                       | core | string     | Information about the Traffic Mirror target.                 |
+| gateway_load_balancer_endpoint_id | core | string     | The ID of the Gateway Load Balancer endpoint.                |
+| network_interface_id              | core | string     | The network interface ID that is attached to the target.     |
+| network_load_balancer_arn         | core | string     | The Amazon Resource Name (ARN) of the Network Load Balancer. |
+| owner_id                          | core | string     | The ID of the account that owns the Traffic Mirror target.   |
+| tags                              | core | hstore_csv |
+| traffic_mirror_target_id          | core | string     | The ID of the Traffic Mirror target.                         |
+| type                              | core | string     | The type of Traffic Mirror target.                           |

@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/ui/walkthrough.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Unstructured UI walkthrough
 
 This walkthrough provides you with deep, hands-on experience with the [Unstructured user interface (UI)](/ui/overview). As you follow along, you will learn how to use many of Unstructured's
@@ -96,7 +100,7 @@ Let's get going!
      * **Start** takes you to the UI home page. The home page features a simple way to process one local file at a time with limited default settings. [Learn how](/welcome#unstructured-ui-quickstart).
      * **Connectors** allows you to create and manage your [source](/ui/sources/overview) and
        [destination](/ui/destinations/overview) connectors.
-     * **Jobs** allows you to see the results of your workflows that are run manually (on-demand) and automatically (on a regular time schedule). [Learn more](/ui/jobs).
+     * **Jobs** allows you to see the results of your workflows that are run manually (once) and automatically (on a regular time schedule). [Learn more](/ui/jobs).
      * **API Keys** allows you to use code to create and manage connectors, workflows, and jobs programmatically instead of by using the UI. [Learn more](/ui/account/api-key-url).
      * Your user icon at the bottom of the sidebar allows you to manage your Unstructured account. You can also sign out of your account from here. [Learn more](/ui/account/overview).
    </Tip>
@@ -174,6 +178,15 @@ shows how well Unstructured's **VLM** partitioning strategy handles challenging 
 
    <img src="https://mintcdn.com/unstructured-53/pyo7Q_5IJVFy-j1Z/img/ui/walkthrough/VLMPartitioner.png?fit=max&auto=format&n=pyo7Q_5IJVFy-j1Z&q=85&s=066c0a3b8958a8b7461862749aa2a9ce" alt="Selecting the VLM for partitioning" data-og-width="3456" width="3456" data-og-height="1868" height="1868" data-path="img/ui/walkthrough/VLMPartitioner.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/unstructured-53/pyo7Q_5IJVFy-j1Z/img/ui/walkthrough/VLMPartitioner.png?w=280&fit=max&auto=format&n=pyo7Q_5IJVFy-j1Z&q=85&s=74e86039dd90f753e5eb952a46458e17 280w, https://mintcdn.com/unstructured-53/pyo7Q_5IJVFy-j1Z/img/ui/walkthrough/VLMPartitioner.png?w=560&fit=max&auto=format&n=pyo7Q_5IJVFy-j1Z&q=85&s=6c0f49b0aad04b853c131c32e79698a9 560w, https://mintcdn.com/unstructured-53/pyo7Q_5IJVFy-j1Z/img/ui/walkthrough/VLMPartitioner.png?w=840&fit=max&auto=format&n=pyo7Q_5IJVFy-j1Z&q=85&s=a1a0b3de833895d0472e368e672c6936 840w, https://mintcdn.com/unstructured-53/pyo7Q_5IJVFy-j1Z/img/ui/walkthrough/VLMPartitioner.png?w=1100&fit=max&auto=format&n=pyo7Q_5IJVFy-j1Z&q=85&s=516e87c89e048e89088914fceba58679 1100w, https://mintcdn.com/unstructured-53/pyo7Q_5IJVFy-j1Z/img/ui/walkthrough/VLMPartitioner.png?w=1650&fit=max&auto=format&n=pyo7Q_5IJVFy-j1Z&q=85&s=6b7dcc4c6059564c59227b5e53f59702 1650w, https://mintcdn.com/unstructured-53/pyo7Q_5IJVFy-j1Z/img/ui/walkthrough/VLMPartitioner.png?w=2500&fit=max&auto=format&n=pyo7Q_5IJVFy-j1Z&q=85&s=c1f5faa79edb9edff6b68d9451b88642 2500w" />
 
+   <Note>
+     The list of available models shown is constantly being updated. Your list might also differ from the preceding screenshot, depending on your Unstructured
+     account type. If **Gemini 2.0 Flash** is not available, choose another available model from the list.
+
+     If you have an Unstructured **Business** account and want to add more models to this list, contact your
+     Unstructured account administrator or Unstructured sales representative, or email Unstructured Support at
+     [support@unstructured.io](mailto:support@unstructured.io).
+   </Note>
+
    <Tip>
      *When I choose **VLM**, when would I choose one of these models over another?*
 
@@ -225,7 +238,7 @@ shows how well Unstructured's **VLM** partitioning strategy handles challenging 
    <Note>
      If **Search JSON** is not clickable, this is probably because the JSON output is too large for the online viewer.
      Click **Download full JSON** and open the downloaded JSON file in an offline text editor (such as Visual Studio Code).
-     [Learn more](/examplecode/tools/conversion-tools#visual-studio-code).
+     [Learn more](/examplecode/tools/json-tools#visual-studio-code).
    </Note>
 
 8. Now try looking at the "Nash letters" PDF file's output. To do this:
@@ -261,6 +274,15 @@ HTML representations of detected tables, and detected entities (such as people a
    * Any available choice for **Model** (for example, **Claude Sonnet 4.5** if you chose **Anthropic** for **Provider**).
    * If not already selected, **Image Description** under **Task**.
 
+   <Note>
+     The lists of available models for these enrichments are constantly being updated. Your lists might also differ from these instructions, depending on your Unstructured
+     account type. If the suggested model for an enrichment is not available, choose another available model from the list.
+
+     If you have an Unstructured **Business** account and want to add more models to these lists, contact your
+     Unstructured account administrator or Unstructured sales representative, or email Unstructured Support at
+     [support@unstructured.io](mailto:support@unstructured.io).
+   </Note>
+
    <Tip>
      The image description enrichment generates a summary description of each detected image. This can help you to more quickly and easily understand
      what each image is all about without having to stop to manually visualize and interpret the image's content yourself. This also provides additional helpful context about the image for your RAG apps, agents, and models. [Learn more](/ui/enriching/image-descriptions).
@@ -288,9 +310,11 @@ HTML representations of detected tables, and detected entities (such as people a
    In the node's settings pane's **Details** tab, click:
 
    * **Table** under **Input Type**.
-   * Any available choice for **Provider** (for example, **Anthropic**).
-   * Any available choice for **Model** (for example, **Claude Sonnet 4.5** if you chose **Anthropic** for **Provider**).
-   * **Table to HTML** under **Task**.
+   * Any available choice for **Provider** (for example, **Agentic Table Parsing** to use agentic AI, or **Anthropic** to use a VLM).
+   * If you did not choose **Agentic Table Parsing** for **Provider**, click the following:
+
+     * Any available choice for **Model** (for example, **Claude Sonnet 4.5** if you chose **Anthropic** for **Provider**).
+     * **Table to HTML** under **Task**.
 
    <Tip>
      The table to HTML enrichment generates an HTML representation of each detected table. This can help you to more quickly and accurately recreate the table's content elsewhere later as needed. This also provides additional context about the table's structure for your RAG apps, agents, and models. [Learn more](/ui/enriching/table-to-html).
@@ -516,6 +540,15 @@ embedding model that is provided by an embedding provider. For the best embeddin
 
 2. In the node's settings pane's **Details** tab, under **Select Embedding Model**, for **Azure OpenAI**, select **Text Embedding 3 Small \[dim 1536]**.
 
+   <Note>
+     The list of available embedding models is constantly being updated. Your list might also be different, depending on your Unstructured
+     account type. If **Azure OpenAI** and **Text Embedding 3 Small \[dim 1536]** is not available, choose another available model from the list.
+
+     If you have an Unstructured **Business** account and want to add more models to this list, contact your
+     Unstructured account administrator or Unstructured sales representative, or email Unstructured Support at
+     [support@unstructured.io](mailto:support@unstructured.io).
+   </Note>
+
 3. With the "Chinese Characters" PDF file still selected in the **Source** node, click **Test**.
 
 4. In the **Test output** pane, make sure that **Embedder (8 of 8)** is showing. If not, click the right arrow (**>**) until **Embedder (8 of 8)** appears, which will show the output from the last node in the workflow.
@@ -560,7 +593,7 @@ locations, databases, and vector stores. To learn how to do this, try one or mor
 
 Unstructured also offers an API and SDKs, which allow you to use code to work with Unstructured programmatically instead of only with the UI. For details, see:
 
-* [Unstructured API quickstart](/api-reference/workflow/overview#quickstart) - This quickstart uses the Unstructured Workflow Endpoint to programmatically create a Dropbox source connector and a Pinecone destination connector in your Unstructured account. You then programmatically add these connectors to a workflow in your Unstructured account, run that workflow as a job, and then explore the job's results.
+* [Unstructured API quickstart](/api-reference/workflow/overview#quickstart) - This quickstart uses the Unstructured API's workflow operations to programmatically create a Dropbox source connector and a Pinecone destination connector in your Unstructured account. You then programmatically add these connectors to a workflow in your Unstructured account, run that workflow as a job, and then explore the job's results.
 * [Unstructured Python SDK](/api-reference/workflow/overview#unstructured-python-sdk) - This article provides an overview of the Unstructured Python SDK and how to use it.
 * [Unstructured API overview](/api-reference/overview) - This article provides an overview of the Unstructured API and how to use it.
 

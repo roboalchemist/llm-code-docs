@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/api-reference/functions/delete-function.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete function
 
 > Delete a function object by its id
@@ -222,7 +226,46 @@ components:
           type: array
           nullable: true
           items:
-            $ref: '#/components/schemas/SavedFunctionId'
+            allOf:
+              - $ref: '#/components/schemas/SavedFunctionId'
+              - anyOf:
+                  - type: object
+                    properties:
+                      type:
+                        type: string
+                        enum:
+                          - function
+                      id:
+                        type: string
+                      version:
+                        type: string
+                        description: The version of the function
+                    required:
+                      - type
+                      - id
+                    title: function
+                  - type: object
+                    properties:
+                      type:
+                        type: string
+                        enum:
+                          - global
+                      name:
+                        type: string
+                      function_type:
+                        $ref: '#/components/schemas/FunctionTypeEnum'
+                    required:
+                      - type
+                      - name
+                    title: global
+        template_format:
+          type: string
+          nullable: true
+          enum:
+            - mustache
+            - nunjucks
+            - none
+            - null
         mcp:
           type: object
           nullable: true
@@ -293,6 +336,10 @@ components:
         - task
         - tool
         - custom_view
+        - preprocessor
+        - facet
+        - classifier
+        - tag
         - null
     FunctionData:
       anyOf:
@@ -339,6 +386,7 @@ components:
                             - node
                             - python
                             - browser
+                            - quickjs
                         version:
                           type: string
                       required:
@@ -346,6 +394,9 @@ components:
                         - version
                     code:
                       type: string
+                    code_hash:
+                      type: string
+                      description: SHA256 hash of the code, computed at save time
                   required:
                     - type
                     - runtime_context
@@ -385,10 +436,25 @@ components:
                 - global
             name:
               type: string
+            function_type:
+              $ref: '#/components/schemas/FunctionTypeEnum'
+            config:
+              type: object
+              nullable: true
+              additionalProperties:
+                nullable: true
+              description: >-
+                Configuration options to pass to the global function (e.g., for
+                preprocessor customization)
           required:
             - type
             - name
           title: global
+        - $ref: '#/components/schemas/FacetData'
+        - $ref: '#/components/schemas/BatchedFacetData'
+        - allOf:
+            - $ref: '#/components/schemas/TopicMapData'
+            - title: topic_map
     AclObjectType:
       type: string
       enum:
@@ -461,10 +527,22 @@ components:
             type: number
             minimum: 0
             maximum: 1
+          description: Map of choices to scores (0-1). Used by scorers.
+        choice:
+          type: array
+          items:
+            type: string
+          description: >-
+            List of valid choices without score mapping. Used by classifiers
+            that deposit output to tags.
+        allow_no_match:
+          type: boolean
+          description: >-
+            If true, adds a 'No match' option. When selected, no tag is
+            deposited.
       required:
         - type
         - use_cot
-        - choice_scores
     SavedFunctionId:
       anyOf:
         - type: object
@@ -475,6 +553,9 @@ components:
                 - function
             id:
               type: string
+            version:
+              type: string
+              description: The version of the function
           required:
             - type
             - id
@@ -487,10 +568,29 @@ components:
                 - global
             name:
               type: string
+            function_type:
+              $ref: '#/components/schemas/FunctionTypeEnum'
           required:
             - type
             - name
           title: global
+        - type: 'null'
+      description: Optional function identifier that produced the classification
+    FunctionTypeEnum:
+      type: string
+      enum:
+        - llm
+        - scorer
+        - task
+        - tool
+        - custom_view
+        - preprocessor
+        - facet
+        - classifier
+        - tag
+        - null
+      default: scorer
+      description: The type of global function. Defaults to 'scorer'.
     CodeBundle:
       type: object
       properties:
@@ -503,6 +603,7 @@ components:
                 - node
                 - python
                 - browser
+                - quickjs
             version:
               type: string
           required:
@@ -590,6 +691,130 @@ components:
         - edges
       description: This feature is preliminary and unsupported.
       title: graph
+    FacetData:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - facet
+        preprocessor:
+          allOf:
+            - $ref: '#/components/schemas/NullableSavedFunctionId'
+            - description: >-
+                The preprocessor function to use for facet extraction. If not
+                provided, the project default preprocessor will be used, falling
+                back to the global 'thread' preprocessor.
+        prompt:
+          type: string
+          description: >-
+            The prompt to use for LLM extraction. The preprocessed text will be
+            provided as context.
+        model:
+          type: string
+          description: The model to use for facet extraction
+        embedding_model:
+          type: string
+          description: The embedding model to use for vectorizing facet results.
+        no_match_pattern:
+          type: string
+          description: >-
+            Regex pattern to identify outputs that do not match the facet. If
+            the output matches, the facet will be saved as 'no_match'
+      required:
+        - type
+        - prompt
+      title: facet
+    BatchedFacetData:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - batched_facet
+        preprocessor:
+          allOf:
+            - $ref: '#/components/schemas/NullableSavedFunctionId'
+            - description: >-
+                The preprocessor function to use for facet extraction. If not
+                provided, the project default preprocessor will be used, falling
+                back to the global 'thread' preprocessor.
+        facets:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: The name of the facet
+              prompt:
+                type: string
+                description: >-
+                  The prompt to use for LLM extraction. The preprocessed text
+                  will be provided as context.
+              model:
+                type: string
+                description: The model to use for facet extraction
+              embedding_model:
+                type: string
+                description: The embedding model to use for vectorizing facet results.
+              no_match_pattern:
+                type: string
+                description: >-
+                  Regex pattern to identify outputs that do not match the facet.
+                  If the output matches, the facet will be saved as 'no_match'
+            required:
+              - name
+              - prompt
+        topic_maps:
+          type: object
+          additionalProperties:
+            type: object
+            properties:
+              function_name:
+                type: string
+                description: The name of the topic map function
+              topic_map_id:
+                type: string
+                description: The id of the topic map function
+              topic_map_data:
+                $ref: '#/components/schemas/TopicMapData'
+            required:
+              - function_name
+              - topic_map_data
+          description: >-
+            Topic maps that depend on facets in this batch, keyed by source
+            facet name
+      required:
+        - type
+        - facets
+      title: batched_facet
+    TopicMapData:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - topic_map
+        source_facet:
+          type: string
+          description: The facet field name to use as input for classification
+        embedding_model:
+          type: string
+          description: The embedding model to use for embedding facet values
+        bundle_key:
+          type: string
+          description: Key of the topic map bundle in code_bundles bucket
+        distance_threshold:
+          type: number
+          description: Maximum distance to nearest centroid. If exceeded, returns no_match.
+        report:
+          $ref: '#/components/schemas/TopicMapReport'
+      required:
+        - type
+        - source_facet
+        - embedding_model
+        - bundle_key
     ChatCompletionMessageParam:
       anyOf:
         - type: object
@@ -1188,6 +1413,187 @@ components:
         - source
         - target
         - purpose
+    NullableSavedFunctionId:
+      anyOf:
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - function
+            id:
+              type: string
+            version:
+              type: string
+              description: The version of the function
+          required:
+            - type
+            - id
+          title: function
+        - type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - global
+            name:
+              type: string
+            function_type:
+              $ref: '#/components/schemas/FunctionTypeEnum'
+          required:
+            - type
+            - name
+          title: global
+        - type: 'null'
+      description: >-
+        Default preprocessor for this project. When set, functions that use
+        preprocessors will use this instead of their built-in default.
+    TopicMapReport:
+      type: object
+      properties:
+        version:
+          type: number
+          enum:
+            - 1
+        created_at:
+          type: string
+        settings:
+          type: object
+          properties:
+            algorithm:
+              type: string
+              enum:
+                - hdbscan
+                - kmeans
+                - hierarchical
+            dimension_reduction:
+              type: string
+              enum:
+                - umap
+                - pca
+                - none
+            vector_field:
+              type: string
+            embedding_model:
+              type: string
+            n_clusters:
+              type: integer
+              nullable: true
+            umap_dimensions:
+              type: integer
+              nullable: true
+            min_cluster_size:
+              type: integer
+              nullable: true
+            min_samples:
+              type: integer
+              nullable: true
+          required:
+            - algorithm
+            - dimension_reduction
+            - vector_field
+            - embedding_model
+        query_settings:
+          type: object
+          properties:
+            hierarchy_threshold:
+              type: integer
+              nullable: true
+            auto_naming:
+              type: boolean
+            skip_cache:
+              type: boolean
+            viz_mode:
+              type: string
+              enum:
+                - bar
+                - scatter
+            naming_model:
+              type: string
+        clusters:
+          type: array
+          items:
+            type: object
+            properties:
+              cluster_id:
+                type: number
+              parent_cluster_id:
+                type: number
+                nullable: true
+              topic_id:
+                type: string
+              count:
+                type: number
+              sample_texts:
+                type: array
+                items:
+                  type: string
+              samples:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    text:
+                      type: string
+                    root_span_id:
+                      type: string
+                    span_id:
+                      type: string
+                  required:
+                    - id
+                    - text
+                    - root_span_id
+                    - span_id
+              name:
+                type: string
+              description:
+                type: string
+              keywords:
+                type: array
+                items:
+                  type: string
+              centroid:
+                type: array
+                items:
+                  type: number
+              parent_id:
+                type: number
+                nullable: true
+              is_leaf:
+                type: boolean
+              depth:
+                type: number
+            required:
+              - cluster_id
+              - topic_id
+              - count
+              - sample_texts
+              - samples
+        embedding_points:
+          type: array
+          items:
+            type: object
+            properties:
+              x:
+                type: number
+              'y':
+                type: number
+              cluster:
+                type: number
+              text:
+                type: string
+            required:
+              - x
+              - 'y'
+              - cluster
+      required:
+        - version
+        - settings
+        - query_settings
+        - clusters
+      description: Saved clustering report for UI rehydration
     ChatCompletionContentPartText:
       type: object
       properties:
@@ -1430,7 +1836,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

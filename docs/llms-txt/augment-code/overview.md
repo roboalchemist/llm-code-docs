@@ -4,17 +4,7 @@
 
 # Source: https://docs.augmentcode.com/context-services/mcp/overview.md
 
-# Source: https://docs.augmentcode.com/codereview/overview.md
-
-# Source: https://docs.augmentcode.com/cli/overview.md
-
-# Source: https://docs.augmentcode.com/cli/automation/overview.md
-
-# Source: https://docs.augmentcode.com/context-services/sdk/overview.md
-
-# Source: https://docs.augmentcode.com/context-services/overview.md
-
-# Source: https://docs.augmentcode.com/context-services/mcp/overview.md
+# Source: https://docs.augmentcode.com/context-services/context-connectors/overview.md
 
 # Source: https://docs.augmentcode.com/codereview/overview.md
 
@@ -22,97 +12,105 @@
 
 # Source: https://docs.augmentcode.com/cli/automation/overview.md
 
-# Source: https://docs.augmentcode.com/codereview/overview.md
+# Source: https://docs.augmentcode.com/analytics/overview.md
 
-# Source: https://docs.augmentcode.com/cli/overview.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.augmentcode.com/cli/automation/overview.md
+# Overview of Analytics
 
-# Source: https://docs.augmentcode.com/codereview/overview.md
+> Monitor team usage patterns and analyze Augment Code adoption across your organization.
 
-# Source: https://docs.augmentcode.com/cli/overview.md
+<Note>
+  **Enterprise-Only Feature**
 
-# Source: https://docs.augmentcode.com/cli/automation/overview.md
+  Exclusive to Enterprise customers, access the Team Usage under Analytics at [app.augmentcode.com/dashboard](https://app.augmentcode.com/dashboard).
+</Note>
 
-# Source: https://docs.augmentcode.com/codereview/overview.md
+## Feature Metrics at a Glance
 
-# Source: https://docs.augmentcode.com/cli/overview.md
+<CardGroup cols={1}>
+  <Card title="Monthly Active Users" icon="users">
+    Number of unique users in the current calendar month
+  </Card>
 
-# Source: https://docs.augmentcode.com/cli/automation/overview.md
+  <Card title="Lines of Code All Sources" icon="code">
+    Total lines of code generated from all sources during the selected period
+  </Card>
 
-# Source: https://docs.augmentcode.com/cli/overview.md
+  <Card title="User Messages & Tool Calls" icon="messages">
+    Total number of user messages and tool calls during the selected period
+  </Card>
+</CardGroup>
 
-# Source: https://docs.augmentcode.com/cli/automation/overview.md
+## Understand adoption inside of your organization
 
-# Using Auggie with Automation
+Review detailed per-user metrics to understand power-user usage patterns or inactivity inside your organization.
 
-> Auggie was designed to not just be a powerful agent to write code, but to automate all the tasks that are needed to build software at scale.
+### Available Columns
 
-## About automation
+| Column                                 | Description                                                                |
+| -------------------------------------- | -------------------------------------------------------------------------- |
+| **User**                               | Email or service account name (with visual indicator for service accounts) |
+| **First Seen**                         | Date user first appeared in the system                                     |
+| **Last Seen**                          | Date of user's most recent activity                                        |
+| **Active Days**                        | Number of days user was active in the selected period                      |
+| **Completions**                        | Total code completions generated                                           |
+| **Accepted Completions**               | Number of completions accepted by user                                     |
+| **Accept Rate**                        | Percentage of completions accepted                                         |
+| **Chat Messages**                      | Total chat messages sent                                                   |
+| **Agent Messages**                     | Messages from agent interactions                                           |
+| **Remote Agent Messages**              | Messages from remote agent sessions                                        |
+| **Interactive CLI Agent Messages**     | Interactive CLI agent interactions                                         |
+| **Non-Interactive CLI Agent Messages** | Non-interactive CLI agent interactions                                     |
+| **Tool Uses**                          | Total number of tool invocations                                           |
+| **Total Modified Lines of Code**       | All lines of code modified                                                 |
+| **Completion Lines of Code**           | Lines from completions                                                     |
+| **Instruction Lines of Code**          | Lines from instructions                                                    |
+| **Agent Lines of Code**                | Lines from agent edits                                                     |
+| **Remote Agent Lines of Code**         | Lines from remote agent                                                    |
+| **CLI Agent Lines of Code**            | Lines from CLI agent                                                       |
 
-Auggie was purpose built to integrate into your software development stack. From using Auggie in your local development workflows to automatically running Auggie in your CI/CD pipelines, Auggie can help you build better software faster.
+## Data Export
 
-### Example use cases
+Export your usage data for custom analysis, reporting, or integration with other tools:
 
-* **Code reviews**: Review code changes and provide feedback.
-* **Issue triage**: Triage incoming issues and route them to the appropriate team or individual.
-* **Automate on-call**: Respond to incoming alerts and create an assessment plan.
-* **Exception management**: Analyze incoming exceptions and create tickets.
+* **CSV Download** - Export all user statistics to a CSV file
+* **Filename Format** - `user-feature-stats-YYYY-MM-DD-to-YYYY-MM-DD.csv`
+* **Complete Data** - Includes all columns from the user statistics table
 
-## Integrating with your workflows
+## Mobile Experience
 
-In order to use Auggie in your systems, like a CI/CD pipeline, you'll need to install Auggie CLI, provide a session token, and write an instruction that will be used alongside any data from your system you want to include.
+The dashboard is fully optimized for mobile devices with:
 
-### Installation
+* Card-based layout for easy viewing on smaller screens
+* Mobile sort selector dropdown for choosing sort column and direction
+* Responsive pagination controls adapted for touch interfaces
+* All key metrics and data accessible on any device
 
-Auggie can be [installed](/cli/setup-auggie/install-auggie-cli) directly from npm anywhere you can run Node 22 or later including VMs, serverless functions, and containers. You will also need to install any dependencies for defined MCP servers in those environments.
+## Getting Help
 
-```sh  theme={null}
-npm install -g @augmentcode/auggie
-```
+If you have questions about the Enterprise Dashboard or need assistance interpreting your usage data:
 
-### Authentication
+<CardGroup cols={2}>
+  <Card title="Contact Sales" icon="briefcase">
+    Reach out to your sales representative for strategic guidance
+  </Card>
 
-Session tokens are associated with the user that created it, and Auggie will run with integration configurations from that user. See [Authentication](/cli/setup-auggie/authentication) for full details. You can override the user's GitHub configuration by passing `--github-api-token <token>`.
+  <Card title="Contact Support" icon="life-ring" href="https://support.augmentcode.com">
+    Get technical support at support.augmentcode.com
+  </Card>
+</CardGroup>
 
-```sh  theme={null}
-# First, login to Augment with the CLI
-auggie login
+## Related Resources
 
-# Next, output your token
-auggie tokens print
+<CardGroup cols={2}>
+  <Card title="Analytics API" icon="code" href="/analytics/analytics-api">
+    Programmatic access to usage metrics via REST API
+  </Card>
 
-# Then, pass your token to auggie
-AUGMENT_SESSION_AUTH='<token>' auggie --print "Summarize the build failure"
-```
-
-### Scripts and pipes
-
-Auggie runs as a subprocess, so it can be used in any shell script. It can be used just like any command-line tool that follows the Unix philosophy. You can pipe data into Auggie and then pipe the response to another command. Data passed into Auggie through stdin will be used as context in addition to the instruction.
-
-```sh  theme={null}
-# Pipe data through stdin
-cat build.log | auggie --print "Summarize the failure and open a Linear ticket"
-
-# Provide input from a file
-auggie --compact --instruction /path/to/instruction.md < build.log
-```
-
-## GitHub Actions
-
-GitHub Actions makes it easy to connect Auggie to other parts of your software development pipeline, from linting, testing, build, and deploy. We've built a [simple wrapper for Auggie](https://github.com/augmentcode/augment-agent) that enables you to  integrate with GitHub Action workflows and build custom tooling around Auggie.
-
-Follow the instructions to [configure Augment Agent](https://github.com/augmentcode/augment-agent/blob/main/README.md) in GitHub Actions and explore the [example-workflows](https://github.com/augmentcode/augment-agent/tree/main/example-workflows) directory to get started.
-
-### Ready to use workflows
-
-Get started using Auggie in GitHub Actions immediately by following the instructions for setup and deploy in one of the following workflows, or use the `/github-workflow` wizard in Auggie to have the workflows generated for you.
-
-* [PR Description](https://github.com/augmentcode/describe-pr): This action automatically analyzes your PR changes and generates comprehensive, informative descriptions.
-* [PR Review](https://github.com/augmentcode/review-pr): This action automatically analyzes your PR changes and generates comprehensive, informative reviews
-
-Need even more help building GitHub Actions? May we suggest asking Auggie.
-
-```sh  theme={null}
-auggie "Help me build a GitHub Action to..."
-```
+  <Card title="API Reference" icon="book" href="/analytics/api-reference">
+    Detailed API endpoint documentation
+  </Card>
+</CardGroup>

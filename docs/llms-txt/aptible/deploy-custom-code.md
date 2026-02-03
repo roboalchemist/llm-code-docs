@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/getting-started/deploy-custom-code.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Deploy your custom code
 
 > Learn how to deploy your custom code on Aptible

@@ -40,5 +40,5 @@ When feeding reviews, there is a custom [document processor](../../applications/
 
 - [Ranking functions](../../reference/schemas/schemas.html#function-rank)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

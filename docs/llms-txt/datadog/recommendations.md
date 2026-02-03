@@ -1,3 +1,5 @@
+# Source: https://docs.datadoghq.com/database_monitoring/recommendations.md
+
 # Source: https://docs.datadoghq.com/cloud_cost_management/recommendations.md
 
 # Source: https://docs.datadoghq.com/tracing/recommendations.md
@@ -8,7 +10,6 @@ description: >-
   Learn how to optimize your application's performance and reliability with APM
   Recommendations.
 breadcrumbs: Docs > APM > APM Recommendations
-source_url: https://docs.datadoghq.com/recommendations/index.html
 ---
 
 # APM Recommendations

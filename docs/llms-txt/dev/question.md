@@ -1,260 +1,131 @@
 # Source: https://dev.writer.com/api-reference/kg-api/question.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Question
 
 > Ask a question to specified Knowledge Graphs.
 
+
+
 ## OpenAPI
 
 ````yaml post /v1/graphs/question
+openapi: 3.0.3
+info:
+  title: API
+  version: '1.0'
+servers:
+  - url: https://api.writer.com
+security:
+  - bearerAuth: []
 paths:
-  path: /v1/graphs/question
-  method: post
-  servers:
-    - url: https://api.writer.com
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: >-
-                Bearer authentication header of the form `Bearer <token>`, where
-                `<token>` is your [Writer API
-                key](https://dev.writer.com/api-reference/api-keys).
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              graph_ids:
-                allOf:
-                  - type: array
-                    items:
-                      type: string
-                      format: uuid
-                    minItems: 1
-                    description: The unique identifiers of the Knowledge Graphs to query.
-              subqueries:
-                allOf:
-                  - type: boolean
-                    description: Specify whether to include subqueries.
-                    default: false
-              question:
-                allOf:
-                  - type: string
-                    description: The question to answer using the Knowledge Graph.
-              stream:
-                allOf:
-                  - type: boolean
-                    description: >-
-                      Determines whether the model's output should be streamed.
-                      If true, the output is generated and sent incrementally,
-                      which can be useful for real-time applications.
-                    default: false
-              query_config:
-                allOf:
-                  - $ref: '#/components/schemas/graph_query_config'
-                    description: >-
-                      Configuration options for Knowledge Graph queries,
-                      including search parameters and citation settings.
-            required: true
-            title: question_request
-            refIdentifier: '#/components/schemas/question_request'
-            requiredProperties:
-              - graph_ids
-              - question
-        examples:
-          example:
-            value:
-              graph_ids:
-                - 3c90c3cc-0d44-4b50-8888-8dd25736052a
-              subqueries: false
-              question: <string>
-              stream: false
-              query_config:
-                max_subquestions: 6
-                search_weight: 50
-                grounding_level: 0
-                max_snippets: 30
-                max_tokens: 4000
-                keyword_threshold: 0.7
-                semantic_threshold: 0.7
-                inline_citations: false
-    codeSamples:
-      - lang: cURL
-        source: >-
-          curl --location --request POST
-          https://api.writer.com/v1/graphs/question \
-           --header "Authorization: Bearer <token>" \
-           --header "Content-Type: application/json" \
-          --data-raw
-          '{"graph_ids":["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],"question":"What
-          is the generic name for the drug Bavencio?"}'
-      - lang: JavaScript
-        source: |-
-          import Writer from 'writer-sdk';
-
-          const client = new Writer({
-            apiKey: process.env['WRITER_API_KEY'], // This is the default and can be omitted
-          });
-
-          async function main() {
-            const question = await client.graphs.question({
-              graph_ids: ['182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e'],
-              question: 'What is the generic name for the drug Bavencio?'
-          });
-
-            console.log(question.answer);
-          }
-
-          main();
-      - lang: Python
-        source: |-
-          import os
-          from writerai import Writer
-
-          client = Writer(
-              # This is the default and can be omitted
-              api_key=os.environ.get("WRITER_API_KEY"),
-          )
-          question = client.graphs.question(
-              graph_ids=["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
-              question="What is the generic name for the drug Bavencio?"
-          )
-          print(question.answer)
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              question:
-                allOf:
-                  - &ref_1
-                    type: string
-                    description: The question that was asked.
-              answer:
-                allOf:
-                  - &ref_2
-                    type: string
-                    description: The answer to the question.
-              sources:
-                allOf:
-                  - &ref_3
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/source'
-              subqueries:
-                allOf:
-                  - &ref_4
-                    type: array
-                    items:
-                      $ref: '#/components/schemas/sub_query'
-              references:
-                allOf:
-                  - &ref_5
-                    $ref: '#/components/schemas/references'
-            title: question_response
-            refIdentifier: '#/components/schemas/question_response'
-            requiredProperties: &ref_0
-              - question
-              - answer
-              - sources
-        examples:
-          example:
-            value:
-              question: What is the generic name for the drug Bavencio?
-              answer: avelumab
-              sources:
-                - file_id: '1234'
-                  snippet: Bavencio is the brand name for avelumab.
-        description: ''
-      text/event-stream:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - $ref: '#/components/schemas/question_response'
-            refIdentifier: '#/components/schemas/question_response_chunk'
-            requiredProperties:
-              - data
-        examples:
-          example:
-            value:
-              data:
-                - question: What is the generic name for the drug Bavencio?
-                  answer: avelumab
-                  sources:
-                    - file_id: '1234'
-                      snippet: Bavencio is the brand name for avelumab.
-        description: ''
-  deprecated: false
-  type: path
+  /v1/graphs/question:
+    post:
+      tags:
+        - KG API
+      summary: Question
+      description: Ask a question to specified Knowledge Graphs.
+      operationId: question
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/question_request'
+        required: true
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/question_response'
+              example:
+                question: What is the generic name for the drug Bavencio?
+                answer: avelumab
+                sources:
+                  - file_id: '1234'
+                    snippet: Bavencio is the brand name for avelumab.
+            text/event-stream:
+              schema:
+                $ref: '#/components/schemas/question_response_chunk'
+              example:
+                data:
+                  - question: What is the generic name for the drug Bavencio?
+                    answer: avelumab
+                    sources:
+                      - file_id: '1234'
+                        snippet: Bavencio is the brand name for avelumab.
+      security:
+        - bearerAuth: []
 components:
   schemas:
+    question_request:
+      title: question_request
+      required:
+        - graph_ids
+        - question
+      type: object
+      properties:
+        graph_ids:
+          type: array
+          items:
+            type: string
+            format: uuid
+          minItems: 1
+          description: The unique identifiers of the Knowledge Graphs to query.
+        subqueries:
+          type: boolean
+          description: Specify whether to include subqueries.
+          default: false
+        question:
+          type: string
+          description: The question to answer using the Knowledge Graph.
+        stream:
+          type: boolean
+          description: >-
+            Determines whether the model's output should be streamed. If true,
+            the output is generated and sent incrementally, which can be useful
+            for real-time applications.
+          default: false
+        query_config:
+          $ref: '#/components/schemas/graph_query_config'
+          description: >-
+            Configuration options for Knowledge Graph queries, including search
+            parameters and citation settings.
     question_response:
       title: question_response
-      required: *ref_0
-      type: object
-      properties:
-        question: *ref_1
-        answer: *ref_2
-        sources: *ref_3
-        subqueries: *ref_4
-        references: *ref_5
-    source:
-      title: source
-      description: >-
-        A source snippet containing text and fileId from Knowledge Graph
-        content.
       required:
-        - file_id
-        - snippet
-      type: object
-      nullable: true
-      properties:
-        file_id:
-          type: string
-          description: The unique identifier of the file in your Writer account.
-        snippet:
-          type: string
-          description: >-
-            The exact text snippet from the source document that was used to
-            support the response.
-    sub_query:
-      title: sub_query
-      description: >-
-        A sub-question generated to break down complex queries into more
-        manageable parts, along with its answer and supporting sources.
-      required:
-        - query
+        - question
         - answer
         - sources
       type: object
-      nullable: true
       properties:
-        query:
+        question:
           type: string
-          description: The subquery that was generated to help answer the main question.
+          description: The question that was asked.
         answer:
           type: string
-          description: The answer to the subquery based on Knowledge Graph content.
+          description: The answer to the question.
         sources:
           type: array
-          description: Array of source snippets that were used to answer this subquery.
           items:
             $ref: '#/components/schemas/source'
+        subqueries:
+          type: array
+          items:
+            $ref: '#/components/schemas/sub_query'
+        references:
+          $ref: '#/components/schemas/references'
+    question_response_chunk:
+      required:
+        - data
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/question_response'
     graph_query_config:
       title: graph_query_config
       description: Configuration options for Knowledge Graph queries.
@@ -349,6 +220,48 @@ components:
           description: >-
             Whether to include inline citations in the response, showing which
             Knowledge Graph sources were used. Default: false.
+    source:
+      title: source
+      description: >-
+        A source snippet containing text and fileId from Knowledge Graph
+        content.
+      required:
+        - file_id
+        - snippet
+      type: object
+      nullable: true
+      properties:
+        file_id:
+          type: string
+          description: The unique identifier of the file in your Writer account.
+        snippet:
+          type: string
+          description: >-
+            The exact text snippet from the source document that was used to
+            support the response.
+    sub_query:
+      title: sub_query
+      description: >-
+        A sub-question generated to break down complex queries into more
+        manageable parts, along with its answer and supporting sources.
+      required:
+        - query
+        - answer
+        - sources
+      type: object
+      nullable: true
+      properties:
+        query:
+          type: string
+          description: The subquery that was generated to help answer the main question.
+        answer:
+          type: string
+          description: The answer to the subquery based on Knowledge Graph content.
+        sources:
+          type: array
+          description: Array of source snippets that were used to answer this subquery.
+          items:
+            $ref: '#/components/schemas/source'
     references:
       title: references
       description: >-
@@ -434,5 +347,14 @@ components:
           description: >-
             Internal score used during the retrieval process for ranking and
             selecting relevant snippets.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: >-
+        Bearer authentication header of the form `Bearer <token>`, where
+        `<token>` is your [Writer API
+        key](https://dev.writer.com/api-reference/api-keys).
 
 ````

@@ -2,10 +2,7 @@
 
 # Delete Product
 
-```
-DELETE 
-/v1/products/:productId
-```
+Copy page
 
 This endpoint removes a Product identified by the `productId` parameter.
 

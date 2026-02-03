@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zrevrank.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zrevrank.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zrevrank.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zrevrank.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zrevrank.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zrevrank.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zrevrank.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zrevrank.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/zset/zrevrank.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/zset/zrevrank.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # ZREVRANK
 
@@ -26,22 +12,24 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key to get.
 </ParamField>
 
-<ParamField body="member" type="TMember" required>
+<ParamField body="member" type="str" required>
   The member to get the reverse rank of.
 </ParamField>
 
 ## Response
 
-<ResponseField type="integer" required>
+<ResponseField type="int" required>
   The reverse rank of the member.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  const rank = await redis.rank("key", "member");
+  ```py Example theme={"system"}
+  redis.zadd("myset", {"a": 1, "b": 2, "c": 3})
+
+  assert redis.zrevrank("myset", "a") == 2
   ```
 </RequestExample>

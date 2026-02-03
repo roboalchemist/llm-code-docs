@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/llamaApi/
+
 # Meta Llama API
 
 The Llama API provider enables you to use Meta's hosted Llama models through their official API service. This includes access to the latest Llama 4 multimodal models and Llama 3.3 text models, as well as accelerated variants from partners like Cerebras and Groq.

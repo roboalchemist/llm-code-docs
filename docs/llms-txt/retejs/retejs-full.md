@@ -77,6 +77,18 @@ If TypeScript is your preferred choice, make sure you have TypeScript version 4.
 - [Codesandbox](https://codesandbox.io/s/rete-js-v2-yrzxe5){rel="nofollow"}
 - [Codepen](https://codepen.io/Ni55aN/pen/rNZKejd){rel="nofollow"}
 
+## AI Assistance
+
+Get intelligent, context-aware help in your AI-powered IDE. Use your IDE's agent or command execution feature (available in Cursor, GitHub Copilot Chat, Windsurf, and similar tools) and simply ask your AI assistant:
+
+```prompt
+Run npx rete-kit ai for [your intention]
+```
+
+Replace `[your intention]` with your actual goal, such as "learning Rete.js", "creating a new app", or "adding to my existing project". The AI agent will automatically determine the right options based on your intent. This generates IDE-specific instructions that help AI assistants understand Rete.js patterns and provide relevant guidance.
+
+For more details, see the [AI Assistance](https://retejs.org/docs/development/ai-assistance) documentation.
+
 ## Creating an application using devkit
 
 Use [Rete Kit](https://retejs.org/docs/development/rete-kit) to quickly set up a Rete.js application. It lets you select a stack (**React.js**, **Vue.js**, **Angular**, **Svelte** or **Lit**) and the set of features.
@@ -115,76 +127,6 @@ ReteReactPlugin
 ```
 
 Furthermore, you can integrate them on platforms like [Codepen](https://codepen.io){rel="nofollow"} using [esm.sh](https://esm.sh){rel="nofollow"}.
-
-
-# LLMs.txt
-
-Enhance your visual programming experience with AI tools that understand Rete.js node editor patterns, dataflow concepts, and plugin architecture.
-
-## What is LLMs.txt?
-
-Building node editors and visual programming interfaces involves unique patterns and concepts that differ from traditional application development. Our AI integration through [LLMs.txt](https://llmstxt.org/){rel="nofollow"} helps coding assistants understand:
-
-- **Node-based architecture** and connection patterns
-- **Dataflow vs Control flow** processing paradigms
-- **Plugin composition** for extensible editors
-- **Multi-framework rendering** (React, Vue, Angular, Svelte)
-- **Graph processing** and manipulation techniques
-
-This enables AI tools to provide contextually accurate suggestions for your visual programming projects.
-
-## Resources
-
-Our documentation is optimized for AI consumption through specialized endpoints that understand visual programming workflows:
-
-- **[llms.txt](https://retejs.org/llms.txt){rel="nofollow"}** - Essential node editor concepts, core APIs, and quick reference patterns
-- **[llms-full.txt](https://retejs.org/llms-full.txt){rel="nofollow"}** - Complete visual programming knowledge base including advanced patterns, plugin architecture, and processing engines
-
-These endpoints are continuously updated to reflect the latest in node editor development practices and framework capabilities.
-
-## How to Use
-
-You can integrate Rete.js documentation with any AI coding assistant by providing the LLMs.txt URLs as context. This gives the AI comprehensive knowledge about node editor development patterns and best practices.
-
-### Basic integration steps
-
-1. Copy the LLMs.txt URL: `https://retejs.org/llms.txt` (or `llms-full.txt` for complete docs)
-2. Reference it in your AI tool's context or conversation
-3. Ask questions about Rete.js development, node editor patterns, or get code suggestions
-
-### VS Code GitHub Copilot
-
-Add the LLMs.txt URL to your workspace for enhanced context-aware suggestions:
-
-1. Create a `.copilot-instructions.md` file in your project root
-2. Add the reference:
-   ```markdown
-   # Copilot Instructions
-
-   For Rete.js development, reference the documentation at:
-   https://retejs.org/llms-full.txt
-
-   Focus on node editor patterns, dataflow programming, and plugin architecture.
-   ```
-3. Copilot will now understand Rete.js concepts when providing code completions and suggestions
-
-### Google Gemini Chat
-
-Reference the documentation directly in your conversation:
-
-```text
-I'm building a node editor with Rete.js. Please review the documentation at https://retejs.org/llms-full.txt and help me create a custom node that processes image data through multiple transformation steps.
-```
-
-### Model Context Protocol (MCP)
-
-MCP-compatible tools like Context7 automatically discover and fetch the Rete.js documentation as context to AI models:
-
-1. The complete Rete.js documentation is automatically loaded as context for AI conversations
-2. AI models have persistent access to node editor patterns, plugin architecture, and best practices
-3. No manual setup required - the context is always available
-
-This approach ensures every AI interaction has comprehensive Rete.js knowledge without any configuration.
 
 
 # Plugin system
@@ -644,7 +586,7 @@ By default, you can use the classic preset that has built-in components for:
 - some controls (numeric or text input fields)
 
 ```ts
-import { AngularPlugin, AngularArea2D, Presets as AngularPresets } from 'rete-angular-plugin/20'
+import { AngularPlugin, AngularArea2D, Presets as AngularPresets } from 'rete-angular-plugin/21'
 
 const angular = new AngularPlugin<Schemes, AngularArea2D<Schemes>>({ injector })
 
@@ -1469,9 +1411,9 @@ This guide is an extension of the [Basic](https://retejs.org/docs/guides/basic) 
 
 This plugin offers a classic preset that comes with visual components for nodes, connections, sockets, and input controls.
 
-Compatible with Angular 12, 13, 14, 15, 16, 17, 18, 19 and 20
+Compatible with Angular 12, 13, 14, 15, 16, 17, 18, 19, 20 and 21
 
-This plugin is **exclusively** designed for Angular applications as it requires an `Injector` instance, unlike other render plugins. Additionally, the plugin supports Standalone mode in integration starting from Angular 19, with enhanced features in Angular 20.
+This plugin is **exclusively** designed for Angular applications as it requires an `Injector` instance, unlike other render plugins. Additionally, the plugin supports Standalone mode in integration starting from Angular 19, with enhanced features in Angular 20 and 21.
 
 ## Install dependencies
 
@@ -1479,20 +1421,20 @@ This plugin is **exclusively** designed for Angular applications as it requires 
 ::
 
 ```bash
-npm i rete-angular-plugin rete-render-utils @angular/elements@20
+npm i rete-angular-plugin rete-render-utils @angular/elements@21
 ```
 
 **Please note**: this plugin relies on `@angular/elements`, which is based on Web Components. However, Web Components have a limitation - they [cannot be unregistered](https://github.com/WICG/webcomponents/issues/754){rel="nofollow"}. This limitation may result in the reuse of the initial Angular component instead of creating a new one when a node with the same identifier is added, potentially leading to the use of outdated data within a custom node, such as data from an injected service.
 
 ## Plugin connection
 
-This is an example of integration in **Angular 20**, but you can specify a different version (12, 13, 14, 15, 16, 17, 18, 19 or 20) in the import that matches the version of your application.
+This is an example of integration in **Angular 21**, but you can specify a different version (12, 13, 14, 15, 16, 17, 18, 19, 20 or 21) in the import that matches the version of your application.
 
 These versions have been compiled with Ivy.
 
 ```ts
 import { AreaPlugin } from "rete-area-plugin";
-import { AngularPlugin, Presets, AngularArea2D } from "rete-angular-plugin/20";
+import { AngularPlugin, Presets, AngularArea2D } from "rete-angular-plugin/21";
 
 type AreaExtra = AngularArea2D<Schemes>;
 
@@ -1534,7 +1476,7 @@ node.addControl('my-control', new ClassicPreset.InputControl("number", {
 If you want to add different types of controls, you can return the necessary component in the `control` handler of `customize` property.
 
 ```tsx
-import { ControlComponent } from "rete-angular-plugin/20";
+import { ControlComponent } from "rete-angular-plugin/21";
 import { MyButtonComponent } from './my-button.component'
 
 render.addPreset(Presets.classic.setup({
@@ -1602,7 +1544,7 @@ The implementation of `CustomNodeComponent` is available in the **custom-node.co
 You can add an extra condition to apply this component only to specific nodes.
 
 ```ts
-import { NodeComponent } from "rete-angular-plugin/20";
+import { NodeComponent } from "rete-angular-plugin/21";
 
 render.addPreset(Presets.classic.setup({
   customize: {
@@ -1664,21 +1606,6 @@ In order to customize the context menu for this rendering plugin, one can overri
     background: grey;
   }
 }
-```
-
-## Angular 20 Features
-
-Angular 20 brings several improvements that enhance the integration with Rete.js:
-
-- **Enhanced Standalone Components**: Improved support for standalone components makes integration more streamlined
-- **Better Tree-shaking**: Optimized bundle sizes for applications using rete-angular-plugin
-- **Improved Type Safety**: Enhanced TypeScript support for better development experience
-- **Performance Optimizations**: Better change detection and rendering performance
-
-To take advantage of these features, make sure to use the version-specific import:
-
-```ts
-import { AngularPlugin, Presets, AngularArea2D } from "rete-angular-plugin/20";
 ```
 
 ## Other presets
@@ -3767,7 +3694,7 @@ const contextMenu = new ContextMenuPlugin<Schemes>({
 
 where `context` is `'root'`, node instance or connection instance
 
-## Open the menu programmatically #{trigger-context-menu}
+## Open the menu programmatically
 
 To manually open the context menu, you need to create a `PointerEvent` with the required coordinates and call the `area.emit()` method:
 
@@ -5045,6 +4972,12 @@ This tool aims to enhance efficiency during plugin or project development using 
 
 Check out the [Rete Kit](https://retejs.org/docs/development/rete-kit) article for details.
 
+## AI Assistance
+
+Enhance your Rete.js development workflow with AI-powered coding assistants. Get context-aware help for learning, creating applications, or developing plugins.
+
+Check out the [AI Assistance](https://retejs.org/docs/development/ai-assistance) article for details.
+
 ## Style guide
 
 ESLint is used to ensure code style consistency across all packages. The configuration is provided by [Rete CLI](https://retejs.org/#rete-cli) and comprises rules that are deemed more suitable by the maintainers. If necessary, you can customize the configuration by adding required rules
@@ -5204,6 +5137,7 @@ It offers the following features:
 - **Plugin creating**: use this feature to create a basic plugin structure instantly, without the need for setting up a build system, linter, or test runner
 - **Application creation**: choose the framework to build your application, specify the version and desired features and get a ready-to-use application to jumpstart your development process
 - **Batch build**: select copies of repositories containing the source code of the plugins being developed and this tool will start building them in a watch mode, as well as synchronizing their dependencies
+- **AI assistance**: generate context-aware instructions for AI-powered code editors to get intelligent help when learning or developing with Rete.js. See the [AI Assistance](https://retejs.org/docs/development/ai-assistance/rete-kit-ai) documentation for details
 
 ## Install
 
@@ -5277,6 +5211,288 @@ rete-kit build --folders my-plugin-1,my-plugin-1,my-project
 ```
 
 Please note that to use the hot reload feature to its fullest, you will need to disable the cache for the relevant dependencies. Otherwise, any changes made will not be applied on the fly. To accomplish this in Webpack, you can specify `snapshot.managedPaths`. If the project still doesn't update, it may be necessary to manually clear the cache of compiled modules.
+
+## AI assistance
+
+Generate context-aware instructions for AI-powered code editors (Cursor, GitHub Copilot, Windsurf, etc.) to get intelligent help when learning or developing with Rete.js. Use your IDE's agent or command execution feature and simply ask your AI assistant:
+
+```prompt
+Run npx rete-kit ai for [your intention]
+```
+
+Replace `[your intention]` with your actual goal, such as "learning Rete.js", "creating a new app", or "adding to my existing project". The AI agent will automatically determine the right options based on your intent.
+
+See the [AI Assistance](https://retejs.org/docs/development/ai-assistance/rete-kit-ai) documentation for complete details.
+
+## Related Documentation
+
+- [AI Assistance](https://retejs.org/docs/development/ai-assistance) - Generate context-aware instructions for AI-powered code editors
+- [Rete CLI](https://retejs.org/docs/development/rete-cli) - Build tool for plugin development
+
+
+# AI Assistance
+
+Enhance your Rete.js development workflow with AI-powered coding assistants. This section covers different approaches to integrate AI tools with Rete.js documentation and development patterns.
+
+## Quick Start
+
+The fastest way to get AI assistance for Rete.js development is to use your AI-powered IDE's agent or command execution feature (available in Cursor, GitHub Copilot Chat, Windsurf, and similar tools). Simply ask your AI assistant:
+
+```prompt
+Run npx rete-kit ai for [your intention]
+```
+
+Replace `[your intention]` with your actual goal, such as "learning Rete.js", "creating a new app", or "adding to my existing project". The AI agent will automatically determine the right tool and context options based on your description. This generates context-aware instructions for your IDE's AI assistant.
+
+For manual usage or more details, see the [Rete Kit AI](https://retejs.org/docs/development/ai-assistance/rete-kit-ai) documentation.
+
+## Available Options
+
+### Rete Kit AI
+
+**Best for:** Automated, context-aware IDE integration
+
+The `npx rete-kit ai` command (or `rete-kit ai` if installed globally) generates IDE-specific instruction files that provide contextually appropriate help based on your current situation:
+
+- **Learning Rete.js** → `onboard` context
+- **Creating new apps** → `boot` context
+- **Working with existing code** → `dev` context
+- **Plugin development** → `plugin` context
+
+Check out the [Rete Kit AI](https://retejs.org/docs/development/ai-assistance/rete-kit-ai) guide for complete documentation.
+
+### LLMs.txt Integration
+
+**Best for:** Manual integration with any AI tool
+
+LLMs.txt provides Rete.js documentation in a format optimized for AI consumption. You can reference these URLs in your AI conversations or configuration files:
+
+- **[llms.txt](https://retejs.org/llms.txt){rel="nofollow"}** - Essential concepts and quick reference
+- **[llms-full.txt](https://retejs.org/llms-full.txt){rel="nofollow"}** - Complete documentation
+
+See the [LLMs.txt](https://retejs.org/docs/development/ai-assistance/llms) guide for integration examples.
+
+## Which Should I Use?
+
+- **Use Rete Kit AI** if you want automated setup with context-aware instructions for your IDE
+- **Use LLMs.txt** if you prefer manual integration or need to reference documentation in AI conversations
+
+Both approaches can be used together for comprehensive AI assistance.
+
+## Related Documentation
+
+- [Rete Kit](https://retejs.org/docs/development/rete-kit) - Other Rete Kit features
+- [Getting Started](https://retejs.org/docs/getting-started) - Quick start with AI assistance
+
+
+# LLMs.txt
+
+Enhance your visual programming experience with AI tools that understand Rete.js node editor patterns, dataflow concepts, and plugin architecture.
+
+## What is LLMs.txt?
+
+Building node editors and visual programming interfaces involves unique patterns and concepts that differ from traditional application development. Our AI integration through [LLMs.txt](https://llmstxt.org/){rel="nofollow"} helps coding assistants understand:
+
+- **Node-based architecture** and connection patterns
+- **Dataflow vs Control flow** processing paradigms
+- **Plugin composition** for extensible editors
+- **Multi-framework rendering** (React, Vue, Angular, Svelte)
+- **Graph processing** and manipulation techniques
+
+This enables AI tools to provide contextually accurate suggestions for your visual programming projects.
+
+## Resources
+
+Our documentation is optimized for AI consumption through specialized endpoints that understand visual programming workflows:
+
+- **[llms.txt](https://retejs.org/llms.txt){rel="nofollow"}** - Essential node editor concepts, core APIs, and quick reference patterns
+- **[llms-full.txt](https://retejs.org/llms-full.txt){rel="nofollow"}** - Complete visual programming knowledge base including advanced patterns, plugin architecture, and processing engines
+
+These endpoints are continuously updated to reflect the latest in node editor development practices and framework capabilities.
+
+## How to Use
+
+You can integrate Rete.js documentation with any AI coding assistant by providing the LLMs.txt URLs as context. This gives the AI comprehensive knowledge about node editor development patterns and best practices.
+
+::alert{type="info"}
+[Rete Kit AI](https://retejs.org/docs/development/ai-assistance/rete-kit-ai) automates this integration process by generating IDE-specific instruction files that reference LLMs.txt. If you're using Cursor, GitHub Copilot, Windsurf, or similar tools, consider using `npx rete-kit ai` for context-aware, automated setup.
+::
+
+### Automated Setup with Rete Kit AI
+
+For automated IDE integration, use Rete Kit AI which generates context-aware instructions that reference LLMs.txt:
+
+```bash
+npx rete-kit ai --tool cursor --context onboard
+```
+
+This creates IDE-specific instruction files that automatically include references to LLMs.txt endpoints. See the [Rete Kit AI](https://retejs.org/docs/development/ai-assistance/rete-kit-ai) documentation for details.
+
+### Manual Integration
+
+You can manually integrate LLMs.txt URLs with any AI tool by referencing them in your conversations or configuration files. This approach gives you full control over how and when the documentation is used.
+
+#### Basic integration steps
+
+1. Copy the LLMs.txt URL: `https://retejs.org/llms.txt` (or `llms-full.txt` for complete docs)
+2. Reference it in your AI tool's context or conversation
+3. Ask questions about Rete.js development, node editor patterns, or get code suggestions
+
+### VS Code GitHub Copilot
+
+Add the LLMs.txt URL to your workspace for enhanced context-aware suggestions:
+
+1. Create a `.copilot-instructions.md` file in your project root
+2. Add the reference:
+   ```markdown
+   # Copilot Instructions
+
+   For Rete.js development, reference the documentation at:
+   https://retejs.org/llms-full.txt
+
+   Focus on node editor patterns, dataflow programming, and plugin architecture.
+   ```
+3. Copilot will now understand Rete.js concepts when providing code completions and suggestions
+
+### Google Gemini Chat
+
+Reference the documentation directly in your conversation:
+
+```prompt
+I'm building a node editor with Rete.js. Please review the documentation at https://retejs.org/llms-full.txt and help me create a custom node that processes image data through multiple transformation steps.
+```
+
+### Model Context Protocol (MCP)
+
+MCP-compatible tools (such as Context7, Claude Desktop, and other MCP-enabled applications) can fetch the Rete.js documentation as context for AI models:
+
+1. Configure your MCP tool to use the Rete.js LLMs.txt endpoints as resources
+2. Once configured, the complete Rete.js documentation is available as context for AI conversations
+3. AI models have persistent access to node editor patterns, plugin architecture, and best practices
+
+To set up MCP integration, add the Rete.js LLMs.txt URLs (`https://retejs.org/llms.txt` or `https://retejs.org/llms-full.txt`) as resources in your MCP-compatible tool's configuration. Check your MCP tool's documentation for specific setup instructions.
+
+## Related Documentation
+
+- [Rete Kit AI](https://retejs.org/docs/development/ai-assistance/rete-kit-ai) - Automated IDE integration
+- [AI Assistance Overview](https://retejs.org/docs/development/ai-assistance) - All AI integration options
+
+
+# Rete Kit AI
+
+::alert{type="warning"}
+The AI command feature is currently **experimental**. The API and behavior may change in future versions. We welcome feedback and suggestions for improvement. Please share your experience on [GitHub Issues](https://github.com/retejs/rete-kit/issues){rel="nofollow"}.
+::
+
+Rete Kit includes an AI command that generates context-aware instructions for AI-powered code editors (Cursor, GitHub Copilot, Windsurf, etc.). These instructions help AI assistants understand your specific situation and provide more accurate, relevant help when learning or developing with Rete.js.
+
+## Quick Start
+
+The fastest way to get started is to use your IDE's agent or command execution feature:
+
+```prompt
+Run npx rete-kit ai for [your intention]
+```
+
+Replace `[your intention]` with your actual goal (e.g., "learning Rete.js", "creating a new app", "adding to my existing project"). The AI agent will automatically determine the right tool and context options.
+
+Or specify options manually:
+
+```bash
+npx rete-kit ai --tool <tool> --context <context> [options]
+```
+
+**Options:**
+
+- `--tool, -t <tool>` - IDE tool (cursor, github, windsurf, etc.)
+- `--context, -c <context>` - Context (onboard, boot, dev, plugin)
+- `--force, -f` - Overwrite existing instruction files without confirmation
+- `--interactive, -i` - Interactive mode to select options
+
+Run `npx rete-kit ai --help` for detailed usage information.
+
+## Contexts
+
+Choose the context that matches your situation:
+
+| Context     | When to Use                                                         | Description                                                                                                                                                                                                              |
+| ----------- | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **onboard** | Learning Rete.js fundamentals                                       | Provides conceptual explanations, core building blocks (nodes, connections, sockets), processing models, and educational guidance. Use when asking "What is Rete.js?" or "How does visual programming work?"             |
+| **boot**    | Creating a new Rete.js application                                  | Provides step-by-step app creation guidance, framework selection help, feature recommendations, and project structure explanation. Helps with running `rete-kit app` commands and understanding project setup.           |
+| **dev**     | Adding Rete.js to existing app or working with existing Rete.js app | Provides integration strategies, reference-driven patterns from Rete Kit apps, and problem-solving guidance. Helps with adding Rete.js to existing codebases, fixing issues, and adapting patterns to your architecture. |
+| **plugin**  | Developing, debugging, or customizing Rete.js plugins               | Provides plugin architecture, signal processing patterns, debugging techniques, and advanced best practices. Helps with plugin structure, signal systems, testing, and cross-framework development.                      |
+
+## Supported Tools
+
+| Tool           | Status      | Notes                                                           |
+| -------------- | ----------- | --------------------------------------------------------------- |
+| Cursor         | ✅ Supported | Generates `.mdc` files in `.cursor/rules/` directory            |
+| GitHub Copilot | ✅ Supported | Creates `.copilot-instructions.md` file in `.github/` directory |
+| Windsurf       | ⚠️ Included | Places `.md` files in `.windsurf/rules/` directory              |
+| Continue       | ⚠️ Included | Places `.md` files in `.continue/rules/` directory              |
+| Amazon Q       | ⚠️ Included | Places `.md` files in `.amazonq/rules/` directory               |
+| Antigravity    | ⚠️ Included | Places `.md` files in `.agent/rules/` directory                 |
+| Codex          | ⚠️ Included | Creates `AGENTS.md` file in project root                        |
+| Claude         | ⚠️ Included | Creates `CLAUDE.md` file in project root                        |
+
+**Status Legend:**
+
+- ✅ **Supported** - Tested and verified to work correctly
+- ⚠️ **Included** - Supported but not fully tested
+
+## Interactive Mode
+
+Not sure which context to use? Run interactive mode:
+
+```bash
+npx rete-kit ai --interactive
+```
+
+## How It Works
+
+Rete Kit reads context-specific instruction templates from its package and transforms them for your IDE:
+
+1. **Reads templates** from `assets/ai/{context}/` (onboard, boot, dev, or plugin)
+2. **Transforms content** for your IDE's format (e.g., `.mdc` files for Cursor)
+3. **Writes instructions** to IDE-specific directories in your project
+4. **Activates automatically** - Your IDE's AI assistant uses these instructions immediately
+
+The generated instructions contain Rete.js-specific guidance tailored to your selected context.
+
+## Switching Contexts
+
+Switch contexts as your project evolves by running the command again with a different context. Use `--force` to overwrite existing instructions:
+
+```bash
+npx rete-kit ai --tool cursor --context dev --force
+```
+
+**Typical progression:** `onboard` → `boot` → `dev` → `plugin`
+
+## Troubleshooting
+
+**Instructions not working?**
+
+- Verify files were created in the correct directory (e.g., `.cursor/rules/` for Cursor)
+- Try starting a new chat/agent session - instructions may need a new conversation to be loaded
+- If a new session doesn't work, restart your IDE to ensure instructions are loaded
+- Test by asking your IDE's AI assistant a Rete.js-specific question
+- Regenerate with `--force` flag if needed
+- Check IDE settings to ensure AI features are enabled
+
+**Wrong context selected?** Regenerate with the correct context:
+
+```bash
+npx rete-kit ai --tool cursor --context <correct-context> --force
+```
+
+**Interactive mode not working?** Use explicit `--tool` and `--context` flags instead (interactive mode requires a TTY).
+
+## Related Documentation
+
+- [AI Assistance Overview](https://retejs.org/docs/development/ai-assistance) - All AI integration options
+- [LLMs.txt Integration](https://retejs.org/docs/development/ai-assistance/llms) - Manual AI integration
+- [Rete Kit Overview](https://retejs.org/docs/development/rete-kit) - Other Rete Kit features
 
 
 # Troubleshooting

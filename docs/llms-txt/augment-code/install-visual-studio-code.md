@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/setup-augment/install-visual-studio-code.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Install Augment for Visual Studio Code
 
 > Augment in Visual Studio Code gives you powerful code completions, transformations, and chat capabilities integrated into your favorite code editor.

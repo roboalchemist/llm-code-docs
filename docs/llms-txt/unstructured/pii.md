@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/examplecode/tools/pii.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # PII detection
 
 Personally identifiable information (PII) detection is important as part of an organization's overall strategy for
@@ -30,7 +34,7 @@ visible throughout this walkthrough's example code, Presidio's available anonymi
   The Microsoft Presidio SDK is not offered, maintained, or supported by Unstructured. For questions or issues
   related to Presidio, see the following resources:
 
-  * For general discussions, use the [discussion board](https://github.com/microsoft/presidio/discussions) in the Presidio repositiory on GiHub.
+  * For general discussions, use the [discussion board](https://github.com/microsoft/presidio/discussions) in the Presidio repository on GitHub.
   * For questions or issues, file an [issue](https://github.com/microsoft/presidio/issues) in the Presidio repository on GitHub.
   * For other matters, email [presidio@microsoft.com](mailto:presidio@microsoft.com).
 
@@ -204,7 +208,7 @@ To use this example, you will need:
        )
        files = []
 
-       # Get the list of file keys from the input folder to anaylyze.
+       # Get the list of file keys from the input folder to analyze.
        # A file's key is the full path to the file within the bucket.
        # For example, if the input folder's name is "original" and the 
        # input file's name is "file1.json", the file's key is 

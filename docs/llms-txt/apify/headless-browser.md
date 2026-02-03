@@ -1,14 +1,16 @@
 # Source: https://docs.apify.com/academy/scraping-basics-javascript/legacy/crawling/headless-browser.md
 
-# Source: https://docs.apify.com/academy/web-scraping-for-beginners/crawling/headless-browser.md
-
 # Headless browsers
 
 **Learn how to scrape the web with a headless browser using only a few lines of code. Chrome, Firefox, Safari, Edge - all are supported.**
 
+Archived course
+
+This is an archive of our old course. Check out our new [Web scraping basics for JavaScript devs](https://docs.apify.com/academy/scraping-basics-javascript.md) course instead! We plan to completely retire this old course in a few months.
+
 ***
 
-A headless browser is a browser that runs without a user interface (UI). This means that it's normally controlled by automated scripts. Headless browsers are very popular in scraping because they can help you render JavaScript or programmatically behave like a human user to prevent blocking. The two most popular libraries for controlling headless browsers are https://pptr.dev/ and https://playwright.dev/. **Crawlee** supports both.
+A headless browser is a browser that runs without a user interface (UI). This means that it's normally controlled by automated scripts. Headless browsers are very popular in scraping because they can help you render JavaScript or programmatically behave like a human user to prevent blocking. The two most popular libraries for controlling headless browsers are [Puppeteer](https://pptr.dev/) and [Playwright](https://playwright.dev/). **Crawlee** supports both.
 
 ## Building a Playwright scraper
 
@@ -88,7 +90,7 @@ Using Playwright in combination with Cheerio like this is only one of many ways 
 
 We said that headless browsers didn't have a UI, but while scraping with the above scraper code, you could definitely see the browser. That's because we added the `headless: false` option. This is useful for debugging and seeing what's going on in the browser. Once your scraper is complete, you can remove the line and the crawler will run without a UI.
 
-You can also switch between headless and headful (with UI) using the https://crawlee.dev/docs/guides/configuration#crawlee_headless environment variable. This allows you to change the mode without touching your code.
+You can also switch between headless and headful (with UI) using the [CRAWLEE_HEADLESS](https://crawlee.dev/docs/guides/configuration#crawlee_headless) environment variable. This allows you to change the mode without touching your code.
 
 * MacOS/Linux
 * Windows CMD
@@ -120,7 +122,7 @@ One of the important benefits of using a browser is that it allows you to extrac
 
 tip
 
-We discuss dynamic data at length in the https://docs.apify.com/academy/node-js/dealing-with-dynamic-pages.md tutorial, and we also have a special lesson dedicated to it in our https://docs.apify.com/academy/puppeteer-playwright/page/waiting.md.
+We discuss dynamic data at length in the [How to scrape dynamic pages](https://docs.apify.com/academy/node-js/dealing-with-dynamic-pages.md) tutorial, and we also have a special lesson dedicated to it in our [Puppeteer & Playwright course](https://docs.apify.com/academy/puppeteer-playwright/page/waiting.md).
 
 If we added an appropriate selector to our original `CheerioCrawler` code, it would not extract the information, but a browser automatically fetches and renders this extra data.
 
@@ -196,4 +198,4 @@ When you run the code, you'll find the recommended product names correctly extra
 
 ## Next up
 
-We learned how to scrape with Cheerio and Playwright, but how do we export the data for further processing? Let's learn that in the https://docs.apify.com/academy/web-scraping-for-beginners/crawling/exporting-data.md of the Basics of crawling section.
+We learned how to scrape with Cheerio and Playwright, but how do we export the data for further processing? Let's learn that in the [next and final lesson](https://docs.apify.com/academy/scraping-basics-javascript/legacy/crawling/exporting-data.md) of the Basics of crawling section.

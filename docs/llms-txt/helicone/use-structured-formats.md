@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/guides/prompt-engineering/use-structured-formats.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Use structured formats
 
 > Format the generated output to make it easier to interpret and parse the information.

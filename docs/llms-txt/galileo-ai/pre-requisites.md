@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/deployments/pre-requisites.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Pre Requisites
 
 > Before deploying Galileo, ensure the following prerequisites are met.

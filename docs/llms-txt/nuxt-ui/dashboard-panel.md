@@ -24,17 +24,11 @@ definePageMeta({
 </template>
 ```
 
-<caution>
+> [!CAUTION]
+> It is recommended to set an `id` when using multiple panels in different pages to avoid conflicts.
 
-It is recommended to set an `id` when using multiple panels in different pages to avoid conflicts.
-
-</caution>
-
-<warning>
-
-This component does not have a single root element when using the `resizable` prop, so wrap it in a container (e.g., `<div class="flex flex-1">`) if you use page transitions or require a single root for layout.
-
-</warning>
+> [!WARNING]
+> This component does not have a single root element when using the `resizable` prop, so wrap it in a container (e.g., `<div class="flex flex-1">`) if you use page transitions or require a single root for layout.
 
 Use the `header`, `body` and `footer` slots to customize the panel or the default slot if you don't want a scrollable body with padding.
 
@@ -56,11 +50,8 @@ Use the `header`, `body` and `footer` slots to customize the panel or the defaul
 </template>
 ```
 
-<note>
-
-Most of the time, you will use the [`DashboardNavbar`](/docs/components/dashboard-navbar) component in the `header` slot.
-
-</note>
+> [!NOTE]
+> Most of the time, you will use the [`DashboardNavbar`](/docs/components/dashboard-navbar) component in the `header` slot.
 
 ### Resizable
 
@@ -88,11 +79,9 @@ Use the `min-size`,  `max-size` and `default-size` props to customize the size o
 </template>
 ```
 
-<tip to="/docs/components/dashboard-group#props">
-
-Sizes are calculated as percentages by default. You can change this using the `unit` prop on the `DashboardGroup` component.
-
-</tip>
+> [!TIP]
+> See: /docs/components/dashboard-group#props
+> Sizes are calculated as percentages by default. You can change this using the `unit` prop on the `DashboardGroup` component.
 
 ## API
 
@@ -172,8 +161,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

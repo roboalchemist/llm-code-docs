@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/deployment-testing/getting-started.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Getting Started with CI/CD Testing
 
 > Learn how to set up CI/CD testing with Datafold by integrating your data connections, code repositories, and CI pipeline for automated testing.

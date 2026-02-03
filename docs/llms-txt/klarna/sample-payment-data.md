@@ -2,7 +2,7 @@
 
 # Sample payment data
 
-## This section contains sample payment data you can use for testing your integration in the Klarna playground environment.
+## Test your integration of Klarna Payment methods in playground environment using sample payment data to ensure compliance and a reliable integration.
 
 ## Payment methods
 

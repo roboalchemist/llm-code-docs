@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/api/datasets-v2/get-dataset-v2.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get dataset v2
 
 
@@ -162,7 +166,3 @@ components:
       scheme: bearer
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

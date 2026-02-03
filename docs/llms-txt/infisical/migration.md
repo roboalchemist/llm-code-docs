@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/internals/permissions/migration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Migration Guide
 
 > Guide for migrating permissions in Infisical

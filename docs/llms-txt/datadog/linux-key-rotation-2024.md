@@ -6,7 +6,6 @@ description: >-
   Information about the 2024 GPG key rotation for Datadog RPM and DEB packages
   and how to update your systems.
 breadcrumbs: Docs > Agent > Agent Guides > 2024 Linux Key Rotation
-source_url: https://docs.datadoghq.com/guide/linux-key-rotation-2024/index.html
 ---
 
 # 2024 Linux Key Rotation

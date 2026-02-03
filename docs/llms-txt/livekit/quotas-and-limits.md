@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/deploy/admin/quotas-and-limits.md
 
-# Source: https://docs.livekit.io/home/cloud/quotas-and-limits.md
-
-LiveKit docs › LiveKit Cloud › Quotas & limits
+LiveKit docs › Administration › Quotas & limits
 
 ---
 
@@ -29,17 +27,17 @@ Refer to the latest [pricing page](https://livekit.io/pricing) for the current p
 The following table includes a definition of each metered resource as well as the default quota included on the free Build plan.
 
 | Resource | Definition | Free quota |
-| Agent session minutes | Active time that an agent [deployed](https://docs.livekit.io/agents/ops/deployment.md) to LiveKit Cloud is connected to a WebRTC or Telephony session. | 1,000 minutes |
+| Agent session minutes | Active time that an agent [deployed](https://docs.livekit.io/deploy/agents.md) to LiveKit Cloud is connected to a WebRTC or Telephony session. | 1,000 minutes |
 | Agent observability events | Individual transcripts, observations, and logs in agent observability. | 100,000 events |
 | Agent audio recordings | Audio session recordings for agent observability. | 1,000 minutes |
 | LiveKit Inference | Aggregated usage for all LiveKit Inference [models](https://docs.livekit.io/agents/models.md), at current [pricing](https://livekit.io/pricing/inference). | $2.50 |
 | US local number rental | Monthly rental for a LiveKit Phone Number. | 1 number |
 | US local inbound minutes | Inbound minutes to a US local number. | 50 minutes |
-| Third-party SIP minutes | Time that a single caller is connected to LiveKit Cloud via a third-party [SIP](https://docs.livekit.io/sip.md) trunk. | 1,000 minutes |
-| WebRTC participant minutes | Time that a single user is connected to LiveKit Cloud via a [LiveKit SDK](https://docs.livekit.io/home/client/connect.md). | 5,000 |
-| Downstream data transfer GB | The total data transferred out of LiveKit Cloud during a session, including [media tracks](https://docs.livekit.io/home/client/tracks.md) and [data packets](https://docs.livekit.io/home/client/data.md). | 50 GB |
-| Transcode minutes | Time spent transcoding an incoming stream with the [Ingress service](https://docs.livekit.io/home/ingress/overview.md) or a composite stream with the [Egress service](https://docs.livekit.io/home/egress/overview.md). | 60 minutes |
-| Track egress minutes | Time spent transcoding a single track with the [Egress service](https://docs.livekit.io/home/egress/track.md). | 60 minutes |
+| Third-party SIP minutes | Time that a single caller is connected to LiveKit Cloud via a third-party [SIP](https://docs.livekit.io/telephony.md) trunk. | 1,000 minutes |
+| WebRTC participant minutes | Time that a single user is connected to LiveKit Cloud via a [LiveKit SDK](https://docs.livekit.io/intro/basics/connect.md). | 5,000 |
+| Downstream data transfer GB | The total data transferred out of LiveKit Cloud during a session, including [media tracks](https://docs.livekit.io/transport/media.md) and [data packets](https://docs.livekit.io/transport/data.md). | 50 GB |
+| Transcode minutes | Time spent transcoding an incoming stream with the [Ingress service](https://docs.livekit.io/transport/media/ingress-egress/ingress.md) or a composite stream with the [Egress service](https://docs.livekit.io/transport/media/ingress-egress/egress.md). | 60 minutes |
+| Track egress minutes | Time spent transcoding a single track with the [Egress service](https://docs.livekit.io/transport/media/ingress-egress/egress/track.md). | 60 minutes |
 
 > 💡 **Inference credits**
 > 
@@ -58,12 +56,12 @@ Many connections to LiveKit Cloud are persistent or long-lived, using WebRTC or 
 The following table shows the different types of persistent connection, and the default concurrency limits on the Build plan.
 
 | Type | Definition | Free limit |
-| Agent session | Actively connected agent sessions [running](https://docs.livekit.io/agents/ops/deployment.md) on LiveKit Cloud. | 5 sessions |
+| Agent session | Actively connected agent sessions [running](https://docs.livekit.io/deploy/agents.md) on LiveKit Cloud. | 5 sessions |
 | LiveKit Inference STT | Active STT connections to LiveKit Inference [models](https://docs.livekit.io/agents/models/stt.md). | 5 connections |
 | LiveKit Inference TTS | Active TTS connections to LiveKit Inference [models](https://docs.livekit.io/agents/models.md). | 5 connections |
-| Participant | Total number of connected agents and end-users across all [rooms](https://docs.livekit.io/home/get-started/api-primitives.md). | 100 participants |
-| Ingress request | An active session of the [Ingress service](https://docs.livekit.io/home/ingress/overview.md) transcoding an incoming stream. | 2 requests |
-| Egress request | An active session of the [Egress service](https://docs.livekit.io/home/egress/overview.md) recording a composite stream or single track. | 2 requests |
+| Participant | Total number of connected agents and end-users across all [rooms](https://docs.livekit.io/intro/basics/rooms-participants-tracks.md). | 100 participants |
+| Ingress request | An active session of the [Ingress service](https://docs.livekit.io/transport/media/ingress-egress/ingress.md) transcoding an incoming stream. | 2 requests |
+| Egress request | An active session of the [Egress service](https://docs.livekit.io/transport/media/ingress-egress/egress.md) recording a composite stream or single track. | 2 requests |
 
 ### LiveKit Inference LLM limits
 
@@ -85,11 +83,11 @@ Agents continuously stream observabiliy events while connected to a session. Aud
 
 #### Retention window
 
-In addition to the rate limits above, all agent observability data is subject to a **30-day retention window**. See the [agent observability guide](https://docs.livekit.io/agents/observability.md#retention-window) for more information.
+In addition to the rate limits above, all agent observability data is subject to a **30-day retention window**. See the [agent observability guide](https://docs.livekit.io/deploy/observability/insights.md#retention-window) for more information.
 
 ### Egress time limits
 
-The LiveKit Cloud [Egress service](https://docs.livekit.io/home/egress/overview.md) has time limits, which vary based on the output type. The following table shows the default limits for all plan types.
+The LiveKit Cloud [Egress service](https://docs.livekit.io/transport/media/ingress-egress/egress.md) has time limits, which vary based on the output type. The following table shows the default limits for all plan types.
 
 | Egress output | Time limit |
 | File output (MP4, OGG, WebM) | 3 hours |
@@ -99,7 +97,7 @@ The LiveKit Cloud [Egress service](https://docs.livekit.io/home/egress/overview.
 
 When these time limits are reached, any in-progress egress automatically ends with the status `LIMIT_REACHED`.
 
-You can listen for this status change using the `egress_ended` [webhook](https://docs.livekit.io/home/server/webhooks.md).
+You can listen for this status change using the `egress_ended` [webhook](https://docs.livekit.io/intro/basics/rooms-participants-tracks/webhooks-events.md).
 
 ### Media subscription limits
 
@@ -109,11 +107,11 @@ Each active participant can only subscribe to a limited number of individual med
 | Video | 100 |
 | Audio | 100 |
 
-For high volume video use cases, consider using pagination and [selective subscriptions](https://docs.livekit.io/home/client/receive.md#selective-subscription) to keep the number of subscriptions within these limits.
+For high volume video use cases, consider using pagination and [selective subscriptions](https://docs.livekit.io/transport/media/subscribe.md#selective-subscription) to keep the number of subscriptions within these limits.
 
 ### Server API rate limits
 
-All projects have a [Server API](https://docs.livekit.io/reference/server/server-apis.md) rate limit of 1,000 requests per minute. This applies to requests such as to the `RoomService` or `EgressService`, not to SDK methods like joining a room or sending data packets. Requests to [LiveKit Inference](https://docs.livekit.io/agents/models.md#inference) have their [own rate limits](#llm-rate-limits).
+All projects have a [Server API](https://docs.livekit.io/reference/other/roomservice-api.md) rate limit of 1,000 requests per minute. This applies to requests such as to the `RoomService` or `EgressService`, not to SDK methods like joining a room or sending data packets. Requests to [LiveKit Inference](https://docs.livekit.io/agents/models.md#inference) have their [own rate limits](#llm-rate-limits).
 
 ### Requesting increases
 
@@ -129,7 +127,7 @@ LiveKit can work with you to ensure your project has the capacity it needs. [Con
 
 ---
 
-This document was rendered at 2025-11-18T23:54:59.420Z.
-For the latest version of this document, see [https://docs.livekit.io/home/cloud/quotas-and-limits.md](https://docs.livekit.io/home/cloud/quotas-and-limits.md).
+This document was rendered at 2026-02-03T03:25:23.917Z.
+For the latest version of this document, see [https://docs.livekit.io/deploy/admin/quotas-and-limits.md](https://docs.livekit.io/deploy/admin/quotas-and-limits.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

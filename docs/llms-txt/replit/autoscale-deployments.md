@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/cloud-services/deployments/autoscale-deployments.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Autoscale Deployments
 
 > Autoscale Deployments publish your Replit App to cloud servers that adjust automatically to handle your app's traffic and workload.

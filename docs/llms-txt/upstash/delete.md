@@ -12,81 +12,28 @@
 
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/functions/delete.md
 
-# Source: https://upstash.com/docs/workflow/rest/dlq/delete.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/delete.md
+# FUNCTION DELETE
 
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/delete.md
+> Delete a library and all its functions.
 
-# Source: https://upstash.com/docs/vector/api/endpoints/delete.md
+## Arguments
 
-# Source: https://upstash.com/docs/search/sdks/ts/commands/delete.md
-
-# Source: https://upstash.com/docs/search/sdks/py/commands/delete.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/functions/delete.md
-
-# Source: https://upstash.com/docs/workflow/rest/dlq/delete.md
-
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/delete.md
-
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/delete.md
-
-# Source: https://upstash.com/docs/vector/api/endpoints/delete.md
-
-# Source: https://upstash.com/docs/search/sdks/ts/commands/delete.md
-
-# Source: https://upstash.com/docs/search/sdks/py/commands/delete.md
-
-# Source: https://upstash.com/docs/workflow/rest/dlq/delete.md
-
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/delete.md
-
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/delete.md
-
-# Source: https://upstash.com/docs/vector/api/endpoints/delete.md
-
-# Source: https://upstash.com/docs/search/sdks/ts/commands/delete.md
-
-# Source: https://upstash.com/docs/search/sdks/py/commands/delete.md
-
-# Source: https://upstash.com/docs/workflow/rest/dlq/delete.md
-
-# Source: https://upstash.com/docs/vector/sdks/ts/commands/delete.md
-
-# Source: https://upstash.com/docs/vector/sdks/py/example_calls/delete.md
-
-# Source: https://upstash.com/docs/vector/api/endpoints/delete.md
-
-# Source: https://upstash.com/docs/search/sdks/ts/commands/delete.md
-
-# Source: https://upstash.com/docs/search/sdks/py/commands/delete.md
-
-# Source: https://upstash.com/docs/workflow/rest/dlq/delete.md
-
-# Delete a failed workflow run from the DLQ
-
-> Manually remove a failed workflow run from the DLQ
-
-Delete a failed workflow run from the Dead Letter Queue (DLQ).
-
-When a workflow run fails, it is moved to the DLQ. You can manually remove a failed workflow run from the DLQ using this endpoint. This is useful for cleaning up failed runs that you no longer wish to retry or analyze.
-
-## Request
-
-<ParamField path="dlqId" type="string">
-  The DLQ id of the failed workflow run you want to remove. You will see this id when
-  listing all workflow runs in the DLQ with the [/v2/workflows/dlq](/workflow/rest/dlq/list) endpoint.
+<ParamField body="libraryName" type="string" required>
+  The name of the library to delete.
 </ParamField>
 
 ## Response
 
-The endpoint doesn't return a response body. A status code of 200 means the workflow run was removed from the DLQ.
-If the workflow run is not found in the DLQ (either it has already been removed by you, or automatically), the endpoint returns a 404 status code.
+<ResponseField type="string" required>
+  "OK"
+</ResponseField>
 
 <RequestExample>
-  ```sh  theme={"system"}
-  curl -X DELETE https://qstash.upstash.io/v2/workflows/dlq/my-dlq-id \
-    -H "Authorization: Bearer <token>"
+  ```ts Example theme={"system"}
+  await redis.functions.delete("mylib")
   ```
 </RequestExample>

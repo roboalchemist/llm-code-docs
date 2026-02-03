@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/concepts/architecture/app-chrome
+
 # The app chrome
 
 Your Streamlit app has a few widgets in the top right to help you as you develop. These widgets also help your viewers as they use your app. We call this things “the app chrome”. The chrome includes a status area, toolbar, and app menu.

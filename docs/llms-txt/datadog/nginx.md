@@ -1,3 +1,9 @@
+# Source: https://docs.datadoghq.com/security/code_security/software_composition_analysis/setup_runtime/compatibility/nginx.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/compatibility/nginx.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/nginx.md
+
 # Source: https://docs.datadoghq.com/tracing/trace_collection/proxy_setup/nginx.md
 
 ---
@@ -6,7 +12,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > APM > Application Instrumentation > Tracing a Proxy > Instrumenting
   NGINX
-source_url: https://docs.datadoghq.com/trace_collection/proxy_setup/nginx/index.html
 ---
 
 # Instrumenting NGINX

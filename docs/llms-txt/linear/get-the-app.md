@@ -127,3 +127,23 @@ Being stuck in offline mode may relate to a known Chromium bug. Please toggle yo
 <summary>Can I open a Linear URL in the desktop app automatically? </summary>
 Yes, using a `linear://` protocol followed by the rest of the URL will open that page in the desktop app instead of a browser.
 </details>
+
+<details>
+<summary>I'm seeing a "Couldn't open in desktop app" error, how do I resolve this?</summary>
+If accessing Linear in browser and encountering a _Local Network access was denied_ error unexpectedly when attempting to navigate through links, this can indicate a browser-specific configuration that blocks Local Network Access.   
+
+
+![Local Network access was denied error, "Couldn't open in desktop app"](https://webassets.linear.app/images/ornj730p/production/af3a2265ff0a5a9e67e93b702a0cea8caf08f785-917x297.png?q=95&auto=format&dpr=2)
+
+To resolve, navigate into your browser settings and search for _Local Network Access_—you should spot the configuration specific to Linear under _Site Settings_:  
+
+
+![linear.app Allowed local network access](https://webassets.linear.app/images/ornj730p/production/032fbed63738c8603cf6b48b90a26c4d2012be00-1456x218.png?q=95&auto=format&dpr=2)
+
+  
+After clicking into this setting, ensure _Local network access_ is set to _Allow_:
+
+![Local network access settings configured to Allow](https://webassets.linear.app/images/ornj730p/production/7ba14535c3e6b31a708c878e3ec7c64d351780e6-1384x210.png?q=95&auto=format&dpr=2)
+
+Note that these screenshots are specific to Chrome, and other affected browsers’ navigation may look slightly different—feel free to reach out to [support@linear.app](mailto:support@linear.app) if you’re having trouble spotting this!
+</details>

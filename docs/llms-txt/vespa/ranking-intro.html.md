@@ -305,7 +305,7 @@ Read more in [the wand documentation](wand.html).
 - 
 - Read more about custom re-ranking of the final result set in[reranking in searcher](reranking-in-searcher).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

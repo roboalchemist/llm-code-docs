@@ -1,6 +1,10 @@
 # Source: https://docs.baseten.co/development/model/custom-health-checks.md
 
-# Custom health checks 🆕
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
+# Custom health checks
 
 > Customize the health of your deployments.
 
@@ -9,14 +13,36 @@
 * **Control traffic and restarts** by configuring failure thresholds to suit your needs.
 * **Define replica health with custom logic** (e.g. fail after a certain number of 500s or a specific CUDA error).
 
-By default, health checks run every 10 seconds to verify that each replica of your deployment is running successfully and can receive requests. If a health check fails for an extended period, one or both of the following actions may occur:
+By default, health checks run every 10 seconds to verify that each replica of
+your deployment is running successfully and can receive requests. If a health
+check fails for an extended period, one or both of the following actions may
+occur:
 
 * Traffic is immediately stopped from reaching the failing replica.
 * The failing replica is restarted.
 
 The thresholds for each of these actions are configurable.
 
-**Understanding readiness vs. liveness**: Baseten uses two types of Kubernetes health probes. The **readiness probe** determines when to stop traffic (controlled by `stop_traffic_threshold_seconds`), while the **liveness probe** determines when to restart the container (controlled by `restart_threshold_seconds`). Both probes check the same health endpoint, but serve different purposes: readiness controls traffic routing, while liveness controls container lifecycle.
+## Understanding readiness vs. liveness
+
+Baseten uses two types of Kubernetes health probes that run continuously after
+your container starts:
+
+**Readiness probe** answers "Can I handle requests right now?" When it fails,
+Kubernetes stops sending traffic to the container but doesn't restart it. Use
+this to prevent traffic during startup or temporary unavailability. The failure
+threshold is controlled by `stop_traffic_threshold_seconds`.
+
+**Liveness probe** answers "Am I healthy enough to keep running?" When it fails,
+Kubernetes restarts the container. Use this to recover from deadlocks or hung
+processes. The failure threshold is controlled by `restart_threshold_seconds`.
+
+For most servers, using the same endpoint (like `/health`) for both probes is
+sufficient. The key difference is the action taken: readiness controls traffic
+routing, while liveness controls container lifecycle.
+
+Both probes wait before starting checks to allow your server time to initialize.
+Configure this delay with `restart_check_delay_seconds`.
 
 Custom health checks can be implemented in two ways:
 
@@ -27,7 +53,8 @@ Custom health checks can be implemented in two ways:
 
 ### Parameters
 
-You can customize the behavior of health checks on your deployments by setting the following parameters:
+You can customize the behavior of health checks on your deployments by setting
+the following parameters:
 
 <ParamField body="stop_traffic_threshold_seconds" type="integer" default={1800}>
   The duration that health checks must continuously fail before traffic to the failing replica is stopped.
@@ -57,11 +84,13 @@ Configure health checks in your `config.yaml`.
 runtime:
   health_checks:
     restart_check_delay_seconds: 60 # Waits 60 seconds after deployment before starting health checks
-    restart_threshold_seconds: 300 # Triggers a restart if health checks fail for 5 minutes
-    stop_traffic_threshold_seconds: 600 # Stops traffic if health checks fail for 10 minutes
+    restart_threshold_seconds: 600 # Triggers a restart if health checks fail for 10 minutes
+    stop_traffic_threshold_seconds: 300 # Stops traffic if health checks fail for 5 minutes
 ```
 
-You can also specify custom health check endpoints for custom servers. [See here](/development/model/custom-server#1-configuring-a-custom-server-in-config-yaml) for more details.
+You can also specify custom health check endpoints for custom servers.
+[See here](/development/model/custom-server#1-configuring-a-custom-server-in-config-yaml)
+for more details.
 
 ### Chains
 
@@ -73,7 +102,7 @@ class CustomHealthChecks(chains.ChainletBase):
         options=chains.ChainletOptions(
             health_checks=truss_config.HealthChecks(
                 restart_check_delay_seconds=30,     # Waits 30 seconds before starting health checks
-                restart_threshold_seconds=120,      # Restart replicas after 2 minutes of failure
+                restart_threshold_seconds=600,      # Restart replicas after 10 minutes of failure
                 stop_traffic_threshold_seconds=300, # Stop traffic after 5 minutes of failure
             )
         )
@@ -82,7 +111,8 @@ class CustomHealthChecks(chains.ChainletBase):
 
 ## Writing custom health checks
 
-You can write custom health checks in both **model deployments** and **chain deployments**.
+You can write custom health checks in both **model deployments** and **chain
+deployments**.
 
 <Info>
   {" "}
@@ -175,16 +205,29 @@ These refer to two separate health checks we run every 10 seconds:
 
 ### Does stopped traffic or replica restarts affect autoscaling?
 
-Yes, both can impact autoscaling. If traffic stops or replicas restart, the remaining replicas handle more load. If the load exceeds the concurrency target during the autoscaling window, additional replicas are spun up. Similarly, when traffic stabilizes, excess replicas are scaled down after the scale down delay. [See here](/deployment/autoscaling#autoscaling-behavior) for more details on autoscaling.
+Yes, both can impact autoscaling. If traffic stops or replicas restart, the
+remaining replicas handle more load. If the load exceeds the concurrency target
+during the autoscaling window, additional replicas are spun up. Similarly, when
+traffic stabilizes, excess replicas are scaled down after the scale down delay.
+[See here](/deployment/autoscaling#autoscaling-behavior) for more details on
+autoscaling.
 
 ### How does billing get affected?
 
-You are billed for the uptime of your deployment. This includes the time a replica is running, even if it is failing health checks, until it scales down.
+You are billed for the uptime of your deployment. This includes the time a
+replica is running, even if it is failing health checks, until it scales down.
 
 ### Will failing health checks cause my deployment to stay up forever?
 
-No. If your deployment is configured with a scale down delay and the minimum number of replicas is set to 0, the replicas will scale down once the model is no longer receiving traffic for the duration of the scale down delay. This applies even if the replicas are failing health checks. [See here](/deployment/autoscaling#scale-to-zero) for more details on autoscaling.
+No. If your deployment is configured with a scale down delay and the minimum
+number of replicas is set to 0, the replicas will scale down once the model is
+no longer receiving traffic for the duration of the scale down delay. This
+applies even if the replicas are failing health checks.
+[See here](/deployment/autoscaling#scale-to-zero) for more details on
+autoscaling.
 
 ### What happens when my deployment is loading?
 
-When your deployment is loading, your custom health check will not be running. Once `load()` is completed, we'll start using your custom `is_healthy()` health check.
+When your deployment is loading, your custom health check will not be running.
+Once `load()` is completed, we'll start using your custom `is_healthy()` health
+check.

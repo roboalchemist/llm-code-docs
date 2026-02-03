@@ -6,7 +6,6 @@ description: >-
   Authenticate the Datadog Terraform provider using cloud credentials instead of
   static API keys with AWS STS authentication and identity mapping.
 breadcrumbs: Docs > Account Management > Cloud-based Authentication
-source_url: https://docs.datadoghq.com/cloud_provider_authentication/index.html
 ---
 
 # Cloud-based Authentication

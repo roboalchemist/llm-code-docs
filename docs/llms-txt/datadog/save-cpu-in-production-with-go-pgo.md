@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Continuous Profiler > Continuous Profiler Guides > Go - Save up to 14%
   CPU in Production with Profile-Guided Optimization
-source_url: https://docs.datadoghq.com/guide/save-cpu-in-production-with-go-pgo/index.html
 ---
 
 # Go - Save up to 14% CPU in Production with Profile-Guided Optimization

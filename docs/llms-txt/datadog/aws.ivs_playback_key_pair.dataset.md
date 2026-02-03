@@ -4,8 +4,6 @@
 title: IVS Playback Key Pair
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > IVS Playback Key Pair
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.ivs_playback_key_pair.dataset/index.html
 ---
 
 # IVS Playback Key Pair
@@ -18,10 +16,10 @@ aws.ivs_playback_key_pair
 
 ## Fields
 
-| Title      | ID   | Type   | Data Type                                                     | Description |
-| ---------- | ---- | ------ | ------------------------------------------------------------- | ----------- |
-| _key       | core | string |
-| account_id | core | string |
-| arn        | core | string | Key-pair ARN.                                                 |
-| name       | core | string | Playback-key-pair name. The value does not need to be unique. |
-| tags       | core | hstore |
+| Title      | ID   | Type       | Data Type                                                     | Description |
+| ---------- | ---- | ---------- | ------------------------------------------------------------- | ----------- |
+| _key       | core | string     |
+| account_id | core | string     |
+| arn        | core | string     | Key-pair ARN.                                                 |
+| name       | core | string     | Playback-key-pair name. The value does not need to be unique. |
+| tags       | core | hstore_csv |

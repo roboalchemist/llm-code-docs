@@ -1,5 +1,9 @@
 # Source: https://polar.sh/docs/features/usage-based-billing/ingestion-strategies/stream-strategy.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Stream Strategy
 
 > Ingestion strategy for Readable & Writable Streams

@@ -1,8 +1,8 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/bert-generation.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/bert-generation.md
 
 # BertGeneration
 
-[BertGeneration](https://huggingface.co/papers/1907.12461) leverages pretrained BERT checkpoints for sequence-to-sequence tasks with the [EncoderDecoderModel](/docs/transformers/v5.0.0rc1/en/model_doc/encoder-decoder#transformers.EncoderDecoderModel) architecture. BertGeneration adapts the `BERT` for generative tasks.
+[BertGeneration](https://huggingface.co/papers/1907.12461) leverages pretrained BERT checkpoints for sequence-to-sequence tasks with the [EncoderDecoderModel](/docs/transformers/v5.0.0/en/model_doc/encoder-decoder#transformers.EncoderDecoderModel) architecture. BertGeneration adapts the `BERT` for generative tasks.
 
 You can find all the original BERT checkpoints under the [BERT](https://huggingface.co/collections/google/bert-release-64ff5e7a4be99045d1896dbc) collection.
 
@@ -11,7 +11,7 @@ You can find all the original BERT checkpoints under the [BERT](https://huggingf
 >
 > Click on the BertGeneration models in the right sidebar for more examples of how to apply BertGeneration to different sequence generation tasks.
 
-The example below demonstrates how to use BertGeneration with [EncoderDecoderModel](/docs/transformers/v5.0.0rc1/en/model_doc/encoder-decoder#transformers.EncoderDecoderModel) for sequence-to-sequence tasks.
+The example below demonstrates how to use BertGeneration with [EncoderDecoderModel](/docs/transformers/v5.0.0/en/model_doc/encoder-decoder#transformers.EncoderDecoderModel) for sequence-to-sequence tasks.
 
 ```python
 import torch
@@ -76,7 +76,7 @@ print(tokenizer.decode(outputs[0]))
 
 ## Notes
 
-- [BertGenerationEncoder](/docs/transformers/v5.0.0rc1/en/model_doc/bert-generation#transformers.BertGenerationEncoder) and [BertGenerationDecoder](/docs/transformers/v5.0.0rc1/en/model_doc/bert-generation#transformers.BertGenerationDecoder) should be used in combination with [EncoderDecoderModel](/docs/transformers/v5.0.0rc1/en/model_doc/encoder-decoder#transformers.EncoderDecoderModel) for sequence-to-sequence tasks.
+- [BertGenerationEncoder](/docs/transformers/v5.0.0/en/model_doc/bert-generation#transformers.BertGenerationEncoder) and [BertGenerationDecoder](/docs/transformers/v5.0.0/en/model_doc/bert-generation#transformers.BertGenerationDecoder) should be used in combination with [EncoderDecoderModel](/docs/transformers/v5.0.0/en/model_doc/encoder-decoder#transformers.EncoderDecoderModel) for sequence-to-sequence tasks.
 
    ```python
    from transformers import BertGenerationEncoder, BertGenerationDecoder, BertTokenizer, EncoderDecoderModel
@@ -110,7 +110,7 @@ print(tokenizer.decode(outputs[0]))
 
 #### transformers.BertGenerationConfig[[transformers.BertGenerationConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/bert_generation/configuration_bert_generation.py#L20)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/bert_generation/configuration_bert_generation.py#L19)
 
 This is the configuration class to store the configuration of a `BertGenerationPreTrainedModel`. It is used to
 instantiate a BertGeneration model according to the specified arguments, defining the model architecture.
@@ -118,8 +118,8 @@ Instantiating a configuration with the defaults will yield a similar configurati
 [google/bert_for_seq_generation_L-24_bbc_encoder](https://huggingface.co/google/bert_for_seq_generation_L-24_bbc_encoder)
 architecture.
 
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Examples:
 
@@ -168,18 +168,24 @@ eos_token_id (`int`, *optional*, defaults to 1) : End of stream token id.
 
 use_cache (`bool`, *optional*, defaults to `True`) : Whether or not the model should return the last key/values attentions (not used by all models). Only relevant if `config.is_decoder=True`.
 
+is_decoder (`bool`, *optional*, defaults to `False`) : Whether to only use the decoder in an encoder-decoder architecture, otherwise it has no effect on decoder-only or encoder-only architectures.
+
+add_cross_attention (`bool`, *optional*, defaults to `False`) : Whether cross-attention layers should be added to the model.
+
+tie_word_embeddings (`bool`, *optional*, defaults to `True`) : Whether to tie weight embeddings
+
 ## BertGenerationTokenizer[[transformers.BertGenerationTokenizer]]
 
 #### transformers.BertGenerationTokenizer[[transformers.BertGenerationTokenizer]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/bert_generation/tokenization_bert_generation.py#L30)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/bert_generation/tokenization_bert_generation.py#L29)
 
 Construct a BertGeneration tokenizer. Based on [SentencePiece](https://github.com/google/sentencepiece).
 
-This tokenizer inherits from [PreTrainedTokenizer](/docs/transformers/v5.0.0rc1/en/main_classes/tokenizer#transformers.PythonBackend) which contains most of the main methods. Users should refer to
+This tokenizer inherits from [PreTrainedTokenizer](/docs/transformers/v5.0.0/en/main_classes/tokenizer#transformers.PythonBackend) which contains most of the main methods. Users should refer to
 this superclass for more information regarding those methods.
 
-save_vocabularytransformers.BertGenerationTokenizer.save_vocabularyhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/tokenization_utils_sentencepiece.py#L238[{"name": "save_directory", "val": ": str"}, {"name": "filename_prefix", "val": ": typing.Optional[str] = None"}]- **save_directory** (`str`) --
+save_vocabularytransformers.BertGenerationTokenizer.save_vocabularyhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/tokenization_utils_sentencepiece.py#L237[{"name": "save_directory", "val": ": str"}, {"name": "filename_prefix", "val": ": str | None = None"}]- **save_directory** (`str`) --
   The directory in which to save the vocabulary.
 - **filename_prefix** (`str`, *optional*) --
   An optional prefix to add to the named of the saved files.0`tuple(str)`Paths to the files saved.
@@ -218,15 +224,15 @@ sp_model_kwargs (`dict`, *optional*) : Will be passed to the `SentencePieceProce
 
 **Parameters:**
 
-config ([BertGenerationDecoder](/docs/transformers/v5.0.0rc1/en/model_doc/bert-generation#transformers.BertGenerationDecoder)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([BertGenerationDecoder](/docs/transformers/v5.0.0/en/model_doc/bert-generation#transformers.BertGenerationDecoder)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
-`[transformers.modeling_outputs.CausalLMOutputWithCrossAttentions](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithCrossAttentions) or `tuple(torch.FloatTensor)``
+`[transformers.modeling_outputs.CausalLMOutputWithCrossAttentions](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithCrossAttentions) or `tuple(torch.FloatTensor)``
 
-A [transformers.modeling_outputs.CausalLMOutputWithCrossAttentions](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithCrossAttentions) or a tuple of
+A [transformers.modeling_outputs.CausalLMOutputWithCrossAttentions](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.CausalLMOutputWithCrossAttentions) or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([BertGenerationConfig](/docs/transformers/v5.0.0rc1/en/model_doc/bert-generation#transformers.BertGenerationConfig)) and inputs.
+elements depending on the configuration ([BertGenerationConfig](/docs/transformers/v5.0.0/en/model_doc/bert-generation#transformers.BertGenerationConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
@@ -244,7 +250,7 @@ elements depending on the configuration ([BertGenerationConfig](/docs/transforme
 
   Cross attentions weights after the attention softmax, used to compute the weighted average in the
   cross-attention heads.
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.

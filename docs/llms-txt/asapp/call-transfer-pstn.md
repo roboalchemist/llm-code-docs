@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/generativeagent/integrate/call-transfer-pstn.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Call Transfer over PSTN
 
 > Learn how to use call transfers to handle GA calls with any platform

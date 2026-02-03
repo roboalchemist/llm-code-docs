@@ -4,8 +4,6 @@
 title: Amplify Branch
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Amplify Branch
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.amplify_branch.dataset/index.html
 ---
 
 # Amplify Branch
@@ -45,7 +43,7 @@ aws.amplify_branch
 | pull_request_environment_name | core | string        | The Amplify environment name for the pull request.                                                                                                                                                                                                                                                                                           |
 | source_branch                 | core | string        | The source branch if the branch is a pull request branch.                                                                                                                                                                                                                                                                                    |
 | stage                         | core | string        | The current stage for the branch that is part of an Amplify app.                                                                                                                                                                                                                                                                             |
-| tags                          | core | hstore        |
+| tags                          | core | hstore_csv    |
 | thumbnail_url                 | core | string        | The thumbnail URL for the branch of an Amplify app.                                                                                                                                                                                                                                                                                          |
 | total_number_of_jobs          | core | string        | The total number of jobs that are part of an Amplify app.                                                                                                                                                                                                                                                                                    |
 | ttl                           | core | string        | The content Time to Live (TTL) for the website in seconds.                                                                                                                                                                                                                                                                                   |

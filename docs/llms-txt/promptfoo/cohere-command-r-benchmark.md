@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/guides/cohere-command-r-benchmark/
+
 # Command R vs GPT vs Claude: create your own benchmark
 
 While public benchmarks provide a general sense of capability, the only way to truly understand which model will perform best for your specific application is to run your own custom evaluation.

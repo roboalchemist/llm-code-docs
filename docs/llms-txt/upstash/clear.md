@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/json/clear.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/clear.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/clear.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/clear.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/clear.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/clear.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/clear.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/clear.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/json/clear.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/json/clear.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # JSON.CLEAR
 
@@ -26,26 +12,26 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the json entry.
 </ParamField>
 
-<ParamField body="path" type="string" default="$">
-  The path to clear
+<ParamField body="path" type="str" required>
+  The path to clear. `$` is the root.
 </ParamField>
 
 ## Response
 
-<ResponseField type="integer[]" required>
-  How many values were cleared.
+<ResponseField type="List[int]" required>
+  How many keys cleared from the objects.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.json.clear("key");
+  ```py Example theme={"system"}
+  redis.json.clear("key")
   ```
 
-  ```ts With path theme={"system"}
-  await redis.json.clear("key", "$.my.key");
+  ```py With path theme={"system"}
+  redis.json.clear("key", "$.my.key")
   ```
 </RequestExample>

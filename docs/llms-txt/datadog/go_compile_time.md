@@ -8,7 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > APM > APM Troubleshooting > Troubleshooting Go Compile-Time
   Instrumentation
-source_url: https://docs.datadoghq.com/troubleshooting/go_compile_time/index.html
 ---
 
 # Troubleshooting Go Compile-Time Instrumentation

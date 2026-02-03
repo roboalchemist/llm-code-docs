@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/guides/gpt-vs-o1/
+
 # gpt-5 vs o1: Benchmark on Your Own Data
 
 OpenAI has released a new model series called o1 designed to spend more time thinking before responding and excel at complex reasoning tasks.

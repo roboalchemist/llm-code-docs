@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/gateway/concepts/error-handling.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Error Handling & Fallback
 
 > How Helicone AI Gateway handles errors and automatically falls back between billing methods

@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > DDSQL Reference > Data Directory > EC2 Image Builder Public Image
   Recipe
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.imagebuilder_public_image_recipe.dataset/index.html
 ---
 
 # EC2 Image Builder Public Image Recipe
@@ -20,10 +18,10 @@ aws.imagebuilder_public_image_recipe
 
 ## Fields
 
-| Title        | ID   | Type   | Data Type                                             | Description |
-| ------------ | ---- | ------ | ----------------------------------------------------- | ----------- |
-| _key         | core | string |
-| account_id   | core | string |
-| image_recipe | core | json   | The image recipe object.                              |
-| request_id   | core | string | The request ID that uniquely identifies this request. |
-| tags         | core | hstore |
+| Title        | ID   | Type       | Data Type                                             | Description |
+| ------------ | ---- | ---------- | ----------------------------------------------------- | ----------- |
+| _key         | core | string     |
+| account_id   | core | string     |
+| image_recipe | core | json       | The image recipe object.                              |
+| request_id   | core | string     | The request ID that uniquely identifies this request. |
+| tags         | core | hstore_csv |

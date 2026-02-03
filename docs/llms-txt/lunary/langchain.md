@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/integrations/langchain.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LangChain Integration
 
 We provide callback handler that can be used to track LangChain calls, chains and agents.
@@ -342,8 +346,3 @@ You can use the callback handler to track all calls to your LangServe server.
     ```
   </Tab>
 </Tabs>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

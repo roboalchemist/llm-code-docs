@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/get-system-status.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # System Status
 
 > Provides a list of vehicle systems and their current health status. Currently supporting FCA and GM brands including RAM, Jeep, Chrysler, Dodge, Fiat, Alfa Romeo, Buick, Cadillac, Chevrolet and GMC. See [Diagnostic Systems](/docs/help/diagnostic-systems) for a complete list of Smartcar System IDs.

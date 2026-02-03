@@ -1,3 +1,5 @@
+# Source: https://docs.groq.com/docs/text-chat#streaming-a-chat-completion
+
 # Overview - GroqDocs
 
 ## Welcome

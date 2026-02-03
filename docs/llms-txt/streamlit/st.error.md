@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/status/st.error
+
 # st.error
 
 Display error message.

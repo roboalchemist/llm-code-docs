@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/cli-deploy-commands.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # CLI deploy command
 
 > Use the deploy command to deploy your tasks to Trigger.dev.
@@ -7,15 +11,15 @@
 Run the command like this:
 
 <CodeGroup>
-  ```bash npm theme={null}
+  ```bash npm theme={"theme":"css-variables"}
   npx trigger.dev@latest deploy
   ```
 
-  ```bash pnpm theme={null}
+  ```bash pnpm theme={"theme":"css-variables"}
   pnpm dlx trigger.dev@latest deploy
   ```
 
-  ```bash yarn theme={null}
+  ```bash yarn theme={"theme":"css-variables"}
   yarn dlx trigger.dev@latest deploy
   ```
 </CodeGroup>
@@ -87,6 +91,10 @@ npx trigger.dev@latest deploy [path]
   Turn off syncing environment variables with the Trigger.dev instance.
 </ParamField>
 
+<ParamField body="Local build" type="--local-build">
+  Force building the deployment image locally using your local Docker. This is automatic when self-hosting.
+</ParamField>
+
 ### Common options
 
 These options are available on most commands.
@@ -117,50 +125,10 @@ These options are available on most commands.
 
 ### Self-hosting
 
-These options are typically used when [self-hosting](/open-source-self-hosting) or for local development.
+When [self-hosting](/self-hosting/overview), builds are performed locally by default. Once you've logged in to your self-hosted instance using the CLI, you can deploy with:
 
-<ParamField body="Self-hosted (builds locally)" type="--self-hosted">
-  Builds and loads the image using your local docker. Use the `--registry` option to specify the
-  registry to push the image to when using `--self-hosted`, or just use `--push` to push to the
-  default registry.
-</ParamField>
-
-<ParamField body="Skip deploying the image" type="--skip-deploy | -D">
-  Load the built image into your local docker.
-</ParamField>
-
-<ParamField body="Load image" type="--load-image">
-  Loads the image into your local docker after building it.
-</ParamField>
-
-<ParamField body="Registry" type="--registry">
-  Specify the registry to push the image to when using `--self-hosted`. Will automatically enable
-  `--push`.
-</ParamField>
-
-<ParamField body="Push image" type="--push">
-  When using the `--self-hosted` flag, push the image to the registry.
-</ParamField>
-
-<ParamField body="Namespace" type="--namespace">
-  The namespace to use when pushing the image to the registry. For example, if pushing to Docker
-  Hub, the namespace is your Docker Hub username.
-</ParamField>
-
-<ParamField body="Network" type="--network">
-  The networking mode for RUN instructions when using `--self-hosted`.
-</ParamField>
-
-## Examples
-
-### Push to Docker Hub (self-hosted)
-
-An example of deploying to Docker Hub when using a self-hosted setup:
-
-```bash  theme={null}
-npx trigger.dev@latest deploy \
-  --self-hosted \
-  --load-image \
-  --registry docker.io \
-  --namespace mydockerhubusername
+```bash  theme={"theme":"css-variables"}
+npx trigger.dev@latest deploy
 ```
+
+For CI/CD environments, set `TRIGGER_ACCESS_TOKEN` and `TRIGGER_API_URL` environment variables. See the [GitHub Actions guide](/github-actions#self-hosting) for more details.

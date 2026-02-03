@@ -1,80 +1,93 @@
 # Source: https://docs.tavus.io/api-reference/personas/delete-persona.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete Persona
 
 > This endpoint deletes a single persona by its unique identifier.
 
 
+
+
 ## OpenAPI
 
 ````yaml delete /v2/personas/{persona_id}
+openapi: 3.0.3
+info:
+  title: Tavus Developer API Collection
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: https://tavusapi.com
+security:
+  - apiKey: []
+tags:
+  - name: Videos
+  - name: Replicas
+  - name: Conversations
+  - name: Personas
+  - name: Replacements
+  - name: Transcriptions
+  - name: Documents
 paths:
-  path: /v2/personas/{persona_id}
-  method: delete
-  servers:
-    - url: https://tavusapi.com
-  request:
-    security:
-      - title: apiKey
-        parameters:
-          query: {}
-          header:
-            x-api-key:
-              type: apiKey
-          cookie: {}
+  /v2/personas/{persona_id}:
     parameters:
-      path:
-        persona_id:
+      - name: persona_id
+        in: path
+        required: true
+        description: The unique identifier of the persona.
+        schema:
+          type: string
+          example: pf3073f2dcc1
+    delete:
+      tags:
+        - Personas
+      summary: Delete Persona
+      description: |
+        This endpoint deletes a single persona by its unique identifier.
+      operationId: deletePersona
+      parameters:
+        - name: persona_id
+          in: path
+          required: true
+          description: The unique identifier of the persona.
           schema:
-            - type: string
-              required: true
-              description: The unique identifier of the persona.
-              example: pf3073f2dcc1
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '204':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: NO CONTENT
-        examples: {}
-        description: NO CONTENT
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
+            type: string
+            example: pf3073f2dcc1
+      responses:
+        '204':
+          description: NO CONTENT
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
                     description: The error message.
                     example: Invalid persona_id
-        examples:
-          example:
-            value:
-              error: Invalid persona_id
-        description: Bad Request
-    '401':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              message:
-                allOf:
-                  - type: string
+        '401':
+          description: UNAUTHORIZED
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
                     description: The error message.
                     example: Invalid access token
-        examples:
-          example:
-            value:
-              message: Invalid access token
-        description: UNAUTHORIZED
-  deprecated: false
-  type: path
+      security:
+        - apiKey: []
 components:
-  schemas: {}
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: x-api-key
 
 ````

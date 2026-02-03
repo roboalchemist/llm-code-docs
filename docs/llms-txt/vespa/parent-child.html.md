@@ -188,5 +188,5 @@ Document type _ad_ has two references to _campaign_ (via _campaign\_ref_ and _ot
 
 Document type _campaign_ has a reference to _advertiser_ and imports the field _name_ as _advertiser\_name_. This is also imported into _ad_ via _campaign\_ref_ from its grandparent _advertiser_. To use the imported fields in summary, define a document summary _my\_summary_ containing these fields.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

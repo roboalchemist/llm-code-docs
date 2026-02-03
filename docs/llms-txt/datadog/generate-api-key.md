@@ -4,7 +4,6 @@
 title: Generate an API Key
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > Getting started > Generate an API Key
-source_url: https://docs.datadoghq.com/getting-started/generate-api-key/index.html
 ---
 
 # Generate an API Key

@@ -4,12 +4,6 @@
 
 # Source: https://docs.zenml.io/pro/core-concepts/teams.md
 
-# Source: https://docs.zenml.io/api-reference/pro-api/pro-api/organizations/teams.md
-
-# Source: https://docs.zenml.io/api-reference/pro-api/pro-api/teams.md
-
-# Source: https://docs.zenml.io/pro/core-concepts/teams.md
-
 # Teams
 
 ZenML Pro introduces the concept of Teams to help you manage groups of users efficiently. A team is a collection of users that acts as a single entity within your organization and workspaces. This guide will help you understand how teams work, how to create and manage them, and how to use them effectively in your MLOps workflows.

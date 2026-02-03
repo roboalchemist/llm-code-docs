@@ -5,10 +5,7 @@ title: Cluster Agent Troubleshooting
 description: >-
   Troubleshoot common issues with the Datadog Cluster Agent deployment and
   configuration
-breadcrumbs: >-
-  Docs > Container Monitoring > Container Troubleshooting > Cluster Agent
-  Troubleshooting
-source_url: https://docs.datadoghq.com/troubleshooting/cluster-agent/index.html
+breadcrumbs: Docs > Containers > Container Troubleshooting > Cluster Agent Troubleshooting
 ---
 
 # Cluster Agent Troubleshooting

@@ -1,3 +1,5 @@
+# Source: https://docs.datadoghq.com/dashboards/template_variables.md
+
 # Source: https://docs.datadoghq.com/containers/guide/template_variables.md
 
 ---
@@ -5,10 +7,7 @@ title: Autodiscovery Template Variables
 description: >-
   Reference guide for template variables available in Autodiscovery integration
   configuration for dynamic container environments
-breadcrumbs: >-
-  Docs > Container Monitoring > Containers Guides > Autodiscovery Template
-  Variables
-source_url: https://docs.datadoghq.com/guide/template_variables/index.html
+breadcrumbs: Docs > Containers > Containers Guides > Autodiscovery Template Variables
 ---
 
 # Autodiscovery Template Variables

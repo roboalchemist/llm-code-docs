@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/cross-session-leak/
+
 # cross-session-leak
 
 Cross-Session Leak Plugin

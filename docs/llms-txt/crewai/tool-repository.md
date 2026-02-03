@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/enterprise/guides/tool-repository.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tool Repository
 
 > Using the Tool Repository to manage your tools
@@ -148,5 +152,6 @@ You can check the security check status of a tool at:
 `CrewAI AMP > Tools > Your Tool > Versions`
 
 <Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-  Contact our support team for assistance with API integration or troubleshooting.
+  Contact our support team for assistance with API integration or
+  troubleshooting.
 </Card>

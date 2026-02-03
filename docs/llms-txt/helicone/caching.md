@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/features/advanced-usage/caching.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LLM Caching
 
 When developing and testing LLM applications, you often make the same requests repeatedly during debugging and iteration. Helicone caching stores complete responses on Cloudflare's edge network, eliminating redundant API calls and reducing both latency and costs.

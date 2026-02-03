@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hgetall.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hgetall.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hgetall.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hgetall.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hgetall.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hgetall.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hgetall.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hgetall.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/hash/hgetall.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/hash/hgetall.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # HGETALL
 
@@ -26,23 +12,23 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key to get.
 </ParamField>
 
 ## Response
 
-<ResponseField type="TValue | null" required>
+<ResponseField type="Optional[str]" required>
   An object with all fields in the hash.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.hset("key", {
-    field1: "value1",
-    field2: "value2",
-    });
-  const hash = await redis.hgetall("key");
-  console.log(hash); // { field1: "value1", field2: "value2" }
+  ```py Example theme={"system"}
+  redis.hset("myhash", values={
+  "field1": "Hello",
+  "field2": "World"
+  })
+
+  assert redis.hgetall("myhash") == {"field1": "Hello", "field2": "World"}
   ```
 </RequestExample>

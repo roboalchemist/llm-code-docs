@@ -2,10 +2,6 @@
 
 # Source: https://mui.com/x/react-date-pickers/digital-clock.md
 
-# Source: https://mui.com/x/api/date-pickers/digital-clock.md
-
-# Source: https://mui.com/x/react-date-pickers/digital-clock.md
-
 ---
 productId: x-date-pickers
 title: React Digital Clock component

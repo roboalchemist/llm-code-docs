@@ -4,8 +4,6 @@
 title: MSK Connect Custom Plugin
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > MSK Connect Custom Plugin
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.kafkaconnect_custom_plugin.dataset/index.html
 ---
 
 # MSK Connect Custom Plugin
@@ -18,15 +16,15 @@ aws.kafkaconnect_custom_plugin
 
 ## Fields
 
-| Title               | ID   | Type      | Data Type                                                                                                                                 | Description |
-| ------------------- | ---- | --------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| _key                | core | string    |
-| account_id          | core | string    |
-| creation_time       | core | timestamp | The time that the custom plugin was created.                                                                                              |
-| custom_plugin_arn   | core | string    | The Amazon Resource Name (ARN) of the custom plugin.                                                                                      |
-| custom_plugin_state | core | string    | The state of the custom plugin.                                                                                                           |
-| description         | core | string    | The description of the custom plugin.                                                                                                     |
-| latest_revision     | core | json      | The latest successfully created revision of the custom plugin. If there are no successfully created revisions, this field will be absent. |
-| name                | core | string    | The name of the custom plugin.                                                                                                            |
-| state_description   | core | json      | Details about the state of a custom plugin.                                                                                               |
-| tags                | core | hstore    |
+| Title               | ID   | Type       | Data Type                                                                                                                                 | Description |
+| ------------------- | ---- | ---------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| _key                | core | string     |
+| account_id          | core | string     |
+| creation_time       | core | timestamp  | The time that the custom plugin was created.                                                                                              |
+| custom_plugin_arn   | core | string     | The Amazon Resource Name (ARN) of the custom plugin.                                                                                      |
+| custom_plugin_state | core | string     | The state of the custom plugin.                                                                                                           |
+| description         | core | string     | The description of the custom plugin.                                                                                                     |
+| latest_revision     | core | json       | The latest successfully created revision of the custom plugin. If there are no successfully created revisions, this field will be absent. |
+| name                | core | string     | The name of the custom plugin.                                                                                                            |
+| state_description   | core | json       | Details about the state of a custom plugin.                                                                                               |
+| tags                | core | hstore_csv |

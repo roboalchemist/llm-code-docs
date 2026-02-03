@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/category/red-teaming/
+
 # Red teaming
 
 ## Red teaming

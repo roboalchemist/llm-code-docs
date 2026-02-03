@@ -6,7 +6,6 @@ description: >-
   Add an extra layer of security to Datadog accounts with multi-factor
   authentication using time-based one-time passwords and authenticator apps.
 breadcrumbs: Docs > Account Management > Multi-Factor Authentication (MFA)
-source_url: https://docs.datadoghq.com/multi-factor_authentication/index.html
 ---
 
 # Multi-Factor Authentication (MFA)

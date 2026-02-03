@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/widgets/st.toggle
+
 # st.toggle
 
 Display a toggle widget.

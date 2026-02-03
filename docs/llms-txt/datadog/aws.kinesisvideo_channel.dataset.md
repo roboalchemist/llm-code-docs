@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > DDSQL Reference > Data Directory > Kinesis Video Streams Signaling
   Channel
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.kinesisvideo_channel.dataset/index.html
 ---
 
 # Kinesis Video Streams Signaling Channel
@@ -20,15 +18,15 @@ aws.kinesisvideo_channel
 
 ## Fields
 
-| Title                       | ID   | Type      | Data Type                                                                       | Description |
-| --------------------------- | ---- | --------- | ------------------------------------------------------------------------------- | ----------- |
-| _key                        | core | string    |
-| account_id                  | core | string    |
-| channel_arn                 | core | string    | The Amazon Resource Name (ARN) of the signaling channel.                        |
-| channel_name                | core | string    | The name of the signaling channel.                                              |
-| channel_status              | core | string    | Current status of the signaling channel.                                        |
-| channel_type                | core | string    | The type of the signaling channel.                                              |
-| creation_time               | core | timestamp | The time at which the signaling channel was created.                            |
-| single_master_configuration | core | json      | A structure that contains the configuration for the SINGLE_MASTER channel type. |
-| tags                        | core | hstore    |
-| version                     | core | string    | The current version of the signaling channel.                                   |
+| Title                       | ID   | Type       | Data Type                                                                       | Description |
+| --------------------------- | ---- | ---------- | ------------------------------------------------------------------------------- | ----------- |
+| _key                        | core | string     |
+| account_id                  | core | string     |
+| channel_arn                 | core | string     | The Amazon Resource Name (ARN) of the signaling channel.                        |
+| channel_name                | core | string     | The name of the signaling channel.                                              |
+| channel_status              | core | string     | Current status of the signaling channel.                                        |
+| channel_type                | core | string     | The type of the signaling channel.                                              |
+| creation_time               | core | timestamp  | The time at which the signaling channel was created.                            |
+| single_master_configuration | core | json       | A structure that contains the configuration for the SINGLE_MASTER channel type. |
+| tags                        | core | hstore_csv |
+| version                     | core | string     | The current version of the signaling channel.                                   |

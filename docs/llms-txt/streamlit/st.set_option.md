@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/configuration/st.set_option
+
 # st.set_option
 
 Set a configuration option.

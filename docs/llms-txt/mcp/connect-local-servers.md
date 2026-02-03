@@ -1,5 +1,9 @@
 # Source: https://modelcontextprotocol.io/docs/develop/connect-local-servers.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://modelcontextprotocol.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Connect to local MCP servers
 
 > Learn how to extend Claude Desktop with local MCP servers to enable file system access and other powerful integrations

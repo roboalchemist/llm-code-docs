@@ -2,18 +2,6 @@
 
 # Source: https://docs.apify.com/platform/integrations/gumloop/youtube.md
 
-# Source: https://docs.apify.com/platform/integrations/make/youtube.md
-
-# Source: https://docs.apify.com/platform/integrations/gumloop/youtube.md
-
-# Source: https://docs.apify.com/platform/integrations/make/youtube.md
-
-# Source: https://docs.apify.com/platform/integrations/gumloop/youtube.md
-
-# Source: https://docs.apify.com/platform/integrations/make/youtube.md
-
-# Source: https://docs.apify.com/platform/integrations/gumloop/youtube.md
-
 # Gumloop - YouTube Actor integration
 
 Get YouTube search results, video details, channel videos, playlists, and channel metadata in Gumloop.
@@ -75,6 +63,6 @@ You can pull the following types of data from YouTube using Gumloop’s YouTube 
 
 ## Other integrations
 
-* https://docs.apify.com/platform/integrations/gumloop/tiktok.md
-* https://docs.apify.com/platform/integrations/gumloop/instagram.md
-* https://docs.apify.com/platform/integrations/gumloop/maps.md
+* [TikTok](https://docs.apify.com/platform/integrations/gumloop/tiktok.md)
+* [Instagram](https://docs.apify.com/platform/integrations/gumloop/instagram.md)
+* [Google Maps](https://docs.apify.com/platform/integrations/gumloop/maps.md)

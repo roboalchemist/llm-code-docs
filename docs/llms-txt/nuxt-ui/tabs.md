@@ -154,11 +154,8 @@ const items = ref<TabsItem[]>([
 </template>
 ```
 
-<note>
-
-You can inspect the DOM to see each item's content being rendered.
-
-</note>
+> [!NOTE]
+> You can inspect the DOM to see each item's content being rendered.
 
 ### Color
 
@@ -256,9 +253,46 @@ const items = ref<TabsItem[]>([
 
 ### Control active item
 
-You can control the active item by using the `default-value` prop or the `v-model` directive with the index of the item.
+You can control the active item by using the `default-value` prop or the `v-model` directive with the `value` of the item. If no `value` is provided, it defaults to the index **as a string**.
 
 ```vue [TabsModelValueExample.vue]
+<script setup lang="ts">
+import type { TabsItem } from '@nuxt/ui'
+
+const items: TabsItem[] = [
+  {
+    label: 'Account',
+    icon: 'i-lucide-user'
+  },
+  {
+    label: 'Password',
+    icon: 'i-lucide-lock'
+  }
+]
+
+const active = ref('0')
+
+// Note: This is for demonstration purposes only. Don't do this at home.
+onMounted(() => {
+  setInterval(() => {
+    active.value = String((Number(active.value) + 1) % items.length)
+  }, 2000)
+})
+</script>
+
+<template>
+  <UTabs v-model="active" :content="false" :items="items" class="w-full" />
+</template>
+```
+
+> [!TIP]
+> Use the `value-key` prop to change the key used to match items when a `v-model` or `default-value` is provided.
+
+### With route query
+
+You can control the active item by a URL query parameter, using `route.query.tab` as the `value` of the item.
+
+```vue [TabsRouteQueryExample.vue]
 <script setup lang="ts">
 import type { TabsItem } from '@nuxt/ui'
 
@@ -268,10 +302,12 @@ const router = useRouter()
 const items: TabsItem[] = [
   {
     label: 'Account',
+    icon: 'i-lucide-user',
     value: 'account'
   },
   {
     label: 'Password',
+    icon: 'i-lucide-lock',
     value: 'password'
   }
 ]
@@ -285,7 +321,7 @@ const active = computed({
     router.push({
       path: '/docs/components/tabs',
       query: { tab },
-      hash: '#control-active-item'
+      hash: '#with-route-query'
     })
   }
 })
@@ -416,7 +452,7 @@ interface TabsProps {
    * The element or component this component should render as.
    */
   as?: any;
-  items?: TabsItem[] | undefined;
+  items?: T[] | undefined;
   color?: "primary" | "secondary" | "success" | "info" | "warning" | "error" | "neutral" | undefined;
   variant?: "pill" | "link" | undefined;
   size?: "sm" | "xs" | "md" | "lg" | "xl" | undefined;
@@ -424,17 +460,22 @@ interface TabsProps {
    * The orientation of the tabs.
    * @default "\"horizontal\""
    */
-  orientation?: DataOrientation | undefined;
+  orientation?: "horizontal" | "vertical" | undefined;
   /**
    * The content of the tabs, can be disabled to prevent rendering the content.
    * @default "true"
    */
   content?: boolean | undefined;
   /**
+   * The key used to get the value from the item.
+   * @default "\"value\""
+   */
+  valueKey?: GetItemKeys<T> | undefined;
+  /**
    * The key used to get the label from the item.
    * @default "\"label\""
    */
-  labelKey?: GetItemKeys<TabsItem> | undefined;
+  labelKey?: GetItemKeys<T> | undefined;
   ui?: { root?: ClassNameValue; list?: ClassNameValue; indicator?: ClassNameValue; trigger?: ClassNameValue; leadingIcon?: ClassNameValue; leadingAvatar?: ClassNameValue; leadingAvatarSize?: ClassNameValue; label?: ClassNameValue; trailingBadge?: ClassNameValue; trailingBadgeSize?: ClassNameValue; content?: ClassNameValue; } | undefined;
   /**
    * The value of the tab that should be active when initially rendered. Use when you do not need to control the state of the tabs
@@ -779,8 +820,4 @@ export default defineAppConfig({
 
 ## Changelog
 
-<component-changelog>
-
-
-
-</component-changelog>
+See the [releases page](https://github.com/nuxt/ui/releases) for the latest changes.

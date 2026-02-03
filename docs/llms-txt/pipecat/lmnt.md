@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/services/tts/lmnt.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LMNT
 
 > Text-to-speech service implementation using LMNT's streaming API
@@ -47,8 +51,3 @@ Before using LMNT TTS services, you need:
 ### Required Environment Variables
 
 * `LMNT_API_KEY`: Your LMNT API key for authentication
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

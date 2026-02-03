@@ -1,38 +1,16 @@
 # Source: https://docs.replit.com/tutorials/how-to-vibe-code.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to vibe code effectively
 
-> Learn essential skills to effectively guide AI tools like Replit Agent and Assistant, turning your ideas into functional applications faster.
-
-export const AgentModelV2 = 'Latest AI Model';
-
-export const AgentModelV1 = 'Advanced AI Model';
-
-export const TeamsCredits = '$40';
-
-export const CoreCredits = '$25';
-
-export const AssistantCheckpointCost = '$0.05';
-
-export const AuthorCard = ({img = "https://replit.com/cdn-cgi/image/width=256,quality=80,format=auto/https://storage.googleapis.com/replit/images/1730840970400_e885f16578bbbb227adbfeb7b979be34.jpeg", href = "https://youtube.com/@mattpalmer", name = "Matt Palmer", role = "Head of Developer Relations"}) => {
-  return <a href={href} target="_blank" className="card block not-prose font-normal group relative my-2 ring-2 ring-transparent rounded-xl bg-white/50 dark:bg-codeblock/50 border border-gray-100 shadow-md dark:shadow-none shadow-gray-300/10 dark:border-gray-800/50 overflow-hidden cursor-pointer hover:!border-primary dark:hover:!border-primary-light">
-      <div className="flex items-center gap-2 p-4">
-        <div className="flex-shrink-0">
-          <img src={img} alt={name} className="w-12 h-12 rounded-full object-cover" />
-        </div>
-        <div className="flex-grow">
-          <h3 className="text-base font-semibold mb-0.5 text-inherit">{name}</h3>
-          <p className="text-sm text-gray-600 dark:text-gray-400 m-0">{role}</p>
-        </div>
-      </div>
-    </a>;
-};
-
-<AuthorCard />
+> Learn essential skills to effectively guide Replit Agent, turning your ideas into functional applications faster.
 
 ## How to think about vibe coding
 
-AI tools like Replit Agent and Assistant are incredibly powerful, capable of generating code, configuring environments, and even building entire applications.
+Replit Agent is incredibly powerful, capable of generating code, configuring environments, and even building entire applications.
 
 However, they work best when guided effectively. "Vibe coding" is about developing the intuition and skills to steer these AI partners efficiently.
 
@@ -73,7 +51,7 @@ The five key skills are:
 
 ## The Skills
 
-Let's break down each skill with practical steps you can apply when building with Replit Agent or Assistant.
+Let's break down each skill with practical steps you can apply when building with Replit Agent.
 
 See our guide on [Effective Prompting](/tutorials/effective-prompting) for detailed tips and examples.
 
@@ -106,8 +84,8 @@ Use the screenshot from your wireframe to help Agent understand the app. Here's 
 
 You don't need to build everything from scratch, and often, you shouldn't. Countless frameworks and libraries exist to solve common problems (UI components, animations, data handling, etc.).
 
-* **Ask the AI**: You don't know what you don't know. Ask Agent or Assistant: "What are good options for building a user interface with drag-and-drop features?" or "What's the best way to handle user authentication?"
-* **Check Compatibility**: Newer frameworks might not be in the AI's training data. Ask the AI about compatibility or provide documentation links directly in your prompt. Replit Agent and Assistant can often scrape web content for context.
+* **Ask the AI**: You don't know what you don't know. Ask Agent on Plan mode: "What are good options for building a user interface with drag-and-drop features?" or "What's the best way to handle user authentication?"
+* **Check Compatibility**: Newer frameworks might not be in the AI's training data. Ask the AI about compatibility or provide documentation links directly in your prompt. Agent can often scrape web content for context.
 * **Provide Specifics**: If you find a relevant library or code snippet, include it in your prompt. Giving the AI concrete examples of *how* to use a framework is highly effective.
 
 <Info>
@@ -144,7 +122,7 @@ AI doesn't always get it right on the first try. Building large features in one 
 Errors are inevitable. Instead of just pasting the error message back to the AI, approach debugging systematically.
 
 * **Understand the Error**: Read the error message carefully. Where did it occur (`Console`, browser, specific file)? What does it say?
-* **Gather Clues**: Look at the code around the error. Check the `Console` for logs. Use the AI Assistant to explain parts of the code you don't understand.
+* **Gather Clues**: Look at the code around the error. Check the `Console` for logs. Use Agent to explain parts of the code you don't understand.
 * **Isolate the Problem**: Try to reproduce the error reliably. What specific action triggers it?
 * **Provide Contextual Clues**: When asking the AI for help, provide:
   * The exact error message.
@@ -160,7 +138,7 @@ The information (context) you provide the AI dramatically influences the quality
 * **Be Selective**: Include only information directly relevant to the current task. Exclude unrelated code, files, or previous instructions if they aren't needed. Think about the AI's limited attention span (context window).
 * **Use Multimodal Inputs**: Provide code snippets, file attachments, error messages, URLs for documentation, or even screenshots if they help clarify the request.
 * **Structure Prompts Clearly**: State the goal first, then provide supporting context.
-* **Start Fresh for New Features**: When starting a significantly new feature, consider using **New chat** in Agent or Assistant to ensure the AI isn't confused by previous, unrelated context.
+* **Start Fresh for New Features**: When starting a significantly new feature, consider using **New chat** in Agent to ensure the AI isn't confused by previous, unrelated context.
 
 <Tip>
   Imagine explaining a task to a human expert. You wouldn't start by telling them your life story if you just need help fixing a specific bug. Give the AI the focused information it needs.
@@ -206,14 +184,14 @@ The best way to improve is by building!
   <Accordion title="Try Building a Project">
     * Start a new project using [Replit Agent](https://replit.com/ai/agent) with a simple idea.
     * Practice breaking the idea down (Procedural Thinking).
-    * Use Agent or Assistant to build it step-by-step, focusing on clear prompts and context (Mastering Context, Leveraging Frameworks).
+    * Use Agent to build it step-by-step, focusing on clear prompts and context (Mastering Context, Leveraging Frameworks).
     * Utilize **Checkpoints** frequently (Building in Checkpoints).
     * When errors occur, practice systematic debugging (Debugging Methodically).
   </Accordion>
 
   <Accordion title="Explore Replit AI Documentation">
     * Learn more about [Replit Agent](/replitai/agent) features like Checkpoints and Rollback.
-    * Discover tips for writing effective prompts for Replit Assistant. (Link to Assistant docs when available)
+    * Discover tips for writing [effective prompts](/tutorials/effective-prompting) for Replit Agent.
   </Accordion>
 </AccordionGroup>
 

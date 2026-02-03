@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/guides/evaluate-json/
+
 # LLM evaluation techniques for JSON outputs
 
 Getting an LLM to output valid JSON can be a difficult task. There are a few failure modes:

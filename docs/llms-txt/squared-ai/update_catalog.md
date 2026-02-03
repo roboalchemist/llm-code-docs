@@ -1,70 +1,65 @@
 # Source: https://docs.squared.ai/api-reference/catalogs/update_catalog.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Update Catalog
+
+
 
 ## OpenAPI
 
 ````yaml PUT /api/v1/catalogs/{id}
+openapi: 3.0.1
+info:
+  title: AI Squared API
+  version: 1.0.0
+servers:
+  - url: https://api.squared.ai
+security: []
 paths:
-  path: /api/v1/catalogs/{id}
-  method: put
-  servers:
-    - url: https://api.squared.ai
-  request:
-    security:
-      - title: bearerAuth
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-          cookie: {}
-    parameters:
-      path:
-        id:
+  /api/v1/catalogs/{id}:
+    put:
+      tags:
+        - Catalogs
+      summary: Update catalog
+      operationId: updateCatalog
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The ID of the catalog to update
           schema:
-            - type: integer
-              required: true
-              description: The ID of the catalog to update
-              example: 34
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              connector_id:
-                allOf:
-                  - type: integer
-                    example: 6
-              catalog:
-                allOf:
-                  - type: object
-                    properties:
-                      json_schema:
-                        type: object
-                        example:
-                          field: test_field
-            required: true
-        examples:
-          example:
-            value:
-              connector_id: 6
-              catalog:
-                json_schema:
-                  field: test_field
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: object
+            type: integer
+            example: 34
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                connector_id:
+                  type: integer
+                  example: 6
+                catalog:
+                  type: object
+                  properties:
+                    json_schema:
+                      type: object
+                      example:
+                        field: test_field
+      responses:
+        '200':
+          description: Catalog updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
                     properties:
                       id:
                         type: string
@@ -120,60 +115,21 @@ paths:
                           catalog_hash:
                             type: string
                             example: 0755b5f0d3432bc3b0064227d2b6178d402327b9
-        examples:
-          example:
-            value:
-              data:
-                id: '34'
-                type: catalogs
-                attributes:
-                  connector_id: 6
-                  workspace_id: 2
-                  catalog:
-                    streams:
-                      - name: test_name
-                        url: test_url
-                        json_schema:
-                          field: test field
-                        batch_support: false
-                        batch_size: 0
-                        request_method: POST
-                    request_rate_concurrency: 10
-                    request_rate_limit: 600
-                    request_rate_limit_unit: minute
-                  catalog_hash: 0755b5f0d3432bc3b0064227d2b6178d402327b9
-        description: Catalog updated successfully
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Bad Request
-        examples: {}
-        description: Bad Request
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Unauthorized
-        examples: {}
-        description: Unauthorized
-    '404':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Catalog not found
-        examples: {}
-        description: Catalog not found
-    '500':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: Internal Server Error
-        examples: {}
-        description: Internal Server Error
-  deprecated: false
-  type: path
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '404':
+          description: Catalog not found
+        '500':
+          description: Internal Server Error
+      security:
+        - bearerAuth: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
 
 ````

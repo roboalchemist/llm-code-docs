@@ -2,10 +2,7 @@
 
 # Get Resource Type
 
-```
-GET 
-/v2/:organizationId/ResourceTypes/:resourceTypeId
-```
+Copy page
 
 This endpoint returns a resource type.
 

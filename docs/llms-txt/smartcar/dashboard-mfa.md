@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/getting-started/dashboard/dashboard-mfa.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Dashboard Multi-Factor Authentication (MFA)
 
 ## Configuring Multi-Factor Authentication

@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/examples/scrape-hacker-news.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Scrape the top 3 articles from Hacker News and email yourself a summary every weekday
 
 > This example demonstrates how to scrape the top 3 articles from Hacker News using BrowserBase and Puppeteer, summarize them with ChatGPT and send a nicely formatted email summary to yourself every weekday using Resend.
@@ -42,7 +46,7 @@ And we'll be using the following tools and features:
 
 First up, add these build settings to your `trigger.config.ts` file:
 
-```tsx trigger.config.ts theme={null}
+```tsx trigger.config.ts theme={"theme":"css-variables"}
 import { defineConfig } from "@trigger.dev/sdk";
 import { puppeteer } from "@trigger.dev/build/extensions/puppeteer";
 
@@ -62,7 +66,7 @@ Learn more about the [trigger.config.ts](/config/config-file) file including set
 
 Set the following environment variable in your local `.env` file to run this task locally. And before deploying your task, set them in the [Trigger.dev dashboard](/deploy-environment-variables) or [using the SDK](/deploy-environment-variables#in-your-code):
 
-```bash  theme={null}
+```bash  theme={"theme":"css-variables"}
 BROWSERBASE_API_KEY: "<your BrowserBase API key>"
 OPENAI_API_KEY: "<your OpenAI API key>"
 RESEND_API_KEY: "<your Resend API key>"
@@ -70,7 +74,7 @@ RESEND_API_KEY: "<your Resend API key>"
 
 ### Task code
 
-```ts trigger/scrape-hacker-news.ts theme={null}
+```ts trigger/scrape-hacker-news.ts theme={"theme":"css-variables"}
 import { render } from "@react-email/render";
 import { logger, schedules, task, wait } from "@trigger.dev/sdk";
 import { OpenAI } from "openai";
@@ -209,7 +213,7 @@ To prevent the main example from becoming too cluttered, we'll create a separate
 
 Notice how this file is imported into the main task code and passed to Resend to send the email.
 
-```tsx summarize-hn-email.tsx theme={null}
+```tsx summarize-hn-email.tsx theme={"theme":"css-variables"}
 import { Html, Head, Body, Container, Section, Heading, Text, Link } from "@react-email/components";
 
 interface Article {

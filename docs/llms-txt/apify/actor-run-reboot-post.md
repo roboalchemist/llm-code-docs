@@ -9,7 +9,7 @@ https://api.apify.com/v2/actor-runs/:runId/reboot
 ```
 
 
-Clientshttps://docs.apify.com/api/client/python/reference/class/RunClientAsync#reboothttps://docs.apify.com/api/client/js/reference/class/RunClient#rebootReboots an Actor run and returns an object that contains all the details about the rebooted run.
+Reboots an Actor run and returns an object that contains all the details about the rebooted run.
 
 Only runs that are running, i.e. runs with status `RUNNING` can be rebooted.
 
@@ -20,6 +20,10 @@ The run's container will be restarted, so any data not persisted in the key-valu
 ## Responses
 
 * 200
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

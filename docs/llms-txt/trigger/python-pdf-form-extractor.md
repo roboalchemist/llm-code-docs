@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/python/python-pdf-form-extractor.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Python PDF form extractor example
 
 > Learn how to use Trigger.dev with Python to extract form data from PDF files.
@@ -33,7 +37,7 @@ This demo showcases how to use Trigger.dev with Python to extract structured for
 
 After you've initialized your project with Trigger.dev, add these build settings to your `trigger.config.ts` file:
 
-```ts trigger.config.ts theme={null}
+```ts trigger.config.ts theme={"theme":"css-variables"}
 import { pythonExtension } from "@trigger.dev/python/extension";
 import { defineConfig } from "@trigger.dev/sdk";
 
@@ -65,7 +69,7 @@ export default defineConfig({
 
 This task uses the `python.runScript` method to run the `image-processing.py` script with the given image URL as an argument. You can adjust the image processing parameters in the payload, with options such as height, width, quality, output format, etc.
 
-```ts src/trigger/pythonPdfTask.ts theme={null}
+```ts src/trigger/pythonPdfTask.ts theme={"theme":"css-variables"}
 import { task } from "@trigger.dev/sdk";
 import { python } from "@trigger.dev/python";
 
@@ -98,7 +102,7 @@ export const processPdfForm = task({
 
 Add the following to your `requirements.txt` file. This is required in Python projects to install the dependencies.
 
-```txt requirements.txt theme={null}
+```txt requirements.txt theme={"theme":"css-variables"}
 PyMuPDF==1.23.8
 requests==2.31.0
 ```
@@ -107,7 +111,7 @@ requests==2.31.0
 
 The Python script uses PyMuPDF to extract form data from a PDF file. You can see the original script in our examples repository [here](https://github.com/triggerdotdev/examples/blob/main/python-pdf-form-extractor/src/python/extract-pdf-form.py).
 
-```python src/python/extract-pdf-form.py theme={null}
+```python src/python/extract-pdf-form.py theme={"theme":"css-variables"}
 import fitz  # PyMuPDF
 import requests
 import os

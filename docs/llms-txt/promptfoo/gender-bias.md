@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/gender-bias/
+
 # gender-bias
 
 # Gender Bias Plugin

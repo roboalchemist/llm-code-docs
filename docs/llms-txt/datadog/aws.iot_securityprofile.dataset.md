@@ -4,8 +4,6 @@
 title: Iot Securityprofile
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Iot Securityprofile
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.iot_securityprofile.dataset/index.html
 ---
 
 # Iot Securityprofile
@@ -32,5 +30,5 @@ aws.iot_securityprofile
 | security_profile_arn            | core | string        | The ARN of the security profile.                                                                                                                                                                                                                                                                  |
 | security_profile_description    | core | string        | A description of the security profile (associated with the security profile when it was created or updated).                                                                                                                                                                                      |
 | security_profile_name           | core | string        | The name of the security profile.                                                                                                                                                                                                                                                                 |
-| tags                            | core | hstore        |
+| tags                            | core | hstore_csv    |
 | version                         | core | int64         | The version of the security profile. A new version is generated whenever the security profile is updated.                                                                                                                                                                                         |

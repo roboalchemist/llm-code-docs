@@ -6,8 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > APM > Application Instrumentation > Dynamic Instrumentation > Dynamic
   Instrumentation Expression Language
-source_url: >-
-  https://docs.datadoghq.com/trace_collection/dynamic_instrumentation/expression-language/index.html
 ---
 
 # Dynamic Instrumentation Expression Language
@@ -77,19 +75,20 @@ The Expression Language provides contextual variables for different instrumentat
 | `@key`       | Provides access to the current key during dictionary iteration. Used in predicates for dictionary operations.   |
 | `@value`     | Provides access to the current value during dictionary iteration. Used in predicates for dictionary operations. |
 
-## String operations{% #string-operations %}
+## General operations{% #general-operations %}
 
 The following examples assume a variable named `myString` with value `Hello, world!`:
 
-| Operation                                    | Description                                                                            | Example                                                       |
-| -------------------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
-| `len(value_src)`                             | Gets the string length.                                                                | {% interactive-demo for="â len(myString)" /%}                 |
-| `isEmpty(value_src)`                         | Checks whether the string is empty. Equivalent to `len(value_src) == 0`.               | {% interactive-demo for="â isEmpty(myString)" /%}             |
-| `substring(value_src, startIndex, endIndex)` | Gets a substring.                                                                      | {% interactive-demo for="â substring(myString, 0, 2)" /%}     |
-| `startsWith(value_src, string_literal)`      | Checks whether a string starts with the given string literal.                          | {% interactive-demo for="â startsWith(myString, \"He\")" /%}  |
-| `endsWith(value_src, string_literal)`        | Checks whether the string ends with the given string literal.                          | {% interactive-demo for="â endsWith(myString, \"rdl!\")" /%}  |
-| `contains(value_src, string_literal)`        | Checks whether the string contains the string literal.                                 | {% interactive-demo for="â contains(myString, \"ll\")" /%}    |
-| `matches(value_src, string_literal)`         | Checks whether the string matches the regular expression provided as a string literal. | {% interactive-demo for="â matches(myString, \"^H.*!$\")" /%} |
+| Operation                                    | Description                                                                                                                                                                           | Example                                                       |
+| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
+| `isDefined(var)`                             | Checks whether a variable is defined. Returns `true` if the variable exists in the current scope, `false` otherwise. Useful for conditional logic when a variable may not be present. | {% interactive-demo for="â isDefined(myString)" /%}           |
+| `len(value_src)`                             | Gets the string length.                                                                                                                                                               | {% interactive-demo for="â len(myString)" /%}                 |
+| `isEmpty(value_src)`                         | Checks whether the string is empty. Equivalent to `len(value_src) == 0`.                                                                                                              | {% interactive-demo for="â isEmpty(myString)" /%}             |
+| `substring(value_src, startIndex, endIndex)` | Gets a substring.                                                                                                                                                                     | {% interactive-demo for="â substring(myString, 0, 2)" /%}     |
+| `startsWith(value_src, string_literal)`      | Checks whether a string starts with the given string literal.                                                                                                                         | {% interactive-demo for="â startsWith(myString, \"He\")" /%}  |
+| `endsWith(value_src, string_literal)`        | Checks whether the string ends with the given string literal.                                                                                                                         | {% interactive-demo for="â endsWith(myString, \"rdl!\")" /%}  |
+| `contains(value_src, string_literal)`        | Checks whether the string contains the string literal, or whether a collection contains an element.                                                                                   | {% interactive-demo for="â contains(myString, \"ll\")" /%}    |
+| `matches(value_src, string_literal)`         | Checks whether the string matches the regular expression provided as a string literal.                                                                                                | {% interactive-demo for="â matches(myString, \"^H.*!$\")" /%} |
 
 ## Collection operations{% #collection-operations %}
 

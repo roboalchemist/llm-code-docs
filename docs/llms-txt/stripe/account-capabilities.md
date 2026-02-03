@@ -1,8 +1,8 @@
 # Source: https://docs.stripe.com/connect/account-capabilities.md
 
-# Account capabilities
+# Account capabilities and configurations
 
-Learn about capabilities you can enable for accounts and the requirements you must satisfy to use them.
+Learn about capabilities you can enable for accounts, the account configurations they belong to, and their requirements.
 
 Capabilities represent functionality that you can request for your connected accounts, such as accepting card payments or receiving transferred funds from your platform account. A capability must be active for a connected account to perform actions associated with that capability.
 
@@ -37,12 +37,9 @@ Payments using the `transfers` capability include [Destination charges](https://
 
 #### Cross-border transfers 
 
-Moving money across country borders introduces additional requirements and is supported in the following scenarios only:
+Stripe supports cross-border transfers on the payments balance between the United States, Canada, United Kingdom, EEA, and Switzerland. In other scenarios, your platform and any connected account must be in the same region. Attempting to transfer funds across unsupported borders or balances returns an error. See [Cross-border payouts](https://docs.stripe.com/connect/cross-border-payouts.md) for supported funds flows between other regions.
 
-- European Union, United Kingdom, and Gibraltar platforms sending funds to [SEPA countries](https://support.stripe.com/questions/countries-in-the-european-economic-area-\(eea\)-impacted-by-strong-customer-authentication-\(sca\)-regulation).
-- US platforms sending funds to [cross-border payouts](https://docs.stripe.com/connect/cross-border-payouts.md) destinations using a [recipient service agreement](https://docs.stripe.com/connect/service-agreement-types.md#recipient).
-
-For other scenarios, create a platform account in the same region as your connected accounts. Depending on your business structure, that might require creating a legal entity in that region and additional work to onboard connected accounts.
+You must only use transfers in combination with the permitted use cases for [charges](https://docs.stripe.com/connect/charges.md), [tops-ups](https://docs.stripe.com/connect/top-ups.md) and [fees](https://docs.stripe.com/connect/account-capabilities.md#collect-fees). We recommend using separate charges and transfers only when you’re responsible for negative balances of your connected accounts.
 
 ### Card payments
 
@@ -77,7 +74,7 @@ For more details on tax reporting for US-based connected accounts, see [Manage T
 
 ### Payment methods
 
-Some [payment methods](https://docs.stripe.com/payments/payment-methods/overview.md) are enabled by the `card_payments` capabilty, while others are enabled by their own capability.
+Some [payment methods](https://docs.stripe.com/payments/payment-methods/overview.md) are enabled by the `card_payments` capability, while others are enabled by their own capability.
 
 If you’re charging and then paying out, check your Dashboard to see which payment methods you can use.
 
@@ -872,10 +869,9 @@ const account = await stripe.accounts.retrieve('{{CONNECTEDACCOUNT_ID}}');
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.AccountRetrieveParams{
-  Account: stripe.String("{{CONNECTEDACCOUNT_ID}}"),
-}
-result, err := sc.V1Accounts.GetByID(context.TODO(), params)
+params := &stripe.AccountRetrieveParams{}
+result, err := sc.V1Accounts.GetByID(
+  context.TODO(), "{{CONNECTEDACCOUNT_ID}}", params)
 ```
 
 ```dotnet
@@ -978,9 +974,8 @@ const capability = await stripe.accounts.retrieveCapability(
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
 params := &stripe.CapabilityRetrieveParams{
   Account: stripe.String("{{CONNECTEDACCOUNT_ID}}"),
-  Capability: stripe.String("card_payments"),
 }
-result, err := sc.V1Capabilities.Retrieve(context.TODO(), params)
+result, err := sc.V1Capabilities.Retrieve(context.TODO(), "card_payments", params)
 ```
 
 ```dotnet
@@ -1111,9 +1106,8 @@ sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
 params := &stripe.CapabilityUpdateParams{
   Requested: stripe.Bool(true),
   Account: stripe.String("{{CONNECTEDACCOUNT_ID}}"),
-  Capability: stripe.String("transfers"),
 }
-result, err := sc.V1Capabilities.Update(context.TODO(), params)
+result, err := sc.V1Capabilities.Update(context.TODO(), "transfers", params)
 ```
 
 ```dotnet
@@ -1300,9 +1294,9 @@ params := &stripe.AccountUpdateParams{
       Requested: stripe.Bool(true),
     },
   },
-  Account: stripe.String("{{CONNECTEDACCOUNT_ID}}"),
 }
-result, err := sc.V1Accounts.Update(context.TODO(), params)
+result, err := sc.V1Accounts.Update(
+  context.TODO(), "{{CONNECTEDACCOUNT_ID}}", params)
 ```
 
 ```dotnet

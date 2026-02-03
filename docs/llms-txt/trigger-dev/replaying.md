@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/replaying.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Replaying
 
 > A replay is a copy of a run with the same payload but against the latest version in that environment. This is useful if something went wrong and you want to try again with the latest version of your code.
@@ -60,7 +64,7 @@
 
 You can replay a run using the SDK:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 const replayedRun = await runs.replay(run.id);
 ```
 
@@ -68,7 +72,7 @@ When you call `trigger()` or `batchTrigger()` on a task you receive back a run h
 
 You can also access the run id from inside a run. You could write this to your database and then replay it later.
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 export const simpleChildTask = task({
   id: "simple-child-task",
   run: async (payload, { ctx }) => {

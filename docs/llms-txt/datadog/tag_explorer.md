@@ -6,7 +6,6 @@ description: >-
   Search and manage all cost-related tags, including those from your bills, with
   insights into their sources.
 breadcrumbs: Docs > Cloud Cost Management > Tags > Tag Explorer
-source_url: https://docs.datadoghq.com/tags/tag_explorer/index.html
 ---
 
 # Tag Explorer

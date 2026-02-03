@@ -4,7 +4,6 @@
 title: Datadog Costs
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloud Cost Management > Datadog Costs
-source_url: https://docs.datadoghq.com/datadog_costs/index.html
 ---
 
 # Datadog Costs

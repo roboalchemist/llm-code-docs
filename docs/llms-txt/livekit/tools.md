@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/agents/logic/tools.md
 
-# Source: https://docs.livekit.io/agents/build/tools.md
-
-LiveKit docs › Building voice agents › Tool definition & use
+LiveKit docs › Logic & Structure › Tool definition & use
 
 ---
 
@@ -15,13 +13,20 @@ LiveKit docs › Building voice agents › Tool definition & use
 LiveKit Agents has full support for LLM tool use. This feature allows you to create a custom library of tools to extend your agent's context, create interactive experiences, and overcome LLM limitations. Within a tool, you can:
 
 - Generate [agent speech](https://docs.livekit.io/agents/build/audio.md) with `session.say()` or `session.generate_reply()`.
-- Call methods on the frontend using [RPC](https://docs.livekit.io/home/client/data/rpc.md).
-- Handoff control to another agent as part of a [workflow](https://docs.livekit.io/agents/build/workflows.md).
+- Call methods on the frontend using [RPC](https://docs.livekit.io/transport/data/rpc.md).
+- Handoff control to another agent as part of a [workflow](https://docs.livekit.io/agents/logic/workflows.md).
 - Store and retrieve session data from the `context`.
 - Anything else that a Python function can do.
 - [Call external APIs or lookup data for RAG](https://docs.livekit.io/agents/build/external-data.md).
 
-## Tool definition
+## Tool types
+
+Two types of tools are supported:
+
+- **Function tools**: Tools that are defined as functions within your agent's code base and can be called by the LLM.
+- **Provider tools**: Tools provided by a specific model provider (e.g. OpenAI, Gemini, etc.) and are executed internally by the provider's model server.
+
+## Function tool definition
 
 The LLM has access to any tools you add to your agent class.
 
@@ -115,7 +120,7 @@ Place additional information about the tool arguments, if needed, in the tool de
 
 The tool return value is automatically converted to a string before being sent to the LLM. The LLM generates a new reply or additional tool calls based on the return value. Return `None` or nothing at all to complete the tool silently without requiring a reply from the LLM.
 
-You can use the return value to initiate a [handoff](https://docs.livekit.io/agents/build/agents-handoffs.md#tool-handoff) to a different Agent within a workflow. Optionally, you can return a tool result to the LLM as well. The tool call and subsequent LLM reply are completed prior to the handoff.
+You can use the return value to initiate a [handoff](https://docs.livekit.io/agents/logic/agents-handoffs.md#tool-handoff) to a different Agent within a workflow. Optionally, you can return a tool result to the LLM as well. The tool call and subsequent LLM reply are completed prior to the handoff.
 
 In Python, return a tuple that includes both the `Agent` instance and the result. If there is no tool result, you can return the new `Agent` instance by itself.
 
@@ -254,7 +259,7 @@ async def tts_node(self, text: AsyncIterable[str], model_settings: ModelSettings
 
 ### RunContext
 
-Tools include support for a special `context` argument. This contains access to the current `session`, `function_call`, `speech_handle`, and `userdata`. Consult the documentation on [speech](https://docs.livekit.io/agents/build/audio.md) and [state within workflows](https://docs.livekit.io/agents/build/workflows.md) for more information about how to use these features.
+Tools include support for a special `context` argument. This contains access to the current `session`, `function_call`, `speech_handle`, and `userdata`. Consult the documentation on [speech](https://docs.livekit.io/agents/build/audio.md) and [state within workflows](https://docs.livekit.io/agents/logic/workflows.md) for more information about how to use these features.
 
 ### Interruptions
 
@@ -672,7 +677,7 @@ LiveKit Agents has full support for [MCP](https://modelcontextprotocol.io/) serv
 To use it, first install the `mcp` optional dependencies:
 
 ```shell
-uv add livekit-agents[mcp]~=1.2
+uv add livekit-agents[mcp]~=1.3
 
 ```
 
@@ -708,7 +713,7 @@ agent = Agent(
 
 ## Forwarding to the frontend
 
-Forward tool calls to a frontend app using [RPC](https://docs.livekit.io/home/client/data/rpc.md). This is useful when the data needed to fulfill the function call is only available at the frontend. You may also use RPC to trigger actions or UI updates in a structured way.
+Forward tool calls to a frontend app using [RPC](https://docs.livekit.io/transport/data/rpc.md). This is useful when the data needed to fulfill the function call is only available at the frontend. You may also use RPC to trigger actions or UI updates in a structured way.
 
 For instance, here's a function that accesses the user's live location from their web browser:
 
@@ -785,7 +790,7 @@ const getUserLocation = llm.tool({
 
 ### Frontend implementation
 
-The following example uses the JavaScript SDK. The same pattern works for other SDKs. For more examples, see the [RPC documentation](https://docs.livekit.io/home/client/data/rpc.md).
+The following example uses the JavaScript SDK. The same pattern works for other SDKs. For more examples, see the [RPC documentation](https://docs.livekit.io/transport/data/rpc.md).
 
 ```typescript
 import { RpcError, RpcInvocationData } from 'livekit-client';
@@ -814,11 +819,32 @@ localParticipant.registerRpcMethod(
 
 ```
 
+## Provider tools
+
+Provider tools are implemented and executed internally by a specific model provider (e.g., OpenAI, Gemini). They function similarly to function tools within the framework, but are vendor-specific and only compatible with the corresponding provider's models.
+
+For example, you can use xAI's `XSearch` tool to query X for real-time information.
+
+```python
+from livekit.plugins import xai
+
+agent = MyAgent(
+  llm=xai.realtime.RealtimeModel(),
+  tools=[xai.realtime.XSearch()],
+)
+
+```
+
+Currently we support provider tools for the following providers:
+
+- [Gemini](https://docs.livekit.io/agents/models/llm/plugins/gemini.md#provider-tools)
+- [xAI Grok Voice Agent API](https://docs.livekit.io/agents/models/realtime/plugins/xai.md)
+
 ## External tools and MCP
 
 To load tools from an external source as a Model Context Protocol (MCP) server, use the `function_tool` function and register the tools with the `tools` property or `update_tools()` method. See the following example for a complete MCP implementation:
 
-- **[MCP Agent](https://github.com/livekit-examples/python-agents-examples/tree/main/mcp)**: A voice AI agent with an integrated Model Context Protocol (MCP) server for the LiveKit API.
+- **[MCP Agent](https://docs.livekit.io/recipes/http_mcp_client.md)**: A voice AI agent with an integrated Model Context Protocol (MCP) client for the LiveKit API.
 
 ## Examples
 
@@ -828,15 +854,13 @@ The following additional examples show how to use tools in different ways:
 
 - **[Dynamic tool creation](https://github.com/livekit/agents/blob/main/examples/voice_agents/dynamic_tool_creation.py)**: Complete example with dynamic tool lists.
 
-- **[MCP Agent](https://github.com/livekit-examples/python-agents-examples/tree/main/mcp)**: A voice AI agent with an integrated Model Context Protocol (MCP) server for the LiveKit API.
-
-- **[LiveKit Docs RAG](https://github.com/livekit-examples/python-agents-examples/tree/main/rag)**: An agent that can answer questions about LiveKit with lookups against the docs website.
+- **[MCP Agent](https://docs.livekit.io/recipes/http_mcp_client.md)**: A voice AI agent with an integrated Model Context Protocol (MCP) client for the LiveKit API.
 
 ## Additional resources
 
 The following articles provide more information about the topics discussed in this guide:
 
-- **[RPC](https://docs.livekit.io/home/client/data/rpc.md)**: Complete documentation on function calling between LiveKit participants.
+- **[RPC](https://docs.livekit.io/transport/data/rpc.md)**: Complete documentation on function calling between LiveKit participants.
 
 - **[Agent speech](https://docs.livekit.io/agents/build/audio.md)**: More information about precise control over agent speech output.
 
@@ -846,7 +870,7 @@ The following articles provide more information about the topics discussed in th
 
 ---
 
-This document was rendered at 2025-11-18T23:55:04.187Z.
-For the latest version of this document, see [https://docs.livekit.io/agents/build/tools.md](https://docs.livekit.io/agents/build/tools.md).
+This document was rendered at 2026-02-03T03:24:56.209Z.
+For the latest version of this document, see [https://docs.livekit.io/agents/logic/tools.md](https://docs.livekit.io/agents/logic/tools.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

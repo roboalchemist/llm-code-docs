@@ -2,10 +2,6 @@
 
 # Source: https://vitest.dev/config/isolate.md
 
-# Source: https://vitest.dev/config/browser/isolate.md
-
-# Source: https://vitest.dev/config/isolate.md
-
 ---
 url: /config/isolate.md
 ---

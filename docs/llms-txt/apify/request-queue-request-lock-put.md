@@ -9,13 +9,17 @@ https://api.apify.com/v2/request-queues/:queueId/requests/:requestId/lock
 ```
 
 
-Clientshttps://docs.apify.com/api/client/python/reference/class/RequestQueueClientAsync#prolong_request_lockhttps://docs.apify.com/api/client/js/reference/class/RequestQueueClient#prolongRequestLockProlongs request lock. The request lock can be prolonged only by the client that has locked it using .
+Prolongs request lock. The request lock can be prolonged only by the client that has locked it using .
 
 ## Request
 
 ## Responses
 
 * 200
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

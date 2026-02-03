@@ -1,3 +1,7 @@
+# Source: https://docs.streamlit.io/deploy/snowflake
+
+# Source: https://docs.streamlit.io/develop/tutorials/databases/snowflake
+
 # Connect Streamlit to Snowflake
 
 This guide explains how to securely access a Snowflake database from Streamlit. It uses `st.connection`, the Snowpark library, and Streamlit's Secrets management.

@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/Github-Issues.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Improving Github issue titles using their contents
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/Github-Issues/Github-Issues.ipynb) by [Ankur Goyal](https://twitter.com/ankrgyl) on 2023-10-29</div>
@@ -358,14 +362,9 @@ Wow, with just a simple change, we're able to boost summary performance by 30%!
 
 This is just the start of evaluating and improving this AI application. From here, you should dig into
 individual examples, verify whether they legitimately improved, and test on more data. You can even use
-[logging](https://www.braintrust.dev/docs/guides/logging) to capture real-user examples and incorporate
+[logging](/instrument/custom-tracing) to capture real-user examples and incorporate
 them into your evals.
 
 Happy evaluating!
 
 <img src="https://mintcdn.com/braintrust/miepTDmD0QMRaWQF/cookbook/assets/Github-Issues/improvements.gif?s=08e0797dcd74cc67eca1483ec4b1d934" alt="improvements" data-og-width="1974" width="1974" data-og-height="1152" height="1152" data-path="cookbook/assets/Github-Issues/improvements.gif" data-optimize="true" data-opv="3" />
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

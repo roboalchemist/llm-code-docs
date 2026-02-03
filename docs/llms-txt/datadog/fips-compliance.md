@@ -6,7 +6,6 @@ description: >-
   Configure FIPS-compliant cryptographic modules for the Datadog Agent in highly
   regulated environments like FedRAMP.
 breadcrumbs: Docs > Agent > Agent Configuration > Datadog FIPS Compliance
-source_url: https://docs.datadoghq.com/configuration/fips-compliance/index.html
 ---
 
 # Datadog FIPS Compliance

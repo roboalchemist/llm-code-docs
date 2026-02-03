@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/charts/st.vega_lite_chart
+
 # st.vega_lite_chart
 
 Display a chart using the Vega-Lite library.

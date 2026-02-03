@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/app-guides/use-cron-to-run-scheduled-tasks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to use cron to run scheduled tasks
 
 > Learn how to use cron to run and automate scheduled tasks on Aptible

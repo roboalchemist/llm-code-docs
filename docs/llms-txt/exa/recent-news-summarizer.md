@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/examples/recent-news-summarizer.md
+# Source: https://exa.ai/docs/examples/recent-news-summarizer.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Building a News Summarizer
 
@@ -143,8 +147,3 @@ The Jupyter notebook for this tutorial is available on [Colab](https://colab.res
     **Through Exa, we have given our LLM access to the entire Internet.** The possibilities are endless.
   </Step>
 </Steps>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

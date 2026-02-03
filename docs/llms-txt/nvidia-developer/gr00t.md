@@ -17,7 +17,7 @@ Isaac GR00T
 
 NVIDIA Isaac™ GR00T is a research initiative and development platform for developing general-purpose robot foundation models and data pipelines to accelerate humanoid robotics research and development.
 
-[Download Isaac GR00T N1.5 Model](https://github.com/NVIDIA/Isaac-GR00T)[Experience the GR00T-Mimic Blueprint](https://build.nvidia.com/nvidia/isaac-gr00t-synthetic-manipulation)
+[Download Isaac GR00T N1.6 Model](https://github.com/NVIDIA/Isaac-GR00T)[Experience the GR00T-Mimic Blueprint](https://build.nvidia.com/nvidia/isaac-gr00t-synthetic-manipulation)
 
 * * *
 
@@ -47,17 +47,17 @@ Explore the world’s first open foundation model for generalized humanoid robot
 [Read Blog](https://developer.nvidia.com/blog/accelerate-generalist-humanoid-robot-development-with-nvidia-isaac-gr00t-n1/)
 
 ### 
-### Introductory Session
+### Train Humanoids With Isaac GR00T-Dreams
 
-Learn about the pillars of the Isaac GR00T and how it’s driving the next generation of humanoid robots.
+Watch how GR00T-Dreams and Isaac GR00T are enabling robots to learn new tasks and generalize across environments.
 
-[Watch Session](https://www.nvidia.com/en-us/on-demand/session/gtc25-S72590/)
+[Watch Video](https://www.youtube.com/watch?v=pMWL1MEI-gE)
 
-### Enhance Robot Learning With GR00T-Dreams 
+### Developer Tutorial 
 
-Generate vast amounts of synthetic trajectory data to teach humanoid robots to perform new actions in novel environments.
+Learn how to post-train Isaac GR00T N1.5, enabling robot training with just 20-40 demonstrations.
 
-[Read Blog](https://developer.nvidia.com/blog/enhance-robot-learning-with-synthetic-trajectory-data-generated-by-world-foundation-models/)
+[Watch Tutorial](https://www.youtube.com/watch?v=L-WriIVOyYE&amp;t=4s)
 
 * * *
 
@@ -69,9 +69,9 @@ These models are trained on an expansive humanoid dataset consisting of real cap
   
 Isaac GR00T N models can easily generalize across common tasks—such as grasping, moving objects with one or both arms, and transferring items from one arm to another—or perform multi-step tasks that require long context and combinations of general skills. These capabilities can be applied across a variety of use-cases, including material handling, packaging, and inspection.
 
-### Isaac GR00T N1.5 3B Model
+### Isaac GR00T N1.6 3B Model
 
-[Download From Hugging Face](https://huggingface.co/nvidia/GR00T-N1.5-3B)
+[Download From Hugging Face](https://huggingface.co/nvidia/GR00T-N1.6-3B)
 
 * * *
 

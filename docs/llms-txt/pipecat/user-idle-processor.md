@@ -1,8 +1,18 @@
 # Source: https://docs.pipecat.ai/server/utilities/user-idle-processor.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # UserIdleProcessor
 
 > A processor that monitors user inactivity and triggers callbacks after specified timeout periods
+
+<Warning>
+  DEPRECATED: UserIdleProcessor has been deprecated. Use `user_idle_timeout`
+  parameter when creating your aggregator, see [Detecting Idle
+  Users](/guides/fundamentals/detecting-user-idle) for details.
+</Warning>
 
 The `UserIdleProcessor` is a specialized frame processor that monitors user activity in a conversation and executes callbacks when the user becomes idle. It's particularly useful for maintaining engagement by detecting periods of user inactivity and providing escalating responses to inactivity.
 
@@ -153,8 +163,3 @@ The processor handles the following frame types:
 * The idle callback won't be triggered while the user or bot is actively speaking
 * The processor automatically cleans up its resources when the pipeline ends
 * Basic callbacks are supported for backward compatibility
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

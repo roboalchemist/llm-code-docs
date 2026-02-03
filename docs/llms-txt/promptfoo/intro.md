@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/intro/
+
 # Intro
 
 `promptfoo` is an [open-source](https://github.com/promptfoo/promptfoo) CLI and library for evaluating and red-teaming LLM apps.

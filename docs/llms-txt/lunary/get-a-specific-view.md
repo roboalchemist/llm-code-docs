@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/api/views/get-a-specific-view.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get a specific view
 
 > Retrieves details of a specific view by its ID.
@@ -108,7 +112,3 @@ components:
           example: '2023-04-01T12:00:00Z'
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

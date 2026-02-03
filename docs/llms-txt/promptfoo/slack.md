@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/slack/
+
 # Slack Provider
 
 The Slack provider enables human-in-the-loop evaluations by sending prompts to Slack channels or users and collecting responses. This is useful for:

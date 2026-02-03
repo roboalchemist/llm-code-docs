@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/eslint/constructor-super.md
 ---
-# eslint/constructor-super&#x20;
 
 ### What it does
 

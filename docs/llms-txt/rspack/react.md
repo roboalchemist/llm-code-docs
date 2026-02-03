@@ -1,16 +1,13 @@
 # Source: https://rspack.dev/guide/tech/react.md
 
-import { PackageManagerTabs } from '@theme';
-import { Stability } from '@components/ApiMeta.tsx';
-
 # React
 
 ## How to use
 
 Rspack provides two solutions to support React:
 
-* **Use Rsbuild**: Rsbuild provides out-of-the-box support for React, allowing you to quickly create a React project. See [Rsbuild - React](https://rsbuild.rs/guide/framework/react) for details.
-* **Manual configure Rspack**: You can refer to the current document to manually add configurations for React.
+- **Use Rsbuild**: Rsbuild provides out-of-the-box support for React, allowing you to quickly create a React project. See [Rsbuild - React](https://rsbuild.rs/guide/framework/react) for details.
+- **Manual configure Rspack**: You can refer to the current document to manually add configurations for React.
 
 ## Configure JSX/TSX
 
@@ -65,12 +62,31 @@ There are currently two ways to enable React Fast Refresh in Rspack:
 
 First you need to install [@rspack/plugin-react-refresh](https://www.npmjs.com/package/@rspack/plugin-react-refresh) to support React Fast Refresh.
 
-<PackageManagerTabs command="add @rspack/plugin-react-refresh react-refresh -D" />
+
+```sh [npm]
+npm add @rspack/plugin-react-refresh react-refresh -D
+```
+
+```sh [yarn]
+yarn add @rspack/plugin-react-refresh react-refresh -D
+```
+
+```sh [pnpm]
+pnpm add @rspack/plugin-react-refresh react-refresh -D
+```
+
+```sh [bun]
+bun add @rspack/plugin-react-refresh react-refresh -D
+```
+
+```sh [deno]
+deno add npm:@rspack/plugin-react-refresh npm:react-refresh -D
+```
 
 Enabling [React Fast Refresh](https://reactnative.dev/docs/fast-refresh) functionality primarily involves two aspects: code injection and code transformation.
 
-* Code injection will inject some code from the `react-refresh` package, as well as some custom runtime code, all of which are integrated in the [@rspack/plugin-react-refresh](https://github.com/rstackjs/rspack-plugin-react-refresh) plugin and can be injected through this plugin.
-* Code transformation can be added through loaders, such as [jsc.transform.react.refresh](https://swc.rs/docs/configuration/compilation#jsctransformreactrefresh) for swc-loader or the [react-refresh/babel](https://github.com/facebook/react/tree/main/packages/react-refresh) for babel-loader.
+- Code injection will inject some code from the `react-refresh` package, as well as some custom runtime code, all of which are integrated in the [@rspack/plugin-react-refresh](https://github.com/rstackjs/rspack-plugin-react-refresh) plugin and can be injected through this plugin.
+- Code transformation can be added through loaders, such as [jsc.transform.react.refresh](https://swc.rs/docs/configuration/compilation#jsctransformreactrefresh) for swc-loader or the [react-refresh/babel](https://github.com/facebook/react/tree/main/packages/react-refresh) for babel-loader.
 
 ```js title="rspack.config.mjs"
 import { rspack } from '@rspack/core';
@@ -113,8 +129,8 @@ export default {
 
 Compared to the previous approach, this method decouples the React Fast Refresh code injection logic from the transformation logic. The code injection logic is handled uniformly by the @rspack/plugin-react-refresh plugin, while the code transformation is handled by loaders. This means that this plugin can be used in conjunction with `builtin:swc-loader`, `swc-loader`, or `babel-loader`:
 
-* For usage with `builtin:swc-loader`, you can refer to the example at [examples/react-refresh](https://github.com/rstackjs/rstack-examples/tree/main/rspack/react-refresh), When using with `swc-loader`, simply replace `builtin:swc-loader` with `swc-loader`.
-* For usage with `babel-loader`, you can refer to the example at [examples/react-refresh-babel-loader](https://github.com/rstackjs/rstack-examples/tree/main/rspack/react-refresh-babel-loader)
+- For usage with `builtin:swc-loader`, you can refer to the example at [examples/react-refresh](https://github.com/rstackjs/rstack-examples/tree/main/rspack/react-refresh), When using with `swc-loader`, simply replace `builtin:swc-loader` with `swc-loader`.
+- For usage with `babel-loader`, you can refer to the example at [examples/react-refresh-babel-loader](https://github.com/rstackjs/rstack-examples/tree/main/rspack/react-refresh-babel-loader)
 
 ## React Compiler
 
@@ -133,10 +149,10 @@ The steps to use React Compiler in Rspack:
 1. Upgrade versions of `react` and `react-dom` to 19. If you are unable to upgrade, you can install the extra [react-compiler-runtime](https://www.npmjs.com/package/react-compiler-runtime) package which will allow the compiled code to run on versions prior to 19.
 2. React Compiler currently only provides a Babel plugin, you need to install:
 
-* [@babel/core](https://www.npmjs.com/package/@babel/core)
-* [babel-loader](https://www.npmjs.com/package/babel-loader)
-* [babel-plugin-react-compiler](https://www.npmjs.com/package/babel-plugin-react-compiler)
-* [@babel/plugin-syntax-jsx](https://www.npmjs.com/package/@babel/plugin-syntax-jsx)
+- [@babel/core](https://www.npmjs.com/package/@babel/core)
+- [babel-loader](https://www.npmjs.com/package/babel-loader)
+- [babel-plugin-react-compiler](https://www.npmjs.com/package/babel-plugin-react-compiler)
+- [@babel/plugin-syntax-jsx](https://www.npmjs.com/package/@babel/plugin-syntax-jsx)
 
 3. Register `babel-loader` in your Rspack config file:
 
@@ -201,8 +217,8 @@ const ReactCompilerConfig = {
 
 You can refer to the following example projects:
 
-* [Rspack + React Compiler](https://github.com/rstackjs/rstack-examples/tree/main/rspack/react-compiler-babel)
-* [Rspack + React Compiler + TypeScript](https://github.com/rstackjs/rstack-examples/tree/main/rspack/react-compiler-babel-ts)
+- [Rspack + React Compiler](https://github.com/rstackjs/rstack-examples/tree/main/rspack/react-compiler-babel)
+- [Rspack + React Compiler + TypeScript](https://github.com/rstackjs/rstack-examples/tree/main/rspack/react-compiler-babel-ts)
 
 ## Integrating SVGR
 

@@ -6,39 +6,9 @@
 
 # Source: https://upstash.com/docs/qstash/overall/changelog.md
 
-# Source: https://upstash.com/docs/workflow/changelog.md
-
-# Source: https://upstash.com/docs/vector/overall/changelog.md
-
-# Source: https://upstash.com/docs/redis/overall/changelog.md
-
-# Source: https://upstash.com/docs/qstash/overall/changelog.md
-
-# Source: https://upstash.com/docs/workflow/changelog.md
-
-# Source: https://upstash.com/docs/vector/overall/changelog.md
-
-# Source: https://upstash.com/docs/redis/overall/changelog.md
-
-# Source: https://upstash.com/docs/qstash/overall/changelog.md
-
-# Source: https://upstash.com/docs/workflow/changelog.md
-
-# Source: https://upstash.com/docs/vector/overall/changelog.md
-
-# Source: https://upstash.com/docs/redis/overall/changelog.md
-
-# Source: https://upstash.com/docs/qstash/overall/changelog.md
-
-# Source: https://upstash.com/docs/workflow/changelog.md
-
-# Source: https://upstash.com/docs/vector/overall/changelog.md
-
-# Source: https://upstash.com/docs/redis/overall/changelog.md
-
-# Source: https://upstash.com/docs/qstash/overall/changelog.md
-
-# Source: https://upstash.com/docs/workflow/changelog.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Changelog
 
@@ -47,154 +17,195 @@
 </Note>
 
 <Update label="September 2025">
-  * **TypeScript SDK (`workflow-js`):**
-    * `Label` feature is added. This will enable our users to label their workflow runs so that
+  * **TypeScript SDK (`qstash-js`):**
+    * `Label` feature is added. This will enable our users to label their publishes so that
       * Logs can be filtered with user given label.
       * DLQ can be filtered with user given label.
-    * `notBefore` parameter is added to `trigger` function that will allow starting a workflow run at a later date
-      given by the `notBefore` parameter.
   * **Console:**
-    * A major Workflow redesign is landed to improve debugging and monitoring experience workflow runs logs.
-      * `Flat view` is removed. All the data is moved to single view. This is also to avoid confusing our
-        users and made over all experience simpler.
+    * `Flat view` on the `Logs` tab is removed. The purpose is to simplify the `Logs` tab.
+      All the information is already available on the default(grouped) view. Let us know if there is something missing
+      via Discord/Support so that we can fill in the gaps.
 </Update>
 
 <Update label="August 2025">
-  * **TypeScript SDK (`workflow-js`):**
-    * Added `retryDelay` option to dynamicaly program the retry duration. It can be configured on
-      [trigger](/workflow/basics/client#trigger-workflow) , [context.call](/workflow/basics/context#context-call)
-      or [serve](/workflow/basics/serve#retrydelay)
-    * Added ability to detect if a given url is a workflow or not. Starting with `0.2.17` trigger made via the sdk can fail (instead of hanging),
-      if there is no workflow serve on the given url.
   * **Console:**
-    * Local mode is added to enable our users to use the console with their local development envrionment and the locally deployed workflows.
-      See [docs](/workflow/howto/local-development#development-server-recommended) for details.
+    * Added ability to hide/show columns on the Schedules tab.
+    * Local mode is added to enable our users to use the console with their local development envrionment. See [docs](http://localhost:3000/qstash/howto/local-development) for details.
 </Update>
 
 <Update label="July 2025">
-  * **TypeScript SDK (`workflow-js`):**
-    * Restart/Resume for DLQ is added to allow more options to handle failed runs. See [here](/workflow/howto/failures#manually-handling-failed-workflow-runs)
-    * Added `WorkflowNonRetryableError` to fail a workflow without causing any retries. See [here](/workflow/basics/context#error-handling-and-retries)
-    * For additional bug fixes, see the full changelog [here](https://github.com/upstash/workflow-js/compare/v0.2.14...v0.2.16).
+  * **TypeScript SDK (`qstash-js`):**
+    * Added `retryDelay` option to dynamicaly program the retry duration of a failed message.
+      The new parameter is available in publish/batch/enqueue/schedules. See [here](/qstash/features/retry#custom-retry-delay)
+    * Full changelog, including all fixes, is available [here](https://github.com/upstash/qstash-js/compare/v2.8.1...v2.8.2).
 </Update>
 
 <Update label="June 2025">
-  * **TypeScript SDK (`workflow-js`):**
-    * Added `useFailureFunction` and `failureFunction` to `client.trigger`. See [here](https://github.com/upstash/workflow-js/pull/107).
-    * Added batch triggering support to `client.trigger`. See [here](https://github.com/upstash/workflow-js/pull/110).
-    * For additional bug fixes, see the release notes [here](https://github.com/upstash/workflow-js/releases/tag/v0.2.14).
-  * **Python SDK (`workflow-py`):**  
-    * Failure function is implemented. This feature enables to act on a failure of a workflow on the code. See docs [here](/workflow/howto/failures#using-a-failurefunction-recommended)
-    * For other bug fixes, see the full changelog [here](https://github.com/upstash/workflow-py/compare/v0.1.0...v0.1.1).
-  * **Console:**
-    * A major redesign is coming next month to improve Workflow usability.
-  * **Workflow Server:**  
-    * An issue causing Workflows not usable with `CloudFront` is fixed.
+  * No new features for QStash this month. We are mostly focused on stability and performance.
 </Update>
 
 <Update label="May 2025">
-  * **TypeScript SDK (`workflow-js`):**
-    * Added a `workflow` parameter to `context.call`, enabling type-safe workflow calls. See [here](https://github.com/upstash/workflow-js/pull/75).
-    * Enabled passing `context.call` settings when defining an Agent. See [here](https://github.com/upstash/workflow-js/pull/90).
-    * Added `delay` support to `client.trigger`. See [here](https://github.com/upstash/workflow-js/pull/100).
-    * Introduced `period` and improved `rate` support in flow control. See [here](https://github.com/upstash/workflow-js/pull/101).\
-      Previously, `period` was fixed at 1 second. For example, `rate: 3 period: 1d` throttles publishes to 3 per day.
-    * For additional bug fixes, see the release notes [here](https://github.com/upstash/workflow-js/releases/tag/v0.2.13).
-  * **Workflow Server:**
-    * Added support for custom `period` in flow control, allowing users to set a period of up to 1 week.\
-      Previously, `period` was fixed at 1 second. For example, `rate: 3 period: 1d` throttles publishes to 3 per day.
-    * Implemented **Workflow Resume** and **Restart** features (SDK and Console support in progress):
-      * **Resume** allows users to retry a workflow run from the point it stopped.
-      * **Restart** allows users to retry a workflow run from the beginning.
+  * **TypeScript SDK (`qstash-js`):**
+    * Added `flow control period` and deprecated `ratePerSecond`. See [here](https://github.com/upstash/qstash-js/pull/237).
+    * Added `IN_PROGRESS` state filter. See [here](https://github.com/upstash/qstash-js/pull/236).
+    * Full changelog, including all fixes, is available [here](https://github.com/upstash/qstash-js/compare/v2.7.23...v2.8.1).
+  * **Python SDK (`qstash-py`):**
+    * Added `IN_PROGRESS` state filter. See [here](https://github.com/upstash/qstash-js/pull/236).
+    * Added various missing features: Callback Headers, Schedule with Queue, Overwrite Schedule ID, Flow Control Period. See [here](https://github.com/upstash/qstash-py/pull/41).
+    * Full changelog, including all fixes, is available [here](https://github.com/upstash/qstash-py/compare/v2.0.5...v3.0.0).
   * **Console:**
-    * A major redesign is coming to improve Workflow usability.
+    * Improved logs tab behavior to prevent collapsing or unnecessary refreshes, increasing usability.
+  * **QStash Server:**
+    * Added support for filtering messages by `FlowControlKey` (Console and SDK support in progress).
+    * Applied performance improvements for bulk cancel operations.
+    * Applied performance improvements for bulk publish operations.
+    * Fixed an issue where scheduled publishes with queues would reset queue parallelism to 1.
+    * Added support for updating existing queue parallelisms even when the max queue limit is reached.
+    * Applied several additional performance optimizations.
 </Update>
 
 <Update label="April 2025">
-  * **Python SDK (`workflow-py`):**  
-    * Minor bug fixes.\
-      See the full changelog [here](https://github.com/upstash/workflow-py/compare/v0.1.0...v0.1.1).
-  * **Workflow Server:**
-    * Prevented intermediate Workflow calls from failing due to request/message quota limits.
-    * Fixed handling of `RUN_STARTED` so that it correctly returns unfinished Workflow Runs as documented.\
-      Previously, some Workflow Runs could be skipped if internal state was logged after `RUN_STARTED`.
+  * **QStash Server:**
+    * Added support for `flow-control period`, allowing users to define a period for a given rate—up to 1 week.\
+      Previously, the period was fixed at 1 second.\
+      For example, `rate: 3 period: 1d` means publishes will be throttled to 3 per day.
     * Applied several performance optimizations.
+  * **Console:**
+    * Added `IN_PROGRESS` as a filter option when grouping by message ID, making it easier to query in-flight messages.\
+      See [here](/qstash/howto/debug-logs#lifecycle-of-a-message) for an explanation of message states.
 </Update>
 
 <Update label="March 2025">
-  * **TypeScript SDK (`workflow-js`):**
-    * Added `onError` support to `serve` by the community. See [here](https://github.com/upstash/workflow-js/pull/79).
-    * Enabled support for all fetch-compatible models in Agents. See [more details here](https://github.com/upstash/workflow-js/pull/77).
-    * For additional bug fixes, see the full changelog [here](https://github.com/upstash/workflow-js/compare/v0.2.11...v0.2.12).
+  * **TypeScript SDK (`qstash-js`):**
+    * Renamed `events` to `logs` for clarity when referring to QStash features. `client.events()` is now deprecated, and `client.logs()` has been introduced. See [details here](https://github.com/upstash/qstash-js/pull/225).
+    * For all fixes, see the full changelog [here](https://github.com/upstash/qstash-js/compare/v2.7.22...v2.7.23).
+  * **QStash Server:**
+    * Fixed an issue where messages with delayed callbacks were silently failing. Now, such messages are explicitly rejected during insertion.
 </Update>
 
 <Update label="February 2025">
-  * **TypeScript SDK (`workflow-js`):**
-    * Fixed a Unicode issue in `context.call` where binary responses from endpoints could break. See [here](https://github.com/upstash/workflow-js/pull/71).
-    * Introduced `WorkflowTool`, allowing Workflow Agents to define multi-step workflows as a tool. See [here](/workflow/agents/features#tools).
-    * Added `context.invoke` to call one workflow from another with full type-safety. See the guide [here](/workflow/howto/invoke).
-    * Introduced flow control parameters to limit the rate or concurrency of workflow runs. Learn more [here](/workflow/features/flow-control).
-    * For additional bug fixes, see the full changelog [here](https://github.com/upstash/workflow-js/compare/v0.2.3...v0.2.6).
-  * **Workflow Server:**
-    * Added RateLimit and Parallelism controls to manage the frequency and concurrency of workflow runs. Learn more [here](/workflow/features/flow-control).
+  * **Python SDK (`qstash-py`):**
+    * Flow Control Parallelism and Rate. See [here](https://github.com/upstash/qstash-py/pull/36)
+    * Addressed a few minor bugs. See the full changelog [here](https://github.com/upstash/qstash-py/compare/v2.0.3...v2.0.5)
+  * **QStash Server:**
+    * Introduced RateLimit and Parallelism controls to manage the rate and concurrency of message processing. Learn more [here](/qstash/features/flowcontrol).
+    * Improved connection timeout detection mechanism to enhance scalability.
+    * Added several new features to better support webhook use cases:
+      * Support for saving headers in a URL group. See [here](/qstash/howto/webhook#2-url-group).
+      * Ability to pass configuration parameters via query strings instead of headers. See [here](/qstash/howto/webhook#1-publish).
+      * Introduced a new `Upstash-Header-Forward` header to forward all headers from the incoming request. See [here](/qstash/howto/webhook#1-publish).
 </Update>
 
 <Update label="January 2025">
-  * **TypeScript SDK (`workflow-js`):**
-    * Added the Agents API to workflows. You can now create AI agents to run workflows on your own infrastructure with all the benefits of workflows: reduced environment costs, fault tolerance, and scalability. Learn more about agents [here](/workflow/agents/overview).
-    * For other bug fixes, see the full changelog [here](https://github.com/upstash/workflow-js/compare/v0.2.3...v0.2.6).
-  * **Python SDK (workflow-py):**
-    * Released [`workflow-py`](https://github.com/upstash/workflow-py).
+  * **Python SDK (`qstash-py`):**
+    * Addressed a few minor bugs. See the full changelog [here](https://github.com/upstash/qstash-py/compare/v2.0.2...v2.0.3).
   * **Local Development Server:**
-    * The local development server is now available for public use. This server allows you to test your workflows locally. Learn more about the local development server [here](/workflow/howto/local-development#development-server-recommended).
+    * The local development server is now publicly available. This server allows you to test your Qstash setup locally. Learn more about the local development server [here](/qstash/howto/local-development).
   * **Console:**
-    * Separated Workflow and QStash consoles for a better user experience.
+    * Separated the Workflow and QStash consoles for an improved user experience.
     * Separated their DLQ messages as well.
-  * **Workflow Server:**
+  * **QStash Server:**
     * The core team focused on RateLimit and Parallelism features. These features are ready on the server and will be announced next month after the documentation and SDKs are completed.
 </Update>
 
 <Update label="December 2024">
-  * **TypeScript SDK (`workflow-js`):**
-    * Introduced third-party integrations, starting with Anthropic, Resend, and OpenAI. These integrations are automatically offloaded to workflows, ensuring long-running calls do not consume user environment time. See the related documentation [here](/workflow/basics/context#context-api).
-    * Added a `timeout` parameter to `context.call`. Learn more in the [documentation](/workflow/basics/context#context-call).
-    * Improved support for workflows in Express and SvelteKit by adding the `useJSONContent` option.
-    * Resolved loop detection issues on Cloudflare and Render.
-    * Full changelog, including all fixes, is available [here](https://github.com/upstash/workflow-js/compare/v0.2.0...v0.2.3).
+  * **TypeScript SDK (`qstash-js`):**
+    * Added global headers to the client, which are automatically included in every publish request.
+    * Resolved issues related to the Anthropics and Resend integrations.
+    * Full changelog, including all fixes, is available [here](https://github.com/upstash/qstash-js/compare/v2.7.17...v2.7.20).
 
-  * **Workflow Server:**
-    * Added the `WorkflowCreatedAt` filter for Dead Letter Queue (DLQ) and Events.
-    * Prepared the local development server for public release (coming soon).
-    * Enhanced `context.SleepUntil` to support float values.
-    * Increased the event retention period from 10,000 events to up to 14 days. Learn more on the [Pricing page](https://upstash.com/pricing/workflow).
+  * **Python SDK (`qstash-py`):**
+    * Introduced support for custom `schedule_id` values.
+    * Enabled passing headers to callbacks using the `Upstash-Callback-Forward-...` prefix.
+    * Full changelog, including all fixes, is available [here](https://github.com/upstash/qstash-py/compare/v2.0.0...v2.0.1).
+
+  * **Qstash Server:**
+    * Finalized the local development server, now almost ready for public release.
+    * Improved error reporting by including the field name in cases of invalid input.
+    * Increased the maximum response body size for batch use cases to 100 MB per REST call.
+    * Extended event retention to up to 14 days, instead of limiting to the most recent 10,000 events. Learn more on the [Pricing page](https://upstash.com/pricing/qstash).
 </Update>
 
 <Update label="November 2024">
-  * **Python SDK (workflow-py):**
-    * Began development of the Python SDK.
-  * **TypeScript SDK (workflow-js):**
-    * Added support for string durations (e.g., `1d`, `30s`) in `context.sleep` and `context.waitForEvent`.
-    * Introduced integrations for [Astro](/workflow/quickstarts/astro) and [Express](/workflow/quickstarts/express).
-    * Added `client.trigger`, enabling workflows to start and return the workflow run ID. See the [documentation](/workflow/basics/client#trigger-workflow).
-    * Added a retry option for `context.call`. See the [documentation](/workflow/basics/context#context-call).
-    * Introduced a lazy fetch feature to support longer and larger workflows on resource-limited platforms.
-    * Added `context.cancel` to cancel the current workflow. See the [documentation](/workflow/basics/context#context-cancel).
-    * Full changelog, including fixes, is available [here](https://github.com/upstash/workflow-js/compare/v0.1.2...v0.2.0).
-  * **Workflow Server:**
-    * Added bulk cancel functionality for workflow runs. See the [REST API](/workflow/rest/runs/bulk-cancel).
-    * Introduced content-based deduplication for workflows and retry-until-success functionality. This will allow workflows to be used in areas with unstable network connection.
+  * **TypeScript SDK (qstash-js):**
+    * Added support for the Anthropics provider and refactored the `api` field of `publishJSON`. See the documentation [here](/qstash/integrations/anthropic).
+    * Full changelog, including fixes, is available [here](https://github.com/upstash/qstash-js/compare/v2.7.14...v2.7.17).
+  * **Qstash Server:**
+    * Fixed a bug in schedule reporting. The Upstash-Caller-IP header now correctly reports the user’s IP address instead of an internal IP for schedules.
+    * Validated the scheduleId parameter. The scheduleId must now be alphanumeric or include hyphens, underscores, or periods.
+    * Added filtering support to bulk message cancellation. Users can now delete messages matching specific filters. See Rest API [here](/qstash/api/messages/bulk-cancel).
+    * Resolved a bug that caused the DLQ Console to become unusable when data was too large.
+    * Fixed an issue with queues that caused them to stop during temporary network communication problems with the storage layer.
 </Update>
 
 <Update label="October 2024">
-  * Optimized the console by trimming event bodies, reducing resource usage and enabling efficient querying of events with large payloads.
-  * Began development on a new architecture to deliver faster event processing on the server.
-  * Added [Wait Notify](/workflow/howto/events) feature.
+  * **TypeScript SDK (qstash-js):**
+    * Fixed a bug on qstash-js where we skipped using the next signing key when the current signing key fails to verify the `upstash-signature`. Released with qstash-js v2.7.14.
+    * Added resend API. See [here](/qstash/integrations/resend). Released with qstash-js v2.7.14.
+    * Added `schedule to queues` feature to the qstash-js. See [here](/qstash/features/schedules#scheduling-to-a-queue). Released with qstash-js v2.7.14.
+  * **Console:**
+    * Optimized the console by trimming event bodies, reducing resource usage and enabling efficient querying of events with large payloads.
+  * **Qstash Server:**
+    * Began development on a new architecture to deliver faster event processing on the server.
+    * Added more fields to events in the [REST API](/qstash/api/events/list), including `Timeout`, `Method`, `Callback`, `CallbackHeaders`, `FailureCallback`, `FailureCallbackHeaders`, and `MaxRetries`.
+    * Enhanced retry backoff logic by supporting additional headers for retry timing. Along with `Retry-After`, Qstash now recognizes `X-RateLimit-Reset`, `X-RateLimit-Reset-Requests`, and `X-RateLimit-Reset-Tokens` as backoff time indicators. See [here](/qstash/features/retry#retry-after-headers) for more details.
 </Update>
 
 <Update label="September 2024">
-  * Bug fixes and internal logging improvements.
+  * Improved performance, resulting in reduced latency for average publish times.
+  * Set the `nbf` (not before) claim on Signing Keys to 0. This claim specifies the time before which the JWT must not be processed. Previously, this was incorrectly used, causing validation issues when there were minor clock discrepancies between systems.
+  * Fixed queue name validation. Queue names must now be alphanumeric or include hyphens, underscores, or periods, consistent with other API resources.
+  * Resolved bugs related to [overwriting a schedule](/qstash/features/schedules#overwriting-an-existing-schedule).
 </Update>
 
 <Update label="August 2024">
-  * Released [Upstash Workflow](/workflow/getstarted).
+  * Released [Upstash Workflow](/qstash/workflow).
+  * Fixed a bug where paused schedules were mistakenly resumed after a process restart (typically occurring during new version releases).
+</Update>
+
+<Update label="July 2024">
+  * Big update on the UI, where all the Rest functinality exposed in the Console.
+  * Addded order query parameter to [/v2/events](/qstash/api/events/list) and [/v2/dlq](/qstash/api/dlq/listMessages) endpoints.
+  * Added [ability to configure](/qstash/features/callbacks#configuring-callbacks) callbacks(/failure\_callbacks)
+  * A critical fix for schedule pause and resume Rest APIs where the endpoints were not working at all before the fix.
+</Update>
+
+<Update label="June 2024">
+  * Pause and resume for scheduled messages
+  * Pause and resume for queues
+  * [Bulk cancel](/qstash/api/messages/bulk-cancel) messages
+  * Body and headers on [events](/qstash/api/events/list)
+  * Fixed inaccurate queue lag
+</Update>
+
+<Update label="May 2024">
+  * [Retry-After](/qstash/features/retry#retry-after-header) support for rate-limited endpoints
+  * [Upstash-Timeout](/qstash/api/publish) header
+</Update>
+
+<Update label="April 2024">
+  * [Queues and parallelism](/qstash/features/queues)
+  * [Event filtering](/qstash/api/events/list)
+</Update>
+
+<Update label="March 2024">
+  * [Batch publish messages](/qstash/api/messages/batch)
+  * [Bulk delete](/qstash/api/dlq/deleteMessages) for DLQ
+</Update>
+
+<Update label="February 2024">
+  * Added [failure callback support](/qstash/api/schedules/create) to scheduled messages
+  * Added Upstash-Caller-IP header to outgoing messages. See \[[https://upstash.com/docs/qstash/howto/receiving](https://upstash.com/docs/qstash/howto/receiving)] for all headers
+  * Added Schedule ID to [events](/qstash/api/events/list) and [messages](/qstash/api/messages/get)
+</Update>
+
+<Update label="November 2023">
+  * Put last response in DLQ
+  * DLQ [get message](/qstash/api/dlq/getMessage)
+  * Pass schedule ID to the header when calling the user's endpoint
+  * Added more information to [callbacks](/qstash/features/callbacks)
+</Update>
+
+<Update label="October 2023">
+  * Added [Upstash-Failure-Callback](/qstash/features/callbacks#what-is-a-failure-callback)
 </Update>

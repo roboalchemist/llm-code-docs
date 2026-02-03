@@ -1,5 +1,9 @@
 # Source: https://docs.openpipe.ai/features/request-logs/reporting-anthropic.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.openpipe.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Logging Anthropic Requests
 
 Anthropic's language models have a different API structure than those of OpenAI.
@@ -7,7 +11,7 @@ To record requests made to Anthropic's models, follow the examples below:
 
 <Tabs>
   <Tab title="Python">
-    ```python
+    ```python  theme={null}
     import time
     from anthropic import Anthropic
     from openpipe.client import OpenPipe
@@ -37,7 +41,7 @@ To record requests made to Anthropic's models, follow the examples below:
   </Tab>
 
   <Tab title="NodeJS">
-    ```typescript
+    ```typescript  theme={null}
     import Anthropic from "@anthropic-ai/sdk";
     import { Message, MessageCreateParams } from "@anthropic-ai/sdk/resources";
     import OpenPipe from "openpipe/client";

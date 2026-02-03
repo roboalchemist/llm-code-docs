@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/ecosystem/react.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Build a React app with Bun
 
 Bun supports `.jsx` and `.tsx` files out of the box. React just works with Bun.

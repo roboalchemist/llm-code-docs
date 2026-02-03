@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/usage/command-line/
+
 # Command line
 
 The `promptfoo` command line utility supports the following subcommands:

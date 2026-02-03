@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/set/sscan.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/sscan.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/sscan.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/sscan.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/sscan.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/sscan.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/sscan.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/sscan.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/set/sscan.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/set/sscan.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # SSCAN
 
@@ -26,7 +12,7 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the set.
 </ParamField>
 
@@ -35,7 +21,7 @@
 </ParamField>
 
 <ParamField body="options" type="Object">
-  <ParamField body="match" type="string">
+  <ParamField body="match" type="str">
     Glob-style pattern to filter by members.
   </ParamField>
 
@@ -46,16 +32,23 @@
 
 ## Response
 
-<ResponseField type="[number, TMember[]]" required>
+<ResponseField type="Tuple[number, TMember[]]" required>
   The new cursor and the members.
   If the new cursor is `0` the iteration is complete.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example theme={"system"}
-  await redis.sadd("key", "a", "ab","b", "c");
-  const [newCursor, fields] = await redis.sscan("key", 0, { match: "a*"});
-  console.log(newCursor); // likely `0` since this is a very small set
-  console.log(fields); // ["a", "ab"]
+  ```py Example theme={"system"}
+  # Get all members of a set.
+
+  cursor = 0
+  results = set()
+
+  while True:
+      cursor, keys = redis.sscan("myset", cursor, match="*")
+
+      results.extend(keys)
+      if cursor == 0:
+          break
   ```
 </RequestExample>

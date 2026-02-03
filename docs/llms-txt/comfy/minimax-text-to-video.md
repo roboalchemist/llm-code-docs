@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/built-in-nodes/partner-node/video/minimax/minimax-text-to-video.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # MiniMax Text to Video - ComfyUI Native Node Documentation
 
 > A node that converts text descriptions into videos using MiniMax AI

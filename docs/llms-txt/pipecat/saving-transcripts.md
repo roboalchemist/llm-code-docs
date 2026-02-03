@@ -1,76 +1,79 @@
 # Source: https://docs.pipecat.ai/guides/fundamentals/saving-transcripts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Saving Conversation Transcripts
 
 > Learn how to collect and save conversation transcripts between users and your bot
 
 ## Overview
 
-Recording transcripts of conversations between users and your bot is useful for debugging, analysis, and creating a record of interactions. Pipecat's `TranscriptProcessor` makes it easy to collect both user and bot messages as they occur.
+Recording transcripts of conversations between users and your bot is useful for debugging, analysis, and creating a record of interactions. Pipecat's turn events make it easy to collect both user and assistant messages as they occur.
 
 ## How It Works
 
-The `TranscriptProcessor` collects transcripts by:
+Transcripts are collected using turn events on the context aggregators:
 
-1. Capturing what the user says (from `TranscriptionFrame`s)
-2. Capturing what the bot says (from `TTSTextFrame`s)
-3. Emitting events with transcript updates in real-time
+1. Capturing what the user says via `on_user_turn_stopped`
+2. Capturing what the assistant says via `on_assistant_turn_stopped`
+3. Each event provides the complete transcript for that turn
 4. Allowing you to handle these events with custom logic
 
 <Note>
-  The `TranscriptProcessor` provides two separate processors: one for user
-  speech and one for assistant speech. Both emit the same event type when new
-  transcript content is available.
+  Turn events are emitted by the context aggregators (`LLMUserAggregator` and
+  `LLMAssistantAggregator`), which are created as part of the
+  `LLMContextAggregatorPair`.
 </Note>
 
 ## Basic Implementation
 
-### Step 1: Create a Transcript Processor
+### Step 1: Create Context Aggregators
 
-First, initialize the transcript processor:
+First, create the context aggregator pair and get references to both aggregators:
 
 ```python  theme={null}
-from pipecat.processors.transcript_processor import TranscriptProcessor
+from pipecat.processors.aggregators.llm_response_universal import (
+    LLMContextAggregatorPair,
+    UserTurnStoppedMessage,
+    AssistantTurnStoppedMessage,
+)
 
-# Create a single transcript processor instance
-transcript = TranscriptProcessor()
+# Create context aggregator pair
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(context)
 ```
 
 ### Step 2: Add to Your Pipeline
 
-Place the processors in your pipeline at the appropriate positions:
+Include the aggregators in your pipeline:
 
 ```python  theme={null}
 pipeline = Pipeline(
     [
         transport.input(),
-        stt,                            # Speech-to-text
-        transcript.user(),              # Captures user transcripts
-        context_aggregator.user(),
+        stt,                              # Speech-to-text
+        user_aggregator,
         llm,
-        tts,                            # Text-to-speech
+        tts,                              # Text-to-speech
         transport.output(),
-        transcript.assistant(),         # Captures assistant transcripts
-        context_aggregator.assistant(),
+        assistant_aggregator,
     ]
 )
 ```
 
-<Note>
-  Place `transcript.user()` after the STT processor and `transcript.assistant()`
-  after `transport.output()` to ensure accurate transcript collection.
-</Note>
+### Step 3: Handle Turn Events
 
-### Step 3: Handle Transcript Updates
-
-Register an event handler to process transcript updates:
+Register event handlers to capture transcripts when turns complete:
 
 ```python  theme={null}
-@transcript.event_handler("on_transcript_update")
-async def handle_transcript_update(processor, frame):
-    # Each message contains role (user/assistant), content, and timestamp
-    for message in frame.messages:
-        print(f"[{message.timestamp}] {message.role}: {message.content}")
+@user_aggregator.event_handler("on_user_turn_stopped")
+async def on_user_turn_stopped(aggregator, strategy, message: UserTurnStoppedMessage):
+    print(f"[{message.timestamp}] user: {message.content}")
+
+@assistant_aggregator.event_handler("on_assistant_turn_stopped")
+async def on_assistant_turn_stopped(aggregator, message: AssistantTurnStoppedMessage):
+    print(f"[{message.timestamp}] assistant: {message.content}")
 ```
 
 <Tip>
@@ -81,20 +84,13 @@ async def handle_transcript_update(processor, frame):
 ## Next Steps
 
 <CardGroup cols={2}>
-  <Card title="Try the Transcript Example" icon="code" iconType="duotone" href="https://github.com/pipecat-ai/pipecat/blob/main/examples/foundational/28-transcription-processor.py">
-    Explore a complete working example that demonstrates how to collect and save
-    conversation transcripts with Pipecat.
+  <Card title="Turn Events Reference" icon="book" iconType="duotone" href="/server/utilities/turn-management/turn-events">
+    Learn about all available turn events and their parameters.
   </Card>
 
-  <Card title="TranscriptProcessor Reference" icon="book" iconType="duotone" href="/server/utilities/transcript-processor">
-    Read the complete API reference documentation for advanced configuration
-    options and event handlers.
+  <Card title="Transcriptions Reference" icon="scroll" iconType="duotone" href="/server/utilities/turn-management/transcriptions">
+    See more examples for collecting and processing transcriptions.
   </Card>
 </CardGroup>
 
 Consider implementing transcript recording in your application for debugging during development and preserving important conversations in production. The transcript data can also be useful for analyzing conversation patterns and improving your bot's responses over time.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

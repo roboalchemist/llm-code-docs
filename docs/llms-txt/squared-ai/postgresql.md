@@ -2,39 +2,29 @@
 
 # Source: https://docs.squared.ai/guides/destinations/retl-destinations/database/postgresql.md
 
-# Source: https://docs.squared.ai/guides/sources/data-sources/postgresql.md
-
-# Source: https://docs.squared.ai/guides/destinations/retl-destinations/database/postgresql.md
-
-# Source: https://docs.squared.ai/guides/sources/data-sources/postgresql.md
-
-# Source: https://docs.squared.ai/guides/destinations/retl-destinations/database/postgresql.md
-
-# Source: https://docs.squared.ai/guides/sources/data-sources/postgresql.md
-
-# Source: https://docs.squared.ai/guides/destinations/retl-destinations/database/postgresql.md
-
-# Source: https://docs.squared.ai/guides/sources/data-sources/postgresql.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # PostgreSQL
 
 > PostgreSQL popularly known as Postgres, is a powerful, open-source object-relational database system that uses and extends the SQL language combined with many features that safely store and scale data workloads.
 
-## Setting Up a Source Connector in AI Squared
+## Setting Up a destination Connector in AI Squared
 
-To integrate PostgreSQL with AI Squared, you need to establish a source connector.
+To integrate PostgreSQL with AI Squared, you need to establish a destination connector.
 This connector will enable AI Squared to extract data from your PostgreSQL database efficiently.
-Below are the steps to set up the source connector in AI Squared:
+Below are the steps to set up the destination connector in AI Squared:
 
 ### Step 1: Access AI Squared
 
 * Log in to your AI Squared account.
-* Navigate to the `Sources` section where you can manage your data sources.
+* Navigate to the `destinations` section where you can manage your data destinations.
 
-### Step 2: Create a New Source Connector
+### Step 2: Create a New destination Connector
 
-* Click on the `Add Source` button.
-* Select `PostgreSQL` from the list of available source types.
+* Click on the `Add destination` button.
+* Select `PostgreSQL` from the list of available destination types.
 
 ### Step 3: Configure Connection Settings
 
@@ -59,10 +49,10 @@ Enter these details in the respective fields on the connector configuration page
 * Once you've entered the necessary information. The next step is automated **Test Connection** feature to ensure that AI Squared can successfully connect to your PostgreSQL database.
 * If the test is successful, you'll receive a confirmation message. If not, double-check your entered details for any errors.
 
-### Step 5: Finalize the Source Connector Setup
+### Step 5: Finalize the destination Connector Setup
 
-* Save the connector settings to establish the source connection.
+* Save the connector settings to establish the destination connection.
 
 ### Conclusion
 
-By following these steps, you've successfully set up a PostgreSQL source connector in AI Squared.
+By following these steps, you've successfully set up a PostgreSQL destination connector in AI Squared.

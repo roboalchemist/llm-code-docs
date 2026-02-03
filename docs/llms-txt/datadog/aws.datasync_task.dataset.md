@@ -4,8 +4,6 @@
 title: DataSync Task
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > DataSync Task
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.datasync_task.dataset/index.html
 ---
 
 # DataSync Task
@@ -39,7 +37,7 @@ aws.datasync_task
 | source_location_arn                | core | string        | The ARN of your transfer's source location.                                                                                                                                                                                   |
 | source_network_interface_arns      | core | array<string> | The ARNs of the network interfaces that DataSync created for your source location.                                                                                                                                            |
 | status                             | core | string        | The status of your task. For information about what each status means, see Task statuses.                                                                                                                                     |
-| tags                               | core | hstore        |
+| tags                               | core | hstore_csv    |
 | task_arn                           | core | string        | The ARN of your task.                                                                                                                                                                                                         |
 | task_mode                          | core | string        | The task mode that you're using. For more information, see Choosing a task mode for your data transfer.                                                                                                                       |
 | task_report_config                 | core | json          | The configuration of your task report, which provides detailed information about your DataSync transfer. For more information, see Monitoring your DataSync transfers with task reports.                                      |

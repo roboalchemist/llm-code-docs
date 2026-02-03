@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/codereview/auto-generated-pr-descriptions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Auto-Generated PR Descriptions
 
 > Generates comprehensive PR descriptions using Augment Code's Context Engine.
@@ -27,8 +31,3 @@ After Augment Code Review has reviewed your pull request, it will leave a commen
 **Use as a Starting Point**: Treat the auto-generated description as a foundation. Enhance it with project-specific context, design decisions, and any nuances the AI might miss.
 
 **Give Reviewers Context**: Give reviewers comprehensive context upfront, leading to faster and more thorough reviews. At the same time, help new team members understand changes more quickly with detailed, consistent PR descriptions.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.augmentcode.com/llms.txt

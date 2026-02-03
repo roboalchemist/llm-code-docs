@@ -1,3 +1,7 @@
+# Source: https://docs.streamlit.io/deploy/streamlit-community-cloud/status
+
+# Source: https://docs.streamlit.io/develop/api-reference/status
+
 # Display progress and status
 
 Streamlit provides a few methods that allow you to add animation to your apps. These animations include progress bars, status messages (like warnings), and celebratory balloons.

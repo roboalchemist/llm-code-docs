@@ -6,177 +6,6 @@ Source: https://screenshotone.com/docs/llms-full.txt
 
 # ScreenshotOne.com Full Documentation
 
-# Async and Webhooks
-
-import Alert from "@/components/Alert.astro";
-
-ScreenshotOne supports asynchronous screenshot rendering and webhooks. The document describes both of them in one
-place since usually they are used together.
-
-The main current supported use case is to render screenshots asynchronously, [upload them to S3](/docs/upload-to-s3/) and return the file location to the specified webhook. That's what customers asked to implement first.
-
-## Async
-
-You can literally execute any request asynchronously by setting the `async` option to `true.` But not every request makes sense to execute asynchronously.
-
-Once you set `async=true,` the API checks your access key and limits and returns the response immediately but continues to execute the request.
-
-One of the top use cases for which it was requested is uploading files to S3 asynchronously without waiting for screenshots to be rendered.
-
-An example of such a request could be:
-
-```
-https://api.screenshotone.com/take?access_key=0MpjJxw8Vk7ZAw&url=https://example.com&store=true&storage_path=example.com&response_type=json&async=true
-```
-
-You request rendering but don't wait for the response. What if you want to get the result of uploading? You can do it by using webhooks.
-
-## Webhooks
-
-Using webhooks with ScreenshotOne allows you to deliver the results of the request execution to your URL as a POST body.
-
-<Alert>
-    Currently, caching is not supported for webhooks since it doesn't make much
-    sense. If you need its support for other use cases, please, send a chat
-    message or email to `support@screenshotone.com`.
-</Alert>
-
-You can use webhooks with both synchronous and asynchronous requests. But usually, it is used in combination with asynchronous requests.
-
-An example of an asynchronous request that uploads rendered screenshot to S3 and sends a webhook might look like this:
-
-```
-https://api.screenshotone.com/take?access_key=<your api key>
-  &url=https://example.com
-  &store=true
-  &storage_path=example.com
-  &response_type=json
-  &async=true  
-  &webhook_url=<your webhook URL>
-  &storage_return_location=true
-```
-
-Not that, to get the location, you must specify the `storage_return_location` parameter as `true`.
-
-An example of the webhook request body you will receive:
-
-```
-{
-  "screenshot_url": "...",
-  // ...
-  "store": {
-    // ...
-    "location": "..."
-  },
-}
-```
-
-You also receive the `X-ScreenshotOne-Signature` (`x-screenshotone-signature`) header that you should use to validate the webhook request body and make sure that ScreenshotOne sent the request.
-
-If you do not upload the screenshot to any S3-compatible storage, you will receive [the `screenshot_url`](/docs/screenshot-url/) in the response body if you set `response_type=json`: 
-
-```json
-{
-  // ...
-  "screenshot_url": "..."
-}
-```
-
-If you don't specify the `response_type` parameter as `json`, you will receive the screenshot in the binary format in the response body.
-
-```
-<binary data>
-```
-
-### Verifying Signature
-
-To ensure that ScreenshotOne sent the request, you should get the signature from the `X-ScreenshotOne-Signature` header and verify it with your secret key from [the access page](https://dash.screenshotone.com/access) by applying the HMAC SHA-256 algorithm.
-
-<Alert>
-    Never share your secret key with any party. In case it is leaked, you can
-    quickly regenerate it on [the access
-    page](https://dash.screenshotone.com/access).
-</Alert>
-
-A pseudo-code on TypeScript (Node.js) of how you can do it:
-
-```javascript
-import * as crypto from "crypto";
-
-const receivedSignature = request.headers.get("x-screenshotone-signature");
-const requestBody = await request.rawText();
-
-const calculatedSignature = crypto
-    .createHmac("sha256", yourSecretKey)
-    .update(requestBody, "utf-8")
-    .digest("hex");
-
-if (calculatedSignature !== receivedSignature) {
-    // the signature is not valid
-    // you should not process this request and reject it immediately
-    throw new Error("...");
-}
-
-// it is safe to process the request
-// you can do something with the webhook request body
-```
-
-### Disable Signing
-
-Singing webhook request body takes time. If you are sure that your webhooks are unique and secret, you might want to disable signing to improve performance by using `webhook_sign=false`.
-
-### Debugging and support headers
-
-There are a few headers that are not part of the body and are not participating in the signing. They must not be used for any logic; it is just for debugging and support purposes:
-
--   `x-screenshotone-rendering-seconds`—screenshot rendering time in seconds with fractions, e.g. `2.56`;
--   `x-screenshotone-size-bytes`—screenshot size if available (not streaming), e.g. `30033`;
--   `x-screenshotone-trace-id`—unique request trace id when reaching out to the ScreenshotOne support;
--   `x-screenshotone-reference`—screenshot or video id (if available) that can be seen in the history or used when reaching out to the ScreenshotOne support.
-
-### External identifier
-
-You can set `external_identifier` parameter to any alphanumeric value. It will be included in the webhook request headers:
-
-- `x-screenshotone-external-identifier`—external identifier. It is helpful for error tracking and successful request tracking.
-
-### Webhook errors
-
-We currently don't support a separate endpoint to send webhook errors. But you can still get them in the webhook request body or headers.
-
-By default, errors are not sent to the webhook URL, at all. But if you want to get them, you can set `webhook_errors=true` parameter.
-
-And you will get error details in the webhook request body if the JSON response type is used: 
-
-```javascript
-{
-    // ...  
-    "error_code": "...",
-    "error_message": "...",
-    "documentation_url": "..."
-}
-```
-
-Or always in the headers: 
-
-- `x-screenshotone-error-code`—error code;
-- `x-screenshotone-error-message`—error message;
-- `x-screenshotone-documentation-url`—documentation URL about the error.
-
-Check out all possible error codes in the [API error reference](/docs/errors/).
-
-### Testing webhook errors
-
-You can test it with an URL like this `https://example.com/404`. It will trigger an error.
-
-In general, it is enough to check for the error code presence or absence of the screenshot URL/binary data to determine if the request was successful or not.
-
-In the worst case scenario, you might assume if you haven't been notified about any errors or successful requests, likely the request has been failed.
-
-## Summary
-
-That's it. In case you have any questions or problems, feel free to write to `support@screenshotone.com`.
-
 # Animated Screenshots
 
 import Alert from "@/components/Alert.astro";
@@ -397,6 +226,10 @@ Animated screenshots also support most options supported by regular image screen
 
 import Alert from "@/components/Alert.astro";
 
+:::tip
+Our bulk screenshots API endpoint is a simple wrapper endpoint around the regular screenshot API endpoints like (`/take`, `/animate`, and similar). But since it is a simple wrapper, you might find it much better to implement your own bulk screenshot solution. Check out our guide on [how to take screenshots of multiple URLs](/docs/guides/bulk-screenshots/) with ScreenshotOne API.
+:::
+
 ## Request
 
 You can use a bulk screenshot-taking feature to take many screenshots in one request.
@@ -564,6 +397,222 @@ In this example, I upload screenshots taken from different devices and save the 
 ## Limitations
 
 Currently, only up to 20 requests are supported in the one bulk request.
+
+# Async and Webhooks
+
+import Alert from "@/components/Alert.astro";
+
+ScreenshotOne supports asynchronous screenshot rendering and webhooks. The document describes both of them in one
+place since usually they are used together.
+
+The main current supported use case is to render screenshots asynchronously, [upload them to S3](/docs/upload-to-s3/) and return the file location to the specified webhook. That's what customers asked to implement first.
+
+## Async
+
+You can literally execute any request asynchronously by setting the `async` option to `true.` But not every request makes sense to execute asynchronously.
+
+Once you set `async=true,` the API checks your access key and limits and returns the response immediately but continues to execute the request.
+
+One of the top use cases for which it was requested is uploading files to S3 asynchronously without waiting for screenshots to be rendered.
+
+An example of such a request could be:
+
+```
+https://api.screenshotone.com/take?access_key=0MpjJxw8Vk7ZAw&url=https://example.com&store=true&storage_path=example.com&response_type=json&async=true
+```
+
+You request rendering but don't wait for the response. What if you want to get the result of uploading? You can do it by using webhooks.
+
+## Webhooks
+
+Using webhooks with ScreenshotOne allows you to deliver the results of the request execution to your URL as a POST body.
+
+<Alert>
+    Currently, caching is not supported for webhooks since it doesn't make much
+    sense. If you need its support for other use cases, please, send a chat
+    message or email to `support@screenshotone.com`.
+</Alert>
+
+You can use webhooks with both synchronous and asynchronous requests. But usually, it is used in combination with asynchronous requests.
+
+An example of an asynchronous request that uploads rendered screenshot to S3 and sends a webhook might look like this:
+
+```
+https://api.screenshotone.com/take?access_key=<your api key>
+  &url=https://example.com
+  &store=true
+  &storage_path=example.com
+  &response_type=json
+  &async=true  
+  &webhook_url=<your webhook URL>
+  &storage_return_location=true
+```
+
+Not that, to get the location, you must specify the `storage_return_location` parameter as `true`.
+
+An example of the webhook request body you will receive:
+
+```
+{
+  "screenshot_url": "...",
+  // ...
+  "store": {
+    // ...
+    "location": "..."
+  },
+}
+```
+
+You also receive the `X-ScreenshotOne-Signature` (`x-screenshotone-signature`) header that you should use to validate the webhook request body and make sure that ScreenshotOne sent the request.
+
+If you do not upload the screenshot to any S3-compatible storage, you will receive [the `screenshot_url`](/docs/screenshot-url/) in the response body if you set `response_type=json`: 
+
+```json
+{
+  // ...
+  "screenshot_url": "..."
+}
+```
+
+If you don't specify the `response_type` parameter as `json`, you will receive the screenshot in the binary format in the response body.
+
+```
+<binary data>
+```
+
+### Verifying Signature
+
+To ensure that ScreenshotOne sent the request, you should get the signature from the `X-ScreenshotOne-Signature` header and verify it with your secret key from [the access page](https://dash.screenshotone.com/access) by applying the HMAC SHA-256 algorithm.
+
+<Alert>
+    Never share your secret key with any party. In case it is leaked, you can
+    quickly regenerate it on [the access
+    page](https://dash.screenshotone.com/access).
+</Alert>
+
+A pseudo-code on TypeScript (Node.js) of how you can do it:
+
+```javascript
+import * as crypto from "crypto";
+
+const receivedSignature = request.headers.get("x-screenshotone-signature");
+const requestBody = await request.rawText();
+
+const calculatedSignature = crypto
+    .createHmac("sha256", yourSecretKey)
+    .update(requestBody, "utf-8")
+    .digest("hex");
+
+if (calculatedSignature !== receivedSignature) {
+    // the signature is not valid
+    // you should not process this request and reject it immediately
+    throw new Error("...");
+}
+
+// it is safe to process the request
+// you can do something with the webhook request body
+```
+
+### Disable Signing
+
+Singing webhook request body takes time. If you are sure that your webhooks are unique and secret, you might want to disable signing to improve performance by using `webhook_sign=false`.
+
+### Debugging and support headers
+
+There are a few headers that are not part of the body and are not participating in the signing. They must not be used for any logic; it is just for debugging and support purposes:
+
+-   `x-screenshotone-rendering-seconds`—screenshot rendering time in seconds with fractions, e.g. `2.56`;
+-   `x-screenshotone-size-bytes`—screenshot size if available (not streaming), e.g. `30033`;
+-   `x-screenshotone-trace-id`—unique request trace id when reaching out to the ScreenshotOne support;
+-   `x-screenshotone-reference`—screenshot or video id (if available) that can be seen in the history or used when reaching out to the ScreenshotOne support.
+
+### External identifier
+
+You can set `external_identifier` parameter to any alphanumeric value. It will be included in the webhook request headers:
+
+- `x-screenshotone-external-identifier`—external identifier. It is helpful for error tracking and successful request tracking.
+
+### Webhook errors
+
+We currently don't support a separate endpoint to send webhook errors. But you can still get them in the webhook request body or headers.
+
+By default, errors are not sent to the webhook URL, at all. But if you want to get them, you can set `webhook_errors=true` parameter.
+
+And you will get error details in the webhook request body if the JSON response type is used: 
+
+```javascript
+{
+    // ...  
+    "error_code": "...",
+    "error_message": "...",
+    "documentation_url": "..."
+}
+```
+
+Or always in the headers: 
+
+- `x-screenshotone-error-code`—error code;
+- `x-screenshotone-error-message`—error message;
+- `x-screenshotone-documentation-url`—documentation URL about the error.
+
+Check out all possible error codes in the [API error reference](/docs/errors/).
+
+### Testing webhook errors
+
+You can test it with an URL like this `https://example.com/404`. It will trigger an error.
+
+In general, it is enough to check for the error code presence or absence of the screenshot URL/binary data to determine if the request was successful or not.
+
+In the worst case scenario, you might assume if you haven't been notified about any errors or successful requests, likely the request has been failed.
+
+## Summary
+
+That's it. In case you have any questions or problems, feel free to write to `support@screenshotone.com`.
+
+# How credits work in ScreenshotOne
+
+:::note
+Currently, everything costs 1 credit, be it a full-page screenshot, a scrolling screenshot, a PDF, or a video.
+
+It is done that way to keep the pricing simple and predictable.
+:::
+
+Every plan on ScreenshotOne comes with a monthly credit allowance. Credits reset at the start of each billing cycle—regardless of whether you’re on a monthly or annual plan.
+
+- **Monthly plans**: Credits refresh on the same day you subscribed each month.
+- **Annual plans**: You pay once per year, but your credits still refresh monthly, giving you a predictable reset cadence.
+- **No rollover**: Unused credits expire at the end of the cycle.
+- **Overages**: If you go over your limit and [extra charging is enabled, extra screenshots are billed automatically based on your plan’s per-credit rate](https://screenshotone.com/docs/charging-extra/).
+
+This keeps your usage simple and helps you forecast your monthly screenshot volume, even if you prefer paying annually.
+
+## Cancellation
+
+When you cancel a plan, you keep your current billing cycle until it ends. Your credit behavior depends on that cycle:
+
+### You keep your credits until the cycle ends
+
+All remaining credits stay available and usable until the end of your current billing period. Nothing is removed immediately.
+
+### No new credits after cancellation
+
+When your cycle ends, your plan won’t renew and you won’t receive the next month’s credit reset. You will be downgraded to the free plan or if the free plan is not available, you will lose access to the service.
+
+### No refunds for unused credits
+
+Because credits are issued monthly and expire at the end of each cycle, any unused credits at the moment your billing period ends simply expire.
+
+### Annual subscribers
+
+If you’re on an annual plan:
+
+- You continue to receive monthly credit resets until the end of your paid annual term.
+- Once the annual term ends, no new credits are issued.
+- Any remaining credits at that moment expire.
+
+## Support
+
+If you have any questions or need help, please contact our support team at [support@screenshotone.com](mailto:support@screenshotone.com).
 
 # Errors
 
@@ -971,6 +1020,27 @@ Every new customer has a maximum hard limit of 100,000 screenshots. If you need 
 
 ScreenshotOne is a scalable and highly performant API that has paying customers who make render more than 100,000 screenshots monthly. Still, there is a need to make sure that there is no service abuse and that high-quality service can be delivered. That's why the maximum hard limit for new customers is applied.
 
+# Guides
+
+Check out our collection of guides to help you get the most out of ScreenshotOne:
+
+- [How to handle API errors](/docs/guides/how-to-handle-api-errors/)
+- [How to use proxies](/docs/guides/how-to-use-proxies/)
+- [How to optimize for performance](/docs/guides/performance/)
+- [How to screenshot authenticated pages](/docs/guides/authenticated-pages/)
+- [How to take full-page screenshots](/docs/guides/full-page-screenshots/)
+- [How to bypass CAPTCHAs](/docs/guides/how-to-bypass-captchas/)
+- [Upload to any S3 storage](/docs/guides/upload-to-s3/)
+- [How to screenshot an area of a site](/docs/guides/how-to-screenshot-an-area-of-a-site/)
+- [Translate and screenshot a website](/docs/guides/how-to-translate-and-render-a-website-as-a-screenshot/)
+- [How to customize websites](/docs/guides/how-to-customize-any-website-before-screenshotting/)
+- [Fail rendering if the content contains a string](/docs/guides/fail-if-content-contains/)
+- [Render Google Slides as scrolling screenshots](/docs/guides/google-slides-as-scrolling-screenshots/)
+- [Screenshot Google Documents](/docs/guides/screenshot-google-docs/)
+- [Emojis](/docs/guides/emojis/)
+- [How to detect website fonts](/docs/guides/how-to-detect-website-fonts/)
+- [How to take screenshots of multiple URLs](/docs/guides/bulk-screenshots/)
+
 # Screenshot URL
 
 :::danger
@@ -1304,16 +1374,16 @@ You can use the API to generate invoices in PDF format for any given URL or HTML
 
 Whatever use case you have, I get you covered. If there is a feature missing, please, contact me, and I will try to help you as fast as possible.
 
-## First Touch 
+## First Touch
 
-ScreenshotOne API is straightforward to use. There is an example of an actual request to an API: 
+ScreenshotOne API is straightforward to use. There is an example of an actual request to an API:
 
 ```
 GET https://api.screenshotone.com/take?url=https://apple.com&access_key=<access key>
 ```
 
-The result is: 
-![A screenshot of the Apple site](apple_screenshot.png)
+The result is:
+![A screenshot of the Apple site](apple-screenshot.png)
 
 [Sign up](https://dash.screenshotone.com/sign-up) to get the access key and start taking screenshots.
 
@@ -1335,21 +1405,21 @@ If you send a POST HTTP request to take a screenshot, you should specify options
 
 ```
 POST https://api.screenshotone.com/take
-Content-Type: application/json 
+Content-Type: application/json
 {
     ...[options]
 }
 ```
 
-### Access key 
+### Access key
 
-You can specify the access key as part of `GET` parameters, `POST` `JSON` body, or as a header `X-Access-Key`. 
+You can specify the access key as part of `GET` parameters, `POST` `JSON` body, or as a header `X-Access-Key`.
 
 ## Responses
 
 The response format depends on the given options. You might request API to return an image of PNG type or raw HTML instead of rendering it.
 
-API returns the `Content-Type` header set according to the relevant MIME type for the requested format in options. 
+API returns the `Content-Type` header set according to the relevant MIME type for the requested format in options.
 
 Since API returns binary in the data, you can safely put the request URL to ScreenshotOne API directly into the <img> and <meta> tags:
 
@@ -1362,7 +1432,7 @@ Since API returns binary in the data, you can safely put the request URL to Scre
 
 ## Errors
 
-The request might return an error due to an internal error, invalid options or when the limit is reached. ScreenshotOne API follows the HTTP status code semantic and returns JSON in case of an error: 
+The request might return an error due to an internal error, invalid options or when the limit is reached. ScreenshotOne API follows the HTTP status code semantic and returns JSON in case of an error:
 
 ```
 GET https://api.screenshotone.com/?[options]
@@ -1580,61 +1650,6 @@ Reduce the size of the request body. It should be no more than 50MB.
 
 If nothing helps you, please, reach out to `support@screenshotone.com` and we will try to help you as fast as possible.
 
-# Request Invalid
-
-It is an API error returned when the API fails to serve the request due to internal reasons:
-
-```json
-{
-    "is_successful": false,
-    "error_message": "The request parameters are not valid. You can look at the `error_details` response field to get more details.",
-    "error_details": {
-        // ... validation errors ...    
-    },
-    "error_code": "request_invalid",
-    "documentation_url": "https://screenshotone.com/docs/errors/request-invalid/"
-}
-```
-
-## Reasons and how to fix
-
-### Invalid Request Parameters
-
-The most common reason for the "request_not_valid" error is that one or more of the request parameters are invalid or missing.
-
-To fix this, you can:
-
-1. **Check `error_details` property**: Review the `error_details` field in the response to get specific information about which parameters are invalid.
-2. **Correct request parameters**: Ensure that all required parameters are included in the request and that they are correctly formatted and valid.
-
-### Missing Required Parameters
-
-If required parameters are missing from the request, this will trigger the "request_not_valid" error.
-
-To fix this, ensure that all mandatory parameters are provided in the request. Refer to the API documentation for a list of required parameters.
-
-### Incorrect Data Types
-
-Providing parameters with incorrect data types (e.g., a string instead of an integer) can lead to this error.
-
-To fix this, verify that the data types of all parameters match the expected types as specified in the API documentation.
-
-### Parameter Value Constraints
-
-Some parameters may have constraints on their values (e.g., minimum or maximum length, specific formats). Violating these constraints will result in this error.
-
-To fix this, check the constraints for each parameter in the API documentation and ensure that the provided values comply with these constraints.
-
-### Syntax Errors
-
-Syntax errors in the request, such as missing commas or brackets in JSON, can make the request invalid.
-
-To fix this, carefully review the syntax of your request and correct any errors. Using a JSON validator can help identify syntax issues.
-
-## Reach out to support
-
-If you continue to face issues or need further assistance, please reach out to `support@screenshotone.com`, and we will assist you as soon as possible.
-
 # Invalid Cookie Parameter
 
 It is an API error returned when the `cookies` parameter is invalid.
@@ -1742,329 +1757,72 @@ If you sent a POST request, your headers must be in the request body as:
 
 If you continue to face issues, please reach out to `support@screenshotone.com`, and we will assist you as soon as possible.
 
-# C# (.NET) SDK and Code Examples
+# Request Invalid
 
-import Alert from "@/components/Alert.astro";
-
-<Alert>
-    If you have any questions, please, reach out at `support@screenshotone.com`.
-</Alert>
-
-<Alert>
-    Massive thanks and rays of goodness to Andy Robinson ([Indie
-    Hackers](https://www.indiehackers.com/TheOrigin),
-    [GitHub](https://github.com/theorigin)) for providing the fully-featured
-    high-quality C# (.NET) SDK.
-</Alert>
-
-### Installation
-
-Add the library via nuget using the package manager console:
-
-```bash
-PM> Install-Package ScreenshotOne.dotnetsdk
-```
-
-Or from the .NET CLI as:
-
-```bash
-dotnet add package ScreenshotOne.dotnetsdk
-```
-
-### Usage
-
-Don't forget to [sign up](https://dash.screenshotone.com/sign-up) to get access and secret keys.
-
-Generate a screenshot URL without executing request:
-
-```csharp
-var client = new Client("&lt;access key&gt;", "&lt;secret key&gt;");
-var options = TakeOptions.Url("https://www.amazon.com")
-  .FullPage(true)
-  .Format(Format.PNG)
-  .BlockCookieBanners(true);
-
-var url = client.GenerateTakeUrl(options);
-
-// url = https://api.screenshotone.com/take?url=https%3A%2F%2Fwww.amazon.com&full_page=true&format=png&block_cookie_banners=true&access_key=_OzqMIjpCw-ARQ&signature=8a08e62d13a5c3490fda0734b6707791d3decc9ab9ba41e8cc045288a39db502
-
-```
-
-Take a screenshot and save the image in the file:
-
-```csharp
-var client = new Client("&lt;access key&gt;", "&lt;secret key&gt;");
-var options = TakeOptions.Url("https://www.google.com")
-  .FullPage(true)
-  .Format(Format.PNG)
-  .BlockCookieBanners(true);
-
-var bytes = await client.Take(options);
-
-File.WriteAllBytes(@"c:\temp\example.png", bytes);
-```
-
-Check out [other SDKs and code examples](/docs/code-examples/).
-
-# Go SDK and Code Examples
-
-import Alert from "@/components/Alert.astro";
-
-<Alert>
-    If you have any questions, please, reach out at `support@screenshotone.com`.
-</Alert>
-
-It takes minutes to start taking screenshots in Go. Just [sign up](https://dash.screenshotone.com/sign-up) to get access and secret keys, import the client, and you are ready to go.
-
-### Installation
-
-```shell
-go get github.com/screenshotone/gosdk
-```
-
-### Usage
-
-Import the library:
-
-```go
-import screenshots "github.com/screenshotone/gosdk"
-```
-
-Generate a screenshot URL without executing request:
-
-```go
-client, err := screenshots.NewClient("IVmt2ghj9TG_jQ", "Sxt94yAj9aQSgg")
-if err != nil {
-    // ...
-}
-
-options := screenshots.NewTakeOptions("https://scalabledeveloper.com").
-    Format("png").
-    FullPage(true).
-    DeviceScaleFactor(2).
-    BlockAds(true).
-    BlockTrackers(true)
-
-u, err := client.GenerateTakeURL(options)
-if err != nil {
-    // ...
-}
-
-fmt.Println(u.String())
-// Output: https://api.screenshotone.com/take?access_key=IVmt2ghj9TG_jQ&block_ads=true&block_trackers=true&device_scale_factor=2&format=png&full_page=true&url=https%3A%2F%2Fscalabledeveloper.com&signature=85aabf7ac251563ec6158ef6839dd019bb79ce222cc85288a2e8cea0291a824e
-```
-
-Take a screenshot and save the image in the file:
-
-```go
-client, err := screenshots.NewClient("IVmt2ghj9TG_jQ", "Sxt94yAj9aQSgg")
-if err != nil {
-    // ...
-}
-
-options := screenshots.NewTakeOptions("https://example.com").
-    Format("png").
-    FullPage(true).
-    DeviceScaleFactor(2).
-    BlockAds(true).
-    BlockTrackers(true)
-
-image, err := client.Take(context.TODO(), options)
-if err != nil {
-    // ...
-}
-
-defer image.Close()
-out, err := os.Create("example.png")
-if err != nil {
-    // ...
-}
-
-defer out.Close()
-io.Copy(out, image)
-```
-
-Check out [other SDKs and code examples](/docs/code-examples/).
-
-# SDK and Code Examples
-
-import Alert from "@/components/Alert.astro";
-
-<Alert>
-    If you have any questions, please, reach out at `support@screenshotone.com`.
-</Alert>
-
-## Postman
-
-You can run ScreenshotOne API requests in [Postman](https://www.postman.com/) using the following collection: 
-
-<br />
-<a href="https://god.gw.postman.com/run-collection/50121564-7b48803f-b44f-4f5b-892b-f624c9d124b8?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D50121564-7b48803f-b44f-4f5b-892b-f624c9d124b8%26entityType%3Dcollection%26workspaceId%3D192aa74a-dd79-4388-8bdd-10d7cbaa8435">
-    <img src="https://run.pstmn.io/button.svg" alt="Run in Postman" width="128" height="32" />
-</a>
-
-## SDKs and Code Examples
-
-There is a set of native SDKs you can use: 
-
-* [Go](/docs/code-examples/go/)
-* [Java](/docs/code-examples/java/)
-* [PHP](/docs/code-examples/php/)
-* [Ruby](/docs/code-examples/ruby/)
-* [Python](/docs/code-examples/python/)
-* [C# (.NET)](/docs/code-examples/c-net/)
-* [JavaScript and TypeScript (Node.js)](/docs/code-examples/c-net/)
-
-If your language is not supported, please, reach out to support@screenshotone.com and we will try to close it quickly. Otherwise, you can always use any HTTP client.
-
-# Java SDK and Code Examples
-
-import Alert from "@/components/Alert.astro";
-
-<Alert>
-    If you have any questions, please, reach out at `support@screenshotone.com`.
-</Alert>
-
-It takes minutes to start taking screenshots in Java. Just [sign up](https://dash.screenshotone.com/sign-up) to get access and secret keys, import the client, and you are ready to go.
-
-### Installation
-
-Add dependency to your `pom.xml`:
-
-```xml
-<dependencies>
-    <dependency>
-        <groupId>com.screenshotone.jsdk</groupId>
-        <artifactId>screenshotone-api-jsdk</artifactId>
-        <version>[1.0.0,2.0.0)</version>
-    </dependency>
-</dependencies>
-```
-
-### Usage
-
-Generate a screenshot URL without executing request:
-
-```java
-import com.screenshotone.jsdk.Client;
-import com.screenshotone.jsdk.TakeOptions;
-
-public class App {
-    public static void main(String[] args) throws Exception {
-        final Client client = Client.withKeys("IVmt2ghj9TG_jQ", "Sxt94yAj9aQSgg");
-        TakeOptions takeOptions = TakeOptions.url("https://scalabledeveloper.com")
-                .fullPage(true)
-                .deviceScaleFactor(1)
-                .viewportHeight(1200)
-                .viewportWidth(1200)
-                .format("png")
-                .omitBackground(true);
-        final String url = client.generateTakeUrl(takeOptions);
-
-        System.out.println(url);
-        // Output: https://api.screenshotone.com/take?access_key=IVmt2ghj9TG_jQ&device_scale_factor=1&format=png&full_page=true&omit_background=true&url=https%3A%2F%2Fscalabledeveloper.com&viewport_height=1200&viewport_width=1200&signature=3c0c5543599067322e8c84470702330e3687c6a08eef6b7311b71c32d04e1bd5
-    }
-}
-```
-
-Usually you generate URL to place it inside the image tag (<img />) or to share it.
-
-Take a screenshot and save the image in the file:
-
-```java
-import com.screenshotone.jsdk.Client;
-import com.screenshotone.jsdk.TakeOptions;
-
-import java.io.File;
-import java.nio.file.Files;
-
-public class App {
-    public static void main(String[] args) throws Exception {
-        final Client client = Client.withKeys("IVmt2ghj9TG_jQ", "Sxt94yAj9aQSgg");
-        TakeOptions takeOptions = TakeOptions.url("https://scalabledeveloper.com")
-                .fullPage(true)
-                .deviceScaleFactor(1)
-                .viewportHeight(1200)
-                .viewportWidth(1200)
-                .format("png")
-                .omitBackground(true);
-        final byte[] image = client.take(takeOptions);
-
-        Files.write(new File("./example.png").toPath(), image);
-    }
-}
-```
-
-Check out [other SDKs and code examples](/docs/code-examples/).
-
-# Resulting Image Too Large
-
-It is an API error returned when the resulting image is too large for the specified format.
+It is an API error returned when the API fails to serve the request due to internal reasons:
 
 ```json
 {
     "is_successful": false,
-    "error_message": "The resulting image is too large for the specified format.",
-    "error_code": "resulting_image_too_large",
-    "documentation_url": "https://screenshotone.com/docs/errors/resulting-image-too-large/"
+    "error_message": "The request parameters are not valid. You can look at the `error_details` response field to get more details.",
+    "error_details": {
+        // ... validation errors ...    
+    },
+    "error_code": "request_invalid",
+    "documentation_url": "https://screenshotone.com/docs/errors/request-invalid/"
 }
 ```
 
 ## Reasons and how to fix
 
-### Using image formats with size limits for full-page screenshots
+### Invalid Request Parameters
 
-The JPEG format has a height limit of 65,535 pixels, WebP format has a height limit of 16,383 pixels.
+The most common reason for the "request_not_valid" error is that one or more of the request parameters are invalid or missing.
 
-Full-page screenshots that don't fit the size limits will trigger the error `resulting_image_too_large`. 
+To fix this, you can:
 
-A solution would be is to choose the format that fits your use case better. E.g. if you use WebP, try to use JPEG. Or maybe try PNG. 
+1. **Check `error_details` property**: Review the `error_details` field in the response to get specific information about which parameters are invalid.
+2. **Correct request parameters**: Ensure that all required parameters are included in the request and that they are correctly formatted and valid.
 
-### Limiting the height of the full-page screenshot
+### Missing Required Parameters
 
-If it happens for full-page screenshots, you can set the `full_page_max_height` option to make sure the height of the resulting image always fits the specified format, e.g. set it to 16000 for WebP format or 60000 for JPEG format. 
+If required parameters are missing from the request, this will trigger the "request_not_valid" error.
 
+To fix this, ensure that all mandatory parameters are provided in the request. Refer to the API documentation for a list of required parameters.
 
-### Reducing the device scale factor
+### Incorrect Data Types
 
-If the issue is with the size of the page, you can try to reduce the device scale factor by setting the `device_scale_factor` option to a lower value, e.g. `1` instead of `2`.
+Providing parameters with incorrect data types (e.g., a string instead of an integer) can lead to this error.
 
-## Combining the options
+To fix this, verify that the data types of all parameters match the expected types as specified in the API documentation.
 
-You can try to combine all the options above to find the best solution for your use case. 
+### Parameter Value Constraints
 
-Or you can even send API requests as-is, but when you encounter the error, just perform a retry with the limited full page height or lower device scale factor, or even a different format.
+Some parameters may have constraints on their values (e.g., minimum or maximum length, specific formats). Violating these constraints will result in this error.
 
-## Reach out to support
+To fix this, check the constraints for each parameter in the API documentation and ensure that the provided values comply with these constraints.
 
-If you continue to face issues, please reach out to `support@screenshotone.com`, and we will assist you as soon as possible.
+### Syntax Errors
 
-# Script Trigger Redirect
+Syntax errors in the request, such as missing commas or brackets in JSON, can make the request invalid.
 
-It is an API error returned when the API detects that the script will trigger a redirect and screenshots won't be rendered successfully.
-
-```json
-{
-    "is_successful": false,
-    "error_code": "script_triggers_redirect",
-    "error_message": "The specified \"scripts\" option might trigger a redirect, please, specify the \"scripts_wait_until\" option. If you think it is a mistake, please, reach out at `support@screenshotone.com`.",
-    "documentation_url": "https://screenshotone.com/docs/script-triggers-redirect/"
-}
-```
-
-## Reasons and how to fix
-
-Let's quickly consider possible reasons and possible solutions.
-
-### Add some wait options
-
-Since the custom script you add with the "scripts" options triggers a redirect, you must also set [the "scripts_wait_until" option](/docs/options/#scripts_wait_until), too.
-
-And to force the API to wait until the new page is loaded.
+To fix this, carefully review the syntax of your request and correct any errors. Using a JSON validator can help identify syntax issues.
 
 ## Reach out to support
 
-If nothing helps you, please, reach out to `support@screenshotone.com` and we will try to help you as fast as possible.
+If you continue to face issues or need further assistance, please reach out to `support@screenshotone.com`, and we will assist you as soon as possible.
+
+# No-code Integrations
+
+All available no-code integrations for ScreenshotOne: 
+
+- [Zapier](/docs/no-code/zapier/);
+- [Make](/docs/no-code/make/);
+- [n8n](/docs/no-code/n8n/);
+- [Bubble](/docs/no-code/bubble/).
+- [Clay](/docs/no-code/clay/).
+
+Please, reach out to us at [support@screenshotone.com](mailto:support@screenshotone.com) if you have any questions, need any assistance or want to request a new integration.
 
 # Selector Not Found
 
@@ -2126,46 +1884,6 @@ To fix this, check for any page load issues or JavaScript errors that might be i
 
 If you continue to face issues or need further assistance, please reach out to `support@screenshotone.com`, and we will assist you as soon as possible.
 
-# Storage Returned Transient Error
-
-It is an API error returned when the storage server returns a transient error and retries have been exhausted.
-
-```json
-{
-    "is_successful": false,
-    "error_code": "storage_returned_transient_error",
-    "error_message": "The storage returned an HTTP status code between 500 and 599 and we exhausted retries. You can likely retry the request again.",
-    "documentation_url": "https://screenshotone.com/docs/errors/storage-returned-transient-error/"
-}
-```
-
-## Reasons and how to fix
-
-### Transient Storage Server Error
-
-The most common reason for the "storage_returned_transient_error" is that the S3 storage returned an HTTP status code between 500 and 599, indicating a transient error.
-
-To fix this, you can:
-
-1. **Retry the request**: Since the error is transient, retrying the request after a short wait is often effective.
-2. **Check storage service status**: Verify the status of the storage service you are using to see if there are any ongoing issues or maintenance that might be causing the error.
-
-### Exhausted Retries
-
-The API has attempted to retry the request multiple times but has exhausted its retry limit.
-
-To fix this, consider implementing additional retries on your end, with exponential backoff to avoid overwhelming the storage server.
-
-### Temporary Network Issues
-
-Temporary network issues can also cause transient errors from the storage server.
-
-To fix this, ensure that your network connection is stable and retry the request.
-
-## Reach out to support
-
-If you continue to face issues or need further assistance, please reach out to `support@screenshotone.com`, and we will assist you as soon as possible.
-
 # Signature Invalid
 
 It is an API error returned when the provided signature parameter is not valid.
@@ -2213,6 +1931,75 @@ If you are still encountering issues, you can use debugging tools or logging to 
 
 If you continue to face issues or need further assistance, please reach out to `support@screenshotone.com`, and we will assist you as soon as possible.
 
+# Script Trigger Redirect
+
+It is an API error returned when the API detects that the script will trigger a redirect and screenshots won't be rendered successfully.
+
+```json
+{
+    "is_successful": false,
+    "error_code": "script_triggers_redirect",
+    "error_message": "The specified \"scripts\" option might trigger a redirect, please, specify the \"scripts_wait_until\" option. If you think it is a mistake, please, reach out at `support@screenshotone.com`.",
+    "documentation_url": "https://screenshotone.com/docs/script-triggers-redirect/"
+}
+```
+
+## Reasons and how to fix
+
+Let's quickly consider possible reasons and possible solutions.
+
+### Add some wait options
+
+Since the custom script you add with the "scripts" options triggers a redirect, you must also set [the "scripts_wait_until" option](/docs/options/#scripts_wait_until), too.
+
+And to force the API to wait until the new page is loaded.
+
+## Reach out to support
+
+If nothing helps you, please, reach out to `support@screenshotone.com` and we will try to help you as fast as possible.
+
+# Resulting Image Too Large
+
+It is an API error returned when the resulting image is too large for the specified format.
+
+```json
+{
+    "is_successful": false,
+    "error_message": "The resulting image is too large for the specified format.",
+    "error_code": "resulting_image_too_large",
+    "documentation_url": "https://screenshotone.com/docs/errors/resulting-image-too-large/"
+}
+```
+
+## Reasons and how to fix
+
+### Using image formats with size limits for full-page screenshots
+
+The JPEG format has a height limit of 65,535 pixels, WebP format has a height limit of 16,383 pixels.
+
+Full-page screenshots that don't fit the size limits will trigger the error `resulting_image_too_large`. 
+
+A solution would be is to choose the format that fits your use case better. E.g. if you use WebP, try to use JPEG. Or maybe try PNG. 
+
+### Limiting the height of the full-page screenshot
+
+If it happens for full-page screenshots, you can set the `full_page_max_height` option to make sure the height of the resulting image always fits the specified format, e.g. set it to 16000 for WebP format or 60000 for JPEG format. 
+
+
+### Reducing the device scale factor
+
+If the issue is with the size of the page, you can try to reduce the device scale factor by setting the `device_scale_factor` option to a lower value, e.g. `1` instead of `2`.
+
+## Combining the options
+
+You can try to combine all the options above to find the best solution for your use case. 
+
+Or you can even send API requests as-is, but when you encounter the error, just perform a retry with the limited full page height or lower device scale factor, or even a different format.
+
+## Reach out to support
+
+If you continue to face issues, please reach out to `support@screenshotone.com`, and we will assist you as soon as possible.
+
 # Signature Required
 
 It is an API error returned when the signature parameter is missing in the request.
@@ -2243,6 +2030,46 @@ To fix this, debug your script or application to ensure the `signature` is being
 ### Request Validation
 
 To ensure your request is valid, double-check all parameters and the generated signature before sending the request to the API.
+
+## Reach out to support
+
+If you continue to face issues or need further assistance, please reach out to `support@screenshotone.com`, and we will assist you as soon as possible.
+
+# Storage Returned Transient Error
+
+It is an API error returned when the storage server returns a transient error and retries have been exhausted.
+
+```json
+{
+    "is_successful": false,
+    "error_code": "storage_returned_transient_error",
+    "error_message": "The storage returned an HTTP status code between 500 and 599 and we exhausted retries. You can likely retry the request again.",
+    "documentation_url": "https://screenshotone.com/docs/errors/storage-returned-transient-error/"
+}
+```
+
+## Reasons and how to fix
+
+### Transient Storage Server Error
+
+The most common reason for the "storage_returned_transient_error" is that the S3 storage returned an HTTP status code between 500 and 599, indicating a transient error.
+
+To fix this, you can:
+
+1. **Retry the request**: Since the error is transient, retrying the request after a short wait is often effective.
+2. **Check storage service status**: Verify the status of the storage service you are using to see if there are any ongoing issues or maintenance that might be causing the error.
+
+### Exhausted Retries
+
+The API has attempted to retry the request multiple times but has exhausted its retry limit.
+
+To fix this, consider implementing additional retries on your end, with exponential backoff to avoid overwhelming the storage server.
+
+### Temporary Network Issues
+
+Temporary network issues can also cause transient errors from the storage server.
+
+To fix this, ensure that your network connection is stable and retry the request.
 
 ## Reach out to support
 
@@ -2345,6 +2172,78 @@ Try to decrease the video duration you are recording, it might help.
 
 If nothing helps you, please, reach out to `support@screenshotone.com` and we will try to help you as fast as possible.
 
+# Notifications
+
+When you reach 90% or 100% of your screenshot limit, you will receive a notification to your email and/or Slack.
+
+## Email
+
+By default, you will receive an email notification when you reach 90% or 100% of your screenshot limit. You can disable these notifications in the [dashboard](https://dash.screenshotone.com/notifications), but they are enabled by default:
+
+![Email notifications](./notifications.png)
+
+## Slack
+
+You can also enable Slack notifications in the [dashboard](https://dash.screenshotone.com/notifications), in addition to the email notifications.
+
+To enable Slack notifications, you need to specify a Slack webhook URL in the [dashboard](https://dash.screenshotone.com/notifications):
+
+![Slack notifications](./slack-webhook-url-input.png)
+
+To configure a Slack webhook URL, you need to create a new webhook in your Slack workspace.
+
+### 1. Create a Slack application
+
+[Create a new Slack application](https://api.slack.com/apps/new).
+
+![Create a Slack application](./1-create-slack-app.png)
+
+### 2. Enable incoming webhooks
+
+Go to [your application settings](https://api.slack.com/apps) and enable incoming webhooks:
+
+![Enable incoming webhooks](./2-enable-incoming-webhooks.png)
+
+### 3. Add new webhook to your workspace
+
+Click on the "Add New Webhook to Workspace" button:
+
+![Add new webhook](./3-add-new-webhook-to-workspace.png)
+
+And then choose the target channel:
+
+![Incoming webhook channel](./3-incoming-webhook-channel.png)
+
+### 4. Copy the webhook URL
+
+![Copy webhook URL](./4-copy-webhook-url.png)
+
+In this example, the webhook URL is:
+
+```
+https://hooks.slack.com/services/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
+```
+
+### 5. Save and test the webhook URL
+
+Paste the webhook URL in the [dashboard](https://dash.screenshotone.com/notifications):
+
+![Paste webhook URL](./5-paste-webhook-url.png)
+
+And check the integration test message in the target channel:
+
+![Integration test message](./6-check-integration-message.png)
+
+### 6. Get notifications when you reach limits
+
+Once you reach your limit, you will receive a notification in the target channel like this or similar:
+
+![Limit example message](7-limit-example-message.png)
+
+## Summary
+
+These are the most important notifications you need to recieve from ScreenshotOne. If you have more ideas or issues with configuring or receiving notifications, please, reach out to us via `support@screenshotone.com`.
+
 # Usage Quota Exceeded
 
 It is an API error returned when the monthly usage quota has been exceeded:
@@ -2370,7 +2269,7 @@ There is a few ways on how to fix the error:
 
 If nothing helps you, please, reach out to `support@screenshotone.com` and we will try to help you as fast as possible.
 
-# Ruby SDK and Code Examples
+# C# (.NET) SDK and Code Examples
 
 import Alert from "@/components/Alert.astro";
 
@@ -2379,209 +2278,60 @@ import Alert from "@/components/Alert.astro";
 </Alert>
 
 <Alert>
-    Massive thanks and rays of goodness to [Gustavo
-    Garcia](https://twitter.com/theluctus) from
-    [Dailytics](https://dailytics.com/) for providing the fully-featured
-    high-quality Ruby SDK.
+    Massive thanks and rays of goodness to Andy Robinson ([Indie
+    Hackers](https://www.indiehackers.com/TheOrigin),
+    [GitHub](https://github.com/theorigin)) for providing the fully-featured
+    high-quality C# (.NET) SDK.
 </Alert>
 
 ### Installation
 
-Update your Gemfile:
+Add the library via nuget using the package manager console:
 
+```bash
+PM> Install-Package ScreenshotOne.dotnetsdk
 ```
-gem 'screenshotone'
-```
 
-Then execute:
+Or from the .NET CLI as:
 
-```shell
-bundle install
+```bash
+dotnet add package ScreenshotOne.dotnetsdk
 ```
 
 ### Usage
 
 Don't forget to [sign up](https://dash.screenshotone.com/sign-up) to get access and secret keys.
 
-Generate a screenshot URL without executing the request. Or download the screenshot. It is up to you:
+Generate a screenshot URL without executing request:
 
-```ruby
-# If you don't need to add a signature
-client = ScreenshotOne::Client.new('my_access_key')
+```csharp
+var client = new Client("&lt;access key&gt;", "&lt;secret key&gt;");
+var options = TakeOptions.Url("https://www.amazon.com")
+  .FullPage(true)
+  .Format(Format.PNG)
+  .BlockCookieBanners(true);
 
-# If you do need to add a signature
-client = ScreenshotOne::Client.new('my_access_key', 'my_secret_key')
+var url = client.GenerateTakeUrl(options);
 
-# You can set any available option, in a camel_case format, for example:
-options = ScreenshotOne::TakeOptions.new(url: 'https://example.com').
-            full_page(true).
-            delay(2).
-            geolocation_latitude(48.857648).
-            geolocation_longitude(2.294677).
-            geolocation_accuracy(50)
+// url = https://api.screenshotone.com/take?url=https%3A%2F%2Fwww.amazon.com&full_page=true&format=png&block_cookie_banners=true&access_key=_OzqMIjpCw-ARQ&signature=8a08e62d13a5c3490fda0734b6707791d3decc9ab9ba41e8cc045288a39db502
 
-# Verify all the parameters are valid (we will validate the parameters that should be
-# numeric, booleans or that accept only certain values)
-options.valid?
-=> true
-
-# To simply get the final url:
-client.generate_take_url(options)
-=> "https://api.screenshotone.com/take?url=https%3A%2F%2Fexample.com..."
-
-# To actually get the image (the response body of a request to the previous url)
-client.take(options)
-=> "\xFF\xD8\xFF\xE0\x00\x10JFIF\x00\x01\x01\x00\x00\x01\x00\x01\x00\x00\xFF\..."
 ```
 
+Take a screenshot and save the image in the file:
 
-Check out [other SDKs and code examples](/docs/code-examples/).
+```csharp
+var client = new Client("&lt;access key&gt;", "&lt;secret key&gt;");
+var options = TakeOptions.Url("https://www.google.com")
+  .FullPage(true)
+  .Format(Format.PNG)
+  .BlockCookieBanners(true);
 
-# PHP SDK and Code Examples
+var bytes = await client.Take(options);
 
-import Alert from "@/components/Alert.astro";
-
-<Alert>
-    If you have any questions, please, reach out at `support@screenshotone.com`.
-</Alert>
-
-### Installation
-
-Run the next command to install the PHP SDK to take screenshots:
-
-```shell
-composer require screenshotone/sdk:^1.0
-```
-
-### Usage
-
-Don't forget to [sign up](https://dash.screenshotone.com/sign-up) to get access and secret keys.
-
-Generate a screenshot URL without executing the request. Or download the screenshot. It is up to you:
-
-```php
-<?php
-
-use ScreenshotOne\Sdk\Client;
-use ScreenshotOne\Sdk\TakeOptions;
-
-$client = new Client('<access key>', '<secret key>');
-
-$options = TakeOptions::url("https://example.com")
-    ->fullPage(true)
-    ->delay(2)
-    ->geolocationLatitude(48.857648)
-    ->geolocationLongitude(2.294677)
-    ->geolocationAccuracy(50);
-
-$url = $client->generateTakeUrl($options);
-echo $url.PHP_EOL;
-// expected output: https://api.screenshotone.com/take?url=https%3A%2F%2Fexample.com...
-
-$image = $client->take($options);
-file_put_contents('example.png', $image);
-// the screenshot is stored in the example.png file
+File.WriteAllBytes(@"c:\temp\example.png", bytes);
 ```
 
 Check out [other SDKs and code examples](/docs/code-examples/).
-
-# Python SDK and Code Examples
-
-import Alert from "@/components/Alert.astro";
-
-<Alert>
-    If you have any questions, please, reach out at `support@screenshotone.com`.
-</Alert>
-
-### Installation
-
-Run the next command to install the Python SDK to take screenshots:
-
-```shell
-pip install screenshotone
-```
-
-### Usage
-
-Don't forget to [sign up](https://dash.screenshotone.com/sign-up) to get access and secret keys.
-
-Generate a screenshot URL without executing the request. Or download the screenshot. It is up to you:
-
-```python
-import shutil
-from screenshotone import Client, TakeOptions
-
-# create API client
-client = Client('<your access key>', '<your secret key>')
-
-# set up options
-options = (TakeOptions.url('https://screenshotone.com')
-    .format("png")
-    .viewport_width(1024)
-    .viewport_height(768)
-    .block_cookie_banners(True)
-    .block_chats(True))
-
-# generate the screenshot URL and share it with a user
-url = client.generate_take_url(options)
-# expected output: https://api.screenshotone.com/take?url=https%3A%2F%2Fscreenshotone.com&viewport_width=1024&viewport_height=768&block_cookie_banners=True&block_chats=True&access_key=<your access key>&signature=6afc9417a523788580fa01a9f668ea82c78a9d2b41441d2a696010bf2743170f
-
-# or render a screenshot and download the image as stream
-image = client.take(options)
-
-# store the screenshot the example.png file
-with open('example.png', 'wb') as result_file:
-    shutil.copyfileobj(image, result_file)
-```
-
-Check out [other SDKs and code examples](/docs/code-examples/).
-
-# How to automate website screenshots with n8n
-
-[n8n](https://n8n.io/) is a free and open-source workflow platform.
-
-It allows create workflows using a lot of different integrations with simple and intuitive drag-and-drop interface:
-
-[![n8n UI](./n8n.webp)](https://n8n.io/)
-
-## Community nodes
-
-There is an official [ScreenshotOne node](https://www.npmjs.com/package/n8n-nodes-screenshotone) available for n8n.
-
-[![ScreenshotOne node](./n8n-integration.png)](https://www.npmjs.com/package/n8n-nodes-screenshotone)
-
-You can also find it in the [n8n community nodes](https://docs.n8n.io/integrations/community-nodes/) section.
-
-## Guides
-
-Guides on how to automate website screenshots with n8n:
-
-1. [Capture URL Screenshots Automatically from Google Sheets & Drive with ScreenshotOne & Gmail Alerts](https://n8n.io/workflows/3321-capture-url-screenshots-from-google-sheets-with-screenshotone-and-save-to-drive-with-gmail-alerts/).
-
-[![Capture URL Screenshots Automatically from Google Sheets & Drive with ScreenshotOne & Gmail Alerts](./guide.png)](https://n8n.io/workflows/3321-capture-url-screenshots-from-google-sheets-with-screenshotone-and-save-to-drive-with-gmail-alerts/)
-
-# No-code Integrations
-
-All available no-code integrations for ScreenshotOne: 
-
-- [Zapier](/docs/no-code/zapier/);
-- [Make](/docs/no-code/make/);
-- [n8n](/docs/no-code/n8n/);
-- [Bubble](/docs/no-code/bubble/).
-
-Please, reach out to us at [support@screenshotone.com](mailto:support@screenshotone.com) if you have any questions, need any assistance or want to request a new integration.
-
-# How to render website screenshots with Bubble
-
-Bubble is a full-stack no-code app builder. It is a platform, where you can design, build, and launch fully functional web and mobile applications. They also handle all the technical details, like servers, integrations, and security.
-
-In case if you are going to build a website directory or your application needs website screenshots, you can use ScreenshotOne to do that for you. 
-
-## Community Plugins and Integrations
-
-To integrate ScreenshotOne with Bubble for rendering website screenshots, you can use [a ScreenshotOne plugin for Bubble provided Revido](https://bubble.io/plugin/screenshotone-1732272787355x675035896606359600).
-
-The plugin is developed and supported by [Revido—a company that build products for their customers through low-code](https://revido.co).
 
 # Screenshot Options
 
@@ -4117,6 +3867,8 @@ The default value is `false`.
 
 Get the fonts used by a website.
 
+Check out [our guide on how to detect website fonts](/docs/guides/how-to-detect-website-fonts/) for more details.
+
 ### metadata_icon
 
 Get the favicon used by a website.
@@ -4386,176 +4138,377 @@ Failed requests are not counted against your rendering quota.
 
 The options forces the request to fail if GPU rendering fails. Otherwise, the request will be retried. Or sent to the CPU-based rendering services.
 
-# How to automate website screenshots with Zapier
+# Go SDK and Code Examples
 
-Zapier is a powerful automation platform that lets you connect your apps and automate workflows without writing any code. These automated workflows, called "Zaps", can connect thousands of apps to help you save time and reduce manual work.
+import Alert from "@/components/Alert.astro";
 
-With ScreenshotOne's Zapier integration, you can easily incorporate website screenshot generation into your automated workflows, making it simple to capture and process screenshots as part of your business processes.
+<Alert>
+    If you have any questions, please, reach out at `support@screenshotone.com`.
+</Alert>
 
-You can use Zapier to automatically trigger screenshot captures and send them to your favorite apps like Google Drive, Slack, or any of the thousands of apps Zapier supports.
+It takes minutes to start taking screenshots in Go. Just [sign up](https://dash.screenshotone.com/sign-up) to get access and secret keys, import the client, and you are ready to go.
 
-## Integrations 
+### Installation
 
-Check out [ScreenshotOne integrations on Zapier](https://zapier.com/apps/screenshotone/integrations) and [a help guide provided by Zapier](https://help.zapier.com/hc/en-us/articles/16307799273613-How-to-get-started-with-ScreenshotOne-on-Zapier).
-
-## Tutorials 
-
-### Screenshots to Google Drive with Zapier
-
-A guide by [Toolfolio](https://toolfolio.io/) on [how to automate website screenshots upload to Google Drive with Zapier](https://toolfolio.io/productive-value/automate-website-screenshots-with-zapier-screenshotone).
-
-### Troubleshooting
-
-#### Timeouts
-
-Zapier has [a timeout limit of 30 seconds for executing a Zap](https://docs.zapier.com/platform/build/troubleshoot-action-timeouts). If you encounter timeouts, you can try the following:
-
-1. If it is [a full-page screenshot, try to optimize it](/docs/guides/performance/). E.g. disable full page scrolling.
-2. Or use [webhooks instead and asynchronous requests](/docs/async-and-webhooks/).
-
-## Support 
-
-If you have any questions, don't hesitate to reach out to our support at [support@screenshotone.com](mailto:support@screenshotone.com).
-
-# How to render website screenshots with Make
-
-import { YouTube } from 'astro-embed';
-
-Make (formerly Integromat) is a powerful visual platform for creating automated workflows (often called “scenarios” or “blueprints”) between different apps and services—without needing to write code. 
-
-It helps to save time, reduce manual work, and connect various tools in an organized, automated way.
-
-And with ScreenshotOne you can integrate website screenshot rendering into your Make workflows.
-
-There is no official integration for Make yet, but there is a lot of ways you can use ScreenshotOne to render website screenshots in your Make workflows.
-
-## Community Integrations 
-
-There are integrations that are not officially made by ScreenshotOne, but you can use any of [the community-supported integrations](https://www.make.com/en/integrations/screenshotone-community).
-
-## Tutorials 
-
-### How to Automate ScreenshotOne with Make by Synergetic
-
-A tutorial by [Synergetic](https://www.go-synergetic.com/apps/screenshotone) on how to automate ScreenshotOne with Make: 
-
-<YouTube id="lzKhO9VRzgM" />
-
-### How to generate Scrolling Screenshots ScreenshotOne with Make by Synergetic
-
-In his guide on [how to multiply your leads tenfold using text-to-video AI automation](https://www.youtube.com/watch?v=Fild563M2Qo), Jack Roberts uses ScreenshotOne 
-to generate scrolling screenshots:
-
-<YouTube id="Fild563M2Qo" params="start=1474"  />
-
-The same method can be applied to regular and full-page screenshots as well.
-
-## Support 
-
-If you have any questions, don't hesitate to reach out to our support at [support@screenshotone.com](mailto:support@screenshotone.com).
-
-# Notifications
-
-When you reach 90% or 100% of your screenshot limit, you will receive a notification to your email and/or Slack.
-
-## Email
-
-By default, you will receive an email notification when you reach 90% or 100% of your screenshot limit. You can disable these notifications in the [dashboard](https://dash.screenshotone.com/notifications), but they are enabled by default:
-
-![Email notifications](./notifications.png)
-
-## Slack
-
-You can also enable Slack notifications in the [dashboard](https://dash.screenshotone.com/notifications), in addition to the email notifications.
-
-To enable Slack notifications, you need to specify a Slack webhook URL in the [dashboard](https://dash.screenshotone.com/notifications):
-
-![Slack notifications](./slack-webhook-url-input.png)
-
-To configure a Slack webhook URL, you need to create a new webhook in your Slack workspace.
-
-### 1. Create a Slack application
-
-[Create a new Slack application](https://api.slack.com/apps/new).
-
-![Create a Slack application](./1-create-slack-app.png)
-
-### 2. Enable incoming webhooks
-
-Go to [your application settings](https://api.slack.com/apps) and enable incoming webhooks:
-
-![Enable incoming webhooks](./2-enable-incoming-webhooks.png)
-
-### 3. Add new webhook to your workspace
-
-Click on the "Add New Webhook to Workspace" button:
-
-![Add new webhook](./3-add-new-webhook-to-workspace.png)
-
-And then choose the target channel:
-
-![Incoming webhook channel](./3-incoming-webhook-channel.png)
-
-### 4. Copy the webhook URL
-
-![Copy webhook URL](./4-copy-webhook-url.png)
-
-In this example, the webhook URL is:
-
-```
-https://hooks.slack.com/services/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
+```shell
+go get github.com/screenshotone/gosdk
 ```
 
-### 5. Save and test the webhook URL
+### Usage
 
-Paste the webhook URL in the [dashboard](https://dash.screenshotone.com/notifications):
+Import the library:
 
-![Paste webhook URL](./5-paste-webhook-url.png)
+```go
+import screenshots "github.com/screenshotone/gosdk"
+```
 
-And check the integration test message in the target channel:
+Generate a screenshot URL without executing request:
 
-![Integration test message](./6-check-integration-message.png)
+```go
+client, err := screenshots.NewClient("IVmt2ghj9TG_jQ", "Sxt94yAj9aQSgg")
+if err != nil {
+    // ...
+}
 
-### 6. Get notifications when you reach limits
+options := screenshots.NewTakeOptions("https://scalabledeveloper.com").
+    Format("png").
+    FullPage(true).
+    DeviceScaleFactor(2).
+    BlockAds(true).
+    BlockTrackers(true)
 
-Once you reach your limit, you will receive a notification in the target channel like this or similar:
+u, err := client.GenerateTakeURL(options)
+if err != nil {
+    // ...
+}
 
-![Limit example message](7-limit-example-message.png)
+fmt.Println(u.String())
+// Output: https://api.screenshotone.com/take?access_key=IVmt2ghj9TG_jQ&block_ads=true&block_trackers=true&device_scale_factor=2&format=png&full_page=true&url=https%3A%2F%2Fscalabledeveloper.com&signature=85aabf7ac251563ec6158ef6839dd019bb79ce222cc85288a2e8cea0291a824e
+```
 
-## Summary
+Take a screenshot and save the image in the file:
 
-These are the most important notifications you need to recieve from ScreenshotOne. If you have more ideas or issues with configuring or receiving notifications, please, reach out to us via `support@screenshotone.com`.
+```go
+client, err := screenshots.NewClient("IVmt2ghj9TG_jQ", "Sxt94yAj9aQSgg")
+if err != nil {
+    // ...
+}
 
-# Storage Access Denied
+options := screenshots.NewTakeOptions("https://example.com").
+    Format("png").
+    FullPage(true).
+    DeviceScaleFactor(2).
+    BlockAds(true).
+    BlockTrackers(true)
 
-It is an API error returned when the API can't upload a screenshot your S3 storage because the access is denined:
+image, err := client.Take(context.TODO(), options)
+if err != nil {
+    // ...
+}
 
-```json
-{
-    "is_successful": false,
-    "error_message": "Failed to upload the screenshot to the storage since access was denied. Check the API keys you specify when using the storage integration.",
-    "error_code": "storage_access_denied",
-    "documentation_url": "https://screenshotone.com/docs/errors/storage-access-denied/"
+defer image.Close()
+out, err := os.Create("example.png")
+if err != nil {
+    // ...
+}
+
+defer out.Close()
+io.Copy(out, image)
+```
+
+Check out [other SDKs and code examples](/docs/code-examples/).
+
+# SDK and Code Examples
+
+import Alert from "@/components/Alert.astro";
+
+<Alert>
+    If you have any questions, please, reach out at `support@screenshotone.com`.
+</Alert>
+
+## Postman
+
+You can run ScreenshotOne API requests in [Postman](https://www.postman.com/) using the following collection: 
+
+<br />
+<a href="https://god.gw.postman.com/run-collection/50121564-7b48803f-b44f-4f5b-892b-f624c9d124b8?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D50121564-7b48803f-b44f-4f5b-892b-f624c9d124b8%26entityType%3Dcollection%26workspaceId%3D192aa74a-dd79-4388-8bdd-10d7cbaa8435">
+    <img src="https://run.pstmn.io/button.svg" alt="Run in Postman" width="128" height="32" />
+</a>
+
+## SDKs and Code Examples
+
+There is a set of native SDKs you can use: 
+
+* [Go](/docs/code-examples/go/)
+* [Java](/docs/code-examples/java/)
+* [PHP](/docs/code-examples/php/)
+* [Ruby](/docs/code-examples/ruby/)
+* [Python](/docs/code-examples/python/)
+* [C# (.NET)](/docs/code-examples/c-net/)
+* [JavaScript and TypeScript (Node.js)](/docs/code-examples/c-net/)
+
+If your language is not supported, please, reach out to support@screenshotone.com and we will try to close it quickly. Otherwise, you can always use any HTTP client.
+
+# Java SDK and Code Examples
+
+import Alert from "@/components/Alert.astro";
+
+<Alert>
+    If you have any questions, please, reach out at `support@screenshotone.com`.
+</Alert>
+
+It takes minutes to start taking screenshots in Java. Just [sign up](https://dash.screenshotone.com/sign-up) to get access and secret keys, import the client, and you are ready to go.
+
+### Installation
+
+Add dependency to your `pom.xml`:
+
+```xml
+<dependencies>
+    <dependency>
+        <groupId>com.screenshotone.jsdk</groupId>
+        <artifactId>screenshotone-api-jsdk</artifactId>
+        <version>[1.0.0,2.0.0)</version>
+    </dependency>
+</dependencies>
+```
+
+### Usage
+
+Generate a screenshot URL without executing request:
+
+```java
+import com.screenshotone.jsdk.Client;
+import com.screenshotone.jsdk.TakeOptions;
+
+public class App {
+    public static void main(String[] args) throws Exception {
+        final Client client = Client.withKeys("IVmt2ghj9TG_jQ", "Sxt94yAj9aQSgg");
+        TakeOptions takeOptions = TakeOptions.url("https://scalabledeveloper.com")
+                .fullPage(true)
+                .deviceScaleFactor(1)
+                .viewportHeight(1200)
+                .viewportWidth(1200)
+                .format("png")
+                .omitBackground(true);
+        final String url = client.generateTakeUrl(takeOptions);
+
+        System.out.println(url);
+        // Output: https://api.screenshotone.com/take?access_key=IVmt2ghj9TG_jQ&device_scale_factor=1&format=png&full_page=true&omit_background=true&url=https%3A%2F%2Fscalabledeveloper.com&viewport_height=1200&viewport_width=1200&signature=3c0c5543599067322e8c84470702330e3687c6a08eef6b7311b71c32d04e1bd5
+    }
 }
 ```
 
-## Reasons and how to fix
+Usually you generate URL to place it inside the image tag (<img />) or to share it.
 
-Let's quickly consider possible reasons and possible solutions.
+Take a screenshot and save the image in the file:
 
-### Perform configuration testing
+```java
+import com.screenshotone.jsdk.Client;
+import com.screenshotone.jsdk.TakeOptions;
 
-In [the dashboard](https://dash.screenshotone.com/integrations/s3), you can test configuration and get the detailed error description:
+import java.io.File;
+import java.nio.file.Files;
 
-![Configuration Testing](configuration_testing.jpg)
+public class App {
+    public static void main(String[] args) throws Exception {
+        final Client client = Client.withKeys("IVmt2ghj9TG_jQ", "Sxt94yAj9aQSgg");
+        TakeOptions takeOptions = TakeOptions.url("https://scalabledeveloper.com")
+                .fullPage(true)
+                .deviceScaleFactor(1)
+                .viewportHeight(1200)
+                .viewportWidth(1200)
+                .format("png")
+                .omitBackground(true);
+        final byte[] image = client.take(takeOptions);
 
-### Check credentials and URL
+        Files.write(new File("./example.png").toPath(), image);
+    }
+}
+```
 
-Make sure and double check that all your credentials and the storage URL is correct.
+Check out [other SDKs and code examples](/docs/code-examples/).
 
-## Reach out to support
+# PHP SDK and Code Examples
 
-If nothing helps you, please, reach out to `support@screenshotone.com` and we will try to help you as fast as possible.
+import Alert from "@/components/Alert.astro";
+
+<Alert>
+    If you have any questions, please, reach out at `support@screenshotone.com`.
+</Alert>
+
+### Installation
+
+Run the next command to install the PHP SDK to take screenshots:
+
+```shell
+composer require screenshotone/sdk:^1.0
+```
+
+### Usage
+
+Don't forget to [sign up](https://dash.screenshotone.com/sign-up) to get access and secret keys.
+
+Generate a screenshot URL without executing the request. Or download the screenshot. It is up to you:
+
+```php
+<?php
+
+use ScreenshotOne\Sdk\Client;
+use ScreenshotOne\Sdk\TakeOptions;
+
+$client = new Client('<access key>', '<secret key>');
+
+$options = TakeOptions::url("https://example.com")
+    ->fullPage(true)
+    ->delay(2)
+    ->geolocationLatitude(48.857648)
+    ->geolocationLongitude(2.294677)
+    ->geolocationAccuracy(50);
+
+$url = $client->generateTakeUrl($options);
+echo $url.PHP_EOL;
+// expected output: https://api.screenshotone.com/take?url=https%3A%2F%2Fexample.com...
+
+$image = $client->take($options);
+file_put_contents('example.png', $image);
+// the screenshot is stored in the example.png file
+```
+
+Check out [other SDKs and code examples](/docs/code-examples/).
+
+# Python SDK and Code Examples
+
+import Alert from "@/components/Alert.astro";
+
+<Alert>
+    If you have any questions, please, reach out at `support@screenshotone.com`.
+</Alert>
+
+### Installation
+
+Run the next command to install the Python SDK to take screenshots:
+
+```shell
+pip install screenshotone
+```
+
+### Usage
+
+Don't forget to [sign up](https://dash.screenshotone.com/sign-up) to get access and secret keys.
+
+Generate a screenshot URL without executing the request. Or download the screenshot. It is up to you:
+
+```python
+import shutil
+from screenshotone import Client, TakeOptions
+
+# create API client
+client = Client('<your access key>', '<your secret key>')
+
+# set up options
+options = (TakeOptions.url('https://screenshotone.com')
+    .format("png")
+    .viewport_width(1024)
+    .viewport_height(768)
+    .block_cookie_banners(True)
+    .block_chats(True))
+
+# generate the screenshot URL and share it with a user
+url = client.generate_take_url(options)
+# expected output: https://api.screenshotone.com/take?url=https%3A%2F%2Fscreenshotone.com&viewport_width=1024&viewport_height=768&block_cookie_banners=True&block_chats=True&access_key=<your access key>&signature=6afc9417a523788580fa01a9f668ea82c78a9d2b41441d2a696010bf2743170f
+
+# or render a screenshot and download the image as stream
+image = client.take(options)
+
+# store the screenshot the example.png file
+with open('example.png', 'wb') as result_file:
+    shutil.copyfileobj(image, result_file)
+```
+
+Check out [other SDKs and code examples](/docs/code-examples/).
+
+# Ruby SDK and Code Examples
+
+import Alert from "@/components/Alert.astro";
+
+<Alert>
+    If you have any questions, please, reach out at `support@screenshotone.com`.
+</Alert>
+
+<Alert>
+    Massive thanks and rays of goodness to [Gustavo
+    Garcia](https://twitter.com/theluctus) from
+    [Dailytics](https://dailytics.com/) for providing the fully-featured
+    high-quality Ruby SDK.
+</Alert>
+
+### Installation
+
+Update your Gemfile:
+
+```
+gem 'screenshotone'
+```
+
+Then execute:
+
+```shell
+bundle install
+```
+
+### Usage
+
+Don't forget to [sign up](https://dash.screenshotone.com/sign-up) to get access and secret keys.
+
+Generate a screenshot URL without executing the request. Or download the screenshot. It is up to you:
+
+```ruby
+# If you don't need to add a signature
+client = ScreenshotOne::Client.new('my_access_key')
+
+# If you do need to add a signature
+client = ScreenshotOne::Client.new('my_access_key', 'my_secret_key')
+
+# You can set any available option, in a camel_case format, for example:
+options = ScreenshotOne::TakeOptions.new(url: 'https://example.com').
+            full_page(true).
+            delay(2).
+            geolocation_latitude(48.857648).
+            geolocation_longitude(2.294677).
+            geolocation_accuracy(50)
+
+# Verify all the parameters are valid (we will validate the parameters that should be
+# numeric, booleans or that accept only certain values)
+options.valid?
+=> true
+
+# To simply get the final url:
+client.generate_take_url(options)
+=> "https://api.screenshotone.com/take?url=https%3A%2F%2Fexample.com..."
+
+# To actually get the image (the response body of a request to the previous url)
+client.take(options)
+=> "\xFF\xD8\xFF\xE0\x00\x10JFIF\x00\x01\x01\x00\x00\x01\x00\x01\x00\x00\xFF\..."
+```
+
+
+Check out [other SDKs and code examples](/docs/code-examples/).
+
+# How to take screenshots of multiple URLs
+
+ScreenshotOne API supports taking screenshots of multiple URLs in one request—[bulk screenshots](/docs/bulk-screenshots/). But since it is a simple wrapper around the regular screenshot API, you might find it much better to implement your own bulk screenshot solution.
+
+A few tips:
+
+1. Use proxies if needed.
+2. Retry failed requests.
+3. Use a queue to process the URLs in batches, even internal onces.
+4. Respect the concurrency limit. Build your solution based on dynamically calculated quota from [the "get usage" API endpoint](/docs/get-usage/).
+
+Check out working example in the [ScreenshotOne examples](https://github.com/screenshotone/examples) repository—[bulk screenshots example](https://github.com/screenshotone/examples/tree/main/nodejs/bulk-screenshots).
+
+In case you need help, feel free to reach out to support at [support@screenshotone.com](mailto:support@screenshotone.com).
 
 # How to render Google Slides as scrolling screenshots with ScreenshotOne
 
@@ -4693,6 +4646,161 @@ A few typical uses of the feature:
 
 Enjoy it. If you have any questions, please, feel free to send an email to `support.screenshotone.com`.
 
+# How to use proxies
+
+ScreenshotOne doesn't include rotating residential proxies as part of the product, but you can plug in easily any external proxy provider you like, in three simple steps.
+
+:::tip[Did you know?]
+If you need to use proxies to bypass CAPTCHAs, [check out our guide on how to bypass CAPTCHAs](/docs/guides/how-to-bypass-captchas).
+:::
+
+## 1. Sign up to a proxy provider
+
+There are plenty of them, like [Decodo](https://decodo.com/https://smartproxy.com/), [Bright Data](https://brightdata.com/), or [Geonode](https://geonode.com/).
+
+You can find the Internet proxy providers that you prefer by price and quality. Choose and sign up for the proxy provider.
+
+Not because it is the best one or the cheapest one, but in this guide, I will use [Decodo](https://decodo.com/) as an example.
+
+## 2. Get the proxy URL
+
+:::tip
+In this guide, we use residential proxies as an example, but **we highly recommend using data center proxies first, as their cost is much lower than that of residential proxies**. If that doesn't work for you, only then should you switch to residential or even mobile proxies.
+:::
+
+Choose pay-as-you-go residential proxies in Decodo or any other proxy provider you picked in the previous step.
+
+And your goal is to copy the HTTP URL of the proxy with the desired configuration.
+
+In the case of Decodo, it would look like:
+
+![An example of picking the HTTP proxy endpoint in Decodo](decodo.jpg).
+
+## 3. Use the proxy with the ScreenshotOne API
+
+Once you have the HTTP proxy URL, not HTTPS, nor SOCKS5. You can specify it when sending an API request with the [proxy](/docs/options/#proxy) parameter, just like this:
+
+```
+https://api.screenshotone.com/take?proxy=<your proxy url>&access_key=<your API key>&url=<the site you want to screenshot>
+```
+
+Where `<your proxy url>` is your proxy URL, or in the case of our example is `http://user12345:somepass@us.smartproxy.com:10000`.
+
+## Recommendations
+
+A few tips to improve your success rate when using proxies:
+
+1. **Consider using data center proxies first**, as the cost is much lower than residential proxies. If they don't work for you, only then switch to residential or even mobile proxies.
+
+2. **Don't use random location proxies.** Use proxies located in the United States or your specific location, rather than random locations. For most proxy providers, stability is unlikely when using random locations.
+
+3. **Don't send many requests through the same proxy.** If you plan to send many requests in parallel through the same proxy, consider using different ports if available or even different proxies. Using a single channel is highly likely to slow down your API requests, cause timeouts, and result in more errors.
+
+4. If you encounter network issues, check the balance and reach out the proxy provider support, but we also noticed that for some providers, you sometimes need to recreate your proxy user/account to make it work again.
+
+## Reach out if anything
+
+You see, it was that easy. In case if you have any questions or encounter any problems, please, don't hesitate to reach out at `support@screenshotone.com`.
+
+# JavaScript and TypeScript (Node.js) SDK and Code Examples
+
+:::note
+If you have any questions, please, reach out at `support@screenshotone.com`.
+:::
+
+### Installation
+
+Run the next command to install the JavaScript and TypeScript Node.js SDK to take screenshots:
+
+```shell
+npm install screenshotone-api-sdk --save
+```
+
+### Usage
+
+Don't forget to [sign up](https://dash.screenshotone.com/sign-up) to get access and secret keys.
+
+:::danger
+By default, the generated URL by SDK is not signed, and you can't share it,
+because the API key will be leaked.
+
+Use the method designated to generate a signed URL specifically—`generateSignedTakeURL()`.
+
+Notice, in the recent versions of the SDK, all methods are asynchronous.
+:::
+
+Generate a screenshot URL without executing the request. Or download the screenshot. It is up to you:
+
+```javascript
+import * as fs from "fs";
+import * as screenshotone from "screenshotone-api-sdk";
+
+// create API client
+const client = new screenshotone.Client("<access key>", "<secret key>");
+
+// set up options
+const options = screenshotone.TakeOptions.url("https://example.com")
+    .delay(3)
+    .blockAds(true);
+
+// generate URL
+const url = client.generateTakeURL(options); // or generateSignedTakeURL(options) for signed URLs
+console.log(url);
+// expected output: https://api.screenshotone.com/take?url=https%3A%2F%2Fexample.com&delay=3&block_ads=true&access_key=%3Caccess+key%3E
+
+// or download the screenshot
+const imageBlob = await client.take(options);
+const buffer = Buffer.from(await imageBlob.arrayBuffer());
+fs.writeFileSync("example.png", buffer);
+// the screenshot is store in the example.png file
+```
+
+Check out [other SDKs and code examples](/docs/code-examples/).
+
+# Detect website fonts
+
+## How to use the font detection API
+
+The font detection API is available in the [ScreenshotOne API "take" method as an additional option](/docs/options/#metatada_fonts).
+
+```
+https://api.screenshotone.com/take?metatada_fonts=true&url=https://example.com&access_key=<your access key>&response_type=json
+```
+
+The result is:
+
+```json
+{
+    "fonts": [
+        {
+            "first": "Arial",
+            "fallback": ["Helvetica", "sans-serif"],
+            "elements": ["p"]
+        }
+        // ...
+    ]
+}
+```
+
+## Use cases
+
+There are many use cases for using the font detection API by ScreenshotOne:
+
+- **[Design tools font detection](/use-cases/design-apps-font-detection/)**: integrate font detection to help designers identify and analyze typography on any website.
+- **[Brand consistency font checks](/use-cases/brand-consistency-font-checks/)**: automatically verify font consistency across web pages to maintain brand integrity.
+- **[Automated web audits with font analysis](/use-cases/automated-web-audits-fonts/)**: generate comprehensive typography reports to optimize websites for aesthetics and performance.
+- **[Educational font detection tool](/use-cases/educational-font-detection/)**: enable students to explore and learn from typography used in real-world web applications.
+- **[Font accessibility checks](/use-cases/font-accessibility-checks/)**: analyze whether websites use readable fonts for people with visual impairments or reading disabilities.
+- **[Font marketplace enhancement](/use-cases/font-marketplace-enhancement/)**: show how fonts look on live websites to enhance the customer purchasing experience.
+- **[Font trends analysis](/use-cases/font-trends/)**: provide insights into typography trends of top-ranking websites across various industries.
+- **[UX font analysis](/use-cases/ux-font-analysis/)**: examine the impact of different fonts on user engagement and website usability.
+- **[Browser extension font detection](/use-cases/browser-extension-font-detection/)**: allow users to identify and learn about fonts on any website with a single click.
+- **[Font legal compliance check](/use-cases/font-legal-compliance/)**: ensure fonts used on websites are legally compliant to avoid copyright issues.
+
+## Support
+
+In case you have any questions or feedback, please, feel free to reach out at `support@screenshotone.com` and we will be happy to help.
+
 # How to render Google Documents as JPEG, PNG or WebP screenshots
 
 import Video from "@/components/Video.astro";
@@ -4797,111 +4905,6 @@ Check out [our guide on how to render Google Slides as scrolling screenshots](/d
 
 In case you have any questions or suggestions, feel free to reach out at `support@screenshotone.com`.
 
-# How to use proxies
-
-ScreenshotOne doesn't include rotating residential proxies as part of the product, but you can plug in easily any external proxy provider you like, in three simple steps.
-
-:::tip[Did you know?]
-If you need to use proxies to bypass CAPTCHAs, [check out our guide on how to bypass CAPTCHAs](/docs/guides/how-to-bypass-captchas).
-:::
-
-## 1. Sign up to a proxy provider
-
-There are plenty of them, like [Smartproxy](https://smartproxy.com/), [Bright Data](https://brightdata.com/), or [Geonode](https://geonode.com/).
-
-You can find the Internet proxy providers that you prefer by price and quality. Choose and sign up for the proxy provider.
-
-Not because it is the best one or the cheapest one, but in this guide, I will use [Smartproxy](https://smartproxy.com/) as an example.
-
-## 2. Get the proxy URL
-
-Choose pay-as-you-go residential proxies in Smartproxy or any other proxy provider you picked in the previous step.
-
-And your goal is to copy the HTTP URL of the proxy with the desired configuration.
-
-In the case of Smartproxy, it would look like:
-
-![An example of picking the HTTP proxy endpoint in Smartproxy](smartproxy.jpg).
-
-## 3. Use the proxy with the ScreenshotOne API
-
-Once you have the HTTP proxy URL, not HTTPS, nor SOCKS5. You can specify it when sending an API request with the [proxy](/docs/options/#proxy) parameter, just like this:
-
-```
-https://api.screenshotone.com/take?proxy=<your proxy url>&access_key=<your API key>&url=<the site you want to screenshot>
-```
-
-Where `<your proxy url>` is your proxy URL, or in the case of our example is `http://user12345:somepass@us.smartproxy.com:10000`.
-
-## Recommendations
-
-A few tips to improve your success rate when using proxies:
-
-1. **Don't use random proxies.** Use proxies located in the United States or your specific location, rather than random locations. For most proxy providers, stability is unlikely when using random locations.
-
-2. **Don't send many requests through the same proxy.** If you plan to send many requests in parallel through the same proxy, consider using different ports if available or even different proxies. Using a single channel is highly likely to slow down your API requests, cause timeouts, and result in more errors.
-
-3. If you encounter network issues, check the balance and reach out the proxy provider support, but we also noticed that for some providers, you sometimes need to recreate your proxy user/account to make it work again.
-
-## Reach out if anything
-
-You see, it was that easy. In case if you have any questions or encounter any problems, please, don't hesitate to reach out at `support@screenshotone.com`.
-
-# JavaScript and TypeScript (Node.js) SDK and Code Examples
-
-:::note
-If you have any questions, please, reach out at `support@screenshotone.com`.
-:::
-
-### Installation
-
-Run the next command to install the JavaScript and TypeScript Node.js SDK to take screenshots:
-
-```shell
-npm install screenshotone-api-sdk --save
-```
-
-### Usage
-
-Don't forget to [sign up](https://dash.screenshotone.com/sign-up) to get access and secret keys.
-
-:::danger
-By default, the generated URL by SDK is not signed, and you can't share it,
-because the API key will be leaked.
-
-Use the method designated to generate a signed URL specifically—`generateSignedTakeURL()`.
-
-Notice, in the recent versions of the SDK, all methods are asynchronous.
-:::
-
-Generate a screenshot URL without executing the request. Or download the screenshot. It is up to you:
-
-```javascript
-import * as fs from "fs";
-import * as screenshotone from "screenshotone-api-sdk";
-
-// create API client
-const client = new screenshotone.Client("<access key>", "<secret key>");
-
-// set up options
-const options = screenshotone.TakeOptions.url("https://example.com")
-    .delay(3)
-    .blockAds(true);
-
-// generate URL
-const url = client.generateTakeURL(options); // or generateSignedTakeURL(options) for signed URLs
-console.log(url);
-// expected output: https://api.screenshotone.com/take?url=https%3A%2F%2Fexample.com&delay=3&block_ads=true&access_key=%3Caccess+key%3E
-
-// or download the screenshot
-const imageBlob = await client.take(options);
-const buffer = Buffer.from(await imageBlob.arrayBuffer());
-fs.writeFileSync("example.png", buffer);
-// the screenshot is store in the example.png file
-```
-
-Check out [other SDKs and code examples](/docs/code-examples/).
-
 # How to render screenshots with different emoji styles
 
 It might happen that you need to render screenshots with different emoji styles rather than the default emoji style provided by the ScreenshotOne API.
@@ -4989,6 +4992,171 @@ https://api.screenshotone.com/take?access_key=<your_access_key>&url=https://exam
 ```
 
 In case you have any issues, do not hesitate to reach out to us at support@screenshotone.com.
+
+# How to translate and render a website as a screenshot
+
+It is possible to translate and take a screenshot of the translated website with ScreenshotOne because the API supports scripts via the `scripts` option.
+
+You can use any translation API of your choice. But as an example, in this guide, I will go with Google Translate API.
+
+## Get your Google Translate API key
+
+To get your Google API key:
+
+1. Go to [the API credentials page in Google Cloud Platform](https://console.cloud.google.com/apis/credentials).
+2. Generate your API key and make sure you restrict it to using only for Google Translate.
+3. Make sure you set budgets, and notifications, and follow other [best practices](https://cloud.google.com/blog/products/ai-machine-learning/four-best-practices-for-translating-your-website) for Google Translate.
+
+## Write a script to translate your websites
+
+You need to write a script that efficiently will check all text nodes on the website, batch them, and send requests efficiently to save your costs.
+
+:::danger
+Please, make sure to optimize the script for your use case and that it doesn't overuse your quota. It is an example script and ScreenshotOne is not responsible for you using it and causing any damage to your business by the script. Use it at your own risk.
+:::
+
+Here is an example script you can try and use as a basis, but I highly recommend writing yours for production and making sure it has retries and other necessary logic:
+
+```javascript
+const translateTextAsync = async (texts, targetLang, apiKey) => {
+    const url = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
+    const data = {
+        q: texts,
+        target: targetLang,
+    };
+
+    const response = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+    });
+
+    if (!response.ok) throw new Error("Network response was not ok.");
+
+    const json = await response.json();
+    return json.data.translations.map((t) => t.translatedText);
+};
+
+const isVisible = (element) => {
+    return element.offsetWidth > 0 && element.offsetHeight > 0;
+};
+
+const shouldTranslate = (node) => {
+    return (
+        node.nodeType === Node.TEXT_NODE &&
+        node.nodeValue.trim() &&
+        isVisible(node.parentElement) &&
+        !isDescendantOf(node, ["script", "code"])
+    );
+};
+
+const isDescendantOf = (node, tagNames) => {
+    let parent = node.parentElement;
+    while (parent && parent !== document.body) {
+        if (tagNames.includes(parent.tagName.toLowerCase())) {
+            return true;
+        }
+        parent = parent.parentElement;
+    }
+    return false;
+};
+
+const batchTranslate = async (nodes, targetLang, apiKey) => {
+    let batch = [];
+    let totalLength = 0;
+    const results = [];
+
+    for (const node of nodes) {
+        const text = node.nodeValue.trim();
+        if (text.length + totalLength > 5000 || batch.length >= 128) {
+            // Translate current batch
+            const translations = await translateTextAsync(
+                batch,
+                targetLang,
+                apiKey
+            );
+            translations.forEach((translatedText, index) => {
+                results.push({ node: nodes[index], translatedText });
+            });
+
+            // Reset for next batch
+            batch = [text];
+            totalLength = text.length;
+        } else {
+            batch.push(text);
+            totalLength += text.length;
+        }
+    }
+
+    // Translate remaining batch
+    if (batch.length > 0) {
+        const translations = await translateTextAsync(
+            batch,
+            targetLang,
+            apiKey
+        );
+        translations.forEach((translatedText, index) => {
+            results.push({
+                node: nodes[nodes.length - batch.length + index],
+                translatedText,
+            });
+        });
+    }
+
+    return results;
+};
+
+const translatePageContent = async (element, targetLang, apiKey) => {
+    const textNodes = [];
+    const walker = document.createTreeWalker(
+        element,
+        NodeFilter.SHOW_TEXT,
+        {
+            acceptNode: (node) => {
+                return shouldTranslate(node)
+                    ? NodeFilter.FILTER_ACCEPT
+                    : NodeFilter.FILTER_REJECT;
+            },
+        },
+        false
+    );
+
+    let node;
+    while ((node = walker.nextNode())) {
+        textNodes.push(node);
+    }
+
+    const translations = await batchTranslate(textNodes, targetLang, apiKey);
+    translations.forEach(({ node, translatedText }) => {
+        node.nodeValue = translatedText;
+    });
+};
+
+// Replace with your actual API key
+const apiKey = "<your API key>";
+// Target language code (e.g., 'es' for Spanish)
+const targetLang = "es";
+
+translatePageContent(document.body, targetLang, apiKey)
+    .then(() => console.log("Translation completed"))
+    .catch((error) => console.error("Translation error:", error));
+```
+
+## Rendered translated websites
+
+Once you have a working script, make sure you URL-encode it and then send it to ScreenshotOne when rendering a screenshot. You can use either POST or GET requests.
+
+But in this example, I will share with you a GET request example:
+
+```
+https://api.screenshotone.com/take?access_key=<your API key>&url=https://example.com&scripts=<URL-encoded script>&delay=10
+```
+
+You can see the example.com website rendered in the Spanish language:
+
+![The example.com website rendered in the Spanish language](example.com.spanish.jpeg)
+
+I hope the guide helps you translate and render any HTML or website content, and have a nice day!
 
 # How to bypass CAPTCHAs
 
@@ -5130,6 +5298,86 @@ Check out the other similar options:
 
 If you have any questions or need help, please, reach out to `support@screenshotone.com` as quickly as possible, and we will assist and try to resolve your problem.
 
+# Customize websites before screenshotting
+
+ScreenshotOne supports a few options that can help you add any customizations to any website before rendering screenshots of it.
+
+## Hide any element by CSS selectors
+
+If you just need to quickly hide a few elements on the website, just use [the hide_selectors](https://screenshotone.com/docs/options/#hide_selectors) option and specify as many CSS selectors as you wish.
+
+For example, let's hide the main header on the example.com website with:
+
+```
+https://api.screenshotone.com/take?url=https://example.com&hide_selectors=h1&access_key=<your API key>
+```
+
+Before hiding:
+
+![A customized version of the example.com website](with_header.png)
+
+After hiding:
+
+![A customized version of the example.com website](without_header.png)
+
+You can specify as many selectors as you wish, e.g.:
+
+```
+https://api.screenshotone.com/take?url=https://example.com&hide_selectors[]=h1&hide_selectors[]=p&access_key=<your API key>
+```
+
+## Add custom CSS styles
+
+But often you want to do more than just hide a few elements. Maybe you want to change some colors of the elements, or font size, or whatever. Then you can simply add custom CSS styles with [the styles option](https://screenshotone.com/docs/options/#styles).
+
+Don't forget to encode the code. And often, you must add a `!important` attribute to every property you use.
+
+Let's try it with the example.com website:
+
+```
+https://api.screenshotone.com/take?url=https://example.com&styles=h1%20%7Bcolor%3A%20red%20%21important%3B%7D&access_key=<your API key>
+```
+
+Notice, that the styles parameter is URL-encoded. Let's look at the result:
+
+![A customized version of the example.com website](example_com_with_styles.webp)
+
+## Execute custom JavaScript code
+
+But what if hiding elements and adding styles is not enough? We got you covered! You can any custom JavaScript code you want.
+
+You can check out a more complex example of using scripting for integrating [Google Translate API when screenshotting websites](/docs/guides/how-to-translate-and-render-a-website-as-a-screenshot/).
+
+:::caution
+If your script causes navigation and makes the page reload, make sure to specify [the scripts_wait_until option](/docs/options/#scripts_wait_until) if you want to wait or large enough [delay](/docs/options/#delay).
+:::
+
+Let's execute an extreme example and just override the page content with:
+
+```javascript
+scripts = document.body.innerHTML = "Hello, world!";
+```
+
+The URL would look like:
+
+```
+https://api.screenshotone.com/take?scripts=document.body.innerHTML="Hello,%20world!"&url=https://example.com/&access_key=<your access key>
+```
+
+And the result is:
+
+![A customized version of the example.com website](hello_world_example.webp)
+
+## Click
+
+If you use scripting to only click on some element by selector, there is a popular shortcut for that [the click option](/docs/options/#click).
+
+```
+https://api.screenshotone.com/take?click=.a-some-button-class-selector&url=https://example.com&access_key=<your access key>
+```
+
+Just specify any selector of any element and it will be clicked.
+
 # Upload to S3
 
 You can use [ScreenshotOne screenshot API](https://screenshotone.com/) to take website screenshots and upload them directly to Amazon S3 and any other S3-compatible storage like [Cloudflare R2](https://www.cloudflare.com/products/r2/), [Backblaze](https://www.backblaze.com/), and others.
@@ -5268,6 +5516,153 @@ One is to use CDN that pulls images from S3 storage, and the other is to archive
 
 It makes me happy to help people solve their problems. And even happier when people pay for that. I hope today I solved yours. Have a good day or even night, and be happy 👌
 
+# How to handle API errors
+
+Error handling is an essential part of any high-quality application. Make sure you handle all errors returned by the ScreenshotOne API correctly and provide informative explanations to your customers or react to them accordingly.
+
+## Following HTTP standards
+
+The ScreenshotOne API is on-purpose built using HTTP protocol and follows HTTP standards as much as possible. To make sure the API will be stable and can support customers for years to come.
+
+In general, if the resulting status code is in the range of 400-599, then we are dealing with errors.
+
+```
+GET https://api.screenshotone.com/?[options]
+
+Content-Type: application/json
+
+{
+    "is_successful":false,
+    "error_code": "an_error_code",
+    "error_message": "An error message"
+}
+```
+
+## Errors caused by API consumers
+
+All errors caused by invalid requests, absent credentials, or any reasons caused by you, an API consumer, are marked with status codes 400-499. It means, that until you find a way to fix them, the request won't be executed successfully.
+
+## API internal errors
+
+Errors with status codes in the range 500-599 are caused by the API internal reasons and you have almost little influence over that.
+
+But you can safely retry them.
+Except in a few cases. When you get a network error (`network_error`), it might be because the site blocks the API, and there is no sense in retrying the request. Or if the site returned an error (`host_returned_error`) and it is an error within the range 400-499, it means that the API is either blocked, or you need to change the request to the site.
+
+You still might want to try to retry errors like `network_error` and `host_returned_error` (if the host's error is `403` in the `returned_status_code` property of the response), but try to add a residential rotating proxy to that API request. Maybe the second time you can succeed and the request will work for you.
+
+An example of the code that retries the request with a residential rotating proxy:
+
+```javascript
+const response = await fetch(
+    "https://api.screenshotone.com/take?url=https://example.com&access_key=..."
+);
+if (!response.ok) {
+    const error = await response.json();
+    if (
+        // add more error codes
+        error.error_code === "network_error" ||
+        (error.error_code === "host_returned_error" && error.returned_status_code == 403)
+    ) {
+        const proxy = "http://...";
+        const proxyResponse = await fetch(
+            `https://api.screenshotone.com/take?url=https://example.com&access_key=...&proxy=${proxy}`
+        );
+        if (!proxyResponse.ok) {
+            const proxyError = await proxyResponse.json();
+            // you can try to retry again
+        }
+
+        // the retry was sucessful
+        const screenshot = await proxyResponse.blob();
+    }
+}
+```
+
+## Showing errors to your end users
+
+In general, you can try to just return the error message provided by the API, but if you want to show a more user-friendly message, you can use the following code:
+
+```javascript 
+const response = await fetch("https://api.screenshotone.com/...");
+
+// after retries and other processing, once you decide to show an error to your end user
+if (!response.ok) {
+    const errorData = await response.json();
+
+    const errorMessage = generateUserFriendlyErrorMessage(errorData);
+
+    // show the error to your end user in your UI, CLI or any other way
+    showErrorToUser(errorMessage);
+}
+
+function generateUserFriendlyErrorMessage(error) {
+    // these are error messages for your public users, not for you
+    switch (error.error_code) {
+        case "screenshots_limit_reached":
+            return "The screenshot rendering is not available. Please, retry later.";
+        case "concurrency_limit_reached":
+        case "temporary_unavailable":
+            return "Please try again in a moment.";
+        case "request_not_valid":
+            return "Please, make sure your request is valid and try again.";
+        case "selector_not_found":
+            return "The target element was not found on the page";
+        case "name_not_resolved":
+            return "Unable to resolve the domain name. Check that there is no typo in the URL. If this is a new site, please wait for DNS propagation.";
+        case "network_error":
+            return "Unable to connect to the requested URL. The site may be blocking access or temporarily down.";
+        case "host_returned_error":
+            if ([401, 403, 429].includes(error.returned_status_code)) {
+                return "The target website blocks automated screenshot rendering.";
+            }
+            if (error.returned_status_code >= 500) {
+                return "The target website is temporarily down. Please, retry later.";
+            }
+            if (error.returned_status_code == 404) {
+                return "The target website returned a 404 HTTP error—the page not found.";
+            }
+
+            return `The target website returned a ${error.returned_status_code} HTTP error.`;
+        case "timeout_error":
+            return "The screenshot rendering timed out. Please, try again.";
+        case "storage_returned_transient_error":
+        case "internal_application_error":
+        case "request_aborted":
+            return "Failed to render the screenshot. Please try your request again";
+        case "access_key_required":
+        case "access_key_invalid":
+        case "signature_is_required":
+        case "signature_is_not_valid":
+        case "invalid_storage_configuration":
+        case "script_triggers_redirect":
+        case "storage_access_denied":
+        case "content_contains_specified_string":
+        case "invalid_cookie_parameter":
+        case "resulting_image_too_large":
+            // these are errors that often are not caused by the end user action,
+            // and they need to be fixed on your or our side
+            return "The screenshot rendering failed. Please, reach out to support.";
+        default:
+            // return a generic error message
+            // or the message provided by the API error.error_message
+            return "The screenshot rendering failed. Please, reach out to support.";
+    }
+}
+```
+
+These are the most common errors often caused by end users. If you want to process more codes, check out [all  our errors](/docs/errors/).
+
+## Reporting errors
+
+All ScreenshotOne API errors are logged and we are acknowledged by them. And will react to them as fast as possible.
+
+In general, you don't need to report to us any errors. But if it blocks your work or you want us to prioritize fixing them, please, feel free to report an error at `support@screenshotone.com`.
+
+## Error reference
+
+All API errors are listed in [the error reference](/docs/errors/).
+
 # Screenshot authenticated pages
 
 There is a few methods to screenshot authenticated pages:
@@ -5356,86 +5751,6 @@ One pitfall is that likely you will need to write your own code to sign in to th
 ## Support
 
 If you need help with screenshotting authenticated pages and any of the above methods does not work for you, please, contact us at `support@screenshotone.com`.
-
-# Customize websites before screenshotting
-
-ScreenshotOne supports a few options that can help you add any customizations to any website before rendering screenshots of it.
-
-## Hide any element by CSS selectors
-
-If you just need to quickly hide a few elements on the website, just use [the hide_selectors](https://screenshotone.com/docs/options/#hide_selectors) option and specify as many CSS selectors as you wish.
-
-For example, let's hide the main header on the example.com website with:
-
-```
-https://api.screenshotone.com/take?url=https://example.com&hide_selectors=h1&access_key=<your API key>
-```
-
-Before hiding:
-
-![A customized version of the example.com website](with_header.png)
-
-After hiding:
-
-![A customized version of the example.com website](without_header.png)
-
-You can specify as many selectors as you wish, e.g.:
-
-```
-https://api.screenshotone.com/take?url=https://example.com&hide_selectors[]=h1&hide_selectors[]=p&access_key=<your API key>
-```
-
-## Add custom CSS styles
-
-But often you want to do more than just hide a few elements. Maybe you want to change some colors of the elements, or font size, or whatever. Then you can simply add custom CSS styles with [the styles option](https://screenshotone.com/docs/options/#styles).
-
-Don't forget to encode the code. And often, you must add a `!important` attribute to every property you use.
-
-Let's try it with the example.com website:
-
-```
-https://api.screenshotone.com/take?url=https://example.com&styles=h1%20%7Bcolor%3A%20red%20%21important%3B%7D&access_key=<your API key>
-```
-
-Notice, that the styles parameter is URL-encoded. Let's look at the result:
-
-![A customized version of the example.com website](example_com_with_styles.webp)
-
-## Execute custom JavaScript code
-
-But what if hiding elements and adding styles is not enough? We got you covered! You can any custom JavaScript code you want.
-
-You can check out a more complex example of using scripting for integrating [Google Translate API when screenshotting websites](/docs/guides/how-to-translate-and-render-a-website-as-a-screenshot/).
-
-:::caution
-If your script causes navigation and makes the page reload, make sure to specify [the scripts_wait_until option](/docs/options/#scripts_wait_until) if you want to wait or large enough [delay](/docs/options/#delay).
-:::
-
-Let's execute an extreme example and just override the page content with:
-
-```javascript
-scripts = document.body.innerHTML = "Hello, world!";
-```
-
-The URL would look like:
-
-```
-https://api.screenshotone.com/take?scripts=document.body.innerHTML="Hello,%20world!"&url=https://example.com/&access_key=<your access key>
-```
-
-And the result is:
-
-![A customized version of the example.com website](hello_world_example.webp)
-
-## Click
-
-If you use scripting to only click on some element by selector, there is a popular shortcut for that [the click option](/docs/options/#click).
-
-```
-https://api.screenshotone.com/take?click=.a-some-button-class-selector&url=https://example.com&access_key=<your access key>
-```
-
-Just specify any selector of any element and it will be clicked.
 
 # Full-page screenshots
 
@@ -5727,315 +6042,325 @@ It is hard to make the API product to satisfies all the use cases and still be p
 
 Please, feel free to reach out at `support@screenshotone.com` if you have any questions or need more help or assistance in performance tuning.
 
-# How to translate and render a website as a screenshot
+# Storage Access Denied
 
-It is possible to translate and take a screenshot of the translated website with ScreenshotOne because the API supports scripts via the `scripts` option.
+It is an API error returned when the API can't upload a screenshot your S3 storage because the access is denined:
 
-You can use any translation API of your choice. But as an example, in this guide, I will go with Google Translate API.
+```json
+{
+    "is_successful": false,
+    "error_message": "Failed to upload the screenshot to the storage since access was denied. Check the API keys you specify when using the storage integration.",
+    "error_code": "storage_access_denied",
+    "documentation_url": "https://screenshotone.com/docs/errors/storage-access-denied/"
+}
+```
 
-## Get your Google Translate API key
+## Reasons and how to fix
 
-To get your Google API key:
+Let's quickly consider possible reasons and possible solutions.
 
-1. Go to [the API credentials page in Google Cloud Platform](https://console.cloud.google.com/apis/credentials).
-2. Generate your API key and make sure you restrict it to using only for Google Translate.
-3. Make sure you set budgets, and notifications, and follow other [best practices](https://cloud.google.com/blog/products/ai-machine-learning/four-best-practices-for-translating-your-website) for Google Translate.
+### Perform configuration testing
 
-## Write a script to translate your websites
+In [the dashboard](https://dash.screenshotone.com/integrations/s3), you can test configuration and get the detailed error description:
 
-You need to write a script that efficiently will check all text nodes on the website, batch them, and send requests efficiently to save your costs.
+![Configuration Testing](configuration_testing.jpg)
 
-:::danger
-Please, make sure to optimize the script for your use case and that it doesn't overuse your quota. It is an example script and ScreenshotOne is not responsible for you using it and causing any damage to your business by the script. Use it at your own risk.
+### Check credentials and URL
+
+Make sure and double check that all your credentials and the storage URL is correct.
+
+## Reach out to support
+
+If nothing helps you, please, reach out to `support@screenshotone.com` and we will try to help you as fast as possible.
+
+# How to render website screenshots with Make
+
+import { YouTube } from 'astro-embed';
+
+Make (formerly Integromat) is a powerful visual platform for creating automated workflows (often called “scenarios” or “blueprints”) between different apps and services—without needing to write code. 
+
+It helps to save time, reduce manual work, and connect various tools in an organized, automated way.
+
+And with ScreenshotOne you can integrate website screenshot rendering into your Make workflows.
+
+There is no official integration for Make yet, but there is a lot of ways you can use ScreenshotOne to render website screenshots in your Make workflows.
+
+## Community Integrations 
+
+There are integrations that are not officially made by ScreenshotOne, but you can use any of [the community-supported integrations](https://www.make.com/en/integrations/screenshotone-community).
+
+## Tutorials 
+
+### How to Automate ScreenshotOne with Make by Synergetic
+
+A tutorial by [Synergetic](https://www.go-synergetic.com/apps/screenshotone) on how to automate ScreenshotOne with Make: 
+
+<YouTube id="lzKhO9VRzgM" />
+
+### How to generate Scrolling Screenshots ScreenshotOne with Make by Synergetic
+
+In his guide on [how to multiply your leads tenfold using text-to-video AI automation](https://www.youtube.com/watch?v=Fild563M2Qo), Jack Roberts uses ScreenshotOne 
+to generate scrolling screenshots:
+
+<YouTube id="Fild563M2Qo" params="start=1474"  />
+
+The same method can be applied to regular and full-page screenshots as well.
+
+## Support 
+
+If you have any questions, don't hesitate to reach out to our support at [support@screenshotone.com](mailto:support@screenshotone.com).
+
+# How to render website screenshots with Bubble
+
+Bubble is a full-stack no-code app builder. It is a platform, where you can design, build, and launch fully functional web and mobile applications. They also handle all the technical details, like servers, integrations, and security.
+
+In case if you are going to build a website directory or your application needs website screenshots, you can use ScreenshotOne to do that for you. 
+
+## Community Plugins and Integrations
+
+To integrate ScreenshotOne with Bubble for rendering website screenshots, you can use [a ScreenshotOne plugin for Bubble provided Revido](https://bubble.io/plugin/screenshotone-1732272787355x675035896606359600).
+
+The plugin is developed and supported by [Revido—a company that build products for their customers through low-code](https://revido.co).
+
+# How to automate website screenshots with Zapier
+
+Zapier is a powerful automation platform that lets you connect your apps and automate workflows without writing any code. These automated workflows, called "Zaps", can connect thousands of apps to help you save time and reduce manual work.
+
+With ScreenshotOne's Zapier integration, you can easily incorporate website screenshot generation into your automated workflows, making it simple to capture and process screenshots as part of your business processes.
+
+You can use Zapier to automatically trigger screenshot captures and send them to your favorite apps like Google Drive, Slack, or any of the thousands of apps Zapier supports.
+
+## Integrations 
+
+Check out [ScreenshotOne integrations on Zapier](https://zapier.com/apps/screenshotone/integrations) and [a help guide provided by Zapier](https://help.zapier.com/hc/en-us/articles/16307799273613-How-to-get-started-with-ScreenshotOne-on-Zapier).
+
+## Tutorials 
+
+### Screenshots to Google Drive with Zapier
+
+A guide by [Toolfolio](https://toolfolio.io/) on [how to automate website screenshots upload to Google Drive with Zapier](https://toolfolio.io/productive-value/automate-website-screenshots-with-zapier-screenshotone).
+
+### Troubleshooting
+
+#### Timeouts
+
+Zapier has [a timeout limit of 30 seconds for executing a Zap](https://docs.zapier.com/platform/build/troubleshoot-action-timeouts). If you encounter timeouts, you can try the following:
+
+1. If it is [a full-page screenshot, try to optimize it](/docs/guides/performance/). E.g. disable full page scrolling.
+2. Or use [webhooks instead and asynchronous requests](/docs/async-and-webhooks/).
+
+## Support 
+
+If you have any questions, don't hesitate to reach out to our support at [support@screenshotone.com](mailto:support@screenshotone.com).
+
+# How to automate website screenshots in Clay with ScreenshotOne
+
+:::tip
+
+ScreenshotOne is now available as a [data provider in Clay](https://www.clay.com/integrations/data-provider/screenshotone).
+
+You can use ready-to-use templates. Use the guide below in case if you want to have more control over the integration and use more features than the official ScreenshotOne integration on Clay provides.
 :::
 
-Here is an example script you can try and use as a basis, but I highly recommend writing yours for production and making sure it has retries and other necessary logic:
+[Clay](https://clay.com/) is a powerful data-automation tool that lets teams enrich, filter, and transform leads from hundreds of sources without writing code. With Clay, you can build dynamic workflows that connect CRMs, APIs, and enrichment tools in minutes.
 
-```javascript
-const translateTextAsync = async (texts, targetLang, apiKey) => {
-    const url = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
-    const data = {
-        q: texts,
-        target: targetLang,
-    };
+[![Clay](clay.png)](https://clay.com/)
 
-    const response = await fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-    });
+Integration with [ScreenshotOne](/) lets you automatically generate high-quality website screenshots inside your Clay tables—perfect for lead research, prospecting, directory building, and any workflow where visual context matters.
 
-    if (!response.ok) throw new Error("Network response was not ok.");
+## How to use ScreenshotOne in Clay
 
-    const json = await response.json();
-    return json.data.translations.map((t) => t.translatedText);
-};
+### 1. Get a ScreenshotOne API key
 
-const isVisible = (element) => {
-    return element.offsetWidth > 0 && element.offsetHeight > 0;
-};
+1\. Sign up for [ScreenshotOne](https://screenshotone.com/) and get your API key at the [access page](https://dash.screenshotone.com/access/). Click on the "Create API key" button:
 
-const shouldTranslate = (node) => {
-    return (
-        node.nodeType === Node.TEXT_NODE &&
-        node.nodeValue.trim() &&
-        isVisible(node.parentElement) &&
-        !isDescendantOf(node, ["script", "code"])
-    );
-};
+![ScreenshotOne / Create an API key](screenshotone-create-api-key.png)
 
-const isDescendantOf = (node, tagNames) => {
-    let parent = node.parentElement;
-    while (parent && parent !== document.body) {
-        if (tagNames.includes(parent.tagName.toLowerCase())) {
-            return true;
-        }
-        parent = parent.parentElement;
-    }
-    return false;
-};
+2\. Enter a name for the API key, e.g. "Clay Integration" and click "Create API key":
 
-const batchTranslate = async (nodes, targetLang, apiKey) => {
-    let batch = [];
-    let totalLength = 0;
-    const results = [];
+![ScreenshotOne / Name the API key](screenshotone-enter-key-name.png)
 
-    for (const node of nodes) {
-        const text = node.nodeValue.trim();
-        if (text.length + totalLength > 5000 || batch.length >= 128) {
-            // Translate current batch
-            const translations = await translateTextAsync(
-                batch,
-                targetLang,
-                apiKey
-            );
-            translations.forEach((translatedText, index) => {
-                results.push({ node: nodes[index], translatedText });
-            });
+3\. Copy the API key to use it in Clay:
 
-            // Reset for next batch
-            batch = [text];
-            totalLength = text.length;
-        } else {
-            batch.push(text);
-            totalLength += text.length;
-        }
-    }
+![ScreenshotOne / Copy the API key](screenshotone-copy-keys.png)
 
-    // Translate remaining batch
-    if (batch.length > 0) {
-        const translations = await translateTextAsync(
-            batch,
-            targetLang,
-            apiKey
-        );
-        translations.forEach((translatedText, index) => {
-            results.push({
-                node: nodes[nodes.length - batch.length + index],
-                translatedText,
-            });
-        });
-    }
+### 2. Integrate ScreenshotOne in Clay as HTTP API
 
-    return results;
-};
+One of the ways to integrate ScreenshotOne in Clay is to use the [HTTP API](https://university.clay.com/docs/http-api-integration-overview).
 
-const translatePageContent = async (element, targetLang, apiKey) => {
-    const textNodes = [];
-    const walker = document.createTreeWalker(
-        element,
-        NodeFilter.SHOW_TEXT,
-        {
-            acceptNode: (node) => {
-                return shouldTranslate(node)
-                    ? NodeFilter.FILTER_ACCEPT
-                    : NodeFilter.FILTER_REJECT;
-            },
-        },
-        false
-    );
+With the HTTP API, you can use ScreenshotOne in Clay as a HTTP API endpoint and use all our API methods and options.
 
-    let node;
-    while ((node = walker.nextNode())) {
-        textNodes.push(node);
-    }
+For example, let's take screenshots of the website URLs stored in the Clay table:
 
-    const translations = await batchTranslate(textNodes, targetLang, apiKey);
-    translations.forEach(({ node, translatedText }) => {
-        node.nodeValue = translatedText;
-    });
-};
+1\. Create a Website URL column in your Clay table and fill it with the website URLs you want to screenshot:
 
-// Replace with your actual API key
-const apiKey = "<your API key>";
-// Target language code (e.g., 'es' for Spanish)
-const targetLang = "es";
+![Clay / Create a Website URL column](clay-website-url-column.png)
 
-translatePageContent(document.body, targetLang, apiKey)
-    .then(() => console.log("Translation completed"))
-    .catch((error) => console.error("Translation error:", error));
-```
+2\. Add new column with enrichment step and use the HTTP API type of enrichment:
 
-## Rendered translated websites
+![Clay / Add enrichment step and use the HTTP API type of enrichment](clay-add-enrichment-http-api.png)
 
-Once you have a working script, make sure you URL-encode it and then send it to ScreenshotOne when rendering a screenshot. You can use either POST or GET requests.
+3\. Configure the enrichment with the API key, API method and options:
 
-But in this example, I will share with you a GET request example:
+![Clay / Configure the enrichment](clay-configure-enrichment.png)
 
-```
-https://api.screenshotone.com/take?access_key=<your API key>&url=https://example.com&scripts=<URL-encoded script>&delay=10
-```
+4\. Save the enrichment step and run the workflow, once it is done, add the output as the new column or map it to the existing column.
 
-You can see the example.com website rendered in the Spanish language:
+## Support
 
-![The example.com website rendered in the Spanish language](example.com.spanish.jpeg)
+In case if you need any help or have any questions, please, contact us at [support@screenshotone.com](mailto:support@screenshotone.com).
 
-I hope the guide helps you translate and render any HTML or website content, and have a nice day!
+# How to automate website screenshots with n8n
 
-# How to handle API errors
+[n8n](https://n8n.io/) is a free and open-source workflow platform.
 
-Error handling is an essential part of any high-quality application. Make sure you handle all errors returned by the ScreenshotOne API correctly and provide informative explanations to your customers or react to them accordingly.
+It allows create workflows using a lot of different integrations with simple and intuitive drag-and-drop interface:
 
-## Following HTTP standards
+[![n8n UI](./n8n.webp)](https://n8n.io/)
 
-The ScreenshotOne API is on-purpose built using HTTP protocol and follows HTTP standards as much as possible. To make sure the API will be stable and can support customers for years to come.
+## Community nodes
 
-In general, if the resulting status code is in the range of 400-599, then we are dealing with errors.
+There is an official [ScreenshotOne node](https://www.npmjs.com/package/n8n-nodes-screenshotone) available for n8n.
 
-```
-GET https://api.screenshotone.com/?[options]
+[![ScreenshotOne node](./n8n-integration.png)](https://www.npmjs.com/package/n8n-nodes-screenshotone)
 
-Content-Type: application/json
+You can also find it in the [n8n community nodes](https://docs.n8n.io/integrations/community-nodes/) section.
 
-{
-    "is_successful":false,
-    "error_code": "an_error_code",
-    "error_message": "An error message"
-}
-```
+## Guides
 
-## Errors caused by API consumers
+Guides on how to automate website screenshots with n8n:
 
-All errors caused by invalid requests, absent credentials, or any reasons caused by you, an API consumer, are marked with status codes 400-499. It means, that until you find a way to fix them, the request won't be executed successfully.
+1. [Capture URL Screenshots Automatically from Google Sheets & Drive with ScreenshotOne & Gmail Alerts](https://n8n.io/workflows/3321-capture-url-screenshots-from-google-sheets-with-screenshotone-and-save-to-drive-with-gmail-alerts/).
 
-## API internal errors
+[![Capture URL Screenshots Automatically from Google Sheets & Drive with ScreenshotOne & Gmail Alerts](./guide.png)](https://n8n.io/workflows/3321-capture-url-screenshots-from-google-sheets-with-screenshotone-and-save-to-drive-with-gmail-alerts/)
 
-Errors with status codes in the range 500-599 are caused by the API internal reasons and you have almost little influence over that.
+# Organizations and Roles
 
-But you can safely retry them.
-Except in a few cases. When you get a network error (`network_error`), it might be because the site blocks the API, and there is no sense in retrying the request. Or if the site returned an error (`host_returned_error`) and it is an error within the range 400-499, it means that the API is either blocked, or you need to change the request to the site.
+Organizations are the core unit for managing your ScreenshotOne account. Every user belongs to one organization, and all billing, API access, and resources are scoped to the organization level.
 
-You still might want to try to retry errors like `network_error` and `host_returned_error` (if the host's error is `403` in the `returned_status_code` property of the response), but try to add a residential rotating proxy to that API request. Maybe the second time you can succeed and the request will work for you.
+## Roles
 
-An example of the code that retries the request with a residential rotating proxy:
+There are three roles in an organization:
 
-```javascript
-const response = await fetch(
-    "https://api.screenshotone.com/take?url=https://example.com&access_key=..."
-);
-if (!response.ok) {
-    const error = await response.json();
-    if (
-        // add more error codes
-        error.error_code === "network_error" ||
-        (error.error_code === "host_returned_error" && error.returned_status_code == 403)
-    ) {
-        const proxy = "http://...";
-        const proxyResponse = await fetch(
-            `https://api.screenshotone.com/take?url=https://example.com&access_key=...&proxy=${proxy}`
-        );
-        if (!proxyResponse.ok) {
-            const proxyError = await proxyResponse.json();
-            // you can try to retry again
-        }
+### Owner
 
-        // the retry was sucessful
-        const screenshot = await proxyResponse.blob();
-    }
-}
-```
+The owner has full control over the organization:
 
-## Showing errors to your end users
+- Full access to billing, invoices, and subscription management
+- Can invite and remove members
+- Can change member roles
+- Can transfer ownership to another member
+- Can delete the organization
+- Can configure notifications
 
-In general, you can try to just return the error message provided by the API, but if you want to show a more user-friendly message, you can use the following code:
+Every organization has exactly one owner. When you sign up, you automatically become the owner of your organization.
 
-```javascript 
-const response = await fetch("https://api.screenshotone.com/...");
+### Admin
 
-// after retries and other processing, once you decide to show an error to your end user
-if (!response.ok) {
-    const errorData = await response.json();
+Admins are trusted team members who can help manage the organization:
 
-    const errorMessage = generateUserFriendlyErrorMessage(errorData);
+- Can view and manage billing information
+- Can invite and remove members
+- Can change member roles (promote/demote between admin and developer)
+- Can edit organization settings
+- Can configure notifications
+- **Cannot** transfer ownership
+- **Cannot** delete the organization
 
-    // show the error to your end user in your UI, CLI or any other way
-    showErrorToUser(errorMessage);
-}
+Use the admin role for team leads, managers, or anyone who needs to manage the team without having full control.
 
-function generateUserFriendlyErrorMessage(error) {
-    // these are error messages for your public users, not for you
-    switch (error.error_code) {
-        case "screenshots_limit_reached":
-            return "The screenshot rendering is not available. Please, retry later.";
-        case "concurrency_limit_reached":
-        case "temporary_unavailable":
-            return "Please try again in a moment.";
-        case "request_not_valid":
-            return "Please, make sure your request is valid and try again.";
-        case "selector_not_found":
-            return "The target element was not found on the page";
-        case "name_not_resolved":
-            return "Unable to resolve the domain name. Check that there is no typo in the URL. If this is a new site, please wait for DNS propagation.";
-        case "network_error":
-            return "Unable to connect to the requested URL. The site may be blocking access or temporarily down.";
-        case "host_returned_error":
-            if ([401, 403, 429].includes(error.returned_status_code)) {
-                return "The target website blocks automated screenshot rendering.";
-            }
-            if (error.returned_status_code >= 500) {
-                return "The target website is temporarily down. Please, retry later.";
-            }
-            if (error.returned_status_code == 404) {
-                return "The target website returned a 404 HTTP error—the page not found.";
-            }
+### Developer
 
-            return `The target website returned a ${error.returned_status_code} HTTP error.`;
-        case "timeout_error":
-            return "The screenshot rendering timed out. Please, try again.";
-        case "storage_returned_transient_error":
-        case "internal_application_error":
-        case "request_aborted":
-            return "Failed to render the screenshot. Please try your request again";
-        case "access_key_required":
-        case "access_key_invalid":
-        case "signature_is_required":
-        case "signature_is_not_valid":
-        case "invalid_storage_configuration":
-        case "script_triggers_redirect":
-        case "storage_access_denied":
-        case "content_contains_specified_string":
-        case "invalid_cookie_parameter":
-        case "resulting_image_too_large":
-            // these are errors that often are not caused by the end user action,
-            // and they need to be fixed on your or our side
-            return "The screenshot rendering failed. Please, reach out to support.";
-        default:
-            // return a generic error message
-            // or the message provided by the API error.error_message
-            return "The screenshot rendering failed. Please, reach out to support.";
-    }
-}
-```
+Developers have access to everything needed to integrate with ScreenshotOne:
 
-These are the most common errors often caused by end users. If you want to process more codes, check out [all  our errors](/docs/errors/).
+- Can view and manage API keys
+- Can view request logs and screenshot history
+- Can access the playground
+- Can configure S3 storage
+- Can view organization members (read-only)
+- **Cannot** manage members or invites
+- **Cannot** view billing or payment information
+- **Cannot** change organization settings
 
-## Reporting errors
+Use the developer role for engineers and team members who need to work with the API but don't need administrative access.
 
-All ScreenshotOne API errors are logged and we are acknowledged by them. And will react to them as fast as possible.
+## Managing Your Team
 
-In general, you don't need to report to us any errors. But if it blocks your work or you want us to prioritize fixing them, please, feel free to report an error at `support@screenshotone.com`.
+### Inviting Members
 
-## Error reference
+1. Go to the **Organization** page
+2. Click **Invite new member**
+3. Enter the email address
+4. Select a role (Developer or Admin)
+5. Click **Invite**
 
-All API errors are listed in [the error reference](/docs/errors/).
+The invited user will receive an email with instructions to join. They can sign in (or sign up if new to ScreenshotOne) to accept the invitation.
+
+**Note:** You cannot invite users who already have an active subscription or are owners of another organization with members.
+
+### Changing Roles
+
+1. Go to the **Organization** page
+2. Find the member in the list
+3. Click **Change role**
+4. Select the new role (Developer or Admin)
+5. Click **Change Role**
+
+Only owners and admins can change roles. You cannot change the owner's role or your own role.
+
+### Removing Members
+
+1. Go to the **Organization** page
+2. Find the member in the list
+3. Click **Remove member**
+4. Confirm the removal
+
+When a member is removed, they are moved to their own organization with fresh API keys. **Important:** They may still have copies of your API keys. Consider regenerating your keys after removing a member.
+
+### Transferring Ownership
+
+If you need to transfer ownership to another member:
+
+1. Go to the **Organization** page
+2. Find the member who will become the new owner
+3. Click **Transfer ownership**
+4. Confirm the transfer
+
+After transfer, you will become a developer in the organization. Only the owner can transfer ownership, and only if no members have active legacy subscriptions.
+
+## Common Use Cases
+
+### Small Team
+
+- **Owner**: Founder or team lead (handles billing)
+- **Developers**: Engineers working on the integration
+
+### Medium Team
+
+- **Owner**: Finance or operations (manages billing)
+- **Admins**: Team leads (manage their developers)
+- **Developers**: Engineers
+
+### Enterprise
+
+- **Owner**: Account administrator
+- **Admins**: Department heads or project managers
+- **Developers**: Development teams
+
+## FAQ
+
+**Can I have multiple owners?**
+No, each organization has exactly one owner. Use the admin role for additional people who need management access.
+
+**What happens to removed members?**
+They get their own organization with a free plan and new API keys. They lose access to your organization's resources immediately.
+
+**Can developers see billing information?**
+No, only owners and admins can view billing, invoices, and subscription details.
+
+**Can admins change the subscription?**
+Yes, admins have full access to billing and can change plans, update payment methods, and manage the subscription.
+
+**What if I need help?**
+Contact us at support@screenshotone.com or use the support chat. We're happy to help with any organization-related questions.
 

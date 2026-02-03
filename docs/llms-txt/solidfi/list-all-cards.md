@@ -1,262 +1,164 @@
 # Source: https://docs.solidfi.com/v2/api-reference/cards/list-all-cards.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.solidfi.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # List all Cards
 
 > List all Cards
 
+
+
 ## OpenAPI
 
 ````yaml get /v2/issuing/card
+openapi: 3.0.3
+info:
+  title: Solid v2
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: https://api.sandbox.solidfi.com
+  - url: https://api.prod.solidfi.com
+security: []
+tags:
+  - name: Master Accounts
+  - name: Sub Account Holders
+  - name: Sub Accounts
+  - name: Counterparties
+  - name: Card Holders
+  - name: Cards
+  - name: Transactions
+  - name: Attachments
+  - name: Webhooks
+  - name: Simulation
+  - name: ACH
+  - name: Card
 paths:
-  path: /v2/issuing/card
-  method: get
-  servers:
-    - url: https://api.sandbox.solidfi.com
-    - url: https://api.prod.solidfi.com
-  request:
-    security:
-      - title: ''
-        parameters:
-          query: {}
-          header: {}
-          cookie: {}
-    parameters:
-      path: {}
-      query:
-        sub_account_id:
+  /v2/issuing/card:
+    get:
+      tags:
+        - Cards
+      summary: List all Cards
+      description: List all Cards
+      operationId: listAllCards
+      parameters:
+        - name: sub_account_id
+          in: query
           schema:
-            - type: string
-              description: unique id of the sub account
-              example: sub_bda1e562657c41e553104b10aad3fe70
-        card_holder_id:
+            type: string
+            example: sub_bda1e562657c41e553104b10aad3fe70
+            description: unique id of the sub account
+        - name: card_holder_id
+          in: query
           schema:
-            - type: string
-              description: unique id of the card holder
-              example: cah_a120a61f60dfd40fdb07b2e8bcd1f6f0
-        limit:
+            type: string
+            example: cah_a120a61f60dfd40fdb07b2e8bcd1f6f0
+            description: unique id of the card holder
+        - name: limit
+          in: query
           schema:
-            - type: number
-              description: number of records to return
-              example: 10
-        starting_after:
+            type: number
+            example: 10
+            description: number of records to return
+        - name: starting_after
+          in: query
           schema:
-            - type: string
-              description: >-
-                A cursor for use in pagination. `starting_after` is an ID that
-                defines your place in the list. For instance, if you make a list
-                request and receive 50 records, ending with
-                `Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`, your
-                subsequent call can include
-                `starting_after=Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`
-                in order to fetch the next page of the list.
-              example: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
-        ending_before:
+            type: string
+            example: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
+            description: >-
+              A cursor for use in pagination. `starting_after` is an ID that
+              defines your place in the list. For instance, if you make a list
+              request and receive 50 records, ending with
+              `Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`, your
+              subsequent call can include
+              `starting_after=Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`
+              in order to fetch the next page of the list.
+        - name: ending_before
+          in: query
           schema:
-            - type: string
-              description: >-
-                A cursor for use in pagination. `ending_before` is an ID that
-                defines your place in the list. For instance, if you make a list
-                request and receive 50 records, starting with
-                `Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`, your
-                subsequent call can include `ending_before=
-                Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky` in order to
-                fetch the previous page of the list.
-              example: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
-      header:
-        api-key:
+            type: string
+            example: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
+            description: >-
+              A cursor for use in pagination. `ending_before` is an ID that
+              defines your place in the list. For instance, if you make a list
+              request and receive 50 records, starting with
+              `Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`, your
+              subsequent call can include `ending_before=
+              Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky` in order to
+              fetch the previous page of the list.
+        - name: api-key
+          in: header
           schema:
-            - type: string
-              required: true
-              description: >-
-                API key is required to call Solid APIs. You can view and manage
-                your API keys in the Solid dashboard.
-              example: '{{api_key}}'
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              total:
-                allOf:
-                  - type: number
-                    example: 1
-                    description: total number of records
-              data:
-                allOf:
-                  - type: array
-                    items:
-                      $ref: '#/components/schemas/card'
-              has_more:
-                allOf:
-                  - type: string
-                    example: 'true'
-                    description: if there are more records to iterate or not
-                    enum:
-                      - 'true'
-                      - 'false'
-              starting_after:
-                allOf:
-                  - type: string
-                    example: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
-                    description: >-
-                      A cursor for use in pagination. `starting_after` is an ID
-                      that defines your place in the list. For instance, if you
-                      make a list request and receive 50 records, ending with
-                      `Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`, your
-                      subsequent call can include
-                      `starting_after=Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`
-                      in order to fetch the next page of the list.
-              ending_before:
-                allOf:
-                  - type: string
-                    example: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
-                    description: >-
-                      A cursor for use in pagination. `ending_before` is an ID
-                      that defines your place in the list. For instance, if you
-                      make a list request and receive 50 records, starting with
-                      `Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`, your
-                      subsequent call can include `ending_before=
-                      Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky` in order
-                      to fetch the previous page of the list.
-            refIdentifier: '#/components/schemas/list_card'
-        examples:
-          list_card_example:
-            value:
-              total: 1
-              data:
-                - id: crd_7948d9a96706dd05360a340002de725f
-                  client_id: cli_64c6c87ee9d609f36a6f390dc378a4ce
-                  master_account_holder_id: mah_201e02c581a098a740456c5c19fcfcd6
-                  master_account_id: mas_743fa071316bc6beaf5dddfd05f49c30
-                  sub_account_holder_id: sah_5ccfeef0adf0cbe2aa0980d2c9505752
-                  sub_account_id: sub_bda1e562657c41e553104b10aad3fe70
-                  card_holder_id: cah_a120a61f60dfd40fdb07b2e8bcd1f6f0
-                  label: Travel
-                  product: business_spend
-                  theme: metallic
-                  type: physical
-                  expiry_month: '12'
-                  expiry_year: '2022'
-                  last4: '5275'
-                  card_fulfilment:
-                    embossing:
-                      card_holder_name: John Doe
-                      business_name: Ace Inc
-                    shipping_address:
-                      line1: 123 Main St
-                      line2: ''
-                      city: New York
-                      state: NY
-                      country: US
-                      postal_code: '10001'
-                    tracking:
-                      status: delivered
-                      eta: '2024-05-02'
-                      number: '1231233'
-                      url: >-
-                        https://tools.usps.com/go/TrackConfirmAction_input?strOrigTrackNum=120635849224
-                      provider: usps
-                  controls:
-                    allowed:
-                      merchants: []
-                      categories: []
-                      countries: []
-                    blocked:
-                      merchants: []
-                      categories: []
-                      countries: []
-                    limit:
-                      period: daily
-                      max_spend_amount: '500.00'
-                      max_spend_per_transaction: '100.00'
-                      max_spend_count: '10'
-                    atm_enabled: 'true'
-                  external_reference_id: FSY52RAZ-4X
-                  attachments:
-                    - label: United
-                      id: att_a8d2b191fa0e960d8e49a4bfd320e07b
-                      created_at: '2024-04-01T21:00:00Z'
-                  metadata:
-                    description: Sales Team Card
-                  status: activated
-                  timestamps:
-                    created_at: '2024-04-01T21:00:00Z'
-                    updated_at: '2024-04-02T21:00:00Z'
-                    closed_at: '2024-04-02T21:00:00Z'
-              has_more: 'true'
-              starting_after: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
-              ending_before: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
-        description: List all Cards
-    '401':
-      application/json:
-        schemaArray:
-          - type: any
-        examples:
-          list_card_example:
-            value:
-              request_id: req_01900e34c96d7abfa970a9f454ab2d5d
-              client_id: ''
-              method: GET
-              status: 401
-              error:
-                code: ERROR_CODE_UNAUTHORIZED
-                message: unauthorized
-                field_name: ''
-              created_at: '2024-06-12T20:47:38Z'
-        description: Unauthorized Error
-  deprecated: false
-  type: path
+            type: string
+            example: '{{api_key}}'
+            description: >-
+              API key is required to call Solid APIs. You can view and manage
+              your API keys in the Solid dashboard.
+          required: true
+      responses:
+        '200':
+          description: List all Cards
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/list_card'
+                type: object
+              examples:
+                list_card_example:
+                  $ref: '#/components/examples/list_card_example'
+        '401':
+          description: Unauthorized Error
+          content:
+            application/json:
+              examples:
+                list_card_example:
+                  $ref: '#/components/examples/unauth_error'
+      security:
+        - {}
 components:
   schemas:
-    attachment_object:
+    list_card:
       type: object
       properties:
-        id:
+        total:
+          type: number
+          example: 1
+          description: total number of records
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/card'
+        has_more:
           type: string
-          example: att_a8d2b191fa0e960d8e49a4bfd320e07b
-          description: unique id of the attachment created
-        label:
+          example: 'true'
+          description: if there are more records to iterate or not
+          enum:
+            - 'true'
+            - 'false'
+        starting_after:
           type: string
-          example: formation
-          description: label of the attachment
-        timestamps:
-          type: object
-          properties:
-            created_at:
-              type: string
-              example: '2024-04-01T21:00:00Z'
-              description: date and time at which the attachment was created
-            deleted_at:
-              type: string
-              example: '2024-04-01T21:00:00Z'
-              description: date and time at which the attachment was deleted
-    metadata:
-      type: object
-      description: >-
-        Metadata takes free-form key-value pairs. You may send metadata when you
-        create an object (POST) and when updating the object (PATCH).  If you
-        would like to remove metadata that is already on an object, you can
-        unset it by passing in the key-value pair with an empty string, like
-        this: 
-         {"key": ""}
-    card_timestamp:
-      type: object
-      properties:
-        created_at:
+          example: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
+          description: >-
+            A cursor for use in pagination. `starting_after` is an ID that
+            defines your place in the list. For instance, if you make a list
+            request and receive 50 records, ending with
+            `Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`, your subsequent
+            call can include
+            `starting_after=Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky` in
+            order to fetch the next page of the list.
+        ending_before:
           type: string
-          example: '2024-04-01T21:00:00Z'
-          description: date and time at which the card was created
-        updated_at:
-          type: string
-          example: '2024-04-01T21:00:00Z'
-          description: date and time at which the card was updated
-        closed_at:
-          type: string
-          example: '2024-04-01T21:00:00Z'
-          description: date and time at which the card was closed
+          example: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
+          description: >-
+            A cursor for use in pagination. `ending_before` is an ID that
+            defines your place in the list. For instance, if you make a list
+            request and receive 50 records, starting with
+            `Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky`, your subsequent
+            call can include `ending_before=
+            Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky` in order to fetch
+            the previous page of the list.
     card:
       type: object
       properties:
@@ -487,8 +389,8 @@ components:
           items:
             $ref: '#/components/schemas/attachment_object'
         metadata:
-          type: object
           $ref: '#/components/schemas/metadata'
+          type: object
         status:
           type: string
           example: open
@@ -499,7 +401,131 @@ components:
             - blocked
             - locked
         timestamps:
-          type: object
           $ref: '#/components/schemas/card_timestamp'
+          type: object
+    attachment_object:
+      type: object
+      properties:
+        id:
+          type: string
+          example: att_a8d2b191fa0e960d8e49a4bfd320e07b
+          description: unique id of the attachment created
+        label:
+          type: string
+          example: formation
+          description: label of the attachment
+        timestamps:
+          type: object
+          properties:
+            created_at:
+              type: string
+              example: '2024-04-01T21:00:00Z'
+              description: date and time at which the attachment was created
+            deleted_at:
+              type: string
+              example: '2024-04-01T21:00:00Z'
+              description: date and time at which the attachment was deleted
+    metadata:
+      type: object
+      description: >-
+        Metadata takes free-form key-value pairs. You may send metadata when you
+        create an object (POST) and when updating the object (PATCH).  If you
+        would like to remove metadata that is already on an object, you can
+        unset it by passing in the key-value pair with an empty string, like
+        this: 
+         {"key": ""}
+    card_timestamp:
+      type: object
+      properties:
+        created_at:
+          type: string
+          example: '2024-04-01T21:00:00Z'
+          description: date and time at which the card was created
+        updated_at:
+          type: string
+          example: '2024-04-01T21:00:00Z'
+          description: date and time at which the card was updated
+        closed_at:
+          type: string
+          example: '2024-04-01T21:00:00Z'
+          description: date and time at which the card was closed
+  examples:
+    list_card_example:
+      value:
+        total: 1
+        data:
+          - id: crd_7948d9a96706dd05360a340002de725f
+            client_id: cli_64c6c87ee9d609f36a6f390dc378a4ce
+            master_account_holder_id: mah_201e02c581a098a740456c5c19fcfcd6
+            master_account_id: mas_743fa071316bc6beaf5dddfd05f49c30
+            sub_account_holder_id: sah_5ccfeef0adf0cbe2aa0980d2c9505752
+            sub_account_id: sub_bda1e562657c41e553104b10aad3fe70
+            card_holder_id: cah_a120a61f60dfd40fdb07b2e8bcd1f6f0
+            label: Travel
+            product: business_spend
+            theme: metallic
+            type: physical
+            expiry_month: '12'
+            expiry_year: '2022'
+            last4: '5275'
+            card_fulfilment:
+              embossing:
+                card_holder_name: John Doe
+                business_name: Ace Inc
+              shipping_address:
+                line1: 123 Main St
+                line2: ''
+                city: New York
+                state: NY
+                country: US
+                postal_code: '10001'
+              tracking:
+                status: delivered
+                eta: '2024-05-02'
+                number: '1231233'
+                url: >-
+                  https://tools.usps.com/go/TrackConfirmAction_input?strOrigTrackNum=120635849224
+                provider: usps
+            controls:
+              allowed:
+                merchants: []
+                categories: []
+                countries: []
+              blocked:
+                merchants: []
+                categories: []
+                countries: []
+              limit:
+                period: daily
+                max_spend_amount: '500.00'
+                max_spend_per_transaction: '100.00'
+                max_spend_count: '10'
+              atm_enabled: 'true'
+            external_reference_id: FSY52RAZ-4X
+            attachments:
+              - label: United
+                id: att_a8d2b191fa0e960d8e49a4bfd320e07b
+                created_at: '2024-04-01T21:00:00Z'
+            metadata:
+              description: Sales Team Card
+            status: activated
+            timestamps:
+              created_at: '2024-04-01T21:00:00Z'
+              updated_at: '2024-04-02T21:00:00Z'
+              closed_at: '2024-04-02T21:00:00Z'
+        has_more: 'true'
+        starting_after: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
+        ending_before: Y2xpXzAxOGY4NjEzMDEyYjdlNTFiOTZjNmVlYWJiNmRiZTky
+    unauth_error:
+      value:
+        request_id: req_01900e34c96d7abfa970a9f454ab2d5d
+        client_id: ''
+        method: GET
+        status: 401
+        error:
+          code: ERROR_CODE_UNAUTHORIZED
+          message: unauthorized
+          field_name: ''
+        created_at: '2024-06-12T20:47:38Z'
 
 ````

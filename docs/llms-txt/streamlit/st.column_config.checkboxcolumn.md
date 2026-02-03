@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/data/st.column_config/st.column_config.checkboxcolumn
+
 # st.column_config.CheckboxColumn
 
 Configure a checkbox column in `st.dataframe` or `st.data_editor`.

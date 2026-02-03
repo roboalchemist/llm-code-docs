@@ -4,7 +4,6 @@
 title: Keyspaces Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > AWS Components > Keyspaces Component
-source_url: https://docs.datadoghq.com/components-aws/keyspaces/index.html
 ---
 
 # Keyspaces Component

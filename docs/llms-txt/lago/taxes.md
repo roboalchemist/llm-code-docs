@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/invoicing/invoicing-settings/taxes.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Taxes
 
 > When generating invoices, you may need to apply VAT or other taxes. By creating tax objects and applying them to billing entities and/or customers, the corresponding invoices will reflect the appropriate tax rates.

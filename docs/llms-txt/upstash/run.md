@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/basics/context/run.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # context.run
 
 `context.run()` executes a piece of custom business logic as a workflow step.

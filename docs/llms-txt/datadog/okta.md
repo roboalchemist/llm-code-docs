@@ -10,7 +10,6 @@ description: >-
 breadcrumbs: >-
   Docs > Account Management > Single Sign On With SAML > Okta SAML Identity
   Provider Configuration
-source_url: https://docs.datadoghq.com/saml/okta/index.html
 ---
 
 # Okta SAML Identity Provider Configuration

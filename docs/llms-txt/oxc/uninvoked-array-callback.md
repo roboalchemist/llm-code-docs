@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/oxc/uninvoked-array-callback.md
 ---
-# oxc/uninvoked-array-callback&#x20;
 
 ### What it does
 

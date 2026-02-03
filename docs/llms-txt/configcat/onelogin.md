@@ -2,110 +2,158 @@
 
 # Source: https://configcat.com/docs/advanced/team-management/saml/identity-providers/onelogin.md
 
-# Source: https://configcat.com/docs/advanced/team-management/scim/identity-providers/onelogin.md
+# OneLogin Identity Provider
 
-# Source: https://configcat.com/docs/advanced/team-management/saml/identity-providers/onelogin.md
+Copy page
 
-# Source: https://configcat.com/docs/advanced/team-management/scim/identity-providers/onelogin.md
-
-# Source: https://configcat.com/docs/advanced/team-management/saml/identity-providers/onelogin.md
-
-# Source: https://configcat.com/docs/advanced/team-management/scim/identity-providers/onelogin.md
-
-# Source: https://configcat.com/docs/advanced/team-management/saml/identity-providers/onelogin.md
-
-# Source: https://configcat.com/docs/advanced/team-management/scim/identity-providers/onelogin.md
-
-# Source: https://configcat.com/docs/advanced/team-management/saml/identity-providers/onelogin.md
-
-# Source: https://configcat.com/docs/advanced/team-management/scim/identity-providers/onelogin.md
-
-# (Beta) User Provisioning (SCIM) with Onelogin
-
-info
-
-**Beta Feature**: SCIM provisioning is in public beta. It has been thoroughly tested with various Identity Providers. We're now collecting feedback from real-world usage to fine-tune the experience. Share your feedback [here](https://configcat.com/support).
+Connect ConfigCat with OneLogin via SAML.
 
 ## Introduction[​](#introduction "Direct link to Introduction")
 
-Each Identity Provider requires specific information to configure a SCIM integration. The following guide will walk you through how you can connect ConfigCat with OneLogin via SCIM.
+Each SSO Identity Provider requires specific information to configure a SAML integration. The following guide will walk you through how you can connect ConfigCat with OneLogin as a SAML Identity Provider.
 
 ## 1. Create an Application in OneLogin[​](#1-create-an-application-in-onelogin "Direct link to 1. Create an Application in OneLogin")
 
-* Log in to [OneLogin](https://app.onelogin.com/login), select `Applications` and click on `Add App`.
+* Log in to [OneLogin](https://app.onelogin.com/login), and select `Applications`.
 
-  ![OneLogin add application](/docs/assets/scim/onelogin/add_app.png)
+  ![OneLogin applications](/docs/assets/saml/onelogin/applications.png)
 
-* Type `SCIM V2` into the search bar, and select `SCIM Provisioner with SAML (SCIM v2 Core)`.
+* Click on `Add App`.
 
-  ![OneLogin select APP](/docs/assets/scim/onelogin/select_app.png)
+  ![OneLogin add application](/docs/assets/saml/onelogin/add_app.png)
+
+* Type `SAML` into the search bar, and select `SAML Custom Connector (Advanced)`.
+
+  ![OneLogin select APP](/docs/assets/saml/onelogin/select_app.png)
 
 * Enter a descriptive `Display Name`, then click `Save`.
 
-  ![OneLogin app name](/docs/assets/scim/onelogin/app_name.png)
+  ![OneLogin app name](/docs/assets/saml/onelogin/app_name.png)
 
-## 2. Configure Provisioning (SCIM) for the OneLogin Application[​](#2-configure-provisioning-scim-for-the-onelogin-application "Direct link to 2. Configure Provisioning (SCIM) for the OneLogin Application")
+The next step will guide you on how to collect the information required for the appearing `Configuration` page.
 
-* Gather the `SCIM URL` and the `Token` from the [Authentication & Provisioning](https://app.configcat.com/organization/authentication/) page in ConfigCat.
+## 2. Configure SAML for the OneLogin Application[​](#2-configure-saml-for-the-onelogin-application "Direct link to 2. Configure SAML for the OneLogin Application")
 
-  ![SCIM URL and token](/docs/assets/scim/dashboard/token_generate_url.png) ![SCIM token](/docs/assets/scim/dashboard/token.png)
+* Open your organization's authentication settings on the [ConfigCat Dashboard](https://app.configcat.com/organization/authentication).
 
-* On the OneLogin application's Configuration tab's API Connection section configure the following:
+  ![ConfigCat authentication settings](/docs/assets/saml/dashboard/authentication.png)
 
-  * Add the `SCIM URL` from the ConfigCat Dashboard as the `SCIM Base URL`.
-  * Add the `Token` from the ConfigCat Dashboard as the `SCIM Bearer Token`.
-  * Add the following as the `SCIM JSON Template`:
-    <!-- -->
-    ```
-    {
-      "schemas": [
-        "urn:ietf:params:scim:schemas:core:2.0:User"
-      ],
-      "userName": "{$parameters.scimusername}",
-      "displayName": "{$user.display_name}"
-    }
-    ```
+* Click `ADD SAML IDENTITY PROVIDER`.
 
-  ![OneLogin API Connection configuration](/docs/assets/scim/onelogin/configuration.png)
+  ![ConfigCat Add Identity Provider](/docs/assets/saml/dashboard/add_idp.png)
 
-* On the OneLogin application's Provisioning tab configure the following:
+* Give a name for your Identity Provider, and click `Create`.
 
-  * Check the `Enable provisioning` checkbox.
-  * Configure the other checkboxes and dropdowns based on your preference.
+  ![ConfigCat Name Identity Provider](/docs/assets/saml/dashboard/onelogin_name.png)
 
-  ![OneLogin enable provisioning](/docs/assets/scim/onelogin/enable_provisioning.png)
+* From the next section of the dialog, copy the following values and paste them into the OneLogin application's configuration page.
 
-* On the OneLogin application's Parameters tab configure the following:
+  * Copy `Entity ID` and paste it into the `Audience (EntityID)` field.
 
-  * Set Email as the `scimusername` parameter.
-    <!-- -->
-    ![OneLogin SCIM username parameter](/docs/assets/scim/onelogin/scimusername.png)
-  * Check the `Include in User Provisioning` checkbox at the Groups parameter.
-    <!-- -->
-    ![OneLogin Groups parameter](/docs/assets/scim/onelogin/include_in_provisioning.png)
+  * Copy `Assertion Consumer Service` and paste it into the `ACS (Consumer) URL` field.
 
-* On the OneLogin application's Rules tab configure which property should OneLogin send as the user's groups to ConfigCat.<br /><!-- -->In the following example we are mapping the user's role in OneLogin as the synced group to ConfigCat, but you can create other mappings as well based on your preference. Read more about mappings [here](https://developers.onelogin.com/scim/create-app#scimruleexamples).
+  * Paste the same `Assertion Consumer Service` into the `ACS (Consumer) URL Validator` field in regex format e.g. `^https:\/\/dashboard\-api\.configcat\.com\/saml\/acs\/08db93fc\-c4e7\-441f\-834f\-17c804385c29$`
 
-  * Click on te `Add rule` button.
-  * Specify a `Name` for your rule.
-  * Select `Set Groups in ##YOUR APPLICATION NAME##` at the `Actions`.
-  * Select `role` at the `For each` dropdown.
-  * Set `.*` for the `with value that matches` input.
+    ![ConfigCat SAML configuration](/docs/assets/saml/dashboard/acs_entity_id_1.png) ![OneLogin SML configuration](/docs/assets/saml/onelogin/onelogin_acs_eid.png)
 
-  ![OneLogin group mapping rule](/docs/assets/scim/onelogin/rule.png)
+* Scroll down a bit on this page and configure the following:
 
-## 3. Assign users manually to the application or set access based on policies/roles on the OneLogin application's Access tab.[​](#3-assign-users-manually-to-the-application-or-set-access-based-on-policiesroles-on-the-onelogin-applications-access-tab "Direct link to 3. Assign users manually to the application or set access based on policies/roles on the OneLogin application's Access tab.")
+  * Select `OneLogin` as `SAML Initiator`.
 
-![OneLogin assign groups/roles/users](/docs/assets/scim/onelogin/assign.png)
+  * Select `Email` as `SAML nameID format`.
 
-## 4. Start provisioning[​](#4-start-provisioning "Direct link to 4. Start provisioning")
+  * Select `Both` as `SAML signature element`.
 
-* On the OneLogin application's Configuration tab click on the `Enable` button to start the provisioning.
+    ![OneLogin SAML initiator](/docs/assets/saml/onelogin/saml_config2.png)
 
-  ![OneLogin enable provisioning](/docs/assets/scim/onelogin/enable.png)
+* Select `Parameters`, and make sure there is a `NameID value` entry under the `SAML Custom Connector (Advanced) Field` with the value `Email`.
 
-* Wait until the first provisioning is finished, and you should see each synced group and user on ConfigCat's [Authentication & Provisioning](https://app.configcat.com/organization/authentication/) page.
+  ![OneLogin nameID](/docs/assets/saml/onelogin/name_id.png)
 
-## 5. Next Steps[​](#5-next-steps "Direct link to 5. Next Steps")
+* Select `SSO`, then select `SHA-256` as `SAML Signature Algorithm`.
 
-* Continue with [assigning ConfigCat permissions to the synced groups](https://configcat.com/docs/docs/advanced/team-management/scim/scim-overview/.md#groups).
+  ![OneLogin SAML Signature Algorithm](/docs/assets/saml/onelogin/sso_signing_algo.png)
+
+## 3. Configure ConfigCat with SAML Details from OneLogin[​](#3-configure-configcat-with-saml-details-from-onelogin "Direct link to 3. Configure ConfigCat with SAML Details from OneLogin")
+
+You can choose one of the following options to configure ConfigCat with SAML Identity Provider metadata.
+
+* Metadata URL
+* Manual Configuration
+
+- Select `SSO`, and copy the value of `Issuer URL`.
+
+  ![OneLogin SAML SSO configuration](/docs/assets/saml/onelogin/sso_config.png)
+
+- Paste the copied value into the `Metadata URL` field at ConfigCat.
+
+  ![ConfigCat SAML configuration](/docs/assets/saml/onelogin/cc_meta_url_new.png)
+
+- Select the **trusted domains**. Only user accounts from trusted domains can login with SAML SSO. You can bind multiple verified domains to a SAML Identity Provider.
+
+  ![Select trusted domains](/docs/assets/saml/dashboard/select_trusted_domains.png)
+
+- Click on `Save`.
+
+* Select `SSO`, and copy the value of `SAML 2.0 Endpoint (HTTP)`, then click `View Details` under the `X.509 Certificate`.
+
+  ![OneLogin manual SAML SSO configuration](/docs/assets/saml/onelogin/sso_config_manual.png)
+
+* Copy the value of the `X.509 Certificate`.
+
+  ![OneLogin certificate](/docs/assets/saml/onelogin/cert.png)
+
+* Paste the value of the `SAML 2.0 Endpoint (HTTP)` and the `X.509 Certificate` into the Configuration dialog at ConfigCat
+
+  ![ConfigCat manual configuration](/docs/assets/saml/onelogin/cc_manual_new.png)
+
+* Select the **trusted domains**. Only user accounts from trusted domains can login with SAML SSO. You can bind multiple verified domains to a SAML Identity Provider.
+
+  ![Select trusted domains](/docs/assets/saml/dashboard/select_trusted_domains.png)
+
+* Click on `Save`.
+
+## 4. Assign the OneLogin Application to Users[​](#4-assign-the-onelogin-application-to-users "Direct link to 4. Assign the OneLogin Application to Users")
+
+To let users authenticate via SAML, you need to assign the newly created application to them.
+
+* Select `Users`.
+
+  ![OneLogin users](/docs/assets/saml/onelogin/users.png)
+
+* Select the user you want to get access to the application.
+
+  ![OneLogin select user](/docs/assets/saml/onelogin/select_user.png)
+
+* Select `Applications`, then click on the `+` sign.
+
+  ![OneLogin add application](/docs/assets/saml/onelogin/add_application.png)
+
+* Select your application, then click `Continue`.
+
+  ![OneLogin application added](/docs/assets/saml/onelogin/app_added.png)
+
+* Click `Save`.
+
+  ![OneLogin application details](/docs/assets/saml/onelogin/app_details.png)
+
+## 5. Sign In[​](#5-sign-in "Direct link to 5. Sign In")
+
+* Go to the [ConfigCat Log In](https://app.configcat.com) page, and click `COMPANY ACCOUNT - SAML`.
+
+  ![ConfigCat SAML login](/docs/assets/saml/dashboard/saml_login.png)
+
+* Sign in with your company email address assigned to the OneLogin application.
+
+  ![ConfigCat SAML company login](/docs/assets/saml/dashboard/company_email.png)
+
+* ConfigCat will redirect you to OneLogin's sign in page. Type your credentials, and click `Continue`.
+
+  ![OneLogin SAML login](/docs/assets/saml/onelogin/login.png)
+
+* You should be redirected to ConfigCat signed in with your company account.
+
+## 6. Next Steps[​](#6-next-steps "Direct link to 6. Next Steps")
+
+* Configure [User provisioning (SCIM)](https://configcat.com/docs/advanced/team-management/scim/scim-overview.md)
+* or configure the [auto-assignment of users](https://configcat.com/docs/advanced/team-management/auto-assign-users.md) if you don't want to provision your users with your Identity Provider.

@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/ai-productivity/ai-summary/sandbox.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AI Summary Sandbox
 
 > Learn how to use the AI Summary Sandbox to test and validate summary generation.
@@ -37,12 +41,12 @@ The Sandbox generates summaries based on your environment's configuration:
 
 | Type              | Description                                               | Availability                                                   |
 | :---------------- | :-------------------------------------------------------- | :------------------------------------------------------------- |
-| Free-text Summary | Concise narrative summary of the conversation             | Always available                                               |
+| Free Text Summary | Concise narrative summary of the conversation             | Always available                                               |
 | Intent            | Topic-level categorization of customer's primary issue    | Available after custom model training                          |
 | Structured Data   | Extracted data points and answers to predefined questions | Available after customizing your structured data configuration |
 
 <Note>
-  Intent and structured data capabilities require configuring for your specific business needs. Contact your ASAPP account team to enable these features.
+  You must configure intent and structured data capabilities for your specific business needs. Contact your ASAPP account team to enable these features.
 </Note>
 
 ## Using the Sandbox
@@ -53,9 +57,9 @@ Depending on the type of conversation you want to test, you can use one of the f
   <Tab title="Voice Conversations">
     When testing voice conversations in the Sandbox:
 
-    * Real-time transcription is powered by AI Transcribe
-    * If no custom AI Transcribe model exists, a baseline contact center model is used
-    * Transcripts are generated in real-time as you speak
+    * AI Transcribe powers real-time transcription
+    * If no custom AI Transcribe model exists, the system uses a baseline contact center model
+    * The system generates transcripts in real-time as you speak
   </Tab>
 
   <Tab title="Messaging Conversations">

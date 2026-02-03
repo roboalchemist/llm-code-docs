@@ -134,549 +134,11 @@
 
 # Source: https://python.useinstructor.com/index.md
 
-# Source: https://python.useinstructor.com/integrations/xai/index.md
-
-# Source: https://python.useinstructor.com/integrations/writer/index.md
-
-# Source: https://python.useinstructor.com/integrations/vertex/index.md
-
-# Source: https://python.useinstructor.com/integrations/truefoundry/index.md
-
-# Source: https://python.useinstructor.com/integrations/together/index.md
-
-# Source: https://python.useinstructor.com/integrations/sambanova/index.md
-
-# Source: https://python.useinstructor.com/integrations/perplexity/index.md
-
-# Source: https://python.useinstructor.com/integrations/openrouter/index.md
-
-# Source: https://python.useinstructor.com/integrations/openai/index.md
-
-# Source: https://python.useinstructor.com/integrations/openai-responses/index.md
-
-# Source: https://python.useinstructor.com/integrations/ollama/index.md
-
-# Source: https://python.useinstructor.com/integrations/mistral/index.md
-
-# Source: https://python.useinstructor.com/integrations/llama-cpp-python/index.md
-
-# Source: https://python.useinstructor.com/integrations/litellm/index.md
-
-# Source: https://python.useinstructor.com/integrations/groq/index.md
-
-# Source: https://python.useinstructor.com/integrations/google/index.md
-
-# Source: https://python.useinstructor.com/integrations/genai/index.md
-
-# Source: https://python.useinstructor.com/integrations/fireworks/index.md
-
-# Source: https://python.useinstructor.com/integrations/deepseek/index.md
-
-# Source: https://python.useinstructor.com/integrations/databricks/index.md
-
-# Source: https://python.useinstructor.com/integrations/cortex/index.md
-
-# Source: https://python.useinstructor.com/integrations/cohere/index.md
-
-# Source: https://python.useinstructor.com/integrations/cerebras/index.md
-
-# Source: https://python.useinstructor.com/integrations/bedrock/index.md
-
-# Source: https://python.useinstructor.com/integrations/azure/index.md
-
-# Source: https://python.useinstructor.com/integrations/anyscale/index.md
-
-# Source: https://python.useinstructor.com/integrations/anthropic/index.md
-
-# Source: https://python.useinstructor.com/integrations/index.md
-
-# Source: https://python.useinstructor.com/concepts/validation/index.md
-
-# Source: https://python.useinstructor.com/concepts/usage/index.md
-
-# Source: https://python.useinstructor.com/concepts/unions/index.md
-
-# Source: https://python.useinstructor.com/concepts/union/index.md
-
-# Source: https://python.useinstructor.com/concepts/types/index.md
-
-# Source: https://python.useinstructor.com/concepts/typeddicts/index.md
-
-# Source: https://python.useinstructor.com/concepts/typeadapter/index.md
-
-# Source: https://python.useinstructor.com/concepts/templating/index.md
-
-# Source: https://python.useinstructor.com/concepts/semantic_validation/index.md
-
-# Source: https://python.useinstructor.com/concepts/retrying/index.md
-
-# Source: https://python.useinstructor.com/concepts/reask_validation/index.md
-
-# Source: https://python.useinstructor.com/concepts/raw_response/index.md
-
-# Source: https://python.useinstructor.com/concepts/prompting/index.md
-
-# Source: https://python.useinstructor.com/concepts/prompt_caching/index.md
-
-# Source: https://python.useinstructor.com/concepts/philosophy/index.md
-
-# Source: https://python.useinstructor.com/concepts/patching/index.md
-
-# Source: https://python.useinstructor.com/concepts/partial/index.md
-
-# Source: https://python.useinstructor.com/concepts/parallel/index.md
-
-# Source: https://python.useinstructor.com/concepts/multimodal/index.md
-
-# Source: https://python.useinstructor.com/concepts/models/index.md
-
-# Source: https://python.useinstructor.com/concepts/migration/index.md
-
-# Source: https://python.useinstructor.com/concepts/maybe/index.md
-
-# Source: https://python.useinstructor.com/concepts/logging/index.md
-
-# Source: https://python.useinstructor.com/concepts/lists/index.md
-
-# Source: https://python.useinstructor.com/concepts/iterable/index.md
-
-# Source: https://python.useinstructor.com/concepts/hooks/index.md
-
-# Source: https://python.useinstructor.com/concepts/from_provider/index.md
-
-# Source: https://python.useinstructor.com/concepts/fields/index.md
-
-# Source: https://python.useinstructor.com/concepts/fastapi/index.md
-
-# Source: https://python.useinstructor.com/concepts/error_handling/index.md
-
-# Source: https://python.useinstructor.com/concepts/enums/index.md
-
-# Source: https://python.useinstructor.com/concepts/distillation/index.md
-
-# Source: https://python.useinstructor.com/concepts/dictionary_operations/index.md
-
-# Source: https://python.useinstructor.com/concepts/caching/index.md
-
-# Source: https://python.useinstructor.com/concepts/batch/index.md
-
-# Source: https://python.useinstructor.com/concepts/alias/index.md
-
-# Source: https://python.useinstructor.com/concepts/index.md
-
-# Source: https://python.useinstructor.com/installation/index.md
-
-# Source: https://python.useinstructor.com/getting-started/index.md
-
-# Source: https://python.useinstructor.com/index.md
-
-# Source: https://python.useinstructor.com/integrations/xai/index.md
-
-# Source: https://python.useinstructor.com/integrations/writer/index.md
-
-# Source: https://python.useinstructor.com/integrations/vertex/index.md
-
-# Source: https://python.useinstructor.com/integrations/truefoundry/index.md
-
-# Source: https://python.useinstructor.com/integrations/together/index.md
-
-# Source: https://python.useinstructor.com/integrations/sambanova/index.md
-
-# Source: https://python.useinstructor.com/integrations/perplexity/index.md
-
-# Source: https://python.useinstructor.com/integrations/openrouter/index.md
-
-# Source: https://python.useinstructor.com/integrations/openai/index.md
-
-# Source: https://python.useinstructor.com/integrations/openai-responses/index.md
-
-# Source: https://python.useinstructor.com/integrations/ollama/index.md
-
-# Source: https://python.useinstructor.com/integrations/mistral/index.md
-
-# Source: https://python.useinstructor.com/integrations/llama-cpp-python/index.md
-
-# Source: https://python.useinstructor.com/integrations/litellm/index.md
-
-# Source: https://python.useinstructor.com/integrations/groq/index.md
-
-# Source: https://python.useinstructor.com/integrations/google/index.md
-
-# Source: https://python.useinstructor.com/integrations/genai/index.md
-
-# Source: https://python.useinstructor.com/integrations/fireworks/index.md
-
-# Source: https://python.useinstructor.com/integrations/deepseek/index.md
-
-# Source: https://python.useinstructor.com/integrations/databricks/index.md
-
-# Source: https://python.useinstructor.com/integrations/cortex/index.md
-
-# Source: https://python.useinstructor.com/integrations/cohere/index.md
-
-# Source: https://python.useinstructor.com/integrations/cerebras/index.md
-
-# Source: https://python.useinstructor.com/integrations/bedrock/index.md
-
-# Source: https://python.useinstructor.com/integrations/azure/index.md
-
-# Source: https://python.useinstructor.com/integrations/anyscale/index.md
-
-# Source: https://python.useinstructor.com/integrations/anthropic/index.md
-
-# Source: https://python.useinstructor.com/integrations/index.md
-
-# Source: https://python.useinstructor.com/concepts/validation/index.md
-
-# Source: https://python.useinstructor.com/concepts/usage/index.md
-
-# Source: https://python.useinstructor.com/concepts/unions/index.md
-
-# Source: https://python.useinstructor.com/concepts/union/index.md
-
-# Source: https://python.useinstructor.com/concepts/types/index.md
-
-# Source: https://python.useinstructor.com/concepts/typeddicts/index.md
-
-# Source: https://python.useinstructor.com/concepts/typeadapter/index.md
-
-# Source: https://python.useinstructor.com/concepts/templating/index.md
-
-# Source: https://python.useinstructor.com/concepts/semantic_validation/index.md
-
-# Source: https://python.useinstructor.com/concepts/retrying/index.md
-
-# Source: https://python.useinstructor.com/concepts/reask_validation/index.md
-
-# Source: https://python.useinstructor.com/concepts/raw_response/index.md
-
-# Source: https://python.useinstructor.com/concepts/prompting/index.md
-
-# Source: https://python.useinstructor.com/concepts/prompt_caching/index.md
-
-# Source: https://python.useinstructor.com/concepts/philosophy/index.md
-
-# Source: https://python.useinstructor.com/concepts/patching/index.md
-
-# Source: https://python.useinstructor.com/concepts/partial/index.md
-
-# Source: https://python.useinstructor.com/concepts/parallel/index.md
-
-# Source: https://python.useinstructor.com/concepts/multimodal/index.md
-
-# Source: https://python.useinstructor.com/concepts/models/index.md
-
-# Source: https://python.useinstructor.com/concepts/migration/index.md
-
-# Source: https://python.useinstructor.com/concepts/maybe/index.md
-
-# Source: https://python.useinstructor.com/concepts/logging/index.md
-
-# Source: https://python.useinstructor.com/concepts/lists/index.md
-
-# Source: https://python.useinstructor.com/concepts/iterable/index.md
-
-# Source: https://python.useinstructor.com/concepts/hooks/index.md
-
-# Source: https://python.useinstructor.com/concepts/from_provider/index.md
-
-# Source: https://python.useinstructor.com/concepts/fields/index.md
-
-# Source: https://python.useinstructor.com/concepts/fastapi/index.md
-
-# Source: https://python.useinstructor.com/concepts/error_handling/index.md
-
-# Source: https://python.useinstructor.com/concepts/enums/index.md
-
-# Source: https://python.useinstructor.com/concepts/distillation/index.md
-
-# Source: https://python.useinstructor.com/concepts/dictionary_operations/index.md
-
-# Source: https://python.useinstructor.com/concepts/caching/index.md
-
-# Source: https://python.useinstructor.com/concepts/batch/index.md
-
-# Source: https://python.useinstructor.com/concepts/alias/index.md
-
-# Source: https://python.useinstructor.com/concepts/index.md
-
-# Source: https://python.useinstructor.com/installation/index.md
-
-# Source: https://python.useinstructor.com/getting-started/index.md
-
-# Source: https://python.useinstructor.com/index.md
-
-# Source: https://python.useinstructor.com/integrations/xai/index.md
-
-# Source: https://python.useinstructor.com/integrations/writer/index.md
-
-# Source: https://python.useinstructor.com/integrations/vertex/index.md
-
-# Source: https://python.useinstructor.com/integrations/truefoundry/index.md
-
-# Source: https://python.useinstructor.com/integrations/together/index.md
-
-# Source: https://python.useinstructor.com/integrations/sambanova/index.md
-
-# Source: https://python.useinstructor.com/integrations/perplexity/index.md
-
-# Source: https://python.useinstructor.com/integrations/openrouter/index.md
-
-# Source: https://python.useinstructor.com/integrations/openai/index.md
-
-# Source: https://python.useinstructor.com/integrations/openai-responses/index.md
-
-# Source: https://python.useinstructor.com/integrations/ollama/index.md
-
-# Source: https://python.useinstructor.com/integrations/mistral/index.md
-
-# Source: https://python.useinstructor.com/integrations/llama-cpp-python/index.md
-
-# Source: https://python.useinstructor.com/integrations/litellm/index.md
-
-# Source: https://python.useinstructor.com/integrations/groq/index.md
-
-# Source: https://python.useinstructor.com/integrations/google/index.md
-
-# Source: https://python.useinstructor.com/integrations/genai/index.md
-
-# Source: https://python.useinstructor.com/integrations/fireworks/index.md
-
-# Source: https://python.useinstructor.com/integrations/deepseek/index.md
-
-# Source: https://python.useinstructor.com/integrations/databricks/index.md
-
-# Source: https://python.useinstructor.com/integrations/cortex/index.md
-
-# Source: https://python.useinstructor.com/integrations/cohere/index.md
-
-# Source: https://python.useinstructor.com/integrations/cerebras/index.md
-
-# Source: https://python.useinstructor.com/integrations/bedrock/index.md
-
-# Source: https://python.useinstructor.com/integrations/azure/index.md
-
-# Source: https://python.useinstructor.com/integrations/anyscale/index.md
-
-# Source: https://python.useinstructor.com/integrations/anthropic/index.md
-
-# Source: https://python.useinstructor.com/integrations/index.md
-
-# Source: https://python.useinstructor.com/concepts/validation/index.md
-
-# Source: https://python.useinstructor.com/concepts/usage/index.md
-
-# Source: https://python.useinstructor.com/concepts/unions/index.md
-
-# Source: https://python.useinstructor.com/concepts/union/index.md
-
-# Source: https://python.useinstructor.com/concepts/types/index.md
-
-# Source: https://python.useinstructor.com/concepts/typeddicts/index.md
-
-# Source: https://python.useinstructor.com/concepts/typeadapter/index.md
-
-# Source: https://python.useinstructor.com/concepts/templating/index.md
-
-# Source: https://python.useinstructor.com/concepts/semantic_validation/index.md
-
-# Source: https://python.useinstructor.com/concepts/retrying/index.md
-
-# Source: https://python.useinstructor.com/concepts/reask_validation/index.md
-
-# Source: https://python.useinstructor.com/concepts/raw_response/index.md
-
-# Source: https://python.useinstructor.com/concepts/prompting/index.md
-
-# Source: https://python.useinstructor.com/concepts/prompt_caching/index.md
-
-# Source: https://python.useinstructor.com/concepts/philosophy/index.md
-
-# Source: https://python.useinstructor.com/concepts/patching/index.md
-
-# Source: https://python.useinstructor.com/concepts/partial/index.md
-
-# Source: https://python.useinstructor.com/concepts/parallel/index.md
-
-# Source: https://python.useinstructor.com/concepts/multimodal/index.md
-
-# Source: https://python.useinstructor.com/concepts/models/index.md
-
-# Source: https://python.useinstructor.com/concepts/migration/index.md
-
-# Source: https://python.useinstructor.com/concepts/maybe/index.md
-
-# Source: https://python.useinstructor.com/concepts/logging/index.md
-
-# Source: https://python.useinstructor.com/concepts/lists/index.md
-
-# Source: https://python.useinstructor.com/concepts/iterable/index.md
-
-# Source: https://python.useinstructor.com/concepts/hooks/index.md
-
-# Source: https://python.useinstructor.com/concepts/from_provider/index.md
-
-# Source: https://python.useinstructor.com/concepts/fields/index.md
-
-# Source: https://python.useinstructor.com/concepts/fastapi/index.md
-
-# Source: https://python.useinstructor.com/concepts/error_handling/index.md
-
-# Source: https://python.useinstructor.com/concepts/enums/index.md
-
-# Source: https://python.useinstructor.com/concepts/distillation/index.md
-
-# Source: https://python.useinstructor.com/concepts/dictionary_operations/index.md
-
-# Source: https://python.useinstructor.com/concepts/caching/index.md
-
-# Source: https://python.useinstructor.com/concepts/batch/index.md
-
-# Source: https://python.useinstructor.com/concepts/alias/index.md
-
-# Source: https://python.useinstructor.com/concepts/index.md
-
-# Source: https://python.useinstructor.com/installation/index.md
-
-# Source: https://python.useinstructor.com/getting-started/index.md
-
-# Source: https://python.useinstructor.com/index.md
-
-# Source: https://python.useinstructor.com/integrations/xai/index.md
-
-# Source: https://python.useinstructor.com/integrations/writer/index.md
-
-# Source: https://python.useinstructor.com/integrations/vertex/index.md
-
-# Source: https://python.useinstructor.com/integrations/truefoundry/index.md
-
-# Source: https://python.useinstructor.com/integrations/together/index.md
-
-# Source: https://python.useinstructor.com/integrations/sambanova/index.md
-
-# Source: https://python.useinstructor.com/integrations/perplexity/index.md
-
-# Source: https://python.useinstructor.com/integrations/openrouter/index.md
-
-# Source: https://python.useinstructor.com/integrations/openai/index.md
-
-# Source: https://python.useinstructor.com/integrations/openai-responses/index.md
-
-# Source: https://python.useinstructor.com/integrations/ollama/index.md
-
-# Source: https://python.useinstructor.com/integrations/mistral/index.md
-
-# Source: https://python.useinstructor.com/integrations/llama-cpp-python/index.md
-
-# Source: https://python.useinstructor.com/integrations/litellm/index.md
-
-# Source: https://python.useinstructor.com/integrations/groq/index.md
-
-# Source: https://python.useinstructor.com/integrations/google/index.md
-
-# Source: https://python.useinstructor.com/integrations/genai/index.md
-
-# Source: https://python.useinstructor.com/integrations/fireworks/index.md
-
-# Source: https://python.useinstructor.com/integrations/deepseek/index.md
-
-# Source: https://python.useinstructor.com/integrations/databricks/index.md
-
-# Source: https://python.useinstructor.com/integrations/cortex/index.md
-
-# Source: https://python.useinstructor.com/integrations/cohere/index.md
-
-# Source: https://python.useinstructor.com/integrations/cerebras/index.md
-
-# Source: https://python.useinstructor.com/integrations/bedrock/index.md
-
-# Source: https://python.useinstructor.com/integrations/azure/index.md
-
-# Source: https://python.useinstructor.com/integrations/anyscale/index.md
-
-# Source: https://python.useinstructor.com/integrations/anthropic/index.md
-
-# Source: https://python.useinstructor.com/integrations/index.md
-
-# Source: https://python.useinstructor.com/concepts/validation/index.md
-
-# Source: https://python.useinstructor.com/concepts/usage/index.md
-
-# Source: https://python.useinstructor.com/concepts/unions/index.md
-
-# Source: https://python.useinstructor.com/concepts/union/index.md
-
-# Source: https://python.useinstructor.com/concepts/types/index.md
-
-# Source: https://python.useinstructor.com/concepts/typeddicts/index.md
-
-# Source: https://python.useinstructor.com/concepts/typeadapter/index.md
-
-# Source: https://python.useinstructor.com/concepts/templating/index.md
-
-# Source: https://python.useinstructor.com/concepts/semantic_validation/index.md
-
-# Source: https://python.useinstructor.com/concepts/retrying/index.md
-
-# Source: https://python.useinstructor.com/concepts/reask_validation/index.md
-
-# Source: https://python.useinstructor.com/concepts/raw_response/index.md
-
-# Source: https://python.useinstructor.com/concepts/prompting/index.md
-
-# Source: https://python.useinstructor.com/concepts/prompt_caching/index.md
-
-# Source: https://python.useinstructor.com/concepts/philosophy/index.md
-
-# Source: https://python.useinstructor.com/concepts/patching/index.md
-
-# Source: https://python.useinstructor.com/concepts/partial/index.md
-
-# Source: https://python.useinstructor.com/concepts/parallel/index.md
-
-# Source: https://python.useinstructor.com/concepts/multimodal/index.md
-
-# Source: https://python.useinstructor.com/concepts/models/index.md
-
-# Source: https://python.useinstructor.com/concepts/maybe/index.md
-
-# Source: https://python.useinstructor.com/concepts/logging/index.md
-
-# Source: https://python.useinstructor.com/concepts/lists/index.md
-
-# Source: https://python.useinstructor.com/concepts/iterable/index.md
-
-# Source: https://python.useinstructor.com/concepts/hooks/index.md
-
-# Source: https://python.useinstructor.com/concepts/fields/index.md
-
-# Source: https://python.useinstructor.com/concepts/fastapi/index.md
-
-# Source: https://python.useinstructor.com/concepts/error_handling/index.md
-
-# Source: https://python.useinstructor.com/concepts/enums/index.md
-
-# Source: https://python.useinstructor.com/concepts/distillation/index.md
-
-# Source: https://python.useinstructor.com/concepts/dictionary_operations/index.md
-
-# Source: https://python.useinstructor.com/concepts/caching/index.md
-
-# Source: https://python.useinstructor.com/concepts/batch/index.md
-
-# Source: https://python.useinstructor.com/concepts/alias/index.md
-
-# Source: https://python.useinstructor.com/concepts/index.md
-
-# Source: https://python.useinstructor.com/installation/index.md
-
-# Source: https://python.useinstructor.com/getting-started/index.md
-
-# Source: https://python.useinstructor.com/index.md
-
 # Instructor: Top Multi-Language Library for Structured LLM Outputs
 
 *Extract structured data from any LLM with type safety, validation, and automatic retries. Available in Python, TypeScript, Go, Ruby, Elixir, and Rust.*
+
+> **Instructor for extraction, PydanticAI for agents.** Instructor shines when you need fast, schema-first extraction without extra agents. When your project needs quality gates, shareable runs, or built-in observability, try [PydanticAI](https://ai.pydantic.dev/). PydanticAI is the official agent runtime from the Pydantic team: it adds typed tools, dataset replays, and production dashboards while keeping your existing Instructor models. Read the [PydanticAI docs](https://ai.pydantic.dev/) to see how to bring those capabilities into your stack.
 
 ## What is Instructor?
 
@@ -694,9 +156,9 @@ Built on top of **Pydantic**, Instructor provides type-safe data extraction with
 - **Type Safety**: Full IDE support with proper type inference and autocompletion
 - **Open Source Support**: Run any open source model locally with Ollama, llama-cpp-python, or vLLM
 
-## Quick Start: Extract Structured Data in 3 Lines
+## Quick Start
 
-Install Instructor and start extracting structured data immediately:
+Install Instructor and start extracting structured data in minutes:
 
 ```bash
 pip install instructor
@@ -710,30 +172,7 @@ uv add instructor
 poetry add instructor
 ```
 
-```python
-import instructor
-from pydantic import BaseModel
-from openai import OpenAI
-
-
-class Person(BaseModel):
-    name: str
-    age: int
-    occupation: str
-
-
-client = instructor.from_openai(OpenAI())
-person = client.chat.completions.create(
-    model="gpt-4o-mini",
-    response_model=Person,
-    messages=[
-        {"role": "user", "content": "Extract: John is a 30-year-old software engineer"}
-    ],
-)
-print(person)  # Person(name='John', age=30, occupation='software engineer')
-```
-
-## Universal Provider API - One Interface for All LLMs
+### Extract Structured Data
 
 Instructor's **`from_provider`** function provides a unified interface to work with any LLM provider. Switch between OpenAI, Anthropic, Google, Ollama, DeepSeek, and 15+ providers with the same code:
 
@@ -742,41 +181,38 @@ import instructor
 from pydantic import BaseModel
 
 
-class UserInfo(BaseModel):
+class Person(BaseModel):
     name: str
     age: int
+    occupation: str
 
 
 # Works with any provider - same interface everywhere
-client = instructor.from_provider("openai/gpt-4")  # OpenAI
-client = instructor.from_provider("anthropic/claude-3")  # Anthropic
-client = instructor.from_provider("google/gemini-pro")  # Google
-client = instructor.from_provider("ollama/llama3")  # Ollama (local)
-client = instructor.from_provider("deepseek/deepseek-chat")  # DeepSeek
+client = instructor.from_provider("openai/gpt-5-nano")
+# Or: instructor.from_provider("anthropic/claude-3")
+# Or: instructor.from_provider("google/gemini-pro")
+# Or: instructor.from_provider("ollama/llama3")  # local
 
-# Pass API keys directly (no environment variables needed)
-client = instructor.from_provider("openai/gpt-4", api_key="sk-...")
-client = instructor.from_provider("anthropic/claude-3", api_key="sk-ant-...")
-client = instructor.from_provider("groq/llama-3.1-8b-instant", api_key="gsk_...")
-
-# Same extraction code works with all providers
-user = client.chat.completions.create(
-    response_model=UserInfo,
-    messages=[{"role": "user", "content": "John Doe is 30 years old."}],
+# Extract structured data from natural language
+person = client.create(
+    response_model=Person,
+    messages=[
+        {"role": "user", "content": "Extract: John is a 30-year-old software engineer"}
+    ],
 )
+print(person)  # Person(name='John', age=30, occupation='software engineer')
 ```
 
-The **`from_provider`** API supports both sync and async usage (`async_client=True`) and automatically handles provider-specific configurations, making it effortless to switch between different LLM services.
+The **`from_provider`** API supports both sync and async usage (`async_client=True`) and automatically handles provider-specific configurations. [See all supported providers â](https://python.useinstructor.com/integrations/index.md)
 
 ## Complex Schemas & Validation
 
-Instructor excels at extracting complex, nested data structures with custom validation rules. Here's a real-world example:
+Instructor excels at extracting complex, nested data structures with custom validation rules. Here's a concise example:
 
 ```python
 import instructor
 from pydantic import BaseModel, Field, field_validator
 from typing import List, Optional
-from datetime import datetime
 from enum import Enum
 
 class Priority(str, Enum):
@@ -785,23 +221,9 @@ class Priority(str, Enum):
     HIGH = "high"
     CRITICAL = "critical"
 
-class Address(BaseModel):
-    street: str
-    city: str
-    country: str
-    postal_code: str = Field(..., pattern=r'^\d{5}(-\d{4})?$')
-
-class Contact(BaseModel):
-    email: str = Field(..., pattern=r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')
-    phone: Optional[str] = Field(None, pattern=r'^\+?1?-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$')
-
 class Ticket(BaseModel):
-    id: str
     title: str = Field(..., min_length=5, max_length=100)
-    description: str = Field(..., min_length=10)
     priority: Priority
-    assignee: Optional[str] = None
-    tags: List[str] = Field(default_factory=list, max_items=5)
     estimated_hours: Optional[float] = Field(None, gt=0, le=100)
 
     @field_validator('estimated_hours')
@@ -813,61 +235,33 @@ class Ticket(BaseModel):
 
 class CustomerSupport(BaseModel):
     customer_name: str
-    customer_contact: Contact
-    customer_address: Address
     tickets: List[Ticket] = Field(..., min_items=1)
-    total_estimated_time: float = Field(..., gt=0)
 
-    @field_validator('total_estimated_time')
-    @classmethod
-    def validate_total_time(cls, v, info):
-        if 'tickets' in info.data:
-            ticket_time = sum(t.estimated_hours or 0 for t in info.data['tickets'])
-            if abs(v - ticket_time) > 0.1:  # Allow small floating point differences
-                raise ValueError(f'Total time {v} must match sum of ticket times {ticket_time}')
-        return v
-
-# Extract complex support case from natural language
 client = instructor.from_provider("openai/gpt-4o")
 
-support_case = client.chat.completions.create(
+support_case = client.create(
     response_model=CustomerSupport,
-    messages=[{
-        "role": "user", 
-        "content": """
-        Support case for Sarah Johnson (sarah.johnson@techcorp.com, +1-555-123-4567).
-        Address: 123 Tech Street, San Francisco, CA 94105.
-
-        Two tickets:
-        1. "Login system completely broken" - CRITICAL priority, needs 4.5 hours, tags: authentication, security
-        2. "Email notifications not working" - MEDIUM priority, needs 2 hours, tags: email, notifications
-
-        Total estimated time: 6.5 hours
-        """
-    }],
+    messages=[{"role": "user", "content": "Extract support case details..."}],
     max_retries=3
 )
-
-print(f"Customer: {support_case.customer_name}")
-print(f"Total tickets: {len(support_case.tickets)}")
-print(f"Critical tickets: {len([t for t in support_case.tickets if t.priority == Priority.CRITICAL])}")
 ```
 
-**Key Features Demonstrated:**
+**Key Features:**
 
-- **Deep nesting**: `CustomerSupport` â `Contact`/`Address`/`List[Ticket]`
-- **Custom validation**: Email patterns, phone formats, business rules
-- **Enums and constraints**: Priority levels, field length limits
-- **Cross-field validation**: Total time must match ticket sum
-- **Automatic retries**: Failed validation triggers re-extraction
+- Deep nesting with nested models and lists
+- Custom validation with Pydantic validators
+- Automatic retries on validation failures
+- Type-safe extraction with full IDE support
+
+[Learn more about validation and complex schemas â](https://python.useinstructor.com/concepts/reask_validation/index.md)
 
 ## Supported LLM Providers
 
 Instructor works seamlessly with **15+ popular LLM providers**, giving you the flexibility to use any model while maintaining consistent structured output handling. From OpenAI's GPT models to **open source alternatives with Ollama**, **DeepSeek models**, and local inference, get validated data extraction everywhere.
 
-It stands out for its simplicity, transparency, and user-centric design, built on top of Pydantic. Instructor helps you manage [validation context](concepts/reask_validation/), retries with [Tenacity](concepts/retrying/), and streaming [Lists](concepts/lists/) and [Partial](concepts/partial/) responses.
+It stands out for its simplicity, transparency, and user-centric design, built on top of Pydantic. Instructor helps you manage [validation context](https://python.useinstructor.com/concepts/reask_validation/index.md), retries with [Tenacity](https://python.useinstructor.com/concepts/retrying/index.md), and streaming [Lists](https://python.useinstructor.com/concepts/lists/index.md) and [Partial](https://python.useinstructor.com/concepts/partial/index.md) responses.
 
-[Star the Repo](https://github.com/jxnl/instructor) [Cookbooks](examples/) [Prompting Guide](prompting/)
+[Star the Repo](https://github.com/jxnl/instructor) [Cookbooks](https://python.useinstructor.com/examples/index.md) [Prompting Guide](https://python.useinstructor.com/prompting/index.md)
 
 If you ever get stuck, you can always run `instructor docs` to open the documentation in your browser. It even supports searching for specific topics.
 
@@ -875,427 +269,79 @@ If you ever get stuck, you can always run `instructor docs` to open the document
 instructor docs [QUERY]
 ```
 
-### OpenAI GPT Models - Structured Outputs
+### Provider Examples
 
-Get structured data from OpenAI's most powerful models including GPT-4, GPT-4 Turbo, and GPT-3.5.
-
-```bash
-pip install instructor
-```
-
-Using OpenAI's Structured Output Response
-
-You can now use OpenAI's structured output response with Instructor. This feature combines the strengths of Instructor with OpenAI's precise sampling.
-
-```python
-client = instructor.from_openai(OpenAI(), mode=Mode.TOOLS_STRICT)
-```
+All providers use the same simple interface. Here are quick examples for the most popular providers:
 
 ```python
 import instructor
 from pydantic import BaseModel
-from openai import OpenAI
 
-
-# Define your desired output structure
 class ExtractUser(BaseModel):
     name: str
     age: int
 
-
-# Patch the OpenAI client
-client = instructor.from_openai(OpenAI())
-
-# Extract structured data from natural language
-res = client.chat.completions.create(
-    model="gpt-4o-mini",
+client = instructor.from_provider("openai/gpt-5-nano")
+res = client.create(
     response_model=ExtractUser,
     messages=[{"role": "user", "content": "John Doe is 30 years old."}],
 )
-
-assert res.name == "John Doe"
-assert res.age == 30
 ```
 
-[See more](integrations/openai/)
-
-```bash
-pip install "instructor[ollama]"
-```
+[Full OpenAI docs â](https://python.useinstructor.com/integrations/openai/index.md)
 
 ```python
-from openai import OpenAI
-from pydantic import BaseModel
 import instructor
-
+from pydantic import BaseModel
 
 class ExtractUser(BaseModel):
     name: str
     age: int
 
-
-client = instructor.from_openai(
-    OpenAI(
-        base_url="http://localhost:11434/v1",
-        api_key="ollama",
-    ),
-    mode=instructor.Mode.JSON,
-)
-
-resp = client.chat.completions.create(
-    model="llama3",
-    messages=[
-        {
-            "role": "user",
-            "content": "Extract Jason is 25 years old.",
-        }
-    ],
-    response_model=ExtractUser,
-)
-assert resp.name == "Jason"
-assert resp.age == 25
-```
-
-[See more](integrations/ollama/)
-
-```bash
-pip install "instructor[llama-cpp-python]"
-```
-
-```python
-import llama_cpp
-import instructor
-from llama_cpp.llama_speculative import LlamaPromptLookupDecoding
-from pydantic import BaseModel
-
-llama = llama_cpp.Llama(
-    model_path="../../models/OpenHermes-2.5-Mistral-7B-GGUF/openhermes-2.5-mistral-7b.Q4_K_M.gguf",
-    n_gpu_layers=-1,
-    chat_format="chatml",
-    n_ctx=2048,
-    draft_model=LlamaPromptLookupDecoding(num_pred_tokens=2),
-    logits_all=True,
-    verbose=False,
-)
-
-create = instructor.patch(
-    create=llama.create_chat_completion_openai_v1,
-    mode=instructor.Mode.JSON_SCHEMA,
-)
-
-
-class ExtractUser(BaseModel):
-    name: str
-    age: int
-
-
-user = create(
-    messages=[
-        {
-            "role": "user",
-            "content": "Extract `Jason is 30 years old`",
-        }
-    ],
-    response_model=ExtractUser,
-)
-
-assert user.name == "Jason"
-assert user.age == 30
-```
-
-[See more](integrations/llama-cpp-python/)
-
-```bash
-pip install "instructor[anthropic]"
-```
-
-```python
-import instructor
-from anthropic import Anthropic
-from pydantic import BaseModel
-
-
-class ExtractUser(BaseModel):
-    name: str
-    age: int
-
-
-client = instructor.from_anthropic(Anthropic())
-
-# note that client.chat.completions.create will also work
-resp = client.messages.create(
-    model="claude-3-5-sonnet-20240620",
-    max_tokens=1024,
-    messages=[
-        {
-            "role": "user",
-            "content": "Extract Jason is 25 years old.",
-        }
-    ],
-    response_model=ExtractUser,
-)
-
-assert isinstance(resp, ExtractUser)
-assert resp.name == "Jason"
-assert resp.age == 25
-```
-
-[See more](integrations/anthropic/)
-
-```bash
-pip install "instructor[google-generativeai]"
-```
-
-```python
-import instructor
-import google.generativeai as genai
-from pydantic import BaseModel
-
-
-class ExtractUser(BaseModel):
-    name: str
-    age: int
-
-
-client = instructor.from_gemini(
-    client=genai.GenerativeModel(
-        model_name="models/gemini-1.5-flash-latest",
-    ),
-    mode=instructor.Mode.GEMINI_JSON,
-)
-
-# note that client.chat.completions.create will also work
-resp = client.messages.create(
-    messages=[
-        {
-            "role": "user",
-            "content": "Extract Jason is 25 years old.",
-        }
-    ],
-    response_model=ExtractUser,
-)
-
-assert isinstance(resp, ExtractUser)
-assert resp.name == "Jason"
-assert resp.age == 25
-```
-
-[See more](integrations/google/)
-
-```bash
-pip install "instructor[vertexai]"
-```
-
-```python
-import instructor
-import vertexai  # type: ignore
-from vertexai.generative_models import GenerativeModel  # type: ignore
-from pydantic import BaseModel
-
-vertexai.init()
-
-
-class ExtractUser(BaseModel):
-    name: str
-    age: int
-
-
-client = instructor.from_vertexai(
-    client=GenerativeModel("gemini-1.5-pro-preview-0409"),
-    mode=instructor.Mode.VERTEXAI_TOOLS,
-)
-
-# note that client.chat.completions.create will also work
+client = instructor.from_provider("anthropic/claude-3-5-sonnet-20240620")
 resp = client.create(
-    messages=[
-        {
-            "role": "user",
-            "content": "Extract Jason is 25 years old.",
-        }
-    ],
-    response_model=ExtractUser,
-)
-
-assert isinstance(resp, ExtractUser)
-assert resp.name == "Jason"
-assert resp.age == 25
-```
-
-[See more](integrations/vertex/)
-
-```bash
-pip install "instructor[groq]"
-```
-
-```python
-import instructor
-from groq import Groq
-from pydantic import BaseModel
-
-client = instructor.from_groq(Groq())
-
-
-class ExtractUser(BaseModel):
-    name: str
-    age: int
-
-
-resp = client.chat.completions.create(
-    model="llama3-70b-8192",
     response_model=ExtractUser,
     messages=[{"role": "user", "content": "Extract Jason is 25 years old."}],
 )
-
-assert resp.name == "Jason"
-assert resp.age == 25
 ```
 
-[See more](integrations/groq/)
-
-```bash
-pip install "instructor[litellm]"
-```
+[Full Anthropic docs â](https://python.useinstructor.com/integrations/anthropic/index.md)
 
 ```python
 import instructor
-from litellm import completion
 from pydantic import BaseModel
-
 
 class ExtractUser(BaseModel):
     name: str
     age: int
 
-
-client = instructor.from_litellm(completion)
-
-resp = client.chat.completions.create(
-    model="claude-3-opus-20240229",
-    max_tokens=1024,
-    messages=[
-        {
-            "role": "user",
-            "content": "Extract Jason is 25 years old.",
-        }
-    ],
+client = instructor.from_provider("google/gemini-2.5-flash")
+resp = client.create(
     response_model=ExtractUser,
+    messages=[{"role": "user", "content": "Extract Jason is 25 years old."}],
 )
-
-assert isinstance(resp, ExtractUser)
-assert resp.name == "Jason"
-assert resp.age == 25
 ```
 
-[See more](integrations/litellm/)
-
-```bash
-pip install "instructor[cohere]"
-```
+[Full Google docs â](https://python.useinstructor.com/integrations/google/index.md)
 
 ```python
 import instructor
 from pydantic import BaseModel
-from cohere import Client
-
 
 class ExtractUser(BaseModel):
     name: str
     age: int
 
-
-client = instructor.from_cohere(Client())
-
-resp = client.chat.completions.create(
+client = instructor.from_provider("ollama/llama3")
+resp = client.create(
     response_model=ExtractUser,
-    messages=[
-        {
-            "role": "user",
-            "content": "Extract Jason is 25 years old.",
-        }
-    ],
+    messages=[{"role": "user", "content": "Extract Jason is 25 years old."}],
 )
-
-assert resp.name == "Jason"
-assert resp.age == 25
 ```
 
-[See more](integrations/cohere/)
+[Full Ollama docs â](https://python.useinstructor.com/integrations/ollama/index.md)
 
-```bash
-pip install "instructor[cerebras]"
-```
-
-```python
-from cerebras.cloud.sdk import Cerebras
-import instructor
-from pydantic import BaseModel
-import os
-
-client = Cerebras(
-    api_key=os.environ.get("CEREBRAS_API_KEY"),
-)
-client = instructor.from_cerebras(client)
-
-
-class ExtractUser(BaseModel):
-    name: str
-    age: int
-
-
-resp = client.chat.completions.create(
-    model="llama3.1-70b",
-    response_model=ExtractUser,
-    messages=[
-        {
-            "role": "user",
-            "content": "Extract Jason is 25 years old.",
-        }
-    ],
-)
-
-assert resp.name == "Jason"
-assert resp.age == 25
-```
-
-[See more](integrations/cerebras/)
-
-```bash
-pip install "instructor[fireworks]"
-```
-
-```python
-from fireworks.client import Fireworks
-import instructor
-from pydantic import BaseModel
-import os
-
-client = Fireworks(
-    api_key=os.environ.get("FIREWORKS_API_KEY"),
-)
-client = instructor.from_fireworks(client)
-
-
-class ExtractUser(BaseModel):
-    name: str
-    age: int
-
-
-resp = client.chat.completions.create(
-    model="accounts/fireworks/models/llama-v3p2-1b-instruct",
-    response_model=ExtractUser,
-    messages=[
-        {
-            "role": "user",
-            "content": "Extract Jason is 25 years old.",
-        }
-    ],
-)
-
-assert resp.name == "Jason"
-assert resp.age == 25
-```
-
-[See more](integrations/fireworks/)
+[View all 15+ providers â](https://python.useinstructor.com/integrations/index.md)
 
 ## Citation
 
@@ -1317,7 +363,7 @@ If you use Instructor in your research or project, please cite it using:
 
   Instructor provides a straightforward API that gives you complete ownership and control over your prompts. This allows for fine-tuned customization and optimization of your LLM interactions.
 
-  [Explore Concepts](concepts/models/)
+  [Explore Concepts](https://python.useinstructor.com/concepts/models/index.md)
 
 - **Multi-Language Support**
 
@@ -1329,13 +375,13 @@ If you use Instructor in your research or project, please cite it using:
 
   Automatically reask the model when validation fails, ensuring high-quality outputs. Leverage Pydantic's validation for robust error handling.
 
-  [Learn about Reasking](concepts/reask_validation/)
+  [Learn about Reasking](https://python.useinstructor.com/concepts/reask_validation/index.md)
 
 - **Streaming Support**
 
   Stream partial results and iterables with ease, allowing for real-time processing and improved responsiveness in your applications.
 
-  [Learn about Streaming](concepts/partial/)
+  [Learn about Streaming](https://python.useinstructor.com/concepts/partial/index.md)
 
 - **Powered by Type Hints**
 
@@ -1345,274 +391,120 @@ If you use Instructor in your research or project, please cite it using:
 
 - **Simplified LLM Interactions**
 
-  Support for [OpenAI](integrations/openai/), [Anthropic](integrations/anthropic/), [Google](integrations/google/), [Vertex AI](integrations/vertex/), [Mistral/Mixtral](integrations/together/), [Ollama](integrations/ollama/), [llama-cpp-python](integrations/llama-cpp-python/), [Cohere](integrations/cohere/), [LiteLLM](integrations/litellm/).
+  Support for [OpenAI](https://python.useinstructor.com/integrations/openai/index.md), [Anthropic](https://python.useinstructor.com/integrations/anthropic/index.md), [Google](https://python.useinstructor.com/integrations/google/index.md), [Vertex AI](https://python.useinstructor.com/integrations/vertex/index.md), [Mistral/Mixtral](https://python.useinstructor.com/integrations/together/index.md), [Ollama](https://python.useinstructor.com/integrations/ollama/index.md), [llama-cpp-python](https://python.useinstructor.com/integrations/llama-cpp-python/index.md), [Cohere](https://python.useinstructor.com/integrations/cohere/index.md), [LiteLLM](https://python.useinstructor.com/integrations/litellm/index.md).
 
-  [See Hub](integrations/)
+  [See Hub](https://python.useinstructor.com/integrations/index.md)
 
 ### Using Hooks
 
-Instructor includes a hooks system that lets you manage events during the language model interaction process. Hooks allow you to intercept, log, and handle events at different stages, such as when completion arguments are provided or when a response is received. This system is based on the `Hooks` class, which handles event registration and emission. You can use hooks to add custom behavior like logging or error handling. Here's a simple example demonstrating how to use hooks:
+Instructor's hooks system lets you intercept and handle events during LLM interactions. Use hooks for logging, monitoring, or custom error handling:
 
 ```python
 import instructor
-from openai import OpenAI
 from pydantic import BaseModel
-
 
 class UserInfo(BaseModel):
     name: str
     age: int
 
+client = instructor.from_provider("openai/gpt-4o-mini")
 
-# Initialize the OpenAI client with Instructor
-client = instructor.from_openai(OpenAI())
+# Attach hooks for logging and error handling
+client.on("completion:kwargs", lambda **kw: print("Called with:", kw))
+client.on("completion:error", lambda e: print(f"Error: {e}"))
 
-
-# Define hook functions
-def log_kwargs(**kwargs):
-    print(f"Function called with kwargs: {kwargs}")
-
-
-def log_exception(exception: Exception):
-    print(f"An exception occurred: {str(exception)}")
-
-
-client.on("completion:kwargs", log_kwargs)
-client.on("completion:error", log_exception)
-
-user_info = client.chat.completions.create(
-    model="gpt-4o-mini",
+user_info = client.create(
     response_model=UserInfo,
-    messages=[
-        {"role": "user", "content": "Extract the user name: 'John is 20 years old'"}
-    ],
+    messages=[{"role": "user", "content": "Extract: John is 20 years old"}],
 )
-
-"""
-{
-        'args': (),
-        'kwargs': {
-            'messages': [
-                {
-                    'role': 'user',
-                    'content': "Extract the user name: 'John is 20 years old'",
-                }
-            ],
-            'model': 'gpt-3.5-turbo',
-            'tools': [
-                {
-                    'type': 'function',
-                    'function': {
-                        'name': 'UserInfo',
-                        'description': 'Correctly extracted `UserInfo` with all the required parameters with correct types',
-                        'parameters': {
-                            'properties': {
-                                'name': {'title': 'Name', 'type': 'string'},
-                                'age': {'title': 'Age', 'type': 'integer'},
-                            },
-                            'required': ['age', 'name'],
-                            'type': 'object',
-                        },
-                    },
-                }
-            ],
-            'tool_choice': {'type': 'function', 'function': {'name': 'UserInfo'}},
-        },
-    }
-"""
-
-print(f"Name: {user_info.name}, Age: {user_info.age}")
-#> Name: John, Age: 20
 ```
 
-This example demonstrates:
+[Learn more about hooks â](https://python.useinstructor.com/concepts/hooks/index.md)
 
-1. A pre-execution hook that logs all kwargs passed to the function.
-1. An exception hook that logs any exceptions that occur during execution.
+## Type Inference & Advanced Methods
 
-The hooks provide valuable insights into the function's inputs and any errors, enhancing debugging and monitoring capabilities.
+Instructor provides full type inference for better IDE support and type safety. The client includes specialized methods for different use cases:
 
-[Learn more about hooks :octicons-arrow-right:](concepts/hooks/)
-
-## Correct Type Inference
-
-This was the dream of instructor but due to the patching of openai, it wasnt possible for me to get typing to work well. Now, with the new client, we can get typing to work well! We've also added a few `create_*` methods to make it easier to create iterables and partials, and to access the original completion.
-
-### Calling `create`
+**Basic extraction:**
 
 ```python
-import openai
 import instructor
 from pydantic import BaseModel
-
 
 class User(BaseModel):
     name: str
     age: int
 
-
-client = instructor.from_openai(openai.OpenAI())
-
-user = client.chat.completions.create(
-    model="gpt-4-turbo-preview",
-    messages=[
-        {"role": "user", "content": "Create a user"},
-    ],
-    response_model=User,
-)
+client = instructor.from_provider("openai/gpt-4o-mini")
+user = client.create(response_model=User, messages=[...])  # Type: User
 ```
 
-Now if you use a IDE, you can see the type is correctly infered.
-
-### Handling async: `await create`
-
-This will also work correctly with asynchronous clients.
+**Async support:**
 
 ```python
-import openai
-import instructor
-from pydantic import BaseModel
-
-
-client = instructor.from_openai(openai.AsyncOpenAI())
-
-
-class User(BaseModel):
-    name: str
-    age: int
-
-
-async def extract():
-    return await client.chat.completions.create(
-        model="gpt-4-turbo-preview",
-        messages=[
-            {"role": "user", "content": "Create a user"},
-        ],
-        response_model=User,
-    )
+client = instructor.from_provider("openai/gpt-4o-mini", async_client=True)
+user = await client.create(...)  # Type: User
 ```
 
-Notice that simply because we return the `create` method, the `extract()` function will return the correct user type.
-
-### Returning the original completion: `create_with_completion`
-
-You can also return the original completion object
+**Access original completion:**
 
 ```python
-import openai
-import instructor
-from pydantic import BaseModel
-
-
-client = instructor.from_openai(openai.OpenAI())
-
-
-class User(BaseModel):
-    name: str
-    age: int
-
-
-user, completion = client.chat.completions.create_with_completion(
-    model="gpt-4-turbo-preview",
-    messages=[
-        {"role": "user", "content": "Create a user"},
-    ],
-    response_model=User,
-)
+user, completion = client.create_with_completion(...)  # Returns tuple
 ```
 
-### Streaming Partial Objects: `create_partial`
-
-In order to handle streams, we still support `Iterable[T]` and `Partial[T]` but to simply the type inference, we've added `create_iterable` and `create_partial` methods as well!
+**Stream partial objects:**
 
 ```python
-import openai
-import instructor
-from pydantic import BaseModel
+for partial in client.create_partial(...):  # Type: Generator[User, None]
+    print(partial)
+```
 
+**Stream multiple objects:**
 
-client = instructor.from_openai(openai.OpenAI())
-
-
-class User(BaseModel):
-    name: str
-    age: int
-
-
-user_stream = client.chat.completions.create_partial(
-    model="gpt-4-turbo-preview",
-    messages=[
-        {"role": "user", "content": "Create a user"},
-    ],
-    response_model=User,
-)
-
-for user in user_stream:
+```python
+for user in client.create_iterable(...):  # Type: Generator[User, None]
     print(user)
-    #> name=None age=None
-    #> name=None age=None
-    #> name=None age=None
-    #> name=None age=None
-    #> name=None age=25
-    #> name=None age=25
-    #> name=None age=25
-    #> name=None age=25
-    #> name=None age=25
-    #> name=None age=25
-    #> name='John Doe' age=25
-    # name=None age=None
-    # name='' age=None
-    # name='John' age=None
-    # name='John Doe' age=None
-    # name='John Doe' age=30
 ```
 
-Notice now that the type infered is `Generator[User, None]`
+All methods provide full type inference for better IDE autocomplete and type checking.
 
-### Streaming Iterables: `create_iterable`
+## Frequently Asked Questions
 
-We get an iterable of objects when we want to extract multiple objects.
+### What is Instructor?
 
-```python
-import openai
-import instructor
-from pydantic import BaseModel
+Instructor is a Python library that extracts structured, validated data from Large Language Models (LLMs). It uses Pydantic models to define output schemas and automatically handles validation, retries, and error handling.
 
+### Which LLM providers does Instructor support?
 
-client = instructor.from_openai(openai.OpenAI())
+Instructor supports 15+ providers including OpenAI, Anthropic, Google Gemini, Mistral, Cohere, Ollama, DeepSeek, and many more. See our [integrations page](https://python.useinstructor.com/integrations/index.md) for the complete list.
 
+### Do I need to know Pydantic to use Instructor?
 
-class User(BaseModel):
-    name: str
-    age: int
+Basic Pydantic knowledge helps, but you can get started with simple models. Instructor works with any Pydantic BaseModel, and you can learn advanced features as you need them.
 
+### How does Instructor compare to other libraries?
 
-users = client.chat.completions.create_iterable(
-    model="gpt-4-turbo-preview",
-    messages=[
-        {"role": "user", "content": "Create 2 users"},
-    ],
-    response_model=User,
-)
+Instructor focuses specifically on structured outputs with automatic validation and retries. Unlike larger frameworks, Instructor does one thing very well: getting reliable, validated data from LLMs.
 
-for user in users:
-    print(user)
-    #> name='John Doe' age=30
-    #> name='Jane Doe' age=28
-    # User(name='John Doe', age=30)
-    # User(name='Jane Smith', age=25)
-```
+### Can I use Instructor with open source models?
+
+Yes! Instructor works with Ollama, llama-cpp-python, and other local models. See our [Ollama integration guide](https://python.useinstructor.com/integrations/ollama/index.md) to get started.
+
+### Does Instructor work with async code?
+
+Yes, Instructor fully supports async/await. Use `async_client=True` when creating your client, then use `await client.create()`.
+
+[View all FAQs â](https://python.useinstructor.com/faq/index.md)
 
 ## Templating
 
 Instructor supports templating with Jinja, which lets you create dynamic prompts. This is useful when you want to fill in parts of a prompt with data. Here's a simple example:
 
 ```python
-import openai
 import instructor
 from pydantic import BaseModel
 
-client = instructor.from_openai(openai.OpenAI())
+client = instructor.from_provider("openai/gpt-4o-mini")
 
 
 class User(BaseModel):
@@ -1621,8 +513,7 @@ class User(BaseModel):
 
 
 # Create a completion using a Jinja template in the message content
-response = client.chat.completions.create(
-    model="gpt-4o-mini",
+response = client.create(
     messages=[
         {
             "role": "user",
@@ -1638,21 +529,20 @@ print(response)
 #> User(name='John Doe', age=30)
 ```
 
-[Learn more about templating :octicons-arrow-right:](concepts/templating/)
+[Learn more about templating :octicons-arrow-right:](https://python.useinstructor.com/concepts/templating/index.md)
 
 ## Validation
 
-You can also use Pydantic to validate your outputs and get the llm to retry on failure. Check out our docs on [retrying](concepts/retrying/) and [validation context](concepts/reask_validation/).
+You can also use Pydantic to validate your outputs and get the llm to retry on failure. Check out our docs on [retrying](https://python.useinstructor.com/concepts/retrying/index.md) and [validation context](https://python.useinstructor.com/concepts/reask_validation/index.md).
 
 ```python
 import instructor
-from openai import OpenAI
 from pydantic import BaseModel, ValidationError, BeforeValidator
 from typing_extensions import Annotated
 from instructor import llm_validator
 
-# Apply the patch to the OpenAI client
-client = instructor.from_openai(OpenAI())
+# Create instructor client
+client = instructor.from_provider("openai/gpt-4o-mini")
 
 
 class QuestionAnswer(BaseModel):
@@ -1684,65 +574,3 @@ If you want to help out, checkout some of the issues marked as `good-first-issue
 ## License
 
 This project is licensed under the terms of the MIT License.
-
-## Frequently Asked Questions
-
-### How do I get structured data from OpenAI GPT models?
-
-Use Instructor with OpenAI to automatically extract structured data with Pydantic models. Simply define your data structure and let Instructor handle validation and retries.
-
-### What LLM providers work with Instructor?
-
-Instructor supports 15+ providers including OpenAI (GPT-4, ChatGPT), Anthropic (Claude), Google (Gemini), Mistral, Cohere, Groq, **Ollama for open source models**, **DeepSeek**, and many more.
-
-### How does Instructor handle LLM validation errors?
-
-Instructor automatically retries failed requests with detailed error messages, ensuring your structured outputs always match your Pydantic schema.
-
-### Can I use Instructor with local LLM models?
-
-Yes! Instructor works with local models through **Ollama**, llama-cpp-python, and other local inference frameworks. Perfect for running **open source models** like Llama, Mistral, or CodeLlama locally.
-
-### Does Instructor support Ollama for open source models?
-
-Absolutely! Instructor has first-class support for **Ollama**, making it easy to run open source models locally while getting the same structured output validation. Simply point Instructor to your Ollama endpoint.
-
-### How do I use DeepSeek models with Instructor?
-
-Instructor supports **DeepSeek** models through the OpenAI-compatible API. You can use DeepSeek's powerful reasoning capabilities while maintaining full validation and retry logic.
-
-### Is Instructor compatible with async Python code?
-
-Absolutely. Instructor fully supports asyncio with async clients for OpenAI, Anthropic, and other providers.
-
-### Is Instructor limited to Python only?
-
-**No!** This is a common misconception. Instructor is available in **6 programming languages**: Python, TypeScript, Go, Ruby, Elixir, and Rust. All implementations support the same core features including nested schemas, validation, and retries.
-
-### Can Instructor handle complex nested schemas?
-
-**Yes!** Instructor natively supports deeply nested, complex data structures out of the box. Simply define your nested Pydantic models (or equivalent in other languages) and Instructor handles the rest - no special configuration needed.
-
-### How does Instructor compare to Guardrails AI?
-
-**Instructor is easier to set up and faster for most use cases.** While Guardrails excels at complex business rule validation, Instructor provides better developer experience with native type support and simpler schema definition. Choose Instructor for type-safe extraction, Guardrails for complex validation rules.
-
-### How does Instructor compare to LangChain output parsers?
-
-**Instructor is purpose-built for structured extraction** while LangChain is a full application framework. Instructor is lighter, faster, and provides better type safety. Use Instructor when you need reliable structured data; use LangChain for complete LLM applications.
-
-## Why Choose Instructor for LLM Structured Outputs?
-
-- **ð Industry Standard**: Over 1M monthly downloads make it the most trusted Python library for LLM data extraction
-- **â¡ Production Ready**: Built-in error handling, retries, and validation for reliable production deployments
-- **ð§ Developer Friendly**: Full IDE support with type hints, autocompletion, and comprehensive documentation
-- **ð Provider Agnostic**: Switch between LLM providers without changing your code structure
-- **ð Scalable**: From simple scripts to enterprise applications, Instructor scales with your needs
-
-## Related Topics
-
-- [LLM Response Validation](concepts/reask_validation/) - Ensure quality outputs
-- [Streaming LLM Outputs](concepts/partial/) - Real-time data processing
-- [Multi-Provider Setup](integrations/) - Use any LLM service
-- [Production Deployment](concepts/retrying/) - Error handling and retries
-- [Type Safety with Pydantic](concepts/models/) - Schema validation

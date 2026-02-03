@@ -1,8 +1,12 @@
 # Source: https://braintrust.dev/docs/api-reference/evals/launch-an-eval.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Launch an eval
 
-> Launch an evaluation. This is the API-equivalent of the `Eval` function that is built into the Braintrust SDK. In the Eval API, you provide pointers to a dataset, task function, and scoring functions. The API will then run the evaluation, create an experiment, and return the results along with a link to the experiment. To learn more about evals, see the [Evals guide](https://www.braintrust.dev/docs/guides/evals).
+> Launch an evaluation. This is the API-equivalent of the `Eval` function that is built into the Braintrust SDK. In the Eval API, you provide pointers to a dataset, task function, and scoring functions. The API will then run the evaluation, create an experiment, and return the results along with a link to the experiment. To learn more about evals, see the [Evals guide](https://www.braintrust.dev/docs/evaluate).
 
 
 
@@ -40,7 +44,7 @@ paths:
         pointers to a dataset, task function, and scoring functions. The API
         will then run the evaluation, create an experiment, and return the
         results along with a link to the experiment. To learn more about evals,
-        see the [Evals guide](https://www.braintrust.dev/docs/guides/evals).
+        see the [Evals guide](https://www.braintrust.dev/docs/evaluate).
       operationId: evalLaunch
       requestBody:
         description: Eval launch parameters
@@ -299,6 +303,8 @@ components:
               description: >-
                 The name of the global function. Currently, the global namespace
                 includes the functions in autoevals
+            function_type:
+              $ref: '#/components/schemas/FunctionTypeEnum'
           required:
             - global_function
           description: Global function name
@@ -330,6 +336,7 @@ components:
                     - node
                     - python
                     - browser
+                    - quickjs
                 version:
                   type: string
               required:
@@ -560,6 +567,21 @@ components:
         - improvements
         - regressions
       description: Summary of a metric's performance
+    FunctionTypeEnum:
+      type: string
+      enum:
+        - llm
+        - scorer
+        - task
+        - tool
+        - custom_view
+        - preprocessor
+        - facet
+        - classifier
+        - tag
+        - null
+      default: scorer
+      description: The type of global function. Defaults to 'scorer'.
     PromptData:
       type: object
       properties:
@@ -573,7 +595,46 @@ components:
           type: array
           nullable: true
           items:
-            $ref: '#/components/schemas/SavedFunctionId'
+            allOf:
+              - $ref: '#/components/schemas/SavedFunctionId'
+              - anyOf:
+                  - type: object
+                    properties:
+                      type:
+                        type: string
+                        enum:
+                          - function
+                      id:
+                        type: string
+                      version:
+                        type: string
+                        description: The version of the function
+                    required:
+                      - type
+                      - id
+                    title: function
+                  - type: object
+                    properties:
+                      type:
+                        type: string
+                        enum:
+                          - global
+                      name:
+                        type: string
+                      function_type:
+                        $ref: '#/components/schemas/FunctionTypeEnum'
+                    required:
+                      - type
+                      - name
+                    title: global
+        template_format:
+          type: string
+          nullable: true
+          enum:
+            - mustache
+            - nunjucks
+            - none
+            - null
         mcp:
           type: object
           nullable: true
@@ -634,15 +695,6 @@ components:
               type: string
             prompt_version:
               type: string
-    FunctionTypeEnum:
-      type: string
-      enum:
-        - llm
-        - scorer
-        - task
-        - tool
-        - custom_view
-        - null
     PromptBlockDataNullish:
       anyOf:
         - type: object
@@ -700,10 +752,22 @@ components:
             type: number
             minimum: 0
             maximum: 1
+          description: Map of choices to scores (0-1). Used by scorers.
+        choice:
+          type: array
+          items:
+            type: string
+          description: >-
+            List of valid choices without score mapping. Used by classifiers
+            that deposit output to tags.
+        allow_no_match:
+          type: boolean
+          description: >-
+            If true, adds a 'No match' option. When selected, no tag is
+            deposited.
       required:
         - type
         - use_cot
-        - choice_scores
     SavedFunctionId:
       anyOf:
         - type: object
@@ -714,6 +778,9 @@ components:
                 - function
             id:
               type: string
+            version:
+              type: string
+              description: The version of the function
           required:
             - type
             - id
@@ -726,10 +793,14 @@ components:
                 - global
             name:
               type: string
+            function_type:
+              $ref: '#/components/schemas/FunctionTypeEnum'
           required:
             - type
             - name
           title: global
+        - type: 'null'
+      description: Optional function identifier that produced the classification
     ChatCompletionMessageParam:
       anyOf:
         - type: object
@@ -1267,7 +1338,3 @@ components:
         page](https://www.braintrustdata.com/app/settings?subroute=api-keys).
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

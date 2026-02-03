@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/api-references/extensions-reference.md
-
-# Source: https://gitbook.com/docs/documentation/fr/api-references/extensions-reference.md
-
-# Source: https://gitbook.com/docs/api-references/extensions-reference.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/api-references/extensions-reference.md
 
 # Source: https://gitbook.com/docs/documentation/zh/api-references/extensions-reference.md
 
@@ -83,21 +79,25 @@ tags:
 
 <details>
 
-<summary><code>x-parent | parent</code></summary>
+<summary><code>parent | x-parent</code>  </summary>
 
 Add hierarchy to tags to organize your pages in GitBook.&#x20;
+
+{% hint style="warning" %}
+`parent` is the official property name in OpenAPI 3.2+. If using OpenAPI versions prior to 3.2 (3.0.x, 3.1.x),  use `x-parent` instead.
+{% endhint %}
 
 {% code title="openapi.yaml" %}
 
 ```yaml
-openapi: '3.0'
+openapi: '3.2'
 info: ...
 tags:
   - name: organization
   - name: admin
-    x-parent: organization
+    parent: organization
   - name: user
-    x-parent: organization
+    parent: organization    
 ```
 
 {% endcode %}

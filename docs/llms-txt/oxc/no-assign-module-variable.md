@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/nextjs/no-assign-module-variable.md
 ---
-# nextjs/no-assign-module-variable&#x20;
 
 ### What it does
 

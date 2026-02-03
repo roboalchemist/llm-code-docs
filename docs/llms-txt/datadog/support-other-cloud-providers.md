@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Cloudcraft (Standalone) > FAQ > Does Cloudcraft support other cloud
   providers?
-source_url: https://docs.datadoghq.com/faq/support-other-cloud-providers/index.html
 ---
 
 # Does Cloudcraft support other cloud providers?

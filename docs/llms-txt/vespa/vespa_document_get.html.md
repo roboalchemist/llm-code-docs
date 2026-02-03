@@ -48,7 +48,7 @@ $ vespa document get id:mynamespace:music::song-1 id:mynamespace:music::song-2
 
 - [vespa document](vespa_document.html) - Issue a single document operation to Vespa
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

@@ -1,5 +1,9 @@
 # Source: https://docs.pinata.cloud/account-management/api-keys.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # API Keys
 
 This page is where you can create, record, and delete API keys for the [Pinata API](/api-reference/introduction). Creating an API key is very simple! Just visit the page to start by click on the API Keys button in the left sidebar, then click "New Key" in the top right.

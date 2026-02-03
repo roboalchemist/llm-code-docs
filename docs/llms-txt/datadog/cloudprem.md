@@ -7,7 +7,6 @@ description: >-
   solution for cost-effective log ingestion, processing, indexing, and search
   capabilities
 breadcrumbs: Docs > CloudPrem
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # CloudPrem
@@ -29,19 +28,15 @@ Join the CloudPrem Preview to access new self-hosted log management features.
 [Request Access](https://www.datadoghq.com/product-preview/cloudprem/)
 {% /callout %}
 
-{% image
-   source="https://datadog-docs.imgix.net/images/cloudprem/overview_diagram_cloudprem.d0b179faac15e3d8e1a64ccfd3da100a.png?auto=format"
-   alt="CloudPrem architecture overview showing how logs flow from sources through CloudPrem to the Datadog platform" /%}
-
-Datadog CloudPrem is a self-hosted log management solution that enables cost-effective log ingestion, processing, indexing, and search capabilities within your own infrastructure. Built to meet data residency, stringent security, and high-volume requirements, CloudPrem integrates with the Datadog platform to provide log analysis, visualization, and alertingâall while keeping your log data at rest within your infrastructure boundaries.
+CloudPrem is Datadog BYOC log management solution which offers a cost-effective solution for organizations that want to keep their data in their own cloud accounts and control costs over time using their existing cloud provider discounts. It is built to meet stringent security, data residency, regulatory and high-volume requirements.
 
 ## Get started{% #get-started %}
 
+- [What is CloudPrem?](https://docs.datadoghq.com/cloudprem/introduction/)
 - [Quickstart: Run CloudPrem locally in 5 minutes](https://docs.datadoghq.com/cloudprem/quickstart/)
-- [Install CloudPrem](https://docs.datadoghq.com/cloudprem/install/)
-- [Ingest logs with Datadog Agent](https://docs.datadoghq.com/cloudprem/ingest_logs/datadog_agent/)
-- [Configure your Datadog account](https://docs.datadoghq.com/cloudprem/configure/datadog_account)
-- [Understand CloudPrem architecture](https://docs.datadoghq.com/cloudprem/architecture/)
+- [Installation - Deploy CloudPrem on AWS, Azure, or custom Kubernetes](https://docs.datadoghq.com/cloudprem/install/)
+- [Ingest Logs - Configure the Datadog Agent to send logs to CloudPrem](https://docs.datadoghq.com/cloudprem/ingest/agent/)
+- [Search Logs - Explore your logs in the Datadog Log Explorer](https://docs.datadoghq.com/cloudprem/operate/search_logs)
 
 ## Further reading{% #further-reading %}
 

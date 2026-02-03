@@ -1,6 +1,6 @@
 # Source: https://docs.apify.com/academy/expert-scraping-with-apify/solutions/rotating-proxies.md
 
-# VI - Rotating proxies/sessions
+# Rotating proxies/sessions
 
 **Learn firsthand how to rotate proxies and sessions in order to avoid the majority of the most common anti-scraping protections.**
 
@@ -16,11 +16,11 @@ const proxyConfiguration = await Actor.createProxyConfiguration({
 ```
 
 
-We didn't provide much explanation for this initially, as it was not directly relevant to the lesson at hand. When you https://docs.apify.com/academy/anti-scraping/mitigation/using-proxies.md and pass it to a crawler, Crawlee will make the crawler automatically rotate through the proxies. This entire time, we've been using the **RESIDENTIAL** proxy group to avoid being blocked by Amazon.
+We didn't provide much explanation for this initially, as it was not directly relevant to the lesson at hand. When you [create a ProxyConfiguration](https://docs.apify.com/academy/anti-scraping/mitigation/using-proxies.md) and pass it to a crawler, Crawlee will make the crawler automatically rotate through the proxies. This entire time, we've been using the **RESIDENTIAL** proxy group to avoid being blocked by Amazon.
 
 > Go ahead and try commenting out the proxy configuration code then running the scraper. What happens?
 
-In order to rotate sessions, we must utilize the https://crawlee.dev/api/core/class/AutoscaledPool, which we've actually also already been using by setting the **useSessionPool** option in our crawler's configuration to **true**. The SessionPool advances the concept of proxy rotation by tying proxies to user-like sessions and rotating those instead. In addition to a proxy, each user-like session has cookies attached to it (and potentially a browser fingerprint as well).
+In order to rotate sessions, we must utilize the [SessionPool](https://crawlee.dev/api/core/class/AutoscaledPool), which we've actually also already been using by setting the **useSessionPool** option in our crawler's configuration to **true**. The SessionPool advances the concept of proxy rotation by tying proxies to user-like sessions and rotating those instead. In addition to a proxy, each user-like session has cookies attached to it (and potentially a browser fingerprint as well).
 
 ## Configuring SessionPool
 

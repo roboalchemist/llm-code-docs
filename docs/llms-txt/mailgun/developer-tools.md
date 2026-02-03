@@ -20,11 +20,9 @@ What's included:
 - Collection variables for quick setup
 
 
-### SDKs & Libraries
+### SDKs, Libraries and Integrations
 
-Use our official SDKs for seamless integration with your preferred programming language.
-
-[**Browse SDKs â**](/docs/mailgun/sdk/introduction)
+Use our official SDKs for seamless integration with your preferred programming language. Visit our [Integrations Page](https://www.mailgun.com/integrations/) for more.
 
 ### Full OpenAPI spec
 

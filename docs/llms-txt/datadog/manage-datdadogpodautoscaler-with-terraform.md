@@ -6,10 +6,8 @@ description: >-
   Deploy and manage DatadogPodAutoscaler custom resources for Kubernetes
   autoscaling using Terraform
 breadcrumbs: >-
-  Docs > Container Monitoring > Containers Guides > Managing
-  DatadogPodAutoscaler with Terraform
-source_url: >-
-  https://docs.datadoghq.com/guide/manage-datdadogpodautoscaler-with-terraform/index.html
+  Docs > Containers > Containers Guides > Managing DatadogPodAutoscaler with
+  Terraform
 ---
 
 # Managing DatadogPodAutoscaler with Terraform

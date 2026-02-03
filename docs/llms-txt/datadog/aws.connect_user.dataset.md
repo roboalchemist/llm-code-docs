@@ -4,8 +4,6 @@
 title: Connect User
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Connect User
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.connect_user.dataset/index.html
 ---
 
 # Connect User
@@ -32,5 +30,5 @@ aws.connect_user
 | phone_config         | core | json          | Information about the phone configuration for the user.                           |
 | routing_profile_id   | core | string        | The identifier of the routing profile for the user.                               |
 | security_profile_ids | core | array<string> | The identifiers of the security profiles for the user.                            |
-| tags                 | core | hstore        |
+| tags                 | core | hstore_csv    |
 | username             | core | string        | The user name assigned to the user account.                                       |

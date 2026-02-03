@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/guides/learn/function-calling.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Function Calling
 
 > Enable LLMs to interact with external services and APIs in your voice AI pipeline
@@ -92,7 +96,7 @@ context = LLMContext(
     messages=[{"role": "system", "content": "You are a helpful assistant."}],
     tools=tools
 )
-context_aggregator = LLMContextAggregatorPair(context)
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(context)
 ```
 
 The `ToolsSchema` will be automatically converted to the correct format for your LLM provider through adapters.
@@ -131,7 +135,7 @@ context = LLMContext(
     messages=[{"role": "system", "content": "You are a helpful assistant."}],
     tools=tools
 )
-context_aggregator = LLMContextAggregatorPair(context)
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(context)
 ```
 
 #### Using Provider-Specific Formats (Alternative)
@@ -332,17 +336,17 @@ context = LLMContext(
 )
 
 # Create the context aggregator to collect the user and assistant context
-context_aggregator = LLMContextAggregatorPair(context)
+user_aggregator, assistant_aggregator = LLMContextAggregatorPair(context)
 
 # Create the pipeline
 pipeline = Pipeline([
-    transport.input(),               # Input from the transport
-    stt,                             # STT processing
-    context_aggregator.user(),       # User context aggregation
-    llm,                             # LLM processing
-    tts,                             # TTS processing
-    transport.output(),              # Output to the transport
-    context_aggregator.assistant(),  # Assistant context aggregation
+    transport.input(),     # Input from the transport
+    stt,                   # STT processing
+    user_aggregator,       # User context aggregation
+    llm,                   # LLM processing
+    tts,                   # TTS processing
+    transport.output(),    # Output to the transport
+    assistant_aggregator,  # Assistant context aggregation
 ])
 ```
 
@@ -523,8 +527,3 @@ Now that you understand function calling, let's explore how to configure text-to
 <Card title="Text to Speech" icon="arrow-right" href="/guides/learn/text-to-speech">
   Learn how to configure speech synthesis in your voice AI pipeline
 </Card>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/search-research/codedocssearchtool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Code Docs RAG Search
 
 > The `CodeDocsSearchTool` is a powerful RAG (Retrieval-Augmented Generation) tool designed for semantic searches within code documentation.
@@ -73,10 +77,10 @@ tool = CodeDocsSearchTool(
             ),
         ),
         embedder=dict(
-            provider="google", # or openai, ollama, ...
+            provider="google-generativeai", # or openai, ollama, ...
             config=dict(
-                model="models/embedding-001",
-                task_type="retrieval_document",
+                model_name="gemini-embedding-001",
+                task_type="RETRIEVAL_DOCUMENT",
                 # title="Embeddings",
             ),
         ),

@@ -162,7 +162,7 @@ The algorithm has the following configuration parameters, where the three first 
 | `occurrenceImportance` | 0.05 | The importance of having many occurrences of the query terms, relative to earlinessImportance, segmentProximityImportance and proximityCompletenessImportance in the `match` metric. |
 | `fieldCompletenessImportance` | 0.05 | A number between 0 and 1 which determines the importance of field completeness in relation to query completeness in the `match` and `completeness` metrics. |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

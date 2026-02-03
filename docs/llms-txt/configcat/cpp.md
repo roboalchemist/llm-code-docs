@@ -2,6 +2,8 @@
 
 # C++ SDK Reference
 
+Copy page
+
 [![Star on GitHub](https://img.shields.io/github/stars/configcat/cpp-sdk.svg?style=social)](https://github.com/configcat/cpp-sdk/stargazers) [![Build Status](https://img.shields.io/github/actions/workflow/status/configcat/cpp-sdk/cpp-ci.yml?logo=GitHub\&label=windows%20%2F%20macos%20%2F%20linux\&branch=main)](https://github.com/configcat/cpp-sdk/actions/workflows/cpp-ci.yml) [![Coverage Status](https://codecov.io/gh/configcat/cpp-sdk/branch/main/graph/badge.svg?token=cvUgfof8k7)](https://codecov.io/gh/configcat/cpp-sdk)
 
 [ConfigCat C++ SDK on GitHub](https://github.com/configcat/cpp-sdk)
@@ -14,61 +16,68 @@ With **[Vcpkg](https://github.com/microsoft/vcpkg)**
 
 * On Windows:
 
-  ```
+  ```cmd
   git clone https://github.com/microsoft/vcpkg
   .\vcpkg\bootstrap-vcpkg.bat
   .\vcpkg\vcpkg install configcat
+
   ```
 
   In order to use vcpkg with Visual Studio, run the following command (may require administrator elevation):
 
-  ```
+  ```cmd
   .\vcpkg\vcpkg integrate install
+
   ```
 
   After this, you can create a New non-CMake Project (or open an existing one). All installed libraries are immediately ready to be `#include`d and used in your project without additional setup.
 
 * On Linux/Mac:
 
-  ```
+  ```bash
   git clone https://github.com/microsoft/vcpkg
   ./vcpkg/bootstrap-vcpkg.sh
   ./vcpkg/vcpkg install configcat
+
   ```
 
 ### 2. Include *configcat.h* header in your application code[​](#2-include-configcath-header-in-your-application-code "Direct link to 2-include-configcath-header-in-your-application-code")
 
-```
+```cpp
 #include <configcat/configcat.h>
 
 using namespace configcat;
+
 ```
 
 ### 3. Create the *ConfigCat* client with your *SDK Key*[​](#3-create-the-configcat-client-with-your-sdk-key "Direct link to 3-create-the-configcat-client-with-your-sdk-key")
 
-```
+```cpp
 auto client = ConfigCatClient::get("#YOUR-SDK-KEY#");
+
 ```
 
 ### 4. Get your setting value[​](#4-get-your-setting-value "Direct link to 4. Get your setting value")
 
-```
+```cpp
 bool isMyAwesomeFeatureEnabled = client->getValue("isMyAwesomeFeatureEnabled", false);
 if (isMyAwesomeFeatureEnabled) {
     doTheNewThing();
 } else {
     doTheOldThing();
 }
+
 ```
 
 ### 5. Close *ConfigCat* client​[​](#5-close-configcat-client "Direct link to 5-close-configcat-client")
 
 You can safely shut down all clients at once or individually and release all associated resources on application exit.
 
-```
+```cpp
 ConfigCatClient::closeAll(); // closes all clients
 
 ConfigCatClient::close(client); // closes a specific client
+
 ```
 
 ## Setting up the *ConfigCat Client*[​](#setting-up-the-configcat-client "Direct link to setting-up-the-configcat-client")
@@ -81,24 +90,25 @@ ConfigCatClient::close(client); // closes a specific client
 
 `ConfigCatClient::get("#YOUR-SDK-KEY#")` returns a client with default options.
 
-| Properties         | Description                                                                                                                                                                                                                                                                                                                         |
-| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `baseUrl`          | Optional, sets the CDN base url (forward proxy, dedicated subscription) from where the SDK will download the config JSON.                                                                                                                                                                                                           |
-| `dataGovernance`   | Optional, defaults to `Global`. Describes the location of your feature flag and setting data within the ConfigCat CDN. This parameter needs to be in sync with your Data Governance preferences. [More about Data Governance](https://configcat.com/docs/docs/advanced/data-governance/.md). Available options: `Global`, `EuOnly`. |
-| `connectTimeoutMs` | Optional, defaults to `8000ms`. Sets the amount of milliseconds to wait for the server to make the initial connection (i.e. completing the TCP connection handshake). `0` means it never times out during transfer                                                                                                                  |
-| `readTimeoutMs`    | Optional, defaults to `5000ms`. Sets the amount of milliseconds to wait for the server to respond before giving up. `0` means it never times out during transfer.                                                                                                                                                                   |
-| `pollingMode`      | Optional, sets the polling mode for the client. [More about polling modes](#polling-modes).                                                                                                                                                                                                                                         |
-| `configCache`      | Optional, sets a custom cache implementation for the client. [More about cache](#custom-cache).                                                                                                                                                                                                                                     |
-| `logger`           | Optional, sets the internal logger and log level. [More about logging](#logging).                                                                                                                                                                                                                                                   |
-| `flagOverrides`    | Optional, sets the local feature flag & setting overrides. [More about feature flag overrides](#flag-overrides).                                                                                                                                                                                                                    |
-| `defaultUser`      | Optional, sets the default user. [More about default user](#default-user).                                                                                                                                                                                                                                                          |
-| `offline`          | Optional, defaults to `false`. Indicates whether the SDK should be initialized in offline mode. [More about offline mode](#online--offline-mode).                                                                                                                                                                                   |
-| `hooks`            | Optional, used to subscribe events that the SDK sends in specific scenarios. [More about hooks](#hooks).                                                                                                                                                                                                                            |
+| Properties         | Description                                                                                                                                                                                                                                                                                                                   |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `baseUrl`          | Optional, sets the CDN base url (forward proxy, dedicated subscription) from where the SDK will download the config JSON.                                                                                                                                                                                                     |
+| `dataGovernance`   | Optional, defaults to `Global`. Describes the location of your feature flag and setting data within the ConfigCat CDN. This parameter needs to be in sync with your Data Governance preferences. [More about Data Governance](https://configcat.com/docs/advanced/data-governance.md). Available options: `Global`, `EuOnly`. |
+| `connectTimeoutMs` | Optional, defaults to `8000ms`. Sets the amount of milliseconds to wait for the server to make the initial connection (i.e. completing the TCP connection handshake). `0` means it never times out during transfer                                                                                                            |
+| `readTimeoutMs`    | Optional, defaults to `5000ms`. Sets the amount of milliseconds to wait for the server to respond before giving up. `0` means it never times out during transfer.                                                                                                                                                             |
+| `pollingMode`      | Optional, sets the polling mode for the client. [More about polling modes](#polling-modes).                                                                                                                                                                                                                                   |
+| `configCache`      | Optional, sets a custom cache implementation for the client. [More about cache](#custom-cache).                                                                                                                                                                                                                               |
+| `logger`           | Optional, sets the internal logger and log level. [More about logging](#logging).                                                                                                                                                                                                                                             |
+| `flagOverrides`    | Optional, sets the local feature flag & setting overrides. [More about feature flag overrides](#flag-overrides).                                                                                                                                                                                                              |
+| `defaultUser`      | Optional, sets the default user. [More about default user](#default-user).                                                                                                                                                                                                                                                    |
+| `offline`          | Optional, defaults to `false`. Indicates whether the SDK should be initialized in offline mode. [More about offline mode](#online--offline-mode).                                                                                                                                                                             |
+| `hooks`            | Optional, used to subscribe events that the SDK sends in specific scenarios. [More about hooks](#hooks).                                                                                                                                                                                                                      |
 
-```
+```cpp
 ConfigCatOptions options;
 options.pollingMode = PollingMode::manualPoll();
 auto client = ConfigCatClient::get("#YOUR-SDK-KEY#", &options);
+
 ```
 
 caution
@@ -107,19 +117,20 @@ We strongly recommend you to use the `ConfigCatClient` as a Singleton object in 
 
 ## Anatomy of `getValue()`[​](#anatomy-of-getvalue "Direct link to anatomy-of-getvalue")
 
-| Parameters     | Description                                                                                                                                             |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `key`          | **REQUIRED.** The key of a specific setting or feature flag. Set on *ConfigCat Dashboard* for each setting.                                             |
-| `defaultValue` | **REQUIRED.** This value will be returned in case of an error.                                                                                          |
-| `user`         | Optional, *User Object*. Essential when using Targeting. [Read more about Targeting.](https://configcat.com/docs/docs/targeting/targeting-overview/.md) |
+| Parameters     | Description                                                                                                                                       |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `key`          | **REQUIRED.** The key of a specific setting or feature flag. Set on *ConfigCat Dashboard* for each setting.                                       |
+| `defaultValue` | **REQUIRED.** This value will be returned in case of an error.                                                                                    |
+| `user`         | Optional, *User Object*. Essential when using Targeting. [Read more about Targeting.](https://configcat.com/docs/targeting/targeting-overview.md) |
 
-```
+```cpp
 auto user = ConfigCatUser::create("#USER-IDENTIFIER#");
 auto value = client->getValue(
     "keyOfMySetting", // key
     false, // defaultValue
     user, // Optional User Object
 );
+
 ```
 
 caution
@@ -143,19 +154,20 @@ If you specify a default value whose type mismatches the setting kind, an error 
 
 `getValueDetails()` is similar to `getValue()` but instead of returning the evaluated value only, it gives more detailed information about the evaluation result.
 
-| Parameters     | Description                                                                                                                                             |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `key`          | **REQUIRED.** The key of a specific setting or feature flag. Set on *ConfigCat Dashboard* for each setting.                                             |
-| `defaultValue` | **REQUIRED.** This value will be returned in case of an error.                                                                                          |
-| `user`         | Optional, *User Object*. Essential when using Targeting. [Read more about Targeting.](https://configcat.com/docs/docs/targeting/targeting-overview/.md) |
+| Parameters     | Description                                                                                                                                       |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `key`          | **REQUIRED.** The key of a specific setting or feature flag. Set on *ConfigCat Dashboard* for each setting.                                       |
+| `defaultValue` | **REQUIRED.** This value will be returned in case of an error.                                                                                    |
+| `user`         | Optional, *User Object*. Essential when using Targeting. [Read more about Targeting.](https://configcat.com/docs/targeting/targeting-overview.md) |
 
-```
+```cpp
 auto user = ConfigCatUser::create("#USER-IDENTIFIER#");
 auto details = client->getValueDetails(
     "keyOfMySetting", // key
     false, // defaultValue
     user, // Optional User Object
 );
+
 ```
 
 caution
@@ -178,14 +190,16 @@ The `details` result contains the following information:
 
 ## User Object[​](#user-object "Direct link to User Object")
 
-The [User Object](https://configcat.com/docs/docs/targeting/user-object/.md) is essential if you'd like to use ConfigCat's [Targeting](https://configcat.com/docs/docs/targeting/targeting-overview/.md) feature.
+The [User Object](https://configcat.com/docs/targeting/user-object.md) is essential if you'd like to use ConfigCat's [Targeting](https://configcat.com/docs/targeting/targeting-overview.md) feature.
 
-```
+```cpp
 auto user = ConfigCatUser::create("#UNIQUE-USER-IDENTIFIER#");
-```
 
 ```
+
+```cpp
 auto user = ConfigCatUser::create("john@example.com");
+
 ```
 
 ### Customized User Object creation[​](#customized-user-object-creation "Direct link to Customized User Object creation")
@@ -197,7 +211,7 @@ auto user = ConfigCatUser::create("john@example.com");
 | `country` | Optional parameter for easier Targeting Rule definitions.                                                                       |
 | `custom`  | Optional dictionary for custom attributes of a user for advanced Targeting Rule definitions. e.g. User role, Subscription type. |
 
-```
+```cpp
 auto user = ConfigCatUser::create(
     "#UNIQUE-USER-IDENTIFIER#", // userID
     "john@example.com", // email
@@ -207,11 +221,12 @@ auto user = ConfigCatUser::create(
         { "UserRole", "Admin" }
     } // custom
 );
+
 ```
 
 The `custom` dictionary also allows attribute values other than `std::string` values:
 
-```
+```cpp
 auto user = ConfigCatUser::create(
     "#UNIQUE-USER-IDENTIFIER#", // userID
     "john@example.com", // email
@@ -222,6 +237,7 @@ auto user = ConfigCatUser::create(
         { "Roles", std::vector<std::string>{"Role1", "Role2"} }
     } // custom
 )
+
 ```
 
 ### User Object Attribute Types[​](#user-object-attribute-types "Direct link to User Object Attribute Types")
@@ -263,31 +279,34 @@ There's an option to set a default User Object that will be used at feature flag
 
 You can set the default User Object either on SDK initialization:
 
-```
+```cpp
 ConfigCatOptions options;
 options.defaultUser = ConfigCatUser::create("john@example.com");
 auto client = ConfigCatClient::get("#YOUR-SDK-KEY#", &options);
+
 ```
 
 or with the `setDefaultUser()` method of the ConfigCat client.
 
-```
+```cpp
 client->setDefaultUser(ConfigCatUser::create("john@example.com"));
+
 ```
 
 Whenever the `getValue()`, `getValueDetails()`, `getAllValues()`, or `getAllValueDetails()` methods are called without an explicit `user` parameter, the SDK will automatically use the default user as a User Object.
 
-```
+```cpp
 auto user = ConfigCatUser::create("john@example.com");
 client->setDefaultUser(user);
 
 // The default user will be used at the evaluation process.
 auto value = client->getValue("keyOfMySetting", false);
+
 ```
 
 When the `user` parameter is specified on the requesting method, it takes precedence over the default user.
 
-```
+```cpp
 auto user = ConfigCatUser::create("john@example.com");
 client->setDefaultUser(user);
 
@@ -295,17 +314,19 @@ auto otherUser = ConfigCatUser::create("brian@example.com");
 
 // otherUser will be used at the evaluation process.
 auto value = client->getValue("keyOfMySetting", false, otherUser.get());
+
 ```
 
 For deleting the default user, you can do the following:
 
-```
+```cpp
 client->clearDefaultUser();
+
 ```
 
 ## Polling Modes[​](#polling-modes "Direct link to Polling Modes")
 
-The *ConfigCat SDK* supports 3 different polling strategies to fetch feature flags and settings from the ConfigCat CDN. Once the latest data is downloaded, it is stored in the cache, then calls to `getValue()` use the cached data to evaluate feature flags and settings. With the following polling modes, you can customize the SDK to best fit to your application's lifecycle.<br />[More about polling modes.](https://configcat.com/docs/docs/advanced/caching/.md)
+The *ConfigCat SDK* supports 3 different polling strategies to fetch feature flags and settings from the ConfigCat CDN. Once the latest data is downloaded, it is stored in the cache, then calls to `getValue()` use the cached data to evaluate feature flags and settings. With the following polling modes, you can customize the SDK to best fit to your application's lifecycle.<br />[More about polling modes.](https://configcat.com/docs/advanced/caching.md)
 
 ### Auto polling (default)[​](#auto-polling-default "Direct link to Auto polling (default)")
 
@@ -313,11 +334,12 @@ The *ConfigCat SDK* downloads the latest config data from the ConfigCat CDN auto
 
 Use the `autoPollIntervalInSeconds` option parameter of the `PollingMode::autoPoll()` to change the polling interval.
 
-```
+```cpp
 auto autoPollIntervalInSeconds = 100;
 ConfigCatOptions options;
 options.pollingMode = PollingMode::autoPoll(autoPollIntervalInSeconds);
 auto client = ConfigCatClient::get("#YOUR-SDK-KEY#", &options);
+
 ```
 
 Available options:
@@ -333,11 +355,12 @@ When calling `getValue()`, the *ConfigCat SDK* downloads the latest config data 
 
 Use the `cacheRefreshIntervalInSeconds` option parameter of the `PollingMode::lazyLoad()` to set cache lifetime.
 
-```
+```cpp
 auto cacheRefreshIntervalInSeconds = 100;
 ConfigCatOptions options;
 options.pollingMode = PollingMode::lazyLoad(cacheRefreshIntervalInSeconds);
 auto client = ConfigCatClient::get("#YOUR-SDK-KEY#", &options);
+
 ```
 
 Available options:
@@ -350,11 +373,12 @@ Available options:
 
 Manual polling gives you full control over when the config data is downloaded from the ConfigCat CDN. The *ConfigCat SDK* will not download it automatically. Calling `forceRefresh()` is your application's responsibility.
 
-```
+```cpp
 ConfigCatOptions options;
 options.pollingMode = PollingMode::manualPoll();
 auto client = ConfigCatClient::get("#YOUR-SDK-KEY#", &options);
 client->forceRefresh();
+
 ```
 
 > `getValue()` returns `defaultValue` if the cache is empty. Call `forceRefresh()` to update the cache.
@@ -385,7 +409,7 @@ The SDK provides several hooks (events), by means of which you can get notified 
 
 You can subscribe to these events either on SDK initialization:
 
-```
+```cpp
 ConfigCatOptions options;
 options.pollingMode = PollingMode::manualPoll();
 options.hooks = std::make_shared<Hooks>(
@@ -395,28 +419,32 @@ options.hooks = std::make_shared<Hooks>(
     [](const std::string& error, const std::exception_ptr& exception) { /* onError callback */ }
 );
 auto client = ConfigCatClient::get("#YOUR-SDK-KEY#", &options);
+
 ```
 
 or with the `getHooks()` method of the ConfigCat client:
 
-```
+```cpp
 client->getHooks->addOnFlagEvaluated([](const EvaluationDetailsBase& details) { /* onFlagEvaluated callback */ });
+
 ```
 
 ## Online / Offline mode[​](#online--offline-mode "Direct link to Online / Offline mode")
 
 In cases when you'd want to prevent the SDK from making HTTP calls, you can put it in offline mode:
 
-```
+```cpp
 client->setOffline();
+
 ```
 
 In offline mode, the SDK won't initiate HTTP requests and will work only from its cache.
 
 To put the SDK back in online mode, you can do the following:
 
-```
+```cpp
 client->setOnline();
+
 ```
 
 > With `client->isOffline()` you can check whether the SDK is in offline mode.
@@ -439,10 +467,11 @@ The SDK can be set up to load your feature flag & setting overrides from a file.
 
 #### File[​](#file "Direct link to File")
 
-```
+```cpp
 ConfigCatOptions options;
 options.flagOverrides = std::make_shared<FileFlagOverrides>("path/to/the/local_flags.json", LocalOnly);
 auto client = ConfigCatClient::get("#YOUR-SDK-KEY#", &options);
+
 ```
 
 #### JSON File Structure[​](#json-file-structure "Direct link to JSON File Structure")
@@ -451,7 +480,7 @@ The SDK supports 2 types of JSON structures to describe feature flags & settings
 
 ##### 1. Simple (key-value) structure[​](#1-simple-key-value-structure "Direct link to 1. Simple (key-value) structure")
 
-```
+```json
 {
   "flags": {
     "enabledFeature": true,
@@ -461,6 +490,7 @@ The SDK supports 2 types of JSON structures to describe feature flags & settings
     "stringSetting": "test"
   }
 }
+
 ```
 
 ##### 2. Complex (full-featured) structure[​](#2-complex-full-featured-structure "Direct link to 2. Complex (full-featured) structure")
@@ -471,18 +501,19 @@ You can download your current config JSON from ConfigCat's CDN and use it as a b
 
 A convenient way to get the config JSON for a specific SDK Key is to install the [ConfigCat CLI](https://github.com/configcat/cli) tool and execute the following command:
 
-```
+```bash
 configcat config-json get -f v6 -p {YOUR-SDK-KEY} > config.json
+
 ```
 
-(Depending on your [Data Governance](https://configcat.com/docs/docs/advanced/data-governance/.md) settings, you may need to add the `--eu` switch.)
+(Depending on your [Data Governance](https://configcat.com/docs/advanced/data-governance.md) settings, you may need to add the `--eu` switch.)
 
-Alternatively, you can download the config JSON manually, based on your [Data Governance](https://configcat.com/docs/docs/advanced/data-governance/.md) settings:
+Alternatively, you can download the config JSON manually, based on your [Data Governance](https://configcat.com/docs/advanced/data-governance.md) settings:
 
 * GLOBAL: `https://cdn-global.configcat.com/configuration-files/{YOUR-SDK-KEY}/config_v6.json`
 * EU: `https://cdn-eu.configcat.com/configuration-files/{YOUR-SDK-KEY}/config_v6.json`
 
-```
+```json
 {
   "p": {
     // hash salt, required only when confidential text comparator(s) are used
@@ -611,6 +642,7 @@ Alternatively, you can download the config JSON manually, based on your [Data Go
     }
   }
 }
+
 ```
 
 For a more comprehensive specification of the config JSON v6 format, you may refer to [this JSON schema document](https://github.com/configcat/config-json/blob/main/V6/config.schema.json).
@@ -619,7 +651,7 @@ For a more comprehensive specification of the config JSON v6 format, you may ref
 
 You can set up the SDK to load your feature flag & setting overrides from a map.
 
-```
+```cpp
 const std::unordered_map<std::string, Value>& map = {
     { "enabledFeature", true },
     { "disabledFeature", false },
@@ -631,40 +663,44 @@ const std::unordered_map<std::string, Value>& map = {
 ConfigCatOptions options;
 options.flagOverrides = std::make_shared<MapFlagOverrides>(map, LocalOnly);
 auto client = ConfigCatClient::get("#YOUR-SDK-KEY#", &options);
+
 ```
 
 ## `getAllKeys()`[​](#getallkeys "Direct link to getallkeys")
 
 You can get the keys for all available feature flags and settings by calling the `getAllKeys()` method.
 
-```
+```cpp
 auto client = ConfigCatClient::get("#YOUR-SDK-KEY#");
 auto keys = client->getAllKeys();
+
 ```
 
 ## `getAllValues()`[​](#getallvalues "Direct link to getallvalues")
 
 Evaluates and returns the values of all feature flags and settings. Passing a User Object is optional.
 
-```
+```cpp
 auto client = ConfigCatClient::get("#YOUR-SDK-KEY#");
 auto settingValues = client->getAllValues();
 
 // invoke with User Object
 auto user = ConfigCatUser::create("#UNIQUE-USER-IDENTIFIER#");
 auto settingValuesTargeting = client->getAllValues(user);
+
 ```
 
 ## `getAllValueDetails`[​](#getallvaluedetails "Direct link to getallvaluedetails")
 
 Evaluates and returns the detailed values of all feature flags and settings. Passing a [User Object](#user-object) is optional.
 
-```
+```cpp
 auto client = ConfigCatClient::get("#YOUR-SDK-KEY#");
 
 // invoke with User Object
 auto user = ConfigCatUser::create("#UNIQUE-USER-IDENTIFIER#");
 auto allValueDetails = client->getAllValueDetails(user)
+
 ```
 
 ## Custom Cache[​](#custom-cache "Direct link to Custom Cache")
@@ -673,7 +709,7 @@ The *ConfigCat SDK* stores the downloaded config data in a local cache to minimi
 
 You have the option to inject your custom cache implementation into the client. All you have to do is to inherit from the `ConfigCatCache` abstract class:
 
-```
+```cpp
 class MyCustomCache : public ConfigCatCache {
 public:
     const std::string& read(const std::string& key) override {
@@ -684,19 +720,21 @@ public:
         // here you have to store the new value in the cache
     }
 };
+
 ```
 
 Then use your custom cache implementation:
 
-```
+```cpp
 ConfigCatOptions options;
 options.configCache = std::make_shared<MyCustomCache>();
 auto client = ConfigCatClient::get("#YOUR-SDK-KEY#", &options);
+
 ```
 
 info
 
-The C++ SDK supports *shared caching*. You can read more about this feature and the required minimum SDK versions [here](https://configcat.com/docs/docs/advanced/caching/.md#shared-cache).
+The C++ SDK supports *shared caching*. You can read more about this feature and the required minimum SDK versions [here](https://configcat.com/docs/advanced/caching.md#shared-cache).
 
 ## Force refresh[​](#force-refresh "Direct link to Force refresh")
 
@@ -706,31 +744,33 @@ Call the `forceRefresh()` method on the client to download the latest config JSO
 
 Provide your own network credentials (username/password), and proxy server settings (proxy server/port) in the `ConfigCatOptions`.
 
-```
+```cpp
 ConfigCatOptions options;
 options.proxies = {{"https", "proxyhost:port"}}; // Protocol, Proxy
 options.proxyAuthentications = {
     {"https", ProxyAuthentication{"user", "password"}} // Protocol, ProxyAuthentication
 };
 auto client = ConfigCatClient::get("#YOUR-SDK-KEY#", &options);
+
 ```
 
 ## Changing the default HTTP timeout[​](#changing-the-default-http-timeout "Direct link to Changing the default HTTP timeout")
 
 Set the maximum wait time for a ConfigCat HTTP response by changing the *connectTimeoutMs* or *readTimeoutMs* in the `ConfigCatOptions`. The default *connectTimeoutMs* is 8 seconds. The default *readTimeoutMs* is 5 seconds.
 
-```
+```cpp
 ConfigCatOptions options;
 options.connectTimeoutMs = 10000; // Timeout in milliseconds for establishing a HTTP connection with the server
 options.readTimeoutMs = 8000; // Timeout in milliseconds for reading the server's HTTP response
 auto client = ConfigCatClient::get("#YOUR-SDK-KEY#", &options);
+
 ```
 
 ## Logging[​](#logging "Direct link to Logging")
 
 ### Setting log levels[​](#setting-log-levels "Direct link to Setting log levels")
 
-```
+```cpp
 #include <configcat/configcat.h>
 #include <configcat/consolelogger.h>
 
@@ -738,12 +778,14 @@ auto logger = std::make_shared<ConsoleLogger>(LOG_LEVEL_WARNING);
 ConfigCatOptions options;
 options.logger = logger;
 auto client = ConfigCatClient::get("#YOUR-SDK-KEY#", &options);
+
 ```
 
 You can change the verbosity of the logs by setting the `LogLevel`.
 
-```
+```cpp
 logger->setLogLevel(LOG_LEVEL_INFO);
+
 ```
 
 Available log levels:
@@ -757,19 +799,20 @@ Available log levels:
 
 Info level logging helps to inspect how a feature flag was evaluated:
 
-```
+```bash
 [INFO]:[5000] Evaluating 'isPOCFeatureEnabled' for User '{"Identifier":"<SOME USERID>","Email":"configcat@example.com","Country":"US","SubscriptionType":"Pro","Role":"Admin","version":"1.0.0"}'
   Evaluating targeting rules and applying the first match if any:
   - IF User.Email CONTAINS ANY OF ['@something.com'] THEN 'false' => no match
   - IF User.Email CONTAINS ANY OF ['@example.com'] THEN 'true' => MATCH, applying rule
   Returning 'true'.
+
 ```
 
 ### Custom logger implementation[​](#custom-logger-implementation "Direct link to Custom logger implementation")
 
 In the ConfigCat SDK, the default logger (`ConsoleLogger`) writes logs to the standard output, but you can override it with your implementation via the `logger` client option. The custom logger must implement the `ILogger` abstract class.
 
-```
+```cpp
 #include "log.h"
 
 class CustomLogger : public ILogger {
@@ -782,24 +825,26 @@ public:
         }
     }
 };
-```
 
 ```
+
+```cpp
 auto logger = std::make_shared<CustomLogger>();
 logger->setLogLevel(LOG_LEVEL_INFO);
 
 ConfigCatOptions options;
 options.logger = logger;
 auto client = ConfigCatClient::get("#YOUR-SDK-KEY#", &options);
+
 ```
 
 ## Sensitive information handling[​](#sensitive-information-handling "Direct link to Sensitive information handling")
 
-The frontend/mobile SDKs are running in your users' browsers/devices. The SDK is downloading a [config JSON](https://configcat.com/docs/docs/requests/.md) file from ConfigCat's CDN servers. The URL path for this config JSON file contains your SDK key, so the SDK key and the content of your config JSON file (feature flag keys, feature flag values, Targeting Rules, % rules) can be visible to your users. In ConfigCat, all SDK keys are read-only. They only allow downloading your config JSON files, but nobody can make any changes with them in your ConfigCat account.
+The frontend/mobile SDKs are running in your users' browsers/devices. The SDK is downloading a [config JSON](https://configcat.com/docs/requests.md) file from ConfigCat's CDN servers. The URL path for this config JSON file contains your SDK key, so the SDK key and the content of your config JSON file (feature flag keys, feature flag values, Targeting Rules, % rules) can be visible to your users. In ConfigCat, all SDK keys are read-only. They only allow downloading your config JSON files, but nobody can make any changes with them in your ConfigCat account.
 
 If you do not want to expose the SDK key or the content of the config JSON file, we recommend using the SDK in your backend components only. You can always create a backend endpoint using the ConfigCat SDK that can evaluate feature flags for a specific user, and call that backend endpoint from your frontend/mobile applications.
 
-Also, we recommend using [confidential targeting comparators](https://configcat.com/docs/docs/targeting/targeting-rule/user-condition/.md#confidential-text-comparators) in the Targeting Rules of those feature flags that are used in the frontend/mobile SDKs.
+Also, we recommend using [confidential targeting comparators](https://configcat.com/docs/targeting/targeting-rule/user-condition.md#confidential-text-comparators) in the Targeting Rules of those feature flags that are used in the frontend/mobile SDKs.
 
 ## Sample Applications[​](#sample-applications "Direct link to Sample Applications")
 

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/guides/gpt-4-vs-gpt-4o/
+
 # GPT-4o vs GPT-4.1-mini: Benchmark on Your Own Data
 
 OpenAI released [gpt-5-mini](https://openai.com/index/gpt-5-mini-advancing-cost-efficient-intelligence/), a highly cost-efficient small model designed to expand the range of applications built with AI by making intelligence more affordable. GPT-4o mini surpasses GPT-3.5 Turbo in performance and affordability, and while it is more cost-effective than GPT-4o, it maintains strong capabilities in both textual intelligence and multimodal reasoning.

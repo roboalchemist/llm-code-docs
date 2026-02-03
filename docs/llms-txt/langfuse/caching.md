@@ -2,22 +2,6 @@
 
 # Source: https://langfuse.com/docs/prompt-management/features/caching.md
 
-# Source: https://langfuse.com/self-hosting/configuration/caching.md
-
-# Source: https://langfuse.com/docs/prompt-management/features/caching.md
-
-# Source: https://langfuse.com/self-hosting/configuration/caching.md
-
-# Source: https://langfuse.com/docs/prompt-management/features/caching.md
-
-# Source: https://langfuse.com/self-hosting/configuration/caching.md
-
-# Source: https://langfuse.com/docs/prompt-management/features/caching.md
-
-# Source: https://langfuse.com/self-hosting/configuration/caching.md
-
-# Source: https://langfuse.com/docs/prompt-management/features/caching.md
-
 ---
 title: Caching in Client SDKs
 sidebarTitle: Caching
@@ -164,7 +148,7 @@ sequenceDiagram
 
 ## Optional: Customize caching duration (TTL)
 
-The caching duration is configurable if you wish to reduce network overhead of the Langfuse Client. The default cache TTL is 60 seconds. After the TTL expires, the SDKs will refetch the prompt in the background and update the cache. Refetching is done asynchronously and does not block the application.
+The caching duration is configurable if you wish to reduce network overhead of the Langfuse Client. The default cache TTL (Time To Live) is 60 seconds. After the TTL expires, the SDKs will refetch the prompt in the background and update the cache. Refetching is done asynchronously and does not block the application.
 
 <LangTabs items={["Python SDK", "JS/TS SDK"]}>
 <Tab>

@@ -4,23 +4,9 @@
 
 # Source: https://infisical.com/docs/api-reference/overview/introduction.md
 
-# Source: https://infisical.com/docs/documentation/guides/introduction.md
-
-# Source: https://infisical.com/docs/documentation/getting-started/introduction.md
-
-# Source: https://infisical.com/docs/api-reference/overview/introduction.md
-
-# Source: https://infisical.com/docs/documentation/guides/introduction.md
-
-# Source: https://infisical.com/docs/documentation/getting-started/introduction.md
-
-# Source: https://infisical.com/docs/api-reference/overview/introduction.md
-
-# Source: https://infisical.com/docs/documentation/guides/introduction.md
-
-# Source: https://infisical.com/docs/documentation/getting-started/introduction.md
-
-# Source: https://infisical.com/docs/api-reference/overview/introduction.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # API Reference
 
@@ -35,3 +21,37 @@ With the Public API, you can create, read, update, and delete secrets, as well a
 The API is versioned on a per-resource basis. A resource's version is only incremented for breaking changes, so different endpoints may have different version numbers (e.g., `/api/v4/secrets` vs. `/api/v1/secret-syncs`).
 
 As a best practice, always use the latest available version for each endpoint to ensure access to the most recent features and improvements.
+
+## Rate Limits
+
+Infisical enforces several different types of rate limits:
+
+* **Read**: For GET and LIST operations.
+* **Write**: For CREATE, UPDATE, and DELETE operations.
+* **Secret**: Specifically for secret management operations such as getting and creating secrets.
+* **Identity Creation**: For creating new identities within an organization.
+* **Project Creation**: For creating new projects within an organization.
+
+**Self-hosted** instances have no limits, these limits apply only to **Infisical Cloud**.
+
+<Tabs>
+  <Tab title="Free Plan">
+    * **Read**: 200/minute
+    * **Write**: 90/minute
+    * **Secret**: 120/minute
+    * **Identity Creation**: 30/minute
+    * **Project Creation**: 30/minute
+  </Tab>
+
+  <Tab title="Pro Plan">
+    * **Read**: 350/minute
+    * **Write**: 200/minute
+    * **Secret**: 300/minute
+    * **Identity Creation**: 30/minute
+    * **Project Creation**: 30/minute
+  </Tab>
+</Tabs>
+
+<Note>
+  Custom rate limits are available for Enterprise customers. If you need higher rate limits, please contact [sales@infisical.com](mailto:sales@infisical.com).
+</Note>

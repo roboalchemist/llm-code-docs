@@ -1,3 +1,11 @@
+# Source: https://docs.datadoghq.com/getting_started/integrations/azure.md
+
+# Source: https://docs.datadoghq.com/database_monitoring/setup_sql_server/azure.md
+
+# Source: https://docs.datadoghq.com/database_monitoring/setup_postgres/azure.md
+
+# Source: https://docs.datadoghq.com/database_monitoring/setup_mysql/azure.md
+
 # Source: https://docs.datadoghq.com/continuous_integration/pipelines/azure.md
 
 # Source: https://docs.datadoghq.com/cloud_cost_management/setup/azure.md
@@ -8,7 +16,6 @@
 title: Azure Integration Billing
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Account Management > Billing > Azure Integration Billing
-source_url: https://docs.datadoghq.com/billing/azure/index.html
 ---
 
 # Azure Integration Billing

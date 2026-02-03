@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/references/proxy-vs-async.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Proxy vs Async Integration
 
 > Compare Helicone's Proxy and Async integration methods. Understand the features, benefits, and use cases for each approach to choose the best fit for your LLM application.

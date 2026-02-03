@@ -4,7 +4,6 @@
 title: Continuous Integration Visibility
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Continuous Integration Visibility
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Continuous Integration Visibility

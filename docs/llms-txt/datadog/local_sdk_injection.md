@@ -4,7 +4,6 @@
 title: Local SDK Injection
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > APM > Tracing Guides > Local SDK Injection
-source_url: https://docs.datadoghq.com/guide/local_sdk_injection/index.html
 ---
 
 # Local SDK Injection

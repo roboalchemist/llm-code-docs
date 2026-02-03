@@ -6,7 +6,6 @@ description: >-
   Monitor service health metrics across your entire stack without code
   instrumentation using Universal Service Monitoring and the Datadog Agent.
 breadcrumbs: Docs > Universal Service Monitoring
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Universal Service Monitoring

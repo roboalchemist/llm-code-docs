@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/changelog/news.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # News & Updates
 
 > Stay informed about Ultravox platform announcements.
@@ -297,8 +301,3 @@ You tell us! We're all ears for your suggestions to make Ultravox even better fo
 * We've added support for [Voice Cloning](/api-reference/voices/voices-post#create-clone-voice).
 * We released a new version of the Ultravox Model, [v0.4](https://github.com/fixie-ai/ultravox/releases/tag/v0.4).
 * Tool support is coming very soon!
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

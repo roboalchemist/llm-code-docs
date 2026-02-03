@@ -4,7 +4,6 @@
 title: Where is my data stored?
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > FAQ > Where is my data stored?
-source_url: https://docs.datadoghq.com/faq/account-data-storage/index.html
 ---
 
 # Where is my data stored?

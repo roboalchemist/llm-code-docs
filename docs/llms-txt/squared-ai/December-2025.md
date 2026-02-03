@@ -1,5 +1,9 @@
 # Source: https://docs.squared.ai/release-notes/2025/December-2025.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # December 2025 Releases
 
 > Release updates for the month of December
@@ -131,8 +135,3 @@
 
 * **Knowledge Base Create API**\
   Added Knowledge Base Create API endpoint.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.squared.ai/llms.txt

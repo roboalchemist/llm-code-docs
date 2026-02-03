@@ -2,13 +2,9 @@
 
 # Source: https://dub.co/docs/conversions/sales/shopify.md
 
-# Source: https://dub.co/docs/sdks/client-side/installation-guides/shopify.md
-
-# Source: https://dub.co/docs/conversions/sales/shopify.md
-
-# Source: https://dub.co/docs/sdks/client-side/installation-guides/shopify.md
-
-# Source: https://dub.co/docs/conversions/sales/shopify.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dub.co/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Shopify
 

@@ -2,16 +2,13 @@
 
 # Get value
 
-```
-GET 
-/v1/environments/:environmentId/settings/:settingId/value
-```
+Copy page
 
 This endpoint returns the value of a Feature Flag or Setting in a specified Environment identified by the `environmentId` parameter.
 
 The most important attributes in the response are the `value`, `rolloutRules` and `percentageRules`. The `value` represents what the clients will get when the evaluation requests of our SDKs are not matching to any of the defined Targeting or Percentage Rules, or when there are no additional rules to evaluate.
 
-The `rolloutRules` and `percentageRules` attributes are representing the current Targeting and Percentage Rules configuration of the actual Feature Flag or Setting in an **ordered** collection, which means the order of the returned rules is matching to the evaluation order. You can read more about these rules [here](https://configcat.com/docs/docs/targeting/targeting-overview/.md).
+The `rolloutRules` and `percentageRules` attributes are representing the current Targeting and Percentage Rules configuration of the actual Feature Flag or Setting in an **ordered** collection, which means the order of the returned rules is matching to the evaluation order. You can read more about these rules [here](https://configcat.com/docs/targeting/targeting-overview.md).
 
 ## Request[​](#request "Direct link to Request")
 

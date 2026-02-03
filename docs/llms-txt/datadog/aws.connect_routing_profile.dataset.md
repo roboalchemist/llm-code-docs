@@ -4,8 +4,6 @@
 title: Connect Routing Profile
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Connect Routing Profile
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.connect_routing_profile.dataset/index.html
 ---
 
 # Connect Routing Profile
@@ -36,4 +34,4 @@ aws.connect_routing_profile
 | number_of_associated_users  | core | int64         | The number of associated users in routing profile.                                                                                                     |
 | routing_profile_arn         | core | string        | The Amazon Resource Name (ARN) of the routing profile.                                                                                                 |
 | routing_profile_id          | core | string        | The identifier of the routing profile.                                                                                                                 |
-| tags                        | core | hstore        |
+| tags                        | core | hstore_csv    |

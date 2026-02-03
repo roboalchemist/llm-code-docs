@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/tesla/set-steering-heater.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Steering Heater
 
 > Start or stop heating a vehicle's steering wheel.

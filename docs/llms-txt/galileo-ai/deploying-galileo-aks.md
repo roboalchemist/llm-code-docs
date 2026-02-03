@@ -1,5 +1,9 @@
 # Source: https://docs.galileo.ai/deployments/deploying-galileo-aks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.galileo.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Azure AKS
 
 > This page details the steps to deploy a Galileo Kubernetes cluster in Microsoft Azure's AKS service environment.

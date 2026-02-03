@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/example-projects/vercel-ai-sdk-image-generator.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Vercel AI SDK image generator
 
 > This example Next.js project uses the Vercel AI SDK to generate images from a prompt.

@@ -4,7 +4,6 @@
 title: Is the AWS China region supported?
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > FAQ > Is the AWS China region supported?
-source_url: https://docs.datadoghq.com/faq/scan-error-aws-china-region/index.html
 ---
 
 # Is the AWS China region supported?

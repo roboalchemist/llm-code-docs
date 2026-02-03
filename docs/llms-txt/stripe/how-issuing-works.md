@@ -6,7 +6,7 @@ Learn how to start building a card program with Stripe Issuing.
 
 Stripe [Issuing](https://stripe.com/issuing) allows you to create, manage, and scale a payment card program for your users without setup fees. You can programmatically control the details of your card program, which includes issuing [physical](https://docs.stripe.com/issuing/cards/physical.md) or [virtual](https://docs.stripe.com/issuing/cards/virtual.md) cards, managing [spending](https://docs.stripe.com/issuing/controls/spending-controls.md), and [approving or declining transactions](https://docs.stripe.com/issuing/controls/real-time-authorizations.md).
 
-We partner with multiple trusted banks to provide a banking as a service (BaaS) infrastructure for you to build new financial service offerings. We also partner with the Mastercard and Visa card networks so you can [choose which network](https://docs.stripe.com/issuing/customize-your-program.md#network-preference) to issue cards on, or you can issue cards on both networks.
+We partner with multiple trusted banks to provide an embedded finance infrastructure for you to build new financial service offerings. We also partner with the Mastercard and Visa card networks so you can issue cards [on either network or on both](https://docs.stripe.com/issuing/customize-your-program.md#network-preference).
 
 > Issuing is available in the US, UK, and many *European Economic Area* (The European Economic Area is a regional single market with free movement of labor, goods, and capital. It encompasses the European Union member states and three additional states that are part of the European Free Trade Association) (EEA) countries. In the US, you can provide cards to individuals who live in the same country where the business is established. If your business is established in the EU or the UK, you can provide cards to individuals who live in EEA countries and the UK.
 > 
@@ -43,27 +43,27 @@ You can integrate Issuing with [Stripe Connect](https://docs.stripe.com/connect.
 
 ## Issuing architecture
 
-With Stripe *Connect* (Connect is Stripe's solution for multi-party businesses, such as marketplace or software platforms, to route payments between sellers, customers, and other recipients), you onboard customers to your platform with connected accounts. For each of these connected accounts, you can create account holders and provide cards to authorized users. The following diagram shows a platform with a Stripe Issuing integration using an Issuing balance and a Treasury balance:
+With Stripe *Connect* (Connect is Stripe's solution for multi-party businesses, such as marketplace or software platforms, to route payments between sellers, customers, and other recipients), you onboard customers to your platform with connected accounts. For each of these connected accounts, you can create account holders and provide cards to authorized users. The following diagram shows a platform with a Stripe Issuing integration using an Issuing balance and a financial accounts balance:
 
 #### Issuing balance funding source
 Diagram of a platform integrated with Issuing (See full diagram at https://docs.stripe.com/issuing/how-issuing-works)
 ### Connected accounts
 
-Issuing only supports connected accounts that don’t use a Stripe-hosted Dashboard, and where your platform is responsible for requirements collection and loss liability, also known as a Custom connected account. Learn how to [create connected accounts](https://docs.stripe.com/connect/design-an-integration.md?connect-onboarding-surface=api&connect-dashboard-type=none&connect-economic-model=buy-rate&connect-loss-liability-owner=platform&connect-charge-type=direct) that work with Issuing.
+Issuing only supports connected accounts that don’t use a Stripe-hosted Dashboard, and where your platform is responsible for requirements collection and loss liability, also known as a Custom connected account. Learn how to [create connected accounts](https://docs.stripe.com/connect/interactive-platform-guide.md?connect-charge-type=direct&connect-loss-liability-owner=platform) that work with Issuing.
 
 ### Issuing balance
 
 An Issuing balance is a funding source attached to a connected account that provides the funds for spending with the associated card account. You can add funds to the connected account’s Issuing balance either by transferring from the connected account’s Stripe account balance, or through a top-up from an external bank account. You can also pay out funds from the Issuing balance to an external bank account.
 
-Connected accounts can also use a [Financial Accounts for platforms](https://docs.stripe.com/financial-accounts/connect/account-management/issuing-cards.md) account to fund cards for a full BaaS solution.
+Connected accounts can also use a [Financial Accounts for platforms](https://docs.stripe.com/financial-accounts/connect/account-management/issuing-cards.md) account to fund cards for a full embedded finance solution.
 
-#### Treasury balance funding source
+#### Financial accounts balance funding source
  (See full diagram at https://docs.stripe.com/issuing/how-issuing-works)
 ### Connected accounts
 
 Connected accounts are businesses, sellers, or service providers that use a platform. For example, as an expense management platform, you provide software that small businesses can leverage to manage and control their business spend. Each digital store owner that uses the storefront platform to collect payments is a connected account.
 
-Financial Accounts for platforms only supports connected accounts that don’t use a Stripe-hosted Dashboard, and where your platform is responsible for requirements collection and loss liability, also known as a Custom connected account. Learn how to [create connected accounts](https://docs.stripe.com/connect/design-an-integration.md?connect-onboarding-surface=api&connect-dashboard-type=none&connect-economic-model=buy-rate&connect-loss-liability-owner=platform&connect-charge-type=direct) that work with Financial Accounts for platforms.
+Financial Accounts for platforms only supports connected accounts that don’t use a Stripe-hosted Dashboard, and where your platform is responsible for requirements collection and loss liability, also known as a Custom connected account. Learn how to [create connected accounts](https://docs.stripe.com/connect/interactive-platform-guide.md?connect-charge-type=direct&connect-loss-liability-owner=platform) that work with Financial Accounts for platforms.
 
 ### Financial accounts
 

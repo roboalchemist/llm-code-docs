@@ -1,5 +1,9 @@
 # Source: https://docs.lunary.ai/docs/api/templates/get-the-latest-version.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lunary.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get the latest version
 
 > This is the most common endpoint you'll use when working with prompt templates.
@@ -94,7 +98,3 @@ components:
           type: number
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lunary.ai/llms.txt

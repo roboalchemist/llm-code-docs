@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/fine-tuning/monitor-training.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Monitor Training
 
 > Track RFT job progress and diagnose issues in real-time
@@ -384,7 +388,7 @@ If you need to stop training:
 1. Click **Cancel Job** in the dashboard
 2. Or via CLI:
    ```bash  theme={null}
-   firectl delete rftj <job-id>
+   firectl rftj delete <job-id>
    ```
 
 The model state at the last checkpoint is saved and can be deployed.

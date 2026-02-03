@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Cloudcraft (Standalone) > FAQ > Does Cloudcraft have HIPAA
   accreditation?
-source_url: https://docs.datadoghq.com/faq/hipaa-accreditation/index.html
 ---
 
 # Does Cloudcraft have HIPAA accreditation?

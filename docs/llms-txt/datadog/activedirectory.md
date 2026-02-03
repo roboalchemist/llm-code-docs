@@ -8,7 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > Account Management > Single Sign On With SAML > Microsoft Active
   Directory Federation Services SAML IdP
-source_url: https://docs.datadoghq.com/saml/activedirectory/index.html
 ---
 
 # Microsoft Active Directory Federation Services SAML IdP

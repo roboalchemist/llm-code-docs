@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/tesla/get-charge-wattmeter.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Wattage
 
 > When the vehicle is charging, returns the instant charging wattage as measured by the vehicle. When the vehicle is not charging, this endpoint results in a vehicle state error.

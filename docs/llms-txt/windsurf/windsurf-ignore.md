@@ -1,6 +1,12 @@
 # Source: https://docs.windsurf.com/context-awareness/windsurf-ignore.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Windsurf Ignore
+
+> Configure which files and directories Windsurf should ignore during indexing using .codeiumignore files with gitignore-style syntax.
 
 ## WindsurfIgnore
 

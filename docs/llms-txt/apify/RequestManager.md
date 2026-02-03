@@ -31,15 +31,15 @@ Base class that extends `RequestLoader` with the capability to enqueue new reque
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#undefined)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/crawlee/request_loaders/_request_manager.py#L26)
+### [**](#undefined)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/crawlee/request_loaders/_request_manager.py#L26)
 
 :
 
-### [**](#undefined)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/crawlee/request_loaders/_request_manager.py#L43)
+### [**](#undefined)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/crawlee/request_loaders/_request_manager.py#L43)
 
 :
 
-### [**](#drop)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/request_loaders/_request_manager.py#L22)drop
+### [**](#drop)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/request_loaders/_request_manager.py#L22)drop
 
 * **async **drop**(): None
 
@@ -51,35 +51,35 @@ Base class that extends `RequestLoader` with the capability to enqueue new reque
 
   #### Returns None
 
-### [**](#undefined)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/crawlee/request_loaders/_request_loader.py#L45)
+### [**](#undefined)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/crawlee/request_loaders/_request_loader.py#L45)
 
 :
 
-### [**](#undefined)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/crawlee/request_loaders/_request_loader.py#L29)
+### [**](#undefined)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/crawlee/request_loaders/_request_loader.py#L29)
 
 :
 
-### [**](#undefined)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/crawlee/request_loaders/_request_loader.py#L33)
+### [**](#undefined)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/crawlee/request_loaders/_request_loader.py#L33)
 
 :
 
-### [**](#undefined)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/crawlee/request_loaders/_request_loader.py#L37)
+### [**](#undefined)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/crawlee/request_loaders/_request_loader.py#L37)
 
 :
 
-### [**](#undefined)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/crawlee/request_loaders/_request_loader.py#L41)
+### [**](#undefined)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/crawlee/request_loaders/_request_loader.py#L41)
 
 :
 
-### [**](#undefined)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/crawlee/request_loaders/_request_loader.py#L53)
+### [**](#undefined)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/crawlee/request_loaders/_request_loader.py#L53)
 
 :
 
-### [**](#undefined)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/crawlee/request_loaders/_request_manager.py#L70)
+### [**](#undefined)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/crawlee/request_loaders/_request_manager.py#L70)
 
 :
 
-### [**](#to_tandem)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/request_loaders/_request_loader.py#L56)to\_tandem
+### [**](#to_tandem)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/request_loaders/_request_loader.py#L56)to\_tandem
 
 * **async **to\_tandem**(request\_manager): [RequestManagerTandem](https://crawlee.dev/python/api/class/RequestManagerTandem)
 

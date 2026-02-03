@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/tutorials/databases/supabase
+
 # Connect Streamlit to Supabase
 
 This guide explains how to securely access a Supabase instance from Streamlit Community Cloud. It uses [st.connection](/develop/api-reference/connections/st.connection), [Streamlit Supabase Connector](https://github.com/SiddhantSadangi/st_supabase_connection/tree/main), and Streamlit's [Secrets management](/develop/concepts/connections/secrets-management). Supabase is the open source Firebase alternative and is based on PostgreSQL.

@@ -2,18 +2,16 @@
 
 # Source: https://docs.upsun.com/create-apps/image-properties/source.md
 
-# Source: https://docs.upsun.com/integrations/source.md
+# source
 
-# Source: https://docs.upsun.com/create-apps/image-properties/source.md
 
-# Source: https://docs.upsun.com/integrations/source.md
+Contains information about the app’s source code and operations that can be run on it.
 
-# Source integrations
+Optional in [single-runtime](https://docs.upsun.com/create-apps/app-reference/single-runtime-image.md#primary-application-properties) and [composable](https://docs.upsun.com/create-apps/app-reference/composable-image.md#primary-application-properties) images.
 
-You might want to keep your code in a third-party repository that's linked to your Upsun project.
-This means you keep all your workflows where you want and use Upsun for deploying.
+The following table shows the properties that can be set in `source`:
 
-Your Upsun project becomes a mirror of your code repository elsewhere.
-This means you shouldn't push code directly to Upsun.
-Any changes you push directly get overwritten by the integration when changes happen in the third-party repository.
-
+| Name         | Type                     | Required | Description                                                                                                                       |
+|--------------|--------------------------|----------|-----------------------------------------------------------------------------------------------------------------------------------|
+| `operations` | An operations dictionary |          | Operations that can be applied to the source code. See [source operations](https://docs.upsun.com/create-apps/source-operations.md).                              |
+| `root`       | `string`                 |          | The path where the app code lives. Useful for [multi-app setups](https://docs.upsun.com/create-apps/multi-app.md). <BR>**Single-runtime image**: Defaults to the directory of the `.upsun/config.yaml` file. <BR>**Composable image**: Defaults to the root project directory.|

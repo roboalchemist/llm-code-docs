@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/examples/vercel-ai-sdk.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Using the Vercel AI SDK
 
 > This example demonstrates how to use the Vercel AI SDK with Trigger.dev.
@@ -16,7 +20,7 @@ This task shows how to use the Vercel AI SDK to generate text from a prompt with
 
 ### Task code
 
-```ts trigger/vercel-ai-sdk-openai.ts theme={null}
+```ts trigger/vercel-ai-sdk-openai.ts theme={"theme":"css-variables"}
 import { logger, task } from "@trigger.dev/sdk";
 import { generateText } from "ai";
 // Install the package of the AI model you want to use, in this case OpenAI
@@ -46,7 +50,7 @@ export const openaiTask = task({
 
 To test this task in the dashboard, you can use the following payload:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   "prompt": "What is the meaning of life?"
 }

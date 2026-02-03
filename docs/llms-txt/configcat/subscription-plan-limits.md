@@ -2,6 +2,8 @@
 
 # Subscription Plan Limits
 
+Copy page
+
 This page lists the limits of the different subscription plans. See the [pricing page](https://configcat.com/pricing) for more information about the plans.
 
 info

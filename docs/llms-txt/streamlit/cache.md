@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/cli/cache
+
 # streamlit cache clear
 
 Clear persisted files from the on-disk [Streamlit cache](/develop/api-reference/caching-and-state), if present.

@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/jest/no-conditional-expect.md
 ---
-# jest/no-conditional-expect&#x20;
 
 ### What it does
 

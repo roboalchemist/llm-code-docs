@@ -4,40 +4,77 @@
 
 # Source: https://docs.chatling.ai/api-reference/v2/contacts/create-contact.md
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/hubspot/create-contact.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/action/create-contact.md
+# Create contact
 
-# Source: https://docs.chatling.ai/api-reference/v2/contacts/create-contact.md
+> Create a new contact for the chatbot.
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/hubspot/create-contact.md
+## Request parameters
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/action/create-contact.md
+### Path
 
-# Source: https://docs.chatling.ai/api-reference/v2/contacts/create-contact.md
+<ParamField path="chatbotId" type="string" required>
+  The chatbot ID.
+</ParamField>
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/hubspot/create-contact.md
+### Body
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/action/create-contact.md
+<ParamField body="properties" type="object">
+  At least one of the following properties is required.
 
-# Source: https://docs.chatling.ai/api-reference/v2/contacts/create-contact.md
+  <Expandable title="properties">
+    <ParamField body="first_name" type="string" placeholder="John" />
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/hubspot/create-contact.md
+    <ParamField body="last_name" type="string" placeholder="Doe" />
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/action/create-contact.md
+    <ParamField body="email" type="string" placeholder="john.doe@example.com" />
 
-# Source: https://docs.chatling.ai/api-reference/v2/contacts/create-contact.md
+    <ParamField body="phone" type="string" placeholder="1234567890" />
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/hubspot/create-contact.md
+    <ParamField body="job_title" type="string" placeholder="Software Engineer" />
 
-# Create Contact
+    <ParamField body="company_name" type="string" placeholder="Acme Inc" />
 
-> Create contacts in HubSpot from your chatbot.
+    <ParamField body="website_url" type="string" placeholder="https://acme.com" />
 
-Create contacts in HubSpot from your chatbot. This is useful for capturing leads and enriching your CRM data.
+    <ParamField body="industry" type="string" placeholder="Technology" />
 
-## Configuration
+    <ParamField body="address" type="string" placeholder="123 Main St" />
 
-1. Click the `Connect account` button under the Account field to connect your HubSpot account to Chatling or select an existing connection.
-2. Under the `Contact details` section, add the properties you want to set for the contact.
-3. To store the contact's ID when the contact is created, select a variable for the `Contact ID` field under the `Save response` section.
+    <ParamField body="city" type="string" placeholder="New York" />
+
+    <ParamField body="state" type="string" placeholder="NY" />
+
+    <ParamField body="postal_code" type="string" placeholder="10001" />
+
+    <ParamField body="country" type="string" placeholder="USA" />
+  </Expandable>
+</ParamField>
+
+## Response
+
+<ResponseField name="status" type="string">
+  The status of the request. Will be `success` if the request was successful, otherwise `error`.
+</ResponseField>
+
+<ResponseField name="data" type="object">
+  <Expandable title="properties">
+    <ResponseField name="id" type="string">
+      The unique identifier of the contact.
+    </ResponseField>
+  </Expandable>
+</ResponseField>
+
+<ResponseExample>
+  ```json Response theme={null}
+  {
+      "status": "success",
+      "data": {
+          "id": "qtr89df0-112d-d197-b541-3f8674663246"
+      }
+  }
+  ```
+</ResponseExample>

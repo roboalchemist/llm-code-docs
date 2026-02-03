@@ -8,7 +8,7 @@ Follow these steps to deploy a Vespa application to the [dev zone](../operations
 
 Alternative versions of this guide:
 
-- [Deploy an application using pyvespa](https://pyvespa.readthedocs.io/en/latest/getting-started-pyvespa-cloud.html) - for Python developers
+- [Deploy an application using pyvespa](https://vespa-engine.github.io/pyvespa/getting-started-pyvespa-cloud.html) - for Python developers
 - [Deploy an application having Java components](deploy-an-application-java.html)
 - [Deploy an application without Vespa CLI](deploy-an-application-shell.html)
 - [Deploy an application locally](deploy-an-application-local.html)
@@ -42,5 +42,5 @@ Congratulations, you have deployed your first Vespa application! Application ins
 
 #### Next: [Vespa applications](applications.html)
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

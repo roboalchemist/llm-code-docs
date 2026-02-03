@@ -1,179 +1,350 @@
 # Source: https://docs.anchorbrowser.io/api-reference/browser-sessions/start-browser-session.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Start Browser Session
 
 > Allocates a new browser session for the user, with optional configurations for ad-blocking, captcha solving, proxy usage, and idle timeout.
 
+
+
 ## OpenAPI
 
 ````yaml openapi-mintlify.yaml post /v1/sessions
+openapi: 3.1.0
+info:
+  title: AnchorBrowser API
+  version: 1.0.0
+  description: APIs to manage all browser-related actions and configuration.
+servers:
+  - url: https://api.anchorbrowser.io
+    description: API server
+security: []
 paths:
-  path: /v1/sessions
-  method: post
-  servers:
-    - url: https://api.anchorbrowser.io
-      description: API server
-  request:
-    security:
-      - title: api key header
-        parameters:
-          query: {}
-          header:
-            anchor-api-key:
-              type: apiKey
-              description: API key passed in the header
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              session:
-                allOf:
-                  - $ref: '#/components/schemas/SessionConfig'
-              browser:
-                allOf:
-                  - $ref: '#/components/schemas/BrowserConfig'
-              integrations:
-                allOf:
-                  - type: array
-                    description: >-
-                      Array of integrations to load in the browser session.
-                      Integrations must be previously created using the
-                      Integrations API.
-                    items:
-                      $ref: '#/components/schemas/Integration'
-                    example:
-                      - id: 550e8400-e29b-41d4-a716-446655440000
-                        type: 1PASSWORD
-                        configuration:
-                          load_mode: all
-            required: false
-            refIdentifier: '#/components/schemas/SessionCreateRequestSchema'
-        examples:
-          example:
-            value:
-              session:
-                initial_url: <string>
-                recording:
-                  active: true
-                proxy:
-                  active: true
-                  type: anchor_proxy
-                  country_code: af
-                  region: <string>
-                  city: <string>
-                timeout:
-                  max_duration: 123
-                  idle_timeout: 123
-                live_view:
-                  read_only: true
-              browser:
-                profile:
-                  name: <string>
-                  persist: true
-                adblock:
-                  active: true
-                popup_blocker:
-                  active: true
-                captcha_solver:
-                  active: true
-                headless:
-                  active: true
-                viewport:
-                  width: 123
-                  height: 123
-                fullscreen:
-                  active: true
-                p2p_download:
-                  active: true
-                extensions:
-                  - 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                disable_web_security:
-                  active: true
-                extra_stealth:
-                  active: true
-              integrations:
-                - id: 550e8400-e29b-41d4-a716-446655440000
-                  type: 1PASSWORD
-                  configuration:
-                    load_mode: all
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              data:
-                allOf:
-                  - type: object
-                    properties:
-                      id:
-                        type: string
-                        description: Unique identifier for the browser session
-                      cdp_url:
-                        type: string
-                        description: The CDP websocket connection string
-                      live_view_url:
-                        type: string
-                        description: The browser session live view url
-            refIdentifier: '#/components/schemas/SessionCreateResponseSchema'
-        examples:
-          example:
-            value:
-              data:
-                id: <string>
-                cdp_url: <string>
-                live_view_url: <string>
-        description: Successfully returned a browser object
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - &ref_0
-                    type: object
-                    properties:
-                      code:
-                        type: integer
-                      message:
-                        type: string
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          captchaSolverRequiresProxy:
-            summary: CAPTCHA solver requires proxy to be active.
-            value:
-              error:
-                code: 400
-                message: CAPTCHA solver requires proxy to be active.
-        description: Bad Request - Invalid request parameters or configuration.
-    '402':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - *ref_0
-            refIdentifier: '#/components/schemas/ErrorResponse'
-        examples:
-          example:
-            value:
-              error:
-                code: 123
-                message: <string>
-        description: Payment Required - Insufficient credits to allocate a new browser
-  deprecated: false
-  type: path
+  /v1/sessions:
+    post:
+      tags:
+        - Browser Sessions
+      summary: Start Browser Session
+      description: >-
+        Allocates a new browser session for the user, with optional
+        configurations for ad-blocking, captcha solving, proxy usage, and idle
+        timeout.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SessionCreateRequestSchema'
+      responses:
+        '200':
+          description: Successfully returned a browser object
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionCreateResponseSchema'
+        '400':
+          description: Bad Request - Invalid request parameters or configuration.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                captchaSolverRequiresProxy:
+                  summary: CAPTCHA solver requires proxy to be active.
+                  value:
+                    error:
+                      code: 400
+                      message: CAPTCHA solver requires proxy to be active.
+        '402':
+          description: Payment Required - Insufficient credits to allocate a new browser
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      security:
+        - api_key_header: []
 components:
   schemas:
+    SessionCreateRequestSchema:
+      type: object
+      properties:
+        session:
+          $ref: '#/components/schemas/SessionConfig'
+        browser:
+          $ref: '#/components/schemas/BrowserConfig'
+        integrations:
+          type: array
+          description: >-
+            Array of integrations to load in the browser session. Integrations
+            must be previously created using the Integrations API.
+          items:
+            $ref: '#/components/schemas/Integration'
+          example:
+            - id: 550e8400-e29b-41d4-a716-446655440000
+              type: 1PASSWORD
+              configuration:
+                load_mode: all
+        identities:
+          description: >
+            Activates an authenticated session.
+
+
+            **Beta** Capability. [Contact
+            support](mailto:support@anchorbrowser.io) to enable.
+          type: array
+          items:
+            type: object
+            description: >-
+              Previously configured identity to be used for the authenticated
+              session.
+            properties:
+              id:
+                type: string
+                description: The identity ID to use for the browser session.
+          example:
+            - id: 123e4567-e89b-12d3-a456-426614174000
+    SessionCreateResponseSchema:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Unique identifier for the browser session
+            cdp_url:
+              type: string
+              description: The CDP websocket connection string
+            live_view_url:
+              type: string
+              description: The browser session live view url
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+    SessionConfig:
+      type: object
+      description: Session-related configurations.
+      properties:
+        initial_url:
+          type: string
+          format: uri
+          description: >-
+            The URL to navigate to when the browser session starts. If not
+            provided, the browser will load an empty page.
+        tags:
+          type: array
+          items:
+            type: string
+          description: >-
+            Custom labels to categorize and identify browser sessions. Useful
+            for filtering, organizing, and tracking sessions across your
+            workflows.
+          example:
+            - production
+            - scraping
+            - customer-123
+        recording:
+          type: object
+          description: Configuration for session recording.
+          properties:
+            active:
+              type: boolean
+              description: >-
+                Enable or disable video recording of the browser session.
+                Defaults to `true`.
+        proxy:
+          $ref: '#/components/schemas/ProxyConfig'
+        timeout:
+          type: object
+          description: Timeout configurations for the browser session.
+          properties:
+            max_duration:
+              type: integer
+              description: >-
+                Maximum time (in minutes) the session can run before
+                automatically terminating. Defaults to `20`. Set to `-1` to
+                disable this limit.
+            idle_timeout:
+              type: integer
+              description: >-
+                Time (in minutes) the session waits for new connections after
+                all others are closed before stopping. Defaults to `5`. Set to
+                `-1` to disable this limit.
+        live_view:
+          type: object
+          description: Configuration for live viewing the browser session.
+          properties:
+            read_only:
+              type: boolean
+              description: >-
+                Enable or disable read-only mode for live viewing. Defaults to
+                `false`.
+    BrowserConfig:
+      type: object
+      description: Browser-specific configurations.
+      properties:
+        profile:
+          type: object
+          description: Options for managing and persisting browser session profiles.
+          properties:
+            name:
+              type: string
+              description: The name of the profile to be used during the browser session.
+            persist:
+              type: boolean
+              description: >-
+                Indicates whether the browser session profile data should be
+                saved when the browser session ends. Defaults to `false`.
+        adblock:
+          type: object
+          description: Configuration for ad-blocking.
+          properties:
+            active:
+              type: boolean
+              description: Enable or disable ad-blocking. Defaults to `true`.
+        popup_blocker:
+          type: object
+          description: Configuration for popup blocking.
+          properties:
+            active:
+              type: boolean
+              description: >-
+                Blocks popups, including ads and CAPTCHA consent banners.
+                Requires adblock to be active. Defaults to `true`.
+        captcha_solver:
+          type: object
+          description: Configuration for captcha-solving.
+          properties:
+            active:
+              type: boolean
+              description: >-
+                Enable or disable captcha-solving. Requires proxy to be active.
+                Defaults to `false`.
+        headless:
+          type: object
+          description: Configuration for headless mode.
+          properties:
+            active:
+              type: boolean
+              description: >-
+                Whether browser should be headless or headful. Defaults to
+                `false`.
+        viewport:
+          type: object
+          description: Configuration for the browser's viewport size.
+          properties:
+            width:
+              type: integer
+              description: Width of the viewport in pixels. Defaults to `1440`.
+            height:
+              type: integer
+              description: Height of the viewport in pixels. Defaults to `900`.
+        fullscreen:
+          type: object
+          description: Configuration for fullscreen mode.
+          properties:
+            active:
+              type: boolean
+              description: >-
+                Enable or disable fullscreen mode. When enabled, the browser
+                will start in fullscreen mode. Defaults to `false`.
+        pdf_viewer:
+          type: object
+          description: Configuration for PDF viewer mode.
+          properties:
+            active:
+              type: boolean
+              description: >-
+                Enable or disable PDF viewer mode. When disabled, the browser
+                will download PDFs instead of viewing them. Defaults to `true`.
+        p2p_download:
+          type: object
+          description: Configuration for peer-to-peer download capture functionality.
+          properties:
+            active:
+              type: boolean
+              description: >-
+                Enable or disable P2P downloads. When enabled, the browser will
+                capture downloads for direct data extraction, instead of
+                uploading them on Anchor's storage. Defaults to `false`.
+        extensions:
+          type: array
+          description: >-
+            Array of extension IDs to load in the browser session. Extensions
+            must be previously uploaded using the Extensions API.
+          items:
+            type: string
+            format: uuid
+        disable_web_security:
+          type: object
+          description: Configuration for disabling web security features.
+          properties:
+            active:
+              type: boolean
+              description: >-
+                Whether to disable web security features (CORS, same-origin
+                policy, etc.). Allows accessing iframes and resources from
+                different origins. Defaults to `false`.
+        extra_stealth:
+          type: object
+          description: >-
+            Enables our dedicated patched Chromium build, designed to avoid bot
+            detection and blocking. Works with Anchor Proxy enabled only.
+          properties:
+            active:
+              type: boolean
+              description: Enable or disable extra stealth mode.
+        force_popups_as_tabs:
+          type: object
+          description: >-
+            Configuration for forcing popups to open as tabs instead of popup
+            windows.
+          properties:
+            active:
+              type: boolean
+              description: Enable or disable forcing popups as tabs. Defaults to `false`.
+        web_bot_auth:
+          type: object
+          description: >-
+            Configuration for Cloudflare Web Bot Auth HTTP message signing.
+            Enables authentication with websites that require Cloudflare's web
+            bot authentication.
+          properties:
+            active:
+              type: boolean
+              description: Enable or disable web bot auth. Defaults to `false`.
+        tracing:
+          type: object
+          description: Configuration for browser tracing and debugging capabilities.
+          properties:
+            active:
+              type: boolean
+              description: Enable or disable tracing. Defaults to `true`.
+            snapshots:
+              type: boolean
+              description: >-
+                Enable or disable snapshot capture in traces. Defaults to
+                `false`.
+            sources:
+              type: boolean
+              description: >-
+                Enable or disable source code capture in traces. Defaults to
+                `true`.
+    Integration:
+      oneOf:
+        - $ref: '#/components/schemas/OnePasswordIntegration'
+      discriminator:
+        propertyName: type
     ProxyConfig:
       description: |
         Proxy Documentation available at [Proxy Documentation](/advanced/proxy)
@@ -181,6 +352,25 @@ components:
       oneOf:
         - $ref: '#/components/schemas/AnchorProxy'
         - $ref: '#/components/schemas/CustomProxy'
+    OnePasswordIntegration:
+      type: object
+      required:
+        - id
+        - type
+        - configuration
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: Unique integration ID
+          example: 550e8400-e29b-41d4-a716-446655440000
+        type:
+          type: string
+          enum:
+            - 1PASSWORD
+          description: Integration type
+        configuration:
+          $ref: '#/components/schemas/OnePasswordConfig'
     AnchorProxy:
       title: Anchor Proxy
       type: object
@@ -279,6 +469,160 @@ components:
         - username
         - password
         - active
+    OnePasswordConfig:
+      oneOf:
+        - $ref: '#/components/schemas/OnePasswordAllSecretsConfig'
+        - $ref: '#/components/schemas/OnePasswordSpecificSecretsConfig'
+    AnchorProxyCountryCode:
+      type: string
+      title: anchor_proxy
+      enum:
+        - af
+        - al
+        - dz
+        - ad
+        - ao
+        - as
+        - ag
+        - ar
+        - am
+        - aw
+        - au
+        - at
+        - az
+        - bs
+        - bh
+        - bb
+        - by
+        - be
+        - bz
+        - bj
+        - bm
+        - bo
+        - ba
+        - br
+        - bg
+        - bf
+        - cm
+        - ca
+        - cv
+        - td
+        - cl
+        - co
+        - cg
+        - cr
+        - ci
+        - hr
+        - cu
+        - cy
+        - cz
+        - dk
+        - dm
+        - do
+        - ec
+        - eg
+        - sv
+        - ee
+        - et
+        - fo
+        - fi
+        - fr
+        - gf
+        - pf
+        - ga
+        - gm
+        - ge
+        - de
+        - gh
+        - gi
+        - gr
+        - gd
+        - gp
+        - gt
+        - gg
+        - gn
+        - gw
+        - gy
+        - ht
+        - hn
+        - hu
+        - is
+        - in
+        - ir
+        - iq
+        - ie
+        - il
+        - it
+        - jm
+        - jp
+        - jo
+        - kz
+        - kw
+        - kg
+        - lv
+        - lb
+        - ly
+        - li
+        - lt
+        - lu
+        - mk
+        - ml
+        - mt
+        - mq
+        - mr
+        - mx
+        - md
+        - mc
+        - me
+        - ma
+        - nl
+        - nz
+        - ni
+        - ng
+        - 'no'
+        - pk
+        - pa
+        - py
+        - pe
+        - ph
+        - pl
+        - pt
+        - pr
+        - qa
+        - ro
+        - lc
+        - sm
+        - sa
+        - sn
+        - rs
+        - sc
+        - sl
+        - sk
+        - si
+        - so
+        - za
+        - kr
+        - es
+        - sr
+        - se
+        - ch
+        - sy
+        - st
+        - tw
+        - tj
+        - tg
+        - tt
+        - tn
+        - tr
+        - tc
+        - ua
+        - ae
+        - us
+        - uy
+        - uz
+        - ve
+        - ye
+      default: us
     ResidentialCountryCode:
       type: string
       title: anchor_residential
@@ -764,307 +1108,6 @@ components:
         - ve
         - ye
       default: us
-    AnchorProxyCountryCode:
-      type: string
-      title: anchor_proxy
-      enum:
-        - af
-        - al
-        - dz
-        - ad
-        - ao
-        - as
-        - ag
-        - ar
-        - am
-        - aw
-        - au
-        - at
-        - az
-        - bs
-        - bh
-        - bb
-        - by
-        - be
-        - bz
-        - bj
-        - bm
-        - bo
-        - ba
-        - br
-        - bg
-        - bf
-        - cm
-        - ca
-        - cv
-        - td
-        - cl
-        - co
-        - cg
-        - cr
-        - ci
-        - hr
-        - cu
-        - cy
-        - cz
-        - dk
-        - dm
-        - do
-        - ec
-        - eg
-        - sv
-        - ee
-        - et
-        - fo
-        - fi
-        - fr
-        - gf
-        - pf
-        - ga
-        - gm
-        - ge
-        - de
-        - gh
-        - gi
-        - gr
-        - gd
-        - gp
-        - gt
-        - gg
-        - gn
-        - gw
-        - gy
-        - ht
-        - hn
-        - hu
-        - is
-        - in
-        - ir
-        - iq
-        - ie
-        - il
-        - it
-        - jm
-        - jp
-        - jo
-        - kz
-        - kw
-        - kg
-        - lv
-        - lb
-        - ly
-        - li
-        - lt
-        - lu
-        - mk
-        - ml
-        - mt
-        - mq
-        - mr
-        - mx
-        - md
-        - mc
-        - me
-        - ma
-        - nl
-        - nz
-        - ni
-        - ng
-        - 'no'
-        - pk
-        - pa
-        - py
-        - pe
-        - ph
-        - pl
-        - pt
-        - pr
-        - qa
-        - ro
-        - lc
-        - sm
-        - sa
-        - sn
-        - rs
-        - sc
-        - sl
-        - sk
-        - si
-        - so
-        - za
-        - kr
-        - es
-        - sr
-        - se
-        - ch
-        - sy
-        - st
-        - tw
-        - tj
-        - tg
-        - tt
-        - tn
-        - tr
-        - tc
-        - ua
-        - ae
-        - us
-        - uy
-        - uz
-        - ve
-        - ye
-      default: us
-    SessionConfig:
-      type: object
-      description: Session-related configurations.
-      properties:
-        initial_url:
-          type: string
-          format: uri
-          description: >-
-            The URL to navigate to when the browser session starts. If not
-            provided, the browser will load an empty page.
-        recording:
-          type: object
-          description: Configuration for session recording.
-          properties:
-            active:
-              type: boolean
-              description: >-
-                Enable or disable video recording of the browser session.
-                Defaults to `true`.
-        proxy:
-          $ref: '#/components/schemas/ProxyConfig'
-        timeout:
-          type: object
-          description: Timeout configurations for the browser session.
-          properties:
-            max_duration:
-              type: integer
-              description: >-
-                Maximum amount of time (in minutes) for the browser to run
-                before terminating. Defaults to `20`.
-            idle_timeout:
-              type: integer
-              description: >-
-                The amount of time (in minutes) the browser session waits for
-                new connections after all others are closed before stopping.
-                Defaults to `5`.
-        live_view:
-          type: object
-          description: Configuration for live viewing the browser session.
-          properties:
-            read_only:
-              type: boolean
-              description: >-
-                Enable or disable read-only mode for live viewing. Defaults to
-                `false`.
-    BrowserConfig:
-      type: object
-      description: Browser-specific configurations.
-      properties:
-        profile:
-          type: object
-          description: Options for managing and persisting browser session profiles.
-          properties:
-            name:
-              type: string
-              description: The name of the profile to be used during the browser session.
-            persist:
-              type: boolean
-              description: >-
-                Indicates whether the browser session profile data should be
-                saved when the browser session ends. Defaults to `false`.
-        adblock:
-          type: object
-          description: Configuration for ad-blocking.
-          properties:
-            active:
-              type: boolean
-              description: Enable or disable ad-blocking. Defaults to `true`.
-        popup_blocker:
-          type: object
-          description: Configuration for popup blocking.
-          properties:
-            active:
-              type: boolean
-              description: >-
-                Blocks popups, including ads and CAPTCHA consent banners.
-                Requires adblock to be active. Defaults to `true`.
-        captcha_solver:
-          type: object
-          description: Configuration for captcha-solving.
-          properties:
-            active:
-              type: boolean
-              description: >-
-                Enable or disable captcha-solving. Requires proxy to be active.
-                Defaults to `false`.
-        headless:
-          type: object
-          description: Configuration for headless mode.
-          properties:
-            active:
-              type: boolean
-              description: >-
-                Whether browser should be headless or headful. Defaults to
-                `false`.
-        viewport:
-          type: object
-          description: Configuration for the browser's viewport size.
-          properties:
-            width:
-              type: integer
-              description: Width of the viewport in pixels. Defaults to `1440`.
-            height:
-              type: integer
-              description: Height of the viewport in pixels. Defaults to `900`.
-        fullscreen:
-          type: object
-          description: Configuration for fullscreen mode.
-          properties:
-            active:
-              type: boolean
-              description: >-
-                Enable or disable fullscreen mode. When enabled, the browser
-                will start in fullscreen mode. Defaults to `false`.
-        p2p_download:
-          type: object
-          description: Configuration for peer-to-peer download capture functionality.
-          properties:
-            active:
-              type: boolean
-              description: >-
-                Enable or disable P2P downloads. When enabled, the browser will
-                capture downloads for direct data extraction, instead of
-                uploading them on Anchor's storage. Defaults to `false`.
-        extensions:
-          type: array
-          description: >-
-            Array of extension IDs to load in the browser session. Extensions
-            must be previously uploaded using the Extensions API.
-          items:
-            type: string
-            format: uuid
-        disable_web_security:
-          type: object
-          description: Configuration for disabling web security features.
-          properties:
-            active:
-              type: boolean
-              description: >-
-                Whether to disable web security features (CORS, same-origin
-                policy, etc.). Allows accessing iframes and resources from
-                different origins. Defaults to `false`.
-        extra_stealth:
-          type: object
-          description: >-
-            Configuration for extra stealth mode to enhance browser
-            fingerprinting protection.
-          properties:
-            active:
-              type: boolean
-              description: Enable or disable extra stealth mode.
     OnePasswordAllSecretsConfig:
       type: object
       required:
@@ -1094,33 +1137,11 @@ components:
           description: Array of secret references to load
           example:
             - op://vault/item/field
-    OnePasswordConfig:
-      oneOf:
-        - $ref: '#/components/schemas/OnePasswordAllSecretsConfig'
-        - $ref: '#/components/schemas/OnePasswordSpecificSecretsConfig'
-    OnePasswordIntegration:
-      type: object
-      required:
-        - id
-        - type
-        - configuration
-      properties:
-        id:
-          type: string
-          format: uuid
-          description: Unique integration ID
-          example: 550e8400-e29b-41d4-a716-446655440000
-        type:
-          type: string
-          enum:
-            - 1PASSWORD
-          description: Integration type
-        configuration:
-          $ref: '#/components/schemas/OnePasswordConfig'
-    Integration:
-      oneOf:
-        - $ref: '#/components/schemas/OnePasswordIntegration'
-      discriminator:
-        propertyName: type
+  securitySchemes:
+    api_key_header:
+      type: apiKey
+      in: header
+      name: anchor-api-key
+      description: API key passed in the header
 
 ````

@@ -2,17 +2,9 @@
 
 # Source: https://bun.com/docs/guides/runtime/shell.md
 
-# Source: https://bun.com/docs/runtime/shell.md
-
-# Source: https://bun.com/docs/guides/runtime/shell.md
-
-# Source: https://bun.com/docs/runtime/shell.md
-
-# Source: https://bun.com/docs/guides/runtime/shell.md
-
-# Source: https://bun.com/docs/runtime/shell.md
-
-# Source: https://bun.com/docs/guides/runtime/shell.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Run a Shell Command
 
@@ -51,4 +43,4 @@ for await (const line of $`ls -l`.lines()) {
 
 ***
 
-See [Docs > API > Shell](https://bun.com/docs/runtime/shell) for complete documentation.
+See [Docs > API > Shell](/runtime/shell) for complete documentation.

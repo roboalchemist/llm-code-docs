@@ -8,7 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > Account Management > Account Management Guides > Migrating to Hourly
   and Monthly Usage Attribution APIs
-source_url: https://docs.datadoghq.com/guide/usage-attribution-migration/index.html
 ---
 
 # Migrating to Hourly and Monthly Usage Attribution APIs

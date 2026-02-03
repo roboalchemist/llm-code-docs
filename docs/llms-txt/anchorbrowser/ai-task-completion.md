@@ -1,5 +1,9 @@
 # Source: https://docs.anchorbrowser.io/agentic-browser-control/ai-task-completion.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AI Task Completion
 
 Anchor Browser delivers a state-of-the-art 89% Score on the industry-standard benchmark WebVoyager, leveraging browser-use as a core component of the automation capability.
@@ -10,9 +14,9 @@ Anchor Browser delivers a state-of-the-art 89% Score on the industry-standard be
 
 Anchor Browser provides within its SDK the `agent.task` method that enables natural language control over web browsing sessions. This capability allows you to **automate complex web tasks without coding the whole flow.**
 
-<Info>
+<Note>
   Looking for Tasks? Visit the [Tasks Page](/advanced/tasks).
-</Info>
+</Note>
 
 ### Code Example
 
@@ -20,32 +24,30 @@ Anchor Browser provides within its SDK the `agent.task` method that enables natu
   ```javascript node.js theme={null}
   import Anchorbrowser from 'anchorbrowser';
 
-  (async () => {
-    const anchorClient = new Anchorbrowser({
-      apiKey: process.env.ANCHORBROWSER_API_KEY
-    });
+  const anchorClient = new Anchorbrowser({
+    apiKey: process.env.ANCHORBROWSER_API_KEY
+  });
 
-    const response = await anchorClient.agent.task(
-      'Extract the main heading',                     // Required
-      {
-        taskOptions: {
-          url: 'https://example.com',                 // Either sessionId or url is required
-          humanIntervention: true,                    // Allow human intervention during task execution
-          detectElements: true,                       // Improves the agent's ability to identify and interact with UI elements
-          maxSteps: 40,                               // Maximum number of steps the agent can take
-          agent: 'browser-use',                       // browser-use (default), openai-cua, or gemini-computer-use
-          provider: 'groq',                           // For browser-use agent only, openai, gemini, groq, azure, xai
-          model: 'openai/gpt-oss-120b',               // For browser-use agent only, see model list below
-          extendedSystemMessage: 'Focus on extracting the main heading from the page',
-          secretValues: {                             // Secret values to pass to the agent for secure credential handling
-            API_KEY: 'your-secret-key'
-          }
+  const response = await anchorClient.agent.task(
+    'Extract the main heading',                     // Required
+    {
+      taskOptions: {
+        url: 'https://example.com',                 // Either sessionId or url is required
+        humanIntervention: false,                   // Disable human intervention during task execution (disabled by default)
+        detectElements: true,                       // Improves the agent's ability to identify and interact with UI elements
+        maxSteps: 40,                               // Maximum number of steps the agent can take
+        agent: 'browser-use',                       // browser-use (default), openai-cua, or gemini-computer-use
+        provider: 'openai',                         // For browser-use agent only, openai, gemini, groq, azure, xai
+        model: 'gpt-5',                             // For browser-use agent only, see model list below
+        extendedSystemMessage: 'Focus on extracting the main heading from the page',
+        secretValues: {                             // Secret values to pass to the agent for secure credential handling
+          API_KEY: 'your-secret-key'
         }
       }
-    );
+    }
+  );
 
-    console.log(response);
-  })();
+  console.log(response);
   ```
 
   ```python python theme={null}
@@ -58,12 +60,12 @@ Anchor Browser provides within its SDK the `agent.task` method that enables natu
       'Extract the main heading',                    # Required
       task_options={
           url='https://example.com',                 # Either session_id or url is required
-          human_intervention=True,                   # Allow human intervention during task execution
+          human_intervention=False,                  # Disable human intervention during task execution (disabled by default)
           detect_elements=True,                      # Improves the agent's ability to identify and interact with UI elements
           max_steps=40,                              # Maximum number of steps the agent can take
           agent='browser-use',                       # browser-use (default), openai-cua, or gemini-computer-use
-          provider='groq',                           # For browser-use agent only, openai, gemini, groq, azure, xai
-          model='openai/gpt-oss-120b',               # For browser-use agent only, see model list below
+          provider='openai',                           # For browser-use agent only, openai, gemini, groq, azure, xai
+          model='gpt-5',               # For browser-use agent only, see model list below
           extended_system_message='Focus on extracting the main heading from the page',
           secret_values={                            # Secret values to pass to the agent for secure credential handling
               'API_KEY': 'your-secret-key'
@@ -82,38 +84,30 @@ The following demonstrates using **Zod** and **Pydantic** to utilize the structu
 
 <CodeGroup>
   ```javascript node.js theme={null}
-  // Create a browser session and get references
-  const browser = await anchorClient.browser.create();
-  const context = browser.contexts()[0];
-  const page = context.pages()[0];
-  const ai = context.serviceWorkers()[0]; // Get the AI service worker
+  import { z } from 'zod';
+  import { zodToJsonSchema } from 'zod-to-json-schema';
+
+  const anchorClient = new Anchorbrowser()
 
   // Define the expected output structure using Zod schema
   const outputSchema = z.object({
     nodes_cpu_usage: z.array(
       z.object({
-        node: z.string(),           // Node name
-        cluster: z.string(),        // Cluster identifier
-        cpu_avg_percentage: z.number(), // CPU usage percentage
+        node: z.string(),                 // Node name
+        cluster: z.string(),              // Cluster identifier
+        cpu_avg_percentage: z.number(),   // CPU usage percentage
       })
     )
   });
 
-  // Create task payload with structured output schema
-  const taskPayload = {
-    output_schema: z.toJSONSchema(outputSchema);,      // Define expected output structure
-    prompt: 'Collect the node names and their CPU average %',
-  };
-
-  // Navigate to the target page
-  await page.goto("https://play.grafana.org/a/grafana-k8s-app/navigation/nodes?from=now-1h&to=now&refresh=1m");
-
   // Execute the AI task with structured output
-  const result = await ai.evaluate(JSON.stringify(taskPayload));
+  const result = await anchorClient.agent.task('Collect the node names and their CPU average %', {
+    taskOptions: {
+      outputSchema: zodToJsonSchema(outputSchema), // Convert to JSON Schema
+      url: 'https://play.grafana.org/a/grafana-k8s-app/navigation/nodes?from=now-1h&to=now&refresh=1m',
+    }
+  });
   console.info(result);
-
-  // Clean up browser resources
-  await browser.close();
   ```
 
   ```python python theme={null}
@@ -126,107 +120,42 @@ The following demonstrates using **Zod** and **Pydantic** to utilize the structu
   class OutputSchema(BaseModel):
       nodes_cpu_usage: List[NodeCpuUsage]  # List of node CPU usage data
 
-  with sync_playwright() as p:
-      # Connect to the browser session
-      browser = p.chromium.connect_over_cdp(cdp_url)
-      context = browser.contexts[0]
-      
-      # Find the AI service worker
-      ai = next((sw for sw in context.service_workers if sw.url.startswith("chrome-extension://bppehibnhionalpjigdjdilknbljaeai")), None)
-      page = context.pages[0]
+  # Create task payload with structured output schema
+  task_payload = {
+      'prompt': 'Collect the node names and their CPU average %',
+      'output_schema': OutputSchema.model_json_schema()  # Convert to JSON Schema
+  }
 
-      # Create task payload with structured output schema
-      task_payload = {
-          'prompt': 'Collect the node names and their CPU average %',
-          'output_schema': OutputSchema.model_json_schema()  # Convert Pydantic model to JSON Schema
+  result = anchor_client.agent.task('Collect the node names and their CPU average %',
+      task_options={
+          'output_schema': OutputSchema.model_json_schema(),
+          'url': 'https://play.grafana.org/a/grafana-k8s-app/navigation/nodes?from=now-1h&to=now&refresh=1m',
       }
-
-      # Navigate to the target page
-      page.goto("https://play.grafana.org/a/grafana-k8s-app/navigation/nodes?from=now-1h&to=now&refresh=1m")
-      
-      # Execute the AI task with structured output
-      result = ai.evaluate(json.dumps(task_payload))
-      print(result)
-      
-      # Clean up browser resources
-      browser.close()
+  )
+  print(result)
   ```
 </CodeGroup>
-
-<Expandable title="The Browser AI Object">
-  ## The Browser AI Object
-
-  Anchor Browser comes with an embedded AI component, that allows to control the browser or extract data using natural language. This capability allows to **use the browser without any coding.**
-
-  ### Code Example
-
-  <CodeGroup>
-    ```javascript node.js theme={null}
-    import Anchorbrowser from "anchorbrowser";
-
-    (async () => {
-      const anchor_client = new Anchorbrowser({apiKey: process.env.ANCHORBROWSER_API_KEY});
-      
-      // Create a browser session
-      const browser = await anchor_client.browser.create();
-      const page = browser.contexts()[0].pages()[0];
-      
-      // Get the AI service worker
-      const ai = context.serviceWorkers().find(sw => 
-        sw.url().includes('chrome-extension://bppehibnhionalpjigdjdilknbljaeai/background.js')
-      );
-
-      await page.goto("http://docs.anchorbrowser.io/", {waitUntil:'domcontentloaded'});
-
-      // Use the embedded 'ai' object
-      const result = await ai.evaluate('Find the last game played by Milwaukee in the NBA and return the result');
-
-      await browser.close();
-      console.log(result);
-    })();
-    ```
-
-    ```python python theme={null}
-    from anchorbrowser import Anchorbrowser
-
-    anchor_client = Anchorbrowser(api_key='your-api-key')
-
-    # Create a browser session
-    browser = await anchor_client.browser.create()
-    page = browser.contexts()[0].pages()[0]
-
-    # Get the AI service worker
-    context = browser.contexts()[0]
-    ai = next((sw for sw in context.service_workers if sw.url.startswith("chrome-extension://bppehibnhionalpjigdjdilknbljaeai")), None)
-
-    await page.goto("http://docs.anchorbrowser.io/", wait_until='domcontentloaded')
-
-    # Use the embedded 'ai' object
-    result = await ai.evaluate('Find the last game played by Milwaukee in the NBA and return the result')
-
-    await browser.close()
-    print(result)
-
-    ```
-  </CodeGroup>
-</Expandable>
 
 <Expandable title="Configuration Options">
   ## Configuration Options
 
   The AI agent can be configured with the following parameters:
 
+  <Note>
+    Parameter names use `snake_case` in Python and `camelCase` in JavaScript/TypeScript (e.g., `max_steps` vs `maxSteps`).
+  </Note>
+
   * **agent** (string): AI agent to use (`browser-use`, `openai-cua`, `gemini-computer-use`). Defaults to `browser-use`.
-  * **secret\_values** (object): Secret values to pass to the agent for secure credential handling.
-  * **human\_intervention** (boolean): Allow human intervention during task execution.
+  * **secret\_values** | **secretValues** (object): Secret values to pass to the agent for secure credential handling.
+  * **human\_intervention** | **humanIntervention** (boolean): Allow human intervention during task execution.
   * **provider** (string): AI provider to use (`openai`, `gemini`, `groq`, `azure`, `xai`).
   * **model** (string): Specific model to use (see [Available Models](#available-models) below).
   * **url** (string): Target URL to navigate to before executing the task.
-  * **output\_schema** (object): JSON Schema defining the expected structure of the output data.
-  * **max\_steps** (integer): Maximum number of steps the agent can take (default: 40).
-  * **detect\_elements** (boolean): Enable element detection for better interaction accuracy.
-  * **extended\_system\_message** (string): Custom system message to provide additional context or instructions to the agent.
-  * **use\_vision** (boolean): Enable vision capabilities for enhanced visual understanding.
+  * **output\_schema** | **outputSchema** (object): JSON Schema defining the expected structure of the output data.
+  * **max\_steps** | **maxSteps** (integer): Maximum number of steps the agent can take (default: 40).
+  * **detect\_elements** | **detectElements** (boolean): Enable element detection for better interaction accuracy.
+  * **extended\_system\_message** | **extendedSystemMessage** (string): Custom system message to provide additional context or instructions to the agent.
+  * **use\_vision** | **useVision** (boolean): Enable vision capabilities for enhanced visual understanding.
 </Expandable>
 
 ## Secret Values
@@ -240,6 +169,7 @@ The following demonstrates using **Zod** and **Pydantic** to utilize the structu
   <Tabs>
     <Tab title="OpenAI">
       <div className="grid grid-cols-3 gap-2">
+        <div>gpt-5.2</div>
         <div>gpt-5</div>
         <div>gpt-5-mini</div>
         <div>gpt-5-nano</div>
@@ -252,10 +182,14 @@ The following demonstrates using **Zod** and **Pydantic** to utilize the structu
 
     <Tab title="Gemini">
       <div className="grid grid-cols-3 gap-2">
+        <div>gemini-3-flash-preview</div>
+        <div>gemini-3-pro-preview</div>
         <div>gemini-2.5-flash</div>
+        <div>gemini-2.5-flash-lite</div>
+        <div>gemini-2.5-pro</div>
         <div>gemini-2.0-flash</div>
         <div>gemini-2.0-flash-exp</div>
-        <div>gemini-2.0-flash-lite-preview-02-05</div>
+        <div>gemini-2.0-flash-lite</div>
       </div>
     </Tab>
 

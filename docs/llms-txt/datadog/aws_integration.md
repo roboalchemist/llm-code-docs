@@ -6,7 +6,6 @@ description: >-
   Use Datadog's built-in AWS Integration to run Workflows read Actions without
   additional configuration in AWS.
 breadcrumbs: Docs > Connections > Use the AWS Integration in Actions
-source_url: https://docs.datadoghq.com/connections/aws_integration/index.html
 ---
 
 # Use the AWS Integration in Actions
@@ -49,7 +48,7 @@ To successfully execute actions with this integration:
 
 - The **AWS Integration IAM Role** configured for Role Delegation must have the permissions required for the operations desired (such as `ecs:ListClusters`).
 - The selected action must be read-only. Write or mutating actions (such as `Put*`, `Delete*`, and `Update*`) are not supported and fail when running.
-- The user, user's team, or user's org **must** have been given explicit 'Executor' permission on the AWS Integration in Datadog (more details [below](https://docs.datadoghq.com/add-aws-int-docs/actions/connections/aws_integration/#configuration)).
+- The user, user's team, or user's org **must** have been given explicit 'Executor' permission on the AWS Integration in Datadog (more details below).
 
 {% alert level="info" %}
 Executing actions using the Datadog AWS Integration is only available for users that have set up the Datadog AWS Integration through role delegation. Additionally, while operations under the ViewOnlyAccess permissions are allowed, the IAM Role associated with the Datadog AWS Integration may not have the permissions needed. Make sure that the role has the correct permissions if you encounter issues.

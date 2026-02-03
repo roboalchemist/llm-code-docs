@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/send-with-elixir.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send emails with Elixir
 
 > Learn how to send your first email using the Resend Elixir SDK.
@@ -23,7 +27,7 @@ To get the most out of this guide, you'll need to:
 Install by adding `resend` to your list of dependencies in `mix.exs`:
 
 <CodeGroup>
-  ```elixir mix.exs theme={null}
+  ```elixir mix.exs theme={"theme":{"light":"github-light","dark":"vesper"}}
   def deps do
     [
       {:resend, "~> 0.4.0"}
@@ -36,7 +40,7 @@ Install by adding `resend` to your list of dependencies in `mix.exs`:
 
 The easiest way to send an email is by using the `html` parameter.
 
-```elixir send.exs theme={null}
+```elixir send.exs theme={"theme":{"light":"github-light","dark":"vesper"}}
 client = Resend.client(api_key: System.get_env("RESEND_API_KEY"))
 
 Resend.Emails.send(client, %{

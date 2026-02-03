@@ -6,15 +6,15 @@
 
 Archived course
 
-This is an archive of our old course. Check out our new https://docs.apify.com/academy/scraping-basics-javascript.md course instead! We plan to completely retire this old course in a few months.
+This is an archive of our old course. Check out our new [Web scraping basics for JavaScript devs](https://docs.apify.com/academy/scraping-basics-javascript.md) course instead! We plan to completely retire this old course in a few months.
 
 ***
 
-Welcome to **Web scraping basics for JavaScript devs**, a comprehensive, practical and long form web scraping course that will take you from an absolute beginner to a successful web scraper developer. If you're looking for a quick start, we recommend trying https://blog.apify.com/web-scraping-javascript-nodejs/ instead.
+Welcome to **Web scraping basics for JavaScript devs**, a comprehensive, practical and long form web scraping course that will take you from an absolute beginner to a successful web scraper developer. If you're looking for a quick start, we recommend trying [this tutorial](https://blog.apify.com/web-scraping-javascript-nodejs/) instead.
 
-This course is made by https://apify.com, the web scraping and automation platform, but we will use only open-source technologies throughout all academy lessons. This means that the skills you learn will be applicable to any scraping project, and you'll be able to run your scrapers on any computer. No Apify account needed.
+This course is made by [Apify](https://apify.com), the web scraping and automation platform, but we will use only open-source technologies throughout all academy lessons. This means that the skills you learn will be applicable to any scraping project, and you'll be able to run your scrapers on any computer. No Apify account needed.
 
-If you would like to learn about the Apify platform and how it can help you build, run and scale your web scraping and automation projects, see the https://docs.apify.com/academy/apify-platform.md, where we'll teach you all about Apify serverless infrastructure, proxies, API, scheduling, webhooks and much more.
+If you would like to learn about the Apify platform and how it can help you build, run and scale your web scraping and automation projects, see the [Apify platform course](https://docs.apify.com/academy/apify-platform.md), where we'll teach you all about Apify serverless infrastructure, proxies, API, scheduling, webhooks and much more.
 
 ## Why learn scraper development
 
@@ -30,17 +30,17 @@ When we set out to create the Academy, we wanted to build a complete guide to we
 
 This is what you'll learn in the **Web scraping basics for JavaScript devs** course:
 
-* https://docs.apify.com/academy/scraping-basics-javascript/legacy.md
+* [Web scraping basics for JavaScript devs](https://docs.apify.com/academy/scraping-basics-javascript/legacy.md)
 
-  * https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction.md
-  * https://docs.apify.com/academy/scraping-basics-javascript/legacy/crawling.md
-  * https://docs.apify.com/academy/scraping-basics-javascript/legacy/best-practices.md
+  * [Basics of data extraction](https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction.md)
+  * [Basics of crawling](https://docs.apify.com/academy/scraping-basics-javascript/legacy/crawling.md)
+  * [Best practices](https://docs.apify.com/academy/scraping-basics-javascript/legacy/best-practices.md)
 
 ## Requirements
 
 You don't need to be a developer or a software engineer to complete this course, but basic programming knowledge is recommended. Don't be afraid, though. We explain everything in great detail in the course and provide external references that can help you level up your web scraping and web development skills. If you're new to programming, pay very close attention to the instructions and examples. A seemingly insignificant thing like using `[]` instead of `()` can make a lot of difference.
 
-> If you don't already have basic programming knowledge and would like to be well-prepared for this course, we recommend learning about https://developer.mozilla.org/en-US/curriculum/core/javascript-fundamentals/ and https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors.
+> If you don't already have basic programming knowledge and would like to be well-prepared for this course, we recommend learning about [JavaScript basics](https://developer.mozilla.org/en-US/curriculum/core/javascript-fundamentals/) and [CSS Selectors](https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors).
 
 As you progress to the more advanced courses, the coding will get more challenging, but will still be manageable to a person with an intermediate level of programming skills.
 
@@ -50,24 +50,24 @@ Ideally, you should have at least a moderate understanding of the following conc
 
 It is recommended to understand at least the fundamentals of JavaScript and be proficient with Node.js prior to starting this course. If you are not yet comfortable with asynchronous programming (with promises and `async...await`), loops (and the different types of loops in JavaScript), modularity, or working with external packages, we would recommend studying the following resources before coming back and continuing this section:
 
-* https://www.youtube.com/watch?v=vn3tm0quoqE&ab_channel=Fireship
-* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration
-* https://javascript.plainenglish.io/how-to-use-modular-patterns-in-nodejs-982f0e5c8f6e
+* [async...await (YouTube)](https://www.youtube.com/watch?v=vn3tm0quoqE&ab_channel=Fireship)
+* [JavaScript loops (MDN)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration)
+* [Modularity in Node.js](https://javascript.plainenglish.io/how-to-use-modular-patterns-in-nodejs-982f0e5c8f6e)
 
 ### General web development
 
 Throughout the next lessons, we will sometimes use certain technologies and terms related to the web without explaining them. This is because their knowledge will be **assumed** (unless we're showing something out of the ordinary).
 
-* https://developer.mozilla.org/en-US/docs/Web/HTML
-* https://developer.mozilla.org/en-US/docs/Web/HTTP
-* https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction/browser-devtools.md
+* [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+* [HTTP protocol](https://developer.mozilla.org/en-US/docs/Web/HTTP)
+* [DevTools](https://docs.apify.com/academy/scraping-basics-javascript/legacy/data-extraction/browser-devtools.md)
 
 ### jQuery or Cheerio
 
-We'll be using the https://www.npmjs.com/package/cheerio package a lot to parse data from HTML. This package provides an API using jQuery syntax to help traverse downloaded HTML within Node.js.
+We'll be using the [Cheerio](https://www.npmjs.com/package/cheerio) package a lot to parse data from HTML. This package provides an API using jQuery syntax to help traverse downloaded HTML within Node.js.
 
 ## Next up
 
-The course begins with a small bit of theory and moves into some realistic and practical examples of extracting data from the most popular websites on the internet using your browser console. https://docs.apify.com/academy/scraping-basics-javascript/legacy/introduction.md
+The course begins with a small bit of theory and moves into some realistic and practical examples of extracting data from the most popular websites on the internet using your browser console. [Let's get to it!](https://docs.apify.com/academy/scraping-basics-javascript/legacy/introduction.md)
 
-> If you already have experience with HTML, CSS, and browser DevTools, feel free to skip to the https://docs.apify.com/academy/scraping-basics-javascript/legacy/crawling.md section.
+> If you already have experience with HTML, CSS, and browser DevTools, feel free to skip to the [Basics of crawling](https://docs.apify.com/academy/scraping-basics-javascript/legacy/crawling.md) section.

@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/tutorials/rate-limiting.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AWS Lambda Rate Limiting with Serverless Redis
 
 In this tutorial, we will deploy a AWS Lambda function ratelimited based on the client's IP address using `@upstash/ratelimit` and Serverless Framework.

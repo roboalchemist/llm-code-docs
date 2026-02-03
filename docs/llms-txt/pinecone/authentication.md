@@ -4,23 +4,9 @@
 
 # Source: https://docs.pinecone.io/reference/api/assistant/authentication.md
 
-# Source: https://docs.pinecone.io/reference/cli/authentication.md
-
-# Source: https://docs.pinecone.io/reference/api/authentication.md
-
-# Source: https://docs.pinecone.io/reference/api/assistant/authentication.md
-
-# Source: https://docs.pinecone.io/reference/cli/authentication.md
-
-# Source: https://docs.pinecone.io/reference/api/authentication.md
-
-# Source: https://docs.pinecone.io/reference/api/assistant/authentication.md
-
-# Source: https://docs.pinecone.io/reference/cli/authentication.md
-
-# Source: https://docs.pinecone.io/reference/api/authentication.md
-
-# Source: https://docs.pinecone.io/reference/api/assistant/authentication.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinecone.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Authentication
 
@@ -91,7 +77,7 @@ PINECONE_API_KEY="YOUR_API_KEY"
 curl "https://api.pinecone.io/assistant/assistants" \
   -H "Api-Key: $PINECONE_API_KEY" \
   -H "Content-Type: application/json" \
-  -H "X-Pinecone-API-Version: 2025-01" \
+  -H "X-Pinecone-Api-Version: 2025-01" \
   -d '{
   "name": "example-assistant",
   "instructions": "Use American English for spelling and grammar.",

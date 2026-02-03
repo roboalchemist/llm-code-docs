@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/server/services/transport/websocket-server.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # WebSocket Transports
 
 > WebSocket transport implementations for real-time client-server communication
@@ -75,8 +79,3 @@ See the [complete examples](https://github.com/pipecat-ai/pipecat-examples/tree/
 * Client-side WebSocket integration
 * Audio streaming and frame handling
 * Connection management and error recovery
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

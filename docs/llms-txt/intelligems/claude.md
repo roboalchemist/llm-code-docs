@@ -10,72 +10,16 @@ The Intelligems MCP can be integrated with both Claude Desktop and Claude Code. 
 
 ## **Claude Desktop**
 
-{% hint style="danger" %}
-Due to a Claude Desktop bug, MCP setup via the `Connectors` page is not currently supported.  Please follow steps below.
-{% endhint %}
+### **Install**
 
-### **Quick Install**
+1. Open the [Claude Desktop](https://docs.intelligems.io/developer-resources/mcp-server/claude#claude-desktop) app.
+2. Click your profile name in the sidebar and select Settings.
+3. Go to the Connectors tab.
+4. Select "Add custom connector"
+5. Title it "Intelligems" and add a URL of [`https://ai.intelligems.io/mcp`](https://ai.intelligems.io/mcp).Then press Add
 
-#### **macOS / Linux**
+<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FogGn1wX0SbQNreF8kW4I%2Fimage.png?alt=media&#x26;token=278c595d-4a9c-444f-88d5-17acf3fa8af2" alt=""><figcaption></figcaption></figure>
 
-Open Terminal and run:
-
-```bash
-curl -fsSL https://static.intelligems.io/mcp/claude-desktop/install.sh | bash
-```
-
-#### **Windows**
-
-Open PowerShell and run:
-
-```powershell
-irm https://static.intelligems.io/mcp/claude-desktop/install.ps1 | iex
-```
-
-After installation, restart Claude Desktop to activate the Intelligems MCP server.
-
-{% hint style="warning" %}
-**Getting "Server disconnected" error?**
-
-This usually means Node.js/npx is not found. See the Node.js [troubleshooting guide](https://docs.intelligems.io/developer-resources/mcp-server/troubleshooting) for solutions.
-{% endhint %}
-
-### **Manual Install**
-
-Claude Desktop supports remote MCP servers with OAuth authentication. Add the Intelligems MCP Server via the UI:
-
-1. Open Claude in the desktop app
-2. Click your profile name in the sidebar and select Settings
-3. Click Developer
-4. Choose "Edit Config"
-
-<figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2F8xE6JgAMRPDWDnN249yC%2FCleanShot%202025-12-01%20at%2016.21.08.png?alt=media&#x26;token=e2c27415-c8b1-4a0f-af96-2c7cbce4dd8f" alt=""><figcaption></figcaption></figure>
-
-3. Edit your Claude Desktop configuration file:
-
-* macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
-* Windows: `%APPDATA%\Claude\claude_desktop_config.json`
-
-4. Add the following MCP server entry:
-
-```json
-{
-  "mcpServers": {
-    "intelligems":
-        {
-            "command": "npx",
-            "args":
-            [
-                "-y",
-                "mcp-remote",
-                "https://ai.intelligems.io/mcp"
-            ]
-        }
-  }
-}
-```
-
-5. Save and restart Claude Desktop
 6. When starting a new chat, confirm that Intelligems is toggled on in the options menu, pictured below
 
 <figure><img src="https://2052204893-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2F2SvefuMLsJyJPAcVXeWc%2Fuploads%2FAahsgcmuga8zFL7TkNcL%2FScreenshot%202025-12-04%20at%2010.06.44%E2%80%AFAM.png?alt=media&#x26;token=7cdada8b-3f48-459f-b443-bb50ccdc7e0b" alt=""><figcaption></figcaption></figure>

@@ -6,7 +6,7 @@
 
 ***
 
-In https://crawlee.dev, you can use https://crawlee.dev/api/browser-pool/interface/FingerprintOptions on a crawler to automatically generate fingerprints.
+In [Crawlee](https://crawlee.dev), you can use [FingerprintOptions](https://crawlee.dev/api/browser-pool/interface/FingerprintOptions) on a crawler to automatically generate fingerprints.
 
 
 ```
@@ -30,7 +30,7 @@ const crawler = new PlaywrightCrawler({
 
 ## Using the fingerprint-generator package
 
-Crawlee uses the https://github.com/apify/fingerprint-suite npm package to do its fingerprint generating magic. For maximum control outside of Crawlee, you can install it on its own. With this package, you can generate browser fingerprints.
+Crawlee uses the [Fingerprint generator](https://github.com/apify/fingerprint-suite) npm package to do its fingerprint generating magic. For maximum control outside of Crawlee, you can install it on its own. With this package, you can generate browser fingerprints.
 
 > It is crucial to generate fingerprints for the specific browser and operating system being used to trick the protections successfully. For example, if you are trying to overcome protection locally with Firefox on a macOS system, you should generate fingerprints for Firefox and macOS to achieve the best results.
 
@@ -61,7 +61,7 @@ const generated = fingerprintGenerator.getFingerprint({
 
 ## Injecting fingerprints
 
-Once you've manually generated a fingerprint using the **Fingerprint generator** package, it can be injected into the browser using https://github.com/apify/fingerprint-injector. This tool allows you to inject fingerprints into browsers automated by Playwright or Puppeteer:
+Once you've manually generated a fingerprint using the **Fingerprint generator** package, it can be injected into the browser using [fingerprint-injector](https://github.com/apify/fingerprint-injector). This tool allows you to inject fingerprints into browsers automated by Playwright or Puppeteer:
 
 
 ```
@@ -111,11 +111,11 @@ await page.goto('https://google.com');
 ```
 
 
-> Note that https://crawlee.dev automatically applies wide variety of fingerprints by default, so it is not required to do this unless you aren't using Crawlee or if you need a super specific custom fingerprint to scrape with.
+> Note that [Crawlee](https://crawlee.dev) automatically applies wide variety of fingerprints by default, so it is not required to do this unless you aren't using Crawlee or if you need a super specific custom fingerprint to scrape with.
 
 ## Generating headers
 
-Headers are also used by websites to fingerprint users (or bots), so it might sometimes be necessary to generate some user-like headers to mitigate anti-scraping protections. Similarly with fingerprints, **Crawlee** automatically generates headers for you, but you can have full control by using the https://github.com/apify/browser-headers-generator package.
+Headers are also used by websites to fingerprint users (or bots), so it might sometimes be necessary to generate some user-like headers to mitigate anti-scraping protections. Similarly with fingerprints, **Crawlee** automatically generates headers for you, but you can have full control by using the [browser-headers-generator](https://github.com/apify/browser-headers-generator) package.
 
 
 ```

@@ -4,8 +4,6 @@
 title: Elastic Load Balancing Trust Store
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Elastic Load Balancing Trust Store
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.elbv2_trust_store.dataset/index.html
 ---
 
 # Elastic Load Balancing Trust Store
@@ -18,13 +16,13 @@ aws.elbv2_trust_store
 
 ## Fields
 
-| Title                     | ID   | Type   | Data Type                                              | Description |
-| ------------------------- | ---- | ------ | ------------------------------------------------------ | ----------- |
-| _key                      | core | string |
-| account_id                | core | string |
-| name                      | core | string | The name of the trust store.                           |
-| number_of_ca_certificates | core | int64  | The number of ca certificates in the trust store.      |
-| status                    | core | string | The current status of the trust store.                 |
-| tags                      | core | hstore |
-| total_revoked_entries     | core | int64  | The number of revoked certificates in the trust store. |
-| trust_store_arn           | core | string | The Amazon Resource Name (ARN) of the trust store.     |
+| Title                     | ID   | Type       | Data Type                                              | Description |
+| ------------------------- | ---- | ---------- | ------------------------------------------------------ | ----------- |
+| _key                      | core | string     |
+| account_id                | core | string     |
+| name                      | core | string     | The name of the trust store.                           |
+| number_of_ca_certificates | core | int64      | The number of ca certificates in the trust store.      |
+| status                    | core | string     | The current status of the trust store.                 |
+| tags                      | core | hstore_csv |
+| total_revoked_entries     | core | int64      | The number of revoked certificates in the trust store. |
+| trust_store_arn           | core | string     | The Amazon Resource Name (ARN) of the trust store.     |

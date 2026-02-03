@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/anthropic/
+
 # Anthropic
 
 This provider supports the [Anthropic Claude](https://www.anthropic.com/claude) series of models.

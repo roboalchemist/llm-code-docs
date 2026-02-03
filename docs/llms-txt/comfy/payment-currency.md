@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/support/payment/payment-currency.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Payment currency
 
 > Information about supported currencies and currency conversion
@@ -14,9 +18,8 @@ All subscription prices are listed in **US Dollars (USD)** by default.
 
 ### Alipay and WeChat Pay
 
-* **Alipay** and **WeChat Pay** are currently only available for local API credits
-* These payment methods are not yet supported for Comfy Cloud subscriptions
-* Alipay support for Cloud subscriptions will be available soon
+* **Alipay** is now supported for both local API credits and Comfy Cloud subscriptions
+* **WeChat Pay** is currently only available for local API credits
 
 ## Currency selection
 

@@ -4,12 +4,6 @@
 
 # Source: https://docs.aimlapi.com/api-references/text-models-llm/anthropic.md
 
-# Source: https://docs.aimlapi.com/capabilities/anthropic.md
-
-# Source: https://docs.aimlapi.com/api-references/embedding-models/anthropic.md
-
-# Source: https://docs.aimlapi.com/api-references/text-models-llm/anthropic.md
-
 # Anthropic
 
 - [Claude 3 Haiku](/api-references/text-models-llm/anthropic/claude-3-haiku.md)

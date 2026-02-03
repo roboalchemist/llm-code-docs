@@ -6,7 +6,6 @@ description: >-
   Visualize, observe, and analyze the performance of your front-end applications
   as seen by your users.
 breadcrumbs: Docs > RUM & Session Replay
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # RUM & Session Replay
@@ -194,7 +193,7 @@ Watch [browser recordings](https://docs.datadoghq.com/session_replay/browser/) o
 
 ### Developer tools{% #developer-tools %}
 
-Access triggered logs, errors, and performance information when troubleshooting application issues using [Browser Dev Tools](https://docs.datadoghq.com/session_replay/browser/developer_tools/).
+Access triggered logs, errors, and performance information when troubleshooting application issues using [Browser Dev Tools](https://docs.datadoghq.com/session_replay/browser/dev_tools/).
 
 ## Permissions{% #permissions %}
 
@@ -237,3 +236,4 @@ You must have edit access to restore general access to a restricted application.
 - [Best practices for monitoring static web applications](https://www.datadoghq.com/blog/static-web-application-monitoring-best-practices/)
 - [RUM Browser Data Collected](https://docs.datadoghq.com/real_user_monitoring/application_monitoring/browser/data_collected/)
 - [Best practices for monitoring progressive web applications](https://www.datadoghq.com/blog/progressive-web-application-monitoring/)
+- [Design effective executive dashboards with Datadog](https://www.datadoghq.com/blog/datadog-executive-dashboards)

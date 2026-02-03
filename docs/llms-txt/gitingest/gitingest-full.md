@@ -1,3 +1,9 @@
+# Gitingest Documentation
+
+Source: https://gitingest.com/llms-full.txt
+
+---
+
 # 
             
                 

@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/errors/api-errors/vehicle-state-errors.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Vehicle State Errors
 
 > Thrown when a request fails due to the state of a vehicle or logically cannot be completed e.g. you can't start a vehicle charging if it's not plugged in.

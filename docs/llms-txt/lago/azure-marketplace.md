@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/integrations/marketplaces/azure-marketplace.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Azure Marketplace
 
 > Lago integrates with Azure marketplace through our partner Suger.io

@@ -1,5 +1,9 @@
 # Source: https://docs.unifygtm.com/reference/management/user-management.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # User Management
 
 > Invite users and set their roles directly in Unify.

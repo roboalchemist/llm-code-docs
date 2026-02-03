@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/qstash/howto/webhook.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Use as Webhook Receiver
 
 You can configure QStash to receive and process your webhook calls.
@@ -52,7 +56,7 @@ You can define default headers for a URL Group, which will automatically apply t
 
 ```
 curl -X PATCH https://qstash.upstash.io/v2/topics/<URL_GROUP_NAME> \
-    -H "Authorizarion: Bearer <QSTASH_TOKEN>"
+    -H "Authorization: Bearer <QSTASH_TOKEN>"
     -d '{
         "headers": {
             "Upstash-Header-Forward": ["true"],

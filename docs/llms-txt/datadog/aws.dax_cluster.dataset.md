@@ -4,8 +4,6 @@
 title: DAX Cluster
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > DAX Cluster
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.dax_cluster.dataset/index.html
 ---
 
 # DAX Cluster
@@ -39,5 +37,5 @@ aws.dax_cluster
 | sse_description                  | core | json          | The description of the server-side encryption status on the specified DAX cluster.                                                                                                                                                   |
 | status                           | core | string        | The current status of the cluster.                                                                                                                                                                                                   |
 | subnet_group                     | core | string        | The subnet group where the DAX cluster is running.                                                                                                                                                                                   |
-| tags                             | core | hstore        |
+| tags                             | core | hstore_csv    |
 | total_nodes                      | core | int64         | The total number of nodes in the cluster.                                                                                                                                                                                            |

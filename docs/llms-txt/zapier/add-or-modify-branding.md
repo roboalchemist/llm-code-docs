@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/publish/add-or-modify-branding.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add or modify integration branding and details
 
 > When creating a new integration in the Platform UI from the link `https://developer.zapier.com/app/new`, you'll be prompted to add the app name, description, homepage URL and logo.

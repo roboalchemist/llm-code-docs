@@ -1,12 +1,16 @@
 # Source: https://docs.asapp.com/agent-desk/integrations/push-notifications-and-the-mobile-sdks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Push Notifications and the Mobile SDKs
 
 ## Use Cases
 
 In ASAPP Chat, users can receive Push Notifications (a.k.a. ASAPP background messages) for the following reasons:
 
-* **New live messages**: if a customer is talking to a live agent and leaves the chat interface, new messages can be delivered via Push Notifications.
+* **New live messages**: if a customer is talking to a live agent and leaves the chat interface, the system can deliver new messages via Push Notifications.
 * **Proactive messages**: used to notify customers about promotions, reminders, or other relevant information, depending on the requirements of the implementation.
 
 If you are looking for a way to get the most recent Conversation Status, please see the [Android](/agent-desk/integrations/android-sdk/miscellaneous-apis "Miscellaneous APIs") or [iOS](/agent-desk/integrations/ios-sdk/miscellaneous-apis "Miscellaneous APIs") documentation.
@@ -37,7 +41,7 @@ The ASAPP SDK and servers act as the middle-man with regards to the Device Token
 
 The Device Token format and content can be customized to include the necessary information for the Customer's Backend service to send the push notifications. As an example, the Device Token can be a base64-encoded JSON Web Token (JWT) that contains the end user information required by the Customer's Backend service.
 
-ASAPP does not need to understand the content of the Device Token; however, the Device Token is persisted within the ASAPP Push Notification system.
+ASAPP does not need to understand the content of the Device Token; however, the ASAPP Push Notification system persists the Device Token.
 
 <Note>
   Please consult with us if there is a requirement to include one or more PII data fields in the Device Token.
@@ -82,7 +86,7 @@ Please refer to the specific [Android](/agent-desk/integrations/android-sdk/noti
 #### Receive Messages in the Foreground
 
 <Note>
-  If the user is currently in chat, the message is sent directly to chat via WebSocket and no push notification is sent.
+  If the user is currently in chat, the system sends the message directly to chat via WebSocket and sends no push notification.
 </Note>
 
 See Scenario 2 in Figure 2.

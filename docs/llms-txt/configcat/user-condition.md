@@ -2,6 +2,8 @@
 
 # User Condition
 
+Copy page
+
 ## What is a User Condition?[​](#what-is-a-user-condition "Direct link to What is a User Condition?")
 
 A *User Condition* is a condition that is based on the comparison of a user attribute (*comparison attribute*) and a preset value (*comparison value*).
@@ -10,9 +12,9 @@ It allows you to define Targeting Rules which target users based on their proper
 
 ## How does the User Condition work?[​](#how-does-the-user-condition-work "Direct link to How does the User Condition work?")
 
-The comparison attribute's value from the [User Object](https://configcat.com/docs/docs/targeting/user-object/.md) is compared to the comparison value you set on the Dashboard. The comparison is done according to the selected comparator and will result in true or false. This will be the result of the condition.
+The comparison attribute's value from the [User Object](https://configcat.com/docs/targeting/user-object.md) is compared to the comparison value you set on the Dashboard. The comparison is done according to the selected comparator and will result in true or false. This will be the result of the condition.
 
-For more details on the evaluation of User Conditions, please refer to [Feature Flag Evaluation](https://configcat.com/docs/docs/targeting/feature-flag-evaluation/.md#evaluation-of-a-user-condition).
+For more details on the evaluation of User Conditions, please refer to [Feature Flag Evaluation](https://configcat.com/docs/targeting/feature-flag-evaluation.md#evaluation-of-a-user-condition).
 
 ## How to set a User Condition?[​](#how-to-set-a-user-condition "Direct link to How to set a User Condition?")
 
@@ -32,7 +34,7 @@ A User Condition consists of three parts:
 
 ### Comparison attribute[​](#comparison-attribute "Direct link to Comparison attribute")
 
-A property of your user (e.g. email address, geographic location). Your application should pass the attribute values (e.g. `'jane@example.com'`, `'Europe'`) to the ConfigCat SDK as a [User Object](https://configcat.com/docs/docs/targeting/user-object/.md).
+A property of your user (e.g. email address, geographic location). Your application should pass the attribute values (e.g. `'jane@example.com'`, `'Europe'`) to the ConfigCat SDK as a [User Object](https://configcat.com/docs/targeting/user-object.md).
 
 There are 3 predefined attributes. Additionally, you can define your custom attributes as well:
 
@@ -45,7 +47,7 @@ There are 3 predefined attributes. Additionally, you can define your custom attr
 
 ### Comparison value[​](#comparison-value "Direct link to Comparison value")
 
-A string, a list of strings, a number, a semantic version, a list of semantic versions or a date value. Will be compared to the selected comparison attribute using the comparator. The length of the comparison value is limited, and the limit depends on your subscription plan. See the [Subscription Plan Limits page](https://configcat.com/docs/docs/subscription-plan-limits/.md) for more details.
+A string, a list of strings, a number, a semantic version, a list of semantic versions or a date value. Will be compared to the selected comparison attribute using the comparator. The length of the comparison value is limited, and the limit depends on your subscription plan. See the [Subscription Plan Limits page](https://configcat.com/docs/subscription-plan-limits.md) for more details.
 
 ### Comparator[​](#comparator "Direct link to Comparator")
 
@@ -155,7 +157,7 @@ On the Dashboard:
 
 In the code:
 
-```
+```js
 const userObject = {
   identifier: userId,
   email: userEmail,
@@ -167,6 +169,7 @@ const userObject = {
 };
 
 const value = await configCatClient.getValueAsync("enableBlackFridayDeals", false, userObject);
+
 ```
 
 ### Confidential CONTAINS and NOT CONTAINS workaround[​](#confidential-contains-and-not-contains-workaround "Direct link to Confidential CONTAINS and NOT CONTAINS workaround")
@@ -195,7 +198,7 @@ On the Dashboard:
 
 In the code:
 
-```
+```js
 const userDomain = userEmail.split('@').pop();
 
 const userObject = {
@@ -207,8 +210,9 @@ const userObject = {
 };
 
 const value = await configCatClient.getValueAsync(key, defaultValue, userObject);
+
 ```
 
 info
 
-Since the introduction of [Config V2](https://configcat.com/docs/docs/advanced/config-v2/.md), this workaround is no longer needed: in a V2 config, you can simply use the hashed version of the **ENDS WITH ANY OF** comparator.
+Since the introduction of [Config V2](https://configcat.com/docs/advanced/config-v2.md), this workaround is no longer needed: in a V2 config, you can simply use the hashed version of the **ENDS WITH ANY OF** comparator.

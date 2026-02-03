@@ -1,11 +1,15 @@
-# Source: https://mintlify.com/docs/dashboard/roles.md
+# Source: https://www.mintlify.com/docs/dashboard/roles.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Roles
 
 > Assign Owner, Admin, or Editor roles to manage team access and permissions.
 
 <Info>
-  RBAC functionality is available on [Custom plans](https://mintlify.com/pricing?ref=rbac).
+  Role based access control (RBAC) is available on [Enterprise plans](https://mintlify.com/pricing?ref=rbac).
 </Info>
 
 Mintlify provides two dashboard access levels: Editor and Admin.

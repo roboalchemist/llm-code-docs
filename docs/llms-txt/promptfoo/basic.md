@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/strategies/basic/
+
 # Basic Strategy
 
 The basic strategy controls whether the original plugin-generated test cases (without any strategies applied) are included in the final output.

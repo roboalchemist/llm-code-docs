@@ -1,11 +1,16 @@
 # Source: https://docs.crewai.com/en/enterprise/guides/enable-crew-studio.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Enable Crew Studio
 
 > Enabling Crew Studio on CrewAI AMP
 
 <Tip>
-  Crew Studio is a powerful **no-code/low-code** tool that allows you to quickly scaffold or build Crews through a conversational interface.
+  Crew Studio is a powerful **no-code/low-code** tool that allows you to quickly
+  scaffold or build Crews through a conversational interface.
 </Tip>
 
 ## What is Crew Studio?
@@ -119,7 +124,9 @@ Now that you've configured your LLM connection and default settings, you're read
 </Steps>
 
 <Tip>
-  For best results, provide clear, detailed descriptions of what you want your crew to accomplish. Include specific inputs and expected outputs in your description.
+  For best results, provide clear, detailed descriptions of what you want your
+  crew to accomplish. Include specific inputs and expected outputs in your
+  description.
 </Tip>
 
 ## Example Workflow
@@ -135,8 +142,11 @@ Here's a typical workflow for creating a crew with Crew Studio:
     ```
   </Step>
 
+  {" "}
+
   <Step title="Answer Questions">
-    Respond to clarifying questions from the Crew Assistant to refine your requirements.
+    Respond to clarifying questions from the Crew Assistant to refine your
+    requirements.
   </Step>
 
   <Step title="Review the Plan">
@@ -147,9 +157,13 @@ Here's a typical workflow for creating a crew with Crew Studio:
     * A Recommendations Agent to provide investment advice
   </Step>
 
+  {" "}
+
   <Step title="Approve or Modify">
     Approve the plan or request changes if necessary.
   </Step>
+
+  {" "}
 
   <Step title="Download or Deploy">
     Download the code for customization or deploy directly to the platform.
@@ -161,5 +175,6 @@ Here's a typical workflow for creating a crew with Crew Studio:
 </Steps>
 
 <Card title="Need Help?" icon="headset" href="mailto:support@crewai.com">
-  Contact our support team for assistance with Crew Studio or any other CrewAI AMP features.
+  Contact our support team for assistance with Crew Studio or any other CrewAI
+  AMP features.
 </Card>

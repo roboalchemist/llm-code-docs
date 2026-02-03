@@ -4,7 +4,6 @@
 title: Chat with Bits AI SRE
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Bits AI > Bits AI SRE > Chat with Bits AI SRE
-source_url: https://docs.datadoghq.com/bits_ai_sre/chat_bits_ai_sre/index.html
 ---
 
 # Chat with Bits AI SRE

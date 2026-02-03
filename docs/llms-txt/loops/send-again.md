@@ -1,5 +1,9 @@
 # Source: https://loops.so/docs/guides/send-again.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://loops.so/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to resend a campaign to new subscribers
 
 > A quick guide for sending a campaign to subscribers who signed up since you sent it out.

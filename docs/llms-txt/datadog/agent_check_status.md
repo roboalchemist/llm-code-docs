@@ -6,7 +6,6 @@ description: >-
   Learn how to test and troubleshoot Datadog Agent checks using commands and
   systemd tools to diagnose integration issues.
 breadcrumbs: Docs > Agent > Agent Troubleshooting > Troubleshoot an Agent Check
-source_url: https://docs.datadoghq.com/troubleshooting/agent_check_status/index.html
 ---
 
 # Troubleshoot an Agent Check

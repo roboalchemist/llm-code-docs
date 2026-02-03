@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/intent/
+
 # Intent (Custom Prompts) Plugin
 
 The Intent plugin is designed to make it easy to test preset inputs to see if they can successfully manipulate an AI system.

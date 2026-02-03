@@ -1,4 +1,4 @@
-# Source: https://huggingface.co/docs/transformers/v5.0.0rc1/model_doc/llava_next_video.md
+# Source: https://huggingface.co/docs/transformers/v5.0.0/model_doc/llava_next_video.md
 
 # LLaVa-NeXT-Video
 
@@ -214,14 +214,14 @@ model = LlavaNextVideoForConditionalGeneration.from_pretrained(
 
 #### transformers.LlavaNextVideoConfig[[transformers.LlavaNextVideoConfig]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/llava_next_video/configuration_llava_next_video.py#L26)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/llava_next_video/configuration_llava_next_video.py#L25)
 
-This is the configuration class to store the configuration of a [LlavaNextVideoForConditionalGeneration](/docs/transformers/v5.0.0rc1/en/model_doc/llava_next_video#transformers.LlavaNextVideoForConditionalGeneration). It is used to instantiate an
+This is the configuration class to store the configuration of a [LlavaNextVideoForConditionalGeneration](/docs/transformers/v5.0.0/en/model_doc/llava_next_video#transformers.LlavaNextVideoForConditionalGeneration). It is used to instantiate an
 Llava-NeXT model according to the specified arguments, defining the model architecture. Instantiating a configuration
 with the defaults will yield a similar configuration to that of the [llava-hf/LLaVA-NeXT-Video-7B-hf](https://huggingface.co/llava-hf/LLaVA-NeXT-Video-7B-hf)
 model.
-Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
-documentation from [PreTrainedConfig](/docs/transformers/v5.0.0rc1/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
+Configuration objects inherit from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) and can be used to control the model outputs. Read the
+documentation from [PreTrainedConfig](/docs/transformers/v5.0.0/en/main_classes/configuration#transformers.PreTrainedConfig) for more information.
 
 Example:
 
@@ -270,27 +270,28 @@ image_seq_length (`int`, *optional*, defaults to 576) : Sequence length of one i
 
 video_seq_length (`int`, *optional*, defaults to 288) : Sequence length of one video embedding.
 
+tie_word_embeddings (`bool`, *optional*, defaults to `False`) : Whether to tie weight embeddings
+
 ## LlavaNextVideoProcessor[[transformers.LlavaNextVideoProcessor]]
 
 #### transformers.LlavaNextVideoProcessor[[transformers.LlavaNextVideoProcessor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/llava_next_video/processing_llava_next_video.py#L47)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/llava_next_video/processing_llava_next_video.py#L45)
 
-Constructs a LLaVa-NeXT-Video processor which wraps a LLaVa-NeXT image processor, LLaVa-NeXT-Video video processor and
-a LLaMa tokenizer into a single processor.
+Constructs a LlavaNextVideoProcessor which wraps a video processor, a image processor, and a tokenizer into a single processor.
 
-[LlavaNextVideoProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/llava_next_video#transformers.LlavaNextVideoProcessor) offers all the functionalities of [LlavaNextImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/llava_next#transformers.LlavaNextImageProcessor), [LlavaNextVideoVideoProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/llava_next_video#transformers.LlavaNextVideoVideoProcessor) and
-[LlamaTokenizerFast](/docs/transformers/v5.0.0rc1/en/model_doc/llama2#transformers.LlamaTokenizer). See the `__call__()` and [decode()](/docs/transformers/v5.0.0rc1/en/main_classes/processors#transformers.ProcessorMixin.decode) for more information.
+[LlavaNextVideoProcessor](/docs/transformers/v5.0.0/en/model_doc/llava_next_video#transformers.LlavaNextVideoProcessor) offers all the functionalities of [LlavaNextVideoVideoProcessor](/docs/transformers/v5.0.0/en/model_doc/llava_next_video#transformers.LlavaNextVideoVideoProcessor), [LlavaNextImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/llava_next#transformers.LlavaNextImageProcessorFast), and `tokenizer_class`. See the
+[~LlavaNextVideoVideoProcessor](/docs/transformers/v5.0.0/en/model_doc/llava_next_video#transformers.LlavaNextVideoVideoProcessor), [~LlavaNextImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/llava_next#transformers.LlavaNextImageProcessorFast), and `~tokenizer_class` for more information.
 
 **Parameters:**
 
-video_processor ([LlavaNextVideoVideoProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/llava_next_video#transformers.LlavaNextVideoVideoProcessor), *optional*) : The video processor is a required input.
+video_processor (`LlavaNextVideoVideoProcessor`) : The video processor is a required input.
 
-image_processor ([LlavaNextImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/llava_next#transformers.LlavaNextImageProcessor), *optional*) : The image processor is a required input.
+image_processor (`LlavaNextImageProcessorFast`) : The image processor is a required input.
 
-tokenizer ([LlamaTokenizerFast](/docs/transformers/v5.0.0rc1/en/model_doc/llama2#transformers.LlamaTokenizer), *optional*) : The tokenizer is a required input.
+tokenizer (`tokenizer_class`) : The tokenizer is a required input.
 
-chat_template (`str`, *optional*) : Jinja chat template that will be used in tokenizer's `apply_chat_template`
+chat_template (`str`) : A Jinja template to convert lists of messages in a chat into a tokenizable string.
 
 patch_size (`int`, *optional*) : Patch size from the vision tower.
 
@@ -306,17 +307,17 @@ num_additional_image_tokens (`int`, *optional*, defaults to 0) : Number of addit
 
 #### transformers.LlavaNextVideoVideoProcessor[[transformers.LlavaNextVideoVideoProcessor]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/llava_next_video/video_processing_llava_next_video.py#L21)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/llava_next_video/video_processing_llava_next_video.py#L20)
 
 ## LlavaNextVideoModel[[transformers.LlavaNextVideoModel]]
 
 #### transformers.LlavaNextVideoModel[[transformers.LlavaNextVideoModel]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/llava_next_video/modeling_llava_next_video.py#L305)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/llava_next_video/modeling_llava_next_video.py#L304)
 
 The Llava-Next model which consists of a vision backbone and a language model without language modeling head.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -324,21 +325,21 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.LlavaNextVideoModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/llava_next_video/modeling_llava_next_video.py#L515[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "pixel_values", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "pixel_values_videos", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "image_sizes", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "vision_feature_layer", "val": ": typing.Union[int, list[int], NoneType] = None"}, {"name": "vision_feature_select_strategy", "val": ": typing.Optional[str] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.modeling_flash_attention_utils.FlashAttentionKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.LlavaNextVideoModel.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/llava_next_video/modeling_llava_next_video.py#L512[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "pixel_values", "val": ": torch.FloatTensor | None = None"}, {"name": "pixel_values_videos", "val": ": torch.FloatTensor | None = None"}, {"name": "image_sizes", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "vision_feature_layer", "val": ": int | list[int] | None = None"}, {"name": "vision_feature_select_strategy", "val": ": str | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.modeling_flash_attention_utils.FlashAttentionKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [LlavaNextImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/llava_next#transformers.LlavaNextImageProcessor). See [LlavaNextImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([LlavaNextVideoProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/llava_next_video#transformers.LlavaNextVideoProcessor) uses
-  [LlavaNextImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/llava_next#transformers.LlavaNextImageProcessor) for processing images).
+  [LlavaNextImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/llava_next#transformers.LlavaNextImageProcessorFast). See [LlavaNextImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([LlavaNextVideoProcessor](/docs/transformers/v5.0.0/en/model_doc/llava_next_video#transformers.LlavaNextVideoProcessor) uses
+  [LlavaNextImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/llava_next#transformers.LlavaNextImageProcessorFast) for processing images).
 - **pixel_values_videos** (`torch.FloatTensor` of shape `(batch_size, num_frames, num_channels, frame_size, frame_size)`, *optional*) --
   The tensors corresponding to the input video. Pixel values for videos can be obtained using
-  [LlavaNextVideoVideoProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/llava_next_video#transformers.LlavaNextVideoVideoProcessor). See `LlavaNextVideoVideoProcessor.__call__()` for details ([LlavaNextVideoProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/llava_next_video#transformers.LlavaNextVideoProcessor) uses
-  [LlavaNextVideoVideoProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/llava_next_video#transformers.LlavaNextVideoVideoProcessor) for processing videos).
+  [LlavaNextVideoVideoProcessor](/docs/transformers/v5.0.0/en/model_doc/llava_next_video#transformers.LlavaNextVideoVideoProcessor). See [LlavaNextVideoVideoProcessor.__call__()](/docs/transformers/v5.0.0/en/model_doc/pe_video#transformers.PeVideoVideoProcessor.__call__) for details ([LlavaNextVideoProcessor](/docs/transformers/v5.0.0/en/model_doc/llava_next_video#transformers.LlavaNextVideoProcessor) uses
+  [LlavaNextVideoVideoProcessor](/docs/transformers/v5.0.0/en/model_doc/llava_next_video#transformers.LlavaNextVideoVideoProcessor) for processing videos).
 - **image_sizes** (`torch.LongTensor` of shape `(batch_size, 2)`, *optional*) --
   The sizes of the images in the batch, being (height, width) for each image.
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -357,8 +358,8 @@ forwardtransformers.LlavaNextVideoModel.forwardhttps://github.com/huggingface/tr
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -369,7 +370,7 @@ forwardtransformers.LlavaNextVideoModel.forwardhttps://github.com/huggingface/tr
   Optionally, instead of passing `input_ids` you can choose to directly pass an embedded representation. This
   is useful if you want more control over how to convert `input_ids` indices into associated vectors than the
   model's internal embedding lookup matrix.
-- **vision_feature_layer** (`Union[int, list[int], NoneType]`) --
+- **vision_feature_layer** (`Union[int, list]`, *optional*) --
   The index of the layer to select the vision feature. If multiple indices are provided,
   the vision feature of the corresponding indices will be concatenated to form the
   vision features.
@@ -387,24 +388,24 @@ forwardtransformers.LlavaNextVideoModel.forwardhttps://github.com/huggingface/tr
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 - **cache_position** (`torch.LongTensor` of shape `(sequence_length)`, *optional*) --
   Indices depicting the position of the input sequence tokens in the sequence. Contrarily to `position_ids`,
   this tensor is not affected by padding. It is used to update the cache in the correct position and to infer
   the complete sequence length.0`transformers.models.llava_next_video.modeling_llava_next_video.LlavaNextVideoModelOutputWithPast` or `tuple(torch.FloatTensor)`A `transformers.models.llava_next_video.modeling_llava_next_video.LlavaNextVideoModelOutputWithPast` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([LlavaNextVideoConfig](/docs/transformers/v5.0.0rc1/en/model_doc/llava_next_video#transformers.LlavaNextVideoConfig)) and inputs.
+elements depending on the configuration ([LlavaNextVideoConfig](/docs/transformers/v5.0.0/en/model_doc/llava_next_video#transformers.LlavaNextVideoConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) -- Sequence of hidden-states at the output of the last layer of the model.
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.
-- **hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
@@ -413,7 +414,7 @@ elements depending on the configuration ([LlavaNextVideoConfig](/docs/transforme
   image_hidden_states of the model produced by the vision encoder and after projecting the last hidden state.
 - **video_hidden_states** (`torch.FloatTensor`, *optional*) -- A `torch.FloatTensor`  of size `(batch_size * num_frames, num_videos, sequence_length, hidden_size)`.
   video_hidden_states of the model produced by the vision encoder and after projecting the last hidden state.
-The [LlavaNextVideoModel](/docs/transformers/v5.0.0rc1/en/model_doc/llava_next_video#transformers.LlavaNextVideoModel) forward method, overrides the `__call__` special method.
+The [LlavaNextVideoModel](/docs/transformers/v5.0.0/en/model_doc/llava_next_video#transformers.LlavaNextVideoModel) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -421,7 +422,7 @@ the latter silently ignores them.
 
 **Parameters:**
 
-config ([LlavaNextVideoConfig](/docs/transformers/v5.0.0rc1/en/model_doc/llava_next_video#transformers.LlavaNextVideoConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([LlavaNextVideoConfig](/docs/transformers/v5.0.0/en/model_doc/llava_next_video#transformers.LlavaNextVideoConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
@@ -429,18 +430,18 @@ config ([LlavaNextVideoConfig](/docs/transformers/v5.0.0rc1/en/model_doc/llava_n
 
 A `transformers.models.llava_next_video.modeling_llava_next_video.LlavaNextVideoModelOutputWithPast` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([LlavaNextVideoConfig](/docs/transformers/v5.0.0rc1/en/model_doc/llava_next_video#transformers.LlavaNextVideoConfig)) and inputs.
+elements depending on the configuration ([LlavaNextVideoConfig](/docs/transformers/v5.0.0/en/model_doc/llava_next_video#transformers.LlavaNextVideoConfig)) and inputs.
 
 - **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`, *optional*) -- Sequence of hidden-states at the output of the last layer of the model.
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.
-- **hidden_states** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor, ...]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
@@ -451,7 +452,7 @@ elements depending on the configuration ([LlavaNextVideoConfig](/docs/transforme
   video_hidden_states of the model produced by the vision encoder and after projecting the last hidden state.
 #### get_image_features[[transformers.LlavaNextVideoModel.get_image_features]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/llava_next_video/modeling_llava_next_video.py#L401)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/llava_next_video/modeling_llava_next_video.py#L399)
 
 Obtains image last hidden states from the vision tower and apply multimodal projection.
 
@@ -463,23 +464,45 @@ image_sizes (`torch.Tensor` of shape `(num_images, 2)`) : Actual image size of e
 
 vision_feature_layer (`Union[int, list[int]]`, *optional*) : The index of the layer to select the vision feature. If multiple indices are provided, the vision feature of the corresponding indices will be concatenated to form the vision features.
 
+image_sizes (`torch.Tensor` of shape `(batch_size, 2)`) : The sizes of the images in the batch, being (height, width) for each image.
+
+vision_feature_layer (`Union[int, list]`, *optional*) : The index of the layer to select the vision feature. If multiple indices are provided, the vision feature of the corresponding indices will be concatenated to form the vision features.
+
 vision_feature_select_strategy (`str`, *optional*) : The feature selection strategy used to select the vision feature from the vision backbone. Can be one of `"default"` or `"full"`
+
+output_hidden_states (`bool`, *optional*) : Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for more detail.
 
 **Returns:**
 
-`image_features (list`torch.Tensor`)`
+`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
 
-List of image feature tensor, each contains all the visual feature of all patches
-and are of shape `(num_patches, image_length, embed_dim)`).
+A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([LlavaNextVideoConfig](/docs/transformers/v5.0.0/en/model_doc/llava_next_video#transformers.LlavaNextVideoConfig)) and inputs.
+
+- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
+- **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
+  through the layers used for the auxiliary pretraining task. E.g. for BERT-family of models, this returns
+  the classification token after processing through a linear layer and a tanh activation function. The linear
+  layer weights are trained from the next sentence prediction (classification) objective during pretraining.
+- **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
 #### get_placeholder_mask[[transformers.LlavaNextVideoModel.get_placeholder_mask]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/llava_next_video/modeling_llava_next_video.py#L475)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/llava_next_video/modeling_llava_next_video.py#L471)
 
 Obtains multimodal placeholder mask from `input_ids` or `inputs_embeds`, and checks that the placeholder token count is
 equal to the length of multimodal features. If the lengths are different, an error is raised.
 #### get_video_features[[transformers.LlavaNextVideoModel.get_video_features]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/llava_next_video/modeling_llava_next_video.py#L614)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/llava_next_video/modeling_llava_next_video.py#L605)
 
 Obtains video last hidden states from the vision tower and apply multimodal projection.
 
@@ -489,17 +512,37 @@ pixel_values (`torch.FloatTensor]` of shape `(batch_size, num_frames, channels, 
 
 vision_feature_layer (`Union[int, list[int]]`, *optional;*) : The index of the layer to select the vision feature. If multiple indices are provided, the vision feature of the corresponding indices will be concatenated to form the vision features.
 
+vision_feature_layer (`Union[int, list]`, *optional*) : The index of the layer to select the vision feature. If multiple indices are provided, the vision feature of the corresponding indices will be concatenated to form the vision features.
+
 vision_feature_select_strategy (`str`, *optional*) : The feature selection strategy used to select the vision feature from the vision backbone. Can be one of `"default"` or `"full"`
+
+output_hidden_states (`bool`, *optional*) : Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for more detail.
 
 **Returns:**
 
-`video_features (list`torch.Tensor`)`
+`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
 
-List of video feature tensor, each contains all the visual feature of all patches
-and are of shape `(num_videos, video_length, embed_dim)`).
+A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([LlavaNextVideoConfig](/docs/transformers/v5.0.0/en/model_doc/llava_next_video#transformers.LlavaNextVideoConfig)) and inputs.
+
+- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
+- **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
+  through the layers used for the auxiliary pretraining task. E.g. for BERT-family of models, this returns
+  the classification token after processing through a linear layer and a tanh activation function. The linear
+  layer weights are trained from the next sentence prediction (classification) objective during pretraining.
+- **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
 #### pack_image_features[[transformers.LlavaNextVideoModel.pack_image_features]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/llava_next_video/modeling_llava_next_video.py#L334)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/llava_next_video/modeling_llava_next_video.py#L332)
 
 Reshape, unpad and then pack each image_feature into a single image_features tensor containing all visual vectors.
 
@@ -523,11 +566,11 @@ token length of each image in image_features
 
 #### transformers.LlavaNextVideoForConditionalGeneration[[transformers.LlavaNextVideoForConditionalGeneration]]
 
-[Source](https://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/llava_next_video/modeling_llava_next_video.py#L673)
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/llava_next_video/modeling_llava_next_video.py#L662)
 
 The LLAVA-NeXT model which consists of a vision backbone and a language model.
 
-This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
+This model inherits from [PreTrainedModel](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel). Check the superclass documentation for the generic methods the
 library implements for all its model (such as downloading or saving, resizing the input embeddings, pruning heads
 etc.)
 
@@ -535,21 +578,21 @@ This model is also a PyTorch [torch.nn.Module](https://pytorch.org/docs/stable/n
 Use it as a regular PyTorch Module and refer to the PyTorch documentation for all matter related to general usage
 and behavior.
 
-forwardtransformers.LlavaNextVideoForConditionalGeneration.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0rc1/src/transformers/models/llava_next_video/modeling_llava_next_video.py#L720[{"name": "input_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "pixel_values", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "pixel_values_videos", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "image_sizes", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "attention_mask", "val": ": typing.Optional[torch.Tensor] = None"}, {"name": "position_ids", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "past_key_values", "val": ": typing.Optional[transformers.cache_utils.Cache] = None"}, {"name": "inputs_embeds", "val": ": typing.Optional[torch.FloatTensor] = None"}, {"name": "vision_feature_layer", "val": ": typing.Union[int, list[int], NoneType] = None"}, {"name": "vision_feature_select_strategy", "val": ": typing.Optional[str] = None"}, {"name": "labels", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "use_cache", "val": ": typing.Optional[bool] = None"}, {"name": "output_attentions", "val": ": typing.Optional[bool] = None"}, {"name": "output_hidden_states", "val": ": typing.Optional[bool] = None"}, {"name": "return_dict", "val": ": typing.Optional[bool] = None"}, {"name": "cache_position", "val": ": typing.Optional[torch.LongTensor] = None"}, {"name": "logits_to_keep", "val": ": typing.Union[int, torch.Tensor] = 0"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
+forwardtransformers.LlavaNextVideoForConditionalGeneration.forwardhttps://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/llava_next_video/modeling_llava_next_video.py#L725[{"name": "input_ids", "val": ": torch.LongTensor | None = None"}, {"name": "pixel_values", "val": ": torch.FloatTensor | None = None"}, {"name": "pixel_values_videos", "val": ": torch.FloatTensor | None = None"}, {"name": "image_sizes", "val": ": torch.LongTensor | None = None"}, {"name": "attention_mask", "val": ": torch.Tensor | None = None"}, {"name": "position_ids", "val": ": torch.LongTensor | None = None"}, {"name": "past_key_values", "val": ": transformers.cache_utils.Cache | None = None"}, {"name": "inputs_embeds", "val": ": torch.FloatTensor | None = None"}, {"name": "vision_feature_layer", "val": ": int | list[int] | None = None"}, {"name": "vision_feature_select_strategy", "val": ": str | None = None"}, {"name": "labels", "val": ": torch.LongTensor | None = None"}, {"name": "use_cache", "val": ": bool | None = None"}, {"name": "output_attentions", "val": ": bool | None = None"}, {"name": "output_hidden_states", "val": ": bool | None = None"}, {"name": "return_dict", "val": ": bool | None = None"}, {"name": "cache_position", "val": ": torch.LongTensor | None = None"}, {"name": "logits_to_keep", "val": ": int | torch.Tensor = 0"}, {"name": "**kwargs", "val": ": typing_extensions.Unpack[transformers.utils.generic.TransformersKwargs]"}]- **input_ids** (`torch.LongTensor` of shape `(batch_size, sequence_length)`, *optional*) --
   Indices of input sequence tokens in the vocabulary. Padding will be ignored by default.
 
-  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0rc1/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
-  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0rc1/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
+  Indices can be obtained using [AutoTokenizer](/docs/transformers/v5.0.0/en/model_doc/auto#transformers.AutoTokenizer). See [PreTrainedTokenizer.encode()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.encode) and
+  [PreTrainedTokenizer.__call__()](/docs/transformers/v5.0.0/en/internal/tokenization_utils#transformers.PreTrainedTokenizerBase.__call__) for details.
 
   [What are input IDs?](../glossary#input-ids)
 - **pixel_values** (`torch.FloatTensor` of shape `(batch_size, num_channels, image_size, image_size)`, *optional*) --
   The tensors corresponding to the input images. Pixel values can be obtained using
-  [LlavaNextImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/llava_next#transformers.LlavaNextImageProcessor). See [LlavaNextImageProcessor.__call__()](/docs/transformers/v5.0.0rc1/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([LlavaNextVideoProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/llava_next_video#transformers.LlavaNextVideoProcessor) uses
-  [LlavaNextImageProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/llava_next#transformers.LlavaNextImageProcessor) for processing images).
+  [LlavaNextImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/llava_next#transformers.LlavaNextImageProcessorFast). See [LlavaNextImageProcessorFast.__call__()](/docs/transformers/v5.0.0/en/model_doc/fuyu#transformers.FuyuImageProcessor.__call__) for details ([LlavaNextVideoProcessor](/docs/transformers/v5.0.0/en/model_doc/llava_next_video#transformers.LlavaNextVideoProcessor) uses
+  [LlavaNextImageProcessorFast](/docs/transformers/v5.0.0/en/model_doc/llava_next#transformers.LlavaNextImageProcessorFast) for processing images).
 - **pixel_values_videos** (`torch.FloatTensor` of shape `(batch_size, num_frames, num_channels, frame_size, frame_size)`, *optional*) --
   The tensors corresponding to the input video. Pixel values for videos can be obtained using
-  [LlavaNextVideoVideoProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/llava_next_video#transformers.LlavaNextVideoVideoProcessor). See `LlavaNextVideoVideoProcessor.__call__()` for details ([LlavaNextVideoProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/llava_next_video#transformers.LlavaNextVideoProcessor) uses
-  [LlavaNextVideoVideoProcessor](/docs/transformers/v5.0.0rc1/en/model_doc/llava_next_video#transformers.LlavaNextVideoVideoProcessor) for processing videos).
+  [LlavaNextVideoVideoProcessor](/docs/transformers/v5.0.0/en/model_doc/llava_next_video#transformers.LlavaNextVideoVideoProcessor). See [LlavaNextVideoVideoProcessor.__call__()](/docs/transformers/v5.0.0/en/model_doc/pe_video#transformers.PeVideoVideoProcessor.__call__) for details ([LlavaNextVideoProcessor](/docs/transformers/v5.0.0/en/model_doc/llava_next_video#transformers.LlavaNextVideoProcessor) uses
+  [LlavaNextVideoVideoProcessor](/docs/transformers/v5.0.0/en/model_doc/llava_next_video#transformers.LlavaNextVideoVideoProcessor) for processing videos).
 - **image_sizes** (`torch.LongTensor` of shape `(batch_size, 2)`, *optional*) --
   The sizes of the images in the batch, being (height, width) for each image.
 - **attention_mask** (`torch.Tensor` of shape `(batch_size, sequence_length)`, *optional*) --
@@ -568,8 +611,8 @@ forwardtransformers.LlavaNextVideoForConditionalGeneration.forwardhttps://github
   blocks) that can be used to speed up sequential decoding. This typically consists in the `past_key_values`
   returned by the model at a previous stage of decoding, when `use_cache=True` or `config.use_cache=True`.
 
-  Only [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
-  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
+  Only [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance is allowed as input, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+  If no `past_key_values` are passed, [DynamicCache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.DynamicCache) will be initialized by default.
 
   The model will output the same cache format that is fed as input.
 
@@ -580,7 +623,7 @@ forwardtransformers.LlavaNextVideoForConditionalGeneration.forwardhttps://github
   Optionally, instead of passing `input_ids` you can choose to directly pass an embedded representation. This
   is useful if you want more control over how to convert `input_ids` indices into associated vectors than the
   model's internal embedding lookup matrix.
-- **vision_feature_layer** (`Union[int, list[int], NoneType]`) --
+- **vision_feature_layer** (`Union[int, list]`, *optional*) --
   The index of the layer to select the vision feature. If multiple indices are provided,
   the vision feature of the corresponding indices will be concatenated to form the
   vision features.
@@ -601,31 +644,31 @@ forwardtransformers.LlavaNextVideoForConditionalGeneration.forwardhttps://github
   Whether or not to return the hidden states of all layers. See `hidden_states` under returned tensors for
   more detail.
 - **return_dict** (`bool`, *optional*) --
-  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0rc1/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
+  Whether or not to return a [ModelOutput](/docs/transformers/v5.0.0/en/main_classes/output#transformers.utils.ModelOutput) instead of a plain tuple.
 - **cache_position** (`torch.LongTensor` of shape `(sequence_length)`, *optional*) --
   Indices depicting the position of the input sequence tokens in the sequence. Contrarily to `position_ids`,
   this tensor is not affected by padding. It is used to update the cache in the correct position and to infer
   the complete sequence length.
-- **logits_to_keep** (`Union[int, torch.Tensor]`, defaults to `0`) --
+- **logits_to_keep** (`Union[int, torch.Tensor]`, *optional*, defaults to `0`) --
   If an `int`, compute logits for the last `logits_to_keep` tokens. If `0`, calculate logits for all
   `input_ids` (special case). Only last token logits are needed for generation, and calculating them only for that
   token can save memory, which becomes pretty significant for long sequences or large vocabulary size.
   If a `torch.Tensor`, must be 1D corresponding to the indices to keep in the sequence length dimension.
   This is useful when using packed tensor format (single dimension for batch and sequence length).0`transformers.models.llava_next_video.modeling_llava_next_video.LlavaNextVideoCausalLMOutputWithPast` or `tuple(torch.FloatTensor)`A `transformers.models.llava_next_video.modeling_llava_next_video.LlavaNextVideoCausalLMOutputWithPast` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([LlavaNextVideoConfig](/docs/transformers/v5.0.0rc1/en/model_doc/llava_next_video#transformers.LlavaNextVideoConfig)) and inputs.
+elements depending on the configuration ([LlavaNextVideoConfig](/docs/transformers/v5.0.0/en/model_doc/llava_next_video#transformers.LlavaNextVideoConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
@@ -634,7 +677,7 @@ elements depending on the configuration ([LlavaNextVideoConfig](/docs/transforme
   image_hidden_states of the model produced by the vision encoder and after projecting the last hidden state.
 - **video_hidden_states** (`torch.FloatTensor`, *optional*) -- A `torch.FloatTensor`  of size `(batch_size * num_frames, num_videos, sequence_length, hidden_size)`.
   video_hidden_states of the model produced by the vision encoder and after projecting the last hidden state.
-The [LlavaNextVideoForConditionalGeneration](/docs/transformers/v5.0.0rc1/en/model_doc/llava_next_video#transformers.LlavaNextVideoForConditionalGeneration) forward method, overrides the `__call__` special method.
+The [LlavaNextVideoForConditionalGeneration](/docs/transformers/v5.0.0/en/model_doc/llava_next_video#transformers.LlavaNextVideoForConditionalGeneration) forward method, overrides the `__call__` special method.
 
 Although the recipe for forward pass needs to be defined within this function, one should call the `Module`
 instance afterwards instead of this since the former takes care of running the pre and post processing steps while
@@ -644,7 +687,8 @@ Example:
 
 ```python
 >>> from PIL import Image
->>> import requests
+>>> import httpx
+>>> from io import BytesIO
 >>> import av
 >>> from transformers import AutoProcessor, LlavaNextVideoForConditionalGeneration
 
@@ -684,7 +728,8 @@ Example:
 >>> # load an image to generate from an image
 >>> prompt = "USER:\nWhat is shown in this image? ASSISTANT:"
 >>> url = "https://www.ilankelman.org/stopsigns/australia.jpg"
->>> image = Image.open(requests.get(url, stream=True).raw)
+>>> with httpx.stream("GET", url) as response:
+...     image = Image.open(BytesIO(response.read()))
 >>> inputs_image = processor(text=prompt, images=image, return_tensors="pt").to(model.device)
 
 >>> # Generate from video
@@ -700,7 +745,7 @@ Example:
 
 **Parameters:**
 
-config ([LlavaNextVideoConfig](/docs/transformers/v5.0.0rc1/en/model_doc/llava_next_video#transformers.LlavaNextVideoConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0rc1/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
+config ([LlavaNextVideoConfig](/docs/transformers/v5.0.0/en/model_doc/llava_next_video#transformers.LlavaNextVideoConfig)) : Model configuration class with all the parameters of the model. Initializing with a config file does not load the weights associated with the model, only the configuration. Check out the [from_pretrained()](/docs/transformers/v5.0.0/en/main_classes/model#transformers.PreTrainedModel.from_pretrained) method to load the model weights.
 
 **Returns:**
 
@@ -708,19 +753,19 @@ config ([LlavaNextVideoConfig](/docs/transformers/v5.0.0rc1/en/model_doc/llava_n
 
 A `transformers.models.llava_next_video.modeling_llava_next_video.LlavaNextVideoCausalLMOutputWithPast` or a tuple of
 `torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
-elements depending on the configuration ([LlavaNextVideoConfig](/docs/transformers/v5.0.0rc1/en/model_doc/llava_next_video#transformers.LlavaNextVideoConfig)) and inputs.
+elements depending on the configuration ([LlavaNextVideoConfig](/docs/transformers/v5.0.0/en/model_doc/llava_next_video#transformers.LlavaNextVideoConfig)) and inputs.
 
 - **loss** (`torch.FloatTensor` of shape `(1,)`, *optional*, returned when `labels` is provided) -- Language modeling loss (for next-token prediction).
 - **logits** (`torch.FloatTensor` of shape `(batch_size, sequence_length, config.vocab_size)`) -- Prediction scores of the language modeling head (scores for each vocabulary token before SoftMax).
-- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0rc1/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
+- **past_key_values** (`Cache`, *optional*, returned when `use_cache=True` is passed or when `config.use_cache=True`) -- It is a [Cache](/docs/transformers/v5.0.0/en/internal/generation_utils#transformers.Cache) instance. For more details, see our [kv cache guide](https://huggingface.co/docs/transformers/en/kv_cache).
 
   Contains pre-computed hidden-states (key and values in the self-attention blocks) that can be used (see
   `past_key_values` input) to speed up sequential decoding.
-- **hidden_states** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+- **hidden_states** (`tuple[torch.FloatTensor] | None.hidden_states`, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
   one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
 
   Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
-- **attentions** (`tuple[torch.FloatTensor]`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+- **attentions** (`tuple[torch.FloatTensor] | None.attentions`, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
   sequence_length)`.
 
   Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
@@ -729,4 +774,140 @@ elements depending on the configuration ([LlavaNextVideoConfig](/docs/transforme
   image_hidden_states of the model produced by the vision encoder and after projecting the last hidden state.
 - **video_hidden_states** (`torch.FloatTensor`, *optional*) -- A `torch.FloatTensor`  of size `(batch_size * num_frames, num_videos, sequence_length, hidden_size)`.
   video_hidden_states of the model produced by the vision encoder and after projecting the last hidden state.
+#### get_image_features[[transformers.LlavaNextVideoForConditionalGeneration.get_image_features]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/llava_next_video/modeling_llava_next_video.py#L695)
+
+Example:
+
+```python
+>>> from PIL import Image
+>>> from transformers import AutoProcessor, LlavaNextVideoForConditionalGeneration
+
+>>> model = LlavaNextVideoForConditionalGeneration.from_pretrained("llava-hf/LLaVA-NeXT-Video-7B-hf")
+>>> processor = AutoProcessor.from_pretrained("llava-hf/LLaVA-NeXT-Video-7B-hf")
+
+>>> messages = [
+...     {
+...         "role": "user", "content": [
+...             {"type": "image", "url": "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/pipeline-cat-chonk.jpeg"},
+...             {"type": "text", "text": "Where is the cat standing?"},
+...         ]
+...     },
+... ]
+
+>>> inputs = processor.apply_chat_template(
+...     messages,
+...     tokenize=True,
+...     return_dict=True,
+...     return_tensors="pt",
+...     add_generation_prompt=True
+... )
+>>> # Generate
+>>> generate_ids = model.generate(**inputs)
+>>> processor.batch_decode(generate_ids, skip_special_tokens=True)[0]
+```
+
+**Parameters:**
+
+pixel_values (`torch.FloatTensor]` of shape `(batch_size, num_patches, channels, height, width)`) : The tensors corresponding to the input images.
+
+image_sizes (`torch.Tensor` of shape `(num_images, 2)`) : Actual image size of each images (H, W).
+
+vision_feature_layer (`Union[int, list[int]]`, *optional*) : The index of the layer to select the vision feature. If multiple indices are provided, the vision feature of the corresponding indices will be concatenated to form the vision features.
+
+image_sizes (`torch.Tensor` of shape `(batch_size, 2)`) : The sizes of the images in the batch, being (height, width) for each image.
+
+vision_feature_layer (`Union[int, list]`, *optional*) : The index of the layer to select the vision feature. If multiple indices are provided, the vision feature of the corresponding indices will be concatenated to form the vision features.
+
+vision_feature_select_strategy (`str`, *optional*) : The feature selection strategy used to select the vision feature from the vision backbone. Can be one of `"default"` or `"full"`
+
+**Returns:**
+
+`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
+
+A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([LlavaNextVideoConfig](/docs/transformers/v5.0.0/en/model_doc/llava_next_video#transformers.LlavaNextVideoConfig)) and inputs.
+
+- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
+- **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
+  through the layers used for the auxiliary pretraining task. E.g. for BERT-family of models, this returns
+  the classification token after processing through a linear layer and a tanh activation function. The linear
+  layer weights are trained from the next sentence prediction (classification) objective during pretraining.
+- **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
+#### get_video_features[[transformers.LlavaNextVideoForConditionalGeneration.get_video_features]]
+
+[Source](https://github.com/huggingface/transformers/blob/v5.0.0/src/transformers/models/llava_next_video/modeling_llava_next_video.py#L952)
+
+Example:
+
+```python
+>>> from PIL import Image
+>>> from transformers import AutoProcessor, LlavaNextVideoForConditionalGeneration
+
+>>> model = LlavaNextVideoForConditionalGeneration.from_pretrained("llava-hf/LLaVA-NeXT-Video-7B-hf")
+>>> processor = AutoProcessor.from_pretrained("llava-hf/LLaVA-NeXT-Video-7B-hf")
+
+>>> messages = [
+...     {
+...         "role": "user", "content": [
+...             {"type": "image", "url": "https://huggingface.co/datasets/huggingface/documentation-images/resolve/main/pipeline-cat-chonk.jpeg"},
+...             {"type": "text", "text": "Where is the cat standing?"},
+...         ]
+...     },
+... ]
+
+>>> inputs = processor.apply_chat_template(
+...     messages,
+...     tokenize=True,
+...     return_dict=True,
+...     return_tensors="pt",
+...     add_generation_prompt=True
+... )
+>>> # Generate
+>>> generate_ids = model.generate(**inputs)
+>>> processor.batch_decode(generate_ids, skip_special_tokens=True)[0]
+```
+
+**Parameters:**
+
+pixel_values (`torch.FloatTensor]` of shape `(batch_size, num_frames, channels, height, width)`) : The tensors corresponding to the input video.
+
+vision_feature_layer (`Union[int, list[int]]`, *optional;*) : The index of the layer to select the vision feature. If multiple indices are provided, the vision feature of the corresponding indices will be concatenated to form the vision features.
+
+vision_feature_layer (`Union[int, list]`, *optional*) : The index of the layer to select the vision feature. If multiple indices are provided, the vision feature of the corresponding indices will be concatenated to form the vision features.
+
+vision_feature_select_strategy (`str`, *optional*) : The feature selection strategy used to select the vision feature from the vision backbone. Can be one of `"default"` or `"full"`
+
+**Returns:**
+
+`[transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or `tuple(torch.FloatTensor)``
+
+A [transformers.modeling_outputs.BaseModelOutputWithPooling](/docs/transformers/v5.0.0/en/main_classes/output#transformers.modeling_outputs.BaseModelOutputWithPooling) or a tuple of
+`torch.FloatTensor` (if `return_dict=False` is passed or when `config.return_dict=False`) comprising various
+elements depending on the configuration ([LlavaNextVideoConfig](/docs/transformers/v5.0.0/en/model_doc/llava_next_video#transformers.LlavaNextVideoConfig)) and inputs.
+
+- **last_hidden_state** (`torch.FloatTensor` of shape `(batch_size, sequence_length, hidden_size)`) -- Sequence of hidden-states at the output of the last layer of the model.
+- **pooler_output** (`torch.FloatTensor` of shape `(batch_size, hidden_size)`) -- Last layer hidden-state of the first token of the sequence (classification token) after further processing
+  through the layers used for the auxiliary pretraining task. E.g. for BERT-family of models, this returns
+  the classification token after processing through a linear layer and a tanh activation function. The linear
+  layer weights are trained from the next sentence prediction (classification) objective during pretraining.
+- **hidden_states** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_hidden_states=True` is passed or when `config.output_hidden_states=True`) -- Tuple of `torch.FloatTensor` (one for the output of the embeddings, if the model has an embedding layer, +
+  one for the output of each layer) of shape `(batch_size, sequence_length, hidden_size)`.
+
+  Hidden-states of the model at the output of each layer plus the optional initial embedding outputs.
+- **attentions** (`tuple(torch.FloatTensor)`, *optional*, returned when `output_attentions=True` is passed or when `config.output_attentions=True`) -- Tuple of `torch.FloatTensor` (one for each layer) of shape `(batch_size, num_heads, sequence_length,
+  sequence_length)`.
+
+  Attentions weights after the attention softmax, used to compute the weighted average in the self-attention
+  heads.
 

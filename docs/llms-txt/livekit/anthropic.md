@@ -1,6 +1,6 @@
 # Source: https://docs.livekit.io/agents/models/llm/plugins/anthropic.md
 
-LiveKit docs › Models › Large language models (LLM) › Plugins › Anthropic
+LiveKit docs › Models › LLM › Plugins › Anthropic
 
 ---
 
@@ -25,7 +25,7 @@ This section includes a basic usage example and some reference material. For lin
 Install the plugin from PyPI:
 
 ```shell
-uv add "livekit-agents[anthropic]~=1.2"
+uv add "livekit-agents[anthropic]~=1.3"
 
 ```
 
@@ -84,7 +84,7 @@ The following links provide more information about the Anthropic LLM plugin.
 
 ---
 
-This document was rendered at 2025-11-18T23:55:10.629Z.
+This document was rendered at 2026-02-03T03:24:59.465Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/llm/plugins/anthropic.md](https://docs.livekit.io/agents/models/llm/plugins/anthropic.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

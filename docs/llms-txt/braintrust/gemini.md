@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/integrations/ai-providers/gemini.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Gemini
 
 > Google Gemini model provider configuration and integration guide
@@ -11,7 +15,7 @@ Google's Gemini models include Gemini 2.0 Flash, Gemini 2.5 Pro, and other advan
 To use Gemini models, configure your Gemini API key in Braintrust.
 
 1. Get a Gemini API key from [Google AI Studio](https://aistudio.google.com/app/apikey)
-2. Add the Gemini API key to your organization's [AI providers](https://www.braintrust.dev/app/settings/secrets)
+2. Add the Gemini API key to your [organization's AI providers](/admin/organizations#configure-ai-providers) or to a [project's AI providers](/admin/projects#configure-ai-providers)
 3. Set the Gemini API key and your Braintrust API key as environment variables
 
 ```bash title=".env" theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
@@ -23,12 +27,12 @@ BRAINTRUST_API_KEY=<your-braintrust-api-key>
 ```
 
 <Note>
-  API keys are encrypted using 256-bit AES-GCM encryption and are not stored or logged by Braintrust.
+  API keys are encrypted at rest using [transparent data encryption](https://en.wikipedia.org/wiki/Transparent_data_encryption) with a [unique 256-bit key and nonce](https://libsodium.gitbook.io/doc/secret-key_cryptography/aead).
 </Note>
 
 ## Trace with Gemini
 
-[Trace](/guides/traces) your Gemini LLM calls for observability and monitoring using either the native [Google GenAI SDK](https://cloud.google.com/vertex-ai/generative-ai/docs/sdks/overview) or the [Braintrust AI proxy](/guides/proxy).
+[Trace](/instrument/custom-tracing) your Gemini LLM calls for observability and monitoring using either the native [Google GenAI SDK](https://cloud.google.com/vertex-ai/generative-ai/docs/sdks/overview) or the [Braintrust AI proxy](/deploy/ai-proxy).
 
 ### Trace automatically with native Google GenAI SDK
 
@@ -50,6 +54,12 @@ Install the required packages:
 
   ```bash Python theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
   pip install braintrust google-genai
+  ```
+
+  ```bash Java theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+  # add to build.gradle dependencies{} block
+  implementation 'dev.braintrust:braintrust-sdk-java:<version-goes-here>'
+  implementation 'com.google.genai:google-genai:1.20.0'
   ```
 </CodeGroup>
 
@@ -105,6 +115,37 @@ Then wrap the Google GenAI client:
   )
   print(response.text)
   ```
+
+  ```java  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+  import com.google.genai.Client;
+  import com.google.genai.types.GenerateContentConfig;
+  import dev.braintrust.Braintrust;
+  import dev.braintrust.instrumentation.genai.BraintrustGenAI;
+  import io.opentelemetry.api.OpenTelemetry;
+
+  class GeminiExample {
+      public static void main(String[] args) {
+          // Initialize Braintrust and create OpenTelemetry instance
+          Braintrust braintrust = Braintrust.get();
+          OpenTelemetry openTelemetry = braintrust.openTelemetryCreate();
+
+          // Wrap the Google GenAI client for automatic tracing
+          Client client = BraintrustGenAI.wrap(openTelemetry, new Client.Builder());
+
+          // All API calls are automatically logged
+          GenerateContentConfig config = GenerateContentConfig.builder()
+              .maxOutputTokens(100)
+              .build();
+
+          var response = client.models.generateContent(
+              "gemini-2.5-flash",
+              "What is machine learning?",
+              config
+          );
+          System.out.println(response.text());
+      }
+  }
+  ```
 </CodeGroup>
 
 ### Stream responses with native Google GenAI SDK
@@ -142,6 +183,40 @@ The native Google GenAI client supports streaming with automatic tracing of toke
   for chunk in stream:
       if chunk.text:
           print(chunk.text, end="")
+  ```
+
+  ```java  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+  import com.google.genai.Client;
+  import com.google.genai.types.GenerateContentConfig;
+  import dev.braintrust.Braintrust;
+  import dev.braintrust.instrumentation.genai.BraintrustGenAI;
+  import io.opentelemetry.api.OpenTelemetry;
+
+  class GeminiStreamingExample {
+      public static void main(String[] args) {
+          Braintrust braintrust = Braintrust.get();
+          OpenTelemetry openTelemetry = braintrust.openTelemetryCreate();
+          Client client = BraintrustGenAI.wrap(openTelemetry, new Client.Builder());
+
+          GenerateContentConfig config = GenerateContentConfig.builder()
+              .maxOutputTokens(200)
+              .build();
+
+          var stream = client.models.generateContentStream(
+              "gemini-2.5-flash",
+              "Count from 1 to 10 slowly.",
+              config
+          );
+
+          // All streaming chunks are automatically logged
+          for (var chunk : stream) {
+              String text = chunk.text();
+              if (text != null && !text.isEmpty()) {
+                  System.out.print(text);
+              }
+          }
+      }
+  }
   ```
 </CodeGroup>
 
@@ -221,11 +296,41 @@ If you need more control over when tracing is enabled, you can manually wrap the
   # Run async generation
   result = asyncio.run(generate_async())
   ```
+
+  ```java  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+  import com.google.genai.Client;
+  import com.google.genai.types.GenerateContentConfig;
+  import dev.braintrust.Braintrust;
+  import dev.braintrust.instrumentation.genai.BraintrustGenAI;
+  import io.opentelemetry.api.OpenTelemetry;
+
+  class GeminiManualWrappingExample {
+      public static void main(String[] args) {
+          Braintrust braintrust = Braintrust.get();
+          OpenTelemetry openTelemetry = braintrust.openTelemetryCreate();
+
+          // Wrap the client when you need tracing enabled
+          Client client = BraintrustGenAI.wrap(openTelemetry, new Client.Builder());
+
+          GenerateContentConfig config = GenerateContentConfig.builder()
+              .temperature(0.0f)
+              .build();
+
+          var response = client.models.generateContent(
+              "gemini-1.5-flash",
+              "Hello, world!",
+              config
+          );
+
+          System.out.println(response.text());
+      }
+  }
+  ```
 </CodeGroup>
 
 ## Use Gemini with Braintrust AI proxy
 
-The [Braintrust AI Proxy](/guides/proxy) allows you to access Gemini models through a unified OpenAI-compatible interface.
+The [Braintrust AI Proxy](/deploy/ai-proxy) allows you to access Gemini models through a unified OpenAI-compatible interface.
 
 Install the `braintrust` and `openai` packages.
 
@@ -355,7 +460,7 @@ Gemini models support streaming through the proxy.
 
 ## Evaluate with Gemini
 
-Evaluations distill the non-deterministic outputs of Gemini models into an effective feedback loop that enables you to ship more reliable, higher quality products. Braintrust `Eval` is a simple function composed of a dataset of user inputs, a task, and a set of scorers. To learn more about evaluations, see the [Experiments](/core/experiments) guide.
+Evaluations distill the non-deterministic outputs of Gemini models into an effective feedback loop that enables you to ship more reliable, higher quality products. Braintrust `Eval` is a simple function composed of a dataset of user inputs, a task, and a set of scorers. To learn more about evaluations, see the [Experiments](/evaluate/run-evaluations) guide.
 
 ### Evaluate with native SDK
 
@@ -568,6 +673,40 @@ Gemini 2.5 models (`gemini-2.5-flash`, `gemini-2.5-pro`) have built-in reasoning
   # Metrics automatically include reasoning tokens
   # The wrapper captures completion_reasoning_tokens in the metrics
 
+  ```
+
+  ```java  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+  import com.google.genai.Client;
+  import com.google.genai.types.GenerateContentConfig;
+  import dev.braintrust.Braintrust;
+  import dev.braintrust.instrumentation.genai.BraintrustGenAI;
+  import io.opentelemetry.api.OpenTelemetry;
+
+  class GeminiReasoningExample {
+      public static void main(String[] args) {
+          // Setup automatic tracing
+          Braintrust braintrust = Braintrust.get();
+          OpenTelemetry openTelemetry = braintrust.openTelemetryCreate();
+          Client client = BraintrustGenAI.wrap(openTelemetry, new Client.Builder());
+
+          // Use reasoning model - reasoning tokens are automatically tracked
+          GenerateContentConfig config = GenerateContentConfig.builder()
+              .maxOutputTokens(1000)
+              .build();
+
+          var response = client.models.generateContent(
+              "gemini-2.5-flash",
+              "What is the derivative of x^2 + 3x + 5? Think step by step.",
+              config
+          );
+
+          // The response includes both the reasoning and final answer
+          System.out.println(response.text());
+
+          // Metrics automatically include reasoning tokens
+          // The wrapper captures completion_reasoning_tokens in the metrics
+      }
+  }
   ```
 </CodeGroup>
 
@@ -985,6 +1124,44 @@ Stream responses with automatic token tracking.
 
   asyncio.run(stream_async())
   ```
+
+  ```java  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+  import com.google.genai.Client;
+  import com.google.genai.types.GenerateContentConfig;
+  import dev.braintrust.Braintrust;
+  import dev.braintrust.instrumentation.genai.BraintrustGenAI;
+  import io.opentelemetry.api.OpenTelemetry;
+
+  class GeminiStreamingMetricsExample {
+      public static void main(String[] args) {
+          // Setup automatic tracing
+          Braintrust braintrust = Braintrust.get();
+          OpenTelemetry openTelemetry = braintrust.openTelemetryCreate();
+          Client client = BraintrustGenAI.wrap(openTelemetry, new Client.Builder());
+
+          // Stream responses - automatically tracked
+          GenerateContentConfig config = GenerateContentConfig.builder()
+              .maxOutputTokens(500)
+              .build();
+
+          var stream = client.models.generateContentStream(
+              "gemini-1.5-flash",
+              "Write a story about a robot learning to paint.",
+              config
+          );
+
+          // Streaming automatically tracks:
+          // - time_to_first_token
+          // - prompt_tokens, completion_tokens, total_tokens
+          // - prompt_cached_tokens (if using caching)
+          for (var chunk : stream) {
+              if (chunk.text() != null) {
+                  System.out.print(chunk.text());
+              }
+          }
+      }
+  }
+  ```
 </CodeGroup>
 
 ### Context caching
@@ -1058,11 +1235,106 @@ Gemini supports context caching for efficient reuse of large contexts.
   # The wrapper tracks cached tokens in metrics
   # Look for prompt_cached_tokens in the logged metrics
   ```
+
+  ```java  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+  import com.google.genai.Client;
+  import com.google.genai.types.GenerateContentConfig;
+  import dev.braintrust.Braintrust;
+  import dev.braintrust.instrumentation.genai.BraintrustGenAI;
+  import io.opentelemetry.api.OpenTelemetry;
+
+  class GeminiCachingExample {
+      public static void main(String[] args) {
+          // Setup automatic tracing
+          Braintrust braintrust = Braintrust.get();
+          OpenTelemetry openTelemetry = braintrust.openTelemetryCreate();
+          Client client = BraintrustGenAI.wrap(openTelemetry, new Client.Builder());
+
+          // Create a cache for a large document
+          String documentContent = "... very long document content ...";
+
+          // Note: Caching API requires the full Vertex AI SDK
+          // This example shows the structure - refer to Google's documentation
+          // for complete caching implementation
+
+          GenerateContentConfig config = GenerateContentConfig.builder()
+              // cachedContent would be configured here
+              .maxOutputTokens(500)
+              .build();
+
+          var response = client.models.generateContent(
+              "gemini-1.5-flash",
+              "Summarize the key points from the document",
+              config
+          );
+
+          // The wrapper tracks cached tokens in metrics
+          // Look for prompt_cached_tokens in the logged metrics
+      }
+  }
+  ```
 </CodeGroup>
+
+### Use with Spring AI
+
+For Java applications using [Spring AI](https://spring.io/projects/spring-ai), you can integrate Braintrust by wrapping the underlying Google GenAI client and passing it to Spring AI's `GoogleGenAiChatModel`.
+
+<CodeGroup dropdown>
+  ```java  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+  import com.google.genai.Client;
+  import dev.braintrust.Braintrust;
+  import dev.braintrust.config.BraintrustConfig;
+  import dev.braintrust.instrumentation.genai.BraintrustGenAI;
+  import io.opentelemetry.api.OpenTelemetry;
+  import io.opentelemetry.api.trace.Tracer;
+
+  // Spring AI imports (requires spring-ai-google-genai dependency)
+  // import org.springframework.ai.chat.model.ChatModel;
+  // import org.springframework.ai.chat.prompt.Prompt;
+  // import org.springframework.ai.google.genai.GoogleGenAiChatModel;
+  // import org.springframework.ai.google.genai.GoogleGenAiChatOptions;
+  // import org.springframework.boot.CommandLineRunner;
+  // import org.springframework.boot.SpringApplication;
+  // import org.springframework.boot.autoconfigure.SpringBootApplication;
+  // import org.springframework.context.annotation.Bean;
+
+  // @SpringBootApplication
+  class SpringAIExample {
+
+      public static void main(String[] args) {
+          // SpringApplication.run(SpringAIExample.class, args);
+
+          // Key pattern for Spring AI integration:
+          // 1. Initialize Braintrust
+          Braintrust braintrust = Braintrust.get(BraintrustConfig.fromEnvironment());
+          OpenTelemetry openTelemetry = braintrust.openTelemetryCreate();
+
+          // 2. Wrap the Google GenAI client with Braintrust
+          Client genAIClient = BraintrustGenAI.wrap(openTelemetry, new Client.Builder());
+
+          // 3. Pass the wrapped client to Spring AI's GoogleGenAiChatModel
+          // ChatModel chatModel = GoogleGenAiChatModel.builder()
+          //     .genAIClient(genAIClient)
+          //     .defaultOptions(
+          //         GoogleGenAiChatOptions.builder()
+          //             .model("gemini-2.0-flash-lite")
+          //             .temperature(0.0)
+          //             .maxOutputTokens(50)
+          //             .build())
+          //     .build();
+
+          // 4. Use the ChatModel in your Spring application
+          // All calls through ChatModel are automatically traced to Braintrust
+      }
+  }
+  ```
+</CodeGroup>
+
+This pattern works with all Spring AI features including streaming, function calling, and structured outputs. All calls through the `ChatModel` are automatically traced to Braintrust.
 
 ### Error handling, attachments, and masking sensitive data
 
-To learn more about these topics, check out the [customize traces](/guides/traces/customize) guide.
+To learn more about these topics, check out the [customize traces](/instrument/advanced-tracing) guide.
 
 <CodeGroup dropdown>
   ```typescript  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
@@ -1106,10 +1378,5 @@ To learn more about these topics, check out the [customize traces](/guides/trace
 </CodeGroup>
 
 <Tip>
-  To learn more about multimodal support, attachments, error handling, and masking sensitive data with Gemini, visit the [customize traces](/guides/traces/customize) guide.
+  To learn more about multimodal support, attachments, error handling, and masking sensitive data with Gemini, visit the [customize traces](/instrument/advanced-tracing) guide.
 </Tip>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

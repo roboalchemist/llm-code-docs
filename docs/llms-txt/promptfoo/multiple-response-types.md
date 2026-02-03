@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/troubleshooting/multiple-response-types/
+
 # Handling Multiple Response Types
 
 There are cases where your target could respond with multiple object types. This is usually the case when the target is blocked by a guardrail. For example,

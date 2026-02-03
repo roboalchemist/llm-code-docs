@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/getting-started/integration-method/nebius.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Nebius Token Factory Integration
 
 > Connect Helicone with Nebius Token Factory, a platform that provides powerful AI models including text and multimodal models, embeddings and guardrails, and text-to-image models.

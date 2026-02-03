@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/cloudera/
+
 # Cloudera
 
 The Cloudera provider allows you to interact with Cloudera's AI endpoints using the OpenAI protocol. It supports chat completion models hosted on Cloudera's infrastructure.

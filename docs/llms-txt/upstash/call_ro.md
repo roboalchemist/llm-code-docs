@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/functions/call_ro.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # FCALL_RO
 
 > Invoke a read-only function
@@ -56,8 +60,3 @@
   const value = await redis.functions.callRo("get_value", ["mykey"])
   ```
 </RequestExample>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://upstash.com/docs/llms.txt

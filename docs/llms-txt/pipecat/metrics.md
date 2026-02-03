@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/guides/fundamentals/metrics.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Metrics
 
 > Learn how to monitor performance and LLM/TTS usage with Pipecat.
@@ -134,8 +138,3 @@ class MetricsLogger(FrameProcessor):
                     print(f"!!! MetricsFrame: {frame}, characters: {d.value}")
         await self.push_frame(frame, direction)
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

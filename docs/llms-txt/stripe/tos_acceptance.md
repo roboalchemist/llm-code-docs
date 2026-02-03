@@ -11,18 +11,18 @@ Platforms must present the account representative with the business information 
 
 ## Reference the terms and disclosures
 
-#### US (Celtic Bank)
+### US (Celtic Bank)
 
 Present the account representative with a disclosure stating that Celtic Bank, a member of FDIC, issues the cards. Additionally, provide them with all relevant links to the Issuing program’s [terms and disclosures](https://docs.stripe.com/issuing/compliance-us.md#issuing-terms). The representative must accept the terms to complete their application.
 
-#### US (Cross River Bank)
+### US (Cross River Bank)
 
 Present the account representative with a disclosure stating that Cross River Bank, a member of FDIC, issues the cards. Additionally, provide them with all applicable links to the Issuing program’s [terms and disclosures](https://docs.stripe.com/issuing/compliance-us.md#issuing-terms). The representative must accept the terms to complete their application.
 
-#### US (Fifth Third Bank)
+### US (Fifth Third Bank)
 
 Present the account representative with a disclosure stating that Fifth Third Bank, a member of FDIC, issues the cards. Additionally, provide them with all applicable links to the Issuing program’s [terms and disclosures](https://docs.stripe.com/issuing/compliance-us.md#issuing-terms). The representative must accept the terms to complete their application.
 
-#### UK & euro area
+### UK and Euro area
 
-Present the account representative with the [Stripe Issuing Accountholder terms](https://stripe.com/gb/legal/ssa#:~:text=Stripe%20Identity-,Stripe%20Issuing) and an opportunity to accept it. By registering your account, you certify that the business information you’ve provided is accurate and that you agree to the [Stripe Services Agreement](https://stripe.com/gb/legal/ssa).
+Present the account representative with the [Stripe Issuing Accountholder terms](https://stripe.com/ie/legal/ssa-services-terms#stripe-issuing-services-accountholder-united-kingdom-and-european-economic-area) and an opportunity to accept it. By registering your account, you certify that the business information you provided is accurate and you agree to the [Stripe Services Agreement](https://stripe.com/gb/legal/ssa).

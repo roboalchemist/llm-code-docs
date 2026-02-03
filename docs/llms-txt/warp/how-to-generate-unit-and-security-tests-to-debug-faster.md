@@ -10,8 +10,7 @@ Learn how to prompt Warp’s AI to generate useful unit and security tests — h
 
 {% stepper %}
 {% step %}
-
-### The Problem
+**The Problem**
 
 Building REST APIs involves a lot of overhead: validation, testing, and security.\
 Most “auto-generated tests” from AI end up generic and incomplete — leaving gaps in reliability.
@@ -20,8 +19,7 @@ To solve this, Warp lets you run **precise, context-aware test generation** usin
 {% endstep %}
 
 {% step %}
-
-### The Prompt
+**The Prompt**
 
 Paste this into Warp’s AI input:
 
@@ -81,8 +79,8 @@ XXE (for XML): "&#x3C;!DOCTYPE foo [&#x3C;!ENTITY xxe SYSTEM 'file:///etc/passwd
 ✓ Error messages don't expose sensitive info
 
 <strong>4. Output Format
-</strong><strong>
-</strong><strong>Generate 2 test files:
+</strong>
+<strong>Generate 2 test files:
 </strong>1. Unit_tests.[ext] - all functional tests
 2. security_tests.[ext] - all security tests
 
@@ -99,8 +97,7 @@ Keep these tests simple and focused - each test should verify ONE thing
 {% endstep %}
 
 {% step %}
-
-### Add to Rules File
+**Add to Rules File**
 
 Once you’ve validated the prompt, add it to your Warp Rules file so Warp can automatically reuse it.
 
@@ -113,8 +110,7 @@ Warp will then run these tests as a source of truth — deciding whether new AI-
 {% endstep %}
 
 {% step %}
-
-### Recap
+**Recap**
 
 {% hint style="success" %}
 You’ve learned how to:

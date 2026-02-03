@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/agent-builder/execution-environment.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Using data from previous blocks
 
 > Pass data between blocks in Agent Builder blueprints. Access state variables, secrets, and results from preceding blocks with execution environment.

@@ -6,7 +6,6 @@ description: >-
   Guide to Datadog Agent configuration file locations, structure, and how to
   configure checks and integrations.
 breadcrumbs: Docs > Agent > Agent Configuration > Agent Configuration Files
-source_url: https://docs.datadoghq.com/configuration/agent-configuration-files/index.html
 ---
 
 # Agent Configuration Files

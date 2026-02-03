@@ -1,5 +1,9 @@
 # Source: https://code.claude.com/docs/en/mcp.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://code.claude.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Connect Claude Code to tools via MCP
 
 > Learn how to connect Claude Code to your tools with the Model Context Protocol.
@@ -39,8 +43,12 @@ export const MCPServersTable = ({platform = "all"}) => {
             mcpConnector: worksWith.includes('claude-api'),
             claudeDesktop: worksWith.includes('claude-desktop')
           };
-          const remoteUrl = server.remotes?.[0]?.url || meta.url;
-          const remoteType = server.remotes?.[0]?.type;
+          const remotes = server.remotes || [];
+          const httpRemote = remotes.find(r => r.type === 'streamable-http');
+          const sseRemote = remotes.find(r => r.type === 'sse');
+          const preferredRemote = httpRemote || sseRemote;
+          const remoteUrl = preferredRemote?.url || meta.url;
+          const remoteType = preferredRemote?.type;
           const isTemplatedUrl = remoteUrl?.includes('{');
           let setupUrl;
           if (isTemplatedUrl && meta.requiredFields) {
@@ -279,21 +287,22 @@ Stdio servers run as local processes on your machine. They're ideal for tools th
 
 ```bash  theme={null}
 # Basic syntax
-claude mcp add --transport stdio <name> <command> [args...]
+claude mcp add [options] <name> -- <command> [args...]
 
 # Real example: Add Airtable server
-claude mcp add --transport stdio airtable --env AIRTABLE_API_KEY=YOUR_KEY \
+claude mcp add --transport stdio --env AIRTABLE_API_KEY=YOUR_KEY airtable \
   -- npx -y airtable-mcp-server
 ```
 
 <Note>
-  **Understanding the "--" parameter:**
-  The `--` (double dash) separates Claude's own CLI flags from the command and arguments that get passed to the MCP server. Everything before `--` are options for Claude (like `--env`, `--scope`), and everything after `--` is the actual command to run the MCP server.
+  **Important: Option ordering**
+
+  All options (`--transport`, `--env`, `--scope`, `--header`) must come **before** the server name. The `--` (double dash) then separates the server name from the command and arguments that get passed to the MCP server.
 
   For example:
 
   * `claude mcp add --transport stdio myserver -- npx server` → runs `npx server`
-  * `claude mcp add --transport stdio myserver --env KEY=value -- python server.py --port 8080` → runs `python server.py --port 8080` with `KEY=value` in environment
+  * `claude mcp add --transport stdio --env KEY=value myserver -- python server.py --port 8080` → runs `python server.py --port 8080` with `KEY=value` in environment
 
   This prevents conflicts between Claude's flags and the server's flags.
 </Note>
@@ -315,6 +324,10 @@ claude mcp remove github
 # (within Claude Code) Check server status
 /mcp
 ```
+
+### Dynamic tool updates
+
+Claude Code supports MCP `list_changed` notifications, allowing MCP servers to dynamically update their available tools, prompts, and resources without requiring you to disconnect and reconnect. When an MCP server sends a `list_changed` notification, Claude Code automatically refreshes the available capabilities from that server.
 
 <Tip>
   Tips:
@@ -413,6 +426,10 @@ MCP servers can be configured at three different scope levels, each serving dist
 
 Local-scoped servers represent the default configuration level and are stored in `~/.claude.json` under your project's path. These servers remain private to you and are only accessible when working within the current project directory. This scope is ideal for personal development servers, experimental configurations, or servers containing sensitive credentials that shouldn't be shared.
 
+<Note>
+  The term "local scope" for MCP servers differs from general local settings. MCP local-scoped servers are stored in `~/.claude.json` (your home directory), while general local settings use `.claude/settings.local.json` (in the project directory). See [Settings](/en/settings#settings-files) for details on settings file locations.
+</Note>
+
 ```bash  theme={null}
 # Add a local-scoped server (default)
 claude mcp add --transport http stripe https://mcp.stripe.com
@@ -468,7 +485,7 @@ Select your scope based on:
 
   * **User and local scope**: `~/.claude.json` (in the `mcpServers` field or under project paths)
   * **Project scope**: `.mcp.json` in your project root (checked into source control)
-  * **Enterprise managed**: `managed-mcp.json` in system directories (see [Enterprise MCP configuration](#enterprise-mcp-configuration))
+  * **Managed**: `managed-mcp.json` in system directories (see [Managed MCP configuration](#managed-mcp-configuration))
 </Note>
 
 ### Scope hierarchy and precedence
@@ -794,9 +811,65 @@ MCP servers can expose resources that you can reference using @ mentions, simila
   * Resources can contain any type of content that the MCP server provides (text, JSON, structured data, etc.)
 </Tip>
 
-## Use MCP prompts as slash commands
+## Scale with MCP Tool Search
 
-MCP servers can expose prompts that become available as slash commands in Claude Code.
+When you have many MCP servers configured, tool definitions can consume a significant portion of your context window. MCP Tool Search solves this by dynamically loading tools on-demand instead of preloading all of them.
+
+### How it works
+
+Claude Code automatically enables Tool Search when your MCP tool descriptions would consume more than 10% of the context window. You can [adjust this threshold](#configure-tool-search) or disable tool search entirely. When triggered:
+
+1. MCP tools are deferred rather than loaded into context upfront
+2. Claude uses a search tool to discover relevant MCP tools when needed
+3. Only the tools Claude actually needs are loaded into context
+4. MCP tools continue to work exactly as before from your perspective
+
+### For MCP server authors
+
+If you're building an MCP server, the server instructions field becomes more useful with Tool Search enabled. Server instructions help Claude understand when to search for your tools, similar to how [skills](/en/skills) work.
+
+Add clear, descriptive server instructions that explain:
+
+* What category of tasks your tools handle
+* When Claude should search for your tools
+* Key capabilities your server provides
+
+### Configure tool search
+
+Tool search runs in auto mode by default, meaning it activates only when your MCP tool definitions exceed the context threshold. If you have few tools, they load normally without tool search. This feature requires models that support `tool_reference` blocks: Sonnet 4 and later, or Opus 4 and later. Haiku models do not support tool search.
+
+Control tool search behavior with the `ENABLE_TOOL_SEARCH` environment variable:
+
+| Value      | Behavior                                                                           |
+| :--------- | :--------------------------------------------------------------------------------- |
+| `auto`     | Activates when MCP tools exceed 10% of context (default)                           |
+| `auto:<N>` | Activates at custom threshold, where `<N>` is a percentage (e.g., `auto:5` for 5%) |
+| `true`     | Always enabled                                                                     |
+| `false`    | Disabled, all MCP tools loaded upfront                                             |
+
+```bash  theme={null}
+# Use a custom 5% threshold
+ENABLE_TOOL_SEARCH=auto:5 claude
+
+# Disable tool search entirely
+ENABLE_TOOL_SEARCH=false claude
+```
+
+Or set the value in your [settings.json `env` field](/en/settings#available-settings).
+
+You can also disable the MCPSearch tool specifically using the `disallowedTools` setting:
+
+```json  theme={null}
+{
+  "permissions": {
+    "deny": ["MCPSearch"]
+  }
+}
+```
+
+## Use MCP prompts as commands
+
+MCP servers can expose prompts that become available as commands in Claude Code.
 
 ### Execute MCP prompts
 
@@ -833,17 +906,32 @@ MCP servers can expose prompts that become available as slash commands in Claude
   * Server and prompt names are normalized (spaces become underscores)
 </Tip>
 
-## Enterprise MCP configuration
+## Managed MCP configuration
 
-For organizations that need centralized control over MCP servers, Claude Code supports enterprise-managed MCP configurations. This allows IT administrators to:
+For organizations that need centralized control over MCP servers, Claude Code supports two configuration options:
+
+1. **Exclusive control with `managed-mcp.json`**: Deploy a fixed set of MCP servers that users cannot modify or extend
+2. **Policy-based control with allowlists/denylists**: Allow users to add their own servers, but restrict which ones are permitted
+
+These options allow IT administrators to:
 
 * **Control which MCP servers employees can access**: Deploy a standardized set of approved MCP servers across the organization
-* **Prevent unauthorized MCP servers**: Optionally restrict users from adding their own MCP servers
+* **Prevent unauthorized MCP servers**: Restrict users from adding unapproved MCP servers
 * **Disable MCP entirely**: Remove MCP functionality completely if needed
 
-### Setting up enterprise MCP configuration
+### Option 1: Exclusive control with managed-mcp.json
 
-System administrators can deploy an enterprise MCP configuration file alongside the managed settings file. See [settings files](/en/settings#settings-files) for the `managed-mcp.json` file locations on each platform.
+When you deploy a `managed-mcp.json` file, it takes **exclusive control** over all MCP servers. Users cannot add, modify, or use any MCP servers other than those defined in this file. This is the simplest approach for organizations that want complete control.
+
+System administrators deploy the configuration file to a system-wide directory:
+
+* macOS: `/Library/Application Support/ClaudeCode/managed-mcp.json`
+* Linux and WSL: `/etc/claude-code/managed-mcp.json`
+* Windows: `C:\Program Files\ClaudeCode\managed-mcp.json`
+
+<Note>
+  These are system-wide paths (not user home directories like `~/Library/...`) that require administrator privileges. They are designed to be deployed by IT administrators.
+</Note>
 
 The `managed-mcp.json` file uses the same format as a standard `.mcp.json` file:
 
@@ -870,18 +958,23 @@ The `managed-mcp.json` file uses the same format as a standard `.mcp.json` file:
 }
 ```
 
-### Restricting MCP servers with allowlists and denylists
+### Option 2: Policy-based control with allowlists and denylists
 
-In addition to providing enterprise-managed servers, administrators can control which MCP servers users are allowed to configure using `allowedMcpServers` and `deniedMcpServers` in the [managed settings file](/en/settings#settings-files):
+Instead of taking exclusive control, administrators can allow users to configure their own MCP servers while enforcing restrictions on which servers are permitted. This approach uses `allowedMcpServers` and `deniedMcpServers` in the [managed settings file](/en/settings#settings-files).
+
+<Note>
+  **Choosing between options**: Use Option 1 (`managed-mcp.json`) when you want to deploy a fixed set of servers with no user customization. Use Option 2 (allowlists/denylists) when you want to allow users to add their own servers within policy constraints.
+</Note>
 
 #### Restriction options
 
-Each entry in the allowlist or denylist can restrict servers in two ways:
+Each entry in the allowlist or denylist can restrict servers in three ways:
 
 1. **By server name** (`serverName`): Matches the configured name of the server
 2. **By command** (`serverCommand`): Matches the exact command and arguments used to start stdio servers
+3. **By URL pattern** (`serverUrl`): Matches remote server URLs with wildcard support
 
-**Important**: Each entry must have **either** `serverName` **or** `serverCommand`, not both.
+**Important**: Each entry must have exactly one of `serverName`, `serverCommand`, or `serverUrl`.
 
 #### Example configuration
 
@@ -894,14 +987,21 @@ Each entry in the allowlist or denylist can restrict servers in two ways:
 
     // Allow by exact command (for stdio servers)
     { "serverCommand": ["npx", "-y", "@modelcontextprotocol/server-filesystem"] },
-    { "serverCommand": ["python", "/usr/local/bin/approved-server.py"] }
+    { "serverCommand": ["python", "/usr/local/bin/approved-server.py"] },
+
+    // Allow by URL pattern (for remote servers)
+    { "serverUrl": "https://mcp.company.com/*" },
+    { "serverUrl": "https://*.internal.corp/*" }
   ],
   "deniedMcpServers": [
     // Block by server name
     { "serverName": "dangerous-server" },
 
     // Block by exact command (for stdio servers)
-    { "serverCommand": ["npx", "-y", "unapproved-package"] }
+    { "serverCommand": ["npx", "-y", "unapproved-package"] },
+
+    // Block by URL pattern (for remote servers)
+    { "serverUrl": "https://*.untrusted.com/*" }
   ]
 }
 ```
@@ -921,8 +1021,43 @@ Each entry in the allowlist or denylist can restrict servers in two ways:
 
 **Non-stdio server behavior**:
 
-* Remote servers (HTTP, SSE, WebSocket) always match by name only
+* Remote servers (HTTP, SSE, WebSocket) use URL-based matching when `serverUrl` entries exist in the allowlist
+* If no URL entries exist, remote servers fall back to name-based matching
 * Command restrictions do not apply to remote servers
+
+#### How URL-based restrictions work
+
+URL patterns support wildcards using `*` to match any sequence of characters. This is useful for allowing entire domains or subdomains.
+
+**Wildcard examples**:
+
+* `https://mcp.company.com/*` - Allow all paths on a specific domain
+* `https://*.example.com/*` - Allow any subdomain of example.com
+* `http://localhost:*/*` - Allow any port on localhost
+
+**Remote server behavior**:
+
+* When the allowlist contains **any** `serverUrl` entries, remote servers **must** match one of those URL patterns
+* Remote servers cannot pass by name alone when URL restrictions are present
+* This ensures administrators can enforce which remote endpoints are allowed
+
+<Accordion title="Example: URL-only allowlist">
+  ```json  theme={null}
+  {
+    "allowedMcpServers": [
+      { "serverUrl": "https://mcp.company.com/*" },
+      { "serverUrl": "https://*.internal.corp/*" }
+    ]
+  }
+  ```
+
+  **Result**:
+
+  * HTTP server at `https://mcp.company.com/api`: ✅ Allowed (matches URL pattern)
+  * HTTP server at `https://api.internal.corp/mcp`: ✅ Allowed (matches wildcard subdomain)
+  * HTTP server at `https://external.com/mcp`: ❌ Blocked (doesn't match any URL pattern)
+  * Stdio server with any command: ❌ Blocked (no name or command entries to match)
+</Accordion>
 
 <Accordion title="Example: Command-only allowlist">
   ```json  theme={null}
@@ -981,7 +1116,7 @@ Each entry in the allowlist or denylist can restrict servers in two ways:
 
 * `undefined` (default): No restrictions - users can configure any MCP server
 * Empty array `[]`: Complete lockdown - users cannot configure any MCP servers
-* List of entries: Users can only configure servers that match by name or command
+* List of entries: Users can only configure servers that match by name, command, or URL pattern
 
 #### Denylist behavior (`deniedMcpServers`)
 
@@ -991,15 +1126,10 @@ Each entry in the allowlist or denylist can restrict servers in two ways:
 
 #### Important notes
 
-* These restrictions apply to all scopes: user, project, local, and even enterprise servers from `managed-mcp.json`
-* **Denylist takes absolute precedence**: If a server matches a denylist entry (by name or command), it will be blocked even if it's on the allowlist
-* Name-based and command-based restrictions work together: a server passes if it matches **either** a name entry **or** a command entry (unless blocked by denylist)
+* **Option 1 and Option 2 can be combined**: If `managed-mcp.json` exists, it has exclusive control and users cannot add servers. Allowlists/denylists still apply to the managed servers themselves.
+* **Denylist takes absolute precedence**: If a server matches a denylist entry (by name, command, or URL), it will be blocked even if it's on the allowlist
+* Name-based, command-based, and URL-based restrictions work together: a server passes if it matches **either** a name entry, a command entry, or a URL pattern (unless blocked by denylist)
 
 <Note>
-  **Enterprise configuration precedence**: The enterprise MCP configuration has the highest precedence and cannot be overridden by user, local, or project configurations.
+  **When using `managed-mcp.json`**: Users cannot add MCP servers through `claude mcp add` or configuration files. The `allowedMcpServers` and `deniedMcpServers` settings still apply to filter which managed servers are actually loaded.
 </Note>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://code.claude.com/docs/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.unifygtm.com/reference/agents/building-an-agent.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Building an Agent
 
 > Learn the fundamentals of building Agents in Unify.

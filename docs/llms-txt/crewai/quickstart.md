@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/quickstart.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Quickstart
 
 > Build your first AI agent with CrewAI in under 5 minutes.
@@ -321,34 +325,38 @@ This naming consistency allows CrewAI to automatically link your configurations 
 #### Example References
 
 <Tip>
-  Note how we use the same name for the agent in the `agents.yaml` (`email_summarizer`) file as the method name in the `crew.py` (`email_summarizer`) file.
+  Note how we use the same name for the agent in the `agents.yaml`
+  (`email_summarizer`) file as the method name in the `crew.py`
+  (`email_summarizer`) file.
 </Tip>
 
 ```yaml agents.yaml theme={null}
 email_summarizer:
-    role: >
-      Email Summarizer
-    goal: >
-      Summarize emails into a concise and clear summary
-    backstory: >
-      You will create a 5 bullet point summary of the report
-    llm: provider/model-id  # Add your choice of model here
+  role: >
+    Email Summarizer
+  goal: >
+    Summarize emails into a concise and clear summary
+  backstory: >
+    You will create a 5 bullet point summary of the report
+  llm: provider/model-id # Add your choice of model here
 ```
 
 <Tip>
-  Note how we use the same name for the task in the `tasks.yaml` (`email_summarizer_task`) file as the method name in the `crew.py` (`email_summarizer_task`) file.
+  Note how we use the same name for the task in the `tasks.yaml`
+  (`email_summarizer_task`) file as the method name in the `crew.py`
+  (`email_summarizer_task`) file.
 </Tip>
 
 ```yaml tasks.yaml theme={null}
 email_summarizer_task:
-    description: >
-      Summarize the email into a 5 bullet point summary
-    expected_output: >
-      A 5 bullet point summary of the email
-    agent: email_summarizer
-    context:
-      - reporting_task
-      - research_task
+  description: >
+    Summarize the email into a 5 bullet point summary
+  expected_output: >
+    A 5 bullet point summary of the email
+  agent: email_summarizer
+  context:
+    - reporting_task
+    - research_task
 ```
 
 ## Deploying Your Crew
@@ -361,10 +369,12 @@ Watch this video tutorial for a step-by-step demonstration of deploying your cre
 
 <CardGroup cols={2}>
   <Card title="Deploy on Enterprise" icon="rocket" href="http://app.crewai.com">
-    Get started with CrewAI AMP and deploy your crew in a production environment with just a few clicks.
+    Get started with CrewAI AMP and deploy your crew in a production environment
+    with just a few clicks.
   </Card>
 
   <Card title="Join the Community" icon="comments" href="https://community.crewai.com">
-    Join our open source community to discuss ideas, share your projects, and connect with other CrewAI developers.
+    Join our open source community to discuss ideas, share your projects, and
+    connect with other CrewAI developers.
   </Card>
 </CardGroup>

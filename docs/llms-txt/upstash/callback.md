@@ -4,70 +4,27 @@
 
 # Source: https://upstash.com/docs/workflow/basics/client/dlq/callback.md
 
-# Source: https://upstash.com/docs/workflow/rest/dlq/callback.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://upstash.com/docs/workflow/features/dlq/callback.md
+# client.dlq.retryFailureFunction
 
-# Source: https://upstash.com/docs/workflow/basics/client/dlq/callback.md
+If a workflow's `failureFunction` or `failureUrl` request has failed, you can retry it using the `retryFailureFunction` method:
 
-# Source: https://upstash.com/docs/workflow/rest/dlq/callback.md
-
-# Source: https://upstash.com/docs/workflow/features/dlq/callback.md
-
-# Source: https://upstash.com/docs/workflow/basics/client/dlq/callback.md
-
-# Source: https://upstash.com/docs/workflow/rest/dlq/callback.md
-
-# Source: https://upstash.com/docs/workflow/features/dlq/callback.md
-
-# Source: https://upstash.com/docs/workflow/basics/client/dlq/callback.md
-
-# Source: https://upstash.com/docs/workflow/rest/dlq/callback.md
-
-# Source: https://upstash.com/docs/workflow/features/dlq/callback.md
-
-# Source: https://upstash.com/docs/workflow/basics/client/dlq/callback.md
-
-# Source: https://upstash.com/docs/workflow/rest/dlq/callback.md
-
-# Rerun Failure Callback for Workflow Run
-
-> Rerun the failure callback for a failed workflow run in the DLQ
-
-If the failure callback for a workflow run has failed, you can use this endpoint to manually trigger the failure callback again.
-This is useful for ensuring that your system is notified of workflow failures even if the original callback attempt did not succeed.
-
-The state of the failure callback for each workflow run is included in the DLQ message response as failureCallbackInfo.state.
-You can filter for all workflow runs with a failed failure callback by using the failureCallbackState filter when listing workflow runs in the DLQ with the `/v2/workflows/dlq` endpoint.
-
-## Request
-
-<ParamField path="dlqId" type="string" required>
-  The DLQ id of the failed workflow run for which you want to rerun the failure callback. You can find this id when listing all workflow runs in the DLQ with the [/v2/workflows/dlq](/workflow/rest/dlq/list) endpoint.
-</ParamField>
+## Arguments
 
 ## Response
 
-<ResponseField name="workflowRunId" type="string">
-  The ID of the workflow run for which the failure callback was rerun.
-</ResponseField>
+## Usage
 
-<ResponseField name="workflowCreatedAt" type="integer">
-  Unix timestamp when the workflow run was created.
-</ResponseField>
+```ts  theme={"system"}
+import { Client } from "@upstash/workflow";
 
-<RequestExample>
-  ```sh  theme={"system"}
-  curl -X POST "https://qstash.upstash.io/v2/workflows/dlq/callback/my-dlq-id" \
-    -H "Authorization: Bearer <token>"
-  ```
-</RequestExample>
+const client = new Client({ token: "<QSTASH_TOKEN>" });
 
-<ResponseExample>
-  ```json 200 OK theme={"system"}
-  {
-    "workflowRunId": "wfr_abcde",
-    "workflowCreatedAt": 1680000000000
-  }
-  ```
-</ResponseExample>
+// Retry the failure callback for a specific DLQ message
+const response = await client.dlq.retryFailureFunction({
+  dlqId: "dlq-12345" // The ID of the DLQ message to retry
+});
+```

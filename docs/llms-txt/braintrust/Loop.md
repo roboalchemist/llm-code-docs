@@ -1,10 +1,14 @@
 # Source: https://braintrust.dev/docs/cookbook/recipes/Loop.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Using Loop in AI product development
 
 <div className="text-sm">[Contributed](https://github.com/braintrustdata/braintrust-cookbook/blob/main/examples/Loop/loop.mdx) by [Alex Zelenskiy](https://www.linkedin.com/in/alexzelenskiy/) on 2025-11-21</div>
 
-[Loop](/core/loop) is a built-in AI assistant that helps you throughout the AI product development process in Braintrust. From creating scorers and generating datasets to analyzing logs and improving prompts, Loop is available throughout the product to help with your workflows. This guide shows how you can use Loop to build, evaluate, and improve a weather agent, demonstrating how Loop can make common AI development tasks easier and more accessible.
+[Loop](/observe/loop) is a built-in AI assistant that helps you throughout the AI product development process in Braintrust. From creating scorers and generating datasets to analyzing logs and improving prompts, Loop is available throughout the product to help with your workflows. This guide shows how you can use Loop to build, evaluate, and improve a weather agent, demonstrating how Loop can make common AI development tasks easier and more accessible.
 
 By the end of this guide, you'll learn how to:
 
@@ -299,11 +303,6 @@ Now that you've seen how Loop can accelerate your AI development workflow, try a
 
 For more information on Loop and other Braintrust features:
 
-* Learn more about [Loop](/core/loop)
-* Explore [logging](/core/logs) and [experiments](/core/experiments)
+* Learn more about [Loop](/observe/loop)
+* Explore [logging](/observe/view-logs) and [experiments](/evaluate/run-evaluations)
 * Check out other [cookbook recipes](/cookbook)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

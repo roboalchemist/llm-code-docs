@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/togetherai/
+
 # Together AI
 
 [Together AI](https://www.together.ai/) provides access to open-source models through an API compatible with OpenAI's interface.

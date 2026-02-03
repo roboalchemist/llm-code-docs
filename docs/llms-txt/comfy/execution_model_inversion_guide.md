@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/development/comfyui-server/execution_model_inversion_guide.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Execution Model Inversion Guide
 
 [PR #2666](https://github.com/comfyanonymous/ComfyUI/pull/2666) inverts the execution model from a back-to-front recursive model to a front-to-back topological sort. While most custom nodes should continue to "just work", this page is intended to serve as a guide for custom node creators to the things that *could* break.

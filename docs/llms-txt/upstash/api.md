@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/basics/context/api.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # context.api
 
 In addition to `context.call`, you can also make third‑party requests using the `context.api` namespace.

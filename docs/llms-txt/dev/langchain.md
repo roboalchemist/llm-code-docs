@@ -1,5 +1,9 @@
 # Source: https://dev.writer.com/home/integrations/langchain.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Using Writer with LangChain
 
 The [Writer LangChain integration](https://github.com/writer/langchain-writer) allows you to leverage Writer's capabilities within the LangChain ecosystem, making it easy to build sophisticated AI applications. In this tutorial, you'll explore each component of the integration and understand how they work.

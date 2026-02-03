@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/basics/how.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How Workflow Works
 
 Upstash Workflow is an orchestration layer that allows you to write **multi‑step workflows** which are:

@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/websets/dashboard/walkthroughs/Managing-Team-Members.md
+# Source: https://exa.ai/docs/websets/dashboard/walkthroughs/Managing-Team-Members.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Adding and Managing Your Team Members in Websets
 
@@ -11,8 +15,3 @@
 * Edit permissions per team member or add emails at the bottom.
 
 * Your team member will receive an email confirmation to be added.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

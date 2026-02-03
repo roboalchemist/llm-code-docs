@@ -75,7 +75,7 @@ class RimeAgent(Agent):
                 Don't use any unpronouncable characters.
             """,
             stt=deepgram.STT(),
-            llm=openai.LLM(),
+            llm=openai.responses.LLM(),
             tts=rime.TTS(),
             vad=vad
         )
@@ -111,7 +111,7 @@ class ElevenLabsAgent(Agent):
         super().__init__(
             instructions="...",
             stt=deepgram.STT(),
-            llm=openai.LLM(),
+            llm=openai.responses.LLM(),
             tts=elevenlabs.TTS(),
             vad=vad
         )
@@ -186,7 +186,7 @@ class RimeAgent(Agent):
                 Don't use any unpronouncable characters.
             """,
             stt=deepgram.STT(),
-            llm=openai.LLM(),
+            llm=openai.responses.LLM(),
             tts=rime.TTS(),
             vad=vad
         )
@@ -221,7 +221,7 @@ class ElevenLabsAgent(Agent):
                 Don't use any unpronouncable characters.
             """,
             stt=deepgram.STT(),
-            llm=openai.LLM(),
+            llm=openai.responses.LLM(),
             tts=elevenlabs.TTS(),
             vad=vad
         )
@@ -256,7 +256,7 @@ class CartesiaAgent(Agent):
                 Don't use any unpronouncable characters.
             """,
             stt=deepgram.STT(),
-            llm=openai.LLM(),
+            llm=openai.responses.LLM(),
             tts=cartesia.TTS(),
             vad=vad
         )
@@ -291,7 +291,7 @@ class PlayAIAgent(Agent):
                 Don't use any unpronouncable characters.
             """,
             stt=deepgram.STT(),
-            llm=openai.LLM(),
+            llm=openai.responses.LLM(),
             tts=playai.TTS(),
             vad=vad
         )
@@ -342,7 +342,7 @@ if __name__ == "__main__":
 
 ---
 
-This document was rendered at 2025-12-31T18:29:41.901Z.
+This document was rendered at 2026-02-03T03:25:28.003Z.
 For the latest version of this document, see [https://docs.livekit.io/recipes/tts_comparison.md](https://docs.livekit.io/recipes/tts_comparison.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

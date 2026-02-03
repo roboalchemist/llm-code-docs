@@ -1,5 +1,9 @@
 # Source: https://docs.tavus.io/sections/conversational-video-interface/conversation/usecases/sales-coach.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.tavus.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Sales Coach
 
 > Engage with the Sales Coach persona to simulate real-time sales conversations.
@@ -26,11 +30,10 @@
       "perception_tool_prompt": "",
       "tool_prompt": ""
     },
-    "stt": {
-      "participant_pause_sensitivity": "high",
-      "participant_interrupt_sensitivity": "medium",
-      "smart_turn_detection": true,
-      "hotwords": ""
+    "conversational_flow": {
+      "turn_detection_model": "sparrow-1",
+      "turn_taking_patience": "medium",
+      "replica_interruptibility": "medium"
     }
   }
 }
@@ -43,7 +46,7 @@ This predefined persona is configured to simulate real-world sales conversations
 * **System Prompt**: Provides rich behavioral guidance to ensure Sabrina maintains the tone and presence of a trusted, enthusiastic sales mentor.
 * **Model Layers**:
   * **Perception Configuration**: Uses the `raven-0` perception model to observe nonverbal communication, such as eye contact, posture, and hand gestures.
-  - **STT Layer**: Uses `tavus-advanced` engine with smart turn detection for seamless real-time conversations.
+  - **Conversational Flow Layer**: Uses `sparrow-1` turn detection model with medium turn-taking patience for dynamic coaching interactions and medium replica interruptibility for natural back-and-forth dialogue during role-play scenarios.
 
 ## Create a Conversation with the Sales Coach Persona
 

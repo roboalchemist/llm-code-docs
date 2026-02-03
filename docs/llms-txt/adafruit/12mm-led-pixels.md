@@ -49,7 +49,7 @@ No Longer Stocked
 [5V 10A switching power supply](https://www.adafruit.com/product/658)
 This is a beefy switching supply, for when you need a lot of power! It can supply 5V DC up to 10 Amps, running from 110V or 220V power (the plug it comes with is for US/Canada/Japan but you can use any plug adapter for your country, or just replace the cable with a standard computer/appliance...
 
-In Stock
+Out of Stock
 [Buy Now](https://www.adafruit.com/product/658)
 [Related Guides to the Product](https://learn.adafruit.com/products/658/guides)
 ### 5V 2A (2000mA) switching power supply - UL Listed
@@ -57,7 +57,7 @@ In Stock
 [5V 2A (2000mA) switching power supply - UL Listed](https://www.adafruit.com/product/276)
 This is an FCC/CE certified and UL listed power supply. Need a lot of 5V power? This switching supply gives a clean regulated 5V output at up to 2000mA. 110 or 240 input, so it works in any country. The plugs are "US 2-prong" style so you may need a plug adapter, but you can pick one...
 
-Out of Stock
+In Stock
 [Buy Now](https://www.adafruit.com/product/276)
 [Related Guides to the Product](https://learn.adafruit.com/products/276/guides)
 ### Female DC Power adapter - 2.1mm jack to screw terminal block
@@ -79,18 +79,18 @@ In Stock
 
 ## Related Guides
 
-- [Bluetooth-Controlled NeoPixel Goggles](https://learn.adafruit.com/bluetooth-neopixel-goggles.md)
-- [The PICsellator](https://learn.adafruit.com/the-picsellator.md)
-- [Light-Up Angler Fish Embroidery](https://learn.adafruit.com/light-up-angler-fish-embroidery.md)
+- [Bluefruit Controlled Macetech RGB LED Shades](https://learn.adafruit.com/ledshades.md)
+- [Make it Glow: NeoPixel and LED Diffusion Tips & Tricks](https://learn.adafruit.com/make-it-glow-neopixel-and-led-diffusion-tips-tricks.md)
+- [Starduino: 8-Bit Super Mario Tree Topper](https://learn.adafruit.com/starduino-neopixel-8-bit-mario-star-tree-topper.md)
+- [NeoPixel Ring Clock](https://learn.adafruit.com/neopixel-ring-clock.md)
+- [Star Fragment IoT Lamp](https://learn.adafruit.com/star-fragment-iot-lamp.md)
+- [Talking Musical NeoPixel Clock with Infrared, BLE and Touch Controls](https://learn.adafruit.com/talking-musical-neo-pixel-clock-with-infrared-ble-and-touch-controls.md)
+- [Perfect Pitch Machine](https://learn.adafruit.com/perfect-pitch-machine.md)
+- [CheerLights](https://learn.adafruit.com/cheerlights.md)
+- [NeuroDreamer Teardown](https://learn.adafruit.com/neurodreamer-teardown.md)
+- [Holiday Lights: Easy DIY Christmas Wreath & Garland with WLED](https://learn.adafruit.com/holiday-garland-decor-app-control-with-no-coding.md)
 - [Adafruit IO Home: Security ](https://learn.adafruit.com/adafruit-io-home-security.md)
-- [Neopixel Jewel 10 Minute Necklace](https://learn.adafruit.com/10-minute-neopixel-necklace.md)
-- [LED Festival Coat with Mapping and WLED ](https://learn.adafruit.com/led-festival-coat-with-mapping-and-wled.md)
-- [TVA Pruning Baton from Loki](https://learn.adafruit.com/tva-pruning-baton-from-loki.md)
-- [QT Py Heart Shaped NeoPixel PCB](https://learn.adafruit.com/qtpy-heart-pcb.md)
-- [Last-Minute Halloween Accoutrements with HalloWing](https://learn.adafruit.com/last-minute-halloween-accoutrements-with-hallowing.md)
-- [Circuit Playground's Motion Sensor](https://learn.adafruit.com/circuit-playgrounds-motion-sensor.md)
 - [Adafruit NeoPot](https://learn.adafruit.com/adafruit-neopot.md)
-- [Hanukkah MakeCode Menorah Sweater](https://learn.adafruit.com/hanukkah-menorah-sweater.md)
-- [EPCOT Spaceship Earth with WLED](https://learn.adafruit.com/epcot-spaceship-earth-with-wled.md)
-- [3d Printed Neopixel Tactile Switch Buttons](https://learn.adafruit.com/3d-printed-neopixel-tactile-switch-buttons.md)
-- [NeoPixel Ring Bangle Bracelet](https://learn.adafruit.com/neopixel-ring-bangle-bracelet.md)
+- [NeoKey Socket Breakout with NeoPixel for MX and CHOC Key Switches](https://learn.adafruit.com/neokey-breakout.md)
+- [NeoPixie Dust Bag](https://learn.adafruit.com/neopixel-pixie-dust-bag.md)
+- [Multi-tasking the Arduino - Part 3](https://learn.adafruit.com/multi-tasking-the-arduino-part-3.md)

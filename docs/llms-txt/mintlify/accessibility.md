@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/guides/accessibility.md
+# Source: https://www.mintlify.com/docs/guides/accessibility.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Accessibility
 
@@ -112,7 +116,7 @@ Link text should be meaningful and connected to the destination. Avoid vague phr
 <!-- Good -->
 Learn how to [configure your navigation](/organize/navigation).
 
-<!-- Unclear relation between  -->
+<!-- Unclear relation between link text and destination -->
 [Learn more](/organize/navigation).
 ```
 
@@ -203,7 +207,7 @@ If you use color to convey information, include a text label or icon as well. Fo
 
 * Write in plain language.
 * Define technical terms when first used.
-* Avoid run on sentences.
+* Avoid run-on sentences.
 * Use active voice.
 
 ## Make code examples accessible
@@ -299,11 +303,20 @@ mint a11y
 
 The command checks for:
 
-* Missing alt text on images
-* Improper heading hierarchy
-* Insufficient color contrast
+* Missing alt text on images and videos.
+* Insufficient color contrast.
 
 When the scan completes, review the reported issues and fix them in your content. Run the command again to verify your fixes.
+
+Use flags to check for specific accessibility issues.
+
+```bash  theme={null}
+# Check only for missing alt text
+mint a11y --skip-contrast
+
+# Check only for color contrast issues
+mint a11y --skip-alt-text
+```
 
 ### Basic keyboard navigation test
 

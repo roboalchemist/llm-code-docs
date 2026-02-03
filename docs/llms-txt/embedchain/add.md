@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/api-reference/app/add.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 📊 add
 
 `add()` method is used to load the data sources from different data sources to a RAG pipeline. You can find the signature below:
@@ -26,7 +30,7 @@
 
 ### Load data from webpage
 
-```python Code example
+```python Code example theme={null}
 from embedchain import App
 
 app = App()
@@ -37,7 +41,7 @@ app.add("https://www.forbes.com/profile/elon-musk")
 
 ### Load data from sitemap
 
-```python Code example
+```python Code example theme={null}
 from embedchain import App
 
 app = App()

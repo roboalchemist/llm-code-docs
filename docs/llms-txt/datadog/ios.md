@@ -1,3 +1,9 @@
+# Source: https://docs.datadoghq.com/feature_flags/client/ios.md
+
+# Source: https://docs.datadoghq.com/error_tracking/frontend/mobile/ios.md
+
+# Source: https://docs.datadoghq.com/tracing/trace_collection/custom_instrumentation/ios.md
+
 # Source: https://docs.datadoghq.com/tracing/trace_collection/dd_libraries/ios.md
 
 ---
@@ -6,7 +12,6 @@ description: Collect traces from your iOS applications.
 breadcrumbs: >-
   Docs > APM > Application Instrumentation > Add the Datadog Tracing Library >
   Tracing iOS Applications
-source_url: https://docs.datadoghq.com/trace_collection/dd_libraries/ios/index.html
 ---
 
 # Tracing iOS Applications
@@ -397,7 +402,7 @@ let tracer = Tracer.shared()
 DDTraceConfiguration *configuration = [[DDTraceConfiguration alloc] init];
 configuration.networkInfoEnabled = YES;
 
-[DDTrace enableWithConfiguration:configuration];
+[DDTrace enableWith:configuration];
 
 DDTracer *tracer = [Tracer shared];
 ```
@@ -579,7 +584,7 @@ DDTraceURLSessionTracking *urlSessionTracking = [DDTraceURLSessionTracking alloc
 DDTraceConfiguration *configuration = [[DDTraceConfiguration] alloc] init];
 [configuration setURLSessionTracking:urlSessionTracking];
 
-[DDTrace enableWithConfiguration:configuration];
+[DDTrace enableWith:configuration];
 
 NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]
                                                         delegate:[[DDNSURLSessionDelegate alloc] init]

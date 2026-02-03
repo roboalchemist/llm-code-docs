@@ -4,7 +4,6 @@
 title: Partners
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Partners
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Partners

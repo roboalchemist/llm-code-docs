@@ -22,7 +22,7 @@ dotnet tool install --global x
 This will let you create any [ServiceStack Project Template](/start) with your preferred Project Name from the command-line, e.g:
 
 :::sh
-x new blazor-vue DatabaseTest
+npx create-net blazor-vue DatabaseTest
 :::
 
 Which creates a new .NET App that you can open with your preferred .NET IDE or text editor, e.g:
@@ -36,10 +36,10 @@ By default the App is configured to use a local SQLite database, we can extend i
 by adding the necessary **RDBMS** and `AdminDatabaseFeature` NuGet packages in `DatabaseTest.csproj`:
 
 ```xml
-<PackageReference Include="ServiceStack.OrmLite.MySql" Version="8.*" />
-<PackageReference Include="ServiceStack.OrmLite.PostgreSQL" Version="8.*" />
-<PackageReference Include="ServiceStack.OrmLite.SqlServer.Data" Version="8.*" />
-<PackageReference Include="ServiceStack.Server" Version="8.*" />
+<PackageReference Include="ServiceStack.OrmLite.MySql" Version="10.*" />
+<PackageReference Include="ServiceStack.OrmLite.PostgreSQL" Version="10.*" />
+<PackageReference Include="ServiceStack.OrmLite.SqlServer.Data" Version="10.*" />
+<PackageReference Include="ServiceStack.Server" Version="10.*" />
 ```
 
 ::: info TIP
@@ -73,7 +73,7 @@ public class ConfigureDb : IHostingStartup
         })
         .ConfigureAppHost(appHost => {
             // Enable built-in Database Admin UI at /admin-ui/database
-            appHost.Plugins.Add(new AdminDatabaseFeature());
+            appHost.services.AddPlugin(new AdminDatabaseFeature());
         });
 }
 ```

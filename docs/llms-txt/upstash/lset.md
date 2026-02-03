@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/list/lset.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lset.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lset.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lset.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lset.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lset.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lset.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lset.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lset.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lset.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # LSET
 
@@ -26,7 +12,7 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the list.
 </ParamField>
 
@@ -34,21 +20,26 @@
   At which index to set the value.
 </ParamField>
 
-<ParamField body="data" type="TValue" required>
+<ParamField body="element" type="str" required>
   The value to set.
 </ParamField>
 
 ## Response
 
-<ResponseField type="OK" required>
-  `OK`
+<ResponseField type="bool" required>
+  Returns `True` if the index was in range and the value was set.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example  theme={"system"}
-  await redis.lpush("key", "a", "b", "c"); 
-  await redis.lset("key", 1, "d"); 
+  ```py Example  theme={"system"}
+  redis.rpush("mylist", "one", "two", "three")
 
-  // list is now ["a", "d", "c"]
+  assert redis.lset("mylist", 1, "Hello") == True
+
+  assert redis.lrange("mylist", 0, -1) == ["one", "Hello", "three"]
+
+  assert redis.lset("mylist", 5, "Hello") == False
+
+  assert redis.lrange("mylist", 0, -1) == ["one", "Hello", "three"]
   ```
 </RequestExample>

@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/jest/valid-describe-callback.md
 ---
-# jest/valid-describe-callback&#x20;
 
 ### What it does
 

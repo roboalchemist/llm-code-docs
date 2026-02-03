@@ -1,5 +1,9 @@
 # Source: https://docs.unifygtm.com/reference/integrations/clearbit.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Clearbit Integration Guide
 
 > Use your existing subscription to identify website visitors.

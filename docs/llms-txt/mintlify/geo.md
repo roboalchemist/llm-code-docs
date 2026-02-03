@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/guides/geo.md
+# Source: https://www.mintlify.com/docs/guides/geo.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # GEO guide: Optimize docs for AI search and answer engines
 

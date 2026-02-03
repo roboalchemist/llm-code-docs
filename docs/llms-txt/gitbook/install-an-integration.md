@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/ji-cheng/install-an-integration.md
-
-# Source: https://gitbook.com/docs/documentation/fr/integrations/install-an-integration.md
-
-# Source: https://gitbook.com/docs/integrations/install-an-integration.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/tong-he/install-an-integration.md
 
 # Source: https://gitbook.com/docs/documentation/zh/ji-cheng/install-an-integration.md
 
@@ -18,7 +14,7 @@ You can install an integration in a single space, multiple spaces, or all the sp
 
 If you install an integration in a single space, it will only work in that specific space. By installing an integration in multiple spaces, you’ll be able to perform actions across all those spaces.
 
-<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FeAqdOvpbMj5r3kVt4bh7%2Fintegrations-install.svg?alt=media&#x26;token=9ecc59c8-0a71-4cc6-9e10-f8279de402bb" alt="A GitBook screenshot showing the integration library"><figcaption><p>Browse GitBook's built in integration library.</p></figcaption></figure>
+<figure><img src="https://1050631731-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FNkEGS7hzeqa35sMXQZ4X%2Fuploads%2FWQcTvsnIZCowPI7bMCdV%2F26_01_06_integrations%402x.png?alt=media&#x26;token=7a62f07c-68b2-4afa-92c3-a24518bce183" alt="A GitBook screenshot showing the integration library"><figcaption><p>Browse GitBook's built in integration library.</p></figcaption></figure>
 
 ### Install an integration in your organization
 

@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/headers.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Headers
 
 Smartcar uses the following headers for requests and responses.

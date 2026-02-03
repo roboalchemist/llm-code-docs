@@ -30,83 +30,9 @@
 
 # Source: https://docs.oxla.com/sql-reference/overview.md
 
-# Source: https://docs.oxla.com/system-catalogs/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-statements/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-mutations/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-functions/window-functions/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-functions/trigonometric-functions/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-functions/timestamp-functions/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-functions/string-functions/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-functions/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-functions/other-functions/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-functions/math-functions/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-functions/json-functions/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-functions/aggregate-functions/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-data-types/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-clauses/set-operations/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-clauses/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/overview.md
-
-# Source: https://docs.oxla.com/system-catalogs/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-statements/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-mutations/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-functions/window-functions/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-functions/trigonometric-functions/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-functions/timestamp-functions/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-functions/string-functions/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-functions/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-functions/other-functions/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-functions/math-functions/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-functions/json-functions/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-functions/aggregate-functions/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-data-types/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-clauses/set-operations/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-clauses/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-functions/math-functions/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-functions/json-functions/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-functions/aggregate-functions/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-data-types/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-clauses/set-operations/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/sql-clauses/overview.md
-
-# Source: https://docs.oxla.com/sql-reference/overview.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.oxla.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # SQL Reference
 

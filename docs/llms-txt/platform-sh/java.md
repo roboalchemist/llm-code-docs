@@ -6,7 +6,7 @@
 p:last-child]:mb-0 [&>h3]:mt-0 rounded-lg" >
 
 ### Note
-You can now use composable image (BETA) to install runtimes and tools in your application container. To find out more, see the [dedicated documentation page](https://docs.upsun.com/create-apps/app-reference/composable-image.md).
+You can now use composable image to install runtimes and tools in your application container. To find out more, see the [Composable image](https://docs.upsun.com/create-apps/app-reference/composable-image.md) topic.
 
 Java is a general-purpose programming language, and one of the most popular in the world today. Upsun supports Java runtimes that can be used with build management tools such as Gradle, Maven, and Ant.
 
@@ -20,15 +20,7 @@ Patch versions are applied periodically for bug fixes and the like. When you dep
 
    - 21
 
-   - 19
-
-   - 18
-
    - 17
-
-   - 11
-
-   - 8
 
 These versions refer to the headless packages of OpenJDK.
 To save space and reduce potential vulnerabilities, they don't contain GUI classes, which can't be used on the server.
@@ -124,6 +116,8 @@ Consult each of the individual service documentation to see how to retrieve and 
 - [MariaDB/MySQL](https://docs.upsun.com/add-services/mysql.md#use-in-app)
 
 - [Memcached](https://docs.upsun.com/add-services/memcached.md#use-in-app)
+
+- [Mercure](https://docs.upsun.com/add-services/mercure.md#use-in-app)
 
 - [MongoDB](https://docs.upsun.com/add-services/mongodb.md#use-in-app)
 

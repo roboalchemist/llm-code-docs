@@ -29,7 +29,7 @@ Implementation of the `ChargingManager` Protocol - this is only meant to be inst
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#__aenter__)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/_charging.py#L140)\_\_aenter\_\_
+### [**](#__aenter__)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/_charging.py#L140)\_\_aenter\_\_
 
 * **async **\_\_aenter\_\_**(): None
 
@@ -39,7 +39,7 @@ Implementation of the `ChargingManager` Protocol - this is only meant to be inst
 
   #### Returns None
 
-### [**](#__aexit__)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/_charging.py#L192)\_\_aexit\_\_
+### [**](#__aexit__)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/_charging.py#L192)\_\_aexit\_\_
 
 * **async **\_\_aexit\_\_**(exc\_type, exc\_value, exc\_traceback): None
 
@@ -51,7 +51,7 @@ Implementation of the `ChargingManager` Protocol - this is only meant to be inst
 
   #### Returns None
 
-### [**](#__init__)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/_charging.py#L123)\_\_init\_\_
+### [**](#__init__)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/_charging.py#L123)\_\_init\_\_
 
 * ****\_\_init\_\_**(configuration, client): None
 
@@ -62,7 +62,7 @@ Implementation of the `ChargingManager` Protocol - this is only meant to be inst
 
   #### Returns None
 
-### [**](#calculate_max_event_charge_count_within_limit)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/_charging.py#L302)calculate\_max\_event\_charge\_count\_within\_limit
+### [**](#calculate_max_event_charge_count_within_limit)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/_charging.py#L301)calculate\_max\_event\_charge\_count\_within\_limit
 
 * ****calculate\_max\_event\_charge\_count\_within\_limit**(event\_name): int | None
 
@@ -80,7 +80,7 @@ Implementation of the `ChargingManager` Protocol - this is only meant to be inst
 
   #### Returns int | None
 
-### [**](#calculate_total_charged_amount)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/_charging.py#L295)calculate\_total\_charged\_amount
+### [**](#calculate_total_charged_amount)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/_charging.py#L294)calculate\_total\_charged\_amount
 
 * ****calculate\_total\_charged\_amount**(): Decimal
 
@@ -92,7 +92,7 @@ Implementation of the `ChargingManager` Protocol - this is only meant to be inst
 
   #### Returns Decimal
 
-### [**](#charge)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/_charging.py#L204)charge
+### [**](#charge)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/_charging.py#L204)charge
 
 * **async **charge**(event\_name, count): [ChargeResult](https://docs.apify.com/sdk/python/sdk/python/reference/class/ChargeResult.md)
 
@@ -116,7 +116,7 @@ Implementation of the `ChargingManager` Protocol - this is only meant to be inst
 
   #### Returns [ChargeResult](https://docs.apify.com/sdk/python/sdk/python/reference/class/ChargeResult.md)
 
-### [**](#get_charged_event_count)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/_charging.py#L332)get\_charged\_event\_count
+### [**](#get_charged_event_count)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/_charging.py#L331)get\_charged\_event\_count
 
 * ****get\_charged\_event\_count**(event\_name): int
 
@@ -134,7 +134,7 @@ Implementation of the `ChargingManager` Protocol - this is only meant to be inst
 
   #### Returns int
 
-### [**](#get_max_total_charge_usd)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/_charging.py#L337)get\_max\_total\_charge\_usd
+### [**](#get_max_total_charge_usd)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/_charging.py#L336)get\_max\_total\_charge\_usd
 
 * ****get\_max\_total\_charge\_usd**(): Decimal
 
@@ -146,7 +146,7 @@ Implementation of the `ChargingManager` Protocol - this is only meant to be inst
 
   #### Returns Decimal
 
-### [**](#get_pricing_info)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/_charging.py#L319)get\_pricing\_info
+### [**](#get_pricing_info)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/_charging.py#L318)get\_pricing\_info
 
 * ****get\_pricing\_info**(): [ActorPricingInfo](https://docs.apify.com/sdk/python/sdk/python/reference/class/ActorPricingInfo.md)
 
@@ -162,6 +162,6 @@ Implementation of the `ChargingManager` Protocol - this is only meant to be inst
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#LOCAL_CHARGING_LOG_DATASET_NAME)[**](https://github.com/apify/apify-sdk-python/blob/f050b2684cf6d5e88bafe381599a3653d220ec14//src/apify/_charging.py#L121)LOCAL\_CHARGING\_LOG\_DATASET\_NAME
+### [**](#LOCAL_CHARGING_LOG_DATASET_NAME)[**](https://github.com/apify/apify-sdk-python/blob/a01870a180ed391b8b6cad8d1894f12bcc879136//src/apify/_charging.py#L121)LOCAL\_CHARGING\_LOG\_DATASET\_NAME
 
 **LOCAL\_CHARGING\_LOG\_DATASET\_NAME: Undefined

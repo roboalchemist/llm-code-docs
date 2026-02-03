@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/guides/test/coverage-threshold.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Set a code coverage threshold with the Bun test runner
 
 Bun's test runner supports built-in code coverage reporting via the `--coverage` flag.
@@ -62,4 +66,4 @@ coverageThreshold = { lines = 0.5, functions = 0.7 }
 
 ***
 
-See [Docs > Test runner > Coverage](https://bun.sh/docs/test/coverage) for complete documentation on code coverage reporting in Bun.
+See [Docs > Test runner > Coverage](/test/code-coverage) for complete documentation on code coverage reporting in Bun.

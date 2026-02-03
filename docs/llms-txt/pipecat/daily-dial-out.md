@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/deployment/pipecat-cloud/guides/telephony/daily-dial-out.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Daily PSTN Dial-out
 
 > Using Daily’s Transport to make calls to external SIP Addresses and PSTN numbers
@@ -106,8 +110,3 @@ After configuring your dial-out functionality, you can implement a Pipecat bot t
   Complete example of a Pipecat bot implementation that handles both incoming
   (dial-in) and outgoing (dial-out) calls with voicemail detection
 </Card>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

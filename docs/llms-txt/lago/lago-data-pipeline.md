@@ -1,8 +1,18 @@
 # Source: https://getlago.com/docs/integrations/data/lago-data-pipeline.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Lago Data Pipeline
 
 > Sync your Lago data with your data warehouse or cloud storage
+
+<Info>
+  **PREMIUM ADD-ON** ✨
+
+  This Lago Data Pipeline feature is available upon request only. Please **[contact us](mailto:hello@getlago.com)** to get access to this premium feature.
+</Info>
 
 Lago Data Pipeline lets you automate the flow of your billing, subscription, and usage data into your analytics and storage systems.
 Whether you're running complex queries on warehouses, or simply building data visualization dashboards for your finance team, you can keep all your data in sync with just a few clicks.

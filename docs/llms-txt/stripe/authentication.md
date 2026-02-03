@@ -400,9 +400,9 @@ const deleted = await stripe.customers.del(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.CustomerDeleteParams{Customer: stripe.String("{{CUSTOMER_ID}}")}
+params := &stripe.CustomerDeleteParams{}
 params.SetStripeAccount("{{CONNECTEDACCOUNT_ID}}")
-result, err := sc.V1Customers.Delete(context.TODO(), params)
+result, err := sc.V1Customers.Delete(context.TODO(), "{{CUSTOMER_ID}}", params)
 ```
 
 ```dotnet
@@ -477,10 +477,9 @@ const account = await stripe.accounts.retrieve('{{CONNECTEDACCOUNT_ID}}');
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.AccountRetrieveParams{
-  Account: stripe.String("{{CONNECTEDACCOUNT_ID}}"),
-}
-result, err := sc.V1Accounts.GetByID(context.TODO(), params)
+params := &stripe.AccountRetrieveParams{}
+result, err := sc.V1Accounts.GetByID(
+  context.TODO(), "{{CONNECTEDACCOUNT_ID}}", params)
 ```
 
 ```dotnet

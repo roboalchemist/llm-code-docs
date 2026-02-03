@@ -1,96 +1,89 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/edge-config/get-edge-config-backups.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Edge Config backups
 
 > Returns backups of an Edge Config.
 
+
+
 ## OpenAPI
 
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples get /v1/edge-config/{edgeConfigId}/backups
+openapi: 3.0.3
+info:
+  title: Vercel REST API & SDK
+  description: >-
+    The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
+    type-safe Typescript SDK that allows you to access the resources and methods
+    of the Vercel REST API. Learn how to [install
+    it](https://vercel.com/docs/rest-api/sdk#installing-vercel-sdk) and
+    [authenticate](https://vercel.com/docs/rest-api/sdk#authentication) with a
+    Vercel access token.
+  contact:
+    email: support@vercel.com
+    name: Vercel Support
+    url: https://vercel.com/support
+  version: 0.0.1
+servers:
+  - url: https://api.vercel.com
+    description: Production API
+security: []
 paths:
-  path: /v1/edge-config/{edgeConfigId}/backups
-  method: get
-  servers:
-    - url: https://api.vercel.com
-      description: Production API
-  request:
-    security:
-      - title: bearerToken
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: Default authentication mechanism
-          cookie: {}
-    parameters:
-      path:
-        edgeConfigId:
+  /v1/edge-config/{edgeConfigId}/backups:
+    get:
+      tags:
+        - edge-config
+      summary: Get Edge Config backups
+      description: Returns backups of an Edge Config.
+      operationId: getEdgeConfigBackups
+      parameters:
+        - name: edgeConfigId
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-      query:
-        next:
+            type: string
+        - name: next
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-        limit:
+            type: string
+        - name: limit
+          in: query
+          required: false
           schema:
-            - type: number
-              required: false
-              maximum: 50
-              minimum: 0
-        metadata:
+            type: number
+            minimum: 0
+            maximum: 50
+        - name: metadata
+          in: query
+          required: false
           schema:
-            - type: string
-              required: false
-        teamId:
+            type: string
+        - description: The Team identifier to perform the request on behalf of.
+          in: query
+          name: teamId
           schema:
-            - type: string
-              description: The Team identifier to perform the request on behalf of.
-              example: team_1a2b3c4d5e6f7g8h9i0j1k2l
-        slug:
+            type: string
+            example: team_1a2b3c4d5e6f7g8h9i0j1k2l
+        - description: The Team slug to perform the request on behalf of.
+          in: query
+          name: slug
           schema:
-            - type: string
-              description: The Team slug to perform the request on behalf of.
-              example: my-team-url-slug
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: getEdgeConfigBackups
-        lang: go
-        source: "package main\n\nimport(\n\t\"os\"\n\t\"github.com/vercel/vercel\"\n\t\"context\"\n\t\"github.com/vercel/vercel/models/operations\"\n\t\"log\"\n)\n\nfunc main() {\n    s := vercel.New(\n        vercel.WithSecurity(os.Getenv(\"VERCEL_BEARER_TOKEN\")),\n    )\n\n    ctx := context.Background()\n    res, err := s.EdgeConfig.GetEdgeConfigBackups(ctx, operations.GetEdgeConfigBackupsRequest{\n        EdgeConfigID: \"<id>\",\n    })\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.Object != nil {\n        // handle response\n    }\n}"
-      - label: getEdgeConfigBackups
-        lang: typescript
-        source: |-
-          import { Vercel } from "@vercel/sdk";
-
-          const vercel = new Vercel({
-            bearerToken: "<YOUR_BEARER_TOKEN_HERE>",
-          });
-
-          async function run() {
-            const result = await vercel.edgeConfig.getEdgeConfigBackups({
-              edgeConfigId: "<id>",
-              teamId: "team_1a2b3c4d5e6f7g8h9i0j1k2l",
-              slug: "my-team-url-slug",
-            });
-
-            console.log(result);
-          }
-
-          run();
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              backups:
-                allOf:
-                  - items:
+            type: string
+            example: my-team-url-slug
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                properties:
+                  backups:
+                    items:
                       properties:
                         metadata:
                           properties:
@@ -112,59 +105,37 @@ paths:
                         - lastModified
                       type: object
                     type: array
-              pagination:
-                allOf:
-                  - properties:
+                  pagination:
+                    properties:
                       hasNext:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                       next:
                         type: string
                     required:
                       - hasNext
                     type: object
-            requiredProperties:
-              - backups
-              - pagination
-        examples:
-          example:
-            value:
-              backups:
-                - metadata:
-                    updatedAt: <string>
-                    updatedBy: <string>
-                    itemsCount: 123
-                    itemsBytes: 123
-                  id: <string>
-                  lastModified: 123
-              pagination:
-                hasNext: true
-                next: <string>
-        description: ''
-    '400':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: One of the provided values in the request query is invalid.
-        examples: {}
-        description: One of the provided values in the request query is invalid.
-    '401':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: The request is not authorized.
-        examples: {}
-        description: The request is not authorized.
-    '403':
-      _mintlify/placeholder:
-        schemaArray:
-          - type: any
-            description: You do not have permission to access this resource.
-        examples: {}
-        description: You do not have permission to access this resource.
-    '404': {}
-  deprecated: false
-  type: path
+                required:
+                  - backups
+                  - pagination
+                type: object
+        '400':
+          description: One of the provided values in the request query is invalid.
+        '401':
+          description: The request is not authorized.
+        '403':
+          description: You do not have permission to access this resource.
+        '404':
+          description: ''
+      security:
+        - bearerToken: []
 components:
-  schemas: {}
+  securitySchemes:
+    bearerToken:
+      type: http
+      description: Default authentication mechanism
+      scheme: bearer
 
 ````

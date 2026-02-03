@@ -1,3 +1,5 @@
+# Source: https://docs.slack.dev/tools/deno-slack-sdk/guides/creating-functions
+
 # Creating functions
 
 ## Workflow apps require a paid plan

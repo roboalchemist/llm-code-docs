@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/chatbot/builder/variables/how-to-use-variables.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to use variables
 
 > A guide on how to use Variables in your chatbot

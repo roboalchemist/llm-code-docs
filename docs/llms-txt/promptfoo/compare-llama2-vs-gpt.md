@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/guides/compare-llama2-vs-gpt/
+
 # Llama 3.1 vs GPT: Benchmark on your own data
 
 This guide describes how to compare three models - Llama 3.1 405B, GPT 4o, and gpt-5-mini - using the `promptfoo` CLI.

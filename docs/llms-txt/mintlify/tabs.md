@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/components/tabs.md
+# Source: https://www.mintlify.com/docs/components/tabs.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Tabs
 
@@ -57,10 +61,12 @@ Use tabs to organize content into multiple panels that users can switch between.
 </Tabs>
 ````
 
+Tabs automatically synchronize with other tabs and [code groups](/components/code-groups) on the same page when their labels match. When you select a tab, all other tabs and code groups with the same label update to match your selection.
+
 ## Properties
 
 <ResponseField name="title" type="string" required>
-  The title of the tab. Short titles are easier to navigate.
+  The title of the tab. Short titles are easier to navigate. Tabs with matching titles synchronize their selections.
 </ResponseField>
 
 <ResponseField name="icon" type="string">
@@ -69,4 +75,8 @@ Use tabs to organize content into multiple panels that users can switch between.
 
 <ResponseField name="iconType" type="string">
   For Font Awesome icons only: One of `regular`, `solid`, `light`, `thin`, `sharp-solid`, `duotone`, `brands`.
+</ResponseField>
+
+<ResponseField name="borderBottom" type="boolean">
+  Adds a bottom border and padding to the tabs container. Useful to visually separate tabbed content from the rest of the page, especially when tabs contain content of varying lengths.
 </ResponseField>

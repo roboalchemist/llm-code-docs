@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/graphql/labels.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Labels
 
 Labels are a light-weight but powerful way to categorise threads, consisting of label text coupled with an icon. Each thread can have multiple labels.

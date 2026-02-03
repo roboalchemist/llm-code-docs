@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/publish/integration-build-guidelines.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Integration build guidelines
 
 > Before publishing your integration on Zapier, it is essential to ensure that your integration is well-prepared to provide a seamless and efficient user experience. The following guidelines are designed to assist you in refining your integration before submitting it for review. Adhering to these guidelines will help enhance the functionality and user interaction with your integration and will provide you with the best value and opportunities to harness Zapier as a method of obtaining new users and most commonly, boosting the lifetime value of your current customers.

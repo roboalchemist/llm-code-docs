@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/reference/migration-guides/v0-migration/python.md
 
-# Source: https://docs.livekit.io/agents/v0-migration/python.md
-
-LiveKit docs › v0.x migration guides › Python
+LiveKit docs › Migration Guides › v0.x migration › Python
 
 ---
 
@@ -66,7 +64,7 @@ from livekit.agents import (
     AgentSession,
     Agent,
     llm,
-    RoomInputOptions
+    room_io,
 )
 from livekit.plugins import (
     elevenlabs,
@@ -101,8 +99,10 @@ async def my_agent(ctx: agents.JobContext):
     await session.start(
         room=ctx.room,
         agent=Assistant(),
-        room_input_options=RoomInputOptions(
-            noise_cancellation=noise_cancellation.BVC(),
+        room_options=room_io.RoomOptions(
+            audio_input=room_io.AudioInputOptions(
+                noise_cancellation=noise_cancellation.BVC(),
+            ),
         ),
     )
 
@@ -272,14 +272,14 @@ In 0.x, updating the chat context required modifying chat_ctx.messages directly.
 
 In v1.x, there are two supported ways to update the chat context:
 
-- **Agent handoff** – [transferring control](https://docs.livekit.io/agents/build/agents-handoffs.md#tool-handoff) to a new agent, which will have its own chat context.
+- **Agent handoff** – [transferring control](https://docs.livekit.io/agents/logic/agents-handoffs.md#tool-handoff) to a new agent, which will have its own chat context.
 - **Explicit update** - calling `agent.update_chat_ctx()` to modify the context directly.
 
 ## Transcriptions
 
 Agents 1.0 brings some new changes to how [transcriptions](https://docs.livekit.io/agents/build/text.md#transcriptions) are handled:
 
-- Transcriptions now use [text streams](https://docs.livekit.io/home/client/data/text-streams.md) with topic `lk.transcription`.
+- Transcriptions now use [text streams](https://docs.livekit.io/transport/data/text-streams.md) with topic `lk.transcription`.
 - The old `TranscriptionEvent` protocol is deprecated and will be removed in a future version.
 
 ## Accepting text input
@@ -344,7 +344,7 @@ def on_agent_state_changed(ev: AgentStateChangedEvent):
 
 ## Other events
 
-Agent events were overhauled in version 1.0. For details, see the [events](https://docs.livekit.io/agents/build/events.md) page.
+Agent events were overhauled in version 1.0. For details, see the [events](https://docs.livekit.io/reference/other/events.md) page.
 
 ## Removed features
 
@@ -354,7 +354,7 @@ The beta integration with the Assistants API in the OpenAI LLM plugin has been d
 
 ---
 
-This document was rendered at 2025-11-18T23:55:18.605Z.
-For the latest version of this document, see [https://docs.livekit.io/agents/v0-migration/python.md](https://docs.livekit.io/agents/v0-migration/python.md).
+This document was rendered at 2026-02-03T03:25:27.110Z.
+For the latest version of this document, see [https://docs.livekit.io/reference/migration-guides/v0-migration/python.md](https://docs.livekit.io/reference/migration-guides/v0-migration/python.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

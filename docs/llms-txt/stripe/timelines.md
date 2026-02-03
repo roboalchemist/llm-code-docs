@@ -44,9 +44,9 @@ Because standard ACH submission is at minimum T+1, an ACH payment submitted on d
 
 All times in this table are in Eastern Time.
 
-| Submission cutoff (ET) | Processing time (ET)                           | Time tracking details are received (ET) |
-| ---------------------- | ---------------------------------------------- | --------------------------------------- |
-| 8:30 PM                | Every 1-2 hours between 9:30 AM-12:00 AM (T+1) | 5:00 AM (T+2)                           |
+| Submission cutoff (ET) | Processing time (ET)                               | Time tracking details are received (ET) |
+| ---------------------- | -------------------------------------------------- | --------------------------------------- |
+| 8:30 PM                | Every 1–2 hours between 9:30 AM and 12:00 AM (T+1) | 5:00 AM (T+2)                           |
 
 ### Wire timing
 
@@ -54,7 +54,7 @@ All times in this table are in Eastern Time.
 
 | Submission cutoff (ET) | Processing time (ET) | Time tracking details are received (ET)                                |
 | ---------------------- | -------------------- | ---------------------------------------------------------------------- |
-| 08:00 AM-5:00 PM       | Same day             | Individually throughout the day (usually within an hour of processing) |
+| 08:00 AM–5:00 PM       | Same day             | Individually throughout the day (usually within an hour of processing) |
 
 ## InboundTransfer transactions
 
@@ -118,8 +118,7 @@ For more details, see [Adding funds to your platform balance](https://docs.strip
 
 ACH transactions are regulated by [Nacha](https://www.nacha.org/content/how-ach-rules-are-made). Consider the following when using same-day ACH:
 
-- Individual same-day ACH transactions [can’t exceed 1,000,000 USD](https://www.nacha.org/million). If you submit a larger single transaction for same-day processing, Stripe remits the funds for processing on the following day.
-- The 1,000,000 USD limit applies only to single transactions. You can submit multiple smaller transactions that total more than 1,000,000 USD for same-day processing.
+- Individual same-day ACH transactions [can’t exceed 1,000,000 USD](https://www.nacha.org/million). Stripe rejects transactions that exceed this limit. To process transactions greater than 1,000,000 USD, use standard ACH processing instead of same-day ACH.
 
 > ACH operators monitor for attempts to evade the limit, such as by splitting a single large transaction into multiple smaller transactions. If they suspect an evasion attempt, they process those transactions for next-day settlement in the next available processing window.
 

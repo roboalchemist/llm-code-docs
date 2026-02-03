@@ -33,11 +33,11 @@ To make your Actor compatible with metamorph, use `Actor.getInput()` instead of 
 
 Runtime limits
 
-There's a limit to how many times you can metamorph a single run. Refer to the https://docs.apify.com/platform/limits.md#actor-limits for more details.
+There's a limit to how many times you can metamorph a single run. Refer to the [Actor runtime limits](https://docs.apify.com/platform/limits.md#actor-limits) for more details.
 
 Actor permissions
 
-Actors running under limited permissions can only metamorph into Actors that also run with limited permissions. See https://docs.apify.com/platform/actors/running/permissions.md#how-actor-permissions-work for details.
+Actors running under limited permissions can only metamorph into Actors that also run with limited permissions. See [how Actor permissions work](https://docs.apify.com/platform/actors/running/permissions.md#how-actor-permissions-work) for details.
 
 ## Example
 
@@ -45,7 +45,7 @@ Let's walk through an example of using metamorph to create a hotel review scrape
 
 1. Create an Actor that accepts a hotel URL as input.
 
-2. Use the https://apify.com/apify/web-scraper Actor to scrape reviews.
+2. Use the [apify/web-scraper](https://apify.com/apify/web-scraper) Actor to scrape reviews.
 
 3. Use the metamorph operation to transform into a run of apify/web-scraper.
 

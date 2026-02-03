@@ -1,5 +1,9 @@
 # Source: https://smartcar.com/docs/api-reference/webhooks/events/vehicle-state.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://smartcar.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # VEHICLE_STATE Event
 
 > Signal data delivery when trigger conditions are met
@@ -552,8 +556,3 @@ function handleVehicleState(payload) {
     Understand retry policies
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://smartcar.com/docs/llms.txt

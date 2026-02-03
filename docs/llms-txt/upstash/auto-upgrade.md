@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/features/auto-upgrade.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Auto Upgrade
 
 By default, Upstash will apply usage limits based on your current plan. When you reach these limits, behavior depends on the specific limit type - bandwidth limits will throttle your traffic, while storage limits will reject new write operations. However, Upstash offers an Auto Upgrade feature that automatically upgrades your database to the next higher plan when you reach your usage limits, ensuring uninterrupted service.
@@ -11,7 +15,9 @@ Auto Upgrade is particularly useful for applications with fluctuating or growing
 When enabled:
 
 * For **bandwidth limits**: Instead of throttling your traffic when you reach the bandwidth limit, your database will automatically upgrade to the next plan to accommodate the increased traffic.
-* For **storage limits**: Instead of rejecting write operations when you reach maximum data size, your database will upgrade to a plan with larger storage capacity.
+* For **storage limits**:
+  * **When eviction is off**: Instead of rejecting write operations when you reach maximum data size, your database will upgrade to a plan with larger storage capacity.
+  * **When eviction is on**: Your data will be evicted and operations will resume. Auto Upgrade will not be triggered and system will rely on eviction mechanism in this case.
 
 ## Managing Auto Upgrade
 

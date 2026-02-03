@@ -1,5 +1,9 @@
 # Source: https://herd.laravel.com/docs/macos/advanced-usage/directories-and-files.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://herd.laravel.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Directories and Files
 
 # Herd Directories and Files

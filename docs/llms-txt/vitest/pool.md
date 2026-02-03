@@ -2,10 +2,6 @@
 
 # Source: https://vitest.dev/config/pool.md
 
-# Source: https://vitest.dev/guide/advanced/pool.md
-
-# Source: https://vitest.dev/config/pool.md
-
 ---
 url: /config/pool.md
 ---

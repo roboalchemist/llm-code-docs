@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/oxc/branches-sharing-code.md
 ---
-# oxc/branches-sharing-code&#x20;
 
 ### What it does
 

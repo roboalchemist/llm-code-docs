@@ -111,9 +111,8 @@ params := &stripe.SubscriptionUpdateParams{
       stripe.String(stripe.SubscriptionPaymentSettingsPaymentMethodTypeCustomerBalance),
     },
   },
-  SubscriptionExposedID: stripe.String("sub_49ty4767H20z6a"),
 }
-result, err := sc.V1Subscriptions.Update(context.TODO(), params)
+result, err := sc.V1Subscriptions.Update(context.TODO(), "sub_49ty4767H20z6a", params)
 ```
 
 ```dotnet

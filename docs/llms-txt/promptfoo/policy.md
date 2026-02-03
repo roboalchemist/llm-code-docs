@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/policy/
+
 # Policy Plugin
 
 The Policy red teaming plugin is a customizable tool designed to test whether an AI system adheres to specific policies or guidelines.

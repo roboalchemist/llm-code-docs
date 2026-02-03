@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/integrations/orchestrators/dbt-cloud.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # dbt Cloud
 
 > Integrate Datafold with dbt Cloud to automate Data Diffs in your CI pipeline, leveraging dbt jobs to detect changes and ensure data quality before merging.

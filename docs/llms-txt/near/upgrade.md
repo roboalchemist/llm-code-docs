@@ -29,9 +29,6 @@ Contract's can be updated in two ways:
 Simply re-deploy another contract using your preferred tool, for example, using
 [NEAR CLI](../../tools/cli.md):
 
-<Tabs groupId="cli-tabs">
-  <TabItem value="short" label="Short">
-
 ```bash
 # (optional) If you don't have an account, create one
 near create-account <account-id> --useFaucet
@@ -39,22 +36,6 @@ near create-account <account-id> --useFaucet
 # Deploy the contract
 near deploy <account-id> <wasm-file>
 ```
-
-</TabItem>
-
-<TabItem value="full" label="Full">
-
-```bash
-# (optional) If you don't have an account, create one
-near account create-account sponsor-by-faucet-service somrnd.testnet autogenerate-new-keypair save-to-keychain network-config testnet create
-
-# Deploy the contract
-near contract deploy <accountId> use-file <route_to_wasm> without-init-call network-config testnet sign-with-keychain send
-```
-
-</TabItem>
-
-</Tabs>
 
 ---
 
@@ -100,19 +81,7 @@ A smart contract can also update itself by implementing a method that:
 #### How to Invoke Such Method?
 
 <Tabs groupId="cli-tabs">
-  <TabItem value="short" label="Near CLI (short)">
-
-```bash
-# Load the contract's raw bytes
-CONTRACT_BYTES=`cat ./path/to/wasm.wasm | base64`
-
-# Call the update_contract method
-near call <contract-account> update_contract "$CONTRACT_BYTES" --base64 --accountId <manager-account> --gas 300000000000000
-```
-
-</TabItem>
-
-<TabItem value="full" label="Near CLI (full)">
+<TabItem value="full" label="CLI">
 
 ```bash
 # Call the update_contract method
@@ -128,7 +97,7 @@ near contract call-function as-transaction <contract-account> update_contract fi
 const code = fs.readFileSync("./path/to/wasm.wasm");
 
 // Call the update_contract method
-await wallet.callMethod({
+await wallet.callFunction({
   contractId: guestBook,
   method: "update_contract",
   args: code,
@@ -192,6 +161,26 @@ for such messages to be "premium". You keep track of the messages and payments
 using the following state:
 
 <CodeTabs>
+<Language value="rust" language="rust">
+
+```
+const MESSAGES_PREFIX: &[u8] = b"m";
+const PAYMENTS_PREFIX: &[u8] = b"p";
+
+#[near(serializers=[json, borsh])]
+pub struct PostedMessage {
+    pub premium: bool,
+    pub sender: AccountId,
+    pub text: String,
+}
+
+#[near(contract_state)]
+pub struct GuestBook {
+    messages: Vector<PostedMessage>,
+```
+
+</Language>
+
 <Language value="js" language="js">
 
 ```
@@ -222,14 +211,22 @@ export class GuestBook {
 
 </Language>
 
+</CodeTabs>
+
+#### Update Contract
+
+At some point you realize that you could keep track of the `payments` inside of
+the `PostedMessage` itself, so you change the contract to:
+
+<CodeTabs>
 <Language value="rust" language="rust">
 
 ```
 const MESSAGES_PREFIX: &[u8] = b"m";
-const PAYMENTS_PREFIX: &[u8] = b"p";
 
 #[near(serializers=[json, borsh])]
 pub struct PostedMessage {
+    pub payment: NearToken,
     pub premium: bool,
     pub sender: AccountId,
     pub text: String,
@@ -242,14 +239,6 @@ pub struct GuestBook {
 
 </Language>
 
-</CodeTabs>
-
-#### Update Contract
-
-At some point you realize that you could keep track of the `payments` inside of
-the `PostedMessage` itself, so you change the contract to:
-
-<CodeTabs>
 <Language value="js" language="js">
 
 ```
@@ -281,26 +270,6 @@ export class GuestBook {
 
 </Language>
 
-<Language value="rust" language="rust">
-
-```
-const MESSAGES_PREFIX: &[u8] = b"m";
-
-#[near(serializers=[json, borsh])]
-pub struct PostedMessage {
-    pub payment: NearToken,
-    pub premium: bool,
-    pub sender: AccountId,
-    pub text: String,
-}
-
-#[near(contract_state)]
-pub struct GuestBook {
-    messages: Vector<PostedMessage>,
-```
-
-</Language>
-
 </CodeTabs>
 
 #### Incompatible States
@@ -320,6 +289,63 @@ state, removes the `payments` vector and adds the information to the
 `PostedMessages`:
 
 <CodeTabs>
+<Language value="rust" language="rust">
+
+```
+#[near(serializers=[borsh])]
+pub struct OldPostedMessage {
+    pub premium: bool,
+    pub sender: AccountId,
+    pub text: String,
+}
+
+#[near(serializers=[borsh])]
+pub struct OldState {
+    messages: Vector<OldPostedMessage>,
+    payments: Vector<NearToken>,
+}
+
+#[near]
+impl GuestBook {
+    #[private]
+    #[init(ignore_state)]
+    pub fn migrate() -> Self {
+        // retrieve the current state from the contract
+        let mut old_state: OldState = env::state_read().expect("failed");
+
+        // new messages vector to hold the migrated messages
+        let mut new_messages: Vector<PostedMessage> = Vector::new(MESSAGES_PREFIX);
+
+        // iterate through the state migrating it to the new version
+        for (idx, posted) in old_state.messages.iter().enumerate() {
+            // get the payment and remove it from the old state payments vector so it won't be left in the new state
+            let payment = old_state.payments.get(idx as u64)
+                .expect("failed to get payment")
+                .clone();
+
+            // push the new message to the new messages vector
+            new_messages.push(&PostedMessage {
+                payment,
+                premium: posted.premium,
+                sender: posted.sender.clone(),
+                text: posted.text.clone(),
+            })
+        }
+
+        // remove the payments from the old state
+        old_state.payments.clear();
+
+        // return the new state
+        Self {
+            messages: new_messages,
+        }
+    }
+}
+
+```
+
+</Language>
+
 <Language value="js" language="js">
 
 ```
@@ -387,63 +413,6 @@ export class GuestBook {
 
         this.messages = new_messages;
     }
-
-```
-
-</Language>
-
-<Language value="rust" language="rust">
-
-```
-#[near(serializers=[borsh])]
-pub struct OldPostedMessage {
-    pub premium: bool,
-    pub sender: AccountId,
-    pub text: String,
-}
-
-#[near(serializers=[borsh])]
-pub struct OldState {
-    messages: Vector<OldPostedMessage>,
-    payments: Vector<NearToken>,
-}
-
-#[near]
-impl GuestBook {
-    #[private]
-    #[init(ignore_state)]
-    pub fn migrate() -> Self {
-        // retrieve the current state from the contract
-        let mut old_state: OldState = env::state_read().expect("failed");
-
-        // new messages vector to hold the migrated messages
-        let mut new_messages: Vector<PostedMessage> = Vector::new(MESSAGES_PREFIX);
-
-        // iterate through the state migrating it to the new version
-        for (idx, posted) in old_state.messages.iter().enumerate() {
-            // get the payment and remove it from the old state payments vector so it won't be left in the new state
-            let payment = old_state.payments.get(idx as u64)
-                .expect("failed to get payment")
-                .clone();
-
-            // push the new message to the new messages vector
-            new_messages.push(&PostedMessage {
-                payment,
-                premium: posted.premium,
-                sender: posted.sender.clone(),
-                text: posted.text.clone(),
-            })
-        }
-
-        // remove the payments from the old state
-        old_state.payments.clear();
-
-        // return the new state
-        Self {
-            messages: new_messages,
-        }
-    }
-}
 
 ```
 

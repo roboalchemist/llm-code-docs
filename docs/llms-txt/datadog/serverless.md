@@ -1,3 +1,9 @@
+# Source: https://docs.datadoghq.com/getting_started/serverless.md
+
+# Source: https://docs.datadoghq.com/security/workload_protection/inventory/serverless.md
+
+# Source: https://docs.datadoghq.com/security/application_security/setup/compatibility/serverless.md
+
 # Source: https://docs.datadoghq.com/account_management/billing/serverless.md
 
 # Source: https://docs.datadoghq.com/serverless.md
@@ -6,7 +12,6 @@
 title: Serverless
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Serverless
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Serverless

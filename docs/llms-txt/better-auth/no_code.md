@@ -1,14 +1,10 @@
-# Source: https://www.better-auth.com/llms.txt/docs/errors/no_code.md
+# Source: https://www.better-auth.com/llms.txt/docs/reference/errors/no_code.md
 
-# No code
+# no_code
 
 The code was not found in the request.
 
-***
 
-title: No code
-description: The code was not found in the request.
----------------------------------------------------
 
 ## What is it?
 

@@ -4,8 +4,6 @@
 title: Deadline Cloud Queue
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Deadline Cloud Queue
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.deadline_queue.dataset/index.html
 ---
 
 # Deadline Cloud Queue
@@ -35,6 +33,6 @@ aws.deadline_queue
 | required_file_system_location_names | core | array<string> | A list of the required file system location names in the queue.                                                                                                                                     |
 | role_arn                            | core | string        | The IAM role ARN.                                                                                                                                                                                   |
 | status                              | core | string        | The status of the queue. ACTIVEâThe queue is active. SCHEDULINGâThe queue is scheduling. SCHEDULING_BLOCKEDâThe queue scheduling is blocked. See the provided reason.                               |
-| tags                                | core | hstore        |
+| tags                                | core | hstore_csv    |
 | updated_at                          | core | timestamp     | The date and time the resource was updated.                                                                                                                                                         |
 | updated_by                          | core | string        | The user or system that updated this resource.                                                                                                                                                      |

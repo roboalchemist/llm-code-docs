@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/unverifiable-claims/
+
 # Unverifiable Claims Plugin
 
 The Unverifiable Claims plugin tests whether AI systems make claims about information that cannot be verified or measured, such as untracked behavior, private thoughts, or events that almost happened but didn't.

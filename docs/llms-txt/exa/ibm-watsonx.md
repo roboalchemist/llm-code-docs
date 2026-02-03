@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/reference/ibm-watsonx.md
+# Source: https://exa.ai/docs/reference/ibm-watsonx.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # IBM WatsonX
 
@@ -31,8 +35,3 @@ Make sure to add your API keys to the notebook.
 * [IBM WatsonX](https://www.ibm.com/products/watsonx-ai)
 * [Exa API Playground](https://dashboard.exa.ai/)
 * [Github Repository for this integration](https://github.com/exa-labs/ibm-exa)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

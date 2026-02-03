@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/send-with-phoenix.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send emails with Phoenix
 
 > Learn how to send your first email using Phoenix and the Resend Elixir SDK.
@@ -23,10 +27,10 @@ To get the most out of this guide, you'll need to:
 Install by adding `resend` to your list of dependencies in `mix.exs`:
 
 <CodeGroup>
-  ```elixir mix.exs theme={null}
+  ```elixir mix.exs theme={"theme":{"light":"github-light","dark":"vesper"}}
   def deps do
     [
-      {:resend, "~> 0.4.0"}
+      {:resend, "~> 0.4.5"}
     ]
   end
   ```
@@ -36,7 +40,7 @@ Install by adding `resend` to your list of dependencies in `mix.exs`:
 
 This library includes a Swoosh adapter to make using Resend with a new Phoenix project as easy as possible. All you have to do is configure your Mailer:
 
-```elixir  theme={null}
+```elixir  theme={"theme":{"light":"github-light","dark":"vesper"}}
 config :my_app, MyApp.Mailer,
   adapter: Resend.Swoosh.Adapter,
   api_key: System.fetch_env!("RESEND_API_KEY")
@@ -45,11 +49,11 @@ config :my_app, MyApp.Mailer,
 If you're configuring your app for production, configure your adapter in `prod.exs`, and your API key from the environment in `runtime.exs`:
 
 <CodeGroup>
-  ```elixir prod.exs theme={null}
+  ```elixir prod.exs theme={"theme":{"light":"github-light","dark":"vesper"}}
   config :my_app, MyApp.Mailer, adapter: Resend.Swoosh.Adapter
   ```
 
-  ```elixir runtime.exs theme={null}
+  ```elixir runtime.exs theme={"theme":{"light":"github-light","dark":"vesper"}}
   config :my_app, MyApp.Mailer, api_key: "re_xxxxxxxxx"
   ```
 </CodeGroup>

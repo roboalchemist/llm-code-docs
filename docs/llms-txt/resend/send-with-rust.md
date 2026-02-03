@@ -1,5 +1,9 @@
 # Source: https://resend.com/docs/send-with-rust.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Send emails with Rust
 
 > Learn how to send your first email using the Resend Rust SDK.
@@ -14,14 +18,14 @@ To get the most out of this guide, you'll need to:
 
 First, create a rust project with cargo and `cd` into it.
 
-```bash  theme={null}
+```bash  theme={"theme":{"light":"github-light","dark":"vesper"}}
 cargo init resend-rust-example
 cd resend-rust-example
 ```
 
 Next, add add the Rust Resend SDK as well as [Tokio](https://tokio.rs):
 
-```bash  theme={null}
+```bash  theme={"theme":{"light":"github-light","dark":"vesper"}}
 cargo add resend-rs
 cargo add tokio -F macros,rt-multi-thread
 ```
@@ -30,7 +34,7 @@ The Rust SDK is Async-first so Tokio is needed.
 
 ## Send email
 
-```rust  theme={null}
+```rust  theme={"theme":{"light":"github-light","dark":"vesper"}}
 use resend_rs::types::CreateEmailBaseOptions;
 use resend_rs::{Resend, Result};
 
@@ -61,11 +65,11 @@ can be used instead. The `Resend::default()` should be used in that scenario ins
 Another popular option is to use a `.env` file for environment variables. You can use the
 [`dotenvy`](https://crates.io/crates/dotenvy) crate for that:
 
-```bash  theme={null}
+```bash  theme={"theme":{"light":"github-light","dark":"vesper"}}
 cargo add dotenvy
 ```
 
-```rust  theme={null}
+```rust  theme={"theme":{"light":"github-light","dark":"vesper"}}
 // main.rs
 use dotenvy::dotenv;
 use resend_rs::types::CreateEmailBaseOptions;
@@ -90,7 +94,7 @@ async fn main() -> Result<()> {
 }
 ```
 
-```toml  theme={null}
+```toml  theme={"theme":{"light":"github-light","dark":"vesper"}}
 # .env
 RESEND_API_KEY=re_xxxxxxxxx
 ```

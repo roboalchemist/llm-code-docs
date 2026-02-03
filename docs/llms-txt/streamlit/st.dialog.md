@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/execution-flow/st.dialog
+
 # st.dialog
 
 Function decorator to create a modal dialog.

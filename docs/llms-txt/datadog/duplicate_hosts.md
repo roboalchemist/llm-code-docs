@@ -6,9 +6,8 @@ description: >-
   Troubleshoot duplicate host issues when running Datadog Agent in Kubernetes
   environments on AWS EC2 or EKS
 breadcrumbs: >-
-  Docs > Container Monitoring > Container Troubleshooting > Duplicate hosts with
+  Docs > Containers > Container Troubleshooting > Duplicate hosts with
   Kubernetes on AWS (EC2 or EKS)
-source_url: https://docs.datadoghq.com/troubleshooting/duplicate_hosts/index.html
 ---
 
 # Duplicate hosts with Kubernetes on AWS (EC2 or EKS)

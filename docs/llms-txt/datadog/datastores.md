@@ -6,7 +6,6 @@ description: >-
   Scalable, structured data storage solution that integrates with App Builder
   and Workflow Automation for persistent data without external databases.
 breadcrumbs: Docs > Datastores
-source_url: https://docs.datadoghq.com/datastores/index.html
 ---
 
 # Datastores

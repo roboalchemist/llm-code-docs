@@ -1,265 +1,508 @@
-# Source: https://docs.baseten.co/development/model/performance/engine-builder-config.md
+# Source: https://docs.baseten.co/engines/engine-builder-llm/engine-builder-config.md
 
-# Engine builder configuration
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-> Configure your TensorRT-LLM inference engine
+# Reference config (Engine-Builder-LLM)
 
-This reference lists every configuration option for the TensorRT-LLM Engine Builder. These options are used in `config.yaml`, such as for this Llama 3.1 8B example:
+> Complete reference config for dense text generation models
 
-```yaml config.yaml theme={"system"}
-model_name: Llama 3.1 8B Engine
+This reference covers all build and runtime options for Engine-Builder-LLM deployments. All settings use the `trt_llm` section in `config.yaml`.
+
+## Configuration structure
+
+```yaml  theme={"system"}
+trt_llm:
+  inference_stack: v1  # Always v1 for Engine-Builder-LLM
+  build:
+    base_model: decoder
+    checkpoint_repository: {...}
+    max_seq_len: 131072
+    max_batch_size: 256
+    max_num_tokens: 8192
+    quantization_type: no_quant | fp8 | fp8_kv | fp4 | fp4_kv | fp4_mlp_only
+    quantization_config: {...}
+    tensor_parallel_count: 1
+    plugin_configuration: {...}
+    speculator: {...}  # Optional for lookahead decoding
+  runtime:
+    kv_cache_free_gpu_mem_fraction: 0.9
+    enable_chunked_context: true
+    batch_scheduler_policy: guaranteed_no_evict
+    served_model_name: "model-name"
+    total_token_limit: 500000
+```
+
+## Build configuration
+
+The `build` section configures model compilation and optimization settings.
+
+<ParamField body="base_model" type="string" required>
+  The base model architecture for your model checkpoint.
+
+  **Options:**
+
+  * `decoder`: For CausalLM models (Llama, Mistral, Qwen, Gemma, Phi)
+
+  ```yaml  theme={"system"}
+  build:
+    base_model: decoder
+  ```
+</ParamField>
+
+<ParamField body="checkpoint_repository" type="object" required>
+  Specifies where to find the model checkpoint. Repository must be a valid Hugging Face model repository with the standard structure (config.json, tokenizer files, model weights).
+
+  **Source options:**
+
+  * `HF`: Hugging Face Hub (default)
+  * `GCS`: Google Cloud Storage
+  * `S3`: AWS S3
+  * `AZURE`: Azure Blob Storage
+  * `REMOTE_URL`: HTTP URL to tar.gz file
+  * `BASETEN_TRAINING`: Baseten Training checkpoints
+
+  For detailed configuration options including training checkpoints and cloud storage setup, see [Deploy training and S3 checkpoints](/engines/performance-concepts/deployment-from-training-and-s3).
+
+  ```yaml  theme={"system"}
+  checkpoint_repository:
+    source: HF
+    repo: "meta-llama/Llama-3.3-70B-Instruct"
+    revision: main
+    runtime_secret_name: hf_access_token
+  ```
+</ParamField>
+
+<ParamField body="max_seq_len" type="number" default="max_position_embeddings from model config">
+  Maximum sequence length (context) for single requests. Range: 1 to 1048576.
+
+  ```yaml  theme={"system"}
+  build:
+    max_seq_len: 131072  # 128K context
+  ```
+</ParamField>
+
+<ParamField body="max_batch_size" type="number" default="256">
+  Maximum number of input sequences processed concurrently. Range: 1 to 2048.
+
+  Unless lookahead decoding is enabled, this parameter has little effect on performance. Keep it at 256 for most cases.
+  Recommended not to be set below 8 to keep performance dynamic for various problems.
+
+  ```yaml  theme={"system"}
+  build:
+    max_batch_size: 256
+  ```
+</ParamField>
+
+<ParamField body="max_num_tokens" type="number" default="8192">
+  Maximum number of batched input tokens after padding removal in each batch. Range: 256 to 131072, must be multiple of 64.
+
+  If `enable_chunked_prefill: false`, this also limits the `max_seq_len` that can be processed. Recommended: `8192` or `16384`.
+
+  ```yaml  theme={"system"}
+  build:
+    max_num_tokens: 16384
+  ```
+</ParamField>
+
+<ParamField body="quantization_type" type="string" default="no_quant">
+  Specifies the quantization format for model weights.
+
+  **Options:**
+
+  * `no_quant`: `FP16`/`BF16` precision
+  * `fp8`: `FP8` weights + 16-bit KV cache
+  * `fp8_kv`: `FP8` weights + `FP8` KV cache
+  * `fp4`: `FP4` weights + 16-bit KV cache (B200 only)
+  * `fp4_kv`: `FP4` weights + `FP8` KV cache (B200 only)
+  * `fp4_mlp_only`: `FP4` MLP only + 16-bit KV (B200 only)
+
+  For detailed quantization guidance, see [Quantization Guide](/engines/performance-concepts/quantization-guide).
+
+  ```yaml  theme={"system"}
+  build:
+    quantization_type: fp8_kv
+  ```
+</ParamField>
+
+<ParamField body="quantization_config" type="object">
+  Configuration for post-training quantization calibration.
+
+  **Fields:**
+
+  * `calib_size`: Size of calibration dataset (64-16384, multiple of 64). Defines how many rows of the train split with text column to take.
+  * `calib_dataset`: HuggingFace dataset for calibration. Dataset must have 'text' column (str type) for samples, or 'train' split as subsection.
+  * `calib_max_seq_length`: Maximum sequence length for calibration.
+
+  ```yaml  theme={"system"}
+  build:
+    quantization_type: fp8
+    quantization_config:
+      calib_size: 1536
+      calib_dataset: "cnn_dailymail"
+      calib_max_seq_length: 1024
+  ```
+</ParamField>
+
+<ParamField body="tensor_parallel_count" type="number" default="1">
+  Number of GPUs to use for tensor parallelism. Range: 1 to 8.
+
+  ```yaml  theme={"system"}
+  build:
+    tensor_parallel_count: 4  # For 70B+ models
+  ```
+</ParamField>
+
+<ParamField body="plugin_configuration" type="object">
+  TensorRT-LLM plugin configuration for performance optimization.
+
+  **Fields:**
+
+  * `paged_kv_cache`: Enable paged KV cache (recommended: true)
+  * `use_paged_context_fmha`: Enable paged context FMHA (recommended: true)
+  * `use_fp8_context_fmha`: Enable `FP8` context FMHA (requires `FP8_KV` quantization)
+
+  ```yaml  theme={"system"}
+  build:
+    plugin_configuration:
+      paged_kv_cache: true
+      use_paged_context_fmha: true
+      use_fp8_context_fmha: true  # For FP8_KV quantization
+  ```
+</ParamField>
+
+<ParamField body="speculator" type="object">
+  Configuration for speculative decoding with lookahead. For detailed configuration, see [Lookahead decoding](/engines/engine-builder-llm/lookahead-decoding).
+
+  **Fields:**
+
+  * `speculative_decoding_mode`: `LOOKAHEAD_DECODING` (recommended)
+  * `lookahead_windows_size`: Window size for speculation (1-8)
+  * `lookahead_ngram_size`: N-gram size for patterns (1-16)
+  * `lookahead_verification_set_size`: Verification buffer size (1-8)
+  * `enable_b10_lookahead`: Enable Baseten's lookahead algorithm
+
+  ```yaml  theme={"system"}
+  build:
+    speculator:
+      speculative_decoding_mode: LOOKAHEAD_DECODING
+      lookahead_windows_size: 3
+      lookahead_ngram_size: 8
+      lookahead_verification_set_size: 3
+      enable_b10_lookahead: true
+  ```
+</ParamField>
+
+<ParamField body="num_builder_gpus" type="number">
+  Number of GPUs to use during the build job. Only set this if you encounter errors during the build job. It has no impact once the model reaches the deploying stage. If not set, equals `tensor_parallel_count`.
+
+  ```yaml  theme={"system"}
+  build:
+    num_builder_gpus: 2
+  ```
+</ParamField>
+
+## Runtime configuration
+
+The `runtime` section configures inference engine behavior.
+
+<ParamField body="kv_cache_free_gpu_mem_fraction" type="number" default="0.9">
+  Fraction of GPU memory to reserve for KV cache. Range: 0.1 to 1.0.
+
+  ```yaml  theme={"system"}
+  runtime:
+    kv_cache_free_gpu_mem_fraction: 0.85
+  ```
+</ParamField>
+
+<ParamField body="enable_chunked_context" type="boolean" default="true">
+  Enable chunked prefilling for long sequences.
+
+  ```yaml  theme={"system"}
+  runtime:
+    enable_chunked_context: true
+  ```
+</ParamField>
+
+<ParamField body="batch_scheduler_policy" type="string" default="guaranteed_no_evict">
+  Policy for scheduling requests in batches.
+
+  **Options:**
+
+  * `max_utilization`: Maximize GPU utilization (may evict requests)
+  * `guaranteed_no_evict`: Guarantee request completion (recommended)
+
+  ```yaml  theme={"system"}
+  runtime:
+    batch_scheduler_policy: guaranteed_no_evict
+  ```
+</ParamField>
+
+<ParamField body="served_model_name" type="string">
+  Model name returned in API responses.
+
+  ```yaml  theme={"system"}
+  runtime:
+    served_model_name: "Llama-3.3-70B-Instruct"
+  ```
+</ParamField>
+
+<ParamField body="total_token_limit" type="number" default="500000">
+  Maximum number of tokens that can be scheduled at once. Range: 1 to 1000000.
+
+  ```yaml  theme={"system"}
+  runtime:
+    total_token_limit: 1000000
+  ```
+</ParamField>
+
+## Configuration examples
+
+### Llama 3.3 70B
+
+```yaml  theme={"system"}
+model_name: Llama-3.3-70B-Instruct
 resources:
-  accelerator: H100:1
-secrets:
-  hf_access_token: "set token in baseten workspace"
+  accelerator: H100:4
+  cpu: '4'
+  memory: 40Gi
+  use_gpu: true
 trt_llm:
   build:
     base_model: decoder
     checkpoint_repository:
-      repo: meta-llama/Llama-3.1-8B-Instruct
       source: HF
+      repo: "meta-llama/Llama-3.3-70B-Instruct"
+      revision: main
+      runtime_secret_name: hf_access_token
+    max_seq_len: 131072
+    max_batch_size: 256
+    max_num_tokens: 8192
+    quantization_type: fp8_kv
+    tensor_parallel_count: 4
+    plugin_configuration:
+      paged_kv_cache: true
+      use_paged_context_fmha: true
+      use_fp8_context_fmha: true
+    quantization_config:
+      calib_size: 1024
+      calib_dataset: "cnn_dailymail"
+      calib_max_seq_length: 2048
+  runtime:
+    kv_cache_free_gpu_mem_fraction: 0.9
+    enable_chunked_context: true
+    batch_scheduler_policy: guaranteed_no_evict
+    served_model_name: "Llama-3.3-70B-Instruct"
 ```
 
-## `trt_llm.build`
-
-TRT-LLM engine build configuration. TensorRT-LLM attempts to build a highly optimized network based on input shapes representative of your workload.
-
-### `base_model`
-
-The base model architecture of your model checkpoint. Supported architectures include:
-
-* `decoder` - for CausalLM such as `Llama/Mistral/Qwen3ForCausalLM`
-* `encoder` - for `Bert/Roberta/LLamaForSequenceClassification`, sentence-transformer models, embedding models
-
-### `checkpoint_repository`
-
-Specification of the model checkpoint to be leveraged for engine building. E.g.
+### Qwen 2.5 32B with lookahead decoding
 
 ```yaml  theme={"system"}
-checkpoint_repository:
-  source: HF | GCS | REMOTE_URL
-  repo: meta-llama/Llama-3.1-8B-Instruct | gs://bucket_name | https://your-checkpoint.com/model.tar.gz
-  revision: main  # Optional, only applicable to HF models
-```
-
-To configure access to private model checkpoints, [register secrets in your Baseten workspace](/observability/secrets#best-practices-for-secrets), namely the `hf_access_token` or `trt_llm_gcs_service_account` secrets with a valid service account json for HuggingFace or GCS, respectively.
-
-#### `checkpoint_repository.source`
-
-Source where the checkpoint is stored. This should contain assets as if using git clone with lfs for a Hugging Face repository.
-This includes the tokenizer files, remote code and safetensor files and any json file related to configuration.
-For GCS/REMOTE\_URL, we require the files to be organized in the same folder structured to a huggingface transformers repository.
-Supported sources include:
-
-* `HF` (HuggingFace)
-* `GCS` (Google Cloud Storage)
-* `REMOTE_URL` A tarball containing your checkpoint. **Important**: the archive must unpack with all required files (e.g., `config.json`) at the root level. For example, `config.json` should be directly in the tarball, not nested under a subdirectory like `model_name/config.json`.
-
-#### `checkpoint_repository.repo`
-
-Checkpoint repository name, bucket, or url.
-
-#### `checkpoint_repository.revision`
-
-(default: `"main"`)
-
-The specific model version to use. It can be a branch name, a tag name, or a commit id. This field is only applicable to HF (HuggingFace) models.
-
-### `max_batch_size`
-
-(default: `256`)
-
-Maximum number of input sequences to pass through the engine concurrently. Batch size and throughput share a direct relation, whereas batch size and single request latency share an indirect relation.
-Tune this value according to your SLAs and latency budget.
-
-### `max_seq_len`
-
-(default: max\_position\_embeddings from the model repo)
-
-Defines the maximum sequence length (context) of single request​.
-
-### `max_num_tokens`
-
-(default: `8192`)
-
-Defines the maximum number of batched input tokens after padding is removed in each batch. Tuning this value more efficiently allocates memory to KV cache and executes more requests together.
-
-### `max_prompt_embedding_table_size`
-
-(default: `0`)
-
-Maximum prompt embedding table size for [prompt tuning](https://developer.nvidia.com/blog/an-introduction-to-large-language-models-prompt-engineering-and-p-tuning/).
-
-### `num_builder_gpus`
-
-(default: `auto`)
-
-Number of GPUs to be used at build time, defaults to configured `resource.accelerator` count – useful for FP8 quantization in particular, when more GPU memory is required at build time relative to memory usage at inference.
-
-### `plugin_configuration`
-
-Config for inserting plugin nodes into network graph definition for execution of user-defined kernels.
-
-#### `plugin_configuration.paged_kv_cache`
-
-(default: `True`)
-
-Decompose KV cache into page blocks. Read more about what this does [here](https://github.com/NVIDIA/TensorRT-LLM/blob/main/docs/source/advanced/gpt-attention.md#paged-kv-cache).
-
-#### `plugin_configuration.use_paged_context_fmha`
-
-(default: `True`)
-
-Utilize paged context for fused multihead attention. This configuration is necessary to enable KV cache reuse. Read more about this configuration [here](https://github.com/NVIDIA/TensorRT-LLM/blob/main/docs/source/advanced/kv-cache-reuse.md#how-to-enable-kv-cache-reuse).
-
-#### `plugin_configuration.use_fp8_context_fmha`
-
-(default: `False`)
-
-Utilize FP8 quantization for context fused multihead attention to accelerate attention. To use this configuration, also set `plugin_configuration.use_paged_context_fmha`. Recommended: true
-Read more about when to enable this [here](https://github.com/NVIDIA/TensorRT-LLM/blob/main/docs/source/advanced/gpt-attention.md#fp8-context-fmha).
-
-### `quantization_type`
-
-(default: `no_quant`)
-
-Quantization format with which to build the engine. Supported formats include:
-
-* `no_quant` (meaning bf16 or fp16 depending on `torch_dtype` in the huggingface repo)
-* `fp8` (sm 89+)
-* `fp8_kv` (sm 89+)
-* `fp4` (sm 100+)
-* `fp4_kv` (sm 100+)
-
-Additionally, refer to the hardware and quantization technique [support matrix](https://nvidia.github.io/TensorRT-LLM/reference/support-matrix.html).
-
-### `strongly_typed`
-
-(default: `False`)
-
-Whether to build the engine using strong typing, enabling TensorRT's optimizer to statically infer intermediate tensor types which can speed up build time for some formats.
-Automatically typed is always enabled for fp4 and fp8 engines.
-Weak typing enables the optimizer to elect tensor types, which may result in a faster runtime. For more information refer to TensorRT documentation [here](https://docs.nvidia.com/deeplearning/tensorrt/developer-guide/index.html#strong-vs-weak-typing).
-
-### `tensor_parallel_count`
-
-(default: `1`)
-
-Tensor parallelism count. For more information refer to NVIDIA documentation [here](https://docs.nvidia.com/nemo-framework/user-guide/latest/nemotoolkit/features/parallelisms.html#tensor-parallelism).
-
-### `speculator`
-
-(default: `None`)
-
-Config for inserting optional speculative decoding options.
-
-#### Speculation with lookahead decoding
-
-Speculation with lookahead decoding can be used by any model and does not require training.
-The implemenation is based on the work at [lmsys.](https://lmsys.org/blog/2023-11-21-lookahead-decoding/)
-We currently disallow performing structured generation and tool-calling with this optimization.
-
-```yaml  theme={"system"}
-model_name: Llama-3.1-8B-Instruct (lookahead decoding)
+model_name: Qwen-2.5-32B-Lookahead
 resources:
-  accelerator: H100
+  accelerator: H100:2
+  cpu: '2'
+  memory: 20Gi
   use_gpu: true
 trt_llm:
   build:
-    base_model: llama
+    base_model: decoder
     checkpoint_repository:
-      repo: meta-llama/Llama-3.1-8B-Instruct
       source: HF
-    max_batch_size: 32
+      repo: "Qwen/Qwen2.5-32B-Instruct"
+      revision: main
+    max_seq_len: 32768
+    max_batch_size: 128
+    max_num_tokens: 8192
     quantization_type: fp8_kv
+    tensor_parallel_count: 2
     speculator:
       speculative_decoding_mode: LOOKAHEAD_DECODING
-      windows_size: 7
-      ngram_size: 5
-      verification_set_size: 7
+      lookahead_windows_size: 3
+      lookahead_ngram_size: 8
+      lookahead_verification_set_size: 3
+      enable_b10_lookahead: true
+    plugin_configuration:
+      paged_kv_cache: true
+      use_paged_context_fmha: true
+      use_fp8_context_fmha: true
   runtime:
-    kv_cache_free_gpu_mem_fraction: 0.62
+    kv_cache_free_gpu_mem_fraction: 0.85
+    enable_chunked_context: true
+    batch_scheduler_policy: guaranteed_no_evict
+    served_model_name: "Qwen-2.5-32B-Instruct"
 ```
 
-#### `speculator.lookahead_ngram_size`, `speculator.lookahead_windows_size`, `speculator.lookahead_verification_set_size`
-
-Usage of ngram size, window size, verification\_set\_size in the lookahead algorithm.
-
-* `windows_size` is the Jacobi window size, meaning number of n-grams in lookahead branch that explores future draft tokens.
-* `ngram_size` is the n-gram size, meaning the maximum number of draft tokens accepted per iteration.
-* `verification_set_size` is the maximum number of n-grams considered for verification, meaning the number of draft token beam hypotheses.
-
-A good default value could be \[5,5,5]. Often, lookahead\_verification\_set\_size is set to lookahead\_windows\_size.
-`lookahead_ngram_size` is often increased when the generated tokens are simlar to contents of the prompt, and decreased if dissimilar.
-
-### `lora_adapters`
-
-(default: `None`)
-
-A mapping from LoRA names to checkpoint repositories.
-For example.
+### Small model on L4
 
 ```yaml  theme={"system"}
-checkpoint_repository:
-  repo: meta-llama/Llama-2-13b-hf
-  source: HF
-lora_adapters:
-  lora1:
-    repo: hfl/chinese-llama-2-lora-13b
-    source: HF
+model_name: Llama-3.2-3B-Instruct
+resources:
+  accelerator: L4
+  cpu: '1'
+  memory: 10Gi
+  use_gpu: true
+trt_llm:
+  build:
+    base_model: decoder
+    checkpoint_repository:
+      source: HF
+      repo: "meta-llama/Llama-3.2-3B-Instruct"
+      revision: main
+    max_seq_len: 8192
+    max_batch_size: 256
+    max_num_tokens: 4096
+    quantization_type: fp8
+    tensor_parallel_count: 1
+    plugin_configuration:
+      paged_kv_cache: true
+      use_paged_context_fmha: true
+      use_fp8_context_fmha: false
+  runtime:
+    kv_cache_free_gpu_mem_fraction: 0.9
+    enable_chunked_context: true
+    batch_scheduler_policy: guaranteed_no_evict
+    served_model_name: "Llama-3.2-3B-Instruct"
 ```
 
-See [`checkpoint_repository`](/development/model/performance/engine-builder-config#checkpoint-repository) for details on how to configure checkpoint repositories.
+### B200 with `FP4` quantization
 
-Lora naming:
-In addition to specifying the LoRAs here, you need to specify the [`served_model_name`](/development/model/performance/engine-builder-config#served-model-name) that is used to refer to the base model.
-The `served_model_name` is required for deploying LoRAs.
-The LoRA name (in the example above, this is "lora1") is used to query the model using the specified LoRA.
+```yaml  theme={"system"}
+model_name: Qwen-2.5-32B-FP4
+resources:
+  accelerator: B200
+  cpu: '2'
+  memory: 20Gi
+  use_gpu: true
+trt_llm:
+  build:
+    base_model: decoder
+    checkpoint_repository:
+      source: HF
+      repo: "Qwen/Qwen2.5-32B-Instruct"
+      revision: main
+    max_seq_len: 32768
+    max_batch_size: 256
+    max_num_tokens: 8192
+    quantization_type: fp4_kv
+    tensor_parallel_count: 1
+    plugin_configuration:
+      paged_kv_cache: true
+      use_paged_context_fmha: true
+      use_fp8_context_fmha: true
+    quantization_config:
+      calib_size: 1024
+      calib_dataset: "cnn_dailymail"
+      calib_max_seq_length: 2048
+  runtime:
+    kv_cache_free_gpu_mem_fraction: 0.9
+    enable_chunked_context: true
+    batch_scheduler_policy: guaranteed_no_evict
+    served_model_name: "Qwen-2.5-32B-Instruct"
+```
 
-Lora sizes:
-For optimal experience wrt efficency and stability we recommend inference with homogenious adapters (all the adapters have the same ranks and target the same modules).
+## Validation and troubleshooting
 
-## `trt_llm.runtime`
+### Common errors
 
-TRT-LLM engine runtime configuration.
+**Error:** `FP8 quantization is only supported on L4, H100, H200, B200`
 
-### `kv_cache_free_gpu_mem_fraction`
+* **Cause:** Using `FP8` quantization on unsupported GPU.
+* **Fix:** Use H100 or newer GPU, or use `no_quant`.
 
-(default: `0.9`)
+**Error:** `FP4 quantization is only supported on B200`
 
-Used to control the fraction of free gpu memory allocated for the KV cache. For more information, refer to the documentation [here](https://nvidia.github.io/TensorRT-LLM/performance/performance-tuning-guide/useful-runtime-flags.html#max-tokens-in-paged-kv-cache-and-kv-cache-free-gpu-memory-fraction).
-If you are using DRAFT\_TOKENS\_EXTERNAL, we recommend to lower this, depending on the draft model size.
+* **Cause:** Using `FP4` quantization on unsupported GPU.
+* **Fix:** Use B200 GPU or `FP8` quantization.
 
-### `enable_chunked_context`
+**Error:** `Using fp8 context fmha requires fp8 kv, or fp4 with kv cache dtype`
 
-(default: `True`)
+* **Cause:** Mismatch between quantization and context FMHA settings.
+* **Fix:** Use `fp8_kv` quantization or disable `use_fp8_context_fmha`.
 
-Enables chunked context, increasing the chance of batch processing between context and generation phase – which may be useful to increase throughput.
-Note that one must set `plugin_configuration.use_paged_context_fmha: True` in order to leverage this feature.
+**Error:** `Tensor parallelism and GPU count must be the same`
 
-### `batch_scheduler_policy`
+* **Cause:** Mismatch between `tensor_parallel_count` and GPU count.
+* **Fix:** Ensure `tensor_parallel_count` matches `accelerator` count.
 
-(default: `guaranteed_no_evict`)
+### Performance tuning
 
-Supported scheduler policies are as follows:
+**For lowest latency:**
 
-* `guaranteed_no_evict`
-* `max_utilization`
+* Reduce `max_batch_size` and `max_num_tokens`.
+* Use `batch_scheduler_policy: guaranteed_no_evict`.
+* Consider smaller models or quantization.
 
-`guaranteed_no_evict` ensures that an in progress request is never evicted by reserving KV cache space for the maximum possible tokens that can be returned for a request.
-`max_utilization` packs as many requests as possible during scheduling, which may increase throughput at the expense of additional latency.
-For more information refer to the NVIDIA documentation [here](https://nvidia.github.io/TensorRT-LLM/performance/performance-tuning-guide/useful-runtime-flags.html#capacity-scheduler-policy).
+**For highest throughput:**
 
-### `request_default_max_tokens`
+* Increase `max_batch_size` and `max_num_tokens`.
+* Use `batch_scheduler_policy: max_utilization`.
+* Enable quantization on supported hardware.
 
-(default: `None`)
+**For cost optimization:**
 
-Default server configuration for the maximum number of tokens to generate for a single sequence, if one is not provided in the request body.
-Sensible settings depend on your use case, a general value to set can be around 1000 tokens.
+* Use L4 GPUs with `FP8` quantization.
+* Choose appropriately sized models.
+* Tune `max_seq_len` to your actual requirements.
 
-### `served_model_name`
+## Model repository structure
 
-(default: `None`)
+All model sources (S3, GCS, HuggingFace, or tar.gz) must follow the standard HuggingFace repository structure. Files must be in the root directory, similar to running:
 
-The name used to refer to the base model when using LoRAs.
-At least one LoRA must be specified under [`lora_adapters`](/development/model/performance/engine-builder-config#lora-adapters) to use LoRAs.
+```bash  theme={"system"}
+git clone https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct
+```
+
+### Required files
+
+**Model configuration (`config.json`):**
+
+* `max_position_embeddings`: Limits maximum context size (content beyond this is truncated).
+* `vocab_size`: Vocabulary size for the model.
+* `architectures`: Must include `LlamaForCausalLM`, `MistralForCausalLM`, or similar causal LM architectures. Custom code is typically not read.
+* `torch_dtype`: Default inference dtype (`float16` or `bfloat16`). Cannot be a pre-quantized model.
+
+**Model weights (`model.safetensors`):**
+
+* Or: `model.safetensors.index.json` + `model-xx-of-yy.safetensors` (sharded).
+* Convert to safetensors if you encounter issues with other formats.
+* Cannot be a pre-quantized model. Model must be an `fp16`, `bf16`, or `fp32` checkpoint.
+
+**Tokenizer files (`tokenizer_config.json` and `tokenizer.json`):**
+
+* For maximum compatibility, use "FAST" tokenizers compatible with Rust.
+* Cannot contain custom Python code.
+* For chat completions: must contain `chat_template`, a Jinja2 template.
+
+### Architecture support
+
+| **Model family** | **Supported architectures**            | **Notes**                                           |
+| ---------------- | -------------------------------------- | --------------------------------------------------- |
+| **Llama**        | `LlamaForCausalLM`                     | Full support for Llama 3. For Llama 4, use BIS-LLM. |
+| **Mistral**      | `MistralForCausalLM`                   | Including v0.3 and Small variants.                  |
+| **Qwen**         | `Qwen2ForCausalLM`, `Qwen3ForCausalLM` | Including Qwen 2.5 and Qwen 3 series.               |
+| **QwenMoE**      | `Qwen3MoEForCausalLM`                  | Specfic support for Qwen3MoE.                       |
+| **Gemma**        | `GemmaForCausalLM`                     | Including Gemma 2 and Gemma 3 series, bf16 only.    |
+
+## Best practices
+
+### Model size and GPU selection
+
+| **Model size** | **Recommended GPU** | **Quantization** | **Tensor parallel** |
+| -------------- | ------------------- | ---------------- | ------------------- |
+| `<8B`          | L4/H100             | `FP8_KV`         | 1                   |
+| 8B-70B         | H100                | `FP8_KV`         | 1-2                 |
+| 70B+           | H100/B200           | `FP8_KV`/`FP4`   | 4+                  |
+
+### Production recommendations
+
+* Use `quantization_type: fp8_kv` for best performance/accuracy balance.
+* Set `max_batch_size` based on your expected traffic patterns.
+* Enable `paged_kv_cache` and `use_paged_context_fmha` for optimal performance.
+
+### Development recommendations
+
+* Use `quantization_type: no_quant` for fastest iteration.
+* Set smaller `max_seq_len` to reduce build time.
+* Use `batch_scheduler_policy: guaranteed_no_evict` for predictable behavior.

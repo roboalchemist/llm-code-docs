@@ -4,7 +4,7 @@
 
 To access the contents of the stored messages (including raw MIME) you'll need the email's storage URL. This can be found on a Domains Accepted/Delivered/Failed event.
 
-The event can be found through the [Events API](https://mailgun-docs.redoc.ly/docs/mailgun/api-reference/openapi-final/tag/Events/#tag/Events) or through the UI  in the expanded log entry under the Send->Logs section.
+The event can be found through the [Logs API](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/logs) or through the UI  in the expanded log entry under the Send->Logs section.
 
 ### Sample code
 

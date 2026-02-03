@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/templates/payg/algolia.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Clone Algolia pricing
 
 > Replicate Algolia's pay-as-you-go pricing model with Lago.

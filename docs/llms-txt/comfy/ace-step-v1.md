@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/audio/ace-step/ace-step-v1.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ComfyUI ACE-Step Native Example
 
 > This guide will help you create dynamic music using the ACE-Step model in ComfyUI
@@ -34,7 +38,7 @@ You can visit their [Github](https://github.com/ace-step/ACE-Step?tab=readme-ov-
 
     <Tab title="Desktop or Cloud users">
       * The Desktop is base on ComfyUI stable release, it will auto-update when there is a new Desktop stable release available.
-      * [Cloud](https://cloud.comfy.org) will update after ComfyUI stable release, we will update the Cloud after ComfyUI stable release.
+      * [Cloud](https://cloud.comfy.org) will update after ComfyUI stable release.
 
       So, if you find any core node missing in this document, it might be because the new core nodes have not yet been released in the latest stable version. Please wait for the next stable release.
     </Tab>
@@ -44,8 +48,6 @@ You can visit their [Github](https://github.com/ace-step/ACE-Step?tab=readme-ov-
 ## ACE-Step ComfyUI Text-to-Audio Generation Workflow Example
 
 ### 1. Download Workflow and Related Models
-
-Click the button below to download the corresponding workflow file. Drag it into ComfyUI to load the workflow information. The workflow includes model download information.
 
 Click the button below to download the corresponding workflow file. Drag it into ComfyUI to load the workflow information. The workflow includes model download information.
 

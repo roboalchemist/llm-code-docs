@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/powered-by-zapier/authentication/methods/app-access-token.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # App Access Token
 
 > How to authenticate with an App Access Token

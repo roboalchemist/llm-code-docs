@@ -8,11 +8,11 @@
 
 ## What is the Google ADK
 
-https://github.com/google/adk-python is a framework for developing and deploying AI agents.
+[Google Agent Development Kit](https://github.com/google/adk-python) is a framework for developing and deploying AI agents.
 
 Explore Google ADK
 
-For more details, check out https://google.github.io/adk-docs/.
+For more details, check out [Google ADK documentation](https://google.github.io/adk-docs/).
 
 ## How to use Apify with Google ADK
 
@@ -20,7 +20,7 @@ Apify is a marketplace of web scraping and automation tools, AI agents, and MCP 
 
 ### Prerequisites
 
-* *Apify API token*: To use Apify Actors in Google ADK, you need an Apify API token. To obtain your token, check https://docs.apify.com/platform/integrations/api.md#api-token.
+* *Apify API token*: To use Apify Actors in Google ADK, you need an Apify API token. To obtain your token, check [Apify documentation](https://docs.apify.com/platform/integrations/api.md#api-token).
 
 * *Python packages*: Install the following Python packages:
 
@@ -98,9 +98,9 @@ Find a pub near the Ferry Building in San Francisco.
 
 ## Resources
 
-* https://docs.apify.com/platform/actors
-* https://google.github.io/adk-docs/get-started/
-* https://blog.apify.com/what-are-ai-agents/
-* https://mcp.apify.com
-* https://docs.apify.com/platform/integrations/mcp
-* https://apify.com/apify/openrouter
+* [Apify Actors](https://docs.apify.com/platform/actors)
+* [Google ADK documentation](https://google.github.io/adk-docs/get-started/)
+* [What are AI agents?](https://blog.apify.com/what-are-ai-agents/)
+* [Apify MCP Server](https://mcp.apify.com)
+* [Apify MCP Server documentation](https://docs.apify.com/platform/integrations/mcp)
+* [Apify OpenRouter proxy](https://apify.com/apify/openrouter)

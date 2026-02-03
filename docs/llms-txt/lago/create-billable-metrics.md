@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/billable-metrics/create-billable-metrics.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create billable metrics
 
 > Billable metrics define how incoming events are aggregated in order to measure consumption.

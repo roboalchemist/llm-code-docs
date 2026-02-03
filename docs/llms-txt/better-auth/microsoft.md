@@ -4,11 +4,7 @@
 
 Microsoft provider setup and usage.
 
-***
 
-title: Microsoft
-description: Microsoft provider setup and usage.
-------------------------------------------------
 
 Enabling OAuth with Microsoft Azure Entra ID (formerly Active Directory) allows your users to sign in and sign up to your application with their Microsoft account.
 

@@ -2,10 +2,7 @@
 
 # Get selected SDK keys
 
-```
-GET 
-/v1/proxy-profiles/:proxyProfileId/sdk-keys
-```
+Copy page
 
 This endpoint returns the list of SDK keys selected for a Proxy Profile identified by the `proxyProfileId`.
 

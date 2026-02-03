@@ -4,7 +4,6 @@
 title: What AWS components are supported?
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > FAQ > What AWS components are supported?
-source_url: https://docs.datadoghq.com/faq/supported-aws-components/index.html
 ---
 
 # What AWS components are supported?

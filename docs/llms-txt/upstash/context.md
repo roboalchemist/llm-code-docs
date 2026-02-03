@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/workflow/basics/context.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Overview
 
 A workflow's **context** is an object provided by the route function.
@@ -80,6 +84,8 @@ You can use the functions exposed by context object to define workflow steps.
 * [context.sleep](/workflow/basics/context/sleep)
 * [context.sleepUntil](/workflow/basics/context/sleepUntil)
 * [context.waitForEvent](/workflow/basics/context/waitForEvent)
+* [context.createWebhook](/workflow/basics/context/createWebhook)
+* [context.waitForWebhook](/workflow/basics/context/waitForWebhook)
 * [context.notify](/workflow/basics/context/notify)
 * [context.invoke](/workflow/basics/context/invoke)
 * [context.call](/workflow/basics/context/call)

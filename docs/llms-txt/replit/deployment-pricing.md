@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/billing/deployment-pricing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Publishing costs
 
 > Flexible publishing costs that scale with your app's needs. Pay only for what you use with transparent, credit-based billing.
@@ -40,13 +44,18 @@ export const TeamsCredits = '$40';
 
 export const CoreCredits = '$25';
 
+<Warning>
+  The Teams plan is being replaced by the new Pro plan. These changes will take effect on February 20th, 2026. [Learn more about what's changing](https://blog.replit.com/pro-plan).
+</Warning>
+
 Replit's publishing costs are designed to scale with your app's needs. Choose from usage-based billing that charges only when your app serves requests, or predictable flat-rate options for consistent workloads.
 
 ## How billing works
 
 All publishing costs are deducted from your monthly credits. You only pay usage-based fees after your monthly credits are fully used.
 
-* **[Core Plan](/replit-core/replit-core)**: Includes {CoreCredits} in monthly credits
+* **Starter Plan**: Includes 1 free published app. The deployment expires after 30 days but can be re-published. See [Starter Plan](/billing/plans/starter-plan) for details.
+* **[Core Plan](/billing/plans/replit-core)**: Includes {CoreCredits} in monthly credits
 * **[Teams Plan](/category/teams)**: Includes {TeamsCredits} in monthly credits per member
 
 <Note>
@@ -311,8 +320,7 @@ These examples show realistic costs for different types of applications.
   </Card>
 
   <Card title="Learn about AI billing" icon="brain" href="/billing/ai-billing">
-    Understand how [Agent](/replitai/agent) and [Assistant](/replitai/assistant)
-    affect your bill.
+    Understand how [Agent](/replitai/agent) affects your bill.
   </Card>
 
   <Card title="Monitor published apps" icon="chart-line" href="/cloud-services/deployments/monitoring-a-deployment">

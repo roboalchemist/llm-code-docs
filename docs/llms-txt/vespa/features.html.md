@@ -2,14 +2,6 @@
 
 # Source: https://docs.vespa.ai/en/learn/features.html.md
 
-# Source: https://docs.vespa.ai/ja/features.html.md
-
-# Source: https://docs.vespa.ai/en/learn/features.html.md
-
-# Source: https://docs.vespa.ai/ja/features.html.md
-
-# Source: https://docs.vespa.ai/en/learn/features.html.md
-
 # Features
 
  
@@ -94,7 +86,7 @@ This section provides an overview of the main features of Vespa. The remainder o
 - System logs are collected to a central server in real time. 
 - Selected metrics may be emitted to a third-party metrics/alerting system from all the nodes.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

@@ -1,5 +1,9 @@
 # Source: https://docs.asapp.com/agent-desk/integrations/web-sdk/web-javascript-api.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Web JavaScript API
 
 This section details the various API methods you can call to the ASAPP Chat SDK.

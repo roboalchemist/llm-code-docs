@@ -5,16 +5,16 @@ slug: authentication-identity-servicestack
 title: Using ServiceStack Auth in MVC
 ---
 
-[mvcauth](https://github.com/NetCoreTemplates/mvcauth) is a .NET 6.0 MVC Website integrated with ServiceStack Auth:
+[mvcauth](https://github.com/LegacyTemplates/mvcauth) is a .NET 6.0 MVC Website integrated with ServiceStack Auth:
 
-[![](https://raw.githubusercontent.com/ServiceStack/Assets/master/csharp-templates/mvcauth.png)](https://github.com/NetCoreTemplates/mvcauth)
+[![](https://raw.githubusercontent.com/ServiceStack/Assets/master/csharp-templates/mvcauth.png)](https://github.com/LegacyTemplates/mvcauth)
 
 ## New Project
 
 Create new `mvcauth` project with:
 
 :::sh
-x new mvcauth ProjectName
+npx create-net mvcauth ProjectName
 :::
 
 The ServiceStack Auth is pre-configured to persist users in an OrmLite Auth Repository (default SQLite) and enables both local

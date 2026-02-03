@@ -4,11 +4,7 @@
 
 GitHub provider setup and usage.
 
-***
 
-title: GitHub
-description: GitHub provider setup and usage.
----------------------------------------------
 
 <Steps>
   <Step>

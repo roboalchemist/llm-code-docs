@@ -68,7 +68,7 @@ However, please note that we will evaluate each app on a case-by-case basis, and
 
 
 To learn about strict requirements for publishing your app, see the [App
-  Developer Guidelines](/apps-sdk/app-developer-guidelines).
+  Submission Guidelines](https://developers.openai.com/apps-sdk/app-submission-guidelines).
 
 
 
@@ -91,4 +91,4 @@ Additionally, ensure that you avoid:
 
 ### Next steps
 
-Once you have made sure your app has great UX, you can polish your app's UI by following our recommendations in the [UI guidelines](/apps-sdk/concepts/ui-guidelines).
+Once you have made sure your app has great UX, you can polish your app's UI by following our recommendations in the [UI guidelines](https://developers.openai.com/apps-sdk/concepts/ui-guidelines).

@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/charts/st.altair_chart
+
 # st.altair_chart
 
 Display a chart using the Vega-Altair library.

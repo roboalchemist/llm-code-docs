@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/deploy/vercel-external-proxies.md
+# Source: https://www.mintlify.com/docs/deploy/vercel-external-proxies.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # External proxies with Vercel
 
@@ -31,8 +35,3 @@ To verify your proxy is correctly configured:
 1. Test that `https://[yourdomain].com/.well-known/vercel/` returns a response.
 2. Ensure SSL certificates are provisioning correctly in your Vercel dashboard.
 3. Check that domain verification completes successfully.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://mintlify.com/docs/llms.txt

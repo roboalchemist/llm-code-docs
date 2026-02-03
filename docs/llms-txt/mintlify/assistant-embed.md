@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/guides/assistant-embed.md
+# Source: https://www.mintlify.com/docs/guides/assistant-embed.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Tutorial: Build an in-app documentation assistant
 
@@ -20,7 +24,7 @@ Users can use the widget to get help with your product without leaving your appl
 
 ## Prerequisites
 
-* [Mintlify Pro or Custom plan](https://mintlify.com/pricing)
+* [Mintlify Pro or Enterprise plan](https://mintlify.com/pricing)
 * Your domain name, which appears at the end of your dashboard URL. For example, if your dashboard URL is `https://dashboard.mintlify.com/org-name/domain-name`, your domain name is `domain-name`
 * An [assistant API key](https://dashboard.mintlify.com/settings/organization/api-keys)
 * Node.js v18 or higher and npm installed
@@ -33,24 +37,39 @@ Users can use the widget to get help with your product without leaving your appl
 3. Copy the assistant API key (starts with `mint_dsc_`) and save it securely.
 
 <Note>
-  The assistant API key is a public token that can be used in frontend code. Calls using this token count toward your plan's message allowance and can incur overages.
+  The assistant API key is a public token that you can use in frontend code. Calls using this token count toward your plan's message allowance and can incur overages.
 </Note>
 
 ## Set up the example
 
-The quickest way to get started is to clone the [example repository](https://github.com/mintlify/assistant-embed-example) and customize it for your needs.
+Clone the [example repository](https://github.com/mintlify/assistant-embed-example) and customize it for your needs.
 
 <Steps>
   <Step title="Clone the repository">
     ```bash  theme={null}
     git clone https://github.com/mintlify/assistant-embed-example.git
     cd assistant-embed-example
-    npm install
     ```
   </Step>
 
+  <Step title="Choose your development tool">
+    The repository includes Next.js and Vite examples. Choose the tool you prefer to use.
+
+    <CodeGroup>
+      ```bash title="Next.js" theme={null}
+      cd nextjs
+      npm install
+      ```
+
+      ```bash title="Vite" theme={null}
+      cd vite
+      npm install
+      ```
+    </CodeGroup>
+  </Step>
+
   <Step title="Configure your project">
-    Open `src/config.js` and update with your Mintlify project details:
+    Open `src/config.js` and update with your Mintlify project details.
 
     ```js src/config.js theme={null}
     export const ASSISTANT_CONFIG = {
@@ -66,7 +85,7 @@ The quickest way to get started is to clone the [example repository](https://git
   </Step>
 
   <Step title="Add your API token">
-    Create a `.env` file in the project root:
+    Create a `.env` file in the project root.
 
     ```bash .env theme={null}
     VITE_MINTLIFY_TOKEN=mint_dsc_your_token_here
@@ -83,31 +102,6 @@ The quickest way to get started is to clone the [example repository](https://git
     Open your application in a browser and click the **Ask** button to open the assistant widget.
   </Step>
 </Steps>
-
-## Project structure
-
-The example uses a component-based architecture.
-
-```text  theme={null}
-src/
-├── App.css                 # App styles
-├── App.jsx                 # Main app component that renders the widget
-├── config.js               # Configuration (domain and docsURL)
-├── index.css               # Global styles
-├── main.jsx                # Entry point
-├── utils.js                # Helper functions for parsing suggestions and extracting sources
-└── components/
-    ├── AssistantWidget.jsx # Main widget component with chat state and API logic
-    └── Message.jsx         # Individual message component for rendering user and assistant messages
-```
-
-**Key files:**
-
-* **`src/App.jsx`**: Main app component. Shows how to import and use the `AssistantWidget` component.
-* **`src/config.js`**: Centralized configuration. Update this file with your domain and docs URL.
-* **`src/components/AssistantWidget.jsx`**: The main widget component. Manages the open/close state, chat messages, and API calls.
-* **`src/utils.js`**: Contains utility functions for parsing the assistant's response format and extracting sources.
-* **`src/components/Message.jsx`**: Renders individual messages with support for Markdown and suggestion links.
 
 ## Customization ideas
 
@@ -166,7 +160,7 @@ export function AssistantWidget({ domain, docsURL }) {
   }, []);
 
   const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat({
-    api: `https://api-dsc.mintlify.com/v1/assistant/${domain}/message`,
+    api: `https://api.mintlify.com/discovery/v1/assistant/${domain}/message`,
     headers: {
       'Authorization': `Bearer ${import.meta.env.VITE_MINTLIFY_TOKEN}`,
     },

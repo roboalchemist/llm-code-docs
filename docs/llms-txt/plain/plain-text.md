@@ -1,5 +1,9 @@
 # Source: https://www.plain.com/docs/ui-components/plain-text.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.plain.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # PlainText
 
 > Useful when you want to show any text that should not have any formatting (is not Markdown). If you want markdown please use [Text](/ui-components/text).

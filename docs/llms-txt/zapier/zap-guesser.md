@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/powered-by-zapier/ai-workflows/zap-guesser.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Zap Guesser
 
 > Quickly generate intelligent Zap suggestions from natural language prompts.

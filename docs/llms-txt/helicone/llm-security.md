@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/features/advanced-usage/llm-security.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # LLM Security
 
 > Enable robust security measures in your LLM applications to protect against prompt injections, detect anomalies, and prevent data exfiltration.

@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/quickstart/how-zapier-works.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How Zapier works
 
 > [Zapier is a tool](https://zapier.com/how-it-works) that helps you automate repetitive tasks between two or more apps, no code necessary. Our customers use Zapier to move information from one app to another automatically rather than manually. Each Zap you create starts with a trigger (something that happens in one app) and then one or more actions (something else that happens in another app).

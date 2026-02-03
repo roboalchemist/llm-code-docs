@@ -28,7 +28,7 @@ LiveKit is written in Go, leveraging [Pion](https://github.com/pion/webrtc)'s Go
 
 ---
 
-This document was rendered at 2025-12-31T18:29:39.309Z.
+This document was rendered at 2026-02-03T03:25:24.407Z.
 For the latest version of this document, see [https://docs.livekit.io/reference/internals/livekit-sfu.md](https://docs.livekit.io/reference/internals/livekit-sfu.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

@@ -1,5 +1,9 @@
 # Source: https://gofastmcp.com/python-sdk/fastmcp-server-middleware-tool_injection.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # tool_injection
 
 # `fastmcp.server.middleware.tool_injection`
@@ -35,7 +39,7 @@ List resources available on the server.
 ### `read_resource` <sup><a href="https://github.com/jlowin/fastmcp/blob/main/src/fastmcp/server/middleware/tool_injection.py#L98" target="_blank"><Icon icon="github" style="width: 14px; height: 14px;" /></a></sup>
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-read_resource(context: Context, uri: Annotated[AnyUrl | str, 'The URI of the resource to read.']) -> list[ReadResourceContents]
+read_resource(context: Context, uri: Annotated[AnyUrl | str, 'The URI of the resource to read.']) -> ResourceResult
 ```
 
 Read a resource available on the server.

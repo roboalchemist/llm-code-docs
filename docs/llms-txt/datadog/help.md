@@ -4,7 +4,6 @@
 title: Datadog Help
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Datadog Help
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Datadog Help

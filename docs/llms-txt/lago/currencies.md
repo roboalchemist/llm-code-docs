@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/api-reference/resources/currencies.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Currencies
 
 > List of accepted currencies (ISO 4217).

@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/api-reference/voices/voices-preview-get.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Voice Sample
 
 > Provides an audio sample for a voice, or the error caused by using it.
@@ -59,7 +63,3 @@ components:
       description: API key
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

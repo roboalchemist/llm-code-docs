@@ -1,6 +1,12 @@
 # Source: https://docs.windsurf.com/windsurf-reviews/windsurf-reviews.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Windsurf PR Reviews
+
+> AI-powered GitHub pull request reviews for Teams and Enterprise. Automatically review PRs, edit titles, and provide feedback as GitHub comments.
 
 Windsurf PR Reviews helps teams streamline code reviews with AI-powered feedback on GitHub pull requests. This feature is currently in beta for Teams and Enterprise customers using GitHub Cloud.
 

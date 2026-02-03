@@ -1,5 +1,9 @@
 # Source: https://docs.crewai.com/en/tools/file-document/mdxsearchtool.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.crewai.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # MDX RAG Search
 
 > The `MDXSearchTool` is designed to search MDX files and return the most relevant results.

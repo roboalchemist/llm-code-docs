@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/apikeys.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # API keys
 
 > How to authenticate with Trigger.dev so you can trigger tasks.
@@ -21,14 +25,14 @@ Each environment has its own secret key. You can find the value on the API keys 
 
 To automatically configure the SDK with your secret key, you can set the `TRIGGER_SECRET_KEY` environment variable. The SDK will automatically use this value when calling API methods (like `trigger`).
 
-```bash .env theme={null}
+```bash .env theme={"theme":"css-variables"}
 TRIGGER_SECRET_KEY="tr_dev_…"
 TRIGGER_PREVIEW_BRANCH="my-branch" # Only needed for preview branches
 ```
 
 You can do the same if you are self-hosting and need to change the default URL by using `TRIGGER_API_URL`.
 
-```bash .env theme={null}
+```bash .env theme={"theme":"css-variables"}
 TRIGGER_API_URL="https://trigger.example.com"
 TRIGGER_PREVIEW_BRANCH="my-branch" # Only needed for preview branches
 ```
@@ -39,7 +43,7 @@ The default URL is `https://api.trigger.dev`.
 
 If you prefer to manually configure the SDK, you can call the `configure` method:
 
-```ts  theme={null}
+```ts  theme={"theme":"css-variables"}
 import { configure } from "@trigger.dev/sdk";
 import { myTask } from "./trigger/myTasks";
 

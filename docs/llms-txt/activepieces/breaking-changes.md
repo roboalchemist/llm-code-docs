@@ -1,10 +1,78 @@
 # Source: https://www.activepieces.com/docs/install/configuration/breaking-changes.md
 
-# Source: https://www.activepieces.com/docs/about/breaking-changes.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Breaking Changes
 
 > This list shows all versions that include breaking changes and how to upgrade.
+
+## 0.78.1
+
+### What has changed?
+
+* The Platform `Operator` role can now edit all projects.
+
+### Do you need to take action?
+
+* Only if you want to restrict Operators from having editor access to every project. Review your Operator permissions as needed.
+
+## 0.78.0
+
+### What has changed?
+
+* Templates no longer include a `usageCount` field in API responses or the database.
+
+## 0.77.0
+
+### What has changed?
+
+* For Embed Plan users: the "Use a Template" dialog no longer appears when clicking the "New Flow" button.
+* The `/flow-templates` API endpoints have been removed and replaced by `/templates`.
+* Log size configuration has changed: `AP_MAX_FILE_SIZE_MB` no longer controls flow run logs. Use `AP_MAX_FLOW_RUN_LOG_SIZE_MB` instead.
+
+### Do you need to take action?
+
+* If you are on the embed plan, update your implementation to redirect users to the `/templates` page.
+* Review the new endpoints documentation: [Templates API Schema](https://www.activepieces.com/docs/endpoints/templates/schema).
+* If you use a custom value for `AP_MAX_FILE_SIZE_MB`, be sure to also set `AP_MAX_FLOW_RUN_LOG_SIZE_MB` accordingly.
+
+## 0.75.0
+
+### What has changed?
+
+* In **development mode**, loading piece translations are now off by default. Set `AP_LOAD_TRANSLATIONS_FOR_DEV_PIECES=true` to enable.
+
+### Do you need to take action?
+
+* If you want to load translations for pieces in development mode, set `AP_LOAD_TRANSLATIONS_FOR_DEV_PIECES=true` in your environment variables.
+
+## 0.74.0
+
+### What has changed?
+
+* The default embedded database for development and lightweight deployments has changed from **SQLite3** to [**PGLite**](https://pglite.dev/) (embedded PostgreSQL).
+* The environment variable `AP_DB_TYPE=SQLITE3` is now deprecated and replaced with `AP_DB_TYPE=PGLITE`.
+* Existing SQLite databases will be automatically migrated to PGLite on first startup.
+* Templates are broken in this version. A migration issue changed template IDs, breaking API endpoints. This will be fixed in the next patch release.
+* The `aiCredits` feature per project has been removed. In the next version, it will be replaced by integration with the AI Gateway.
+
+### Do you need to take action?
+
+* **If you are using `AP_DB_TYPE=SQLITE3`:** Update your configuration to use `AP_DB_TYPE=PGLITE` instead.
+* **If you are using templates:** Wait for the next patch release to fix the template IDs.
+
+## 0.73.0
+
+### What has changed?
+
+* Major change to MCP: [Read the announcement.](https://community.activepieces.com/t/mcp-update-easier-faster-and-more-secure/11177)
+* If you have SMTP configured in the platform admin, it's no longer supported—you need to use AP\_SMTP\_ [environment variables.](https://www.activepieces.com/docs/install/configuration/environment-variables#environment-variables)
+
+### Do you need to take action?
+
+* If you are currently using MCP, review the linked announcement for important migration details and upgrade guidance.
 
 ## 0.71.0
 

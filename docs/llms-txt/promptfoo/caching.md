@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/configuration/caching/
+
 # Caching
 
 promptfoo caches the results of API calls to LLM providers to help save time and cost.

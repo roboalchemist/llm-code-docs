@@ -5,17 +5,130 @@ Source: https://docs.tavily.com/llms-full.txt
 ---
 
 # Changelog
-Source: https://docs.tavily.com/changelog/changelog
+Source: https://docs.tavily.com/changelog
 
 
 
 <AccordionGroup>
+  <Accordion title="Project tracking with X-Project-ID header" icon="rocket" description="January 2026">
+    <b><br />Track API usage by project with the new <code>X-Project-ID</code> header</b><br />
+
+    <ul>
+      <li>
+        You can now attach a Project ID to your API requests to organize and track usage by project. This is useful when a single API key is used across multiple projects or applications.
+      </li>
+
+      <li>
+        <b>HTTP Header:</b> Add <code>X-Project-ID: your-project-id</code> to any API request
+      </li>
+
+      <li>
+        <b>Python SDK:</b> Pass <code>project\_id="your-project-id"</code> when instantiating the client, or set the <code>TAVILY\_PROJECT</code> environment variable
+      </li>
+
+      <li>
+        <b>JavaScript SDK:</b> Pass <code>projectId: "your-project-id"</code> when instantiating the client, or set the <code>TAVILY\_PROJECT</code> environment variable
+      </li>
+
+      <li>
+        An API key can be associated with multiple projects
+      </li>
+
+      <li>
+        Filter requests by project in the <a href="/documentation/api-reference/endpoint/usage">/logs endpoint</a> and platform usage dashboard to keep track of where requests originate from
+      </li>
+    </ul>
+  </Accordion>
+
+  <Accordion title="New search_depth options fast and ultra-fast (BETA)" icon="rocket" description="December 2025">
+    <b><br /><a href="/documentation/api-reference/endpoint/search#body-search-depth"><code>search\_depth</code> parameter</a> - New options: <code>fast</code> and <code>ultra-fast</code></b><br />
+
+    <ul>
+      <li>
+        <b><code>fast</code> (BETA)</b><br />
+
+        <ul>
+          <li>Optimized for low latency while maintaining high relevance to the user query</li>
+          <li><b>Cost:</b> 1 API Credit</li>
+        </ul>
+      </li>
+
+      <li>
+        <b><code>ultra-fast</code> (BETA)</b><br />
+
+        <ul>
+          <li>Optimized strictly for latency</li>
+          <li><b>Cost:</b> 1 API Credit</li>
+        </ul>
+      </li>
+    </ul>
+  </Accordion>
+
+  <Accordion title="Intent Based Extraction" icon="rocket" description="December 2025">
+    <b><br /><a href="/documentation/api-reference/endpoint/extract#body-query"><code>query</code></a> and <a href="/documentation/api-reference/endpoint/extract#body-chunks-per-source"><code>chunks\_per\_source</code></a> parameters for Extract and Crawl</b><br />
+
+    <ul>
+      <li>
+        <b><code>query</code> (Extract)</b><br />
+
+        <ul>
+          <li><b>Type:</b> <code>string</code></li>
+          <li>User intent for reranking extracted content chunks. When provided, chunks are reranked based on relevance to this query.</li>
+        </ul>
+      </li>
+
+      <li>
+        <b><code>chunks\_per\_source</code> (Extract & Crawl)</b><br />
+
+        <ul>
+          <li><b>Type:</b> <code>integer</code></li>
+          <li><b>Range:</b> 1 to 5</li>
+          <li><b>Default:</b> 3</li>
+          <li>Chunks are short content snippets (maximum 500 characters each) pulled directly from the source.</li>
+          <li>Use <code>chunks\_per\_source</code> to define the maximum number of relevant chunks returned per source and to control the <code>raw\_content</code> length.</li>
+          <li>Chunks will appear in the <code>raw\_content</code> field as: <code>\<chunk 1> \[...] \<chunk 2> \[...] \<chunk 3></code>.</li>
+          <li>Available only when <code>query</code> is provided (Extract) or <code>instructions</code> are provided (Crawl).</li>
+        </ul>
+      </li>
+    </ul>
+  </Accordion>
+
+  <Accordion title="Include usage parameter" icon="rocket" description="December 2025">
+    <b><br /><a href="/documentation/api-reference/endpoint/search#body-include-usage"><code>include\_usage</code> parameter</a></b><br />
+
+    <ul>
+      <li>
+        You can now include credit usage information in the API response for the <a href="/documentation/api-reference/endpoint/search#body-include-usage">Search</a>, <a href="/documentation/api-reference/endpoint/extract#body-include-usage">Extract</a>, <a href="/documentation/api-reference/endpoint/crawl#body-include-usage">Crawl</a>, and <a href="/documentation/api-reference/endpoint/map#body-include-usage">Map</a> endpoints.
+      </li>
+
+      <li>
+        Set the <code>include\_usage</code> parameter to <code>true</code> to receive credit usage information in the API response.
+      </li>
+
+      <li>
+        <b>Type:</b> <code>boolean</code>
+      </li>
+
+      <li>
+        <b>Default:</b> <code>false</code>
+      </li>
+
+      <li>
+        When enabled, the response includes a <code>usage</code> object with <code>credits</code> information, making it easy to track API credit consumption for each request.
+      </li>
+
+      <li>
+        <b>Note:</b> The value may be 0 if the total successful calls have not yet reached the minimum threshold. See our <a href="/documentation/api-credits">Credits & Pricing documentation</a> for details.
+      </li>
+    </ul>
+  </Accordion>
+
   <Accordion title="Vercel AI SDK v5 integration" icon="rocket" description="November 2025">
     <b><br /><a href="/documentation/integrations/vercel">Tavily is now integrated with Vercel AI SDK v5</a></b><br />
 
     <ul>
       <li>
-        We've released a new <a href="https://www.npmjs.com/package/@tavily/ai-sdk" target="_blank"><code>@tavily/ai-sdk</code></a> package that provides pre-built AI SDK tools for Vercel's AI SDK v5.
+        We've released a new <a href="https://www.npmjs.com/package/@tavily/ai-sdk"><code>@tavily/ai-sdk</code></a> package that provides pre-built AI SDK tools for Vercel's AI SDK v5.
       </li>
 
       <li>
@@ -178,15 +291,14 @@ Source: https://docs.tavily.com/changelog/changelog
     </ul>
   </Accordion>
 
-  <Accordion title="Auto parameters (BETA)" icon="rocket" description="June 2025">
-    <b>Tavily Search<br /><a href="/documentation/api-reference/endpoint/search#body-auto-parameters"><code>auto\_parameters</code> (BETA)</a></b><br />
+  <Accordion title="Auto parameters" icon="rocket" description="June 2025">
+    <b>Tavily Search<br /><a href="/documentation/api-reference/endpoint/search#body-auto-parameters"><code>auto\_parameters</code></a></b><br />
 
     <ul>
       <li><b>Boolean default:</b> <code>false</code></li>
       <li>When <code>auto\_parameters</code> is enabled, Tavily automatically configures search parameters based on your query's content and intent. You can still set other parameters manually, and your explicit values will override the automatic ones.</li>
       <li>The parameters <code>include\_answer</code>, <code>include\_raw\_content</code>, and <code>max\_results</code> must always be set manually, as they directly affect response size.</li>
       <li><b>Note:</b> <code>search\_depth</code> may be automatically set to <code>advanced</code> when it's likely to improve results. This uses <b>2 API credits per request</b>. To avoid the extra cost, you can explicitly set <code>search\_depth</code> to <code>basic</code>.</li>
-      <li>Currently in <b>BETA</b>.</li>
     </ul>
   </Accordion>
 
@@ -283,7 +395,7 @@ Source: https://docs.tavily.com/changelog/changelog
         </ul>
 
         Tavily Crawl is ideal for use cases such as large-scale content aggregation, competitive research, knowledge base creation, and more.<br />
-        For full details and API usage examples, see the <a href="https://docs.tavily.com/documentation/api-reference/endpoint/crawl" target="_blank">Tavily Crawl API reference</a>.
+        For full details and API usage examples, see the <a href="https://docs.tavily.com/documentation/api-reference/endpoint/crawl">Tavily Crawl API reference</a>.
       </li>
     </ul>
   </Accordion>
@@ -359,7 +471,7 @@ Tavily can also help your AI agent make better decisions by including a short an
 
 [Sign up](https://app.tavily.com) for Tavily to get your API key. You get **1,000 free API Credits every month**. No credit card required.
 
-<Card icon="key" href="https://app.tavily.com" title="Get your free API key" horizontal>
+<Card icon="key" href="https://app.tavily.com" title="Get your free API key">
   You get 1,000 free API Credits every month. **No credit card required.**
 </Card>
 
@@ -372,6 +484,328 @@ To get started with Tavily's APIs and SDKs using code, head to our [Quickstart G
 </Note>
 
 
+# Tavily Agent Skills
+Source: https://docs.tavily.com/documentation/agent-skills
+
+Official skills that define best practices for working with the Tavily API. Useful for AI agents like Claude Code, Codex, or Cursor.
+
+<CardGroup>
+  <Card title="GitHub" icon="github" href="https://github.com/tavily-ai/skills">
+    `/tavily-ai/skills`
+  </Card>
+
+  <Card title="Get API Key" icon="key" href="https://app.tavily.com">
+    Sign up at tavily.com
+  </Card>
+</CardGroup>
+
+## Why Use These Skills?
+
+These official skills define best practices for working with the Tavily API, going beyond just using the endpoints. They give AI agents low-level control to build custom web tooling directly in your development environment.
+
+These skills bring Tavily's services (search, extract, crawl, research) right where you work. The real-time context these tools provide significantly enhances your agent's capabilities for development tasks.
+
+Most importantly, the **tavily-best-practices** skill turns your AI agent into a true Tavily expert. Instead of reading API docs, just ask your agent how to integrate Tavily into your project. All API best practices are baked in, dramatically accelerating your build process.
+
+## What You Can Build
+
+Copy-paste these prompts into your AI agent and start building:
+
+<AccordionGroup>
+  <Accordion title="AI Chatbot with Real-Time Search">
+    Build a chatbot that can answer questions about current events and up-to-date information.
+
+    **Try these prompts:**
+
+    ```
+    /tavily-best-practices Build a chatbot that integrates Tavily search to answer questions with up-to-date web information
+    ```
+
+    ```
+    /tavily-best-practices Add Tavily search to my internal company chatbot so it can answer questions about our competitors
+    ```
+  </Accordion>
+
+  <Accordion title="News Dashboard with Sentiment Analysis">
+    Create a live news dashboard that tracks topics and analyzes sentiment.
+
+    **Try these prompts:**
+
+    ```
+    /tavily-best-practices Build a website that refreshes daily with Tesla news and gives a sentiment score on each article
+    ```
+
+    ```
+    /tavily-best-practices Create a news monitoring dashboard that tracks AI industry news and sends daily Slack summaries
+    ```
+  </Accordion>
+
+  <Accordion title="Lead Enrichment Tool">
+    Build tools that automatically enrich leads with company data from the web.
+
+    **Try these prompts:**
+
+    ```
+    /tavily-best-practices Build a lead enrichment tool that uses Tavily to find company information from their website
+    ```
+
+    ```
+    /tavily-best-practices Create a script that takes a list of company URLs and extracts key business information
+    ```
+  </Accordion>
+
+  <Accordion title="Competitive Intelligence Agent">
+    Build an autonomous agent that monitors competitors and surfaces insights.
+
+    **Try these prompts:**
+
+    ```
+    /tavily-best-practices Build a market research tool that crawls competitor documentation and pricing pages
+    ```
+
+    ```
+    /tavily-best-practices Create an agent that monitors competitor product launches and generates weekly reports
+    ```
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+  The `/tavily-best-practices` skill is your fastest path to production. Describe what you want to build and your agent generates working code with best practices baked in.
+</Tip>
+
+## Installation
+
+### Prerequisites
+
+<AccordionGroup>
+  <Accordion title="Required" icon="wrench">
+    * [Tavily API key](https://app.tavily.com/home) - Sign up for free
+    * An AI agent that supports skills (Claude Code, Codex, Cursor, etc.)
+  </Accordion>
+</AccordionGroup>
+
+### Step 1: Configure Your API Key
+
+Add your Tavily API key to your agent's environment. For Claude Code, add it to your settings file:
+
+<CodeGroup>
+  ```bash macOS theme={null}
+  # Open your Claude settings file
+  open -e "$HOME/.claude/settings.json"
+
+  # Or with VS Code
+  code "$HOME/.claude/settings.json"
+  ```
+
+  ```bash Linux theme={null}
+  # Open your Claude settings file
+  nano "$HOME/.claude/settings.json"
+
+  # Or with VS Code
+  code "$HOME/.claude/settings.json"
+  ```
+
+  ```bash Windows theme={null}
+  code %USERPROFILE%\.claude\settings.json
+  ```
+</CodeGroup>
+
+Add the following configuration:
+
+```json theme={null}
+{
+  "env": {
+    "TAVILY_API_KEY": "tvly-YOUR_API_KEY"
+  }
+}
+```
+
+<Warning>Replace `tvly-YOUR_API_KEY` with your actual Tavily API key from [app.tavily.com](https://app.tavily.com/home)</Warning>
+
+### Step 2: Install the Skills
+
+Run this command in your terminal:
+
+```bash theme={null}
+npx skills add tavily-ai/skills
+```
+
+### Step 3: Restart Your Agent
+
+After installation, restart your AI agent to load the skills.
+
+## Available Skills
+
+<AccordionGroup>
+  <Accordion title="Tavily Best Practices" icon="book">
+    Build production-ready Tavily integrations with best practices baked in. Reference documentation for implementing web search, content extraction, crawling, and research in agentic workflows, RAG systems, or autonomous agents.
+
+    **Invoke explicitly:**
+
+    ```
+    /tavily-best-practices
+    ```
+
+    **Example prompts:**
+
+    * "Add Tavily search to my internal company chatbot so it can answer questions about our competitors"
+    * "Build a lead enrichment tool that uses Tavily to find company information from their website"
+    * "Create a news monitoring agent that tracks mentions of our brand using Tavily search"
+    * "Implement a RAG pipeline that uses Tavily extract to pull content from industry reports"
+  </Accordion>
+
+  <Accordion title="Search" icon="magnifying-glass">
+    Search the web using Tavily's LLM-optimized search API. Returns relevant results with content snippets, scores, and metadata.
+
+    **Invoke explicitly:**
+
+    ```
+    /search
+    ```
+
+    **Example prompts:**
+
+    * "Search for the latest news on AI regulations"
+    * "/search current React best practices"
+    * "Search for Python async patterns"
+  </Accordion>
+
+  <Accordion title="Research" icon="magnifying-glass-chart">
+    Get AI-synthesized research on any topic with citations. Supports structured JSON output for integration into pipelines.
+
+    **Invoke explicitly:**
+
+    ```
+    /research
+    ```
+
+    **Example prompts:**
+
+    * "Research the latest developments in quantum computing"
+    * "/research AI agent frameworks and save to report.json"
+    * "Research the competitive landscape for AI coding assistants"
+  </Accordion>
+
+  <Accordion title="Crawl" icon="spider-web">
+    Crawl any website and save pages as local markdown files. Ideal for downloading documentation, knowledge bases, or web content for offline access or analysis.
+
+    **Invoke explicitly:**
+
+    ```
+    /crawl
+    ```
+
+    **Example prompts:**
+
+    * "Crawl the Stripe API docs and save them locally"
+    * "/crawl [https://docs.example.com](https://docs.example.com)"
+    * "Download the Next.js documentation for offline reference"
+  </Accordion>
+
+  <Accordion title="Extract" icon="file-lines">
+    Extract content from specific URLs using Tavily's extraction API. Returns clean markdown/text from web pages.
+
+    **Invoke explicitly:**
+
+    ```
+    /extract
+    ```
+
+    **Example prompts:**
+
+    * "Extract the content from this article URL"
+    * "/extract [https://example.com/blog/post](https://example.com/blog/post)"
+    * "Extract content from these three documentation pages"
+  </Accordion>
+</AccordionGroup>
+
+## Usage Examples
+
+### Automatic Skill Invocation
+
+Your AI agent will automatically use Tavily skills when appropriate. Simply describe what you need:
+
+```
+Research the latest developments in AI agents and summarize the key trends
+```
+
+```
+Search for the latest news on AI regulations
+```
+
+```
+Crawl the Stripe API docs and save them locally
+```
+
+### Explicit Skill Invocation
+
+You can also invoke skills directly using slash commands:
+
+```
+/research AI agent frameworks and save to report.json
+```
+
+```
+/search current React best practices
+```
+
+```
+/crawl https://docs.example.com
+```
+
+```
+/extract https://example.com/blog/post
+```
+
+```
+/tavily-best-practices
+```
+
+## Claude Code Plugin
+
+If you're using Claude Code specifically, you can also install the skills as a plugin.
+
+### Step 1: Configure Your API Key
+
+Add your Tavily API key to your Claude Code settings file:
+
+```bash theme={null}
+code ~/.claude/settings.json
+```
+
+Add the following configuration:
+
+```json theme={null}
+{
+  "env": {
+    "TAVILY_API_KEY": "tvly-YOUR_API_KEY"
+  }
+}
+```
+
+### Step 2: Install the Skills
+
+Run these commands inside Claude Code:
+
+```
+/plugin marketplace add tavily-ai/skills
+```
+
+```
+/plugin install tavily@skills
+```
+
+### Step 3: Restart Claude Code
+
+Clear your session and restart to load the plugin:
+
+```
+/clear
+```
+
+Then press `Ctrl+C` to restart.
+
+
 # Credits & Pricing
 Source: https://docs.tavily.com/documentation/api-credits
 
@@ -379,7 +813,7 @@ Learn how to get and manage your Tavily API Credits.
 
 ## Free API Credits
 
-<Card icon="key" href="https://app.tavily.com" title="Get your free API key" horizontal>
+<Card icon="key" href="https://app.tavily.com" title="Get your free API key">
   You get 1,000 free API Credits every month. **No credit card required.**
 </Card>
 
@@ -392,15 +826,15 @@ Tavily operates on a simple, credit-based model:
 * **Monthly plans**: \$0.0075 - \$0.005 per credit
 * **Enterprise**: Custom pricing and volume
 
-| <div align="left">**Plan**</div> | **Credits per month** | **Monthly price** | **Price per credit** |
-| -------------------------------- | --------------------- | ----------------- | -------------------- |
-| **Researcher**                   | 1,000                 | Free              | -                    |
-| **Project**                      | 4,000                 | \$30              | \$0.0075             |
-| **Bootstrap**                    | 15,000                | \$100             | \$0.0067             |
-| **Startup**                      | 38,000                | \$220             | \$0.0058             |
-| **Growth**                       | 100,000               | \$500             | \$0.005              |
-| **Pay as you go**                | Per usage             | \$0.008 / Credit  | \$0.008              |
-| **Enterprise**                   | Custom                | Custom            | Custom               |
+| <div>**Plan**</div> | **Credits per month** | **Monthly price** | **Price per credit** |
+| ------------------- | --------------------- | ----------------- | -------------------- |
+| **Researcher**      | 1,000                 | Free              | -                    |
+| **Project**         | 4,000                 | \$30              | \$0.0075             |
+| **Bootstrap**       | 15,000                | \$100             | \$0.0067             |
+| **Startup**         | 38,000                | \$220             | \$0.0058             |
+| **Growth**          | 100,000               | \$500             | \$0.005              |
+| **Pay as you go**   | Per usage             | \$0.008 / Credit  | \$0.008              |
+| **Enterprise**      | Custom                | Custom            | Custom               |
 
 Head to [billing](https://app.tavily.com/billing) to explore our different options and manage your plan.
 
@@ -447,6 +881,18 @@ For example:
 * If you crawl 10 pages with basic extraction depth, you'll be charged **1 credit for mapping** (10 pages) + **2 credits for extraction** (10 successful extractions ÷ 5) = **3 total credits**
 * If you crawl 10 pages with advanced extraction depth, you'll be charged **1 credit for mapping** + **4 credits for extraction** = **5 total credits**
 
+### Tavily Research
+
+Tavily Research follows a dynamic
+pricing model with minimum and maximum credit consumption boundaries associated
+with each request. The minimum and maximum boundaries differ based on if the
+request uses `model=mini` or `model=pro`.
+
+| Request Cost Boundaries | model=pro   | model=mini  |
+| ----------------------- | ----------- | ----------- |
+| Per-request minimum     | 15 credits  | 4 credits   |
+| Per-request maximum     | 250 credits | 110 credits |
+
 
 # Tavily Crawl
 Source: https://docs.tavily.com/documentation/api-reference/endpoint/crawl
@@ -454,9 +900,6 @@ Source: https://docs.tavily.com/documentation/api-reference/endpoint/crawl
 POST /crawl
 Tavily Crawl is a graph-based website traversal tool that can explore hundreds of paths in parallel with built-in extraction and intelligent discovery.
 
-<Note>
-  **Beta Feature** - The Tavily Crawl endpoint is currently in Beta. While fully functional, the API may undergo changes as we continue to refine and improve the service.
-</Note>
 
 
 # Tavily Extract
@@ -473,9 +916,357 @@ Source: https://docs.tavily.com/documentation/api-reference/endpoint/map
 POST /map
 Tavily Map traverses websites like a graph and can explore hundreds of paths in parallel with intelligent discovery to generate comprehensive site maps.
 
-<Note>
-  **Beta Feature** - The Tavily Map endpoint is currently in Beta. While fully functional, the API may undergo changes as we continue to refine and improve the service.
-</Note>
+
+
+# Create Research Task
+Source: https://docs.tavily.com/documentation/api-reference/endpoint/research
+
+POST /research
+Tavily Research performs comprehensive research on a given topic by conducting multiple searches, analyzing sources, and generating a detailed research report.
+
+
+
+# Get Research Task Status
+Source: https://docs.tavily.com/documentation/api-reference/endpoint/research-get
+
+GET /research/{request_id}
+Retrieve the status and results of a research task using its request ID.
+
+
+
+# Streaming
+Source: https://docs.tavily.com/documentation/api-reference/endpoint/research-streaming
+
+Stream real-time research progress and results from Tavily Research API
+
+## Overview
+
+When using the Tavily Research API, you can stream responses in real-time by setting `stream: true` in your request. This allows you to receive research progress updates, tool calls, and final results as they're generated, providing a better user experience for long-running research tasks.
+
+Streaming is particularly useful for:
+
+* Displaying research progress to users in real-time
+* Monitoring tool calls and search queries as they execute
+* Receiving incremental updates during lengthy research operations
+* Building interactive research interfaces
+
+## Enabling Streaming
+
+To enable streaming, set the `stream` parameter to `true` when making a request to the Research endpoint:
+
+```json theme={null}
+{
+  "input": "What are the latest developments in AI?",
+  "stream": true
+}
+```
+
+The API will respond with a `text/event-stream` content type, sending Server-Sent Events (SSE) as the research progresses.
+
+## Event Structure
+
+Each streaming event follows a consistent structure compatible with the OpenAI chat completions format:
+
+```json theme={null}
+{
+  "id": "123e4567-e89b-12d3-a456-426614174111",
+  "object": "chat.completion.chunk",
+  "model": "mini",
+  "created": 1705329000,
+  "choices": [
+    {
+      "delta": {
+        // Event-specific data here
+      }
+    }
+  ]
+}
+```
+
+### Core Fields
+
+| Field     | Type    | Description                                           |
+| --------- | ------- | ----------------------------------------------------- |
+| `id`      | string  | Unique identifier for the stream event                |
+| `object`  | string  | Always `"chat.completion.chunk"` for streaming events |
+| `model`   | string  | The research model being used (`"mini"` or `"pro"`)   |
+| `created` | integer | Unix timestamp when the event was created             |
+| `choices` | array   | Array containing the delta with event details         |
+
+## Event Types
+
+The streaming response includes different types of events in the `delta` object. Here are the main event types you'll encounter:
+
+### 1. Tool Call Events
+
+When the research agent performs actions like web searches, you'll receive tool call events:
+
+```json theme={null}
+{
+  "id": "evt_002",
+  "object": "chat.completion.chunk",
+  "model": "mini",
+  "created": 1705329005,
+  "choices": [
+    {
+      "delta": {
+        "role": "assistant",
+        "tool_calls": {
+          "type": "tool_call",
+          "tool_call": [
+            {
+              "name": "WebSearch",
+              "id": "fc_633b5932-e66c-4523-931a-04a7b79f2578",
+              "arguments": "Executing 5 search queries",
+              "queries": ["latest AI developments 2024", "machine learning breakthroughs", "..."]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+```
+
+**Tool Call Delta Fields:**
+
+| Field                 | Type   | Description                                                        |
+| --------------------- | ------ | ------------------------------------------------------------------ |
+| `type`                | string | Either `"tool_call"` or `"tool_response"`                          |
+| `tool_call`           | array  | Details about the tool being invoked                               |
+| `name`                | string | Name of the tool (see [Tool Types](#tool-types) below)             |
+| `id`                  | string | Unique identifier for the tool call                                |
+| `arguments`           | string | Description of the action being performed                          |
+| `queries`             | array  | *(WebSearch only)* The search queries being executed               |
+| `parent_tool_call_id` | string | *(Pro mode only)* ID of the parent tool call for nested operations |
+
+### 2. Tool Response Events
+
+After a tool executes, you'll receive response events with discovered sources:
+
+```json theme={null}
+{
+  "id": "evt_003",
+  "object": "chat.completion.chunk",
+  "model": "mini",
+  "created": 1705329010,
+  "choices": [
+    {
+      "delta": {
+        "role": "assistant",
+        "tool_calls": {
+          "type": "tool_response",
+          "tool_response": [
+            {
+              "name": "WebSearch",
+              "id": "fc_633b5932-e66c-4523-931a-04a7b79f2578",
+              "arguments": "Completed executing search tool call",
+              "sources": [
+                {
+                  "url": "https://example.com/article",
+                  "title": "Example Article",
+                  "favicon": "https://example.com/favicon.ico"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+```
+
+**Tool Response Fields:**
+
+| Field                 | Type   | Description                                                     |
+| --------------------- | ------ | --------------------------------------------------------------- |
+| `name`                | string | Name of the tool that completed                                 |
+| `id`                  | string | Unique identifier matching the original tool call               |
+| `arguments`           | string | Completion status message                                       |
+| `sources`             | array  | Sources discovered by the tool (with `url`, `title`, `favicon`) |
+| `parent_tool_call_id` | string | *(Pro mode only)* ID of the parent tool call                    |
+
+### 3. Content Events
+
+The final research report is streamed as content chunks:
+
+```json theme={null}
+{
+  "id": "evt_004",
+  "object": "chat.completion.chunk",
+  "model": "mini",
+  "created": 1705329015,
+  "choices": [
+    {
+      "delta": {
+        "role": "assistant",
+        "content": "# Research Report\n\nBased on the latest sources..."
+      }
+    }
+  ]
+}
+```
+
+**Content Field:**
+
+* Can be a **string** (markdown-formatted report chunks) when no `output_schema` is provided
+* Can be an **object** (structured data) when an `output_schema` is specified
+
+### 4. Sources Event
+
+After the content is streamed, a sources event is emitted containing all sources used in the research:
+
+```json theme={null}
+{
+  "id": "evt_005",
+  "object": "chat.completion.chunk",
+  "model": "mini",
+  "created": 1705329020,
+  "choices": [
+    {
+      "delta": {
+        "role": "assistant",
+        "sources": [
+          {
+            "url": "https://example.com/article",
+            "title": "Example Article Title",
+            "favicon": "https://example.com/favicon.ico"
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+**Source Object Fields:**
+
+| Field     | Type   | Description                  |
+| --------- | ------ | ---------------------------- |
+| `url`     | string | The URL of the source        |
+| `title`   | string | The title of the source page |
+| `favicon` | string | URL to the source's favicon  |
+
+### 5. Done Event
+
+Signals the completion of the streaming response:
+
+```
+event: done
+```
+
+## Tool Types
+
+During research, you'll encounter the following tool types in streaming events:
+
+| Tool Name          | Description                                                    | Model    |
+| ------------------ | -------------------------------------------------------------- | -------- |
+| `Planning`         | Initializes the research plan based on the input query         | Both     |
+| `Generating`       | Generates the final research report from collected information | Both     |
+| `WebSearch`        | Executes web searches to gather information                    | Both     |
+| `ResearchSubtopic` | Conducts deep research on specific subtopics                   | Pro only |
+
+### Research Flow Example
+
+A typical streaming session follows this sequence:
+
+1. **Planning** tool\_call → Initializing research plan
+2. **Planning** tool\_response → Research plan initialized
+3. **WebSearch** tool\_call → Executing search queries (with `queries` array)
+4. **WebSearch** tool\_response → Search completed (with `sources` array)
+5. *(Pro mode)* **ResearchSubtopic** tool\_call/response cycles for deeper research
+6. **Generating** tool\_call → Generating final report
+7. **Generating** tool\_response → Report generated
+8. **Content** events → Streamed report chunks
+9. **Sources** event → Complete list of all sources used
+10. **Done** event → Stream complete
+
+## Handling Streaming Responses
+
+### Python Example
+
+```python theme={null}
+from tavily import TavilyClient
+
+# Step 1. Instantiating your TavilyClient
+tavily_client = TavilyClient(api_key="tvly-YOUR_API_KEY")
+
+# Step 2. Creating a streaming research task
+stream = tavily_client.research(
+    input="Research the latest developments in AI",
+    model="pro",
+    stream=True
+)
+
+for chunk in stream:
+    print(chunk.decode('utf-8'))
+```
+
+### JavaScript Example
+
+```javascript theme={null}
+const { tavily } = require("@tavily/core");
+
+const tvly = tavily({ apiKey: "tvly-YOUR_API_KEY" });
+
+const stream = await tvly.research("Research the latest developments in AI", {
+  model: "pro",
+  stream: true,
+});
+
+for await (const chunk of result as AsyncGenerator<Buffer, void, unknown>) {
+    console.log(chunk.toString('utf-8'));
+}
+```
+
+## Structured Output with Streaming
+
+When using `output_schema` to request structured data, the `content` field will contain an object instead of a string:
+
+```json theme={null}
+{
+  "delta": {
+    "role": "assistant",
+    "content": {
+      "company": "Acme Corp",
+      "key_metrics": ["Revenue: $1M", "Growth: 50%"],
+      "summary": "Company showing strong growth..."
+    }
+  }
+}
+```
+
+## Error Handling
+
+If an error occurs during streaming, you may receive an error event:
+
+```json theme={null}
+{
+  "id": "1d77bdf5-38a4-46c1-87a6-663dbc4528ec",
+  "object": "error",
+  "error": "An error occurred while streaming the research task"
+}
+```
+
+Always implement proper error handling in your streaming client to gracefully handle these cases.
+
+## Non-Streaming Alternative
+
+If you don't need real-time updates, set `stream: false` (or omit the parameter) to receive a single complete response:
+
+```json theme={null}
+{
+  "request_id": "123e4567-e89b-12d3-a456-426614174111",
+  "created_at": "2025-01-15T10:30:00Z",
+  "status": "pending",
+  "input": "What are the latest developments in AI?",
+  "model": "mini",
+  "response_time": 1.23
+}
+```
+
+You can then poll the status endpoint to check when the research is complete.
 
 
 # Tavily Search
@@ -500,14 +1291,15 @@ Source: https://docs.tavily.com/documentation/api-reference/introduction
 Easily integrate our APIs with your services.
 
 <Tip>
-  Looking for the Python or JavaScript SDK Reference? Head to our [SDKs](/sdk) page to see how to natively integrate Tavily in your project.
+  Looking for the Python or JavaScript SDK Reference? Head to our [SDKs](/sdk)
+  page to see how to natively integrate Tavily in your project.
 </Tip>
 
 ## Base URL
 
 The base URL for all requests to the Tavily API is:
 
-```plaintext  theme={null}
+```plaintext theme={null}
 https://api.tavily.com
 ```
 
@@ -516,7 +1308,7 @@ https://api.tavily.com
 All Tavily endpoints are authenticated using API keys.
 [Get your free API key](https://app.tavily.com).
 
-```bash  theme={null}
+```bash theme={null}
 curl -X POST https://api.tavily.com/search \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer tvly-YOUR_API_KEY" \
@@ -525,25 +1317,55 @@ curl -X POST https://api.tavily.com/search \
 
 ## Endpoints
 
-<CardGroup cols={3}>
-  <Card icon="magnifying-glass" horizontal href="/api-reference/endpoint/search">
+<CardGroup>
+  <Card icon="magnifying-glass" href="/documentation/api-reference/endpoint/search">
     **`/search`**
 
     Tavily's powerful web search API.
   </Card>
 
-  <Card icon="file-lines" horizontal href="/api-reference/endpoint/extract">
+  <Card icon="file-lines" href="/documentation/api-reference/endpoint/extract">
     **`/extract`**
 
     Tavily's powerful content extraction API.
   </Card>
 
-  <Card icon="circle-nodes" horizontal href="/documentation/api-reference/endpoint/crawl">
+  <Card icon="circle-nodes" href="/documentation/api-reference/endpoint/crawl">
     `/crawl` , `/map`
 
     Tavily's intelligent sitegraph navigation and extraction tools.
   </Card>
+
+  <Card icon="book" href="/documentation/api-reference/endpoint/research">
+    **`/research`**
+
+    Tavily's comprehensive research API for in-depth analysis.
+  </Card>
 </CardGroup>
+
+## Project Tracking
+
+You can optionally attach a Project ID to your API requests to organize and track usage by project. This is useful when a single API key is used across multiple projects or applications.
+
+To attach a project to your request, add the `X-Project-ID` header:
+
+```bash theme={null}
+curl -X POST https://api.tavily.com/search \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer tvly-YOUR_API_KEY" \
+  -H "X-Project-ID: your-project-id" \
+  -d '{"query": "Who is Leo Messi?"}'
+```
+
+**Key features:**
+
+* An API key can be associated with multiple projects
+* Filter requests by project in the [/logs endpoint](/documentation/api-reference/endpoint/usage) and platform usage dashboard
+* Helps organize and track where requests originate from
+
+<Note>
+  When using the SDKs, you can specify a project using the `project_id` parameter when instantiating the client, or by setting the `TAVILY_PROJECT` environment variable.
+</Note>
 
 
 # API Key Management
@@ -585,9 +1407,18 @@ To rotate your keys without downtime:
 # Best Practices for Crawl
 Source: https://docs.tavily.com/documentation/best-practices/best-practices-crawl
 
-Learn how to effectively use Tavily's Crawl API to extract and process web content.
+Learn how to optimize crawl parameters, focus your crawls, and efficiently extract content from websites.
 
-## When to Use `crawl` vs `map`
+## Crawl vs Map
+
+Understanding when to use each API:
+
+| Feature                | Crawl                        | Map                      |
+| ---------------------- | ---------------------------- | ------------------------ |
+| **Content extraction** | Full content                 | URLs only                |
+| **Use case**           | Deep content analysis        | Site structure discovery |
+| **Speed**              | Slower (extracts content)    | Faster (URLs only)       |
+| **Best for**           | RAG, analysis, documentation | Sitemap generation       |
 
 ### Use Crawl when you need:
 
@@ -605,6 +1436,135 @@ Learn how to effectively use Tavily's Crawl API to extract and process web conte
 * Path pattern matching
 * Domain structure analysis
 
+## Crawl Parameters
+
+### Instructions
+
+Guide the crawl with natural language to focus on relevant content:
+
+```json theme={null}
+{
+  "url": "example.com",
+  "max_depth": 2,
+  "instructions": "Find all documentation pages about Python"
+}
+```
+
+**When to use instructions:**
+
+* To focus crawling on specific topics or content types
+* When you need semantic filtering of pages
+* For agentic use cases where relevance is critical
+
+### Chunks per Source
+
+Control the amount of content returned per page to prevent context window explosion:
+
+```json theme={null}
+{
+  "url": "example.com",
+  "instructions": "Find all documentation about authentication",
+  "chunks_per_source": 3
+}
+```
+
+**Key benefits:**
+
+* Returns only relevant content snippets (max 500 characters each) instead of full page content
+* Prevents context window from exploding in agentic use cases
+* Chunks appear in `raw_content` as: `<chunk 1> [...] <chunk 2> [...] <chunk 3>`
+
+> `chunks_per_source` is only available when instructions are provided.
+
+### Depth and breadth
+
+| Parameter     | Description                                     | Impact                     |
+| ------------- | ----------------------------------------------- | -------------------------- |
+| `max_depth`   | How many levels deep to crawl from starting URL | Exponential latency growth |
+| `max_breadth` | Maximum links to follow per page                | Horizontal spread          |
+| `limit`       | Total maximum pages to crawl                    | Hard cap on pages          |
+
+**Performance tip:** Each level of depth increases crawl time exponentially. Start with `max_depth=1` and increase as needed.
+
+```json theme={null}
+// Conservative crawl
+{
+  "url": "example.com",
+  "max_depth": 1,
+  "max_breadth": 20,
+  "limit": 20
+}
+
+// Comprehensive crawl
+{
+  "url": "example.com",
+  "max_depth": 3,
+  "max_breadth": 100,
+  "limit": 500
+}
+```
+
+## Filtering and Focusing
+
+### Path patterns
+
+Use regex patterns to include or exclude specific paths:
+
+```json theme={null}
+// Target specific sections
+{
+  "url": "example.com",
+  "select_paths": ["/blog/.*", "/docs/.*", "/guides/.*"],
+  "exclude_paths": ["/private/.*", "/admin/.*", "/test/.*"]
+}
+
+// Paginated content
+{
+  "url": "example.com/blog",
+  "max_depth": 2,
+  "select_paths": ["/blog/.*", "/blog/page/.*"],
+  "exclude_paths": ["/blog/tag/.*"]
+}
+```
+
+### Domain filtering
+
+Control which domains to crawl:
+
+```json theme={null}
+// Stay within subdomain
+{
+  "url": "docs.example.com",
+  "select_domains": ["^docs.example.com$"],
+  "max_depth": 2
+}
+
+// Exclude specific domains
+{
+  "url": "example.com",
+  "exclude_domains": ["^ads.example.com$", "^tracking.example.com$"],
+  "max_depth": 2
+}
+```
+
+### Extract depth
+
+Controls extraction quality vs. speed.
+
+| Depth             | When to use                            |
+| ----------------- | -------------------------------------- |
+| `basic` (default) | Simple content, faster processing      |
+| `advanced`        | Complex pages, tables, structured data |
+
+```json theme={null}
+{
+  "url": "docs.example.com",
+  "max_depth": 2,
+  "extract_depth": "advanced",
+  "select_paths": ["/docs/.*"]
+}
+```
+
 ## Use Cases
 
 ### 1. Deep or Unlinked Content
@@ -617,7 +1577,7 @@ Many sites have content that's difficult to access through standard means:
 
 **Best Practice:**
 
-```json  theme={null}
+```json theme={null}
 {
   "url": "example.com",
   "max_depth": 3,
@@ -638,7 +1598,7 @@ For content that's structured but not marked up in schema.org:
 
 **Best Practice:**
 
-```json  theme={null}
+```json theme={null}
 {
   "url": "docs.example.com",
   "max_depth": 2,
@@ -657,7 +1617,7 @@ When you need to combine information from multiple sections:
 
 **Best Practice:**
 
-```json  theme={null}
+```json theme={null}
 {
   "url": "example.com",
   "max_depth": 2,
@@ -676,12 +1636,11 @@ For content that updates frequently:
 
 **Best Practice:**
 
-```json  theme={null}
+```json theme={null}
 {
   "url": "api.example.com",
   "max_depth": 1,
-  "max_breadth": 100,
-  "extract_depth": "basic"
+  "max_breadth": 100
 }
 ```
 
@@ -695,12 +1654,12 @@ For content requiring authentication:
 
 **Best Practice:**
 
-```json  theme={null}
+```json theme={null}
 {
   "url": "help.example.com",
   "max_depth": 2,
-  "select_domains": ["^help\.example\.com$"],
-  "exclude_domains": ["^public\.example\.com$"]
+  "select_domains": ["^help.example.com$"],
+  "exclude_domains": ["^public.example.com$"]
 }
 ```
 
@@ -714,7 +1673,7 @@ For comprehensive content analysis:
 
 **Best Practice:**
 
-```json  theme={null}
+```json theme={null}
 {
   "url": "example.com",
   "max_depth": 3,
@@ -735,7 +1694,7 @@ For feeding content into LLMs or search systems:
 
 **Best Practice:**
 
-```json  theme={null}
+```json theme={null}
 {
   "url": "docs.example.com",
   "max_depth": 2,
@@ -754,7 +1713,7 @@ When you have specific paths to crawl:
 
 **Best Practice:**
 
-```json  theme={null}
+```json theme={null}
 {
   "url": "example.com",
   "max_depth": 1,
@@ -763,21 +1722,14 @@ When you have specific paths to crawl:
 }
 ```
 
-## Performance Considerations
+## Performance Optimization
 
 ### Depth vs. Performance
 
 * Each level of depth increases crawl time exponentially
-* Start with `max_depth: 1` and increase as needed
-* Use `max_breadth` to control horizontal expansion
-* Set appropriate `limit` to prevent excessive crawling
-
-### Resource Optimization
-
-* Use `basic` extract\_depth for simple content
-* Use `advanced` extract\_depth only when needed
-* Set appropriate `max_breadth` based on site structure
-* Use `select_paths` and `exclude_paths` to focus crawling
+* Start with max\_depth: 1 and increase as needed
+* Use max\_breadth to control horizontal expansion
+* Set appropriate limit to prevent excessive crawling
 
 ### Rate Limiting
 
@@ -785,56 +1737,6 @@ When you have specific paths to crawl:
 * Implement appropriate delays between requests
 * Monitor API usage and limits
 * Use appropriate error handling for rate limits
-
-## Best Practices Summary
-
-1. **Start Small**
-   * Begin with limited depth and breadth
-   * Gradually increase based on needs
-   * Monitor performance and adjust
-
-2. **Be Specific**
-   * Use path patterns to focus crawling
-   * Exclude irrelevant sections
-
-3. **Optimize Resources**
-   * Choose appropriate extract\_depth
-   * Set reasonable limits
-   * Use include\_images only when needed
-
-4. **Handle Errors**
-   * Implement retry logic
-   * Monitor failed results
-   * Handle rate limits appropriately
-
-5. **Security**
-   * Respect robots.txt
-   * Use appropriate authentication
-   * Exclude sensitive paths
-
-6. **Integration**
-   * Plan for data processing
-   * Consider storage requirements
-   * Design for scalability
-
-## Common Pitfalls
-
-1. **Excessive Depth**
-   * Avoid setting max\_depth too high
-   * Start with 1-2 levels
-   * Increase only if necessary
-
-2. **Unfocused Crawling**
-   * Use instructions for guidance
-
-3. **Resource Overuse**
-   * Monitor API usage
-   * Set appropriate limits
-   * Use basic extract\_depth when possible
-
-4. **Missing Content**
-   * Verify path patterns
-   * Monitor crawl coverage
 
 ## Integration with Map
 
@@ -845,118 +1747,393 @@ Consider using Map before Crawl to:
 3. Plan crawl strategy
 4. Validate URL patterns
 
-Example workflow:
+**Example workflow:**
 
 1. Use Map to get site structure
 2. Analyze paths and patterns
 3. Configure Crawl with discovered paths
 4. Execute focused crawl
 
-## Conclusion
+**Benefits:**
 
-Tavily's Crawl API is powerful for extracting structured content from websites. By following these best practices, you can:
+* Discover site structure before crawling
+* Identify relevant path patterns
+* Avoid unnecessary crawling
+* Validate URL patterns work correctly
 
-* Optimize crawl performance
-* Ensure complete coverage
-* Maintain resource efficiency
-* Build robust content extraction pipelines
+## Common Pitfalls
 
-Remember to:
+### Excessive depth
 
-* Start with limited scope
-* Use appropriate parameters
-* Monitor performance
-* Handle errors gracefully
-* Respect site policies
+* **Problem:** Setting `max_depth=4` or higher
+* **Impact:** Exponential crawl time, unnecessary pages
+* **Solution:** Start with 1-2 levels, increase only if needed
+
+### Unfocused crawling
+
+* **Problem:** No `instructions` provided, crawling entire site
+* **Impact:** Wasted resources, irrelevant content, context explosion
+* **Solution:** Use instructions to focus the crawl semantically
+
+### Missing limits
+
+* **Problem:** No `limit` parameter set
+* **Impact:** Runaway crawls, unexpected costs
+* **Solution:** Always set a reasonable `limit` value
+
+### Ignoring failed results
+
+* **Problem:** Not checking which pages failed extraction
+* **Impact:** Incomplete data, missed content
+* **Solution:** Monitor failed results and adjust parameters
+
+## Summary
+
+* Use instructions and chunks\_per\_source for focused, relevant results in agentic use cases
+* Start with conservative parameters (`max_depth=1, max_breadth=20`)
+* Use path patterns to focus crawling on relevant content
+* Choose appropriate extract\_depth based on content complexity
+* Set reasonable limits to prevent excessive crawling
+* Monitor failed results and adjust patterns accordingly
+* Use Map first to understand site structure
+* Implement error handling for rate limits and failures
+* Respect robots.txt and site policies
+* Optimize for your use case (speed vs. completeness)
+* Process results incrementally rather than waiting for full crawl
+
+> Crawling is powerful but resource-intensive. Focus your crawls, start small, monitor results, and scale gradually based on actual needs.
 
 
 # Best Practices for Extract
 Source: https://docs.tavily.com/documentation/best-practices/best-practices-extract
 
-Learn the best practices for web content extraction process
+Learn how to optimize content extraction, choose the right approach, and configure parameters for better performance.
 
-## Extracting web content using Tavily
+## Extract Parameters
 
-Efficiently extracting content from web pages is crucial for AI-powered applications. Tavily provides two main approaches to content extraction, each suited for different use cases.
+### Query
 
-### 1. One-step extraction: directly retrieve `raw_content`
+Use query to rerank extracted content chunks based on relevance:
 
-You can extract web content by enabling `include_raw_content = true` when making a Tavily Search API call. This allows you to retrieve both search results and extracted content in a single step.
+```python theme={null}
+await tavily_client.extract(
+    urls=["https://example.com/article"],
+    query="machine learning applications in healthcare"
+)
+```
 
-**However**, this can increase latency because you may extract raw content from sources that are not relevant in the first place.  It's recommended to split the process into two steps: running multiple sub-queries to expand the pool of sources, then curating the most relevant documents based on content snippets or source scores. By extracting raw content from the most relevant sources, you get high-quality RAG documents.
+**When to use query:**
 
-### 2. Two-step process: search, then extract
+* To extract only relevant portions of long documents
+* When you need focused content instead of full page extraction
+* For targeted information retrieval from specific URLs
 
-For better accuracy and customization, we recommend a two-step process:
+> When `query` is provided, chunks are reranked based on relevance to the query.
 
-> #### Step 1: Search
+### Chunks Per Source
 
-Use the Tavily Search API to retrieve relevant web pages, which output URLs.
+Control the amount of content returned per URL to prevent context window explosion:
 
-> #### Step 2: Extract
+```python theme={null}
+await tavily_client.extract(
+    urls=["https://example.com/article"],
+    query="machine learning applications in healthcare",
+    chunks_per_source=3
+)
+```
 
-Use the Tavily Extract API to fetch the full content from the most relevant URLs.
+**Key benefits:**
 
-**Example:**
+* Returns only relevant content snippets (max 500 characters each) instead of full page content
+* Prevents context window from exploding
+* Chunks appear in `raw_content` as: `<chunk 1> [...] <chunk 2> [...] <chunk 3>`
+* Must be between 1 and 5 chunks per source
 
-```python  theme={null}
+> `chunks_per_source` is only available when `query` is provided.
+
+**Example with multiple URLs:**
+
+```python theme={null}
+await tavily_client.extract(
+    urls=[
+        "https://example.com/ml-healthcare",
+        "https://example.com/ai-diagnostics",
+        "https://example.com/medical-ai"
+    ],
+    query="AI diagnostic tools accuracy",
+    chunks_per_source=2
+)
+```
+
+This returns the 2 most relevant chunks from each URL, giving you focused, relevant content without overwhelming your context window.
+
+## Extraction Approaches
+
+### Search with include\_raw\_content
+
+Enable include\_raw\_content=true in Search API calls to retrieve both search results and extracted content simultaneously.
+
+```python theme={null}
+response = await tavily_client.search(
+    query="AI healthcare applications",
+    include_raw_content=True,
+    max_results=5
+)
+```
+
+**When to use:**
+
+* Quick prototyping
+* Simple queries where search results are likely relevant
+* Single API call convenience
+
+### Direct Extract API
+
+Use the Extract API when you want control over which specific URLs to extract from.
+
+```python theme={null}
+await tavily_client.extract(
+    urls=["https://example.com/article1", "https://example.com/article2"],
+    query="machine learning applications",
+    chunks_per_source=3
+)
+```
+
+**When to use:**
+
+* You already have specific URLs to extract from
+* You want to filter or curate URLs before extraction
+* You need targeted extraction with query and chunks\_per\_source
+
+**Key difference:** The main distinction is control, with Extract you choose exactly which URLs to extract from, while Search with `include_raw_content` extracts from all search results.
+
+## Extract Depth
+
+The `extract_depth` parameter controls extraction comprehensiveness:
+
+| Depth             | Use case                                      |
+| ----------------- | --------------------------------------------- |
+| `basic` (default) | Simple text extraction, faster processing     |
+| `advanced`        | Complex pages, tables, structured data, media |
+
+### Using `extract_depth=advanced`
+
+Best for content requiring detailed extraction:
+
+```python theme={null}
+await tavily_client.extract(
+    url="https://example.com/complex-page",
+    extract_depth="advanced"
+)
+```
+
+**When to use advanced:**
+
+* Dynamic content or JavaScript-rendered pages
+* Tables and structured information
+* Embedded media and rich content
+* Higher extraction success rates needed
+
+<Note>
+  `extract_depth=advanced` provides better accuracy but increases latency and
+  cost. Use `basic` for simple content.
+</Note>
+
+## Advanced Filtering Strategies
+
+Beyond query-based filtering, consider these approaches for curating URLs before extraction:
+
+| Strategy     | When to use                                    |
+| ------------ | ---------------------------------------------- |
+| Re-ranking   | Use dedicated re-ranking models for precision  |
+| LLM-based    | Let an LLM assess relevance before extraction  |
+| Clustering   | Group similar documents, extract from clusters |
+| Domain-based | Filter by trusted domains before extracting    |
+| Score-based  | Filter search results by relevance score       |
+
+### Example: Score-based filtering
+
+```python theme={null}
 import asyncio
 from tavily import AsyncTavilyClient
 
 tavily_client = AsyncTavilyClient(api_key="tvly-YOUR_API_KEY")
 
-async def fetch_and_extract():
-   # Define the queries with search_depth and max_results inside the query dictionary
-   queries = [
-       {"query": "AI applications in healthcare", "search_depth": "advanced", "max_results": 10},
-       {"query": "ethical implications of AI in healthcare", "search_depth": "advanced", "max_results": 10},
-       {"query": "latest trends in machine learning healthcare applications", "search_depth": "advanced",
-        "max_results": 10},
-       {"query": "AI and healthcare regulatory challenges", "search_depth": "advanced", "max_results": 10}
-   ]
+async def filtered_extraction():
+    # Search first
+    response = await tavily_client.search(
+        query="AI healthcare applications",
+        search_depth="advanced",
+        max_results=20
+    )
 
-   # Perform the search queries concurrently, passing the entire query dictionary
-   responses = await asyncio.gather(*[tavily_client.search(**q) for q in queries])
+    # Filter by relevance score (>0.5)
+    relevant_urls = [
+        result['url'] for result in response.get('results', [])
+        if result.get('score', 0) > 0.5
+    ]
 
-   # Filter URLs with a score greater than 0.5. Alternatively, you can use a re-ranking model or an LLM to identify the most relevant sources, or cluster your documents and extract content only from the most relevant cluster
-   relevant_urls = []
-   for response in responses:
-       for result in response.get('results', []):
-           if result.get('score', 0) > 0.5:
-               relevant_urls.append(result.get('url'))
+    # Extract from filtered URLs with targeted query
+    extracted_data = await tavily_client.extract(
+        urls=relevant_urls,
+        query="machine learning diagnostic tools",
+        chunks_per_source=3,
+        extract_depth="advanced"
+    )
 
-   # Extract content from the relevant URLs
-   extracted_data = await asyncio.gather(*(tavily_client.extract(url) for url in relevant_urls))
+    return extracted_data
 
-   # Print the extracted content
-   for data in extracted_data:
-       print(data)
-
-# Run the function
-asyncio.run(fetch_and_extract())
+asyncio.run(filtered_extraction())
 ```
 
-#### **Pros of two-Step extraction**
+## Integration with Search
 
-✅ **More control** – Extract only from selected URLs.
+### Optimal workflow
 
-✅ **Higher accuracy** – Filter out irrelevant results before extraction.
+* **Search** to discover relevant URLs
+* **Filter** by relevance score, domain, or content snippet
+* **Re-rank** if needed using specialized models
+* **Extract** from top-ranked sources with query and chunks\_per\_source
+* **Validate** extracted content quality
+* **Process** for your RAG or AI application
 
-✅ **Advanced extraction capabilities** – Using `search_depth = "advanced"`.
+### Example end-to-end pipeline
 
-#### **Cons of two-step extraction**
+```python theme={null}
+async def content_pipeline(topic):
+    # 1. Search with sub-queries
+    queries = generate_subqueries(topic)
+    responses = await asyncio.gather(
+        *[tavily_client.search(**q) for q in queries]
+    )
 
-❌ slightly more expensive.
+    # 2. Filter and aggregate
+    urls = []
+    for response in responses:
+        urls.extend([
+            r['url'] for r in response['results']
+            if r['score'] > 0.5
+        ])
 
-### Using advanced extraction
+    # 3. Deduplicate
+    urls = list(set(urls))[:20]  # Top 20 unique URLs
 
-Using `extract_depth = "advanced"` in the Extract API allows for more comprehensive content retrieval. This mode is particularly useful when dealing with:
+    # 4. Extract with error handling
+    extracted = await asyncio.gather(
+        *(tavily_client.extract(url, extract_depth="advanced") for url in urls),
+        return_exceptions=True
+    )
 
-* **Complex web pages** with dynamic content, embedded media, or structured data.
-* **Tables and structured information** that require accurate parsing.
-* **Higher success rates**.
+    # 5. Filter successful extractions
+    return [e for e in extracted if not isinstance(e, Exception)]
+```
 
-> If precision and depth are priorities for your application, `extract_depth = "advanced"` is the recommended choice.
+## Summary
+
+1. **Use query and chunks\_per\_source** for targeted, focused extraction
+2. **Choose Extract API** when you need control over which URLs to extract from
+3. **Filter URLs** before extraction using scores, re-ranking, or domain trust
+4. **Choose appropriate extract\_depth** based on content complexity
+5. **Process URLs concurrently** with async operations for better performance
+6. **Implement error handling** to manage failed extractions gracefully
+7. **Validate extracted content** before downstream processing
+8. **Optimize costs** by extracting only necessary content with chunks\_per\_source
+
+> Start with query and chunks\_per\_source for targeted extraction. Filter URLs strategically, extract with appropriate depth, and handle errors gracefully for production-ready pipelines.
+
+
+# Best Practices for Research
+Source: https://docs.tavily.com/documentation/best-practices/best-practices-research
+
+Learn how to write effective prompts, choose the right model, and configure output formats for better research results.
+
+## Prompting
+
+Define a **clear goal** with all **details** and **direction**.
+
+* **Be specific when you can.** If you already know important details, include them.<br />
+  (E.g. Target market or industry, key competitors, customer segments, geography, or constraints)
+* **Only stay open-ended if you don't know details and want discovery.** If you're exploring broadly, make that explicit (e.g., "tell me about the most impactful AI innovations in healthcare in 2025").
+* **Avoid contradictions.** Don't include conflicting information, constraints, or goals in your prompt.
+* **Share what's already known.** Include prior assumptions, existing decisions, or baseline knowledge—so the research doesn't repeat what you already have.
+* **Keep the prompt clean and directed.** Use a clear task statement + essential context + desired output format. Avoid messy background dumps.
+
+### Example Queries
+
+```text theme={null}
+"Research the company ____ and it's 2026 outlook. Provide a brief 
+overview of the company, its products, services, and market position."
+```
+
+```text theme={null}
+"Conduct a competitive analysis of ____ in 2026. Identify their main competitors, 
+compare market positioning, and analyze key differentiators."
+```
+
+```text theme={null}
+"We're evaluating Notion as a potential partner. We already know they primarily 
+serve SMB and mid-market teams, expanded their AI features significantly in 2025, 
+and most often compete with Confluence and ClickUp. Research Notion's 2026 outlook, 
+including market position, growth risks, and where a partnership could be most 
+valuable. Include citations."
+```
+
+## Model
+
+| Model  | Best For                                                             |
+| ------ | -------------------------------------------------------------------- |
+| `pro`  | Comprehensive, multi-agent research for complex, multi-domain topics |
+| `mini` | Targeted, efficient research for narrow or well-scoped questions     |
+| `auto` | When you're unsure how complex research will be                      |
+
+### Pro
+
+Provides comprehensive, multi-agent research suited for complex topics that span multiple subtopics or domains. Use when you want deeper analysis, more thorough reports, or maximum accuracy.
+
+```json theme={null}
+{
+  "input": "Analyze the competitive landscape for ____ in the SMB market, including key competitors, positioning, pricing models, customer segments, recent product moves, and where ____ has defensible advantages or risks over the next 2–3 years.",
+  "model": "pro"
+}
+```
+
+### Mini
+
+Optimized for targeted, efficient research. Works best for narrow or well-scoped questions where you still benefit from agentic searching and synthesis, but don't need extensive depth.
+
+```json theme={null}
+{
+  "input": "What are the top 5 competitors to ____ in the SMB market, and how do they differentiate?",
+  "model": "mini"
+}
+```
+
+## Structured Output vs. Report
+
+* **Structured Output** - Best for data enrichment, pipelines, or powering UIs with specific fields.
+* **Report** — Best for reading, sharing, or displaying verbatim (e.g., chat interfaces, briefs, newsletters).
+
+### Formatting Your Schema
+
+* **Write clear field descriptions.** In 1–3 sentences, say exactly what the field should contain and what to look for. This makes it easier for our models to interpret what you're looking for.
+* **Match the structure you actually need.** Use the right types (arrays, objects, enums) instead of packing multiple values into one string (e.g., `competitors: string[]`, not `"A, B, C"`).
+* **Avoid duplicate or overlapping fields.** Keep each field unique and specific - contradictions or redundancy can confuse our models.
+
+## Streaming vs. Polling
+
+<CardGroup>
+  <Card title="Streaming" icon="wave-pulse" href="https://github.com/tavily-ai/tavily-cookbook/blob/main/cookbooks/research/streaming.ipynb">
+    Best for user interfaces where you want real-time updates.
+  </Card>
+
+  <Card title="Polling" icon="rotate" href="https://github.com/tavily-ai/tavily-cookbook/blob/main/cookbooks/research/polling.ipynb">
+    Best for background processes where you check status periodically.
+  </Card>
+</CardGroup>
+
+<Tip>
+  See streaming in action with the [live demo](https://chat-research.tavily.com/).
+</Tip>
 
 
 # Best Practices for Search
@@ -964,491 +2141,210 @@ Source: https://docs.tavily.com/documentation/best-practices/best-practices-sear
 
 Learn how to optimize your queries, refine search filters, and leverage advanced parameters for better performance.
 
-## Optimizing your query
+## Query Optimization
 
-#### 1. Keep your query under 400 characters
+### Keep your query under 400 characters
 
-For efficient processing, keep your query concise—under **400 characters**. Think of it as a query for an agent performing web search, not long-form prompts. If your query exceeds the limit, you'll see this error:
+Keep queries concise—under **400 characters**. Think of it as a query for an agent performing web search, not long-form prompts.
 
-```json  theme={null}
+### Break complex queries into sub-queries
+
+For complex or multi-topic queries, send separate focused requests:
+
+```json theme={null}
+// Instead of one massive query, break it down:
+{ "query": "Competitors of company ABC." }
+{ "query": "Financial performance of company ABC." }
+{ "query": "Recent developments of company ABC." }
+```
+
+## Search Depth
+
+The `search_depth` parameter controls the tradeoff between latency and relevance:
+
+<Expandable title="Latency vs relevance chart">
+  <img alt="Latency vs Relevance by Search Depth" />
+
+  *This chart is a heuristic and is not to scale.*
+</Expandable>
+
+| Depth        | Latency | Relevance | Content Type |
+| ------------ | ------- | --------- | ------------ |
+| `ultra-fast` | Lowest  | Lower     | Content      |
+| `fast`       | Low     | Good      | Chunks       |
+| `basic`      | Medium  | High      | Content      |
+| `advanced`   | Higher  | Highest   | Chunks       |
+
+### Content types
+
+| Type        | Description                                               |
+| ----------- | --------------------------------------------------------- |
+| **Content** | NLP-based summary of the page, providing general context  |
+| **Chunks**  | Short snippets reranked by relevance to your search query |
+
+Use **chunks** when you need highly targeted information aligned with your query. Use **content** when a general page summary is sufficient.
+
+### Fast + Ultra-Fast
+
+| Depth        | When to use                                                                                                                                                             |
+| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ultra-fast` | When latency is absolutely crucial. Delivers near-instant results, prioritizing speed over relevance. Ideal for real-time applications where response time is critical. |
+| `fast`       | When latency is more important than relevance, but you want results in reranked chunks format. Good for applications that need quick, targeted snippets.                |
+| `basic`      | A solid balance between relevance and latency. Best for general-purpose searches where you need quality results without the overhead of advanced processing.            |
+| `advanced`   | When you need the highest relevance and are willing to trade off latency. Best for queries seeking specific, detailed information.                                      |
+
+### Using `search_depth=advanced`
+
+Best for queries seeking specific information:
+
+```json theme={null}
 {
-  "detail": {
-    "error": "Query is too long. Max query length is 400 characters."
-  }
+  "query": "How many countries use Monday.com?",
+  "search_depth": "advanced",
+  "chunks_per_source": 3,
+  "include_raw_content": true
 }
 ```
 
-#### 2. Break your query into smaller sub-queries
+## Filtering Results
 
-If your query is complex or covers multiple topics, consider breaking it into smaller, more focused sub-queries and sending them as separate requests.
+### By date
 
-<CodeGroup>
-  ```json ✅ Good theme={null}
-  // Breaking the query into smaller, more focused sub-queries.
-  {
-     "query":"Competitors of company ABC."
-  }
-  {
-     "query":"Financial performance of company ABC."
-  }
-  {
-     "query":"Recent developments of company ABC."
-  }
-  {
-     "query":"Latest industry trends related to ABC."
-  }
-  ```
+| Parameter                 | Description                                             |
+| ------------------------- | ------------------------------------------------------- |
+| `time_range`              | Filter by relative time: `day`, `week`, `month`, `year` |
+| `start_date` / `end_date` | Filter by specific date range (format: `YYYY-MM-DD`)    |
 
-  ```json ❌ Bad theme={null}
-  {
-    "query": "Information regarding the history, financial performance, market positioning, recent developments, executive leadership, product offerings, customer demographics, strategic partnerships, mergers and acquisitions, regulatory challenges, competitor analysis, emerging market trends, technological advancements, and overall industry outlook for the company ABC and its key competitors within the industry, including recent reports, expert analyses, and predictions for future growth."
-  }
-  ```
-</CodeGroup>
+```json theme={null}
+{ "query": "latest ML trends", "time_range": "month" }
+{ "query": "AI news", "start_date": "2025-01-01", "end_date": "2025-02-01" }
+```
 
-## Optimizing your request parameters
+### By topic
 
-#### `max_results`  (Limiting the number of results)
+Use `topic` to filter by content type. Set to `news` for news sources (includes `published_date` metadata):
 
-* Limits the number of search results (default is `5`).
+```json theme={null}
+{ "query": "What happened today in NY?", "topic": "news" }
+```
 
-<CodeGroup>
-  ```json ✅ Good theme={null}
-  // Customizing max_results based on your needs, limiting the results to 10 to improve relevance and focus on the most relevant sources.
-  {
-    "query": "Info about renewable energy technologies",
-    "max_results": 10
-  }
-  ```
+### By domain
 
-  ```json ❌ Bad theme={null}
-  // Setting max_results too high may return irrelevant or low-quality results.
-  {
-    "query": "Info about renewable energy technologies",
-    "max_results": 300
-  }
-  ```
-</CodeGroup>
+| Parameter         | Description                           |
+| ----------------- | ------------------------------------- |
+| `include_domains` | Limit to specific domains             |
+| `exclude_domains` | Filter out specific domains           |
+| `country`         | Boost results from a specific country |
 
-#### `content` (NLP-based snippet)
+```json theme={null}
+// Restrict to LinkedIn profiles
+{ "query": "CEO background at Google", "include_domains": ["linkedin.com/in"] }
 
-* Provides a summarized content snippet.
-* Helps in quickly understanding the main context without extracting full content.
-* When `search_depth` is set to `advanced` , it extracts content closely aligned with your query, surfacing the most valuable sections of a web page rather than a generic summary. Additionally, it uses `chunks_per_source` to determine the number of content chunks to return per source.
+// Exclude irrelevant domains
+{ "query": "US economy trends", "exclude_domains": ["espn.com", "vogue.com"] }
 
-#### `search_depth=advanced`  (Ideal for higher relevance in search results)
+// Boost results from a country
+{ "query": "tech startup funding", "country": "united states" }
 
-* Retrieves the most relevant content snippets for your query.
-* By setting  `include_raw_content` to `true`, you can increase the likelihood of enhancing retrieval precision and retrieving the desired number of `chunks_per_source`.
+// Wildcard: limit to .com, exclude specific site
+{ "query": "AI news", "include_domains": ["*.com"], "exclude_domains": ["example.com"] }
+```
 
-<CodeGroup>
-  ```json ✅ Good theme={null}
-  // Using search_depth=advanced and chunks_per_source for a query to get the most relevant content, and enabling include_raw_content.
-  {
-    "query": "How many countries use Monday.com?",
-    "search_depth": "advanced",
-    "chunks_per_source": 3,
-    "include_raw_content": true
-  }
-  ```
+<Note>Keep domain lists short and relevant for best results.</Note>
 
-  ```json 👍 Good theme={null}
-  // Using search_depth=advanced and chunks_per_source for a query to get the most relevant content.
-  {
-    "query": "How many countries use Monday.com?",
-    "search_depth": "advanced",
-    "chunks_per_source": 3
-  }
-  ```
+## Response Content
 
-  ```json ❌ Bad theme={null}
-  // Using basic search for queries that is seeking specific information that might not be available in the generic `content` snippet.
-  {
-    "query": "How many countries use Monday.com?",
-    "search_depth": "basic"
-  }
-  ```
-</CodeGroup>
+### `max_results`
 
-#### `time_range` (Filtering by Date)
+Limits results returned (default: `5`). Setting too high may return lower-quality results.
 
-* Restricts search results to a specific time frame based on publish date or last updated date.
+### `include_raw_content`
 
-<CodeGroup>
-  ```json ✅ Good theme={null}
-  // Using time_range to filter sources from the past month.
-  {
-    "query": "latest trends in machine learning",
-    "time_range": "month"
-  }
-  ```
+Returns full extracted page content. For comprehensive extraction, consider a two-step process:
 
-  ```json 👍 Moderate theme={null}
-  // Not using time_range to filter results by date for recent sources.
-  {
-    "query": "latest trends in machine learning"
-  }
-  ```
-</CodeGroup>
+1. Search to retrieve relevant URLs
+2. Use [Extract API](/documentation/best-practices/best-practices-extract#2-two-step-process-search-then-extract) to get content
 
-#### `start_date` and  `end_date` (Filtering by Specific Date Range)
+### `auto_parameters`
 
-* Filters search results published or updated within a specified date range.
+Tavily automatically configures parameters based on query intent. Your explicit values override automatic ones.
 
-<CodeGroup>
-  ```json ✅ Good theme={null}
-  // Using start_date and end_date to filter results published or updated between specific dates.
-  { 
-      "query": "latest trends in machine learning",
-      "start_date": "2025-01-01",
-      "end_date": "2025-02-01" 
-  } 
-  ```
-
-  ```json 👍 Moderate theme={null}
-  // Using only start_date without specifying end_date, which may return very recent results without an upper limit. 
-  { 
-      "query": "latest trends in machine learning", 
-      "start_date": "2025-01-01" 
-  } 
-  ```
-</CodeGroup>
-
-#### `include_raw_content` (Extracted web content)
-
-Set to true to return the full extracted content of the web page, useful for deeper content analysis. However, the most recommended approach for extracting web page content is using a two-step process:
-
-1. Search: Retrieve relevant URLs.
-2. Extract: Extract content from those URLs.
-
-For more information on this two-step process, please refer to the [Best Practices for the Extract API](/documentation/best-practices/best-practices-extract#2-two-step-process-search-then-extract).
-
-<CodeGroup>
-  ```json ✅ Good theme={null}
-  // Using include_raw_content to retrieve full content for comprehensive analysis.
-  {
-      "query": "The impact of AI in healthcare",
-      "include_raw_content": true
-  }
-  ```
-
-  ```json 👍 Moderate theme={null}
-   // Not using include_raw_content when detailed content is needed.
-   {
-      "query": "The impact of AI in healthcare"
-   }
-  ```
-</CodeGroup>
-
-#### `topic=news` (Filtering news sources)
-
-* Limits results to news-related sources.
-* Includes `published_date` metadata.
-* Useful for getting real-time updates, particularly about politics, sports, and major current events covered by mainstream media sources.
-
-<CodeGroup>
-  ```json ✅ Good theme={null}
-  // Using "topic=news" to get the latest updates from news sources.
-  {
-    "query": "What happened today in NY?",
-    "topic": "news"
-  }
-  ```
-
-  ```json ❌ Bad theme={null}
-  // Not specifying the "topic" parameter, which is essential for retrieving results specifically from news sources.
-  {
-    "query": "What happened today in NY?"
-  }
-  ```
-</CodeGroup>
-
-#### `auto_parameters` (Automatically Optimizing Search Parameters)
-
-* When enabled, Tavily intelligently adjusts search parameters based on the query's intent.
-* Explicitly set values always override the automatic ones.
-* Note: `search_depth` may default to `advanced`, using 2 API credits per request. To control cost, set it manually to `basic`.
-
-<CodeGroup>
-  ```json ✅ Good theme={null}
-  // auto_parameters enabled with manual override to control cost and output. 
-  { 
-      "query": "impact of AI in education policy", 
-      "auto_parameters": true, 
-      "search_depth": "basic", // Overrides 'advanced' 
-      "include_answer": true, 
-      "max_results": 10 
-  } 
-  ```
-
-  ```json 👍 Moderate  theme={null}
-  // auto_parameters enabled without controlling cost-impacting parameters.
-  { 
-      "query": "impact of AI in education policy",
-      "auto_parameters": true
-  } 
-  ```
-</CodeGroup>
-
-#### `include_domains` (Restricting searches to specific domains)
-
-* Limits searches to predefined trusted domains.
-
-<CodeGroup>
-  ```json ✅ Good theme={null}
-  // Using include_domains to restrict search for more domain-specific information.
-  {
-    "query": "What is the professional background of the CEO at Google?",
-    "include_domains": ["linkedin.com/in"]
-  }
-  ```
-
-  ```json ❌ Bad theme={null}
-  // Not specifying the domain, leading to broader, less focused results.
-  {
-    "query": "What is the professional background of the CEO at Google?"
-  }
-  ```
-</CodeGroup>
-
-* Minimize the number of domains in the `include_domains` list and make sure they are relevant to your search query.
-
-<CodeGroup>
-  ```json ✅ Good theme={null}
-  // Using a concise list of 3 relevant domains to refine search results effectively.
-  {
-      "query": "What are the latest funding rounds for AI startups?",
-      "include_domains": [ "crunchbase.com", "techcrunch.com", "pitchbook.com" ]
-   }
-  ```
-
-  ```json ❌ Bad theme={null}
-  // Including an excessively long list of domains can reduce search efficiency and lead to sub-optimal search results.
-  {
-     "query": "What are the latest funding rounds for AI startups?",
-     "include_domains": [ "example1.com", "example2.com", "example3.com", ..., "example200.com" ]
-  }
-  ```
-</CodeGroup>
-
-#### `exclude_domains` (Excluding specific domains)
-
-* Filters out results from specific domains.
-
-<CodeGroup>
-  ```json ✅ Good theme={null}
-  // Excluding unrelated domains to US economy trends, ensuring that irrelevant sources are filtered out.
-  {
-     "query": "US economy trends in 2025",
-     "exclude_domains": ["espn.com","vogue.com"]
-  }
-  ```
-
-  ```json ❌ Bad theme={null}
-  // Excluding results from Forbes, which is a key source for U.S. economics. This may filter out valuable information.
-  {
-      "query": "US economy trends in 2025",
-      "exclude_domains": ["forbes.com"]
-  }
-  ```
-</CodeGroup>
-
-* Minimize the number of domains in the `exclude_domains` list to ensure you only exclude domains that are truly irrelevant to your query.
-
-<CodeGroup>
-  ```json ✅ Good theme={null}
-  // Using a concise list of 3 domains to exclude from the search results.
-  {
-      "query": "US fashion trends in 2025",
-      "exclude_domains": ["nytimes.com","forbes.com","bloomberg.com"]
-  }
-  ```
-
-  ```json ❌ Bad theme={null}
-  // Excluding an excessively long list of domains may prevent relevant sources from being included, potentially resulting in little to no results.
-  {
-     "query": "US fashion trends in 2025",
-     "exclude_domains": [ "example1.com", "example2.com", "example3.com", ..., "example200.com" ]
-  }
-  ```
-</CodeGroup>
-
-#### Controlling search results by website region
-
-Example: Limit to U.S.-based websites (`.com` domain):
-
-```json  theme={null}
+```json theme={null}
 {
-    "query": "latest AI research",
-    "include_domains": ["*.com"]
+  "query": "impact of AI in education policy",
+  "auto_parameters": true,
+  "search_depth": "basic" // Override to control cost
 }
 ```
 
-Example: Exclude Icelandic websites (`.is` domain):
+<Note>
+  `auto_parameters` may set `search_depth` to `advanced` (2 credits). Set it
+  manually to control cost.
+</Note>
 
-```json  theme={null}
-{
-    "query": "global economic trends",
-    "exclude_domains": ["*.is"]
-}
-```
+## Async & Performance
 
-Example: Boost results from a specific country using the `country` parameter:
+Use async calls for concurrent requests:
 
-```json  theme={null}
-{
-    "query": "tech startup funding",
-    "topic": "general",
-    "country": "united states"
-}
-```
-
-#### Combining include and exclude domains
-
-Restrict search to `.com` but exclude `example.com`:
-
-```json  theme={null}
-{
-    "query": "AI industry news",
-    "include_domains": ["*.com"],
-    "exclude_domains": ["example.com"]
-}
-```
-
-## Asynchronous API calls with Tavily
-
-* Use `async/await` to ensure non-blocking API requests.
-* Initialize `AsyncTavilyClient` once and reuse it for multiple requests.
-* Use `asyncio.gather` for handling multiple queries concurrently.
-* Implement error handling to manage API failures gracefully.
-* Limit concurrent requests to avoid hitting rate limits.
-
-Example:
-
-```python  theme={null}
+```python theme={null}
 import asyncio
 from tavily import AsyncTavilyClient
 
-# Initialize Tavily client
 tavily_client = AsyncTavilyClient("tvly-YOUR_API_KEY")
 
 async def fetch_and_gather():
     queries = ["latest AI trends", "future of quantum computing"]
+    responses = await asyncio.gather(
+        *(tavily_client.search(q) for q in queries),
+        return_exceptions=True
+    )
+    for response in responses:
+        if isinstance(response, Exception):
+            print(f"Failed: {response}")
+        else:
+            print(response)
 
-    # Perform search and continue even if one query fails (using return_exceptions=True)
-    try:
-        responses = await asyncio.gather(*(tavily_client.search(q) for q in queries), return_exceptions=True)
-
-        # Handle responses and print
-        for response in responses:
-            if isinstance(response, Exception):
-                print(f"Search query failed: {response}")
-            else:
-                print(response)
-
-    except Exception as e:
-        print(f"Error during search queries: {e}")
-
-# Run the function
 asyncio.run(fetch_and_gather())
 ```
 
-## Optimizing search results with post-processing techniques
+## Post-Processing
 
-When working with Tavily’s Search API, refining search results through post-processing techniques can significantly enhance the relevance of the retrieved information.
+### Using metadata
 
-### Combining LLMs with Keyword Filtering
+Leverage response metadata to refine results:
 
-One of the most effective ways to refine search results is by using a combination of LLMs and deterministic keyword filtering.
+| Field         | Use case                           |
+| ------------- | ---------------------------------- |
+| `score`       | Filter/rank by relevance score     |
+| `title`       | Keyword filtering on headlines     |
+| `content`     | Quick relevance check              |
+| `raw_content` | Deep analysis and regex extraction |
 
-* **LLMs** can analyze search results in a more contextual and semantic manner, understanding the deeper meaning of the text.
-* **Keyword filtering** offers a rule-based approach to eliminate irrelevant results based on predefined terms, ensuring a balance between flexibility and precision.
+### Score-based filtering
 
-#### How it works
+The `score` indicates relevance between query and content. Higher is better, but the ideal threshold depends on your use case.
 
-By applying keyword filters before or after processing results with an LLM, you can:
+```python theme={null}
+# Filter results with score > 0.7
+filtered = [r for r in results if r['score'] > 0.7]
+```
 
-* Remove results that contain specific unwanted terms.
-* Prioritize articles that contain high-value keywords relevant to your use case.
-* Improve efficiency by reducing the number of search results requiring further LLM processing.
+### Regex extraction
 
-### Utilizing metadata for improved post-processing
+Extract structured data from `raw_content`:
 
-Tavily’s Search API provides rich metadata that can be leveraged to refine and prioritize search results. By incorporating metadata into post-processing logic, you can improve precision in selecting the most relevant content.
-
-#### Key metadata fields and their Functions
-
-* **`title`**: Helps in identifying articles that are more likely to be relevant based on their headlines. Filtering results by keyword occurrences in the title can improve result relevancy.
-* **`raw_content`**: Provides the extracted content from the web page, allowing deeper analysis. If the `content` does not provide enough information, raw content can be useful for further filtering and ranking. You can also use the Extract API with a two-step extraction process. For more information, see [Best Practices for Extract API](/documentation/best-practices/best-practices-extract#2-two-step-process-search-then-extract).
-* **`score`**: Represents the relevancy between the query and the retrieved content snippet. Higher scores typically indicate better matches.
-* **`content`**: Offers a general summary of the webpage, providing a quick way to gauge relevance without processing the full content. When `search_depth` is set to `advanced`, the content is more closely aligned with the query, offering valuable insights.
-
-#### Enhancing post-processing with metadata
-
-By leveraging these metadata elements, you can:
-
-* Sort results based on scores, prioritizing high-confidence matches.
-* Perform additional filtering based on title or content to refine search results.
-
-#### Understanding the `score` Parameter
-
-Tavily assigns a `score` to each search result, indicating how well the content aligns with the query. This score helps in ranking and selecting the most relevant results.
-
-#### What does the `score` mean?
-
-* The `score` is a numerical measure of relevance between the content and the query.
-* A higher score generally indicates that the result is more relevant to the query.
-* There is no fixed threshold that determines whether a result is useful. The ideal score cutoff depends on the specific use case.
-
-#### Best practices for using scores
-
-* Set a minimum score threshold to exclude low-relevance results automatically.
-* Analyze the distribution of scores within a search response to adjust thresholds dynamically.
-* Combine similarity scores with other metadata fields (e.g., url, content) to improve ranking strategies.
-
-### Using regex-based data extraction
-
-In addition to leveraging LLMs and metadata for refining search results, Python's `re.search` and `re.findall` methods can play a crucial role in post-processing by allowing you to parse and extract specific data from the `raw_content`. These methods enable pattern-based filtering and extraction, enhancing the precision and relevance of the processed results.
-
-#### Benefits of using `re.search` and `re.findall`
-
-* **Pattern Matching**: Both methods are designed to search for specific patterns in text, which is ideal for structured data extraction.
-* **Efficiency**: These methods help automate the extraction of specific elements from large datasets, improving post-processing efficiency.
-* **Flexibility**: You can define custom patterns to match a variety of data types, from dates and addresses to keywords and job titles.
-
-#### How they work
-
-* **`re.search`**: Scans the content for the first occurrence of a specified pattern and returns a match object, which can be used to extract specific parts of the text.
-
-Example:
-
-```python  theme={null}
+```python theme={null}
 import re
+
+# Extract location
 text = "Company: Tavily, Location: New York"
 match = re.search(r"Location: (\w+)", text)
-if match:
-    print(match.group(1))  # Output: New York
-```
+location = match.group(1) if match else None  # "New York"
 
-* **`re.findall`**: Returns a list of all non-overlapping matches of a pattern in the content, making it suitable for extracting multiple instances of a pattern.
-
-Example:
-
-```python  theme={null}
+# Extract all emails
 text = "Contact: john@example.com, support@tavily.com"
 emails = re.findall(r"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}", text)
-print(emails)  # Output: ['john@example.com', 'support@tavily.com']
 ```
-
-#### Common use cases for post-processing
-
-* **Content Filtering**: Use `re.search` to identify sections or specific patterns in content (e.g., dates, locations, company names).
-
-* **Data Extraction**: Use `re.findall` to extract multiple instances of specific data points (e.g., phone numbers, emails).
-
-* **Improving Relevance**: Apply regex patterns to remove irrelevant content, ensuring that only the most pertinent information remains.
-
-> By leveraging post-processing techniques such as LLM-assisted filtering, metadata analysis, and score-based ranking, along with regex-based data extraction, you can optimize Tavily’s Search API results for better relevance. Incorporating these methods into your workflow will help you extract high-quality insights tailored to your needs.
 
 
 # Help Center
@@ -1458,7 +2354,7 @@ Source: https://docs.tavily.com/documentation/help
 
 
 
-# Agent Builder
+# OpenAI Agent Builder
 Source: https://docs.tavily.com/documentation/integrations/agent-builder
 
 Integrate OpenAI’s Agent Builder with Tavily’s MCP server to empower your AI agents with real-time web access.
@@ -1473,40 +2369,41 @@ Before you begin, make sure you have:
 <Step title="Create a new workflow in Agent Builder">
   Navigate to [Agent Builder](https://platform.openai.com/agent-builder) and click **Create New Workflow** to begin building your AI agent.
 
-  <img src="https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/create-workflow.png?fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=d032fb19494be5ccd0c516de7bfc1b4d" alt="Create New Workflow" width="1431" height="510" data-og-width="2542" data-og-height="1524" data-path="images/create-workflow.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/create-workflow.png?w=280&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=67d795b79ffe8af95b94781b4e171bfe 280w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/create-workflow.png?w=560&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=f243bd47f8e916566904f21d0d5df4b5 560w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/create-workflow.png?w=840&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=ba9864ddc063f9ef3f58d9c77b170d84 840w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/create-workflow.png?w=1100&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=52fbd67d6f4c4fbbdc017020e6409695 1100w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/create-workflow.png?w=1650&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=fe5bbe6bac2d0b7f95b41265769417a8 1650w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/create-workflow.png?w=2500&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=ed84ddb72b4a33da8fe7f3b8dbf62ba5 2500w" />
+  <img alt="Create New Workflow" />
 </Step>
 
-<Step title="Select the agent node in your workflow" stepNumber={2}>
+<Step title="Select the agent node in your workflow">
   Click on the agent node in your workflow canvas to open the configuration panel.
 
-  <img src="https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/agent-node.png?fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=5b1b592b5b703df7f85a26626c05dc4d" alt="Agent Block" width="1339" height="618" data-og-width="3018" data-og-height="1716" data-path="images/agent-node.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/agent-node.png?w=280&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=45f215f1abf8c284ea8c270e741ea1b3 280w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/agent-node.png?w=560&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=be5e43e63143db8acb7a15065750597d 560w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/agent-node.png?w=840&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=5bd15c7f863307d449fc53ce49f28be6 840w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/agent-node.png?w=1100&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=b724e3f26320f5bfd77a37bdc6976e5e 1100w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/agent-node.png?w=1650&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=f617aeba65eb75f638b126b65f28948e 1650w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/agent-node.png?w=2500&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=169346237fda5e7b9268cf6de5b3be2e 2500w" />
+  <img alt="Agent Block" />
 </Step>
 
-<Step title="Open the Tools configuration" stepNumber={3}>
+<Step title="Open the Tools configuration">
   In the configuration panel, locate and click on **Tools** in the sidebar to add external capabilities to your agent.
 
-  <img src="https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/agent-tool.png?fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=18bf6ac9a2dda471ef124ef7f21216fc" alt="Tools Panel" width="375" height="529" data-og-width="750" data-og-height="1080" data-path="images/agent-tool.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/agent-tool.png?w=280&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=7782e4dab411fcc279736f3b8895dd5d 280w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/agent-tool.png?w=560&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=087dad80f234ffef547f622a47f302e1 560w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/agent-tool.png?w=840&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=e0d2bd554ddb3a34f9803af07844868b 840w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/agent-tool.png?w=1100&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=df7ee3e07a9bfebf9ada53016c30ded9 1100w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/agent-tool.png?w=1650&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=624eb4feb9a4345492db19d68b5e40e0 1650w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/agent-tool.png?w=2500&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=b0905e0b00c03abdf5390e497c845420 2500w" />
+  <img alt="Tools Panel" />
 </Step>
 
-<Step title="Connect Tavily's MCP server" stepNumber={4}>
+<Step title="Connect Tavily's MCP server">
   In the MCP configuration section, paste the Tavily MCP server URL:
 
-  ```bash  theme={null}
+  ```bash theme={null}
   https://mcp.tavily.com/mcp/?tavilyApiKey=YOUR_API_KEY
   ```
 
   Remember to replace `YOUR_API_KEY` with your actual Tavily API key.
 
   <Tip>
-    Need an API key? Get one instantly from your [Tavily dashboard](https://app.tavily.com/home)
+    Need an API key? Get one instantly from your [Tavily
+    dashboard](https://app.tavily.com/home)
   </Tip>
 
   Click **Connect** to establish the connection to Tavily.
 
-  <img src="https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/tavily-mcp.png?fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=2f39df29a22f845ed5d2f9bf7883d0fd" alt="Tavily MCP Configuration" width="524" height="668" data-og-width="1072" data-og-height="1428" data-path="images/tavily-mcp.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/tavily-mcp.png?w=280&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=4581d097de536382a930b224924dc5a8 280w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/tavily-mcp.png?w=560&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=e9adb46882cc7a1aa83cf106eeb6d532 560w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/tavily-mcp.png?w=840&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=1fd82ede8766b583ac66386545cfb5f3 840w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/tavily-mcp.png?w=1100&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=2d2d126e42caca4476a0731e71a10ef7 1100w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/tavily-mcp.png?w=1650&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=a8e6f4f9d4fe3f6ac25048975b307889 1650w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/tavily-mcp.png?w=2500&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=5076a16b287676cdaf4913f7d069fc59 2500w" />
+  <img alt="Tavily MCP Configuration" />
 </Step>
 
-<Step title="Enable Tavily capabilities for your agent" stepNumber={5}>
+<Step title="Enable Tavily capabilities for your agent">
   Once connected, you'll see Tavily's suite of tools available:
 
   * **tavily\_search** - Execute a search query.
@@ -1516,10 +2413,10 @@ Before you begin, make sure you have:
 
   Select the tools you want to activate for this agent, then click **Add** to integrate them.
 
-  <img src="https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/tavily-mcp-tools.png?fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=d9e0d214e5b6c0d9c0ab3943289d6729" alt="Tavily Tools Available" width="522" height="566" data-og-width="1072" data-og-height="1172" data-path="images/tavily-mcp-tools.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/tavily-mcp-tools.png?w=280&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=45f5ce56b89415a2d13d14c7a72905c7 280w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/tavily-mcp-tools.png?w=560&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=ec93c69f5a058a557e16814fb7e8e10d 560w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/tavily-mcp-tools.png?w=840&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=8a7085f7335e901d1186c5dffdee1089 840w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/tavily-mcp-tools.png?w=1100&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=baa5f8f8e977c0e8eae835eaee37024b 1100w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/tavily-mcp-tools.png?w=1650&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=490957023b658a1dd831061e476690b0 1650w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/tavily-mcp-tools.png?w=2500&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=9395faf44997c5e3bee6bfa161876f9c 2500w" />
+  <img alt="Tavily Tools Available" />
 </Step>
 
-<Step title="Customize your agent's behavior" stepNumber={6}>
+<Step title="Customize your agent's behavior">
   Now configure your agent:
 
   * **Name**: Choose a descriptive name for your agent
@@ -1534,13 +2431,13 @@ Before you begin, make sure you have:
   When the user asks questions that require current information, use Tavily to find relevant and recent sources.
   ```
 
-  <img src="https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/agent-config.png?fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=899b9db4ad2c6f8e785ef24dcdf17bbc" alt="Agent Configuration Panel" width="356" height="556" data-og-width="754" data-og-height="1164" data-path="images/agent-config.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/agent-config.png?w=280&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=e7fabd6f8f12ff769f3292af638b88be 280w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/agent-config.png?w=560&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=c6dc79e60f015c0400e2daa1f2ef103d 560w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/agent-config.png?w=840&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=10364283f2a50fe29fee45df5c89447b 840w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/agent-config.png?w=1100&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=c507f50641a6a0b2f33a6134a0084d18 1100w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/agent-config.png?w=1650&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=f47d3a77e950301c3ca52925d2c92cae 1650w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/agent-config.png?w=2500&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=4cc8a87b7f89acd2bcbfd28e14e958c3 2500w" />
+  <img alt="Agent Configuration Panel" />
 </Step>
 
-<Step title="Verify your agent works correctly" stepNumber={7}>
+<Step title="Verify your agent works correctly">
   Test your agent with queries that require real-time information to verify everything is working as expected.
 
-  <img src="https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/test-agent.png?fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=6b2dca8e3bb276e711fd5e09b5fa5e63" alt="Agent Testing Interface" width="1672" height="746" data-og-width="3002" data-og-height="1620" data-path="images/test-agent.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/test-agent.png?w=280&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=d191fbfea2a653f1280495651d5291d4 280w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/test-agent.png?w=560&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=502783869267fbbb5c40ce6722294670 560w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/test-agent.png?w=840&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=20d40de348c4941ef95ad9c97f6531ad 840w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/test-agent.png?w=1100&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=9e67d3989acfc8129597d447b4573d65 1100w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/test-agent.png?w=1650&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=96dca0369adff8ed9c33743fa1232638 1650w, https://mintcdn.com/tavilyai/L1kzPmnTqAHnyyDl/images/test-agent.png?w=2500&fit=max&auto=format&n=L1kzPmnTqAHnyyDl&q=85&s=281573bd2e9c6fab227ccedc36f7578a 2500w" />
+  <img alt="Agent Testing Interface" />
 </Step>
 
 ## Real-World Applications
@@ -1577,7 +2474,7 @@ Integrate [Tavily with Agno](https://docs.agno.com/tools/toolkits/search/tavily#
 
 Install the necessary Python packages:
 
-```bash  theme={null}
+```bash theme={null}
 pip install agno tavily-python
 ```
 
@@ -1588,14 +2485,14 @@ pip install agno tavily-python
 
 Set these as environment variables in your terminal or add them to your environment configuration file:
 
-```bash  theme={null}
+```bash theme={null}
 export TAVILY_API_KEY=your_tavily_api_key
 export OPENAI_API_KEY=your_openai_api_key
 ```
 
 ### Step 3: Initialize Agno Agent with Tavily Tools
 
-```python  theme={null}
+```python theme={null}
 from agno.agent import Agent
 from agno.tools.tavily import TavilyTools
 import os
@@ -1614,7 +2511,7 @@ agent = Agent(
 
 ### Step 4: Example Use Cases
 
-```python  theme={null}
+```python theme={null}
 # Example 1: Basic search with default parameters
 agent.print_response("Latest developments in quantum computing", markdown=True)
 
@@ -1657,7 +2554,7 @@ Integrate Tavily with Anthropic Claude to enhance your AI applications with real
 
 Install the required packages:
 
-```bash  theme={null}
+```bash theme={null}
 pip install anthropic tavily-python
 ```
 
@@ -1665,7 +2562,7 @@ pip install anthropic tavily-python
 
 Set up your API keys:
 
-```python  theme={null}
+```python theme={null}
 import os
 # Set your API keys
 os.environ["OPENAI_API_KEY"] = "your-openai-api-key"
@@ -1674,7 +2571,7 @@ os.environ["TAVILY_API_KEY"] = "your-tavily-api-key"
 
 ## Using Tavily with Anthropic tool calling
 
-```python  theme={null}
+```python theme={null}
 import json
 from anthropic import Anthropic
 from tavily import TavilyClient
@@ -1691,7 +2588,7 @@ MODEL_NAME = "claude-sonnet-4-20250514"
 
 Define a system prompt to guide Claude's behavior:
 
-```python  theme={null}
+```python theme={null}
 SYSTEM_PROMPT = (
     "You are a research assistant. Use the tavily_search tool when needed. "
     "After tools run and tool results are provided back to you, produce a concise, well-structured summary "
@@ -1703,7 +2600,7 @@ SYSTEM_PROMPT = (
 
 Define the Tavily search tool for Claude with enhanced parameters:
 
-```python  theme={null}
+```python theme={null}
 tools = [
     {
         "name": "tavily_search",
@@ -1721,13 +2618,13 @@ tools = [
 ]
 ```
 
-<a href="#schemas" onClick="document.getElementById('schemas').scrollIntoView({behavior: 'smooth'}); return false;">Scroll to the bottom to find the full json schema for search, extract, map and crawl</a>
+<a href="#schemas">Scroll to the bottom to find the full json schema for search, extract, map and crawl</a>
 
 ### Tool execution
 
 Create optimized functions to handle Tavily searches:
 
-```python  theme={null}
+```python theme={null}
 def tavily_search(**kwargs):
     return tavily_client.search(**kwargs)
 
@@ -1741,7 +2638,7 @@ def process_tool_call(name, args):
 
 The main function that handles the two-step conversation with Claude:
 
-```python  theme={null}
+```python theme={null}
 def chat_with_claude(user_message: str):
     print(f"\n{'='*50}\nUser Message: {user_message}\n{'='*50}")
 
@@ -1796,13 +2693,13 @@ def chat_with_claude(user_message: str):
 
 ### Usage example
 
-```python  theme={null}
+```python theme={null}
 # Example usage
 chat_with_claude("What is trending now in the agents space in 2025?")
 ```
 
 <Accordion title="Full Code Example">
-  ```python  theme={null}
+  ```python theme={null}
   import os
   import json
   from anthropic import Anthropic
@@ -1906,9 +2803,9 @@ chat_with_claude("What is trending now in the agents space in 2025?")
 
 > **API Format:** The schemas below are for Anthropic's tool format. Each tool uses the `input_schema` structure with `type`, `properties`, and `required` fields.
 
-<div id="schemas">
+<div>
   <Accordion title="search schema">
-    ```python  theme={null}
+    ```python theme={null}
     tools = [
         {
             "name": "tavily_search",
@@ -1924,7 +2821,7 @@ chat_with_claude("What is trending now in the agents space in 2025?")
                     "auto_parameters": {
                         "type": "boolean",
                         "default": False,
-                        "description": "Auto-tune parameters based on the query (beta). Explicit values you pass still win."
+                        "description": "Auto-tune parameters based on the query. Explicit values you pass still win."
                     },
                     "topic": {
                         "type": "string",
@@ -1998,6 +2895,11 @@ chat_with_claude("What is trending now in the agents space in 2025?")
                         "default": False,
                         "description": "Whether to include the favicon URL for each result"
                     },
+                    "include_usage": {
+                        "type": "boolean",
+                        "default": False,
+                        "description": "Whether to include credit usage information in the response"
+                    },
                     "include_domains": {
                         "type": "array",
                         "items": {"type": "string"},
@@ -2024,7 +2926,7 @@ chat_with_claude("What is trending now in the agents space in 2025?")
 </div>
 
 <Accordion title="extract schema">
-  ```python  theme={null}
+  ```python theme={null}
   tools = [
       {
           "name": "tavily_extract",
@@ -2046,6 +2948,11 @@ chat_with_claude("What is trending now in the agents space in 2025?")
                       "type": "boolean",
                       "default": False,
                       "description": "Whether to include the favicon URL for each result"
+                  },
+                  "include_usage": {
+                      "type": "boolean",
+                      "default": False,
+                      "description": "Whether to include credit usage information in the response"
                   },
                   "extract_depth": {
                       "type": "string",
@@ -2075,7 +2982,7 @@ chat_with_claude("What is trending now in the agents space in 2025?")
 </Accordion>
 
 <Accordion title="map schema">
-  ```python  theme={null}
+  ```python theme={null}
   tools = [
       {
           "name": "tavily_map",
@@ -2143,6 +3050,11 @@ chat_with_claude("What is trending now in the agents space in 2025?")
                           "enum": ["Documentation", "Blog", "Careers","About","Pricing","Community","Developers","Contact","Media"]
                       },
                       "description": "Filter URLs using predefined categories like documentation, blog, api, etc"
+                  },
+                  "include_usage": {
+                      "type": "boolean",
+                      "default": False,
+                      "description": "Whether to include credit usage information in the response"
                   }
               }
           }
@@ -2152,7 +3064,7 @@ chat_with_claude("What is trending now in the agents space in 2025?")
 </Accordion>
 
 <Accordion title="crawl schema">
-  ```python  theme={null}
+  ```python theme={null}
   tools = [
       {
           "name": "tavily_crawl",
@@ -2242,6 +3154,11 @@ chat_with_claude("What is trending now in the agents space in 2025?")
                       "type": "boolean",
                       "default": False,
                       "description": "Whether to include the favicon URL for each result"
+                  },
+                  "include_usage": {
+                      "type": "boolean",
+                      "default": False,
+                      "description": "Whether to include credit usage information in the response"
                   }
               }
           }
@@ -2268,7 +3185,7 @@ Integrate Tavily with Composio to enhance your AI workflows with powerful web se
 
 Install the necessary Python packages:
 
-```bash  theme={null}
+```bash theme={null}
 pip install composio composio-openai openai python-dotenv
 ```
 
@@ -2279,14 +3196,14 @@ pip install composio composio-openai openai python-dotenv
 
 Set these as environment variables in your terminal or add them to your environment configuration file:
 
-```bash  theme={null}
+```bash theme={null}
 export OPENAI_API_KEY=your_openai_api_key
 export COMPOSIO_API_KEY=your_composio_api_key
 ```
 
 ### Step 3: Connect Tavily to Composio
 
-```python  theme={null}
+```python theme={null}
 from composio import Composio
 from dotenv import load_dotenv
 
@@ -2313,7 +3230,7 @@ print(connection_request.redirect_url)
 
 ### Step 4: Example Use Case
 
-```python  theme={null}
+```python theme={null}
 from composio import Composio
 from composio_openai import OpenAIProvider
 from openai import OpenAI
@@ -2420,7 +3337,7 @@ Install the required packages:
 
 > **Note:** The stable python versions to use with CrewAI are `Python >=3.10 and Python <3.13` .
 
-```bash  theme={null}
+```bash theme={null}
 pip install 'crewai[tools]'
 pip install pydantic
 ```
@@ -2429,7 +3346,7 @@ pip install pydantic
 
 Set up your API keys:
 
-```python  theme={null}
+```python theme={null}
 import os
 
 # Set your API keys
@@ -2441,18 +3358,18 @@ os.environ["TAVILY_API_KEY"] = "your-tavily-api-key"
 
 CrewAI provides built-in Tavily tools that make it easy to integrate web search capabilities into your AI agents. The `TavilySearchTool` allows your agents to search the web for real-time information.
 
-```python  theme={null}
+```python theme={null}
 import os
 from crewai import Agent, Task, Crew
 from crewai_tools import TavilySearchTool
 ```
 
-```python  theme={null}
+```python theme={null}
 # Initialize the Tavily search tool
 tavily_tool = TavilySearchTool()
 ```
 
-```python  theme={null}
+```python theme={null}
 # Create an agent that uses the tool
 researcher = Agent(
     role='News Researcher',
@@ -2463,7 +3380,7 @@ researcher = Agent(
 )
 ```
 
-```python  theme={null}
+```python theme={null}
 # Create a task for the agent
 research_task = Task(
     description='Search for the top 3 Agentic AI trends in 2025.',
@@ -2472,7 +3389,7 @@ research_task = Task(
 )
 ```
 
-```python  theme={null}
+```python theme={null}
 # Form the crew and execute the task
 crew = Crew(
     agents=[researcher],
@@ -2488,7 +3405,7 @@ print(result)
 
 **Example:**
 
-```python  theme={null}
+```python theme={null}
 from crewai_tools import TavilySearchTool
 
 # You can configure the tool with specific parameters
@@ -2518,7 +3435,7 @@ You can customize the search tool by passing parameters to configure its behavio
 > **Explore More Parameters**: For a complete list of available parameters and their descriptions, visit our [API documentation](/documentation/api-reference/endpoint/search) to discover all the customization options available for search operations.
 
 <Accordion title="Full Code Example - Search">
-  ```python  theme={null}
+  ```python theme={null}
   import os
   from crewai import Agent, Task, Crew
   from crewai_tools import TavilySearchTool
@@ -2563,18 +3480,18 @@ You can customize the search tool by passing parameters to configure its behavio
 
 The `TavilyExtractorTool` allows your CrewAI agents to extract and process content from specific web pages. This is particularly useful for content analysis, data collection, and research tasks.
 
-```python  theme={null}
+```python theme={null}
 import os
 from crewai import Agent, Task, Crew
 from crewai_tools import TavilyExtractorTool
 ```
 
-```python  theme={null}
+```python theme={null}
 # Initialize the Tavily extractor tool
 tavily_tool = TavilyExtractorTool()
 ```
 
-```python  theme={null}
+```python theme={null}
 # Create an agent that uses the tool
 extractor_agent = Agent(
     role='Web Page Content Extractor',
@@ -2585,7 +3502,7 @@ extractor_agent = Agent(
 )
 ```
 
-```python  theme={null}
+```python theme={null}
 # Define a task for the agent
 extract_task = Task(
     description='Extract the main content from the URL https://en.wikipedia.org/wiki/Lionel_Messi .',
@@ -2594,7 +3511,7 @@ extract_task = Task(
 )
 ```
 
-```python  theme={null}
+```python theme={null}
 # Create and run the crew
 crew = Crew(
     agents=[extractor_agent],
@@ -2610,7 +3527,7 @@ print(result)
 
 **Example:**
 
-```python  theme={null}
+```python theme={null}
 from crewai_tools import TavilyExtractorTool
 
 # You can configure the tool with specific parameters
@@ -2633,7 +3550,7 @@ You can customize the extract tool by passing parameters to configure its behavi
 > **Explore More Parameters**: For a complete list of available parameters and their descriptions, visit our [API documentation](/documentation/api-reference/endpoint/extract) to discover all the customization options available for extract operations.
 
 <Accordion title="Full Code Example - Extract">
-  ```python  theme={null}
+  ```python theme={null}
   import os
   from crewai import Agent, Task, Crew
   from crewai_tools import TavilyExtractorTool
@@ -2730,7 +3647,7 @@ In Agent applications, you can integrate the Tavily tool to access web data in r
 * Extract raw content for further processing.
 * Provide accurate, context-aware answers to user queries.
 
-<img src="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/defy-tavily.png?fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=661597a8a309ab38870e3600fa07fbc5" alt="defy" data-og-width="1256" width="1256" data-og-height="1076" height="1076" data-path="images/defy-tavily.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/defy-tavily.png?w=280&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=039d7cc76119e3a1fe9808a3e46d2aa1 280w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/defy-tavily.png?w=560&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=b80a454d0ecca71b9e9871fdbbf95456 560w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/defy-tavily.png?w=840&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=62b0b80ca392a2517847c1ab69255ed2 840w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/defy-tavily.png?w=1100&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=e4d67c2100f4bd289ce5de121c2588d1 1100w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/defy-tavily.png?w=1650&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=3a3939f3c1202a6100b7b9e8b005ddd9 1650w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/defy-tavily.png?w=2500&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=58a6ddebe46a0ff37f43d37e68009f23 2500w" />
+<img alt="defy" />
 
 ## Example use case: automated deep research
 
@@ -2852,7 +3769,7 @@ In Agent applications, you can integrate the Tavily tool to access web data in r
 * Extract raw content for further processing
 * Provide accurate, context-aware answers to user queries
 
-<img src="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/flowise-tavily.png?fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=25e21b93e92b99d765eb7c0c4aba06c5" alt="Flowise Tavily Integration" width="400" height="300" data-og-width="926" data-og-height="1008" data-path="images/flowise-tavily.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/flowise-tavily.png?w=280&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=2baa34742d39bb8a29dc13e1c5658d81 280w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/flowise-tavily.png?w=560&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=827771e8502ad22a89cff1e564a8c550 560w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/flowise-tavily.png?w=840&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=9f6f8a85bac404c02610bd789fdfc20f 840w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/flowise-tavily.png?w=1100&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=238ad15bdd3a95a6134f2c4c44016179 1100w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/flowise-tavily.png?w=1650&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=92dce9d3f2d73ae75dce1592ec87950b 1650w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/flowise-tavily.png?w=2500&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=267b7f82ffcc878c31c8e607b834fc8b 2500w" />
+<img alt="Flowise Tavily Integration" />
 
 
 # Google ADK
@@ -2877,7 +3794,7 @@ Before you begin, make sure you have:
 
 Install ADK by running:
 
-```bash  theme={null}
+```bash theme={null}
 pip install google-adk mcp
 ```
 
@@ -2887,7 +3804,7 @@ pip install google-adk mcp
 
 Run the `adk create` command to start a new agent project:
 
-```bash  theme={null}
+```bash theme={null}
 adk create my_agent
 ```
 
@@ -2970,7 +3887,7 @@ Edit the `my_agent/agent.py` file to integrate Tavily. Choose either **Remote MC
 
 Update the `my_agent/.env` file with your API keys:
 
-```bash  theme={null}
+```bash theme={null}
 echo 'GOOGLE_API_KEY="YOUR_GEMINI_API_KEY"' >> my_agent/.env
 echo 'TAVILY_API_KEY="YOUR_TAVILY_API_KEY"' >> my_agent/.env
 ```
@@ -2990,7 +3907,7 @@ You can run your ADK agent in two ways:
 
 Run your agent using the `adk run` command:
 
-```bash  theme={null}
+```bash theme={null}
 adk run my_agent
 ```
 
@@ -3000,7 +3917,7 @@ This starts an interactive command-line interface where you can chat with your a
 
 Start the ADK web interface for a visual testing experience:
 
-```bash  theme={null}
+```bash theme={null}
 adk web --port 8000
 ```
 
@@ -3020,7 +3937,7 @@ Find all documentation pages on tavily.com and provide instructions on how to ge
 
 The agent automatically combines multiple Tavily tools to provide comprehensive answers, making it easy to explore websites and gather information without manual navigation.
 
-<img src="https://mintcdn.com/tavilyai/6_GM_pQOTDBhyG2t/images/google-adk.png?fit=max&auto=format&n=6_GM_pQOTDBhyG2t&q=85&s=32daff4af3598c46f1bedae141666bc9" alt="Tavily-ADK" width="800" height="500" data-og-width="3016" data-og-height="1718" data-path="images/google-adk.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavilyai/6_GM_pQOTDBhyG2t/images/google-adk.png?w=280&fit=max&auto=format&n=6_GM_pQOTDBhyG2t&q=85&s=e43d08a743ece8a68a8ed4d7985a4cb0 280w, https://mintcdn.com/tavilyai/6_GM_pQOTDBhyG2t/images/google-adk.png?w=560&fit=max&auto=format&n=6_GM_pQOTDBhyG2t&q=85&s=e59a120c7ef1b5407a90feb5f7afe0af 560w, https://mintcdn.com/tavilyai/6_GM_pQOTDBhyG2t/images/google-adk.png?w=840&fit=max&auto=format&n=6_GM_pQOTDBhyG2t&q=85&s=2ac15ad4b9b3a9708f51a3fafb1cfc60 840w, https://mintcdn.com/tavilyai/6_GM_pQOTDBhyG2t/images/google-adk.png?w=1100&fit=max&auto=format&n=6_GM_pQOTDBhyG2t&q=85&s=9ff5c0a5a8c59c1607172151d1df4d88 1100w, https://mintcdn.com/tavilyai/6_GM_pQOTDBhyG2t/images/google-adk.png?w=1650&fit=max&auto=format&n=6_GM_pQOTDBhyG2t&q=85&s=63dffc95ff0044df4a11ee9b55a84a4f 1650w, https://mintcdn.com/tavilyai/6_GM_pQOTDBhyG2t/images/google-adk.png?w=2500&fit=max&auto=format&n=6_GM_pQOTDBhyG2t&q=85&s=dffc071eba486a64974121174fa5a0c1 2500w" />
+<img alt="Tavily-ADK" />
 
 ## Available Tools
 
@@ -3054,7 +3971,7 @@ The [langchain-tavily](https://pypi.org/project/langchain-tavily/) Python packag
 
 ## Installation
 
-```bash  theme={null}
+```bash theme={null}
 pip install -U langchain-tavily
 ```
 
@@ -3062,7 +3979,7 @@ pip install -U langchain-tavily
 
 We also need to set our Tavily API key. You can get an API key by visiting [this site](https://app.tavily.com/sign-in) and creating an account.
 
-```bash  theme={null}
+```bash theme={null}
 import getpass
 import os
 
@@ -3090,12 +4007,13 @@ The Tavily Search API accepts various parameters to customize the search:
 * `end_date` (optional, str): Will return all results before the specified end date. Required to be written in the format YYYY-MM-DD. Default is None.
 * `include_domains` (optional, List\[str]): List of domains to specifically include. Maximum 300 domains. Default is None.
 * `exclude_domains` (optional, List\[str]): List of domains to specifically exclude. Maximum 150 domains. Default is None.
+* `include_usage` (optional, bool): Whether to include credit usage information in the response. Default is False.
 
 For a comprehensive overview of the available parameters, refer to the [Tavily Search API documentation](https://docs.tavily.com/documentation/api-reference/endpoint/search)
 
 ### Instantiation
 
-```python  theme={null}
+```python theme={null}
 from langchain_tavily import TavilySearch
 
 tool = TavilySearch(
@@ -3110,7 +4028,8 @@ tool = TavilySearch(
     # start_date=None,
     # end_date=None,
     # include_domains=None,
-    # exclude_domains=None
+    # exclude_domains=None,
+    # include_usage= False
 )
 ```
 
@@ -3126,14 +4045,14 @@ NOTE: The optional arguments are available for agents to dynamically set. If you
 
 ### Direct Tool Invocation
 
-```python  theme={null}
+```python theme={null}
 # Basic usage
 result = tavily_search.invoke({"query": "What happened at the last wimbledon"})
 ```
 
 Example output:
 
-```python  theme={null}
+```python theme={null}
 {
  'query': 'What happened at the last wimbledon',
  'follow_up_questions': None,
@@ -3157,7 +4076,7 @@ Example output:
 
 ### Use with Agent
 
-```python  theme={null}
+```python theme={null}
 # !pip install -qU langchain langchain-openai langchain-tavily
 from langchain.agents import create_agent
 from langchain_openai import ChatOpenAI
@@ -3196,7 +4115,7 @@ For a comprehensive overview of the available parameters, refer to the [Tavily E
 
 ### Instantiation
 
-```python  theme={null}
+```python theme={null}
 from langchain_tavily import TavilyExtract
 
 tool = TavilyExtract(
@@ -3216,7 +4135,7 @@ NOTE: The optional arguments are available for agents to dynamically set. If you
 
 ### Direct Tool Invocation
 
-```python  theme={null}
+```python theme={null}
 # Extract content from a URL
 result = tavily_extract.invoke({
     "urls": ["https://en.wikipedia.org/wiki/Lionel_Messi"]
@@ -3225,7 +4144,7 @@ result = tavily_extract.invoke({
 
 Example output:
 
-```python  theme={null}
+```python theme={null}
 {
     'results': [{
         'url': 'https://en.wikipedia.org/wiki/Lionel_Messi',
@@ -3254,7 +4173,7 @@ For a comprehensive overview, refer to the [Tavily Map API documentation](https:
 
 #### Instantiation
 
-```python  theme={null}
+```python theme={null}
 from langchain_tavily import TavilyMap
 
 tool = TavilyMap()
@@ -3262,7 +4181,7 @@ tool = TavilyMap()
 
 #### Direct Tool Invocation
 
-```python  theme={null}
+```python theme={null}
 # Map a website structure
 result = tavily_map.invoke({
     "url": "https://docs.example.com",
@@ -3272,7 +4191,7 @@ result = tavily_map.invoke({
 
 Example output:
 
-```python  theme={null}
+```python theme={null}
 {
     'base_url': 'https://docs.example.com',
     'results': [
@@ -3300,7 +4219,7 @@ For a comprehensive overview, refer to the [Tavily Crawl API documentation](http
 
 #### Instantiation
 
-```python  theme={null}
+```python theme={null}
 from langchain_tavily import TavilyCrawl
 
 tool = TavilyCrawl()
@@ -3308,7 +4227,7 @@ tool = TavilyCrawl()
 
 #### Direct Tool Invocation
 
-```python  theme={null}
+```python theme={null}
 # Crawl and extract content
 result = tavily_crawl.invoke({
     "url": "https://docs.example.com",
@@ -3318,7 +4237,7 @@ result = tavily_crawl.invoke({
 
 Example output:
 
-```python  theme={null}
+```python theme={null}
 {
     'base_url': 'https://docs.example.com',
     'results': [
@@ -3336,45 +4255,106 @@ Example output:
 }
 ```
 
-## Tavily Research Agent
+## Tavily Research
 
-This example demonstrates how to build a powerful web research agent using Tavily's search and extract tools with `create_agent`.
+Here we show how to instantiate the Tavily research tool. This tool allows you to create comprehensive research tasks using Tavily's Research API endpoint, with optional structured output.
 
-### Features
+### Available Parameters
 
-* Internet Search: Query the web for up-to-date information using Tavily's search API
-* Content Extraction: Extract and analyze specific content from web pages
-* Seamless Integration: Simple, elegant agent setup with LangChain v1
+* `input` (required, str): The research task or question to investigate.
+* `model` (optional, str): The research model to use, one of `"mini"`, `"pro"`, or `"auto"`. Default is `"auto"`.
+* `output_schema` (optional, dict): A JSON Schema object that defines the structure of the research output. Must include a `properties` field and may optionally include a `required` field.
+* `stream` (optional, bool): Whether to stream the research results as they are generated. When `True`, returns a streaming response. Default is `False`.
+* `citation_format` (optional, str): The format for citations in the research report, one of `"numbered"`, `"mla"`, `"apa"`, or `"chicago"`. Default is `"numbered"`.
 
-```python  theme={null}
-# !pip install -qU langchain langchain-openai langchain-tavily
-from langchain.agents import create_agent
-from langchain_openai import ChatOpenAI
-from langchain_tavily import TavilySearch, TavilyExtract
+### Instantiation
 
-# Initialize Tavily tools
-tavily_search = TavilySearch(max_results=5, topic="general")
-tavily_extract = TavilyExtract()
+```python theme={null}
+from langchain_tavily import TavilyResearch
 
-# Create the research agent
-agent = create_agent(
-    model=ChatOpenAI(model="gpt-5"),
-    tools=[tavily_search, tavily_extract],
-    system_prompt="""You are a helpful research assistant. Use web search to find relevant 
-    information, then extract detailed content from the most promising sources to provide 
-    comprehensive insights."""
+tavily_research = TavilyResearch(
+    # model="auto",
+    # citation_format="numbered",
+    # stream=False,
 )
+```
 
-# Use the agent
-response = agent.invoke({
-    "messages": [{
-        "role": "user", 
-        "content": "Research the latest developments in quantum computing and provide a detailed summary of how it might impact cybersecurity in the next decade."
-    }]
+### Invoke directly with args
+
+The Tavily research tool accepts the following arguments during invocation:
+
+* `input` (required): A natural language research task or question.
+* The following arguments can also be set during invocation: `model`, `output_schema`, `stream`, and `citation_format`.
+
+NOTE: The optional arguments are available for agents to dynamically set. If you set an argument during instantiation and then invoke the tool with a different value, the tool will use the value you passed during invocation.
+
+### Direct Tool Invocation
+
+```python theme={null}
+# Create a research task with a structured output schema
+result = tavily_research.invoke({
+    "input": "Research the latest developments in AI and summarize key trends.",
+    "model": "mini",
+    "citation_format": "apa",
 })
 ```
 
-> **Tip**: For more relevant and time-aware results, inject today's date into your system prompt. This helps the agent understand the current context when searching for recent information. For example: `f"You are a helpful research assistant. Today's date is {datetime.today().strftime('%B %d, %Y')}. Use web search to find relevant information..."`
+Example non-streaming response:
+
+```python theme={null}
+{
+    "request_id": "test-request-123",
+    "created_at": "2024-01-01T00:00:00Z",
+    "status": "pending",
+    "input": "Research the latest developments in AI and summarize key trends.",
+    "model": "mini"
+}
+```
+
+If `stream=True` is set (either in the constructor or at invocation time), `invoke` returns a generator (for sync clients) or async generator (for async clients) that yields the research output as it is generated.
+
+## Tavily Get Research
+
+The Tavily Get Research tool retrieves the results of a previously created research task using its `request_id`.
+
+### Available Parameters
+
+* `request_id` (required, str): The unique identifier of the research task to retrieve.
+
+### Instantiation
+
+```python theme={null}
+from langchain_tavily import TavilyGetResearch
+
+tavily_get_research = TavilyGetResearch()
+```
+
+### Direct Tool Invocation
+
+```python theme={null}
+# Retrieve results for a completed research task
+result = tavily_get_research.invoke({
+    "request_id": "test-request-123"
+})
+```
+
+Example response:
+
+```python theme={null}
+{
+    "request_id": "test-request-123",
+    "created_at": "2024-01-01T00:00:00Z",
+    "completed_at": "2024-01-01T00:05:00Z",
+    "status": "completed",
+    "content": "This is a comprehensive research report on AI developments...",
+    "sources": [
+        {
+            "title": "AI Research Paper",
+            "url": "https://example.com/ai-paper",
+        }
+    ]
+}
+```
 
 
 # Langflow
@@ -3390,7 +4370,7 @@ Integrate [Tavily with Langflow](https://blog.langflow.org/web-search-in-your-ai
 
 Langflow works with Python 3.10 to 3.13. You can install it using either UV (recommended) or pip:
 
-```bash  theme={null}
+```bash theme={null}
 # Using UV (recommended)
 uv pip install langflow
 
@@ -3404,7 +4384,7 @@ pip install langflow
 
 After installation, start Langflow:
 
-```bash  theme={null}
+```bash theme={null}
 langflow run
 ```
 
@@ -3486,7 +4466,7 @@ Search the web from LlamaIndex with Tavily.
 
 The following dependencies are required to properly run the integration:
 
-```bash  theme={null}
+```bash theme={null}
 pip install llama-index-tools-tavily-research llama-index llama-hub tavily-python
 ```
 
@@ -3496,7 +4476,7 @@ You can use access Tavily in LlamaIndex through the `TavilyToolSpec`.
 
 Here is a simple use case that performs a web search with Tavily and generates an answer to the user's search query:
 
-```python  theme={null}
+```python theme={null}
 from llama_index.tools.tavily_research.base import TavilyToolSpec
 from llama_index.agent.openai import OpenAIAgent
 
@@ -3523,7 +4503,7 @@ Tavily is now available for no-code integration through Make.
 Integrate [Tavily with Make](https://www.make.com/en/integrations/tavily) to enhance your business processes without writing a single line of code. With Tavily's powerful search and content extraction capabilities, you can seamlessly integrate real-time online information into your Make workflows and automations.
 
 <Frame>
-  <img src="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/make-tavily.gif?s=8c21f3b24b94f8648447746c67f92be6" alt="Make-Tavily" data-og-width="1060" width="1060" data-og-height="720" height="720" data-path="images/make-tavily.gif" data-optimize="true" data-opv="3" />
+  <img alt="Make-Tavily" />
 </Frame>
 
 ## How to set up Tavily with Make
@@ -3624,7 +4604,7 @@ Tavily is now available for no-code integration through n8n.
 Integrate Tavily with n8n to enhance your workflows with real-time web search and content extraction—without writing code. With Tavily's powerful search and extraction capabilities, you can seamlessly integrate up-to-date online information into your n8n automations.
 
 <Frame>
-  <img src="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/n8n.gif?s=bb9a9ca58010f04981df615e09d52971" alt="n8n" data-og-width="1108" width="1108" data-og-height="720" height="720" data-path="images/n8n.gif" data-optimize="true" data-opv="3" />
+  <img alt="n8n" />
 </Frame>
 
 ## How to set up Tavily with n8n
@@ -3742,7 +4722,7 @@ Before you begin, make sure you have:
 
 Install the required packages:
 
-```bash  theme={null}
+```bash theme={null}
 pip install openai tavily-python
 ```
 
@@ -3750,7 +4730,7 @@ pip install openai tavily-python
 
 Set up your API keys:
 
-```python  theme={null}
+```python theme={null}
 import os
 
 # Set your API keys
@@ -3760,11 +4740,11 @@ os.environ["TAVILY_API_KEY"] = "your-tavily-api-key"
 
 ## Using Tavily with OpenAI agents SDK
 
-```bash  theme={null}
+```bash theme={null}
 pip install -U openai-agents
 ```
 
-```python  theme={null}
+```python theme={null}
 import os
 import asyncio
 from agents import Agent, Runner, function_tool
@@ -3773,7 +4753,7 @@ from tavily import TavilyClient
 tavily_client = TavilyClient(api_key=os.environ["TAVILY_API_KEY"])
 ```
 
-```python  theme={null}
+```python theme={null}
 @function_tool
 def tavily_search(query: str) -> str:
     """
@@ -3788,7 +4768,7 @@ def tavily_search(query: str) -> str:
 
 > You can set `auto_parameters=True` to have Tavily automatically configure search parameters based on the content and intent of your query. You can still set other parameters manually, and any explicit values you provide will override the automatic ones.
 
-```python  theme={null}
+```python theme={null}
 async def main():
     agent = Agent(
         name="Web Research Agent",
@@ -3799,12 +4779,12 @@ async def main():
     print(out.final_output)
 ```
 
-```python  theme={null}
+```python theme={null}
 asyncio.run(main())
 ```
 
 <Accordion title="Full Code Example">
-  ```python  theme={null}
+  ```python theme={null}
 
   import os
   import asyncio
@@ -3838,7 +4818,7 @@ asyncio.run(main())
 
 ## Using Tavily with OpenAI Chat Completions API function calling
 
-```python  theme={null}
+```python theme={null}
 import os
 import json
 from tavily import TavilyClient
@@ -3853,14 +4833,14 @@ openai_client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 
 Define a function that OpenAI can call to perform searches:
 
-```python  theme={null}
+```python theme={null}
 def tavily_search(**kwargs):
     # Pass ALL supported kwargs straight to Tavily
     results = tavily_client.search(**kwargs)
     return results
 ```
 
-```python  theme={null}
+```python theme={null}
 # --- define tools ---
 tools = [
     {
@@ -3881,9 +4861,9 @@ tools = [
 ]
 ```
 
-<a href="#schemas" onClick="document.getElementById('schemas').scrollIntoView({behavior: 'smooth'}); return false;">Scroll to the bottom to find the full json schema for search, extract, map and crawl</a>
+<a href="#schemas">Scroll to the bottom to find the full json schema for search, extract, map and crawl</a>
 
-```python  theme={null}
+```python theme={null}
 # --- conversation ---
 messages = [
     {"role": "system", "content": "You are a helpful assistant that uses Tavily search when needed."},
@@ -3891,7 +4871,7 @@ messages = [
 ]
 ```
 
-```python  theme={null}
+```python theme={null}
 #Ask the model; let it decide whether to call the tool
 response = openai_client.chat.completions.create(
     model="gpt-4o-mini",
@@ -3900,13 +4880,13 @@ response = openai_client.chat.completions.create(
 )
 ```
 
-```python  theme={null}
+```python theme={null}
 assistant_msg = response.choices[0].message
  # keep the assistant msg that requested tool(s)
 messages.append(assistant_msg) 
 ```
 
-```python  theme={null}
+```python theme={null}
 
 if getattr(assistant_msg, "tool_calls", None):
     for tc in assistant_msg.tool_calls:
@@ -3931,7 +4911,7 @@ else:
 
 ```
 
-```python  theme={null}
+```python theme={null}
 # Ask the model again for the final grounded answer
 final = openai_client.chat.completions.create(
     model="gpt-4o-mini",
@@ -3943,7 +4923,7 @@ print("\nFINAL ANSWER:\n", final_msg.content or "(no content)")
 ```
 
 <Accordion title="Full Code Example">
-  ```python  theme={null}
+  ```python theme={null}
   import os
   import json
   from tavily import TavilyClient
@@ -4029,7 +5009,7 @@ print("\nFINAL ANSWER:\n", final_msg.content or "(no content)")
 
 ## Using Tavily with OpenAI Responses API function calling
 
-```python  theme={null}
+```python theme={null}
 import os
 import json
 from tavily import TavilyClient
@@ -4044,7 +5024,7 @@ openai_client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 
 Define a function that OpenAI can call to perform searches:
 
-```python  theme={null}
+```python theme={null}
 # --- Function that will be called when AI requests a search ---
 def tavily_search(**kwargs):
     """
@@ -4055,7 +5035,7 @@ def tavily_search(**kwargs):
     return results
 ```
 
-```python  theme={null}
+```python theme={null}
 # Define the tool for Tavily web search
 # This tells the AI what function it can call and what parameters it needs
 tools = [{
@@ -4082,9 +5062,9 @@ tools = [{
 }]
 ```
 
-<a href="#schemas" onClick="document.getElementById('schemas').scrollIntoView({behavior: 'smooth'}); return false;">Scroll to the bottom to find the full json schema for search, extract, map and crawl</a>
+<a href="#schemas">Scroll to the bottom to find the full json schema for search, extract, map and crawl</a>
 
-```python  theme={null}
+```python theme={null}
 # --- Step 1: Create initial conversation ---
 # This sets up the conversation context for the AI
 input_list = [
@@ -4105,7 +5085,7 @@ response = openai_client.responses.create(
 input_list += response.output
 ```
 
-```python  theme={null}
+```python theme={null}
 # --- Step 4: Execute any function calls the AI made ---
 for item in response.output:
     if item.type == "function_call":
@@ -4129,7 +5109,7 @@ for item in response.output:
 
 ```
 
-```python  theme={null}
+```python theme={null}
 # --- Step 5: Second API call - AI provides final answer ---
 # Now the AI has the search results and can provide an informed response
 response = openai_client.responses.create(
@@ -4144,7 +5124,7 @@ print(response.output_text)
 ```
 
 <Accordion title="Full Code Example">
-  ```python  theme={null}
+  ```python theme={null}
   import os
   import json
   from tavily import TavilyClient
@@ -4249,9 +5229,9 @@ print(response.output_text)
 
 > **API Format:** The schemas below are for OpenAI Responses API. For Chat Completions API, wrap the parameters in a `"function"` object: `{"type": "function", "function": {"name": "...", "parameters": {...}}}`.
 
-<div id="schemas">
+<div>
   <Accordion title="search schema">
-    ```python  theme={null}
+    ```python theme={null}
     tools = [
         {
             "type": "function",
@@ -4269,7 +5249,7 @@ print(response.output_text)
                     "auto_parameters": {
                         "type": "boolean",
                         "default": False,
-                        "description": "Auto-tune parameters based on the query (beta). Explicit values you pass still win."
+                        "description": "Auto-tune parameters based on the query. Explicit values you pass still win."
                     },
                     "topic": {
                         "type": "string",
@@ -4343,6 +5323,11 @@ print(response.output_text)
                         "default": False,
                         "description": "Whether to include the favicon URL for each result"
                     },
+                    "include_usage": {
+                        "type": "boolean",
+                        "default": False,
+                        "description": "Whether to include credit usage information in the response"
+                    },
                     "include_domains": {
                         "type": "array",
                         "items": {"type": "string"},
@@ -4371,7 +5356,7 @@ print(response.output_text)
 </div>
 
 <Accordion title="extract schema">
-  ```python  theme={null}
+  ```python theme={null}
   tools = [
       {
           "type": "function",
@@ -4395,6 +5380,11 @@ print(response.output_text)
                       "type": "boolean",
                       "default": False,
                       "description": "Whether to include the favicon URL for each result"
+                  },
+                  "include_usage": {
+                      "type": "boolean",
+                      "default": False,
+                      "description": "Whether to include credit usage information in the response"
                   },
                   "extract_depth": {
                       "type": "string",
@@ -4427,7 +5417,7 @@ print(response.output_text)
 </Accordion>
 
 <Accordion title="map schema">
-  ```python  theme={null}
+  ```python theme={null}
 
   tools = [
       {
@@ -4490,6 +5480,11 @@ print(response.output_text)
                       "type": "boolean",
                       "default": True,
                       "description": "Whether to allow following links that go to external domains"
+                  },
+                  "include_usage": {
+                      "type": "boolean",
+                      "default": False,
+                      "description": "Whether to include credit usage information in the response"
                   }
               }
           }
@@ -4501,7 +5496,7 @@ print(response.output_text)
 </Accordion>
 
 <Accordion title="crawl schema">
-  ```python  theme={null}
+  ```python theme={null}
   tools = [
       {
           "type": "function",
@@ -4585,6 +5580,11 @@ print(response.output_text)
                       "type": "boolean",
                       "default": False,
                       "description": "Whether to include the favicon URL for each result"
+                  },
+                  "include_usage": {
+                      "type": "boolean",
+                      "default": False,
+                      "description": "Whether to include credit usage information in the response"
                   }
               }
           }
@@ -4613,7 +5613,7 @@ Integrate[Tavily with Pydantic AI](https://ai.pydantic.dev/common-tools/#tavily-
 
 Install the necessary Python packages:
 
-```bash  theme={null}
+```bash theme={null}
 pip install "pydantic-ai-slim[tavily]"
 ```
 
@@ -4623,13 +5623,13 @@ pip install "pydantic-ai-slim[tavily]"
 
 Set this as an environment variable in your terminal or add it to your environment configuration file:
 
-```bash  theme={null}
+```bash theme={null}
 export TAVILY_API_KEY=your_tavily_api_key
 ```
 
 ### Step 3: Initialize Pydantic AI Agent with Tavily Tools
 
-```python  theme={null}
+```python theme={null}
 import os
 from pydantic_ai.agent import Agent
 from pydantic_ai.common_tools.tavily import tavily_search_tool
@@ -4648,7 +5648,7 @@ agent = Agent(
 
 ### Step 4: Example Use Cases
 
-```python  theme={null}
+```python theme={null}
 # Example 1: Basic search for news
 result = agent.run_sync('Tell me the top news in the GenAI world, give me links.')
 print(result.output)
@@ -4656,7 +5656,7 @@ print(result.output)
 
 Example Response:
 
-```markdown  theme={null}
+```markdown theme={null}
 Here are some of the top recent news articles related to GenAI:
 
 1. How CLEAR users can improve risk analysis with GenAI – Thomson Reuters
@@ -4678,6 +5678,170 @@ Here are some of the top recent news articles related to GenAI:
 2. **Real-time Data Integration**: Keep your AI agents up-to-date with the latest information
 3. **Technical Documentation**: Search and analyze technical documentation
 4. **Market Analysis**: Conduct comprehensive market research and analysis
+
+
+# StackAI
+Source: https://docs.tavily.com/documentation/integrations/stackai
+
+Using Tavily in StackAI to enhance your AI workflows with real-time web data.
+
+## Introduction
+
+Integrate [Tavily with StackAI](https://www.stack-ai.com/integrations/tavily) to enhance your AI workflows with real-time web data. With this integration, you can easily fetch and utilize live web content in your StackAI workflows.
+
+<Frame>
+  <img alt="stackai" />
+</Frame>
+
+## How to set up Tavily with StackAI
+
+<AccordionGroup>
+  <Accordion title="Step 1: Log in to StackAI">
+    <p>
+      <a href="https://stack-ai.com/">Log in</a> to your StackAI account or
+      self-hosted instance.
+    </p>
+  </Accordion>
+
+  <Accordion title="Step 2: Create a New Workflow">
+    <p>Create a new workflow or choose one of the available templates.</p>
+  </Accordion>
+
+  <Accordion title="Step 3: Add Tavily to Your Workflow">
+    <p>**Option 1: Add Tavily as a Node**</p>
+
+    <ul>
+      <li>
+        Search for "Tavily" under the **Apps** section in the left sidebar.
+      </li>
+
+      <li>Drag and drop the "Tavily" app into your canvas.</li>
+    </ul>
+
+    <p>**Option 2: Add Tavily as a Tool to an AI Agent**</p>
+
+    <ul>
+      <li>
+        Choose between "Search", "Crawl", "Extract" or "Map" tool based on your
+        needs.
+      </li>
+    </ul>
+
+    **Configure the Tavily Node or Tool:**
+
+    <ul>
+      <li>
+        In the Connect Tavily section, create a new connection by entering a
+        connection name and your [Tavily API key](https://app.tavily.com/home).
+      </li>
+    </ul>
+
+    **Configuring parameters:**
+    <p>**For Search:**</p>
+
+    <ul>
+      <li>
+        Enter your search <code>query</code> (can be manually entered or
+        populated from another node's output)
+      </li>
+
+      <li>
+        Select a <code>topic</code> ("general" or "news")
+      </li>
+
+      <li>Choose whether to include raw content or generate an answer</li>
+      <li>Specify Maximum Search Results to return</li>
+      <li>Set search depth and other optional parameters</li>
+    </ul>
+
+    <p>**For Extract:**</p>
+
+    <ul>
+      <li>
+        Enter the URL(s) to extract content from (can be a single URL or
+        multiple URLs from another node's output)
+      </li>
+
+      <li>Choose Extract Depth ("basic" or "advanced")</li>
+      <li>Specify the output format ("markdown" or "text")</li>
+    </ul>
+
+    <p>**For Crawl:**</p>
+
+    <ul>
+      <li>Enter the **Root URL** to crawl</li>
+      <li>Set the crawl instructions to guide the crawler</li>
+      <li>Set the Limit on the number of pages to crawl</li>
+    </ul>
+
+    <p>**For Map:**</p>
+
+    <ul>
+      <li>Enter the **Root URL** to begin the mapping</li>
+      <li>Set the map instructions to guide the mapping process</li>
+      <li>Set the mapping depth to control how deep the mapping goes</li>
+    </ul>
+
+    <p>**Test:** Run the node to verify your configuration.</p>
+  </Accordion>
+
+  <Accordion title="Step 4: Process and Use Tavily Results">
+    <p>Utilize the search, crawl, extract, or map results in your workflow:</p>
+
+    <ul>
+      <li>Process data through additional nodes</li>
+      <li>Send information to your CRM, database, or email</li>
+      <li>Generate reports or notifications</li>
+      <li>Feed data into AI models for further processing</li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Use cases for Tavily in StackAI
+
+Leverage Tavily's capabilities to create powerful automated workflows:
+
+* **Job Search Automation**: Find and summarize new job postings, then send results to your inbox
+* **Competitive Intelligence**: Automatically gather and analyze competitor information
+* **Market Research**: Track industry trends and market developments
+* **Content Curation**: Collect and organize relevant content for your business
+* **Lead Enrichment**: Enhance lead data with real-time information
+* **News Monitoring**: Stay updated with the latest developments in your field
+
+## Detailed example - AI News Summary
+
+Here's an example workflow that uses Tavily to search for the latest articles on "AI advancements" and sends a summary to your email:
+
+<AccordionGroup>
+  <Accordion title="Workflow Steps">
+    <ol>
+      <li>**Trigger:** Schedule the workflow to run daily</li>
+      <li>**AI Agent:** Add an AI agent node to your workflow</li>
+
+      <li>
+        **Search:** The AI agent uses Tavily to find recent articles on “AI
+        advancements”
+      </li>
+
+      <li>
+        **Summarize:** The AI agent summarizes the most important news and
+        trends
+      </li>
+
+      <li>
+        **Delivery:** Send the summarized briefing via Email, Slack, or another
+        integration
+      </li>
+    </ol>
+  </Accordion>
+</AccordionGroup>
+
+## Best practices
+
+To optimize your Tavily integration in StackAI:
+
+* Tightly constrain Tavily queries to specific intent, time range, and domains to avoid noisy retrieval.
+* Force concise, structured outputs (bullets/JSON with only required fields) to reduce tokens and parsing errors.
 
 
 # Tines
@@ -4741,14 +5905,14 @@ Integrate [Tavily with Tines](https://www.tines.com/docs/credentials/connect-flo
   <Accordion title="Enrich new Airtable company records using Tavily search">
     <p>
       Enrich a company when it is added to an Airtable database. Receive a webhook notification when a new record is added and fill out the remaining fields with web searches powered by Tavily.<br />
-      See the <a href="https://www.tines.com/library/stories/1312477/?name=enrich-new-airtable-company-records-using-tavily-searches" target="_blank">full story</a> on Tines' library.
+      See the <a href="https://www.tines.com/library/stories/1312477/?name=enrich-new-airtable-company-records-using-tavily-searches">full story</a> on Tines' library.
     </p>
   </Accordion>
 
   <Accordion title="Search the internet with Tavily via Slack">
     <p>
       Search the internet using Tavily in response to a Slack slash command. Summarize the results and post them in a Slack thread, including source links. Users can click on the links to access more detailed information from the original sources.<br />
-      See the <a href="https://www.tines.com/library/stories/1312847/?name=search-the-internet-with-tavily-via-slack" target="_blank">full story</a> on Tines' library.
+      See the <a href="https://www.tines.com/library/stories/1312847/?name=search-the-internet-with-tavily-via-slack">full story</a> on Tines' library.
     </p>
   </Accordion>
 </AccordionGroup>
@@ -4769,7 +5933,7 @@ The `@tavily/ai-sdk` package provides pre-built AI SDK tools for Vercel's AI SDK
 
 Install the necessary packages:
 
-```bash  theme={null}
+```bash theme={null}
 npm install ai @ai-sdk/openai @tavily/ai-sdk
 ```
 
@@ -4780,7 +5944,7 @@ npm install ai @ai-sdk/openai @tavily/ai-sdk
 
 Set these as environment variables:
 
-```bash  theme={null}
+```bash theme={null}
 export TAVILY_API_KEY=tvly-your-api-key
 export OPENAI_API_KEY=your-openai-api-key
 ```
@@ -4789,7 +5953,7 @@ export OPENAI_API_KEY=your-openai-api-key
 
 The simplest way to get started with Tavily Search:
 
-```typescript  theme={null}
+```typescript theme={null}
 import { tavilySearch } from "@tavily/ai-sdk";
 import { generateText, stepCountIs } from "ai";
 import { openai } from "@ai-sdk/openai";
@@ -4812,7 +5976,7 @@ console.log(result.text);
 
 Real-time web search optimized for AI applications:
 
-```typescript  theme={null}
+```typescript theme={null}
 import { tavilySearch } from "@tavily/ai-sdk";
 import { generateText, stepCountIs } from "ai";
 import { openai } from "@ai-sdk/openai";
@@ -4847,7 +6011,7 @@ const result = await generateText({
 
 Clean, structured content extraction from URLs:
 
-```typescript  theme={null}
+```typescript theme={null}
 import { tavilyExtract } from "@tavily/ai-sdk";
 import { generateText } from "ai";
 import { openai } from "@ai-sdk/openai";
@@ -4871,7 +6035,7 @@ const result = await generateText({
 
 Intelligent website crawling at scale:
 
-```typescript  theme={null}
+```typescript theme={null}
 import { tavilyCrawl } from "@tavily/ai-sdk";
 import { generateText } from "ai";
 import { openai } from "@ai-sdk/openai";
@@ -4903,7 +6067,7 @@ const result = await generateText({
 
 Website structure discovery and mapping:
 
-```typescript  theme={null}
+```typescript theme={null}
 import { tavilyMap } from "@tavily/ai-sdk";
 import { generateText, stepCountIs } from "ai";
 import { openai } from "@ai-sdk/openai";
@@ -4932,7 +6096,7 @@ const result = await generateText({
 
 You can combine multiple Tavily tools in a single AI agent for comprehensive research capabilities:
 
-```typescript  theme={null}
+```typescript theme={null}
 import { 
   tavilySearch, 
   tavilyExtract, 
@@ -4959,7 +6123,7 @@ const result = await generateText({
 
 ### News Research with Time Range
 
-```typescript  theme={null}
+```typescript theme={null}
 const newsResult = await generateText({
   model: openai("gpt-5-mini"),
   prompt: "What are the top technology news stories from this week?",
@@ -4976,7 +6140,7 @@ const newsResult = await generateText({
 
 ### Market Analysis with Advanced Search
 
-```typescript  theme={null}
+```typescript theme={null}
 const marketResult = await generateText({
   model: openai("gpt-5-mini"),
   prompt: "Analyze the current state of the electric vehicle market",
@@ -5078,7 +6242,7 @@ We can build an automated workflow that executes brief company research for newl
     <li><strong>Send to Slack:</strong> Deliver the final message to Slack for easy access and sharing.</li>
   </ol>
 
-  <img src="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/zap.png?fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=1c31ba085809ea534a0aec24a04428cc" alt="zap" data-og-width="950" width="950" data-og-height="1110" height="1110" data-path="images/zap.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/zap.png?w=280&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=3b34419035fb206d4f1b0a261e04be77 280w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/zap.png?w=560&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=1b3089536a776b0c70fa3f8907493005 560w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/zap.png?w=840&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=a21924425c35ec2ca4c39a806231c443 840w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/zap.png?w=1100&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=296948093fcd1c1001d8e229c8e93d2e 1100w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/zap.png?w=1650&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=3f5fb122eb0f576acf455c62d009073d 1650w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/zap.png?w=2500&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=fe6a027843ae9cbfa2ee0944833e585b 2500w" />
+  <img alt="zap" />
 </Accordion>
 
 ## Best practices
@@ -5092,130 +6256,22 @@ To use Tavily most efficiently in your Zapier workflows, keep the following guid
 * Use an LLM to generate queries for Tavily to enable a more agentic workflow.
 
 
-# Snowflake
-Source: https://docs.tavily.com/documentation/marketplaces/snowflake
-
-Tavily is now available as a native app on the [Snowflake Marketplace](https://www.snowflake.com/en/product/features/marketplace/).
-
-## Introduction
-
-The Tavily Snowflake Native App brings powerful web search capabilities directly into your Snowflake environment, allowing you to download and install it natively within your Snowflake account in an easy and secure way.
-
-## Installation and Setup
-
-1. After logging into your Snowflake account, click on ***Marketplace*** from the sidebar.
-
-2. In the search bar, search for ***Tavily*** and find the ***Tavily Search API*** app.
-
-3. Click on ***GET*** in the right top side to download the app into your Snowflake account.
-
-4. Read through the permissions and click on ***Agree and Continue*** and click on ***GET***.
-
-5. After the app finished downloading, hover over ***Catalog*** in the left sidebar and click on ***Apps***.
-
-6. Locate the Tavily app named ***Tavily Search API*** in the installed apps section.
-
-7. Now you have to configure the application.
-
-8. Visit [https://tavily.com](https://tavily.com) to get your API key if you don't already have one.
-
-9. After you have your API key, click on the ***Configure*** button and pass the API key in the secret value box to configure the API key for your native app.
-
-10. Now, in the ***Review integration requests*** section, click on ***Review*** and toggle the button to the right to enable your app ***Access the Tavily external API for web search***.
-
-11. Click on ***Save***. Now you have successfully configured your application for use in the Snowflake environment.
-
-12. Click on ***Next*** to visit the app page.
-
-## Use cases
-
-### Using TAVILY\_WEB\_SEARCH in Snowsight
-
-1. After installation in the app page, you can click on ***Open Worksheet*** to pop up a Snowflake worksheet with a pre-loaded SQL query to use Tavily web search.
-
-2. Make sure to select the appropriate database for your worksheet. In the top right, ensure the database is `TAVILY_SEARCH_API` and the schema is `TAVILY_SCHEMA`.
-
-3. Now you can click the ***Run*** button on the top left of your worksheet to run the query.
-
-SQL Procedure: `TAVILY_SCHEMA.TAVILY_WEB_SEARCH`
-
-**Parameters:**
-
-* `QUERY` (VARCHAR): The search query in natural language
-
-* `SEARCH_DEPTH` (VARCHAR, optional): `'basic'` (default) or `'advanced'`
-
-* `MAX_RESULTS` (INTEGER, optional): Maximum number of results (default: 5)
-
-**Example:**
-
-```sql  theme={null}
-CALL TAVILY_SCHEMA.TAVILY_WEB_SEARCH('latest Quantum computing trends', 'advanced', 10);
-```
-
-**Data Enrichment**:
-With this setup, you can enhance your Snowflake database with up-to-date information from the web, enabling you to fill your data warehouse with real-world data and keep your analytics current with the latest trends and events.
-
-`For example`: During data analysis in your Snowflake environment, you may discover records with missing, null, or outdated values, such as incomplete company details, stale product information, or missing metadata. Instead of filling these gaps manually, you can leverage the `TAVILY_WEB_SEARCH` stored procedure to automatically query reliable sources on the web. This allows you to fetch the most current information available and enrich your dataset directly within Snowflake, improving data completeness, accuracy, and overall analytical value.
-
-### Using TAVILY\_WEB\_SEARCH in Snowflake Intelligence
-
-1. **Set up Snowflake Intelligence**: Follow the [Snowflake documentation](https://docs.snowflake.com/en/user-guide/snowflake-cortex/snowflake-intelligence) to set up Snowflake Intelligence. Make sure you have the snowflake\_intelligence database, required schema and GRANTs before proceeding to the next steps.
-
-2. **Create an Agent**: In the Snowsight UI sidebar, navigate to the ***Agents*** admin page under ***AI & ML***, click on ***create agent*** and provide agent object name, display name and create the agent.
-
-3. **Add the TAVILY\_WEB\_SEARCH Custom Tool**: Within the current agent's menu bar, navigate to the ***Tools*** section and click on ***+Add*** in Custom tools.
-
-   * Select the Resource type as ***Procedure***
-
-   * Select the database and schema: `TAVILY_SEARCH_API.TAVILY_SCHEMA`
-
-   * Select the custom tool identifier: `TAVILY_SEARCH_API.TAVILY_SCHEMA.TAVILY_WEB_SEARCH`
-
-   * Give your tool a descriptive name
-
-   * Configure the following parameters with their descriptions:
-
-     * `query`: "Search query"
-
-     * `search_depth`: "The depth of the search. It can be 'basic' or 'advanced'"
-
-     * `max_results`: "The maximum number of search results to return. Minimum is 1 and Maximum is 20"
-
-   * Click on ***Add*** to attach the tool to your agent
-
-   * Make sure to click on ***Save*** in the top right corner to update the agent
-
-4. **Use the Agent**: In the Snowsight UI sidebar, navigate to the ***Snowflake Intelligence*** landing page under ***AI & ML***, select the agent you created, and use the tool.
-
-`Real-time AI agents`:
-With Snowflake Intelligence, you can ask complex questions about your data in natural language and receive insights from your own personalized enterprise intelligence agent. To ensure those insights are both accurate and current, it’s important to ground the agent in real-time information. By integrating the `TAVILY_WEB_SEARCH` tool, you allow the agent to automatically pull fresh, relevant data from the web, thus resulting in more trustworthy analysis and more informed decision-making.
-
-## Tutorial
-
-The following video walks you through the above-mentioned steps for installing, configuring, and using the Tavily Snowflake Native App.
-
-<div align="center" style={{ margin: '32px 0' }}>
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/rC2FSjtqkfQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen />
-</div>
-
-
 # Tavily MCP Server
 Source: https://docs.tavily.com/documentation/mcp
 
 Tavily MCP Server allows you to use the Tavily API in your MCP clients.
 
-<CardGroup cols={2}>
-  <Card title="GitHub" icon="github" href="https://github.com/tavily-ai/tavily-mcp" horizontal>
+<CardGroup>
+  <Card title="GitHub" icon="github" href="https://github.com/tavily-ai/tavily-mcp">
     `/tavily-ai/tavily-mcp`
 
-    <img noZoom src="https://img.shields.io/github/stars/tavily-ai/tavily-mcp?style=social" alt="GitHub Repo stars" />
+    <img alt="GitHub Repo stars" />
   </Card>
 
-  <Card title="NPM" icon="npm" href="https://www.npmjs.com/package/tavily-mcp" horizontal>
+  <Card title="NPM" icon="npm" href="https://www.npmjs.com/package/tavily-mcp">
     `@tavily/mcp`
 
-    <img noZoom src="https://img.shields.io/npm/dt/tavily-mcp" alt="npm" />
+    <img alt="npm" />
   </Card>
 </CardGroup>
 
@@ -5232,7 +6288,7 @@ Tavily MCP Server allows you to use the Tavily API in your MCP clients.
 </Info>
 
 <Frame>
-  <img src="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/mcp-demo.gif?s=387a3d560de94008f981b8896dcb25d2" alt="Tavily MCP Demo" data-og-width="800" width="800" data-og-height="909" height="909" data-path="images/mcp-demo.gif" data-optimize="true" data-opv="3" />
+  <img alt="Tavily MCP Demo" />
 </Frame>
 
 <Tabs>
@@ -5265,7 +6321,7 @@ Get your Tavily API key from [tavily.com](https://www.tavily.com/).
 
 ### Connect to Cursor
 
-[![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/install-mcp?name=tavily-remote-mcp\&config=eyJjb21tYW5kIjoibnB4IC15IG1jcC1yZW1vdGUgaHR0cHM6Ly9tY3AudGF2aWx5LmNvbS9tY3AvP3RhdmlseUFwaUtleT08eW91ci1hcGkta2V5PiJ9)
+[![Install MCP Server](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en-US/install-mcp?name=tavily-remote-mcp\&config=eyJjb21tYW5kIjoibnB4IC15IG1jcC1yZW1vdGUgaHR0cHM6Ly9tY3AudGF2aWx5LmNvbS9tY3AvP3RhdmlseUFwaUtleT08eW91ci1hcGkta2V5PiIsImVudiI6e319)
 
 Click the ⬆️ Add to Cursor ⬆️ button, this will do most of the work for you but you will still need to edit the configuration to add your API-KEY. You can get a Tavily API key [here](https://www.tavily.com/).
 
@@ -5273,7 +6329,7 @@ once you click the button you should be redirect to Cursor ...
 
 You will then be redirected to your `mcp.json` file where you have to add `your-api-key`.
 
-```json  theme={null}
+```json theme={null}
 {
   "mcpServers": {
     "tavily-remote-mcp": {
@@ -5297,7 +6353,7 @@ Allow models to use remote MCP servers to perform tasks.
 * You first need to export your OPENAI\_API\_KEY
 * You must also add your Tavily API-key to `<your-api-key>`, you can get a Tavily API key [here](https://www.tavily.com/)
 
-```python  theme={null}
+```python theme={null}
 from openai import OpenAI
 
 client = OpenAI()
@@ -5322,7 +6378,7 @@ print(resp.output_text)
 
 mcp-remote is a lightweight bridge that lets MCP clients that can only talk to local (stdio) servers securely connect to remote MCP servers over HTTP + SSE with OAuth-based auth, so you can host and update your server in the cloud while existing clients keep working. It serves as an experimental stop-gap until popular MCP clients natively support remote, authorized servers.
 
-```json  theme={null}
+```json theme={null}
 {
     "tavily-remote": {
       "command": "npx",
@@ -5334,6 +6390,50 @@ mcp-remote is a lightweight bridge that lets MCP clients that can only talk to l
     }
 }
 ```
+
+### OAuth Authentication
+
+The Tavily Remote MCP server supports secure OAuth authentication, allowing you to connect and authorize seamlessly with compatible clients.
+
+<AccordionGroup>
+  <Accordion title="Using MCP Inspector" icon="magnifying-glass">
+    Open the MCP Inspector and click "Open Auth Settings". Select the OAuth flow and complete these steps:
+
+    1. Metadata discovery
+    2. Client registration
+    3. Preparing authorization
+    4. Request authorization and obtain the authorization code
+    5. Token request
+    6. Authentication complete
+
+    Once finished, you will receive an access token that lets you securely make authenticated requests to the Tavily Remote MCP server.
+  </Accordion>
+
+  <Accordion title="Using Other MCP Clients" icon="plug">
+    You can configure your MCP client to use OAuth without including your Tavily API key in the URL. For example, in Cursor's `mcp.json`:
+
+    ```json theme={null}
+    {
+      "mcpServers": {
+        "tavily-remote-mcp": {
+          "command": "npx mcp-remote https://mcp.tavily.com/mcp",
+          "env": {}
+        }
+      }
+    }
+    ```
+
+    If you need to clear stored OAuth credentials and reauthenticate, run:
+
+    ```bash theme={null}
+    rm -rf ~/.mcp-auth
+    ```
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+  After successful OAuth authentication, your default API key (if set) will be used for all operations; otherwise, the first available key will be used. OAuth authentication is optional—you can still use API key authentication at any time by including your Tavily API key in the URL query parameter (`?tavilyApiKey=...`) or by setting it in the Authorization header.
+</Note>
 
 Alternatively, you can also run the MCP server locally.
 
@@ -5348,7 +6448,7 @@ Alternatively, you can also run the MCP server locally.
     * [Claude Desktop](https://claude.ai/download) or [Cursor](https://cursor.sh)
     * [Node.js](https://nodejs.org/) (v20 or higher)
       * You can verify your Node.js installation by running:
-        ```bash  theme={null}
+        ```bash theme={null}
         node --version
         ```
   </Accordion>
@@ -5397,13 +6497,13 @@ Alternatively, you can also run the MCP server locally.
        * **Name**: Enter a nickname for the server (e.g., "tavily-mcp")
        * **Type**: Select "command" as the type
        * **Command**: Enter the command to run the server:
-         ```bash  theme={null}
+         ```bash theme={null}
          env TAVILY_API_KEY=tvly-YOUR_API_KEY npx -y tavily-mcp@0.1.3
          ```
          <Warning>Replace `tvly-YOUR_API_KEY` with your Tavily API key from [app.tavily.com/home](https://app.tavily.com/home)</Warning>
 
     <Frame>
-      <img src="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/cursor-reference.png?fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=fb7da4e530057cf30d5e2fcf6de69f28" alt="Cursor Interface Example" data-og-width="1088" width="1088" data-og-height="436" height="436" data-path="images/cursor-reference.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/cursor-reference.png?w=280&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=9e9af1bf2f2a77eb62e67f397b19f933 280w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/cursor-reference.png?w=560&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=6f20f6ab66be146f0478873a540de3c6 560w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/cursor-reference.png?w=840&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=db1b26d05d29b99cea759a0f067f9c34 840w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/cursor-reference.png?w=1100&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=d73fd8164c99c099c9262fc9a693075f 1100w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/cursor-reference.png?w=1650&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=df5cf82b12380edc6eb57a4ad3e79adc 1650w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/cursor-reference.png?w=2500&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=87d27b4fab58d2e8a5e9f1921b954e4e 2500w" />
+      <img alt="Cursor Interface Example" />
     </Frame>
   </Tab>
 
@@ -5468,7 +6568,7 @@ Alternatively, you can also run the MCP server locally.
 
   <Accordion title="Tavily Extract Examples" icon="file-export">
     **Extract Article Content**: `Extract the main content from this article:
-      https://example.com/article`
+          https://example.com/article`
   </Accordion>
 
   <Accordion title="Combined Usage" icon="wand-magic-sparkles">
@@ -5483,7 +6583,7 @@ Alternatively, you can also run the MCP server locally.
 <Accordion title="Server Not Found" icon="server">
   If you encounter server connection issues, run these commands to verify your environment:
 
-  ```bash  theme={null}
+  ```bash theme={null}
   npm --version
   node --version
   ```
@@ -5494,7 +6594,7 @@ Alternatively, you can also run the MCP server locally.
 <Accordion title="NPX Issues" icon="terminal">
   If experiencing problems with npx, locate your executable:
 
-  ```bash  theme={null}
+  ```bash theme={null}
   which npx
   ```
 
@@ -5517,7 +6617,7 @@ Alternatively, you can also run the MCP server locally.
 
 ## Acknowledgments
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Model Context Protocol" icon="book" href="https://modelcontextprotocol.io">
     For the MCP specification
   </Card>
@@ -5528,155 +6628,213 @@ Alternatively, you can also run the MCP server locally.
 </CardGroup>
 
 
-# IBM
+# IBM watsonx Orchestrate
 Source: https://docs.tavily.com/documentation/partnerships/IBM
 
-Tavily and IBM have partnered to deliver AI-enriched spreadsheets, combining real-time web search with advanced foundation models to transform business data workflows.
-
-<p align="center">
-  <img src="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/logo_circle.png?fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=d818735b0cfebd7617f00a2ba9fa97ff" alt="Tavily Logo" width="80" style={{ display: 'inline', verticalAlign: 'middle' }} data-og-width="1024" data-og-height="1024" data-path="images/logo_circle.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/logo_circle.png?w=280&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=c7a94053fc5322f121c025e92b8d6f0e 280w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/logo_circle.png?w=560&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=cb43157c27d7233123bdd7a065da5110 560w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/logo_circle.png?w=840&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=5298fcdddf61b3992483038709a40319 840w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/logo_circle.png?w=1100&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=d2166a894523380ad65db68eb37ddf30 1100w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/logo_circle.png?w=1650&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=1ae230ebf66fd7df8f3d97a3c73b1dee 1650w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/logo_circle.png?w=2500&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=f4d2586f664e6fb1eff1035dd3973422 2500w" />
-
-  <img src="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/watsonx_circle.svg?fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=7e36765e09c53fd6fe7497ea6cc03d22" alt="IBM watsonx Logo" width="80" style={{ display: 'inline', verticalAlign: 'middle', marginLeft: 20 }} data-og-width="32" data-og-height="32" data-path="images/watsonx_circle.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/watsonx_circle.svg?w=280&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=da05e0b399bf9a2cf1b2a65c81da5beb 280w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/watsonx_circle.svg?w=560&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=ebb1e8aec28c0d4f50c453fd01211100 560w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/watsonx_circle.svg?w=840&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=0281df6af483e66b7eea33b7709deb17 840w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/watsonx_circle.svg?w=1100&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=ba81d52347b40a387e90200e549039fc 1100w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/watsonx_circle.svg?w=1650&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=a05f02d0ce22d0d1df67648c7e4b221f 1650w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/watsonx_circle.svg?w=2500&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=4608fc23e92572b6f99f3f7c223c799e 2500w" />
-</p>
-
-<p align="center">
-  Powered by <a href="https://tavily.com">Tavily</a> and <a href="https://www.ibm.com/products/watsonx-ai">IBM® watsonx.ai™</a>
-</p>
+Integrate Tavily's AI-powered research capabilities with IBM watsonx Orchestrate
 
 ## Overview
 
-Tavily and IBM have partnered to deliver [AI-enriched spreadsheets](https://github.com/tavily-ai/watsonx-tavily-spreadsheets) that combine Tavily's real-time web search with IBM watsonx.ai's advanced foundation models. This open-source solution enables users to enrich spreadsheet data with live, cited web information and powerful LLM-driven insights.
+Tavily offers two services on IBM watsonx Orchestrate:
 
-## What is it?
+* **Tavily Research Agent** — An AI-powered research agent that conducts comprehensive web research using coordinated parallel sub-agents to deliver detailed, citation-backed reports on complex topics.
+* **Tavily Search API** — Real-time web search optimized for AI agents and LLMs.
 
-With this application, you can:
+Both services are available through the IBM Cloud catalog and can be procured using IBM credits.
 
-* 📊 Enrich spreadsheet cells with AI-generated content backed by live web data
-* 🧠 Entity extraction and data processing with Granite LLMs
-* 🔄 Process entire columns in batch for efficient data enhancement
-* 📑 Access source citations for all web-sourced information
-* 📂 Export your enriched data as CSV files for further use
+## Setup Guide
 
-## How it Works
+### Step 1: Create a Tavily Instance on IBM Cloud
 
-1. **Fill in spreadsheet columns** with your data
-2. **Enrich your spreadsheet**: The app uses Tavily's search and IBM watsonx.ai models to add live, relevant information
-3. **Export as CSV** for further use
+1. Navigate to [IBM Cloud](https://cloud.ibm.com/)
+2. In the search bar, type "Tavily" to find the available services
 
-<div align="center" style={{ margin: '32px 0' }}>
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/fv1TnJfTC0E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen />
+<Frame>
+  <img alt="Search for Tavily in IBM Cloud" />
+</Frame>
+
+3. Select either **Tavily Search API** or **Tavily Research Agent** depending on your needs
+4. Click **Create** to provision a new instance
+
+<Frame>
+  <img alt="Create Tavily instance" />
+</Frame>
+
+### Step 2: Copy Your Bearer Token
+
+Once your instance is created, copy the bearer token from the credentials section. You'll need this to connect the agent in watsonx Orchestrate.
+
+<Frame>
+  <img alt="Copy bearer token" />
+</Frame>
+
+### Step 3: Add Tavily to watsonx Orchestrate
+
+1. Navigate to [watsonx Orchestrate](https://dl.watson-orchestrate.ibm.com/chat)
+2. Create a new agent
+
+<Frame>
+  <img alt="Create agent in watsonx Orchestrate" />
+</Frame>
+
+3. Name your agent
+
+<Frame>
+  <img alt="Name your agent" />
+</Frame>
+
+4. Add a collaborator agent
+
+<Frame>
+  <img alt="Add collaborator agent" />
+</Frame>
+
+5. Select **Tavily Research Agent** from the partner agents list
+
+<Frame>
+  <img alt="Select Tavily agent" />
+</Frame>
+
+6. Review the agent details and click **Add as collaborator**
+
+<Frame>
+  <img alt="Add Tavily as collaborator" />
+</Frame>
+
+7. Enter your bearer token (from Step 2) in the **Bearer token** field and click **Register and add**
+
+<Frame>
+  <img alt="Register agent with bearer token" />
+</Frame>
+
+8. The Tavily Research Agent will now appear in your agent's **Toolset** under the Agents section
+
+<Frame>
+  <img alt="Tavily agent loaded in toolset" />
+</Frame>
+
+### Step 4: Try It Out
+
+Ask a question in the chat that requires real-time web research, and watsonx Orchestrate will automatically hand off to the Tavily Research Agent.
+
+<Frame>
+  <img alt="Tavily Research Agent handoff example" />
+</Frame>
+
+Your Tavily Research Agent is now ready to use within watsonx Orchestrate.
+
+## Resources
+
+* [IBM watsonx Orchestrate Documentation](https://www.ibm.com/docs/en/watsonx/watson-orchestrate/base?topic=agents-adding-orchestration#adding-a-collaborator-agent)
+* [Partner Agents Catalog](https://www.ibm.com/docs/en/watsonx/watson-orchestrate/base?topic=catalog-partner-agents)
+
+
+# Snowflake
+Source: https://docs.tavily.com/documentation/partnerships/snowflake
+
+Tavily is now available as a native app on the [Snowflake Marketplace](https://www.snowflake.com/en/product/features/marketplace/).
+
+## Introduction
+
+The Tavily Snowflake Native App brings powerful web search capabilities directly into your Snowflake environment, allowing you to download and install it natively within your Snowflake account in an easy and secure way.
+
+## Installation and Setup
+
+1. After logging into your Snowflake account, click on ***Marketplace*** from the sidebar.
+
+2. In the search bar, search for ***Tavily*** and find the ***Tavily Search API*** app.
+
+3. Click on ***GET*** in the right top side to download the app into your Snowflake account.
+
+4. Read through the permissions and click on ***Agree and Continue*** and click on ***GET***.
+
+5. After the app finished downloading, hover over ***Catalog*** in the left sidebar and click on ***Apps***.
+
+6. Locate the Tavily app named ***Tavily Search API*** in the installed apps section.
+
+7. Now you have to configure the application.
+
+8. Visit [https://tavily.com](https://tavily.com) to get your API key if you don't already have one.
+
+9. After you have your API key, click on the ***Configure*** button and pass the API key in the secret value box to configure the API key for your native app.
+
+10. Now, in the ***Review integration requests*** section, click on ***Review*** and toggle the button to the right to enable your app ***Access the Tavily external API for web search***.
+
+11. Click on ***Save***. Now you have successfully configured your application for use in the Snowflake environment.
+
+12. Click on ***Next*** to visit the app page.
+
+## Use cases
+
+### Using TAVILY\_WEB\_SEARCH in Snowsight
+
+1. After installation in the app page, you can click on ***Open Worksheet*** to pop up a Snowflake worksheet with a pre-loaded SQL query to use Tavily web search.
+
+2. Make sure to select the appropriate database for your worksheet. In the top right, ensure the database is `TAVILY_SEARCH_API` and the schema is `TAVILY_SCHEMA`.
+
+3. Now you can click the ***Run*** button on the top left of your worksheet to run the query.
+
+SQL Procedure: `TAVILY_SCHEMA.TAVILY_WEB_SEARCH`
+
+**Parameters:**
+
+* `QUERY` (VARCHAR): The search query in natural language
+
+* `SEARCH_DEPTH` (VARCHAR, optional): `'basic'` (default) or `'advanced'`
+
+* `MAX_RESULTS` (INTEGER, optional): Maximum number of results (default: 5)
+
+**Example:**
+
+```sql theme={null}
+CALL TAVILY_SCHEMA.TAVILY_WEB_SEARCH('latest Quantum computing trends', 'advanced', 10);
+```
+
+**Data Enrichment**:
+With this setup, you can enhance your Snowflake database with up-to-date information from the web, enabling you to fill your data warehouse with real-world data and keep your analytics current with the latest trends and events.
+
+`For example`: During data analysis in your Snowflake environment, you may discover records with missing, null, or outdated values, such as incomplete company details, stale product information, or missing metadata. Instead of filling these gaps manually, you can leverage the `TAVILY_WEB_SEARCH` stored procedure to automatically query reliable sources on the web. This allows you to fetch the most current information available and enrich your dataset directly within Snowflake, improving data completeness, accuracy, and overall analytical value.
+
+### Using TAVILY\_WEB\_SEARCH in Snowflake Intelligence
+
+1. **Set up Snowflake Intelligence**: Follow the [Snowflake documentation](https://docs.snowflake.com/en/user-guide/snowflake-cortex/snowflake-intelligence) to set up Snowflake Intelligence. Make sure you have the snowflake\_intelligence database, required schema and GRANTs before proceeding to the next steps.
+
+2. **Create an Agent**: In the Snowsight UI sidebar, navigate to the ***Agents*** admin page under ***AI & ML***, click on ***create agent*** and provide agent object name, display name and create the agent.
+
+3. **Add the TAVILY\_WEB\_SEARCH Custom Tool**: Within the current agent's menu bar, navigate to the ***Tools*** section and click on ***+Add*** in Custom tools.
+
+   * Select the Resource type as ***Procedure***
+
+   * Select the database and schema: `TAVILY_SEARCH_API.TAVILY_SCHEMA`
+
+   * Select the custom tool identifier: `TAVILY_SEARCH_API.TAVILY_SCHEMA.TAVILY_WEB_SEARCH`
+
+   * Give your tool a descriptive name
+
+   * Configure the following parameters with their descriptions:
+
+     * `query`: "Search query"
+
+     * `search_depth`: "The depth of the search. It can be 'basic' or 'advanced'"
+
+     * `max_results`: "The maximum number of search results to return. Minimum is 1 and Maximum is 20"
+
+   * Click on ***Add*** to attach the tool to your agent
+
+   * Make sure to click on ***Save*** in the top right corner to update the agent
+
+4. **Use the Agent**: In the Snowsight UI sidebar, navigate to the ***Snowflake Intelligence*** landing page under ***AI & ML***, select the agent you created, and use the tool.
+
+`Real-time AI agents`:
+With Snowflake Intelligence, you can ask complex questions about your data in natural language and receive insights from your own personalized enterprise intelligence agent. To ensure those insights are both accurate and current, it’s important to ground the agent in real-time information. By integrating the `TAVILY_WEB_SEARCH` tool, you allow the agent to automatically pull fresh, relevant data from the web, thus resulting in more trustworthy analysis and more informed decision-making.
+
+## Tutorial
+
+The following video walks you through the above-mentioned steps for installing, configuring, and using the Tavily Snowflake Native App.
+
+<div>
+  <iframe title="YouTube video player" />
 </div>
-
-## Architecture
-
-<img src="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/spreadsheet.png?fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=9b15deaf4fe13bd422f49b1e7a6c07f7" alt="Architecture Diagram" data-og-width="1029" width="1029" data-og-height="923" height="923" data-path="images/spreadsheet.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/spreadsheet.png?w=280&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=afcc8ba679fb55a499504c41df741349 280w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/spreadsheet.png?w=560&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=6c8ccc1eb2964fed62e6196e9cb2c964 560w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/spreadsheet.png?w=840&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=bcebfc1d4f729100c8bd39fec6f03ab5 840w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/spreadsheet.png?w=1100&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=5d1bd21c50d74e576ef1332eaaa08612 1100w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/spreadsheet.png?w=1650&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=03a68bf9466507381ec972c01ea3f89a 1650w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/spreadsheet.png?w=2500&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=7b2b6d9d10c2c5907b79c20e80d0c6fb 2500w" />
-
-## Setup Instructions
-
-<AccordionGroup>
-  <Accordion title="API Keys & Environment Variables">
-    <ul>
-      <li>Get your <a href="https://app.tavily.com/home">Tavily API key</a> and <a href="https://www.ibm.com/products/watsonx-ai">IBM watsonx.ai API key</a>.</li>
-      <li>Create a <code>.env</code> file in the project root.</li>
-    </ul>
-
-    ```
-    TAVILY_API_KEY=<your API key>
-    WATSONX_API_KEY=<your API key>
-    WATSONX_PROJECT_ID=<your project id>
-    WATSONX_URL=<your data center url>
-    FOUNDATION_MODEL_ID=<watsonx.ai model id>
-    ```
-
-    <em>Note: <code>FOUNDATION\_MODEL\_ID</code> is optional. Defaults to <code>ibm/granite-3-2-8b-instruct</code> if not set.</em>
-
-    <ul>
-      <li>Create <code>.env.development</code> in <code>ui/</code> directory.</li>
-    </ul>
-
-    ```
-    VITE_API_URL=http://localhost:8000
-    VITE_WS_URL=ws://localhost:8000
-    ```
-  </Accordion>
-
-  <Accordion title="Backend Setup (Python)">
-    <ul>
-      <li>Create and activate a Python 3.11 virtual environment.</li>
-    </ul>
-
-    ```
-    python3.11 -m venv venv
-    source venv/bin/activate  # On Windows: .\venv\Scripts\activate
-    ```
-
-    <ul>
-      <li>Install dependencies.</li>
-    </ul>
-
-    ```
-    python3.11 -m pip install -r requirements.txt
-    ```
-
-    <ul>
-      <li>Run the backend server.</li>
-    </ul>
-
-    ```
-    python app.py
-    ```
-  </Accordion>
-
-  <Accordion title="Backend Setup (Docker)">
-    <ul>
-      <li>Build the Docker image.</li>
-    </ul>
-
-    ```
-    docker build -t spreadsheet .
-    ```
-
-    <ul>
-      <li>Run the container.</li>
-    </ul>
-
-    ```
-    docker run -p 8000:8000 --env-file .env spreadsheet
-    ```
-  </Accordion>
-
-  <Accordion title="Frontend Setup">
-    <ul>
-      <li>Navigate to the frontend directory.</li>
-    </ul>
-
-    ```
-    cd ui
-    ```
-
-    <ul>
-      <li>Install dependencies.</li>
-    </ul>
-
-    ```
-    npm install
-    ```
-
-    <ul>
-      <li>Start the development server.</li>
-    </ul>
-
-    ```
-    npm run dev
-    ```
-
-    <ul>
-      <li>Open <a href="http://localhost:5174">[http://localhost:5174](http://localhost:5174)</a> in your browser.</li>
-    </ul>
-  </Accordion>
-</AccordionGroup>
-
-See full setup, usage, and contribution details in the [GitHub repository](https://github.com/tavily-ai/watsonx-tavily-spreadsheets).
 
 
 # Privacy Policy
@@ -5695,7 +6853,7 @@ Start searching with Tavily in under 5 minutes.
 
 Head to the [Tavily Platform](https://app.tavily.com) and sign in (or create an account). Then, copy one of your API keys from your dashboard.
 
-<Card icon="key" href="https://app.tavily.com" title="Get your free API key" horizontal>
+<Card icon="key" href="https://app.tavily.com" title="Get your free API key">
   You get 1,000 free API Credits every month. **No credit card required.**
 </Card>
 
@@ -5760,27 +6918,27 @@ Learn about Tavily's API rate limits for both  development and production enviro
 
 We offer two types of rate limits based on the environment associated with your API key.
 
-<Card icon="key" href="https://app.tavily.com" title="Get your API key" horizontal>
+<Card icon="key" href="https://app.tavily.com" title="Get your API key">
   Create your Development or Production API keys.
 </Card>
 
-<table style={{ textAlign: "left", padding: "8px", width: "100%", borderCollapse: "collapse" }}>
+<table>
   <thead>
     <tr>
-      <th style={{ textAlign: "left", padding: "8px", borderBottom: "1px solid #ddd" }}>Environment</th>
-      <th style={{ textAlign: "left", padding: "8px", borderBottom: "1px solid #ddd" }}>Requests per minute (RPM)</th>
+      <th>Environment</th>
+      <th>Requests per minute (RPM)</th>
     </tr>
   </thead>
 
   <tbody>
     <tr>
-      <td style={{ padding: "8px", borderBottom: "1px solid #ddd" }}><code>Development</code></td>
-      <td style={{ padding: "8px", borderBottom: "1px solid #ddd" }}>100</td>
+      <td><code>Development</code></td>
+      <td>100</td>
     </tr>
 
     <tr>
-      <td style={{ padding: "8px", borderBottom: "1px solid #ddd" }}><code>Production</code></td>
-      <td style={{ padding: "8px", borderBottom: "1px solid #ddd" }}>1,000</td>
+      <td><code>Production</code></td>
+      <td>1,000</td>
     </tr>
   </tbody>
 </table>
@@ -5789,23 +6947,23 @@ We offer two types of rate limits based on the environment associated with your 
 
 The crawl endpoint has a separate rate limit that applies to both development and production keys:
 
-<table style={{ textAlign: "left", padding: "8px", width: "100%", borderCollapse: "collapse" }}>
+<table>
   <thead>
     <tr>
-      <th style={{ textAlign: "left", padding: "8px", borderBottom: "1px solid #ddd" }}>Environment</th>
-      <th style={{ textAlign: "left", padding: "8px", borderBottom: "1px solid #ddd" }}>Requests per minute (RPM)</th>
+      <th>Environment</th>
+      <th>Requests per minute (RPM)</th>
     </tr>
   </thead>
 
   <tbody>
     <tr>
-      <td style={{ padding: "8px", borderBottom: "1px solid #ddd" }}><code>Development</code></td>
-      <td style={{ padding: "8px", borderBottom: "1px solid #ddd" }}>50</td>
+      <td><code>Development</code></td>
+      <td>100</td>
     </tr>
 
     <tr>
-      <td style={{ padding: "8px", borderBottom: "1px solid #ddd" }}><code>Production</code></td>
-      <td style={{ padding: "8px", borderBottom: "1px solid #ddd" }}>50</td>
+      <td><code>Production</code></td>
+      <td>100</td>
     </tr>
   </tbody>
 </table>
@@ -5846,724 +7004,83 @@ Source: https://docs.tavily.com/documentation/trust
 
 
 
-# GPT Researcher
-Source: https://docs.tavily.com/examples/open-sources/gpt-researcher
+# Projects
+Source: https://docs.tavily.com/examples/open-sources/projects
 
+Explore our collection of popular open source projects that showcase Tavily's use cases and capabilities.
 
+<GitHubReposGrid />
 
-## Multi Agent Frameworks
 
-We are strong advocates for the future of AI agents, envisioning a world where autonomous agents communicate and collaborate as a cohesive team to undertake and complete complex tasks.
+# Cookbook
+Source: https://docs.tavily.com/examples/quick-tutorials/cookbook
 
-We hold the belief that research is a pivotal element in successfully tackling these complex tasks, ensuring superior outcomes.
+A collection of guided examples and code snippets for using Tavily.
 
-Consider the scenario of developing a coding agent responsible for coding tasks using the latest API documentation and best practices. It would be wise to integrate an agent specializing in research to curate the most recent and relevant documentation, before crafting a technical design that would subsequently be handed off to the coding assistant tasked with generating the code. This approach is applicable across various sectors, including finance, business analysis, healthcare, marketing, and legal, among others.
+## Fundamentals
 
-One multi-agent framework that we're excited about is [LangGraph](https://langchain-ai.github.io/langgraph/), built by the team at [Langchain](https://www.langchain.com/). LangGraph is a Python library for building stateful, multi-actor applications with LLMs. It extends the [LangChain Expression Language](https://python.langchain.com/docs/concepts/lcel/) with the ability to coordinate multiple chains (or actors) across multiple steps of computation.
+<CardGroup>
+  <Card href="https://github.com/tavily-ai/tavily-cookbook/blob/main/cookbooks/getting-started/web-agent-tutorial.ipynb" title="Getting Started">
+    Search, Extract, and Crawl the Web
+  </Card>
 
-What's great about LangGraph is that it follows a DAG architecture, enabling each specialized agent to communicate with one another, and subsequently trigger actions among other agents within the graph.
+  <Card href="https://github.com/tavily-ai/tavily-cookbook/blob/main/cookbooks/getting-started/web-agent-tutorial.ipynb" title="Web Agent">
+    Build a Web Research Agent
+  </Card>
 
-We've added an example for leveraging [GPT Researcher with LangGraph](https://github.com/assafelovic/gpt-researcher/tree/master/multi_agents) which can be found in `/multi_agents`.
+  <Card href="https://github.com/tavily-ai/tavily-cookbook/blob/main/cookbooks/getting-started/hybrid-agent-tutorial.ipynb" title="Hybrid Agent">
+    Combine Internal Data with Web Data
+  </Card>
+</CardGroup>
 
-The example demonstrates a generic use case for an editorial agent team that works together to complete a research report on a given task.
+## Search
 
-### The Multi Agent Team
+<CardGroup>
+  <Card href="https://github.com/tavily-ai/tavily-cookbook/blob/main/cookbooks/search/product_news_tracker.ipynb" title="Product News Tracker">
+    Track product updates from any company
+  </Card>
+</CardGroup>
 
-The research team is made up of 7 AI agents:
+## Research
 
-1. Chief Editor - Oversees the research process and manages the team. This is the "master" agent that coordinates the other agents using Langgraph.
-2. Researcher (gpt-researcher) - A specialized autonomous agent that conducts in depth research on a given topic.
-3. Editor - Responsible for planning the research outline and structure.
-4. Reviewer - Validates the correctness of the research results given a set of criteria.
-5. Revisor - Revises the research results based on the feedback from the reviewer.
-6. Writer - Responsible for compiling and writing the final report.
-7. Publisher - Responsible for publishing the final report in various formats.
+<CardGroup>
+  <Card href="https://github.com/tavily-ai/tavily-cookbook/blob/main/cookbooks/research/polling.ipynb" title="Polling">
+    Asynchronous polling for background research requests
+  </Card>
 
-### How it works
+  <Card href="https://github.com/tavily-ai/tavily-cookbook/blob/main/cookbooks/research/streaming.ipynb" title="Streaming">
+    Stream real-time progress and answers during research
+  </Card>
 
-Generally, the process is based on the following stages:
+  <Card href="https://github.com/tavily-ai/tavily-cookbook/blob/main/cookbooks/research/structured_output.ipynb" title="Structured Output">
+    Get results in custom schema formats
+  </Card>
 
-1. Planning stage
-2. Data collection and analysis
-3. Writing and submission
-4. Review and revision
-5. Publication
+  <Card href="https://github.com/tavily-ai/tavily-cookbook/blob/main/cookbooks/research/query_refinement.ipynb" title="Query Refinement">
+    Refine user prompts through multi-turn clarification before research
+  </Card>
 
-### Architecture
+  <Card href="https://github.com/tavily-ai/tavily-cookbook/blob/main/cookbooks/research/hybrid_research.ipynb" title="Hybrid Research">
+    Combine Tavily research with your internal data
+  </Card>
+</CardGroup>
 
-<img height="100" src="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/gpt-researcher.png?fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=a8aef7f5d088a0bf5180e6f276162d5a" data-og-width="440" data-og-height="1016" data-path="images/gpt-researcher.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/gpt-researcher.png?w=280&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=dc949a38f93d91cd49931c68dc5722d0 280w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/gpt-researcher.png?w=560&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=f1cac1c381681c02886f22238ad4fb75 560w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/gpt-researcher.png?w=840&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=ba26f16aab7c291fe72d3bcc588f9caa 840w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/gpt-researcher.png?w=1100&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=4e7353199cd35fde1f1d76a04fd57667 1100w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/gpt-researcher.png?w=1650&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=0de484c4e18c27aa58b4ed325c0d3b6c 1650w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/gpt-researcher.png?w=2500&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=f4b2fe52fff74badb71ca554a4a51d33 2500w" />
+## Crawl
 
-### Steps
+<CardGroup>
+  <Card href="https://github.com/tavily-ai/tavily-cookbook/blob/main/cookbooks/crawl/crawl_to_rag.ipynb" title="Crawl to RAG">
+    Crawl websites and turn content into a searchable knowledge base
+  </Card>
 
-More specifically (as seen in the architecture diagram) the process is as follows:
+  <Card href="https://github.com/tavily-ai/tavily-cookbook/blob/main/cookbooks/crawl/agent_grounding.ipynb" title="Agent Grounding">
+    Intelligent web research agent that autonomously gathers and synthesizes
+    information
+  </Card>
 
-1. Browser (gpt-researcher) - Browses the internet for initial research based on the given research task.
-2. Editor - Plans the report outline and structure based on the initial research.
-3. For each outline topic (in parallel):
-4. Researcher (gpt-researcher) - Runs an in depth research on the subtopics and writes a draft.
-5. Reviewer - Validates the correctness of the draft given a set of criteria and provides feedback.
-6. Revisor - Revises the draft until it is satisfactory based on the reviewer feedback.
-7. Writer - Compiles and writes the final report including an introduction, conclusion and references section from the given research findings.
-8. Publisher - Publishes the final report to multi formats such as PDF, Docx, Markdown, etc.
-
-### How to run
-
-1. Install required packages:
-
-```python  theme={null}
-pip install -r requirements.txt
-```
-
-2. Run the application:
-
-```python  theme={null}
-python main.py
-```
-
-### Usage
-
-To change the research query and customize the report, edit the `task.json` file in the main directory.
-
-## Customization
-
-The config.py enables you to customize GPT Researcher to your specific needs and preferences.
-
-Thanks to our amazing community and contributions, GPT Researcher supports multiple LLMs and Retrievers. In addition, GPT Researcher can be tailored to various report formats (such as APA), word count, research iterations depth, etc.
-
-GPT Researcher defaults to our recommended suite of integrations: [OpenAI](https://platform.openai.com/docs/overview) for LLM calls and [Tavily API](https://app.tavily.com/home) for retrieving realtime online information.
-
-As seen below, OpenAI still stands as the superior LLM. We assume it will stay this way for some time, and that prices will only continue to decrease, while performance and speed increase over time.
-
-It may not come as a surprise that our default search engine is Tavily. We're aimed at building our search engine to tailor the exact needs of searching and aggregating for the most factual and unbiased information for research tasks. We highly recommend using it with GPT Researcher, and more generally with LLM applications that are built with RAG.
-
-Here is an example of the default config.py file found in `/gpt_researcher/config/`:
-
-```python  theme={null}
-def __init__(self, config_file: str = None):
-    self.config_file = config_file
-    self.retriever = "tavily"
-    self.llm_provider = "openai"
-    self.fast_llm_model = "gpt-3.5-turbo"
-    self.smart_llm_model = "gpt-4o"
-    self.fast_token_limit = 2000
-    self.smart_token_limit = 4000
-    self.browse_chunk_max_length = 8192
-    self.summary_token_limit = 700
-    self.temperature = 0.6
-    self.user_agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)" \
-                      " Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0"
-    self.memory_backend = "local"
-    self.total_words = 1000
-    self.report_format = "apa"
-    self.max_iterations = 1
-
-    self.load_config_file()
-```
-
-Please note that you can also include your own external JSON file by adding the path in the config\_file param.
-
-To learn more about additional LLM support you can check out the [Langchain supported LLMs documentation](https://python.langchain.com/docs/integrations/llms/). Simply pass different provider names in the `llm_provider` config param.
-
-You can also change the search engine by modifying the retriever param to others such as `duckduckgo`, `googleAPI`, `googleSerp`, `searx` and more.
-
-Please note that you might need to sign up and obtain an API key for any of the other supported retrievers and LLM providers.
-
-## Agent Example
-
-If you're interested in using GPT Researcher as a standalone agent, you can easily import it into any existing Python project. Below, is an example of calling the agent to generate a research report:
-
-```python  theme={null}
-from gpt_researcher import GPTResearcher
-import asyncio
-
-# It is best to define global constants at the top of your script
-QUERY = "What happened in the latest burning man floods?"
-REPORT_TYPE = "research_report"
-
-async def fetch_report(query, report_type):
-    """
-    Fetch a research report based on the provided query and report type.
-    """
-    researcher = GPTResearcher(query=query, report_type=report_type, config_path=None)
-    await researcher.conduct_research()
-    report = await researcher.write_report()
-    return report
-
-async def generate_research_report():
-    """
-    This is a sample script that executes an async main function to run a research report.
-    """
-    report = await fetch_report(QUERY, REPORT_TYPE)
-    print(report)
-
-if __name__ == "__main__":
-    asyncio.run(generate_research_report())
-```
-
-You can further enhance this example to use the returned report as context for generating valuable content such as news article, marketing content, email templates, newsletters, etc.
-
-You can also use GPT Researcher to gather information about code documentation, business analysis, financial information and more. All of which can be used to complete much more complex tasks that require factual and high quality realtime information.
-
-## Getting Started
-
-**Step 0** - Install Python 3.11 or later. [See here](https://www.tutorialsteacher.com/python/install-python) for a step-by-step guide.
-
-**Step 1** - Download the project and navigate to its directory
-
-```python  theme={null}
-$ git clone https://github.com/assafelovic/gpt-researcher.git
-$ cd gpt-researcher
-```
-
-**Step 2** - Set up API keys using two methods: exporting them directly or storing them in a `.env` file.
-
-For Linux/Temporary Windows Setup, use the export method:
-
-```python  theme={null}
-export OPENAI_API_KEY={Your OpenAI API Key here}
-export TAVILY_API_KEY={Your Tavily API Key here}
-```
-
-For a more permanent setup, create a `.env` file in the current gpt-researcher folder and input the keys as follows:
-
-```python  theme={null}
-OPENAI_API_KEY={Your OpenAI API Key here}
-TAVILY_API_KEY={Your Tavily API Key here}
-```
-
-For LLM, we recommend [OpenAI GPT](https://platform.openai.com/docs/guides/text-generation), but you can use any other LLM model (including open sources), simply change the llm model and provider in config/config.py.
-For search engine, we recommend [Tavily Search API](https://app.tavily.com/home), but you can also refer to other search engines of your choice by changing the search provider in config/config.py to `duckduckgo`, `googleAPI`, `googleSerp`, `searx`, or `bing`. Then add the corresponding env API key as seen in the config.py file.
-
-### Quickstart
-
-**Step 1** - Install dependencies
-
-```python  theme={null}
-$ pip install -r requirements.txt
-```
-
-**Step 2** - Run the agent with FastAPI
-
-```python  theme={null}
-$ uvicorn main:app --reload
-```
-
-**Step 3** - Go to [http://localhost:8000](http://localhost:8000) on any browser and enjoy researching!
-
-### Using Virtual Environment or Poetry
-
-Select either based on your familiarity with each:
-
-### Virtual Environment
-
-Establishing the Virtual Environment with Activate/Deactivate configuration
-Create a virtual environment using the `venv` package with the environment name `<your_name>`, for example, `env`. Execute the following command in the PowerShell/CMD terminal:
-
-```python  theme={null}
-python -m venv env
-```
-
-To activate the virtual environment, use the following activation script in PowerShell/CMD terminal:
-
-```python  theme={null}
-.\env\Scripts\activate
-```
-
-To deactivate the virtual environment, run the following deactivation script in PowerShell/CMD terminal:
-
-```python  theme={null}
-deactivate
-```
-
-Install the dependencies for a Virtual environment
-After activating the `env` environment, install dependencies using the `requirements.txt` file with the following command:
-
-```python  theme={null}
-python -m pip install -r requirements.txt
-```
-
-### Poetry
-
-Establishing the Poetry dependencies and virtual environment with Poetry version `~1.7.1`
-Install project dependencies and simultaneously create a virtual environment for the specified project. By executing this command, Poetry reads the project's "pyproject.toml" file to determine the required dependencies and their versions, ensuring a consistent and isolated development environment. The virtual environment allows for a clean separation of project-specific dependencies, preventing conflicts with system-wide packages and enabling more straightforward dependency management throughout the project's lifecycle.
-
-```python  theme={null}
-poetry install
-```
-
-Activate the virtual environment associated with a Poetry project
-By running this command, the user enters a shell session within the isolated environment associated with the project, providing a dedicated space for development and execution. This virtual environment ensures that the project dependencies are encapsulated, avoiding conflicts with system-wide packages. Activating the Poetry shell is essential for seamlessly working on a project, as it ensures that the correct versions of dependencies are used and provides a controlled environment conducive to efficient development and testing.
-
-```python  theme={null}
-poetry shell
-```
-
-### Run the app
-
-Launch the FastAPI application agent on a Virtual Environment or Poetry setup by executing the following command:
-
-```python  theme={null}
-python -m uvicorn main:app --reload
-```
-
-Visit [http://localhost:8000](http://localhost:8000) in any web browser and explore your research!
-
-### Try it with Docker
-
-**Step 1** - Install Docker
-
-Follow the instructions [here](https://docs.docker.com/engine/install/)
-
-**Step 2** - Create `.env` file with your OpenAI Key or simply export it
-
-```python  theme={null}
-$ export OPENAI_API_KEY={Your API Key here}
-$ export TAVILY_API_KEY={Your Tavily API Key here}
-```
-
-**Step 3** - Run the application
-
-```python  theme={null}
-$ docker-compose up
-```
-
-**Step 4** - Go to [http://localhost:8000](http://localhost:8000) on any browser and enjoy researching!
-
-## Introduction
-
-[GPT Researcher](https://gptr.dev/) is an autonomous agent designed for comprehensive online research on a variety of tasks.
-
-The agent can produce detailed, factual and unbiased research reports, with customization options for focusing on relevant resources, outlines, and lessons. Inspired by the recent [Plan-and-Solve](https://arxiv.org/abs/2305.04091) and [RAG](https://arxiv.org/abs/2005.11401) papers, GPT Researcher addresses issues of speed, determinism and reliability, offering a more stable performance and increased speed through parallelized agent work, as opposed to synchronous operations.
-
-### Why GPT Researcher?
-
-1. To form objective conclusions for manual research tasks can take time, sometimes weeks to find the right resources and information.
-2. Current LLMs are trained on past and outdated information, with heavy risks of hallucinations, making them almost irrelevant for research tasks.
-3. Solutions that enable web search (such as ChatGPT + Web Plugin), only consider limited resources and content that in some cases result in superficial conclusions or biased answers.
-4. Using only a selection of resources can create bias in determining the right conclusions for research questions or tasks.
-
-### Architecture
-
-The main idea is to run "planner" and "execution" agents, whereas the planner generates questions to research, and the execution agents seek the most related information based on each generated research question. Finally, the planner filters and aggregates all related information and creates a research report.
-
-The agents leverage both gpt3.5-turbo and gpt-4-turbo (128K context) to complete a research task. We optimize for costs using each only when necessary. The average research task takes around 3 minutes to complete, and costs \~\$0.1.
-
-<img height="100" src="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/report-flow.png?fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=6c2ab8b5efbc595b5dca4683f98ac1fa" data-og-width="874" data-og-height="1220" data-path="images/report-flow.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/report-flow.png?w=280&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=2ae5dd7bd54c04d560730cf2e7e24d5e 280w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/report-flow.png?w=560&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=d7061e2c1302c358ee4304544d07dd3d 560w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/report-flow.png?w=840&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=8357d273e52a1072d388c679cd3ded82 840w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/report-flow.png?w=1100&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=3507184a15efbc6c053671b5b8272c57 1100w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/report-flow.png?w=1650&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=1d8e5c6eca62d75a8b6407a705ea823a 1650w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/report-flow.png?w=2500&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=c076ee152a159ef6aadd493574da3ebc 2500w" />
-
-More specifically:
-
-1. Create a domain specific agent based on research query or task.
-2. Generate a set of research questions that together form an objective opinion on any given task.
-3. For each research question, trigger a crawler agent that scrapes online resources for information relevant to the given task.
-4. For each scraped resources, summarize based on relevant information and keep track of its sources.
-5. Finally, filter and aggregate all summarized sources and generate a final research report.
-
-### Demo
-
-<iframe height="400" width="700" src="https://github.com/assafelovic/gpt-researcher/assets/13554167/a00c89a6-a295-4dd0-b58d-098a31c40fda" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen />
-
-### Tutorials
-
-1. [How it Works](https://medium.com/better-programming/how-i-built-an-autonomous-ai-agent-for-online-research-93435a97c6c)
-2. [How to Install](https://www.loom.com/share/04ebffb6ed2a4520a27c3e3addcdde20?sid=da1848e8-b1f1-42d1-93c3-5b0b9c3b24ea)
-3. [Live Demo](https://www.loom.com/share/6a3385db4e8747a1913dd85a7834846f?sid=a740fd5b-2aa3-457e-8fb7-86976f59f9b8)
-4. [Home Page](https://gptr.dev/)
-
-### Features
-
-1. 📝 Generate research, outlines, resources and lessons reports
-2. 📜 Can generate long and detailed research reports (over 2K words)
-3. 🌐 Aggregates over 20 web sources per research to form objective and factual conclusions
-4. 🖥️ Includes an easy-to-use web interface (HTML/CSS/JS)
-5. 🔍 Scrapes web sources with javascript support
-6. 📂 Keeps track and context of visited and used web sources
-7. 📄 Export research reports to PDF, Word and more...
-
-### Disclaimer
-
-This project, GPT Researcher, is an experimental application and is provided "as-is" without any warranty, express or implied. We are sharing codes for academic purposes under the MIT license. Nothing herein is academic advice, and NOT a recommendation to use in academic or research papers.
-
-Our view on unbiased research claims:
-
-The whole point of our scraping system is to reduce incorrect fact. How? The more sites we scrape the less chances of incorrect data. We are scraping 20 per research, the chances that they are all wrong is extremely low.
-We do not aim to eliminate biases; we aim to reduce it as much as possible. We are here as a community to figure out the most effective human/llm interactions.
-In research, people also tend towards biases as most have already opinions on the topics they research about. This tool scrapes many opinions and will evenly explain diverse views that a biased person would never have read.
-Please note that the use of the GPT-4 language model can be expensive due to its token usage. By utilizing this project, you acknowledge that you are responsible for monitoring and managing your own token usage and the associated costs. It is highly recommended to check your OpenAI API usage regularly and set up any necessary limits or alerts to prevent unexpected charges.
-
-## PIP Package
-
-🌟 Exciting News! Now, you can integrate gpt-researcher with your apps seamlessly!
-
-### Steps to Install GPT Researcher 🛠️
-
-Follow these easy steps to get started:
-
-0. Pre-requisite: Ensure Python 3.10+ is installed on your machine 💻
-1. Install gpt-researcher: Grab the official package from [PyPi](https://pypi.org/project/gpt-researcher/).
-
-```python  theme={null}
-pip install gpt-researcher
-```
-
-2. Environment Variables: Create a .env file with your OpenAI API key or simply export it
-
-```python  theme={null}
-export OPENAI_API_KEY={Your OpenAI API Key here}
-export TAVILY_API_KEY={Your Tavily API Key here}
-```
-
-3. Start using GPT Researcher in your own codebase
-
-### Example Usage 📝
-
-```python  theme={null}
-from gpt_researcher import GPTResearcher
-import asyncio
-
-
-from gpt_researcher import GPTResearcher
-import asyncio
-
-
-async def get_report(query: str, report_type: str) -> str:
-    researcher = GPTResearcher(query, report_type)
-    research_result = await researcher.conduct_research()
-    report = await researcher.write_report()
-    return report
-
-if __name__ == "__main__":
-    query = "what team may win the NBA finals?"
-    report_type = "research_report"
-
-    report = asyncio.run(get_report(query, report_type))
-    print(report)
-```
-
-### Specific Examples 🌐
-
-Example 1: Research Report 📚
-
-```python  theme={null}
-query = "Latest developments in renewable energy technologies"
-report_type = "research_report"
-```
-
-Example 2: Resource Report 📋
-
-```python  theme={null}
-query = "List of top AI conferences in 2023"
-report_type = "resource_report"
-```
-
-Example 3: Outline Report 📝
-
-```python  theme={null}
-query = "Outline for an article on the impact of AI in education"
-report_type = "outline_report"
-```
-
-### Integration with Web Frameworks 🌍
-
-FastAPI Example:
-
-```python  theme={null}
-from fastapi import FastAPI
-from gpt_researcher import GPTResearcher
-import asyncio
-
-app = FastAPI()
-
-@app.get("/report/{report_type}")
-async def get_report(query: str, report_type: str) -> dict:
-    researcher = GPTResearcher(query, report_type)
-    research_result = await researcher.conduct_research()
-    report = await researcher.write_report()
-    return {"report": report}
-
-# Run the server
-# uvicorn main:app --reload
-```
-
-Flask Example
-Pre-requisite: Install flask with the async extra.
-
-```python  theme={null}
-pip install 'flask[async]'
-```
-
-```python  theme={null}
-from flask import Flask, request
-from gpt_researcher import GPTResearcher
-
-app = Flask(__name__)
-
-@app.route('/report/<report_type>', methods=['GET'])
-async def get_report(report_type):
-    query = request.args.get('query')
-    researcher = GPTResearcher(query, report_type)
-    research_result = await researcher.conduct_research()
-    report = await researcher.write_report()
-    return report
-
-# Run the server
-# flask run
-```
-
-Run the server:
-
-```python  theme={null}
-flask run
-```
-
-Example Request:
-
-```python  theme={null}
-curl -X GET "http://localhost:5000/report/research_report?query=what team may win the nba finals?"
-```
-
-Note: The above code snippets are just examples. You can customize them as per your requirements.
-
-## Roadmap
-
-We're constantly working on additional features and improvements to our products and services. We're also working on new products and services to help you build better AI applications using [GPT Researcher](https://gptr.dev/).
-
-Our vision is to build the #1 autonomous research agent for AI developers and researchers, and we're excited to have you join us on this journey!
-
-The roadmap is prioritized based on the following goals: Performance, Quality, Modularity and Conversational flexibility. The roadmap is public and can be found [here](https://trello.com/b/3O7KBePw/gpt-researcher-roadmap).
-
-## Tailored Research
-
-The GPT Researcher package allows you to tailor the research to your needs such as researching on specific sources or local documents, and even specify the agent prompt instruction upon which the research is conducted.
-
-### Research on Specific Sources 📚
-
-You can specify the sources you want the GPT Researcher to research on by providing a list of URLs. The GPT Researcher will then conduct research on the provided sources.
-
-```python  theme={null}
-from gpt_researcher import GPTResearcher
-import asyncio
-
-async def get_report(query: str, report_type: str, sources: list) -> str:
-    researcher = GPTResearcher(query=query, report_type=report_type, source_urls=sources)
-    await researcher.conduct_research()
-    report = await researcher.write_report()
-    return report
-
-if __name__ == "__main__":
-    query = "What are the latest advancements in AI?"
-    report_type = "research_report"
-    sources = ["https://en.wikipedia.org/wiki/Artificial_intelligence", "https://www.ibm.com/watson/ai"]
-
-    report = asyncio.run(get_report(query, report_type, sources))
-    print(report)
-```
-
-### Specify Agent Prompt 📝
-
-You can specify the agent prompt instruction upon which the research is conducted. This allows you to guide the research in a specific direction and tailor the report layout. Simplay pass the prompt as the `query` argument to the `GPTResearcher` class and the "custom\_report" `report_type`.
-
-```python  theme={null}
-from gpt_researcher import GPTResearcher
-import asyncio
-
-async def get_report(prompt: str, report_type: str) -> str:
-    researcher = GPTResearcher(query=prompt, report_type=report_type)
-    await researcher.conduct_research()
-    report = await researcher.write_report()
-    return report
-
-if __name__ == "__main__":
-    report_type = "custom_report"
-    prompt = "Research the latest advancements in AI and provide a detailed report in APA format including sources."
-
-    report = asyncio.run(get_report(prompt=prompt, report_type=report_type))
-    print(report)
-```
-
-### Research on Local Documents 📄
-
-TBD!
-
-## Troubleshooting
-
-We're constantly working to provide a more stable version. If you're running into any issues, please first check out the resolved issues or ask us via our [Discord community](https://discord.com/invite/2pFkc83fRq).
-
-### Model: gpt-4 does not exist
-
-This relates to not having permission to use gpt-4 yet. Based on OpenAI, it will be [widely available for all by end of July](https://help.openai.com/en/articles/7102672-how-can-i-access-gpt-4-gpt-4-turbo-gpt-4o-and-gpt-4o-mini).
-
-### Cannot load library 'gobject-2.0-0'
-
-The issue relates to the library WeasyPrint (which is used to generate PDFs from the research report). Please follow this guide to resolve it: [https://doc.courtbouillon.org/weasyprint/stable/first\_steps.html](https://doc.courtbouillon.org/weasyprint/stable/first_steps.html), or you can install this package manually.
-
-In case of MacOS you can install this lib using `brew install glib gobject-introspection`
-
-In case of Linux you can install this lib using `sudo apt install libglib2.0-dev`
-
-### Cannot load library 'pango'
-
-In case of MacOS you can install this lib using `brew install pango`
-
-In case of Linux you can install this lib using `sudo apt install libpango-1.0-0`
-
-### Workaround for Mac M chip users
-
-If the above solutions don't work, you can try the following:
-
-1. Install a fresh version of Python 3.11 pointed to brew: `brew install python@3.11`
-2. Install the required libraries: `brew install pango glib gobject-introspection`
-3. Install the required GPT Researcher Python packages: `pip3.11 install -r requirements.txt`
-4. Run the app with Python 3.11 (using brew): `python3.11 -m uvicorn main:app --reload`
-
-### Error processing the url
-
-We're using [Selenium](https://www.selenium.dev/) for site scraping. Some sites fail to be scraped. In these cases, restart and try running again.
-
-### Chrome version issues
-
-Many users have an issue with their chromedriver because the latest chrome browser version doesn't have a compatible chrome driver yet.
-
-To downgrade your Chrome web browser using [slimjet](https://www.slimjet.com/chrome/google-chrome-old-version.php), follow these steps. First, visit the website and scroll down to find the list of available older Chrome versions. Choose the version you wish to install making sure it's compatible with your operating system. Once you've selected the desired version, click on the corresponding link to download the installer. Before proceeding with the installation, it's crucial to uninstall your current version of Chrome to avoid conflicts.
-
-It's important to check if the version you downgrade to, has a chromedriver available in the official [chrome driver website](https://developer.chrome.com/docs/chromedriver/downloads).
-
-
-# Product News Tracker
-Source: https://docs.tavily.com/examples/quick-tutorials/product-news-tracker
-
-Stay informed with real-time product news using Tavily's APIs.
-
-## What will you learn?
-
-In this use case, you'll discover how to gather a company's product news and updates using Tavily's Search API. This tutorial outlines how to get started with the Tavily Python SDK, how to properly configure search parameters for optimal results, and how to effectively interact with Tavily’s Search API to retrieve the latest product updates for a specified company.
-
-## How does it work?
-
-### Self-Reported News
-
-Our system gathers official updates including **blog posts**, **product announcements**, and **company news** by utilizing the `include_domain` parameter. This allows us to focus specifically on content from:
-
-* A company's official website
-
-This domain-filtered approach ensures efficient credit usage while maintaining search accuracy.
-
-### Third-Party Coverage
-
-To capture external perspectives, we employ specialized news search parameters:
-
-* Set `topic = news` to focus on reputable news sources
-* Utilize `time_range = month` for current coverage
-
-<Tip>
-  For the functionality discussed in this tutorial, `search_depth = basic` will
-  be sufficient to acheive the intended results.
-</Tip>
-
-## Getting Started
-
-> We have prepared a [Jupyter Notebook](https://github.com/tavily-ai/tavily-tutorials/blob/main/product-news-tracker.ipynb) outlining the contents of this tutorial
-
-First create an account and get your free API key.
-
-<Card title="Get your Tavily API key" icon="key" href="https://app.tavily.com" horizontal />
-
-Next, use the Tavily Python SDK to create the workflow.
-
-<Steps>
-  <Step title="Install the Tavily Python SDK">
-    ```python Shell theme={null}
-    %pip install -q tavily-python python-dotenv ipykernel
-    ```
-  </Step>
-
-  <Step title="Import the necessary libraries">
-    ```python Python theme={null}
-    import getpass
-    import os
-
-    if not os.environ.get("TAVILY_API_KEY"):
-        os.environ["TAVILY_API_KEY"] = getpass.getpass("TAVILY_API_KEY:\n")
-
-    TAVILY_API_KEY = os.getenv("TAVILY_API_KEY")
-    ```
-  </Step>
-
-  <Step title="Instantiate the Tavily Client">
-    ```python Python theme={null}
-    from tavily import TavilyClient
-
-    tavily_client = TavilyClient()
-    ```
-  </Step>
-
-  <Step title="Define the search parameters">
-    ```python Python theme={null}
-    def search_product_updates(company_name: str, domains: list):
-        all_results = []
-
-        # Search for self-reported news
-        company_results = tavily_client.search(
-            query=f"{company_name} product news, updates, releases, and announcements",
-            search_depth="basic",
-            max_results=10,
-            include_domains=domains
-        )
-
-        for result in company_results["results"]:
-            result["search_type"] = "Self-reported News"
-            all_results.append(result)
-
-
-        # Search for third-party coverage
-        news_results = tavily_client.search(
-            query=f"{company_name} product news, updates, releases, and announcements",
-            search_depth="basic",
-            max_results=10,
-            time_range="month",
-            topic="news"
-        )
-
-        for result in news_results["results"]:
-            result["search_type"] = "Third-party Coverage"
-            all_results.append(result)
-
-        return all_results
-    ```
-  </Step>
-
-  <Step title="Execute the search">
-    ```python Python theme={null}
-        product_updates = search_product_updates(
-            "OpenAI", ["openai.com"]
-        )
-
-        product_updates
-    ```
-  </Step>
-
-  <Step title="Output">
-    ```json Shell theme={null}
-     [
-         {
-             "title": "OpenAI launches new tools to help businesses build AI agents - TechCrunch",
-             "url": "https://techcrunch.com/2025/03/11/openai-launches-new-tools-to-help-businesses-build-ai-agents/",
-             "score": 0.70847535,
-             "published_date": "Tue, 11 Mar 2025 17:00:00 GMT",
-             "content": "OpenAI launches new tools to help businesses build AI agents | TechCrunch OpenAI launches new tools to help businesses build AI agents | TechCrunch On Tuesday, OpenAI released new tools designed to help developers and enterprises build AI agents – automated systems that can independently accomplish tasks – using the company’s own AI models and frameworks. The tools are part of OpenAI’s new Responses API, which lets businesses develop custom AI agents that can perform web searches, scan through company files, and navigate websites, much like OpenAI’s Operator product. Using the Responses API, developers can tap the same AI models (in preview) under the hood of OpenAI’s ChatGPT Search web search tool: GPT-4o search and GPT-4o mini search.",
-             "search_type": "Third-party Coverage"
-         },
-         {
-             "title": "New embedding models and API updates - Announcements - OpenAI Developer ...",
-             "url": "https://community.openai.com/t/new-embedding-models-and-api-updates/610540",
-             "score": 0.752468,
-             "content": "We are releasing new models, reducing prices for GPT-3.5 Turbo, and introducing new ways for developers to manage API keys and understand API usage. The new models include: Two new embedding models An updated GPT-4 Turbo preview model An updated GPT-3.5 Turbo model An updated text moderation model By default, data sent to the OpenAI API will not be used to train or improve OpenAI models. All",
-             "search_type": "Self-reported News"
-         },
-         ...
-     ]
-    ```
-  </Step>
-</Steps>
+  <Card href="https://github.com/tavily-ai/tavily-cookbook/blob/main/cookbooks/crawl/data_collection.ipynb" title="Data Collection">
+    Collect data from websites and export the results as organized PDF files
+  </Card>
+</CardGroup>
 
 
 # Chat
@@ -6571,21 +7088,21 @@ Source: https://docs.tavily.com/examples/use-cases/chat
 
 Build a conversational chat agent with real-time web search, crawl, and extract capabilities using Tavily's API
 
-<img src="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/chatbotgif.gif?s=34574620e82d48fe93965035840fca9f" alt="Tavily Chatbot Demo" width="700" data-og-width="1804" data-og-height="1080" data-path="images/chatbotgif.gif" data-optimize="true" data-opv="3" />
+<img alt="Tavily Chatbot Demo" />
 
 ## Try Our Chatbot
 
 ### Step 1: Get Your API Key
 
-<Card title="Get your Tavily API key" icon="key" href="https://app.tavily.com" horizontal />
+<Card title="Get your Tavily API key" icon="key" href="https://app.tavily.com" />
 
 ### Step 2: Chat with Tavily
 
-<Card title="Launch the application" icon="message-bot" href="https://chat.tavily.com" horizontal />
+<Card title="Launch the application" icon="message-bot" href="https://chat.tavily.com" />
 
 ### Step 3: Read The Open Source Code
 
-<Card title="View Github Repository" icon="github" href="https://github.com/tavily-ai/tavily-chat" horizontal />
+<Card title="View Github Repository" icon="github" href="https://github.com/tavily-ai/tavily-chat" />
 
 ## Features
 
@@ -6598,7 +7115,7 @@ Build a conversational chat agent with real-time web search, crawl, and extract 
 
 The chatbot uses a simple ReAct architecture to manage conversation flow and decision-making. Here's how the core components work together:
 
-<img src="https://mintcdn.com/tavilyai/Kondu-1Gs9IHpAYd/images/web-agent.png?fit=max&auto=format&n=Kondu-1Gs9IHpAYd&q=85&s=ab86ef264a4cc606f955be338c03429f" data-og-width="2919" width="2919" data-og-height="1210" height="1210" data-path="images/web-agent.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavilyai/Kondu-1Gs9IHpAYd/images/web-agent.png?w=280&fit=max&auto=format&n=Kondu-1Gs9IHpAYd&q=85&s=086b583ed5381a135d41a40a5b05d00b 280w, https://mintcdn.com/tavilyai/Kondu-1Gs9IHpAYd/images/web-agent.png?w=560&fit=max&auto=format&n=Kondu-1Gs9IHpAYd&q=85&s=30d112d33785f64a77341d7422fc7440 560w, https://mintcdn.com/tavilyai/Kondu-1Gs9IHpAYd/images/web-agent.png?w=840&fit=max&auto=format&n=Kondu-1Gs9IHpAYd&q=85&s=a75700b229e95844d71df3aa4f5ddec7 840w, https://mintcdn.com/tavilyai/Kondu-1Gs9IHpAYd/images/web-agent.png?w=1100&fit=max&auto=format&n=Kondu-1Gs9IHpAYd&q=85&s=922d382465d783a00931dabf836d169f 1100w, https://mintcdn.com/tavilyai/Kondu-1Gs9IHpAYd/images/web-agent.png?w=1650&fit=max&auto=format&n=Kondu-1Gs9IHpAYd&q=85&s=aa23fa8e93fe1c331e6e6c4c2709956c 1650w, https://mintcdn.com/tavilyai/Kondu-1Gs9IHpAYd/images/web-agent.png?w=2500&fit=max&auto=format&n=Kondu-1Gs9IHpAYd&q=85&s=dbd4c40bec315deb7edf5c9c19bbe166 2500w" />
+<img />
 
 The workflow consists of several key components:
 
@@ -6610,7 +7127,7 @@ The workflow consists of several key components:
       This code snippet is not meant to run standalone. View the full implementation in our [github repository](https://github.com/tavily-ai/tavily-chat).
     </Tip>
 
-    ```python  theme={null}
+    ```python theme={null}
     class WebAgent:
         def __init__(
             self,
@@ -6684,21 +7201,21 @@ Source: https://docs.tavily.com/examples/use-cases/company-research
 
 Perform in-depth company research with Tavily Search and Extract.
 
-<img src="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/company-researcher.gif?s=943b9d50fa69d910c06cc499f2fa07e9" alt="Company Research Demo" width="700" data-og-width="1876" data-og-height="1080" data-path="images/company-researcher.gif" data-optimize="true" data-opv="3" />
+<img alt="Company Research Demo" />
 
 ## Try Our Company Researcher
 
 ### Step 1: Get Your API Key
 
-<Card title="Get your Tavily API key" icon="key" href="https://app.tavily.com" horizontal />
+<Card title="Get your Tavily API key" icon="key" href="https://app.tavily.com" />
 
 ### Step 2: Try the Company Researcher
 
-<Card title="Launch the application" icon="message-bot" href="https://companyresearcher.tavily.com/" horizontal />
+<Card title="Launch the application" icon="message-bot" href="https://companyresearcher.tavily.com/" />
 
 ### Step 3: Read The Open Source Code
 
-<Card title="View Github Repository" icon="github" href="https://github.com/pogjester/company-research-agent" horizontal />
+<Card title="View Github Repository" icon="github" href="https://github.com/pogjester/company-research-agent" />
 
 ## Why Use Tavily for company research?
 
@@ -6728,27 +7245,27 @@ Turn Any Website into a Searchable Knowledge Base using Tavily and MongoDB.
 
 Use Tavily's crawling endpoint to extract and sitemap content from a webpage URL, then embed it into a MongoDB Atlas vector index for retrieval.
 
-<img src="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/crawl2rag.gif?s=d33fd9c90043d6a3b03da8a9b7f9d174" alt="Vectorize" width="700" data-og-width="1184" data-og-height="720" data-path="images/crawl2rag.gif" data-optimize="true" data-opv="3" />
+<img alt="Vectorize" />
 
 ### 2. Intelligent Q\&A Interface:
 
 Query your crawled data through a conversational agent that provides citation-backed answers while maintaining conversation history and context. The agent intelligently distinguishes between informational questions (requiring vector search) and conversational queries (using general knowledge).
 
-<img src="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/crawl2rag-pt2.gif?s=931fbe7a417fb684b47b26c1467d9824" alt="Chat with vector" width="700" data-og-width="1184" data-og-height="720" data-path="images/crawl2rag-pt2.gif" data-optimize="true" data-opv="3" />
+<img alt="Chat with vector" />
 
 ## Try Our Crawl to RAG Use Case
 
 ### Step 1: Get Your API Key
 
-<Card title="Get your Tavily API key" icon="key" href="https://app.tavily.com" horizontal />
+<Card title="Get your Tavily API key" icon="key" href="https://app.tavily.com" />
 
 ### Step 2: Chat with Tavily
 
-<Card title="Launch the application" icon="message-bot" href="https://crawl-to-rag.tavily.com/" horizontal />
+<Card title="Launch the application" icon="message-bot" href="https://crawl-to-rag.tavily.com/" />
 
 ### Step 3: Read The Open Source Code
 
-<Card title="View Github Repository" icon="github" href="https://github.com/tavily-ai/crawl2rag" horizontal />
+<Card title="View Github Repository" icon="github" href="https://github.com/tavily-ai/crawl2rag" />
 
 ## Features
 
@@ -6766,29 +7283,29 @@ Enhance datasets with Tavily's APIs.
 
 #### Fill in spreadsheet columns
 
-<img src="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/enrichment1.gif?s=5bb36f82f38c2f2f914e3ca2a0ff619a" alt="Enrichment1 Demo" width="700" data-og-width="1252" data-og-height="720" data-path="images/enrichment1.gif" data-optimize="true" data-opv="3" />
+<img alt="Enrichment1 Demo" />
 
 #### Enrich your spreadsheet
 
-<img src="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/enrichment22.gif?s=4ae51f6c432e250d45ff433a19462a5d" alt="Enrichment2 Demo" width="700" data-og-width="1244" data-og-height="720" data-path="images/enrichment22.gif" data-optimize="true" data-opv="3" />
+<img alt="Enrichment2 Demo" />
 
 #### Export as CSV
 
-<img src="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/enrichment3.gif?s=f680e9c449e18d9f9ff927d2ca9dfe6f" alt="Enrichment3 Demo" width="700" data-og-width="1868" data-og-height="1080" data-path="images/enrichment3.gif" data-optimize="true" data-opv="3" />
+<img alt="Enrichment3 Demo" />
 
 ## Try Our Data Enrichment Agent
 
 ### Step 1: Get Your API Key
 
-<Card title="Get your Tavily API key" icon="key" href="https://app.tavily.com" horizontal />
+<Card title="Get your Tavily API key" icon="key" href="https://app.tavily.com" />
 
 ### Step 2: Try the Data Enrichment Agent
 
-<Card title="Launch the application" icon="message-bot" href="https://sheets.tavily.com/" horizontal />
+<Card title="Launch the application" icon="message-bot" href="https://sheets.tavily.com/" />
 
 ### Step 3: Read The Open Source Code
 
-<Card title="View Github Repository" icon="github" href="https://github.com/tavily-ai/tavily-sheets" horizontal />
+<Card title="View Github Repository" icon="github" href="https://github.com/tavily-ai/tavily-sheets" />
 
 
 # Market Researcher
@@ -6796,21 +7313,21 @@ Source: https://docs.tavily.com/examples/use-cases/market-researcher
 
 Get comprehensive market insights and analysis for stocks in your portfolio
 
-<img src="https://mintcdn.com/tavilyai/Kp7OS58os-ADEM7C/images/market_researcher.gif?s=d09d8bfe08cdbb7bf57b8097ecec5f35" alt="Tavily Market Researcher" width="700" data-og-width="1240" data-og-height="720" data-path="images/market_researcher.gif" data-optimize="true" data-opv="3" />
+<img alt="Tavily Market Researcher" />
 
 ## Try Our Market Researcher
 
 ### Step 1: Get Your API Key
 
-<Card title="Get your Tavily API key" icon="key" href="https://app.tavily.com" horizontal />
+<Card title="Get your Tavily API key" icon="key" href="https://app.tavily.com" />
 
 ### Step 2: Try the Market Researcher
 
-<Card title="Launch the application" icon="message-bot" href="https://market-researcher.tavily.com/" horizontal />
+<Card title="Launch the application" icon="message-bot" href="https://market-researcher.tavily.com/" />
 
 ### Step 3: Read The Open Source Code
 
-<Card title="View Github Repository" icon="github" href="https://github.com/tavily-ai/market-researcher" horizontal />
+<Card title="View Github Repository" icon="github" href="https://github.com/tavily-ai/market-researcher" />
 
 ## Features
 
@@ -6833,21 +7350,21 @@ Build an intelligent meeting preparation agent with real-time web research capab
 
 This repository demonstrates how to build a meeting preparation agent with real-time web access, leveraging Tavily's advanced search capabilities. This agent will connect to your Google Calendar via MCP, extract meeting information, and use Tavily search for profile research on the meeting attendees and general information on the companies you are meeting with.
 
-<img src="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/meeting-prep-agent.gif?s=58004f96bc27a202f3994033fb2c1308" alt="Meeting Prep Agent Demo" width="700" data-og-width="1784" data-og-height="1080" data-path="images/meeting-prep-agent.gif" data-optimize="true" data-opv="3" />
+<img alt="Meeting Prep Agent Demo" />
 
 ## Try Our Meeting Prep Agent
 
 ### Step 1: Get Your API Key
 
-<Card title="Get your Tavily API key" icon="key" href="https://app.tavily.com" horizontal />
+<Card title="Get your Tavily API key" icon="key" href="https://app.tavily.com" />
 
 ### Step 2: Read The Open Source Code and Clone the App
 
-<Card title="View Github Repository" icon="github" href="https://github.com/tavily-ai/meeting-prep-agent" horizontal />
+<Card title="View Github Repository" icon="github" href="https://github.com/tavily-ai/meeting-prep-agent" />
 
 ## System Diagram
 
-<img src="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/meeting-prep-diagram.svg?fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=f738bb1b34b76301223724cb1ab0539d" alt="Meeting Prep Agent Diagram" width="700" data-og-width="1803" data-og-height="595" data-path="images/meeting-prep-diagram.svg" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/meeting-prep-diagram.svg?w=280&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=e31c5d16671561a11ed05b82e60a187d 280w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/meeting-prep-diagram.svg?w=560&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=5b8f2feaace3d9ac3613dd1d1d3ddd74 560w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/meeting-prep-diagram.svg?w=840&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=64181eaec8e00c8e7eb56eadf888c997 840w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/meeting-prep-diagram.svg?w=1100&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=2c1d9a087d4b9fff6e3b1e6cc13510f7 1100w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/meeting-prep-diagram.svg?w=1650&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=b576a7378989244d0e1ad4e6103bf516 1650w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/meeting-prep-diagram.svg?w=2500&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=176101b0ac395026105aa604c5e8949c 2500w" />
+<img alt="Meeting Prep Agent Diagram" />
 
 ## Features
 
@@ -6878,7 +7395,7 @@ This gap presents a significant challenge: how do we effectively test and refine
 # How does it work?
 
 <Frame>
-    <img src="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/web-eval-graph.png?fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=4a1f16a5632ea3abeb5f0dad21aa49cb" alt="Web Evaluation Graph" data-og-width="1400" width="1400" data-og-height="935" height="935" data-path="images/web-eval-graph.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/web-eval-graph.png?w=280&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=f6fdef45253a70f234f30b8ae997deec 280w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/web-eval-graph.png?w=560&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=a15c99975224bb1a410a895c037bcba2 560w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/web-eval-graph.png?w=840&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=a7d31aa205cbd1b2000f73de8dc7d1bf 840w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/web-eval-graph.png?w=1100&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=44a6dc6c53ccc3834bfc5b996ff119c7 1100w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/web-eval-graph.png?w=1650&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=97346c194e0296bf95a40f8ab9c02ed8 1650w, https://mintcdn.com/tavilyai/tgJqPSjqNVSkMFTO/images/web-eval-graph.png?w=2500&fit=max&auto=format&n=tgJqPSjqNVSkMFTO&q=85&s=c0c6cdfe0cb0a2ba22041967015ab24c 2500w" />
+  <img alt="Web Evaluation Graph" />
 </Frame>
 
 The Real-Time Dataset Generator follows a systematic workflow to create high-quality evaluation datasets:
@@ -6922,7 +7439,7 @@ The Real-Time Dataset Generator follows a systematic workflow to create high-qua
 
 Want to dive deeper into web-based RAG evaluation? Check out these resources:
 
-<CardGroup cols={2}>
+<CardGroup>
   <Card title="Blog Post" icon="newspaper" href="https://blog.tavily.com/effortless-web-based-rag-evaluation-using-tavily-and-langgraph/">
     Read our detailed blog post about generating dynamic RAG evaluation datasets
   </Card>
@@ -6930,7 +7447,7 @@ Want to dive deeper into web-based RAG evaluation? Check out these resources:
   <Card title="GitHub" icon="github" href="https://github.com/Eyalbenba/tavily-web-eval-generator">
     `/Eyalbenba/tavily-web-eval-generator`
 
-    <img noZoom src="https://img.shields.io/github/stars/Eyalbenba/tavily-web-eval-generator?style=social" alt="GitHub Repo stars" />
+    <img alt="GitHub Repo stars" />
   </Card>
 </CardGroup>
 
@@ -7058,23 +7575,21 @@ Integrate Tavily's powerful APIs natively in your JavaScript/TypeScript projects
   Reference](/sdk/javascript/reference) and learn how to use `tavily-js`.
 </Tip>
 
-{" "}
-
 ## Introduction
 
 Tavily's JavaScript SDK allows for easy interaction with the Tavily API, offering the full range of our search and extract functionalities directly from your JavaScript and TypeScript programs. Easily integrate smart search and content extraction capabilities into your applications, harnessing Tavily's powerful search and extract features.
 
-<CardGroup cols="2">
-  <Card title="GitHub" icon="github" horizontal href="https://github.com/tavily-ai/tavily-js">
+<CardGroup>
+  <Card title="GitHub" icon="github" href="https://github.com/tavily-ai/tavily-js">
     `/tavily-ai/tavily-js`
 
-    <img noZoom={true} src="https://img.shields.io/github/stars/tavily-ai/tavily-js?style=social" alt="GitHub Repo stars" />
+    <img alt="GitHub Repo stars" />
   </Card>
 
-  <Card title="NPM" icon="npm" horizontal href="https://www.npmjs.com/package/@tavily/core">
+  <Card title="NPM" icon="npm" href="https://www.npmjs.com/package/@tavily/core">
     `@tavily/core`
 
-    <img noZoom={true} src="https://img.shields.io/npm/dt/@tavily/core" alt="GitHub Repo stars" />
+    <img alt="GitHub Repo stars" />
   </Card>
 </CardGroup>
 
@@ -7082,7 +7597,7 @@ Tavily's JavaScript SDK allows for easy interaction with the Tavily API, offerin
 
 Get started with our JavaScript SDK in less than 5 minutes!
 
-<Card title="Get your free API key" icon="key" horizontal href="https://app.tavily.com">
+<Card title="Get your free API key" icon="key" href="https://app.tavily.com">
   You get 1,000 free API Credits every month. **No credit card required.**
 </Card>
 
@@ -7090,7 +7605,7 @@ Get started with our JavaScript SDK in less than 5 minutes!
 
 You can install the Tavily JavaScript SDK using the following:
 
-```bash  theme={null}
+```bash theme={null}
 npm i @tavily/core
 ```
 
@@ -7098,7 +7613,7 @@ npm i @tavily/core
 
 With Tavily's Python SDK, you can search the web in only 4 lines of code:
 
-```javascript  theme={null}
+```javascript theme={null}
 const { tavily } = require("@tavily/core");
 
 const tvly = tavily({ apiKey: "tvly-YOUR_API_KEY" });
@@ -7109,7 +7624,7 @@ console.log(response);
 
 You can also easily extract content from URLs:
 
-```javascript  theme={null}
+```javascript theme={null}
 const { tavily } = require("@tavily/core");
 
 const tvly = tavily({ apiKey: "tvly-YOUR_API_KEY" });
@@ -7123,10 +7638,10 @@ console.log(response);
 Tavily also allows you to perform a smart crawl starting at a given URL.
 
 <Tip>
-  Our agent-first crawl endpoint is currently in **open beta**. Please repost any issues you encounter on our [community page](https://community.tavily.com).
+  Our agent-first crawl endpoint is currently in. Please repost any issues you encounter on our [community page](https://community.tavily.com).
 </Tip>
 
-```javascript  theme={null}
+```javascript theme={null}
 const { tavily } = require("@tavily/core")
 
 const tvly = tavily({ apiKey: "tvly-YOUR_API_KEY" });
@@ -7155,7 +7670,7 @@ To interact with Tavily in JavaScript, you must instatiate a client with your AP
 
 Once you have instantiated a client, call one of our supported methods (detailed below) to access the API.
 
-```javascript  theme={null}
+```javascript theme={null}
 const { tavily } = require("@tavily/core");
 
 client = tavily({ apiKey: "tvly-YOUR_API_KEY" });
@@ -7167,7 +7682,7 @@ If you would like to specify a proxy to be used when making requests, you can do
 
 Proxy configuration is available in both the synchronous and asynchronous clients.
 
-```javascript  theme={null}
+```javascript theme={null}
 const { tavily } = require("@tavily/core");
 
 const proxies = {
@@ -7179,6 +7694,29 @@ client = tavily({ apiKey: "tvly-YOUR_API_KEY", proxies });
 ```
 
 Alternatively, you can specify which proxies to use by setting the `TAVILY_HTTP_PROXY` and `TAVILY_HTTPS_PROXY` variables in your environment file.
+
+### Project Tracking
+
+You can attach a Project ID to your client to organize and track API usage by project. This is useful when a single API key is used across multiple projects.
+
+```javascript theme={null}
+const { tavily } = require("@tavily/core");
+
+const client = tavily({
+  apiKey: "tvly-YOUR_API_KEY",
+  projectId: "your-project-id"
+});
+```
+
+Alternatively, you can set the `TAVILY_PROJECT` environment variable:
+
+```javascript theme={null}
+process.env.TAVILY_PROJECT = "your-project-id";
+
+const client = tavily({ apiKey: "tvly-YOUR_API_KEY" });
+```
+
+All requests made with this client will include the Project ID, allowing you to filter by project in the /logs endpoint and platform usage dashboard.
 
 ## Tavily Search
 
@@ -7212,6 +7750,7 @@ You can access Tavily Search in JavaScript through the client's `search` functio
 | `country`                  | `string`              | Boost search results from a specific country. This will prioritize content from the selected country in the search results. Available only if topic is `general`.                                                                                                                                                                                                                                                                                                                                                                                                                                   | —           |
 | `timeout`                  | `number`              | A timeout to be used in requests to the Tavily API.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `60`        |
 | `includeFavicon`           | `boolean`             | Whether to include the favicon URL for each result.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `false`     |
+| `includeUsage`             | `boolean`             | Whether to include credit usage information in the response.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | `false`     |
 
 ### Response format
 
@@ -7254,7 +7793,7 @@ Each image in the `images` list will be in the following `ImageResult` format:
 
 <AccordionGroup>
   <Accordion title="Request">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     const { tavily } = require("@tavily/core");
 
     // Step 1. Instantiating your Tavily client
@@ -7269,7 +7808,7 @@ Each image in the `images` list will be in the following `ImageResult` format:
   </Accordion>
 
   <Accordion title="Response">
-    ```json  theme={null}
+    ```json theme={null}
     {
       "query": "Who is Leo Messi?",
       "images": [
@@ -7323,14 +7862,17 @@ You can access Tavily Extract in JavaScript through the client's `extract` funct
 
 ### Parameters
 
-| Parameter             | Type       | Description                                                                                                                                                                                                                                                                                                                                                                   | Default      |
-| :-------------------- | :--------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------- |
-| `urls` **(required)** | `string[]` | The URLs you want to extract. The list must not contain more than 20 URLs.                                                                                                                                                                                                                                                                                                    | —            |
-| `includeImages`       | `boolean`  | Include a list of images extracted from the URLs in the response.                                                                                                                                                                                                                                                                                                             | `false`      |
-| `extractDepth`        | `string`   | The depth of the extraction process. You may experience higher latency with `"advanced"` extraction, but it offers a higher success rate and retrieves more data from the URL (e.g., tables, embedded content). `"basic"` extraction costs 1 API Credit per 5 successful URL extractions, while `"advanced"` extraction costs 2 API Credits per 5 successful URL extractions. | `"basic"`    |
-| `format`              | `str`      | The format of the extracted web page content. `"markdown"` returns content in markdown format. `"text"` returns plain text and may increase latency.                                                                                                                                                                                                                          | `"markdown"` |
-| `timeout`             | `number`   | A timeout to be used in requests to the Tavily API.  Maximum time in seconds to wait for the URL extraction before timing out. Must be between 1.0 and 60.0 seconds. If not specified, default timeouts are applied based on extract\_depth: 10 seconds for basic extraction and 30 seconds for advanced extraction.                                                          | `None`       |
-| `includeFavicon`      | `boolean`  | Whether to include the favicon URL for each result.                                                                                                                                                                                                                                                                                                                           | `false`      |
+| Parameter             | Type       | Description                                                                                                                                                                                                                                                                                                                                                                                        | Default      |
+| :-------------------- | :--------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------- |
+| `urls` **(required)** | `string[]` | The URLs you want to extract. The list must not contain more than 20 URLs.                                                                                                                                                                                                                                                                                                                         | —            |
+| `includeImages`       | `boolean`  | Include a list of images extracted from the URLs in the response.                                                                                                                                                                                                                                                                                                                                  | `false`      |
+| `extractDepth`        | `string`   | The depth of the extraction process. You may experience higher latency with `"advanced"` extraction, but it offers a higher success rate and retrieves more data from the URL (e.g., tables, embedded content). `"basic"` extraction costs 1 API Credit per 5 successful URL extractions, while `"advanced"` extraction costs 2 API Credits per 5 successful URL extractions.                      | `"basic"`    |
+| `format`              | `str`      | The format of the extracted web page content. `"markdown"` returns content in markdown format. `"text"` returns plain text and may increase latency.                                                                                                                                                                                                                                               | `"markdown"` |
+| `timeout`             | `number`   | A timeout to be used in requests to the Tavily API.  Maximum time in seconds to wait for the URL extraction before timing out. Must be between 1.0 and 60.0 seconds. If not specified, default timeouts are applied based on extract\_depth: 10 seconds for basic extraction and 30 seconds for advanced extraction.                                                                               | `None`       |
+| `includeFavicon`      | `boolean`  | Whether to include the favicon URL for each result.                                                                                                                                                                                                                                                                                                                                                | `false`      |
+| `includeUsage`        | `boolean`  | Whether to include credit usage information in the response.`NOTE:`The value may be 0 if the total successful URL extractions has not yet reached 5 calls. See our [Credits & Pricing documentation](https://docs.tavily.com/documentation/api-credits) for details.                                                                                                                               | `false`      |
+| `query`               | `string`   | User intent for reranking extracted content chunks. When provided, chunks are reranked based on relevance to this query.                                                                                                                                                                                                                                                                           | —            |
+| `chunksPerSource`     | `number`   | Chunks are short content snippets (maximum 500 characters each) pulled directly from the source. Use `chunksPerSource` to define the maximum number of relevant chunks returned per source and to control the `rawContent` length. Chunks will appear in the `rawContent` field as: `<chunk 1> [...] <chunk 2> [...] <chunk 3>`. Available only when `query` is provided. Must be between 1 and 5. | `3`          |
 
 ### Response format
 
@@ -7347,12 +7889,12 @@ The response object you receive will be in the following format:
 
 Each successful result in the `results` list will be in the following `SuccessfulResult` format:
 
-| Key                  | Type       | Description                                                                                 |
-| :------------------- | :--------- | :------------------------------------------------------------------------------------------ |
-| `url`                | `string`   | The URL of the webpage.                                                                     |
-| `raw_content`        | `string`   | The raw content extracted.                                                                  |
-| `images` (optional)  | `string[]` | This is only available if `includeImages` is set to `true`. A list of extracted image URLs. |
-| `favicon` (optional) | `string`   | The favicon URL for the result.                                                             |
+| Key                  | Type       | Description                                                                                                      |
+| :------------------- | :--------- | :--------------------------------------------------------------------------------------------------------------- |
+| `url`                | `string`   | The URL of the webpage.                                                                                          |
+| `raw_content`        | `string`   | The raw content extracted. When `query` is provided, contains the top-ranked chunks joined by `[...]` separator. |
+| `images` (optional)  | `string[]` | This is only available if `includeImages` is set to `true`. A list of extracted image URLs.                      |
+| `favicon` (optional) | `string`   | The favicon URL for the result.                                                                                  |
 
 #### Failed Results
 
@@ -7367,7 +7909,7 @@ Each failed result in the `results` list will be in the following `FailedResult`
 
 <AccordionGroup>
   <Accordion title="Request">
-    ```python  theme={null}
+    ```python theme={null}
     from tavily import TavilyClient
 
     # Step 1. Instantiating your TavilyClient
@@ -7389,7 +7931,7 @@ Each failed result in the `results` list will be in the following `FailedResult`
   </Accordion>
 
   <Accordion title="Response">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     {
       "results": [
         {
@@ -7430,31 +7972,29 @@ Each failed result in the `results` list will be in the following `FailedResult`
 
 ## Tavily Crawl
 
-<Tip>
-  Our agent-first crawl endpoint is currently in **open beta**. Please repost any issues you encounter on our [community page](https://community.tavily.com).
-</Tip>
-
 You can access Tavily Crawl in JavaScript through the client's `crawl` function.
 
 ### Parameters
 
-| Parameter            | Type       | Description                                                                                                                                                       | Default      |
-| :------------------- | :--------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------- |
-| `url` **(required)** | `string`   | The root URL to begin the crawl.                                                                                                                                  | —            |
-| `maxDepth`           | `number`   | Max depth of the crawl. Defines how far from the base URL the crawler can explore.                                                                                | `1`          |
-| `maxBreadth`         | `number`   | Max number of links to follow **per level** of the tree (i.e., per page).                                                                                         | `20`         |
-| `limit`              | `number`   | Total number of links the crawler will process before stopping.                                                                                                   | `50`         |
-| `instructions`       | `string`   | Natural language instructions for the crawler.                                                                                                                    | —            |
-| `selectPaths`        | `string[]` | **Regex patterns** to select only URLs with specific path patterns (e.g., `"/docs/.*"`, `"/api/v1.*"`).                                                           | `[]`         |
-| `selectDomains`      | `string[]` | **Regex patterns** to select crawling to specific domains or subdomains (e.g., `"^docs\.example\.com$"`).                                                         | `[]`         |
-| `excludePaths`       | `string[]` | **Regex patterns** to exclude URLs with specific path patterns (e.g., `"/admin/.*"`, `"/private/.*"`).                                                            | `[]`         |
-| `excludeDomains`     | `string[]` | **Regex patterns** to exclude specific domains or subdomains from crawling (e.g., `"^admin\.example\.com$"`).                                                     | `[]`         |
-| `allowExternal`      | `boolean`  | Whether to return links from external domains in crawl output.                                                                                                    | `true`       |
-| `includeImages`      | `boolean`  | Whether to extract image URLs from the crawled pages.                                                                                                             | `false`      |
-| `extractDepth`       | `string`   | Advanced extraction retrieves more data, including tables and embedded content, with higher success but may increase latency. Options: `"basic"` or `"advanced"`. | `"basic"`    |
-| `format`             | `str`      | The format of the extracted web page content. `"markdown"` returns content in markdown format. `"text"` returns plain text and may increase latency.              | `"markdown"` |
-| `timeout`            | `number`   | Maximum time in seconds to wait for the crawl operation before timing out. Must be between 10 and 150 seconds.                                                    | `150`        |
-| `includeFavicon`     | `boolean`  | Whether to include the favicon URL for each result.                                                                                                               | `false`      |
+| Parameter            | Type       | Description                                                                                                                                                                                                                                                                                                                                               | Default      |
+| :------------------- | :--------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------- |
+| `url` **(required)** | `string`   | The root URL to begin the crawl.                                                                                                                                                                                                                                                                                                                          | —            |
+| `maxDepth`           | `number`   | Max depth of the crawl. Defines how far from the base URL the crawler can explore.                                                                                                                                                                                                                                                                        | `1`          |
+| `maxBreadth`         | `number`   | Max number of links to follow **per level** of the tree (i.e., per page).                                                                                                                                                                                                                                                                                 | `20`         |
+| `limit`              | `number`   | Total number of links the crawler will process before stopping.                                                                                                                                                                                                                                                                                           | `50`         |
+| `instructions`       | `string`   | Natural language instructions for the crawler.                                                                                                                                                                                                                                                                                                            | —            |
+| `selectPaths`        | `string[]` | **Regex patterns** to select only URLs with specific path patterns (e.g., `"/docs/.*"`, `"/api/v1.*"`).                                                                                                                                                                                                                                                   | `[]`         |
+| `selectDomains`      | `string[]` | **Regex patterns** to select crawling to specific domains or subdomains (e.g., `"^docs\.example\.com$"`).                                                                                                                                                                                                                                                 | `[]`         |
+| `excludePaths`       | `string[]` | **Regex patterns** to exclude URLs with specific path patterns (e.g., `"/admin/.*"`, `"/private/.*"`).                                                                                                                                                                                                                                                    | `[]`         |
+| `excludeDomains`     | `string[]` | **Regex patterns** to exclude specific domains or subdomains from crawling (e.g., `"^admin\.example\.com$"`).                                                                                                                                                                                                                                             | `[]`         |
+| `allowExternal`      | `boolean`  | Whether to return links from external domains in crawl output.                                                                                                                                                                                                                                                                                            | `true`       |
+| `includeImages`      | `boolean`  | Whether to extract image URLs from the crawled pages.                                                                                                                                                                                                                                                                                                     | `false`      |
+| `extractDepth`       | `string`   | Advanced extraction retrieves more data, including tables and embedded content, with higher success but may increase latency. Options: `"basic"` or `"advanced"`.                                                                                                                                                                                         | `"basic"`    |
+| `format`             | `str`      | The format of the extracted web page content. `"markdown"` returns content in markdown format. `"text"` returns plain text and may increase latency.                                                                                                                                                                                                      | `"markdown"` |
+| `timeout`            | `number`   | Maximum time in seconds to wait for the crawl operation before timing out. Must be between 10 and 150 seconds.                                                                                                                                                                                                                                            | `150`        |
+| `includeFavicon`     | `boolean`  | Whether to include the favicon URL for each result.                                                                                                                                                                                                                                                                                                       | `false`      |
+| `includeUsage`       | `boolean`  | Whether to include credit usage information in the response.`NOTE:`The value may be 0 if the total use of /extract and /map calls has not yet reached minimum needed. See our [Credits & Pricing documentation](https://docs.tavily.com/documentation/api-credits) for details.                                                                           | `false`      |
+| `chunksPerSource`    | `number`   | Chunks are short content snippets (maximum 500 characters each) pulled directly from the source. Use `chunksPerSource` to define the maximum number of relevant chunks returned per source and to control the `rawContent` length. Chunks will appear in the `rawContent` field as: `<chunk 1> [...] <chunk 2> [...] <chunk 3>`. Must be between 1 and 5. | `3`          |
 
 ### Response format
 
@@ -7482,7 +8022,7 @@ Each successful result in the `results` list will be in the following `Result` f
 
 <AccordionGroup>
   <Accordion title="Request">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     const { tavily } = require("@tavily/core");
 
     // Step 1. Instantiating your Tavily client
@@ -7500,7 +8040,7 @@ Each successful result in the `results` list will be in the following `Result` f
   </Accordion>
 
   <Accordion title="Response">
-    ````javascript  theme={null}
+    ````javascript theme={null}
     {
       responseTime: 9.09,
       baseUrl: "https://docs.tavily.com",
@@ -7527,27 +8067,24 @@ Each successful result in the `results` list will be in the following `Result` f
 
 ## Tavily Map
 
-<Tip>
-  Our agent-first mapping endpoint is currently in **open beta**. Please repost any issues you encounter on our [community page](https://community.tavily.com).
-</Tip>
-
 You can access Tavily Map in JavaScript through the client's `map` function.
 
 ### Parameters
 
-| Parameter            | Type       | Description                                                                                                  | Default |
-| :------------------- | :--------- | :----------------------------------------------------------------------------------------------------------- | :------ |
-| `url` **(required)** | `string`   | The root URL to begin the mapping.                                                                           | —       |
-| `maxDepth`           | `number`   | Max depth of the mapping. Defines how far from the base URL the crawler can explore.                         | `1`     |
-| `maxBreadth`         | `number`   | Max number of links to follow **per level** of the tree (i.e., per page).                                    | `20`    |
-| `limit`              | `number`   | Total number of links the crawler will process before stopping.                                              | `50`    |
-| `instructions`       | `string`   | Natural language instructions for the mapper.                                                                | —       |
-| `selectPaths`        | `string[]` | **Regex patterns** to select only URLs with specific path patterns (e.g., `"/docs/.*"`, `"/api/v1.*"`).      | `[]`    |
-| `selectDomains`      | `string[]` | **Regex patterns** to select crawling to specific domains or subdomains (e.g., `"^docs\.example\.com$"`).    | `[]`    |
-| `excludePaths`       | `string[]` | **Regex patterns** to exclude URLs with specific path patterns (e.g., `"/admin/.*"`, `"/private/.*"`).       | `[]`    |
-| `excludeDomains`     | `string[]` | **Regex patterns** to exclude specific domains or subdomains from mapping (e.g., `"^admin\.example\.com$"`). | `[]`    |
-| `allowExternal`      | `boolean`  | Whether to return links from external domains in crawl output.                                               | `true`  |
-| `timeout`            | `number`   | Maximum time in seconds to wait for the map operation before timing out. Must be between 10 and 150 seconds. | `150`   |
+| Parameter            | Type       | Description                                                                                                                                                                                                                                                        | Default |
+| :------------------- | :--------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------ |
+| `url` **(required)** | `string`   | The root URL to begin the mapping.                                                                                                                                                                                                                                 | —       |
+| `maxDepth`           | `number`   | Max depth of the mapping. Defines how far from the base URL the crawler can explore.                                                                                                                                                                               | `1`     |
+| `maxBreadth`         | `number`   | Max number of links to follow **per level** of the tree (i.e., per page).                                                                                                                                                                                          | `20`    |
+| `limit`              | `number`   | Total number of links the crawler will process before stopping.                                                                                                                                                                                                    | `50`    |
+| `instructions`       | `string`   | Natural language instructions for the mapper.                                                                                                                                                                                                                      | —       |
+| `selectPaths`        | `string[]` | **Regex patterns** to select only URLs with specific path patterns (e.g., `"/docs/.*"`, `"/api/v1.*"`).                                                                                                                                                            | `[]`    |
+| `selectDomains`      | `string[]` | **Regex patterns** to select crawling to specific domains or subdomains (e.g., `"^docs\.example\.com$"`).                                                                                                                                                          | `[]`    |
+| `excludePaths`       | `string[]` | **Regex patterns** to exclude URLs with specific path patterns (e.g., `"/admin/.*"`, `"/private/.*"`).                                                                                                                                                             | `[]`    |
+| `excludeDomains`     | `string[]` | **Regex patterns** to exclude specific domains or subdomains from mapping (e.g., `"^admin\.example\.com$"`).                                                                                                                                                       | `[]`    |
+| `allowExternal`      | `boolean`  | Whether to return links from external domains in crawl output.                                                                                                                                                                                                     | `true`  |
+| `timeout`            | `number`   | Maximum time in seconds to wait for the map operation before timing out. Must be between 10 and 150 seconds.                                                                                                                                                       | `150`   |
+| `includeUsage`       | `boolean`  | Whether to include credit usage information in the response.`NOTE:`The value may be 0 if the total successful pages mapped has not yet reached 10 calls. See our [Credits & Pricing documentation](https://docs.tavily.com/documentation/api-credits) for details. | `false` |
 
 ### Response format
 
@@ -7564,7 +8101,7 @@ The response object you receive will be in the following format:
 
 <AccordionGroup>
   <Accordion title="Request">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     const { tavily } = require("@tavily/core");
 
     // Step 1. Instantiating your Tavily client
@@ -7582,7 +8119,7 @@ The response object you receive will be in the following format:
   </Accordion>
 
   <Accordion title="Response">
-    ```javascript  theme={null}
+    ```javascript theme={null}
     {
         baseUrl: 'https://docs.tavily.com',
         results:[
@@ -7611,17 +8148,17 @@ Integrate Tavily's powerful APIs natively in your Python apps.
 
 The Python SDK allows for easy interaction with the Tavily API, offering the full range of our search functionality directly from your Python programs. Easily integrate smart search capabilities into your applications, harnessing Tavily's powerful search features.
 
-<CardGroup cols={2}>
-  <Card title="GitHub" icon="github" href="https://github.com/tavily-ai/tavily-python" horizontal>
+<CardGroup>
+  <Card title="GitHub" icon="github" href="https://github.com/tavily-ai/tavily-python">
     `/tavily-ai/tavily-python`
 
-    <img noZoom src="https://img.shields.io/github/stars/tavily-ai/tavily-python?style=social" alt="GitHub Repo stars" />
+    <img alt="GitHub Repo stars" />
   </Card>
 
-  <Card title="PyPI" icon="python" href="https://pypi.org/project/tavily-python" horizontal>
+  <Card title="PyPI" icon="python" href="https://pypi.org/project/tavily-python">
     `tavily-python`
 
-    <img noZoom src="https://img.shields.io/pypi/dm/tavily-python" alt="PyPI downloads" />
+    <img alt="PyPI downloads" />
   </Card>
 </CardGroup>
 
@@ -7629,7 +8166,7 @@ The Python SDK allows for easy interaction with the Tavily API, offering the ful
 
 Get started with our Python SDK in less than 5 minutes!
 
-<Card icon="key" href="https://app.tavily.com" title="Get your free API key" horizontal>
+<Card icon="key" href="https://app.tavily.com" title="Get your free API key">
   You get 1,000 free API Credits every month. **No credit card required.**
 </Card>
 
@@ -7637,7 +8174,7 @@ Get started with our Python SDK in less than 5 minutes!
 
 You can install the Tavily Python SDK using the following:
 
-```bash  theme={null}
+```bash theme={null}
 pip install tavily-python
 ```
 
@@ -7645,7 +8182,7 @@ pip install tavily-python
 
 With Tavily's Python SDK, you can search the web in only 4 lines of code:
 
-```python  theme={null}
+```python theme={null}
 from tavily import TavilyClient
 
 tavily_client = TavilyClient(api_key="tvly-YOUR_API_KEY")
@@ -7656,7 +8193,7 @@ print(response)
 
 You can also easily extract content from URLs:
 
-```python  theme={null}
+```python theme={null}
 from tavily import TavilyClient
 
 tavily_client = TavilyClient(api_key="tvly-YOUR_API_KEY")
@@ -7667,11 +8204,7 @@ print(response)
 
 Tavily also allows you to perform a smart crawl starting at a given URL.
 
-<Tip>
-  Our agent-first crawl endpoint is currently in **open beta**. Please repost any issues you encounter on our [community page](https://community.tavily.com).
-</Tip>
-
-```python  theme={null}
+```python theme={null}
 from tavily import TavilyClient
 
 tavily_client = TavilyClient(api_key="tvly-YOUR_API_KEY")
@@ -7706,7 +8239,7 @@ Once you have instantiated a client, call one of our supported methods (detailed
 
 ### Synchronous Client
 
-```python  theme={null}
+```python theme={null}
 from tavily import TavilyClient
 
 client = TavilyClient("tvly-YOUR_API_KEY")
@@ -7714,11 +8247,33 @@ client = TavilyClient("tvly-YOUR_API_KEY")
 
 ### Asynchronous Client
 
-```python  theme={null}
+```python theme={null}
 from tavily import AsyncTavilyClient
 
 client = AsyncTavilyClient("tvly-YOUR_API_KEY")
 ```
+
+### Project Tracking
+
+You can attach a Project ID to your client to organize and track API usage by project. This is useful when a single API key is used across multiple projects.
+
+```python theme={null}
+from tavily import TavilyClient
+
+client = TavilyClient("tvly-YOUR_API_KEY", project_id="your-project-id")
+```
+
+Alternatively, you can set the `TAVILY_PROJECT` environment variable:
+
+```python theme={null}
+import os
+
+os.environ["TAVILY_PROJECT"] = "your-project-id"
+
+client = TavilyClient("tvly-YOUR_API_KEY")
+```
+
+All requests made with this client will include the Project ID, allowing you to filter by project in the /logs endpoint and platform usage dashboard.
 
 ### Proxies
 
@@ -7726,7 +8281,7 @@ If you would like to specify a proxy to be used when making requests, you can do
 
 Proxy configuration is available in both the synchronous and asynchronous clients.
 
-```python  theme={null}
+```python theme={null}
 from tavily import TavilyClient
 
 proxies = {
@@ -7771,6 +8326,7 @@ You can access Tavily Search in Python through the client's `search` function.
 | `country`                    | `str`           | Boost search results from a specific country. This will prioritize content from the selected country in the search results. Available only if topic is `general`.                                                                                                                                                                                                                                                                                                                                                                                                                                   | —           |   |
 | `timeout`                    | `float`         | A timeout to be used in requests to the Tavily API.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `60`        |   |
 | `include_favicon`            | `bool`          | Whether to include the favicon URL for each result.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `False`     |   |
+| `include_usage`              | `bool`          | Whether to include credit usage information in the response.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | `False`     |   |
 
 ### Response format
 
@@ -7810,7 +8366,7 @@ If `includeImageDescriptions` is set to `true`, each image in the `images` list 
 
 <AccordionGroup>
   <Accordion title="Request">
-    ```python  theme={null}
+    ```python theme={null}
     from tavily import TavilyClient
 
     # Step 1. Instantiating your TavilyClient
@@ -7825,7 +8381,7 @@ If `includeImageDescriptions` is set to `true`, each image in the `images` list 
   </Accordion>
 
   <Accordion title="Response">
-    ```python  theme={null}
+    ```python theme={null}
     {
       "query": "Who is Leo Messi?",
       "images": [
@@ -7879,14 +8435,17 @@ You can access Tavily Extract in Python through the client's `extract` function.
 
 ### Parameters
 
-| Parameter             | Type                 | Description                                                                                                                                                                                                                                                                                                                                                                 | Default      |   |
-| :-------------------- | :------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------- | - |
-| `urls` **(required)** | `str` or `list[str]` | The URL (or URLs) you want to extract. If a list is provided, it must not contain more than 20 URLs.                                                                                                                                                                                                                                                                        | —            |   |
-| `include_images`      | `bool`               | Include a list of images extracted from the URLs in the response.                                                                                                                                                                                                                                                                                                           | `False`      |   |
-| `extract_depth`       | `str`                | The depth of the extraction process. You may experience higher latency with `"advanced"` extraction, but it offers a higher success rate and retrieves more data from the URL (e.g., tables, embedded content). `"basic"` extraction costs 1 API Credit per 5 successful URL extractions, while `advanced` extraction costs 2 API Credits per 5 successful URL extractions. | `"basic"`    |   |
-| `format`              | `str`                | The format of the extracted web page content. `"markdown"` returns content in markdown format. `"text"` returns plain text and may increase latency.                                                                                                                                                                                                                        | `"markdown"` |   |
-| `timeout`             | `float`              | A timeout to be used in requests to the Tavily API.  Maximum time in seconds to wait for the URL extraction before timing out. Must be between 1.0 and 60.0 seconds. If not specified, default timeouts are applied based on extract\_depth: 10 seconds for basic extraction and 30 seconds for advanced extraction.                                                        | `None`       |   |
-| `include_favicon`     | `bool`               | Whether to include the favicon URL for each result.                                                                                                                                                                                                                                                                                                                         | `False`      |   |
+| Parameter             | Type                 | Description                                                                                                                                                                                                                                                                                                                                                                                            | Default      |   |
+| :-------------------- | :------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------- | - |
+| `urls` **(required)** | `str` or `list[str]` | The URL (or URLs) you want to extract. If a list is provided, it must not contain more than 20 URLs.                                                                                                                                                                                                                                                                                                   | —            |   |
+| `include_images`      | `bool`               | Include a list of images extracted from the URLs in the response.                                                                                                                                                                                                                                                                                                                                      | `False`      |   |
+| `extract_depth`       | `str`                | The depth of the extraction process. You may experience higher latency with `"advanced"` extraction, but it offers a higher success rate and retrieves more data from the URL (e.g., tables, embedded content). `"basic"` extraction costs 1 API Credit per 5 successful URL extractions, while `advanced` extraction costs 2 API Credits per 5 successful URL extractions.                            | `"basic"`    |   |
+| `format`              | `str`                | The format of the extracted web page content. `"markdown"` returns content in markdown format. `"text"` returns plain text and may increase latency.                                                                                                                                                                                                                                                   | `"markdown"` |   |
+| `timeout`             | `float`              | A timeout to be used in requests to the Tavily API.  Maximum time in seconds to wait for the URL extraction before timing out. Must be between 1.0 and 60.0 seconds. If not specified, default timeouts are applied based on extract\_depth: 10 seconds for basic extraction and 30 seconds for advanced extraction.                                                                                   | `None`       |   |
+| `include_favicon`     | `bool`               | Whether to include the favicon URL for each result.                                                                                                                                                                                                                                                                                                                                                    | `False`      |   |
+| `include_usage`       | `bool`               | Whether to include credit usage information in the response.`NOTE:`The value may be 0 if the total successful URL extractions has not yet reached 5 calls. See our [Credits & Pricing documentation](https://docs.tavily.com/documentation/api-credits) for details.                                                                                                                                   | `False`      |   |
+| `query`               | `str`                | User intent for reranking extracted content chunks. When provided, chunks are reranked based on relevance to this query.                                                                                                                                                                                                                                                                               | `None`       |   |
+| `chunks_per_source`   | `int`                | Chunks are short content snippets (maximum 500 characters each) pulled directly from the source. Use `chunks_per_source` to define the maximum number of relevant chunks returned per source and to control the `raw_content` length. Chunks will appear in the `raw_content` field as: `<chunk 1> [...] <chunk 2> [...] <chunk 3>`. Available only when `query` is provided. Must be between 1 and 5. | `3`          |   |
 
 ### Response format
 
@@ -7903,12 +8462,12 @@ The response object you receive will be in the following format:
 
 Each successful result in the `results` list will be in the following `SuccessfulResult` format:
 
-| Key                  | Type        | Description                                                                                  |
-| :------------------- | :---------- | :------------------------------------------------------------------------------------------- |
-| `url`                | `str`       | The URL of the webpage.                                                                      |
-| `raw_content`        | `str`       | The raw content extracted.                                                                   |
-| `images` (optional)  | `list[str]` | This is only available if `include_images` is set to `True`. A list of extracted image URLs. |
-| `favicon` (optional) | `str`       | The favicon URL for the search result.                                                       |
+| Key                  | Type        | Description                                                                                                      |
+| :------------------- | :---------- | :--------------------------------------------------------------------------------------------------------------- |
+| `url`                | `str`       | The URL of the webpage.                                                                                          |
+| `raw_content`        | `str`       | The raw content extracted. When `query` is provided, contains the top-ranked chunks joined by `[...]` separator. |
+| `images` (optional)  | `list[str]` | This is only available if `include_images` is set to `True`. A list of extracted image URLs.                     |
+| `favicon` (optional) | `str`       | The favicon URL for the search result.                                                                           |
 
 #### Failed Results
 
@@ -7923,7 +8482,7 @@ Each failed result in the `results` list will be in the following `FailedResult`
 
 <AccordionGroup>
   <Accordion title="Request">
-    ```python  theme={null}
+    ```python theme={null}
     from tavily import TavilyClient
 
     # Step 1. Instantiating your TavilyClient
@@ -7945,7 +8504,7 @@ Each failed result in the `results` list will be in the following `FailedResult`
   </Accordion>
 
   <Accordion title="Response">
-    ```python  theme={null}
+    ```python theme={null}
     {
         "results": [
             {
@@ -7977,31 +8536,29 @@ Each failed result in the `results` list will be in the following `FailedResult`
 
 ## Tavily Crawl
 
-<Tip>
-  Our agent-first crawl endpoint is currently in **open beta**. Please repost any issues you encounter on our [community page](https://community.tavily.com).
-</Tip>
-
 You can access Tavily Crawl in Python through the `crawl` function.
 
 ### Parameters
 
-| Parameter            | Type        | Description                                                                                                                                                       | Default      |
-| :------------------- | :---------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------- | :----------- |
-| `url` **(required)** | `str`       | The root URL to begin the crawl.                                                                                                                                  | —            |
-| `max_depth`          | `int`       | Max depth of the crawl. Defines how far from the base URL the crawler can explore.                                                                                | `1`          |
-| `max_breadth`        | `int`       | Max number of links to follow **per level** of the tree (i.e., per page).                                                                                         | `20`         |
-| `limit`              | `int`       | Total number of links the crawler will process before stopping.                                                                                                   | `50`         |
-| `instructions`       | `str`       | Natural language instructions for the crawler.                                                                                                                    | —            |
-| `select_paths`       | `list[str]` | **Regex patterns** to select only URLs with specific path patterns (e.g., `"/docs/.*"`, `"/api/v1.*"`).                                                           | `None`       |
-| `select_domains`     | `list[str]` | **Regex patterns** to select crawling to specific domains or subdomains (e.g., `"^docs\.example\.com$"`).                                                         | `None`       |
-| `exclude_paths`      | `list[str]` | **Regex patterns** to exclude URLs with specific path patterns (e.g., `"/private/.*"`, `"/admin/.*"`).                                                            | `None`       |
-| `exclude_domains`    | `list[str]` | **Regex patterns** to exclude specific domains or subdomains from crawling (e.g., `"^private\.example\.com$"`).                                                   | `None`       |
-| `allow_external`     | `bool`      | Whether to allow following links that go to external domains.                                                                                                     | `True`       |
-| `include_images`     | `bool`      | Whether to extract image URLs from the crawled pages.                                                                                                             | `False`      |
-| `extract_depth`      | `str`       | Advanced extraction retrieves more data, including tables and embedded content, with higher success but may increase latency. Options: `"basic"` or `"advanced"`. | `"basic"`    |
-| `format`             | `str`       | The format of the extracted web page content. `markdown` returns content in markdown format. `text` returns plain text and may increase latency.                  | `"markdown"` |
-| `include_favicon`    | `bool`      | Whether to include the favicon URL for each result.                                                                                                               | `False`      |
-| `timeout`            | `float`     | Maximum time in seconds to wait for the crawl operation before timing out. Must be between 10 and 150 seconds.                                                    | `150`        |
+| Parameter            | Type        | Description                                                                                                                                                                                                                                                                                                                                                   | Default      |
+| :------------------- | :---------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | :----------- |
+| `url` **(required)** | `str`       | The root URL to begin the crawl.                                                                                                                                                                                                                                                                                                                              | —            |
+| `max_depth`          | `int`       | Max depth of the crawl. Defines how far from the base URL the crawler can explore.                                                                                                                                                                                                                                                                            | `1`          |
+| `max_breadth`        | `int`       | Max number of links to follow **per level** of the tree (i.e., per page).                                                                                                                                                                                                                                                                                     | `20`         |
+| `limit`              | `int`       | Total number of links the crawler will process before stopping.                                                                                                                                                                                                                                                                                               | `50`         |
+| `instructions`       | `str`       | Natural language instructions for the crawler.                                                                                                                                                                                                                                                                                                                | —            |
+| `select_paths`       | `list[str]` | **Regex patterns** to select only URLs with specific path patterns (e.g., `"/docs/.*"`, `"/api/v1.*"`).                                                                                                                                                                                                                                                       | `None`       |
+| `select_domains`     | `list[str]` | **Regex patterns** to select crawling to specific domains or subdomains (e.g., `"^docs\.example\.com$"`).                                                                                                                                                                                                                                                     | `None`       |
+| `exclude_paths`      | `list[str]` | **Regex patterns** to exclude URLs with specific path patterns (e.g., `"/private/.*"`, `"/admin/.*"`).                                                                                                                                                                                                                                                        | `None`       |
+| `exclude_domains`    | `list[str]` | **Regex patterns** to exclude specific domains or subdomains from crawling (e.g., `"^private\.example\.com$"`).                                                                                                                                                                                                                                               | `None`       |
+| `allow_external`     | `bool`      | Whether to allow following links that go to external domains.                                                                                                                                                                                                                                                                                                 | `True`       |
+| `include_images`     | `bool`      | Whether to extract image URLs from the crawled pages.                                                                                                                                                                                                                                                                                                         | `False`      |
+| `extract_depth`      | `str`       | Advanced extraction retrieves more data, including tables and embedded content, with higher success but may increase latency. Options: `"basic"` or `"advanced"`.                                                                                                                                                                                             | `"basic"`    |
+| `format`             | `str`       | The format of the extracted web page content. `markdown` returns content in markdown format. `text` returns plain text and may increase latency.                                                                                                                                                                                                              | `"markdown"` |
+| `include_favicon`    | `bool`      | Whether to include the favicon URL for each result.                                                                                                                                                                                                                                                                                                           | `False`      |
+| `timeout`            | `float`     | Maximum time in seconds to wait for the crawl operation before timing out. Must be between 10 and 150 seconds.                                                                                                                                                                                                                                                | `150`        |
+| `include_usage`      | `bool`      | Whether to include credit usage information in the response.`NOTE:`The value may be 0 if the total use of /extract and /map have not yet reached minimum requirements. See our [Credits & Pricing documentation](https://docs.tavily.com/documentation/api-credits) for details.                                                                              | `False`      |
+| `chunks_per_source`  | `int`       | Chunks are short content snippets (maximum 500 characters each) pulled directly from the source. Use `chunks_per_source` to define the maximum number of relevant chunks returned per source and to control the `raw_content` length. Chunks will appear in the `raw_content` field as: `<chunk 1> [...] <chunk 2> [...] <chunk 3>`. Must be between 1 and 5. | `3`          |
 
 ### Response format
 
@@ -8029,7 +8586,7 @@ Each successful result in the `results` list will be in the following `Result` f
 
 <AccordionGroup>
   <Accordion title="Request">
-    ```python  theme={null}
+    ```python theme={null}
     from tavily import TavilyClient
 
     # Step 1. Instantiating your TavilyClient
@@ -8047,7 +8604,7 @@ Each successful result in the `results` list will be in the following `Result` f
   </Accordion>
 
   <Accordion title="Response">
-    ````python  theme={null}
+    ````python theme={null}
     {
         "base_url": "https://docs.tavily.com",
         "results": [
@@ -8068,29 +8625,26 @@ Each successful result in the `results` list will be in the following `Result` f
 
 ## Tavily Map
 
-<Tip>
-  Our agent-first mapping endpoint is currently in **open beta**. Please repost any issues you encounter on our [community page](https://community.tavily.com).
-</Tip>
-
 Tavily Map allows you to obtain a sitemap starting from a base URL.
 
 You can access Tavily Map in Python through the `map` function.
 
 ### Parameters
 
-| Parameter            | Type        | Description                                                                                                     | Default |
-| :------------------- | :---------- | :-------------------------------------------------------------------------------------------------------------- | :------ |
-| `url` **(required)** | `str`       | The root URL to begin the mapping.                                                                              | —       |
-| `max_depth`          | `int`       | Max depth of the mapping. Defines how far from the base URL the crawler can explore.                            | `1`     |
-| `max_breadth`        | `int`       | Max number of links to follow **per level** of the tree (i.e., per page).                                       | `20`    |
-| `limit`              | `int`       | Total number of links the crawler will process before stopping.                                                 | `50`    |
-| `instructions`       | `str`       | Natural language instructions for the crawler                                                                   | —       |
-| `select_paths`       | `list[str]` | **Regex patterns** to select only URLs with specific path patterns (e.g., `"/docs/.*"`, `"/api/v1.*"`).         | `None`  |
-| `select_domains`     | `list[str]` | **Regex patterns** to select crawling to specific domains or subdomains (e.g., `"^docs\.example\.com$"`).       | `None`  |
-| `exclude_paths`      | `list[str]` | **Regex patterns** to exclude URLs with specific path patterns (e.g., `"/private/.*"`, `"/admin/.*"`).          | `None`  |
-| `exclude_domains`    | `list[str]` | **Regex patterns** to exclude specific domains or subdomains from crawling (e.g., `"^private\.example\.com$"`). | `None`  |
-| `allow_external`     | `bool`      | Whether to allow following links that go to external domains.                                                   | `True`  |
-| `timeout`            | `float`     | Maximum time in seconds to wait for the map operation before timing out. Must be between 10 and 150 seconds.    | `150`   |
+| Parameter            | Type        | Description                                                                                                                                                                                                                                                        | Default |
+| :------------------- | :---------- | :----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------ |
+| `url` **(required)** | `str`       | The root URL to begin the mapping.                                                                                                                                                                                                                                 | —       |
+| `max_depth`          | `int`       | Max depth of the mapping. Defines how far from the base URL the crawler can explore.                                                                                                                                                                               | `1`     |
+| `max_breadth`        | `int`       | Max number of links to follow **per level** of the tree (i.e., per page).                                                                                                                                                                                          | `20`    |
+| `limit`              | `int`       | Total number of links the crawler will process before stopping.                                                                                                                                                                                                    | `50`    |
+| `instructions`       | `str`       | Natural language instructions for the crawler                                                                                                                                                                                                                      | —       |
+| `select_paths`       | `list[str]` | **Regex patterns** to select only URLs with specific path patterns (e.g., `"/docs/.*"`, `"/api/v1.*"`).                                                                                                                                                            | `None`  |
+| `select_domains`     | `list[str]` | **Regex patterns** to select crawling to specific domains or subdomains (e.g., `"^docs\.example\.com$"`).                                                                                                                                                          | `None`  |
+| `exclude_paths`      | `list[str]` | **Regex patterns** to exclude URLs with specific path patterns (e.g., `"/private/.*"`, `"/admin/.*"`).                                                                                                                                                             | `None`  |
+| `exclude_domains`    | `list[str]` | **Regex patterns** to exclude specific domains or subdomains from crawling (e.g., `"^private\.example\.com$"`).                                                                                                                                                    | `None`  |
+| `allow_external`     | `bool`      | Whether to allow following links that go to external domains.                                                                                                                                                                                                      | `True`  |
+| `timeout`            | `float`     | Maximum time in seconds to wait for the map operation before timing out. Must be between 10 and 150 seconds.                                                                                                                                                       | `150`   |
+| `include_usage`      | `bool`      | Whether to include credit usage information in the response.`NOTE:`The value may be 0 if the total successful pages mapped has not yet reached 10 calls. See our [Credits & Pricing documentation](https://docs.tavily.com/documentation/api-credits) for details. | `False` |
 
 ### Response format
 
@@ -8107,7 +8661,7 @@ The response object you receive will be in the following format:
 
 <AccordionGroup>
   <Accordion title="Request">
-    ```python  theme={null}
+    ```python theme={null}
     from tavily import TavilyClient
 
     # Step 1. Instantiating your TavilyClient
@@ -8125,7 +8679,7 @@ The response object you receive will be in the following format:
   </Accordion>
 
   <Accordion title="Response">
-    ```python  theme={null}
+    ```python theme={null}
     {
         'base_url': 'https://docs.tavily.com',
         'results': [
@@ -8186,7 +8740,7 @@ By default, embedding and ranking use the Cohere API, our recommended option. Un
 
 If you decide to stick with Cohere, please note that you'll need to install the Cohere Python package as well:
 
-```bash  theme={null}
+```bash theme={null}
 pip install cohere
 ```
 
@@ -8195,7 +8749,7 @@ pip install cohere
 Once you are done setting up your database, you'll need to create a MongoDB Client as well as a Tavily Hybrid RAG Client.
 A minimal setup would look like this:
 
-```python  theme={null}
+```python theme={null}
 from pymongo import MongoClient
 from tavily import TavilyHybridClient
 
@@ -8220,13 +8774,13 @@ Once you create the proper clients, you can easily start searching. A few simple
 This example will look for context about Leo Messi on the web and in the local database.
 Here, we get 5 sources, both from our database and from the web, but we want to exclude unwanted-domain.com from our web search results:
 
-```python  theme={null}
+```python theme={null}
 results = hybrid_rag.search("Who is Leo Messi?", max_results=5, exclude_domains=['unwanted-domain.com'])
 ```
 
 Here, we want to prioritize the number of local sources, so we will get 2 foreign (web) sources, and 5 sources from our database:
 
-```python  theme={null}
+```python theme={null}
 results = hybrid_rag.search("Who is Leo Messi?",  max_local=5, max_foreign=2)
 ```
 
@@ -8236,7 +8790,7 @@ Note: The sum of `max_local` and `max_foreign` can exceed `max_results`, but onl
 
 If you want to add the retrieved data to the database, you can do so by setting the save\_foreign parameter to True:
 
-```python  theme={null}
+```python theme={null}
 results = hybrid_rag.search("Who is Leo Messi?", save_foreign=True)
 ```
 
@@ -8248,7 +8802,7 @@ This will use our default saving function, which stores the content and its embe
 
 You might want to add some extra properties to documents you're inserting or even discard some of them based on custom criteria. This can be done by passing a function to the save\_foreign parameter:
 
-```python  theme={null}
+```python theme={null}
 def save_document(document):
     if document['score'] < 0.5:
         return None # Do not save documents with low scores
@@ -8271,7 +8825,7 @@ results = hybrid_rag.search("Who is Leo Messi?", save_foreign=save_document)
 
 By default, we use [Cohere](https://cohere.com/) for our embeddings. If you want to use your own embeddings, can pass a custom embedding function to the TavilyHybridClient:
 
-```python  theme={null}
+```python theme={null}
 def my_embedding_function(texts, doc_type): # doc_type will be either 'search_query' or 'search_document'
     return my_embedding_model.encode(texts)
 
@@ -8287,44 +8841,445 @@ Source: https://docs.tavily.com/welcome
 
 
 
-<div style={{ marginTop: "100px", marginBottom: "100px" }}>
-  <div className="flex justify-center">
-    <p style={{ fontSize: "2rem", fontWeight: "bold" }} className="text-black dark:text-white">
-      Explore our docs
+<div>
+  <div>
+    <h1>
+      Build with <span>Tavily</span>
+    </h1>
+
+    <p>
+      Your journey to state-of-the-art web search starts right here.
     </p>
   </div>
 
-  <div className="text-center ">
-    Your journey to state-of-the-art web search starts right here.
+  <div>
+    <div>
+      <div>
+        Installation
+      </div>
+
+      <Columns>
+        <Card title="Python SDK" icon="python">
+          ```bash theme={null}
+          pip install tavily-python
+          ```
+        </Card>
+
+        <Card title="JavaScript SDK" icon="node">
+          ```js theme={null}
+          npm i @tavily/core
+          ```
+        </Card>
+      </Columns>
+
+      <div>
+        Try it now
+      </div>
+
+      <Tabs>
+        <Tab title="Search the web" icon="search">
+          <CodeGroup>
+            ```python Python theme={null}
+            from tavily import TavilyClient
+
+            tavily_client = TavilyClient(api_key="tvly-YOUR_API_KEY")
+            response = tavily_client.search("Who is Leo Messi?")
+
+            print(response)
+            ```
+
+            ```javascript JavaScript theme={null}
+            const { tavily } = require("@tavily/core");
+
+            const tvly = tavily({ apiKey: "tvly-YOUR_API_KEY" });
+            const response = await tvly.search("Who is Leo Messi?");
+
+            console.log(response);
+            ```
+
+            ```bash cURL theme={null}
+            curl --request POST \
+              --url https://api.tavily.com/search \
+              --header 'Authorization: Bearer <token>' \
+              --header 'Content-Type: application/json' \
+              --data '
+            {
+              "query": "who is Leo Messi?",
+              "auto_parameters": false,
+              "topic": "general",
+              "search_depth": "basic",
+              "chunks_per_source": 3,
+              "max_results": 1,
+              "time_range": null,
+              "start_date": "2025-02-09",
+              "end_date": "2025-12-29",
+              "include_answer": false,
+              "include_raw_content": false,
+              "include_images": false,
+              "include_image_descriptions": false,
+              "include_favicon": false,
+              "include_domains": [],
+              "exclude_domains": [],
+              "country": null,
+              "include_usage": false
+            }
+            '
+            ```
+          </CodeGroup>
+
+          <a href="/documentation/api-reference/endpoint/search">
+            Learn more about the Search API →
+          </a>
+        </Tab>
+
+        <Tab title="Extract webpages" icon="file-code">
+          <CodeGroup>
+            ```python Python theme={null}
+            from tavily import TavilyClient
+
+            tavily_client = TavilyClient(api_key="tvly-YOUR_API_KEY")
+            response = tavily_client.extract("https://en.wikipedia.org/wiki/Artificial_intelligence")
+
+            print(response)
+            ```
+
+            ```javascript JavaScript theme={null}
+            const { tavily } = require("@tavily/core");
+
+            const tvly = tavily({ apiKey: "tvly-YOUR_API_KEY" });
+            const response = await tvly.extract("https://en.wikipedia.org/wiki/Artificial_intelligence");
+
+            console.log(response);
+            ```
+
+            ```bash cURL theme={null}
+            curl --request POST \
+              --url https://api.tavily.com/extract \
+              --header 'Authorization: Bearer <token>' \
+              --header 'Content-Type: application/json' \
+              --data '
+            {
+              "urls": "https://en.wikipedia.org/wiki/Artificial_intelligence",
+              "query": "<string>",
+              "chunks_per_source": 3,
+              "extract_depth": "basic",
+              "include_images": false,
+              "include_favicon": false,
+              "format": "markdown",
+              "timeout": "None",
+              "include_usage": false
+            }
+            '
+            ```
+          </CodeGroup>
+
+          <a href="/documentation/api-reference/endpoint/extract">
+            Learn more about the Extract API →
+          </a>
+        </Tab>
+
+        <Tab title="Crawl webpages" icon="spider">
+          <CodeGroup>
+            ```python Python theme={null}
+            from tavily import TavilyClient
+
+            tavily_client = TavilyClient(api_key="tvly-YOUR_API_KEY")
+            response = tavily_client.crawl("https://docs.tavily.com", instructions="Find all pages on the Python SDK")
+
+            print(response)
+            ```
+
+            ```javascript JavaScript theme={null}
+            const { tavily } = require("@tavily/core");
+
+            const tvly = tavily({ apiKey: "tvly-YOUR_API_KEY" });
+            const response = await tvly.crawl("https://docs.tavily.com", { instructions: "Find all pages on the Python SDK" });
+
+            console.log(response);
+            ```
+
+            ```bash cURL theme={null}
+            curl --request POST \
+              --url https://api.tavily.com/crawl \
+              --header 'Authorization: Bearer <token>' \
+              --header 'Content-Type: application/json' \
+              --data '
+            {
+              "url": "docs.tavily.com",
+              "instructions": "Find all pages about the Python SDK",
+              "chunks_per_source": 3,
+              "max_depth": 1,
+              "max_breadth": 20,
+              "limit": 50,
+              "select_paths": null,
+              "select_domains": null,
+              "exclude_paths": null,
+              "exclude_domains": null,
+              "allow_external": true,
+              "include_images": false,
+              "extract_depth": "basic",
+              "format": "markdown",
+              "include_favicon": false,
+              "timeout": 150,
+              "include_usage": false
+            }
+            '
+            ```
+          </CodeGroup>
+
+          <a href="/documentation/api-reference/endpoint/crawl">
+            Learn more about the Crawl API →
+          </a>
+        </Tab>
+
+        <Tab title="Map webpages" icon="map">
+          <CodeGroup>
+            ```python Python theme={null}
+            from tavily import TavilyClient
+
+            tavily_client = TavilyClient(api_key="tvly-YOUR_API_KEY")
+            response = tavily_client.map("https://docs.tavily.com")
+
+            print(response)
+            ```
+
+            ```javascript JavaScript theme={null}
+            const { tavily } = require("@tavily/core");
+
+            const tvly = tavily({ apiKey: "tvly-YOUR_API_KEY" });
+            const response = await tvly.map("https://docs.tavily.com");
+
+            console.log(response);
+            ```
+
+            ```bash cURL theme={null}
+            curl --request POST \
+              --url https://api.tavily.com/map \
+              --header 'Authorization: Bearer <token>' \
+              --header 'Content-Type: application/json' \
+              --data '
+            {
+              "url": "docs.tavily.com",
+              "instructions": "Find all pages about the Python SDK",
+              "max_depth": 1,
+              "max_breadth": 20,
+              "limit": 50,
+              "select_paths": null,
+              "select_domains": null,
+              "exclude_paths": null,
+              "exclude_domains": null,
+              "allow_external": true,
+              "timeout": 150,
+              "include_usage": false
+            }
+            '
+            ```
+          </CodeGroup>
+
+          <a href="/documentation/api-reference/endpoint/map">
+            Learn more about the Map API →
+          </a>
+        </Tab>
+
+        <Tab title="Create Research Task" icon="book">
+          <CodeGroup>
+            ```python Python theme={null}
+            from tavily import TavilyClient
+
+            tavily_client = TavilyClient(api_key="tvly-YOUR_API_KEY")
+            response = tavily_client.research("What are the latest developments in AI?")
+
+            print(response)
+            ```
+
+            ```javascript JavaScript theme={null}
+            const { tavily } = require("@tavily/core");
+
+            const tvly = tavily({ apiKey: "tvly-YOUR_API_KEY" });
+            const response = await tvly.research("What are the latest developments in AI?");
+
+            console.log(response);
+            ```
+
+            ```bash cURL theme={null}
+            curl --request POST \
+              --url https://api.tavily.com/research \
+              --header 'Authorization: Bearer <token>' \
+              --header 'Content-Type: application/json' \
+              --data '
+            {
+              "input": "What are the latest developments in AI?",
+              "model": "auto",
+              "stream": false,
+              "output_schema": {
+                "properties": {
+                  "company": {
+                    "type": "string",
+                    "description": "The name of the company"
+                  },
+                  "key_metrics": {
+                    "type": "array",
+                    "description": "List of key performance metrics",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "financial_details": {
+                    "type": "object",
+                    "description": "Detailed financial breakdown",
+                    "properties": {
+                      "operating_income": {
+                        "type": "number",
+                        "description": "Operating income for the period"
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "company"
+                ]
+              },
+              "citation_format": "numbered"
+            }
+            '
+            ```
+          </CodeGroup>
+
+          <a href="/documentation/api-reference/endpoint/research">
+            Learn more about the Research API →
+          </a>
+        </Tab>
+      </Tabs>
+    </div>
+  </div>
+
+  <div>
+    <div />
+
+    <h3>
+      Developer Resources
+    </h3>
+  </div>
+
+  <div>
+    <CardGroup>
+      <Card title="API Credits Overview" icon="book-open" href="/documentation/api-credits">
+        Learn how Tavily API credits work.
+      </Card>
+
+      <Card title="Rate Limits" icon="gauge" href="/documentation/rate-limits">
+        Understand Tavily's rate limits and policies.
+      </Card>
+
+      <Card title="Playground" icon="play" href="https://app.tavily.com/playground">
+        Try Tavily's APIs interactively.
+      </Card>
+    </CardGroup>
   </div>
 </div>
 
-<div style={{ maxWidth: "900px", margin: "0 auto", padding: "0 20px" }}>
-  <CardGroup cols={3}>
-    <Card title="Quickstart" icon="forward" href="documentation/quickstart">
-      Start searching with Tavily in minutes
-    </Card>
+<div>
+  <div>
+    <div>
+      <Icon icon="circle-question" />
 
-    <Card title="API Reference" icon="square-terminal" href="documentation/api-reference/endpoint/search">
-      Start using Tavily's powerful APIs
-    </Card>
+      <span>
+        <span>Question?</span>
 
-    <Card title="API Credits Overview" icon="book-open" href="documentation/api-credits">
-      Learn how to get and manage your Tavily API Credits
-    </Card>
+        <a href="mailto:support@tavily.com">
+          Contact Us
+        </a>
+      </span>
+    </div>
 
-    <Card title="Rate Limits" icon="gauge" href="documentation/rate-limits">
-      Learn about Tavily’s API rate limits for both development and production environments
-    </Card>
+    <div>
+      <Icon icon="discourse" />
 
-    <Card title="Python" icon="python" href="sdk/python/quick-start">
-      Get started with our Python SDK, `tavily-python`
-    </Card>
+      <span>
+        <span>Integration issues?</span>
 
-    <Card title="Playground" icon="play" href="https://app.tavily.com/playground">
-      Explore Tavily's APIs with our interactive playground
-    </Card>
-  </CardGroup>
+        <a href="https://community.tavily.com/">
+          Join Community
+        </a>
+      </span>
+    </div>
+
+    <div>
+      <Icon icon="sparkles" />
+
+      <span>
+        <span>Using LLMs?</span>
+
+        <a href="/llms.txt">
+          Read LLMs.txt
+        </a>
+      </span>
+    </div>
+
+    <div>
+      <Icon icon="circle-check" />
+
+      <span>
+        <span>Something not right?</span>
+
+        <a href="https://status.tavily.com/">
+          Check Status
+        </a>
+      </span>
+    </div>
+  </div>
+
+  <div />
+
+  <div>
+    <div>
+      <div>
+        <div>
+          <span>© Tavily</span>
+
+          <a href="https://www.tavily.com/privacy">
+            Privacy Policy
+          </a>
+
+          <span>·</span>
+
+          <a href="https://www.tavily.com/website-terms">
+            Website Terms of Use
+          </a>
+
+          <span>·</span>
+
+          <a href="https://www.tavily.com/terms">
+            Platform Terms of Use
+          </a>
+
+          <span>·</span>
+
+          <a href="https://www.tavily.com/cookie-policy">
+            Cookie Policy
+          </a>
+        </div>
+
+        <div>
+          <a href="https://www.linkedin.com/company/tavily" aria-label="LinkedIn">
+            <Icon icon="linkedin" />
+          </a>
+
+          <a href="https://x.com/tavilyai" aria-label="Twitter">
+            <Icon icon="twitter" />
+          </a>
+
+          <a href="https://github.com/tavily-ai" aria-label="GitHub">
+            <Icon icon="github" />
+          </a>
+
+          <a href="https://www.youtube.com/@TavilyAI" aria-label="YouTube">
+            <Icon icon="youtube" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 

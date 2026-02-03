@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/openai-codex-sdk/
+
 # OpenAI Codex SDK
 
 This provider makes OpenAI's Codex SDK available for evals. The Codex SDK supports code generation and manipulation with thread-based conversations and JSON schema output.

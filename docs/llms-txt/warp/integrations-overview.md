@@ -1,18 +1,18 @@
-# Source: https://docs.warp.dev/integrations/integrations-overview.md
+# Source: https://docs.warp.dev/agent-platform/integrations/integrations-overview.md
 
 # Integrations Overview
 
-Warp integrations let your team trigger Warp agents directly from the terminal, or from first-party tools like [slack](https://docs.warp.dev/integrations/slack "mention") and [linear](https://docs.warp.dev/integrations/linear "mention"). Once everything is set up, agents can:
+Warp integrations let your team trigger Warp agents directly from the terminal, or from first-party tools like [Slack](https://docs.warp.dev/agent-platform/integrations/slack) and [Linear](https://docs.warp.dev/agent-platform/integrations/linear). Once everything is set up, agents can:
 
 * Read conversation or issue context
 * Run code inside your codebase in a remote environment
 * Open pull requests and perform other multi-step agent workflows on your behalf
 
 {% hint style="info" %}
-For a full walkthrough of Warp's integrations and configurable environments, please refer to [integrations-and-environments](https://docs.warp.dev/platform/cli/integrations-and-environments "mention").
+For a full walkthrough of Warp's integrations and configurable environments, please refer to [Integrations and Environments](https://docs.warp.dev/reference/cli/integrations-and-environments).
 {% endhint %}
 
-All of this is powered by the [cli](https://docs.warp.dev/platform/cli "mention").
+All of this is powered by the [Warp CLI](https://docs.warp.dev/reference/cli/README).
 
 ***
 
@@ -43,6 +43,7 @@ The guided flow will:
 * Detect which repos you want the agent to work with
 * Identify languages, frameworks, and tools
 * Suggest a Docker image (or build/push one if needed)
+  * The Docker image can be your own custom image, an official base image (e.g. node, python), or one of Warp’s prebuilt dev images (see [repo](https://github.com/warpdotdev/warp-dev-environments)).
 * Recommend setup commands
 * Create the environment and return an environment ID
 
@@ -72,7 +73,7 @@ The CLI opens an authorization page where you install Warp into your Slack works
 
 In Slack:
 
-* Tag @Warp in a message or thread
+* Tag **@Warp** in a message or thread
 * Or DM the bot
 
 In Linear:
@@ -83,4 +84,4 @@ Warp will read the thread/issue, spin up your environment, run the workflow in t
 
 ***
 
-<sub>For more details on configuring integrations and environments in Warp, please refer to</sub> [<sub>Integrations and Environments</sub>](https://docs.warp.dev/platform/cli/integrations-and-environments)<sub>.</sub>
+For more details on configuring integrations and environments in Warp, please refer to [Integrations and Environments](https://docs.warp.dev/reference/cli/integrations-and-environments).

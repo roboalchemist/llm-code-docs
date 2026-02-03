@@ -4,8 +4,6 @@
 title: Iot Jobtemplate
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Iot Jobtemplate
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.iot_jobtemplate.dataset/index.html
 ---
 
 # Iot Jobtemplate
@@ -34,5 +32,5 @@ aws.iot_jobtemplate
 | job_template_id               | core | string        | The unique identifier of the job template.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | maintenance_windows           | core | json          | Allows you to configure an optional maintenance window for the rollout of a job document to all devices in the target group for a job.                                                                                                                                                                                                                                                                                                                                                                                                  |
 | presigned_url_config          | core | json          |
-| tags                          | core | hstore        |
+| tags                          | core | hstore_csv    |
 | timeout_config                | core | json          |

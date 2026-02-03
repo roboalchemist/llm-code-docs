@@ -2,10 +2,6 @@
 
 # Source: https://docs.aporia.com/v1/nlp/example-question-answering.md
 
-# Source: https://docs.aporia.com/nlp/example-question-answering.md
-
-# Source: https://docs.aporia.com/v1/nlp/example-question-answering.md
-
 # Example: Question Answering
 
 **Question answering models can retrieve the answer to a question from a given text**, which is useful for searching for an answer in a document.&#x20;

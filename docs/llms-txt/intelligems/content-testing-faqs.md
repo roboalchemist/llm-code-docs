@@ -95,6 +95,19 @@ If you'd prefer to change this setting, please see our help guide [here](https:/
 
 </details>
 
+<details>
+
+<summary>Can I run Split URL tests on multiple domains?</summary>
+
+Yes! If your brand operates multiple domains under one Shopify account, you can register all of them in **Settings → Domain Settings**. This allows you to:
+
+* Set up Split URL tests for any registered domain
+* Use subdomain redirects for each domain (e.g., shop.yourbrand.com → landing.yourbrand.com)
+
+**Important limitation:** Cross-domain redirects are not supported. You cannot redirect visitors from one top-level domain to another (e.g., yourbrand.com → yourbrand.co.uk). Redirects must stay within the same domain or its subdomains.
+
+</details>
+
 ## Onsite Edits Tests
 
 <details>

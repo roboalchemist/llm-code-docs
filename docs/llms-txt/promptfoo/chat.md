@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/configuration/chat/
+
 # Chat Conversations / Threads
 
 The [prompt file](/docs/configuration/prompts/#file-based-prompts) supports a message in OpenAI's JSON prompt format. This allows you to set multiple messages including the system prompt. For example:

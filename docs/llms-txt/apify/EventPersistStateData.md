@@ -13,10 +13,10 @@ Data for the persist state event.
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#is_migrating)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/events/_types.py#L45)is\_migrating
+### [**](#is_migrating)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/events/_types.py#L45)is\_migrating
 
 **is\_migrating: bool
 
-### [**](#model_config)[**](https://github.com/apify/crawlee-python/blob/4b41e9719dcea4247ee874e5950c51d60de7e647//src/crawlee/events/_types.py#L43)model\_config
+### [**](#model_config)[**](https://github.com/apify/crawlee-python/blob/3e08b24571bbd21f25523e9aa81bc31ba308628d//src/crawlee/events/_types.py#L43)model\_config
 
 **model\_config: Undefined

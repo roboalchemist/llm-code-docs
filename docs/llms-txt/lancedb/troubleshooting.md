@@ -2,9 +2,9 @@
 
 # Source: https://docs.lancedb.com/geneva/deployment/troubleshooting.md
 
-# Source: https://docs.lancedb.com/troubleshooting.md
-
-# Source: https://docs.lancedb.com/geneva/deployment/troubleshooting.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Troubleshooting Geneva Deployments
 
@@ -287,8 +287,3 @@ grpc._channel._MultiThreadedRendezvous: <_MultiThreadedRendezvous of RPC that te
     debug_error_string = "UNKNOWN:Error received from peer  {grpc_message:"Logstream proxy failed to connect. Channel for client bd854100340640fb8b5770d2bf173197 not found.", grpc_status:5, created_time:"2025-04-11T02:25:32.223710374+00:00"}"
 >
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/security/single-sign-on/saml/group-provisioning.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 > Automatically sync group membership with your SAML Identity Provider (IdP).
 
 # null

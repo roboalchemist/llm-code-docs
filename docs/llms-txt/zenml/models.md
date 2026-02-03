@@ -2,10 +2,6 @@
 
 # Source: https://docs.zenml.io/concepts/models.md
 
-# Source: https://docs.zenml.io/api-reference/oss-api/oss-api/models.md
-
-# Source: https://docs.zenml.io/concepts/models.md
-
 # Models
 
 Machine learning models and AI agent configurations are at the heart of any ML workflow and AI system. ZenML provides comprehensive model management capabilities through its Model Control Plane, allowing you to track, version, promote, and share both traditional ML models and AI agent systems across your pipelines.

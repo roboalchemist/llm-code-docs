@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/cli/setup-auggie/install-auggie-cli.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Install Auggie CLI
 
 > Install Auggie to get agentic coding capabilities in your terminal, on your server, or anywhere your code runs.

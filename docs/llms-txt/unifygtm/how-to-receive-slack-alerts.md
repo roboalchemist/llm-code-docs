@@ -1,5 +1,9 @@
 # Source: https://docs.unifygtm.com/tutorials/how-to-receive-slack-alerts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How to Receive Slack Alerts
 
 > Receive real-time Slack alerts when companies or people enter an audience.

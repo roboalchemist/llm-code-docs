@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/redis/sdks/py/commands/list/lpos.md
 
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lpos.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lpos.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lpos.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lpos.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lpos.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lpos.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lpos.md
-
-# Source: https://upstash.com/docs/redis/sdks/py/commands/list/lpos.md
-
-# Source: https://upstash.com/docs/redis/sdks/ts/commands/list/lpos.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # LPOS
 
@@ -26,7 +12,7 @@
 
 ## Arguments
 
-<ParamField body="key" type="string" required>
+<ParamField body="key" type="str" required>
   The key of the list.
 </ParamField>
 
@@ -34,45 +20,43 @@
   The element to match.
 </ParamField>
 
-<ParamField body="opts">
-  <ParamField body="rank" type="number">
-    The rank of the element to match. If specified, the element at the given
-    rank is matched instead of the first element.
-  </ParamField>
+<ParamField body="rank" type="int">
+  Which match to return. 1 to return the first match, 2 to return the second match, and so on.
+  1 by default.
+</ParamField>
 
-  <ParamField body="count" type="number">
-    The maximum number of elements to match. If specified, an array of elements
-    is returned instead of a single element.
-  </ParamField>
+<ParamField body="count" type="int">
+  The maximum number of elements to match. If specified, an array of elements
+  is returned instead of a single element.
+</ParamField>
 
-  <ParamField body="maxLen" type="number">
-    Limit the number of comparisons to perform.
-  </ParamField>
+<ParamField body="maxlen" type="int">
+  Limit the number of comparisons to perform.
 </ParamField>
 
 ## Response
 
-<ResponseField type="number | number[]" required>
-  The index of the matching element or an array of indexes if `opts.count` is
+<ResponseField type="int | List[int]" required>
+  The index of the matching element or an array of indexes if `count` is
   specified.
 </ResponseField>
 
 <RequestExample>
-  ```ts Example  theme={"system"}
-  await redis.rpush("key", "a", "b", "c"); 
-  const index = await redis.lpos("key", "b");
-  console.log(index); // 1
+  ```py Example  theme={"system"}
+  redis.rpush("key", "a", "b", "c"); 
+
+  assert redis.lpos("key", "b") == 1
   ```
 
-  ```ts With Rank  theme={"system"}
-  await redis.rpush("key", "a", "b", "c", "b"); 
-  const index = await redis.lpos("key", "b", { rank: 2 });
-  console.log(index); // 3
+  ```py With Rank  theme={"system"}
+  redis.rpush("key", "a", "b", "c", "b"); 
+
+  assert redis.lpos("key", "b", rank=2) == 3
   ```
 
-  ```ts With Count theme={"system"}
-  await redis.rpush("key", "a", "b", "b");
-  const positions = await redis.lpos("key", "b", { count: 2 });
-  console.log(positions); // [1, 2]
+  ```py With Count theme={"system"}
+  redis.rpush("key", "a", "b", "b")
+
+  assert redis.lpos("key", "b", count=2) == [1, 2]
   ```
 </RequestExample>

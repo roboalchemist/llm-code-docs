@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Cloudcraft (Standalone) > Account Management > Transfer Account and
   Team Ownership
-source_url: https://docs.datadoghq.com/account-management/transfer-ownership/index.html
 ---
 
 # Transfer Account and Team Ownership

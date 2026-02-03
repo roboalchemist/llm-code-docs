@@ -1,130 +1,214 @@
-# Source: https://braintrust.dev/docs/guides/environments.md
+# Source: https://braintrust.dev/docs/deploy/environments.md
 
-# Environments
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-> Manage different versions of prompts across development, staging, and production
+# Manage environments
 
-Environments in Braintrust allow you to manage different versions of prompts across your development lifecycle. You can pin specific versions of prompts to environments like development, staging, and production, enabling controlled deployment and testing workflows.
+> Separate dev, staging, and production configurations
 
-## Overview
+Environments let you maintain different versions of prompts, functions, and configurations across your development lifecycle. Test changes in development before promoting them to production.
 
-An environment is a named collection that associates specific versions of prompts with a deployment context. This enables you to:
+## Create an environment
 
-* **Maintain version control**: Pin stable prompt versions to production while testing new versions in development
-* **Enable staged deployments**: Promote prompt versions through dev/staging/production pipelines
-* **Support A/B testing**: Compare different prompt versions across environments
-* **Isolate changes**: Test prompt modifications without affecting production systems
+Environments are defined at the project level:
 
-Currently, environments work with **prompts only**.
+1. Navigate to **Configuration** > **Environments**.
+2. Click **+ Environment**.
+3. Enter a name (e.g., "production", "staging", "dev").
+4. Optionally set as the default environment.
+5. Click **Create**.
 
-## Create environments
+Every project starts with no environments. When no environment is specified, the latest version of each prompt or function is used.
 
-Environments are configured through the Braintrust UI in your organization settings. Each environment has:
+## Assign versions
 
-* **Name**: A human-readable name (e.g., "Development", "Production")
-* **Slug**: A unique identifier used in API calls (e.g., "dev", "prod")
-* **Description**: Optional details about the environment's purpose
+Assign specific prompt or function versions to environments:
 
-To create an environment:
+<Tabs>
+  <Tab title="Prompts" icon="message-square">
+    1. Open a prompt in the editor.
+    2. Click **Environments** in the sidebar.
+    3. Select an environment from the dropdown.
+    4. Choose which version to assign.
+    5. Click **Save**.
 
-1. Navigate to your organization settings
-2. Go to the **Environments** section
-3. Select **Add Environment**
-4. Enter the name, slug, and optional description
-5. Save the environment
+    The assigned version will be used when calling the prompt with that environment parameter.
+  </Tab>
 
-## Associate prompts with environments
+  <Tab title="Functions" icon="function-square">
+    1. Navigate to **Tools**, **Scorers**, or **Workflows**.
+    2. Open a function.
+    3. Click **Environments** in the sidebar.
+    4. Select an environment and version.
+    5. Click **Save**.
+  </Tab>
+</Tabs>
 
-<img src="https://mintcdn.com/braintrust/XgLT3_1J-B3_G0Of/images/guides/environments/environments.png?fit=max&auto=format&n=XgLT3_1J-B3_G0Of&q=85&s=343a6d94a55e8b6f84ed2ce25cc53ff3" alt="Environments" data-og-width="1378" width="1378" data-og-height="646" height="646" data-path="images/guides/environments/environments.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/braintrust/XgLT3_1J-B3_G0Of/images/guides/environments/environments.png?w=280&fit=max&auto=format&n=XgLT3_1J-B3_G0Of&q=85&s=a305eea5cf065e91236816e22cad858a 280w, https://mintcdn.com/braintrust/XgLT3_1J-B3_G0Of/images/guides/environments/environments.png?w=560&fit=max&auto=format&n=XgLT3_1J-B3_G0Of&q=85&s=4c8ba1d8b494982b81aec77d2ec3bc5a 560w, https://mintcdn.com/braintrust/XgLT3_1J-B3_G0Of/images/guides/environments/environments.png?w=840&fit=max&auto=format&n=XgLT3_1J-B3_G0Of&q=85&s=f6794be1a83017c4e9cb8151a9592beb 840w, https://mintcdn.com/braintrust/XgLT3_1J-B3_G0Of/images/guides/environments/environments.png?w=1100&fit=max&auto=format&n=XgLT3_1J-B3_G0Of&q=85&s=289df531f60260c6934a1315998c95ec 1100w, https://mintcdn.com/braintrust/XgLT3_1J-B3_G0Of/images/guides/environments/environments.png?w=1650&fit=max&auto=format&n=XgLT3_1J-B3_G0Of&q=85&s=54bec2093bbdc6b826d6733a03c72b7c 1650w, https://mintcdn.com/braintrust/XgLT3_1J-B3_G0Of/images/guides/environments/environments.png?w=2500&fit=max&auto=format&n=XgLT3_1J-B3_G0Of&q=85&s=3b7725fc0179ce37682f051199becee1 2500w" />
+## Use environments in code
 
-Once you have environments set up, you can associate specific versions of prompts with them. This creates a mapping that tells Braintrust which version of a prompt to return when queried with an environment parameter.
+Specify the environment when calling prompts or functions:
 
-You can make the association using the activity tab on the prompt view.
+<CodeGroup dropdown>
+  ```typescript  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+  import { invoke } from "braintrust";
 
-## Load prompts with environments
+  const result = await invoke({
+    projectName: "My Project",
+    slug: "summarizer",
+    environment: "production",
+    input: { text: "Long text to summarize..." },
+  });
+  ```
 
-### Using the SDK
+  ```python  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+  from braintrust import invoke
 
-The Braintrust SDK supports loading prompts with environment parameters:
+  result = invoke(
+      project_name="My Project",
+      slug="summarizer",
+      environment="production",
+      input={"text": "Long text to summarize..."},
+  )
+  ```
+
+  ```ruby  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+  require 'braintrust'
+
+  result = Braintrust.invoke(
+    project_name: 'My Project',
+    slug: 'summarizer',
+    environment: 'production',
+    input: { text: 'Long text to summarize...' }
+  )
+  ```
+</CodeGroup>
+
+Without an environment parameter, the latest version is used.
+
+### Load prompts with environments
+
+Use `loadPrompt` to load prompt configurations with environment parameters:
 
 <CodeGroup dropdown>
   ```typescript  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
   import { loadPrompt } from "braintrust";
 
-  // Load a prompt from a specific environment
-  (async () => {
-    const prompt = await loadPrompt({
-      projectId: "my-project",
-      slug: "my-prompt-slug",
-      environment: "production",
-    });
-  })();
-  ```
-
-  ```python  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
-  import braintrust
-
-  # Load a prompt from a specific environment
-  prompt = braintrust.load_prompt(project="my-project", slug="my-prompt-slug", environment="production")
-  ```
-</CodeGroup>
-
-To use different versions of a prompt in different environments (e.g., latest version in staging and specific version in production), you can conditionally pass a version to `loadPrompt()`/`load_prompt()` based on the environment:
-
-<CodeGroup dropdown>
-  ```typescript  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+  // Load from specific environment
   const prompt = await loadPrompt({
-    projectName: "your project name",
-    slug: "your prompt slug",
-    version:
-      process.env.NODE_ENV === "production" ? "5878bd218351fb8e" : undefined,
+    projectName: "My Project",
+    slug: "my-prompt-slug",
+    environment: "production",
+  });
+
+  // Use conditional versioning
+  const prompt = await loadPrompt({
+    projectName: "My Project",
+    slug: "my-prompt-slug",
+    version: process.env.NODE_ENV === "production" ? "5878bd218351fb8e" : undefined,
   });
   ```
 
   ```python  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+  from braintrust import load_prompt
+  import os
+
+  # Load from specific environment
   prompt = load_prompt(
-      "your project name",
-      "your prompt slug",
-      version="5878bd218351fb8e" if os.environ["NODE_ENV"] == "production" else None,
+      project="My Project",
+      slug="my-prompt-slug",
+      environment="production"
+  )
+
+  # Use conditional versioning
+  prompt = load_prompt(
+      "My Project",
+      "my-prompt-slug",
+      version="5878bd218351fb8e" if os.environ.get("NODE_ENV") == "production" else None,
   )
   ```
 </CodeGroup>
 
-### Using the REST API
+### Use the REST API
 
-You can load prompts with environment parameters directly via HTTP:
+Load prompts with environment parameters via HTTP:
 
-```typescript load-prompts-rest.ts theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
-(async () => {
-  // TODO: Fill these in as needed
-  const promptSlug = "";
-  const apiKey = "";
-  const projectId = "";
-  const promptId = "";
+<CodeGroup dropdown>
+  ```bash  theme={"theme":{"light":"github-light","dark":"github-dark-dimmed"}}
+  # Load by project ID and slug
+  curl "https://api.braintrust.dev/v1/prompt?slug=my-prompt-slug&project_id=PROJECT_ID&environment=production" \
+    -H "Authorization: Bearer $BRAINTRUST_API_KEY"
 
-  // Load by project id and prompt slug
-  const r1 = await fetch(
-    `https://api.braintrust.dev/v1/prompt?slug=${promptSlug}&project_id=${projectId}&environment=production`,
-    {
-      headers: {
-        Authorization: "Bearer " + apiKey,
-      },
-    },
-  );
+  # Load by prompt ID
+  curl "https://api.braintrust.dev/v1/prompt/PROMPT_ID?environment=production" \
+    -H "Authorization: Bearer $BRAINTRUST_API_KEY"
+  ```
+</CodeGroup>
 
-  // Load by prompt ID + environment
-  const r2 = await fetch(
-    `https://api.braintrust.dev/v1/prompt/${promptId}?environment=production`,
-    {
-      headers: {
-        Authorization: "Bearer " + apiKey,
-      },
-    },
-  );
-})();
-```
+## Promote versions
 
+Move tested versions from development to production:
 
----
+1. Test a new prompt version in the "dev" environment.
+2. Run experiments to validate performance.
+3. Once satisfied, assign the same version to "staging".
+4. After final validation, assign to "production".
 
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt
+This workflow ensures changes are validated before reaching production users.
+
+## Set default environments
+
+Mark an environment as default to use it when no environment is specified:
+
+1. Navigate to **Configuration** > **Environments**.
+2. Click the **···** menu next to an environment.
+3. Select **Set as default**.
+
+The default environment is used when calling prompts without an explicit environment parameter.
+
+## Filter by environment
+
+In the Logs page, filter by environment to view requests from specific contexts:
+
+* Use the filter bar: `environment = "production"`.
+* Use the **Environment** filter dropdown.
+* Group by environment to compare metrics across environments.
+
+## Monitor environment changes
+
+Set up [environment alerts](/admin/automations/alerts#create-an-environment-alert) to get notified via webhook or Slack when prompt versions are assigned to or removed from environments. Use these to track deployments, maintain audit trails, or trigger downstream CI/CD workflows.
+
+## Common patterns
+
+### Three-tier deployment
+
+Maintain dev, staging, and production environments:
+
+* **dev**: Latest changes, frequent updates, used by developers.
+* **staging**: Pre-release testing, stable versions.
+* **production**: Customer-facing, only validated versions.
+
+### Feature flags
+
+Use environments to control feature rollouts:
+
+* Create an environment for each feature flag.
+* Assign different prompt versions based on flag state.
+* Gradually roll out by changing environment assignments.
+
+### A/B testing
+
+Test prompt variations by environment:
+
+* Create environments for each variant (e.g., "variant-a", "variant-b").
+* Assign different prompt versions to each.
+* Route users to different environments based on A/B test assignment.
+* Compare performance using environment filters.
+
+## Next steps
+
+* [Deploy prompts](/deploy/prompts) that use environments
+* [Monitor deployments](/deploy/monitor) filtered by environment
+* [View logs](/observe/view-logs) separated by environment
+* [Compare experiments](/evaluate/compare-experiments) across environment versions

@@ -3,8 +3,7 @@
 ---
 title: Datadog Plugin for kubectl
 description: Datadog, the leading service for cloud-scale monitoring.
-breadcrumbs: Docs > Container Monitoring > Kubernetes > Datadog Plugin for kubectl
-source_url: https://docs.datadoghq.com/kubernetes/kubectl_plugin/index.html
+breadcrumbs: Docs > Containers > Kubernetes > Datadog Plugin for kubectl
 ---
 
 # Datadog Plugin for kubectl

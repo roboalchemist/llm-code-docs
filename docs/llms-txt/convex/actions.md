@@ -2,10 +2,6 @@
 
 # Source: https://docs.convex.dev/functions/actions.md
 
-# Source: https://docs.convex.dev/tutorial/actions.md
-
-# Source: https://docs.convex.dev/functions/actions.md
-
 # Actions
 
 Actions can call third party services to do things such as processing a payment with [Stripe](https://stripe.com). They can be run in Convex's JavaScript environment or in Node.js. They can interact with the database indirectly by calling [queries](/functions/query-functions.md) and [mutations](/functions/mutation-functions.md).

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/strategies/hydra/
+
 # Hydra Multi-turn Strategy
 
 The Hydra strategy (`jailbreak:hydra`) runs a multi-turn attacker agent that adapts to every response from your target system. It maintains structured memory, evaluates past attempts, and branches into new attack approaches when the direct path fails.

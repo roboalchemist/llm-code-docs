@@ -2,32 +2,32 @@
 
 # Model Context Protocol
 
-Model Context Protocol (MCP) is a protocol for connecting models to additional tools and context. It's a great option for you to provide Codex access to documentation for different libraries or have it interact with some of your other developer tools like your browser or Figma.
+Model Context Protocol (MCP) connects models to tools and context. Use it to give Codex access to third-party documentation, or to let it interact with developer tools like your browser or Figma.
 
-MCP servers are supported by both the Codex CLI and the Codex IDE extension.
+Codex supports MCP servers in both the CLI and the IDE extension.
 
 ## Supported MCP features
 
-- STDIO servers (servers that can be launched via a command on your computer)
+- **STDIO servers**: Servers that run as a local process (started by a command).
   - Environment variables
-- Streamable HTTP servers (servers that can be accessed via a URL)
+- **Streamable HTTP servers**: Servers that you access at an address.
   - Bearer token authentication
-  - OAuth authentication (requires enabling the RMCP client feature: set `[features].rmcp_client = true` in `config.toml` or run `codex --enable rmcp_client`)
+  - OAuth authentication (run `codex mcp login <server-name>` for servers that support OAuth)
 
-## Connect Codex to a MCP server
+## Connect Codex to an MCP server
 
-MCP configuration for Codex is stored within the `~/.codex/config.toml` configuration file alongside other Codex configuration options.
+Codex stores MCP configuration in `config.toml` alongside other Codex configuration settings. By default this is `~/.codex/config.toml`, but you can also scope MCP servers to a project with `.codex/config.toml` (trusted projects only).
 
-Configuration is shared between the CLI and the IDE extension. So once you have configured your MCP servers, you can seamlessly switch between the two Codex clients.
+The CLI and the IDE extension share this configuration. Once you configure your MCP servers, you can switch between the two Codex clients without redoing setup.
 
-To configure your MCP servers, you have two options:
+To configure MCP servers, choose one option:
 
-1. **Using the CLI**: If you have the Codex CLI installed, you can use the `codex mcp` command to configure your MCP servers.
-2. **Modifing the config file directly**: Alternatively, you can modify the `config.toml` file directly.
+1. **Use the CLI**: Run `codex mcp` to add and manage servers.
+2. **Edit `config.toml`**: Update `~/.codex/config.toml` (or a project-scoped `.codex/config.toml` in trusted projects) directly.
 
-### Configuration - CLI
+### Configure with the CLI
 
-#### Add a MCP server
+#### Add an MCP server
 
 ```bash
 codex mcp add <server-name> --env VAR1=VALUE1 --env VAR2=VALUE2 -- <stdio server-command>
@@ -45,42 +45,40 @@ To see all available MCP commands, you can run `codex mcp --help`.
 
 #### Terminal UI (TUI)
 
-Once you have launched `codex` and are running the TUI, you can use `/mcp` to see your actively connected MCP servers.
+In the `codex` TUI, use `/mcp` to see your active MCP servers.
 
-### Configuration - config.toml
+### Configure with config.toml
 
-For more fine grained control over MCP server options, you can manually edit the `~/.codex/config.toml` configuration file. If you are using the IDE extension, you can find the config file by clicking the gear icon in the top right corner of the extension and then clicking `MCP settings > Open config.toml`.
+For more fine-grained control over MCP server options, edit `~/.codex/config.toml` (or a project-scoped `.codex/config.toml`). In the IDE extension, select **MCP settings** > **Open config.toml** from the gear menu.
 
-Each MCP server is configured with a `[mcp_servers.<server-name>]` table in the config file.
+Configure each MCP server with a `[mcp_servers.<server-name>]` table in the configuration file.
 
 #### STDIO servers
 
-- `command` - [Required] The command to launch the server
-- `args` - [Optional] The arguments to pass to the server
-- `env` - [Optional] The environment variables to set for the server
-- `env_vars` - [Optional] Additional environment variables to whitelist/forward
-- `cwd` - [Optional] Working directory to launch the server from
+- `command` (required): The command that starts the server.
+- `args` (optional): Arguments to pass to the server.
+- `env` (optional): Environment variables to set for the server.
+- `env_vars` (optional): Environment variables to allow and forward.
+- `cwd` (optional): Working directory to start the server from.
 
 #### Streamable HTTP servers
 
-- `url` - [Required] The URL to access the server
-- `bearer_token_env_var` - [Optional] Name of env var containing a bearer token to send in `Authorization`
-- `http_headers` - [Optional] Map of header names to static values
-- `env_http_headers` - [Optional] Map of header names to env var names (values pulled from env)
+- `url` (required): The server address.
+- `bearer_token_env_var` (optional): Environment variable name for a bearer token to send in `Authorization`.
+- `http_headers` (optional): Map of header names to static values.
+- `env_http_headers` (optional): Map of header names to environment variable names (values pulled from the environment).
 
 #### Other configuration options
 
-- `startup_timeout_sec` - [Optional] The timeout in seconds for the server to start
-- `tool_timeout_sec` - [Optional] The timeout in seconds for the server to execute a tool
-- (defaults: `startup_timeout_sec = 10`, `tool_timeout_sec = 60`)
-- `enabled` - [Optional] Set `false` to disable a configured server without deleting it
-- `enabled_tools` - [Optional] Allow-list of tools to expose from the server
-- `disabled_tools` - [Optional] Deny-list of tools to hide (applied after `enabled_tools`)
-- `[features].rmcp_client` - [Optional] Enables the Rust MCP client for STDIO servers and OAuth on Streamable HTTP
-- `experimental_use_rmcp_client` - [Optional] Older flag accepted by some releases for OAuth/streamable HTTP; prefer `[features].rmcp_client`
-  - Set inside the top-level `[features]` table (not under a specific server)
+- `startup_timeout_sec` (optional): Timeout (seconds) for the server to start. Default: `10`.
+- `tool_timeout_sec` (optional): Timeout (seconds) for the server to run a tool. Default: `60`.
+- `enabled` (optional): Set `false` to disable a server without deleting it.
+- `enabled_tools` (optional): Tool allow list.
+- `disabled_tools` (optional): Tool deny list (applied after `enabled_tools`).
 
-#### `config.toml` Examples
+If your OAuth provider requires a static callback URI, set the top-level `mcp_oauth_callback_port` in `config.toml`. If unset, Codex binds to an ephemeral port.
+
+#### config.toml examples
 
 ```toml
 [mcp_servers.context7]
@@ -92,9 +90,6 @@ MY_ENV_VAR = "MY_ENV_VALUE"
 ```
 
 ```toml
-[features]
-rmcp_client = true
-
 [mcp_servers.figma]
 url = "https://mcp.figma.com/mcp"
 bearer_token_env_var = "FIGMA_OAUTH_TOKEN"
@@ -111,72 +106,14 @@ tool_timeout_sec = 45
 enabled = true
 ```
 
-## Examples of useful MCPs
+## Examples of useful MCP servers
 
-There is an ever growing list of useful MCP servers that can be helpful while you are working with Codex.
+The list of MCP servers keeps growing. Here are a few common ones:
 
-Some of the most common MCPs we've seen are:
-
-- [Context7](https://github.com/upstash/context7) — connect to a wide range of up-to-date developer documentation
-- Figma [Local](https://developers.figma.com/docs/figma-mcp-server/local-server-installation/) and [Remote](https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/) - access to your Figma designs
-- [Playwright](https://www.npmjs.com/package/@playwright/mcp) - control and inspect a browser using Playwright
-- [Chrome Developer Tools](https://github.com/ChromeDevTools/chrome-devtools-mcp/) — control and inspect a Chrome browser
-- [Sentry](https://docs.sentry.io/product/sentry-mcp/#codex) — access to your Sentry logs
-- [GitHub](https://github.com/github/github-mcp-server) — Control over your GitHub account beyond what git allows (like controlling PRs, issues, etc.)
-
-## Running Codex as an MCP server
-
-Additionally, to connecting Codex to MCP servers, you can also run Codex as an MCP server. This way you can connect it to other MCP clients such as an agent you are building using the [OpenAI Agents SDK](https://openai.github.io/openai-agents-js/guides/mcp/).
-
-To start Codex as an MCP server, you can use the following command:
-
-```bash
-codex mcp-server
-```
-
-You can launch a Codex MCP server with the [Model Context Protocol Inspector](https://modelcontextprotocol.io/legacy/tools/inspector):
-
-```bash
-npx @modelcontextprotocol/inspector codex mcp-server
-```
-
-Send a `tools/list` request and you will see that there are two tools available:
-
-**`codex`** - Run a Codex session. Accepts configuration parameters matching the Codex Config struct. The `codex` tool takes the following properties:
-
-| Property                | Type    | Description                                                                                                                                            |
-| ----------------------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **`prompt`** (required) | string  | The initial user prompt to start the Codex conversation.                                                                                               |
-| `approval-policy`       | string  | Approval policy for shell commands generated by the model: `untrusted`, `on-failure`, `never`.                                                         |
-| `base-instructions`     | string  | The set of instructions to use instead of the default ones.                                                                                            |
-| `config`                | object  | Individual [config settings](https://github.com/openai/codex/blob/main/docs/config.md#config) that will override what is in `$CODEX_HOME/config.toml`. |
-| `cwd`                   | string  | Working directory for the session. If relative, resolved against the server process's current directory.                                               |
-| `include-plan-tool`     | boolean | Whether to include the plan tool in the conversation.                                                                                                  |
-| `model`                 | string  | Optional override for the model name (e.g. `o3`, `o4-mini`).                                                                                           |
-| `profile`               | string  | Configuration profile from `config.toml` to specify default options.                                                                                   |
-| `sandbox`               | string  | Sandbox mode: `read-only`, `workspace-write`, or `danger-full-access`.                                                                                 |
-
-**`codex-reply`** - Continue a Codex session by providing the conversation id and prompt. The `codex-reply` tool takes the following properties:
-
-| Property                        | Type   | Description                                              |
-| ------------------------------- | ------ | -------------------------------------------------------- |
-| **`prompt`** (required)         | string | The next user prompt to continue the Codex conversation. |
-| **`conversationId`** (required) | string | The id of the conversation to continue.                  |
-
-### Trying it Out
-
-<DocsTip>
-  Codex often takes a few minutes to run. To accommodate this, adjust the MCP
-  inspector's Request and Total timeouts to 600000ms (10 minutes) under ⛭
-  Configuration.
-</DocsTip>
-
-Use the MCP inspector and `codex mcp-server` to build a simple tic-tac-toe game with the following settings:
-
-| Property          | Value                                                                                                                  |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `approval-policy` | never                                                                                                                  |
-| `sandbox`         | workspace-write                                                                                                        |
-| `prompt`          | Implement a simple tic-tac-toe game with HTML, Javascript, and CSS. Write the game in a single file called index.html. |
-
-Click "Run Tool" and you should see a list of events emitted from the Codex MCP server as it builds the game.
+- [OpenAI Docs MCP](https://developers.openai.com/resources/docs-mcp): Search and read OpenAI developer docs.
+- [Context7](https://github.com/upstash/context7): Connect to up-to-date developer documentation.
+- Figma [Local](https://developers.figma.com/docs/figma-mcp-server/local-server-installation/) and [Remote](https://developers.figma.com/docs/figma-mcp-server/remote-server-installation/): Access your Figma designs.
+- [Playwright](https://www.npmjs.com/package/@playwright/mcp): Control and inspect a browser using Playwright.
+- [Chrome Developer Tools](https://github.com/ChromeDevTools/chrome-devtools-mcp/): Control and inspect Chrome.
+- [Sentry](https://docs.sentry.io/product/sentry-mcp/#codex): Access Sentry logs.
+- [GitHub](https://github.com/github/github-mcp-server): Manage GitHub beyond what `git` supports (for example, pull requests and issues).

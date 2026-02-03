@@ -1,5 +1,9 @@
 # Source: https://docs.frigade.com/sdk/hooks/user.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.frigade.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # useUser
 
 The `useUser()` hook enables you to add properties and send tracking events to the current user.
@@ -19,7 +23,7 @@ The hook contains the following methods:
 
 ### Tracking events example
 
-```tsx
+```tsx  theme={"system"}
 import { useUser } from "@frigade/react";
 
 function MyComponent() {
@@ -35,7 +39,7 @@ function MyComponent() {
 
 ### Adding properties example
 
-```tsx
+```tsx  theme={"system"}
 import { useUser } from "@frigade/react";
 
 function MyComponent() {
@@ -54,7 +58,7 @@ function MyComponent() {
 
 Properties can also be added to the `userProperties` object via the `Frigade.Provider` component:
 
-```tsx
+```tsx  theme={"system"}
 <Frigade.Provider 
   apiKey="YOUR_API_KEY"
   userID="1234567890"

@@ -16,10 +16,7 @@ Use it on Vespa instances running locally, remotely or in Vespa Cloud - use a to
 
 $ export VESPA\_CLI\_DATA\_PLANE\_TOKEN='value-of-token'
 
-To get started, see the following quick start guides:
-
-- Local Vespa instance: [https://docs.vespa.ai/en/vespa-quick-start.html](https://docs.vespa.ai/en/vespa-quick-start.html)
-- Vespa Cloud: [https://docs.vespa.ai/en/cloud/getting-started.html](https://docs.vespa.ai/en/cloud/getting-started.html)
+To get started, follow [https://docs.vespa.ai/en/basics/deploy-an-application.html](https://docs.vespa.ai/en/basics/deploy-an-application.html)
 
 The complete Vespa documentation is available at https://docs.vespa.ai.
 
@@ -63,5 +60,5 @@ vespa [flags]
 - [vespa version](vespa_version.html) - Show current CLI version and check for updates
 - [vespa visit](vespa_visit.html) - Retrieve and print all documents from Vespa
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

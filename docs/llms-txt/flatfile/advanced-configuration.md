@@ -1,5 +1,9 @@
 # Source: https://flatfile.com/docs/embedding/advanced-configuration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://flatfile.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Advanced Configuration
 
 > Complete configuration reference for embedded Flatfile
@@ -18,7 +22,7 @@ Your publishable key authenticates your application with Flatfile. This key is s
 2. Navigate to **Developer Settings** → **API Keys**
 3. Copy your **Publishable Key** (starts with `pk_`)
 
-```javascript
+```javascript  theme={null}
 // Example usage
 const config = {
   publishableKey: "pk_1234567890abcdef", // Your actual key
@@ -31,7 +35,7 @@ const config = {
 
 Store your publishable key in environment variables rather than hardcoding:
 
-```javascript
+```javascript  theme={null}
 // ✅ Good - using environment variable
 const config = {
   publishableKey: process.env.REACT_APP_FLATFILE_KEY,
@@ -96,7 +100,7 @@ You can customize the embedded Flatfile iframe and its container elements using 
 
 Define these CSS variables in your application's stylesheet to control the appearance of Flatfile's embedded components:
 
-```css
+```css  theme={null}
 :root {
   --ff-primary-color: #4c48ef;
   --ff-secondary-color: #616a7d;
@@ -111,7 +115,7 @@ Define these CSS variables in your application's stylesheet to control the appea
 
 Target these elements to customize the iframe container:
 
-```css
+```css  theme={null}
 /* The default mount element */
 #flatfile_iFrameContainer {
   /* Your custom styles */
@@ -132,7 +136,7 @@ Target these elements to customize the iframe container:
 
 When `displayAsModal` is set to `true`, customize the modal appearance:
 
-```css
+```css  theme={null}
 /* Container styles when displayed as modal */
 .flatfile_displayAsModal {
   padding: 50px !important;
@@ -163,7 +167,7 @@ When `displayAsModal` is set to `true`, customize the modal appearance:
 
 Customize the confirmation dialog that appears when closing Flatfile:
 
-```css
+```css  theme={null}
 /* Modal backdrop */
 .flatfile_outer-shell {
   background-color: var(--ff-bg-fade);
@@ -217,7 +221,7 @@ Customize the confirmation dialog that appears when closing Flatfile:
 
 Customize the error display component:
 
-```css
+```css  theme={null}
 /* Error container */
 .ff_error_container {
   /* Your custom styles */
@@ -281,7 +285,7 @@ URLs for other regions can be found [here](../reference/cli#regional-servers).
 
 ### Basic Space Creation
 
-```javascript
+```javascript  theme={null}
 const config = {
   publishableKey: "pk_1234567890abcdef",
   name: "Customer Data Import",
@@ -298,7 +302,7 @@ const config = {
 
 ### Space Reuse with Access Token
 
-```javascript
+```javascript  theme={null}
 // Client-side: Use space with access token from server
 const config = {
   space: {
@@ -310,7 +314,7 @@ const config = {
 
 ### Advanced UI Customization
 
-```javascript
+```javascript  theme={null}
 const config = {
   publishableKey: "pk_1234567890abcdef",
   mountElement: "custom-flatfile-container",
@@ -368,7 +372,7 @@ const config = {
 
 For development and testing:
 
-```javascript
+```javascript  theme={null}
 // Development configuration
 const config = {
   publishableKey: "pk_test_1234567890abcdef", // publishable key from development environment

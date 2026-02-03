@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/changelog/new-deep-search-type.md
+# Source: https://exa.ai/docs/changelog/new-deep-search-type.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # New Deep Search Type
 
@@ -67,7 +71,6 @@ Deep search returns a `context` field that gives you detailed context:
 ```json  theme={null}
 {
   "requestId": "975a6ff95c69a0bdc558f01c99ede801",
-  "resolvedSearchType": "deep",
   "context": "Title: AI News | Latest AI News, Analysis & Events\nPublished Date: 2025-11-19T10:22:05.000Z\nURL: https://www.artificialintelligence-news.com/\nSummary: This page is a collection of recent news, analysis, and resources related to Artificial Intelligence (AI). It features various blog posts and articles covering topics such as:\n\n*   **Workforce & HR:** Using ChatGPT for team planning and the Royal Navy's use of AI in recruitment.\n*   **Technology & Infrastructure:** The role of Pure Storage and Azure in AI-ready data, and alliances between Microsoft, NVIDIA, and Anthropic for AI compute.\n*   **AI Models & Tools:** Google’s Veo 3 video creation tools, Samsung’s small AI model, and lightweight LLMs for enterprise use in Japan.\n*   **Industry Applications:** AI in asset management (Franklin Templeton & Wand AI), Levi Strauss's DTC model, and accounting firms using AI agents.\n*   **Research & Hardware:** Breakthroughs in analog AI chips for deep learning a....",
   "results": [
     {
@@ -110,8 +113,3 @@ Now you have four search types to choose from:
 * **Neural**: Predicts the most relevant results based on query meaning
 
 We're excited for you to try Deep search and see how it can improve your search results!
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

@@ -2,259 +2,189 @@
 
 # Source: https://docs.stripe.com/dashboard/mobile.md
 
-# Source: https://docs.stripe.com/elements/appearance-api/mobile.md
+# Stripe Dashboard mobile app
 
-# Source: https://docs.stripe.com/dashboard/mobile.md
+Learn how to use the mobile app version of the Stripe Dashboard.
 
-# Source: https://docs.stripe.com/elements/appearance-api/mobile.md
+Stripe offers a mobile application to access the Dashboard for both iOS and Android devices. Use the app to view business metrics, track and manage payments and customers, and initiate payouts. You can also accept in-person payments (such as Tap to Pay) and create payment links, basic invoices, and subscriptions.
 
-# Source: https://docs.stripe.com/dashboard/mobile.md
+## Download the mobile app
 
-# Source: https://docs.stripe.com/elements/appearance-api/mobile.md
+Download the appropriate app for your device:
 
-# Source: https://docs.stripe.com/dashboard/mobile.md
+[iOS on App Store](https://apps.apple.com/app/apple-store/id978516833?pt=91215812&ct=stripe-docs-mobile&mt=8) [Android on Google Play](https://play.google.com/store/apps/details?id=com.stripe.android.dashboard&pli=1)
 
-# Source: https://docs.stripe.com/elements/appearance-api/mobile.md
+## Use the mobile app
 
-# Customize appearance
+When you’re ready to use the mobile app, you must [create a Stripe account](https://dashboard.stripe.com/register) or log into your existing account. If you’re using the iOS version, you can create a Stripe account from the mobile app.
 
-Customize your mobile integration with the Appearance API.
+Then, enable [two-factor authentication](https://support.stripe.com/questions/update-the-phone-number-for-two-step-authentication) and [verify your phone number](https://dashboard.stripe.com/settings/user) in the Dashboard.
 
-# iOS
+## App capabilities
 
-> This is a iOS for when platform is ios. View the full page at https://docs.stripe.com/elements/appearance-api/mobile?platform=ios.
+The app is available in 14 languages, and automatically defaults to the device language set in your system preferences. If you manage a [Connect](https://docs.stripe.com/connect.md) business, the app is also available to connected accounts that have full access to the Stripe Dashboard.
 
-The [mobile Payment Element](https://docs.stripe.com/payments/accept-a-payment.md?platform=ios&mobile-ui=payment-element) supports visual customization, which allows you to match the design of your app. The layout stays consistent, but you can modify colors, fonts, and more by using the [appearance](https://stripe.dev/stripe-ios/stripe-paymentsheet/Classes/PaymentSheet/Configuration.html#/s:6Stripe12PaymentSheetC13ConfigurationV10appearanceAC10AppearanceVvp) property on your [PaymentSheet.Configuration](https://stripe.dev/stripe-ios/stripe-paymentsheet/Classes/PaymentSheet/Configuration.html) object.
+| [Monitor your business](https://docs.stripe.com/dashboard/mobile.md#monitor-business-metrics)                | - Dashboard charts
+  - Payment and customer list, and detail screens
+  - Push notifications for new payments, alerts, and daily summary
+  - Search across your entire business
+  - iOS lock screen widgets
+  - Android home screen widgets |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| [Accept online or in-person payments](https://docs.stripe.com/dashboard/mobile.md#accept-payments-on-mobile) | - Tap to pay
+  - Payment links (iOS only)
+  - Invoices (basic creation only)
+  - Subscriptions (iOS only)
+  - Manual card entry                                                                                                            |
+| [Manage payments](https://docs.stripe.com/dashboard/mobile.md#manage-payments)                               | - Issue refunds
+  - Activate, deactivate, or share payment links (iOS only)
+  - Cancel a subscription (iOS only)
+  - Send and view receipts                                                                                                |
+| [Create payouts](https://docs.stripe.com/dashboard/mobile.md#create-and-manage-payouts)                      | - View balances
+  - Initiate an instant or standard payout
+  - Track the status of bank transfers                                                                                                                                          |
+| [Create and manage customers](https://docs.stripe.com/dashboard/mobile.md#create-and-manage-customers)       | - Create or edit a customer
+  - Add a card on file (iOS only)
+  - Send an email                                                                                                                                                            |
 
-1. Start by customizing the [font](https://docs.stripe.com/elements/appearance-api/mobile.md#fonts-ios)
-1. Customize [colors](https://docs.stripe.com/elements/appearance-api/mobile.md#colors-ios) to match your app
-1. Customize [shapes](https://docs.stripe.com/elements/appearance-api/mobile.md#shapes-ios) like corner radius
-1. Fine-tune [specific components](https://docs.stripe.com/elements/appearance-api/mobile.md#specific-ui-components-ios)
-![](https://b.stripecdn.com/docs-statics-srv/assets/ios-appearance-before-after-example.ad6a9aad238be9b198e9ebbc77ebe1d4.png)
+### Limitations
 
-```swift
-var configuration = PaymentSheet.Configuration()
-// The following code creates the appearance shown in the screenshot abovevar appearance = PaymentSheet.Appearance()
-appearance.font.base = UIFont(name: "AvenirNext-Regular", size: UIFont.systemFontSize)!
-appearance.cornerRadius = 12
-appearance.shadow = .disabled
-appearance.borderWidth = 0.5
-appearance.colors.background = .white
-appearance.colors.primary = UIColor(red: 36/255, green: 36/255, blue: 47/255, alpha: 1)
-appearance.colors.textSecondary = .black
-appearance.colors.componentPlaceholderText = UIColor(red: 115/255, green: 117/255, blue: 123/255, alpha: 1)
-appearance.colors.componentText = .black
-appearance.colors.componentBorder = .clear
-appearance.colors.componentDivider = UIColor(red: 195/255, green: 213/255, blue: 200/255, alpha: 1)
-appearance.colors.componentBackground = UIColor(red: 243/255, green: 248/255, blue: 250/247, alpha: 1)
-appearance.primaryButton.cornerRadius = 20
-configuration.appearance = appearance
-let paymentSheet = PaymentSheet(/* ... */, configuration: configuration)
-```
+The app only displays live mode data. Stripe users with the **View only** role can’t create payments, refunds, or payouts in the app. Inactive Stripe accounts and users with the **Support specialist** role can’t log in to the app. For more information, see [User roles](https://docs.stripe.com/get-started/account/teams/roles.md).
 
-## Fonts 
+## Monitor business metrics
 
-Customize the font by setting [font.base](https://stripe.dev/stripe-ios/stripe-paymentsheet/Classes/PaymentSheet/Appearance/Font.html#/s:6Stripe12PaymentSheetC10AppearanceV4FontV4baseSo6UIFontCvp) to any variant of your custom font at any size and weight. The mobile Payment Element uses the font family of your custom font, but determines sizes and weights itself.
+The app’s home page has various charts providing account information. You can customize this page to stay informed about your financial data.
 
-To increase or decrease the size of all text, set [font.sizeScaleFactor](https://stripe.dev/stripe-ios/stripe-paymentsheet/Classes/PaymentSheet/Appearance/Font.html#/s:6Stripe12PaymentSheetC10AppearanceV4FontV15sizeScaleFactor12CoreGraphics7CGFloatVvp). We multiply font sizes by this value before displaying them. This is useful if your custom font is slightly larger or smaller than the system font.
+The Dashboard displays data in your default currency. If you receive payments in multiple currencies, Stripe home charts convert these to your default currency using sample exchange rates. These conversions are estimates and won’t exactly match with settled amounts because of fluctuating exchange rates.
 
-```swift
-var configuration = PaymentSheet.Configuration()
-configuration.appearance.font.base = UIFont(name: "CustomFont-Regular", size: UIFont.systemFontSize)
-configuration.appearance.font.sizeScaleFactor = 1.15 // Increase the size of all text by 1.15x
-```
+To explore and manage available charts for iOS:
 
-## Colors 
+1. Tap **Edit** next to the **Reports overview** title.
+1. Add, remove, or reorder charts as needed.
 
-Customize the colors in the mobile Payment Element by modifying the color categories defined in [Appearance.Colors](https://stripe.dev/stripe-ios/stripe-paymentsheet/Classes/PaymentSheet/Appearance.html#/s:6Stripe12PaymentSheetC10AppearanceV6ColorsV). Each color category determines the color of one or more components in the UI. For example, [primary](https://stripe.dev/stripe-ios/stripe-paymentsheet/Classes/PaymentSheet/Appearance/Colors.html#/s:6Stripe12PaymentSheetC10AppearanceV6ColorsV7primarySo7UIColorCvp) defines the color of the **Pay** button and selected items like the **Save this card** checkbox. Refer to the diagram below to see some of the UI elements associated with each color category.
-![](https://b.stripecdn.com/docs-statics-srv/assets/ios-appearance-colors.2063c1f71eaa17656639098f3f4d29d6.png)
+To explore and manage available charts for Android:
 
-> To support dark mode, initialize your custom UIColors with [init(dynamicProvider:)](https://developer.apple.com/documentation/uikit/uicolor/3238041-init).
+1. On the **Home** tab, scroll down to the bottom, and click **Add or edit charts**.
+1. Add, remove, or reorder charts as needed.
 
-## Shapes 
+### Push notifications
 
-Besides fonts and colors, you can also customize the [corner radius](https://stripe.dev/stripe-ios/stripe-paymentsheet/Classes/PaymentSheet/Appearance.html#/s:6Stripe12PaymentSheetC10AppearanceV12cornerRadius12CoreGraphics7CGFloatVvp), [border width](https://stripe.dev/stripe-ios/stripe-paymentsheet/Classes/PaymentSheet/Appearance.html#/s:6Stripe12PaymentSheetC10AppearanceV11borderWidth12CoreGraphics7CGFloatVvp), and [shadow](https://stripe.dev/stripe-ios/stripe-paymentsheet/Classes/PaymentSheet/Appearance.html#/s:6Stripe12PaymentSheetC10AppearanceV6shadowAE6ShadowVvp) used throughout the mobile Payment Element.
-![](https://b.stripecdn.com/docs-statics-srv/assets/ios-appearance-shapes.ee37fc31111aa78f26af4045a3857468.png)
+Push notifications are messages sent directly to a user’s device from a mobile app. To [enable push notifications from the app](https://support.stripe.com/questions/enabling-notifications-on-the-stripe-dashboard-mobile-app), you must allow notifications from Stripe in the settings of your phone.
 
-## Specific UI components 
+Types of notifications include:
 
-The sections above describe customization options that affect the mobile Payment Element broadly, across multiple UI components. We also provide customization options specifically for the primary button (for example, the **Pay** button). Refer to [Appearance.PrimaryButton](https://stripe.dev/stripe-ios/stripe-paymentsheet/Classes/PaymentSheet/Appearance/PrimaryButton.html) for the full list of customization options.
+- Daily summary
+- New payments
+- New customers
+- Disputed payments
+- Deposited transfers
 
-Customization options for specific UI components take precedence over other values. For example, `appearance.primaryButton.cornerRadius` overrides the value of `appearance.cornerRadius`.
+### Widgets
 
-> [Let us know](https://github.com/stripe/stripe-ios/issues/new/choose) if you think we need to add more customization options.
+Widgets are available on [iOS](https://support.apple.com/guide/iphone/add-edit-and-remove-widgets-iphb8f1bf206/17.0/ios/17.0) and [Android](https://developer.android.com/develop/ui/views/appwidgets/overview) to provide a faster way to manage your business metrics.
 
+To add widgets to your iOS lock screen:
 
-# Android
+1. Touch and hold the **Lock Screen** until **Customize** button appears at the bottom of the screen
+1. Tap **Customize**, then tap **Lock Screen**.
+1. Select any of the 17+ metrics, and set the time range and account you want.
+1. Tap **Add** or **Done**.
 
-> This is a Android for when platform is android. View the full page at https://docs.stripe.com/elements/appearance-api/mobile?platform=android.
+| Widget type | iOS                                                                                                                                 | Android                                                                                                               |
+| ----------- | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Home        | :cancelCircle:                                                                                                                      | 4 metric widgets, such as:
+  - Daily gross volume
+  - Daily new payments
+  - Daily new customers
+  - Daily net volume |
+| Lock screen | 17 metric widgets, such as:
+  - Monthly recurring revenue
+  - Net volume from new sales
+  - High risk payments
+  - Dispute activity | :cancelCircle:                                                                                                        |
 
-The [mobile Payment Element](https://docs.stripe.com/payments/accept-a-payment.md?platform=android&mobile-ui=payment-element) supports visual customization, which allows you to match the design of your app. The layout stays consistent, but you can modify colors, fonts, and more by creating your [PaymentSheet.Configuration](https://stripe.dev/stripe-android/paymentsheet/com.stripe.android.paymentsheet/-payment-sheet/-configuration/index.html) object with an [appearance](https://stripe.dev/stripe-android/paymentsheet/com.stripe.android.paymentsheet/-payment-sheet/-configuration/index.html#-431946322%2FProperties%2F2002900378) object.
+## Accept payments on mobile
 
-1. Start by customizing the [font](https://docs.stripe.com/elements/appearance-api/mobile.md#fonts-android)
-1. Customize [colors](https://docs.stripe.com/elements/appearance-api/mobile.md#colors-android) to match your app
-1. Customize [shapes](https://docs.stripe.com/elements/appearance-api/mobile.md#shapes-android) like corner radius
-1. Fine-tune [specific components](https://docs.stripe.com/elements/appearance-api/mobile.md#specific-ui-components-android)
-![](https://b.stripecdn.com/docs-statics-srv/assets/android-appearance-before-after-example.acf584a69eb99f47fe0b5ffab24818b8.png)
+You can accept and manage in-person or online payments from the Stripe Dashboard mobile app, such as:
 
-```kotlin
-// The following code creates the appearance shown in the screenshot aboveval appearance = PaymentSheet.Appearance(
-   colorsLight = PaymentSheet.Colors(
-       primary = Color(red = 36, green = 36, blue = 47),
-       surface = Color.White,
-       component = Color(red = 243, green = 248, blue = 245),
-       componentBorder = Color.Transparent,
-       componentDivider = Color.Black,
-       onComponent = Color.Black,
-       subtitle = Color.Black,
-       placeholderText = Color(red = 115, green = 117, blue = 123),
-       onSurface = Color.Black,
-       appBarIcon = Color.Black,
-       error = Color.Red,
-   ),
-   shapes = PaymentSheet.Shapes(
-       cornerRadiusDp = 12.0f,
-       borderStrokeWidthDp = 0.5f
-   ),
-   typography = PaymentSheet.Typography.default.copy(
-       fontResId = R.font.avenir_next
-   ),
-   primaryButton = PaymentSheet.PrimaryButton(
-      shape = PaymentSheet.PrimaryButtonShape(
-         cornerRadiusDp = 20f
-      ),
-   )
-)
-
-// ...
-
-paymentSheet.presentWithPaymentIntent(
-   clientSecret,
-   PaymentSheet.Configuration(
-       merchantDisplayName = merchantName,appearance = appearance
-   )
-)
-
-```
-
-## Fonts 
-
-Customize the font by setting [typography.fontResId](https://stripe.dev/stripe-android/paymentsheet/com.stripe.android.paymentsheet/-payment-sheet/-typography/index.html#-786783041%2FProperties%2F2002900378) to your custom font’s resource ID. The mobile Payment Element uses the font family of your custom font, but determines sizes and weights itself.
-
-To increase or decrease the size of text, set [typography.sizeScaleFactor](https://stripe.dev/stripe-android/paymentsheet/com.stripe.android.paymentsheet/-payment-sheet/-typography/index.html#1477076499%2FProperties%2F2002900378). Stripe multiplies font sizes by this value before displaying them. This setting is useful if your custom font is slightly larger or smaller than the system font.
-
-```kotlin
-val appearance = PaymentSheet.Appearance(
-    // …typography = PaymentSheet.Typography.default.copy(
-        sizeScaleFactor = 1.15f, // Increase the size of all text by 1.15x
-        fontResId = R.font.myFont,
-    ),
-)
-val configuration = PaymentSheet.Configuration.Builder("Example, Inc.")
-    // …
-    .appearance(appearance)
-    .build()
-```
-
-## Colors 
-
-Customize the colors in the mobile Payment Element by modifying the color categories defined in [PaymentSheet.Colors](https://stripe.dev/stripe-android/paymentsheet/com.stripe.android.paymentsheet/-payment-sheet/-colors/index.html). Each color category determines the color of one or more components in the UI. For example, [primary](https://stripe.dev/stripe-android/paymentsheet/com.stripe.android.paymentsheet/-payment-sheet/-colors/index.html#1242160296%2FProperties%2F2002900378) defines the color of the **Pay** button and selected items like the **Save this card** checkbox. Refer to the diagram below to see some of the UI elements associated with each color category.
-
-> To support dark mode, set [appearance.colorsDark](https://stripe.dev/stripe-android/paymentsheet/com.stripe.android.paymentsheet/-payment-sheet/-appearance/index.html#945237406%2FProperties%2F2002900378). You can effectively disable dark mode by setting [appearance.colorsDark](https://stripe.dev/stripe-android/paymentsheet/com.stripe.android.paymentsheet/-payment-sheet/-appearance/index.html#945237406%2FProperties%2F2002900378) to the same value as [appearance.colorsLight](https://stripe.dev/stripe-android/paymentsheet/com.stripe.android.paymentsheet/-payment-sheet/-appearance/index.html#2092498352%2FProperties%2F2002900378)
-![](https://b.stripecdn.com/docs-statics-srv/assets/android-appearance-colors.413c76aaf01a54c25478cb8d7532c7e7.png)
-
-## Shapes 
-
-In addition to customizing fonts and colors, you can also customize the [corner radius](https://stripe.dev/stripe-android/paymentsheet/com.stripe.android.paymentsheet/-payment-sheet/-shapes/index.html#-1129752289%2FProperties%2F2002900378) and [border width](https://stripe.dev/stripe-android/paymentsheet/com.stripe.android.paymentsheet/-payment-sheet/-shapes/index.html#495484314%2FProperties%2F2002900378) used throughout the mobile Payment Element by setting [appearance.shapes](https://stripe.dev/stripe-android/paymentsheet/com.stripe.android.paymentsheet/-payment-sheet/-appearance/index.html#-2108514638%2FProperties%2F2002900378).
-![](https://b.stripecdn.com/docs-statics-srv/assets/android-appearance-shapes.800169ea6a81e0bfdbccbb18bfdf7121.png)
-
-## Specific UI components 
-
-The sections above describe customization options that affect the mobile Payment Element broadly, across multiple UI components. We also provide customization options specifically for the primary button (for example, the **Pay** button). Refer to [Appearance.PrimaryButton](https://stripe.dev/stripe-android/paymentsheet/com.stripe.android.paymentsheet/-payment-sheet/-primary-button/index.html) for the full list of customization options.
-
-Customization options for specific UI components take precedence over other values. For example, `appearance.primaryButton.shapes.cornerRadius` overrides the value of `appearance.shapes.cornerRadius`.
-
-> If you have ideas for additional customization options, [let us know](https://github.com/stripe/stripe-android/issues/new/choose).
-
-
-# React Native
-
-> This is a React Native for when platform is react-native. View the full page at https://docs.stripe.com/elements/appearance-api/mobile?platform=react-native.
-
-The [mobile Payment Element](https://docs.stripe.com/payments/accept-a-payment.md?platform=react-native&mobile-ui=payment-element) supports visual customization, which allows you to match the design of your app. The layout stays consistent, but you can modify colors, fonts, and more by including the `appearance` parameter when you call [initPaymentSheet()](https://stripe.dev/stripe-react-native/api-reference/index.html#initPaymentSheet).
-
-1. Start by customizing the [font](https://docs.stripe.com/elements/appearance-api/mobile.md#fonts-react-native)
-1. Customize [colors](https://docs.stripe.com/elements/appearance-api/mobile.md#colors-react-native) to match your app
-1. Customize [shapes](https://docs.stripe.com/elements/appearance-api/mobile.md#shapes-react-native) like the border radius
-1. Fine-tune [specific components](https://docs.stripe.com/elements/appearance-api/mobile.md#specific-ui-components-react-native)
-![](https://b.stripecdn.com/docs-statics-srv/assets/ios-appearance-before-after-example.ad6a9aad238be9b198e9ebbc77ebe1d4.png)
-
-```js
-// The following code creates the appearance shown in the screenshot aboveconst customAppearance = {
- font: {
-   family:
-     Platform.OS === 'android' ? 'avenirnextregular' : 'AvenirNext-Regular',
- },
- shapes: {
-   borderRadius: 12,
-   borderWidth: 0.5,
- },
- primaryButton: {
-   shapes: {
-    borderRadius: 20,
-   },
- },
- colors: {
-   primary: '#fcfdff',
-   background: '#ffffff',
-   componentBackground: '#f3f8fa',
-   componentBorder: '#f3f8fa',
-   componentDivider: '#000000',
-   primaryText: '#000000',
-   secondaryText: '#000000',
-   componentText: '#000000',
-   placeholderText: '#73757b',
- },
-};
-
-const { error } = await initPaymentSheet({
- ...appearance: customAppearance,
-});
-
-```
-
-## Fonts 
-
-Customize the font by passing a [FontConfig](https://stripe.dev/stripe-react-native/api-reference/modules/PaymentSheet.html#FontConfig) to `font` and setting `family`. On iOS, the value of `family` should be the “PostScript name” found in Font Book. On Android, copy the `.ttf` or `.otf` file from `android/app/src/main/assets/font/<your-font>` to `android/app/src/main/res/font/<your-font>` and use the name of the font file (containing only lowercase, alphanumeric characters). The Mobile Payment Element uses the font family of your custom font, but determines sizes and weights itself.
-
-To increase or decrease the size of text, set `scale`. We multiply font sizes by this value before displaying them. This is useful if your custom font is slightly larger or smaller than the system font.
-
-```js
- ...const appearance: AppearanceParams = {
-   font: {
-     family: Platform.OS === 'android' ? 'avenirnextregular' : 'AvenirNext-Regular',
-     scale: 1.15,
-   },
- },
-```
-
-## Colors 
-
-Customize the colors in the mobile Payment Element by modifying the color categories defined in [Appearance.Colors](https://stripe.dev/stripe-ios/stripe-paymentsheet/Classes/PaymentSheet/Appearance.html#/s:6Stripe12PaymentSheetC10AppearanceV6ColorsV). Each color category determines the color of one or more components in the UI. For example, [primary](https://stripe.dev/stripe-ios/stripe-paymentsheet/Classes/PaymentSheet/Appearance/Colors.html#/s:6Stripe12PaymentSheetC10AppearanceV6ColorsV7primarySo7UIColorCvp) defines the color of the **Pay** button and selected items like the **Save this card** checkbox. Refer to the diagram below to see some of the UI elements associated with each color category.
-![](https://b.stripecdn.com/docs-statics-srv/assets/ios-appearance-colors.2063c1f71eaa17656639098f3f4d29d6.png)
-
-> To support dark mode, initialize your custom UIColors with [init(dynamicProvider:)](https://developer.apple.com/documentation/uikit/uicolor/3238041-init).
-
-## Shapes 
-
-Besides fonts and colors, you can also customize the [border radius](https://stripe.dev/stripe-react-native/api-reference/modules/PaymentSheet.html#AppearanceParams), [border width](https://stripe.dev/stripe-react-native/api-reference/modules/PaymentSheet.html#AppearanceParams), and [shadow](https://stripe.dev/stripe-react-native/api-reference/modules/PaymentSheet.html#ShadowConfig) used throughout the mobile Payment Element.
-![](https://b.stripecdn.com/docs-statics-srv/assets/react-native-appearance-shapes.a71c754a951ea02fff121f584953ba33.png)
-
-## Specific UI components 
-
-The previous sections describe customization options that affect the mobile Payment Element broadly, across multiple UI components. We also provide customization options specifically for the primary button (for example, the **Pay** button). Refer to the [PrimaryButtonConfig](https://stripe.dev/stripe-react-native/api-reference/modules/PaymentSheet.html#PrimaryButtonConfig) for the full list of customization options.
-
-Customization options for specific UI components take precedence over other values. For example, `primaryButton.shapes.borderRadius` overrides the value of `shapes.borderRadius`.
-
-> [Let us know](https://github.com/stripe/stripe-react-native/issues/new/choose) if you think we need to add more customization options.
+| Payment capability                                                                             | Description                                                                                    | iOS | Android        |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | --- | -------------- |
+| [Tap to pay](https://docs.stripe.com/no-code/in-person.md)                                     | Accept in-person payments through a contactless card without needing a hardware reader         | ✓   | ✓              |
+| [Manual card entry](https://support.stripe.com/questions/b7bd8ea6-d20c-40f8-a273-4d6c4902957a) | A transaction where you enter a customer’s card details and process it in the Stripe Dashboard | ✓   | ✓              |
+| [Invoices](https://docs.stripe.com/no-code/invoices.md)                                        | Use invoices to collect one-time or recurring payments from a specific customer.               | ✓   | ✓              |
+| [Payment links](https://docs.stripe.com/no-code/payment-links.md) (including QR codes)         | Reusable links that take your customers to a prebuilt checkout page                            | ✓   | :cancelCircle: |
+| [Subscriptions](https://docs.stripe.com/no-code/subscriptions.md)                              | Recurring payments for your products or services                                               | ✓   | :cancelCircle: |
 
+To accept payments on mobile:
+
+1. Verify you meet the following requirements:
+   - Confirm if your [user role](https://docs.stripe.com/get-started/account/teams/roles.md) can accept payments. Users with the **Support specialist** and **View-only** roles can’t accept payments.
+   - For contactless payments (such as Tap to pay), confirm if your country [accepts in-person payment features](https://docs.stripe.com/terminal/payments/collect-card-payment/supported-card-brands.md).
+   - If you haven’t already, enable [2FA](https://support.stripe.com/questions/update-the-phone-number-for-two-step-authentication), and [verify your phone number](https://dashboard.stripe.com/settings/user).
+1. Open the Stripe Dashboard mobile app, and tap the plus symbol (+).
+1. Select either:
+   - **Charge a card or send an invoice**: To accept **[Tap to pay](https://docs.stripe.com/no-code/in-person.md)**, **Hosted Invoice**, or **Manually Charge Card**.
+   - **Create a payment link**: To share a link or a QR code to a customer
+
+> #### Create subscriptions on iOS
+> 
+> Go to the **Customers** tab, select a customer, and then tap the **create icon (+)** icon in the subscription row. Alternatively, tap the overflow menu (⋯), and select **Create subscription**. You can only select existing products with a recurring price.
+[Watch on YouTube](https://www.youtube.com/watch?v=lL39Tr2gAGU)
+## Manage payments
+
+You can manage payments from your app:
+
+### Issue a refund
+
+1. Tap the **Payments** tab.
+1. Select a successful payment.
+1. Go to the action bar at the bottom, and tap **Refund**.
+1. Enter the amount you want to refund, and select if you want to make a partial refund.
+
+### Send and view receipts
+
+1. Tap the **Payments** tab.
+1. Select a successful payment.
+1. Go to the action bar at the bottom, tap the overflow menu (⋯), and select **View receipt** or **Send receipt**. You can also send a receipt directly after accepting a Tap to Pay payment from the success screen. After you complete the payment, tap **Send receipt**.
+
+### Activate, deactivate, or share payment links (iOS only)
+
+1. Tap the **Payments** tab.
+1. Tap **Payment Links**, and select the active payment link you want to change.
+1. You can copy the link, generate a QR code, or open the payment link in the web Dashboard. If you deactivate a payment link, it immediately deactivates without a confirmation prompt. If you deactivate a payment link by accident, reactivate it by tapping **Activate** in the action bar at the bottom of the screen.
+
+### Cancel a subscription (iOS only)
+
+1. Tap the **Payments** tab.
+1. Tap **Subscriptions**, and select an active subscription.
+1. Go to the action bar at the bottom, and tap **Cancel subscription**.
+1. Confirm if you want to cancel the subscription immediately or at the end of the billing period.
+
+## Create and manage payouts
+
+1. Verify you have a [debit card or external account linked to your Stripe account](https://docs.stripe.com/get-started/account/linked-external-accounts.md#link-financial-account).
+   - Currently, you can only link these accounts through the [web version](https://dashboard.stripe.com/settings/payouts) of the Stripe Dashboard.
+   - If you want to use instant payouts, use a debit card or bank account that [supports instant payouts](https://docs.stripe.com/payouts/instant-payouts-banks.md).
+1. Open the Stripe Dashboard mobile app on your device and log in.
+1. Go to the **Balances** tab at the bottom of the screen. Alternatively, you can tap the plus symbol  (+) at the top right of any tab and select **Pay out funds**.
+1. Check your balance:
+   - **Standard payouts**: If you have a positive balance, you can start the payout process by entering the amount you want to pay out. For more information, see [Receive payouts](https://docs.stripe.com/payouts.md).
+   - **Instant payouts**: Funds acquired from card payments are available as soon as the charge is complete. ACH or bank debits are only available after the payment has settled in the Stripe account. For more information, see [Instant payouts for Stripe Dashboard users](https://docs.stripe.com/payouts/instant-payouts.md).
+1. Complete your payout. The time it takes for funds to settle in the bank account depends on several factors, including whether you select a standard or instant payout:
+   - **Standard payouts**: The time it takes for funds to appear in your account depends on your industry, country, and whether it’s your first payout. It takes around 7 days for funds to settle in the applicable bank account for your first payout.
+   - **Instant payouts**: After Stripe verifies your account is eligible to send instant payouts, funds typically settle in the applicable bank account within 30 minutes.
+
+## Create and manage customers
+
+To create a new customer:
+
+1. Tap the plus icon (+) at the top right of any tab, and select **Create a customer**.
+1. Enter the customer’s name, email address, and a description.
+
+To manage existing customers:
+
+1. Tap the  **Customer** icon (👤) from the app’s navigation bar, and select a customer. You can view their past payments, subscriptions, invoices, and payment cards saved on file.
+1. Go to the action bar at the bottom to:
+   - Add a card on file
+   - Send customers an email
+   - Edit their details, or open the customer details in the web Dashboard

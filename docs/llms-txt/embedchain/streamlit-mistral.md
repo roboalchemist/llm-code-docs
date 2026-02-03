@@ -1,5 +1,9 @@
 # Source: https://docs.embedchain.ai/integration/streamlit-mistral.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.embedchain.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # 🚀 Streamlit
 
 > Integrate with Streamlit to plug and play with any LLM
@@ -12,13 +16,13 @@ In this example, we will learn how to use `mistralai/Mixtral-8x7B-Instruct-v0.1`
 
 Install Embedchain and Streamlit.
 
-```bash
+```bash  theme={null}
 pip install embedchain streamlit
 ```
 
 <Tabs>
   <Tab title="app.py">
-    ```python
+    ```python  theme={null}
     import os
     from embedchain import App
     import streamlit as st
@@ -87,7 +91,7 @@ pip install embedchain streamlit
   </Tab>
 
   <Tab title="config.yaml">
-    ```yaml
+    ```yaml  theme={null}
     app:
         config:
             name: 'mistral-streamlit-app'
@@ -111,6 +115,6 @@ pip install embedchain streamlit
 
 ## To run it locally,
 
-```bash
+```bash  theme={null}
 streamlit run app.py
 ```

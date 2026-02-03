@@ -2,201 +2,134 @@
 
 # Source: https://polar.sh/docs/api-reference/customer-portal/orders/get-invoice.md
 
-# Source: https://polar.sh/docs/api-reference/orders/get-invoice.md
-
-# Source: https://polar.sh/docs/api-reference/customer-portal/orders/get-invoice.md
-
-# Source: https://polar.sh/docs/api-reference/orders/get-invoice.md
-
-# Source: https://polar.sh/docs/api-reference/customer-portal/orders/get-invoice.md
-
-# Source: https://polar.sh/docs/api-reference/orders/get-invoice.md
-
-# Source: https://polar.sh/docs/api-reference/customer-portal/orders/get-invoice.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://polar.sh/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Get Order Invoice
 
 > Get an order's invoice data.
 
-**Scopes**: `customer_portal:read` `customer_portal:write`
+<Note>
+  The invoice must be generated first before it can be retrieved. You should call the [`POST /v1/customer-portal/orders/{id}/invoice`](/api-reference/customer-portal/orders/post-invoice) endpoint to generate the invoice.
+
+  If the invoice is not generated, you will receive a `404` error.
+</Note>
+
 
 ## OpenAPI
 
 ````yaml get /v1/customer-portal/orders/{id}/invoice
+openapi: 3.1.0
+info:
+  title: Polar API
+  summary: Polar HTTP and Webhooks API
+  description: Read the docs at https://polar.sh/docs/api-reference
+  version: 0.1.0
+servers:
+  - url: https://api.polar.sh
+    description: Production environment
+    x-speakeasy-server-id: production
+  - url: https://sandbox-api.polar.sh
+    description: Sandbox environment
+    x-speakeasy-server-id: sandbox
+security:
+  - access_token: []
+tags:
+  - name: public
+    description: >-
+      Endpoints shown and documented in the Polar API documentation and
+      available in our SDKs.
+  - name: private
+    description: >-
+      Endpoints that should appear in the schema only in development to generate
+      our internal JS SDK.
+  - name: mcp
+    description: Endpoints enabled in the MCP server.
 paths:
-  path: /v1/customer-portal/orders/{id}/invoice
-  method: get
-  servers:
-    - url: https://api.polar.sh
-      description: Production environment
-    - url: https://sandbox-api.polar.sh
-      description: Sandbox environment
-  request:
-    security:
-      - title: customer session
-        parameters:
-          query: {}
-          header:
-            Authorization:
-              type: http
-              scheme: bearer
-              description: >-
-                Customer session tokens are specific tokens that are used to
-                authenticate customers on your organization. You can create
-                those sessions programmatically using the [Create Customer
-                Session
-                endpoint](/api-reference/customer-portal/sessions/create).
-          cookie: {}
-    parameters:
-      path:
-        id:
+  /v1/customer-portal/orders/{id}/invoice:
+    get:
+      tags:
+        - customer_portal
+        - orders
+        - public
+      summary: Get Order Invoice
+      description: Get an order's invoice data.
+      operationId: customer_portal:orders:invoice
+      parameters:
+        - name: id
+          in: path
+          required: true
           schema:
-            - type: string
-              required: true
-              title: Id
-              description: The order ID.
-              format: uuid4
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-    codeSamples:
-      - label: Go (SDK)
-        lang: go
-        source: "package main\n\nimport(\n\t\"context\"\n\tpolargo \"github.com/polarsource/polar-go\"\n\t\"os\"\n\t\"github.com/polarsource/polar-go/models/operations\"\n\t\"log\"\n)\n\nfunc main() {\n    ctx := context.Background()\n\n    s := polargo.New()\n\n    res, err := s.CustomerPortal.Orders.Invoice(ctx, operations.CustomerPortalOrdersInvoiceSecurity{\n        CustomerSession: os.Getenv(\"POLAR_CUSTOMER_SESSION\"),\n    }, \"<value>\")\n    if err != nil {\n        log.Fatal(err)\n    }\n    if res.CustomerOrderInvoice != nil {\n        // handle response\n    }\n}"
-      - label: Python (SDK)
-        lang: python
-        source: |-
-          import polar_sdk
-          from polar_sdk import Polar
-
-
-          with Polar() as polar:
-
-              res = polar.customer_portal.orders.invoice(security=polar_sdk.CustomerPortalOrdersInvoiceSecurity(
-                  customer_session="<YOUR_BEARER_TOKEN_HERE>",
-              ), id="<value>")
-
-              # Handle response
-              print(res)
-      - label: Typescript (SDK)
-        lang: typescript
-        source: |-
-          import { Polar } from "@polar-sh/sdk";
-
-          const polar = new Polar();
-
-          async function run() {
-            const result = await polar.customerPortal.orders.invoice({
-              customerSession: process.env["POLAR_CUSTOMER_SESSION"] ?? "",
-            }, {
-              id: "<value>",
-            });
-
-            console.log(result);
-          }
-
-          run();
-      - label: PHP (SDK)
-        lang: php
-        source: |-
-          declare(strict_types=1);
-
-          require 'vendor/autoload.php';
-
-          use Polar;
-          use Polar\Models\Operations;
-
-          $sdk = Polar\Polar::builder()->build();
-
-
-          $requestSecurity = new Operations\CustomerPortalOrdersInvoiceSecurity(
-              customerSession: '<YOUR_BEARER_TOKEN_HERE>',
-          );
-
-          $response = $sdk->customerPortal->orders->invoice(
-              security: $requestSecurity,
-              id: '<value>'
-
-          );
-
-          if ($response->customerOrderInvoice !== null) {
-              // handle response
-          }
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              url:
-                allOf:
-                  - type: string
-                    title: Url
-                    description: The URL to the invoice.
-            title: CustomerOrderInvoice
-            description: Order's invoice data.
-            refIdentifier: '#/components/schemas/CustomerOrderInvoice'
-            requiredProperties:
-              - url
-        examples:
-          example:
-            value:
-              url: <string>
-        description: Successful Response
-    '404':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              error:
-                allOf:
-                  - type: string
-                    const: ResourceNotFound
-                    title: Error
-                    examples:
-                      - ResourceNotFound
-              detail:
-                allOf:
-                  - type: string
-                    title: Detail
-            title: ResourceNotFound
-            refIdentifier: '#/components/schemas/ResourceNotFound'
-            requiredProperties:
-              - error
-              - detail
-        examples:
-          example:
-            value:
-              error: ResourceNotFound
-              detail: <string>
-        description: Order not found.
-    '422':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              detail:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ValidationError'
-                    type: array
-                    title: Detail
-            title: HTTPValidationError
-            refIdentifier: '#/components/schemas/HTTPValidationError'
-        examples:
-          example:
-            value:
-              detail:
-                - loc:
-                    - <string>
-                  msg: <string>
-                  type: <string>
-        description: Validation Error
-  deprecated: false
-  type: path
+            type: string
+            format: uuid4
+            description: The order ID.
+            title: Id
+          description: The order ID.
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerOrderInvoice'
+        '404':
+          description: Order not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceNotFound'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+      security:
+        - customer_session:
+            - customer_portal:read
+            - customer_portal:write
+        - member_session:
+            - customer_portal:read
+            - customer_portal:write
 components:
   schemas:
+    CustomerOrderInvoice:
+      properties:
+        url:
+          type: string
+          title: Url
+          description: The URL to the invoice.
+      type: object
+      required:
+        - url
+      title: CustomerOrderInvoice
+      description: Order's invoice data.
+    ResourceNotFound:
+      properties:
+        error:
+          type: string
+          const: ResourceNotFound
+          title: Error
+          examples:
+            - ResourceNotFound
+        detail:
+          type: string
+          title: Detail
+      type: object
+      required:
+        - error
+        - detail
+      title: ResourceNotFound
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          type: array
+          title: Detail
+      type: object
+      title: HTTPValidationError
     ValidationError:
       properties:
         loc:
@@ -218,5 +151,28 @@ components:
         - msg
         - type
       title: ValidationError
+  securitySchemes:
+    access_token:
+      type: http
+      scheme: bearer
+      description: >-
+        You can generate an **Organization Access Token** from your
+        organization's settings.
+    customer_session:
+      type: http
+      description: >-
+        Customer session tokens are specific tokens that are used to
+        authenticate customers on your organization. You can create those
+        sessions programmatically using the [Create Customer Session
+        endpoint](/api-reference/customer-portal/sessions/create).
+      scheme: bearer
+    member_session:
+      type: http
+      description: >-
+        Member session tokens are specific tokens that are used to authenticate
+        members on your organization. You can create those sessions
+        programmatically using the [Create Member Session
+        endpoint](/api-reference/member-portal/sessions/create).
+      scheme: bearer
 
 ````

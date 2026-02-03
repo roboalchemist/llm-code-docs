@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/ferpa/
+
 # FERPA
 
 The FERPA (Family Educational Rights and Privacy Act) red teaming plugin tests whether AI systems properly protect student education records and comply with US federal privacy regulations for educational institutions.

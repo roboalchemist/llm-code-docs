@@ -4,9 +4,8 @@
 title: Container Log Collection Troubleshooting
 description: Troubleshoot common issues with log collection in containerized environments
 breadcrumbs: >-
-  Docs > Container Monitoring > Container Troubleshooting > Container Log
-  Collection Troubleshooting
-source_url: https://docs.datadoghq.com/troubleshooting/log-collection/index.html
+  Docs > Containers > Container Troubleshooting > Container Log Collection
+  Troubleshooting
 ---
 
 # Container Log Collection Troubleshooting

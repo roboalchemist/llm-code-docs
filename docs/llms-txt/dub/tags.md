@@ -1,5 +1,9 @@
 # Source: https://dub.co/docs/concepts/analytics/tags.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dub.co/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tags data
 
 > Learn how to retrieve analytics data on Dub by tags

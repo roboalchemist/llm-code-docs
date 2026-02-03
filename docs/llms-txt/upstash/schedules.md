@@ -4,147 +4,197 @@
 
 # Source: https://upstash.com/docs/qstash/features/schedules.md
 
-# Source: https://upstash.com/docs/qstash/sdks/ts/examples/schedules.md
-
-# Source: https://upstash.com/docs/qstash/sdks/py/examples/schedules.md
-
-# Source: https://upstash.com/docs/qstash/features/schedules.md
-
-# Source: https://upstash.com/docs/qstash/sdks/ts/examples/schedules.md
-
-# Source: https://upstash.com/docs/qstash/sdks/py/examples/schedules.md
-
-# Source: https://upstash.com/docs/qstash/features/schedules.md
-
-# Source: https://upstash.com/docs/qstash/sdks/ts/examples/schedules.md
-
-# Source: https://upstash.com/docs/qstash/sdks/py/examples/schedules.md
-
-# Source: https://upstash.com/docs/qstash/features/schedules.md
-
-# Source: https://upstash.com/docs/qstash/sdks/ts/examples/schedules.md
-
-# Source: https://upstash.com/docs/qstash/sdks/py/examples/schedules.md
-
-# Source: https://upstash.com/docs/qstash/features/schedules.md
-
-# Source: https://upstash.com/docs/qstash/sdks/ts/examples/schedules.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Schedules
 
-#### Create a schedule that runs every 5 minutes
+In addition to sending a message once, you can create a schedule, and we will
+publish the message in the given period. To create a schedule, you simply need
+to add the `Upstash-Cron` header to your `publish` request.
 
-```typescript  theme={"system"}
-import { Client } from "@upstash/qstash";
+Schedules can be configured using `cron` expressions.
+[crontab.guru](https://crontab.guru/) is a great tool for understanding and
+creating cron expressions.
 
-const client = new Client({ token: "<QSTASH_TOKEN>" });
-await client.schedules.create({
-  destination: "https://my-api...",
-  cron: "*/5 * * * *",
-});
-```
+By default, we evaluate cron expressions in `UTC`.\
+If you want to run your schedule in a specific timezone, see the section on
+[Timezones](#timezones).
 
-#### Create a schedule that runs every hour and sends the result to a [callback URL](/qstash/features/callbacks)
+The following request would create a schedule that will automatically publish
+the message every minute:
 
-```typescript  theme={"system"}
-import { Client } from "@upstash/qstash";
+<CodeGroup>
+  ```typescript Typescript theme={"system"}
+  import { Client } from "@upstash/qstash";
 
-const client = new Client({ token: "<QSTASH_TOKEN>" });
-await client.schedules.create({
-  destination: "https://my-api...",
-  cron: "0 * * * *",
-  callback: "https://my-callback...",
-  failureCallback: "https://my-failure-callback...",
-});
-```
+  const client = new Client({ token: "<QSTASH_TOKEN>" });
+  await client.schedules.create({
+    destination: "https://example.com",
+    cron: "* * * * *",
+  });
+  ```
 
-#### Create a schedule to a URL Group that runs every minute
+  ```python Python theme={"system"}
+  from qstash import QStash
 
-```typescript  theme={"system"}
-import { Client } from "@upstash/qstash";
+  client = QStash("<QSTASH_TOKEN>")
+  client.schedule.create(
+      destination="https://example.com",
+      cron="* * * * *",
+  )
+  ```
 
-const client = new Client({ token: "<QSTASH_TOKEN>" });
-await client.schedules.create({
-  destination: "my-url-group",
-  cron: "* * * * *",
-});
-```
+  ```shell cURL theme={"system"}
+  curl -XPOST \
+      -H 'Authorization: Bearer XXX' \
+      -H "Content-type: application/json" \
+      -H "Upstash-Cron: * * * * *" \
+      -d '{ "hello": "world" }' \
+      'https://qstash.upstash.io/v2/schedules/https://example.com'
+  ```
+</CodeGroup>
 
-#### Get a schedule by schedule id
+All of the [other config options](/qstash/howto/publishing#optional-parameters-and-configuration)
+can still be used.
 
-```typescript  theme={"system"}
-import { Client } from "@upstash/qstash";
+<Info>
+  It can take up to 60 seconds for the schedule to be loaded on an active node and
+  triggered for the first time.
+</Info>
 
-const client = new Client({ token: "<QSTASH_TOKEN>" });
+You can see and manage your schedules in the
+[Upstash Console](https://console.upstash.com/qstash).
 
-const res = await client.schedules.get("scheduleId");
-console.log(res.cron);
-```
+### Scheduling to a URL Group
 
-#### List all schedules
+Instead of scheduling a message to a specific URL, you can also create a
+schedule, that publishes to a URL Group. Simply use either the URL Group name or its id:
 
-```typescript  theme={"system"}
-import { Client } from "@upstash/qstash";
+<CodeGroup>
+  ```typescript Typescript theme={"system"}
+  import { Client } from "@upstash/qstash";
 
-const client = new Client({ token: "<QSTASH_TOKEN>" });
-const allSchedules = await client.schedules.list();
-console.log(allSchedules);
-```
+  const client = new Client({ token: "<QSTASH_TOKEN>" });
+  await client.schedules.create({
+    destination: "urlGroupName",
+    cron: "* * * * *",
+  });
+  ```
 
-#### Create/overwrite a schedule with a user chosen schedule id
+  ```python Python theme={"system"}
+  from qstash import QStash
 
-Note that if a schedule exists with the same id, the old one will be discarded
-and new schedule will be used.
+  client = QStash("<QSTASH_TOKEN>")
+  client.schedule.create(
+      destination="url-group-name",
+      cron="* * * * *",
+  )
+  ```
 
-```typescript Typescript theme={"system"}
-import { Client } from "@upstash/qstash";
+  ```bash cURL theme={"system"}
+  curl -XPOST \
+      -H 'Authorization: Bearer XXX' \
+      -H "Content-type: application/json" \
+      -H "Upstash-Cron: * * * * *" \
+      -d '{ "hello": "world" }' \
+      'https://qstash.upstash.io/v2/schedules/<URL_GROUP_ID_OR_NAME>'
+  ```
+</CodeGroup>
 
-const client = new Client({ token: "<QSTASH_TOKEN>" });
-await client.schedules.create({
-  destination: "https://example.com",
-  scheduleId: "USER_PROVIDED_SCHEDULE_ID",
-  cron: "* * * * *",
-});
-```
+### Scheduling to a Queue
 
-#### Delete a schedule
+You can schedule an item to be added to a queue at a specified time.
 
-```typescript  theme={"system"}
-import { Client } from "@upstash/qstash";
+<CodeGroup>
+  ```bash typescript theme={"system"}
+  curl -XPOST \
+  import { Client } from "@upstash/qstash";
 
-const client = new Client({ token: "<QSTASH_TOKEN>" });
-await client.schedules.delete("scheduleId");
-```
+  const client = new Client({ token: "<QSTASH_TOKEN>" });
+  await client.schedules.create({
+    destination: "https://example.com",
+    cron: "* * * * *",
+    queueName: "yourQueueName",
+  });
+  ```
 
-#### Create a schedule with timeout
+  ```bash cURL theme={"system"}
+  curl -XPOST \
+      -H 'Authorization: Bearer XXX' \
+      -H "Content-type: application/json" \
+      -H "Upstash-Cron: * * * * *" \
+      -H "Upstash-Queue-Name: yourQueueName" \
+      -d '{ "hello": "world" }' \
+      'https://qstash.upstash.io/v2/schedules/https://example.com'
+  ```
+</CodeGroup>
 
-Timeout value in seconds to use when calling a schedule URL ([See `Upstash-Timeout` in Create Schedule page](/qstash/api/schedules/create)).
+### Overwriting an existing schedule
 
-```typescript  theme={"system"}
-import { Client } from "@upstash/qstash";
+You can pass scheduleId explicitly to overwrite an existing schedule or just simply create the schedule
+with the given schedule id.
 
-const client = new Client({ token: "<QSTASH_TOKEN>" });
-await client.schedules.create({
-  url: "https://my-api...",
-  cron: "* * * * *",
-  timeout: "30" // 30 seconds timeout
-});
-```
+<CodeGroup>
+  ```typescript Typescript theme={"system"}
+  import { Client } from "@upstash/qstash";
 
-#### Pause/Resume a schedule
+  const client = new Client({ token: "<QSTASH_TOKEN>" });
+  await client.schedules.create({
+    destination: "https://example.com",
+    scheduleId: "existingScheduleId",
+    cron: "* * * * *",
+  });
+  ```
 
-```typescript  theme={"system"}
-import { Client } from "@upstash/qstash";
-const client = new Client({ token: "<QSTASH_TOKEN>" });
-const scheduleId = "my-schedule"
+  ```shell cURL theme={"system"}
+  curl -XPOST \
+      -H 'Authorization: Bearer XXX' \
+      -H "Content-type: application/json" \
+      -H "Upstash-Cron: * * * * *" \
+      -H "Upstash-Schedule-Id: existingScheduleId" \
+      -d '{ "hello": "world" }' \
+      'https://qstash.upstash.io/v2/schedules/https://example.com'
+  ```
+</CodeGroup>
 
-// pause schedule
-await client.schedules.pause({ schedule: scheduleId });
+### Timezones
 
-// check if paused
-const result = await client.schedules.get(scheduleId);
-console.log(getResult.isPaused) // prints true
+By default, cron expressions are evaluated in `UTC`.\
+You can specify a different timezone using the `CRON_TZ` prefix directly inside
+the cron expression.  All [IANA timezones](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)
+are supported.
 
-// resume schedule
-await client.schedules.resume({ schedule: scheduleId });
-```
+For example, this schedule runs every day at `04:00 AM` in New York time:
+
+<CodeGroup>
+  ```typescript Typescript theme={"system"}
+  import { Client } from "@upstash/qstash";
+
+  const client = new Client({ token: "<QSTASH_TOKEN>" });
+  await client.schedules.create({
+    destination: "https://example.com",
+    cron: "CRON_TZ=America/New_York 0 4 * * *",
+  });
+  ```
+
+  ```python Python theme={"system"}
+  from qstash import QStash
+
+  client = QStash("<QSTASH_TOKEN>")
+  client.schedule.create(
+      destination="https://example.com",
+      cron="CRON_TZ=America/New_York 0 4 * * *",
+  )
+  ```
+
+  ```shell cURL theme={"system"}
+  curl -XPOST \
+      -H 'Authorization: Bearer XXX' \
+      -H "Content-type: application/json" \
+      -H "Upstash-Cron: CRON_TZ=America/New_York 0 4 * * *" \
+      -d '{ "hello": "world" }' \
+      'https://qstash.upstash.io/v2/schedules/https://example.com'
+  ```
+</CodeGroup>

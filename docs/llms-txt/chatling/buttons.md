@@ -2,49 +2,45 @@
 
 # Source: https://docs.chatling.ai/ai-agent/actions/buttons.md
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/inputs/buttons.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.chatling.ai/ai-agent/actions/buttons.md
+# Buttons
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/inputs/buttons.md
+Displays a set of buttons in the chat, such as URL buttons to open a webpage or text buttons to send preset replies that keep the flow moving.
 
-# Source: https://docs.chatling.ai/ai-agent/actions/buttons.md
+## Configuration
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/inputs/buttons.md
+### `Action Name`
 
-# Source: https://docs.chatling.ai/ai-agent/actions/buttons.md
+A short, specific identifier that tells the Agent what this action does (e.g. best\_sellers\_buttons, support\_button).
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/inputs/buttons.md
+### `When to Use`
 
-# Source: https://docs.chatling.ai/ai-agent/actions/buttons.md
+A detailed description of what the action does and when it must be used.
 
-# Source: https://docs.chatling.ai/chatbot/builder/blocks/inputs/buttons.md
+When applicable, you can specify one or more of the following:
 
-# Buttons Block
+* **Positive cues/phrases**: Example utterances and keywords that signal this action (include a few variations).
+* **Preconditions**: What must be true before running.
+* **Do not use when**: Explicit exclusions to avoid false triggers.
 
-> Learn about the Buttons input block and how to set it up in the Builder.
+<img src="https://chatling-assets.b-cdn.net/action-when-to-use-field.jpg" width="450" alt="When to use option" />
 
-The Buttons block is used to display a set of buttons that users can click to trigger actions or provide responses. You can use this block to present multiple options to users and guide them through the conversation flow.
+### `Frequency`
 
-<img src="https://chatling-assets.b-cdn.net/input-buttons-block-preview.png" alt="Buttons block preview" width="400" />
+Specify how often the Agent can invoke this action to avoid overusing it, e.g `Once per chat` or `Whenever applicable`.
 
-Every button in the block has a connector that allows you to link it to other blocks.
+<img src="https://chatling-assets.b-cdn.net/action-frequency-field.jpg" width="450" alt="Frequency option" />
 
-# Configuration
+### `Buttons`
 
-Buttons have the following configuration options:
+Add the buttons that you want to display in the chat. Buttons can be of two types:
 
-* **Label**: The text that appears on the button.
-* **Store selected button in variable**: The variable where the selected button's value will be stored. For example, if the user selects the "Yes" button, you can store the value "Yes" in a variable for later use.
+* **URL button**: Opens a webpage when clicked.
+* **Text button**: Sends a message to the AI agent when clicked. If a `Message` is provided, it will be sent as the message. Otherwise, the button label will be used.
 
-<img src="https://chatling-assets.b-cdn.net/input-buttons-block-editor.jpg" alt="Input buttons block editor" />
+To reorder the buttons, click the drag handle next to a button and move it up or down.
 
-## Connecting buttons
-
-Buttons must be connected to other blocks so that the chatbot can respond to the user's selection.
-
-To connect a button, click the connector next to it and drag it to the group you want to connect it to.
-
-In the example below, when the user clicks the "Software Development" button, the chatbot will display the "Sure thing! Our team can help..." message and continues the flow from there.
-
-<img src="https://chatling-assets.b-cdn.net/connecting-button-blocks.gif" alt="Connect buttons" />
+<img src="https://chatling-assets.b-cdn.net/button-action-buttons-field.jpg" width="450" alt="Buttons option" />

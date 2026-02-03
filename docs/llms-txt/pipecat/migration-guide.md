@@ -10,29 +10,9 @@
 
 # Source: https://docs.pipecat.ai/client/android/migration-guide.md
 
-# Source: https://docs.pipecat.ai/client/react/migration-guide.md
-
-# Source: https://docs.pipecat.ai/client/react-native/migration-guide.md
-
-# Source: https://docs.pipecat.ai/client/migration-guide.md
-
-# Source: https://docs.pipecat.ai/client/js/migration-guide.md
-
-# Source: https://docs.pipecat.ai/client/ios/migration-guide.md
-
-# Source: https://docs.pipecat.ai/client/android/migration-guide.md
-
-# Source: https://docs.pipecat.ai/client/react/migration-guide.md
-
-# Source: https://docs.pipecat.ai/client/react-native/migration-guide.md
-
-# Source: https://docs.pipecat.ai/client/migration-guide.md
-
-# Source: https://docs.pipecat.ai/client/js/migration-guide.md
-
-# Source: https://docs.pipecat.ai/client/ios/migration-guide.md
-
-# Source: https://docs.pipecat.ai/client/android/migration-guide.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # RTVIClient Migration Guide for Android
 
@@ -186,8 +166,3 @@ client.disconnect().await()
    * `sendClientMessage()`
    * `disconnectBot()`
    * `registerFunctionCallHandler()` / `unregisterFunctionCallHandler()` / `unregisterAllFunctionCallHandlers()`
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

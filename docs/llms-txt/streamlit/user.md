@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/user
+
 # Authentication and user info
 
 Streamlit provides native support for user authentication so you can personalize your apps. You can also directly read headers and cookies.

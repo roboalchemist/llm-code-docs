@@ -2,21 +2,9 @@
 
 # Source: https://docs.frigade.com/sdk/hooks/frigade.md
 
-# Source: https://docs.frigade.com/sdk/js/frigade.md
-
-# Source: https://docs.frigade.com/sdk/hooks/frigade.md
-
-# Source: https://docs.frigade.com/sdk/js/frigade.md
-
-# Source: https://docs.frigade.com/sdk/hooks/frigade.md
-
-# Source: https://docs.frigade.com/sdk/js/frigade.md
-
-# Source: https://docs.frigade.com/sdk/hooks/frigade.md
-
-# Source: https://docs.frigade.com/sdk/js/frigade.md
-
-# Source: https://docs.frigade.com/sdk/hooks/frigade.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.frigade.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # useFrigade
 
@@ -30,7 +18,7 @@ It should rarely be used as the provided [useFlow](./flow), [useUser](./user), a
 
 ### Example usage:
 
-```tsx
+```tsx  theme={"system"}
 import { useFrigade } from "@frigade/react";
 
 function MyComponent() {

@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/getting-started/quick-start.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Quickstart
 
 > Get your first LLM request logged with Helicone in under 2 minutes using the AI Gateway.

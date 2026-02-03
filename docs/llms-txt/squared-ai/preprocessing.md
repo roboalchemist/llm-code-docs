@@ -1,5 +1,9 @@
 # Source: https://docs.squared.ai/activation/ai-modelling/preprocessing.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.squared.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Preprocessing
 
 > Configure transformations on input data before sending it to your AI/ML model.

@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/client/js/api-reference/callbacks.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Callbacks and events
 
 export const TransportTable = rows => {
@@ -739,8 +743,3 @@ pcClient.on(RTVIEvent.BotReady, () => {
 ## Transport Compatibility
 
 <TransportTable rows={callbacks()} />
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

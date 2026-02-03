@@ -2,10 +2,7 @@
 
 # Delete Flag
 
-```
-DELETE 
-/v1/settings/:settingId
-```
+Copy page
 
 This endpoint removes a Feature Flag or Setting from a specified Config, identified by the `configId` parameter.
 

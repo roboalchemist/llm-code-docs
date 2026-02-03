@@ -8,8 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > APM > Application Instrumentation > Dynamic Instrumentation > Dynamic
   Instrumentation Sensitive Data Scrubbing
-source_url: >-
-  https://docs.datadoghq.com/trace_collection/dynamic_instrumentation/sensitive-data-scrubbing/index.html
 ---
 
 # Dynamic Instrumentation Sensitive Data Scrubbing

@@ -2,6 +2,8 @@
 
 # CircleCI Orb - Scan your source code for feature flags
 
+Copy page
+
 This section describes how to use ConfigCat's [CircleCI Orb](https://circleci.com/developer/orbs/orb/configcat/scan-repository) to automatically scan your source code for feature flag and setting usages and upload the found code references to ConfigCat. You can find more information about CircleCI Orbs [here](https://circleci.com/orbs/).
 
 ## Setup[​](#setup "Direct link to Setup")
@@ -10,11 +12,11 @@ This section describes how to use ConfigCat's [CircleCI Orb](https://circleci.co
 
    ![CircleCI Orb secrets](/docs/assets/cli/scan/cco_secrets.png)
 
-2. Get your selected [Config's ID](https://configcat.com/docs/docs/advanced/code-references/overview/.md#config-id).
+2. Get your selected [Config's ID](https://configcat.com/docs/advanced/code-references/overview.md#config-id).
 
 3. Create a new CircleCI YAML config in your repository under the `.circleci` folder, and put the following snippet into it. Don't forget to replace the `PASTE-YOUR-CONFIG-ID-HERE` value with your actual Config ID.
 
-   ```
+   ```yaml
    version: 2.1
 
    orbs:
@@ -36,6 +38,7 @@ This section describes how to use ConfigCat's [CircleCI Orb](https://circleci.co
              # alias-patterns: (\w+) = :CC_KEY,const (\w+) = feature_flags\.enabled\(:CC_KEY\) # optional
              # usage-patterns: feature_flags\.enabled\(:CC_KEY\)   # optional
              # verbose: true           # optional
+
    ```
 
 4. Commit & push your changes.

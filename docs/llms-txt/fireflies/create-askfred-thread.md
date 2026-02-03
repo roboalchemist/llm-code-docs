@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/graphql-api/mutation/create-askfred-thread.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Create AskFred Thread
 
 > Create a new AskFred conversation thread with a question about your meetings
@@ -25,11 +29,11 @@ The `createAskFredThread` mutation allows you to start a new AskFred conversatio
 
       <Expandable>
         <ResponseField name="start_time" type="String">
-          Filter meetings from this date/time (ISO 8601 format)
+          Filter meetings from this date/time (ISO 8601 format). Cannot be more than 1 year in the past. If not provided, defaults to 30 days before end\_time.
         </ResponseField>
 
         <ResponseField name="end_time" type="String">
-          Filter meetings until this date/time (ISO 8601 format)
+          Filter meetings until this date/time (ISO 8601 format). If not provided, defaults to today.
         </ResponseField>
 
         <ResponseField name="channel_ids" type="[String]">
@@ -270,6 +274,8 @@ mutation CreateThreadWithFilters($input: CreateAskFredThreadInput!) {
   <ul>
     <li>Query exceeds 2000 character limit or is empty</li>
     <li>Both transcript\_id and filters are provided (only one is allowed)</li>
+    <li>start\_time is more than 1 year in the past</li>
+    <li>start\_time is not before end\_time</li>
   </ul>
 </Accordion>
 
@@ -296,8 +302,3 @@ mutation CreateThreadWithFilters($input: CreateAskFredThreadInput!) {
     View all your AskFred conversation threads
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.fireflies.ai/llms.txt

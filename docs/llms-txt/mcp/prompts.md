@@ -1,12 +1,14 @@
 # Source: https://modelcontextprotocol.io/specification/2025-11-25/server/prompts.md
 
-# Source: https://modelcontextprotocol.io/specification/2025-06-18/server/prompts.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://modelcontextprotocol.io/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Prompts
 
 <div id="enable-section-numbers" />
 
-<Info>**Protocol Revision**: 2025-06-18</Info>
+<Info>**Protocol Revision**: 2025-11-25</Info>
 
 The Model Context Protocol (MCP) provides a standardized way for servers to expose prompt
 templates to clients. Prompts allow servers to provide structured messages and
@@ -23,7 +25,7 @@ interface, which allows users to naturally discover and invoke available prompts
 
 For example, as slash commands:
 
-<img src="https://mintcdn.com/mcp/4ZXF1PrDkEaJvXpn/specification/2025-06-18/server/slash-command.png?fit=max&auto=format&n=4ZXF1PrDkEaJvXpn&q=85&s=7f003e36d881dd6f3e5b8cbdd85e5ca5" alt="Example of prompt exposed as slash command" data-og-width="293" width="293" data-og-height="106" height="106" data-path="specification/2025-06-18/server/slash-command.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mcp/4ZXF1PrDkEaJvXpn/specification/2025-06-18/server/slash-command.png?w=280&fit=max&auto=format&n=4ZXF1PrDkEaJvXpn&q=85&s=603a7ec1db6f7630749e0b6d0558ea43 280w, https://mintcdn.com/mcp/4ZXF1PrDkEaJvXpn/specification/2025-06-18/server/slash-command.png?w=560&fit=max&auto=format&n=4ZXF1PrDkEaJvXpn&q=85&s=b9e7dae545ed3b1ffbe8dde360883993 560w, https://mintcdn.com/mcp/4ZXF1PrDkEaJvXpn/specification/2025-06-18/server/slash-command.png?w=840&fit=max&auto=format&n=4ZXF1PrDkEaJvXpn&q=85&s=8c25c68eebccb025ffe8aed6d58f19f2 840w, https://mintcdn.com/mcp/4ZXF1PrDkEaJvXpn/specification/2025-06-18/server/slash-command.png?w=1100&fit=max&auto=format&n=4ZXF1PrDkEaJvXpn&q=85&s=a19b889ed688569f49a68311d5e88dfa 1100w, https://mintcdn.com/mcp/4ZXF1PrDkEaJvXpn/specification/2025-06-18/server/slash-command.png?w=1650&fit=max&auto=format&n=4ZXF1PrDkEaJvXpn&q=85&s=571df0a228861e612304c2ebe829b06c 1650w, https://mintcdn.com/mcp/4ZXF1PrDkEaJvXpn/specification/2025-06-18/server/slash-command.png?w=2500&fit=max&auto=format&n=4ZXF1PrDkEaJvXpn&q=85&s=8d315246806794b5496c4aaa2cf28e51 2500w" />
+<img src="https://mintcdn.com/mcp/uzELntid9uQ-QMAr/specification/2025-11-25/server/slash-command.png?fit=max&auto=format&n=uzELntid9uQ-QMAr&q=85&s=965e4fa2273b376721d6f26c396c69c5" alt="Example of prompt exposed as slash command" data-og-width="293" width="293" data-og-height="106" height="106" data-path="specification/2025-11-25/server/slash-command.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/mcp/uzELntid9uQ-QMAr/specification/2025-11-25/server/slash-command.png?w=280&fit=max&auto=format&n=uzELntid9uQ-QMAr&q=85&s=51fb139a5c4a12add1174c44e12dd350 280w, https://mintcdn.com/mcp/uzELntid9uQ-QMAr/specification/2025-11-25/server/slash-command.png?w=560&fit=max&auto=format&n=uzELntid9uQ-QMAr&q=85&s=0ca354c56c5060a8eb6bbd17326e15f9 560w, https://mintcdn.com/mcp/uzELntid9uQ-QMAr/specification/2025-11-25/server/slash-command.png?w=840&fit=max&auto=format&n=uzELntid9uQ-QMAr&q=85&s=850fb09a0619b6e82f4d3daa953ccf6e 840w, https://mintcdn.com/mcp/uzELntid9uQ-QMAr/specification/2025-11-25/server/slash-command.png?w=1100&fit=max&auto=format&n=uzELntid9uQ-QMAr&q=85&s=b143b93459eb1e1605a877d026fe534d 1100w, https://mintcdn.com/mcp/uzELntid9uQ-QMAr/specification/2025-11-25/server/slash-command.png?w=1650&fit=max&auto=format&n=uzELntid9uQ-QMAr&q=85&s=c62405919017d53157e779941039c0ea 1650w, https://mintcdn.com/mcp/uzELntid9uQ-QMAr/specification/2025-11-25/server/slash-command.png?w=2500&fit=max&auto=format&n=uzELntid9uQ-QMAr&q=85&s=1bfb5cd5578808dd0b8502fbe17e0d8b 2500w" />
 
 However, implementors are free to expose prompts through any interface pattern that suits
 their needs—the protocol itself does not mandate any specific user interaction
@@ -32,7 +34,7 @@ model.
 ## Capabilities
 
 Servers that support prompts **MUST** declare the `prompts` capability during
-[initialization](/specification/2025-06-18/basic/lifecycle#initialization):
+[initialization](/specification/2025-11-25/basic/lifecycle#initialization):
 
 ```json  theme={null}
 {
@@ -52,7 +54,7 @@ available prompts changes.
 ### Listing Prompts
 
 To retrieve available prompts, clients send a `prompts/list` request. This operation
-supports [pagination](/specification/2025-06-18/server/utilities/pagination).
+supports [pagination](/specification/2025-11-25/server/utilities/pagination).
 
 **Request:**
 
@@ -85,6 +87,13 @@ supports [pagination](/specification/2025-06-18/server/utilities/pagination).
             "description": "The code to review",
             "required": true
           }
+        ],
+        "icons": [
+          {
+            "src": "https://example.com/review-icon.svg",
+            "mimeType": "image/svg+xml",
+            "sizes": ["any"]
+          }
         ]
       }
     ],
@@ -96,7 +105,7 @@ supports [pagination](/specification/2025-06-18/server/utilities/pagination).
 ### Getting a Prompt
 
 To retrieve a specific prompt, clients send a `prompts/get` request. Arguments may be
-auto-completed through [the completion API](/specification/2025-06-18/server/utilities/completion).
+auto-completed through [the completion API](/specification/2025-11-25/server/utilities/completion).
 
 **Request:**
 
@@ -179,6 +188,7 @@ A prompt definition includes:
 * `name`: Unique identifier for the prompt
 * `title`: Optional human-readable name of the prompt for display purposes.
 * `description`: Optional human-readable description
+* `icons`: Optional array of icons for display in user interfaces
 * `arguments`: Optional list of arguments for customization
 
 ### PromptMessage
@@ -190,8 +200,8 @@ Messages in a prompt can contain:
 
 <Note>
   All content types in prompt messages support optional
-  [annotations](/specification/2025-06-18/server/resources#annotations) for
-  metadata about audience, priority, and modification times.
+  [annotations](./resources#annotations) for metadata about audience, priority,
+  and modification times.
 </Note>
 
 #### Text Content

@@ -5,13 +5,17 @@
 Enable Jira Sync while trialing or transitioning to Linear to keep Jira spaces up to date.
 
 > [!NOTE]
-> To complete a one-time import from Jira to Linear, use the CSV or API credential options in [importer](https://linear.app/docs/import-issues#jira). Imported issues import as synced only if the Jira integration is [configured](https://linear.app/docs/jira#configure) prior to completing your import. Switching from another tool? [Follow our manual.](https://linear.app/switch)
+> For pre-existing issues, you can complete a one-time import from Jira to Linear, use the CSV or API credential options in our [importer](https://linear.app/docs/import-issues#jira).   
+>   
+> Imported issues and projects import as synced only if the Jira integration is [configured](https://linear.app/docs/jira#configure) prior to completing your import. Switching from another tool? [Follow our manual.](https://linear.app/switch)
 
 ![Linear and Jira logos](https://webassets.linear.app/images/ornj730p/production/adbef6f35402b94c3522a0f38ac578573dcb6f57-2880x1620.png?q=95&auto=format&dpr=2)
 
 ## Overview
 
-Some companies choose to [import issues](https://linear.app/docs/import-issues#jira) and switch to Linear immediately; others prefer to trial Linear on a small team first or need some time to make the full transition. For the latter cases, we built Jira Sync. This feature allows you to connect Jira spaces to Linear teams, so that new issues created in Jira or Linear are kept current in both places.
+Some companies choose to [import issues and projects](https://linear.app/docs/import-issues#jira) and switch to Linear immediately; others prefer to trial Linear on a small team first or need some time to make the full transition. For the latter cases, we built Jira Sync. 
+
+This feature allows you to connect Jira spaces to Linear teams, so that new issues and projects created in Jira or Linear are kept current in both places.
 
 ## Permissions
 
@@ -67,6 +71,10 @@ Running a Jira import will not automatically import issues as synced _unless_ yo
 
 Once the integration is enabled, any new issue created in a linked Jira space or Linear team will create a synced version of that issue in the other service.
 
+Jira epics automatically sync as Linear projects, maintaining parent-child relationships between issues and their projects/epics.
+
+#### Issues:
+
 Name in Linear | Name in Jira
 --- | ---
 Title | Title
@@ -78,9 +86,20 @@ Status** | Status**
 Labels*** | Labels***
 Due date | Due date
 
+### Epics/Projects:
+
+Name in Linear | Name in Jira
+--- | ---
+Project title | Epic title
+Project status | Epic status
+Project labels*** | Epic labels***
+Project priority | Epic priority
+Project description | Epic description
+Project lead* | Epic assignee*
+
 <details>
 <summary>Special cases</summary>
-* For these fields to sync successfully, the relevant user must connect their Jira account to Linear in Settings > Integrations > Jira Link. If no connection exists, the Assignee field will be unassigned, and/or the creator field will be the user who configured Jira Link.
+* For these fields to sync successfully, the relevant user must connect their Jira account to Linear in Settings > Integrations > Jira > Connect personal account. If no connection exists, the Assignee field will be unassigned, and/or the creator field will be the user who configured Jira.
 
 ** Deleting a synced issue in either Jira or Linear will not delete the issue in the other direction, or otherwise affect status in the synced issue.
 
@@ -97,9 +116,9 @@ When syncing uni-directionally, issues created in Jira are also created in Linea
 
 When syncing bi-directionally, creating an issue in either service will create a synced copy in the other. Updating the synced copy in either service will sync changes back to the other issue.
 
-### Issue sync banners
+### Sync banners
 
-Once an issue is synced between Jira and Linear, a banner will appear at the top of the issue to make this clear. The banners will display information to show current sync status or will surface any errors with syncing.
+Once an issue or project is synced between Jira and Linear, a banner will appear at the top of the issue to make this clear. The banners will display information to show current sync status or will surface any errors with syncing.
 
 ![Jira synced issue banner](https://webassets.linear.app/images/ornj730p/production/08bd834bb5c1c5ae41ac68192a284a82363690f7-2874x150.png?q=95&auto=format&dpr=2)
 
@@ -109,7 +128,7 @@ There are a number of features in Jira that Linear has chosen not to pursue as a
 
 <details>
 <summary>Required fields</summary>
-If a Jira project's workflow demands required fields, we will not create the synced issue in Linear. In the case where an issue has been created in Linear before required fields are enforced in Jira, we'll send an error to the Linear issue as a comment to surface the problem.
+If a Jira project's workflow demands required fields, we will not create the synced issue or project in Linear. In the case where an issue has been created in Linear before required fields are enforced in Jira, we'll send an error to the Linear issue as a comment to surface the problem.
 </details>
 
 <details>
@@ -128,7 +147,12 @@ If you update a synced Linear issue in a way that violates Jira constraint, the 
 
 <details>
 <summary>Components</summary>
-In a synced Linear issue, components appear as labels - "Component: Engineering" for instance. These labels cannot be grouped or deleted. Removing a component label from an issue in Linear will remove the component in the synced Jira issue.
+In a synced Linear issue or project, components appear as labels - "Component: Engineering" for instance. These labels cannot be grouped or deleted. Removing a component label from an issue in Linear will remove the component in the synced Jira issue.
+</details>
+
+<details>
+<summary>Hierarchy Limitations</summary>
+Linear and Jira have different restrictions for issue and project hierarchy that can lead to discrepancies. If you remove a parent relationship (Project > Issue > Sub-issue) in Linear that would violate Jira's hierarchy constraints (Epic > Story/Bug/Task > Sub-issue), the sync may fail or show discrepancies.
 </details>
 
 ### Issue filter
@@ -145,11 +169,11 @@ Here is an example to only sync issues with the label `Bug`:
 
 ![image of editing a webhook in Jira to restrict returned results](https://webassets.linear.app/images/ornj730p/production/82c1152a9b627e4b7ebf326122e3dc08a9deea5c-2096x316.png?q=95&auto=format&dpr=2)
 
-### Pre-sync issues in Jira
+### Pre-existing content in Jira
 
-Once configured, Jira Sync will create issues in Linear when issues are created in a synced Jira space. Issues belonging to that synced space from before the sync was configured will not create issues in Linear.
+Once configured, Jira Sync will create issues and projects in Linear when issues and epics are created in a synced Jira space. Issues belonging to that synced space from before the sync was configured will not create issues in Linear.
 
-However, when those issues receive updates in Jira, the updates will prompt those issues to be created and synced in Linear.
+However, when those older issues and epics receive updates in Jira, the updates will prompt those issues to be created and synced in Linear. 
 
 ### FAQ
 
@@ -244,4 +268,9 @@ Fill the values to:
 If a parent team is linked to Jira bidirectionally, issues created in that parent team will be created in Jira. Issues created in its sub-teams will not be created in the linked Jira team. 
 
 The sub-teams themselves may be linked individually to Jira spaces however, and this will work independent of the parent team's sync settings.
+</details>
+
+<details>
+<summary>Do epics that were previously imported or synced as issues automatically sync as projects? </summary>
+No. Epics that were previously imported as projects or synced as issues will not retroactively sync as projects. Only newly created epics (after bi-directional sync is enabled) will sync as Linear projects going forward.
 </details>

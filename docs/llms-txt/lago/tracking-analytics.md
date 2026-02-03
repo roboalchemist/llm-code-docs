@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/lago-self-hosted/tracking-analytics.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tracking & Analytics
 
 ## Why does Lago need data?[](#why-does-lago-need-data "Direct link to heading")

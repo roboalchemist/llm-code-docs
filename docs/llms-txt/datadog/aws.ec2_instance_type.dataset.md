@@ -4,8 +4,6 @@
 title: EC2 Instance Types
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > EC2 Instance Types
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.ec2_instance_type.dataset/index.html
 ---
 
 # EC2 Instance Types

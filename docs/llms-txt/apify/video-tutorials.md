@@ -12,7 +12,7 @@
 2. *Enhanced communication*. Live streams offer a unique opportunity for direct interaction. You can answer questions, address concerns, and gather immediate feedback from your audience, creating a more dynamic and personal connection.
 3. *Increased reach*. Platforms like YouTube and TikTok have massive user bases, giving you access to a broad audience. Videos can also be shared across various social media channels, extending your reach even further.
 
-Learn more about the rules of live streams in our next section: https://docs.apify.com/academy/actor-marketing-playbook/promote-your-actor/webinars.md
+Learn more about the rules of live streams in our next section: [Webinars](https://docs.apify.com/academy/actor-marketing-playbook/promote-your-actor/webinars.md)
 
 ## Optimizing videos for SEO
 

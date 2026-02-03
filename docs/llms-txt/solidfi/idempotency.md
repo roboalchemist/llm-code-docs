@@ -1,5 +1,9 @@
 # Source: https://docs.solidfi.com/v2/api-reference/getting-started/idempotency.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.solidfi.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Idempotency
 
 > Solid Platform supports idempotency
@@ -8,7 +12,7 @@ The Solid Platform supports idempotency to help prevent you from accidentally ca
 
 An idempotency key uniquely identifies each API request. You must pass the idempotency key in the header (idempotency-key) so that the Solid platform can identify the API request. This key should be unique, preferably an internal UUID you store on your database.
 
-```bash Example
+```bash Example theme={null}
 curl --request POST \ 
 --url https://api.sandbox.solidfi.com/v2/accounts/sub_account_holder \ 
 --header 'Content-Type: application/json' \ 

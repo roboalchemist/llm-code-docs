@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/plugins/shell-injection/
+
 # Shell Injection Plugin
 
 The Shell Injection plugin is designed to test an AI system's vulnerability to attacks that attempt to execute unauthorized shell commands.

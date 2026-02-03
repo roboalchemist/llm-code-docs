@@ -1,5 +1,9 @@
 # Source: https://docs.pipecat.ai/deployment/pipecat-cloud/sdk-reference/exceptions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Error Handling
 
 > Managing errors with the Pipecat Cloud Python SDK
@@ -144,8 +148,3 @@ try:
 except InvalidError as e:
     print(f"Invalid operation: {e}")
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/integrations/ai/genkit.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # GenKit
 
 export const TsFrameworksGenkitUsage = "import { lancedbIndexerRef, lancedb, lancedbRetrieverRef, WriteMode } from \"genkitx-lancedb\";\nimport { textEmbedding004, vertexAI } from \"@genkit-ai/vertexai\";\nimport { gemini } from \"@genkit-ai/vertexai\";\nimport { z, genkit } from \"genkit\";\nimport { Document } from \"genkit/retriever\";\nimport { chunk } from \"llm-chunk\";\nimport { readFile } from \"fs/promises\";\nimport path from \"path\";\nimport pdf from \"pdf-parse/lib/pdf-parse\";\n\nconst ai = genkit({\n  plugins: [\n    // vertexAI provides the textEmbedding004 embedder\n    vertexAI(),\n\n    // the local vector store requires an embedder to translate from text to vector\n    lancedb([\n      {\n        dbUri: \".db\", // optional lancedb uri, default to .db\n        tableName: \"table\", // optional table name, default to table\n        embedder: textEmbedding004,\n      },\n    ]),\n  ],\n});\n";
@@ -77,8 +81,3 @@ You can also create custom retriever flows, utilizing more options and features 
 Now using our retrieval flow, we can ask question about the ingsted PDF
 
 <img width="1306" alt="Screenshot 2025-05-11 at 7 18 45 PM" src="https://github.com/user-attachments/assets/86c66b13-7c12-4d5f-9d81-ae36bfb1c346" />
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

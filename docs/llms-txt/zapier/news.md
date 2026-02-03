@@ -1,12 +1,55 @@
 # Source: https://docs.zapier.com/platform/news.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Platform News
 
 > Changelogs and occasional tips
 
-{/* To add an entry here, write a post in platform/news/<year> and run `npm run render-news` */}
+{/* To add an entry here, write a post in platform/news/<year> and run `pnpm run render-news` */}
 
-We post updates and tips about the Developer Platform here. Subscribe to our [RSS feed](/platform/news.xml) to stay informed.
+We post updates and tips about the Developer Platform here. These formats are also available:
+
+* Subscribe to our [RSS feed](/platform/news.xml) to stay informed
+* Read the [single page view](/platform/news/single-page) if you prefer to search and scroll
+
+<Card title="What's changed in v18.1.1" icon="newspaper" href="/platform/news/2026/v18.1.1" horizontal>
+  Bug fix for missing HTTP error logs and security updates.
+
+  *Released: 2026-01-29*
+</Card>
+
+<Card title="What's changed in v18.1.0" icon="newspaper" href="/platform/news/2026/v18.1.0" horizontal>
+  New `invoke --remote` flag and a fix on package manager detection.
+
+  *Released: 2026-01-19*
+</Card>
+
+<Card title="What's changed in v18.0.7" icon="newspaper" href="/platform/news/2026/v18.0.7" horizontal>
+  Publishing process improvements, refactoring, and `sample` field added to dynamic `outputFields`.
+
+  *Released: 2026-01-07*
+</Card>
+
+<Card title="What's changed in v18.0.6" icon="newspaper" href="/platform/news/2025/v18.0.6" horizontal>
+  Package manager detection from `zapier build`
+
+  *Released: 2025-12-24*
+</Card>
+
+<Card title="What's changed in v18.0.5" icon="newspaper" href="/platform/news/2025/v18.0.5" horizontal>
+  A security fix on the CLI.
+
+  *Released: 2025-12-10*
+</Card>
+
+<Card title="Incident: Unauthorized Access to Zapier NPM Packages" icon="newspaper" href="/platform/news/2025/npm-package-sec-inc" horizontal>
+  Please review the enclosed list of packages and recommendations for Zapier developers.
+
+  *Released: 2025-11-24*
+</Card>
 
 <Card title="What's changed in v18.0.1" icon="newspaper" href="/platform/news/2025/v18.0.1" horizontal>
   Bug fixes for npx resolution and TypeScript typing for line items.
@@ -32,42 +75,6 @@ We post updates and tips about the Developer Platform here. Subscribe to our [RS
   *Released: 2025-10-21*
 </Card>
 
-<Card title="Labeled Versions now available in CLI and Platform UI" icon="newspaper" href="/platform/news/2025/labeled-versions" horizontal>
-  Integration version numbers can now include a label, to enable you to develop and test changes without committing to a [semantic version number](/platform/manage/versions#version-numbering) until you're ready.
-
-  *Released: 2025-10-21*
-</Card>
-
-<Card title="What's changed in v17.9.0" icon="newspaper" href="/platform/news/2025/v17.9.0" horizontal>
-  Bugfix for snapshot flag, improvements for `zapier env`.
-
-  *Released: 2025-10-20*
-</Card>
-
-<Card title="What's changed in v17.8.0" icon="newspaper" href="/platform/news/2025/v17.8.0" horizontal>
-  Added flexibility for Search Pagination and cleaning up some dependencies. Zapier push now supports snapshot publishing.
-
-  *Released: 2025-10-07*
-</Card>
-
-<Card title="Migration UI now supports individual and organization-level migrations" icon="newspaper" href="/platform/news/2025/organization-user-migration-in-ui" horizontal>
-  Enhanced migration UI with granular control options for individual and organization-level migrations.
-
-  *Released: 2025-10-02*
-</Card>
-
-<Card title="What's changed in v17.7.2" icon="newspaper" href="/platform/news/2025/v17.7.2" horizontal>
-  Fixed issues with typing and semver restriction.
-
-  *Released: 2025-09-17*
-</Card>
-
-<Card title="What's changed in v17.7.1" icon="newspaper" href="/platform/news/2025/v17.7.1" horizontal>
-  Improved `zapier scaffold`, `zapier init`, `zapier validate`, and `zapier invoke auth`. Also fixed issues with uncensored sensitive information and field grouping schema.
-
-  *Released: 2025-09-10*
-</Card>
-
 ***
 
-Looking for older news? [2025](/platform/news/2025), and [old changelogs prior to v17](https://github.com/zapier/zapier-platform/tree/main/changelog)
+Looking for older news? [2026](/platform/news/2026), [2025](/platform/news/2025), and [old changelogs prior to v17](https://github.com/zapier/zapier-platform/tree/main/changelog)

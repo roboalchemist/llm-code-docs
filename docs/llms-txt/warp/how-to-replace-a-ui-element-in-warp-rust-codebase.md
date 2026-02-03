@@ -12,8 +12,7 @@ This demo showcases Warp’s ability to safely make intelligent code changes wit
 
 {% stepper %}
 {% step %}
-
-### Define the Task
+**Define the Task**
 
 The goal here is to replace all instances of the **sparkle icon** with the new **agent icon**, especially within the history menu.
 
@@ -33,8 +32,7 @@ Attach any relevant Linear issue links or screenshots to help the agent identify
 {% endstep %}
 
 {% step %}
-
-### Review the Plan
+**Review the Plan**
 
 Warp’s agent parses your request and generates a plan for code edits.\
 It identifies files and functions where the sparkle icon is used.
@@ -52,8 +50,7 @@ Warp automatically updates function names, asset references, and component usage
 {% endstep %}
 
 {% step %}
-
-### View AI Diffs in Real Time
+**View AI Diffs in Real Time**
 
 Warp lets you view live diffs as the agent edits your files.
 
@@ -67,8 +64,7 @@ Note: The demo runs with “auto-accept” enabled, allowing Warp to apply diffs
 {% endstep %}
 
 {% step %}
-
-### Compilation and Fixes
+**Compilation and Fixes**
 
 After editing, Warp’s agent runs:
 
@@ -82,8 +78,7 @@ If compilation fails (e.g., missing imports), the agent automatically corrects a
 {% endstep %}
 
 {% step %}
-
-### Testing the Change
+**Testing the Change**
 
 Once compiled:
 
@@ -92,8 +87,7 @@ Once compiled:
   {% endstep %}
 
 {% step %}
-
-### Recap
+**Recap**
 
 Warp’s agent completed the full flow:
 

@@ -1,5 +1,9 @@
 # Source: https://vercel.mintlify-docs-rest-api-reference.com/docs/rest-api/reference/endpoints/bulk-redirects/edit-a-project-level-redirect.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Edit a project-level redirect.
 
 > Edits a single redirect identified by its source path. Stages a new change with the modified redirect and returns the alias for the new version in the response.
@@ -11,7 +15,7 @@
 ````yaml https://spec.speakeasy.com/vercel/vercel-docs/vercel-oas-with-code-samples patch /v1/bulk-redirects
 openapi: 3.0.3
 info:
-  title: Vercel SDK
+  title: Vercel REST API & SDK
   description: >-
     The [`@vercel/sdk`](https://www.npmjs.com/package/@vercel/sdk) is a
     type-safe Typescript SDK that allows you to access the resources and methods
@@ -84,6 +88,8 @@ paths:
                       type: boolean
                     query:
                       type: boolean
+                    preserveQueryParams:
+                      type: boolean
                   required:
                     - source
                   additionalProperties: false
@@ -126,11 +132,17 @@ paths:
                           defaults to an ISO timestamp string.
                       isStaging:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                         description: >-
                           Whether this version has not been promoted to
                           production yet and is not serving end users.
                       isLive:
                         type: boolean
+                        enum:
+                          - false
+                          - true
                         description: Whether this version is currently live in production.
                       redirectCount:
                         type: number
@@ -141,10 +153,10 @@ paths:
                           The staging link for previewing redirects in this
                           version.
                     required:
+                      - createdBy
                       - id
                       - key
                       - lastModified
-                      - createdBy
                     type: object
                 required:
                   - alias
@@ -172,7 +184,3 @@ components:
       scheme: bearer
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://vercel.mintlify.app/docs/rest-api/reference/llms.txt

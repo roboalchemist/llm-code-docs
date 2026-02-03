@@ -6,7 +6,6 @@ description: >-
   Dynamically change Datadog Agent configuration settings at runtime without
   restarting the Agent for debugging purposes.
 breadcrumbs: Docs > Agent > Agent Troubleshooting > Agent Runtime Configuration Management
-source_url: https://docs.datadoghq.com/troubleshooting/config/index.html
 ---
 
 # Agent Runtime Configuration Management

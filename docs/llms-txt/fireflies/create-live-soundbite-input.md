@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/schema/input/create-live-soundbite-input.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # CreateLiveSoundbiteInput
 
 > Schema for CreateLiveSoundbiteInput
@@ -13,8 +17,3 @@
 
   Min / max of 5 / 255 characters.
 </ParamField>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.fireflies.ai/llms.txt

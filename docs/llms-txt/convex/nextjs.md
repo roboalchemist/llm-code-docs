@@ -2,10 +2,6 @@
 
 # Source: https://docs.convex.dev/quickstart/nextjs.md
 
-# Source: https://docs.convex.dev/api/modules/nextjs.md
-
-# Source: https://docs.convex.dev/quickstart/nextjs.md
-
 # Next.js Quickstart
 
 Convex + Next.js

@@ -1,4 +1,8 @@
-# Source: https://docs.perplexity.ai/cookbook/showcase/sonar-chromium-browser.md
+# Source: https://docs.perplexity.ai/docs/cookbook/showcase/sonar-chromium-browser.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Sonar Chromium Browser | Native Search Omnibox and Context Menu
 

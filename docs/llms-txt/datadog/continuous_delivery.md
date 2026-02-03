@@ -4,7 +4,6 @@
 title: Continuous Delivery Visibility
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Continuous Delivery Visibility
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Continuous Delivery Visibility

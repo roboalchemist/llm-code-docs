@@ -1,5 +1,9 @@
 # Source: https://docs.ultravox.ai/gettingstarted/quickstart/tools.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.ultravox.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Tools Quickstart
 
 > Learn how to start using built-in tools and how to create custom tools.
@@ -136,8 +140,3 @@ This quickstart contains two parts. This guide will use the [Ultravox Web App](h
 1. Learn more about [Built-in Tools](/tools/built-in-tools) you can use.
 2. Dig into [HTTP vs. Client Tools](/tools/custom/http-vs-client-tools) to understand the differences.
 3. Read about [Durable vs. Temp Tools](/tools/custom/durable-vs-temporary-tools).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.ultravox.ai/llms.txt

@@ -1,5 +1,9 @@
 # Source: https://dub.co/docs/api-reference/endpoint/ban-a-partner.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dub.co/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Ban a partner
 
 > Ban a partner from your program. This will disable all links and mark all commissions as canceled.
@@ -48,17 +52,17 @@ paths:
               type: object
               properties:
                 partnerId:
-                  type: string
-                  nullable: true
                   description: >-
                     The ID of the partner to create a link for. Will take
                     precedence over `tenantId` if provided.
-                tenantId:
-                  type: string
                   nullable: true
+                  type: string
+                tenantId:
                   description: >-
                     The ID of the partner in your system. If both `partnerId`
                     and `tenantId` are not provided, an error will be thrown.
+                  nullable: true
+                  type: string
                 reason:
                   type: string
                   enum:
@@ -83,6 +87,7 @@ paths:
                     description: The ID of the banned partner.
                 required:
                   - partnerId
+                additionalProperties: false
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -430,7 +435,3 @@ components:
       x-speakeasy-example: DUB_API_KEY
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://dub.co/docs/llms.txt

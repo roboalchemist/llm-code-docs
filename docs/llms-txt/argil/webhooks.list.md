@@ -1,73 +1,49 @@
 # Source: https://docs.argil.ai/api-reference/endpoint/webhooks.list.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.argil.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Retrieve all webhooks
 
 > Retrieves all webhooks for the authenticated user.
 
+
+
 ## OpenAPI
 
 ````yaml get /webhooks
+openapi: 3.0.1
+info:
+  title: Argil API
+  description: API for AI clone video generation
+  version: 1.0.0
+  license:
+    name: MIT
+servers:
+  - url: https://api.argil.ai/v1
+security:
+  - ApiKeyAuth: []
 paths:
-  path: /webhooks
-  method: get
-  servers:
-    - url: https://api.argil.ai/v1
-  request:
-    security:
-      - title: ApiKeyAuth
-        parameters:
-          query: {}
-          header:
-            x-api-key:
-              type: apiKey
-              description: API key to be included in the x-api-key header
-          cookie: {}
-    parameters:
-      path: {}
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: array
-            items:
-              allOf:
-                - $ref: '#/components/schemas/Webhook'
-        examples:
-          example:
-            value:
-              - id: 3c90c3cc-0d44-4b50-8888-8dd25736052a
-                callbackUrl: <string>
-                events:
-                  - AVATAR_TRAINING_SUCCESS
-                createAt: '2023-11-07T05:31:56Z'
-                updatedAt: '2023-11-07T05:31:56Z'
-                lastTriggeredAt: '2023-11-07T05:31:56Z'
-        description: An array of webhooks
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              code:
-                allOf:
-                  - type: integer
-                    format: int32
-              message:
-                allOf:
-                  - type: string
-            refIdentifier: '#/components/schemas/Error'
-        examples:
-          example:
-            value:
-              code: 123
-              message: <string>
-        description: Unexpected error
-  deprecated: false
-  type: path
+  /webhooks:
+    get:
+      summary: Retrieve all webhooks
+      description: Retrieves all webhooks for the authenticated user.
+      responses:
+        '200':
+          description: An array of webhooks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Webhook'
+        '400':
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
     Webhook:
@@ -80,7 +56,7 @@ components:
           type: string
         events:
           $ref: '#/components/schemas/WebhookEventSchema'
-        createAt:
+        createdAt:
           type: string
           format: date-time
         updatedAt:
@@ -89,6 +65,14 @@ components:
         lastTriggeredAt:
           type: string
           format: date-time
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string
     WebhookEventSchema:
       type: array
       description: List of events the webhook is subscribing to.
@@ -100,5 +84,11 @@ components:
           - VIDEO_GENERATION_SUCCESS
           - VIDEO_GENERATION_FAILED
       minItems: 1
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: x-api-key
+      description: API key to be included in the x-api-key header
 
 ````

@@ -4,8 +4,6 @@
 title: EC2 Public FPGA Image
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > EC2 Public FPGA Image
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.ec2_public_fpga_image.dataset/index.html
 ---
 
 # EC2 Public FPGA Image
@@ -36,5 +34,5 @@ aws.ec2_public_fpga_image
 | public                 | core | bool          | Indicates whether the AFI is public.                                                   |
 | shell_version          | core | string        | The version of the Amazon Web Services Shell that was used to create the bitstream.    |
 | state                  | core | json          | Information about the state of the AFI.                                                |
-| tags                   | core | hstore        |
+| tags                   | core | hstore_csv    |
 | update_time            | core | timestamp     | The time of the most recent update to the AFI.                                         |

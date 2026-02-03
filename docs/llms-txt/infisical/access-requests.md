@@ -1,5 +1,9 @@
 # Source: https://infisical.com/docs/documentation/platform/access-controls/access-requests.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://infisical.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Access Requests
 
 > Learn how to request access to sensitive resources in Infisical.

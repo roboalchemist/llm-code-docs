@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/simulated-user/
+
 # Simulated User
 
 The Simulated User Provider enables testing of multi-turn conversations between an AI agent and a simulated user. This is particularly useful for testing chatbots, virtual assistants, and other conversational AI applications in realistic scenarios.

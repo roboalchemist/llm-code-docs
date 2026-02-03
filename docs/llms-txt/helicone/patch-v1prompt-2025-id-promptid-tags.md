@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/rest/prompts/patch-v1prompt-2025-id-promptid-tags.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Update Prompt Tags
 
 > Update the tags for a prompt

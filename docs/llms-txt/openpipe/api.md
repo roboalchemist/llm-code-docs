@@ -2,39 +2,169 @@
 
 # Source: https://docs.openpipe.ai/features/criteria/api.md
 
-# Source: https://docs.openpipe.ai/features/fine-tuning/api.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.openpipe.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://docs.openpipe.ai/features/criteria/api.md
+# API Endpoints
 
-# Source: https://docs.openpipe.ai/features/fine-tuning/api.md
+> Use the Criteria API for runtime evaluation and offline testing.
 
-# Source: https://docs.openpipe.ai/features/criteria/api.md
+After you've defined and aligned your judge criteria, you can access them via API endpoints for both runtime evaluation (**Best of N** sampling) and offline testing.
 
-# Source: https://docs.openpipe.ai/features/fine-tuning/api.md
+### Runtime Evaluation
 
-# Source: https://docs.openpipe.ai/features/criteria/api.md
+<Info>
+  See the Chat Completion [docs](/features/chat-completions/overview) and [API
+  Reference](/api-reference/post-chatcompletions) for more information on making chat completions
+  with OpenPipe.
+</Info>
 
-# Source: https://docs.openpipe.ai/features/fine-tuning/api.md
+When making a request to the `/chat/completions` endpoint, you can specify a list of criteria to run immediately after a completion is generated. We recommend generating multiple responses from the same prompt, each of which will be scored by the specified criteria. The responses will be sorted by their combined score across all criteria, from highest to lowest. This technique is known as **[Best of N](https://huggingface.co/docs/trl/en/best_of_n)** sampling.
 
-# Source: https://docs.openpipe.ai/features/criteria/api.md
+To invoke criteria, add an `op-criteria` header to your request with a list of criterion IDs, like so:
 
-# Source: https://docs.openpipe.ai/features/fine-tuning/api.md
+<Tabs>
+  <Tab title="Python">
+    ```python  theme={null}
+    from openpipe import OpenAI
 
-# Fine Tuning via API
+    # Find the config values in "Installing the SDK"
+    client = OpenAI()
 
->  Fine tune your models programmatically through our API.
+    completion = client.chat.completions.create(
+        model="openai:gpt-4o-mini",
+        messages=[{"role": "system", "content": "count to 10"}],
+        metadata={
+            "prompt_id": "counting",
+            "any_key": "any_value",
+        },
+        n=5,
+        extra_headers={"op-criteria": '["criterion-1@v1", "criterion-2"]'},
+    )
 
-We've made fine-tuning via API available through unstable routes that are subject to change. For most users,
-we highly recommend fine-tuning through the Webapp to achieve optimal performance with a smooth experience.
-However, some users may prefer to fine-tune via API for custom use cases.
+    best_response = completion.choices[0]
+    ```
+  </Tab>
 
-The following base models are supported for general access:
+  <Tab title="NodeJS">
+    ```typescript  theme={null}
+    import OpenAI from "openpipe/openai";
 
-* `OpenPipe/Hermes-2-Theta-Llama-3-8B-32k`
-* `meta-llama/Meta-Llama-3-8B-Instruct`
-* `meta-llama/Meta-Llama-3-70B-Instruct`
-* `OpenPipe/mistral-ft-optimized-1227`
-* `mistralai/Mixtral-8x7B-Instruct-v0.1`
+    // Find the config values in "Installing the SDK"
+    const client = OpenAI();
 
-Learn more about fine-tuning via API on the [route page](/api-reference/post-unstablefinetunecreate).
-Please contact us at [hello@openpipe.ai](mailto:hello@openpipe.ai) if you would like help getting set up.
+    const completion = await client.chat.completions.create({
+      model: "openai:gpt-4o-mini",
+      messages: [{ role: "user", content: "Count to 10" }],
+      metadata: {
+        prompt_id: "counting",
+        any_key: "any_value",
+      },
+      n: 5,
+      headers: {
+        "op-criteria": '["criterion-1@v1", "criterion-2"]',
+      },
+    });
+
+    const bestResponse = completion.choices[0];
+    ```
+  </Tab>
+
+  <Tab title="cURL">
+    ```bash  theme={null}
+    curl --request POST \
+    --url https://app.openpipe.ai/api/v1/chat/completions \
+    --header "Authorization: Bearer $OPENPIPE_API_KEY" \
+    --header 'Content-Type: application/json' \
+    --header 'op-criteria: ["criterion-1@v1", "criterion-2"]' \
+    --data '{
+    "model": "openai:gpt-4o-mini",
+    "messages": [
+        {
+            "role": "user",
+            "content": "Count to 10"
+        },
+    ],
+    "store": true,
+    "n": 5,
+    "metadata": {
+        "prompt_id": "counting",
+        "any_key": "any_value",
+    }
+    }'
+    ```
+  </Tab>
+</Tabs>
+
+Specified criteria can either be versioned, like `criterion-1@v1`, or default to the latest criterion version, like `criterion-2`.
+
+In addition to the usual fields, each chat completion choice will now include a `criteria_results` object, which contains the judgements of the specified criteria. The array of completion choices will take the following form:
+
+```json  theme={null}
+[
+  {
+    "finish_reason": "stop",
+    "index": 0,
+    "message": {
+      "content": "1, 2, 3.",
+      "refusal": null,
+      "role": "assistant"
+    },
+    "logprobs": null,
+    "criteria_results": {
+      "criterion-1": {
+        "status": "success",
+        "score": 1,
+        "explanation": "..."
+      },
+      "criterion-2": {
+        "status": "success",
+        "score": 0.6,
+        "explanation": "..."
+      }
+    }
+  },
+  {
+    ...
+  }
+]
+```
+
+### Offline Testing
+
+<Info>See the [API Reference](/api-reference/post-criteriajudge) for more details.</Info>
+
+To check the quality of a previously generated output against a specific criterion, use the `/criteria/judge` endpoint. You can request judgements using either the TypeScript or Python SDKs, or through a cURL request.
+
+<Tabs>
+  <Tab title="Python">
+    ```python  theme={null}
+    from openpipe.client import OpenPipe
+
+    op_client = OpenPipe()
+
+    result = op_client.get_criterion_judgement(
+        criterion_id="criterion-1@v1", # if no version is specified, the latest version is used
+        input={"messages": messages},
+        output=output,
+    )
+    ```
+  </Tab>
+
+  <Tab title="NodeJS">
+    ```typescript  theme={null}
+    import OpenPipe from "openpipe/client";
+
+    const opClient = OpenPipe();
+
+    const result = await opClient.getCriterionJudgement({
+      criterion_id: "criterion-1@v1", // if no version is specified, the latest version is used
+      input: {
+        messages,
+      },
+      output: { role: "assistant", content: "1, 2, 3" },
+    });
+    ```
+  </Tab>
+</Tabs>

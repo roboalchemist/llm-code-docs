@@ -10,7 +10,7 @@ Renderers are implemented by subclassing one of:
 
 - [com.yahoo.search.rendering.Renderer](https://javadoc.io/doc/com.yahoo.vespa/container-search/latest/com/yahoo/search/rendering/Renderer.html)
 - [com.yahoo.search.rendering.SectionedRenderer](https://javadoc.io/doc/com.yahoo.vespa/container-search/latest/com/yahoo/search/rendering/SectionedRenderer.html)
-- [com.yahoo.processing.rendering.AsynchronousSectionedRenderer\<Result\>](https://javadoc.io/doc/com.yahoo.vespa/container-core/latest/com/yahoo/processing/rendering/AsynchronousSectionedRenderer.html)
+- [com.yahoo.processing.rendering.AsynchronousSectionedRenderer\<Result\>](https://javadoc.io/doc/com.yahoo.vespa/container-disc/latest/com/yahoo/processing/rendering/AsynchronousSectionedRenderer.html)
 
 SectionedRenderer differs from Renderer by providing each part to be rendered in separate steps. It is therefore easier to implement a SectionedRenderer than a regular Renderer. AsynchronousSectionedRenderer has a similar API to SectionedRenderer, but supports asynchronously fetched hit contents, so if supporting slow clients or backends is a priority, this offers some advantages. AsynchronousSectionedRenderer also exposes an OutputStream instead of a Writer, so if the backend data contains data encoded the same way as the output from the container (often UTF-8), performance gains are possible.
 
@@ -281,5 +281,5 @@ This is the same as for the [processing framework](processing.html#response-rend
 
 Find an example in [DemoRenderer.java](https://github.com/vespa-engine/sample-apps/blob/master/examples/http-api-using-request-handlers-and-processors/src/main/java/ai/vespa/examples/DemoRenderer.java).
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

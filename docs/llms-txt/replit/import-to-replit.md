@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replit-app/import-to-replit.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Import
 
 > Importing projects and designs from external tools into Replit Agent Apps.
@@ -24,8 +28,6 @@ export const platform_0 = "Bolt"
 export const TeamsCredits = '$40';
 
 export const CoreCredits = '$25';
-
-export const AssistantCheckpointCost = '$0.05';
 
 Replit's import feature allows you to transform existing projects and designs from external development and design tools into Replit Agent Apps. This reference covers supported platforms, technical specifications, limitations, and compatibility requirements.
 

@@ -6,7 +6,6 @@ description: Learn how to monitor deployments from Argo CD in Datadog CD Visibil
 breadcrumbs: >-
   Docs > Continuous Delivery Visibility > CD Visibility in Datadog > Monitor
   Argo CD Deployments
-source_url: https://docs.datadoghq.com/deployments/argocd/index.html
 ---
 
 # Monitor Argo CD Deployments

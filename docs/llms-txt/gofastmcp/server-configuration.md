@@ -1,16 +1,17 @@
 # Source: https://gofastmcp.com/deployment/server-configuration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Project Configuration
 
 > Use fastmcp.json for portable, declarative project configuration
 
 export const VersionBadge = ({version}) => {
-  return <code className="version-badge-container">
-            <p className="version-badge">
-                <span className="version-badge-label">New in version:</span> 
-                <code className="version-badge-version">{version}</code>
-            </p>
-        </code>;
+  return <Badge stroke size="lg" icon="gift" iconType="regular" className="version-badge">
+            New in version <code>{version}</code>
+        </Badge>;
 };
 
 <VersionBadge version="2.12.0" />
@@ -139,7 +140,7 @@ The source configuration determines **WHERE** your server code lives. It tells F
   Future releases will support additional source types:
 
   * **Git repositories** (`type: "git"`) for loading server code directly from version control
-  * **FastMCP Cloud** (`type: "cloud"`) for hosted servers with automatic scaling and management
+  * **Prefect Horizon** (`type: "cloud"`) for hosted servers with automatic scaling and management
 </Note>
 
 ### Environment Configuration

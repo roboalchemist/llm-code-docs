@@ -4,8 +4,6 @@
 title: DocumentDB Elastic Cluster
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > DocumentDB Elastic Cluster
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.docdbelastic_cluster.dataset/index.html
 ---
 
 # DocumentDB Elastic Cluster
@@ -38,5 +36,5 @@ aws.docdbelastic_cluster
 | shards                       | core | json          | The total number of shards in the cluster.                                                                                                                                                                                                   |
 | status                       | core | string        | The status of the elastic cluster.                                                                                                                                                                                                           |
 | subnet_ids                   | core | array<string> | The Amazon EC2 subnet IDs for the elastic cluster.                                                                                                                                                                                           |
-| tags                         | core | hstore        |
+| tags                         | core | hstore_csv    |
 | vpc_security_group_ids       | core | array<string> | A list of EC2 VPC security groups associated with thie elastic cluster.                                                                                                                                                                      |

@@ -5,10 +5,7 @@ title: Compose and the Datadog Agent
 description: >-
   Configure and deploy the Datadog Agent alongside multi-container applications
   using Docker Compose
-breadcrumbs: >-
-  Docs > Container Monitoring > Containers Guides > Compose and the Datadog
-  Agent
-source_url: https://docs.datadoghq.com/guide/compose-and-the-datadog-agent/index.html
+breadcrumbs: Docs > Containers > Containers Guides > Compose and the Datadog Agent
 ---
 
 # Compose and the Datadog Agent

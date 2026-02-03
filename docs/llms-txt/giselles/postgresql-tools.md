@@ -1,8 +1,16 @@
 # Source: https://docs.giselles.ai/en/glossary/postgresql-tools.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.giselles.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # PostgreSQL Tools
 
 > Learn how to use PostgreSQL Tools in a Generator Node to connect your AI models to a PostgreSQL database, enabling them to query and retrieve data.
+
+<Warning>
+  This feature is currently in **Private Preview**. Access is limited to selected users. Features and availability may change.
+</Warning>
 
 **PostgreSQL Tools** empower AI models within a Generator Node to connect directly to your PostgreSQL databases. This feature, a form of "tool use" or "function calling," allows you to build AI agents that can query tables, retrieve data, and understand your database schema, all based on natural language instructions in your prompt.
 

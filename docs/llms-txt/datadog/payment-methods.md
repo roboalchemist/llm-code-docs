@@ -4,7 +4,6 @@
 title: What payment methods are accepted?
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > FAQ > What payment methods are accepted?
-source_url: https://docs.datadoghq.com/faq/payment-methods/index.html
 ---
 
 # What payment methods are accepted?

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/providers/groq/
+
 # Groq
 
 [Groq](https://groq.com/) is an extremely fast inference API compatible with all the options provided by Promptfoo's [OpenAI provider](/docs/providers/openai/). See openai specific documentation for configuration details.

@@ -8,8 +8,8 @@ It is ideal for handling open-ended queries where a structured multi-step dialog
 
 Examples: The Prompt skill can be used in scenarios such as:
 
-* To book a flight ticket or doctor's appointment
-* Providing an informational response like FAQs or knowledge base answers.
+* To book a flight ticket or a doctor's appointment
+* Providing an informational response, like FAQs or knowledge base answers.
 * Retrieving and displaying dynamic information based on a single input.
 
 In the Avaamo Platform, you can easily create and customize Prompt skills using a simple interface, allowing you to configure specific responses to be triggered by a user’s input. The platform enables seamless integration of the Prompt skill into various workflows with minimal technical effort.

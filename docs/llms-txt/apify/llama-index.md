@@ -6,7 +6,7 @@
 
 ***
 
-> For more information on LlamaIndex, visit its https://docs.llamaindex.ai/en/stable/.
+> For more information on LlamaIndex, visit its [documentation](https://docs.llamaindex.ai/en/stable/).
 
 ## What is LlamaIndex?
 
@@ -24,7 +24,7 @@ After successfully installing all dependencies, we can start writing Python code
 
 ### Apify Actor
 
-To use the Apify Actor, import `ApifyActor` and `Document`, and set your https://docs.apify.com/platform/integrations/api#api-token in the code. The following example uses the https://apify.com/apify/website-content-crawler Actor to crawl an entire website, which will extract text content from the web pages. The extracted text is formatted as a llama\_index `Document` and can be fed to a vector store or language model like GPT.
+To use the Apify Actor, import `ApifyActor` and `Document`, and set your [Apify API token](https://docs.apify.com/platform/integrations/api#api-token) in the code. The following example uses the [Website Content Crawler](https://apify.com/apify/website-content-crawler) Actor to crawl an entire website, which will extract text content from the web pages. The extracted text is formatted as a llama\_index `Document` and can be fed to a vector store or language model like GPT.
 
 
 ```
@@ -72,5 +72,5 @@ documents = reader.load_data(
 
 ## Resources
 
-* https://llamahub.ai/l/readers/llama-index-readers-apify
-* https://docs.llamaindex.ai/en/stable/
+* [Apify loaders](https://llamahub.ai/l/readers/llama-index-readers-apify)
+* [LlamaIndex documentation](https://docs.llamaindex.ai/en/stable/)

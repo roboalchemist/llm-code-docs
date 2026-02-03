@@ -535,12 +535,10 @@ const registration = await stripe.tax.registrations.update(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.TaxRegistrationUpdateParams{
-  ExpiresAtNow: stripe.Bool(true),
-  ID: stripe.String("taxreg_NkyGPRPytKq66j"),
-}
+params := &stripe.TaxRegistrationUpdateParams{ExpiresAtNow: stripe.Bool(true)}
 params.SetStripeAccount("{{CONNECTEDACCOUNT_ID}}")
-result, err := sc.V1TaxRegistrations.Update(context.TODO(), params)
+result, err := sc.V1TaxRegistrations.Update(
+  context.TODO(), "taxreg_NkyGPRPytKq66j", params)
 ```
 
 ```dotnet
@@ -1088,11 +1086,9 @@ const registration = await stripe.tax.registrations.update(
 
 ```go
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.TaxRegistrationUpdateParams{
-  ExpiresAtNow: stripe.Bool(true),
-  ID: stripe.String("taxreg_NkyGPRPytKq66j"),
-}
-result, err := sc.V1TaxRegistrations.Update(context.TODO(), params)
+params := &stripe.TaxRegistrationUpdateParams{ExpiresAtNow: stripe.Bool(true)}
+result, err := sc.V1TaxRegistrations.Update(
+  context.TODO(), "taxreg_NkyGPRPytKq66j", params)
 ```
 
 ```dotnet

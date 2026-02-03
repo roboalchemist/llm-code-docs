@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/jetbrains/setup-augment/jetbrains-keyboard-shortcuts.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Keyboard Shortcuts for JetBrains IDEs
 
 > Augment integrates with your IDE to provide keyboard shortcuts for common actions. Use these shortcuts to quickly accept suggestions, write code, and navigate your codebase.

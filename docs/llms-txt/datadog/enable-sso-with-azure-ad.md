@@ -4,8 +4,6 @@
 title: Enable SSO with Azure AD
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > Account Management > Enable SSO with Azure AD
-source_url: >-
-  https://docs.datadoghq.com/account-management/enable-sso-with-azure-ad/index.html
 ---
 
 # Enable SSO with Azure AD

@@ -1,4 +1,8 @@
-# Source: https://docs.perplexity.ai/guides/file-attachments.md
+# Source: https://docs.perplexity.ai/docs/grounded-llm/chat-completions/media/file-attachments.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.perplexity.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # File Attachments with Sonar
 
@@ -7,10 +11,6 @@
 ## Overview
 
 Sonar models support document analysis through file uploads. You can provide files either as URLs to publicly accessible documents or as base64 encoded bytes. Ask questions about document content, get summaries, extract information, and perform detailed analysis of uploaded files in multiple formats including PDF, DOC, DOCX, TXT, and RTF.
-
-<Note>
-  **SDK Installation Required**: Install the official SDK first - `pip install perplexityai` for Python or `npm install @perplexity-ai/perplexity_ai` for TypeScript/JavaScript.
-</Note>
 
 <Note>
   Document files can be provided as:
@@ -393,7 +393,8 @@ Sonar models support document analysis through file uploads. You can provide fil
   </Card>
 
   <Card title="Size Limits" icon="scale-balanced">
-    * Maximum file size: 50MB
+    * Maximum file size: 50MB per file
+    * Maximum files per request: 30 files
     * Recommended: Under 50MB for optimal performance
     * Maximum processing time: 60 seconds
     * Large files may take longer to analyze

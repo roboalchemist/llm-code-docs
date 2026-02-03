@@ -1,3 +1,7 @@
+# Source: https://docs.streamlit.io/develop/concepts/architecture/architecture
+
+# Source: https://docs.streamlit.io/develop/concepts/architecture
+
 # Working with Streamlit's execution model
 
 ## Navigation

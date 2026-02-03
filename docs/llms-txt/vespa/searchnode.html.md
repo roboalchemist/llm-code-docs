@@ -1078,6 +1078,21 @@ content.proton.documentdb.matching.docs\_reranked
  | document | Number of documents re-ranked (second phase) |
 | 
 
+content.proton.documentdb.matching.exact\_nns\_distances\_computed
+
+ | distance | Number of distances computed in exact nearest-neighbor search |
+| 
+
+content.proton.documentdb.matching.approximate\_nns\_distances\_computed
+
+ | distance | Number of distances computed in approximate nearest-neighbor search |
+| 
+
+content.proton.documentdb.matching.approximate\_nns\_nodes\_visited
+
+ | graph\_node | Number of nodes visited in approximate nearest-neighbor search |
+| 
+
 content.proton.documentdb.matching.rank\_profile.queries
 
  | query | Number of queries executed |
@@ -1126,6 +1141,21 @@ content.proton.documentdb.matching.rank\_profile.docs\_ranked
 content.proton.documentdb.matching.rank\_profile.docs\_reranked
 
  | document | Number of documents re-ranked (second phase) |
+| 
+
+content.proton.documentdb.matching.rank\_profile.exact\_nns\_distances\_computed
+
+ | distance | Number of distances computed in exact nearest-neighbor search |
+| 
+
+content.proton.documentdb.matching.rank\_profile.approximate\_nns\_distances\_computed
+
+ | distance | Number of distances computed in approximate nearest-neighbor search |
+| 
+
+content.proton.documentdb.matching.rank\_profile.approximate\_nns\_nodes\_visited
+
+ | graph\_node | Number of nodes visited in approximate nearest-neighbor search |
 | 
 
 content.proton.documentdb.matching.rank\_profile.limited\_queries
@@ -1247,5 +1277,5 @@ metricmanager.snapshotlatency
 
  | millisecond | Time in ms used to take a snapshot |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

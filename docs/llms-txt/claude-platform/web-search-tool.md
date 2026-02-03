@@ -18,7 +18,7 @@ Web search is available on:
 - Claude Sonnet 4 (`claude-sonnet-4-20250514`)
 - Claude Sonnet 3.7 ([deprecated](/docs/en/about-claude/model-deprecations)) (`claude-3-7-sonnet-20250219`)
 - Claude Haiku 4.5 (`claude-haiku-4-5-20251001`)
-- Claude Haiku 3.5 (`claude-3-5-haiku-latest`)
+- Claude Haiku 3.5 ([deprecated](/docs/en/about-claude/model-deprecations)) (`claude-3-5-haiku-latest`)
 - Claude Opus 4.5 (`claude-opus-4-5-20251101`)
 - Claude Opus 4.1 (`claude-opus-4-1-20250805`)
 - Claude Opus 4 (`claude-opus-4-20250514`)
@@ -154,8 +154,16 @@ When using domain filters:
 - Domains should not include the HTTP/HTTPS scheme (use `example.com` instead of `https://example.com`)
 - Subdomains are automatically included (`example.com` covers `docs.example.com`)
 - Specific subdomains restrict results to only that subdomain (`docs.example.com` returns only results from that subdomain, not from `example.com` or `api.example.com`)
-- Subpaths are supported (`example.com/blog`)
+- Subpaths are supported and match anything after the path (`example.com/blog` matches `example.com/blog/post-1`)
 - You can use either `allowed_domains` or `blocked_domains`, but not both in the same request.
+
+**Wildcard support:**
+
+- Only one wildcard (`*`) is allowed per domain entry, and it must appear after the domain part (in the path)
+- Valid: `example.com/*`, `example.com/*/articles`
+- Invalid: `*.example.com`, `ex*.com`, `example.com/*/news/*`
+
+Invalid domain formats will return an `invalid_tool_input` tool error.
 
 <Note>
 Request-level domain restrictions must be compatible with organization-level domain restrictions configured in the Console. Request-level domains can only further restrict domains, not override or expand beyond the organization-level list. If your request includes domains that conflict with organization settings, the API will return a validation error.

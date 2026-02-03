@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/image/omnigen/omnigen2.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ComfyUI OmniGen2 Native Workflow Examples
 
 > ComfyUI OmniGen2 Native Workflow Examples - Unified text-to-image, image editing, and multi-image composition model.
@@ -45,7 +49,7 @@ OmniGen2 is a powerful and efficient unified multimodal generation model with ap
 
     <Tab title="Desktop or Cloud users">
       * The Desktop is base on ComfyUI stable release, it will auto-update when there is a new Desktop stable release available.
-      * [Cloud](https://cloud.comfy.org) will update after ComfyUI stable release, we will update the Cloud after ComfyUI stable release.
+      * [Cloud](https://cloud.comfy.org) will update after ComfyUI stable release.
 
       So, if you find any core node missing in this document, it might be because the new core nodes have not yet been released in the latest stable version. Please wait for the next stable release.
     </Tab>
@@ -85,6 +89,10 @@ File save location:
 
 ### 1. Download Workflow File
 
+<a className="prose" target="_blank" href="https://cloud.comfy.org/?template=image_omnigen2_t2i&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28a745', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
+  <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Run on Comfy Cloud</p>
+</a>
+
 ![Text-to-Image Workflow](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/image/omnigen2/image_omnigen2_t2i.png)
 
 ### 2. Complete Workflow Step by Step
@@ -108,6 +116,10 @@ Please follow the numbered steps in the image for step-by-step confirmation to e
 OmniGen2 has rich image editing capabilities and supports adding text to images
 
 ### 1. Download Workflow File
+
+<a className="prose" target="_blank" href="https://cloud.comfy.org/?template=image_omnigen2_image_edit&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28a745', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
+  <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Run on Comfy Cloud</p>
+</a>
 
 ![Text-to-Image Workflow](https://raw.githubusercontent.com/Comfy-Org/example_workflows/main/image/omnigen2/image_omnigen2_image_edit.png)
 

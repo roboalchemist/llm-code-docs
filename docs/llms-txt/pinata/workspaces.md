@@ -1,5 +1,9 @@
 # Source: https://docs.pinata.cloud/account-management/workspaces.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pinata.cloud/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Workspaces
 
 <Note>Workspaces is only available on the [Picnic and Fiesta plans](https://pinata.cloud/pricing)</Note>

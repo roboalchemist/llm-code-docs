@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/red-team/risk-scoring/
+
 # Risk Scoring
 
 Promptfoo provides a risk scoring system that quantifies the severity and likelihood of vulnerabilities in your LLM application. Each vulnerability is assigned a risk score between 0 and 10 that helps you prioritize remediation efforts.

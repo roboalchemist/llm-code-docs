@@ -1,5 +1,9 @@
 # Source: https://docs.augmentcode.com/cli/sdk-python.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.augmentcode.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Python SDK
 
 > Build custom integrations and agents using the Auggie Python SDK.
@@ -63,13 +67,62 @@ agent = Auggie(
     api_url="https://api.augmentcode.com",
 
     # Rule file paths (optional)
-    rules=["/path/to/rules.md"]
+    rules=["/path/to/rules.md"],
+
+    # Additional CLI arguments (optional)
+    cli_args=["--quiet", "--max-turns", "10"]
 )
 
 # Use the agent
 result = agent.run("Your question here", return_type=str)
 print(result)
 ```
+
+### Custom CLI Arguments
+
+The `cli_args` parameter allows you to pass additional command-line arguments to the Auggie CLI when spawning the agent process. This is useful for passing custom or experimental CLI flags that aren't exposed as dedicated parameters.
+
+```python  theme={null}
+from auggie_sdk import Auggie
+
+# Example 1: Limit agent turns and reduce output
+agent = Auggie(
+    cli_args=["--quiet", "--max-turns", "10"]
+)
+
+# Example 2: Configure retry behavior and shell
+agent = Auggie(
+    cli_args=["--retry-timeout", "60", "--shell", "bash"]
+)
+
+# Example 3: Add custom rules and startup script
+agent = Auggie(
+    cli_args=[
+        "--rules", "/path/to/custom-rules.md",
+        "--startup-script", "export MY_VAR=value"
+    ]
+)
+
+# Example 4: Configure tool permissions
+agent = Auggie(
+    cli_args=[
+        "--permission", "web-search:allow",
+        "--permission", "launch-process:ask-user"
+    ]
+)
+```
+
+**Common CLI arguments:**
+
+* `--quiet` - Only show final assistant message
+* `--max-turns <n>` - Limit the number of agentic turns
+* `--retry-timeout <sec>` - Timeout for rate-limit retries (seconds)
+* `--shell <name>` - Select shell: bash | zsh | fish | powershell
+* `--rules <path>` - Additional rules file (repeatable)
+* `--permission <rule>` - Set tool permissions with 'tool-name:policy' format
+* `--startup-script <script>` - Inline startup script to run before each command
+
+The `cli_args` are appended after all other CLI arguments, giving you flexibility to pass any additional flags or options supported by the underlying Auggie CLI. See the [CLI reference](/cli/reference) for available command-line options.
 
 ## Output Modes
 

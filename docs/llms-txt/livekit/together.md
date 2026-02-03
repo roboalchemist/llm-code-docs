@@ -1,6 +1,6 @@
 # Source: https://docs.livekit.io/agents/models/llm/plugins/together.md
 
-LiveKit docs › Models › Large language models (LLM) › Plugins › Together AI
+LiveKit docs › Models › LLM › Plugins › Together
 
 ---
 
@@ -14,7 +14,7 @@ Available in:
 
 ## Overview
 
-This plugin allows you to use [Together AI](https://www.together.ai/) as an LLM provider for your voice agents.
+This plugin allows you to use [Together AI](https://www.together.ai/) as an LLM provider for your voice agents. Together AI compatibility is provided by the OpenAI plugin using the Together AI Chat Completions API.
 
 ## Usage
 
@@ -23,7 +23,7 @@ Install the OpenAI plugin to add Together AI support:
 **Python**:
 
 ```shell
-uv add "livekit-agents[openai]~=1.2"
+uv add "livekit-agents[openai]~=1.3"
 
 ```
 
@@ -99,7 +99,7 @@ The following links provide more information about the Together AI LLM integrati
 
 ---
 
-This document was rendered at 2025-11-18T23:55:12.301Z.
+This document was rendered at 2026-02-03T03:25:01.809Z.
 For the latest version of this document, see [https://docs.livekit.io/agents/models/llm/plugins/together.md](https://docs.livekit.io/agents/models/llm/plugins/together.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

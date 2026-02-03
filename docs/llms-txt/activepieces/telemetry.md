@@ -1,6 +1,8 @@
 # Source: https://www.activepieces.com/docs/install/configuration/telemetry.md
 
-# Source: https://www.activepieces.com/docs/about/telemetry.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.activepieces.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Telemetry
 
@@ -17,14 +19,6 @@ We have implemented a minimal tracking plan and provide a detailed list of the m
 We value transparency in data collection and assure you that we do not collect any personal information. The following events are currently being collected:
 
 [Exact Code](https://github.com/activepieces/activepieces/blob/main/packages/shared/src/lib/common/telemetry.ts)
-
-1. `flow.published`: Event fired when a flow is published
-2. `signed.up`: Event fired when a user signs up
-3. `flow.test`: Event fired when a flow is tested
-4. `flow.created`: Event fired when a flow is created
-5. `start.building`: Event fired when a user starts building
-6. `demo.imported`: Event fired when a demo is imported
-7. `flow.imported`: Event fired when a flow template is imported
 
 # Opting out?
 

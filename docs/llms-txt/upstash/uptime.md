@@ -2,23 +2,9 @@
 
 # Source: https://upstash.com/docs/common/help/uptime.md
 
-# Source: https://upstash.com/docs/redis/help/uptime.md
-
-# Source: https://upstash.com/docs/common/help/uptime.md
-
-# Source: https://upstash.com/docs/redis/help/uptime.md
-
-# Source: https://upstash.com/docs/common/help/uptime.md
-
-# Source: https://upstash.com/docs/redis/help/uptime.md
-
-# Source: https://upstash.com/docs/common/help/uptime.md
-
-# Source: https://upstash.com/docs/redis/help/uptime.md
-
-# Source: https://upstash.com/docs/common/help/uptime.md
-
-# Source: https://upstash.com/docs/redis/help/uptime.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Uptime Monitor
 

@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/reference/evaluating-exa-search.md
+# Source: https://exa.ai/docs/reference/evaluating-exa-search.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # How to Evaluate Exa Search
 
@@ -33,12 +37,20 @@ Adding restrictive parameters (date filters, domain restrictions, text inclusion
 # Option 1: Use text with character limit (recommended for consistent comparisons)
 exa.search_and_contents(
     query,
-    type="fast",  # or "auto" (for `Deep`, see Option 2)
+    type="auto",  # or "fast" (for `Deep`, see Option 2)
     num_results=10,
-    text={"max_characters": 5000}
+    text={"max_characters": 15000}
 )
 
-# Option 2: Use context string for RAG (single string with total max characters)
+# Option 2: Use highlights for targeted excerpts
+# exa.search_and_contents(
+#     query,
+#     type="auto",
+#     num_results=10,
+#     highlights={"max_characters": 2000}
+# )
+
+# Option 3: Use context string for RAG (single string with total max characters)
 # Note: `Deep` search may require context=True to return results
 # exa.search_and_contents(
 #     query,
@@ -48,10 +60,10 @@ exa.search_and_contents(
 #     context={"max_characters": 20000}
 # )
 
-# Option 3: Use full text (may result in very long content)
+# Option 4: Use full text (may result in very long content)
 # exa.search_and_contents(
 #     query,
-#     type="fast",
+#     type="auto",
 #     num_results=10,
 #     text=True
 # )
@@ -100,7 +112,7 @@ result = exa.search_and_contents(
     "latest AI breakthroughs in 2025",
     type="fast",
     num_results=10,
-    text={"max_characters": 5000}
+    text={"max_characters": 15000}
 )
 ```
 
@@ -127,14 +139,14 @@ result = exa.search_and_contents(
     "companies building climate tech solutions",
     type="auto",  # or omit - auto is default
     num_results=10,
-    text={"max_characters": 5000}
+    text={"max_characters": 15000}
 )
 ```
 
 ### Deep Search
 
 <Info>
-  Learn more about Deep search in our [Deep Search changelog](/changelog/new-deep-search-type).
+  Learn more about Deep search in our [Deep Search changelog](/docs/changelog/new-deep-search-type).
 </Info>
 
 **Optimized for**: Comprehensive research and multi-hop queries
@@ -264,9 +276,9 @@ Execute standardized retrieval-synthesis-grading loop:
 # 1. Retrieval step
 results = exa.search_and_contents(
     query,
-    type="fast",  # or "auto", "deep"
+    type="auto",  # or "fast", "deep"
     num_results=10,
-    text={"max_characters": 5000}
+    text={"max_characters": 15000}
 )
 
 # 2. Answer synthesis (downstream LLM restricted to retrieved context)
@@ -320,17 +332,17 @@ For latency-sensitive evaluations:
   ```python Python theme={null}
   result = exa.search_and_contents(
       query,
-      type="fast",
+      type="auto",
       num_results=10,
-      text={"max_characters": 5000}
+      text={"max_characters": 15000}
   )
   ```
 
   ```javascript JavaScript theme={null}
   const result = await exa.searchAndContents(query, {
-      type: "fast",
+      type: "auto",
       numResults: 10,
-      text: {maxCharacters: 5000}
+      text: {maxCharacters: 15000}
   });
   ```
 
@@ -340,9 +352,9 @@ For latency-sensitive evaluations:
     -H "Content-Type: application/json" \
     -d '{
       "query": "your query here",
-      "type": "fast",
+      "type": "auto",
       "num_results": 10,
-      "contents": {"text": {"max_characters": 5000}}
+      "contents": {"text": {"max_characters": 15000}}
     }'
   ```
 </CodeGroup>
@@ -357,7 +369,7 @@ For balanced evaluations:
       query,
       type="auto",
       num_results=10,
-      text={"max_characters": 5000}
+      text={"max_characters": 15000}
   )
   ```
 
@@ -365,7 +377,30 @@ For balanced evaluations:
   const result = await exa.searchAndContents(query, {
       type: "auto",
       numResults: 10,
-      text: {maxCharacters: 5000}
+      text: {maxCharacters: 15000}
+  });
+  ```
+</CodeGroup>
+
+#### Highlights Configuration
+
+For targeted excerpts 2000 characters of highlight extracts.
+
+<CodeGroup>
+  ```python Python theme={null}
+  result = exa.search_and_contents(
+      query,
+      type="auto",
+      num_results=10,
+      highlights={"max_characters": 2000}
+  )
+  ```
+
+  ```javascript JavaScript theme={null}
+  const result = await exa.searchAndContents(query, {
+      type: "auto",
+      numResults: 10,
+      highlights: {maxCharacters: 2000}
   });
   ```
 </CodeGroup>
@@ -599,9 +634,9 @@ Beyond search type selection, several parameters affect response time:
 
   # Run evaluation
   config = {
-      'type': 'fast',
+      'type': 'auto',
       'num_results': 10,
-      'text': {'max_characters': 5000}
+      'text': {'max_characters': 15000}
   }
 
   results = evaluate_simpleqa('simpleqa.json', config)
@@ -665,9 +700,9 @@ Beyond search type selection, several parameters affect response time:
 
   // Run evaluation
   const config = {
-      type: 'fast',
+      type: 'auto',
       numResults: 10,
-      text: {maxCharacters: 5000}
+      text: {maxCharacters: 15000}
   };
 
   const results = await evaluateSimpleQA('simpleqa.json', config);
@@ -710,7 +745,7 @@ Example output:
 
 * Use `type="fast"` or `type="auto"`
 * Fix `num_results=10`
-* Use `text={"max_characters": 5000}` for consistent context length
+* Use `text={"max_characters": 15000}` for consistent context length
 
 **Expected performance**:
 
@@ -785,14 +820,9 @@ Example output:
 
 ## Additional Resources
 
-* [How Exa Search Works](/reference/how-exa-search-works) - Deep dive into neural search and search types
-* [Exa's Capabilities Explained](/reference/exas-capabilities-explained) - Feature overview and use cases
-* [Livecrawling Contents](/reference/livecrawling-contents) - When and how to use livecrawling
-* [API Reference: Search](/reference/search) - Complete parameter documentation
+* [How Exa Search Works](/docs/reference/how-exa-search-works) - Deep dive into neural search and search types
+* [Exa's Capabilities Explained](/docs/reference/exas-capabilities-explained) - Feature overview and use cases
+* [Livecrawling Contents](/docs/reference/livecrawling-contents) - When and how to use livecrawling
+* [API Reference: Search](/docs/reference/search) - Complete parameter documentation
 
 For questions about evaluation methodology or custom benchmark needs, [join our Discord community](https://discord.com/invite/HCShtBqbfV) or [reach out to our team](https://exa.ai).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

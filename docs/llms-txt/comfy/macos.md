@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/installation/desktop/macos.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # MacOS Desktop Version
 
 > This article introduces how to download, install and use ComfyUI Desktop for MacOS
@@ -176,6 +180,14 @@ Then find the **ComfyUI icon** in **Launchpad** and click it to enter ComfyUI in
   </Step>
 </Steps>
 
+## Important: Do not modify the resource/ComfyUI folder
+
+<Warning>
+  Do not add or modify any content in the `/resource/ComfyUI` folder. All content in this folder will be reset when ComfyUI Desktop updates.
+
+  Unlike other ComfyUI versions, the Desktop version manages this folder automatically. During installation, you chose a custom location for your models, custom nodes, and other user files - please use that location instead.
+</Warning>
+
 ## First Image Generation
 
 After successful installation, you can refer to the section below to start your ComfyUI journey\~
@@ -252,7 +264,7 @@ Suppose you want to add the following model paths to ComfyUI:
 ```
 📁 YOUR_PATH/
   ├── 📁models/
-  |   ├── 📁 lora/
+  |   ├── 📁 loras/
   |   │   └── xxxxx.safetensors
   |   ├── 📁 checkpoints/
   |   │   └── xxxxx.safetensors

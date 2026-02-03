@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/faq-new/billing-pricing/how-much-does-fireworks-cost.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # How much does Fireworks cost?
 
 Fireworks AI operates on a **pay-as-you-go** model for all non-Enterprise usage, and new users automatically receive free credits. You pay based on:

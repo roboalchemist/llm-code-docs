@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/guides/qwen-benchmark/
+
 # Qwen vs Llama vs GPT: Run a Custom Benchmark
 
 As a product developer using LLMs, you are likely focused on a specific use case. Generic benchmarks are easily gamed and often not applicable to specific product needs. The best way to improve quality in your LLM app is to construct your own benchmark.

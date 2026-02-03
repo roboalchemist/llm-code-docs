@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/chatbot/builder/test-your-chatbot.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Test your chatbot
 
 > Learn how to test your chatbot to see how it works.

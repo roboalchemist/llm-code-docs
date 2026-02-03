@@ -1,4 +1,8 @@
-# Source: https://docs.exa.ai/websets/dashboard/exclude-results.md
+# Source: https://exa.ai/docs/websets/dashboard/exclude-results.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://exa.ai/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Exclude Results
 
@@ -30,8 +34,3 @@ The maximum number of results you can exclude is determined by your plan.
 * Finding leads that aren't already in your CRM
 * Following up on previous searches with refined criteria
 * Excluding results you already know about
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.exa.ai/llms.txt

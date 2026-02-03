@@ -6,7 +6,6 @@ description: >-
   Upload coverage reports to Datadog, visualize coverage data for pull requests,
   and block merges based on configurable thresholds.
 breadcrumbs: Docs > Code Coverage
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Code Coverage
@@ -39,4 +38,6 @@ For setup instructions, see [Set up Code Coverage](https://docs.datadoghq.com/co
 ## Further reading{% #further-reading %}
 
 - [Set up Code Coverage](https://docs.datadoghq.com/code_coverage/setup)
+- [Configure Code Coverage](https://docs.datadoghq.com/code_coverage/configuration)
 - [Learn what data is collected for Code Coverage](https://docs.datadoghq.com/code_coverage/data_collected)
+- [Learn how Code Coverage supports large monorepos](https://docs.datadoghq.com/code_coverage/monorepo_support)

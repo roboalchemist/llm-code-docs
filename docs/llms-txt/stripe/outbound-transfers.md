@@ -409,12 +409,11 @@ const outboundTransfer = await stripe.treasury.outboundTransfers.retrieve(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.TreasuryOutboundTransferRetrieveParams{
-  OutboundTransfer: stripe.String("{{OUTBOUND_TRANSFER_ID}}"),
-}
+params := &stripe.TreasuryOutboundTransferRetrieveParams{}
 params.AddExpand("transaction")
 params.SetStripeAccount("{{CONNECTEDACCOUNT_ID}}")
-result, err := sc.V1TreasuryOutboundTransfers.Retrieve(context.TODO(), params)
+result, err := sc.V1TreasuryOutboundTransfers.Retrieve(
+  context.TODO(), "{{OUTBOUND_TRANSFER_ID}}", params)
 ```
 
 ```dotnet
@@ -675,11 +674,10 @@ const outboundTransfer = await stripe.treasury.outboundTransfers.cancel(
 // Set your secret key. Remember to switch to your live secret key in production.
 // See your keys here: https://dashboard.stripe.com/apikeys
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
-params := &stripe.TreasuryOutboundTransferCancelParams{
-  OutboundTransfer: stripe.String("{{OUTBOUND_TRANSFER_ID}}"),
-}
+params := &stripe.TreasuryOutboundTransferCancelParams{}
 params.SetStripeAccount("{{CONNECTEDACCOUNT_ID}}")
-result, err := sc.V1TreasuryOutboundTransfers.Cancel(context.TODO(), params)
+result, err := sc.V1TreasuryOutboundTransfers.Cancel(
+  context.TODO(), "{{OUTBOUND_TRANSFER_ID}}", params)
 ```
 
 ```dotnet

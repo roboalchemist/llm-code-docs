@@ -4,7 +4,6 @@
 title: Administrator's Guide
 description: Setup and install Datadog as an administrator to avoid common issues.
 breadcrumbs: Docs > Administrator's Guide
-source_url: https://docs.datadoghq.com/index.html
 ---
 
 # Administrator's Guide

@@ -1,3 +1,5 @@
+# Source: https://www.promptfoo.dev/docs/configuration/expected-outputs/model-graded/
+
 # Model-graded metrics
 
 promptfoo supports several types of model-graded assertions:

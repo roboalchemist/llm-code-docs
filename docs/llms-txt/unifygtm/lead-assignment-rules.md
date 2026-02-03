@@ -1,5 +1,9 @@
 # Source: https://docs.unifygtm.com/reference/integrations/salesforce/lead-assignment-rules.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unifygtm.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Toggle Lead Assignment Rules in Salesforce
 
 > Troubleshoot a common bug in Salesforce related to lead assignment rules.

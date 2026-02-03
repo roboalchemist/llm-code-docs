@@ -2,10 +2,7 @@
 
 # Delete User
 
-```
-DELETE 
-/v2/:organizationId/Users/:userId
-```
+Copy page
 
 This endpoint deletes an existing user.
 

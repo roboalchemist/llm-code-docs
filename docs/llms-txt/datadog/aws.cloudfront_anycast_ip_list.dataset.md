@@ -4,8 +4,6 @@
 title: CloudFront Anycast IP List
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > CloudFront Anycast IP List
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.cloudfront_anycast_ip_list.dataset/index.html
 ---
 
 # CloudFront Anycast IP List
@@ -18,10 +16,10 @@ aws.cloudfront_anycast_ip_list
 
 ## Fields
 
-| Title           | ID   | Type   | Data Type                                                                     | Description |
-| --------------- | ---- | ------ | ----------------------------------------------------------------------------- | ----------- |
-| _key            | core | string |
-| account_id      | core | string |
-| anycast_ip_list | core | json   | The Anycast static IP list details.                                           |
-| e_tag           | core | string | The version identifier for the current version of the Anycast static IP list. |
-| tags            | core | hstore |
+| Title           | ID   | Type       | Data Type                                                                     | Description |
+| --------------- | ---- | ---------- | ----------------------------------------------------------------------------- | ----------- |
+| _key            | core | string     |
+| account_id      | core | string     |
+| anycast_ip_list | core | json       | The Anycast static IP list details.                                           |
+| e_tag           | core | string     | The version identifier for the current version of the Anycast static IP list. |
+| tags            | core | hstore_csv |

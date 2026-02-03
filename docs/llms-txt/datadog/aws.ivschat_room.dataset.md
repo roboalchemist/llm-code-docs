@@ -4,8 +4,6 @@
 title: IVS Chat Room
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > IVS Chat Room
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.ivschat_room.dataset/index.html
 ---
 
 # IVS Chat Room
@@ -30,5 +28,5 @@ aws.ivschat_room
 | maximum_message_rate_per_second   | core | int64         | Maximum number of messages per second that can be sent to the room (by all clients). Default: 10.                                                                                            |
 | message_review_handler            | core | json          | Configuration information for optional review of messages.                                                                                                                                   |
 | name                              | core | string        | Room name. The value does not need to be unique.                                                                                                                                             |
-| tags                              | core | hstore        |
+| tags                              | core | hstore_csv    |
 | update_time                       | core | timestamp     | Time of the room's last update. This is an ISO 8601 timestamp; note that this is returned as a string.                                                                                       |

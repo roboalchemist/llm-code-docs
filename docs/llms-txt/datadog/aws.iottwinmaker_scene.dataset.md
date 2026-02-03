@@ -4,8 +4,6 @@
 title: IoT TwinMaker Scene
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > IoT TwinMaker Scene
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.iottwinmaker_scene.dataset/index.html
 ---
 
 # IoT TwinMaker Scene
@@ -31,6 +29,6 @@ aws.iottwinmaker_scene
 | generated_scene_metadata | core | hstore        | The generated scene metadata.                                                 |
 | scene_id                 | core | string        | The ID of the scene.                                                          |
 | scene_metadata           | core | hstore        | The response metadata.                                                        |
-| tags                     | core | hstore        |
+| tags                     | core | hstore_csv    |
 | update_date_time         | core | timestamp     | The date and time when the scene was last updated.                            |
 | workspace_id             | core | string        | The ID of the workspace that contains the scene.                              |

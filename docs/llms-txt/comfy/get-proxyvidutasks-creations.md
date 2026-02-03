@@ -1,112 +1,83 @@
 # Source: https://docs.comfy.org/api-reference/api-nodes/get-proxyvidutasks-creations.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get proxyvidutasks creations
+
+
 
 ## OpenAPI
 
 ````yaml https://api.comfy.org/openapi get /proxy/vidu/tasks/{id}/creations
+openapi: 3.0.2
+info:
+  title: Comfy API
+  version: '1.0'
+servers:
+  - url: https://api.comfy.org
+security: []
 paths:
-  path: /proxy/vidu/tasks/{id}/creations
-  method: get
-  servers:
-    - url: https://api.comfy.org
-  request:
-    security: []
-    parameters:
-      path:
-        id:
+  /proxy/vidu/tasks/{id}/creations:
+    get:
+      tags:
+        - API Nodes
+        - Released
+      operationId: ViduGetCreations
+      parameters:
+        - in: path
+          name: id
+          required: true
           schema:
-            - type: string
-              required: true
-      query: {}
-      header: {}
-      cookie: {}
-    body: {}
-  response:
-    '200':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              creations:
-                allOf:
-                  - items:
-                      $ref: '#/components/schemas/ViduCreation'
-                    type: array
-              err_code:
-                allOf:
-                  - type: string
-              id:
-                allOf:
-                  - type: string
-              state:
-                allOf:
-                  - $ref: '#/components/schemas/ViduState'
-            refIdentifier: '#/components/schemas/ViduGetCreationsReply'
-        examples:
-          example:
-            value:
-              creations:
-                - cover_url: <string>
-                  id: <string>
-                  moderation_url:
-                    - <string>
-                  url: <string>
-                  watermarked_url: <string>
-              err_code: <string>
-              id: <string>
-              state: created
-        description: OK
-    '400':
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              details:
-                allOf:
-                  - &ref_0
-                    description: >-
-                      Optional detailed information about the error or hints for
-                      resolving it.
-                    items:
-                      type: string
-                    type: array
-              message:
-                allOf:
-                  - &ref_1
-                    description: A clear and concise description of the error.
-                    type: string
-            refIdentifier: '#/components/schemas/Error'
-        examples:
-          example:
-            value:
-              details:
-                - <string>
-              message: <string>
-        description: Error 4xx/5xx
-    default:
-      application/json:
-        schemaArray:
-          - type: object
-            properties:
-              details:
-                allOf:
-                  - *ref_0
-              message:
-                allOf:
-                  - *ref_1
-            refIdentifier: '#/components/schemas/Error'
-        examples:
-          example:
-            value:
-              details:
-                - <string>
-              message: <string>
-        description: Error 4xx/5xx
-  deprecated: false
-  type: path
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ViduGetCreationsReply'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error 4xx/5xx
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          description: Error 4xx/5xx
 components:
   schemas:
+    ViduGetCreationsReply:
+      properties:
+        creations:
+          items:
+            $ref: '#/components/schemas/ViduCreation'
+          type: array
+        err_code:
+          type: string
+        id:
+          type: string
+        state:
+          $ref: '#/components/schemas/ViduState'
+      type: object
+    Error:
+      properties:
+        details:
+          description: >-
+            Optional detailed information about the error or hints for resolving
+            it.
+          items:
+            type: string
+          type: array
+        message:
+          description: A clear and concise description of the error.
+          type: string
+      type: object
     ViduCreation:
       properties:
         cover_url:

@@ -129,5 +129,5 @@ Another important thing to mention is that the reported total-hits will be diffe
 
 If used correctly match-phase can be a life-saver, however, it is not a straight forward fix-it-all silver bullet. Please test and measure your use of match-phase, and contact the Vespa team if your results are not what you expect.
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

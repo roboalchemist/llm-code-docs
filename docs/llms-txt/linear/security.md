@@ -24,7 +24,7 @@ Linear is compliant with GDPR, SOC 2 Type II, and HIPAA.
 
 For HIPAA compliance, we offer a Business Associate Agreement (BAA) to customers on [our Enterprise plan](https://linear.app/pricing). Please contact us at sales@linear.app for more information.
 
-To request other security and compliance documents for Linear, please visit our [Trust Center](https://trustcenter.linear.app/). If you have further questions about any of our certifications, please let us know at support@linear.app.
+To request other security and compliance documents for Linear, please visit our [Trust Center](https://trust.linear.app/). If you have further questions about any of our certifications, please let us know at support@linear.app.
 
 ## Data regions
 

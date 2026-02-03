@@ -9,13 +9,17 @@ https://api.apify.com/v2/actor-tasks/:actorTaskId
 ```
 
 
-Clientshttps://docs.apify.com/api/client/python/reference/class/TaskClientAsync#gethttps://docs.apify.com/api/client/js/reference/class/TaskClient#getGet an object that contains all the details about a task.
+Get an object that contains all the details about a task.
 
 ## Request
 
 ## Responses
 
 * 200
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

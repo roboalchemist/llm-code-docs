@@ -92,13 +92,52 @@ Bito will use **Claude Haiku** and **Grok Code Fast** together to index your cod
 
 ### b. System requirements
 
+AI Architect can be installed on your local machine for individual use, or on a shared server that your entire team can connect to. When installed on a server, multiple developers can configure their AI coding tools (such as Claude Code, Cursor, Windsurf, etc.) to use the same MCP server, sharing access to the indexed codebase.
+
 The AI Architect supports the following operating systems:
 
-* macOS
-* Unix-based systems
-* Windows (via WSL2)
+* **macOS**
+* **Unix-based systems** (Ubuntu, Debian, RHEL, or similar distributions)
+* **Windows (via WSL2)**
+
+#### Shared servers (for team deployments)
+
+* **On-premise physical servers** - Bare metal Linux servers in your data center
+* **On-premise virtual machines** - VMware, Hyper-V, Proxmox, KVM, or other virtualization platforms
+* **Cloud virtual machines** - AWS EC2, Google Cloud Compute Engine, Azure VMs, DigitalOcean Droplets, or similar cloud instances
 
 {% stepper %}
+{% step %}
+
+### Hardware specifications
+
+|          |                                                                                   Recommended                                                                                   |
+| :------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|  **CPU** |                                                                                    6-8 cores                                                                                    |
+|  **RAM** |                                                                                     8-12 GB                                                                                     |
+| **Disk** | <p>SSD with adequate IOPS<br><br><strong>Note:</strong> Ensure sufficient disk space is available, as all configured repositories will be cloned to this disk during setup.</p> |
+
+AI Architect automatically detects available system resources during setup and configures optimal resource allocation for its Docker containers. For most deployments, the automatic configuration provides good performance. However, you can manually adjust these settings to fine-tune performance or accommodate specific workload requirements.
+
+You can customize resource limits by editing the `.env-bitoarch` file and run the command `./setup.sh --force-restart` to update the allocation. The following environment variables can be manually configured to control resource allocation.
+
+```dotenv
+CIS_PROVIDER_MEMORY_LIMIT=1g
+CIS_MANAGER_MEMORY_LIMIT=2g
+CIS_CONFIG_MEMORY_LIMIT=512m
+MYSQL_MEMORY_LIMIT=2g
+CIS_TRACKER_MEMORY_LIMIT=512m
+
+
+CIS_PROVIDER_CPU_LIMIT=1.0
+CIS_MANAGER_CPU_LIMIT=2.0
+CIS_CONFIG_CPU_LIMIT=0.5
+MYSQL_CPU_LIMIT=1.0
+CIS_TRACKER_CPU_LIMIT=0.5
+```
+
+{% endstep %}
+
 {% step %}
 
 ### **WSL2 is required for Windows users**
@@ -125,7 +164,7 @@ wsl --install
 
 The easiest and recommended way to get Docker Compose is to install **Docker Desktop**.
 
-Docker Desktop includes Docker Compose along with Docker Engine and Docker CLI which are Compose prerequisites.
+Docker Desktop includes Docker Compose along with Docker Engine and Docker CLI which are Docker Compose prerequisites.
 
 [**Install Docker Desktop**](https://docs.docker.com/compose/install)
 
@@ -138,78 +177,153 @@ If you're using Windows with WSL2, you need to enable Docker integration with yo
 3. Enable integration for your WSL distribution (e.g., Ubuntu)
 4. Click **Apply**
    {% endstep %}
-   {% endstepper %}
+
+{% step %}
+
+### Kubernetes cluster (required for Kubernetes based deployment method)
+
+### For production environments:
+
+During the setup process given below, if you choose [**Kubernetes**](https://kubernetes.io/docs/home/) as your deployment method, you must have an existing Kubernetes cluster set up and running.
+
+Ensure your Kubernetes cluster have the following required tools:
+
+* **kubectl** (Kubernetes command-line tool)
+* **helm** (Kubernetes package manager)
+
+### For testing and development:
+
+For testing purposes, you can create a local Kubernetes cluster using KIND (Kubernetes in Docker). KIND allows you to run Kubernetes clusters in Docker containers.
+
+**Install KIND:**
+
+* **macOS:**
+
+```shellscript
+brew install kind kubectl helm
+```
+
+* **Linux:**
+
+```shellscript
+# KIND
+curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-amd64
+chmod +x ./kind
+sudo mv ./kind /usr/local/bin/kind
+
+# kubectl
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+chmod +x kubectl
+sudo mv kubectl /usr/local/bin/
+
+# Helm
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+```
+
+{% hint style="info" %}
+**Note:** Before creating a KIND cluster, verify Docker has sufficient resources:
+
+```shellscript
+docker info --format 'CPUs={{.NCPU}} Mem={{.MemTotal}}'
+```
+
+\
+**Required:** Minimum 4 CPUs and 8GB RAM
+
+If resources are insufficient, increase Docker Desktop resources (Preferences → Resources) and restart Docker.
+{% endhint %}
+
+#### Setting up a test cluster with KIND
+
+Create a KIND cluster with proper port mappings for service access:
+
+```shellscript
+kind create cluster --name bito-ai-architect --config - <<EOF
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+- role: control-plane
+  extraPortMappings:
+  - containerPort: 80
+    hostPort: 80
+  - containerPort: 443
+    hostPort: 443
+EOF
+```
+
+{% hint style="info" %}
+**Note:** Services use ClusterIP for secure, internal-only access. External access is configured via Ingress Controller on ports 80/443.
+{% endhint %}
+
+#### Verify cluster
+
+```shellscript
+kubectl cluster-info --context kind-bito-ai-architect
+kubectl get nodes
+```
+
+{% endstep %}
+{% endstepper %}
 
 ## Installation guide
 
 {% stepper %}
 {% step %}
 
-### Download AI Architect
+### Install AI Architect
 
-Download the latest version of AI Architect package from our [**GitHub repository**](https://github.com/gitbito/ai-architect/blob/main/bito-ai-architect-1.0.0.tar.gz).
-{% endstep %}
-
-{% step %}
-
-### Start Docker Desktop / Docker Service
-
-Before proceeding with the installation, ensure **Docker Desktop / Docker Service** is running on your system. If it's not already open, launch **Docker Desktop** and wait for it to fully start before continuing.
-{% endstep %}
-
-{% step %}
-
-### Extract the downloaded AI Architect package
+Before proceeding with the installation, ensure **Docker Desktop / Docker Service** or **Kubernetes cluster** is running on your system. If it's not already running, launch it and wait for it to fully start before continuing.
 
 Open your terminal:
 
 * **Linux/macOS**: Use your standard terminal application
 * **Windows (WSL2)**: Launch the **Ubuntu** application from the **Start menu**
 
-Navigate to the folder where you downloaded the file. You can either work directly in your **Downloads** folder or move the file to any preferred location first, then navigate there in the terminal.
+Execute the installation command:
 
-* **Linux/macOS**: `cd /path/to/your/folder`
-* **Windows (WSL2)**: `cd /mnt/c/Users/YourUsername/path/to/folder`
-
-Create a directory for AI Architect and extract the downloaded package into it:
-
-```shellscript
-mkdir bito-ai-architect
+```bash
+curl -fsSL https://aiarchitect.bito.ai/install.sh | bash
 ```
 
-```shellscript
-tar -xzf bito-ai-architect-*.tar.gz -C bito-ai-architect
-```
+The installation script will:
 
-{% hint style="info" %}
-**Note:** Replace `bito-ai-architect-*.tar.gz` with the actual name of the file you downloaded.
-{% endhint %}
-
-Navigate to the extracted folder:
-
-```shellscript
-cd bito-ai-architect
-```
-
-{% endstep %}
-
-{% step %}
-
-### Run setup
-
-The setup script will guide you through configuring AI Architect with your Git provider and LLM credentials. The process is interactive and will prompt you for the necessary information step by step.
-
-**To begin setup, run:**
-
-```shellscript
-./setup.sh
-```
+* Download the latest Bito AI Architect package
+* Extract it to your system
+* Initialize the setup process
 
 {% hint style="info" %}
 **Installing dependencies:**
 
 The AI Architect setup process will automatically check for required tools on your system. If any dependencies are missing (such as `jq`, which is needed for JSON processing), you'll be prompted to install them. Simply type `y` and press `Enter` to proceed with the installation.
 {% endhint %}
+{% endstep %}
+
+{% step %}
+
+### Configuration
+
+Follow the on-screen prompts to configure your deployment. You'll provide the following information:
+
+#### Select AI Architect deployment method:
+
+Choose how you want to deploy Bito's AI Architect. We support two deployment methods:
+
+1. **Docker Compose:** Deploys AI Architect using Docker Compose.
+2. **Kubernetes:** Deploys AI Architect to an existing Kubernetes cluster. Choose this option if you have an existing Kubernetes cluster running and want to leverage Kubernetes for orchestration, scaling, and management.
+   * **Note:** The setup script will automatically deploy AI Architect services to your Kubernetes cluster in the `bito-ai-architect` namespace.
+
+{% hint style="info" %}
+**If you have a Kubernetes cluster:**
+
+1. Ensure it's running
+2. Verify the current Kubernetes context: `kubectl config current-context`
+3. Check connectivity: `kubectl cluster-info`
+
+\
+**If you don't have a Kubernetes cluster:**
+
+1. Select Docker Compose (option 1)
+   {% endhint %}
 
 #### You'll need to provide the following details when prompted:
 
@@ -262,7 +376,11 @@ The AI Architect setup process will automatically check for required tools on yo
 
 ### Add repositories
 
-Once your Git account is connected successfully, Bito automatically detects your repositories and populates the `.bitoarch-config.yaml` file with an initial list. Review this file to confirm which repositories you want to index — feel free to remove any that should be excluded or add others as needed. Once the list looks correct, save the file, and continue with the steps below.
+Once your Git account is connected successfully, Bito automatically detects your repositories and populates the `/usr/local/etc/bitoarch/.bitoarch-config.yaml` file with an initial list. Review this file to confirm which repositories you want to index — feel free to remove any that should be excluded or add others as needed. Once the list looks correct, save the file, and continue with the steps below.
+
+{% hint style="info" %}
+For versions older than 1.4.0, configuration file can be found in installation directory.
+{% endhint %}
 
 Below is an example of how the `.bitoarch-config.yaml` file is structured:
 
@@ -287,7 +405,7 @@ Once you select an option, your **Bito MCP URL** and **Bito MCP Access Token** w
 To manually apply the configuration, run this command:
 
 ```shellscript
-bitoarch add-repos .bitoarch-config.yaml
+bitoarch add-repos /usr/local/etc/bitoarch/.bitoarch-config.yaml
 ```
 
 {% endstep %}
@@ -322,11 +440,31 @@ bitoarch index-status
 ```
 
 {% hint style="info" %}
-**Status indicators:**
+**Example output:**
 
-* `running` - Indexing is in progress
-* `success` - All repositories indexed
-* `failed` - Check logs for errors
+```
+Configured Repositories:
+  Total: 3
+
+Repository Index Status:
+State: ⏳ running
+  Progress: 0 / 1 completed
+  In Progress: 1
+
+Workspace Index Progress:
+State: ⏳ running
+  Progress: 1 / 2 completed
+  In Progress: 1
+
+Overall Status: in-progress
+```
+
+**What each section represents:**
+
+* **Configured Repositories:** Shows how many repositories are added in your config file for indexing.
+* **Repository Index Status:** Shows the indexing progress for each individual repository.
+* **Workspace Index Progress:** Shows the status of indexes that combine and process information across multiple repositories.
+* **Overall Status:** Provides a single summary indicating whether indexing is still running, completed successfully, or failed.
   {% endhint %}
   {% endstep %}
 
@@ -356,16 +494,16 @@ Replace `<new-token>` with your new secure token value.
 
 ## Update repository list and re-index
 
-Edit `.bitoarch-config.yaml` file to add/remove repositories.
+Edit `/usr/local/etc/bitoarch/.bitoarch-config.yaml` file to add/remove repositories.
 
 ```shellscript
-vim .bitoarch-config.yaml
+vim /usr/local/etc/bitoarch/.bitoarch-config.yaml
 ```
 
 To apply the changes, run this command:
 
 ```shellscript
-bitoarch update-repos .bitoarch-config.yaml
+bitoarch update-repos /usr/local/etc/bitoarch/.bitoarch-config.yaml
 ```
 
 Start the re-indexing process using this command:
@@ -374,11 +512,73 @@ Start the re-indexing process using this command:
 bitoarch index-repos
 ```
 
+## Accessing services (Kubernetes-based deployment)
+
+Port-forwards are exposed on all network interfaces (0.0.0.0) and are accessible from any machine on the network.
+
+#### Local access (from the Kubernetes host machine)
+
+```shellscript
+curl http://localhost:5001/health          # Provider
+curl http://localhost:5002/health          # Manager
+curl http://localhost:5003/health          # Config
+```
+
+#### Network access (from other machines on your network)
+
+Get the host machine's IP address:
+
+```shellscript
+kubectl get nodes -o wide
+# Or: hostname -I (Linux) / ifconfig (macOS)
+```
+
+From another machine on the network:
+
+```shellscript
+curl http://<host-ip>:5001/health          # Provider
+curl http://<host-ip>:5002/health          # Manager
+curl http://<host-ip>:5003/health          # Config
+curl http://<host-ip>:5005/health          # Tracker
+```
+
+#### Security considerations
+
+> **Important security notes:**
+>
+> * Port-forwards use HTTP (not HTTPS) - traffic is unencrypted
+> * Services are accessible from any machine that can reach the host
+>
+> **For production internet-facing deployments:**
+>
+> * Use firewall rules to restrict access to trusted IPs
+> * Consider using Kubernetes Ingress with TLS/SSL
+> * Implement VPN for remote access
+> * Use network policies to limit pod-to-pod traffic
+
+#### Alternative: Kubernetes Ingress (production)
+
+For production deployments, configure a Kubernetes Ingress Controller with TLS/SSL instead of using port-forwards. This provides secure HTTPS access with proper certificate management.
+
 ## Setting up AI Architect MCP in coding agents
 
-Configure MCP server in supported AI coding tools such as Claude Code, Cursor, Windsurf, GitHub Copilot, more.
+Now that AI Architect is installed and your repositories are indexed, the next step is to connect it to your AI coding tools (such as Claude Code, Cursor, Windsurf, GitHub Copilot, etc.) through the Model Context Protocol (MCP).
 
-Select your AI coding tool from the options below and follow the step-by-step installation guide to seamlessly set up AI Architect.
+#### Quick setup (recommended)
+
+**Save time with our automated installer!** We provide a one-command setup that automatically configures AI Architect for all compatible AI coding tools on your system.
+
+The automated installer will:
+
+* Detect all supported AI tools installed on your system
+* Configure them automatically with your MCP credentials
+* Get you up and running in seconds instead of manually configuring each tool
+
+👉 [**Try our Quick MCP Integration Guide**](https://docs.bito.ai/ai-architect/quick-mcp-integration-with-ai-coding-agents) for automated setup across all your tools.
+
+#### Manual setup
+
+If you prefer hands-on control over your configuration or encounter issues with automated setup, we provide detailed step-by-step guides for each supported AI coding tool:
 
 * [**Guide for Claude Code**](https://docs.bito.ai/ai-architect/guide-for-claude-code)
 * [**Guide for Cursor**](https://docs.bito.ai/ai-architect/guide-for-cursor)
@@ -386,6 +586,8 @@ Select your AI coding tool from the options below and follow the step-by-step in
 * [**Guide for GitHub Copilot (VS Code)**](https://docs.bito.ai/ai-architect/guide-for-github-copilot-vs-code)
 * [**Guide for Junie (JetBrains)**](https://docs.bito.ai/ai-architect/guide-for-junie-jetbrains)
 * [**Guide for JetBrains AI Assistant**](https://docs.bito.ai/ai-architect/guide-for-jetbrains-ai-assistant)
+
+Each guide walks you through the complete manual configuration process for that specific tool.
 
 ## Configuring AI Architect for Bito AI Code Review Agent
 
@@ -473,6 +675,83 @@ The upgrade script supports the following parameters:
 {% hint style="info" %}
 **Your data is safe:** All repositories, indexes, API keys, and settings are automatically preserved during upgrade.
 {% endhint %}
+
+{% hint style="info" %}
+**Important:** You can only upgrade within the same deployment type. To switch from **Docker Compose** to **Kubernetes** or vice versa, you must use the `./setup.sh --clean` command, which will result in data loss.
+{% endhint %}
+
+## Troubleshooting guide
+
+```shellscript
+# Check all services
+bitoarch status
+bitoarch health --verbose
+
+# View full configuration
+bitoarch show-config --raw
+
+# Test MCP connection
+bitoarch mcp-test
+
+# Check indexing status with details
+bitoarch index-status --raw
+
+# Check setup log
+tail -f setup.log
+
+# Local log files
+tail -f var/logs/cis-provider/provider.log
+tail -f var/logs/cis-manager/manager.log
+
+# Complete logs
+./setup.sh --logs
+
+# Reset installation (removes all data and configuration)
+./setup.sh --clean
+
+# Then run setup again
+./setup.sh
+
+# To stop all the service
+./setup.sh --stop
+
+# Restart service (for env based config updates)
+./setup.sh --restart
+
+# Force pull latest images based on service-versions.json and restart services
+./setup.sh --update
+```
+
+#### Commands specific to Kubernetes-based deployment
+
+```shellscript
+# Check Kubernetes pod status
+# All pods should show "Running" status.
+kubectl get pods -n bito-ai-architect
+
+# Check detailed information about a specific Kubernetes pod
+kubectl describe pod <pod-name> -n bito-ai-architect
+
+# Access Kubernetes pod shell
+kubectl exec -it -n bito-ai-architect \
+  $(kubectl get pod -n bito-ai-architect -l app.kubernetes.io/component=provider -o jsonpath='{.items[0].metadata.name}') \
+  -- /bin/sh
+
+# Stop KIND cluster (preserves data)
+docker stop bito-ai-architect-control-plane
+
+# Start KIND cluster again
+docker start bito-ai-architect-control-plane
+
+# Delete KIND cluster completely
+kind delete cluster --name bito-ai-architect
+
+# View Provider service logs:
+kubectl logs -n bito-ai-architect -l app.kubernetes.io/component=provider --tail=100 -f
+
+# View Manager service logs:
+kubectl logs -n bito-ai-architect -l app.kubernetes.io/component=manager --tail=100 -f
+```
 
 ## Available commands
 

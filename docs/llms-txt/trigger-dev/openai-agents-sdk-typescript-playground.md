@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/example-projects/openai-agents-sdk-typescript-playground.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # OpenAI Agents SDK for Typescript + Trigger.dev playground
 
 > Build production-ready AI agents with OpenAI Agents SDK for Typescript and Trigger.dev. Explore 7 examples covering streaming, multi-agent systems, and tool integration.

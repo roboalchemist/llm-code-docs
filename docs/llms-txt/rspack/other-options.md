@@ -1,10 +1,13 @@
 # Source: https://rspack.dev/config/other-options.md
 
-import WebpackLicense from '@components/WebpackLicense';
-import PropertyType from '@components/PropertyType';
-import { ApiMeta } from '@components/ApiMeta';
+CC 4.0 License> The content of this section is derived from the content of the following links and is subject to the CC BY 4.0 license.
+> 
+> - [https://webpack.js.org/configuration/other-options/](https://webpack.js.org/configuration/other-options/)
+> 
+> The following contents can be assumed to be the result of modifications and deletions based on the original contents if not specifically stated.
+> 
+> 
 
-<WebpackLicense from="https://webpack.js.org/configuration/other-options/" />
 
 # Other options
 
@@ -12,9 +15,10 @@ These are the remaining configuration options supported by rspack.
 
 ## amd
 
-<ApiMeta addedVersion="1.3.0" />
+[Added in v1.3.0](https://github.com/web-infra-dev/rspack/releases/tag/v1.3.0)
+- Type: `false | object`
+- Default:`false`
 
-<PropertyType type="false | object" defaultValueList={[{ defaultValue: 'false' }]} />
 
 :::info
 Unlike webpack, where the default value of the `amd` option is `{}` (meaning AMD module dependency analysis is enabled by default), Rspack sets the default value of the `amd` option to `false`. This means AMD module dependency analysis is disabled by default in Rspack. This change was made because the usage of AMD modules is gradually decreasing. If your application requires it, you can enable this option by yourself.
@@ -40,7 +44,9 @@ export default {
 
 ## bail
 
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'false' }]} />
+- Type: `boolean`
+- Default:`false`
+
 
 Fail out on the first error instead of tolerating it. By default Rspack will log these errors in red in the terminal, as well as the browser console when using HMR, but continue bundling.
 To enable it:
@@ -55,7 +61,9 @@ This will force Rspack to exit its bundling process.
 
 ## dependencies
 
-<PropertyType type="string[]" defaultValueList={[{ defaultValue: 'undefined' }]} />
+- Type: `string[]`
+- Default:`undefined`
+
 
 A list of [name](#name) defining all sibling configurations it depends on. Dependent configurations need to be compiled first.
 
@@ -83,7 +91,7 @@ export default [
 
 ## ignoreWarnings
 
-* **Type:**
+- **Type:**
 
 ```ts
 type IgnoreWarnings = (
@@ -97,7 +105,7 @@ type IgnoreWarnings = (
 )[];
 ```
 
-* **Default:** `undefined`
+- **Default:** `undefined`
 
 Tells Rspack to suppress specific compilation warnings by matching their message, module, or file, or by using a custom function.
 
@@ -134,7 +142,9 @@ export default {
 
 ## name
 
-<PropertyType type="string" defaultValueList={[{ defaultValue: 'undefined' }]} />
+- Type: `string`
+- Default:`undefined`
+
 
 Name of the configuration. Used when loading multiple configurations.
 
@@ -147,7 +157,9 @@ export default {
 
 ## loader
 
-<PropertyType type="Record<string, any>" defaultValueList={[{ defaultValue: 'undefined' }]} />
+- Type: `Record<string, any>`
+- Default:`undefined`
+
 
 Expose custom values into the [loader context](/api/loader-api/context.md).
 
@@ -174,9 +186,3 @@ module.exports = function (source) {
 :::tip
 You can override properties in the loader context as webpack copies all properties that are defined in the loader to the loader context.
 :::
-
-## profile
-
-<PropertyType type="boolean" defaultValueList={[{ defaultValue: 'undefined' }]} />
-
-Capture a "profile" of the application, including statistics and hints, which can then be dissected using the Analyze tool. It will also log out a summary of module timings.

@@ -1,3 +1,5 @@
+# Source: https://docs.streamlit.io/develop/api-reference/data/st.column_config/st.column_config.timecolumn
+
 # st.column_config.TimeColumn
 
 Configure a time column in `st.dataframe` or `st.data_editor`.

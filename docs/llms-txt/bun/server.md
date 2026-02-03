@@ -2,23 +2,15 @@
 
 # Source: https://bun.com/docs/guides/http/server.md
 
-# Source: https://bun.com/docs/runtime/http/server.md
-
-# Source: https://bun.com/docs/guides/http/server.md
-
-# Source: https://bun.com/docs/runtime/http/server.md
-
-# Source: https://bun.com/docs/guides/http/server.md
-
-# Source: https://bun.com/docs/runtime/http/server.md
-
-# Source: https://bun.com/docs/guides/http/server.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Common HTTP server usage
 
 This starts an HTTP server listening on port `3000`. It demonstrates basic routing with a number of common responses and also handles POST data from standard forms or as JSON.
 
-See [`Bun.serve`](https://bun.com/docs/api/http) for details.
+See [`Bun.serve`](/runtime/http/server) for details.
 
 ```ts server.ts icon="https://mintcdn.com/bun-1dd33a4e/Hq64iapoQXHbYMEN/icons/typescript.svg?fit=max&auto=format&n=Hq64iapoQXHbYMEN&q=85&s=c6cceedec8f82d2cc803d7c6ec82b240" theme={"theme":{"light":"github-light","dark":"dracula"}}
 const server = Bun.serve({

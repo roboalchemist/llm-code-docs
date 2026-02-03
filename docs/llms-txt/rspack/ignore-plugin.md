@@ -10,7 +10,7 @@ new rspack.IgnorePlugin(options);
 
 ## Options
 
-* **Type:**
+- **Type:**
 
 ```ts
 | {
@@ -25,7 +25,7 @@ new rspack.IgnorePlugin(options);
   }
 ```
 
-* **Default:** `undefined`
+- **Default:** `undefined`
 
 ## Example
 

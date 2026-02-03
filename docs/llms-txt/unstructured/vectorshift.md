@@ -1,5 +1,9 @@
 # Source: https://docs.unstructured.io/examplecode/tools/vectorshift.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.unstructured.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # VectorShift
 
 [VectorShift](https://vectorshift.ai/) is an integrated framework of no-code, low-code, and out of the box generative AI solutions
@@ -36,7 +40,7 @@ enables you to use GPT-4o-mini to chat in real time with a PDF document that is 
 
   * Your workflow must contain an embedder node, and the embedder node must specify the embedding model that Unstructured will use to generate the embeedings.
   * If an existing index name is specified,
-    and the number of dimensions that Unstructured generates does not match the number of dimensions that is specified in the existing index's embedding settings, the run will fail.
+    and the number of dimensions that Unstructured generates does not match the number of dimensions that are specified in the existing index's embedding settings, the run will fail.
     You must change the number of dimensions in your workflow's embedder node or your existing index's embedding settings to match, and try the run again.
   * If an index name is not specified, Unstructured creates a new index in your Pinecone account. The
     new index's name will be `u<short-workflow-id>-<short-embedding-model-name>-<number-of-dimensions>`.

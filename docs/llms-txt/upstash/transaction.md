@@ -1,5 +1,9 @@
 # Source: https://upstash.com/docs/redis/sdks/ts/commands/transaction.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Transactions
 
 > Transactions
@@ -9,13 +13,6 @@ You can use transactions or pipelines with the `multi` or `pipeline` method.
 Transactions are executed atomically, while pipelines are not. In pipelines you can execute multiple commands at once, but other commands from other clients can be executed in between.
 
 <CodeGroup>
-  ```ts Pipeline theme={"system"}
-  const p = redis.pipeline();
-  p.set("foo", "bar");
-  p.get("foo");
-  const res = await p.exec();
-  ```
-
   ```ts Transaction theme={"system"}
   const tx = redis.multi();
   tx.set("foo", "bar");

@@ -1,37 +1,41 @@
 # Daytona Documentation v0.0.0-dev
-# Generated on: 2025-11-14
+# Generated on: 2026-02-02
 
 
-Daytona API keys are used to authenticate requests to the [Daytona API](https://www.daytona.io/docs/en/tools/api.md). You can view, create, or delete your API Keys on the [API Keys](https://app.daytona.io/dashboard/keys) page.
+Daytona API keys are used to authenticate requests to the [Daytona API](https://www.daytona.io/docs/en/tools/api.md).
 
-## Creating an API key
+## Create an API key
 
-You can obtain an API key from the Daytona platform:
+1. Navigate to [Daytona Dashboard ↗](https://app.daytona.io/dashboard/keys)
+2. Click the **Create Key** button
+3. Enter the name of the API key, set the expiration date, and [select permissions](#permissions--scopes)
+4. Click the **Create** button to create the API key
+5. Copy the API key to your clipboard
 
-1. Navigate to [API Keys](https://app.daytona.io/dashboard/keys), on the [Daytona Dashboard](https://app.daytona.io/dashboard/).
-2. Click the **`Create Key`** button.
-3. In the open modal, create and copy a new key to your clipboard.
+To use the API key in your application, set the `DAYTONA_API_KEY` environment variable.
 
-To use an API key in your application, set the `DAYTONA_API_KEY` environment variable as described on the [Configuration](https://www.daytona.io/docs/en/configuration.md) page.
+Daytona supports multiple options to configure your environment: [in code](https://www.daytona.io/docs/en/configuration.md#configuration-in-code), [environment variables](https://www.daytona.io/docs/en/configuration.md#environment-variables), [.env file](https://www.daytona.io/docs/en/configuration.md#env-file), and [default values](https://www.daytona.io/docs/en/configuration.md#default-values).
 
 ## Permissions & Scopes
 
-When creating a new API Key, you can select the specific permissions (scopes) it should have. Scopes control what actions the key can perform. Grant only the scopes you need for each key.
-
-Below is a list of available scopes and their descriptions:
-
-| Resource    | Scope                | Description                          |
-|-------------|----------------------|--------------------------------------|
-| Sandboxes   | `write:sandboxes`    | Create/modify sandboxes           |
-|             | `delete:sandboxes`   | Delete sandboxes                     |
-| Snapshots   | `write:snapshots`    | Create/modify snapshots           |
-|             | `delete:snapshots`   | Delete snapshots                     |
-| Registries  | `write:registries`   | Create/modify registries          |
-|             | `delete:registries`  | Delete registries                    |
-| Volumes     | `read:volumes`       | View volumes                         |
-|             | `write:volumes`      | Create/modify volumes             |
-|             | `delete:volumes`     | Delete volumes                       |
-| Audit       | `read:audit_logs`    | View audit logs                      |
+| Resource   | Scope                   | Description              |
+| ---------- | ----------------------- | ------------------------ |
+| Sandboxes  | **`write:sandboxes`**   | Create/modify sandboxes  |
+|            | **`delete:sandboxes`**  | Delete sandboxes         |
+| Snapshots  | **`write:snapshots`**   | Create/modify snapshots  |
+|            | **`delete:snapshots`**  | Delete snapshots         |
+| Registries | **`write:registries`**  | Create/modify registries |
+|            | **`delete:registries`** | Delete registries        |
+| Volumes    | **`read:volumes`**      | View volumes             |
+|            | **`write:volumes`**     | Create/modify volumes    |
+|            | **`delete:volumes`**    | Delete volumes           |
+| Audit      | **`read:audit_logs`**   | View audit logs          |
+| Regions    | **`write:regions`**     | Create/modify regions    |
+|            | **`delete:regions`**    | Delete regions           |
+| Runners    | **`read:runners`**      | View runners             |
+|            | **`write:runners`**     | Create/modify runners    |
+|            | **`delete:runners`**    | Delete runners           |
+|            | `delete:runners`        | Delete runners           |
 
 Daytona Audit Logs provide a detailed record of user and system activity across your organization. Use this feature to track sandbox lifecycle events, user access, system changes, and more.
 
@@ -47,7 +51,7 @@ Contact your organization admin if you cannot access audit logs.
 
 ## Real-Time Updates
 
-Enable the **Real-Time Updates** toggle in the top-right corner of the Audit Logs page to automatically refresh logs as new events occur.
+Enable the **Auto Refresh** toggle in the top-right corner of the Audit Logs page to automatically refresh logs as new events occur.
 
 ## Log Structure
 
@@ -83,7 +87,7 @@ Below is the complete list of actions logged by Daytona:
 
 ```text
 create, read, update, delete, login,
-set_default, update_access, update_quota,
+set_default, update_access, update_quota, update_region_quota,
 suspend, unsuspend, accept, decline,
 link_account, unlink_account, leave_organization,
 regenerate_key_pair, update_scheduling,
@@ -95,6 +99,7 @@ update_network_settings, get_webhook_app_portal_access,
 send_webhook_message, initialize_webhooks,
 update_sandbox_default_limited_network_egress,
 create_ssh_access, revoke_ssh_access,
+regenerate_proxy_api_key,regenerate_ssh_gateway_api_key,regenerate_snapshot_manager_credentials,
 toolbox_delete_file, toolbox_download_file, toolbox_create_folder,
 toolbox_move_file, toolbox_set_file_permissions, toolbox_replace_in_files,
 toolbox_upload_file, toolbox_bulk_upload_files,
@@ -145,13 +150,21 @@ You can filter and search logs by:
 
 Use the page size selector to change how many results are shown per page. */}
 
-The [Billing](https://app.daytona.io/dashboard/billing) page in the Daytona Dashboard provides an overview of your Organization's billing, wallet, and usage details.
+[Daytona Billing ↗](https://app.daytona.io/dashboard/billing/spending) provides an overview of your organization's billing, wallet, and usage details.
 
-## Wallet Overview
+Daytona displays a cost breakdown chart that shows a breakdown of costs per resource. You can choose between area and bar charts and filter by RAM, CPU, and storage. You can also filter by date range (last 12, 6, or 3 months).
 
-The Wallet section shows the balance of the Organization's wallet and the amount of credits spent this month.
+## Wallet
 
-## Automatic Top-Up
+[Daytona Wallet ↗](https://app.daytona.io/dashboard/billing/wallet) shows the current balance of the organization's wallet and the amount of credits spent this month.
+
+### Add payment method
+
+Daytona provides a payment method to add to your wallet. You can connect your credit card to your wallet to top up your balance.
+
+1. Navigate to [Daytona Wallet ↗](https://app.daytona.io/dashboard/billing/wallet)
+2. Click the **Connect** button next to the **Payment method** section
+3. Follow the prompts to connect your credit card to your wallet.
 
 Organizations can set automatic top-up rules for their wallets.
 
@@ -160,20 +173,41 @@ Organizations can set automatic top-up rules for their wallets.
 
 Set both **Threshold** and **Target** to `0` to disable automatic top-up.
 
-## Cost Breakdown
+### Redeem coupon
 
-The Cost Breakdown chart shows a breakdown of costs per resource. Users can view consumption for CPU, RAM and Disk and toggle between area and bar charts.
+Daytona provides coupon codes to redeem credits on your wallet.
 
-**Computer Use** enables programmatic control of desktop environments within Daytona sandboxes. It provides mouse, keyboard, screenshot, and display operations for automating GUI interactions and testing desktop applications.
+1. Navigate to [Daytona Wallet ↗](https://app.daytona.io/dashboard/billing/wallet)
+2. Enter the coupon code in the **Redeem coupon** input field
+3. Click the **Redeem** button to redeem the coupon code.
 
-We recommend using this instance type for most tasks.
+### Billing emails
 
-## Common Use Cases
+Daytona provides billing emails to receive important billing notifications such as invoices and credit depletion notices.
 
-- **GUI Application Testing** - Automate interactions with desktop applications, click buttons, fill forms, and validate UI behavior
-- **Visual Testing & Screenshots** - Capture screenshots of applications, compare UI states, and perform visual regression testing  
-- **Desktop Automation** - Automate repetitive desktop tasks, file management through GUI, and complex workflows
-- **Human-in-the-Loop** - Access the VNC interface directly from the [Daytona Dashboard](https://app.daytona.io/dashboard/sandboxes) to manually control and interact with the desktop environment alongside automated scripts
+1. Navigate to [Daytona Wallet ↗](https://app.daytona.io/dashboard/billing/wallet)
+2. Click the **Add Email** button to add a new email address.
+3. Enter the email address and click the **Add Email** button.
+
+A verification email will be sent to the email address to verify it. Once verified, the email address will be added to the list of billing emails.
+
+Computer Use enables programmatic control of desktop environments within Daytona sandboxes. It provides mouse, keyboard, screenshot, and display operations for automating GUI interactions and testing desktop applications.
+
+We recommend using this instance type if you need to interact with **Linux**, **Windows**, or **macOS** applications.
+
+:::caution[Alpha Access Required]
+Computer Use for macOS and Windows is currently in **private alpha**. To request access, please fill out the [Computer Use Windows Access Request Form](https://docs.google.com/forms/d/e/1FAIpQLSfoK-77-VpfsMubw8F4f1opCxIL1AyJUgnM0ONYup5hZ0RTvQ/viewform?usp=dialog) or [Computer Use macOS Access Request Form](https://docs.google.com/forms/d/e/1FAIpQLSc9xlGZ49OjWNkyzDPC9Ip3InMRR0ZXY3tcoD-PFQj3ck6gzQ/viewform?usp=sharing&ouid=103304973264148733944). Once submitted, our team will review your request and reach out with setup instructions and availability details.
+:::
+
+## Common use cases
+
+- **GUI Application Testing** - Automate interactions with native macOS applications, click buttons, fill forms, and validate UI behavior
+- **Visual Testing & Screenshots** - Capture screenshots of applications, compare UI states, and perform visual regression testing
+- **Desktop Automation** - Automate repetitive macOS desktop tasks, file management through GUI, and complex workflows
+
+## Getting started
+
+Once you have access to the Computer Use Alpha, you'll be able to programmatically control desktop environments within your Daytona sandboxes. The functionality will include mouse operations, keyboard automation, screenshot capture, and display management specifically optimized for the operating system of your choice.
 
 ## SDK References
 
@@ -192,10 +226,10 @@ Complete API reference for computer use operations in Python (sync & async).
 ## Quick Example
 
     ```python
-    from daytona import Daytona
+    from daytona import Daytona, DaytonaConfig
 
     # Initialize using environment variables (recommended)
-    daytona = Daytona()
+    daytona = DaytonaConfig()
     # Or explicitly configure:
     # daytona = Daytona(
     #     api_key=os.getenv('DAYTONA_API_KEY'),
@@ -244,83 +278,55 @@ Complete API reference for computer use operations in Python (sync & async).
     await sandbox.computerUse.keyboard.hotkey('ctrl+s');
     ```
 
+    ```ruby
+    require 'daytona'
+
+    # Initialize using environment variables (recommended)
+    daytona = Daytona::Daytona.new
+    # Or explicitly configure:
+    # config = Daytona::Config.new(
+    #   api_key: ENV['DAYTONA_API_KEY'],
+    #   api_url: ENV.fetch('DAYTONA_API_URL', 'https://app.daytona.io/api')
+    # )
+    # daytona = Daytona::Daytona.new(config)
+
+    # Create sandbox from default snapshot (includes desktop environment)
+    sandbox = daytona.create
+
+    # Start computer use processes
+    result = sandbox.computer_use.start
+    puts "Computer use started: #{result.message}"
+
+    # Take a screenshot
+    screenshot = sandbox.computer_use.screenshot.take_full_screen
+
+    # Click and type
+    sandbox.computer_use.mouse.click(100, 200)
+    sandbox.computer_use.keyboard.type('Hello, Linux!')
+    sandbox.computer_use.keyboard.hotkey('ctrl+s')
+    ```
+
 **Environment Variables (.env file):**
 ```bash
 DAYTONA_API_KEY=your-api-key-here
 DAYTONA_API_URL=https://app.daytona.io/api
 ```
 
-## Related Documentation
+Daytona supports multiple options to configure your environment, in order of precedence:
 
-- [Computer Use - Windows](https://www.daytona.io/docs/en/computer-use-windows.md)  
-- [Computer Use - macOS](https://www.daytona.io/docs/en/computer-use-macos.md)
+1. [Configuration in code](#configuration-in-code)
+2. [Environment variables](#environment-variables)
+3. [.env file](#env-file)
+4. [Default values](#default-values)
 
-**Computer Use** enables programmatic control of desktop environments within Daytona sandboxes. It provides mouse, keyboard, screenshot, and display operations for automating GUI interactions and testing desktop applications.
+## Configuration in code
 
-We recommend using this instance type if you need to interact with macOS-only applications.
-
-:::caution[Alpha Access Required]
-macOS Computer Use is currently in **private alpha**. To request access, please fill out the [macOS Access Request Form](https://docs.google.com/forms/d/e/1FAIpQLSc9xlGZ49OjWNkyzDPC9Ip3InMRR0ZXY3tcoD-PFQj3ck6gzQ/viewform?usp=sharing&ouid=103304973264148733944).
-
-Once submitted, our team will review your request and reach out with setup instructions and availability details.
-:::
-
-## Common Use Cases
-
-- **GUI Application Testing** - Automate interactions with native macOS applications, click buttons, fill forms, and validate UI behavior
-- **Visual Testing & Screenshots** - Capture screenshots of applications, compare UI states, and perform visual regression testing
-- **Desktop Automation** - Automate repetitive macOS desktop tasks, file management through GUI, and complex workflows
-
-## Getting Started
-
-Once you have access to the macOS Computer Use alpha, you'll be able to programmatically control macOS desktop environments within your Daytona sandboxes. The functionality will include mouse operations, keyboard automation, screenshot capture, and display management specifically optimized for macOS environments.
-
-## Related Documentation
-
-- [Computer Use - Linux](https://www.daytona.io/docs/en/computer-use-linux.md)  
-- [Computer Use - Windows](https://www.daytona.io/docs/en/computer-use-windows.md)
-
-**Computer Use** enables programmatic control of desktop environments within Daytona sandboxes. It provides mouse, keyboard, screenshot, and display operations for automating GUI interactions and testing desktop applications.
-
-We recommend using this instance type if you need to interact with Windows-only applications.
-
-:::caution[Alpha Access Required]
-Windows Computer Use is currently in **private alpha**. To request access, please fill out the [Access Request Form](https://docs.google.com/forms/d/e/1FAIpQLSfoK-77-VpfsMubw8F4f1opCxIL1AyJUgnM0ONYup5hZ0RTvQ/viewform?usp=dialog).
-
-Once submitted, our team will review your request and reach out with setup instructions and availability details.
-:::
-
-## Common Use Cases
-
-- **GUI Application Testing** - Automate interactions with Windows desktop applications, click buttons, fill forms, and validate UI behavior
-- **Visual Testing & Screenshots** - Capture screenshots of applications, compare UI states, and perform visual regression testing
-- **Desktop Automation** - Automate repetitive Windows desktop tasks, file management through GUI, and complex workflows
-
-## Getting Started
-
-Once you have access to the Windows Computer Use alpha, you'll be able to programmatically control Windows desktop environments within your Daytona sandboxes. The functionality will include mouse operations, keyboard automation, screenshot capture, and display management specifically optimized for Windows environments.
-
-## Related Documentation
-
-- [Computer Use - Linux](https://www.daytona.io/docs/en/computer-use-linux.md)  
-- [Computer Use - macOS](https://www.daytona.io/docs/en/computer-use-macos.md)
-
-## Configuration Methods
-
-Daytona SDK supports multiple ways to configure your environment, in order of precedence:
-
-1. [**Configuration in code**](#configuration-in-code)
-2. [**Environment variables**](#environment-variables)
-3. [**.env file**](#env-file)
-4. [**Default values**](#default-values)
-
-## Configuration in Code
-
-Daytona SDK provides an option to configure settings using the `DaytonaConfig` class in Python and TypeScript. The `DaytonaConfig` class accepts the following parameters:
+To configure your environment in code, use the `DaytonaConfig` class. The `DaytonaConfig` class accepts the following parameters:
 
 - `api_key`: Your Daytona [API Key](https://www.daytona.io/docs/api-keys.md)
 - `api_url`: URL of your Daytona API
-- `target`: Daytona Target to create the Sandboxes on.
+- `target`: Target region to create the Sandboxes on (e.g. `us`)
+
 
 ```python
 from daytona import DaytonaConfig
@@ -330,64 +336,86 @@ config = DaytonaConfig(
     api_url="your-api-url",
     target="us"
 )
-
 ```
+
+
 ```typescript
-import { DaytonaConfig } from '@daytonaio/sdk';
+import { DaytonaConfig } from '@daytonaio/sdk'
 
 const config: DaytonaConfig = {
-    apiKey: "your-api-key",          
-    apiUrl: "your-api-url",     
-    target: "us"                  
-};
+  apiKey: 'your-api-key',
+  apiUrl: 'your-api-url',
+  target: 'us',
+}
 ```
 
 
-## Environment Variables
+```ruby
+require 'daytona'
 
-Daytona SDK supports environment variables for configuration. The SDK automatically looks for these environment variables:
+config = Daytona::Config.new(
+  api_key: 'your-api-key',
+  api_url: 'your-api-url',
+  target: 'us'
+)
+```
 
-| Variable              | Description                                | Optional |
+
+For more information, see the [Python SDK](https://www.daytona.io/docs/en/python-sdk/daytona.md), [TypeScript SDK](https://www.daytona.io/docs/en/typescript-sdk/daytona.md), and [Ruby SDK](https://www.daytona.io/docs/en/ruby-sdk/daytona.md) references:
+
+> [**DaytonaConfig (Python SDK)**](https://www.daytona.io/docs/en/python-sdk/sync/daytona.md#daytonaconfig)
+>
+> [**DaytonaConfig (TypeScript SDK)**](https://www.daytona.io/docs/en/typescript-sdk/daytona.md#daytonaconfig)
+>
+> [**Config (Ruby SDK)**](https://www.daytona.io/docs/en/ruby-sdk/daytona.md#config)
+
+## Environment variables
+
+Daytona supports environment variables for configuration. The SDK automatically looks for these environment variables:
+
+| Variable              | Description                                | Required |
 | --------------------- | ------------------------------------------ | -------- |
-| **`DAYTONA_API_KEY`** | Your Daytona API key.                      | No       |
-| **`DAYTONA_API_URL`** | URL of your Daytona API.                   | Yes      |
-| **`DAYTONA_TARGET`**  | Daytona Target to create the Sandboxes on. | Yes      |
+| **`DAYTONA_API_KEY`** | Your Daytona API key.                      | Yes      |
+| **`DAYTONA_API_URL`** | URL of your Daytona API.                   | No       |
+| **`DAYTONA_TARGET`**  | Daytona Target to create the sandboxes on. | No       |
 
-Set environment variables in your shell:
+### Shell
+
+To set environment variables in your shell, use the following commands:
+
 
     ```bash
     export DAYTONA_API_KEY=your-api-key
     export DAYTONA_API_URL=https://your-api-url
     export DAYTONA_TARGET=us
     ```
-    ```bash 
+
+
+    ```bash
     $env:DAYTONA_API_KEY="your-api-key"
     $env:DAYTONA_API_URL="https://your-api-url"
     $env:DAYTONA_TARGET="us"
     ```
 
-You can also set these environment variables in a `.env` file.
 
-## .env File
+### .env file
 
-Create a `.env` file in your project root directory:
+To set environment variables in a `.env` file, use the following syntax:
 
 ```bash
-DAYTONA_API_KEY=your-api-key
-DAYTONA_API_URL=https://your-api-url
+DAYTONA_API_KEY=YOUR_API_KEY
+DAYTONA_API_URL=https://your_api_url
 DAYTONA_TARGET=us
 ```
 
-The SDK will automatically read these values when initializing.
+## Default values
 
-## Default Values
+If no configuration is provided, Daytona will use its built-in default values:
 
-If no configuration is provided, Daytona SDK will use its built-in defaults:
-
-| Option    | Default Value                       |
-|-----------|-------------------------------------|
-| API URL   | https://app.daytona.io/api          |
-| Target    | Default region for the organization |
+| Option  | Value                               |
+| ------- | ----------------------------------- |
+| API URL | https://app.daytona.io/api          |
+| Target  | Default region for the organization |
 
 Daytona allows you to deploy your own custom preview proxy to handle preview URLs for sandboxes. This gives you complete control over the preview experience, including custom domains, authentication, error handling, and styling.
 
@@ -437,7 +465,7 @@ X-Daytona-Disable-CORS: true
 ### Disable Last Activity Update
 
 To prevent sandbox last activity updates when previewing, you can set the `X-Daytona-Skip-Last-Activity-Update` header to `true`.
-This will stop Daytona from keeping sandboxes, that have [auto-stop enabled](https://www.daytona.io/docs/sandbox-management.md#auto-stop-interval), started:
+This will stop Daytona from keeping sandboxes, that have [auto-stop enabled](https://www.daytona.io/docs/sandboxes.md#auto-stop-interval), started:
 
 ```bash
 curl -H "X-Daytona-Skip-Last-Activity-Update: true" \
@@ -463,545 +491,44 @@ You can find examples of custom preview proxies on our [Github](https://github.c
 - [Typescript Example](https://github.com/daytonaio/daytona-proxy-samples/tree/main/typescript)
 - [Golang Example](https://github.com/daytonaio/daytona-proxy-samples/tree/main/go)
 
-import { Image } from 'astro:assets'
-
-import chartImage from '../../../assets/docs/images/chart-0.png'
-
-You can use Daytona Sandbox to run AI-generated code to analyze data. Here's how the AI data analysis workflow typically looks:
-
-1. Your user has a dataset in CSV format or other formats.
-2. You prompt the LLM to generate code (usually Python) based on the user's data.
-3. The sandbox runs the AI-generated code and returns the results.
-4. You display the results to the user.
-
----
-
-## Build an AI Data Analyst with Daytona
-
-This example shows how to build an AI-powered data analyst that automatically generates insights and visualizations from CSV data using Daytona's secure sandbox environment.
-
-**What we'll build:** A system that analyzes a vehicle valuation dataset, identifies price relation to manufacturing year, and generates professional visualizations - all through natural language prompts to Claude.
-
-### 1. Project Setup
-
-#### 1.1 Install Dependencies
-
-Install the Daytona SDK and Anthropic SDK to your project:
-
-    `bash pip install daytona anthropic python-dotenv `
-
-    `bash npm install @daytonaio/sdk @anthropic-ai/sdk dotenv `
-
-#### 1.2 Configure Environment
-
-Get your API keys and configure your environment:
-
-1. **Daytona API key:** Get it from [Daytona Dashboard](https://app.daytona.io/dashboard/keys)
-2. **Anthropic API key:** Get it from [Anthropic Console](https://console.anthropic.com/)
-
-Create a `.env` file in your project:
-
-```bash
-DAYTONA_API_KEY=dtn_***
-ANTHROPIC_API_KEY=sk-ant-***
-```
-
-### 2. Dataset Preparation
-
-#### 2.1 Download Dataset
-
-We'll be using a publicly available dataset of vehicle valuation. You can download it directly from:
-
-[https://download.daytona.io/dataset.csv](https://download.daytona.io/dataset.csv)
-
-Download the file and save it as `dataset.csv` in your project directory.
-
-#### 2.2 Initialize Sandbox
-
-Now create a Daytona sandbox and upload your dataset:
-
-    ```python
-    from dotenv import load_dotenv
-    from daytona import Daytona
-    import os
-
-    load_dotenv()
-
-    # Create sandbox
-
-    daytona = Daytona()
-    sandbox = daytona.create()
-
-    # Upload the dataset to the sandbox
-
-    sandbox.fs.upload_file("dataset.csv", "/home/daytona/dataset.csv")
-
-    ```
-
-    ```typescript
-    import 'dotenv/config'
-    import { Daytona } from '@daytonaio/sdk';
-
-    // Create sandbox
-    const daytona = new Daytona();
-    const sandbox = await daytona.create()
-
-    // Upload the dataset to the sandbox
-    await sandbox.fs.uploadFile('dataset.csv', '/home/daytona/dataset.csv')
-    ```
-
-### 3. Building the AI Data Analyst
-
-Now we'll create the core functionality that connects Claude with Daytona to analyze data and generate visualizations.
-
-#### 3.1 Code Execution Handler
-
-First, let's create a function to handle code execution and chart extraction:
-
-    ```python
-    import base64
-
-    def run_ai_generated_code(sandbox, ai_generated_code):
-      execution = sandbox.process.code_run(ai_generated_code)
-      if execution.exit_code != 0:
-        print('AI-generated code had an error.')
-        print(execution.exit_code)
-        print(execution.result)
-        return
-
-      # Check for charts in execution artifacts
-      if not execution.artifacts or not execution.artifacts.charts:
-        print('No charts found in execution artifacts')
-        return
-
-      result_idx = 0
-      for result in execution.artifacts.charts:
-        if result.png: # Save the png to a file (png is in base64 format)
-          with open(f'chart-{result_idx}.png', 'wb') as f:
-            f.write(base64.b64decode(result.png))
-            print(f'Chart saved to chart-{result_idx}.png')
-            result_idx += 1
-
-    ```
-
-    ```typescript
-    import fs from 'fs'
-
-    async function runAIGeneratedCode(sandbox, aiGeneratedCode: string) {
-      const execution = await sandbox.process.codeRun(aiGeneratedCode)
-      if (execution.exitCode != 0) {
-        console.error('AI-generated code had an error.')
-        console.log(execution.exitCode)
-        console.log(execution.result)
-        return
-      }
-
-      // Check for charts in execution artifacts
-      if (!execution.artifacts || !execution.artifacts.charts) {
-        console.log('No charts found in execution artifacts')
-        return
-      }
-
-      let resultIdx = 0
-      for (const result of execution.artifacts.charts) {
-        if (result.png) {
-          // Save the png to a file (png is in base64 format)
-          fs.writeFileSync(`chart-${resultIdx}.png`, result.png, { encoding: 'base64' })
-          console.log(`Chart saved to chart-${resultIdx}.png`)
-          resultIdx++
-        }
-      }
-    }
-    ```
-
-#### 3.2 Creating the Analysis Prompt
-
-Next, we'll create the prompt that tells Claude about our dataset and what analysis we want. This prompt includes:
-
-- Dataset schema and column descriptions
-- The specific analysis request (vote average trends over time)
-- Instructions for code generation
-
-    ```python
-    from anthropic import Anthropic
-
-    prompt = f"""
-    I have a CSV file with vehicle valuations saved in the sandbox at /home/daytona/dataset.csv.
-
-    Relevant columns:
-    - 'year': integer, the manufacturing year of the vehicle
-    - 'price_in_euro': float, the listed price of the vehicle in Euros
-
-    Analyze how price varies by manufacturing year.  
-    Drop rows where 'year' or 'price_in_euro' is missing, non-numeric, or an outlier.  
-    Create a line chart showing average price per year.
-    Write Python code that analyzes the dataset based on my request and produces right chart accordingly.
-    Finish with a plt.show()"""
-
-    anthropic = Anthropic()
-    print('Waiting for the model response...')
-
-    ```
-
-    ```typescript
-    import Anthropic from '@anthropic-ai/sdk'
-
-    const prompt = `
-    I have a CSV file with vehicle valuations saved in the sandbox at /home/daytona/dataset.csv.
-
-    Relevant columns:
-    - 'year': integer, the manufacturing year of the vehicle
-    - 'price_in_euro': float, the listed price of the vehicle in Euros
-
-    Analyze how price varies by manufacturing year.  
-    Drop rows where 'year' or 'price_in_euro' is missing, non-numeric, or an outlier.  
-    Create a line chart showing average price per year.
-    Write Python code that analyzes the dataset based on my request and produces right chart accordingly.
-    Finish with a plt.show()`
-
-    const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
-    console.log('Waiting for the model response...')
-    ```
-
-#### 3.3 Tool Calling Setup
-
-Now we'll connect Claude to our Daytona sandbox using tool calling. This allows Claude to automatically execute the Python code it generates:
-
-    ```python
-    msg = anthropic.messages.create(
-        model='claude-3-5-sonnet-20240620',
-        max_tokens=1024,
-        messages=[{'role': 'user', 'content': prompt}],
-        tools=[
-            {
-                'name': 'run_python_code',
-                'description': 'Run Python code',
-                'input_schema': {
-                    'type': 'object',
-                    'properties': {
-                        'code': {
-                            'type': 'string',
-                            'description': 'The Python code to run',
-                        },
-                    },
-                    'required': ['code'],
-                },
-            },
-        ],
-    )
-    ```
-
-    ```typescript
-    const msg = await anthropic.messages.create({
-      model: 'claude-3-5-sonnet-20240620',
-      max_tokens: 1024,
-      messages: [{ role: 'user', content: prompt }],
-      tools: [
-        {
-          name: 'run_python_code',
-          description: 'Run Python code',
-          input_schema: {
-            type: 'object',
-            properties: {
-              code: {
-                type: 'string',
-                description: 'The Python code to run',
-              },
-            },
-            required: ['code'],
-          },
-        },
-      ],
-    })
-    ```
-
-#### 3.4 Response Processing
-
-Finally, we'll parse Claude's response and execute any generated code in our Daytona sandbox:
-
-    ```python
-    for content_block in msg.content:
-        if content_block.type == 'tool_use':
-            if content_block.name == 'run_python_code':
-                code = content_block.input['code']
-                print('Will run following code in the Sandbox:\n', code)
-                # Execute the code in the sandbox
-                run_ai_generated_code(sandbox, code)
-    ```
-
-    ```typescript
-    interface CodeRunToolInput {
-      code: string
-    }
-
-    for (const contentBlock of msg.content) {
-      if (contentBlock.type === 'tool_use') {
-        if (contentBlock.name === 'run_python_code') {
-          const code = (contentBlock.input as CodeRunToolInput).code
-          console.log('Will run following code in the Sandbox:\n', code)
-          // Execute the code in the sandbox
-          await runAIGeneratedCode(sandbox, code)
-        }
-      }
-    }
-
-    ```
-
-That's it! The `run_ai_generated_code` function we created automatically handles saving charts. When Claude generates a visualization with `plt.show()`, Daytona captures it as a chart artifact and saves it as a PNG file.
-
-**Key advantages of this approach:**
-
-- **Secure execution:** Code runs in isolated Daytona sandboxes
-- **Automatic artifact capture:** Charts, tables, and outputs are automatically extracted
-- **Error handling:** Built-in error detection and logging
-- **Language agnostic:** While we used Python here, Daytona supports multiple languages
-
-### 4. Running Your Analysis
-
-Now you can run the complete code to see the results.
-
-    ```bash
-    python data-analysis.py
-    ```
-
-    ```bash
-    npx tsx data-analysis.ts
-    ```
-
-You should see the chart in your project directory that will look similar to this:
-
-<Image src={chartImage} alt="Vehicle valuation by manufacturing year chart" width={600} style="max-width: 100%; height: auto; margin: 1rem 0;" />
-
-### 5. Complete Implementation
-
-Here are the complete, ready-to-run examples:
-
-    ```python
-    import base64
-    from dotenv import load_dotenv
-    from daytona import Daytona, Sandbox
-    from anthropic import Anthropic
-
-
-    def main():
-        load_dotenv()
-        # Create sandbox
-        daytona = Daytona()
-        sandbox = daytona.create()
-        
-        # Upload the dataset to the sandbox
-        sandbox.fs.upload_file("dataset.csv", "/home/daytona/dataset.csv")
-        
-        prompt = f"""
-    I have a CSV file with vehicle valuations saved in the sandbox at /home/daytona/dataset.csv.
-
-    Relevant columns:
-    - 'year': integer, the manufacturing year of the vehicle
-    - 'price_in_euro': float, the listed price of the vehicle in Euros
-
-    Analyze how price varies by manufacturing year.  
-    Drop rows where 'year' or 'price_in_euro' is missing, non-numeric, or an outlier.  
-    Create a line chart showing average price per year.
-    Write Python code that analyzes the dataset based on my request and produces right chart accordingly.
-    Finish with a plt.show()"""
-
-        anthropic = Anthropic()
-        print('Waiting for the model response...')
-        msg = anthropic.messages.create(
-            model='claude-3-5-sonnet-20240620',
-            max_tokens=1024,
-            messages=[{'role': 'user', 'content': prompt}],
-            tools=[
-                {
-                    'name': 'run_python_code',
-                    'description': 'Run Python code',
-                    'input_schema': {
-                        'type': 'object',
-                        'properties': {
-                            'code': {
-                                'type': 'string',
-                                'description': 'The Python code to run',
-                            },
-                        },
-                        'required': ['code'],
-                    },
-                },
-            ],
-        )
-
-        for content_block in msg.content:
-            if content_block.type == 'tool_use':
-                if content_block.name == 'run_python_code':
-                    code = content_block.input['code']
-                    print('Will run following code in the Sandbox:\n', code)
-                    # Execute the code in the sandbox
-                    run_ai_generated_code(sandbox, code)
-
-
-    def run_ai_generated_code(sandbox: Sandbox, ai_generated_code: str):
-        execution = sandbox.process.code_run(ai_generated_code)
-        if execution.exit_code != 0:
-            print('AI-generated code had an error.')
-            print(execution.exit_code)
-            print(execution.result)
-            return
-        
-        # Iterate over all the results and specifically check for png files that will represent the chart.
-        if not execution.artifacts or not execution.artifacts.charts:
-            print('No charts found in execution artifacts')
-            print(execution.artifacts)
-            return
-
-        result_idx = 0
-        for result in execution.artifacts.charts:
-            if result.png:
-                # Save the png to a file
-                # The png is in base64 format.
-                with open(f'chart-{result_idx}.png', 'wb') as f:
-                    f.write(base64.b64decode(result.png))
-                print(f'Chart saved to chart-{result_idx}.png')
-                result_idx += 1
-
-
-    if __name__ == "__main__":
-        main()
-    ```
-
-    ```typescript
-    import 'dotenv/config'
-    import fs from 'fs'
-    import Anthropic from '@anthropic-ai/sdk'
-    import { Daytona, Sandbox } from '@daytonaio/sdk';
-
-
-    async function main() {
-      // Create sandbox
-      const daytona = new Daytona();
-      const sandbox = await daytona.create()
-
-      // Upload the dataset to the sandbox
-      await sandbox.fs.uploadFile('dataset.csv', '/home/daytona/dataset.csv')
-
-      const prompt = `
-    I have a CSV file with vehicle valuations saved in the sandbox at /home/daytona/dataset.csv.
-
-    Relevant columns:
-    - 'year': integer, the manufacturing year of the vehicle
-    - 'price_in_euro': float, the listed price of the vehicle in Euros
-
-    Analyze how price varies by manufacturing year.  
-    Drop rows where 'year' or 'price_in_euro' is missing, non-numeric, or an outlier.  
-    Create a line chart showing average price per year.
-    Write Python code that analyzes the dataset based on my request and produces right chart accordingly.
-    Finish with a plt.show()`
-
-      const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
-      console.log('Waiting for the model response...')
-      const msg = await anthropic.messages.create({
-        model: 'claude-3-5-sonnet-20240620',
-        max_tokens: 1024,
-        messages: [{ role: 'user', content: prompt }],
-        tools: [
-          {
-            name: 'run_python_code',
-            description: 'Run Python code',
-            input_schema: {
-              type: 'object',
-              properties: {
-                code: {
-                  type: 'string',
-                  description: 'The Python code to run',
-                },
-              },
-              required: ['code'],
-            },
-          },
-        ],
-      })
-
-      interface CodeRunToolInput {
-        code: string
-      }
-
-      for (const contentBlock of msg.content) {
-        if (contentBlock.type === 'tool_use') {
-          if (contentBlock.name === 'run_python_code') {
-            const code = (contentBlock.input as CodeRunToolInput).code
-            console.log('Will run following code in the Sandbox:\n', code)
-            // Execute the code in the sandbox
-            await runAIGeneratedCode(sandbox, code)
-          }
-        }
-      }
-    }
-
-    async function runAIGeneratedCode(sandbox: Sandbox, aiGeneratedCode: string) {
-      const execution = await sandbox.process.codeRun(aiGeneratedCode)
-      if (execution.exitCode != 0) {
-        console.error('AI-generated code had an error.')
-        console.log(execution.exitCode)
-        console.log(execution.result)
-        process.exit(1)
-      }
-      // Iterate over all the results and specifically check for png files that will represent the chart.
-      if (!execution.artifacts || !execution.artifacts.charts) {
-        console.log('No charts found in execution artifacts')
-        console.log(execution.artifacts)
-        return
-      }
-
-      let resultIdx = 0
-      for (const result of execution.artifacts.charts) {
-        if (result.png) {
-          // Save the png to a file
-          // The png is in base64 format.
-          fs.writeFileSync(`chart-${resultIdx}.png`, result.png, { encoding: 'base64' })
-          console.log(`Chart saved to chart-${resultIdx}.png`)
-          resultIdx++
-        }
-      }
-    }
-
-    main().catch(console.error);
-    ```
-
-Daytona's declarative builder provides a powerful, code-first approach to defining dependencies for Sandboxes. Instead of importing images from a container registry, you can programmatically define them using the SDK.
-
-## Overview
+Declarative Builder provides a powerful, code-first approach to defining dependencies for Daytona Sandboxes. Instead of importing images from a container registry, you can programmatically define them using the Daytona SDK.
 
 The declarative builder system supports two primary workflows:
 
-1. [**Declarative Images**](#declarative-image-building): Build images with varying dependencies _on demand_ when creating Sandboxes
-2. [**Pre-built Snapshots**](#creating-pre-built-snapshots): Create and register _ready-to-use_ [Snapshots](https://www.daytona.io/docs/snapshots.md) that can be shared across multiple Sandboxes
+1. [**Declarative images**](#declarative-image-building): build images with varying dependencies _on demand_ when creating sandboxes
+2. [**Pre-built Snapshots**](#creating-pre-built-snapshots): create and register _ready-to-use_ [Snapshots](https://www.daytona.io/docs/snapshots.md) that can be shared across multiple sandboxes
 
-### Declarative Image Building
+## Build declarative images
 
-You can create declarative images on-the-fly when creating Sandboxes. This is ideal for iterating quickly without creating separate Snapshots.
+Daytona provides an option to create declarative images on-the-fly when creating sandboxes. This is ideal for iterating quickly without creating separate snapshots.
 
-Declarative images are cached for 24 hours, and will be automatically reused when running the same script. Thus, subsequent runs on the same Runner will be almost instantaneous.
+Declarative images are cached for 24 hours, and are automatically reused when running the same script. Thus, subsequent runs on the same runner will be almost instantaneous.
+
 
 ```python
-# Define a simple declarative image with Python packages
+# Define a declarative image with python packages
 declarative_image = (
-    Image.debian_slim("3.12")
-    .pip_install(["requests", "pytest"])
-    .workdir("/home/daytona")
+  Image.debian_slim("3.12")
+  .pip_install(["requests", "pytest"])
+  .workdir("/home/daytona")
 )
 
-# Create a new Sandbox with the declarative image and stream the build logs
+# Create a new sandbox with the declarative image and stream the build logs
 sandbox = daytona.create(
-    CreateSandboxFromImageParams(image=declarative_image),
-    timeout=0,
-    on_snapshot_create_logs=print,
+  CreateSandboxFromImageParams(image=declarative_image),
+  timeout=0,
+  on_snapshot_create_logs=print,
 )
 ```
+
+
 ```typescript
-// Define a simple declarative image with Python packages
+// Define a declarative image with python packages
 const declarativeImage = Image.debianSlim('3.12')
   .pipInstall(['requests', 'pytest'])
   .workdir('/home/daytona')
 
-// Create a new Sandbox with the declarative image and stream the build logs
+// Create a new sandbox with the declarative image and stream the build logs
 const sandbox = await daytona.create(
   {
     image: declarativeImage,
@@ -1013,72 +540,146 @@ const sandbox = await daytona.create(
 )
 ```
 
-See: [CreateSandboxFromImageParams (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/daytona.md#createsandboxfromimageparams), [CreateSandboxFromImageParams (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/daytona.md#createsandboxfromimageparams)
 
-### Creating Pre-built Snapshots
+```ruby
+# Define a simple declarative image with Python packages
+declarative_image = Daytona::Image
+  .debian_slim('3.12')
+  .pip_install(['requests', 'pytest'])
+  .workdir('/home/daytona')
 
-For images that will be reused across multiple Sandboxes, create a pre-built Snapshot. This Snapshot will remain visible in the Daytona dashboard and be permanently cached, ensuring instant availability without rebuilding.
+# Create a new Sandbox with the declarative image and stream the build logs
+sandbox = daytona.create(
+  Daytona::CreateSandboxFromImageParams.new(image: declarative_image),
+  timeout: 0,
+  on_snapshot_create_logs: proc { |chunk| puts chunk }
+)
+```
+
+For more information, see the [Python SDK](https://www.daytona.io/docs/en/python-sdk.md), [TypeScript SDK](https://www.daytona.io/docs/en/typescript-sdk.md), and [Ruby SDK](https://www.daytona.io/docs/en/ruby-sdk.md) references:
+
+> [**CreateSandboxFromImageParams (Python SDK)**](https://www.daytona.io/docs/python-sdk/sync/daytona.md#createsandboxfromimageparams)
+>
+> [**CreateSandboxFromImageParams (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/daytona.md#createsandboxfromimageparams)
+>
+> [**CreateSandboxFromImageParams (Ruby SDK)**](https://www.daytona.io/docs/ruby-sdk/daytona.md#createsandboxfromimageparams)
+
+:::note
+Use the following best practices when working with the declarative builder:
+
+- **Layer Optimization**: Group related operations to minimize Docker layers
+
+- **Cache Utilization**: Identical build commands and context will be cached and subsequent builds will be almost instant
+
+- **Security**: Create non-root users for application workloads
+
+- **Resource Efficiency**: Use slim base images when appropriate
+
+- **Context Minimization**: Only include necessary files in the build context
+  :::
+
+## Create pre-built Snapshots
+
+Daytona provides an option to [create pre-built snapshots](https://www.daytona.io/docs/snapshots.md#create-snapshots) that can be reused across multiple sandboxes.
+
+The snapshot remains visible in the [Daytona Dashboard ↗](https://app.daytona.io/dashboard/snapshots) and is permanently cached, ensuring instant availability without rebuilding.
+
 
 ```python
-# Create a simple Python data science image
+# Create a python data science image
 snapshot_name = "data-science-snapshot"
 
 image = (
-    Image.debian_slim("3.12")
-    .pip_install(["pandas", "numpy"])
-    .workdir("/home/daytona")
+  Image.debian_slim("3.12")
+  .pip_install(["pandas", "numpy"])
+  .workdir("/home/daytona")
 )
 
-# Create the Snapshot and stream the build logs
+# Create the snapshot and stream the build logs
 daytona.snapshot.create(
-    CreateSnapshotParams(
-        name=snapshot_name,
-        image=image,
-    ),
-    on_logs=print,
+  CreateSnapshotParams(
+    name=snapshot_name,
+    image=image,
+  ),
+on_logs=print,
 )
 
-# Create a new Sandbox using the pre-built Snapshot
+# Create a new sandbox using the pre-built snapshot
 sandbox = daytona.create(
-  CreateSandboxFromSnapshotParams(snapshot=snapshot_name)
+CreateSandboxFromSnapshotParams(snapshot=snapshot_name)
 )
+
 ```
+
+
 ```typescript
-// Create a simple Python data science image
+// Create a python data science image
 const snapshotName = 'data-science-snapshot'
 
 const image = Image.debianSlim('3.12')
   .pipInstall(['pandas', 'numpy'])
   .workdir('/home/daytona')
 
-// Create the Snapshot and stream the build logs
+// Create the snapshot and stream the build logs
 await daytona.snapshot.create(
   {
-      name: snapshotName,
-      image,
+    name: snapshotName,
+    image,
   },
   {
-      onLogs: console.log,
+    onLogs: console.log,
   }
 )
 
-// Create a new Sandbox using the pre-built Snapshot
+// Create a new sandbox using the pre-built snapshot
 const sandbox = await daytona.create({
   snapshot: snapshotName,
 })
 ```
 
-See: [CreateSnapshotParams (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/snapshot.md#createsnapshotparams), [CreateSnapshotParams (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/snapshot.md#createsnapshotparams)
 
-## Image Configuration
+```ruby
+# Create a simple Python data science image
+snapshot_name = 'data-science-snapshot'
 
-The Daytona SDK provides methods to define images programmatically using the Daytona SDK. You can specify base images, install packages, add files, set environment variables, and more.
+image = Daytona::Image
+  .debian_slim('3.12')
+  .pip_install(['pandas', 'numpy'])
+  .workdir('/home/daytona')
 
-For a complete API reference and method signatures, check the [Python](https://www.daytona.io/docs/python-sdk/common/image.md) and [TypeScript](https://www.daytona.io/docs/typescript-sdk/image.md) SDK references.
+# Create the Snapshot and stream the build logs
+daytona.snapshot.create(
+  Daytona::CreateSnapshotParams.new(
+    name: snapshot_name,
+    image: image
+  ),
+  on_logs: proc { |chunk| puts chunk }
+)
 
-### Base Image Selection
+# Create a new Sandbox using the pre-built Snapshot
+sandbox = daytona.create(
+  Daytona::CreateSandboxFromSnapshotParams.new(snapshot: snapshot_name)
+)
+```
 
-These examples demonstrate how to select and configure base images:
+For more information, see the [Python SDK](https://www.daytona.io/docs/en/python-sdk.md), [TypeScript SDK](https://www.daytona.io/docs/en/typescript-sdk.md), and [Ruby SDK](https://www.daytona.io/docs/en/ruby-sdk.md) references:
+
+> [**CreateSnapshotParams (Python SDK)**](https://www.daytona.io/docs/python-sdk/sync/snapshot.md#createsnapshotparams)
+>
+> [**CreateSnapshotParams (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/snapshot.md#createsnapshotparams)
+>
+> [**CreateSnapshotParams (Ruby SDK)**](https://www.daytona.io/docs/ruby-sdk/snapshot.md#createsnapshotparams)
+
+## Image configuration
+
+Daytona provides an option to define images programmatically using the Daytona SDK. You can specify base images, install packages, add files, set environment variables, and more.
+
+For a complete API reference and method signatures, see the [Python](https://www.daytona.io/docs/python-sdk/common/image.md) and [TypeScript](https://www.daytona.io/docs/typescript-sdk/image.md) SDK references.
+
+### Base image selection
+
+Daytona provides an option to select base images. The following snippets demonstrate how to select and configure base images:
+
 
 ```python
 # Create an image from a base
@@ -1087,6 +688,9 @@ image = Image.base("python:3.12-slim-bookworm")
 # Use a Debian slim image with Python 3.12
 image = Image.debian_slim("3.12")
 ```
+
+
+
 ```typescript
 // Create an image from a base
 const image = Image.base('python:3.12-slim-bookworm')
@@ -1095,11 +699,30 @@ const image = Image.base('python:3.12-slim-bookworm')
 const image = Image.debianSlim('3.12')
 ```
 
-See: [base (Python SDK)](https://www.daytona.io/docs/python-sdk/common/image.md#imagebase), [debian_slim (Python SDK)](https://www.daytona.io/docs/python-sdk/common/image.md#imagedebian_slim), [base (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/image.md#base), [debianSlim (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/image.md#debianslim)
 
-### Package Management
+```ruby
+# Create an image from a base
+image = Daytona::Image.base('python:3.12-slim-bookworm')
 
-Use these methods to install Python packages and dependencies:
+# Use a Debian slim image with Python 3.12
+image = Daytona::Image.debian_slim('3.12')
+```
+
+For more information, see the [Python SDK](https://www.daytona.io/docs/en/python-sdk.md) and [TypeScript SDK](https://www.daytona.io/docs/en/typescript-sdk.md) references:
+
+> [**base (Python SDK)**](https://www.daytona.io/docs/python-sdk/common/image.md#imagebase)
+>
+> [**base (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/image.md#base)
+>
+> [**debian_slim (Python SDK)**](https://www.daytona.io/docs/python-sdk/common/image.md#imagedebian_slim)
+>
+> [**debianSlim (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/image.md#debianslim)
+
+### Package management
+
+Daytona provides an option to install packages and dependencies to your image.
+The following snippets demonstrate how to install packages and dependencies to your image:
+
 
 ```python
 # Add pip packages
@@ -1110,7 +733,10 @@ image = Image.debian_slim("3.12").pip_install_from_requirements("requirements.tx
 
 # Install from pyproject.toml (with optional dependencies)
 image = Image.debian_slim("3.12").pip_install_from_pyproject("pyproject.toml", optional_dependencies=["dev"])
+
 ```
+
+
 ```typescript
 // Add pip packages
 const image = Image.debianSlim('3.12').pipInstall(['requests', 'pandas'])
@@ -1119,16 +745,44 @@ const image = Image.debianSlim('3.12').pipInstall(['requests', 'pandas'])
 const image = Image.debianSlim('3.12').pipInstallFromRequirements('requirements.txt')
 
 // Install from pyproject.toml (with optional dependencies)
-const image = Image.debianSlim('3.12').pipInstallFromPyproject('pyproject.toml', { 
-  optionalDependencies: ['dev'] 
+const image = Image.debianSlim('3.12').pipInstallFromPyproject('pyproject.toml', {
+  optionalDependencies: ['dev']
 })
 ```
 
-See: [pip_install (Python SDK)](https://www.daytona.io/docs/python-sdk/common/image.md#imagepip_install), [pip_install_from_requirements (Python SDK)](https://www.daytona.io/docs/python-sdk/common/image.md#imagepip_install_from_requirements), [pip_install_from_pyproject (Python SDK)](https://www.daytona.io/docs/python-sdk/common/image.md#imagepip_install_from_pyproject), [pipInstall (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/image.md#pipinstall), [pipInstallFromRequirements (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/image.md#pipinstallfromrequirements), [pipInstallFromPyproject (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/image.md#pipinstallfrompyproject)
 
-### File System Operations
+```ruby
+# Add pip packages
+image = Daytona::Image.debian_slim('3.12').pip_install(['requests', 'pandas'])
 
-These examples show how to add files and directories to your image:
+# Install from requirements.txt
+image = Daytona::Image.debian_slim('3.12').pip_install_from_requirements('requirements.txt')
+
+# Install from pyproject.toml (with optional dependencies)
+image = Daytona::Image.debian_slim('3.12').pip_install_from_pyproject('pyproject.toml', 
+  optional_dependencies: ['dev']
+)
+```
+
+For more information, see the [Python SDK](https://www.daytona.io/docs/en/python-sdk.md) and [TypeScript SDK](https://www.daytona.io/docs/en/typescript-sdk.md) references:
+
+> [**pip_install (Python SDK)**](https://www.daytona.io/docs/python-sdk/common/image.md#imagepip_install)
+>
+> [**pipInstall (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/image.md#pipinstall)
+>
+> [**pip_install_from_requirements (Python SDK)**](https://www.daytona.io/docs/python-sdk/common/image.md#imagepip_install_from_requirements)
+>
+> [**pipInstallFromRequirements (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/image.md#pipinstallfromrequirements)
+>
+> [**pip_install_from_pyproject (Python SDK)**](https://www.daytona.io/docs/python-sdk/common/image.md#imagepip_install_from_pyproject)
+>
+> [**pipInstallFromPyproject (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/image.md#pipinstallfrompyproject)
+
+### File system operations
+
+Daytona provides an option to add files and directories to your image.
+The following snippets demonstrate how to add files and directories to your image:
+
 
 ```python
 # Add a local file
@@ -1137,6 +791,8 @@ image = Image.debian_slim("3.12").add_local_file("package.json", "/home/daytona/
 # Add a local directory
 image = Image.debian_slim("3.12").add_local_dir("src", "/home/daytona/src")
 ```
+
+
 ```typescript
 // Add a local file
 const image = Image.debianSlim('3.12').addLocalFile('package.json', '/home/daytona/package.json')
@@ -1145,11 +801,30 @@ const image = Image.debianSlim('3.12').addLocalFile('package.json', '/home/dayto
 const image = Image.debianSlim('3.12').addLocalDir('src', '/home/daytona/src')
 ```
 
-See: [add_local_file (Python SDK)](https://www.daytona.io/docs/python-sdk/common/image.md#imageadd_local_file), [add_local_dir (Python SDK)](https://www.daytona.io/docs/python-sdk/common/image.md#imageadd_local_dir), [addLocalFile (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/image.md#addlocalfile), [addLocalDir (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/image.md#addlocaldir)
 
-### Environment Configuration
+```ruby
+# Add a local file
+image = Daytona::Image.debian_slim('3.12').add_local_file('package.json', '/home/daytona/package.json')
 
-Configure environment variables and working directories with these methods:
+# Add a local directory
+image = Daytona::Image.debian_slim('3.12').add_local_dir('src', '/home/daytona/src')
+```
+
+For more information, see the [Python SDK](https://www.daytona.io/docs/en/python-sdk.md) and [TypeScript SDK](https://www.daytona.io/docs/en/typescript-sdk.md) references:
+
+> [**add_local_file (Python SDK)**](https://www.daytona.io/docs/python-sdk/common/image.md#imageadd_local_file)
+>
+> [**add_local_dir (Python SDK)**](https://www.daytona.io/docs/python-sdk/common/image.md#imageadd_local_dir)
+>
+> [**addLocalFile (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/image.md#addlocalfile)
+>
+> [**addLocalDir (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/image.md#addlocaldir)
+
+### Environment configuration
+
+Daytona provides an option to configure environment variables and working directories.
+The following snippets demonstrate how to configure environment variables and working directories:
+
 
 ```python
 # Set environment variables
@@ -1158,6 +833,8 @@ image = Image.debian_slim("3.12").env({"PROJECT_ROOT": "/home/daytona"})
 # Set working directory
 image = Image.debian_slim("3.12").workdir("/home/daytona")
 ```
+
+
 ```typescript
 // Set environment variables
 const image = Image.debianSlim('3.12').env({ PROJECT_ROOT: '/home/daytona' })
@@ -1166,11 +843,30 @@ const image = Image.debianSlim('3.12').env({ PROJECT_ROOT: '/home/daytona' })
 const image = Image.debianSlim('3.12').workdir('/home/daytona')
 ```
 
-See: [env (Python SDK)](https://www.daytona.io/docs/python-sdk/common/image.md#imageenv), [workdir (Python SDK)](https://www.daytona.io/docs/python-sdk/common/image.md#imageworkdir), [env (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/image.md#env), [workdir (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/image.md#workdir)
 
-### Commands and Entrypoints
+```ruby
+# Set environment variables
+image = Daytona::Image.debian_slim('3.12').env('PROJECT_ROOT': '/home/daytona')
 
-Execute commands during build and configure container startup behavior:
+# Set working directory
+image = Daytona::Image.debian_slim('3.12').workdir('/home/daytona')
+```
+
+For more information, see the [Python SDK](https://www.daytona.io/docs/en/python-sdk.md) and [TypeScript SDK](https://www.daytona.io/docs/en/typescript-sdk.md) references:
+
+> [**env (Python SDK)**](https://www.daytona.io/docs/python-sdk/common/image.md#imageenv)
+>
+> [**workdir (Python SDK)**](https://www.daytona.io/docs/python-sdk/common/image.md#imageworkdir)
+>
+> [**env (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/image.md#env)
+>
+> [**workdir (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/image.md#workdir)
+
+### Commands and entrypoints
+
+Daytona provides an option to execute commands during build and configure container startup behavior.
+The following snippets demonstrate how to execute commands during build and configure container startup behavior:
+
 
 ```python
 # Run shell commands during build
@@ -1186,6 +882,8 @@ image = Image.debian_slim("3.12").entrypoint(["/bin/bash"])
 # Set default command
 image = Image.debian_slim("3.12").cmd(["/bin/bash"])
 ```
+
+
 ```typescript
 // Run shell commands during build
 const image = Image.debianSlim('3.12').runCommands(
@@ -1201,11 +899,41 @@ const image = Image.debianSlim('3.12').entrypoint(['/bin/bash'])
 const image = Image.debianSlim('3.12').cmd(['/bin/bash'])
 ```
 
-See: [run_commands (Python SDK)](https://www.daytona.io/docs/python-sdk/common/image.md#imagerun_commands), [entrypoint (Python SDK)](https://www.daytona.io/docs/python-sdk/common/image.md#imageentrypoint), [cmd (Python SDK)](https://www.daytona.io/docs/python-sdk/common/image.md#imagecmd), [runCommands (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/image.md#runcommands), [entrypoint (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/image.md#entrypoint), [cmd (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/image.md#cmd)
 
-### Dockerfile Integration
+```ruby
+# Run shell commands during build
+image = Daytona::Image.debian_slim('3.12').run_commands(
+  'apt-get update && apt-get install -y git',
+  'groupadd -r daytona && useradd -r -g daytona -m daytona',
+  'mkdir -p /home/daytona/workspace'
+)
 
-Integrate existing Dockerfiles or add custom Dockerfile commands:
+# Set entrypoint
+image = Daytona::Image.debian_slim('3.12').entrypoint(['/bin/bash'])
+
+# Set default command
+image = Daytona::Image.debian_slim('3.12').cmd(['/bin/bash'])
+```
+
+For more information, see the [Python SDK](https://www.daytona.io/docs/en/python-sdk.md) and [TypeScript SDK](https://www.daytona.io/docs/en/typescript-sdk.md) references:
+
+> [**run_commands (Python SDK)**](https://www.daytona.io/docs/python-sdk/common/image.md#imagerun_commands)
+>
+> [**entrypoint (Python SDK)**](https://www.daytona.io/docs/python-sdk/common/image.md#imageentrypoint)
+>
+> [**cmd (Python SDK)**](https://www.daytona.io/docs/python-sdk/common/image.md#imagecmd)
+>
+> [**runCommands (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/image.md#runcommands)
+>
+> [**entrypoint (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/image.md#entrypoint)
+>
+> [**cmd (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/image.md#cmd)
+
+### Dockerfile integration
+
+Daytona provides an option to integrate existing Dockerfiles or add custom Dockerfile commands.
+The following snippets demonstrate how to integrate existing Dockerfiles or add custom Dockerfile commands:
+
 
 ```python
 # Add custom Dockerfile commands
@@ -1217,6 +945,8 @@ image = Image.from_dockerfile("Dockerfile")
 # Extend an existing Dockerfile
 image = Image.from_dockerfile("app/Dockerfile").pip_install(["numpy"])
 ```
+
+
 ```typescript
 // Add custom Dockerfile commands
 const image = Image.debianSlim('3.12').dockerfileCommands(['RUN echo "Hello, world!"'])
@@ -1228,29 +958,28 @@ const image = Image.fromDockerfile('Dockerfile')
 const image = Image.fromDockerfile("app/Dockerfile").pipInstall(['numpy'])
 ```
 
-See: [dockerfile_commands (Python SDK)](https://www.daytona.io/docs/python-sdk/common/image.md#imagedockerfile_commands), [from_dockerfile (Python SDK)](https://www.daytona.io/docs/python-sdk/common/image.md#imagefrom_dockerfile), [dockerfileCommands (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/image.md#dockerfilecommands), [fromDockerfile (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/image.md#fromdockerfile)
 
-## Best Practices
+For more information, see the [Python SDK](https://www.daytona.io/docs/en/python-sdk.md) and [TypeScript SDK](https://www.daytona.io/docs/en/typescript-sdk.md) references:
 
-Use the following best practices when working with the declarative builder:
-
-1. **Layer Optimization**: Group related operations to minimize Docker layers
-2. **Cache Utilization**: Identical build commands and context will be cached and subsequent builds will be almost instant
-3. **Security**: Create non-root users for application workloads
-4. **Resource Efficiency**: Use slim base images when appropriate
-5. **Context Minimization**: Only include necessary files in the build context
+> [**dockerfile_commands (Python SDK)**](https://www.daytona.io/docs/python-sdk/common/image.md#imagedockerfile_commands)
+>
+> [**from_dockerfile (Python SDK)**](https://www.daytona.io/docs/python-sdk/common/image.md#imagefrom_dockerfile)
+>
+> [**dockerfileCommands (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/image.md#dockerfilecommands)
+>
+> [**fromDockerfile (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/image.md#fromdockerfile)
 
 The Daytona SDK provides comprehensive file system operations through the `fs` module in Sandboxes. This guide covers all available file system operations and best practices.
 
 ## Basic Operations
 
-Daytona SDK provides an option to interact with the file system in Sandboxes. You can perform various operations like listing files, creating directories, reading and writing files, and more.
+Daytona SDK provides an option to interact with the file system in Sandboxes using Python, TypeScript, and Ruby. You can perform various operations like listing files, creating directories, reading and writing files, and more.
 
 File operations assume you are operating in the Sandbox user's home directory (e.g. `workspace` implies `/home/[username]/workspace`). Use a leading `/` when providing absolute paths.
 
 ### Listing Files and Directories
 
-Daytona SDK provides an option to list files and directories in a Sandbox using Python and TypeScript.
+Daytona SDK provides an option to list files and directories in a Sandbox using Python, TypeScript, and Ruby.
 
 ```python
 # List files in a directory
@@ -1275,12 +1004,24 @@ files.forEach(file => {
 })
 ```
 
+```ruby
+# List files in a directory
+files = sandbox.fs.list_files('workspace')
 
-See: [list_files (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemlist_files), [listFiles (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#listfiles)
+files.each do |file|
+  puts "Name: #{file.name}"
+  puts "Is directory: #{file.is_dir}"
+  puts "Size: #{file.size}"
+  puts "Modified: #{file.mod_time}"
+end
+```
+
+
+See: [list_files (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemlist_files), [listFiles (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#listfiles), [list_files (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/file-system.md#list_files)
 
 ### Creating Directories
 
-Daytona SDK provides an option to create directories with specific permissions using Python and TypeScript.
+Daytona SDK provides an option to create directories with specific permissions using Python, TypeScript, and Ruby.
 
 ```python
 # Create with specific permissions
@@ -1291,12 +1032,17 @@ sandbox.fs.create_folder("workspace/new-dir", "755")
 await sandbox.fs.createFolder("workspace/new-dir", "755")
 ```
 
+```ruby
+# Create with specific permissions
+sandbox.fs.create_folder('workspace/new-dir', '755')
+```
 
-See: [create_folder (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemcreate_folder), [createFolder (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#createfolder)
+
+See: [create_folder (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemcreate_folder), [createFolder (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#createfolder), [create_folder (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/file-system.md#create_folder)
 
 ### Uploading Files
 
-Daytona SDK provides options to read, write, upload, download, and delete files in Sandboxes using Python and TypeScript.
+Daytona SDK provides options to read, write, upload, download, and delete files in Sandboxes using Python, TypeScript, and Ruby.
 
 #### Uploading a Single File
 
@@ -1314,8 +1060,14 @@ const fileContent = Buffer.from('Hello, World!')
 await sandbox.fs.uploadFile(fileContent, "data.txt")
 ```
 
+```ruby
+# Upload a single file
+content = 'Hello, World!'
+sandbox.fs.upload_file(content, 'data.txt')
+```
 
-See: [upload_file (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemupload_file), [uploadFile (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#uploadfile)
+
+See: [upload_file (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemupload_file), [uploadFile (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#uploadfile), [upload_file (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/file-system.md#upload_file)
 
 #### Uploading Multiple Files
 
@@ -1367,7 +1119,19 @@ await sandbox.fs.uploadFiles(files)
 ```
 
 
-See: [upload_files (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemupload_files), [uploadFiles (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#uploadfiles)
+```ruby
+# Upload multiple files at once
+files = [
+  Daytona::FileUpload.new('Content of file 1', 'data/file1.txt'),
+  Daytona::FileUpload.new('Content of file 2', 'data/file2.txt'),
+  Daytona::FileUpload.new('{"key": "value"}', 'config/settings.json')
+]
+
+sandbox.fs.upload_files(files)
+```
+
+
+See: [upload_files (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemupload_files), [uploadFiles (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#uploadfiles), [upload_files (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/file-system.md#upload_files)
 
 ### Downloading Files
 
@@ -1394,7 +1158,21 @@ console.log('File content:', downloadedFile.toString())
 ```
 
 
-See: [download_file (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemdownload_file), [downloadFile (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#downloadfile)
+```ruby
+
+# Download file and get a Tempfile reference
+file = sandbox.fs.download_file('file1.txt')
+
+# Read the content
+puts "File content: #{file.open.read}"
+
+# Or download and save to a specific path
+sandbox.fs.download_file('file1.txt', 'local_file.txt')
+
+```
+
+
+See: [download_file (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemdownload_file), [downloadFile (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#downloadfile), [download_file (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/file-system.md#download_file)
 
 #### Downloading Multiple Files
 
@@ -1434,7 +1212,25 @@ results.forEach(result => {
 })
 ```
 
-See: [download_files (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemdownload_files), [downloadFiles (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#downloadfiles)
+```ruby
+# Download multiple files at once
+files = [
+  Daytona::FileDownloadRequest.new(source: 'data/file1.txt'), # No destination - download to memory
+  Daytona::FileDownloadRequest.new(source: 'data/file2.txt', destination: 'local_file2.txt') # Download to local file
+]
+
+results = sandbox.fs.download_files(files)
+
+results.each do |result|
+  if result.error
+    puts "Error downloading #{result.source}: #{result.error}"
+  elsif result.result
+    puts "Downloaded #{result.source} to #{result.result}"
+  end
+end
+```
+
+See: [download_files (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemdownload_files), [downloadFiles (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#downloadfiles), [download_files (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/file-system.md#download_files)
 
 ### Deleting files
 
@@ -1451,7 +1247,14 @@ await sandbox.fs.deleteFile("workspace/file.txt")
 ```
 
 
-See: [delete_file (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemdelete_file), [deleteFile (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#deletefile)
+```ruby
+
+sandbox.fs.delete_file('workspace/file.txt')
+
+```
+
+
+See: [delete_file (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemdelete_file), [deleteFile (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#deletefile), [delete_file (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/file-system.md#delete_file)
 
 ## Advanced Operations
 
@@ -1459,7 +1262,7 @@ Daytona SDK provides advanced file system operations like file permissions, sear
 
 ### File Permissions
 
-Daytona SDK provides an option to set file permissions, get file permissions, and set directory permissions recursively using Python and TypeScript.
+Daytona SDK provides an option to set file permissions, get file permissions, and set directory permissions recursively using Python, TypeScript, and Ruby.
 
 ```python
 # Set file permissions
@@ -1481,11 +1284,21 @@ console.log(`Permissions: ${fileInfo.permissions}`)
 ```
 
 
-See: [set_file_permissions (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemset_file_permissions), [setFilePermissions (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#setfilepermissions)
+```ruby
+# Set file permissions
+sandbox.fs.set_file_permissions('workspace/file.txt', '644')
+
+# Get file permissions
+file_info = sandbox.fs.get_file_info('workspace/file.txt')
+puts "Permissions: #{file_info.permissions}"
+```
+
+
+See: [set_file_permissions (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemset_file_permissions), [setFilePermissions (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#setfilepermissions), [set_file_permissions (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/file-system.md#set_file_permissions)
 
 ### File Search and Replace
 
-Daytona SDK provides an option to search for text in files and replace text in files using Python and TypeScript.
+Daytona SDK provides an option to search for text in files and replace text in files using Python, TypeScript, and Ruby.
 
 ```python
 # Search for text in files; if a folder is specified, the search is recursive
@@ -1529,39 +1342,144 @@ await sandbox.fs.replaceInFiles(
 ```
 
 
-See: [find_files (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemfind_files), [replace_in_files (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemreplace_in_files), [findFiles (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#findfiles), [replaceInFiles (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#replaceinfiles)
+```ruby
+# Search for text in files; if a folder is specified, the search is recursive
+results = sandbox.fs.find_files('workspace/src', 'text-of-interest')
+results.each do |match|
+  puts "Absolute file path: #{match.file}"
+  puts "Line number: #{match.line}"
+  puts "Line content: #{match.content}"
+end
 
-The Daytona SDK provides official [Python](https://www.daytona.io/docs/en/python-sdk.md) and [TypeScript](https://www.daytona.io/docs/en/typescript-sdk.md) interfaces for interacting with Daytona, enabling you to programmatically manage development environments and execute code. [Python SDK](https://www.daytona.io/docs/en/python-sdk.md) supports both sync and async programming models where async classes are prefixed with `Async`.
+# Replace text in files
+sandbox.fs.replace_in_files(
+  files: ['workspace/file1.txt', 'workspace/file2.txt'],
+  pattern: 'old_text',
+  new_value: 'new_text'
+)
+```
 
-Follow the step-by-step guide to create and run your first Daytona Sandbox for an AI Agent.
 
-For steps on additional configuration, including setting environment variables as well as accessing experimental features on our staging deployment, visit [Configuration](https://www.daytona.io/docs/en/configuration.md).
+See: [find_files (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemfind_files), [replace_in_files (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/file-system.md#filesystemreplace_in_files), [findFiles (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#findfiles), [replaceInFiles (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/file-system.md#replaceinfiles), [find_files (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/file-system.md#find_files), [replace_in_files (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/file-system.md#replace_in_files)
 
-## Install the Daytona SDK
+This section introduces core concepts, common workflows, and next steps for using Daytona after completing the [Quick Start](https://www.daytona.io/docs/index.md) guide.
 
-Daytona provides official Python and TypeScript SDKs for interacting with the Daytona platform. Install the SDK using your preferred method:
+## Dashboard
+
+[Daytona Dashboard ↗](https://app.daytona.io/) is a visual user interface where you can manage sandboxes, access API keys, view usage, and more.
+It serves as the primary point of control for managing your Daytona resources.
+
+## SDKs
+
+Daytona provides Python, TypeScript and Ruby SDKs to programmatically interact with Daytona Sandboxes. They support sandbox lifecycle management, code execution, resource access, and more.
+
+To interact with Daytona Sandboxes from the SDK, see the [Python SDK](https://www.daytona.io/docs/en/python-sdk.md), [TypeScript SDK](https://www.daytona.io/docs/en/typescript-sdk.md) and [Ruby SDK](https://www.daytona.io/docs/en/ruby-sdk.md) references.
+
+:::tip
+Daytona provides [Python](https://github.com/daytonaio/daytona/tree/main/examples/python), [TypeScript/JavaScript](https://github.com/daytonaio/daytona/tree/main/examples/typescript) and [Ruby](https://github.com/daytonaio/daytona/tree/main/examples/ruby) examples to create Daytona Sandboxes and run your code.
+:::
+
+## CLI
+
+Daytona provides command-line access to core features for interacting with Daytona Sandboxes, including managing their lifecycle, snapshots, and more.
+
+To interact with Daytona Sandboxes from the command line, install the Daytona CLI:
 
     ```bash
-    pip install daytona
+    brew install daytonaio/cli/daytona
     ```
 
     ```bash
-    # Using npm
-    npm install @daytonaio/sdk
-
-    # Using yarn
-
-    yarn add @daytonaio/sdk
-
-    # Using pnpm
-
-    pnpm add @daytonaio/sdk
-
+    powershell -Command "irm https://get.daytona.io/windows | iex"
     ```
 
-## Run Code Inside a Sandbox
+After installing the Daytona CLI, use the `daytona` command to interact with Daytona Sandboxes from the command line.
 
-Run the following code to create a Daytona Sandbox and execute commands:
+To upgrade the Daytona CLI to the latest version:
+
+    ```bash
+    brew upgrade daytonaio/cli/daytona
+    ```
+
+    ```bash
+    powershell -Command "irm https://get.daytona.io/windows | iex"
+    ```
+
+To view all available commands and flags, see the [CLI Reference](https://www.daytona.io/docs/en/tools/cli.md).
+
+## API
+
+Daytona provides a RESTful API for interacting with Daytona Sandboxes, including managing their lifecycle, snapshots, and more.
+It serves as a flexible and powerful way to interact with Daytona from your own applications.
+
+To interact with Daytona Sandboxes from the API, see the [API Reference](https://www.daytona.io/docs/en/tools/api.md).
+
+## Multiple runtime support
+
+Daytona supports multiple programming language runtimes for direct code execution inside the sandbox.
+
+[TypeScript SDK](https://www.daytona.io/docs/en/typescript-sdk.md) works across multiple **JavaScript runtimes** including **Node.js**, **browsers**, and **serverless platforms**: Cloudflare Workers, AWS Lambda, Azure Functions, etc.
+
+Using the Daytona SDK in browser-based environments or frameworks like [**Vite**](https://www.daytona.io/docs/en/getting-started.md#daytona-in-vite-projects) and [**Next.js**](https://www.daytona.io/docs/en/getting-started.md#daytona-in-nextjs-projects) requires configuring node polyfills.
+
+### Daytona in Vite projects
+
+When using Daytona SDK in a Vite-based project, configure node polyfills to ensure compatibility.
+
+Add the following configuration to your `vite.config.ts` file in the `plugins` array:
+
+```typescript
+import { nodePolyfills } from 'vite-plugin-node-polyfills'
+
+  plugins: [
+    // ... other plugins
+    nodePolyfills({
+      globals: { global: true, process: true, Buffer: true },
+      overrides: {
+        path: 'path-browserify-win32',
+      },
+    }),
+  ],
+  // ... rest of your config
+})
+```
+
+### Daytona in Next.js projects
+
+When using Daytona SDK in a Next.js project, configure node polyfills to ensure compatibility with Webpack and Turbopack bundlers.
+
+Add the following configuration to your `next.config.ts` file:
+
+```typescript
+import type { NextConfig } from 'next'
+import NodePolyfillPlugin from 'node-polyfill-webpack-plugin'
+import { env, nodeless } from 'unenv'
+
+const { alias: turbopackAlias } = env(nodeless, {})
+
+const nextConfig: NextConfig = {
+  // Turbopack
+  experimental: {
+    turbo: {
+      resolveAlias: {
+        ...turbopackAlias,
+      },
+    },
+  },
+  // Webpack
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.plugins.push(new NodePolyfillPlugin())
+    }
+    return config
+  },
+}
+
+```
+
+## Run code inside a Sandbox
+
+Create a Daytona Sandbox instance and run code securely inside it. The following snippet is an example of running a calculation securely inside a Daytona Sandbox.
 
     ```python
     from daytona import Daytona, DaytonaConfig
@@ -1582,6 +1500,7 @@ Run the following code to create a Daytona Sandbox and execute commands:
     # Clean up the Sandbox
     sandbox.delete()
     ```
+
 
     ```typescript
     import { Daytona } from '@daytonaio/sdk'
@@ -1618,20 +1537,50 @@ Run the following code to create a Daytona Sandbox and execute commands:
     }
 
     main().catch(console.error)
-
     ```
+
+
+    ```ruby
+    require 'daytona'
+
+    # Initialize the Daytona client
+    daytona = Daytona::Daytona.new(
+      Daytona::Config.new(api_key: 'YOUR_API_KEY')
+    )
+
+    # Create the Sandbox instance
+    sandbox = daytona.create
+
+    # Run code securely inside the Sandbox
+    response = sandbox.process.code_run(code: 'puts "Sum of 3 and 4 is #{3 + 4}"')
+    if response.exit_code != 0
+      puts "Error running code: #{response.exit_code} #{response.result}"
+    else
+      puts response.result
+    end
+
+    # Clean up the Sandbox
+    sandbox.delete
+    ```
+
 
     ```bash
     python main.py
     ```
 
+  ```bash npx tsx ./index.ts ```
+
     ```bash
-    npx tsx ./index.ts
+    ruby main.rb
     ```
 
-## Preview Your App
+```text
+Sum of 3 and 4 is 7
+```
 
-The following snippet uploads a file containing a simple Flask app to a Daytona Sandbox. The web server runs on port `3000` and is accessible through the provided preview URL:
+## Preview your app
+
+Preview your app by uploading a file containing a simple Flask app to a Daytona Sandbox. The web server runs on port `3000` and is accessible through the provided preview URL.
 
     ```python
     from daytona import Daytona, DaytonaConfig, SessionExecuteRequest
@@ -1688,6 +1637,7 @@ The following snippet uploads a file containing a simple Flask app to a Daytona 
 
     ```
 
+
     ```typescript
     import { Daytona } from '@daytonaio/sdk';
 
@@ -1743,10 +1693,67 @@ The following snippet uploads a file containing a simple Flask app to a Daytona 
     }
 
     main().catch(error => console.error("Error:", error));
-
     ```
 
-Need to access this endpoint programmatically? Learn more about [Preview & Authentication](https://www.daytona.io/docs/en/preview-and-authentication.md).
+
+    ```ruby
+    require 'daytona'
+
+    daytona = Daytona::Daytona.new(
+      Daytona::Config.new(api_key: 'YOUR_API_KEY')
+    )
+
+    sandbox = daytona.create
+
+    app_code = <<~PYTHON
+      from flask import Flask
+
+      app = Flask(__name__)
+
+      @app.route('/')
+      def hello():
+          return """
+          <!DOCTYPE html>
+          <html>
+          <head>
+              <title>Hello World</title>
+              <link rel="icon" href="https://www.daytona.io/favicon.ico">
+          </head>
+          <body style="display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background-color: #0a0a0a; font-family: Arial, sans-serif;">
+              <div style="text-align: center; padding: 2rem; border-radius: 10px; background-color: white; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                  <img src="https://raw.githubusercontent.com/daytonaio/daytona/main/assets/images/Daytona-logotype-black.png" alt="Daytona Logo" style="width: 180px; margin: 10px 0px;">
+                  <p>This web app is running in a Daytona sandbox!</p>
+              </div>
+          </body>
+          </html>
+          """
+
+      if __name__ == '__main__':
+          app.run(host='0.0.0.0', port=3000)
+    PYTHON
+
+    # Save the Flask app to a file
+    sandbox.fs.upload_file(app_code, 'app.py')
+
+    # Create a new session and execute a command
+    exec_session_id = 'python-app-session'
+    sandbox.process.create_session(exec_session_id)
+
+    sandbox.process.execute_session_command(
+      exec_session_id,
+      Daytona::SessionExecuteRequest.new(
+        command: 'python /app.py',
+        var_async: true
+      )
+    )
+
+    # Get the preview link for the Flask app
+    preview_info = sandbox.preview_url(3000)
+    puts "Flask app is available at: #{preview_info.url}"
+    ```
+
+
+To access the preview URL endpoint programmatically, learn more about [Preview & Authentication](https://www.daytona.io/docs/en/preview-and-authentication.md).
 
 :::tip
 You can access the Sandbox [Web Terminal](https://www.daytona.io/docs/en/web-terminal.md) by printing out the preview URL for port `22222` or by simply going to Dashboard -> Sandboxes and clicking on the Terminal input sign.
@@ -1754,9 +1761,10 @@ You can access the Sandbox [Web Terminal](https://www.daytona.io/docs/en/web-ter
 
 ## Connect to an LLM
 
-The following snippet connects to an LLM using the Anthropic API and asks Claude to generate code for getting the factorial of 25 and then executes it inside of a Daytona Sandbox:
+Connect to an LLM using the Anthropic API and ask Claude to generate code for getting the factorial of 25 and then execute it inside in a Daytona Sandbox.
 
-    ````python
+
+    ```python
     import os
     import re
     import requests
@@ -1801,14 +1809,13 @@ The following snippet connects to an LLM using the Anthropic API and asks Claude
 
     response = sandbox.process.code_run(code)
     print("The factorial of 25 is", response.result)
+    ```
 
-    ````
-
-    Running the snippet:
+    Ensure the following environment variables are set and run the snippet:
 
     ```bash
-    ANTHROPIC_API_KEY="your-anthropic-api-key"
-    DAYTONA_API_KEY="your-daytona-api-key"
+    ANTHROPIC_API_KEY="YOUR_ANTHROPIC_API_KEY"
+    DAYTONA_API_KEY="YOUR_DAYTONA_API_KEY"
     DAYTONA_TARGET=us
     python claude-example.py
     ```
@@ -1817,7 +1824,9 @@ The following snippet connects to an LLM using the Anthropic API and asks Claude
     > The factorial of 25 is 15511210043330985984000000
     ```
 
-    ````typescript
+
+
+    ```typescript
     import { Daytona } from '@daytonaio/sdk'
     import * as dotenv from 'dotenv'
     import axios from 'axios'
@@ -1859,15 +1868,15 @@ The following snippet connects to an LLM using the Anthropic API and asks Claude
       const sandbox = await daytona.create()
 
       const prompt = "Python code that returns the factorial of 25. Output only the code. No explanation. No intro. No comments. Just raw code in a single code block."
-      
+
       const result = await getClaudeResponse(process.env.ANTHROPIC_API_KEY || "", prompt)
-      
+
       // Extract code from the response using regex
       const codeMatch = result.match(/```python\n(.*?)```/s)
-      
+
       let code = codeMatch ? codeMatch[1] : result
       code = code.replace(/\\/g, '\\\\')
-      
+
       // Run the extracted code in the sandbox
       const response = await sandbox.process.codeRun(code)
       console.log("The factorial of 25 is", response.result)
@@ -1875,7 +1884,7 @@ The following snippet connects to an LLM using the Anthropic API and asks Claude
 
     main().catch(console.error)
 
-    ````
+    ```
 
     Running the snippet:
 
@@ -1890,84 +1899,79 @@ The following snippet connects to an LLM using the Anthropic API and asks Claude
     > The factorial of 25 is 15511210043330985984000000
     ```
 
-## Additional Examples
 
-Use the Daytona SDK [Python examples](https://github.com/daytonaio/daytona/tree/main/examples/python) or [TypeScript/JavaScript examples](https://github.com/daytonaio/daytona/tree/main/examples/typescript) to create a Sandbox and run your code.
 
-Speed up your development on Daytona using LLMs. Copy the /llms.txt files and include them into your projects or chat context: [llms-full.txt](https://www.daytona.io/docs/llms-full.txt.md) or [llms.txt](https://www.daytona.io/docs/llms.txt.md)
+    ```ruby
+    require 'daytona'
+    require 'net/http'
+    require 'json'
 
-Learn more by checking out the Daytona SDK repository on [GitHub](https://github.com/daytonaio/daytona).
+    daytona = Daytona::Daytona.new
 
-## Multiple Runtime Support
+    sandbox = daytona.create
 
-The Daytona TypeScript SDK works across multiple JavaScript runtimes including Node.js, Deno, Bun, browsers, and serverless platforms (Cloudflare Workers, AWS Lambda, Azure Functions, etc.).
+    def get_claude_response(api_key, prompt)
+      uri = URI('https://api.anthropic.com/v1/messages')
+      http = Net::HTTP.new(uri.host, uri.port)
+      http.use_ssl = true
 
-:::note[Browser and Framework Configuration]
-When using the SDK in browser-based environments or frameworks like Vite and Next.js, you'll need to configure node polyfills. See the sections below for setup instructions.
+      request = Net::HTTP::Post.new(uri)
+      request['x-api-key'] = api_key
+      request['anthropic-version'] = '2023-06-01'
+      request['Content-Type'] = 'application/json'
+      request.body = {
+        model: 'claude-3-7-sonnet-latest',
+        max_tokens: 256,
+        messages: [{ role: 'user', content: prompt }]
+      }.to_json
+
+      response = http.request(request)
+      return "Error #{response.code}: #{response.body}" unless response.is_a?(Net::HTTPSuccess)
+
+      data = JSON.parse(response.body)
+      content = data['content'] || []
+      content.select { |item| item['type'] == 'text' }.map { |item| item['text'] }.join
+    end
+
+    prompt = 'Python code that returns the factorial of 25. Output only the code. No explanation. No intro. No comments. Just raw code in a single code block.'
+
+    result = get_claude_response(ENV['ANTHROPIC_API_KEY'], prompt)
+
+    # Extract code from the response
+    code = if result.match(/```python\n(.*?)```/m)
+             result.match(/```python\n(.*?)```/m)[1]
+           else
+             result
+           end
+
+    # Run Python code inside the Sandbox and get the output
+    response = sandbox.process.code_run(code: code)
+    puts "The factorial of 25 is #{response.result}"
+    ```
+
+    Ensure the following environment variables are set and run the snippet:
+
+    ```bash
+    ANTHROPIC_API_KEY="YOUR_ANTHROPIC_API_KEY"
+    DAYTONA_API_KEY="YOUR_DAYTONA_API_KEY"
+    DAYTONA_TARGET=us
+    ruby claude-example.rb
+    ```
+
+    ```bash
+    > The factorial of 25 is 15511210043330985984000000
+    ```
+
+
+## Examples
+
+Daytona provides [Python](https://github.com/daytonaio/daytona/tree/main/examples/python), [TypeScript/JavaScript](https://github.com/daytonaio/daytona/tree/main/examples/typescript) and [Ruby](https://github.com/daytonaio/daytona/tree/main/examples/ruby) examples to create Daytona Sandboxes and run your code.
+
+:::tip
+Use our LLMs context files for faster development with AI agents and assistants. Copy the [llms-full.txt](https://www.daytona.io/docs/llms-full.txt.md) or [llms.txt](https://www.daytona.io/docs/llms.txt.md) files and include them in your projects or chat contexts.
 :::
 
-### Daytona in Vite Projects
-
-When using Daytona SDK in a Vite-based project, you need to configure node polyfills to ensure compatibility. Add the following configuration to your `vite.config.ts` file in the plugins array:
-
-```typescript
-import { nodePolyfills } from 'vite-plugin-node-polyfills'
-
-  plugins: [
-    // ... other plugins
-    nodePolyfills({
-      globals: { global: true, process: true, Buffer: true },
-      overrides: {
-        path: 'path-browserify-win32',
-      },
-    }),
-  ],
-  // ... rest of your config
-})
-```
-
-### Daytona in Next.js Projects
-
-When using Daytona SDK in a Next.js project, you need to configure node polyfills to ensure compatibility with Webpack and Turbopack bundlers (depending on what you're using). Add the following configuration to your `next.config.ts` file:
-
-```typescript
-import type { NextConfig } from 'next'
-import NodePolyfillPlugin from 'node-polyfill-webpack-plugin'
-import { env, nodeless } from 'unenv'
-
-const { alias: turbopackAlias } = env(nodeless, {})
-
-const nextConfig: NextConfig = {
-  // Turbopack
-  experimental: {
-    turbo: {
-      resolveAlias: {
-        ...turbopackAlias,
-      },
-    },
-  },
-  // Webpack
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.plugins.push(new NodePolyfillPlugin())
-    }
-    return config
-  },
-}
-
-```
-
-## Setting up the Daytona CLI
-
-If you want to use [images from your local device](https://www.daytona.io/docs/en/snapshots.md#using-a-local-image) or simply prefer managing your Sandboxes using the command line interface, install the Daytona CLI by running:
-
-    ```bash
-    brew install daytonaio/cli/daytona
-    ```
-
-    ```bash
-    powershell -Command "irm https://get.daytona.io/windows | iex"
-    ```
+Learn more by checking the Daytona repository on [GitHub](https://github.com/daytonaio/daytona).
 
 The Daytona SDK provides built-in Git support through the `git` module in Sandboxes. This guide covers all available Git operations and best practices.
 
@@ -1980,7 +1984,7 @@ the Dockerfile if present, or falling back to the user's home directory if not -
 
 ### Cloning Repositories
 
-Daytona SDK provides an option to clone Git repositories into Sandboxes using Python and TypeScript. You can clone public or private repositories, specific branches, and authenticate using personal access tokens.
+Daytona SDK provides an option to clone Git repositories into Sandboxes using Python, TypeScript, and Ruby. You can clone public or private repositories, specific branches, and authenticate using personal access tokens.
 
 ```python
 # Basic clone
@@ -2033,11 +2037,35 @@ await sandbox.git.clone(
 ```
 
 
-See: [clone (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitclone), [clone (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#clone)
+```ruby
+# Basic clone
+sandbox.git.clone(
+  url: 'https://github.com/user/repo.git',
+  path: 'workspace/repo'
+)
+
+# Clone with authentication
+sandbox.git.clone(
+  url: 'https://github.com/user/repo.git',
+  path: 'workspace/repo',
+  username: 'git',
+  password: 'personal_access_token'
+)
+
+# Clone specific branch
+sandbox.git.clone(
+  url: 'https://github.com/user/repo.git',
+  path: 'workspace/repo',
+  branch: 'develop'
+)
+```
+
+
+See: [clone (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitclone), [clone (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#clone), [clone (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/git.md#clone)
 
 ### Repository Status
 
-Daytona SDK provides an option to check the status of Git repositories in Sandboxes. You can get the current branch, modified files, number of commits ahead and behind main branch using Python and TypeScript.
+Daytona SDK provides an option to check the status of Git repositories in Sandboxes. You can get the current branch, modified files, number of commits ahead and behind main branch using Python, TypeScript, and Ruby.
 
 ```python
 # Get repository status
@@ -2073,7 +2101,25 @@ response.branches.forEach(branch => {
 ```
 
 
-See: [status (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitstatus), [status (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#status)
+```ruby
+# Get repository status
+status = sandbox.git.status('workspace/repo')
+puts "Current branch: #{status.current_branch}"
+puts "Commits ahead: #{status.ahead}"
+puts "Commits behind: #{status.behind}"
+status.file_status.each do |file|
+  puts "File: #{file.name}"
+end
+
+# List branches
+response = sandbox.git.branches('workspace/repo')
+response.branches.each do |branch|
+  puts "Branch: #{branch}"
+end
+```
+
+
+See: [status (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitstatus), [status (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#status), [status (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/git.md#status)
 
 ## Branch Operations
 
@@ -2081,7 +2127,7 @@ Daytona SDK provides an option to manage branches in Git repositories. You can c
 
 ### Managing Branches
 
-Daytona SDK provides an option to create, switch, and delete branches in Git repositories using Python and TypeScript.
+Daytona SDK provides an option to create, switch, and delete branches in Git repositories using Python, TypeScript, and Ruby.
 
 ```python
 # Create new branch
@@ -2108,11 +2154,23 @@ await sandbox.git.deleteBranch("workspace/repo", "feature/old-feature");
 ```
 
 
-See: [create_branch (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitcreate_branch), [checkout_branch (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitcheckout_branch), [delete_branch (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitdelete_branch), [createBranch (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#createbranch), [checkoutBranch (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#checkoutbranch), [deleteBranch (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#deletebranch)
+```ruby
+# Create new branch
+sandbox.git.create_branch('workspace/repo', 'feature/new-feature')
+
+# Switch branch
+sandbox.git.checkout_branch('workspace/repo', 'feature/new-feature')
+
+# Delete branch
+sandbox.git.delete_branch('workspace/repo', 'feature/old-feature')
+```
+
+
+See: [create_branch (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitcreate_branch), [checkout_branch (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitcheckout_branch), [delete_branch (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitdelete_branch), [createBranch (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#createbranch), [checkoutBranch (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#checkoutbranch), [deleteBranch (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#deletebranch), [create_branch (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/git.md#create_branch), [checkout_branch (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/git.md#checkout_branch), [delete_branch (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/git.md#delete_branch)
 
 ## Staging and Committing
 
-Daytona SDK provides an option to stage and commit changes in Git repositories. You can stage specific files, all changes, and commit with a message using Python and TypeScript.
+Daytona SDK provides an option to stage and commit changes in Git repositories. You can stage specific files, all changes, and commit with a message using Python, TypeScript, and Ruby.
 
 ### Working with Changes
 
@@ -2141,7 +2199,19 @@ await sandbox.git.commit("workspace/repo", "feat: add new feature", "John Doe", 
 ```
 
 
-See: [add (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitadd), [commit (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitcommit), [add (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#add), [commit (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#commit)
+```ruby
+# Stage specific files
+sandbox.git.add('workspace/repo', ['file1.txt', 'file2.txt'])
+
+# Stage all changes
+sandbox.git.add('workspace/repo', ['.'])
+
+# Commit changes
+sandbox.git.commit('workspace/repo', 'feat: add new feature', 'John Doe', 'john@example.com')
+```
+
+
+See: [add (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitadd), [commit (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitcommit), [add (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#add), [commit (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#commit), [add (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/git.md#add), [commit (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/git.md#commit)
 
 ## Remote Operations
 
@@ -2149,7 +2219,7 @@ Daytona SDK provides an option to work with remote repositories in Git.
 
 ### Working with Remotes
 
-Daytona SDK provides an option to push and pull changes using Python and TypeScript.
+Daytona SDK provides an option to push and pull changes using Python, TypeScript, and Ruby.
 
 ```python
 # Push changes
@@ -2168,113 +2238,8450 @@ await sandbox.git.pull("workspace/repo");
 ```
 
 
-See: [push (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitpush), [pull (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitpull), [push (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#push), [pull (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#pull)
+```ruby
+# Push changes
+sandbox.git.push('workspace/repo')
 
-The Daytona SDK provides official Python and TypeScript interfaces for interacting with Daytona,
-enabling you to programmatically manage development environments and execute code.
+# Pull changes
+sandbox.git.pull('workspace/repo')
+```
 
-### Quick Start
 
-Run your first line of code in a Daytona Sandbox. Use our [LLMs context files](https://www.daytona.io/docs/en/getting-started.md#additional-examples) for faster development with AI assistants.
+See: [push (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitpush), [pull (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/git.md#gitpull), [push (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#push), [pull (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/git.md#pull), [push (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/git.md#push), [pull (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/git.md#pull)
 
-#### 1. Get Your API Key
+{/* Code generated by gomarkdoc. DO NOT EDIT */}
+# daytona
 
-- Go to the Daytona [Dashboard](https://app.daytona.io/dashboard).
-- Create a new [API key](https://app.daytona.io/dashboard/keys). Make sure to save it securely,
-  as it won't be shown again.
+```go
+import "github.com/daytonaio/daytona/libs/sdk-go/pkg/daytona"
+```
 
-#### 2. Install the SDK
+Package daytona provides a Go SDK for interacting with the Daytona platform.
 
-    ```bash
-    pip install daytona
-    ```
+The Daytona SDK enables developers to programmatically create, manage, and interact with sandboxes \- isolated development environments that can run code, execute commands, and manage files.
 
-    ```bash
-    npm install @daytonaio/sdk
-    ```
+### Getting Started
 
-#### 3. Write Your Code
+Create a client using your API key or JWT token:
 
-    Create a file named: `main.py`
+```
+client, err := daytona.NewClient()
+if err != nil {
+    log.Fatal(err)
+}
+```
 
-    ```python
-    from daytona import Daytona, DaytonaConfig
+The client reads configuration from environment variables:
 
-    # Define the configuration
+- DAYTONA\_API\_KEY: API key for authentication
+- DAYTONA\_JWT\_TOKEN: JWT token for authentication \(alternative to API key\)
+- DAYTONA\_ORGANIZATION\_ID: Organization ID \(required when using JWT token\)
+- DAYTONA\_API\_URL: API URL \(defaults to https://app.daytona.io/api\)
+- DAYTONA\_TARGET: Target environment
 
-    config = DaytonaConfig(api_key="your-api-key")
+Or provide configuration explicitly:
 
-    # Initialize the Daytona client
+```
+client, err := daytona.NewClientWithConfig(&types.DaytonaConfig{
+    APIKey: "your-api-key",
+    APIUrl: "https://your-instance.daytona.io/api",
+})
+```
 
-    daytona = Daytona(config)
+### Creating Sandboxes
 
-    # Create the Sandbox instance
+Create a sandbox from a snapshot:
 
-    sandbox = daytona.create()
+```
+sandbox, err := client.Create(ctx, types.SnapshotParams{
+    Snapshot: "my-snapshot",
+})
+```
 
-    # Run the code securely inside the Sandbox
+Create a sandbox from a Docker image:
 
-    response = sandbox.process.code_run('print("Hello World from code!")')
-    if response.exit_code != 0:
-      print(f"Error: {response.exit_code} {response.result}")
-    else:
-        print(response.result)
+```
+sandbox, err := client.Create(ctx, types.ImageParams{
+    Image: "python:3.11",
+})
+```
 
-    # Clean up
+### Working with Sandboxes
 
-    sandbox.delete()
+Execute code in a sandbox:
 
-    ```
+```
+result, err := sandbox.Process.CodeRun(ctx, "print('Hello, World!')")
+```
 
-    Create a file named: `index.mts`
+Run shell commands:
 
+```
+result, err := sandbox.Process.ExecuteCommand(ctx, "ls -la")
+```
+
+## Index
+
+- [Variables](https://www.daytona.io/docs/%3C.md#variables%3E)
+- [type Client](https://www.daytona.io/docs/%3C.md#Client%3E)
+  - [func NewClient\(\) \(\*Client, error\)](https://www.daytona.io/docs/%3C.md#NewClient%3E)
+  - [func NewClientWithConfig\(config \*types.DaytonaConfig\) \(\*Client, error\)](https://www.daytona.io/docs/%3C.md#NewClientWithConfig%3E)
+  - [func \(c \*Client\) Create\(ctx context.Context, params any, opts ...func\(\*options.CreateSandbox\)\) \(\*Sandbox, error\)](https://www.daytona.io/docs/%3C.md#Client.Create%3E)
+  - [func \(c \*Client\) FindOne\(ctx context.Context, sandboxIDOrName \*string, labels map\[string\]string\) \(\*Sandbox, error\)](<#Client.FindOne>)
+  - [func \(c \*Client\) Get\(ctx context.Context, sandboxIDOrName string\) \(\*Sandbox, error\)](https://www.daytona.io/docs/%3C.md#Client.Get%3E)
+  - [func \(c \*Client\) List\(ctx context.Context, labels map\[string\]string, page \*int, limit \*int\) \(\*PaginatedSandboxes, error\)](<#Client.List>)
+- [type CodeInterpreterService](https://www.daytona.io/docs/%3C.md#CodeInterpreterService%3E)
+  - [func NewCodeInterpreterService\(toolboxClient \*toolbox.APIClient\) \*CodeInterpreterService](https://www.daytona.io/docs/%3C.md#NewCodeInterpreterService%3E)
+  - [func \(c \*CodeInterpreterService\) CreateContext\(ctx context.Context, cwd \*string\) \(map\[string\]any, error\)](<#CodeInterpreterService.CreateContext>)
+  - [func \(c \*CodeInterpreterService\) DeleteContext\(ctx context.Context, contextID string\) error](https://www.daytona.io/docs/%3C.md#CodeInterpreterService.DeleteContext%3E)
+  - [func \(c \*CodeInterpreterService\) ListContexts\(ctx context.Context\) \(\[\]map\[string\]any, error\)](<#CodeInterpreterService.ListContexts>)
+  - [func \(c \*CodeInterpreterService\) RunCode\(ctx context.Context, code string, opts ...func\(\*options.RunCode\)\) \(\*OutputChannels, error\)](https://www.daytona.io/docs/%3C.md#CodeInterpreterService.RunCode%3E)
+- [type ComputerUseService](https://www.daytona.io/docs/%3C.md#ComputerUseService%3E)
+  - [func NewComputerUseService\(toolboxClient \*toolbox.APIClient\) \*ComputerUseService](https://www.daytona.io/docs/%3C.md#NewComputerUseService%3E)
+  - [func \(c \*ComputerUseService\) Display\(\) \*DisplayService](https://www.daytona.io/docs/%3C.md#ComputerUseService.Display%3E)
+  - [func \(c \*ComputerUseService\) GetStatus\(ctx context.Context\) \(map\[string\]any, error\)](<#ComputerUseService.GetStatus>)
+  - [func \(c \*ComputerUseService\) Keyboard\(\) \*KeyboardService](https://www.daytona.io/docs/%3C.md#ComputerUseService.Keyboard%3E)
+  - [func \(c \*ComputerUseService\) Mouse\(\) \*MouseService](https://www.daytona.io/docs/%3C.md#ComputerUseService.Mouse%3E)
+  - [func \(c \*ComputerUseService\) Screenshot\(\) \*ScreenshotService](https://www.daytona.io/docs/%3C.md#ComputerUseService.Screenshot%3E)
+  - [func \(c \*ComputerUseService\) Start\(ctx context.Context\) error](https://www.daytona.io/docs/%3C.md#ComputerUseService.Start%3E)
+  - [func \(c \*ComputerUseService\) Stop\(ctx context.Context\) error](https://www.daytona.io/docs/%3C.md#ComputerUseService.Stop%3E)
+- [type DisplayService](https://www.daytona.io/docs/%3C.md#DisplayService%3E)
+  - [func NewDisplayService\(toolboxClient \*toolbox.APIClient\) \*DisplayService](https://www.daytona.io/docs/%3C.md#NewDisplayService%3E)
+  - [func \(d \*DisplayService\) GetInfo\(ctx context.Context\) \(map\[string\]any, error\)](<#DisplayService.GetInfo>)
+  - [func \(d \*DisplayService\) GetWindows\(ctx context.Context\) \(map\[string\]any, error\)](<#DisplayService.GetWindows>)
+- [type DockerImage](https://www.daytona.io/docs/%3C.md#DockerImage%3E)
+  - [func Base\(baseImage string\) \*DockerImage](https://www.daytona.io/docs/%3C.md#Base%3E)
+  - [func DebianSlim\(pythonVersion \*string\) \*DockerImage](https://www.daytona.io/docs/%3C.md#DebianSlim%3E)
+  - [func FromDockerfile\(dockerfile string\) \*DockerImage](https://www.daytona.io/docs/%3C.md#FromDockerfile%3E)
+  - [func \(img \*DockerImage\) Add\(source, destination string\) \*DockerImage](https://www.daytona.io/docs/%3C.md#DockerImage.Add%3E)
+  - [func \(img \*DockerImage\) AddLocalDir\(localPath, remotePath string\) \*DockerImage](https://www.daytona.io/docs/%3C.md#DockerImage.AddLocalDir%3E)
+  - [func \(img \*DockerImage\) AddLocalFile\(localPath, remotePath string\) \*DockerImage](https://www.daytona.io/docs/%3C.md#DockerImage.AddLocalFile%3E)
+  - [func \(img \*DockerImage\) AptGet\(packages \[\]string\) \*DockerImage](<#DockerImage.AptGet>)
+  - [func \(img \*DockerImage\) Cmd\(cmd \[\]string\) \*DockerImage](<#DockerImage.Cmd>)
+  - [func \(img \*DockerImage\) Contexts\(\) \[\]DockerImageContext](<#DockerImage.Contexts>)
+  - [func \(img \*DockerImage\) Copy\(source, destination string\) \*DockerImage](https://www.daytona.io/docs/%3C.md#DockerImage.Copy%3E)
+  - [func \(img \*DockerImage\) Dockerfile\(\) string](https://www.daytona.io/docs/%3C.md#DockerImage.Dockerfile%3E)
+  - [func \(img \*DockerImage\) Entrypoint\(cmd \[\]string\) \*DockerImage](<#DockerImage.Entrypoint>)
+  - [func \(img \*DockerImage\) Env\(key, value string\) \*DockerImage](https://www.daytona.io/docs/%3C.md#DockerImage.Env%3E)
+  - [func \(img \*DockerImage\) Expose\(ports \[\]int\) \*DockerImage](<#DockerImage.Expose>)
+  - [func \(img \*DockerImage\) Label\(key, value string\) \*DockerImage](https://www.daytona.io/docs/%3C.md#DockerImage.Label%3E)
+  - [func \(img \*DockerImage\) PipInstall\(packages \[\]string, opts ...func\(\*options.PipInstall\)\) \*DockerImage](<#DockerImage.PipInstall>)
+  - [func \(img \*DockerImage\) Run\(command string\) \*DockerImage](https://www.daytona.io/docs/%3C.md#DockerImage.Run%3E)
+  - [func \(img \*DockerImage\) User\(username string\) \*DockerImage](https://www.daytona.io/docs/%3C.md#DockerImage.User%3E)
+  - [func \(img \*DockerImage\) Volume\(paths \[\]string\) \*DockerImage](<#DockerImage.Volume>)
+  - [func \(img \*DockerImage\) Workdir\(path string\) \*DockerImage](https://www.daytona.io/docs/%3C.md#DockerImage.Workdir%3E)
+- [type DockerImageContext](https://www.daytona.io/docs/%3C.md#DockerImageContext%3E)
+- [type FileSystemService](https://www.daytona.io/docs/%3C.md#FileSystemService%3E)
+  - [func NewFileSystemService\(toolboxClient \*toolbox.APIClient\) \*FileSystemService](https://www.daytona.io/docs/%3C.md#NewFileSystemService%3E)
+  - [func \(f \*FileSystemService\) CreateFolder\(ctx context.Context, path string, opts ...func\(\*options.CreateFolder\)\) error](https://www.daytona.io/docs/%3C.md#FileSystemService.CreateFolder%3E)
+  - [func \(f \*FileSystemService\) DeleteFile\(ctx context.Context, path string, recursive bool\) error](https://www.daytona.io/docs/%3C.md#FileSystemService.DeleteFile%3E)
+  - [func \(f \*FileSystemService\) DownloadFile\(ctx context.Context, remotePath string, localPath \*string\) \(\[\]byte, error\)](<#FileSystemService.DownloadFile>)
+  - [func \(f \*FileSystemService\) FindFiles\(ctx context.Context, path, pattern string\) \(any, error\)](https://www.daytona.io/docs/%3C.md#FileSystemService.FindFiles%3E)
+  - [func \(f \*FileSystemService\) GetFileInfo\(ctx context.Context, path string\) \(\*types.FileInfo, error\)](https://www.daytona.io/docs/%3C.md#FileSystemService.GetFileInfo%3E)
+  - [func \(f \*FileSystemService\) ListFiles\(ctx context.Context, path string\) \(\[\]\*types.FileInfo, error\)](<#FileSystemService.ListFiles>)
+  - [func \(f \*FileSystemService\) MoveFiles\(ctx context.Context, source, destination string\) error](https://www.daytona.io/docs/%3C.md#FileSystemService.MoveFiles%3E)
+  - [func \(f \*FileSystemService\) ReplaceInFiles\(ctx context.Context, files \[\]string, pattern, newValue string\) \(any, error\)](<#FileSystemService.ReplaceInFiles>)
+  - [func \(f \*FileSystemService\) SearchFiles\(ctx context.Context, path, pattern string\) \(any, error\)](https://www.daytona.io/docs/%3C.md#FileSystemService.SearchFiles%3E)
+  - [func \(f \*FileSystemService\) SetFilePermissions\(ctx context.Context, path string, opts ...func\(\*options.SetFilePermissions\)\) error](https://www.daytona.io/docs/%3C.md#FileSystemService.SetFilePermissions%3E)
+  - [func \(f \*FileSystemService\) UploadFile\(ctx context.Context, source any, destination string\) error](https://www.daytona.io/docs/%3C.md#FileSystemService.UploadFile%3E)
+- [type GitService](https://www.daytona.io/docs/%3C.md#GitService%3E)
+  - [func NewGitService\(toolboxClient \*toolbox.APIClient\) \*GitService](https://www.daytona.io/docs/%3C.md#NewGitService%3E)
+  - [func \(g \*GitService\) Add\(ctx context.Context, path string, files \[\]string\) error](<#GitService.Add>)
+  - [func \(g \*GitService\) Branches\(ctx context.Context, path string\) \(\[\]string, error\)](<#GitService.Branches>)
+  - [func \(g \*GitService\) Checkout\(ctx context.Context, path, name string\) error](https://www.daytona.io/docs/%3C.md#GitService.Checkout%3E)
+  - [func \(g \*GitService\) Clone\(ctx context.Context, url, path string, opts ...func\(\*options.GitClone\)\) error](https://www.daytona.io/docs/%3C.md#GitService.Clone%3E)
+  - [func \(g \*GitService\) Commit\(ctx context.Context, path, message, author, email string, opts ...func\(\*options.GitCommit\)\) \(\*types.GitCommitResponse, error\)](https://www.daytona.io/docs/%3C.md#GitService.Commit%3E)
+  - [func \(g \*GitService\) CreateBranch\(ctx context.Context, path, name string\) error](https://www.daytona.io/docs/%3C.md#GitService.CreateBranch%3E)
+  - [func \(g \*GitService\) DeleteBranch\(ctx context.Context, path, name string, opts ...func\(\*options.GitDeleteBranch\)\) error](https://www.daytona.io/docs/%3C.md#GitService.DeleteBranch%3E)
+  - [func \(g \*GitService\) Pull\(ctx context.Context, path string, opts ...func\(\*options.GitPull\)\) error](https://www.daytona.io/docs/%3C.md#GitService.Pull%3E)
+  - [func \(g \*GitService\) Push\(ctx context.Context, path string, opts ...func\(\*options.GitPush\)\) error](https://www.daytona.io/docs/%3C.md#GitService.Push%3E)
+  - [func \(g \*GitService\) Status\(ctx context.Context, path string\) \(\*types.GitStatus, error\)](https://www.daytona.io/docs/%3C.md#GitService.Status%3E)
+- [type KeyboardService](https://www.daytona.io/docs/%3C.md#KeyboardService%3E)
+  - [func NewKeyboardService\(toolboxClient \*toolbox.APIClient\) \*KeyboardService](https://www.daytona.io/docs/%3C.md#NewKeyboardService%3E)
+  - [func \(k \*KeyboardService\) Hotkey\(ctx context.Context, keys string\) error](https://www.daytona.io/docs/%3C.md#KeyboardService.Hotkey%3E)
+  - [func \(k \*KeyboardService\) Press\(ctx context.Context, key string, modifiers \[\]string\) error](<#KeyboardService.Press>)
+  - [func \(k \*KeyboardService\) Type\(ctx context.Context, text string, delay \*int\) error](https://www.daytona.io/docs/%3C.md#KeyboardService.Type%3E)
+- [type LspServerService](https://www.daytona.io/docs/%3C.md#LspServerService%3E)
+  - [func NewLspServerService\(toolboxClient \*toolbox.APIClient, languageID types.LspLanguageID, projectPath string\) \*LspServerService](https://www.daytona.io/docs/%3C.md#NewLspServerService%3E)
+  - [func \(l \*LspServerService\) Completions\(ctx context.Context, path string, position types.Position\) \(any, error\)](https://www.daytona.io/docs/%3C.md#LspServerService.Completions%3E)
+  - [func \(l \*LspServerService\) DidClose\(ctx context.Context, path string\) error](https://www.daytona.io/docs/%3C.md#LspServerService.DidClose%3E)
+  - [func \(l \*LspServerService\) DidOpen\(ctx context.Context, path string\) error](https://www.daytona.io/docs/%3C.md#LspServerService.DidOpen%3E)
+  - [func \(l \*LspServerService\) DocumentSymbols\(ctx context.Context, path string\) \(\[\]any, error\)](<#LspServerService.DocumentSymbols>)
+  - [func \(l \*LspServerService\) SandboxSymbols\(ctx context.Context, query string\) \(\[\]any, error\)](<#LspServerService.SandboxSymbols>)
+  - [func \(l \*LspServerService\) Start\(ctx context.Context\) error](https://www.daytona.io/docs/%3C.md#LspServerService.Start%3E)
+  - [func \(l \*LspServerService\) Stop\(ctx context.Context\) error](https://www.daytona.io/docs/%3C.md#LspServerService.Stop%3E)
+- [type MouseService](https://www.daytona.io/docs/%3C.md#MouseService%3E)
+  - [func NewMouseService\(toolboxClient \*toolbox.APIClient\) \*MouseService](https://www.daytona.io/docs/%3C.md#NewMouseService%3E)
+  - [func \(m \*MouseService\) Click\(ctx context.Context, x, y int, button \*string, double \*bool\) \(map\[string\]any, error\)](<#MouseService.Click>)
+  - [func \(m \*MouseService\) Drag\(ctx context.Context, startX, startY, endX, endY int, button \*string\) \(map\[string\]any, error\)](<#MouseService.Drag>)
+  - [func \(m \*MouseService\) GetPosition\(ctx context.Context\) \(map\[string\]any, error\)](<#MouseService.GetPosition>)
+  - [func \(m \*MouseService\) Move\(ctx context.Context, x, y int\) \(map\[string\]any, error\)](<#MouseService.Move>)
+  - [func \(m \*MouseService\) Scroll\(ctx context.Context, x, y int, direction string, amount \*int\) \(bool, error\)](https://www.daytona.io/docs/%3C.md#MouseService.Scroll%3E)
+- [type OutputChannels](https://www.daytona.io/docs/%3C.md#OutputChannels%3E)
+- [type PaginatedSandboxes](https://www.daytona.io/docs/%3C.md#PaginatedSandboxes%3E)
+- [type ProcessService](https://www.daytona.io/docs/%3C.md#ProcessService%3E)
+  - [func NewProcessService\(toolboxClient \*toolbox.APIClient\) \*ProcessService](https://www.daytona.io/docs/%3C.md#NewProcessService%3E)
+  - [func \(p \*ProcessService\) CodeRun\(ctx context.Context, code string, opts ...func\(\*options.CodeRun\)\) \(\*types.ExecuteResponse, error\)](https://www.daytona.io/docs/%3C.md#ProcessService.CodeRun%3E)
+  - [func \(p \*ProcessService\) ConnectPty\(ctx context.Context, sessionID string\) \(\*PtyHandle, error\)](https://www.daytona.io/docs/%3C.md#ProcessService.ConnectPty%3E)
+  - [func \(p \*ProcessService\) CreatePty\(ctx context.Context, id string, opts ...func\(\*options.CreatePty\)\) \(\*PtyHandle, error\)](https://www.daytona.io/docs/%3C.md#ProcessService.CreatePty%3E)
+  - [func \(p \*ProcessService\) CreatePtySession\(ctx context.Context, id string, opts ...func\(\*options.PtySession\)\) \(\*types.PtySessionInfo, error\)](https://www.daytona.io/docs/%3C.md#ProcessService.CreatePtySession%3E)
+  - [func \(p \*ProcessService\) CreateSession\(ctx context.Context, sessionID string\) error](https://www.daytona.io/docs/%3C.md#ProcessService.CreateSession%3E)
+  - [func \(p \*ProcessService\) DeleteSession\(ctx context.Context, sessionID string\) error](https://www.daytona.io/docs/%3C.md#ProcessService.DeleteSession%3E)
+  - [func \(p \*ProcessService\) ExecuteCommand\(ctx context.Context, command string, opts ...func\(\*options.ExecuteCommand\)\) \(\*types.ExecuteResponse, error\)](https://www.daytona.io/docs/%3C.md#ProcessService.ExecuteCommand%3E)
+  - [func \(p \*ProcessService\) ExecuteSessionCommand\(ctx context.Context, sessionID, command string, runAsync bool\) \(map\[string\]any, error\)](<#ProcessService.ExecuteSessionCommand>)
+  - [func \(p \*ProcessService\) GetPtySessionInfo\(ctx context.Context, sessionID string\) \(\*types.PtySessionInfo, error\)](https://www.daytona.io/docs/%3C.md#ProcessService.GetPtySessionInfo%3E)
+  - [func \(p \*ProcessService\) GetSession\(ctx context.Context, sessionID string\) \(map\[string\]any, error\)](<#ProcessService.GetSession>)
+  - [func \(p \*ProcessService\) GetSessionCommand\(ctx context.Context, sessionID, commandID string\) \(map\[string\]any, error\)](<#ProcessService.GetSessionCommand>)
+  - [func \(p \*ProcessService\) GetSessionCommandLogs\(ctx context.Context, sessionID, commandID string\) \(map\[string\]any, error\)](<#ProcessService.GetSessionCommandLogs>)
+  - [func \(p \*ProcessService\) GetSessionCommandLogsStream\(ctx context.Context, sessionID, commandID string, stdout, stderr chan\<\- string\) error](https://www.daytona.io/docs/%3C.md#ProcessService.GetSessionCommandLogsStream%3E)
+  - [func \(p \*ProcessService\) KillPtySession\(ctx context.Context, sessionID string\) error](https://www.daytona.io/docs/%3C.md#ProcessService.KillPtySession%3E)
+  - [func \(p \*ProcessService\) ListPtySessions\(ctx context.Context\) \(\[\]\*types.PtySessionInfo, error\)](<#ProcessService.ListPtySessions>)
+  - [func \(p \*ProcessService\) ListSessions\(ctx context.Context\) \(\[\]map\[string\]any, error\)](<#ProcessService.ListSessions>)
+  - [func \(p \*ProcessService\) ResizePtySession\(ctx context.Context, sessionID string, ptySize types.PtySize\) \(\*types.PtySessionInfo, error\)](https://www.daytona.io/docs/%3C.md#ProcessService.ResizePtySession%3E)
+- [type PtyHandle](https://www.daytona.io/docs/%3C.md#PtyHandle%3E)
+  - [func \(h \*PtyHandle\) DataChan\(\) \<\-chan \[\]byte](<#PtyHandle.DataChan>)
+  - [func \(h \*PtyHandle\) Disconnect\(\) error](https://www.daytona.io/docs/%3C.md#PtyHandle.Disconnect%3E)
+  - [func \(h \*PtyHandle\) Error\(\) \*string](https://www.daytona.io/docs/%3C.md#PtyHandle.Error%3E)
+  - [func \(h \*PtyHandle\) ExitCode\(\) \*int](https://www.daytona.io/docs/%3C.md#PtyHandle.ExitCode%3E)
+  - [func \(h \*PtyHandle\) IsConnected\(\) bool](https://www.daytona.io/docs/%3C.md#PtyHandle.IsConnected%3E)
+  - [func \(h \*PtyHandle\) Kill\(ctx context.Context\) error](https://www.daytona.io/docs/%3C.md#PtyHandle.Kill%3E)
+  - [func \(h \*PtyHandle\) Read\(p \[\]byte\) \(n int, err error\)](<#PtyHandle.Read>)
+  - [func \(h \*PtyHandle\) Resize\(ctx context.Context, cols, rows int\) \(\*types.PtySessionInfo, error\)](https://www.daytona.io/docs/%3C.md#PtyHandle.Resize%3E)
+  - [func \(h \*PtyHandle\) SendInput\(data \[\]byte\) error](<#PtyHandle.SendInput>)
+  - [func \(h \*PtyHandle\) SessionID\(\) string](https://www.daytona.io/docs/%3C.md#PtyHandle.SessionID%3E)
+  - [func \(h \*PtyHandle\) Wait\(ctx context.Context\) \(\*types.PtyResult, error\)](https://www.daytona.io/docs/%3C.md#PtyHandle.Wait%3E)
+  - [func \(h \*PtyHandle\) WaitForConnection\(ctx context.Context\) error](https://www.daytona.io/docs/%3C.md#PtyHandle.WaitForConnection%3E)
+  - [func \(h \*PtyHandle\) Write\(p \[\]byte\) \(n int, err error\)](<#PtyHandle.Write>)
+- [type PushAccessCredentials](https://www.daytona.io/docs/%3C.md#PushAccessCredentials%3E)
+- [type Sandbox](https://www.daytona.io/docs/%3C.md#Sandbox%3E)
+  - [func NewSandbox\(client \*Client, toolboxClient \*toolbox.APIClient, id string, name string, state apiclient.SandboxState, target string, autoArchiveInterval int, autoDeleteInterval int, networkBlockAll bool, networkAllowList \*string\) \*Sandbox](https://www.daytona.io/docs/%3C.md#NewSandbox%3E)
+  - [func \(s \*Sandbox\) Archive\(ctx context.Context\) error](https://www.daytona.io/docs/%3C.md#Sandbox.Archive%3E)
+  - [func \(s \*Sandbox\) Delete\(ctx context.Context\) error](https://www.daytona.io/docs/%3C.md#Sandbox.Delete%3E)
+  - [func \(s \*Sandbox\) DeleteWithTimeout\(ctx context.Context, timeout time.Duration\) error](https://www.daytona.io/docs/%3C.md#Sandbox.DeleteWithTimeout%3E)
+  - [func \(s \*Sandbox\) GetPreviewLink\(ctx context.Context, port int\) \(string, error\)](https://www.daytona.io/docs/%3C.md#Sandbox.GetPreviewLink%3E)
+  - [func \(s \*Sandbox\) GetUserHomeDir\(ctx context.Context\) \(string, error\)](https://www.daytona.io/docs/%3C.md#Sandbox.GetUserHomeDir%3E)
+  - [func \(s \*Sandbox\) GetWorkingDir\(ctx context.Context\) \(string, error\)](https://www.daytona.io/docs/%3C.md#Sandbox.GetWorkingDir%3E)
+  - [func \(s \*Sandbox\) RefreshData\(ctx context.Context\) error](https://www.daytona.io/docs/%3C.md#Sandbox.RefreshData%3E)
+  - [func \(s \*Sandbox\) SetAutoArchiveInterval\(ctx context.Context, intervalMinutes \*int\) error](https://www.daytona.io/docs/%3C.md#Sandbox.SetAutoArchiveInterval%3E)
+  - [func \(s \*Sandbox\) SetAutoDeleteInterval\(ctx context.Context, intervalMinutes \*int\) error](https://www.daytona.io/docs/%3C.md#Sandbox.SetAutoDeleteInterval%3E)
+  - [func \(s \*Sandbox\) SetLabels\(ctx context.Context, labels map\[string\]string\) error](<#Sandbox.SetLabels>)
+  - [func \(s \*Sandbox\) Start\(ctx context.Context\) error](https://www.daytona.io/docs/%3C.md#Sandbox.Start%3E)
+  - [func \(s \*Sandbox\) StartWithTimeout\(ctx context.Context, timeout time.Duration\) error](https://www.daytona.io/docs/%3C.md#Sandbox.StartWithTimeout%3E)
+  - [func \(s \*Sandbox\) Stop\(ctx context.Context\) error](https://www.daytona.io/docs/%3C.md#Sandbox.Stop%3E)
+  - [func \(s \*Sandbox\) StopWithTimeout\(ctx context.Context, timeout time.Duration\) error](https://www.daytona.io/docs/%3C.md#Sandbox.StopWithTimeout%3E)
+  - [func \(s \*Sandbox\) WaitForStart\(ctx context.Context, timeout time.Duration\) error](https://www.daytona.io/docs/%3C.md#Sandbox.WaitForStart%3E)
+  - [func \(s \*Sandbox\) WaitForStop\(ctx context.Context, timeout time.Duration\) error](https://www.daytona.io/docs/%3C.md#Sandbox.WaitForStop%3E)
+- [type ScreenshotService](https://www.daytona.io/docs/%3C.md#ScreenshotService%3E)
+  - [func NewScreenshotService\(toolboxClient \*toolbox.APIClient\) \*ScreenshotService](https://www.daytona.io/docs/%3C.md#NewScreenshotService%3E)
+  - [func \(s \*ScreenshotService\) TakeFullScreen\(ctx context.Context, showCursor \*bool\) \(\*types.ScreenshotResponse, error\)](https://www.daytona.io/docs/%3C.md#ScreenshotService.TakeFullScreen%3E)
+  - [func \(s \*ScreenshotService\) TakeRegion\(ctx context.Context, region types.ScreenshotRegion, showCursor \*bool\) \(\*types.ScreenshotResponse, error\)](https://www.daytona.io/docs/%3C.md#ScreenshotService.TakeRegion%3E)
+- [type SnapshotService](https://www.daytona.io/docs/%3C.md#SnapshotService%3E)
+  - [func NewSnapshotService\(client \*Client\) \*SnapshotService](https://www.daytona.io/docs/%3C.md#NewSnapshotService%3E)
+  - [func \(s \*SnapshotService\) Create\(ctx context.Context, params \*types.CreateSnapshotParams\) \(\*types.Snapshot, \<\-chan string, error\)](https://www.daytona.io/docs/%3C.md#SnapshotService.Create%3E)
+  - [func \(s \*SnapshotService\) Delete\(ctx context.Context, snapshot \*types.Snapshot\) error](https://www.daytona.io/docs/%3C.md#SnapshotService.Delete%3E)
+  - [func \(s \*SnapshotService\) Get\(ctx context.Context, nameOrID string\) \(\*types.Snapshot, error\)](https://www.daytona.io/docs/%3C.md#SnapshotService.Get%3E)
+  - [func \(s \*SnapshotService\) List\(ctx context.Context, page \*int, limit \*int\) \(\*types.PaginatedSnapshots, error\)](https://www.daytona.io/docs/%3C.md#SnapshotService.List%3E)
+- [type VolumeService](https://www.daytona.io/docs/%3C.md#VolumeService%3E)
+  - [func NewVolumeService\(client \*Client\) \*VolumeService](https://www.daytona.io/docs/%3C.md#NewVolumeService%3E)
+  - [func \(v \*VolumeService\) Create\(ctx context.Context, name string\) \(\*types.Volume, error\)](https://www.daytona.io/docs/%3C.md#VolumeService.Create%3E)
+  - [func \(v \*VolumeService\) Delete\(ctx context.Context, volume \*types.Volume\) error](https://www.daytona.io/docs/%3C.md#VolumeService.Delete%3E)
+  - [func \(v \*VolumeService\) Get\(ctx context.Context, name string\) \(\*types.Volume, error\)](https://www.daytona.io/docs/%3C.md#VolumeService.Get%3E)
+  - [func \(v \*VolumeService\) List\(ctx context.Context\) \(\[\]\*types.Volume, error\)](<#VolumeService.List>)
+  - [func \(v \*VolumeService\) WaitForReady\(ctx context.Context, volume \*types.Volume, timeout time.Duration\) \(\*types.Volume, error\)](https://www.daytona.io/docs/%3C.md#VolumeService.WaitForReady%3E)
+
+
+## Variables
+
+<a name="Version"></a>Version is the semantic version of the Daytona SDK.
+
+This value is embedded at build time from the VERSION file.
+
+Example:
+
+```
+fmt.Printf("Daytona SDK version: %s\n", daytona.Version)
+```
+
+```go
+var Version = strings.TrimSpace(version)
+```
+
+<a name="Client"></a>
+## type Client
+
+Client is the main entry point for interacting with the Daytona platform.
+
+Client provides methods to create, retrieve, list, and manage sandboxes. It handles authentication, API communication, and provides access to services like Volume and Snapshot management.
+
+Create a Client using [NewClient](https://www.daytona.io/docs/%3C.md#NewClient%3E) or [NewClientWithConfig](https://www.daytona.io/docs/%3C.md#NewClientWithConfig%3E):
+
+```
+client, err := daytona.NewClient()
+if err != nil {
+    log.Fatal(err)
+}
+```
+
+The Client is safe for concurrent use by multiple goroutines.
+
+```go
+type Client struct {
+
+    // Volume provides methods for managing persistent volumes.
+    Volume *VolumeService
+
+    // Snapshot provides methods for managing sandbox snapshots.
+    Snapshot *SnapshotService
+    // contains filtered or unexported fields
+}
+```
+
+<a name="NewClient"></a>
+### func NewClient
+
+```go
+func NewClient() (*Client, error)
+```
+
+NewClient creates a new Daytona client with default configuration.
+
+NewClient reads configuration from environment variables:
+
+- DAYTONA\_API\_KEY or DAYTONA\_JWT\_TOKEN for authentication \(one is required\)
+- DAYTONA\_ORGANIZATION\_ID \(required when using JWT token\)
+- DAYTONA\_API\_URL for custom API endpoint
+- DAYTONA\_TARGET for target environment
+
+For explicit configuration, use [NewClientWithConfig](https://www.daytona.io/docs/%3C.md#NewClientWithConfig%3E) instead.
+
+<a name="NewClientWithConfig"></a>
+### func NewClientWithConfig
+
+```go
+func NewClientWithConfig(config *types.DaytonaConfig) (*Client, error)
+```
+
+NewClientWithConfig creates a new Daytona client with a custom configuration.
+
+Configuration values provided in config take precedence over environment variables. Any configuration field left empty will fall back to the corresponding environment variable \(see [NewClient](https://www.daytona.io/docs/%3C.md#NewClient%3E) for the list of supported variables\).
+
+Example:
+
+```
+client, err := daytona.NewClientWithConfig(&types.DaytonaConfig{
+    APIKey:         "your-api-key",
+    APIUrl:         "https://custom.daytona.io/api",
+    OrganizationID: "org-123",
+})
+if err != nil {
+    log.Fatal(err)
+}
+```
+
+Returns an error if neither API key nor JWT token is provided, or if JWT token is provided without an organization ID.
+
+<a name="Client.Create"></a>
+### func \(\*Client\) Create
+
+```go
+func (c *Client) Create(ctx context.Context, params any, opts ...func(*options.CreateSandbox)) (*Sandbox, error)
+```
+
+Create creates a new sandbox with the specified parameters.
+
+The params argument accepts either \[types.SnapshotParams\] to create from a snapshot, or \[types.ImageParams\] to create from a Docker image:
+
+```
+// Create from a snapshot
+sandbox, err := client.Create(ctx, types.SnapshotParams{
+    Snapshot: "my-snapshot",
+    SandboxBaseParams: types.SandboxBaseParams{
+        Name: "my-sandbox",
+    },
+})
+
+// Create from a Docker image
+sandbox, err := client.Create(ctx, types.ImageParams{
+    Image: "python:3.11",
+    Resources: &types.Resources{
+        CPU:    2,
+        Memory: 4096,
+    },
+})
+```
+
+By default, Create waits for the sandbox to reach the started state before returning. Use \[options.WithWaitForStart\]\(false\) to return immediately after creation.
+
+Optional parameters can be configured using functional options:
+
+- \[options.WithTimeout\]: Set maximum wait time for creation
+- \[options.WithWaitForStart\]: Control whether to wait for started state
+- \[options.WithLogChannel\]: Receive build logs during image builds
+
+Returns the created [Sandbox](https://www.daytona.io/docs/%3C.md#Sandbox%3E) or an error if creation fails.
+
+<a name="Client.FindOne"></a>
+### func \(\*Client\) FindOne
+
+```go
+func (c *Client) FindOne(ctx context.Context, sandboxIDOrName *string, labels map[string]string) (*Sandbox, error)
+```
+
+FindOne finds a single sandbox by ID/name or by matching labels.
+
+If sandboxIDOrName is provided and non\-empty, FindOne delegates to [Client.Get](https://www.daytona.io/docs/%3C.md#Client.Get%3E). Otherwise, it searches for sandboxes matching the provided labels and returns the first match.
+
+This method is useful when you need to find a sandbox but may have either its identifier or its labels:
+
+```
+// Find by name
+name := "my-sandbox"
+sandbox, err := client.FindOne(ctx, &name, nil)
+
+// Find by labels
+sandbox, err := client.FindOne(ctx, nil, map[string]string{
+    "environment": "production",
+    "team":        "backend",
+})
+```
+
+Returns [errors.DaytonaNotFoundError](https://www.daytona.io/docs/%3Chttps:/pkg.go.dev/errors.md#DaytonaNotFoundError%3E) if no matching sandbox is found.
+
+<a name="Client.Get"></a>
+### func \(\*Client\) Get
+
+```go
+func (c *Client) Get(ctx context.Context, sandboxIDOrName string) (*Sandbox, error)
+```
+
+Get retrieves an existing sandbox by its ID or name.
+
+The sandboxIDOrName parameter accepts either the sandbox's unique ID or its human\-readable name. If a sandbox with the given identifier is not found, a [errors.DaytonaNotFoundError](https://www.daytona.io/docs/%3Chttps:/pkg.go.dev/errors.md#DaytonaNotFoundError%3E) is returned.
+
+Example:
+
+```
+sandbox, err := client.Get(ctx, "my-sandbox")
+if err != nil {
+    var notFound *errors.DaytonaNotFoundError
+    if errors.As(err, &notFound) {
+        log.Println("Sandbox not found")
+    }
+    return err
+}
+```
+
+<a name="Client.List"></a>
+### func \(\*Client\) List
+
+```go
+func (c *Client) List(ctx context.Context, labels map[string]string, page *int, limit *int) (*PaginatedSandboxes, error)
+```
+
+List retrieves sandboxes with optional label filtering and pagination.
+
+Parameters:
+
+- labels: Optional map of labels to filter sandboxes. Pass nil for no filtering.
+- page: Optional page number \(1\-indexed\). Pass nil for the first page.
+- limit: Optional number of results per page. Pass nil for the default limit.
+
+Example:
+
+```
+// List all sandboxes
+result, err := client.List(ctx, nil, nil, nil)
+
+// List sandboxes with pagination
+page, limit := 1, 10
+result, err := client.List(ctx, nil, &page, &limit)
+
+// Filter by labels
+result, err := client.List(ctx, map[string]string{"env": "dev"}, nil, nil)
+
+// Iterate through results
+for _, sandbox := range result.Items {
+    fmt.Printf("Sandbox: %s (state: %s)\n", sandbox.Name, sandbox.State)
+}
+```
+
+Returns a [PaginatedSandboxes](https://www.daytona.io/docs/%3C.md#PaginatedSandboxes%3E) containing the matching sandboxes and pagination metadata.
+
+<a name="CodeInterpreterService"></a>
+## type CodeInterpreterService
+
+CodeInterpreterService provides Python code execution capabilities for a sandbox.
+
+CodeInterpreterService enables running Python code in isolated execution contexts with support for streaming output, persistent state, and environment variables. It uses WebSockets for real\-time output streaming. Access through \[Sandbox.CodeInterpreter\].
+
+Example:
+
+```
+// Simple code execution
+channels, err := sandbox.CodeInterpreter.RunCode(ctx, "print('Hello, World!')")
+if err != nil {
+    return err
+}
+
+// Wait for completion and get result
+result := <-channels.Done
+fmt.Println(result.Stdout)
+
+// With persistent context
+ctxInfo, _ := sandbox.CodeInterpreter.CreateContext(ctx, nil)
+contextID := ctxInfo["id"].(string)
+channels, _ = sandbox.CodeInterpreter.RunCode(ctx, "x = 42",
+    options.WithCustomContext(contextID),
+)
+<-channels.Done
+channels, _ = sandbox.CodeInterpreter.RunCode(ctx, "print(x)",
+    options.WithCustomContext(contextID),
+)
+```
+
+```go
+type CodeInterpreterService struct {
+    // contains filtered or unexported fields
+}
+```
+
+<a name="NewCodeInterpreterService"></a>
+### func NewCodeInterpreterService
+
+```go
+func NewCodeInterpreterService(toolboxClient *toolbox.APIClient) *CodeInterpreterService
+```
+
+NewCodeInterpreterService creates a new CodeInterpreterService.
+
+This is typically called internally by the SDK when creating a [Sandbox](https://www.daytona.io/docs/%3C.md#Sandbox%3E). Users should access CodeInterpreterService through \[Sandbox.CodeInterpreter\] rather than creating it directly.
+
+<a name="CodeInterpreterService.CreateContext"></a>
+### func \(\*CodeInterpreterService\) CreateContext
+
+```go
+func (c *CodeInterpreterService) CreateContext(ctx context.Context, cwd *string) (map[string]any, error)
+```
+
+CreateContext creates an isolated execution context for persistent state.
+
+Contexts allow you to maintain state \(variables, imports, etc.\) across multiple code executions. Without a context, each RunCode call starts fresh.
+
+Parameters:
+
+- cwd: Optional working directory for the context
+
+Example:
+
+```
+// Create a context
+ctxInfo, err := sandbox.CodeInterpreter.CreateContext(ctx, nil)
+if err != nil {
+    return err
+}
+contextID := ctxInfo["id"].(string)
+
+// Use the context to maintain state
+sandbox.CodeInterpreter.RunCode(ctx, "x = 42", options.WithCustomContext(contextID))
+sandbox.CodeInterpreter.RunCode(ctx, "print(x)", options.WithCustomContext(contextID)) // prints 42
+
+// Clean up when done
+sandbox.CodeInterpreter.DeleteContext(ctx, contextID)
+```
+
+Returns context information including "id", "cwd", "language", "active", and "createdAt".
+
+<a name="CodeInterpreterService.DeleteContext"></a>
+### func \(\*CodeInterpreterService\) DeleteContext
+
+```go
+func (c *CodeInterpreterService) DeleteContext(ctx context.Context, contextID string) error
+```
+
+DeleteContext removes an execution context and releases its resources.
+
+Parameters:
+
+- contextID: The context identifier to delete
+
+Example:
+
+```
+err := sandbox.CodeInterpreter.DeleteContext(ctx, contextID)
+```
+
+Returns an error if the context doesn't exist or deletion fails.
+
+<a name="CodeInterpreterService.ListContexts"></a>
+### func \(\*CodeInterpreterService\) ListContexts
+
+```go
+func (c *CodeInterpreterService) ListContexts(ctx context.Context) ([]map[string]any, error)
+```
+
+ListContexts returns all active execution contexts.
+
+Example:
+
+```
+contexts, err := sandbox.CodeInterpreter.ListContexts(ctx)
+if err != nil {
+    return err
+}
+for _, ctx := range contexts {
+    fmt.Printf("Context %s (language: %s)\n", ctx["id"], ctx["language"])
+}
+```
+
+Returns a slice of context information maps.
+
+<a name="CodeInterpreterService.RunCode"></a>
+### func \(\*CodeInterpreterService\) RunCode
+
+```go
+func (c *CodeInterpreterService) RunCode(ctx context.Context, code string, opts ...func(*options.RunCode)) (*OutputChannels, error)
+```
+
+RunCode executes Python code and returns channels for streaming output.
+
+This method establishes a WebSocket connection to execute code asynchronously, streaming stdout and stderr as they become available.
+
+Optional parameters can be configured using functional options:
+
+- \[options.WithCustomContext\]: Use a persistent context for state
+- \[options.WithEnv\]: Set environment variables
+- \[options.WithInterpreterTimeout\]: Set execution timeout
+
+Example:
+
+```
+// Basic execution
+channels, err := sandbox.CodeInterpreter.RunCode(ctx, `
+    for i in range(5):
+        print(f"Count: {i}")
+`)
+if err != nil {
+    return err
+}
+
+// Stream output
+for msg := range channels.Stdout {
+    fmt.Print(msg.Text)
+}
+
+// Get final result
+result := <-channels.Done
+if result.Error != nil {
+    fmt.Printf("Error: %s\n", result.Error.Value)
+}
+
+// With options
+channels, err := sandbox.CodeInterpreter.RunCode(ctx, "import os; print(os.environ['API_KEY'])",
+    options.WithEnv(map[string]string{"API_KEY": "secret"}),
+    options.WithInterpreterTimeout(30*time.Second),
+)
+```
+
+Returns [OutputChannels](https://www.daytona.io/docs/%3C.md#OutputChannels%3E) for receiving streamed output, or an error if connection fails.
+
+<a name="ComputerUseService"></a>
+## type ComputerUseService
+
+ComputerUseService provides desktop automation operations for a sandbox.
+
+ComputerUseService enables GUI automation including mouse control, keyboard input, screenshots, and display management. The desktop environment must be started before using these features. Access through \[Sandbox.ComputerUse\].
+
+Example:
+
+```
+cu := sandbox.ComputerUse
+
+// Start the desktop environment
+if err := cu.Start(ctx); err != nil {
+    return err
+}
+defer cu.Stop(ctx)
+
+// Take a screenshot
+screenshot, err := cu.Screenshot().TakeFullScreen(ctx, nil)
+if err != nil {
+    return err
+}
+
+// Click at coordinates
+cu.Mouse().Click(ctx, 100, 200, nil, nil)
+
+// Type text
+cu.Keyboard().Type(ctx, "Hello, World!", nil)
+```
+
+```go
+type ComputerUseService struct {
+    // contains filtered or unexported fields
+}
+```
+
+<a name="NewComputerUseService"></a>
+### func NewComputerUseService
+
+```go
+func NewComputerUseService(toolboxClient *toolbox.APIClient) *ComputerUseService
+```
+
+NewComputerUseService creates a new ComputerUseService.
+
+This is typically called internally by the SDK when creating a [Sandbox](https://www.daytona.io/docs/%3C.md#Sandbox%3E). Users should access ComputerUseService through \[Sandbox.ComputerUse\] rather than creating it directly.
+
+<a name="ComputerUseService.Display"></a>
+### func \(\*ComputerUseService\) Display
+
+```go
+func (c *ComputerUseService) Display() *DisplayService
+```
+
+Display returns the [DisplayService](https://www.daytona.io/docs/%3C.md#DisplayService%3E) for display information.
+
+The service is lazily initialized on first access.
+
+<a name="ComputerUseService.GetStatus"></a>
+### func \(\*ComputerUseService\) GetStatus
+
+```go
+func (c *ComputerUseService) GetStatus(ctx context.Context) (map[string]any, error)
+```
+
+GetStatus returns the current status of the desktop environment.
+
+Example:
+
+```
+status, err := cu.GetStatus(ctx)
+if err != nil {
+    return err
+}
+fmt.Printf("Desktop status: %v\n", status["status"])
+```
+
+Returns a map containing status information.
+
+<a name="ComputerUseService.Keyboard"></a>
+### func \(\*ComputerUseService\) Keyboard
+
+```go
+func (c *ComputerUseService) Keyboard() *KeyboardService
+```
+
+Keyboard returns the [KeyboardService](https://www.daytona.io/docs/%3C.md#KeyboardService%3E) for keyboard operations.
+
+The service is lazily initialized on first access.
+
+<a name="ComputerUseService.Mouse"></a>
+### func \(\*ComputerUseService\) Mouse
+
+```go
+func (c *ComputerUseService) Mouse() *MouseService
+```
+
+Mouse returns the [MouseService](https://www.daytona.io/docs/%3C.md#MouseService%3E) for mouse operations.
+
+The service is lazily initialized on first access.
+
+<a name="ComputerUseService.Screenshot"></a>
+### func \(\*ComputerUseService\) Screenshot
+
+```go
+func (c *ComputerUseService) Screenshot() *ScreenshotService
+```
+
+Screenshot returns the [ScreenshotService](https://www.daytona.io/docs/%3C.md#ScreenshotService%3E) for capturing screen images.
+
+The service is lazily initialized on first access.
+
+<a name="ComputerUseService.Start"></a>
+### func \(\*ComputerUseService\) Start
+
+```go
+func (c *ComputerUseService) Start(ctx context.Context) error
+```
+
+Start initializes and starts the desktop environment.
+
+The desktop environment must be started before using mouse, keyboard, or screenshot operations. Call [ComputerUseService.Stop](https://www.daytona.io/docs/%3C.md#ComputerUseService.Stop%3E) when finished.
+
+Example:
+
+```
+if err := cu.Start(ctx); err != nil {
+    return err
+}
+defer cu.Stop(ctx)
+```
+
+Returns an error if the desktop fails to start.
+
+<a name="ComputerUseService.Stop"></a>
+### func \(\*ComputerUseService\) Stop
+
+```go
+func (c *ComputerUseService) Stop(ctx context.Context) error
+```
+
+Stop shuts down the desktop environment and releases resources.
+
+Example:
+
+```
+err := cu.Stop(ctx)
+```
+
+Returns an error if the desktop fails to stop gracefully.
+
+<a name="DisplayService"></a>
+## type DisplayService
+
+DisplayService provides display information and window management operations.
+
+DisplayService enables querying display configuration and window information. Access through [ComputerUseService.Display](https://www.daytona.io/docs/%3C.md#ComputerUseService.Display%3E).
+
+```go
+type DisplayService struct {
+    // contains filtered or unexported fields
+}
+```
+
+<a name="NewDisplayService"></a>
+### func NewDisplayService
+
+```go
+func NewDisplayService(toolboxClient *toolbox.APIClient) *DisplayService
+```
+
+NewDisplayService creates a new DisplayService.
+
+<a name="DisplayService.GetInfo"></a>
+### func \(\*DisplayService\) GetInfo
+
+```go
+func (d *DisplayService) GetInfo(ctx context.Context) (map[string]any, error)
+```
+
+GetInfo returns information about connected displays.
+
+Example:
+
+```
+info, err := display.GetInfo(ctx)
+if err != nil {
+    return err
+}
+displays := info["displays"]
+fmt.Printf("Connected displays: %v\n", displays)
+```
+
+Returns a map containing display information.
+
+<a name="DisplayService.GetWindows"></a>
+### func \(\*DisplayService\) GetWindows
+
+```go
+func (d *DisplayService) GetWindows(ctx context.Context) (map[string]any, error)
+```
+
+GetWindows returns information about open windows.
+
+Example:
+
+```
+result, err := display.GetWindows(ctx)
+if err != nil {
+    return err
+}
+windows := result["windows"]
+fmt.Printf("Open windows: %v\n", windows)
+```
+
+Returns a map containing window information.
+
+<a name="DockerImage"></a>
+## type DockerImage
+
+DockerImage provides a fluent interface for building Docker images declaratively.
+
+DockerImage allows you to define Docker images using Go code instead of Dockerfiles. Methods can be chained to build up the image definition, which is then converted to a Dockerfile when used with [SnapshotService.Create](https://www.daytona.io/docs/%3C.md#SnapshotService.Create%3E).
+
+Example:
+
+```
+// Create a Python image with dependencies
+image := daytona.Base("python:3.11-slim").
+    AptGet([]string{"git", "curl"}).
+    PipInstall([]string{"numpy", "pandas"}).
+    Workdir("/app").
+    Env("PYTHONUNBUFFERED", "1")
+
+// Use with snapshot creation
+snapshot, logChan, err := client.Snapshots.Create(ctx, &types.CreateSnapshotParams{
+    Name:  "my-python-env",
+    DockerImage: image,
+})
+```
+
+```go
+type DockerImage struct {
+    // contains filtered or unexported fields
+}
+```
+
+<a name="Base"></a>
+### func Base
+
+```go
+func Base(baseImage string) *DockerImage
+```
+
+Base creates a new Image from a base Docker image.
+
+This is typically the starting point for building an image definition. The baseImage parameter is any valid Docker image reference.
+
+Example:
+
+```
+image := daytona.Base("ubuntu:22.04")
+image := daytona.Base("python:3.11-slim")
+image := daytona.Base("node:18-alpine")
+```
+
+<a name="DebianSlim"></a>
+### func DebianSlim
+
+```go
+func DebianSlim(pythonVersion *string) *DockerImage
+```
+
+DebianSlim creates a Python image based on Debian slim.
+
+This is a convenience function for creating Python environments. If pythonVersion is nil, defaults to Python 3.12.
+
+Example:
+
+```
+// Use default Python 3.12
+image := daytona.DebianSlim(nil)
+
+// Use specific version
+version := "3.10"
+image := daytona.DebianSlim(&version)
+```
+
+<a name="FromDockerfile"></a>
+### func FromDockerfile
+
+```go
+func FromDockerfile(dockerfile string) *DockerImage
+```
+
+FromDockerfile creates an Image from an existing Dockerfile string.
+
+Use this when you have an existing Dockerfile you want to use.
+
+Example:
+
+```
+dockerfile := `FROM python:3.11
+RUN pip install numpy
+WORKDIR /app`
+image := daytona.FromDockerfile(dockerfile)
+```
+
+<a name="DockerImage.Add"></a>
+### func \(\*DockerImage\) Add
+
+```go
+func (img *DockerImage) Add(source, destination string) *DockerImage
+```
+
+Add adds an ADD instruction to the image.
+
+ADD supports URLs and automatic tar extraction. For simple file copying, prefer [DockerImage.Copy](https://www.daytona.io/docs/%3C.md#DockerImage.Copy%3E).
+
+Example:
+
+```
+image := daytona.Base("ubuntu:22.04").
+    Add("https://example.com/app.tar.gz", "/app/")
+```
+
+<a name="DockerImage.AddLocalDir"></a>
+### func \(\*DockerImage\) AddLocalDir
+
+```go
+func (img *DockerImage) AddLocalDir(localPath, remotePath string) *DockerImage
+```
+
+AddLocalDir adds a local directory to the build context and copies it to the image.
+
+The directory is uploaded to object storage and included in the Docker build context.
+
+Example:
+
+```
+image := daytona.Base("python:3.11").
+    AddLocalDir("./src", "/app/src")
+```
+
+<a name="DockerImage.AddLocalFile"></a>
+### func \(\*DockerImage\) AddLocalFile
+
+```go
+func (img *DockerImage) AddLocalFile(localPath, remotePath string) *DockerImage
+```
+
+AddLocalFile adds a local file to the build context and copies it to the image.
+
+The file is uploaded to object storage and included in the Docker build context.
+
+Example:
+
+```
+image := daytona.Base("python:3.11").
+    AddLocalFile("./requirements.txt", "/app/requirements.txt").
+    Run("pip install -r /app/requirements.txt")
+```
+
+<a name="DockerImage.AptGet"></a>
+### func \(\*DockerImage\) AptGet
+
+```go
+func (img *DockerImage) AptGet(packages []string) *DockerImage
+```
+
+AptGet adds an apt\-get install instruction for system packages.
+
+This automatically handles updating the package list and cleaning up afterward to minimize image size.
+
+Example:
+
+```
+image := daytona.Base("ubuntu:22.04").AptGet([]string{"git", "curl", "build-essential"})
+```
+
+<a name="DockerImage.Cmd"></a>
+### func \(\*DockerImage\) Cmd
+
+```go
+func (img *DockerImage) Cmd(cmd []string) *DockerImage
+```
+
+Cmd sets the default command for the image.
+
+If an entrypoint is set, the cmd provides default arguments to it.
+
+Example:
+
+```
+image := daytona.Base("python:3.11").
+    Cmd([]string{"python", "app.py"})
+```
+
+<a name="DockerImage.Contexts"></a>
+### func \(\*DockerImage\) Contexts
+
+```go
+func (img *DockerImage) Contexts() []DockerImageContext
+```
+
+Contexts returns the build contexts for local files/directories.
+
+This is called internally when creating snapshots to upload local files.
+
+<a name="DockerImage.Copy"></a>
+### func \(\*DockerImage\) Copy
+
+```go
+func (img *DockerImage) Copy(source, destination string) *DockerImage
+```
+
+Copy adds a COPY instruction to copy files into the image.
+
+For local files, use [DockerImage.AddLocalFile](https://www.daytona.io/docs/%3C.md#DockerImage.AddLocalFile%3E) instead, which handles uploading to the build context.
+
+Example:
+
+```
+image := daytona.Base("python:3.11").
+    Copy("requirements.txt", "/app/requirements.txt")
+```
+
+<a name="DockerImage.Dockerfile"></a>
+### func \(\*DockerImage\) Dockerfile
+
+```go
+func (img *DockerImage) Dockerfile() string
+```
+
+Dockerfile returns the generated Dockerfile content.
+
+This is called internally when creating snapshots.
+
+Example:
+
+```
+image := daytona.Base("python:3.11").PipInstall([]string{"numpy"})
+fmt.Println(image.Dockerfile())
+// Output:
+// FROM python:3.11
+// RUN pip install numpy
+```
+
+<a name="DockerImage.Entrypoint"></a>
+### func \(\*DockerImage\) Entrypoint
+
+```go
+func (img *DockerImage) Entrypoint(cmd []string) *DockerImage
+```
+
+Entrypoint sets the entrypoint for the image.
+
+The cmd parameter is the command and arguments as a slice.
+
+Example:
+
+```
+image := daytona.Base("python:3.11").
+    Entrypoint([]string{"python", "-m", "myapp"})
+```
+
+<a name="DockerImage.Env"></a>
+### func \(\*DockerImage\) Env
+
+```go
+func (img *DockerImage) Env(key, value string) *DockerImage
+```
+
+Env sets an environment variable in the image.
+
+Example:
+
+```
+image := daytona.Base("python:3.11").
+    Env("PYTHONUNBUFFERED", "1").
+    Env("APP_ENV", "production")
+```
+
+<a name="DockerImage.Expose"></a>
+### func \(\*DockerImage\) Expose
+
+```go
+func (img *DockerImage) Expose(ports []int) *DockerImage
+```
+
+Expose declares ports that the container listens on.
+
+This is documentation for users and tools; it doesn't actually publish ports.
+
+Example:
+
+```
+image := daytona.Base("python:3.11").
+    Expose([]int{8080, 8443})
+```
+
+<a name="DockerImage.Label"></a>
+### func \(\*DockerImage\) Label
+
+```go
+func (img *DockerImage) Label(key, value string) *DockerImage
+```
+
+Label adds metadata to the image.
+
+Example:
+
+```
+image := daytona.Base("python:3.11").
+    Label("maintainer", "team@example.com").
+    Label("version", "1.0.0")
+```
+
+<a name="DockerImage.PipInstall"></a>
+### func \(\*DockerImage\) PipInstall
+
+```go
+func (img *DockerImage) PipInstall(packages []string, opts ...func(*options.PipInstall)) *DockerImage
+```
+
+PipInstall adds a pip install instruction for Python packages.
+
+Optional parameters can be configured using functional options:
+
+- \[options.WithFindLinks\]: Add find\-links URLs
+- \[options.WithIndexURL\]: Set custom PyPI index
+- \[options.WithExtraIndexURLs\]: Add extra index URLs
+- \[options.WithPre\]: Allow pre\-release versions
+- \[options.WithExtraOptions\]: Add additional pip options
+
+Example:
+
+```
+// Basic installation
+image := daytona.Base("python:3.11").PipInstall([]string{"numpy", "pandas"})
+
+// With options
+image := daytona.Base("python:3.11").PipInstall(
+    []string{"torch"},
+    options.WithIndexURL("https://download.pytorch.org/whl/cpu"),
+    options.WithExtraOptions("--no-cache-dir"),
+)
+```
+
+<a name="DockerImage.Run"></a>
+### func \(\*DockerImage\) Run
+
+```go
+func (img *DockerImage) Run(command string) *DockerImage
+```
+
+Run adds a RUN instruction to execute a shell command.
+
+Example:
+
+```
+image := daytona.Base("ubuntu:22.04").
+    Run("mkdir -p /app/data").
+    Run("chmod 755 /app")
+```
+
+<a name="DockerImage.User"></a>
+### func \(\*DockerImage\) User
+
+```go
+func (img *DockerImage) User(username string) *DockerImage
+```
+
+User sets the user for subsequent instructions and container runtime.
+
+Example:
+
+```
+image := daytona.Base("python:3.11").
+    Run("useradd -m appuser").
+    User("appuser").
+    Workdir("/home/appuser")
+```
+
+<a name="DockerImage.Volume"></a>
+### func \(\*DockerImage\) Volume
+
+```go
+func (img *DockerImage) Volume(paths []string) *DockerImage
+```
+
+Volume declares mount points for the container.
+
+Example:
+
+```
+image := daytona.Base("python:3.11").
+    Volume([]string{"/data", "/logs"})
+```
+
+<a name="DockerImage.Workdir"></a>
+### func \(\*DockerImage\) Workdir
+
+```go
+func (img *DockerImage) Workdir(path string) *DockerImage
+```
+
+Workdir sets the working directory for subsequent instructions.
+
+Example:
+
+```
+image := daytona.Base("python:3.11").
+    Workdir("/app").
+    Run("pip install -r requirements.txt")
+```
+
+<a name="DockerImageContext"></a>
+## type DockerImageContext
+
+DockerImageContext represents a local file or directory to include in the build context.
+
+When using [DockerImage.AddLocalFile](https://www.daytona.io/docs/%3C.md#DockerImage.AddLocalFile%3E) or [DockerImage.AddLocalDir](https://www.daytona.io/docs/%3C.md#DockerImage.AddLocalDir%3E), the file/directory is uploaded to object storage and included in the Docker build context.
+
+```go
+type DockerImageContext struct {
+    SourcePath  string // Local path to the file or directory
+    ArchivePath string // Path within the build context archive
+}
+```
+
+<a name="FileSystemService"></a>
+## type FileSystemService
+
+FileSystemService provides file system operations for a sandbox.
+
+FileSystemService enables file and directory management including creating, reading, writing, moving, and deleting files. It also supports file searching and permission management. Access through \[Sandbox.FileSystem\].
+
+Example:
+
+```
+// List files in a directory
+files, err := sandbox.FileSystem.ListFiles(ctx, "/home/user")
+
+// Create a directory
+err = sandbox.FileSystem.CreateFolder(ctx, "/home/user/mydir")
+
+// Upload a file
+err = sandbox.FileSystem.UploadFile(ctx, "/local/path/file.txt", "/home/user/file.txt")
+
+// Download a file
+data, err := sandbox.FileSystem.DownloadFile(ctx, "/home/user/file.txt", nil)
+```
+
+```go
+type FileSystemService struct {
+    // contains filtered or unexported fields
+}
+```
+
+<a name="NewFileSystemService"></a>
+### func NewFileSystemService
+
+```go
+func NewFileSystemService(toolboxClient *toolbox.APIClient) *FileSystemService
+```
+
+NewFileSystemService creates a new FileSystemService with the provided toolbox client.
+
+This is typically called internally by the SDK when creating a [Sandbox](https://www.daytona.io/docs/%3C.md#Sandbox%3E). Users should access FileSystemService through \[Sandbox.FileSystem\] rather than creating it directly.
+
+<a name="FileSystemService.CreateFolder"></a>
+### func \(\*FileSystemService\) CreateFolder
+
+```go
+func (f *FileSystemService) CreateFolder(ctx context.Context, path string, opts ...func(*options.CreateFolder)) error
+```
+
+CreateFolder creates a directory at the specified path.
+
+The path parameter specifies the absolute path for the new directory. Parent directories are created automatically if they don't exist.
+
+Optional parameters can be configured using functional options:
+
+- \[options.WithMode\]: Set Unix file permissions \(defaults to "0755"\)
+
+Example:
+
+```
+// Create with default permissions
+err := sandbox.FileSystem.CreateFolder(ctx, "/home/user/mydir")
+
+// Create with custom permissions
+err := sandbox.FileSystem.CreateFolder(ctx, "/home/user/private",
+    options.WithMode("0700"),
+)
+```
+
+Returns an error if the directory creation fails.
+
+<a name="FileSystemService.DeleteFile"></a>
+### func \(\*FileSystemService\) DeleteFile
+
+```go
+func (f *FileSystemService) DeleteFile(ctx context.Context, path string, recursive bool) error
+```
+
+DeleteFile deletes a file or directory.
+
+Parameters:
+
+- path: The file or directory path to delete
+- recursive: If true, delete directories and their contents recursively
+
+Example:
+
+```
+// Delete a file
+err := sandbox.FileSystem.DeleteFile(ctx, "/home/user/file.txt", false)
+
+// Delete a directory recursively
+err := sandbox.FileSystem.DeleteFile(ctx, "/home/user/mydir", true)
+```
+
+Returns an error if the deletion fails \(e.g., path doesn't exist, permission denied, or attempting to delete a non\-empty directory without recursive=true\).
+
+<a name="FileSystemService.DownloadFile"></a>
+### func \(\*FileSystemService\) DownloadFile
+
+```go
+func (f *FileSystemService) DownloadFile(ctx context.Context, remotePath string, localPath *string) ([]byte, error)
+```
+
+DownloadFile downloads a file from the sandbox.
+
+Parameters:
+
+- remotePath: The path to the file in the sandbox
+- localPath: Optional local path to save the file. If nil, only returns the data.
+
+Returns the file contents as a byte slice. If localPath is provided, also writes the contents to that local file.
+
+Example:
+
+```
+// Download and get contents
+data, err := sandbox.FileSystem.DownloadFile(ctx, "/home/user/file.txt", nil)
+fmt.Println(string(data))
+
+// Download and save to local file
+localPath := "/tmp/downloaded.txt"
+data, err := sandbox.FileSystem.DownloadFile(ctx, "/home/user/file.txt", &localPath)
+```
+
+Returns an error if the file doesn't exist or cannot be read.
+
+<a name="FileSystemService.FindFiles"></a>
+### func \(\*FileSystemService\) FindFiles
+
+```go
+func (f *FileSystemService) FindFiles(ctx context.Context, path, pattern string) (any, error)
+```
+
+FindFiles searches for text content within files.
+
+Parameters:
+
+- path: The directory to search in
+- pattern: The text pattern to search for \(supports regex\)
+
+Returns a list of matches, each containing the file path, line number, and matching content.
+
+Example:
+
+```
+result, err := sandbox.FileSystem.FindFiles(ctx, "/home/user/project", "TODO:")
+if err != nil {
+    return err
+}
+matches := result.([]map[string]any)
+for _, match := range matches {
+    fmt.Printf("%s:%d: %s\n", match["file"], match["line"], match["content"])
+}
+```
+
+Returns an error if the search fails.
+
+<a name="FileSystemService.GetFileInfo"></a>
+### func \(\*FileSystemService\) GetFileInfo
+
+```go
+func (f *FileSystemService) GetFileInfo(ctx context.Context, path string) (*types.FileInfo, error)
+```
+
+GetFileInfo retrieves metadata for a file or directory.
+
+The path parameter specifies the file or directory path.
+
+Returns \[types.FileInfo\] containing the file's name, size, permissions, modification time, and whether it's a directory.
+
+Example:
+
+```
+info, err := sandbox.FileSystem.GetFileInfo(ctx, "/home/user/file.txt")
+if err != nil {
+    return err
+}
+fmt.Printf("Size: %d bytes, Modified: %s\n", info.Size, info.ModifiedTime)
+```
+
+Returns an error if the path doesn't exist.
+
+<a name="FileSystemService.ListFiles"></a>
+### func \(\*FileSystemService\) ListFiles
+
+```go
+func (f *FileSystemService) ListFiles(ctx context.Context, path string) ([]*types.FileInfo, error)
+```
+
+ListFiles lists files and directories in the specified path.
+
+The path parameter specifies the directory to list.
+
+Returns a slice of \[types.FileInfo\] containing metadata for each file and directory, including name, size, permissions, modification time, and whether it's a directory.
+
+Example:
+
+```
+files, err := sandbox.FileSystem.ListFiles(ctx, "/home/user")
+if err != nil {
+    return err
+}
+for _, file := range files {
+    if file.IsDirectory {
+        fmt.Printf("[DIR]  %s\n", file.Name)
+    } else {
+        fmt.Printf("[FILE] %s (%d bytes)\n", file.Name, file.Size)
+    }
+}
+```
+
+Returns an error if the path doesn't exist or isn't accessible.
+
+<a name="FileSystemService.MoveFiles"></a>
+### func \(\*FileSystemService\) MoveFiles
+
+```go
+func (f *FileSystemService) MoveFiles(ctx context.Context, source, destination string) error
+```
+
+MoveFiles moves or renames a file or directory.
+
+Parameters:
+
+- source: The current path of the file or directory
+- destination: The new path for the file or directory
+
+This operation can be used for both moving and renaming:
+
+- Same directory, different name = rename
+- Different directory = move
+
+Example:
+
+```
+// Rename a file
+err := sandbox.FileSystem.MoveFiles(ctx, "/home/user/old.txt", "/home/user/new.txt")
+
+// Move a file to another directory
+err := sandbox.FileSystem.MoveFiles(ctx, "/home/user/file.txt", "/home/user/backup/file.txt")
+```
+
+Returns an error if the operation fails.
+
+<a name="FileSystemService.ReplaceInFiles"></a>
+### func \(\*FileSystemService\) ReplaceInFiles
+
+```go
+func (f *FileSystemService) ReplaceInFiles(ctx context.Context, files []string, pattern, newValue string) (any, error)
+```
+
+ReplaceInFiles replaces text in multiple files.
+
+Parameters:
+
+- files: List of file paths to process
+- pattern: The text pattern to search for \(supports regex\)
+- newValue: The replacement text
+
+Returns a list of results for each file, indicating success or failure.
+
+Example:
+
+```
+files := []string{"/home/user/file1.txt", "/home/user/file2.txt"}
+result, err := sandbox.FileSystem.ReplaceInFiles(ctx, files, "oldValue", "newValue")
+if err != nil {
+    return err
+}
+results := result.([]map[string]any)
+for _, r := range results {
+    if r["success"].(bool) {
+        fmt.Printf("Updated: %s\n", r["file"])
+    } else {
+        fmt.Printf("Failed: %s - %s\n", r["file"], r["error"])
+    }
+}
+```
+
+Returns an error if the operation fails entirely.
+
+<a name="FileSystemService.SearchFiles"></a>
+### func \(\*FileSystemService\) SearchFiles
+
+```go
+func (f *FileSystemService) SearchFiles(ctx context.Context, path, pattern string) (any, error)
+```
+
+SearchFiles searches for files matching a pattern in a directory.
+
+Parameters:
+
+- path: The directory to search in
+- pattern: The glob pattern to match file names \(e.g., "\*.txt", "test\_\*"\)
+
+Returns a map containing a "files" key with a list of matching file paths.
+
+Example:
+
+```
+result, err := sandbox.FileSystem.SearchFiles(ctx, "/home/user", "*.go")
+if err != nil {
+    return err
+}
+files := result.(map[string]any)["files"].([]string)
+for _, file := range files {
+    fmt.Println(file)
+}
+```
+
+Returns an error if the search fails.
+
+<a name="FileSystemService.SetFilePermissions"></a>
+### func \(\*FileSystemService\) SetFilePermissions
+
+```go
+func (f *FileSystemService) SetFilePermissions(ctx context.Context, path string, opts ...func(*options.SetFilePermissions)) error
+```
+
+SetFilePermissions sets file permissions, owner, and group.
+
+The path parameter specifies the file or directory to modify.
+
+Optional parameters can be configured using functional options:
+
+- \[options.WithPermissionMode\]: Set Unix file permissions \(e.g., "0644"\)
+- \[options.WithOwner\]: Set file owner username
+- \[options.WithGroup\]: Set file group name
+
+Example:
+
+```
+// Set permissions only
+err := sandbox.FileSystem.SetFilePermissions(ctx, "/home/user/script.sh",
+    options.WithPermissionMode("0755"),
+)
+
+// Set owner and group
+err := sandbox.FileSystem.SetFilePermissions(ctx, "/home/user/file.txt",
+    options.WithOwner("root"),
+    options.WithGroup("users"),
+)
+
+// Set all at once
+err := sandbox.FileSystem.SetFilePermissions(ctx, "/home/user/file.txt",
+    options.WithPermissionMode("0640"),
+    options.WithOwner("user"),
+    options.WithGroup("staff"),
+)
+```
+
+Returns an error if the operation fails.
+
+<a name="FileSystemService.UploadFile"></a>
+### func \(\*FileSystemService\) UploadFile
+
+```go
+func (f *FileSystemService) UploadFile(ctx context.Context, source any, destination string) error
+```
+
+UploadFile uploads a file to the sandbox.
+
+Parameters:
+
+- source: Either a local file path \(string\) or file contents \(\[\]byte\)
+- destination: The destination path in the sandbox
+
+Example:
+
+```
+// Upload from local file path
+err := sandbox.FileSystem.UploadFile(ctx, "/local/path/file.txt", "/home/user/file.txt")
+
+// Upload from byte slice
+content := []byte("Hello, World!")
+err := sandbox.FileSystem.UploadFile(ctx, content, "/home/user/hello.txt")
+```
+
+Returns an error if the upload fails.
+
+<a name="GitService"></a>
+## type GitService
+
+GitService provides Git operations for a sandbox.
+
+GitService enables common Git workflows including cloning repositories, staging and committing changes, managing branches, and syncing with remote repositories. It is accessed through the \[Sandbox.Git\] field.
+
+Example:
+
+```
+// Clone a repository
+err := sandbox.Git.Clone(ctx, "https://github.com/user/repo.git", "/home/user/repo")
+
+// Make changes and commit
+err = sandbox.Git.Add(ctx, "/home/user/repo", []string{"."})
+resp, err := sandbox.Git.Commit(ctx, "/home/user/repo", "Initial commit", "John Doe", "john@example.com")
+
+// Push to remote
+err = sandbox.Git.Push(ctx, "/home/user/repo",
+    options.WithPushUsername("username"),
+    options.WithPushPassword("token"),
+)
+```
+
+```go
+type GitService struct {
+    // contains filtered or unexported fields
+}
+```
+
+<a name="NewGitService"></a>
+### func NewGitService
+
+```go
+func NewGitService(toolboxClient *toolbox.APIClient) *GitService
+```
+
+NewGitService creates a new GitService with the provided toolbox client.
+
+This is typically called internally by the SDK when creating a [Sandbox](https://www.daytona.io/docs/%3C.md#Sandbox%3E). Users should access GitService through \[Sandbox.Git\] rather than creating it directly.
+
+<a name="GitService.Add"></a>
+### func \(\*GitService\) Add
+
+```go
+func (g *GitService) Add(ctx context.Context, path string, files []string) error
+```
+
+Add stages files for the next commit.
+
+The path parameter specifies the repository directory. The files parameter is a list of file paths \(relative to the repository root\) to stage. Use "." to stage all changes.
+
+Example:
+
+```
+// Stage specific files
+err := sandbox.Git.Add(ctx, "/home/user/repo", []string{"file1.txt", "src/main.go"})
+
+// Stage all changes
+err := sandbox.Git.Add(ctx, "/home/user/repo", []string{"."})
+```
+
+Returns an error if the add operation fails.
+
+<a name="GitService.Branches"></a>
+### func \(\*GitService\) Branches
+
+```go
+func (g *GitService) Branches(ctx context.Context, path string) ([]string, error)
+```
+
+Branches lists all branches in a Git repository.
+
+The path parameter specifies the repository directory.
+
+Example:
+
+```
+branches, err := sandbox.Git.Branches(ctx, "/home/user/repo")
+if err != nil {
+    return err
+}
+for _, branch := range branches {
+    fmt.Println(branch)
+}
+```
+
+Returns a slice of branch names or an error if the operation fails.
+
+<a name="GitService.Checkout"></a>
+### func \(\*GitService\) Checkout
+
+```go
+func (g *GitService) Checkout(ctx context.Context, path, name string) error
+```
+
+Checkout switches to a different branch or commit.
+
+The path parameter specifies the repository directory. The name parameter specifies the branch name or commit SHA to checkout.
+
+Example:
+
+```
+// Switch to a branch
+err := sandbox.Git.Checkout(ctx, "/home/user/repo", "develop")
+
+// Checkout a specific commit
+err := sandbox.Git.Checkout(ctx, "/home/user/repo", "abc123def")
+```
+
+Returns an error if the checkout fails \(e.g., branch doesn't exist, uncommitted changes\).
+
+<a name="GitService.Clone"></a>
+### func \(\*GitService\) Clone
+
+```go
+func (g *GitService) Clone(ctx context.Context, url, path string, opts ...func(*options.GitClone)) error
+```
+
+Clone clones a Git repository into the specified path.
+
+The url parameter specifies the repository URL \(HTTPS or SSH format\). The path parameter specifies the destination directory for the cloned repository.
+
+Optional parameters can be configured using functional options:
+
+- \[options.WithBranch\]: Clone a specific branch instead of the default
+- \[options.WithCommitId\]: Checkout a specific commit after cloning
+- \[options.WithUsername\]: Username for authentication \(HTTPS\)
+- \[options.WithPassword\]: Password or token for authentication \(HTTPS\)
+
+Example:
+
+```
+// Clone the default branch
+err := sandbox.Git.Clone(ctx, "https://github.com/user/repo.git", "/home/user/repo")
+
+// Clone a specific branch with authentication
+err := sandbox.Git.Clone(ctx, "https://github.com/user/private-repo.git", "/home/user/repo",
+    options.WithBranch("develop"),
+    options.WithUsername("username"),
+    options.WithPassword("github_token"),
+)
+
+// Clone and checkout a specific commit
+err := sandbox.Git.Clone(ctx, "https://github.com/user/repo.git", "/home/user/repo",
+    options.WithCommitId("abc123"),
+)
+```
+
+Returns an error if the clone operation fails.
+
+<a name="GitService.Commit"></a>
+### func \(\*GitService\) Commit
+
+```go
+func (g *GitService) Commit(ctx context.Context, path, message, author, email string, opts ...func(*options.GitCommit)) (*types.GitCommitResponse, error)
+```
+
+Commit creates a new Git commit with the staged changes.
+
+Parameters:
+
+- path: The repository directory
+- message: The commit message
+- author: The author name for the commit
+- email: The author email for the commit
+
+Optional parameters can be configured using functional options:
+
+- \[options.WithAllowEmpty\]: Allow creating commits with no changes
+
+Example:
+
+```
+// Create a commit
+resp, err := sandbox.Git.Commit(ctx, "/home/user/repo",
+    "Add new feature",
+    "John Doe",
+    "john@example.com",
+)
+if err != nil {
+    return err
+}
+fmt.Printf("Created commit: %s\n", resp.SHA)
+
+// Create an empty commit
+resp, err := sandbox.Git.Commit(ctx, "/home/user/repo",
+    "Empty commit for CI trigger",
+    "John Doe",
+    "john@example.com",
+    options.WithAllowEmpty(true),
+)
+```
+
+Returns the \[types.GitCommitResponse\] containing the commit SHA, or an error if the commit fails.
+
+<a name="GitService.CreateBranch"></a>
+### func \(\*GitService\) CreateBranch
+
+```go
+func (g *GitService) CreateBranch(ctx context.Context, path, name string) error
+```
+
+CreateBranch creates a new branch at the current HEAD.
+
+The path parameter specifies the repository directory. The name parameter specifies the name for the new branch.
+
+Note: This creates the branch but does not switch to it. Use [GitService.Checkout](https://www.daytona.io/docs/%3C.md#GitService.Checkout%3E) to switch to the new branch after creation.
+
+Example:
+
+```
+// Create a new branch
+err := sandbox.Git.CreateBranch(ctx, "/home/user/repo", "feature/new-feature")
+if err != nil {
+    return err
+}
+
+// Switch to the new branch
+err = sandbox.Git.Checkout(ctx, "/home/user/repo", "feature/new-feature")
+```
+
+Returns an error if the branch creation fails \(e.g., branch already exists\).
+
+<a name="GitService.DeleteBranch"></a>
+### func \(\*GitService\) DeleteBranch
+
+```go
+func (g *GitService) DeleteBranch(ctx context.Context, path, name string, opts ...func(*options.GitDeleteBranch)) error
+```
+
+DeleteBranch deletes a branch from the repository.
+
+The path parameter specifies the repository directory. The name parameter specifies the branch to delete.
+
+Optional parameters can be configured using functional options:
+
+- \[options.WithForce\]: Force delete the branch even if not fully merged
+
+Note: You cannot delete the currently checked out branch.
+
+Example:
+
+```
+// Delete a merged branch
+err := sandbox.Git.DeleteBranch(ctx, "/home/user/repo", "feature/old-feature")
+
+// Force delete an unmerged branch
+err := sandbox.Git.DeleteBranch(ctx, "/home/user/repo", "feature/abandoned",
+    options.WithForce(true),
+)
+```
+
+Returns an error if the deletion fails.
+
+<a name="GitService.Pull"></a>
+### func \(\*GitService\) Pull
+
+```go
+func (g *GitService) Pull(ctx context.Context, path string, opts ...func(*options.GitPull)) error
+```
+
+Pull fetches and merges changes from the remote repository.
+
+The path parameter specifies the repository directory.
+
+Optional parameters can be configured using functional options:
+
+- \[options.WithPullUsername\]: Username for authentication
+- \[options.WithPullPassword\]: Password or token for authentication
+
+Example:
+
+```
+// Pull from a public repository
+err := sandbox.Git.Pull(ctx, "/home/user/repo")
+
+// Pull with authentication
+err := sandbox.Git.Pull(ctx, "/home/user/repo",
+    options.WithPullUsername("username"),
+    options.WithPullPassword("github_token"),
+)
+```
+
+Returns an error if the pull fails \(e.g., merge conflicts, authentication failure\).
+
+<a name="GitService.Push"></a>
+### func \(\*GitService\) Push
+
+```go
+func (g *GitService) Push(ctx context.Context, path string, opts ...func(*options.GitPush)) error
+```
+
+Push pushes local commits to the remote repository.
+
+The path parameter specifies the repository directory.
+
+Optional parameters can be configured using functional options:
+
+- \[options.WithPushUsername\]: Username for authentication
+- \[options.WithPushPassword\]: Password or token for authentication
+
+Example:
+
+```
+// Push to a public repository (no auth required)
+err := sandbox.Git.Push(ctx, "/home/user/repo")
+
+// Push with authentication
+err := sandbox.Git.Push(ctx, "/home/user/repo",
+    options.WithPushUsername("username"),
+    options.WithPushPassword("github_token"),
+)
+```
+
+Returns an error if the push fails \(e.g., authentication failure, remote rejection\).
+
+<a name="GitService.Status"></a>
+### func \(\*GitService\) Status
+
+```go
+func (g *GitService) Status(ctx context.Context, path string) (*types.GitStatus, error)
+```
+
+Status returns the current Git status of a repository.
+
+The path parameter specifies the repository directory to check.
+
+The returned \[types.GitStatus\] contains:
+
+- CurrentBranch: The name of the currently checked out branch
+- Ahead: Number of commits ahead of the remote tracking branch
+- Behind: Number of commits behind the remote tracking branch
+- BranchPublished: Whether the branch has been pushed to remote
+- FileStatus: List of files with their staging and working tree status
+
+Example:
+
+```
+status, err := sandbox.Git.Status(ctx, "/home/user/repo")
+if err != nil {
+    return err
+}
+fmt.Printf("On branch %s\n", status.CurrentBranch)
+fmt.Printf("Ahead: %d, Behind: %d\n", status.Ahead, status.Behind)
+for _, file := range status.FileStatus {
+    fmt.Printf("%s %s\n", file.Status, file.Path)
+}
+```
+
+Returns an error if the status operation fails or the path is not a Git repository.
+
+<a name="KeyboardService"></a>
+## type KeyboardService
+
+KeyboardService provides keyboard input operations.
+
+KeyboardService enables typing text, pressing keys, and executing keyboard shortcuts. Access through [ComputerUseService.Keyboard](https://www.daytona.io/docs/%3C.md#ComputerUseService.Keyboard%3E).
+
+```go
+type KeyboardService struct {
+    // contains filtered or unexported fields
+}
+```
+
+<a name="NewKeyboardService"></a>
+### func NewKeyboardService
+
+```go
+func NewKeyboardService(toolboxClient *toolbox.APIClient) *KeyboardService
+```
+
+NewKeyboardService creates a new KeyboardService.
+
+<a name="KeyboardService.Hotkey"></a>
+### func \(\*KeyboardService\) Hotkey
+
+```go
+func (k *KeyboardService) Hotkey(ctx context.Context, keys string) error
+```
+
+Hotkey executes a keyboard shortcut.
+
+Parameters:
+
+- keys: The hotkey combination as a string \(e.g., "ctrl\+c", "alt\+tab"\)
+
+Example:
+
+```
+// Copy (Ctrl+C)
+err := keyboard.Hotkey(ctx, "ctrl+c")
+
+// Paste (Ctrl+V)
+err := keyboard.Hotkey(ctx, "ctrl+v")
+
+// Switch windows (Alt+Tab)
+err := keyboard.Hotkey(ctx, "alt+tab")
+```
+
+Returns an error if the hotkey fails.
+
+<a name="KeyboardService.Press"></a>
+### func \(\*KeyboardService\) Press
+
+```go
+func (k *KeyboardService) Press(ctx context.Context, key string, modifiers []string) error
+```
+
+Press simulates pressing a key with optional modifiers.
+
+Parameters:
+
+- key: The key to press \(e.g., "a", "Enter", "Tab", "F1"\)
+- modifiers: Modifier keys to hold \(e.g., "ctrl", "alt", "shift", "meta"\)
+
+Example:
+
+```
+// Press Enter
+err := keyboard.Press(ctx, "Enter", nil)
+
+// Press Ctrl+S
+err := keyboard.Press(ctx, "s", []string{"ctrl"})
+
+// Press Ctrl+Shift+N
+err := keyboard.Press(ctx, "n", []string{"ctrl", "shift"})
+```
+
+Returns an error if the key press fails.
+
+<a name="KeyboardService.Type"></a>
+### func \(\*KeyboardService\) Type
+
+```go
+func (k *KeyboardService) Type(ctx context.Context, text string, delay *int) error
+```
+
+Type simulates typing the specified text.
+
+Parameters:
+
+- text: The text to type
+- delay: Delay in milliseconds between keystrokes, nil for default
+
+Example:
+
+```
+// Type text with default speed
+err := keyboard.Type(ctx, "Hello, World!", nil)
+
+// Type with custom delay between keystrokes
+delay := 50
+err := keyboard.Type(ctx, "Slow typing", &delay)
+```
+
+Returns an error if typing fails.
+
+<a name="LspServerService"></a>
+## type LspServerService
+
+LspServerService provides Language Server Protocol \(LSP\) operations for a sandbox.
+
+LspServerService enables IDE\-like features such as code completion, symbol search, and document analysis through LSP. The service manages a language server instance for a specific language and project path. Access through \[Sandbox.Lsp\].
+
+Example:
+
+```
+// Get LSP service for Python
+lsp := sandbox.Lsp(types.LspLanguageIDPython, "/home/user/project")
+
+// Start the language server
+if err := lsp.Start(ctx); err != nil {
+    return err
+}
+defer lsp.Stop(ctx)
+
+// Open a file for analysis
+if err := lsp.DidOpen(ctx, "/home/user/project/main.py"); err != nil {
+    return err
+}
+
+// Get code completions
+completions, err := lsp.Completions(ctx, "/home/user/project/main.py",
+    types.Position{Line: 10, Character: 5})
+```
+
+```go
+type LspServerService struct {
+    // contains filtered or unexported fields
+}
+```
+
+<a name="NewLspServerService"></a>
+### func NewLspServerService
+
+```go
+func NewLspServerService(toolboxClient *toolbox.APIClient, languageID types.LspLanguageID, projectPath string) *LspServerService
+```
+
+NewLspServerService creates a new LspServerService.
+
+This is typically called internally by the SDK through \[Sandbox.Lsp\]. Users should access LspServerService through \[Sandbox.Lsp\] rather than creating it directly.
+
+Parameters:
+
+- toolboxClient: The toolbox API client
+- languageID: The language identifier \(e.g., \[types.LspLanguageIDPython\]\)
+- projectPath: The root path of the project for LSP analysis
+
+<a name="LspServerService.Completions"></a>
+### func \(\*LspServerService\) Completions
+
+```go
+func (l *LspServerService) Completions(ctx context.Context, path string, position types.Position) (any, error)
+```
+
+Completions returns code completion suggestions at a position.
+
+The file should be opened with [LspServerService.DidOpen](https://www.daytona.io/docs/%3C.md#LspServerService.DidOpen%3E) before requesting completions.
+
+Parameters:
+
+- path: Absolute path to the file
+- position: Cursor position \(line and character, 0\-indexed\)
+
+Example:
+
+```
+lsp.DidOpen(ctx, "/home/user/project/main.py")
+completions, err := lsp.Completions(ctx, "/home/user/project/main.py",
+    types.Position{Line: 10, Character: 5})
+if err != nil {
+    return err
+}
+fmt.Printf("Completions: %v\n", completions)
+```
+
+Returns completion items or an error.
+
+<a name="LspServerService.DidClose"></a>
+### func \(\*LspServerService\) DidClose
+
+```go
+func (l *LspServerService) DidClose(ctx context.Context, path string) error
+```
+
+DidClose notifies the language server that a file was closed.
+
+Call this when you're done working with a file to allow the server to release resources associated with it.
+
+Parameters:
+
+- path: Absolute path to the file
+
+Example:
+
+```
+err := lsp.DidClose(ctx, "/home/user/project/main.py")
+```
+
+Returns an error if the notification fails.
+
+<a name="LspServerService.DidOpen"></a>
+### func \(\*LspServerService\) DidOpen
+
+```go
+func (l *LspServerService) DidOpen(ctx context.Context, path string) error
+```
+
+DidOpen notifies the language server that a file was opened.
+
+This should be called before requesting completions or symbols for a file. The path is automatically converted to a file:// URI if needed.
+
+Parameters:
+
+- path: Absolute path to the file
+
+Example:
+
+```
+err := lsp.DidOpen(ctx, "/home/user/project/main.py")
+```
+
+Returns an error if the notification fails.
+
+<a name="LspServerService.DocumentSymbols"></a>
+### func \(\*LspServerService\) DocumentSymbols
+
+```go
+func (l *LspServerService) DocumentSymbols(ctx context.Context, path string) ([]any, error)
+```
+
+DocumentSymbols returns all symbols \(functions, classes, variables\) in a document.
+
+Parameters:
+
+- path: Absolute path to the file
+
+Example:
+
+```
+symbols, err := lsp.DocumentSymbols(ctx, "/home/user/project/main.py")
+if err != nil {
+    return err
+}
+for _, sym := range symbols {
+    fmt.Printf("Symbol: %v\n", sym)
+}
+```
+
+Returns a slice of symbol information or an error.
+
+<a name="LspServerService.SandboxSymbols"></a>
+### func \(\*LspServerService\) SandboxSymbols
+
+```go
+func (l *LspServerService) SandboxSymbols(ctx context.Context, query string) ([]any, error)
+```
+
+SandboxSymbols searches for symbols across the entire workspace.
+
+Use this to find symbols \(functions, classes, etc.\) by name across all files in the project.
+
+Parameters:
+
+- query: Search query to match symbol names
+
+Example:
+
+```
+symbols, err := lsp.SandboxSymbols(ctx, "MyClass")
+if err != nil {
+    return err
+}
+for _, sym := range symbols {
+    fmt.Printf("Found: %v\n", sym)
+}
+```
+
+Returns a slice of matching symbols or an error.
+
+<a name="LspServerService.Start"></a>
+### func \(\*LspServerService\) Start
+
+```go
+func (l *LspServerService) Start(ctx context.Context) error
+```
+
+Start initializes and starts the language server.
+
+The language server must be started before using other LSP operations. Call [LspServerService.Stop](https://www.daytona.io/docs/%3C.md#LspServerService.Stop%3E) when finished to release resources.
+
+Example:
+
+```
+if err := lsp.Start(ctx); err != nil {
+    return err
+}
+defer lsp.Stop(ctx)
+```
+
+Returns an error if the server fails to start.
+
+<a name="LspServerService.Stop"></a>
+### func \(\*LspServerService\) Stop
+
+```go
+func (l *LspServerService) Stop(ctx context.Context) error
+```
+
+Stop shuts down the language server and releases resources.
+
+Example:
+
+```
+err := lsp.Stop(ctx)
+```
+
+Returns an error if the server fails to stop gracefully.
+
+<a name="MouseService"></a>
+## type MouseService
+
+MouseService provides mouse control operations.
+
+MouseService enables cursor movement, clicking, dragging, and scrolling. Access through [ComputerUseService.Mouse](https://www.daytona.io/docs/%3C.md#ComputerUseService.Mouse%3E).
+
+```go
+type MouseService struct {
+    // contains filtered or unexported fields
+}
+```
+
+<a name="NewMouseService"></a>
+### func NewMouseService
+
+```go
+func NewMouseService(toolboxClient *toolbox.APIClient) *MouseService
+```
+
+NewMouseService creates a new MouseService.
+
+<a name="MouseService.Click"></a>
+### func \(\*MouseService\) Click
+
+```go
+func (m *MouseService) Click(ctx context.Context, x, y int, button *string, double *bool) (map[string]any, error)
+```
+
+Click performs a mouse click at the specified coordinates.
+
+Parameters:
+
+- x: X coordinate to click
+- y: Y coordinate to click
+- button: Mouse button \("left", "right", "middle"\), nil for left click
+- double: Whether to double\-click, nil for single click
+
+Example:
+
+```
+// Single left click
+pos, err := mouse.Click(ctx, 100, 200, nil, nil)
+
+// Right click
+button := "right"
+pos, err := mouse.Click(ctx, 100, 200, &button, nil)
+
+// Double click
+doubleClick := true
+pos, err := mouse.Click(ctx, 100, 200, nil, &doubleClick)
+```
+
+Returns a map with the click "x" and "y" coordinates.
+
+<a name="MouseService.Drag"></a>
+### func \(\*MouseService\) Drag
+
+```go
+func (m *MouseService) Drag(ctx context.Context, startX, startY, endX, endY int, button *string) (map[string]any, error)
+```
+
+Drag performs a mouse drag operation from start to end coordinates.
+
+Parameters:
+
+- startX, startY: Starting coordinates
+- endX, endY: Ending coordinates
+- button: Mouse button to use, nil for left button
+
+Example:
+
+```
+// Drag from (100, 100) to (300, 300)
+pos, err := mouse.Drag(ctx, 100, 100, 300, 300, nil)
+```
+
+Returns a map with the final "x" and "y" coordinates.
+
+<a name="MouseService.GetPosition"></a>
+### func \(\*MouseService\) GetPosition
+
+```go
+func (m *MouseService) GetPosition(ctx context.Context) (map[string]any, error)
+```
+
+GetPosition returns the current cursor position.
+
+Example:
+
+```
+pos, err := mouse.GetPosition(ctx)
+if err != nil {
+    return err
+}
+fmt.Printf("Cursor at (%v, %v)\n", pos["x"], pos["y"])
+```
+
+Returns a map with "x" and "y" coordinates.
+
+<a name="MouseService.Move"></a>
+### func \(\*MouseService\) Move
+
+```go
+func (m *MouseService) Move(ctx context.Context, x, y int) (map[string]any, error)
+```
+
+Move moves the cursor to the specified coordinates.
+
+Parameters:
+
+- x: Target X coordinate
+- y: Target Y coordinate
+
+Example:
+
+```
+pos, err := mouse.Move(ctx, 500, 300)
+```
+
+Returns a map with the new "x" and "y" coordinates.
+
+<a name="MouseService.Scroll"></a>
+### func \(\*MouseService\) Scroll
+
+```go
+func (m *MouseService) Scroll(ctx context.Context, x, y int, direction string, amount *int) (bool, error)
+```
+
+Scroll performs a mouse scroll operation at the specified coordinates.
+
+Parameters:
+
+- x, y: Coordinates where the scroll occurs
+- direction: Scroll direction \("up", "down", "left", "right"\)
+- amount: Scroll amount, nil for default
+
+Example:
+
+```
+// Scroll down at position (500, 400)
+success, err := mouse.Scroll(ctx, 500, 400, "down", nil)
+
+// Scroll up with specific amount
+amount := 5
+success, err := mouse.Scroll(ctx, 500, 400, "up", &amount)
+```
+
+Returns true if the scroll was successful.
+
+<a name="OutputChannels"></a>
+## type OutputChannels
+
+OutputChannels provides channels for streaming execution output.
+
+All channels are closed when execution completes or encounters an error. The Done channel always receives exactly one message with the final result.
+
+```go
+type OutputChannels struct {
+    Stdout <-chan *types.OutputMessage   // Receives stdout messages as they occur
+    Stderr <-chan *types.OutputMessage   // Receives stderr messages as they occur
+    Errors <-chan *types.ExecutionError  // Receives execution errors
+    Done   <-chan *types.ExecutionResult // Receives final result when execution completes
+}
+```
+
+<a name="PaginatedSandboxes"></a>
+## type PaginatedSandboxes
+
+PaginatedSandboxes represents a paginated list of sandboxes.
+
+```go
+type PaginatedSandboxes struct {
+    Items      []*Sandbox // Sandboxes in this page
+    Total      int        // Total number of sandboxes
+    Page       int        // Current page number
+    TotalPages int        // Total number of pages
+}
+```
+
+<a name="ProcessService"></a>
+## type ProcessService
+
+ProcessService provides process execution operations for a sandbox.
+
+ProcessService enables command execution, session management, and PTY \(pseudo\-terminal\) operations. It supports both synchronous command execution and interactive terminal sessions. Access through \[Sandbox.Process\].
+
+Example:
+
+```
+// Execute a command
+result, err := sandbox.Process.ExecuteCommand(ctx, "echo 'Hello, World!'")
+fmt.Println(result.Result)
+
+// Execute with options
+result, err := sandbox.Process.ExecuteCommand(ctx, "ls -la",
+    options.WithCwd("/home/user/project"),
+    options.WithExecuteTimeout(30*time.Second),
+)
+
+// Create an interactive PTY session
+handle, err := sandbox.Process.CreatePty(ctx, "my-terminal")
+defer handle.Disconnect()
+```
+
+```go
+type ProcessService struct {
+    // contains filtered or unexported fields
+}
+```
+
+<a name="NewProcessService"></a>
+### func NewProcessService
+
+```go
+func NewProcessService(toolboxClient *toolbox.APIClient) *ProcessService
+```
+
+NewProcessService creates a new ProcessService with the provided toolbox client.
+
+This is typically called internally by the SDK when creating a [Sandbox](https://www.daytona.io/docs/%3C.md#Sandbox%3E). Users should access ProcessService through \[Sandbox.Process\] rather than creating it directly.
+
+<a name="ProcessService.CodeRun"></a>
+### func \(\*ProcessService\) CodeRun
+
+```go
+func (p *ProcessService) CodeRun(ctx context.Context, code string, opts ...func(*options.CodeRun)) (*types.ExecuteResponse, error)
+```
+
+CodeRun executes code in a language\-specific way.
+
+NOTE: This method is currently unavailable as the toolbox\-api\-client\-go does not expose a CodeRun endpoint. For code execution, use [ProcessService.ExecuteCommand](https://www.daytona.io/docs/%3C.md#ProcessService.ExecuteCommand%3E) or [CodeInterpreterService](https://www.daytona.io/docs/%3C.md#CodeInterpreterService%3E).
+
+Optional parameters can be configured using functional options:
+
+- \[options.WithCodeRunParams\]: Set code execution parameters
+- \[options.WithCodeRunTimeout\]: Set execution timeout
+
+<a name="ProcessService.ConnectPty"></a>
+### func \(\*ProcessService\) ConnectPty
+
+```go
+func (p *ProcessService) ConnectPty(ctx context.Context, sessionID string) (*PtyHandle, error)
+```
+
+ConnectPty establishes a WebSocket connection to an existing PTY session.
+
+Returns a [PtyHandle](https://www.daytona.io/docs/%3C.md#PtyHandle%3E) for interacting with the terminal. The handle provides:
+
+- DataChan\(\): Channel for receiving terminal output
+- SendInput\(\): Method for sending keyboard input
+- Resize\(\): Method for changing terminal size
+- Disconnect\(\): Method for closing the connection
+
+Parameters:
+
+- sessionID: The PTY session to connect to
+
+Example:
+
+```
+handle, err := sandbox.Process.ConnectPty(ctx, "my-terminal")
+if err != nil {
+    return err
+}
+defer handle.Disconnect()
+
+// Wait for connection
+if err := handle.WaitForConnection(ctx); err != nil {
+    return err
+}
+
+// Read output
+for data := range handle.DataChan() {
+    fmt.Print(string(data))
+}
+```
+
+Returns a [PtyHandle](https://www.daytona.io/docs/%3C.md#PtyHandle%3E) for terminal interaction, or an error.
+
+<a name="ProcessService.CreatePty"></a>
+### func \(\*ProcessService\) CreatePty
+
+```go
+func (p *ProcessService) CreatePty(ctx context.Context, id string, opts ...func(*options.CreatePty)) (*PtyHandle, error)
+```
+
+CreatePty creates a new PTY session and immediately connects to it.
+
+This is a convenience method that combines [ProcessService.CreatePtySession](https://www.daytona.io/docs/%3C.md#ProcessService.CreatePtySession%3E) and [ProcessService.ConnectPty](https://www.daytona.io/docs/%3C.md#ProcessService.ConnectPty%3E) into a single operation.
+
+Parameters:
+
+- id: Unique identifier for the PTY session
+
+Optional parameters can be configured using functional options:
+
+- \[options.WithCreatePtySize\]: Set terminal dimensions
+- \[options.WithCreatePtyEnv\]: Set environment variables
+
+Example:
+
+```
+handle, err := sandbox.Process.CreatePty(ctx, "interactive-shell",
+    options.WithCreatePtySize(types.PtySize{Rows: 24, Cols: 80}),
+    options.WithCreatePtyEnv(map[string]string{"TERM": "xterm-256color"}),
+)
+if err != nil {
+    return err
+}
+defer handle.Disconnect()
+
+// Wait for connection
+if err := handle.WaitForConnection(ctx); err != nil {
+    return err
+}
+
+// Send a command
+handle.SendInput([]byte("ls -la\n"))
+
+// Read output
+for data := range handle.DataChan() {
+    fmt.Print(string(data))
+}
+```
+
+Returns a [PtyHandle](https://www.daytona.io/docs/%3C.md#PtyHandle%3E) for terminal interaction, or an error.
+
+<a name="ProcessService.CreatePtySession"></a>
+### func \(\*ProcessService\) CreatePtySession
+
+```go
+func (p *ProcessService) CreatePtySession(ctx context.Context, id string, opts ...func(*options.PtySession)) (*types.PtySessionInfo, error)
+```
+
+CreatePtySession creates a PTY \(pseudo\-terminal\) session.
+
+A PTY session provides a terminal interface for interactive applications. Use [ProcessService.ConnectPty](https://www.daytona.io/docs/%3C.md#ProcessService.ConnectPty%3E) to connect to the session after creation.
+
+Parameters:
+
+- id: Unique identifier for the session
+
+Optional parameters can be configured using functional options:
+
+- \[options.WithPtySize\]: Set terminal dimensions \(rows and columns\)
+- \[options.WithPtyEnv\]: Set environment variables
+
+Example:
+
+```
+// Create with default settings
+session, err := sandbox.Process.CreatePtySession(ctx, "my-terminal")
+
+// Create with custom size
+session, err := sandbox.Process.CreatePtySession(ctx, "my-terminal",
+    options.WithPtySize(types.PtySize{Rows: 24, Cols: 80}),
+)
+```
+
+Returns \[types.PtySessionInfo\] containing session details, or an error.
+
+<a name="ProcessService.CreateSession"></a>
+### func \(\*ProcessService\) CreateSession
+
+```go
+func (p *ProcessService) CreateSession(ctx context.Context, sessionID string) error
+```
+
+CreateSession creates a named session for executing multiple commands.
+
+Sessions allow you to execute multiple commands while maintaining state \(like environment variables and working directory\) between commands.
+
+Example:
+
+```
+// Create a session
+err := sandbox.Process.CreateSession(ctx, "my-session")
+if err != nil {
+    return err
+}
+defer sandbox.Process.DeleteSession(ctx, "my-session")
+
+// Execute commands in the session
+result, err := sandbox.Process.ExecuteSessionCommand(ctx, "my-session", "cd /home/user", false)
+result, err = sandbox.Process.ExecuteSessionCommand(ctx, "my-session", "pwd", false)
+```
+
+Returns an error if session creation fails.
+
+<a name="ProcessService.DeleteSession"></a>
+### func \(\*ProcessService\) DeleteSession
+
+```go
+func (p *ProcessService) DeleteSession(ctx context.Context, sessionID string) error
+```
+
+DeleteSession removes a session and releases its resources.
+
+The sessionID parameter identifies the session to delete.
+
+Example:
+
+```
+err := sandbox.Process.DeleteSession(ctx, "my-session")
+```
+
+Returns an error if the session doesn't exist or deletion fails.
+
+<a name="ProcessService.ExecuteCommand"></a>
+### func \(\*ProcessService\) ExecuteCommand
+
+```go
+func (p *ProcessService) ExecuteCommand(ctx context.Context, command string, opts ...func(*options.ExecuteCommand)) (*types.ExecuteResponse, error)
+```
+
+ExecuteCommand executes a shell command and returns the result.
+
+The command is executed in a shell context. For complex commands, consider using proper shell escaping or wrapping in a script.
+
+Optional parameters can be configured using functional options:
+
+- \[options.WithCwd\]: Set the working directory for command execution
+- \[options.WithCommandEnv\]: Set environment variables
+- \[options.WithExecuteTimeout\]: Set execution timeout
+
+Example:
+
+```
+// Simple command
+result, err := sandbox.Process.ExecuteCommand(ctx, "echo 'Hello'")
+if err != nil {
+    return err
+}
+fmt.Println(result.Result)
+
+// Command with options
+result, err := sandbox.Process.ExecuteCommand(ctx, "npm install",
+    options.WithCwd("/home/user/project"),
+    options.WithExecuteTimeout(5*time.Minute),
+)
+
+// Check exit code
+if result.ExitCode != 0 {
+    fmt.Printf("Command failed with exit code %d\n", result.ExitCode)
+}
+```
+
+Returns \[types.ExecuteResponse\] containing the output and exit code, or an error.
+
+<a name="ProcessService.ExecuteSessionCommand"></a>
+### func \(\*ProcessService\) ExecuteSessionCommand
+
+```go
+func (p *ProcessService) ExecuteSessionCommand(ctx context.Context, sessionID, command string, runAsync bool) (map[string]any, error)
+```
+
+ExecuteSessionCommand executes a command within a session.
+
+Parameters:
+
+- sessionID: The session to execute the command in
+- command: The command to execute
+- runAsync: If true, return immediately without waiting for completion
+
+When runAsync is true, use [ProcessService.GetSessionCommand](https://www.daytona.io/docs/%3C.md#ProcessService.GetSessionCommand%3E) to check status and [ProcessService.GetSessionCommandLogs](https://www.daytona.io/docs/%3C.md#ProcessService.GetSessionCommandLogs%3E) to retrieve output.
+
+Example:
+
+```
+// Synchronous execution
+result, err := sandbox.Process.ExecuteSessionCommand(ctx, "my-session", "ls -la", false)
+if err != nil {
+    return err
+}
+fmt.Println(result["stdout"])
+
+// Asynchronous execution
+result, err := sandbox.Process.ExecuteSessionCommand(ctx, "my-session", "long-running-cmd", true)
+cmdID := result["id"].(string)
+// Later: check status with GetSessionCommand(ctx, "my-session", cmdID)
+```
+
+Returns command result including id, exitCode \(if completed\), stdout, and stderr.
+
+<a name="ProcessService.GetPtySessionInfo"></a>
+### func \(\*ProcessService\) GetPtySessionInfo
+
+```go
+func (p *ProcessService) GetPtySessionInfo(ctx context.Context, sessionID string) (*types.PtySessionInfo, error)
+```
+
+GetPtySessionInfo retrieves information about a PTY session.
+
+Parameters:
+
+- sessionID: The PTY session identifier
+
+Example:
+
+```
+info, err := sandbox.Process.GetPtySessionInfo(ctx, "my-terminal")
+if err != nil {
+    return err
+}
+fmt.Printf("Terminal size: %dx%d\n", info.Cols, info.Rows)
+```
+
+Returns \[types.PtySessionInfo\] with session details, or an error.
+
+<a name="ProcessService.GetSession"></a>
+### func \(\*ProcessService\) GetSession
+
+```go
+func (p *ProcessService) GetSession(ctx context.Context, sessionID string) (map[string]any, error)
+```
+
+GetSession retrieves information about a session.
+
+The sessionID parameter identifies the session to query.
+
+Returns a map containing:
+
+- sessionId: The session identifier
+- commands: List of commands executed in the session
+
+Example:
+
+```
+info, err := sandbox.Process.GetSession(ctx, "my-session")
+if err != nil {
+    return err
+}
+fmt.Printf("Session: %s\n", info["sessionId"])
+```
+
+Returns an error if the session doesn't exist.
+
+<a name="ProcessService.GetSessionCommand"></a>
+### func \(\*ProcessService\) GetSessionCommand
+
+```go
+func (p *ProcessService) GetSessionCommand(ctx context.Context, sessionID, commandID string) (map[string]any, error)
+```
+
+GetSessionCommand retrieves the status of a command in a session.
+
+Parameters:
+
+- sessionID: The session containing the command
+- commandID: The command identifier \(from ExecuteSessionCommand result\)
+
+Example:
+
+```
+status, err := sandbox.Process.GetSessionCommand(ctx, "my-session", cmdID)
+if err != nil {
+    return err
+}
+if exitCode, ok := status["exitCode"]; ok {
+    fmt.Printf("Command completed with exit code: %v\n", exitCode)
+} else {
+    fmt.Println("Command still running")
+}
+```
+
+Returns command status including id, command text, and exitCode \(if completed\).
+
+<a name="ProcessService.GetSessionCommandLogs"></a>
+### func \(\*ProcessService\) GetSessionCommandLogs
+
+```go
+func (p *ProcessService) GetSessionCommandLogs(ctx context.Context, sessionID, commandID string) (map[string]any, error)
+```
+
+GetSessionCommandLogs retrieves the output logs of a command.
+
+Parameters:
+
+- sessionID: The session containing the command
+- commandID: The command identifier
+
+Example:
+
+```
+logs, err := sandbox.Process.GetSessionCommandLogs(ctx, "my-session", cmdID)
+if err != nil {
+    return err
+}
+fmt.Println(logs["logs"])
+```
+
+Returns a map containing the "logs" key with command output.
+
+<a name="ProcessService.GetSessionCommandLogsStream"></a>
+### func \(\*ProcessService\) GetSessionCommandLogsStream
+
+```go
+func (p *ProcessService) GetSessionCommandLogsStream(ctx context.Context, sessionID, commandID string, stdout, stderr chan<- string) error
+```
+
+GetSessionCommandLogsStream streams command logs as they become available.
+
+This method establishes a WebSocket connection to stream logs in real\-time. The stdout and stderr channels receive log chunks as strings and are closed when the stream ends or an error occurs.
+
+Parameters:
+
+- sessionID: The session containing the command
+- commandID: The command identifier
+- stdout: Channel to receive stdout output
+- stderr: Channel to receive stderr output
+
+The caller should provide buffered channels to avoid blocking.
+
+Example:
+
+```
+stdout := make(chan string, 100)
+stderr := make(chan string, 100)
+
+go func() {
+    err := sandbox.Process.GetSessionCommandLogsStream(ctx, "session", "cmd", stdout, stderr)
+    if err != nil {
+        log.Printf("Stream error: %v", err)
+    }
+}()
+
+for {
+    select {
+    case chunk, ok := <-stdout:
+        if !ok {
+            stdout = nil
+        } else {
+            fmt.Print(chunk)
+        }
+    case chunk, ok := <-stderr:
+        if !ok {
+            stderr = nil
+        } else {
+            fmt.Fprint(os.Stderr, chunk)
+        }
+    }
+    if stdout == nil && stderr == nil {
+        break
+    }
+}
+```
+
+Returns an error if the connection fails or stream encounters an error.
+
+<a name="ProcessService.KillPtySession"></a>
+### func \(\*ProcessService\) KillPtySession
+
+```go
+func (p *ProcessService) KillPtySession(ctx context.Context, sessionID string) error
+```
+
+KillPtySession terminates a PTY session.
+
+This ends the terminal session and any processes running in it.
+
+Parameters:
+
+- sessionID: The PTY session to terminate
+
+Example:
+
+```
+err := sandbox.Process.KillPtySession(ctx, "my-terminal")
+```
+
+Returns an error if the session doesn't exist or termination fails.
+
+<a name="ProcessService.ListPtySessions"></a>
+### func \(\*ProcessService\) ListPtySessions
+
+```go
+func (p *ProcessService) ListPtySessions(ctx context.Context) ([]*types.PtySessionInfo, error)
+```
+
+ListPtySessions returns all active PTY sessions.
+
+Example:
+
+```
+sessions, err := sandbox.Process.ListPtySessions(ctx)
+if err != nil {
+    return err
+}
+for _, session := range sessions {
+    fmt.Printf("PTY: %s (%dx%d)\n", session.ID, session.Cols, session.Rows)
+}
+```
+
+Returns a slice of \[types.PtySessionInfo\], or an error.
+
+<a name="ProcessService.ListSessions"></a>
+### func \(\*ProcessService\) ListSessions
+
+```go
+func (p *ProcessService) ListSessions(ctx context.Context) ([]map[string]any, error)
+```
+
+ListSessions returns all active sessions.
+
+Example:
+
+```
+sessions, err := sandbox.Process.ListSessions(ctx)
+if err != nil {
+    return err
+}
+for _, session := range sessions {
+    fmt.Printf("Session: %s\n", session["sessionId"])
+}
+```
+
+Returns a slice of session information maps, or an error.
+
+<a name="ProcessService.ResizePtySession"></a>
+### func \(\*ProcessService\) ResizePtySession
+
+```go
+func (p *ProcessService) ResizePtySession(ctx context.Context, sessionID string, ptySize types.PtySize) (*types.PtySessionInfo, error)
+```
+
+ResizePtySession changes the terminal dimensions of a PTY session.
+
+This sends a SIGWINCH signal to applications, notifying them of the size change.
+
+Parameters:
+
+- sessionID: The PTY session to resize
+- ptySize: New terminal dimensions
+
+Example:
+
+```
+newSize := types.PtySize{Rows: 40, Cols: 120}
+info, err := sandbox.Process.ResizePtySession(ctx, "my-terminal", newSize)
+if err != nil {
+    return err
+}
+fmt.Printf("New size: %dx%d\n", info.Cols, info.Rows)
+```
+
+Returns updated \[types.PtySessionInfo\], or an error.
+
+<a name="PtyHandle"></a>
+## type PtyHandle
+
+PtyHandle manages a WebSocket connection to a PTY \(pseudo\-terminal\) session.
+
+PtyHandle provides methods for sending input, receiving output via channels, resizing the terminal, and managing the connection lifecycle. It implements [io.Reader](https://www.daytona.io/docs/%3Chttps:/pkg.go.dev/io.md#Reader%3E) and [io.Writer](https://www.daytona.io/docs/%3Chttps:/pkg.go.dev/io.md#Writer%3E) interfaces for integration with standard Go I/O.
+
+Create a PtyHandle using [ProcessService.CreatePty](https://www.daytona.io/docs/%3C.md#ProcessService.CreatePty%3E).
+
+Example:
+
+```
+// Create a PTY session
+handle, err := sandbox.Process.CreatePty(ctx, "my-pty", nil)
+if err != nil {
+    return err
+}
+defer handle.Disconnect()
+
+// Wait for connection to be established
+if err := handle.WaitForConnection(ctx); err != nil {
+    return err
+}
+
+// Send input
+handle.SendInput([]byte("ls -la\n"))
+
+// Read output from channel
+for data := range handle.DataChan() {
+    fmt.Print(string(data))
+}
+
+// Or use as io.Reader
+io.Copy(os.Stdout, handle)
+```
+
+```go
+type PtyHandle struct {
+    // contains filtered or unexported fields
+}
+```
+
+<a name="PtyHandle.DataChan"></a>
+### func \(\*PtyHandle\) DataChan
+
+```go
+func (h *PtyHandle) DataChan() <-chan []byte
+```
+
+DataChan returns a channel for receiving PTY output.
+
+The channel receives raw bytes from the terminal. It is closed when the PTY session ends or the connection is closed.
+
+Example:
+
+```
+for data := range handle.DataChan() {
+    fmt.Print(string(data))
+}
+```
+
+<a name="PtyHandle.Disconnect"></a>
+### func \(\*PtyHandle\) Disconnect
+
+```go
+func (h *PtyHandle) Disconnect() error
+```
+
+Disconnect closes the WebSocket connection and releases resources.
+
+Call this when done with the PTY session. This does not terminate the underlying process \- use [PtyHandle.Kill](https://www.daytona.io/docs/%3C.md#PtyHandle.Kill%3E) for that.
+
+Example:
+
+```
+defer handle.Disconnect()
+```
+
+Returns an error if the WebSocket close fails.
+
+<a name="PtyHandle.Error"></a>
+### func \(\*PtyHandle\) Error
+
+```go
+func (h *PtyHandle) Error() *string
+```
+
+Error returns the error message if the PTY session failed, or nil otherwise.
+
+<a name="PtyHandle.ExitCode"></a>
+### func \(\*PtyHandle\) ExitCode
+
+```go
+func (h *PtyHandle) ExitCode() *int
+```
+
+ExitCode returns the exit code of the PTY process, or nil if still running.
+
+<a name="PtyHandle.IsConnected"></a>
+### func \(\*PtyHandle\) IsConnected
+
+```go
+func (h *PtyHandle) IsConnected() bool
+```
+
+IsConnected returns true if the WebSocket connection is active.
+
+<a name="PtyHandle.Kill"></a>
+### func \(\*PtyHandle\) Kill
+
+```go
+func (h *PtyHandle) Kill(ctx context.Context) error
+```
+
+Kill terminates the PTY session and its associated process.
+
+This operation is irreversible. The process receives a SIGKILL signal and terminates immediately.
+
+Example:
+
+```
+err := handle.Kill(ctx)
+```
+
+Returns an error if the kill operation fails.
+
+<a name="PtyHandle.Read"></a>
+### func \(\*PtyHandle\) Read
+
+```go
+func (h *PtyHandle) Read(p []byte) (n int, err error)
+```
+
+Read implements [io.Reader](https://www.daytona.io/docs/%3Chttps:/pkg.go.dev/io.md#Reader%3E) for reading PTY output.
+
+This method blocks until data is available or the PTY closes \(returns [io.EOF](https://www.daytona.io/docs/%3Chttps:/pkg.go.dev/io.md#EOF%3E)\). Use with [io.Copy](https://www.daytona.io/docs/%3Chttps:/pkg.go.dev/io.md#Copy%3E), [bufio.Scanner](https://www.daytona.io/docs/%3Chttps:/pkg.go.dev/bufio.md#Scanner%3E), or any standard Go I/O utilities.
+
+Example:
+
+```
+// Copy all output to stdout
+io.Copy(os.Stdout, handle)
+
+// Use with bufio.Scanner
+scanner := bufio.NewScanner(handle)
+for scanner.Scan() {
+    fmt.Println(scanner.Text())
+}
+```
+
+<a name="PtyHandle.Resize"></a>
+### func \(\*PtyHandle\) Resize
+
+```go
+func (h *PtyHandle) Resize(ctx context.Context, cols, rows int) (*types.PtySessionInfo, error)
+```
+
+Resize changes the PTY terminal dimensions.
+
+This notifies terminal applications about the new dimensions via SIGWINCH signal. Call this when the terminal display size changes.
+
+Parameters:
+
+- cols: Number of columns \(width in characters\)
+- rows: Number of rows \(height in characters\)
+
+Example:
+
+```
+info, err := handle.Resize(ctx, 120, 40)
+```
+
+Returns updated \[types.PtySessionInfo\] or an error.
+
+<a name="PtyHandle.SendInput"></a>
+### func \(\*PtyHandle\) SendInput
+
+```go
+func (h *PtyHandle) SendInput(data []byte) error
+```
+
+SendInput sends input data to the PTY session.
+
+The data is sent as raw bytes and will be processed as if typed in the terminal. Use this to send commands, keystrokes, or any terminal input.
+
+Example:
+
+```
+// Send a command
+handle.SendInput([]byte("ls -la\n"))
+
+// Send Ctrl+C
+handle.SendInput([]byte{0x03})
+```
+
+Returns an error if the PTY is not connected or sending fails.
+
+<a name="PtyHandle.SessionID"></a>
+### func \(\*PtyHandle\) SessionID
+
+```go
+func (h *PtyHandle) SessionID() string
+```
+
+SessionID returns the unique identifier for this PTY session.
+
+<a name="PtyHandle.Wait"></a>
+### func \(\*PtyHandle\) Wait
+
+```go
+func (h *PtyHandle) Wait(ctx context.Context) (*types.PtyResult, error)
+```
+
+Wait blocks until the PTY process exits and returns the result.
+
+Example:
+
+```
+result, err := handle.Wait(ctx)
+if err != nil {
+    return err
+}
+if result.ExitCode != nil {
+    fmt.Printf("Process exited with code: %d\n", *result.ExitCode)
+}
+```
+
+Returns \[types.PtyResult\] with exit code and any error, or an error if the context is cancelled.
+
+<a name="PtyHandle.WaitForConnection"></a>
+### func \(\*PtyHandle\) WaitForConnection
+
+```go
+func (h *PtyHandle) WaitForConnection(ctx context.Context) error
+```
+
+WaitForConnection waits for the WebSocket connection to be established.
+
+This method blocks until the PTY session is ready to receive input and send output, or until a timeout \(10 seconds\) expires. Always call this after creating a PTY to ensure the connection is ready.
+
+Example:
+
+```
+handle, _ := sandbox.Process.CreatePty(ctx, "my-pty", nil)
+if err := handle.WaitForConnection(ctx); err != nil {
+    return fmt.Errorf("PTY connection failed: %w", err)
+}
+```
+
+Returns an error if the connection times out or fails.
+
+<a name="PtyHandle.Write"></a>
+### func \(\*PtyHandle\) Write
+
+```go
+func (h *PtyHandle) Write(p []byte) (n int, err error)
+```
+
+Write implements [io.Writer](https://www.daytona.io/docs/%3Chttps:/pkg.go.dev/io.md#Writer%3E) for sending input to the PTY.
+
+Example:
+
+```
+// Write directly
+handle.Write([]byte("echo hello\n"))
+
+// Use with io.Copy
+io.Copy(handle, strings.NewReader("echo hello\n"))
+```
+
+<a name="PushAccessCredentials"></a>
+## type PushAccessCredentials
+
+PushAccessCredentials holds temporary credentials for uploading to object storage.
+
+These credentials are obtained from the API and used for uploading build contexts when creating snapshots with custom [DockerImage](https://www.daytona.io/docs/%3C.md#DockerImage%3E) definitions.
+
+```go
+type PushAccessCredentials struct {
+    StorageURL     string `json:"storageUrl"`
+    AccessKey      string `json:"accessKey"`
+    Secret         string `json:"secret"`
+    SessionToken   string `json:"sessionToken"`
+    Bucket         string `json:"bucket"`
+    OrganizationID string `json:"organizationId"`
+}
+```
+
+<a name="Sandbox"></a>
+## type Sandbox
+
+Sandbox represents a Daytona sandbox environment.
+
+A Sandbox provides an isolated development environment with file system, git, process execution, code interpretation, and desktop automation capabilities. Sandboxes can be started, stopped, archived, and deleted.
+
+Access sandbox capabilities through the service fields:
+
+- FileSystem: File and directory operations
+- Git: Git repository operations
+- Process: Command execution and PTY sessions
+- CodeInterpreter: Python code execution
+- ComputerUse: Desktop automation \(mouse, keyboard, screenshots\)
+
+Example:
+
+```
+// Create and use a sandbox
+sandbox, err := client.Create(ctx)
+if err != nil {
+    return err
+}
+defer sandbox.Delete(ctx)
+
+// Execute a command
+result, err := sandbox.Process.ExecuteCommand(ctx, "echo 'Hello'")
+
+// Work with files
+err = sandbox.FileSystem.UploadFile(ctx, "local.txt", "/home/user/remote.txt")
+```
+
+```go
+type Sandbox struct {
+    ID            string                 // Unique sandbox identifier
+    Name          string                 // Human-readable sandbox name
+    State         apiclient.SandboxState // Current sandbox state
+    Target        string                 // Target region/environment where the sandbox runs
+    ToolboxClient *toolbox.APIClient     // Internal API client
+
+    // AutoArchiveInterval is the time in minutes after stopping before auto-archiving.
+    // Set to 0 to disable auto-archiving.
+    AutoArchiveInterval int
+
+    // AutoDeleteInterval is the time in minutes after stopping before auto-deletion.
+    // Set to -1 to disable auto-deletion.
+    // Set to 0 to delete immediately upon stopping.
+    AutoDeleteInterval int
+
+    // NetworkBlockAll blocks all network access when true.
+    NetworkBlockAll bool
+
+    // NetworkAllowList is a comma-separated list of allowed CIDR addresses.
+    NetworkAllowList *string
+
+    FileSystem      *FileSystemService      // File system operations
+    Git             *GitService             // Git operations
+    Process         *ProcessService         // Process and PTY operations
+    CodeInterpreter *CodeInterpreterService // Python code execution
+    ComputerUse     *ComputerUseService     // Desktop automation
+    // contains filtered or unexported fields
+}
+```
+
+<a name="NewSandbox"></a>
+### func NewSandbox
+
+```go
+func NewSandbox(client *Client, toolboxClient *toolbox.APIClient, id string, name string, state apiclient.SandboxState, target string, autoArchiveInterval int, autoDeleteInterval int, networkBlockAll bool, networkAllowList *string) *Sandbox
+```
+
+NewSandbox creates a new Sandbox instance.
+
+This is typically called internally by the SDK. Users should create sandboxes using [Client.Create](https://www.daytona.io/docs/%3C.md#Client.Create%3E) rather than calling this directly.
+
+<a name="Sandbox.Archive"></a>
+### func \(\*Sandbox\) Archive
+
+```go
+func (s *Sandbox) Archive(ctx context.Context) error
+```
+
+Archive archives the sandbox, preserving its state in cost\-effective storage.
+
+When sandboxes are archived, the entire filesystem state is moved to object storage, making it possible to keep sandboxes available for extended periods at reduced cost. Use [Sandbox.Start](https://www.daytona.io/docs/%3C.md#Sandbox.Start%3E) to unarchive and resume.
+
+Example:
+
+```
+err := sandbox.Archive(ctx)
+if err != nil {
+    return err
+}
+// Sandbox is now archived and can be restored later
+```
+
+<a name="Sandbox.Delete"></a>
+### func \(\*Sandbox\) Delete
+
+```go
+func (s *Sandbox) Delete(ctx context.Context) error
+```
+
+Delete deletes the sandbox with a default timeout of 60 seconds.
+
+This operation is irreversible. All data in the sandbox will be lost. For custom timeout, use [Sandbox.DeleteWithTimeout](https://www.daytona.io/docs/%3C.md#Sandbox.DeleteWithTimeout%3E).
+
+Example:
+
+```
+err := sandbox.Delete(ctx)
+```
+
+<a name="Sandbox.DeleteWithTimeout"></a>
+### func \(\*Sandbox\) DeleteWithTimeout
+
+```go
+func (s *Sandbox) DeleteWithTimeout(ctx context.Context, timeout time.Duration) error
+```
+
+DeleteWithTimeout deletes the sandbox with a custom timeout.
+
+Example:
+
+```
+err := sandbox.DeleteWithTimeout(ctx, 2*time.Minute)
+```
+
+<a name="Sandbox.GetPreviewLink"></a>
+### func \(\*Sandbox\) GetPreviewLink
+
+```go
+func (s *Sandbox) GetPreviewLink(ctx context.Context, port int) (string, error)
+```
+
+GetPreviewLink returns a URL for accessing a port on the sandbox.
+
+The preview URL allows external access to services running on the specified port within the sandbox.
+
+Example:
+
+```
+// Start a web server on port 3000 in the sandbox
+sandbox.Process.ExecuteCommand(ctx, "python -m http.server 3000 &")
+
+// Get the preview URL
+url, err := sandbox.GetPreviewLink(ctx, 3000)
+if err != nil {
+    return err
+}
+fmt.Printf("Access at: %s\n", url)
+```
+
+<a name="Sandbox.GetUserHomeDir"></a>
+### func \(\*Sandbox\) GetUserHomeDir
+
+```go
+func (s *Sandbox) GetUserHomeDir(ctx context.Context) (string, error)
+```
+
+GetUserHomeDir returns the user's home directory path in the sandbox.
+
+Example:
+
+```
+homeDir, err := sandbox.GetUserHomeDir(ctx)
+if err != nil {
+    return err
+}
+fmt.Printf("Home directory: %s\n", homeDir) // e.g., "/home/daytona"
+```
+
+<a name="Sandbox.GetWorkingDir"></a>
+### func \(\*Sandbox\) GetWorkingDir
+
+```go
+func (s *Sandbox) GetWorkingDir(ctx context.Context) (string, error)
+```
+
+GetWorkingDir returns the current working directory in the sandbox.
+
+Example:
+
+```
+workDir, err := sandbox.GetWorkingDir(ctx)
+if err != nil {
+    return err
+}
+fmt.Printf("Working directory: %s\n", workDir)
+```
+
+<a name="Sandbox.RefreshData"></a>
+### func \(\*Sandbox\) RefreshData
+
+```go
+func (s *Sandbox) RefreshData(ctx context.Context) error
+```
+
+RefreshData refreshes the sandbox data from the API.
+
+This updates the sandbox's State and other properties from the server. Useful for checking if the sandbox state has changed.
+
+Example:
+
+```
+err := sandbox.RefreshData(ctx)
+if err != nil {
+    return err
+}
+fmt.Printf("Current state: %s\n", sandbox.State)
+```
+
+<a name="Sandbox.SetAutoArchiveInterval"></a>
+### func \(\*Sandbox\) SetAutoArchiveInterval
+
+```go
+func (s *Sandbox) SetAutoArchiveInterval(ctx context.Context, intervalMinutes *int) error
+```
+
+SetAutoArchiveInterval sets the auto\-archive interval in minutes.
+
+The sandbox will be automatically archived after being stopped for this many minutes. Set to 0 to disable auto\-archiving \(sandbox will never auto\-archive\).
+
+Example:
+
+```
+// Archive after 30 minutes of being stopped
+interval := 30
+err := sandbox.SetAutoArchiveInterval(ctx, &interval)
+
+// Disable auto-archiving
+interval := 0
+err := sandbox.SetAutoArchiveInterval(ctx, &interval)
+```
+
+<a name="Sandbox.SetAutoDeleteInterval"></a>
+### func \(\*Sandbox\) SetAutoDeleteInterval
+
+```go
+func (s *Sandbox) SetAutoDeleteInterval(ctx context.Context, intervalMinutes *int) error
+```
+
+SetAutoDeleteInterval sets the auto\-delete interval in minutes.
+
+The sandbox will be automatically deleted after being stopped for this many minutes.
+
+Special values:
+
+- \-1: Disable auto\-deletion \(sandbox will never auto\-delete\)
+- 0: Delete immediately upon stopping
+
+Example:
+
+```
+// Delete after 60 minutes of being stopped
+interval := 60
+err := sandbox.SetAutoDeleteInterval(ctx, &interval)
+
+// Delete immediately when stopped
+interval := 0
+err := sandbox.SetAutoDeleteInterval(ctx, &interval)
+
+// Never auto-delete
+interval := -1
+err := sandbox.SetAutoDeleteInterval(ctx, &interval)
+```
+
+<a name="Sandbox.SetLabels"></a>
+### func \(\*Sandbox\) SetLabels
+
+```go
+func (s *Sandbox) SetLabels(ctx context.Context, labels map[string]string) error
+```
+
+SetLabels sets custom labels on the sandbox.
+
+Labels are key\-value pairs that can be used for organization and filtering. This replaces all existing labels.
+
+Example:
+
+```
+err := sandbox.SetLabels(ctx, map[string]string{
+    "environment": "development",
+    "team": "backend",
+    "project": "api-server",
+})
+```
+
+<a name="Sandbox.Start"></a>
+### func \(\*Sandbox\) Start
+
+```go
+func (s *Sandbox) Start(ctx context.Context) error
+```
+
+Start starts the sandbox with a default timeout of 60 seconds.
+
+If the sandbox is already running, this is a no\-op. For custom timeout, use [Sandbox.StartWithTimeout](https://www.daytona.io/docs/%3C.md#Sandbox.StartWithTimeout%3E).
+
+Example:
+
+```
+err := sandbox.Start(ctx)
+if err != nil {
+    return err
+}
+// Sandbox is now running
+```
+
+<a name="Sandbox.StartWithTimeout"></a>
+### func \(\*Sandbox\) StartWithTimeout
+
+```go
+func (s *Sandbox) StartWithTimeout(ctx context.Context, timeout time.Duration) error
+```
+
+StartWithTimeout starts the sandbox with a custom timeout.
+
+The method blocks until the sandbox reaches the "started" state or the timeout is exceeded.
+
+Example:
+
+```
+err := sandbox.StartWithTimeout(ctx, 2*time.Minute)
+if err != nil {
+    return err
+}
+```
+
+<a name="Sandbox.Stop"></a>
+### func \(\*Sandbox\) Stop
+
+```go
+func (s *Sandbox) Stop(ctx context.Context) error
+```
+
+Stop stops the sandbox with a default timeout of 60 seconds.
+
+Stopping a sandbox preserves its state. Use [Sandbox.Start](https://www.daytona.io/docs/%3C.md#Sandbox.Start%3E) to resume. For custom timeout, use [Sandbox.StopWithTimeout](https://www.daytona.io/docs/%3C.md#Sandbox.StopWithTimeout%3E).
+
+Example:
+
+```
+err := sandbox.Stop(ctx)
+```
+
+<a name="Sandbox.StopWithTimeout"></a>
+### func \(\*Sandbox\) StopWithTimeout
+
+```go
+func (s *Sandbox) StopWithTimeout(ctx context.Context, timeout time.Duration) error
+```
+
+StopWithTimeout stops the sandbox with a custom timeout.
+
+The method blocks until the sandbox reaches the "stopped" state or the timeout is exceeded.
+
+Example:
+
+```
+err := sandbox.StopWithTimeout(ctx, 2*time.Minute)
+```
+
+<a name="Sandbox.WaitForStart"></a>
+### func \(\*Sandbox\) WaitForStart
+
+```go
+func (s *Sandbox) WaitForStart(ctx context.Context, timeout time.Duration) error
+```
+
+WaitForStart waits for the sandbox to reach the "started" state.
+
+This method polls the sandbox state until it's started, encounters an error state, or the timeout is exceeded.
+
+Example:
+
+```
+err := sandbox.WaitForStart(ctx, 2*time.Minute)
+if err != nil {
+    return err
+}
+// Sandbox is now running
+```
+
+<a name="Sandbox.WaitForStop"></a>
+### func \(\*Sandbox\) WaitForStop
+
+```go
+func (s *Sandbox) WaitForStop(ctx context.Context, timeout time.Duration) error
+```
+
+WaitForStop waits for the sandbox to reach the "stopped" state.
+
+This method polls the sandbox state until it's stopped or the timeout is exceeded.
+
+Example:
+
+```
+err := sandbox.WaitForStop(ctx, 2*time.Minute)
+```
+
+<a name="ScreenshotService"></a>
+## type ScreenshotService
+
+ScreenshotService provides screen capture operations.
+
+ScreenshotService enables capturing full screen or region screenshots. Access through [ComputerUseService.Screenshot](https://www.daytona.io/docs/%3C.md#ComputerUseService.Screenshot%3E).
+
+```go
+type ScreenshotService struct {
+    // contains filtered or unexported fields
+}
+```
+
+<a name="NewScreenshotService"></a>
+### func NewScreenshotService
+
+```go
+func NewScreenshotService(toolboxClient *toolbox.APIClient) *ScreenshotService
+```
+
+NewScreenshotService creates a new ScreenshotService.
+
+<a name="ScreenshotService.TakeFullScreen"></a>
+### func \(\*ScreenshotService\) TakeFullScreen
+
+```go
+func (s *ScreenshotService) TakeFullScreen(ctx context.Context, showCursor *bool) (*types.ScreenshotResponse, error)
+```
+
+TakeFullScreen captures a screenshot of the entire screen.
+
+Parameters:
+
+- showCursor: Whether to include the cursor in the screenshot, nil for default
+
+Example:
+
+```
+// Capture full screen
+screenshot, err := ss.TakeFullScreen(ctx, nil)
+if err != nil {
+    return err
+}
+// screenshot.Image contains the base64-encoded image data
+
+// Capture with cursor visible
+showCursor := true
+screenshot, err := ss.TakeFullScreen(ctx, &showCursor)
+```
+
+Returns \[types.ScreenshotResponse\] with the captured image.
+
+<a name="ScreenshotService.TakeRegion"></a>
+### func \(\*ScreenshotService\) TakeRegion
+
+```go
+func (s *ScreenshotService) TakeRegion(ctx context.Context, region types.ScreenshotRegion, showCursor *bool) (*types.ScreenshotResponse, error)
+```
+
+TakeRegion captures a screenshot of a specific screen region.
+
+Parameters:
+
+- region: The region to capture \(X, Y, Width, Height\)
+- showCursor: Whether to include the cursor in the screenshot, nil for default
+
+Example:
+
+```
+// Capture a 200x100 region starting at (50, 50)
+region := types.ScreenshotRegion{X: 50, Y: 50, Width: 200, Height: 100}
+screenshot, err := ss.TakeRegion(ctx, region, nil)
+if err != nil {
+    return err
+}
+```
+
+Returns \[types.ScreenshotResponse\] with the captured image.
+
+<a name="SnapshotService"></a>
+## type SnapshotService
+
+SnapshotService provides snapshot \(image template\) management operations.
+
+SnapshotService enables creating, managing, and deleting snapshots that serve as templates for sandboxes. Snapshots can be built from Docker images or custom [DockerImage](https://www.daytona.io/docs/%3C.md#DockerImage%3E) definitions with build contexts. Access through \[Client.Snapshots\].
+
+Example:
+
+```
+// Create a snapshot from an existing image
+snapshot, logChan, err := client.Snapshots.Create(ctx, &types.CreateSnapshotParams{
+    Name:  "my-python-env",
+    Image: "python:3.11-slim",
+})
+if err != nil {
+    return err
+}
+
+// Stream build logs
+for log := range logChan {
+    fmt.Println(log)
+}
+
+// Create a snapshot from a custom Image definition
+image := daytona.Base("python:3.11-slim").
+    PipInstall([]string{"numpy", "pandas"}).
+    Workdir("/app")
+snapshot, logChan, err := client.Snapshots.Create(ctx, &types.CreateSnapshotParams{
+    Name:  "custom-python-env",
+    Image: image,
+})
+```
+
+```go
+type SnapshotService struct {
+    // contains filtered or unexported fields
+}
+```
+
+<a name="NewSnapshotService"></a>
+### func NewSnapshotService
+
+```go
+func NewSnapshotService(client *Client) *SnapshotService
+```
+
+NewSnapshotService creates a new SnapshotService.
+
+This is typically called internally by the SDK when creating a [Client](https://www.daytona.io/docs/%3C.md#Client%3E). Users should access SnapshotService through \[Client.Snapshots\] rather than creating it directly.
+
+<a name="SnapshotService.Create"></a>
+### func \(\*SnapshotService\) Create
+
+```go
+func (s *SnapshotService) Create(ctx context.Context, params *types.CreateSnapshotParams) (*types.Snapshot, <-chan string, error)
+```
+
+Create builds a new snapshot from an image and streams build logs.
+
+The image parameter can be either a Docker image reference string \(e.g., "python:3.11"\) or an [DockerImage](https://www.daytona.io/docs/%3C.md#DockerImage%3E) builder object for custom Dockerfile definitions.
+
+Parameters:
+
+- params: Snapshot creation parameters including name, image, resources, and entrypoint
+
+Example:
+
+```
+// Create from Docker Hub image
+snapshot, logChan, err := client.Snapshots.Create(ctx, &types.CreateSnapshotParams{
+    Name:  "my-env",
+    Image: "python:3.11-slim",
+})
+if err != nil {
+    return err
+}
+
+// Stream build logs
+for log := range logChan {
+    fmt.Println(log)
+}
+
+// Create with custom image and resources
+image := daytona.Base("python:3.11").PipInstall([]string{"numpy"})
+snapshot, logChan, err := client.Snapshots.Create(ctx, &types.CreateSnapshotParams{
+    Name:  "custom-env",
+    Image: image,
+    Resources: &types.Resources{CPU: 2, Memory: 4096},
+})
+```
+
+Returns the created \[types.Snapshot\], a channel for streaming build logs, or an error. The log channel is closed when the build completes or fails.
+
+<a name="SnapshotService.Delete"></a>
+### func \(\*SnapshotService\) Delete
+
+```go
+func (s *SnapshotService) Delete(ctx context.Context, snapshot *types.Snapshot) error
+```
+
+Delete permanently removes a snapshot.
+
+Sandboxes created from this snapshot will continue to work, but no new sandboxes can be created from it after deletion.
+
+Parameters:
+
+- snapshot: The snapshot to delete
+
+Example:
+
+```
+err := client.Snapshots.Delete(ctx, snapshot)
+if err != nil {
+    return err
+}
+```
+
+Returns an error if deletion fails.
+
+<a name="SnapshotService.Get"></a>
+### func \(\*SnapshotService\) Get
+
+```go
+func (s *SnapshotService) Get(ctx context.Context, nameOrID string) (*types.Snapshot, error)
+```
+
+Get retrieves a snapshot by name or ID.
+
+Parameters:
+
+- nameOrID: The snapshot name or unique ID
+
+Example:
+
+```
+snapshot, err := client.Snapshots.Get(ctx, "my-python-env")
+if err != nil {
+    return err
+}
+fmt.Printf("Snapshot %s: %s\n", snapshot.Name, snapshot.State)
+```
+
+Returns the \[types.Snapshot\] or an error if not found.
+
+<a name="SnapshotService.List"></a>
+### func \(\*SnapshotService\) List
+
+```go
+func (s *SnapshotService) List(ctx context.Context, page *int, limit *int) (*types.PaginatedSnapshots, error)
+```
+
+List returns snapshots with optional pagination.
+
+Parameters:
+
+- page: Page number \(1\-indexed\), nil for first page
+- limit: Maximum snapshots per page, nil for default
+
+Example:
+
+```
+// List first page with default limit
+result, err := client.Snapshots.List(ctx, nil, nil)
+if err != nil {
+    return err
+}
+
+// List with pagination
+page, limit := 2, 10
+result, err := client.Snapshots.List(ctx, &page, &limit)
+fmt.Printf("Page %d of %d, total: %d\n", result.Page, result.TotalPages, result.Total)
+```
+
+Returns \[types.PaginatedSnapshots\] containing the snapshots and pagination info.
+
+<a name="VolumeService"></a>
+## type VolumeService
+
+VolumeService provides persistent storage volume management operations.
+
+VolumeService enables creating, managing, and deleting persistent storage volumes that can be attached to sandboxes. Volumes persist data independently of sandbox lifecycle and can be shared between sandboxes. Access through \[Client.Volumes\].
+
+Example:
+
+```
+// Create a new volume
+volume, err := client.Volumes.Create(ctx, "my-data-volume")
+if err != nil {
+    return err
+}
+
+// Wait for volume to be ready
+volume, err = client.Volumes.WaitForReady(ctx, volume, 60*time.Second)
+if err != nil {
+    return err
+}
+
+// List all volumes
+volumes, err := client.Volumes.List(ctx)
+```
+
+```go
+type VolumeService struct {
+    // contains filtered or unexported fields
+}
+```
+
+<a name="NewVolumeService"></a>
+### func NewVolumeService
+
+```go
+func NewVolumeService(client *Client) *VolumeService
+```
+
+NewVolumeService creates a new VolumeService.
+
+This is typically called internally by the SDK when creating a [Client](https://www.daytona.io/docs/%3C.md#Client%3E). Users should access VolumeService through \[Client.Volumes\] rather than creating it directly.
+
+<a name="VolumeService.Create"></a>
+### func \(\*VolumeService\) Create
+
+```go
+func (v *VolumeService) Create(ctx context.Context, name string) (*types.Volume, error)
+```
+
+Create creates a new persistent storage volume.
+
+The volume starts in "pending" state and transitions to "ready" when available. Use [VolumeService.WaitForReady](https://www.daytona.io/docs/%3C.md#VolumeService.WaitForReady%3E) to wait for the volume to become ready.
+
+Parameters:
+
+- name: Unique name for the volume
+
+Example:
+
+```
+volume, err := client.Volumes.Create(ctx, "my-data-volume")
+if err != nil {
+    return err
+}
+
+// Wait for volume to be ready
+volume, err = client.Volumes.WaitForReady(ctx, volume, 60*time.Second)
+```
+
+Returns the created \[types.Volume\] or an error.
+
+<a name="VolumeService.Delete"></a>
+### func \(\*VolumeService\) Delete
+
+```go
+func (v *VolumeService) Delete(ctx context.Context, volume *types.Volume) error
+```
+
+Delete permanently removes a volume and all its data.
+
+This operation is irreversible. Ensure no sandboxes are using the volume before deletion.
+
+Parameters:
+
+- volume: The volume to delete
+
+Example:
+
+```
+err := client.Volumes.Delete(ctx, volume)
+if err != nil {
+    return err
+}
+```
+
+Returns an error if deletion fails.
+
+<a name="VolumeService.Get"></a>
+### func \(\*VolumeService\) Get
+
+```go
+func (v *VolumeService) Get(ctx context.Context, name string) (*types.Volume, error)
+```
+
+Get retrieves a volume by its name.
+
+Parameters:
+
+- name: The volume name
+
+Example:
+
+```
+volume, err := client.Volumes.Get(ctx, "my-data-volume")
+if err != nil {
+    return err
+}
+fmt.Printf("Volume state: %s\n", volume.State)
+```
+
+Returns the \[types.Volume\] or an error if not found.
+
+<a name="VolumeService.List"></a>
+### func \(\*VolumeService\) List
+
+```go
+func (v *VolumeService) List(ctx context.Context) ([]*types.Volume, error)
+```
+
+List returns all volumes in the organization.
+
+Example:
+
+```
+volumes, err := client.Volumes.List(ctx)
+if err != nil {
+    return err
+}
+for _, vol := range volumes {
+    fmt.Printf("Volume %s: %s\n", vol.Name, vol.State)
+}
+```
+
+Returns a slice of \[types.Volume\] or an error if the request fails.
+
+<a name="VolumeService.WaitForReady"></a>
+### func \(\*VolumeService\) WaitForReady
+
+```go
+func (v *VolumeService) WaitForReady(ctx context.Context, volume *types.Volume, timeout time.Duration) (*types.Volume, error)
+```
+
+WaitForReady waits for a volume to reach the "ready" state.
+
+This method polls the volume status until it becomes ready, reaches an error state, or the timeout expires. The polling interval is 1 second.
+
+Parameters:
+
+- volume: The volume to wait for
+- timeout: Maximum time to wait for the volume to become ready
+
+Example:
+
+```
+volume, err := client.Volumes.Create(ctx, "my-volume")
+if err != nil {
+    return err
+}
+
+// Wait up to 2 minutes for the volume to be ready
+volume, err = client.Volumes.WaitForReady(ctx, volume, 2*time.Minute)
+if err != nil {
+    return fmt.Errorf("volume failed to become ready: %w", err)
+}
+```
+
+Returns the updated \[types.Volume\] when ready, or an error if the timeout expires or the volume enters an error state.
+
+{/* Code generated by gomarkdoc. DO NOT EDIT */}
+# errors
+
+```go
+import "github.com/daytonaio/daytona/libs/sdk-go/pkg/errors"
+```
+
+## Index
+
+- [func ConvertAPIError\(err error, httpResp \*http.Response\) error](https://www.daytona.io/docs/%3C.md#ConvertAPIError%3E)
+- [func ConvertToolboxError\(err error, httpResp \*http.Response\) error](https://www.daytona.io/docs/%3C.md#ConvertToolboxError%3E)
+- [type DaytonaError](https://www.daytona.io/docs/%3C.md#DaytonaError%3E)
+  - [func NewDaytonaError\(message string, statusCode int, headers http.Header\) \*DaytonaError](https://www.daytona.io/docs/%3C.md#NewDaytonaError%3E)
+  - [func \(e \*DaytonaError\) Error\(\) string](https://www.daytona.io/docs/%3C.md#DaytonaError.Error%3E)
+- [type DaytonaNotFoundError](https://www.daytona.io/docs/%3C.md#DaytonaNotFoundError%3E)
+  - [func NewDaytonaNotFoundError\(message string, headers http.Header\) \*DaytonaNotFoundError](https://www.daytona.io/docs/%3C.md#NewDaytonaNotFoundError%3E)
+  - [func \(e \*DaytonaNotFoundError\) Error\(\) string](https://www.daytona.io/docs/%3C.md#DaytonaNotFoundError.Error%3E)
+- [type DaytonaRateLimitError](https://www.daytona.io/docs/%3C.md#DaytonaRateLimitError%3E)
+  - [func NewDaytonaRateLimitError\(message string, headers http.Header\) \*DaytonaRateLimitError](https://www.daytona.io/docs/%3C.md#NewDaytonaRateLimitError%3E)
+  - [func \(e \*DaytonaRateLimitError\) Error\(\) string](https://www.daytona.io/docs/%3C.md#DaytonaRateLimitError.Error%3E)
+- [type DaytonaTimeoutError](https://www.daytona.io/docs/%3C.md#DaytonaTimeoutError%3E)
+  - [func NewDaytonaTimeoutError\(message string\) \*DaytonaTimeoutError](https://www.daytona.io/docs/%3C.md#NewDaytonaTimeoutError%3E)
+  - [func \(e \*DaytonaTimeoutError\) Error\(\) string](https://www.daytona.io/docs/%3C.md#DaytonaTimeoutError.Error%3E)
+
+
+<a name="ConvertAPIError"></a>
+## func ConvertAPIError
+
+```go
+func ConvertAPIError(err error, httpResp *http.Response) error
+```
+
+ConvertAPIError converts api\-client\-go errors to SDK error types
+
+<a name="ConvertToolboxError"></a>
+## func ConvertToolboxError
+
+```go
+func ConvertToolboxError(err error, httpResp *http.Response) error
+```
+
+ConvertToolboxError converts toolbox\-api\-client\-go errors to SDK error types
+
+<a name="DaytonaError"></a>
+## type DaytonaError
+
+DaytonaError is the base error type for all Daytona SDK errors
+
+```go
+type DaytonaError struct {
+    Message    string
+    StatusCode int
+    Headers    http.Header
+}
+```
+
+<a name="NewDaytonaError"></a>
+### func NewDaytonaError
+
+```go
+func NewDaytonaError(message string, statusCode int, headers http.Header) *DaytonaError
+```
+
+NewDaytonaError creates a new DaytonaError
+
+<a name="DaytonaError.Error"></a>
+### func \(\*DaytonaError\) Error
+
+```go
+func (e *DaytonaError) Error() string
+```
+
+
+
+<a name="DaytonaNotFoundError"></a>
+## type DaytonaNotFoundError
+
+DaytonaNotFoundError represents a resource not found error \(404\)
+
+```go
+type DaytonaNotFoundError struct {
+    *DaytonaError
+}
+```
+
+<a name="NewDaytonaNotFoundError"></a>
+### func NewDaytonaNotFoundError
+
+```go
+func NewDaytonaNotFoundError(message string, headers http.Header) *DaytonaNotFoundError
+```
+
+NewDaytonaNotFoundError creates a new DaytonaNotFoundError
+
+<a name="DaytonaNotFoundError.Error"></a>
+### func \(\*DaytonaNotFoundError\) Error
+
+```go
+func (e *DaytonaNotFoundError) Error() string
+```
+
+
+
+<a name="DaytonaRateLimitError"></a>
+## type DaytonaRateLimitError
+
+DaytonaRateLimitError represents a rate limit error \(429\)
+
+```go
+type DaytonaRateLimitError struct {
+    *DaytonaError
+}
+```
+
+<a name="NewDaytonaRateLimitError"></a>
+### func NewDaytonaRateLimitError
+
+```go
+func NewDaytonaRateLimitError(message string, headers http.Header) *DaytonaRateLimitError
+```
+
+NewDaytonaRateLimitError creates a new DaytonaRateLimitError
+
+<a name="DaytonaRateLimitError.Error"></a>
+### func \(\*DaytonaRateLimitError\) Error
+
+```go
+func (e *DaytonaRateLimitError) Error() string
+```
+
+
+
+<a name="DaytonaTimeoutError"></a>
+## type DaytonaTimeoutError
+
+DaytonaTimeoutError represents a timeout error
+
+```go
+type DaytonaTimeoutError struct {
+    *DaytonaError
+}
+```
+
+<a name="NewDaytonaTimeoutError"></a>
+### func NewDaytonaTimeoutError
+
+```go
+func NewDaytonaTimeoutError(message string) *DaytonaTimeoutError
+```
+
+NewDaytonaTimeoutError creates a new DaytonaTimeoutError
+
+<a name="DaytonaTimeoutError.Error"></a>
+### func \(\*DaytonaTimeoutError\) Error
+
+```go
+func (e *DaytonaTimeoutError) Error() string
+```
+
+The Daytona Go SDK provides a powerful interface for programmatically interacting with Daytona Sandboxes.
+
+## Installation
+
+Install the Daytona Go SDK using go get:
+
+```bash
+go get github.com/daytonaio/daytona/libs/sdk-go
+```
+
+## Getting Started
+
+### Create a Sandbox
+
+Create a Daytona Sandbox to run your code securely in an isolated environment. The following snippet is an example "Hello World" program that runs securely inside a Daytona Sandbox.
+
+```go
+package main
+
+import (
+	"context"
+	"fmt"
+	"log"
+
+	"github.com/daytonaio/daytona/libs/sdk-go/pkg/daytona"
+)
+
+func main() {
+	// Initialize the SDK (uses environment variables by default)
+	client, err := daytona.NewClient()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Create a new sandbox
+	sandbox, err := client.Create(context.Background(), nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// Execute a command
+	response, err := sandbox.Process.ExecuteCommand(context.Background(), "echo 'Hello, World!'")
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(response.Result)
+}
+```
+
+## Configuration
+
+The Daytona SDK can be configured using environment variables or by passing options to the constructor:
+
+```go
+package main
+
+import (
+	"github.com/daytonaio/daytona/libs/sdk-go/pkg/daytona"
+	"github.com/daytonaio/daytona/libs/sdk-go/pkg/types"
+)
+
+func main() {
+	// Using environment variables (DAYTONA_API_KEY, DAYTONA_API_URL, DAYTONA_TARGET)
+	client, _ := daytona.NewClient()
+
+	// Using explicit configuration
+	config := &types.DaytonaConfig{
+		APIKey: "YOUR_API_KEY",
+		APIUrl: "https://app.daytona.io/api",
+		Target: "us",
+	}
+	client, _ = daytona.NewClientWithConfig(config)
+}
+```
+
+For more information on configuring the Daytona SDK, see [configuration](https://www.daytona.io/docs/en/configuration.md).
+
+{/* Code generated by gomarkdoc. DO NOT EDIT */}
+# options
+
+```go
+import "github.com/daytonaio/daytona/libs/sdk-go/pkg/options"
+```
+
+Package options provides functional option types for configuring SDK operations.
+
+This package uses the functional options pattern to provide a clean, extensible API for configuring optional parameters. Each option function returns a closure that modifies the corresponding options struct.
+
+### Usage
+
+Options are passed as variadic arguments to SDK methods:
+
+```
+err := sandbox.Git.Clone(ctx, url, path,
+    options.WithBranch("develop"),
+    options.WithUsername("user"),
+    options.WithPassword("token"),
+)
+```
+
+### Generic Apply Function
+
+The [Apply](https://www.daytona.io/docs/%3C.md#Apply%3E) function creates a new options struct and applies all provided option functions to it:
+
+```
+opts := options.Apply(
+    options.WithBranch("main"),
+    options.WithUsername("user"),
+)
+// opts.Branch == "main", opts.Username == "user"
+```
+
+## Index
+
+- [func Apply\[T any\]\(opts ...func\(\*T\)\) \*T](<#Apply>)
+- [func WithAllowEmpty\(allowEmpty bool\) func\(\*GitCommit\)](https://www.daytona.io/docs/%3C.md#WithAllowEmpty%3E)
+- [func WithBranch\(branch string\) func\(\*GitClone\)](https://www.daytona.io/docs/%3C.md#WithBranch%3E)
+- [func WithCodeRunParams\(params types.CodeRunParams\) func\(\*CodeRun\)](https://www.daytona.io/docs/%3C.md#WithCodeRunParams%3E)
+- [func WithCodeRunTimeout\(timeout time.Duration\) func\(\*CodeRun\)](https://www.daytona.io/docs/%3C.md#WithCodeRunTimeout%3E)
+- [func WithCommandEnv\(env map\[string\]string\) func\(\*ExecuteCommand\)](<#WithCommandEnv>)
+- [func WithCommitId\(commitID string\) func\(\*GitClone\)](https://www.daytona.io/docs/%3C.md#WithCommitId%3E)
+- [func WithCreatePtyEnv\(env map\[string\]string\) func\(\*CreatePty\)](<#WithCreatePtyEnv>)
+- [func WithCreatePtySize\(ptySize types.PtySize\) func\(\*CreatePty\)](https://www.daytona.io/docs/%3C.md#WithCreatePtySize%3E)
+- [func WithCustomContext\(contextID string\) func\(\*RunCode\)](https://www.daytona.io/docs/%3C.md#WithCustomContext%3E)
+- [func WithCwd\(cwd string\) func\(\*ExecuteCommand\)](https://www.daytona.io/docs/%3C.md#WithCwd%3E)
+- [func WithEnv\(env map\[string\]string\) func\(\*RunCode\)](<#WithEnv>)
+- [func WithExecuteTimeout\(timeout time.Duration\) func\(\*ExecuteCommand\)](https://www.daytona.io/docs/%3C.md#WithExecuteTimeout%3E)
+- [func WithExtraIndexURLs\(urls ...string\) func\(\*PipInstall\)](https://www.daytona.io/docs/%3C.md#WithExtraIndexURLs%3E)
+- [func WithExtraOptions\(options string\) func\(\*PipInstall\)](https://www.daytona.io/docs/%3C.md#WithExtraOptions%3E)
+- [func WithFindLinks\(links ...string\) func\(\*PipInstall\)](https://www.daytona.io/docs/%3C.md#WithFindLinks%3E)
+- [func WithForce\(force bool\) func\(\*GitDeleteBranch\)](https://www.daytona.io/docs/%3C.md#WithForce%3E)
+- [func WithGroup\(group string\) func\(\*SetFilePermissions\)](https://www.daytona.io/docs/%3C.md#WithGroup%3E)
+- [func WithIndexURL\(url string\) func\(\*PipInstall\)](https://www.daytona.io/docs/%3C.md#WithIndexURL%3E)
+- [func WithInterpreterTimeout\(timeout time.Duration\) func\(\*RunCode\)](https://www.daytona.io/docs/%3C.md#WithInterpreterTimeout%3E)
+- [func WithLogChannel\(logChannel chan string\) func\(\*CreateSandbox\)](https://www.daytona.io/docs/%3C.md#WithLogChannel%3E)
+- [func WithMode\(mode string\) func\(\*CreateFolder\)](https://www.daytona.io/docs/%3C.md#WithMode%3E)
+- [func WithOwner\(owner string\) func\(\*SetFilePermissions\)](https://www.daytona.io/docs/%3C.md#WithOwner%3E)
+- [func WithPassword\(password string\) func\(\*GitClone\)](https://www.daytona.io/docs/%3C.md#WithPassword%3E)
+- [func WithPermissionMode\(mode string\) func\(\*SetFilePermissions\)](https://www.daytona.io/docs/%3C.md#WithPermissionMode%3E)
+- [func WithPre\(\) func\(\*PipInstall\)](https://www.daytona.io/docs/%3C.md#WithPre%3E)
+- [func WithPtyEnv\(env map\[string\]string\) func\(\*PtySession\)](<#WithPtyEnv>)
+- [func WithPtySize\(size types.PtySize\) func\(\*PtySession\)](https://www.daytona.io/docs/%3C.md#WithPtySize%3E)
+- [func WithPullPassword\(password string\) func\(\*GitPull\)](https://www.daytona.io/docs/%3C.md#WithPullPassword%3E)
+- [func WithPullUsername\(username string\) func\(\*GitPull\)](https://www.daytona.io/docs/%3C.md#WithPullUsername%3E)
+- [func WithPushPassword\(password string\) func\(\*GitPush\)](https://www.daytona.io/docs/%3C.md#WithPushPassword%3E)
+- [func WithPushUsername\(username string\) func\(\*GitPush\)](https://www.daytona.io/docs/%3C.md#WithPushUsername%3E)
+- [func WithTimeout\(timeout time.Duration\) func\(\*CreateSandbox\)](https://www.daytona.io/docs/%3C.md#WithTimeout%3E)
+- [func WithUsername\(username string\) func\(\*GitClone\)](https://www.daytona.io/docs/%3C.md#WithUsername%3E)
+- [func WithWaitForStart\(waitForStart bool\) func\(\*CreateSandbox\)](https://www.daytona.io/docs/%3C.md#WithWaitForStart%3E)
+- [type CodeRun](https://www.daytona.io/docs/%3C.md#CodeRun%3E)
+- [type CreateFolder](https://www.daytona.io/docs/%3C.md#CreateFolder%3E)
+- [type CreatePty](https://www.daytona.io/docs/%3C.md#CreatePty%3E)
+- [type CreateSandbox](https://www.daytona.io/docs/%3C.md#CreateSandbox%3E)
+- [type ExecuteCommand](https://www.daytona.io/docs/%3C.md#ExecuteCommand%3E)
+- [type GitClone](https://www.daytona.io/docs/%3C.md#GitClone%3E)
+- [type GitCommit](https://www.daytona.io/docs/%3C.md#GitCommit%3E)
+- [type GitDeleteBranch](https://www.daytona.io/docs/%3C.md#GitDeleteBranch%3E)
+- [type GitPull](https://www.daytona.io/docs/%3C.md#GitPull%3E)
+- [type GitPush](https://www.daytona.io/docs/%3C.md#GitPush%3E)
+- [type PipInstall](https://www.daytona.io/docs/%3C.md#PipInstall%3E)
+- [type PtySession](https://www.daytona.io/docs/%3C.md#PtySession%3E)
+- [type RunCode](https://www.daytona.io/docs/%3C.md#RunCode%3E)
+- [type SetFilePermissions](https://www.daytona.io/docs/%3C.md#SetFilePermissions%3E)
+
+
+<a name="Apply"></a>
+## func Apply
+
+```go
+func Apply[T any](https://www.daytona.io/docs/opts%20...func(*T.md)) *T
+```
+
+Apply creates a new instance of type T and applies all provided option functions.
+
+This generic function enables a consistent pattern for applying functional options across different option types. It allocates a zero\-value instance of T, then applies each option function in order.
+
+Example:
+
+```
+opts := options.Apply(
+    options.WithBranch("main"),
+    options.WithUsername("user"),
+)
+```
+
+<a name="WithAllowEmpty"></a>
+## func WithAllowEmpty
+
+```go
+func WithAllowEmpty(allowEmpty bool) func(*GitCommit)
+```
+
+WithAllowEmpty allows creating a commit even when there are no staged changes.
+
+This is useful for triggering CI/CD pipelines or marking points in history without actual code changes.
+
+Example:
+
+```
+resp, err := sandbox.Git.Commit(ctx, path, "Trigger rebuild", author, email,
+    options.WithAllowEmpty(true),
+)
+```
+
+<a name="WithBranch"></a>
+## func WithBranch
+
+```go
+func WithBranch(branch string) func(*GitClone)
+```
+
+WithBranch sets the branch to clone instead of the repository's default branch.
+
+Example:
+
+```
+err := sandbox.Git.Clone(ctx, url, path, options.WithBranch("develop"))
+```
+
+<a name="WithCodeRunParams"></a>
+## func WithCodeRunParams
+
+```go
+func WithCodeRunParams(params types.CodeRunParams) func(*CodeRun)
+```
+
+WithCodeRunParams sets the code execution parameters.
+
+Example:
+
+```
+result, err := sandbox.Process.CodeRun(ctx, code,
+    options.WithCodeRunParams(types.CodeRunParams{Language: "python"}),
+)
+```
+
+<a name="WithCodeRunTimeout"></a>
+## func WithCodeRunTimeout
+
+```go
+func WithCodeRunTimeout(timeout time.Duration) func(*CodeRun)
+```
+
+WithCodeRunTimeout sets the timeout for code execution.
+
+Example:
+
+```
+result, err := sandbox.Process.CodeRun(ctx, code,
+    options.WithCodeRunTimeout(30*time.Second),
+)
+```
+
+<a name="WithCommandEnv"></a>
+## func WithCommandEnv
+
+```go
+func WithCommandEnv(env map[string]string) func(*ExecuteCommand)
+```
+
+WithCommandEnv sets environment variables for the command.
+
+These variables are added to the command's environment in addition to the sandbox's default environment.
+
+Example:
+
+```
+result, err := sandbox.Process.ExecuteCommand(ctx, "echo $MY_VAR",
+    options.WithCommandEnv(map[string]string{"MY_VAR": "hello"}),
+)
+```
+
+<a name="WithCommitId"></a>
+## func WithCommitId
+
+```go
+func WithCommitId(commitID string) func(*GitClone)
+```
+
+WithCommitId sets a specific commit SHA to checkout after cloning.
+
+The repository is first cloned, then the specified commit is checked out, resulting in a detached HEAD state.
+
+Example:
+
+```
+err := sandbox.Git.Clone(ctx, url, path, options.WithCommitId("abc123def"))
+```
+
+<a name="WithCreatePtyEnv"></a>
+## func WithCreatePtyEnv
+
+```go
+func WithCreatePtyEnv(env map[string]string) func(*CreatePty)
+```
+
+WithCreatePtyEnv sets environment variables for CreatePty.
+
+Example:
+
+```
+handle, err := sandbox.Process.CreatePty(ctx, "my-pty",
+    options.WithCreatePtyEnv(map[string]string{"TERM": "xterm-256color"}),
+)
+```
+
+<a name="WithCreatePtySize"></a>
+## func WithCreatePtySize
+
+```go
+func WithCreatePtySize(ptySize types.PtySize) func(*CreatePty)
+```
+
+WithCreatePtySize sets the PTY terminal dimensions for CreatePty.
+
+Example:
+
+```
+handle, err := sandbox.Process.CreatePty(ctx, "my-pty",
+    options.WithCreatePtySize(types.PtySize{Rows: 24, Cols: 80}),
+)
+```
+
+<a name="WithCustomContext"></a>
+## func WithCustomContext
+
+```go
+func WithCustomContext(contextID string) func(*RunCode)
+```
+
+WithCustomContext sets the interpreter context ID for code execution.
+
+Using a context allows you to maintain state \(variables, imports, etc.\) across multiple code executions. Create a context with CreateContext first.
+
+Example:
+
+```
+ctx, _ := sandbox.CodeInterpreter.CreateContext(ctx, nil)
+channels, err := sandbox.CodeInterpreter.RunCode(ctx, "x = 42",
+    options.WithCustomContext(ctx["id"].(string)),
+)
+```
+
+<a name="WithCwd"></a>
+## func WithCwd
+
+```go
+func WithCwd(cwd string) func(*ExecuteCommand)
+```
+
+WithCwd sets the working directory for command execution.
+
+Example:
+
+```
+result, err := sandbox.Process.ExecuteCommand(ctx, "ls -la",
+    options.WithCwd("/home/user/project"),
+)
+```
+
+<a name="WithEnv"></a>
+## func WithEnv
+
+```go
+func WithEnv(env map[string]string) func(*RunCode)
+```
+
+WithEnv sets environment variables for code execution.
+
+These variables are available to the code during execution.
+
+Example:
+
+```
+channels, err := sandbox.CodeInterpreter.RunCode(ctx, "import os; print(os.environ['API_KEY'])",
+    options.WithEnv(map[string]string{"API_KEY": "secret"}),
+)
+```
+
+<a name="WithExecuteTimeout"></a>
+## func WithExecuteTimeout
+
+```go
+func WithExecuteTimeout(timeout time.Duration) func(*ExecuteCommand)
+```
+
+WithExecuteTimeout sets the timeout for command execution.
+
+If the command doesn't complete within the timeout, it will be terminated.
+
+Example:
+
+```
+result, err := sandbox.Process.ExecuteCommand(ctx, "sleep 60",
+    options.WithExecuteTimeout(5*time.Second),
+)
+```
+
+<a name="WithExtraIndexURLs"></a>
+## func WithExtraIndexURLs
+
+```go
+func WithExtraIndexURLs(urls ...string) func(*PipInstall)
+```
+
+WithExtraIndexURLs adds extra index URLs for pip install.
+
+Extra indexes are checked in addition to the main index URL. Useful for installing packages from both PyPI and a private index.
+
+Example:
+
+```
+image := daytona.Base("python:3.11").PipInstall(
+    []string{"mypackage"},
+    options.WithExtraIndexURLs("https://private.example.com/simple/"),
+)
+```
+
+<a name="WithExtraOptions"></a>
+## func WithExtraOptions
+
+```go
+func WithExtraOptions(options string) func(*PipInstall)
+```
+
+WithExtraOptions adds extra command\-line options for pip install.
+
+Use this for pip options not covered by other With\* functions.
+
+Example:
+
+```
+image := daytona.Base("python:3.11").PipInstall(
+    []string{"mypackage"},
+    options.WithExtraOptions("--no-cache-dir --upgrade"),
+)
+```
+
+<a name="WithFindLinks"></a>
+## func WithFindLinks
+
+```go
+func WithFindLinks(links ...string) func(*PipInstall)
+```
+
+WithFindLinks adds find\-links URLs for pip install.
+
+Find\-links URLs are searched for packages before the package index. Useful for installing packages from local directories or custom URLs.
+
+Example:
+
+```
+image := daytona.Base("python:3.11").PipInstall(
+    []string{"mypackage"},
+    options.WithFindLinks("/path/to/wheels", "https://example.com/wheels/"),
+)
+```
+
+<a name="WithForce"></a>
+## func WithForce
+
+```go
+func WithForce(force bool) func(*GitDeleteBranch)
+```
+
+WithForce enables force deletion of a branch even if it's not fully merged.
+
+Use with caution as this can result in lost commits if the branch contains work that hasn't been merged elsewhere.
+
+Example:
+
+```
+err := sandbox.Git.DeleteBranch(ctx, path, "feature/abandoned",
+    options.WithForce(true),
+)
+```
+
+<a name="WithGroup"></a>
+## func WithGroup
+
+```go
+func WithGroup(group string) func(*SetFilePermissions)
+```
+
+WithGroup sets the file group.
+
+The group should be a valid group name on the sandbox system.
+
+Example:
+
+```
+err := sandbox.FileSystem.SetFilePermissions(ctx, "/home/user/file.txt",
+    options.WithGroup("users"),
+)
+```
+
+<a name="WithIndexURL"></a>
+## func WithIndexURL
+
+```go
+func WithIndexURL(url string) func(*PipInstall)
+```
+
+WithIndexURL sets the base URL of the Python Package Index.
+
+Replaces the default PyPI \(https://pypi.org/simple\) with a custom index.
+
+Example:
+
+```
+image := daytona.Base("python:3.11").PipInstall(
+    []string{"mypackage"},
+    options.WithIndexURL("https://my-pypi.example.com/simple/"),
+)
+```
+
+<a name="WithInterpreterTimeout"></a>
+## func WithInterpreterTimeout
+
+```go
+func WithInterpreterTimeout(timeout time.Duration) func(*RunCode)
+```
+
+WithInterpreterTimeout sets the execution timeout for code.
+
+If the code doesn't complete within the timeout, execution is terminated.
+
+Example:
+
+```
+channels, err := sandbox.CodeInterpreter.RunCode(ctx, "import time; time.sleep(60)",
+    options.WithInterpreterTimeout(5*time.Second),
+)
+```
+
+<a name="WithLogChannel"></a>
+## func WithLogChannel
+
+```go
+func WithLogChannel(logChannel chan string) func(*CreateSandbox)
+```
+
+WithLogChannel provides a channel for receiving build logs during sandbox creation.
+
+When creating a sandbox from a custom image that requires building, build logs are streamed to the provided channel. The channel is closed when streaming completes. If no build is required, no logs are sent and the channel remains unused.
+
+Example:
+
+```
+logChan := make(chan string)
+go func() {
+    for log := range logChan {
+        fmt.Println(log)
+    }
+}()
+sandbox, err := client.Create(ctx, params,
+    options.WithLogChannel(logChan),
+)
+```
+
+<a name="WithMode"></a>
+## func WithMode
+
+```go
+func WithMode(mode string) func(*CreateFolder)
+```
+
+WithMode sets the Unix file permissions for the created folder.
+
+The mode should be specified as an octal string \(e.g., "0755", "0700"\). If not specified, defaults to "0755".
+
+Example:
+
+```
+err := sandbox.FileSystem.CreateFolder(ctx, "/home/user/mydir",
+    options.WithMode("0700"),
+)
+```
+
+<a name="WithOwner"></a>
+## func WithOwner
+
+```go
+func WithOwner(owner string) func(*SetFilePermissions)
+```
+
+WithOwner sets the file owner.
+
+The owner should be a valid username on the sandbox system.
+
+Example:
+
+```
+err := sandbox.FileSystem.SetFilePermissions(ctx, "/home/user/file.txt",
+    options.WithOwner("root"),
+)
+```
+
+<a name="WithPassword"></a>
+## func WithPassword
+
+```go
+func WithPassword(password string) func(*GitClone)
+```
+
+WithPassword sets the password or access token for HTTPS authentication when cloning.
+
+For GitHub, use a Personal Access Token \(PAT\). For GitLab, use a Project Access Token or Personal Access Token. For Bitbucket, use an App Password.
+
+Example:
+
+```
+err := sandbox.Git.Clone(ctx, url, path,
+    options.WithUsername("username"),
+    options.WithPassword("ghp_xxxxxxxxxxxx"),
+)
+```
+
+<a name="WithPermissionMode"></a>
+## func WithPermissionMode
+
+```go
+func WithPermissionMode(mode string) func(*SetFilePermissions)
+```
+
+WithPermissionMode sets the Unix file permissions.
+
+The mode should be specified as an octal string \(e.g., "0644", "0755"\).
+
+Example:
+
+```
+err := sandbox.FileSystem.SetFilePermissions(ctx, "/home/user/file.txt",
+    options.WithPermissionMode("0644"),
+)
+```
+
+<a name="WithPre"></a>
+## func WithPre
+
+```go
+func WithPre() func(*PipInstall)
+```
+
+WithPre enables installation of pre\-release and development versions.
+
+Example:
+
+```
+image := daytona.Base("python:3.11").PipInstall(
+    []string{"mypackage"},
+    options.WithPre(),
+)
+```
+
+<a name="WithPtyEnv"></a>
+## func WithPtyEnv
+
+```go
+func WithPtyEnv(env map[string]string) func(*PtySession)
+```
+
+WithPtyEnv sets environment variables for the PTY session.
+
+Example:
+
+```
+session, err := sandbox.Process.CreatePtySession(ctx, "my-session",
+    options.WithPtyEnv(map[string]string{"TERM": "xterm-256color"}),
+)
+```
+
+<a name="WithPtySize"></a>
+## func WithPtySize
+
+```go
+func WithPtySize(size types.PtySize) func(*PtySession)
+```
+
+WithPtySize sets the PTY terminal dimensions.
+
+Example:
+
+```
+session, err := sandbox.Process.CreatePtySession(ctx, "my-session",
+    options.WithPtySize(types.PtySize{Rows: 24, Cols: 80}),
+)
+```
+
+<a name="WithPullPassword"></a>
+## func WithPullPassword
+
+```go
+func WithPullPassword(password string) func(*GitPull)
+```
+
+WithPullPassword sets the password or access token for HTTPS authentication when pulling.
+
+Example:
+
+```
+err := sandbox.Git.Pull(ctx, path,
+    options.WithPullUsername("username"),
+    options.WithPullPassword("ghp_xxxxxxxxxxxx"),
+)
+```
+
+<a name="WithPullUsername"></a>
+## func WithPullUsername
+
+```go
+func WithPullUsername(username string) func(*GitPull)
+```
+
+WithPullUsername sets the username for HTTPS authentication when pulling.
+
+Example:
+
+```
+err := sandbox.Git.Pull(ctx, path,
+    options.WithPullUsername("username"),
+    options.WithPullPassword("github_token"),
+)
+```
+
+<a name="WithPushPassword"></a>
+## func WithPushPassword
+
+```go
+func WithPushPassword(password string) func(*GitPush)
+```
+
+WithPushPassword sets the password or access token for HTTPS authentication when pushing.
+
+Example:
+
+```
+err := sandbox.Git.Push(ctx, path,
+    options.WithPushUsername("username"),
+    options.WithPushPassword("ghp_xxxxxxxxxxxx"),
+)
+```
+
+<a name="WithPushUsername"></a>
+## func WithPushUsername
+
+```go
+func WithPushUsername(username string) func(*GitPush)
+```
+
+WithPushUsername sets the username for HTTPS authentication when pushing.
+
+Example:
+
+```
+err := sandbox.Git.Push(ctx, path,
+    options.WithPushUsername("username"),
+    options.WithPushPassword("github_token"),
+)
+```
+
+<a name="WithTimeout"></a>
+## func WithTimeout
+
+```go
+func WithTimeout(timeout time.Duration) func(*CreateSandbox)
+```
+
+WithTimeout sets the maximum duration to wait for sandbox creation to complete.
+
+If the timeout is exceeded before the sandbox is ready, Create returns an error. The default timeout is 60 seconds.
+
+Example:
+
+```
+sandbox, err := client.Create(ctx, params,
+    options.WithTimeout(5*time.Minute),
+)
+```
+
+<a name="WithUsername"></a>
+## func WithUsername
+
+```go
+func WithUsername(username string) func(*GitClone)
+```
+
+WithUsername sets the username for HTTPS authentication when cloning.
+
+For GitHub, GitLab, and similar services, the username is typically your account username or a placeholder like "git" when using tokens.
+
+Example:
+
+```
+err := sandbox.Git.Clone(ctx, url, path,
+    options.WithUsername("username"),
+    options.WithPassword("github_token"),
+)
+```
+
+<a name="WithWaitForStart"></a>
+## func WithWaitForStart
+
+```go
+func WithWaitForStart(waitForStart bool) func(*CreateSandbox)
+```
+
+WithWaitForStart controls whether \[daytona.Client.Create\] waits for the sandbox to reach the started state before returning.
+
+When true \(the default\), Create blocks until the sandbox is fully started and ready for use. When false, Create returns immediately after the sandbox is created, which may be in a pending or building state.
+
+Example:
+
+```
+// Return immediately without waiting for the sandbox to start
+sandbox, err := client.Create(ctx, params,
+    options.WithWaitForStart(false),
+)
+```
+
+<a name="CodeRun"></a>
+## type CodeRun
+
+CodeRun holds optional parameters for \[daytona.ProcessService.CodeRun\].
+
+```go
+type CodeRun struct {
+    Params  *types.CodeRunParams // Code execution parameters
+    Timeout *time.Duration       // Execution timeout
+}
+```
+
+<a name="CreateFolder"></a>
+## type CreateFolder
+
+CreateFolder holds optional parameters for \[daytona.FileSystemService.CreateFolder\].
+
+```go
+type CreateFolder struct {
+    Mode *string // Unix file permissions (e.g., "0755")
+}
+```
+
+<a name="CreatePty"></a>
+## type CreatePty
+
+CreatePty holds optional parameters for \[daytona.ProcessService.CreatePty\].
+
+```go
+type CreatePty struct {
+    PtySize *types.PtySize    // Terminal dimensions (rows and columns)
+    Env     map[string]string // Environment variables for the PTY session
+}
+```
+
+<a name="CreateSandbox"></a>
+## type CreateSandbox
+
+CreateSandbox holds optional parameters for \[daytona.Client.Create\].
+
+```go
+type CreateSandbox struct {
+    Timeout      *time.Duration // Maximum time to wait for sandbox creation
+    WaitForStart bool           // Whether to wait for the sandbox to reach started state
+    LogChannel   chan string    // Channel for receiving build logs during image builds
+}
+```
+
+<a name="ExecuteCommand"></a>
+## type ExecuteCommand
+
+ExecuteCommand holds optional parameters for \[daytona.ProcessService.ExecuteCommand\].
+
+```go
+type ExecuteCommand struct {
+    Cwd     *string           // Working directory for command execution
+    Env     map[string]string // Environment variables
+    Timeout *time.Duration    // Command execution timeout
+}
+```
+
+<a name="GitClone"></a>
+## type GitClone
+
+GitClone holds optional parameters for \[daytona.GitService.Clone\].
+
+Fields are pointers to distinguish between unset values and zero values. Use the corresponding With\* functions to set these options.
+
+```go
+type GitClone struct {
+    Branch   *string // Branch to clone (defaults to repository's default branch)
+    CommitId *string // Specific commit SHA to checkout after cloning
+    Username *string // Username for HTTPS authentication
+    Password *string // Password or token for HTTPS authentication
+}
+```
+
+<a name="GitCommit"></a>
+## type GitCommit
+
+GitCommit holds optional parameters for \[daytona.GitService.Commit\].
+
+```go
+type GitCommit struct {
+    AllowEmpty *bool // Allow creating commits with no staged changes
+}
+```
+
+<a name="GitDeleteBranch"></a>
+## type GitDeleteBranch
+
+GitDeleteBranch holds optional parameters for \[daytona.GitService.DeleteBranch\].
+
+```go
+type GitDeleteBranch struct {
+    Force *bool // Force delete even if branch is not fully merged
+}
+```
+
+<a name="GitPull"></a>
+## type GitPull
+
+GitPull holds optional parameters for \[daytona.GitService.Pull\].
+
+```go
+type GitPull struct {
+    Username *string // Username for HTTPS authentication
+    Password *string // Password or token for HTTPS authentication
+}
+```
+
+<a name="GitPush"></a>
+## type GitPush
+
+GitPush holds optional parameters for \[daytona.GitService.Push\].
+
+```go
+type GitPush struct {
+    Username *string // Username for HTTPS authentication
+    Password *string // Password or token for HTTPS authentication
+}
+```
+
+<a name="PipInstall"></a>
+## type PipInstall
+
+PipInstall holds optional parameters for \[daytona.Image.PipInstall\].
+
+```go
+type PipInstall struct {
+    FindLinks      []string // URLs to search for packages
+    IndexURL       string   // Base URL of the Python Package Index
+    ExtraIndexURLs []string // Extra index URLs for package lookup
+    Pre            bool     // Allow pre-release and development versions
+    ExtraOptions   string   // Additional pip command-line options
+}
+```
+
+<a name="PtySession"></a>
+## type PtySession
+
+PtySession holds optional parameters for \[daytona.ProcessService.CreatePtySession\].
+
+```go
+type PtySession struct {
+    PtySize *types.PtySize    // Terminal dimensions (rows and columns)
+    Env     map[string]string // Environment variables for the PTY session
+}
+```
+
+<a name="RunCode"></a>
+## type RunCode
+
+RunCode holds optional parameters for \[daytona.CodeInterpreterService.RunCode\].
+
+```go
+type RunCode struct {
+    ContextID string            // Interpreter context ID for persistent state
+    Env       map[string]string // Environment variables for code execution
+    Timeout   *time.Duration    // Execution timeout
+}
+```
+
+<a name="SetFilePermissions"></a>
+## type SetFilePermissions
+
+SetFilePermissions holds optional parameters for \[daytona.FileSystemService.SetFilePermissions\].
+
+```go
+type SetFilePermissions struct {
+    Mode  *string // Unix file permissions (e.g., "0644")
+    Owner *string // File owner username
+    Group *string // File group name
+}
+```
+
+{/* Code generated by gomarkdoc. DO NOT EDIT */}
+# types
+
+```go
+import "github.com/daytonaio/daytona/libs/sdk-go/pkg/types"
+```
+
+## Index
+
+- [type Chart](https://www.daytona.io/docs/%3C.md#Chart%3E)
+- [type ChartType](https://www.daytona.io/docs/%3C.md#ChartType%3E)
+- [type CodeLanguage](https://www.daytona.io/docs/%3C.md#CodeLanguage%3E)
+- [type CodeRunParams](https://www.daytona.io/docs/%3C.md#CodeRunParams%3E)
+- [type CreateSnapshotParams](https://www.daytona.io/docs/%3C.md#CreateSnapshotParams%3E)
+- [type DaytonaConfig](https://www.daytona.io/docs/%3C.md#DaytonaConfig%3E)
+- [type ExecuteResponse](https://www.daytona.io/docs/%3C.md#ExecuteResponse%3E)
+- [type ExecutionArtifacts](https://www.daytona.io/docs/%3C.md#ExecutionArtifacts%3E)
+- [type ExecutionError](https://www.daytona.io/docs/%3C.md#ExecutionError%3E)
+- [type ExecutionResult](https://www.daytona.io/docs/%3C.md#ExecutionResult%3E)
+- [type FileDownloadRequest](https://www.daytona.io/docs/%3C.md#FileDownloadRequest%3E)
+- [type FileDownloadResponse](https://www.daytona.io/docs/%3C.md#FileDownloadResponse%3E)
+- [type FileInfo](https://www.daytona.io/docs/%3C.md#FileInfo%3E)
+- [type FileStatus](https://www.daytona.io/docs/%3C.md#FileStatus%3E)
+- [type FileUpload](https://www.daytona.io/docs/%3C.md#FileUpload%3E)
+- [type GitCommitResponse](https://www.daytona.io/docs/%3C.md#GitCommitResponse%3E)
+- [type GitStatus](https://www.daytona.io/docs/%3C.md#GitStatus%3E)
+- [type ImageParams](https://www.daytona.io/docs/%3C.md#ImageParams%3E)
+- [type LspLanguageID](https://www.daytona.io/docs/%3C.md#LspLanguageID%3E)
+- [type OutputMessage](https://www.daytona.io/docs/%3C.md#OutputMessage%3E)
+- [type PaginatedSnapshots](https://www.daytona.io/docs/%3C.md#PaginatedSnapshots%3E)
+- [type Position](https://www.daytona.io/docs/%3C.md#Position%3E)
+- [type PtyResult](https://www.daytona.io/docs/%3C.md#PtyResult%3E)
+- [type PtySessionInfo](https://www.daytona.io/docs/%3C.md#PtySessionInfo%3E)
+- [type PtySize](https://www.daytona.io/docs/%3C.md#PtySize%3E)
+- [type Resources](https://www.daytona.io/docs/%3C.md#Resources%3E)
+- [type SandboxBaseParams](https://www.daytona.io/docs/%3C.md#SandboxBaseParams%3E)
+- [type ScreenshotOptions](https://www.daytona.io/docs/%3C.md#ScreenshotOptions%3E)
+- [type ScreenshotRegion](https://www.daytona.io/docs/%3C.md#ScreenshotRegion%3E)
+- [type ScreenshotResponse](https://www.daytona.io/docs/%3C.md#ScreenshotResponse%3E)
+- [type Snapshot](https://www.daytona.io/docs/%3C.md#Snapshot%3E)
+- [type SnapshotParams](https://www.daytona.io/docs/%3C.md#SnapshotParams%3E)
+- [type Volume](https://www.daytona.io/docs/%3C.md#Volume%3E)
+- [type VolumeMount](https://www.daytona.io/docs/%3C.md#VolumeMount%3E)
+
+
+<a name="Chart"></a>
+## type Chart
+
+Chart represents a chart
+
+```go
+type Chart struct {
+    Type     ChartType
+    Title    string
+    Elements any
+    PNG      *string // Optional base64-encoded PNG representation
+}
+```
+
+<a name="ChartType"></a>
+## type ChartType
+
+
+
+```go
+type ChartType string
+```
+
+<a name="ChartTypeLine"></a>
+
+```go
+const (
+    ChartTypeLine           ChartType = "line"
+    ChartTypeScatter        ChartType = "scatter"
+    ChartTypeBar            ChartType = "bar"
+    ChartTypePie            ChartType = "pie"
+    ChartTypeBoxAndWhisker  ChartType = "box_and_whisker"
+    ChartTypeCompositeChart ChartType = "composite_chart"
+    ChartTypeUnknown        ChartType = "unknown"
+)
+```
+
+<a name="CodeLanguage"></a>
+## type CodeLanguage
+
+CodeLanguage
+
+```go
+type CodeLanguage string
+```
+
+<a name="CodeLanguagePython"></a>
+
+```go
+const (
+    CodeLanguagePython     CodeLanguage = "python"
+    CodeLanguageJavaScript CodeLanguage = "javascript"
+    CodeLanguageTypeScript CodeLanguage = "typescript"
+)
+```
+
+<a name="CodeRunParams"></a>
+## type CodeRunParams
+
+CodeRunParams represents parameters for code execution
+
+```go
+type CodeRunParams struct {
+    Argv []string
+    Env  map[string]string
+}
+```
+
+<a name="CreateSnapshotParams"></a>
+## type CreateSnapshotParams
+
+CreateSnapshotParams represents parameters for creating a snapshot
+
+```go
+type CreateSnapshotParams struct {
+    Name           string
+    Image          any // string or *Image
+    Resources      *Resources
+    Entrypoint     []string
+    SkipValidation *bool
+}
+```
+
+<a name="DaytonaConfig"></a>
+## type DaytonaConfig
+
+DaytonaConfig represents the configuration for the Daytona client. When a field is nil, the client will fall back to environment variables or defaults.
+
+```go
+type DaytonaConfig struct {
+    APIKey         string
+    JWTToken       string
+    OrganizationID string
+    APIUrl         string
+    Target         string
+}
+```
+
+<a name="ExecuteResponse"></a>
+## type ExecuteResponse
+
+ExecuteResponse represents a command execution response
+
+```go
+type ExecuteResponse struct {
+    ExitCode  int
+    Result    string
+    Artifacts *ExecutionArtifacts // nil when no artifacts available
+}
+```
+
+<a name="ExecutionArtifacts"></a>
+## type ExecutionArtifacts
+
+ExecutionArtifacts represents execution output artifacts
+
+```go
+type ExecutionArtifacts struct {
+    Stdout string
+    Charts []Chart
+}
+```
+
+<a name="ExecutionError"></a>
+## type ExecutionError
+
+ExecutionError represents a code execution error
+
+```go
+type ExecutionError struct {
+    Name      string
+    Value     string
+    Traceback *string // Optional stack trace; nil when not available
+}
+```
+
+<a name="ExecutionResult"></a>
+## type ExecutionResult
+
+ExecutionResult represents code interpreter execution result
+
+```go
+type ExecutionResult struct {
+    Stdout string
+    Stderr string
+    Charts []Chart         // Optional charts from matplotlib
+    Error  *ExecutionError // nil = success, non-nil = execution failed
+}
+```
+
+<a name="FileDownloadRequest"></a>
+## type FileDownloadRequest
+
+FileDownloadRequest
+
+```go
+type FileDownloadRequest struct {
+    Source      string
+    Destination *string // nil = download to memory (return []byte), non-nil = save to file path
+}
+```
+
+<a name="FileDownloadResponse"></a>
+## type FileDownloadResponse
+
+FileDownloadResponse represents a file download response
+
+```go
+type FileDownloadResponse struct {
+    Source string
+    Result any     // []byte or string (path)
+    Error  *string // nil = success, non-nil = error message
+}
+```
+
+<a name="FileInfo"></a>
+## type FileInfo
+
+FileInfo represents file metadata
+
+```go
+type FileInfo struct {
+    Name         string
+    Size         int64
+    Mode         string
+    ModifiedTime time.Time
+    IsDirectory  bool
+}
+```
+
+<a name="FileStatus"></a>
+## type FileStatus
+
+FileStatus represents the status of a file in git
+
+```go
+type FileStatus struct {
+    Path   string
+    Status string
+}
+```
+
+<a name="FileUpload"></a>
+## type FileUpload
+
+FileUpload represents a file to upload
+
+```go
+type FileUpload struct {
+    Source      any // []byte or string (path)
+    Destination string
+}
+```
+
+<a name="GitCommitResponse"></a>
+## type GitCommitResponse
+
+GitCommitResponse
+
+```go
+type GitCommitResponse struct {
+    SHA string
+}
+```
+
+<a name="GitStatus"></a>
+## type GitStatus
+
+GitStatus represents git repository status
+
+```go
+type GitStatus struct {
+    CurrentBranch   string
+    Ahead           int
+    Behind          int
+    BranchPublished bool
+    FileStatus      []FileStatus
+}
+```
+
+<a name="ImageParams"></a>
+## type ImageParams
+
+ImageParams represents parameters for creating a sandbox from an image
+
+```go
+type ImageParams struct {
+    SandboxBaseParams
+    Image     any // string or *Image
+    Resources *Resources
+}
+```
+
+<a name="LspLanguageID"></a>
+## type LspLanguageID
+
+
+
+```go
+type LspLanguageID string
+```
+
+<a name="LspLanguagePython"></a>
+
+```go
+const (
+    LspLanguagePython     LspLanguageID = "python"
+    LspLanguageJavaScript LspLanguageID = "javascript"
+    LspLanguageTypeScript LspLanguageID = "typescript"
+)
+```
+
+<a name="OutputMessage"></a>
+## type OutputMessage
+
+OutputMessage represents an output message
+
+```go
+type OutputMessage struct {
+    Type      string `json:"type"`
+    Text      string `json:"text"`
+    Name      string `json:"name"`
+    Value     string `json:"value"`
+    Traceback string `json:"traceback"`
+}
+```
+
+<a name="PaginatedSnapshots"></a>
+## type PaginatedSnapshots
+
+PaginatedSnapshots represents a paginated list of snapshots
+
+```go
+type PaginatedSnapshots struct {
+    Items      []*Snapshot
+    Total      int
+    Page       int
+    TotalPages int
+}
+```
+
+<a name="Position"></a>
+## type Position
+
+Position represents a position in a document
+
+```go
+type Position struct {
+    Line      int // zero-based
+    Character int // zero-based
+}
+```
+
+<a name="PtyResult"></a>
+## type PtyResult
+
+PtyResult represents PTY session exit information
+
+```go
+type PtyResult struct {
+    ExitCode *int    // nil = process still running, non-nil = exit code
+    Error    *string // nil = success, non-nil = error message
+}
+```
+
+<a name="PtySessionInfo"></a>
+## type PtySessionInfo
+
+PtySessionInfo represents PTY session information
+
+```go
+type PtySessionInfo struct {
+    ID        string
+    Active    bool
+    CWD       string // Current working directory; may be empty unavailable
+    Cols      int
+    Rows      int
+    ProcessID *int // Process ID; may be nil if unavailable
+    CreatedAt time.Time
+}
+```
+
+<a name="PtySize"></a>
+## type PtySize
+
+PtySize represents terminal dimensions
+
+```go
+type PtySize struct {
+    Rows int
+    Cols int
+}
+```
+
+<a name="Resources"></a>
+## type Resources
+
+Resources represents resource allocation for a sandbox.
+
+```go
+type Resources struct {
+    CPU    int
+    GPU    int
+    Memory int
+    Disk   int
+}
+```
+
+<a name="SandboxBaseParams"></a>
+## type SandboxBaseParams
+
+SandboxBaseParams contains common parameters for sandbox creation.
+
+```go
+type SandboxBaseParams struct {
+    Name                string
+    User                string
+    Language            CodeLanguage
+    EnvVars             map[string]string
+    Labels              map[string]string
+    Public              bool
+    AutoStopInterval    *int // nil = no auto-stop, 0 = immediate stop
+    AutoArchiveInterval *int // nil = no auto-archive, 0 = immediate archive
+    AutoDeleteInterval  *int // nil = no auto-delete, 0 = immediate delete
+    Volumes             []VolumeMount
+    NetworkBlockAll     bool
+    NetworkAllowList    *string
+    Ephemeral           bool
+}
+```
+
+<a name="ScreenshotOptions"></a>
+## type ScreenshotOptions
+
+
+
+```go
+type ScreenshotOptions struct {
+    ShowCursor *bool    // nil = default, true = show, false = hide
+    Format     *string  // nil = default format (PNG), or "jpeg", "webp", etc.
+    Quality    *int     // nil = default quality, 0-100 for JPEG/WebP
+    Scale      *float64 // nil = 1.0, scaling factor for the screenshot
+}
+```
+
+<a name="ScreenshotRegion"></a>
+## type ScreenshotRegion
+
+ScreenshotRegion represents a screenshot region
+
+```go
+type ScreenshotRegion struct {
+    X      int
+    Y      int
+    Width  int
+    Height int
+}
+```
+
+<a name="ScreenshotResponse"></a>
+## type ScreenshotResponse
+
+
+
+```go
+type ScreenshotResponse struct {
+    Image     string // base64-encoded image data
+    Width     int
+    Height    int
+    SizeBytes *int // Size in bytes
+}
+```
+
+<a name="Snapshot"></a>
+## type Snapshot
+
+Snapshot represents a Daytona snapshot
+
+```go
+type Snapshot struct {
+    ID             string     `json:"id"`
+    OrganizationID string     `json:"organizationId,omitempty"`
+    General        bool       `json:"general"`
+    Name           string     `json:"name"`
+    ImageName      string     `json:"imageName,omitempty"`
+    State          string     `json:"state"`
+    Size           *float64   `json:"size,omitempty"`
+    Entrypoint     []string   `json:"entrypoint,omitempty"`
+    CPU            int        `json:"cpu"`
+    GPU            int        `json:"gpu"`
+    Memory         int        `json:"mem"` // API uses "mem" not "memory"
+    Disk           int        `json:"disk"`
+    ErrorReason    *string    `json:"errorReason,omitempty"` // nil = success, non-nil = error reason if snapshot failed
+    SkipValidation bool       `json:"skipValidation"`
+    CreatedAt      time.Time  `json:"createdAt"`
+    UpdatedAt      time.Time  `json:"updatedAt"`
+    LastUsedAt     *time.Time `json:"lastUsedAt,omitempty"`
+}
+```
+
+<a name="SnapshotParams"></a>
+## type SnapshotParams
+
+SnapshotParams represents parameters for creating a sandbox from a snapshot
+
+```go
+type SnapshotParams struct {
+    SandboxBaseParams
+    Snapshot string
+}
+```
+
+<a name="Volume"></a>
+## type Volume
+
+Volume represents a Daytona volume
+
+```go
+type Volume struct {
+    ID             string    `json:"id"`
+    Name           string    `json:"name"`
+    OrganizationID string    `json:"organizationId"`
+    State          string    `json:"state"`
+    ErrorReason    *string   `json:"errorReason,omitempty"`
+    CreatedAt      time.Time `json:"createdAt"`
+    UpdatedAt      time.Time `json:"updatedAt"`
+    LastUsedAt     time.Time `json:"lastUsedAt,omitempty"`
+}
+```
+
+<a name="VolumeMount"></a>
+## type VolumeMount
+
+VolumeMount represents a volume mount configuration
+
+```go
+type VolumeMount struct {
+    VolumeID  string
+    MountPath string
+    Subpath   *string // Optional subpath within the volume; nil = mount entire volume
+}
+```
+
+import { Image } from 'astro:assets'
+
+import notesAppDemo from '../../../../../assets/docs/images/inngest-agentkit-coding-agent-notes-app-demo.png'
+
+This guide demonstrates how to set up and use a fully autonomous coding agent that performs software development tasks in a [Daytona](https://daytona.io) sandbox environment. The agent is built using [AgentKit](https://agentkit.inngest.com/) and leverages Daytona sandboxes for secure, isolated execution. It can create web apps, run tests, execute scripts, and more; automating multi-step workflows based on user prompts.
+
+---
+
+### 1. Workflow Overview
+
+You provide a natural language prompt describing the software task. The agent reasons about your request, plans the steps, and executes them securely in a Daytona sandbox; handling everything from project setup to live previews.
+
+### 2. Project Setup
+
+#### Clone the Repository
+
+First, clone the integration [repository](https://github.com/daytonaio/inngest-agentkit-coding-agent.git) :
+
+```bash
+git https://github.com/daytonaio/inngest-agentkit-coding-agent.git
+cd inngest-agentkit-coding-agent
+```
+
+#### Configure Environment
+
+Get your API keys:
+
+- **Daytona API key:** [Daytona Dashboard](https://app.daytona.io/dashboard/keys)
+- **Anthropic API key:** [Anthropic Console](https://console.anthropic.com/)
+
+Copy `.env.example` to `.env` and add your keys:
+
+```bash
+DAYTONA_API_KEY=your_daytona_key
+ANTHROPIC_API_KEY=your_anthropic_key
+```
+
+#### Local Usage
+
+:::caution[Node.js version]
+Node.js 18 or newer is required to run the coding agent locally. Please ensure your environment meets this requirement before proceeding.
+:::
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the agent:
+
+```bash
+npm run start
+```
+
+#### Docker
+
+Build the Docker image:
+
+```bash
+docker buildx build . -t coding-agent
+```
+
+Run the container:
+
+```bash
+docker run --rm -it coding-agent
+```
+
+### 3. Configuration
+
+- **Prompt Setting:** Edit the main prompt in `network.run(...)` in `src/index.ts` to change the agent's task.
+- **Debug Logs:** Set `enableDebugLogs=true` for detailed agent flow tracking.
+
+### 4. Example Usage
+
+Try the default prompt in `src/index.ts`:
+
+```typescript
+const result = await network.run(
+  `Create a minimal React app called "Notes" that lets users add, view, and delete notes. Each note should have a title and content. Use Create React App or Vite for setup. Include a simple UI with a form to add notes and a list to display them.`
+)
+```
+
+**The agent will:**
+
+- Scaffold the app
+- Install dependencies
+- Start the dev server
+- Generate a preview link
+
+Terminal output example:
+
+```
+✔️ App is ready!
+Preview: https://5173-3a828150-1573-42e3-bf9f-9793a2c2c0c2.proxy.daytona.works
+```
+
+The image below shows the result generated in this run:
+
+<Image
+  src={notesAppDemo}
+  alt="Notes app demo generated by coding agent"
+  width={600}
+  style="max-width: 100%; height: auto; margin: 1rem 0;"
+/>
+
+### 5. Understanding the Agent's Execution Flow
+
+The agent operates by leveraging a large language model (LLM) under the hood and has access to a suite of specialized tools. These tools enable the agent to perform everything needed inside the Daytona sandbox environment; from project setup to app deployment. At each step, the agent reasons about the current goal, decides which tool to call, and orchestrates the workflow to achieve the desired outcome.
+
+Below is a step-by-step breakdown of how the agent builds the demo Notes app showing each iteration, the agent's message, and the tool used:
+
+#### Project Initialization
+
+**Agent message:**
+
+```
+I'll create a React app for Notes using Vite, which provides a faster and more modern setup compared to Create React App. I'll break this down into steps:
+- First, I'll create the project using Vite
+- Install necessary dependencies
+- Create the components for the Notes app
+- Implement the core functionality
+
+Let's get started:
+```
+
+**Tool used:**
+
+`shellTool` was called with command:
+
+```
+npm create vite@latest notes -- --template react
+```
+
+#### Install Dependencies
+
+**Agent message:**
+
+```
+Now, I'll navigate to the project directory and install dependencies:
+```
+
+**Tool used:**
+
+`shellTool` was called with command:
+
+```
+cd notes && npm install
+```
+
+#### Create Components & Update App Structure
+
+**Agent message:**
+
+```
+Now, I'll create the necessary components and update the app structure:
+1. Update App.jsx
+2. Update App.css for basic styling
+```
+
+**Tool used:**
+
+`uploadFilesTool` was called to upload:
+
+```
+App.jsx (main component logic)
+App.css (basic styling)
+```
+
+#### Start Development Server
+
+**Agent message:**
+
+```
+Now, I'll start the development server:
+```
+
+**Tool used:**
+
+`startDevServerTool` was called with command:
+
+```
+cd notes && npm run dev
+```
+
+#### Check Dev Server Health
+
+**Agent message:**
+
+```
+Let's check the dev server health:
+```
+
+**Tool used:**
+
+`checkDevServerHealthTool` was called to verify that the development server is running and accessible.
+
+#### App Summary & Features
+
+**Agent message:**
+
+```
+Great! I've created a minimal React Notes app with the following features:
+- Add notes with a title and content
+- View the list of notes
+- Delete individual notes
+- Basic responsive styling
+
+Key details:
+- Used Vite for project setup
+- Implemented state management with React hooks (useState)
+- Simple form for adding notes
+- Notes are stored in local state
+- Each note has a unique ID, title, and content
+- Delete functionality for individual notes
+
+DEV_SERVER_PORT=5173
+
+TASK_COMPLETED
+
+The app is now running and ready to use. Users can:
+1. Enter a note title in the first input
+2. Enter note content in the textarea
+3. Click "Add Note" to save the note
+4. View notes in the list below
+5. Delete notes by clicking the "Delete" button next to each note
+
+Would you like me to explain any part of the implementation or make any modifications?
+```
+Notice `DEV_SERVER_PORT` and `TASK_COMPLETED` fields in the agent output message.
+
+`DEV_SERVER_PORT` value is auto-detected by the agent and used to generate the preview link for your app.
+
+`TASK_COMPLETED` signals that the task is finished which is used inside the agent routing logic.
+
+---
+
+**Key advantages:**
+
+- Secure, isolated execution
+- Multi-language support
+- Auto-detects dev server, starts it, and generates preview link
+- Detailed debug logs for agent actions
+
+This guide demonstrates how to run a two-agent autonomous coding system using the [Claude Agent SDK](https://platform.claude.com/docs/en/agent-sdk/overview) and Daytona sandboxes. The system consists of a **Project Manager Agent** (local) and a **Developer Agent** (in-sandbox), enabling advanced delegation, planning, and secure code execution.
+
+The Project Manager Agent runs locally and uses the basic Anthropic interface with the `claude-sonnet-4-20250514` model for high-level planning and task delegation. The Developer Agent runs inside the Daytona sandbox and is created using the Claude Agent SDK, which leverages Claude Code for advanced coding and automation capabilities. This architecture separates high-level planning from low-level code execution for more robust automation.
+
+A key advantage of this approach is its **extensibility**: you can easily replace the Project Manager Agent with your own custom orchestrator logic, or even another agent, making the system highly reusable and adaptable to a wide range of advanced automation and coordination use cases.
+
+---
+
+### 1. Workflow Overview
+
+When the main module is launched, a Daytona sandbox is created for the Developer Agent, and a Project Manager Agent is initialized locally. Interaction with the system occurs via a command line chat interface. The Project Manager Agent receives prompts, plans the workflow, and delegates coding tasks to the Developer Agent. The Developer Agent executes tasks in the sandbox and streams results back to the Project Manager, who reviews and coordinates further actions. All logs and outputs from both agents are streamed in real time to the terminal, providing full visibility into the process as it is managed by the Project Manager Agent.
+
+The Developer Agent can also host web apps and provide preview links using [Daytona Preview Links](https://www.daytona.io/docs/en/preview-and-authentication.md). The Project Manager Agent will present these links and summarize the results for you.
+
+You can continue interacting with the system until you are finished. When you exit the program, the sandbox is deleted automatically.
+
+---
+
+### 2. Project Setup
+
+#### Clone the Repository
+
+First, clone the daytona [repository](https://github.com/daytonaio/daytona.git) and navigate to the example directory:
+
+```bash
+git clone https://github.com/daytonaio/daytona.git
+cd daytona/guides/typescript/anthropic/multi-agent-claude-sdk
+```
+
+#### Configure Environment
+
+To run this example, you need to set the following environment variables:
+
+- `DAYTONA_API_KEY`: Required for access to Daytona sandboxes. Get it from [Daytona Dashboard](https://app.daytona.io/dashboard/keys)
+- `ANTHROPIC_API_KEY`: Required for the **Project Manager Agent** (runs locally). Get it from [Claude Developer Platform](https://console.anthropic.com/settings/keys)
+- `SANDBOX_ANTHROPIC_API_KEY`: **Optional** for the **Developer Agent** (runs in sandbox). If not provided, defaults to using `ANTHROPIC_API_KEY`. Get it from [Claude Developer Platform](https://console.anthropic.com/settings/keys)
+
+Copy `.env.example` to `.env` and add your keys:
+
+```bash
+DAYTONA_API_KEY=your_daytona_key
+ANTHROPIC_API_KEY=your_anthropic_key
+SANDBOX_ANTHROPIC_API_KEY=your_anthropic_key
+```
+
+:::tip[Agent API Key Options]
+You can use a single `ANTHROPIC_API_KEY` for both agents, or provide a separate `SANDBOX_ANTHROPIC_API_KEY` for billing/tracking purposes.
+:::
+
+:::caution[API Key Security]
+The `SANDBOX_ANTHROPIC_API_KEY` is passed into the Daytona sandbox environment and is accessible to any code executed inside the sandbox.
+:::
+
+#### Local Usage
+
+:::note[Node.js Version]
+Node.js 18 or newer is required to run this example. Please ensure your environment meets this requirement before proceeding.
+:::
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the two-agent system:
+
+```bash
+npm run start
+```
+
+The system will start and wait for your prompt.
+
+---
+
+### 3. Example Usage
+
+Example chat session:
+
+```
+$ npm run start
+Creating Developer Agent sandbox...
+Installing Developer Agent SDK...
+Initializing Developer Agent...
+Initializing Project Manager Agent...
+
+=== Two-Agent System Ready ===
+Project Manager Agent: Manages tasks and delegates to Developer (Green text)
+Developer Agent: Executes code in Daytona sandbox (White text)
+Press Ctrl+C at any time to exit.
+
+User: make a lunar lander web app
+
+[Project Manager] Processing your request...
+
+[Project Manager]: I'll help you create a lunar lander web app! Let me delegate this task to the Developer Agent.
+
+<developer_task>
+Create a lunar lander web game with the following features:
+
+- HTML/CSS/JavaScript based
+- Canvas graphics for the game
+- Physics simulation (gravity, thrust, velocity)
+- Keyboard controls (arrow keys)
+- Landing detection (safe landing vs crash)
+- Fuel management system
+- Start the game on port 80 and provide the preview URL
+  </developer_task>
+
+[Delegating to Developer Agent]...
+
+I'll help you create a lunar lander web app! Let me build a complete game with physics simulation, graphics, and controls.
+🔨 Write
+🔨 Write
+🔨 Bash
+Perfect! The web server is now running.
+
+Your Lunar Lander game is live at:
+🌐 https://80-17ac1c0f-d684-4122-93b5-8f52fd5393f8.proxy.daytona.works
+
+[Project Manager]: Excellent! The Developer Agent has successfully created your lunar lander web app. The game is now running and accessible at the preview URL above. The implementation includes:
+
+✓ Physics simulation with gravity and thrust
+✓ Canvas-based graphics
+✓ Keyboard controls for gameplay
+✓ Landing detection system
+✓ Fuel management
+✓ Web server running on port 80
+
+TASK_COMPLETE
+
+[Project Manager] All tasks completed!
+```
+
+---
+
+
+### 4. Understanding the Agent Architecture
+
+This system is composed of two collaborating agents, each with a distinct role and implementation. Below is a step-by-step guide to how each agent operates and interacts within the workflow.
+
+#### Project Manager Agent (Terminal Orchestration)
+
+1. **User Interaction:**
+  - All user interaction occurs via the terminal with the Project Manager Agent.
+  - The Project Manager Agent is configured with a system prompt that defines its role and maintains the full conversation history.
+2. **Awareness of Developer Agent:**
+  - The Project Manager Agent knows that a Developer Agent is available inside a Daytona sandbox and can be invoked as needed.
+3. **Task Delegation:**
+  - When the Project Manager Agent determines that a coding task should be delegated, it encapsulates the task within `<developer_task>` tags in its response.
+  - The system parses these tags and, when present, invokes the Developer Agent with the specified task.
+4. **Iterative Workflow:**
+  - This process can repeat multiple times, with the Project Manager Agent reasoning about progress and delegating further tasks as needed.
+5. **Session Completion:**
+  - When the Project Manager Agent determines the overall task is complete, it outputs `TASK_COMPLETE`, which signals the system to terminate the session.
+
+#### Developer Agent (Sandbox Execution)
+
+1. **Provisioning:**
+  - The Developer Agent is provisioned inside a Daytona sandbox and is responsible for executing coding tasks.
+2. **SDK Installation:**
+  - The system installs the Claude Agent SDK in the sandbox by running `pip install` (see [process execution](https://www.daytona.io/docs/en/process-code-execution.md#process-execution)).
+3. **Interpreter Context:**
+  - A new [code interpreter context](https://www.daytona.io/docs/en/process-code-execution.md#stateful-code-interpreter) is created for isolated execution.
+4. **Script Upload:**
+  - The coding agent script is uploaded to the sandbox using [file uploading](https://www.daytona.io/docs/file-system-operations.md#uploading-a-single-file).
+5. **SDK Initialization:**
+  - The Claude Agent SDK is initialized in the interpreter context (e.g., `import coding_agent`).
+6. **Task Execution:**
+  - When a `<developer_task>` is received, the system sends the task to the Developer Agent by running a Python command in the interpreter context:
     ```typescript
-    import { Daytona } from '@daytonaio/sdk';
+    const result = await sandbox.codeInterpreter.runCode(
+     `coding_agent.run_query_sync(os.environ.get('PROMPT', ''))`,
+     {
+      context: ctx,
+      envs: { PROMPT: task },
+      onStdout,
+      onStderr,
+     }
+    );
+    ```
+  - The Developer Agent executes the task, streams output, and returns results to the Project Manager Agent for review and further coordination.
 
-    // Initialize the Daytona client
-    const daytona = new Daytona({ apiKey: 'your-api-key' });
+---
 
-    // Create the Sandbox instance
-    const sandbox = await daytona.create({
-      language: 'typescript',
-    });
+### 5. Customization
 
-    // Run the code securely inside the Sandbox
-    const response = await sandbox.process.codeRun('console.log("Hello World from code!")')
-    console.log(response.result);
+You can customize the Project Manager Agent's behavior by modifying the system prompt in `src/index.ts`. The current implementation:
 
-    // Clean up
-    await sandbox.delete()
+- Uses `<developer_task>` tags for delegation
+- Automatically reviews Developer Agent outputs
+- Says "TASK_COMPLETE" when finished
+
+---
+
+### 6. Cleanup
+
+When you exit the main program, the Daytona sandbox and all files are automatically deleted.
+
+---
+
+**Key advantages:**
+
+- Secure, isolated execution in Daytona sandboxes
+- Hierarchical agent architecture for robust automation
+- Extensible and reusable architecture
+- Automatic dev server detection and live preview links
+- Multi-language and full-stack support
+- Simple setup and automatic cleanup
+
+import { Image } from 'astro:assets'
+
+import claudeAgentSDKInteractiveTerminalSandboxResult from '../../../../../assets/docs/images/claude-agent-sdk-interactive-terminal-sandbox-result.gif'
+
+This guide demonstrates how to run an autonomous coding agent based on [Claude Code](https://code.claude.com/docs/en/overview) inside a Daytona sandbox environment. The agent uses the [Claude Agent SDK](https://platform.claude.com/docs/en/agent-sdk/overview) to follow user prompts.
+
+The agent can develop full-stack web apps, write code in any language, install dependencies, and run scripts. It can also start and manage dev servers, and generate preview links for live apps.
+
+---
+
+### 1. Workflow Overview
+
+When you launch the main module, a Daytona sandbox is created and a Python agent is initialized inside it. The agent is based on the [Claude Agent SDK](https://platform.claude.com/docs/en/agent-sdk/overview).
+
+You interact with the main program via a command line chat interface. The program sends your prompts to the agent inside the sandbox, which executes them and returns the results:
+
+```
+$ npm run start                                   174s
+Creating sandbox...
+Installing Agent SDK...
+Initializing Agent SDK...
+Press Ctrl+C at any time to exit.
+User: Build a Zelda-like game where I can move around the screen and talk to famous programmers
+Thinking...
+I'll build a Zelda-like game for you! This will be a fun project with player movement and NPC interactions with famous programmers.
+🔨 Write
+🔨 Write
+Now let me start a simple HTTP server to host the game:
+🔨 Bash
+Perfect! I've created a Zelda-like game called "Programmer's Quest" for you! 🎮
+
+## Game Features:
+
+✨ Zelda-style gameplay:
+- Top-down 2D view with classic retro aesthetics
+- Player character with sword and shield
+- Grid-based movement system
+- Environmental obstacles (trees and rocks)
+
+👥 Famous Programmers as NPCs:
+1. Linus Torvalds - Creator of Linux
+2. Grace Hopper - COBOL pioneer and Admiral
+3. Alan Turing - Father of computer science
+4. Ada Lovelace - First computer programmer
+5. Dennis Ritchie - Creator of C and UNIX
+
+🎮 Controls:
+- Arrow Keys or WASD - Move your character
+- SPACE - Talk to NPCs when you're near them
+
+🌟 Gameplay:
+- Explore the grassy map and find all 5 legendary programmers
+- Each NPC has multiple quotes that cycle when you talk to them
+- NPCs glow when you're near them
+- Dialog boxes appear with their famous quotes
+- Track your progress in the HUD
+
+## Play Now:
+🎯 [Click here to play the game!](https://80-8e2c4d23-212a-4f1e-bb6c-abfa71aeed3a.proxy.daytona.works)
+
+The game features smooth movement, collision detection with trees and rocks, and an immersive dialog system. Try to find and talk to all 5 famous programmers to learn their wisdom! Each has 3 different quotes that cycle as you keep talking to them.
+
+Enjoy your adventure! 🗡️✨
+User:
+```
+
+The agent can also host web apps and provide you with a preview link using the [Daytona Preview Links](https://www.daytona.io/docs/en/preview-and-authentication.md) feature. When your task involves running or previewing a web application, the agent automatically reasons about this need, hosts the app, and generates a preview link for you to inspect the live result:
+
+<Image
+  src={claudeAgentSDKInteractiveTerminalSandboxResult}
+  alt="RPG game demo generated by coding agent"
+  width={600}
+  style="max-width: 100%; height: auto; margin: 1rem 0;"
+/>
+
+You can continue interacting with your agent until you are finished. When you exit the program, the sandbox will be deleted automatically.
+
+### 2. Project Setup
+
+#### Clone the Repository
+
+First, clone the daytona [repository](https://github.com/daytonaio/daytona.git) and navigate to the example directory:
+
+```bash
+git clone https://github.com/daytonaio/daytona.git
+cd daytona/guides/typescript/anthropic/single-claude-agent-sdk
+```
+
+#### Configure Environment
+
+Get your API keys:
+
+- **Daytona API key:** [Daytona Dashboard](https://app.daytona.io/dashboard/keys)
+- **Anthropic API key:** [Anthropic Console](https://console.anthropic.com/)
+
+Copy `.env.example` to `.env` and add your keys:
+
+```bash
+DAYTONA_API_KEY=your_daytona_key
+SANDBOX_ANTHROPIC_API_KEY=your_anthropic_key
+```
+
+:::caution[API Key Security]
+Note: The `SANDBOX_ANTHROPIC_API_KEY` key is passed into the Daytona sandbox environment and is accessible to any code executed inside the sandbox.
+:::
+
+#### Local Usage
+
+:::note[Node.js Version]
+Node.js 18 or newer is required to run this example. Please ensure your environment meets this requirement before proceeding.
+:::
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the agent:
+
+```bash
+npm run start
+```
+
+The agent will start and wait for your prompt.
+
+### 3. Example Usage
+
+Example chat session:
+
+```
+$ npm run start
+Creating sandbox...
+Installing Agent SDK...
+Initializing Agent SDK...
+Press Ctrl+C at any time to exit.
+User: Create a fun pet store landing page in Svelte
+Thinking...
+I'll create a fun pet store landing page in Svelte for you! Let me set up the project and build an engaging landing page with animations and a colorful design.
+🔨 Bash
+🔨 Bash
+Now let me create a fun and engaging pet store landing page with animations, colorful sections, and interactive elements:
+🔨 Read
+> 🔨 Write
+Now let me create the component files:
+🔨 Write
+🔨 Write
+🔨 Write
+🔨 Write
+🔨 Write
+Now let's update the main CSS file and start the development server:
+🔨 Read
+🔨 Write
+Now let's start the development server:
+🔨 Bash
+🔨 TaskOutput
+Perfect! 🎉 I've created a fun and colorful pet store landing page in Svelte! Here's what I built:
+
+## Features:
+
+✨ Hero Section
+
+- Beautiful gradient background with animated floating cards
+- Eye-catching navigation bar
+- Call-to-action buttons with hover effects
+- Bouncing emoji animations
+
+🎯 Features Section
+
+- 4 key benefits (Free Delivery, Premium Quality, Special Offers, Award Winning)
+- Interactive cards with hover animations
+- Icons that rotate and scale on hover
+
+🛍️ Products Section
+
+- 6 featured products with colorful backgrounds
+- Star ratings
+- Add to cart functionality
+- Smooth hover animations
+
+📧 Newsletter Section
+
+- Vibrant gradient background with floating pet emojis
+- Email subscription form
+- Success message animation
+- Special 20% off offer
+
+👣 Footer
+
+- Comprehensive navigation links
+- Social media icons
+- Dark gradient design
+
+## Live Preview:
+
+Your pet store is now running at: https://80-b3739199-d90e-4bde-ab18-450d74c950e8.proxy.daytona.works
+
+The page includes:
+
+- Smooth scroll behavior
+- Responsive design for mobile devices
+- Fun animations throughout
+- Interactive elements with hover effects
+- Colorful gradients and modern styling
+- Emoji-based icons for a playful feel
+
+Click the link to see your fun pet store landing page in action! 🐾
+User:
+
+```
+
+### 4. Understanding the Agent's Architecture
+
+This example consists of two main components:
+
+- **Main Program:** The main program is a Node.js script (`index.ts`) that runs on your local machine. It uses the Daytona SDK to create and manage a Daytona sandbox. The main program provides a command line interface for interacting with the agent inside the sandbox.
+- **Sandbox Agent:** The sandbox agent is a Python script (`coding_agent.py`) that runs inside the Daytona sandbox. It uses the Claude Agent SDK to create a customized coding agent similar to Claude Code.
+
+#### Initialization
+
+On initialization, the main program:
+
+1. Creates a new [Daytona sandbox](https://www.daytona.io/docs/en/sandboxes.md) with your Anthropic API key included in the environment variables.
+2. Installs the Claude Agent SDK by running `pip install` in the sandbox with [process execution](https://www.daytona.io/docs/en/process-code-execution.md#process-execution).
+3. Creates a new [code interpreter context](https://www.daytona.io/docs/en/process-code-execution.md#stateful-code-interpreter).
+4. Uploads the coding agent script to the sandbox with [file uploading](https://www.daytona.io/docs/file-system-operations.md#uploading-a-single-file).
+5. Initializes the Claude Agent SDK by running `import coding_agent` in the code interpreter context.
+6. Waits for user input and sends prompts to the agent in the code interpreter context as shown below.
+
+#### Main Program Code
+
+Once the agent is running, the program creates a readline interface to read user input and sends it to the agent.
+Each user request is passed to the agent by running a Python command in the code interpreter context:
+
+```typescript
+const result = await sandbox.codeInterpreter.runCode(
+  `coding_agent.run_query_sync(os.environ.get('PROMPT', ''))`,
+  {
+    context: ctx,
+    envs: { PROMPT: prompt },
+    onStdout,
+    onStderr,
+  }
+)
+```
+
+The `onStdout` and `onStderr` callbacks are used to pass the agent's output back to the main program. After the agent finishes responding to the prompt, the main program waits for the next user input.
+
+#### Sandbox Agent Code
+
+The sandbox agent uses the [Claude Agent SDK](https://platform.claude.com/docs/en/agent-sdk/overview) to create a customized coding agent based on Claude Code.
+The agent is initialized with a system prompt that includes the workspace directory and an example of the [preview URL format](https://www.daytona.io/docs/en/preview-and-authentication.md):
+
+```python
+system_prompt = """
+You are running in a Daytona sandbox.
+Use the /home/daytona directory instead of /workspace for file operations.
+Your public preview URL for port 80 is: {}.
+""".format(preview_url)
+```
+
+It also specifies the [tools and permission mode](https://platform.claude.com/docs/en/agent-sdk/quickstart#key-concepts) of the agent:
+
+```python
+client = ClaudeSDKClient(
+  options=ClaudeAgentOptions(
+    allowed_tools=["Read", "Edit", "Glob", "Grep", "Bash"],
+    permission_mode="acceptEdits",
+    system_prompt=system_prompt
+  )
+)
+```
+
+The code to run queries and receive responses follows the examples in Anthropic's [Claude Agent Python SDK documentation](https://platform.claude.com/docs/en/agent-sdk/python).
+
+#### Clean up
+
+When you exit the main program, the Daytona sandbox and all files are automatically deleted.
+
+**Key advantages:**
+
+- Secure, isolated execution in Daytona sandboxes
+- Communicate with the agent directly in your terminal
+- Automatic dev server detection and live preview links
+- Multi-language and full-stack support
+- Simple setup and automatic cleanup
+
+This guide walks you through running Claude Code inside a Daytona sandbox using the Daytona CLI.
+
+### Prerequisites
+
+- Daytona account and API key (Get it from [Daytona Dashboard](https://app.daytona.io/dashboard/keys))
+- Local terminal (macOS, Linux, or Windows)
+
+### Install the Daytona CLI
+
+    ```bash 
+    brew install daytonaio/cli/daytona
+    ```
+    ```bash
+    powershell -Command "irm https://get.daytona.io/windows | iex" 
     ```
 
 :::note
-Replace `your-api-key` with the value from your Daytona dashboard.
+Already have the CLI? Check your version with `daytona --version`. If it's below **0.135.0**, [upgrade to the latest version](https://www.daytona.io/docs/en/getting-started.md#cli).
 :::
 
-#### 4. Run It
+### Authenticate with Daytona
+
+Log in to your Daytona account using your API key:
+
+```bash
+daytona login --api-key=YOUR_API_KEY
+```
+
+Replace `YOUR_API_KEY` with your actual Daytona API key.
+
+### Create a Sandbox
+
+Create a new sandbox for running Claude Code:
+
+```bash
+daytona sandbox create --name claude-sandbox
+```
+
+This creates a sandbox named `claude-sandbox`, visible in your [Dashboard](https://app.daytona.io/dashboard/sandboxes). The default Daytona snapshot includes Claude Code, so the command above is all you need.
+
+:::tip
+Need more power? Pass `--snapshot daytona-large` or `--snapshot daytona-medium` flag to increase your sandbox resources. See [default snapshots](https://www.daytona.io/docs/en/snapshots.md#default-snapshots) for resource details.
+:::
+
+### Connect to the Sandbox
+
+SSH into your sandbox:
+
+```bash
+daytona ssh claude-sandbox
+```
+
+You now have an interactive terminal session inside the sandbox.
+
+### Run Claude Code
+
+Inside the SSH session, start Claude Code:
+
+```bash
+claude
+```
+
+On first run, Claude Code will prompt you to authenticate:
+
+1. Copy the authentication URL displayed in the terminal
+2. Open the URL in your local browser
+3. Complete the authentication flow
+4. Copy the code provided by the browser
+5. Paste the code back into the terminal
+
+Once authenticated, you're all set. Claude Code runs inside the sandbox while you control it from your terminal.
+
+Claude Code allows you to automate and orchestrate tasks using natural language and code. With Daytona, you can easily run Claude Code inside isolated sandboxes, making it simple to experiment and execute tasks securely.
+
+## Running Claude Code in a Daytona Sandbox
+
+You can run Claude Code and execute tasks with it directly inside a Daytona sandbox. The following examples show how to set up a sandbox, install Claude Code, run tasks programmatically, and stream logs in real time.
+
+> **Note:** While both sync and async modes support streaming PTY output, `AsyncDaytona` is recommended as it provides automatic background callbacks via `on_data`. The synchronous API requires blocking iteration or manual threading to handle output.
+```python
+import os
+import asyncio
+from daytona import AsyncDaytona
+
+async def run_claude_code():
+    async with AsyncDaytona() as daytona:
+        sandbox = await daytona.create()
+
+        # Define the Claude Code command to be executed
+        claude_command = "claude --dangerously-skip-permissions -p 'write a dad joke about penguins' --output-format stream-json --verbose"
+
+        # Install Claude Code in the sandbox
+        await sandbox.process.exec("npm install -g @anthropic-ai/claude-code")
+
+        pty_handle = await sandbox.process.create_pty_session(
+            id="claude", on_data=lambda data: print(data.decode(), end="")
+        )
+
+        await pty_handle.wait_for_connection()
+
+        # Run the Claude Code command inside the sandbox
+        await pty_handle.send_input(
+            f"ANTHROPIC_API_KEY={os.environ['ANTHROPIC_API_KEY']} {claude_command}\n"
+        )
+
+        # Use this to close the terminal session if no more commands will be executed
+        # await pty_handle.send_input("exit\n")
+
+        await pty_handle.wait()
+
+        # If you are done and have closed the PTY terminal, it is recommended to clean up resources by deleting the sandbox
+        # await sandbox.delete()
+
+if __name__ == "__main__":
+    asyncio.run(run_claude_code())
+
+````
+```typescript
+import { Daytona } from "@daytonaio/sdk";
+
+const daytona = new Daytona();
+
+try {
+    const sandbox = await daytona.create();
+
+    // Define the Claude Code command to be executed
+    const claudeCommand =
+    "claude --dangerously-skip-permissions -p 'write a dad joke about penguins' --output-format stream-json --verbose";
+
+    // Install Claude Code in the sandbox
+    await sandbox.process.executeCommand("npm install -g @anthropic-ai/claude-code");
+
+    const ptyHandle = await sandbox.process.createPty({
+        id: "claude",
+        onData: (data) => {
+            process.stdout.write(data);
+        },
+    });
+
+    await ptyHandle.waitForConnection();
+
+    // Run the Claude Code command inside the sandbox
+    ptyHandle.sendInput(
+    `ANTHROPIC_API_KEY=${process.env.ANTHROPIC_API_KEY} ${claudeCommand}\n`
+    );
+
+    // Use this to close the terminal session if no more commands will be executed
+    // ptyHandle.sendInput("exit\n")
+
+    await ptyHandle.wait();
+
+    // If you are done and have closed the PTY terminal, it is recommended to clean up resources by deleting the sandbox
+    // await sandbox.delete();
+} catch (error) {
+    console.error("Failed to run Claude Code in Daytona sandbox:", error);
+}
+````
+
+Guides for integrating Claude with Daytona.
+
+<GuidesList category="claude" />
+
+import { Image } from 'astro:assets'
+
+import codexSdkLunarLanderResult from '../../../../../assets/docs/images/codex-sdk-lunar-lander-result.gif'
+
+This guide demonstrates how to run an autonomous coding agent based on [OpenAI Codex](https://chatgpt.com/features/codex) inside a Daytona sandbox environment. The agent can develop full-stack web apps, write code in any language, install dependencies, and run scripts. It can also start and manage dev servers, and generate preview links for live apps.
+
+---
+
+### 1. Workflow Overview
+
+When you launch the main module, a Daytona sandbox is created and a Node.js agent is initialized inside it. The agent is based on the [Codex SDK](https://developers.openai.com/codex/sdk/).
+
+You interact with the main program via a command line chat interface. The program sends your prompts to the agent inside the sandbox, which executes them and returns the results:
+
+```
+$ npm run start
+Creating sandbox...
+Installing Codex agent in sandbox...
+Press Ctrl+C at any time to exit.
+User: create a 3d animated web-based, lunar lander game
+Thinking...
+🔨 ✓ Run: /bin/sh -lc ls
+🔨 ✓ Run: /bin/sh -lc 'ls -a'
+🔨 ✓ Run: /bin/sh -lc 'ls .daytona'
+🔨 ✓ Run: /bin/sh -lc 'find /home/daytona -maxdepth 4 -name .git'
+📝 Add /home/daytona/index.html
+📝 Add /home/daytona/style.css
+📝 Add /home/daytona/main.js
+📝 Update /home/daytona/main.js
+- Built a self-contained 3D lunar lander experience with HUD in index.html wired to main.js.
+- Styled a glassy mission card, typography, and neon accents in style.css.
+- Implemented the Three.js scene in main.js: starfield + noisy terrain with a flattened pad, modeled lander, thrust/fuel/rotation controls, gravity/drag physics, landing/crash checks, exhaust particles, and a chase camera. Controls: Space/↑ thrust, ←/→ yaw, W/S pitch, R restart.
+
+Next steps:
+1) Serve locally (e.g., cd /home/daytona && python3 -m http.server 8080) and open https://8080-e7c5deb5-7723-4bb8-93c6-25258d9b7c53.proxy.daytona.works.
+2) Tune physics constants or terrain size if you want a harder/easier landing.
+🗒️ To-do list:
+- [x] Inspect workspace and set up project structure for web-based lunar lander game
+- [x] Implement 3D scene, lunar lander controls, physics, and game loop
+- [x] Add UI elements, polish, and quick sanity check (open file if feasible)
+Usage Summary: Cached: 71936, Input: 103238, Output: 11311
+User: start the server
+Thinking...
+🔨 ✓ Run: /bin/sh -lc 'cd /home/daytona && nohup python3 -m http.server 8080 --bind 0.0.0.0 >/home/daytona/server.log 2>&1 & echo $!'
+Server started on port 8080 (pid 274). Open the game at:
+https://8080-e7c5deb5-7723-4bb8-93c6-25258d9b7c53.proxy.daytona.works
+
+If you need to stop it later: kill 274.
+Usage Summary: Cached: 4096, Input: 22231, Output: 272
+User:
+Cleaning up...
+```
+
+The agent can also host web apps and provide you with a preview link using the [Daytona Preview Links](https://www.daytona.io/docs/en/preview-and-authentication.md) feature. When your task involves running or previewing a web application, the agent automatically reasons about this need, hosts the app, and generates a preview link for you to inspect the live result:
+
+<Image
+  src={codexSdkLunarLanderResult}
+  alt="Lunar lander game demo generated by Codex coding agent"
+  width={600}
+  style="max-width: 100%; height: auto; margin: 1rem 0;"
+/>
+
+You can continue interacting with your agent until you are finished. When you exit the program, the sandbox will be deleted automatically.
+
+### 2. Project Setup
+
+#### Clone the Repository
+
+First, clone the daytona [repository](https://github.com/daytonaio/daytona.git) and navigate to the example directory:
+
+```bash
+git clone https://github.com/daytonaio/daytona.git
+cd daytona/guides/typescript/openai/codex-sdk
+```
+
+#### Configure Environment
+
+Get your API keys:
+
+- **Daytona API key:** [Daytona Dashboard](https://app.daytona.io/dashboard/keys)
+- **OpenAI API key:** [OpenAI Developer Platform](https://platform.openai.com/api-keys)
+
+Copy `.env.example` to `.env` and add your keys:
+
+```bash
+DAYTONA_API_KEY=your_daytona_key
+SANDBOX_OPENAI_API_KEY=your_openai_key
+```
+
+:::caution[API Key Security]
+Note: The `SANDBOX_OPENAI_API_KEY` key is passed into the Daytona sandbox environment and is accessible to any code executed inside the sandbox.
+:::
+
+#### Local Usage
+
+:::note[Node.js Version]
+Node.js 18 or newer is required to run this example. Please ensure your environment meets this requirement before proceeding.
+:::
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the agent:
+
+```bash
+npm run start
+```
+
+The agent will start and wait for your prompt.
+
+### 3. Understanding the Agent's Architecture
+
+This example consists of two main components:
+
+- **Main Program:** The main program is a Node.js script (`src/index.ts`) that runs on your local machine. It uses the Daytona SDK to create and manage a Daytona sandbox. The main program provides a command line interface for interacting with the agent inside the sandbox.
+- **Sandbox Agent:** The sandbox agent is a Node.js script (`agent/index.ts`) that runs inside the Daytona sandbox. It uses the Codex SDK to create a customized coding agent.
+
+#### Initialization
+
+On initialization, the main program:
+1. Creates a new [Daytona sandbox](https://www.daytona.io/docs/en/sandboxes.md) with your OpenAI API key included in the environment variables.
+2. Configures the Codex system prompt with Daytona-specific instructions and writes it to a `.codex/config.toml` file in the sandbox.
+3. Uploads the agent package to the sandbox with [file uploading](https://www.daytona.io/docs/file-system-operations.md#uploading-a-single-file).
+4. Installs the agent dependencies by running `npm install` in the uploaded agent directory.
+5. Waits for user input and runs the agent asynchronously for each prompt.
+
+#### Main Program Code
+
+Custom system prompts for Codex must be configured via a `.codex/config.toml` file, so the main program creates this file in the sandbox before starting the agent:
+
+```typescript
+const systemPrompt = [
+  'You are running in a Daytona sandbox.',
+  'Use the /home/daytona directory instead of /workspace for file operations.',
+  `When running services on localhost, they will be accessible as: ${previewUrlPattern}`,
+].join(' ')
+const config = `developer_instructions = "${systemPrompt}"`
+await sandbox.fs.createFolder('.codex', '755')
+await sandbox.fs.uploadFile(Buffer.from(config, 'utf8'), '.codex/config.toml')
+```
+
+This prompt instructs the agent to use the correct file paths and preview link format for Daytona sandboxes.
+
+After installing dependencies, the main program enters a loop to read user input and send it to the agent. For each user prompt it receives, it creates a new Daytona process session to run the agent command asynchronously and stream back the output:
+
+```typescript
+// Create a session to stream the agent output
+const sessionId = `codex-session-${Date.now()}`
+await sandbox.process.createSession(sessionId)
+
+// Run the agent asynchronously, passing the prompt and OpenAI API key
+const command = await sandbox.process.executeSessionCommand(sessionId, {
+  command: `${environmentPrefix({ PROMPT: prompt })} npm exec --prefix /tmp/agent tsx -- /tmp/agent/index.ts`,
+  runAsync: true,
+})
+
+// Stream agent output as it arrives
+if (!command.cmdId) throw new Error('Failed to start agent command in sandbox')
+await sandbox.process.getSessionCommandLogs(
+  sessionId,
+  command.cmdId,
+  onStdout,
+  onStderr,
+)
+
+// Delete the session
+await sandbox.process.deleteSession(sessionId)
+```
+
+The `onStdout` and `onStderr` callbacks are used to pass the agent's output back to the main program. After the agent finishes responding to the prompt, the main program waits for the next user input.
+
+
+#### Sandbox Agent Code
+
+The sandbox agent uses the [Codex SDK](https://developers.openai.com/codex/sdk/) to create a customized coding agent.
+The agent is initialized with custom options that include the workspace directory:
+
+```typescript
+// Configure Codex options
+const options: ThreadOptions = {
+  workingDirectory: '/home/daytona',
+  skipGitRepoCheck: true,
+  sandboxMode: 'danger-full-access',
+}
+```
+
+The agent maintains thread state between requests by writing the thread ID to a file, allowing it to maintain context across multiple interactions:
+
+```typescript
+const threadIdPath = '/tmp/codex-thread-id'
+const threadId = (await readFileIfExisting(threadIdPath))?.trim()
+const thread: Thread = threadId 
+  ? codex.resumeThread(threadId, options) 
+  : codex.startThread(options)
+```
+
+Additional code to stream agent responses follows the examples in OpenAI's [Codex SDK documentation](https://github.com/openai/codex/blob/main/sdk/typescript/README.md).
+
+#### Clean up
+
+When you exit the main program, the Daytona sandbox and all files are automatically deleted.
+
+**Key advantages:**
+
+- Secure, isolated execution in Daytona sandboxes
+- Communicate with the agent directly in your terminal
+- Automatic dev server detection and live preview links
+- Multi-language and full-stack support
+- Thread persistence across multiple requests
+- Simple setup and automatic cleanup
+
+import { Image } from 'astro:assets'
+
+import chartImage from '../../../../assets/docs/images/chart-0.png'
+
+You can use Daytona Sandbox to run AI-generated code to analyze data. Here's how the AI data analysis workflow typically looks:
+
+1. Your user has a dataset in CSV format or other formats.
+2. You prompt the LLM to generate code (usually Python) based on the user's data.
+3. The sandbox runs the AI-generated code and returns the results.
+4. The LLM receives feedback from the execution and can iterate multiple times to refine the code if needed.
+5. You display the final results to the user.
+
+---
+
+## Build an AI Data Analyst with Daytona
+
+This example shows how to build an AI-powered data analyst that automatically generates insights and visualizations from CSV data using Daytona's secure sandbox environment.
+
+**What we'll build:** A system that analyzes a vehicle valuation dataset, identifies price relation to manufacturing year, and generates professional visualizations - all through natural language prompts to Claude. The system uses an agentic loop that allows Claude to iteratively refine the code based on execution results.
+
+### 1. Project Setup
+
+#### 1.1 Install Dependencies
+
+Install the Daytona SDK and Anthropic SDK to your project:
+
+    `bash pip install daytona anthropic python-dotenv `
+
+    `bash npm install @daytonaio/sdk @anthropic-ai/sdk dotenv `
+
+    `bash gem install daytona anthropic dotenv `
+
+#### 1.2 Configure Environment
+
+Get your API keys and configure your environment:
+
+1. **Daytona API key:** Get it from [Daytona Dashboard](https://app.daytona.io/dashboard/keys)
+2. **Anthropic API key:** Get it from [Anthropic Console](https://console.anthropic.com/)
+
+Create a `.env` file in your project:
+
+```bash
+DAYTONA_API_KEY=dtn_***
+ANTHROPIC_API_KEY=sk-ant-***
+```
+
+### 2. Dataset Preparation
+
+#### 2.1 Download Dataset
+
+We'll be using a publicly available dataset of vehicle valuation. You can download it directly from:
+
+[https://download.daytona.io/dataset.csv](https://download.daytona.io/dataset.csv)
+
+Download the file and save it as `dataset.csv` in your project directory.
+
+#### 2.2 Initialize Sandbox
+
+Now create a [Daytona sandbox](https://www.daytona.io/docs/en/sandboxes.md#basic-sandbox-creation) and upload your dataset:
+
+    ```python
+    from dotenv import load_dotenv
+    from daytona import Daytona
+    import os
+
+    load_dotenv()
+
+    # Create sandbox
+
+    daytona = Daytona() # The sandbox language is Python by default.
+    sandbox = daytona.create()
+
+    # Upload the dataset to the sandbox
+
+    sandbox.fs.upload_file("dataset.csv", "/home/daytona/dataset.csv")
+
+    ```
+
+    ```typescript
+    import 'dotenv/config'
+    import { Daytona } from '@daytonaio/sdk';
+
+    // Create sandbox
+    const daytona = new Daytona(); // The sandbox language is Python by default.
+    const sandbox = await daytona.create()
+
+    // Upload the dataset to the sandbox
+    await sandbox.fs.uploadFile('dataset.csv', '/home/daytona/dataset.csv')
+    ```
+
+    ```ruby
+    require 'daytona'
+    require 'dotenv/load'
+
+    # Create sandbox
+    daytona = Daytona::Daytona.new # The sandbox language is Python by default.
+    sandbox = daytona.create
+
+    # Upload the dataset to the sandbox
+    sandbox.fs.upload_file(File.read('dataset.csv'), '/home/daytona/dataset.csv')
+    ```
+
+### 3. Building the AI Data Analyst
+
+Now we'll create the core functionality that connects Claude with Daytona to analyze data and generate visualizations.
+
+#### 3.1 Code Execution Handler
+
+First, let's create a function to handle code execution and chart extraction. This function returns execution results that can be fed back to the AI model:
+
+    ```python
+    import base64
+    from typing import TypedDict
+
+    class ExecutionResult(TypedDict):
+        stdout: str
+        exit_code: int
+        charts: list
+
+    def run_ai_generated_code(sandbox, ai_generated_code: str) -> ExecutionResult:
+        execution = sandbox.process.code_run(ai_generated_code)
+
+        result = ExecutionResult(
+            stdout=execution.result or "",
+            exit_code=execution.exit_code,
+            charts=execution.artifacts.charts if execution.artifacts else []
+        )
+
+        # Save any charts that were generated
+        if execution.artifacts and execution.artifacts.charts:
+            result_idx = 0
+            for chart in execution.artifacts.charts:
+                if chart.png:
+                    filename = f'chart-{result_idx}.png'
+                    with open(filename, 'wb') as f:
+                        f.write(base64.b64decode(chart.png))
+                    print(f'✓ Chart saved to {filename}')
+                    result_idx += 1
+
+        return result
+    ```
+
+    ```typescript
+    import fs from 'fs'
+    import { Sandbox } from '@daytonaio/sdk'
+
+    interface ExecutionResult {
+      stdout: string
+      exitCode: number
+      charts?: Array<{ png?: string }>
+    }
+
+    async function runAIGeneratedCode(
+      sandbox: Sandbox,
+      aiGeneratedCode: string
+    ): Promise<ExecutionResult> {
+      const execution = await sandbox.process.codeRun(aiGeneratedCode)
+
+      const result: ExecutionResult = {
+        stdout: execution.result || "",
+        exitCode: execution.exitCode,
+        charts: execution.artifacts?.charts
+      }
+
+      // Save any charts that were generated
+      if (execution.artifacts?.charts) {
+        let resultIdx = 0
+        for (const chart of execution.artifacts.charts) {
+          if (chart.png) {
+            const filename = `chart-${resultIdx}.png`
+            fs.writeFileSync(filename, chart.png, { encoding: 'base64' })
+            console.log(`✓ Chart saved to ${filename}`)
+            resultIdx++
+          }
+        }
+      }
+
+      return result
+    }
+    ```
+
+#### 3.2 Creating the Analysis Prompt
+
+Next, we'll create the prompt that tells Claude about our dataset and what analysis we want. This prompt includes:
+
+- Dataset schema and column descriptions
+- The specific analysis request (vehicle price variation by manufacturing year)
+- Instructions for code generation
+
+    ```python
+    from anthropic import Anthropic
+
+    prompt = f"""
+    I have a CSV file with vehicle valuations saved in the sandbox at /home/daytona/dataset.csv.
+
+    Relevant columns:
+    - 'year': integer, the manufacturing year of the vehicle
+    - 'price_in_euro': float, the listed price of the vehicle in Euros
+
+    Analyze how price varies by manufacturing year.
+    Drop rows where 'year' or 'price_in_euro' is missing, non-numeric, or an outlier.
+    Create a line chart showing average price per year.
+    Write Python code that analyzes the dataset based on my request and produces a matplotlib chart accordingly.
+    Always finish with plt.show() to display the chart."""
+
+    anthropic = Anthropic()
+
+    ```
+
+    ```typescript
+    import Anthropic from '@anthropic-ai/sdk'
+
+    const prompt = `
+    I have a CSV file with vehicle valuations saved in the sandbox at /home/daytona/dataset.csv.
+
+    Relevant columns:
+    - 'year': integer, the manufacturing year of the vehicle
+    - 'price_in_euro': float, the listed price of the vehicle in Euros
+
+    Analyze how price varies by manufacturing year.
+    Drop rows where 'year' or 'price_in_euro' is missing, non-numeric, or an outlier.
+    Create a line chart showing average price per year.
+    Write Python code that analyzes the dataset based on my request and produces a matplotlib chart accordingly.
+    Always finish with plt.show() to display the chart.`
+
+    const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
+    ```
+
+#### 3.3 Tool Definition
+
+Define the tool that allows Claude to execute Python code in the sandbox:
+
+    ```python
+    tools = [
+        {
+            'name': 'run_python_code',
+            'description': 'Run Python code in the sandbox environment and get execution results',
+            'input_schema': {
+                'type': 'object',
+                'properties': {
+                    'code': {
+                        'type': 'string',
+                        'description': 'The Python code to run',
+                    },
+                },
+                'required': ['code'],
+            },
+        },
+    ]
+    ```
+
+    ```typescript
+    import type { Tool, ToolUseBlock } from '@anthropic-ai/sdk/resources/messages.mjs'
+
+    const tools: Tool[] = [
+      {
+        name: 'run_python_code',
+        description: 'Run Python code in the sandbox environment and get execution results',
+        input_schema: {
+          type: 'object',
+          properties: {
+            code: {
+              type: 'string',
+              description: 'The Python code to run',
+            },
+          },
+          required: ['code'],
+        },
+      },
+    ]
+    ```
+
+#### 3.4 Agentic Loop Implementation
+
+Now we'll implement the agentic loop that allows Claude to iteratively refine the code based on execution feedback. This enables Claude to fix errors, handle edge cases, and improve the analysis through multiple iterations:
+
+    ```python
+    # Initialize conversation history
+    messages = [{'role': 'user', 'content': prompt}]
+
+    continue_loop = True
+    iteration_count = 0
+    max_iterations = 10
+
+    print("Starting agentic loop...\n")
+
+    while continue_loop and iteration_count < max_iterations:
+        iteration_count += 1
+        print(f"\n=== Iteration {iteration_count} ===")
+        print("Waiting for the model response...")
+
+        # Get response from Claude
+        msg = anthropic.messages.create(
+            model='claude-sonnet-4-5',
+            max_tokens=64000,
+            messages=messages,
+            tools=tools
+        )
+
+        # Log Claude's text response
+        for content_block in msg.content:
+            if content_block.type == 'text':
+                print("\nClaude's response:")
+                print(content_block.text)
+
+        # Check if Claude wants to use any tools
+        tool_uses = [block for block in msg.content if block.type == 'tool_use']
+
+        if len(tool_uses) == 0:
+            # No more tool uses, Claude is done
+            print("\nTask completed - no more actions needed.")
+            continue_loop = False
+            break
+
+        # Add Claude's response to message history
+        messages.append({'role': 'assistant', 'content': msg.content})
+
+        # Execute all tool calls and collect results
+        tool_results = []
+
+        for tool_use in tool_uses:
+            if tool_use.name == 'run_python_code':
+                code = tool_use.input['code']
+                print("\n--- Executing Python code in sandbox ---")
+                print(code)
+                print("--- End of code ---\n")
+
+                # Execute the code in the sandbox
+                execution_result = run_ai_generated_code(sandbox, code)
+
+                # Format the tool result
+                result_content = ""
+                if execution_result['exit_code'] == 0:
+                    result_content += "Execution successful!\n\n"
+                    if execution_result['stdout']:
+                        result_content += f"Output:\n{execution_result['stdout']}\n"
+                    if execution_result['charts'] and len(execution_result['charts']) > 0:
+                        result_content += f"\nGenerated {len(execution_result['charts'])} chart(s)."
+                    else:
+                        result_content += "\nNote: No charts were generated. Make sure to use plt.show() to display the chart."
+                else:
+                    result_content += f"Execution failed with exit code {execution_result['exit_code']}\n\n"
+                    if execution_result['stdout']:
+                        result_content += f"Output:\n{execution_result['stdout']}\n"
+
+                tool_results.append({
+                    'type': 'tool_result',
+                    'tool_use_id': tool_use.id,
+                    'content': result_content
+                })
+
+                print("Execution result sent back to Claude.")
+
+        # Add tool results to conversation history
+        messages.append({'role': 'user', 'content': tool_results})
+
+    if iteration_count >= max_iterations:
+        print("\n⚠️  Reached maximum iteration limit. Task may not be complete.")
+
+    print("\n=== Agentic loop completed ===")
+    ```
+
+    ```typescript
+    import type { MessageParam } from '@anthropic-ai/sdk/resources/messages.mjs'
+
+    interface CodeRunToolInput {
+      code: string
+    }
+
+    // Initialize conversation history
+    const messages: MessageParam[] = [
+      { role: 'user', content: initialPrompt }
+    ]
+
+    let continueLoop = true
+    let iterationCount = 0
+    const maxIterations = 10
+
+    console.log("Starting agentic loop...\n")
+
+    while (continueLoop && iterationCount < maxIterations) {
+      iterationCount++
+      console.log(`\n=== Iteration ${iterationCount} ===`)
+      console.log("Waiting for the model response...")
+
+      // Get response from Claude
+      const stream = anthropic.messages.stream({
+        model: 'claude-sonnet-4-5',
+        max_tokens: 64000,
+        messages: messages,
+        tools: tools
+      })
+
+      const message = await stream.finalMessage()
+
+      // Log Claude's text response
+      for (const contentBlock of message.content) {
+        if (contentBlock.type === 'text') {
+          console.log("\nClaude's response:")
+          console.log(contentBlock.text)
+        }
+      }
+
+      // Check if Claude wants to use any tools
+      const toolUses = message.content.filter(
+        (block): block is ToolUseBlock => block.type === 'tool_use'
+      )
+
+      if (toolUses.length === 0) {
+        // No more tool uses, Claude is done
+        console.log("\nTask completed - no more actions needed.")
+        continueLoop = false
+        break
+      }
+
+      // Add Claude's response to message history
+      messages.push({
+        role: 'assistant',
+        content: message.content
+      })
+
+      // Execute all tool calls and collect results
+      const toolResults = []
+
+      for (const toolUse of toolUses) {
+        if (toolUse.name === 'run_python_code') {
+          const code = (toolUse.input as CodeRunToolInput).code
+          console.log("\n--- Executing Python code in sandbox ---")
+          console.log(code)
+          console.log("--- End of code ---\n")
+
+          // Execute the code in the sandbox
+          const executionResult = await runAIGeneratedCode(sandbox, code)
+
+          // Format the tool result
+          let resultContent = ""
+          if (executionResult.exitCode === 0) {
+            resultContent += "Execution successful!\n\n"
+            if (executionResult.stdout) {
+              resultContent += `Output:\n${executionResult.stdout}\n`
+            }
+            if (executionResult.charts && executionResult.charts.length > 0) {
+              resultContent += `\nGenerated ${executionResult.charts.length} chart(s).`
+            } else {
+              resultContent += "\nNote: No charts were generated. Make sure to use plt.show() to display the chart."
+            }
+          } else {
+            resultContent += `Execution failed with exit code ${executionResult.exitCode}\n\n`
+            if (executionResult.stdout) {
+              resultContent += `Output:\n${executionResult.stdout}\n`
+            }
+          }
+
+          toolResults.push({
+            type: 'tool_result' as const,
+            tool_use_id: toolUse.id,
+            content: resultContent
+          })
+
+          console.log("Execution result sent back to Claude.")
+        }
+      }
+
+      // Add tool results to conversation history
+      messages.push({
+        role: 'user',
+        content: toolResults
+      })
+    }
+
+    if (iterationCount >= maxIterations) {
+      console.log("\n⚠️  Reached maximum iteration limit. Task may not be complete.")
+    }
+
+    console.log("\n=== Agentic loop completed ===")
+    ```
+
+The agentic loop works as follows:
+
+1. **Initial Request**: Send the initial prompt to Claude with the tool definition
+2. **Iteration Loop**: For each iteration (up to 10 times):
+   - Claude generates a response with optional tool calls
+   - If there are tool calls, execute the Python code in the sandbox
+   - Send execution results back to Claude (including errors or success messages)
+   - Claude can then refine the code based on the feedback
+3. **Completion**: Loop ends when Claude signals no more tool calls are needed or max iterations reached
+
+This approach allows Claude to:
+- Fix errors if the initial code fails
+- Iterate on the analysis if results aren't satisfactory
+- Handle edge cases discovered during execution
+- Improve visualizations based on the actual data
+
+**Key advantages of this approach:**
+
+- **Secure execution:** Code runs in isolated Daytona sandboxes
+- **Automatic artifact capture:** Charts, tables, and outputs are automatically extracted
+- **Error handling:** Built-in error detection and logging
+- **Language agnostic:** While we used Python here, Daytona supports multiple languages
+
+### 4. Running Your Analysis
+
+Now you can run the complete code to see the results.
+
+    ```bash
+    python data-analysis.py
+    ```
+
+    ```bash
+    npx tsx data-analysis.ts
+    ```
+
+You should see the chart in your project directory that will look similar to this:
+
+<Image src={chartImage} alt="Vehicle valuation by manufacturing year chart" width={600} style="max-width: 100%; height: auto; margin: 1rem 0;" />
+
+### 5. Complete Implementation
+
+Here are the complete, ready-to-run examples with the agentic loop:
+
+    ```python
+    import base64
+    from dotenv import load_dotenv
+    from daytona import Daytona, Sandbox
+    from anthropic import Anthropic
+    from typing import TypedDict
+
+
+    class ExecutionResult(TypedDict):
+        stdout: str
+        exit_code: int
+        charts: list
+
+
+    def main():
+        load_dotenv()
+
+        # Create sandbox
+        daytona = Daytona()
+        sandbox = daytona.create()
+
+        # Upload the dataset to the sandbox
+        sandbox.fs.upload_file("dataset.csv", "/home/daytona/dataset.csv")
+
+        initial_prompt = """
+    I have a CSV file with vehicle valuations saved in the sandbox at /home/daytona/dataset.csv.
+
+    Relevant columns:
+    - 'year': integer, the manufacturing year of the vehicle
+    - 'price_in_euro': float, the listed price of the vehicle in Euros
+
+    Analyze how price varies by manufacturing year.
+    Drop rows where 'year' or 'price_in_euro' is missing, non-numeric, or an outlier.
+    Create a line chart showing average price per year.
+    Write Python code that analyzes the dataset based on my request and produces a matplotlib chart accordingly.
+    Always finish with plt.show() to display the chart."""
+
+        anthropic = Anthropic()
+
+        tools = [
+            {
+                'name': 'run_python_code',
+                'description': 'Run Python code in the sandbox environment and get execution results',
+                'input_schema': {
+                    'type': 'object',
+                    'properties': {
+                        'code': {
+                            'type': 'string',
+                            'description': 'The Python code to run',
+                        },
+                    },
+                    'required': ['code'],
+                },
+            },
+        ]
+
+        # Initialize conversation history
+        messages = [{'role': 'user', 'content': initial_prompt}]
+
+        continue_loop = True
+        iteration_count = 0
+        max_iterations = 10
+
+        print("Starting agentic loop...\n")
+
+        while continue_loop and iteration_count < max_iterations:
+            iteration_count += 1
+            print(f"\n=== Iteration {iteration_count} ===")
+            print("Waiting for the model response...")
+
+            # Get response from Claude
+            msg = anthropic.messages.create(
+                model='claude-sonnet-4-5',
+                max_tokens=64000,
+                messages=messages,
+                tools=tools
+            )
+
+            # Log Claude's text response
+            for content_block in msg.content:
+                if content_block.type == 'text':
+                    print("\nClaude's response:")
+                    print(content_block.text)
+
+            # Check if Claude wants to use any tools
+            tool_uses = [block for block in msg.content if block.type == 'tool_use']
+
+            if len(tool_uses) == 0:
+                # No more tool uses, Claude is done
+                print("\nTask completed - no more actions needed.")
+                continue_loop = False
+                break
+
+            # Add Claude's response to message history
+            messages.append({'role': 'assistant', 'content': msg.content})
+
+            # Execute all tool calls and collect results
+            tool_results = []
+
+            for tool_use in tool_uses:
+                if tool_use.name == 'run_python_code':
+                    code = tool_use.input['code']
+                    print("\n--- Executing Python code in sandbox ---")
+                    print(code)
+                    print("--- End of code ---\n")
+
+                    # Execute the code in the sandbox
+                    execution_result = run_ai_generated_code(sandbox, code)
+
+                    # Format the tool result
+                    result_content = ""
+                    if execution_result['exit_code'] == 0:
+                        result_content += "Execution successful!\n\n"
+                        if execution_result['stdout']:
+                            result_content += f"Output:\n{execution_result['stdout']}\n"
+                        if execution_result['charts'] and len(execution_result['charts']) > 0:
+                            result_content += f"\nGenerated {len(execution_result['charts'])} chart(s)."
+                        else:
+                            result_content += "\nNote: No charts were generated. Make sure to use plt.show() to display the chart."
+                    else:
+                        result_content += f"Execution failed with exit code {execution_result['exit_code']}\n\n"
+                        if execution_result['stdout']:
+                            result_content += f"Output:\n{execution_result['stdout']}\n"
+
+                    tool_results.append({
+                        'type': 'tool_result',
+                        'tool_use_id': tool_use.id,
+                        'content': result_content
+                    })
+
+                    print("Execution result sent back to Claude.")
+
+            # Add tool results to conversation history
+            messages.append({'role': 'user', 'content': tool_results})
+
+        if iteration_count >= max_iterations:
+            print("\n⚠️  Reached maximum iteration limit. Task may not be complete.")
+
+        print("\n=== Agentic loop completed ===")
+
+
+    def run_ai_generated_code(sandbox: Sandbox, ai_generated_code: str) -> ExecutionResult:
+        execution = sandbox.process.code_run(ai_generated_code)
+
+        result = ExecutionResult(
+            stdout=execution.result or "",
+            exit_code=execution.exit_code,
+            charts=execution.artifacts.charts if execution.artifacts else []
+        )
+
+        # Save any charts that were generated
+        if execution.artifacts and execution.artifacts.charts:
+            result_idx = 0
+            for chart in execution.artifacts.charts:
+                if chart.png:
+                    filename = f'chart-{result_idx}.png'
+                    with open(filename, 'wb') as f:
+                        f.write(base64.b64decode(chart.png))
+                    print(f'✓ Chart saved to {filename}')
+                    result_idx += 1
+
+        return result
+
+
+    if __name__ == "__main__":
+        main()
+    ```
+
+    ```typescript
+    import "dotenv/config";
+    import fs from "fs";
+    import Anthropic from "@anthropic-ai/sdk";
+    import { Daytona, Sandbox } from "@daytonaio/sdk";
+    import type {
+      MessageParam,
+      Tool,
+      ToolUseBlock,
+    } from "@anthropic-ai/sdk/resources/messages.mjs";
+
+    interface CodeRunToolInput {
+      code: string;
+    }
+
+    interface ExecutionResult {
+      stdout: string;
+      exitCode: number;
+      charts?: Array<{ png?: string }>;
+    }
+
+    async function main() {
+      // Create sandbox
+      const daytona = new Daytona();
+      const sandbox = await daytona.create();
+
+      // Upload the dataset to the sandbox
+      await sandbox.fs.uploadFile("dataset.csv", "/home/daytona/dataset.csv");
+
+      const initialPrompt = `
+    I have a CSV file with vehicle valuations saved in the sandbox at /home/daytona/dataset.csv.
+
+    Relevant columns:
+    - 'year': integer, the manufacturing year of the vehicle
+    - 'price_in_euro': float, the listed price of the vehicle in Euros
+
+    Analyze how price varies by manufacturing year.
+    Drop rows where 'year' or 'price_in_euro' is missing, non-numeric, or an outlier.
+    Create a line chart showing average price per year.
+    Write Python code that analyzes the dataset based on my request and produces a matplotlib chart accordingly.
+    Always finish with plt.show() to display the chart.`;
+
+      const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+
+      const tools: Tool[] = [
+        {
+          name: "run_python_code",
+          description: "Run Python code in the sandbox environment and get execution results",
+          input_schema: {
+            type: "object",
+            properties: {
+              code: {
+                type: "string",
+                description: "The Python code to run",
+              },
+            },
+            required: ["code"],
+          },
+        },
+      ];
+
+      // Initialize conversation history
+      const messages: MessageParam[] = [
+        { role: "user", content: initialPrompt },
+      ];
+
+      let continueLoop = true;
+      let iterationCount = 0;
+      const maxIterations = 10;
+
+      console.log("Starting agentic loop...\n");
+
+      while (continueLoop && iterationCount < maxIterations) {
+        iterationCount++;
+        console.log(`\n=== Iteration ${iterationCount} ===`);
+        console.log("Waiting for the model response...");
+
+        // Get response from Claude
+        const stream = anthropic.messages.stream({
+          model: "claude-sonnet-4-5",
+          max_tokens: 64000,
+          messages: messages,
+          tools: tools,
+        });
+
+        const message = await stream.finalMessage();
+
+        // Log Claude's text response
+        for (const contentBlock of message.content) {
+          if (contentBlock.type === "text") {
+            console.log("\nClaude's response:");
+            console.log(contentBlock.text);
+          }
+        }
+
+        // Check if Claude wants to use any tools
+        const toolUses = message.content.filter(
+          (block): block is ToolUseBlock => block.type === "tool_use"
+        );
+
+        if (toolUses.length === 0) {
+          // No more tool uses, Claude is done
+          console.log("\nTask completed - no more actions needed.");
+          continueLoop = false;
+          break;
+        }
+
+        // Add Claude's response to message history
+        messages.push({
+          role: "assistant",
+          content: message.content,
+        });
+
+        // Execute all tool calls and collect results
+        const toolResults = [];
+
+        for (const toolUse of toolUses) {
+          if (toolUse.name === "run_python_code") {
+            const code = (toolUse.input as CodeRunToolInput).code;
+            console.log("\n--- Executing Python code in sandbox ---");
+            console.log(code);
+            console.log("--- End of code ---\n");
+
+            // Execute the code in the sandbox
+            const executionResult = await runAIGeneratedCode(sandbox, code);
+
+            // Format the tool result
+            let resultContent = "";
+            if (executionResult.exitCode === 0) {
+              resultContent += `Execution successful!\n\n`;
+              if (executionResult.stdout) {
+                resultContent += `Output:\n${executionResult.stdout}\n`;
+              }
+              if (executionResult.charts && executionResult.charts.length > 0) {
+                resultContent += `\nGenerated ${executionResult.charts.length} chart(s).`;
+              } else {
+                resultContent += `\nNote: No charts were generated. Make sure to use plt.show() to display the chart.`;
+              }
+            } else {
+              resultContent += `Execution failed with exit code ${executionResult.exitCode}\n\n`;
+              if (executionResult.stdout) {
+                resultContent += `Output:\n${executionResult.stdout}\n`;
+              }
+            }
+
+            toolResults.push({
+              type: "tool_result" as const,
+              tool_use_id: toolUse.id,
+              content: resultContent,
+            });
+
+            console.log("Execution result sent back to Claude.");
+          }
+        }
+
+        // Add tool results to conversation history
+        messages.push({
+          role: "user",
+          content: toolResults,
+        });
+      }
+
+      if (iterationCount >= maxIterations) {
+        console.log(
+          "\n⚠️  Reached maximum iteration limit. Task may not be complete."
+        );
+      }
+
+      console.log("\n=== Agentic loop completed ===");
+    }
+
+    async function runAIGeneratedCode(
+      sandbox: Sandbox,
+      aiGeneratedCode: string
+    ): Promise<ExecutionResult> {
+      const execution = await sandbox.process.codeRun(aiGeneratedCode);
+
+      const result: ExecutionResult = {
+        stdout: execution.result || "",
+        exitCode: execution.exitCode,
+        charts: execution.artifacts?.charts,
+      };
+
+      // Save any charts that were generated
+      if (execution.artifacts?.charts) {
+        let resultIdx = 0;
+        for (const chart of execution.artifacts.charts) {
+          if (chart.png) {
+            const filename = `chart-${resultIdx}.png`;
+            fs.writeFileSync(filename, chart.png, {
+              encoding: "base64",
+            });
+            console.log(`✓ Chart saved to ${filename}`);
+            resultIdx++;
+          }
+        }
+      }
+
+      return result;
+    }
+
+    main().catch(console.error);
+    ```
+
+This guide demonstrates how to use the `DaytonaPlugin` for Google ADK to build an agent that generates, tests, and verifies code in a secure sandbox environment. The plugin enables agents to execute Python, JavaScript, and TypeScript code, run shell commands, and manage files within isolated Daytona sandboxes.
+
+In this example, we build a code generator agent that takes a natural language description of a function, generates the implementation in TypeScript, creates test cases, executes them in the sandbox, and iterates until all tests pass before returning the verified code.
+
+---
+
+### 1. Workflow Overview
+
+You describe the function you want in plain English, specifying the language (Python, JavaScript, or TypeScript). The agent generates the implementation, writes tests for it, and executes everything in a Daytona sandbox. If tests fail, the agent automatically fixes the code and re-runs until all tests pass. Only then does it return the verified, working code.
+
+The key benefit: you receive code that has already been tested and verified, not just generated.
+
+### 2. Project Setup
+
+#### Clone the Repository
+
+Clone the Daytona repository and navigate to the example directory:
+
+```bash
+git clone https://github.com/daytonaio/daytona
+cd daytona/guides/python/google-adk/code-generator-agent/gemini
+```
+
+#### Install Dependencies
+
+:::note[Python Version Requirement]
+This example requires **Python 3.10 or higher**. It's recommended to use a virtual environment (e.g., `venv` or `poetry`) to isolate project dependencies.
+:::
+
+Install the required packages for this example:
+
+    ```bash
+    pip install -U google-adk daytona-adk python-dotenv
+    ```
+
+    The packages include:
+    - `google-adk`: Google's Agent Development Kit for building AI agents
+    - `daytona-adk`: Provides the `DaytonaPlugin` that enables secure code execution in Daytona sandboxes
+    - `python-dotenv`: Used for loading environment variables from `.env` file
+
+#### Configure Environment
+
+Get your API keys and configure your environment:
+
+1. **Daytona API key:** Get it from [Daytona Dashboard](https://app.daytona.io/dashboard/keys)
+2. **Google API key:** Get it from [Google AI Studio](https://aistudio.google.com/apikey)
+
+Create a `.env` file in your project:
+
+```bash
+DAYTONA_API_KEY=dtn_***
+GOOGLE_API_KEY=***
+```
+
+### 3. Understanding the Core Components
+
+Before diving into the implementation, let's understand the key components we'll use:
+
+#### Google ADK Components
+
+- **Agent**: The AI model wrapper that processes requests and decides which tools to use. It receives instructions, has access to tools, and generates responses.
+- **App**: A top-level container that bundles agents with plugins into a single configuration unit. It provides centralized management for shared resources and defines the root agent for your workflow.
+- **InMemoryRunner**: The execution engine that runs agents and manages conversation state. It orchestrates the event-driven execution loop, handles message processing, and manages services like session history and artifact storage.
+
+:::note[Running the Agent]
+There are two ways to run Google ADK agents: using the `App` class with `InMemoryRunner`, or using `InMemoryRunner` directly with just an agent. The `App` serves as a configuration container that bundles agents with plugins, while the `Runner` handles actual execution and lifecycle management. This guide uses the `App` approach for cleaner organization of agents and plugins.
+:::
+
+#### Daytona Plugin
+
+The `DaytonaPlugin` provides tools that allow the agent to:
+- Execute code in Python, JavaScript, or TypeScript
+- Run shell commands
+- Upload and read files
+- Start long-running background processes
+
+All operations happen in an isolated sandbox that is automatically cleaned up when done.
+
+### 4. Initialize Environment and Imports
+
+First, we set up our imports and load environment variables:
+
+    ```python
+    import asyncio
+    import logging
+
+    from dotenv import load_dotenv
+    from google.adk.agents import Agent
+    from google.adk.apps import App
+    from google.adk.runners import InMemoryRunner
+
+    from daytona_adk import DaytonaPlugin
+
+    load_dotenv()
+
+    logging.basicConfig(level=logging.DEBUG)
+    ```
+
+    **What each import does:**
+    - `asyncio`: Required for running the async ADK runner
+    - `logging`: Enables debug output to see agent reasoning
+    - `load_dotenv`: Loads API keys from your `.env` file
+    - `Agent`, `App`, `InMemoryRunner`: Core Google ADK components
+    - `DaytonaPlugin`: Provides sandbox execution tools to the agent
+
+    **Logging configuration:**
+    The `logging.basicConfig(level=logging.DEBUG)` line configures Python's logging to show detailed debug output. You can adjust the logging level by passing different values:
+    - `logging.DEBUG`: Most verbose, shows all internal operations including DaytonaPlugin sandbox creation and tool invocations
+    - `logging.INFO`: Shows informational messages about agent progress
+    - `logging.WARNING`: Shows only warnings and errors
+    - `logging.ERROR`: Shows only errors
+
+    :::tip[Behind the Scenes]
+    With `DEBUG` level logging enabled, you can see the DaytonaPlugin's internal operations, including when the sandbox is created, when the `execute_code_in_daytona` tool is invoked, and when cleanup occurs. The plugin's `plugin_name` (configurable, defaults to `daytona_plugin`) appears in these log messages, making it easy to trace plugin activity.
+    :::
+
+### 5. Define the Response Extractor
+
+The ADK runner returns a list of events from the agent's execution. We need a helper function to extract the final text response:
+
+    ```python
+    def extract_final_response(response: list) -> str:
+        """Extract the final text response from a list of ADK events."""
+        for event in reversed(response):
+            text_parts = []
+
+            if hasattr(event, "text") and event.text:
+                return event.text
+            if hasattr(event, "content") and event.content:
+                content = event.content
+                if hasattr(content, "parts") and content.parts:
+                    for part in content.parts:
+                        if hasattr(part, "text") and part.text:
+                            text_parts.append(part.text)
+                    if text_parts:
+                        return "".join(text_parts)
+                if hasattr(content, "text") and content.text:
+                    return content.text
+            if isinstance(event, dict):
+                text = event.get("text") or event.get("content", {}).get("text")
+                if text:
+                    return text
+
+        return ""
+    ```
+
+    This function iterates through events in reverse order to find the last text response. It handles multiple possible event structures that the ADK may return.
+
+### 6. Define the Agent Instruction
+
+The instruction is critical - it defines how the agent behaves. Our instruction enforces a test-driven workflow:
+
+    ```python
+    AGENT_INSTRUCTION = """You are a code generator agent that writes verified, working code.
+    You support Python, JavaScript, and TypeScript.
+
+    Your workflow for every code request:
+    1. Write the function
+    2. Write tests for it
+    3. EXECUTE the code in the sandbox to verify it works - do not skip this step
+    4. If execution fails, fix and re-execute until tests pass
+    5. Once verified, respond with ONLY the function (no tests)
+
+    You must always execute code before responding. Never return untested code.
+    Only include tests in your response if the user explicitly asks for them.
+    """
+    ```
+
+    **Key aspects of this instruction:**
+    - **Enforces execution**: The agent must run code in the sandbox before responding
+    - **Iterative fixing**: If tests fail, the agent fixes and retries
+    - **Controlled output**: By default, the final response contains only the working function. If you want to see the tests, include an instruction to return them in your prompt.
+    - **Multi-language**: Supports Python, JavaScript, and TypeScript
+
+### 7. Configure the Daytona Plugin
+
+Initialize the plugin that provides sandbox execution capabilities:
+
+    ```python
+    plugin = DaytonaPlugin(
+        labels={"example": "code-generator"},
+    )
+    ```
+
+    **Configuration options:**
+    - `labels`: Custom metadata tags for the sandbox (useful for tracking/filtering)
+    - `api_key`: Daytona API key (defaults to `DAYTONA_API_KEY` env var)
+    - `sandbox_name`: Custom name for the sandbox
+    - `plugin_name`: Name displayed in logs when the plugin logs messages (defaults to `daytona_plugin`)
+    - `env_vars`: Environment variables to set in the sandbox
+    - `auto_stop_interval`: Minutes before auto-stop (default: 15)
+    - `auto_delete_interval`: Minutes before auto-delete (disabled by default)
+
+### 8. Create the Agent
+
+Create the agent with the Gemini model, our instruction, and the Daytona tools:
+
+    ```python
+    agent = Agent(
+        model="gemini-2.5-pro",
+        name="code_generator_agent",
+        instruction=AGENT_INSTRUCTION,
+        tools=plugin.get_tools(),
+    )
+    ```
+
+    **Parameters explained:**
+    - `model`: The Gemini model to use for reasoning and code generation
+    - `name`: Identifier for the agent
+    - `instruction`: The behavioral guidelines we defined
+    - `tools`: List of tools from the Daytona plugin that the agent can use
+
+### 9. Create the App and Runner
+
+Bundle the agent and plugin into an App, then run it:
+
+    ```python
+    app = App(
+        name="code_generator_app",
+        root_agent=agent,
+        plugins=[plugin],
+    )
+
+    async with InMemoryRunner(app=app) as runner:
+        prompt = "Write a TypeScript function called 'groupBy' that takes an array and a key function, and groups array elements by the key. Use proper type annotations."
+
+        response = await runner.run_debug(prompt)
+
+        final_response = extract_final_response(response)
+        print(final_response)
+    ```
+
+**What happens here:**
+1. The `App` bundles the agent with the plugin for proper lifecycle management
+2. `InMemoryRunner` is used as an async context manager (the `async with` statement). A context manager in Python automatically handles setup and cleanup - when the code enters the `async with` block, the runner initializes; when it exits (either normally or due to an error), the runner cleans up resources.
+3. `run_debug` sends the prompt and returns all execution events
+4. The sandbox is automatically deleted when the `async with` block exits - this cleanup happens regardless of whether the code completed successfully or raised an exception
+
+### 10. Running the Example
+
+Run the complete example:
 
     ```bash
     python main.py
     ```
 
-    ```bash
-    npx tsx index.mts
+#### Understanding the Agent's Execution Flow
+
+When you run the code, the agent works through your request step by step. With `logging.DEBUG` enabled, you'll see detailed output including:
+
+- **DaytonaPlugin operations**: Sandbox creation, tool invocations (`execute_code_in_daytona`), and cleanup
+- **LLM requests and responses**: The prompts sent to Gemini and the responses received
+- **Plugin registration**: Confirmation that the `daytona_plugin` was registered with the agent
+
+Here's what the debug output reveals about each step:
+
+**Step 1: Sandbox Creation**
+
+```
+DEBUG:daytona_adk.plugin:Daytona sandbox created: e38f8574-48ac-48f1-a0ff-d922d02b0fcb
+INFO:google_adk.google.adk.plugins.plugin_manager:Plugin 'daytona_plugin' registered.
+```
+
+The DaytonaPlugin creates an isolated sandbox and registers itself with the agent.
+
+**Step 2: Agent receives the request**
+
+The agent receives your prompt and understands it needs to create a TypeScript `groupBy` function with proper type annotations.
+
+**Step 3: Agent generates code and tests**
+
+The agent writes both the implementation and test cases, then calls the `execute_code_in_daytona` tool:
+
+```
+DEBUG:google_adk.google.adk.models.google_llm:
+LLM Response:
+-----------------------------------------------------------
+Function calls:
+name: execute_code_in_daytona, args: {'code': "...", 'language': 'typescript'}
+```
+
+**Step 4: Code execution in sandbox**
+
+```
+DEBUG:daytona_adk.plugin:Before tool: execute_code_in_daytona
+DEBUG:daytona_adk.tools:Executing typescript code (length: 1570 chars)
+DEBUG:daytona_adk.tools:Code execution completed with exit_code: 0
+DEBUG:daytona_adk.plugin:After tool: execute_code_in_daytona
+```
+
+The plugin executes the code in the isolated TypeScript environment and returns the result.
+
+**Step 5: Agent iterates if needed**
+
+If tests fail (exit_code != 0), the agent analyzes the error, fixes the code, and re-executes until all tests pass.
+
+**Step 6: Agent returns verified code**
+
+Once tests pass, the agent responds with only the working function. If you included an instruction to return tests in your prompt, the tests will also be included in the response.
+
+**Step 7: Cleanup**
+
+```
+INFO:daytona_adk.plugin:Deleting Daytona sandbox...
+INFO:daytona_adk.plugin:Daytona sandbox deleted.
+INFO:google_adk.google.adk.runners:Runner closed.
+```
+
+When the context manager exits, the sandbox is automatically deleted.
+
+#### Example Output
+
+When the agent completes the task, you'll see output like:
+
+````
+AGENT RESPONSE:
+------------------------------------------------------------
+```typescript
+function groupBy<T, K extends keyof any>(
+  array: T[],
+  keyFn: (item: T) => K
+): Record<K, T[]> {
+  return array.reduce((result, item) => {
+    const key = keyFn(item);
+    if (!result[key]) {
+      result[key] = [];
+    }
+    result[key].push(item);
+    return result;
+  }, {} as Record<K, T[]>);
+}
+```
+============================================================
+
+App closed, sandbox cleaned up. Done!
+````
+
+The agent has already tested this code in the sandbox before returning it, so you can trust that the implementation works correctly.
+
+#### Requesting Tests in the Response
+
+If you want to see the tests that were executed in the sandbox, include an instruction to return them in your prompt:
+
+```python
+prompt = "Write a TypeScript function called 'groupBy' that takes an array and a key function, and groups array elements by the key. Use proper type annotations. Return the tests also in a separate code block"
+```
+
+With this prompt, the agent will return both the function and the tests:
+
+````
+```typescript
+function groupBy<T, K extends keyof any>(
+  array: T[],
+  keyFn: (item: T) => K
+): Record<K, T[]> {
+  return array.reduce((result, item) => {
+    const key = keyFn(item);
+    if (!result[key]) {
+      result[key] = [];
+    }
+    result[key].push(item);
+    return result;
+  }, {} as Record<K, T[]>);
+}
+```
+
+```typescript
+import { deepStrictEqual } from 'assert';
+
+// Test case 1: Group by a property of an object
+const array1 = [
+  { id: 1, category: 'A' },
+  { id: 2, category: 'B' },
+  { id: 3, category: 'A' },
+];
+const result1 = groupBy(array1, (item) => item.category);
+deepStrictEqual(result1, {
+  A: [
+    { id: 1, category: 'A' },
+    { id: 3, category: 'A' },
+  ],
+  B: [{ id: 2, category: 'B' }],
+});
+
+// Test case 2: Group by length of strings
+const array2 = ['apple', 'banana', 'cherry', 'date'];
+const result2 = groupBy(array2, (item) => item.length);
+deepStrictEqual(result2, {
+  5: ['apple'],
+  6: ['banana', 'cherry'],
+  4: ['date'],
+});
+
+console.log('All tests passed!');
+```
+````
+
+### 11. Complete Implementation
+
+Here is the complete, ready-to-run example with additional output formatting for better readability:
+
+    ```python
+    """Code Generator & Tester Agent Example."""
+
+    import asyncio
+    import logging
+
+    from dotenv import load_dotenv
+    from google.adk.agents import Agent
+    from google.adk.apps import App
+    from google.adk.runners import InMemoryRunner
+
+    from daytona_adk import DaytonaPlugin
+
+    load_dotenv()
+
+    logging.basicConfig(level=logging.DEBUG)
+
+
+    def extract_final_response(response: list) -> str:
+        """Extract the final text response from a list of ADK events."""
+        for event in reversed(response):
+            text_parts = []
+
+            if hasattr(event, "text") and event.text:
+                return event.text
+            if hasattr(event, "content") and event.content:
+                content = event.content
+                if hasattr(content, "parts") and content.parts:
+                    for part in content.parts:
+                        if hasattr(part, "text") and part.text:
+                            text_parts.append(part.text)
+                    if text_parts:
+                        return "".join(text_parts)
+                if hasattr(content, "text") and content.text:
+                    return content.text
+            if isinstance(event, dict):
+                text = event.get("text") or event.get("content", {}).get("text")
+                if text:
+                    return text
+
+        return ""
+
+
+    AGENT_INSTRUCTION = """You are a code generator agent that writes verified, working code.
+    You support Python, JavaScript, and TypeScript.
+
+    Your workflow for every code request:
+    1. Write the function
+    2. Write tests for it
+    3. EXECUTE the code in the sandbox to verify it works - do not skip this step
+    4. If execution fails, fix and re-execute until tests pass
+    5. Once verified, respond with ONLY the function (no tests)
+
+    You must always execute code before responding. Never return untested code.
+    Only include tests in your response if the user explicitly asks for them.
+    """
+
+
+    async def main() -> None:
+        """Run the code generator agent example."""
+        plugin = DaytonaPlugin(
+            labels={"example": "code-generator"},
+        )
+
+        agent = Agent(
+            model="gemini-2.5-pro",
+            name="code_generator_agent",
+            instruction=AGENT_INSTRUCTION,
+            tools=plugin.get_tools(),
+        )
+
+        app = App(
+            name="code_generator_app",
+            root_agent=agent,
+            plugins=[plugin],
+        )
+
+        async with InMemoryRunner(app=app) as runner:
+            prompt = "Write a TypeScript function called 'groupBy' that takes an array and a key function, and groups array elements by the key. Use proper type annotations."
+
+            print("\n" + "=" * 60)
+            print("USER PROMPT:")
+            print("=" * 60)
+            print(prompt)
+            print("-" * 60)
+
+            response = await runner.run_debug(prompt)
+
+            final_response = extract_final_response(response)
+            print("\nAGENT RESPONSE:")
+            print("-" * 60)
+            print(final_response)
+            print("=" * 60)
+
+        print("\nApp closed, sandbox cleaned up. Done!")
+
+
+    if __name__ == "__main__":
+        asyncio.run(main())
     ```
 
-#### ✅ What You Just Did
+**Key advantages of this approach:**
 
-- Installed the Daytona SDK.
-- Created a secure sandbox environment.
-- Executed code remotely inside that sandbox.
-- Retrieved and displayed the output locally.
+- **Verified code:** Every response has been tested in a real execution environment
+- **Secure execution:** Code runs in isolated Daytona sandboxes, not on your machine
+- **Multi-language support:** Generate and test Python, JavaScript, or TypeScript
+- **Automatic iteration:** Agent fixes issues until tests pass
+- **Flexible output:** Returns only the working function by default, or includes tests if explicitly requested in the prompt
 
-You're now ready to use Daytona for secure, isolated code execution.
+### 12. API Reference
 
-<ExploreMore />
+For the complete API reference of the Daytona ADK plugin, including all available tools and configuration options, see the [daytona-adk documentation](https://github.com/daytonaio/daytona-adk-plugin#available-tools).
+
+Daytona provides a comprehensive set of guides to help you get started.
+The guides cover a wide range of topics, from basic usage to advanced topics, and showcase various types of integrations between Daytona and other tools.
+
+<GuidesList />
 
 import { Image } from 'astro:assets'
 
-import chartImage from '../../../assets/docs/images/langchain-data-analysis-chart.png'
+import chartImage from '../../../../../assets/docs/images/langchain-data-analysis-chart.png'
 
 This package provides the `DaytonaDataAnalysisTool` - LangChain tool integration that enables agents to perform secure Python data analysis in a sandboxed environment. It supports multi-step workflows, file uploads/downloads, and custom result handling, making it ideal for automating data analysis tasks with LangChain agents.
 
@@ -2290,7 +10697,7 @@ You provide the data and describe what insights you need - the agent handles the
 
 ### 2. Project Setup
 
-#### 2.1 Install Dependencies
+#### Install Dependencies
 
 :::note[Python Version Requirement]
 This example requires **Python 3.10 or higher** because it uses LangChain 1.0+ syntax. It's recommended to use a virtual environment (e.g., `venv` or `poetry`) to isolate project dependencies.
@@ -2308,7 +10715,7 @@ Install the required packages for this example:
     - `langchain-daytona-data-analysis`: Provides the `DaytonaDataAnalysisTool` for LangChain agents
     - `python-dotenv`: Used for loading environment variables from `.env` file
 
-#### 2.2 Configure Environment
+#### Configure Environment
 
 Get your API keys and configure your environment:
 
@@ -2328,7 +10735,7 @@ We'll be using a publicly available dataset of vehicle valuation. You can downlo
 
 [https://download.daytona.io/dataset.csv](https://download.daytona.io/dataset.csv)
 
-Download the file and save it as `vehicle-dataset.csv` in your project directory.
+Download the file and save it as `dataset.csv` in your project directory.
 
 ### 4. Initialize the Language Model
 
@@ -2344,7 +10751,6 @@ Configure the Claude model with the following parameters:
     model = ChatAnthropic(
         model_name="claude-sonnet-4-5-20250929",
         temperature=0,
-        max_tokens_to_sample=1024,
         timeout=None,
         max_retries=2,
         stop=None
@@ -2354,7 +10760,6 @@ Configure the Claude model with the following parameters:
     **Parameters explained:**
     - `model_name`: Specifies the Claude model to use
     - `temperature`: Tunes the degree of randomness in generation
-    - `max_tokens_to_sample`: Number of tokens to predict per generation
     - `max_retries`: Number of retries allowed for Anthropic API requests
 
 :::tip[Learn More About Models]
@@ -2404,19 +10809,18 @@ Now we'll initialize the `DaytonaDataAnalysisTool` and upload our dataset.
         on_result=process_data_analysis_result
     )
     
-    try:
-      # Upload the dataset with metadata describing its structure
-      with open("./vehicle-dataset.csv", "rb") as f:
-          DataAnalysisTool.upload_file(
-              f,
-              description=(
-                  "This is a CSV file containing vehicle valuations. "
-                  "Relevant columns:\n"
-                  "- 'year': integer, the manufacturing year of the vehicle\n"
-                  "- 'price_in_euro': float, the listed price of the vehicle in Euros\n"
-                  "Drop rows where 'year' or 'price_in_euro' is missing, non-numeric, or an outlier."
-              )
-          )
+    # Upload the dataset with metadata describing its structure
+    with open("./dataset.csv", "rb") as f:
+        DataAnalysisTool.upload_file(
+            f,
+            description=(
+                "This is a CSV file containing vehicle valuations. "
+                "Relevant columns:\n"
+                "- 'year': integer, the manufacturing year of the vehicle\n"
+                "- 'price_in_euro': float, the listed price of the vehicle in Euros\n"
+                "Drop rows where 'year' or 'price_in_euro' is missing, non-numeric, or an outlier."
+            )
+        )
     ```
 
     **Key points:**
@@ -2435,26 +10839,26 @@ Finally, we'll create the LangChain agent with our configured model and tool, th
     # Create the agent with the model and data analysis tool
     agent = create_agent(model, tools=[DataAnalysisTool], debug=True)
 
-        # Invoke the agent with our analysis request
-        agent_response = agent.invoke({
-            "messages": [{
-                "role": "user",
-                "content": "Analyze how vehicles price varies by manufacturing year. Create a line chart showing average price per year."
-            }]
-        })
-    finally:
-        # Always close the tool to clean up sandbox resources
-        DataAnalysisTool.close()
+    # Invoke the agent with our analysis request
+    agent_response = agent.invoke({
+        "messages": [{
+            "role": "user",
+            "content": "Analyze how vehicles price varies by manufacturing year. Create a line chart showing average price per year."
+        }]
+    })
+
+    # Always close the tool to clean up sandbox resources
+    DataAnalysisTool.close()
     ```
 
-    **What happens here:**
+  **What happens here:**
     1. The agent receives your natural language request
     2. It determines it needs to use the `DaytonaDataAnalysisTool`
     3. Agent generates Python code to analyze the data
     4. Code executes securely in the Daytona sandbox
     5. Results are processed by our handler function
     6. Charts are saved to your local directory
-    7. Sandbox resources are cleaned up in the `finally` block
+    7. Sandbox resources are cleaned up at the end
 
 ### 8. Running Your Analysis
 
@@ -2486,7 +10890,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Load the dataset
-df = pd.read_csv('/home/daytona/vehicle-dataset.csv')
+df = pd.read_csv('/home/daytona/dataset.csv')
 
 # Display basic info about the dataset
 print("Dataset shape:", df.shape)
@@ -2550,7 +10954,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Load the dataset
-df = pd.read_csv('/home/daytona/vehicle-dataset.csv')
+df = pd.read_csv('/home/daytona/dataset.csv')
 
 print("Dataset shape:", df.shape)
 print("\nColumn names:")
@@ -2608,7 +11012,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Load the dataset
-df = pd.read_csv('/home/daytona/vehicle-dataset.csv')
+df = pd.read_csv('/home/daytona/dataset.csv')
 
 print("Original dataset shape:", df.shape)
 
@@ -2751,7 +11155,6 @@ Here is the complete, ready-to-run example:
   model = ChatAnthropic(
       model_name="claude-sonnet-4-5-20250929",
       temperature=0,
-      max_tokens_to_sample=1024,
       timeout=None,
       max_retries=2,
       stop=None
@@ -2776,7 +11179,7 @@ Here is the complete, ready-to-run example:
       )
 
       try:
-          with open("./vehicle-dataset.csv", "rb") as f:
+          with open("./dataset.csv", "rb") as f:
               DataAnalysisTool.upload_file(
                   f,
                   description=(
@@ -2927,7 +11330,7 @@ Installs one or more Python packages in the sandbox using pip.
 - None
 
 :::note
-The list of preinstalled packages in a sandbox can be found at [Daytona's Default Snapshot documentation](https://www.daytona.io/docs/en/snapshots.md#default-snapshot).
+The list of preinstalled packages in a sandbox can be found at [Daytona's Default Snapshot documentation](https://www.daytona.io/docs/en/snapshots.md#default-snapshots).
 :::
 
 **Example**:
@@ -2981,11 +11384,2126 @@ Represents a Daytona sandbox instance.
 
 See the full structure and API in the [Daytona Python SDK Sandbox documentation](https://www.daytona.io/docs/en/python-sdk/sync/sandbox.md#sandbox).
 
+import { Image } from 'astro:assets'
+
+import lettaCodeAgentResult from '../../../../../assets/docs/images/letta-code-agent-result.gif'
+
+This guide demonstrates how to run an autonomous coding agent based on [Letta Code](https://docs.letta.com/letta-code/) inside a Daytona sandbox environment. The agent can develop web apps, write code in any language, install dependencies, and run scripts. Letta Code uses stateful agents with built-in memory, allowing conversations to persist across sessions.
+
+---
+
+### 1. Workflow Overview
+
+When you launch the main script, a Daytona sandbox is created and Letta Code is installed inside it. The agent is configured with a custom Daytona-aware system prompt.
+
+The script provides an interactive CLI interface where you can chat with the agent and issue commands:
+
+```
+$ npm run start
+Creating sandbox...
+Installing Letta Code...
+Starting Letta Code...
+Initializing agent...
+Agent initialized. Press Ctrl+C at any time to exit.
+
+User: create a beautiful, professional themed app that lets me write markdown documents and render them live
+Thinking...
+
+🔧 TodoWrite
+🔧 Write /home/daytona/markdown-editor/index.html
+🔧 TodoWrite
+🔧 Start HTTP server on port 8080
+🔧 TodoWrite
+Perfect! I've created a beautiful markdown editor with live preview for you! 🎉
+
+## Access your app here:
+https://8080-c157e5cb-5e11-4bb6-883d-c873169223b8.proxy.daytona.works
+
+## Features:
+
+✨ **Live Preview** — Real-time markdown rendering  
+
+📝 **Full Markdown Support** — Headers, text styles, lists, code blocks, tables, links, images  
+
+💾 **Auto-Save** — Persists to browser localStorage  
+
+📥 **Export** — Download as `.md` or standalone `.html`
+```
+
+The agent can host web apps and provide you with a preview link using the [Daytona Preview Links](https://www.daytona.io/docs/en/preview-and-authentication.md) feature. When your task involves running or previewing a web application, the agent automatically hosts the app and generates a link for you to inspect the live result:
+
+<Image
+  src={lettaCodeAgentResult}
+  alt="Markdown editor demo generated by Letta Code agent"
+  width={600}
+  style="max-width: 100%; height: auto; margin: 1rem 0;"
+/>
+
+You can continue interacting with your agent until you are finished. When you exit the program, the sandbox will be deleted automatically.
+
+### 2. Project Setup
+
+#### Clone the Repository
+
+First, clone the daytona [repository](https://github.com/daytonaio/daytona.git) and navigate to the example directory:
+
+```bash
+git clone https://github.com/daytonaio/daytona.git
+cd daytona/guides/typescript/letta-code
+```
+
+#### Configure Environment
+
+Get your Daytona API key from the [Daytona Dashboard](https://app.daytona.io/dashboard/keys) and your Letta API key from [Letta Platform](https://app.letta.com/api-keys).
+
+Copy `.env.example` to `.env` and add your keys:
+
+```bash
+DAYTONA_API_KEY=your_daytona_key
+SANDBOX_LETTA_API_KEY=your_letta_api_key
+```
+
+:::caution[API Key Security]
+In this example, your Letta API key is passed into the sandbox environment and may be accessible to any code executed within it.
+:::
+
+#### Local Usage
+
+:::note[Node.js Version]
+Node.js 18 or newer is required to run this example. Please ensure your environment meets this requirement before proceeding.
+:::
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the example:
+
+```bash
+npm run start
+```
+
+The Letta Code agent will initialize and present an interactive prompt where you can issue commands.
+
+### 3. Understanding the Agent's Architecture
+
+This example consists of two main TypeScript files:
+
+- **index.ts**: The main program that creates the Daytona sandbox, installs Letta Code, configures the system prompt, and provides an interactive CLI interface.
+- **letta-session.ts**: A helper class that manages PTY-based bidirectional communication with Letta Code, handling JSON message streaming and response parsing.
+
+#### Initialization
+
+On initialization, the main program:
+1. Creates a new [Daytona sandbox](https://www.daytona.io/docs/en/sandboxes.md) with your Letta API key included in the environment variables.
+2. Installs Letta Code globally inside the sandbox by running `npm install` with [process execution](https://www.daytona.io/docs/en/process-code-execution.md#process-execution).
+3. Creates a [PTY (pseudoterminal)](https://www.daytona.io/docs/en/pty.md) session in the sandbox for bidirectional communication with Letta Code.
+4. Launches Letta Code in [bidirectional headless mode](https://docs.letta.com/letta-code/headless/) with stream-json format through the PTY.
+5. Waits for user input and sends prompts to the agent through the PTY session.
+
+#### Main Program Code
+
+The program creates a [Daytona sandbox](https://www.daytona.io/docs/en/sandboxes.md) with the Letta API key passed as an environment variable:
+
+```typescript
+sandbox = await daytona.create({
+  envVars: { LETTA_API_KEY: process.env.SANDBOX_LETTA_API_KEY },
+})
+```
+
+#### Running Letta Code in a Pseudoterminal
+
+A [PTY (pseudoterminal)](https://www.daytona.io/docs/en/pty.md) is created for bidirectional communication with Letta Code:
+
+```typescript
+this.ptyHandle = await this.sandbox.process.createPty({
+  id: `letta-pty-${Date.now()}`,
+  onData: (data: Uint8Array) => this.handleData(data),
+})
+```
+
+Letta Code is then launched in [bidirectional headless mode](https://docs.letta.com/letta-code/headless/#bidirectional-mode) through the PTY:
+
+```typescript
+await this.ptyHandle.sendInput(
+  `letta --new --system-custom "${systemPrompt.replace(/"/g, '\\"')}" --input-format stream-json --output-format stream-json --yolo -p\n`,
+)
+```
+
+The `stream-json` setting is used for the input and output formats, enabling our program to send and receive JSON messages to and from the agent in real-time.
+
+The `--system-custom` prompt allows us to pass a custom system prompt to the agent. Our prompt configures the agent with Daytona-specific instructions, including a URL pattern so the agent can generate preview links.
+
+The `--yolo` flag allows the agent to run shell commands without requiring explicit user approval for each command.
+
+#### Message Handling
+
+To send prompts to the agent, the main script calls the `processPrompt()` method, which formats the user input as a JSON message and sends it to the PTY using `this.ptyHandle.sendInput()` as demonstrated above.
+
+Formatted user messages look like this:
+
+```json
+{"type": "user", "message": {"role": "user", "content": "create a simple web server"}}
+```
+
+The agent responds with streaming JSON messages. Tool calls arrive as fragments:
+
+```json
+{"type": "message", "message_type": "approval_request_message", "tool_call": {"tool_call_id": "call_123", "name": "Bash", "arguments": "{\"command\": \"python3 -m http.server 8080\"}"}}
+```
+
+These JSON fragments are parsed by the `handleParsedMessage()` method. When multiple consecutive fragments are received for the same tool call, they are combined into a single tool call object. When a tool call or message is finished, the result is formatted and displayed to the user.
+
+#### Clean up
+
+When you exit the main program, the Daytona sandbox and all files are automatically deleted.
+
+**Key advantages:**
+
+- Secure, isolated execution in Daytona sandboxes
+- Stateful agents with persistent memory across sessions
+- Full Letta Code capabilities including file operations and shell commands
+- Agents can be viewed in [Letta's Agent Development Environment](https://app.letta.com/)
+- Automatic preview link generation for hosted services
+- Multi-language and full-stack support
+- Simple setup and automatic cleanup
+
+This guide demonstrates how to configure the [Mastra coding agent](https://github.com/mastra-ai/template-coding-agent) to use Daytona sandboxes, enabling you to leverage AI capabilities for any coding-related task in a secure, isolated environment.
+
+---
+
+## Workflow Overview
+
+Once configured, you can use Mastra Studio to interact with the coding agent through a ChatGPT-like interface. This enables human-in-the-loop workflows where you can guide the agent, review its decisions, and iterate on solutions in real-time; all while the agent executes tasks securely within Daytona sandboxes.
+
+## Project Setup
+
+:::caution[Node.js version]
+Node.js version 20 or higher is required to run the coding agent. Please ensure your environment meets this requirement before proceeding.
+:::
+
+### Clone the Repository
+
+Clone the Mastra coding agent template repository, which includes the agent implementation and Daytona integration:
+
+```bash
+git clone https://github.com/mastra-ai/template-coding-agent.git
+cd template-coding-agent
+```
+
+### Configure Environment
+
+Create a `.env` file in the project root directory:
+
+```bash
+touch .env
+```
+
+The `.env` file requires the following configuration:
+
+- **LLM Provider**: The AI model provider for your coding agent
+- **Model**: The specific model to use from your chosen provider
+- **Sandbox Provider**: Daytona configuration for isolated execution
+
+For this guide, we'll use OpenAI as the LLM provider with the `gpt-4o-mini` model:
+
+```env
+OPENAI_API_KEY=your_openai_key
+MODEL=openai/gpt-4o-mini
+```
+
+Next, configure Daytona as your sandbox provider by adding your API key (available from the [Daytona Dashboard](https://app.daytona.io/dashboard/keys)):
+
+```env
+DAYTONA_API_KEY=your-daytona-api-key-here
+```
+
+### Install Dependencies
+
+Install the required packages using pnpm:
+
+```bash
+pnpm install
+```
+
+## Running the Agent
+
+Mastra Studio provides a ChatGPT-like interface for interacting with your coding agent. This mode offers:
+
+- **Conversation History**: Previous conversations are stored and organized in threads
+- **Visual Debugging**: Inspect agent execution steps, workflow, and tool calls
+- **Model Switching**: Easily switch between different AI models
+- **Tool Inspection**: View which tools your agent is using in real-time
+
+For a complete overview of all features and capabilities, visit the [Mastra Studio documentation](https://mastra.ai/docs/getting-started/studio).
+
+Start the dev server with:
+
+```bash
+pnpm run dev
+```
+
+If the dev server starts successfully, you'll see the terminal output displaying the URLs where you can access Mastra Studio:
+
+```bash
+│ Studio: http://localhost:4111
+│ API:    http://localhost:4111/api
+```
+
+Once started, open the provided URL in your browser to access the interactive interface. You can interact with your agent while monitoring its workflow in the terminal, where detailed logs show execution steps and low-level parameters.
+
+Below is an example of terminal logs generated when the agent calls the `writeFile` tool to create a JavaScript file with a basic "Hello, world!" output:
+
+```json
+{
+  "text": "",
+  "toolCalls": [
+    {
+      "type": "tool-call",
+      "runId": "ab2a1d08-91c6-4028-9046-3446a721527f",
+      "from": "AGENT",
+      "payload": {
+        "toolCallId": "call_NiLLgBmgrYLSL0MsrG54E4A5",
+        "toolName": "writeFile",
+        "args": {
+          "sandboxId": "2152d23b-5742-47c2-9992-4414d4144869",
+          "path": "hello.js",
+          "content": "console.log('Hello, world!');"
+        },
+        "providerMetadata": {
+          "openai": {
+            "itemId": "fc_00bba3412cd22a2b0069399fbaeef881909b0583f359cbc33c"
+          }
+        }
+      }
+    }
+  ],
+  "toolResults": [
+    {
+      "type": "tool-result",
+      "runId": "ab2a1d08-91c6-4028-9046-3446a721527f",
+      "from": "AGENT",
+      "payload": {
+        "args": {
+          "sandboxId": "2152d23b-5742-47c2-9992-4414d4144869",
+          "path": "hello.js",
+          "content": "console.log('Hello, world!');"
+        },
+        "toolCallId": "call_NiLLgBmgrYLSL0MsrG54E4A5",
+        "toolName": "writeFile",
+        "result": {
+          "success": true,
+          "path": "/home/daytona/hello.js"
+        },
+        "providerMetadata": {
+          "openai": {
+            "itemId": "fc_00bba3412cd22a2b0069399fbaeef881909b0583f359cbc33c"
+          }
+        }
+      }
+    }
+  ],
+  "finishReason": "tool-calls",
+  "usage": {
+    "inputTokens": 4243,
+    "outputTokens": 53,
+    "totalTokens": 4296,
+    "reasoningTokens": 0,
+    "cachedInputTokens": 4096
+  },
+  "runId": "ab2a1d08-91c6-4028-9046-3446a721527f"
+}
+```
+
+These logs show complete visibility into tool execution including arguments, results, token usage with caching metrics, and unique identifiers for debugging.
+
+## Example Usage
+
+Let's walk through a practical example to see the Mastra coding agent and Daytona sandbox integration in action. We'll ask the agent to complete the following task:
+
+> _"Create a Python file with a function that reverses a string, write a test file for it, and run the tests."_
+
+### Agent Workflow
+
+The agent executes this task through a series of coordinated steps, utilizing different tools to interact with the Daytona sandbox:
+
+#### 1. Create Sandbox
+
+The agent first provisions a new Daytona sandbox for Python development:
+
+**Tool:** `createSandbox`
+
+**Arguments:**
+
+```json
+{
+  "name": "reverse_string_project",
+  "labels": null,
+  "language": "python",
+  "envVars": null
+}
+```
+
+**Result:**
+
+```json
+{
+  "sandboxId": "bdfa9456-4945-43a7-97df-b9bfbcbdc62e"
+}
+```
+
+#### 2. Write Project Files
+
+Next, the agent creates both the implementation and test files in a single operation:
+
+**Tool:** `writeFiles`
+
+**Arguments:**
+
+```json
+{
+  "sandboxId": "bdfa9456-4945-43a7-97df-b9bfbcbdc62e",
+  "files": [
+    {
+      "path": "reverse_string.py",
+      "data": "def reverse_string(s):\n    \"\"\"Return the reversed version of the input string s.\"\"\"\n    return s[::-1]\n"
+    },
+    {
+      "path": "test_reverse_string.py",
+      "data": "import unittest\nfrom reverse_string import reverse_string\n\nclass TestReverseString(unittest.TestCase):\n    def test_regular(self):\n        self.assertEqual(reverse_string(\"hello\"), \"olleh\")\n    def test_empty(self):\n        self.assertEqual(reverse_string(\"\"), \"\")\n    def test_single_char(self):\n        self.assertEqual(reverse_string(\"a\"), \"a\")\n    def test_numbers(self):\n        self.assertEqual(reverse_string(\"12345\"), \"54321\")\n\nif __name__ == \"__main__\":\n    unittest.main()\n"
+    }
+  ]
+}
+```
+
+**Result:**
+
+```json
+{
+  "success": true,
+  "filesWritten": [
+    "/home/daytona/reverse_string.py",
+    "/home/daytona/test_reverse_string.py"
+  ]
+}
+```
+
+#### 3. Execute Tests
+
+Finally, the agent runs the test suite to verify the implementation:
+
+**Tool:** `runCommand`
+
+**Arguments:**
+
+```json
+{
+  "sandboxId": "bdfa9456-4945-43a7-97df-b9bfbcbdc62e",
+  "command": "python3 test_reverse_string.py",
+  "envs": null,
+  "workingDirectory": null,
+  "timeoutSeconds": 20,
+  "captureOutput": true
+}
+```
+
+**Result:**
+
+```json
+{
+  "success": true,
+  "exitCode": 0,
+  "stdout": "....\n----------------------------------------------------------------------\nRan 4 tests in 0.000s\n\nOK\n",
+  "command": "python3 test_reverse_string.py",
+  "executionTime": 218
+}
+```
+
+### Agent Response
+
+After successfully completing all steps, the agent provides a detailed summary:
+
+```
+The project is complete! Here's what was done:
+
+✓ Created reverse_string.py with a function to reverse a string.
+✓ Created test_reverse_string.py using Python's unittest to test the function with several cases.
+✓ Ran the tests—all tests passed successfully.
+
+Test Output:
+....
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
+
+Would you like to see the code for either file or make any changes?
+```
+
+This example demonstrates how the agent autonomously handles the entire development workflow, from environment setup to test execution, all within the secure Daytona sandbox environment.
+
+:::tip[Sandbox Management]
+After the agent completes its task, you'll see the active sandbox in your [Daytona Dashboard](https://app.daytona.io/dashboard). It's recommended to clean up resources when finished, unless your use case requires the sandbox to remain active (e.g. for preview URLs or ongoing development).
+:::
+
+**Key Advantages**
+
+- **Secure Isolation**: All agent operations run in isolated Daytona sandboxes, protecting your local environment
+- **Multi-Language Support**: Execute code across different programming languages without local setup
+- **Enhanced Debugging**: Use Mastra Studio to visualize and debug agent workflows in real-time
+- **Scalable Execution**: Leverage Daytona's cloud infrastructure for resource-intensive tasks
+
+This guide walks you through setting up [OpenClaw](https://openclaw.ai/) inside a Daytona sandbox and configuring Telegram and WhatsApp channels.
+
+Running OpenClaw in a Daytona sandbox keeps your AI assistant isolated from your local machine, provides a secure environment for code execution, and ensures your bot stays online 24/7 without tying up your personal computer.
+
+### Prerequisites
+
+- Daytona account and API key (Get it from [Daytona Dashboard](https://app.daytona.io/dashboard/keys))
+- Local terminal (macOS, Linux, or Windows)
+
+### Install the Daytona CLI
+
+    ```bash
+    brew install daytonaio/cli/daytona
+    ```
+    ```bash
+    powershell -Command "irm https://get.daytona.io/windows | iex"
+    ```
+
+:::note
+Already have the CLI? Check your version with `daytona --version`. If it's below **0.135.0**, [upgrade to the latest version](https://www.daytona.io/docs/en/getting-started.md#cli).
+:::
+
+### Authenticate with Daytona
+
+Log in to your Daytona account using your API key:
+
+```bash
+daytona login --api-key=YOUR_API_KEY
+```
+
+Replace `YOUR_API_KEY` with your actual Daytona API key.
+
+### Create a Sandbox
+
+Create a sandbox for running OpenClaw:
+
+```bash
+daytona sandbox create --name openclaw --snapshot daytona-medium --auto-stop 0
+```
+
+OpenClaw comes preinstalled in the default Daytona snapshot, so the command above is all you need.
+
+:::note
+The `--auto-stop 0` flag disables automatic shutdown, keeping OpenClaw accessible until you manually stop or delete the sandbox. The `daytona-medium` snapshot is required because the OpenClaw gateway needs a minimum of 2GB memory.
+:::
+
+### Connect to the Sandbox
+
+SSH into your sandbox:
+
+```bash
+daytona ssh openclaw
+```
+
+### Run OpenClaw Onboarding
+
+Start the onboarding process:
+
+```bash
+openclaw onboard
+```
+
+:::note
+The model provider steps below are for Anthropic. If using a different provider, follow the prompts for your chosen option.
+:::
+
+Follow the prompts:
+
+1. **Security acknowledgment:** Accept to continue
+2. **Onboarding mode:** Select **Quickstart**
+3. **Model/auth provider:** Select **Anthropic**
+4. **Anthropic auth method:** Select **Anthropic API key**
+5. **Enter Anthropic API key:** Paste your API key
+6. **Default model:** Keep current (default: `anthropic/claude-opus-4-5`)
+7. **Select channel:** Choose **Skip for now** (we'll configure channels later)
+8. **Configure skills:** Select **No** (configure later based on your needs)
+9. **Enable hooks:** Select **Skip for now** (configure later based on your needs)
+10. **Gateway service:** Select **Skip** (already installed)
+
+When onboarding finishes, the output will display a **Dashboard ready** section with a dashboard link. Your gateway token is the value after `?token=` in the URL. Save this token - you'll need it to connect to the dashboard.
+
+Also, OpenClaw will ask you to **Install shell completion script?** - choose whatever you prefer, this is optional and doesn't affect functionality.
+
+### Start the Gateway
+
+Run the gateway in the background:
+
+```bash
+nohup openclaw gateway run > /tmp/gateway.log 2>&1 &
+```
+
+The `&` runs the gateway as a background process, keeping your terminal free for other commands. The `nohup` ensures the gateway keeps running even after you close the SSH connection.
+
+### Access the Dashboard
+
+The OpenClaw dashboard is a web interface for managing your assistant, monitoring connections, and configuring channels. To access it, you need a [preview URL](https://www.daytona.io/docs/en/preview.md) that exposes the gateway port running inside your sandbox.
+
+In your local terminal (not inside the sandbox SSH session), generate the preview URL:
+
+```bash
+daytona preview-url openclaw --port 18789
+```
+
+This command generates a [signed preview URL](https://www.daytona.io/docs/en/preview.md#signed-preview-url) that securely exposes the port.
+
+Open the URL in your browser, go to the **Overview** section, paste your gateway token in the **Gateway Token** field, and click **Connect**.
+
+:::tip
+The preview URL expires after 1 hour by default (customizable with `--expires` flag). When it expires, simply run the same CLI command to generate a new one.
+:::
+
+### Pair Your Browser
+
+OpenClaw uses device pairing as a security measure - only approved devices can connect to and control your assistant. When you first attempt to connect from the dashboard, your browser registers as a new device that needs approval.
+
+List pending device requests:
+
+```bash
+openclaw devices list
+```
+
+Approve your device:
+
+```bash
+openclaw devices approve REQUEST_ID
+```
+
+Replace `REQUEST_ID` with the value from the **Request** column.
+
+Click **Connect** again in the dashboard.
+
+Once connected, you should see a green status indicator - your OpenClaw is now ready to use.
+
+### Security
+
+Running OpenClaw this way provides three layers of security:
+
+1. **Preview URL:** Time-limited access to the dashboard port
+2. **Gateway token:** Required to authenticate with the dashboard
+3. **Device approval:** Only approved devices can connect and control your assistant
+
+Even if someone obtains your dashboard URL, they cannot connect without the gateway token and an approved device.
+
+:::caution
+Keep your gateway token and preview URL secret. Do not share them publicly.
+:::
+
+---
+
+### Configure Telegram
+
+Set up a Telegram bot to chat with OpenClaw.
+
+#### Create a Telegram Bot
+
+1. Open Telegram and search for **@BotFather**
+2. Send `/start`, then `/newbot`
+3. Enter a name for your bot
+4. Enter a username for your bot
+5. Copy the bot token provided
+
+#### Configure OpenClaw
+
+Enable Telegram and set your bot token:
+
+```bash
+openclaw config set channels.telegram.enabled true
+openclaw config set channels.telegram.botToken YOUR_BOT_TOKEN
+```
+
+Verify the configuration:
+
+```bash
+openclaw config get channels.telegram
+```
+
+#### Restart the Gateway
+
+```bash
+openclaw gateway stop
+nohup openclaw gateway run > /tmp/gateway.log 2>&1 &
+```
+
+#### Complete Verification
+
+1. Open your bot's chat in Telegram and click **Start**
+2. A pairing code will appear. Approve the pairing request:
+
+```bash
+openclaw pairing approve telegram PAIRING_CODE
+```
+
+You can now message your OpenClaw through Telegram.
+
+---
+
+### Configure WhatsApp
+
+Set up WhatsApp to chat with OpenClaw.
+
+#### Run Configuration
+
+```bash
+openclaw config --section channels
+```
+
+When prompted:
+
+1. Select **Local (this machine)** for gateway location
+2. Choose **Configure/link**
+3. Select **WhatsApp (QR link)**
+4. Select **Yes** for "Link WhatsApp now (QR)?"
+
+#### Scan the QR Code
+
+Open WhatsApp on your phone, go to **Settings → Linked Devices → Link a Device**, and scan the QR code displayed in your terminal.
+
+Once paired, you'll see:
+
+```
+✅ Linked after restart; web session ready.
+```
+
+#### Set Up Your Phone Number
+
+Select **This is my personal phone number** (or choose the other option if you have a separate phone for OpenClaw) and enter your phone number when prompted.
+
+#### Finish Configuration
+
+When prompted to select another channel, choose **Finished**. You'll see:
+
+```
+└  Configure complete.
+```
+
+#### Start Chatting
+
+Send a message to yourself in WhatsApp - OpenClaw will respond. You can give it instructions and information on how to behave directly in the chat.
+
+:::tip
+To allow other users to chat with OpenClaw, add their phone numbers to the **Allow From** list in **Channels → WhatsApp** inside the dashboard. When they send a message, OpenClaw will respond.
+:::
+
+import { Image } from 'astro:assets'
+
+import opencodeResult from '../../../../../assets/docs/images/opencode-web-agent.gif'
+
+This guide demonstrates how to run the [OpenCode](https://opencode.ai/) coding agent inside a Daytona sandbox environment using OpenCode's easy-to-use [web interface](https://opencode.ai/docs/web/).
+
+The agent can develop web apps, write code in any language, install dependencies, and run scripts. It supports over 75 different LLM providers and can start dev servers with preview links for live apps.
+
+---
+
+### 1. Workflow Overview
+
+When you launch the main script, a Daytona sandbox is created and OpenCode is installed inside it. OpenCode is configured with a custom Daytona-aware agent.
+
+The script provides a preview link to access the web interface, where you can create, configure and interact with agent sessions:
+
+```
+$ npm run start
+Creating sandbox...
+Installing OpenCode...
+Starting OpenCode web server...
+Press Ctrl+C to stop.
+
+
+             ▄
+█▀▀█ █▀▀█ █▀▀█ █▀▀▄ █▀▀▀ █▀▀█ █▀▀█ █▀▀█
+█░░█ █░░█ █▀▀▀ █░░█ █░░░ █░░█ █░░█ █▀▀▀
+▀▀▀▀ █▀▀▀ ▀▀▀▀ ▀  ▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀ ▀▀▀▀
+
+  Web interface:      https://3000-1e0f775c-c01b-40e7-8c64-062fd3dadd75.proxy.daytona.works/
+```
+
+The agent can host web apps and provide you with a preview link using the [Daytona Preview Links](https://www.daytona.io/docs/en/preview-and-authentication.md) feature. When your task involves running or previewing a web application, the agent automatically reasons about this need, hosts the app, and generates a preview link for you to inspect the live result:
+
+<Image
+  src={opencodeResult}
+  alt="Web app demo generated by OpenCode coding agent"
+  width={600}
+  style="max-width: 100%; height: auto; margin: 1rem 0;"
+/>
+
+You can continue interacting with your agent until you are finished. When you exit the program, the sandbox will be deleted automatically.
+
+### 2. Project Setup
+
+#### Clone the Repository
+
+First, clone the Daytona [repository](https://github.com/daytonaio/daytona.git) and navigate to the example directory:
+
+```bash
+git clone https://github.com/daytonaio/daytona.git
+cd daytona/guides/typescript/opencode
+```
+
+#### Configure Environment
+
+Get your API key from the [Daytona Dashboard](https://app.daytona.io/dashboard/keys).
+
+Copy `.env.example` to `.env` and add your key:
+
+```bash
+DAYTONA_API_KEY=your_daytona_key
+```
+
+#### Local Usage
+
+:::note[Node.js Version]
+Node.js 18 or newer is required to run this example. Please ensure your environment meets this requirement before proceeding.
+:::
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the example:
+
+```bash
+npm run start
+```
+
+The OpenCode web interface will start and wait for you to open it in your browser.
+
+### Models and API Providers
+
+OpenCode works with [over 75 LLM providers](https://opencode.ai/docs/providers/), with a free provider selected by default. You can change the model or provider at any time using the menu below the prompt input in the web interface. If your chosen provider needs an API key, you’ll be prompted to enter it.
+
+#### Persisting API Keys
+
+To persist API keys between uses of the script, you can set them as environment variables when creating the Daytona sandbox.
+
+For example, to use an Anthropic API key, modify the `daytona.create()` call in `src/index.ts` to include your desired API key:
+
+```typescript
+sandbox = await daytona.create({
+  envVars: {
+    ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY || '',
+  },
+})
+```
+
+### 3. Understanding the Script
+
+This example consists of a Node.js script that installs, configures and runs OpenCode inside a Daytona sandbox.
+
+#### Initialization
+
+On initialization, the main script:
+1. Creates a new [Daytona sandbox](https://www.daytona.io/docs/en/sandboxes.md).
+2. Installs OpenCode globally inside the sandbox using npm with [process execution](https://www.daytona.io/docs/en/process-code-execution.md#process-execution).
+3. Creates and uploads a [custom agent configuration](https://opencode.ai/docs/agents/) with Daytona-specific system prompt.
+4. Starts the OpenCode web server inside the sandbox on port 3000.
+5. Substitutes the URL in OpenCode's output with a [Daytona preview link](https://www.daytona.io/docs/en/preview-and-authentication.md) for the web interface.
+
+#### Main Script Code
+
+The script creates a session and executes OpenCode as an asynchronous command, which allows it to stream output while keeping the process alive:
+
+```typescript
+const command = await sandbox.process.executeSessionCommand(sessionId, {
+  command: `${envVar} opencode web --port ${OPENCODE_PORT}`,
+  runAsync: true,
+})
+```
+
+When OpenCode starts its web server, it prints a link to its web UI using a localhost address (e.g., `http://127.0.0.1:3000`). However, since the sandbox runs remotely, this localhost link is only accessible inside the sandbox itself. To solve this, the script parses OpenCode’s output, and replaces the URL with the corresponding Daytona preview link.
+
+```typescript
+const opencodePreviewLink = await sandbox.getPreviewLink(OPENCODE_PORT)
+const replaceUrl = (text: string) =>
+  text.replace(
+    new RegExp(`http:\\/\\/127\\.0\\.0\\.1:${OPENCODE_PORT}`, 'g'),
+    opencodePreviewLink.url
+  )
+```
+
+#### OpenCode Agent Configuration
+
+A custom system prompt is used to instruct the agent on how to use Daytona sandbox paths and preview links. This prompt is packaged into a JSON configuration string, which is passed to the sandbox as the `OPENCODE_CONFIG_CONTENT` environment variable:
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "default_agent": "daytona",
+  "agent": {
+    "daytona": {
+      "description": "Daytona sandbox-aware coding agent",
+      "mode": "primary",
+      "prompt": "You are running in a Daytona sandbox. Use the /home/daytona directory instead of /workspace for file operations. When running services on localhost, they will be accessible as: <PREVIEW_URL_PATTERN>. When starting a server, always give the user the preview URL to access it. When starting a server, start it in the background with & so the command does not block further instructions."
+    }
+  }
+}
+```
+
+The `<PREVIEW_URL_PATTERN>` in the agent prompt is a template URL where `{PORT}` is a placeholder for the port to access on the Daytona sandbox. This template string is created by generating a [preview link](https://www.daytona.io/docs/en/preview-and-authentication.md) for a specific port number and then replacing the port number with `{PORT}`.
+
+#### Clean up
+
+When you press `Ctrl+C`, the script automatically cleans up by deleting the sandbox:
+
+```typescript
+process.once('SIGINT', async () => {
+  console.log('\nCleaning up...')
+  if (sandbox) await sandbox.delete()
+  process.exit(0)
+})
+```
+
+**Key advantages:**
+
+- Secure, isolated execution in Daytona sandboxes
+- OpenCode Web interface accessible via browser
+- Support for 75+ LLM providers
+- All agent code execution happens inside the sandbox
+- Automatic preview link generation for deployed services
+- Custom agent configuration for Daytona-specific workflows
+- Clean resource management with automatic sandbox cleanup
+
+This guide demonstrates how to build a recursive language model (RLM) agent system that uses Daytona sandboxes, based on the approach pioneered in [Recursive Language Models](https://arxiv.org/abs/2512.24601) (Zhang, Kraska, Khattab) and further explored by [Prime Intellect](https://www.primeintellect.ai/blog/rlm).
+
+While the original paper and Prime Intellect's implementation focus on single-level recursion (depth=1), this guide extends the concept to **unlimited recursion depth** — agents can spawn sub-agents, which can spawn their own sub-agents, and so on. Each agent runs in its own isolated Daytona sandbox with a fresh clone of the target repository.
+
+---
+
+### 1. Workflow Overview
+
+The system implements a recursive agent architecture where agents can delegate subtasks to child agents:
+
+1. **Initialize**: Root agent receives a task and gets a Daytona sandbox with a fresh repository clone
+2. **Iterate**: Agent runs a loop: LLM call → extract Python code → execute in REPL
+3. **Delegate**: Code can call `rlm_query()` to spawn sub-agents, each with their own sandbox
+4. **Aggregate**: Sub-agents return results; parent synthesizes findings and optionally runs more code
+5. **Complete**: Root agent receives all sub-agent results, produces a git patch; all sandboxes are cleaned up
+
+```
+Root Agent (depth=0)
+├── Sub-Agent A (depth=1)
+│   ├── Sub-Agent A1 (depth=2)
+│   └── Sub-Agent A2 (depth=2)
+└── Sub-Agent B (depth=1)
+    ├── Sub-Agent B1 (depth=2)
+    └── Sub-Agent B2 (depth=2)
+```
+
+Each agent runs in its own isolated Daytona sandbox with a fresh repository clone, enabling parallel exploration.
+
+### 2. Setup
+
+#### Clone the Repository
+
+Clone the [Daytona repository](https://github.com/daytonaio/daytona.git) and navigate to the example directory:
+
+```bash
+git clone https://github.com/daytonaio/daytona.git
+cd daytona/guides/python/recursive-language-models
+```
+
+#### Create Virtual Environment
+
+```bash
+python3.10 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+#### Install Dependencies
+
+```bash
+pip install -e .
+```
+
+This installs:
+- `daytona` - Daytona SDK for sandbox management
+- `litellm` - Unified LLM interface for any provider
+- `typer` - CLI framework
+- `pyyaml` - Configuration parsing
+
+#### Configure Environment
+
+Get your Daytona API key from the [Daytona Dashboard](https://app.daytona.io/dashboard/keys) and create a `.env` file:
+
+```bash
+DAYTONA_API_KEY=your_daytona_api_key
+LLM_API_KEY=your_llm_api_key
+```
+
+The `LLM_API_KEY` is used via [LiteLLM](https://docs.litellm.ai/), supporting OpenRouter, OpenAI, Anthropic, and other providers.
+
+### 3. Running an Agent
+
+With setup complete, let's run an agent. Here's an example that investigates TODO comments in scikit-learn:
+
+```bash
+python run.py https://github.com/scikit-learn/scikit-learn \
+  -p "Investigate TODO comments across this repository. Spawn sub-agents to explore different modules. Find the easiest TODO and fix it."
+```
+
+This spawns a root agent that explores the codebase, delegates to sub-agents for parallel investigation, and produces a git patch fixing the easiest TODO it finds. We'll walk through the results and trace the execution in detail later, but first, let's look at how the code works.
+
+#### CLI Options
+
+| Option | Description |
+|--------|-------------|
+| `repo` | GitHub repository URL (required) |
+| `-p, --prompt` | Task prompt for the agent (required) |
+| `-b, --branch` | Branch name (optional) |
+| `--commit` | Specific commit SHA (optional) |
+| `-c, --config` | Path to config file (default: `config.yaml`) |
+| `-o, --output` | Output file for patch (default: stdout) |
+
+### 4. Understanding the Code
+
+Let's walk through the key components of the agent system.
+
+#### Agent Execution Loop
+
+Each agent runs an iteration loop that calls the LLM, extracts code blocks, and executes them. The core loop in `agent.py`:
+
+    ```python
+    def _run_loop(self) -> None:
+        """Run the main iteration loop."""
+        system_prompt = build_system_prompt(depth=self.depth)
+        messages = [{"role": "system", "content": system_prompt}]
+        execution_result = None
+
+        for iteration in range(self.config.rlm.max_iterations):
+            # Check global timeout
+            if self._is_timeout():
+                break
+
+            # Build user prompt with previous execution result
+            user_prompt = build_user_prompt(iteration, execution_result)
+            messages.append({"role": "user", "content": user_prompt})
+
+            # Get model completion
+            response = self.client.completion(messages)
+            messages.append({"role": "assistant", "content": response})
+
+            # Execute code blocks in REPL
+            repl_result = self.repl.execute_response(response)
+
+            # Check for final answer
+            if repl_result.final_answer is not None:
+                self._result = repl_result.final_answer
+                break
+
+            # Format result for next iteration
+            execution_result = format_execution_result(...)
+    ```
+
+Each iteration:
+1. Builds a prompt with context from previous execution
+2. Gets an LLM completion
+3. Extracts and executes Python code blocks
+4. Checks if the agent called `FINAL()` to submit results
+5. Formats the output for the next iteration
+
+#### Sub-Agent Spawning
+
+When agent code calls `rlm_query()`, a new sub-agent is created with its own sandbox:
+
+    ```python
+    def _handle_rlm_query(self, task: str) -> str:
+        """Spawn a sub-agent for a specific task."""
+        # Check sandbox budget
+        if not self.sandbox_manager.budget.can_acquire():
+            return "Error: sandbox budget exhausted"
+
+        # Create sub-agent at depth + 1
+        sub_agent = RLMAgent(
+            client=self.client,
+            sandbox_manager=self.sandbox_manager,
+            config=self.config,
+            depth=self.depth + 1,
+            task=task,
+            # ... other params
+        )
+
+        # Run sub-agent (blocking)
+        result = sub_agent.run()
+
+        # Return result, truncated if necessary
+        return result.result or "No result"
+    ```
+
+For parallel spawning, `rlm_query_batched()` uses a thread pool:
+
+    ```python
+    def _handle_rlm_query_batched(self, tasks: list[str]) -> list[str]:
+        """Spawn multiple sub-agents in parallel."""
+        results = [""] * len(tasks)
+
+        with ThreadPoolExecutor(max_workers=10) as executor:
+            future_to_idx = {
+                executor.submit(self._handle_rlm_query, task): i
+                for i, task in enumerate(tasks)
+            }
+            for future in as_completed(future_to_idx):
+                idx = future_to_idx[future]
+                results[idx] = future.result()
+
+        return results
+    ```
+
+#### Agent Code Interface
+
+Inside the REPL, agents have access to these functions:
+
+| Function | Description |
+|----------|-------------|
+| `rlm_query(task)` | Spawn a single sub-agent, returns result string |
+| `rlm_query_batched(tasks)` | Spawn multiple sub-agents in parallel |
+| `FINAL(answer)` | Submit final result (root: triggers patch extraction) |
+| `FINAL_VAR(var_name)` | Submit the value of a variable as result |
+| `edit_file(path, old, new)` | Edit a file with syntax validation |
+
+Example spawning pattern used by agents:
+
+    ```python
+    # Spawn multiple sub-agents to explore different modules
+    results = rlm_query_batched([
+        "Search for TODO comments in sklearn/linear_model/ and assess difficulty",
+        "Search for TODO comments in sklearn/ensemble/ and assess difficulty",
+        "Search for TODO comments in sklearn/tree/ and assess difficulty",
+    ])
+
+    for i, result in enumerate(results):
+        print(f"=== Sub-agent {i+1} findings ===")
+        print(result)
+    ```
+
+### 5. Example Walkthrough
+
+Let's trace what happens when we run an agent on a popular machine learning library, scikit-learn:
+
+```bash
+python run.py https://github.com/scikit-learn/scikit-learn \
+  -p "Investigate TODO comments across this repository. Spawn sub-agents to explore different modules under sklearn/ in parallel. For each TODO found, assess how difficult it would be to fix (easy/medium/hard). After gathering results, pick the easiest TODO and fix it."
+```
+
+Note that there are about 400 lines in scikit-learn that contain the substring "# TODO".
+
+**Step 1: Root agent explores and spawns depth-1 sub-agents**
+
+The root agent (depth=0) examines the repository structure, identifies all sklearn modules, and spawns 25 sub-agents in parallel:
+
+    ```python
+    # Define the subdirectories to investigate
+    subdirs = [
+        "cluster", "compose", "covariance", "cross_decomposition", "datasets",
+        "decomposition", "ensemble", "feature_extraction", "feature_selection",
+        "gaussian_process", "impute", "inspection", "linear_model", "manifold",
+        "metrics", "mixture", "model_selection", "neighbors", "neural_network",
+        "preprocessing", "semi_supervised", "svm", "tree", "utils"
+    ]
+
+    # Create queries for sub-agents
+    queries = [
+        f"Search for 'TODO' comments in 'sklearn/{subdir}/'. For each TODO found, provide: "
+        f"1. The file path and line number. 2. The content of the TODO. 3. An assessment "
+        f"of how difficult it would be to fix (easy/medium/hard) with a brief justification."
+        for subdir in subdirs
+    ]
+
+    results = rlm_query_batched(queries)
+    ```
+
+Each of these 25 sub-agents gets its own Daytona sandbox with a fresh clone of scikit-learn.
+
+**Step 2: Depth-1 agents spawn depth-2 agents**
+
+Some depth-1 agents decide their module is too large and spawn their own sub-agents. For example, the `sklearn/metrics/` agent spawned 3 depth-2 agents:
+
+    ```python
+    # Inside the sklearn/metrics/ agent (depth=1)
+    # To efficiently handle the large number of TODOs, spawn sub-agents for sub-directories
+
+    tasks = [
+        "Identify and assess TODOs in 'sklearn/metrics/cluster/'. Provide file, line, content, and difficulty.",
+        "Identify and assess TODOs in 'sklearn/metrics/tests/'. Provide file, line, content, and difficulty.",
+        "Identify and assess TODOs in 'sklearn/metrics/_plot/' and its 'tests' sub-directory."
+    ]
+
+    results = rlm_query_batched(tasks)
+    ```
+
+**Step 3: Results propagate back**
+
+Each sub-agent returns findings via `FINAL()`. Results flow back up:
+- Depth-2 → Depth-1: Detailed analysis of specific subdirectories
+- Depth-1 → Root: Module-level summaries with difficulty ratings
+
+**Step 4: Root agent synthesizes and acts**
+
+The root agent reviews all findings, identifies the easiest TODO, and makes the fix.
+
+**Step 5: Git patch produced**
+
+    ```python
+    import subprocess
+    subprocess.run(['git', 'add', '-A'], cwd='/workspace')
+    result = subprocess.run(['git', 'diff', '--cached', 'HEAD'],
+                            capture_output=True, text=True, cwd='/workspace')
+    FINAL(result.stdout)
+    ```
+
+#### Results
+
+- Execution time: **316 seconds** (~5.3 minutes)
+- Agents spawned: **40** (25 at depth 1, 15 at depth 2)
+
+**Generated patch:**
+```diff
+diff --git a/sklearn/utils/_array_api.py b/sklearn/utils/_array_api.py
+--- a/sklearn/utils/_array_api.py
++++ b/sklearn/utils/_array_api.py
+@@ -19,8 +19,7 @@ from sklearn.externals.array_api_compat import numpy as np_compat
+ from sklearn.utils._dataframe import is_df_or_series
+ from sklearn.utils.fixes import parse_version
+
+-# TODO: complete __all__
+-__all__ = ["xpx"]  # we import xpx here just to re-export it, need this to appease ruff
++__all__ = ['device', 'get_namespace', 'get_namespace_and_device', 'indexing_dtype', 'move_to', 'size', 'supported_float_dtypes', 'xpx', 'yield_namespace_device_dtype_combinations', 'yield_namespaces']
+```
+
+The agent found the easiest TODO (`# TODO: complete __all__` in `sklearn/utils/_array_api.py`) and completed the `__all__` list with all public symbols from the module.
+
+### 6. Configuration
+
+Configure the agent in `config.yaml`:
+
+    ```yaml
+    # Model configuration - using LiteLLM format
+    model:
+      name: "openrouter/google/gemini-3-flash-preview"
+
+    # RLM configuration
+    rlm:
+      max_sandboxes: 50
+      max_iterations: 50
+      global_timeout: 3600
+      result_truncation_limit: 10000
+    ```
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `model.name` | `openrouter/google/gemini-3-flash-preview` | LLM model in LiteLLM format |
+| `rlm.max_sandboxes` | 50 | Maximum total sandboxes across entire rollout |
+| `rlm.max_iterations` | 50 | Maximum iterations per agent |
+| `rlm.global_timeout` | 3600 | Total timeout in seconds |
+| `rlm.result_truncation_limit` | 10000 | Max chars in sub-agent results |
+
+:::tip[Scaling Tips]
+- Increase `max_sandboxes` for tasks requiring more parallel exploration
+- The sandbox budget tracks total sandboxes created over the lifetime of the rollout
+- Sub-agent sandboxes are deleted immediately after completion
+:::
+
+### 7. Viewing Results
+
+Results are saved to the `results/` directory as JSON files. Use the built-in viewer:
+
+```bash
+python -m http.server 8000
+# Open http://localhost:8000/viewer/
+```
+
+The viewer provides:
+- Interactive tree visualization of the agent hierarchy
+- Iteration details with code and output for each agent
+- Statistics: agent count, max depth, total iterations
+
+### 8. Conclusion
+
+Current language models aren't specifically trained to leverage recursive delegation, so RLMs don't necessarily outperform single-agent approaches on benchmarks yet. However, the architecture demonstrates compelling properties for complex tasks.
+
+In our scikit-learn example, 40 agents ran in parallel across the agent tree, each with its own isolated sandbox, completing the entire run in just over 5 minutes. This level of parallelism, where each agent can freely modify files, run tests, and explore without affecting others, would be difficult to achieve without per-agent sandboxes.
+
+**Key advantages of this approach:**
+
+- **Recursive decomposition**: Complex tasks naturally break into sub-tasks handled by specialized agents
+- **Isolated execution**: Each agent gets a fresh sandbox, preventing interference
+- **Parallel exploration**: `rlm_query_batched()` enables concurrent investigation
+
+import { Image } from 'astro:assets'
+
+import rewardsPlot from '../../../../../assets/docs/images/trl-grpo-rewards-plot.png'
+
+This guide demonstrates how to use Daytona sandboxes to safely execute hundreds of code completions in parallel during reinforcement learning training.
+
+We use [TRL](https://huggingface.co/docs/trl/)'s GRPOTrainer together with 500 Daytona sandboxes evaluating completions concurrently, in order to train the `Qwen3-1.7B-Base` model on some basic code-writing tasks.
+
+---
+
+### 1. Workflow Overview
+
+This guide presents a simple, self-contained script that performs reinforcement learning training of `Qwen3-1.7B-Base`. In particular, we use **reinforcement learning with verifiable rewards**, with the reward being computed from the test pass rate of model-written functions.
+
+The training loop consists of following steps:
+1. **Generate**: The model produces many code completions for each prompt (e.g., 250 completions per prompt per step)
+2. **Evaluate**: Each completion runs in its own Daytona sandbox against a test suite
+3. **Reward**: Completions that pass more tests get higher rewards; errors or banned patterns get negative rewards
+4. **Update**: GRPO reinforces completions that scored above their group average
+
+The evaluation step happens in parallel across all 500 sandboxes. The sandboxes are spawned once at the start of the training and reused throughout it, and cleaned up after the training completes.
+
+### 2. Setup
+
+#### Clone the Repository
+
+:::note[GPU Requirement]
+This guide is written to run on a single 80GB VRAM GPU. If you want to run it on a GPU with less VRAM, you can decrease `per_device_train_batch_size` parameter, possibly increasing `gradient_accumulation_steps` proportionally if you wish to keep effective batch size at 500.
+:::
+
+Clone the [Daytona repository](https://github.com/daytonaio/daytona.git) and navigate to the example directory:
+
+```bash
+git clone https://github.com/daytonaio/daytona.git
+cd daytona/guides/python/reinforcement-learning/trl
+```
+
+#### Create Virtual Environment
+
+:::note[Python Version]
+Python 3.10 or higher is required. A GPU with 80GB+ VRAM is recommended for training.
+:::
+
+```bash
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+#### Install Dependencies
+
+```bash
+pip install -e .
+```
+
+This installs:
+- `daytona` - Daytona SDK for sandbox management
+- `trl[vllm]` - TRL with vLLM integration for fast inference
+- `datasets` - HuggingFace datasets library
+- `python-dotenv` - Environment variable management
+
+#### Configure Environment
+
+Get your Daytona API key from the [Daytona Dashboard](https://app.daytona.io/dashboard/keys) and create a `.env` file:
+
+```bash
+DAYTONA_API_KEY=your_daytona_api_key
+```
+
+### 3. Understanding the Code
+
+Let's walk through the key components of the training script.
+
+#### Task Definitions
+
+The script defines coding tasks as prompts with test cases. Note that the prompts are written in completion mode rather than QA mode because `Qwen3-1.7B-Base` is a base rather than an instruct model. Each task specifies what the model should generate and how to verify correctness:
+
+    ```python
+    SORTING_PROMPT = """# I've been fiddling with different ways to sort numbers in Python.
+    # At first I just used sorted() and list.sort(), but then I decided to try
+    # my hand at writing some original sorting functions. And I succeeded!
+    # I don't call sorted(), list.sort(), heapq, or use any imports here - just plain
+    # Python and an original algorithm.
+    def sort_numbers(xs: list[int]) -> list[int]:
+        \"\"\"Sort a list of integers in ascending order.
+
+        Args:
+            xs: A list of integers to be sorted.
+
+        Returns:
+            A new list containing the same integers, sorted from smallest to largest.
+        \"\"\"
+    """
+
+    TASKS = {
+        "sorting": {
+            "prompt": SORTING_PROMPT,
+            "func_name": "sort_numbers",
+            "banned_patterns": ["sorted(", ".sort(", "heapq", "import ", "__import__"],
+            "tests": [
+                "[]",
+                "[1, 3, 2]",
+                "[random.randint(-1000, 1000) for _ in range(200)]",
+                "[random.randint(-100, 100) for _ in range(1000)]",
+                "list(range(0, 100)) + list(range(200, 100, -1)) + list(range(200, 300))",
+            ],
+            "reference": "sorted",
+        },
+        # Additional tasks can be added here...
+    }
+    ```
+
+Each task includes:
+- **prompt**: The code context the model continues from
+- **func_name**: The function name being implemented
+- **banned_patterns**: Patterns that disqualify a completion (e.g., using built-in `sorted()`)
+- **tests**: Test inputs to verify correctness
+- **reference**: The reference implementation to compare against
+
+#### How Prompts Become Completions
+
+When the model receives the sorting prompt, it continues the text as if completing a Python file. A typical model output might look like:
+
+```
+    if len(xs) <= 1:
+        return xs
+    pivot = xs[len(xs) // 2]
+    left = [x for x in xs if x < pivot]
+    middle = [x for x in xs if x == pivot]
+    right = [x for x in xs if x > pivot]
+    return sort_numbers(left) + middle + sort_numbers(right)
+
+# Example usage:
+print(sort_numbers([3, 1, 4, 1, 5, 9, 2, 6]))
+```
+
+Notice the model generates the indented function body, but may also add extra content after (comments, example usage, etc.). The `sanitize_completion` function extracts only the indented lines that form the function body:
+
+    ```python
+    def sanitize_completion(text: str) -> str:
+        # Take lines until the first unindented line
+        lines = text.splitlines()
+        kept: List[str] = []
+        for line in lines:
+            if line and (not line.startswith("    ")):
+                break
+            kept.append(line)
+        return "\n".join(kept).rstrip()
+    ```
+
+After sanitization, the example above becomes just the function body:
+
+```python
+    if len(xs) <= 1:
+        return xs
+    pivot = xs[len(xs) // 2]
+    left = [x for x in xs if x < pivot]
+    middle = [x for x in xs if x == pivot]
+    right = [x for x in xs if x > pivot]
+    return sort_numbers(left) + middle + sort_numbers(right)
+```
+
+#### Sandbox Pool Management
+
+We create the sandbox pool upfront and reuse sandboxes throughout training:
+
+    ```python
+    EFFECTIVE_BATCH_SIZE = 500
+    # We evaluate each completion concurrently, in its own sandbox,
+    # so we spawn EFFECTIVE_BATCH_SIZE number of sandboxes.
+
+    async def _create_sandbox_pool_async(
+        daytona: AsyncDaytona, n: int = 10
+    ) -> List[AsyncSandbox]:
+        print(f"Creating {n} sandboxes...")
+        tasks = [daytona.create() for _ in range(n)]
+        sandboxes = await asyncio.gather(*tasks)
+        print(f"Successfully created all {len(sandboxes)} sandboxes")
+        return list(sandboxes)
+
+
+    async def _cleanup_sandbox_pool_async(sandbox_pool: List[AsyncSandbox]) -> None:
+        if not sandbox_pool:
+            return
+        print("Cleaning up sandboxes...")
+        tasks = [sandbox.delete() for sandbox in sandbox_pool]
+        results = await asyncio.gather(*tasks, return_exceptions=True)
+        for r in results:
+            if isinstance(r, Exception):
+                print(f"  Sandbox delete error: {type(r).__name__}: {r}")
+        print("All sandboxes cleaned up")
+    ```
+
+The pool size (500) is chosen to match the total batch size (`per_device_train_batch_size * gradient_accumulation_steps`), ensuring every completion in a batch can be evaluated in parallel.
+
+#### Code Evaluation
+
+The main evaluation function ties everything together - it sanitizes the completion, checks for banned patterns, builds the test harness, executes it in a sandbox, and parses the results:
+
+    ```python
+    async def evaluate_single_completion_async(
+        sandbox: AsyncSandbox,
+        raw_completion: str,
+        prompt: str,
+    ) -> EvalResult:
+        task = PROMPT_TO_TASK[prompt]
+        num_task_tests = len(task["tests"])
+        body = sanitize_completion(raw_completion)
+
+        if not body.strip():
+            return _fail_result(num_task_tests)
+        if has_banned_pattern(body, task):
+            return _fail_result(num_task_tests)
+
+        code = build_test_harness(task, body)
+
+        try:
+            response = await sandbox.code_interpreter.run_code(
+                code, timeout=MAX_TIMEOUT_SECONDS
+            )
+        except DaytonaTimeoutError:
+            print(
+                f"Completion timed out after {MAX_TIMEOUT_SECONDS}s "
+                f"in sandbox {getattr(sandbox, 'id', '?')}"
+            )
+            return _fail_result(num_task_tests)
+        except Exception as e:
+            print(
+                f"Error evaluating completion in sandbox {getattr(sandbox, 'id', '?')}: "
+                f"{type(e).__name__}: {e}",
+            )
+            return _fail_result(num_task_tests)
+
+        if response.error is not None:
+            return _fail_result(num_task_tests)
+        raw_output = response.stdout.strip()
+        if not raw_output:
+            return _fail_result(num_task_tests)
+        last_line = raw_output.splitlines()[-1]
+        try:
+            results = json.loads(last_line)
+        except Exception:
+            return _fail_result(num_task_tests)
+        correct = results.get("results", [])
+
+        return {
+            "no_error": True,
+            "num_passed": sum(bool(x) for x in correct),
+            "num_tests": len(correct),
+        }
+    ```
+
+#### The Test Harness
+
+The `build_test_harness` function combines the original prompt, the model's completion, and a test runner into Python code that ultimately executes on the sandbox:
+
+    ```python
+    def build_test_harness(task: Dict[str, Any], function_body: str) -> str:
+        prompt = task["prompt"]
+        func_name = task["func_name"]
+        reference_function = task["reference"]
+        tests = task["tests"]
+
+        tests_tuple = ",\n        ".join(tests)
+
+        return f"""{prompt}
+{function_body}
+
+import json
+import random
+random.seed(0)
+
+def _kadane(xs):
+        max_sum = current = xs[0]
+        for x in xs[1:]:
+            current = max(x, current + x)
+            max_sum = max(max_sum, current)
+        return max_sum
+
+def _run_tests():
+        tests = (
+            {tests_tuple}
+        )
+        results = []
+        for xs in tests:
+            try:
+                out = {func_name}(xs.copy())
+                expected = {reference_function}(xs.copy())
+                results.append(out == expected)
+            except Exception:
+                results.append(False)
+        print(json.dumps({{"results": results}}))
+
+if __name__ == "__main__":
+        _run_tests()
+"""
+    ```
+
+For the sorting task with a quicksort completion, the assembled code looks like:
+
+```python
+# I've been fiddling with different ways to sort numbers in Python...
+def sort_numbers(xs: list[int]) -> list[int]:
+    """Sort a list of integers in ascending order..."""
+    if len(xs) <= 1:
+        return xs
+    pivot = xs[len(xs) // 2]
+    left = [x for x in xs if x < pivot]
+    middle = [x for x in xs if x == pivot]
+    right = [x for x in xs if x > pivot]
+    return sort_numbers(left) + middle + sort_numbers(right)
+
+import json
+import random
+random.seed(0)
+
+def _run_tests():
+    tests = (
+        [],
+        [1, 3, 2],
+        [random.randint(-1000, 1000) for _ in range(200)],
+        # ... more tests
+    )
+    results = []
+    for xs in tests:
+        try:
+            out = sort_numbers(xs.copy())
+            expected = sorted(xs.copy())
+            results.append(out == expected)
+        except Exception:
+            results.append(False)
+    print(json.dumps({"results": results}))
+
+if __name__ == "__main__":
+    _run_tests()
+```
+
+When executed in the sandbox, this prints JSON to stdout:
+
+```json
+{"results": [true, true, true, false, true]}
+```
+
+The evaluation function parses this JSON to count how many tests passed.
+
+#### Banned Pattern Detection
+
+Before running code in the sandbox, we check for banned patterns. This prevents the model from "cheating" by using built-in functions:
+
+    ```python
+    def has_banned_pattern(text: str, task: Dict[str, Any]) -> bool:
+        banned = task.get("banned_patterns", [])
+        if not banned:
+            return False
+        lowered = text.lower()
+        return any(p.lower() in lowered for p in banned)
+    ```
+
+For the sorting task, banned patterns include `sorted(`, `.sort(`, `heapq`, and `import`. If the model generates `return sorted(xs)`, it gets a reward of -1.0 instead of being executed - we want the model to learn to write actual sorting algorithms, not to call built-in functions.
+
+#### Parallel Batch Evaluation
+
+The batch evaluator distributes completions across the sandbox pool:
+
+    ```python
+    async def _evaluate_batch_async(
+        sandbox_pool: List[AsyncSandbox], completions: List[str], prompts: List[str]
+    ) -> List[EvalResult]:
+        print(
+            f"Evaluating {len(completions)} completions in parallel across "
+            f"{len(sandbox_pool)} sandboxes..."
+        )
+
+        async def run_one(
+            i: int, sandbox: AsyncSandbox, completion: str, prompt: str
+        ) -> EvalResult:
+            task = PROMPT_TO_TASK[prompt]
+            num_task_tests = len(task["tests"])
+            try:
+                stats = await evaluate_single_completion_async(sandbox, completion, prompt)
+                print(f"  Completion {i + 1}/{len(completions)} done")
+                return stats
+            except Exception as e:
+                print(
+                    f"  Completion {i + 1}/{len(completions)} failed: "
+                    f"{type(e).__name__}: {e}"
+                )
+                return _fail_result(num_task_tests)
+
+        tasks = [
+            run_one(i, sandbox_pool[i % len(sandbox_pool)], completion, prompt)
+            for i, (completion, prompt) in enumerate(zip(completions, prompts))
+        ]
+
+        stats_list = await asyncio.gather(*tasks)
+        print(f"  Done: {len(completions)}/{len(completions)} completions evaluated")
+
+        return stats_list
+    ```
+
+Each completion is assigned to a sandbox using round-robin distribution (`i % len(sandbox_pool)`), ensuring even load distribution.
+
+#### Reward Function
+
+The reward function receives the results from the sandboxes and computes the corresponding scalar reward.
+
+    ```python
+    def reward_func(prompts, completions, **kwargs):
+        stats_list = run_async(
+            _evaluate_batch_async(sandbox_pool, completions, prompts)
+        )
+        rewards = []
+        for s in stats_list:
+            if not s["no_error"]:
+                rewards.append(-1.0)
+            elif s["num_tests"] == 0:
+                rewards.append(0.0)
+            else:
+                rewards.append(s["num_passed"] / s["num_tests"])
+        return rewards
+    ```
+
+The reward scheme:
+- **-1.0**: Error, timeout, or banned pattern detected
+- **0.0**: No tests were present (shouldn't happen with valid tasks)
+- **0.0 to 1.0**: Fraction of tests passed
+
+#### Bridging Sync and Async
+
+TRL's `GRPOTrainer` expects a synchronous reward function, but the Daytona SDK uses async/await for parallel sandbox operations. We bridge these two worlds with a helper:
+
+    ```python
+    def main():
+        # Create a dedicated event loop for async operations
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+
+        def run_async(coro: Awaitable[Any]) -> Any:
+            """Run async code from sync context."""
+            return loop.run_until_complete(coro)
+
+        # ... training code ...
+
+        def reward_func(prompts, completions, **kwargs):
+            # This sync function is called by TRL
+            # We use run_async to call our async evaluation
+            stats_list = run_async(
+                _evaluate_batch_async(sandbox_pool, completions, prompts)
+            )
+            # ... compute rewards ...
+            return rewards
+    ```
+
+This pattern lets us keep the async parallelism benefits of the Daytona SDK while working within TRL's synchronous training loop. The `run_async` helper blocks until all 500 parallel sandbox evaluations complete, then returns the results.
+
+#### Training Configuration
+
+The GRPO trainer is configured with these parameters:
+
+    ```python
+    training_args = GRPOConfig(
+        output_dir="training_results",
+        per_device_train_batch_size=20,
+        # batch size chosen so the training runs comfortably on a single 80GB GPU,
+        # if running this on a GPU with less memory, reduce the batch size accordingly
+        gradient_accumulation_steps=25,
+        num_generations=EFFECTIVE_BATCH_SIZE // len(TASKS),
+        max_prompt_length=256,
+        max_completion_length=512,
+        learning_rate=8e-6,
+        num_train_epochs=1,
+        logging_steps=1,
+        report_to="none",
+        max_steps=8,
+        bf16=True,
+        use_vllm=True,
+        vllm_mode="colocate",
+        vllm_gpu_memory_utilization=0.15,
+        gradient_checkpointing=True,
+        loss_type="dapo",
+        beta=0.01,
+    )
+    ```
+
+Key settings explained:
+
+**Batch size and sandbox pool alignment:**
+```
+per_device_train_batch_size (20) × gradient_accumulation_steps (25) = 500
+```
+This equals `EFFECTIVE_BATCH_SIZE`. Each training step generates exactly 500 completions, and we have exactly 500 sandboxes - so every completion evaluates in parallel with no waiting. If we had fewer sandboxes, some completions would queue up. If we had more, sandboxes would sit idle.
+
+**vLLM colocate mode:**
+```python
+use_vllm=True,
+vllm_mode="colocate",
+vllm_gpu_memory_utilization=0.15,
+```
+This runs vLLM for fast inference on the same GPU as training. We use 15% of the GPU's memory for model generation, and the rest for training (optimizer states).
+
+**Generation settings:**
+- `num_generations=EFFECTIVE_BATCH_SIZE // len(TASKS)`: Generate 250 completions per prompt (500 / 2 tasks). With 2 prompts (sorting and max_subarray), that's 500 total per step
+- `max_completion_length=512`: Limit completion length to prevent runaway generation
+
+### 4. Running the Training
+
+Start training with:
+
+```bash
+python train.py
+```
+
+You'll see output like:
+
+```
+Creating 500 sandboxes...
+Successfully created all 500 sandboxes
+Evaluating 500 completions in parallel across 500 sandboxes...
+  Completion 1/500 done
+  Completion 2/500 done
+  ...
+  Done: 500/500 completions evaluated
+```
+
+After training completes, metrics are saved to `training_results/metrics.jsonl` and the model is saved as `training_results/checkpoint-8`.
+
+### 5. Example Evaluation Walkthrough
+
+Let's trace through what happens when evaluating a single completion:
+
+**Step 1: Model generates a completion**
+
+The model receives the sorting prompt and generates:
+```
+    if len(xs) <= 1:
+        return xs
+    pivot = xs[0]
+    less = [x for x in xs[1:] if x <= pivot]
+    greater = [x for x in xs[1:] if x > pivot]
+    return sort_numbers(less) + [pivot] + sort_numbers(greater)
+
+# Test
+print(sort_numbers([3, 1, 2]))
+```
+
+**Step 2: Sanitization extracts the function body**
+
+`sanitize_completion` keeps only the indented lines:
+```python
+    if len(xs) <= 1:
+        return xs
+    pivot = xs[0]
+    less = [x for x in xs[1:] if x <= pivot]
+    greater = [x for x in xs[1:] if x > pivot]
+    return sort_numbers(less) + [pivot] + sort_numbers(greater)
+```
+
+**Step 3: Check for banned patterns**
+
+`has_banned_pattern` scans for `sorted(`, `.sort(`, `heapq`, `import`. None found, so we proceed.
+
+**Step 4: Build the test harness**
+
+`build_test_harness` assembles the full script: prompt + completion + test runner. This becomes ~50 lines of executable Python.
+
+**Step 5: Execute in sandbox**
+
+```python
+response = await sandbox.code_interpreter.run_code(code, timeout=1)
+```
+
+The sandbox runs the code and returns within the 1-second timeout.
+
+**Step 6: Parse results**
+
+The test runner printed:
+```json
+{"results": [true, true, true, true, true]}
+```
+
+We parse this from `response.stdout`:
+```python
+results = json.loads(response.stdout.strip().splitlines()[-1])
+# {"results": [true, true, true, true, true]}
+```
+
+**Step 7: Compute reward**
+
+All 5 tests passed:
+```python
+reward = 5 / 5  # = 1.0
+```
+
+This completion gets a perfect reward of 1.0, reinforcing the model to generate similar quicksort implementations.
+
+### 6. Training Results
+
+The plot below shows average rewards over training steps. At the start, the model is very rarely writing functions that meet the task specifications, and it is often writing code that either errors out or times out. Given our large effective batch size of 500, the model achieves near-perfect performance after only 8 steps.
+
+<Image
+  src={rewardsPlot}
+  alt="Rewards over training steps showing improvement"
+  width={700}
+  style="max-width: 100%; height: auto; margin: 1rem 0;"
+/>
+
+### 7. Adding Custom Tasks
+
+To add a new coding task, extend the `TASKS` dictionary:
+
+    ```python
+    TASKS = {
+        "your_task": {
+            "prompt": "Your prompt here...",
+            "func_name": "function_name",
+            "banned_patterns": ["patterns", "to", "ban"],
+            "tests": [
+                "test_input_1",
+                "test_input_2",
+            ],
+            "reference": "reference_function",
+        },
+    }
+    ```
+
+The reference function should be defined in the test harness that `build_test_harness` generates.
+
+### 8. Configuration Options
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `EFFECTIVE_BATCH_SIZE` | 500 | Effective batch size, also equal to the number of parallel sandboxes |
+| `MAX_TIMEOUT_SECONDS` | 1 | Timeout per code execution |
+| `MODEL_NAME` | `Qwen/Qwen3-1.7B-Base` | Base model to train |
+
+:::tip[Scaling Tips]
+- Keep `per_device_train_batch_size * gradient_accumulation_steps` equal to `EFFECTIVE_BATCH_SIZE` for optimal parallelism
+- Increase `MAX_TIMEOUT_SECONDS` for tasks with more (algorithmically) complex test cases
+:::
+
+---
+
+**Key advantages of this approach:**
+
+- **Massive parallelism**: 500 sandboxes evaluate completions simultaneously
+- **Safe execution**: Generated code runs in isolated environments, protecting your system
+- **Fast feedback**: vLLM + parallel evaluation minimizes training iteration time
+- **Extensible**: Add new coding tasks by defining prompts and test cases
+
+Daytona is an open-source, secure and elastic infrastructure for running AI-generated code.
+
+Daytona provides isolated sandbox environments that you can manage programmatically using the Daytona SDK to run and control code execution.
+
+Daytona SDK is available for [Python](https://www.daytona.io/docs/en/python-sdk.md), [TypeScript](https://www.daytona.io/docs/en/typescript-sdk.md) and [Ruby](https://www.daytona.io/docs/en/ruby-sdk.md) interfaces.
+
+## Create an account
+
+Open the [Daytona Dashboard ↗](https://app.daytona.io/) and create your account. Daytona supports account creation using an email and password, or by connecting your Google or GitHub account.
+
+## Obtain an API key
+
+Generate an [API key](https://www.daytona.io/docs/en/api-keys.md) from the [Daytona Dashboard ↗](https://app.daytona.io/dashboard/keys) to authenticate SDK requests and access Daytona services. Save the API key securely, as it won't be shown again.
+
+:::tip
+Daytona supports multiple options to configure your environment: [in code](https://www.daytona.io/docs/en/configuration.md#configuration-in-code), [environment variables](https://www.daytona.io/docs/en/configuration.md#environment-variables), [.env file](https://www.daytona.io/docs/en/configuration.md#env-file), and [default values](https://www.daytona.io/docs/en/configuration.md#default-values).
+:::
+
+## Install the SDK
+
+Install the Daytona SDK to interact with sandboxes from your code using [Python](https://www.daytona.io/docs/python-sdk.md), [TypeScript](https://www.daytona.io/docs/typescript-sdk.md) or [Ruby](https://www.daytona.io/docs/ruby-sdk.md).
+
+
+    ```bash
+    pip install daytona
+    ```
+
+
+
+    ```bash
+    npm install @daytonaio/sdk
+    ```
+
+
+    ```bash
+    gem install daytona
+    ```
+
+## Create a Sandbox
+
+Create a Daytona Sandbox to run your code securely in an isolated environment.
+
+  
+    ```python
+    # Import the Daytona SDK
+    from daytona import Daytona, DaytonaConfig
+
+    # Define the configuration
+    config = DaytonaConfig(api_key="YOUR_API_KEY") # Replace with your API key
+
+    # Initialize the Daytona client
+    daytona = Daytona(config)
+
+    # Create the Sandbox instance
+    sandbox = daytona.create()
+    ```
+
+  
+    ```typescript
+    // Import the Daytona SDK
+    import { Daytona } from '@daytonaio/sdk';
+
+    // Initialize the Daytona client
+    const daytona = new Daytona({ apiKey: 'YOUR_API_KEY' }); // Replace with your API key
+
+    // Create the Sandbox instance
+    const sandbox = await daytona.create({
+      language: 'typescript',
+    });
+    ```
+
+
+    Create a file named: `main.rb`
+
+    ```ruby
+    require 'daytona'
+
+    # Initialize the Daytona client
+    config = Daytona::Config.new(api_key: 'your-api-key')
+    daytona = Daytona::Daytona.new(config)
+
+    # Create the Sandbox instance
+    sandbox = daytona.create
+
+    # Run the code securely inside the Sandbox
+    response = sandbox.process.code_run(code: 'print("Hello World from code!")')
+    if response.exit_code != 0
+      puts "Error: #{response.exit_code} #{response.result}"
+    else
+      puts response.result
+    end
+
+    # Clean up
+    daytona.delete(sandbox)
+    ```
+
+## Write code
+
+Create a program that runs code inside a Daytona Sandbox. The following snippet is an example "Hello World" program that runs securely inside a Daytona Sandbox.
+
+
+`main.py`
+
+```python
+# Import the Daytona SDK
+from daytona import Daytona, DaytonaConfig
+
+# Define the configuration
+config = DaytonaConfig(api_key="YOUR_API_KEY") # Replace with your API key
+
+# Initialize the Daytona client
+daytona = Daytona(config)
+
+# Create the Sandbox instance
+sandbox = daytona.create()
+
+# Run the code securely inside the Sandbox
+response = sandbox.process.code_run('print("Hello World")')
+
+# Check the response
+if response.exit_code != 0:
+  print(f"Error: {response.exit_code} {response.result}")
+else:
+  print(response.result)
+
+# Clean up
+sandbox.delete()
+```
+
+
+
+`index.mts`
+
+```typescript
+// Import the Daytona SDK
+import { Daytona } from '@daytonaio/sdk'
+
+// Initialize the Daytona client
+const daytona = new Daytona({ apiKey: 'YOUR_API_KEY' }) // Replace with your API key
+
+// Create the Sandbox instance
+const sandbox = await daytona.create({
+  language: 'typescript',
+})
+
+// Run the code securely inside the Sandbox
+const response = await sandbox.process.codeRun('console.log("Hello World")')
+
+// Check the response
+if (response.exitCode !== 0) {
+  console.error(`Error: ${response.exitCode} ${response.result}`)
+} else {
+  console.log(response.result)
+}
+
+// Clean up
+await sandbox.delete()
+```
+
+
+
+`main.rb`
+
+```ruby
+require 'daytona'
+
+# Initialize the Daytona client
+config = Daytona::Config.new(api_key: 'your-api-key')
+daytona = Daytona::Daytona.new(config)
+
+# Create the Sandbox instance
+sandbox = daytona.create
+
+# Run the code securely inside the Sandbox
+response = sandbox.process.code_run(code: 'print("Hello World")')
+```
+
+
+## Run code
+
+Run the program to execute your code in a secure and isolated Daytona Sandbox environment.
+
+
+```bash
+python main.py
+```
+
+
+
+```bash
+npx tsx index.mts
+```
+
+
+```text
+Hello World
+```
+
+
+## Summary
+
+By following the steps above, you successfully create a Daytona account, obtain an API key, install the SDK, create a sandbox, write code, and run it securely in a Daytona Sandbox.
+
+:::tip
+For faster development with AI agents and assistants, use our LLMs context files. Copy the [llms-full.txt](https://www.daytona.io/docs/llms-full.txt.md) and [llms.txt](https://www.daytona.io/docs/llms.txt.md) files and include them in your projects or chat contexts.
+:::
+
+<ExploreMore />
+
 The Daytona SDK provides Language Server Protocol (LSP) support through Sandbox instances. This enables advanced language features like code completion, diagnostics, and more.
 
 ## Creating LSP Servers
 
-Daytona SDK provides an option to create LSP servers in Python and TypeScript. The `path_to_project` argument is relative to the current Sandbox working directory when no leading `/` is used. The working directory is specified by WORKDIR when it is present in the Dockerfile, and otherwise falls back to the user's home directory.
+Daytona SDK provides an option to create LSP servers in Python, TypeScript, and Ruby. The `path_to_project` argument is relative to the current Sandbox working directory when no leading `/` is used. The working directory is specified by WORKDIR when it is present in the Dockerfile, and otherwise falls back to the user's home directory.
 
 ```python
 from daytona import Daytona, LspLanguageId
@@ -3018,7 +13536,28 @@ const lspServer = await sandbox.createLspServer(
 ```
 
 
-See: [create_lsp_server (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/sandbox.md#sandboxcreate_lsp_server), [createLspServer (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/sandbox.md#createlspserver)
+```ruby
+require 'daytona'
+
+# Create Sandbox
+daytona = Daytona::Daytona.new
+sandbox = daytona.create
+
+# Create LSP server for Python
+lsp_server = sandbox.create_lsp_server(
+  language_id: Daytona::LspServer::Language::PYTHON,
+  path_to_project: 'workspace/project'
+)
+
+# Create LSP server for TypeScript
+lsp_server = sandbox.create_lsp_server(
+  language_id: Daytona::LspServer::Language::TYPESCRIPT,
+  path_to_project: 'workspace/project'
+)
+```
+
+
+See: [create_lsp_server (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/sandbox.md#sandboxcreate_lsp_server), [createLspServer (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/sandbox.md#createlspserver), [create_lsp_server (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/sandbox.md#create_lsp_server)
 
 ### Supported Languages
 
@@ -3037,7 +13576,7 @@ Daytona SDK provides LSP features for code analysis and editing.
 
 ### Code Completion
 
-Daytona SDK provides an option to get code completions for a specific position in a file using Python and TypeScript.
+Daytona SDK provides an option to get code completions for a specific position in a file using Python, TypeScript, and Ruby.
 
 ```python
 completions = lsp_server.completions(
@@ -3054,74 +13593,248 @@ const completions = await lspServer.completions(
 console.log('Completions:', completions)
 ```
 
-See: [completions (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/lsp-server.md#lspservercompletions), [completions (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/lsp-server.md#completions)
+```ruby
+completions = lsp_server.completions(
+  path: 'workspace/project/main.py',
+  position: Daytona::LspServer::Position.new(line: 10, character: 15)
+)
+puts "Completions: #{completions}"
+```
 
-Daytona enforces resource limits to ensure fair usage and stability across all organizations. Your organization has access to a compute pool consisting of:
+See: [completions (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/lsp-server.md#lspservercompletions), [completions (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/lsp-server.md#completions), [completions (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/lsp-server.md#completions)
 
-- **vCPU** — Total CPU cores available
-- **Memory** — Total RAM available
-- **Storage** — Total disk space available
+Daytona enforces resource and requests limits to ensure fair usage and stability across all organizations.
 
-Resources are shared across all running Sandboxes, so the number of Sandboxes you can run at once depends on their individual usage.
+[Daytona Limits ↗](https://app.daytona.io/dashboard/limits) provides an overview of your organization's resource limits and usage.
 
-You can see default values and how to configure usage under [Sandbox Resources](https://www.daytona.io/docs/en/sandbox-management.md#sandbox-resources). Check your current usage and limits in the [Dashboard](https://app.daytona.io/dashboard/limits).
+## Resources
 
-## Tiers & Limit Increases
+Resources are shared across all running sandboxes. The number of sandboxes you can run at once depends on their individual usage.
+Organizations are automatically placed into a tier based on verification status and have access to a compute pool consisting of:
 
-Organizations are automatically placed into a Tier based on verification status.\
-You can unlock higher limits by completing the following steps:
+- **Compute**: Total CPU cores available
+- **Memory**: Total RAM available
+- **Storage**: Total disk space available
 
-| Tier   | Resources (vCPU / RAM / Storage) | Access Requirements                                                                                                     |
-| ------ | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| Tier 1 | 10 / 10GiB / 30GiB               | Email verified                                                                                                          |
-| Tier 2 | 100 / 200GiB / 300GiB            | Credit card linked, $25 top-up, [GitHub connected](https://www.daytona.io/docs/en/linked-accounts.md#how-to-link-an-account). |
-| Tier 3 | 250 / 500GiB / 2000GiB           | Business email verified, Phone verified, $500 top-up.                                                                   |
-| Tier 4 | 500 / 1000GiB / 5000GiB          | $2000 top-up every 30 days.                                                                                             |
-| Custom | Custom limits                    | Contact [support@daytona.io](mailto:support@daytona.io)                                                                 |
+Limits are applied to your organization's default region.
+To unlock higher limits, complete the following steps:
 
-Once you meet the criteria for a higher tier, make sure to Upgrade by clicking the "Upgrade" button in the [Dashboard](https://app.daytona.io/dashboard/limits).
+| **Tier**   | **Resources (vCPU / RAM / Storage)**      | **Access Requirements**                                                                              |
+| ---------- | ----------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| **Tier 1** | **`10`** / **`10GiB`** / **`30GiB`**      | Email verified                                                                                       |
+| **Tier 2** | **`100`** / **`200GiB`** / **`300GiB`**   | Credit card linked, $25 top-up, [GitHub connected](https://www.daytona.io/docs/en/linked-accounts.md#how-to-link-an-account). |
+| **Tier 3** | **`250`** / **`500GiB`** / **`2000GiB`**  | Business email verified, $500 top-up.                                                                |
+| **Tier 4** | **`500`** / **`1000GiB`** / **`5000GiB`** | $2000 top-up every 30 days.                                                                          |
+| **Custom** | Custom limits                             | Contact [support@daytona.io](mailto:support@daytona.io)                                              |
 
-## Manage usage dynamically
+Once you meet the criteria for a higher tier, upgrade your tier in the [Daytona Dashboard ↗](https://app.daytona.io/dashboard/limits).
 
-You can manage your resource usage by [changing the state](http://localhost:4321/docs/sandbox-management#sandbox-lifecycle) of your Sandboxes. The table below summarizes how each state affects resource usage:
+### Resource usage
 
-| State      | vCPU | Memory | Storage | Notes                                                      |
-|------------|:-------:|:--------:|:------:|------------------------------------------------------------|
-| Running |   ✅    |   ✅     |  ✅   | Counts against all limits                                  |
-| Stopped |   ❌    |   ❌     |  ✅   | Frees CPU & memory, but storage is still used                 |
-| Archived|   ❌    |   ❌     |  ❌   | Data moved to cold storage, no quota impact                |
-| Deleted |   ❌    |   ❌     |  ❌   | All resources freed                                        |
+Daytona supports managing your resources by [changing the state](https://www.daytona.io/docs/sandboxes.md#sandbox-lifecycle) of your Sandboxes. The table below summarizes how each state affects resource usage:
 
-See [Sandbox Management](https://www.daytona.io/docs/en/sandbox-management.md) for more information.
+| **State**    | **vCPU** | **Memory** | **Storage** | **Description**                               |
+| ------------ | -------- | ---------- | ----------- | --------------------------------------------- |
+| **Running**  | ✅       | ✅         | ✅          | Counts against all limits                     |
+| **Stopped**  | ❌       | ❌         | ✅          | Frees CPU & memory, but storage is still used |
+| **Archived** | ❌       | ❌         | ❌          | Data moved to cold storage, no quota impact   |
+| **Deleted**  | ❌       | ❌         | ❌          | All resources freed                           |
 
-## Need More?
+## Rate limits
 
-If you need higher or specialized limits, reach out to [support@daytona.io](mailto:support@daytona.io).
+Rate limits control how many API requests you can make within a specific time window.
+These limits are applied based on your tier, authentication status, and the type of operation you're performing.
+Rate limits for general authenticated requests are tracked per organization.
 
-Daytona supports the linking of user accounts from various identity providers. At the moment, the following providers are supported:
+The following rate limits are applied for each tier:
+
+- **General requests**
+- **[Sandbox creation](#sandbox-creation)**
+- **[Sandbox lifecycle](#sandbox-lifecycle-operations)**
+
+| **Tier**   | **General Requests (per min)** | **Sandbox Creation (per min)** | **Sandbox Lifecycle (per min)** |
+| ---------- | ------------------------------ | ------------------------------ | ------------------------------- |
+| **Tier 1** | 10,000                         | 300                            | 10,000                          |
+| **Tier 2** | 20,000                         | 400                            | 20,000                          |
+| **Tier 3** | 40,000                         | 500                            | 40,000                          |
+| **Tier 4** | 50,000                         | 600                            | 50,000                          |
+| **Custom** | Custom limits                  | Custom limits                  | Custom limits                   |
+
+The general rate limit for authenticated API requests that don't fall under sandbox creation or lifecycle operations includes:
+
+- **Listing sandboxes**
+- **Getting sandbox details**
+- **Retrieving sandbox regions**
+- **Listing snapshots**
+- **Managing volumes**
+- **Viewing audit logs**
+- and other read/management operations
+
+When you exceed a rate limit, subsequent requests will fail with:
+
+- **HTTP Status**: `429 Too Many Requests`
+- **Error Response**: JSON body with rate limit details
+- **Retry-After Header**: Time to wait before retrying (in seconds)
+
+Understanding these limits helps you build robust applications that handle rate limiting gracefully and avoid service interruptions. For more information, see [best practices](#best-practices).
+
+### Rate limit headers
+
+Daytona includes rate limit information in API response headers. Header names include a suffix based on which rate limit is triggered (e.g., `-anonymous`, `-authenticated`, `-sandbox-create`, `-sandbox-lifecycle`):
+
+| Header Pattern                          | Description                                                               |
+| --------------------------------------- | ------------------------------------------------------------------------- |
+| **`X-RateLimit-Limit-{throttler}`**     | Maximum number of requests allowed in the time window                     |
+| **`X-RateLimit-Remaining-{throttler}`** | Number of requests remaining in the current window                        |
+| **`X-RateLimit-Reset-{throttler}`**     | Time in seconds until the rate limit window resets                        |
+| **`Retry-After-{throttler}`**           | Time in seconds to wait before retrying (included when limit is exceeded) |
+
+
+### Sandbox creation
+
+This rate limit applies to all sandbox creation methods, including [creation from snapshots](https://www.daytona.io/docs/snapshots.md#create-snapshots), [declarative builds](https://www.daytona.io/docs/declarative-builder.md) and any other parameters passed to `daytona.create()` ([SDK](https://www.daytona.io/docs/getting-started.md#sdks)) or POST requests to `/api/sandbox` ([API](https://www.daytona.io/docs/getting-started.md#api)).
+
+This independent limit prevents resource exhaustion while allowing you to perform lifecycle operations on existing sandboxes without restriction.
+
+:::note
+To create sandboxes at a higher rate for your use case, contact [support@daytona.io](mailto:support@daytona.io).
+:::
+
+### Sandbox lifecycle operations
+
+This rate limit applies to lifecycle and state management operations on existing sandboxes:
+
+- [**Starting** sandboxes](https://www.daytona.io/docs/tools/api.md#post-sandboxsandboxidornamestart) (`POST /api/sandbox/:id/start`)
+- [**Stopping** sandboxes](https://www.daytona.io/docs/tools/api.md#post-sandboxsandboxidornamestop) (`POST /api/sandbox/:id/stop`)
+- [**Deleting** sandboxes](https://www.daytona.io/docs/tools/api.md#delete-sandboxsandboxidorname) (`DELETE /api/sandbox/:id`)
+- [**Archiving** sandboxes](https://www.daytona.io/docs/tools/api.md#post-sandboxsandboxidornamearchive) (`POST /api/sandbox/:id/archive`)
+- and all corresponding SDK methods
+
+These operations have a higher limit since they're often performed more frequently during development workflows.
+
+### Rate limit errors
+
+Daytona [Python](https://www.daytona.io/docs/python-sdk.md) or [TypeScript](https://www.daytona.io/docs/en/typescript-sdk.md) SDKs raise or throw a `DaytonaRateLimitError` exception (Python) or error (TypeScript) when you exceed a rate limit.
+
+All errors include [**`headers`**](#rate-limit-headers) and [**`statusCode`**](#example-rate-limit-error-response) properties, allowing access to rate limit headers directly from the error object. Headers support case-insensitive access:
+
+    ```typescript
+    try {
+      await daytona.create()
+    } catch (error) {
+      if (error instanceof DaytonaRateLimitError) {
+        console.log(error.headers?.get('x-ratelimit-remaining-sandbox-create'))
+        console.log(error.headers?.get('X-RateLimit-Remaining-Sandbox-Create')) // also works
+      }
+    }
+    ```
+    ```python
+    try:
+      daytona.create(snapshot="my-snapshot")
+    except DaytonaRateLimitError as e:
+      print(e.headers['x-ratelimit-remaining-sandbox-create'])
+      print(e.headers['X-RateLimit-Remaining-Sandbox-Create'])  # also works
+    ```
+    ```ruby
+    begin
+      daytona.create
+    rescue Daytona::Sdk::Error => e
+      puts "Error: #{e.message}"
+    end
+    ```
+
+For more information, see the [Python SDK](https://www.daytona.io/docs/python-sdk/common/errors.md) and [TypeScript SDK](https://www.daytona.io/docs/typescript-sdk/errors.md) references.
+
+> [**DaytonaRateLimitError (Python SDK)**](https://www.daytona.io/docs/en/python-sdk/common/errors.md#daytonaratelimiteerror)
+>
+> [**DaytonaRateLimitError (TypeScript SDK)**](https://www.daytona.io/docs/python-sdk/common/errors.md#daytonaratelimiterror)
+>
+> [**DaytonaRateLimitError (Ruby SDK)**](https://www.daytona.io/docs/ruby-sdk/errors.md#daytonaratelimiteerror)
+
+### Rate limit error response
+
+The rate limit error response is a JSON object with the following properties:
+
+- **`statusCode`**: The HTTP status code of the error
+- **`message`**: The error message
+- **`error`**: The error type
+
+```json
+{
+  "statusCode": 429,
+  "message": "Rate limit exceeded",
+  "error": "Too Many Requests"
+}
+```
+
+## Tier upgrade
+
+Unlock more resources and higher rate limits by completing verification steps. For more information, see the [Daytona Dashboard ↗](https://app.daytona.io/dashboard/limits).
+
+:::note
+For access to custom tier requirements or resources in other regions, please contact [sales@daytona.io](mailto:sales@daytona.io).
+:::
+
+## Best practices
+
+To work effectively within rate limits, always handle `429` errors gracefully with proper retry logic. When you receive a rate limit error, implement exponential backoff—wait progressively longer between retries (1s, 2s, 4s, 8s, etc.) to avoid overwhelming the API.
+
+The following snippet demonstrates how to create a sandbox with retry logic using the TypeScript SDK:
+
+```typescript
+async function createSandboxWithRetry() {
+  let retries = 0
+  const maxRetries = 5
+
+  while (retries < maxRetries) {
+    try {
+      return await daytona.create({ snapshot: 'my-snapshot' })
+    } catch (error) {
+      if (error instanceof DaytonaRateLimitError && retries < maxRetries - 1) {
+        // Use Retry-After header if available, otherwise exponential backoff
+        const retryAfter = error.headers?.get('retry-after-sandbox-create')
+        const delay = retryAfter
+          ? parseInt(retryAfter) * 1000
+          : Math.pow(2, retries) * 1000
+        await new Promise(resolve => setTimeout(resolve, delay))
+        retries++
+      } else {
+        throw error
+      }
+    }
+  }
+}
+```
+
+**Monitor [rate limit headers](#rate-limit-headers)** (e.g., `X-RateLimit-Remaining-{throttler}`, `X-RateLimit-Reset-{throttler}`) to track your consumption and implement proactive throttling before hitting limits. These headers are available on all error objects via the `headers` property.
+
+**Cache API responses** that don't frequently change, such as [sandbox lists](https://www.daytona.io/docs/sandboxes.md#list-sandboxes) (when relatively static), [available regions](https://www.daytona.io/docs/regions.md), and [snapshot information](https://www.daytona.io/docs/snapshots.md). This reduces unnecessary API calls and helps you stay well within your limits.
+
+**Batch and optimize operations** by creating multiple sandboxes in parallel (within rate limits) rather than sequentially. Consider reusing existing sandboxes when possible instead of creating new ones for every task.
+
+**Efficiently manage sandbox lifecycle** to reduce API calls. [Archive sandboxes](https://www.daytona.io/docs/sandboxes.md#archive-sandboxes) instead of deleting and recreating them, stop sandboxes when not in use rather than deleting them, and leverage [auto-stop intervals](https://www.daytona.io/docs/sandboxes.md#auto-stop-interval) to automatically manage running sandboxes without manual intervention.
+
+**Implement request queuing** to prevent bursts that exceed limits, and use [webhooks](https://www.daytona.io/docs/webhooks.md) instead of polling for state changes to avoid unnecessary API calls. Set up monitoring and alerts for `429` errors in your application logs so you can proactively address rate limiting issues before they impact your users.
+
+Daytona supports linking user accounts from various identity providers. At the moment, the following providers are supported:
 
 - Google
 - GitHub
 
-You can log into your Daytona account using any linked provider.
-
 :::tip
-
-#### Unlock higher usage limits
-
-Linking your GitHub account is one of the requirements to automatically upgrade to Tier 2.
-
+GitHub account is one of the requirements to automatically [upgrade your organization to **Tier 2**](https://www.daytona.io/docs/en/limits.md#tiers--rate-limit-increases).
 :::
 
-## Linking/Unlinking Accounts
+## Link account
+1. Navigate to [Daytona Dashboard ↗](https://app.daytona.io/dashboard/user/account-settings) account settings.
+2. Click the **Link Account** button next to the provider you want to link.
+3. Follow the prompts to link your account.
 
-To link or unlink an account:
-1. Visit the [Linked Accounts](https://app.daytona.io/dashboard/user/linked-accounts) page in the Daytona dashboard.
-2. Use the "Link Account" or "Unlink" button next to the provider you wish to manage.
+## Unlink account
 
-## Need More?
-
-If you need support for other identity providers, reach out to [support@daytona.io](mailto:support@daytona.io).
+1. Navigate to [Daytona Dashboard ↗](https://app.daytona.io/dashboard/user/account-settings) account settings.
+2. Click the **Unlink** button next to the provider you want to unlink.
+3. Follow the prompts to unlink your account.
 
 When executing long-running processes in a sandbox, you’ll often want to access and process their logs in **real-time**.
 
@@ -3230,7 +13943,45 @@ This is ideal for:
   ```
 
 
-See: [get_session_command_logs_async (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processget_session_command_logs_async), [getSessionCommandLogs (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#getsessioncommandlogs)
+  ```ruby
+  require 'daytona'
+
+  daytona = Daytona::Daytona.new
+  sandbox = daytona.create
+
+  session_id = 'streaming-session'
+  sandbox.process.create_session(session_id)
+
+  command = sandbox.process.execute_session_command(
+    session_id,
+    Daytona::SessionExecuteRequest.new(
+      command: 'for i in {1..5}; do echo "Step $i"; echo "Error $i" >&2; sleep 1; done',
+      var_async: true
+    )
+  )
+
+  # Stream logs using a thread
+  log_thread = Thread.new do
+    sandbox.process.get_session_command_logs_stream(
+      session_id,
+      command.cmd_id,
+      on_stdout: ->(stdout) { puts "[STDOUT]: #{stdout}" },
+      on_stderr: ->(stderr) { puts "[STDERR]: #{stderr}" }
+    )
+  end
+
+  puts 'Continuing execution while logs are streaming...'
+  sleep(3)
+  puts 'Other operations completed!'
+
+  # Wait for the logs to complete
+  log_thread.join
+
+  daytona.delete(sandbox)
+  ```
+
+
+See: [get_session_command_logs_async (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processget_session_command_logs_async), [getSessionCommandLogs (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#getsessioncommandlogs), [get_session_command_logs_stream (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/process.md#get_session_command_logs_stream)
 
 ## Retrieve All Existing Logs
 
@@ -3313,7 +14064,44 @@ periodically check all existing logs, you can use the following example to get t
   ```
 
 
-See: [get_session_command_logs_async (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processget_session_command_logs_async), [getSessionCommandLogs (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#getsessioncommandlogs)
+  ```ruby
+  require 'daytona'
+
+  daytona = Daytona::Daytona.new
+  sandbox = daytona.create
+  session_id = 'exec-session-1'
+  sandbox.process.create_session(session_id)
+
+  # Execute a blocking command and wait for the result
+  command = sandbox.process.execute_session_command(
+    session_id,
+    Daytona::SessionExecuteRequest.new(
+      command: 'echo "Hello from stdout" && echo "Hello from stderr" >&2'
+    )
+  )
+  puts "[STDOUT]: #{command.stdout}"
+  puts "[STDERR]: #{command.stderr}"
+  puts "[OUTPUT]: #{command.output}"
+
+  # Or execute command in the background and get the logs later
+  command = sandbox.process.execute_session_command(
+    session_id,
+    Daytona::SessionExecuteRequest.new(
+      command: 'while true; do if (( RANDOM % 2 )); then echo "All good at $(date)"; else echo "Oops, an error at $(date)" >&2; fi; sleep 1; done',
+      var_async: true
+    )
+  )
+  sleep(5)
+  # Get the logs up to the current point in time
+  logs = sandbox.process.get_session_command_logs(session_id, command.cmd_id)
+  puts "[STDOUT]: #{logs.stdout}"
+  puts "[STDERR]: #{logs.stderr}"
+  puts "[OUTPUT]: #{logs.output}"
+
+  daytona.delete(sandbox)
+  ```
+
+See: [get_session_command_logs_async (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processget_session_command_logs_async), [getSessionCommandLogs (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#getsessioncommandlogs), [get_session_command_logs (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/process.md#get_session_command_logs)
 
 The Daytona Model Context Protocol (MCP) Server enables AI agents to interact with Daytona's features programmatically. This guide covers how to set up and use the MCP server with various AI agents.
 
@@ -3603,6 +14391,28 @@ const sandbox = await daytona.create({
 
 
 
+```ruby
+require 'daytona'
+
+daytona = Daytona::Daytona.new
+
+# Allow access to specific IP addresses (Wikipedia, X/Twitter, private network)
+sandbox = daytona.create(
+  Daytona::CreateSandboxFromSnapshotParams.new(
+    network_allow_list: '208.80.154.232/32,199.16.156.103/32,192.168.1.0/24'
+  )
+)
+
+# Or block all network access
+sandbox = daytona.create(
+  Daytona::CreateSandboxFromSnapshotParams.new(
+    network_block_all: true
+  )
+)
+```
+
+
+
 :::note
 If both `networkBlockAll` and `networkAllowList` are specified, `networkBlockAll` takes precedence and all network access will be blocked, ignoring the allow list.
 :::
@@ -3661,32 +14471,70 @@ Test network connectivity before starting critical development work and consider
 
 The following services are whitelisted and accessible on all tiers:
 
-- Package registries:
-  - npm: `registry.npmjs.org`, `registry.npmjs.com`, `nodejs.org`, `nodesource.com`, `npm.pkg.github.com`
-  - yarn: `classic.yarnpkg.com`, `registry.yarnpkg.com`, `repo.yarnpkg.com`, `releases.yarnpkg.com`, `yarn.npmjs.org`, `yarnpkg.netlify.com`, `dl.yarnpkg.com`, `yarnpkg.com`
-  - PyPI: `pypi.org`, `pypi.python.org`, `files.pythonhosted.org`, `bootstrap.pypa.io`
-  - Maven: `repo1.maven.org`, `repo.maven.apache.org`
-- Container registries:
-  - Docker: `download.docker.com`, `registry-1.docker.io`, `registry.docker.io`, `auth.docker.io`, `index.docker.io`, `hub.docker.com`, `docker.io`
-  - Google: `gcr.io`, `asia.gcr.io`, `eu.gcr.io`, `us.gcr.io`, `marketplace.gcr.io`, `registry.cloud.google.com`
-  - Microsoft: `mcr.microsoft.com`
-  - Quay: `quay.io`, `quay-registry.s3.amazonaws.com`
-  - Kubernetes: `registry.k8s.io`
-- Git repositories:
-  - GitHub: `github.com`, `api.github.com`, `raw.githubusercontent.com`, `github-releases.githubusercontent.com`, `codeload.github.com`, `ghcr.io`, `packages.github.com`
-  - GitLab: `gitlab.com`, `registry.gitlab.com`
-  - Bitbucket: `bitbucket.org`
-- System package managers:
-  - Ubuntu: `archive.ubuntu.com`, `security.ubuntu.com`
-  - Debian: `deb.debian.org`, `security.debian.org`, `cdn-fastly.deb.debian.org`, `ftp.debian.org`
-- CDN services:
-  - Cloudflare: `cloudflare.com`
-  - Fastly: `fastly.com`
-  - JavaScript CDNs: `unpkg.com`, `jsdelivr.net`
-- AI/ML services:
-  - Anthropic: `api.anthropic.com`
-- Platform services:
-  - Daytona: `app.daytona.io`
+### NPM Registry and Package Managers
+
+- **NPM Registry**: `registry.npmjs.org`, `registry.npmjs.com`, `nodejs.org`, `nodesource.com`, `npm.pkg.github.com`
+- **Yarn Packages**: `classic.yarnpkg.com`, `registry.yarnpkg.com`, `repo.yarnpkg.com`, `releases.yarnpkg.com`, `yarn.npmjs.org`, `yarnpkg.netlify.com`, `dl.yarnpkg.com`, `yarnpkg.com`
+
+### Git Hosting and Version Control
+
+- **GitHub**: `github.com`, `api.github.com`, `raw.githubusercontent.com`, `github-releases.githubusercontent.com`, `codeload.github.com`, `ghcr.io`, `packages.github.com`
+- **GitLab**: `gitlab.com`, `registry.gitlab.com`
+- **Bitbucket**: `bitbucket.org`
+
+### Python Package Managers
+
+- **PyPI**: `pypi.org`, `pypi.python.org`, `files.pythonhosted.org`, `bootstrap.pypa.io`
+
+### Ubuntu/Debian Package Repositories
+
+- **Ubuntu Repos**: `archive.ubuntu.com`, `security.ubuntu.com`
+- **Debian Repos**: `deb.debian.org`, `security.debian.org`, `cdn-fastly.deb.debian.org`, `ftp.debian.org`
+
+### CDN and Content Delivery
+
+- **CDN Services**: `fastly.com`, `cloudflare.com`
+- **JavaScript CDNs**: `unpkg.com`, `jsdelivr.net`
+
+### AI/ML Services
+
+- **Anthropic**: `api.anthropic.com`
+- **OpenAI**: `api.openai.com`
+- **Perplexity**: `api.perplexity.ai`
+- **DeepSeek**: `api.deepseek.com`
+- **Groq**: `api.groq.com`
+- **Expo**: `api.expo.dev`
+- **OpenRouter**: `openrouter.ai`
+
+### Docker Registries and Container Services
+
+- **Docker Registries**: `download.docker.com`, `registry-1.docker.io`, `registry.docker.io`, `auth.docker.io`, `index.docker.io`, `hub.docker.com`, `docker.io`
+- **Microsoft Container Registry**: `mcr.microsoft.com`
+- **Kubernetes Registry**: `registry.k8s.io`
+- **Google Container Registry**: `gcr.io`, `asia.gcr.io`, `eu.gcr.io`, `us.gcr.io`, `marketplace.gcr.io`, `registry.cloud.google.com`
+- **Quay**: `quay.io`, `quay-registry.s3.amazonaws.com`
+
+### Maven Repositories
+
+- **Maven Repos**: `repo1.maven.org`, `repo.maven.apache.org`
+
+### Google Fonts
+
+- **Google Fonts**: `fonts.googleapis.com`, `fonts.gstatic.com`
+
+### AWS S3 Endpoints
+
+- **US East**: `s3.us-east-1.amazonaws.com`, `s3.us-east-2.amazonaws.com`
+- **US West**: `s3.us-west-1.amazonaws.com`, `s3.us-west-2.amazonaws.com`
+- **EU**: `s3.eu-central-1.amazonaws.com`, `s3.eu-west-1.amazonaws.com`, `s3.eu-west-2.amazonaws.com`
+
+### Daytona Platform
+
+- **Daytona**: `app.daytona.io`
+
+:::note
+This list is continuously updated. If you require access to additional essential development services, you can submit a request via the [sandbox-network-whitelist](https://github.com/daytonaio/sandbox-network-whitelist) repository or contact [support@daytona.io](mailto:support@daytona.io).
+:::
 
 
 ## Getting Help
@@ -3698,78 +14546,87 @@ If you encounter network access issues or need unrestricted network access
 3. Verify your **network allow list** configuration
 4. Contact support at [support@daytona.io](mailto:support@daytona.io) for assistance
 
-Organizations in Daytona are used to group resources and enable collaboration. Users can work individually in their Personal Organization or together in a Collaborative Organization.
+Daytona provides organizations as a way to group resources and enable collaboration. Users can work individually in their personal organization or together in a collaborative organization.
 
-### Personal vs Collaborative Organizations
+Navigate to [Daytona Dashboard ↗](https://app.daytona.io/dashboard) to manage your organizations.
 
-Every Daytona user starts with a **Personal Organization**, ideal for solo use and experimentation. **Collaborative Organizations** are created manually and designed for company-wide collaboration with shared access and controls.
+## Personal vs Collaborative organizations
 
-| Feature            | Personal Organization            | Collaborative Organization                     |
+Every Daytona user starts with a personal organization, ideal for solo use and experimentation. Collaborative organizations are created manually and designed for company-wide collaboration with shared access and controls.
+
+| **Feature**        | **Personal organization**        | **Collaborative organization**                 |
 | ------------------ | -------------------------------- | ---------------------------------------------- |
 | **Creation**       | Automatic on signup              | Manually by a user                             |
 | **Members**        | Single user only                 | Multiple users (invite-based)                  |
-| **Access Control** | No roles or permissions          | Roles with granular resource-based Assignments |
+| **Access Control** | No roles or permissions          | Roles with granular resource-based assignments |
 | **Billing**        | Tied to individual user          | Shared across team members                     |
 | **Use Case**       | Personal testing, small projects | Company/team development and production        |
 | **Quota Scope**    | Per user                         | Shared across all members                      |
-| **Deletable**      | ❌ No                            | ✅ Yes (by Owner)                              |
+| **Deletable**      | No                               | Yes (by Owner)                                 |
 
-Users can switch between their Personal and Collaborative Organizations using the dropdown in the sidebar. Each Organization has its own sandboxes, API keys, and resource quotas.
+Users can switch between their personal and collaborative organizations by using the dropdown in the [Daytona Dashboard ↗](https://app.daytona.io/dashboard) sidebar. Each organization has its own sandboxes, API keys, and resource quotas.
 
-## Managing Members
+## Organization roles
 
-### Organization Roles
+Users within an organization can have one of two different roles:
 
-Users within an Organization can have one of two different Roles:
-- **Owners** have full
-administrative access to the Organization and its resources. Organization Owners can perform administrative actions such as:
-- **Members** have no administrative access
-to the Organization, while their access to Organization resources is based on [**Assignments**](#available-assignments).
+1. **Owners** have full administrative access to the organization and its resources. Organization owners can perform administrative actions.
+2. **Members** have no administrative access to the organization, while their access to organization resources is based on [**Assignments**](#available-assignments).
 
-### Administrative Actions
+## Administrative actions
 
-Organization Owners can perform administrative actions such as:
+Organization owners can perform administrative actions such as:
 
-- [Invite new users to the Organization](#inviting-new-users)
+- [Invite new users to the organization](#inviting-new-users)
 - [Manage pending invitations](#managing-invitations)
-- Change [Role](#organization-roles) of a user in the Organization
-- Update [Assignments](#available-assignments) for an Organization Member
-- Remove user from the Organization
+- [Change role](#organization-roles) of a user in the Organization
+- [Update assignments](#available-assignments) for organization members
+- Remove user from the organization
 - Inspect audit logs
-- [Delete Organization](#organization-settings)
+- [Delete organization](#organization-settings)
 
-### Inviting New Users
+## Available assignments
 
-As an Organization **Owner**, to invite a new user to your Organization:
+The list of available assignments includes:
 
-1. Navigate to the _Members page_.
-2. Click on _Invite Member_.
-3. Enter the email address of the user you want to invite.
-4. Choose a [Role](#organization-roles) for the new user. If you select the `Member` role, define their [Assignments](#available-assignments).
+| Assignment                    | Description                                                         |
+| ----------------------------- | ------------------------------------------------------------------- |
+| **`Viewer (required)`**       | Grants read access to all resources in the organization             |
+| **`Developer`**               | Grants the ability to create sandboxes and keys in the organization |
+| **`Sandboxes Admin`**         | Grants admin access to sandboxes in the organization                |
+| **`Snapshots Admin`**         | Grants admin access to snapshots in the organization                |
+| **`Registries Admin`**        | Grants admin access to registries in the organization               |
+| **`Volumes Admin`**           | Grants admin access to volumes in the organization                  |
+| **`Super Admin`**             | Grants full access to all resources in the organization             |
+| **`Auditor`**                 | Grants access to audit logs in the organization                     |
+| **`Infrastructure Admin`**    | Grants admin access to infrastructure in the organization           |
 
-### Available Assignments
+## Manage members
 
-The list of available **Assignments** includes:
+### Invite new users
 
-| Assignment              | Description                                                         |
-| ----------------------- | ------------------------------------------------------------------- |
-| **`Viewer (required)`** | Grants read access to all resources in the organization             |
-| **`Developer`**         | Grants the ability to create sandboxes and keys in the organization |
-| **`Sandboxes Admin`**   | Grants admin access to sandboxes in the organization                |
-| **`Snapshots Admin`**   | Grants admin access to snapshots in the organization                |
-| **`Registries Admin`**  | Grants admin access to registries in the organization               |
-| **`Volumes Admin`**     | Grants admin access to volumes in the organization                  |
-| **`Super Admin`**       | Grants full access to all resources in the organization             |
-| **`Auditor`**           | Grants access to audit logs in the organization                     |
+As an organization **Owner**, to invite a new user to your organization:
 
-### Managing Invitations
+1. Navigate to [Members ↗](https://app.daytona.io/dashboard/members)
+2. Click the **Invite Member** button
+3. Enter the email address of the user you want to invite
+4. [Select a role](#organization-roles) for the new user. If you select the **`Member`** role, define their [assignments](#available-assignments)
 
-To view their pending invitations to join other Organizations, users can navigate to the _Invitations
-page_ by expanding the dropdown at the bottom of the sidebar, and clicking on _Invitations_. Once a user
-accepts an invitation to join an Organization, they get access to resource quotas assigned to that
-Organization and they may proceed by issuing a new [API key](https://www.daytona.io/docs/en/api-keys.md) and creating sandboxes.
+### Remove users
 
-## Organization Settings
+As an organization **Owner**, to remove a user from your organization:
+
+1. Navigate to [Members ↗](https://app.daytona.io/dashboard/members)
+2. Click the **Remove** button next to the user you want to remove
+3. Confirm the removal by clicking the **Remove** button
+
+## Manage invitations
+
+To view pending invitations to join other organizations, navigate to [Invitations ↗](https://app.daytona.io/dashboard/invitations) page by expanding the dropdown at the bottom of the sidebar. 
+
+Once a user accepts an invitation to join an organization, they get access to resource quotas assigned to that organization and they may proceed by issuing a new [API key](https://www.daytona.io/docs/en/api-keys.md) and creating sandboxes.
+
+## Organization settings
 
 The [Settings](https://app.daytona.io/dashboard/settings) subpage in the Dashboard allows you to view the Organization ID and Name and to delete the Organization if you don't need it anymore. This action is irreversible, so please proceed with caution. Personal Organizations are there by default and cannot be deleted.
 
@@ -3939,11 +14796,7 @@ Below is a full list of environment variables with their default values:
 | `DEFAULT_RUNNER_CPU`                       | number  | `4`                                                  | Default runner CPU allocation                                                                        |
 | `DEFAULT_RUNNER_MEMORY`                    | number  | `8`                                                  | Default runner memory allocation (GB)                                                                |
 | `DEFAULT_RUNNER_DISK`                      | number  | `50`                                                 | Default runner disk allocation (GB)                                                                  |
-| `DEFAULT_RUNNER_GPU`                       | number  | `0`                                                  | Default runner GPU allocation                                                                        |
-| `DEFAULT_RUNNER_GPU_TYPE`                  | string  | `none`                                               | Default runner GPU type                                                                              |
-| `DEFAULT_RUNNER_CAPACITY`                  | number  | `100`                                                | Default runner capacity                                                                              |
-| `DEFAULT_RUNNER_REGION`                    | string  | `us`                                                 | Default runner region                                                                                |
-| `DEFAULT_RUNNER_CLASS`                     | string  | `small`                                              | Default runner class                                                                                 |
+| `DEFAULT_RUNNER_API_VERSION`               | string  | `0`                                                  | Default runner API version                                                                           |
 | `DEFAULT_ORG_QUOTA_TOTAL_CPU_QUOTA`        | number  | `10000`                                              | Default organization total CPU quota                                                                 |
 | `DEFAULT_ORG_QUOTA_TOTAL_MEMORY_QUOTA`     | number  | `10000`                                              | Default organization total memory quota                                                              |
 | `DEFAULT_ORG_QUOTA_TOTAL_DISK_QUOTA`       | number  | `100000`                                             | Default organization total disk quota                                                                |
@@ -3955,8 +14808,12 @@ Below is a full list of environment variables with their default values:
 | `DEFAULT_ORG_QUOTA_VOLUME_QUOTA`           | number  | `10000`                                              | Default organization volume quota                                                                    |
 | `SSH_GATEWAY_API_KEY`                      | string  | `ssh_secret_api_token`                               | SSH gateway API key                                                                                  |
 | `SSH_GATEWAY_COMMAND`                      | string  | `ssh -p 2222 {{TOKEN}}@localhost`                    | SSH gateway command template                                                                         |
+| `SSH_GATEWAY_PUBLIC_KEY`                   | string  | (Base64-encoded OpenSSH public key)                  | SSH gateway public key for authentication                                                            |
+| `SSH_GATEWAY_URL`                          | string  | `localhost:2222`                                     | SSH gateway URL                                                                                      |
 | `RUNNER_DECLARATIVE_BUILD_SCORE_THRESHOLD` | number  | `10`                                                 | Runner declarative build score threshold                                                             |
 | `RUNNER_AVAILABILITY_SCORE_THRESHOLD`      | number  | `10`                                                 | Runner availability score threshold                                                                  |
+| `RUNNER_HEALTH_TIMEOUT_SECONDS`            | number  | `3`                                                  | Runner health-check timeout in seconds                                                               |
+| `RUNNER_START_SCORE_THRESHOLD`             | number  | `3`                                                  | Runner start score threshold                                                                         |
 | `RUN_MIGRATIONS`                           | boolean | `true`                                               | Enable database migrations on startup                                                                |
 | `ADMIN_API_KEY`                            | string  | (empty)                                              | Admin API key, auto-generated if empty, used only upon initial setup, not recommended for production |
 | `ADMIN_TOTAL_CPU_QUOTA`                    | number  | `0`                                                  | Admin total CPU quota, used only upon initial setup                                                  |
@@ -3969,23 +14826,49 @@ Below is a full list of environment variables with their default values:
 | `ADMIN_MAX_SNAPSHOT_SIZE`                  | number  | `100`                                                | Admin max snapshot size, used only upon initial setup                                                |
 | `ADMIN_VOLUME_QUOTA`                       | number  | `0`                                                  | Admin volume quota, used only upon initial setup                                                     |
 | `SKIP_USER_EMAIL_VERIFICATION`             | boolean | `true`                                               | Skip user email verification process                                                                 |
+| `RATE_LIMIT_ANONYMOUS_TTL`                 | number  | (empty)                                              | Anonymous rate limit time-to-live (seconds, empty - rate limit is disabled)                          |
+| `RATE_LIMIT_ANONYMOUS_LIMIT`               | number  | (empty)                                              | Anonymous rate limit (requests per TTL, empty - rate limit is disabled)                              |
+| `RATE_LIMIT_AUTHENTICATED_TTL`             | number  | (empty)                                              | Authenticated rate limit time-to-live (seconds, empty - rate limit is disabled)                      |
+| `RATE_LIMIT_AUTHENTICATED_LIMIT`           | number  | (empty)                                              | Authenticated rate limit (requests per TTL, empty - rate limit is disabled)                          |
+| `RATE_LIMIT_SANDBOX_CREATE_TTL`            | number  | (empty)                                              | Sandbox create rate limit time-to-live (seconds, empty - rate limit is disabled)                     |
+| `RATE_LIMIT_SANDBOX_CREATE_LIMIT`          | number  | (empty)                                              | Sandbox create rate limit (requests per TTL, empty - rate limit is disabled)                         |
+| `RATE_LIMIT_SANDBOX_LIFECYCLE_TTL`         | number  | (empty)                                              | Sandbox lifecycle rate limit time-to-live (seconds, empty - rate limit is disabled)                  |
+| `RATE_LIMIT_SANDBOX_LIFECYCLE_LIMIT`       | number  | (empty)                                              | Sandbox lifecycle rate limit (requests per TTL, empty - rate limit is disabled)                      |
+| `RATE_LIMIT_FAILED_AUTH_TTL`               | number  | (empty)                                              | Failed authentication rate limit time-to-live (seconds, empty - rate limit is disabled)              |
+| `RATE_LIMIT_FAILED_AUTH_LIMIT`             | number  | (empty)                                              | Failed authentication rate limit (requests per TTL, empty - rate limit is disabled)                  |
+| `DEFAULT_REGION_ID`                        | string  | `us`                                                 | Default region ID                                                                                    |
+| `DEFAULT_REGION_NAME`                      | string  | `us`                                                 | Default region name                                                                                  |
+| `DEFAULT_REGION_ENFORCE_QUOTAS`            | boolean | `false`                                              | Enable region-based resource limits for default region                                               |
 
 ### Runner
 
-| Variable                   | Type    | Default Value                     | Description                           |
-| -------------------------- | ------- | --------------------------------- | ------------------------------------- |
-| `VERSION`                  | string  | `0.0.1`                           | Runner service version                |
-| `ENVIRONMENT`              | string  | `development`                     | Application environment               |
-| `API_PORT`                 | number  | `3003`                            | Runner API service port               |
-| `API_TOKEN`                | string  | `secret_api_token`                | Runner API authentication token       |
-| `LOG_FILE_PATH`            | string  | `/home/daytona/runner/runner.log` | Path to runner log file               |
-| `RESOURCE_LIMITS_DISABLED` | boolean | `true`                            | Disable resource limits for sandboxes |
-| `AWS_ENDPOINT_URL`         | string  | `http://minio:9000`               | AWS S3-compatible storage endpoint    |
-| `AWS_REGION`               | string  | `us-east-1`                       | AWS region                            |
-| `AWS_ACCESS_KEY_ID`        | string  | `minioadmin`                      | AWS access key ID                     |
-| `AWS_SECRET_ACCESS_KEY`    | string  | `minioadmin`                      | AWS secret access key                 |
-| `AWS_DEFAULT_BUCKET`       | string  | `daytona`                         | AWS default bucket name               |
-| `SERVER_URL`               | string  | `http://api:3000/api`             | Daytona API server URL                |
+| Variable                                | Type    | Default Value                     | Description                                                    |
+| --------------------------------------- | ------- | --------------------------------- | -------------------------------------------------------------- |
+| `DAYTONA_API_URL`                       | string  | `http://api:3000/api`             | Daytona API URL                                                |
+| `DAYTONA_RUNNER_TOKEN`                  | string  | `secret_api_token`                | Runner API authentication token                                |
+| `VERSION`                               | string  | `0.0.1`                           | Runner service version                                         |
+| `ENVIRONMENT`                           | string  | `development`                     | Application environment                                        |
+| `API_PORT`                              | number  | `3003`                            | Runner API service port                                        |
+| `LOG_FILE_PATH`                         | string  | `/home/daytona/runner/runner.log` | Path to runner log file                                        |
+| `RESOURCE_LIMITS_DISABLED`              | boolean | `true`                            | Disable resource limits for sandboxes                          |
+| `AWS_ENDPOINT_URL`                      | string  | `http://minio:9000`               | AWS S3-compatible storage endpoint                             |
+| `AWS_REGION`                            | string  | `us-east-1`                       | AWS region                                                     |
+| `AWS_ACCESS_KEY_ID`                     | string  | `minioadmin`                      | AWS access key ID                                              |
+| `AWS_SECRET_ACCESS_KEY`                 | string  | `minioadmin`                      | AWS secret access key                                          |
+| `AWS_DEFAULT_BUCKET`                    | string  | `daytona`                         | AWS default bucket name                                        |
+| `DAEMON_START_TIMEOUT_SEC`              | number  | `60`                              | Daemon start timeout in seconds                                |
+| `SANDBOX_START_TIMEOUT_SEC`             | number  | `30`                              | Sandbox start timeout in seconds                               |
+| `USE_SNAPSHOT_ENTRYPOINT`               | boolean | `false`                           | Use snapshot entrypoint for sandbox                            |
+| `RUNNER_DOMAIN`                         | string  | (none)                            | Runner domain name (hostname for runner URLs)                  |
+| `VOLUME_CLEANUP_INTERVAL_SEC`           | number  | `30`                              | Volume cleanup interval in seconds (minimum: 10s)              |
+| `COLLECTOR_WINDOW_SIZE`                 | number  | `60`                              | Metrics collector window size (number of samples)              |
+| `CPU_USAGE_SNAPSHOT_INTERVAL`           | string  | `5s`                              | CPU usage snapshot interval duration (minimum: 1s)             |
+| `ALLOCATED_RESOURCES_SNAPSHOT_INTERVAL` | string  | `5s`                              | Allocated resources snapshot interval (minimum: 1s)            |
+| `POLL_TIMEOUT`                          | string  | `30s`                             | Poller service timeout duration (e.g., `30s`, `1m`)            |
+| `POLL_LIMIT`                            | number  | `10`                              | Maximum poll attempts per request (min: 1, max: 100)           |
+| `HEALTHCHECK_INTERVAL`                  | string  | `30s`                             | Interval between health checks (minimum: 10s)                  |
+| `HEALTHCHECK_TIMEOUT`                   | string  | `10s`                             | Health check timeout duration                                  |
+| `API_VERSION`                           | number  | `2`                               | Runner API version (default: 2)                                |
 
 ### SSH Gateway
 
@@ -3999,21 +14882,23 @@ Below is a full list of environment variables with their default values:
 
 ### Proxy
 
-| Variable             | Type    | Default Value               | Description                    |
-| -------------------- | ------- | --------------------------- | ------------------------------ |
-| `DAYTONA_API_URL`    | string  | `http://api:3000/api`       | Daytona API URL                |
-| `PROXY_PORT`         | number  | `4000`                      | Proxy service port             |
-| `PROXY_DOMAIN`       | string  | `proxy.localhost:4000`      | Proxy domain                   |
-| `PROXY_API_KEY`      | string  | `super_secret_key`          | Proxy API authentication key   |
-| `PROXY_PROTOCOL`     | string  | `http`                      | Proxy protocol (http or https) |
-| `OIDC_CLIENT_ID`     | string  | `daytona`                   | OIDC client identifier         |
-| `OIDC_CLIENT_SECRET` | string  | (empty)                     | OIDC client secret             |
-| `OIDC_DOMAIN`        | string  | `http://dex:5556/dex`       | OIDC domain                    |
-| `OIDC_PUBLIC_DOMAIN` | string  | `http://localhost:5556/dex` | OIDC public domain             |
-| `OIDC_AUDIENCE`      | string  | `daytona`                   | OIDC audience identifier       |
-| `REDIS_HOST`         | string  | `redis`                     | Redis server hostname          |
-| `REDIS_PORT`         | number  | `6379`                      | Redis server port              |
-| `TOOLBOX_ONLY_MODE`  | boolean | `false`                     | Allow only toolbox requests    |
+| Variable                  | Type    | Default Value               | Description                     |
+| ------------------------- | ------- | --------------------------- | ------------------------------- |
+| `DAYTONA_API_URL`         | string  | `http://api:3000/api`       | Daytona API URL                 |
+| `PROXY_PORT`              | number  | `4000`                      | Proxy service port              |
+| `PROXY_API_KEY`           | string  | `super_secret_key`          | Proxy API authentication key    |
+| `PROXY_PROTOCOL`          | string  | `http`                      | Proxy protocol (http or https)  |
+| `COOKIE_DOMAIN`           | string  | `$PROXY_DOMAIN`             | Cookie domain for proxy cookies |
+| `OIDC_CLIENT_ID`          | string  | `daytona`                   | OIDC client identifier          |
+| `OIDC_CLIENT_SECRET`      | string  | (empty)                     | OIDC client secret              |
+| `OIDC_DOMAIN`             | string  | `http://dex:5556/dex`       | OIDC domain                     |
+| `OIDC_PUBLIC_DOMAIN`      | string  | `http://localhost:5556/dex` | OIDC public domain              |
+| `OIDC_AUDIENCE`           | string  | `daytona`                   | OIDC audience identifier        |
+| `REDIS_HOST`              | string  | `redis`                     | Redis server hostname           |
+| `REDIS_PORT`              | number  | `6379`                      | Redis server port               |
+| `TOOLBOX_ONLY_MODE`       | boolean | `false`                     | Allow only toolbox requests     |
+| `PREVIEW_WARNING_ENABLED` | boolean | `false`                     | Enable browser preview warning  |
+| `SHUTDOWN_TIMEOUT_SEC`    | number  | `3600`                      | Shutdown timeout in seconds     |
 
 ## [OPTIONAL] Configure Auth0 for Authentication
 
@@ -4119,50 +15004,150 @@ OIDC_AUDIENCE=your_custom_api_identifier (with trailing slash)
 
 Note that `OIDC_CLIENT_SECRET` should remain empty for your proxy environment.
 
-The Daytona SDK provides a method to generate preview links for Sandboxes. A preview link's schema consists of the port and Sandbox ID (e.g.
-`https://3000-sandboxid.proxy.daytona.works`).
+The Daytona SDK provides methods to generate preview links for accessing Sandboxes. Any process listening for HTTP traffic on ports 3000–9999 can be previewed.
 
-Any process listening for HTTP traffic on ports 3000–9999 can be previewed.
+Daytona offers two approaches for preview URLs, each with different authentication mechanisms: **Standard Preview URL** and **Signed Preview URL**.
 
-## Fetching a Preview Link
+## Authentication
 
-To fetch the preview link and the authorization token for a specific port, you can simply use the SDK method:
+If the Sandbox has its `public` property set to `true`, preview links will be publicly accessible without authentication. Otherwise, authentication is required.
+
+For private sandboxes, the authentication differs based on the preview URL type.
+
+## Standard Preview URL
+
+The standard preview URL uses your sandbox ID in the URL structure and requires a separate authentication token sent via header.
+
+**URL Structure:** `https://{port}-{sandboxId}.{daytonaProxyDomain}`
+
+**How it works:**
+- The URL contains the port and your sandbox ID
+- A separate authentication token is provided
+- The token must be sent in the `x-daytona-preview-token` request header
+- The token automatically resets when the sandbox restarts
+
+**When to use:**
+- Programmatic access and API integrations where you control the HTTP headers
+- Internal tools where token management through headers is straightforward
 
 ```python
-
 preview_info = sandbox.get_preview_link(3000)
 
-print(f"Preview link url: {preview_info.url}")
-print(f"Preview link token: {preview_info.token}")
+print(f"URL: {preview_info.url}")
+print(f"Token: {preview_info.token}")
 
+# Use with requests
+import requests
+response = requests.get(
+    preview_info.url,
+    headers={"x-daytona-preview-token": preview_info.token}
+)
 ```
 
 ```typescript
+const previewInfo = await sandbox.getPreviewLink(3000);
 
-const previewInfo = await sandbox.getPreviewUrl(3000);
+console.log(`URL: ${previewInfo.url}`);
+console.log(`Token: ${previewInfo.token}`);
 
-console.log(`Preview link url: ${previewInfo.url}`);
-console.log(`Preview link token: ${previewInfo.token}`);
+// Use with fetch
+const response = await fetch(previewInfo.url, {
+  headers: { 'x-daytona-preview-token': previewInfo.token }
+});
+```
+
+```ruby
+
+preview_info = sandbox.preview_url(3000)
+
+puts "Preview link url: #{preview_info.url}"
+puts "Preview link token: #{preview_info.token}"
 
 ```
 
+
+See: [get_preview_link (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/sandbox.md#sandboxget_preview_link), [getPreviewLink (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/sandbox.md#getpreviewlink), [preview_url (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/sandbox.md#preview_url)
+
+### Authentication
+
+The URL uses the sandbox ID, and authentication is done via header:
+
+```bash
+# URL structure: port-sandboxid.domain
+curl -H "x-daytona-preview-token: vg5c0ylmcimr8b_v1ne0u6mdnvit6gc0" \
+  https://3000-sandbox-123456.proxy.daytona.work
+```
+
+## Signed Preview URL
+
+The signed preview URL embeds the authentication token directly into the URL structure itself, eliminating the need for separate authentication headers.
+
+**URL Structure:** `https://{port}-{token}.{daytonaProxyDomain}`
+
+**How it works:**
+- The URL contains the port and the signed authentication token (instead of the sandbox ID)
+- Authentication is embedded in the URL - no headers needed
+- You set a custom expiry time for the token (defaults to 60 seconds)
+- The token persists across sandbox restarts until it expires
+- You can manually revoke tokens before they expire if needed
+
+**When to use:**
+- Sharing preview links with users who can't easily set custom headers
+- Embedding in iframes, emails, or other contexts where header control is limited
+- Creating time-limited shareable links with explicit expiration
+- Webhooks and integrations that don't support custom headers
+
+```python
+# Create a signed preview URL that expires in 3600 seconds (1 hour)
+signed_url = sandbox.create_signed_preview_url(3000, expires_in_seconds=3600)
+
+print(f"URL: {signed_url.url}")  # Token is embedded in the URL
+print(f"Token: {signed_url.token}")  # Can be used to revoke access
+
+# Use directly - no headers needed
+import requests
+response = requests.get(signed_url.url)
+
+# Revoke the token before expiry if needed
+sandbox.expire_signed_preview_url(3000, signed_url.token)
+```
+
+```typescript
+// Create a signed preview URL that expires in 3600 seconds (1 hour)
+const signedUrl = await sandbox.getSignedPreviewUrl(3000, 3600);
+
+console.log(`URL: ${signedUrl.url}`);  // Token is embedded in the URL
+console.log(`Token: ${signedUrl.token}`);  // Can be used to revoke access
+
+// Use directly - no headers needed
+const response = await fetch(signedUrl.url);
+
+// Revoke the token before expiry if needed
+await sandbox.expireSignedPreviewUrl(3000, signedUrl.token);
+```
+
+```ruby
+# Create a signed preview URL that expires in 3600 seconds (1 hour)
+signed_url = sandbox.create_signed_preview_url(3000, expires_in_seconds=3600)
+
+puts "URL: #{signed_url.url}"
+puts "Token: #{signed_url.token}"
+```
+
+See: [create_signed_preview_url (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/sandbox.md#sandboxcreate_signed_preview_url), [getSignedPreviewUrl (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/sandbox.md#getsignedpreviewurl), [preview_url (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/sandbox.md#preview_url)
+
+### Authentication
+
+The URL embeds the token in place of the sandbox ID - no headers needed:
+
+```bash
+# URL structure: port-token.domain (token is in the URL itself)
+curl https://3000-eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.proxy.daytona.work
+```
 
 :::tip
 If you want to serve the previews under your own domain instead of using Daytona's URLs, check out the [Custom Domain/Authentication](https://www.daytona.io/docs/en/custom-domain-authentication.md) section.
 :::
-
-See: [get_preview_link (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/sandbox.md#sandboxget_preview_link), [getPreviewLink (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/sandbox.md#getpreviewlink)
-
-## Authentication
-
-If the Sandbox has its `public` property set to `true`, these links will be publicly accessible, otherwise the preview link will be available only to the Sandbox Organization users.
-
-For programmatic access, use the authorization token to access the preview URL:
-
-```bash
-curl -H "x-daytona-preview-token: vg5c0ylmcimr8b_v1ne0u6mdnvit6gc0" \
-https://3000-sandbox-123456.proxy.daytona.work
-```
 
 ## Warning Page
 
@@ -4181,11 +15166,19 @@ The Daytona SDK provides powerful process and code execution capabilities throug
 
 ## Code Execution
 
-Daytona SDK provides an option to execute code in Python and TypeScript.
+Daytona SDK supports both stateless and stateful code execution flows. Stateless runs use the `process` module and
+supports multiple languages (Python, TypeScript, JavaScript). The stateful code interpreter keeps variables and imports
+between calls and currently supports only Python.
 
-### Running Code
+:::note
 
-Daytona SDK provides an option to run code snippets in Python and TypeScript. You can execute code with input, timeout, and environment variables.
+- Stateless execution inherits the Sandbox language that you choose at creation time. See [Basic Sandbox Creation](https://www.daytona.io/docs/en/sandboxes.md#basic-sandbox-creation).
+- The stateful interpreter supports only Python.
+  :::
+
+### Stateless Execution
+
+Use stateless execution when each snippet is independent. Every invocation starts from a clean interpreter.
 
 ```python
 # Run Python code
@@ -4197,7 +15190,6 @@ print(greet("Daytona"))
 ''')
 
 print(response.result)
-
 ```
 ```typescript
 // Run TypeScript code
@@ -4232,8 +15224,109 @@ response = await sandbox.process.codeRun(
 console.log(response.result);
 ```
 
+```ruby
+# Run Python code
+response = sandbox.process.code_run(code: <<~PYTHON)
+  def greet(name):
+      return f"Hello, {name}!"
+  
+  print(greet("Daytona"))
+PYTHON
 
-See: [code_run (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processcode_run), [codeRun (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#coderun)
+puts response.result
+
+# Run code with environment variables
+response = sandbox.process.code_run(
+  code: 'import os; print(f"FOO: {os.environ.get(\'FOO\')}")',
+  env: { 'FOO' => 'BAR' }
+)
+puts response.result
+
+# Run code with timeout
+response = sandbox.process.code_run(
+  code: 'import time; time.sleep(2); print("Done")',
+  timeout: 5
+)
+puts response.result
+```
+
+See: [code_run (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processcode_run), [codeRun (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#coderun), [code_run (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/process.md#code_run)
+
+### Stateful Code Interpreter
+
+When you need to persist variables, imports between calls, use the Sandbox code interpreter. It offers:
+
+- A shared default context that keeps state between calls.
+- The ability to create/delete isolated contexts for specific workflows.
+- Per-call environment variables and timeout controls.
+
+```python
+from daytona import Daytona, OutputMessage
+
+def handle_stdout(message: OutputMessage):
+    print(f"[STDOUT] {message.output}")
+
+daytona = Daytona()
+sandbox = daytona.create()
+
+# Shared default context
+result = sandbox.code_interpreter.run_code(
+    "counter = 1\nprint(f'Counter initialized at {counter}')",
+    on_stdout=handle_stdout,
+)
+
+# Isolated context
+ctx = sandbox.code_interpreter.create_context()
+try:
+    sandbox.code_interpreter.run_code(
+        "value = 'stored in ctx'",
+        context=ctx,
+    )
+    sandbox.code_interpreter.run_code(
+        "print(value)",
+        context=ctx,
+        on_stdout=handle_stdout,
+    )
+finally:
+    sandbox.code_interpreter.delete_context(ctx)
+```
+```typescript
+import { Daytona } from '@daytonaio/sdk'
+
+const daytona = new Daytona()
+
+async function main() {
+    const sandbox = await daytona.create()
+
+    // Shared default context
+    await sandbox.codeInterpreter.runCode(
+`
+counter = 1
+print(f'Counter initialized at {counter}')
+`,
+        { onStdout: (msg) => process.stdout.write(`[STDOUT] ${msg.output}`)},
+    )
+
+    // Isolated context
+    const ctx = await sandbox.codeInterpreter.createContext()
+    try {
+    await sandbox.codeInterpreter.runCode(
+        `value = 'stored in ctx'`,
+        { context: ctx },
+    )
+    await sandbox.codeInterpreter.runCode(
+        `print(value)`,
+        { context: ctx, onStdout: (msg) => process.stdout.write(`[STDOUT] ${msg.output}`) },
+    )
+    } finally {
+    await sandbox.codeInterpreter.deleteContext(ctx)
+    }
+}
+
+main()
+```
+
+See: [code_interpreter (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/code-interpreter.md), [codeInterpreter (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/code-interpreter.md), and [code_interpreter (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/code-interpreter.md)
 
 ## Process Execution
 
@@ -4242,7 +15335,7 @@ the Dockerfile if present, or falling back to the user's home directory if not -
 
 ### Running Commands
 
-Daytona SDK provides an option to execute shell commands in Python and TypeScript. You can run commands with input, timeout, and environment variables.
+Daytona SDK provides an option to execute shell commands in Python, TypeScript, and Ruby. You can run commands with input, timeout, and environment variables.
 
 ```python
 # Execute any shell command
@@ -4283,7 +15376,27 @@ console.log(response3.result);
 ```
 
 
-See: [exec (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processexec), [executeCommand (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#executecommand)
+```ruby
+
+# Execute any shell command
+response = sandbox.process.exec(command: 'ls -la')
+puts response.result
+
+# Setting a working directory and a timeout
+response = sandbox.process.exec(command: 'sleep 3', cwd: 'workspace/src', timeout: 5)
+puts response.result
+
+# Passing environment variables
+response = sandbox.process.exec(
+  command: 'echo $CUSTOM_SECRET',
+  env: { 'CUSTOM_SECRET' => 'DAYTONA' }
+)
+puts response.result
+
+```
+
+
+See: [exec (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processexec), [executeCommand (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#executecommand), [exec (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/process.md#exec)
 
 ## Sessions (Background Processes)
 
@@ -4324,7 +15437,118 @@ for (const session of sessions) {
 ```
 
 
-See: [get_session (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processget_session), [list_sessions (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processlist_sessions), [getSession (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#getsession), [listSessions (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#listsessions)
+```ruby
+# Check session's executed commands
+session = sandbox.process.get_session(session_id)
+puts "Session #{session_id}:"
+session.commands.each do |command|
+  puts "Command: #{command.command}, Exit Code: #{command.exit_code}"
+end
+
+# List all running sessions
+sessions = sandbox.process.list_sessions
+sessions.each do |session|
+  puts "PID: #{session.id}, Commands: #{session.commands}"
+end
+
+```
+
+
+See: [get_session (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processget_session), [list_sessions (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processlist_sessions), [getSession (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#getsession), [listSessions (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#listsessions), [get_session (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/process.md#get_session), [list_sessions (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/process.md#list_sessions)
+
+### Interactive Session Commands
+
+Session commands can be interactive, allowing you to send input to running commands that expect user interaction,
+such as confirmations or interactive tools (e.g., database CLIs or package managers).
+
+```python
+session_id = "interactive-session"
+sandbox.process.create_session(session_id)
+
+# Execute command that requires confirmation
+command = sandbox.process.execute_session_command(
+    session_id,
+    SessionExecuteRequest(
+        command='pip uninstall requests',
+        run_async=True,
+    ),
+)
+
+# Stream logs asynchronously
+logs_task = asyncio.create_task(
+    sandbox.process.get_session_command_logs_async(
+        session_id,
+        command.cmd_id,
+        lambda log: print(f"[STDOUT]: {log}"),
+        lambda log: print(f"[STDERR]: {log}"),
+    )
+)
+
+await asyncio.sleep(1)
+# Send input to the command
+sandbox.process.send_session_command_input(session_id, command.cmd_id, "y")
+
+# Wait for logs to complete
+await logs_task
+```
+```typescript
+const sessionId = 'interactive-session'
+await sandbox.process.createSession(sessionId)
+
+// Execute command that requires confirmation
+const command = await sandbox.process.executeSessionCommand(sessionId, {
+    command: 'pip uninstall requests',
+    runAsync: true,
+})
+
+// Stream logs asynchronously
+const logPromise = sandbox.process.getSessionCommandLogs(
+    sessionId,
+    command.cmdId!,
+    (stdout) => console.log('[STDOUT]:', stdout),
+    (stderr) => console.log('[STDERR]:', stderr),
+)
+
+await new Promise((resolve) => setTimeout(resolve, 1000))
+// Send input to the command
+await sandbox.process.sendSessionCommandInput(sessionId, command.cmdId!, 'y')
+
+// Wait for logs to complete
+await logPromise
+```
+```ruby
+session_id = "interactive-session"
+sandbox.process.create_session(session_id)
+
+# Execute command that requires confirmation
+interactive_command = sandbox.process.execute_session_command(
+  session_id: session_id,
+  req: Daytona::SessionExecuteRequest.new(
+    command: 'pip uninstall requests',
+    run_async: true
+  )
+)
+
+# Wait a moment for the command to start
+sleep 1
+
+# Send input to the command
+sandbox.process.send_session_command_input(
+  session_id: session_id,
+  command_id: interactive_command.cmd_id,
+  data: "y"
+)
+
+# Get logs for the interactive command asynchronously
+sandbox.process.get_session_command_logs_async(
+  session_id: session_id,
+  command_id: interactive_command.cmd_id,
+  on_stdout: ->(log) { puts "[STDOUT]: #{log}" },
+  on_stderr: ->(log) { puts "[STDERR]: #{log}" }
+)
+```
+
+See: [send_session_command_input (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processsend_session_command_input), [sendSessionCommandInput (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#sendsessioncommandinput)
 
 ## Best Practices
 
@@ -4360,7 +15584,19 @@ The following best practices apply to managing resources when executing processe
    }
    ```
 
-See: [create_session (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processcreate_session), [delete_session (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processdelete_session), [createSession (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#createsession), [deleteSession (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#deletesession)
+   ```ruby
+   # Ruby - Clean up session
+   session_id = 'long-running-cmd'
+   begin
+     sandbox.process.create_session(session_id)
+     session = sandbox.process.get_session(session_id)
+     # Do work...
+   ensure
+     sandbox.process.delete_session(session.session_id)
+   end
+   ```
+
+See: [create_session (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processcreate_session), [delete_session (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/process.md#processdelete_session), [createSession (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#createsession), [deleteSession (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/process.md#deletesession), [create_session (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/process.md#create_session), [delete_session (Ruby SDK)](https://www.daytona.io/docs/ruby-sdk/process.md#delete_session)
 
 ### Error Handling
 
@@ -4388,6 +15624,16 @@ try {
         console.error("Error output:", e.stderr);
     }
 }
+```
+
+```ruby
+begin
+  response = sandbox.process.code_run(code: 'invalid python code')
+rescue Daytona::ProcessExecutionError => e
+  puts "Execution failed: #{e}"
+  puts "Exit code: #{e.exit_code}"
+  puts "Error output: #{e.stderr}"
+end
 ```
 
 ## Common Issues
@@ -4485,7 +15731,40 @@ await ptyHandle.sendInput('exit\n')
 // Wait for completion
 const result = await ptyHandle.wait()
 console.log(`Session completed with exit code: ${result.exitCode}`)
-````
+```
+
+
+```ruby
+require 'daytona'
+
+# Create PTY session
+pty_handle = sandbox.process.create_pty_session(
+  id: 'interactive-session',
+  pty_size: Daytona::PtySize.new(cols: 300, rows: 100)
+)
+
+# Handle output in a separate thread
+thread = Thread.new do
+  pty_handle.each { |data| print data }
+end
+
+# Send interactive command
+pty_handle.send_input('printf "Are you accepting the terms and conditions? (y/n): " && read confirm && if [ "$confirm" = "y" ]; then echo "You accepted"; else echo "You did not accept"; fi' + "\n")
+sleep(1)
+pty_handle.send_input("y\n")
+
+# Resize terminal
+pty_handle.resize(Daytona::PtySize.new(cols: 210, rows: 110))
+puts "\nPTY session resized"
+
+# Exit the session
+pty_handle.send_input("exit\n")
+
+# Wait for the thread to finish
+thread.join
+
+puts "Session completed with exit code: #{pty_handle.exit_code}"
+```
 
 
 ## Long-Running Processes with PTY
@@ -4558,7 +15837,30 @@ console.log(`\nProcess terminated with exit code: ${result.exitCode}`)
 if (result.error) {
     console.log(`Termination reason: ${result.error}`)
 }
-````
+```
+
+
+```ruby
+require 'daytona'
+
+# Create PTY session
+pty_handle = sandbox.process.create_pty_session(
+  id: 'long-running-session',
+  pty_size: Daytona::PtySize.new(cols: 120, rows: 30)
+)
+
+# Start a long-running process
+pty_handle.send_input('while true; do echo "Running... $(date)"; sleep 1; done' + "\n")
+
+# Handle output and kill process using threads
+[
+  Thread.new { pty_handle.each { |data| print data } },
+  Thread.new { sleep(3) and pty_handle.kill }
+].each(&:join)
+
+puts "\nProcess terminated with exit code: #{pty_handle.exit_code}"
+puts "Termination reason: #{pty_handle.error}" if pty_handle.error
+```
 
 
 ## Best Practices
@@ -4592,6 +15894,20 @@ try {
 }
 ```
 
+```ruby
+# Ruby: Use begin/ensure
+pty_handle = nil
+begin
+  pty_handle = sandbox.process.create_pty_session(
+    id: 'session',
+    pty_size: Daytona::PtySize.new(cols: 120, rows: 30)
+  )
+  # Do work...
+ensure
+  pty_handle&.kill
+end
+```
+
 ### Error Handling
 
 Monitor exit codes and handle errors appropriately:
@@ -4612,6 +15928,17 @@ if (result.exitCode !== 0) {
 }
 ```
 
+```ruby
+# Ruby: Check exit codes
+# The handle blocks until the PTY session completes
+pty_handle.each { |data| print data }
+
+if pty_handle.exit_code != 0
+  puts "Command failed: #{pty_handle.exit_code}"
+  puts "Error: #{pty_handle.error}"
+end
+```
+
 ## Common Use Cases
 
 - **Interactive Development**: REPLs, debuggers, and development tools
@@ -4624,6 +15951,255 @@ if (result.exitCode !== 0) {
 **Connection Issues**: Verify sandbox status, network connectivity, and proper session IDs.
 **Performance Issues**: Use appropriate terminal dimensions and efficient data handlers.
 **Process Management**: Use explicit `kill()` calls and proper timeout handling for long-running processes.
+
+## AsyncCodeInterpreter
+
+```python
+class AsyncCodeInterpreter()
+```
+
+Handles code interpretation and execution within a Sandbox. Currently supports only Python.
+
+This class provides methods to execute code in isolated interpreter contexts,
+manage contexts, and stream execution output via callbacks. If subsequent code executions
+are performed in the same context, the variables, imports, and functions defined in
+the previous execution will be available.
+
+For other languages, use the `code_run` method from the `AsyncProcess` interface,
+or execute the appropriate command directly in the sandbox terminal.
+
+#### AsyncCodeInterpreter.\_\_init\_\_
+
+```python
+def __init__(api_client: InterpreterApi,
+             ensure_toolbox_url: Callable[[], Awaitable[None]])
+```
+
+Initialize a new AsyncCodeInterpreter instance.
+
+**Arguments**:
+
+- `api_client` - API client for interpreter operations.
+- `ensure_toolbox_url` - Ensures the toolbox API URL is initialized.
+
+#### AsyncCodeInterpreter.run\_code
+
+```python
+@intercept_errors(message_prefix="Failed to run code: ")
+async def run_code(code: str,
+                   *,
+                   context: InterpreterContext | None = None,
+                   on_stdout: OutputHandler[OutputMessage] | None = None,
+                   on_stderr: OutputHandler[OutputMessage] | None = None,
+                   on_error: OutputHandler[ExecutionError] | None = None,
+                   envs: dict[str, str] | None = None,
+                   timeout: int | None = None) -> ExecutionResult
+```
+
+Execute Python code in the sandbox.
+
+By default, code runs in the default shared context which persists variables,
+imports, and functions across executions. To run in an isolated context,
+create a new context with `create_context()` and pass it as `context` argument.
+
+**Arguments**:
+
+- `code` _str_ - Code to execute.
+- `context` _InterpreterContext | None_ - Context to run code in. If not provided, uses default context.
+- `on_stdout` _OutputHandler[OutputMessage] | None_ - Callback for stdout messages.
+- `on_stderr` _OutputHandler[OutputMessage] | None_ - Callback for stderr messages.
+- `on_error` _OutputHandler[ExecutionError] | None_ - Callback for execution errors
+  (e.g., syntax errors, runtime errors).
+- `envs` _dict[str, str] | None_ - Environment variables for this execution.
+- `timeout` _int | None_ - Timeout in seconds. 0 means no timeout. Default is 10 minutes.
+  
+
+**Returns**:
+
+- `ExecutionResult` - Result object containing stdout, stderr and error if any.
+  
+
+**Raises**:
+
+- `DaytonaTimeoutError` - If execution times out.
+- `DaytonaError` - If execution fails due to communication or other SDK errors.
+  
+
+**Examples**:
+
+```python
+def handle_stdout(msg: OutputMessage):
+    print(f"STDOUT: {msg.output}", end="")
+
+def handle_stderr(msg: OutputMessage):
+    print(f"STDERR: {msg.output}", end="")
+
+def handle_error(err: ExecutionError):
+    print(f"ERROR: {err.name}: {err.value}")
+
+code = '''
+import sys
+import time
+for i in range(5):
+    print(i)
+    time.sleep(1)
+sys.stderr.write("Counting done!")
+'''
+result = await sandbox.code_interpreter.run_code(
+    code=code,
+    on_stdout=handle_stdout,
+    on_stderr=handle_stderr,
+    on_error=handle_error,
+    timeout=10
+)
+```
+
+#### AsyncCodeInterpreter.create\_context
+
+```python
+@intercept_errors(message_prefix="Failed to create interpreter context: ")
+async def create_context(cwd: str | None = None) -> InterpreterContext
+```
+
+Create a new isolated interpreter context.
+
+Contexts provide isolated execution environments with their own global namespace.
+Variables, imports, and functions defined in one context don't affect others.
+
+**Arguments**:
+
+- `cwd` _str | None_ - Working directory for the context. If not specified, uses sandbox working directory.
+  
+
+**Returns**:
+
+- `InterpreterContext` - The created context with its ID and metadata.
+  
+
+**Raises**:
+
+- `DaytonaError` - If context creation fails.
+  
+
+**Examples**:
+
+```python
+# Create isolated context
+ctx = await sandbox.code_interpreter.create_context()
+
+# Execute code in this context
+await sandbox.code_interpreter.run_code("x = 100", context=ctx)
+
+# Variable only exists in this context
+result = await sandbox.code_interpreter.run_code("print(x)", context=ctx)  # OK
+
+# Won't see the variable in default context
+result = await sandbox.code_interpreter.run_code("print(x)")  # NameError
+
+# Clean up
+await sandbox.code_interpreter.delete_context(ctx)
+```
+
+#### AsyncCodeInterpreter.list\_contexts
+
+```python
+@intercept_errors(message_prefix="Failed to list interpreter contexts: ")
+async def list_contexts() -> list[InterpreterContext]
+```
+
+List all user-created interpreter contexts.
+
+The default context is not included in this list. Only contexts created
+via `create_context()` are returned.
+
+**Returns**:
+
+- `list[InterpreterContext]` - List of context objects.
+  
+
+**Raises**:
+
+- `DaytonaError` - If listing fails.
+  
+
+**Examples**:
+
+```python
+contexts = await sandbox.code_interpreter.list_contexts()
+for ctx in contexts:
+    print(f"Context {ctx.id}: {ctx.language} at {ctx.cwd}")
+```
+
+#### AsyncCodeInterpreter.delete\_context
+
+```python
+@intercept_errors(message_prefix="Failed to delete interpreter context: ")
+async def delete_context(context: InterpreterContext) -> None
+```
+
+Delete an interpreter context and shut down all associated processes.
+
+This permanently removes the context and all its state (variables, imports, etc.).
+The default context cannot be deleted.
+
+**Arguments**:
+
+- `context` _InterpreterContext_ - Context to delete.
+  
+
+**Raises**:
+
+- `DaytonaError` - If deletion fails or context not found.
+  
+
+**Examples**:
+
+```python
+ctx = await sandbox.code_interpreter.create_context()
+# ... use context ...
+await sandbox.code_interpreter.delete_context(ctx)
+```
+
+
+## OutputMessage
+
+```python
+class OutputMessage(BaseModel)
+```
+
+Represents stdout or stderr output from code execution.
+
+**Attributes**:
+
+- `output` - The output content.
+
+## ExecutionError
+
+```python
+class ExecutionError(BaseModel)
+```
+
+Represents an error that occurred during code execution.
+
+**Attributes**:
+
+- `name` - The error type/class name (e.g., "ValueError", "SyntaxError").
+- `value` - The error value.
+- `traceback` - Full traceback of the error.
+
+## ExecutionResult
+
+```python
+class ExecutionResult(BaseModel)
+```
+
+Result of code execution.
+
+**Attributes**:
+
+- `stdout` - Standard output from the code execution.
+- `stderr` - Standard error output from the code execution.
+- `error` - Error details if execution failed, None otherwise.
 
 ## AsyncComputerUse
 
@@ -4983,7 +16559,7 @@ Keyboard operations for computer use functionality.
 
 ```python
 @intercept_errors(message_prefix="Failed to type text: ")
-async def type(text: str, delay: Optional[int] = None) -> None
+async def type(text: str, delay: int | None = None) -> None
 ```
 
 Types the specified text.
@@ -5020,7 +16596,7 @@ except Exception as e:
 
 ```python
 @intercept_errors(message_prefix="Failed to press key: ")
-async def press(key: str, modifiers: Optional[List[str]] = None) -> None
+async def press(key: str, modifiers: list[str] | None = None) -> None
 ```
 
 Presses a key with optional modifiers.
@@ -5028,7 +16604,7 @@ Presses a key with optional modifiers.
 **Arguments**:
 
 - `key` _str_ - The key to press (e.g., 'Enter', 'Escape', 'Tab', 'a', 'A').
-- `modifiers` _List[str]_ - Modifier keys ('ctrl', 'alt', 'meta', 'shift').
+- `modifiers` _list[str]_ - Modifier keys ('ctrl', 'alt', 'meta', 'shift').
   
 
 **Raises**:
@@ -5174,14 +16750,14 @@ print(f"Captured region: {screenshot.region.width}x{screenshot.region.height}")
 ```python
 @intercept_errors(message_prefix="Failed to take compressed screenshot: ")
 async def take_compressed(
-        options: Optional[ScreenshotOptions] = None) -> ScreenshotResponse
+        options: ScreenshotOptions | None = None) -> ScreenshotResponse
 ```
 
 Takes a compressed screenshot of the entire screen.
 
 **Arguments**:
 
-- `options` _ScreenshotOptions_ - Compression and display options.
+- `options` _ScreenshotOptions | None_ - Compression and display options.
   
 
 **Returns**:
@@ -5213,7 +16789,7 @@ scaled = await sandbox.computer_use.screenshot.take_compressed(
     message_prefix="Failed to take compressed region screenshot: ")
 async def take_compressed_region(
         region: ScreenshotRegion,
-        options: Optional[ScreenshotOptions] = None) -> ScreenshotResponse
+        options: ScreenshotOptions | None = None) -> ScreenshotResponse
 ```
 
 Takes a compressed screenshot of a specific region.
@@ -5221,7 +16797,7 @@ Takes a compressed screenshot of a specific region.
 **Arguments**:
 
 - `region` _ScreenshotRegion_ - The region to capture.
-- `options` _ScreenshotOptions_ - Compression and display options.
+- `options` _ScreenshotOptions | None_ - Compression and display options.
   
 
 **Returns**:
@@ -5298,7 +16874,7 @@ for window in windows.windows:
 ## ScreenshotRegion
 
 ```python
-class ScreenshotRegion()
+class ScreenshotRegion(BaseModel)
 ```
 
 Region coordinates for screenshot operations.
@@ -5313,17 +16889,17 @@ Region coordinates for screenshot operations.
 ## ScreenshotOptions
 
 ```python
-class ScreenshotOptions()
+class ScreenshotOptions(BaseModel)
 ```
 
 Options for screenshot compression and display.
 
 **Attributes**:
 
-- `show_cursor` _bool_ - Whether to show the cursor in the screenshot.
-- `fmt` _str_ - Image format (e.g., 'png', 'jpeg', 'webp').
-- `quality` _int_ - Compression quality (0-100).
-- `scale` _float_ - Scale factor for the screenshot.
+- `show_cursor` _bool | None_ - Whether to show the cursor in the screenshot.
+- `fmt` _str | None_ - Image format (e.g., 'png', 'jpeg', 'webp').
+- `quality` _int | None_ - Compression quality (0-100).
+- `scale` _float | None_ - Scale factor for the screenshot.
 
 ## AsyncDaytona
 
@@ -5367,7 +16943,7 @@ finally:
 #### AsyncDaytona.\_\_init\_\_
 
 ```python
-def __init__(config: Optional[DaytonaConfig] = None)
+def __init__(config: DaytonaConfig | None = None)
 ```
 
 Initializes Daytona instance with optional configuration.
@@ -5379,7 +16955,7 @@ If no config is provided, reads from environment variables:
 
 **Arguments**:
 
-- `config` _Optional[DaytonaConfig]_ - Object containing api_key, api_url, and target.
+- `config` _DaytonaConfig | None_ - Object containing api_key, api_url, and target.
   
 
 **Raises**:
@@ -5415,7 +16991,9 @@ Async context manager entry.
 #### AsyncDaytona.\_\_aexit\_\_
 
 ```python
-async def __aexit__(exc_type, exc_value, traceback)
+async def __aexit__(exc_type: type[BaseException] | None = None,
+                    exc_value: BaseException | None = None,
+                    traceback: TracebackType | None = None)
 ```
 
 Async context manager exit - ensures proper cleanup.
@@ -5454,9 +17032,9 @@ async with AsyncDaytona() as daytona:
 
 ```python
 @overload
-async def create(params: Optional[CreateSandboxFromSnapshotParams] = None,
+async def create(params: CreateSandboxFromSnapshotParams | None = None,
                  *,
-                 timeout: Optional[float] = 60) -> AsyncSandbox
+                 timeout: float = 60) -> AsyncSandbox
 ```
 
 Creates Sandboxes from specified or default snapshot. You can specify various parameters,
@@ -5464,9 +17042,9 @@ including language, image, environment variables, and volumes.
 
 **Arguments**:
 
-- `params` _Optional[CreateSandboxFromSnapshotParams]_ - Parameters for Sandbox creation. If not provided,
+- `params` _CreateSandboxFromSnapshotParams | None_ - Parameters for Sandbox creation. If not provided,
   defaults to default Daytona snapshot and Python language.
-- `timeout` _Optional[float]_ - Timeout (in seconds) for sandbox creation. 0 means no timeout.
+- `timeout` _float_ - Timeout (in seconds) for sandbox creation. 0 means no timeout.
   Default is 60 seconds.
   
 
@@ -5506,10 +17084,11 @@ sandbox = await daytona.create(params, timeout=40)
 ```python
 @overload
 async def create(
-        params: Optional[CreateSandboxFromImageParams] = None,
-        *,
-        timeout: Optional[float] = 60,
-        on_snapshot_create_logs: Callable[[str], None] = None) -> AsyncSandbox
+    params: CreateSandboxFromImageParams | None = None,
+    *,
+    timeout: float = 60,
+    on_snapshot_create_logs: Callable[[str], None] | None = None
+) -> AsyncSandbox
 ```
 
 Creates Sandboxes from specified image available on some registry or declarative Daytona Image.
@@ -5518,10 +17097,11 @@ and volumes. Daytona creates snapshot from provided image and uses it to create 
 
 **Arguments**:
 
-- `params` _Optional[CreateSandboxFromImageParams]_ - Parameters for Sandbox creation from image.
-- `timeout` _Optional[float]_ - Timeout (in seconds) for sandbox creation. 0 means no timeout.
+- `params` _CreateSandboxFromImageParams | None_ - Parameters for Sandbox creation from image.
+- `timeout` _float_ - Timeout (in seconds) for sandbox creation. 0 means no timeout.
   Default is 60 seconds.
-- `on_snapshot_create_logs` _Callable[[str], None]_ - This callback function handles snapshot creation logs.
+- `on_snapshot_create_logs` _Callable[[str], None] | None_ - This callback function
+  handles snapshot creation logs.
   
 
 **Returns**:
@@ -5568,7 +17148,7 @@ sandbox = await daytona.create(
 #### AsyncDaytona.delete
 
 ```python
-async def delete(sandbox: AsyncSandbox, timeout: Optional[float] = 60) -> None
+async def delete(sandbox: AsyncSandbox, timeout: float = 60) -> None
 ```
 
 Deletes a Sandbox.
@@ -5576,7 +17156,7 @@ Deletes a Sandbox.
 **Arguments**:
 
 - `sandbox` _Sandbox_ - The Sandbox instance to delete.
-- `timeout` _Optional[float]_ - Timeout (in seconds) for sandbox deletion. 0 means no timeout.
+- `timeout` _float_ - Timeout (in seconds) for sandbox deletion. 0 means no timeout.
   Default is 60 seconds.
   
 
@@ -5628,16 +17208,16 @@ print(sandbox.state)
 
 ```python
 @intercept_errors(message_prefix="Failed to find sandbox: ")
-async def find_one(sandbox_id_or_name: Optional[str] = None,
-                   labels: Optional[Dict[str, str]] = None) -> AsyncSandbox
+async def find_one(sandbox_id_or_name: str | None = None,
+                   labels: dict[str, str] | None = None) -> AsyncSandbox
 ```
 
 Finds a Sandbox by its ID or name or labels.
 
 **Arguments**:
 
-- `sandbox_id_or_name` _Optional[str]_ - The ID or name of the Sandbox to retrieve.
-- `labels` _Optional[Dict[str, str]]_ - Labels to filter Sandboxes.
+- `sandbox_id_or_name` _str | None_ - The ID or name of the Sandbox to retrieve.
+- `labels` _dict[str, str] | None_ - Labels to filter Sandboxes.
   
 
 **Returns**:
@@ -5661,18 +17241,18 @@ print(f"Sandbox ID: {sandbox.id} State: {sandbox.state}")
 
 ```python
 @intercept_errors(message_prefix="Failed to list sandboxes: ")
-async def list(labels: Optional[Dict[str, str]] = None,
-               page: Optional[int] = None,
-               limit: Optional[int] = None) -> AsyncPaginatedSandboxes
+async def list(labels: dict[str, str] | None = None,
+               page: int | None = None,
+               limit: int | None = None) -> AsyncPaginatedSandboxes
 ```
 
 Returns paginated list of Sandboxes filtered by labels.
 
 **Arguments**:
 
-- `labels` _Optional[Dict[str, str]]_ - Labels to filter Sandboxes.
-- `page` _Optional[int]_ - Page number for pagination (starting from 1).
-- `limit` _Optional[int]_ - Maximum number of items per page.
+- `labels` _dict[str, str] | None_ - Labels to filter Sandboxes.
+- `page` _int | None_ - Page number for pagination (starting from 1).
+- `limit` _int | None_ - Maximum number of items per page.
   
 
 **Returns**:
@@ -5691,7 +17271,7 @@ for sandbox in result.items:
 #### AsyncDaytona.start
 
 ```python
-async def start(sandbox: AsyncSandbox, timeout: Optional[float] = 60) -> None
+async def start(sandbox: AsyncSandbox, timeout: float = 60) -> None
 ```
 
 Starts a Sandbox and waits for it to be ready.
@@ -5699,7 +17279,7 @@ Starts a Sandbox and waits for it to be ready.
 **Arguments**:
 
 - `sandbox` _Sandbox_ - The Sandbox to start.
-- `timeout` _Optional[float]_ - Optional timeout in seconds to wait for the Sandbox to start.
+- `timeout` _float_ - Optional timeout in seconds to wait for the Sandbox to start.
   0 means no timeout. Default is 60 seconds.
   
 
@@ -5710,7 +17290,7 @@ Starts a Sandbox and waits for it to be ready.
 #### AsyncDaytona.stop
 
 ```python
-async def stop(sandbox: AsyncSandbox, timeout: Optional[float] = 60) -> None
+async def stop(sandbox: AsyncSandbox, timeout: float = 60) -> None
 ```
 
 Stops a Sandbox and waits for it to be stopped.
@@ -5718,7 +17298,7 @@ Stops a Sandbox and waits for it to be stopped.
 **Arguments**:
 
 - `sandbox` _Sandbox_ - The sandbox to stop
-- `timeout` _Optional[float]_ - Optional timeout (in seconds) for sandbox stop.
+- `timeout` _float_ - Optional timeout (in seconds) for sandbox stop.
   0 means no timeout. Default is 60 seconds.
   
 
@@ -5730,8 +17310,7 @@ Stops a Sandbox and waits for it to be stopped.
 ## CodeLanguage
 
 ```python
-@dataclass
-class CodeLanguage(Enum)
+class CodeLanguage(str, Enum)
 ```
 
 Programming languages supported by Daytona
@@ -5751,17 +17330,17 @@ Configuration options for initializing the Daytona client.
 
 **Attributes**:
 
-- `api_key` _Optional[str]_ - API key for authentication with the Daytona API. If not set, it must be provided
+- `api_key` _str | None_ - API key for authentication with the Daytona API. If not set, it must be provided
   via the environment variable `DAYTONA_API_KEY`, or a JWT token must be provided instead.
-- `jwt_token` _Optional[str]_ - JWT token for authentication with the Daytona API. If not set, it must be provided
+- `jwt_token` _str | None_ - JWT token for authentication with the Daytona API. If not set, it must be provided
   via the environment variable `DAYTONA_JWT_TOKEN`, or an API key must be provided instead.
-- `organization_id` _Optional[str]_ - Organization ID used for JWT-based authentication. Required if a JWT token
+- `organization_id` _str | None_ - Organization ID used for JWT-based authentication. Required if a JWT token
   is provided, and must be set either here or in the environment variable `DAYTONA_ORGANIZATION_ID`.
-- `api_url` _Optional[str]_ - URL of the Daytona API. Defaults to `'https://app.daytona.io/api'` if not set
+- `api_url` _str | None_ - URL of the Daytona API. Defaults to `'https://app.daytona.io/api'` if not set
   here or in the environment variable `DAYTONA_API_URL`.
-- `server_url` _Optional[str]_ - Deprecated. Use `api_url` instead. This property will be removed
+- `server_url` _str | None_ - Deprecated. Use `api_url` instead. This property will be removed
   in a future version.
-- `target` _Optional[str]_ - Target runner location for the Sandbox. Default region for the organization is used 
+- `target` _str | None_ - Target runner location for the Sandbox. Default region for the organization is used
   if not set here or in the environment variable `DAYTONA_TARGET`.
   
 
@@ -5784,26 +17363,27 @@ Base parameters for creating a new Sandbox.
 
 **Attributes**:
 
-- `name` _Optional[str]_ - Name of the Sandbox.
-- `language` _Optional[CodeLanguage]_ - Programming language for the Sandbox. Defaults to "python".
-- `os_user` _Optional[str]_ - OS user for the Sandbox.
-- `env_vars` _Optional[Dict[str, str]]_ - Environment variables to set in the Sandbox.
-- `labels` _Optional[Dict[str, str]]_ - Custom labels for the Sandbox.
-- `public` _Optional[bool]_ - Whether the Sandbox should be public.
-- `timeout` _Optional[float]_ - Timeout in seconds for Sandbox to be created and started.
-- `auto_stop_interval` _Optional[int]_ - Interval in minutes after which Sandbox will
+- `name` _str | None_ - Name of the Sandbox.
+- `language` _CodeLanguage | CodeLanguageLiteral | None_ - Programming language for the Sandbox.
+  Defaults to "python".
+- `os_user` _str | None_ - OS user for the Sandbox.
+- `env_vars` _dict[str, str] | None_ - Environment variables to set in the Sandbox.
+- `labels` _dict[str, str] | None_ - Custom labels for the Sandbox.
+- `public` _bool | None_ - Whether the Sandbox should be public.
+- `timeout` _float | None_ - Timeout in seconds for Sandbox to be created and started.
+- `auto_stop_interval` _int | None_ - Interval in minutes after which Sandbox will
   automatically stop if no Sandbox event occurs during that time. Default is 15 minutes.
   0 means no auto-stop.
-- `auto_archive_interval` _Optional[int]_ - Interval in minutes after which a continuously stopped Sandbox will
+- `auto_archive_interval` _int | None_ - Interval in minutes after which a continuously stopped Sandbox will
   automatically archive. Default is 7 days.
   0 means the maximum interval will be used.
-- `auto_delete_interval` _Optional[int]_ - Interval in minutes after which a continuously stopped Sandbox will
+- `auto_delete_interval` _int | None_ - Interval in minutes after which a continuously stopped Sandbox will
   automatically be deleted. By default, auto-delete is disabled.
   Negative value means disabled, 0 means delete immediately upon stopping.
-- `volumes` _Optional[List[VolumeMount]]_ - List of volumes mounts to attach to the Sandbox.
-- `network_block_all` _Optional[bool]_ - Whether to block all network access for the Sandbox.
-- `network_allow_list` _Optional[str]_ - Comma-separated list of allowed CIDR network addresses for the Sandbox.
-- `ephemeral` _Optional[bool]_ - Whether the Sandbox should be ephemeral.
+- `volumes` _list[VolumeMount] | None_ - List of volumes mounts to attach to the Sandbox.
+- `network_block_all` _bool | None_ - Whether to block all network access for the Sandbox.
+- `network_allow_list` _str | None_ - Comma-separated list of allowed CIDR network addresses for the Sandbox.
+- `ephemeral` _bool | None_ - Whether the Sandbox should be ephemeral.
   If True, auto_delete_interval will be set to 0.
 
 ## CreateSandboxFromImageParams
@@ -5816,9 +17396,9 @@ Parameters for creating a new Sandbox from an image.
 
 **Attributes**:
 
-- `image` _Union[str, Image]_ - Custom Docker image to use for the Sandbox. If an Image object is provided,
+- `image` _str | Image_ - Custom Docker image to use for the Sandbox. If an Image object is provided,
   the image will be dynamically built.
-- `resources` _Optional[Resources]_ - Resource configuration for the Sandbox. If not provided, sandbox will
+- `resources` _Resources | None_ - Resource configuration for the Sandbox. If not provided, sandbox will
   have default resources.
 
 ## CreateSandboxFromSnapshotParams
@@ -5831,7 +17411,7 @@ Parameters for creating a new Sandbox from a snapshot.
 
 **Attributes**:
 
-- `snapshot` _Optional[str]_ - Name of the snapshot to use for the Sandbox.
+- `snapshot` _str | None_ - Name of the snapshot to use for the Sandbox.
 
 ## AsyncFileSystem
 
@@ -5977,21 +17557,21 @@ print(f"Size of the downloaded file {local_path}: {size_mb} MB")
 
 ```python
 @intercept_errors(message_prefix="Failed to download files: ")
-async def download_files(files: List[FileDownloadRequest],
-                         timeout: int = 30 * 60) -> List[FileDownloadResponse]
+async def download_files(files: list[FileDownloadRequest],
+                         timeout: int = 30 * 60) -> list[FileDownloadResponse]
 ```
 
 Downloads multiple files from the Sandbox. If the files already exist locally, they will be overwritten.
 
 **Arguments**:
 
-- `files` _List[FileDownloadRequest]_ - List of files to download.
+- `files` _list[FileDownloadRequest]_ - List of files to download.
 - `timeout` _int_ - Timeout for the download operation in seconds. 0 means no timeout. Default is 30 minutes.
   
 
 **Returns**:
 
-- `List[FileDownloadResponse]` - List of download results.
+- `list[FileDownloadResponse]` - List of download results.
   
 
 **Raises**:
@@ -6019,7 +17599,7 @@ for result in results:
 
 ```python
 @intercept_errors(message_prefix="Failed to find files: ")
-async def find_files(path: str, pattern: str) -> List[Match]
+async def find_files(path: str, pattern: str) -> list[Match]
 ```
 
 Searches for files containing a pattern, similar to
@@ -6035,7 +17615,7 @@ the grep command.
 
 **Returns**:
 
-- `List[Match]` - List of matches found in files. Each Match object includes:
+- `list[Match]` - List of matches found in files. Each Match object includes:
   - file: Path to the file containing the match
   - line: The line number where the match was found
   - content: The matching line content
@@ -6098,7 +17678,7 @@ if info.is_dir:
 
 ```python
 @intercept_errors(message_prefix="Failed to list files: ")
-async def list_files(path: str) -> List[FileInfo]
+async def list_files(path: str) -> list[FileInfo]
 ```
 
 Lists files and directories in a given path and returns their information, similar to the ls -l command.
@@ -6111,7 +17691,7 @@ Lists files and directories in a given path and returns their information, simil
 
 **Returns**:
 
-- `List[FileInfo]` - List of file and directory information. Each FileInfo
+- `list[FileInfo]` - List of file and directory information. Each FileInfo
   object includes the same fields as described in get_file_info().
   
 
@@ -6174,15 +17754,15 @@ await sandbox.fs.move_files(
 
 ```python
 @intercept_errors(message_prefix="Failed to replace in files: ")
-async def replace_in_files(files: List[str], pattern: str,
-                           new_value: str) -> List[ReplaceResult]
+async def replace_in_files(files: list[str], pattern: str,
+                           new_value: str) -> list[ReplaceResult]
 ```
 
 Performs search and replace operations across multiple files.
 
 **Arguments**:
 
-- `files` _List[str]_ - List of file paths to perform replacements in. Relative paths are
+- `files` _list[str]_ - List of file paths to perform replacements in. Relative paths are
   resolved based on the sandbox working directory.
 - `pattern` _str_ - Pattern to search for.
 - `new_value` _str_ - Text to replace matches with.
@@ -6190,7 +17770,7 @@ Performs search and replace operations across multiple files.
 
 **Returns**:
 
-- `List[ReplaceResult]` - List of results indicating replacements made in
+- `list[ReplaceResult]` - List of results indicating replacements made in
   each file. Each ReplaceResult includes:
   - file: Path to the modified file
   - success: Whether the operation was successful
@@ -6257,9 +17837,9 @@ print(f"Found {len(result.files)} test files")
 ```python
 @intercept_errors(message_prefix="Failed to set file permissions: ")
 async def set_file_permissions(path: str,
-                               mode: str = None,
-                               owner: str = None,
-                               group: str = None) -> None
+                               mode: str | None = None,
+                               owner: str | None = None,
+                               group: str | None = None) -> None
 ```
 
 Sets permissions and ownership for a file or directory. Any of the parameters can be None
@@ -6269,10 +17849,10 @@ to leave that attribute unchanged.
 
 - `path` _str_ - Path to the file or directory. Relative paths are resolved based on
   the sandbox working directory.
-- `mode` _Optional[str]_ - File mode/permissions in octal format
+- `mode` _str | None_ - File mode/permissions in octal format
   (e.g., "644" for rw-r--r--).
-- `owner` _Optional[str]_ - User owner of the file.
-- `group` _Optional[str]_ - Group owner of the file.
+- `owner` _str | None_ - User owner of the file.
+- `group` _str | None_ - Group owner of the file.
   
 
 **Example**:
@@ -6364,7 +17944,7 @@ await sandbox.fs.upload_file("local_file.txt", "tmp/large_file.txt")
 
 ```python
 @intercept_errors(message_prefix="Failed to upload files: ")
-async def upload_files(files: List[FileUpload],
+async def upload_files(files: list[FileUpload],
                        timeout: int = 30 * 60) -> None
 ```
 
@@ -6373,7 +17953,7 @@ they will be overwritten.
 
 **Arguments**:
 
-- `files` _List[FileUpload]_ - List of files to upload.
+- `files` _list[FileUpload]_ - List of files to upload.
 - `timeout` _int_ - Timeout for the upload operation in seconds. 0 means no timeout. Default is 30 minutes.
 
 **Example**:
@@ -6409,7 +17989,7 @@ Represents a file to be uploaded to the Sandbox.
 
 **Attributes**:
 
-- `source` _Union[bytes, str]_ - File contents as a bytes object or a local file path. If a bytes object is provided,
+- `source` _bytes | str_ - File contents as a bytes object or a local file path. If a bytes object is provided,
   make sure it fits into memory, otherwise use the local file path which content will be streamed to the Sandbox.
 - `destination` _str_ - Absolute destination path in the Sandbox. Relative paths are resolved based on
   the sandbox working directory.
@@ -6427,7 +18007,7 @@ Represents a request to download a single file from the Sandbox.
 
 - `source` _str_ - Source path in the Sandbox. Relative paths are resolved based on the user's
   root directory.
-- `destination` _Optional[str]_ - Destination path in the local filesystem where the file content will be
+- `destination` _str | None_ - Destination path in the local filesystem where the file content will be
   streamed to. If not provided, the file will be downloaded in the bytes buffer
   (might cause memory issues if the file is large).
 
@@ -6443,9 +18023,9 @@ Represents the response to a single file download request.
 **Attributes**:
 
 - `source` _str_ - The original source path requested for download.
-- `result` _Union[str, bytes, None]_ - The download result - file path (if destination provided in the request)
+- `result` _str | bytes | None_ - The download result - file path (if destination provided in the request)
   or bytes content (if no destination in the request), None if failed or no data received.
-- `error` _Optional[str]_ - Error message if the download failed, None if successful.
+- `error` _str | None_ - Error message if the download failed, None if successful.
 
 ## AsyncGit
 
@@ -6494,7 +18074,7 @@ Initializes a new Git handler instance.
 
 ```python
 @intercept_errors(message_prefix="Failed to add files: ")
-async def add(path: str, files: List[str]) -> None
+async def add(path: str, files: list[str]) -> None
 ```
 
 Stages the specified files for the next commit, similar to
@@ -6504,7 +18084,7 @@ running 'git add' on the command line.
 
 - `path` _str_ - Path to the Git repository root. Relative paths are resolved based on
   the sandbox working directory.
-- `files` _List[str]_ - List of file paths or directories to stage, relative to the repository root.
+- `files` _list[str]_ - List of file paths or directories to stage, relative to the repository root.
   
 
 **Example**:
@@ -6554,10 +18134,10 @@ print(f"Branches: {response.branches}")
 @intercept_errors(message_prefix="Failed to clone repository: ")
 async def clone(url: str,
                 path: str,
-                branch: Optional[str] = None,
-                commit_id: Optional[str] = None,
-                username: Optional[str] = None,
-                password: Optional[str] = None) -> None
+                branch: str | None = None,
+                commit_id: str | None = None,
+                username: str | None = None,
+                password: str | None = None) -> None
 ```
 
 Clones a Git repository into the specified path. It supports
@@ -6569,12 +18149,12 @@ repository if credentials are provided.
 - `url` _str_ - Repository URL to clone from.
 - `path` _str_ - Path where the repository should be cloned. Relative paths are resolved
   based on the sandbox working directory.
-- `branch` _Optional[str]_ - Specific branch to clone. If not specified,
+- `branch` _str | None_ - Specific branch to clone. If not specified,
   clones the default branch.
-- `commit_id` _Optional[str]_ - Specific commit to clone. If specified,
+- `commit_id` _str | None_ - Specific commit to clone. If specified,
   the repository will be left in a detached HEAD state at this commit.
-- `username` _Optional[str]_ - Git username for authentication.
-- `password` _Optional[str]_ - Git password or token for authentication.
+- `username` _str | None_ - Git username for authentication.
+- `password` _str | None_ - Git password or token for authentication.
   
 
 **Example**:
@@ -6624,7 +18204,7 @@ changes using the add() method before committing.
 - `message` _str_ - Commit message describing the changes.
 - `author` _str_ - Name of the commit author.
 - `email` _str_ - Email address of the commit author.
-- `allow_empty` _bool, optional_ - Allow creating an empty commit when no changes are staged. Defaults to False.
+- `allow_empty` _bool_ - Allow creating an empty commit when no changes are staged. Defaults to False.
   
 
 **Example**:
@@ -6646,8 +18226,8 @@ await sandbox.git.commit(
 ```python
 @intercept_errors(message_prefix="Failed to push changes: ")
 async def push(path: str,
-               username: Optional[str] = None,
-               password: Optional[str] = None) -> None
+               username: str | None = None,
+               password: str | None = None) -> None
 ```
 
 Pushes all local commits on the current branch to the remote
@@ -6658,8 +18238,8 @@ username and password/token.
 
 - `path` _str_ - Path to the Git repository root. Relative paths are resolved based on
   the sandbox working directory.
-- `username` _Optional[str]_ - Git username for authentication.
-- `password` _Optional[str]_ - Git password or token for authentication.
+- `username` _str | None_ - Git username for authentication.
+- `password` _str | None_ - Git password or token for authentication.
   
 
 **Example**:
@@ -6681,8 +18261,8 @@ await sandbox.git.push(
 ```python
 @intercept_errors(message_prefix="Failed to pull changes: ")
 async def pull(path: str,
-               username: Optional[str] = None,
-               password: Optional[str] = None) -> None
+               username: str | None = None,
+               password: str | None = None) -> None
 ```
 
 Pulls changes from the remote repository. If the remote repository requires authentication,
@@ -6692,8 +18272,8 @@ provide username and password/token.
 
 - `path` _str_ - Path to the Git repository root. Relative paths are resolved based on
   the sandbox working directory.
-- `username` _Optional[str]_ - Git username for authentication.
-- `password` _Optional[str]_ - Git password or token for authentication.
+- `username` _str | None_ - Git username for authentication.
+- `password` _str | None_ - Git password or token for authentication.
   
 
 **Example**:
@@ -6838,18 +18418,18 @@ IDE-like features such as code completion, symbol search, and more.
 #### AsyncLspServer.\_\_init\_\_
 
 ```python
-def __init__(language_id: LspLanguageId, path_to_project: str,
-             api_client: LspApi)
+def __init__(language_id: LspLanguageId | LspLanguageIdLiteral,
+             path_to_project: str, api_client: LspApi)
 ```
 
 Initializes a new LSP server instance.
 
 **Arguments**:
 
-- `language_id` _LspLanguageId_ - The language server type (e.g., LspLanguageId.TYPESCRIPT).
+- `language_id` _LspLanguageId | LspLanguageIdLiteral_ - The language server type
+  (e.g., LspLanguageId.TYPESCRIPT).
 - `path_to_project` _str_ - Absolute path to the project root directory.
 - `api_client` _LspApi_ - API client for Sandbox operations.
-- `instance` _SandboxInstance_ - The Sandbox instance this server belongs to.
 
 #### AsyncLspServer.start
 
@@ -6946,7 +18526,7 @@ await lsp.did_close("workspace/project/src/index.ts")
 
 ```python
 @intercept_errors(message_prefix="Failed to get symbols from document: ")
-async def document_symbols(path: str) -> List[LspSymbol]
+async def document_symbols(path: str) -> list[LspSymbol]
 ```
 
 Gets symbol information (functions, classes, variables, etc.) from a document.
@@ -6959,7 +18539,7 @@ Gets symbol information (functions, classes, variables, etc.) from a document.
 
 **Returns**:
 
-- `List[LspSymbol]` - List of symbols in the document. Each symbol includes:
+- `list[LspSymbol]` - List of symbols in the document. Each symbol includes:
   - name: The symbol's name
   - kind: The symbol's kind (function, class, variable, etc.)
   - location: The location of the symbol in the file
@@ -6981,7 +18561,7 @@ for symbol in symbols:
     reason=
     "Method is deprecated. Use `sandbox_symbols` instead. This method will be removed in a future version."
 )
-async def workspace_symbols(query: str) -> List[LspSymbol]
+async def workspace_symbols(query: str) -> list[LspSymbol]
 ```
 
 Searches for symbols matching the query string across all files
@@ -6994,13 +18574,13 @@ in the Sandbox.
 
 **Returns**:
 
-- `List[LspSymbol]` - List of matching symbols from all files.
+- `list[LspSymbol]` - List of matching symbols from all files.
 
 #### AsyncLspServer.sandbox\_symbols
 
 ```python
 @intercept_errors(message_prefix="Failed to get symbols from sandbox: ")
-async def sandbox_symbols(query: str) -> List[LspSymbol]
+async def sandbox_symbols(query: str) -> list[LspSymbol]
 ```
 
 Searches for symbols matching the query string across all files
@@ -7013,7 +18593,7 @@ in the Sandbox.
 
 **Returns**:
 
-- `List[LspSymbol]` - List of matching symbols from all files. Each symbol
+- `list[LspSymbol]` - List of matching symbols from all files. Each symbol
   includes:
   - name: The symbol's name
   - kind: The symbol's kind (function, class, variable, etc.)
@@ -7074,7 +18654,7 @@ for item in completions.items:
 ## LspLanguageId
 
 ```python
-class LspLanguageId(Enum)
+class LspLanguageId(str, Enum)
 ```
 
 Language IDs for Language Server Protocol (LSP).
@@ -7087,6 +18667,7 @@ Language IDs for Language Server Protocol (LSP).
 ## LspCompletionPosition
 
 ```python
+@dataclass
 class LspCompletionPosition()
 ```
 
@@ -7094,19 +18675,6 @@ Represents a zero-based completion position in a text document,
 specified by line number and character offset.
 
 **Attributes**:
-
-- `line` _int_ - Zero-based line number in the document.
-- `character` _int_ - Zero-based character offset on the line.
-
-#### LspCompletionPosition.\_\_init\_\_
-
-```python
-def __init__(line: int, character: int)
-```
-
-Initialize a new LspCompletionPosition instance.
-
-**Arguments**:
 
 - `line` _int_ - Zero-based line number in the document.
 - `character` _int_ - Zero-based character offset on the line.
@@ -7148,6 +18716,762 @@ Uploads a file to the object storage service.
 
 - `str` - The hash of the uploaded file.
 
+## AsyncProcess
+
+```python
+class AsyncProcess()
+```
+
+Handles process and code execution within a Sandbox.
+
+#### AsyncProcess.\_\_init\_\_
+
+```python
+def __init__(code_toolbox: SandboxCodeToolbox, api_client: ProcessApi,
+             ensure_toolbox_url: Callable[[], Awaitable[None]])
+```
+
+Initialize a new Process instance.
+
+**Arguments**:
+
+- `code_toolbox` _SandboxCodeToolbox_ - Language-specific code execution toolbox.
+- `api_client` _ProcessApi_ - API client for process operations.
+- `ensure_toolbox_url` _Callable[[], Awaitable[None]]_ - Ensures the toolbox API URL is initialized.
+  Must be called before invoking any private methods on the API client.
+
+#### AsyncProcess.exec
+
+```python
+@intercept_errors(message_prefix="Failed to execute command: ")
+async def exec(command: str,
+               cwd: str | None = None,
+               env: dict[str, str] | None = None,
+               timeout: int | None = None) -> ExecuteResponse
+```
+
+Execute a shell command in the Sandbox.
+
+**Arguments**:
+
+- `command` _str_ - Shell command to execute.
+- `cwd` _str | None_ - Working directory for command execution. If not
+  specified, uses the sandbox working directory.
+- `env` _dict[str, str] | None_ - Environment variables to set for the command.
+- `timeout` _int | None_ - Maximum time in seconds to wait for the command
+  to complete. 0 means wait indefinitely.
+  
+
+**Returns**:
+
+- `ExecuteResponse` - Command execution results containing:
+  - exit_code: The command's exit status
+  - result: Standard output from the command
+  - artifacts: ExecutionArtifacts object containing `stdout` (same as result)
+  and `charts` (matplotlib charts metadata)
+  
+
+**Example**:
+
+```python
+# Simple command
+response = await sandbox.process.exec("echo 'Hello'")
+print(response.artifacts.stdout)  # Prints: Hello
+
+# Command with working directory
+result = await sandbox.process.exec("ls", cwd="workspace/src")
+
+# Command with timeout
+result = await sandbox.process.exec("sleep 10", timeout=5)
+```
+
+#### AsyncProcess.code\_run
+
+```python
+async def code_run(code: str,
+                   params: CodeRunParams | None = None,
+                   timeout: int | None = None) -> ExecuteResponse
+```
+
+Executes code in the Sandbox using the appropriate language runtime.
+
+**Arguments**:
+
+- `code` _str_ - Code to execute.
+- `params` _CodeRunParams | None_ - Parameters for code execution.
+- `timeout` _int | None_ - Maximum time in seconds to wait for the code
+  to complete. 0 means wait indefinitely.
+  
+
+**Returns**:
+
+- `ExecuteResponse` - Code execution result containing:
+  - exit_code: The execution's exit status
+  - result: Standard output from the code
+  - artifacts: ExecutionArtifacts object containing `stdout` (same as result)
+  and `charts` (matplotlib charts metadata)
+  
+
+**Example**:
+
+```python
+# Run Python code
+response = await sandbox.process.code_run('''
+    x = 10
+    y = 20
+    print(f"Sum: {x + y}")
+''')
+print(response.artifacts.stdout)  # Prints: Sum: 30
+```
+  
+  Matplotlib charts are automatically detected and returned in the `charts` field
+  of the `ExecutionArtifacts` object.
+```python
+code = '''
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.linspace(0, 10, 30)
+y = np.sin(x)
+
+plt.figure(figsize=(8, 5))
+plt.plot(x, y, 'b-', linewidth=2)
+plt.title('Line Chart')
+plt.xlabel('X-axis (seconds)')
+plt.ylabel('Y-axis (amplitude)')
+plt.grid(True)
+plt.show()
+'''
+
+response = await sandbox.process.code_run(code)
+chart = response.artifacts.charts[0]
+
+print(f"Type: {chart.type}")
+print(f"Title: {chart.title}")
+if chart.type == ChartType.LINE and isinstance(chart, LineChart):
+    print(f"X Label: {chart.x_label}")
+    print(f"Y Label: {chart.y_label}")
+    print(f"X Ticks: {chart.x_ticks}")
+    print(f"X Tick Labels: {chart.x_tick_labels}")
+    print(f"X Scale: {chart.x_scale}")
+    print(f"Y Ticks: {chart.y_ticks}")
+    print(f"Y Tick Labels: {chart.y_tick_labels}")
+    print(f"Y Scale: {chart.y_scale}")
+    print("Elements:")
+    for element in chart.elements:
+        print(f"Label: {element.label}")
+        print(f"Points: {element.points}")
+```
+
+#### AsyncProcess.create\_session
+
+```python
+@intercept_errors(message_prefix="Failed to create session: ")
+async def create_session(session_id: str) -> None
+```
+
+Creates a new long-running background session in the Sandbox.
+
+Sessions are background processes that maintain state between commands, making them ideal for
+scenarios requiring multiple related commands or persistent environment setup. You can run
+long-running commands and monitor process status.
+
+**Arguments**:
+
+- `session_id` _str_ - Unique identifier for the new session.
+  
+
+**Example**:
+
+```python
+# Create a new session
+session_id = "my-session"
+await sandbox.process.create_session(session_id)
+session = await sandbox.process.get_session(session_id)
+# Do work...
+await sandbox.process.delete_session(session_id)
+```
+
+#### AsyncProcess.get\_session
+
+```python
+@intercept_errors(message_prefix="Failed to get session: ")
+async def get_session(session_id: str) -> Session
+```
+
+Gets a session in the Sandbox.
+
+**Arguments**:
+
+- `session_id` _str_ - Unique identifier of the session to retrieve.
+  
+
+**Returns**:
+
+- `Session` - Session information including:
+  - session_id: The session's unique identifier
+  - commands: List of commands executed in the session
+  
+
+**Example**:
+
+```python
+session = await sandbox.process.get_session("my-session")
+for cmd in session.commands:
+    print(f"Command: {cmd.command}")
+```
+
+#### AsyncProcess.get\_session\_command
+
+```python
+@intercept_errors(message_prefix="Failed to get session command: ")
+async def get_session_command(session_id: str, command_id: str) -> Command
+```
+
+Gets information about a specific command executed in a session.
+
+**Arguments**:
+
+- `session_id` _str_ - Unique identifier of the session.
+- `command_id` _str_ - Unique identifier of the command.
+  
+
+**Returns**:
+
+- `Command` - Command information including:
+  - id: The command's unique identifier
+  - command: The executed command string
+  - exit_code: Command's exit status (if completed)
+  
+
+**Example**:
+
+```python
+cmd = await sandbox.process.get_session_command("my-session", "cmd-123")
+if cmd.exit_code == 0:
+    print(f"Command {cmd.command} completed successfully")
+```
+
+#### AsyncProcess.execute\_session\_command
+
+```python
+@intercept_errors(message_prefix="Failed to execute session command: ")
+async def execute_session_command(
+        session_id: str,
+        req: SessionExecuteRequest,
+        timeout: int | None = None) -> SessionExecuteResponse
+```
+
+Executes a command in the session.
+
+**Arguments**:
+
+- `session_id` _str_ - Unique identifier of the session to use.
+- `req` _SessionExecuteRequest_ - Command execution request containing:
+  - command: The command to execute
+  - run_async: Whether to execute asynchronously
+  
+
+**Returns**:
+
+- `SessionExecuteResponse` - Command execution results containing:
+  - cmd_id: Unique identifier for the executed command
+  - output: Combined command output (stdout and stderr) (if synchronous execution)
+  - stdout: Standard output from the command
+  - stderr: Standard error from the command
+  - exit_code: Command exit status (if synchronous execution)
+  
+
+**Example**:
+
+```python
+# Execute commands in sequence, maintaining state
+session_id = "my-session"
+
+# Change directory
+req = SessionExecuteRequest(command="cd /workspace")
+await sandbox.process.execute_session_command(session_id, req)
+
+# Create a file
+req = SessionExecuteRequest(command="echo 'Hello' > test.txt")
+await sandbox.process.execute_session_command(session_id, req)
+
+# Read the file
+req = SessionExecuteRequest(command="cat test.txt")
+result = await sandbox.process.execute_session_command(session_id, req)
+print(f"Command stdout: {result.stdout}")
+print(f"Command stderr: {result.stderr}")
+```
+
+#### AsyncProcess.get\_session\_command\_logs
+
+```python
+@intercept_errors(message_prefix="Failed to get session command logs: ")
+async def get_session_command_logs(
+        session_id: str, command_id: str) -> SessionCommandLogsResponse
+```
+
+Get the logs for a command executed in a session.
+
+**Arguments**:
+
+- `session_id` _str_ - Unique identifier of the session.
+- `command_id` _str_ - Unique identifier of the command.
+  
+
+**Returns**:
+
+- `SessionCommandLogsResponse` - Command logs including:
+  - output: Combined command output (stdout and stderr)
+  - stdout: Standard output from the command
+  - stderr: Standard error from the command
+  
+
+**Example**:
+
+```python
+logs = await sandbox.process.get_session_command_logs(
+    "my-session",
+    "cmd-123"
+)
+print(f"Command stdout: {logs.stdout}")
+print(f"Command stderr: {logs.stderr}")
+```
+
+#### AsyncProcess.get\_session\_command\_logs\_async
+
+```python
+@intercept_errors(message_prefix="Failed to get session command logs: ")
+async def get_session_command_logs_async(
+        session_id: str, command_id: str, on_stdout: Callable[[str], None],
+        on_stderr: Callable[[str], None]) -> None
+```
+
+Asynchronously retrieves and processes the logs for a command executed in a session as they become available.
+
+**Arguments**:
+
+- `session_id` _str_ - Unique identifier of the session.
+- `command_id` _str_ - Unique identifier of the command.
+- `on_stdout` _Callable[[str], None]_ - Callback function to handle stdout log chunks as they arrive.
+- `on_stderr` _Callable[[str], None]_ - Callback function to handle stderr log chunks as they arrive.
+  
+
+**Example**:
+
+```python
+await sandbox.process.get_session_command_logs_async(
+    "my-session",
+    "cmd-123",
+    lambda log: print(f"[STDOUT]: {log}"),
+    lambda log: print(f"[STDERR]: {log}"),
+)
+```
+
+#### AsyncProcess.send\_session\_command\_input
+
+```python
+@intercept_errors(message_prefix="Failed to send session command input: ")
+async def send_session_command_input(session_id: str, command_id: str,
+                                     data: str) -> None
+```
+
+Sends input data to a command executed in a session.
+
+**Arguments**:
+
+- `session_id` _str_ - Unique identifier of the session.
+- `command_id` _str_ - Unique identifier of the command.
+- `data` _str_ - Input data to send.
+
+#### AsyncProcess.list\_sessions
+
+```python
+@intercept_errors(message_prefix="Failed to list sessions: ")
+async def list_sessions() -> list[Session]
+```
+
+Lists all sessions in the Sandbox.
+
+**Returns**:
+
+- `list[Session]` - List of all sessions in the Sandbox.
+  
+
+**Example**:
+
+```python
+sessions = await sandbox.process.list_sessions()
+for session in sessions:
+    print(f"Session {session.session_id}:")
+    print(f"  Commands: {len(session.commands)}")
+```
+
+#### AsyncProcess.delete\_session
+
+```python
+@intercept_errors(message_prefix="Failed to delete session: ")
+async def delete_session(session_id: str) -> None
+```
+
+Terminates and removes a session from the Sandbox, cleaning up any resources
+associated with it.
+
+**Arguments**:
+
+- `session_id` _str_ - Unique identifier of the session to delete.
+  
+
+**Example**:
+
+```python
+# Create and use a session
+await sandbox.process.create_session("temp-session")
+# ... use the session ...
+
+# Clean up when done
+await sandbox.process.delete_session("temp-session")
+```
+
+#### AsyncProcess.create\_pty\_session
+
+```python
+@intercept_errors(message_prefix="Failed to create PTY session: ")
+async def create_pty_session(
+        id: str,
+        on_data: Callable[[bytes], None] | Callable[[bytes], Awaitable[None]],
+        cwd: str | None = None,
+        envs: dict[str, str] | None = None,
+        pty_size: PtySize | None = None) -> AsyncPtyHandle
+```
+
+Creates a new PTY (pseudo-terminal) session in the Sandbox.
+
+Creates an interactive terminal session that can execute commands and handle user input.
+The PTY session behaves like a real terminal, supporting features like command history.
+
+**Arguments**:
+
+- `id` - Unique identifier for the PTY session. Must be unique within the Sandbox.
+  on_data (Callable[[bytes], None] | Callable[[bytes], Awaitable[None]]):
+  Callback function to handle PTY output data.
+- `cwd` - Working directory for the PTY session. Defaults to the sandbox's working directory.
+- `env` - Environment variables to set in the PTY session. These will be merged with
+  the Sandbox's default environment variables.
+- `pty_size` - Terminal size configuration. Defaults to 80x24 if not specified.
+  
+
+**Returns**:
+
+- `AsyncPtyHandle` - Handle for managing the created PTY session. Use this to send input,
+  receive output, resize the terminal, and manage the session lifecycle.
+  
+
+**Raises**:
+
+- `DaytonaError` - If the PTY session creation fails or the session ID is already in use.
+
+#### AsyncProcess.connect\_pty\_session
+
+```python
+@intercept_errors(message_prefix="Failed to connect PTY session: ")
+async def connect_pty_session(
+    session_id: str,
+    on_data: Callable[[bytes], None] | Callable[[bytes], Awaitable[None]]
+) -> AsyncPtyHandle
+```
+
+Connects to an existing PTY session in the Sandbox.
+
+Establishes a WebSocket connection to an existing PTY session, allowing you to
+interact with a previously created terminal session.
+
+**Arguments**:
+
+- `session_id` - Unique identifier of the PTY session to connect to.
+  
+
+**Returns**:
+
+- `AsyncPtyHandle` - Handle for managing the connected PTY session.
+  
+
+**Raises**:
+
+- `DaytonaError` - If the PTY session doesn't exist or connection fails.
+
+#### AsyncProcess.list\_pty\_sessions
+
+```python
+@intercept_errors(message_prefix="Failed to list PTY sessions: ")
+async def list_pty_sessions() -> list[PtySessionInfo]
+```
+
+Lists all PTY sessions in the Sandbox.
+
+Retrieves information about all PTY sessions in this Sandbox.
+
+**Returns**:
+
+- `list[PtySessionInfo]` - List of PTY session information objects containing
+  details about each session's state, creation time, and configuration.
+  
+
+**Example**:
+
+```python
+# List all PTY sessions
+sessions = await sandbox.process.list_pty_sessions()
+
+for session in sessions:
+    print(f"Session ID: {session.id}")
+    print(f"Active: {session.active}")
+    print(f"Created: {session.created_at}")
+```
+
+#### AsyncProcess.get\_pty\_session\_info
+
+```python
+@intercept_errors(message_prefix="Failed to get PTY session info: ")
+async def get_pty_session_info(session_id: str) -> PtySessionInfo
+```
+
+Gets detailed information about a specific PTY session.
+
+Retrieves comprehensive information about a PTY session including its current state,
+configuration, and metadata.
+
+**Arguments**:
+
+- `session_id` - Unique identifier of the PTY session to retrieve information for.
+  
+
+**Returns**:
+
+- `PtySessionInfo` - Detailed information about the PTY session including ID, state,
+  creation time, working directory, environment variables, and more.
+  
+
+**Raises**:
+
+- `DaytonaError` - If the PTY session doesn't exist.
+  
+
+**Example**:
+
+```python
+# Get details about a specific PTY session
+session_info = await sandbox.process.get_pty_session_info("my-session")
+
+print(f"Session ID: {session_info.id}")
+print(f"Active: {session_info.active}")
+print(f"Working Directory: {session_info.cwd}")
+print(f"Terminal Size: {session_info.cols}x{session_info.rows}")
+```
+
+#### AsyncProcess.kill\_pty\_session
+
+```python
+@intercept_errors(message_prefix="Failed to kill PTY session: ")
+async def kill_pty_session(session_id: str) -> None
+```
+
+Kills a PTY session and terminates its associated process.
+
+Forcefully terminates the PTY session and cleans up all associated resources.
+This will close any active connections and kill the underlying shell process.
+This operation is irreversible. Any unsaved work in the terminal session will be lost.
+
+**Arguments**:
+
+- `session_id` - Unique identifier of the PTY session to kill.
+  
+
+**Raises**:
+
+- `DaytonaError` - If the PTY session doesn't exist or cannot be killed.
+  
+
+**Example**:
+
+```python
+# Kill a specific PTY session
+await sandbox.process.kill_pty_session("my-session")
+
+# Verify the session no longer exists
+pty_sessions = await sandbox.process.list_pty_sessions()
+for pty_session in pty_sessions:
+    print(f"PTY session: {pty_session.id}")
+```
+
+#### AsyncProcess.resize\_pty\_session
+
+```python
+@intercept_errors(message_prefix="Failed to resize PTY session: ")
+async def resize_pty_session(session_id: str,
+                             pty_size: PtySize) -> PtySessionInfo
+```
+
+Resizes a PTY session's terminal dimensions.
+
+Changes the terminal size of an active PTY session. This is useful when the
+client terminal is resized or when you need to adjust the display for different
+output requirements.
+
+**Arguments**:
+
+- `session_id` - Unique identifier of the PTY session to resize.
+- `pty_size` - New terminal dimensions containing the desired columns and rows.
+  
+
+**Returns**:
+
+- `PtySessionInfo` - Updated session information reflecting the new terminal size.
+  
+
+**Raises**:
+
+- `DaytonaError` - If the PTY session doesn't exist or resize operation fails.
+  
+
+**Example**:
+
+```python
+from daytona.common.pty import PtySize
+
+# Resize a PTY session to a larger terminal
+new_size = PtySize(rows=40, cols=150)
+updated_info = await sandbox.process.resize_pty_session("my-session", new_size)
+
+print(f"Terminal resized to {updated_info.cols}x{updated_info.rows}")
+
+# You can also use the AsyncPtyHandle's resize method
+await pty_handle.resize(new_size)
+```
+
+
+## CodeRunParams
+
+```python
+@dataclass
+class CodeRunParams()
+```
+
+Parameters for code execution.
+
+**Attributes**:
+
+- `argv` _list[str] | None_ - Command line arguments
+- `env` _dict[str, str] | None_ - Environment variables
+
+## SessionExecuteRequest
+
+```python
+class SessionExecuteRequest(ApiSessionExecuteRequest,
+                            AsyncApiSessionExecuteRequest)
+```
+
+Contains the request for executing a command in a session.
+
+**Attributes**:
+
+- `command` _str_ - The command to execute.
+- `run_async` _bool | None_ - Whether to execute the command asynchronously.
+- `var_async` _bool | None_ - Deprecated. Use `run_async` instead.
+
+## ExecutionArtifacts
+
+```python
+@dataclass
+class ExecutionArtifacts()
+```
+
+Artifacts from the command execution.
+
+**Attributes**:
+
+- `stdout` _str_ - Standard output from the command, same as `result` in `ExecuteResponse`
+- `charts` _list[Chart] | None_ - List of chart metadata from matplotlib
+
+## ExecuteResponse
+
+```python
+class ExecuteResponse(BaseModel)
+```
+
+Response from the command execution.
+
+**Attributes**:
+
+- `exit_code` _int_ - The exit code from the command execution
+- `result` _str_ - The output from the command execution
+- `artifacts` _ExecutionArtifacts | None_ - Artifacts from the command execution
+
+## SessionExecuteResponse
+
+```python
+class SessionExecuteResponse(ApiSessionExecuteResponse)
+```
+
+Response from the session command execution.
+
+**Attributes**:
+
+- `cmd_id` _str_ - The ID of the executed command
+- `stdout` _str | None_ - The stdout from the command execution
+- `stderr` _str | None_ - The stderr from the command execution
+- `output` _str_ - The output from the command execution
+- `exit_code` _int_ - The exit code from the command execution
+
+## SessionCommandLogsResponse
+
+```python
+@dataclass
+class SessionCommandLogsResponse()
+```
+
+Response from the command logs.
+
+**Attributes**:
+
+- `output` _str | None_ - The combined output from the command
+- `stdout` _str | None_ - The stdout from the command
+- `stderr` _str | None_ - The stderr from the command
+
+#### parse\_session\_command\_logs
+
+```python
+def parse_session_command_logs(data: bytes) -> SessionCommandLogsResponse
+```
+
+Parse combined stdout/stderr output into separate streams.
+
+**Arguments**:
+
+- `data` - Combined log bytes with STDOUT_PREFIX and STDERR_PREFIX markers
+  
+
+**Returns**:
+
+  SessionCommandLogsResponse with separated stdout and stderr
+
+#### demux\_log
+
+```python
+def demux_log(data: bytes) -> tuple[bytes, bytes]
+```
+
+Demultiplex combined stdout/stderr log data.
+
+**Arguments**:
+
+- `data` - Combined log bytes with STDOUT_PREFIX and STDERR_PREFIX markers
+  
+
+**Returns**:
+
+  Tuple of (stdout_bytes, stderr_bytes)
+
 ## AsyncSandbox
 
 ```python
@@ -7162,13 +19486,15 @@ Represents a Daytona Sandbox.
 - `git` _AsyncGit_ - Git operations interface.
 - `process` _AsyncProcess_ - Process execution interface.
 - `computer_use` _AsyncComputerUse_ - Computer use operations interface for desktop automation.
+- `code_interpreter` _AsyncCodeInterpreter_ - Stateful interpreter interface for executing code.
+  Currently supports only Python. For other languages, use the `process.code_run` interface.
 - `id` _str_ - Unique identifier for the Sandbox.
 - `name` _str_ - Name of the Sandbox.
 - `organization_id` _str_ - Organization ID of the Sandbox.
 - `snapshot` _str_ - Daytona snapshot used to create the Sandbox.
 - `user` _str_ - OS user running in the Sandbox.
-- `env` _Dict[str, str]_ - Environment variables set in the Sandbox.
-- `labels` _Dict[str, str]_ - Custom labels attached to the Sandbox.
+- `env` _dict[str, str]_ - Environment variables set in the Sandbox.
+- `labels` _dict[str, str]_ - Custom labels attached to the Sandbox.
 - `public` _bool_ - Whether the Sandbox is publicly accessible.
 - `target` _str_ - Target location of the runner where the Sandbox runs.
 - `cpu` _int_ - Number of CPUs allocated to the Sandbox.
@@ -7177,12 +19503,13 @@ Represents a Daytona Sandbox.
 - `disk` _int_ - Amount of disk space allocated to the Sandbox in GiB.
 - `state` _SandboxState_ - Current state of the Sandbox (e.g., "started", "stopped").
 - `error_reason` _str_ - Error message if Sandbox is in error state.
+- `recoverable` _bool_ - Whether the Sandbox error is recoverable.
 - `backup_state` _SandboxBackupStateEnum_ - Current state of Sandbox backup.
 - `backup_created_at` _str_ - When the backup was created.
 - `auto_stop_interval` _int_ - Auto-stop interval in minutes.
 - `auto_archive_interval` _int_ - Auto-archive interval in minutes.
 - `auto_delete_interval` _int_ - Auto-delete interval in minutes.
-- `volumes` _List[str]_ - Volumes attached to the Sandbox.
+- `volumes` _list[str]_ - Volumes attached to the Sandbox.
 - `build_info` _str_ - Build information for the Sandbox if it was created from dynamic build.
 - `created_at` _str_ - When the Sandbox was created.
 - `updated_at` _str_ - When the Sandbox was last updated.
@@ -7194,7 +19521,7 @@ Represents a Daytona Sandbox.
 ```python
 def __init__(sandbox_dto: SandboxDto, toolbox_api: ApiClient,
              sandbox_api: SandboxApi, code_toolbox: SandboxCodeToolbox,
-             get_toolbox_base_url: Callable[[], Awaitable[str]])
+             get_toolbox_base_url: Callable[[str, str], Awaitable[str]])
 ```
 
 Initialize a new Sandbox instance.
@@ -7271,7 +19598,7 @@ print(f"Sandbox working directory: {work_dir}")
 #### AsyncSandbox.create\_lsp\_server
 
 ```python
-def create_lsp_server(language_id: LspLanguageId,
+def create_lsp_server(language_id: LspLanguageId | LspLanguageIdLiteral,
                       path_to_project: str) -> AsyncLspServer
 ```
 
@@ -7282,7 +19609,7 @@ diagnostics, and more.
 
 **Arguments**:
 
-- `language_id` _LspLanguageId_ - The language server type (e.g., LspLanguageId.PYTHON).
+- `language_id` _LspLanguageId | LspLanguageIdLiteral_ - The language server type (e.g., LspLanguageId.PYTHON).
 - `path_to_project` _str_ - Path to the project root directory. Relative paths are resolved
   based on the sandbox working directory.
   
@@ -7302,7 +19629,7 @@ lsp = sandbox.create_lsp_server("python", "workspace/project")
 
 ```python
 @intercept_errors(message_prefix="Failed to set labels: ")
-async def set_labels(labels: Dict[str, str]) -> Dict[str, str]
+async def set_labels(labels: dict[str, str]) -> dict[str, str]
 ```
 
 Sets labels for the Sandbox.
@@ -7311,12 +19638,12 @@ Labels are key-value pairs that can be used to organize and identify Sandboxes.
 
 **Arguments**:
 
-- `labels` _Dict[str, str]_ - Dictionary of key-value pairs representing Sandbox labels.
+- `labels` _dict[str, str]_ - Dictionary of key-value pairs representing Sandbox labels.
   
 
 **Returns**:
 
-  Dict[str, str]: Dictionary containing the updated Sandbox labels.
+  dict[str, str]: Dictionary containing the updated Sandbox labels.
   
 
 **Example**:
@@ -7335,16 +19662,16 @@ print(f"Updated labels: {new_labels}")
 ```python
 @intercept_errors(message_prefix="Failed to start sandbox: ")
 @with_timeout(error_message=lambda self, timeout: (
-    f"Sandbox {self.id} failed to start within the {timeout} seconds timeout period"
+    f"Sandbox {cast('AsyncSandbox', self).id} failed to start within the {timeout} seconds timeout period"
 ))
-async def start(timeout: Optional[float] = 60)
+async def start(timeout: float | None = 60)
 ```
 
 Starts the Sandbox and waits for it to be ready.
 
 **Arguments**:
 
-- `timeout` _Optional[float]_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
+- `timeout` _float | None_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
   
 
 **Raises**:
@@ -7355,9 +19682,39 @@ Starts the Sandbox and waits for it to be ready.
 **Example**:
 
 ```python
-sandbox = daytona.get_current_sandbox("my-sandbox")
+sandbox = daytona.get("my-sandbox-id")
 sandbox.start(timeout=40)  # Wait up to 40 seconds
 print("Sandbox started successfully")
+```
+
+#### AsyncSandbox.recover
+
+```python
+@intercept_errors(message_prefix="Failed to recover sandbox: ")
+@with_timeout(error_message=lambda self, timeout: (
+    f"Sandbox {cast('AsyncSandbox', self).id} failed to recover within the {timeout} seconds timeout period"
+))
+async def recover(timeout: float | None = 60)
+```
+
+Recovers the Sandbox from a recoverable error and waits for it to be ready.
+
+**Arguments**:
+
+- `timeout` _float | None_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
+  
+
+**Raises**:
+
+- `DaytonaError` - If timeout is negative. If sandbox fails to recover or times out.
+  
+
+**Example**:
+
+```python
+sandbox = daytona.get("my-sandbox-id")
+await sandbox.recover(timeout=40)  # Wait up to 40 seconds
+print("Sandbox recovered successfully")
 ```
 
 #### AsyncSandbox.stop
@@ -7365,16 +19722,16 @@ print("Sandbox started successfully")
 ```python
 @intercept_errors(message_prefix="Failed to stop sandbox: ")
 @with_timeout(error_message=lambda self, timeout: (
-    f"Sandbox {self.id} failed to stop within the {timeout} seconds timeout period"
+    f"Sandbox {cast('AsyncSandbox', self).id} failed to stop within the {timeout} seconds timeout period"
 ))
-async def stop(timeout: Optional[float] = 60)
+async def stop(timeout: float | None = 60)
 ```
 
 Stops the Sandbox and waits for it to be fully stopped.
 
 **Arguments**:
 
-- `timeout` _Optional[float]_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
+- `timeout` _float | None_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
   
 
 **Raises**:
@@ -7385,7 +19742,7 @@ Stops the Sandbox and waits for it to be fully stopped.
 **Example**:
 
 ```python
-sandbox = daytona.get_current_sandbox("my-sandbox")
+sandbox = daytona.get("my-sandbox-id")
 sandbox.stop()
 print("Sandbox stopped successfully")
 ```
@@ -7394,14 +19751,14 @@ print("Sandbox stopped successfully")
 
 ```python
 @intercept_errors(message_prefix="Failed to remove sandbox: ")
-async def delete(timeout: Optional[float] = 60) -> None
+async def delete(timeout: float | None = 60) -> None
 ```
 
 Deletes the Sandbox.
 
 **Arguments**:
 
-- `timeout` _Optional[float]_ - Timeout (in seconds) for sandbox deletion. 0 means no timeout.
+- `timeout` _float | None_ - Timeout (in seconds) for sandbox deletion. 0 means no timeout.
   Default is 60 seconds.
 
 #### AsyncSandbox.wait\_for\_sandbox\_start
@@ -7409,10 +19766,10 @@ Deletes the Sandbox.
 ```python
 @intercept_errors(
     message_prefix="Failure during waiting for sandbox to start: ")
-@with_timeout(error_message=lambda self, timeout: (
-    f"Sandbox {self.id} failed to become ready within the {timeout} seconds timeout period"
-))
-async def wait_for_sandbox_start(timeout: Optional[float] = 60) -> None
+@with_timeout(error_message=lambda self, timeout:
+              (f"Sandbox {cast('AsyncSandbox', self).id} failed to "
+               f"become ready within the {timeout} seconds timeout period"))
+async def wait_for_sandbox_start(timeout: float | None = 60) -> None
 ```
 
 Waits for the Sandbox to reach the 'started' state. Polls the Sandbox status until it
@@ -7420,7 +19777,7 @@ reaches the 'started' state, encounters an error or times out.
 
 **Arguments**:
 
-- `timeout` _Optional[float]_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
+- `timeout` _float | None_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
   
 
 **Raises**:
@@ -7432,10 +19789,10 @@ reaches the 'started' state, encounters an error or times out.
 ```python
 @intercept_errors(
     message_prefix="Failure during waiting for sandbox to stop: ")
-@with_timeout(error_message=lambda self, timeout: (
-    f"Sandbox {self.id} failed to become stopped within the {timeout} seconds timeout period"
-))
-async def wait_for_sandbox_stop(timeout: Optional[float] = 60) -> None
+@with_timeout(error_message=lambda self, timeout:
+              (f"Sandbox {cast('AsyncSandbox', self).id} failed to "
+               f"become stopped within the {timeout} seconds timeout period"))
+async def wait_for_sandbox_stop(timeout: float | None = 60) -> None
 ```
 
 Waits for the Sandbox to reach the 'stopped' state. Polls the Sandbox status until it
@@ -7445,7 +19802,7 @@ Treats destroyed as stopped to cover ephemeral sandboxes that are automatically 
 
 **Arguments**:
 
-- `timeout` _Optional[float]_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
+- `timeout` _float | None_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
   
 
 **Raises**:
@@ -7575,6 +19932,42 @@ print(f"Preview URL: {preview_link.url}")
 print(f"Token: {preview_link.token}")
 ```
 
+#### AsyncSandbox.create\_signed\_preview\_url
+
+```python
+@intercept_errors(message_prefix="Failed to create signed preview url: ")
+async def create_signed_preview_url(
+        port: int,
+        expires_in_seconds: int | None = None) -> SignedPortPreviewUrl
+```
+
+Creates a signed preview URL for the sandbox at the specified port.
+
+**Arguments**:
+
+- `port` _int_ - The port to open the preview link on.
+- `expires_in_seconds` _int | None_ - The number of seconds the signed preview
+  url will be valid for. Defaults to 60 seconds.
+  
+
+**Returns**:
+
+- `SignedPortPreviewUrl` - The response object for the signed preview url.
+
+#### AsyncSandbox.expire\_signed\_preview\_url
+
+```python
+@intercept_errors(message_prefix="Failed to expire signed preview url: ")
+async def expire_signed_preview_url(port: int, token: str) -> None
+```
+
+Expires a signed preview URL for the sandbox at the specified port.
+
+**Arguments**:
+
+- `port` _int_ - The port to expire the signed preview url on.
+- `token` _str_ - The token to expire the signed preview url on.
+
 #### AsyncSandbox.archive
 
 ```python
@@ -7588,19 +19981,87 @@ possible to keep sandboxes available for an extended period. The tradeoff betwee
 and stopped states is that starting an archived sandbox takes more time, depending on its size.
 Sandbox must be stopped before archiving.
 
+#### AsyncSandbox.resize
+
+```python
+@intercept_errors(message_prefix="Failed to resize sandbox: ")
+@with_timeout(error_message=lambda self, timeout: (
+    f"Sandbox {cast('AsyncSandbox', self).id} failed to resize within the {timeout} seconds timeout period"
+))
+async def resize(resources: Resources, timeout: float | None = 60) -> None
+```
+
+Resizes the Sandbox resources.
+
+Changes the CPU, memory, or disk allocation for the Sandbox. Hot resize (on running
+sandbox) only allows CPU/memory increases. Disk resize requires a stopped sandbox.
+
+**Arguments**:
+
+- `resources` _Resources_ - New resource configuration. Only specified fields will be updated.
+  - cpu: Number of CPU cores (minimum: 1). For hot resize, can only be increased.
+  - memory: Memory in GiB (minimum: 1). For hot resize, can only be increased.
+  - disk: Disk space in GiB (can only be increased, requires stopped sandbox).
+- `timeout` _Optional[float]_ - Timeout (in seconds) for the resize operation. 0 means no timeout.
+  Default is 60 seconds.
+  
+
+**Raises**:
+
+- `DaytonaError` - If hot resize constraints are violated (CPU/memory decrease on running sandbox).
+- `DaytonaError` - If disk resize attempted on running sandbox.
+- `DaytonaError` - If disk size decrease is attempted.
+- `DaytonaError` - If resize operation times out.
+- `DaytonaError` - If no resource changes are specified.
+  
+
+**Example**:
+
+```python
+# Increase CPU/memory on running sandbox (hot resize)
+await sandbox.resize(Resources(cpu=4, memory=8))
+
+# Change disk (sandbox must be stopped)
+await sandbox.stop()
+await sandbox.resize(Resources(cpu=2, memory=4, disk=30))
+```
+
+#### AsyncSandbox.wait\_for\_resize\_complete
+
+```python
+@intercept_errors(
+    message_prefix="Failure during waiting for resize to complete: ")
+@with_timeout(error_message=lambda self, timeout: (
+    f"Sandbox {cast('AsyncSandbox', self).id} resize did not complete within the {timeout}s timeout period"
+))
+async def wait_for_resize_complete(timeout: float | None = 60) -> None
+```
+
+Waits for the Sandbox resize operation to complete. Polls the Sandbox status until
+the state is no longer 'resizing'.
+
+**Arguments**:
+
+- `timeout` _Optional[float]_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
+  
+
+**Raises**:
+
+- `DaytonaError` - If timeout is negative. If resize operation times out.
+
 #### AsyncSandbox.create\_ssh\_access
 
 ```python
 @intercept_errors(message_prefix="Failed to create SSH access: ")
 async def create_ssh_access(
-        expires_in_minutes: Optional[int] = None) -> SshAccessDto
+        expires_in_minutes: int | None = None) -> SshAccessDto
 ```
 
 Creates an SSH access token for the sandbox.
 
 **Arguments**:
 
-- `expires_in_minutes` _Optional[int]_ - The number of minutes the SSH access token will be valid for.
+- `expires_in_minutes` _int | None_ - The number of minutes the SSH access token will be valid for.
 
 #### AsyncSandbox.revoke\_ssh\_access
 
@@ -7628,6 +20089,24 @@ Validates an SSH access token for the sandbox.
 
 - `token` _str_ - The token to validate.
 
+#### AsyncSandbox.refresh\_activity
+
+```python
+@intercept_errors(message_prefix="Failed to refresh sandbox activity: ")
+async def refresh_activity() -> None
+```
+
+Refreshes the sandbox activity to reset the timer for automated lifecycle management actions.
+
+This method updates the sandbox's last activity timestamp without changing its state.
+It is useful for keeping long-running sessions alive while there is still user activity.
+
+**Example**:
+
+```python
+await sandbox.refresh_activity()
+```
+
 
 ## AsyncPaginatedSandboxes
 
@@ -7639,10 +20118,18 @@ Represents a paginated list of Daytona Sandboxes.
 
 **Attributes**:
 
-- `items` _List[AsyncSandbox]_ - List of Sandbox instances in the current page.
+- `items` _list[AsyncSandbox]_ - List of Sandbox instances in the current page.
 - `total` _int_ - Total number of Sandboxes across all pages.
 - `page` _int_ - Current page number.
 - `total_pages` _int_ - Total number of pages available.
+
+##### items: `list[AsyncSandbox]`
+
+```python
+items = None
+```
+
+pyright: ignore[reportIncompatibleVariableOverride]
 
 ## Resources
 
@@ -7655,10 +20142,10 @@ Resources configuration for Sandbox.
 
 **Attributes**:
 
-- `cpu` _Optional[int]_ - Number of CPU cores to allocate.
-- `memory` _Optional[int]_ - Amount of memory in GiB to allocate.
-- `disk` _Optional[int]_ - Amount of disk space in GiB to allocate.
-- `gpu` _Optional[int]_ - Number of GPUs to allocate.
+- `cpu` _int | None_ - Number of CPU cores to allocate.
+- `memory` _int | None_ - Amount of memory in GiB to allocate.
+- `disk` _int | None_ - Amount of disk space in GiB to allocate.
+- `gpu` _int | None_ - Number of GPUs to allocate.
   
 
 **Example**:
@@ -7680,29 +20167,29 @@ params = CreateSandboxFromImageParams(
 ## Snapshot
 
 ```python
-class Snapshot(SnapshotDto)
+class Snapshot(SyncSnapshotDto)
 ```
 
 Represents a Daytona Snapshot which is a pre-configured sandbox.
 
 **Attributes**:
 
-- `id` _StrictStr_ - Unique identifier for the Snapshot.
-- `organization_id` _Optional[StrictStr]_ - Organization ID of the Snapshot.
-- `general` _Optional[bool]_ - Whether the Snapshot is general.
-- `name` _StrictStr_ - Name of the Snapshot.
-- `image_name` _StrictStr_ - Name of the Image of the Snapshot.
-- `state` _StrictStr_ - State of the Snapshot.
-- `size` _Optional[Union[StrictFloat, StrictInt]]_ - Size of the Snapshot.
-- `entrypoint` _Optional[List[str]]_ - Entrypoint of the Snapshot.
-- `cpu` _Union[StrictFloat, StrictInt]_ - CPU of the Snapshot.
-- `gpu` _Union[StrictFloat, StrictInt]_ - GPU of the Snapshot.
-- `mem` _Union[StrictFloat, StrictInt]_ - Memory of the Snapshot in GiB.
-- `disk` _Union[StrictFloat, StrictInt]_ - Disk of the Snapshot in GiB.
-- `error_reason` _Optional[StrictStr]_ - Error reason of the Snapshot.
-- `created_at` _StrictStr_ - Timestamp when the Snapshot was created.
-- `updated_at` _StrictStr_ - Timestamp when the Snapshot was last updated.
-- `last_used_at` _StrictStr_ - Timestamp when the Snapshot was last used.
+- `id` _str_ - Unique identifier for the Snapshot.
+- `organization_id` _str | None_ - Organization ID of the Snapshot.
+- `general` _bool_ - Whether the Snapshot is general.
+- `name` _str_ - Name of the Snapshot.
+- `image_name` _str_ - Name of the Image of the Snapshot.
+- `state` _str_ - State of the Snapshot.
+- `size` _float | int | None_ - Size of the Snapshot.
+- `entrypoint` _list[str] | None_ - Entrypoint of the Snapshot.
+- `cpu` _float | int_ - CPU of the Snapshot.
+- `gpu` _float | int_ - GPU of the Snapshot.
+- `mem` _float | int_ - Memory of the Snapshot in GiB.
+- `disk` _float | int_ - Disk of the Snapshot in GiB.
+- `error_reason` _str | None_ - Error reason of the Snapshot.
+- `created_at` _str_ - Timestamp when the Snapshot was created.
+- `updated_at` _str_ - Timestamp when the Snapshot was last updated.
+- `last_used_at` _str_ - Timestamp when the Snapshot was last used.
 
 
 ## AsyncSnapshotService
@@ -7717,16 +20204,16 @@ Service for managing Daytona Snapshots. Can be used to list, get, create and del
 
 ```python
 @intercept_errors(message_prefix="Failed to list snapshots: ")
-async def list(page: Optional[int] = None,
-               limit: Optional[int] = None) -> PaginatedSnapshots
+async def list(page: int | None = None,
+               limit: int | None = None) -> PaginatedSnapshots
 ```
 
 Returns paginated list of Snapshots.
 
 **Arguments**:
 
-- `page` _Optional[int]_ - Page number for pagination (starting from 1).
-- `limit` _Optional[int]_ - Maximum number of items per page.
+- `page` _int | None_ - Page number for pagination (starting from 1).
+- `limit` _int | None_ - Maximum number of items per page.
   
 
 **Returns**:
@@ -7801,8 +20288,8 @@ async with AsyncDaytona() as daytona:
     f"Failed to create snapshot within {timeout} seconds timeout period."))
 async def create(params: CreateSnapshotParams,
                  *,
-                 on_logs: Callable[[str], None] = None,
-                 timeout: Optional[float] = 0) -> Snapshot
+                 on_logs: Callable[[str], None] | None = None,
+                 timeout: float | None = 0) -> Snapshot
 ```
 
 Creates and registers a new snapshot from the given Image definition.
@@ -7811,7 +20298,7 @@ Creates and registers a new snapshot from the given Image definition.
 
 - `params` _CreateSnapshotParams_ - Parameters for snapshot creation.
 - `on_logs` _Callable[[str], None]_ - This callback function handles snapshot creation logs.
-- `timeout` _Optional[float]_ - Default is no timeout. Timeout in seconds (0 means no timeout).
+- `timeout` _float | None_ - Default is no timeout. Timeout in seconds (0 means no timeout).
 
 **Example**:
 
@@ -7844,7 +20331,7 @@ Activate a snapshot.
 ```python
 @staticmethod
 async def process_image_context(object_storage_api: ObjectStorageApi,
-                                image: Image) -> List[str]
+                                image: Image) -> list[str]
 ```
 
 Processes the image context by uploading it to object storage.
@@ -7867,7 +20354,7 @@ Represents a paginated list of Daytona Snapshots.
 
 **Attributes**:
 
-- `items` _List[Snapshot]_ - List of Snapshot instances in the current page.
+- `items` _list[Snapshot]_ - List of Snapshot instances in the current page.
 - `total` _int_ - Total number of Snapshots across all pages.
 - `page` _int_ - Current page number.
 - `total_pages` _int_ - Total number of pages available.
@@ -7882,12 +20369,14 @@ Parameters for creating a new snapshot.
 
 **Attributes**:
 
-- `name` _Optional[str]_ - Name of the snapshot.
-- `image` _Union[str, Image]_ - Image of the snapshot. If a string is provided,
+- `name` _str_ - Name of the snapshot.
+- `image` _str | Image_ - Image of the snapshot. If a string is provided,
   it should be available on some registry. If an Image instance is provided,
   it will be used to create a new image in Daytona.
-- `resources` _Optional[Resources]_ - Resources of the snapshot.
-- `entrypoint` _Optional[List[str]]_ - Entrypoint of the snapshot.
+- `resources` _Resources | None_ - Resources of the snapshot.
+- `entrypoint` _list[str] | None_ - Entrypoint of the snapshot.
+- `region_id` _str | None_ - ID of the region where the snapshot will be available.
+  Defaults to organization default region if not specified.
 
 ## Volume
 
@@ -7899,13 +20388,13 @@ Represents a Daytona Volume which is a shared storage volume for Sandboxes.
 
 **Attributes**:
 
-- `id` _StrictStr_ - Unique identifier for the Volume.
-- `name` _StrictStr_ - Name of the Volume.
-- `organization_id` _StrictStr_ - Organization ID of the Volume.
-- `state` _StrictStr_ - State of the Volume.
-- `created_at` _StrictStr_ - Date and time when the Volume was created.
-- `updated_at` _StrictStr_ - Date and time when the Volume was last updated.
-- `last_used_at` _StrictStr_ - Date and time when the Volume was last used.
+- `id` _str_ - Unique identifier for the Volume.
+- `name` _str_ - Name of the Volume.
+- `organization_id` _str_ - Organization ID of the Volume.
+- `state` _str_ - State of the Volume.
+- `created_at` _str_ - Date and time when the Volume was created.
+- `updated_at` _str_ - Date and time when the Volume was last updated.
+- `last_used_at` _str_ - Date and time when the Volume was last used.
 
 
 ## AsyncVolumeService
@@ -7919,14 +20408,14 @@ Service for managing Daytona Volumes. Can be used to list, get, create and delet
 #### AsyncVolumeService.list
 
 ```python
-async def list() -> List[Volume]
+async def list() -> list[Volume]
 ```
 
 List all Volumes.
 
 **Returns**:
 
-- `List[Volume]` - List of all Volumes.
+- `list[Volume]` - List of all Volumes.
   
 
 **Example**:
@@ -8013,10 +20502,26 @@ async with AsyncDaytona() as daytona:
     print("Volume deleted")
 ```
 
+## VolumeMount
+
+```python
+class VolumeMount(ApiVolumeMount, AsyncApiVolumeMount)
+```
+
+Represents a Volume mount configuration for a Sandbox.
+
+**Attributes**:
+
+- `volume_id` _str_ - ID of the volume to mount.
+- `mount_path` _str_ - Path where the volume will be mounted in the sandbox.
+- `subpath` _str | None_ - Optional S3 subpath/prefix within the volume to mount.
+  When specified, only this prefix will be accessible. When omitted,
+  the entire volume is mounted.
+
 ## Chart
 
 ```python
-class Chart()
+class Chart(BaseModel)
 ```
 
 Represents a chart with metadata from matplotlib.
@@ -8025,8 +20530,16 @@ Represents a chart with metadata from matplotlib.
 
 - `type` _ChartType_ - The type of chart
 - `title` _str_ - The title of the chart
-- `elements` _List[Any]_ - The elements of the chart
-- `png` _Optional[str]_ - The PNG representation of the chart encoded in base64
+- `elements` _list[Any]_ - The elements of the chart
+- `png` _str | None_ - The PNG representation of the chart encoded in base64
+
+#### Chart.to\_dict
+
+```python
+def to_dict() -> dict[str, Any]
+```
+
+Return the metadata dictionary used to create the chart.
 
 
 ## ChartType
@@ -8056,13 +20569,13 @@ Represents a 2D chart with metadata.
 
 **Attributes**:
 
-- `x_label` _Optional[str]_ - The label of the x-axis
-- `y_label` _Optional[str]_ - The label of the y-axis
+- `x_label` _str | None_ - The label of the x-axis
+- `y_label` _str | None_ - The label of the y-axis
 
 ## PointData
 
 ```python
-class PointData()
+class PointData(BaseModel)
 ```
 
 Represents a point in a 2D chart.
@@ -8070,7 +20583,7 @@ Represents a point in a 2D chart.
 **Attributes**:
 
 - `label` _str_ - The label of the point
-- `points` _List[Tuple[Union[str, float], Union[str, float]]]_ - The points of the chart
+- `points` _list[tuple[str | float, str | float]]_ - The points of the chart
 
 ## PointChart
 
@@ -8082,13 +20595,13 @@ Represents a point chart with metadata.
 
 **Attributes**:
 
-- `x_ticks` _List[Union[str, float]]_ - The ticks of the x-axis
-- `x_tick_labels` _List[str]_ - The labels of the x-axis
+- `x_ticks` _list[str | float]_ - The ticks of the x-axis
+- `x_tick_labels` _list[str]_ - The labels of the x-axis
 - `x_scale` _str_ - The scale of the x-axis
-- `y_ticks` _List[Union[str, float]]_ - The ticks of the y-axis
-- `y_tick_labels` _List[str]_ - The labels of the y-axis
+- `y_ticks` _list[str | float]_ - The ticks of the y-axis
+- `y_tick_labels` _list[str]_ - The labels of the y-axis
 - `y_scale` _str_ - The scale of the y-axis
-- `elements` _List[PointData]_ - The points of the chart
+- `elements` _list[PointData]_ - The points of the chart
 
 ## LineChart
 
@@ -8117,7 +20630,7 @@ Represents a scatter chart with metadata.
 ## BarData
 
 ```python
-class BarData()
+class BarData(BaseModel)
 ```
 
 Represents a bar in a bar chart.
@@ -8139,12 +20652,12 @@ Represents a bar chart with metadata.
 **Attributes**:
 
 - `type` _ChartType_ - The type of chart
-- `elements` _List[BarData]_ - The bars of the chart
+- `elements` _list[BarData]_ - The bars of the chart
 
 ## PieData
 
 ```python
-class PieData()
+class PieData(BaseModel)
 ```
 
 Represents a pie slice in a pie chart.
@@ -8154,7 +20667,7 @@ Represents a pie slice in a pie chart.
 - `label` _str_ - The label of the pie slice
 - `angle` _float_ - The angle of the pie slice
 - `radius` _float_ - The radius of the pie slice
-- `autopct` _float_ - The autopct value of the pie slice
+- `autopct` _str | float_ - The autopct value of the pie slice
 
 ## PieChart
 
@@ -8167,12 +20680,12 @@ Represents a pie chart with metadata.
 **Attributes**:
 
 - `type` _ChartType_ - The type of chart
-- `elements` _List[PieData]_ - The pie slices of the chart
+- `elements` _list[PieData]_ - The pie slices of the chart
 
 ## BoxAndWhiskerData
 
 ```python
-class BoxAndWhiskerData()
+class BoxAndWhiskerData(BaseModel)
 ```
 
 Represents a box and whisker in a box and whisker chart.
@@ -8185,7 +20698,7 @@ Represents a box and whisker in a box and whisker chart.
 - `median` _float_ - The median of the box and whisker
 - `third_quartile` _float_ - The third quartile of the box and whisker
 - `max` _float_ - The maximum value of the box and whisker
-- `outliers` _List[float]_ - The outliers of the box and whisker
+- `outliers` _list[float]_ - The outliers of the box and whisker
 
 ## BoxAndWhiskerChart
 
@@ -8198,7 +20711,7 @@ Represents a box and whisker chart with metadata.
 **Attributes**:
 
 - `type` _ChartType_ - The type of chart
-- `elements` _List[BoxAndWhiskerData]_ - The box and whiskers of the chart
+- `elements` _list[BoxAndWhiskerData]_ - The box and whiskers of the chart
 
 ## CompositeChart
 
@@ -8212,7 +20725,7 @@ that contains multiple charts (subplots).
 **Attributes**:
 
 - `type` _ChartType_ - The type of chart
-- `elements` _List[Chart]_ - The charts (subplots) of the composite chart
+- `elements` _list[Chart]_ - The charts (subplots) of the composite chart
 
 ## DaytonaError
 
@@ -8222,6 +20735,28 @@ class DaytonaError(Exception)
 
 Base error for Daytona SDK.
 
+**Attributes**:
+
+- `message` _str_ - Error message
+- `status_code` _int | None_ - HTTP status code if available
+- `headers` _dict[str, Any]_ - Response headers
+
+#### DaytonaError.\_\_init\_\_
+
+```python
+def __init__(message: str,
+             status_code: int | None = None,
+             headers: Mapping[str, Any] | None = None)
+```
+
+Initialize Daytona error.
+
+**Arguments**:
+
+- `message` _str_ - Error message
+- `status_code` _int | None_ - HTTP status code if available
+- `headers` _Mapping[str, Any] | None_ - Response headers if available
+
 
 ## DaytonaNotFoundError
 
@@ -8230,6 +20765,22 @@ class DaytonaNotFoundError(DaytonaError)
 ```
 
 Error for when a resource is not found.
+
+## DaytonaRateLimitError
+
+```python
+class DaytonaRateLimitError(DaytonaError)
+```
+
+Error for when rate limit is exceeded.
+
+## DaytonaTimeoutError
+
+```python
+class DaytonaTimeoutError(DaytonaError)
+```
+
+Error for when a timeout occurs.
 
 ## Image
 
@@ -8252,10 +20803,10 @@ Returns a generated Dockerfile for the image.
 #### Image.pip\_install
 
 ```python
-def pip_install(*packages: Union[str, list[str]],
-                find_links: Optional[list[str]] = None,
-                index_url: Optional[str] = None,
-                extra_index_urls: Optional[list[str]] = None,
+def pip_install(*packages: str | list[str],
+                find_links: list[str] | None = None,
+                index_url: str | None = None,
+                extra_index_urls: list[str] | None = None,
                 pre: bool = False,
                 extra_options: str = "") -> "Image"
 ```
@@ -8265,9 +20816,9 @@ Adds commands to install packages using pip.
 **Arguments**:
 
 - `*packages` - The packages to install.
-- `find_links` - Optional[list[str]]: The find-links to use.
-- `index_url` - Optional[str]: The index URL to use.
-- `extra_index_urls` - Optional[list[str]]: The extra index URLs to use.
+- `find_links` - list[str] | None: The find-links to use.
+- `index_url` - str | None: The index URL to use.
+- `extra_index_urls` - list[str] | None: The extra index URLs to use.
 - `pre` - bool = False: Whether to install pre-release packages.
 - `extra_options` - str = "": Additional options to pass to pip. Given string is passed
   directly to the pip install command.
@@ -8288,9 +20839,9 @@ image = Image.debian_slim("3.12").pip_install("requests", "pandas")
 
 ```python
 def pip_install_from_requirements(requirements_txt: str,
-                                  find_links: Optional[list[str]] = None,
-                                  index_url: Optional[str] = None,
-                                  extra_index_urls: Optional[list[str]] = None,
+                                  find_links: list[str] | None = None,
+                                  index_url: str | None = None,
+                                  extra_index_urls: list[str] | None = None,
                                   pre: bool = False,
                                   extra_options: str = "") -> "Image"
 ```
@@ -8300,9 +20851,9 @@ Installs dependencies from a requirements.txt file.
 **Arguments**:
 
 - `requirements_txt` - str: The path to the requirements.txt file.
-- `find_links` - Optional[list[str]]: The find-links to use.
-- `index_url` - Optional[str]: The index URL to use.
-- `extra_index_urls` - Optional[list[str]]: The extra index URLs to use.
+- `find_links` - list[str] | None: The find-links to use.
+- `index_url` - str | None: The index URL to use.
+- `extra_index_urls` - list[str] | None: The extra index URLs to use.
 - `pre` - bool = False: Whether to install pre-release packages.
 - `extra_options` - str = "": Additional options to pass to pip.
   
@@ -8323,9 +20874,9 @@ image = Image.debian_slim("3.12").pip_install_from_requirements("requirements.tx
 ```python
 def pip_install_from_pyproject(pyproject_toml: str,
                                optional_dependencies: list[str],
-                               find_links: Optional[str] = None,
-                               index_url: Optional[str] = None,
-                               extra_index_url: Optional[str] = None,
+                               find_links: str | None = None,
+                               index_url: str | None = None,
+                               extra_index_url: str | None = None,
                                pre: bool = False,
                                extra_options: str = "") -> "Image"
 ```
@@ -8336,9 +20887,9 @@ Installs dependencies from a pyproject.toml file.
 
 - `pyproject_toml` - str: The path to the pyproject.toml file.
 - `optional_dependencies` - list[str] = []: The optional dependencies to install from the pyproject.toml file.
-- `find_links` - Optional[str] = None: The find-links to use.
-- `index_url` - Optional[str] = None: The index URL to use.
-- `extra_index_url` - Optional[str] = None: The extra index URL to use.
+- `find_links` - str | None = None: The find-links to use.
+- `index_url` - str | None = None: The index URL to use.
+- `extra_index_url` - str | None = None: The extra index URL to use.
 - `pre` - bool = False: Whether to install pre-release packages.
 - `extra_options` - str = "": Additional options to pass to pip. Given string is passed
   directly to the pip install command.
@@ -8358,14 +20909,14 @@ image = Image.debian_slim("3.12")                 .pip_install_from_pyproject("p
 #### Image.add\_local\_file
 
 ```python
-def add_local_file(local_path: Union[str, Path], remote_path: str) -> "Image"
+def add_local_file(local_path: str | Path, remote_path: str) -> "Image"
 ```
 
 Adds a local file to the image.
 
 **Arguments**:
 
-- `local_path` - Union[str, Path]: The path to the local file.
+- `local_path` - str | Path: The path to the local file.
 - `remote_path` - str: The path to the file in the image.
   
 
@@ -8383,14 +20934,14 @@ image = Image.debian_slim("3.12").add_local_file("package.json", "/home/daytona/
 #### Image.add\_local\_dir
 
 ```python
-def add_local_dir(local_path: Union[str, Path], remote_path: str) -> "Image"
+def add_local_dir(local_path: str | Path, remote_path: str) -> "Image"
 ```
 
 Adds a local directory to the image.
 
 **Arguments**:
 
-- `local_path` - Union[str, Path]: The path to the local directory.
+- `local_path` - str | Path: The path to the local directory.
 - `remote_path` - str: The path to the directory in the image.
   
 
@@ -8408,7 +20959,7 @@ image = Image.debian_slim("3.12").add_local_dir("src", "/home/daytona/src")
 #### Image.run\_commands
 
 ```python
-def run_commands(*commands: Union[str, list[str]]) -> "Image"
+def run_commands(*commands: str | list[str]) -> "Image"
 ```
 
 Runs commands in the image.
@@ -8459,14 +21010,14 @@ image = Image.debian_slim("3.12").env({"PROJECT_ROOT": "/home/daytona"})
 #### Image.workdir
 
 ```python
-def workdir(path: Union[str, Path]) -> "Image"
+def workdir(path: str | Path) -> "Image"
 ```
 
 Sets the working directory in the image.
 
 **Arguments**:
 
-- `path` - Union[str, Path]: The path to the working directory.
+- `path` - str | Path: The path to the working directory.
   
 
 **Returns**:
@@ -8531,9 +21082,8 @@ image = Image.debian_slim("3.12").cmd(["/bin/bash"])
 #### Image.dockerfile\_commands
 
 ```python
-def dockerfile_commands(
-        dockerfile_commands: list[str],
-        context_dir: Optional[Union[Path, str]] = None) -> "Image"
+def dockerfile_commands(dockerfile_commands: list[str],
+                        context_dir: Path | str | None = None) -> "Image"
 ```
 
 Adds arbitrary Dockerfile-like commands to the image.
@@ -8541,7 +21091,7 @@ Adds arbitrary Dockerfile-like commands to the image.
 **Arguments**:
 
 - `*dockerfile_commands` - The commands to add to the Dockerfile.
-- `context_dir` - Optional[Union[Path, str]]: The path to the context directory.
+- `context_dir` - Path | str | None: The path to the context directory.
   
 
 **Returns**:
@@ -8559,14 +21109,14 @@ image = Image.debian_slim("3.12").dockerfile_commands(["RUN echo 'Hello, world!'
 
 ```python
 @staticmethod
-def from_dockerfile(path: Union[str, Path]) -> "Image"
+def from_dockerfile(path: str | Path) -> "Image"
 ```
 
 Creates an Image from an existing Dockerfile.
 
 **Arguments**:
 
-- `path` - Union[str, Path]: The path to the Dockerfile.
+- `path` - str | Path: The path to the Dockerfile.
   
 
 **Returns**:
@@ -8610,14 +21160,14 @@ image = Image.base("python:3.12-slim-bookworm")
 ```python
 @staticmethod
 def debian_slim(
-        python_version: Optional[SupportedPythonSeries] = None) -> "Image"
+        python_version: SupportedPythonSeries | None = None) -> "Image"
 ```
 
 Creates a Debian slim image based on the official Python Docker image.
 
 **Arguments**:
 
-- `python_version` - Optional[SupportedPythonSeries]: The Python version to use.
+- `python_version` - SupportedPythonSeries | None: The Python version to use.
   
 
 **Returns**:
@@ -8643,7 +21193,7 @@ Context for an image.
 **Attributes**:
 
 - `source_path` _str_ - The path to the source file or directory.
-- `archive_path` _Optional[str]_ - The path inside the archive file in object storage.
+- `archive_path` _str | None_ - The path inside the archive file in object storage.
 
 The Daytona Python SDK provides a robust interface for programmatically interacting with Daytona Sandboxes.
 
@@ -8663,7 +21213,9 @@ poetry add daytona
 
 ## Getting Started
 
-Here's a simple example to help you get started with the Daytona Python SDK:
+### Create a Sandbox
+
+Create a Daytona Sandbox to run your code securely in an isolated environment. The following snippet is an example "Hello World" program that runs securely inside a Daytona Sandbox.
 
     ```python
     from daytona import Daytona
@@ -8703,7 +21255,7 @@ Here's a simple example to help you get started with the Daytona Python SDK:
 
 ## Configuration
 
-The SDK can be configured using environment variables or by passing options to the constructor:
+The Daytona SDK can be configured using environment variables or by passing options to the constructor:
 
     ```python
     from daytona import Daytona, DaytonaConfig
@@ -8713,7 +21265,7 @@ The SDK can be configured using environment variables or by passing options to t
 
     # Using explicit configuration
     config = DaytonaConfig(
-        api_key="your-api-key",
+        api_key="YOUR_API_KEY",
         api_url="https://app.daytona.io/api",
         target="us"
     )
@@ -8735,7 +21287,7 @@ The SDK can be configured using environment variables or by passing options to t
 
         # Using explicit configuration
         config = DaytonaConfig(
-            api_key="your-api-key",
+            api_key="YOUR_API_KEY",
             api_url="https://app.daytona.io/api",
             target="us"
         )
@@ -8746,6 +21298,257 @@ The SDK can be configured using environment variables or by passing options to t
     if __name__ == "__main__":
         asyncio.run(main())
     ```
+
+For more information on configuring the Daytona SDK, see [configuration](https://www.daytona.io/docs/en/configuration.md).
+
+## CodeInterpreter
+
+```python
+class CodeInterpreter()
+```
+
+Handles code interpretation and execution within a Sandbox. Currently supports only Python.
+
+This class provides methods to execute code in isolated interpreter contexts,
+manage contexts, and stream execution output via callbacks. If subsequent code executions
+are performed in the same context, the variables, imports, and functions defined in
+the previous execution will be available.
+
+For other languages, use the `code_run` method from the `Process` interface,
+or execute the appropriate command directly in the sandbox terminal.
+
+#### CodeInterpreter.\_\_init\_\_
+
+```python
+def __init__(api_client: InterpreterApi, ensure_toolbox_url: Callable[[],
+                                                                      None])
+```
+
+Initialize a new CodeInterpreter instance.
+
+**Arguments**:
+
+- `api_client` - API client for interpreter operations.
+- `ensure_toolbox_url` - Ensures the toolbox API URL is initialized.
+
+#### CodeInterpreter.run\_code
+
+```python
+@intercept_errors(message_prefix="Failed to run code: ")
+def run_code(code: str,
+             *,
+             context: InterpreterContext | None = None,
+             on_stdout: OutputHandler[OutputMessage] | None = None,
+             on_stderr: OutputHandler[OutputMessage] | None = None,
+             on_error: OutputHandler[ExecutionError] | None = None,
+             envs: dict[str, str] | None = None,
+             timeout: int | None = None) -> ExecutionResult
+```
+
+Execute Python code in the sandbox.
+
+By default, code runs in the default shared context which persists variables,
+imports, and functions across executions. To run in an isolated context,
+create a new context with `create_context()` and pass it as `context` argument.
+
+**Arguments**:
+
+- `code` _str_ - Code to execute.
+- `context` _InterpreterContext | None_ - Context to run code in. If not provided, uses default context.
+- `on_stdout` _OutputHandler[OutputMessage] | None_ - Callback for stdout messages.
+- `on_stderr` _OutputHandler[OutputMessage] | None_ - Callback for stderr messages.
+- `on_error` _OutputHandler[ExecutionError] | None_ - Callback for execution errors
+  (e.g., syntax errors, runtime errors).
+- `envs` _dict[str, str] | None_ - Environment variables for this execution.
+- `timeout` _int | None_ - Timeout in seconds. 0 means no timeout. Default is 10 minutes.
+  
+
+**Returns**:
+
+- `ExecutionResult` - Result object containing stdout, stderr and error if any.
+  
+
+**Raises**:
+
+- `DaytonaTimeoutError` - If execution times out.
+- `DaytonaError` - If execution fails due to communication or other SDK errors.
+  
+
+**Examples**:
+
+```python
+def handle_stdout(msg: OutputMessage):
+    print(f"STDOUT: {msg.output}", end="")
+
+def handle_stderr(msg: OutputMessage):
+    print(f"STDERR: {msg.output}", end="")
+
+def handle_error(err: ExecutionError):
+    print(f"ERROR: {err.name}: {err.value}")
+
+code = '''
+import sys
+import time
+for i in range(5):
+    print(i)
+    time.sleep(1)
+sys.stderr.write("Counting done!")
+'''
+result = sandbox.code_interpreter.run_code(
+    code=code,
+    on_stdout=handle_stdout,
+    on_stderr=handle_stderr,
+    on_error=handle_error,
+    timeout=10
+)
+```
+
+#### CodeInterpreter.create\_context
+
+```python
+@intercept_errors(message_prefix="Failed to create interpreter context: ")
+def create_context(cwd: str | None = None) -> InterpreterContext
+```
+
+Create a new isolated interpreter context.
+
+Contexts provide isolated execution environments with their own global namespace.
+Variables, imports, and functions defined in one context don't affect others.
+
+**Arguments**:
+
+- `cwd` _str | None_ - Working directory for the context. If not specified, uses sandbox working directory.
+  
+
+**Returns**:
+
+- `InterpreterContext` - The created context with its ID and metadata.
+  
+
+**Raises**:
+
+- `DaytonaError` - If context creation fails.
+  
+
+**Examples**:
+
+```python
+# Create isolated context
+ctx = sandbox.code_interpreter.create_context()
+
+# Execute code in this context
+sandbox.code_interpreter.run_code("x = 100", context=ctx)
+
+# Variable only exists in this context
+result = sandbox.code_interpreter.run_code("print(x)", context=ctx)  # OK
+
+# Won't see the variable in default context
+result = sandbox.code_interpreter.run_code("print(x)")  # NameError
+
+# Clean up
+sandbox.code_interpreter.delete_context(ctx)
+```
+
+#### CodeInterpreter.list\_contexts
+
+```python
+@intercept_errors(message_prefix="Failed to list interpreter contexts: ")
+def list_contexts() -> list[InterpreterContext]
+```
+
+List all user-created interpreter contexts.
+
+The default context is not included in this list. Only contexts created
+via `create_context()` are returned.
+
+**Returns**:
+
+- `list[InterpreterContext]` - List of context objects.
+  
+
+**Raises**:
+
+- `DaytonaError` - If listing fails.
+  
+
+**Examples**:
+
+```python
+contexts = sandbox.code_interpreter.list_contexts()
+for ctx in contexts:
+    print(f"Context {ctx.id}: {ctx.language} at {ctx.cwd}")
+```
+
+#### CodeInterpreter.delete\_context
+
+```python
+@intercept_errors(message_prefix="Failed to delete interpreter context: ")
+def delete_context(context: InterpreterContext) -> None
+```
+
+Delete an interpreter context and shut down all associated processes.
+
+This permanently removes the context and all its state (variables, imports, etc.).
+The default context cannot be deleted.
+
+**Arguments**:
+
+- `context` _InterpreterContext_ - Context to delete.
+  
+
+**Raises**:
+
+- `DaytonaError` - If deletion fails or context not found.
+  
+
+**Examples**:
+
+```python
+ctx = sandbox.code_interpreter.create_context()
+# ... use context ...
+sandbox.code_interpreter.delete_context(ctx)
+```
+
+
+## OutputMessage
+
+```python
+class OutputMessage(BaseModel)
+```
+
+Represents stdout or stderr output from code execution.
+
+**Attributes**:
+
+- `output` - The output content.
+
+## ExecutionError
+
+```python
+class ExecutionError(BaseModel)
+```
+
+Represents an error that occurred during code execution.
+
+**Attributes**:
+
+- `name` - The error type/class name (e.g., "ValueError", "SyntaxError").
+- `value` - The error value.
+- `traceback` - Full traceback of the error.
+
+## ExecutionResult
+
+```python
+class ExecutionResult(BaseModel)
+```
+
+Result of code execution.
+
+**Attributes**:
+
+- `stdout` - Standard output from the code execution.
+- `stderr` - Standard error output from the code execution.
+- `error` - Error details if execution failed, None otherwise.
 
 ## ComputerUse
 
@@ -9105,7 +21908,7 @@ Keyboard operations for computer use functionality.
 
 ```python
 @intercept_errors(message_prefix="Failed to type text: ")
-def type(text: str, delay: Optional[int] = None) -> None
+def type(text: str, delay: int | None = None) -> None
 ```
 
 Types the specified text.
@@ -9142,7 +21945,7 @@ except Exception as e:
 
 ```python
 @intercept_errors(message_prefix="Failed to press key: ")
-def press(key: str, modifiers: Optional[List[str]] = None) -> None
+def press(key: str, modifiers: list[str] | None = None) -> None
 ```
 
 Presses a key with optional modifiers.
@@ -9150,7 +21953,7 @@ Presses a key with optional modifiers.
 **Arguments**:
 
 - `key` _str_ - The key to press (e.g., 'Enter', 'Escape', 'Tab', 'a', 'A').
-- `modifiers` _List[str]_ - Modifier keys ('ctrl', 'alt', 'meta', 'shift').
+- `modifiers` _list[str]_ - Modifier keys ('ctrl', 'alt', 'meta', 'shift').
   
 
 **Raises**:
@@ -9296,14 +22099,14 @@ print(f"Captured region: {screenshot.region.width}x{screenshot.region.height}")
 ```python
 @intercept_errors(message_prefix="Failed to take compressed screenshot: ")
 def take_compressed(
-        options: Optional[ScreenshotOptions] = None) -> ScreenshotResponse
+        options: ScreenshotOptions | None = None) -> ScreenshotResponse
 ```
 
 Takes a compressed screenshot of the entire screen.
 
 **Arguments**:
 
-- `options` _ScreenshotOptions_ - Compression and display options.
+- `options` _ScreenshotOptions | None_ - Compression and display options.
   
 
 **Returns**:
@@ -9335,7 +22138,7 @@ scaled = sandbox.computer_use.screenshot.take_compressed(
     message_prefix="Failed to take compressed region screenshot: ")
 def take_compressed_region(
         region: ScreenshotRegion,
-        options: Optional[ScreenshotOptions] = None) -> ScreenshotResponse
+        options: ScreenshotOptions | None = None) -> ScreenshotResponse
 ```
 
 Takes a compressed screenshot of a specific region.
@@ -9343,7 +22146,7 @@ Takes a compressed screenshot of a specific region.
 **Arguments**:
 
 - `region` _ScreenshotRegion_ - The region to capture.
-- `options` _ScreenshotOptions_ - Compression and display options.
+- `options` _ScreenshotOptions | None_ - Compression and display options.
   
 
 **Returns**:
@@ -9420,7 +22223,7 @@ for window in windows.windows:
 ## ScreenshotRegion
 
 ```python
-class ScreenshotRegion()
+class ScreenshotRegion(BaseModel)
 ```
 
 Region coordinates for screenshot operations.
@@ -9435,17 +22238,17 @@ Region coordinates for screenshot operations.
 ## ScreenshotOptions
 
 ```python
-class ScreenshotOptions()
+class ScreenshotOptions(BaseModel)
 ```
 
 Options for screenshot compression and display.
 
 **Attributes**:
 
-- `show_cursor` _bool_ - Whether to show the cursor in the screenshot.
-- `fmt` _str_ - Image format (e.g., 'png', 'jpeg', 'webp').
-- `quality` _int_ - Compression quality (0-100).
-- `scale` _float_ - Scale factor for the screenshot.
+- `show_cursor` _bool | None_ - Whether to show the cursor in the screenshot.
+- `fmt` _str | None_ - Image format (e.g., 'png', 'jpeg', 'webp').
+- `quality` _int | None_ - Compression quality (0-100).
+- `scale` _float | None_ - Scale factor for the screenshot.
 
 ## Daytona
 
@@ -9486,7 +22289,7 @@ sandbox = daytona.create()
 #### Daytona.\_\_init\_\_
 
 ```python
-def __init__(config: Optional[DaytonaConfig] = None)
+def __init__(config: DaytonaConfig | None = None)
 ```
 
 Initializes Daytona instance with optional configuration.
@@ -9498,7 +22301,7 @@ If no config is provided, reads from environment variables:
 
 **Arguments**:
 
-- `config` _Optional[DaytonaConfig]_ - Object containing api_key, api_url, and target.
+- `config` _DaytonaConfig | None_ - Object containing api_key, api_url, and target.
   
 
 **Raises**:
@@ -9527,9 +22330,9 @@ daytona2 = Daytona(config)
 
 ```python
 @overload
-def create(params: Optional[CreateSandboxFromSnapshotParams] = None,
+def create(params: CreateSandboxFromSnapshotParams | None = None,
            *,
-           timeout: Optional[float] = 60) -> Sandbox
+           timeout: float = 60) -> Sandbox
 ```
 
 Creates Sandboxes from specified or default snapshot. You can specify various parameters,
@@ -9537,9 +22340,9 @@ including language, image, environment variables, and volumes.
 
 **Arguments**:
 
-- `params` _Optional[CreateSandboxFromSnapshotParams]_ - Parameters for Sandbox creation. If not provided,
+- `params` _CreateSandboxFromSnapshotParams | None_ - Parameters for Sandbox creation. If not provided,
   defaults to default Daytona snapshot and Python language.
-- `timeout` _Optional[float]_ - Timeout (in seconds) for sandbox creation. 0 means no timeout.
+- `timeout` _float_ - Timeout (in seconds) for sandbox creation. 0 means no timeout.
   Default is 60 seconds.
   
 
@@ -9578,10 +22381,12 @@ sandbox = daytona.create(params, timeout=40)
 
 ```python
 @overload
-def create(params: Optional[CreateSandboxFromImageParams] = None,
-           *,
-           timeout: Optional[float] = 60,
-           on_snapshot_create_logs: Callable[[str], None] = None) -> Sandbox
+def create(
+        params: CreateSandboxFromImageParams | None = None,
+        *,
+        timeout: float = 60,
+        on_snapshot_create_logs: Callable[[str], None] | None = None
+) -> Sandbox
 ```
 
 Creates Sandboxes from specified image available on some registry or declarative Daytona Image.
@@ -9590,10 +22395,11 @@ and volumes. Daytona creates snapshot from provided image and uses it to create 
 
 **Arguments**:
 
-- `params` _Optional[CreateSandboxFromImageParams]_ - Parameters for Sandbox creation from image.
-- `timeout` _Optional[float]_ - Timeout (in seconds) for sandbox creation. 0 means no timeout.
+- `params` _CreateSandboxFromImageParams | None_ - Parameters for Sandbox creation from image.
+- `timeout` _float_ - Timeout (in seconds) for sandbox creation. 0 means no timeout.
   Default is 60 seconds.
-- `on_snapshot_create_logs` _Callable[[str], None]_ - This callback function handles snapshot creation logs.
+- `on_snapshot_create_logs` _Callable[[str], None] | None_ - This callback function
+  handles snapshot creation logs.
   
 
 **Returns**:
@@ -9640,7 +22446,7 @@ sandbox = daytona.create(
 #### Daytona.delete
 
 ```python
-def delete(sandbox: Sandbox, timeout: Optional[float] = 60) -> None
+def delete(sandbox: Sandbox, timeout: float = 60) -> None
 ```
 
 Deletes a Sandbox.
@@ -9648,7 +22454,7 @@ Deletes a Sandbox.
 **Arguments**:
 
 - `sandbox` _Sandbox_ - The Sandbox instance to delete.
-- `timeout` _Optional[float]_ - Timeout (in seconds) for sandbox deletion. 0 means no timeout.
+- `timeout` _float_ - Timeout (in seconds) for sandbox deletion. 0 means no timeout.
   Default is 60 seconds.
   
 
@@ -9700,16 +22506,16 @@ print(sandbox.state)
 
 ```python
 @intercept_errors(message_prefix="Failed to find sandbox: ")
-def find_one(sandbox_id_or_name: Optional[str] = None,
-             labels: Optional[Dict[str, str]] = None) -> Sandbox
+def find_one(sandbox_id_or_name: str | None = None,
+             labels: dict[str, str] | None = None) -> Sandbox
 ```
 
 Finds a Sandbox by its ID or name or labels.
 
 **Arguments**:
 
-- `sandbox_id_or_name` _Optional[str]_ - The ID or name of the Sandbox to retrieve.
-- `labels` _Optional[Dict[str, str]]_ - Labels to filter Sandboxes.
+- `sandbox_id_or_name` _str | None_ - The ID or name of the Sandbox to retrieve.
+- `labels` _dict[str, str] | None_ - Labels to filter Sandboxes.
   
 
 **Returns**:
@@ -9733,18 +22539,18 @@ print(f"Sandbox ID: {sandbox.id} State: {sandbox.state}")
 
 ```python
 @intercept_errors(message_prefix="Failed to list sandboxes: ")
-def list(labels: Optional[Dict[str, str]] = None,
-         page: Optional[int] = None,
-         limit: Optional[int] = None) -> PaginatedSandboxes
+def list(labels: dict[str, str] | None = None,
+         page: int | None = None,
+         limit: int | None = None) -> PaginatedSandboxes
 ```
 
 Returns paginated list of Sandboxes filtered by labels.
 
 **Arguments**:
 
-- `labels` _Optional[Dict[str, str]]_ - Labels to filter Sandboxes.
-- `page` _Optional[int]_ - Page number for pagination (starting from 1).
-- `limit` _Optional[int]_ - Maximum number of items per page.
+- `labels` _dict[str, str] | None_ - Labels to filter Sandboxes.
+- `page` _int | None_ - Page number for pagination (starting from 1).
+- `limit` _int | None_ - Maximum number of items per page.
   
 
 **Returns**:
@@ -9763,7 +22569,7 @@ for sandbox in result.items:
 #### Daytona.start
 
 ```python
-def start(sandbox: Sandbox, timeout: Optional[float] = 60) -> None
+def start(sandbox: Sandbox, timeout: float = 60) -> None
 ```
 
 Starts a Sandbox and waits for it to be ready.
@@ -9771,7 +22577,7 @@ Starts a Sandbox and waits for it to be ready.
 **Arguments**:
 
 - `sandbox` _Sandbox_ - The Sandbox to start.
-- `timeout` _Optional[float]_ - Optional timeout in seconds to wait for the Sandbox to start.
+- `timeout` _float_ - Optional timeout in seconds to wait for the Sandbox to start.
   0 means no timeout. Default is 60 seconds.
   
 
@@ -9782,7 +22588,7 @@ Starts a Sandbox and waits for it to be ready.
 #### Daytona.stop
 
 ```python
-def stop(sandbox: Sandbox, timeout: Optional[float] = 60) -> None
+def stop(sandbox: Sandbox, timeout: float = 60) -> None
 ```
 
 Stops a Sandbox and waits for it to be stopped.
@@ -9790,7 +22596,7 @@ Stops a Sandbox and waits for it to be stopped.
 **Arguments**:
 
 - `sandbox` _Sandbox_ - The sandbox to stop
-- `timeout` _Optional[float]_ - Optional timeout (in seconds) for sandbox stop.
+- `timeout` _float_ - Optional timeout (in seconds) for sandbox stop.
   0 means no timeout. Default is 60 seconds.
   
 
@@ -9802,8 +22608,7 @@ Stops a Sandbox and waits for it to be stopped.
 ## CodeLanguage
 
 ```python
-@dataclass
-class CodeLanguage(Enum)
+class CodeLanguage(str, Enum)
 ```
 
 Programming languages supported by Daytona
@@ -9823,17 +22628,17 @@ Configuration options for initializing the Daytona client.
 
 **Attributes**:
 
-- `api_key` _Optional[str]_ - API key for authentication with the Daytona API. If not set, it must be provided
+- `api_key` _str | None_ - API key for authentication with the Daytona API. If not set, it must be provided
   via the environment variable `DAYTONA_API_KEY`, or a JWT token must be provided instead.
-- `jwt_token` _Optional[str]_ - JWT token for authentication with the Daytona API. If not set, it must be provided
+- `jwt_token` _str | None_ - JWT token for authentication with the Daytona API. If not set, it must be provided
   via the environment variable `DAYTONA_JWT_TOKEN`, or an API key must be provided instead.
-- `organization_id` _Optional[str]_ - Organization ID used for JWT-based authentication. Required if a JWT token
+- `organization_id` _str | None_ - Organization ID used for JWT-based authentication. Required if a JWT token
   is provided, and must be set either here or in the environment variable `DAYTONA_ORGANIZATION_ID`.
-- `api_url` _Optional[str]_ - URL of the Daytona API. Defaults to `'https://app.daytona.io/api'` if not set
+- `api_url` _str | None_ - URL of the Daytona API. Defaults to `'https://app.daytona.io/api'` if not set
   here or in the environment variable `DAYTONA_API_URL`.
-- `server_url` _Optional[str]_ - Deprecated. Use `api_url` instead. This property will be removed
+- `server_url` _str | None_ - Deprecated. Use `api_url` instead. This property will be removed
   in a future version.
-- `target` _Optional[str]_ - Target runner location for the Sandbox. Default region for the organization is used 
+- `target` _str | None_ - Target runner location for the Sandbox. Default region for the organization is used
   if not set here or in the environment variable `DAYTONA_TARGET`.
   
 
@@ -9856,26 +22661,27 @@ Base parameters for creating a new Sandbox.
 
 **Attributes**:
 
-- `name` _Optional[str]_ - Name of the Sandbox.
-- `language` _Optional[CodeLanguage]_ - Programming language for the Sandbox. Defaults to "python".
-- `os_user` _Optional[str]_ - OS user for the Sandbox.
-- `env_vars` _Optional[Dict[str, str]]_ - Environment variables to set in the Sandbox.
-- `labels` _Optional[Dict[str, str]]_ - Custom labels for the Sandbox.
-- `public` _Optional[bool]_ - Whether the Sandbox should be public.
-- `timeout` _Optional[float]_ - Timeout in seconds for Sandbox to be created and started.
-- `auto_stop_interval` _Optional[int]_ - Interval in minutes after which Sandbox will
+- `name` _str | None_ - Name of the Sandbox.
+- `language` _CodeLanguage | CodeLanguageLiteral | None_ - Programming language for the Sandbox.
+  Defaults to "python".
+- `os_user` _str | None_ - OS user for the Sandbox.
+- `env_vars` _dict[str, str] | None_ - Environment variables to set in the Sandbox.
+- `labels` _dict[str, str] | None_ - Custom labels for the Sandbox.
+- `public` _bool | None_ - Whether the Sandbox should be public.
+- `timeout` _float | None_ - Timeout in seconds for Sandbox to be created and started.
+- `auto_stop_interval` _int | None_ - Interval in minutes after which Sandbox will
   automatically stop if no Sandbox event occurs during that time. Default is 15 minutes.
   0 means no auto-stop.
-- `auto_archive_interval` _Optional[int]_ - Interval in minutes after which a continuously stopped Sandbox will
+- `auto_archive_interval` _int | None_ - Interval in minutes after which a continuously stopped Sandbox will
   automatically archive. Default is 7 days.
   0 means the maximum interval will be used.
-- `auto_delete_interval` _Optional[int]_ - Interval in minutes after which a continuously stopped Sandbox will
+- `auto_delete_interval` _int | None_ - Interval in minutes after which a continuously stopped Sandbox will
   automatically be deleted. By default, auto-delete is disabled.
   Negative value means disabled, 0 means delete immediately upon stopping.
-- `volumes` _Optional[List[VolumeMount]]_ - List of volumes mounts to attach to the Sandbox.
-- `network_block_all` _Optional[bool]_ - Whether to block all network access for the Sandbox.
-- `network_allow_list` _Optional[str]_ - Comma-separated list of allowed CIDR network addresses for the Sandbox.
-- `ephemeral` _Optional[bool]_ - Whether the Sandbox should be ephemeral.
+- `volumes` _list[VolumeMount] | None_ - List of volumes mounts to attach to the Sandbox.
+- `network_block_all` _bool | None_ - Whether to block all network access for the Sandbox.
+- `network_allow_list` _str | None_ - Comma-separated list of allowed CIDR network addresses for the Sandbox.
+- `ephemeral` _bool | None_ - Whether the Sandbox should be ephemeral.
   If True, auto_delete_interval will be set to 0.
 
 ## CreateSandboxFromImageParams
@@ -9888,9 +22694,9 @@ Parameters for creating a new Sandbox from an image.
 
 **Attributes**:
 
-- `image` _Union[str, Image]_ - Custom Docker image to use for the Sandbox. If an Image object is provided,
+- `image` _str | Image_ - Custom Docker image to use for the Sandbox. If an Image object is provided,
   the image will be dynamically built.
-- `resources` _Optional[Resources]_ - Resource configuration for the Sandbox. If not provided, sandbox will
+- `resources` _Resources | None_ - Resource configuration for the Sandbox. If not provided, sandbox will
   have default resources.
 
 ## CreateSandboxFromSnapshotParams
@@ -9903,7 +22709,7 @@ Parameters for creating a new Sandbox from a snapshot.
 
 **Attributes**:
 
-- `snapshot` _Optional[str]_ - Name of the snapshot to use for the Sandbox.
+- `snapshot` _str | None_ - Name of the snapshot to use for the Sandbox.
 
 ## FileSystem
 
@@ -10049,21 +22855,21 @@ print(f"Size of the downloaded file {local_path}: {size_mb} MB")
 
 ```python
 @intercept_errors(message_prefix="Failed to download files: ")
-def download_files(files: List[FileDownloadRequest],
-                   timeout: int = 30 * 60) -> List[FileDownloadResponse]
+def download_files(files: list[FileDownloadRequest],
+                   timeout: int = 30 * 60) -> list[FileDownloadResponse]
 ```
 
 Downloads multiple files from the Sandbox. If the files already exist locally, they will be overwritten.
 
 **Arguments**:
 
-- `files` _List[FileDownloadRequest]_ - List of files to download.
+- `files` _list[FileDownloadRequest]_ - List of files to download.
 - `timeout` _int_ - Timeout for the download operation in seconds. 0 means no timeout. Default is 30 minutes.
   
 
 **Returns**:
 
-- `List[FileDownloadResponse]` - List of download results.
+- `list[FileDownloadResponse]` - List of download results.
   
 
 **Raises**:
@@ -10091,7 +22897,7 @@ for result in results:
 
 ```python
 @intercept_errors(message_prefix="Failed to find files: ")
-def find_files(path: str, pattern: str) -> List[Match]
+def find_files(path: str, pattern: str) -> list[Match]
 ```
 
 Searches for files containing a pattern, similar to
@@ -10107,7 +22913,7 @@ the grep command.
 
 **Returns**:
 
-- `List[Match]` - List of matches found in files. Each Match object includes:
+- `list[Match]` - List of matches found in files. Each Match object includes:
   - file: Path to the file containing the match
   - line: The line number where the match was found
   - content: The matching line content
@@ -10170,7 +22976,7 @@ if info.is_dir:
 
 ```python
 @intercept_errors(message_prefix="Failed to list files: ")
-def list_files(path: str) -> List[FileInfo]
+def list_files(path: str) -> list[FileInfo]
 ```
 
 Lists files and directories in a given path and returns their information, similar to the ls -l command.
@@ -10183,7 +22989,7 @@ Lists files and directories in a given path and returns their information, simil
 
 **Returns**:
 
-- `List[FileInfo]` - List of file and directory information. Each FileInfo
+- `list[FileInfo]` - List of file and directory information. Each FileInfo
   object includes the same fields as described in get_file_info().
   
 
@@ -10246,15 +23052,15 @@ sandbox.fs.move_files(
 
 ```python
 @intercept_errors(message_prefix="Failed to replace in files: ")
-def replace_in_files(files: List[str], pattern: str,
-                     new_value: str) -> List[ReplaceResult]
+def replace_in_files(files: list[str], pattern: str,
+                     new_value: str) -> list[ReplaceResult]
 ```
 
 Performs search and replace operations across multiple files.
 
 **Arguments**:
 
-- `files` _List[str]_ - List of file paths to perform replacements in. Relative paths are
+- `files` _list[str]_ - List of file paths to perform replacements in. Relative paths are
   resolved based on the sandbox working directory.
 - `pattern` _str_ - Pattern to search for.
 - `new_value` _str_ - Text to replace matches with.
@@ -10262,7 +23068,7 @@ Performs search and replace operations across multiple files.
 
 **Returns**:
 
-- `List[ReplaceResult]` - List of results indicating replacements made in
+- `list[ReplaceResult]` - List of results indicating replacements made in
   each file. Each ReplaceResult includes:
   - file: Path to the modified file
   - success: Whether the operation was successful
@@ -10329,9 +23135,9 @@ print(f"Found {len(result.files)} test files")
 ```python
 @intercept_errors(message_prefix="Failed to set file permissions: ")
 def set_file_permissions(path: str,
-                         mode: str = None,
-                         owner: str = None,
-                         group: str = None) -> None
+                         mode: str | None = None,
+                         owner: str | None = None,
+                         group: str | None = None) -> None
 ```
 
 Sets permissions and ownership for a file or directory. Any of the parameters can be None
@@ -10341,10 +23147,10 @@ to leave that attribute unchanged.
 
 - `path` _str_ - Path to the file or directory. Relative paths are resolved based on
   the sandbox working directory.
-- `mode` _Optional[str]_ - File mode/permissions in octal format
+- `mode` _str | None_ - File mode/permissions in octal format
   (e.g., "644" for rw-r--r--).
-- `owner` _Optional[str]_ - User owner of the file.
-- `group` _Optional[str]_ - Group owner of the file.
+- `owner` _str | None_ - User owner of the file.
+- `group` _str | None_ - Group owner of the file.
   
 
 **Example**:
@@ -10434,7 +23240,7 @@ sandbox.fs.upload_file("local_file.txt", "tmp/large_file.txt")
 
 ```python
 @intercept_errors(message_prefix="Failed to upload files: ")
-def upload_files(files: List[FileUpload], timeout: int = 30 * 60) -> None
+def upload_files(files: list[FileUpload], timeout: int = 30 * 60) -> None
 ```
 
 Uploads multiple files to the Sandbox. If files already exist at the destination paths,
@@ -10442,7 +23248,7 @@ they will be overwritten.
 
 **Arguments**:
 
-- `files` _List[FileUpload]_ - List of files to upload.
+- `files` _list[FileUpload]_ - List of files to upload.
 - `timeout` _int_ - Timeout for the upload operation in seconds. 0 means no timeout. Default is 30 minutes.
 
 **Example**:
@@ -10478,7 +23284,7 @@ Represents a file to be uploaded to the Sandbox.
 
 **Attributes**:
 
-- `source` _Union[bytes, str]_ - File contents as a bytes object or a local file path. If a bytes object is provided,
+- `source` _bytes | str_ - File contents as a bytes object or a local file path. If a bytes object is provided,
   make sure it fits into memory, otherwise use the local file path which content will be streamed to the Sandbox.
 - `destination` _str_ - Absolute destination path in the Sandbox. Relative paths are resolved based on
   the sandbox working directory.
@@ -10496,7 +23302,7 @@ Represents a request to download a single file from the Sandbox.
 
 - `source` _str_ - Source path in the Sandbox. Relative paths are resolved based on the user's
   root directory.
-- `destination` _Optional[str]_ - Destination path in the local filesystem where the file content will be
+- `destination` _str | None_ - Destination path in the local filesystem where the file content will be
   streamed to. If not provided, the file will be downloaded in the bytes buffer
   (might cause memory issues if the file is large).
 
@@ -10512,9 +23318,9 @@ Represents the response to a single file download request.
 **Attributes**:
 
 - `source` _str_ - The original source path requested for download.
-- `result` _Union[str, bytes, None]_ - The download result - file path (if destination provided in the request)
+- `result` _str | bytes | None_ - The download result - file path (if destination provided in the request)
   or bytes content (if no destination in the request), None if failed or no data received.
-- `error` _Optional[str]_ - Error message if the download failed, None if successful.
+- `error` _str | None_ - Error message if the download failed, None if successful.
 
 ## Git
 
@@ -10563,7 +23369,7 @@ Initializes a new Git handler instance.
 
 ```python
 @intercept_errors(message_prefix="Failed to add files: ")
-def add(path: str, files: List[str]) -> None
+def add(path: str, files: list[str]) -> None
 ```
 
 Stages the specified files for the next commit, similar to
@@ -10573,7 +23379,7 @@ running 'git add' on the command line.
 
 - `path` _str_ - Path to the Git repository root. Relative paths are resolved based on
   the sandbox working directory.
-- `files` _List[str]_ - List of file paths or directories to stage, relative to the repository root.
+- `files` _list[str]_ - List of file paths or directories to stage, relative to the repository root.
   
 
 **Example**:
@@ -10623,10 +23429,10 @@ print(f"Branches: {response.branches}")
 @intercept_errors(message_prefix="Failed to clone repository: ")
 def clone(url: str,
           path: str,
-          branch: Optional[str] = None,
-          commit_id: Optional[str] = None,
-          username: Optional[str] = None,
-          password: Optional[str] = None) -> None
+          branch: str | None = None,
+          commit_id: str | None = None,
+          username: str | None = None,
+          password: str | None = None) -> None
 ```
 
 Clones a Git repository into the specified path. It supports
@@ -10638,12 +23444,12 @@ repository if credentials are provided.
 - `url` _str_ - Repository URL to clone from.
 - `path` _str_ - Path where the repository should be cloned. Relative paths are resolved
   based on the sandbox working directory.
-- `branch` _Optional[str]_ - Specific branch to clone. If not specified,
+- `branch` _str | None_ - Specific branch to clone. If not specified,
   clones the default branch.
-- `commit_id` _Optional[str]_ - Specific commit to clone. If specified,
+- `commit_id` _str | None_ - Specific commit to clone. If specified,
   the repository will be left in a detached HEAD state at this commit.
-- `username` _Optional[str]_ - Git username for authentication.
-- `password` _Optional[str]_ - Git password or token for authentication.
+- `username` _str | None_ - Git username for authentication.
+- `password` _str | None_ - Git password or token for authentication.
   
 
 **Example**:
@@ -10715,8 +23521,8 @@ sandbox.git.commit(
 ```python
 @intercept_errors(message_prefix="Failed to push changes: ")
 def push(path: str,
-         username: Optional[str] = None,
-         password: Optional[str] = None) -> None
+         username: str | None = None,
+         password: str | None = None) -> None
 ```
 
 Pushes all local commits on the current branch to the remote
@@ -10727,8 +23533,8 @@ username and password/token.
 
 - `path` _str_ - Path to the Git repository root. Relative paths are resolved based on
   the sandbox working directory.
-- `username` _Optional[str]_ - Git username for authentication.
-- `password` _Optional[str]_ - Git password or token for authentication.
+- `username` _str | None_ - Git username for authentication.
+- `password` _str | None_ - Git password or token for authentication.
   
 
 **Example**:
@@ -10750,8 +23556,8 @@ sandbox.git.push(
 ```python
 @intercept_errors(message_prefix="Failed to pull changes: ")
 def pull(path: str,
-         username: Optional[str] = None,
-         password: Optional[str] = None) -> None
+         username: str | None = None,
+         password: str | None = None) -> None
 ```
 
 Pulls changes from the remote repository. If the remote repository requires authentication,
@@ -10761,8 +23567,8 @@ provide username and password/token.
 
 - `path` _str_ - Path to the Git repository root. Relative paths are resolved based on
   the sandbox working directory.
-- `username` _Optional[str]_ - Git username for authentication.
-- `password` _Optional[str]_ - Git password or token for authentication.
+- `username` _str | None_ - Git username for authentication.
+- `password` _str | None_ - Git password or token for authentication.
   
 
 **Example**:
@@ -10907,18 +23713,18 @@ IDE-like features such as code completion, symbol search, and more.
 #### LspServer.\_\_init\_\_
 
 ```python
-def __init__(language_id: LspLanguageId, path_to_project: str,
-             api_client: LspApi)
+def __init__(language_id: LspLanguageId | LspLanguageIdLiteral,
+             path_to_project: str, api_client: LspApi)
 ```
 
 Initializes a new LSP server instance.
 
 **Arguments**:
 
-- `language_id` _LspLanguageId_ - The language server type (e.g., LspLanguageId.TYPESCRIPT).
+- `language_id` _LspLanguageId | LspLanguageIdLiteral_ - The language server type
+  (e.g., LspLanguageId.TYPESCRIPT).
 - `path_to_project` _str_ - Absolute path to the project root directory.
 - `api_client` _LspApi_ - API client for Sandbox operations.
-- `instance` _SandboxInstance_ - The Sandbox instance this server belongs to.
 
 #### LspServer.start
 
@@ -11015,7 +23821,7 @@ lsp.did_close("workspace/project/src/index.ts")
 
 ```python
 @intercept_errors(message_prefix="Failed to get symbols from document: ")
-def document_symbols(path: str) -> List[LspSymbol]
+def document_symbols(path: str) -> list[LspSymbol]
 ```
 
 Gets symbol information (functions, classes, variables, etc.) from a document.
@@ -11028,7 +23834,7 @@ Gets symbol information (functions, classes, variables, etc.) from a document.
 
 **Returns**:
 
-- `List[LspSymbol]` - List of symbols in the document. Each symbol includes:
+- `list[LspSymbol]` - List of symbols in the document. Each symbol includes:
   - name: The symbol's name
   - kind: The symbol's kind (function, class, variable, etc.)
   - location: The location of the symbol in the file
@@ -11050,7 +23856,7 @@ for symbol in symbols:
     reason=
     "Method is deprecated. Use `sandbox_symbols` instead. This method will be removed in a future version."
 )
-def workspace_symbols(query: str) -> List[LspSymbol]
+def workspace_symbols(query: str) -> list[LspSymbol]
 ```
 
 Searches for symbols matching the query string across all files
@@ -11063,13 +23869,13 @@ in the Sandbox.
 
 **Returns**:
 
-- `List[LspSymbol]` - List of matching symbols from all files.
+- `list[LspSymbol]` - List of matching symbols from all files.
 
 #### LspServer.sandbox\_symbols
 
 ```python
 @intercept_errors(message_prefix="Failed to get symbols from sandbox: ")
-def sandbox_symbols(query: str) -> List[LspSymbol]
+def sandbox_symbols(query: str) -> list[LspSymbol]
 ```
 
 Searches for symbols matching the query string across all files
@@ -11082,7 +23888,7 @@ in the Sandbox.
 
 **Returns**:
 
-- `List[LspSymbol]` - List of matching symbols from all files. Each symbol
+- `list[LspSymbol]` - List of matching symbols from all files. Each symbol
   includes:
   - name: The symbol's name
   - kind: The symbol's kind (function, class, variable, etc.)
@@ -11142,7 +23948,7 @@ for item in completions.items:
 ## LspLanguageId
 
 ```python
-class LspLanguageId(Enum)
+class LspLanguageId(str, Enum)
 ```
 
 Language IDs for Language Server Protocol (LSP).
@@ -11155,6 +23961,7 @@ Language IDs for Language Server Protocol (LSP).
 ## LspCompletionPosition
 
 ```python
+@dataclass
 class LspCompletionPosition()
 ```
 
@@ -11162,19 +23969,6 @@ Represents a zero-based completion position in a text document,
 specified by line number and character offset.
 
 **Attributes**:
-
-- `line` _int_ - Zero-based line number in the document.
-- `character` _int_ - Zero-based character offset on the line.
-
-#### LspCompletionPosition.\_\_init\_\_
-
-```python
-def __init__(line: int, character: int)
-```
-
-Initialize a new LspCompletionPosition instance.
-
-**Arguments**:
 
 - `line` _int_ - Zero-based line number in the document.
 - `character` _int_ - Zero-based character offset on the line.
@@ -11227,7 +24021,7 @@ Handles process and code execution within a Sandbox.
 #### Process.\_\_init\_\_
 
 ```python
-def __init__(code_toolbox: SandboxPythonCodeToolbox, api_client: ProcessApi,
+def __init__(code_toolbox: SandboxCodeToolbox, api_client: ProcessApi,
              ensure_toolbox_url: Callable[[], None])
 ```
 
@@ -11235,7 +24029,7 @@ Initialize a new Process instance.
 
 **Arguments**:
 
-- `code_toolbox` _SandboxPythonCodeToolbox_ - Language-specific code execution toolbox.
+- `code_toolbox` _SandboxCodeToolbox_ - Language-specific code execution toolbox.
 - `api_client` _ProcessApi_ - API client for process operations.
 - `ensure_toolbox_url` _Callable[[], None]_ - Ensures the toolbox API URL is initialized.
   Must be called before invoking any private methods on the API client.
@@ -11245,9 +24039,9 @@ Initialize a new Process instance.
 ```python
 @intercept_errors(message_prefix="Failed to execute command: ")
 def exec(command: str,
-         cwd: Optional[str] = None,
-         env: Optional[Dict[str, str]] = None,
-         timeout: Optional[int] = None) -> ExecuteResponse
+         cwd: str | None = None,
+         env: dict[str, str] | None = None,
+         timeout: int | None = None) -> ExecuteResponse
 ```
 
 Execute a shell command in the Sandbox.
@@ -11255,10 +24049,10 @@ Execute a shell command in the Sandbox.
 **Arguments**:
 
 - `command` _str_ - Shell command to execute.
-- `cwd` _Optional[str]_ - Working directory for command execution. If not
+- `cwd` _str | None_ - Working directory for command execution. If not
   specified, uses the sandbox working directory.
-- `env` _Optional[Dict[str, str]]_ - Environment variables to set for the command.
-- `timeout` _Optional[int]_ - Maximum time in seconds to wait for the command
+- `env` _dict[str, str] | None_ - Environment variables to set for the command.
+- `timeout` _int | None_ - Maximum time in seconds to wait for the command
   to complete. 0 means wait indefinitely.
   
 
@@ -11289,8 +24083,8 @@ result = sandbox.process.exec("sleep 10", timeout=5)
 
 ```python
 def code_run(code: str,
-             params: Optional[CodeRunParams] = None,
-             timeout: Optional[int] = None) -> ExecuteResponse
+             params: CodeRunParams | None = None,
+             timeout: int | None = None) -> ExecuteResponse
 ```
 
 Executes code in the Sandbox using the appropriate language runtime.
@@ -11298,8 +24092,8 @@ Executes code in the Sandbox using the appropriate language runtime.
 **Arguments**:
 
 - `code` _str_ - Code to execute.
-- `params` _Optional[CodeRunParams]_ - Parameters for code execution.
-- `timeout` _Optional[int]_ - Maximum time in seconds to wait for the code
+- `params` _CodeRunParams | None_ - Parameters for code execution.
+- `timeout` _int | None_ - Maximum time in seconds to wait for the code
   to complete. 0 means wait indefinitely.
   
 
@@ -11459,7 +24253,7 @@ if cmd.exit_code == 0:
 def execute_session_command(
         session_id: str,
         req: SessionExecuteRequest,
-        timeout: Optional[int] = None) -> SessionExecuteResponse
+        timeout: int | None = None) -> SessionExecuteResponse
 ```
 
 Executes a command in the session.
@@ -11568,18 +24362,34 @@ await sandbox.process.get_session_command_logs_async(
 )
 ```
 
+#### Process.send\_session\_command\_input
+
+```python
+@intercept_errors(message_prefix="Failed to send session command input: ")
+def send_session_command_input(session_id: str, command_id: str,
+                               data: str) -> None
+```
+
+Sends input data to a command executed in a session.
+
+**Arguments**:
+
+- `session_id` _str_ - Unique identifier of the session.
+- `command_id` _str_ - Unique identifier of the command.
+- `data` _str_ - Input data to send.
+
 #### Process.list\_sessions
 
 ```python
 @intercept_errors(message_prefix="Failed to list sessions: ")
-def list_sessions() -> List[Session]
+def list_sessions() -> list[Session]
 ```
 
 Lists all sessions in the Sandbox.
 
 **Returns**:
 
-- `List[Session]` - List of all sessions in the Sandbox.
+- `list[Session]` - List of all sessions in the Sandbox.
   
 
 **Example**:
@@ -11622,9 +24432,9 @@ sandbox.process.delete_session("temp-session")
 ```python
 @intercept_errors(message_prefix="Failed to create PTY session: ")
 def create_pty_session(id: str,
-                       cwd: Optional[str] = None,
-                       envs: Optional[Dict[str, str]] = None,
-                       pty_size: Optional[PtySize] = None) -> PtyHandle
+                       cwd: str | None = None,
+                       envs: dict[str, str] | None = None,
+                       pty_size: PtySize | None = None) -> PtyHandle
 ```
 
 Creates a new PTY (pseudo-terminal) session in the Sandbox.
@@ -11681,7 +24491,7 @@ interact with a previously created terminal session.
 
 ```python
 @intercept_errors(message_prefix="Failed to list PTY sessions: ")
-def list_pty_sessions() -> List[PtySessionInfo]
+def list_pty_sessions() -> list[PtySessionInfo]
 ```
 
 Lists all PTY sessions in the Sandbox.
@@ -11690,7 +24500,7 @@ Retrieves information about all PTY sessions in this Sandbox.
 
 **Returns**:
 
-- `List[PtySessionInfo]` - List of PTY session information objects containing
+- `list[PtySessionInfo]` - List of PTY session information objects containing
   details about each session's state, creation time, and configuration.
   
 
@@ -11837,8 +24647,8 @@ Parameters for code execution.
 
 **Attributes**:
 
-- `argv` _Optional[List[str]]_ - Command line arguments
-- `env` _Optional[Dict[str, str]]_ - Environment variables
+- `argv` _list[str] | None_ - Command line arguments
+- `env` _dict[str, str] | None_ - Environment variables
 
 ## SessionExecuteRequest
 
@@ -11852,12 +24662,13 @@ Contains the request for executing a command in a session.
 **Attributes**:
 
 - `command` _str_ - The command to execute.
-- `run_async` _Optional[bool]_ - Whether to execute the command asynchronously.
-- `var_async` _Optional[bool]_ - Deprecated. Use `run_async` instead.
+- `run_async` _bool | None_ - Whether to execute the command asynchronously.
+- `var_async` _bool | None_ - Deprecated. Use `run_async` instead.
 
 ## ExecutionArtifacts
 
 ```python
+@dataclass
 class ExecutionArtifacts()
 ```
 
@@ -11866,7 +24677,7 @@ Artifacts from the command execution.
 **Attributes**:
 
 - `stdout` _str_ - Standard output from the command, same as `result` in `ExecuteResponse`
-- `charts` _Optional[List[Chart]]_ - List of chart metadata from matplotlib
+- `charts` _list[Chart] | None_ - List of chart metadata from matplotlib
 
 ## ExecuteResponse
 
@@ -11880,7 +24691,7 @@ Response from the command execution.
 
 - `exit_code` _int_ - The exit code from the command execution
 - `result` _str_ - The output from the command execution
-- `artifacts` _Optional[ExecutionArtifacts]_ - Artifacts from the command execution
+- `artifacts` _ExecutionArtifacts | None_ - Artifacts from the command execution
 
 ## SessionExecuteResponse
 
@@ -11892,12 +24703,16 @@ Response from the session command execution.
 
 **Attributes**:
 
+- `cmd_id` _str_ - The ID of the executed command
+- `stdout` _str | None_ - The stdout from the command execution
+- `stderr` _str | None_ - The stderr from the command execution
 - `output` _str_ - The output from the command execution
 - `exit_code` _int_ - The exit code from the command execution
 
 ## SessionCommandLogsResponse
 
 ```python
+@dataclass
 class SessionCommandLogsResponse()
 ```
 
@@ -11905,9 +24720,9 @@ Response from the command logs.
 
 **Attributes**:
 
-- `output` _str_ - The combined output from the command
-- `stdout` _str_ - The stdout from the command
-- `stderr` _str_ - The stderr from the command
+- `output` _str | None_ - The combined output from the command
+- `stdout` _str | None_ - The stdout from the command
+- `stderr` _str | None_ - The stderr from the command
 
 #### parse\_session\_command\_logs
 
@@ -11957,13 +24772,15 @@ Represents a Daytona Sandbox.
 - `git` _Git_ - Git operations interface.
 - `process` _Process_ - Process execution interface.
 - `computer_use` _ComputerUse_ - Computer use operations interface for desktop automation.
+- `code_interpreter` _CodeInterpreter_ - Stateful interpreter interface for executing code.
+  Currently supports only Python. For other languages, use the `process.code_run` interface.
 - `id` _str_ - Unique identifier for the Sandbox.
 - `name` _str_ - Name of the Sandbox.
 - `organization_id` _str_ - Organization ID of the Sandbox.
 - `snapshot` _str_ - Daytona snapshot used to create the Sandbox.
 - `user` _str_ - OS user running in the Sandbox.
-- `env` _Dict[str, str]_ - Environment variables set in the Sandbox.
-- `labels` _Dict[str, str]_ - Custom labels attached to the Sandbox.
+- `env` _dict[str, str]_ - Environment variables set in the Sandbox.
+- `labels` _dict[str, str]_ - Custom labels attached to the Sandbox.
 - `public` _bool_ - Whether the Sandbox is publicly accessible.
 - `target` _str_ - Target location of the runner where the Sandbox runs.
 - `cpu` _int_ - Number of CPUs allocated to the Sandbox.
@@ -11972,12 +24789,13 @@ Represents a Daytona Sandbox.
 - `disk` _int_ - Amount of disk space allocated to the Sandbox in GiB.
 - `state` _SandboxState_ - Current state of the Sandbox (e.g., "started", "stopped").
 - `error_reason` _str_ - Error message if Sandbox is in error state.
+- `recoverable` _bool_ - Whether the Sandbox error is recoverable.
 - `backup_state` _SandboxBackupStateEnum_ - Current state of Sandbox backup.
 - `backup_created_at` _str_ - When the backup was created.
 - `auto_stop_interval` _int_ - Auto-stop interval in minutes.
 - `auto_archive_interval` _int_ - Auto-archive interval in minutes.
 - `auto_delete_interval` _int_ - Auto-delete interval in minutes.
-- `volumes` _List[str]_ - Volumes attached to the Sandbox.
+- `volumes` _list[str]_ - Volumes attached to the Sandbox.
 - `build_info` _str_ - Build information for the Sandbox if it was created from dynamic build.
 - `created_at` _str_ - When the Sandbox was created.
 - `updated_at` _str_ - When the Sandbox was last updated.
@@ -11989,7 +24807,7 @@ Represents a Daytona Sandbox.
 ```python
 def __init__(sandbox_dto: SandboxDto, toolbox_api: ApiClient,
              sandbox_api: SandboxApi, code_toolbox: SandboxCodeToolbox,
-             get_toolbox_base_url: Callable[[], str])
+             get_toolbox_base_url: Callable[[str, str], str])
 ```
 
 Initialize a new Sandbox instance.
@@ -12066,7 +24884,7 @@ print(f"Sandbox working directory: {work_dir}")
 #### Sandbox.create\_lsp\_server
 
 ```python
-def create_lsp_server(language_id: LspLanguageId,
+def create_lsp_server(language_id: LspLanguageId | LspLanguageIdLiteral,
                       path_to_project: str) -> LspServer
 ```
 
@@ -12077,7 +24895,7 @@ diagnostics, and more.
 
 **Arguments**:
 
-- `language_id` _LspLanguageId_ - The language server type (e.g., LspLanguageId.PYTHON).
+- `language_id` _LspLanguageId | LspLanguageIdLiteral_ - The language server type (e.g., LspLanguageId.PYTHON).
 - `path_to_project` _str_ - Path to the project root directory. Relative paths are resolved
   based on the sandbox working directory.
   
@@ -12097,7 +24915,7 @@ lsp = sandbox.create_lsp_server("python", "workspace/project")
 
 ```python
 @intercept_errors(message_prefix="Failed to set labels: ")
-def set_labels(labels: Dict[str, str]) -> Dict[str, str]
+def set_labels(labels: dict[str, str]) -> dict[str, str]
 ```
 
 Sets labels for the Sandbox.
@@ -12106,12 +24924,12 @@ Labels are key-value pairs that can be used to organize and identify Sandboxes.
 
 **Arguments**:
 
-- `labels` _Dict[str, str]_ - Dictionary of key-value pairs representing Sandbox labels.
+- `labels` _dict[str, str]_ - Dictionary of key-value pairs representing Sandbox labels.
   
 
 **Returns**:
 
-  Dict[str, str]: Dictionary containing the updated Sandbox labels.
+  dict[str, str]: Dictionary containing the updated Sandbox labels.
   
 
 **Example**:
@@ -12130,16 +24948,16 @@ print(f"Updated labels: {new_labels}")
 ```python
 @intercept_errors(message_prefix="Failed to start sandbox: ")
 @with_timeout(error_message=lambda self, timeout: (
-    f"Sandbox {self.id} failed to start within the {timeout} seconds timeout period"
+    f"Sandbox {cast('Sandbox', self).id} failed to start within the {timeout} seconds timeout period"
 ))
-def start(timeout: Optional[float] = 60)
+def start(timeout: float | None = 60)
 ```
 
 Starts the Sandbox and waits for it to be ready.
 
 **Arguments**:
 
-- `timeout` _Optional[float]_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
+- `timeout` _float | None_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
   
 
 **Raises**:
@@ -12150,9 +24968,39 @@ Starts the Sandbox and waits for it to be ready.
 **Example**:
 
 ```python
-sandbox = daytona.get_current_sandbox("my-sandbox")
+sandbox = daytona.get("my-sandbox-id")
 sandbox.start(timeout=40)  # Wait up to 40 seconds
 print("Sandbox started successfully")
+```
+
+#### Sandbox.recover
+
+```python
+@intercept_errors(message_prefix="Failed to recover sandbox: ")
+@with_timeout(error_message=lambda self, timeout: (
+    f"Sandbox {cast('Sandbox', self).id} failed to recover within the {timeout} seconds timeout period"
+))
+def recover(timeout: float | None = 60)
+```
+
+Recovers the Sandbox from a recoverable error and waits for it to be ready.
+
+**Arguments**:
+
+- `timeout` _float | None_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
+  
+
+**Raises**:
+
+- `DaytonaError` - If timeout is negative. If sandbox fails to recover or times out.
+  
+
+**Example**:
+
+```python
+sandbox = daytona.get("my-sandbox-id")
+sandbox.recover(timeout=40)  # Wait up to 40 seconds
+print("Sandbox recovered successfully")
 ```
 
 #### Sandbox.stop
@@ -12160,16 +25008,16 @@ print("Sandbox started successfully")
 ```python
 @intercept_errors(message_prefix="Failed to stop sandbox: ")
 @with_timeout(error_message=lambda self, timeout: (
-    f"Sandbox {self.id} failed to stop within the {timeout} seconds timeout period"
+    f"Sandbox {cast('Sandbox', self).id} failed to stop within the {timeout} seconds timeout period"
 ))
-def stop(timeout: Optional[float] = 60)
+def stop(timeout: float | None = 60)
 ```
 
 Stops the Sandbox and waits for it to be fully stopped.
 
 **Arguments**:
 
-- `timeout` _Optional[float]_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
+- `timeout` _float | None_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
   
 
 **Raises**:
@@ -12180,7 +25028,7 @@ Stops the Sandbox and waits for it to be fully stopped.
 **Example**:
 
 ```python
-sandbox = daytona.get_current_sandbox("my-sandbox")
+sandbox = daytona.get("my-sandbox-id")
 sandbox.stop()
 print("Sandbox stopped successfully")
 ```
@@ -12189,14 +25037,14 @@ print("Sandbox stopped successfully")
 
 ```python
 @intercept_errors(message_prefix="Failed to remove sandbox: ")
-def delete(timeout: Optional[float] = 60) -> None
+def delete(timeout: float | None = 60) -> None
 ```
 
 Deletes the Sandbox.
 
 **Arguments**:
 
-- `timeout` _Optional[float]_ - Timeout (in seconds) for sandbox deletion. 0 means no timeout.
+- `timeout` _float | None_ - Timeout (in seconds) for sandbox deletion. 0 means no timeout.
   Default is 60 seconds.
 
 #### Sandbox.wait\_for\_sandbox\_start
@@ -12205,9 +25053,9 @@ Deletes the Sandbox.
 @intercept_errors(
     message_prefix="Failure during waiting for sandbox to start: ")
 @with_timeout(error_message=lambda self, timeout: (
-    f"Sandbox {self.id} failed to become ready within the {timeout} seconds timeout period"
+    f"Sandbox {cast('Sandbox', self).id} failed to become ready within the {timeout} seconds timeout period"
 ))
-def wait_for_sandbox_start(timeout: Optional[float] = 60) -> None
+def wait_for_sandbox_start(timeout: float | None = 60) -> None
 ```
 
 Waits for the Sandbox to reach the 'started' state. Polls the Sandbox status until it
@@ -12215,7 +25063,7 @@ reaches the 'started' state, encounters an error or times out.
 
 **Arguments**:
 
-- `timeout` _Optional[float]_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
+- `timeout` _float | None_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
   
 
 **Raises**:
@@ -12228,9 +25076,9 @@ reaches the 'started' state, encounters an error or times out.
 @intercept_errors(
     message_prefix="Failure during waiting for sandbox to stop: ")
 @with_timeout(error_message=lambda self, timeout: (
-    f"Sandbox {self.id} failed to become stopped within the {timeout} seconds timeout period"
+    f"Sandbox {cast('Sandbox', self).id} failed to become stopped within the {timeout} seconds timeout period"
 ))
-def wait_for_sandbox_stop(timeout: Optional[float] = 60) -> None
+def wait_for_sandbox_stop(timeout: float | None = 60) -> None
 ```
 
 Waits for the Sandbox to reach the 'stopped' state. Polls the Sandbox status until it
@@ -12240,7 +25088,7 @@ Treats destroyed as stopped to cover ephemeral sandboxes that are automatically 
 
 **Arguments**:
 
-- `timeout` _Optional[float]_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
+- `timeout` _float | None_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
   
 
 **Raises**:
@@ -12370,6 +25218,42 @@ print(f"Preview URL: {preview_link.url}")
 print(f"Token: {preview_link.token}")
 ```
 
+#### Sandbox.create\_signed\_preview\_url
+
+```python
+@intercept_errors(message_prefix="Failed to create signed preview url: ")
+def create_signed_preview_url(
+        port: int,
+        expires_in_seconds: int | None = None) -> SignedPortPreviewUrl
+```
+
+Creates a signed preview URL for the sandbox at the specified port.
+
+**Arguments**:
+
+- `port` _int_ - The port to open the preview link on.
+- `expires_in_seconds` _int | None_ - The number of seconds the signed preview
+  url will be valid for. Defaults to 60 seconds.
+  
+
+**Returns**:
+
+- `SignedPortPreviewUrl` - The response object for the signed preview url.
+
+#### Sandbox.expire\_signed\_preview\_url
+
+```python
+@intercept_errors(message_prefix="Failed to expire signed preview url: ")
+def expire_signed_preview_url(port: int, token: str) -> None
+```
+
+Expires a signed preview URL for the sandbox at the specified port.
+
+**Arguments**:
+
+- `port` _int_ - The port to expire the signed preview url on.
+- `token` _str_ - The token to expire the signed preview url on.
+
 #### Sandbox.archive
 
 ```python
@@ -12383,19 +25267,86 @@ possible to keep sandboxes available for an extended period. The tradeoff betwee
 and stopped states is that starting an archived sandbox takes more time, depending on its size.
 Sandbox must be stopped before archiving.
 
+#### Sandbox.resize
+
+```python
+@intercept_errors(message_prefix="Failed to resize sandbox: ")
+@with_timeout(error_message=lambda self, timeout: (
+    f"Sandbox {cast('Sandbox', self).id} failed to resize within the {timeout} seconds timeout period"
+))
+def resize(resources: Resources, timeout: float | None = 60) -> None
+```
+
+Resizes the Sandbox resources.
+
+Changes the CPU, memory, or disk allocation for the Sandbox. Hot resize (on running
+sandbox) only allows CPU/memory increases. Disk resize requires a stopped sandbox.
+
+**Arguments**:
+
+- `resources` _Resources_ - New resource configuration. Only specified fields will be updated.
+  - cpu: Number of CPU cores (minimum: 1). For hot resize, can only be increased.
+  - memory: Memory in GiB (minimum: 1). For hot resize, can only be increased.
+  - disk: Disk space in GiB (can only be increased, requires stopped sandbox).
+- `timeout` _Optional[float]_ - Timeout (in seconds) for the resize operation. 0 means no timeout.
+  Default is 60 seconds.
+  
+
+**Raises**:
+
+- `DaytonaError` - If hot resize constraints are violated (CPU/memory decrease on running sandbox).
+- `DaytonaError` - If disk resize attempted on running sandbox.
+- `DaytonaError` - If disk size decrease is attempted.
+- `DaytonaError` - If resize operation times out.
+- `DaytonaError` - If no resource changes are specified.
+  
+
+**Example**:
+
+```python
+# Increase CPU/memory on running sandbox (hot resize)
+sandbox.resize(Resources(cpu=4, memory=8))
+
+# Change disk (sandbox must be stopped)
+sandbox.stop()
+sandbox.resize(Resources(cpu=2, memory=4, disk=30))
+```
+
+#### Sandbox.wait\_for\_resize\_complete
+
+```python
+@intercept_errors(
+    message_prefix="Failure during waiting for resize to complete: ")
+@with_timeout(error_message=lambda self, timeout: (
+    f"Sandbox {cast('Sandbox', self).id} resize did not complete within the {timeout} seconds timeout period"
+))
+def wait_for_resize_complete(timeout: float | None = 60) -> None
+```
+
+Waits for the Sandbox resize operation to complete. Polls the Sandbox status until
+the state is no longer 'resizing'.
+
+**Arguments**:
+
+- `timeout` _Optional[float]_ - Maximum time to wait in seconds. 0 means no timeout. Default is 60 seconds.
+  
+
+**Raises**:
+
+- `DaytonaError` - If timeout is negative. If resize operation times out.
+
 #### Sandbox.create\_ssh\_access
 
 ```python
 @intercept_errors(message_prefix="Failed to create SSH access: ")
-def create_ssh_access(
-        expires_in_minutes: Optional[int] = None) -> SshAccessDto
+def create_ssh_access(expires_in_minutes: int | None = None) -> SshAccessDto
 ```
 
 Creates an SSH access token for the sandbox.
 
 **Arguments**:
 
-- `expires_in_minutes` _Optional[int]_ - The number of minutes the SSH access token will be valid for.
+- `expires_in_minutes` _int | None_ - The number of minutes the SSH access token will be valid for.
 
 #### Sandbox.revoke\_ssh\_access
 
@@ -12423,6 +25374,24 @@ Validates an SSH access token for the sandbox.
 
 - `token` _str_ - The token to validate.
 
+#### Sandbox.refresh\_activity
+
+```python
+@intercept_errors(message_prefix="Failed to refresh sandbox activity: ")
+def refresh_activity() -> None
+```
+
+Refreshes the sandbox activity to reset the timer for automated lifecycle management actions.
+
+This method updates the sandbox's last activity timestamp without changing its state.
+It is useful for keeping long-running sessions alive while there is still user activity.
+
+**Example**:
+
+```python
+sandbox.refresh_activity()
+```
+
 
 ## PaginatedSandboxes
 
@@ -12434,10 +25403,18 @@ Represents a paginated list of Daytona Sandboxes.
 
 **Attributes**:
 
-- `items` _List[Sandbox]_ - List of Sandbox instances in the current page.
+- `items` _list[Sandbox]_ - List of Sandbox instances in the current page.
 - `total` _int_ - Total number of Sandboxes across all pages.
 - `page` _int_ - Current page number.
 - `total_pages` _int_ - Total number of pages available.
+
+##### items: `list[Sandbox]`
+
+```python
+items = None
+```
+
+pyright: ignore[reportIncompatibleVariableOverride]
 
 ## Resources
 
@@ -12450,10 +25427,10 @@ Resources configuration for Sandbox.
 
 **Attributes**:
 
-- `cpu` _Optional[int]_ - Number of CPU cores to allocate.
-- `memory` _Optional[int]_ - Amount of memory in GiB to allocate.
-- `disk` _Optional[int]_ - Amount of disk space in GiB to allocate.
-- `gpu` _Optional[int]_ - Number of GPUs to allocate.
+- `cpu` _int | None_ - Number of CPU cores to allocate.
+- `memory` _int | None_ - Amount of memory in GiB to allocate.
+- `disk` _int | None_ - Amount of disk space in GiB to allocate.
+- `gpu` _int | None_ - Number of GPUs to allocate.
   
 
 **Example**:
@@ -12475,29 +25452,29 @@ params = CreateSandboxFromImageParams(
 ## Snapshot
 
 ```python
-class Snapshot(SnapshotDto)
+class Snapshot(SyncSnapshotDto)
 ```
 
 Represents a Daytona Snapshot which is a pre-configured sandbox.
 
 **Attributes**:
 
-- `id` _StrictStr_ - Unique identifier for the Snapshot.
-- `organization_id` _Optional[StrictStr]_ - Organization ID of the Snapshot.
-- `general` _Optional[bool]_ - Whether the Snapshot is general.
-- `name` _StrictStr_ - Name of the Snapshot.
-- `image_name` _StrictStr_ - Name of the Image of the Snapshot.
-- `state` _StrictStr_ - State of the Snapshot.
-- `size` _Optional[Union[StrictFloat, StrictInt]]_ - Size of the Snapshot.
-- `entrypoint` _Optional[List[str]]_ - Entrypoint of the Snapshot.
-- `cpu` _Union[StrictFloat, StrictInt]_ - CPU of the Snapshot.
-- `gpu` _Union[StrictFloat, StrictInt]_ - GPU of the Snapshot.
-- `mem` _Union[StrictFloat, StrictInt]_ - Memory of the Snapshot in GiB.
-- `disk` _Union[StrictFloat, StrictInt]_ - Disk of the Snapshot in GiB.
-- `error_reason` _Optional[StrictStr]_ - Error reason of the Snapshot.
-- `created_at` _StrictStr_ - Timestamp when the Snapshot was created.
-- `updated_at` _StrictStr_ - Timestamp when the Snapshot was last updated.
-- `last_used_at` _StrictStr_ - Timestamp when the Snapshot was last used.
+- `id` _str_ - Unique identifier for the Snapshot.
+- `organization_id` _str | None_ - Organization ID of the Snapshot.
+- `general` _bool_ - Whether the Snapshot is general.
+- `name` _str_ - Name of the Snapshot.
+- `image_name` _str_ - Name of the Image of the Snapshot.
+- `state` _str_ - State of the Snapshot.
+- `size` _float | int | None_ - Size of the Snapshot.
+- `entrypoint` _list[str] | None_ - Entrypoint of the Snapshot.
+- `cpu` _float | int_ - CPU of the Snapshot.
+- `gpu` _float | int_ - GPU of the Snapshot.
+- `mem` _float | int_ - Memory of the Snapshot in GiB.
+- `disk` _float | int_ - Disk of the Snapshot in GiB.
+- `error_reason` _str | None_ - Error reason of the Snapshot.
+- `created_at` _str_ - Timestamp when the Snapshot was created.
+- `updated_at` _str_ - Timestamp when the Snapshot was last updated.
+- `last_used_at` _str_ - Timestamp when the Snapshot was last used.
 
 
 ## SnapshotService
@@ -12512,16 +25489,16 @@ Service for managing Daytona Snapshots. Can be used to list, get, create and del
 
 ```python
 @intercept_errors(message_prefix="Failed to list snapshots: ")
-def list(page: Optional[int] = None,
-         limit: Optional[int] = None) -> PaginatedSnapshots
+def list(page: int | None = None,
+         limit: int | None = None) -> PaginatedSnapshots
 ```
 
 Returns paginated list of Snapshots.
 
 **Arguments**:
 
-- `page` _Optional[int]_ - Page number for pagination (starting from 1).
-- `limit` _Optional[int]_ - Maximum number of items per page.
+- `page` _int | None_ - Page number for pagination (starting from 1).
+- `limit` _int | None_ - Maximum number of items per page.
   
 
 **Returns**:
@@ -12596,8 +25573,8 @@ print(f"{snapshot.name} ({snapshot.image_name})")
     f"Failed to create snapshot within {timeout} seconds timeout period."))
 def create(params: CreateSnapshotParams,
            *,
-           on_logs: Callable[[str], None] = None,
-           timeout: Optional[float] = 0) -> Snapshot
+           on_logs: Callable[[str], None] | None = None,
+           timeout: float | None = 0) -> Snapshot
 ```
 
 Creates and registers a new snapshot from the given Image definition.
@@ -12606,7 +25583,7 @@ Creates and registers a new snapshot from the given Image definition.
 
 - `params` _CreateSnapshotParams_ - Parameters for snapshot creation.
 - `on_logs` _Callable[[str], None]_ - This callback function handles snapshot creation logs.
-- `timeout` _Optional[float]_ - Default is no timeout. Timeout in seconds (0 means no timeout).
+- `timeout` _float | None_ - Default is no timeout. Timeout in seconds (0 means no timeout).
 
 **Example**:
 
@@ -12639,7 +25616,7 @@ Activate a snapshot.
 ```python
 @staticmethod
 def process_image_context(object_storage_api: ObjectStorageApi,
-                          image: Image) -> List[str]
+                          image: Image) -> list[str]
 ```
 
 Processes the image context by uploading it to object storage.
@@ -12650,7 +25627,7 @@ Processes the image context by uploading it to object storage.
 
 **Returns**:
 
-- `List[str]` - List of context hashes stored in object storage.
+- `list[str]` - List of context hashes stored in object storage.
 
 ## PaginatedSnapshots
 
@@ -12662,7 +25639,7 @@ Represents a paginated list of Daytona Snapshots.
 
 **Attributes**:
 
-- `items` _List[Snapshot]_ - List of Snapshot instances in the current page.
+- `items` _list[Snapshot]_ - List of Snapshot instances in the current page.
 - `total` _int_ - Total number of Snapshots across all pages.
 - `page` _int_ - Current page number.
 - `total_pages` _int_ - Total number of pages available.
@@ -12677,12 +25654,14 @@ Parameters for creating a new snapshot.
 
 **Attributes**:
 
-- `name` _Optional[str]_ - Name of the snapshot.
-- `image` _Union[str, Image]_ - Image of the snapshot. If a string is provided,
+- `name` _str_ - Name of the snapshot.
+- `image` _str | Image_ - Image of the snapshot. If a string is provided,
   it should be available on some registry. If an Image instance is provided,
   it will be used to create a new image in Daytona.
-- `resources` _Optional[Resources]_ - Resources of the snapshot.
-- `entrypoint` _Optional[List[str]]_ - Entrypoint of the snapshot.
+- `resources` _Resources | None_ - Resources of the snapshot.
+- `entrypoint` _list[str] | None_ - Entrypoint of the snapshot.
+- `region_id` _str | None_ - ID of the region where the snapshot will be available.
+  Defaults to organization default region if not specified.
 
 ## Volume
 
@@ -12694,13 +25673,13 @@ Represents a Daytona Volume which is a shared storage volume for Sandboxes.
 
 **Attributes**:
 
-- `id` _StrictStr_ - Unique identifier for the Volume.
-- `name` _StrictStr_ - Name of the Volume.
-- `organization_id` _StrictStr_ - Organization ID of the Volume.
-- `state` _StrictStr_ - State of the Volume.
-- `created_at` _StrictStr_ - Date and time when the Volume was created.
-- `updated_at` _StrictStr_ - Date and time when the Volume was last updated.
-- `last_used_at` _StrictStr_ - Date and time when the Volume was last used.
+- `id` _str_ - Unique identifier for the Volume.
+- `name` _str_ - Name of the Volume.
+- `organization_id` _str_ - Organization ID of the Volume.
+- `state` _str_ - State of the Volume.
+- `created_at` _str_ - Date and time when the Volume was created.
+- `updated_at` _str_ - Date and time when the Volume was last updated.
+- `last_used_at` _str_ - Date and time when the Volume was last used.
 
 
 ## VolumeService
@@ -12714,14 +25693,14 @@ Service for managing Daytona Volumes. Can be used to list, get, create and delet
 #### VolumeService.list
 
 ```python
-def list() -> List[Volume]
+def list() -> list[Volume]
 ```
 
 List all Volumes.
 
 **Returns**:
 
-- `List[Volume]` - List of all Volumes.
+- `list[Volume]` - List of all Volumes.
   
 
 **Example**:
@@ -12808,14 +25787,36 @@ daytona.volume.delete(volume)
 print("Volume deleted")
 ```
 
-The Daytona SDK can be configured to run in multiple geographic regions. The following regions are currently available:
+## VolumeMount
 
-| Region        | Target |
-| ------------- | ---- |
-| United States | `us` |
-| Europe        | `eu` |
+```python
+class VolumeMount(ApiVolumeMount, AsyncApiVolumeMount)
+```
 
-The region is specificed by setting the `target` parameter on initialization:
+Represents a Volume mount configuration for a Sandbox.
+
+**Attributes**:
+
+- `volume_id` _str_ - ID of the volume to mount.
+- `mount_path` _str_ - Path where the volume will be mounted in the sandbox.
+- `subpath` _str | None_ - Optional S3 subpath/prefix within the volume to mount.
+  When specified, only this prefix will be accessible. When omitted,
+  the entire volume is mounted.
+
+Sandboxes are isolated runtime environments that run on **runners** — machines that form Daytona's compute plane.
+
+Runners are organized into **regions**, which are geographic or logical groupings of compute infrastructure. When creating a sandbox, you can target a specific region, and Daytona will schedule your workload on an available runner within that region.
+
+As a result, you’re able to:
+
+- Choose specific geographic locations for reduced latency
+- Comply with data residency requirements
+- Use your own runner machines for custom regions
+- Scale compute resources independently within each custom region
+
+## Regions
+
+Regions are geographic or logical groupings of runners that execute sandbox workloads. The sandbox region is specified by setting the `target` parameter on initialization:
 
 ```python
 from daytona import Daytona, DaytonaConfig
@@ -12837,114 +25838,4332 @@ const daytona: Daytona = new Daytona({
 });
 ```
 
-For more information, see [Configuration](https://www.daytona.io/docs/configuration.md).
+### Shared Regions
 
-import Image from 'astro/components/Image.astro'
+Shared regions are managed by Daytona and available to all organizations. These regions provide immediate access to Daytona's infrastructure without any setup required.
 
-Sandboxes are isolated development environments managed by Daytona. This guide covers how to create, manage, and remove Sandboxes using the SDK.
-By default, Sandboxes auto-stop after 15 minutes of inactivity and use **1 vCPU**, **1GB RAM**, and **3GiB disk**.
+Limits are applied to your organization's default region. For access to a different shared region, please contact [sales@daytona.io](mailto:sales@daytona.io).
 
-## Sandbox Lifecycle
+| Region        | Target |
+| ------------- | ------ |
+| United States | `us`   |
+| Europe        | `eu`   |
 
-Throughout its lifecycle, a Daytona Sandbox can have several different states. The diagram below shows the states and possible transitions between them.
+### Dedicated Regions
 
-<Fragment set:html={sandboxDiagram} />
+Dedicated regions are managed by Daytona and provisioned exclusively for individual organizations. These regions deliver dedicated infrastructure with the operational simplicity of a managed service.
 
-By default, sandboxes auto-stop after `15 minutes` of inactivity and auto-archive after `7 days` of being stopped. To keep the Sandbox running indefinitely without interruption, set the auto-stop value to `0` during creation.
+Contact [sales@daytona.io](mailto:sales@daytona.io) to set up a dedicated region for your organization.
 
-## Creating Sandboxes
+### Custom Regions
 
-The Daytona SDK provides an option to create Sandboxes with default or custom configurations. You can specify the language, [Snapshot](https://www.daytona.io/docs/en/snapshots.md), resources, environment variables, and volumes for the Sandbox.
-Running Sandboxes utilize CPU, memory, and disk storage. Every resource is charged per second of usage.
+Custom regions are created and managed by your organization, allowing you to use your own runner machines and scale compute resources independently within each region. This provides maximum control over data locality, compliance, and infrastructure configuration.
 
-:::tip
-If you want to prolong the auto-stop interval, you can [set the auto-stop interval parameter](https://www.daytona.io/docs/en/sandbox-management.md#auto-stop-interval) when creating a Sandbox.
+Additionally, custom regions have no limits applied for concurrent resource usage, giving you full control over capacity and performance.
+
+:::caution
+Custom regions are currently an experimental feature and may change in future releases.
+To request access, please contact [support@daytona.io](mailto:support@daytona.io).
 :::
 
-### Basic Sandbox Creation
+#### Custom Region Configuration
 
-The Daytona SDK provides methods to create Sandboxes with default configurations, specific languages, custom names, or custom labels using Python and TypeScript.
+**name** (required)
+
+- A unique identifier for your region
+- Must contain only letters, numbers, underscores, periods, and hyphens
+- Used for targeting this region when creating a sandbox
+
+**proxyUrl** (optional)
+
+- The URL of the proxy service that routes traffic to sandboxes in this region
+- Required if the runner machines in this region are deployed in a private network
+
+**sshGatewayUrl** (optional)
+
+- The URL of the SSH gateway that handles SSH connections to sandboxes in this region
+- Required if the runner machines in this region are deployed in a private network
+
+**snapshotManagerUrl** (optional)
+
+- The URL of the snapshot manager that handles storage and retrieval of snapshots in this region
+- Required if the runner machines in this region are deployed in a private network
+
+#### Custom Region Credentials
+
+When you create a custom region, Daytona will provide credentials for any optional services you configure:
+
+- An API key that should be used by your proxy service to authenticate with Daytona
+- An API key that should be used by your SSH gateway service to authenticate with Daytona
+- Basic authentication credentials that Daytona uses to access your snapshot manager service
+
+:::note
+If needed, these credentials can always be regenerated, but you will need to redeploy the corresponding services with the updated credentials.
+:::
+
+## ComputerUse
+
+Initialize a new ComputerUse instance.
+
+### Constructors
+
+#### new ComputerUse()
+
+```ruby
+def initialize(sandbox_id:, toolbox_api:)
+
+```
+
+Initialize a new ComputerUse instance.
+
+**Parameters**:
+
+- `sandbox_id` _String_ - The ID of the sandbox
+- `toolbox_api` _DaytonaApiClient:ToolboxApi_ - API client for sandbox operations
+
+**Returns**:
+
+- `ComputerUse` - a new instance of ComputerUse
+
+### Methods
+
+#### sandbox_id()
+
+```ruby
+def sandbox_id()
+
+```
+
+**Returns**:
+
+- `String` - The ID of the sandbox
+
+#### toolbox_api()
+
+```ruby
+def toolbox_api()
+
+```
+
+**Returns**:
+
+- `DaytonaApiClient:ToolboxApi` - API client for sandbox operations
+
+#### mouse()
+
+```ruby
+def mouse()
+
+```
+
+**Returns**:
+
+- `Mouse` - Mouse operations interface
+
+#### keyboard()
+
+```ruby
+def keyboard()
+
+```
+
+**Returns**:
+
+- `Keyboard` - Keyboard operations interface
+
+#### screenshot()
+
+```ruby
+def screenshot()
+
+```
+
+**Returns**:
+
+- `Screenshot` - Screenshot operations interface
+
+#### display()
+
+```ruby
+def display()
+
+```
+
+**Returns**:
+
+- `Display` - Display operations interface
+
+#### start()
+
+```ruby
+def start()
+
+```
+
+Starts all computer use processes (Xvfb, xfce4, x11vnc, novnc).
+
+**Returns**:
+
+- `DaytonaApiClient:ComputerUseStartResponse` - Computer use start response
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - If the operation fails
+
+**Examples:**
+
+```ruby
+result = sandbox.computer_use.start
+puts "Computer use processes started: #{result.message}"
+
+```
+
+#### stop()
+
+```ruby
+def stop()
+
+```
+
+Stops all computer use processes.
+
+**Returns**:
+
+- `DaytonaApiClient:ComputerUseStopResponse` - Computer use stop response
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - If the operation fails
+
+**Examples:**
+
+```ruby
+result = sandbox.computer_use.stop
+puts "Computer use processes stopped: #{result.message}"
+
+```
+
+#### status()
+
+```ruby
+def status()
+
+```
+
+Gets the status of all computer use processes.
+
+**Returns**:
+
+- `DaytonaApiClient:ComputerUseStatusResponse` - Status information about all VNC desktop processes
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - If the operation fails
+
+**Examples:**
+
+```ruby
+response = sandbox.computer_use.get_status
+puts "Computer use status: #{response.status}"
+
+```
+
+#### get_process_status()
+
+```ruby
+def get_process_status(process_name:)
+
+```
+
+Gets the status of a specific VNC process.
+
+**Parameters**:
+
+- `process_name` _String_ - Name of the process to check
+
+**Returns**:
+
+- `DaytonaApiClient:ProcessStatusResponse` - Status information about the specific process
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - If the operation fails
+
+**Examples:**
+
+```ruby
+xvfb_status = sandbox.computer_use.get_process_status("xvfb")
+no_vnc_status = sandbox.computer_use.get_process_status("novnc")
+
+```
+
+#### restart_process()
+
+```ruby
+def restart_process(process_name:)
+
+```
+
+Restarts a specific VNC process.
+
+**Parameters**:
+
+- `process_name` _String_ - Name of the process to restart
+
+**Returns**:
+
+- `DaytonaApiClient:ProcessRestartResponse` - Process restart response
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - If the operation fails
+
+**Examples:**
+
+```ruby
+result = sandbox.computer_use.restart_process("xfce4")
+puts "XFCE4 process restarted: #{result.message}"
+
+```
+
+#### get_process_logs()
+
+```ruby
+def get_process_logs(process_name:)
+
+```
+
+Gets logs for a specific VNC process.
+
+**Parameters**:
+
+- `process_name` _String_ - Name of the process to get logs for
+
+**Returns**:
+
+- `DaytonaApiClient:ProcessLogsResponse` - Process logs
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - If the operation fails
+
+**Examples:**
+
+```ruby
+logs = sandbox.computer_use.get_process_logs("novnc")
+puts "NoVNC logs: #{logs}"
+
+```
+
+#### get_process_errors()
+
+```ruby
+def get_process_errors(process_name:)
+
+```
+
+Gets error logs for a specific VNC process.
+
+**Parameters**:
+
+- `process_name` _String_ - Name of the process to get error logs for
+
+**Returns**:
+
+- `DaytonaApiClient:ProcessErrorsResponse` - Process error logs
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - If the operation fails
+
+**Examples:**
+
+```ruby
+errors = sandbox.computer_use.get_process_errors("x11vnc")
+puts "X11VNC errors: #{errors}"
+
+```
+
+## Config
+
+Main class for a new Daytona::Config object.
+
+### Constructors
+
+#### new Config()
+
+```ruby
+def initialize(api_key:, jwt_token:, api_url:, organization_id:, target:)
+
+```
+
+Initializes a new Daytona::Config object.
+
+**Parameters**:
+
+- `api_key` _String, nil_ - Daytona API key. Defaults to ENV['DAYTONA_API_KEY'].
+- `jwt_token` _String, nil_ - Daytona JWT token. Defaults to ENV['DAYTONA_JWT_TOKEN'].
+- `api_url` _String, nil_ - Daytona API URL. Defaults to ENV['DAYTONA_API_URL'] or Daytona::Config::API_URL.
+- `organization_id` _String, nil_ - Daytona organization ID. Defaults to ENV['DAYTONA_ORGANIZATION_ID'].
+- `target` _String, nil_ - Daytona target. Defaults to ENV['DAYTONA_TARGET'].
+
+**Returns**:
+
+- `Config` - a new instance of Config
+
+### Methods
+
+#### api_key()
+
+```ruby
+def api_key()
+
+```
+
+API key for authentication with the Daytona API
+
+**Returns**:
+
+- `String, nil` - Daytona API key
+
+#### api_key=()
+
+```ruby
+def api_key=(value)
+
+```
+
+API key for authentication with the Daytona API
+
+**Returns**:
+
+- `String, nil` - Daytona API key
+
+#### jwt_token()
+
+```ruby
+def jwt_token()
+
+```
+
+JWT token for authentication with the Daytona API
+
+**Returns**:
+
+- `String, nil` - Daytona JWT token
+
+#### jwt_token=()
+
+```ruby
+def jwt_token=(value)
+
+```
+
+JWT token for authentication with the Daytona API
+
+**Returns**:
+
+- `String, nil` - Daytona JWT token
+
+#### api_url()
+
+```ruby
+def api_url()
+
+```
+
+URL of the Daytona API
+
+**Returns**:
+
+- `String, nil` - Daytona API URL
+
+#### api_url=()
+
+```ruby
+def api_url=(value)
+
+```
+
+URL of the Daytona API
+
+**Returns**:
+
+- `String, nil` - Daytona API URL
+
+#### organization_id()
+
+```ruby
+def organization_id()
+
+```
+
+Organization ID for authentication with the Daytona API
+
+**Returns**:
+
+- `String, nil` - Daytona API URL
+
+#### organization_id=()
+
+```ruby
+def organization_id=(value)
+
+```
+
+Organization ID for authentication with the Daytona API
+
+**Returns**:
+
+- `String, nil` - Daytona API URL
+
+#### target()
+
+```ruby
+def target()
+
+```
+
+Target environment for sandboxes
+
+**Returns**:
+
+- `String, nil` - Daytona target
+
+#### target=()
+
+```ruby
+def target=(value)
+
+```
+
+Target environment for sandboxes
+
+**Returns**:
+
+- `String, nil` - Daytona target
+
+## Daytona
+
+Daytona class for Daytona SDK.
+
+### Constructors
+
+#### new Daytona()
+
+```ruby
+def initialize(config)
+
+```
+
+**Parameters**:
+
+- `config` _Daytona:Config_ - Configuration options. Defaults to Daytona::Config.new
+
+**Returns**:
+
+- `Daytona` - a new instance of Daytona
+
+### Methods
+
+#### config()
+
+```ruby
+def config()
+
+```
+
+**Returns**:
+
+- `Daytona:Config`
+
+#### api_client()
+
+```ruby
+def api_client()
+
+```
+
+**Returns**:
+
+- `DaytonaApiClient`
+
+#### sandbox_api()
+
+```ruby
+def sandbox_api()
+
+```
+
+**Returns**:
+
+- `DaytonaApiClient:SandboxApi`
+
+#### volume()
+
+```ruby
+def volume()
+
+```
+
+**Returns**:
+
+- `Daytona:VolumeService`
+
+#### object_storage_api()
+
+```ruby
+def object_storage_api()
+
+```
+
+**Returns**:
+
+- `DaytonaApiClient:ObjectStorageApi`
+
+#### snapshots_api()
+
+```ruby
+def snapshots_api()
+
+```
+
+**Returns**:
+
+- `DaytonaApiClient:SnapshotsApi`
+
+#### snapshot()
+
+```ruby
+def snapshot()
+
+```
+
+**Returns**:
+
+- `Daytona:SnapshotService`
+
+#### create()
+
+```ruby
+def create(params, on_snapshot_create_logs:)
+
+```
+
+Creates a sandbox with the specified parameters
+
+**Parameters**:
+
+- `params` _Daytona:CreateSandboxFromSnapshotParams, Daytona:CreateSandboxFromImageParams, Nil_ - Sandbox creation parameters
+
+**Returns**:
+
+- `Daytona:Sandbox` - The created sandbox
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - If auto_stop_interval or auto_archive_interval is negative
+
+#### delete()
+
+```ruby
+def delete(sandbox)
+
+```
+
+Deletes a Sandbox.
+
+**Parameters**:
+
+- `sandbox` _Daytona:Sandbox_ -
+
+**Returns**:
+
+- `void`
+
+#### get()
+
+```ruby
+def get(id)
+
+```
+
+Gets a Sandbox by its ID.
+
+**Parameters**:
+
+- `id` _String_ -
+
+**Returns**:
+
+- `Daytona:Sandbox`
+
+#### find_one()
+
+```ruby
+def find_one(id:, labels:)
+
+```
+
+Finds a Sandbox by its ID or labels.
+
+**Parameters**:
+
+- `id` _String, Nil_ -
+- `labels` _Hash\<String, String\>_ -
+
+**Returns**:
+
+- `Daytona:Sandbox`
+
+**Raises**:
+
+- `Daytona:Sdk:Error` -
+
+#### list()
+
+```ruby
+def list(labels, page:, limit:)
+
+```
+
+Lists Sandboxes filtered by labels.
+
+**Parameters**:
+
+- `labels` _Hash\<String, String\>_ -
+- `page` _Integer, Nil_ -
+- `limit` _Integer, Nil_ -
+
+**Returns**:
+
+- `Daytona:PaginatedResource`
+
+**Raises**:
+
+- `Daytona:Sdk:Error` -
+
+#### start()
+
+```ruby
+def start(sandbox, timeout)
+
+```
+
+Starts a Sandbox and waits for it to be ready.
+
+**Parameters**:
+
+- `sandbox` _Daytona:Sandbox_ -
+- `timeout` _Numeric_ - Maximum wait time in seconds (defaults to 60 s).
+
+**Returns**:
+
+- `void`
+
+#### stop()
+
+```ruby
+def stop(sandbox, timeout)
+
+```
+
+Stops a Sandbox and waits for it to be stopped.
+
+**Parameters**:
+
+- `sandbox` _Daytona:Sandbox_ -
+- `timeout` _Numeric_ - Maximum wait time in seconds (defaults to 60 s).
+
+**Returns**:
+
+- `void`
+
+## FileSystem
+
+Main class for a new FileSystem instance.
+
+### Constructors
+
+#### new FileSystem()
+
+```ruby
+def initialize(sandbox_id:, toolbox_api:)
+
+```
+
+Initializes a new FileSystem instance.
+
+**Parameters**:
+
+- `sandbox_id` _String_ - The Sandbox ID
+- `toolbox_api` _DaytonaToolboxApiClient:FileSystemApi_ - API client for Sandbox operations
+
+**Returns**:
+
+- `FileSystem` - a new instance of FileSystem
+
+### Methods
+
+#### sandbox_id()
+
+```ruby
+def sandbox_id()
+
+```
+
+**Returns**:
+
+- `String` - The Sandbox ID
+
+#### toolbox_api()
+
+```ruby
+def toolbox_api()
+
+```
+
+**Returns**:
+
+- `DaytonaToolboxApiClient:FileSystemApi` - API client for Sandbox operations
+
+#### create_folder()
+
+```ruby
+def create_folder(path, mode)
+
+```
+
+Creates a new directory in the Sandbox at the specified path with the given
+permissions.
+
+**Parameters**:
+
+- `path` _String_ - Path where the folder should be created. Relative paths are resolved based
+on the sandbox working directory.
+- `mode` _String_ - Folder permissions in octal format (e.g., "755" for rwxr-xr-x).
+
+**Returns**:
+
+- `void`
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - If the operation fails
+
+**Examples:**
+
+```ruby
+# Create a directory with standard permissions
+sandbox.fs.create_folder("workspace/data", "755")
+
+# Create a private directory
+sandbox.fs.create_folder("workspace/secrets", "700")
+
+```
+
+#### delete_file()
+
+```ruby
+def delete_file(path, recursive:)
+
+```
+
+Deletes a file from the Sandbox.
+
+**Parameters**:
+
+- `path` _String_ - Path to the file to delete. Relative paths are resolved based on the sandbox working directory.
+- `recursive` _Boolean_ - If the file is a directory, this must be true to delete it.
+
+**Returns**:
+
+- `void`
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - If the operation fails
+
+**Examples:**
+
+```ruby
+# Delete a file
+sandbox.fs.delete_file("workspace/data/old_file.txt")
+
+# Delete a directory recursively
+sandbox.fs.delete_file("workspace/old_dir", recursive: true)
+
+```
+
+#### get_file_info()
+
+```ruby
+def get_file_info(path)
+
+```
+
+Gets detailed information about a file or directory, including its
+size, permissions, and timestamps.
+
+**Parameters**:
+
+- `path` _String_ - Path to the file or directory. Relative paths are resolved based
+on the sandbox working directory.
+
+**Returns**:
+
+- `DaytonaApiClient:FileInfo` - Detailed file information
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - If the operation fails
+
+**Examples:**
+
+```ruby
+# Get file metadata
+info = sandbox.fs.get_file_info("workspace/data/file.txt")
+puts "Size: #{info.size} bytes"
+puts "Modified: #{info.mod_time}"
+puts "Mode: #{info.mode}"
+
+# Check if path is a directory
+info = sandbox.fs.get_file_info("workspace/data")
+puts "Path is a directory" if info.is_dir
+
+```
+
+#### list_files()
+
+```ruby
+def list_files(path)
+
+```
+
+Lists files and directories in a given path and returns their information, similar to the ls -l command.
+
+**Parameters**:
+
+- `path` _String_ - Path to the directory to list contents from. Relative paths are resolved
+based on the sandbox working directory.
+
+**Returns**:
+
+- `Array\<DaytonaApiClient:FileInfo\>` - List of file and directory information
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - If the operation fails
+
+**Examples:**
+
+```ruby
+# List directory contents
+files = sandbox.fs.list_files("workspace/data")
+
+# Print files and their sizes
+files.each do |file|
+  puts "#{file.name}: #{file.size} bytes" unless file.is_dir
+end
+
+# List only directories
+dirs = files.select(&:is_dir)
+puts "Subdirectories: #{dirs.map(&:name).join(', ')}"
+
+```
+
+#### download_file()
+
+```ruby
+def download_file(remote_path, local_path)
+
+```
+
+Downloads a file from the Sandbox. Returns the file contents as a string.
+This method is useful when you want to load the file into memory without saving it to disk.
+It can only be used for smaller files.
+
+**Parameters**:
+
+- `remote_path` _String_ - Path to the file in the Sandbox. Relative paths are resolved based
+on the sandbox working directory.
+- `local_path` _String, nil_ - Optional path to save the file locally. If provided, the file will be saved to disk.
+
+**Returns**:
+
+- `File, nil` - The file if local_path is nil, otherwise nil
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - If the operation fails
+
+**Examples:**
+
+```ruby
+# Download and get file content
+content = sandbox.fs.download_file("workspace/data/file.txt")
+puts content
+
+# Download and save a file locally
+sandbox.fs.download_file("workspace/data/file.txt", "local_copy.txt")
+size_mb = File.size("local_copy.txt") / 1024.0 / 1024.0
+puts "Size of the downloaded file: #{size_mb} MB"
+
+```
+
+#### upload_file()
+
+```ruby
+def upload_file(source, remote_path)
+
+```
+
+Uploads a file to the specified path in the Sandbox. If a file already exists at
+the destination path, it will be overwritten.
+
+**Parameters**:
+
+- `source` _String, IO_ - File contents as a string/bytes or a local file path or IO object.
+- `remote_path` _String_ - Path to the destination file. Relative paths are resolved based on
+the sandbox working directory.
+
+**Returns**:
+
+- `void`
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - If the operation fails
+
+**Examples:**
+
+```ruby
+# Upload a text file from string content
+content = "Hello, World!"
+sandbox.fs.upload_file(content, "tmp/hello.txt")
+
+# Upload a local file
+sandbox.fs.upload_file("local_file.txt", "tmp/file.txt")
+
+# Upload binary data
+data = { key: "value" }.to_json
+sandbox.fs.upload_file(data, "tmp/config.json")
+
+```
+
+#### upload_files()
+
+```ruby
+def upload_files(files)
+
+```
+
+Uploads multiple files to the Sandbox. If files already exist at the destination paths,
+they will be overwritten.
+
+**Parameters**:
+
+- `files` _Array\<FileUpload\>_ - List of files to upload.
+
+**Returns**:
+
+- `void`
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - If the operation fails
+
+**Examples:**
+
+```ruby
+# Upload multiple files
+files = [
+  FileUpload.new("Content of file 1", "/tmp/file1.txt"),
+  FileUpload.new("workspace/data/file2.txt", "/tmp/file2.txt"),
+  FileUpload.new('{"key": "value"}', "/tmp/config.json")
+]
+sandbox.fs.upload_files(files)
+
+```
+
+#### find_files()
+
+```ruby
+def find_files(path, pattern)
+
+```
+
+Searches for files containing a pattern, similar to the grep command.
+
+**Parameters**:
+
+- `path` _String_ - Path to the file or directory to search. If the path is a directory,
+the search will be performed recursively. Relative paths are resolved based
+on the sandbox working directory.
+- `pattern` _String_ - Search pattern to match against file contents.
+
+**Returns**:
+
+- `Array\<DaytonaApiClient:Match\>` - List of matches found in files
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - If the operation fails
+
+**Examples:**
+
+```ruby
+# Search for TODOs in Ruby files
+matches = sandbox.fs.find_files("workspace/src", "TODO:")
+matches.each do |match|
+  puts "#{match.file}:#{match.line}: #{match.content.strip}"
+end
+
+```
+
+#### search_files()
+
+```ruby
+def search_files(path, pattern)
+
+```
+
+Searches for files and directories whose names match the specified pattern.
+The pattern can be a simple string or a glob pattern.
+
+**Parameters**:
+
+- `path` _String_ - Path to the root directory to start search from. Relative paths are resolved
+based on the sandbox working directory.
+- `pattern` _String_ - Pattern to match against file names. Supports glob
+patterns (e.g., "*.rb" for Ruby files).
+
+**Returns**:
+
+- `DaytonaApiClient:SearchFilesResponse`
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - If the operation fails
+
+**Examples:**
+
+```ruby
+# Find all Ruby files
+result = sandbox.fs.search_files("workspace", "*.rb")
+result.files.each { |file| puts file }
+
+# Find files with specific prefix
+result = sandbox.fs.search_files("workspace/data", "test_*")
+puts "Found #{result.files.length} test files"
+
+```
+
+#### move_files()
+
+```ruby
+def move_files(source, destination)
+
+```
+
+Moves or renames a file or directory. The parent directory of the destination must exist.
+
+**Parameters**:
+
+- `source` _String_ - Path to the source file or directory. Relative paths are resolved
+based on the sandbox working directory.
+- `destination` _String_ - Path to the destination. Relative paths are resolved based on
+the sandbox working directory.
+
+**Returns**:
+
+- `void`
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - If the operation fails
+
+**Examples:**
+
+```ruby
+# Rename a file
+sandbox.fs.move_files(
+  "workspace/data/old_name.txt",
+  "workspace/data/new_name.txt"
+)
+
+# Move a file to a different directory
+sandbox.fs.move_files(
+  "workspace/data/file.txt",
+  "workspace/archive/file.txt"
+)
+
+# Move a directory
+sandbox.fs.move_files(
+  "workspace/old_dir",
+  "workspace/new_dir"
+)
+
+```
+
+#### replace_in_files()
+
+```ruby
+def replace_in_files(files:, pattern:, new_value:)
+
+```
+
+Performs search and replace operations across multiple files.
+
+**Parameters**:
+
+- `files` _Array\<String\>_ - List of file paths to perform replacements in. Relative paths are
+resolved based on the sandbox working directory.
+- `pattern` _String_ - Pattern to search for.
+- `new_value` _String_ - Text to replace matches with.
+
+**Returns**:
+
+- `Array\<DaytonaApiClient:ReplaceResult\>` - List of results indicating replacements made in each file
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - If the operation fails
+
+**Examples:**
+
+```ruby
+# Replace in specific files
+results = sandbox.fs.replace_in_files(
+  files: ["workspace/src/file1.rb", "workspace/src/file2.rb"],
+  pattern: "old_function",
+  new_value: "new_function"
+)
+
+# Print results
+results.each do |result|
+  if result.success
+    puts "#{result.file}: #{result.success}"
+  else
+    puts "#{result.file}: #{result.error}"
+  end
+end
+
+```
+
+#### set_file_permissions()
+
+```ruby
+def set_file_permissions(path:, mode:, owner:, group:)
+
+```
+
+Sets permissions and ownership for a file or directory. Any of the parameters can be nil
+to leave that attribute unchanged.
+
+**Parameters**:
+
+- `path` _String_ - Path to the file or directory. Relative paths are resolved based on
+the sandbox working directory.
+- `mode` _String, nil_ - File mode/permissions in octal format (e.g., "644" for rw-r--r--).
+- `owner` _String, nil_ - User owner of the file.
+- `group` _String, nil_ - Group owner of the file.
+
+**Returns**:
+
+- `void`
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - If the operation fails
+
+**Examples:**
+
+```ruby
+# Make a file executable
+sandbox.fs.set_file_permissions(
+  path: "workspace/scripts/run.sh",
+  mode: "755"  # rwxr-xr-x
+)
+
+# Change file owner
+sandbox.fs.set_file_permissions(
+  path: "workspace/data/file.txt",
+  owner: "daytona",
+  group: "daytona"
+)
+
+```
+
+## Git
+
+Main class for a new Git handler instance.
+
+### Constructors
+
+#### new Git()
+
+```ruby
+def initialize(sandbox_id:, toolbox_api:)
+
+```
+
+Initializes a new Git handler instance.
+
+**Parameters**:
+
+- `sandbox_id` _String_ - The Sandbox ID.
+- `toolbox_api` _DaytonaToolboxApiClient:GitApi_ - API client for Sandbox operations.
+
+**Returns**:
+
+- `Git` - a new instance of Git
+
+### Methods
+
+#### sandbox_id()
+
+```ruby
+def sandbox_id()
+
+```
+
+**Returns**:
+
+- `String` - The Sandbox ID
+
+#### toolbox_api()
+
+```ruby
+def toolbox_api()
+
+```
+
+**Returns**:
+
+- `DaytonaToolboxApiClient:GitApi` - API client for Sandbox operations
+
+#### add()
+
+```ruby
+def add(path, files)
+
+```
+
+Stages the specified files for the next commit, similar to
+running 'git add' on the command line.
+
+**Parameters**:
+
+- `path` _String_ - Path to the Git repository root. Relative paths are resolved based on
+the sandbox working directory.
+- `files` _Array\<String\>_ - List of file paths or directories to stage, relative to the repository root.
+
+**Returns**:
+
+- `void`
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - if adding files fails
+
+**Examples:**
+
+```ruby
+# Stage a single file
+sandbox.git.add("workspace/repo", ["file.txt"])
+
+# Stage multiple files
+sandbox.git.add("workspace/repo", [
+  "src/main.rb",
+  "spec/main_spec.rb",
+  "README.md"
+])
+
+```
+
+#### branches()
+
+```ruby
+def branches(path)
+
+```
+
+Lists branches in the repository.
+
+**Parameters**:
+
+- `path` _String_ - Path to the Git repository root. Relative paths are resolved based on
+the sandbox working directory.
+
+**Returns**:
+
+- `DaytonaApiClient:ListBranchResponse` - List of branches in the repository.
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - if listing branches fails
+
+**Examples:**
+
+```ruby
+response = sandbox.git.branches("workspace/repo")
+puts "Branches: #{response.branches}"
+
+```
+
+#### clone()
+
+```ruby
+def clone(url:, path:, branch:, commit_id:, username:, password:)
+
+```
+
+Clones a Git repository into the specified path. It supports
+cloning specific branches or commits, and can authenticate with the remote
+repository if credentials are provided.
+
+**Parameters**:
+
+- `url` _String_ - Repository URL to clone from.
+- `path` _String_ - Path where the repository should be cloned. Relative paths are resolved
+based on the sandbox working directory.
+- `branch` _String, nil_ - Specific branch to clone. If not specified,
+clones the default branch.
+- `commit_id` _String, nil_ - Specific commit to clone. If specified,
+the repository will be left in a detached HEAD state at this commit.
+- `username` _String, nil_ - Git username for authentication.
+- `password` _String, nil_ - Git password or token for authentication.
+
+**Returns**:
+
+- `void`
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - if cloning repository fails
+
+**Examples:**
+
+```ruby
+# Clone the default branch
+sandbox.git.clone(
+  url: "https://github.com/user/repo.git",
+  path: "workspace/repo"
+)
+
+# Clone a specific branch with authentication
+sandbox.git.clone(
+  url: "https://github.com/user/private-repo.git",
+  path: "workspace/private",
+  branch: "develop",
+  username: "user",
+  password: "token"
+)
+
+# Clone a specific commit
+sandbox.git.clone(
+  url: "https://github.com/user/repo.git",
+  path: "workspace/repo-old",
+  commit_id: "abc123"
+)
+
+```
+
+#### commit()
+
+```ruby
+def commit(path:, message:, author:, email:, allow_empty:)
+
+```
+
+Creates a new commit with the staged changes. Make sure to stage
+changes using the add() method before committing.
+
+**Parameters**:
+
+- `path` _String_ - Path to the Git repository root. Relative paths are resolved based on
+the sandbox working directory.
+- `message` _String_ - Commit message describing the changes.
+- `author` _String_ - Name of the commit author.
+- `email` _String_ - Email address of the commit author.
+- `allow_empty` _Boolean_ - Allow creating an empty commit when no changes are staged. Defaults to false.
+
+**Returns**:
+
+- `GitCommitResponse` - Response containing the commit SHA.
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - if committing changes fails
+
+**Examples:**
+
+```ruby
+# Stage and commit changes
+sandbox.git.add("workspace/repo", ["README.md"])
+commit_response = sandbox.git.commit(
+  path: "workspace/repo",
+  message: "Update documentation",
+  author: "John Doe",
+  email: "john@example.com",
+  allow_empty: true
+)
+puts "Commit SHA: #{commit_response.sha}"
+
+```
+
+#### push()
+
+```ruby
+def push(path:, username:, password:)
+
+```
+
+Pushes all local commits on the current branch to the remote
+repository. If the remote repository requires authentication, provide
+username and password/token.
+
+**Parameters**:
+
+- `path` _String_ - Path to the Git repository root. Relative paths are resolved based on
+the sandbox working directory.
+- `username` _String, nil_ - Git username for authentication.
+- `password` _String, nil_ - Git password or token for authentication.
+
+**Returns**:
+
+- `void`
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - if pushing changes fails
+
+**Examples:**
+
+```ruby
+# Push without authentication (for public repos or SSH)
+sandbox.git.push("workspace/repo")
+
+# Push with authentication
+sandbox.git.push(
+  path: "workspace/repo",
+  username: "user",
+  password: "github_token"
+)
+
+```
+
+#### pull()
+
+```ruby
+def pull(path:, username:, password:)
+
+```
+
+Pulls changes from the remote repository. If the remote repository requires authentication,
+provide username and password/token.
+
+**Parameters**:
+
+- `path` _String_ - Path to the Git repository root. Relative paths are resolved based on
+the sandbox working directory.
+- `username` _String, nil_ - Git username for authentication.
+- `password` _String, nil_ - Git password or token for authentication.
+
+**Returns**:
+
+- `void`
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - if pulling changes fails
+
+**Examples:**
+
+```ruby
+# Pull without authentication
+sandbox.git.pull("workspace/repo")
+
+# Pull with authentication
+sandbox.git.pull(
+  path: "workspace/repo",
+  username: "user",
+  password: "github_token"
+)
+
+```
+
+#### status()
+
+```ruby
+def status(path)
+
+```
+
+Gets the current Git repository status.
+
+**Parameters**:
+
+- `path` _String_ - Path to the Git repository root. Relative paths are resolved based on
+the sandbox working directory.
+
+**Returns**:
+
+- `DaytonaToolboxApiClient:GitStatus` - Repository status information including:
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - if getting status fails
+
+**Examples:**
+
+```ruby
+status = sandbox.git.status("workspace/repo")
+puts "On branch: #{status.current_branch}"
+puts "Commits ahead: #{status.ahead}"
+puts "Commits behind: #{status.behind}"
+
+```
+
+#### checkout_branch()
+
+```ruby
+def checkout_branch(path, branch)
+
+```
+
+Checkout branch in the repository.
+
+**Parameters**:
+
+- `path` _String_ - Path to the Git repository root. Relative paths are resolved based on
+the sandbox working directory.
+- `branch` _String_ - Name of the branch to checkout
+
+**Returns**:
+
+- `void`
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - if checking out branch fails
+
+**Examples:**
+
+```ruby
+# Checkout a branch
+sandbox.git.checkout_branch("workspace/repo", "feature-branch")
+
+```
+
+#### create_branch()
+
+```ruby
+def create_branch(path, name)
+
+```
+
+Create branch in the repository.
+
+**Parameters**:
+
+- `path` _String_ - Path to the Git repository root. Relative paths are resolved based on
+the sandbox working directory.
+- `name` _String_ - Name of the new branch to create
+
+**Returns**:
+
+- `void`
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - if creating branch fails
+
+**Examples:**
+
+```ruby
+# Create a new branch
+sandbox.git.create_branch("workspace/repo", "new-feature")
+
+```
+
+#### delete_branch()
+
+```ruby
+def delete_branch(path, name)
+
+```
+
+Delete branch in the repository.
+
+**Parameters**:
+
+- `path` _String_ - Path to the Git repository root. Relative paths are resolved based on
+the sandbox working directory.
+- `name` _String_ - Name of the branch to delete
+
+**Returns**:
+
+- `void`
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - if deleting branch fails
+
+**Examples:**
+
+```ruby
+# Delete a branch
+sandbox.git.delete_branch("workspace/repo", "old-feature")
+
+```
+
+## Image
+
+Represents an image definition for a Daytona sandbox.
+Do not construct this class directly. Instead use one of its static factory methods,
+such as `Image.base()`, `Image.debian_slim()`, or `Image.from_dockerfile()`.
+
+### Constructors
+
+#### new Image()
+
+```ruby
+def initialize(dockerfile:, context_list:)
+
+```
+
+**Parameters**:
+
+- `dockerfile` _String, nil_ - The Dockerfile content
+- `context_list` _Array\<Context\>_ - List of context files
+
+**Returns**:
+
+- `Image` - a new instance of Image
+
+### Methods
+
+#### dockerfile()
+
+```ruby
+def dockerfile()
+
+```
+
+**Returns**:
+
+- `String, nil` - The generated Dockerfile for the image
+
+#### context_list()
+
+```ruby
+def context_list()
+
+```
+
+**Returns**:
+
+- `Array\<Context\>` - List of context files for the image
+
+#### pip_install()
+
+```ruby
+def pip_install(*packages, find_links:, index_url:, extra_index_urls:, pre:, extra_options:)
+
+```
+
+Adds commands to install packages using pip
+
+**Parameters**:
+
+- `packages` _Array\<String\>_ - The packages to install
+- `find_links` _Array\<String\>, nil_ - The find-links to use
+- `index_url` _String, nil_ - The index URL to use
+- `extra_index_urls` _Array\<String\>, nil_ - The extra index URLs to use
+- `pre` _Boolean_ - Whether to install pre-release packages
+- `extra_options` _String_ - Additional options to pass to pip
+
+**Returns**:
+
+- `Image` - The image with the pip install commands added
+
+**Examples:**
+
+```ruby
+image = Image.debian_slim("3.12").pip_install("requests", "pandas")
+
+```
+
+#### pip_install_from_requirements()
+
+```ruby
+def pip_install_from_requirements(requirements_txt, find_links:, index_url:, extra_index_urls:, pre:, extra_options:)
+
+```
+
+Installs dependencies from a requirements.txt file
+
+**Parameters**:
+
+- `requirements_txt` _String_ - The path to the requirements.txt file
+- `find_links` _Array\<String\>, nil_ - The find-links to use
+- `index_url` _String, nil_ - The index URL to use
+- `extra_index_urls` _Array\<String\>, nil_ - The extra index URLs to use
+- `pre` _Boolean_ - Whether to install pre-release packages
+- `extra_options` _String_ - Additional options to pass to pip
+
+**Returns**:
+
+- `Image` - The image with the pip install commands added
+
+**Raises**:
+
+- `Sdk:Error` - If the requirements file does not exist
+
+**Examples:**
+
+```ruby
+image = Image.debian_slim("3.12").pip_install_from_requirements("requirements.txt")
+
+```
+
+#### pip_install_from_pyproject()
+
+```ruby
+def pip_install_from_pyproject(pyproject_toml, optional_dependencies:, find_links:, index_url:, extra_index_url:, pre:, extra_options:)
+
+```
+
+Installs dependencies from a pyproject.toml file
+
+**Parameters**:
+
+- `pyproject_toml` _String_ - The path to the pyproject.toml file
+- `optional_dependencies` _Array\<String\>_ - The optional dependencies to install
+- `find_links` _String, nil_ - The find-links to use
+- `index_url` _String, nil_ - The index URL to use
+- `extra_index_url` _String, nil_ - The extra index URL to use
+- `pre` _Boolean_ - Whether to install pre-release packages
+- `extra_options` _String_ - Additional options to pass to pip
+
+**Returns**:
+
+- `Image` - The image with the pip install commands added
+
+**Raises**:
+
+- `Sdk:Error` - If pyproject.toml parsing is not supported
+
+**Examples:**
+
+```ruby
+image = Image.debian_slim("3.12").pip_install_from_pyproject("pyproject.toml", optional_dependencies: ["dev"])
+
+```
+
+#### add_local_file()
+
+```ruby
+def add_local_file(local_path, remote_path)
+
+```
+
+Adds a local file to the image
+
+**Parameters**:
+
+- `local_path` _String_ - The path to the local file
+- `remote_path` _String_ - The path to the file in the image
+
+**Returns**:
+
+- `Image` - The image with the local file added
+
+**Examples:**
+
+```ruby
+image = Image.debian_slim("3.12").add_local_file("package.json", "/home/daytona/package.json")
+
+```
+
+#### add_local_dir()
+
+```ruby
+def add_local_dir(local_path, remote_path)
+
+```
+
+Adds a local directory to the image
+
+**Parameters**:
+
+- `local_path` _String_ - The path to the local directory
+- `remote_path` _String_ - The path to the directory in the image
+
+**Returns**:
+
+- `Image` - The image with the local directory added
+
+**Examples:**
+
+```ruby
+image = Image.debian_slim("3.12").add_local_dir("src", "/home/daytona/src")
+
+```
+
+#### run_commands()
+
+```ruby
+def run_commands(*commands)
+
+```
+
+Runs commands in the image
+
+**Parameters**:
+
+- `commands` _Array\<String\>_ - The commands to run
+
+**Returns**:
+
+- `Image` - The image with the commands added
+
+**Examples:**
+
+```ruby
+image = Image.debian_slim("3.12").run_commands('echo "Hello, world!"', 'echo "Hello again!"')
+
+```
+
+#### env()
+
+```ruby
+def env(env_vars)
+
+```
+
+Sets environment variables in the image
+
+**Parameters**:
+
+- `env_vars` _Hash\<String, String\>_ - The environment variables to set
+
+**Returns**:
+
+- `Image` - The image with the environment variables added
+
+**Raises**:
+
+- `Sdk:Error` -
+
+**Examples:**
+
+```ruby
+image = Image.debian_slim("3.12").env({"PROJECT_ROOT" => "/home/daytona"})
+
+```
+
+#### workdir()
+
+```ruby
+def workdir(path)
+
+```
+
+Sets the working directory in the image
+
+**Parameters**:
+
+- `path` _String_ - The path to the working directory
+
+**Returns**:
+
+- `Image` - The image with the working directory added
+
+**Examples:**
+
+```ruby
+image = Image.debian_slim("3.12").workdir("/home/daytona")
+
+```
+
+#### entrypoint()
+
+```ruby
+def entrypoint(entrypoint_commands)
+
+```
+
+Sets the entrypoint for the image
+
+**Parameters**:
+
+- `entrypoint_commands` _Array\<String\>_ - The commands to set as the entrypoint
+
+**Returns**:
+
+- `Image` - The image with the entrypoint added
+
+**Examples:**
+
+```ruby
+image = Image.debian_slim("3.12").entrypoint(["/bin/bash"])
+
+```
+
+#### cmd()
+
+```ruby
+def cmd(cmd)
+
+```
+
+Sets the default command for the image
+
+**Parameters**:
+
+- `cmd` _Array\<String\>_ - The commands to set as the default command
+
+**Returns**:
+
+- `Image` - The image with the default command added
+
+**Examples:**
+
+```ruby
+image = Image.debian_slim("3.12").cmd(["/bin/bash"])
+
+```
+
+#### dockerfile_commands()
+
+```ruby
+def dockerfile_commands(dockerfile_commands, context_dir:)
+
+```
+
+Adds arbitrary Dockerfile-like commands to the image
+
+**Parameters**:
+
+- `dockerfile_commands` _Array\<String\>_ - The commands to add to the Dockerfile
+- `context_dir` _String, nil_ - The path to the context directory
+
+**Returns**:
+
+- `Image` - The image with the Dockerfile commands added
+
+**Examples:**
+
+```ruby
+image = Image.debian_slim("3.12").dockerfile_commands(["RUN echo 'Hello, world!'"])
+
+```
+
+The Daytona Ruby SDK provides a robust interface for programmatically interacting with Daytona Sandboxes.
+
+## Installation
+
+Install the Daytona Ruby SDK using Bundler by adding it to your Gemfile:
+
+```ruby
+gem 'daytona'
+```
+
+Then run:
+
+```bash
+bundle install
+```
+
+Or install it directly:
+
+```bash
+gem install daytona
+```
+
+## Getting Started
+
+Here's a simple example to help you get started with the Daytona Ruby SDK:
+
+```ruby
+require 'daytona'
+
+# Initialize the SDK (uses environment variables by default)
+daytona = Daytona::Daytona.new
+
+# Create a new sandbox
+sandbox = daytona.create
+
+# Execute a command
+response = sandbox.process.exec(command: "echo 'Hello, World!'")
+puts response.result
+
+# Clean up
+daytona.delete(sandbox)
+```
+
+## Configuration
+
+The SDK can be configured using environment variables or by passing options to the constructor:
+
+```ruby
+require 'daytona'
+
+# Using environment variables (DAYTONA_API_KEY, DAYTONA_API_URL, DAYTONA_TARGET)
+daytona = Daytona::Daytona.new
+
+# Using explicit configuration
+config = Daytona::Config.new(
+  api_key: 'your-api-key',
+  api_url: 'https://app.daytona.io/api',
+  target: 'us'
+)
+daytona = Daytona::Daytona.new(config)
+```
+
+## Environment Variables
+
+The SDK supports the following environment variables:
+
+| Variable | Description |
+|----------|-------------|
+| `DAYTONA_API_KEY` | API key for authentication |
+| `DAYTONA_API_URL` | URL of the Daytona API (defaults to `https://app.daytona.io/api`) |
+| `DAYTONA_TARGET` | Target location for Sandboxes |
+| `DAYTONA_JWT_TOKEN` | JWT token for authentication (alternative to API key) |
+| `DAYTONA_ORGANIZATION_ID` | Organization ID (required when using JWT token) |
+
+## LspServer
+
+LspServer class for Daytona SDK.
+
+### Constructors
+
+#### new LspServer()
+
+```ruby
+def initialize(language_id:, path_to_project:, toolbox_api:, sandbox_id:)
+
+```
+
+**Parameters**:
+
+- `language_id` _Symbol_ -
+- `path_to_project` _String_ -
+- `toolbox_api` _DaytonaToolboxApiClient:LspApi_ -
+- `sandbox_id` _String_ -
+
+**Returns**:
+
+- `LspServer` - a new instance of LspServer
+
+### Methods
+
+#### language_id()
+
+```ruby
+def language_id()
+
+```
+
+**Returns**:
+
+- `Symbol`
+
+#### path_to_project()
+
+```ruby
+def path_to_project()
+
+```
+
+**Returns**:
+
+- `String`
+
+#### toolbox_api()
+
+```ruby
+def toolbox_api()
+
+```
+
+**Returns**:
+
+- `DaytonaToolboxApiClient:LspApi`
+
+#### sandbox_id()
+
+```ruby
+def sandbox_id()
+
+```
+
+**Returns**:
+
+- `String`
+
+#### completions()
+
+```ruby
+def completions(path:, position:)
+
+```
+
+Gets completion suggestions at a position in a file
+
+**Parameters**:
+
+- `path` _String_ -
+- `position` _Daytona:LspServer:Position_ -
+
+**Returns**:
+
+- `DaytonaApiClient:CompletionList`
+
+#### did_close()
+
+```ruby
+def did_close(path)
+
+```
+
+Notify the language server that a file has been closed.
+This method should be called when a file is closed in the editor to allow
+the language server to clean up any resources associated with that file.
+
+**Parameters**:
+
+- `path` _String_ -
+
+**Returns**:
+
+- `void`
+
+#### did_open()
+
+```ruby
+def did_open(path)
+
+```
+
+Notifies the language server that a file has been opened.
+This method should be called when a file is opened in the editor to enable
+language features like diagnostics and completions for that file. The server
+will begin tracking the file's contents and providing language features.
+
+**Parameters**:
+
+- `path` _String_ -
+
+**Returns**:
+
+- `void`
+
+#### document_symbols()
+
+```ruby
+def document_symbols(path)
+
+```
+
+Gets symbol information (functions, classes, variables, etc.) from a document.
+
+**Parameters**:
+
+- `path` _String_ -
+
+**Returns**:
+
+- `Array\<DaytonaToolboxApiClient:LspSymbol]`
+
+#### sandbox_symbols()
+
+```ruby
+def sandbox_symbols(query)
+
+```
+
+Searches for symbols matching the query string across all files
+in the Sandbox.
+
+**Parameters**:
+
+- `query` _String_ -
+
+**Returns**:
+
+- `Array\<DaytonaToolboxApiClient:LspSymbol]`
+
+#### start()
+
+```ruby
+def start()
+
+```
+
+Starts the language server.
+This method must be called before using any other LSP functionality.
+It initializes the language server for the specified language and project.
+
+**Returns**:
+
+- `void`
+
+#### stop()
+
+```ruby
+def stop()
+
+```
+
+Stops the language server.
+This method should be called when the LSP server is no longer needed to
+free up system resources.
+
+**Returns**:
+
+- `void`
+
+## ObjectStorage
+
+Initialize ObjectStorage with S3-compatible credentials
+
+### Constructors
+
+#### new ObjectStorage()
+
+```ruby
+def initialize(endpoint_url:, aws_access_key_id:, aws_secret_access_key:, aws_session_token:, bucket_name:, region:)
+
+```
+
+Initialize ObjectStorage with S3-compatible credentials
+
+**Parameters**:
+
+- `endpoint_url` _String_ - The endpoint URL for the object storage service
+- `aws_access_key_id` _String_ - The access key ID for the object storage service
+- `aws_secret_access_key` _String_ - The secret access key for the object storage service
+- `aws_session_token` _String_ - The session token for the object storage service
+- `bucket_name` _String_ - The name of the bucket to use (defaults to "daytona-volume-builds")
+- `region` _String_ - AWS region (defaults to us-east-1)
+
+**Returns**:
+
+- `ObjectStorage` - a new instance of ObjectStorage
+
+### Methods
+
+#### bucket_name()
+
+```ruby
+def bucket_name()
+
+```
+
+**Returns**:
+
+- `String` - The name of the S3 bucket used for object storage
+
+#### s3_client()
+
+```ruby
+def s3_client()
+
+```
+
+**Returns**:
+
+- `Aws:S3:Client` - The S3 client
+
+#### upload()
+
+```ruby
+def upload(path, organization_id, archive_base_path)
+
+```
+
+Uploads a file to the object storage service
+
+**Parameters**:
+
+- `path` _String_ - The path to the file to upload
+- `organization_id` _String_ - The organization ID to use
+- `archive_base_path` _String, nil_ - The base path to use for the archive
+
+**Returns**:
+
+- `String` - The hash of the uploaded file
+
+**Raises**:
+
+- `Errno:ENOENT` - If the path does not exist
+
+## Process
+
+Initialize a new Process instance
+
+### Constructors
+
+#### new Process()
+
+```ruby
+def initialize(code_toolbox:, sandbox_id:, toolbox_api:, get_preview_link:)
+
+```
+
+Initialize a new Process instance
+
+**Parameters**:
+
+- `code_toolbox` _Daytona:SandboxPythonCodeToolbox, Daytona:SandboxTsCodeToolbox_ -
+- `sandbox_id` _String_ - The ID of the Sandbox
+- `toolbox_api` _DaytonaToolboxApiClient:ProcessApi_ - API client for Sandbox operations
+- `get_preview_link` _Proc_ - Function to get preview link for a port
+
+**Returns**:
+
+- `Process` - a new instance of Process
+
+### Methods
+
+#### code_toolbox()
+
+```ruby
+def code_toolbox()
+
+```
+
+**Returns**:
+
+- `Daytona:SandboxPythonCodeToolbox, ` - Daytona::SandboxPythonCodeToolbox,
+
+#### sandbox_id()
+
+```ruby
+def sandbox_id()
+
+```
+
+**Returns**:
+
+- `String` - The ID of the Sandbox
+
+#### toolbox_api()
+
+```ruby
+def toolbox_api()
+
+```
+
+**Returns**:
+
+- `DaytonaToolboxApiClient:ProcessApi` - API client for Sandbox operations
+
+#### get_preview_link()
+
+```ruby
+def get_preview_link()
+
+```
+
+**Returns**:
+
+- `Proc` - Function to get preview link for a port
+
+#### exec()
+
+```ruby
+def exec(command:, cwd:, env:, timeout:)
+
+```
+
+Execute a shell command in the Sandbox
+
+**Parameters**:
+
+- `command` _String_ - Shell command to execute
+- `cwd` _String, nil_ - Working directory for command execution. If not specified, uses the sandbox working directory
+- `env` _Hash\<String, String\>, nil_ - Environment variables to set for the command
+- `timeout` _Integer, nil_ - Maximum time in seconds to wait for the command to complete. 0 means wait indefinitely
+
+**Returns**:
+
+- `ExecuteResponse` - Command execution results containing exit_code, result, and artifacts
+
+**Examples:**
+
+```ruby
+# Simple command
+response = sandbox.process.exec("echo 'Hello'")
+puts response.artifacts.stdout
+=> "Hello\n"
+
+# Command with working directory
+result = sandbox.process.exec("ls", cwd: "workspace/src")
+
+# Command with timeout
+result = sandbox.process.exec("sleep 10", timeout: 5)
+
+```
+
+#### code_run()
+
+```ruby
+def code_run(code:, params:, timeout:)
+
+```
+
+Execute code in the Sandbox using the appropriate language runtime
+
+**Parameters**:
+
+- `code` _String_ - Code to execute
+- `params` _CodeRunParams, nil_ - Parameters for code execution
+- `timeout` _Integer, nil_ - Maximum time in seconds to wait for the code to complete. 0 means wait indefinitely
+
+**Returns**:
+
+- `ExecuteResponse` - Code execution result containing exit_code, result, and artifacts
+
+**Examples:**
+
+```ruby
+# Run Python code
+response = sandbox.process.code_run(<<~CODE)
+  x = 10
+  y = 20
+  print(f"Sum: {x + y}")
+CODE
+puts response.artifacts.stdout  # Prints: Sum: 30
+
+```
+
+#### create_session()
+
+```ruby
+def create_session(session_id)
+
+```
+
+Creates a new long-running background session in the Sandbox
+
+Sessions are background processes that maintain state between commands, making them ideal for
+scenarios requiring multiple related commands or persistent environment setup.
+
+**Parameters**:
+
+- `session_id` _String_ - Unique identifier for the new session
+
+**Returns**:
+
+- `void`
+
+**Examples:**
+
+```ruby
+# Create a new session
+session_id = "my-session"
+sandbox.process.create_session(session_id)
+session = sandbox.process.get_session(session_id)
+# Do work...
+sandbox.process.delete_session(session_id)
+
+```
+
+#### get_session()
+
+```ruby
+def get_session(session_id)
+
+```
+
+Gets a session in the Sandbox
+
+**Parameters**:
+
+- `session_id` _String_ - Unique identifier of the session to retrieve
+
+**Returns**:
+
+- `DaytonaApiClient:Session` - Session information including session_id and commands
+
+**Examples:**
+
+```ruby
+session = sandbox.process.get_session("my-session")
+session.commands.each do |cmd|
+  puts "Command: #{cmd.command}"
+end
+
+```
+
+#### get_session_command()
+
+```ruby
+def get_session_command(session_id:, command_id:)
+
+```
+
+Gets information about a specific command executed in a session
+
+**Parameters**:
+
+- `session_id` _String_ - Unique identifier of the session
+- `command_id` _String_ - Unique identifier of the command
+
+**Returns**:
+
+- `DaytonaApiClient:Command` - Command information including id, command, and exit_code
+
+**Examples:**
+
+```ruby
+cmd = sandbox.process.get_session_command(session_id: "my-session", command_id: "cmd-123")
+if cmd.exit_code == 0
+  puts "Command #{cmd.command} completed successfully"
+end
+
+```
+
+#### execute_session_command()
+
+```ruby
+def execute_session_command(session_id:, req:)
+
+```
+
+Executes a command in the session
+
+**Parameters**:
+
+- `session_id` _String_ - Unique identifier of the session to use
+- `req` _Daytona:SessionExecuteRequest_ - Command execution request containing command and run_async
+
+**Returns**:
+
+- `Daytona:SessionExecuteResponse` - Command execution results containing cmd_id, output, stdout, stderr, and exit_code
+
+**Examples:**
+
+```ruby
+# Execute commands in sequence, maintaining state
+session_id = "my-session"
+
+# Change directory
+req = Daytona::SessionExecuteRequest.new(command: "cd /workspace")
+sandbox.process.execute_session_command(session_id:, req:)
+
+# Create a file
+req = Daytona::SessionExecuteRequest.new(command: "echo 'Hello' > test.txt")
+sandbox.process.execute_session_command(session_id:, req:)
+
+# Read the file
+req = Daytona::SessionExecuteRequest.new(command: "cat test.txt")
+result = sandbox.process.execute_session_command(session_id:, req:)
+puts "Command stdout: #{result.stdout}"
+puts "Command stderr: #{result.stderr}"
+
+```
+
+#### get_session_command_logs()
+
+```ruby
+def get_session_command_logs(session_id:, command_id:)
+
+```
+
+Get the logs for a command executed in a session
+
+**Parameters**:
+
+- `session_id` _String_ - Unique identifier of the session
+- `command_id` _String_ - Unique identifier of the command
+
+**Returns**:
+
+- `Daytona:SessionCommandLogsResponse` - Command logs including output, stdout, and stderr
+
+**Examples:**
+
+```ruby
+logs = sandbox.process.get_session_command_logs(session_id: "my-session", command_id: "cmd-123")
+puts "Command stdout: #{logs.stdout}"
+puts "Command stderr: #{logs.stderr}"
+
+```
+
+#### get_session_command_logs_async()
+
+```ruby
+def get_session_command_logs_async(session_id:, command_id:, on_stdout:, on_stderr:)
+
+```
+
+Asynchronously retrieves and processes the logs for a command executed in a session as they become available
+
+**Parameters**:
+
+- `session_id` _String_ - Unique identifier of the session
+- `command_id` _String_ - Unique identifier of the command
+- `on_stdout` _Proc_ - Callback function to handle stdout log chunks as they arrive
+- `on_stderr` _Proc_ - Callback function to handle stderr log chunks as they arrive
+
+**Returns**:
+
+- `WebSocket:Client:Simple:Client`
+
+**Examples:**
+
+```ruby
+sandbox.process.get_session_command_logs_async(
+  session_id: "my-session",
+  command_id: "cmd-123",
+  on_stdout: ->(log) { puts "[STDOUT]: #{log}" },
+  on_stderr: ->(log) { puts "[STDERR]: #{log}" }
+)
+
+```
+
+#### send_session_command_input()
+
+```ruby
+def send_session_command_input(session_id:, command_id:, data:)
+
+```
+
+Sends input data to a command executed in a session
+
+This method allows you to send input to an interactive command running in a session,
+such as responding to prompts or providing data to stdin.
+
+**Parameters**:
+
+- `session_id` _String_ - Unique identifier of the session
+- `command_id` _String_ - Unique identifier of the command
+- `data` _String_ - Input data to send to the command
+
+**Returns**:
+
+- `void`
+
+#### list_sessions()
+
+```ruby
+def list_sessions()
+
+```
+
+**Returns**:
+
+- `Array\<DaytonaApiClient:Session\>` - List of all sessions in the Sandbox
+
+**Examples:**
+
+```ruby
+sessions = sandbox.process.list_sessions
+sessions.each do |session|
+  puts "Session #{session.session_id}:"
+  puts "  Commands: #{session.commands.length}"
+end
+
+```
+
+#### delete_session()
+
+```ruby
+def delete_session(session_id)
+
+```
+
+Terminates and removes a session from the Sandbox, cleaning up any resources associated with it
+
+**Parameters**:
+
+- `session_id` _String_ - Unique identifier of the session to delete
+
+**Examples:**
+
+```ruby
+# Create and use a session
+sandbox.process.create_session("temp-session")
+# ... use the session ...
+
+# Clean up when done
+sandbox.process.delete_session("temp-session")
+
+```
+
+#### create_pty_session()
+
+```ruby
+def create_pty_session(id:, cwd:, envs:, pty_size:)
+
+```
+
+Creates a new PTY (pseudo-terminal) session in the Sandbox.
+
+Creates an interactive terminal session that can execute commands and handle user input.
+The PTY session behaves like a real terminal, supporting features like command history.
+
+**Parameters**:
+
+- `id` _String_ - Unique identifier for the PTY session. Must be unique within the Sandbox.
+- `cwd` _String, nil_ - Working directory for the PTY session. Defaults to the sandbox's working directory.
+- `envs` _Hash\<String, String\>, nil_ - Environment variables to set in the PTY session. These will be merged with
+the Sandbox's default environment variables.
+- `pty_size` _PtySize, nil_ - Terminal size configuration. Defaults to 80x24 if not specified.
+
+**Returns**:
+
+- `PtyHandle` - Handle for managing the created PTY session. Use this to send input,
+receive output, resize the terminal, and manage the session lifecycle.
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - If the PTY session creation fails or the session ID is already in use.
+
+**Examples:**
+
+```ruby
+# Create a basic PTY session
+pty_handle = sandbox.process.create_pty_session(id: "my-pty")
+
+# Create a PTY session with specific size and environment
+pty_size = Daytona::PtySize.new(rows: 30, cols: 120)
+pty_handle = sandbox.process.create_pty_session(
+  id: "my-pty",
+  cwd: "/workspace",
+  envs: {"NODE_ENV" => "development"},
+  pty_size: pty_size
+)
+
+# Use the PTY session
+pty_handle.wait_for_connection
+pty_handle.send_input("ls -la\n")
+result = pty_handle.wait
+pty_handle.disconnect
+
+```
+
+#### connect_pty_session()
+
+```ruby
+def connect_pty_session(session_id)
+
+```
+
+Connects to an existing PTY session in the Sandbox.
+
+Establishes a WebSocket connection to an existing PTY session, allowing you to
+interact with a previously created terminal session.
+
+**Parameters**:
+
+- `session_id` _String_ - Unique identifier of the PTY session to connect to.
+
+**Returns**:
+
+- `PtyHandle` - Handle for managing the connected PTY session.
+
+**Raises**:
+
+- `Daytona:Sdk:Error` - If the PTY session doesn't exist or connection fails.
+
+**Examples:**
+
+```ruby
+# Connect to an existing PTY session
+pty_handle = sandbox.process.connect_pty_session("my-pty-session")
+pty_handle.wait_for_connection
+pty_handle.send_input("echo 'Hello World'\n")
+result = pty_handle.wait
+pty_handle.disconnect
+
+```
+
+#### resize_pty_session()
+
+```ruby
+def resize_pty_session(session_id, pty_size)
+
+```
+
+Resizes a PTY session to the specified dimensions
+
+**Parameters**:
+
+- `session_id` _String_ - Unique identifier of the PTY session
+- `pty_size` _PtySize_ - New terminal size
+
+**Returns**:
+
+- `DaytonaApiClient:PtySessionInfo` - Updated PTY session information
+
+**Examples:**
+
+```ruby
+pty_size = Daytona::PtySize.new(rows: 30, cols: 120)
+session_info = sandbox.process.resize_pty_session("my-pty", pty_size)
+puts "PTY resized to #{session_info.cols}x#{session_info.rows}"
+
+```
+
+#### delete_pty_session()
+
+```ruby
+def delete_pty_session(session_id)
+
+```
+
+Deletes a PTY session, terminating the associated process
+
+**Parameters**:
+
+- `session_id` _String_ - Unique identifier of the PTY session to delete
+
+**Returns**:
+
+- `void`
+
+**Examples:**
+
+```ruby
+sandbox.process.delete_pty_session("my-pty")
+
+```
+
+#### list_pty_sessions()
+
+```ruby
+def list_pty_sessions()
+
+```
+
+Lists all PTY sessions in the Sandbox
+
+**Returns**:
+
+- `Array\<DaytonaApiClient:PtySessionInfo\>` - List of PTY session information
+
+**Examples:**
+
+```ruby
+sessions = sandbox.process.list_pty_sessions
+sessions.each do |session|
+  puts "PTY Session #{session.id}: #{session.cols}x#{session.rows}"
+end
+
+```
+
+#### get_pty_session_info()
+
+```ruby
+def get_pty_session_info(session_id)
+
+```
+
+Gets detailed information about a specific PTY session
+
+Retrieves comprehensive information about a PTY session including its current state,
+configuration, and metadata.
+
+**Parameters**:
+
+- `session_id` _String_ - Unique identifier of the PTY session to retrieve information for
+
+**Returns**:
+
+- `DaytonaApiClient:PtySessionInfo` - Detailed information about the PTY session including ID, state,
+creation time, working directory, environment variables, and more
+
+**Examples:**
+
+```ruby
+# Get details about a specific PTY session
+session_info = sandbox.process.get_pty_session_info("my-session")
+puts "Session ID: #{session_info.id}"
+puts "Active: #{session_info.active}"
+puts "Working Directory: #{session_info.cwd}"
+puts "Terminal Size: #{session_info.cols}x#{session_info.rows}"
+
+```
+
+## Sandbox
+
+Sandbox class for Daytona SDK.
+
+### Constructors
+
+#### new Sandbox()
+
+```ruby
+def initialize(code_toolbox:, sandbox_dto:, config:, sandbox_api:, get_proxy_toolbox_url:)
+
+```
+
+**Returns**:
+
+- `Sandbox` - a new instance of Sandbox
+
+### Methods
+
+#### id()
+
+```ruby
+def id()
+
+```
+
+**Returns**:
+
+- `String` - The ID of the sandbox
+
+#### organization_id()
+
+```ruby
+def organization_id()
+
+```
+
+**Returns**:
+
+- `String` - The organization ID of the sandbox
+
+#### snapshot()
+
+```ruby
+def snapshot()
+
+```
+
+**Returns**:
+
+- `String` - The snapshot used for the sandbox
+
+#### user()
+
+```ruby
+def user()
+
+```
+
+**Returns**:
+
+- `String` - The user associated with the project
+
+#### env()
+
+```ruby
+def env()
+
+```
+
+**Returns**:
+
+- `Hash\<String, String\>` - Environment variables for the sandbox
+
+#### labels()
+
+```ruby
+def labels()
+
+```
+
+**Returns**:
+
+- `Hash\<String, String\>` - Labels for the sandbox
+
+#### public()
+
+```ruby
+def public()
+
+```
+
+**Returns**:
+
+- `Boolean` - Whether the sandbox http preview is public
+
+#### network_block_all()
+
+```ruby
+def network_block_all()
+
+```
+
+**Returns**:
+
+- `Boolean` - Whether to block all network access for the sandbox
+
+#### network_allow_list()
+
+```ruby
+def network_allow_list()
+
+```
+
+**Returns**:
+
+- `String` - Comma-separated list of allowed CIDR network addresses for the sandbox
+
+#### target()
+
+```ruby
+def target()
+
+```
+
+**Returns**:
+
+- `String` - The target environment for the sandbox
+
+#### cpu()
+
+```ruby
+def cpu()
+
+```
+
+**Returns**:
+
+- `Float` - The CPU quota for the sandbox
+
+#### gpu()
+
+```ruby
+def gpu()
+
+```
+
+**Returns**:
+
+- `Float` - The GPU quota for the sandbox
+
+#### memory()
+
+```ruby
+def memory()
+
+```
+
+**Returns**:
+
+- `Float` - The memory quota for the sandbox
+
+#### disk()
+
+```ruby
+def disk()
+
+```
+
+**Returns**:
+
+- `Float` - The disk quota for the sandbox
+
+#### state()
+
+```ruby
+def state()
+
+```
+
+**Returns**:
+
+- `DaytonaApiClient:SandboxState` - The state of the sandbox
+
+#### desired_state()
+
+```ruby
+def desired_state()
+
+```
+
+**Returns**:
+
+- `DaytonaApiClient:SandboxDesiredState` - The desired state of the sandbox
+
+#### error_reason()
+
+```ruby
+def error_reason()
+
+```
+
+**Returns**:
+
+- `String` - The error reason of the sandbox
+
+#### backup_state()
+
+```ruby
+def backup_state()
+
+```
+
+**Returns**:
+
+- `String` - The state of the backup
+
+#### backup_created_at()
+
+```ruby
+def backup_created_at()
+
+```
+
+**Returns**:
+
+- `String` - The creation timestamp of the last backup
+
+#### auto_stop_interval()
+
+```ruby
+def auto_stop_interval()
+
+```
+
+**Returns**:
+
+- `Float` - Auto-stop interval in minutes (0 means disabled)
+
+#### auto_archive_interval()
+
+```ruby
+def auto_archive_interval()
+
+```
+
+**Returns**:
+
+- `Float` - Auto-archive interval in minutes
+
+#### auto_delete_interval()
+
+```ruby
+def auto_delete_interval()
+
+```
+
+(negative value means disabled, 0 means delete immediately upon stopping)
+
+**Returns**:
+
+- `Float` - Auto-delete interval in minutes
+
+#### volumes()
+
+```ruby
+def volumes()
+
+```
+
+**Returns**:
+
+- `Array\<DaytonaApiClient:SandboxVolume\>` - Array of volumes attached to the sandbox
+
+#### build_info()
+
+```ruby
+def build_info()
+
+```
+
+**Returns**:
+
+- `DaytonaApiClient:BuildInfo` - Build information for the sandbox
+
+#### created_at()
+
+```ruby
+def created_at()
+
+```
+
+**Returns**:
+
+- `String` - The creation timestamp of the sandbox
+
+#### updated_at()
+
+```ruby
+def updated_at()
+
+```
+
+**Returns**:
+
+- `String` - The last update timestamp of the sandbox
+
+#### daemon_version()
+
+```ruby
+def daemon_version()
+
+```
+
+**Returns**:
+
+- `String` - The version of the daemon running in the sandbox
+
+#### code_toolbox()
+
+```ruby
+def code_toolbox()
+
+```
+
+**Returns**:
+
+- `Daytona:SandboxPythonCodeToolbox, Daytona:SandboxTsCodeToolbox`
+
+#### config()
+
+```ruby
+def config()
+
+```
+
+**Returns**:
+
+- `Daytona:Config`
+
+#### sandbox_api()
+
+```ruby
+def sandbox_api()
+
+```
+
+**Returns**:
+
+- `DaytonaApiClient:SandboxApi`
+
+#### process()
+
+```ruby
+def process()
+
+```
+
+**Returns**:
+
+- `Daytona:Process`
+
+#### fs()
+
+```ruby
+def fs()
+
+```
+
+**Returns**:
+
+- `Daytona:FileSystem`
+
+#### git()
+
+```ruby
+def git()
+
+```
+
+**Returns**:
+
+- `Daytona:Git`
+
+#### computer_use()
+
+```ruby
+def computer_use()
+
+```
+
+**Returns**:
+
+- `Daytona:ComputerUse`
+
+#### code_interpreter()
+
+```ruby
+def code_interpreter()
+
+```
+
+**Returns**:
+
+- `Daytona:CodeInterpreter`
+
+#### archive()
+
+```ruby
+def archive()
+
+```
+
+Archives the sandbox, making it inactive and preserving its state. When sandboxes are
+archived, the entire filesystem state is moved to cost-effective object storage, making it
+possible to keep sandboxes available for an extended period. The tradeoff between archived
+and stopped states is that starting an archived sandbox takes more time, depending on its size.
+Sandbox must be stopped before archiving.
+
+**Returns**:
+
+- `void`
+
+#### auto_archive_interval=()
+
+```ruby
+def auto_archive_interval=(interval)
+
+```
+
+Sets the auto-archive interval for the Sandbox.
+The Sandbox will automatically archive after being continuously stopped for the specified interval.
+
+**Parameters**:
+
+- `interval` _Integer_ -
+
+**Returns**:
+
+- `Integer`
+
+**Raises**:
+
+- `Daytona:Sdk:Error` -
+
+#### auto_delete_interval=()
+
+```ruby
+def auto_delete_interval=(interval)
+
+```
+
+Sets the auto-delete interval for the Sandbox.
+The Sandbox will automatically delete after being continuously stopped for the specified interval.
+
+**Parameters**:
+
+- `interval` _Integer_ -
+
+**Returns**:
+
+- `Integer`
+
+**Raises**:
+
+- `Daytona:Sdk:Error` -
+
+#### auto_stop_interval=()
+
+```ruby
+def auto_stop_interval=(interval)
+
+```
+
+Sets the auto-stop interval for the Sandbox.
+The Sandbox will automatically stop after being idle (no new events) for the specified interval.
+Events include any state changes or interactions with the Sandbox through the SDK.
+Interactions using Sandbox Previews are not included.
+
+**Parameters**:
+
+- `interval` _Integer_ -
+
+**Returns**:
+
+- `Integer`
+
+**Raises**:
+
+- `Daytona:Sdk:Error` -
+
+#### create_ssh_access()
+
+```ruby
+def create_ssh_access(expires_in_minutes)
+
+```
+
+Creates an SSH access token for the sandbox.
+
+**Parameters**:
+
+- `expires_in_minutes` _Integer_ - TThe number of minutes the SSH access token will be valid for
+
+**Returns**:
+
+- `DaytonaApiClient:SshAccessDto`
+
+#### delete()
+
+```ruby
+def delete()
+
+```
+
+**Returns**:
+
+- `void`
+
+#### get_user_home_dir()
+
+```ruby
+def get_user_home_dir()
+
+```
+
+Gets the user's home directory path for the logged in user inside the Sandbox.
+
+**Returns**:
+
+- `String` - The absolute path to the Sandbox user's home directory for the logged in user
+
+**Examples:**
+
+```ruby
+user_home_dir = sandbox.get_user_home_dir
+puts "Sandbox user home: #{user_home_dir}"
+
+```
+
+#### get_work_dir()
+
+```ruby
+def get_work_dir()
+
+```
+
+Gets the working directory path inside the Sandbox.
+
+**Returns**:
+
+- `String` - The absolute path to the Sandbox working directory. Uses the WORKDIR specified
+in the Dockerfile if present, or falling back to the user's home directory if not.
+
+**Examples:**
+
+```ruby
+work_dir = sandbox.get_work_dir
+puts "Sandbox working directory: #{work_dir}"
+
+```
+
+#### labels=()
+
+```ruby
+def labels=(labels)
+
+```
+
+Sets labels for the Sandbox.
+
+**Parameters**:
+
+- `labels` _Hash\<String, String\>_ -
+
+**Returns**:
+
+- `Hash\<String, String\>`
+
+#### preview_url()
+
+```ruby
+def preview_url(port)
+
+```
+
+Retrieves the preview link for the sandbox at the specified port. If the port is closed,
+it will be opened automatically. For private sandboxes, a token is included to grant access
+to the URL.
+
+**Parameters**:
+
+- `port` _Integer_ -
+
+**Returns**:
+
+- `DaytonaApiClient:PortPreviewUrl`
+
+#### create_signed_preview_url()
+
+```ruby
+def create_signed_preview_url(port, expires_in_seconds)
+
+```
+
+Creates a signed preview URL for the sandbox at the specified port.
+
+**Parameters**:
+
+- `port` _Integer_ - The port to open the preview link on
+- `expires_in_seconds` _Integer, nil_ - The number of seconds the signed preview URL
+will be valid for. Defaults to 60 seconds.
+
+**Returns**:
+
+- `DaytonaApiClient:SignedPortPreviewUrl` - The signed preview URL response object
+
+**Examples:**
+
+```ruby
+signed_url = sandbox.create_signed_preview_url(3000, 120)
+puts "Signed URL: #{signed_url.url}"
+puts "Token: #{signed_url.token}"
+
+```
+
+#### expire_signed_preview_url()
+
+```ruby
+def expire_signed_preview_url(port, token)
+
+```
+
+Expires a signed preview URL for the sandbox at the specified port.
+
+**Parameters**:
+
+- `port` _Integer_ - The port to expire the signed preview URL on
+- `token` _String_ - The token to expire
+
+**Returns**:
+
+- `void`
+
+**Examples:**
+
+```ruby
+sandbox.expire_signed_preview_url(3000, "token-value")
+
+```
+
+#### refresh()
+
+```ruby
+def refresh()
+
+```
+
+Refresh the Sandbox data from the API.
+
+**Returns**:
+
+- `void`
+
+#### refresh_activity()
+
+```ruby
+def refresh_activity()
+
+```
+
+Refreshes the sandbox activity to reset the timer for automated lifecycle management actions.
+
+This method updates the sandbox's last activity timestamp without changing its state.
+It is useful for keeping long-running sessions alive while there is still user activity.
+
+**Returns**:
+
+- `void`
+
+**Examples:**
+
+```ruby
+sandbox.refresh_activity
+
+```
+
+#### revoke_ssh_access()
+
+```ruby
+def revoke_ssh_access(token)
+
+```
+
+Revokes an SSH access token for the sandbox.
+
+**Parameters**:
+
+- `token` _String_ -
+
+**Returns**:
+
+- `void`
+
+#### start()
+
+```ruby
+def start(timeout)
+
+```
+
+Starts the Sandbox and waits for it to be ready.
+
+**Parameters**:
+
+- `timeout` _Numeric_ - Maximum wait time in seconds (defaults to 60 s).
+
+**Returns**:
+
+- `void`
+
+#### recover()
+
+```ruby
+def recover(timeout)
+
+```
+
+Recovers the Sandbox from a recoverable error and waits for it to be ready.
+
+**Parameters**:
+
+- `timeout` _Numeric_ - Maximum wait time in seconds (defaults to 60 s).
+
+**Returns**:
+
+- `void`
+
+**Examples:**
+
+```ruby
+sandbox = daytona.get('my-sandbox-id')
+sandbox.recover(timeout: 40)  # Wait up to 40 seconds
+puts 'Sandbox recovered successfully'
+
+```
+
+#### stop()
+
+```ruby
+def stop(timeout)
+
+```
+
+Stops the Sandbox and waits for it to be stopped.
+
+**Parameters**:
+
+- `timeout` _Numeric_ - Maximum wait time in seconds (defaults to 60 s).
+
+**Returns**:
+
+- `void`
+
+#### create_lsp_server()
+
+```ruby
+def create_lsp_server(language_id:, path_to_project:)
+
+```
+
+Creates a new Language Server Protocol (LSP) server instance.
+The LSP server provides language-specific features like code completion,
+diagnostics, and more.
+
+**Parameters**:
+
+- `language_id` _Symbol_ - The language server type (e.g., Daytona::LspServer::Language::PYTHON)
+- `path_to_project` _String_ - Path to the project root directory. Relative paths are resolved
+based on the sandbox working directory.
+
+**Returns**:
+
+- `Daytona:LspServer`
+
+#### validate_ssh_access()
+
+```ruby
+def validate_ssh_access(token)
+
+```
+
+Validates an SSH access token for the sandbox.
+
+**Parameters**:
+
+- `token` _String_ -
+
+**Returns**:
+
+- `DaytonaApiClient:SshAccessValidationDto`
+
+#### wait_for_sandbox_start()
+
+```ruby
+def wait_for_sandbox_start(_timeout)
+
+```
+
+Waits for the Sandbox to reach the 'started' state. Polls the Sandbox status until it
+reaches the 'started' state or encounters an error.
+
+**Parameters**:
+
+- `timeout` _Numeric_ - Maximum wait time in seconds (defaults to 60 s).
+
+**Returns**:
+
+- `void`
+
+#### wait_for_sandbox_stop()
+
+```ruby
+def wait_for_sandbox_stop(_timeout)
+
+```
+
+Waits for the Sandbox to reach the 'stopped' state. Polls the Sandbox status until it
+reaches the 'stopped' state or encounters an error.
+Treats destroyed as stopped to cover ephemeral sandboxes that are automatically deleted after stopping.
+
+**Parameters**:
+
+- `timeout` _Numeric_ - Maximum wait time in seconds (defaults to 60 s).
+
+**Returns**:
+
+- `void`
+
+## SnapshotService
+
+SnapshotService class for Daytona SDK.
+
+### Constructors
+
+#### new SnapshotService()
+
+```ruby
+def initialize(snapshots_api:, object_storage_api:, default_region_id:)
+
+```
+
+**Parameters**:
+
+- `snapshots_api` _DaytonaApiClient:SnapshotsApi_ - The snapshots API client
+- `object_storage_api` _DaytonaApiClient:ObjectStorageApi_ - The object storage API client
+- `default_region_id` _String, nil_ - Default region ID for snapshot creation
+
+**Returns**:
+
+- `SnapshotService` - a new instance of SnapshotService
+
+### Methods
+
+#### list()
+
+```ruby
+def list(page:, limit:)
+
+```
+
+List all Snapshots.
+
+**Parameters**:
+
+- `page` _Integer, Nil_ -
+- `limit` _Integer, Nil_ -
+
+**Returns**:
+
+- `Daytona:PaginatedResource` - Paginated list of all Snapshots
+
+**Raises**:
+
+- `Daytona:Sdk:Error` -
+
+**Examples:**
+
+```ruby
+daytona = Daytona::Daytona.new
+response = daytona.snapshot.list(page: 1, limit: 10)
+snapshots.items.each { |snapshot| puts "#{snapshot.name} (#{snapshot.image_name})" }
+
+```
+
+#### delete()
+
+```ruby
+def delete(snapshot)
+
+```
+
+Delete a Snapshot.
+
+**Parameters**:
+
+- `snapshot` _Daytona:Snapshot_ - Snapshot to delete
+
+**Returns**:
+
+- `void`
+
+**Examples:**
+
+```ruby
+daytona = Daytona::Daytona.new
+snapshot = daytona.snapshot.get("demo")
+daytona.snapshot.delete(snapshot)
+puts "Snapshot deleted"
+
+```
+
+#### get()
+
+```ruby
+def get(name)
+
+```
+
+Get a Snapshot by name.
+
+**Parameters**:
+
+- `name` _String_ - Name of the Snapshot to get
+
+**Returns**:
+
+- `Daytona:Snapshot` - The Snapshot object
+
+**Examples:**
+
+```ruby
+daytona = Daytona::Daytona.new
+snapshot = daytona.snapshot.get("demo")
+puts "#{snapshot.name} (#{snapshot.image_name})"
+
+```
+
+#### create()
+
+```ruby
+def create(params, on_logs:)
+
+```
+
+Creates and registers a new snapshot from the given Image definition.
+
+**Parameters**:
+
+- `params` _Daytona:CreateSnapshotParams_ - Parameters for snapshot creation
+- `on_logs` _Proc, Nil_ - Callback proc handling snapshot creation logs
+
+**Returns**:
+
+- `Daytona:Snapshot` - The created snapshot
+
+**Examples:**
+
+```ruby
+image = Image.debianSlim('3.12').pipInstall('numpy')
+params = CreateSnapshotParams.new(name: 'my-snapshot', image: image)
+snapshot = daytona.snapshot.create(params) do |chunk|
+  print chunk
+end
+
+```
+
+#### activate()
+
+```ruby
+def activate(snapshot)
+
+```
+
+Activate a snapshot
+
+**Parameters**:
+
+- `snapshot` _Daytona:Snapshot_ - The snapshot instance
+
+**Returns**:
+
+- `Daytona:Snapshot`
+
+## VolumeService
+
+Service for managing Daytona Volumes. Can be used to list, get, create and delete Volumes.
+
+### Constructors
+
+#### new VolumeService()
+
+```ruby
+def initialize(volumes_api)
+
+```
+
+Service for managing Daytona Volumes. Can be used to list, get, create and delete Volumes.
+
+**Parameters**:
+
+- `volumes_api` _DaytonaApiClient:VolumesApi_ -
+
+**Returns**:
+
+- `VolumeService` - a new instance of VolumeService
+
+### Methods
+
+#### create()
+
+```ruby
+def create(name)
+
+```
+
+Create new Volume.
+
+**Parameters**:
+
+- `name` _String_ -
+
+**Returns**:
+
+- `Daytona:Volume`
+
+#### delete()
+
+```ruby
+def delete(volume)
+
+```
+
+Delete a Volume.
+
+**Parameters**:
+
+- `volume` _Daytona:Volume_ -
+
+**Returns**:
+
+- `void`
+
+#### get()
+
+```ruby
+def get(name, create:)
+
+```
+
+Get a Volume by name.
+
+**Parameters**:
+
+- `name` _String_ -
+- `create` _Boolean_ -
+
+**Returns**:
+
+- `Daytona:Volume`
+
+#### list()
+
+```ruby
+def list()
+
+```
+
+List all Volumes.
+
+**Returns**:
+
+- `Array\<Daytona:Volume\>`
+
+## Volume
+
+Initialize volume from DTO
+
+### Constructors
+
+#### new Volume()
+
+```ruby
+def initialize(volume_dto)
+
+```
+
+Initialize volume from DTO
+
+**Parameters**:
+
+- `volume_dto` _DaytonaApiClient:SandboxVolume_ -
+
+**Returns**:
+
+- `Volume` - a new instance of Volume
+
+### Methods
+
+#### id()
+
+```ruby
+def id()
+
+```
+
+**Returns**:
+
+- `String`
+
+#### name()
+
+```ruby
+def name()
+
+```
+
+**Returns**:
+
+- `String`
+
+#### organization_id()
+
+```ruby
+def organization_id()
+
+```
+
+**Returns**:
+
+- `String`
+
+#### state()
+
+```ruby
+def state()
+
+```
+
+**Returns**:
+
+- `String`
+
+#### created_at()
+
+```ruby
+def created_at()
+
+```
+
+**Returns**:
+
+- `String`
+
+#### updated_at()
+
+```ruby
+def updated_at()
+
+```
+
+**Returns**:
+
+- `String`
+
+#### last_used_at()
+
+```ruby
+def last_used_at()
+
+```
+
+**Returns**:
+
+- `String`
+
+#### error_reason()
+
+```ruby
+def error_reason()
+
+```
+
+**Returns**:
+
+- `String, nil`
+
+Runners are machines that power Daytona's compute plane, providing the underlying infrastructure for running sandbox workloads. Each runner is responsible for:
+
+- **Workload Execution** — Running sandbox workloads
+- **Resource Management** — Allocating and monitoring CPU, memory, and disk resources
+- **Health Reporting** — Continuously reporting metrics and health status to the Daytona control plane
+- **Network Connectivity** — Managing networking, proxy connections, and SSH access for sandboxes
+
+Runners in **shared** and **dedicated** regions are fully managed by Daytona — from provisioning and maintenance to monitoring and scaling. For **custom** regions, you bring your own runner machines and are responsible for their management and operation.
+
+### Custom Runners
+
+Custom runners are created and managed by your organization, allowing you to use your own runner machines and scale compute resources independently within each custom region.
+
+:::caution
+Custom runners are currently an experimental feature and may change in future releases.
+To request access, please contact [support@daytona.io](mailto:support@daytona.io).
+:::
+
+#### Custom Runner Configuration
+
+**name** (required)
+
+- A unique identifier for the runner
+- Must contain only letters, numbers, underscores, periods, and hyphens
+- Helps distinguish between multiple runners in the same region
+
+**regionId** (required)
+
+- The ID of the region this runner is assigned to
+- Must be a custom region owned by your organization
+- All runners in a region share the region's proxy and SSH gateway configuration
+
+#### Custom Runner Token
+
+When you create a custom runner, Daytona will provide you with a **token** that should be used by your runner to authenticate with Daytona.
+
+:::note
+Save this token securely. You won't be able to see it again.
+:::
+
+#### Installing the Custom Runner
+
+After registering a custom runner and obtaining its secure token, you need to install and configure the Daytona runner application on your infrastructure.
+
+:::note
+Detailed installation instructions for the runner application will be provided in a future update. For assistance with runner installation, please contact [support@daytona.io](mailto:support@daytona.io).
+:::
+
+Sandboxes are isolated runtime environments managed by Daytona. This guide covers the lifecycle of Sandboxes and how to create, manage, and remove them using the Daytona SDK.
+
+Daytona Sandboxes use **1 vCPU**, **1GB RAM**, and **3GiB disk** by default.
+[Organizations](https://www.daytona.io/docs/en/organizations.md) get a maximum sandbox resource limit of **4 vCPUs**, **8GB RAM**, and **10GB disk**.
+For more power, contact [support@daytona.io](mailto:support@daytona.io).
+
+## Sandbox lifecycle
+
+Throughout its lifecycle, a Daytona Sandbox can have several different states.
+The diagram below shows the states and possible transitions between them.
+
+<SandboxDiagram />
+
+## Multiple runtime support
+
+Daytona Sandboxes support Python, TypeScript, and JavaScript programming language runtimes for direct code execution inside the sandbox.
+
+The `language` parameter controls which programming language runtime is used for the sandbox:
+
+- **`python`**
+- **`typescript`**
+- **`javascript`**
+
+If omitted, the Daytona SDK will default to `python`. To override this, explicitly set the `language` value when creating the sandbox.
+
+:::note
+**Sandbox Names**: You can specify a custom name for your sandbox using the `name` parameter. If not provided, the sandbox ID will be used as the name. Sandbox names are reusable - once a sandbox with a specific name is destroyed, that name becomes available for use again.
+:::
+
+## Create Sandboxes
+
+Daytona provides options to programmatically create sandboxes with default or custom configurations.
+You can specify [programming language runtime](https://www.daytona.io/docs/sandboxes.md#multiple-runtime-support), [snapshots](https://www.daytona.io/docs/snapshots.md), [resources](https://www.daytona.io/docs/sandboxes.md#resources), [environment variables](https://www.daytona.io/docs/configuration.md#environment-variables), and [volumes](https://www.daytona.io/docs/volumes.md) for each sandbox.
+Running sandboxes utilize CPU, memory, and disk storage. Every resource is charged per second of usage.
 
     ```python
     from daytona import Daytona, CreateSandboxFromSnapshotParams
 
     daytona = Daytona()
 
-    # Create a basic Sandbox
-
+    # Create a sandbox
     sandbox = daytona.create()
 
-    # Create a Sandbox with specific language
-
+    # Create a sandbox with python
     params = CreateSandboxFromSnapshotParams(language="python")
     sandbox = daytona.create(params)
 
-    # Create a Sandbox with a custom name
-
-    params = CreateSandboxFromSnapshotParams(name="my-sandbox")
+    # Create a sandbox with a custom name
+    params = CreateSandboxFromSnapshotParams(name="my_awesome_sandbox")
     sandbox = daytona.create(params)
 
-    # Create a Sandbox with custom labels
-
-    params = CreateSandboxFromSnapshotParams(labels={"SOME_LABEL": "my-label"})
+    # Create a sandbox with custom labels
+    params = CreateSandboxFromSnapshotParams(labels={"LABEL": "label"})
     sandbox = daytona.create(params)
-
     ```
-
 
     ```typescript
     import { Daytona } from '@daytonaio/sdk';
 
     const daytona = new Daytona();
 
-    // Create a basic Sandbox
+    // Create a sandbox
     const sandbox = await daytona.create();
 
-    // Create a Sandbox with specific language
+    // Create a sandbox with typescript
     const sandbox = await daytona.create({ language: 'typescript' });
 
-    // Create a Sandbox with a custom name
-    const sandbox = await daytona.create({ name: 'my-sandbox' });
+    // Create a sandbox with a custom name
+    const sandbox = await daytona.create({ name: 'my_awesome_sandbox' });
 
-    // Create a Sandbox with custom labels
-    const sandbox = await daytona.create({ labels: { SOME_LABEL: 'my-label' } });
+    // Create a sandbox with custom labels
+    const sandbox = await daytona.create({ labels: { LABEL: 'label' } });
     ```
 
 
-:::note
-**Sandbox Names**: You can specify a custom name for your sandbox using the `name` parameter. If not provided, the sandbox ID will be used as the name. Sandbox names are reusable - once a sandbox with a specific name is destroyed, that name becomes available for use again.
-:::
+    ```ruby
+    require 'daytona'
 
-See: [create (Python SDK)](https://www.daytona.io/docs/en/python-sdk/sync/daytona.md#daytonacreate), [create (TypeScript SDK)](https://www.daytona.io/docs/en/typescript-sdk/daytona.md#create)
+    daytona = Daytona::Daytona.new
 
-When Sandboxes are not actively used, it is recommended that they be stopped. This can be done manually [using the stop command](https://www.daytona.io/docs/en/sandbox-management.md#stop-and-start-sandbox) or automatically by [setting the auto-stop interval](https://www.daytona.io/docs/en/sandbox-management.md#auto-stop-and-auto-archive).
+    # Create a sandbox
+    sandbox = daytona.create
 
-:::note
-Daytona keeps a pool of warm Sandboxes using default Snapshots.\
-When available, your Sandbox will launch in milliseconds instead of cold-booting.
-:::
+    # Create a sandbox with python
+    params = Daytona::CreateSandboxFromSnapshotParams.new(language: Daytona::CodeLanguage::PYTHON)
+    sandbox = daytona.create(params)
 
-### Sandbox Resources
+    # Create a sandbox with a custom name
+    params = Daytona::CreateSandboxFromSnapshotParams.new(name: 'my_awesome_sandbox')
+    sandbox = daytona.create(params)
 
-Daytona Sandboxes come with **1 vCPU**, **1GB RAM**, and **3GiB disk** by default.
+    # Create a sandbox with custom labels
+    params = Daytona::CreateSandboxFromSnapshotParams.new(labels: { 'LABEL' => 'label' })
+    sandbox = daytona.create(params)
+    ```
 
-Use the `Resources` class to define exactly what you need: CPU, memory, and disk space are all customizable.
 
-Organizations get a maximum Sandbox resource limit of 4 vCPUs, 8GB RAM, and 10GB disk. Need more power? Contact [support@daytona.io](mailto:support@daytona.io) and let us know your use case.
+To get the preview URL for a specific port, check out [Preview & Authentication](https://www.daytona.io/docs/en/preview-and-authentication.md).
 
-Check your available resources and limits in the [dashboard](https://app.daytona.io/dashboard/limits).
+For more information, see the [Python SDK](https://www.daytona.io/docs/en/python-sdk.md), [TypeScript SDK](https://www.daytona.io/docs/en/typescript-sdk.md), and [Ruby SDK](https://www.daytona.io/docs/en/ruby-sdk.md) references:
+
+> [**create (Python SDK)**](https://www.daytona.io/docs/en/python-sdk/sync/daytona.md#daytonacreate)
+>
+> [**create (TypeScript SDK)**](https://www.daytona.io/docs/en/typescript-sdk/daytona.md#create)
+>
+> [**create (Ruby SDK)**](https://www.daytona.io/docs/en/ruby-sdk/daytona.md#create)
+
+### Resources
+
+Daytona Sandbox uses **1 vCPU**, **1GB RAM**, and **3GiB disk** by default.
+
+Daytona keeps a pool of warm sandboxes using default snapshots.
+When available, sandboxes launch within milliseconds instead of cold-booting.
+
+To set custom sandbox resources (CPU, memory, and disk space), use the `Resources` class:
 
     ```python
     from daytona import Daytona, Resources, CreateSandboxFromImageParams, Image
 
     daytona = Daytona()
 
-    # Create a Sandbox with custom resources
-
+    # Create a sandbox with custom resources
     resources = Resources(
-        cpu=2,  # 2 CPU cores
-        memory=4,  # 4GB RAM
-        disk=8,  # 8GB disk space
+        cpu=2,    # 2 CPU cores
+        memory=4, # 4GB RAM
+        disk=8,   # 8GB disk space
     )
 
     params = CreateSandboxFromImageParams(
@@ -12953,7 +30172,6 @@ Check your available resources and limits in the [dashboard](https://app.daytona
     )
 
     sandbox = daytona.create(params)
-
     ```
 
 
@@ -12963,13 +30181,13 @@ Check your available resources and limits in the [dashboard](https://app.daytona
     async function main() {
       const daytona = new Daytona();
 
-      // Create a Sandbox with custom resources
+      // Create a sandbox with custom resources
       const sandbox = await daytona.create({
         image: Image.debianSlim("3.13"),
         resources: {
-          cpu: 2, // 2 CPU cores
-          memory: 4, // 4GB RAM
-          disk: 8, // 8GB disk space
+          cpu: 2,     // 2 CPU cores
+          memory: 4,  // 4GB RAM
+          disk: 8,    // 8GB disk space
         },
       });
     }
@@ -12978,15 +30196,38 @@ Check your available resources and limits in the [dashboard](https://app.daytona
     ```
 
 
-:::note
+    ```ruby
+    require 'daytona'
+
+    daytona = Daytona::Daytona.new
+
+    # Create a sandbox with custom resources
+    sandbox = daytona.create(
+      Daytona::CreateSandboxFromImageParams.new(
+        image: Daytona::Image.debian_slim('3.12'),
+        resources: Daytona::Resources.new(
+          cpu: 2,     # 2 CPU cores
+          memory: 4,  # 4GB RAM
+          disk: 8     # 8GB disk space
+        )
+      )
+    )
+    ```
+
+
 All resource parameters are optional. If not specified, Daytona will use default values appropriate for the selected language and use case.
-:::
+
+For more information, see the [Python SDK](https://www.daytona.io/docs/en/python-sdk/sync/daytona.md#resources), [TypeScript SDK](https://www.daytona.io/docs/en/typescript-sdk/daytona.md#resources), and [Ruby SDK](https://www.daytona.io/docs/en/ruby-sdk/daytona.md#resources) references:
+
+> [**Resources (Python SDK)**](https://www.daytona.io/docs/en/python-sdk/sync/sandbox.md#resources)
+>
+> [**Resources (TypeScript SDK)**](https://www.daytona.io/docs/en/typescript-sdk/snapshot.md#createsnapshotparams)
 
 ### Ephemeral Sandboxes
 
-Ephemeral Sandboxes are Sandboxes that are automatically deleted once they are stopped. They are useful for short-lived tasks or for testing purposes.
+Ephemeral Sandboxes are automatically deleted once they are stopped. They are useful for short-lived tasks or for testing purposes.
 
-To create an ephemeral Sandbox, set `ephemeral` to `True` when creating a Sandbox:
+To create an ephemeral Sandbox, set the `ephemeral` parameter to `True` when creating a sandbox:
 
     ```python
     from daytona import Daytona, CreateSandboxFromSnapshotParams
@@ -12994,10 +30235,9 @@ To create an ephemeral Sandbox, set `ephemeral` to `True` when creating a Sandbo
     daytona = Daytona()
 
     # Create an ephemeral Sandbox
-
     params = CreateSandboxFromSnapshotParams(
       ephemeral=True,
-      auto_stop_interval=5 # the ephemeral sandbox will be deleted after 5 minutes of inactivity
+      auto_stop_interval=5 # The ephemeral sandbox will be deleted after 5 minutes of inactivity
     )
     sandbox = daytona.create(params)
     ```
@@ -13008,11 +30248,25 @@ To create an ephemeral Sandbox, set `ephemeral` to `True` when creating a Sandbo
 
     const daytona = new Daytona();
 
-    // Create an ephemeral Sandbox
+    // Create an ephemeral sandbox
     const sandbox = await daytona.create({
       ephemeral: true,
-      autoStopInterval: 5 // the ephemeral sandbox will be deleted after 5 minutes of inactivity
+      autoStopInterval: 5 // The ephemeral sandbox will be deleted after 5 minutes of inactivity
     });
+    ```
+
+
+    ```ruby
+    require 'daytona'
+
+    daytona = Daytona::Daytona.new
+
+    # Create an ephemeral Sandbox
+    params = Daytona::CreateSandboxFromSnapshotParams.new(
+      ephemeral: true,
+      auto_stop_interval: 5 # The ephemeral sandbox will be deleted after 5 minutes of inactivity
+    )
+    sandbox = daytona.create(params)
     ```
 
 
@@ -13020,103 +30274,182 @@ To create an ephemeral Sandbox, set `ephemeral` to `True` when creating a Sandbo
 Setting ["autoDeleteInterval: 0"](#auto-delete-interval) has the same effect as setting "ephemeral" to `true`.
 :::
 
-### Network Settings (Firewall)
+### Network settings (Firewall)
 
-Daytona Sandboxes provide configurable network firewall controls to enhance security and manage connectivity. By default, network access follows standard security policies, but you can customize network settings when creating a Sandbox.
-Learn more about network limits in the [Network Limits](https://www.daytona.io/docs/en/network-limits.md) documentation.
+Daytona Sandboxes provide configurable network firewall controls to enhance security and manage connectivity.
+By default, network access follows standard security policies, but you can [customize network settings](https://www.daytona.io/docs/en/network-limits.md) when creating a sandbox.
 
-## Sandbox Information
+## Start Sandboxes
 
-The Daytona SDK provides methods to get information about a Sandbox, such as ID, root directory, and status using Python and TypeScript.
+Daytona provides options to start sandboxes using the [Daytona Dashboard ↗](https://app.daytona.io/dashboard/) or programmatically using the [Python SDK](https://www.daytona.io/docs/en/python-sdk.md), [TypeScript SDK](https://www.daytona.io/docs/en/typescript-sdk.md), and [Ruby SDK](https://www.daytona.io/docs/en/ruby-sdk.md).
+
+1. Navigate to [Daytona Sandboxes ↗](https://app.daytona.io/dashboard/sandboxes)
+2. Click the start icon (**▶**) next to the sandbox you want to start.
+
+```text
+Starting sandbox with ID: <sandbox-id>
+```
 
     ```python
-    # Get Sandbox ID
-    sandbox_id = sandbox.id
-
-    # Get the root directory of the Sandbox user
-
-    root_dir = sandbox.get_user_root_dir()
-
-    # Get the Sandbox id, auto-stop interval and state
-
-    print(sandbox.id)
-    print(sandbox.auto_stop_interval)
-    print(sandbox.state)
-
+    sandbox = daytona.create(CreateSandboxParams(language="python"))
+    # Start Sandbox
+    sandbox.start()
     ```
 
 
     ```typescript
-    // Get Sandbox ID
+    const sandbox = await daytona.create({ language: 'typescript' });
+    // Start Sandbox
+    await sandbox.start();
+    ```
+
+
+    ```ruby
+    sandbox = daytona.create(Daytona::CreateSandboxFromSnapshotParams.new(language: Daytona::CodeLanguage::PYTHON))
+    # Start Sandbox
+    sandbox.start
+    ```
+
+
+For more information, see the [Python SDK](https://www.daytona.io/docs/python-sdk/sync/sandbox.md#sandboxstop), [TypeScript SDK](https://www.daytona.io/docs/typescript-sdk/sandbox.md#stop), and [Ruby SDK](https://www.daytona.io/docs/ruby-sdk/sandbox.md#start) references:
+
+> [**start (Python SDK)**](https://www.daytona.io/docs/python-sdk/sync/sandbox.md#sandboxstart)
+>
+> [**start (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/sandbox.md#start)
+>
+> [**start (Ruby SDK)**](https://www.daytona.io/docs/ruby-sdk/sandbox.md#start)
+
+## List Sandboxes
+
+Daytona provides options to view information about sandboxes (ID, root directory, and status) and manage their lifecycle.
+
+    ```python
+    # Get sandbox ID
+    sandbox_id = sandbox.id
+
+    # Get the root directory of the sandbox user
+    root_dir = sandbox.get_user_root_dir()
+
+    # Get the sandbox id, auto-stop interval and state
+    print(sandbox.id)
+    print(sandbox.auto_stop_interval)
+    print(sandbox.state)
+    ```
+
+
+    ```typescript
+    // Get sandbox ID
     const sandboxId = sandbox.id;
 
-    // Get the root directory of the Sandbox user
+    // Get the root directory of the sandbox user
     const rootDir = await sandbox.getUserRootDir();
 
-    // Get the Sandbox id, auto-stop interval and state
+    // Get the sandbox id, auto-stop interval and state
     console.log(sandbox.id)
     console.log(sandbox.autoStopInterval)
     console.log(sandbox.state)
     ```
 
 
-To get the preview URL for a specific port, check out [Preview & Authentication](https://www.daytona.io/docs/en/preview-and-authentication.md).
+    ```ruby
+    # Get sandbox ID
+    sandbox_id = sandbox.id
 
-## Stop and Start Sandbox
+    # Get the root directory of the sandbox user
+    root_dir = sandbox.get_user_home_dir
 
-The Daytona SDK provides methods to stop and start Sandboxes using Python and TypeScript.
+    # Get the sandbox id, auto-stop interval and state
+    puts sandbox.id
+    puts sandbox.auto_stop_interval
+    puts sandbox.state
+    ```
 
-Stopped Sandboxes maintain filesystem persistence while their memory state is cleared. They incur only disk usage costs and can be started again when needed.
+
+For more information, see the [Python SDK](https://www.daytona.io/docs/python-sdk/sync/sandbox.md#sandboxstop), [TypeScript SDK](https://www.daytona.io/docs/typescript-sdk/sandbox.md#stop), and [Ruby SDK](https://www.daytona.io/docs/ruby-sdk/sandbox.md#list) references:
+
+> [**list (Python SDK)**](https://www.daytona.io/docs/python-sdk/sync/sandbox.md#sandboxlist)
+>
+> [**list (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/sandbox.md#list)
+>
+> [**list (Ruby SDK)**](https://www.daytona.io/docs/ruby-sdk/sandbox.md#list)
+
+## Stop Sandboxes
+
+Daytona provides methods to stop sandboxes using Python, TypeScript, and Ruby.
+
+1. Navigate to [Daytona Sandboxes ↗](https://app.daytona.io/dashboard/sandboxes)
+2. Click the stop icon (**⏹**) next to the sandbox you want to stop.
+
+```text
+Stopping sandbox with ID: <sandbox-id>
+```
+
+Stopped sandboxes maintain filesystem persistence while their memory state is cleared. They incur only disk usage costs and can be started again when needed.
+
+The stopped state should be used when a sandbox is expected to be started again soon. Otherwise, it is recommended to stop and then archive the sandbox to eliminate disk usage costs.
 
     ```python
     sandbox = daytona.create(CreateSandboxParams(language="python"))
 
-    # Stop Sandbox
-
+    # Stop sandbox
     sandbox.stop()
 
     print(sandbox.id) # 7cd11133-96c1-4cc8-9baa-c757b8f8c916
 
     # The sandbox ID can later be used to find the sandbox and start it
-
     sandbox = daytona.find_one("7cd11133-96c1-4cc8-9baa-c757b8f8c916")
 
-    # Start Sandbox
-
+    # Start sandbox
     sandbox.start()
-
     ```
 
 
     ```typescript
     const sandbox = await daytona.create({ language: 'typescript' });
 
-    // Stop Sandbox
+    // Stop sandbox
     await sandbox.stop();
 
     console.log(sandbox.id) // 7cd11133-96c1-4cc8-9baa-c757b8f8c916
 
     // The sandbox ID can later be used to find the sandbox and start it
-
     const sandbox = await daytona.findOne("7cd11133-96c1-4cc8-9baa-c757b8f8c916");
 
-    // Start Sandbox
+    // Start sandbox
     await sandbox.start();
     ```
 
 
-See: [stop (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/sandbox.md#sandboxstop), [start (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/sandbox.md#sandboxstart), [find_one (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/daytona.md#daytonafind_one), [stop (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/sandbox.md#stop), [start (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/sandbox.md#start), [findOne (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/daytona.md#findone)
+    ```ruby
+    sandbox = daytona.create(Daytona::CreateSandboxFromSnapshotParams.new(language: Daytona::CodeLanguage::PYTHON))
 
-The stopped state should be used when the Sandbox is expected to be started again soon. Otherwise, it is recommended to stop and then archive the Sandbox to eliminate disk usage costs.
+    # Stop sandbox
+    sandbox.stop
 
-## Archive Sandbox
+    puts sandbox.id # 7cd11133-96c1-4cc8-9baa-c757b8f8c916
 
-The Daytona SDK provides methods to archive Sandboxes using Python and TypeScript.
+    # The sandbox ID can later be used to find the sandbox and start it
+    sandbox = daytona.find_one('7cd11133-96c1-4cc8-9baa-c757b8f8c916')
 
-When Sandboxes are archived, the entire filesystem state is moved to very cost-effective object storage, making it possible to keep Sandboxes available for an extended period.
-Starting an archived Sandbox takes more time than starting a stopped Sandbox, depending on its size.
+    # Start sandbox
+    sandbox.start
+    ```
 
-A Sandbox must be stopped before it can be archived, and can be started again in the same way as a stopped Sandbox.
+
+For more information, see the [Python SDK](https://www.daytona.io/docs/python-sdk/sync/sandbox.md#sandboxstop), [TypeScript SDK](https://www.daytona.io/docs/typescript-sdk/sandbox.md#stop), and [Ruby SDK](https://www.daytona.io/docs/ruby-sdk/sandbox.md#stop) references:
+
+> [**stop (Python SDK)**](https://www.daytona.io/docs/python-sdk/sync/sandbox.md#sandboxstop), [**stop (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/sandbox.md#stop), [**stop (Ruby SDK)**](https://www.daytona.io/docs/ruby-sdk/sandbox.md#stop)
+>
+> [**find_one (Python SDK)**](https://www.daytona.io/docs/python-sdk/sync/daytona.md#daytonafind_one), [**findOne (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/daytona.md#findone), [**find_one (Ruby SDK)**](https://www.daytona.io/docs/ruby-sdk/daytona.md#find_one)
+
+## Archive Sandboxes
+
+Daytona provides methods to archive sandboxes using Python, TypeScript, and Ruby.
+
+When sandboxes are archived, the entire filesystem state is moved to very cost-effective object storage, making it possible to keep sandboxes available for an extended period.
+Starting an archived sandbox takes more time than starting a stopped sandbox, depending on its size.
+
+A sandbox must be stopped before it can be archived, and can be started again in the same way as a stopped sandbox.
 
     ```python
     # Archive Sandbox
@@ -13128,143 +30461,273 @@ A Sandbox must be stopped before it can be archived, and can be started again in
     await sandbox.archive();
     ```
 
-See: [archive (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/sandbox.md#sandboxarchive), [archive (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/sandbox.md#archive)
+    ```ruby
+    # Archive Sandbox
+    sandbox.archive
+    ```
 
-## Delete Sandbox
+For more information, see the [Python SDK](https://www.daytona.io/docs/en/python-sdk.md), [TypeScript SDK](https://www.daytona.io/docs/en/typescript-sdk.md), and [Ruby SDK](https://www.daytona.io/docs/en/ruby-sdk.md) references:
 
-The Daytona SDK provides methods to delete Sandboxes using Python and TypeScript.
+> [**archive (Python SDK)**](https://www.daytona.io/docs/python-sdk/sync/sandbox.md#sandboxarchive)
+>
+> [**archive (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/sandbox.md#archive)
+>
+> [**archive (Ruby SDK)**](https://www.daytona.io/docs/ruby-sdk/sandbox.md#archive)
+
+## Recover Sandboxes
+
+Daytona provides methods to recover sandboxes using Python, TypeScript, and Ruby.
+
 
     ```python
-    # Delete Sandbox
+    # Recover sandbox
+    sandbox.recover()
+    ```
+
+
+    ```typescript
+    // Recover sandbox
+    await sandbox.recover();
+    ```
+
+
+
+    ```ruby
+    # Recover sandbox
+    sandbox.recover
+    ```
+
+
+For more information, see the [Python SDK](https://www.daytona.io/docs/python-sdk/sync/sandbox.md#sandboxrecover), [TypeScript SDK](https://www.daytona.io/docs/typescript-sdk/sandbox.md#recover), and [Ruby SDK](https://www.daytona.io/docs/ruby-sdk/sandbox.md#recover) references:
+
+> [**recover (Python SDK)**](https://www.daytona.io/docs/en/python-sdk/sync/sandbox.md#sandboxrecover)
+>
+> [**recover (TypeScript SDK)**](https://www.daytona.io/docs/en/typescript-sdk/sandbox.md#recover)
+>
+> [**recover (Ruby SDK)**](https://www.daytona.io/docs/en/ruby-sdk/sandbox.md#recover)
+
+### Recover from error state
+
+When a sandbox enters an error state, it can sometimes be recovered using the `recover` method, depending on the underlying error reason. The `recoverable` flag indicates whether the error state can be resolved through an automated recovery procedure.
+
+:::note
+Recovery actions are not performed automatically because they address errors that require **further user intervention**, such as freeing up storage space.
+:::
+
+    ```python
+    # Check if the Sandbox is recoverable
+    if sandbox.recoverable:
+        sandbox.recover()
+        print("Sandbox recovered successfully")
+    ```
+
+    ```typescript
+    // Check if the Sandbox is recoverable
+    if (sandbox.recoverable) {
+        await sandbox.recover();
+        console.log('Sandbox recovered successfully');
+    }
+    ```
+
+    ```ruby
+    # Check if the Sandbox is recoverable
+    if sandbox.recoverable
+      sandbox.recover
+      puts 'Sandbox recovered successfully'
+    end
+    ```
+
+For more information, see the [Python SDK](https://www.daytona.io/docs/python-sdk/sync/sandbox.md#sandboxrecover), [TypeScript SDK](https://www.daytona.io/docs/typescript-sdk/sandbox.md#recover), and [Ruby SDK](https://www.daytona.io/docs/ruby-sdk/sandbox.md#recover) references:
+
+> [**recover (Python SDK)**](https://www.daytona.io/docs/python-sdk/sync/sandbox.md#sandboxrecover)
+>
+> [**recover (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/sandbox.md#recover)
+>
+> [**recover (Ruby SDK)**](https://www.daytona.io/docs/ruby-sdk/sandbox.md#recover)
+
+## Delete Sandboxes
+
+Daytona provides methods to delete sandboxes.
+
+1. Navigate to [Daytona Sandboxes ↗](https://app.daytona.io/dashboard/sandboxes)
+2. Click the **Delete** button next to the sandbox you want to delete.
+
+```text
+Stopping sandbox with ID: <sandbox-id>
+```
+
+    ```python
+    # Delete sandbox
     sandbox.delete()
     ```
 
     ```typescript
-    // Delete Sandbox
+    // Delete sandbox
     await sandbox.delete();
     ```
 
-See: [delete (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/sandbox.md#sandboxdelete), [delete (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/sandbox.md#delete)
+    ```ruby
+    # Delete sandbox
+    sandbox.delete
+    ```
 
-:::tip
-Check out the [Daytona CLI](https://www.daytona.io/docs/en/getting-started.md#setting-up-the-daytona-cli) if you prefer managing Sandboxes through the terminal:
+For more information, see the [Python SDK](https://www.daytona.io/docs/en/python-sdk.md), [TypeScript SDK](https://www.daytona.io/docs/en/typescript-sdk.md), and [Ruby SDK](https://www.daytona.io/docs/en/ruby-sdk.md) references:
 
-```bash
-daytona sandbox list
-```
+> [**delete (Python SDK)**](https://www.daytona.io/docs/python-sdk/sync/sandbox.md#sandboxdelete)
+>
+> [**delete (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/sandbox.md#delete)
+>
+> [**delete (Ruby SDK)**](https://www.daytona.io/docs/ruby-sdk/sandbox.md#delete)
 
-```text
-Sandbox               State           Region        Last Event
-───────────────────────────────────────────────────────────────────────────
-ugliest_quokka        STARTED         us            1 hour ago
-
-associated_yak        STARTED         us            14 hours ago
-
-developed_lemur       STARTED         us            17 hours ago
-```
-
-```bash
-daytona sandbox start|stop|remove --all
-```
-
-```text
-All sandboxes have been deleted
-```
-
-:::
-
-## Automated Lifecycle Management
+## Automated lifecycle management
 
 Daytona Sandboxes can be automatically stopped, archived, and deleted based on user-defined intervals.
 
-### Auto-stop Interval
+### Auto-stop interval
 
-The auto-stop interval parameter sets the amount of time after which a running Sandbox will be automatically stopped.
+The auto-stop interval parameter sets the amount of time after which a running sandbox will be automatically stopped.
 
-Sandbox activity, such as SDK API calls or network requests through [preview URLs](https://www.daytona.io/docs/en/preview-and-authentication.md), will reset the auto-stop timer.
+**Important**: The auto-stop interval will trigger even if there are internal processes running in the sandbox. The system differentiates between "internal processes" and "active user interaction". Merely having a script or background task running is not sufficient to keep the sandbox alive.
+
+#### What resets the timer
+
+The inactivity timer resets only for specific external interactions:
+
+- Opened [preview windows](https://www.daytona.io/docs/en/preview-and-authentication.md)
+- Active [SSH connections](https://www.daytona.io/docs/en/ssh-access.md)
+- [Daytona Toolbox SDK API](https://www.daytona.io/docs/en/tools/api.md#daytona-toolbox) calls
+
+#### What does not reset the timer
+
+Internal processes running in the background do not reset the timer:
+
+- Background scripts (e.g., `npm run dev` run as a fire-and-forget command)
+- Long-running tasks without external interaction
+- Processes that don't involve SDK polling or active monitoring
+
+**Example**: If you run a long-running task like LLM inference that takes more than 15 minutes without any external interaction, the sandbox may auto-stop mid-process because the process itself doesn't count as "activity".
 
 The parameter can either be set to:
 
 - a time interval in minutes
-- `0`, which disables the auto-stop functionality, allowing the sandbox to run indefinitely
+- `0`: disables the auto-stop functionality, allowing the sandbox to run indefinitely
 
 If the parameter is not set, the default interval of `15` minutes will be used.
 
     ```python
     sandbox = daytona.create(CreateSandboxFromSnapshotParams(
         snapshot="my-snapshot-name",
-        auto_stop_interval=0,  # Disables the auto-stop feature - default is 15 minutes
+        # Disables the auto-stop feature - default is 15 minutes
+        auto_stop_interval=0,
     ))
     ```
 
     ```typescript
     const sandbox = await daytona.create({
         snapshot: "my-snapshot-name",
-        autoStopInterval: 0, // Disables the auto-stop feature - default is 15 minutes
+         // Disables the auto-stop feature - default is 15 minutes
+        autoStopInterval: 0,
     });
     ```
 
-### Auto-archive Interval
+    ```ruby
+    sandbox = daytona.create(
+      Daytona::CreateSandboxFromSnapshotParams.new(
+        snapshot: 'my-snapshot-name',
+        # Disables the auto-stop feature - default is 15 minutes
+        auto_stop_interval: 0
+      )
+    )
+    ```
 
-The auto-archive interval parameter sets the amount of time after which a continuously stopped Sandbox will be automatically archived.
+For more information, see the [Python SDK](https://www.daytona.io/docs/python-sdk/sync/sandbox.md#sandboxset_autostop_interval), [TypeScript SDK](https://www.daytona.io/docs/typescript-sdk/sandbox.md#set_auto_stop_interval), and [Ruby SDK](https://www.daytona.io/docs/ruby-sdk/sandbox.md#set_auto_stop_interval) references:
+
+> [**set_auto_stop_interval (Python SDK)**](https://www.daytona.io/docs/python-sdk/sync/sandbox.md#sandboxset_autostop_interval)
+>
+> [**setAutostopInterval (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/sandbox.md#setautostopinterval)
+>
+> [**set_auto_stop_interval (Ruby SDK)**](https://www.daytona.io/docs/ruby-sdk/sandbox.md#set_auto_stop_interval)
+
+### Auto-archive interval
+
+The auto-archive interval parameter sets the amount of time after which a continuously stopped sandbox will be automatically archived.
 
 The parameter can either be set to:
 
 - a time interval in minutes
-- `0`, which means the maximum interval of `30 days` will be used
+- `0`: means the maximum interval of `30 days` will be used
 
 If the parameter is not set, the default interval of `7 days` days will be used.
 
     ```python
     sandbox = daytona.create(CreateSandboxFromSnapshotParams(
         snapshot="my-snapshot-name",
-        auto_archive_interval=60 # Auto-archive after a Sandbox has been stopped for 1 hour
+        # Auto-archive after a sandbox has been stopped for 1 hour
+        auto_archive_interval=60,
     ))
     ```
 
     ```typescript
     const sandbox = await daytona.create({
         snapshot: "my-snapshot-name",
-        autoArchiveInterval: 60 // Auto-archive after a Sandbox has been stopped for 1 hour
+        // Auto-archive after a sandbox has been stopped for 1 hour
+        autoArchiveInterval: 60,
     });
     ```
 
-### Auto-delete Interval
+    ```ruby
+    sandbox = daytona.create(
+      Daytona::CreateSandboxFromSnapshotParams.new(
+        snapshot: 'my-snapshot-name',
+        # Auto-archive after a sandbox has been stopped for 1 hour
+        auto_archive_interval: 60
+      )
+    )
+    ```
 
-The auto-delete interval parameter sets the amount of time after which a continuously stopped Sandbox will be automatically deleted. By default, Sandboxes will never be automatically deleted.
+For more information, see the [Python SDK](https://www.daytona.io/docs/python-sdk/sync/sandbox.md#sandboxset_auto_archive_interval), [TypeScript SDK](https://www.daytona.io/docs/typescript-sdk/sandbox.md#set_auto_archive_interval), and [Ruby SDK](https://www.daytona.io/docs/ruby-sdk/sandbox.md#set_auto_archive_interval) references:
+
+> [**set_auto_archive_interval (Python SDK)**](https://www.daytona.io/docs/python-sdk/sync/sandbox.md#sandboxset_auto_archive_interval)
+>
+> [**setAutoArchiveInterval (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/sandbox.md#setautoarchiveinterval)
+>
+> [**set_auto_archive_interval (Ruby SDK)**](https://www.daytona.io/docs/ruby-sdk/sandbox.md#set_auto_archive_interval)
+
+### Auto-delete interval
+
+The auto-delete interval parameter sets the amount of time after which a continuously stopped sandbox will be automatically deleted. By default, sandboxes will never be automatically deleted.
 
 The parameter can either be set to:
 
 - a time interval in minutes
-- `-1`, which disables the auto-delete functionality
-- `0`, which means the Sandbox will be deleted immediately after stopping
+- `-1`: disables the auto-delete functionality
+- `0`: means the sandbox will be deleted immediately after stopping
 
-If the parameter is not set, the Sandbox will not be deleted automatically.
+If the parameter is not set, the sandbox will not be deleted automatically.
 
     ```python
     sandbox = daytona.create(CreateSandboxFromSnapshotParams(
         snapshot="my-snapshot-name",
-        auto_delete_interval=60,  # Auto-delete after a Sandbox has been stopped for 1 hour
+        # Auto-delete after a sandbox has been stopped for 1 hour
+        auto_delete_interval=60,
     ))
 
-    # Delete the Sandbox immediately after it has been stopped
-
+    # Delete the sandbox immediately after it has been stopped
     sandbox.set_auto_delete_interval(0)
 
     # Disable auto-deletion
-
     sandbox.set_auto_delete_interval(-1)
-
     ```
 
 
     ```typescript
     const sandbox = await daytona.create({
         snapshot: "my-snapshot-name",
-        autoDeleteInterval: 60, // Auto-delete after a Sandbox has been stopped for 1 hour
+        // Auto-delete after a sandbox has been stopped for 1 hour
+        autoDeleteInterval: 60,
     });
 
-    // Delete the Sandbox immediately after it has been stopped
+    // Delete the sandbox immediately after it has been stopped
     await sandbox.setAutoDeleteInterval(0)
 
     // Disable auto-deletion
@@ -13272,121 +30735,210 @@ If the parameter is not set, the Sandbox will not be deleted automatically.
     ```
 
 
-## Run Indefinitely
+    ```ruby
+    sandbox = daytona.create(
+      Daytona::CreateSandboxFromSnapshotParams.new(
+        snapshot: 'my-snapshot-name',
+        # Auto-delete after a sandbox has been stopped for 1 hour
+        auto_delete_interval: 60
+      )
+    )
 
-By default, Sandboxes auto-stop after 15 minutes of inactivity. To keep a Sandbox running without interruption, set the auto-stop interval to `0` when creating a new Sandbox:
+    # Delete the sandbox immediately after it has been stopped
+    sandbox.set_auto_delete_interval(0)
+
+    # Disable auto-deletion
+    sandbox.set_auto_delete_interval(-1)
+    ```
+
+
+For more information, see the [Python SDK](https://www.daytona.io/docs/python-sdk/sync/sandbox.md#sandboxset_auto_delete_interval), [TypeScript SDK](https://www.daytona.io/docs/typescript-sdk/sandbox.md#set_auto_delete_interval), and [Ruby SDK](https://www.daytona.io/docs/ruby-sdk/sandbox.md#set_auto_delete_interval) references:
+
+> [**set_auto_delete_interval (Python SDK)**](https://www.daytona.io/docs/python-sdk/sync/sandbox.md#sandboxset_auto_delete_interval)
+>
+> [**setAutoDeleteInterval (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/sandbox.md#setautodeleteinterval)
+>
+> [**set_auto_delete_interval (Ruby SDK)**](https://www.daytona.io/docs/ruby-sdk/sandbox.md#set_auto_delete_interval)
+
+### Running indefinitely
+
+By default, Daytona Sandboxes auto-stop after 15 minutes of inactivity. To keep a sandbox running without interruption, set the auto-stop interval to `0` when creating a new sandbox:
 
     ```python
     sandbox = daytona.create(CreateSandboxFromSnapshotParams(
-        snapshot="my-snapshot-name",
-        auto_stop_interval=0,  # Disables the auto-stop feature - default is 15 minutes
+        snapshot="my_awesome_snapshot",
+        # Disables the auto-stop feature - default is 15 minutes
+        auto_stop_interval=0,
     ))
     ```
 
     ```typescript
     const sandbox = await daytona.create({
-        snapshot: "my-snapshot-name",
-        autoStopInterval: 0, // Disables the auto-stop feature - default is 15 minutes
+        snapshot: "my_awesome_snapshot",
+        // Disables the auto-stop feature - default is 15 minutes
+        autoStopInterval: 0,
     });
     ```
 
-Snapshots are Sandbox templates that can be created from [Docker](https://www.docker.com/) or [OCI](https://opencontainers.org/) compatible images. New Sandboxes can be created from a custom Snapshot pre-configured with your required dependencies, settings, and resources, or from the [default Snapshot](#default-snapshot).
+    ```ruby
+    sandbox = daytona.create(
+      Daytona::CreateSandboxFromSnapshotParams.new(
+        snapshot: 'my_awesome_snapshot',
+        # Disables the auto-stop feature - default is 15 minutes
+        auto_stop_interval: 0
+      )
+    )
+    ```
 
-## Creating Snapshots
+Snapshots are sandbox templates created from [Docker](https://www.docker.com/) or [OCI](https://opencontainers.org/) compatible images. Sandboxes can use a [default snapshot](#default-snapshots) or custom snapshots to provide a consistent and reproducible sandbox environments for your dependencies, settings, and resources.
 
-Snapshots can be created in one of four ways: [from a public image](#using-a-public-image), [from a private image](#using-private-registries), [from a local image](#using-a-local-image), or [using the Declarative Builder](#using-the-declarative-builder).
+## Create Snapshots
 
-### Using a Public Image
+Daytona provides options to create snapshots using [public images](#using-public-images), [private images](#using-images-from-private-registries), [local images](#using-local-images), and the [declarative builder](#using-the-declarative-builder).
 
-To create a Snapshot from a public image, follow these steps:
+1. Navigate to [Daytona Snapshots ↗](https://app.daytona.io/dashboard/snapshots)
+2. Click the **Create Snapshot** button
+3. Enter the snapshot name, image (tag or digest), entrypoint, and resources
 
-1. Visit the Dashboard and click on [Snapshots](https://app.daytona.io/dashboard/snapshots)
-2. Click on **Create Snapshot**
-3. Enter the name and tag of any publicly accessible image from Docker Hub (e.g. `alpine:3.21.3`) or from another public container registry (e.g. `my-public-registry.com/custom-alpine:3.21`)
-
-Optionally, set the entrypoint field. If the image does not have a long-running entrypoint, Daytona will automatically run `sleep infinity` to prevent the container from exiting immediately.
+- **Snapshot name**: Identifier used to reference the snapshot in the SDK or CLI
+- **Image**: Base image for the snapshot. Must include either a tag (e.g., **`ubuntu:22.04`**) or a digest. The **`latest`** tag is not allowed.
+- **Entrypoint** (optional): The entrypoint command for the snapshot. Ensure that the entrypoint is a long-running command. If not provided, or if the snapshot does not have an entrypoint, `sleep infinity` will be used as the default.
+- **Resources** (optional): The resources you want the underlying Sandboxes to have. By default, Daytona Sandboxes use **1 vCPU**, **1GiB memory**, and **3GiB storage**.
 
 :::note
-Since images tagged `latest` get frequent updates, only specific tags (e.g. `0.1.0`) are supported. Same idea applies to tags such as `lts` or `stable` and we recommend avoiding those when defining an image.
+Since images tagged `latest` get frequent updates, only specific tags (e.g. `0.1.0`) are supported. Same applies to tags such as `lts` or `stable`, and we recommend avoiding those when defining an image to prevent unexpected behavior.
 :::
 
-Once the Snapshot is pulled, validated and has an `Active` state, it is ready to be used.
+For more information, see the [Python SDK](https://www.daytona.io/docs/python-sdk/sync/snapshot.md#create), [TypeScript SDK](https://www.daytona.io/docs/typescript-sdk/snapshot.md#create), and [Ruby SDK](https://www.daytona.io/docs/ruby-sdk/snapshot.md#create) references:
 
-### Images from Private Registries
+> [**create (Python SDK)**](https://www.daytona.io/docs/python-sdk/sync/snapshot.md#snapshotservicecreate)
+>
+> [**create (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/snapshot.md#create)
 
-To create a Snapshot from an image that is available in a private container registry:
+### Using public images
 
-1. Go to the [Registries](https://app.daytona.io/dashboard/registries) page in the Dashboard
-2. Click the **Add Registry** button.
-3. Fill out the form with an appropriate custom name, URL, username, password, and project (if applicable)
-4. Once the Container Registry is created, you may go back to the [Snapshots](https://app.daytona.io/dashboard/snapshots) page
-5. When creating the Snapshot, make sure to input the entire private image name, including the registry location and project name (e.g. `my-private-registry.com/<my-project>/custom-alpine:3.21`)
+Daytona supports creating snapshots from public images from Docker Hub or other public container registries.
 
-The next step is the same; simply set the `CreateSandboxFromSnapshotParams` field to use the custom Snapshot and no further authentication is needed.
+1. Navigate to [Daytona Snapshots ↗](https://app.daytona.io/dashboard/snapshots)
+2. Click the **Create Snapshot** button
+3. Enter the snapshot name and image tag or digest of any publicly accessible image from Docker Hub or from another public container registry.
 
-#### Using a Private Docker Hub Image
+Once the snapshot is pulled, validated, and has an `Active` state, it is ready to be used.
 
-To use a private Docker Hub image, you'll need to [add a Container Registry](https://www.daytona.io/docs/en/snapshots.md#images-from-private-registries) with your Docker Hub credentials:
+### Using local images
 
-- **Registry URL**: Set this to `docker.io`
-- **Username**: Enter your Docker Hub username (the account with access to the private image)
-- **Password**: Use a [Docker Hub Personal Access Token](https://docs.docker.com/docker-hub/access-tokens/) (not your account password)
-- **Create the Snapshot**: Once the registry is added, you can create a Snapshot using the full image path as the image name: `docker.io/<username>/<image>:<tag>`
+Daytona supports creating snapshots from local images or from local Dockerfiles. To create a snapshot from a local image or from a local Dockerfile, use the [Daytona CLI](https://www.daytona.io/docs/en/getting-started.md#cli).
 
-### Using a Local Image
+Daytona expects the local image to be built for AMD64 architecture. Therefore, the `--platform=linux/amd64` flag is required when building the Docker image if your machine is running on a different architecture. For more information, see the [CLI documentation](https://www.daytona.io/docs/en/tools/cli.md#daytona-snapshot-push).
 
-In order to avoid having to manually set up a private container registry and push your image there, the [Daytona CLI](https://www.daytona.io/docs/en/getting-started.md#setting-up-the-daytona-cli) allows you to create a Snapshot from your local image or from a local Dockerfile and use it in your Sandboxes.
-
-To create a Snapshot from a local image:
-
-1. Run `docker images` to ensure the image and tag you want to use is available
-2. Run `daytona snapshot push <your_local_docker_image>` to create a Snapshot and push it to Daytona, e.g.:
+1. Run **`docker images`** to ensure the image and tag you want to use is available
+2. Run **`daytona snapshot push <your_local_docker_image>`** to create a snapshot and push it to Daytona, e.g.:
 
 ```bash
 daytona snapshot push custom-alpine:3.21 --name alpine-minimal
 ```
 
 :::tip
-Use the flags `--cpu`, `--memory` and `--disk` to specify the resources you want the underlying Sandboxes to have
+Use the flags `--cpu`, `--memory` and `--disk` to specify the resources you want the underlying Sandboxes to have.
 
-For example `daytona snapshot push custom-alpine:3.21 --name alpine-minimal --cpu 2 --memory 4 --disk 8` will create Alpine Sandboxes with 2 vCPU, 4GiB of memory and 8GiB of disk space.
+Example: `daytona snapshot push custom-alpine:3.21 --name alpine-minimal --cpu 2 --memory 4 --disk 8` will create Alpine Sandboxes with 2 vCPU, 4GiB of memory and 8GiB of disk space.
 :::
 
-:::note
-Daytona expects the local image to be built for AMD64 architecture. Therefore, the `--platform=linux/amd64` flag is required when building the Docker image if your machine is running on a different architecture.
-
-For more information, see the [CLI documentation](https://www.daytona.io/docs/en/tools/cli.md#daytona-snapshot-push).
-:::
-
-Alternatively, to do it through the CLI, use the `--dockerfile` flag under `create` to pass the path to the Dockerfile you want to use and Daytona will build the Snapshot for you. The COPY/ADD commands will be automatically parsed and added to the context - to manually add files to the context you can use the `--context` flag.
+Alternatively, use the `--dockerfile` flag under `create` to pass the path to the Dockerfile you want to use and Daytona will build the snapshot for you. The COPY/ADD commands will be automatically parsed and added to the context. To manually add files to the context, use the `--context` flag.
 
 ```bash
 daytona snapshot create data-analysis01 --dockerfile ./Dockerfile
 ```
 
 ```text
-Building image from /Users/idagelic/docs/Dockerfile
+Building image from /Users/user/docs/Dockerfile
 Step 1/5 : FROM alpine:latest
 
 ...
-
  ⡿  Waiting for the Snapshot to be validated ...
-
- ...
+...
 
  ✓  Use 'harbor-transient.internal.daytona.app/daytona/trying-daytona:0.0.1' to create a new sandbox using this Snapshot
-
 ```
 
-### Using the Declarative Builder
+### Using images from private registries
 
-The declarative builder allows you to define your Snapshots using a code-first approach. See [Declarative Builder](https://www.daytona.io/docs/declarative-builder.md) for more information.
+Daytona supports creating snapshots from images from [Docker Hub](#docker-hub), [Google Artifact Registry](#google-artifact-registry), [GitHub Container Registry](#github-container-registry) or other private container registries.
 
-### Specifying Resources
+1. Navigate to [Daytona Registries ↗](https://app.daytona.io/dashboard/registries)
+2. Click the **Add Registry** button
+3. Enter the registry name, registry URL, username, password, and project (if applicable)
+4. After the container registry is successfully created, navigate to [Daytona Snapshots ↗](https://app.daytona.io/dashboard/snapshots)
+5. Click the **Create Snapshot** button
+6. Enter the snapshot name and private image tag or digest. When creating the snapshot, make sure to input the entire private image name, including the registry location and project name (e.g. **`my-private-registry.com/<my-project>/custom-alpine:3.21`**)
 
-Snapshots can be customized with specific resource requirements. By default, Daytona Sandboxes come with **1 vCPU**, **1GB RAM**, and **3GiB disk**.
+Optionally, set the **`CreateSandboxFromSnapshotParams`** field to use the custom snapshot.
 
-To customize these resources, use the `Resources` class to define exactly what you need:
+#### Docker Hub
+
+Daytona supports creating snapshots from Docker Hub images.
+
+1. Navigate to [Daytona Registries ↗](https://app.daytona.io/dashboard/registries)
+2. Click the **Add Registry** button
+3. Enter the registry name, registry URL, username, password, and project (if applicable)
+
+- **Registry URL**: `docker.io`
+- **Username**: Docker Hub username (the account with access to the image)
+- **Password**: [Docker Hub Personal Access Token](https://docs.docker.com/docker-hub/access-tokens/) (not your account password)
+- **Create the Snapshot**: `docker.io/<username>/<image>:<tag>`
+
+4. After the container registry is successfully created, navigate to [Daytona Snapshots ↗](https://app.daytona.io/dashboard/snapshots)
+5. Click the **Create Snapshot** button
+6. Enter the snapshot name and image tag or digest. When creating the snapshot, input the entire image name, including the registry location and project name (e.g. **`docker.io/<username>/<image>:<tag>`**)
+
+#### Google Artifact Registry
+
+Daytona supports creating snapshots from images from Google Artifact Registry.
+
+To use an image from Google Artifact Registry, configure the registry using a [service account key](https://cloud.google.com/iam/docs/keys-create-delete) in JSON format.
+
+1. Navigate to [Daytona Registries ↗](https://app.daytona.io/dashboard/registries)
+2. Click the **Add Registry** button
+3. Enter the registry name, registry URL, username, password, and project (if applicable)
+
+- **Registry URL**: base URL for your region (e.g., `https://us-central1-docker.pkg.dev` or `https://us-central1-docker.pkg.dev/your-org`).
+- **Username**: `_json_key`
+- **Password**: Paste the full contents of your Service Account JSON key file
+- **Project**: Google Cloud Project ID
+- **Create the Snapshot**: `us-central1-docker.pkg.dev/<project>/<repo>/<image>:<tag>`
+
+4. After the container registry is successfully created, navigate to [Daytona Snapshots ↗](https://app.daytona.io/dashboard/snapshots)
+5. Click the **Create Snapshot** button
+6. Enter the snapshot name and image tag or digest. When creating the snapshot, make sure to input the entire image name, including the registry location and project name (e.g. **`us-central1-docker.pkg.dev/<project>/<repo>/<image>:<tag>`**)
+
+#### GitHub Container Registry (GHCR)
+
+Daytona supports creating snapshots from images from GitHub Container Registry (GHCR).
+
+1. Navigate to [Daytona Registries ↗](https://app.daytona.io/dashboard/registries)
+2. Click the **Add Registry** button
+3. Enter the registry name, registry URL, username, password, and project (if applicable)
+
+- **Registry URL**: `ghcr.io`
+- **Username**: GitHub username (the account with access to the image)
+- **Password**: [GitHub Personal Access Token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) (not your account password). Personal access token (PAT) requires **`write:packages`**, **`read:packages`**, and **`delete:packages`** scopes.
+
+4. After the container registry is successfully created, navigate to [Daytona Snapshots ↗](https://app.daytona.io/dashboard/snapshots)
+5. Click the **Create Snapshot** button
+6. Enter the snapshot name and image tag or digest. When creating the snapshot, make sure to input the entire image name, including the registry location and project name (e.g. **`ghcr.io/<my-project>/custom-alpine:3.21`**)
+
+### Using the declarative builder
+
+[Declarative Builder](https://www.daytona.io/docs/declarative-builder.md) provides a code-first approach to define your snapshots.
+
+### Snapshot resources
+
+Snapshots can be customized with specific resource requirements. By default, Daytona Sandboxes use **1 vCPU**, **1GB RAM**, and **3GiB disk**. For more information, see [sandbox resources](https://www.daytona.io/docs/en/sandboxes.md#resources).
+
+To view your available resources and limits, see [limits](https://www.daytona.io/docs/limits.md) or navigate to [Daytona Limits ↗](https://app.daytona.io/dashboard/limits).
+
+Snapshot resources can be customized using the `Resources` class.
+
 
 ```python
 from daytona import (
@@ -13398,32 +30950,32 @@ from daytona import (
 
 daytona = Daytona()
 
-# Create a Snapshot with custom resources
+# Create a snapshot with custom resources
 daytona.snapshot.create(
-    CreateSnapshotParams(
-        name="my-snapshot",
-        image=Image.debian_slim("3.12"),
-        # All resource parameters are optional:
-        resources=Resources(
-          cpu=2,
-          memory=4,
-          disk=8,
-        ),
+  CreateSnapshotParams(
+    name="my-snapshot",
+    image=Image.debian_slim("3.12"),
+    resources=Resources(
+      cpu=2,
+      memory=4,
+      disk=8,
     ),
-    on_logs=print,
+  ),
+  on_logs=print,
 )
 ```
+
+
 ```typescript
-import { Daytona, Image } from "@daytonaio/sdk";
+import { Daytona, Image } from '@daytonaio/sdk'
 
-const daytona = new Daytona();
+const daytona = new Daytona()
 
-// Create a Snapshot with custom resources
+// Create a snapshot with custom resources
 await daytona.snapshot.create(
   {
-    name: "my-snapshot",
-    image: Image.debianSlim("3.13"),
-    // All resource parameters are optional:
+    name: 'my-snapshot',
+    image: Image.debianSlim('3.13'),
     resources: {
       cpu: 2,
       memory: 4,
@@ -13431,73 +30983,248 @@ await daytona.snapshot.create(
     },
   },
   { onLogs: console.log }
+)
+```
+
+
+
+```ruby
+require 'daytona'
+
+daytona = Daytona::Daytona.new
+
+# Create a snapshot with custom resources
+daytona.snapshot.create(
+  Daytona::CreateSnapshotParams.new(
+    name: 'my-snapshot',
+    image: Daytona::Image.debian_slim('3.12'),
+    resources: Daytona::Resources.new(
+      cpu: 2,
+      memory: 4,
+      disk: 8
+    )
+  ),
+  on_logs: proc { |chunk| puts chunk }
+)
+```
+
+
+For more information, see the [Python SDK](https://www.daytona.io/docs/python-sdk.md), [TypeScript SDK](https://www.daytona.io/docs/typescript-sdk.md), and [Ruby SDK](https://www.daytona.io/docs/ruby-sdk.md) references:
+
+> [**CreateSnapshotParams (Python SDK)**](https://www.daytona.io/docs/python-sdk/sync/snapshot.md#createsnapshotparams)
+>
+> [**CreateSnapshotParams (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/snapshot.md#create)
+>
+> [**CreateSnapshotParams (Ruby SDK)**](https://www.daytona.io/docs/ruby-sdk/snapshot.md#create)
+
+### Specifying Region
+
+When creating a Snapshot, you can specify the region in which it will be available. If not specified, the Snapshot will be created in your organization's default region. 
+
+When you later create a Sandbox from this Snapshot, you can use the Snapshot's region as the target region for the Sandbox.
+
+```python
+from daytona import (
+    Daytona,
+    CreateSnapshotParams,
+    Image,
+)
+
+daytona = Daytona()
+
+# Create a Snapshot in a specific region
+daytona.snapshot.create(
+  CreateSnapshotParams(
+    name="my-snapshot",
+    image=Image.debian_slim("3.12"),
+    region_id="us",
+  ),
+  on_logs=print,
+)
+
+```
+```typescript
+import { Daytona, Image } from "@daytonaio/sdk";
+
+const daytona = new Daytona();
+
+// Create a Snapshot in a specific region
+await daytona.snapshot.create(
+  {
+    name: "my-snapshot",
+    image: Image.debianSlim("3.13"),
+    regionId: "us",
+  },
+  { onLogs: console.log }
 );
 ```
 
 
+```ruby
+require 'daytona'
 
-Check your available resources and limits in the [dashboard](https://app.daytona.io/dashboard/limits).
+daytona = Daytona::Daytona.new
 
-## Using Snapshots
+# Create a Snapshot with custom resources
+daytona.snapshot.create(
+  Daytona::CreateSnapshotParams.new(
+    name: 'my-snapshot',
+    image: Daytona::Image.debian_slim('3.12'),
+    # All resource parameters are optional:
+    resources: Daytona::Resources.new(
+      cpu: 2,
+      memory: 4,
+      disk: 8
+    )
+  ),
+  on_logs: proc { |chunk| puts chunk }
+)
+```
 
-To use a Snapshot in your Sandbox, specify the `snapshot` field in the `CreateSandboxFromSnapshotParams` object:
+
+## Get a Snapshot by name
+
+Daytona provides an option to get a snapshot by name.
+
+The following snippet returns the snapshot with the specified name:
+
 
 ```python
-sandbox = daytona.create(CreateSandboxFromSnapshotParams(
-    snapshot="my-snapshot-name",
-))
+daytona = Daytona()
+snapshot = daytona.snapshot.get("my-awesome-snapshot")
+print(f"{snapshot.name} ({snapshot.image_name})")
 ```
+
+
 ```typescript
-const sandbox = await daytona.create({
-  snapshot: "my-snapshot-name",
-})
+const daytona = new Daytona()
+const snapshot = await daytona.snapshot.get('my-awesome-snapshot')
+console.log(`Snapshot ${snapshot.name} is in state ${snapshot.state}`)
 ```
 
-For examples of running code inside a sandbox, see the [Getting Started Guide](https://www.daytona.io/docs/en/getting-started.md#run-code-inside-a-sandbox).
 
-## Deleting Snapshots
 
-To delete custom Snapshots:
+```ruby
+daytona = Daytona::Daytona.new
+snapshot = daytona.snapshot.get('my-awesome-snapshot')
+puts "#{snapshot.name} (#{snapshot.image_name})"
+```
 
-1. Go to the [Snapshots](https://app.daytona.io/dashboard/snapshots) page
-2. Click the three dots at the end of the row for the Snapshot you want to delete
-3. Click the `Delete` button that appears
 
-:::tip
+For more information, see the [Python SDK](https://www.daytona.io/docs/python-sdk/sync/snapshot.md#snapshotget), [TypeScript SDK](https://www.daytona.io/docs/typescript-sdk/snapshot.md#get), and [Ruby SDK](https://www.daytona.io/docs/ruby-sdk/snapshot.md#get) references:
 
-To temporarily disable a Snapshot, instead of deleting, you can click `Disable`. This will prevent the Snapshot from being used in any new Sandboxes but will not delete it.
+> [**get (Python SDK)**](https://www.daytona.io/docs/en/python-sdk/sync/snapshot.md#snapshotserviceget)
+>
+> [**get (TypeScript SDK)**](https://www.daytona.io/docs/en/typescript-sdk/snapshot.md#get)
+>
+> [**get (Ruby SDK)**](https://www.daytona.io/docs/en/ruby-sdk/snapshot.md#get)
 
-:::
+## List Snapshots
 
-## Running Docker in a Sandbox
+Daytona provides options to list snapshots and view their details.
+
+The following snippet lists all snapshots on the first page with a limit of 10 snapshots per page.
+
+
+```python
+daytona = Daytona()
+result = daytona.snapshot.list(page=2, limit=10)
+for snapshot in result.items:
+    print(f"{snapshot.name} ({snapshot.image_name})")
+```
+
+
+```typescript
+const daytona = new Daytona()
+const result = await daytona.snapshot.list(1, 10)
+console.log(`Found ${result.total} snapshots`)
+result.items.forEach(snapshot =>
+  console.log(`${snapshot.name} (${snapshot.imageName})`)
+)
+```
+
+
+
+```ruby
+daytona = Daytona::Daytona.new
+result = daytona.snapshot.list(page: 2, limit: 10)
+result.items.each do |snapshot|
+  puts "#{snapshot.name} (#{snapshot.image_name})"
+end
+```
+
+
+For more information, see the [Python SDK](https://www.daytona.io/docs/python-sdk/sync/snapshot.md#snapshotlist), [TypeScript SDK](https://www.daytona.io/docs/typescript-sdk/snapshot.md#list), and [Ruby SDK](https://www.daytona.io/docs/ruby-sdk/snapshot.md#list) references:
+
+> [**list (Python SDK)**](https://www.daytona.io/docs/en/python-sdk/sync/snapshot.md#snapshotservicelist)
+>
+> [**list (TypeScript SDK)**](https://www.daytona.io/docs/en/typescript-sdk/snapshot.md#list)
+>
+> [**list (Ruby SDK)**](https://www.daytona.io/docs/en/ruby-sdk/snapshot.md#list)
+
+## Activate Snapshots
+
+Snapshots automatically become inactive after 2 weeks of not being used. To activate an inactive snapshot:
+
+1. Navigate to [Daytona Snapshots ↗](https://app.daytona.io/dashboard/snapshots)
+2. Click the three dots at the end of the row for the snapshot you want to activate
+3. Click the **Activate** button
+
+For more information, see the [Python SDK](https://www.daytona.io/docs/python-sdk/sync/snapshot.md#snapshotactivate), [TypeScript SDK](https://www.daytona.io/docs/typescript-sdk/snapshot.md#activate), and [Ruby SDK](https://www.daytona.io/docs/ruby-sdk/snapshot.md#activate) references:
+
+> [**activate (Python SDK)**](https://www.daytona.io/docs/en/python-sdk/sync/snapshot.md#snapshotserviceactivate)
+>
+> [**activate (TypeScript SDK)**](https://www.daytona.io/docs/en/typescript-sdk/snapshot.md#activate)
+>
+> [**activate (Ruby SDK)**](https://www.daytona.io/docs/en/ruby-sdk/snapshot.md#activate)
+
+## Deactivate Snapshots
+
+Daytona provides an option to deactivate snapshots. Deactivated snapshots are not available for new sandboxes.
+
+1. Navigate to [Daytona Snapshots ↗](https://app.daytona.io/dashboard/snapshots)
+2. Click the three dots at the end of the row for the snapshot you want to deactivate
+3. Click the **Deactivate** button
+
+## Delete Snapshots
+
+Daytona provides options to delete snapshots. Deleted snapshots cannot be recovered.
+
+1. Navigate to [Daytona Snapshots ↗](https://app.daytona.io/dashboard/snapshots)
+2. Click the three dots at the end of the row for the snapshot you want to delete
+3. Click the **Delete** button
+
+```python
+daytona = Daytona()
+daytona.snapshot.delete("my-awesome-snapshot")
+print("Snapshot deleted")
+```
+
+```typescript
+const daytona = new Daytona()
+await daytona.snapshot.delete("my-awesome-snapshot")
+console.log("Snapshot deleted")
+```
+
+```ruby
+daytona = Daytona::Daytona.new
+daytona.snapshot.delete('my-awesome-snapshot')
+puts 'Snapshot deleted'
+```
+
+For more information, see the [Python SDK](https://www.daytona.io/docs/python-sdk.md), [TypeScript SDK](https://www.daytona.io/docs/typescript-sdk.md), and [Ruby SDK](https://www.daytona.io/docs/ruby-sdk.md) references:
+
+> [**delete (Python SDK)**](https://www.daytona.io/docs/python-sdk/sync/snapshot.md#snapshotdelete)
+>
+> [**delete (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/snapshot.md#delete)
+>
+> [**delete (Ruby SDK)**](https://www.daytona.io/docs/ruby-sdk/snapshot.md#delete)
+
+## Run Docker in a Sandbox
 
 Daytona Sandboxes can run Docker containers inside them (**Docker-in-Docker**), enabling you to build, test, and deploy containerized applications. This is particularly useful when your projects have dependencies on external services like databases, message queues, or other microservices.
 
-Agents can seamlessly interact with these services since they run within the same sandbox environment, providing better isolation and security compared to external service dependencies.
-
-### Creating a DinD Snapshot
-
-You can create a Snapshot with Docker support using pre-built Docker-in-Docker images as a base or by manually installing Docker in a custom image.
-
-#### Using Pre-built Images
-
-The following base images are widely used for creating Docker-in-Docker snapshots or can be used as a base for a custom Dockerfile:
-
-- `docker:28.3.3-dind` - Official Docker-in-Docker image (Alpine-based, lightweight)
-- `docker:28.3.3-dind-rootless` - Rootless Docker-in-Docker for enhanced security
-- `docker:28.3.2-dind-alpine3.22` - Docker-in-Docker image with Alpine 3.22
-
-#### Manual Docker Installation
-
-Alternatively, you can install Docker manually in a custom Dockerfile:
-
-```dockerfile
-FROM ubuntu:22.04
-# Install Docker using the official install script
-RUN curl -fsSL https://get.docker.com | VERSION=28.3.3 sh -
-```
-
-### Use Cases
+Agents can seamlessly interact with these services since they run within the same sandbox environment, providing better isolation and security compared to external service dependencies. The following use cases are supported:
 
 - Run databases (PostgreSQL, Redis, MySQL) and other services
 - Build and test containerized applications
@@ -13508,33 +31235,119 @@ RUN curl -fsSL https://get.docker.com | VERSION=28.3.3 sh -
 Docker-in-Docker Sandboxes require additional resources due to the Docker daemon overhead. Consider allocating at least 2 vCPU and 4GiB of memory for optimal performance.
 :::
 
-## Default Snapshot
+### Create a Docker-in-Docker Snapshot
 
-When a Sandbox is created with no Snapshot specified, Daytona uses a default Snapshot that includes `python`, `node`, their language servers, and several common pip packages:
-- `anthropic` (v0.49.0)
-- `beautifulsoup4` (v4.13.3)
-- `daytona_sdk` (v0.11.1)
-- `django` (v5.1.7)
-- `flask` (v3.1.0)
-- `huggingface` (v0.0.1)
-- `instructor` (v1.7.3)
-- `keras` (v3.9.0)
-- `langchain` (v0.3.20)
-- `llama-index` (v0.12.22)
-- `matplotlib` (v3.10.1)
-- `numpy` (v2.2.3)
-- `ollama` (v0.4.7)
-- `openai` (v1.65.4)
-- `opencv-python` (v4.11.0.86)
-- `pandas` (v2.2.3)
-- `pillow` (v11.1.0)
-- `pydantic-ai` (v0.0.35)
-- `requests` (v2.32.3)
-- `scikit-learn` (v1.6.1)
-- `scipy` (v1.15.2)
+Daytona provides an option to create a snapshot with Docker support using pre-built Docker-in-Docker images as a base or by manually installing Docker in a custom image.
+
+#### Using pre-built images
+
+The following base images are widely used for creating Docker-in-Docker snapshots or can be used as a base for a custom Dockerfile:
+
+- `docker:28.3.3-dind`: official Docker-in-Docker image (Alpine-based, lightweight)
+- `docker:28.3.3-dind-rootless`: rootless Docker-in-Docker for enhanced security
+- `docker:28.3.2-dind-alpine3.22`: Docker-in-Docker image with Alpine 3.22
+
+#### Using manual installation
+
+Alternatively, install Docker manually in a custom Dockerfile:
+
+```dockerfile
+FROM ubuntu:22.04
+# Install Docker using the official install script
+RUN curl -fsSL https://get.docker.com | VERSION=28.3.3 sh -
+```
+
+## Run Kubernetes in a Sandbox
+
+Daytona Sandboxes can run a Kubernetes cluster inside the sandbox. Kubernetes runs entirely inside the sandbox and is removed when the sandbox is deleted, keeping environments secure and reproducible.
+
+### Run k3s in a Sandbox
+
+The following snippet installs and starts a k3s cluster inside a sandbox and lists all running pods.
+
+```typescript
+import { Daytona } from '@daytonaio/sdk'
+import { setTimeout } from 'timers/promises'
+
+// Initialize the Daytona client
+const daytona = new Daytona()
+
+// Create the sandbox instance
+const sandbox = await daytona.create()
+
+// Run the k3s installation script
+const response = await sandbox.process.executeCommand(
+  'curl -sfL https://get.k3s.io | sh -'
+)
+
+// Run k3s
+const sessionName = 'k3s-server'
+await sandbox.process.createSession(sessionName)
+const k3s = await sandbox.process.executeSessionCommand(sessionName, {
+  command: 'sudo /usr/local/bin/k3s server',
+  async: true,
+})
+
+// Give time to k3s to fully start
+await setTimeout(30000)
+
+// Get all pods
+const pods = await sandbox.process.executeCommand(
+  'sudo /usr/local/bin/kubectl get pod -A'
+)
+console.log(pods.result)
+```
+
+## Default Snapshots
+
+When a sandbox is created with no snapshot specified, Daytona uses a default snapshot that includes `python`, `node`, their language servers, and several common pip packages. Daytona provides three default snapshot sizes:
+
+| **Snapshot**         | **vCPU** | **Memory** | **Storage** |
+| -------------------- | -------- | ---------- | ----------- |
+| **`daytona-small`**  | 1        | 1GiB       | 3GiB        |
+| **`daytona-medium`** | 2        | 4GiB       | 8GiB        |
+| **`daytona-large`**  | 4        | 8GiB       | 10GiB       |
+
+All default snapshots are based on the `daytonaio/sandbox:<version>` image. For more information, see the [Dockerfile](https://github.com/daytonaio/daytona/blob/main/images/sandbox/Dockerfile).
+
+### Python packages (pip)
+
+- `anthropic` (v0.76.0)
+- `beautifulsoup4` (v4.14.3)
+- `claude-agent-sdk` (v0.1.22)
+- `daytona` (v0.134.0)
+- `django` (v6.0.1)
+- `flask` (v3.1.2)
+- `huggingface-hub` (v0.36.0)
+- `instructor` (v1.14.4)
+- `keras` (v3.13.0)
+- `langchain` (v1.2.7)
+- `llama-index` (v0.14.13)
+- `matplotlib` (v3.10.8)
+- `numpy` (v2.4.1)
+- `ollama` (v0.6.1)
+- `openai` (v2.15.0)
+- `opencv-python` (v4.13.0.90)
+- `pandas` (v2.3.3)
+- `pillow` (v12.1.0)
+- `pydantic-ai` (v1.47.0)
+- `requests` (v2.32.5)
+- `scikit-learn` (v1.8.0)
+- `scipy` (v1.17.0)
 - `seaborn` (v0.13.2)
-- `SQLAlchemy` (v2.0.38)
-- `transformers` (v4.49.0)
+- `sqlalchemy` (v2.0.46)
+- `torch` (v2.10.0)
+- `transformers` (v4.57.6)
+
+### Node.js packages (npm)
+
+- `@anthropic-ai/claude-code` (v2.1.19)
+- `bun` (v1.3.6)
+- `openclaw` (v2026.2.1)
+- `opencode-ai` (v1.1.35)
+- `ts-node` (v10.9.2)
+- `typescript` (v5.9.3)
+- `typescript-language-server` (v5.1.3)
 
 You can connect to any of your sandboxes via SSH using token-based authentication.
 
@@ -13567,6 +31380,19 @@ const sandbox = await daytona.get('sandbox-abc123')
 // Create SSH access token
 const sshAccess = await sandbox.createSshAccess(60)
 console.log(`SSH Token: ${sshAccess.token}`)
+```
+
+
+
+```ruby
+require 'daytona'
+
+daytona = Daytona::Daytona.new
+sandbox = daytona.get('sandbox-abc123')
+
+# Create SSH access token
+ssh_access = sandbox.create_ssh_access(expires_in_minutes: 60)
+puts "SSH Token: #{ssh_access.token}"
 ```
 
 
@@ -13627,7 +31453,17 @@ await sandbox.revokeSshAccess()
 await sandbox.revokeSshAccess('specific-token')
 ```
 
-The `daytona` command-line tool provides access to Daytona's core features including managing Snapshots and the lifecycle of Daytona Sandboxes. View the installation instructions by clicking [here](https://www.daytona.io/docs/en/getting-started.md#setting-up-the-daytona-cli).
+
+
+```ruby
+# Revoke all SSH access for the sandbox
+sandbox.revoke_ssh_access
+
+# Revoke specific SSH access for the sandbox
+sandbox.revoke_ssh_access(token: 'specific-token')
+```
+
+The `daytona` command-line tool provides access to Daytona's core features including managing Snapshots and the lifecycle of Daytona Sandboxes. View the installation instructions by clicking [here](https://www.daytona.io/docs/getting-started.md#cli).
 
 This reference lists all commands supported by the `daytona` command-line tool complete with a description of their behaviour, and any supported flags.
 You can access this documentation on a per-command basis by appending the `--help`/`-h` flag when invoking `daytona`.
@@ -13644,6 +31480,19 @@ __Flags__
 | :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 | `--version` | `-v` | Display the version of Daytona |
+
+
+## daytona archive
+Archive a sandbox
+
+```shell
+daytona archive [SANDBOX_ID] | [SANDBOX_NAME] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
 
 
 ## daytona autocomplete
@@ -13664,6 +31513,53 @@ Linux Installation: ```sudo apt-get install bash-completion```
 macOS Installation: ```brew install bash-completion```
 </Aside>
 
+## daytona create
+Create a new sandbox
+
+```shell
+daytona create [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--auto-archive` |  | Auto-archive interval in minutes (0 means the maximum interval will be used) |
+| `--auto-delete` |  | Auto-delete interval in minutes (negative value means disabled, 0 means delete immediately upon stopping) |
+| `--auto-stop` |  | Auto-stop interval in minutes (0 means disabled) |
+| `--class` |  | Sandbox class type (small, medium, large) |
+| `--context` | `-c` | Files or directories to include in the build context (can be specified multiple times) |
+| `--cpu` |  | CPU cores allocated to the sandbox |
+| `--disk` |  | Disk space allocated to the sandbox in GB |
+| `--dockerfile` | `-f` | Path to Dockerfile for Sandbox snapshot |
+| `--env` | `-e` | Environment variables (format: KEY=VALUE) |
+| `--gpu` |  | GPU units allocated to the sandbox |
+| `--label` | `-l` | Labels (format: KEY=VALUE) |
+| `--memory` |  | Memory allocated to the sandbox in MB |
+| `--name` |  | Name of the sandbox |
+| `--network-allow-list` |  | Comma-separated list of allowed CIDR network addresses for the sandbox |
+| `--network-block-all` |  | Whether to block all network access for the sandbox |
+| `--public` |  | Make sandbox publicly accessible |
+| `--snapshot` |  | Snapshot to use for the sandbox |
+| `--target` |  | Target region (eu, us) |
+| `--user` |  | User associated with the sandbox |
+| `--volume` | `-v` | Volumes to mount (format: VOLUME_NAME:MOUNT_PATH) |
+| `--help` |  | help for daytona |
+
+
+## daytona delete
+Delete a sandbox
+
+```shell
+daytona delete [SANDBOX_ID] | [SANDBOX_NAME] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--all` | `-a` | Delete all sandboxes |
+| `--help` |  | help for daytona |
+
+
 ## daytona docs
 Opens the Daytona documentation in your default browser.
 
@@ -13674,6 +31570,51 @@ daytona docs [flags]
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+
+## daytona exec
+Execute a command in a sandbox
+
+```shell
+daytona exec [SANDBOX_ID | SANDBOX_NAME] -- [COMMAND] [ARGS...] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--cwd` |  | Working directory for command execution |
+| `--timeout` |  | Command timeout in seconds (0 for no timeout) |
+| `--help` |  | help for daytona |
+
+
+## daytona info
+Get sandbox info
+
+```shell
+daytona info [SANDBOX_ID] | [SANDBOX_NAME] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
+| `--help` |  | help for daytona |
+
+
+## daytona list
+List sandboxes
+
+```shell
+daytona list [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--format` | `-f` | Output format. Must be one of (yaml, json) |
+| `--limit` | `-l` | Maximum number of items per page |
+| `--page` | `-p` | Page number for pagination (starting from 1) |
 | `--help` |  | help for daytona |
 
 
@@ -13823,120 +31764,18 @@ __Flags__
 | `--help` |  | help for daytona |
 
 
-## daytona sandbox
-Manage Daytona sandboxes
+## daytona preview-url
+Get signed preview URL for a sandbox port
 
 ```shell
-daytona sandbox [flags]
+daytona preview-url [SANDBOX_ID | SANDBOX_NAME] [flags]
 ```
 
 __Flags__
 | Long | Short | Description |
 | :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-
-
-## daytona sandbox create
-Create a new sandbox
-
-```shell
-daytona sandbox create [flags]
-```
-
-__Flags__
-| Long | Short | Description |
-| :--- | :---- | :---------- |
-| `--name` |  | Name of the sandbox |
-| `--auto-archive` |  | Auto-archive interval in minutes (0 means the maximum interval will be used) |
-| `--auto-delete` |  | Auto-delete interval in minutes (negative value means disabled, 0 means delete immediately upon stopping) |
-| `--auto-stop` |  | Auto-stop interval in minutes (0 means disabled) |
-| `--class` |  | Sandbox class type (small, medium, large) |
-| `--context` | `-c` | Files or directories to include in the build context (can be specified multiple times) |
-| `--cpu` |  | CPU cores allocated to the sandbox |
-| `--disk` |  | Disk space allocated to the sandbox in GB |
-| `--dockerfile` | `-f` | Path to Dockerfile for Sandbox snapshot |
-| `--env` | `-e` | Environment variables (format: KEY=VALUE) |
-| `--gpu` |  | GPU units allocated to the sandbox |
-| `--label` | `-l` | Labels (format: KEY=VALUE) |
-| `--memory` |  | Memory allocated to the sandbox in MB |
-| `--name` |  | Name of the sandbox |
-| `--network-allow-list` |  | Comma-separated list of allowed CIDR network addresses for the sandbox |
-| `--network-block-all` |  | Whether to block all network access for the sandbox |
-| `--public` |  | Make sandbox publicly accessible |
-| `--snapshot` |  | Snapshot to use for the sandbox |
-| `--target` |  | Target region (eu, us) |
-| `--user` |  | User associated with the sandbox |
-| `--volume` | `-v` | Volumes to mount (format: VOLUME_NAME:MOUNT_PATH) |
-| `--help` |  | help for daytona |
-
-
-## daytona sandbox delete
-Delete a sandbox
-
-```shell
-daytona sandbox delete [SANDBOX_ID] | [SANDBOX_NAME] [flags]
-```
-
-__Flags__
-| Long | Short | Description |
-| :--- | :---- | :---------- |
-| `--all` | `-a` | Delete all sandboxes |
-| `--help` |  | help for daytona |
-
-
-## daytona sandbox info
-Get sandbox info
-
-```shell
-daytona sandbox info [SANDBOX_ID] | [SANDBOX_NAME] [flags]
-```
-
-__Flags__
-| Long | Short | Description |
-| :--- | :---- | :---------- |
-| `--format` | `-f` | Output format. Must be one of (yaml, json) |
-| `--help` |  | help for daytona |
-
-
-## daytona sandbox list
-List sandboxes
-
-```shell
-daytona sandbox list [flags]
-```
-
-__Flags__
-| Long | Short | Description |
-| :--- | :---- | :---------- |
-| `--format` | `-f` | Output format. Must be one of (yaml, json) |
-| `--limit` | `-l` | Maximum number of items per page |
-| `--page` | `-p` | Page number for pagination (starting from 1) |
-| `--help` |  | help for daytona |
-
-
-## daytona sandbox start
-Start a sandbox
-
-```shell
-daytona sandbox start [SANDBOX_ID] | [SANDBOX_NAME] [flags]
-```
-
-__Flags__
-| Long | Short | Description |
-| :--- | :---- | :---------- |
-| `--help` |  | help for daytona |
-
-
-## daytona sandbox stop
-Stop a sandbox
-
-```shell
-daytona sandbox stop [SANDBOX_ID] | [SANDBOX_NAME] [flags]
-```
-
-__Flags__
-| Long | Short | Description |
-| :--- | :---- | :---------- |
+| `--expires` |  | URL expiration time in seconds |
+| `--port` | `-p` | Port number to get preview URL for (required) |
 | `--help` |  | help for daytona |
 
 
@@ -13970,6 +31809,7 @@ __Flags__
 | `--entrypoint` | `-e` | The entrypoint command for the snapshot |
 | `--image` | `-i` | The image name for the snapshot |
 | `--memory` |  | Memory that will be allocated to the underlying sandboxes in GB (default: 1) |
+| `--region` |  | ID of the region where the snapshot will be available (defaults to organization default region) |
 | `--help` |  | help for daytona |
 
 
@@ -14018,6 +31858,47 @@ __Flags__
 | `--entrypoint` | `-e` | The entrypoint command for the image |
 | `--memory` |  | Memory that will be allocated to the underlying sandboxes in GB (default: 1) |
 | `--name` | `-n` | Specify the Snapshot name |
+| `--region` |  | ID of the region where the snapshot will be available (defaults to organization default region) |
+| `--help` |  | help for daytona |
+
+
+## daytona ssh
+SSH into a sandbox
+
+```shell
+daytona ssh [SANDBOX_ID] | [SANDBOX_NAME] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--expires` |  | SSH access token expiration time in minutes (defaults to 24 hours) |
+| `--help` |  | help for daytona |
+
+
+## daytona start
+Start a sandbox
+
+```shell
+daytona start [SANDBOX_ID] | [SANDBOX_NAME] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
+| `--help` |  | help for daytona |
+
+
+## daytona stop
+Stop a sandbox
+
+```shell
+daytona stop [SANDBOX_ID] | [SANDBOX_NAME] [flags]
+```
+
+__Flags__
+| Long | Short | Description |
+| :--- | :---- | :---------- |
 | `--help` |  | help for daytona |
 
 
@@ -14383,6 +32264,229 @@ Represents a scatter chart with metadata.
 **Type declaration**:
 
 - `type` _SCATTER_ - The type of chart
+
+## CodeInterpreter
+
+Handles Python code interpretation and execution within a Sandbox.
+
+Provides methods to execute code (currently only Python) in isolated interpreter contexts,
+manage contexts, and stream execution output via callbacks.
+
+For other languages, use the `codeRun` method from the `Process` interface, or execute the appropriate command directly in the sandbox terminal.
+
+### Constructors
+
+#### new CodeInterpreter()
+
+```ts
+new CodeInterpreter(
+   clientConfig: Configuration, 
+   apiClient: InterpreterApi, 
+   getPreviewToken: () => Promise<string>, 
+   ensureToolboxUrl: () => Promise<void>): CodeInterpreter
+```
+
+**Parameters**:
+
+- `clientConfig` _Configuration_
+- `apiClient` _InterpreterApi_
+- `getPreviewToken` _\(\) =\> Promise\<string\>_
+- `ensureToolboxUrl` _\(\) =\> Promise\<void\>_
+
+
+**Returns**:
+
+- `CodeInterpreter`
+
+### Methods
+
+#### createContext()
+
+```ts
+createContext(cwd?: string): Promise<InterpreterContext>
+```
+
+Create a new isolated interpreter context.
+
+**Parameters**:
+
+- `cwd?` _string_ - Working directory for the context. Uses sandbox working directory if omitted.
+
+
+**Returns**:
+
+- `Promise<InterpreterContext>` - The created context.
+
+**Example:**
+
+```ts
+const ctx = await sandbox.codeInterpreter.createContext()
+await sandbox.codeInterpreter.runCode('x = 10', { context: ctx })
+await sandbox.codeInterpreter.deleteContext(ctx.id!)
+```
+
+***
+
+#### deleteContext()
+
+```ts
+deleteContext(context: InterpreterContext): Promise<void>
+```
+
+Delete an interpreter context and shut down its worker process.
+
+**Parameters**:
+
+- `context` _InterpreterContext_ - Context to delete.
+
+
+**Returns**:
+
+- `Promise<void>`
+
+**Example:**
+
+```ts
+const ctx = await sandbox.codeInterpreter.createContext()
+// ... use context ...
+await sandbox.codeInterpreter.deleteContext(ctx)
+```
+
+***
+
+#### listContexts()
+
+```ts
+listContexts(): Promise<InterpreterContext[]>
+```
+
+List all user-created interpreter contexts (default context is excluded).
+
+**Returns**:
+
+- `Promise<InterpreterContext[]>` - List of contexts.
+
+**Example:**
+
+```ts
+const contexts = await sandbox.codeInterpreter.listContexts()
+for (const ctx of contexts) {
+  console.log(ctx.id, ctx.language, ctx.cwd)
+}
+```
+
+***
+
+#### runCode()
+
+```ts
+runCode(code: string, options: RunCodeOptions): Promise<ExecutionResult>
+```
+
+Run Python code in the sandbox.
+
+**Parameters**:
+
+- `code` _string_ - Code to run.
+- `options` _RunCodeOptions = {}_ - Execution options (context, envs, callbacks, timeout).
+
+
+**Returns**:
+
+- `Promise<ExecutionResult>` - ExecutionResult containing stdout, stderr and optional error info.
+
+**Example:**
+
+```ts
+const handleStdout = (msg: OutputMessage) => process.stdout.write(`STDOUT: ${msg.output}`)
+const handleStderr = (msg: OutputMessage) => process.stdout.write(`STDERR: ${msg.output}`)
+const handleError = (err: ExecutionError) =>
+  console.error(`ERROR: ${err.name}: ${err.value}\n${err.traceback ?? ''}`)
+
+const code = `
+import sys
+import time
+for i in range(5):
+    print(i)
+    time.sleep(1)
+sys.stderr.write("Counting done!")
+`
+
+const result = await codeInterpreter.runCode(code, {
+  onStdout: handleStdout,
+  onStderr: handleStderr,
+  onError: handleError,
+  timeout: 10,
+})
+```
+
+***
+
+
+## ExecutionError
+
+Represents an error that occurred during code execution.
+
+**Properties**:
+
+- `name` _string_ - Error type/class name (e.g., "ValueError", "SyntaxError").
+- `traceback?` _string_ - Full traceback for the error, if available.
+- `value` _string_ - Error value/message.
+## ExecutionResult
+
+Result of code execution.
+
+**Properties**:
+
+- `error?` _ExecutionError_ - Details about an execution error, if one occurred.
+- `stderr` _string_ - Standard error captured during execution.
+- `stdout` _string_ - Standard output captured during execution.
+## OutputMessage
+
+Represents stdout or stderr output from code execution.
+
+**Properties**:
+
+- `output` _string_ - Output content.
+## RunCodeOptions
+
+Options for executing code in the interpreter.
+
+**Properties**:
+
+- `context?` _InterpreterContext_ - Interpreter context to run code in.
+- `envs?` _Record\<string, string\>_ - Environment variables for this execution.
+- `onError()?` _\(error: ExecutionError\) =\> any_ - Callback for execution errors (e.g., runtime exceptions).
+    
+    **Parameters**:
+    
+    - `error` _ExecutionError_
+    
+    
+    **Returns**:
+    
+    - `any`
+- `onStderr()?` _\(message: OutputMessage\) =\> any_ - Callback for stderr messages.
+    
+    **Parameters**:
+    
+    - `message` _OutputMessage_
+    
+    
+    **Returns**:
+    
+    - `any`
+- `onStdout()?` _\(message: OutputMessage\) =\> any_ - Callback for stdout messages.
+    
+    **Parameters**:
+    
+    - `message` _OutputMessage_
+    
+    
+    **Returns**:
+    
+    - `any`
+- `timeout?` _number_ - Timeout in seconds. Set to 0 for no timeout. Default is 10 minutes.
 
 ## ComputerUse
 
@@ -15424,8 +33528,14 @@ console.log(`Sandbox state: ${sandbox.state}`);
 #### getProxyToolboxUrl()
 
 ```ts
-getProxyToolboxUrl(): Promise<string>
+getProxyToolboxUrl(sandboxId: string, regionId: string): Promise<string>
 ```
+
+**Parameters**:
+
+- `sandboxId` _string_
+- `regionId` _string_
+
 
 **Returns**:
 
@@ -15521,6 +33631,8 @@ await daytona.stop(sandbox);
 
 Supported programming languages for code execution
 
+Python is used as the default sandbox language when no language is explicitly specified.
+
 **Enum Members**:
 
 - `JAVASCRIPT` ("javascript")
@@ -15539,7 +33651,7 @@ Base parameters for creating a new Sandbox.
 - `envVars?` _Record\<string, string\>_ - Optional environment variables to set in the Sandbox
 - `ephemeral?` _boolean_ - Whether the Sandbox should be ephemeral. If true, autoDeleteInterval will be set to 0.
 - `labels?` _Record\<string, string\>_ - Sandbox labels
-- `language?` _string_ - Programming language for direct code execution
+- `language?` _string_ - Programming language for direct code execution. Defaults to "python" if not specified.
 - `name?` _string_
 - `networkAllowList?` _string_ - Comma-separated list of allowed CIDR network addresses for the Sandbox
 - `networkBlockAll?` _boolean_ - Whether to block all network access for the Sandbox
@@ -15659,6 +33771,8 @@ Represents a volume mount for a Sandbox.
 
 - `mountPath` _string_ - Path on the Sandbox to mount the Volume
     
+- `subpath?` _string_ - Optional subpath within the volume to mount. When specified, only this S3 prefix will be accessible. When omitted, the entire volume is mounted.
+    - _Inherited from_: `SandboxVolume.subpath`
 - `volumeId` _string_ - ID of the Volume to mount
     
 
@@ -15672,6 +33786,15 @@ Represents a volume mount for a Sandbox.
 
 Base error for Daytona SDK.
 
+**Properties**:
+
+- `headers?` _AxiosHeaders_ - Response headers if available
+- `statusCode?` _number_ - HTTP status code if available
+    
+
+
+
+
 **Extends:**
 
 - `Error`
@@ -15679,50 +33802,50 @@ Base error for Daytona SDK.
 ### Extended by
 
 - `DaytonaNotFoundError`
+- `DaytonaRateLimitError`
+- `DaytonaTimeoutError`
 
 ### Constructors
 
 #### new DaytonaError()
 
-_Inherited from_: `Error.constructor`
-
 ```ts
-new DaytonaError(message?: string): DaytonaError
+new DaytonaError(
+   message: string, 
+   statusCode?: number, 
+   headers?: AxiosHeaders): DaytonaError
 ```
 
 **Parameters**:
 
-- `message?` _string_
+- `message` _string_
+- `statusCode?` _number_
+- `headers?` _AxiosHeaders_
 
 
 **Returns**:
 
 - `DaytonaError`
 
-#### new DaytonaError()
-
-_Inherited from_: `Error.constructor`
+##### Overrides
 
 ```ts
-new DaytonaError(message?: string, options?: ErrorOptions): DaytonaError
+Error.constructor
 ```
-
-**Parameters**:
-
-- `message?` _string_
-- `options?` _ErrorOptions_
-
-
-**Returns**:
-
-- `DaytonaError`
-
-***
-
-
 ## DaytonaNotFoundError
 
 Base error for Daytona SDK.
+
+**Properties**:
+
+- `headers?` _AxiosHeaders_ - Response headers if available
+    - _Inherited from_: `DaytonaError.headers`
+- `statusCode?` _number_ - HTTP status code if available
+    
+    - _Inherited from_: `DaytonaError.statusCode`
+
+
+
 
 **Extends:**
 
@@ -15732,38 +33855,113 @@ Base error for Daytona SDK.
 
 #### new DaytonaNotFoundError()
 
-_Inherited from_: `DaytonaError.constructor`
-
 ```ts
-new DaytonaNotFoundError(message?: string): DaytonaNotFoundError
+new DaytonaNotFoundError(
+   message: string, 
+   statusCode?: number, 
+   headers?: AxiosHeaders): DaytonaNotFoundError
 ```
 
 **Parameters**:
 
-- `message?` _string_
+- `message` _string_
+- `statusCode?` _number_
+- `headers?` _AxiosHeaders_
 
 
 **Returns**:
 
 - `DaytonaNotFoundError`
 
-#### new DaytonaNotFoundError()
+##### Overrides
 
-_Inherited from_: `DaytonaError.constructor`
+`DaytonaError`.`constructor`
+## DaytonaRateLimitError
+
+Error thrown when rate limit is exceeded.
+
+**Properties**:
+
+- `headers?` _AxiosHeaders_ - Response headers if available
+    - _Inherited from_: `DaytonaError.headers`
+- `statusCode?` _number_ - HTTP status code if available
+    
+    - _Inherited from_: `DaytonaError.statusCode`
+
+
+
+
+**Extends:**
+
+- `DaytonaError`
+
+### Constructors
+
+#### new DaytonaRateLimitError()
 
 ```ts
-new DaytonaNotFoundError(message?: string, options?: ErrorOptions): DaytonaNotFoundError
+new DaytonaRateLimitError(
+   message: string, 
+   statusCode?: number, 
+   headers?: AxiosHeaders): DaytonaRateLimitError
 ```
 
 **Parameters**:
 
-- `message?` _string_
-- `options?` _ErrorOptions_
+- `message` _string_
+- `statusCode?` _number_
+- `headers?` _AxiosHeaders_
 
 
 **Returns**:
 
-- `DaytonaNotFoundError`
+- `DaytonaRateLimitError`
+
+##### Overrides
+
+`DaytonaError`.`constructor`
+## DaytonaTimeoutError
+
+Error thrown when a timeout occurs.
+
+**Properties**:
+
+- `headers?` _AxiosHeaders_ - Response headers if available
+    - _Inherited from_: `DaytonaError.headers`
+- `statusCode?` _number_ - HTTP status code if available
+    - _Inherited from_: `DaytonaError.statusCode`
+
+
+
+**Extends:**
+
+- `DaytonaError`
+
+### Constructors
+
+#### new DaytonaTimeoutError()
+
+```ts
+new DaytonaTimeoutError(
+   message: string, 
+   statusCode?: number, 
+   headers?: AxiosHeaders): DaytonaTimeoutError
+```
+
+**Parameters**:
+
+- `message` _string_
+- `statusCode?` _number_
+- `headers?` _AxiosHeaders_
+
+
+**Returns**:
+
+- `DaytonaTimeoutError`
+
+##### Overrides
+
+`DaytonaError`.`constructor`
 
 ## ExecuteResponse
 
@@ -16292,7 +34490,7 @@ Represents metadata for a file download operation.
 
 - `destination?` _string_ - Destination path in the local filesystem where the file content will be streamed to.
 - `error?` _string_ - Error message if the download failed, undefined if successful.
-- `result?` _string \| Uint8Array\<ArrayBufferLike\> \| Buffer\<ArrayBufferLike\>_ - The download result - file path (if destination provided in the request)
+- `result?` _string \| Buffer\<ArrayBufferLike\> \| Uint8Array\<ArrayBufferLike\>_ - The download result - file path (if destination provided in the request)
     or bytes content (if no destination in the request), undefined if failed or no data received.
 ## FileDownloadRequest
 
@@ -17218,7 +35416,9 @@ yarn add @daytonaio/sdk
 
 ## Getting Started
 
-Here's a simple example to help you get started with the Daytona TypeScript SDK:
+### Create a Sandbox
+
+Create a Daytona Sandbox to run your code securely in an isolated environment. The following snippet is an example “Hello World” program that runs securely inside a Daytona Sandbox.
 
 ```typescript
 import { Daytona } from '@daytonaio/sdk'
@@ -17243,7 +35443,7 @@ main().catch(console.error)
 
 ## Configuration
 
-The SDK can be configured using environment variables or by passing options to the constructor:
+The Daytona SDK can be configured using environment variables or by passing options to the constructor:
 
 ```typescript
 import { Daytona } from '@daytonaio/sdk';
@@ -17253,23 +35453,27 @@ const daytona = new Daytona();
 
 // Using explicit configuration
 const daytona = new Daytona({
-  apiKey: 'your-api-key',
+  apiKey: 'YOUR_API_KEY',
   apiUrl: 'https://app.daytona.io/api',
   target: 'us'
 });
 ```
 
-## Multiple Runtime Support
+For more information on configuring the Daytona SDK, see [configuration](https://www.daytona.io/docs/en/configuration.md).
 
-The Daytona TypeScript SDK works across multiple JavaScript runtimes including Node.js, Deno, Bun, browsers, and serverless platforms (Cloudflare Workers, AWS Lambda, Azure Functions, etc.).
+## Multiple runtime support
 
-:::note[Browser and Framework Configuration]
-When using the SDK in browser-based environments or frameworks like Vite and Next.js, you'll need to configure node polyfills. See the sections below for setup instructions.
-:::
+Daytona supports multiple programming language runtimes for direct code execution inside the sandbox.
 
-### Daytona in Vite Projects
+[TypeScript SDK](https://www.daytona.io/docs/en/typescript-sdk.md) works across multiple **JavaScript runtimes** including **Node.js**, **browsers**, and **serverless platforms**: Cloudflare Workers, AWS Lambda, Azure Functions, etc.
 
-When using Daytona SDK in a Vite-based project, you need to configure node polyfills to ensure compatibility. Add the following configuration to your `vite.config.ts` file in the plugins array:
+Using the Daytona SDK in browser-based environments or frameworks like [**Vite**](https://www.daytona.io/docs/en/getting-started.md#daytona-in-vite-projects) and [**Next.js**](https://www.daytona.io/docs/en/getting-started.md#daytona-in-nextjs-projects) requires configuring node polyfills.
+
+### Daytona in Vite projects
+
+When using Daytona SDK in a Vite-based project, configure node polyfills to ensure compatibility.
+
+Add the following configuration to your `vite.config.ts` file in the `plugins` array:
 
 ```typescript
 import { nodePolyfills } from 'vite-plugin-node-polyfills'
@@ -17287,9 +35491,11 @@ import { nodePolyfills } from 'vite-plugin-node-polyfills'
 })
 ```
 
-### Daytona in Next.js Projects
+### Daytona in Next.js projects
 
-When using Daytona SDK in a Next.js project, you need to configure node polyfills to ensure compatibility with Webpack and Turbopack bundlers (depending on what you're using). Add the following configuration to your `next.config.ts` file:
+When using Daytona SDK in a Next.js project, configure node polyfills to ensure compatibility with Webpack and Turbopack bundlers.
+
+Add the following configuration to your `next.config.ts` file:
 
 ```typescript
 import type { NextConfig } from 'next'
@@ -18393,6 +36599,30 @@ await ptyHandle.resize(150, 40); // cols, rows
 
 ***
 
+#### sendSessionCommandInput()
+
+```ts
+sendSessionCommandInput(
+   sessionId: string, 
+   commandId: string, 
+data: string): Promise<void>
+```
+
+Sends input data to a command executed in a session.
+
+**Parameters**:
+
+- `sessionId` _string_ - Unique identifier of the session
+- `commandId` _string_ - Unique identifier of the command
+- `data` _string_ - Input data to send
+
+
+**Returns**:
+
+- `Promise<void>`
+
+***
+
 
 ## SessionCommandLogsResponse
 
@@ -18407,7 +36637,7 @@ await ptyHandle.resize(150, 40); // cols, rows
 
 **Properties**:
 
-- `cmdId?` _string_
+- `cmdId` _string_
     - _Inherited from_: `SessionExecuteResponse.cmdId`
 - `exitCode?` _number_
     - _Inherited from_: `SessionExecuteResponse.exitCode`
@@ -18819,6 +37049,8 @@ Represents a Daytona Sandbox.
     ```ts
     SandboxDto.buildInfo
     ```
+- `codeInterpreter` _CodeInterpreter_ - Stateful interpreter interface for executing code.
+    Currently supports only Python. For other languages, use the `process.codeRun` method.
 - `computerUse` _ComputerUse_ - Computer use operations interface for desktop automation
 - `cpu` _number_ - Number of CPUs allocated to the Sandbox
     
@@ -18921,6 +37153,13 @@ Represents a Daytona Sandbox.
     ```ts
     SandboxDto.public
     ```
+- `recoverable?` _boolean_ - Whether the Sandbox error is recoverable.
+    
+    ##### Implementation of
+    
+    ```ts
+    SandboxDto.recoverable
+    ```
 - `snapshot?` _string_ - Daytona snapshot used to create the Sandbox
     
     ##### Implementation of
@@ -18983,7 +37222,7 @@ new Sandbox(
    axiosInstance: AxiosInstance, 
    sandboxApi: SandboxApi, 
    codeToolbox: SandboxCodeToolbox, 
-   getToolboxBaseUrl: () => Promise<string>): Sandbox
+   getToolboxBaseUrl: (sandboxId: string, regionId: string) => Promise<string>): Sandbox
 ```
 
 Creates a new Sandbox instance
@@ -18995,7 +37234,7 @@ Creates a new Sandbox instance
 - `axiosInstance` _AxiosInstance_
 - `sandboxApi` _SandboxApi_ - API client for Sandbox operations
 - `codeToolbox` _SandboxCodeToolbox_ - Language-specific toolbox implementation
-- `getToolboxBaseUrl` _\(\) =\> Promise\<string\>_
+- `getToolboxBaseUrl` _\(sandboxId: string, regionId: string\) =\> Promise\<string\>_
 
 
 **Returns**:
@@ -19088,6 +37327,26 @@ Deletes the Sandbox.
 
 ***
 
+#### expireSignedPreviewUrl()
+
+```ts
+expireSignedPreviewUrl(port: number, token: string): Promise<void>
+```
+
+Expires a signed preview url for the sandbox at the specified port.
+
+**Parameters**:
+
+- `port` _number_ - The port to expire the signed preview url on.
+- `token` _string_ - The token to expire the signed preview url on.
+
+
+**Returns**:
+
+- `Promise<void>`
+
+***
+
 #### getPreviewLink()
 
 ```ts
@@ -19115,6 +37374,26 @@ const previewLink = await sandbox.getPreviewLink(3000);
 console.log(`Preview URL: ${previewLink.url}`);
 console.log(`Token: ${previewLink.token}`);
 ```
+
+***
+
+#### getSignedPreviewUrl()
+
+```ts
+getSignedPreviewUrl(port: number, expiresInSeconds?: number): Promise<SignedPortPreviewUrl>
+```
+
+Retrieves a signed preview url for the sandbox at the specified port.
+
+**Parameters**:
+
+- `port` _number_ - The port to open the preview link on.
+- `expiresInSeconds?` _number_ - The number of seconds the signed preview url will be valid for. Defaults to 60 seconds.
+
+
+**Returns**:
+
+- `Promise<SignedPortPreviewUrl>` - The response object for the signed preview url.
 
 ***
 
@@ -19177,6 +37456,62 @@ console.log(`Sandbox working directory: ${workDir}`);
 
 ***
 
+#### recover()
+
+```ts
+recover(timeout?: number): Promise<void>
+```
+
+Recover the Sandbox from a recoverable error and wait for it to be ready.
+
+**Parameters**:
+
+- `timeout?` _number = 60_ - Maximum time to wait in seconds. 0 means no timeout.
+    Defaults to 60-second timeout.
+
+
+**Returns**:
+
+- `Promise<void>`
+
+**Throws**:
+
+- `DaytonaError` - If Sandbox fails to recover or times out
+
+**Example:**
+
+```ts
+const sandbox = await daytona.get('my-sandbox-id');
+await sandbox.recover();
+console.log('Sandbox recovered successfully');
+```
+
+***
+
+#### refreshActivity()
+
+```ts
+refreshActivity(): Promise<void>
+```
+
+Refreshes the sandbox activity to reset the timer for automated lifecycle management actions.
+
+This method updates the sandbox's last activity timestamp without changing its state.
+It is useful for keeping long-running sessions alive while there is still user activity.
+
+**Returns**:
+
+- `Promise<void>`
+
+**Example:**
+
+```ts
+// Keep sandbox activity alive
+await sandbox.refreshActivity();
+```
+
+***
+
 #### refreshData()
 
 ```ts
@@ -19196,6 +37531,48 @@ await sandbox.refreshData();
 console.log(`Sandbox ${sandbox.id}:`);
 console.log(`State: ${sandbox.state}`);
 console.log(`Resources: ${sandbox.cpu} CPU, ${sandbox.memory} GiB RAM`);
+```
+
+***
+
+#### resize()
+
+```ts
+resize(resources: Resources, timeout?: number): Promise<void>
+```
+
+Resizes the Sandbox resources.
+
+Changes the CPU, memory, or disk allocation for the Sandbox. Hot resize (on running
+sandbox) only allows CPU/memory increases. Disk resize requires a stopped sandbox.
+
+**Parameters**:
+
+- `resources` _Resources_ - New resource configuration. Only specified fields will be updated.
+    - cpu: Number of CPU cores (minimum: 1). For hot resize, can only be increased.
+    - memory: Memory in GiB (minimum: 1). For hot resize, can only be increased.
+    - disk: Disk space in GiB (can only be increased, requires stopped sandbox).
+- `timeout?` _number = 60_ - Timeout in seconds for the resize operation. 0 means no timeout.
+
+
+**Returns**:
+
+- `Promise<void>`
+
+**Throws**:
+
+- If hot resize constraints are violated, disk resize attempted on running sandbox,
+  disk size decrease is attempted, no resource changes are specified, or resize operation times out.
+
+**Example:**
+
+```ts
+// Increase CPU/memory on running sandbox (hot resize)
+await sandbox.resize({ cpu: 4, memory: 8 });
+
+// Change disk (sandbox must be stopped)
+await sandbox.stop();
+await sandbox.resize({ cpu: 2, memory: 4, disk: 30 });
 ```
 
 ***
@@ -19414,7 +37791,7 @@ This method stops the Sandbox and waits for it to be fully stopped.
 **Example:**
 
 ```ts
-const sandbox = await daytona.getCurrentSandbox('my-sandbox');
+const sandbox = await daytona.get('my-sandbox-id');
 await sandbox.stop();
 console.log('Sandbox stopped successfully');
 ```
@@ -19437,6 +37814,31 @@ Validates an SSH access token for the sandbox.
 **Returns**:
 
 - `Promise<SshAccessValidationDto>` - The SSH access validation result.
+
+***
+
+#### waitForResizeComplete()
+
+```ts
+waitForResizeComplete(timeout?: number): Promise<void>
+```
+
+Waits for the Sandbox resize operation to complete.
+
+This method polls the Sandbox status until the state is no longer 'resizing'.
+
+**Parameters**:
+
+- `timeout?` _number = 60_ - Maximum time to wait in seconds. 0 means no timeout.
+
+
+**Returns**:
+
+- `Promise<void>`
+
+**Throws**:
+
+- If the sandbox ends up in an error state or resize times out.
 
 ***
 
@@ -19545,7 +37947,8 @@ Service for managing Daytona Snapshots. Can be used to list, get, create and del
 new SnapshotService(
    clientConfig: Configuration, 
    snapshotsApi: SnapshotsApi, 
-   objectStorageApi: ObjectStorageApi): SnapshotService
+   objectStorageApi: ObjectStorageApi, 
+   defaultRegionId?: string): SnapshotService
 ```
 
 **Parameters**:
@@ -19553,6 +37956,7 @@ new SnapshotService(
 - `clientConfig` _Configuration_
 - `snapshotsApi` _SnapshotsApi_
 - `objectStorageApi` _ObjectStorageApi_
+- `defaultRegionId?` _string_
 
 
 **Returns**:
@@ -19733,6 +38137,7 @@ type CreateSnapshotParams = {
   entrypoint: string[];
   image: string | Image;
   name: string;
+  regionId: string;
   resources: Resources;
 };
 ```
@@ -19744,6 +38149,7 @@ Parameters for creating a new snapshot.
 - `entrypoint?` _string\[\]_
 - `image` _string \| Image_
 - `name` _string_
+- `regionId?` _string_
 - `resources?` _Resources_
 
 
@@ -19766,6 +38172,10 @@ Represents a Daytona Snapshot which is a pre-configured sandbox.
 Service for managing Daytona Volumes.
 
 This service provides methods to list, get, create, and delete Volumes.
+
+Volumes can be mounted to Sandboxes with an optional subpath parameter to mount
+only a specific S3 prefix within the volume. When no subpath is specified,
+the entire volume is mounted.
 
 ### Constructors
 
@@ -19919,34 +38329,58 @@ Represents a Daytona Volume which is a shared storage volume for Sandboxes.
 
 - `\_\_brand` _"Volume"_
 
-Volumes are FUSE-based mounts that provide shared file access across Sandboxes. They allow Sandboxes to read from large files instantly - no need to upload files manually to each Sandbox. Volume data is stored on an S3-compatible object store.
+Volumes are FUSE-based mounts that provide shared file access across Daytona Sandboxes. They enable sandboxes to read from large files instantly - no need to upload files manually to each sandbox. Volume data is stored in an S3-compatible object store.
 
-- Multiple volumes can be mounted to a single Sandbox  
-- A single volume can be mounted to multiple Sandboxes
+- multiple volumes can be mounted to a single sandbox
+- a single volume can be mounted to multiple sandboxes
 
-## Creating Volumes
+## Create Volumes
 
-Before mounting a volume to a Sandbox, it must be created.
+Daytona provides volumes as a shared storage solution for sandboxes. To create a volume:
 
-```bash
-volume = daytona.volume.get("my-volume", create=True)
-```
-```bash
-const volume = await daytona.volume.get('my-volume', true)
-```
+1. Navigate to [Daytona Volumes ↗](https://app.daytona.io/dashboard/volumes)
+2. Click the **Create Volume** button
+3. Enter the volume name
 
-See: [volume.get (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/volume.md#volumeserviceget), [volume.get (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/volume.md#get)
+The following snippets demonstrate how to create a volume using the Daytona SDK:
 
-## Mounting Volumes
 
-Once a volume is created, it can be mounted to a Sandbox by specifying it in the `CreateSandboxFromSnapshotParams` object. Volume mount paths must meet the following requirements:
+    ```python
+    daytona = Daytona()
+    volume = daytona.volume.create("my-awesome-volume")
+    ```
+
+
+    ```typescript
+    const daytona = new Daytona();
+    const volume = await daytona.volume.create("my-awesome-volume");
+    ```
+
+    ```ruby
+    daytona = Daytona::Daytona.new
+    volume = daytona.volume.create("my-awesome-volume")
+    ```
+
+For more information, see the [Python SDK](https://www.daytona.io/docs/en/python-sdk.md), [TypeScript SDK](https://www.daytona.io/docs/en/typescript-sdk.md), and [Ruby SDK](https://www.daytona.io/docs/en/ruby-sdk.md) references:
+
+> [**volume.get (Python SDK)**](https://www.daytona.io/docs/python-sdk/sync/volume.md#volumeserviceget)
+>
+> [**volume.get (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/volume.md#get)
+>
+> [**volume.get (Ruby SDK)**](https://www.daytona.io/docs/ruby-sdk/volume.md#get)
+
+## Mount Volumes
+
+Daytona provides an option to mount a volume to a sandbox. Once a volume is created, it can be mounted to a sandbox by specifying it in the `CreateSandboxFromSnapshotParams` object. Volume mount paths must meet the following requirements:
 
 - **Must be absolute paths**: Mount paths must start with `/` (e.g., `/home/daytona/volume`)
 - **Cannot be root directory**: Cannot mount to `/` or `//`
 - **No relative path components**: Cannot contain `/../`, `/./`, or end with `/..` or `/.`
 - **No consecutive slashes**: Cannot contain multiple consecutive slashes like `//` (except at the beginning)
-- **Cannot mount to system directories**: The following system directories are prohibited:
-  - `/proc`, `/sys`, `/dev`, `/boot`, `/etc`, `/bin`, `/sbin`, `/lib`, `/lib64`
+- **Cannot mount to system directories**: The following system directories are prohibited: `/proc`, `/sys`, `/dev`, `/boot`, `/etc`, `/bin`, `/sbin`, `/lib`, `/lib64`
+
+The following snippets demonstrate how to mount a volume to a sandbox:
+
 
 ```python
 import os
@@ -19962,10 +38396,19 @@ mount_dir_1 = "/home/daytona/volume"
 
 params = CreateSandboxFromSnapshotParams(
     language="python",
-    volumes=[VolumeMount(volumeId=volume.id, mountPath=mount_dir_1)],
+    volumes=[VolumeMount(volume_id=volume.id, mount_path=mount_dir_1)],
 )
 sandbox = daytona.create(params)
+
+# Mount a specific subpath within the volume
+# This is useful for isolating data or implementing multi-tenancy
+params = CreateSandboxFromSnapshotParams(
+    language="python",
+    volumes=[VolumeMount(volume_id=volume.id, mount_path=mount_dir_1, subpath="users/alice")],
+)
+sandbox2 = daytona.create(params)
 ```
+
 
 ```typescript
 import { Daytona } from '@daytonaio/sdk'
@@ -19983,14 +38426,63 @@ const sandbox1 = await daytona.create({
   language: 'typescript',
   volumes: [{ volumeId: volume.id, mountPath: mountDir1 }],
 })
+
+// Mount a specific subpath within the volume
+// This is useful for isolating data or implementing multi-tenancy
+const sandbox2 = await daytona.create({
+  language: 'typescript',
+  volumes: [
+    { volumeId: volume.id, mountPath: mountDir, subpath: 'users/alice' },
+  ],
+})
 ```
 
 
-See: [CreateSandboxFromSnapshotParams (Python SDK)](https://www.daytona.io/docs/python-sdk/sync/daytona.md#createSandboxBaseParams), [CreateSandboxFromSnapshotParams (TypeScript SDK)](https://www.daytona.io/docs/typescript-sdk/daytona.md#createSandboxBaseParams)
+```ruby
+require 'daytona'
 
-## Working with Volumes
+daytona = Daytona::Daytona.new
 
-Once mounted, you can read from and write to the volume just like any other directory in the Sandbox file system. Files written to the volume persist beyond the lifecycle of any individual Sandbox.
+# Create a new volume or get an existing one
+volume = daytona.volume.get('my-volume', create: true)
+
+# Mount the volume to the sandbox
+mount_dir = '/home/daytona/volume'
+
+params = Daytona::CreateSandboxFromSnapshotParams.new(
+  language: Daytona::CodeLanguage::PYTHON,
+  volumes: [DaytonaApiClient::SandboxVolume.new(volume_id: volume.id, mount_path: mount_dir)]
+)
+sandbox = daytona.create(params)
+
+# Mount a specific subpath within the volume
+# This is useful for isolating data or implementing multi-tenancy
+params2 = Daytona::CreateSandboxFromSnapshotParams.new(
+  language: Daytona::CodeLanguage::PYTHON,
+  volumes: [DaytonaApiClient::SandboxVolume.new(
+    volume_id: volume.id,
+    mount_path: mount_dir,
+    subpath: 'users/alice'
+  )]
+)
+sandbox2 = daytona.create(params2)
+```
+
+
+For more information, see the [Python SDK](https://www.daytona.io/docs/en/python-sdk.md), [TypeScript SDK](https://www.daytona.io/docs/en/typescript-sdk.md) and [Ruby SDK](https://www.daytona.io/docs/en/ruby-sdk.md) references:
+
+> [**CreateSandboxFromSnapshotParams (Python SDK)**](https://www.daytona.io/docs/python-sdk/sync/daytona.md#createSandboxBaseParams)
+>
+> [**CreateSandboxFromSnapshotParams (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/daytona.md#createSandboxBaseParams)
+>
+> [**CreateSandboxFromSnapshotParams (Ruby SDK)**](https://www.daytona.io/docs/ruby-sdk/daytona.md#createsandboxfromsnapshotparams)
+
+## Work with Volumes
+
+Daytona provides an option to read from and write to the volume just like any other directory in the sandbox file system. Files written to the volume persist beyond the lifecycle of any individual sandbox.
+
+The following snippet demonstrate how to read from and write to a volume:
+
 
     ```python
     # Write to a file in the mounted volume
@@ -20001,6 +38493,8 @@ Once mounted, you can read from and write to the volume just like any other dire
     # The volume will persist even after the sandbox is removed
     sandbox.delete()
     ```
+
+
     ```typescript
     import fs from 'fs/promises'
 
@@ -20012,23 +38506,946 @@ Once mounted, you can read from and write to the volume just like any other dire
     await daytona.delete(sandbox1)
     ```
 
-## Deleting Volumes
 
-When a volume is no longer needed, it can be deleted.
+    ```ruby
+    # Write to a file in the mounted volume using the Sandbox file system API
+    sandbox.fs.upload_file('Hello from Daytona volume!', '/home/daytona/volume/example.txt')
+
+    # When you're done with the sandbox, you can remove it
+    # The volume will persist even after the sandbox is removed
+    daytona.delete(sandbox)
+    ```
+
+For more information, see the [Python SDK](https://www.daytona.io/docs/en/python-sdk.md), [TypeScript SDK](https://www.daytona.io/docs/en/typescript-sdk.md), and [Ruby SDK](https://www.daytona.io/docs/en/ruby-sdk.md) references.
+
+## Get a Volume by name
+
+Daytona provides an option to get a volume by its name.
+
+
+```python
+daytona = Daytona()
+volume = daytona.volume.get("my-awesome-volume", create=True)
+print(f"{volume.name} ({volume.id})")
+```
+
+
+
+```typescript
+const daytona = new Daytona()
+const volume = await daytona.volume.get('my-awesome-volume', true)
+console.log(`Volume ${volume.name} is in state ${volume.state}`)
+```
+
+
+For more information, see the [Python SDK](https://www.daytona.io/docs/en/python-sdk.md), [TypeScript SDK](https://www.daytona.io/docs/en/typescript-sdk.md), and [Ruby SDK](https://www.daytona.io/docs/en/ruby-sdk.md) references:
+
+> [**volume.get (Python SDK)**](https://www.daytona.io/docs/en/python-sdk/sync/volume.md#volumeserviceget)
+>
+> [**volume.get (TypeScript SDK)**](https://www.daytona.io/docs/en/typescript-sdk/volume.md#get)
+>
+> [**volume.get (Ruby SDK)**](https://www.daytona.io/docs/en/ruby-sdk/volume.md#get)
+
+## List Volumes
+
+Daytona provides an option to list all volumes.
+
+
+```python
+daytona = Daytona()
+volumes = daytona.volume.list()
+for volume in volumes:
+    print(f"{volume.name} ({volume.id})")
+```
+
+
+```typescript
+const daytona = new Daytona()
+const volumes = await daytona.volume.list()
+console.log(`Found ${volumes.length} volumes`)
+volumes.forEach(vol => console.log(`${vol.name} (${vol.id})`))
+```
+
+
+For more information, see the [Python SDK](https://www.daytona.io/docs/en/python-sdk.md), [TypeScript SDK](https://www.daytona.io/docs/en/typescript-sdk.md), and [Ruby SDK](https://www.daytona.io/docs/en/ruby-sdk.md) references:
+
+> [**volume.list (Python SDK)**](https://www.daytona.io/docs/en/python-sdk/sync/volume.md#volumeservicelist)
+>
+> [**volume.list (TypeScript SDK)**](https://www.daytona.io/docs/en/typescript-sdk/volume.md#list)
+>
+> [**volume.list (Ruby SDK)**](https://www.daytona.io/docs/en/ruby-sdk/volume.md#list)
+
+## Delete Volumes
+
+Daytona provides an option to delete a volume. Deleted volumes cannot be recovered.
+
+The following snippet demonstrate how to delete a volume:
+
 
 ```python
 volume = daytona.volume.get("my-volume", create=True)
 daytona.volume.delete(volume)
 ```
+
+
 ```typescript
 const volume = await daytona.volume.get('my-volume', true)
 await daytona.volume.delete(volume)
 ```
 
+```ruby
+volume = daytona.volume.get('my-volume', create: true)
+daytona.volume.delete(volume)
+```
+
+For more information, see the [Python SDK](https://www.daytona.io/docs/en/python-sdk.md), [TypeScript SDK](https://www.daytona.io/docs/en/typescript-sdk.md), and [Ruby SDK](https://www.daytona.io/docs/en/ruby-sdk.md) references:
+
+> [**volume.delete (Python SDK)**](https://www.daytona.io/docs/python-sdk/sync/volume.md#volumeservicedelete)
+>
+> [**volume.delete (TypeScript SDK)**](https://www.daytona.io/docs/typescript-sdk/volume.md#delete)
+>
+> [**volume.delete (Ruby SDK)**](https://www.daytona.io/docs/ruby-sdk/volume.md#delete)
+
 ## Limitations
 
 Since volumes are FUSE-based mounts, they can not be used for applications that require block storage access (like database tables).
-Volumes are generally slower for both read and write operations compared to the local Sandbox file system.
+Volumes are generally slower for both read and write operations compared to the local sandbox file system.
+
+VPN connections are a way to connect your Daytona Sandboxes to private networks. By establishing a VPN connection, your sandbox can access network resources using private IP addresses and can be accessed by other devices on the same VPN network.
+
+This integration enables communication between your development environment and existing infrastructure, allowing you to test applications against services within the private network, access shared development resources, and collaborate with team members.
+
+Daytona supports the following VPN network providers:
+
+- [Tailscale](#tailscale)
+- [OpenVPN](#openvpn)
+
+:::note
+For connecting to a VPN network, you need to [create or access your Daytona Sandbox](https://www.daytona.io/docs/en/sandboxes.md) and **have access to your VPN network provider credentials**.
+:::
+
+## Tailscale
+
+Daytona provides multiple ways to connect to a Daytona Sandbox with a Tailscale network:
+
+- [Connect with browser login](#connect-with-browser-login)
+- [Connect with auth key](#connect-with-auth-key)
+- [Connect with web terminal](#connect-with-web-terminal)
+
+When you connect a Daytona Sandbox to a Tailscale network, the sandbox becomes part of your private Tailscale network, allowing you to access resources that are available within the network and enabling other devices on the network to access the sandbox.
+
+This integration makes your sandbox appear as a device within your Tailscale network, with its own Tailscale IP address and access to other devices and services on the network.
+
+### Connect with browser login
+
+The browser login method initiates an interactive authentication flow where Tailscale generates a unique login URL that you visit in your web browser to authenticate the Dayona Sandbox.
+
+The process involves installing Tailscale, starting the daemon, initiating the login process, and then polling for the authentication status until the connection is established.
+
+The following snippet demonstrates connecting to a Tailscale network using a browser login.
+
+
+```python
+from daytona import Daytona, DaytonaConfig
+import time
+import re
+
+# Configuration
+DAYTONA_API_KEY = "YOUR_API_KEY" # Replace with your API key
+
+# Initialize the Daytona client
+config = DaytonaConfig(api_key=DAYTONA_API_KEY)
+daytona = Daytona(config)
+
+def setup_tailscale_vpn_interactive():
+    """
+    Connect a Daytona sandbox to a Tailscale network using the Python SDK.
+    Uses interactive login via browser URL (no auth key required).
+    """
+    # Create the sandbox
+    print("Creating sandbox...")
+    sandbox = daytona.create()
+    print(f"Sandbox created: {sandbox.id}")
+
+    # Step 1: Install Tailscale
+    print("\nInstalling Tailscale (this may take a few minutes)...")
+    response = sandbox.process.exec(
+        "curl -fsSL https://tailscale.com/install.sh | sh",
+        timeout=300
+    )
+    if response.exit_code != 0:
+        print(f"Error installing Tailscale: {response.result}")
+        return sandbox
+    print("Tailscale installed successfully.")
+
+    # Step 2: Start tailscaled daemon in background
+    print("\nStarting tailscaled daemon...")
+    sandbox.process.exec("nohup sudo tailscaled > /dev/null 2>&1 &", timeout=10)
+
+    # Wait for daemon to initialize
+    time.sleep(3)
+
+    # Step 3: Run tailscale up in background and capture output to a file
+    print("\nInitiating Tailscale login...")
+    sandbox.process.exec(
+        "sudo tailscale up > /tmp/tailscale-login.txt 2>&1 &",
+        timeout=10
+    )
+
+    # Wait for the login URL to be written to the file
+    time.sleep(3)
+
+    # Read the login URL from the output file
+    response = sandbox.process.exec("cat /tmp/tailscale-login.txt", timeout=10)
+    output = response.result
+    url_match = re.search(r'https://login\.tailscale\.com/a/[^\s]+', output)
+
+    if url_match:
+        login_url = url_match.group(0)
+        print(f"\n{'='*60}")
+        print("To authenticate, visit this URL in your browser:")
+        print(f"\n  {login_url}")
+        print(f"\n{'='*60}")
+        print("\nWaiting for authentication...")
+
+        # Poll for connection status
+        max_wait = 300
+        poll_interval = 5
+        waited = 0
+
+        while waited < max_wait:
+            time.sleep(poll_interval)
+            waited += poll_interval
+
+            status_response = sandbox.process.exec("tailscale status 2>&1", timeout=30)
+            status_output = status_response.result
+
+            # Check if connected
+            if status_response.exit_code == 0 and "logged out" not in status_output.lower():
+                # Verify IP is assigned
+                ip_response = sandbox.process.exec("tailscale ip -4 2>&1", timeout=10)
+                if ip_response.exit_code == 0 and ip_response.result.strip():
+                    print(f"\nConnected to Tailscale network!")
+                    print(f"Tailscale IP: {ip_response.result.strip()}")
+                    break
+
+            print(f"  Still waiting... ({waited}s)")
+        else:
+            print("\nTimeout waiting for authentication. Please try again.")
+            return sandbox
+    else:
+        # Already connected or different output
+        print(f"Output from tailscale up:\n{output}")
+
+        # Check if already connected
+        status_response = sandbox.process.exec("tailscale status", timeout=30)
+        if status_response.exit_code == 0:
+            print("\nTailscale status:")
+            print(status_response.result)
+
+    # Final status check
+    print("\nFinal Tailscale status:")
+    response = sandbox.process.exec("tailscale status", timeout=30)
+    print(response.result)
+
+    return sandbox
+
+if __name__ == "__main__":
+    sandbox = setup_tailscale_vpn_interactive()
+
+```
+
+
+
+```typescript
+import { Daytona } from '@daytonaio/sdk'
+
+// Configuration
+const DAYTONA_API_KEY = 'YOUR_API_KEY' // Replace with your API key
+
+// Initialize the Daytona client
+const daytona = new Daytona({
+  apiKey: DAYTONA_API_KEY,
+})
+
+function sleep(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
+
+async function setupTailscaleVpnInteractive(): Promise<void> {
+  /**
+   * Connect a Daytona sandbox to a Tailscale network using the TypeScript SDK.
+   * Uses interactive login via browser URL (no auth key required).
+   */
+
+  // Create the sandbox
+  console.log('Creating sandbox...')
+  const sandbox = await daytona.create()
+  console.log(`Sandbox created: ${sandbox.id}`)
+
+  // Step 1: Install Tailscale
+  console.log('\nInstalling Tailscale (this may take a few minutes)...')
+  let response = await sandbox.process.executeCommand(
+    'curl -fsSL https://tailscale.com/install.sh | sh',
+    undefined, // cwd
+    undefined, // env
+    300 // timeout
+  )
+  if (response.exitCode !== 0) {
+    console.log(`Error installing Tailscale: ${response.result}`)
+    return
+  }
+  console.log('Tailscale installed successfully.')
+
+  // Step 2: Start tailscaled daemon in background
+  console.log('\nStarting tailscaled daemon...')
+  await sandbox.process.executeCommand(
+    'nohup sudo tailscaled > /dev/null 2>&1 &',
+    undefined, // cwd
+    undefined, // env
+    10 // timeout
+  )
+
+  // Wait for daemon to initialize
+  await sleep(3000)
+
+  // Step 3: Run tailscale up in background and capture output to a file
+  console.log('\nInitiating Tailscale login...')
+  await sandbox.process.executeCommand(
+    'sudo tailscale up > /tmp/tailscale-login.txt 2>&1 &',
+    undefined, // cwd
+    undefined, // env
+    10 // timeout
+  )
+
+  // Wait for the login URL to be written to the file
+  await sleep(3000)
+
+  // Read the login URL from the output file
+  response = await sandbox.process.executeCommand(
+    'cat /tmp/tailscale-login.txt',
+    undefined, // cwd
+    undefined, // env
+    10 // timeout
+  )
+  const output = response.result || ''
+  const urlMatch = output.match(/https:\/\/login\.tailscale\.com\/a\/[^\s]+/)
+
+  if (urlMatch) {
+    const loginUrl = urlMatch[0]
+    console.log('\n' + '='.repeat(60))
+    console.log('To authenticate, visit this URL in your browser:')
+    console.log(`\n  ${loginUrl}`)
+    console.log('\n' + '='.repeat(60))
+    console.log('\nWaiting for authentication...')
+
+    // Poll for connection status
+    const maxWait = 300 // 5 minutes max wait
+    const pollInterval = 5
+    let waited = 0
+
+    while (waited < maxWait) {
+      await sleep(pollInterval * 1000)
+      waited += pollInterval
+
+      const statusResponse = await sandbox.process.executeCommand(
+        'tailscale status 2>&1',
+        undefined, // cwd
+        undefined, // env
+        30 // timeout
+      )
+      const statusOutput = statusResponse.result || ''
+
+      // Check if we're connected (status shows our machine without login prompt)
+      if (
+        statusResponse.exitCode === 0 &&
+        !statusOutput.toLowerCase().includes('logged out')
+      ) {
+        // Verify we have an IP assigned
+        const ipResponse = await sandbox.process.executeCommand(
+          'tailscale ip -4 2>&1',
+          undefined, // cwd
+          undefined, // env
+          10 // timeout
+        )
+        if (ipResponse.exitCode === 0 && ipResponse.result?.trim()) {
+          console.log('\nConnected to Tailscale network!')
+          console.log(`Tailscale IP: ${ipResponse.result.trim()}`)
+          break
+        }
+      }
+
+      console.log(`  Still waiting... (${waited}s)`)
+    }
+
+    if (waited >= maxWait) {
+      console.log('\nTimeout waiting for authentication. Please try again.')
+      return
+    }
+  } else {
+    // Maybe already connected or different output
+    console.log(`Output from tailscale up:\n${output}`)
+
+    // Check if already connected
+    const statusResponse = await sandbox.process.executeCommand(
+      'tailscale status',
+      undefined, // cwd
+      undefined, // env
+      30 // timeout
+    )
+    if (statusResponse.exitCode === 0) {
+      console.log('\nTailscale status:')
+      console.log(statusResponse.result)
+    }
+  }
+
+  // Final status check
+  console.log('\nFinal Tailscale status:')
+  response = await sandbox.process.executeCommand(
+    'tailscale status',
+    undefined, // cwd
+    undefined, // env
+    30 // timeout
+  )
+  console.log(response.result)
+}
+
+// Run the main function
+setupTailscaleVpnInteractive().catch(console.error)
+```
+
+
+Once the connection is established and authentication is complete, the sandbox will maintain its connection as long as the service is running.
+
+### Connect with auth key
+
+Using an auth key provides a non-interactive way to connect your Daytona Sandbox to Tailscale, making it suitable for automated scripts, CI/CD pipelines, or any scenario where manual browser interaction is not available.
+
+1. Access your [Tailscale admin console ↗](https://login.tailscale.com/admin/machines)
+2. Click **Add device** and select **Linux server**
+3. Apply the configuration and click **Generate install script**
+
+This will generate a script that you can use to install Tailscale and connect to the Tailscale network.
+
+```bash
+curl -fsSL https://tailscale.com/install.sh | sh && sudo tailscale up --auth-key=tskey-auth-<AUTH_KEY>
+```
+
+Copy the auth key from the generated script and use it to connect your Daytona Sandbox to Tailscale:
+
+
+```python
+from daytona import Daytona, DaytonaConfig
+import time
+
+# Configuration
+DAYTONA_API_KEY = "YOUR_API_KEY" # Replace with your API key
+TAILSCALE_AUTH_KEY = "YOUR_AUTH_KEY" # Replace with your auth key
+
+# Initialize the Daytona client
+config = DaytonaConfig(api_key=DAYTONA_API_KEY)
+daytona = Daytona(config)
+
+
+def setup_tailscale_vpn(auth_key: str):
+"""
+Connect a Daytona sandbox to a Tailscale network using the Python SDK.
+Uses auth-key for non-interactive authentication.
+"""
+# Create the sandbox
+print("Creating sandbox...")
+sandbox = daytona.create()
+print(f"Sandbox created: {sandbox.id}")
+
+# Step 1: Install Tailscale
+print("\nInstalling Tailscale (this may take a few minutes)...")
+response = sandbox.process.exec(
+    "curl -fsSL https://tailscale.com/install.sh | sh",
+    timeout=300
+)
+if response.exit_code != 0:
+    print(f"Error installing Tailscale: {response.result}")
+    return sandbox
+print("Tailscale installed successfully.")
+
+# Step 2: Start tailscaled daemon manually (systemd doesn't auto-start in sandboxes)
+print("\nStarting tailscaled daemon...")
+sandbox.process.exec("nohup sudo tailscaled > /dev/null 2>&1 &", timeout=10)
+
+# Wait for daemon to initialize
+time.sleep(3)
+
+  # Step 3: Connect with auth key
+  print("\nConnecting to Tailscale network...")
+  response = sandbox.process.exec(
+      f"sudo tailscale up --auth-key={auth_key}",
+      timeout=60
+  )
+
+  if response.exit_code != 0:
+      print(f"Error connecting: {response.result}")
+      return sandbox
+
+  print("Connected to Tailscale network.")
+
+  # Verify connection status
+  print("\nChecking Tailscale status...")
+  response = sandbox.process.exec("tailscale status", timeout=30)
+  print(f"Status:\n{response.result}")
+
+  return sandbox
+
+
+if __name__ == "__main__":
+  sandbox = setup_tailscale_vpn(TAILSCALE_AUTH_KEY)
+
+```
+
+
+```typescript
+import { Daytona } from '@daytonaio/sdk'
+
+// Configuration
+const DAYTONA_API_KEY = 'YOUR_API_KEY' // Replace with your API key
+const TAILSCALE_AUTH_KEY = 'YOUR_AUTH_KEY' // Replace with your auth key
+
+// Initialize the Daytona client
+const daytona = new Daytona({
+  apiKey: DAYTONA_API_KEY,
+})
+
+function sleep(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
+
+async function setupTailscaleVpn(authKey: string): Promise<void> {
+  /**
+   * Connect a Daytona sandbox to a Tailscale network using the TypeScript SDK.
+   * Uses auth-key for non-interactive authentication.
+   */
+
+  // Create the sandbox
+  console.log('Creating sandbox...')
+  const sandbox = await daytona.create()
+  console.log(`Sandbox created: ${sandbox.id}`)
+
+  // Step 1: Install Tailscale
+  console.log('\nInstalling Tailscale (this may take a few minutes)...')
+  let response = await sandbox.process.executeCommand(
+    'curl -fsSL https://tailscale.com/install.sh | sh',
+    undefined, // cwd
+    undefined, // env
+    300 // timeout
+  )
+  if (response.exitCode !== 0) {
+    console.log(`Error installing Tailscale: ${response.result}`)
+    return
+  }
+  console.log('Tailscale installed successfully.')
+
+  // Step 2: Start tailscaled daemon manually (systemd doesn't auto-start in sandboxes)
+  console.log('\nStarting tailscaled daemon...')
+  await sandbox.process.executeCommand(
+    'nohup sudo tailscaled > /dev/null 2>&1 &',
+    undefined, // cwd
+    undefined, // env
+    10 // timeout
+  )
+
+  // Wait for daemon to initialize
+  await sleep(3000)
+
+  // Step 3: Connect with auth key
+  console.log('\nConnecting to Tailscale network...')
+  response = await sandbox.process.executeCommand(
+    `sudo tailscale up --auth-key=${authKey}`,
+    undefined, // cwd
+    undefined, // env
+    60 // timeout
+  )
+
+  if (response.exitCode !== 0) {
+    console.log(`Error connecting: ${response.result}`)
+    return
+  }
+
+  console.log('Connected to Tailscale network.')
+
+  // Verify connection status
+  console.log('\nChecking Tailscale status...')
+  response = await sandbox.process.executeCommand(
+    'tailscale status',
+    undefined, // cwd
+    undefined, // env
+    30 // timeout
+  )
+  console.log(`Status:\n${response.result}`)
+}
+
+// Run the main function
+setupTailscaleVpn(TAILSCALE_AUTH_KEY).catch(console.error)
+```
+
+
+Once the connection is established and authentication is complete, the sandbox will maintain its connection as long as the service is running.
+
+### Connect with web terminal
+
+For working directly in the terminal or for more control over the Tailscale connection process, you can set up Tailscale manually through the Daytona [web terminal](https://www.daytona.io/docs/en/web-terminal.md) or [SSH](https://www.daytona.io/docs/en/ssh-access.md).
+
+This approach provides visibility into each step of the installation and connection process, and allows you to customize the setup if needed. The process involves installing Tailscale, starting the daemon in a persistent session using tmux, and then authenticating through the interactive login flow.
+
+1. Navigate to your sandbox [web terminal](https://www.daytona.io/docs/en/web-terminal.md) in [Daytona Dashboard ↗](https://app.daytona.io/), or [access it via SSH](https://www.daytona.io/docs/en/ssh-access.md)
+2. Install Tailscale using the official installation script:
+
+```bash
+curl -fsSL https://tailscale.com/install.sh | sh
+```
+
+This begins the Tailscale installation process and initializes the Tailscale CLI inside the sandbox. Daytona requires the Tailscale daemon to be running in the background to connect the sandbox to the Tailscale network.
+
+The recommended approach is to run it in a detached tmux (or similar) session to ensure the daemon is running in the background:
+
+3. Install tmux
+
+```bash
+sudo apt install tmux
+```
+
+4. Start the Tailscale daemon in a detached tmux session
+
+```bash
+tmux new -d -s tailscale 'sudo tailscaled'
+```
+
+5. Connect and authenticate your sandbox with the Tailscale network
+
+```bash
+sudo tailscale up
+```
+
+6. Visit the authentication URL in the web browser and follow the instructions to authenticate
+
+```txt
+To authenticate, visit:
+https://login.tailscale.com/a/<id>
+```
+
+Once authenticated, you will see the following confirmation message:
+
+```txt
+Your device <id> is logged in to the <address> tailnet.
+```
+
+You've now successfully connected your Daytona sandbox to your Tailscale network. The sandbox should appear in your [Tailscale dashboard](https://login.tailscale.com/admin/machines).
+
+## OpenVPN
+
+Daytona provides multiple ways to connect to a Daytona Sandbox with an OpenVPN network:
+
+- [Connect with client configuration](#connect-with-client-configuration)
+- [Connect with web terminal](#connect-with-web-terminal)
+
+OpenVPN uses a client-server model where your Daytona Sandbox acts as a client connecting to an OpenVPN server. This approach is suitable for connecting to existing corporate VPNs, accessing resources behind firewalls, or integrating with infrastructure that already uses OpenVPN.
+
+:::note
+Connecting a Daytona Sandbox to OpenVPN network requires a [client configuration file](#client-configuration-file).
+:::
+
+### Client configuration file
+
+Client configuration file contains the connection parameters, certificates, and keys required to establish a secure connection to your OpenVPN server. This file is typically provided by your network administrator or generated from your OpenVPN server setup.
+
+The configuration file should be named `client.ovpn` or similar, and it must contain all the required connection settings, including server address, port, protocol, encryption settings, and authentication credentials. To create this file, you can use a text editor such as nano or vim, or upload it to your sandbox if you have it prepared elsewhere.
+
+The following snippet is an example of a client configuration file. Replace the placeholders with the actual values provided by your OpenVPN server.
+
+```bash
+client
+proto udp
+explicit-exit-notify
+remote <YOUR_OPENVPN_SERVER_IP> <YOUR_OPENVPN_SERVER_PORT>
+dev tun
+resolv-retry infinite
+nobind
+persist-key
+persist-tun
+remote-cert-tls server
+verify-x509-name <YOUR_OPENVPN_SERVER_NAME> name
+auth SHA256
+auth-nocache
+cipher AES-128-GCM
+ignore-unknown-option data-ciphers
+data-ciphers AES-128-GCM
+ncp-ciphers AES-128-GCM
+tls-client
+tls-version-min 1.2
+tls-cipher TLS-ECDHE-ECDSA-WITH-AES-128-GCM-SHA256
+tls-ciphersuites TLS_AES_256_GCM_SHA384:TLS_AES_128_GCM_SHA256:TLS_CHACHA20_POLY1305_SHA256
+ignore-unknown-option block-outside-dns
+setenv opt block-outside-dns # Prevent Windows 10 DNS leak
+verb 3
+<ca>
+-----BEGIN CERTIFICATE-----
+<YOUR_OPENVPN_SERVER_CERTIFICATE>
+-----END CERTIFICATE-----
+</ca>
+<cert>
+-----BEGIN CERTIFICATE-----
+<YOUR_OPENVPN_CLIENT_CERTIFICATE>
+-----END CERTIFICATE-----
+</cert>
+<key>
+-----BEGIN PRIVATE KEY-----
+<YOUR_OPENVPN_CLIENT_PRIVATE_KEY>
+-----END PRIVATE KEY-----
+</key>
+<tls-crypt-v2>
+-----BEGIN OpenVPN tls-crypt-v2 client key-----
+<YOUR_OPENVPN_TLS_CRYPT_V2_CLIENT_KEY>
+-----END OpenVPN tls-crypt-v2 client key-----
+</tls-crypt-v2>
+```
+
+### Connect with client configuration
+
+    ```python
+from daytona import Daytona, DaytonaConfig
+import time
+
+# Configuration
+DAYTONA_API_KEY = "YOUR_API_KEY" # Replace with your API key
+
+# OpenVPN client configuration (paste your .ovpn config here)
+OPENVPN_CONFIG = """
+""".strip()
+
+# Initialize the Daytona client
+config = DaytonaConfig(api_key=DAYTONA_API_KEY)
+daytona = Daytona(config)
+
+
+def setup_openvpn(ovpn_config: str):
+    """
+    Connect a Daytona sandbox to an OpenVPN network using the Python SDK.
+    """
+    # Create the sandbox
+    print("Creating sandbox...")
+    sandbox = daytona.create()
+    print(f"Sandbox created: {sandbox.id}")
+
+    # Step 1: Install OpenVPN
+    print("\nInstalling OpenVPN...")
+    response = sandbox.process.exec(
+        "sudo apt update && sudo apt install -y openvpn",
+        timeout=120
+    )
+    if response.exit_code != 0:
+        print(f"Error installing OpenVPN: {response.result}")
+        return sandbox
+    print("OpenVPN installed successfully.")
+
+    # Step 2: Write the OpenVPN config file
+    print("\nWriting OpenVPN configuration...")
+    sandbox.fs.upload_file(ovpn_config.encode(), "/home/daytona/client.ovpn")
+    print("Configuration written to /home/daytona/client.ovpn")
+
+    # Step 3: Start OpenVPN in background
+    print("\nStarting OpenVPN tunnel...")
+    sandbox.process.exec(
+        "nohup sudo openvpn /home/daytona/client.ovpn > /tmp/openvpn.log 2>&1 &",
+        timeout=10
+    )
+
+    # Wait for connection to establish
+    print("Waiting for VPN connection to establish...")
+    time.sleep(10)
+
+    # Step 4: Verify connection
+    print("\nVerifying OpenVPN connection...")
+
+    # Check if tun interface exists
+    response = sandbox.process.exec("ip addr show tun0", timeout=10)
+    if response.exit_code == 0:
+        print("VPN tunnel interface (tun0) is up:")
+        print(response.result)
+    else:
+        print("Warning: tun0 interface not found. Checking OpenVPN logs...")
+        log_response = sandbox.process.exec("cat /tmp/openvpn.log", timeout=10)
+        print(f"OpenVPN log:\n{log_response.result}")
+        return sandbox
+
+    # Get public IP through VPN
+    print("\nChecking public IP (should be VPN server IP)...")
+    response = sandbox.process.exec("curl -s ifconfig.me", timeout=30)
+    if response.exit_code == 0:
+        print(f"Public IP: {response.result}")
+    else:
+        print(f"Could not determine public IP: {response.result}")
+
+    print("\nOpenVPN connection established successfully.")
+    return sandbox
+
+
+if __name__ == "__main__":
+    sandbox = setup_openvpn(OPENVPN_CONFIG)
+
+    ```
+    ```typescript
+import { Daytona } from '@daytonaio/sdk';
+
+// Configuration
+const DAYTONA_API_KEY = "YOUR_API_KEY"; // Replace with your API key
+
+// OpenVPN client configuration (paste your .ovpn config here)
+const OPENVPN_CONFIG = `
+`.trim();
+
+// Initialize the Daytona client
+const daytona = new Daytona({
+  apiKey: DAYTONA_API_KEY,
+});
+
+function sleep(ms: number): Promise<void> {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function setupOpenvpn(ovpnConfig: string): Promise<void> {
+  /**
+   * Connect a Daytona sandbox to an OpenVPN network using the TypeScript SDK.
+   */
+
+  // Create the sandbox
+  console.log("Creating sandbox...");
+  const sandbox = await daytona.create();
+  console.log(`Sandbox created: ${sandbox.id}`);
+
+  // Step 1: Install OpenVPN
+  console.log("\nInstalling OpenVPN...");
+  let response = await sandbox.process.executeCommand(
+    "sudo apt update && sudo apt install -y openvpn",
+    undefined,  // cwd
+    undefined,  // env
+    120         // timeout
+  );
+  if (response.exitCode !== 0) {
+    console.log(`Error installing OpenVPN: ${response.result}`);
+    return;
+  }
+  console.log("OpenVPN installed successfully.");
+
+  // Step 2: Write the OpenVPN config file
+  console.log("\nWriting OpenVPN configuration...");
+  // Use heredoc to write the config file
+  await sandbox.process.executeCommand(
+    `cat << 'OVPNEOF' > /home/daytona/client.ovpn
+${ovpnConfig}
+OVPNEOF`,
+    undefined,
+    undefined,
+    30
+  );
+  console.log("Configuration written to /home/daytona/client.ovpn");
+
+  // Step 3: Start OpenVPN in background
+  console.log("\nStarting OpenVPN tunnel...");
+  await sandbox.process.executeCommand(
+    "nohup sudo openvpn /home/daytona/client.ovpn > /tmp/openvpn.log 2>&1 &",
+    undefined,  // cwd
+    undefined,  // env
+    10          // timeout
+  );
+
+  // Wait for connection to establish
+  console.log("Waiting for VPN connection to establish...");
+  await sleep(10000);
+
+  // Step 4: Verify connection
+  console.log("\nVerifying OpenVPN connection...");
+
+  // Check if tun interface exists
+  response = await sandbox.process.executeCommand(
+    "ip addr show tun0",
+    undefined,  // cwd
+    undefined,  // env
+    10          // timeout
+  );
+  if (response.exitCode === 0) {
+    console.log("VPN tunnel interface (tun0) is up:");
+    console.log(response.result);
+  } else {
+    console.log("Warning: tun0 interface not found. Checking OpenVPN logs...");
+    const logResponse = await sandbox.process.executeCommand(
+      "cat /tmp/openvpn.log",
+      undefined,  // cwd
+      undefined,  // env
+      10          // timeout
+    );
+    console.log(`OpenVPN log:\n${logResponse.result}`);
+    return;
+  }
+
+  // Get public IP through VPN
+  console.log("\nChecking public IP (should be VPN server IP)...");
+  response = await sandbox.process.executeCommand(
+    "curl -s ifconfig.me",
+    undefined,  // cwd
+    undefined,  // env
+    30          // timeout
+  );
+  if (response.exitCode === 0) {
+    console.log(`Public IP: ${response.result}`);
+  } else {
+    console.log(`Could not determine public IP: ${response.result}`);
+  }
+
+  console.log("\nOpenVPN connection established successfully.");
+}
+
+// Run the main function
+setupOpenvpn(OPENVPN_CONFIG).catch(console.error);
+
+    ```
+
+### Connect with web terminal
+
+Daytona provides a [web terminal](https://www.daytona.io/docs/en/web-terminal.md) for interacting with your sandboxes, allowing you to install OpenVPN and connect to your OpenVPN network.
+
+1. Navigate to your sandbox [web terminal](https://www.daytona.io/docs/en/web-terminal.md) in [Daytona Dashboard ↗](https://app.daytona.io/) by clicking on the Terminal icon `>_`, or [access it via SSH](https://www.daytona.io/docs/en/ssh-access.md)
+
+2. Install OpenVPN and tmux
+
+```bash
+sudo apt update && sudo apt install -y openvpn tmux
+```
+
+3. Create the OpenVPN [client configuration file](#client-configuration-file) for your Daytona sandbox
+
+```bash
+sudo nano client.ovpn
+```
+
+4. Save the file by pressing `Ctrl+O`, then `Enter`, and exit by pressing `Ctrl+X`
+
+Daytona requires the OpenVPN tunnel to be running in the background to connect the sandbox to the OpenVPN network. The recommended approach is to run it in a detached tmux (or similar) session:
+
+5. Start OpenVPN tunnel in a background tmux session
+
+```bash
+tmux new -d -s openvpn 'sudo openvpn client.ovpn'
+```
+
+This starts the OpenVPN tunnel in a background tmux session that persists even if you disconnect from the sandbox.
+
+6. Verify the OpenVPN connection by running the following command
+
+```bash
+curl ifconfig.me
+```
+
+This will return the IP address of the sandbox connected to the OpenVPN network.
+
+You've now successfully connected your Daytona sandbox to your OpenVPN network.
 
 Daytona provides a Web Terminal for interacting with your Sandboxes, allowing for a convenient way to view files, run commands, and debug.
 

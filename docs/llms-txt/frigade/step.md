@@ -1,5 +1,9 @@
 # Source: https://docs.frigade.com/sdk/js/step.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.frigade.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Step JS Type Definition
 
 All of Frigade's Javascript SDKs share the same Flow Step type definition which is defined in the [Frigade JS SDK](https://www.npmjs.com/package/@frigade/js).

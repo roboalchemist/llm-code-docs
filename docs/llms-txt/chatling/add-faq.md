@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/api-reference/v2/knowledge-base/add-faq.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Add FAQ
 
 > Add new FAQ data sources to the knowledge base.

@@ -4,8 +4,6 @@
 title: Glue Registry
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > Glue Registry
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.glue_registry.dataset/index.html
 ---
 
 # Glue Registry
@@ -18,14 +16,14 @@ aws.glue_registry
 
 ## Fields
 
-| Title         | ID   | Type   | Data Type                                       | Description |
-| ------------- | ---- | ------ | ----------------------------------------------- | ----------- |
-| _key          | core | string |
-| account_id    | core | string |
-| created_time  | core | string | The data the registry was created.              |
-| description   | core | string | A description of the registry.                  |
-| registry_arn  | core | string | The Amazon Resource Name (ARN) of the registry. |
-| registry_name | core | string | The name of the registry.                       |
-| status        | core | string | The status of the registry.                     |
-| tags          | core | hstore |
-| updated_time  | core | string | The date the registry was updated.              |
+| Title         | ID   | Type       | Data Type                                       | Description |
+| ------------- | ---- | ---------- | ----------------------------------------------- | ----------- |
+| _key          | core | string     |
+| account_id    | core | string     |
+| created_time  | core | string     | The data the registry was created.              |
+| description   | core | string     | A description of the registry.                  |
+| registry_arn  | core | string     | The Amazon Resource Name (ARN) of the registry. |
+| registry_name | core | string     | The name of the registry.                       |
+| status        | core | string     | The status of the registry.                     |
+| tags          | core | hstore_csv |
+| updated_time  | core | string     | The date the registry was updated.              |

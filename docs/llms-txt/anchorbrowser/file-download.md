@@ -1,10 +1,19 @@
 # Source: https://docs.anchorbrowser.io/advanced/file-download.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.anchorbrowser.io/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # File Download
 
 Anchor Browser supports two methods for downloading files during your browser sessions:
 
 1. **Traditional Downloads**: Files are downloaded to the browser instance and then uploaded to S3 for retrieval
+
+<Note>
+  To download PDF files directly instead of viewing them in the browser, set `pdf_viewer` to `false` when creating your session.
+</Note>
+
 2. **P2P Downloads**: Files are captured directly in the browser using peer-to-peer technology, bypassing S3 storage
 
 ## Traditional File Downloads
@@ -14,6 +23,25 @@ The following examples demonstrate how to download a file using the traditional 
 <Steps>
   <Step title="Create a browser session">
     Use the [create session](api-reference/browser-sessions/start-browser-session) API to create a new browser session.
+    To enable automatic PDF downloads, include the following `browser` configuration:
+
+    <CodeGroup>
+      ```tsx node.js theme={null}
+      browser: {
+          pdf_viewer: {
+              active: false
+              }
+          }
+      ```
+
+      ```python python theme={null}
+      "browser": {
+          "pdf_viewer": {
+              "active": False
+              }
+          }
+      ```
+    </CodeGroup>
   </Step>
 
   <Step title="Browse and download a file">

@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/basic/image-to-image.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ComfyUI Image to Image Workflow
 
 > This guide will help you understand and complete an image to image workflow

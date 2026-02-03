@@ -19,7 +19,7 @@ Actors in Apify Store can be published under one of the following pricing models
 3. *Pay per result (PPR)*: Users don't pay for the platform usage costs. Instead, they pay the developer based on the number of results produced by the Actor.
 4. *Rental*: Users pay for the platform usage costs. However, after a trial period, they need to pay a flat monthly fee to the developer to continue using the Actor.
 
-For a detailed comparison of pricing models from the perspective of your users, refer to https://docs.apify.com/platform/actors/running/actors-in-store.md page.
+For a detailed comparison of pricing models from the perspective of your users, refer to [Actors in Store](https://docs.apify.com/platform/actors/running/actors-in-store.md) page.
 
 ## Key benefits
 
@@ -36,9 +36,9 @@ The following table compares the two main pricing models available for monetizin
 | Custom event billing     | Not available                  | Not available                | ✅ Charge for any event                                          |
 | Per-result billing       | Not available                  | ✅ Charge per dataset item   | Optional (via event; automatic via `apify-default-dataset-item`) |
 
-## Setting up monetization
+## Set up monetization
 
-Navigate to your https://console.apify.com/actors?tab=my in Apify Console, choose the Actor that you want to monetize, and select the Publication tab. ![Monetization section](/assets/images/monetization-section-5ea234343a91208580100eb37c1b9e7f.png) Open the Monetization section and complete your billing and payment details. ![Set up monetization](/assets/images/monetize_actor_set_up_monetization-7612e44589223f7e92b8adcd006bc1bb.png) Choose the pricing model for your Actor. ![Monetization wizard](/assets/images/monetization_wizard-2bdc169343175223d7b989363138e583.png) Follow the monetization wizard to configure your pricing model.
+Navigate to your [Actor page](https://console.apify.com/actors?tab=my) in Apify Console, choose the Actor that you want to monetize, and select the Publication tab. ![Monetization section](/assets/images/monetization-section-5ea234343a91208580100eb37c1b9e7f.png) Open the Monetization section and complete your billing and payment details. ![Set up monetization](/assets/images/monetize_actor_set_up_monetization-7612e44589223f7e92b8adcd006bc1bb.png) Choose the pricing model for your Actor. ![Monetization wizard](/assets/images/monetization_wizard-2bdc169343175223d7b989363138e583.png) Follow the monetization wizard to configure your pricing model.
 
 * Rental
 * Pay-per-result
@@ -50,7 +50,7 @@ Navigate to your https://console.apify.com/actors?tab=my in Apify Console, choos
 
 ![ppe monetization wizard](/assets/images/ppe-wizard-c1c3b24286f48d3ce8b2104c31260f55.png)
 
-### Changing monetization
+### Change monetization
 
 You can change the monetization setting of your Actor by using the same wizard as for the setup in the **Monetization** section of your Actor's **Publication** tab.
 
@@ -66,11 +66,11 @@ All other changes (such as decreasing prices, adjusting descriptions, or removin
 
 Frequency of major monetization adjustments
 
-You can make major monetization changes to each Actor only **once per month**. After making a major change, you must wait until it takes effect (14 days) plus an additional period before making another major change. For further information & guidelines, please refer to our https://apify.com/store-terms-and-conditions
+You can make major monetization changes to each Actor only **once per month**. After making a major change, you must wait until it takes effect (14 days) plus an additional period before making another major change. For further information & guidelines, please refer to our [Terms & Conditions](https://apify.com/store-terms-and-conditions)
 
 ## Monthly payouts and analytics
 
-Payout invoices are automatically generated on the 11th of each month, summarizing the profits from all your Actors for the previous month. In accordance with our https://apify.com/store-terms-and-conditions, only funds from legitimate users who have already paid are included in the payout invoice.
+Payout invoices are automatically generated on the 11th of each month, summarizing the profits from all your Actors for the previous month. In accordance with our [Terms & Conditions](https://apify.com/store-terms-and-conditions), only funds from legitimate users who have already paid are included in the payout invoice.
 
 How negative profits are handled
 
@@ -81,11 +81,19 @@ You have 3 days to review your payout invoice in the **Development >Insights > P
 * $20 for PayPal
 * $100 for other payout methods
 
-If the monthly profit does not meet these thresholds, as per our https://apify.com/store-terms-and-conditions, the funds will roll over to the next month until the threshold is reached.
+If the monthly profit does not meet these thresholds, as per our [Terms & Conditions](https://apify.com/store-terms-and-conditions), the funds will roll over to the next month until the threshold is reached.
+
+## Handle free users
+
+When monetizing your Actor, you might want to limit features or usage for users on the Apify free plan. If you choose to do this, you *must* handle it transparently:
+
+* Communicate upfront: Clearly state any limitations in your Actor's `README` and input schema. Users should know about restrictions *before* they run the Actor.
+* Graceful exits: If a free user hits a limit, don't crash the Actor or return a system error. Instead, exit gracefully with a clear [status message](https://docs.apify.com/platform/actors/development/programming-interface/status-messages.md#communicating-limitations) explaining the limit (e.g., "Free tier limit reached").
+* Avoid confusion: Never make a policy restriction look like a bug or platform error.
 
 ## Actor analytics
 
-Monitor your Actors' performance through the https://console.apify.com/actors/insights/analytics dashboard under **Development > Insights > Analytics**.
+Monitor your Actors' performance through the [Actor Analytics](https://console.apify.com/actors/insights/analytics) dashboard under **Development > Insights > Analytics**.
 
 The analytics dashboard allows you to select specific Actors and view key metrics aggregated across all user runs:
 
@@ -98,7 +106,7 @@ The analytics dashboard allows you to select specific Actors and view key metric
 
 All metrics can be exported as JSON for custom analysis and reporting.
 
-## Promoting your Actor
+## Promote your Actor
 
 Create search-engine-optimized descriptions and README files to improve search engine visibility. Share your Actor on multiple channels:
 
@@ -109,4 +117,4 @@ Create search-engine-optimized descriptions and README files to improve search e
 
 Remember to tag Apify in your social media posts for additional exposure. Effective promotion can significantly impact your Actor's success, differentiating between those with many paid users and those with few to none.
 
-Learn more about promoting your Actor with https://docs.apify.com/academy/actor-marketing-playbook/promote-your-actor/checklist.md.
+Learn more about promoting your Actor with [Apify's marketing checklist](https://docs.apify.com/academy/actor-marketing-playbook/promote-your-actor/checklist.md).

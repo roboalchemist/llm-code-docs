@@ -1,10 +1,11 @@
+# Source: https://docs.datadoghq.com/getting_started/ci_visibility.md
+
 # Source: https://docs.datadoghq.com/account_management/billing/ci_visibility.md
 
 ---
 title: CI Visibility Billing
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Account Management > Billing > CI Visibility Billing
-source_url: https://docs.datadoghq.com/billing/ci_visibility/index.html
 ---
 
 # CI Visibility Billing

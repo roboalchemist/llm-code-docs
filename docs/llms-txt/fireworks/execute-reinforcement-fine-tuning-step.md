@@ -1,5 +1,9 @@
 # Source: https://docs.fireworks.ai/api-reference/execute-reinforcement-fine-tuning-step.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireworks.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Execute one training step for keep-alive Reinforcement Fine-tuning Step
 
 
@@ -10,7 +14,7 @@
 openapi: 3.1.0
 info:
   title: Gateway REST API
-  version: 4.15.25
+  version: 4.21.6
 servers:
   - url: https://api.fireworks.ai
 security:
@@ -75,7 +79,3 @@ components:
       bearerFormat: API_KEY
 
 ````
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.fireworks.ai/llms.txt

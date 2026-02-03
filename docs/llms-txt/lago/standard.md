@@ -1,5 +1,9 @@
 # Source: https://getlago.com/docs/guide/plans/charges/charge-models/standard.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://getlago.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Standard
 
 Select the standard charge model if you want to charge the **same price for each

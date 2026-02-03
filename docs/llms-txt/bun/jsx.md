@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/runtime/jsx.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # JSX
 
 > Built-in JSX and TSX support in Bun with configurable transpilation options

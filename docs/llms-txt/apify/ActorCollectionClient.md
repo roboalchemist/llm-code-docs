@@ -2,19 +2,31 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/class/ActorCollectionClient.md
 
-# Source: https://docs.apify.com/api/client/python/reference/class/ActorCollectionClient.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/ActorCollectionClient.md
-
-# Source: https://docs.apify.com/api/client/python/reference/class/ActorCollectionClient.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/ActorCollectionClient.md
-
-# Source: https://docs.apify.com/api/client/python/reference/class/ActorCollectionClient.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/ActorCollectionClient.md
-
 # ActorCollectionClient<!-- -->
+
+Client for managing the collection of Actors in your account.
+
+Provides methods to list and create Actors. To access an individual Actor, use the `actor()` method on the main ApifyClient.
+
+* **@example**
+
+  ```
+  const client = new ApifyClient({ token: 'my-token' });
+  const actorsClient = client.actors();
+
+  // List all Actors
+  const { items } = await actorsClient.list();
+
+  // Create a new Actor
+  const newActor = await actorsClient.create({
+    name: 'my-actor',
+    title: 'My Actor'
+  });
+  ```
+
+* **@see**
+
+  <https://docs.apify.com/platform/actors>
 
 ### Hierarchy
 
@@ -42,25 +54,25 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#apifyClient)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L35)inheritedapifyClient
+### [**](#apifyClient)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L36)inheritedapifyClient
 
 **apifyClient: [ApifyClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/ApifyClient.md)
 
 Inherited from ResourceCollectionClient.apifyClient
 
-### [**](#baseUrl)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L27)inheritedbaseUrl
+### [**](#baseUrl)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L28)inheritedbaseUrl
 
 **baseUrl: string
 
 Inherited from ResourceCollectionClient.baseUrl
 
-### [**](#httpClient)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L37)inheritedhttpClient
+### [**](#httpClient)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L38)inheritedhttpClient
 
 **httpClient: HttpClient
 
 Inherited from ResourceCollectionClient.httpClient
 
-### [**](#id)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L23)optionalinheritedid
+### [**](#id)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L24)optionalinheritedid
 
 **id?
 
@@ -70,7 +82,7 @@ Inherited from ResourceCollectionClient.httpClient
 
 Inherited from ResourceCollectionClient.id
 
-### [**](#params)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L39)optionalinheritedparams
+### [**](#params)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L40)optionalinheritedparams
 
 **params?
 
@@ -80,19 +92,19 @@ Inherited from ResourceCollectionClient.id
 
 Inherited from ResourceCollectionClient.params
 
-### [**](#publicBaseUrl)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L29)inheritedpublicBaseUrl
+### [**](#publicBaseUrl)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L30)inheritedpublicBaseUrl
 
 **publicBaseUrl: string
 
 Inherited from ResourceCollectionClient.publicBaseUrl
 
-### [**](#resourcePath)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L31)inheritedresourcePath
+### [**](#resourcePath)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L32)inheritedresourcePath
 
 **resourcePath: string
 
 Inherited from ResourceCollectionClient.resourcePath
 
-### [**](#safeId)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L25)optionalinheritedsafeId
+### [**](#safeId)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L26)optionalinheritedsafeId
 
 **safeId?
 
@@ -102,7 +114,7 @@ Inherited from ResourceCollectionClient.resourcePath
 
 Inherited from ResourceCollectionClient.safeId
 
-### [**](#url)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L33)inheritedurl
+### [**](#url)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L34)inheritedurl
 
 **url: string
 
@@ -110,11 +122,15 @@ Inherited from ResourceCollectionClient.url
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#create)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_collection.ts#L41)create
+### [**](#create)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_collection.ts#L85)create
 
 * ****create**(actor): Promise<[Actor](https://docs.apify.com/api/client/js/api/client/js/reference/interface/Actor.md)>
 
-- <https://docs.apify.com/api/v2#/reference/actors/actor-collection/create-actor>
+- Creates a new Actor.
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/acts-post>
 
   ***
 
@@ -122,13 +138,33 @@ Inherited from ResourceCollectionClient.url
 
   * ##### actor: [ActorCollectionCreateOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorCollectionCreateOptions.md)
 
+    The Actor data.
+
   #### Returns Promise<[Actor](https://docs.apify.com/api/client/js/api/client/js/reference/interface/Actor.md)>
 
-### [**](#list)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/actor_collection.ts#L23)list
+  The created Actor object.
 
-* ****list**(options): Promise<[ActorCollectionListResult](https://docs.apify.com/api/client/js/api/client/js/reference.md#ActorCollectionListResult)>
+### [**](#list)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/actor_collection.ts#L63)list
 
-- <https://docs.apify.com/api/v2#/reference/actors/actor-collection/get-list-of-actors>
+* ****list**(options): PaginatedIterator<[ActorCollectionListItem](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorCollectionListItem.md)>
+
+- Lists all Actors.
+
+  Awaiting the return value (as you would with a Promise) will result in a single API call. The amount of fetched items in a single API call is limited.
+
+  ```
+  const paginatedList = await client.list(options);
+  ```
+
+  Asynchronous iteration is also supported. This will fetch additional pages if needed until all items are retrieved.
+
+  ```
+  for await (const singleItem of client.list(options)) {...}
+  ```
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/acts-get>
 
   ***
 
@@ -136,4 +172,8 @@ Inherited from ResourceCollectionClient.url
 
   * ##### options: [ActorCollectionListOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorCollectionListOptions.md) = <!-- -->{}
 
-  #### Returns Promise<[ActorCollectionListResult](https://docs.apify.com/api/client/js/api/client/js/reference.md#ActorCollectionListResult)>
+    Pagination options.
+
+  #### Returns PaginatedIterator<[ActorCollectionListItem](https://docs.apify.com/api/client/js/api/client/js/reference/interface/ActorCollectionListItem.md)>
+
+  A paginated iterator of Actors.

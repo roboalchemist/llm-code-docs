@@ -2,10 +2,6 @@
 
 # Source: https://jam.dev/docs/jam-for-customer-support/intercom.md
 
-# Source: https://jam.dev/docs/integrations/intercom.md
-
-# Source: https://jam.dev/docs/jam-for-customer-support/intercom.md
-
 # Intercom
 
 {% embed url="<https://www.youtube.com/watch?v=jxzyIdzRZnI>" %}

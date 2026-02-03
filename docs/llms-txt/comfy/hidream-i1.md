@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/tutorials/image/hidream/hidream-i1.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # ComfyUI Native HiDream-I1 Text-to-Image Workflow Example
 
 > This guide will walk you through completing a ComfyUI native HiDream-I1 text-to-image workflow example
@@ -99,6 +103,10 @@ Model file save location
 
 ### HiDream-I1 Full Version Workflow
 
+<a className="prose" target="_blank" href="https://cloud.comfy.org/?template=hidream_i1_full&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28a745', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
+  <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Run on Comfy Cloud</p>
+</a>
+
 #### 1. Model File Download
 
 Please select the appropriate version based on your hardware. Click the link and download the corresponding model file to save it to the `ComfyUI/models/diffusion_models/` folder.
@@ -134,6 +142,10 @@ Complete the workflow execution step by step
 
 ### HiDream-I1 Dev Version Workflow
 
+<a className="prose" target="_blank" href="https://cloud.comfy.org/?template=hidream_i1_dev&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28a745', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
+  <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Run on Comfy Cloud</p>
+</a>
+
 #### 1. Model File Download
 
 Please select the appropriate version based on your hardware, click the link and download the corresponding model file to save to the `ComfyUI/models/diffusion_models/` folder.
@@ -168,6 +180,10 @@ Complete the workflow execution step by step
 6. Click the `Run` button, or use the shortcut `Ctrl(cmd) + Enter` to execute the image generation
 
 ### HiDream-I1 Fast Version Workflow
+
+<a className="prose" target="_blank" href="https://cloud.comfy.org/?template=hidream_i1_fast&utm_source=docs" style={{ display: 'inline-block', backgroundColor: '#28a745', color: '#ffffff', padding: '10px 20px', borderRadius: '8px', borderColor: "transparent", textDecoration: 'none', fontWeight: 'bold'}}>
+  <p className="prose" style={{ margin: 0, fontSize: "0.8rem" }}>Run on Comfy Cloud</p>
+</a>
 
 #### 1. Model File Download
 

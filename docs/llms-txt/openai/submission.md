@@ -4,14 +4,14 @@
 
 ## App submission overview
 
-Once you have built and [tested your app](/apps-sdk/deploy/testing) in Developer Mode, you can submit your app to the ChatGPT Apps Directory to make it publicly available.
+Once you have built and [tested your app](https://developers.openai.com/apps-sdk/deploy/testing) in Developer Mode, you can submit your app to the ChatGPT Apps Directory to make it publicly available.
 
 Only submit your app if you intend for it to be accessible to all users. Submitting an app initiates a review process, and you’ll be notified of its status as it moves through review.
 
 
 
 Before submitting, make sure your app complies with our [App Submission
-  Guidelines](/apps-sdk/app-submission-guidelines).
+  Guidelines](https://developers.openai.com/apps-sdk/app-submission-guidelines).
 
 
 
@@ -45,7 +45,7 @@ If the pre-requisites are met, you can submit your app for review from the [Open
 
 - Your MCP server is hosted on a publicly accessible domain
 - You are not using a local or testing endpoint
-- You defined a [CSP](/apps-sdk/build/mcp-server#content-security-policy-csp) to allow the exact domains you fetch from (this is required to submit your app for security reasons)
+- You defined a [CSP](https://developers.openai.com/apps-sdk/build/mcp-server#content-security-policy-csp) to allow the exact domains you fetch from (this is required to submit your app for security reasons)
 
 ### Start the review process
 

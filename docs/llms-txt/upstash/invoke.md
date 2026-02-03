@@ -2,55 +2,103 @@
 
 # Source: https://upstash.com/docs/workflow/basics/context/invoke.md
 
-# Source: https://upstash.com/docs/workflow/features/invoke.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://upstash.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Source: https://upstash.com/docs/workflow/basics/context/invoke.md
+# context.invoke
 
-# Source: https://upstash.com/docs/workflow/features/invoke.md
+`context.invoke()` triggers another workflow run and pauses until the invoked workflow finishes.
 
-# Source: https://upstash.com/docs/workflow/basics/context/invoke.md
+The calling workflow resumes once the invoked workflow either **succeeds**, **fails**, or is **canceled**.
 
-# Source: https://upstash.com/docs/workflow/features/invoke.md
+<Note>
+  Workflows can only invoke other workflows that were served together in the same `serveMany` route.
+  For details, see [Invoke other workflows](/workflow/features/invoke).
+</Note>
 
-# Source: https://upstash.com/docs/workflow/basics/context/invoke.md
+## Arguments
 
-# Source: https://upstash.com/docs/workflow/features/invoke.md
+<ParamField body="workflow" type="function" required>
+  The workflow definition to invoke.
+  Must be a workflow exposed under the same `serveMany`.
+</ParamField>
 
-# Source: https://upstash.com/docs/workflow/basics/context/invoke.md
+<ParamField body="body" type="any">
+  The payload to send to the invoked workflow.
+  This value will be set as `context.requestPayload` in the invoked workflow.
+</ParamField>
 
-# Source: https://upstash.com/docs/workflow/features/invoke.md
+<ParamField body="headers" type="object" optional>
+  Optional HTTP headers to forward to the invoked workflow.
+  This value will be set as `context.headers` in the invoked workflow.
+</ParamField>
 
-# Overview
+<ParamField body="workflowRunId" type="string" optional>
+  Override the workflow run ID for the invoked workflow.
+  Defaults to a new ID if not specified.
+</ParamField>
 
-You can start another workflow run inside a workflow and await its execution to complete.
-This allows to orchestrate multiple workflows together without external synchronization.
+<ParamField body="retries" type="number" optional>
+  Number of retry attempts configuration of the invoked workflow.
+  Defaults to `3`. Retries use exponential backoff.
+</ParamField>
 
-When you use `context.invoke`, invoking workflow will wait until the invoked workflow finishes before running the next step.
+<ParamField body="retryDelay" type="number|string" optional>
+  Delay between retries of the invoked workflow.
+</ParamField>
 
-```typescript  theme={"system"}
-const {
-  body,      // response from the invoked workflow
-  isFailed,  // whether the invoked workflow was canceled
-  isCanceled // whether the invoked workflow failed
-} = await context.invoke(
-  "analyze-content",
+<ParamField body="flowControl" type="object" optional>
+  Flow control configuration of the invoked workflow.
+
+  See [Flow Control](/workflow/features/flow-control) for details.
+
+  <Expandable title="properties">
+    <ParamField body="key" type="string">
+      A logical grouping key that identifies which requests share the same flow control limits.
+    </ParamField>
+
+    <ParamField body="rate" type="number">
+      The maximum number of allowed requests per second.
+    </ParamField>
+
+    <ParamField body="parallelism" type="number">
+      The maximum number of concurrent requests allowed.
+    </ParamField>
+
+    <ParamField body="period" type="string|number">
+      The time window used to enforce the defined rate limit. Default is `1s`.
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+## Response
+
+<ResponseField name="body" type="any">
+  The response body returned by the invoked workflow.
+</ResponseField>
+
+<ResponseField name="isFailed" type="boolean">
+  `true` if the invoked workflow completed with failure.
+</ResponseField>
+
+<ResponseField name="isCanceled" type="boolean">
+  `true` if the invoked workflow was canceled before completion.
+</ResponseField>
+
+## Usage
+
+```ts  theme={"system"}
+const { body, isFailed, isCanceled } = await context.invoke(
+  "invoke another workflow",
   {
-    workflow: analyzeContent,
+    workflow: anotherWorkflow,
     body: "test",
     header: {...}, // headers to pass to anotherWorkflow (optional)
     retries,       // number of retries (optional, default: 3)
+    retryDelay,    // delay between retries (optional, uses exponential backoff by default)
     flowControl,   // flow control settings (optional)
     workflowRunId  // workflowRunId to set (optional)
   }
-)
+);
 ```
-
-You can return a response from a workflow, which will be delivered to invoker workflow run.
-
-<Frame caption="You can navigate between the invoker and invoked workflow runs on the dashboard">
-  <img src="https://mintcdn.com/upstash/veMt3N2QLOAoUf0w/img/workflow/invoke.png?fit=max&auto=format&n=veMt3N2QLOAoUf0w&q=85&s=be3ca055f5f46e428c84a7983c2402e5" data-og-width="2658" width="2658" data-og-height="1976" height="1976" data-path="img/workflow/invoke.png" data-optimize="true" data-opv="3" srcset="https://mintcdn.com/upstash/veMt3N2QLOAoUf0w/img/workflow/invoke.png?w=280&fit=max&auto=format&n=veMt3N2QLOAoUf0w&q=85&s=95507fbe673befccc3556d4b4a6f718e 280w, https://mintcdn.com/upstash/veMt3N2QLOAoUf0w/img/workflow/invoke.png?w=560&fit=max&auto=format&n=veMt3N2QLOAoUf0w&q=85&s=2bc7e59da157da8dd232093b4146f369 560w, https://mintcdn.com/upstash/veMt3N2QLOAoUf0w/img/workflow/invoke.png?w=840&fit=max&auto=format&n=veMt3N2QLOAoUf0w&q=85&s=5bf2affd5061997df74054dd6b00694b 840w, https://mintcdn.com/upstash/veMt3N2QLOAoUf0w/img/workflow/invoke.png?w=1100&fit=max&auto=format&n=veMt3N2QLOAoUf0w&q=85&s=ac40691a971029998a0c40983295084f 1100w, https://mintcdn.com/upstash/veMt3N2QLOAoUf0w/img/workflow/invoke.png?w=1650&fit=max&auto=format&n=veMt3N2QLOAoUf0w&q=85&s=d057f384353c6dc8921c9df3b053becb 1650w, https://mintcdn.com/upstash/veMt3N2QLOAoUf0w/img/workflow/invoke.png?w=2500&fit=max&auto=format&n=veMt3N2QLOAoUf0w&q=85&s=d20b0e49e253ef8b825838fa14adf619 2500w" />
-</Frame>
-
-<Note>
-  You cannot create an infinite chain of workflow invocations. If you set up an 'invoke loop' where workflows continuously invoke each other, the process will fail once it reaches a depth of 100.
-</Note>

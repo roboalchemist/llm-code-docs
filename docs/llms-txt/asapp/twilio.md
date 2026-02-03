@@ -1,10 +1,12 @@
 # Source: https://docs.asapp.com/ai-productivity/ai-transcribe/twilio.md
 
-# Source: https://docs.asapp.com/autotranscribe/twilio.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
 
-# Deploying AutoTranscribe for Twilio
+# Deploying AI Transcribe for Twilio
 
-> Use AutoTranscribe with Twilio
+> Use AI Transcribe with Twilio
 
 This guide covers the **Twilio Media Gateway** solution pattern, which consists of the following components to receive speech audio from Twilio, receive call signals, and return call transcripts:
 
@@ -24,7 +26,7 @@ ASAPP then completes the architecture definition, including integration points i
 
 ### Integration Steps
 
-There are four steps to integrate AutoTranscribe into Twilio:
+There are four steps to integrate AI Transcribe into Twilio:
 
 1. Authenticate with ASAPP and Obtain a Twilio Media Stream URL
 2. Send Audio to Media Gateway
@@ -35,15 +37,15 @@ There are four steps to integrate AutoTranscribe into Twilio:
 
 **Audio Stream Codec**
 
-Twilio provides audio in the mu-law format with 8000 sample rate, which is supported by ASAPP. No modification or additional transcoding is needed when forking audio to ASAPP.
+Twilio provides audio in the mu-law format with 8000 sample rate, which ASAPP supports. You do not need any modification or additional transcoding when forking audio to ASAPP.
 
 <Note>
-  When supplying recorded audio to ASAPP for AutoTranscribe model training prior to implementation, send uncompressed .WAV media files with speaker-separated channels.
+  When supplying recorded audio to ASAPP for AI Transcribe model training prior to implementation, send uncompressed .WAV media files with speaker-separated channels.
 </Note>
 
 Recordings for training should have a sample rate of 8000 and 16-bit PCM audio encoding.
 
-See the [Customization section of the AutoTranscribe Product Guide](/autotranscribe/product-guide#customization) for more on data requirements for transcription model training.
+See the [Customization section of the AI Transcribe Product Guide](/ai-productivity/ai-transcribe/product-guide#customization) for more on data requirements for transcription model training.
 
 **Developer Portal**
 
@@ -54,7 +56,7 @@ ASAPP provides an AI Services [Developer Portal](/getting-started/developers). W
 * Manage user accounts and apps
 
 <Tip>
-  Visit the [Get Started](/getting-started/developers) for instructions on creating a developer account, managing teams and apps, and setup for using AI Service APIs.
+  Visit the [Get Started](/getting-started/developers) for instructions on creating a developer account, managing teams and apps, and setting up AI Service APIs.
 </Tip>
 
 ## Integrate with Twilio
@@ -80,7 +82,7 @@ HTTP headers (required):
 }
 ```
 
-Header parameters are required and are provided to you by ASAPP in the [Developer Portal](https://developer.asapp.com/).
+ASAPP provides these header parameters to you in the [Developer Portal](https://developer.asapp.com/).
 HTTP response body:
 
 ```json  theme={null}
@@ -89,19 +91,19 @@ HTTP response body:
 }
 ```
 
-If the authentication succeeds, a secure WebSocket short-lived access URL will be returned in the HTTP response body. TTL (time-to-live) for this URL is 5 minutes.  Validity of the short-lived URL is checked only at the beginning of the WebSocket connection, so duration of the sessions can be as long as needed.  The same short-lived access URL can be used to start as many unique sessions as desired in the 5 minute TTL.
+If the authentication succeeds, the HTTP response body will return a secure WebSocket short-lived access URL. TTL (time-to-live) for this URL is 5 minutes. The system checks validity of the short-lived URL only at the beginning of the WebSocket connection, so sessions can last as long as needed. You can use the same short-lived access URL to start as many unique sessions as desired within the 5-minute TTL.
 
-For example, if the call center has an average rate of 1 new call per second, the same short-lived access URL can be used to initiate 300 total calls (60 calls per minute \* 5 minutes).  And each call can last as long as needed, regardless if it's 2 minutes long or longer than 30 minutes.  But after the five minute TTL, a new short-lived access URL will need to be obtained to start any new calls.  It is recommended to obtain a new short-lived URL in less than 5 minutes to always have a valid URL.
+For example, if the call center has an average rate of 1 new call per second, the call center can use the same short-lived access URL to initiate 300 total calls (60 calls per minute × 5 minutes). And each call can last as long as needed, regardless of whether it's 2 minutes long or longer than 30 minutes. But after the five-minute TTL, the system will need to obtain a new short-lived access URL to start any new calls. We recommend obtaining a new short-lived URL in less than 5 minutes to always have a valid URL.
 
 ### 2. Send Audio to Media Gateway
 
-With the URL obtained in the previous step, instruct Twilio to start sending Media Stream to ASAPP Media Gateway components.  Media Gateway (MG) components are responsible for receiving real-time audio along with Call SID metadata.
+With the URL obtained in the previous step, instruct Twilio to start sending Media Stream to ASAPP Media Gateway components. Media Gateway (MG) components receive real-time audio along with Call SID metadata.
 
 <Note>
   Twilio provides multiple ways to initiate Media Stream, which are described in [their documentation](https://www.twilio.com/docs/voice/api/media-streams#startstop-media-streams).
 </Note>
 
-While instructing Twilio to send Media Streams, it's highly recommended to provide a `statusCallback` URL. Twilio will use this URL in the event connectivity is lost or has an error.  It will be up to the customer call center to process this callback and instruct Twilio to again start new Media Streams, assuming transcriptions are still desired. 
+While instructing Twilio to send Media Streams, we highly recommend that you provide a `statusCallback` URL. Twilio will use this URL in the event connectivity is lost or has an error. The customer call center will need to process this callback and instruct Twilio to again start new Media Streams, assuming transcriptions are still desired.
 
 <Tip>
   See Handling Failures for Twilio Media Streams for details below.
@@ -111,50 +113,50 @@ ASAPP offers a software-as-a-service approach to hosting MGs at ASAPP's VPC in t
 
 **Network Connectivity**
 
-Audio will be sent from Twilio cloud to ASAPP cloud via secure (TLS 1.2) WebSocket connections over the internet.  No additional or custom networking is required.
+Twilio cloud will send audio to ASAPP cloud via secure (TLS 1.2) WebSocket connections over the internet. The system does not require additional or custom networking.
 
 **Port Details**
 
-Ports and protocols in use for the AutoTranscribe implementations are shown below:
+Ports and protocols in use for the AI Transcribe implementations are shown below:
 
 * **Audio Streams**: Secure WebSocket with destination port 443
 * **API Endpoints**: TCP 443
 
 **Handling Failures for Twilio Media Streams**
 
-There are multiple reasons (e.g. intermediate internet failures, scheduled maintenance) why Twilio Media Stream could be interrupted mid-call. The only way to know that the Media Stream was interrupted is to utilize the `statusCallback` parameter (along with `statusCallbackMethod` if needed) of the Twilio API. Should a failure occur, the URL specified in `statusCallback` parameter will receive the HTTP request informing of a failure.
+There are multiple reasons (e.g., intermediate internet failures, scheduled maintenance) why Twilio Media Stream could be interrupted mid-call. The only way to know that the system interrupted the Media Stream is to utilize the `statusCallback` parameter (along with `statusCallbackMethod` if needed) of the Twilio API. Should a failure occur, the URL you specified in the `statusCallback` parameter will receive the HTTP request informing of a failure.
 
-If a failure notification is received, it means ASAPP has stopped receiving audio from Twilio and no more transcriptions for that call will take place. To restart transcriptions:
+If you receive a failure notification, it means ASAPP has stopped receiving audio from Twilio and no more transcriptions for that call will take place. To restart transcriptions:
 
 * Obtain a Twilio Media Stream URL - unless failure occurred within 5 minutes of the start of the call, you won't be able to reuse the original call streaming URL.
-* Send Audio to Media Gateway - instruct Twilio through their API to start a new media stream to the Twilio Media Stream URL provided by ASAPP.
+* Send Audio to Media Gateway - instruct Twilio through their API to start a new media stream to the Twilio Media Stream URL that ASAPP provided.
 * Send Start request (see [3. Sending Start and Stop Requests](#3-send-start-and-stop-requests) for details).
 
 **Generating Call Identifiers**
 
-AutoTranscribe uses your call identifier to ensure a given call can be referenced in subsequent [start and stop requests](#3-send-start-and-stop-requests) and associated with transcripts.
+AI Transcribe uses your call identifier to ensure a given call can be referenced in subsequent [start and stop requests](#3-send-start-and-stop-requests) and associated with transcripts.
 
 Twilio will automatically generate a unique Call SID identifier for the call.
 
 ### 3. Send Start and Stop Requests
 
-As outlined in [requirements](#requirements), user accounts must be created in the developer portal in order to enroll apps and receive API keys to interact with ASAPP endpoints.
+As outlined in [requirements](#requirements), you must create user accounts in the developer portal to enroll apps and receive API keys to interact with ASAPP endpoints.
 
-The `/start-streaming` and `/stop-streaming` endpoints of the Start/Stop API are used to control when transcription occurs for every call.
+The `/start-streaming` and `/stop-streaming` endpoints of the Start/Stop API control when transcription occurs for every call.
 
 See the [API Reference](/apis/overview)  to learn how to interact with this API.
 
-ASAPP will not begin transcribing call audio until requested to, thus preventing transcription of audio at the very beginning of the audio streaming session, which may include IVR, hold music, or queueing.
+ASAPP will not begin transcribing call audio until you request it to, thus preventing transcription of audio at the very beginning of the audio streaming session, which may include IVR, hold music, or queueing.
 
-Stop requests are used to pause or end transcription for any needed reason. For example, a stop request could be used mid-call when the agent places the call on hold or at the end of the call to prevent transcribing post-call interactions such as satisfaction surveys.
+Stop requests pause or end transcription for any needed reason. For example, you could use a stop request mid-call when the agent places the call on hold or at the end of the call to prevent transcribing post-call interactions such as satisfaction surveys.
 
-<note>
-  AutoTranscribe is only meant to transcribe conversations between customers and agents - start and stop requests should be implemented to ensure non-conversation audio (e.g. hold music, IVR menus, surveys) is not being transcribed. Attempted transcription of non-conversation audio will negatively impact other services meant to consume conversation transcripts, such as ASAPP AutoSummary.
-</note>
+<Note>
+  AI Transcribe is only meant to transcribe conversations between customers and agents - you should implement start and stop requests to ensure the system does not transcribe non-conversation audio (e.g., hold music, IVR menus, surveys). Attempted transcription of non-conversation audio will negatively impact other services meant to consume conversation transcripts, such as ASAPP AI Summary.
+</Note>
 
 ### 4. Receive Transcript Outputs
 
-AutoTranscribe outputs transcripts using three separate mechanisms, each corresponding to a different temporal use case:
+AI Transcribe outputs transcripts using three separate mechanisms, each corresponding to a different temporal use case:
 
 * **[Real-time](#real-time-via-webhook)**: Webhook posts complete utterances to your target endpoint as they are transcribed during the live conversation
 * **[After-call](#after-call-via-get-request)**: GET endpoint responds to your requests for a designated call with the full set of utterances from that completed conversation
@@ -175,15 +177,15 @@ Once the target is selected, work with your ASAPP account team to implement one 
 
 Expected Load
 
-Target servers should be able to support receiving transcript POST messages for each utterance of every live conversation on which AutoTranscribe is active.
+Target servers should be able to support receiving transcript POST messages for each utterance of every live conversation on which AI Transcribe is active.
 
-For reference, an average live call sends approximately 10 messages per minute. At that rate, 50 concurrent live calls represents approximately 8 messages per second.
+For reference, an average live call sends approximately 10 messages per minute. At that rate, 50 concurrent live calls represent approximately 8 messages per second.
 
-Please ensure the selected target server is load tested to support anticipated peaks in concurrent call volume.
+Please ensure you load test the selected target server to support anticipated peaks in concurrent call volume.
 
 Transcript Timing and Format
 
-Once you have started transcription for a given call stream using the `/start-streaming` endpoint, AutoTranscribe begins to publish `transcript` messages, each of which contains a full utterance for a single call participant.
+Once you have started transcription for a given call stream using the `/start-streaming` endpoint, AI Transcribe begins to publish `transcript` messages, each of which contains a full utterance for a single call participant.
 
 The expected latency between when ASAPP receives audio for a completed utterance and provides a transcription of that same utterance is 200-600ms.
 
@@ -191,20 +193,20 @@ The expected latency between when ASAPP receives audio for a completed utterance
   Perceived latency will also be influenced by any network delay sending audio to ASAPP and receiving transcription messages in return.
 </Note>
 
-Though messages are sent in the order they are transcribed, network latency may impact the order in which they arrive or cause messages to be dropped due to timeouts. Where latency causes timeouts, the oldest pending messages will be dropped first; AutoTranscribe does not retry to deliver dropped messages.
+Though we send messages in the order they are transcribed, network latency may impact the order in which they arrive or cause the system to drop messages due to timeouts. Where latency causes timeouts, the system will drop the oldest pending messages first; AI Transcribe does not retry to deliver dropped messages.
 
 The message body for `transcript` type messages is JSON encoded with these fields:
 
-| Field                  | Subfield   | Description                                                                                                                            | Example Value                        |
-| :--------------------- | :--------- | :------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------- |
-| externalConversationId |            | Unique identifier with the Amazon Connect Contact Id for the call                                                                      | 8c259fea-8764-4a92-adc4-73572e9cf016 |
-| streamId               |            | Unique identifier assigned by ASAPP to each call participant's stream returned in response to `/start-streaming` and `/stop-streaming` | 5ce2b755-3f38-11ed-b755-7aed4b5c38d5 |
-| sender                 | externalId | Customer or agent identifier as provided in request to `/start-streaming`                                                              | ef53245                              |
-| sender                 | role       | A participant role, either customer or agent                                                                                           | customer, agent                      |
-| autotranscribeResponse | message    | Type of message                                                                                                                        | transcript                           |
-| autotranscribeResponse | start      | The start ms of the utterance                                                                                                          | 0                                    |
-| autotranscribeResponse | end        | Elapsed ms since the start of the utterance                                                                                            | 1000                                 |
-| autotranscribeResponse | utterance  | Transcribed utterance text                                                                                                             | Are you there?                       |
+| Field                  | Subfield   | Description                                                                                                                             | Example Value                        |
+| :--------------------- | :--------- | :-------------------------------------------------------------------------------------------------------------------------------------- | :----------------------------------- |
+| externalConversationId |            | Unique identifier with the Amazon Connect Contact Id for the call                                                                       | 8c259fea-8764-4a92-adc4-73572e9cf016 |
+| streamId               |            | Unique identifier that ASAPP assigns to each call participant's stream returned in response to `/start-streaming` and `/stop-streaming` | 5ce2b755-3f38-11ed-b755-7aed4b5c38d5 |
+| sender                 | externalId | Customer or agent identifier as provided in request to `/start-streaming`                                                               | ef53245                              |
+| sender                 | role       | A participant role, either customer or agent                                                                                            | customer, agent                      |
+| autotranscribeResponse | message    | Type of message                                                                                                                         | transcript                           |
+| autotranscribeResponse | start      | The start ms of the utterance                                                                                                           | 0                                    |
+| autotranscribeResponse | end        | Elapsed ms since the start of the utterance                                                                                             | 1000                                 |
+| autotranscribeResponse | utterance  | Transcribed utterance text                                                                                                              | Are you there?                       |
 
 Expected `transcript` message format:
 
@@ -234,29 +236,29 @@ Should your target server return an error in response to a POST request, ASAPP w
 
 #### After-Call via GET Request
 
-AutoTranscribe makes a full transcript available at the following endpoint for a given completed call:
+AI Transcribe makes a full transcript available at the following endpoint for a given completed call:
 
 `GET /conversation/v1/conversation/messages`
 
-Once a conversation is complete, make a request to the endpoint using a conversation identifier and receive back every message in the conversation.
+Once a conversation is complete, make a request to the endpoint using a conversation identifier and the system returns every message in the conversation.
 
 Message Limit
 
-This endpoint will respond with up to 1,000 transcribed messages per conversation, approximately a two-hour continuous call. All messages are received in a single response without any pagination.
+This endpoint responds with up to 1,000 transcribed messages per conversation, approximately a two-hour continuous call. You receive all messages in a single response without any pagination.
 
 To retrieve all messages for calls that exceed this limit, use either a real-time mechanism or File Exporter for transcript retrieval.
 
 <Note>
-  Transcription settings (e.g. language, detailed tokens, redaction), for a given call are set with the Start/Stop API, when call transcription is initiated. All transcripts retrieved after the call will reflect the initially requested settings with the Start/Stop API.
+  You set transcription settings (e.g., language, detailed tokens, redaction) for a given call with the Start/Stop API when you initiate call transcription. All transcripts retrieved after the call will reflect the initially requested settings with the Start/Stop API.
 </Note>
 
 See the [API Reference](/apis/overview)  to learn how to interact with this API.
 
 #### Batch via File Exporter
 
-AutoTranscribe makes full transcripts for batches of calls available using the File Exporter service's `utterances` data feed.
+AI Transcribe makes full transcripts for batches of calls available using the File Exporter service's `utterances` data feed.
 
-The File Exporter service is meant to be used as a batch mechanism for exporting data to your data warehouse, either on a scheduled basis (e.g. nightly, weekly) or for ad hoc analyses. Data that populates feeds for the File Exporter service updates once daily at 2:00AM UTC.
+You can use the File Exporter service as a batch mechanism for exporting data to your data warehouse, either on a scheduled basis (e.g., nightly, weekly) or for ad hoc analyses. Data that populates feeds for the File Exporter service updates once daily at 2:00AM UTC.
 
 Visit [Retrieving Data from ASAPP](https://asapp.mintlify.app/reporting/data-from-messaging-platform) for a guide on how to interact with the File Exporter service.
 
@@ -330,7 +332,7 @@ This real-time transcription use case example consists of an English language ca
     }
 ```
 
-4. The agent and customer begin their conversation and separate HTTPS POST `transcript` messages are sent for each participant from ASAPP's webhook publisher to a target endpoint configured to receive the messages.
+4. The agent and customer begin their conversation and ASAPP's webhook publisher sends separate HTTPS POST `transcript` messages for each participant to a target endpoint configured to receive the messages.
 
    HTTPS **POST** for Customer Utterance
 
@@ -428,4 +430,4 @@ HTTPS **POST** for Agent Utterance
 
 ### Data Security
 
-ASAPP's security protocols protect data at each point of transmission, from first user authentication to secure communications to our auditing and logging system (which includes hashing of data in transit) all the way to securing the environment when data is at rest in the data logging system. The teams at ASAPP are also under tight restraints in terms of access to data. These security protocols protect both ASAPP and its customers.
+ASAPP's security protocols protect data at each point of transmission, from first user authentication to secure communications to our auditing and logging system (which includes hashing of data in transit) all the way to securing the environment when data is at rest in the data logging system. ASAPP teams also operate under tight restraints in terms of access to data. These security protocols protect both ASAPP and its customers.

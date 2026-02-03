@@ -64,7 +64,7 @@ $ vespa visit --field-set "[id]" # list document IDs
 
 - [vespa](vespa.html) - The command-line tool for Vespa.ai
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 
 ### On this page:
 

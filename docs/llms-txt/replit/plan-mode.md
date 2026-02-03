@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/replitai/plan-mode.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Plan Mode
 
 > Plan mode allows you to brainstorm ideas, plan work, and collaborate with Replit Agent without editing your app's code or data.

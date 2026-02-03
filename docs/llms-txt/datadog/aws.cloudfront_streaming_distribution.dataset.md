@@ -4,8 +4,6 @@
 title: CloudFront Streaming Distribution
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > CloudFront Streaming Distribution
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.cloudfront_streaming_distribution.dataset/index.html
 ---
 
 # CloudFront Streaming Distribution
@@ -18,10 +16,10 @@ aws.cloudfront_streaming_distribution
 
 ## Fields
 
-| Title                  | ID   | Type   | Data Type                                                                                                  | Description |
-| ---------------------- | ---- | ------ | ---------------------------------------------------------------------------------------------------------- | ----------- |
-| _key                   | core | string |
-| account_id             | core | string |
-| e_tag                  | core | string | The current version of the streaming distribution's information. For example: <code>E2QWRUHAPOMQZL</code>. |
-| streaming_distribution | core | json   | The streaming distribution's information.                                                                  |
-| tags                   | core | hstore |
+| Title                  | ID   | Type       | Data Type                                                                                                  | Description |
+| ---------------------- | ---- | ---------- | ---------------------------------------------------------------------------------------------------------- | ----------- |
+| _key                   | core | string     |
+| account_id             | core | string     |
+| e_tag                  | core | string     | The current version of the streaming distribution's information. For example: <code>E2QWRUHAPOMQZL</code>. |
+| streaming_distribution | core | json       | The streaming distribution's information.                                                                  |
+| tags                   | core | hstore_csv |

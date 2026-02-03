@@ -8,8 +8,6 @@ description: >-
 breadcrumbs: >-
   Docs > Account Management > Account Management Guides > New CSV headers for
   Individual Organizations Summary
-source_url: >-
-  https://docs.datadoghq.com/guide/csv_headers/individual-orgs-summary/index.html
 ---
 
 # New CSV headers for Individual Organizations Summary

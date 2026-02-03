@@ -1,5 +1,9 @@
 # Source: https://trigger.dev/docs/guides/ai-agents/generate-translate-copy.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://trigger.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Generate and translate copy
 
 > Create an AI agent workflow that generates and translates copy
@@ -22,7 +26,7 @@ In this example, we'll create a workflow that generates and translates copy. Thi
 * Validates the generated copy meets word count requirements (±10 words)
 * Translates the validated copy to the target language while preserving tone
 
-```typescript  theme={null}
+```typescript  theme={"theme":"css-variables"}
 import { openai } from "@ai-sdk/openai";
 import { task } from "@trigger.dev/sdk";
 import { generateText } from "ai";
@@ -101,7 +105,7 @@ export const generateAndTranslateTask = task({
 
 On the Test page in the dashboard, select the `generate-and-translate-copy` task and include a payload like the following:
 
-```json  theme={null}
+```json  theme={"theme":"css-variables"}
 {
   marketingSubject: "The controversial new Jaguar electric concept car",
   targetLanguage: "Spanish",

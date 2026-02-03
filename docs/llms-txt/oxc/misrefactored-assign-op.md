@@ -3,7 +3,6 @@
 ---
 url: /docs/guide/usage/linter/rules/oxc/misrefactored-assign-op.md
 ---
-# oxc/misrefactored-assign-op&#x20;
 
 ### What it does
 

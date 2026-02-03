@@ -5,8 +5,7 @@ title: Cluster Check Runners
 description: >-
   Configure dedicated cluster check runners for scaling cluster and endpoint
   checks in Kubernetes environments
-breadcrumbs: Docs > Container Monitoring > Containers Guides > Cluster Check Runners
-source_url: https://docs.datadoghq.com/guide/clustercheckrunners/index.html
+breadcrumbs: Docs > Containers > Containers Guides > Cluster Check Runners
 ---
 
 # Cluster Check Runners

@@ -1,5 +1,9 @@
 # Source: https://docs.replit.com/teams/identity-and-access-management/groups-and-permissions.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.replit.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Roles, Groups and Access
 
 > Control team member access with roles and groups. Roles provide default access levels (Admin, Member, Guest, Viewer), while custom groups offer fine-grained access control for specific team members.

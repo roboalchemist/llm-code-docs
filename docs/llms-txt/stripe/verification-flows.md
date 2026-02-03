@@ -273,7 +273,7 @@ Stripe.Identity.VerificationSession verificationSession = service.Create(options
 
 You can use a flow’s static link to verify any number of your users.
 
-Embed these static links in email templates, include them in chat support scripts, or use them anywhere that you connect your users with Stripe’s identity verification.  A static link for a verification flow remains active indefinitely until you deactivate it in the Dashboard. A flow is usable in the API even when it’s static link is inactive.
+Embed these static links in email templates, include them in chat support scripts, or use them anywhere that you connect your users with Stripe’s identity verification. A static link for a verification flow remains active indefinitely until you deactivate it in the Dashboard. A flow is usable in the API even when its static link is inactive.
 
 Users provide their email address, then proceed through a new Verification Session that Stripe automatically creates for them. The identity verification UI from a no-code flow is identical to one you create directly through the API. You can view verification results in the Dashboard. Stripe sends webhooks to notify you of updates to the Verification Session.
 

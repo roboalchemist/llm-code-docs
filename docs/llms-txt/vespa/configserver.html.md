@@ -118,6 +118,11 @@ maintenance.duration
  | millisecond | Configserver: Maintenance Duration |
 | 
 
+maintenance.congestion
+
+ | failure | Configserver: Maintenance Congestion |
+| 
+
 configserver.zkConnectionLost
 
  | connection | Number of ZooKeeper connections lost |
@@ -682,5 +687,5 @@ throttledHostProvisioning
 
  | binary | Value 1 if host provisioning is throttled, 0 if not |
 
- Copyright © 2025 - [Cookie Preferences](#)
+ Copyright © 2026 - [Cookie Preferences](#)
 

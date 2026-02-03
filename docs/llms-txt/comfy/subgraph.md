@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/interface/features/subgraph.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Subgraph - Simplify your workflow
 
 > An introduction to the Subgraph feature in ComfyUI, including how to create, navigate, and manage subgraphs.

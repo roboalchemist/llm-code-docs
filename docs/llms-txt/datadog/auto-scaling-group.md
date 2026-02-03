@@ -4,7 +4,6 @@
 title: Auto Scaling Group Component
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > Cloudcraft (Standalone) > AWS Components > Auto Scaling Group Component
-source_url: https://docs.datadoghq.com/components-aws/auto-scaling-group/index.html
 ---
 
 # Auto Scaling Group Component

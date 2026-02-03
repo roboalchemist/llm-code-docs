@@ -1,5 +1,9 @@
 # Source: https://www.aptible.com/docs/how-to-guides/troubleshooting/common-errors-issues/unexpected-request-volume.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.aptible.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Managing a Flood of Requests in Your App
 
 When your app experiences a sudden flood of requests, it can degrade performance, increase latency, or even cause downtime. This situation is common for apps hosted on public endpoints with infrastructure scaled for low traffic, such as MVPs or apps in the early stages of product development.

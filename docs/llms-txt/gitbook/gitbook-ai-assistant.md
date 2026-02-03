@@ -1,8 +1,4 @@
-# Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/gitbook-ai-assistant.md
-
-# Source: https://gitbook.com/docs/documentation/fr/publishing-documentation/gitbook-ai-assistant.md
-
-# Source: https://gitbook.com/docs/publishing-documentation/gitbook-ai-assistant.md
+# Source: https://gitbook.com/docs/documentation/ja-gitbook-documentation/publishing-documentation/gitbook-ai-assistant.md
 
 # Source: https://gitbook.com/docs/documentation/zh/publishing-documentation/gitbook-ai-assistant.md
 
@@ -24,11 +20,30 @@ Think of it as a product expert available to all of your users, in the places an
 
 The Assistant uses agentic retrieval to understand the context of queries based on the user's current page, previously-read pages, and previous conversations.
 
-<p align="center"><a href="https://gitbook.com/docs/publishing-documentation/gitbook-ai-assistant?ask=how+does+the+gitbook+assistant+help+tie+product+knowledge+closer+to+users+in+my+product" class="button primary">Test GitBook Assistant</a></p>
+Try asking the Assistant a question in the box below:
+
+<p align="center"><button type="button" class="button primary" data-action="ask" data-icon="gitbook-assistant">Ask a question...</button></p>
 
 ### Enable GitBook Assistant <a href="#how-do-i-use-gitbook-ai" id="how-do-i-use-gitbook-ai"></a>
 
 To enable GitBook Assistant, open your site's dashboard, navigate to the **Settings** page and choose **AI & MCP** from the menu on the left. Here you can enable GitBook Assistant from the options available.
+
+#### Add suggested questions
+
+Suggested questions are pre-written prompts shown when the Assistant opens with no active conversation. They help users understand what they can ask, and can help you point your users towards useful answers or workflows.
+
+You can add suggested questions in your site’s **Settings**, under the **AI & MCP** section.
+
+**Best practices for suggested questions:**
+
+* Start with a real user goal (setup, troubleshoot, integrate).
+* Use the words your users use (avoid internal codenames).
+* Keep them specific. “How do I…?” beats “Tell me about…”.
+* Cover different intents: quickstart, how-to, troubleshooting, and reference.
+
+{% hint style="info" %}
+If you’re embedding the Assistant in your product, you can also dynamically set suggestions in your embed configuration. See [Customizing the Embed](https://gitbook.com/docs/embedding/configuration/customizing-docs-embed#adding-suggestions).
+{% endhint %}
 
 ### Using GitBook Assistant in published docs <a href="#how-do-i-use-gitbook-ai" id="how-do-i-use-gitbook-ai"></a>
 

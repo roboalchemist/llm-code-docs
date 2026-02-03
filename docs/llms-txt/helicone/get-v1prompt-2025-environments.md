@@ -1,5 +1,9 @@
 # Source: https://docs.helicone.ai/rest/prompts/get-v1prompt-2025-environments.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.helicone.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Get Environments
 
 > Get all available environments across your prompts

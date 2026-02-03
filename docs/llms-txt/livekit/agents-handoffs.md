@@ -1,8 +1,6 @@
 # Source: https://docs.livekit.io/agents/logic/agents-handoffs.md
 
-# Source: https://docs.livekit.io/agents/build/agents-handoffs.md
-
-LiveKit docs › Building voice agents › Agents & handoffs
+LiveKit docs › Logic & Structure › Agents & handoffs
 
 ---
 
@@ -12,7 +10,7 @@ LiveKit docs › Building voice agents › Agents & handoffs
 
 ## Overview
 
-Agents are the core units of a voice AI [workflow](https://docs.livekit.io/agents/build/workflows.md). They define the instructions, tools, and reasoning behavior that drive a conversation. An agent can transfer control to other agents when different logic or capabilities are required. Create separate agents when you need distinct reasoning behavior or tool access:
+Agents are the core units of a voice AI [workflow](https://docs.livekit.io/agents/logic/workflows.md). They define the instructions, tools, and reasoning behavior that drive a conversation. An agent can transfer control to other agents when different logic or capabilities are required. Create separate agents when you need distinct reasoning behavior or tool access:
 
 - **Different roles**: A moderator agent versus a coaching agent.
 - **Model specialization**: A lightweight triage model before escalating to a larger one.
@@ -556,11 +554,11 @@ For more information on concepts covered in this topic, see the following relate
 
 - **[Agent speech](https://docs.livekit.io/agents/build/audio.md)**: Customize the speech output of your agents.
 
-- **[Testing & evaluation](https://docs.livekit.io/agents/build/testing.md)**: Test every aspect of your agents with a custom test suite.
+- **[Testing & evaluation](https://docs.livekit.io/agents/start/testing.md)**: Test every aspect of your agents with a custom test suite.
 
 ---
 
-This document was rendered at 2025-11-18T23:55:03.239Z.
-For the latest version of this document, see [https://docs.livekit.io/agents/build/agents-handoffs.md](https://docs.livekit.io/agents/build/agents-handoffs.md).
+This document was rendered at 2026-02-03T03:24:57.125Z.
+For the latest version of this document, see [https://docs.livekit.io/agents/logic/agents-handoffs.md](https://docs.livekit.io/agents/logic/agents-handoffs.md).
 
 To explore all LiveKit documentation, see [llms.txt](https://docs.livekit.io/llms.txt).

@@ -6,7 +6,7 @@
 
 For examples and details on the usage of this React component, visit the component demo pages:
 
-- [Chart composition](/x/react-charts/composition/)
+- [Charts - Composition](/x/react-charts/composition/)
 
 ## Import
 

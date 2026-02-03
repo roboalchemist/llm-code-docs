@@ -6,7 +6,7 @@ Last Updated: January 13, 2025
 
 ***
 
-*If you wish to execute this DPA, continue https://eform.pandadoc.com/?eform=5344745e-5f8e-44eb-bcbd-1a2f45dbd692 and follow instructions in the PandaDoc form.*
+*If you wish to execute this DPA, continue [here](https://eform.pandadoc.com/?eform=5344745e-5f8e-44eb-bcbd-1a2f45dbd692) and follow instructions in the PandaDoc form.*
 
 ***
 
@@ -18,7 +18,7 @@ All capitalized terms not otherwise defined herein shall have the meaning set fo
 
 1.1. "**Data Protection Law**" means all applicable laws, regulations, and other legally binding requirements in any jurisdiction relating to privacy, data protection, data security, breach notification, or the Processing of Personal Data, including, to the extent applicable, the General Data Protection Regulation, Regulation (EU) 2016/679 ("**GDPR**"), the United Kingdom Data Protection Act of 2018 ("**UK Privacy Act**"), the California Consumer Privacy Act, Cal. Civ. Code § 1798.100 et seq. and associated amendments and regulations thereto ("**CCPA**"). For the avoidance of any doubt, if Apify's Processing activities involving Personal Data are not within the scope of a given Data Protection Law, such law is not applicable for purposes of this DPA.
 
-1.2. "**EU SCCs**" means the Standard Contractual Clauses issued pursuant to Commission Implementing Decision (EU) 2021/914 of 4 June 2021 on standard contractual clauses for the transfer of personal data to third countries pursuant to Regulation (EU) 2016/679 of the European Parliament and of the Council (available as of the DPA effective date at https://eur-lex.europa.eu/eli/dec_impl/2021/914/oj or any subsequent link published by the competent EU authorities).
+1.2. "**EU SCCs**" means the Standard Contractual Clauses issued pursuant to Commission Implementing Decision (EU) 2021/914 of 4 June 2021 on standard contractual clauses for the transfer of personal data to third countries pursuant to Regulation (EU) 2016/679 of the European Parliament and of the Council (available as of the DPA effective date at [https://eur-lex.europa.eu/eli/dec_impl/2021/914/oj](https://eur-lex.europa.eu/eli/dec_impl/2021/914/oj) or any subsequent link published by the competent EU authorities).
 
 1.3. "**Personal Data**" includes "personal data," "personal information," "personally identifiable information," and similar terms, and such terms will have the same meaning as defined by applicable Data Protection Laws, that are Processed by Apify on behalf of Customer in the course of providing Apify Platform and other Services under the Agreement.
 
@@ -36,7 +36,7 @@ All capitalized terms not otherwise defined herein shall have the meaning set fo
 
 2.1.4. Unless Parties mutually agree otherwise in writing, Customer shall not provide Apify any Personal Data for Processing that is subject to strict privacy regimes outside of the scope of this DPA, including but not limited to Family Educational Rights and Privacy Act, 20 U.S.C. § 1232g (FERPA), relating to criminal convictions and offenses or Personal Data collected or otherwise Processed by Customer subject to or in connection with FBI Criminal Justice Information Services or the related Security Policy; constituting protected health information subject to the Health Insurance Portability and Accountability Act of 1996 (HIPAA) or data subject to Payment Card Industry Data Security Standard (PCI-DSS).
 
-2.2. **Apify as an Independent Controller**. Apify Processes some Personal Data as an independent Controller. Apify conducts such Processing outside of the scope of this DPA, however, in compliance with Data Protection Laws, and in a manner consistent with the purposes outlined in the https://docs.apify.com/legal/privacy-policy. Those exhaustive purposes are restated here for transparency and convenience:
+2.2. **Apify as an Independent Controller**. Apify Processes some Personal Data as an independent Controller. Apify conducts such Processing outside of the scope of this DPA, however, in compliance with Data Protection Laws, and in a manner consistent with the purposes outlined in the [Apify Privacy Policy](https://docs.apify.com/legal/privacy-policy). Those exhaustive purposes are restated here for transparency and convenience:
 
 2.2.1. user accounts provisioning, management and removal, customer support; account, billing, and customer relationship management and related customer correspondence;
 
@@ -230,4 +230,4 @@ Apify shall implement appropriate technical and organizational measures in accor
 
 ## Schedule E: List of Apify Subprocessors
 
-List of Apify Subprocessor is available at: https://trust.apify.com/subprocessors
+List of Apify Subprocessor is available at: [https://trust.apify.com/subprocessors](https://trust.apify.com/subprocessors)

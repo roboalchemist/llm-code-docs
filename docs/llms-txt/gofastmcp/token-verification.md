@@ -1,16 +1,17 @@
 # Source: https://gofastmcp.com/servers/auth/token-verification.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://gofastmcp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Token Verification
 
 > Protect your server by validating bearer tokens issued by external systems.
 
 export const VersionBadge = ({version}) => {
-  return <code className="version-badge-container">
-            <p className="version-badge">
-                <span className="version-badge-label">New in version:</span> 
-                <code className="version-badge-version">{version}</code>
-            </p>
-        </code>;
+  return <Badge stroke size="lg" icon="gift" iconType="regular" className="version-badge">
+            New in version <code>{version}</code>
+        </Badge>;
 };
 
 <VersionBadge version="2.11.0" />
@@ -178,7 +179,25 @@ verifier = IntrospectionTokenVerifier(
 mcp = FastMCP(name="Protected API", auth=verifier)
 ```
 
-The verifier authenticates to the introspection endpoint using HTTP Basic Auth with your client credentials. When a request arrives with a bearer token, FastMCP queries the introspection endpoint to determine if the token is active and has sufficient scopes.
+The verifier authenticates to the introspection endpoint using client credentials and queries it whenever a bearer token arrives. FastMCP checks whether the token is active and has sufficient scopes before allowing access.
+
+Two standard client authentication methods are supported, both defined in RFC 6749:
+
+* **`client_secret_basic`** (default): Sends credentials via HTTP Basic Auth header
+* **`client_secret_post`**: Sends credentials in the POST request body
+
+Most OAuth providers support both methods, though some may require one specifically. Configure the authentication method with the `client_auth_method` parameter:
+
+```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+# Use POST body authentication instead of Basic Auth
+verifier = IntrospectionTokenVerifier(
+    introspection_url="https://auth.yourcompany.com/oauth/introspect",
+    client_id="mcp-resource-server",
+    client_secret="your-client-secret",
+    client_auth_method="client_secret_post",
+    required_scopes=["api:read", "api:write"]
+)
+```
 
 ## Development and Testing
 
@@ -309,38 +328,30 @@ print(f"Test token: {test_token}")
 
 This pattern enables comprehensive testing of JWT validation logic without depending on external token issuers. The generated tokens are cryptographically valid and will pass all standard JWT validation checks.
 
-## Environment Configuration
+## Production Configuration
 
-<VersionBadge version="2.12.1" />
-
-FastMCP supports both programmatic and environment-based configuration for token verification, enabling flexible deployment across different environments.
-
-Environment-based configuration separates authentication settings from application code, following twelve-factor app principles and simplifying deployment pipelines.
-
-```bash  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
-# Enable JWT verification
-export FASTMCP_SERVER_AUTH=fastmcp.server.auth.providers.jwt.JWTVerifier
-
-# For asymmetric verification with JWKS endpoint:
-export FASTMCP_SERVER_AUTH_JWT_JWKS_URI="https://auth.company.com/.well-known/jwks.json"
-export FASTMCP_SERVER_AUTH_JWT_ISSUER="https://auth.company.com"
-export FASTMCP_SERVER_AUTH_JWT_AUDIENCE="mcp-production-api"
-export FASTMCP_SERVER_AUTH_JWT_REQUIRED_SCOPES="read:data,write:data"
-
-# OR for symmetric key verification (HMAC):
-export FASTMCP_SERVER_AUTH_JWT_PUBLIC_KEY="your-shared-secret-key-minimum-32-chars"
-export FASTMCP_SERVER_AUTH_JWT_ALGORITHM="HS256"  # or HS384, HS512
-export FASTMCP_SERVER_AUTH_JWT_ISSUER="internal-auth-service"
-export FASTMCP_SERVER_AUTH_JWT_AUDIENCE="mcp-internal-api"
-```
-
-With these environment variables configured, your FastMCP server automatically enables JWT verification:
+For production deployments, load sensitive configuration from environment variables:
 
 ```python  theme={"theme":{"light":"snazzy-light","dark":"dark-plus"}}
+import os
 from fastmcp import FastMCP
+from fastmcp.server.auth.providers.jwt import JWTVerifier
 
-# Authentication automatically configured from environment
-mcp = FastMCP(name="Production API")
+# Load configuration from environment variables
+# Parse comma-separated scopes if provided
+scopes_env = os.environ.get("JWT_REQUIRED_SCOPES")
+required_scopes = scopes_env.split(",") if scopes_env else None
+
+verifier = JWTVerifier(
+    jwks_uri=os.environ.get("JWT_JWKS_URI"),
+    issuer=os.environ.get("JWT_ISSUER"),
+    audience=os.environ.get("JWT_AUDIENCE"),
+    required_scopes=required_scopes,
+)
+
+mcp = FastMCP(name="Production API", auth=verifier)
 ```
+
+This keeps configuration out of your codebase while maintaining explicit setup.
 
 This approach enables the same codebase to run across development, staging, and production environments with different authentication requirements. Development might use static tokens while production uses JWT verification, all controlled through environment configuration.

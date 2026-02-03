@@ -1,5 +1,9 @@
 # Source: https://docs.chatling.ai/knowledge-base/delete-data-sources.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.chatling.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Delete data sources
 
 > Learn how to delete data sources in the Knowledge Base.

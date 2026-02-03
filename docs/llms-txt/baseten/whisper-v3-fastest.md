@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/examples/models/whisper/whisper-v3-fastest.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Whisper V3
 
 > Whisper V3 is a fast and accurate speech recognition model.

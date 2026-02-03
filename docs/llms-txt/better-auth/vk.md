@@ -4,11 +4,7 @@
 
 VK ID Provider
 
-***
 
-title: VK
-description: VK ID Provider
----------------------------
 
 <Steps>
   <Step>

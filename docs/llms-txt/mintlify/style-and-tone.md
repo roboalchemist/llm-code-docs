@@ -1,4 +1,8 @@
-# Source: https://mintlify.com/docs/guides/style-and-tone.md
+# Source: https://www.mintlify.com/docs/guides/style-and-tone.md
+
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.mintlify.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Style and tone
 
@@ -20,7 +24,7 @@
 
 * **Spelling and grammar mistakes.** Even a few spelling and grammar mistakes in your documentation make it less credible and harder to read.
 * **Inconsistent terminology.** Calling something an “API key” in one paragraph then “API token” in the next makes it difficult for users to follow along.
-* **Product-centric terminology.** Your users don't have the full context of your product. Use language that users are familiar with.
+* **Product-centric terminology.** Your users don't have the full context of your product. Use language that your users are familiar with.
 * **Colloquialisms.** Especially for localization, colloquialisms hurt clarity.
 
 ## Tips for enforcing style
@@ -32,3 +36,23 @@ Leverage existing style guides to standardize your documentation:
 * [Google Developer Documentation Style Guide](https://developers.google.com/style)
 
 When you know which writing principles you want to implement, automate as much as you can. You can use  [CI checks](/deploy/ci) or linters like [Vale](https://vale.sh).
+
+## Related pages
+
+<CardGroup cols={2}>
+  <Card title="Content types" icon="folder-tree" href="/guides/content-types">
+    Choose the right content type for your documentation goals.
+  </Card>
+
+  <Card title="Accessibility" icon="person-standing" href="/guides/accessibility">
+    Make your documentation accessible to more users.
+  </Card>
+
+  <Card title="Format text" icon="case-sensitive" href="/create/text">
+    Learn text formatting and styling options.
+  </Card>
+
+  <Card title="SEO best practices" icon="search" href="/guides/seo">
+    Improve documentation discoverability.
+  </Card>
+</CardGroup>

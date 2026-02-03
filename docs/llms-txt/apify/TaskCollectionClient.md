@@ -2,19 +2,32 @@
 
 # Source: https://docs.apify.com/api/client/js/reference/class/TaskCollectionClient.md
 
-# Source: https://docs.apify.com/api/client/python/reference/class/TaskCollectionClient.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/TaskCollectionClient.md
-
-# Source: https://docs.apify.com/api/client/python/reference/class/TaskCollectionClient.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/TaskCollectionClient.md
-
-# Source: https://docs.apify.com/api/client/python/reference/class/TaskCollectionClient.md
-
-# Source: https://docs.apify.com/api/client/js/reference/class/TaskCollectionClient.md
-
 # TaskCollectionClient<!-- -->
+
+Client for managing the collection of Actor tasks in your account.
+
+Tasks are pre-configured Actor runs with saved input and options. This client provides methods to list and create tasks.
+
+* **@example**
+
+  ```
+  const client = new ApifyClient({ token: 'my-token' });
+  const tasksClient = client.tasks();
+
+  // List all tasks
+  const { items } = await tasksClient.list();
+
+  // Create a new task
+  const newTask = await tasksClient.create({
+    actId: 'my-actor-id',
+    name: 'my-task',
+    input: { url: 'https://example.com' }
+  });
+  ```
+
+* **@see**
+
+  <https://docs.apify.com/platform/actors/running/tasks>
 
 ### Hierarchy
 
@@ -42,25 +55,25 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#apifyClient)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L35)inheritedapifyClient
+### [**](#apifyClient)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L36)inheritedapifyClient
 
 **apifyClient: [ApifyClient](https://docs.apify.com/api/client/js/api/client/js/reference/class/ApifyClient.md)
 
 Inherited from ResourceCollectionClient.apifyClient
 
-### [**](#baseUrl)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L27)inheritedbaseUrl
+### [**](#baseUrl)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L28)inheritedbaseUrl
 
 **baseUrl: string
 
 Inherited from ResourceCollectionClient.baseUrl
 
-### [**](#httpClient)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L37)inheritedhttpClient
+### [**](#httpClient)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L38)inheritedhttpClient
 
 **httpClient: HttpClient
 
 Inherited from ResourceCollectionClient.httpClient
 
-### [**](#id)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L23)optionalinheritedid
+### [**](#id)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L24)optionalinheritedid
 
 **id?
 
@@ -70,7 +83,7 @@ Inherited from ResourceCollectionClient.httpClient
 
 Inherited from ResourceCollectionClient.id
 
-### [**](#params)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L39)optionalinheritedparams
+### [**](#params)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L40)optionalinheritedparams
 
 **params?
 
@@ -80,19 +93,19 @@ Inherited from ResourceCollectionClient.id
 
 Inherited from ResourceCollectionClient.params
 
-### [**](#publicBaseUrl)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L29)inheritedpublicBaseUrl
+### [**](#publicBaseUrl)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L30)inheritedpublicBaseUrl
 
 **publicBaseUrl: string
 
 Inherited from ResourceCollectionClient.publicBaseUrl
 
-### [**](#resourcePath)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L31)inheritedresourcePath
+### [**](#resourcePath)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L32)inheritedresourcePath
 
 **resourcePath: string
 
 Inherited from ResourceCollectionClient.resourcePath
 
-### [**](#safeId)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L25)optionalinheritedsafeId
+### [**](#safeId)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L26)optionalinheritedsafeId
 
 **safeId?
 
@@ -102,7 +115,7 @@ Inherited from ResourceCollectionClient.resourcePath
 
 Inherited from ResourceCollectionClient.safeId
 
-### [**](#url)[**](https://github.com/apify/apify-client-js/blob/master/src/base/api_client.ts#L33)inheritedurl
+### [**](#url)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/base/api_client.ts#L34)inheritedurl
 
 **url: string
 
@@ -110,11 +123,15 @@ Inherited from ResourceCollectionClient.url
 
 ## Methods<!-- -->[**](#Methods)
 
-### [**](#create)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/task_collection.ts#L43)create
+### [**](#create)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/task_collection.ts#L83)create
 
 * ****create**(task): Promise<[Task](https://docs.apify.com/api/client/js/api/client/js/reference/interface/Task.md)>
 
-- <https://docs.apify.com/api/v2#/reference/actor-tasks/task-collection/create-task>
+- Creates a new task.
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/actor-tasks-post>
 
   ***
 
@@ -122,18 +139,42 @@ Inherited from ResourceCollectionClient.url
 
   * ##### task: [TaskCreateData](https://docs.apify.com/api/client/js/api/client/js/reference/interface/TaskCreateData.md)
 
+    The task data.
+
   #### Returns Promise<[Task](https://docs.apify.com/api/client/js/api/client/js/reference/interface/Task.md)>
 
-### [**](#list)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/task_collection.ts#L27)list
+  The created task object.
 
-* ****list**(options): Promise<[PaginatedList](https://docs.apify.com/api/client/js/api/client/js/reference/interface/PaginatedList.md)<[TaskList](https://docs.apify.com/api/client/js/api/client/js/reference.md#TaskList)>>
+### [**](#list)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/task_collection.ts#L63)list
 
-- <https://docs.apify.com/api/v2#/reference/actor-tasks/task-collection/get-list-of-tasks>
+* ****list**(options): PaginatedIterator<[TaskList](https://docs.apify.com/api/client/js/api/client/js/reference.md#TaskList)>
+
+- Lists all Tasks.
+
+  Awaiting the return value (as you would with a Promise) will result in a single API call. The amount of fetched items in a single API call is limited.
+
+  ```
+  const paginatedList = await client.list(options);
+  ```
+
+  Asynchronous iteration is also supported. This will fetch additional pages if needed until all items are retrieved.
+
+  ```
+  for await (const singleItem of client.list(options)) {...}
+  ```
+
+  * **@see**
+
+    <https://docs.apify.com/api/v2/actor-tasks-get>
 
   ***
 
   #### Parameters
 
-  * ##### optionaloptions: [TaskCollectionListOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/TaskCollectionListOptions.md) = <!-- -->{}
+  * ##### options: [TaskCollectionListOptions](https://docs.apify.com/api/client/js/api/client/js/reference/interface/TaskCollectionListOptions.md) = <!-- -->{}
 
-  #### Returns Promise<[PaginatedList](https://docs.apify.com/api/client/js/api/client/js/reference/interface/PaginatedList.md)<[TaskList](https://docs.apify.com/api/client/js/api/client/js/reference.md#TaskList)>>
+    Pagination and sorting options.
+
+  #### Returns PaginatedIterator<[TaskList](https://docs.apify.com/api/client/js/api/client/js/reference.md#TaskList)>
+
+  A paginated iterator of tasks.

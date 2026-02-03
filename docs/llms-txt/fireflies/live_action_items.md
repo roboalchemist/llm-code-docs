@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/graphql-api/query/live_action_items.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Live Action Items
 
 > Query live action items for a meeting
@@ -188,8 +192,3 @@ List of possible error codes that may be returned by the `live_action_items` que
     Pause or resume recording for a live meeting
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.fireflies.ai/llms.txt

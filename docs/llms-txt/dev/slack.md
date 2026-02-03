@@ -1,10 +1,18 @@
 # Source: https://dev.writer.com/connectors/slack.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://dev.writer.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Slack connector
 
 > Connect WRITER Agent to Slack to search messages, manage channels, and automate team communication
 
 This guide shows you how to configure the [Slack](https://slack.com/) connector for WRITER Agent. After setting up this connector, WRITER Agent can perform operations like searching messages and files, reading conversations, managing channels, viewing user profiles, and sending messages to Slack workspaces.
+
+<Warning>
+  Enroll in [Slack's MCP beta program](https://docs.slack.dev/ai/mcp-server/) to use this connector. Contact your Slack partner manager to request access.
+</Warning>
 
 ## Set up the Slack connector
 
@@ -20,13 +28,15 @@ Create an OAuth 2.0 application in Slack:
 
 1. Navigate to the [Slack API Apps page](https://api.slack.com/apps)
 2. Create a new app (select "From scratch")
-3. Configure OAuth & Permissions with the [required scopes](#required-oauth-scopes)
-4. Add the Writer redirect URI to Redirect URLs:
+3. Navigate to **OAuth & Permissions** in the sidebar
+4. Under **Scopes**, locate the **User Token Scopes** section (not Bot Token Scopes) and add the [required scopes](#required-oauth-scopes)
+5. Add the Writer redirect URI to Redirect URLs:
    ```
    https://app.writer.com/mcp/oauth/callback
    ```
-5. Install the app to your workspace
-6. Copy the client ID and client secret from Basic Information
+6. Under **Advanced token security via token rotation**, enable **Token Rotation**
+7. Navigate to **Basic Information**
+8. Copy the client ID and client secret for use in [AI Studio](#configure-the-connector-in-ai-studio)
 
 For detailed instructions, see [Slack's OAuth documentation](https://api.slack.com/authentication/oauth-v2).
 

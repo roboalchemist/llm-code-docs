@@ -1,5 +1,9 @@
 # Source: https://docs.lancedb.com/search/sql/fts-sql.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.lancedb.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Full-Text Search with SQL
 
 > Use LanceDB's full-text search capabilities via SQL queries.
@@ -352,8 +356,3 @@ For detailed information about query parameters and options for `MatchQuery`, `P
 * [Full-text search](/search/full-text-search/) - Learn about FTS capabilities and query types
 * [SQL queries](/search/sql) - General SQL query documentation
 * [Hybrid search](/search/hybrid-search/) - Combine FTS with vector search
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.lancedb.com/llms.txt

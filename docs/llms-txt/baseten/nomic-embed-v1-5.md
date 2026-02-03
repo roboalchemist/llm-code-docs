@@ -1,5 +1,9 @@
 # Source: https://docs.baseten.co/examples/models/nomic/nomic-embed-v1-5.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.baseten.co/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Nomic Embed v1.5
 
 > SOTA text embedding model with variable dimensionality — outperforms OpenAI text-embedding-ada-002 and text-embedding-3-small models.

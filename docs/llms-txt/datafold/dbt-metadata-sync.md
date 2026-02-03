@@ -1,5 +1,9 @@
 # Source: https://docs.datafold.com/data-explorer/best-practices/dbt-metadata-sync.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.datafold.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # dbt Metadata Sync
 
 > Datafold can automatically ingest dbt metadata from your production environment and display it in Data Explorer.

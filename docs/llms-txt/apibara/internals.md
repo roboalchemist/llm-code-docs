@@ -1,3 +1,5 @@
+# Source: https://www.apibara.com/docs/storage/drizzle-pg/internals#state-persistence
+
 # Drizzle's plugin internals
 
 This section describes how the Drizzle plugin works. Understanding the content of this page is not needed for using the plugin.

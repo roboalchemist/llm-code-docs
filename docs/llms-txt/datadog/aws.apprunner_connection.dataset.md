@@ -4,8 +4,6 @@
 title: App Runner Connection
 description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: Docs > DDSQL Reference > Data Directory > App Runner Connection
-source_url: >-
-  https://docs.datadoghq.com/data_directory/aws/aws.apprunner_connection.dataset/index.html
 ---
 
 # App Runner Connection
@@ -18,13 +16,13 @@ aws.apprunner_connection
 
 ## Fields
 
-| Title           | ID   | Type      | Data Type                                                                                                                                | Description |
-| --------------- | ---- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
-| _key            | core | string    |
-| account_id      | core | string    |
-| connection_arn  | core | string    | The Amazon Resource Name (ARN) of this connection.                                                                                       |
-| connection_name | core | string    | The customer-provided connection name.                                                                                                   |
-| created_at      | core | timestamp | The App Runner connection creation time, expressed as a Unix time stamp.                                                                 |
-| provider_type   | core | string    | The source repository provider.                                                                                                          |
-| status          | core | string    | The current state of the App Runner connection. When the state is AVAILABLE, you can use the connection to create an App Runner service. |
-| tags            | core | hstore    |
+| Title           | ID   | Type       | Data Type                                                                                                                                | Description |
+| --------------- | ---- | ---------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| _key            | core | string     |
+| account_id      | core | string     |
+| connection_arn  | core | string     | The Amazon Resource Name (ARN) of this connection.                                                                                       |
+| connection_name | core | string     | The customer-provided connection name.                                                                                                   |
+| created_at      | core | timestamp  | The App Runner connection creation time, expressed as a Unix time stamp.                                                                 |
+| provider_type   | core | string     | The source repository provider.                                                                                                          |
+| status          | core | string     | The current state of the App Runner connection. When the state is AVAILABLE, you can use the connection to create an App Runner service. |
+| tags            | core | hstore_csv |

@@ -2,6 +2,8 @@
 
 # BuildClientGetOptions<!-- -->
 
+Options for getting a Build.
+
 ## Index[**](#Index)
 
 ### Properties
@@ -10,7 +12,7 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#waitForFinish)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/build.ts#L104)optionalwaitForFinish
+### [**](#waitForFinish)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/build.ts#L189)optionalwaitForFinish
 
 **waitForFinish?
 

@@ -4,11 +4,7 @@
 
 Integrate Better Auth with MS SQL.
 
-***
 
-title: MS SQL
-description: Integrate Better Auth with MS SQL.
------------------------------------------------
 
 Microsoft SQL Server is a relational database management system developed by Microsoft, designed for enterprise-level data storage, management, and analytics with robust security and scalability features.
 Read more [here](https://en.wikipedia.org/wiki/Microsoft_SQL_Server).
@@ -79,24 +75,33 @@ your database schema based on your Better Auth configuration and plugins.
   <thead>
     <tr className="border-b">
       <th>
-        <p className="font-bold text-[16px] mb-1">MS SQL Schema Generation</p>
+        <p className="font-bold text-[16px] mb-1">
+          MS SQL Schema Generation
+        </p>
       </th>
 
       <th>
-        <p className="font-bold text-[16px] mb-1">MS SQL Schema Migration</p>
+        <p className="font-bold text-[16px] mb-1">
+          MS SQL Schema Migration
+        </p>
       </th>
     </tr>
   </thead>
 
   <tbody>
     <tr className="h-10">
-      <td>â Supported</td>
-      <td>â Supported</td>
+      <td>
+        â Supported
+      </td>
+
+      <td>
+        â Supported
+      </td>
     </tr>
   </tbody>
 </table>
 
-<CodeBlockTabs defaultValue="npm">
+<CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
   <CodeBlockTabsList>
     <CodeBlockTabsTrigger value="npm">
       npm
@@ -140,7 +145,7 @@ your database schema based on your Better Auth configuration and plugins.
   </CodeBlockTab>
 </CodeBlockTabs>
 
-<CodeBlockTabs defaultValue="npm">
+<CodeBlockTabs defaultValue="npm" groupId="persist-install" persist>
   <CodeBlockTabsList>
     <CodeBlockTabsTrigger value="npm">
       npm

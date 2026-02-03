@@ -1,5 +1,9 @@
 # Source: https://www.traceloop.com/docs/openllmetry/integrations/azure.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://www.traceloop.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Azure Application Insights
 
 Traceloop supports sending traces to Azure Application Insights via standard OpenTelemetry integrations.
@@ -85,8 +89,3 @@ def joke_workflow():
 if __name__ == "__main__":
     joke_workflow()
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://www.traceloop.com/docs/llms.txt

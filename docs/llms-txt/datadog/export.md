@@ -6,7 +6,6 @@ description: Datadog, the leading service for cloud-scale monitoring.
 breadcrumbs: >-
   Docs > Continuous Integration Visibility > Continuous Integration Visibility
   Explorer > Export Pipeline Executions
-source_url: https://docs.datadoghq.com/explorer/export/index.html
 ---
 
 # Export Pipeline Executions

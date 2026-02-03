@@ -2,10 +2,6 @@
 
 # Source: https://docs.stripe.com/tax/supported-countries/asia-pacific/collect-tax.md
 
-# Source: https://docs.stripe.com/tax/supported-countries/latin-america-and-caribbean/collect-tax.md
-
-# Source: https://docs.stripe.com/tax/supported-countries/asia-pacific/collect-tax.md
-
 # Collect tax in Asia Pacific
 
 Learn how to collect tax in a country in Asia Pacific.
@@ -82,7 +78,7 @@ We only support calculations for [digital products](https://docs.stripe.com/tax/
 
 - **Registration resources**
 
-  - [Registration for businesses with an origin address in Australia](https://www.ato.gov.au/Business/GST/Registering-for-GST/)
+  - [Registration for businesses with a head office in Australia](https://www.ato.gov.au/Business/GST/Registering-for-GST/)
   - [Registration for remote sellers](https://www.ato.gov.au/Business/International-tax-for-business/Non-resident-businesses-and-GST/) (businesses based outside of Australia selling into Australia)
 
 ## Threshold and registration for Australia 
@@ -987,3 +983,9 @@ In Vietnam, the Foreign Contractor Tax (FCT) applies to sales of digital service
 In Vietnam, Stripe only supports collecting VAT for digital services. In Stripe, these are referred to as “digital products.” To collect this tax on Stripe, you must be a remote seller without a physical presence in the country.
 
 We only support calculations for [digital products](https://docs.stripe.com/tax/tax-codes.md?type=digital) (non-physical items or services that are delivered, given, or rendered electronically) in Vietnam. Stripe doesn’t calculate tax for products that don’t use a digital product tax code. View the list of supported [digital product tax codes](https://docs.stripe.com/tax/tax-codes.md?type=digital). To calculate taxes in Vietnam, make sure that you [assign a tax code](https://docs.stripe.com/tax/products-prices-tax-codes-tax-behavior.md#tax-code-on-product) to each of your products.
+
+## See also
+
+- [Set up Stripe Tax](https://docs.stripe.com/tax/set-up.md)
+- [Register for sales tax, VAT, and GST](https://docs.stripe.com/tax/registering.md)
+- [Use Stripe to register](https://docs.stripe.com/tax/use-stripe-to-register.md)

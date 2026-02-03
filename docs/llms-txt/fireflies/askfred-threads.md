@@ -1,5 +1,9 @@
 # Source: https://docs.fireflies.ai/graphql-api/query/askfred-threads.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.fireflies.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AskFred Threads
 
 > Get a summary of all AskFred conversation threads for the current user
@@ -167,8 +171,3 @@ query GetFilteredThreads($transcriptId: String) {
     Start a new AskFred conversation
   </Card>
 </CardGroup>
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.fireflies.ai/llms.txt

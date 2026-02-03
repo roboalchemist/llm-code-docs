@@ -1,12 +1,16 @@
 # Source: https://docs.asapp.com/generativeagent/configuring/tasks-and-functions/test-scenarios.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.asapp.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Test Scenarios
 
 > Learn how to create and use Test Scenarios to test conversations with GenerativeAgent.
 
-A **Test Scenario** is a simulated customer profile created to test conversations with GenerativeAgent.
+A **Test Scenario** simulates a customer profile to test conversations with GenerativeAgent.
 
-These scenarios help you define both the mock API responses and the customer's side of the interaction—goals, known information, and personality—so you can assess how GenerativeAgent handles customers with different scenarios, edge cases, and potential issues.
+These scenarios help you define both the mock API responses and the customer's side of the interaction—goals, known information, and personality—so you can assess how GenerativeAgent handles different scenarios, edge cases, and potential issues.
 
 <Note>
   Use Test Scenarios to test:
@@ -19,9 +23,9 @@ These scenarios help you define both the mock API responses and the customer's s
 There are two ways to use Test Scenarios:
 
 1. **Manual:** 'Talk to GenerativeAgent' mode\
-   To save and start using a test scenario to 'talk to GenerativeAgent', fill in the **Test Name** and **User API profile**.
+   To save and start using a test scenario to talk to GenerativeAgent, fill in the **Test Name** and **User API profile**.
 2. **Automatic:** 'Simulate a customer and conversation' mode\
-   To save and start using a test scenario to 'Simulate a customer and conversation', fill in the **Test Name**, **User API profile**, **User Goals**, and **Information the user knows** sections so the customer portion of the conversation can be simulated.
+   To save and start using a test scenario to simulate a customer and conversation, fill in the **Test Name**, **User API profile**, **User Goals**, and **Information the user knows** sections so the customer portion of the conversation can be simulated.
 
 ### Create a Test Scenario
 
@@ -70,7 +74,7 @@ To create a Test Scenario:
 
 ## Configure User API Profile
 
-The data that GenerativeAgent uses is critical to how it behaves. The User API Profile defines the mock data that will be given to GenerativeAgent when using this test scenario.
+The data that GenerativeAgent uses plays a critical role in how it behaves. The User API Profile defines the mock data that will be provided to GenerativeAgent when using this test scenario.
 
 You have two options to mock data:
 
@@ -79,7 +83,7 @@ You have two options to mock data:
 
 ### Auto-generate mock data
 
-Auto-generate mock data will create function mocks using the scenario you describe and the schema of the functions in the main branch of the draft environment.
+Auto-generate mock data creates function mocks using the scenario you describe and the schema of the functions in the main branch of the draft environment.
 
 To auto-generate mock data:
 
@@ -88,7 +92,7 @@ To auto-generate mock data:
 3. Wait up to one minute for the profile to be created (you can close the dialog while you wait).
 
 <Note>
-  Mocked data schemas will be pulled from the main branch of the draft environment. To test a new function, it needs to have been added to the main branch of the draft environment.
+  The system pulls mocked data schemas from the main branch of the draft environment. To test a new function, it needs to have been added to the main branch of the draft environment.
 </Note>
 
 <Note>
@@ -97,7 +101,7 @@ To auto-generate mock data:
 
 ### Manually define functions
 
-If you know the specific data you want to mock for scenario, you can manually define the functions and mock data.
+If you know the specific data you want to mock for a scenario, you can manually define the functions and mock data.
 
 1. Click **+ Select functions**.
 2. Choose the API calls you want to mock (e.g. `getAccountInfo`, `confirmCode`).
@@ -117,13 +121,13 @@ To simulate different API responses under the same function:
 
 ### Updating Mock data
 
-It is not uncommon to need to update the mock data after creating a Test Scenario. After creating a Test Scenario, ensure your mock data aligns with your testing needs.
+You may need to update the mock data after creating a Test Scenario. After creating a Test Scenario, ensure your mock data aligns with your testing needs.
 
 This can be done by updating your scenario when auto-generating the mock data or manually adding the functions and mock data.
 
 ### Date & time override (optional)
 
-Often APIs have an implicit or explicit date and time they are being performed. By default, GenerativeAgent will assume the customer interaction is happening at the date and time the scenario is ran and update timestamp in the API profile accordingly.
+Often APIs have an implicit or explicit date and time when the system performs them. By default, GenerativeAgent assumes the customer interaction is happening at the date and time the scenario is run and updates timestamps in the API profile accordingly.
 
 You can override the assumed timestamp of the interaction.
 
@@ -137,12 +141,12 @@ The input context consists of two main components:
 2. **[Starting Task](/generativeagent/configuring/tasks-and-functions/enter-specific-task)**: The specific task or flow that GenerativeAgent should begin with
 
 <Note>
-  Ensure your input context matches exactly how your production system passes data to GenerativeAgent. This guarantees your test scenarios will behave identically to real conversations.
+  Ensure your input context matches exactly how your production system passes data to GenerativeAgent. This guarantees your test scenarios will match real conversations identically.
 </Note>
 
 ## Define Simulation Details
 
-When you are using the automatic mode, you need to define how the simulated customer will behave. Describe what the simulated customer brings to the conversation.
+When using automatic mode, define how the simulated customer will behave. Describe what the simulated customer brings to the conversation.
 
 These fields drive the customer's interactions with GenerativeAgent
 
@@ -162,7 +166,7 @@ Describe the motivations of the simulated customer (e.g. "You want to change you
 
 ### Information the user knows
 
-List identity or account data the customer can provide (e.g. Name, address, confirmation code, account number). The customer will relay this information when prompted; omit some to simulate forgotten details.
+List identity or account data the customer can provide (e.g., Name, address, confirmation code, account number). The customer will relay this information when prompted; omit some to simulate forgotten details.
 
 <Note>
   To test how GenerativeAgent will handle a customer who *does not* have their account number or a critical piece of information, just leave it off the list.
@@ -181,13 +185,13 @@ By default:
 
 ## Add Evaluations
 
-When evaluations are toggled **on**, the system will run evaluation logic after the conversation ends.
+When evaluations are toggled on, the system runs evaluation logic after the conversation ends.
 
 ### Applicability Criteria (optional)
 
 Define preconditions or milestones that must be met in the conversation for the evaluation to run. This is useful to disqualify cases where the conversation didn't reach the part you're testing.
 
-If left **blank**, the evaluation **will run by default**.
+If left blank, the evaluation runs by default.
 
 Example:
 
@@ -202,7 +206,7 @@ Examples:
 > "The Agent provided the current month's bill amount of \$144.72"
 > "The Agent did NOT offer a discount"
 
-Evaluation results will appear in the **Previewer**, side-by-side with the conversation after clicking on the **Results** button.
+Evaluation results appear in the **Previewer**, side-by-side with the conversation after clicking on the **Results** button.
 
 If you update your evaluation or applicability criteria later, you can return to the same conversation in the Previewer and click **Run Eval Again** to re-run against the updated test.
 
@@ -231,7 +235,7 @@ Once the conversation ends:
 
 ## Migration of Test Users
 
-All existing Test Users will be migrated to Test Scenarios and retain their functionality:
+The system has migrated all existing Test Users to Test Scenarios and retains their functionality:
 
-* Your Test Users become Test Scenarios automatically. You can still talk to GenerativeAgent with your old test users by selecting them in the dropdown in the previewer.
-* The original **default** Test User is converted into a **default** Test Scenario—do not delete it unless you no longer need it.
+* Your Test Users became Test Scenarios automatically. You can still talk to GenerativeAgent with your old test users by selecting them in the dropdown in the previewer.
+* The system converted the original default Test User into a default Test Scenario—do not delete it unless you no longer need it.

@@ -2,13 +2,9 @@
 
 # Source: https://resend.com/docs/dashboard/emails/attachments.md
 
-# Source: https://resend.com/docs/dashboard/receiving/attachments.md
-
-# Source: https://resend.com/docs/dashboard/emails/attachments.md
-
-# Source: https://resend.com/docs/dashboard/receiving/attachments.md
-
-# Source: https://resend.com/docs/dashboard/emails/attachments.md
+> ## Documentation Index
+> Fetch the complete documentation index at: https://resend.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
 
 # Attachments
 
@@ -31,7 +27,7 @@ Include the `path` parameter to send attachments from a remote file. This parame
 Define the file name that will be attached using the `filename` parameter.
 
 <CodeGroup>
-  ```ts Node.js {12-13} theme={null}
+  ```ts Node.js {12-13} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
 
   const resend = new Resend('re_xxxxxxxxx');
@@ -50,7 +46,7 @@ Define the file name that will be attached using the `filename` parameter.
   });
   ```
 
-  ```php PHP {10-11} theme={null}
+  ```php PHP {10-11} theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->emails->send([
@@ -67,7 +63,7 @@ Define the file name that will be attached using the `filename` parameter.
   ]);
   ```
 
-  ```python Python {6-7} theme={null}
+  ```python Python {6-7} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import resend
 
   resend.api_key = "re_xxxxxxxxx"
@@ -88,7 +84,7 @@ Define the file name that will be attached using the `filename` parameter.
   resend.Emails.send(params)
   ```
 
-  ```rb Ruby {12-13} theme={null}
+  ```rb Ruby {12-13} theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -109,7 +105,7 @@ Define the file name that will be attached using the `filename` parameter.
   Resend::Emails.send(params)
   ```
 
-  ```go Go {12-13} theme={null}
+  ```go Go {12-13} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import (
   	"fmt"
 
@@ -142,7 +138,7 @@ Define the file name that will be attached using the `filename` parameter.
   }
   ```
 
-  ```rust Rust {12-13} theme={null}
+  ```rust Rust {12-13} theme={"theme":{"light":"github-light","dark":"vesper"}}
   use resend_rs::types::{CreateAttachment, CreateEmailBaseOptions};
   use resend_rs::{Resend, Result};
 
@@ -167,7 +163,7 @@ Define the file name that will be attached using the `filename` parameter.
   }
   ```
 
-  ```java Java {8-9} theme={null}
+  ```java Java {8-9} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -192,7 +188,7 @@ Define the file name that will be attached using the `filename` parameter.
   }
   ```
 
-  ```csharp .NET {14-18} theme={null}
+  ```csharp .NET {14-18} theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
   using System.Collections.Generic;
 
@@ -216,7 +212,7 @@ Define the file name that will be attached using the `filename` parameter.
   Console.WriteLine( "Email Id={0}", resp.Content );
   ```
 
-  ```bash cURL {11-12} theme={null}
+  ```bash cURL {11-12} theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X POST 'https://api.resend.com/emails' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json' \
@@ -242,7 +238,7 @@ Include the `content` parameter to send attachments from a local file. This para
 Define the file name that will be attached using the `filename` parameter.
 
 <CodeGroup>
-  ```ts Node.js {16-17} theme={null}
+  ```ts Node.js {16-17} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import { Resend } from 'resend';
   import fs from 'fs';
 
@@ -265,7 +261,7 @@ Define the file name that will be attached using the `filename` parameter.
   });
   ```
 
-  ```php PHP {10-11} theme={null}
+  ```php PHP {10-11} theme={"theme":{"light":"github-light","dark":"vesper"}}
   $resend = Resend::client('re_xxxxxxxxx');
 
   $resend->emails->send([
@@ -282,7 +278,7 @@ Define the file name that will be attached using the `filename` parameter.
   ]);
   ```
 
-  ```python Python {10} theme={null}
+  ```python Python {10} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import os
   import resend
 
@@ -305,7 +301,7 @@ Define the file name that will be attached using the `filename` parameter.
   resend.Emails.send(params)
   ```
 
-  ```rb Ruby {14-15} theme={null}
+  ```rb Ruby {14-15} theme={"theme":{"light":"github-light","dark":"vesper"}}
   require "resend"
 
   Resend.api_key = "re_xxxxxxxxx"
@@ -328,7 +324,7 @@ Define the file name that will be attached using the `filename` parameter.
   Resend::Emails.send(params)
   ```
 
-  ```go Go {19-20} theme={null}
+  ```go Go {19-20} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import (
   	"fmt"
   	"os"
@@ -368,7 +364,7 @@ Define the file name that will be attached using the `filename` parameter.
   }
   ```
 
-  ```rust Rust {22} theme={null}
+  ```rust Rust {22} theme={"theme":{"light":"github-light","dark":"vesper"}}
   use std::fs::File;
   use std::io::Read;
 
@@ -398,7 +394,7 @@ Define the file name that will be attached using the `filename` parameter.
   }
   ```
 
-  ```java Java {8-9} theme={null}
+  ```java Java {8-9} theme={"theme":{"light":"github-light","dark":"vesper"}}
   import com.resend.*;
 
   public class Main {
@@ -423,7 +419,7 @@ Define the file name that will be attached using the `filename` parameter.
   }
   ```
 
-  ```csharp .NET {15-19} theme={null}
+  ```csharp .NET {15-19} theme={"theme":{"light":"github-light","dark":"vesper"}}
   using Resend;
   using System.Collections.Generic;
   using System.IO;
@@ -448,7 +444,7 @@ Define the file name that will be attached using the `filename` parameter.
   Console.WriteLine( "Email Id={0}", resp.Content );
   ```
 
-  ```bash cURL {11-12} theme={null}
+  ```bash cURL {11-12} theme={"theme":{"light":"github-light","dark":"vesper"}}
   curl -X POST 'https://api.resend.com/emails' \
        -H 'Authorization: Bearer re_xxxxxxxxx' \
        -H 'Content-Type: application/json' \
@@ -477,29 +473,256 @@ Embedding images requires two steps:
 
 Use the prefix `cid:` to reference the ID in the `src` attribute of an image tag in the HTML body of the email.
 
-```html  theme={null}
+```html  theme={"theme":{"light":"github-light","dark":"vesper"}}
 <img src="cid:logo-image" />
 ```
 
 **2. Reference the CID in the attachment**
 
-Include the `content_id` parameter in the attachment object (e.g. `content_id: "logo-image"`).
+The content id is an arbitrary string set by you, and must be less than 128 characters.
 
-The ID is an arbitrary string set by you, and must be less than 128 characters.
+<CodeGroup>
+  ```ts Node.js {9, 14} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  import { Resend } from 'resend';
+
+  const resend = new Resend('re_xxxxxxxxx');
+
+  await resend.emails.send({
+    from: 'Acme <onboarding@resend.dev>',
+    to: ['delivered@resend.dev'],
+    subject: 'Thank you for contacting us',
+    html: '<p>Here is our <img src="cid:logo-image"/> inline logo</p>',
+    attachments: [
+      {
+        path: 'https://resend.com/static/sample/logo.png',
+        filename: 'logo.png',
+        contentId: 'logo-image',
+      },
+    ],
+  });
+  ```
+
+  ```php PHP {7,12} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  $resend = Resend::client('re_xxxxxxxxx');
+
+  $resend->emails->send([
+    'from' => 'Acme <onboarding@resend.dev>',
+    'to' => ['delivered@resend.dev'],
+    'subject' => 'Thank you for contacting us',
+    'html' => '<p>Here is our <img src="cid:logo-image"/> inline logo</p>',
+    'attachments' => [
+      [
+        'path' => 'https://resend.com/static/sample/logo.png',
+        'filename' => 'logo.png',
+        'content_id' => 'logo-image',
+      ]
+    ]
+  ]);
+  ```
+
+  ```python Python {8,15} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  import resend
+
+  resend.api_key = "re_xxxxxxxxx"
+
+  attachment: resend.RemoteAttachment = {
+    "path": "https://resend.com/static/sample/logo.png",
+    "filename": "logo.png",
+    "content_id": "logo-image",
+  }
+
+  params: resend.Emails.SendParams = {
+    "from": "Acme <onboarding@resend.dev>",
+    "to": ["delivered@resend.dev"],
+    "subject": "Thank you for contacting us",
+    "html": "<p>Here is our <img src=\"cid:logo-image\"/> inline logo</p>",
+    "attachments": [attachment],
+  }
+
+  resend.Emails.send(params)
+  ```
+
+  ```rb Ruby {9, 14} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  require "resend"
+
+  Resend.api_key = "re_xxxxxxxxx"
+
+  params = {
+    "from": "Acme <onboarding@resend.dev>",
+    "to": ["delivered@resend.dev"],
+    "subject": "Thank you for contacting us",
+    "html": "<p>Here is our <img src=\"cid:logo-image\"/> inline logo</p>",
+    "attachments": [
+      {
+        "path": "https://resend.com/static/sample/logo.png",
+        "filename": 'logo.png',
+        "content_id": "logo-image",
+      }
+    ]
+  }
+
+  Resend::Emails.send(params)
+  ```
+
+  ```go Go {14, 21} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  import (
+  	"fmt"
+
+  	"github.com/resend/resend-go/v3"
+  )
+
+  func main() {
+    ctx := context.TODO()
+    client := resend.NewClient("re_xxxxxxxxx")
+
+    attachment := &resend.Attachment{
+      Path:  "https://resend.com/static/sample/logo.png",
+      Filename: "logo.png",
+      ContentId: "logo-image",
+    }
+
+    params := &resend.SendEmailRequest{
+        From:        "Acme <onboarding@resend.dev>",
+        To:          []string{"delivered@resend.dev"},
+        Subject:     "Thank you for contacting us",
+        Html:        "<p>Here is our <img src=\"cid:logo-image\"/> inline logo</p>",
+        Attachments: []*resend.Attachment{attachment},
+    }
+
+    sent, err := client.Emails.SendWithContext(ctx, params)
+
+    if err != nil {
+      panic(err)
+    }
+    fmt.Println(sent.Id)
+  }
+  ```
+
+  ```rust Rust {14, 17} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  use resend_rs::types::{CreateAttachment, CreateEmailBaseOptions};
+  use resend_rs::{Resend, Result};
+
+  #[tokio::main]
+  async fn main() -> Result<()> {
+    let resend = Resend::new("re_xxxxxxxxx");
+
+    let from = "Acme <onboarding@resend.dev>";
+    let to = ["delivered@resend.dev"];
+    let subject = "Thank you for contacting us";
+
+    let path = "https://resend.com/static/sample/logo.png";
+    let filename = "logo.png";
+    let content_id = "logo-image";
+
+    let email = CreateEmailBaseOptions::new(from, to, subject)
+      .with_html("<p>Here is our <img src=\"cid:logo-image\"/> inline logo</p>")
+      .with_attachment(
+        CreateAttachment::from_path(path)
+          .with_filename(filename)
+          .with_content_id(content_id),
+      );
+
+    let _email = resend.emails.send(email).await?;
+
+    Ok(())
+  }
+  ```
+
+  ```java Java {10, 17} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  import com.resend.*;
+
+  public class Main {
+      public static void main(String[] args) {
+          Resend resend = new Resend("re_xxxxxxxxx");
+
+          Attachment att = Attachment.builder()
+                  .path("https://resend.com/static/sample/logo.png")
+                  .fileName("logo.png")
+                  .ContentId("logo-image")
+                  .build();
+
+          CreateEmailOptions params = CreateEmailOptions.builder()
+                  .from("Acme <onboarding@resend.dev>")
+                  .to("delivered@resend.dev")
+                  .subject("Thank you for contacting us")
+                  .html("<p>Here is our <img src=\"cid:logo-image\"/> inline logo</p>")
+                  .attachments(att)
+                  .build();
+
+          CreateEmailResponse data = resend.emails().send(params);
+      }
+  }
+  ```
+
+  ```csharp .NET {11, 18} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  using Resend;
+  using System.Collections.Generic;
+
+  IResend resend = ResendClient.Create( "re_xxxxxxxxx" ); // Or from DI
+
+  var message = new EmailMessage()
+  {
+      From = "Acme <onboarding@resend.dev>",
+      To = "delivered@resend.dev",
+      Subject = "Thank you for contacting us",
+      HtmlBody = "<p>Here is our <img src=\"cid:logo-image\"/> inline logo</p>",
+  };
+
+  message.Attachments = new List<EmailAttachment>();
+  message.Attachments.Add( new EmailAttachment() {
+    Filename = "logo.png",
+    Path = "https://resend.com/static/sample/logo.png",
+    ContentId = "logo-image",
+  } );
+
+  var resp = await resend.EmailSendAsync( message );
+  Console.WriteLine( "Email Id={0}", resp.Content );
+  ```
+
+  ```bash cURL {8,13} theme={"theme":{"light":"github-light","dark":"vesper"}}
+  curl -X POST 'https://api.resend.com/emails' \
+       -H 'Authorization: Bearer re_xxxxxxxxx' \
+       -H 'Content-Type: application/json' \
+       -d $'{
+    "from": "Acme <onboarding@resend.dev>",
+    "to": ["delivered@resend.dev"],
+    "subject": "Thank you for contacting us",
+    "html": "<p>Here is our <img src=\"cid:logo-image\"/> inline logo</p>",
+    "attachments": [
+      {
+        "path": "https://resend.com/static/sample/logo.png",
+        "filename": "logo.png",
+        "content_id": "logo-image"
+      }
+    ]
+  }'
+  ```
+</CodeGroup>
 
 Learn more about [embedding images](/dashboard/emails/embed-inline-images).
+
+## View and Download Attachments
+
+You can view and download attachments when viewing a sent email that includes them.
+
+To view and download attachments:
+
+1. Go to [Emails](https://resend.com/emails).
+2. Navigate to any email you sent with an attachment.
+3. Click on the attachment to download it locally.
+
+Attachments include the filename and an icon to help you identify the type of attachment. We show unique icons for each attachment type:
+
+* Image
+* PDF
+* Spreadsheet
+* Default (for unknown types)
 
 ## Attachment Limitations
 
 * Emails can be no larger than 40MB (including attachments after Base64 encoding).
 * Not all file types are supported. See the list of [unsupported file types](/knowledge-base/what-attachment-types-are-not-supported).
-* Emails with attachments cannot be scheduled.
 * Emails with attachments cannot be sent using our [batching endpoint](/api-reference/emails/send-batch-emails).
-
-<Note>
-  All attachments (including inline images) do not currently display in the
-  [emails dashboard](https://resend.com/emails) when previewing an email's HTML.
-</Note>
 
 ## Examples
 

@@ -2,6 +2,8 @@
 
 # RunChargeOptions<!-- -->
 
+Options for charging events in a pay-per-event Actor run.
+
 ## Index[**](#Index)
 
 ### Properties
@@ -12,7 +14,7 @@
 
 ## Properties<!-- -->[**](#Properties)
 
-### [**](#count)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/run.ts#L302)optionalcount
+### [**](#count)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/run.ts#L531)optionalcount
 
 **count?
 
@@ -22,13 +24,13 @@
 
 Defaults to 1
 
-### [**](#eventName)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/run.ts#L300)eventName
+### [**](#eventName)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/run.ts#L529)eventName
 
 **eventName: string
 
 Name of the event to charge. Must be defined in the Actor's pricing info else the API will throw.
 
-### [**](#idempotencyKey)[**](https://github.com/apify/apify-client-js/blob/master/src/resource_clients/run.ts#L304)optionalidempotencyKey
+### [**](#idempotencyKey)[**](https://github.com/apify/apify-client-js/blob/a8a29bacd7df19373e3300fc059110221bc37e09/src/resource_clients/run.ts#L533)optionalidempotencyKey
 
 **idempotencyKey?
 

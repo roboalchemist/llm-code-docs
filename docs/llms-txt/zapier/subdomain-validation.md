@@ -1,5 +1,9 @@
 # Source: https://docs.zapier.com/platform/build/subdomain-validation.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.zapier.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Validate domain and subdomain input fields during authentication
 
 > When adding a subdomain input field, commonly used in OAuth implementations, additional validation is strongly recommended to prevent a potential security vulnerability. If not taken into account, an attacker could utilize a maliciously constructed subdomain field (like `attacker-domain.com/`) in order to redirect OAuth connection requests to that attacker-controlled domain (because `attacker-domain.com/.your-domain.com` resolves to the attacker's domain instead of the expected one). Taking the following steps prevents the potential for an attacker to access your integration's sensitive authentication information, such as the OAuth client ID or secret.

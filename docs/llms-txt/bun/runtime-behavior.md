@@ -1,5 +1,9 @@
 # Source: https://bun.com/docs/test/runtime-behavior.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://bun.com/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Runtime behavior
 
 > Learn about Bun test's runtime integration, environment variables, timeouts, and error handling

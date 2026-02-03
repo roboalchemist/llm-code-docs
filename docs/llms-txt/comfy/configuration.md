@@ -1,5 +1,9 @@
 # Source: https://docs.comfy.org/manager/configuration.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.comfy.org/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Configuration
 
 > Configure ComfyUI-Manager settings
@@ -136,8 +140,3 @@ ComfyUI-Manager provides `cm-cli`, a command line tool that allows you to use Ma
 For detailed cm-cli documentation, see the [official cm-cli guide](https://github.com/ltdrdata/ComfyUI-Manager/blob/main/docs/en/cm-cli.md).
 
 For a more comprehensive CLI experience, consider using [comfy-cli](/comfy-cli/getting-started).
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.comfy.org/llms.txt

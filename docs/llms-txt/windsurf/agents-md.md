@@ -1,8 +1,12 @@
 # Source: https://docs.windsurf.com/windsurf/cascade/agents-md.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.windsurf.com/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # AGENTS.md
 
-> Provide directory-scoped instructions to Cascade using AGENTS.md files
+> Create AGENTS.md files to provide directory-scoped instructions to Cascade. Instructions automatically apply based on file location in your project.
 
 `AGENTS.md` files provide a simple way to give Cascade context-aware instructions that automatically apply based on where the file is located in your project. This is particularly useful for providing directory-specific coding guidelines, architectural decisions, or project conventions.
 
@@ -114,8 +118,3 @@ While both `AGENTS.md` and [Rules](/windsurf/cascade/memories#rules) provide ins
 | Best for | Directory-specific conventions   | Cross-cutting concerns, complex activation logic |
 
 Use `AGENTS.md` when you want simple, location-based instructions. Use Rules when you need more control over when and how instructions are applied.
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.windsurf.com/llms.txt

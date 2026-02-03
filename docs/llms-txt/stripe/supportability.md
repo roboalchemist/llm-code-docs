@@ -4,7 +4,9 @@
 
 Learn how Stripe evaluates connected accounts for Financial Accounts for platforms supportability.
 
-> The supportability process described in this document takes effect on January 28, 2025.
+> #### Accounts v2 API compatibility
+> 
+> The Accounts v2 API doesn’t support Financial Accounts workflows. If you have accounts created with Accounts v2, you can use Accounts v1 to manage the `treasury` and `card_issuing` capabilities. For details, see [Use Accounts as customers](https://docs.stripe.com/connect/use-accounts-as-customers.md).
 
 To support Financial Accounts for platforms features, a connected account must be a supportable business and must [fulfill certain requirements](https://docs.stripe.com/financial-accounts/connect/requirements.md). Stripe reviews each connected account using its provided URL and product descriptions to determine whether it meets Fifth Third Bank’s policy standards. Most connected accounts that provide accurate information are supportable without requiring any action.
 
@@ -96,9 +98,8 @@ const capability = await stripe.accounts.retrieveCapability(
 sc := stripe.NewClient("<<YOUR_SECRET_KEY>>")
 params := &stripe.CapabilityRetrieveParams{
   Account: stripe.String("{{CONNECTEDACCOUNT_ID}}"),
-  Capability: stripe.String("treasury"),
 }
-result, err := sc.V1Capabilities.Retrieve(context.TODO(), params)
+result, err := sc.V1Capabilities.Retrieve(context.TODO(), "treasury", params)
 ```
 
 ```dotnet

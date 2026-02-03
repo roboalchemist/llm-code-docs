@@ -1,8 +1,20 @@
 # Source: https://docs.pipecat.ai/server/utilities/transcript-processor.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://docs.pipecat.ai/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # TranscriptProcessor
 
 > Factory for creating and managing conversation transcript processors with shared event handling
+
+<Warning>
+  DEPRECATED: TranscriptProcessor has been deprecated. Use
+  `on_user_turn_stopped` and `on_assistant_turn_stopped` events on the context
+  aggregators to collect transcriptions, see
+  [Transcriptions](/server/utilities/turn-management/transcriptions) for
+  details.
+</Warning>
 
 ## Overview
 
@@ -153,8 +165,3 @@ async def handle_update(processor, frame):
     for message in frame.messages:
         print(f"{message.role}: {message.content}")
 ```
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://docs.pipecat.ai/llms.txt

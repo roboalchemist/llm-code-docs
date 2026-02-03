@@ -16,26 +16,26 @@ In development, it is crucial to check and adjust the configurations related to 
 
 If you don't have time to read about the theory behind anti-scraping protections to fine-tune your scraping project and instead you need to get unblocked ASAP, here are some quick tips:
 
-* Use high-quality proxies. https://docs.apify.com/platform/proxy/residential-proxy.md are the least blocked. You can find many providers out there like Apify, BrightData, Oxylabs, NetNut, etc.
-* Set **real-user-like HTTP settings** and **browser fingerprints**. https://crawlee.dev/ uses statistically generated realistic HTTP headers and browser fingerprints by default for all of its crawlers.
-* Use a browser to pass bot capture challenges. We recommend https://crawlee.dev/docs/examples/playwright-crawler-firefox because it is not that common for scraping. You can also play with https://crawlee.dev/api/playwright-crawler/interface/PlaywrightCrawlerOptions#headless and adjust other https://crawlee.dev/api/browser-pool/interface/FingerprintGeneratorOptions.
-* Consider extracting data from **https://docs.apify.com/academy/api-scraping.md** or **mobile app APIs**. They are usually much less protected.
-* Increase the number of request retries significantly to at least 10 with https://crawlee.dev/api/basic-crawler/interface/BasicCrawlerOptions#maxRequestRetries. Rotate sessions after every error with https://crawlee.dev/api/core/interface/SessionOptions#maxErrorScore
-* If you cannot afford to use browsers for performance reasons, you can try https://playwright.dev/docs/api/class-playwright#playwright-request or https://www.npmjs.com/package/node-libcurl as the HTTP library for https://crawlee.dev/api/cheerio-crawler/class/CheerioCrawler or https://crawlee.dev/api/basic-crawler/class/BasicCrawler Crawlers, instead of its default https://crawlee.dev/docs/guides/got-scraping HTTP back end. These libraries have access to native code which offers much finer control over the HTTP traffic and mimics real browsers more than what can be achieved with plain Node.js implementation like `got-scraping`. These libraries should become part of Crawlee itself in the future.
+* Use high-quality proxies. [Residential proxies](https://docs.apify.com/platform/proxy/residential-proxy.md) are the least blocked. You can find many providers out there like Apify, BrightData, Oxylabs, NetNut, etc.
+* Set **real-user-like HTTP settings** and **browser fingerprints**. [Crawlee](https://crawlee.dev/) uses statistically generated realistic HTTP headers and browser fingerprints by default for all of its crawlers.
+* Use a browser to pass bot capture challenges. We recommend [Playwright with Firefox](https://crawlee.dev/docs/examples/playwright-crawler-firefox) because it is not that common for scraping. You can also play with [non-headless mode](https://crawlee.dev/api/playwright-crawler/interface/PlaywrightCrawlerOptions#headless) and adjust other [fingerprint settings](https://crawlee.dev/api/browser-pool/interface/FingerprintGeneratorOptions).
+* Consider extracting data from **[private APIs](https://docs.apify.com/academy/api-scraping.md)** or **mobile app APIs**. They are usually much less protected.
+* Increase the number of request retries significantly to at least 10 with [maxRequestRetries: 10](https://crawlee.dev/api/basic-crawler/interface/BasicCrawlerOptions#maxRequestRetries). Rotate sessions after every error with [maxErrorScore: 1](https://crawlee.dev/api/core/interface/SessionOptions#maxErrorScore)
+* If you cannot afford to use browsers for performance reasons, you can try [Playwright.request](https://playwright.dev/docs/api/class-playwright#playwright-request) or [curl-impersonate](https://www.npmjs.com/package/node-libcurl) as the HTTP library for [Cheerio](https://crawlee.dev/api/cheerio-crawler/class/CheerioCrawler) or [Basic](https://crawlee.dev/api/basic-crawler/class/BasicCrawler) Crawlers, instead of its default [got-scraping](https://crawlee.dev/docs/guides/got-scraping) HTTP back end. These libraries have access to native code which offers much finer control over the HTTP traffic and mimics real browsers more than what can be achieved with plain Node.js implementation like `got-scraping`. These libraries should become part of Crawlee itself in the future.
 
-In the vast majority of cases, this configuration should lead to success. Success doesn't mean that all requests will go through unblocked, that is not realistic. Some IP addresses and fingerprint combinations will still be blocked but the automatic retry system takes care of that. If you can get at least 10% of your requests through, you can still scrape the whole website with enough retries. The default https://crawlee.dev/api/core/class/SessionPool configuration will preserve the working sessions and eventually the success rate will increase.
+In the vast majority of cases, this configuration should lead to success. Success doesn't mean that all requests will go through unblocked, that is not realistic. Some IP addresses and fingerprint combinations will still be blocked but the automatic retry system takes care of that. If you can get at least 10% of your requests through, you can still scrape the whole website with enough retries. The default [SessionPool](https://crawlee.dev/api/core/class/SessionPool) configuration will preserve the working sessions and eventually the success rate will increase.
 
 If the above tips didn't help, you can try to fiddle with the following:
 
-* Try different browsers. Crawlee & Playwright support Chromium, Firefox and WebKit out of the box. You can also try the https://brave.com which https://blog.apify.com/unlocking-the-potential-of-brave-and-playwright-for-browser-automation/.
-* Don't use browsers at all. Sometimes the anti-scraping protections are extremely sensitive to browser behavior but will allow plain HTTP requests (with the right headers) just fine. Don't forget to match the specific https://docs.apify.com/academy/concepts/http-headers.md for each request.
+* Try different browsers. Crawlee & Playwright support Chromium, Firefox and WebKit out of the box. You can also try the [Brave browser](https://brave.com) which [can be configured for Playwright](https://blog.apify.com/unlocking-the-potential-of-brave-and-playwright-for-browser-automation/).
+* Don't use browsers at all. Sometimes the anti-scraping protections are extremely sensitive to browser behavior but will allow plain HTTP requests (with the right headers) just fine. Don't forget to match the specific [HTTP headers](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers) for each request.
 * Decrease concurrency. Slower scraping means you can blend in better with the rest of the traffic.
 * Add human-like behavior. Don't traverse the website like a bot (paginating quickly from 1 to 100). Instead, visit various types of pages, add time randomizations and you can even introduce some mouse movements and clicks.
-* Try Puppeteer with the https://github.com/berstend/puppeteer-extra/tree/master/packages/puppeteer-extra-plugin-stealth plugin. Generally, Crawlee's default configuration should have stronger bypassing but some features might land first in the stealth plugin.
+* Try Puppeteer with the [puppeteer-extra-plugin-stealth](https://github.com/berstend/puppeteer-extra/tree/master/packages/puppeteer-extra-plugin-stealth) plugin. Generally, Crawlee's default configuration should have stronger bypassing but some features might land first in the stealth plugin.
 * Find different sources of the data. The data might be rendered to the HTML but you could also find it in JavaScript (inlined in the HTML or in files) or in the API responses. Especially the APIs are often much less protected (if you use the right headers).
 * Reverse engineer the JavaScript challenges that run on the page so you can figure out how the bypass them. This is a very advanced topic that you can read about online. We plan to introduce more content about this.
 
-Keep in mind that there is no silver bullet solution. You can find many anti-scraping systems and each of them behaves differently depending the website's configuration. That is why "trying a few things" usually leads to success. You will find more details about these tricks in the https://docs.apify.com/academy/anti-scraping/mitigation.md section below.
+Keep in mind that there is no silver bullet solution. You can find many anti-scraping systems and each of them behaves differently depending the website's configuration. That is why "trying a few things" usually leads to success. You will find more details about these tricks in the [mitigation](https://docs.apify.com/academy/anti-scraping/mitigation.md) section below.
 
 ## First of all, why do websites want to block bots?
 
@@ -48,7 +48,7 @@ What's up with that?! A website might have a variety of reasons to block bots fr
 * To not skew their analytics data with bot traffic.
 * If it is a social media website, they might be attempting to keep away bots programmed to mass create fake profiles (which are usually sold later).
 
-> We recommend checking out https://blog.apify.com/is-web-scraping-legal/.
+> We recommend checking out [this article about legal and ethical ramifications of web scraping](https://blog.apify.com/is-web-scraping-legal/).
 
 Unfortunately for these websites, they have to make compromises and tradeoffs. While super strong anti-bot protections will surely prevent the majority of bots from accessing their content, there is also a higher chance of regular users being flagged as bots and being blocked as well. Because of this, different sites have different scraping-difficulty levels based on the anti-scraping measures they take.
 
@@ -82,14 +82,14 @@ Once one of these methods detects that the user is a bot, it will take counterme
 A common workflow of a website after it has detected a bot goes as follows:
 
 1. The bot is added to the "greylist" (a list of suspicious IP addresses, fingerprints or any other value that can be used to uniquely identify the bot).
-2. A https://en.wikipedia.org/wiki/Turing_test is provided to the bot. Typically a **captcha**. If the bot succeeds, it is added to the whitelist.
+2. A [Turing test](https://en.wikipedia.org/wiki/Turing_test) is provided to the bot. Typically a **captcha**. If the bot succeeds, it is added to the whitelist.
 3. If the captcha is failed, the bot is added to the blacklist.
 
 One thing to keep in mind while navigating through this course is that advanced anti-scraping methods are able to identify non-humans not only by one value (such as a single header value, or IP address), but are able to identify them through more complex things such as header combinations.
 
-Watch a conference talk by https://github.com/mnmkng, which provides an overview of various anti-scraping measures and tactics for circumventing them.
+Watch a conference talk by [Ondra Urban](https://github.com/mnmkng), which provides an overview of various anti-scraping measures and tactics for circumventing them.
 
-https://www.youtube-nocookie.com/embed/aXil0K-M-Vs
+[YouTube video player](https://www.youtube-nocookie.com/embed/aXil0K-M-Vs)
 
 Several years old?
 
@@ -99,17 +99,17 @@ Although the talk, given in 2021, features some outdated code examples, it still
 
 Because we here at Apify scrape for a living, we have discovered many popular and niche anti-scraping techniques. We've compiled them into a short and comprehensible list here to help understand the roadblocks before this course teaches you how to get around them.
 
-> Not all issues you encounter are caused by anti-scraping systems. Sometimes, it's a configuration issue. Learn https://docs.apify.com/academy/node-js/analyzing-pages-and-fixing-errors.md.
+> Not all issues you encounter are caused by anti-scraping systems. Sometimes, it's a configuration issue. Learn [how to effectively debug your programs here](https://docs.apify.com/academy/node-js/analyzing-pages-and-fixing-errors.md).
 
 ### IP rate-limiting
 
 This is the most straightforward and standard protection, which is mainly implemented to prevent DDoS attacks, but it also works for blocking scrapers. Websites using rate limiting don't allow to more than some defined number of requests from one IP address in a certain time span. If the max-request number is low, then there is a high potential for false-positive due to IP address uniqueness, such as in large companies where hundreds of employees can share the same IP address.
 
-> Learn more about rate limiting in our https://docs.apify.com/academy/anti-scraping/techniques/rate-limiting.md
+> Learn more about rate limiting in our [rate limiting guide](https://docs.apify.com/academy/anti-scraping/techniques/rate-limiting.md)
 
 ### Header checking
 
-This type of bot identification is based on the given fact that humans are accessing web pages through browsers, which have specific https://docs.apify.com/academy/concepts/http-headers.md sets which they send along with every request. The most commonly known header that helps to detect bots is the `User-Agent` header, which holds a value that identifies which browser is being used, and what version it's running. Though `User-Agent` is the most commonly used header for the **Header checking** method, other headers are sometimes used as well. The evaluation is often also run based on the header consistency, and includes a known combination of browser headers.
+This type of bot identification is based on the given fact that humans are accessing web pages through browsers, which have specific header sets which they send along with every request. The most commonly known header that helps to detect bots is the `User-Agent` header, which holds a value that identifies which browser is being used, and what version it's running. Though `User-Agent` is the most commonly used header for the **Header checking** method, other headers are sometimes used as well. The evaluation is often also run based on the header consistency, and includes a known combination of browser headers.
 
 ### URL analysis
 
@@ -119,7 +119,7 @@ Solely based on the way how the bots operate. It compares data-rich page visits 
 
 By definition, this is not an anti-scraping method, but it can heavily affect the reliability of a scraper. If your target website drastically changes its CSS selectors, and your scraper is heavily reliant on selectors, it could break. In principle, websites using this method change their HTML structure or CSS selectors randomly and frequently, making the parsing of the data harder, and requiring more maintenance of the bot.
 
-One of the best ways of avoiding the possible breaking of your scraper due to website structure changes is to limit your reliance on data from HTML elements as much as possible (see https://docs.apify.com/academy/api-scraping.md and https://docs.apify.com/academy/node-js/js-in-html.md)
+One of the best ways of avoiding the possible breaking of your scraper due to website structure changes is to limit your reliance on data from HTML elements as much as possible (see [API Scraping](https://docs.apify.com/academy/api-scraping.md) and [JavaScript objects within HTML](https://docs.apify.com/academy/node-js/js-in-html.md))
 
 ### IP session consistency
 
@@ -141,4 +141,4 @@ The honeypot approach is based on providing links that only bots can see. A typi
 
 ## First up
 
-In our https://docs.apify.com/academy/anti-scraping/techniques.md, we'll be discussing more in-depth about the various anti-scraping methods and techniques websites use, as well as how to mitigate these protections.
+In our [first section](https://docs.apify.com/academy/anti-scraping/techniques.md), we'll be discussing more in-depth about the various anti-scraping methods and techniques websites use, as well as how to mitigate these protections.

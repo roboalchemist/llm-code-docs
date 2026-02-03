@@ -11,8 +11,9 @@ https://api.apify.com/v2/acts/:actorId/builds/:buildId/openapi.json
 
 Get the OpenAPI definition for Actor builds. Two similar endpoints are available:
 
-* https://docs.apify.com/api/v2/act-openapi-json-get.md: Requires both `actorId` and `buildId`. Use `default` as the `buildId` to get the OpenAPI schema for the default Actor build.
-* https://docs.apify.com/api/v2/actor-build-openapi-json-get.md: Requires only `buildId`.
+* [First endpoint](https://docs.apify.com/api/v2/act-openapi-json-get.md): Requires both `actorId` and `buildId`. Use `default` as the `buildId` to get the OpenAPI schema for the default Actor build.
+
+* [Second endpoint](https://docs.apify.com/api/v2/actor-build-openapi-json-get.md): Requires only `buildId`.
 
 Get the OpenAPI definition for a specific Actor build.
 
@@ -20,13 +21,17 @@ To fetch the default Actor build, simply pass `default` as the `buildId`. Authen
 
 note
 
-You can also use the https://docs.apify.com/api/v2/actor-build-openapi-json-get.md endpoint to get the OpenAPI definition for a build.
+You can also use the [/api/v2/actor-build-openapi-json-get](https://docs.apify.com/api/v2/actor-build-openapi-json-get.md) endpoint to get the OpenAPI definition for a build.
 
 ## Request
 
 ## Responses
 
 * 200
+* 400
 
 **Response Headers**
 
+
+
+Bad request - invalid input parameters or request body.

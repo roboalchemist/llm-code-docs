@@ -1,5 +1,9 @@
 # Source: https://braintrust.dev/docs/integrations/sdk-integrations/instructor.md
 
+> ## Documentation Index
+> Fetch the complete documentation index at: https://braintrust.dev/docs/llms.txt
+> Use this file to discover all available pages before exploring further.
+
 # Instructor
 
 [Instructor](https://github.com/jxnl/instructor) is a Python library for generating structured outputs from LLMs using Pydantic models. Braintrust integrates with Instructor to trace structured output generation.
@@ -51,8 +55,3 @@ response = client.chat.completions.create(
 
 * [Instructor documentation](https://github.com/jxnl/instructor)
 * [Braintrust OpenAI integration](/integrations/ai-providers/openai)
-
-
----
-
-> To find navigation and other pages in this documentation, fetch the llms.txt file at: https://braintrust.dev/docs/llms.txt

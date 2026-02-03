@@ -7,13 +7,13 @@ Mailgun uses tracking pixels and URL redirects to track every time a recipient o
 Open tracking can be enabled two ways
 
 - on a per-domain basis: toggled in the **Tracking Settings** which can be found on your domain's settings page
-- on a per-message basis using the parameters, `o:tracking`, or `o:tracking-opens` when sending an email. This will override the domain setting. See the [API documentation](https://mailgun-docs.redoc.ly/docs/mailgun/api-reference/openapi-final/tag/Messages/#tag/Messages/operation/httpapi.(*apiHandler).handler-fm-18) for more details
+- on a per-message basis using the parameters, `o:tracking`, or `o:tracking-opens` when sending an email. This will override the domain setting. See the [API documentation](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/messages/post-v3--domain-name--messages) for more details
 
 
 By default, the open tracking pixel is added at the bottom of your email to mitigate possible impacts to email design. If you send long emails that experience truncation or other rendering issues at the recipient, you can ensure opens are being tracked accurately with placement of the tracking pixel at the top of your emails. This can be done on a domain level or a per-message level.
 
 - on a per-domain basis: `Place open tracking pixel at top of message` can be toggled in the **Tracking Settings** which can be found on your domain's settings page (Same as where you enable open tracking)
-- on a per-message basis using the parameters, `o:X-Mailgun-Track-Pixel-Location-Top`when sending an email. This will override the domain setting. See the [API documentation](https://mailgun-docs.redoc.ly/docs/mailgun/api-reference/openapi-final/tag/Messages/#tag/Messages/operation/httpapi.(*apiHandler).handler-fm-18) for more details
+- on a per-message basis using the parameters, `o:X-Mailgun-Track-Pixel-Location-Top`when sending an email. This will override the domain setting. See the [API documentation](https://documentation.mailgun.com/docs/mailgun/api-reference/send/mailgun/messages/post-v3--domain-name--messages) for more details
 
 
 Info
